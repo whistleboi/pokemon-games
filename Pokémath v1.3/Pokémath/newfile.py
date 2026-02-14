@@ -20,7 +20,7 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT), pygame.FULLSCREEN)
 
 PLAY_CRY_EVENT = pygame.USEREVENT + 1
 preloaded_queue = queue.Queue(maxsize=2)
-last_served_names = set() 
+last_served_names = set()
 
 # Global State for Threading
 shiny_charm_active = False 
