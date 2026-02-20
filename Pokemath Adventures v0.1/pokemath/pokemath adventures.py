@@ -3,6 +3,7 @@ import random
 import requests
 import io
 import os
+import math
 
 # --- System Initialization ---
 pygame.mixer.pre_init(44100, -16, 2, 4096)
@@ -58,6 +59,13 @@ def load_sound(filename):
         return pygame.mixer.Sound(path)
     return None
 
+def load_bg(filename, subfolder):
+    img = load_asset(filename, subfolder)
+    if img:
+        scale = WIDTH / img.get_width()
+        new_h = int(img.get_height() * scale)
+        return pygame.transform.scale(img, (WIDTH, new_h))
+    return None
 # --- Helper Functions ---
 def draw_text(text, font, text_col, x, y, center=True):
     img = font.render(text, True, text_col)
@@ -95,33 +103,50 @@ def fetch_pokemon_data(poke_id, back=False):
         pygame.draw.rect(fallback, RED, (0, 0, 384, 384), 4)
         return fallback, "?????", None, 0
 
-def generate_math_easy():
-    """Simple math for early game (under 10). Includes reverse logic."""
-    a, b = random.randint(1, 4), random.randint(1, 5)
-    target = a + b
-    
-    # Randomly choose between solving for sum or finding equation
-    if random.random() < 0.5:
-        # Normal: 5 + 1 = ?
-        question = f"SOLVE: {a} + {b} = ?"
-        ans = str(target)
-        options = [ans]
-        while len(options) < 4:
-            wrong = str(random.randint(1, 9))
-            if wrong not in options: options.append(wrong)
+def generate_math_problem(level):
+    """Generates math problems scaled by level."""
+    # Determine difficulty based on level
+    if level < 5:
+        ops = ['+']
+        limit = 10
+    elif level < 10:
+        ops = ['+', '-']
+        limit = 20
     else:
-        # Reverse: ? = 6
-        question = f"WHICH EQUALS {target}?"
-        ans = f"{a} + {b}"
-        options = [ans]
-        while len(options) < 4:
-            wa, wb = random.randint(1, 4), random.randint(1, 5)
-            if wa + wb != target:
-                weq = f"{wa} + {wb}"
-                if weq not in options: options.append(weq)
-                
-    random.shuffle(options)
-    return question, options, ans
+        ops = ['+', '-', 'x']
+        limit = 12 # Lower limit for multiplication to keep it mental-math friendly
+
+    op = random.choice(ops)
+    
+    if op == '+':
+        a, b = random.randint(1, limit), random.randint(1, limit)
+        ans = a + b
+        question = f"SOLVE: {a} + {b} = ?"
+    elif op == '-':
+        a, b = random.randint(1, limit), random.randint(1, limit)
+        # Ensure positive result
+        high, low = max(a, b), min(a, b)
+        ans = high - low
+        question = f"SOLVE: {high} - {low} = ?"
+    elif op == 'x':
+        a, b = random.randint(2, 9), random.randint(2, 9)
+        ans = a * b
+        question = f"SOLVE: {a} x {b} = ?"
+
+    correct_ans = str(ans)
+    options = {correct_ans}
+    
+    # Generate smart wrong answers (close to the real answer)
+    while len(options) < 4:
+        offset = random.randint(-5, 5)
+        if offset != 0:
+            fake = ans + offset
+            if fake >= 0:
+                options.add(str(fake))
+    
+    options_list = list(options)
+    random.shuffle(options_list)
+    return question, options_list, correct_ans
 
 def draw_hp_bar(x, y, current_hp, max_hp, name, level, current_xp=None, max_xp=None):
     """B2W2 Slanted HP bar."""
@@ -130,15 +155,18 @@ def draw_hp_bar(x, y, current_hp, max_hp, name, level, current_xp=None, max_xp=N
     pygame.draw.polygon(screen, WHITE, points, 3)
     draw_text(name, FONT_UI, WHITE, x + 20, y + 25, center=False)
     draw_text(f"Lv. {level}", FONT_UI, WHITE, x + 240, y + 25, center=False)
-    pygame.draw.rect(screen, BLACK, (x + 20, y + 55, 250, 12))
-    hp_pct = max(0, current_hp / max_hp)
-    bar_col = HP_GREEN if hp_pct > 0.5 else HP_YELLOW if hp_pct > 0.2 else HP_RED
-    pygame.draw.rect(screen, bar_col, (x + 20, y + 55, 250 * hp_pct, 12))
     
-    # Draw XP Bar (Player Only)
+    # Draw XP Bar (Player Only) - Now above HP bar
     if current_xp is not None and max_xp is not None:
         xp_pct = min(1, current_xp / max_xp)
-        pygame.draw.rect(screen, BLUE, (x + 20, y + 72, 250 * xp_pct, 6))
+        pygame.draw.rect(screen, BLUE, (x + 20, y + 55, 250 * xp_pct, 6))
+
+    # HP Bar is now below XP bar
+    hp_bar_y = y + 63
+    pygame.draw.rect(screen, BLACK, (x + 20, hp_bar_y, 250, 12))
+    hp_pct = max(0, current_hp / max_hp)
+    bar_col = HP_GREEN if hp_pct > 0.5 else HP_YELLOW if hp_pct > 0.2 else HP_RED
+    pygame.draw.rect(screen, bar_col, (x + 20, hp_bar_y, 250 * hp_pct, 12))
 
 def draw_multiline_text(text, font, text_col, x, y, max_width, line_height=None):
     if line_height is None: line_height = font.get_linesize()
@@ -161,16 +189,18 @@ def draw_multiline_text(text, font, text_col, x, y, max_width, line_height=None)
     for i, line in enumerate(lines):
         draw_text(line, font, text_col, x, start_y + i * line_height)
 
-def play_battle_music(prefix):
-    try:
-        sound_dir = os.path.join(ASSETS_DIR, "sounds")
-        files = [f for f in os.listdir(sound_dir) if f.startswith(prefix)]
-        if files:
-            pygame.mixer.music.load(os.path.join(sound_dir, random.choice(files)))
-            pygame.mixer.music.play(-1)
-    except: pass
+# ─────────────────────────────────────────────────────────────
+# NEW CLASSIC POKÉMON BATTLE ASSETS (Phase 1)
+# ─────────────────────────────────────────────────────────────
+BATTLE_SCALE = 192
+ENEMY_POS = [WIDTH - 320, 85]
+PLAYER_POS = [135, 265]
+ENEMY_HP_POS = [45, 48]
+PLAYER_HP_POS = [520, 380]
 
-# --- Main Game Loop ---
+# ─────────────────────────────────────────────────────────────
+# MAIN GAME LOOP
+# ─────────────────────────────────────────────────────────────
 def main():
     STATE_CHAR_SELECT, STATE_LOADING = "CHAR_SELECT", "LOADING"
     STATE_INTRO, STATE_TRANSITION, STATE_ANIM_ENTRY = "INTRO", "TRANSITION", "ANIM_ENTRY"
@@ -183,48 +213,84 @@ def main():
     STATE_RIVAL_FAINT, STATE_RIVAL_WIN_TEXT = "RIVAL_FAINT", "RIVAL_WIN_TEXT"
     STATE_GARY_EXIT = "GARY_EXIT"
     STATE_LAB_END, STATE_FINAL_WIN = "LAB_END", "FINAL_WIN"
+    STATE_LAB_EXIT_CHOICE = "LAB_EXIT_CHOICE"
+    STATE_ROUTE1_HUB = "ROUTE1_HUB"
+    STATE_LOADING_WILD = "LOADING_WILD"
+    STATE_BATTLE_WILD, STATE_WILD_WIN = "BATTLE_WILD", "WILD_WIN"
+    STATE_VIRIDIAN = "VIRIDIAN"
+    STATE_XP_GAIN = "XP_GAIN"
+    STATE_POKECENTER = "POKECENTER"
+    STATE_POKEMART = "POKEMART"
+    STATE_VIRIDIAN_GYM = "VIRIDIAN_GYM"
+    STATE_MENU = "MENU"
+    STATE_ROUTE1_FROM_VIRIDIAN = "ROUTE1_FROM_VIRIDIAN"
+    STATE_LEVEL_UP = "LEVEL_UP"
     
+    # === BATTLE CONSTANTS (Classic Handheld Feel) ===
+    BATTLE_SCALE = 384
+    ENEMY_POS = [WIDTH - 420, 100]
+    PLAYER_POS = [80, 290]
+    ENEMY_HP_POS = [45, 48]
+    PLAYER_HP_POS = [520, 380]
+
     current_state = STATE_CHAR_SELECT
     clock = pygame.time.Clock()
     running = True
+    current_music_theme = ""
+
+    def play_battle_music(prefix):
+        nonlocal current_music_theme
+        if current_music_theme == prefix: # Theme is already playing
+            return
+        try:
+            sound_dir = os.path.join(ASSETS_DIR, "sounds")
+            
+            # Handle specific named tracks vs. prefixed random tracks
+            if prefix in ["viridian", "opening"]:
+                song_name = "viridian1.ogg" if prefix == "viridian" else "opening1.ogg"
+                song_path = os.path.join(sound_dir, song_name)
+            else:
+                files = [f for f in os.listdir(sound_dir) if f.startswith(prefix)]
+                if not files: return
+                song_path = os.path.join(sound_dir, random.choice(files))
+
+            if os.path.exists(song_path):
+                pygame.mixer.music.load(song_path)
+                pygame.mixer.music.play(-1)
+                current_music_theme = prefix # Use the prefix as the theme identifier
+            else:
+                print(f"Warning: Music file '{song_path}' not found.")
+        except Exception as e:
+            print(f"Error playing music for prefix '{prefix}': {e}")
+
     
     music_path = os.path.join(ASSETS_DIR, "sounds", "opening1.ogg")
-    if os.path.exists(music_path):
-        pygame.mixer.music.load(music_path)
-        pygame.mixer.music.play(-1) # Loop indefinitely
-    else:
-        print(f"Warning: Music file '{music_path}' not found.")
+    play_battle_music("opening")
 
-    # Load Scene Assets
+    # Load Scene Assets (unchanged)
     bg_forest = load_asset("forest1.png", "backgrounds", (WIDTH, HEIGHT))
-    
-    # Load battle backgrounds proportionally to avoid distortion
-    bg_forest_battle = load_asset("forest_battle1.png", "backgrounds")
-    if bg_forest_battle:
-        scale = WIDTH / bg_forest_battle.get_width()
-        new_h = int(bg_forest_battle.get_height() * scale)
-        bg_forest_battle = pygame.transform.scale(bg_forest_battle, (WIDTH, new_h))
-
-    bg_route = load_asset("route1.png", "backgrounds", (WIDTH, HEIGHT))
-    
+    bg_route = load_asset("route1.png", "backgrounds", (WIDTH, HEIGHT)) # For non-battle screens
     bg_lab = load_asset("oaklab1.png", "backgrounds")
     if bg_lab:
         scale = WIDTH / bg_lab.get_width()
         new_h = int(bg_lab.get_height() * scale)
         bg_lab = pygame.transform.scale(bg_lab, (WIDTH, new_h))
-
+    bg_viridian = load_asset("viridian1.png", "backgrounds", (WIDTH, HEIGHT))
     spr_oak = load_asset("oak1.png", "pngs", (400, 500))
-    
     spr_gary_overworld = load_asset("gary1.png", "pngs", (400, 400))
-    
-    # Randomly select rival sprite for battle
     rival_files = ["rival1.png", "rival2.png", "rival3.png"]
     rival_imgs = [load_asset(f, "sprites", (400, 400)) for f in rival_files]
-    rival_imgs = [img for img in rival_imgs if img] # Filter out missing files
+    rival_imgs = [img for img in rival_imgs if img]
     if rival_imgs: spr_gary_battle = random.choice(rival_imgs)
     else: spr_gary_battle = spr_gary_overworld
-    
+    bg_mart = load_bg("mart1.png", "backgrounds")
+    bg_center = load_bg("center1.png", "backgrounds")
+    bg_gym = load_bg("viridian_gym1.png", "backgrounds")
+    bg_menu = load_bg("menu.png", "backgrounds")
+    spr_joy = load_asset("joy1.png", "pngs", (300, 450))
+    spr_grunts = load_asset("grunts_disguise.png", "pngs", (400, 400))
     sfx_blip = load_sound("blip.wav")
+    sfx_heal = load_sound("heal.ogg")
     
     # --- Character Selection Data ---
     # Map filenames to Pokemon Showdown IDs for fallback downloading
@@ -253,11 +319,6 @@ def main():
         
         # 3. Web Download Fallback (Showdown)
         showdown_name = trainer_map.get(f, "red")
-        if not back_img:
-            # Note: Showdown mainly has front sprites easily. We might just use front for back if missing, or try to find back.
-            # For now, assuming local back sprites exist as per user.
-            pass
-            
         if not front_img:
             try:
                 url = f"https://play.pokemonshowdown.com/sprites/trainers/{showdown_name}.png"
@@ -277,82 +338,71 @@ def main():
     spr_player = available_trainers[0]['back']
     player_name = ""
     rival_name = ""
-
-    # Interaction variables
     starter_data, enemy_data, rival_starter_data = None, None, None
     starter_id = None
     q_text, options, correct_ans = "", [], ""
     player_hp, enemy_hp = 3, 3
     player_level, enemy_level = 5, 3
     player_xp = 0
-    xp_needed = 100 # Placeholder for Level 5 -> 6
+    xp_needed = 100
+    xp_gain_amount = 0
+    visited_center = False
+    visited_mart = False
+    visited_gym = False
+    return_state_from_menu = None
+    return_state_after_battle = None
+    xp_anim_start_xp = 0
+    xp_anim_current_xp = 0
+    xp_anim_target_xp = 0
     feedback_text, feedback_color = "", WHITE
     dialogue_index = 0
-    loading_phase = 0 # 0: Starter, 1: Enemy, 2: Done
-    loading_timer = 0
-    battle_phase = 0 # 0: Intro, 1: Battle
-    battle_menu_mode = 0 # 0: Main Menu, 1: Fight/Math
-    
+    loading_phase = 0
+    battle_phase = 0
+    battle_menu_mode = 0
+    chosen_move = None          # ← NEW
     battle_escaped = False
-    # Transition variables
+    route1_progress = 0
     next_state = None
-    prev_state = None # To know which background to draw during transition
+    prev_state = None
     transition_bg = None
     transition_type = 0
-    transition_data = [] # For complex transitions like dissolve
+    battle_bg = None
+    transition_data = []
     battle_music_prefix = ""
-    
-    # Typewriter variables
     char_idx = 0
     text_timer = 0
     current_text = ""
     text_done = False
-    
-    # Animation Variables
     anim_phase = 0
     anim_timer = 0
-    # Coordinates: [x, y]
-    pos_player = [80, 250]
-    pos_starter = [-400, 250] # Starts off-screen left
-    pos_enemy = [WIDTH - 420, 20]
+    pos_player = [80, 290]
+    pos_starter = [-400, 290]
+    pos_enemy = [WIDTH - 420, 100]
     pos_trainer = [WIDTH + 100, HEIGHT - 500]
-
-    # Script placeholders (populated dynamically)
     oak_script = []
     gary_script = []
     gary_post_script = []
     win_script = []
-
     oak_dex_script = []
+    center_script = []
+    center_script_after = []
+    mart_script = []
+    gym_script = []
+    viridian_music_path = os.path.join(ASSETS_DIR, "sounds", "viridian1.ogg")
 
-    def draw_lab_bg():
-        # Light Yellow Walls
-        screen.fill((255, 255, 224))
-        
-        # Scientific Machinery (Background)
-        pygame.draw.rect(screen, (180, 180, 180), (100, 100, 120, 300)) # Machine L
-        pygame.draw.rect(screen, (50, 50, 50), (110, 120, 100, 80)) # Screen
-        pygame.draw.circle(screen, RED, (120, 220), 5)
-        pygame.draw.circle(screen, GREEN, (140, 220), 5)
-        
-        pygame.draw.rect(screen, (180, 180, 180), (800, 100, 120, 300)) # Machine R
-        pygame.draw.rect(screen, (100, 200, 255), (820, 150, 80, 200)) # Tank
-        
-        # Floor (White Tile with Grid)
-        pygame.draw.rect(screen, WHITE, (0, 300, WIDTH, HEIGHT-300))
-        for x in range(0, WIDTH, 100):
-            pygame.draw.line(screen, (220, 220, 220), (x, 300), (x, HEIGHT))
-        for y in range(300, HEIGHT, 50):
-            pygame.draw.line(screen, (220, 220, 220), (0, y), (WIDTH, y))
-            
-        # Platforms (Circle with Dark Yellow Border)
-        pygame.draw.ellipse(screen, WHITE, (50, 450, 450, 150))
-        pygame.draw.ellipse(screen, (204, 204, 0), (50, 450, 450, 150), 5)
-        pygame.draw.ellipse(screen, WHITE, (550, 200, 400, 100))
-        pygame.draw.ellipse(screen, (204, 204, 0), (550, 200, 400, 100), 5)
+    menu_btn_rect = pygame.Rect(WIDTH - 120, 20, 100, 50)
+    overworld_states = [STATE_VIRIDIAN, STATE_ROUTE1_HUB, STATE_ROUTE1_FROM_VIRIDIAN]
 
     while running:
         screen.fill(BLACK)
+
+        # --- Music Management ---
+        if current_state in [STATE_VIRIDIAN, STATE_POKECENTER, STATE_POKEMART, STATE_VIRIDIAN_GYM]:
+            play_battle_music("viridian")
+        elif current_state in [STATE_ROUTE1_HUB, STATE_ROUTE1_FROM_VIRIDIAN]:
+            play_battle_music("kanto_route")
+        elif current_state in [STATE_CHAR_SELECT, STATE_INTRO, STATE_FOREST_EXIT, STATE_RIVAL_INTRO, STATE_RIVAL_NAME_INPUT, STATE_LAB, STATE_LAB_END]:
+            play_battle_music("opening")
 
         mouse_pos = pygame.mouse.get_pos()
 
@@ -440,7 +490,7 @@ def main():
                         rival_starter_data = fetch_pokemon_data(rid)
                         break
                 if rival_starter_data[1] != "?????":
-                    q_text, options, correct_ans = generate_math_easy()
+                    q_text, options, correct_ans = generate_math_problem(player_level)
                     current_state = STATE_INTRO
                     dialogue_index = 0
                     char_idx = 0; text_timer = 0; current_text = ""; text_done = False
@@ -489,6 +539,7 @@ def main():
                                 transition_data = list(range(32 * 24)) # 32x32px blocks
                                 random.shuffle(transition_data)
                             battle_music_prefix = "kanto_wild"
+                            battle_bg = load_bg("forest3.png", "backgrounds/battle")
                             anim_timer = 0
                         else:
                             char_idx = 0; text_timer = 0; current_text = ""; text_done = False
@@ -612,19 +663,19 @@ def main():
                 anim_phase = 0
                 # Reset positions for slide-in
                 if next_state == STATE_ANIM_ENTRY:
-                    pos_enemy = [WIDTH + 100, 20]
-                    pos_player = [-400, 250]
+                    pos_enemy = [WIDTH + 100, 100]
+                    pos_player = [-400, 290]
                     anim_phase = 0
                 elif next_state == STATE_ANIM_GARY:
-                    pos_enemy = [WIDTH + 100, 20] # Pokemon start pos
-                    pos_trainer = [WIDTH + 100, 20] # Rival start pos (Aligned with Pokemon)
-                    pos_player = [-400, 250]
+                    pos_enemy = [WIDTH + 100, 100] # Pokemon start pos
+                    pos_trainer = [WIDTH + 100, 100] # Rival start pos (Aligned with Pokemon)
+                    pos_player = [-400, 290]
                     anim_phase = 0 # 0: Slide In, 1: Wants to battle, 2: Sent out
         
         elif current_state == STATE_ANIM_ENTRY:
             # Draw Background
-            # Shift up to align with top of text box (HEIGHT - 200)
-            if bg_forest_battle: screen.blit(bg_forest_battle, (0, (HEIGHT - 200) - bg_forest_battle.get_height()))
+            if battle_bg:
+                screen.blit(battle_bg, (0, (HEIGHT - 200) - battle_bg.get_height()))
             
             # Draw Sprites based on current positions
             screen.blit(enemy_data[0], (pos_enemy[0], pos_enemy[1]))
@@ -698,8 +749,7 @@ def main():
 
         elif current_state == STATE_ANIM_GARY:
             # Shift up to align with top of text box
-            # Draw Procedural Lab Background
-            draw_lab_bg()
+            if battle_bg: screen.blit(battle_bg, (0, (HEIGHT - 200) - battle_bg.get_height()))
             
             # Draw Sprites
             if anim_phase < 2:
@@ -761,208 +811,243 @@ def main():
                         else:
                             char_idx = len(target_text); text_done = True; current_text = target_text
 
-        elif current_state in [STATE_BATTLE_POOCH, STATE_BATTLE_GARY]:
-            if current_state == STATE_BATTLE_POOCH and bg_forest_battle:
-                screen.blit(bg_forest_battle, (0, (HEIGHT - 200) - bg_forest_battle.get_height()))
-            elif current_state == STATE_BATTLE_GARY:
-                # Draw Procedural Lab Background
-                draw_lab_bg()
+        elif current_state in [STATE_BATTLE_POOCH, STATE_BATTLE_GARY, STATE_BATTLE_WILD]:
+            is_wild = current_state in [STATE_BATTLE_POOCH, STATE_BATTLE_WILD]
+            is_trainer = current_state == STATE_BATTLE_GARY
 
-            screen.blit(enemy_data[0], (WIDTH - 420, 20))
-            screen.blit(starter_data[0], (80, 250))
-            
-            draw_hp_bar(100, 100, enemy_hp, 3, enemy_data[1], enemy_level, None, None)
-            draw_hp_bar(600, 450, player_hp, 3, starter_data[1], player_level, player_xp, xp_needed)
+            # Background
+            if battle_bg: screen.blit(battle_bg, (0, (HEIGHT - 200) - battle_bg.get_height()))
 
-            # Draw Bottom UI Box
+            # Classic idle bobbing
+            bob = int(math.sin(pygame.time.get_ticks() / 150) * 6)
+
+            # Sprites
+            enemy_surf = pygame.transform.scale(enemy_data[0], (BATTLE_SCALE, BATTLE_SCALE))
+            screen.blit(enemy_surf, (ENEMY_POS[0], ENEMY_POS[1] + bob))
+
+            player_surf = pygame.transform.scale(starter_data[0], (BATTLE_SCALE, BATTLE_SCALE))
+            screen.blit(player_surf, (PLAYER_POS[0], PLAYER_POS[1] + bob * 1.2))
+
+            # HP bars (classic positions)
+            draw_hp_bar(ENEMY_HP_POS[0], ENEMY_HP_POS[1], enemy_hp, 3, enemy_data[1], enemy_level)
+            draw_hp_bar(PLAYER_HP_POS[0], PLAYER_HP_POS[1], player_hp, 3, starter_data[1], player_level, player_xp, xp_needed)
+
+            # Text box
             pygame.draw.rect(screen, BLACK, (0, HEIGHT - 200, WIDTH, 200))
-            pygame.draw.rect(screen, WHITE, (0, HEIGHT - 200, WIDTH, 200), 4)
-            
-            if battle_menu_mode == 0:
-                # --- MAIN BATTLE MENU (Gen 4 Style) ---
-                draw_text(f"What will {starter_data[1]} do?", FONT_MSG, WHITE, 50, HEIGHT - 150, center=False)
-                if feedback_text:
-                    draw_text(feedback_text, FONT_UI, feedback_color, 50, HEIGHT - 100, center=False)
-                
-                # Buttons: Fight (Red), Bag (Yellow), Pokemon (Green), Run (Blue)
-                btn_width, btn_height = 180, 70
-                start_x, start_y = WIDTH - 400, HEIGHT - 180
-                
-                # Define Rects
-                btn_fight = pygame.Rect(start_x, start_y, btn_width, btn_height)
-                btn_bag = pygame.Rect(start_x + 190, start_y, btn_width, btn_height)
-                btn_pkmn = pygame.Rect(start_x, start_y + 80, btn_width, btn_height)
-                btn_run = pygame.Rect(start_x + 190, start_y + 80, btn_width, btn_height)
-                
-                # Draw Buttons
-                pygame.draw.rect(screen, (200, 40, 40), btn_fight, border_radius=10) # Red
-                draw_text("FIGHT", FONT_UI, WHITE, btn_fight.centerx, btn_fight.centery)
-                
-                pygame.draw.rect(screen, (220, 160, 20), btn_bag, border_radius=10) # Yellow
-                draw_text("BAG", FONT_UI, WHITE, btn_bag.centerx, btn_bag.centery)
-                
-                pygame.draw.rect(screen, (40, 180, 60), btn_pkmn, border_radius=10) # Green
-                draw_text("POKEMON", FONT_UI, WHITE, btn_pkmn.centerx, btn_pkmn.centery)
-                
-                pygame.draw.rect(screen, (60, 100, 220), btn_run, border_radius=10) # Blue
-                draw_text("RUN", FONT_UI, WHITE, btn_run.centerx, btn_run.centery)
-                
-                # Highlight Hover
-                for btn in [btn_fight, btn_bag, btn_pkmn, btn_run]:
-                    if btn.collidepoint(mouse_pos):
-                        pygame.draw.rect(screen, WHITE, btn, 4, border_radius=10)
+            pygame.draw.rect(screen, WHITE, (0, HEIGHT - 200, WIDTH, 200), 6)
+
+            if battle_menu_mode == 0:  # Main battle menu
+                draw_text(f"What will {starter_data[1]} do?", FONT_MSG, WHITE, 40, HEIGHT - 150, center=False)
+
+                btn_w, btn_h = 220, 80
+                bx, by = WIDTH - 480, HEIGHT - 190
+                buttons = [
+                    (pygame.Rect(bx, by, btn_w, btn_h), "FIGHT", (200,40,40)),
+                    (pygame.Rect(bx + 240, by, btn_w, btn_h), "BAG", (220,160,20)),
+                    (pygame.Rect(bx, by + 95, btn_w, btn_h), "POKÉMON", (40,180,60)),
+                    (pygame.Rect(bx + 240, by + 95, btn_w, btn_h), "RUN", (60,100,220))
+                ]
+                for rect, txt, col in buttons:
+                    pygame.draw.rect(screen, col, rect, border_radius=12)
+                    draw_text(txt, FONT_UI, WHITE, rect.centerx, rect.centery)
+                    if rect.collidepoint(mouse_pos):
+                        pygame.draw.rect(screen, WHITE, rect, 5, border_radius=12)
 
                 for event in pygame.event.get():
                     if event.type == pygame.QUIT: running = False
                     if event.type == pygame.MOUSEBUTTONDOWN:
-                        if btn_fight.collidepoint(event.pos):
-                            battle_menu_mode = 1
-                            feedback_text = ""
-                        elif btn_bag.collidepoint(event.pos) or btn_pkmn.collidepoint(event.pos):
-                            feedback_text, feedback_color = "You have no items or other Pokemon!", WHITE
-                        elif btn_run.collidepoint(event.pos):
-                            if current_state == STATE_BATTLE_POOCH:
-                                current_state = STATE_WIN_POOCH
-                                battle_escaped = True
-                                win_script = ["Got away safely!"]
-                                dialogue_index = 0
-                                char_idx = 0; text_timer = 0; current_text = ""; text_done = False
-                            else:
-                                feedback_text, feedback_color = "No! There's no running from a Trainer battle!", WHITE
+                        for rect, txt, _ in buttons:
+                            if rect.collidepoint(event.pos):
+                                if txt == "FIGHT":
+                                    battle_menu_mode = 1
+                                elif txt == "RUN":
+                                    if is_wild:
+                                        if current_state == STATE_BATTLE_POOCH:
+                                            current_state = STATE_WIN_POOCH
+                                            battle_escaped = True
+                                            win_script = ["Got away safely!"]
+                                            dialogue_index = 0
+                                            char_idx = 0; text_timer = 0; current_text = ""; text_done = False
+                                        else:
+                                            current_state = STATE_WILD_WIN
+                                            win_script = ["Got away safely!"]
+                                            dialogue_index = 0
+                                            char_idx = 0; text_timer = 0; current_text = ""; text_done = False
+                                    else:
+                                        feedback_text = "No running from a Trainer battle!"
 
-            elif battle_menu_mode == 1:
-                # --- MATH BATTLE MODE ---
-                draw_text(q_text, FONT_MSG, YELLOW, 50, HEIGHT - 150, center=False)
+            elif battle_menu_mode == 1:  # Move selection (feels exactly like real Pokémon)
+                moves = [
+                    ("ADD TACKLE", "+", "easy"),
+                    ("SUB SLASH", "-", "medium"),
+                    ("MULTI BLAST", "x", "hard"),
+                    ("EQUATION GUARD", "+", "easy")
+                ]
+                draw_text(f"Choose {starter_data[1]}'s attack!", FONT_MSG, YELLOW, 40, HEIGHT - 160, center=False)
 
-                button_rects = []
+                move_buttons = []
+                btn_w, btn_h = 240, 70
+                for i, (name, op, diff) in enumerate(moves):
+                    x = 80 + (i % 2) * 280
+                    y = HEIGHT - 170 + (i // 2) * 85
+                    rect = pygame.Rect(x, y, btn_w, btn_h)
+                    move_buttons.append((rect, name, op, diff))
+                    pygame.draw.rect(screen, (50,50,80), rect, border_radius=12)
+                    draw_text(name, FONT_UI, WHITE, rect.centerx, rect.centery)
+                    if rect.collidepoint(mouse_pos):
+                        pygame.draw.rect(screen, GOLD, rect, 6, border_radius=12)
+
+                # Back Button
+                back_arrow_rect = pygame.Rect(WIDTH - 80, HEIGHT - 140, 60, 120)
+                draw_text("<", FONT_BIG, WHITE, back_arrow_rect.centerx, back_arrow_rect.centery)
+                if back_arrow_rect.collidepoint(mouse_pos):
+                    draw_text("<", FONT_BIG, GOLD, back_arrow_rect.centerx, back_arrow_rect.centery)
+
+                for event in pygame.event.get():
+                    if event.type == pygame.QUIT: running = False
+                    if event.type == pygame.MOUSEBUTTONDOWN:
+                        if back_arrow_rect.collidepoint(event.pos):
+                            battle_menu_mode = 0
+                            continue
+                        for rect, name, op, diff in move_buttons:
+                            if rect.collidepoint(event.pos):
+                                chosen_move = (name, op, diff)
+                                q_text, options, correct_ans = generate_math_problem(player_level)
+                                battle_menu_mode = 2
+                                feedback_text = f"{starter_data[1]} used {name}!"
+
+            elif battle_menu_mode == 2:  # Math solving phase
+                draw_text(feedback_text, FONT_MSG, YELLOW, 40, HEIGHT - 160, center=False)
+                draw_text(q_text, FONT_MSG, WHITE, 40, HEIGHT - 110, center=False)
+
+                answer_buttons = []
                 for i, opt in enumerate(options):
-                    bx, by = 650 + (i % 2 * 160), (HEIGHT - 160) + (i // 2 * 60)
-                    rect = pygame.Rect(bx, by, 140, 50)
-                    button_rects.append((rect, opt))
-                    pygame.draw.rect(screen, (60, 60, 60), rect, border_radius=5)
-                    pygame.draw.rect(screen, GOLD if rect.collidepoint(mouse_pos) else WHITE, rect, 2, border_radius=5)
+                    bx = 620 + (i % 2 * 190)
+                    by = HEIGHT - 170 + (i // 2 * 75)
+                    rect = pygame.Rect(bx, by, 170, 65)
+                    answer_buttons.append((rect, opt))
+                    pygame.draw.rect(screen, (40,40,40), rect, border_radius=12)
+                    pygame.draw.rect(screen, GOLD if rect.collidepoint(mouse_pos) else WHITE, rect, 4, border_radius=12)
                     draw_text(opt, FONT_UI, WHITE, rect.centerx, rect.centery)
 
                 for event in pygame.event.get():
                     if event.type == pygame.QUIT: running = False
                     if event.type == pygame.MOUSEBUTTONDOWN:
-                        for rect, opt in button_rects:
+                        for rect, opt in answer_buttons:
                             if rect.collidepoint(event.pos):
                                 if opt == correct_ans:
-                                    enemy_hp -= 1
-                                    feedback_text, feedback_color = "CRITICAL HIT!", GREEN
-                                    battle_menu_mode = 0 # Return to menu
-                                    if enemy_hp <= 0:
-                                        if current_state == STATE_BATTLE_POOCH:
-                                            if enemy_data[2]: enemy_data[2].play()
-                                            play_battle_music("kanto_win")
-                                            current_state = STATE_POOCH_FLEE
-                                            pos_enemy = [WIDTH - 420, 20]
-                                        else:
-                                            if enemy_data[2]: enemy_data[2].play()
-                                            play_battle_music("kanto_win")
-                                            current_state = STATE_RIVAL_FAINT
-                                            pos_enemy = [WIDTH - 420, 20]
-                                            win_script = [
-                                                f"Rival's {enemy_data[1]} fainted!",
-                                                f"You defeated RIVAL {rival_name}!"
-                                            ]
-                                            dialogue_index = 0
-                                            char_idx = 0; text_timer = 0; current_text = ""; text_done = False
+                                    dmg = 2 if "MULTI" in chosen_move[0] else 1
+                                    enemy_hp -= dmg
+                                    feedback_text = "CRITICAL HIT!!" if random.random() < 0.3 else "Great math!"
                                 else:
                                     player_hp -= 1
-                                    feedback_text, feedback_color = "IT BIT YOU!", RED
-                                    battle_menu_mode = 0 # Return to menu
-                                    if player_hp <= 0: return True # Signal restart
-                                q_text, options, correct_ans = generate_math_easy()
+                                    feedback_text = "The attack missed..."
+
+                                battle_menu_mode = 0
+                                q_text, options, correct_ans = generate_math_problem(player_level)
+
+                                if enemy_hp <= 0:
+                                    if current_state == STATE_BATTLE_GARY:
+                                        current_state = STATE_RIVAL_FAINT
+                                        pos_enemy = list(ENEMY_POS)
+                                    elif current_state == STATE_BATTLE_POOCH:
+                                        current_state = STATE_POOCH_FLEE
+                                        pos_enemy = list(ENEMY_POS)
+                                        anim_phase = 0
+                                    else:  # STATE_BATTLE_WILD
+                                        current_state = STATE_WILD_WIN
+                                        # XP Gain
+                                        xp_gain_amount = (enemy_data[3] * enemy_level) // 7
+                                        win_script = [f"Wild {enemy_data[1]} fainted!", f"{starter_data[1]} gained {xp_gain_amount} EXP. Points!"]
+                                        xp_anim_start_xp = player_xp
+                                        xp_anim_target_xp = player_xp + xp_gain_amount
+                                        player_xp = xp_anim_target_xp # Update model
+                                        
+                                        dialogue_index = 0
+                                        char_idx = 0; text_timer = 0; current_text = ""; text_done = False
+                                    if enemy_data[2]: enemy_data[2].play()
+                                    play_battle_music("kanto_win")
 
         elif current_state == STATE_POOCH_FLEE:
-            if bg_forest_battle: screen.blit(bg_forest_battle, (0, (HEIGHT - 200) - bg_forest_battle.get_height()))
-            screen.blit(starter_data[0], (80, 250))
-            screen.blit(enemy_data[0], (pos_enemy[0], pos_enemy[1]))
-            
-            pos_enemy[0] += 25
-            if pos_enemy[0] > WIDTH:
-                current_state = STATE_WIN_POOCH
-                
-                # XP Calculation
-                if not battle_escaped:
-                    xp_gain = (enemy_data[3] * enemy_level) // 7
-                    player_xp += xp_gain
-                    # Simple level up check (visual only for now)
-                    if player_xp >= xp_needed: player_xp = xp_needed
+            if battle_bg: screen.blit(battle_bg, (0, (HEIGHT - 200) - battle_bg.get_height()))
 
-                win_script = [
-                    f"Wild {enemy_data[1]} fainted!",
-                    f"{player_name} escaped safely..."
+            # Player is always visible
+            player_surf = pygame.transform.scale(starter_data[0], (BATTLE_SCALE, BATTLE_SCALE))
+            screen.blit(player_surf, (PLAYER_POS[0], PLAYER_POS[1]))
+
+            # Text Box is always visible
+            pygame.draw.rect(screen, BLACK, (0, HEIGHT - 200, WIDTH, 200))
+            pygame.draw.rect(screen, WHITE, (0, HEIGHT - 200, WIDTH, 200), 4)
+
+            if anim_phase == 0: # Poochyena runs away
+                # Draw Enemy Fleeing
+                enemy_surf = pygame.transform.scale(enemy_data[0], (BATTLE_SCALE, BATTLE_SCALE))
+                screen.blit(enemy_surf, (pos_enemy[0], pos_enemy[1]))
+                pos_enemy[0] += 25
+                
+                draw_text(f"The wild {enemy_data[1]} fled!", FONT_MSG, WHITE, WIDTH//2, HEIGHT - 100)
+                
+                if pos_enemy[0] > WIDTH:
+                    anim_phase = 1
+                    # Reset text animation variables for the next phase
+                    char_idx = 0; text_timer = 0; current_text = ""; text_done = False
+            
+            elif anim_phase == 1: # New dialogue
+                target_text = f"The {starter_data[1]} looks at you gratefully. It wants to join your team!"
+                if not text_done:
+                    text_timer += 1
+                    if text_timer >= 2:
+                        text_timer = 0; char_idx += 1
+                        if char_idx > len(target_text): char_idx = len(target_text); text_done = True
+                        current_text = target_text[:char_idx]
+                else: current_text = target_text
+                draw_multiline_text(current_text, FONT_MSG, WHITE, WIDTH//2, HEIGHT - 100, WIDTH - 100)
+
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT: running = False
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    if anim_phase == 1:
+                        if text_done:
+                            current_state = STATE_WIN_POOCH
+                            player_xp += 50
+                            win_script = [f"The {starter_data[1]} has joined your team!", f"{starter_data[1]} gained 50 EXP. Points!"]
+                            dialogue_index = 0
+                            char_idx = 0; text_timer = 0; current_text = ""; text_done = False
+                        else:
+                            char_idx = len(target_text); text_done = True; current_text = target_text
+
+        elif current_state == STATE_RIVAL_FAINT:
+            if battle_bg: screen.blit(battle_bg, (0, (HEIGHT - 200) - battle_bg.get_height()))
+            
+            screen.blit(starter_data[0], (PLAYER_POS[0], PLAYER_POS[1]))
+            
+            # Sink Enemy
+            enemy_surf = pygame.transform.scale(enemy_data[0], (BATTLE_SCALE, BATTLE_SCALE))
+            screen.blit(enemy_surf, (ENEMY_POS[0], pos_enemy[1]))
+            
+            pos_enemy[1] += 10
+            
+            pygame.draw.rect(screen, BLACK, (0, HEIGHT - 200, WIDTH, 200))
+            pygame.draw.rect(screen, WHITE, (0, HEIGHT - 200, WIDTH, 200), 4)
+            draw_text(f"{enemy_data[1]} fainted!", FONT_MSG, WHITE, WIDTH//2, HEIGHT - 100)
+            
+            if pos_enemy[1] > HEIGHT - 200:
+                current_state = STATE_GARY_EXIT
+                pos_enemy = [WIDTH + 100, HEIGHT - 500] # Reset for Gary slide in
+                anim_phase = 0
+                gary_post_script = [
+                    f"{rival_name}: What? Unbelievable!",
+                    f"{rival_name}: I picked the wrong Pokemon!",
+                    f"{rival_name}: Smell ya later!"
                 ]
                 dialogue_index = 0
                 char_idx = 0; text_timer = 0; current_text = ""; text_done = False
 
-        elif current_state == STATE_RIVAL_FAINT:
-            # Draw Procedural Lab Background
-            draw_lab_bg()
-            
-            screen.blit(starter_data[0], (80, 250))
-            screen.blit(enemy_data[0], (pos_enemy[0], pos_enemy[1]))
-            
-            pos_enemy[0] += 25
-            if pos_enemy[0] > WIDTH:
-                current_state = STATE_RIVAL_WIN_TEXT
-                
-                # XP Calculation
-                if not battle_escaped:
-                    xp_gain = (enemy_data[3] * enemy_level) // 7
-                    player_xp += xp_gain
-                    if player_xp >= xp_needed: player_xp = xp_needed
-
-                char_idx = 0; text_timer = 0; current_text = ""; text_done = False
-
-        elif current_state == STATE_RIVAL_WIN_TEXT:
-            # Draw Procedural Lab Background
-            draw_lab_bg()
-            screen.blit(starter_data[0], (80, 250))
-
-            pygame.draw.rect(screen, BLACK, (0, HEIGHT - 200, WIDTH, 200))
-            pygame.draw.rect(screen, WHITE, (0, HEIGHT - 200, WIDTH, 200), 4)
-            
-            target_text = win_script[dialogue_index]
-            if not text_done:
-                text_timer += 1
-                if text_timer >= 2:
-                    text_timer = 0; 
-                    char_idx += 1
-                    if char_idx > len(target_text): 
-                        char_idx = len(target_text); 
-                        text_done = True
-                    current_text = target_text[:char_idx]
-            else: current_text = target_text
-            
-            draw_multiline_text(current_text, FONT_MSG, WHITE, WIDTH//2, HEIGHT - 100, WIDTH - 100)
-            
             for event in pygame.event.get():
                 if event.type == pygame.QUIT: running = False
-                if event.type == pygame.MOUSEBUTTONDOWN:
-                    if text_done:
-                        if sfx_blip: sfx_blip.play()
-                        dialogue_index += 1
-                        if dialogue_index >= len(win_script):
-                            current_state = STATE_GARY_EXIT
-                            dialogue_index = 0
-                            anim_phase = 0
-                            pos_enemy = [WIDTH + 200, HEIGHT - 500] # Reset for slide in (Overworld height)
-                            gary_post_script = [
-                                f"{rival_name}: WHAT? Unbelievable! My {enemy_data[1]} lost?!",
-                                f"{rival_name}: You just got lucky, {player_name}. Don't get used to it!",
-                                f"{rival_name}: I'm going to become the world's strongest trainer!",
-                                f"{rival_name}: Smell ya later, {player_name}!"
-                            ]
-                            char_idx = 0; text_timer = 0; current_text = ""; text_done = False
-                        else:
-                            char_idx = 0; text_timer = 0; current_text = ""; text_done = False
 
         elif current_state == STATE_WIN_POOCH:
-            if bg_forest_battle: screen.blit(bg_forest_battle, (0, (HEIGHT - 200) - bg_forest_battle.get_height()))
+            if battle_bg: screen.blit(battle_bg, (0, (HEIGHT - 200) - battle_bg.get_height()))
             screen.blit(starter_data[0], (80, 250))
             
             pygame.draw.rect(screen, BLACK, (0, HEIGHT - 200, WIDTH, 200))
@@ -989,6 +1074,7 @@ def main():
                         if sfx_blip: sfx_blip.play()
                         dialogue_index += 1
                         if dialogue_index >= len(win_script):
+                            player_hp = 3 # Restore HP
                             current_state = STATE_FOREST_EXIT
                             dialogue_index = 0
                             char_idx = 0; text_timer = 0; current_text = ""; text_done = False
@@ -1054,6 +1140,7 @@ def main():
             elif anim_phase == 2:
                 pos_enemy[0] += 25
                 if pos_enemy[0] > WIDTH:
+                    player_hp = 3 # Restore HP
                     current_state = STATE_LAB_END
                     dialogue_index = 0
                     oak_dex_script = [
@@ -1181,7 +1268,7 @@ def main():
                             f"{rival_name}: Gramps! Who's the new kid? {player_name}? They look like a {insult}.",
                             f"{rival_name}: You think you're a trainer? I've been training for hours!",
                             f"{rival_name}: I just got a new Pokemon too. Let's settle this right now!",
-                            f"{rival_name}: You'll see how a REAL trainer handles himself in battle! Go, {enemy_data[1]}!"
+                            f"{rival_name}: You'll see how a REAL trainer handles himself in battle! Go, {rival_starter_data[1]}!"
                         ]
 
         elif current_state == STATE_LAB:
@@ -1234,6 +1321,7 @@ def main():
                                 transition_data = list(range(32 * 24))
                                 random.shuffle(transition_data)
                             battle_music_prefix = "kanto_trainer"
+                            battle_bg = load_bg("oaklab.png", "backgrounds/battle")
                             anim_timer = 0
                             feedback_text = f"{rival_name} sent out {enemy_data[1]}!"
                             char_idx = 0; text_timer = 0; current_text = ""; text_done = False
@@ -1272,22 +1360,486 @@ def main():
                         if sfx_blip: sfx_blip.play()
                         dialogue_index += 1
                         if dialogue_index >= len(oak_dex_script):
-                            current_state = STATE_FINAL_WIN
+                            current_state = STATE_TRANSITION
+                            next_state = STATE_ROUTE1_HUB
+                            prev_state = STATE_LAB
+                            transition_bg = bg_lab
+                            transition_type = 4 # Barn Door fade
+                            battle_music_prefix = "kanto_route"
+                            anim_timer = 0
+                            route1_progress = 0
                         else:
                             char_idx = 0; text_timer = 0; current_text = ""; text_done = False
                     else:
                         char_idx = len(target_text); text_done = True; current_text = target_text
 
-        elif current_state == STATE_FINAL_WIN:
-            draw_text(f"{rival_name}: NO WAY! I LOST?!", FONT_MED, RED, WIDTH//2, 150)
-            draw_text("RIVAL DEFEATED", FONT_BIG, GOLD, WIDTH//2, HEIGHT//2 - 50)
-            replay_btn = pygame.Rect(WIDTH//2 - 150, HEIGHT//2 + 100, 300, 80)
-            pygame.draw.rect(screen, GREEN if replay_btn.collidepoint(mouse_pos) else WHITE, replay_btn, border_radius=12)
-            draw_text("REPLAY ADVENTURE", FONT_SMALL, BLACK, replay_btn.centerx, replay_btn.centery)
+        elif current_state == STATE_ROUTE1_HUB:
+            if bg_route: screen.blit(bg_route, (0, HEIGHT - bg_route.get_height()))
+
+            # Draw Menu Button
+            pygame.draw.rect(screen, WHITE, menu_btn_rect, border_radius=8)
+            draw_text("MENU", FONT_UI, BLACK, menu_btn_rect.centerx, menu_btn_rect.centery)
+            if menu_btn_rect.collidepoint(mouse_pos):
+                pygame.draw.rect(screen, GOLD, menu_btn_rect, 4, border_radius=8)
+            
+            if route1_progress < 3:
+                # Proceed Button
+                btn_rect = pygame.Rect(WIDTH//2 - 200, HEIGHT//2 - 40, 400, 80)
+                pygame.draw.rect(screen, GREEN if btn_rect.collidepoint(mouse_pos) else WHITE, btn_rect, border_radius=12) 
+                draw_multiline_text("PROCEED THROUGH ROUTE 1", FONT_UI, BLACK, btn_rect.centerx, btn_rect.centery, btn_rect.width - 20)
+                
+                for event in pygame.event.get():
+                    if event.type == pygame.QUIT: running = False
+                    if event.type == pygame.MOUSEBUTTONDOWN:
+                        if menu_btn_rect.collidepoint(event.pos):
+                            return_state_from_menu = current_state
+                            current_state = STATE_MENU
+                            continue
+                        if btn_rect.collidepoint(event.pos):
+                            if sfx_blip: sfx_blip.play()
+                            current_state = STATE_LOADING_WILD
+            else:
+                # Almost there text
+                draw_text("Almost to Viridian City...", FONT_BIG, WHITE, WIDTH//2, HEIGHT//2)
+                draw_text("(Click to continue)", FONT_SMALL, WHITE, WIDTH//2, HEIGHT//2 + 50)
+                
+                for event in pygame.event.get():
+                    if event.type == pygame.QUIT: running = False
+                    if event.type == pygame.MOUSEBUTTONDOWN:
+                        current_state = STATE_TRANSITION
+                        next_state = STATE_VIRIDIAN
+                        prev_state = STATE_ROUTE1_HUB
+                        transition_bg = bg_route
+                        transition_type = 0
+                        anim_timer = 0
+
+        elif current_state == STATE_LOADING_WILD:
+            if bg_route: screen.blit(bg_route, (0, HEIGHT - bg_route.get_height()))
+            draw_text("A wild Pokemon appeared!", FONT_BIG, WHITE, WIDTH//2, HEIGHT//2)
+            pygame.display.flip()
+            
+            # Route 1 Pool
+            # 016 (33%), 019 (33%), 020 (1%), 043 (8%), 069 (8%), 161 (8%), 162 (1%), 163 (8%)
+            pool = [16, 19, 20, 43, 69, 161, 162, 163]
+            weights = [33, 33, 1, 8, 8, 8, 1, 8]
+            
+            # Weighted choice
+            wild_id = random.choices(pool, weights=weights, k=1)[0]
+            
+            enemy_data = fetch_pokemon_data(wild_id)
+            enemy_hp = 3
+            enemy_level = random.randint(2, 4)
+            
+            # Setup Battle
+            q_text, options, correct_ans = generate_math_problem(player_level)
+            battle_menu_mode = 0
+            feedback_text = ""
+            
+            # Transition to Battle
+            current_state = STATE_TRANSITION
+            next_state = STATE_BATTLE_WILD
+            prev_state = STATE_ROUTE1_HUB
+            transition_bg = bg_route
+            transition_type = random.randint(0, 9)
+            battle_bg = load_bg("grass1.png", "backgrounds/battle")
+            battle_music_prefix = "kanto_wild"
+            anim_timer = 0
+
+        elif current_state == STATE_WILD_WIN:
+            if battle_bg: screen.blit(battle_bg, (0, (HEIGHT - 200) - battle_bg.get_height()))
+            # Draw the HP bar with the XP value *before* the gain, so it doesn't jump.
+            draw_hp_bar(600, 450, player_hp, 3, starter_data[1], player_level, xp_anim_start_xp, xp_needed)
+            screen.blit(starter_data[0], (80, 250))
+            
+            pygame.draw.rect(screen, BLACK, (0, HEIGHT - 200, WIDTH, 200))
+            pygame.draw.rect(screen, WHITE, (0, HEIGHT - 200, WIDTH, 200), 4)
+            
+            target_text = win_script[dialogue_index]
+            if not text_done:
+                text_timer += 1
+                if text_timer >= 2:
+                    text_timer = 0; char_idx += 1
+                    if char_idx > len(target_text): char_idx = len(target_text); text_done = True
+                    current_text = target_text[:char_idx]
+            else: current_text = target_text
+            
+            draw_multiline_text(current_text, FONT_MSG, WHITE, WIDTH//2, HEIGHT - 100, WIDTH - 100)
+            
             for event in pygame.event.get():
                 if event.type == pygame.QUIT: running = False
                 if event.type == pygame.MOUSEBUTTONDOWN:
-                    if replay_btn.collidepoint(event.pos): return True # Signal restart
+                    if text_done:
+                        if sfx_blip: sfx_blip.play()
+                        dialogue_index += 1
+                        if dialogue_index >= len(win_script):
+                            current_state = STATE_XP_GAIN
+                            xp_anim_current_xp = xp_anim_start_xp
+                            next_state = STATE_ROUTE1_HUB
+                            prev_state = STATE_BATTLE_WILD
+                        else:
+                            char_idx = 0; text_timer = 0; current_text = ""; text_done = False
+                    else: char_idx = len(target_text); text_done = True; current_text = target_text
+
+        elif current_state == STATE_XP_GAIN:
+            # Determine background from previous battle state
+            if battle_bg: screen.blit(battle_bg, (0, (HEIGHT - 200) - battle_bg.get_height()))
+            
+            # Draw player pokemon and animating XP bar
+            screen.blit(starter_data[0], (80, 250))
+            
+            # Animate XP bar
+            if xp_anim_current_xp < xp_anim_target_xp:
+                # Make animation speed proportional to total gain to keep it reasonably fast
+                speed = max(1, xp_gain_amount // 25)
+                xp_anim_current_xp += speed
+                if xp_anim_current_xp > xp_anim_target_xp:
+                    xp_anim_current_xp = xp_anim_target_xp
+            
+            # Draw HP/XP bar with the animating value. HP is static here.
+            draw_hp_bar(600, 450, player_hp, 3, starter_data[1], player_level, xp_anim_current_xp, xp_needed)
+            
+            # Draw Text Box
+            pygame.draw.rect(screen, BLACK, (0, HEIGHT - 200, WIDTH, 200))
+            pygame.draw.rect(screen, WHITE, (0, HEIGHT - 200, WIDTH, 200), 4)
+            draw_text(f"{starter_data[1]} gained {xp_gain_amount} EXP. Points!", FONT_MSG, WHITE, WIDTH//2, HEIGHT - 100)
+            
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT: running = False
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    if xp_anim_current_xp < xp_anim_target_xp:
+                        xp_anim_current_xp = xp_anim_target_xp
+                    else:
+                        if player_xp >= xp_needed:
+                            current_state = STATE_LEVEL_UP
+                        else:
+                            if return_state_after_battle:
+                                current_state = return_state_after_battle
+                                return_state_after_battle = None
+                            else:
+                                if next_state == STATE_ROUTE1_HUB:
+                                    route1_progress += 1
+                                current_state = next_state
+
+        elif current_state == STATE_LEVEL_UP:
+            # Draw BG (same as XP gain)
+            if battle_bg: screen.blit(battle_bg, (0, (HEIGHT - 200) - battle_bg.get_height()))
+            screen.blit(starter_data[0], (80, 250))
+            
+            # Draw HP Bar (Full XP)
+            draw_hp_bar(600, 450, player_hp, 3, starter_data[1], player_level, xp_needed, xp_needed)
+            
+            # Text Box
+            pygame.draw.rect(screen, BLACK, (0, HEIGHT - 200, WIDTH, 200))
+            pygame.draw.rect(screen, WHITE, (0, HEIGHT - 200, WIDTH, 200), 4)
+            draw_text(f"{starter_data[1]} grew to Lv. {player_level + 1}!", FONT_MSG, WHITE, WIDTH//2, HEIGHT - 100)
+            
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT: running = False
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    if sfx_blip: sfx_blip.play()
+                    player_level += 1
+                    player_xp -= xp_needed
+                    xp_needed = int(xp_needed * 1.2)
+                    
+                    # Exit Logic
+                    if return_state_after_battle:
+                        current_state = return_state_after_battle
+                        return_state_after_battle = None
+                    else:
+                        if next_state == STATE_ROUTE1_HUB:
+                            route1_progress += 1
+                        current_state = next_state
+
+        elif current_state == STATE_VIRIDIAN:
+            if bg_viridian: screen.blit(bg_viridian, (0, HEIGHT - bg_viridian.get_height()))
+            draw_text("VIRIDIAN CITY", FONT_BIG, WHITE, WIDTH//2, 100)
+
+            # Draw Menu Button
+            pygame.draw.rect(screen, WHITE, menu_btn_rect, border_radius=8)
+            draw_text("MENU", FONT_UI, BLACK, menu_btn_rect.centerx, menu_btn_rect.centery)
+            if menu_btn_rect.collidepoint(mouse_pos):
+                pygame.draw.rect(screen, GOLD, menu_btn_rect, 4, border_radius=8)
+
+            center_btn = pygame.Rect(WIDTH//2 - 200, HEIGHT//2, 400, 80)
+            mart_btn = pygame.Rect(WIDTH//2 - 200, HEIGHT//2 + 100, 400, 80)
+            gym_btn = pygame.Rect(WIDTH//2 - 200, HEIGHT//2 + 200, 400, 80)
+            forest_btn = pygame.Rect(WIDTH//2 - 200, HEIGHT//2 + 300, 190, 80)
+            route1_btn = pygame.Rect(WIDTH//2 + 10, HEIGHT//2 + 300, 190, 80)
+
+            pygame.draw.rect(screen, GREEN if center_btn.collidepoint(mouse_pos) else WHITE, center_btn, border_radius=12)
+            draw_multiline_text("POKÉMON CENTER", FONT_UI, BLACK, center_btn.centerx, center_btn.centery, center_btn.width - 20)
+
+            pygame.draw.rect(screen, GREEN if mart_btn.collidepoint(mouse_pos) else WHITE, mart_btn, border_radius=12)
+            draw_multiline_text("POKÉMART", FONT_UI, BLACK, mart_btn.centerx, mart_btn.centery, mart_btn.width - 20)
+
+            if visited_center and visited_mart:
+                pygame.draw.rect(screen, GREEN if gym_btn.collidepoint(mouse_pos) else WHITE, gym_btn, border_radius=12)
+                draw_multiline_text("CHALLENGE GYM LEADER", FONT_UI, BLACK, gym_btn.centerx, gym_btn.centery, gym_btn.width - 20)
+            
+            if visited_gym:
+                pygame.draw.rect(screen, GREEN if forest_btn.collidepoint(mouse_pos) else WHITE, forest_btn, border_radius=12)
+                draw_text("VIRIDIAN FOREST", FONT_SMALL, BLACK, forest_btn.centerx, forest_btn.centery)
+                pygame.draw.rect(screen, GREEN if route1_btn.collidepoint(mouse_pos) else WHITE, route1_btn, border_radius=12)
+                draw_text("ROUTE 1", FONT_SMALL, BLACK, route1_btn.centerx, route1_btn.centery)
+
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT: running = False
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    if menu_btn_rect.collidepoint(event.pos):
+                        return_state_from_menu = current_state
+                        current_state = STATE_MENU
+                    elif center_btn.collidepoint(event.pos):
+                        current_state = STATE_POKECENTER
+                        anim_phase = 0
+                        pos_trainer = [-400, HEIGHT - 500] # For Joy sprite
+                        dialogue_index = 0
+                        char_idx = 0; text_timer = 0; current_text = ""; text_done = False
+                        center_script = [f"Welcome to the Viridian City Pokémon Center, {player_name}!", "Let me restore your Pokémon to full health."]
+                    elif mart_btn.collidepoint(event.pos):
+                        current_state = STATE_POKEMART
+                        dialogue_index = 0
+                        char_idx = 0; text_timer = 0; current_text = ""; text_done = False
+                        if not visited_mart:
+                            mart_script = ["Welcome to the PokéMart!", "To help you on your new journey, please take these!", "(You received 5 Pokéballs and 5 Potions!)", "Good luck out there!"]
+                        else:
+                            mart_script = ["Welcome back to the PokéMart!"]
+                    elif visited_center and visited_mart and gym_btn.collidepoint(event.pos):
+                        current_state = STATE_VIRIDIAN_GYM
+                        anim_phase = 0
+                        pos_trainer = [-400, HEIGHT - 500] # For Grunts
+                        dialogue_index = 0
+                        char_idx = 0; text_timer = 0; current_text = ""; text_done = False
+                        insult = f"{random.choice(['dumb', 'goofy', 'clumsy'])} {random.choice(['pipsqueak', 'clown', 'amateur'])}"
+                        gym_script = [
+                            "GRUNTS: Hey! What do you want, kid?",
+                            f"GRUNTS: This is the Viridian City Gym! It's closed! Scram, you {insult}!",
+                            "GRUNTS: The Gym Leader is away on... very important business!",
+                            "GRUNTS: If you're so desperate for a battle, go to the Viridian Forest and find your way to Pewter City.",
+                            "GRUNTS: Now get out of our sight!"
+                        ]
+                    elif visited_gym and route1_btn.collidepoint(event.pos):
+                        current_state = STATE_ROUTE1_FROM_VIRIDIAN
+
+        elif current_state == STATE_POKECENTER:
+            if bg_center: screen.blit(bg_center, (0,0))
+
+            if anim_phase == 0: # Joy slides in
+                visited_center = True
+                pos_trainer[0] += 20
+                if pos_trainer[0] >= WIDTH//2 - 200:
+                    pos_trainer[0] = WIDTH//2 - 200
+                    anim_phase = 1
+            
+            if anim_phase >= 1 and spr_joy:
+                screen.blit(spr_joy, pos_trainer)
+
+            if anim_phase == 1: # Dialogue before heal
+                pygame.draw.rect(screen, BLACK, (0, HEIGHT - 200, WIDTH, 200))
+                pygame.draw.rect(screen, WHITE, (0, HEIGHT - 200, WIDTH, 200), 4)
+                target_text = center_script[dialogue_index]
+                if not text_done:
+                    text_timer += 1
+                    if text_timer >= 2:
+                        text_timer = 0; char_idx += 1
+                        if char_idx > len(target_text): char_idx = len(target_text); text_done = True
+                        current_text = target_text[:char_idx]
+                else: current_text = target_text
+                draw_multiline_text(current_text, FONT_MSG, WHITE, WIDTH//2, HEIGHT - 100, WIDTH - 100)
+
+            elif anim_phase == 2: # Healing
+                anim_timer += 1
+                pygame.draw.rect(screen, BLACK, (0, HEIGHT - 200, WIDTH, 200))
+                pygame.draw.rect(screen, WHITE, (0, HEIGHT - 200, WIDTH, 200), 4)
+                draw_text("Healing your Pokémon...", FONT_MSG, WHITE, WIDTH//2, HEIGHT - 100)
+                if anim_timer > 180:
+                    anim_phase = 3
+                    dialogue_index = 0
+                    char_idx = 0; text_timer = 0; current_text = ""; text_done = False
+                    center_script_after = ["All better! Your Pokémon are happy and healthy.", "You should check out the PokéMart next door if you haven't!"]
+
+            elif anim_phase == 3: # Dialogue after heal
+                pygame.draw.rect(screen, BLACK, (0, HEIGHT - 200, WIDTH, 200))
+                pygame.draw.rect(screen, WHITE, (0, HEIGHT - 200, WIDTH, 200), 4)
+                target_text = center_script_after[dialogue_index]
+                if not text_done:
+                    text_timer += 1
+                    if text_timer >= 2:
+                        text_timer = 0; char_idx += 1
+                        if char_idx > len(target_text): char_idx = len(target_text); text_done = True
+                        current_text = target_text[:char_idx]
+                else: current_text = target_text
+                draw_multiline_text(current_text, FONT_MSG, WHITE, WIDTH//2, HEIGHT - 100, WIDTH - 100)
+
+            elif anim_phase == 4: # Show button
+                mart_btn = pygame.Rect(WIDTH//2 - 200, HEIGHT//2 + 100, 400, 80)
+                pygame.draw.rect(screen, GREEN if mart_btn.collidepoint(mouse_pos) else WHITE, mart_btn, border_radius=12)
+                draw_multiline_text("GO TO POKÉMART", FONT_UI, BLACK, mart_btn.centerx, mart_btn.centery, mart_btn.width - 20)
+
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT: running = False
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    if anim_phase == 1:
+                        if text_done:
+                            dialogue_index += 1
+                            if dialogue_index >= len(center_script):
+                                anim_phase = 2
+                                if sfx_heal: sfx_heal.play()
+                                player_hp = 3 # Heal
+                                anim_timer = 0
+                            else: char_idx = 0; text_timer = 0; current_text = ""; text_done = False
+                        else: char_idx = len(target_text); text_done = True; current_text = target_text
+                    elif anim_phase == 3:
+                        if text_done:
+                            dialogue_index += 1
+                            if dialogue_index >= len(center_script_after): anim_phase = 4
+                            else: char_idx = 0; text_timer = 0; current_text = ""; text_done = False
+                        else: char_idx = len(target_text); text_done = True; current_text = target_text
+                    elif anim_phase == 4 and mart_btn.collidepoint(event.pos):
+                        current_state = STATE_POKEMART
+                        dialogue_index = 0
+                        char_idx = 0; text_timer = 0; current_text = ""; text_done = False
+                        mart_script = ["Welcome to the PokéMart!", "To help you on your new journey, please take these!", "(You received 5 Pokéballs and 5 Potions!)", "Good luck out there!"]
+
+        elif current_state == STATE_POKEMART:
+            if bg_mart: screen.blit(bg_mart, (0,0))
+            visited_mart = True
+            
+            pygame.draw.rect(screen, BLACK, (0, HEIGHT - 200, WIDTH, 200))
+            pygame.draw.rect(screen, WHITE, (0, HEIGHT - 200, WIDTH, 200), 4)
+            
+            if dialogue_index < len(mart_script):
+                target_text = mart_script[dialogue_index]
+                if not text_done:
+                    text_timer += 1
+                    if text_timer >= 2:
+                        text_timer = 0; char_idx += 1
+                        if char_idx > len(target_text): char_idx = len(target_text); text_done = True
+                        current_text = target_text[:char_idx]
+                else: current_text = target_text
+                draw_multiline_text(current_text, FONT_MSG, WHITE, WIDTH//2, HEIGHT - 100, WIDTH - 100)
+            else:
+                # After dialogue, show a leave button
+                leave_btn = pygame.Rect(WIDTH//2 - 150, HEIGHT//2, 300, 80)
+                pygame.draw.rect(screen, GREEN if leave_btn.collidepoint(mouse_pos) else WHITE, leave_btn, border_radius=12)
+                draw_text("LEAVE", FONT_UI, BLACK, leave_btn.centerx, leave_btn.centery)
+
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT: running = False
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    if dialogue_index < len(mart_script):
+                        if text_done:
+                            dialogue_index += 1
+                            char_idx = 0; text_timer = 0; current_text = ""; text_done = False
+                        else:
+                            char_idx = len(target_text); text_done = True; current_text = target_text
+                    else: # Leave button is showing
+                        leave_btn = pygame.Rect(WIDTH//2 - 150, HEIGHT//2, 300, 80)
+                        if leave_btn.collidepoint(event.pos):
+                            current_state = STATE_VIRIDIAN
+
+        elif current_state == STATE_VIRIDIAN_GYM:
+            if bg_gym: screen.blit(bg_gym, (0,0))
+
+            if anim_phase == 0: # Grunts slide in
+                pos_trainer[0] += 20
+                if pos_trainer[0] >= WIDTH//2 - 200:
+                    pos_trainer[0] = WIDTH//2 - 200
+                    anim_phase = 1
+            
+            if anim_phase >= 1 and spr_grunts:
+                screen.blit(spr_grunts, pos_trainer)
+
+            if anim_phase == 1: # Dialogue
+                pygame.draw.rect(screen, BLACK, (0, HEIGHT - 200, WIDTH, 200))
+                pygame.draw.rect(screen, WHITE, (0, HEIGHT - 200, WIDTH, 200), 4)
+                target_text = gym_script[dialogue_index]
+                if not text_done:
+                    text_timer += 1
+                    if text_timer >= 2:
+                        text_timer = 0; char_idx += 1
+                        if char_idx > len(target_text): char_idx = len(target_text); text_done = True
+                        current_text = target_text[:char_idx]
+                else: current_text = target_text
+                draw_multiline_text(current_text, FONT_MSG, WHITE, WIDTH//2, HEIGHT - 100, WIDTH - 100)
+            
+            elif anim_phase == 2: # Show leave button
+                leave_btn = pygame.Rect(WIDTH//2 - 150, HEIGHT//2, 300, 80)
+                pygame.draw.rect(screen, GREEN if leave_btn.collidepoint(mouse_pos) else WHITE, leave_btn, border_radius=12)
+                draw_text("LEAVE GYM", FONT_UI, BLACK, leave_btn.centerx, leave_btn.centery)
+
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT: running = False
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    if anim_phase == 1:
+                        if text_done:
+                            dialogue_index += 1
+                            if dialogue_index >= len(gym_script):
+                                anim_phase = 2
+                                visited_gym = True
+                            else: char_idx = 0; text_timer = 0; current_text = ""; text_done = False
+                        else: char_idx = len(target_text); text_done = True; current_text = target_text
+                    elif anim_phase == 2 and leave_btn.collidepoint(event.pos):
+                        current_state = STATE_VIRIDIAN
+
+        elif current_state == STATE_ROUTE1_FROM_VIRIDIAN:
+            if bg_route: screen.blit(bg_route, (0, HEIGHT - bg_route.get_height()))
+
+            # Draw Menu Button
+            pygame.draw.rect(screen, WHITE, menu_btn_rect, border_radius=8)
+            draw_text("MENU", FONT_UI, BLACK, menu_btn_rect.centerx, menu_btn_rect.centery)
+            if menu_btn_rect.collidepoint(mouse_pos):
+                pygame.draw.rect(screen, GOLD, menu_btn_rect, 4, border_radius=8)
+
+            look_btn = pygame.Rect(WIDTH//2 - 200, HEIGHT//2, 400, 80)
+            city_btn = pygame.Rect(WIDTH//2 - 200, HEIGHT//2 + 100, 400, 80)
+
+            pygame.draw.rect(screen, GREEN if look_btn.collidepoint(mouse_pos) else WHITE, look_btn, border_radius=12)
+            draw_multiline_text("LOOK FOR POKÉMON", FONT_UI, BLACK, look_btn.centerx, look_btn.centery, look_btn.width - 20)
+
+            pygame.draw.rect(screen, GREEN if city_btn.collidepoint(mouse_pos) else WHITE, city_btn, border_radius=12)
+            draw_multiline_text("RETURN TO VIRIDIAN CITY", FONT_UI, BLACK, city_btn.centerx, city_btn.centery, city_btn.width - 20)
+
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT: running = False
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    if menu_btn_rect.collidepoint(event.pos):
+                        return_state_from_menu = current_state
+                        current_state = STATE_MENU
+                    elif look_btn.collidepoint(event.pos):
+                        current_state = STATE_LOADING_WILD
+                        return_state_after_battle = STATE_ROUTE1_FROM_VIRIDIAN
+                    elif city_btn.collidepoint(event.pos):
+                        current_state = STATE_VIRIDIAN
+
+        elif current_state == STATE_MENU:
+            if bg_menu: screen.blit(bg_menu, (0,0))
+            else: screen.fill(DARK_GREEN) # Fallback bg
+
+            draw_text("MENU", FONT_BIG, WHITE, WIDTH//2, 80)
+
+            menu_items = ["POKÉMON", "POKÉDEX", "BACKPACK", "SAVE", "OPTIONS", "LEAVE"]
+            menu_buttons = []
+            btn_w, btn_h = 400, 60
+            start_y = HEIGHT // 2 - (len(menu_items) * (btn_h + 15)) // 2 + 50
+
+            for i, item in enumerate(menu_items):
+                rect = pygame.Rect(WIDTH//2 - btn_w//2, start_y + i * (btn_h + 15), btn_w, btn_h)
+                menu_buttons.append((rect, item))
+                
+                pygame.draw.rect(screen, (60, 60, 90), rect, border_radius=15)
+                if rect.collidepoint(mouse_pos):
+                    pygame.draw.rect(screen, GOLD, rect, 5, border_radius=15)
+                else:
+                    pygame.draw.rect(screen, WHITE, rect, 3, border_radius=15)
+                draw_text(item, FONT_UI, WHITE, rect.centerx, rect.centery)
+
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT: running = False
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    for rect, item in menu_buttons:
+                        if rect.collidepoint(event.pos):
+                            if item == "LEAVE":
+                                current_state = return_state_from_menu
 
         pygame.display.flip()
         clock.tick(60)
