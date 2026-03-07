@@ -1,10 +1,14 @@
+    ##### run these 2 commands in terminal to create the .exe file (after installing pyinstaller and the required libraries):
+    ##### cd "c:\Users\Dad\Games\Python Games\pokemon-games"
+    ##### pyinstaller --noconsole --onefile --collect-all customtkinter pro_downloader.py
+
 import os
 import subprocess
 import platform
 import sys
 import threading
 import shutil
-from tkinter import filedialog
+from tkinter import filedialog, messagebox
 
 try:
     # --- Directory Fix ---
@@ -21,19 +25,29 @@ except ModuleNotFoundError as e:
     sys.exit(1)
 
 def get_ffmpeg_path():
-    # If running as a PyInstaller bundle, the path is in a temp folder
-    if getattr(sys, 'frozen', False) and hasattr(sys, '_MEIPASS'):
-        bundle_dir = sys._MEIPASS
-        path = os.path.join(bundle_dir, 'ffmpeg.exe')
+    # If running as a PyInstaller bundle (.exe)
+    if getattr(sys, 'frozen', False):
+        # The .exe is located in os.path.dirname(sys.executable)
+        # We check for ffmpeg.exe right next to the application .exe
+        exe_dir = os.path.dirname(sys.executable)
+        path = os.path.join(exe_dir, "ffmpeg.exe")
         if os.path.exists(path):
             return path
-
-    # Fallback for running as a normal script
+        # Also check inside a bundled _MEIPASS folder, just in case
+        if hasattr(sys, '_MEIPASS'):
+            bundle_dir = sys._MEIPASS
+            path = os.path.join(bundle_dir, 'ffmpeg.exe')
+            if os.path.exists(path):
+                return path
+    
+    # Fallback for running as a normal script (.py)
+    # 1. Check if ffmpeg is in the system's PATH
     if shutil.which("ffmpeg"):
         return "ffmpeg"
-    
+    # 2. Check common local folders relative to the script's location
+    script_dir = os.path.dirname(os.path.abspath(__file__))
     for folder in ["", "dist", "bin"]:
-        path = os.path.join(os.getcwd(), folder, "ffmpeg.exe")
+        path = os.path.join(script_dir, folder, "ffmpeg.exe")
         if os.path.exists(path):
             return path
     return None
@@ -123,34 +137,43 @@ def download_logic():
 
     download_btn.configure(state="disabled", text="Downloading...")
     total = len(urls)
+    success_count = 0
+    error_count = 0
+    last_error = None
+    
+    dl_folder = os.path.join(os.path.expanduser('~'), 'Downloads')
+    if not os.path.exists(dl_folder):
+        os.makedirs(dl_folder)
     
     for i, url in enumerate(urls):
         status_label.configure(text=f"Processing {i+1} of {total}...", text_color="yellow")
         try:
-            download_path = os.path.join(os.path.expanduser('~'), 'Downloads', '%(title)s.%(ext)s')
+            download_path = os.path.join(dl_folder, '%(title)s.%(ext)s')
             
+            # Common options to help bypass "Unavailable" errors
+            ydl_opts = {
+                'outtmpl': download_path,
+                'ffmpeg_location': ffmpeg_exe,
+                'quiet': True,
+                'no_warnings': True,
+                'geo_bypass': True,
+                'nocheckcertificate': True,
+            }
+
             if selected_format in ["mp3", "wav", "m4a", "flac", "ogg"]:
                 codec = 'vorbis' if selected_format == 'ogg' else selected_format
-                ydl_opts = {
+                ydl_opts.update({
                     'format': 'bestaudio/best',
-                    'outtmpl': download_path,
-                    'ffmpeg_location': ffmpeg_exe,
                     'postprocessors': [{
                         'key': 'FFmpegExtractAudio',
                         'preferredcodec': codec,
                         'preferredquality': '192',
                     }],
-                    'quiet': True,
-                    'no_warnings': True,
-                }
+                })
             else:
-                ydl_opts = {
+                ydl_opts.update({
                     'format': 'bestvideo+bestaudio/best',
-                    'outtmpl': download_path,
-                    'ffmpeg_location': ffmpeg_exe,
-                    'quiet': True,
-                    'no_warnings': True,
-                }
+                })
                 if selected_format in ["mp4", "mkv"]:
                     ydl_opts['merge_output_format'] = selected_format
                 else:
@@ -158,11 +181,21 @@ def download_logic():
             
             with yt_dlp.YoutubeDL(ydl_opts) as ydl:
                 ydl.download([url])
+            success_count += 1
         except Exception as e:
             print(f"Error on {url}: {e}")
+            error_count += 1
+            last_error = e
 
-    status_label.configure(text=f"Finished! {total} files processed.", text_color="#2ecc71")
-    download_btn.configure(state="normal", text="DOWNLOAD ALL")
+    if success_count == 0 and error_count > 0:
+        status_label.configure(text=f"Failed. See popup.", text_color="red")
+        messagebox.showerror("Download Error", f"Failed to download.\nError: {last_error}")
+    elif error_count > 0:
+        status_label.configure(text=f"Done. {success_count} ok, {error_count} failed.", text_color="orange")
+        messagebox.showwarning("Partial Error", f"{error_count} downloads failed.\nLast error: {last_error}")
+    else:
+        status_label.configure(text=f"Finished! {success_count} files saved.", text_color="#2ecc71")
+        
     download_btn.configure(state="normal", text="START PROCESS")
     open_folder_btn.pack(pady=5)
 
@@ -219,7 +252,6 @@ format_dropdown.pack(side="left", padx=10)
 format_dropdown.set("mp3")
 
 # Action Button
-download_btn = ctk.CTkButton(app, text="DOWNLOAD ALL", command=start_download, fg_color="#cc0000", hover_color="#aa0000", font=("Arial", 14, "bold"))
 download_btn = ctk.CTkButton(app, text="START PROCESS", command=start_process, fg_color="#cc0000", hover_color="#aa0000", font=("Arial", 14, "bold"))
 download_btn.pack(pady=20)
 
