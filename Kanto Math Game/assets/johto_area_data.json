@@ -1,0 +1,882 @@
+{
+    "STORY_PROGRESSION": {
+        "NEW_BARK_TOWN": {
+        "area_type": "town",
+        "backgrounds": {
+            "main": "new_bark_town.png"
+            },
+        "has_gym": false,
+        "travel_options": [
+            { "text": "Route 27", "target_area": "KANTO_ROUTE_27" },
+            { "text": "Route 29", "target_area": "JOHTO_ROUTE_29" }
+        ],
+        "explore_options": [
+            { "text": "Heal", "action": "HEAL" },
+            { "text": "Visit Elm's Lab", "action": "HEAL", "target": "professor_elm" },
+            { "text": "Talk to Nice Lady", "action": "NPC", "target": "silver_mom" }
+        ],
+        "next_area": "JOHTO_ROUTE_29",
+        "prof_elm_dialogue": "profile_elm",
+        "silver_mom_dialogue": "silver_mom",
+            "on_enter_event": {
+                "type": "trainer_battle",
+                "trainer": {
+                    "name": "Silver",
+                    "class": "PKMN_TRAINER",
+                    "sprite": "silver.png",
+                    "team": [92, 41, 155],
+                    "rewards": { "Totodile": 1 }
+                },
+                "condition": "first_time"
+            }
+        },
+
+        "CHERRYGROVE_CITY": {
+        "area_type": "town",
+        "backgrounds": {
+            "main": "cherrygrove_city.png",
+            "pokecenter": "pokecenter.png",
+            "pokemart": "pokemart.png"
+            },
+        "travel_options": [
+            { "text": "Route 29", "target_area": "JOHTO_ROUTE_29" },
+            { "text": "Route 30", "target_area": "JOHTO_ROUTE_30" }
+        ],
+        "explore_options": [
+            { "text": "Heal", "action": "HEAL" },
+            { "text": "Shop", "action": "SHOP" },
+            { "text": "Talk to Old Man", "action": "NPC", "target": "oldman" }
+        ],
+            "next_area": "JOHTO_ROUTE_30",
+            "on_enter_event": null
+        },
+
+        "VIOLET_CITY": {
+            "area_type": "town",
+            "backgrounds": {
+                "main": "violet_city.png",
+                "pokecenter": "pokecenter.png",
+                "pokemart": "pokemart.png",
+                "gym": "violet_gym.png"
+            },
+            "has_gym": true,
+            "gym": {
+                "trainers": [ 
+                { 
+                "name": "Bird Keeper Abe", "class": "BIRD_KEEPER", "sprite": "bird_keeper.png",
+                "team": [163, 21], "rewards": { "balls": 2 }
+                }
+            ],
+            "leader": {
+            "name": "Falkner",
+            "class": "GYM_LEADER",
+            "sprite": "falkner.png",
+            "team": [16, 163, 17],
+            "badge_reward": "ZEPHYR",
+            "dialogue": {
+                "intro": ["Welcome to the Violet City Gym! I'm Falkner, the Flying-type Gym Leader."],
+                "player_won": ["We failed to take flight"],
+                "player_lost": ["Don't worry, you'll get it next time."]
+            },
+            "rewards": { "balls": 5 }
+            }
+        },
+        "travel_options": [
+            { "text": "Route 31", "target_area": "JOHTO_ROUTE_31" },
+            { "text": "Route 32", "target_area": "JOHTO_ROUTE_32" },
+            { "text": "Route 36", "target_area": "JOHTO_ROUTE_36" },
+            { "text": "Sprout Tower", "target_area": "SPROUT_TOWER" }
+        ],
+        "explore_options": [ 
+            { "text": "Heal", "action": "HEAL" },
+            { "text": "Shop", "action": "SHOP" },
+            { "text": "Gym", "action": "GYM" } ]
+        },
+
+        "AZALEA_TOWN": {
+        "area_type": "town",
+        "backgrounds": {
+            "main": "azalea_town.png",
+            "pokecenter": "pokecenter.png",
+            "pokemart": "pokemart.png",
+            "gym": "azalea_gym.png"
+            },
+        "has_gym": true,
+        "gym": {
+            "leader": {
+            "name": "Bugsy", "class": "GYM_LEADER", "sprite": "bugsy.png",
+            "team": [11, 14, 123], "badge_reward": "HIVE", "rewards": { "balls": 5 },
+            "dialogue": {
+                "intro": ["Welcome to the Azalea Town Gym! I'm Bugsy, the Bug-type Gym Leader."],
+                "player_won": ["You really bugged me!"],
+                "player_lost": ["Don't worry, you'll get it next time."]
+            }
+            }
+        },
+        "travel_options": [
+            { "text": "Route 33", "target_area": "JOHTO_ROUTE_33" },
+            { "text": "Ilex Forest", "target_area": "ILEX_FOREST" },
+            { "text": "Slowpoke Well", "target_area": "SLOWPOKE_WELL" }
+        ],
+        "explore_options": [
+            { "text": "Heal", "action": "HEAL" },
+            { "text": "Shop", "action": "SHOP" },
+            { "text": "Gym", "action": "GYM" }
+        ]
+        },
+
+        "GOLDENROD_CITY": {
+        "area_type": "town",
+        "backgrounds": {
+            "main": "goldenrod_city.png",
+            "pokecenter": "pokecenter.png",
+            "pokemart": "pokemart.png",
+            "gym": "goldenrod_gym.png"
+            },
+        "has_gym": true,
+        "gym": {
+            "leader": {
+            "name": "Whitney", "class": "GYM_LEADER", "sprite": "whitney.png",
+            "team": [35, 241], "badge_reward": "PLAIN", "rewards": { "balls": 5 },
+            "dialogue": {
+                "intro": ["Welcome to the Goldenrod City Gym! I'm Whitney, the Normal-type Gym Leader."],
+                "player_won": ["You're pretty good at this!"],
+                "player_lost": ["Don't worry, you'll get it next time."]
+            }
+            }
+        },
+        "travel_options": [
+            { "text": "Route 34", "target_area": "JOHTO_ROUTE_34" },
+            { "text": "Route 35", "target_area": "JOHTO_ROUTE_35" },
+            { "text": "Underground", "target_area": "GOLDENROD_UNDERGROUND" }
+        ],
+        "explore_options": [
+            { "text": "Heal","action": "HEAL" },
+            { "text": "Shop", "action": "SHOP" },
+            { "text": "Gym", "action": "GYM" } 
+        ]
+        },
+
+        "ECRUTEAK_CITY": {
+        "area_type": "town",
+        "backgrounds": {
+            "main": "ecruteak_city.png",
+            "pokecenter": "pokecenter.png",
+            "pokemart": "pokemart.png",
+            "gym": "ecruteak_gym.png"
+            },
+        "has_gym": true,
+        "gym": {
+            "leader": {
+            "name": "Morty", "class": "GYM_LEADER", "sprite": "morty.png",
+            "team": [92, 93, 94], "badge_reward": "FOG", "rewards": { "balls": 5 },
+            "dialogue": {
+                "intro": ["Welcome to the Ecruteak City Gym! I'm Morty, the Flying-type Gym Leader."],
+                "player_won": ["You're a skilled trainer!"],
+                "player_lost": ["Don't worry, you'll get it next time."]
+            }
+        }
+        },
+        "travel_options": [
+            { "text": "Route 36", "target_area": "JOHTO_ROUTE_36" },
+            { "text": "Route 37", "target_area": "JOHTO_ROUTE_37" },
+            { "text": "Route 42", "target_area": "JOHTO_ROUTE_42" },
+            { "text": "Burned Tower", "target_area": "BURNED_TOWER" },
+            { "text": "Bell Tower", "target_area": "BELL_TOWER" }
+        ],
+        "explore_options": [
+            { "text": "Heal", "action": "HEAL" },
+            { "text": "Shop", "action": "SHOP" },
+            { "text": "Gym", "action": "GYM" }
+        ]
+        },
+
+        "OLIVINE_CITY": {
+        "area_type": "town",
+        "backgrounds": {
+            "main": "olivine_city.png",
+            "pokecenter": "pokecenter.png",
+            "pokemart": "pokemart.png",
+            "gym": "olivine_gym.png"
+            },
+        "has_gym": true,
+        "gym": {
+            "leader": {
+            "name": "Jasmine", "class": "GYM_LEADER", "sprite": "jasmine.png",
+            "team": [81, 82, 208], "badge_reward": "MINERAL", "rewards": { "balls": 5 },
+            "dialogue": {
+                "intro": ["Welcome to the Olivine City Gym! I'm Jasmine, the Steel-type Gym Leader."],
+                "player_won": ["You're a skilled trainer!"],
+                "player_lost": ["Don't worry, you'll get it next time."]
+
+            }
+        }
+        },
+        "travel_options": [
+            { "text": "Route 39", "target_area": "JOHTO_ROUTE_39" },
+            { "text": "Route 40", "target_area": "JOHTO_ROUTE_40" }
+        ],
+        "explore_options": [
+            { "text": "Heal", "action": "HEAL" },
+            { "text": "Shop", "action": "SHOP" },
+            { "text": "Gym", "action": "GYM" }
+        ]
+        },
+
+        "CIANWOOD_CITY": {
+        "area_type": "town",
+        "backgrounds": {
+            "main": "cianwood_city.png",
+            "pokecenter": "pokecenter.png",
+            "pokemart": "pokemart.png",
+            "gym": "cianwood_gym.png"
+            },
+        "has_gym": true,
+        "gym": {
+            "leader": {
+            "name": "Chuck", "class": "GYM_LEADER", "sprite": "chuck.png",
+            "team": [57, 62], "badge_reward": "STORMBADGE", "rewards": { "balls": 5 },
+            "dialogue": {
+                "intro": ["Welcome to the Cianwood City Gym! I'm Chuck, the Fighting-type Gym Leader."],
+                "player_won": ["You're a skilled trainer!"],
+                "player_lost": ["Don't worry, you'll get it next time."]
+            }
+        }
+        },
+        "travel_options": [
+            { "text": "Route 41", "target_area": "JOHTO_ROUTE_41" }
+        ],
+        "explore_options": [
+            { "text": "Heal", "action": "HEAL" },
+            { "text": "Shop", "action": "SHOP" },
+            { "text": "Gym", "action": "GYM" }
+        ]
+        },
+
+        "MAHOGANY_TOWN": {
+        "area_type": "town",
+        "backgrounds": {
+            "main": "mahogany_town.png",
+            "pokecenter": "pokecenter.png",
+            "pokemart": "pokemart.png",
+            "gym": "mahogany_gym.png"
+            },
+        "has_gym": true,
+        "gym": {
+            "leader": {
+            "name": "Pryce", "class": "GYM_LEADER", "sprite": "pryce.png",
+            "team": [86, 87, 221], "badge_reward": "GLACIER", "rewards": { "balls": 5 },
+            "dialogue": {
+                "intro": ["Welcome to the Mahogany Town Gym! I'm Pryce, the Ice-type Gym Leader."],
+                "player_won": ["You're a skilled trainer!"],
+                "player_lost": ["Don't worry, you'll get it next time."]
+            }
+        }
+        },
+        "travel_options": [
+            { "text": "Route 42", "target_area": "JOHTO_ROUTE_42" },
+            { "text": "Route 43", "target_area": "JOHTO_ROUTE_43" },
+            { "text": "Route 44", "target_area": "JOHTO_ROUTE_44" },
+            { "text": "Rocket HQ", "target_area": "ROCKET_HQ" }
+        ],
+        "explore_options": [
+            { "text": "Heal", "action": "HEAL" },
+            { "text": "Shop", "action": "SHOP" },
+            { "text": "Gym", "action": "GYM" } ]
+        },
+
+        "BLACKTHORN_CITY": {
+        "area_type": "town",
+        "backgrounds": {
+            "main": "blackthorn_city.png",
+            "pokecenter": "pokecenter.png",
+            "pokemart": "pokemart.png",
+            "gym": "blackthorn_gym.png"
+            },
+        "has_gym": true,
+        "gym": {
+            "leader": {
+            "name": "Clair", "class": "GYM_LEADER", "sprite": "clair.png",
+            "team": [148, 148, 230], "badge_reward": "RISING", "rewards": { "balls": 5 },
+            "dialogue": {
+                "intro": ["Welcome to the Blackthorn City Gym! I'm Clair, the Dragon-type Gym Leader."],
+                "player_won": ["You're a skilled trainer!"],
+                "player_lost": ["Don't worry, you'll get it next time."]
+            }
+        }
+        },
+        "travel_options": [
+            { "text": "Route 45", "target_area": "JOHTO_ROUTE_45", "condition": "can_exit", "color": "RED"},
+            { "text": "Ice Path", "target_area": "ICE_PATH", "condition": "can_exit", "color": "RED"},
+            { "text": "Dragon's Den", "target_area": "DRAGONS_DEN", "condition": "can_exit", "color": "RED"}
+        ],
+        "explore_options": [
+            { "text": "Heal", "action": "HEAL" },
+            { "text": "Shop", "action": "SHOP" },
+            { "text": "Gym", "action": "GYM" } ]
+        },
+
+        "MT_SILVER_CITY": {
+        "area_type": "town",
+        "backgrounds": {
+            "main": "silver_entrance.png",
+            "pokecenter": "pokecenter.png",
+            "pokemart": "pokemart.png"
+            },
+        "travel_options": [
+            { "text": "Mt. Silver", "target_area": "MT_SILVER", "condition": "can_exit", "color": "RED"}
+        ],
+        "explore_options": [
+            { "text": "Heal",
+            "action": "HEAL" } ]
+        },
+
+
+        "JOHTO_ROUTE_29": {
+        "area_type": "wild_route",
+        "route_name": "Route 29",
+        "wild_pool_percentages": "JOHTO_EARLY_ROUTE",
+        "min_rounds": 2,
+        "route_menu": [ 
+            { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "BLUE" },
+            { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+            { "text": "LOOK FOR TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+            { "text": "NEW BARK TOWN", "action": "EXIT", "target": "NEW_BARK_TOWN", "condition": "can_exit", "color": "RED" },
+            { "text": "CHERRYGROVE", "action": "EXIT", "target": "CHERRYGROVE_CITY", "condition": "can_exit", "color": "RED" },
+            { "text": "ROUTE 46", "action": "EXIT", "target": "JOHTO_ROUTE_46", "condition": "can_exit", "color": "RED" }
+        ]
+        },
+
+        "JOHTO_ROUTE_30": {
+            "area_type": "wild_route",
+            "route_name": "Route 30",
+            "wild_pool_percentages": "JOHTO_EARLY_ROUTE",
+            "min_rounds": 2,
+            "route_menu": [
+            { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "BLUE" },
+            { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+            { "text": "LOOK FOR TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },                
+                {"text": "CHERRYGROVE CITY", "action": "EXIT", "target_area": "CHERRYGROVE_CITY", "condition": "can_exit", "color": "RED"},
+                {"text": "Route 31","action": "EXIT", "target_area": "JOHTO_ROUTE_31", "condition": "can_exit", "color": "RED"}
+                ],
+            "next_area": "JOHTO_ROUTE_31" 
+        },
+        
+        "JOHTO_ROUTE_31": {
+            "area_type": "wild_route",
+            "route_name": "Route 31",
+            "wild_pool_percentages": "JOHTO_EARLY_ROUTE",
+            "min_rounds": 2,
+            "route_menu": [
+                { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "BLUE" },
+                { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+                { "text": "LOOK FOR TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+                {"text": "Route 30","action": "EXIT", "target_area": "JOHTO_ROUTE_30", "condition": "can_exit", "color": "RED"},
+                {"text": "Dark Cave","action": "EXIT", "target_area": "DARK_CAVE", "condition": "can_exit", "color": "RED"},
+                {"text": "Violet City","action": "EXIT", "target_area": "VIOLET_CITY", "condition": "can_exit", "color": "RED"}
+                ]
+            },
+        
+        "JOHTO_ROUTE_32": {
+            "area_type": "wild_route",
+            "route_name": "Route 32",
+            "wild_pool_percentages": "JOHTO_ROUTE_POOL",
+            "min_rounds": 2,
+            "route_menu": [
+                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "BLUE" },
+                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+                {"text": "LOOK FOR TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+                {"text": "Ruins of Alph","action": "EXIT", "target_area": "JOHTO_ROUTE_33", "condition": "can_exit", "color": "RED"},
+                {"text": "Union Cave","action": "EXIT", "target_area": "UNION_CAVE", "condition": "can_exit", "color": "RED"},
+                {"text": "Violet City","action": "EXIT", "target_area": "VIOLET_CITY", "condition": "can_exit", "color": "RED"}
+                ],
+            "next_area": "UNION_CAVE" 
+        },
+        
+        "JOHTO_ROUTE_33": {
+            "area_type": "wild_route",
+            "route_name": "Route 33",
+            "wild_pool_percentages": "JOHTO_ROUTE_POOL",
+            "min_rounds": 2,
+            "route_menu": [
+                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "BLUE" },
+                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+                {"text": "LOOK FOR TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+                {"text": "Union Cave","action": "EXIT", "target_area": "UNION_CAVE", "condition": "can_exit", "color": "RED"},
+                {"text": "Azalea Town","action": "EXIT", "target_area": "AZALEA_TOWN", "condition": "can_exit", "color": "RED"}
+                ],
+            "next_area": "AZALEA_TOWN" 
+        },
+        
+        "JOHTO_ROUTE_34": {
+            "area_type": "wild_route",
+            "route_name": "Route 34",
+            "wild_pool_percentages": "JOHTO_ROUTE_POOL",
+            "min_rounds": 2,
+            "route_menu": [
+                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "BLUE" },
+                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+                {"text": "LOOK FOR TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+                {"text": "Ilex Forest","action": "EXIT", "target_area": "ILEX_FOREST", "condition": "can_exit", "color": "RED"},
+                {"text": "Goldenrod City","action": "EXIT", "target_area": "GOLDENROD_CITY", "condition": "can_exit", "color": "RED"}
+                ],
+            "next_area": "GOLDENROD_CITY" 
+        },
+        
+        "JOHTO_ROUTE_35": {
+            "area_type": "wild_route",
+            "route_name": "Route 35",
+            "wild_pool_percentages": "JOHTO_ROUTE_POOL",
+            "min_rounds": 2,
+            "route_menu": [
+                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "BLUE" },
+                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+                {"text": "LOOK FOR TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+                {"text": "Route 36","action": "EXIT", "target_area": "JOHTO_ROUTE_36", "condition": "can_exit", "color": "RED"},
+                {"text": "Goldenrod City","action": "EXIT", "target_area": "GOLDENROD_CITY", "condition": "can_exit", "color": "RED"}
+                ],
+            "next_area": "JOHTO_ROUTE_36" 
+        },
+        
+        "JOHTO_ROUTE_36": {
+            "area_type": "wild_route",
+            "route_name": "Route 36", "wild_pool_percentages": "JOHTO_ROUTE_POOL",
+            "min_rounds": 2,
+            "route_menu": [
+                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "BLUE" },
+                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+                {"text": "LOOK FOR TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+                {"text": "Ruins of Alph", "action": "EXIT", "target_area": "RUINS_OF_ALPH", "condition": "can_exit", "color": "RED"},
+                {"text": "Violet City", "action": "EXIT", "target_area": "VIOLET_CITY", "condition": "can_exit", "color": "RED"},
+                {"text": "Route 35", "action": "EXIT", "target_area": "JOHTO_ROUTE_35", "condition": "can_exit", "color": "RED"},
+                {"text": "Route 37", "action": "EXIT", "target_area": "JOHTO_ROUTE_37", "condition": "can_exit", "color": "RED"}
+                ]
+            },
+        
+        "JOHTO_ROUTE_37": {
+            "area_type": "wild_route",
+            "route_name": "Route 37",
+            "wild_pool_percentages": "JOHTO_ROUTE_POOL",
+            "min_rounds": 2,
+            "route_menu": [
+                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "BLUE" },
+                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+                {"text": "LOOK FOR TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+                {"text": "Route 36", "action": "EXIT", "target_area": "JOHTO_ROUTE_36", "condition": "can_exit", "color": "RED"},
+                {"text": "Ecruteak City", "action": "EXIT", "target_area": "ECRUTEAK_CITY", "condition": "can_exit", "color": "RED"}
+                ],
+            "next_area": "ECRUTEAK_CITY" 
+        },
+            
+        "JOHTO_ROUTE_38": {
+            "area_type": "wild_route",
+            "route_name": "Route 38",
+            "wild_pool_percentages": "JOHTO_MID_ROUTE",
+            "min_rounds": 2,
+            "route_menu": [
+                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "BLUE" },
+                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+                {"text": "LOOK FOR TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+                {"text": "Ecruteak City", "action": "EXIT", "target_area": "ECRUTEAK_CITY", "condition": "can_exit", "color": "RED"},
+                {"text": "Route 39", "action": "EXIT", "target_area": "JOHTO_ROUTE_39", "condition": "can_exit", "color": "RED"}
+                ],
+            "next_area": "JOHTO_ROUTE_39" 
+        },
+        
+        "JOHTO_ROUTE_39": {
+            "area_type": "wild_route",
+            "route_name": "Route 39",
+            "wild_pool_percentages": "JOHTO_MID_ROUTE",
+            "min_rounds": 2,
+            "route_menu": [
+                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "BLUE" },
+                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+                {"text": "LOOK FOR TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+                {"text": "Route 38", "action": "EXIT", "target_area": "JOHTO_ROUTE_38", "condition": "can_exit", "color": "RED"},
+                {"text": "Olivine City", "action": "EXIT", "target_area": "OLIVINE_CITY", "condition": "can_exit", "color": "RED"}
+                ],
+            "next_area": "OLIVINE_CITY" 
+        },
+        
+        "JOHTO_ROUTE_40": {
+            "area_type": "wild_route",
+            "route_name": "Route 40",
+            "battle_type": "ocean",
+            "wild_pool_percentages": "JOHTO_OCEAN_POOL",
+            "min_rounds": 2,
+            "route_menu": [
+                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "BLUE" },
+                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+                {"text": "LOOK FOR TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+                {"text": "Olivine City", "action": "EXIT", "target_area": "OLIVINE_CITY", "condition": "can_exit", "color": "RED"},
+                {"text": "Route 41", "action": "EXIT", "target_area": "JOHTO_ROUTE_41", "condition": "can_exit", "color": "RED"}
+                ],
+            "next_area": "JOHTO_ROUTE_41" 
+        },
+        
+        "JOHTO_ROUTE_41": {
+            "area_type": "wild_route",
+            "route_name": "Route 41",
+            "battle_type": "ocean",
+            "wild_pool_percentages": "JOHTO_OCEAN_POOL",
+            "min_rounds": 2,
+            "route_menu": [
+                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "BLUE" },
+                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+                {"text": "LOOK FOR TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+                {"text": "Route 40", "action": "EXIT", "target_area": "JOHTO_ROUTE_40", "condition": "can_exit", "color": "RED"},
+                {"text": "Whirl Islands", "action": "EXIT", "target_area": "WHIRL_ISLANDS", "condition": "can_exit", "color": "RED"},
+                {"text": "Cianwood City", "action": "EXIT", "target_area": "CIANWOOD_CITY", "condition": "can_exit", "color": "RED"}
+                ],
+            "next_area": "CIANWOOD_CITY"
+     },
+        
+        "JOHTO_ROUTE_42": {
+            "area_type": "wild_route",
+            "route_name": "Route 42",
+            "wild_pool_percentages": "JOHTO_MID_ROUTE",
+            "min_rounds": 2,
+            "route_menu": [
+                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "BLUE" },
+                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+                {"text": "LOOK FOR TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+                {"text": "Ecruteak City", "action": "EXIT", "target_area": "ECRUTEAK_CITY", "condition": "can_exit", "color": "RED"},
+                {"text": "Mt Mortar", "action": "EXIT", "target_area": "MT_MORTAR", "condition": "can_exit", "color": "RED"},
+                {"text": "Mahogany Town", "action": "EXIT", "target_area": "MAHOGANY_TOWN", "condition": "can_exit", "color": "RED"}
+                ] 
+        },
+        
+        "JOHTO_ROUTE_43": {
+            "area_type": "wild_route",
+            "route_name": "Route 43",
+            "wild_pool_percentages": "JOHTO_MID_ROUTE",
+            "min_rounds": 2,
+            "route_menu": [
+                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "BLUE" },
+                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+                {"text": "LOOK FOR TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+                {"text": "Mahogany Town", "action": "EXIT", "target_area": "MAHOGANY_TOWN", "condition": "can_exit", "color": "RED"},
+                {"text": "Lake of Rage", "action": "EXIT", "target_area": "LAKE_OF_RAGE", "condition": "can_exit", "color": "RED"}
+                ],
+            "next_area": "JOHTO_ROUTE_44" 
+        },
+        
+        "LAKE_OF_RAGE": {
+            "area_type": "wild_route",
+            "route_name": "Lake of Rage",
+            "wild_pool_percentages": "JOHTO_LAKE_POOL",
+            "min_rounds": 2,
+            "route_menu": [
+                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "BLUE" },
+                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+                {"text": "LOOK FOR TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+                {"text": "BATTLE GYARADOS", "action": "BATTLE", "condition": "can_battle_red_gyarados", "color": "RED"},
+                {"text": "ROUTE 43", "action": "EXIT", "target_area": "JOHTO_ROUTE_43", "condition": "can_exit", "color": "RED"},
+                {"text": "MAHOGNAY TOWN", "action": "EXIT", "target_area": "MAHOGANY_TOWN", "condition": "can_exit", "color": "RED"}
+                ],
+            "next_area": "MAHOGANY_TOWN" 
+        },
+
+        "JOHTO_ROUTE_44": {
+            "area_type": "wild_route",
+            "route_name": "Route 44",
+            "wild_pool_percentages": "JOHTO_MID_ROUTE",
+            "min_rounds": 2,
+            "route_menu": [
+                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "BLUE" },
+                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+                {"text": "LOOK FOR TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+                {"text": "MAHOGNAY TOWN", "action": "EXIT", "target_area": "MAHOGANY_TOWN", "condition": "can_exit", "color": "RED"},
+                {"text": "Ice Path","action": "EXIT", "target_area": "ICE_PATH", "condition": "can_exit", "color": "RED"}
+            ] 
+        },
+        
+        "JOHTO_ROUTE_45": {
+            "area_type": "wild_route",
+            "route_name": "Route 45",
+            "wild_pool_percentages": "JOHTO_MOUNTAIN_POOL", 
+            "min_rounds": 2,
+            "route_menu": [
+                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "BLUE" },
+                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+                {"text": "LOOK FOR TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+                {"text": "Blackthorn City", "action": "EXIT", "target_area": "BLACKTHORN_CITY", "condition": "can_exit", "color": "RED"},
+                {"text": "Route 46", "action": "EXIT", "target_area": "JOHTO_ROUTE_46", "condition": "can_exit", "color": "RED"}
+                ],
+            "next_area": "JOHTO_ROUTE_46" 
+        },
+        
+        "JOHTO_ROUTE_46": { "area_type": "wild_route",
+            "route_name": "Route 46",
+            "wild_pool_percentages": "JOHTO_MOUNTAIN_POOL",
+            "min_rounds": 2,
+            "route_menu": [
+                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "BLUE" },
+                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+                {"text": "LOOK FOR TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+                {"text": "Dark Cave", "action": "EXIT", "target_area": "DARK_CAVE", "condition": "can_exit", "color": "RED"},
+                {"text": "ROUTE 29", "action": "EXIT", "target_area": "JOHTO_ROUTE_29", "condition": "can_exit", "color": "RED"}
+            ],
+            "next_area": "NEW_BARK_TOWN" 
+        },
+
+        "UNION_CAVE": {
+            "area_type": "dungeon",
+            "battle_type": "cave",
+            "wild_pool_percentages": "JOHTO_CAVE_POOL",
+            "min_rounds": 1,
+            "route_menu": [
+                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "BLUE" },
+                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+                {"text": "LOOK FOR TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+                {"text": "Route 32", "action": "EXIT", "target_area": "JOHTO_ROUTE_32", "condition": "can_exit", "color": "RED"},
+                {"text": "Route 33", "action": "EXIT", "target_area": "JOHTO_ROUTE_33", "condition": "can_exit", "color": "RED"}
+            ]
+        },
+        
+        "DARK_CAVE": {
+            "area_type": "dungeon",
+            "battle_type": "cave",
+            "wild_pool_percentages": "JOHTO_CAVE_POOL",
+            "min_rounds": 1,
+            "route_menu":[
+                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "BLUE" },
+                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+                {"text": "LOOK FOR TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+                {"text": "Route 31", "action": "EXIT", "target_area": "JOHTO_ROUTE_31", "condition": "can_exit", "color": "RED"},
+                {"text": "Route 45", "action": "EXIT", "target_area": "JOHTO_ROUTE_45", "condition": "can_exit", "color": "RED"}
+            ]
+        },
+        
+        "SLOWPOKE_WELL": {
+            "area_type": "dungeon",
+            "battle_type": "cave",
+            "wild_pool_percentages": "JOHTO_CAVE_POOL",
+            "min_rounds": 1,
+            "route_menu": [
+                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "BLUE" },
+                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+                {"text": "LOOK FOR TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+                {"text": "Azalea Town", "action": "EXIT", "target_area": "AZALEA_TOWN", "condition": "can_exit", "color": "RED"}
+            ],
+            "next_area": "AZALEA_TOWN"
+        },
+        
+        "ILEX_FOREST": { 
+            "area_type": "dungeon",
+            "battle_type": "forest",
+            "wild_pool_percentages": "JOHTO_FOREST_POOL",
+            "min_rounds": 2,
+            "area_boss": { "id": 251, "name": "Celebi" },
+            "route_menu": [
+                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "BLUE" },
+                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+                {"text": "LOOK FOR TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+                { "text": "CHALLENGE CELEBI", "action": "BOSS", "condition": "has_8_badges", "color": "GOLD" },
+                { "text": "ROUTE 34", "action": "EXIT", "target": "JOHTO_ROUTE_34", "condition": "can_exit", "color": "RED" },
+                { "text": "Azalea Town", "action": "EXIT", "target": "AZALEA_TOWN", "condition": "can_exit", "color": "RED" }
+            ]
+        },
+        
+        "SPROUT_TOWER": {
+            "area_type": "dungeon",
+            "battle_type": "indoor",
+            "wild_pool_percentages": "JOHTO_TOWER_POOL",
+            "min_rounds": 2,
+            "route_menu": [
+                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "BLUE" },
+                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+                {"text": "LOOK FOR TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+                { "text": "EXIT TOWER", "action": "EXIT", "target": "NEW_BARK_TOWN", "condition": "can_exit", "color": "RED" }
+            ],
+            "next_area": "VIOLET_CITY"
+        },
+        
+        "BURNED_TOWER": { 
+            "area_type": "dungeon",
+            "battle_type": "indoor",
+            "wild_pool_percentages": "JOHTO_TOWER_POOL",
+            "min_rounds": 2,
+            "area_boss": { "id": 245, "name": "Suicune" },
+            "route_menu": [
+                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "BLUE" },
+                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+                {"text": "LOOK FOR TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+                { "text": "CHALLENGE SUICUNE", "action": "BOSS", "condition": "has_clear_bell", "color": "CYAN" },
+                { "text": "EXIT TOWER", "action": "EXIT", "target": "ECRUTEAK_CITY", "condition": "can_exit", "color": "RED" }
+            ]
+        },
+        
+        "BELL_TOWER": {
+            "area_type": "dungeon",
+            "battle_type": "indoor",
+            "wild_pool_percentages": "JOHTO_TOWER_POOL",
+            "min_rounds": 2,
+            "area_boss": { 
+                "id": 250, "name": "Ho-Oh" 
+            },
+            "route_menu": [
+                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "BLUE" },
+                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+                {"text": "LOOK FOR TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+                { "text": "CHALLENGE HO-OH", "action": "BOSS", "condition": "has_rainbow_wing", "color": "GOLD" },
+                { "text": "EXIT TOWER", "action": "EXIT", "target": "ECRUTEAK_CITY", "condition": "can_exit", "color": "RED" }
+            ]
+        },
+        
+        "MT_MORTAR": {
+            "area_type": "dungeon",
+            "battle_type": "cave",
+            "wild_pool_percentages": "JOHTO_CAVE_POOL",
+            "min_rounds": 2,
+            "on_enter_event": {
+                "type": "trainer_battle",
+                "trainer": 
+                {"name": "Karate King Kiyo", "class": "BLACKBELT", "sprite": "blackbelt.png",
+                "team": [106, 107], "rewards": { "TYROGUE": 1 }
+                },
+                "condition": "no_trainers" 
+            },
+            "route_menu": [
+                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "BLUE" },
+                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+                {"text": "LOOK FOR TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+                {"text": "EXIT MOUNTAIN", "action": "EXIT", "target_area": "JOHTO_ROUTE_42", "condition": "can_exit", "color": "RED"}
+            ],
+            "next_area": "JOHTO_ROUTE_42"
+        },
+        
+        "ICE_PATH": { 
+            "area_type": "dungeon",
+            "battle_type": "cave",
+            "wild_pool_percentages": "JOHTO_ICE_POOL",
+            "min_rounds": 2,
+            "route_menu": [
+                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "BLUE" },
+                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+                {"text": "LOOK FOR TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+                {"text": "ROUTE 44", "action": "EXIT", "target_area": "JOHTO_ROUTE_44", "condition": "can_exit", "color": "RED"},
+                {"text": "BLACKTHORN_CITY", "action": "EXIT", "target_area": "BLACKTHORN_CITY", "condition": "can_exit", "color": "RED"}
+            ],
+            "next_area": "BLACKTHORN_CITY"
+        },
+        
+        "WHIRL_ISLANDS": {
+            "area_type": "dungeon",
+            "battle_type": "cave",
+            "wild_pool_percentages": "JOHTO_OCEAN_POOL",
+            "min_rounds": 4,
+            "area_boss": {
+                "id": 249, "name": "Lugia"
+            },
+            "route_menu": [
+                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "BLUE" },
+                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+                {"text": "LOOK FOR TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+                { "text": "CHALLENGE LUGIA", "action": "BOSS", "condition": "boss_available", "color": "BLUE" },
+                { "text": "EXIT", "action": "EXIT", "target": "JOHTO_ROUTE_41", "condition": "can_exit", "color": "RED" }
+            ]
+        },
+        
+        "ROCKET_HQ": {
+            "area_type": "dungeon",
+            "battle_type": "indoor",
+            "wild_pool_percentages": "TEAM_ROCKET_POOL",
+            "min_rounds": 2,
+            "next_area": "MAHOGANY_TOWN",
+            "route_menu": [
+                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "BLUE" },
+                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+                {"text": "LOOK FOR TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+                { "text": "CHALLENGE BOSS", "action": "TRAINER_BATTLE", 
+                "trainer": { "name": "Giovanni", "class": "TEAM_LEADER", "sprite": "giovanni.png",
+                "team": [95, 122, 128, 149, 150, 151], "rewards": { "MASTER_BALL": 1 } }, "condition": "boss_available", "color": "GOLD" },
+                { "text": "ROUTE 44", "action": "EXIT", "target": "JOHTO_ROUTE_44", "condition": "can_exit", "color": "RED" }
+                ,
+                { "text": "MAHOGANY TOWN", "action": "EXIT", "target": "MAHOGANY_TOWN", "condition": "can_exit", "color": "RED" }
+            ]
+        },
+        "GOLDENROD_UNDERGROUND": {
+            "area_type": "dungeon",
+            "battle_type": "indoor",
+            "min_rounds": 1,
+            "route_menu": [
+                {"text": "LOOK FOR TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+                {"text": "GOLDENROD CITY", "action": "EXIT", "target_area": "GOLDENROD_CITY", "condition": "can_exit", "color": "RED"}
+            ],
+            "next_area": "GOLDENROD_CITY"
+        },
+        
+        "DRAGONS_DEN": {
+            "area_type": "dungeon",
+            "battle_type": "cave",
+            "wild_pool_percentages": "JOHTO_DRAGON_POOL",
+            "min_rounds": 1,
+            "trainer_pool": [
+                {"name": "Dragon Tamer", "class": "DRAGONTAMER", "sprite": "cooltrainer_m.png",
+                "team": [147, 148], "rewards": { "DRATINI": 1 } }
+            ],
+            "route_menu": [
+                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "BLUE" },
+                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+                {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+                {"text": "BLACKTHORN CITY", "action": "EXIT", "target_area": "BLACKTHORN_CITY", "condition": "can_exit", "color": "RED"}
+            ],
+            "next_area": "BLACKTHORN_CITY"
+        },
+        
+        "RUINS_OF_ALPH": {
+            "area_type": "dungeon",
+            "battle_type": "cave",
+            "wild_pool_percentages": "JOHTO_RUINS_POOL",
+            "min_rounds": 1,
+            "route_menu": [
+                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "BLUE" },
+                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+                {"text": "LOOK FOR TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+                {"text": "ROUTE 32", "action": "EXIT", "target_area": "JOHTO_ROUTE_32", "condition": "can_exit", "color": "RED"},
+                {"text": "ROUTE 36", "action": "EXIT", "target_area": "JOHTO_ROUTE_36", "condition": "can_exit", "color": "RED"},
+                {"text": "Violet City", "action": "EXIT", "target_area": "VIOLET_CITY", "condition": "can_exit", "color": "RED"}
+            ],
+            "next_area": "JOHTO_ROUTE_36" },
+        
+        "MT_SILVER": {
+            "area_type": "dungeon",
+            "battle_type": "mountain",
+            "wild_pool_percentages": "JOHTO_MOUNTAIN_POOL",
+            "min_rounds": 3,
+            "area_boss": { "id": 248, "name": "Tyranitar" },
+            "on_enter_event": {
+                "type": "trainer_battle",
+                "trainer": { "name": "Silver",
+                "class": "PKMN_TRAINER", "sprite": "silver.png",
+                "team": [248, 160, 212, 94, 65, 18], "rewards": { "MASTER_BALL": 1 } }
+            },
+            "route_menu": [
+                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "BLUE" },
+                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+                { "text": "CHALLENGE SILVER", "action": "TRAINER_BATTLE", 
+                "trainer": { "name": "Silver",
+                "class": "PKMN_TRAINER", "sprite": "silver.png",
+                "team": [248, 160, 212, 94, 65, 18], "rewards": { "MASTER_BALL": 1 } }, 
+                "condition": "boss_available", "color": "GOLD" },
+                {"text": "EXIT MOUNTAIN", "action": "EXIT", "target_area": "JOHTO_ROUTE_29", "condition": "can_exit", "color": "RED"}
+            ],
+            "next_area": "MT_SILVER_CITY"
+        },
+    
+
+    "JOHTO_EARLY_ROUTE": { "161": 40, "163": 30, "19": 20, "165": 10 },
+    "JOHTO_MID_ROUTE": { "179": 30, "180": 20, "241": 20, "128": 10 },
+    "JOHTO_ROUTE_POOL": { "179": 20, "194": 20, "39": 20, "69": 20 },
+    "JOHTO_OCEAN_POOL": { "72": 60, "118": 30, "223": 10 },
+    "JOHTO_CAVE_POOL": { "41": 50, "74": 30, "206": 20 },
+    "JOHTO_MOUNTAIN_POOL": { "246": 30, "216": 30, "207": 20, "227": 20 },
+    "JOHTO_ICE_POOL": { "220": 40, "225": 40, "124": 20 },
+    "JOHTO_FOREST_POOL": { "10": 20, "13": 20, "167": 20, "193": 20 },
+    "JOHTO_TOWER_POOL": { "92": 80, "200": 20 },
+    "JOHTO_URBAN_POOL": { "88": 40, "109": 40, "209": 20 },
+    "JOHTO_DRAGON_POOL": { "147": 50, "148": 30, "230": 20 },
+    "JOHTO_RUINS_POOL": { "201": 100 }
+    }
+}
