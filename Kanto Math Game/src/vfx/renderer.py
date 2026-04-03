@@ -81,13 +81,17 @@ class BattleRenderer:
             # --- BOSS VISUALS (RPG BATTLE) ---
             if opponent_pokemon.id in self.game.loader.all_boss_ids:
                 # Bobbing Animation
-                hover_y = math.sin(pygame.time.get_ticks() * opponent_pokemon.bob_speed + opponent_pokemon.bob_offset) * opponent_pokemon.bob_amount
+                bob_spd = opponent_pokemon.bob_speed
+                bob_off = opponent_pokemon.bob_offset
+                hover_y = math.sin(pygame.time.get_ticks() * bob_spd + bob_off) * opponent_pokemon.bob_amount
                 opp_offset_y += hover_y
                 
                 # 25% Larger
                 w_orig = draw_img.get_width()
                 h_orig = draw_img.get_height()
-                draw_img = pygame.transform.scale(draw_img, (int(w_orig * 1.25), int(h_orig * 1.25)))
+                draw_img = pygame.transform.scale(
+                    draw_img, (int(w_orig * 1.25), int(h_orig * 1.25))
+                )
             # ---------------------------------
 
             opp_rect = draw_img.get_rect(
@@ -99,8 +103,9 @@ class BattleRenderer:
             screen.blit(draw_img, opp_rect)
 
         # === PLAYER SPRITE ===
-        if fainting_side not in ["player", "player_switch"] and player_pokemon.current_hp > 0:
-            p_img = player_pokemon.back_image if player_pokemon.back_image else player_pokemon.image
+        p_alive = player_pokemon.current_hp > 0
+        if fainting_side not in ["player", "player_switch"] and p_alive:
+            p_img = player_pokemon.back_image or player_pokemon.image
 
             player_rect = p_img.get_rect(
                 center=(
@@ -111,9 +116,9 @@ class BattleRenderer:
             screen.blit(p_img, player_rect)
 
         if is_trainer_battle and trainer_img:
-            t_rect = trainer_img.get_rect(
-                center=(w * 0.78 + shake_offset_x + trainer_x_offset, h * 0.26 + shake_offset_y)
-            )
+            tx = w * 0.78 + shake_offset_x + trainer_x_offset
+            ty = h * 0.26 + shake_offset_y
+            t_rect = trainer_img.get_rect(center=(tx, ty))
             screen.blit(trainer_img, t_rect)
 
         # ====================== OPPONENT PANEL ======================
@@ -173,9 +178,10 @@ class BattleRenderer:
         )
 
         # ====================== PLAYER PANEL ======================
+        hud_y_base = h - int(h * 0.25)
         p_panel = pygame.Rect(
             w - panel_w - 10 + shake_offset_x,
-            h - int(h * 0.25) - panel_h - 10 + shake_offset_y,
+            hud_y_base - panel_h - 10 + shake_offset_y,
             panel_w,
             panel_h,
         )
@@ -223,7 +229,8 @@ class BattleRenderer:
         xp_bar_w = bar_w
 
         # Draw XP Background
-        pygame.draw.rect(screen, (50, 50, 50), (bar_x - 3, xp_bar_y, xp_bar_w + 6, xp_bar_h), border_radius=3)
+        xp_bg_rect = (bar_x - 3, xp_bar_y, xp_bar_w + 6, xp_bar_h)
+        pygame.draw.rect(screen, (50, 50, 50), xp_bg_rect, border_radius=3)
 
         # Calculate XP Width
         # Battle-based evolution progress
@@ -232,12 +239,17 @@ class BattleRenderer:
         if player_pokemon.effective_stage >= 3:
             xp_ratio = 1.0
         else:
-            # New logic: Each 10 wins = 1 stage. Modulo 10 for bar progress.
-            wins_in_stage = current_xp % 10
-            xp_ratio = wins_in_stage / 10.0
+            if current_xp >= 15:
+                xp_ratio = 1.0
+            else:
+                xp_ratio = current_xp / 15.0
         
         if xp_ratio > 0:
-            pygame.draw.rect(screen, (0, 200, 255), (bar_x, xp_bar_y + 1, int(xp_bar_w * xp_ratio), xp_bar_h - 2), border_radius=2)
+            xp_fill_rect = (
+                bar_x, xp_bar_y + 1, 
+                int(xp_bar_w * xp_ratio), xp_bar_h - 2
+            )
+            pygame.draw.rect(screen, (0, 200, 255), xp_fill_rect, border_radius=2)
         
         # XP Label (Tiny)
         # Utils.draw_text_outline(screen, "EXP", self.font_tiny, (0, 200, 255), bar_x - 20, xp_bar_y - 2, outline_color=BLACK, thickness=2)

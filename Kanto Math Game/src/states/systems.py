@@ -1,29 +1,112 @@
 # [REF-0001: System Imports]
 import pygame
-import random
-import io
 import os
-import math
-import threading
-import queue
-import json
 import sys
-from abc import ABC, abstractmethod
-import base64
-from dataclasses import dataclass
 from src.states.base import GameState
 from src.ui.widgets import Button
 from src.ui.panels import PartySlotUI
 from src.ui.dialogue import ClassicDialogueBox
-from src.ui.manager import UIManager
 from src.utils import Utils
-from src.config import WHITE, BLACK, GREEN, BLUE, RED, GOLD, GRAY, LIGHT_GRAY, GB_PANEL, GB_BORDER, GB_TEXT, VOLUME, DARK_RED
+from src.config import WHITE, BLACK, GREEN, BLUE, RED, GOLD, GRAY, LIGHT_GRAY, VOLUME, DARK_RED
 from src.pokemon.data import Pokemon
+import random
+
+
+# [REF-0060: Journal System]
+class JournalState(GameState):
+    def __init__(self, game, previous_state):
+        super().__init__(game)
+        self.previous_state = previous_state
+        # Fetch all entries (Active and Completed)
+        self.missions = game.story_manager.get_all_journal_entries()
+        # [FIX] Sort ACTIVE missions to the top (status 'ACTIVE' before 'COMPLETED')
+        self.missions.sort(key=lambda x: 0 if x["status"] == "ACTIVE" else 1)
+
+        self.btn_back = Button(
+            (30, 30, 140, 70), "BACK", game.assets.fonts["small"],
+            self.go_back, bg_color=RED
+        )
+
+    def go_back(self):
+        from src.states.overworld import PlayState
+        if isinstance(self.previous_state, PlayState):
+            self.previous_state.is_resuming = True
+        self.game.change_state(self.previous_state)
+
+    def start(self):
+        self.game.ui_manager.add_element(self.btn_back)
+        # Mark all current missions as notified/read
+        for m in self.missions:
+            if m["id"] not in self.game.story_manager.notified_missions:
+                self.game.story_manager.notified_missions.append(m["id"])
+
+    def handle_events(self, events):
+        pass
+
+    def update(self):
+        pass
+
+    def draw(self):
+        screen = self.game.screen
+        screen.fill((20, 20, 30))
+
+        # Header
+        Utils.draw_text_outline(screen, "ADVENTURE JOURNAL", self.game.assets.fonts["med"], GOLD, self.game.width//2, 60)
+
+        if not self.missions:
+            Utils.draw_text_outline(screen, "No active missions. Explore Kanto!", self.game.assets.fonts["s_med"], WHITE, self.game.width//2, self.game.height//2)
+            self.game.ui_manager.draw(screen)
+            return
+
+        # Mission Cards
+        start_y = 150
+        card_w = self.game.width - 200
+        card_h = 180
+        spacing = 20
+
+        for i, m in enumerate(self.missions[:3]):
+            rect = pygame.Rect(100, start_y + i * (card_h + spacing), card_w, card_h)
+
+            # Background Panel
+            bg_col = (40, 45, 70) if m["status"] == "ACTIVE" else (25, 25, 35)
+            pygame.draw.rect(screen, bg_col, rect, border_radius=15)
+            pygame.draw.rect(screen, WHITE, rect, 3, border_radius=15)
+
+            # Title
+            type_lbl = "[STORY]" if m["type"] == "MAIN" else "[SIDE]"
+            Utils.draw_text_outline(
+                screen, 
+                f"{type_lbl} {m['text']}", 
+                self.game.assets.fonts["s_med"], 
+                GOLD, 
+                rect.x + 20, 
+                rect.y + 40, 
+                align="left")
+            
+            # Status and Reward
+            stat_col = GREEN if m["status"] == "COMPLETED" else GOLD
+            Utils.draw_text_outline(screen, f"STATUS: {m['status']}", self.game.assets.fonts["tiny"], stat_col, rect.right - 20, rect.y + 40, align="right")
+            reward = m.get("reward", "None")
+            Utils.draw_text_outline(screen, f"REWARD: {reward}", self.game.assets.fonts["tiny"], (0, 200, 255), rect.right - 20, rect.bottom - 30, align="right")
+
+            # [UPDATE] Only display description for ACTIVE missions. 
+            # Completed missions only show the header and the reward.
+            if m["status"] == "ACTIVE":
+                desc_font = self.game.assets.fonts["tiny"]
+                Utils.draw_multiline_text(
+                    screen, m["desc"], desc_font, WHITE,
+                    rect.x + 20, rect.y + 80,
+                    max_width=card_w - 40, line_height=30,
+                    center=False,
+                    align="left"
+                )
+
+        self.game.ui_manager.draw(screen)
 
 
 # [REF-0020: Party Menu System]
 class PokemonPartyMenuState(GameState):
-    
+
     def __init__(self, game, previous_state, context="normal", on_select=None, on_cancel=None):
         super().__init__(game)
         self.previous_state = previous_state
@@ -90,7 +173,7 @@ class PokemonPartyMenuState(GameState):
             rect=(0, 0, 150, 50), text="SUMMARY", font=self.game.assets.fonts["s_med"],
             callback=self._show_summary, bg_color=BLUE, visible=False
         )
-        
+
         self.popup_buttons = [self.btn_switch, self.btn_summary]
         for btn in self.popup_buttons:
             self.game.ui_manager.add_element(btn)
@@ -112,23 +195,15 @@ class PokemonPartyMenuState(GameState):
             else:
                 # Clicked same slot, cancel swap
                 pass
-            
+
             self.move_swap_index = None
             self.message = "Choose a PKMN."
             return
 
         # Standard Logic
-        if self.context == "battle_switch" and self.previous_state.player_pokemon is team[index]:
-            self.game.show_dialogue([f"{team[index].display_name.upper()} is already in battle!"])
-            return
-        
-        if self.context == "use_item":
+        if self.context == "use_item": # Handle item usage separately
             if self.on_select:
                 self.on_select(index)
-            return
-
-        if self.context == "battle_switch" and team[index].current_hp <= 0:
-            self.game.show_dialogue([f"{team[index].display_name.upper()} has no energy left!"])
             return
 
         self.selected_slot_index = index
@@ -136,19 +211,19 @@ class PokemonPartyMenuState(GameState):
         if self.context in ["battle_switch", "normal"]:
             self.popup_active = True
             clicked_slot_rect = self.slots[index].rect
-            
+
             popup_w = 150
-            
+
             # Left Column (indices 0, 2, 4) -> Popup on Right
             # Right Column (indices 1, 3, 5) -> Popup on Left
             if index % 2 == 0:
                 base_x = clicked_slot_rect.right + 10
             else:
                 base_x = clicked_slot_rect.left - popup_w - 10
-            
+
             self.btn_switch.rect.topleft = (base_x, clicked_slot_rect.centery - 55)
             self.btn_summary.rect.topleft = (base_x, clicked_slot_rect.centery + 5)
-            
+
             self.btn_switch.set_visibility(True)
             self.btn_summary.set_visibility(True)
         elif self.on_select:
@@ -156,9 +231,27 @@ class PokemonPartyMenuState(GameState):
         else:
             pkmn = team[index]
             self.game.show_dialogue([f"Selected {pkmn.display_name.upper()}!"], self._return)
-            
+
     def _confirm_switch(self):
         idx = self.selected_slot_index
+        team = getattr(self.game.story_manager, "player_team", [])
+
+        if self.context == "battle_switch":
+            if idx < len(team) and team[idx].current_hp <= 0:
+                self._hide_popup()
+                msg = f"{team[idx].display_name.upper()} has no energy left!"
+                self.dialogue_box.reset([msg])
+                self.dialogue_box.callback = self._dismiss_dialogue
+                self.dialogue_box.visible = True
+                return
+
+            if idx < len(team) and team[idx] is self.previous_state.player_pokemon:
+                self._hide_popup()
+                self.dialogue_box.reset([f"{team[idx].display_name.upper()} is already in battle!"])
+                self.dialogue_box.callback = self._dismiss_dialogue
+                self.dialogue_box.visible = True
+                return
+
         self._hide_popup()
         if self.context == "normal":
             # Start Move Mode
@@ -212,7 +305,7 @@ class PokemonPartyMenuState(GameState):
                     for slot in self.slots:
                         if slot.rect.collidepoint(event.pos):
                             is_outside = False
-                    
+
                     if is_outside:
                         self._hide_popup()
 
@@ -222,14 +315,19 @@ class PokemonPartyMenuState(GameState):
 
     def draw(self):
         self.game.screen.fill((15, 35, 85))
-        
+
         if not self.dialogue_box.visible:
             Utils.draw_classic_panel(self.game.screen, self.bottom_rect.x, self.bottom_rect.y, self.bottom_rect.width, self.bottom_rect.height)
-            
-            Utils.draw_text_outline(
+
+            # Center the message in the left 55% of the panel, leaving room for buttons on the right
+            left_rect_w = int(self.bottom_rect.width * 0.55)
+            Utils.draw_multiline_text(
                 self.game.screen, self.message,
                 self.game.assets.fonts["med"], WHITE,
-                self.game.width // 2 - 100, self.bottom_rect.centery, outline_color=BLACK
+                self.bottom_rect.x + left_rect_w // 2, 
+                self.bottom_rect.centery,
+                max_width=left_rect_w - 40,
+                outline_color=BLACK
             )
 
         if self.popup_active:
@@ -239,14 +337,254 @@ class PokemonPartyMenuState(GameState):
             popup_rect.topleft = (self.btn_switch.rect.left - 10, self.btn_switch.rect.top - 10)
             pygame.draw.rect(self.game.screen, (20, 40, 90), popup_rect, border_radius=10)
             pygame.draw.rect(self.game.screen, WHITE, popup_rect, 3, border_radius=10)
-        
+
         # Highlight swapping source
         if self.move_swap_index is not None and self.move_swap_index < len(self.slots):
             slot = self.slots[self.move_swap_index]
             pygame.draw.rect(self.game.screen, GOLD, slot.rect, 4, border_radius=14)
-            
+    
         self.game.ui_manager.draw(self.game.screen)
 
+# [REF-0034: PokeMart System]
+class PokeMartState(GameState):
+    def __init__(self, game, previous_state):
+        super().__init__(game)
+        self.previous_state = previous_state
+        self.phase = "SHOP"
+        self.shop_buttons = []
+        self.current_page = 0
+        self.items_per_page = 8  # 4 columns x 2 rows fit comfortably
+        self.pending_item = None
+        self.pending_cost = 0
+
+        self.bottom_rect = Utils.get_full_dialogue_rect(game)
+
+        # Move Exit button to HUD area (Top Left) to clear space in the panel
+        self.btn_back = Button((20, 20, 100, 50), "EXIT", game.assets.fonts["tiny"], self.exit_shop, bg_color=RED)
+
+        # Arrows for panel scrolling
+        self.btn_prev = Button((self.bottom_rect.left + 10, self.bottom_rect.centery - 25, 50, 50), "<", game.assets.fonts["med"], self.prev_page, visible=False)
+        self.btn_next = Button((self.bottom_rect.right - 60, self.bottom_rect.centery - 25, 50, 50), ">", game.assets.fonts["med"], self.next_page, visible=False)
+
+        # Confirmation Buttons (Shopping Cart)
+        cx, cy = game.width // 2, game.height // 2
+        self.btn_yes = Button((cx - 150, cy + 50, 120, 60), "BUY", game.assets.fonts["small"], self.confirm_purchase, bg_color=GREEN, autosize=False, visible=False)
+        self.btn_no = Button((cx + 30, cy + 50, 120, 60), "CANCEL", game.assets.fonts["small"], self.cancel_purchase, bg_color=RED, autosize=False, visible=False)
+
+        self.dialogue_box = ClassicDialogueBox(self.bottom_rect, [], game.assets.fonts["med"], visible=False)
+
+        self.bg = self._load_building_bg(game, "mart")
+
+        area_key = game.story_manager.current_area_key
+        flag = f"visited_mart_{area_key}"
+
+        if not game.story_manager.story_flags.get(flag, False):
+            msg = ["Welcome to the Poké Mart!", "We are currently stocking shelves.", "Here, take these 10 Poké Balls!"]
+            game.story_manager.balls_left += 10
+            game.story_manager.story_flags[flag] = True
+            self.dialogue_box.reset(msg)
+            self.dialogue_box.callback = self.on_welcome_dialogue_end
+            self.phase = "DIALOGUE"
+
+    def prev_page(self):
+        if self.current_page > 0:
+            self.current_page -= 1
+            self.refresh_buttons()
+
+    def next_page(self):
+        all_items = ["POKE_BALLS"] + sorted(list(self.game.loader.evolution_map.get("EVOLUTION_ITEMS", {}).keys()))
+        if (self.current_page + 1) * self.items_per_page < len(all_items):
+            self.current_page += 1
+            self.refresh_buttons()
+
+    def refresh_buttons(self):
+        self.game.ui_manager.elements.clear()
+        self.game.ui_manager.add_element(self.btn_back)
+        self.game.ui_manager.add_element(self.btn_prev)
+        self.game.ui_manager.add_element(self.btn_next)
+        self.game.ui_manager.add_element(self.btn_yes)
+        self.game.ui_manager.add_element(self.btn_no)
+        self.game.ui_manager.add_element(self.dialogue_box)
+
+        self.shop_buttons = []
+
+        # Construct Item List: Pokeballs + Evo Items
+        evo_items = sorted(
+            list(self.game.loader.evolution_map.get("EVOLUTION_ITEMS", {}).keys())
+        )
+        all_items = ["POKE_BALLS", "RARE_CANDY"] + evo_items
+
+        self.btn_prev.set_visibility(self.current_page > 0)
+        self.btn_next.set_visibility((self.current_page + 1) * self.items_per_page < len(all_items))
+
+        start_idx = self.current_page * self.items_per_page
+        page_items = all_items[start_idx : start_idx + self.items_per_page]
+
+        # Grid Layout within Bottom Panel
+        cols = 4
+        rows = 2
+
+        # Define grid area inside the panel, respecting arrow buttons
+        grid_x = self.bottom_rect.left + 70
+        grid_y = self.bottom_rect.top + 20
+        grid_w = self.bottom_rect.width - 140
+        grid_h = self.bottom_rect.height - 40
+
+        cell_w = grid_w // cols
+        cell_h = grid_h // rows
+        btn_w = cell_w - 10
+        btn_h = cell_h - 10
+
+        for i, item in enumerate(page_items):
+            row = i // cols
+            col = i % cols
+            x = grid_x + col * cell_w + 5
+            y = grid_y + row * cell_h + 5
+            
+            if item == "POKE_BALLS":
+                name = "5 Poké Balls"
+                price = 1000
+                icon = self.game.assets.ui_ball
+            elif item == "RARE_CANDY":
+                name = "Rare Candy"
+                price = 10000
+                icon = self.game.assets.get_item_image("RARE_CANDY")
+
+            else:
+                # Shorten long names for grid
+                name = item.replace("_", " ").title().replace(" Fossil", "")
+                price = 999999 if item == "UPGRADE" else 10000
+                icon = self.game.assets.get_item_image(item)
+                if icon:
+                    icon = pygame.transform.scale(icon, (32, 32))
+            
+            btn = Button(
+                rect=(x, y, btn_w, btn_h),
+                text=f"{name} ${price}",
+                font=self.game.assets.fonts["tiny"],
+                callback=lambda k=item, p=price: self.init_purchase(k, p),
+                bg_color=BLUE,
+                icon=icon,
+                autosize=False
+            )
+            self.shop_buttons.append(btn)
+            self.game.ui_manager.add_element(btn)
+
+    def init_purchase(self, item_key, price):
+        self.pending_item = item_key
+        self.pending_cost = price
+        self.phase = "CONFIRM"
+        
+        item_name = "5 Poké Balls" if item_key == "POKE_BALLS" else item_key.replace("_", " ").title()
+        self.dialogue_box.reset([f"Buy {item_name}?", f"Cost: ${price}"])
+        self.dialogue_box.set_visibility(True)
+        self.btn_yes.set_visibility(True)
+        self.btn_no.set_visibility(True)
+
+    def confirm_purchase(self):
+        if self.game.story_manager.money >= self.pending_cost:
+            self.game.story_manager.money -= self.pending_cost
+            
+            if self.pending_item == "POKE_BALLS":
+                self.game.story_manager.balls_left += 5
+            else:
+                self.game.story_manager.inventory[self.pending_item] = self.game.story_manager.inventory.get(self.pending_item, 0) + 1
+            
+            if self.game.assets.heal_sfx:
+                self.game.assets.heal_sfx.play()
+            
+            self.dialogue_box.reset(["Purchase successful!"])
+            self.dialogue_box.callback = self.cancel_purchase # Reset to shop mode
+        else:
+            self.dialogue_box.reset(["You don't have enough money!"])
+            self.dialogue_box.callback = self.cancel_purchase
+            
+        self.btn_yes.set_visibility(False)
+        self.btn_no.set_visibility(False)
+
+    def cancel_purchase(self):
+        self.phase = "SHOP"
+        self.dialogue_box.set_visibility(False)
+        self.btn_yes.set_visibility(False)
+        self.btn_no.set_visibility(False)
+        self.pending_item = None
+
+    def start(self):
+        self.game.ui_manager.elements.clear()
+        if self.phase == "DIALOGUE":
+            self.game.ui_manager.add_element(self.dialogue_box)
+        else:
+            self.refresh_buttons()
+
+    def on_welcome_dialogue_end(self):
+        self.phase = "SHOP"
+        self.dialogue_box.set_visibility(False)
+        self.refresh_buttons()
+
+    def _load_building_bg(self, game, type_suffix):
+        # 1. Check JSON config first (Primary)
+        area_data = game.story_manager.get_current_area_data()
+        json_key = "pokecenter" if type_suffix == "center" else "pokemart"
+        bg_config = area_data.get("backgrounds", {}).get(json_key)
+
+        # 2. Fallback Construction (Legacy naming)
+        area_key = game.story_manager.current_area_key
+        first_part = area_key.split('_')[0].lower()
+        fallback_name = f"{first_part}_city_{type_suffix}.png"
+        
+        filenames = [bg_config, fallback_name] if bg_config else [fallback_name]
+        box_top = Utils.get_full_dialogue_rect(game).top
+
+        for filename in filenames:
+            img = game.assets.get_background(filename)
+            if img:
+                return pygame.transform.scale(img, (game.width, box_top))
+
+        bg = pygame.Surface((game.width, box_top))
+        bg.fill(BLUE)
+        return bg
+
+    def exit_shop(self):
+        self.game.change_state(self.previous_state)
+
+    def handle_events(self, events):
+        if self.phase == "DIALOGUE":
+            for event in events:
+                if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+                    self.dialogue_box.handle_event(event)
+        
+        elif self.phase == "CONFIRM":
+             pass # Handled by buttons
+
+    def update(self):
+        if self.phase == "DIALOGUE" or self.phase == "CONFIRM":
+            self.dialogue_box.update()
+
+    def draw(self):
+        self.game.screen.fill(BLACK)
+        self.game.screen.blit(self.bg, (0, 0))
+        
+        if self.phase == "SHOP" or self.phase == "CONFIRM":
+            Utils.draw_classic_panel(self.game.screen, self.bottom_rect.x, self.bottom_rect.y, self.bottom_rect.width, self.bottom_rect.height)
+
+            # [UPDATE] Show Money in HUD area (Top Right) to avoid panel clutter
+            lbl = f"${self.game.story_manager.money}"
+            Utils.draw_text_outline(
+                self.game.screen, 
+                lbl, 
+                self.game.assets.fonts["small"], 
+                GOLD, 
+                self.game.width - 20, 
+                20, 
+                align="right", 
+                outline_color=BLACK
+            )
+            
+            # Balls Count
+            ball_lbl = f"Balls: {self.game.story_manager.balls_left}"
+            Utils.draw_text_outline(self.game.screen, ball_lbl, self.game.assets.fonts["small"], WHITE, self.game.width - 20, 50, align="right", outline_color=BLACK)
+
+        self.game.ui_manager.draw(self.game.screen)
 
 # [REF-0031: PC System]
 class PCState(GameState):
@@ -302,7 +640,8 @@ class PCState(GameState):
                         
                         # Only check if visible on screen
                         if 80 < ry < self.game.height - 20:
-                            if pygame.Rect(rx, ry, self.slot_size, self.slot_size).collidepoint(event.pos):
+                            slot_rect = pygame.Rect(rx, ry, self.slot_size, self.slot_size)
+                            if slot_rect.collidepoint(event.pos):
                                 self.handle_click("pc", i)
                                 return
 
@@ -331,7 +670,8 @@ class PCState(GameState):
                 self.selected_party_idx = None
             elif self.selected_party_idx is not None:
                 # Swap Party <-> Party
-                self.party[index], self.party[self.selected_party_idx] = self.party[self.selected_party_idx], self.party[index]
+                old_idx = self.selected_party_idx
+                self.party[index], self.party[old_idx] = self.party[old_idx], self.party[index]
                 self.selected_party_idx = None
             elif self.selected_pc_idx is not None:
                 # Swap PC -> Party
@@ -362,7 +702,8 @@ class PCState(GameState):
                 if len(self.party) == 1:
                     self.game.show_dialogue(["Can't store your last Pokémon!"])
                     return
-                self.party[self.selected_party_idx], self.pc[index] = self.pc[index], self.party[self.selected_party_idx]
+                old_p_idx = self.selected_party_idx
+                self.party[old_p_idx], self.pc[index] = self.pc[index], self.party[old_p_idx]
                 self.selected_party_idx = None
             else:
                 self.selected_pc_idx = index
@@ -389,7 +730,14 @@ class PCState(GameState):
                 if p.sidebar_image:
                     self.game.screen.blit(p.sidebar_image, (rect.x + 10, rect.y + 5))
                 
-                Utils.draw_text_outline(self.game.screen, p.display_name, self.font, WHITE, rect.x + 90, rect.y + 25, align="left")
+                Utils.draw_text_outline(
+                    self.game.screen, 
+                    p.display_name, 
+                    self.font, 
+                    WHITE, 
+                    rect.x + 90, 
+                    rect.y + 25, 
+                    align="left")
             else:
                 # Empty slot
                 pygame.draw.rect(self.game.screen, (40, 60, 80), rect, border_radius=10)
@@ -493,6 +841,10 @@ class BagState(GameState):
         
         items_to_show = []
         if self.current_page == 0:
+            # Add Rare Candy first if owned
+            if self.game.story_manager.inventory.get("RARE_CANDY", 0) > 0:
+                items_to_show.append(("RARE_CANDY", self.game.story_manager.inventory["RARE_CANDY"]))
+
             for key in self.evo_keys:
                 qty = self.game.story_manager.inventory.get(key, 0)
                 if qty > 0:
@@ -522,11 +874,19 @@ class BagState(GameState):
             
             display_name = f"{item_key.replace('_', ' ').title()}  x{qty}"
             
-            can_use = (qty > 0 and self.current_page == 0)
+            is_rare_candy = (item_key == "RARE_CANDY")
+            can_use = (qty > 0 and (self.current_page == 0 or is_rare_candy))
             color = BLUE if can_use else GRAY
             callback = (lambda k=item_key: self.use_item(k)) if can_use else None
             
             icon = self.game.assets.get_item_image(item_key)
+            
+            # Special handling for the Mystery Egg icon from the pokemon directory
+            if item_key == "MYSTERY_EGG":
+                egg_path = os.path.join("assets", "sprites", "pokemon", "egg.png")
+                if os.path.exists(egg_path):
+                    icon = pygame.image.load(egg_path).convert_alpha()
+                    icon = pygame.transform.scale(icon, (128,128))
             
             btn = Button(
                 rect=(x, y, col_w - 20, btn_h),
@@ -552,13 +912,23 @@ class BagState(GameState):
 
     def use_item(self, item_key):
         self.selected_item = item_key
+        
+        # Special case for Rare Candy
+        if item_key == "RARE_CANDY":
+            self.game.change_state(PokemonPartyMenuState(
+                self.game, 
+                previous_state=self, 
+                context="use_item",
+                on_select=self.on_pokemon_select_rare_candy
+            ))
+            return
+
         self.game.change_state(PokemonPartyMenuState(
             self.game, 
             previous_state=self, 
             context="use_item",
             on_select=self.on_pokemon_select
         ))
-
     def on_pokemon_select(self, slot_index):
         party = self.game.story_manager.player_team
         if slot_index >= len(party): return
@@ -596,6 +966,48 @@ class BagState(GameState):
         else:
             self.game.show_dialogue(["It won't have any effect."])
 
+    def on_pokemon_select_rare_candy(self, slot_index):
+        party = self.game.story_manager.player_team
+        if slot_index >= len(party): return
+
+        pokemon = party[slot_index]
+        
+        # Find its evolution
+        key = pokemon.name.upper()
+        if pokemon.form and pokemon.form != "normal":
+            key += f"_{pokemon.form.upper()}"
+
+        next_entries = self.game.loader.evolution_map.get(key)
+        if not next_entries:
+            self.game.show_dialogue([f"{pokemon.display_name} can't evolve further."])
+            self.game.change_state(self) # Return to bag
+            self.refresh_buttons()
+            return
+
+        # Consume item
+        self.game.story_manager.inventory["RARE_CANDY"] -= 1
+        if self.game.story_manager.inventory["RARE_CANDY"] <= 0:
+            del self.game.story_manager.inventory["RARE_CANDY"]
+
+        next_entry = next_entries[0]
+        if "_" in next_entry:
+            base_name, form_part = next_entry.rsplit("_", 1)
+            next_form = form_part.lower()
+        else:
+            base_name = next_entry
+            next_form = "normal"
+
+        next_id = self.game.name_to_id.get(base_name.upper())
+
+        if next_id:
+            from src.states.systems import EvolutionState
+            self.game.change_state(
+                EvolutionState(
+                    self.game, pokemon, next_id, slot_index, next_form=next_form, context="party",
+                    return_state=self.previous_state
+                )
+            )
+
     def draw(self):
         self.game.screen.fill((40, 40, 60))
         
@@ -604,6 +1016,10 @@ class BagState(GameState):
         
         if not self.item_buttons:
             Utils.draw_text_outline(self.game.screen, "No Items", self.game.assets.fonts["s_med"], GRAY, self.game.width//2, self.game.height//2)
+        
+        # [UPDATE] Show Money
+        money_txt = f"${self.game.story_manager.money}"
+        Utils.draw_text_outline(self.game.screen, money_txt, self.game.assets.fonts["small"], GOLD, self.game.width - 150, 50, outline_color=BLACK)
             
         self.game.ui_manager.draw(self.game.screen)
 
@@ -617,6 +1033,13 @@ class PokedexState(GameState):
         self.page = 0
         self.show_shinies_only = False
         self.full_dex = []
+        self.sort_mode = "NUMBER" 
+        
+        # Pop-up Menu State
+        self.popup_active = False
+        self.selected_pkmn_id = None
+        self.popup_rect = pygame.Rect(0, 0, 180, 130)
+
         self.refresh_dex()
 
         tab_y = game.height * 0.18
@@ -629,6 +1052,11 @@ class PokedexState(GameState):
             callback=self.go_back,
             bg_color=RED,
         )
+        
+        # Pop-up Buttons
+        self.btn_cry = Button((0, 0, 160, 50), "CRY", game.assets.fonts["tiny"], self.play_selected_cry, bg_color=BLUE, visible=False)
+        self.btn_area = Button((0, 0, 160, 50), "AREA", game.assets.fonts["tiny"], self.show_selected_area, bg_color=GREEN, visible=False)
+
         self.btn_shiny_toggle = Button(
             rect=(game.width - 250, 30, 220, 70),
             text="SHINIES",
@@ -636,13 +1064,13 @@ class PokedexState(GameState):
             callback=self.toggle_shiny_filter,
             bg_color=BLUE,
         )
-        btn_y = self.btn_shiny_toggle.rect.bottom + 10
-        self.btn_dev = Button(
-            rect=(game.width - 250, btn_y, 220, 60),
-            text="DEV MODE",
-            font=game.assets.fonts["tiny"],
-            callback=self.toggle_dev_mode,
-            bg_color=BLACK,
+        # [UPDATE] Sort Toggle
+        self.btn_sort = Button(
+            rect=(game.width - 250, 110, 220, 70),
+            text="SORT: #",
+            font=game.assets.fonts["small"],
+            callback=self.toggle_sort,
+            bg_color=GOLD
         )
 
         self.btn_tab_normal = Button(
@@ -675,12 +1103,19 @@ class PokedexState(GameState):
             font=game.assets.fonts["tiny"],
             callback=lambda: self.set_tab("boss"),
         )
+        self.btn_tab_unown = Button(
+            rect=(self.btn_tab_boss.rect.right + 10, tab_y, 180, tab_h),
+            text="UNOWN",
+            font=game.assets.fonts["tiny"],
+            callback=lambda: self.set_tab("unown"),
+        )
         self.tab_buttons = [
             self.btn_tab_normal,
             self.btn_tab_mega,
             self.btn_tab_gmax,
             self.btn_tab_alt,
             self.btn_tab_boss,
+            self.btn_tab_unown,
         ]
 
         total_tab_width = (
@@ -706,23 +1141,90 @@ class PokedexState(GameState):
     def start(self):
         self.game.ui_manager.add_element(self.btn_back)
         self.game.ui_manager.add_element(self.btn_shiny_toggle)
-        self.game.ui_manager.add_element(self.btn_dev)
+        self.game.ui_manager.add_element(self.btn_sort)
+        self.game.ui_manager.add_element(self.btn_cry)
+        self.game.ui_manager.add_element(self.btn_area)
         for btn in self.tab_buttons:
             self.game.ui_manager.add_element(btn)
+
+    def play_selected_cry(self):
+        if self.selected_pkmn_id:
+            try:
+                cry_path = self.game.assets.get_cry(self.selected_pkmn_id)
+                pygame.mixer.Sound(cry_path).play().set_volume(VOLUME)
+            except: pass
+        self.hide_popup()
+
+    def show_selected_area(self):
+        if not self.selected_pkmn_id: return
+        
+        locations = []
+        prog = self.game.loader.area_data.get("STORY_PROGRESSION", {})
+        for area_key, data in prog.items():
+            pool_name = data.get("wild_pool_percentages")
+            if pool_name:
+                pool = self.game.loader.area_data.get(pool_name, {})
+                if str(self.selected_pkmn_id) in pool:
+                    name = data.get("route_name", area_key.replace("KANTO_", "").replace("_", " ").title())
+                    locations.append(name)
+        
+        msg = [f"Found in: {', '.join(locations)}" if locations else "Location unknown."]
+        self.game.show_dialogue(msg)
+        self.hide_popup()
+
+    def hide_popup(self):
+        self.popup_active = False
+        self.btn_cry.set_visibility(False)
+        self.btn_area.set_visibility(False)
+
+    def toggle_sort(self):
+        self.sort_mode = "NAME" if self.sort_mode == "NUMBER" else "NUMBER"
+        self.btn_sort.text = f"SORT: {'A-Z' if self.sort_mode == 'NAME' else '#'}"
+        self.refresh_dex()
 
     def refresh_dex(self):
         if self.current_tab == "boss":
             source_data = self.game.data.data.get("defeated_bosses", {})
             self.full_dex = list(source_data.values())
+        elif self.current_tab == "unown":
+            self.full_dex = []
+            caught_data = self.game.data.data.get("pokedex", {})
+            forms = ["normal", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "question", "exclamation"]
+            for f in forms:
+                key = "201" if f == "normal" else f"201_{f}"
+                is_caught = key in caught_data
+                name = f"UNOWN-{f.upper()}" if f not in ["normal", "question", "exclamation"] else ("UNOWN-A" if f == "normal" else f"UNOWN-{'?' if f == 'question' else '!'}")
+                self.full_dex.append({
+                    "id": 201,
+                    "status": 2 if is_caught else 0,
+                    "shiny": caught_data.get(key, {}).get("shiny", False) if is_caught else False,
+                    "form": f,
+                    "name": name if is_caught else "???"
+                })
+            return
         elif self.current_tab == "normal":
-            # Kanto 1-151 Grid
             self.full_dex = []
             caught_data = self.game.data.data.get("pokedex", {})
             seen_ids = self.game.data.data.get("seen_pokemon", [])
+            starting_region = self.game.story_manager.starting_region
+            national_dex = self.game.story_manager.story_flags.get("unlocked_national_dex", False)
             
-            # Force 1-151 slots
-            for i in range(1, 152):
-                p_id = i
+            # Determine Regional vs National ID list
+            if national_dex:
+                id_list = list(range(1, 252))  # National: 1-251
+            elif starting_region == "KANTO":
+                id_list = list(range(1, 152))  # Kanto: 1-151
+            else:
+                # Johto: Show standard 152-251, plus any Kanto (1-151) seen/caught
+                kanto_visible = []
+                caught_ids = {v['id'] for v in caught_data.values()}
+                seen_set = set(seen_ids)
+                for p_id in range(1, 152):
+                    if p_id in seen_set or p_id in caught_ids:
+                        kanto_visible.append(p_id)
+                id_list = kanto_visible + list(range(152, 252))
+
+            for p_id in id_list:
                 is_caught = False
                 caught_entry = None
                 
@@ -757,19 +1259,45 @@ class PokedexState(GameState):
                         
                 self.full_dex.append(entry)
             
+            # ARCHITECT: Check for Nown (3022) - Hidden until received
+            for k, v in caught_data.items():
+                if v.get('id') == 3022:
+                    self.full_dex.append({
+                        "id": 3022,
+                        "status": 2,
+                        "shiny": v.get("shiny", False),
+                        "form": "normal",
+                        "name": "NOWN"
+                    })
+                    break
+
+            # Apply Sorting
+            if self.sort_mode == "NUMBER":
+                self.full_dex.sort(key=lambda x: x.get("id", 0))
+            else:
+                self.full_dex.sort(key=lambda x: x.get("name", "ZZZ").upper())
+
+            # Force Nown to the very top if it has been discovered
+            nown = next((p for p in self.full_dex if p['id'] == 3022), None)
+            if nown:
+                self.full_dex.remove(nown)
+                self.full_dex.insert(0, nown)
+
             return
         else:
             source_data = self.game.data.data.get("pokedex", {})
-            self.full_dex = [
-                p
-                for p in source_data.values()
+            self.full_dex = [ 
+                p for p in source_data.values() 
                 if p.get("form", "normal") == self.current_tab
             ]
 
         if self.show_shinies_only:
             self.full_dex = [p for p in self.full_dex if p["shiny"]]
 
-        self.full_dex.sort(key=lambda x: x.get("id", 0))
+        if self.sort_mode == "NUMBER":
+            self.full_dex.sort(key=lambda x: x.get("id", 0))
+        else:
+            self.full_dex.sort(key=lambda x: x.get("name", "ZZZ"))
 
     def set_tab(self, tab_name):
         self.current_tab = tab_name
@@ -782,120 +1310,15 @@ class PokedexState(GameState):
         self.refresh_dex()
         self.btn_shiny_toggle.bg_color = GOLD if self.show_shinies_only else BLUE
 
-    def toggle_dev_mode(self):
-        if not self.game.loader.dev_shiny_mode:
-            if self.do_parental_check():
-                self.game.loader.dev_shiny_mode = True
-                self.btn_dev.bg_color = GREEN
-        else:
-            self.game.loader.dev_shiny_mode = False
-            self.btn_dev.bg_color = BLACK
-
-    def do_parental_check(self):
-        a = random.randint(12, 19)
-        b = random.randint(3, 9)
-        ans = a * b
-        options = {ans}
-        while len(options) < 10:
-            fake = ans + random.randint(-12, 12)
-            if fake > 0 and fake != ans:
-                options.add(fake)
-
-        options_list = list(options)
-        random.shuffle(options_list)
-
-        checking = True
-
-        cx, cy = self.game.width // 2, self.game.height // 2
-
-        bw, bh = 500, 350
-        box_rect = pygame.Rect(cx - bw // 2, cy - bh // 2, bw, bh)
-
-        btn_w, btn_h = 70, 45
-        gap_x, gap_y = 15, 20
-
-        total_grid_w = (5 * btn_w) + (4 * gap_x)
-        start_x = cx - (total_grid_w // 2)
-        start_y = box_rect.top + 160
-
-        buttons = []
-        for i, val in enumerate(options_list):
-            row = i // 5
-            col = i % 5
-            bx = start_x + col * (btn_w + gap_x)
-            by = start_y + row * (btn_h + gap_y)
-            buttons.append((pygame.Rect(bx, by, btn_w, btn_h), val))
-
-        while checking:
-
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    pygame.quit()
-                    sys.exit()
-
-                if event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_ESCAPE:
-                        return False
-
-                elif event.type == pygame.MOUSEBUTTONDOWN:
-                    if not box_rect.collidepoint(event.pos):
-                        return False
-
-                    for rect, val in buttons:
-                        if rect.collidepoint(event.pos):
-                            return val == ans
-
-            self.draw()
-
-            pygame.draw.rect(self.game.screen, WHITE, box_rect, border_radius=15)
-            pygame.draw.rect(self.game.screen, BLACK, box_rect, 4, border_radius=15)
-
-            Utils.draw_text_outline(
-                self.game.screen,
-                self.game.assets.get_text("parental_check"),
-                self.game.assets.fonts["med"],
-                BLACK,
-                cx,
-                box_rect.top + 40,
-                outline_color=WHITE,
-            )
-            Utils.draw_text_outline(
-                self.game.screen,
-                f"{a} x {b} = ?",
-                self.game.assets.fonts["big"],
-                BLACK,
-                cx,
-                box_rect.top + 100,
-                outline_color=WHITE,
-            )
-
-            mouse_pos = pygame.mouse.get_pos()
-            for rect, val in buttons:
-                is_hover = rect.collidepoint(mouse_pos)
-                bg = LIGHT_GRAY if is_hover else WHITE
-                pygame.draw.rect(self.game.screen, bg, rect, border_radius=8)
-                pygame.draw.rect(self.game.screen, BLACK, rect, 2, border_radius=8)
-                Utils.draw_text_outline(
-                    self.game.screen,
-                    str(val),
-                    self.game.assets.fonts["s_med"],
-                    BLACK,
-                    rect.centerx,
-                    rect.centery,
-                    outline_color=WHITE,
-                )
-
-            pygame.display.flip()
-            self.game.clock.tick(25)
-
-        return False
-
-    def confirm_wipe_action(self):
-        self.confirm_wipe()
-
     def handle_events(self, events):
         for event in events:
             if event.type == pygame.MOUSEBUTTONDOWN:
+                if self.popup_active:
+                    popup_hit = self.popup_rect.collidepoint(event.pos)
+                    if not popup_hit:
+                        self.hide_popup()
+                    continue
+
                 if self.btn_next.collidepoint(event.pos) and (self.page + 1) * 12 < len(self.full_dex):
                     self.page += 1
                 elif self.btn_prev.collidepoint(event.pos) and self.page > 0:
@@ -903,13 +1326,17 @@ class PokedexState(GameState):
                 else:
                     for r, p_id in self.dex_btns:
                         if r.collidepoint(event.pos):
-                            try:
-                                cry_path = self.game.assets.get_cry(p_id)
-                                cry_sound = pygame.mixer.Sound(cry_path)
-                                cry_sound.set_volume(VOLUME)
-                                cry_sound.play()
-                            except Exception:
-                                pass
+                            self.popup_active = True
+                            self.selected_pkmn_id = p_id
+                            self.popup_rect.topleft = (event.pos[0] + 10, event.pos[1] + 10)
+                            # Keep on screen
+                            if self.popup_rect.right > self.game.width: self.popup_rect.right = event.pos[0] - 10
+                            
+                            self.btn_cry.rect.topleft = (self.popup_rect.x + 10, self.popup_rect.y + 10)
+                            self.btn_area.rect.topleft = (self.popup_rect.x + 10, self.popup_rect.y + 70)
+                            self.btn_cry.set_visibility(True)
+                            self.btn_area.set_visibility(True)
+                            return
 
     def confirm_wipe(self):
         confirming = True
@@ -1026,13 +1453,15 @@ class PokedexState(GameState):
                 p_entry = current_view[i]
                 status = p_entry.get("status", 2)
                 
+                # ARCHITECT: Override ID display for Nown
+                id_num = "???" if p_entry['id'] == 3022 else p_entry['id']
                 Utils.draw_text_outline(
                     screen,
-                    f"#{p_entry['id']}",
+                    f"#{id_num}",
                     self.game.assets.fonts["tiny"],
                     BLACK,
-                    rect.centerx,
-                    rect.top - 20,
+                    rect.right - 20,
+                    rect.top + 15,
                     outline_color=WHITE,
                 )
                 Utils.draw_text_outline(
@@ -1041,7 +1470,7 @@ class PokedexState(GameState):
                     self.game.assets.fonts["tiny"],
                     BLACK,
                     rect.centerx,
-                    rect.bottom + 15,
+                    rect.bottom + 20,
                     outline_color=WHITE,
                 )
 
@@ -1085,7 +1514,6 @@ class PokedexState(GameState):
 
         self.game.ui_manager.draw(screen)
         self.btn_shiny_toggle.bg_color = GOLD if self.show_shinies_only else BLUE
-        self.btn_dev.bg_color = GREEN if self.game.loader.dev_shiny_mode else BLACK
 
         pygame.draw.rect(screen, BLACK, self.btn_prev, border_radius=15)
         Utils.draw_text_outline(
@@ -1112,22 +1540,25 @@ class PokedexState(GameState):
 class GameOverState(GameState):
     def __init__(self, game):
         super().__init__(game)
+        mid_x = game.width // 2
         self.btn_retry = Button(
-            rect=(game.width // 2 - 200, game.height * 0.60, 400, 80),
+            rect=(mid_x - 200, game.height * 0.60, 400, 80),
             text="RETRY",
             font=game.assets.fonts["s_med"],
             callback=self.retry_game,
             bg_color=GREEN,
         )
+        mid_x = game.width // 2
         self.btn_reset = Button(
-            rect=(game.width // 2 - 200, game.height * 0.72, 400, 80),
+            rect=(mid_x - 200, game.height * 0.72, 400, 80),
             text="RESET STREAK",
             font=game.assets.fonts["s_med"],
             callback=self.reset_streak,
             bg_color=DARK_RED,
         )
+        mid_x = game.width // 2
         self.btn_exit = Button(
-            rect=(game.width // 2 - 200, game.height * 0.84, 400, 80),
+            rect=(mid_x - 200, game.height * 0.84, 400, 80),
             text="EXIT GAME",
             font=game.assets.fonts["s_med"],
             callback=self.exit_game,
@@ -1187,7 +1618,21 @@ class BadgeCaseState(GameState):
     def __init__(self, game, previous_state):
         super().__init__(game)
         self.previous_state = previous_state
-        self.earned_badges = game.story_manager.badges
+        self.earned_badges = game.story_manager.badges # List of badge keys like "BOULDER"
+        
+        # Page Management
+        self.unlocked_regions = []
+        if game.story_manager.story_flags.get("unlocked_kanto_badges"):
+            self.unlocked_regions.append("KANTO")
+        if game.story_manager.story_flags.get("unlocked_johto_badges"):
+            self.unlocked_regions.append("JOHTO")
+            
+        # Default sorting: starting region first
+        if len(self.unlocked_regions) > 1 and game.story_manager.starting_region == "JOHTO":
+            self.unlocked_regions = ["JOHTO", "KANTO"]
+
+        self.current_page_idx = 0
+        
         self.btn_back = Button(
             rect=(30, 30, 140, 70),
             text="BACK",
@@ -1195,17 +1640,39 @@ class BadgeCaseState(GameState):
             callback=self.go_back,
             bg_color=RED,
         )
-        # Kanto Badge Map (Name -> Index 1-8)
-        self.badge_map = {
-            "BOULDER": 1, "CASCADE": 2, "THUNDER": 3, "RAINBOW": 4,
-            "SOUL": 5, "MARSH": 6, "VOLCANO": 7, "EARTH": 8
+
+        # Navigation Arrows
+        cx, cy = game.width // 2, game.height // 2
+        self.btn_prev = Button((30, cy - 30, 60, 60), "<", game.assets.fonts["med"], self.prev_page)
+        self.btn_next = Button((game.width - 90, cy - 30, 60, 60), ">", game.assets.fonts["med"], self.next_page)
+
+        # Regional Badge Maps (Name -> Sprite Index 1-8)
+        self.region_maps = {
+            "KANTO": {
+                "BOULDER": 1, "CASCADE": 2, "THUNDER": 3, "RAINBOW": 4,
+                "SOUL": 5, "MARSH": 6, "VOLCANO": 7, "EARTH": 8
+            },
+            "JOHTO": {
+                "ZEPHYR": 1, "HIVE": 2, "PLAIN": 3, "FOG": 4,
+                "STORMBADGE": 5, "MINERAL": 6, "GLACIER": 7, "RISING": 8
+            }
         }
         
-        self.badge_sprites = {}
+        self.badge_sprites = {"KANTO": {}, "JOHTO": {}}
         for i in range(1, 9):
-            img = game.assets.get_badge_image(i)
-            if img:
-                self.badge_sprites[i] = pygame.transform.scale(img, (100, 100))
+            k_img = game.assets.get_badge_image(i, "kanto")
+            if k_img: self.badge_sprites["KANTO"][i] = pygame.transform.scale(k_img, (100, 100))
+            
+            j_img = game.assets.get_badge_image(i, "johto")
+            if j_img: self.badge_sprites["JOHTO"][i] = pygame.transform.scale(j_img, (100, 100))
+
+    def prev_page(self):
+        if len(self.unlocked_regions) > 1:
+            self.current_page_idx = (self.current_page_idx - 1) % len(self.unlocked_regions)
+    
+    def next_page(self):
+        if len(self.unlocked_regions) > 1:
+            self.current_page_idx = (self.current_page_idx + 1) % len(self.unlocked_regions)
 
     def go_back(self):
         from src.states.overworld import PlayState
@@ -1215,6 +1682,9 @@ class BadgeCaseState(GameState):
 
     def start(self):
         self.game.ui_manager.add_element(self.btn_back)
+        if len(self.unlocked_regions) > 1:
+            self.game.ui_manager.add_element(self.btn_prev)
+            self.game.ui_manager.add_element(self.btn_next)
 
     def handle_events(self, events):
         pass
@@ -1225,13 +1695,15 @@ class BadgeCaseState(GameState):
     def draw(self):
         screen = self.game.screen
         width, height = self.game.width, self.game.height
-        screen.fill(DARK_RED)
+        
+        region = self.unlocked_regions[self.current_page_idx] if self.unlocked_regions else "KANTO"
+        screen.fill(DARK_RED if region == "KANTO" else (15, 35, 85)) # Red for Kanto, Blue for Johto
 
         case_rect = pygame.Rect(width * 0.1, height * 0.1, width * 0.8, height * 0.8)
         pygame.draw.rect(screen, (50, 50, 50), case_rect, border_radius=20)
         Utils.draw_text_outline(
             screen,
-            "BADGE CASE",
+            f"{region} BADGE CASE",
             self.game.assets.fonts["med"],
             WHITE,
             width // 2,
@@ -1248,14 +1720,15 @@ class BadgeCaseState(GameState):
             row = (i - 1) // 4
             col = (i - 1) % 4
             
-            # Calculate center of cell
             cx = grid_rect.x + (col + 0.5) * cell_w
             cy = grid_rect.y + (row + 0.5) * cell_h + 10
             
-            sprite = self.badge_sprites.get(i)
+            sprite = self.badge_sprites.get(region, {}).get(i)
+            badge_map = self.region_maps.get(region, {})
+
             if sprite:
                 # Check if earned
-                earned = any(self.badge_map.get(b_name) == i for b_name in self.earned_badges)
+                earned = any(badge_map.get(b_name) == i for b_name in self.earned_badges)
                 
                 draw_sprite = sprite.copy()
                 if not earned:
@@ -1277,9 +1750,10 @@ class BadgeCaseState(GameState):
 # [REF-0041: Evolution Logic]
 class EvolutionState(GameState):
     def __init__(
-        self, game, pokemon_to_evolve, evolution_id, team_index, next_form="normal", context="party", return_state=None
+        self, game, pokemon_to_evolve, evolution_id, team_index, next_form="normal", context="party", return_state=None, consume_catch_count=False
     ):
         super().__init__(game)
+        self.consume_catch_count = consume_catch_count
         self.pokemon = pokemon_to_evolve
         self.evolution_id = evolution_id
         self.team_index = team_index
@@ -1290,13 +1764,12 @@ class EvolutionState(GameState):
         self.on_line_finish = {}
         self.options_buttons = {}
 
-
-
         self.timer = 0
         self.scale = 1.0
         self.alpha = 255
         self.evolved_pokemon_obj = None
         self.original_name = pokemon_to_evolve.name
+        self.is_hatching = (self.original_name == "Mystery Egg")
 
         box = Utils.get_full_dialogue_rect(game)
         btn_w, btn_h = 120, 60
@@ -1399,6 +1872,13 @@ class EvolutionState(GameState):
                         non_shiny_pokemon = Pokemon(non_shiny_raw, self.game.assets, size_mult=0.1)
                         self.game.data.add_pokemon(non_shiny_pokemon)
 
+                    # [UPDATE] Consume global catch count if this was a catch-triggered evolution
+                    if self.consume_catch_count:
+                        current_count = self.game.story_manager.catch_counts.get(self.pokemon.id, 0)
+                        # Safety check to ensure we don't go negative, though logic should prevent it
+                        if current_count >= 5:
+                            self.game.story_manager.catch_counts[self.pokemon.id] = current_count - 5
+
         elif self.phase == "END" and self.timer <= 0:
             self._return()
 
@@ -1425,7 +1905,11 @@ class EvolutionState(GameState):
             text_rect = pygame.Rect(
                 box_rect.left, box_rect.top, box_rect.width / 2, box_rect.height
             )
-            text = f"What? {self.original_name} is evolving!"
+            if self.is_hatching:
+                text = f"What? The {self.original_name} is hatching!"
+            else:
+                text = f"What? {self.original_name} is evolving!"
+
             Utils.draw_multiline_text(
                 self.game.screen,
                 text,
@@ -1445,9 +1929,13 @@ class EvolutionState(GameState):
             img.set_alpha(self.alpha)
             rect = img.get_rect(center=(center_x, center_y))
             self.game.screen.blit(img, rect)
+
+            msg = "Hatching..." if self.is_hatching else self.game.assets.get_text("evolving", name=self.original_name)
+            if isinstance(msg, list): msg = " ".join(msg)
+
             Utils.draw_text_outline(
                 self.game.screen,
-                self.game.assets.get_text("evolving", name=self.original_name),
+                msg,
                 self.game.assets.fonts["med"],
                 WHITE,
                 center_x,
@@ -1465,11 +1953,15 @@ class EvolutionState(GameState):
                 img.set_alpha(self.alpha)
                 rect = img.get_rect(center=(center_x, center_y))
                 self.game.screen.blit(img, rect)
-                text = self.game.assets.get_text(
-                    "evolved",
-                    old_name=self.original_name,
-                    new_name=self.evolved_pokemon_obj.name,
-                )
+
+                if self.is_hatching:
+                    text = f"Congratulations! The Egg hatched into {self.evolved_pokemon_obj.name}!"
+                else:
+                    text = self.game.assets.get_text(
+                        "evolved",
+                        old_name=self.original_name,
+                        new_name=self.evolved_pokemon_obj.name,
+                    )
                 if isinstance(text, list):
                     text = " ".join(text)
 
@@ -1514,24 +2006,570 @@ class PokemonDetailState(GameState):
     def draw(self):
         self.game.screen.fill((40, 40, 60))
         Utils.draw_text_outline(self.game.screen, "SUMMARY", self.game.assets.fonts["big"], WHITE, self.game.width//2, 50)
-        
+
         if self.pokemon.image:
             img = pygame.transform.scale(self.pokemon.image, (250, 250))
             self.game.screen.blit(img, (self.game.width//2 - 125, 120))
-            
+
         info_x = 50
         y = 400
         font = self.game.assets.fonts["med"]
-        
+
         texts = [
             f"Name: {self.pokemon.display_name}",
             f"Stage: {self.pokemon.effective_stage}",
             f"HP: {self.pokemon.current_hp}/{self.pokemon.get_max_hp()}",
             f"Types: {'/'.join(self.pokemon.types)}"
         ]
-        
+
+        # [UPDATE] Catches for evolution
+        catch_count = self.game.story_manager.catch_counts.get(self.pokemon.id, 0)
+        # Show global banked catches
+        catch_str = f"Catches Banked: {catch_count}/5"
+
+        texts.append(catch_str)
+
         for t in texts:
-            Utils.draw_text_outline(self.game.screen, t, font, WHITE, info_x, y, align="left")
+            Utils.draw_multiline_text(
+                self.game.screen, t, font, WHITE, 
+                info_x, y, 
+                max_width=self.game.width - 100, 
+                center=False, 
+                align="left"
+            )
             y += 50
-            
+
         self.game.ui_manager.draw(self.game.screen)
+
+
+# [REF-0061: Bike Shop State]
+class BikeShopState(GameState):
+    def __init__(self, game, previous_state):
+        super().__init__(game)
+        self.previous_state = previous_state
+        self.bg = self._load_bg(game)
+        self.clerk_sprite = game.assets.get_trainer_image("supernerd.png")
+
+        inv = self.game.story_manager.inventory
+        has_voucher = inv.get("BIKE_VOUCHER", 0) > 0
+        has_bike = inv.get("BICYCLE", 0) > 0
+
+        if has_bike:
+            lines = ["How's that bike treating you?", "Those Miracle Cycles are top of the line!"]
+        elif has_voucher:
+            lines = [
+                "Is that from Misty? Oh wow, she's pretty...",
+                "Umm, forget what I said about it being dangerous.",
+                "Just wear a helmet or whatever.",
+                "Just tell Misty I gave you a bike. And that my arms look bigger. Please.",
+                "You received the BICYCLE!"
+            ]
+            inv["BICYCLE"] = 1
+            inv["BIKE_VOUCHER"] -= 1
+            if self.game.assets.heal_sfx:
+                self.game.assets.heal_sfx.play()
+        else:
+            lines = [
+                "I'm out of normal bikes right now.",
+                "I have a dangerous one, but only a strong trainer could handle the speed.",
+                "You need a BIKE VOUCHER to get one."
+            ]
+
+        self.dialogue_box = ClassicDialogueBox(
+            Utils.get_full_dialogue_rect(game),
+            lines,
+            game.assets.fonts["med"],
+            callback=self.go_back
+        )
+
+    def _load_bg(self, game):
+        path = os.path.join(game.assets.kanto_backgrounds_dir, "cerulean_bike_shop.png")
+        box_top = Utils.get_full_dialogue_rect(game).top
+        if os.path.exists(path):
+            return pygame.transform.scale(pygame.image.load(path).convert(), (game.width, box_top))
+        bg = pygame.Surface((game.width, box_top))
+        bg.fill((30, 30, 50))
+        return bg
+
+    def go_back(self):
+        self.game.change_state(self.previous_state)
+
+    def start(self):
+        self.game.ui_manager.add_element(self.dialogue_box)
+
+    def handle_events(self, events):
+        pass
+
+    def update(self):
+        self.dialogue_box.update()
+
+    def draw(self):
+        self.game.screen.fill(BLACK)
+        self.game.screen.blit(self.bg, (0, 0))
+        if self.clerk_sprite:
+            rect = self.clerk_sprite.get_rect(center=(self.game.width//2, self.game.height*0.45))
+            self.game.screen.blit(self.clerk_sprite, rect)
+        self.dialogue_box.draw(self.game.screen)
+
+
+# [REF-0062: Celadon Game Corner System]
+class GameCornerState(GameState):
+    def __init__(self, game, previous_state):
+        super().__init__(game)
+        self.previous_state = previous_state
+        self.bg = self._load_bg(game)
+        self.npc_sprite = game.assets.get_trainer_image("gentleman.png")
+
+        self.flags = self.game.story_manager.story_flags
+        self.cleared = self.flags.get("game_corner_cleared", False)
+        self.rocket_progress = self.game.story_manager.story_flags.get("game_corner_rocket_progress", 0)
+
+        self.phase = "START"
+
+        has_case = self.game.story_manager.inventory.get("COIN_CASE", 0) > 0
+        if has_case:
+            lines = ["Is that a Coin Case? That means you have money!", "Come on in, kid, have fun!", "Would you like to play PokeMath Infinite?"]
+        else:
+            lines = ["This place is too dangerous for kids.", "Come back when you have a COIN CASE!"]
+            self.phase = "DENIED"
+
+        self.dialogue_box = ClassicDialogueBox(
+            Utils.get_full_dialogue_rect(game),
+            lines,
+            game.assets.fonts["med"],
+            visible=True,
+            callback=self.go_back if not has_case else None
+        )
+
+        self.btn_yes = Button((0,0,0,0), "YES", game.assets.fonts["small"], self.start_infinite, bg_color=GREEN, visible=False, autosize=False)
+        self.btn_no = Button((0,0,0,0), "NO", game.assets.fonts["small"], self.decline_infinite, bg_color=RED, visible=False, autosize=False)
+        self.menu_buttons = []
+
+    def _load_bg(self, game):
+        path = os.path.join(game.assets.kanto_backgrounds_dir, "celadon_game_corner.png")
+        box_top = Utils.get_full_dialogue_rect(game).top
+        if os.path.exists(path):
+            return pygame.transform.scale(pygame.image.load(path).convert(), (game.width, box_top))
+        bg = pygame.Surface((game.width, box_top))
+        bg.fill((20, 20, 40))
+        return bg
+
+    def start_infinite(self):
+        self.game.change_state(PokeMathInfiniteState(self.game, self))
+
+    def decline_infinite(self):
+        self.show_main_menu()
+
+    def show_main_menu(self):
+        self.phase = "MAIN_MENU"
+        self.dialogue_box.reset("What would you like to do?")
+        self.btn_yes.set_visibility(False)
+        self.btn_no.set_visibility(False)
+
+        options = [
+            ("CASH IN", self.open_shop),
+            ("PLAY AGAIN", self.start_infinite),
+            ("LEAVE", self.go_back)
+        ]
+        if not self.cleared:
+            options.insert(0, ("STAIRS", self.check_stairs))
+
+        self.clear_menu()
+        btn_w, btn_h = 200, 60
+        start_x = self.game.width // 2 - (len(options) * (btn_w + 20)) // 2
+        for i, (text, cb) in enumerate(options):
+            btn = Button((start_x + i * (btn_w + 20), self.game.height - 150, btn_w, btn_h), text, self.game.assets.fonts["tiny"], cb, autosize=False)
+            self.menu_buttons.append(btn)
+            self.game.ui_manager.add_element(btn)
+
+    def open_shop(self):
+        self.clear_menu()
+        self.game.change_state(GameCornerShopState(self.game, self))
+
+    def check_stairs(self):
+        self.clear_menu()
+        self.phase = "STAIRS_PROMPT"
+        self.dialogue_box.reset(["There are stairs leading down behind a poster...", "Investigate?"])
+        self.btn_yes.callback = self.start_rocket_gauntlet
+        self.btn_no.callback = self.show_main_menu
+        self.btn_yes.set_visibility(True)
+        self.btn_no.set_visibility(True)
+
+    def start_rocket_gauntlet(self):
+        self.btn_yes.set_visibility(False)
+        self.btn_no.set_visibility(False)
+        self.next_rocket_battle()
+
+    def next_rocket_battle(self):
+        if self.rocket_progress >= 4:
+            self.give_porygon()
+            return
+
+        rocket_pool = self.game.loader.area_data.get("TEAM_ROCKET_POOL", [19, 23, 52])
+        team_ids = [random.choice(rocket_pool) for _ in range(2 + (self.rocket_progress // 2))]
+        opponent_team = [Pokemon(self.game.loader.fetch_specific(pid), self.game.assets, size_mult=3.125) for pid in team_ids]
+
+        sprite_name = "rocket_grunt_m.png" if random.random() < 0.5 else "rocket_grunt_f.png"
+        trainer_sprite = self.game.assets.get_trainer_image(sprite_name)
+
+        from src.states.battle import TrainerBattleState, TrainerIntroState
+        class RocketGauntletBattle(TrainerBattleState):
+            def exit_battle(self):
+                self.game.story_manager.story_flags["game_corner_rocket_progress"] = self.game.story_manager.story_flags.get("game_corner_rocket_progress", 0) + 1
+                state = GameCornerState(self.game, self.game.states.get("city"))
+                state.rocket_progress = self.game.story_manager.story_flags["game_corner_rocket_progress"]
+                state.phase = "VICTORY_SEQ"
+                self.game.change_state(state)
+
+        self.game.change_state(TrainerIntroState(self.game, trainer_sprite, "You shouldn't be here!", 
+            RocketGauntletBattle(self.game, opponent_team, trainer_sprite=trainer_sprite, trainer_class="ROCKET", trainer_name="GRUNT", battle_type="indoor", area_name="CELADON_CITY")))
+
+    def give_porygon(self):
+        self.game.story_manager.story_flags["game_corner_cleared"] = True
+        self.cleared = True
+        porygon = Pokemon(self.game.loader.fetch_specific(137), self.game.assets, size_mult=2.5)
+        msg = ["You cleared out Team Rocket!", "In the chaos, you found a PORYGON!", "You rescued PORYGON!"]
+        if len(self.game.story_manager.player_team) < 6: self.game.story_manager.player_team.append(porygon)
+        else: self.game.story_manager.pc_pokemon.append(porygon); msg.append("PORYGON was sent to BILL'S PC.")
+        self.game.data.add_pokemon(porygon); self.game.data.save()
+        self.dialogue_box.reset(msg); self.dialogue_box.callback = self.show_main_menu
+
+    def handle_infinite_result(self, score):
+        reward = score * 50
+        self.game.story_manager.money += reward
+        self.phase = "REWARD"
+        self.dialogue_box.reset([f"Game Over! Your score: {score}", f"You received a reward of ${reward}!"])
+        self.dialogue_box.callback = self.show_main_menu
+
+    def clear_menu(self):
+        for btn in self.menu_buttons:
+            if btn in self.game.ui_manager.elements: self.game.ui_manager.elements.remove(btn)
+        self.menu_buttons = []
+
+    def go_back(self):
+        self.clear_menu()
+        self.game.change_state(self.previous_state)
+
+    def start(self):
+        self.game.ui_manager.add_element(self.dialogue_box)
+        self.game.ui_manager.add_element(self.btn_yes)
+        self.game.ui_manager.add_element(self.btn_no)
+        if self.phase == "START": self.btn_yes.set_visibility(True); self.btn_no.set_visibility(True)
+        elif self.phase == "VICTORY_SEQ": self.on_rocket_victory()
+
+    def on_rocket_victory(self):
+        if self.rocket_progress >= 4: self.give_porygon()
+        else: self.dialogue_box.reset([f"Defeated Rocket Grunt {self.rocket_progress}!", "Another one is approaching!"]); self.dialogue_box.callback = self.next_rocket_battle
+
+    def handle_events(self, events):
+        for event in events: self.dialogue_box.handle_event(event)
+
+    def update(self):
+        self.dialogue_box.update()
+        if self.phase == "START" or self.phase == "STAIRS_PROMPT":
+            box = self.dialogue_box.rect
+            self.btn_yes.rect = pygame.Rect(box.right - 280, box.bottom - 80, 120, 60)
+            self.btn_no.rect = pygame.Rect(box.right - 140, box.bottom - 80, 120, 60)
+
+    def draw(self):
+        self.game.screen.fill(BLACK)
+        self.game.screen.blit(self.bg, (0, 0))
+        if self.npc_sprite: self.game.screen.blit(self.npc_sprite, self.npc_sprite.get_rect(center=(self.game.width//2, self.game.height*0.45)))
+        self.dialogue_box.draw(self.game.screen)
+        self.game.ui_manager.draw(self.game.screen)
+
+
+class GameCornerShopState(GameState):
+    def __init__(self, game, previous_state):
+        super().__init__(game)
+        self.previous_state = previous_state
+        self.bg = previous_state.bg
+        self.porygon_sprite = game.assets.get_pokemon_image(137, "normal", False)
+        self.clerk_sprite = game.assets.get_trainer_image("supernerd.png")
+        self.dialogue_box = ClassicDialogueBox(Utils.get_full_dialogue_rect(game), ["PORYGON: $999,999"], game.assets.fonts["med"])
+        self.btn_buy = Button((self.game.width // 2 - 100, 450, 200, 60), "BUY", game.assets.fonts["small"], self.try_buy)
+        self.btn_back = Button((20, 20, 100, 50), "BACK", game.assets.fonts["tiny"], self.go_back, bg_color=RED)
+
+    def try_buy(self):
+        self.dialogue_box.reset(["Hah! You can't afford that!", "You're a pretty bad gamer, aren't you?", "Hehehe... stay away from the secret stairs!"])
+        self.dialogue_box.callback = self.go_back
+
+    def go_back(self): self.game.change_state(self.previous_state)
+    def start(self): self.game.ui_manager.add_element(self.btn_buy); self.game.ui_manager.add_element(self.btn_back)
+    def handle_events(self, events):
+        for event in events: self.dialogue_box.handle_event(event)
+    def update(self): self.dialogue_box.update()
+    def draw(self):
+        self.game.screen.fill(BLACK); self.game.screen.blit(self.bg, (0, 0))
+        if self.clerk_sprite: self.game.screen.blit(self.clerk_sprite, self.clerk_sprite.get_rect(center=(self.game.width*0.3, self.game.height*0.45)))
+        if self.porygon_sprite: self.game.screen.blit(self.porygon_sprite, self.porygon_sprite.get_rect(center=(self.game.width*0.7, self.game.height*0.45)))
+        self.dialogue_box.draw(self.game.screen); self.game.ui_manager.draw(self.game.screen)
+
+
+class PokeMathInfiniteState(GameState):
+    def __init__(self, game, previous_state):
+        super().__init__(game)
+        self.previous_state = previous_state
+        self.score, self.balls = 0, 5
+        self.pool = [i for i in range(1, 151)]
+        self.p_data = [None] * 3
+        self.problem_str, self.correct_ans, self.options = "", "", []
+        self.answer_btn_rects = [pygame.Rect(0, 0, 0, 0) for _ in range(3)]
+        self.ball_active = False
+        self.ball_pos, self.ball_target = [0, 0], [0, 0]
+        self.pause_timer, self.caught_idx = 0, -1
+        self.ball_img = game.assets.ball_imgs[0]
+        self.stars = [[random.randint(0, game.width), random.randint(0, game.height), random.randint(2, 4)] for _ in range(40)]
+        self.sprite_y = game.height * 0.4
+        self.generate_round()
+
+    def generate_round(self):
+        self.p_data = [Pokemon(self.game.loader.fetch_specific(random.choice(self.pool)), self.game.assets, size_mult=3.125) for _ in range(3)]
+        limit = min(100, 20 + (self.score // 5) * 10)
+        op = random.choice(["+", "-"])
+        if op == "+":
+            c = random.randint(4, limit); s = random.randint(2, min(10, c - 2)); a, b = s, c - s
+        else:
+            b = random.randint(2, 10); c = random.randint(2, max(2, limit - b)); a = b + c
+        self.problem_str, self.correct_ans = f"{a} {op} {b} = ?", c
+        opts = {c}
+        while len(opts) < 3:
+            f = c + random.choice([-3, -2, -1, 1, 2, 3])
+            if f >= 0: opts.add(f)
+        self.options = sorted(list(opts), key=lambda x: random.random())
+
+    def get_cx(self, i): return (i * self.game.width // 3) + (self.game.width // 6)
+
+    def handle_events(self, events):
+        for event in events:
+            if event.type == pygame.MOUSEBUTTONDOWN and not self.ball_active and self.pause_timer == 0:
+                for i, r in enumerate(self.answer_btn_rects):
+                    if r.collidepoint(event.pos): self.process_answer(i); return
+
+    def process_answer(self, idx):
+        self.balls -= 1
+        is_correct = self.options[idx] == self.correct_ans
+        self.ball_active = True
+        self.ball_pos, self.ball_target = [self.game.width // 2, self.game.height], [self.get_cx(idx), self.sprite_y]
+        self.caught_idx = idx
+        if is_correct:
+            self.score += 1
+            if self.score % 10 == 0: self.balls += 1
+
+    def update(self):
+        if self.ball_active:
+            self.ball_pos[0] += (self.ball_target[0] - self.ball_pos[0]) * 0.25
+            self.ball_pos[1] += (self.ball_target[1] - self.ball_pos[1]) * 0.25
+            if abs(self.ball_pos[1] - self.ball_target[1]) < 10: 
+                self.ball_active = False
+                self.pause_timer = 30
+        if self.pause_timer > 0:
+            self.pause_timer -= 1
+            if self.pause_timer == 0:
+                if self.balls <= 0: 
+                    self.previous_state.handle_infinite_result(self.score)
+                    self.game.change_state(self.previous_state)
+                else: self.generate_round()
+
+    def draw(self):
+        screen = self.game.screen
+        screen.fill(BLACK)
+        for s in self.stars:
+            s[1] += s[2]
+            if s[1] > self.game.height: s[1], s[0] = 0, random.randint(0, self.game.width)
+            pygame.draw.circle(screen, (150, 150, 150), (s[0], s[1]), 1)
+        Utils.draw_text_outline(screen, f"SCORE: {self.score}", self.game.assets.fonts["small"], GOLD, 20, 20, align="left")
+        Utils.draw_text_outline(screen, f"BALLS: {self.balls}", self.game.assets.fonts["small"], WHITE, 20, 60, align="left")
+        for i, p in enumerate(self.p_data):
+            if p and p.image:
+                if not (self.pause_timer > 0 and i == self.caught_idx):
+                    screen.blit(p.image, p.image.get_rect(center=(self.get_cx(i), self.sprite_y)))
+        if not self.ball_active and self.pause_timer == 0:
+            Utils.draw_text_outline(screen, self.problem_str, self.game.assets.fonts["big"], GOLD, self.game.width//2, 100)
+            for i in range(3):
+                txt = str(self.options[i])
+                rect = pygame.Rect(self.get_cx(i) - 60, self.game.height * 0.65, 120, 80)
+                self.answer_btn_rects[i] = rect
+                pygame.draw.rect(screen, BLUE, rect, border_radius=15)
+                Utils.draw_text_outline(screen, txt, self.game.assets.fonts["num"], WHITE, rect.centerx, rect.centery)
+        if self.ball_active: screen.blit(self.ball_img, (self.ball_pos[0]-42, self.ball_pos[1]-42))
+
+
+class FlyState(GameState):
+    def __init__(self, game, previous_state):
+        super().__init__(game)
+        self.previous_state = previous_state
+        self.btn_back = Button((20, 20, 100, 50), "BACK", game.assets.fonts["tiny"], self.go_back, bg_color=RED)
+
+        self.cities = []
+        prog = game.loader.area_data.get("STORY_PROGRESSION", {})
+        for key, data in prog.items():
+            if data.get("area_type") == "town" and game.story_manager.story_flags.get(f"visited_{key}"):
+                self.cities.append((key, data.get("route_name", key)))
+
+        if game.story_manager.inventory.get("MT_SILVER_MAP", 0) > 0:
+            silver_key = "SILVER_LEAGUE_PLATEAU"
+            silver_name = prog.get(silver_key, {}).get("route_name", "Silver League")
+            if not any(c[0] == silver_key for c in self.cities):
+                self.cities.append((silver_key, silver_name))
+
+    def go_back(self):
+        from src.states.overworld import PlayState
+        if isinstance(self.previous_state, PlayState):
+            self.previous_state.is_resuming = True
+        self.game.change_state(self.previous_state)
+
+    def start(self):
+        self.game.ui_manager.add_element(self.btn_back)
+        from src.states.overworld import AreaTransitionState
+        for i, (key, name) in enumerate(self.cities):
+            row, col = i // 2, i % 2
+            rect = (100 + col * 350, 150 + row * 80, 300, 60)
+            btn = Button(rect, name.upper(), self.game.assets.fonts["tiny"], 
+                         lambda k=key: self.game.change_state(AreaTransitionState(self.game, k)),
+                         autosize=False)
+            self.game.ui_manager.add_element(btn)
+
+    def handle_events(self, events):
+        pass
+
+    def update(self):
+        pass
+
+    def draw(self):
+        self.game.screen.fill((30, 30, 50))
+        Utils.draw_text_outline(self.game.screen, "AIR BALLOON - FLY", self.game.assets.fonts["med"], GOLD, self.game.width//2, 60)
+        self.game.ui_manager.draw(self.game.screen)
+
+
+class FossilRevivalState(GameState):
+    def __init__(self, game, fossil_name, pokemon_id, previous_state):
+        super().__init__(game)
+        self.fossil_name = fossil_name
+        self.pokemon_id = pokemon_id
+        self.previous_state = previous_state
+        self.phase = "START"
+        self.timer = 60
+        self.scale = 1.0
+        self.alpha = 255
+
+        self.fossil_img = game.assets.get_item_image(fossil_name)
+        if self.fossil_img:
+            self.fossil_img = pygame.transform.scale(self.fossil_img, (160, 160))
+
+        raw = self.game.loader.fetch_specific(pokemon_id)
+        self.evolved_pokemon_obj = Pokemon(raw, self.game.assets, size_mult=3.0)
+
+    def handle_events(self, events):
+        pass
+
+    def update(self):
+        self.timer -= 1
+        if self.phase == "START" and self.timer <= 0:
+            self.phase = "GROW"; self.timer = 50
+        elif self.phase == "GROW":
+            self.scale += 0.06; self.alpha = max(0, self.alpha - 12)
+            if self.timer <= 0: self.phase = "FLASH"; self.timer = 20
+        elif self.phase == "FLASH":
+            if self.timer <= 0:
+                self.phase = "REVEAL"; self.timer = 60
+                if self.evolved_pokemon_obj.cry: self.evolved_pokemon_obj.cry.play()
+                self.scale = 4.0; self.alpha = 0
+        elif self.phase == "REVEAL":
+            self.scale = max(1.0, self.scale - 0.15); self.alpha = min(255, self.alpha + 20)
+            if self.timer <= 0: self.phase = "END"; self.timer = 60; self._finalize_revival()
+        elif self.phase == "END" and self.timer <= 0:
+            pygame.event.clear()
+            self.game.change_state(self.previous_state)
+
+    def _finalize_revival(self):
+        story = self.game.story_manager
+        story.inventory[self.fossil_name] -= 1
+
+        revival_flag = f"revived_fossil_{story.current_area_key}"
+        story.story_flags[revival_flag] = True
+
+        msg = f"Success! The fossil was revived into {self.evolved_pokemon_obj.display_name}!"
+        if len(story.player_team) < 6:
+            story.player_team.append(self.evolved_pokemon_obj)
+        else:
+            story.pc_pokemon.append(self.evolved_pokemon_obj)
+            msg += " Sent to BILL'S PC."
+
+        self.game.data.add_pokemon(self.evolved_pokemon_obj)
+        self.game.data.save()
+
+        if hasattr(self.previous_state, 'show_message'):
+            self.previous_state.show_message(msg)
+
+    def draw(self):
+        screen = self.game.screen
+        screen.fill(BLACK)
+        cx, cy = self.game.width // 2, self.game.height // 2
+
+        if self.phase in ["START", "GROW"]:
+            if self.fossil_img:
+                img = pygame.transform.rotozoom(self.fossil_img, 0, self.scale)
+                img.set_alpha(self.alpha)
+                screen.blit(img, img.get_rect(center=(cx, cy)))
+            Utils.draw_text_outline(screen, "REVIVING ANCIENT FOSSIL...", self.game.assets.fonts["med"], WHITE, cx, self.game.height * 0.85)
+
+        elif self.phase == "FLASH":
+            screen.fill(WHITE)
+
+        elif self.phase in ["REVEAL", "END"]:
+            if self.evolved_pokemon_obj.image:
+                img = pygame.transform.rotozoom(self.evolved_pokemon_obj.image, 0, self.scale)
+                img.set_alpha(self.alpha)
+                screen.blit(img, img.get_rect(center=(cx, cy)))
+                Utils.draw_text_outline(screen, f"REVIVED {self.evolved_pokemon_obj.display_name.upper()}!", 
+                                        self.game.assets.fonts["med"], GOLD, cx, self.game.height * 0.85)
+
+        self.game.ui_manager.draw(screen)
+
+class UnownReportState(GameState):
+    def __init__(self, game, previous_state):
+        super().__init__(game)
+        self.previous_state = previous_state
+        self.btn_back = Button((30, 30, 140, 70), "BACK", game.assets.fonts["small"], 
+                               lambda: game.change_state(previous_state), bg_color=RED)
+        
+        # Define all 28 official forms
+        self.forms = ["normal", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", 
+                      "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "question", "exclamation"]
+        
+        all_owned = self.game.story_manager.player_team + self.game.story_manager.pc_pokemon
+        self.caught_forms = {p.form for p in all_owned if p.id == 201}
+
+    def start(self):
+        self.game.ui_manager.add_element(self.btn_back)
+
+    def draw(self):
+        screen = self.game.screen
+        screen.fill((25, 25, 35))
+        Utils.draw_text_outline(screen, "UNOWN RESEARCH REPORT", self.game.assets.fonts["med"], GOLD, self.game.width//2, 50)
+        
+        cols = 7
+        start_x, start_y = 100, 140
+        gap_x, gap_y = 150, 130
+        
+        for i, f in enumerate(self.forms):
+            col, row = i % cols, i // cols
+            dx, dy = start_x + col * gap_x, start_y + row * gap_y
+            
+            is_caught = f in self.caught_forms
+            pygame.draw.rect(screen, (45, 45, 60), (dx-60, dy-60, 120, 120), border_radius=10)
+            
+            if is_caught:
+                img = self.game.assets.get_pokemon_image(201, f, False)
+                if img:
+                    img = pygame.transform.scale(img, (90, 90))
+                    screen.blit(img, img.get_rect(center=(dx, dy)))
+                
+                lbl = f.upper() if len(f) == 1 else ("?" if f == "question" else "!")
+                if f == "normal": lbl = "A"
+                Utils.draw_text_outline(screen, lbl, self.game.assets.fonts["tiny"], WHITE, dx, dy + 75)
+            else:
+                Utils.draw_text_outline(screen, "?", self.game.assets.fonts["med"], (80, 80, 100), dx, dy)
+
+        self.game.ui_manager.draw(screen)

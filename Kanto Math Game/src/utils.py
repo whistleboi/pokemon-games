@@ -146,7 +146,8 @@ class Utils:
         max_width,
         line_height=65,
         center=True,
-        outline_color=BLACK
+        outline_color=BLACK,
+        align="center"
     ):
         """Exact multi-line wrapping from workingsim.py"""
         if isinstance(text, list):
@@ -175,6 +176,7 @@ class Utils:
                 start_y + i * line_height,
                 outline_color=outline_color,
                 thickness=3,
+                align=align
             )
 
 

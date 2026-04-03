@@ -23,6 +23,7 @@ class BossManager:
         self.boss_cry_triggered = False
         self.boss_pokemon_data = None
         self.aura_pulse = 0.0
+        self.victory_flag = None
 
         bar_w, bar_h = 320, 36
         bar_center_x = game.width // 2

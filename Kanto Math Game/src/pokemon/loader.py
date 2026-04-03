@@ -33,11 +33,13 @@ class PokemonLoader:
         """Determines the list of Pokemon IDs to draw from."""
         if id_pool:
             return id_pool
-        
+
         if not id_pool:
             # Lazy load all boss IDs into a set for wild encounter filtering
             if not self.all_boss_ids:
-                for key in ["UB", "PAST", "FUTURE", "MYTHICAL", "MEGA", "GMAX", "STANDARD_BOSS"]:
+                boss_keys = ["UB", "PAST", "FUTURE", "MYTHICAL",
+                             "MEGA", "GMAX", "STANDARD_BOSS"]
+                for key in boss_keys:
                     ids = self.area_data.get(key, [])
                     self.all_boss_ids.update(ids)
 
@@ -56,14 +58,14 @@ class PokemonLoader:
         """Selects an ID from the pool or a random wild ID."""
         if target_pool:
             return random.choice(target_pool)
-        
+
         # Wild encounter logic: exclude boss IDs from random pool
         p_id = random.randint(1, 1025)
         # Ensure set is populated
         if not self.all_boss_ids:
-             for key in ["UB", "PAST", "FUTURE", "MYTHICAL", "MEGA", "GMAX", "STANDARD_BOSS"]:
-                    ids = self.area_data.get(key, [])
-                    self.all_boss_ids.update(ids)
+            for key in ["UB", "PAST", "FUTURE", "MYTHICAL", "MEGA", "GMAX", "STANDARD_BOSS"]:
+                ids = self.area_data.get(key, [])
+                self.all_boss_ids.update(ids)
 
         if p_id in self.all_boss_ids:
             return None
@@ -74,7 +76,7 @@ class PokemonLoader:
         p_id_str = str(p_id)
         form = base_form
         display_name = name
-        
+
         target_dir = self.assets.pokemon_sprites_dir
         target_map = self.assets.sprite_map
         target_fname = f"{p_id}.png"
@@ -89,19 +91,21 @@ class PokemonLoader:
         if base_form == "mega":
             target_dir = self.assets.mega_sprites_dir
             target_map = self.assets.mega_sprite_map
-            
+
             # Find all possible mega files (e.g. 6_x.png, 6_y.png)
-            candidates = [f for f in target_map.keys() if f.startswith(f"{p_id_str}_") or f == f"{p_id_str}.png"]
-            
+            keys = target_map.keys()
+            candidates = [f for f in keys if f.startswith(f"{p_id_str}_")
+                          or f == f"{p_id_str}.png"]
+
             if candidates:
                 chosen_key = random.choice(candidates)
                 target_fname = target_map[chosen_key]
-                
+
                 # Extract specific form (mega_x, mega_y)
                 base_file = chosen_key.rsplit(".", 1)[0]
                 suffix = base_file[len(p_id_str):]
                 form = f"mega{suffix}"
-                
+
                 if suffix:
                     clean_suffix = suffix.replace("_", " ").upper().strip()
                     display_name = f"MEGA {name} {clean_suffix}"
@@ -116,8 +120,10 @@ class PokemonLoader:
             target_dir = self.assets.gmax_sprites_dir
             target_map = self.assets.gmax_sprite_map
             display_name = f"GMAX {name}"
-            
-            candidates = [f for f in target_map.keys() if f == f"{p_id_str}.png" or f == f"{p_id_str}_gmax.png"]
+
+            keys = target_map.keys()
+            candidates = [f for f in keys if f == f"{p_id_str}.png"
+                          or f == f"{p_id_str}_gmax.png"]
             if candidates:
                 target_fname = target_map[random.choice(candidates)]
 
@@ -132,12 +138,15 @@ class PokemonLoader:
                         if k.startswith(f"{p_id_str}_") and random.random() < chance:
                             form = k.split("_", 1)[1]
                             break
-            
+
             if form != "normal":
-                target_dir = self.assets.alt_sprites_dir
-                target_map = self.assets.alt_sprite_map
-                target_fname = f"{p_id}_{form}.png"
-                
+                if p_id == 201:
+                    target_fname = f"201-{form}.png"
+                else:
+                    target_dir = self.assets.alt_sprites_dir
+                    target_map = self.assets.alt_sprite_map
+                    target_fname = f"{p_id}_{form}.png"
+
                 suffix = form.replace("_", " ").title()
                 display_name = f"{name} {suffix.upper()}"
 
@@ -145,13 +154,14 @@ class PokemonLoader:
 
     def _read_asset_bytes(self, directory, filename):
         """Helper to safely read bytes from a file if it exists."""
-        if not filename: return b""
+        if not filename:
+            return b""
         path = os.path.join(directory, filename)
         if os.path.exists(path) and not os.path.isdir(path):
             try:
                 with open(path, "rb") as f:
                     return f.read()
-            except:
+            except (OSError, IOError):
                 pass
         return b""
 
@@ -161,14 +171,18 @@ class PokemonLoader:
         """Main fetching logic - Optimized and Refactored."""
         if exclude_names is None:
             exclude_names = set()
-        
+
         odds_config = self.area_data.get("GAME_CONFIG", {}).get("SHINY_ODDS", {})
         base_odds = odds_config.get("BASE", 0.01)
         charm_odds = odds_config.get("CHARM", 0.02)
         dev_odds = odds_config.get("DEV", 0.25)
-        
-        shiny_odds = dev_odds if self.dev_shiny_mode else (charm_odds if self.shiny_charm_active else base_odds)
-        
+
+        if self.dev_shiny_mode:
+            shiny_odds = dev_odds
+        else:
+            shiny_odds = (charm_odds if self.shiny_charm_active
+                          else base_odds)
+
         target_pool = self._get_target_pool(pool_type, id_pool)
         base_form = pool_type.lower() if pool_type in ["MEGA", "GMAX"] else "normal"
         caught_pokedex_keys = set(self.game.data.data["pokedex"].keys())
@@ -185,10 +199,11 @@ class PokemonLoader:
                 continue
 
             # Resolve Form (Mega X/Y, Regional, etc)
-            final_form, display_name, t_dir, t_map, t_fname = self._resolve_form_context(
+            resolved = self._resolve_form_context(
                 p_id, base_form, name, area_data
             )
-            
+            final_form, display_name, t_dir, t_map, t_fname = resolved
+
             # --- CALCULATE STAGE ---
             stage = self.get_stage(name)
 
@@ -199,16 +214,17 @@ class PokemonLoader:
 
             # Determine Assets (Front/Back/Cry)
             is_shiny = random.random() < shiny_odds
-            
+
             img_bytes = b""
             back_img_bytes = b""
-            
+
             # 1. Front Sprite
             if is_shiny and t_dir == self.assets.pokemon_sprites_dir:
                 # Check standard shiny map
                 shiny_fname = self.assets.shiny_sprite_map.get(t_fname.lower())
-                img_bytes = self._read_asset_bytes(self.assets.shiny_sprites_dir, shiny_fname)
-            
+                s_dir = self.assets.shiny_sprites_dir
+                img_bytes = self._read_asset_bytes(s_dir, shiny_fname)
+
             if not img_bytes:
                 # Fallback to normal map
                 real_fname = t_map.get(t_fname.lower())
@@ -217,23 +233,25 @@ class PokemonLoader:
             # 2. Back Sprite
             if is_shiny:
                 shiny_back = self.assets.shiny_back_sprite_map.get(t_fname.lower())
-                back_img_bytes = self._read_asset_bytes(self.assets.shiny_back_sprites_dir, shiny_back)
+                sb_dir = self.assets.shiny_back_sprites_dir
+                back_img_bytes = self._read_asset_bytes(sb_dir, shiny_back)
 
             if not back_img_bytes:
                 real_back = self.assets.back_sprite_map.get(t_fname.lower())
-                back_img_bytes = self._read_asset_bytes(self.assets.back_sprites_dir, real_back)
+                b_dir = self.assets.back_sprites_dir
+                back_img_bytes = self._read_asset_bytes(b_dir, real_back)
 
             # 3. Cry
             cry_bytes = b""
             cry_fname_simple = f"{p_id}.ogg"
             cry_fname_pad = f"{p_id:04d}.ogg"
             real_cry = self.assets.cry_map.get(cry_fname_simple.lower()) or \
-                       self.assets.cry_map.get(cry_fname_pad.lower())
+                self.assets.cry_map.get(cry_fname_pad.lower())
             cry_bytes = self._read_asset_bytes(self.assets.cries_dir, real_cry)
 
             # 4. Stats & Types
             moveset_data = self.assets.movesets.get(str(p_id), {})
-            
+
             return {
                 "id": p_id,
                 "name": name,
@@ -264,12 +282,79 @@ class PokemonLoader:
     def fetch_specific(self, p_id, form="normal", is_shiny=False):
         """Fetches data for a specific Pokemon ID with proper regional form support."""
         try:
-            # --- META ALIASING ---
-            meta_id = 105 if p_id == 10500 else p_id
+            # --- SMART NUMBERING & META ALIASING ---
+            form_map = self.area_data.get("FORM_MAP", {})
+            meta_id = p_id
+            mapping = form_map.get(str(p_id))
+            name_override = None
 
-            base_name = self.assets.pokemon_names.get(
-                str(meta_id), f"POKEMON_{p_id}"
-            ).upper()
+            if mapping:
+                meta_id = mapping.get("id", p_id)
+                form = mapping.get("form", "normal")
+                name_override = mapping.get("name")
+            # [NEW] Rival Dynamic Aliasing (10100-10105)
+            # Scales with badge count: 0-2 (Stage 1), 3-5 (Stage 2), 6+ (Stage 3)
+            elif 10100 <= p_id <= 10105:
+                story = self.game.story_manager
+                badges = len(story.badges)
+                stage_offset = 0
+                if badges >= 6: stage_offset = 2
+                elif badges >= 3: stage_offset = 1
+
+                if p_id == 10100: # Rival Starter (Dynamic Evolution)
+                    rid = story.rival_starter_raw.get('id', 4) if story.rival_starter_raw else 4
+                    meta_id = rid + stage_offset
+                elif p_id == 10101: # Pidgey Line (16, 17, 18)
+                    meta_id = 16 + stage_offset
+                elif p_id == 10102: # Rattata (19, 20) -> Rhyhorn (111, 112)
+                    if badges < 6:
+                        meta_id = 19 + min(stage_offset, 1)
+                    else:
+                        meta_id = 111 + (stage_offset - 2) # Rhydon
+                elif p_id == 10103: # Abra Line (63, 64, 65)
+                    meta_id = 63 + stage_offset
+                elif p_id == 10104: # Dynamic Slot A (Growlithe/Gyarados/Exeggcute)
+                    rid = story.rival_starter_raw.get('id', 4) if story.rival_starter_raw else 4
+                    # Logic: Rival takes the types you didn't pick
+                    map_4 = {1: 58, 4: 129, 7: 102} # Bulba->Fire, Charm->Water, Squirt->Grass
+                    base = map_4.get(rid, 58)
+                    meta_id = base + min(stage_offset, 1) if base != 129 else (129 if stage_offset == 0 else 130)
+                elif p_id == 10105: # Dynamic Slot B
+                    rid = story.rival_starter_raw.get('id', 4) if story.rival_starter_raw else 4
+                    map_5 = {1: 129, 4: 102, 7: 58}
+                    base = map_5.get(rid, 129)
+                    meta_id = base + min(stage_offset, 1) if base != 129 else (129 if stage_offset == 0 else 130)
+            elif p_id == 3022:
+                meta_id = 3022
+                base_name = "NOWN"
+                form = "normal"
+                stage = 3
+
+            else:
+                # Legacy Magic Number Fallbacks
+                if p_id == 10500:
+                    meta_id = 105
+                elif 10000 <= p_id <= 10005:
+                    meta_id = 151
+                elif p_id >= 11000 and p_id % 100 == 0:
+                    meta_id = p_id // 100
+
+            # Ensure boss list is loaded for stage calculation in battles
+            if not self.all_boss_ids:
+                boss_keys = ["UB", "PAST", "FUTURE", "MYTHICAL", "MEGA", "GMAX", "STANDARD_BOSS"]
+                for key in boss_keys:
+                    ids = self.area_data.get(key, [])
+                    self.all_boss_ids.update(ids)
+
+            # Check for name override in area_data JSON
+            overrides = self.area_data.get("POKEMON_NAME_OVERRIDES", {})
+            if name_override:
+                base_name = name_override.upper()
+            elif str(p_id) in overrides:
+                base_name = overrides[str(p_id)].upper()
+            else:
+                pkmn_names = self.assets.pokemon_names
+                base_name = pkmn_names.get(str(meta_id), f"POKEMON_{p_id}").upper()
 
             if (
                 form
@@ -282,47 +367,93 @@ class PokemonLoader:
                 display_name = base_name
 
             stage = self.get_stage(base_name)
-            
+
             # Try to fetch form-specific moveset data first
             moveset_key = str(meta_id)
             if form and form != "normal":
                 form_key = f"{meta_id}_{form.lower()}"
                 if form_key in self.assets.movesets:
                     moveset_key = form_key
-            
+
             moveset_data = self.assets.movesets.get(moveset_key, {})
             # Fallback to base ID if form data missing
             if not moveset_data and str(meta_id) in self.assets.movesets:
                 moveset_data = self.assets.movesets[str(meta_id)]
 
             p_types = moveset_data.get("types", [])
-            
+
             # Hardcoded Type Overrides for Kanto Alolan Forms (if JSON missing them)
             if form == "alolan":
-                if p_id in [19, 20]: p_types = ["DARK", "NORMAL"] # Rattata/Raticate
-                elif p_id == 26: p_types = ["ELECTRIC", "PSYCHIC"] # Raichu
-                elif p_id in [27, 28]: p_types = ["ICE", "STEEL"] # Sandshrew/Sandslash
-                elif p_id == 37: p_types = ["ICE"] # Vulpix
-                elif p_id == 38: p_types = ["ICE", "FAIRY"] # Ninetales
-                elif p_id in [50, 51]: p_types = ["GROUND", "STEEL"] # Diglett/Dugtrio
-                elif p_id in [52, 53]: p_types = ["DARK"] # Meowth/Persian
-                elif p_id in [74, 75, 76]: p_types = ["ROCK", "ELECTRIC"] # Geodude line
-                elif p_id in [88, 89]: p_types = ["POISON", "DARK"] # Grimer/Muk
-                elif p_id == 103: p_types = ["GRASS", "DRAGON"] # Exeggutor
-                elif p_id == 105: p_types = ["FIRE", "GHOST"] # Marowak
+                if p_id in [19, 20]:
+                    p_types = ["DARK", "NORMAL"]  # Rattata/Raticate
+                elif p_id == 26:
+                    p_types = ["ELECTRIC", "PSYCHIC"]  # Raichu
+                elif p_id in [27, 28]:
+                    p_types = ["ICE", "STEEL"]  # Sandshrew/Sandslash
+                elif p_id == 37:
+                    p_types = ["ICE"]  # Vulpix
+                elif p_id == 38:
+                    p_types = ["ICE", "FAIRY"]  # Ninetales
+                elif p_id in [50, 51]:
+                    p_types = ["GROUND", "STEEL"]  # Diglett/Dugtrio
+                elif p_id in [52, 53]:
+                    p_types = ["DARK"]  # Meowth/Persian
+                elif p_id in [74, 75, 76]:
+                    p_types = ["ROCK", "ELECTRIC"]  # Geodude line
+                elif p_id in [88, 89]:
+                    p_types = ["POISON", "DARK"]  # Grimer/Muk
+                elif p_id == 103:
+                    p_types = ["GRASS", "DRAGON"]  # Exeggutor
+                elif p_id == 105:
+                    p_types = ["FIRE", "GHOST"]  # Marowak
+
+            # [OVERRIDE] Ancient One's Team (10000-10005): Dragon + Random Secondary
+            if 10000 <= p_id <= 10005:
+                types_pool = [
+                    "NORMAL", "FIRE", "WATER", "ELECTRIC", "GRASS", "ICE",
+                    "FIGHTING", "POISON", "GROUND", "FLYING", "PSYCHIC", "BUG",
+                    "ROCK", "GHOST", "STEEL", "DARK", "FAIRY"
+                ]
+                p_types = ["DRAGON", random.choice(types_pool)]
 
             p_stats = moveset_data.get("stats", DEFAULT_BASE_STATS)
 
             img_bytes = b""
+            # [FIX] Try loading the image for the Actual ID first (e.g. look for 10000.png)
             img_surface = self.assets.get_pokemon_image(p_id, form, is_shiny)
+            if not img_surface:
+                # Fallback to the Template sprite (e.g. Mewtwo for Blue)
+                img_surface = self.assets.get_pokemon_image(meta_id, form, is_shiny)
+
             if img_surface:
                 img_buffer = io.BytesIO()
                 pygame.image.save(img_surface, img_buffer, "sprite.png")
                 img_bytes = img_buffer.getvalue()
 
             back_img_bytes = b""
-            if form and form != "normal":
-                form_fname = f"{p_id}_{form.lower()}.png"
+
+            # [NEW] Check for back sprite by Smart ID numbering first (e.g., 2001.png)
+            # This follows the new regional form asset structure.
+            back_fname = f"{p_id}.png"
+            
+            if is_shiny:
+                shiny_back = self.assets.shiny_back_sprite_map.get(back_fname.lower())
+                if shiny_back:
+                    sb_path = os.path.join(self.assets.shiny_back_sprites_dir, shiny_back)
+                    if os.path.exists(sb_path):
+                        with open(sb_path, "rb") as f:
+                            back_img_bytes = f.read()
+
+            if not back_img_bytes:
+                back_path = self.assets.back_sprite_map.get(back_fname.lower())
+                if back_path and os.path.exists(os.path.join(self.assets.back_sprites_dir, back_path)):
+                    with open(os.path.join(self.assets.back_sprites_dir, back_path), "rb") as f:
+                        back_img_bytes = f.read()
+
+            # Fallback to standard form naming logic (e.g., 19_alolan.png)
+            if not back_img_bytes and form and form != "normal":
+                sep = "-" if meta_id == 201 else "_"
+                form_fname = f"{meta_id}{sep}{form.lower()}.png"
                 back_path = self.assets.back_sprite_map.get(form_fname.lower())
                 if back_path and os.path.exists(
                     os.path.join(self.assets.back_sprites_dir, back_path)
@@ -333,10 +464,10 @@ class PokemonLoader:
                         back_img_bytes = f.read()
 
             if not back_img_bytes:
-                standard_fname = f"{p_id}.png"
+                standard_fname = f"{meta_id}.png"
                 back_path = self.assets.back_sprite_map.get(standard_fname.lower())
                 if not back_path:
-                    padded_fname = f"{int(p_id):03d}.png"
+                    padded_fname = f"{int(meta_id):03d}.png"
                     back_path = self.assets.back_sprite_map.get(padded_fname)
                 if back_path and os.path.exists(
                     os.path.join(self.assets.back_sprites_dir, back_path)
@@ -354,6 +485,7 @@ class PokemonLoader:
 
             return {
                 "id": p_id,
+                "meta_id": meta_id,
                 "name": base_name,
                 "display_name": display_name,
                 "img": img_bytes,
@@ -384,9 +516,12 @@ class PokemonLoader:
         if not hasattr(self, "reverse_evo_map"):
             self.reverse_evo_map = {}
             for base, evos in self.evolution_map.items():
-                if base == "OVERRIDES": continue
-                if base == "ITEM_LOCKS": continue
-                if base == "EVOLUTION_ITEMS": continue
+                if base == "OVERRIDES":
+                    continue
+                if base == "ITEM_LOCKS":
+                    continue
+                if base == "EVOLUTION_ITEMS":
+                    continue
                 for evo in evos:
                     self.reverse_evo_map[evo] = base
 

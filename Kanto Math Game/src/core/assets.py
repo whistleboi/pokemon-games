@@ -5,8 +5,10 @@ import random
 import base64
 import io
 import sys
+import json
 from src.utils import Utils, MultiFont
-from src.config import POKEMON_GSC_BASE64, WHITE, VOLUME, DEFAULT_BASE_STATS, RED
+from src.config import POKEMON_GSC_BASE64, WHITE, VOLUME, RED
+
 
 class AssetManager:
     def __init__(self, width, height):
@@ -39,17 +41,23 @@ class AssetManager:
         if os.path.exists(self.assets_dir):
             visible = os.listdir(self.assets_dir)
             json_files = [f for f in visible if f.endswith(".json")]
+            msg = f"✓ Assets folder FOUND! {len(visible)} items "
             print(
-                f"✓ Assets folder FOUND! {len(visible)} items ({len(json_files)} JSON files)"
+                msg +
+                f"({len(json_files)} JSON files)"
             )
             print(f"   JSONs: {json_files}")
         else:
-            print(f"✗ CRITICAL: Assets folder still missing at {self.assets_dir}")
+            print(f"✗ CRITICAL: Assets folder missing at {self.assets_dir}")
 
         # === ALL SUBFOLDERS ===
         self.sprites_dir = Utils.get_actual_path(self.assets_dir, "sprites")
-        self.pokemon_sprites_dir = Utils.get_actual_path(self.sprites_dir, "pokemon")
-        self.back_sprites_dir = Utils.get_actual_path(self.pokemon_sprites_dir, "back")
+        self.pokemon_sprites_dir = Utils.get_actual_path(
+            self.sprites_dir, "pokemon"
+        )
+        self.back_sprites_dir = Utils.get_actual_path(
+            self.pokemon_sprites_dir, "back"
+        )
         self.shiny_back_sprites_dir = Utils.get_actual_path(
             self.back_sprites_dir, "shiny"
         )
@@ -73,6 +81,9 @@ class AssetManager:
         self.kanto_backgrounds_dir = Utils.get_actual_path(
             self.backgrounds_dir, "kanto"
         )
+        self.johto_backgrounds_dir = Utils.get_actual_path(
+            self.backgrounds_dir, "johto"
+        )
         self.battle_backgrounds_dir = Utils.get_actual_path(
             self.backgrounds_dir, "battle"
         )
@@ -94,6 +105,8 @@ class AssetManager:
         self.item_map = Utils.index_files(self.items_sprites_dir)
         self.trainer_map = Utils.index_files(self.trainers_dir)
         self.battle_bg_map = Utils.index_files(self.battle_backgrounds_dir)
+        self.kanto_bg_map = Utils.index_files(self.kanto_backgrounds_dir)
+        self.johto_bg_map = Utils.index_files(self.johto_backgrounds_dir)
         self.badges_dir = Utils.get_actual_path(self.assets_dir, "badges")
         self.player_trainer_map = Utils.index_files(self.player_trainers_dir)
         self.sound_map = Utils.index_files(self.sounds_dir)
@@ -135,6 +148,11 @@ class AssetManager:
         target_map = self.sprite_map
         fname_lower = f"{p_id}.png"
 
+        # [NEW] Check for Smart ID numbering (e.g., 2001.png) first.
+        # If the specific ID file exists in the base folder, skip form-string modification.
+        if p_id >= 2000 and fname_lower in target_map:
+            form = "normal"
+
         # Auto-detect padded filenames (001.png vs 1.png)
         if form == "normal" and fname_lower not in target_map:
             padded_name = f"{int(p_id):03d}.png"
@@ -168,9 +186,12 @@ class AssetManager:
                 fname_lower = f"{p_id}_gmax.png"
 
         elif form != "normal":
-            target_dir = self.alt_sprites_dir
-            target_map = self.alt_sprite_map
-            fname_lower = f"{p_id}_{form}.png".lower()
+            if p_id != 201:
+                target_dir = self.alt_sprites_dir
+                target_map = self.alt_sprite_map
+            # Unown uses hyphens for its 28 forms as per asset structure
+            sep = "-" if p_id == 201 else "_"
+            fname_lower = f"{p_id}{sep}{form}.png".lower()
 
         # Handle Shiny
         if is_shiny:
@@ -194,9 +215,9 @@ class AssetManager:
 
     def get_item_image(self, item_name):
         """Smart look-up for item sprites using various naming conventions."""
-        if not item_name: 
+        if not item_name:
             return None
-        
+
         base = item_name.lower()
         candidates = [
             f"{base}.png",
@@ -204,12 +225,12 @@ class AssetManager:
             f"{base.replace('_', '')}.png",
             f"{base}-ball.png" if "ball" in base and "-ball" not in base else None
         ]
-        
+
         for cand in candidates:
             if cand and cand in self.item_map:
                 path = os.path.join(self.items_sprites_dir, self.item_map[cand])
                 return pygame.transform.scale(pygame.image.load(path).convert_alpha(), (40, 40))
-        
+
         return None
 
     def get_random_battle_background(self, battle_type, area_name=""):
@@ -234,7 +255,10 @@ class AssetManager:
             override_bg = "battle_safari_zone.png"
 
         if override_bg and override_bg in self.battle_bg_map:
-            path = os.path.join(self.battle_backgrounds_dir, self.battle_bg_map[override_bg])
+            path = os.path.join(
+                self.battle_backgrounds_dir,
+                self.battle_bg_map[override_bg]
+            )
             try:
                 return pygame.image.load(path).convert()
             except Exception:
@@ -345,7 +369,7 @@ class AssetManager:
 
         try:
             primary_font.set_bold(bold)
-        except:
+        except (AttributeError, pygame.error):
             pass
 
         try:
@@ -355,16 +379,21 @@ class AssetManager:
 
         return MultiFont(primary_font, fallback_font)
 
-    def get_text(self, key, **kwargs):
-        """Retrieves text from loaded GAME_TEXT, formatting with kwargs."""
-        text = self.game_text.get(key, key)
+    def get_text(self, key, default=None, **kwargs):
+        """Retrieves text from loaded GAME_TEXT, formatting with kwargs. 
+        Falls back to 'default' if key is missing, or returns 'key' string if both are missing."""
+        if key in self.game_text:
+            text = self.game_text[key]
+        else:
+            text = default if default is not None else key
+            
         if isinstance(text, list):
             if kwargs:
                 formatted = []
                 for line in text:
                     try:
                         formatted.append(line.format(**kwargs))
-                    except:
+                    except Exception:
                         formatted.append(line)
                 return formatted
             return text
@@ -377,15 +406,28 @@ class AssetManager:
         return text
 
     def get_background(self, name, from_overworld=False):
-        bg_dir = self.overworld_dir if from_overworld else self.backgrounds_dir
-        path = Utils.get_actual_path(bg_dir, name)
-        if os.path.exists(path):
-            return pygame.image.load(path).convert()
+        if not name:
+            return None
+        name_lower = name.lower()
 
-        if not from_overworld:
-            path = Utils.get_actual_path(self.battle_backgrounds_dir, name)
-            if os.path.exists(path):
+        # Define search priority
+        search_configs = [
+            (self.johto_backgrounds_dir, self.johto_bg_map),
+            (self.kanto_backgrounds_dir, self.kanto_bg_map),
+            (self.battle_backgrounds_dir, self.battle_bg_map),
+            (self.backgrounds_dir, Utils.index_files(self.backgrounds_dir) if self.backgrounds_dir else {}),
+            (self.overworld_dir, Utils.index_files(self.overworld_dir) if self.overworld_dir else {})
+        ]
+
+        # Prioritize overworld folder if requested
+        if from_overworld:
+            search_configs.insert(0, search_configs.pop())
+
+        for bg_dir, bg_map in search_configs:
+            if bg_dir and bg_map and name_lower in bg_map:
+                path = os.path.join(bg_dir, bg_map[name_lower])
                 return pygame.image.load(path).convert()
+
         return None
 
     def _load_balls(self):
@@ -425,7 +467,7 @@ class AssetManager:
                 )
                 s.set_volume(VOLUME)
                 return s
-            except:
+            except Exception:
                 pass
         return None
 
@@ -467,7 +509,9 @@ class AssetManager:
         if not pokemon or not pokemon.types:
             return "Struggle"
 
-        moves_data = self.movesets.get(str(pokemon.id), {})
+        # [FIX] Use meta_id for template-based Pokemon (Ancient Snorlax, Ancient One team, etc)
+        target_id = getattr(pokemon, "meta_id", pokemon.id)
+        moves_data = self.movesets.get(str(target_id), {})
         all_moves = moves_data.get("moves", [])
 
         stab_moves = []
@@ -484,9 +528,9 @@ class AssetManager:
         _, move_name = random.choice(stab_moves[:3])
         return move_name.upper()
 
-    def get_badge_image(self, badge_index):
-        """Loads kanto_X.png for badges 1-8."""
-        fname = f"kanto_{badge_index}.png"
+    def get_badge_image(self, badge_index, region="kanto"):
+        """Loads [region]_X.png for badges 1-8."""
+        fname = f"{region.lower()}_{badge_index}.png"
         path = Utils.get_actual_path(self.badges_dir, fname)
         if os.path.exists(path):
             return pygame.image.load(path).convert_alpha()

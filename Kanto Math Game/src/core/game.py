@@ -87,9 +87,20 @@ class Game:
                             if "STORY_PROGRESSION" not in loaded_area_data:
                                 loaded_area_data["STORY_PROGRESSION"] = {}
                             loaded_area_data["STORY_PROGRESSION"].update(data["STORY_PROGRESSION"])
-                        # Merge other keys (wild pools, dialogue, etc)
+                        
+                        # [FIX] Smart-merge Johto data into Kanto data to prevent overwriting
+                        # top-level keys like GAME_TEXT, JOURNAL_MISSIONS, and FORM_MAP.
                         for k, v in data.items():
-                            if k != "STORY_PROGRESSION":
+                            if k == "STORY_PROGRESSION":
+                                continue
+                            
+                            # Merge Dictionaries (GAME_TEXT, FORM_MAP, TYPE_CHART)
+                            if isinstance(v, dict) and k in loaded_area_data and isinstance(loaded_area_data[k], dict):
+                                loaded_area_data[k].update(v)
+                            # Concatenate Lists (JOURNAL_MISSIONS)
+                            elif isinstance(v, list) and k in loaded_area_data and isinstance(loaded_area_data[k], list):
+                                loaded_area_data[k].extend(v)
+                            else:
                                 loaded_area_data[k] = v
 
                     print(f"✓ Loaded {os.path.basename(path)}")
@@ -104,6 +115,10 @@ class Game:
 
         if loaded_area_data:
             self.loader.area_data = loaded_area_data
+            # [FIX] Ensure the AssetManager text dictionary is pointed to the final merged result.
+            # This ensures Johto keys like 'johto_mom_home' are actually accessible.
+            if "GAME_TEXT" in loaded_area_data:
+                self.assets.game_text = loaded_area_data["GAME_TEXT"]
 
         self.loader.start()
 

@@ -1,21 +1,16 @@
 # [REF-0001: System Imports]
 import pygame
 import random
-import io
 import os
 import math
 import threading
-import queue
 import json
-import sys
-from abc import ABC, abstractmethod
-import base64
-from dataclasses import dataclass
 from src.states.base import GameState
 from src.ui.widgets import Button
 from src.ui.dialogue import ClassicDialogueBox
 from src.utils import Utils
-from src.config import WHITE, BLACK, GOLD, GB_PANEL_DARK, GRAY, LIGHT_GRAY, GREEN, RED, GB_PANEL, GB_BORDER, GB_TEXT
+from src.config import (WHITE, BLACK, GOLD, GB_PANEL_DARK, GRAY, LIGHT_GRAY,
+                        GREEN, RED, GB_PANEL, GB_BORDER, GB_TEXT)
 from src.pokemon.data import Pokemon
 
 
@@ -42,7 +37,8 @@ class MainMenuState(GameState):
             has_saves = True
         else:
             for i in range(5):
-                fname = os.path.join(game.assets.base_dir, f"game_data_{i}.json")
+                fname = os.path.join(
+                    game.assets.base_dir, f"game_data_{i}.json")
                 if os.path.exists(fname):
                     has_saves = True
                     break
@@ -79,6 +75,7 @@ class MainMenuState(GameState):
         self.btn_new.draw(self.game.screen)
         self.btn_load.draw(self.game.screen)
 
+
 # [REF-0056: Character Selection State]
 class CharacterSelectionState(GameState):
     def __init__(self, game):
@@ -86,7 +83,7 @@ class CharacterSelectionState(GameState):
         config = game.loader.area_data.get("GAME_CONFIG", {})
         self.char_list = config.get("PLAYABLE_CHARACTERS", ["red", "blue"])
         self.starter_ids = config.get("STARTER_IDS", [1, 4, 7])
-        
+
         self.selected_idx = random.randint(0, len(self.char_list) - 1)
         self.input_name = ""
         self.sprites = []
@@ -121,9 +118,11 @@ class CharacterSelectionState(GameState):
         for event in events:
             if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
                 if self.rect_left.collidepoint(event.pos):
-                    self.selected_idx = (self.selected_idx - 1) % len(self.char_list)
+                    self.selected_idx = (
+                        self.selected_idx - 1) % len(self.char_list)
                 elif self.rect_right.collidepoint(event.pos):
-                    self.selected_idx = (self.selected_idx + 1) % len(self.char_list)
+                    self.selected_idx = (
+                        self.selected_idx + 1) % len(self.char_list)
                 elif self.rect_select.collidepoint(event.pos):
                     self.confirm_selection()
 
@@ -142,7 +141,7 @@ class CharacterSelectionState(GameState):
         self.game.player_name = name
         self.game.player_character = char_key
 
-        self.game.change_state(RivalSelectionState(self.game))
+        self.game.change_state(RegionSelectionState(self.game))
 
     def update(self):
         pass
@@ -153,14 +152,17 @@ class CharacterSelectionState(GameState):
         cx, cy = self.game.width // 2, self.game.height // 2
 
         Utils.draw_text_outline(
-            screen, "CHOOSE YOUR TRAINER", self.game.assets.fonts["big"], WHITE, cx, 80
+            screen, "CHOOSE YOUR TRAINER",
+            self.game.assets.fonts["big"], WHITE, cx, 80
         )
 
         sprite = self.sprites[self.selected_idx]
         screen.blit(sprite, sprite.get_rect(center=(cx, cy)))
 
-        pygame.draw.rect(screen, GB_PANEL_DARK, self.rect_left, border_radius=12)
-        pygame.draw.rect(screen, GB_PANEL_DARK, self.rect_right, border_radius=12)
+        pygame.draw.rect(
+            screen, GB_PANEL_DARK, self.rect_left, border_radius=12)
+        pygame.draw.rect(
+            screen, GB_PANEL_DARK, self.rect_right, border_radius=12)
         Utils.draw_text_outline(
             screen,
             "<",
@@ -201,7 +203,9 @@ class CharacterSelectionState(GameState):
             self.game.height - 160,
         )
 
-        pygame.draw.rect(screen, GB_PANEL_DARK, self.rect_select, border_radius=10)
+        pygame.draw.rect(
+            screen, GB_PANEL_DARK, self.rect_select,
+            border_radius=10)
         Utils.draw_text_outline(
             screen,
             "SELECT",
@@ -210,6 +214,102 @@ class CharacterSelectionState(GameState):
             self.rect_select.centerx,
             self.rect_select.centery,
             outline_color=BLACK,
+        )
+
+
+class RegionSelectionState(GameState):
+    """Allows the player to choose their starting region (Kanto or Johto)."""
+    def __init__(self, game):
+        super().__init__(game)
+        self.regions = ["KANTO", "JOHTO"]
+        self.selected_idx = 0
+
+        cx, cy = game.width // 2, game.height // 2
+        # Using GB UI style boxes for region cards
+        self.rect_kanto = pygame.Rect(cx - 320, cy - 80, 300, 160)
+        self.rect_johto = pygame.Rect(cx + 20, cy - 80, 300, 160)
+
+    def handle_events(self, events):
+        for event in events:
+            if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+                if self.rect_kanto.collidepoint(event.pos):
+                    self.selected_idx = 0
+                    self.confirm_selection()
+                elif self.rect_johto.collidepoint(event.pos):
+                    self.selected_idx = 1
+                    self.confirm_selection()
+
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_LEFT:
+                    self.selected_idx = 0
+                elif event.key == pygame.K_RIGHT:
+                    self.selected_idx = 1
+                elif event.key == pygame.K_RETURN:
+                    self.confirm_selection()
+
+    def confirm_selection(self):
+        region = self.regions[self.selected_idx]
+        self.game.story_manager.starting_region = region
+
+        # ARCHITECT SYNC: Unlock starting regional badge page
+        if region == "JOHTO":
+            self.game.story_manager.story_flags["unlocked_johto_badges"] = True
+        else:
+            self.game.story_manager.story_flags["unlocked_kanto_badges"] = True
+
+        # Set the starting location based on chosen region
+        if region == "JOHTO":
+            self.game.story_manager.current_area_key = "NEW_BARK_TOWN"
+        else:
+            self.game.story_manager.current_area_key = "PALLET_TOWN"
+
+        self.game.change_state(RivalSelectionState(self.game))
+
+    def update(self):
+        pass
+
+    def draw(self):
+        screen = self.game.screen
+        screen.fill(BLACK)
+        cx = self.game.width // 2
+
+        Utils.draw_text_outline(screen, "WHERE WILL YOUR JOURNEY BEGIN?",
+                                self.game.assets.fonts["med"], WHITE, cx, 100)
+
+        # Draw Region Selection Cards
+        for i, rect in enumerate([self.rect_kanto, self.rect_johto]):
+            is_selected = (self.selected_idx == i)
+            bg_color = GB_PANEL if is_selected else GB_PANEL_DARK
+            border_color = GOLD if is_selected else WHITE
+            border_thickness = 6 if is_selected else 2
+
+            # Draw the card
+            pygame.draw.rect(screen, bg_color, rect, border_radius=15)
+            pygame.draw.rect(
+                screen, border_color, rect, border_thickness,
+                border_radius=15
+            )
+
+            region_name = self.regions[i]
+            text_color = WHITE if is_selected else GRAY
+            Utils.draw_text_outline(
+                screen, region_name,
+                self.game.assets.fonts["s_med"],
+                text_color, rect.centerx, rect.centery
+            )
+
+            # Display region context subtext
+            sub = "GEN 1 / RED / BLUE" if i == 0 else "GEN 2 / GOLD / SILVER"
+            Utils.draw_text_outline(
+                screen, sub, self.game.assets.fonts["tiny"],
+                GRAY, rect.centerx, rect.centery + 40
+            )
+
+        # Footer hint
+        msg = "SELECT A REGION TO CONTINUE"
+        Utils.draw_text_outline(
+            screen, msg, self.game.assets.fonts["small"],
+            GOLD, cx, self.game.height - 80
         )
 
 
@@ -247,9 +347,11 @@ class RivalSelectionState(GameState):
         for event in events:
             if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
                 if self.rect_left.collidepoint(event.pos):
-                    self.selected_idx = (self.selected_idx - 1) % len(self.char_list)
+                    self.selected_idx = (
+                        self.selected_idx - 1) % len(self.char_list)
                 elif self.rect_right.collidepoint(event.pos):
-                    self.selected_idx = (self.selected_idx + 1) % len(self.char_list)
+                    self.selected_idx = (
+                        self.selected_idx + 1) % len(self.char_list)
                 elif self.rect_select.collidepoint(event.pos):
                     self.confirm_selection()
             if event.type == pygame.KEYDOWN:
@@ -258,17 +360,30 @@ class RivalSelectionState(GameState):
                 elif event.key == pygame.K_RETURN:
                     self.confirm_selection()
                 elif event.key == pygame.K_LEFT:
-                    self.selected_idx = (self.selected_idx - 1) % len(self.char_list)
+                    self.selected_idx = (
+                        self.selected_idx - 1) % len(self.char_list)
                 elif event.key == pygame.K_RIGHT:
-                    self.selected_idx = (self.selected_idx + 1) % len(self.char_list)
+                    self.selected_idx = (
+                        self.selected_idx + 1) % len(self.char_list)
                 elif len(self.input_name) < 12 and event.unicode.isprintable():
                     self.input_name += event.unicode.upper()
 
     def confirm_selection(self):
         char_key = self.char_list[self.selected_idx]
         self.game.rival_character = char_key
-        self.game.rival_name = self.input_name.strip() if self.input_name.strip() else char_key.upper()
-        self.game.change_state(StarterSelectionState(self.game))
+        rival_name = self.input_name.strip()
+        self.game.rival_name = rival_name if rival_name else char_key.upper()
+
+        region = self.game.story_manager.starting_region
+        starter_ids = [152, 155, 158] if region == "JOHTO" else [1, 4, 7]
+
+        self.game.change_state(
+            StarterSelectionState(
+                self.game,
+                starter_ids=starter_ids,
+                region=region
+            )
+        )
 
     def update(self):
         pass
@@ -279,15 +394,24 @@ class RivalSelectionState(GameState):
         cx, cy = self.game.width // 2, self.game.height // 2
 
         Utils.draw_text_outline(
-            screen, "CHOOSE YOUR RIVAL", self.game.assets.fonts["big"], WHITE, cx, 80
+            screen,
+            "CHOOSE YOUR RIVAL",
+            self.game.assets.fonts["big"],
+            WHITE,
+            cx,
+            80,
         )
 
         if self.sprites:
             sprite = self.sprites[self.selected_idx]
             screen.blit(sprite, sprite.get_rect(center=(cx, cy)))
 
-        pygame.draw.rect(screen, GB_PANEL_DARK, self.rect_left, border_radius=12)
-        pygame.draw.rect(screen, GB_PANEL_DARK, self.rect_right, border_radius=12)
+        pygame.draw.rect(
+            screen, GB_PANEL_DARK, self.rect_left, border_radius=12
+        )
+        pygame.draw.rect(
+            screen, GB_PANEL_DARK, self.rect_right, border_radius=12
+        )
         Utils.draw_text_outline(
             screen,
             "<",
@@ -331,7 +455,8 @@ class RivalSelectionState(GameState):
             self.game.height - 160,
         )
 
-        pygame.draw.rect(screen, GB_PANEL_DARK, self.rect_select, border_radius=10)
+        pygame.draw.rect(
+            screen, GB_PANEL_DARK, self.rect_select, border_radius=10)
         Utils.draw_text_outline(
             screen,
             "SELECT",
@@ -348,11 +473,11 @@ class StarterSelectionState(GameState):
     def __init__(self, game, starter_ids=None, region="KANTO"):
         super().__init__(game)
         self.region = region
-        
+
         config = game.loader.area_data.get("GAME_CONFIG", {})
         default_starters = config.get("STARTER_IDS", [1, 4, 7])
         self.starter_ids = starter_ids if starter_ids else default_starters
-        
+
         self.starters_raw = []
         self.starters = []
         self.selected_idx = -1
@@ -365,7 +490,11 @@ class StarterSelectionState(GameState):
         self.selection_complete = False
         self.math_buttons_ready = False
 
-        background_raw = self.game.assets.get_background("starter_bg.png")
+        bg_name = (
+            "starter_johto.png" if self.region == "JOHTO"
+            else "starter_bg.png"
+        )
+        background_raw = self.game.assets.get_background(bg_name)
         if background_raw:
             self.background = pygame.transform.scale(
                 background_raw, (self.game.width, self.game.height)
@@ -404,9 +533,13 @@ class StarterSelectionState(GameState):
         ):
             self.starters_raw = self.game.preloaded_starter_data
         else:
-            self.starters_raw = [self.game.loader.fetch_specific(i) for i in self.starter_ids]
+            self.starters_raw = [
+                self.game.loader.fetch_specific(i)
+                for i in self.starter_ids
+            ]
         self.starters = [
-            Pokemon(p, self.game.assets, size_mult=2) for p in self.starters_raw
+            Pokemon(p, self.game.assets, size_mult=2)
+            for p in self.starters_raw
         ]
         self.dialogue_box.reset(self.game.assets.get_text("choose_partner"))
 
@@ -429,12 +562,14 @@ class StarterSelectionState(GameState):
             f = c + offset
             if f >= 0 and f not in opts:
                 opts.add(f)
-        return problem_str, ans, sorted(list(opts), key=lambda x: random.random())
+        return problem_str, ans, sorted(
+            list(opts), key=lambda x: random.random()
+        )
 
     def update_answer_buttons(self):
         self.math_buttons_ready = True
         box_rect = self.dialogue_box.rect
-        
+
         for i in range(3):
             # Position buttons inside the golden dialogue box at the bottom
             btn_w = 120
@@ -442,13 +577,10 @@ class StarterSelectionState(GameState):
             spacing = 20
             total_width = (btn_w * 3) + (spacing * 2)
             start_x = box_rect.centerx - (total_width // 2)
-            
+
             cx = start_x + i * (btn_w + spacing) + (btn_w // 2)
             cy = box_rect.bottom - 40
-            
-            txt = str(self.options[i])
-            font = self.game.assets.fonts["num"]
-            text_surf = font.render(txt, True, WHITE)
+
             self.answer_btn_rects[i] = pygame.Rect(
                 cx - btn_w // 2, cy - btn_h // 2, btn_w, btn_h
             )
@@ -470,21 +602,28 @@ class StarterSelectionState(GameState):
                                     "correct"
                                 )
                                 self.feedback_timer = 45
-                                if self.questions_correct >= self.questions_needed:
+                                if (
+                                    self.questions_correct
+                                    >= self.questions_needed
+                                ):
                                     self.complete_selection()
                                 else:
-                                    self.problem_str, self.correct_ans, self.options = (
-                                        self.generate_math_set()
-                                    )
+                                    (
+                                        self.problem_str,
+                                        self.correct_ans,
+                                        self.options,
+                                    ) = self.generate_math_set()
                                     self.update_answer_buttons()
                             else:
                                 self.feedback_text = self.game.assets.get_text(
                                     "try_again"
                                 )
                                 self.feedback_timer = 45
-                                self.problem_str, self.correct_ans, self.options = (
-                                    self.generate_math_set()
-                                )
+                                (
+                                    self.problem_str,
+                                    self.correct_ans,
+                                    self.options,
+                                ) = self.generate_math_set()
                                 self.update_answer_buttons()
                             break
 
@@ -497,7 +636,8 @@ class StarterSelectionState(GameState):
                     for i, p in enumerate(self.starters):
                         hover_y = (
                             math.sin(
-                                pygame.time.get_ticks() * p.bob_speed + p.bob_offset
+                                pygame.time.get_ticks() * p.bob_speed
+                                + p.bob_offset
                             )
                             * p.bob_amount
                         )
@@ -522,61 +662,76 @@ class StarterSelectionState(GameState):
 
             self.dialogue_box.handle_event(event)
 
-    def update_answer_buttons(self):
-        self.math_buttons_ready = True
-        box_rect = self.dialogue_box.rect
-        for i in range(3):
-            btn_w, btn_h, spacing = 120, 50, 20
-            total_width = (btn_w * 3) + (spacing * 2)
-            start_x = box_rect.centerx - (total_width // 2)
-            cx = start_x + i * (btn_w + spacing) + (btn_w // 2)
-            cy = box_rect.bottom - 40
-            
-            txt = str(self.options[i])
-            font = self.game.assets.fonts["num"]
-            text_surf = font.render(txt, True, WHITE)
-            self.answer_btn_rects[i] = pygame.Rect(
-                cx - btn_w // 2, cy - btn_h // 2, btn_w, btn_h
-            )
-
     def complete_selection(self):
         chosen_pokemon_obj = self.starters[self.selected_idx]
         if chosen_pokemon_obj.cry:
             chosen_pokemon_obj.cry.play()
-        
-        msg_text = self.game.assets.get_text("chosen_starter", name=chosen_pokemon_obj.name)
-        
-        if len(self.game.story_manager.player_team) < 6:
-            self.game.story_manager.player_team.append(chosen_pokemon_obj)
-        else:
-            self.game.story_manager.pc_pokemon.append(chosen_pokemon_obj)
-            msg_text = f"You chose {chosen_pokemon_obj.name}! Party full, sent to PC."
+
+        msg_text = self.game.assets.get_text(
+            "chosen_starter", name=chosen_pokemon_obj.name
+        )
+
+        # Force starter to lead position.
+        # Move 6th member to PC if party is full.
+        team = self.game.story_manager.player_team
+        pc = self.game.story_manager.pc_pokemon
+
+        if len(team) >= 6:
+            moved_pkmn = team.pop(5)  # Remove the 6th Pokémon
+            pc.append(moved_pkmn)
+            pc_msg = (
+                f"{moved_pkmn.display_name.upper()} was sent to BILL'S PC!"
+            )
+            msg_text = [msg_text, pc_msg]
+
+        team.insert(0, chosen_pokemon_obj)
 
         self.game.data.add_pokemon(chosen_pokemon_obj)
         self.game.data.save()
 
         # Handle Johto-specific flag
         if self.region == "JOHTO":
-            self.game.story_manager.story_flags["received_johto_starter"] = True
+            flag_key = "received_starter_johto"
+            self.game.story_manager.story_flags[flag_key] = True
+        else:
+            flag_key = "received_starter_kanto"
+            self.game.story_manager.story_flags[flag_key] = True
 
         # Determine Rival
         if self.region == "JOHTO":
-            # Hardcoded advantage for Johto trio (Grass->Fire->Water)
-            # Indices: 0=Grass, 1=Fire, 2=Water
+            # Silver takes the advantage (Rival 1)
             rival_map = {0: 1, 1: 2, 2: 0}
-            rival_idx_in_list = rival_map.get(self.selected_idx, 0)
-            self.game.story_manager.rival_starter_raw = self.starters_raw[rival_idx_in_list]
+            s_idx = self.selected_idx
+            rival_idx_in_list = rival_map.get(s_idx, 0)
+            rival_starter = self.starters_raw[rival_idx_in_list]
+            self.game.story_manager.rival_starter_raw = rival_starter
+
+            # The User Rival (Rival 2) takes the 3rd one
+            all_indices = {0, 1, 2}
+            taken = {self.selected_idx, rival_idx_in_list}
+            remaining = list(all_indices - taken)[0]
+            user_rival_starter = self.starters_raw[remaining]
+            self.game.story_manager.user_rival_starter_raw = (
+                user_rival_starter
+            )
         else:
             # Standard Kanto Logic
             player_primary_type = (
-                chosen_pokemon_obj.types[0] if chosen_pokemon_obj.types else "NORMAL"
+                chosen_pokemon_obj.types[0]
+                if chosen_pokemon_obj.types
+                else "NORMAL"
             )
-            advantage_map = {"GRASS": "FIRE", "FIRE": "WATER", "WATER": "GRASS"}
+            advantage_map = {
+                "GRASS": "FIRE",
+                "FIRE": "WATER",
+                "WATER": "GRASS"
+            }
             rival_type_advantage = advantage_map.get(player_primary_type)
 
             rival_choice = None
             remaining_starters = [
-                p_raw for i, p_raw in enumerate(self.starters_raw) if i != self.selected_idx
+                p_raw for i, p_raw in enumerate(self.starters_raw)
+                if i != self.selected_idx
             ]
             if rival_type_advantage:
                 for starter in remaining_starters:
@@ -587,8 +742,14 @@ class StarterSelectionState(GameState):
                 rival_choice = random.choice(remaining_starters)
 
             self.game.story_manager.rival_starter_raw = rival_choice
+
+        # Finalize World Entry if this is the game start
+        if not self.game.story_manager.game_started:
             self.game.story_manager.game_started = True
-            self.game.story_manager.current_area_key = "PALLET_TOWN"
+            if self.region == "JOHTO":
+                self.game.story_manager.current_area_key = "NEW_BARK_TOWN"
+            else:
+                self.game.story_manager.current_area_key = "PALLET_TOWN"
 
         self.selection_complete = True
         self.dialogue_box.reset(msg_text)
@@ -597,9 +758,11 @@ class StarterSelectionState(GameState):
     def start_rival_battle(self):
         from src.states.battle import TrainerBattleState, TrainerIntroState
         rival_pokemon = Pokemon(
-            self.game.story_manager.rival_starter_raw, self.game.assets, size_mult=2
+            self.game.story_manager.rival_starter_raw,
+            self.game.assets,
+            size_mult=2
         )
-        
+
         if self.region == "JOHTO":
             rival_name = "SILVER"
             trainer_class = "RIVAL"
@@ -607,43 +770,60 @@ class StarterSelectionState(GameState):
             if not rival_sprite:
                 # Fallback if silver.png missing
                 rival_sprite = self.game.assets.get_trainer_image("rival.png")
-            bg_name = "battle_elmlab.png" # Optional custom BG
+            bg_name = "battle_elmlab.png"  # Optional custom BG
         else:
             rival_sprite_key = getattr(self.game, "rival_character", "blue")
             rival_name = getattr(self.game, "rival_name", "BLUE")
             trainer_class = "RIVAL"
             bg_name = "battle_oaklab.png"
-            
-            rival_sprite = self.game.assets.get_player_image(rival_sprite_key, back=False)
+
+            rival_sprite = self.game.assets.get_player_image(
+                rival_sprite_key, back=False
+            )
             if rival_sprite:
                 h = int(self.game.height * 0.6)
-                w = int(rival_sprite.get_width() * (h / rival_sprite.get_height()))
+                aspect_ratio = h / rival_sprite.get_height()
+                w = int(rival_sprite.get_width() * aspect_ratio)
                 rival_sprite = pygame.transform.scale(rival_sprite, (w, h))
             else:
                 rival_sprite = self.game.assets.get_trainer_image("rival.png")
 
+        area_name = (
+            "NEW_BARK_TOWN" if self.region == "JOHTO"
+            else "PALLET_TOWN"
+        )
         battle_state = TrainerBattleState(
             self.game,
             rival_pokemon,
             trainer_sprite=rival_sprite,
             trainer_class=trainer_class,
             trainer_name=rival_name,
+            area_name=area_name,
             battle_type="rival",
         )
 
         lab_bg = self.game.assets.get_background(bg_name)
         if lab_bg:
             box_top = Utils.get_full_dialogue_rect(self.game).top - 8
-            battle_state.background = pygame.transform.scale(lab_bg, (self.game.width, box_top))
+            scaled_bg = pygame.transform.scale(
+                lab_bg, (self.game.width, box_top)
+            )
+            battle_state.background = scaled_bg
 
-        all_dialogue = self.game.loader.area_data.get("TRAINER_CLASS_DIALOGUE", {})
-        intro_text_options = all_dialogue.get(trainer_class, {}).get("intro", ["Let's battle!"])
-        
+        all_dialogue = self.game.loader.area_data.get(
+            "TRAINER_CLASS_DIALOGUE", {}
+        )
+        intro_text_options = all_dialogue.get(
+            trainer_class, {}
+        ).get("intro", ["Let's battle!"])
+
         if self.region == "JOHTO":
             intro_text_options = ["...You think you're strong?"]
-            
+
         dialogue = random.choice(intro_text_options)
-        intro_state = TrainerIntroState(self.game, rival_sprite, dialogue, battle_state)
+        intro_state = TrainerIntroState(
+            self.game, rival_sprite, dialogue, battle_state
+        )
 
         self.game.change_state(intro_state)
 
@@ -700,14 +880,21 @@ class StarterSelectionState(GameState):
                 )
                 pygame.draw.rect(self.game.screen, RED, hitbox, 2)
 
-        if self.selected_idx != -1 and self.questions_correct < self.questions_needed:
+        if (
+            self.selected_idx != -1
+            and self.questions_correct < self.questions_needed
+        ):
             msg = self.game.assets.get_text(
                 "starter_befriend",
                 n=self.questions_needed,
                 name=self.starters[self.selected_idx].name,
             )
             if "Answer" in msg and len(msg) > 30:
-                 msg = f"Answer {self.questions_needed} Qs to befriend {self.starters[self.selected_idx].name}!"
+                starter_name = self.starters[self.selected_idx].name
+                msg = (
+                    f"Answer {self.questions_needed} Qs to "
+                    f"befriend {starter_name}!"
+                )
 
             Utils.draw_text_outline(
                 self.game.screen,
@@ -732,11 +919,17 @@ class StarterSelectionState(GameState):
                 # Rects are updated in update_answer_buttons, just use them
                 btn_rect = self.answer_btn_rects[i]
                 txt = str(self.options[i])
-                
+
                 self.answer_btn_rects[i] = btn_rect
-                pygame.draw.rect(self.game.screen, WHITE, btn_rect, border_radius=10)
-                pygame.draw.rect(self.game.screen, BLACK, btn_rect, 2, border_radius=10)
-                
+                pygame.draw.rect(
+                    self.game.screen, WHITE, btn_rect,
+                    border_radius=10
+                )
+                pygame.draw.rect(
+                    self.game.screen, BLACK, btn_rect, 2,
+                    border_radius=10
+                )
+
                 Utils.draw_text_outline(
                     self.game.screen,
                     txt,
@@ -772,9 +965,13 @@ class LoadState(GameState):
         for i in range(5):
             y_pos = game.height * 0.2 + i * 100
             rect = (game.width / 2 - 300, y_pos, 600, 80)
-            callback = lambda i=i: self.confirm_load(i)
+
+            def make_callback(index):
+                return lambda: self.confirm_load(index)
+
+            slot_text = self.get_slot_text(i)
             btn = Button(
-                rect, self.get_slot_text(i), game.assets.fonts["tiny"], callback
+                rect, slot_text, game.assets.fonts["tiny"], make_callback(i)
             )
             self.buttons.append(btn)
 
@@ -793,14 +990,30 @@ class LoadState(GameState):
             game.assets.fonts["med"]
         )
         cx, cy = game.width // 2, game.height // 2
-        self.btn_yes = Button((cx - 150, cy + 50, 120, 60), "YES", game.assets.fonts["small"], self.do_load, bg_color=GREEN, autosize=False)
-        self.btn_no = Button((cx + 30, cy + 50, 120, 60), "NO", game.assets.fonts["small"], self.cancel_load, bg_color=RED, autosize=False)
+        self.btn_yes = Button(
+            (cx - 150, cy + 50, 120, 60),
+            "YES",
+            game.assets.fonts["small"],
+            self.do_load,
+            bg_color=GREEN,
+            autosize=False
+        )
+        self.btn_no = Button(
+            (cx + 30, cy + 50, 120, 60),
+            "NO",
+            game.assets.fonts["small"],
+            self.cancel_load,
+            bg_color=RED,
+            autosize=False
+        )
 
     def load_save_slots(self):
         # Reuse logic from SaveState or move to DataManager if preferred
         slots = []
         for i in range(5):
-            fname = os.path.join(self.game.assets.base_dir, f"game_data_{i}.json")
+            fname = os.path.join(
+                self.game.assets.base_dir, f"game_data_{i}.json"
+            )
             if os.path.exists(fname):
                 try:
                     with open(fname, "r") as f:
@@ -810,7 +1023,7 @@ class LoadState(GameState):
                                 "area": data.get("save_area", "Unknown"),
                                 "file": fname
                             })
-                except:
+                except (json.JSONDecodeError, IOError):
                     slots.append(None)
             else:
                 slots.append(None)
@@ -837,17 +1050,18 @@ class LoadState(GameState):
 
     def do_load(self):
         # Load the specific file
-        self.game.data.save_file = self.save_slots[self.selected_slot_index]["file"]
-        
+        slot_data = self.save_slots[self.selected_slot_index]
+        self.game.data.save_file = slot_data["file"]
+
         # CRITICAL: Force reload data from the new file path
         self.game.data.data = self.game.data._load()
-        
+
         if self.game.load_game_data():
             pass
         else:
             self.game.show_dialogue(["Error loading save file."])
             self.cancel_load()
-    
+
     def cancel_load(self):
         self.phase = "SELECT"
         self.start()
@@ -869,7 +1083,12 @@ class LoadState(GameState):
         self.game.screen.fill(BLACK)
         if self.phase == "SELECT":
             Utils.draw_text_outline(
-                self.game.screen, "LOAD GAME", self.game.assets.fonts["med"], WHITE, self.game.width // 2, 50
+                self.game.screen,
+                "LOAD GAME",
+                self.game.assets.fonts["med"],
+                WHITE,
+                self.game.width // 2,
+                50
             )
             self.game.ui_manager.draw(self.game.screen)
         elif self.phase == "CONFIRM":
@@ -888,15 +1107,22 @@ class SaveState(GameState):
         self.selected_slot = None
         self.input_text = ""
         self.input_active = False
-        self.bg_panel = pygame.Rect(game.width * 0.15, game.height * 0.15, game.width * 0.7, game.height * 0.7)
+        self.bg_panel = pygame.Rect(
+            game.width * 0.15, game.height * 0.15,
+            game.width * 0.7, game.height * 0.7
+        )
 
         for i in range(5):
             y_pos = game.height * 0.2 + i * 100
             rect = (game.width / 2 - 300, y_pos, 600, 80)
-            callback = lambda i=i: self.select_slot(i)
-            btn = Button(
-                rect, self.get_slot_text(i), game.assets.fonts["tiny"], callback
-            )
+
+            def make_callback(index):
+                def callback():
+                    self.select_slot(index)
+                return callback
+            btn = Button(rect, self.get_slot_text(i),
+                         game.assets.fonts["tiny"],
+                         make_callback(i))
             self.buttons.append(btn)
 
         self.btn_back = Button(
@@ -918,7 +1144,8 @@ class SaveState(GameState):
     def load_save_slots(self):
         slots = []
         for i in range(5):
-            fname = os.path.join(self.game.assets.base_dir, f"game_data_{i}.json")
+            fname = os.path.join(self.game.assets.base_dir,
+                                 f"game_data_{i}.json")
             if os.path.exists(fname):
                 try:
                     with open(fname, "r") as f:
@@ -929,7 +1156,7 @@ class SaveState(GameState):
                                 "area": data.get("save_area", "Unknown"),
                             }
                         )
-                except:
+                except (json.JSONDecodeError, IOError):
                     slots.append(None)
             else:
                 slots.append(None)
@@ -945,7 +1172,8 @@ class SaveState(GameState):
     def select_slot(self, i):
         self.selected_slot = i
         self.input_active = True
-        self.input_text = self.save_slots[i]["name"] if self.save_slots[i] else ""
+        has_slot = self.save_slots[i]
+        self.input_text = has_slot["name"] if has_slot else ""
         for btn in self.buttons:
             btn.set_visibility(False)
         self.btn_back.set_visibility(False)
@@ -1001,10 +1229,16 @@ class SaveState(GameState):
 
     def draw(self):
         self.game.screen.fill(BLACK)
-        
+
         # Draw a nice panel for the menu
-        pygame.draw.rect(self.game.screen, (40, 40, 60), self.bg_panel, border_radius=20)
-        pygame.draw.rect(self.game.screen, WHITE, self.bg_panel, 4, border_radius=20)
+        pygame.draw.rect(
+            self.game.screen, (40, 40, 60),
+            self.bg_panel, border_radius=20
+            )
+        pygame.draw.rect(
+            self.game.screen, WHITE,
+            self.bg_panel, 4, border_radius=20
+            )
 
         Utils.draw_text_outline(
             self.game.screen,

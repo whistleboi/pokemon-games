@@ -7,10 +7,12 @@ from dataclasses import dataclass
 from src.config import DEFAULT_BASE_STATS, VOLUME
 from src.utils import DummySound
 
+
 # [REF-0005: Pokemon Core Class]
 class Pokemon:
     def __init__(self, raw_data, assets, size_mult=3.5):
         self.id = raw_data["id"]
+        self.meta_id = raw_data.get("meta_id", self.id)
         self.name = raw_data["name"]
         self.display_name = raw_data.get("display_name", self.name)
         self.form = raw_data.get("form", "normal")
@@ -60,8 +62,10 @@ class Pokemon:
         self.image = pygame.transform.scale(img_surface, (s, s))
 
         sb_scale = 0.05 if assets.is_pc else 0.12
+        sb_size = int(assets.width * sb_scale)
         self.sidebar_image = pygame.transform.scale(
-            img_surface, (int(assets.width * sb_scale), int(assets.width * sb_scale))
+            img_surface,
+            (sb_size, sb_size)
         )
         try:
             self.cry = (
@@ -80,7 +84,9 @@ class Pokemon:
     @property
     def effective_stage(self):
         """Calculates stage based on base stage + accumulated wins (Pseudo Stages)."""
-        bonus = self.wins // 10
+        if hasattr(self, "_stage_override"):
+            return self._stage_override
+        bonus = self.wins // 15
         return min(3, self.stage + bonus)
 
     def get_max_hp(self, stage_override=None):
@@ -88,7 +94,8 @@ class Pokemon:
         st = stage_override if stage_override is not None else self.effective_stage
         if st >= 3:
             return 16
-        elif st == 2: return 12
+        elif st == 2:
+            return 12
         return 8
 
     def get_stat(self, stat_name):
@@ -98,6 +105,76 @@ class Pokemon:
     def set_volume(self, volume):
         if self.cry:
             self.cry.set_volume(volume)
+
+    def transform_into(self, target):
+        """Transforms this Pokemon into the target (Ditto logic)."""
+        if self.id != 132:
+            return  # Only Ditto
+        if hasattr(self, "transformed_state"):
+            return  # Already transformed
+
+        # Save state
+        ditto_color_tint = (180, 150, 200)  # A tint color for multiplication
+
+        self.transformed_state = {
+            "id": self.id,
+            "name": self.name,
+            "display_name": self.display_name,
+            "types": self.types,
+            "base_stats": self.base_stats,
+            "image": self.image,
+            "back_image": self.back_image,
+            "sidebar_image": self.sidebar_image,
+            "cry": self.cry,
+            "max_hp": self.max_hp,
+            "current_hp": self.current_hp,
+            "form": self.form
+        }
+
+        # Copy target (Takes HP, Stage, Typing, Appearance)
+        self.id = target.id
+        self.name = target.name
+        self.display_name = target.display_name
+        self.types = target.types
+        self.base_stats = target.base_stats
+        self.cry = target.cry
+        self.form = target.form
+
+        self.max_hp = target.max_hp
+        self.current_hp = target.current_hp
+        self._stage_override = target.effective_stage
+
+        if target.image:
+            self.image = target.image.copy()
+            self.image.fill(ditto_color_tint, special_flags=pygame.BLEND_RGB_MULT)
+        else:
+            self.image = None
+
+        if target.back_image:
+            self.back_image = target.back_image.copy()
+            self.back_image.fill(ditto_color_tint, special_flags=pygame.BLEND_RGB_MULT)
+        else:
+            self.back_image = None
+
+        if target.sidebar_image:
+            self.sidebar_image = target.sidebar_image.copy()
+            self.sidebar_image.fill(ditto_color_tint, special_flags=pygame.BLEND_RGB_MULT)
+        else:
+            self.sidebar_image = None
+
+    def revert_transform(self):
+        """Reverts a transformed Pokemon back to original state."""
+        if not hasattr(self, "transformed_state"):
+            return
+
+        state = self.transformed_state
+        for key, value in state.items():
+            setattr(self, key, value)
+
+        if hasattr(self, "_stage_override"):
+            del self._stage_override
+
+        del self.transformed_state
 
 
 # [REF-0060: CaughtPokemon Dataclass for Simplified Storage]

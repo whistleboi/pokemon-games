@@ -58,6 +58,7 @@ class Button(UIElement):
         pygame.draw.rect(
             surface, self.bg_color, self.rect, border_radius=self.border_radius
         )
+        pygame.draw.rect(surface, BLACK, self.rect, 3, border_radius=self.border_radius)
         
         if self.icon:
             icon_rect = self.icon.get_rect(midleft=(self.rect.left + 15, self.rect.centery))

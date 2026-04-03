@@ -1,4 +1,80 @@
 {
+  "FORM_MAP": {
+    "2001": { "id": 19, "form": "alolan", "name": "Alolan Rattata" },
+    "2002": { "id": 20, "form": "alolan", "name": "Alolan Raticate" },
+    "2003": { "id": 26, "form": "alolan", "name": "Alolan Raichu" },
+    "2004": { "id": 27, "form": "alolan", "name": "Alolan Sandshrew" },
+    "2005": { "id": 28, "form": "alolan", "name": "Alolan Sandslash" },
+    "2006": { "id": 37, "form": "alolan", "name": "Alolan Vulpix" },
+    "2007": { "id": 38, "form": "alolan", "name": "Alolan Ninetales" },
+    "2008": { "id": 50, "form": "alolan", "name": "Alolan Diglett" },
+    "2009": { "id": 51, "form": "alolan", "name": "Alolan Dugtrio" },
+    "2010": { "id": 52, "form": "alolan", "name": "Alolan Meowth" },
+    "2011": { "id": 53, "form": "alolan", "name": "Alolan Persian" },
+    "2012": { "id": 74, "form": "alolan", "name": "Alolan Geodude" },
+    "2013": { "id": 75, "form": "alolan", "name": "Alolan Graveler" },
+    "2014": { "id": 76, "form": "alolan", "name": "Alolan Golem" },
+    "2015": { "id": 88, "form": "alolan", "name": "Alolan Grimer" },
+    "2016": { "id": 89, "form": "alolan", "name": "Alolan Muk" },
+    "2017": { "id": 103, "form": "alolan", "name": "Alolan Exeggutor" },
+    "2018": { "id": 105, "form": "alolan", "name": "Alolan Marowak" },
+    "2019": { "id": 54,  "form": "galarian",   "name": "Galarian Meowth" },
+    "2020": { "id": 77,  "form": "galarian", "name": "Galarian Ponyta" },
+    "2021": { "id": 78,  "form": "galarian", "name": "Galarian Rapidash" },
+    "2022": { "id": 79,  "form": "galarian", "name": "Galarian Slowpoke" },
+    "2023": { "id": 80,  "form": "galarian", "name": "Galarian Slowbro" },
+    "2024": { "id": 83,  "form": "galarian", "name": "Galarian Farfetch'd" },
+    "2025": { "id": 110, "form": "galarian", "name": "Galarian Weezing" },
+    "2026": { "id": 122, "form": "galarian", "name": "Galarian Mr. Mime" },
+    "2027": { "id": 144, "form": "galarian", "name": "Galarian Articuno" },
+    "2028": { "id": 145, "form": "galarian", "name": "Galarian Zapdos" },
+    "2029": { "id": 146, "form": "galarian", "name": "Galarian Moltres" },
+    "2030": { "id": 199, "form": "galarian", "name": "Galarian Slowking" },
+    "2031": { "id": 222, "form": "galarian", "name": "Galarian Corsola" },
+    "2032": { "id": 263, "form": "galarian", "name": "Galarian Zigzagoon" },
+    "2033": { "id": 264, "form": "galarian", "name": "Galarian Linoone" },
+    "2034": { "id": 554, "form": "galarian", "name": "Galarian Darumaka" },
+    "2035": { "id": 555, "form": "galarian", "name": "Galarian Darmanitan" },
+    "2036": { "id": 555, "form": "galarian", "name": "Galarian Darmanitan Zen Mode" },
+    "2037": { "id": 562, "form": "galarian", "name": "Galarian Yamask" },
+    "2038": { "id": 618, "form": "galarian", "name": "Galarian Stunfisk" },
+    "2039": { "id": 58, "form": "hisuian", "name": "Hisuian Growlithe" },
+    "2040": { "id": 59, "form": "hisuian", "name": "Hisuian Arcanine" },
+    "2041": { "id": 100, "form": "hisuian", "name": "Hisuian Voltorb" },
+    "2042": { "id": 101, "form": "hisuian", "name": "Hisuian Electrode" },
+    "2043": { "id": 157, "form": "hisuian", "name": "Hisuian Typhlosion" },
+    "2044": { "id": 211, "form": "hisuian", "name": "Hisuian Qwilfish" },
+    "2045": { "id": 215, "form": "hisuian", "name": "Hisuian Sneasel" },
+    "2046": { "id": 503, "form": "hisuian", "name": "Hisuian Samurott" },
+    "2047": { "id": 549, "form": "hisuian", "name": "Hisuian Lilligant" },
+    "2048": { "id": 570, "form": "hisuian", "name": "Hisuian Zorua" },
+    "2049": { "id": 571, "form": "hisuian", "name": "Hisuian Zoroark" },
+    "2050": { "id": 628, "form": "hisuian", "name": "Hisuian Braviary" },
+    "2051": { "id": 705, "form": "hisuian", "name": "Hisuian Sliggoo" },
+    "2052": { "id": 706, "form": "hisuian", "name": "Hisuian Goodra" },
+    "2053": { "id": 713, "form": "hisuian", "name": "Hisuian Avalugg" },
+    "2054": { "id": 724, "form": "hisuian", "name": "Hisuian Decidueye" },
+    "2055": { "id": 128, "form": "paldean", "name": "Paldean Tauros - Aqua" },
+    "2056": { "id": 128, "form": "paldean", "name": "Paldean Tauros - Blaze" },
+    "2057": { "id": 128, "form": "paldean", "name": "Paldean Tauros - Combat" },
+    "2058": { "id": 194, "form": "paldean", "name": "Paldean Wooper" }
+  },
+
+  "POKEMON_NAME_OVERRIDES": {
+    "14300": "Ancient Snorlax",
+    "14400": "Ancient Articuno",
+    "14500": "Ancient Zapdos",
+    "14600": "Ancient Moltres",
+    "14900": "Ancient Dragonite",
+    "15000": "Ancient Mewtwo",
+    "3022": "Nown",
+    "10000": "Blue",
+    "10001": "Orange",
+    "10002": "Green",
+    "10003": "Yellow",
+    "10004": "Purple",
+    "10005": "Red"
+  },
   "BOSS_WARNINGS": {
     "STANDARD": "A powerful PKMN appeared!",
     "UB": "An Ultra Beast tore through the sky!",
@@ -18,9 +94,175 @@
       "red", "ethan", "lyra", "brendan", "may", "lucas", "dawn",
       "hilbert", "hilda", "nate", "rosa", "blue", "silver"
     ],
+
+    "CHALLENGER_POOL": [
+      3, 6, 9, 12, 15, 18, 26, 31, 34, 36, 38, 45, 53, 59, 62, 65, 68, 71, 76, 78, 
+      80, 82, 85, 87, 89, 91, 94, 101, 103, 105, 112, 121, 130, 131, 134, 135, 136, 139, 141, 142, 143, 149
+    ],
+
     "KEY_ITEMS": [
       "ROCKY_HELMET", "SILPH_SCOPE", "HELIX_FOSSIL", "DOME_FOSSIL", 
-      "OLD_AMBER", "ARMOR_FOSSIL", "SKULL_FOSSIL", "ROOT_FOSSIL", "CLAW_FOSSIL", "OLD_ROD"
+      "OLD_AMBER", "ARMOR_FOSSIL", "SKULL_FOSSIL", "ROOT_FOSSIL", "CLAW_FOSSIL", "OLD_ROD",
+      "POKE_FLUTE", "BIKE_VOUCHER", "BICYCLE", "COIN_CASE", "AIR_BALLOON", "SURF_BOARD", "SUPER_ROD", "VOLCANO_PASS", "EXP_SHARE", "CERULEAN_CAVE_MAP", "MT_SILVER_MAP", "SQUIRT_BOTTLE", "ICE_MELTER", "CLIFF_GATE_PASS", "MYSTERY_EGG", "UNOWN_REPORT"
+    ],
+
+    "JOURNAL_MISSIONS": [
+      {
+        "id": "m1", "type": "MAIN", "text": "Investigation at Viridian", "desc": "Check out the Viridian City Gym. People say the Gym Leader is away, but strange characters have been seen there.",
+        "condition": { "start_region": "KANTO", "flag_not": "viridian_rocket_defeated" }
+      },
+      {
+        "id": "m2", "type": "MAIN", "text": "Challenge Brock", "desc": "Head north through Route 2 and Viridian Forest to reach Pewter City. Earn your first badge from Brock, the rock-solid Gym Leader!",
+        "condition": { "start_region": "KANTO", "badges_less": 1 }
+      },
+      {
+        "id": "m3", "type": "MAIN", "text": "The Road to Cerulean", "desc": "With the Boulder Badge in hand, head east through Route 3 and the depths of Mt. Moon to find Cerulean City.",
+        "condition": { "badges_min": 1, "visited_not": "CERULEAN_CITY" }
+      },
+      {
+        "id": "m4", "type": "MAIN", "text": "The Cascade Badge", "desc": "Challenge Misty at the Cerulean City Gym. You might need to visit her friend on Route 25 first!",
+        "condition": { "visited": "CERULEAN_CITY", "badges_less": 2 }
+      },
+      {
+        "id": "m5", "type": "MAIN", "text": "Port of Vermilion", "desc": "Journey south through Route 5 and the Underground Path to reach Vermilion City, the port of Kanto.",
+        "condition": { "badges_min": 2, "visited_not": "VERMILLION_CITY" }
+      },
+      {
+        "id": "m6", "type": "MAIN", "text": "The Thunder Badge", "desc": "Challenge Lt. Surge at the Vermilion City Gym. His Electric-type Pokémon are lightning fast!",
+        "condition": { "visited": "VERMILLION_CITY", "badges_less": 3 }
+      },
+      {
+        "id": "m7", "type": "MAIN", "text": "The Dark Tunnel", "desc": "Travel north from Vermilion back to Cerulean, then head east through Route 9 and Route 10 to brave the Rock Tunnel.",
+        "condition": { "badges_min": 3, "visited_not": "LAVENDER_TOWN" }
+      },
+      {
+        "id": "m8", "type": "MAIN", "text": "Spirit of Lavender", "desc": "A restless spirit haunts the Pokémon Tower. You'll need a Silph Scope to see it. Team Rocket in Celadon might have one...",
+        "condition": { "visited": "LAVENDER_TOWN", "flag_not": "tower_ghost_defeated" }
+      },
+      {
+        "id": "m9", "type": "MAIN", "text": "The Rainbow Badge", "desc": "Travel west through Route 8 and Route 7 to reach Celadon City. Challenge Erika for the Rainbow Badge!",
+        "condition": { "visited": "CELADON_CITY", "badges_less": 4 }
+      },
+      {
+        "id": "m10", "type": "MAIN", "text": "Journey to Fuchsia", "desc": "Travel south to Fuchsia City. Take the long way through Route 12-15 or the fast way via Cycling Road (Route 16-18)!",
+        "condition": { "badges_min": 4, "visited_not": "FUSCHIA_CITY" }
+      },
+      {
+        "id": "m11", "type": "MAIN", "text": "The Soul Badge", "desc": "Challenge Koga at the Fuchsia City Gym. His poison and traps are legendary!",
+        "condition": { "visited": "FUSCHIA_CITY", "badges_less": 5 }
+      },
+      {
+        "id": "m12", "type": "MAIN", "text": "The Marsh Badge", "desc": "Now that Saffron City is accessible, challenge Sabrina at the Saffron Gym for your sixth badge!",
+        "condition": { "badges_min": 5, "badges_less": 6 }
+      },
+      {
+        "id": "m13", "type": "MAIN", "text": "Seafoam and Volcanoes", "desc": "Surf south from Fuchsia through Route 19 and 20. Navigate the Seafoam Islands to reach Cinnabar Island.",
+        "condition": { "badges_min": 6, "visited_not": "CINNABAR_ISLAND" }
+      },
+      {
+        "id": "m14", "type": "MAIN", "text": "The Volcano Badge", "desc": "Challenge Blaine at the Cinnabar Island Gym. Only a burning math spirit can win here!",
+        "condition": { "visited": "CINNABAR_ISLAND", "badges_less": 7 }
+      },
+      {
+        "id": "m15", "type": "MAIN", "text": "The Final Badge", "desc": "The Viridian Gym Leader has finally returned. Head back to Viridian City to earn your final badge!",
+        "condition": { "badges_min": 7, "badges_less": 8 }
+      },
+      {
+        "id": "m16", "type": "MAIN", "text": "Become the Champion", "desc": "With 8 badges, travel west from Viridian through Victory Road. The Elite Four awaits at the Indigo Plateau!",
+        "condition": { "badges_min": 8, "flag_not": "beat_champion" }
+      },
+      {
+        "id": "s_helmet", "type": "SIDE", "text": "The Sleeping Man", "desc": "An old man is blocking the path in Viridian City. People say he needs a math genius to wake him up... and he might have a handy gift!",
+        "condition": { "visited": "VIRIDIAN_CITY", "flag_not": "got_rocky_helmet" }
+      },
+      {
+        "id": "s_museum", "type": "SIDE", "text": "Museum Reward", "desc": "The Pewter Museum of Science rewards trainers who show promise. Visit them after defeating Brock.",
+        "condition": { "badges_min": 1, "flag_not": "received_museum_fossil" }
+      },
+      {
+        "id": "s_bill1", "type": "SIDE", "text": "Nugget Bridge", "desc": "Bill is looking for a trainer who can clear the Nugget Bridge challenge on Route 25.",
+        "condition": { "visited": "BILLS_HOUSE", "flag_not": "received_bill_eevee" }
+      },
+      {
+        "id": "s_bill2", "type": "SIDE", "text": "Bill's Research: Snorlax", "desc": "Bill wants to see a real Snorlax. He's heard rumors of one blocking paths near Lavender Town.",
+        "condition": { "flag": "received_bill_eevee", "has_pokemon": 143, "flag_not": "received_bill_eevee_snorlax" }
+      },
+      {
+        "id": "s_bill3", "type": "SIDE", "text": "Bill's Research: Lickitung", "desc": "Bill is fascinated by long tongues. Bring him a Lickitung, rumored to live in the Safari Zone.",
+        "condition": { "flag": "received_bill_eevee_snorlax", "has_pokemon": 108, "flag_not": "received_bill_eevee_lickitung" }
+      },
+      {
+        "id": "s_bike", "type": "SIDE", "text": "New Wheels", "desc": "You have a Bike Voucher! Visit the Bike Shop in Cerulean City to claim your miracle cycle.",
+        "condition": { "item": "BIKE_VOUCHER", "item_not": "BICYCLE" }
+      },
+      {
+        "id": "s_fuji", "type": "SIDE", "text": "Fuji's Flute", "desc": "Talk to Mr. Fuji in Lavender Town now that the Pokémon Tower ghost is at peace.",
+        "condition": { "flag": "tower_ghost_defeated", "item_not": "POKE_FLUTE" }
+      },
+      {
+        "id": "s_rocket", "type": "SIDE", "text": "The Game Corner Secret", "desc": "Investigate the suspicious Team Rocket presence at the Celadon Game Corner.",
+        "condition": { "visited": "CELADON_CITY", "flag_not": "game_corner_cleared" }
+      },
+      {
+        "id": "s2", "type": "SIDE", "text": "The Sleeping Giant", "desc": "A Snorlax blocks Route 11. Use the Poké Flute to wake it up.",
+        "condition": { "visited": "KANTO_ROUTE_11", "flag_not": "KANTO_ROUTE_11_boss_defeated", "item": "POKE_FLUTE" }
+      },
+      {
+        "id": "s3", "type": "SIDE", "text": "The Mysterious Island", "desc": "A hidden island is said to appear in the sea near Cinnabar Island. Explore it to find rare Pokémon.",
+        "condition": { "visited": "CINNABAR_ISLAND", "flag_not": "mysterious_island_explored" }
+      },
+      {
+        "id": "s4", "type": "SIDE", "text": "The Lost Cave", "desc": "A cave hidden in the depths of Mt. Moon is said to contain rare Pokémon and treasures.",
+        "condition": { "visited": "MT_MOON_CITY", "flag_not": "lost_cave_explored" }
+      },
+      {
+        "id": "s5", "type": "SIDE", "text": "Fighting Dojo", "desc": "The Fighting Dojo in Saffron rewards those who have proven their strength against Sabrina.",
+        "condition": { "badges_min": 6, "flag_not": "dojo_gift_1" }
+      },
+      {
+        "id": "s6", "type": "SIDE", "text": "The Master's Challenge", "desc": "The Dojo Master promised another gift if you defeat Koga in Fuchsia City.",
+        "condition": { "flag": "dojo_gift_1", "flag_not": "dojo_gift_2" }
+      },
+      {
+        "id": "s7", "type": "SIDE", "text": "Ancient Fossils", "desc": "Revive ancient Pokémon from fossils by visiting the Stone Man in cities or caves.",
+        "condition": { "item": ["HELIX_FOSSIL", "DOME_FOSSIL", "OLD_AMBER"] }
+      },
+      {
+        "id": "s_articuno", "type": "SIDE", "text": "Seafoam Islands", "desc": "Deep within the Seafoam Islands on Route 20, an ice-cold legend awaits.",
+        "condition": { "visited": "KANTO_ROUTE_20", "flag_not": "SEAFOAM_ISLANDS_boss_defeated" }
+      },
+      {
+        "id": "s_zapdos", "type": "SIDE", "text": "The Electric Legend", "desc": "An intense crackle of electricity emanates from the Abandoned Power Plant near Route 10. Zapdos awaits a challenger!",
+        "condition": { "badges_min": 3, "flag_not": "POWER_PLANT_boss_defeated" }
+      },
+      {
+        "id": "s_moltres", "type": "SIDE", "text": "Molten Mountain", "desc": "Explore the volcano at Cinnabar Island to find the legendary bird of fire.",
+        "condition": { "visited": "CINNABAR_ISLAND", "flag_not": "CINNABAR_VOLCANO_boss_defeated" }
+      },
+      {
+        "id": "s_mewtwo", "type": "SIDE", "text": "The Ultimate Pokémon", "desc": "A secret cave near Cerulean City has opened. Only a Champion may enter to face the ultimate challenge.",
+        "condition": { "flag": "beat_champion", "item": "CERULEAN_CAVE_MAP", "flag_not": "CERULEAN_CAVE_boss_defeated" }
+      },
+      {
+        "id": "cm30", "type": "SIDE", "text": "Catch 30 Pokémon", "desc": "Capture 30 Pokémon species to earn a $50,000 bonus.",
+        "condition": { "caught_less": 30 }
+      },
+      {
+        "id": "cm60", "type": "SIDE", "text": "Catch 60 Pokémon", "desc": "Capture 60 Pokémon species to earn another $50,000 bonus.",
+        "condition": { "caught_min": 30, "caught_less": 60 }
+      },
+      {
+        "id": "cm90", "type": "SIDE", "text": "Catch 90 Pokémon", "desc": "Capture 90 Pokémon species to earn another $50,000 bonus.",
+        "condition": { "caught_min": 60, "caught_less": 90 }
+      },
+      {
+        "id": "cm120", "type": "SIDE", "text": "Catch 120 Pokémon", "desc": "Capture 120 Pokémon species to earn another $50,000 bonus.",
+        "condition": { "caught_min": 90, "caught_less": 120 }
+      },
+      {
+        "id": "cm150", "type": "SIDE", "text": "Catch 150 Pokémon", "desc": "Capture 150 Pokémon species to earn the final $50,000 bonus!",
+        "condition": { "caught_min": 120, "caught_less": 151 }
+      }
     ]
   },
   "TYPE_CHART": {
@@ -217,7 +459,29 @@
       "intro": ["Welcome to the Pokémon Tower. Please be respectful of the deceased Pokémon."],
       "player_won": ["Please be more respectful of the deceased Pokémon."],
       "player_lost": ["Thank you for respecting the deceased Pokémon."]
-  } },
+    },
+    "GUITARIST": {
+      "intro": ["My music will rock you!", "Feel the rhythm of my PKMN!"],
+      "player_won": ["My music... It's off-key!", "You rocked my world!"],
+      "player_lost": ["I am the rockstar!", "My music is unbeatable!"]
+    },
+    "SWIMMER": {
+      "intro": ["Dive into battle with me!", "My Water PKMN will wash you away!"],
+      "player_won": ["I'm a strong swimmer!", "You're a good battler!"],
+      "player_lost": ["I'm the best swimmer!", "You can't beat me in the water!"]
+    },
+    "BLACKBELT": {
+      "intro": ["Feel the power of my martial arts!", "My Fighting PKMN will crush you!"],
+      "player_won": ["My martial arts... They're no match for you!", "You have great strength!"],
+      "player_lost": ["I am the ultimate fighter!", "My PKMN are unbeatable!"]
+    },
+    "COOLTRAINER": {
+      "intro": ["I am a Cooltrainer, the epitome of style and skill!", "Prepare for a battle that will dazzle you!"],
+      "player_won": ["I can't believe I lost!", "You're truly a remarkable trainer!"],
+      "player_lost": ["As expected, I win!", "You have much to learn before you can defeat me!"]
+    }
+
+},
 
 
 
@@ -234,7 +498,7 @@
       "travel_options": [
         { "text": "Route 1", "target_area": "KANTO_ROUTE_1" },
         { "text": "Viridian City", "target_area": "VIRIDIAN_CITY"},
-        { "text": "Route 21", "target_area": "KANTO_ROUTE_21", "flag_condition": "visited_KANTO_ROUTE_21"},
+        { "text": "Route 21", "target_area": "KANTO_ROUTE_21", "item_condition": "SURF_BOARD"},
         { "text": "Cinnabar Island", "target_area": "CINNABAR_ISLAND", "flag_condition": "visited_CINNABAR_ISLAND"}  
       ],
       "explore_options": [
@@ -252,11 +516,12 @@
 
     "VIRIDIAN_CITY": {
       "area_type": "town",
+      "route_name": "Viridian City",
       "backgrounds": {
         "main": "viridian_city.png",
         "pokecenter": "pokecenter.png",
         "pokemart": "pokemart.png",
-        "gym": "viridian_city_gym.png"
+        "gym": "battle_gym_viridian.png"
       },
       "has_gym": true,
       "gym": {
@@ -284,10 +549,10 @@
           "badge_reward": "EARTH",
           "dialogue": {
             "intro": ["This is the last time you meddle with Team Rocket!"],
-            "player_won": ["I must admit, you're quite skilled...", "Take the Earth Badge."],
+            "player_won": ["I must admit, you're quite skilled...", "The rumors are true. A powerful Pokémon is waking in Cerulean Cave... something Team Rocket left behind after the destruction at Cinnabar Island.", "This map will lead you there. Don't say I never gave you anything.", "Take the Earth Badge."],
             "player_lost": ["A child could never hope to defeat Team Rocket!"]
           },
-          "rewards": { "balls": 10 }
+          "rewards": { "balls": 10, "RARE_CANDY": 1, "CERULEAN_CAVE_MAP": 1 }
         },
         "pre_battle_event": {
           "flag_check": "viridian_rocket_defeated",
@@ -304,7 +569,8 @@
         { "text": "Route 1", "target_area": "KANTO_ROUTE_1" },
         { "text": "Viridian Forest", "target_area": "VIRIDIAN_FOREST" },
         { "text": "Pallet Town", "target_area": "PALLET_TOWN", "flag_condition": "visited_PALLET_TOWN" },
-        { "text": "Route 22", "target_area": "KANTO_ROUTE_22", "flag_condition": "visited_KANTO_ROUTE_21" }
+        { "text": "Route 22", "target_area": "KANTO_ROUTE_22" },
+        { "text": "Pewter City", "target_area": "PEWTER_CITY", "flag_condition": "visited_PEWTER_CITY" }
       ],
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
@@ -321,11 +587,12 @@
 
        "PEWTER_CITY": {
       "area_type": "town",
+      "route_name": "Pewter City",
       "backgrounds": {
         "main": "pewter_city.png",
         "pokecenter": "pokecenter.png",
         "pokemart": "pokemart.png",
-        "gym": "pewter_city_gym.png"
+        "gym": "battle_gym_pewter.png"
       },
       "has_gym": true,
       "gym": {
@@ -366,7 +633,7 @@
             "player_won": ["I took you for granted.", "Take this Boulder Badge."],
             "player_lost": ["You're still soft."]
           },
-          "rewards": { "balls": 10, "OLD_AMBER": 1 }
+          "rewards": { "balls": 10, "RARE_CANDY": 1, "OLD_ROD": 1 }
         }
       },
       "trainer_encounter_rate": 0,
@@ -388,14 +655,19 @@
 
     "CERULEAN_CITY": {
       "area_type": "town",
+      "route_name": "Cerulean City",
       "backgrounds": {
         "main": "cerulean_city.png",
         "pokecenter": "pokecenter.png",
         "pokemart": "pokemart.png",
-        "gym": "cerulean_gym.png"
+        "gym": "battle_gym_cerulean.png"
       },
       "has_gym": true,
       "gym": {
+        "requirements": {
+          "flag": "visited_BILLS_HOUSE",
+          "fail_text": "The Gym Leader, Misty, is away visiting a friend on Route 25."
+        },
         "trainers": [
           {
             "name": "Swimmer Diana",
@@ -429,7 +701,7 @@
             "player_won": ["You're better than I expected!", "Take this Cascade Badge."],
             "player_lost": ["You'll get washed away!"]
           },
-          "rewards": { "balls": 10, "OLD_ROD": 1 }
+          "rewards": { "balls": 10, "RARE_CANDY": 1, "BIKE_VOUCHER": 1 }
         }
       },
       "trainer_encounter_rate": 0,
@@ -439,13 +711,15 @@
         { "text": "Route 9", "target_area": "KANTO_ROUTE_9" },
         { "text": "Route 24", "target_area": "KANTO_ROUTE_24" },
         { "text": "Mt. Moon", "target_area": "MT_MOON_CITY", "flag_condition": "visited_MT_MOON_CITY" },
-        { "text": "Lavendar Town", "target_area": "LAVENDER_TOWN", "flag_condition": "visited_LAVENDER_TOWN" },
-        { "text": "Saffron City", "target_area": "Saffron City", "flag_condition": "visited_SAFFRON_CITY" }
+        { "text": "Bill's House", "target_area": "BILLS_HOUSE", "flag_condition": "visited_BILLS_HOUSE" },
+        { "text": "Rock Tunnel Entrance", "target_area": "ROCK_TUNNEL_CITY", "flag_condition": "visited_ROCK_TUNNEL_CITY" },
+        { "text": "Saffron City", "target_area": "SAFFRON_CITY", "flag_condition": "visited_SAFFRON_CITY" }
       ],
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
         { "text": "Shop", "action": "SHOP" },
         { "text": "Gym", "action": "GYM" },
+        { "text": "Bike Shop", "action": "BIKESHOP" },
         { "text": "Talk to 'Crazy Guy'", "action": "NPC", "target": "lunatic" }
       ],
       "lunatic_dialogue_key": "cerulean_lunatic_info",
@@ -455,7 +729,7 @@
 
     "MT_MOON_CITY": {
       "area_type": "town",
-      "town_name": "Mt. Moon",
+      "route_name": "Mt. Moon",
       "backgrounds": {
         "main": "mt_moon_city.png",
         "pokecenter": "pokecenter.png"
@@ -491,7 +765,9 @@
         { "text": "CERULEAN CITY", "target_area": "CERULEAN_CITY" }
       ],
       "explore_options": [
-        { "text": "Talk to Bill", "action": "NPC", "target": "bill" }
+        { "text": "Talk to Bill", "action": "NPC", "target": "bill" },
+        { "text": "Talk to 'Crazy Guy'", "action": "NPC", "target": "lunatic" },
+        { "text": "Talk to Fossil Maniac", "action": "NPC", "target": "stoneman" }
       ],
       "trainer_pool": [],
       "on_enter_event": null
@@ -513,7 +789,8 @@
         { "text": "Route 8", "target_area": "KANTO_ROUTE_8", "flag_condition": "visited_LAVENDER_TOWN" }
       ],
       "explore_options": [
-        { "text": "Talk to 'Crazy Guy'", "action": "NPC", "target": "lunatic" }
+        { "text": "Talk to 'Crazy Guy'", "action": "NPC", "target": "lunatic" },
+        { "text": "Talk to Fossil Maniac", "action": "NPC", "target": "stoneman" }
       ],
       "lunatic_dialogue_key": "underground_lunatic_info",
       "trainer_pool": [],
@@ -522,11 +799,12 @@
 
     "VERMILLION_CITY": {
       "area_type": "town",
+      "route_name": "Vermillion City",
       "backgrounds": {
         "main": "vermillion_city.png",
         "pokecenter": "pokecenter.png",
         "pokemart": "pokemart.png",
-        "gym": "vermillion_gym.png"
+        "gym": "battle_gym_vermillion.png"
       },
       "has_gym": true,
       "gym": {
@@ -534,7 +812,7 @@
           {
             "name": "Sailor Dwayne",
             "class": "SAILOR",
-            "sprite": "youngster.png",
+            "sprite": "sailor.png",
             "team": [25, 81],
             "rewards": { "balls": 2 },
             "dialogue": { "intro": ["Keep it shocking!"], "player_won": ["Short circuited!"], "player_lost": ["Zap!"] }
@@ -559,14 +837,16 @@
             "player_won": ["Not bad, but you'll need more than that to get through the power lines!", "Take this Thunder Badge."],
             "player_lost": ["You got zapped!"]
           },
-          "rewards": { "balls": 5 }
+          "rewards": { "balls": 10, "RARE_CANDY": 1, "EXP_SHARE": 1 }
         }
       },
       "trainer_encounter_rate": 0,
       "travel_options": [
         { "text": "Route 6", "target_area": "KANTO_ROUTE_6" },
         { "text": "Route 11", "target_area": "KANTO_ROUTE_11" },
-        { "text": "Saffron City", "target_area": "Saffron City", "flag_condition": "visited_SAFFRON_CITY" },
+        { "text": "Cerulean City", "target_area": "CERULEAN_CITY", "flag_condition": "visited_CERULEAN_CITY" },
+        { "text": "Fuchsia City", "target_area": "FUCHSIA_CITY", "flag_condition": "visited_FUCHSIA_CITY" },
+        { "text": "Saffron City", "target_area": "SAFFRON_CITY", "flag_condition": "visited_SAFFRON_CITY" },
         { "text": "Lavender Town", "target_area": "LAVENDER_TOWN", "flag_condition": "visited_LAVENDER_TOWN" }
       ],
       "explore_options": [
@@ -581,7 +861,7 @@
 
     "ROCK_TUNNEL_CITY": {
       "area_type": "town",
-      "town_name": "Rock Tunnel",
+      "route_name": "Rock Tunnel",
       "backgrounds": {
         "main": "rock_tunnel_city.png",
         "pokecenter": "pokecenter.png"
@@ -595,34 +875,37 @@
         { "text": "Lavendar Town", "target_area": "LAVENDER_TOWN", "flag_condition": "visited_LAVENDER_TOWN" }
       ],
       "explore_options": [
-        { "text": "Heal", "action": "HEAL" }
+        { "text": "Heal", "action": "HEAL" },
+        { "text": "Talk to 'Crazy Guy'", "action": "NPC", "target": "lunatic" }
       ],
       "trainer_pool": [],
+      "lunatic_dialogue_key": "rock_tunnel_city_lunatic_info",
       "on_enter_event": null
     },
 
     "LAVENDER_TOWN": {
       "area_type": "town",
+      "route_name": "Lavender Town",
       "backgrounds": {
         "main": "lavender_city.png",
         "pokecenter": "pokecenter.png",
-        "pokemart": "pokemart.png",
-        "gym": false
+        "pokemart": "pokemart.png"
       },
       "trainer_encounter_rate": 0,
       "travel_options": [
         { "text": "Route 8", "target_area": "KANTO_ROUTE_8" },
-        { "text": "Route 12", "target_area": "KANTO_ROUTE_12" },
-        { "text": "Pokemon Tower", "target_area": "KANTO_POKEMON_TOWER_1F"},
-        { "text": "Rock Tunnel", "target_area": "ROCK_TUNNEL_2F" },
+        { "text": "Route 12", "target_area": "KANTO_ROUTE_12", "flag_condition": "tower_ghost_defeated" },
+        { "text": "Pokemon Tower", "target_area": "KANTO_POKEMON_TOWER" },
+        { "text": "Rock Tunnel", "target_area": "ROCK_TUNNEL" },
         { "text": "Rock Tunnel Entrance", "target_area": "ROCK_TUNNEL_CITY", "flag_condition": "visited_ROCK_TUNNEL_CITY" },
         { "text": "Saffron City", "target_area": "SAFFRON_CITY", "flag_condition": "visited_SAFFRON_CITY" },
+        { "text": "Fuchsia City", "target_area": "FUCHSIA_CITY", "flag_condition": "visited_FUCHSIA_CITY" },
         { "text": "Vermillion City", "target_area": "VERMILLION_CITY", "flag_condition": "visited_VERMILLION_CITY" }
       ],
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
         { "text": "Shop", "action": "SHOP" },
-        { "text": "Talk to Old Man", "action": "NPC", "target": "oldman" },
+        { "text": "Talk to Mr. Fuji", "action": "NPC", "target": "mr_fuji" },
         { "text": "Talk to 'Crazy Guy'", "action": "NPC", "target": "lunatic" }
       ],
       "lunatic_dialogue_key": "lavender_lunatic_info",
@@ -631,11 +914,12 @@
 
     "CELADON_CITY": {
       "area_type": "town",
+      "route_name": "Celadon City",
       "backgrounds": {
         "main": "celadon_city.png",
         "pokecenter": "pokecenter.png",
         "pokemart": "pokemart.png",
-        "gym": "celadon_gym.png"
+        "gym": "battle_gym_celadon.png"
       },
       "has_gym": true,
       "gym": {
@@ -671,20 +955,22 @@
             "player_won": ["Not bad, but you'll need more than that to get through the vines!", "Take this Rainbow Badge."],
             "player_lost": ["You got tangled up!"]
           },
-          "rewards": { "balls": 5 }
+          "rewards": { "balls": 10, "RARE_CANDY": 1, "COIN_CASE": 1 }
         }
       },
       "trainer_encounter_rate": 0,
       "travel_options": [
-        { "text": "Route 12", "target_area": "KANTO_ROUTE_12" },
-        { "text": "route 16", "target_area": "KANTO_ROUTE_16" },  
+        { "text": "Route 7", "target_area": "KANTO_ROUTE_8" },
+        { "text": "Route 16", "target_area": "KANTO_ROUTE_16" },  
         { "text": "Saffron City", "target_area": "SAFFRON_CITY", "flag_condition": "visited_SAFFRON_CITY" },
         { "text": "Fuschia City", "target_area": "FUSCHIA_CITY", "flag_condition": "visited_FUSCHIA_CITY" }
       ],
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
         { "text": "Shop", "action": "SHOP" },
-        { "text": "Gym", "action": "GYM" }
+        { "text": "Gym", "action": "GYM" },
+        { "text": "Game Corner", "action": "GAMECORNER" },
+        { "text": "Talk to 'Crazy Guy'", "action": "NPC", "target": "lunatic" }
       ],
       "lunatic_dialogue_key": "celadon_lunatic_info",
       "trainer_pool": [],
@@ -693,11 +979,12 @@
 
     "SAFFRON_CITY": {
       "area_type": "town",
+      "route_name": "Saffron City",
       "backgrounds": {
         "main": "saffron_city.png",
         "pokecenter": "pokecenter.png",
         "pokemart": "pokemart.png",
-        "gym": "saffron_gym.png"
+        "gym": "battle_gym_saffron.png"
       },
       "has_gym": true,
       "gym": {
@@ -734,7 +1021,7 @@
             "player_won": ["Not bad, but you'll need more than that to get through the mind games!", "Take this Marsh Badge."],
             "player_lost": ["You got psychically overwhelmed!"]
           },
-          "rewards": { "balls": 5 }
+          "rewards": { "balls": 10, "RARE_CANDY": 1, "AIR_BALLOON": 1 }
         }
       },
       "trainer_encounter_rate": 0,
@@ -751,20 +1038,53 @@
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
         { "text": "Shop", "action": "SHOP" },
-        { "text": "Gym", "action": "GYM" }
+        { "text": "Gym", "action": "GYM" },
+        { "text": "Confront Team Rocket", "action": "BATTLE", "target": "lunatic" },
+        { "text": "Fighting Dojo", "action": "NPC", "target": "dojo" }
       ],
-      "lunatic_dialogue_key": null,
+      "lunatic_dialogue_key": "saffron_lunatic_info",
       "trainer_pool": [],
       "on_enter_event": null
     },
 
+    "SILPH_CITY": {
+      "area_type": "town",
+      "route_name": "Silph Co.",
+      "backgrounds": {
+        "main": "silph_city.png"
+      },
+      "has_gym": false,
+      "trainer_encounter_rate": 0,
+      "travel_options": [
+        { "text": "Exit to Saffron", "target_area": "SAFFRON_CITY", "flag_condition": "visited_SAFFRON_CITY" }
+      ],
+      "explore_options": [
+        { "text": "Heal", "action": "HEAL" },
+        { "text": "Talk to Employee", "action": "NPC", "target": "silph_employee" },
+        { "text": "Confront Rocket", "action": "ROCKET_GAUNTLET", "flag_condition": "not silph_co_cleared" },
+        { "text": "Talk to 'Crazy Guy'", "action": "NPC", "target": "lunatic" }
+      ],
+      "trainer_pool": [
+        { "sprite": "rocket_grunt.png", "name": "Grunt", "class": "ROCKET", "team": [20, 42], "rewards": { "balls": 3 } },
+        { "sprite": "scientist.png", "name": "Connor", "class": "SCIENTIST", "team": [137, 82], "rewards": { "balls": 3 },
+          "dialogue": { "intro": ["I... I had to help them! They forced me!"], "player_won": ["Thank you for stopping me."], "player_lost": ["I have no choice!"] } },
+        { "sprite": "archer.png", "name": "Archer", "class": "ROCKET", "team": [110, 24, 131], "rewards": { "balls": 10 },
+          "dialogue": { "intro": ["The boss is busy. I'll handle you."], "player_won": ["This changes nothing."], "player_lost": ["Typical child."] } },
+        { "sprite": "ariana.png", "name": "Ariana", "class": "ROCKET", "team": [45, 91, 53], "rewards": { "balls": 10, "MASTER_BALL": 1 },
+          "dialogue": { "intro": ["How did you get past Archer?", "No matter. Your journey ends here!"], "player_won": ["The prototype! You won't get away with it!"], "player_lost": ["Stay out of adult business."] } }
+      ],
+      "on_enter_event": null
+    },
+
+
     "FUSCHIA_CITY": {
       "area_type": "town",
+      "route_name": "Fuchsia City",
       "backgrounds": {
         "main": "fuschia_city.png",
         "pokecenter": "pokecenter.png",
         "pokemart": "pokemart.png",
-        "gym": "fuschia_gym.png"
+        "gym": "battle_gym_fuschia.png"
       },
       "has_gym": true,
       "gym": {
@@ -801,14 +1121,14 @@
             "player_won": ["Not bad, but you'll need more than that to get through the smog!", "Take this Soul Badge."],
             "player_lost": ["You got poisoned!"]
           },
-          "rewards": { "balls": 5 }
+          "rewards": { "balls": 10, "RARE_CANDY": 1, "SURF_BOARD": 1 }
         }
       },
       "trainer_encounter_rate": 0,
       "travel_options": [
         { "text": "Route 15", "target_area": "KANTO_ROUTE_15" },
         { "text": "Route 18", "target_area": "KANTO_ROUTE_18" },
-        { "text": "Route 19", "target_area": "KANTO_ROUTE_19" },
+        { "text": "Route 19", "target_area": "KANTO_ROUTE_19", "item_condition": "SURF_BOARD" },
         { "text": "Safari Zone", "target_area": "SAFARI_ZONE" },
         { "text": "Celadon City", "target_area": "CELADON_CITY", "flag_condition": "visited_CELADON_CITY" },
         { "text": "Lavender Town", "target_area": "LAVENDER_TOWN", "flag_condition": "visited_LAVENDER_TOWN" },
@@ -821,18 +1141,19 @@
         { "text": "Gym", "action": "GYM" },
         { "text": "Talk to 'Crazy Guy'", "action": "NPC", "target": "lunatic" }
       ],
-      "lunatic_dialogue_key": null,
+      "lunatic_dialogue_key": "fuschia_lunatic_info",
       "trainer_pool": [],
       "on_enter_event": null
     },
 
     "CINNABAR_ISLAND": {
       "area_type": "town",
+      "route_name": "Cinnabar Island",
       "backgrounds": {
         "main": "cinnabar_island.png",
         "pokecenter": "pokecenter.png",
         "pokemart": "pokemart.png",
-        "gym": "cinnabar_gym.png"
+        "gym": "battle_gym_cinnabar.png"
       },
       "has_gym": true,
       "gym": {
@@ -863,32 +1184,35 @@
             "player_won": ["Not bad, but you'll need more than that to get through the heat!", "Take this Volcano Badge."],
             "player_lost": ["You got burned!"]
           },
-          "rewards": { "balls": 5 }
+          "rewards": { "balls": 10, "RARE_CANDY": 1, "VOLCANO_PASS": 1 }
         }
       },
       "trainer_encounter_rate": 0,
       "travel_options": [
         { "text": "Route 20", "target_area": "KANTO_ROUTE_20" },
         { "text": "Route 21", "target_area": "KANTO_ROUTE_21" },
+        { "text": "Enter Volcano", "target_area": "CINNABAR_VOLCANO", "item_condition": "VOLCANO_PASS" },
         { "text": "Fuschia City", "target_area": "FUSCHIA_CITY", "flag_condition": "visited_FUSCHIA_CITY"},
         { "text": "Pallet Town", "target_area": "PALLET_TOWN", "flag_condition": "visited_KANTO_ROUTE_21" }
       ],
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
         { "text": "Shop", "action": "SHOP" },
-        { "text": "Gym", "action": "GYM" }
+        { "text": "Gym", "action": "GYM" },
+        { "text": "Talk to 'Crazy Guy'", "action": "NPC", "target": "lunatic" }
       ],
-      "lunatic_dialogue_key": null,
+      "lunatic_dialogue_key": "cinnabar_lunatic_info",
       "trainer_pool": [],
       "on_enter_event": null
     },
 
-        "INDIGO_PLATEAU": {
+    "INDIGO_PLATEAU": {
       "area_type": "town",
+      "route_name": "Indigo Plateau",
       "backgrounds": {
         "main": "indigo_city.png",
-        "pokecenter": "pokecenter.png",
-        "pokemart": "pokemart.png",
+        "pokecenter": "indigo_city.png",
+        "pokemart": "indigo_city.png",
         "gym": ["battle_loreli.png", "battle_bruno.png", "battle_agatha.png", "battle_lance.png", "battle_champion.png"]
       },
       "has_gym": true,
@@ -924,9 +1248,9 @@
           "sprite": "lunatic2.png",
           "name": "Ancient One",
           "class": "CHAMPION",
-          "team": [14300, 14400, 14500, 14600, 14900, 14500],
+          "team": [10000, 10001, 10002, 10003, 10004, 10005],
           "rewards": { "balls": 25, "MASTER_BALL": 1 },
-          "victory_flag": "beat_elite_four"
+          "victory_flag": "beat_champion"
         },
           "rewards": null
         },
@@ -938,20 +1262,22 @@
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
         { "text": "Shop", "action": "SHOP" },
-        { "text": "ELITE_FOUR", "action": "GYM" }
+        { "text": "ELITE_FOUR", "action": "GYM" },
+        { "text": "Talk to 'Crazy Guy'", "action": "NPC", "target": "lunatic" }
       ],
-      "lunatic_dialogue_key": null,
+      "lunatic_dialogue_key": "indigo_lunatic_info",
       "trainer_pool": [],
       "on_enter_event": null
     },
 
 
-"KANTO_ROUTE_1": {
+    "KANTO_ROUTE_1": {
       "area_type": "wild_route",
       "route_name": "Route 1",
       "battle_type": "field",
       "wild_pool_percentages": "KANTO_ROUTE_1_PERCENTAGES",
       "has_trees": true,
+      "alt_forms": { "enabled": true, "weights": { "19_alolan": 0.01 } },
       "tree_pool": "KANTO_ROUTE_TREE_PERCENTAGES",
       "trainer_encounter_rate": 0,
       "min_rounds": 2,
@@ -962,17 +1288,10 @@
         }
       },
       "trainer_pool": [
-        { 
-          "sprite": "youngster.png", 
-          "name": "Joey",
-          "class": "YOUNGSTER",
-          "dialogue": {
-            "intro": ["I've been training for like, a week!", "I'm a veteran compared to you!"],
-            "player_won": ["You must have cheated!"],
-            "player_lost": ["Top percentage!"]
-          },
-          "rewards": { "balls": 3 }
-        }
+        { "sprite": "youngster.png", "name": "Joey", "class": "YOUNGSTER", "team": [19], "rewards": { "balls": 3 },
+          "dialogue": { "intro": ["I'm a veteran compared to you!"], "player_won": ["You must have cheated!"], "player_lost": ["Top percentage!"] } },
+        { "sprite": "lass.png", "name": "Janice", "class": "LASS", "team": [16], "rewards": { "balls": 3 },
+          "dialogue": { "intro": ["Let's have a quick battle!"], "player_won": ["You're pretty good!"], "player_lost": ["Hehe, I win!"] } }
       ],
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
@@ -1047,31 +1366,13 @@
       "route_name": "Route 2",
       "battle_type": "field",
       "wild_pool_percentages": "KANTO_ROUTE_2_PERCENTAGES",
+      "alt_forms": { "enabled": true, "weights": { "19_alolan": 0.01 } },
       "trainer_encounter_rate": 0.1,
       "min_rounds": 2,
       "trainer_pool": [
-        {
-          "sprite": "bug_catcher.png",
-          "name": "Sammy",
-          "class": "BUG_CATCHER",
-          "dialogue": {
-            "intro": ["I bet I can beat you with just my bug PKMN!"],
-            "player_won": ["I guess I need to train more..."],
-            "player_lost": ["I won? That's a relief, I don't think I could have handled losing."]
-          },
-          "rewards": { "balls": 3 }
-          },
-        {
-          "sprite": "school_kid_m.png",
-          "name": "Billy",
-          "class": "SCHOOL_KID",
-          "dialogue": {
-            "intro": ["I love math! Let's battle and see who's better at it!"],
-            "player_won": ["Wow, you're really good at math!"],
-            "player_lost": ["I won? That's awesome! Math is the best!"]
-          },
-          "rewards": { "balls": 3 }
-        }
+        { "sprite": "bug_catcher.png", "name": "Sammy", "class": "BUG_CATCHER", "team": [10, 13], "rewards": { "balls": 3 } },
+        { "sprite": "lass.png", "name": "Patty", "class": "LASS", "team": [16, 19], "rewards": { "balls": 3 } },
+        { "sprite": "school_kid_m.png", "name": "Billy", "class": "SCHOOL_KID", "team": [25], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
@@ -1090,6 +1391,7 @@
       "battle_type": "mountain",
       "has_trees": true,
       "tree_pool": "KANTO_MOUNTAIN_TREE_PERCENTAGES",
+      "alt_forms": { "enabled": true, "weights": { "27_alolan": 0.01 } },
       "wild_pool_percentages": "KANTO_ROUTE_3_PERCENTAGES",
       "trainer_encounter_rate": 0.1,
       "min_rounds": 2,
@@ -1135,6 +1437,7 @@
       "route_name": "Route 4",
       "battle_type": "field",
       "wild_pool_percentages": "KANTO_ROUTE_4_PERCENTAGES",
+      "alt_forms": { "enabled": true, "weights": { "19_alolan": 0.01, "27_alolan": 0.01 } },
       "trainer_encounter_rate": 0.1,
       "min_rounds": 2,
       "trainer_pool": [
@@ -1174,6 +1477,7 @@
       "battle_type": "grass",
       "has_trees": true,
       "tree_pool": "KANTO_CITY_TREE_PERCENTAGES",
+      "alt_forms": { "enabled": true, "weights": { "19_alolan": 0.01, "37_alolan": 0.01, "52_alolan": 0.01, "52_galarian": 0.01, "58_hisuian": 0.01 } },
       "wild_pool_percentages": "KANTO_ROUTE_5_PERCENTAGES",
       "trainer_encounter_rate": 0.1,
       "min_rounds": 2,
@@ -1207,6 +1511,7 @@
       "battle_type": "grass",
       "wild_pool_percentages": "KANTO_ROUTE_6_PERCENTAGES",
       "has_trees": true,
+      "alt_forms": { "enabled": true, "weights": { "19_alolan": 0.01, "37_alolan": 0.01, "52_alolan": 0.01, "52_galarian": 0.01, "58_hisuian": 0.01 } },
       "tree_pool": "KANTO_CITY_TREE_PERCENTAGES",
       "trainer_encounter_rate": 0.1,
       "min_rounds": 2,
@@ -1246,6 +1551,7 @@
       "battle_type": "grass",
       "wild_pool_percentages": "KANTO_ROUTE_7_PERCENTAGES",
       "trainer_encounter_rate": 0.1,
+      "alt_forms": { "enabled": true, "weights": { "19_alolan": 0.01, "37_alolan": 0.01, "52_alolan": 0.01, "52_galarian": 0.01, "58_hisuian": 0.01 } },
       "has_trees": true,
       "tree_pool": "KANTO_CITY_TREE_PERCENTAGES",
       "min_rounds": 2,
@@ -1285,20 +1591,14 @@
       "battle_type": "grass",
       "wild_pool_percentages": "KANTO_ROUTE_8_PERCENTAGES",
       "has_trees": true,
+      "alt_forms": { "enabled": true, "weights": { "19_alolan": 0.01, "37_alolan": 0.01, "52_alolan": 0.01, "52_galarian": 0.01, "58_hisuian": 0.01 } },
       "tree_pool": "KANTO_CITY_TREE_PERCENTAGES",
       "trainer_encounter_rate": 0.1,
       "min_rounds": 2,
       "trainer_pool": [
-        { "sprite": "youngster.png",
-          "name": "Ethan",
-          "class": "YOUNGSTER",
-          "rewards": { "balls": 3 }
-        },
-        { "sprite": "lass.png",
-          "name": "Lily",
-          "class": "LASS",
-          "rewards": { "balls": 3 }
-        }
+        { "sprite": "gambler.png", "name": "Richie", "class": "GAMBLER", "team": [58, 37], "rewards": { "balls": 5 } },
+        { "sprite": "supernerd.png", "name": "Aidan", "class": "SUPER_NERD", "team": [88, 109], "rewards": { "balls": 3 } },
+        { "sprite": "lass.png", "name": "Julia", "class": "LASS", "team": [39, 35], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
@@ -1318,30 +1618,14 @@
       "route_name": "Route 9",
       "battle_type": "field",
       "wild_pool_percentages": "KANTO_ROUTE_9_PERCENTAGES",
+      "alt_forms": { "enabled": true, "weights": { "19_alolan": 0.01, "27_alolan": 0.01 } },
       "trainer_encounter_rate": 0.1,
       "can_fish": true,
       "min_rounds": 2,
       "trainer_pool": [
-        { "sprite": "youngster.png",
-          "name": "Ethan",
-          "class": "YOUNGSTER",
-          "dialogue": {
-            "intro": ["I just wanna be friends!"],
-            "player_won": ["Oh no, I thought we were friends!"],
-            "player_lost": ["Yay, we're friends!"]
-          },
-          "rewards": { "balls": 3 }
-        },
-        { "sprite": "lass.png",
-          "name": "Lily",
-          "class": "LASS",
-          "dialogue": {
-            "intro": ["I hope we can be friends!", "Let's battle and be friends!"],
-            "player_won": ["Oh no, I thought we were friends!"],
-            "player_lost": ["Yay, we're friends!"]
-          },
-          "rewards": { "balls": 3 }
-        }
+        { "sprite": "hiker.png", "name": "Jeremy", "class": "HIKER", "team": [74, 95], "rewards": { "balls": 3 } },
+        { "sprite": "bug_catcher.png", "name": "Conner", "class": "BUG_CATCHER", "team": [12, 15], "rewards": { "balls": 3 } },
+        { "sprite": "youngster.png", "name": "Chris", "class": "YOUNGSTER", "team": [19, 21], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
@@ -1360,29 +1644,13 @@
       "battle_type": "grass",
       "wild_pool_percentages": "KANTO_ROUTE_10_PERCENTAGES",
       "trainer_encounter_rate": 0.1,
+      "alt_forms": { "enabled": true, "weights": { "19_alolan": 0.01, "100_hisuian": 0.01 } },
       "can_fish": true,
       "min_rounds": 2,
       "trainer_pool": [
-        { "sprite": "youngster.png",
-          "name": "Ethan",
-          "class": "YOUNGSTER",
-          "dialogue": {
-            "intro": ["I just wanna be friends!"],
-            "player_won": ["Oh no, I thought we were friends!"],
-            "player_lost": ["Yay, we're friends!"]
-          },
-          "rewards": { "balls": 3 }
-        },
-        { "sprite": "lass.png",
-          "name": "Lily",
-          "class": "LASS",
-          "dialogue": {
-            "intro": ["I hope we can be friends!", "Let's battle and be friends!"],
-            "player_won": ["Oh no, I thought we were friends!"],
-            "player_lost": ["Yay, we're friends!"]
-          },
-          "rewards": { "balls": 3 }
-        }
+        { "sprite": "pokemaniac.png", "name": "Mark", "class": "POKEMANIAC", "team": [79, 108], "rewards": { "balls": 5 } },
+        { "sprite": "hiker.png", "name": "Clark", "class": "HIKER", "team": [66, 74], "rewards": { "balls": 3 } },
+        { "sprite": "picnicker.png", "name": "Heidi", "class": "PICNIKER", "team": [29, 32], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
@@ -1390,9 +1658,9 @@
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         { "text": "ROUTE 9", "action": "EXIT", "target": "KANTO_ROUTE_9", "condition": "can_exit", "color": "RED" },
         { "text": "POWER PLANT", "action": "EXIT", "target": "POWER_PLANT", "condition": "can_exit", "color": "RED" },
-        { "text": "ROCK TUNNEL", "action": "EXIT", "target": "KANTO_ROCK_TUNNEL", "condition": "can_exit", "color": "RED" }
+        { "text": "ROCK TUNNEL", "action": "EXIT", "target": "ROCK_TUNNEL_CITY", "condition": "can_exit", "color": "RED" }
       ],
-      "next_area": "KANTO_ROCK_TUNNEL_CITY",
+      "next_area": "ROCK_TUNNEL_CITY",
       "on_enter_event": null
     },
 
@@ -1405,40 +1673,21 @@
         "name": "Zapdos"
       },
       "wild_pool_percentages": "POWER_PLANT_PERCENTAGES",
+      "alt_forms": { "enabled": true, "weights": { "88_alolan": 0.01, "89_alolan": 0.01, "100_hisuian": 0.01, "101_hisuian": 0.01 } },
       "trainer_encounter_rate": 0.1,
       "min_rounds": 2,
-      "background": "battle_power_plant.png",
+      "backgrounds": {
+        "battle": "battle_gym_vermillion.png"
+      },
       "trainer_pool": [
-        { "sprite": "youngster.png",
-          "name": "Ethan",
-          "class": "YOUNGSTER",
-          "rewards": { "balls": 3 }
-        },
-        { "sprite": "lass.png",
-          "name": "Lily",
-          "class": "LASS",
-          "rewards": { "balls": 3 }
-        },
-        { "sprite": "rocker.png",
-          "name": "Rocky",
-          "class": "ROCKER",
-          "rewards": { "balls": 3 }
-        },
-        { "sprite": "rocker.png",
-          "name": "Stoney",
-          "class": "ROCKER",
-          "rewards": { "balls": 3 }
-        },
-          { "sprite": "rocker.png",
-            "name": "Pebbles",
-            "class": "ROCKER",
-            "rewards": { "balls": 3 }
-          },
-          { "sprite": "rocker.png",
-            "name": "Boulder",
-            "class": "ROCKER",
-            "rewards": { "balls": 3 }
-          }
+        { "sprite": "engineer.png", "name": "Baily", "class": "ENGINEER", "team": [81, 82], "rewards": { "balls": 3 },
+          "dialogue": { "intro": ["I'm here to fix the generator!"], "player_won": ["Short circuit!"], "player_lost": ["Power surge!"] } },
+        { "sprite": "scientist.png", "name": "Ted", "class": "SCIENTIST", "team": [100, 101], "rewards": { "balls": 3 },
+          "dialogue": { "intro": ["The electricity here is fascinating."], "player_won": ["Inconclusive results..."], "player_lost": ["Science prevails!"] } },
+        { "sprite": "rocker.png", "name": "Luca", "class": "ROCKER", "team": [125], "rewards": { "balls": 3 } },
+        { "sprite": "pokemaniac.png", "name": "Mark", "class": "POKEMANIAC", "team": [82, 101], "rewards": { "balls": 5 } },
+        { "sprite": "scientist.png", "name": "Ray", "class": "SCIENTIST", "team": [88, 89], "rewards": { "balls": 3 } },
+        { "sprite": "rocker.png", "name": "Stoney", "class": "ROCKER", "team": [100, 100, 101], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
@@ -1456,33 +1705,33 @@
       "area_type": "wild_route",
       "route_name": "Route 11",
       "battle_type": "field",
+      "area_boss": {
+        "id": 143,
+        "victory_flag": "KANTO_ROUTE_11_boss_defeated",
+        "name": "Snorlax"
+      },
       "wild_pool_percentages": "KANTO_ROUTE_11_PERCENTAGES",
+      "alt_forms": { "enabled": true, "weights": { "19_alolan": 0.01, "20_alolan": 0.01 } },
       "can_fish": true,
       "has_trees": true,
       "tree_pool": "KANTO_ROUTE_TREE_PERCENTAGES",
       "trainer_encounter_rate": 0.1,
       "min_rounds": 2,
       "trainer_pool": [
-        { "sprite": "youngster.png",
-          "name": "Timothy",
-          "class": "YOUNGSTER",
-          "rewards": { "balls": 3 }
-        },
-        { "sprite": "lass.png",
-          "name": "Sophie",
-          "class": "LASS",
-          "rewards": { "balls": 3 }
-        }
+        { "sprite": "gambler.png", "name": "Hugo", "class": "GAMBLER", "team": [37, 58], "rewards": { "balls": 5 } },
+        { "sprite": "youngster.png", "name": "Dave", "class": "YOUNGSTER", "team": [27, 19], "rewards": { "balls": 3 } },
+        { "sprite": "engineer.png", "name": "Bernie", "class": "ENGINEER", "team": [100, 81], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
+        { "text": "WAKE SNORLAX", "action": "BOSS", "condition": "boss_available_with_flute", "color": "GOLD" },
         { "text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE" },
         { "text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE" },
-        { "text": "ROUTE 12", "action": "EXIT", "target": "KANTO_ROUTE_12", "condition": "can_exit", "color": "RED" },
         { "text": "VERMILLION CITY", "action": "EXIT", "target": "VERMILLION_CITY", "condition": "can_exit", "color": "RED" },
-        { "text": "DIGGLETT CAVE", "action": "EXIT", "target": "DIGGLETT_CAVE", "condition": "can_exit", "color": "RED" }
+        { "text": "ROUTE 12", "action": "EXIT", "target": "KANTO_ROUTE_12", "condition": "snorlax_defeated", "color": "RED" },
+        { "text": "DIGGLETT CAVE", "action": "EXIT", "target": "DIGGLETT_CAVE", "condition": "snorlax_defeated", "color": "RED" }
       ],
       "next_area": "DIGGLETT_CAVE",
       "on_enter_event": null
@@ -1493,27 +1742,21 @@
       "route_name": "Route 12",
       "battle_type": "field",
       "wild_pool_percentages": "KANTO_ROUTE_12_PERCENTAGES",
+      "alt_forms": { "enabled": true, "weights": { "83_galarian": 0.01 } },
       "can_fish": true,
       "trainer_encounter_rate": 0.1,
       "min_rounds": 2,
       "trainer_pool": [
-        { "sprite": "youngster.png",
-          "name": "Ethan",
-          "class": "YOUNGSTER",
-          "rewards": { "balls": 3 }
-        },
-        { "sprite": "lass.png",
-          "name": "Lily",
-          "class": "LASS",
-          "rewards": { "balls": 3 }
-        }
+        { "sprite": "biker.png", "name": "Ernest", "class": "BIKER", "team": [110], "rewards": { "balls": 3 } },
+        { "sprite": "beauty.png", "name": "Grace", "class": "BEAUTY", "team": [35, 40], "rewards": { "balls": 3 } },
+        { "sprite": "birdkeeper.png", "name": "Edwin", "class": "BIRD_KEEPER", "team": [22, 17], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         { "text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE" },
-        { "text": "ROUTE 11", "action": "EXIT", "target": "KANTO_ROUTE_11", "condition": "can_exit", "color": "RED" },
+        { "text": "ROUTE 11", "action": "EXIT", "target": "KANTO_ROUTE_11", "condition": ["can_access_route_11", "can_exit"], "color": "RED" },
         { "text": "LAVENDER TOWN", "action": "EXIT", "target": "LAVENDER_TOWN", "condition": "can_exit", "color": "RED" },
         { "text": "ROUTE 13", "action": "EXIT", "target": "KANTO_ROUTE_13", "condition": "can_exit", "color": "RED" }
       ],
@@ -1527,29 +1770,13 @@
       "route_name": "Diglett Cave",
       "battle_type": "cave",
       "wild_pool_percentages": "DIGGLETT_CAVE_PERCENTAGES",
+      "alt_forms": { "enabled": true, "weights": { "50_alolan": 0.01, "51_alolan": 0.01 } },
       "trainer_encounter_rate": 0.1,
       "min_rounds": 2,
       "trainer_pool": [
-        { "sprite": "youngster.png",
-          "name": "Timothy",
-          "class": "YOUNGSTER",
-          "dialogue": {
-            "intro": ["I bet I can beat you with just my Rattata!"],
-            "player_won": ["No way! I thought my Rattata would win!"],
-            "player_lost": ["I won? That's a relief, I don't think I could have handled losing."]
-          },
-          "rewards": { "balls": 3 }
-        },
-        { "sprite": "lass.png",
-          "name": "Sophie",
-          "class": "LASS",
-          "rewards": { "balls": 3 }
-        },
-        { "sprite": "youngster.png",
-          "name": "Ethan",
-          "class": "YOUNGSTER",
-          "rewards": { "balls": 3 }
-        }
+        { "sprite": "fisherman.png", "name": "Ned", "class": "FISHERMAN", "team": [118, 60], "rewards": { "balls": 3 } },
+        { "sprite": "rocker.png", "name": "Luca", "class": "ROCKER", "team": [100, 101], "rewards": { "balls": 3 } },
+        { "sprite": "camper.png", "name": "Justin", "class": "CAMPER", "team": [56, 25], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
@@ -1567,20 +1794,14 @@
       "route_name": "Route 13",
       "battle_type": "grass",
       "wild_pool_percentages": "KANTO_ROUTE_13_PERCENTAGES",
+      "alt_forms": { "enabled": true, "weights": { "83_galarian": 0.01, "128_paldean": 0.01 } },
       "can_fish": true,
       "trainer_encounter_rate": 0.1,
       "min_rounds": 2,
       "trainer_pool": [
-        { "sprite": "youngster.png",
-          "name": "Ethan",
-          "class": "YOUNGSTER",
-          "rewards": { "balls": 3 }
-        },
-        { "sprite": "lass.png",
-          "name": "Lily",
-          "class": "LASS",
-          "rewards": { "balls": 3 }
-        }
+        { "sprite": "birdkeeper.png", "name": "Sebastian", "class": "BIRD_KEEPER", "team": [17, 21], "rewards": { "balls": 3 } },
+        { "sprite": "picnicker.png", "name": "Alma", "class": "PICNIKER", "team": [29, 30], "rewards": { "balls": 3 } },
+        { "sprite": "swimmer_m.png", "name": "Jared", "class": "SWIMMER", "team": [72, 98], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
@@ -1599,19 +1820,13 @@
       "route_name": "Route 14",
       "battle_type": "field",
       "wild_pool_percentages": "KANTO_ROUTE_14_PERCENTAGES",
+      "alt_forms": { "enabled": true, "weights": { "128_paldean": 0.01 } },
       "trainer_encounter_rate": 0.1,
       "min_rounds": 2,
       "trainer_pool": [
-        { "sprite": "youngster.png",
-          "name": "Ethan",
-          "class": "YOUNGSTER",
-          "rewards": { "balls": 3 }
-        },
-        { "sprite": "lass.png",
-          "name": "Lily",
-          "class": "LASS",
-          "rewards": { "balls": 3 }
-        }
+        { "sprite": "birdkeeper.png", "name": "Mitch", "class": "BIRD_KEEPER", "team": [22], "rewards": { "balls": 3 } },
+        { "sprite": "biker.png", "name": "Malik", "class": "BIKER", "team": [109, 88], "rewards": { "balls": 3 } },
+        { "sprite": "birdkeeper.png", "name": "Carter", "class": "BIRD_KEEPER", "team": [17, 84], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
@@ -1629,26 +1844,20 @@
       "route_name": "Route 15",
       "battle_type": "field",
       "wild_pool_percentages": "KANTO_ROUTE_15_PERCENTAGES",
+      "alt_forms": { "enabled": true, "weights": { "128_paldean": 0.01 } },
       "trainer_encounter_rate": 0.1,
       "min_rounds": 2,
       "trainer_pool": [
-        { "sprite": "youngster.png",
-          "name": "Ethan",
-          "class": "YOUNGSTER",
-          "rewards": { "balls": 3 }
-        },
-        { "sprite": "lass.png",
-          "name": "Lily",
-          "class": "LASS",
-          "rewards": { "balls": 3 }
-        }
+        { "sprite": "biker.png", "name": "Hideo", "class": "BIKER", "team": [88, 88], "rewards": { "balls": 3 } },
+        { "sprite": "cueball.png", "name": "Koji", "class": "CUE_BALL", "team": [66, 56], "rewards": { "balls": 3 } },
+        { "sprite": "cueball.png", "name": "Luke", "class": "CUE_BALL", "team": [67], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         { "text": "ROUTE 14", "action": "EXIT", "target": "KANTO_ROUTE_14", "condition": "can_exit", "color": "RED" },
-        { "text": "FUSCHIA_CITY", "action": "EXIT", "target": "FUSCHIA_CITY", "condition": "can_exit", "color": "RED" }
+        { "text": "FUSCHIA CITY", "action": "EXIT", "target": "FUSCHIA_CITY", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "FUSCHIA_CITY",
       "on_enter_event": null
@@ -1660,6 +1869,7 @@
       "battle_type": "grass",
       "wild_pool_percentages": "SAFARI_ZONE_PERCENTAGES",
       "can_fish": true,
+      "alt_forms": { "enabled": true, "weights": { "128_paldean": 0.01 } },
       "has_trees": true,
       "tree_pool": ["KANTO_CITY_TREE_PERCENTAGES", "KANTO_ROUTE_TREE_PERCENTAGES", "KANTO_MOUNTAIN_TREE_PERCENTAGES", "KANTO_FOREST_TREE_PERCENTAGES"],
       "trainer_encounter_rate": 0,
@@ -1681,19 +1891,13 @@
       "route_name": "Route 16",
       "battle_type": "field",
       "wild_pool_percentages": "KANTO_ROUTE_16_PERCENTAGES",
+      "alt_forms": { "enabled": true, "weights": { "19_alolan": 0.01, "20_alolan": 0.01 } },
       "trainer_encounter_rate": 0.1,
       "min_rounds": 2,
       "trainer_pool": [
-        { "sprite": "youngster.png",
-          "name": "Ethan",
-          "class": "YOUNGSTER",
-          "rewards": { "balls": 3 }
-        },
-        { "sprite": "lass.png",
-          "name": "Lily",
-          "class": "LASS",
-          "rewards": { "balls": 3 }
-        }
+        { "sprite": "birdkeeper.png", "name": "Wilton", "class": "BIRD_KEEPER", "team": [84, 85], "rewards": { "balls": 3 } },
+        { "sprite": "biker.png", "name": "Charles", "class": "BIKER", "team": [109, 110], "rewards": { "balls": 3 } },
+        { "sprite": "birdkeeper.png", "name": "Ramiro", "class": "BIRD_KEEPER", "team": [22, 17], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
@@ -1711,29 +1915,13 @@
       "route_name": "Route 17",
       "battle_type": "field",
       "wild_pool_percentages": "KANTO_ROUTE_17_PERCENTAGES",
+      "alt_forms": { "enabled": true, "weights": { "19_alolan": 0.01, "20_alolan": 0.01, "77_galarian": 0.01, "78_galarian": 0.01 } },
       "trainer_encounter_rate": 0.1,
       "min_rounds": 2,
       "trainer_pool": [
-        { "sprite": "youngster.png",
-          "name": "Ethan",
-          "class": "YOUNGSTER",
-          "dialogue": {
-            "intro": ["I just wanna be friends!"],
-            "player_won": ["Oh no, I thought we were friends!"],
-            "player_lost": ["Yay, we're friends!"]
-          },
-          "rewards": { "balls": 3 }
-        },
-        { "sprite": "lass.png",
-          "name": "Lily",
-          "class": "LASS",
-          "dialogue": {
-            "intro": ["I hope we can be friends!", "Let's battle and be friends!"],
-            "player_won": ["Oh no, I thought we were friends!"],
-            "player_lost": ["Yay, we're friends!"]
-          },
-          "rewards": { "balls": 3 }
-        }
+        { "sprite": "biker.png", "name": "Nikolas", "class": "BIKER", "team": [109, 110], "rewards": { "balls": 3 } },
+        { "sprite": "cueball.png", "name": "Zeek", "class": "CUE_BALL", "team": [56, 57], "rewards": { "balls": 3 } },
+        { "sprite": "biker.png", "name": "Jaxon", "class": "BIKER", "team": [88, 89], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
@@ -1751,30 +1939,14 @@
       "route_name": "Route 18",
       "battle_type": "grass",
       "wild_pool_percentages": "KANTO_ROUTE_18_PERCENTAGES",
+      "alt_forms": { "enabled": true, "weights": { "19_alolan": 0.01, "20_alolan": 0.01 } },
       "has_trees": true,
       "trainer_encounter_rate": 0.1,
       "min_rounds": 2,
       "trainer_pool": [
-        { "sprite": "youngster.png",
-          "name": "Ethan",
-          "class": "YOUNGSTER",
-          "dialogue": {
-            "intro": ["I just wanna be friends!"],
-            "player_won": ["Oh no, I thought we were friends!"],
-            "player_lost": ["Yay, we're friends!"]
-          },
-          "rewards": { "balls": 3 }
-        },
-        { "sprite": "lass.png",
-          "name": "Lily",
-          "class": "LASS",
-          "dialogue": {
-            "intro": ["I hope we can be friends!", "Let's battle and be friends!"],
-            "player_won": ["Oh no, I thought we were friends!"],
-            "player_lost": ["Yay, we're friends!"]
-          },
-          "rewards": { "balls": 3 }
-        }
+        { "sprite": "youngster.png", "name": "Luke", "class": "YOUNGSTER", "team": [19, 21], "rewards": { "balls": 3 } },
+        { "sprite": "lass.png", "name": "Dana", "class": "LASS", "team": [29, 32], "rewards": { "balls": 3 } },
+        { "sprite": "youngster.png", "name": "Arnie", "class": "YOUNGSTER", "team": [27, 23], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
@@ -1782,7 +1954,7 @@
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         { "text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE" },
         { "text": "ROUTE 17", "action": "EXIT", "target": "KANTO_ROUTE_17", "condition": "can_exit", "color": "RED" },
-        { "text": "FUSCHIA_CITY", "action": "EXIT", "condition": "can_exit", "color": "RED" }
+        { "text": "FUSCHIA CITY", "action": "EXIT", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "FUSCHIA_CITY",
       "on_enter_event": null
@@ -1793,20 +1965,14 @@
       "route_name": "Route 19",
       "battle_type": "ocean",
       "wild_pool_percentages": "KANTO_ROUTE_19_PERCENTAGES",
+      "alt_forms": { "enabled": true, "weights": { "128_paldean": 0.01 } },
       "can_fish": true,
       "trainer_encounter_rate": 0.1,
       "min_rounds": 2,
       "trainer_pool": [
-        { "sprite": "youngster.png",
-          "name": "Ethan",
-          "class": "YOUNGSTER",
-          "rewards": { "balls": 3 }
-        },
-        { "sprite": "lass.png",
-          "name": "Lily",
-          "class": "LASS",
-          "rewards": { "balls": 3 }
-        }
+        { "sprite": "swimmer_m.png", "name": "Jerome", "class": "SWIMMER", "team": [73], "rewards": { "balls": 3 } },
+        { "sprite": "fisherman.png", "name": "Ronald", "class": "FISHERMAN", "team": [119, 130], "rewards": { "balls": 3 } },
+        { "sprite": "swimmer_f.png", "name": "Lil", "class": "SWIMMER", "team": [116, 131], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
@@ -1824,20 +1990,14 @@
       "route_name": "Route 20",
       "battle_type": "ocean",
       "wild_pool_percentages": "KANTO_ROUTE_20_PERCENTAGES",
+      "alt_forms": { "enabled": true, "weights": { "79_galarian": 0.01, "80_galarian": 0.01, "37_alolan": 0.01, "38_alolan": 0.01 } },
       "can_fish": true,
       "trainer_encounter_rate": 0.1,
       "min_rounds": 2,
       "trainer_pool": [
-        { "sprite": "youngster.png",
-          "name": "Ethan",
-          "class": "YOUNGSTER",
-          "rewards": { "balls": 3 }
-        },
-        { "sprite": "lass.png",
-          "name": "Lily",
-          "class": "LASS",
-          "rewards": { "balls": 3 }
-        }
+        { "sprite": "swimmer_m.png", "name": "Richard", "class": "SWIMMER", "team": [72, 90], "rewards": { "balls": 3 } },
+        { "sprite": "swimmer_f.png", "name": "Alice", "class": "SWIMMER", "team": [118, 120], "rewards": { "balls": 3 } },
+        { "sprite": "beauty.png", "name": "Connie", "class": "BEAUTY", "team": [124, 131], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
@@ -1845,8 +2005,8 @@
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         { "text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE" },
         { "text": "ROUTE 19", "action": "EXIT", "target": "KANTO_ROUTE_19", "condition": "can_exit", "color": "RED" },
-        { "text": "SEAFOAM ISLANDS", "action": "EXIT", "target": "SEAFOAM_ISLANDS_1F", "condition": "can_exit", "color": "RED" },
-        { "text": "CINNABAR_ISLAND", "action": "EXIT", "target": "CINNABAR_ISLAND", "condition": "can_exit", "color": "RED" }
+        { "text": "SEAFOAM ISLANDS", "action": "EXIT", "target": "SEAFOAM_ISLANDS", "condition": "can_exit", "color": "RED" },
+        { "text": "CINNABAR ISLAND", "action": "EXIT", "target": "CINNABAR_ISLAND", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "CINNABAR_ISLAND",
       "on_enter_event": null
@@ -1857,27 +2017,21 @@
       "route_name": "Route 21",
       "battle_type": "ocean",
       "wild_pool_percentages": "KANTO_ROUTE_21_PERCENTAGES",
+      "alt_forms": { "enabled": true, "weights": { "19_alolan": 0.01, "20_alolan": 0.01 } },
       "can_fish": true,
       "trainer_encounter_rate": 0.1,
       "min_rounds": 2,
       "trainer_pool": [
-        { "sprite": "youngster.png",
-          "name": "Ethan",
-          "class": "YOUNGSTER",
-          "rewards": { "balls": 3 }
-        },
-        { "sprite": "lass.png",
-          "name": "Lily",
-          "class": "LASS",
-          "rewards": { "balls": 3 }
-        }
+        { "sprite": "swimmer_m.png", "name": "Tucker", "class": "SWIMMER", "team": [116, 117], "rewards": { "balls": 3 } },
+        { "sprite": "swimmer_f.png", "name": "Lola", "class": "SWIMMER", "team": [120, 121], "rewards": { "balls": 3 } },
+        { "sprite": "picnicker.png", "name": "Irene", "class": "PICNIKER", "team": [29, 31], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         { "text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE" },
-        { "text": "CINNABAR_ISLAND", "action": "EXIT", "target": "CINNABAR_ISLAND", "condition": "can_exit", "color": "RED" },
+        { "text": "CINNABAR ISLAND", "action": "EXIT", "target": "CINNABAR_ISLAND", "condition": "can_exit", "color": "RED" },
         { "text": "PALLET TOWN", "action": "EXIT", "target": "PALLET_TOWN", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "PALLET_TOWN",
@@ -1889,20 +2043,23 @@
       "route_name": "Route 22",
       "battle_type": "grass",
       "wild_pool_percentages": "KANTO_ROUTE_22_PERCENTAGES",
+      "alt_forms": { "enabled": true, "weights": { "19_alolan": 0.01, "20_alolan": 0.01 } },
       "trainer_encounter_rate": 0.1,
       "min_rounds": 2,
       "trainer_pool": [
-        { "sprite": "youngster.png",
-          "name": "Ethan",
-          "class": "YOUNGSTER",
-          "rewards": { "balls": 3 }
-        },
-        { "sprite": "lass.png",
-          "name": "Lily",
-          "class": "LASS",
-          "rewards": { "balls": 3 }
-        }
+        { "sprite": "birdkeeper.png", "name": "Bird Keeper Jacob", "class": "BIRD_KEEPER", "team": [17, 17, 18], "rewards": { "balls": 3 } },
+        { "sprite": "birdkeeper.png", "name": "Bird Keeper Wilton", "class": "BIRD_KEEPER", "team": [21, 22], "rewards": { "balls": 3 } },
+        { "sprite": "birdkeeper.png", "name": "Bird Keeper Ramiro", "class": "BIRD_KEEPER", "team": [16, 17, 16], "rewards": { "balls": 3 } }
       ],
+      "on_enter_event": {
+        "type": "trainer_battle",
+        "trainer": {
+          "name": "Blue", "class": "RIVAL", "sprite": "blue.png",
+          "team": [10101, 10100]
+        },
+        "condition": "badges_less: 1",
+        "flag_check": "defeated_rival_route22_early"
+      },
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
@@ -1910,31 +2067,24 @@
         { "text": "VIRIDIAN CITY", "action": "EXIT", "target": "VIRIDIAN_CITY", "condition": "can_exit", "color": "RED" },
         { "text": "VICTORY ROAD", "action": "EXIT", "target": "VICTORY_ROAD", "condition": ["can_exit", "has_8_badges"], "color": "RED" }
       ],
-      "next_area": "VICTORY_ROAD",
-      "on_enter_event": null
+      "next_area": "VICTORY_ROAD"
     },
     
-   "KANTO_ROUTE_23": {
+    "KANTO_ROUTE_23": {
       "area_type": "wild_route",
       "route_name": "Route 23",
       "battle_type": "mountain",
       "wild_pool_percentages": "KANTO_ROUTE_23_PERCENTAGES",
       "can_fish": true,
+      "alt_forms": { "enabled": true, "weights": { "128_paldean": 0.01 } },
       "has_trees": true,
       "tree_pool": ["KANTO_MOUNTAIN_TREE_PERCENTAGES", "KANTO_ROUTE_TREE_PERCENTAGES"],
       "trainer_encounter_rate": 0.1,
       "min_rounds": 2,
       "trainer_pool": [
-        { "sprite": "youngster.png",
-          "name": "Ethan",
-          "class": "YOUNGSTER",
-          "rewards": { "balls": 3 }
-        },  
-        { "sprite": "lass.png",
-          "name": "Lily",
-          "class": "LASS",
-          "rewards": { "balls": 3 }
-        }
+        { "sprite": "acetrainer_m.png", "name": "Ray", "class": "ACE_TRAINER", "team": [28, 57], "rewards": { "balls": 5 } },
+        { "sprite": "acetrainer_f.png", "name": "Cynthia", "class": "ACE_TRAINER", "team": [24, 31], "rewards": { "balls": 5 } },
+        { "sprite": "acetrainer_m.png", "name": "Kevin", "class": "ACE_TRAINER", "team": [34, 112], "rewards": { "balls": 5 } }
       ],
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
@@ -1943,9 +2093,9 @@
         { "text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE" },
         { "text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE" },
         { "text": "VICTORY ROAD", "action": "EXIT", "target": "VICTORY_ROAD_3F", "condition": "can_exit", "color": "RED" },
-        { "text": "INDIGO_CITY", "action": "EXIT", "target": "INDIGO_CITY", "condition": "can_exit", "color": "RED" }
+        { "text": "INDIGO_PLATEAU", "action": "EXIT", "target": "INDIGO_PLATEAU", "condition": "can_exit", "color": "RED" }
       ],
-      "next_area": "INDIGO_CITY",
+      "next_area": "INDIGO_PLATEAU",
       "on_enter_event": null
     },
 
@@ -1955,41 +2105,15 @@
       "battle_type": "field",
       "can_fish": true,
       "has_trees": true,
+      "alt_forms": { "enabled": true, "weights": { "19_alolan": 0.01, "20_alolan": 0.01, "52_alolan": 0.01, "52_galarian": 0.01 } },
       "tree_pool": "KANTO_ROUTE_TREE_PERCENTAGES",
       "wild_pool_percentages": "KANTO_ROUTE_24_PERCENTAGES",
       "trainer_encounter_rate": 0.1,
       "min_rounds": 2,
       "trainer_pool": [
-        { "sprite": "bug_catcher.png",
-          "name": "Ethan",
-          "class": "BUG_CATCHER",
-          "team": [10, 11, 13, 14],
-          "rewards": { "balls": 3 }
-        },
-        { "sprite": "lass.png",
-          "name": "Lily",
-          "class": "LASS",
-          "team": [43, 16, 69],
-          "rewards": { "balls": 3 }
-        },
-        { "sprite": "camper.png",
-          "name": "Josh",
-          "class": "YOUNGSTER",
-          "team": [25, 56],
-          "rewards": { "balls": 3 }
-        },
-        { "sprite": "youngster.png",
-          "name": "Timmy",
-          "class": "YOUNGSTER",
-          "team": [27, 23, 20],
-          "rewards": { "balls": 3 }
-        },
-        { "sprite": "rocket_grunt_m.png",
-          "name": "Grunt",
-          "class": "ROCKET_GRUNT",
-          "team": [23, 41],
-          "rewards": { "balls": 3 }
-        }
+        { "sprite": "bug_catcher.png", "name": "Ethan", "class": "BUG_CATCHER", "team": [10, 11, 13, 14], "rewards": { "balls": 3 } },
+        { "sprite": "camper.png", "name": "Josh", "class": "YOUNGSTER", "team": [25, 56], "rewards": { "balls": 3 } },
+        { "sprite": "rocket_grunt_m.png", "name": "Grunt", "class": "ROCKET_GRUNT", "team": [23, 41], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
@@ -2011,44 +2135,17 @@
       "route_name": "Nugget Bridge",
       "battle_type": "field",
       "can_fish": true,
+      "alt_forms": { "enabled": true, "weights": { "19_alolan": 0.01, "52_alolan": 0.01, "52_galarian": 0.01 } },
       "wild_pool_percentages": "KANTO_ROUTE_25_PERCENTAGES",
       "trainer_encounter_rate": 0.1,
       "min_rounds": 2,
       "trainer_pool": [
-        { "sprite": "school_kid_m.png",
-          "name": "Dudley",
-          "class": "SCHOOL_KID",
-          "rewards": { "balls": 3 }
-        },
-        { "sprite": "lass.png",
-          "name": "Ellen",
-          "class": "LASS",
-          "rewards": { "balls": 3 }
-        },
-        { "sprite": "camper.png",
-          "name": "Lloyd",
-          "class": "YOUNGSTER",
-          "team": [25, 56],
-          "rewards": { "balls": 3 }
-        },
-        { "sprite": "hiker.png",
-          "name": "Franklin",
-          "class": "HIKER",
-          "team": [66, 111],
-          "rewards": { "balls": 3 }
-        },
-        { "sprite": "supernerd.png",
-          "name": "Elliot",
-          "class": "SUPER_NERD",
-          "team": [81, 137],
-          "rewards": { "balls": 3 }
-        },
-        { "sprite": "acetrainer_f.png",
-          "name": "Vanessa",
-          "class": "ACE_TRAINER",
-          "team": [2, 5, 8],
-          "rewards": { "balls": 15, "NUGGET": 1 }
-        }
+        { "sprite": "school_kid_m.png", "name": "Dudley", "class": "SCHOOL_KID", "rewards": { "balls": 3 } },
+        { "sprite": "lass.png", "name": "Ellen", "class": "LASS", "rewards": { "balls": 3 } },
+        { "sprite": "camper.png", "name": "Lloyd",  "class": "YOUNGSTER", "team": [25, 56], "rewards": { "balls": 3 } },
+        { "sprite": "hiker.png", "name": "Franklin", "class": "HIKER", "team": [66, 111], "rewards": { "balls": 3 } },
+        { "sprite": "supernerd.png", "name": "Elliot", "class": "SUPER_NERD", "team": [81, 137], "rewards": { "balls": 3 } },
+        { "sprite": "acetrainer_f.png", "name": "Vanessa", "class": "ACE_TRAINER", "team": [2, 5, 8], "rewards": { "balls": 15, "RARE_CANDY": 1 } }
       ],
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
@@ -2067,27 +2164,15 @@
       "battle_type": "field",
       "can_fish": true,
       "has_trees": true,
+      "alt_forms": { "enabled": true, "weights": { "20_alolan": 0.01, "77_galarian": 0.01, "194_paldean": 0.01 } },
       "tree_pool": "KANTO_ROUTE_TREE_PERCENTAGES",
       "wild_pool_percentages": "KANTO_ROUTE_26_PERCENTAGES",
       "trainer_encounter_rate": 0.1,
       "min_rounds": 2,
       "trainer_pool": [
-        { "sprite": "youngster.png",
-          "name": "Ethan",
-          "class": "YOUNGSTER",
-          "rewards": { "balls": 3 }
-        },
-        { "sprite": "lass.png",
-          "name": "Lily",
-          "class": "LASS",
-          "rewards": { "balls": 3 }
-        },
-        { "sprite": "camper.png",
-          "name": "Josh",
-          "class": "YOUNGSTER",
-          "team": [25, 56],
-          "rewards": { "balls": 3 }
-        }
+        { "sprite": "fisherman.png", "name": "Kyler", "class": "FISHERMAN", "team": [130, 130], "rewards": { "balls": 3 } },
+        { "sprite": "acetrainer_f.png", "name": "Reena", "class": "ACE_TRAINER", "team": [121, 134], "rewards": { "balls": 5 } },
+        { "sprite": "camper.png", "name": "Josh", "class": "YOUNGSTER", "team": [25, 56], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
@@ -2108,27 +2193,16 @@
       "battle_type": "ocean",
       "can_fish": true,
       "has_trees": true,
+      "alt_forms": { "enabled": true, "weights": { "20_alolan": 0.01, "77_galarian": 0.01, "194_paldean": 0.01 } },
       "tree_pool": "KANTO_ROUTE_TREE_PERCENTAGES",
       "wild_pool_percentages": "KANTO_ROUTE_27_PERCENTAGES",
       "trainer_encounter_rate": 0.1,
       "min_rounds": 2,
       "trainer_pool": [
-        { "sprite": "youngster.png",
-          "name": "Ethan",
-          "class": "YOUNGSTER",
-          "rewards": { "balls": 3 }
-        },
-        { "sprite": "lass.png",
-          "name": "Lily",
-          "class": "LASS",
-          "rewards": { "balls": 3 }
-        },
-        { "sprite": "camper.png",
-          "name": "Josh",
-          "class": "YOUNGSTER",
-          "team": [25, 56],
-          "rewards": { "balls": 3 }
-        }
+        { "sprite": "acetrainer_f.png", "name": "Ace Trainer Reena", "class": "COOLTRAINER", "team": [121, 134], "rewards": { "balls": 5 } },
+        { "sprite": "acetrainer_f.png", "name": "Ace Trainer Megan", "class": "COOLTRAINER", "team": [180, 184], "rewards": { "balls": 5 } },
+        { "sprite": "acetrainer_m.png", "name": "Ace Trainer Blake", "class": "COOLTRAINER", "team": [141], "rewards": { "balls": 5 } },
+        { "sprite": "acetrainer_m.png", "name": "Ace Trainer Brian", "class": "COOLTRAINER", "team": [130], "rewards": { "balls": 5 } }
       ],
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
@@ -2137,9 +2211,9 @@
         { "text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE" },
         { "text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE" },
         { "text": "ROUTE 26", "action": "EXIT", "target": "KANTO_ROUTE_26", "condition": ["can_exit"],  "color": "RED" },
-        { "text": "ROUTE 28", "action": "EXIT", "target": "KANTO_ROUTE_28", "condition": ["can_exit"],  "color": "RED" }
+        { "text": "NEW BARK TOWN", "action": "EXIT", "target": "NEW_BARK_TOWN", "condition": ["can_exit"],  "color": "RED" }
       ],
-      "next_area": "KANTE_ROUTE_27",
+      "next_area": "NEW_BARK_TOWN",
       "on_enter_event": null
     },
 
@@ -2148,19 +2222,16 @@
       "route_name": "Mt. Moon",
       "battle_type": "mountain",
       "wild_pool_percentages": "MT_MOON_PERCENTAGES",
+      "alt_forms": { "enabled": true, "weights": { "74_alolan": 0.01 } },
       "trainer_encounter_rate": 0.1,
       "min_rounds": 3,
       "trainer_pool": [
         { "sprite": "youngster.png", "name": "Josh", "class": "YOUNGSTER", "rewards": { "balls": 3 } },
         { "sprite": "lass.png", "name": "Miriam", "class": "LASS", "team": [43, 69], "rewards": { "balls": 3 } },
-        { "sprite": "bug_catcher.png", "name": "Robby", "class": "BUG_CATCHER",
-            "team": [[10, 11, 10],[13, 14, 13]], "rewards": { "balls": 3 } },
-        { "sprite": "supernerd.png", "name": "Jovan", "class": "SUPER_NERD",
-            "team": [81, 100], "rewards": { "balls": 3 } },
-        { "sprite": "hiker.png", "name": "Dimitri", "class": "HIKER",
-            "team": [74, 95], "rewards": { "balls": 3 } },
-        { "sprite": "rocket_grunt_m.png",
-          "name": "Grunt", "class": "ROCKET_GRUNT", "rewards": { "balls": 3 } },
+        { "sprite": "bug_catcher.png", "name": "Robby", "class": "BUG_CATCHER", "team": [10, 11, 10], "rewards": { "balls": 3 } },
+        { "sprite": "supernerd.png", "name": "Jovan", "class": "SUPER_NERD", "team": [81, 100], "rewards": { "balls": 3 } },
+        { "sprite": "hiker.png", "name": "Dimitri", "class": "HIKER", "team": [74, 95], "rewards": { "balls": 3 } },
+        { "sprite": "rocket_grunt_m.png", "name": "Grunt", "class": "ROCKET_GRUNT", "rewards": { "balls": 3 } },
         { "sprite": "rocket_grunt_f.png", "name": "Grunt", "class": "ROCKET_GRUNT", "rewards": { "balls": 3 } },
         { "sprite": "rocket_team.png", "name": "Jessie and James", "class": "ROCKET",
           "dialogue": {
@@ -2191,12 +2262,9 @@
       "trainer_encounter_rate": 0.1,
       "min_rounds": 3,
       "trainer_pool": [
-        { "sprite": "youngster.png", "name": "Gary", "class": "YOUNGSTER", "rewards": { "balls": 3 } },
-        { "sprite": "lass.png", "name": "Lily", "class": "LASS", "team": [43, 16, 69], "rewards": { "balls": 3 } },
-        { "sprite": "camper.png", "name": "Josh", "class": "YOUNGSTER", "team": [25, 56], "rewards": { "balls": 3 } },
-        { "sprite": "youngster.png", "name": "Timmy", "class": "YOUNGSTER", "team": [27, 23, 20], "rewards": { "balls": 3 } },
-        { "sprite": "rocket_grunt_m.png", "name": "Grunt", "class": "ROCKET_GRUNT", "team": [23, 41], "rewards": { "balls": 3 } },
-        { "sprite": "rocket_grunt_f.png", "name": "Grunt", "class": "ROCKET_GRUNT", "team": [41, 23], "rewards": { "balls": 3 } }
+        { "sprite": "acetrainer_m.png", "name": "Ace Trainer Albert", "class": "COOLTRAINER", "team": [112, 68, 130], "rewards": { "balls": 5 } },
+        { "sprite": "acetrainer_f.png", "name": "Ace Trainer Cybil", "class": "COOLTRAINER", "team": [103, 31, 121], "rewards": { "balls": 5 } },
+        { "sprite": "acetrainer_m.png", "name": "Ace Trainer Samuel", "class": "COOLTRAINER", "team": [143, 59, 149], "rewards": { "balls": 10 } }
       ],
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
@@ -2215,6 +2283,7 @@
       "route_name": "Rock Tunnel",
       "battle_type": "mountain",
       "wild_pool_percentages": "ROCK_TUNNEL_PERCENTAGES",
+      "alt_forms": { "enabled": true, "weights": { "74_alolan": 0.01, "75_alolan": 0.01, "105_alolan": 0.01 } },
       "trainer_encounter_rate": 0.1,
       "min_rounds": 3,
       "trainer_pool": [
@@ -2223,7 +2292,12 @@
         { "sprite": "rocker.png", "name": "Rocky", "class": "ROCKER", "rewards": { "balls": 3 } },
         { "sprite": "rocker.png", "name": "Stoney", "class": "ROCKER", "rewards": { "balls": 3 } },
         { "sprite": "rocker.png", "name": "Pebbles", "class": "ROCKER", "rewards": { "balls": 3 } },
-        { "sprite": "rocker.png", "name": "Boulder", "class": "ROCKER", "rewards": { "balls": 3 } }
+        { "sprite": "rocker.png", "name": "Boulder", "class": "ROCKER", 
+          "dialogue": {
+            "intro": ["Whoa! This tunnel has the best acoustics!", "Prepare for a sonic boom!"],
+            "player_won": ["Bummer, man! My rhythm was totally off.", "Hey, you want this sticky thing? I found it stuck to my guitar pick.", "I thought it was a piece of old honey candy, but it's hard as a rock. Gross. Later!"],
+            "player_lost": ["Rock on! Your team just couldn't handle the bass!"]
+          }, "rewards": { "balls": 3, "OLD_AMBER": 1 } }
       ],
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
@@ -2241,13 +2315,15 @@
       "area_type": "wild_route",
       "route_name": "PKMN Tower",
       "battle_type": "indoor",
-      "wild_pool_percentages": "KANTO_POKEMON_TOWER_1F_PERCENTAGES",
+      "wild_pool_percentages": "KANTO_POKEMON_TOWER_PERCENTAGES",
       "area_boss": {
         "id": 10500,
+        "victory_flag": "tower_ghost_defeated",
         "name": "(Ghost)"
       },
+      "alt_forms": { "enabled": true, "weights": { "105_alolan": 0.01 } },
       "trainer_encounter_rate": 0.1,
-      "min_rounds": 3,
+      "min_rounds": 0,
       "trainer_pool": [
         { "sprite": "channeler.png", "name": "Carly", "class": "CHANNELER" , "rewards": { "balls": 3 } },
         { "sprite": "channeler.png", "name": "Laurel", "class": "CHANNELER" , "rewards": { "balls": 3 } },
@@ -2270,8 +2346,12 @@
     "SEAFOAM_ISLANDS": {
       "area_type": "wild_route",
       "route_name": "Seafoam Islands",
-      "battle_type": "ocean",
+      "battle_type": "cave",
+      "backgrounds": {
+        "battle": "battle_seafoam_islands.png"
+      },
       "wild_pool_percentages": "SEAFOAM_ISLANDS_PERCENTAGES",
+      "alt_forms": { "enabled": true, "weights": { "79_galarian": 0.01, "80_galarian": 0.01, "37_alolan": 0.01, "38_alolan": 0.01 } },
       "area_boss": {
         "id": 144,
         "name": "Articuno"
@@ -2279,50 +2359,77 @@
       "trainer_encounter_rate": 0.1,
       "min_rounds": 3,
       "trainer_pool": [
-        { "sprite": "youngster.png", "name": "Ethan", "class": "YOUNGSTER", "rewards": { "balls": 3 } },
-        { "sprite": "lass.png", "name": "Lily", "class": "LASS", "rewards": { "balls": 3 } },
-        { "sprite": "swimmer_m.png", "name": "Dean", "class": "SWIMMER", "team": [90, 91, 120], "rewards": { "balls": 3 } },
-        { "sprite": "supernerd.png", "name": "Shaun", "class": "SUPER_NERD", "team": [80, 131], "rewards": { "balls": 3 } },
-        { "sprite": "skier.png", "name": "Candi", "class": "SKIER", "team": [124, 87], "rewards": { "balls": 3 } }
+        { "sprite": "swimmer_m.png", "name": "Dean", "class": "SWIMMER", "team": [90, 91], "rewards": { "balls": 3 } },
+        { "sprite": "skier.png", "name": "Candi", "class": "SKIER", "team": [124, 87], "rewards": { "balls": 3 } },
+        { "sprite": "boarder.png", "name": "Ty", "class": "BOARDER", "team": [86, 87], "rewards": { "balls": 3 } },
+        { "sprite": "beauty.png", "name": "Connie", "class": "BEAUTY", "team": [131], "rewards": { "balls": 3 } },
+        { "sprite": "acetrainer_f.png", "name": "Reena", "class": "ACE_TRAINER", "team": [80, 134], "rewards": { "balls": 5 } }
       ],
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         { "text": "CHALLENGE ARTICUNO", "action": "BOSS", "condition": "boss_available", "color": "GOLD" },
-        { "text": "ROUTE 20", "action": "EXIT", "target": "KANTO_ROUTE_20", "condition": "can_exit", "color": "RED" }
+        { "text": "EXIT CAVE", "action": "EXIT", "target": "KANTO_ROUTE_20", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "KANTO_ROUTE_20",
       "on_enter_event": null
     },
 
+    "CINNABAR_VOLCANO": {
+      "area_type": "wild_route",
+      "route_name": "Cinnabar Volcano",
+      "battle_type": "cave",
+      "backgrounds": {
+        "battle": "battle_gym_cinnabar.png"
+      },
+      "wild_pool_percentages": "CINNABAR_VOLCANO_PERCENTAGES",
+      "alt_forms": { "enabled": true, "weights": { "37_alolan": 0.01, "38_alolan": 0.01, "58_hisuian": 0.01, "59_hisuian": 0.01, "77_galarian": 0.01, "78_galarian": 0.01, "88_alolan": 0.01, "89_alolan": 0.01, "110_galarian": 0.01 } },
+      "area_boss": {
+        "id": 146,
+        "name": "Moltres"
+      },
+      "trainer_encounter_rate": 0.0,
+      "min_rounds": 0,
+      "trainer_pool": [
+        { "sprite": "burglar.png", "name": "Quinn", "class": "BURGLAR", "team": [58, 77], "rewards": { "balls": 3 } },
+        { "sprite": "supernerd.png", "name": "Zac", "class": "SUPER_NERD", "team": [37, 126], "rewards": { "balls": 3 } },
+        { "sprite": "kindler.png", "name": "Bernie", "class": "KINDLER", "team": [38, 59], "rewards": { "balls": 3 } },
+        { "sprite": "firebreather.png", "name": "Burt", "class": "FIREBREATHER", "team": [6, 136], "rewards": { "balls": 3 } }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
+        { "text": "CHALLENGE MOLTRES", "action": "BOSS", "condition": "boss_available", "color": "GOLD" },
+        { "text": "EXIT VOLCANO", "action": "EXIT", "target": "CINNABAR_ISLAND", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "CINNABAR_ISLAND",
+      "on_enter_event": null
+    },
 
     "VICTORY_ROAD": {
       "area_type": "wild_route",
       "route_name": "Victory Road",
       "battle_type": "mountain",
       "wild_pool_percentages": "VICTORY_ROAD_PERCENTAGES",
-      "area_boss": {
-        "id": 146,
-        "name": "Moltres"
-      },
+      "alt_forms": { "enabled": true, "weights": { "74_alolan": 0.01, "75_alolan": 0.01, "105_alolan": 0.01 } },
       "trainer_encounter_rate": 0.1,
       "min_rounds": 4,
       "trainer_pool": [
-        { "sprite": "youngster.png", "name": "Ethan", "class": "YOUNGSTER", "rewards": { "balls": 3 } },
-        { "sprite": "lass.png", "name": "Lily", "class": "LASS", "rewards": { "balls": 3 } },
+        { "sprite": "acetrainer_m.png", "name": "Ray", "class": "ACE_TRAINER", "team": [28, 57, 143], "rewards": { "balls": 5 } },
         { "sprite": "blackbelt.png", "name": "Daisuke", "class": "BLACKBELT", "team": [62, 67, 68], "rewards": { "balls": 3 } },
+        { "sprite": "veteran.png", "name": "Edgar", "class": "VETERAN", "team": [3, 6, 9], "rewards": { "balls": 10 } },
         { "sprite": "juggler.png", "name": "Nelson", "class": "JUGGLER", "team": [64, 96, 97], "rewards": { "balls": 3 } },
-        { "sprite": "cooltrainer_m.png", "name": "George", "class": "COOLTRAINER", "team": [103, 105], "rewards": { "balls": 3 } },
-        { "sprite": "cooltrainer_f.png", "name": "Alexa", "class": "COOLTRAINER", "team": [31, 34, 112], "rewards": { "balls": 3 } }
+        { "sprite": "acetrainer_f.png", "name": "Alexa", "class": "ACE_TRAINER", "team": [31, 34, 112], "rewards": { "balls": 5 } },
+        { "sprite": "supernerd.png", "name": "Hall", "class": "PSYCHIC", "team": [65, 80, 122], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
-        { "text": "CHALLENGE MOLTRES", "action": "BOSS", "condition": "boss_available", "color": "ORANGE" },
-        { "text": "GO BACK", "action": "EXIT", "target": "VICTORY_ROAD_2F", "condition": "can_exit", "color": "RED" },
-        { "text": "ROUTE 23", "action": "EXIT", "target": "KANTO_ROUTE_23", "condition": "can_exit", "color": "RED" }
+        { "text": "GO BACK", "action": "EXIT", "target": "KANTO_ROUTE_22", "condition": "can_exit", "color": "RED" },
+        { "text": "TO INDIGO PLATEAU", "action": "EXIT", "target": "KANTO_ROUTE_23", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "KANTO_ROUTE_23",
       "on_enter_event": null
@@ -2350,171 +2457,122 @@
   "GOOD_ROD_POOL": [129, 60, 118, 54, 90, 98],
   "GOOD_ROD_POOL_PERCENTAGES": {"129": 40, "118": 20, "60": 10, "54": 5, "90": 15, "98": 10},
 
-  "SUPER_ROD_POOL": [129, 60, 118, 54, 90, 98, 120, 121],
-  "SUPER_ROD_POOL_PERCENTAGES": {"129": 30, "118": 15, "60": 10, "54": 5, "90": 15, "98": 10, "120": 5, "121": 5},
+  "SUPER_ROD_POOL": [129,60,118,119,54,90,91,98,99,120,121,147,148,116],
+  "SUPER_ROD_POOL_PERCENTAGES": {"129": 20, "118": 10, "119": 5, "60": 10, "54": 5, "90": 10, "91": 5, "98": 10, "99": 5, "116": 5, "120": 5, "121": 5, "147": 4, "148": 1},
 
+  "KANTO_ROUTE_1": [16,19,2001],
+  "KANTO_ROUTE_1_PERCENTAGES": {"16":45,"19":54,"2001":1},
 
-  "KANTO_ROUTE_1": [16,19],
-  "KANTO_ROUTE_1_PERCENTAGES": {"16":45,"19":55},
-  "KANTO_ROUTE_1_REGIONAL_CHANCES": {"19":0.01},
+  "KANTO_ROUTE_2": [10,11,13,14,16,19,25,2001],
+  "KANTO_ROUTE_2_PERCENTAGES": {"16":30,"19":24,"10":15,"13":15,"11":5,"14":5,"25":5,"2001":1},
 
+  "KANTO_ROUTE_3": [16,21,23,27,35,39,56,2004],
+  "KANTO_ROUTE_3_PERCENTAGES": {"16":20,"21":20,"23":12,"27":12,"35":10,"39":10,"56":15,"2004":1},
 
-  "KANTO_ROUTE_2": [10,11,13,14,16,25,43,69],
-  "KANTO_ROUTE_2_PERCENTAGES": {"10":20,"11":10,"13":20,"14":10,"16":20,"25":10,"43":10,"69":10},
+  "KANTO_ROUTE_4": [19,21,23,27,39,56,2001,2004],
+  "KANTO_ROUTE_4_PERCENTAGES": {"19":19,"21":20,"23":20,"27":19,"39":10,"56":10,"2001":1,"2004":1},
 
+  "KANTO_ROUTE_5": [16,17,19,37,39,43,52,58,63,2001,2006,2010,2039,2019],
+  "KANTO_ROUTE_5_PERCENTAGES": {"16":13,"19":12,"37":13,"39":13,"43":12,"52":12,"58":12,"63":12,"2001":1,"2006":1,"2010":1,"2039":1,"2019":1},
 
-  "KANTO_ROUTE_3": [16,21,23,27,35,39,56],
-  "KANTO_ROUTE_3_PERCENTAGES": {"16":20,"21":20,"23":12.5,"27":12.5,"35":10,"39":10,"56":15},
-  "KANTO_ROUTE_3_REGIONAL_CHANCES": {"27":0.01},
+  "KANTO_ROUTE_6": [16,17,19,37,39,43,52,54,58,63,2001,2006,2010,2019,2039],
+  "KANTO_ROUTE_6_PERCENTAGES": {"16":12,"19":10,"37":10,"39":11,"43":11,"52":10,"58":10,"54":9,"63":10,"17":2,"2001":1,"2006":1,"2010":1,"2019":1,"2039":1},
 
+  "KANTO_ROUTE_7": [16,19,37,39,52,56,58,63,69,122,2001,2006,2010,2039,2026,2011],
+  "KANTO_ROUTE_7_PERCENTAGES": {"16":15,"19":15,"37":10,"39":11,"52":9,"56":11,"69":11,"58":4,"63":5,"122":4,"2001":1,"2006":1,"2010":1,"2039":1,"2026":1,"2011":1},
 
-  "KANTO_ROUTE_4": [19,21,23,27,39,56],
-  "KANTO_ROUTE_4_PERCENTAGES": {"19":20,"21":20,"23":20,"27":20,"39":10,"56":10},
-  "KANTO_ROUTE_4_REGIONAL_CHANCES": {"19":0.01,"27":0.01},
+  "KANTO_ROUTE_8": [16,19,37,39,52,58,63,93,113,2001,2006,2010,2039],
+  "KANTO_ROUTE_8_PERCENTAGES": {"16":15,"19":14,"37":13,"39":14,"52":14,"58":14,"63":10,"93":1,"113":1,"2001":1,"2006":1,"2010":1,"2039":1},
 
+  "KANTO_ROUTE_9": [19,21,22,23,27,29,32,48,56,2001,2004],
+  "KANTO_ROUTE_9_PERCENTAGES": {"19":14,"21":15,"23":10,"27":9,"29":10,"32":10,"48":10,"56":10,"22":10,"2001":1,"2004":1},
 
-  "KANTO_ROUTE_5": [16,17,19,37,39,43,52,58,63],
-  "KANTO_ROUTE_5_PERCENTAGES": {"16":10,"19":10,"37":10,"39":10,"43":10,"52":10,"58":10,"63":10},
-  "KANTO_ROUTE_5_REGIONAL_CHANCES": {"19":0.01,"37":0.01,"52":0.01,"58":0.01},
+  "KANTO_ROUTE_10": [19,21,29,30,32,33,66,98,100,125,2001,2041],
+  "KANTO_ROUTE_10_PERCENTAGES": {"19":19,"21":20,"29":15,"30":5,"32":15,"33":5,"66":5,"98":5,"100":4,"125":5,"2001":1,"2041":1},
 
+  "KANTO_ROUTE_11": [16,17,19,20,81,96,97,122,2001,2002,2026,2003],
+  "KANTO_ROUTE_11_PERCENTAGES": {"16":25,"17":5,"19":23,"20":4,"81":15,"96":15,"97":5,"122":4,"2001":1,"2002":1,"2026":1,"2003":1},
 
-  "KANTO_ROUTE_6": [16,17,19,37,39,43,52,54,58,63],
-  "KANTO_ROUTE_6_PERCENTAGES": {"16":10,"17":2,"19":10,"37":10,"39":10,"43":10,"52":10,"54":9,"58":10,"63":9},
-  "KANTO_ROUTE_6_REGIONAL_CHANCES": {"19":0.01,"37":0.01,"52":0.01,"58":0.01},
+  "KANTO_ROUTE_12": [16,17,43,44,69,70,83,98,99,2024],
+  "KANTO_ROUTE_12_PERCENTAGES": {"69":18,"98":18,"16":17,"43":17,"17":6,"44":6,"70":6,"83":5,"99":6,"2024":1},
 
+  "KANTO_ROUTE_13": [16,17,43,44,48,49,69,70,98,99,123,127,128,132,2024],
+  "KANTO_ROUTE_13_PERCENTAGES": {"16":9,"43":14,"48":14,"69":13,"98":13,"17":4,"44":4,"49":4,"70":4,"99":4,"123":4,"127":4,"128":3,"132":5,"2024":1},
 
-  "KANTO_ROUTE_7": [16,19,37,39,52,56,58,63,69,137],
-  "KANTO_ROUTE_7_PERCENTAGES": {"16":10,"19":10,"37":10,"39":10,"52":10,"56":10,"58":10,"63":9,"69":10,"137":1},
-  "KANTO_ROUTE_7_REGIONAL_CHANCES": {"19":0.01,"37":0.01,"52":0.01,"58":0.01},
+  "KANTO_ROUTE_14": [16,17,43,44,48,49,69,70,123,127,128,132],
+  "KANTO_ROUTE_14_PERCENTAGES": {"16":12,"43":16,"48":16,"69":16,"17":5,"44":5,"49":5,"70":5,"123":5,"127":5,"128":5,"132":5},
 
+  "KANTO_ROUTE_15": [16,17,43,44,48,49,69,70,123,127,128,132],
+  "KANTO_ROUTE_15_PERCENTAGES": {"16":15,"17":5,"43":15,"44":5,"48":15,"49":5,"69":15,"70":5,"123":5,"127":5,"128":5,"132":5},
 
-  "KANTO_ROUTE_8": [16,19,37,39,52,58,63,93,113],
-  "KANTO_ROUTE_8_PERCENTAGES": {"16":15,"19":15,"37":14,"39":14,"52":15,"58":15,"63":10,"93":1,"113":1},
- 
+  "KANTO_ROUTE_16": [19,20,21,22,84,85,2001,2002],
+  "KANTO_ROUTE_16_PERCENTAGES": {"21":26,"19":24,"84":25,"22":8,"20":7,"85":8,"2001":1,"2002":1},
 
-  "KANTO_ROUTE_9": [19,21,23,27,29,32,48,56,105],
-  "KANTO_ROUTE_9_PERCENTAGES": {"19":12,"21":13,"23":13,"27":13,"29":13,"32":13,"48":13,"56":5,"105":5},
-  "KANTO_ROUTE_9_REGIONAL_CHANCES": {"19":0.01,"27":0.01,"105":0.01},
+  "KANTO_ROUTE_17": [19,20,21,22,54,77,78,84,85,2001,2002,2019,2020,2021],
+  "KANTO_ROUTE_17_PERCENTAGES": {"21":16,"19":15,"54":15,"77":16,"84":15,"22":5,"20":4,"78":4,"2001":1,"2002":1,"2019":1,"2020":1,"2021":1},
 
+  "KANTO_ROUTE_18": [19,20,21,22,84,85,2001,2002],
+  "KANTO_ROUTE_18_PERCENTAGES": {"21":26,"19":24,"84":25,"22":8,"20":7,"85":8,"2001":1,"2002":1},
 
-  "KANTO_ROUTE_10": [19,21,29,30,32,33,66,98,100,125],
-  "KANTO_ROUTE_10_PERCENTAGES": {"19":20,"21":20,"29":15,"30":5,"32":15,"33":5,"66":5,"98":5,"100":5,"125":5},
-  "KANTO_ROUTE_10_REGIONAL_CHANCES": {"19":0.01,"100":0.01},
+  "KANTO_ROUTE_19": [72,73,116,117,118,120,121,129,131],
+  "KANTO_ROUTE_19_PERCENTAGES": {"72":40,"129":20,"116":10,"120":10,"73":5,"117":5,"118":5,"121":4,"131":1},
 
+  "KANTO_ROUTE_20": [72,73,116,117,118,120,121,129,131],
+  "KANTO_ROUTE_20_PERCENTAGES": {"72":40,"129":20,"116":10,"120":10,"73":5,"117":5,"118":5,"121":4,"131":1},
 
-  "KANTO_ROUTE_11": [16,17,19,20,81,96,97,122],
-  "KANTO_ROUTE_11_PERCENTAGES": {"16":25,"17":5,"19":25,"20":5,"81":15,"96":15,"97":5,"122":5},
-  "KANTO_ROUTE_11_REGIONAL_CHANCES": {"19":0.01,"20":0.01,"122":0.01},
+  "KANTO_ROUTE_21": [16,17,19,20,72,73,114,2001,2002],
+  "KANTO_ROUTE_21_PERCENTAGES": {"72":30,"114":25,"16":15,"19":14,"17":5,"20":4,"73":5,"2001":1,"2002":1},
 
+  "KANTO_ROUTE_22": [19,20,21,29,32,56,2001,2002],
+  "KANTO_ROUTE_22_PERCENTAGES": {"21":25,"19":19,"29":20,"32":20,"56":10,"20":4,"2001":1,"2002":1},
 
-  "KANTO_ROUTE_12": [16,17,43,44,69,70,83,98,99],
-  "KANTO_ROUTE_12_PERCENTAGES": {"16":19,"17":5,"43":15,"44":5,"69":15,"70":5,"83":15,"98":15,"99":5},
-  "KANTO_ROUTE_12_REGIONAL_CHANCES": {"83":0.01},
+  "KANTO_ROUTE_23": [21,22,24,28,29,30,31,32,33,34,57,132],
+  "KANTO_ROUTE_23_PERCENTAGES": {"22":20,"21":15,"31":10,"34":10,"24":10,"28":10,"57":10,"30":5,"33":5,"132":5},
 
+  "KANTO_ROUTE_24": [19,20,43,48,52,54,69,2001,2010,2019],
+  "KANTO_ROUTE_24_PERCENTAGES": {"48":18,"19":16,"43":17,"52":13,"54":13,"69":15,"20":5,"2001":1,"2010":1,"2019":1},
 
-  "ROUTE_13": [16,17,19,37,39,43,52,58,63],
-  "ROUTE_13_PERCENTAGES": {"16":10,"17":2,"19":10,"37":10,"39":10,"43":10,"52":10,"58":10,"63":9},
-  "ROUTE_13_REGIONAL_CHANCES": {"19":0.01,"37":0.01,"52":0.01,"58":0.01},
+  "KANTO_ROUTE_25": [19,43,48,52,54,69,2001,2010,2019],
+  "KANTO_ROUTE_25_PERCENTAGES": {"19":24,"43":25,"48":20,"52":14,"54":9,"69":5,"2001":1,"2010":1,"2019":1},
 
+  "KANTO_ROUTE_26": [20,24,28,77,84,85,194,195,2002,2005,2020,2058],
+  "KANTO_ROUTE_26_PERCENTAGES": {"20":19,"24":20,"28":19,"77":19,"84":20,"85":5,"194":19,"195":5,"2002":1,"2005":1,"2020":1,"2058":1},
 
-  "ROUTE_14": [16,17,19,37,39,43,52,54,58,63],
-  "ROUTE_14_PERCENTAGES": {"16":10,"17":2,"19":10,"37":10,"39":10,"43":10,"52":10,"54":9,"58":10,"63":9},
-  "ROUTE_14_REGIONAL_CHANCES": {"19":0.01,"37":0.01,"52":0.01,"58":0.01},
-
-
-  "ROUTE_15": [16,17,19,37,39,43,52,58,63],
-  "ROUTE_15_PERCENTAGES": {"16":10,"17":2,"19":10,"37":10,"39":10,"43":10,"52":10,"58":10,"63":9},
-  "ROUTE_15_REGIONAL_CHANCES": {"19":0.01,"37":0.01,"52":0.01,"58":0.01},
-
-
-  "ROUTE_16": [16,17,19,37,39,43,52,58,63],
-  "ROUTE_16_PERCENTAGES": {"16":10,"17":2,"19":10,"37":10,"39":10,"43":10,"52":10,"58":10,"63":9},
-  "ROUTE_16_REGIONAL_CHANCES": {"19":0.01,"37":0.01,"52":0.01,"58":0.01},
-
-
-  "ROUTE_17": [16,17,19,37,39,43,52,58,63],
-  "ROUTE_17_PERCENTAGES": {"16":10,"17":2,"19":10,"37":10,"39":10,"43":10,"52":10,"58":10,"63":9},
-  "ROUTE_17_REGIONAL_CHANCES": {"19":0.01,"37":0.01,"52":0.01,"58":0.01},
-
-
-  "ROUTE_18": [16,17,19,37,39,43,52,58,63],
-  "ROUTE_18_PERCENTAGES": {"16":10,"17":2,"19":10,"37":10,"39":10,"43":10,"52":10,"58":10,"63":9},
-  "ROUTE_18_REGIONAL_CHANCES": {"19":0.01,"37":0.01,"52":0.01,"58":0.01},
-
-
-  "ROUTE_19": [16,17,19,37,39,43,52,58,63],
-  "ROUTE_19_PERCENTAGES": {"16":10,"17":2,"19":10,"37":10,"39":10,"43":10,"52":10,"58":10,"63":9},
-  "ROUTE_19_REGIONAL_CHANCES": {"19":0.01,"37":0.01,"52":0.01,"58":0.01},
-
-
-  "ROUTE_20": [16,17,19,37,39,43,52,58,63],
-  "ROUTE_20_PERCENTAGES": {"16":10,"17":2,"19":10,"37":10,"39":10,"43":10,"52":10,"58":10,"63":9},
-  "ROUTE_20_REGIONAL_CHANCES": {"19":0.01,"37":0.01,"52":0.01,"58":0.01},
-
-
-  "ROUTE_21": [16,17,19,37,39,43,52,58,63],
-  "ROUTE_21_PERCENTAGES": {"16":10,"17":2,"19":10,"37":10,"39":10,"43":10,"52":10,"58":10,"63":9},
-  "ROUTE_21_REGIONAL_CHANCES": {"19":0.01,"37":0.01,"52":0.01,"58":0.01},
-
-
-  "ROUTE_22": [16,17,19,37,39,43,52,58,63],
-  "ROUTE_22_PERCENTAGES": {"16":10,"17":2,"19":10,"37":10,"39":10,"43":10,"52":10,"58":10,"63":9},
-  "ROUTE_22_REGIONAL_CHANCES": {"19":0.01,"37":0.01,"52":0.01,"58":0.01},
-
-
-  "ROUTE_23": [16,17,19,37,39,43,52,58,63],
-  "ROUTE_23_PERCENTAGES": {"16":10,"17":2,"19":10,"37":10,"39":10,"43":10,"52":10,"58":10,"63":9},
-  "ROUTE_23_REGIONAL_CHANCES": {"19":0.01,"37":0.01,"52":0.01,"58":0.01},
-
-
-  "KANTO_ROUTE_24": [16,43,48,52,54,63,69],
-  "KANTO_ROUTE_24_PERCENTAGES": {"16":12.5,"43":12.5,"48":15,"52":15,"54":15,"63":15,"69":15},
-  "KANTO_ROUTE_24_REGIONAL_CHANCES": {"52":0.01},
-
-
-  "KANTO_ROUTE_25": [16,43,48,52,54,63,69],
-  "KANTO_ROUTE_25_PERCENTAGES": {"16":12.5,"43":12.5,"48":15,"52":15,"54":15,"63":15,"69":15},
-  "KANTO_ROUTE_25_REGIONAL_CHANCES": {"52":0.01},
-
+  "KANTO_ROUTE_27": [20,24,28,77,84,85,194,195,2002,2005,2020,2058],
+  "KANTO_ROUTE_27_PERCENTAGES": {"20":15,"24":16,"28":14,"77":14,"84":15,"194":14,"85":4,"195":4,"2002":1,"2005":1,"2020":1,"2058":1},
 
   "VIRIDIAN_FOREST": [10,11,12,13,14,15,16,25],
   "VIRIDIAN_FOREST_PERCENTAGES": {"10":20,"11":10,"12":5,"13":20,"14":10,"15":5,"16":20,"25":10},
 
+  "SAFARI_ZONE": [1,2,29,30,32,33,46,47,48,49,84,102,108,111,112,113,115,123,127,128,133,2017,2055,2056,2057],
+  "SAFARI_ZONE_PERCENTAGES": {"1":9,"29":9,"32":8,"84":8,"102":7,"108":8,"111":8,"30":6,"33":6,"46":6,"48":6,"2":4,"47":2,"49":2,"112":5,"113":2,"115":2,"123":2,"127":2,"128":1,"133":1,"2017":1,"2055":1,"2056":1,"2057":1},
 
-  "MT_MOON": [35,41,46,74,95],
-  "MT_MOON_PERCENTAGES": {"35":10,"41":35,"46":15,"74":30,"95":10},
-  "MT_MOON_REGIONAL_CHANCES": {"74":0.01},
+  "MT_MOON": [35,41,46,74,95,2012],
+  "MT_MOON_PERCENTAGES": {"35":10,"41":35,"46":15,"74":29,"95":10,"2012":1},
 
+  "POWER_PLANT": [81,82,88,89,100,101,125,2015,2016,2042],
+  "POWER_PLANT_PERCENTAGES": {"81":24,"100":25,"82":15,"101":14,"88":10,"89":4,"125":5,"2015":1,"2016":1,"2042":1},
 
-  "ROCK_TUNNEL": [41,66,67,74,75,95,104,105,111,113,115],
-  "ROCK_TUNNEL_PERCENTAGES": {"41":9,"66":10,"67":5,"74":30,"75":5,"95":10,"104":10,"105":5,"111":10,"113":1,"115":5},
-  "ROCK_TUNNEL_REGIONAL_CHANCES": {"74":0.01,"75":0.01},
+  "ROCK_TUNNEL": [41,66,67,74,75,95,104,105,111,113,115,2012,2013,2018,2014],
+  "ROCK_TUNNEL_PERCENTAGES": {"41":9,"66":10,"67":5,"74":28,"75":4,"95":10,"104":10,"105":4,"111":10,"113":1,"115":5,"2012":1,"2013":1,"2018":1,"2014":1},
 
+  "KANTO_POKEMON_TOWER": [41,42,92,93,104,2018],
+  "KANTO_POKEMON_TOWER_PERCENTAGES": {"41":5,"42":5,"92":59,"93":20,"104":10,"2018":1},
 
-  "KANTO_POKEMON_TOWER": [41,42,92,93,104],
-  "KANTO_POKEMON_TOWER_PERCENTAGES": {"41":5,"42":5,"92":60,"93":20,"104":10},
-  "KANTO_POKEMON_TOWER_REGIONAL_CHANCES": {"92":0.01},
+  "DIGGLETT_CAVE": [50,51,2008,2009],
+  "DIGGLETT_CAVE_PERCENTAGES": {"50":94,"51":4,"2008":1,"2009":1},
 
+  "CERULEAN_CAVE": [54,55,60,61,86,87,90,91,108,111,112,132,137,148,149],
+  "CERULEAN_CAVE_PERCENTAGES": {"54":12,"60":12,"86":12,"90":12,"111":12,"108":8,"55":4,"61":4,"87":4,"91":4,"112":4,"132":4,"137":4,"148":3,"149":1},
 
-  "DIGGLETT_CAVE": [50,51,113],
-  "DIGGLETT_CAVE_PERCENTAGES": {"50":90,"51":5,"113":5},
-  "DIGGLETT_CAVE_REGIONAL_CHANCES": {"50":0.01,"51":0.01},
+  "SEAFOAM_ISLANDS": [7,8,79,80,86,87,90,91,98,99,124,131,134,2022,2023,2006,2007],
+  "SEAFOAM_ISLANDS_PERCENTAGES": {"7":20,"8":5,"79":16,"80":5,"86":20,"87":5,"90":20,"91":5,"98":20,"99":5,"124":10,"131":10,"134":10,"2022":1,"2023":1,"2006":1,"2007":1},
 
+  "CINNABAR_VOLCANO": [4,5,37,38,58,59,77,78,88,89,126,136,2039,2040,2020,2021,2015,2016,2025],
+  "CINNABAR_VOLCANO_PERCENTAGES": {"4":20,"5":3,"37":19,"38":2,"58":19,"59":2,"77":19,"78":4,"88":10,"89":4,"126":3,"136":3,"2039":1,"2040":1,"2020":1,"2021":1,"2015":1,"2016":1,"2025":1},
 
-  "CERULEAN_CAVE": [150,151,152,153,154,155,156,157,158,159],
-  "CERULEAN_CAVE_PERCENTAGES": {"150":10,"151":10,"152":10,"153":10,"154":10,"155":10,"156":10,"157":10,"158":5,"159":5},
-  "CERULEAN_CAVE_REGIONAL_CHANCES": {"150":0.01,"151":0.01,"152":0.01,"153":0.01,"154":0.01,"155":0.01,"156":0.01,"157":0.01},
-
-
-  "SEAFOAM_ISLAND": [79,80,90,98,99],
-  "SEAFOAM_ISLAND_PERCENTAGES": {"79":10,"80":10,"90":10,"98":10,"99":60},
-  "SEAFOAM_ISLAND_REGIONAL_CHANCES": {"99":0.01},
-
-
-  "VICTORY_ROAD": [35,41,46,74,95],
-  "VICTORY_ROAD_PERCENTAGES": {"35":10,"41":35,"46":15,"74":30,"95":10},
-  "VICTORY_ROAD_REGIONAL_CHANCES": {"74":0.01},
-
+  "VICTORY_ROAD": [1,4,7,35,41,42,67,74,75,95,105,2012,2018],
+  "VICTORY_ROAD_PERCENTAGES": {"1":2,"4":2,"7":2,"41":30,"74":23,"42":10,"75":10,"67":10,"105":9,"35":5,"95":5,"2012":1,"2018":1},
 
 
   "UB": [793,794,795,796,797,798,799,800,803,804,805,806],
@@ -2523,11 +2581,11 @@
   "MEGA": [3,6,9,15,18,26,65,71,80,94,115,127,130,142,150,181,208,212,214,229,248,249,254,257,260,282,302,303,306,308,310,319,323,334,354,358,359,362,373,376,380,381,382,383,384,398,428,445,448,460,475,485,491,530,531,545,560,604,623,646,647,648,652,655,658,668,670,678,687,691,701,718,719,720,740,768,780,791,792,800,801,807,870,901,952,969,978,998,1024],
   "GMAX": [6,25,52,94,133,143,812,815,818,823,839,849,858,861,869,892],
   "MYTHICAL": [151,251,385,386,489,490,491,492,493,494,647,648,649,719,720,721,801,802,807,808,809,893,1025],
-  "STANDARD_BOSS": [144,145,146,150,243,244,245,249,250,380,381,382,383,384,480,481,482,483,484,485,486,487,488,638,639,640,641,642,643,644,645,646,716,717,718,772,773,785,786,787,788,789,790,791,792,888,889,890,891,892,894,895,896,897,898,905,1001,1002,1003,1004,1014,1015,1016,1017,1024],
+  "STANDARD_BOSS": [144,145,146,150,243,244,245,249,250,380,381,382,383,384,480,481,482,483,484,485,486,487,488,638,639,640,641,642,643,644,645,646,716,717,718,772,773,785,786,787,788,789,790,791,792,888,889,890,891,892,894,895,896,897,898,905,1001,1002,1003,1004,1014,1015,1016,1017,1024,10000,10001,10002,10003,10004,10005,14300,14400,14500,14600,14900],
   "TEAM_ROCKET_POOL": [19, 20, 23, 24, 41, 42, 52, 58, 88, 89, 96, 97, 109, 110],
   "NINJA_AMBUSH_POOL": [25, 41, 48, 88, 109, 120, 123, 127],
   "AMBUSH_DATA": {
-    "chance": 0.10,
+    "chance": 0.05,
     "trainers": [
       {
         "name": "Ninja Ben", "class": "NINJA", "sprite": "ninjaben.png", "team": [123, 109],
@@ -2589,10 +2647,11 @@
     "lavender_lunatic_info": ["Do you believe in ghosts?", "That white hand on your shoulder...", "Is it real?"],
     "celadon_lunatic_info": ["Hehehe... slots... coins...", "Just one more spin..."],
     "fuschia_lunatic_info": ["It screams from deep within", "The bird in the island."],
-    "cinnabar_island_lunatic_info": ["Our laboratory created something...", "Terrible.", "It destroyed the mansion."],
+    "cinnabar_lunatic_info": ["Our laboratory created something...", "Terrible.", "It destroyed the mansion."],
     "saffron_lunatic_info": ["The psychic power in this city...", "It gives me a headache!"],
     "rock_tunnel_city_lunatic_info": ["An area down the river...", "Buzzing with excitement...", "We caught a PKMN there once."],
     "underground_lunatic_info": ["The river flows underground...", "It carries secrets with it...", "Secrets of the past..."],
+    "indigo_lunatic_info": ["This is it, kid", "...", "until next time..."],
     "sleeping_man": {
       "intro": ["ZzzZzzz.....", "zzZZZzzzzZzzzzzz....."],
       "question": "Take the Old Man's helmet?",
