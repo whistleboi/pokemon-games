@@ -67,7 +67,7 @@
     "14600": "Ancient Moltres",
     "14900": "Ancient Dragonite",
     "15000": "Ancient Mewtwo",
-    "3022": "Nown",
+    "3025": "Nown",
     "10000": "Blue",
     "10001": "Orange",
     "10002": "Green",
@@ -105,6 +105,10 @@
       "OLD_AMBER", "ARMOR_FOSSIL", "SKULL_FOSSIL", "ROOT_FOSSIL", "CLAW_FOSSIL", "OLD_ROD",
       "POKE_FLUTE", "BIKE_VOUCHER", "BICYCLE", "COIN_CASE", "AIR_BALLOON", "SURF_BOARD", "SUPER_ROD", "VOLCANO_PASS", "EXP_SHARE", "CERULEAN_CAVE_MAP", "MT_SILVER_MAP", "SQUIRT_BOTTLE", "ICE_MELTER", "CLIFF_GATE_PASS", "MYSTERY_EGG", "UNOWN_REPORT"
     ],
+
+    "SPECIAL_EVOLUTION_TARGETS": {
+      "NOWN": 3025
+    },
 
     "JOURNAL_MISSIONS": [
       {
@@ -527,12 +531,12 @@
       "gym": {
         "trainers": [
           {
-            "name": "Blackbelt Warren", "class": "BLACKBELT", "sprite": "hiker.png",
+            "name": "Blackbelt Warren", "class": "BLACKBELT", "sprite": "hiker.png", "is_boss_battle": true,
             "team": [67, 66], "rewards": { "balls": 2 },
             "dialogue": { "intro": ["Kiyah!"], "player_won": ["I ran out of steam."], "player_lost": ["Karate chop!"] }
           },
           {
-            "name": "Cooltrainer Yuji", "class": "COOLTRAINER", "sprite": "acetrainer_m.png",
+            "name": "Cooltrainer Yuji", "class": "COOLTRAINER", "sprite": "acetrainer_m.png", "is_boss_battle": true,
             "team": [111, 33], "rewards": { "balls": 2 },
             "dialogue": { "intro": ["This is the final test before the leader!"], "player_won": ["You are ready."], "player_lost": ["Not ready yet!"] }
           }
@@ -543,7 +547,7 @@
         },
         "leader": {
           "name": "Giovanni",
-          "class": "GYM_LEADER",
+          "class": "GYM_LEADER", "is_boss_battle": true,
           "sprite": "leader_giovanni.png",
           "team": [31, 34, 51, 53, 112],
           "badge_reward": "EARTH",
@@ -558,7 +562,7 @@
           "flag_check": "viridian_rocket_defeated",
           "invert_flag": true,
           "trainer": {
-            "name": "Jessie and James", "class": "ROCKET", "sprite": "rocket_team.png",
+            "name": "Jessie and James", "class": "ROCKET", "sprite": "rocket_team.png", "is_boss_battle": true,
             "team": [23, 109, 52], "rewards": { "balls": 3 },
             "dialogue": { "intro": ["We don't know where the boss is, get out!"], "player_won": ["We're blasting off again!"], "player_lost": ["Too easy!"] }
           }
@@ -598,7 +602,7 @@
       "gym": {
         "trainers": [
           {
-            "name": "Camper Liam",
+            "name": "Camper Liam", "is_boss_battle": true,
             "class": "YOUNGSTER",
             "sprite": "camper.png",
             "team": [74, 27],
@@ -611,7 +615,7 @@
               "player_lost": ["Told you!"] }
           },
           {
-            "name": "Hiker Jerry",
+            "name": "Hiker Jerry", "is_boss_battle": true,
             "class": "HIKER",
             "sprite": "hiker.png",
             "team": [111, 74],
@@ -624,7 +628,7 @@
         ],
         "leader": {
           "name": "Brock",
-          "class": "GYM_LEADER",
+          "class": "GYM_LEADER", "is_boss_battle": true,
           "sprite": "brock.png",
           "team": [74, 95],
           "badge_reward": "BOULDER",
@@ -670,7 +674,7 @@
         },
         "trainers": [
           {
-            "name": "Swimmer Diana",
+            "name": "Swimmer Diana", "is_boss_battle": true,
             "class": "SWIMMER",
             "sprite": "swimmer_f.png",
             "team": [118, 120],
@@ -680,7 +684,7 @@
             "player_lost": ["Splish splash!"] }
           },
           {
-            "name": "Swimmer Luis",
+            "name": "Swimmer Luis", "is_boss_battle": true,
             "class": "SWIMMER",
             "sprite": "swimmer_m.png",
             "team": [116, 90],
@@ -692,7 +696,7 @@
         ],
         "leader": {
           "name": "Misty",
-          "class": "GYM_LEADER",
+          "class": "GYM_LEADER", "is_boss_battle": true,
           "sprite": "misty.png",
           "team": [120, 121],
           "badge_reward": "CASCADE",
@@ -811,7 +815,7 @@
         "trainers": [
           {
             "name": "Sailor Dwayne",
-            "class": "SAILOR",
+            "class": "SAILOR", "is_boss_battle": true,
             "sprite": "sailor.png",
             "team": [25, 81],
             "rewards": { "balls": 2 },
@@ -819,7 +823,7 @@
           },
           {
             "name": "Rocker Baily",
-            "class": "ROCKER",
+            "class": "ROCKER", "is_boss_battle": true,
             "sprite": "rocker.png",
             "team": [100, 100],
             "rewards": { "balls": 2 },
@@ -828,7 +832,7 @@
         ],
         "leader": {
           "name": "Lt. Surge",
-          "class": "GYM_LEADER",
+          "class": "GYM_LEADER", "is_boss_battle": true,
           "sprite": "surge.png",
           "team": [100, 26, 25],
           "badge_reward": "THUNDER",
@@ -925,7 +929,7 @@
       "gym": {
         "trainers": [
           {
-            "name": "Lass Kay",
+            "name": "Lass Kay", "is_boss_battle": true,
             "class": "LASS",
             "sprite": "lass.png",
             "team": [69, 70],
@@ -935,7 +939,7 @@
             "player_lost": ["Flower power!"] }
           },
           {
-            "name": "Beauty Bridget",
+            "name": "Beauty Bridget", "is_boss_battle": true,
             "class": "BEAUTY",
             "sprite": "beauty.png",
             "team": [43, 69],
@@ -946,7 +950,7 @@
         ],
         "leader": {
           "name": "Erika",
-          "class": "GYM_LEADER",
+          "class": "GYM_LEADER", "is_boss_battle": true,
           "sprite": "erika.png",
           "team": [44, 45, 43],
           "badge_reward": "RAINBOW",
@@ -990,7 +994,7 @@
       "gym": {
         "trainers": [
           {
-            "name": "Channeler Amanda",
+            "name": "Channeler Amanda", "is_boss_battle": true,
             "class": "CHANNELER",
             "sprite": "channeler.png",
             "team": [92, 93],
@@ -1000,7 +1004,7 @@
             "player_lost": ["Ghostly power!"] }
           },
           {
-            "name": "Psychic Preston",
+            "name": "Psychic Preston", "is_boss_battle": true,
             "class": "PSYCHIC",
             "sprite": "supernerd.png",
             "team": [79, 80],
@@ -1012,7 +1016,7 @@
         ],
         "leader": {
           "name": "Sabrina",
-          "class": "GYM_LEADER",
+          "class": "GYM_LEADER", "is_boss_battle": true,
           "sprite": "sabrina.png",
           "team": [122, 93, 94],
           "badge_reward": "MARSH",
@@ -1065,12 +1069,12 @@
         { "text": "Talk to 'Crazy Guy'", "action": "NPC", "target": "lunatic" }
       ],
       "trainer_pool": [
-        { "sprite": "rocket_grunt.png", "name": "Grunt", "class": "ROCKET", "team": [20, 42], "rewards": { "balls": 3 } },
+        { "sprite": "rocket_grunt.png", "name": "Grunt", "class": "ROCKET", "is_boss_battle": true, "team": [20, 42], "rewards": { "balls": 3 } },
         { "sprite": "scientist.png", "name": "Connor", "class": "SCIENTIST", "team": [137, 82], "rewards": { "balls": 3 },
           "dialogue": { "intro": ["I... I had to help them! They forced me!"], "player_won": ["Thank you for stopping me."], "player_lost": ["I have no choice!"] } },
-        { "sprite": "archer.png", "name": "Archer", "class": "ROCKET", "team": [110, 24, 131], "rewards": { "balls": 10 },
+        { "sprite": "archer.png", "name": "Archer", "class": "ROCKET", "is_boss_battle": true, "team": [110, 24, 131], "rewards": { "balls": 10 },
           "dialogue": { "intro": ["The boss is busy. I'll handle you."], "player_won": ["This changes nothing."], "player_lost": ["Typical child."] } },
-        { "sprite": "ariana.png", "name": "Ariana", "class": "ROCKET", "team": [45, 91, 53], "rewards": { "balls": 10, "MASTER_BALL": 1 },
+        { "sprite": "ariana.png", "name": "Ariana", "class": "ROCKET", "is_boss_battle": true, "team": [45, 91, 53], "rewards": { "balls": 10, "MASTER_BALL": 1 },
           "dialogue": { "intro": ["How did you get past Archer?", "No matter. Your journey ends here!"], "player_won": ["The prototype! You won't get away with it!"], "player_lost": ["Stay out of adult business."] } }
       ],
       "on_enter_event": null
@@ -1090,7 +1094,7 @@
       "gym": {
         "trainers": [
           {
-            "name": "Juggler Kirk",
+            "name": "Juggler Kirk", "is_boss_battle": true,
             "class": "JUGGLER",
             "sprite": "juggler.png",
             "team": [96, 64],
@@ -1100,7 +1104,7 @@
             "player_lost": ["Perfect balance!"] }
           },
           {
-            "name": "Tamer Phil",
+            "name": "Tamer Phil", "is_boss_battle": true,
             "class": "TAMER",
             "sprite": "tamer.png",
             "team": [23, 27],
@@ -1112,7 +1116,7 @@
         ],
         "leader": {
           "name": "Koga",
-          "class": "GYM_LEADER",
+          "class": "GYM_LEADER", "is_boss_battle": true,
           "sprite": "koga.png",
           "team": [109, 110, 111],
           "badge_reward": "SOUL",
@@ -1153,13 +1157,14 @@
         "main": "cinnabar_island.png",
         "pokecenter": "pokecenter.png",
         "pokemart": "pokemart.png",
-        "gym": "battle_gym_cinnabar.png"
+        "gym": "cinnabar_city_gym.png",
+        "battle": "battle_gym_cinnabar.png"
       },
       "has_gym": true,
       "gym": {
         "trainers": [
           {
-            "name": "Super Nerd Erik",
+            "name": "Super Nerd Erik", "is_boss_battle": true,
             "class": "SUPER_NERD",
             "sprite": "supernerd.png",
             "team": [37, 37],
@@ -1168,14 +1173,14 @@
             "player_won": ["My calculations were wrong!"], "player_lost": ["Q.E.D.!"] }
           },
           {
-            "name": "Burglar Quinn", "class": "BURGLAR", "sprite": "firebreather.png",
+            "name": "Burglar Quinn", "class": "BURGLAR", "sprite": "firebreather.png", "is_boss_battle": true,
             "team": [58, 77], "rewards": { "balls": 2 },
             "dialogue": { "intro": ["I'm hot stuff!"], "player_won": ["Burned out!"], "player_lost": ["Too hot to handle!"] }
           }
         ],
         "leader": {
           "name": "Blaine",
-          "class": "GYM_LEADER",
+          "class": "GYM_LEADER", "is_boss_battle": true,
           "sprite": "blaine.png",
           "team": [58, 77, 78, 59],
           "badge_reward": "VOLCANO",
@@ -1206,6 +1211,24 @@
       "on_enter_event": null
     },
 
+    "POKEMON_LEAGUE_GATE": {
+      "area_type": "town",
+      "route_name": "Pokemon League Gate",
+      "backgrounds": {
+        "main": "pokemon_league_gate.png"},
+      "has_gym": false,
+      "trainer_encounter_rate": 0,
+      "travel_options": [
+        { "text": "Route 22", "target_area": "KANTO_ROUTE_22" },
+        { "text": "Victory Road", "target_area": "KANTO_VICTORY_ROAD", "condition": "has_8_kanto_badges"},
+        { "text": "Route 26", "target_area": "KANTO_ROUTE_26", "flag_condition": "beat_elite_four" },
+        { "text": "Mt. Silver", "target_area": "MT_SILVER", "condition": "has_8_johto_badges" }
+      ],
+      "explore_options": [],
+      "trainer_pool": [],
+      "on_enter_event": null
+    },
+
     "INDIGO_PLATEAU": {
       "area_type": "town",
       "route_name": "Indigo Plateau",
@@ -1220,25 +1243,25 @@
         "trainers": [
           { "sprite": "loreli.png",
           "name": "Loreli",
-          "class": "ELITE_FOUR",
+          "class": "ELITE_FOUR", "is_boss_battle": true,
           "team": [87, 91, 80, 124, 131],
           "rewards": { "balls": 15 }
         },
         { "sprite": "bruno.png",
           "name": "Bruno",
-          "class": "ELITE_FOUR",
+          "class": "ELITE_FOUR", "is_boss_battle": true,
           "team": [95, 107, 106, 95, 68],
           "rewards": { "balls": 15 }
         },
         { "sprite": "agatha.png",
           "name": "Agatha",
-          "class": "ELITE_FOUR",
+          "class": "ELITE_FOUR", "is_boss_battle": true,
           "team": [94, 42, 93, 24, 94],
           "rewards": { "balls": 15 }
         },
         { "sprite": "lance.png",
           "name": "Lance",
-          "class": "ELITE_FOUR",
+          "class": "ELITE_FOUR", "is_boss_battle": true,
           "team": [130, 149, 6, 142, 149],
           "rewards": { "balls": 15 },
           "victory_flag": "beat_elite_four"
@@ -1247,8 +1270,8 @@
         "leader": {
           "sprite": "lunatic2.png",
           "name": "Ancient One",
-          "class": "CHAMPION",
-          "team": [10000, 10001, 10002, 10003, 10004, 10005],
+          "class": "CHAMPION", "is_boss_battle": true,
+          "team": [14300, 14400, 14500, 14600, 14900, 15000],
           "rewards": { "balls": 25, "MASTER_BALL": 1 },
           "victory_flag": "beat_champion"
         },
@@ -1277,7 +1300,6 @@
       "battle_type": "field",
       "wild_pool_percentages": "KANTO_ROUTE_1_PERCENTAGES",
       "has_trees": true,
-      "alt_forms": { "enabled": true, "weights": { "19_alolan": 0.01 } },
       "tree_pool": "KANTO_ROUTE_TREE_PERCENTAGES",
       "trainer_encounter_rate": 0,
       "min_rounds": 2,
@@ -2069,7 +2091,7 @@
       ],
       "next_area": "VICTORY_ROAD"
     },
-    
+
     "KANTO_ROUTE_23": {
       "area_type": "wild_route",
       "route_name": "Route 23",
@@ -2092,8 +2114,7 @@
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         { "text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE" },
         { "text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE" },
-        { "text": "VICTORY ROAD", "action": "EXIT", "target": "VICTORY_ROAD_3F", "condition": "can_exit", "color": "RED" },
-        { "text": "INDIGO_PLATEAU", "action": "EXIT", "target": "INDIGO_PLATEAU", "condition": "can_exit", "color": "RED" }
+        { "text": "VICTORY ROAD", "action": "EXIT", "target": "KANTO_VICTORY_ROAD", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "INDIGO_PLATEAU",
       "on_enter_event": null
@@ -2180,7 +2201,7 @@
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         { "text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE" },
         { "text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE" },
-        { "text": "ROUTE 25", "action": "EXIT", "target": "KANTO_ROUTE_25", "condition": ["can_exit"],  "color": "RED" },
+        { "text": "RECEPTION GATE", "action": "EXIT", "target": "POKEMON_LEAGUE_GATE", "condition": ["can_exit"],  "color": "RED" },
         { "text": "ROUTE 27", "action": "EXIT", "target": "KANTO_ROUTE_27", "condition": ["can_exit"],  "color": "RED" }
       ],
       "next_area": "KANTO_ROUTE_27",
@@ -2210,7 +2231,7 @@
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         { "text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE" },
         { "text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE" },
-        { "text": "ROUTE 26", "action": "EXIT", "target": "KANTO_ROUTE_26", "condition": ["can_exit"],  "color": "RED" },
+        { "text": "TOHJO FALLS", "action": "EXIT", "target": "TOHJO_FALLS", "condition": ["can_exit"],  "color": "RED" },
         { "text": "NEW BARK TOWN", "action": "EXIT", "target": "NEW_BARK_TOWN", "condition": ["can_exit"],  "color": "RED" }
       ],
       "next_area": "NEW_BARK_TOWN",
@@ -2225,6 +2246,11 @@
       "alt_forms": { "enabled": true, "weights": { "74_alolan": 0.01 } },
       "trainer_encounter_rate": 0.1,
       "min_rounds": 3,
+      "area_boss": {
+        "id": 151,
+        "name": "Mew",
+        "victory_flag": "caught_mew"
+      },
       "trainer_pool": [
         { "sprite": "youngster.png", "name": "Josh", "class": "YOUNGSTER", "rewards": { "balls": 3 } },
         { "sprite": "lass.png", "name": "Miriam", "class": "LASS", "team": [43, 69], "rewards": { "balls": 3 } },
@@ -2243,6 +2269,7 @@
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
+        { "text": "SEARCH FOR MEW", "action": "BOSS", "condition": "mew_available", "color": "GOLD" },
         { "text": "TO PEWTER", "action": "EXIT", "target": "MT_MOON_CITY", "condition": "can_exit", "color": "RED" },
         { "text": "TO CERULEAN", "action": "EXIT", "target": "KANTO_ROUTE_4", "condition": "can_exit", "color": "RED" }
       ],
@@ -2428,7 +2455,7 @@
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
-        { "text": "GO BACK", "action": "EXIT", "target": "KANTO_ROUTE_22", "condition": "can_exit", "color": "RED" },
+        { "text": "GO BACK", "action": "EXIT", "target": "POKEMON_LEAGUE_GATE", "condition": "can_exit", "color": "RED" },
         { "text": "TO INDIGO PLATEAU", "action": "EXIT", "target": "KANTO_ROUTE_23", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "KANTO_ROUTE_23",
@@ -2575,13 +2602,13 @@
   "VICTORY_ROAD_PERCENTAGES": {"1":2,"4":2,"7":2,"41":30,"74":23,"42":10,"75":10,"67":10,"105":9,"35":5,"95":5,"2012":1,"2018":1},
 
 
-  "UB": [793,794,795,796,797,798,799,800,803,804,805,806],
-  "PAST": [984,985,986,987,988,989,990,1005,1007,1009,1020],
-  "FUTURE": [991,992,993,994,995,1006,1008,1010,1021,1022,1023],
-  "MEGA": [3,6,9,15,18,26,65,71,80,94,115,127,130,142,150,181,208,212,214,229,248,249,254,257,260,282,302,303,306,308,310,319,323,334,354,358,359,362,373,376,380,381,382,383,384,398,428,445,448,460,475,485,491,530,531,545,560,604,623,646,647,648,652,655,658,668,670,678,687,691,701,718,719,720,740,768,780,791,792,800,801,807,870,901,952,969,978,998,1024],
-  "GMAX": [6,25,52,94,133,143,812,815,818,823,839,849,858,861,869,892],
-  "MYTHICAL": [151,251,385,386,489,490,491,492,493,494,647,648,649,719,720,721,801,802,807,808,809,893,1025],
-  "STANDARD_BOSS": [144,145,146,150,243,244,245,249,250,380,381,382,383,384,480,481,482,483,484,485,486,487,488,638,639,640,641,642,643,644,645,646,716,717,718,772,773,785,786,787,788,789,790,791,792,888,889,890,891,892,894,895,896,897,898,905,1001,1002,1003,1004,1014,1015,1016,1017,1024,10000,10001,10002,10003,10004,10005,14300,14400,14500,14600,14900],
+  "UB": [],
+  "PAST": [],
+  "FUTURE": [],
+  "MEGA": [],
+  "GMAX": [],
+  "MYTHICAL": [151, 251],
+  "STANDARD_BOSS": [143, 144, 145, 146, 150, 243, 244, 245, 249, 250, 14300, 14400, 14500, 14600, 14900, 15000],
   "TEAM_ROCKET_POOL": [19, 20, 23, 24, 41, 42, 52, 58, 88, 89, 96, 97, 109, 110],
   "NINJA_AMBUSH_POOL": [25, 41, 48, 88, 109, 120, 123, 127],
   "AMBUSH_DATA": {

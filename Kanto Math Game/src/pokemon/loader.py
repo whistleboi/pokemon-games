@@ -29,6 +29,12 @@ class PokemonLoader:
         self.thread = threading.Thread(target=self._worker, daemon=True)
         self.thread.start()
 
+    def get_special_id(self, key, default=None):
+        """Retrieves a special species ID from GAME_CONFIG. Prevents hardcoding in states."""
+        config = self.area_data.get("GAME_CONFIG", {})
+        targets = config.get("SPECIAL_EVOLUTION_TARGETS", {})
+        return targets.get(key, default)
+
     def _get_target_pool(self, pool_type, id_pool):
         """Determines the list of Pokemon IDs to draw from."""
         if id_pool:
@@ -147,8 +153,9 @@ class PokemonLoader:
                     target_map = self.assets.alt_sprite_map
                     target_fname = f"{p_id}_{form}.png"
 
-                suffix = form.replace("_", " ").title()
-                display_name = f"{name} {suffix.upper()}"
+                # ARCHITECT: Prevent double-naming variants (e.g. Alolan Alolan Rattata)
+                suffix = form.replace("_", " ").upper()
+                display_name = f"{suffix} {name}" if suffix not in name.upper() else name
 
         return form, display_name, target_dir, target_map, target_fname
 
@@ -194,7 +201,14 @@ class PokemonLoader:
                 continue
 
             # Basic Name Check
-            name = self.assets.pokemon_names.get(str(p_id), f"POKEMON_{p_id}").upper()
+            # ARCHITECT: Check FORM_MAP for regional name overrides in wild encounters
+            form_map = self.area_data.get("FORM_MAP", {})
+            mapping = form_map.get(str(p_id))
+            if mapping and "name" in mapping:
+                name = mapping["name"].upper()
+            else:
+                name = self.assets.pokemon_names.get(str(p_id), f"POKEMON_{p_id}").upper()
+
             if name in exclude_names:
                 continue
 
@@ -205,7 +219,10 @@ class PokemonLoader:
             final_form, display_name, t_dir, t_map, t_fname = resolved
 
             # --- CALCULATE STAGE ---
-            stage = self.get_stage(name)
+            if p_id in self.all_boss_ids:
+                stage = 3
+            else:
+                stage = self.get_stage(name)
 
             # Check if this specific form is already caught (for Bosses/Legends)
             p_key = f"{p_id}-{final_form}"
@@ -362,11 +379,16 @@ class PokemonLoader:
                 and not form.startswith("mega")
                 and form != "gmax"
             ):
-                display_name = f"{form} {base_name}"
+                # ARCHITECT: Prevent double-naming variants
+                form_upper = form.upper()
+                display_name = f"{form_upper} {base_name}" if form_upper not in base_name.upper() else base_name
             else:
                 display_name = base_name
 
-            stage = self.get_stage(base_name)
+            if meta_id in self.all_boss_ids or p_id in self.all_boss_ids:
+                stage = 3
+            else:
+                stage = self.get_stage(base_name)
 
             # Try to fetch form-specific moveset data first
             moveset_key = str(meta_id)
@@ -546,9 +568,7 @@ class PokemonLoader:
                         p_list.append(p)
                         current_batch_names.add(p["name"])
 
-                b_type = random.choice(
-                    ["STANDARD", "UB", "PAST", "FUTURE", "MYTHICAL", "GMAX", "MEGA"]
-                )
+                b_type = random.choice(["STANDARD", "MYTHICAL"])
                 boss_p = self._fetch_raw(b_type)
 
                 if len(p_list) == 3 and boss_p:

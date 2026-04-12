@@ -1,67 +1,69 @@
 {
   "FORM_MAP": {
-    "2001": { "id": 19, "form": "alolan", "name": "Alolan Rattata" },
-    "2002": { "id": 20, "form": "alolan", "name": "Alolan Raticate" },
-    "2003": { "id": 26, "form": "alolan", "name": "Alolan Raichu" },
-    "2004": { "id": 27, "form": "alolan", "name": "Alolan Sandshrew" },
-    "2005": { "id": 28, "form": "alolan", "name": "Alolan Sandslash" },
-    "2006": { "id": 37, "form": "alolan", "name": "Alolan Vulpix" },
-    "2007": { "id": 38, "form": "alolan", "name": "Alolan Ninetales" },
-    "2008": { "id": 50, "form": "alolan", "name": "Alolan Diglett" },
-    "2009": { "id": 51, "form": "alolan", "name": "Alolan Dugtrio" },
-    "2010": { "id": 52, "form": "alolan", "name": "Alolan Meowth" },
-    "2011": { "id": 53, "form": "alolan", "name": "Alolan Persian" },
-    "2012": { "id": 74, "form": "alolan", "name": "Alolan Geodude" },
-    "2013": { "id": 75, "form": "alolan", "name": "Alolan Graveler" },
-    "2014": { "id": 76, "form": "alolan", "name": "Alolan Golem" },
-    "2015": { "id": 88, "form": "alolan", "name": "Alolan Grimer" },
-    "2016": { "id": 89, "form": "alolan", "name": "Alolan Muk" },
-    "2017": { "id": 103, "form": "alolan", "name": "Alolan Exeggutor" },
-    "2018": { "id": 105, "form": "alolan", "name": "Alolan Marowak" },
-    "2019": { "id": 54,  "form": "galarian",   "name": "Galarian Meowth" },
-    "2020": { "id": 77,  "form": "galarian", "name": "Galarian Ponyta" },
-    "2021": { "id": 78,  "form": "galarian", "name": "Galarian Rapidash" },
-    "2022": { "id": 79,  "form": "galarian", "name": "Galarian Slowpoke" },
-    "2023": { "id": 80,  "form": "galarian", "name": "Galarian Slowbro" },
-    "2024": { "id": 83,  "form": "galarian", "name": "Galarian Farfetch'd" },
-    "2025": { "id": 110, "form": "galarian", "name": "Galarian Weezing" },
-    "2026": { "id": 122, "form": "galarian", "name": "Galarian Mr. Mime" },
-    "2027": { "id": 144, "form": "galarian", "name": "Galarian Articuno" },
-    "2028": { "id": 145, "form": "galarian", "name": "Galarian Zapdos" },
-    "2029": { "id": 146, "form": "galarian", "name": "Galarian Moltres" },
-    "2030": { "id": 199, "form": "galarian", "name": "Galarian Slowking" },
-    "2031": { "id": 222, "form": "galarian", "name": "Galarian Corsola" },
-    "2032": { "id": 263, "form": "galarian", "name": "Galarian Zigzagoon" },
-    "2033": { "id": 264, "form": "galarian", "name": "Galarian Linoone" },
-    "2034": { "id": 554, "form": "galarian", "name": "Galarian Darumaka" },
-    "2035": { "id": 555, "form": "galarian", "name": "Galarian Darmanitan" },
-    "2036": { "id": 555, "form": "galarian", "name": "Galarian Darmanitan Zen Mode" },
-    "2037": { "id": 562, "form": "galarian", "name": "Galarian Yamask" },
-    "2038": { "id": 618, "form": "galarian", "name": "Galarian Stunfisk" },
-    "2039": { "id": 58, "form": "hisuian", "name": "Hisuian Growlithe" },
-    "2040": { "id": 59, "form": "hisuian", "name": "Hisuian Arcanine" },
-    "2041": { "id": 100, "form": "hisuian", "name": "Hisuian Voltorb" },
-    "2042": { "id": 101, "form": "hisuian", "name": "Hisuian Electrode" },
-    "2043": { "id": 157, "form": "hisuian", "name": "Hisuian Typhlosion" },
-    "2044": { "id": 211, "form": "hisuian", "name": "Hisuian Qwilfish" },
-    "2045": { "id": 215, "form": "hisuian", "name": "Hisuian Sneasel" },
-    "2046": { "id": 503, "form": "hisuian", "name": "Hisuian Samurott" },
-    "2047": { "id": 549, "form": "hisuian", "name": "Hisuian Lilligant" },
-    "2048": { "id": 570, "form": "hisuian", "name": "Hisuian Zorua" },
-    "2049": { "id": 571, "form": "hisuian", "name": "Hisuian Zoroark" },
-    "2050": { "id": 628, "form": "hisuian", "name": "Hisuian Braviary" },
-    "2051": { "id": 705, "form": "hisuian", "name": "Hisuian Sliggoo" },
-    "2052": { "id": 706, "form": "hisuian", "name": "Hisuian Goodra" },
-    "2053": { "id": 713, "form": "hisuian", "name": "Hisuian Avalugg" },
-    "2054": { "id": 724, "form": "hisuian", "name": "Hisuian Decidueye" },
-    "2055": { "id": 128, "form": "paldean", "name": "Paldean Tauros - Aqua" },
-    "2056": { "id": 128, "form": "paldean", "name": "Paldean Tauros - Blaze" },
-    "2057": { "id": 128, "form": "paldean", "name": "Paldean Tauros - Combat" },
-    "2058": { "id": 194, "form": "paldean", "name": "Paldean Wooper" }
+    "2001": { "id": 19, "form": "alolan", "name": "Alolan Rattata", "text": "Alolan Rattata" },
+    "2002": { "id": 20, "form": "alolan", "name": "Alolan Raticate", "text": "Alolan Raticate" },
+    "2003": { "id": 26, "form": "alolan", "name": "Alolan Raichu", "text": "Alolan Raichu" },
+    "2004": { "id": 27, "form": "alolan", "name": "Alolan Sandshrew", "text": "Alolan Sandshrew" },
+    "2005": { "id": 28, "form": "alolan", "name": "Alolan Sandslash", "text": "Alolan Sandslash" },
+    "2006": { "id": 37, "form": "alolan", "name": "Alolan Vulpix", "text": "Alolan Vulpix" },
+    "2007": { "id": 38, "form": "alolan", "name": "Alolan Ninetales", "text": "Alolan Ninetales" },
+    "2008": { "id": 50, "form": "alolan", "name": "Alolan Diglett", "text": "Alolan Diglett" },
+    "2009": { "id": 51, "form": "alolan", "name": "Alolan Dugtrio", "text": "Alolan Dugtrio" },
+    "2010": { "id": 52, "form": "alolan", "name": "Alolan Meowth", "text": "Alolan Meowth" },
+    "2011": { "id": 53, "form": "alolan", "name": "Alolan Persian", "text": "Alolan Persian" },
+    "2012": { "id": 74, "form": "alolan", "name": "Alolan Geodude", "text": "Alolan Geodude" },
+    "2013": { "id": 75, "form": "alolan", "name": "Alolan Graveler", "text": "Alolan Graveler" },
+    "2014": { "id": 76, "form": "alolan", "name": "Alolan Golem", "text": "Alolan Golem" },
+    "2015": { "id": 88, "form": "alolan", "name": "Alolan Grimer", "text": "Alolan Grimer" },
+    "2016": { "id": 89, "form": "alolan", "name": "Alolan Muk", "text": "Alolan Muk" },
+    "2017": { "id": 103, "form": "alolan", "name": "Alolan Exeggutor", "text": "Alolan Exeggutor" },
+    "2018": { "id": 105, "form": "alolan", "name": "Alolan Marowak", "text": "Alolan Marowak" },
+    "2019": { "id": 54,  "form": "galarian", "name": "Galarian Meowth", "text": "Galarian Meowth" },
+    "2020": { "id": 77,  "form": "galarian", "name": "Galarian Ponyta", "text": "Galarian Ponyta" },
+    "2021": { "id": 78,  "form": "galarian", "name": "Galarian Rapidash", "text": "Galarian Rapidash" },
+    "2022": { "id": 79,  "form": "galarian", "name": "Galarian Slowpoke", "text": "Galarian Slowpoke" },
+    "2023": { "id": 80,  "form": "galarian", "name": "Galarian Slowbro", "text": "Galarian Slowbro" },
+    "2024": { "id": 83,  "form": "galarian", "name": "Galarian Farfetch'd", "text": "Galarian Farfetch'd" },
+    "2025": { "id": 110, "form": "galarian", "name": "Galarian Weezing", "text": "Galarian Weezing" },
+    "2026": { "id": 122, "form": "galarian", "name": "Galarian Mr. Mime", "text": "Galarian Mr. Mime" },
+    "2027": { "id": 144, "form": "galarian", "name": "Galarian Articuno", "text": "Galarian Articuno" },
+    "2028": { "id": 145, "form": "galarian", "name": "Galarian Zapdos", "text": "Galarian Zapdos" },
+    "2029": { "id": 146, "form": "galarian", "name": "Galarian Moltres", "text": "Galarian Moltres" },
+    "2030": { "id": 199, "form": "galarian", "name": "Galarian Slowking", "text": "Galarian Slowking" },
+    "2031": { "id": 222, "form": "galarian", "name": "Galarian Corsola", "text": "Galarian Corsola" },
+    "2032": { "id": 263, "form": "galarian", "name": "Galarian Zigzagoon", "text": "Galarian Zigzagoon" },
+    "2033": { "id": 264, "form": "galarian", "name": "Galarian Linoone", "text": "Galarian Linoone" },
+    "2034": { "id": 554, "form": "galarian", "name": "Galarian Darumaka", "text": "Galarian Darumaka" },
+    "2035": { "id": 555, "form": "galarian", "name": "Galarian Darmanitan", "text": "Galarian Darmanitan" },
+    "2036": { "id": 555, "form": "galarian", "name": "Galarian Darmanitan Zen Mode", "text": "Galarian Darmanitan Zen Mode" },
+    "2037": { "id": 562, "form": "galarian", "name": "Galarian Yamask", "text": "Galarian Yamask" },
+    "2038": { "id": 618, "form": "galarian", "name": "Galarian Stunfisk", "text": "Galarian Stunfisk" },
+    "2039": { "id": 58, "form": "hisuian", "name": "Hisuian Growlithe", "text": "Hisuian Growlithe" },
+    "2040": { "id": 59, "form": "hisuian", "name": "Hisuian Arcanine", "text": "Hisuian Arcanine" },
+    "2041": { "id": 100, "form": "hisuian", "name": "Hisuian Voltorb", "text": "Hisuian Voltorb" },
+    "2042": { "id": 101, "form": "hisuian", "name": "Hisuian Electrode", "text": "Hisuian Electrode" },
+    "2043": { "id": 157, "form": "hisuian", "name": "Hisuian Typhlosion", "text": "Hisuian Typhlosion" },
+    "2044": { "id": 211, "form": "hisuian", "name": "Hisuian Qwilfish", "text": "Hisuian Qwilfish" },
+    "2045": { "id": 215, "form": "hisuian", "name": "Hisuian Sneasel", "text": "Hisuian Sneasel" },
+    "2046": { "id": 503, "form": "hisuian", "name": "Hisuian Samurott", "text": "Hisuian Samurott" },
+    "2047": { "id": 549, "form": "hisuian", "name": "Hisuian Lilligant", "text": "Hisuian Lilligant" },
+    "2048": { "id": 570, "form": "hisuian", "name": "Hisuian Zorua", "text": "Hisuian Zorua" },
+    "2049": { "id": 571, "form": "hisuian", "name": "Hisuian Zoroark", "text": "Hisuian Zoroark" },
+    "2050": { "id": 628, "form": "hisuian", "name": "Hisuian Braviary", "text": "Hisuian Braviary" },
+    "2051": { "id": 705, "form": "hisuian", "name": "Hisuian Sliggoo", "text": "Hisuian Sliggoo" },
+    "2052": { "id": 706, "form": "hisuian", "name": "Hisuian Goodra", "text": "Hisuian Goodra" },
+    "2053": { "id": 713, "form": "hisuian", "name": "Hisuian Avalugg", "text": "Hisuian Avalugg" },
+    "2054": { "id": 724, "form": "hisuian", "name": "Hisuian Decidueye", "text": "Hisuian Decidueye" },
+    "2055": { "id": 128, "form": "paldean", "name": "Paldean Tauros - Aqua", "text": "Paldean Tauros - Aqua" },
+    "2056": { "id": 128, "form": "paldean", "name": "Paldean Tauros - Blaze", "text": "Paldean Tauros - Blaze" },
+    "2057": { "id": 128, "form": "paldean", "name": "Paldean Tauros - Combat", "text": "Paldean Tauros - Combat" },
+    "2058": { "id": 194, "form": "paldean", "name": "Paldean Wooper", "text": "Paldean Wooper" },
+    "3025": { "id": 201, "form": "normal", "name": "UNOWN", "text": "UNOWN"}
   },
 
     "GAME_TEXT": {
-        "johto_mom_home": ["Oh, you look tired, honey!", "Rest up for a while...", "... ... ...", "Your team is fully healed!", "Good luck on your adventure!"],
+        "johto_mom_home": ["Mom: Oh, you look tired, honey!", "Rest up for a while...", "... ... ...", "Your team is fully healed!", "Good luck on your adventure!"],
+        "johto_rival_mom": ["Oh, hello {player_name}!", "My son {rival_name} is out exploring Johto right now.", "He said he was going to become the greatest Math Master!", "You look tired, why don't you rest here for a moment?", "... ... ...", "Give my regards to your mother in Pallet Town!"],
         "johto_mom_neighbor": ["Hello! I'm Silver's Mom.", "Silver is out traveling right now.", "It's so quiet with him gone..."],
         "johto_elm_intro": ["Welcome to Johto!", "I have a special Pokémon for you."],
         "johto_elm_errand": ["Take this Egg back to Professor Elm immediately!", "That egg is a true mystery of the world!"],
@@ -91,6 +93,7 @@
         "NEW_BARK_TOWN": {
         "area_type": "town",
         "route_name": "New Bark Town",
+        "region": "JOHTO",
         "backgrounds": {
             "main": "new_bark_town.png",
             "lab": "new_bark_lab.png",
@@ -102,7 +105,7 @@
             { "text": "Route 29", "target_area": "JOHTO_ROUTE_29" }
         ],
         "explore_options": [
-            { "text": "Visit Mom", "action": "NPC", "target": "mom" },
+            { "text": "Visit Mom", "action": "DYNAMIC_MOM" },
             { "text": "Visit Elm's Lab", "action": "NPC", "target": "professor_elm" },
             { "text": "Talk to Nice Lady", "action": "NPC", "target": "silver_mom" }
         ],
@@ -127,6 +130,7 @@
         "CHERRYGROVE_CITY": {
         "area_type": "town",
         "route_name": "Cherrygrove City",
+        "region": "JOHTO",
         "backgrounds": {
             "main": "cherrygrove_city.png",
             "pokecenter": "cherrygrove_center.png",
@@ -149,6 +153,7 @@
         "VIOLET_CITY": {
         "area_type": "town",
         "route_name": "Violet City",
+        "region": "JOHTO",
         "backgrounds": {
             "main": "violet_city.png",
             "pokecenter": "violet_center.png",
@@ -168,17 +173,17 @@
             ],
             "trainers": [ 
                 { 
-                    "name": "Bird Keeper Abe", "class": "BIRD_KEEPER", "sprite": "bird_keeper.png",
+                    "name": "Bird Keeper Abe", "class": "BIRD_KEEPER", "sprite": "bird_keeper.png", "is_boss_battle": true,
                     "team": [16, 16], "rewards": { "balls": 2 }
                 },
                 { 
-                    "name": "Bird Keeper Rod", "class": "BIRD_KEEPER", "sprite": "bird_keeper.png",
+                    "name": "Bird Keeper Rod", "class": "BIRD_KEEPER", "sprite": "bird_keeper.png", "is_boss_battle": true,
                     "team": [163], "rewards": { "balls": 2 }
                 }
         ],
         "leader": {
         "name": "Falkner",
-        "class": "GYM_LEADER",
+        "class": "GYM_LEADER", "is_boss_battle": true,
         "sprite": "falkner.png",
         "team": [16, 163, 17],
         "badge_reward": "ZEPHYR",
@@ -193,20 +198,21 @@
         "travel_options": [
             { "text": "Route 31", "target_area": "JOHTO_ROUTE_31" },
             { "text": "Route 32", "target_area": "JOHTO_ROUTE_32" },
-            { "text": "Route 36", "target_area": "JOHTO_ROUTE_36" }
+            { "text": "Route 36", "target_area": "JOHTO_ROUTE_36" },
+            { "text": "Ruins of Alph", "target_area": "RUINS_OF_ALPH", "condition": "visited_ruins_of_alph" }
         ],
         "explore_options": [ 
             { "text": "Heal", "action": "HEAL" },
             { "text": "Shop", "action": "SHOP" },
             { "text": "Gym", "action": "GYM" },
-            { "text": "Sprout Tower", "action": "TRAVEL", "target_area": "SPROUT_TOWER" },
-            { "text": "Leave City", "action": "TRAVEL", "target_area": "JOHTO_ROUTE_31" }
+            { "text": "Sprout Tower", "action": "TRAVEL", "target_area": "SPROUT_TOWER" }
         ]
         },
 
         "RUINS_OF_ALPH": {
         "area_type": "town",
         "route_name": "Ruins of Alph",
+        "region": "JOHTO",
         "min_rounds": 0,
         "battle_type": "cave",
         "backgrounds": {
@@ -214,25 +220,24 @@
             "lab": "ruins_lab.png"
         },
         "route_menu": [
-            { "text": "CATCH UNOWN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-            { "text": "EXIT RUINS", "action": "EXIT", "target": "RUINS_OF_ALPH", "condition": "can_exit", "color": "RED" },
-            { "text": "Violet City", "action": "EXIT", "target": "VIOLET_CITY", "color": "BLUE" },
-            { "text": "EMERGENCY EXIT", "action": "EXIT", "target": "VIOLET_CITY", "color": "GOLD" }
+            { "text": "RESEARCH UNOWN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+            { "text": "EXIT RUINS", "action": "EXIT", "target_area": "RUINS_OF_ALPH", "condition": "can_exit", "color": "RED" }
         ],
-        "wild_pool_percentages": "JOHTO_RUINS_POOL",
+        "wild_pool_percentages": "JOHTO_RUINS_POOL_PERCENTAGES",
         "alt_forms": {
             "enabled": true,
             "weights": {
-                "201_b": 0.035, "201_c": 0.035, "201_d": 0.035, "201_e": 0.035,"201_f": 0.035, "201_g": 0.035,
-                "201_h": 0.035, "201_i": 0.035, "201_j": 0.035, "201_k": 0.035, "201_l": 0.035, "201_m": 0.035,
-                "201_n": 0.035, "201_o": 0.035, "201_p": 0.035, "201_q": 0.035, "201_r": 0.035, "201_s": 0.035,
-                "201_t": 0.035, "201_u": 0.035, "201_v": 0.035, "201_w": 0.035, "201_x": 0.035, "201_y": 0.035,
-                "201_z": 0.035, "201_question": 0.035, "201_exclamation": 0.035
+                "201_a": 0.0375, "201_b": 0.0377, "201_c": 0.0377, "201_d": 0.0377, "201_e": 0.0377,"201_f": 0.0377, "201_g": 0.0377,
+                "201_h": 0.0377, "201_i": 0.0377, "201_j": 0.0377, "201_k": 0.0377, "201_l": 0.0377, "201_m": 0.0377,
+                "201_n": 0.0377, "201_o": 0.0377, "201_p": 0.0377, "201_q": 0.0377, "201_r": 0.0377, "201_s": 0.0377,
+                "201_t": 0.0377, "201_u": 0.0377, "201_v": 0.0377, "201_w": 0.0377, "201_x": 0.0377, "201_y": 0.0377,
+                "201_z": 0.0377, "201_question": 0.05, "201_exclamation": 0.10
             }
         },
         "travel_options": [
             { "text": "Route 36", "target_area": "JOHTO_ROUTE_36" },
-            { "text": "Route 32", "target_area": "JOHTO_ROUTE_32" }
+            { "text": "Route 32", "target_area": "JOHTO_ROUTE_32" },
+            { "text": "Violet City", "target_area": "VIOLET_CITY", "condition": "visited_ruins_of_alph"}
         ],
         "explore_options": [
             { "text": "Enter Lab", "action": "NPC", "target": "alph_scientist" },
@@ -243,26 +248,28 @@
         "AZALEA_TOWN": {
         "area_type": "town",
         "route_name": "Azalea Town",
+        "region": "JOHTO",
         "backgrounds": {
             "main": "azalea_town.png",
             "pokecenter": "azalea_center.png",
             "pokemart": "azalea_mart.png",
-            "gym": "battle_gym_azalea.png"
+            "gym": "azalea_gym.png",
+            "battle": "battle_gym_azalea.png"
             },
         "has_gym": true,
         "gym": {
+            "requirements": {
+                "defeated_area": "SLOWPOKE_WELL",
+                "fail_text": ["Bugsy is helping Kurt protect the Slowpoke! You must defeat every Rocket Grunt in the Well to bring him back to the Gym."]
+            },
             "trainers": [
-                { 
-                    "name": "Bug Catcher Josh", "class": "BUG_CATCHER", "sprite": "bug_catcher.png", 
-                    "team": [46], "rewards": { "balls": 2 } 
-                },
-                { 
-                    "name": "Bug Catcher Benny", "class": "BUG_CATCHER", "sprite": "bug_catcher.png", 
-                    "team": [13, 14], "rewards": { "balls": 2 } 
-                }
+                { "name": "Bug Catcher Josh", "class": "BUG_CATCHER", "sprite": "bug_catcher.png", 
+                    "team": [46], "rewards": { "balls": 2 }, "is_boss_battle": true },
+                { "name": "Bug Catcher Benny", "class": "BUG_CATCHER", "sprite": "bug_catcher.png", 
+                    "team": [13, 14], "rewards": { "balls": 2 }, "is_boss_battle": true }
             ],
             "leader": {
-            "name": "Bugsy", "class": "GYM_LEADER", "sprite": "bugsy.png",
+            "name": "Bugsy", "class": "GYM_LEADER", "sprite": "bugsy.png", "is_boss_battle": true,
             "team": [11, 14, 123], "badge_reward": "HIVE", "rewards": { "balls": 5, "OLD_ROD": 1 },
             "dialogue": {
                 "intro": ["Welcome to the Azalea Town Gym! I'm Bugsy, the Bug-type Gym Leader."],
@@ -274,7 +281,7 @@
         "travel_options": [
             { "text": "Route 33", "target_area": "JOHTO_ROUTE_33" },
             { "text": "Ilex Forest", "target_area": "ILEX_FOREST" },
-            { "text": "Slowpoke Well", "target_area": "SLOWPOKE_WELL", "condition": "has_plain_badge" }
+            { "text": "Slowpoke Well", "target_area": "SLOWPOKE_WELL" }
         ],
         "explore_options": [
             { "text": "Heal", "action": "HEAL" },
@@ -297,17 +304,13 @@
         "has_gym": true,
         "gym": {
             "trainers": [
-                { 
-                    "name": "Lass Carrie", "class": "LASS", "sprite": "lass.png", 
-                    "team": [174, 35], "rewards": { "balls": 2 } 
-                },
-                { 
-                    "name": "Beauty Bridget", "class": "BEAUTY", "sprite": "beauty.png", 
-                    "team": [161, 162], "rewards": { "balls": 2 } 
-                }
+                { "name": "Lass Carrie", "class": "LASS", "sprite": "lass.png", 
+                    "team": [174, 35], "rewards": { "balls": 2 }, "is_boss_battle": true },
+                { "name": "Beauty Bridget", "class": "BEAUTY", "sprite": "beauty.png", 
+                    "team": [161, 162], "rewards": { "balls": 2 }, "is_boss_battle": true }
             ],
             "leader": {
-            "name": "Whitney", "class": "GYM_LEADER", "sprite": "whitney.png",
+            "name": "Whitney", "class": "GYM_LEADER", "sprite": "whitney.png", "is_boss_battle": true,
             "team": [35, 241], "badge_reward": "PLAIN", "rewards": { "balls": 5, "SQUIRT_BOTTLE": 1 },
             "dialogue": {
                 "intro": ["Welcome to the Goldenrod City Gym! I'm Whitney, the Normal-type Gym Leader."],
@@ -374,17 +377,17 @@
         "gym": {
             "trainers": [
                 { 
-                    "name": "Sage Ping", "class": "SAGE", "sprite": "oldman.png", 
+                    "name": "Sage Ping", "class": "SAGE", "sprite": "oldman.png", "is_boss_battle": true,
                     "team": [92, 92], "rewards": { "balls": 2 } 
                 },
                 { 
-                    "name": "Sage Jeffrey", "class": "SAGE", "sprite": "oldman.png", 
+                    "name": "Sage Jeffrey", "class": "SAGE", "sprite": "oldman.png", "is_boss_battle": true,
                     "team": [93], "rewards": { "balls": 2 } 
                 }
             ],
             "leader": {
             "name": "Morty", "class": "GYM_LEADER", "sprite": "morty.png",
-            "team": [92, 93, 94], "badge_reward": "FOG", "rewards": { "balls": 5, "SUPER_ROD": 1 },
+            "team": [92, 93, 94], "badge_reward": "FOG", "rewards": { "balls": 5, "SUPER_ROD": 1 }, "is_boss_battle": true,
             "dialogue": {
                 "intro": ["Welcome to the Ecruteak City Gym! I'm Morty, the Flying-type Gym Leader."],
                 "player_won": ["You're a skilled trainer!"],
@@ -403,6 +406,7 @@
             { "text": "Heal", "action": "HEAL" },
             { "text": "Shop", "action": "SHOP" },
             { "text": "Gym", "action": "GYM" },
+                { "text": "Route 38", "action": "TRAVEL", "target_area": "JOHTO_ROUTE_38" },
             { "text": "Talk to Bill", "action": "NPC", "target": "bill_johto", "flag_condition": "not met_bill_johto" },
             { "text": "Dance Hall", "action": "NPC", "target": "kimono_girl" }
         ]
@@ -421,17 +425,17 @@
         "gym": {
             "trainers": [
                 { 
-                    "name": "Lass Connie", "class": "LASS", "sprite": "lass.png", 
+                    "name": "Lass Connie", "class": "LASS", "sprite": "lass.png", "is_boss_battle": true,
                     "team": [180, 54], "rewards": { "balls": 2 } 
                 },
                 { 
-                    "name": "Gentleman Preston", "class": "GENTLEMAN", "sprite": "gentleman.png", 
+                    "name": "Gentleman Preston", "class": "GENTLEMAN", "sprite": "gentleman.png", "is_boss_battle": true,
                     "team": [179, 180], "rewards": { "balls": 2 } 
                 }
             ],
             "leader": {
             "name": "Jasmine", "class": "GYM_LEADER", "sprite": "jasmine.png",
-            "team": [81, 82, 208], "badge_reward": "MINERAL", "rewards": { "balls": 5, "AIR_BALLOON": 1 },
+            "team": [81, 82, 208], "badge_reward": "MINERAL", "rewards": { "balls": 5, "AIR_BALLOON": 1 }, "is_boss_battle": true,
             "dialogue": {
                 "intro": ["Welcome to the Olivine City Gym! I'm Jasmine, the Steel-type Gym Leader."],
                 "player_won": ["You're a skilled trainer!"],
@@ -465,17 +469,17 @@
         "gym": {
             "trainers": [
                 { 
-                    "name": "Blackbelt Yoshi", "class": "BLACKBELT", "sprite": "blackbelt.png", 
+                    "name": "Blackbelt Yoshi", "class": "BLACKBELT", "sprite": "blackbelt.png", "is_boss_battle": true,
                     "team": [106], "rewards": { "balls": 2 } 
                 },
                 { 
-                    "name": "Blackbelt Lao", "class": "BLACKBELT", "sprite": "blackbelt.png", 
+                    "name": "Blackbelt Lao", "class": "BLACKBELT", "sprite": "blackbelt.png", "is_boss_battle": true,
                     "team": [107], "rewards": { "balls": 2 } 
                 }
             ],
             "leader": {
             "name": "Chuck", "class": "GYM_LEADER", "sprite": "chuck.png",
-            "team": [57, 62], "badge_reward": "STORMBADGE", "rewards": { "balls": 5, "SURF_BOARD": 1 },
+            "team": [57, 62], "badge_reward": "STORMBADGE", "rewards": { "balls": 5, "SURF_BOARD": 1 }, "is_boss_battle": true,
             "dialogue": {
                 "intro": ["Welcome to the Cianwood City Gym! I'm Chuck, the Fighting-type Gym Leader."],
                 "player_won": ["You're a skilled trainer!"],
@@ -509,17 +513,17 @@
         "gym": {
             "trainers": [
                 { 
-                    "name": "Boarder Ronald", "class": "SAILOR", "sprite": "sailor.png", 
+                    "name": "Boarder Ronald", "class": "SAILOR", "sprite": "sailor.png", "is_boss_battle": true,
                     "team": [220, 220], "rewards": { "balls": 2 } 
                 },
                 { 
-                    "name": "Skier Clarissa", "class": "LASS", "sprite": "lass.png", 
+                    "name": "Skier Clarissa", "class": "LASS", "sprite": "lass.png", "is_boss_battle": true,
                     "team": [124, 124], "rewards": { "balls": 2 } 
                 }
             ],
             "leader": {
             "name": "Pryce", "class": "GYM_LEADER", "sprite": "pryce.png",
-            "team": [86, 87, 221], "badge_reward": "GLACIER", "rewards": { "balls": 5, "ICE_MELTER": 1, "VOLCANO_PASS": 1 },
+            "team": [86, 87, 221], "badge_reward": "GLACIER", "rewards": { "balls": 5, "ICE_MELTER": 1, "VOLCANO_PASS": 1 }, "is_boss_battle": true,
             "dialogue": {
                 "intro": ["Welcome to the Mahogany Town Gym! I'm Pryce, the Ice-type Gym Leader."],
                 "player_won": ["Your math burned right through my defense.", "The path to Blackthorn is frozen solid. Take this.", "You received the ICE MELTER!"],
@@ -553,17 +557,17 @@
         "gym": {
             "trainers": [
                 { 
-                    "name": "Cooltrainer Mike", "class": "COOLTRAINER", "sprite": "acetrainer_m.png", 
+                    "name": "Cooltrainer Mike", "class": "COOLTRAINER", "sprite": "acetrainer_m.png", "is_boss_battle": true,
                     "team": [148, 148], "rewards": { "balls": 3 } 
                 },
                 { 
-                    "name": "Cooltrainer Lola", "class": "COOLTRAINER", "sprite": "acetrainer_f.png", 
+                    "name": "Cooltrainer Lola", "class": "COOLTRAINER", "sprite": "acetrainer_f.png", "is_boss_battle": true,
                     "team": [147, 147, 147], "rewards": { "balls": 3 } 
                 }
             ],
             "leader": {
             "name": "Clair", "class": "GYM_LEADER", "sprite": "clair.png",
-            "team": [148, 148, 230], "badge_reward": "RISING", "rewards": { "balls": 5, "MT_SILVER_MAP": 1 },
+            "team": [148, 148, 230], "badge_reward": "RISING", "rewards": { "balls": 5, "MT_SILVER_MAP": 1 }, "is_boss_battle": true,
             "dialogue": {
                 "intro": ["Welcome to the Blackthorn City Gym! I'm Clair, the Dragon-type Gym Leader."],
                 "player_won": ["You're a skilled trainer!"],
@@ -590,6 +594,8 @@
             "pokecenter": "silver_center.png"
             },
         "travel_options": [
+            { "text": "Reception Gate", "target_area": "POKEMON_LEAGUE_GATE", "color": "RED"},
+            { "text": "Johto League Plateau", "target_area": "SILVER_LEAGUE_PLATEAU", "condition": "has_8_johto_badges", "color": "RED"}
             { "text": "Mt. Silver", "target_area": "MT_SILVER", "condition": "can_exit", "color": "RED"}
         ],
         "explore_options": [
@@ -626,19 +632,24 @@
             "area_type": "town",
             "route_name": "Silver League",
             "backgrounds": {
-                "main": "silver_entrance.png",
-                "gym": ["battle_will.png", "battle_koga.png", "battle_bruno.png", "battle_karen.png", "battle_lance.png"]
+                "main": "silver_entrance.png", 
+                "battle": ["battle_will.png", "battle_koga.png", "battle_bruno.png", "battle_karen.png", "battle_lance.png"]
             },
             "has_gym": true,
             "gym": {
                 "trainers": [
-                    { "sprite": "will.png", "name": "Will", "class": "ELITE_FOUR", "team": [178, 124, 103, 124, 178], "rewards": { "balls": 15 } },
-                    { "sprite": "koga_johto.png", "name": "Koga", "class": "ELITE_FOUR", "team": [168, 205, 89, 49, 169], "rewards": { "balls": 15 } },
-                    { "sprite": "bruno.png", "name": "Bruno", "class": "ELITE_FOUR", "team": [237, 107, 106, 95, 68], "rewards": { "balls": 15 } },
-                    { "sprite": "karen.png", "name": "Karen", "class": "ELITE_FOUR", "team": [197, 198, 94, 115, 229], "rewards": { "balls": 15 }, "victory_flag": "beat_johto_elite_four" }
+                    { "sprite": "will.png", "name": "Will", "class": "ELITE_FOUR",
+                    "team": [178, 124, 103, 124, 178],"rewards": { "balls": 15 }, "is_boss_battle": true },
+                    { "sprite": "koga_johto.png", "name": "Koga", "class": "ELITE_FOUR",
+                    "team": [168, 205, 89, 49, 169], "rewards": { "balls": 15 }, "is_boss_battle": true },
+                    { "sprite": "bruno.png", "name": "Bruno", "class": "ELITE_FOUR",
+                    "team": [237, 107, 106, 95, 68], "rewards": { "balls": 15 }, "is_boss_battle": true },
+                    { "sprite": "karen.png", "name": "Karen", "class": "ELITE_FOUR",
+                    "team": [197, 198, 94, 115, 229], "rewards": { "balls": 15 }, "victory_flag": "beat_johto_elite_four", "is_boss_battle": true }
                 ],
                 "leader": {
-                    "sprite": "lance.png", "name": "Lance", "class": "CHAMPION", "team": [130, 142, 142, 149, 149, 149],
+                    "sprite": "lance.png", "name": "Lance", "class": "CHAMPION",
+                    "team": [130, 142, 142, 149, 149, 149], "is_boss_battle": true,
                     "rewards": { "balls": 25, "MASTER_BALL": 1 },
                     "victory_flag": "beat_johto_champion"
                 }
@@ -662,12 +673,10 @@
             "route_menu": [
                 { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
                 { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-                { "text": "Waterfall Cave", "action": "NPC", "target": "giovanni", "condition": "has_8_johto_badges", "color": "GOLD" },
-                { "text": "Route 26", "action": "EXIT", "target": "KANTO_ROUTE_26", "condition": "can_exit", "color": "RED" },
-                { "text": "Route 27", "action": "EXIT", "target": "KANTO_ROUTE_27", "condition": "can_exit", "color": "RED" }
+                { "text": "Waterfall Cave", "action": "NPC", "target": "giovanni", "condition": "has_8_johto_badges", "color": "GOLD", "is_boss_battle": true },
+                { "text": "Route 27", "action": "EXIT", "target_area": "KANTO_ROUTE_27", "condition": "can_exit", "color": "RED" }
             ]
         },
-
 
         "JOHTO_ROUTE_29": {
             "area_type": "wild_route",
@@ -687,9 +696,9 @@
                 { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
                 { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
                 { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
-                { "text": "NEW BARK TOWN", "action": "EXIT", "target": "NEW_BARK_TOWN", "condition": "can_exit", "color": "RED" },
-                { "text": "Cherrygrove City", "action": "EXIT", "target": "CHERRYGROVE_CITY", "condition": "can_exit", "color": "RED" },
-                { "text": "Route 46", "action": "EXIT", "target": "JOHTO_ROUTE_46", "condition": "can_exit", "color": "RED" }
+                { "text": "NEW BARK TOWN", "action": "EXIT", "target_area": "NEW_BARK_TOWN", "condition": "can_exit", "color": "RED" },
+                { "text": "Cherrygrove City", "action": "EXIT", "target_area": "CHERRYGROVE_CITY", "condition": "can_exit", "color": "RED" },
+                { "text": "Route 46", "action": "EXIT", "target_area": "JOHTO_ROUTE_46", "condition": "can_exit", "color": "RED" }
         ],
             "next_area": "JOHTO_ROUTE_30",
             "on_enter_event": null
@@ -740,8 +749,9 @@
                 {"text": "Route 30","action": "EXIT", "target_area": "JOHTO_ROUTE_30", "condition": "can_exit", "color": "RED"},
                 {"text": "Dark Cave","action": "EXIT", "target_area": "DARK_CAVE", "condition": "can_exit", "color": "RED"},
                 {"text": "Violet City","action": "EXIT", "target_area": "VIOLET_CITY", "condition": "can_exit", "color": "RED"}
-                ]
-            },
+                ],
+            "next_area": "VIOLET_CITY"
+        },
         
         "JOHTO_ROUTE_32": {
             "area_type": "wild_route",
@@ -762,7 +772,7 @@
                 {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
                 {"text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE" },
                 {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
-                {"text": "Ruins of Alph","action": "EXIT", "target_area": "JOHTO_RUINS_OF_ALPH", "condition": "can_exit", "color": "RED"},
+                {"text": "Ruins of Alph","action": "EXIT", "target_area": "RUINS_OF_ALPH", "condition": "can_exit", "color": "RED"},
                 {"text": "Union Cave","action": "EXIT", "target_area": "UNION_CAVE", "condition": "can_exit", "color": "RED"},
                 {"text": "Violet City","action": "EXIT", "target_area": "VIOLET_CITY", "condition": "can_exit", "color": "RED"}
                 ],
@@ -815,7 +825,7 @@
                 {"text": "Goldenrod City","action": "EXIT", "target_area": "GOLDENROD_CITY", "condition": "can_exit", "color": "RED"}
                 ],
             "next_area": "GOLDENROD_CITY" 
-        },
+         },
         
         "JOHTO_ROUTE_35": {
             "area_type": "wild_route",
@@ -1258,7 +1268,7 @@
                 { "text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE" },
                 { "text": "CHALLENGE CELEBI", "action": "BOSS", "condition": "has_8_johto_badges", "color": "GOLD" },
                 { "text": "ROUTE 34", "action": "EXIT", "target_area": "JOHTO_ROUTE_34", "condition": "can_exit", "color": "RED" },
-                { "text": "Azalea Town", "action": "EXIT", "target": "AZALEA_TOWN", "condition": "can_exit", "color": "RED" }
+                { "text": "Azalea Town", "action": "EXIT", "target_area": "AZALEA_TOWN", "condition": "can_exit", "color": "RED" }
             ]
         },
         
@@ -1349,7 +1359,7 @@
                 {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
                 {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
                 { "text": "CHALLENGE HO-OH", "action": "BOSS", "condition": ["boss_available", "has_rainbow_wing"], "color": "GOLD" },
-                { "text": "EXIT TOWER", "action": "EXIT", "target": "ECRUTEAK_CITY", "condition": "can_exit", "color": "RED" }
+                { "text": "EXIT TOWER", "action": "EXIT", "target_area": "ECRUTEAK_CITY", "condition": "can_exit", "color": "RED" }
             ]
         },
         
@@ -1358,6 +1368,9 @@
             "battle_type": "cave",
             "wild_pool_percentages": "JOHTO_MT_MORTAR_PERCENTAGES",
             "min_rounds": 2,
+            "backgrounds": {
+                "battle": "battle_mt_mortar.png"
+            },
             "trainer_pool": [
                 { "name": "Super Nerd Markus", "class": "SUPER_NERD", "sprite": "supernerd.png", "team": [79, 80], "rewards": { "balls": 2 } },
                 { "name": "Blackbelt Yoshi", "class": "BLACKBELT", "sprite": "blackbelt.png", "team": [66, 67], "rewards": { "balls": 2 } },
@@ -1410,6 +1423,9 @@
             "battle_type": "cave",
             "wild_pool_percentages": "JOHTO_WHIRL_ISLANDS_PERCENTAGES",
             "min_rounds": 4,
+            "backgrounds": {
+                "battle": "battle_whirl_islands.png"
+            },
             "area_boss": {
                 "id": 249, "name": "Lugia", "victory_flag": "caught_lugia"
             },
@@ -1424,7 +1440,7 @@
                 {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
                 {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
                 { "text": "CHALLENGE LUGIA", "action": "BOSS", "condition": ["boss_available", "has_silver_wing"], "color": "BLUE" },
-                { "text": "EXIT", "action": "EXIT", "target": "JOHTO_ROUTE_41", "condition": "can_exit", "color": "RED" }
+                { "text": "EXIT", "action": "EXIT", "target_area": "JOHTO_ROUTE_41", "condition": "can_exit", "color": "RED" }
             ]
         },
         
@@ -1445,7 +1461,7 @@
                 { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
                 { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
                 { "text": "CONFRONT ROCKETS", "action": "TRAINER", "condition": "has_trainers", "color": "PURPLE" },
-                { "text": "ROUTE 44", "action": "EXIT", "target": "JOHTO_ROUTE_44", "condition": "can_exit", "color": "RED" }
+                { "text": "MAHOGANY TOWN", "action": "EXIT", "target_area": "MAHOGANY_TOWN", "condition": "can_exit", "color": "RED" }
             ]
         },
 
@@ -1493,7 +1509,7 @@
             "min_rounds": 1,
             "route_menu": [
                 { "text": "CIANWOOD CITY", "action": "EXIT", "target_area": "CIANWOOD_CITY", "condition": "can_exit", "color": "RED" },
-                { "text": "SAFARI ZONE", "action": "EXIT", "target_area": "SAFARI_ZONE", "condition": "can_exit", "color": "RED" }
+                { "text": "SAFARI ZONE", "action": "EXIT", "target_area": "JOHTO_SAFARI_ZONE", "condition": "can_exit", "color": "RED" }
             ]
         },
 
@@ -1501,7 +1517,7 @@
             "area_type": "wild_route",
             "route_name": "Johto Safari Zone",
             "battle_type": "grass",
-            "wild_pool_percentages": "JOHTO_SAFARI_POOL",
+            "wild_pool_percentages": "JOHTO_SAFARI_PERCENTAGES",
             "min_rounds": 0,
             "route_menu": [
                 { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
@@ -1565,118 +1581,126 @@
 
     "JOURNAL_MISSIONS": [
         {
-            "id": "johto_m1", "type": "MAIN", "text": "Elm's Errand", "desc": "Travel to Route 30 to visit Mr. Pokemon. He has a discovery that Prof. Elm needs to see!",
-            "condition": { "start_region": "JOHTO", "visited_not": "JOHTO_ROUTE_30", "badges_less": 1 },
+            "id": "johto_m1", "type": "MAIN", "title": "Elm's Errand", "description": "Travel to Route 30 to visit Mr. Pokemon. He has a discovery that Prof. Elm needs to see!",
+            "condition": { "required_region": "JOHTO", "visited_not": "JOHTO_ROUTE_30", "badges_less": 1, "flag_not": "elm_received_egg" },
             "reward": "Mystery Egg"
         },
         {
-            "id": "johto_m2", "type": "MAIN", "text": "The Mystery Egg", "desc": "You've met Mr. Pokemon and Oak! Return to the Lab in New Bark Town to show Prof. Elm the Mystery Egg.",
-            "condition": { "start_region": "JOHTO", "visited": "JOHTO_ROUTE_30", "flag_not": "elm_received_egg", "badges_less": 1 },
+            "id": "johto_c1", "type": "SIDE", "title": "Unown Researcher", "description": "The Ruins of Alph are mysterious. Catch at least 5 different forms of Unown!",
+            "condition": { "required_region": "JOHTO", "catch_id": "201", "catch_count": 5 },
+            "completed_flag": "unown_research_complete",
+            "reward": "Master Ball"
+        },
+        {
+            "id": "johto_m2", "type": "MAIN", "title": "The Mystery Egg", "description": "You've met Mr. Pokemon and Oak! Return to the Lab in New Bark Town to show Prof. Elm the Mystery Egg.",
+            "condition": { "required_region": "JOHTO", "visited": "JOHTO_ROUTE_30", "flag_not": "elm_received_egg", "badges_less": 1 },
             "reward": "10 Poke Balls"
         },
         {
-            "id": "johto_m3", "type": "MAIN", "text": "Sprout Tower Challenge", "desc": "The Sages of Sprout Tower in Violet City hold a secret power. Defeat Elder Li to prove your worth.",
+            "id": "johto_m3", "type": "MAIN", "title": "Sprout Tower Challenge", "description": "The Sages of Sprout Tower in Violet City hold a secret power. Defeat Elder Li to prove your worth.",
             "condition": { "start_region": "JOHTO", "visited": "VIOLET_CITY", "flag_not": "defeated_elder_li" },
             "completed_flag": "defeated_elder_li",
             "reward": "Leaf Stone"
         },
         {
-            "id": "johto_m4", "type": "MAIN", "text": "Taking Flight", "desc": "Challenge Falkner at the Violet City Gym. His Flying-type Pokemon soar high—use your math to bring them down!",
+            "id": "johto_m4", "type": "MAIN", "title": "Taking Flight", "description": "Challenge Falkner at the Violet City Gym. His Flying-type Pokemon soar high—use your math to bring them down!",
             "condition": { "start_region": "JOHTO", "flag": "defeated_elder_li", "badges_less": 1 },
             "completed_flag": "badge_zephyr_earned",
             "reward": "Zephyr Badge"
         },
         {
-            "id": "johto_m5", "type": "MAIN", "text": "Slowpoke Rescue", "desc": "Team Rocket is cutting off Slowpoke tails in Azalea Town! Stop them at the Slowpoke Well.",
+            "id": "johto_m5", "type": "MAIN", "title": "Slowpoke Rescue", "description": "Team Rocket is cutting off Slowpoke tails in Azalea Town! Stop them at the Slowpoke Well.",
             "condition": { "start_region": "JOHTO", "visited": "AZALEA_TOWN", "flag_not": "slowpoke_well_cleared" },
             "reward": "5 Lure Balls"
         },
         {
-            "id": "johto_m6", "type": "MAIN", "text": "Bugging Out", "desc": "With the Well cleared, Bugsy is back at the Azalea Gym. Defeat his scuttling team for the Hive Badge.",
+            "id": "johto_m6", "type": "MAIN", "title": "Bugging Out", "description": "With the Well cleared, Bugsy is back at the Azalea Gym. Defeat his scuttling team for the Hive Badge.",
             "condition": { "start_region": "JOHTO", "flag": "slowpoke_well_cleared", "badges_min": 1, "badges_less": 2 },
             "reward": "Hive Badge"
         },
         {
-            "id": "johto_m7", "type": "MAIN", "text": "The Weird Tree", "desc": "A strange tree is blocking Route 36. Visit Goldenrod City to find a way to make it move.",
+            "id": "johto_m7", "type": "MAIN", "title": "The Weird Tree", "description": "A strange tree is blocking Route 36. Visit Goldenrod City to find a way to make it move.",
             "condition": { "start_region": "JOHTO", "visited_not": "GOLDENROD_CITY", "badges_min": 2 },
             "reward": "Squirt Bottle"
         },
         {
-            "id": "johto_m8", "type": "MAIN", "text": "The Plain Badge", "desc": "Whitney at the Goldenrod Gym is tougher than she looks! Defeat her Miltank to earn your third badge.",
+            "id": "johto_m8", "type": "MAIN", "title": "The Plain Badge", "description": "Whitney at the Goldenrod Gym is tougher than she looks! Defeat her Miltank to earn your third badge.",
             "condition": { "start_region": "JOHTO", "visited": "GOLDENROD_CITY", "badges_less": 3 },
             "reward": "Plain Badge"
         },
         {
-            "id": "johto_m9", "type": "MAIN", "text": "Shadows of Ecruteak", "desc": "Explore the Burned Tower in Ecruteak City. Legends say three beastly Pokemon are slumbering in the basement.",
+            "id": "johto_m9", "type": "MAIN", "title": "Shadows of Ecruteak", "description": "Explore the Burned Tower in Ecruteak City. Legends say three beastly Pokemon are slumbering in the basement.",
             "condition": { "start_region": "JOHTO", "visited": "ECRUTEAK_CITY", "flag_not": "visited_BURNED_TOWER" },
             "reward": "Legendary Dogs Tracking"
         },
         {
-            "id": "johto_m10", "type": "MAIN", "text": "The Fog Badge", "desc": "Morty can see things others cannot. Use your logic to navigate the Ecruteak Gym and defeat his Ghost-types.",
+            "id": "johto_m10", "type": "MAIN", "title": "The Fog Badge", "description": "Morty can see things others cannot. Use your logic to navigate the Ecruteak Gym and defeat his Ghost-types.",
             "condition": { "start_region": "JOHTO", "flag": "visited_BURNED_TOWER", "badges_less": 4 },
             "reward": "Fog Badge"
         },
         {
-            "id": "johto_m11", "type": "MAIN", "text": "Lighthouse Rescue", "desc": "The Jasmine's Ampharos is ill! Travel across the sea to Cianwood City to fetch the Secret Potion.",
+            "id": "johto_m11", "type": "MAIN", "title": "Lighthouse Rescue", "description": "The Jasmine's Ampharos is ill! Travel across the sea to Cianwood City to fetch the Secret Potion.",
             "condition": { "start_region": "JOHTO", "visited": "OLIVINE_CITY", "badges_min": 4, "visited_not": "CIANWOOD_CITY" },
             "reward": "Surf Board"
         },
         {
-            "id": "johto_m12", "type": "MAIN", "text": "The Storm Badge", "desc": "While in Cianwood, challenge Chuck at the Gym. His Fighting-type Pokemon will test your math stamina!",
+            "id": "johto_m12", "type": "MAIN", "title": "The Storm Badge", "description": "While in Cianwood, challenge Chuck at the Gym. His Fighting-type Pokemon will test your math stamina!",
             "condition": { "start_region": "JOHTO", "visited": "CIANWOOD_CITY", "badges_less": 5 },
             "reward": "Storm Badge"
         },
         {
-            "id": "johto_m13", "type": "MAIN", "text": "The Mineral Badge", "desc": "Amphy is cured! Return to Olivine City and challenge Jasmine. Her Steel-type Pokemon have a rock-solid defense.",
+            "id": "johto_m13", "type": "MAIN", "title": "The Mineral Badge", "description": "Amphy is cured! Return to Olivine City and challenge Jasmine. Her Steel-type Pokemon have a rock-solid defense.",
             "condition": { "start_region": "JOHTO", "badges_min": 5, "badges_less": 6 },
             "reward": "Mineral Badge"
         },
         {
-            "id": "johto_m14", "type": "MAIN", "text": "Rage at the Lake", "desc": "Something is wrong at the Lake of Rage north of Mahogany Town. Investigate the rumor of a Red Gyarados.",
+            "id": "johto_m14", "type": "MAIN", "title": "Rage at the Lake", "description": "Something is wrong at the Lake of Rage north of Mahogany Town. Investigate the rumor of a Red Gyarados.",
             "condition": { "start_region": "JOHTO", "visited": "MAHOGANY_TOWN", "flag_not": "rocket_hq_cleared" },
             "reward": "Rare Candy"
         },
         {
-            "id": "johto_m15", "type": "MAIN", "text": "The Glacier Badge", "desc": "Pryce is a master of Ice-type Pokemon. Keep a cool head and defeat him at the Mahogany Gym.",
+            "id": "johto_m15", "type": "MAIN", "title": "The Glacier Badge", "description": "Pryce is a master of Ice-type Pokemon. Keep a cool head and defeat him at the Mahogany Gym.",
             "condition": { "start_region": "JOHTO", "flag": "rocket_hq_cleared", "badges_less": 7 },
             "reward": "Glacier Badge"
         },
         {
-            "id": "johto_m16", "type": "MAIN", "text": "The Rising Badge", "desc": "Clair of Blackthorn City won't accept your strength easily. Defeat her and pass the test in the Dragon's Den.",
+            "id": "johto_m16", "type": "MAIN", "title": "The Rising Badge", "description": "Clair of Blackthorn City won't accept your strength easily. Defeat her and pass the test in the Dragon's Den.",
             "condition": { "start_region": "JOHTO", "badges_min": 7, "badges_less": 8 },
             "reward": "Rising Badge"
         },
         {
-            "id": "johto_m17", "type": "MAIN", "text": "Conquer the League", "desc": "The Johto journey ends at the Indigo Plateau. Defeat the Elite Four and become the Johto Champion!",
+            "id": "johto_m17", "type": "MAIN", "title": "Conquer the League", "description": "The Johto journey ends at the Indigo Plateau. Defeat the Elite Four and become the Johto Champion!",
             "condition": { "start_region": "JOHTO", "badges_min": 8, "flag_not": "beat_champion" },
             "reward": "Champion Title"
         },
         {
-            "id": "johto_m18", "type": "MAIN", "text": "The Legend of Mt. Silver", "desc": "You are the Champion, but a greater challenge awaits. Brave the heights of Mt. Silver to find the legendary trainer Red.",
+            "id": "johto_m18", "type": "MAIN", "title": "The Legend of Mt. Silver", "description": "You are the Champion, but a greater challenge awaits. Brave the heights of Mt. Silver to find the legendary trainer Red.",
             "condition": { "start_region": "JOHTO", "flag": "beat_champion", "flag": "unlocked_national_dex" }
         },
         {
-            "id": "johto_s1", "type": "SIDE", "text": "Ruins of Alph", "desc": "The stones here hum with a strange frequency. Catch different forms of Unown to unlock the ruins' secrets.",
-            "condition": { "visited": "RUINS_OF_ALPH" }
+            "id": "johto_s1", "type": "SIDE", "title": "Ruins of Alph", "description": "The stones here hum with a strange frequency. Catch different forms of Unown to unlock the ruins' secrets.",
+            "condition": { "visited": "RUINS_OF_ALPH" },
+            "completed_flag": "got_unown_report",
+            "reward": "UNOWN_REPORT"
         },
         {
-            "id": "johto_s2", "type": "SIDE", "text": "Union Cave Mystery", "desc": "On Fridays, a rare Pokemon is said to appear in the deepest part of Union Cave. Have you found Lapras yet?",
+            "id": "johto_s2", "type": "SIDE", "title": "Union Cave Mystery", "description": "On Fridays, a rare Pokemon is said to appear in the deepest part of Union Cave. Have you found Lapras yet?",
             "condition": { "visited": "UNION_CAVE", "flag_not": "caught_union_lapras" }
         },
         {
-            "id": "johto_s3", "type": "SIDE", "text": "The Karate King", "desc": "Deep inside Mt. Mortar, the Karate King awaits a challenger. Defeat him to receive a rare Fighting-type Pokemon.",
+            "id": "johto_s3", "type": "SIDE", "title": "The Karate King", "description": "Deep inside Mt. Mortar, the Karate King awaits a challenger. Defeat him to receive a rare Fighting-type Pokemon.",
             "condition": { "visited": "MT_MORTAR", "flag_not": "defeated_karate_king" }
         },
         {
-            "id": "johto_s4", "type": "SIDE", "text": "National Upgrade", "desc": "Visit Prof. Oak in Pallet Town after becoming Champion. He has a major upgrade for your Pokedex!",
+            "id": "johto_s4", "type": "SIDE", "title": "National Upgrade", "description": "Visit Prof. Oak in Pallet Town after becoming Champion. He has a major upgrade for your Pokedex!",
             "condition": { "start_region": "JOHTO", "flag": "beat_champion", "flag_not": "unlocked_national_dex" }
         },
         {
-            "id": "johto_kanto_travel", "type": "SIDE", "text": "The Kanto Challenge", "desc": "With your National Dex in hand, the gyms of Kanto are waiting. Head to Pewter City to find Brock!",
+            "id": "johto_kanto_travel", "type": "SIDE", "title": "The Kanto Challenge", "description": "With your National Dex in hand, the gyms of Kanto are waiting. Head to Pewter City to find Brock!",
             "condition": { "start_region": "JOHTO", "flag": "unlocked_national_dex", "visited_not": "PEWTER_CITY" }
         },
         {
-            "id": "kanto_johto_travel", "type": "MAIN", "text": "Johto Bound", "desc": "Visit Route 26 via Indigo Plateau to begin your journey into the Johto region.",
+            "id": "kanto_johto_travel", "type": "MAIN", "title": "Johto Bound", "description": "Visit Route 26 via Indigo Plateau to begin your journey into the Johto region.",
             "condition": { "start_region": "KANTO", "flag": "beat_champion", "visited_not": "NEW_BARK_TOWN" }
         }
     ],

@@ -21,6 +21,7 @@ class JournalState(GameState):
         self.missions = game.story_manager.get_all_journal_entries()
         # [FIX] Sort ACTIVE missions to the top (status 'ACTIVE' before 'COMPLETED')
         self.missions.sort(key=lambda x: 0 if x["status"] == "ACTIVE" else 1)
+        self.scroll_idx = 0
 
         self.btn_back = Button(
             (30, 30, 140, 70), "BACK", game.assets.fonts["small"],
@@ -41,7 +42,13 @@ class JournalState(GameState):
                 self.game.story_manager.notified_missions.append(m["id"])
 
     def handle_events(self, events):
-        pass
+        for event in events:
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if event.button == 4: # Scroll Up
+                    self.scroll_idx = max(0, self.scroll_idx - 1)
+                elif event.button == 5: # Scroll Down
+                    max_scroll = max(0, len(self.missions) - 3)
+                    self.scroll_idx = min(max_scroll, self.scroll_idx + 1)
 
     def update(self):
         pass
@@ -64,7 +71,7 @@ class JournalState(GameState):
         card_h = 180
         spacing = 20
 
-        for i, m in enumerate(self.missions[:3]):
+        for i, m in enumerate(self.missions[self.scroll_idx : self.scroll_idx + 3]):
             rect = pygame.Rect(100, start_y + i * (card_h + spacing), card_w, card_h)
 
             # Background Panel
@@ -595,11 +602,21 @@ class PCState(GameState):
         self.pc = game.story_manager.pc_pokemon
         self.selected_party_idx = None
         self.selected_pc_idx = None
-        self.scroll_y = 0
+        
+        # ARCHITECT: Box pagination (30 per box)
+        self.box_index = 0
+        self.mons_per_box = 30
         
         self.font = game.assets.fonts["tiny"]
         self.btn_back = Button((20, 20, 100, 50), "BACK", self.font, self.go_back, bg_color=RED)
         
+        self.btn_prev_box = Button((420, 75, 40, 40), "<", self.font, self.prev_box, bg_color=BLUE)
+        self.btn_next_box = Button((750, 75, 40, 40), ">", self.font, self.next_box, bg_color=BLUE)
+
+        self.btn_sort_id = Button((820, 75, 100, 40), "SORT ID", self.font, self.sort_by_id, bg_color=GOLD)
+        self.btn_sort_name = Button((930, 75, 120, 40), "SORT NAME", self.font, self.sort_by_name, bg_color=GOLD)
+        self.btn_release = Button((50, 650, 150, 50), "RELEASE", self.font, self.release_pokemon, bg_color=RED, visible=False)
+
         # Layout Configuration for Large Sprites (4x size)
         self.grid_start_x = 400
         self.grid_start_y = 100
@@ -613,11 +630,47 @@ class PCState(GameState):
             return
         self.game.change_state(self.previous_state)
 
+    def prev_box(self):
+        self.box_index = (self.box_index - 1) % self.get_total_boxes()
+
+    def next_box(self):
+        self.box_index = (self.box_index + 1) % self.get_total_boxes()
+
+    def sort_by_id(self):
+        self.pc.sort(key=lambda x: x.id)
+        self.game.show_dialogue(["Storage sorted by National ID!"])
+
+    def sort_by_name(self):
+        self.pc.sort(key=lambda x: x.display_name.upper())
+        self.game.show_dialogue(["Storage sorted alphabetically!"])
+
+    def release_pokemon(self):
+        if self.selected_pc_idx is not None:
+            p = self.pc[self.selected_pc_idx]
+            self.pc.pop(self.selected_pc_idx)
+            msg = f"Released {p.display_name.upper()} back into the wild!"
+            self.selected_pc_idx = None
+            self.game.show_dialogue([msg])
+
+    def get_total_boxes(self):
+        return max(1, (len(self.pc) + self.mons_per_box - 1) // self.mons_per_box)
+
     def start(self):
         self.game.ui_manager.add_element(self.btn_back)
+        self.game.ui_manager.add_element(self.btn_prev_box)
+        self.game.ui_manager.add_element(self.btn_next_box)
+        self.game.ui_manager.add_element(self.btn_sort_id)
+        self.game.ui_manager.add_element(self.btn_sort_name)
+        self.game.ui_manager.add_element(self.btn_release)
 
     def handle_events(self, events):
         for event in events:
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if event.button == 4: # Wheel Up
+                    self.prev_box()
+                elif event.button == 5: # Wheel Down
+                    self.next_box()
+
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if event.button == 1:
                     # Check Party Slots (Left Side)
@@ -631,29 +684,20 @@ class PCState(GameState):
                     available_w = self.game.width - self.grid_start_x - 20
                     cols = max(1, available_w // (self.slot_size + self.slot_gap))
                     
-                    # Render enough slots for all PC mons + 1 empty slot (for deposit)
-                    total_slots = len(self.pc) + 1
-                    for i in range(total_slots):
-                        c, r = i % cols, i // cols
+                    # Check only slots in the current box
+                    box_start = self.box_index * self.mons_per_box
+                    box_end = min(box_start + self.mons_per_box, len(self.pc))
+                    
+                    for i in range(box_start, box_end + 1):
+                        local_idx = i - box_start
+                        c, r = local_idx % cols, local_idx // cols
                         rx = self.grid_start_x + c * (self.slot_size + self.slot_gap)
-                        ry = self.grid_start_y + r * (self.slot_size + self.slot_gap) - self.scroll_y
+                        ry = self.grid_start_y + r * (self.slot_size + self.slot_gap)
                         
-                        # Only check if visible on screen
-                        if 80 < ry < self.game.height - 20:
-                            slot_rect = pygame.Rect(rx, ry, self.slot_size, self.slot_size)
-                            if slot_rect.collidepoint(event.pos):
-                                self.handle_click("pc", i)
-                                return
-
-                elif event.button == 4:
-                    self.scroll_y = max(0, self.scroll_y - 40)
-                elif event.button == 5:
-                    available_w = self.game.width - self.grid_start_x - 20
-                    cols = max(1, available_w // (self.slot_size + self.slot_gap))
-                    row_h = self.slot_size + self.slot_gap
-                    rows = (len(self.pc) // cols) + 2
-                    max_scroll = max(0, rows * row_h - (self.game.height - 120))
-                    self.scroll_y = min(max_scroll, self.scroll_y + 40)
+                        slot_rect = pygame.Rect(rx, ry, self.slot_size, self.slot_size)
+                        if slot_rect.collidepoint(event.pos):
+                            self.handle_click("pc", i)
+                            return
 
     def handle_click(self, source, index):
         # 1. Handle Selection Logic
@@ -709,7 +753,8 @@ class PCState(GameState):
                 self.selected_pc_idx = index
 
     def update(self):
-        pass
+        # ARCHITECT: Only show Release button when a Pokémon in the PC is selected
+        self.btn_release.set_visibility(self.selected_pc_idx is not None)
 
     def draw(self):
         self.game.screen.fill((30, 50, 60))
@@ -744,21 +789,21 @@ class PCState(GameState):
                 pygame.draw.rect(self.game.screen, (80, 100, 120), rect, 2, border_radius=10)
 
         # Draw PC Grid (Right)
-        Utils.draw_text_outline(self.game.screen, f"STORAGE ({len(self.pc)})", self.font, GOLD, 600, 85)
-        
-        # Scissor clip for scrolling area
-        clip_rect = pygame.Rect(self.grid_start_x - 10, self.grid_start_y, self.game.width - self.grid_start_x, self.game.height - 120)
-        self.game.screen.set_clip(clip_rect)
+        box_label = f"BOX {self.box_index + 1} ({len(self.pc)})"
+        Utils.draw_text_outline(self.game.screen, box_label, self.font, GOLD, 600, 85)
         
         available_w = self.game.width - self.grid_start_x - 20
         cols = max(1, available_w // (self.slot_size + self.slot_gap))
         
-        total_slots = len(self.pc) + 1
+        box_start = self.box_index * self.mons_per_box
+        # Show up to 30 mons, plus one empty slot at the end of the collection for deposits
+        box_end = min(box_start + self.mons_per_box, len(self.pc) + 1)
         
-        for i in range(total_slots):
-            c, r = i % cols, i // cols
+        for i in range(box_start, box_end):
+            local_idx = i - box_start
+            c, r = local_idx % cols, local_idx // cols
             rx = self.grid_start_x + c * (self.slot_size + self.slot_gap)
-            ry = self.grid_start_y + r * (self.slot_size + self.slot_gap) - self.scroll_y
+            ry = self.grid_start_y + r * (self.slot_size + self.slot_gap)
             
             rect = pygame.Rect(rx, ry, self.slot_size, self.slot_size)
             
@@ -776,13 +821,22 @@ class PCState(GameState):
                     # Center the sprite in the slot
                     spr_rect = spr.get_rect(center=rect.center)
                     self.game.screen.blit(spr, spr_rect)
+
+                # Draw Pokémon name at center bottom of the slot
+                Utils.draw_text_outline(
+                    self.game.screen,
+                    p.display_name.upper(),
+                    self.font,
+                    WHITE,
+                    rect.centerx,
+                    rect.bottom - 20
+                )
             else:
                 # "New/Empty" slot indicator
                 pygame.draw.rect(self.game.screen, (40, 60, 80), rect, border_radius=5)
                 pygame.draw.rect(self.game.screen, (80, 100, 120), rect, 2, border_radius=5)
                 Utils.draw_text_outline(self.game.screen, "+", self.game.assets.fonts["med"], GRAY, rect.centerx, rect.centery)
 
-        self.game.screen.set_clip(None)
         self.game.ui_manager.draw(self.game.screen)
 
 
@@ -929,14 +983,14 @@ class BagState(GameState):
             context="use_item",
             on_select=self.on_pokemon_select
         ))
+
     def on_pokemon_select(self, slot_index):
         party = self.game.story_manager.player_team
         if slot_index >= len(party): return
 
         pokemon = party[slot_index]
         evolution_data = self.evo_items_map.get(self.selected_item, {})
-        
-        # Check standard name or form name (e.g. VULPIX_ALOLAN)
+
         p_key = pokemon.name.upper()
         if pokemon.form and pokemon.form != "normal":
             alt_key = f"{p_key}_{pokemon.form.upper()}"
@@ -945,15 +999,13 @@ class BagState(GameState):
 
         if p_key in evolution_data:
             target_name = evolution_data[p_key]
-            # Find target ID
             target_id = self.game.name_to_id.get(target_name.split("_")[0])
-            
+
             target_form = "normal"
             if "_" in target_name:
                 target_form = target_name.split("_", 1)[1].lower()
 
             if target_id:
-                # CONSUME ITEM
                 self.game.story_manager.inventory[self.selected_item] -= 1
                 if self.game.story_manager.inventory[self.selected_item] < 0:
                     self.game.story_manager.inventory[self.selected_item] = 0
@@ -971,8 +1023,7 @@ class BagState(GameState):
         if slot_index >= len(party): return
 
         pokemon = party[slot_index]
-        
-        # Find its evolution
+
         key = pokemon.name.upper()
         if pokemon.form and pokemon.form != "normal":
             key += f"_{pokemon.form.upper()}"
@@ -984,7 +1035,6 @@ class BagState(GameState):
             self.refresh_buttons()
             return
 
-        # Consume item
         self.game.story_manager.inventory["RARE_CANDY"] -= 1
         if self.game.story_manager.inventory["RARE_CANDY"] <= 0:
             del self.game.story_manager.inventory["RARE_CANDY"]
@@ -1010,17 +1060,16 @@ class BagState(GameState):
 
     def draw(self):
         self.game.screen.fill((40, 40, 60))
-        
+
         page_title = self.pages[self.current_page]
         Utils.draw_text_outline(self.game.screen, page_title, self.game.assets.fonts["med"], WHITE, self.game.width//2, 50)
-        
+
         if not self.item_buttons:
             Utils.draw_text_outline(self.game.screen, "No Items", self.game.assets.fonts["s_med"], GRAY, self.game.width//2, self.game.height//2)
-        
-        # [UPDATE] Show Money
+
         money_txt = f"${self.game.story_manager.money}"
         Utils.draw_text_outline(self.game.screen, money_txt, self.game.assets.fonts["small"], GOLD, self.game.width - 150, 50, outline_color=BLACK)
-            
+
         self.game.ui_manager.draw(self.game.screen)
 
 
@@ -1033,9 +1082,8 @@ class PokedexState(GameState):
         self.page = 0
         self.show_shinies_only = False
         self.full_dex = []
-        self.sort_mode = "NUMBER" 
-        
-        # Pop-up Menu State
+        self.sort_mode = "NUMBER"
+
         self.popup_active = False
         self.selected_pkmn_id = None
         self.popup_rect = pygame.Rect(0, 0, 180, 130)
@@ -1052,8 +1100,7 @@ class PokedexState(GameState):
             callback=self.go_back,
             bg_color=RED,
         )
-        
-        # Pop-up Buttons
+
         self.btn_cry = Button((0, 0, 160, 50), "CRY", game.assets.fonts["tiny"], self.play_selected_cry, bg_color=BLUE, visible=False)
         self.btn_area = Button((0, 0, 160, 50), "AREA", game.assets.fonts["tiny"], self.show_selected_area, bg_color=GREEN, visible=False)
 
@@ -1064,7 +1111,6 @@ class PokedexState(GameState):
             callback=self.toggle_shiny_filter,
             bg_color=BLUE,
         )
-        # [UPDATE] Sort Toggle
         self.btn_sort = Button(
             rect=(game.width - 250, 110, 220, 70),
             text="SORT: #",
@@ -1072,7 +1118,6 @@ class PokedexState(GameState):
             callback=self.toggle_sort,
             bg_color=GOLD
         )
-
         self.btn_tab_normal = Button(
             rect=(game.width * 0.1, tab_y, 200, tab_h),
             text="NORMAL",
@@ -1157,7 +1202,7 @@ class PokedexState(GameState):
 
     def show_selected_area(self):
         if not self.selected_pkmn_id: return
-        
+
         locations = []
         prog = self.game.loader.area_data.get("STORY_PROGRESSION", {})
         for area_key, data in prog.items():
@@ -1167,7 +1212,7 @@ class PokedexState(GameState):
                 if str(self.selected_pkmn_id) in pool:
                     name = data.get("route_name", area_key.replace("KANTO_", "").replace("_", " ").title())
                     locations.append(name)
-        
+
         msg = [f"Found in: {', '.join(locations)}" if locations else "Location unknown."]
         self.game.show_dialogue(msg)
         self.hide_popup()
@@ -1183,6 +1228,8 @@ class PokedexState(GameState):
         self.refresh_dex()
 
     def refresh_dex(self):
+        nown_id = self.game.loader.get_special_id("NOWN", 3025)
+
         if self.current_tab == "boss":
             source_data = self.game.data.data.get("defeated_bosses", {})
             self.full_dex = list(source_data.values())
@@ -1208,14 +1255,12 @@ class PokedexState(GameState):
             seen_ids = self.game.data.data.get("seen_pokemon", [])
             starting_region = self.game.story_manager.starting_region
             national_dex = self.game.story_manager.story_flags.get("unlocked_national_dex", False)
-            
-            # Determine Regional vs National ID list
+
             if national_dex:
-                id_list = list(range(1, 252))  # National: 1-251
+                id_list = list(range(1, 252))
             elif starting_region == "KANTO":
-                id_list = list(range(1, 152))  # Kanto: 1-151
+                id_list = list(range(1, 152))
             else:
-                # Johto: Show standard 152-251, plus any Kanto (1-151) seen/caught
                 kanto_visible = []
                 caught_ids = {v['id'] for v in caught_data.values()}
                 seen_set = set(seen_ids)
@@ -1227,16 +1272,15 @@ class PokedexState(GameState):
             for p_id in id_list:
                 is_caught = False
                 caught_entry = None
-                
-                # Check if caught (any form counts for the base slot)
+
                 for k, v in caught_data.items():
                     if v['id'] == p_id:
                         is_caught = True
                         caught_entry = v
                         break
-                
+
                 is_seen = p_id in seen_ids
-                
+
                 entry = {
                     "id": p_id,
                     "status": 0,
@@ -1244,7 +1288,7 @@ class PokedexState(GameState):
                     "form": "normal",
                     "name": "???"
                 }
-                
+
                 if is_caught:
                     entry["status"] = 2
                     entry["name"] = self.game.assets.pokemon_names.get(str(p_id), f"#{p_id}").upper()
@@ -1252,18 +1296,17 @@ class PokedexState(GameState):
                 elif is_seen:
                     entry["status"] = 1
                     entry["name"] = self.game.assets.pokemon_names.get(str(p_id), f"#{p_id}").upper()
-                
+
                 if self.show_shinies_only:
                     if not entry["shiny"]:
                         continue
-                        
+
                 self.full_dex.append(entry)
-            
-            # ARCHITECT: Check for Nown (3022) - Hidden until received
+
             for k, v in caught_data.items():
-                if v.get('id') == 3022:
+                if v.get('id') == nown_id:
                     self.full_dex.append({
-                        "id": 3022,
+                        "id": nown_id,
                         "status": 2,
                         "shiny": v.get("shiny", False),
                         "form": "normal",
@@ -1271,14 +1314,16 @@ class PokedexState(GameState):
                     })
                     break
 
-            # Apply Sorting
             if self.sort_mode == "NUMBER":
                 self.full_dex.sort(key=lambda x: x.get("id", 0))
             else:
-                self.full_dex.sort(key=lambda x: x.get("name", "ZZZ").upper())
+                # ARCHITECT: Sort Caught A-Z first, then Unfilled by ID at the bottom
+                self.full_dex.sort(key=lambda x: (
+                    0 if x['status'] == 2 else 1, 
+                    x.get("name", "ZZZ").upper() if x['status'] == 2 else x.get("id", 0)
+                ))
 
-            # Force Nown to the very top if it has been discovered
-            nown = next((p for p in self.full_dex if p['id'] == 3022), None)
+            nown = next((p for p in self.full_dex if p['id'] == nown_id), None)
             if nown:
                 self.full_dex.remove(nown)
                 self.full_dex.insert(0, nown)
@@ -1313,6 +1358,13 @@ class PokedexState(GameState):
     def handle_events(self, events):
         for event in events:
             if event.type == pygame.MOUSEBUTTONDOWN:
+                # [NEW] Mouse wheel scrolling support
+                if event.button == 4: # Wheel Up
+                    if self.page > 0: self.page -= 1
+                elif event.button == 5: # Wheel Down
+                    if (self.page + 1) * 12 < len(self.full_dex):
+                        self.page += 1
+
                 if self.popup_active:
                     popup_hit = self.popup_rect.collidepoint(event.pos)
                     if not popup_hit:
@@ -1329,9 +1381,8 @@ class PokedexState(GameState):
                             self.popup_active = True
                             self.selected_pkmn_id = p_id
                             self.popup_rect.topleft = (event.pos[0] + 10, event.pos[1] + 10)
-                            # Keep on screen
                             if self.popup_rect.right > self.game.width: self.popup_rect.right = event.pos[0] - 10
-                            
+
                             self.btn_cry.rect.topleft = (self.popup_rect.x + 10, self.popup_rect.y + 10)
                             self.btn_area.rect.topleft = (self.popup_rect.x + 10, self.popup_rect.y + 70)
                             self.btn_cry.set_visibility(True)
@@ -1452,9 +1503,9 @@ class PokedexState(GameState):
             if i < len(current_view):
                 p_entry = current_view[i]
                 status = p_entry.get("status", 2)
-                
-                # ARCHITECT: Override ID display for Nown
-                id_num = "???" if p_entry['id'] == 3022 else p_entry['id']
+                nown_id = self.game.loader.get_special_id("NOWN", 3025)
+
+                id_num = "???" if p_entry['id'] == nown_id else p_entry['id']
                 Utils.draw_text_outline(
                     screen,
                     f"#{id_num}",
@@ -1475,25 +1526,22 @@ class PokedexState(GameState):
                 )
 
                 if status > 0:
-                    # Show Sprite (Normal or Grey)
                     icon = self.game.assets.get_pokemon_image(
                         p_entry["id"], p_entry.get("form", "normal"), p_entry.get("shiny", False)
                     )
                     icon = pygame.transform.scale(icon, (100, 100))
-                    
+
                     if status == 1:
                         # Grey out
                         icon.fill((40, 40, 40), special_flags=pygame.BLEND_RGB_MULT)
-                        
+
                     screen.blit(icon, icon.get_rect(center=rect.center))
 
                     if p_entry.get("shiny"):
                         Utils.draw_star(screen, GOLD, (rect.right - 15, rect.top + 15), 12)
-                    
-                    # Only allow cry playback if seen/caught
+
                     self.dex_btns.append((rect, p_entry["id"]))
                 else:
-                    # Unknown '?'
                     Utils.draw_text_outline(
                         screen,
                         "?",
@@ -1618,21 +1666,22 @@ class BadgeCaseState(GameState):
     def __init__(self, game, previous_state):
         super().__init__(game)
         self.previous_state = previous_state
-        self.earned_badges = game.story_manager.badges # List of badge keys like "BOULDER"
-        
-        # Page Management
+        self.earned_badges = game.story_manager.badges
+
         self.unlocked_regions = []
         if game.story_manager.story_flags.get("unlocked_kanto_badges"):
             self.unlocked_regions.append("KANTO")
         if game.story_manager.story_flags.get("unlocked_johto_badges"):
             self.unlocked_regions.append("JOHTO")
-            
-        # Default sorting: starting region first
-        if len(self.unlocked_regions) > 1 and game.story_manager.starting_region == "JOHTO":
-            self.unlocked_regions = ["JOHTO", "KANTO"]
+        if game.story_manager.story_flags.get("unlocked_hoenn_badges"):
+            self.unlocked_regions.append("HOENN")
+
+        # ARCHITECT: Sort regions so the player's home region is always first
+        home = game.story_manager.starting_region
+        self.unlocked_regions.sort(key=lambda r: 0 if r == home else 1)
 
         self.current_page_idx = 0
-        
+
         self.btn_back = Button(
             rect=(30, 30, 140, 70),
             text="BACK",
@@ -1641,12 +1690,10 @@ class BadgeCaseState(GameState):
             bg_color=RED,
         )
 
-        # Navigation Arrows
         cx, cy = game.width // 2, game.height // 2
         self.btn_prev = Button((30, cy - 30, 60, 60), "<", game.assets.fonts["med"], self.prev_page)
         self.btn_next = Button((game.width - 90, cy - 30, 60, 60), ">", game.assets.fonts["med"], self.next_page)
 
-        # Regional Badge Maps (Name -> Sprite Index 1-8)
         self.region_maps = {
             "KANTO": {
                 "BOULDER": 1, "CASCADE": 2, "THUNDER": 3, "RAINBOW": 4,
@@ -1655,21 +1702,28 @@ class BadgeCaseState(GameState):
             "JOHTO": {
                 "ZEPHYR": 1, "HIVE": 2, "PLAIN": 3, "FOG": 4,
                 "STORMBADGE": 5, "MINERAL": 6, "GLACIER": 7, "RISING": 8
+            },
+            "HOENN": {
+                "STONE": 1, "KNUCKLE": 2, "DYNAMO": 3, "HEAT": 4,
+                "BALANCE": 5, "FEATHER": 6, "MIND": 7, "RAIN": 8
             }
         }
-        
-        self.badge_sprites = {"KANTO": {}, "JOHTO": {}}
+
+        self.badge_sprites = {"KANTO": {}, "JOHTO": {}, "HOENN": {}}
         for i in range(1, 9):
             k_img = game.assets.get_badge_image(i, "kanto")
             if k_img: self.badge_sprites["KANTO"][i] = pygame.transform.scale(k_img, (100, 100))
-            
+
             j_img = game.assets.get_badge_image(i, "johto")
             if j_img: self.badge_sprites["JOHTO"][i] = pygame.transform.scale(j_img, (100, 100))
+
+            h_img = game.assets.get_badge_image(i, "hoenn")
+            if h_img: self.badge_sprites["HOENN"][i] = pygame.transform.scale(h_img, (100, 100))
 
     def prev_page(self):
         if len(self.unlocked_regions) > 1:
             self.current_page_idx = (self.current_page_idx - 1) % len(self.unlocked_regions)
-    
+
     def next_page(self):
         if len(self.unlocked_regions) > 1:
             self.current_page_idx = (self.current_page_idx + 1) % len(self.unlocked_regions)
@@ -1695,9 +1749,12 @@ class BadgeCaseState(GameState):
     def draw(self):
         screen = self.game.screen
         width, height = self.game.width, self.game.height
-        
+
         region = self.unlocked_regions[self.current_page_idx] if self.unlocked_regions else "KANTO"
-        screen.fill(DARK_RED if region == "KANTO" else (15, 35, 85)) # Red for Kanto, Blue for Johto
+        
+        # Dynamic UI Coloring
+        bg_colors = {"KANTO": DARK_RED, "JOHTO": (15, 35, 85), "HOENN": (20, 80, 40)}
+        screen.fill(bg_colors.get(region, (40, 40, 40)))
 
         case_rect = pygame.Rect(width * 0.1, height * 0.1, width * 0.8, height * 0.8)
         pygame.draw.rect(screen, (50, 50, 50), case_rect, border_radius=20)
@@ -1710,8 +1767,6 @@ class BadgeCaseState(GameState):
             height * 0.05,
         )
 
-        # 4x2 Grid Calculation
-        # Pad inside the grey box
         grid_rect = case_rect.inflate(-40, -60)
         cell_w = grid_rect.width / 4
         cell_h = grid_rect.height / 2
@@ -1719,28 +1774,25 @@ class BadgeCaseState(GameState):
         for i in range(1, 9):
             row = (i - 1) // 4
             col = (i - 1) % 4
-            
+
             cx = grid_rect.x + (col + 0.5) * cell_w
             cy = grid_rect.y + (row + 0.5) * cell_h + 10
-            
+
             sprite = self.badge_sprites.get(region, {}).get(i)
             badge_map = self.region_maps.get(region, {})
 
             if sprite:
-                # Check if earned
-                earned = any(badge_map.get(b_name) == i for b_name in self.earned_badges)
-                
+                regional_badges = self.earned_badges.get(region, [])
+                earned = any(badge_map.get(b_name) == i for b_name in regional_badges)
+
                 draw_sprite = sprite.copy()
                 if not earned:
-                    # Grayscale
                     draw_sprite.fill((100, 100, 100), special_flags=pygame.BLEND_RGB_MULT)
                     draw_sprite.set_alpha(100)
-                
-                # Draw centered
+
                 sprite_rect = draw_sprite.get_rect(center=(cx, cy - 20))
                 screen.blit(draw_sprite, sprite_rect)
-                
-                # Label
+
                 color = WHITE if earned else GRAY
                 Utils.draw_text_outline(screen, f"#{i}", self.game.assets.fonts["tiny"], color, cx, cy + 40)
 
@@ -1852,30 +1904,24 @@ class EvolutionState(GameState):
                 self.phase = "END"
                 self.timer = 50
                 if self.evolved_pokemon_obj:
-                    # Update the correct list based on context
                     if self.context == "pc":
                         self.game.story_manager.pc_pokemon[self.team_index] = self.evolved_pokemon_obj
                     else:
                         self.game.story_manager.player_team[self.team_index] = self.evolved_pokemon_obj
 
-                    # Add evolved form to the Pokédex
                     self.game.data.add_pokemon(self.evolved_pokemon_obj)
-                    
-                    # If it was a shiny evolution, also add the non-shiny version to the dex.
+
                     if self.evolved_pokemon_obj.is_shiny:
                         non_shiny_raw = self.game.loader.fetch_specific(
                             self.evolved_pokemon_obj.id,
                             form=self.evolved_pokemon_obj.form,
                             is_shiny=False
                         )
-                        # Create a dummy pokemon just for the dex entry
                         non_shiny_pokemon = Pokemon(non_shiny_raw, self.game.assets, size_mult=0.1)
                         self.game.data.add_pokemon(non_shiny_pokemon)
 
-                    # [UPDATE] Consume global catch count if this was a catch-triggered evolution
                     if self.consume_catch_count:
                         current_count = self.game.story_manager.catch_counts.get(self.pokemon.id, 0)
-                        # Safety check to ensure we don't go negative, though logic should prevent it
                         if current_count >= 5:
                             self.game.story_manager.catch_counts[self.pokemon.id] = current_count - 5
 
@@ -1885,9 +1931,12 @@ class EvolutionState(GameState):
     def _return(self):
         pygame.event.clear()
         if self.return_state:
+            if hasattr(self.return_state, "is_resuming"):
+                self.return_state.is_resuming = True
+            if hasattr(self.return_state, "show_progression_menu"):
+                self.return_state.show_progression_menu()
             self.game.change_state(self.return_state)
         else:
-            # Fallback
             self.game.change_state(self.game.states["play"])
 
     def draw(self):

@@ -54,7 +54,8 @@ class Game:
             "movesets": "pokemon_movesets.json",
             "evolutions": "pokemon_evolutions.json",
             "area_data": "pokemon_area_data.json",
-            "johto_data": "johto_area_data.json",
+            "johto": "johto_area_data.json",
+            "hoenn": "hoenn_area_data.json",
         }
 
         loaded_evolutions = {}
@@ -82,14 +83,12 @@ class Game:
                             "BOSS_WARNINGS", {}
                         )
                         self.assets.game_text = data.get("GAME_TEXT", {})
-                    elif key == "johto_data":
+                    else:
+                        # [UPDATE] Generic Regional Data Merging (Johto, Hoenn, etc.)
                         if "STORY_PROGRESSION" in data:
                             if "STORY_PROGRESSION" not in loaded_area_data:
                                 loaded_area_data["STORY_PROGRESSION"] = {}
                             loaded_area_data["STORY_PROGRESSION"].update(data["STORY_PROGRESSION"])
-                        
-                        # [FIX] Smart-merge Johto data into Kanto data to prevent overwriting
-                        # top-level keys like GAME_TEXT, JOURNAL_MISSIONS, and FORM_MAP.
                         for k, v in data.items():
                             if k == "STORY_PROGRESSION":
                                 continue

@@ -1102,35 +1102,17 @@ class SaveState(GameState):
     def __init__(self, game, previous_state):
         super().__init__(game)
         self.previous_state = previous_state
-        self.save_slots = self.load_save_slots()
-        self.buttons = []
-        self.selected_slot = None
-        self.input_text = ""
-        self.input_active = False
+        
+        # ARCHITECT: Directly identify current slot to prevent accidental overwriting of other slots
+        current_file = os.path.basename(self.game.data.save_file)
+        self.selected_slot = int(current_file.split('_')[-1].split('.')[0]) if 'game_data_' in current_file else 0
+        
+        self.input_text = self.game.data.data.get("save_name", f"File {self.selected_slot + 1}")
+        self.input_active = True
+        
         self.bg_panel = pygame.Rect(
             game.width * 0.15, game.height * 0.15,
             game.width * 0.7, game.height * 0.7
-        )
-
-        for i in range(5):
-            y_pos = game.height * 0.2 + i * 100
-            rect = (game.width / 2 - 300, y_pos, 600, 80)
-
-            def make_callback(index):
-                def callback():
-                    self.select_slot(index)
-                return callback
-            btn = Button(rect, self.get_slot_text(i),
-                         game.assets.fonts["tiny"],
-                         make_callback(i))
-            self.buttons.append(btn)
-
-        self.btn_back = Button(
-            (game.width / 2 - 100, game.height - 100, 200, 60),
-            "BACK",
-            game.assets.fonts["small"],
-            self.go_back,
-            bg_color=RED,
         )
         self.btn_cancel_input = Button(
             (game.width / 2 - 60, game.height / 2 + 110, 120, 50),
@@ -1138,53 +1120,11 @@ class SaveState(GameState):
             game.assets.fonts["tiny"],
             self.cancel_input,
             bg_color=RED,
-            visible=False
+            visible=True
         )
-
-    def load_save_slots(self):
-        slots = []
-        for i in range(5):
-            fname = os.path.join(self.game.assets.base_dir,
-                                 f"game_data_{i}.json")
-            if os.path.exists(fname):
-                try:
-                    with open(fname, "r") as f:
-                        data = json.load(f)
-                        slots.append(
-                            {
-                                "name": data.get("save_name", f"File {i+1}"),
-                                "area": data.get("save_area", "Unknown"),
-                            }
-                        )
-                except (json.JSONDecodeError, IOError):
-                    slots.append(None)
-            else:
-                slots.append(None)
-        return slots
-
-    def get_slot_text(self, i):
-        return (
-            f"{self.save_slots[i]['name']} - {self.save_slots[i]['area']}"
-            if self.save_slots[i]
-            else "EMPTY"
-        )
-
-    def select_slot(self, i):
-        self.selected_slot = i
-        self.input_active = True
-        has_slot = self.save_slots[i]
-        self.input_text = has_slot["name"] if has_slot else ""
-        for btn in self.buttons:
-            btn.set_visibility(False)
-        self.btn_back.set_visibility(False)
-        self.btn_cancel_input.set_visibility(True)
 
     def cancel_input(self):
-        self.input_active = False
-        for btn in self.buttons:
-            btn.set_visibility(True)
-        self.btn_back.set_visibility(True)
-        self.btn_cancel_input.set_visibility(False)
+        self.go_back()
 
     def go_back(self):
         self.game.change_state(self.previous_state)
@@ -1205,9 +1145,6 @@ class SaveState(GameState):
         self.go_back()
 
     def start(self):
-        for btn in self.buttons:
-            self.game.ui_manager.add_element(btn)
-        self.game.ui_manager.add_element(self.btn_back)
         self.game.ui_manager.add_element(self.btn_cancel_input)
 
     def handle_events(self, events):

@@ -295,6 +295,10 @@ class PlayState(GameState):
             return False
         self.fresh_entry = False
 
+        # Safety: Don't ambush if the player has no Pokémon yet (e.g. at the very start)
+        if not self.game.story_manager.player_team:
+            return False
+
         ambush_config = self.game.loader.area_data.get("AMBUSH_DATA", {})
         if not ambush_config:
             return False
@@ -302,6 +306,8 @@ class PlayState(GameState):
         chance = self.area_data.get("ambush_chance", ambush_config.get("chance", 0))
 
         if random.random() < chance:
+            self.rounds_completed += 1
+
             trainers = ambush_config.get("trainers", [])
             if not trainers:
                 return False
@@ -347,7 +353,12 @@ class PlayState(GameState):
             )
             battle_state.play_state_data = self.play_state_data
 
-            intro_text = random.choice(t_data.get("dialogue", {}).get("intro", ["Ambush!"]))
+            # Ensure dialogue text is passed as a list to avoid character-iteration bugs
+            intro_lines = t_data.get("dialogue", {}).get("intro", ["Ambush!"])
+            if isinstance(intro_lines, list):
+                intro_text = [random.choice(intro_lines)]
+            else:
+                intro_text = [str(intro_lines)]
 
             bg_ambush = self.game.assets.get_background("battle_ambush.png")
             if bg_ambush:
@@ -390,7 +401,15 @@ class PlayState(GameState):
 
         if self.is_resuming:
             self.is_resuming = False
-            return
+            if self.is_progression_paused:
+                self.show_progression_menu()
+            else:
+                # Resuming mid-round (Catch Loop). Restore necessary dialogue.
+                if self.catch_selection_active:
+                    self.show_dialogue(["Choose a Pokémon to catch!"])
+                elif self.p_data[0] is None and not self.boss_manager.in_boss_mode:
+                    # Safety fallback if we somehow lost round state
+                    self.show_progression_menu()
 
         if self.check_ninja_ambush():
             return
@@ -399,12 +418,68 @@ class PlayState(GameState):
             return
 
         johto_badges = {"ZEPHYR", "HIVE", "PLAIN", "FOG", "STORMBADGE", "MINERAL", "GLACIER", "RISING"}
-        num_johto = len([b for b in self.game.story_manager.badges if b in johto_badges])
+        num_johto = len(self.game.story_manager.badges.get("JOHTO", []))
         if (self.game.story_manager.inventory.get("MYSTERY_EGG", 0) > 0 and
             num_johto >= 2 and 
             not self.game.story_manager.story_flags.get("egg_hatched")):
             self.trigger_egg_hatch()
             return
+
+        # ARCHITECT: Restore Overworld progression logic accidentally nested in the previous update
+        gauntlet_areas = ["INDIGO_PLATEAU", "KANTO_ROUTE_25"]
+        current_area = self.game.story_manager.current_area_key
+        is_gauntlet_area = current_area in gauntlet_areas
+        if is_gauntlet_area and self.rounds_completed == 0 and self.fresh_entry:
+            self.create_checkpoint()
+
+        on_enter = self.area_data.get("on_enter_event")
+        if on_enter and on_enter.get("type") == "trainer_battle":
+            # Check conditions before triggering scripted battle
+            v_flag = on_enter.get("flag_check")
+            cond = on_enter.get("condition")
+            met = True
+            if v_flag and self.game.story_manager.story_flags.get(v_flag): met = False
+            elif cond and not self._check_route_condition(cond, False): met = False
+            
+            if met:
+                self.trigger_scripted_on_enter_battle(on_enter)
+                return
+
+        # Final branching to determine what UI or encounter to show
+        if self.pending_wild_encounters > 0:
+            self.trigger_wild_encounter()
+        elif self.initial_round_active and self.rounds_completed == 0:
+            self.start_initial_round()
+        else:
+            # Fallback to the route menu (Solves the "Disappearing Menu" bug)
+            self.show_progression_menu()
+
+    def trigger_scripted_on_enter_battle(self, on_enter):
+        """Helper to handle the complex on_enter battle setup logic."""
+        self.rounds_completed += 1
+
+        trainer_info = on_enter["trainer"]
+        team_ids = trainer_info.get("team", [])
+        if team_ids and isinstance(team_ids, list) and len(team_ids) > 0 and isinstance(team_ids[0], list):
+            team_ids = random.choice(team_ids)
+
+        opponent_team = []
+        for tid in team_ids:
+            raw = self.game.loader.fetch_specific(tid)
+            opponent_team.append(Pokemon(raw, self.game.assets, size_mult=3.125))
+
+        from src.states.battle import TrainerBattleState, TrainerIntroState
+        trainer_sprite = self.game.assets.get_trainer_image(trainer_info["sprite"])
+        battle_state = TrainerBattleState(
+            self.game, opponent_team, trainer_img_name=trainer_info["sprite"],
+            trainer_class=trainer_info["class"], trainer_name=trainer_info.get("name"),
+            victory_flag=on_enter.get("flag_check"),
+            is_boss_battle=trainer_info.get("is_boss_battle", False),
+        )
+        # Ensure dialogue override is wrapped in a list
+        intro_text = on_enter.get("dialogue_override", "Stop right there!")
+        if isinstance(intro_text, str): intro_text = [intro_text]
+        self.game.change_state(TrainerIntroState(self.game, trainer_sprite, intro_text, battle_state))
 
     def trigger_egg_hatch(self):
         """Handles the transition into the Mystery Egg hatching sequence."""
@@ -452,78 +527,6 @@ class PlayState(GameState):
             self.game, egg_poke, togepi_id, target_idx,
             context=context, return_state=self
         ))
-
-        gauntlet_areas = ["INDIGO_PLATEAU", "KANTO_ROUTE_25"]
-        current_area = self.game.story_manager.current_area_key
-        is_gauntlet_area = current_area in gauntlet_areas
-        if is_gauntlet_area and self.rounds_completed == 0 and self.fresh_entry:
-            self.create_checkpoint()
-
-        on_enter = self.area_data.get("on_enter_event")
-        if on_enter and on_enter.get("type") == "trainer_battle":
-            trainer_info = on_enter["trainer"]
-            team_ids = trainer_info.get("team", [])
-
-            v_flag = on_enter.get("flag_check")
-            cond = on_enter.get("condition")
-
-            met = True
-            if v_flag and self.game.story_manager.story_flags.get(v_flag): met = False
-            elif cond and not self._check_route_condition(cond, False): met = False
-
-            if not met: return
-
-            if team_ids and isinstance(team_ids, list) and len(team_ids) > 0 and isinstance(team_ids[0], list):
-                team_ids = random.choice(team_ids)
-
-            opponent_team = []
-            for tid in team_ids:
-                raw = self.game.loader.fetch_specific(tid)
-                opponent_team.append(Pokemon(raw, self.game.assets, size_mult=3.125))
-
-            from src.states.battle import TrainerBattleState, TrainerIntroState
-
-            class ScriptedBattleWrapper(TrainerBattleState):
-                def __init__(
-                    self, game, opponent_team, trainer_img_name, trainer_class, dialogue, trainer_name=None
-                ):
-                    super().__init__(
-                        game,
-                        opponent_team,
-                        trainer_img_name=trainer_img_name,
-                        trainer_class=trainer_class,
-                        trainer_name=trainer_name,
-                    )
-                    self.dialogue_text = on_enter.get(
-                        "dialogue_override", self.dialogue_text
-                    )
-
-                def handle_victory(self):
-                    if v_flag: self.game.story_manager.story_flags[v_flag] = True
-                    next_area_key = self.game.story_manager.get_current_area_data().get(
-                        "next_area"
-                    )
-                    if next_area_key:
-                        self.game.change_state(
-                            AreaTransitionState(self.game, next_area_key)
-                        )
-
-            trainer_sprite = self.game.assets.get_trainer_image(trainer_info["sprite"])
-            battle_state = ScriptedBattleWrapper(
-                self.game,
-                opponent_team,
-                trainer_info["sprite"],
-                trainer_info["class"],
-                on_enter.get("dialogue_override"),
-                trainer_name=trainer_info.get("name"),
-            )
-            intro_dialogue = on_enter.get("dialogue_override", "Prepare to battle!")
-
-            intro_state = TrainerIntroState(
-                self.game, trainer_sprite, intro_dialogue, battle_state
-            )
-            self.game.change_state(intro_state)
-            return
 
         if self.pending_wild_encounters > 0:
             self.trigger_wild_encounter()
@@ -669,6 +672,7 @@ class PlayState(GameState):
             custom_dialogue=custom_dialogue,
             rewards=rewards,
             battle_type=battle_type,
+            is_boss_battle=trainer_info.get("is_boss_battle", False),
             area_name=area_key,
             victory_flag=victory_flag,
             background_image=bg_file
@@ -1022,6 +1026,11 @@ class PlayState(GameState):
             return has_rod and self.area_data.get("can_fish", False)
         if condition == "can_battle":
             return True
+        if condition == "mew_available":
+            has_spotted = self.game.story_manager.story_flags.get("mew_spotted_mt_moon", False)
+            has_caught = self.game.story_manager.story_flags.get("caught_mew", False)
+            return has_spotted and not has_caught and not trainers_left
+
         if condition == "can_battle_red_gyarados":
             hq_cleared = self.game.story_manager.story_flags.get("rocket_hq_cleared", False)
             boss_beaten = self.game.story_manager.story_flags.get("defeated_red_gyarados", False)
@@ -1032,23 +1041,30 @@ class PlayState(GameState):
                 return True
             if self.balls_left <= 0:
                 return True
-            if self.min_rounds > 0:
-                return self.rounds_completed >= self.min_rounds
-            return not trainers_left
+
+            # ARCHITECT: Satisfy exit by meeting minimum rounds (any activity)
+            # This covers trainers, wild battles, catch rounds, fishing, and bosses.
+            return self.rounds_completed >= self.min_rounds
+            
         if condition == "has_silph_scope":
             return self.game.story_manager.inventory.get("SILPH_SCOPE", 0) > 0
         if condition == "has_rainbow_wing":
             return self.game.story_manager.inventory.get("RAINBOW_WING", 0) > 0
         if condition == "has_8_badges":
-            return len(self.game.story_manager.badges) >= 8
+            # [FIX] badges is now a dict, count lengths of all lists
+            return sum(len(b) for b in self.game.story_manager.badges.values()) >= 8
+        if condition == "has_8_kanto_badges":
+            kanto_badges = {"BOULDER", "CASCADE", "THUNDER", "RAINBOW", "SOUL", "MARSH", "VOLCANO", "EARTH"}
+            player_badges = set(self.game.story_manager.badges.get("KANTO", []))
+            return kanto_badges.issubset(player_badges)
         if condition == "has_8_johto_badges":
             johto_badges = {"ZEPHYR", "HIVE", "PLAIN", "FOG", "STORMBADGE", "MINERAL", "GLACIER", "RISING"}
-            player_badges = set(self.game.story_manager.badges)
+            player_badges = set(self.game.story_manager.badges.get("JOHTO", []))
             return johto_badges.issubset(player_badges)
 
         if condition.startswith("has_") and condition.endswith("_badge"):
             badge_name = condition[4:-6].upper()
-            return badge_name in self.game.story_manager.badges
+            return any(badge_name in b_list for b_list in self.game.story_manager.badges.values())
 
         if condition == "boss_defeated":
             boss_data = self.area_data.get("area_boss", {})
@@ -1213,6 +1229,8 @@ class PlayState(GameState):
         self.is_progression_paused = False
         self.hide_menu_buttons()
 
+        self.rounds_completed += 1
+
         pool_name = self.area_data.get("tree_pool")
         if isinstance(pool_name, list):
             pool_name = random.choice(pool_name)
@@ -1251,6 +1269,8 @@ class PlayState(GameState):
     def action_fish(self):
         self.is_progression_paused = False
         self.hide_menu_buttons()
+
+        self.rounds_completed += 1
 
         inv = self.game.story_manager.inventory
         prefix = "JOHTO_" if "JOHTO" in self.game.story_manager.current_area_key or "LAKE" in self.game.story_manager.current_area_key else ""
@@ -1304,6 +1324,8 @@ class PlayState(GameState):
         self.is_progression_paused = False
         self.hide_menu_buttons()
 
+        self.rounds_completed += 1
+
         boss_data = self.area_data.get("area_boss", {})
         if not boss_data:
             self.show_progression_menu()
@@ -1332,7 +1354,8 @@ class PlayState(GameState):
         from src.states.battle import WildBattleState
         battle_state = WildBattleState(
             self.game, pokemon, self.game.story_manager.current_area_key,
-            background_image=bg_file
+            background_image=bg_file,
+            is_boss_battle=True # Wild Legendaries are always Boss Battles
         )
         battle_state.victory_flag = flag_name
         battle_state.play_state_data = {
@@ -1807,8 +1830,14 @@ class PlayState(GameState):
         self.game.loader.total_caught = self.total_caught
         self.current_streak += 1
 
-        species_id = pokemon_caught.id
-        self.game.story_manager.catch_counts[species_id] = self.game.story_manager.catch_counts.get(species_id, 0) + 1
+        # Record catch in counts (form-aware for Unown species tracking)
+        pid_str = str(pokemon_caught.id)
+        if pid_str == "201":
+            f_name = "a" if pokemon_caught.form.lower() == "normal" else pokemon_caught.form.lower()
+            catch_key = f"201_{f_name}"
+            self.game.story_manager.catch_counts[catch_key] = self.game.story_manager.catch_counts.get(catch_key, 0) + 1
+        else:
+            self.game.story_manager.catch_counts[pid_str] = self.game.story_manager.catch_counts.get(pid_str, 0) + 1
 
         unique_count = len(self.game.data.data.get("pokedex", {}))
         if pokemon_was_kept and unique_count > 0 and unique_count % 30 == 0:
@@ -1978,11 +2007,11 @@ class PlayState(GameState):
                         "Area Complete!",
                         self.game.assets.fonts["small"],
                         GOLD,
-                        20 + offset_x,
-                        350 + offset_y,
-                        align="left"
+                        width // 2 + offset_x,
+                        25 + offset_y,
+                        align="center"
                     )
-                    Utils.draw_star(screen, GOLD, (20 + offset_x + 360, 350 + offset_y), 15)
+                    Utils.draw_star(screen, GOLD, (width // 2 + 160 + offset_x, 25 + offset_y), 12)
 
         self.game.ui_manager.draw(screen)
         unique_team_for_display = []
@@ -2378,6 +2407,7 @@ class CityState(GameState):
             custom_dialogue=trainer_data.get("dialogue", {}),
             rewards=trainer_data.get("rewards"),
             battle_type="gym_event",
+            is_boss_battle=trainer_data.get("is_boss_battle", True),
             area_name=self.area_key,
             victory_flag=victory_flag,
             badge_reward=trainer_data.get("badge_reward"),
@@ -2494,17 +2524,22 @@ class CityState(GameState):
         story = self.game.story_manager
 
         if condition == "has_8_badges":
-            return len(story.badges) >= 8
+            return sum(len(b) for b in story.badges.values()) >= 8
+        
+        if condition == "has_8_kanto_badges":
+            kanto_badges = {"BOULDER", "CASCADE", "THUNDER", "RAINBOW", "SOUL", "MARSH", "VOLCANO", "EARTH"}
+            player_badges = set(story.badges.get("KANTO", []))
+            return kanto_badges.issubset(player_badges)
 
         if condition == "has_8_johto_badges":
             johto_badges = {"ZEPHYR", "HIVE", "PLAIN", "FOG", "STORMBADGE",
                             "MINERAL", "GLACIER", "RISING"}
-            player_badges = set(story.badges)
+            player_badges = set(story.badges.get("JOHTO", []))
             return johto_badges.issubset(player_badges)
 
         if condition.startswith("has_") and condition.endswith("_badge"):
             badge_name = condition[4:-6].upper()
-            return badge_name in story.badges
+            return any(badge_name in b_list for b_list in story.badges.values())
 
         if condition == "has_national_dex":
             return story.story_flags.get("unlocked_national_dex", False)
@@ -2639,23 +2674,49 @@ class CityState(GameState):
             self.npc_bg = pygame.transform.scale(bg_img, (self.game.width, box_top))
 
         # Audit Unown Collection
-        caught_data = self.game.data.data.get("pokedex", {})
+        catch_counts = self.game.story_manager.catch_counts
         forms = ["normal", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "question", "exclamation"]
         caught_count = 0
         for f in forms:
-            key = "201" if f == "normal" else f"201_{f}"
-            if key in caught_data:
+            # Standardize normal form to 'a' to match StoryManager/Report keys
+            f_key = "a" if f == "normal" else f
+            key = f"201_{f_key}"
+            if catch_counts.get(key, 0) > 0:
                 caught_count += 1
         
         remaining = 28 - caught_count
         
+        nown_id = self.game.loader.get_special_id("NOWN", 3025)
+
+        callback = self.end_npc_interaction
         if caught_count == 0:
             msg = ["Researcher: Welcome to the Ruins Research Lab!", "These ruins are filled with a mysterious Pokemon called UNOWN.", "They appear in 28 different forms! We are trying to document them all.", "Could you help us? Explore the ruins and catch as many forms as you can!"]
         elif self.game.story_manager.inventory.get("UNOWN_REPORT", 0) == 0:
             msg = ["Researcher: You've started a collection! That's excellent!", "Here, take this UNOWN REPORT.", "It will help you track every form you find.", "Come back when you've documented more!"]
             self.game.story_manager.inventory["UNOWN_REPORT"] = 1
         elif remaining == 0:
-            msg = ["Researcher: Incredible! You've documented all 28 forms of UNOWN!", "Your math skills and dedication are truly legendary.", "You've solved the greatest mystery of the Johto region!"]
+            # Check if the player already has NOWN
+            if str(nown_id) in self.game.data.data.get("pokedex", {}):
+                msg = ["Researcher: Incredible! You've documented all 28 forms of UNOWN!", "Your math skills and dedication are truly legendary.", "You've solved the greatest mystery of the Johto region!"]
+            else:
+                # Trigger the secret evolution
+                msg = ["Researcher: Incredible! You've documented all 28 forms of UNOWN!", 
+                       "The air in the ruins is vibrating...", 
+                       "One of your UNOWN is responding to the completed report!", 
+                       "It's happening!"]
+                
+                target_data = self._find_unown_for_evolution()
+                if target_data:
+                    def trigger_secret_evo():
+                        from src.states.systems import EvolutionState
+                        self.game.change_state(EvolutionState(
+                            self.game, target_data['pkmn'], nown_id, target_data['idx'],
+                            context=target_data['context'], return_state=self
+                        ))
+                    callback = trigger_secret_evo
+                else:
+                    msg.append("Wait... you don't have an UNOWN with you right now?")
+                    msg.append("Come back with one in your party or PC so I can show you something amazing!")
         else:
             msg = [f"Researcher: Let's see your progress...", f"You have documented {caught_count} UNOWN forms so far.", f"That means there are {remaining} forms still waiting to be discovered!", "Keep up the good work! The secret of the ruins is close."]
 
@@ -2663,8 +2724,20 @@ class CityState(GameState):
             Utils.get_full_dialogue_rect(self.game), 
             msg, 
             self.game.assets.fonts["med"], 
-            callback=self.end_npc_interaction
+            callback=callback
         )
+
+    def _find_unown_for_evolution(self):
+        """Helper to find an Unown (ID 201) in the party or PC for the secret evolution."""
+        # Check Party
+        for i, p in enumerate(self.game.story_manager.player_team):
+            if p.id == 201:
+                return {'pkmn': p, 'idx': i, 'context': 'party'}
+        # Check PC
+        for i, p in enumerate(self.game.story_manager.pc_pokemon):
+            if p.id == 201:
+                return {'pkmn': p, 'idx': i, 'context': 'pc'}
+        return None
 
     def action_explore_ruins(self):
         self.clear_hover_menu()
@@ -2810,6 +2883,21 @@ class CityState(GameState):
 
         story = self.game.story_manager
         region = getattr(story, "starting_region", "KANTO")
+
+        # Mew spotting quest trigger (150 pokemon caught)
+        unique_caught = len(self.game.data.data.get("pokedex", {}))
+        if unique_caught >= 150 and not story.story_flags.get("mew_spotted_mt_moon"):
+            msg = [
+                "Professor Oak: Incredible! You've documented 150 species!",
+                "You are truly a master researcher.",
+                "I just received a report from a hiker near Mt. Moon...",
+                "He saw a pink, floating Pokémon deep in the mountain shadows.",
+                "It could be the mythical Pokémon, MEW!",
+                "You should investigate Mt. Moon once you've cleared the area of other distractions."
+            ]
+            story.story_flags["mew_spotted_mt_moon"] = True
+            self.npc_dialogue = ClassicDialogueBox(Utils.get_full_dialogue_rect(self.game), msg, self.game.assets.fonts["med"], callback=self.end_npc_interaction)
+            return
 
         if story.story_flags.get("beat_champion"):
             if region == "JOHTO" and not story.story_flags.get("unlocked_national_dex"):
@@ -4065,6 +4153,7 @@ class GymLobbyState(GameState):
             custom_dialogue=t_data.get("dialogue", {}),
             rewards=t_data.get("rewards"),
             battle_type="gym",
+            is_boss_battle=t_data.get("is_boss_battle", True),
             area_name=self.area_key,
             victory_flag=t_data.get("victory_flag"),
             badge_reward=t_data.get("badge_reward"),
