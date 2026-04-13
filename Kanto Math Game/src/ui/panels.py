@@ -34,7 +34,6 @@ class BattleActionMenu(UIElement):
 
         self.buttons = []
 
-        # MATH BUTTON
         r = pygame.Rect(self.right_rect.x + 20, self.right_rect.y + 15, btn_w, btn_h)
         self.buttons.append(
             Button(
@@ -48,14 +47,13 @@ class BattleActionMenu(UIElement):
             )
         )
 
-        # PKDEX BUTTON
         r = pygame.Rect(
             self.right_rect.x + btn_w + 30, self.right_rect.y + 15, btn_w, btn_h
         )
         self.buttons.append(
             Button(
                 r,
-                "PKDEX",
+                "BAG",
                 game.assets.fonts["s_med"],
                 on_pkdex,
                 bg_color=WHITE,
@@ -64,7 +62,6 @@ class BattleActionMenu(UIElement):
             )
         )
 
-        # PKMN BUTTON
         r = pygame.Rect(
             self.right_rect.x + 20, self.right_rect.y + btn_h + 25, btn_w, btn_h
         )
@@ -80,7 +77,6 @@ class BattleActionMenu(UIElement):
             )
         )
 
-        # Run BUTTON
         r = pygame.Rect(
             self.right_rect.x + btn_w + 30, self.right_rect.y + btn_h + 25, btn_w, btn_h
         )
@@ -157,7 +153,7 @@ class CityActionMenu(UIElement):
         font = game.assets.fonts["s_med"]
 
         button_defs = [
-            (pygame.Rect(self.right_rect.x + 20,self.right_rect.y + 15, btn_w, btn_h), "EXPLORE", on_explore, BLUE),
+            (pygame.Rect(self.right_rect.x + 20, self.right_rect.y + 15, btn_w, btn_h), "EXPLORE", on_explore, BLUE),
             (pygame.Rect(self.right_rect.x + btn_w + 30, self.right_rect.y + 15, btn_w, btn_h), "PKDEX", on_pkdex, RED),
             (pygame.Rect(self.right_rect.x + 20, self.right_rect.y + btn_h + 25, btn_w, btn_h), "PKMN", on_pkmn, GREEN),
             (pygame.Rect(self.right_rect.x + btn_w + 30, self.right_rect.y + btn_h + 25, btn_w, btn_h), "TRAVEL", on_travel, GOLD),
@@ -167,14 +163,17 @@ class CityActionMenu(UIElement):
             self.buttons.append(Button(r, text, font, callback, bg_color=color, text_color=WHITE, outline_color=BLACK))
 
     def handle_event(self, event):
-        if not self.visible: return False
+        if not self.visible:
+            return False
         for btn in self.buttons:
-            if btn.handle_event(event): return True
+            if btn.handle_event(event):
+                return True
         return False
 
     def draw(self, surface):
-        if not self.visible: return
-        
+        if not self.visible:
+            return
+
         Utils.draw_classic_panel(
             surface, self.rect.x, self.rect.y, self.rect.width, self.rect.height
         )
@@ -235,12 +234,13 @@ class PartySlotUI(UIElement):
         name_x = self.rect.x + 20
         name_y = self.rect.y + 25
         name = self.pokemon.display_name.upper()
-        
+
         font = self.game.assets.fonts["s_med"]
-        if len(name) > 10: font = self.game.assets.fonts["small"]
-        
+        if len(name) > 10:
+            font = self.game.assets.fonts["small"]
+
         Utils.draw_text_outline(surface, name, font, WHITE, name_x, name_y, BLACK, 2, align="left")
-        
+
         stage_str = f"Stage {self.pokemon.effective_stage}"
         Utils.draw_text_outline(surface, stage_str, self.game.assets.fonts["tiny"], WHITE, name_x, name_y + 30, BLACK, 2, align="left")
 
@@ -252,11 +252,11 @@ class PartySlotUI(UIElement):
         bar_margin = 15
         bar_w = self.rect.width - (bar_margin * 2)
         hp_y = self.rect.bottom - bar_h - 10
-        
+
         bar_bg = pygame.Rect(self.rect.x + bar_margin, hp_y, bar_w, bar_h)
         pygame.draw.rect(surface, BLACK, bar_bg)
         pygame.draw.rect(surface, (50, 50, 50), bar_bg.inflate(-6, -6))
- 
+
         max_hp = self.pokemon.get_max_hp()
         current_hp = self.pokemon.current_hp
         ratio = current_hp / max_hp if max_hp > 0 else 0

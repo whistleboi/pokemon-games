@@ -1,64 +1,64 @@
 {
   "FORM_MAP": {
-    "2001": { "id": 19, "form": "alolan", "name": "Alolan Rattata", "text": "Alolan Rattata" },
-    "2002": { "id": 20, "form": "alolan", "name": "Alolan Raticate", "text": "Alolan Raticate" },
-    "2003": { "id": 26, "form": "alolan", "name": "Alolan Raichu", "text": "Alolan Raichu" },
-    "2004": { "id": 27, "form": "alolan", "name": "Alolan Sandshrew", "text": "Alolan Sandshrew" },
-    "2005": { "id": 28, "form": "alolan", "name": "Alolan Sandslash", "text": "Alolan Sandslash" },
-    "2006": { "id": 37, "form": "alolan", "name": "Alolan Vulpix", "text": "Alolan Vulpix" },
-    "2007": { "id": 38, "form": "alolan", "name": "Alolan Ninetales", "text": "Alolan Ninetales" },
-    "2008": { "id": 50, "form": "alolan", "name": "Alolan Diglett", "text": "Alolan Diglett" },
-    "2009": { "id": 51, "form": "alolan", "name": "Alolan Dugtrio", "text": "Alolan Dugtrio" },
-    "2010": { "id": 52, "form": "alolan", "name": "Alolan Meowth", "text": "Alolan Meowth" },
-    "2011": { "id": 53, "form": "alolan", "name": "Alolan Persian", "text": "Alolan Persian" },
-    "2012": { "id": 74, "form": "alolan", "name": "Alolan Geodude", "text": "Alolan Geodude" },
-    "2013": { "id": 75, "form": "alolan", "name": "Alolan Graveler", "text": "Alolan Graveler" },
-    "2014": { "id": 76, "form": "alolan", "name": "Alolan Golem", "text": "Alolan Golem" },
-    "2015": { "id": 88, "form": "alolan", "name": "Alolan Grimer", "text": "Alolan Grimer" },
-    "2016": { "id": 89, "form": "alolan", "name": "Alolan Muk", "text": "Alolan Muk" },
-    "2017": { "id": 103, "form": "alolan", "name": "Alolan Exeggutor", "text": "Alolan Exeggutor" },
-    "2018": { "id": 105, "form": "alolan", "name": "Alolan Marowak", "text": "Alolan Marowak" },
-    "2019": { "id": 54,  "form": "galarian", "name": "Galarian Meowth", "text": "Galarian Meowth" },
-    "2020": { "id": 77,  "form": "galarian", "name": "Galarian Ponyta", "text": "Galarian Ponyta" },
-    "2021": { "id": 78,  "form": "galarian", "name": "Galarian Rapidash", "text": "Galarian Rapidash" },
-    "2022": { "id": 79,  "form": "galarian", "name": "Galarian Slowpoke", "text": "Galarian Slowpoke" },
-    "2023": { "id": 80,  "form": "galarian", "name": "Galarian Slowbro", "text": "Galarian Slowbro" },
-    "2024": { "id": 83,  "form": "galarian", "name": "Galarian Farfetch'd", "text": "Galarian Farfetch'd" },
-    "2025": { "id": 110, "form": "galarian", "name": "Galarian Weezing", "text": "Galarian Weezing" },
-    "2026": { "id": 122, "form": "galarian", "name": "Galarian Mr. Mime", "text": "Galarian Mr. Mime" },
-    "2027": { "id": 144, "form": "galarian", "name": "Galarian Articuno", "text": "Galarian Articuno" },
-    "2028": { "id": 145, "form": "galarian", "name": "Galarian Zapdos", "text": "Galarian Zapdos" },
-    "2029": { "id": 146, "form": "galarian", "name": "Galarian Moltres", "text": "Galarian Moltres" },
-    "2030": { "id": 199, "form": "galarian", "name": "Galarian Slowking", "text": "Galarian Slowking" },
-    "2031": { "id": 222, "form": "galarian", "name": "Galarian Corsola", "text": "Galarian Corsola" },
-    "2032": { "id": 263, "form": "galarian", "name": "Galarian Zigzagoon", "text": "Galarian Zigzagoon" },
-    "2033": { "id": 264, "form": "galarian", "name": "Galarian Linoone", "text": "Galarian Linoone" },
-    "2034": { "id": 554, "form": "galarian", "name": "Galarian Darumaka", "text": "Galarian Darumaka" },
-    "2035": { "id": 555, "form": "galarian", "name": "Galarian Darmanitan", "text": "Galarian Darmanitan" },
-    "2036": { "id": 555, "form": "galarian", "name": "Galarian Darmanitan Zen Mode", "text": "Galarian Darmanitan Zen Mode" },
-    "2037": { "id": 562, "form": "galarian", "name": "Galarian Yamask", "text": "Galarian Yamask" },
-    "2038": { "id": 618, "form": "galarian", "name": "Galarian Stunfisk", "text": "Galarian Stunfisk" },
-    "2039": { "id": 58, "form": "hisuian", "name": "Hisuian Growlithe", "text": "Hisuian Growlithe" },
-    "2040": { "id": 59, "form": "hisuian", "name": "Hisuian Arcanine", "text": "Hisuian Arcanine" },
-    "2041": { "id": 100, "form": "hisuian", "name": "Hisuian Voltorb", "text": "Hisuian Voltorb" },
-    "2042": { "id": 101, "form": "hisuian", "name": "Hisuian Electrode", "text": "Hisuian Electrode" },
-    "2043": { "id": 157, "form": "hisuian", "name": "Hisuian Typhlosion", "text": "Hisuian Typhlosion" },
-    "2044": { "id": 211, "form": "hisuian", "name": "Hisuian Qwilfish", "text": "Hisuian Qwilfish" },
-    "2045": { "id": 215, "form": "hisuian", "name": "Hisuian Sneasel", "text": "Hisuian Sneasel" },
-    "2046": { "id": 503, "form": "hisuian", "name": "Hisuian Samurott", "text": "Hisuian Samurott" },
-    "2047": { "id": 549, "form": "hisuian", "name": "Hisuian Lilligant", "text": "Hisuian Lilligant" },
-    "2048": { "id": 570, "form": "hisuian", "name": "Hisuian Zorua", "text": "Hisuian Zorua" },
-    "2049": { "id": 571, "form": "hisuian", "name": "Hisuian Zoroark", "text": "Hisuian Zoroark" },
-    "2050": { "id": 628, "form": "hisuian", "name": "Hisuian Braviary", "text": "Hisuian Braviary" },
-    "2051": { "id": 705, "form": "hisuian", "name": "Hisuian Sliggoo", "text": "Hisuian Sliggoo" },
-    "2052": { "id": 706, "form": "hisuian", "name": "Hisuian Goodra", "text": "Hisuian Goodra" },
-    "2053": { "id": 713, "form": "hisuian", "name": "Hisuian Avalugg", "text": "Hisuian Avalugg" },
-    "2054": { "id": 724, "form": "hisuian", "name": "Hisuian Decidueye", "text": "Hisuian Decidueye" },
-    "2055": { "id": 128, "form": "paldean", "name": "Paldean Tauros - Aqua", "text": "Paldean Tauros - Aqua" },
-    "2056": { "id": 128, "form": "paldean", "name": "Paldean Tauros - Blaze", "text": "Paldean Tauros - Blaze" },
-    "2057": { "id": 128, "form": "paldean", "name": "Paldean Tauros - Combat", "text": "Paldean Tauros - Combat" },
-    "2058": { "id": 194, "form": "paldean", "name": "Paldean Wooper", "text": "Paldean Wooper" },
-    "3025": { "id": 201, "form": "normal", "name": "UNOWN", "text": "UNOWN"}
+    "2001": { "id": 19, "form": "alolan", "name": "Alolan Rattata", "types": ["DARK", "NORMAL"] },
+    "2002": { "id": 20, "form": "alolan", "name": "Alolan Raticate", "types": ["DARK", "NORMAL"] },
+    "2003": { "id": 26, "form": "alolan", "name": "Alolan Raichu", "types": ["ELECTRIC", "PSYCHIC"] },
+    "2004": { "id": 27, "form": "alolan", "name": "Alolan Sandshrew", "types": ["ICE", "STEEL"] },
+    "2005": { "id": 28, "form": "alolan", "name": "Alolan Sandslash", "types": ["ICE", "STEEL"] },
+    "2006": { "id": 37, "form": "alolan", "name": "Alolan Vulpix", "types": ["ICE"] },
+    "2007": { "id": 38, "form": "alolan", "name": "Alolan Ninetales", "types": ["ICE", "FAIRY"] },
+    "2008": { "id": 50, "form": "alolan", "name": "Alolan Diglett", "types": ["GROUND", "STEEL"] },
+    "2009": { "id": 51, "form": "alolan", "name": "Alolan Dugtrio", "types": ["GROUND", "STEEL"] },
+    "2010": { "id": 52, "form": "alolan", "name": "Alolan Meowth", "types": ["DARK"] },
+    "2011": { "id": 53, "form": "alolan", "name": "Alolan Persian", "types": ["DARK"] },
+    "2012": { "id": 74, "form": "alolan", "name": "Alolan Geodude", "types": ["ROCK", "ELECTRIC"] },
+    "2013": { "id": 75, "form": "alolan", "name": "Alolan Graveler", "types": ["ROCK", "ELECTRIC"] },
+    "2014": { "id": 76, "form": "alolan", "name": "Alolan Golem", "types": ["ROCK", "ELECTRIC"] },
+    "2015": { "id": 88, "form": "alolan", "name": "Alolan Grimer", "types": ["POISON", "DARK"] },
+    "2016": { "id": 89, "form": "alolan", "name": "Alolan Muk", "types": ["POISON", "DARK"] },
+    "2017": { "id": 103, "form": "alolan", "name": "Alolan Exeggutor", "types": ["GRASS", "DRAGON"] },
+    "2018": { "id": 105, "form": "alolan", "name": "Alolan Marowak", "types": ["FIRE", "GHOST"] },
+    "2019": { "id": 54, "form": "galarian", "name": "Galarian Meowth", "types": ["STEEL"] },
+    "2020": { "id": 77, "form": "galarian", "name": "Galarian Ponyta", "types": ["PSYCHIC"] },
+    "2021": { "id": 78, "form": "galarian", "name": "Galarian Rapidash", "types": ["PSYCHIC", "FAIRY"] },
+    "2022": { "id": 79, "form": "galarian", "name": "Galarian Slowpoke", "types": ["PSYCHIC"] },
+    "2023": { "id": 80, "form": "galarian", "name": "Galarian Slowbro", "types": ["POISON", "PSYCHIC"] },
+    "2024": { "id": 83, "form": "galarian", "name": "Galarian Farfetch'd", "types": ["FIGHTING"] },
+    "2025": { "id": 110, "form": "galarian", "name": "Galarian Weezing", "types": ["POISON", "FAIRY"] },
+    "2026": { "id": 122, "form": "galarian", "name": "Galarian Mr. Mime", "types": ["ICE", "PSYCHIC"] },
+    "2027": { "id": 144, "form": "galarian", "name": "Galarian Articuno", "types": ["PSYCHIC", "FLYING"] },
+    "2028": { "id": 145, "form": "galarian", "name": "Galarian Zapdos", "types": ["FIGHTING", "FLYING"] },
+    "2029": { "id": 146, "form": "galarian", "name": "Galarian Moltres", "types": ["DARK", "FLYING"] },
+    "2030": { "id": 199, "form": "galarian", "name": "Galarian Slowking", "types": ["POISON", "PSYCHIC"] },
+    "2031": { "id": 222, "form": "galarian", "name": "Galarian Corsola", "types": ["GHOST"] },
+    "2032": { "id": 263, "form": "galarian", "name": "Galarian Zigzagoon", "types": ["DARK", "NORMAL"] },
+    "2033": { "id": 264, "form": "galarian", "name": "Galarian Linoone", "types": ["DARK", "NORMAL"] },
+    "2034": { "id": 554, "form": "galarian", "name": "Galarian Darumaka", "types": ["ICE"] },
+    "2035": { "id": 555, "form": "galarian", "name": "Galarian Darmanitan", "types": ["ICE"] },
+    "2036": { "id": 555, "form": "galarian", "name": "Galarian Darmanitan Zen Mode", "types": ["ICE", "FIRE"] },
+    "2037": { "id": 562, "form": "galarian", "name": "Galarian Yamask", "types": ["GROUND", "GHOST"] },
+    "2038": { "id": 618, "form": "galarian", "name": "Galarian Stunfisk", "types": ["GROUND", "STEEL"] },
+    "2039": { "id": 58, "form": "hisuian", "name": "Hisuian Growlithe", "types": ["FIRE", "ROCK"] },
+    "2040": { "id": 59, "form": "hisuian", "name": "Hisuian Arcanine", "types": ["FIRE", "ROCK"] },
+    "2041": { "id": 100, "form": "hisuian", "name": "Hisuian Voltorb", "types": ["ELECTRIC", "GRASS"] },
+    "2042": { "id": 101, "form": "hisuian", "name": "Hisuian Electrode", "types": ["ELECTRIC", "GRASS"] },
+    "2043": { "id": 157, "form": "hisuian", "name": "Hisuian Typhlosion", "types": ["FIRE", "GHOST"] },
+    "2044": { "id": 211, "form": "hisuian", "name": "Hisuian Qwilfish", "types": ["DARK", "POISON"] },
+    "2045": { "id": 215, "form": "hisuian", "name": "Hisuian Sneasel", "types": ["POISON", "FIGHTING"] },
+    "2046": { "id": 503, "form": "hisuian", "name": "Hisuian Samurott", "types": ["WATER", "DARK"] },
+    "2047": { "id": 549, "form": "hisuian", "name": "Hisuian Lilligant", "types": ["GRASS", "FIGHTING"] },
+    "2048": { "id": 570, "form": "hisuian", "name": "Hisuian Zorua", "types": ["NORMAL", "GHOST"] },
+    "2049": { "id": 571, "form": "hisuian", "name": "Hisuian Zoroark", "types": ["NORMAL", "GHOST"] },
+    "2050": { "id": 628, "form": "hisuian", "name": "Hisuian Braviary", "types": ["PSYCHIC", "FLYING"] },
+    "2051": { "id": 705, "form": "hisuian", "name": "Hisuian Sliggoo", "types": ["STEEL", "DRAGON"] },
+    "2052": { "id": 706, "form": "hisuian", "name": "Hisuian Goodra", "types": ["STEEL", "DRAGON"] },
+    "2053": { "id": 713, "form": "hisuian", "name": "Hisuian Avalugg", "types": ["ICE", "ROCK"] },
+    "2054": { "id": 724, "form": "hisuian", "name": "Hisuian Decidueye", "types": ["GRASS", "FIGHTING"] },
+    "2055": { "id": 128, "form": "paldean", "name": "Paldean Tauros - Aqua", "types": ["WATER", "FIGHTING"] },
+    "2056": { "id": 128, "form": "paldean", "name": "Paldean Tauros - Blaze", "types": ["FIRE", "FIGHTING"] },
+    "2057": { "id": 128, "form": "paldean", "name": "Paldean Tauros - Combat", "types": ["FIGHTING"] },
+    "2058": { "id": 194, "form": "paldean", "name": "Paldean Wooper", "types": ["POISON", "GROUND"] },
+    "3025": { "id": 201, "form": "normal", "name": "NOWN", "types": ["PSYCHIC"] }
   },
 
     "GAME_TEXT": {
@@ -192,7 +192,7 @@
             "player_won": ["We failed to take flight"],
             "player_lost": ["Don't worry, you'll get it next time."]
         },
-        "rewards": { "balls": 5, "EXP_SHARE": 1 }
+        "rewards": { "balls": 5, "JOHTO_MAP": 1 }
         }
         },
         "travel_options": [
@@ -227,11 +227,11 @@
         "alt_forms": {
             "enabled": true,
             "weights": {
-                "201_a": 0.0375, "201_b": 0.0377, "201_c": 0.0377, "201_d": 0.0377, "201_e": 0.0377,"201_f": 0.0377, "201_g": 0.0377,
-                "201_h": 0.0377, "201_i": 0.0377, "201_j": 0.0377, "201_k": 0.0377, "201_l": 0.0377, "201_m": 0.0377,
-                "201_n": 0.0377, "201_o": 0.0377, "201_p": 0.0377, "201_q": 0.0377, "201_r": 0.0377, "201_s": 0.0377,
-                "201_t": 0.0377, "201_u": 0.0377, "201_v": 0.0377, "201_w": 0.0377, "201_x": 0.0377, "201_y": 0.0377,
-                "201_z": 0.0377, "201_question": 0.05, "201_exclamation": 0.10
+                "201_a": 0.0357, "201_b": 0.0357, "201_c": 0.0357, "201_d": 0.0357, "201_e": 0.0357,"201_f": 0.0357, "201_g": 0.0357,
+                "201_h": 0.0357, "201_i": 0.0357, "201_j": 0.0357, "201_k": 0.0357, "201_l": 0.0357, "201_m": 0.0357,
+                "201_n": 0.0357, "201_o": 0.0357, "201_p": 0.0357, "201_q": 0.0357, "201_r": 0.0357, "201_s": 0.0357,
+                "201_t": 0.0357, "201_u": 0.0357, "201_v": 0.0357, "201_w": 0.0357, "201_x": 0.0357, "201_y": 0.0357,
+                "201_z": 0.0357, "201_question": 0.0357, "201_exclamation": 0.0357
             }
         },
         "travel_options": [
@@ -595,7 +595,7 @@
             },
         "travel_options": [
             { "text": "Reception Gate", "target_area": "POKEMON_LEAGUE_GATE", "color": "RED"},
-            { "text": "Johto League Plateau", "target_area": "SILVER_LEAGUE_PLATEAU", "condition": "has_8_johto_badges", "color": "RED"}
+            { "text": "Johto League Plateau", "target_area": "SILVER_LEAGUE_PLATEAU", "condition": "has_8_johto_badges", "color": "RED"},
             { "text": "Mt. Silver", "target_area": "MT_SILVER", "condition": "can_exit", "color": "RED"}
         ],
         "explore_options": [
@@ -1154,7 +1154,7 @@
             "backgrounds": {
                 "battle": "battle_union_cave.png"
             },
-            "min_rounds": 3,
+            "min_rounds": 2,
             "area_boss": {
                 "id": 131,
                 "name": "Lapras",
@@ -1206,7 +1206,7 @@
             "area_type": "dungeon",
             "battle_type": "cave",
             "wild_pool_percentages": "JOHTO_SLOWPOKE_WELL_PERCENTAGES",
-            "min_rounds": 3,
+            "min_rounds": 2,
             "backgrounds": {
                 "battle": "battle_slowpoke_well.png"
             },
@@ -1247,7 +1247,7 @@
             "area_type": "dungeon",
             "battle_type": "forest",
             "wild_pool_percentages": "JOHTO_ILEX_FOREST_PERCENTAGES",
-            "min_rounds": 3,
+            "min_rounds": 2,
             "backgrounds": {
                 "battle": ["battle_forest1.png", "battle_forest2.png", "battle_forest3.png"]
             },
@@ -1286,7 +1286,7 @@
                 { "name": "Sage Jin", "class": "SAGE", "sprite": "sage.png", "team": [69, 69, 69], "rewards": { "balls": 3 } },
                 { "name": "Sage Neal", "class": "SAGE", "sprite": "sage2.png", "team": [69, 69, 69], "rewards": { "balls": 3 } },
                 { "name": "Sage Troy", "class": "SAGE", "sprite": "sage.png", "team": [69, 69, 69], "rewards": { "balls": 3 } },
-                { "name": "Elder Li", "class": "SAGE", "sprite": "elder.png", "team": [69, 69, 163], "rewards": { "balls": 5, "LEAF_STONE": 1 },
+                { "name": "Elder Li", "class": "SAGE", "sprite": "elder.png", "team": [69, 70, 71], "rewards": { "balls": 5, "LEAF_STONE": 1 },
                     "victory_flag": "defeated_elder_li",
                     "dialogue": {
                         "intro": ["You have done well to reach the top.", "Let us see if you have the soul of a true trainer!"],
@@ -1310,7 +1310,7 @@
             "area_type": "dungeon",
             "battle_type": "indoor",
             "wild_pool_percentages": "JOHTO_BURNED_TOWER_PERCENTAGES",
-            "min_rounds": 3,
+            "min_rounds": 2,
             "backgrounds": {
                 "battle": "battle_burned_tower.png"
             },
@@ -1339,7 +1339,7 @@
             "area_type": "dungeon",
             "battle_type": "indoor",
             "wild_pool_percentages": "JOHTO_BELL_TOWER_PERCENTAGES",
-            "min_rounds": 3,
+            "min_rounds": 2,
             "backgrounds": {
                 "battle": "battle_bell_tower.png"
             },
@@ -1398,7 +1398,7 @@
             "area_type": "dungeon",
             "battle_type": "cave",
             "wild_pool_percentages": "JOHTO_ICE_PATH_PERCENTAGES",
-            "min_rounds": 3,
+            "min_rounds": 2,
             "backgrounds": {
                 "battle": "battle_ice_path.png"
             },
@@ -1489,7 +1489,7 @@
             "route_name": "Radio Tower",
             "battle_type": "indoor",
             "wild_pool_percentages": "JOHTO_ROCKET_HQ_PERCENTAGES",
-            "min_rounds": 3,
+            "min_rounds": 2,
             "trainer_pool": [
                 { "name": "Rocket Grunt", "class": "ROCKET", "sprite": "rocket_grunt_m.png", "team": [19, 20], "rewards": { "balls": 2 } },
                 { "name": "Rocket Grunt", "class": "ROCKET", "sprite": "rocket_grunt_f.png", "team": [41, 42], "rewards": { "balls": 2 } },
@@ -1675,7 +1675,7 @@
         },
         {
             "id": "johto_m18", "type": "MAIN", "title": "The Legend of Mt. Silver", "description": "You are the Champion, but a greater challenge awaits. Brave the heights of Mt. Silver to find the legendary trainer Red.",
-            "condition": { "start_region": "JOHTO", "flag": "beat_champion", "flag": "unlocked_national_dex" }
+            "condition": { "start_region": "JOHTO", "flag": ["beat_champion", "unlocked_national_dex"] }
         },
         {
             "id": "johto_s1", "type": "SIDE", "title": "Ruins of Alph", "description": "The stones here hum with a strange frequency. Catch different forms of Unown to unlock the ruins' secrets.",
@@ -1775,13 +1775,13 @@
     "JOHTO_ROUTE_44_PERCENTAGES": { "70": 30, "69": 20, "114": 20, "108": 15, "60": 10, "61": 5 },
     
     "JOHTO_ROUTE_45": [74,207,227,232,231],
-    "JOHTO_ROUTE_45_PERCENTAGES": { "74": 30, "75": 20, "207": 15, "227": 15, "232": 10, "231": 10 },
+    "JOHTO_ROUTE_45_PERCENTAGES": { "74": 30, "75": 20, "207": 15, "227": 15, "232": 10, "231": 10, "2012": 1 },
     
     "JOHTO_ROUTE_46": [21,19,74,231,207,2001],
-    "JOHTO_ROUTE_46_PERCENTAGES": { "21": 30, "19": 24, "74": 25, "231": 10, "207": 10, "2001": 1 },
+    "JOHTO_ROUTE_46_PERCENTAGES": { "21": 30, "19": 24, "74": 25, "231": 10, "207": 10, "2001": 1, "2012": 1 },
 
     "JOHTO_MT_MORTAR": [41, 74, 66, 75, 67, 183],
-    "JOHTO_MT_MORTAR_PERCENTAGES": { "41": 30, "74": 25, "66": 20, "75": 10, "67": 10, "183": 5 },
+    "JOHTO_MT_MORTAR_PERCENTAGES": { "41": 30, "74": 25, "66": 20, "75": 10, "67": 10, "183": 5, "2012": 1 },
     
     "JOHTO_ICE_PATH": [220, 42, 124, 225, 215],
     "JOHTO_ICE_PATH_PERCENTAGES": { "220": 40, "42": 25, "124": 15, "225": 10, "215": 10 },
@@ -1799,7 +1799,7 @@
     "JOHTO_SPROUT_TOWER_PERCENTAGES": { "19": 69, "92": 30, "2001": 1 },
     
     "JOHTO_DARK_CAVE": [41, 74, 216, 206, 202, 42],
-    "JOHTO_DARK_CAVE_PERCENTAGES": { "41": 40, "74": 35, "216": 10, "206": 5, "202": 5, "42": 5 },
+    "JOHTO_DARK_CAVE_PERCENTAGES": { "41": 40, "74": 35, "216": 10, "206": 5, "202": 5, "42": 5, "2012": 1 },
     
     "JOHTO_UNION_CAVE": [74, 41, 27, 19, 95, 2001],
     "JOHTO_UNION_CAVE_PERCENTAGES": { "74": 30, "41": 30, "27": 15, "19": 14, "95": 10, "2001": 1 },
@@ -1829,7 +1829,7 @@
     "JOHTO_MT_SILVER_PERCENTAGES": { "42": 20, "232": 20, "217": 20, "246": 15, "200": 15, "247": 10 },
 
     "JOHTO_CLIFF_GATE_POOL": [74, 75, 194, 195, 41, 42, 66],
-    "JOHTO_CLIFF_GATE_PERCENTAGES": { "74": 30, "194": 30, "41": 20, "75": 5, "195": 5, "42": 5, "66": 5 },
+    "JOHTO_CLIFF_GATE_PERCENTAGES": { "74": 30, "194": 30, "41": 20, "75": 5, "195": 5, "42": 5, "66": 5, "2012": 1, "2013": 1 },
 
     "JOHTO_SAFARI_POOL": [214, 212, 231, 232, 227, 241, 246, 247, 215, 207, 213, 216],
     "JOHTO_SAFARI_PERCENTAGES": {"214": 14, "212": 5, "231": 14, "232": 5, "227": 10, "241": 10, "246": 5, "247": 2, "215": 10, "207": 14, "213": 6, "216": 5 }

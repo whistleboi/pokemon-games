@@ -40,10 +40,8 @@ class TrainerBattleState(GameState):
             self.opponent_team = [opponent_data]
 
         self.current_opponent_idx = 0
-        # Safety: Ensure opponent team isn't empty
         self.opponent_pokemon = self.opponent_team[0] if self.opponent_team else None
 
-        # Safety: Ensure player team isn't empty
         self.player_pokemon = self.game.story_manager.player_team[0] if self.game.story_manager.player_team else None
         for p in self.game.story_manager.player_team:
             if p and p.current_hp > 0:
@@ -85,7 +83,6 @@ class TrainerBattleState(GameState):
         self.is_trainer_battle = bool(self.trainer_sprite)
         area_key = self.game.story_manager.current_area_key
 
-        all_bosses = self.game.loader.all_boss_ids
         self.turn_count = 0
         self.is_boss_battle = is_boss_battle
         self.boss_attack_timer = 0
@@ -160,8 +157,8 @@ class TrainerBattleState(GameState):
         self.is_shift_switch = False
 
     def _get_capped_stage(self, pokemon):
-        # ARCHITECT: Bosses are permanent Stage 3 and ignore regional badge caps
-        if pokemon.id in self.game.loader.all_boss_ids:
+        is_opponent_boss = self.is_boss_battle and (self.opponent_team and pokemon in self.opponent_team)
+        if is_opponent_boss or pokemon.id in self.game.loader.all_boss_ids:
             return 3
 
         if hasattr(pokemon, "transformed_state") and hasattr(pokemon, "_stage_override"):
@@ -169,17 +166,15 @@ class TrainerBattleState(GameState):
         else:
             base_stage = pokemon.effective_stage
 
-        # ARCHITECT: Regional Skill Capping
-        # Determine which region's badges matter for this battle
-        johto_badge_names = {"ZEPHYR", "HIVE", "PLAIN", "FOG", "STORMBADGE", "MINERAL", "GLACIER", "RISING"}
         is_johto_battle = False
 
         if self.area_name:
-            # Check for JOHTO prefix or unique Johto location keys
-            johto_indicators = ["JOHTO", "NEW_BARK", "CHERRYGROVE", "VIOLET", "ALPH", "AZALEA", 
-                               "GOLDENROD", "ECRUTEAK", "OLIVINE", "CIANWOOD", "MAHOGANY", 
-                               "BLACKTHORN", "MT_SILVER", "UNION", "ILEX", "SPROUT", 
-                               "BURNED", "BELL", "MORTAR", "WHIRL", "ROCKET", "DEN", "LAKE", "TOHJO"]
+            johto_indicators = ["JOHTO", "NEW_BARK", "CHERRYGROVE", "VIOLET",
+                                "ALPH", "AZALEA", "GOLDENROD", "ECRUTEAK",
+                                "OLIVINE", "CIANWOOD", "MAHOGANY",
+                                "BLACKTHORN", "MT_SILVER", "UNION", "ILEX",
+                                "SPROUT", "BURNED", "BELL", "MORTAR", "WHIRL",
+                                "ROCKET", "DEN", "LAKE", "TOHJO"]
             if any(k in self.area_name for k in johto_indicators):
                 is_johto_battle = True
 
@@ -292,22 +287,31 @@ class TrainerBattleState(GameState):
         Stage 3: 6 (Reg), 8 (Super), 4 (NVE)
         """
         if multiplier > 1.0:
-            if stage >= 3: return 8
-            if stage == 2: return 5
+            if stage >= 3:
+                return 8
+            if stage == 2:
+                return 5
             return 4
         elif multiplier < 1.0 and multiplier > 0.0:
-            if stage >= 3: return 4
-            if stage == 2: return 3
+            if stage >= 3:
+                return 4
+            if stage == 2:
+                return 3
             return 2
         else:
-            if stage >= 3: return 6
-            if stage == 2: return 4
+            if stage >= 3:
+                return 6
+            if stage == 2:
+                return 4
             return 3
 
     def setup_math_ui(self):
         if hasattr(self, "math_ui") and self.math_ui in self.game.ui_manager.elements:
             self.game.ui_manager.elements.remove(self.math_ui)
-        callback = lambda i: self.resolve_turn(self.options[i] == self.correct_ans)
+
+        def callback(index):
+            self.resolve_turn(self.options[index] == self.correct_ans)
+
         self.math_ui = MathBattleUI(self.game, self.problem_str, self.options, callback)
         self.game.ui_manager.add_element(self.math_ui)
         self.math_ui.set_visibility(False)
@@ -317,7 +321,7 @@ class TrainerBattleState(GameState):
             self.game,
             self.player_pokemon.display_name,
             on_math=lambda: self.start_math_phase(),
-            on_pkdex=lambda: self._open_pokedex(),
+            on_pkdex=lambda: self._open_bag(),
             on_pkmn=lambda: self.open_party_menu(),
             on_run=lambda: self.handle_run(),
         )
@@ -328,9 +332,15 @@ class TrainerBattleState(GameState):
             self.game.ui_manager.elements = [e for e in self.game.ui_manager.elements if not isinstance(e, BattleActionMenu)]
             self.game.ui_manager.add_element(self.action_menu)
 
-    def _open_pokedex(self):
-        from src.states.systems import PokedexState
-        self.game.change_state(PokedexState(self.game, self))
+    def _open_bag(self):
+        from src.states.systems import BagState
+        self.game.change_state(BagState(self.game, self, context="battle"))
+
+    def on_item_used(self):
+        """Called when an item is used from the bag during battle. Triggers opponent turn."""
+        self.phase = "RESOLVE_TURN"
+        self.turn_actions = [self.opponent_attack]
+        self.game.change_state(self)
 
     def show_message(self, text, callback=None):
         self.phase = "MESSAGE"
@@ -360,23 +370,22 @@ class TrainerBattleState(GameState):
             )
         else:
             self.show_message(
-                "No! You can't run from a trainer battle!", 
+                "No! You can't run from a trainer battle!",
                 callback=self.return_to_menu
             )
 
     def on_flee_complete(self):
         pygame.event.clear()
-        
+
         from src.states.overworld import PlayState
-        # Prepare the PlayState instance to return to
         next_state = self._get_play_state_instance()
         if hasattr(self, 'play_state_data') and self.play_state_data:
             next_state = PlayState(self.game, restore_data=self.play_state_data)
-            self.game.states["play"] = next_state # Update the game's play state
+            self.game.states["play"] = next_state
 
         if next_state.check_for_evolution():
             return
-        
+
         self.game.change_state(next_state)
         if hasattr(next_state, "show_progression_menu"):
             next_state.show_progression_menu()
@@ -385,7 +394,7 @@ class TrainerBattleState(GameState):
         def on_switch_selected(slot_index):
             self.game.change_state(self)
             self.perform_switch(slot_index)
-            
+
         from src.states.systems import PokemonPartyMenuState
         self.game.change_state(PokemonPartyMenuState(
             self.game,
@@ -528,16 +537,13 @@ class TrainerBattleState(GameState):
         if player_was_correct:
             self.boss_attack_timer += 1
             self.turn_actions.append(self.player_attack)
-            
-            # ARCHITECT: Boss logic - attack every 2 turns even if player is correct
+
             if self.is_boss_battle and self.boss_attack_timer >= 2:
                 self.turn_actions.append(self.opponent_attack)
                 self.boss_attack_timer = 0
             elif not self.is_boss_battle and self.hard_mode and (self.turn_count % 2 == 0):
-                # Fallback for old hard_mode logic
                 self.turn_actions.append(self.opponent_attack)
         else:
-            # ARCHITECT: If wrong, boss attacks and timer resets
             self.boss_attack_timer = 0
             self.turn_actions.append(self.opponent_attack)
 
@@ -551,6 +557,8 @@ class TrainerBattleState(GameState):
         player_stage = self._get_capped_stage(self.player_pokemon)
         damage = self._calculate_damage(player_stage, self.adv_opp)
         self.opponent_hp = max(0, self.opponent_hp - damage)
+
+        self.opponent_pokemon.current_hp = self.opponent_hp
 
         if self.opponent_hp <= 0:
             if self.game.story_manager.inventory.get("EXP_SHARE", 0) > 0:
@@ -592,6 +600,8 @@ class TrainerBattleState(GameState):
         damage = self._calculate_damage(opponent_stage, self.adv_player)
         self.player_hp = max(0, self.player_hp - damage)
 
+        self.player_pokemon.current_hp = self.player_hp
+
         self.anim_ctrl.start_lunge("opponent")
         move_name = self.game.assets.get_stab_move(self.opponent_pokemon)
 
@@ -615,7 +625,6 @@ class TrainerBattleState(GameState):
         self.feedback_timer = 30
 
     def try_trigger_wild_catch_prompt(self):
-        # Hook for WildBattleState to override
         return False
 
     def _start_faint_animation(self):
@@ -650,9 +659,9 @@ class TrainerBattleState(GameState):
 
             key_items = self.game.loader.area_data.get("GAME_CONFIG", {}).get("KEY_ITEMS", [])
             for item, qty in self.rewards.items():
-                if item == "balls": continue
-                
-                # ARCHITECT: Check for duplicate key items
+                if item == "balls":
+                    continue
+
                 if item in key_items and self.game.story_manager.inventory.get(item, 0) > 0:
                     msgs.append(f"You already have the {item.replace('_', ' ').title()}!")
                     msgs.append("You received 2 RARE CANDYs instead!")
@@ -685,9 +694,9 @@ class TrainerBattleState(GameState):
 
         key_items = self.game.loader.area_data.get("GAME_CONFIG", {}).get("KEY_ITEMS", [])
         for item, qty in self.rewards.items():
-            if item == "balls": continue
-            
-            # ARCHITECT: Give Rare Candies if key item is a duplicate
+            if item == "balls":
+                continue
+
             if item in key_items and self.game.story_manager.inventory.get(item, 0) > 0:
                 self.game.story_manager.inventory["RARE_CANDY"] = self.game.story_manager.inventory.get("RARE_CANDY", 0) + 2
             else:
@@ -722,8 +731,8 @@ class TrainerBattleState(GameState):
             next_area = outcome["next_area"]
             message = outcome.get("message")
             transition_state = AreaTransitionState(
-                self.game, 
-                next_area, 
+                self.game,
+                next_area,
                 initial_message=message
             )
 
@@ -736,7 +745,8 @@ class TrainerBattleState(GameState):
         area_key = self.game.story_manager.current_area_key
 
         for p in self.game.story_manager.player_team:
-            if hasattr(p, "revert_transform"): p.revert_transform()
+            if hasattr(p, "revert_transform"):
+                p.revert_transform()
 
         area_info = self.game.loader.area_data.get("STORY_PROGRESSION", {}).get(area_key, {})
 
@@ -751,7 +761,6 @@ class TrainerBattleState(GameState):
             self.game.states["play"] = PlayState(self.game, restore_data=play_state_data)
             next_state = self.game.states["play"]
 
-        # ARCHITECT: Check for evolution using the NEWLY prepared state as the target
         if next_state and hasattr(next_state, "check_for_evolution"):
             if next_state.check_for_evolution():
                 return
@@ -832,13 +841,13 @@ class TrainerBattleState(GameState):
 
                             btn_w, btn_h = 140, 60
                             self.btn_yes.rect = pygame.Rect(
-                                box.right - 300, 
-                                box.bottom - 80, 
+                                box.right - 300,
+                                box.bottom - 80,
                                 btn_w, btn_h
                             )
                             self.btn_no.rect = pygame.Rect(
-                                box.right - 140, 
-                                box.bottom - 80, 
+                                box.right - 140,
+                                box.bottom - 80,
                                 btn_w, btn_h
                             )
 
@@ -849,7 +858,7 @@ class TrainerBattleState(GameState):
                             self.btn_yes.set_visibility(True)
                             self.btn_no.set_visibility(True)
 
-                            tr_display = (self.trainer_name 
+                            tr_display = (self.trainer_name
                                           or self.trainer_class)
                             msg = f"{tr_display} is about to use {next_poke.display_name}! Change PKMN?"
                             self.dialogue_box.reset(msg)
@@ -874,7 +883,7 @@ class TrainerBattleState(GameState):
                         self.setup_battle_matchup()
 
                     self.enemy_summon_anim = PokemonSummonAnimation(self.game, self.opponent_pokemon, "opponent")
-                    self.phase = "ENEMY_SUMMON" 
+                    self.phase = "ENEMY_SUMMON"
 
                     display_name = self.trainer_name if self.trainer_name else self.trainer_class
                     if self.trainer_class == "RIVAL":
@@ -884,7 +893,7 @@ class TrainerBattleState(GameState):
                     self.dialogue_box.reset(msg)
                     self.dialogue_box.set_visibility(True)
 
-                    self.show_trainer = False 
+                    self.show_trainer = False
                 else:
                     self.trigger_outro(win=True)
             return
@@ -922,7 +931,7 @@ class TrainerBattleState(GameState):
                     if self.is_forced_switch:
                         self.return_to_menu_after_forced_switch()
                     elif self.is_shift_switch:
-                        self.on_switch_no() # Proceed to trainer slide in
+                        self.on_switch_no()
                     else:
                         self.opponent_turn_after_switch()
             return
@@ -950,8 +959,8 @@ class TrainerBattleState(GameState):
                     play_state = self.game.states["play"]
                     self.problem_str, self.correct_ans, self.options = (
                         play_state.generate_math_set(
-                        self.game.states["play"].total_caught, num_options=4
-                    ))
+                            self.game.states["play"].total_caught, num_options=4
+                        ))
                     self.setup_math_ui()
             return
 
@@ -1000,7 +1009,7 @@ class TrainerBattleState(GameState):
         def on_selected(slot_index):
             team = self.game.story_manager.player_team
             if team[slot_index] == self.player_pokemon:
-                self.on_switch_no() # Cancel/Same pokemon
+                self.on_switch_no()
                 return
             if team[slot_index].current_hp <= 0:
                 self.game.show_dialogue([f"{team[slot_index].display_name} has no energy!"])
@@ -1013,8 +1022,8 @@ class TrainerBattleState(GameState):
         from src.states.systems import PokemonPartyMenuState
         self.game.change_state(
             PokemonPartyMenuState(
-                self.game, 
-                self, 
+                self.game,
+                self,
                 context="battle_switch",
                 on_select=on_selected,
                 on_cancel=self.on_switch_no
@@ -1052,7 +1061,8 @@ class TrainerBattleState(GameState):
             sprite_to_pixelate = target_sprite
             pixelation_level = 1 + int(31 * (1.0 - (progress - 0.5) * 2))
 
-        if not sprite_to_pixelate: return
+        if not sprite_to_pixelate:
+            return
 
         pixelation_level = max(1, pixelation_level)
         w, h = sprite_to_pixelate.get_size()
@@ -1112,7 +1122,6 @@ class WildBattleState(TrainerBattleState):
             self.action_menu.set_visibility(False)
             return True
         return False
-
 
     def attempt_run(self):
         self.dialogue_box.reset("Got away safely!")
@@ -1206,7 +1215,7 @@ class WildBattleState(TrainerBattleState):
             elif self.catch_phase == "SHAKE":
                 self.shake_timer -= 1
                 if self.shake_timer <= 0:
-                    success = True 
+                    success = True
 
                     if success:
                         if self.victory_flag:
@@ -1244,7 +1253,7 @@ class WildBattleState(TrainerBattleState):
         next_state = self._get_play_state_instance()
         if hasattr(self, 'play_state_data') and self.play_state_data:
             next_state = PlayState(self.game, restore_data=self.play_state_data)
-            self.game.states["play"] = next_state # Update the game's play state
+            self.game.states["play"] = next_state
 
         if next_state.check_for_evolution():
             return
@@ -1350,7 +1359,6 @@ class TrainerIntroState(GameState):
         self.ball_icon = pygame.transform.scale(game.assets.ball_imgs[0], (20, 20))
 
     def on_dialogue_finish(self):
-        # Safety: Ensure we have valid Pokémon before starting the summon phase
         if not self.next_state.player_pokemon or not self.next_state.opponent_pokemon:
             self.game.change_state(self.next_state)
             return
@@ -1395,22 +1403,21 @@ class TrainerIntroState(GameState):
             pass
 
         elif self.phase == "SUMMON":
-            if not self.player_summon:                
+            if not self.player_summon:
                 player_pkmn = self.next_state.player_pokemon
                 enemy_pkmn = self.next_state.opponent_pokemon
-                self.player_summon = PokemonSummonAnimation(self.game, player_pkmn, "player", use_back_sprite=True)
+                self.player_summon = PokemonSummonAnimation(self.game, player_pkmn, "player", use_back_sprite=False)
                 self.enemy_summon = PokemonSummonAnimation(self.game, enemy_pkmn, "opponent")
 
                 player_text = f"Go, {player_pkmn.display_name.upper()}!"
 
                 r_name = getattr(self.next_state, "trainer_name", None)
                 if not r_name:
-                    # Fallback to class (e.g. YOUNGSTER) or Rival Name
                     r_name = getattr(self.next_state, "trainer_class", "TRAINER")
                     if r_name == "RIVAL":
                         r_name = getattr(
-                            self.game, 
-                            "rival_name", 
+                            self.game,
+                            "rival_name",
                             getattr(self.game, "rival_character", "BLUE")
                         )
 
@@ -1420,14 +1427,17 @@ class TrainerIntroState(GameState):
                 self.dialogue_box.visible = True
                 self.dialogue_box.callback = None
 
-            if self.player_summon: self.player_summon.update()
-            if self.enemy_summon: self.enemy_summon.update()
-            if self.dialogue_box.visible: self.dialogue_box.update()
+            if self.player_summon:
+                self.player_summon.update()
+            if self.enemy_summon:
+                self.enemy_summon.update()
+            if self.dialogue_box.visible:
+                self.dialogue_box.update()
 
             if self.player_summon and self.enemy_summon and self.player_summon.finished and self.enemy_summon.finished and self.dialogue_box.is_finished:
                 self.phase = "SLIDE_OUT"
                 self.dialogue_box.reset("")
-                self.dialogue_box.visible = False # Hiding the box ensures no ghost blocking during slide
+                self.dialogue_box.visible = False
 
         elif self.phase == "SLIDE_OUT":
             self.slide_offset += 25
@@ -1444,10 +1454,11 @@ class TrainerIntroState(GameState):
         else:
             if self.battle_bg:
                 screen.blit(self.battle_bg, (0, 0))
-                dialogue_rect = Utils.get_full_dialogue_rect(self.game)
-                screen.fill(BLACK, dialogue_rect)
             else:
                 screen.fill((20, 40, 80))
+
+            dialogue_rect = Utils.get_full_dialogue_rect(self.game)
+            Utils.draw_classic_panel(screen, dialogue_rect.x, dialogue_rect.y, dialogue_rect.width, dialogue_rect.height)
 
         player_pos = (self.game.width * 0.25 - self.slide_offset, self.game.height * 0.75)
         rival_pos = (self.game.width * 0.75 + self.slide_offset, self.game.height * 0.75)
@@ -1465,11 +1476,11 @@ class TrainerIntroState(GameState):
                         pygame.draw.circle(screen, (100, 100, 100), (bx + 10, y_pos + 10), 8)
 
                 Utils.draw_text_outline(
-                    screen, 
-                    self.game.player_name.upper(), 
+                    screen,
+                    self.game.player_name.upper(),
                     self.game.assets.fonts["s_med"],
-                    WHITE, 
-                    player_pos[0], 
+                    WHITE,
+                    player_pos[0],
                     player_pos[1] - self.player_sprite.get_height() - 10)
 
         if self.rival_sprite:
@@ -1489,11 +1500,11 @@ class TrainerIntroState(GameState):
                     opponent_name = getattr(self.next_state, "trainer_class", "TRAINER")
 
                 Utils.draw_text_outline(
-                    screen, 
-                    opponent_name.upper(), 
+                    screen,
+                    opponent_name.upper(),
                     self.game.assets.fonts["s_med"],
-                    WHITE, 
-                    rival_pos[0], 
+                    WHITE,
+                    rival_pos[0],
                     rival_pos[1] - self.rival_sprite.get_height() - 10)
 
         if self.phase == "VS" and self.vs_alpha > 0:
@@ -1501,8 +1512,10 @@ class TrainerIntroState(GameState):
                                     self.game.width//2, self.game.height//2, BLACK, 5)
 
         if self.phase == "SUMMON":
-            if self.player_summon: self.player_summon.draw(screen)
-            if self.enemy_summon: self.enemy_summon.draw(screen)
+            if self.player_summon:
+                self.player_summon.draw(screen)
+            if self.enemy_summon:
+                self.enemy_summon.draw(screen)
 
         if self.phase == "SLIDE_OUT":
 

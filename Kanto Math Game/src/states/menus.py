@@ -31,7 +31,6 @@ class MainMenuState(GameState):
             self.load_game,
         )
 
-        # Check for ANY save file (main or slots)
         has_saves = False
         if os.path.exists(game.data.save_file) and game.data.data.get("story"):
             has_saves = True
@@ -66,7 +65,7 @@ class MainMenuState(GameState):
         self.game.screen.fill(BLACK)
         Utils.draw_text_outline(
             self.game.screen,
-            "KANTO MATH",
+            "POKEMATH ADVENTURES",
             self.game.assets.fonts["big"],
             GOLD,
             self.game.width // 2,
@@ -225,7 +224,6 @@ class RegionSelectionState(GameState):
         self.selected_idx = 0
 
         cx, cy = game.width // 2, game.height // 2
-        # Using GB UI style boxes for region cards
         self.rect_kanto = pygame.Rect(cx - 320, cy - 80, 300, 160)
         self.rect_johto = pygame.Rect(cx + 20, cy - 80, 300, 160)
 
@@ -251,13 +249,11 @@ class RegionSelectionState(GameState):
         region = self.regions[self.selected_idx]
         self.game.story_manager.starting_region = region
 
-        # ARCHITECT SYNC: Unlock starting regional badge page
         if region == "JOHTO":
             self.game.story_manager.story_flags["unlocked_johto_badges"] = True
         else:
             self.game.story_manager.story_flags["unlocked_kanto_badges"] = True
 
-        # Set the starting location based on chosen region
         if region == "JOHTO":
             self.game.story_manager.current_area_key = "NEW_BARK_TOWN"
         else:
@@ -276,14 +272,12 @@ class RegionSelectionState(GameState):
         Utils.draw_text_outline(screen, "WHERE WILL YOUR JOURNEY BEGIN?",
                                 self.game.assets.fonts["med"], WHITE, cx, 100)
 
-        # Draw Region Selection Cards
         for i, rect in enumerate([self.rect_kanto, self.rect_johto]):
             is_selected = (self.selected_idx == i)
             bg_color = GB_PANEL if is_selected else GB_PANEL_DARK
             border_color = GOLD if is_selected else WHITE
             border_thickness = 6 if is_selected else 2
 
-            # Draw the card
             pygame.draw.rect(screen, bg_color, rect, border_radius=15)
             pygame.draw.rect(
                 screen, border_color, rect, border_thickness,
@@ -298,14 +292,12 @@ class RegionSelectionState(GameState):
                 text_color, rect.centerx, rect.centery
             )
 
-            # Display region context subtext
             sub = "GEN 1 / RED / BLUE" if i == 0 else "GEN 2 / GOLD / SILVER"
             Utils.draw_text_outline(
                 screen, sub, self.game.assets.fonts["tiny"],
                 GRAY, rect.centerx, rect.centery + 40
             )
 
-        # Footer hint
         msg = "SELECT A REGION TO CONTINUE"
         Utils.draw_text_outline(
             screen, msg, self.game.assets.fonts["small"],
@@ -571,7 +563,6 @@ class StarterSelectionState(GameState):
         box_rect = self.dialogue_box.rect
 
         for i in range(3):
-            # Position buttons inside the golden dialogue box at the bottom
             btn_w = 120
             btn_h = 50
             spacing = 20
@@ -671,13 +662,11 @@ class StarterSelectionState(GameState):
             "chosen_starter", name=chosen_pokemon_obj.name
         )
 
-        # Force starter to lead position.
-        # Move 6th member to PC if party is full.
         team = self.game.story_manager.player_team
         pc = self.game.story_manager.pc_pokemon
 
         if len(team) >= 6:
-            moved_pkmn = team.pop(5)  # Remove the 6th Pokémon
+            moved_pkmn = team.pop(5)
             pc.append(moved_pkmn)
             pc_msg = (
                 f"{moved_pkmn.display_name.upper()} was sent to BILL'S PC!"
@@ -689,7 +678,6 @@ class StarterSelectionState(GameState):
         self.game.data.add_pokemon(chosen_pokemon_obj)
         self.game.data.save()
 
-        # Handle Johto-specific flag
         if self.region == "JOHTO":
             flag_key = "received_starter_johto"
             self.game.story_manager.story_flags[flag_key] = True
@@ -697,16 +685,13 @@ class StarterSelectionState(GameState):
             flag_key = "received_starter_kanto"
             self.game.story_manager.story_flags[flag_key] = True
 
-        # Determine Rival
         if self.region == "JOHTO":
-            # Silver takes the advantage (Rival 1)
             rival_map = {0: 1, 1: 2, 2: 0}
             s_idx = self.selected_idx
             rival_idx_in_list = rival_map.get(s_idx, 0)
             rival_starter = self.starters_raw[rival_idx_in_list]
             self.game.story_manager.rival_starter_raw = rival_starter
 
-            # The User Rival (Rival 2) takes the 3rd one
             all_indices = {0, 1, 2}
             taken = {self.selected_idx, rival_idx_in_list}
             remaining = list(all_indices - taken)[0]
@@ -715,7 +700,6 @@ class StarterSelectionState(GameState):
                 user_rival_starter
             )
         else:
-            # Standard Kanto Logic
             player_primary_type = (
                 chosen_pokemon_obj.types[0]
                 if chosen_pokemon_obj.types
@@ -743,7 +727,6 @@ class StarterSelectionState(GameState):
 
             self.game.story_manager.rival_starter_raw = rival_choice
 
-        # Finalize World Entry if this is the game start
         if not self.game.story_manager.game_started:
             self.game.story_manager.game_started = True
             if self.region == "JOHTO":
@@ -768,9 +751,8 @@ class StarterSelectionState(GameState):
             trainer_class = "RIVAL"
             rival_sprite = self.game.assets.get_trainer_image("silver.png")
             if not rival_sprite:
-                # Fallback if silver.png missing
                 rival_sprite = self.game.assets.get_trainer_image("rival.png")
-            bg_name = "battle_elmlab.png"  # Optional custom BG
+            bg_name = "battle_elmlab.png"
         else:
             rival_sprite_key = getattr(self.game, "rival_character", "blue")
             rival_name = getattr(self.game, "rival_name", "BLUE")
@@ -872,7 +854,6 @@ class StarterSelectionState(GameState):
             draw_pos = (pos[0], pos[1] + hover_y)
             self.game.screen.blit(p.image, p.image.get_rect(center=draw_pos))
 
-            # Debug: Draw Hitboxes
             if self.game.debug_mode:
                 full_rect = p.image.get_rect(center=draw_pos)
                 hitbox = full_rect.inflate(
@@ -916,7 +897,6 @@ class StarterSelectionState(GameState):
             )
 
             for i in range(3):
-                # Rects are updated in update_answer_buttons, just use them
                 btn_rect = self.answer_btn_rects[i]
                 txt = str(self.options[i])
 
@@ -983,7 +963,6 @@ class LoadState(GameState):
             bg_color=RED,
         )
 
-        # Confirmation UI
         self.confirm_dialogue = ClassicDialogueBox(
             Utils.get_full_dialogue_rect(game),
             ["Load this file?", "Unsaved progress will be lost."],
@@ -1008,7 +987,6 @@ class LoadState(GameState):
         )
 
     def load_save_slots(self):
-        # Reuse logic from SaveState or move to DataManager if preferred
         slots = []
         for i in range(5):
             fname = os.path.join(
@@ -1049,11 +1027,9 @@ class LoadState(GameState):
             self.game.ui_manager.add_element(self.btn_no)
 
     def do_load(self):
-        # Load the specific file
         slot_data = self.save_slots[self.selected_slot_index]
         self.game.data.save_file = slot_data["file"]
 
-        # CRITICAL: Force reload data from the new file path
         self.game.data.data = self.game.data._load()
 
         if self.game.load_game_data():
@@ -1102,14 +1078,16 @@ class SaveState(GameState):
     def __init__(self, game, previous_state):
         super().__init__(game)
         self.previous_state = previous_state
-        
-        # ARCHITECT: Directly identify current slot to prevent accidental overwriting of other slots
+
         current_file = os.path.basename(self.game.data.save_file)
-        self.selected_slot = int(current_file.split('_')[-1].split('.')[0]) if 'game_data_' in current_file else 0
-        
-        self.input_text = self.game.data.data.get("save_name", f"File {self.selected_slot + 1}")
+        is_data = 'game_data_' in current_file
+        self.selected_slot = int(
+            current_file.split('_')[-1].split('.')[0]) if is_data else 0
+
+        self.input_text = self.game.data.data.get("save_name", f"File {
+            self.selected_slot + 1}")
         self.input_active = True
-        
+
         self.bg_panel = pygame.Rect(
             game.width * 0.15, game.height * 0.15,
             game.width * 0.7, game.height * 0.7
@@ -1167,7 +1145,6 @@ class SaveState(GameState):
     def draw(self):
         self.game.screen.fill(BLACK)
 
-        # Draw a nice panel for the menu
         pygame.draw.rect(
             self.game.screen, (40, 40, 60),
             self.bg_panel, border_radius=20

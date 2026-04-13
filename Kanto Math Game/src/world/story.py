@@ -7,7 +7,7 @@ class StoryManager:
 
     def __init__(self):
         self.player_team = []
-        self.pc_pokemon = []
+        self.pc_pokemon = [None] * 300
         self.rival_starter_raw = None
         self.user_rival_starter_raw = None
         self.starting_region = "KANTO"
@@ -16,7 +16,7 @@ class StoryManager:
         self.current_area_key = "PALLET_TOWN"
         self.species_evolution_xp = {}
         self.badges = {"KANTO": [], "JOHTO": []}
-        self.active_badge_region = "KANTO"  # For cycling in UI
+        self.active_badge_region = "KANTO"
         self.defeated_trainers = {}
         self.story_flags = {}
         self.balls_left = 5
@@ -32,7 +32,7 @@ class StoryManager:
             return
         self.money = config.get("STARTING_MONEY", 3000)
         self.balls_left = config.get("STARTING_BALLS", 5)
-        # RegionSelectionState will override this, but we default to config
+        self.pc_pokemon = [None] * 300
         self.current_area_key = config.get("STARTING_AREA", "PALLET_TOWN")
         self.initialized = True
 
@@ -71,7 +71,6 @@ class StoryManager:
 
         for m in all_missions:
             if self.check_requirements(m.get("condition", {})):
-                # Double check the completion flag specifically for Journal listing
                 if m.get("completed_flag") and self.story_flags.get(m["completed_flag"]):
                     continue
                 active.append(self._prepare_mission_for_ui(m))
@@ -81,7 +80,7 @@ class StoryManager:
         final_list = []
 
         if main_missions:
-            final_list.append(main_missions[-1]) 
+            final_list.append(main_missions[-1])
 
         final_list.extend(side_missions)
         return final_list
@@ -89,16 +88,15 @@ class StoryManager:
     def check_requirements(self, cond):
         """
         Universal requirement checker. Returns True if all conditions in 'cond' are met.
-        Supports: flag, flag_not, visited, visited_not, item, item_not, 
+        Supports: flag, flag_not, visited, visited_not, item, item_not,
         has_pokemon, defeated_area, caught_min, and required_region.
         """
         if not cond:
             return True
 
-        # [FIX] Support string-based conditions used in newer region JSONs
         if isinstance(cond, str):
-            if cond == "has_8_badges": return sum(len(b) for b in self.badges.values()) >= 8
-            # ARCHITECT: Dynamic region badge count check (e.g., has_8_kanto_badges)
+            if cond == "has_8_badges":
+                return sum(len(b) for b in self.badges.values()) >= 8
             if cond.startswith("has_8_") and cond.endswith("_badges"):
                 region = cond[6:-7].upper()
                 return len(self.badges.get(region, [])) >= 8
@@ -108,7 +106,7 @@ class StoryManager:
             return self.story_flags.get(cond, False)
 
         total_badges = sum(len(b_list) for b_list in self.badges.values())
-        unique_caught = len(self.game.data.data.get("pokedex", {}))
+        unique_caught = len({v['id'] for v in self.game.data.data.get("pokedex", {}).values() if isinstance(v, dict) and 'id' in v})
 
         if "required_region" in cond and self.get_current_region() != cond["required_region"]:
             return False
@@ -116,34 +114,39 @@ class StoryManager:
             return False
         if "badges_less" in cond and total_badges >= cond["badges_less"]:
             return False
-        
+
         if "flag" in cond:
             flags = cond["flag"] if isinstance(cond["flag"], list) else [cond["flag"]]
-            if not all(self.story_flags.get(f) for f in flags): return False
+            if not all(self.story_flags.get(f) for f in flags):
+                return False
         if "flag_not" in cond:
             flags = cond["flag_not"] if isinstance(cond["flag_not"], list) else [cond["flag_not"]]
-            if any(self.story_flags.get(f) for f in flags): return False
-            
+            if any(self.story_flags.get(f) for f in flags):
+                return False
+
         if "visited" in cond and not self.story_flags.get(f"visited_{cond['visited']}"):
             return False
         if "visited_not" in cond and self.story_flags.get(f"visited_{cond['visited_not']}"):
             return False
-            
+
         if "item" in cond:
             items = cond["item"] if isinstance(cond["item"], list) else [cond["item"]]
-            if not any(self.inventory.get(it, 0) > 0 for it in items): return False
-            
+            if not any(self.inventory.get(it, 0) > 0 for it in items):
+                return False
+
         if "has_pokemon" in cond:
             pids = cond["has_pokemon"] if isinstance(cond["has_pokemon"], list) else [cond["has_pokemon"]]
-            owned_ids = {p.id for p in self.player_team} | {p.id for p in self.pc_pokemon}
-            if not any(pid in owned_ids for pid in pids): return False
-            
+            owned_ids = {p.id for p in self.player_team if p} | {p.id for p in self.pc_pokemon if p}
+            if not any(pid in owned_ids for pid in pids):
+                return False
+
         if "defeated_area" in cond:
             area = cond["defeated_area"]
             a_data = self.game.loader.area_data.get("STORY_PROGRESSION", {}).get(area, {})
             t_pool = a_data.get("trainer_pool", [])
             defeated = self.defeated_trainers.get(area, set())
-            if not t_pool or len(defeated) < len(t_pool): return False
+            if not t_pool or len(defeated) < len(t_pool):
+                return False
 
         if "caught_min" in cond and unique_caught < cond["caught_min"]:
             return False
@@ -151,8 +154,7 @@ class StoryManager:
         if "catch_id" in cond:
             target = str(cond["catch_id"])
             if target == "201":
-                # [FIX] Cast k to string to prevent AttributeError if keys are integers
-                actual = sum(1 for k, v in self.catch_counts.items() 
+                actual = sum(1 for k, v in self.catch_counts.items()
                              if (str(k) == "201" or str(k).startswith("201_")) and v > 0)
             else:
                 actual = self.catch_counts.get(target, 0)
@@ -163,37 +165,32 @@ class StoryManager:
 
     def sync_catch_counts(self):
         """
-        Scans the player team and PC to ensure all caught species and forms 
+        Scans the player team and PC to ensure all caught species and forms
         are registered in catch_counts and the Pokedex.
         """
         if not hasattr(self, "game") or not self.game.data:
             return
 
         pokedex = self.game.data.data.get("pokedex", {})
-        
-        # Combine team and PC for a full audit
-        for p in self.player_team + self.pc_pokemon:
+
+        all_pkmn = self.player_team + [p for p in self.pc_pokemon if p is not None]
+        for p in all_pkmn:
             pid_str = str(p.id)
-            
-            # [FIX] Ensure base species is in Pokedex using the dict format. 
-            # Also repair legacy boolean entries (True -> Dict) to prevent Pokedex crashes.
+
             if pid_str not in pokedex or isinstance(pokedex[pid_str], bool):
                 pokedex[pid_str] = {"id": int(p.id), "caught": True}
-                
-            # Handle Unown Form Tracking
+
             if pid_str == "201":
-                # [FIX] Treat 'normal' as 'a' to ensure Scientist and Report consistency
                 f_name = "a" if p.form.lower() == "normal" else p.form.lower()
                 form_key = f"201_{f_name}"
                 if self.catch_counts.get(form_key, 0) == 0:
                     print(f"Sync: Registering Unown form {f_name.upper()} in Report.")
                     self.catch_counts[form_key] = 1
             else:
-                # Ensure standard catch count is at least 1
+
                 if self.catch_counts.get(pid_str, 0) == 0:
                     self.catch_counts[pid_str] = 1
-        
-        # Save changes back to the main data registry
+
         self.game.data.data["pokedex"] = pokedex
 
     def is_captured(self, pokemon_id, form="normal"):
@@ -204,15 +201,10 @@ class StoryManager:
         pid_str = str(pokemon_id)
         f_lower = form.lower()
 
-        # Special Case: Unown (ID 201)
-        # We only show the caught icon if the player has caught THIS specific letter/form.
         if pid_str == "201":
-            # Forms are stored as "201_a", "201_b", etc. Treat 'normal' as 'a'.
-            search_key = f"201_a" if f_lower == "normal" else f"201_{f_lower}"
+            search_key = "201_a" if f_lower == "normal" else f"201_{f_lower}"
             return str(search_key) in self.catch_counts
 
-        # Standard Case:
-        # For most Pokemon, catching any form counts as catching the species.
         return pid_str in self.game.data.data.get("pokedex", {})
 
     def get_current_region(self):
@@ -223,50 +215,44 @@ class StoryManager:
         area_data = self.get_current_area_data()
         if "region" in area_data:
             return area_data["region"]
-            
-        # Fallback: Detect region from prefix (e.g., "JOHTO_ROUTE_29" -> "JOHTO")
+
         if "_" in self.current_area_key:
             prefix = self.current_area_key.split("_")[0]
             if prefix in self.badges:
                 return prefix
-                
-        # Ultimate fallback for start areas like PALLET_TOWN
+
         return "KANTO"
 
     def mark_area_visited(self, area_key=None):
         """
-        Sets the visited flag for the given area. 
+        Sets the visited flag for the given area.
         Call this in OverworldState's on_enter logic.
         """
         target = area_key if area_key else self.current_area_key
         flag = f"visited_{target}"
         if not self.story_flags.get(flag):
             self.story_flags[flag] = True
-            # Trigger badge sync if we enter a gym city
             if self.get_current_area_data().get("has_gym"):
                 self.sync_badges()
 
     def _prepare_mission_for_ui(self, mission):
         """Ensures mission data is compatible with UI rendering logic."""
         m_copy = mission.copy()
-        
-        # [FIX] Ensure all text keys exist to prevent dynamic scaling/rendering crashes
+
         m_copy["text"] = m_copy.get("title", m_copy.get("text", "Unknown Mission"))
         m_copy["desc"] = m_copy.get("description", m_copy.get("desc", "No details available."))
         m_copy["details"] = m_copy["desc"]
 
-        # [NEW] Dynamic Progress Display for Catch Missions
         cond = mission.get("condition", {})
         if "catch_id" in cond:
             target = str(cond["catch_id"])
             req = cond.get("catch_count", 1)
             if target == "201":
-                # [FIX] Ensure k is string to prevent 'startswith' crashes on int keys
-                current = sum(1 for k, v in self.catch_counts.items() 
-                            if (str(k) == "201" or str(k).startswith("201_")) and v > 0)
+                current = sum(1 for k, v in self.catch_counts.items()
+                              if (str(k) == "201" or str(k).startswith("201_")) and v > 0)
             else:
                 current = self.catch_counts.get(target, 0)
-            
+
             prog_text = f"\n(Progress: {current}/{req})"
             m_copy["details"] += prog_text
             m_copy["desc"] += prog_text
@@ -278,57 +264,50 @@ class StoryManager:
         """Generates a string representation of caught Unown forms for the UI."""
         if self.inventory.get("UNOWN_REPORT", 0) == 0:
             return "You don't have the Unown Report."
-            
+
         alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
         caught_forms = []
-        
+
         for char in alphabet:
             key = f"201_{char.lower()}"
             if self.catch_counts.get(key, 0) > 0:
                 caught_forms.append(char)
             elif char == "A" and self.catch_counts.get("201_normal", 0) > 0:
-                # [FIX] Treat 'normal' form as 'A' for the report display
                 caught_forms.append(char)
             else:
                 caught_forms.append("_")
-                
-        # Handle special forms
-        if self.catch_counts.get("201_exclamation", 0) > 0: caught_forms.append("!")
-        if self.catch_counts.get("201_question", 0) > 0: caught_forms.append("?")
-        
+
+        if self.catch_counts.get("201_exclamation", 0) > 0:
+            caught_forms.append("!")
+        if self.catch_counts.get("201_question", 0) > 0:
+            caught_forms.append("?")
+
         formatted_list = " ".join(caught_forms)
         total = sum(1 for c in caught_forms if c != "_")
-        
+
         return f"UNOWN REPORT - Total Found: {total}/28\n\n{formatted_list}"
 
     def get_all_journal_entries(self):
         """Returns all missions categorized by Active or Completed status."""
         all_missions = self.game.loader.area_data.get("JOURNAL_MISSIONS", [])
         entries = []
-        
-        # Pre-calculate active IDs once for efficiency
+
         active_missions = self.get_active_missions()
         active_ids = {act["id"] for act in active_missions}
 
         for m in all_missions:
             cond = m.get("condition", {})
-            # Filter by current region relevance
             if "required_region" in cond and self.get_current_region() != cond["required_region"]:
-                 continue
+                continue
 
             status = "INACTIVE"
             is_completed = False
 
-            # Priority 1: Explicit completion flag
             if m.get("completed_flag"):
                 is_completed = self.story_flags.get(m["completed_flag"], False)
-            
-            # Priority 2: Simple 'Visit' missions (Only complete if NOT currently at that start location)
-            # This prevents discovery missions from completing the moment they are given.
+
             elif "visited" in cond and not m.get("completed_flag"):
                 has_visited = self.story_flags.get(f"visited_{cond['visited']}", False)
-                # Logic: If the mission is TO visit somewhere, but we are already there, 
-                # it only counts as completed if we've seen it before or if it's a side-quest.
                 is_completed = has_visited and m["type"] == "SIDE"
 
             if is_completed:
@@ -336,12 +315,12 @@ class StoryManager:
             else:
                 if m["id"] in active_ids:
                     status = "ACTIVE"
-            
+
             if status != "INACTIVE":
                 m_copy = self._prepare_mission_for_ui(m)
                 m_copy["status"] = status
                 entries.append(m_copy)
-                
+
         return entries
 
     def has_unread_missions(self):
@@ -435,18 +414,15 @@ class StoryManager:
 
             if leader and prog_val > len(trainers):
                 badge = leader.get("badge_reward")
-                # [FIX] Use explicit region from data
                 region = area_data.get("region", "KANTO")
                 if badge and badge not in self.badges.get(region, []):
                     print(f"Sync: Awarding missing {badge} Badge for {area_key}!")
                     self.badges.setdefault(region, []).append(badge)
-            
-            # [FIX] Specific recovery for the League Title
+
             if area_key == "INDIGO_PLATEAU" and prog_val > len(trainers):
                 if not self.story_flags.get("beat_champion"):
                     self.story_flags["beat_champion"] = True
 
-        # Run key item and catch sync to ensure data integrity
         self.sync_key_items()
         self.sync_catch_counts()
 
@@ -455,9 +431,8 @@ class StoryManager:
         if not hasattr(self, "inventory") or self.inventory is None:
             self.inventory = {}
 
-        # Mapping: Badge earned -> Item granted by Leader
         badge_to_item = {
-            "BOULDER": "OLD_ROD",
+            "BOULDER": "TOWN_MAP",
             "CASCADE": "BIKE_VOUCHER",
             "THUNDER": "EXP_SHARE",
             "RAINBOW": "COIN_CASE",
@@ -466,10 +441,9 @@ class StoryManager:
             "VOLCANO": "VOLCANO_PASS",
             "EARTH": "CERULEAN_CAVE_MAP"
         }
-        
-        # Johto Mapping: ZEPHYR -> EXP_SHARE, etc.
+
         johto_badge_to_item = {
-            "ZEPHYR": "EXP_SHARE",
+            "ZEPHYR": "JOHTO_MAP",
             "HIVE": "OLD_ROD",
             "PLAIN": "SQUIRT_BOTTLE",
             "FOG": "SUPER_ROD",
@@ -481,23 +455,20 @@ class StoryManager:
 
         for badge, item in badge_to_item.items():
             if badge in self.badges and self.inventory.get(item, 0) == 0:
-                # Special bypass: if you already have the BICYCLE, you don't need the VOUCHER
                 if item == "BIKE_VOUCHER" and self.inventory.get("BICYCLE", 0) > 0:
                     continue
                 print(f"Sync: Awarding missing {item} for {badge} Badge!")
                 self.inventory[item] = 1
-                
+
         for badge, item in johto_badge_to_item.items():
             if badge in self.badges["JOHTO"] and self.inventory.get(item, 0) == 0:
                 print(f"Sync: Awarding missing {item} for Johto {badge} Badge!")
                 self.inventory[item] = 1
 
-        # [FIX] Ensure Unown Report is granted upon visiting the Ruins
         if self.story_flags.get("visited_RUINS_OF_ALPH") and self.inventory.get("UNOWN_REPORT", 0) == 0:
             print("Sync: Awarding missing UNOWN_REPORT!")
             self.inventory["UNOWN_REPORT"] = 1
 
-        # Flag-based items
         if self.story_flags.get("tower_ghost_defeated"):
             if self.inventory.get("POKE_FLUTE", 0) == 0:
                 print("Sync: Awarding missing POKE_FLUTE!")
@@ -509,7 +480,7 @@ class StoryManager:
     def serialize(self):
         return {
             "current_area_key": self.current_area_key,
-            "badges": self.badges, # Now a dict
+            "badges": self.badges,
             "active_badge_region": self.active_badge_region,
             "balls_left": self.balls_left,
             "current_streak": self.current_streak,
@@ -522,12 +493,15 @@ class StoryManager:
             "inventory": self.inventory,
             "notified_missions": self.notified_missions,
             "player_team": [
-                {"id": p.id, "form": p.form, "shiny": p.is_shiny, "wins": p.wins}
+                {"id": p.id, "form": p.form, "shiny": p.is_shiny, "wins": p.wins, "hp": p.current_hp, "stage": p.stage}
                 for p in self.player_team
             ],
             "pc_pokemon": [
-                {"id": p.id, "form": p.form, "shiny": p.is_shiny, "wins": p.wins}
-                for p in self.pc_pokemon
+                {
+                    "id": p.id, "form": p.form, "shiny": p.is_shiny, "wins": p.wins,
+                    "slot": i, "hp": p.current_hp, "stage": p.stage
+                } if p is not None else None
+                for i, p in enumerate(self.pc_pokemon)
             ],
             "starting_region": self.starting_region,
             "rival_starter_id": (
@@ -543,13 +517,12 @@ class StoryManager:
     def deserialize(self, data, loader):
         self.starting_region = data.get("starting_region", "KANTO")
         self.current_area_key = data.get("current_area_key", "PALLET_TOWN")
-        # Load as dict, fallback to Kanto list for legacy saves
         raw_badges = data.get("badges", [])
         if isinstance(raw_badges, list):
             self.badges = {"KANTO": raw_badges, "JOHTO": []}
         else:
             self.badges = raw_badges
-            
+
         self.active_badge_region = data.get("active_badge_region", "KANTO")
         self.defeated_trainers = {
             k: set(v) for k, v in data.get("defeated_trainers", {}).items()
@@ -558,9 +531,8 @@ class StoryManager:
         self.balls_left = data.get("balls_left", 5)
         self.current_streak = data.get("current_streak", 0)
         self.money = data.get("money", 3000)
-        # [FIX] Keep as strings to support Unown forms like "201_a"
         self.catch_counts = data.get("catch_counts", {})
-        
+
         self.inventory = data.get("inventory", {})
         self.notified_missions = data.get("notified_missions", [])
 
@@ -573,10 +545,16 @@ class StoryManager:
             )
             pokemon = Pokemon(raw, loader.game.assets, size_mult=2.5)
             pokemon.wins = p_data.get("wins", 0)
+            if "hp" in p_data:
+                pokemon.current_hp = p_data["hp"]
+            if "stage" in p_data:
+                pokemon.stage = p_data["stage"]
             self.player_team.append(pokemon)
 
-        self.pc_pokemon = []
-        for p_data in data.get("pc_pokemon", []):
+        self.pc_pokemon = [None] * 300
+        for i, p_data in enumerate(data.get("pc_pokemon", [])):
+            if i >= 300 or p_data is None:
+                continue
             raw = loader.fetch_specific(
                 p_data["id"],
                 form=p_data.get("form", "normal"),
@@ -584,12 +562,16 @@ class StoryManager:
             )
             pokemon = Pokemon(raw, loader.game.assets, size_mult=2.5)
             pokemon.wins = p_data.get("wins", 0)
-            self.pc_pokemon.append(pokemon)
+            if "hp" in p_data:
+                pokemon.current_hp = p_data["hp"]
+            if "stage" in p_data:
+                pokemon.stage = p_data["stage"]
+            self.pc_pokemon[i] = pokemon
 
         rid = data.get("rival_starter_id")
         if rid:
             self.rival_starter_raw = loader.fetch_specific(rid)
-            
+
         urid = data.get("user_rival_starter_id")
         if urid:
             self.user_rival_starter_raw = loader.fetch_specific(urid)
@@ -615,7 +597,6 @@ class StoryManager:
                 else:
                     return gym_bg_config[0]
 
-        # 2. Specific Battle Background (Standard Gyms)
         if "battle" in backgrounds:
             return backgrounds["battle"]
 
