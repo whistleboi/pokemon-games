@@ -63,34 +63,17 @@ The data lives in JSON region files under `assets/`, named `pokemon_area_data.js
 - **Johto start, then Kanto:** a Johto Champion visiting Oak gets the National Dex, the Kanto badge case and a Kanto starter choice. Elm won't give a second Johto starter.
 - **Dex coverage:** every species from Gen 1–9 is obtainable in its own region. Non-generation species may appear anywhere. A few later-generation evolution exceptions get spaces in the regional dex. The Paldean form sprites are IDs 2055–2058 (`.png`).
 - **Johto starters:** they stay as rare wild encounters (the user decided this): Chikorita in the Johto Safari Zone, Cyndaquil in Burned Tower, Totodile at the Whirl Islands.
-- **XP:**
-  - Each Pokémon stores `xp`, with `wins = xp // 10`. Constants: `TIER_XP = 150`, sub-stage costs (20, 30, 40, 60), and sub-stages that give slight stat, HP and damage boosts.
-  - Battle XP is relative to stage. A stronger foe gives +25%, and a weaker foe or one with a stat disadvantage gives −25%. The steps add together and the total is clamped to 0.5–1.75.
-  - The XP bar shows sub-stage segments.
-- **Real HP:**
-  - Max HP uses the games' formula: floor(2 × base HP × level / 100) + level + 10.
-  - The level comes from the stage via `LEVEL_BY_STAGE = (15, 15, 35, 55)` in `src/pokemon/data.py`. Sub-stages move it part of the way toward the next stage.
-  - Examples: Charmander 36, Charizard 150, Chansey 220, Snorlax 241.
-  - The old 20/60/90 scale still exists as `battle_hp_scale()`.
-  - Saves store `"hp_real": True`. Older saves convert stored HP to the same share of the new maximum.
-- **Damage (still a share of HP):**
-  - Each hit is rolled on the old 20/60/90 scale from tables by stage: normal (0, 7, 20, 30), super effective (0, 10, 28, 42), not very effective (0, 4, 12, 18).
-  - Sub-stages interpolate between those values. Then come the stat modifier, a random spread of ±2, a 10% chance of a ×1.5 critical hit, and the weather factor.
-  - The result, as a share of the defender's old-scale HP, is applied to its real HP, so a 50% hit is always 50%.
-  - The opponent attacks every turn.
-- **Stat modifier (`_stat_mod`, −2 to +2):**
-  - The attacker's offense stat (Attack or Sp. Atk, matching the move's physical or special category) adds +1 if strong and −1 if weak.
-  - The defender's matching Defense or Sp. Def does the reverse.
-  - A base stat of 100 or more counts as strong, below 50 counts as weak (`Pokemon.stat_tier`).
-  - Speed is deliberately excluded (the user's decision: Speed already decides who strikes first).
-  - The XP "easy foe" penalty applies when the foe's modifier against you is negative.
-- **Move choice (`_pick_move` / `_ready_attacks`):**
-  - Runs before every attack.
-  - Picks the attacker's strongest same-type damaging move, scored as power × type effectiveness × rain/sun factor.
-  - Self-KO and one-hit KO moves are skipped, and exact ties are broken at random.
-  - The chosen move's type sets `adv_opp`/`adv_player` and the weather boost. Its category (physical or special) picks the stats for the stat modifier.
-  - If no move qualifies, the attacker uses Tackle, typed as its best type.
-  - The type chart stores immunities as 0.5. That looks intentional and was left alone.
+- **Real levels (replaced stages, sub-stages, wins and badge stage caps):**
+  - Each Pokemon stores `level` (1-100), `xp` (into the level), `friendship` and `counters` (battle feats). Saves store all four; old saves convert stage + XP to a level (`Pokemon.legacy_level`).
+  - Fast XP: a level costs 10 XP below Lv 20, then 15/20/30/40 per band of 20 (2,250 XP from Lv 5 to 100). A win is 10 XP, +-25% per 4 levels of gap, -25% for a stat-weak foe, x1.5 from trainers (`Pokemon.battle_xp`). Level-ups show "grew to Lv N!" and newly learned same-type moves. Rare Candy = +1 level.
+  - Data: `assets/pokemon_levels.json` (built from PokeAPI): `pairs` "fromId>toId" -> evolution rule, `min_level` per species (default level for gifts/starters/fossils), `learnsets` per species id. `assets/area_levels.json`: wild level per area (real encounter levels for 270 areas, hand-set for Paldea and story areas, towns from neighbours). Builders: scratchpad `build_levels.py`, `build_area_levels.py`, `finish_area_levels.py`.
+  - Opponents (`src/world/levels.py`): wild = area level -2..+1; route trainers area +1..3 (+4 for bosses/rivals/villain leaders); gyms by canonical order and ace levels (`GYM_ORDER`, `GYM_ACE`), Elite Four ladder, Champion ace; legendaries fixed (box legends 70, others 50, Deoxys/Arceus 80); Max Raids by star 15/25/35/50/65 with double HP.
+  - Evolution (`src/pokemon/evolution.py`): real levels; items from the Bag (Kanto stand-ins kept; plain trades use a LINKING_CORD; new items join EVOLUTION_ITEMS so marts stock them); friendship = catch 5 Pokemon with it in the party (or Soothe Bell); time of day; known move by level; party species/type; rain; Feebas beauty; battle feats (3 crits in a battle, 49+ damage in a won battle, 20 attacks, 10 wins, 3 Bisharp, 20 catches for Meltan); $9,999 for Gimmighoul; Nincada leaves a Shedinja. Regional-only evolutions stay with regional forms. The catch-5 evolution was removed. The summary page shows how each Pokemon evolves.
+  - Damage (`src/pokemon/balance.py`): the main-series formula step by step with the games' rounding: base = floor(floor(floor(2Lv/5+2) x Power x A/D)/50)+2, then weather, crit (1/24, x1.5), random 85-100%, STAB x1.5, type. Stats at level = 2xBasexLv/100+5. Sandstorm raises Rock Sp. Def x1.5 (special moves) and snow raises Ice Defense x1.5 (physical). No caps, no stat-tier modifiers, no Mega bonus (the user removed them); Dynamax raid bosses keep double HP.
+  - Moves are level-gated by the learnset (TM/tutor moves from Lv 40); the strongest same-type move is still picked by power x type x weather.
+  - Level cap option (Options screen button, `story.level_cap_mode`, saved): STORY (default) = XP and Rare Candy stop at the next Gym Leader's ace level in the region (Champion's ace after 8 badges, none after becoming Champion); OBEDIENCE = no XP cap, but Pokemon above Lv 20 + 10 per region badge ignore you with chance (L-cap)/(L+cap); NONE = uncapped. Test: `check_levelcap.py`.
+  - Battle HUD shows "Lv N" for both sides; the XP bar fills per level (gold at Lv 100). Party shows levels.
+  - Tests: `check_levels.py` (replaces the retired `check_realhp.py` and `check_xp_silph.py`, which tested the stage system).
 - **Weather (modern rules):**
   - A battle in a weather area starts with that weather for 5 turns, or 8 if the player owns the matching rock.
   - Rain: Water ×1.5, Fire ×0.5. Sun is the reverse.
@@ -130,8 +113,8 @@ The data lives in JSON region files under `assets/`, named `pokemon_area_data.js
   - Test: `check_weather_dial.py`.
 - **Mega Evolution & Primal Reversion (`src/pokemon/forms.py`, `assets/mega_forms.json`):**
   - 48 classic Megas + Primal Groudon/Kyogre: stats/types from PokeAPI, sprites in `sprites/pokemon/mega/` (`back/`, `shiny/`, `back/shiny/`), named `<id>_<form>.png`. Item icons in `sprites/items/`.
-  - Player: Key Stone (`MEGA_BRACELET` or Kalos `MEGA_RING`) + the species' stone, and it Mega Evolves automatically on entering battle, one per side per battle. Rayquaza needs no stone. Groudon + `RED_ORB` / Kyogre + `BLUE_ORB` Primal Revert on entry (doesn't use up the Mega).
-  - Foes: a trainer's `"mega": <species id>` (applied by `forms.mark_trainer_team` at all four team-building sites); a boss with `"primal": true`.
+  - Player: a MEGA (or PRIMAL) button appears left of MATH/BAG/PKMN/RUN when the active Pokemon can transform: Key Stone (`MEGA_BRACELET` or Kalos `MEGA_RING`) + the species' stone (Rayquaza needs no stone), or Groudon + `RED_ORB` / Kyogre + `BLUE_ORB`. Pressing it transforms without using the turn. Only ONE Mega or Primal per side per battle (`mega_used`); the button then disappears.
+  - Foes transform automatically on entry, also one per battle: a trainer's `"mega": <species id>` (applied by `forms.mark_trainer_team` at all four team-building sites); a boss with `"primal": true`.
   - Extreme weather while that Pokemon is out (no countdown, rocks can't override it, ends when it leaves): `HARSH_SUN` (Fire x1.5, Water fizzles for 0), `HEAVY_RAIN` (Water x1.5, Fire fizzles), `STRONG_WINDS` (Electric/Ice/Rock vs Flying halved). Move choice skips moves that would fizzle.
   - Forms revert after battle (`revert_transform` also calls `forms.revert_form`; `exit_battle` and catches revert too).
   - Test: `check_forms.py`.
@@ -144,6 +127,11 @@ The data lives in JSON region files under `assets/`, named `pokemon_area_data.js
   - Route/town conditions accept `not:<flag>` and lists; route `BOSS` buttons can carry their own `"boss"` dict (`primal`, `background`).
   - Journal: Hoenn missions rewritten in ORAS order with `required_region` + new `region_badges_min/less`; the journal now prefers the current region's main mission.
   - Test: `check_oras.py`.
+- **Hisui (Legends: Arceus) sub-region of Sinnoh:**
+  - "Space-Time Rift (Hisui)" in Jubilife City (needs the Coal Badge) leads to JUBILIFE_VILLAGE (Professor Laventon, heal, Galaxy Team shop). Areas have `"region": "SINNOH", "subregion": "HISUI"`, so Sinnoh badges, team and weather all apply.
+  - Five areas gated by Sinnoh badges: Obsidian Fieldlands (Lv 12, free), Crimson Mirelands (Lv 24, Forest Badge), Cobalt Coastlands (Lv 32, Fen), Coronet Highlands (Lv 40, Mine), Alabaster Icelands (Lv 50, Beacon; snow). Each has a PLA-style pool, two trainers and a Noble boss (Kleavor 18, Hisuian Lilligant 32, Hisuian Arcanine 36, Hisuian Electrode 46, Hisuian Avalugg 56). Enamorus in Crimson Mirelands after the Sinnoh championship. Builder: scratchpad `build_hisui.py`.
+  - Hisuian forms (FORM_MAP 2039-2054) were removed from every other pool (Kanto Routes 5-8/10, Power Plant, Cinnabar Volcano, Hoenn New Mauville/Safari). Evolving inside Hisui gives the Hisuian form (Quilava -> Hisuian Typhlosion etc.), and Stantler/Scyther/Ursaring/Basculin can become Wyrdeer/Kleavor/Ursaluna/Basculegion there.
+  - Regional forms everywhere (`src/world/regional_forms.py`): once every Alolan, Galarian, Hisuian or Paldean form is caught (flag `forms_complete_<form>`), that region's forms join any pool (wild, headbutt, fishing, dive) containing their counterpart at about 1%. Side mission `sinnoh_hisui`. Test: `check_hisui.py`.
 - **Day/night:**
   - Applies to Johto, Sinnoh, Alola and Paldea. Night is before 6:00 or from 20:00.
   - Encounter weights shift rather than lock: a species in its own time of day gets ×2 weight, and one out of its time gets ×0.25 (never 0).
@@ -225,7 +213,8 @@ The scripts live in the session scratchpad, which is temporary and may be gone n
 ## Not started / ideas
 
 - Fog weather (not implemented; asked about on 2026-10-19).
-- ORAS extras not done: Soaring/Eon Flute, Mirage Spots, DexNav, Secret Bases. Mega Evolution is automatic on switch-in (no MEGA button).
+- BDSP mechanics for Sinnoh (requested 2026-10-19, not started yet): Grand Underground (Explorer Kit, Hideaways, digging), Ramanas Park slates, Honey Trees.
+- ORAS extras not done: Soaring/Eon Flute, Mirage Spots, DexNav, Secret Bases.
 - Side missions from other regions (e.g. Galar's 'The Wild Area') have no `required_region`, so they show in every region.
 
 ### From the original feature list

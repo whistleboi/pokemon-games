@@ -121,6 +121,7 @@ class Game:
         self.loader = PokemonLoader(self)
         if loaded_evolutions:
             self.loader.evolution_map = loaded_evolutions
+        self.loader.load_level_data(self.assets.assets_dir)
 
         if loaded_area_data:
             self.loader.area_data = loaded_area_data

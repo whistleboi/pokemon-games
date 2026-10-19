@@ -1117,6 +1117,22 @@ class BagState(GameState):
             return
 
         pokemon = party[slot_index]
+        from src.pokemon import evolution
+        hit = evolution.item_evolution(self.game, pokemon, self.selected_item)
+        if hit:
+            entry, target_id = hit
+            target_form = entry.split("_", 1)[1].lower() if "_" in entry else "normal"
+            self.game.story_manager.inventory[self.selected_item] = max(
+                0, self.game.story_manager.inventory.get(self.selected_item, 0) - 1)
+            self.game.change_state(EvolutionState(
+                self.game, pokemon, target_id, slot_index, next_form=target_form,
+                return_state=self.previous_state))
+            return
+        timed = [r for _, _, r in evolution.evolution_options(self.game, pokemon)
+                 if r.get("item") == self.selected_item and r.get("time")]
+        if timed:
+            self.game.show_dialogue([f"Nothing happened... try it during the {timed[0]['time']}."])
+            return
         evolution_data = self.evo_items_map.get(self.selected_item, {})
 
         p_key = pokemon.name.upper()
@@ -1152,60 +1168,41 @@ class BagState(GameState):
             return
 
         pokemon = party[slot_index]
-
-        # ARCHITECT: Use standardized key generation to match regional variants in evolution_map
-        p_name = pokemon.name.upper()
-        key = p_name
-        if pokemon.form and pokemon.form != "normal":
-            key = f"{p_name}_{pokemon.form.upper()}"
-
-        # ARCHITECT: Check for item locks to prevent Rare Candy from bypassing item requirements
-        item_locks = self.game.loader.evolution_map.get("ITEM_LOCKS", [])
-        is_item_locked = (key in item_locks) or (p_name in item_locks) or not feebas_ready(pokemon)
-
-        next_entries = self.game.loader.evolution_map.get(key)
-        if not next_entries and key != p_name:
-            next_entries = self.game.loader.evolution_map.get(p_name)
-
-        if not next_entries or is_item_locked:
-            if pokemon.effective_stage < 3:
-                pokemon.stage += 1
-                self.game.story_manager.inventory["RARE_CANDY"] -= 1
-                if self.game.story_manager.inventory["RARE_CANDY"] <= 0:
-                    del self.game.story_manager.inventory["RARE_CANDY"]
-
-                if self.game.assets.heal_sfx:
-                    self.game.assets.heal_sfx.play()
-                self.game.show_dialogue([f"{pokemon.display_name} grew stronger!", f"It is now a Stage {pokemon.effective_stage} Pokémon!"])
-            else:
-                self.game.show_dialogue([f"{pokemon.display_name} is already at its maximum potential!"])
-
+        from src.pokemon import evolution
+        from src.world import levels
+        cap = levels.xp_cap(self.game.story_manager)
+        if pokemon.level >= min(cap, pokemon.MAX_LEVEL):
+            msg = (f"{pokemon.display_name} is already Lv 100!" if pokemon.level >= pokemon.MAX_LEVEL
+                   else f"{pokemon.display_name} can't grow past Lv {cap} until you beat the next Gym!")
+            self.game.show_dialogue([msg])
             self.game.change_state(self)
             self.refresh_buttons()
             return
-
-        self.game.story_manager.inventory["RARE_CANDY"] -= 1
-        if self.game.story_manager.inventory["RARE_CANDY"] <= 0:
-            del self.game.story_manager.inventory["RARE_CANDY"]
-
-        next_entry = self.game.story_manager.pick_evolution_branch(next_entries)
-        if "_" in next_entry:
-            base_name, form_part = next_entry.rsplit("_", 1)
-            next_form = form_part.lower()
-        else:
-            base_name = next_entry
-            next_form = "normal"
-
-        next_id = self.game.name_to_id.get(base_name.upper())
-
-        if next_id:
-            from src.states.systems import EvolutionState
-            self.game.change_state(
-                EvolutionState(
-                    self.game, pokemon, next_id, slot_index, next_form=next_form, context="party",
-                    return_state=self.previous_state
-                )
-            )
+        before = evolution.known_moves(self.game, pokemon)
+        pokemon.level_up(1)
+        inv = self.game.story_manager.inventory
+        inv["RARE_CANDY"] -= 1
+        if inv["RARE_CANDY"] <= 0:
+            del inv["RARE_CANDY"]
+        if self.game.assets.heal_sfx:
+            self.game.assets.heal_sfx.play()
+        ready = evolution.ready_evolutions(self.game, pokemon)
+        if ready:
+            entry = self.game.story_manager.pick_evolution_branch(ready)
+            base_name, next_form = (entry.rsplit("_", 1) + ["normal"])[:2] if "_" in entry else (entry, "normal")
+            next_id = self.game.name_to_id.get(base_name.upper())
+            if next_id:
+                self.game.change_state(EvolutionState(
+                    self.game, pokemon, next_id, slot_index, next_form=next_form.lower(), context="party",
+                    return_state=self.previous_state))
+                return
+        new_moves = sorted(evolution.known_moves(self.game, pokemon) - before)
+        lines = [f"{pokemon.display_name} grew to Lv {pokemon.level}!"]
+        lines += [f"{pokemon.display_name} learned {m.replace('-', ' ')}!" for m in new_moves[:2]]
+        self.game.show_dialogue(lines)
+        self.game.change_state(self)
+        self.refresh_buttons()
+        return
 
     def on_pokemon_select_pokeblock(self, slot_index):
         party = self.game.story_manager.player_team
@@ -1222,7 +1219,8 @@ class BagState(GameState):
             if self.game.assets.heal_sfx:
                 self.game.assets.heal_sfx.play()
             # A Feebas that has grown enough only needed Beauty: it evolves right away.
-            if p.name.upper() == "FEEBAS" and feebas_ready(p) and p.wins >= 15:
+            from src.pokemon import evolution
+            if p.name.upper() == "FEEBAS" and evolution.ready_evolutions(self.game, p):
                 milotic = self.game.name_to_id.get("MILOTIC")
                 if milotic:
                     self.game.change_state(EvolutionState(
@@ -2166,9 +2164,9 @@ class EvolutionState(GameState):
                 self.evolved_pokemon_obj = Pokemon(
                     raw_data, self.game.assets, size_mult=1.5
                 )
-                self.evolved_pokemon_obj.wins = 0
                 # What the Pokémon has earned stays with it through evolution.
-                for attr in ("condition", "sheen", "ribbons", "gmax_factor", "caught_region"):
+                for attr in ("level", "xp", "friendship", "counters", "condition", "sheen", "ribbons",
+                             "gmax_factor", "caught_region"):
                     if hasattr(self.pokemon, attr):
                         setattr(self.evolved_pokemon_obj, attr, getattr(self.pokemon, attr))
 
@@ -2193,7 +2191,9 @@ class EvolutionState(GameState):
                     else:
                         self.game.story_manager.player_team[self.team_index] = self.evolved_pokemon_obj
 
+                    self.evolved_pokemon_obj.current_hp = self.evolved_pokemon_obj.get_max_hp()
                     self.game.data.add_pokemon(self.evolved_pokemon_obj)
+                    self._maybe_shedinja()
 
                     if self.evolved_pokemon_obj.is_shiny:
                         non_shiny_raw = self.game.loader.fetch_specific(
@@ -2211,6 +2211,19 @@ class EvolutionState(GameState):
 
         elif self.phase == "END" and self.timer <= 0:
             self._return()
+
+    def _maybe_shedinja(self):
+        """Nincada -> Ninjask also leaves a Shedinja behind if the party has room."""
+        team = self.game.story_manager.player_team
+        if self.pokemon.id != 290 or self.evolution_id != 291 or len(team) >= 6 or self.context == "pc":
+            return
+        shed = Pokemon(self.game.loader.fetch_specific(292), self.game.assets, size_mult=2.5)
+        shed.level = self.pokemon.level
+        shed.current_hp = shed.get_max_hp()
+        shed.caught_region = getattr(self.pokemon, "caught_region", None)
+        team.append(shed)
+        self.game.data.add_pokemon(shed)
+        self.shedinja_added = True
 
     def _return(self):
         pygame.event.clear()
@@ -2353,9 +2366,8 @@ class PokemonDetailState(GameState):
 
         texts = [
             f"Name: {self.pokemon.display_name}",
-            f"Stage: {self.pokemon.effective_stage}" + (
-                f"  (growth {self.pokemon.sub_stage[0]}/{self.pokemon.sub_stage[1]})"
-                if self.pokemon.sub_stage else "  (fully grown)"),
+            f"Level: {self.pokemon.level}" + (
+                f"  (XP {self.pokemon.xp}/{self.pokemon.xp_to_next})" if self.pokemon.xp_to_next else "  (MAX)"),
             f"HP: {self.pokemon.current_hp}/{self.pokemon.get_max_hp()}",
             f"Types: {'/'.join(self.pokemon.types)}"
         ]
@@ -2366,10 +2378,15 @@ class PokemonDetailState(GameState):
         if season_form:
             texts.append(f"Coat: {season_form}")
 
-        catch_count = self.game.story_manager.catch_counts.get(self.pokemon.id, 0)
-        catch_str = f"Catches Banked: {catch_count}/5"
-
-        texts.append(catch_str)
+        from src.pokemon import evolution
+        options = evolution.evolution_options(self.game, self.pokemon)
+        if options:
+            entry, _, rule = options[0]
+            name = entry.split("_")[0].replace("-", " ").title()
+            more = f" (or {len(options) - 1} more)" if len(options) > 1 else ""
+            evolve_line = f"Evolves into {name}{more}: {evolution.condition_hint(rule)}"
+        else:
+            evolve_line = None
 
         for t in texts:
             Utils.draw_multiline_text(
@@ -2380,6 +2397,9 @@ class PokemonDetailState(GameState):
                 align="left"
             )
             y += 50
+        if evolve_line:
+            Utils.draw_multiline_text(self.game.screen, evolve_line, self.game.assets.fonts["small"], GOLD,
+                                      info_x, y + 4, max_width=self.game.width - 260, center=False, align="left")
 
         self._draw_condition()
         self.game.ui_manager.draw(self.game.screen)

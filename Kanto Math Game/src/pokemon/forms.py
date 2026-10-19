@@ -3,10 +3,10 @@
 Battle-only form changes, Omega Ruby / Alpha Sapphire rules.
 
 - Mega Evolution: the trainer needs a Key Stone (Mega Bracelet or Mega Ring) and the
-  Pokemon's Mega Stone. Only one Pokemon per side can Mega Evolve in a battle.
-  Rayquaza needs no stone (it knows Dragon Ascent).
-- Primal Reversion: Groudon with the Red Orb or Kyogre with the Blue Orb reverts the
-  moment it enters battle. It doesn't use up the side's Mega Evolution.
+  Pokemon's Mega Stone. Rayquaza needs no stone (it knows Dragon Ascent).
+- Primal Reversion: Groudon with the Red Orb or Kyogre with the Blue Orb.
+- The player chooses when with the MEGA / PRIMAL battle button. Only one Pokemon per
+  side can Mega Evolve or Primal Revert in a battle.
 - Mega Rayquaza, Primal Groudon and Primal Kyogre bring their own extreme weather.
 
 Forms come from assets/mega_forms.json (stats, types, item, sprite name); sprites live
@@ -59,30 +59,30 @@ def has_key_stone(inventory):
     return any(inventory.get(k, 0) > 0 for k in KEY_STONES)
 
 
-def player_form(assets, pokemon, inventory, mega_used):
-    """The form the player's Pokemon changes into on entering battle, or None."""
-    if is_changed(pokemon) or pokemon.form != "normal":
+def player_form(assets, pokemon, inventory, form_used):
+    """The form the player's Pokemon can change into right now (MEGA/PRIMAL button), or None."""
+    if form_used or is_changed(pokemon) or pokemon.form != "normal":
         return None
     for f in forms_for(assets, pokemon.id):
         if f["form"] == "primal":
             if inventory.get(f["item"], 0) > 0:
                 return f
             continue
-        if mega_used or not has_key_stone(inventory):
+        if not has_key_stone(inventory):
             continue
         if pokemon.id == RAYQUAZA or inventory.get(f["item"], 0) > 0:
             return f
     return None
 
 
-def opponent_form(assets, pokemon, mega_used):
-    """Foes change form only when flagged (a trainer's Mega Pokemon or a Primal boss)."""
-    if is_changed(pokemon) or pokemon.form != "normal":
+def opponent_form(assets, pokemon, form_used):
+    """Foes change form on entering battle, only when flagged (a trainer's Mega Pokemon or a Primal boss)."""
+    if form_used or is_changed(pokemon) or pokemon.form != "normal":
         return None
     for f in forms_for(assets, pokemon.id):
         if f["form"] == "primal" and getattr(pokemon, "primal_ready", False):
             return f
-        if f["form"] != "primal" and getattr(pokemon, "mega_ready", False) and not mega_used:
+        if f["form"] != "primal" and getattr(pokemon, "mega_ready", False):
             return f
     return None
 
@@ -129,6 +129,26 @@ def revert_form(pokemon):
     for k, v in state.items():
         setattr(pokemon, k, v)
     del pokemon._form_state
+    # HP went up to stage 3 levels while transformed: keep the same share of HP afterwards.
+    scale = getattr(pokemon, "_form_hp", None)
+    if scale:
+        before, during = scale
+        if pokemon.current_hp > 0 and during:
+            pokemon.current_hp = max(1, min(before, round(pokemon.current_hp * before / during)))
+        del pokemon._form_hp
+
+
+# Dynamax raid bosses have double HP, as in the games.
+DYNAMAX_HP_MULT = 2
+
+
+def is_dynamax(pokemon):
+    return bool(getattr(pokemon, "raid_stage", None))
+
+
+def is_powered(pokemon):
+    """Mega Evolved, Primal Reverted, or a Dynamax/Gigantamax raid boss."""
+    return bool(pokemon) and (is_changed(pokemon) or is_dynamax(pokemon))
 
 
 def form_weather(pokemon):

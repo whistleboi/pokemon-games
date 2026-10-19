@@ -296,6 +296,8 @@ class PokemonLoader:
                 "is_shiny": is_shiny,
                 "form": final_form,
                 "stage": stage,
+                "meta_id": lookup_id,
+                "level": self.default_level(lookup_id),
                 "types": moveset_data.get("types", []),
                 "stats": moveset_data.get("stats", DEFAULT_BASE_STATS),
             }
@@ -521,6 +523,7 @@ class PokemonLoader:
                 "is_shiny": is_shiny,
                 "form": form,
                 "stage": stage,
+                "level": self.default_level(meta_id),
                 "types": p_types,
                 "stats": p_stats,
             }
@@ -538,6 +541,39 @@ class PokemonLoader:
                 "types": [],
                 "stats": {},
             }
+
+    def load_level_data(self, assets_dir):
+        """Real levels: evolution rules, minimum levels and learnsets (assets/pokemon_levels.json).
+        Item evolutions from it join EVOLUTION_ITEMS (so marts stock the items), without
+        replacing the stand-ins the region data already uses."""
+        import json
+        path = os.path.join(assets_dir, "pokemon_levels.json")
+        try:
+            with open(path, encoding="utf-8") as f:
+                self.level_data = json.load(f)
+        except OSError:
+            self.level_data = {}
+            return
+        names = self.assets.pokemon_names
+        items = self.evolution_map.setdefault("EVOLUTION_ITEMS", {})
+        have = {(src.upper(), dst.split("_")[0].upper()) for table in items.values() for src, dst in table.items()}
+        for pair, rule in self.level_data.get("pairs", {}).items():
+            if "item" not in rule:
+                continue
+            a, b = pair.split(">")
+            src, dst = names.get(a, "").upper(), names.get(b, "").upper()
+            if src and dst and (src, dst) not in have:
+                items.setdefault(rule["item"], {})[src] = dst
+
+    def default_level(self, p_id):
+        """Level for a newly made Pokemon: legendaries at their fixed level, others at the
+        lowest level the species shows up (its evolution level, or Lv 5)."""
+        from src.pokemon.balance import is_legendary
+        from src.world.levels import legendary_level
+        if is_legendary(p_id):
+            return legendary_level(p_id)
+        mins = getattr(self, "level_data", {}).get("min_level", {})
+        return max(5, int(mins.get(str(p_id), 5)))
 
     def get_stage(self, species_name):
         if not hasattr(self, "reverse_evo_map"):

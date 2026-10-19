@@ -153,6 +153,12 @@
     "sinnoh_barry_house": [
       "{rival_name}'s Mom: Oh, {player_name}! {rival_name} ran off again in a hurry.",
       "{rival_name}'s Mom: That child never walks anywhere. I hope he remembered his shoes!"
+    ],
+    "hisui_laventon": [
+      "Laventon: Welcome to Hisui, the land that will one day be called Sinnoh!",
+      "The Pokemon here look different from the ones you know. Hisuian forms, we call them.",
+      "They only live here... for now. Catch every one of them and who knows where they'll turn up!",
+      "Be careful of the Noble Pokemon. Calm them and they'll trust you."
     ]
   },
   "STORY_PROGRESSION": {
@@ -235,7 +241,8 @@
         { "text": "Route 202", "target_area": "SINNOH_ROUTE_202" },
         { "text": "Route 203", "target_area": "SINNOH_ROUTE_203" },
         { "text": "Route 204", "target_area": "SINNOH_ROUTE_204" },
-        { "text": "Route 218", "target_area": "SINNOH_ROUTE_218", "flag_condition": "visited_CANALAVE_CITY" }
+        { "text": "Route 218", "target_area": "SINNOH_ROUTE_218", "flag_condition": "visited_CANALAVE_CITY" },
+        { "text": "Space-Time Rift (Hisui)", "target_area": "JUBILIFE_VILLAGE", "condition": "has_coal_badge" }
       ],
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
@@ -2332,6 +2339,232 @@
       ],
       "area_boss": { "id": 490, "name": "Manaphy", "victory_flag": "SEA_TEMPLE_boss_defeated" },
       "next_area": "SINNOH_ROUTE_223"
+    },
+    "OBSIDIAN_FIELDLANDS": {
+      "area_type": "wild_route",
+      "route_name": "Obsidian Fieldlands",
+      "region": "SINNOH",
+      "subregion": "HISUI",
+      "battle_type": "grass",
+      "wild_pool_percentages": "OBSIDIAN_FIELDLANDS_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Galaxy Team Surveyor Ward",
+          "class": "ACE_TRAINER",
+          "sprite": "scientist.png",
+          "team": [399, 396],
+          "rewards": { "balls": 3 }
+        },
+        {
+          "name": "Diamond Clan Warden Mai",
+          "class": "ACE_TRAINER",
+          "sprite": "sage.png",
+          "team": [403, 77],
+          "rewards": { "balls": 3 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
+        {
+          "text": "CALM NOBLE KLEAVOR",
+          "action": "BOSS",
+          "condition": ["can_exit", "boss_not_defeated"],
+          "color": "GOLD"
+        },
+        { "text": "JUBILIFE VILLAGE", "action": "EXIT", "target_area": "JUBILIFE_VILLAGE", "condition": "can_exit", "color": "RED" }
+      ],
+      "area_boss": { "id": 900, "name": "Noble Kleavor", "victory_flag": "noble_kleavor_calmed", "level": 18 },
+      "next_area": "JUBILIFE_VILLAGE"
+    },
+    "CRIMSON_MIRELANDS": {
+      "area_type": "wild_route",
+      "route_name": "Crimson Mirelands",
+      "region": "SINNOH",
+      "subregion": "HISUI",
+      "battle_type": "field",
+      "wild_pool_percentages": "CRIMSON_MIRELANDS_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Galaxy Team Surveyor Kurt",
+          "class": "ACE_TRAINER",
+          "sprite": "scientist.png",
+          "team": [194, 449],
+          "rewards": { "balls": 3 }
+        },
+        {
+          "name": "Pearl Clan Warden Calaba",
+          "class": "ACE_TRAINER",
+          "sprite": "sage2.png",
+          "team": [548, 453, 92],
+          "rewards": { "balls": 3 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
+        {
+          "text": "CALM NOBLE LILLIGANT",
+          "action": "BOSS",
+          "condition": ["can_exit", "boss_not_defeated"],
+          "color": "GOLD"
+        },
+        {
+          "text": "SEEK ENAMORUS",
+          "action": "BOSS",
+          "color": "PURPLE",
+          "boss": { "id": 905, "name": "Enamorus", "victory_flag": "caught_enamorus" },
+          "condition": ["beat_sinnoh_champion", "not:caught_enamorus"]
+        },
+        { "text": "JUBILIFE VILLAGE", "action": "EXIT", "target_area": "JUBILIFE_VILLAGE", "condition": "can_exit", "color": "RED" }
+      ],
+      "area_boss": { "id": 2047, "name": "Noble Lilligant", "victory_flag": "noble_lilligant_calmed", "level": 32 },
+      "next_area": "JUBILIFE_VILLAGE"
+    },
+    "COBALT_COASTLANDS": {
+      "area_type": "wild_route",
+      "route_name": "Cobalt Coastlands",
+      "region": "SINNOH",
+      "subregion": "HISUI",
+      "battle_type": "ocean",
+      "wild_pool_percentages": "COBALT_COASTLANDS_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Galaxy Team Surveyor Zisu",
+          "class": "ACE_TRAINER",
+          "sprite": "scientist.png",
+          "team": [2044, 422, 425],
+          "rewards": { "balls": 3 }
+        },
+        {
+          "name": "Pearl Clan Warden Arezu",
+          "class": "ACE_TRAINER",
+          "sprite": "sage2.png",
+          "team": [2039, 279, 423],
+          "rewards": { "balls": 3 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
+        {
+          "text": "CALM NOBLE ARCANINE",
+          "action": "BOSS",
+          "condition": ["can_exit", "boss_not_defeated"],
+          "color": "GOLD"
+        },
+        { "text": "JUBILIFE VILLAGE", "action": "EXIT", "target_area": "JUBILIFE_VILLAGE", "condition": "can_exit", "color": "RED" }
+      ],
+      "area_boss": { "id": 2040, "name": "Noble Arcanine", "victory_flag": "noble_arcanine_calmed", "level": 36 },
+      "next_area": "JUBILIFE_VILLAGE"
+    },
+    "CORONET_HIGHLANDS": {
+      "area_type": "wild_route",
+      "route_name": "Coronet Highlands",
+      "region": "SINNOH",
+      "subregion": "HISUI",
+      "battle_type": "mountain",
+      "wild_pool_percentages": "CORONET_HIGHLANDS_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Galaxy Team Surveyor Rei",
+          "class": "ACE_TRAINER",
+          "sprite": "scientist.png",
+          "team": [2041, 95, 436],
+          "rewards": { "balls": 3 }
+        },
+        {
+          "name": "Diamond Clan Warden Melli",
+          "class": "ACE_TRAINER",
+          "sprite": "sage.png",
+          "team": [2045, 443, 207],
+          "rewards": { "balls": 3 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
+        {
+          "text": "CALM NOBLE ELECTRODE",
+          "action": "BOSS",
+          "condition": ["can_exit", "boss_not_defeated"],
+          "color": "GOLD"
+        },
+        { "text": "JUBILIFE VILLAGE", "action": "EXIT", "target_area": "JUBILIFE_VILLAGE", "condition": "can_exit", "color": "RED" }
+      ],
+      "area_boss": { "id": 2042, "name": "Noble Electrode", "victory_flag": "noble_electrode_calmed", "level": 46 },
+      "next_area": "JUBILIFE_VILLAGE"
+    },
+    "ALABASTER_ICELANDS": {
+      "area_type": "wild_route",
+      "route_name": "Alabaster Icelands",
+      "region": "SINNOH",
+      "subregion": "HISUI",
+      "battle_type": "mountain",
+      "wild_pool_percentages": "ALABASTER_ICELANDS_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Galaxy Team Surveyor Akari",
+          "class": "ACE_TRAINER",
+          "sprite": "scientist.png",
+          "team": [2048, 712, 459],
+          "rewards": { "balls": 3 }
+        },
+        {
+          "name": "Diamond Clan Warden Ingo",
+          "class": "ACE_TRAINER",
+          "sprite": "sage.png",
+          "team": [2050, 221, 478, 2045],
+          "rewards": { "balls": 3 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
+        {
+          "text": "CALM NOBLE AVALUGG",
+          "action": "BOSS",
+          "condition": ["can_exit", "boss_not_defeated"],
+          "color": "GOLD"
+        },
+        { "text": "JUBILIFE VILLAGE", "action": "EXIT", "target_area": "JUBILIFE_VILLAGE", "condition": "can_exit", "color": "RED" }
+      ],
+      "area_boss": { "id": 2053, "name": "Noble Avalugg", "victory_flag": "noble_avalugg_calmed", "level": 56 },
+      "next_area": "JUBILIFE_VILLAGE",
+      "weather": "SNOW"
+    },
+    "JUBILIFE_VILLAGE": {
+      "area_type": "town",
+      "route_name": "Jubilife Village",
+      "region": "SINNOH",
+      "subregion": "HISUI",
+      "backgrounds": { "main": "jubilife_city.png", "pokecenter": "jubilife_center.png", "pokemart": "jubilife_mart.png" },
+      "has_gym": false,
+      "travel_options": [
+        { "text": "Obsidian Fieldlands", "target_area": "OBSIDIAN_FIELDLANDS" },
+        { "text": "Crimson Mirelands", "target_area": "CRIMSON_MIRELANDS", "condition": "has_forest_badge" },
+        { "text": "Cobalt Coastlands", "target_area": "COBALT_COASTLANDS", "condition": "has_fen_badge" },
+        { "text": "Coronet Highlands", "target_area": "CORONET_HIGHLANDS", "condition": "has_mine_badge" },
+        { "text": "Alabaster Icelands", "target_area": "ALABASTER_ICELANDS", "condition": "has_beacon_badge" },
+        { "text": "Return to the Present", "target_area": "JUBILIFE_CITY" }
+      ],
+      "explore_options": [
+        { "text": "Heal", "action": "HEAL" },
+        { "text": "Galaxy Team Shop", "action": "SHOP" },
+        { "text": "Talk to Professor Laventon", "action": "NPC", "target": "hisui_laventon" }
+      ],
+      "next_area": "OBSIDIAN_FIELDLANDS",
+      "on_enter_event": null
     }
   },
   "JOURNAL_MISSIONS": [
@@ -2527,6 +2760,15 @@
       "condition": { "start_region": "SINNOH", "visited": "HEARTHOME_CITY", "flag_not": "made_mild_poffin" },
       "completed_flag": "made_mild_poffin",
       "reward": "Contest-ready Poffins"
+    },
+    {
+      "id": "sinnoh_hisui",
+      "type": "SIDE",
+      "title": "The Hisui Region",
+      "description": "A space-time rift in Jubilife City leads to ancient Hisui. Catch every Hisuian form and they'll start appearing all over the world.",
+      "condition": { "required_region": "SINNOH", "flag": "visited_JUBILIFE_CITY" },
+      "reward": "Hisuian forms everywhere",
+      "completed_flag": "forms_complete_hisuian"
     }
   ],
   "SINNOH_ROUTE_201": [396, 399],
@@ -2649,5 +2891,117 @@
   "SINNOH_TURNBACK_CAVE_DAY_PERCENTAGES": { "436": 37, "42": 31, "355": 8, "356": 24 },
   "SINNOH_TURNBACK_CAVE_NIGHT_PERCENTAGES": { "436": 24, "42": 20, "355": 40, "356": 16 },
   "SINNOH_FLOWER_PARADISE_DAY_PERCENTAGES": { "420": 43, "315": 21, "415": 36 },
-  "SINNOH_FLOWER_PARADISE_NIGHT_PERCENTAGES": { "420": 17, "315": 68, "415": 15 }
+  "SINNOH_FLOWER_PARADISE_NIGHT_PERCENTAGES": { "420": 17, "315": 68, "415": 15 },
+  "OBSIDIAN_FIELDLANDS_PERCENTAGES": {
+    "399": 12,
+    "396": 10,
+    "403": 9,
+    "265": 8,
+    "77": 6,
+    "418": 6,
+    "41": 6,
+    "74": 6,
+    "63": 4,
+    "133": 4,
+    "234": 6,
+    "123": 4,
+    "214": 3,
+    "446": 3,
+    "401": 5,
+    "415": 4,
+    "406": 4,
+    "155": 1,
+    "501": 1,
+    "722": 1,
+    "899": 1,
+    "900": 1
+  },
+  "CRIMSON_MIRELANDS_PERCENTAGES": {
+    "704": 8,
+    "453": 7,
+    "194": 8,
+    "195": 4,
+    "54": 6,
+    "449": 6,
+    "66": 5,
+    "92": 6,
+    "422": 5,
+    "548": 6,
+    "216": 6,
+    "217": 4,
+    "901": 1,
+    "220": 5,
+    "113": 3,
+    "108": 3,
+    "114": 4,
+    "438": 4,
+    "2047": 2,
+    "2051": 2
+  },
+  "COBALT_COASTLANDS_PERCENTAGES": {
+    "2044": 6,
+    "904": 1,
+    "2039": 6,
+    "2040": 1,
+    "422": 6,
+    "423": 3,
+    "72": 7,
+    "456": 6,
+    "223": 5,
+    "458": 4,
+    "550": 6,
+    "902": 1,
+    "393": 3,
+    "299": 4,
+    "425": 6,
+    "279": 5,
+    "278": 8,
+    "90": 5,
+    "129": 6,
+    "130": 1
+  },
+  "CORONET_HIGHLANDS_PERCENTAGES": {
+    "2045": 6,
+    "903": 1,
+    "2041": 7,
+    "2042": 2,
+    "2039": 4,
+    "95": 7,
+    "208": 2,
+    "436": 6,
+    "443": 4,
+    "299": 5,
+    "207": 6,
+    "198": 6,
+    "433": 5,
+    "74": 7,
+    "75": 4,
+    "66": 5,
+    "67": 3,
+    "41": 6,
+    "42": 4,
+    "627": 3
+  },
+  "ALABASTER_ICELANDS_PERCENTAGES": {
+    "2048": 6,
+    "2049": 1,
+    "2053": 2,
+    "712": 7,
+    "2050": 2,
+    "627": 5,
+    "2045": 4,
+    "220": 8,
+    "221": 4,
+    "473": 1,
+    "459": 8,
+    "460": 3,
+    "361": 7,
+    "478": 3,
+    "362": 3,
+    "215": 5,
+    "86": 6,
+    "87": 3,
+    "124": 4,
+    "238": 4
+  }
 }

@@ -9,6 +9,9 @@ from src.ui.widgets import MathBattleUI, Button
 from src.ui.dialogue import ClassicDialogueBox
 from src.pokemon.mechanics import TypeAdvantage
 from src.pokemon import forms
+from src.pokemon import balance
+from src.pokemon import evolution
+from src.world import levels
 from src.vfx.animations import AnimationController, FaintAnimation, PokemonSummonAnimation
 from src.config import WHITE, BLACK, GREEN, RED, GOLD, FPS
 
@@ -151,8 +154,10 @@ class TrainerBattleState(GameState):
         self.weather_turns = 0
         self.weather_summoned = False
         self._turn_end_done = True
-        # Mega Evolution (one per side per battle), Primal Reversion and their extreme weather.
+        # Mega Evolution / Primal Reversion (one per side per battle) and their extreme weather.
         self.mega_used = {"player": False, "opponent": False}
+        # Per-battle feats for special evolutions (Sirfetch'd crits, Runerigus damage).
+        self._battle_crits, self._battle_damage = {}, {}
         self._form_msgs = []
         self.weather_primal = None
         self._init_area_weather()
@@ -209,43 +214,12 @@ class TrainerBattleState(GameState):
         )
         self.is_shift_switch = False
 
-    def _get_capped_stage(self, pokemon):
-        if getattr(pokemon, "raid_stage", None):
-            return pokemon.raid_stage
-        is_opponent_boss = self.is_boss_battle and (self.opponent_team and pokemon in self.opponent_team)
-        if is_opponent_boss or pokemon.id in self.game.loader.all_boss_ids:
-            return 3
+    def _level(self, pokemon):
+        return int(getattr(pokemon, "level", 5) or 5)
 
-        if hasattr(pokemon, "transformed_state") and hasattr(pokemon, "_stage_override"):
-            base_stage = pokemon._stage_override
-        else:
-            base_stage = pokemon.effective_stage
-
-        is_johto_battle = False
-
-        if self.area_name:
-            johto_indicators = ["JOHTO", "NEW_BARK", "CHERRYGROVE", "VIOLET",
-                                "ALPH", "AZALEA", "GOLDENROD", "ECRUTEAK",
-                                "OLIVINE", "CIANWOOD", "MAHOGANY",
-                                "BLACKTHORN", "MT_SILVER", "UNION", "ILEX",
-                                "SPROUT", "BURNED", "BELL", "MORTAR", "WHIRL",
-                                "ROCKET", "DEN", "LAKE", "TOHJO"]
-            if any(k in self.area_name for k in johto_indicators):
-                is_johto_battle = True
-
-        all_badges_dict = self.game.story_manager.badges
-        if is_johto_battle:
-            num_relevant_badges = len(all_badges_dict.get("JOHTO", []))
-        else:
-            num_relevant_badges = len(all_badges_dict.get("KANTO", []))
-
-        if num_relevant_badges <= 1:
-            stage_cap = 1
-        elif num_relevant_badges <= 3:
-            stage_cap = 2
-        else:
-            stage_cap = 3
-        return min(base_stage, stage_cap)
+    def _obey_level(self):
+        """Pokemon above this level may ignore the player (badges in this region raise it)."""
+        return levels.obey_level(self.game.story_manager)
 
     def check_ditto_transform(self):
         if self.phase == "DITTO_TRANSFORM":
@@ -322,19 +296,31 @@ class TrainerBattleState(GameState):
         906: "Scratch", 909: "Tackle", 912: "Pound",
     }
 
-    def _pick_move(self, attacker, defender):
-        """
-        The attacker's strongest same-type move against this defender right now:
-        power x type effectiveness x weather (so rain can make Surf beat Earthquake).
-        Returns (move name, move type, effectiveness, category).
-        """
-        if self.starter_battle:
-            return self.STARTER_MOVES.get(attacker.id, "Tackle"), "NORMAL", 1.0, "PHYSICAL"
-        chart = TypeAdvantage(self.game.loader.area_data.get("TYPE_CHART", {}))
+    def _usable_moves(self, attacker):
+        """Moves it knows at its level: level-up moves it has reached, and taught moves
+        (TMs, tutors) from Lv 40. Species without learnset data can use everything."""
         target_id = getattr(attacker, "meta_id", attacker.id)
         moves = self.game.assets.movesets.get(str(target_id), {}).get("moves", [])
+        learned = evolution.learnset(self.game, evolution.base_id(attacker))
+        if not learned:
+            return moves
+        known = evolution.known_moves(self.game, attacker)
+        by_level = {m for _, m in learned}
+        lv = self._level(attacker)
+        return [m for m in moves if m.get("name", "").upper() in known
+                or (m.get("name", "").upper() not in by_level and lv >= 40)]
+
+    def _pick_move(self, attacker, defender):
+        """
+        The attacker's strongest same-type move it knows at its level:
+        power x type effectiveness x weather (so rain can make Surf beat Earthquake).
+        Returns (move name, move type, effectiveness, category, power).
+        """
+        if self.starter_battle:
+            return self.STARTER_MOVES.get(attacker.id, "Tackle"), "NORMAL", 1.0, "PHYSICAL", 40
+        chart = TypeAdvantage(self.game.loader.area_data.get("TYPE_CHART", {}))
         best_score, best = -1.0, []
-        for move in moves:
+        for move in self._usable_moves(attacker):
             power = move.get("power", 0) or 0
             m_type = move.get("type")
             if power <= 0 or m_type not in (attacker.types or []) or move.get("self_faint") or move.get("ohko"):
@@ -343,25 +329,25 @@ class TrainerBattleState(GameState):
                 continue  # it would fizzle in this extreme weather
             eff = chart.get_multiplier(m_type, defender.types)
             score = power * eff * self._weather_type_mult(m_type)
-            pick = (move["name"].upper(), m_type, eff, move.get("category") or "PHYSICAL")
+            pick = (move["name"].upper(), m_type, eff, move.get("category") or "PHYSICAL", power)
             if score > best_score:
                 best_score, best = score, [pick]
             elif score == best_score:
                 best.append(pick)
         if best:
             return random.choice(best)
-        # No damaging same-type move: Tackle, typed as the attacker's best-matching type.
+        # No damaging same-type move yet: Tackle, typed as the attacker's best-matching type.
         types = [t for t in attacker.types or [] if self._weather_type_mult(t) > 0] or ["NORMAL"]
         a_type = max(types, key=lambda t: chart.get_multiplier(t, defender.types))
-        return "Tackle", a_type, chart.get_multiplier(a_type, defender.types), "PHYSICAL"
+        return "Tackle", a_type, chart.get_multiplier(a_type, defender.types), "PHYSICAL", 40
 
     def _ready_attacks(self):
         """Choose each side's move for the current weather and set the matchup multipliers."""
         (self.player_move, self.player_attack_type, eff,
-         self.player_move_category) = self._pick_move(self.player_pokemon, self.opponent_pokemon)
+         self.player_move_category, self.player_move_power) = self._pick_move(self.player_pokemon, self.opponent_pokemon)
         self.adv_opp = eff if eff > 0 else 1.0
         (self.opponent_move, self.opponent_attack_type, eff,
-         self.opponent_move_category) = self._pick_move(self.opponent_pokemon, self.player_pokemon)
+         self.opponent_move_category, self.opponent_move_power) = self._pick_move(self.opponent_pokemon, self.player_pokemon)
         self.adv_player = eff if eff > 0 else 1.0
 
     def _check_forms(self):
@@ -371,37 +357,52 @@ class TrainerBattleState(GameState):
             self.weather, self.weather_primal, self.weather_turns = None, None, 0
         if self.starter_battle:
             return
-        inv = self.game.story_manager.inventory
-        for side, mon in (("player", self.player_pokemon), ("opponent", self.opponent_pokemon)):
-            if not mon:
-                continue
-            if side == "player":
-                form = forms.player_form(self.game.assets, mon, inv, self.mega_used["player"])
-            else:
-                form = forms.opponent_form(self.game.assets, mon, self.mega_used["opponent"])
-            if not form:
-                continue
+        # Foes transform as they come out; the player uses the MEGA / PRIMAL button.
+        mon = self.opponent_pokemon
+        form = forms.opponent_form(self.game.assets, mon, self.mega_used["opponent"]) if mon else None
+        if form:
             lines = forms.apply_form(self.game.assets, mon, form)
-            if side == "opponent":
-                lines = ["Foe " + lines[0]] + lines[1:]
-            if form["form"] != "primal":
-                self.mega_used[side] = True
-            self._form_msgs.extend(lines)
-            weather = forms.form_weather(mon)
-            if weather:
-                self.weather, self.weather_turns, self.weather_primal = weather, 0, mon
-                self._weather_announced = True
-                self._form_msgs.append(self.WEATHER_TEXT[weather][0])
+            self.mega_used["opponent"] = True
+            self._form_msgs.extend(["Foe " + lines[0]] + lines[1:] + self._start_form_weather(mon))
+
+    def _start_form_weather(self, mon):
+        """Primal Groudon/Kyogre and Mega Rayquaza bring extreme weather. Returns its message."""
+        weather = forms.form_weather(mon)
+        if not weather:
+            return []
+        self.weather, self.weather_turns, self.weather_primal = weather, 0, mon
+        self._weather_announced = True
+        return [self.WEATHER_TEXT[weather][0]]
+
+    def player_form_option(self):
+        """The Mega/Primal form the player's active Pokemon can take now, or None."""
+        if self.starter_battle or not self.player_pokemon:
+            return None
+        used = getattr(self, "mega_used", {}).get("player", False)
+        return forms.player_form(self.game.assets, self.player_pokemon,
+                                 self.game.story_manager.inventory, used)
+
+    def activate_player_form(self):
+        """MEGA / PRIMAL button: transform now (doesn't use the turn), once per battle."""
+        form = self.player_form_option()
+        if not form or self.phase != "MENU":
+            return
+        mon = self.player_pokemon
+        lines = forms.apply_form(self.game.assets, mon, form)
+        self.mega_used["player"] = True
+        lines += self._start_form_weather(mon)
+        self._ready_attacks()
+        self.setup_action_menu()
+        self.show_message(lines, callback=self.return_to_menu)
 
     def setup_battle_matchup(self, reset_opponent_hp=True):
         self._check_forms()
         self._ready_attacks()
-
-        opponent_stage = self._get_capped_stage(self.opponent_pokemon)
-
+        # Real HP at each Pokemon's level; Dynamax raid bosses have double HP.
         self.player_max_hp = self.player_pokemon.get_max_hp()
-        self.opp_max_hp = self.opponent_pokemon.get_max_hp(stage_override=opponent_stage)
-
+        foe = self.opponent_pokemon
+        self.opp_hp_mult = forms.DYNAMAX_HP_MULT if forms.is_dynamax(foe) else 1
+        self.opp_max_hp = foe.get_max_hp() * self.opp_hp_mult
         self.player_hp = max(0, self.player_pokemon.current_hp)
         if reset_opponent_hp:
             self.opponent_hp = self.opp_max_hp
@@ -467,12 +468,8 @@ class TrainerBattleState(GameState):
             return 1.0
         mult = self._weather_type_mult(attack_type)
         defender_types = defender.types if defender else []
-        if self.weather == "SAND" and "ROCK" in defender_types:
-            mult *= 2 / 3  # Sand boosts Rock types' Sp. Def
-        elif self.weather == "SNOW" and "ICE" in defender_types:
-            mult *= 2 / 3  # Snow boosts Ice types' Defense
-        elif (self.weather == "STRONG_WINDS" and "FLYING" in defender_types
-              and attack_type in ("ELECTRIC", "ICE", "ROCK")):
+        if (self.weather == "STRONG_WINDS" and "FLYING" in defender_types
+                and attack_type in ("ELECTRIC", "ICE", "ROCK")):
             mult *= 0.5  # Delta Stream: Flying's weaknesses are cancelled
         return mult
 
@@ -550,45 +547,23 @@ class TrainerBattleState(GameState):
         pygame.draw.rect(screen, BLACK, box, border_radius=6)
         screen.blit(text, text.get_rect(center=box.center))
 
-    def _calculate_damage(self, stage, multiplier, attacker=None, defender=None, weather=1.0,
-                          category="PHYSICAL", defender_stage=None, defender_max_hp=None):
-        """
-        Damage is rolled on the fixed 20/60/90 HP scale, then applied as that same share
-        of the defender's real HP (a 50% hit is 50% whatever the HP total).
-        Stage 1: Normal=7,  Super=10, NVE=4
-        Stage 2: Normal=20, Super=28, NVE=12
-        Stage 3: Normal=30, Super=42, NVE=18
-        Stat modifiers: see _stat_mod (offense and defense tiers, each ±1).
-        """
-        _NORMAL = (0, 7, 20, 30)
-        _SUPER  = (0, 10, 28, 42)
-        _NVE    = (0, 4, 12, 18)
-
-        s = min(stage, 3)
-        if multiplier > 1.0:
-            table = _SUPER
-        elif 0.0 < multiplier < 1.0:
-            table = _NVE
-        else:
-            table = _NORMAL
-        base = table[s]
-        # Sub-stage growth: damage moves part-way toward the next stage's value.
-        if attacker is not None and attacker.grows_toward_next_stage(s):
-            base += (table[s + 1] - base) * attacker.sub_stage_fraction
-
-        stat_mod = self._stat_mod(attacker, defender, category) if attacker and defender else 0
-
-        spread = random.randint(-2, 2)
-        self._last_was_crit = random.random() < 0.10
-        crit_mult = 1.5 if self._last_was_crit else 1.0
-        if weather == 0:
-            self._last_was_crit = False
-            return 0  # fizzled in extreme weather
-        points = max(1, int((base + stat_mod + spread) * crit_mult * weather))
-        if defender is None or defender_max_hp is None:
-            return points
-        share = points / defender.battle_hp_scale(defender_stage)
-        return max(1, int(share * defender_max_hp + 0.5))
+    def _calculate_damage(self, attacker, defender, power, effectiveness, weather=1.0, category="PHYSICAL",
+                          move_type=None, defender_max_hp=None):
+        """One hit with the games' damage formula (src/pokemon/balance.py): levels, the
+        Attack/Defense (or Sp. Atk/Sp. Def) stats at those levels, move power, weather,
+        crits, the 85-100% roll, STAB and type."""
+        special = category == "SPECIAL"
+        attack = attacker.stat_value("SPATK" if special else "ATTACK")
+        defense = defender.stat_value("SPDEF" if special else "DEFENSE")
+        types = defender.types or []
+        if special and self.weather == "SAND" and "ROCK" in types:
+            defense = defense * 3 // 2  # sandstorm: Rock types' Sp. Def x1.5
+        if not special and self.weather == "SNOW" and "ICE" in types:
+            defense = defense * 3 // 2  # snow: Ice types' Defense x1.5
+        dmg, self._last_was_crit = balance.damage(
+            self._level(attacker), power, attack, defense,
+            stab=move_type in (attacker.types or []), effectiveness=effectiveness, weather=weather)
+        return dmg
 
     def setup_math_ui(self):
         if hasattr(self, "math_ui") and self.math_ui in self.game.ui_manager.elements:
@@ -602,6 +577,7 @@ class TrainerBattleState(GameState):
         self.math_ui.set_visibility(False)
 
     def setup_action_menu(self):
+        form = self.player_form_option()
         self.action_menu = BattleActionMenu(
             self.game,
             self.player_pokemon.display_name,
@@ -609,6 +585,8 @@ class TrainerBattleState(GameState):
             on_pkdex=lambda: self._open_bag(),
             on_pkmn=lambda: self.open_party_menu(),
             on_run=lambda: self.handle_run(),
+            on_mega=self.activate_player_form if form else None,
+            mega_label="PRIMAL" if form and form["form"] == "primal" else "MEGA",
         )
         self.action_menu.set_visibility(True)
 
@@ -850,62 +828,86 @@ class TrainerBattleState(GameState):
         if self.math_ui:
             self.math_ui.set_visibility(False)
 
-    @staticmethod
-    def _stat_mod(attacker, defender, category="PHYSICAL"):
-        """
-        Damage modifier from the stats the move uses, each worth ±1 (range -2 .. +2):
-        the attacker's offense (Attack or Sp. Atk, matching the move) adds when strong and
-        subtracts when weak; the defender's matching Defense or Sp. Def does the reverse.
-        So a strong defender is cancelled out by a strong attacker. Speed is left out.
-        """
-        special = category == "SPECIAL"
-        offense = attacker.stat_tier("SPATK" if special else "ATTACK")
-        defense = defender.stat_tier("SPDEF" if special else "DEFENSE")
-        return offense - defense
-
     def _award_battle_xp(self):
-        """Give XP for the KO, scaled by relative stage and foe strength. Returns battle messages."""
+        """XP for the KO, scaled by the level gap (and 1.5x from trainers). Returns messages."""
         foe = self.opponent_pokemon
-        foe_stage = self._get_capped_stage(foe)
+        foe_level = self._level(foe)
+        trainer = self.trainer_class != "WILD"
         if self.game.story_manager.inventory.get("EXP_SHARE", 0) > 0:
             earners = [p for p in self.game.story_manager.player_team if p]
         else:
             earners = [self.player_pokemon]
+        lead = self.player_pokemon
+        lead.counters["wins"] = lead.counters.get("wins", 0) + 1
+        if foe.id == 625:  # Bisharp, for Kingambit
+            lead.counters["bisharp"] = lead.counters.get("bisharp", 0) + 1
 
         messages = []
+        cap = levels.xp_cap(self.game.story_manager)
         for p in earners:
-            my_stage = self._get_capped_stage(p)
-            foe_is_weak = self._stat_mod(foe, p, self._pick_move(foe, p)[3]) < 0
-            gained = p.battle_xp(my_stage, foe_stage, foe_is_weak)
-            grew = p.gain_xp(gained)
-            if p is not self.player_pokemon:
+            my_level = self._level(p)
+            gained = p.battle_xp(my_level, foe_level, trainer=trainer)
+            if my_level >= cap:
+                if p is lead:
+                    messages.append(f"{p.display_name.upper()} can't grow past Lv {cap} until you beat the next Gym!")
+                continue
+            before = evolution.known_moves(self.game, p)
+            grew = p.gain_xp(gained, cap)
+            if p is not lead:
+                if grew:
+                    messages.append(f"{p.display_name.upper()} grew to Lv {p.level}!")
                 continue
             note = ""
-            if foe_stage > my_stage:
+            if foe_level >= my_level + 4:
                 note = " Tough foe bonus!"
-            elif foe_stage < my_stage or foe_is_weak:
+            elif foe_level <= my_level - 4:
                 note = " (easy foe)"
             messages.append(f"{p.display_name.upper()} gained {gained} XP!{note}")
-            if grew and p.sub_stage:
-                messages.append(f"{p.display_name.upper()} grew a little stronger!")
+            if grew:
+                messages.append(f"{p.display_name.upper()} grew to Lv {p.level}!")
+                messages.extend(self._new_move_lines(p, before))
         return messages
+
+    def _new_move_lines(self, p, before):
+        """'X learned EMBER!' for damaging same-type moves it just reached."""
+        moves = {m.get("name", "").upper(): m for m in
+                 self.game.assets.movesets.get(str(getattr(p, "meta_id", p.id)), {}).get("moves", [])}
+        lines = []
+        for name in sorted(evolution.known_moves(self.game, p) - before):
+            m = moves.get(name)
+            if m and (m.get("power") or 0) > 0 and m.get("type") in (p.types or []):
+                lines.append(f"{p.display_name.upper()} learned {name.replace('-', ' ')}!")
+        return lines
+
+    DISOBEY_LINES = ("{n} is loafing around!", "{n} won't obey!", "{n} turned away!",
+                     "{n} pretended not to notice!")
 
     def player_attack(self):
         if self.opponent_hp <= 0:
             return
 
-        self._ready_attacks()  # weather may have changed which move hits hardest
-        player_stage = self._get_capped_stage(self.player_pokemon)
-        weather_mult = self._weather_mult(self.player_attack_type, self.opponent_pokemon)
-        damage = self._calculate_damage(player_stage, self.adv_opp,
-                                        self.player_pokemon, self.opponent_pokemon,
-                                        weather_mult,
-                                        category=self.player_move_category,
-                                        defender_stage=self._get_capped_stage(self.opponent_pokemon),
-                                        defender_max_hp=self.opp_max_hp)
-        self.opponent_hp = max(0, self.opponent_hp - damage)
+        mon = self.player_pokemon
+        # Obedience: a Pokemon far above the badge level may ignore you.
+        cap = self._obey_level()
+        lv = self._level(mon)
+        if lv > cap and random.random() < (lv - cap) / (lv + cap):
+            self.dialogue_box.reset([random.choice(self.DISOBEY_LINES).format(n=mon.display_name.upper()),
+                                     f"(Win more badges here to earn the trust of Pokemon above Lv {cap}.)"])
+            self.dialogue_box.set_visibility(True)
+            self.feedback_timer = 30
+            return
 
+        self._ready_attacks()  # weather may have changed which move hits hardest
+        weather_mult = self._weather_mult(self.player_attack_type, self.opponent_pokemon)
+        damage = self._calculate_damage(mon, self.opponent_pokemon, self.player_move_power, self.adv_opp,
+                                        weather_mult, category=self.player_move_category,
+                                        move_type=self.player_attack_type,
+                                        defender_max_hp=self.opp_max_hp // getattr(self, "opp_hp_mult", 1))
+        self.opponent_hp = max(0, self.opponent_hp - damage)
         self.opponent_pokemon.current_hp = self.opponent_hp
+        mon.counters["attacks"] = mon.counters.get("attacks", 0) + 1
+        if self._last_was_crit:
+            self._battle_crits[id(mon)] = self._battle_crits.get(id(mon), 0) + 1
 
         xp_messages = self._award_battle_xp() if self.opponent_hp <= 0 else []
 
@@ -916,7 +918,7 @@ class TrainerBattleState(GameState):
             return
 
         messages = [self.game.assets.get_text(
-            "used_move", name=self.player_pokemon.name, move=move_name
+            "used_move", name=mon.name, move=move_name
         )]
 
         if weather_mult == 0:
@@ -946,16 +948,16 @@ class TrainerBattleState(GameState):
             return
 
         self._ready_attacks()
-        opponent_stage = self._get_capped_stage(self.opponent_pokemon)
-        weather_mult = self._weather_mult(self.opponent_attack_type, self.player_pokemon)
-        damage = self._calculate_damage(opponent_stage, self.adv_player,
-                                        self.opponent_pokemon, self.player_pokemon,
-                                        weather_mult,
-                                        category=self.opponent_move_category,
-                                        defender_max_hp=self.player_max_hp)
+        mon = self.player_pokemon
+        weather_mult = self._weather_mult(self.opponent_attack_type, mon)
+        damage = self._calculate_damage(self.opponent_pokemon, mon, self.opponent_move_power, self.adv_player,
+                                        weather_mult, category=self.opponent_move_category,
+                                        move_type=self.opponent_attack_type, defender_max_hp=self.player_max_hp)
         self.player_hp = max(0, self.player_hp - damage)
-
-        self.player_pokemon.current_hp = self.player_hp
+        mon.current_hp = self.player_hp
+        # For Runerigus / Basculegion: damage taken in this battle and overall.
+        self._battle_damage[id(mon)] = self._battle_damage.get(id(mon), 0) + damage
+        mon.counters["damage_total"] = mon.counters.get("damage_total", 0) + damage
 
         self.anim_ctrl.start_lunge("opponent")
         move_name = self.opponent_move
@@ -977,7 +979,7 @@ class TrainerBattleState(GameState):
 
         if self.player_hp <= 0:
             self.fainting_side = "player"
-            messages.append(f"{self.player_pokemon.display_name.upper()} fainted!")
+            messages.append(f"{mon.display_name.upper()} fainted!")
             self.dialogue_box.callback = self._start_faint_animation
             self.phase = "MESSAGE"
 
@@ -1065,6 +1067,11 @@ class TrainerBattleState(GameState):
     def exit_battle(self, lost=False):
         for p in self.game.story_manager.player_team:
             forms.revert_form(p)
+            crits = getattr(self, "_battle_crits", {}).get(id(p), 0)
+            p.counters["crits"] = max(p.counters.get("crits", 0), crits)
+            if not lost and p.current_hp > 0:
+                taken = getattr(self, "_battle_damage", {}).get(id(p), 0)
+                p.counters["damage_battle"] = max(p.counters.get("damage_battle", 0), taken)
         if self.trainer_index is not None:
             area_key = self.game.story_manager.current_area_key
             self.game.story_manager.mark_trainer_defeated(area_key, self.trainer_index)

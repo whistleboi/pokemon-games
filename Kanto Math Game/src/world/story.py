@@ -29,6 +29,7 @@ class StoryManager:
         self.initialized = False
         # "AUTO" follows the story; a number locks a level from math_levels.json
         self.math_difficulty = "AUTO"
+        self.level_cap_mode = "STORY"  # STORY, OBEDIENCE or NONE (Options)
 
     def initialize_new_game(self, config):
         if self.initialized:
@@ -673,22 +674,8 @@ class StoryManager:
             "inventory": self.inventory,
             "poffins": self.poffins,
             "notified_missions": self.notified_missions,
-            "player_team": [
-                {
-                    "id": p.id, "form": p.form, "shiny": p.is_shiny,
-                    "wins": p.wins, "xp": p.xp, "hp": p.current_hp, "hp_real": True, "stage": p.stage, "gmax": p.gmax_factor,
-                    "caught_region": getattr(p, "caught_region", None),
-                    "condition": p.condition, "sheen": p.sheen, "ribbons": p.ribbons,
-                } for p in self.player_team if p
-            ],
-            "pc_pokemon": [
-                {
-                    "id": p.id, "form": p.form, "shiny": p.is_shiny,
-                    "wins": p.wins, "xp": p.xp, "hp": p.current_hp, "hp_real": True, "stage": p.stage, "gmax": p.gmax_factor,
-                    "caught_region": getattr(p, "caught_region", None),
-                    "condition": p.condition, "sheen": p.sheen, "ribbons": p.ribbons,
-                } if p else None for p in self.pc_pokemon
-            ],
+            "player_team": [self._pokemon_record(p) for p in self.player_team if p],
+            "pc_pokemon": [self._pokemon_record(p) if p else None for p in self.pc_pokemon],
             "starting_region": self.starting_region,
             "rival_starter_id": (
                 self.rival_starter_raw["id"] if self.rival_starter_raw else None
@@ -700,6 +687,7 @@ class StoryManager:
             "rival_name": getattr(self.game, "rival_name", "BLUE"),
             "rival_true_name": getattr(self.game, "rival_true_name", "BLUE"),
             "math_difficulty": self.math_difficulty,
+            "level_cap_mode": self.level_cap_mode,
         }
 
     @staticmethod
@@ -717,11 +705,45 @@ class StoryManager:
         return obj
 
     @staticmethod
-    def _loaded_hp(pokemon, p_data):
-        """Saves from before real HP stored HP on the 20/60/90 scale: keep the same share."""
-        if p_data.get("hp_real"):
+    def _pokemon_record(p):
+        return {
+            "id": p.id, "form": p.form, "shiny": p.is_shiny,
+            "level": p.level, "xp": p.xp, "friendship": p.friendship, "counters": dict(p.counters),
+            "hp": p.current_hp, "hp_real": True, "stage": p.stage, "gmax": p.gmax_factor,
+            "caught_region": getattr(p, "caught_region", None),
+            "condition": p.condition, "sheen": p.sheen, "ribbons": p.ribbons,
+        }
+
+    def _apply_record(self, pokemon, p_data, form):
+        pokemon.gmax_factor = p_data.get("gmax", form == "gmax")
+        pokemon.caught_region = p_data.get("caught_region")
+        pokemon.condition.update(p_data.get("condition", {}))
+        pokemon.sheen = p_data.get("sheen", 0)
+        pokemon.ribbons = list(p_data.get("ribbons", []))
+        if "stage" in p_data:
+            pokemon.stage = p_data["stage"]
+        pokemon.friendship = p_data.get("friendship", 0)
+        pokemon.counters = dict(p_data.get("counters", {}))
+        old_scale_hp = None
+        if "level" in p_data:
+            pokemon.level, pokemon.xp = int(p_data["level"]), int(p_data.get("xp", 0))
+        else:
+            # Saves from before real levels: stage + XP become a matching level.
+            xp = p_data.get("xp", p_data.get("wins", 0) * Pokemon.XP_PER_WIN)
+            pokemon.level = max(pokemon.level, Pokemon.legacy_level(pokemon.stage, xp))
+            pokemon.xp = 0
+            old_scale_hp = Pokemon.legacy_hp_scale(pokemon.stage)
+        if "hp" in p_data:
+            pokemon.current_hp = self._loaded_hp(pokemon, p_data, old_scale_hp)
+
+    @staticmethod
+    def _loaded_hp(pokemon, p_data, old_scale_hp=None):
+        """Keep the same share of HP across save formats."""
+        if p_data.get("hp_real") and old_scale_hp is None:
             return min(p_data["hp"], pokemon.get_max_hp())
-        share = min(1.0, max(0.0, p_data["hp"] / pokemon.battle_hp_scale()))
+        if p_data.get("hp_real"):
+            return pokemon.get_max_hp() if p_data["hp"] > 0 else 0
+        share = min(1.0, max(0.0, p_data["hp"] / (old_scale_hp or 20)))
         return int(share * pokemon.get_max_hp() + 0.5)
 
     def deserialize(self, data, loader):
@@ -749,6 +771,7 @@ class StoryManager:
         self.notified_missions = data.get("notified_missions", [])
         # Older saves have no setting -> AUTO (follows region + badges)
         self.math_difficulty = data.get("math_difficulty", "AUTO")
+        self.level_cap_mode = data.get("level_cap_mode", "STORY")
 
         self.player_team = []
         for p_data in data.get("player_team", []):
@@ -759,16 +782,7 @@ class StoryManager:
                 is_shiny=p_data.get("shiny", False),
             )
             pokemon = Pokemon(raw, loader.game.assets, size_mult=2.5)
-            pokemon.gmax_factor = p_data.get("gmax", form == "gmax")
-            pokemon.caught_region = p_data.get("caught_region")
-            pokemon.condition.update(p_data.get("condition", {}))
-            pokemon.sheen = p_data.get("sheen", 0)
-            pokemon.ribbons = list(p_data.get("ribbons", []))
-            pokemon.xp = p_data.get("xp", p_data.get("wins", 0) * Pokemon.XP_PER_WIN)
-            if "stage" in p_data:
-                pokemon.stage = p_data["stage"]
-            if "hp" in p_data:
-                pokemon.current_hp = self._loaded_hp(pokemon, p_data)
+            self._apply_record(pokemon, p_data, form)
             self.player_team.append(pokemon)
 
         self.pc_pokemon = [None] * 300
@@ -782,16 +796,7 @@ class StoryManager:
                 is_shiny=p_data.get("shiny", False),
             )
             pokemon = Pokemon(raw, loader.game.assets, size_mult=2.5)
-            pokemon.gmax_factor = p_data.get("gmax", form == "gmax")
-            pokemon.caught_region = p_data.get("caught_region")
-            pokemon.condition.update(p_data.get("condition", {}))
-            pokemon.sheen = p_data.get("sheen", 0)
-            pokemon.ribbons = list(p_data.get("ribbons", []))
-            pokemon.xp = p_data.get("xp", p_data.get("wins", 0) * Pokemon.XP_PER_WIN)
-            if "stage" in p_data:
-                pokemon.stage = p_data["stage"]
-            if "hp" in p_data:
-                pokemon.current_hp = self._loaded_hp(pokemon, p_data)
+            self._apply_record(pokemon, p_data, form)
             self.pc_pokemon[i] = pokemon
 
         rid = data.get("rival_starter_id")

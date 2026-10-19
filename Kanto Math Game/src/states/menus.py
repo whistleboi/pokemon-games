@@ -1371,6 +1371,19 @@ class DifficultySelectionState(GameState):
         self.btn_confirm = Button((w // 2 - 150, int(h * 0.90) - 40, 300, 80),
                                   "CONFIRM", fonts["s_med"], self.confirm,
                                   bg_color=GREEN)
+        # Level cap mode: STORY (default), OBEDIENCE or NONE.
+        self.btn_cap = Button((30, int(h * 0.90) - 30, 300, 66), self._cap_label(), fonts["small"],
+                              self.cycle_cap, bg_color=(90, 60, 150), autosize=False)
+
+    def _cap_label(self):
+        from src.world import levels
+        return "CAP: " + levels.LEVEL_CAP_TEXT[levels.cap_mode(self.story)][0]
+
+    def cycle_cap(self):
+        from src.world import levels
+        modes = levels.LEVEL_CAP_MODES
+        self.story.level_cap_mode = modes[(modes.index(levels.cap_mode(self.story)) + 1) % len(modes)]
+        self.btn_cap.text = self._cap_label()
 
     def _fit_font(self, text, max_w, keys=("s_med", "small", "tiny")):
         """Dynamic font scaling: biggest game font that fits the space."""
@@ -1432,6 +1445,8 @@ class DifficultySelectionState(GameState):
             if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
                 if self.btn_back.handle_event(event) or self.btn_confirm.handle_event(event):
                     return  # state changed; ignore the rest of this frame
+                if self.btn_cap.handle_event(event):
+                    return
                 for i, rect in enumerate(self.card_rects):
                     if rect.collidepoint(event.pos):
                         if i == self.selected_idx:
@@ -1487,6 +1502,14 @@ class DifficultySelectionState(GameState):
 
         self.btn_back.draw(screen)
         self.btn_confirm.draw(screen)
+        from src.world import levels
+        mode = levels.cap_mode(self.story)
+        note = levels.LEVEL_CAP_TEXT[mode][1]
+        if mode == "STORY":
+            note += f" (now Lv {levels.story_level_cap(self.story)})"
+        self.btn_cap.draw(screen)
+        Utils.draw_text_outline(screen, note, self._fit_font(note, w // 2 - 200, ("tiny",)), LIGHT_GRAY,
+                                self.btn_cap.rect.x, self.btn_cap.rect.top - 14, align="left")
 
 
 def open_difficulty_options(game, return_state):

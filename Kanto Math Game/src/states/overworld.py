@@ -13,6 +13,9 @@ from src.ui.panels import CityActionMenu
 from src.world.boss import BossManager
 from src.world import seasons
 from src.world import hoenn
+from src.world import levels
+from src.pokemon import evolution
+from src.world import regional_forms
 from src.pokemon import forms
 from src.pokemon.data import Pokemon
 from src.pokemon.contest import feebas_ready
@@ -425,6 +428,8 @@ class PlayState(GameState):
             for pid in team_ids:
                 raw = self.game.loader.fetch_specific(pid)
                 team.append(Pokemon(raw, self.game.assets, size_mult=3.125))
+            levels.set_team(team, levels.trainer_team_levels(
+                self.game, self.game.story_manager.current_area_key, len(team), boss=True))
 
             sprite_name = t_data.get("sprite", "youngster.png")
             trainer_sprite = self.game.assets.get_trainer_image(sprite_name)
@@ -558,6 +563,8 @@ class PlayState(GameState):
         for tid in team_ids:
             raw = self.game.loader.fetch_specific(tid)
             opponent_team.append(Pokemon(raw, self.game.assets, size_mult=3.125))
+        levels.set_team(opponent_team, levels.trainer_team_levels(
+            self.game, self.game.story_manager.current_area_key, len(opponent_team), boss=True))
 
         from src.states.battle import TrainerBattleState, TrainerIntroState
         trainer_sprite = self.game.assets.get_trainer_image(trainer_info["sprite"])
@@ -741,6 +748,9 @@ class PlayState(GameState):
             raw = self.game.loader.fetch_specific(opp_id)
             opponent_team.append(Pokemon(raw, self.game.assets, size_mult=3.125))
         forms.mark_trainer_team(opponent_team, trainer_info)
+        is_boss = bool(trainer_info.get("is_boss_battle") or trainer_info.get("villain") == "leader"
+                       or trainer_class in ("ROCKET_LEADER", "RIVAL"))
+        levels.set_team(opponent_team, levels.trainer_team_levels(self.game, area_key, len(opponent_team), is_boss))
 
         bg_file = self._get_battle_background_for_area()
 
@@ -785,8 +795,8 @@ class PlayState(GameState):
 
     def _get_wild_pool(self, area_data):
         """The current area's percentage pool: day/night split, then season and weather."""
-        return seasons.adjust_pool(self.game, self._base_wild_pool(area_data),
-                                   self.game.story_manager.current_area_key)
+        pool = regional_forms.extend_pool(self.game, self._base_wild_pool(area_data))
+        return seasons.adjust_pool(self.game, pool, self.game.story_manager.current_area_key)
 
     def _draw_season_hud(self, screen, x, y):
         _draw_season_hud(self.game, screen, self.game.story_manager.current_area_key, x, y)
@@ -835,6 +845,8 @@ class PlayState(GameState):
         self.p_data = [
             Pokemon(p, self.game.assets, size_mult=3.125) if p["id"] != 0 else None for p in p_list
         ]
+        for p in self.p_data:
+            levels.set_wild(self.game, p, self.game.story_manager.current_area_key)
 
         for p in self.p_data:
             if p:
@@ -1384,33 +1396,13 @@ class PlayState(GameState):
             if target_form and poke.form != target_form:
                 continue
 
-            requirements_met = False
             is_catch_evo = False
-
-            if poke.wins >= 15:
-                requirements_met = True
-            elif force_catch_evo and self.game.story_manager.catch_counts.get(poke.id, 0) >= 5:
-                requirements_met = True
-                is_catch_evo = True
-
-            if not requirements_met:
+            if context != "party":
+                continue  # only party Pokemon grow and evolve
+            # Real evolution rules: level, friendship, time of day, moves, battle feats...
+            next_entries = evolution.ready_evolutions(self.game, poke, pokemon_list)
+            if not next_entries:
                 continue
-
-            key = poke.name.upper()
-            if poke.form and poke.form != "normal":
-                key += f"_{poke.form.upper()}"
-
-            next_entries = None
-            if key in self.game.loader.evolution_map:
-                next_entries = self.game.loader.evolution_map[key]
-            elif key.title() in self.game.loader.evolution_map:
-                next_entries = self.game.loader.evolution_map[key.title()]
-
-            item_locks = self.game.loader.evolution_map.get("ITEM_LOCKS", [])
-            if key in item_locks:
-                continue
-            if not feebas_ready(poke):
-                continue  # Feebas waits until Pokéblocks make it beautiful enough
 
             if poke.id == 201:
                 all_owned = self.game.story_manager.player_team + self.game.story_manager.pc_pokemon
@@ -1469,10 +1461,12 @@ class PlayState(GameState):
             self.show_progression_menu()
             return
 
-        tree_pool_pct = seasons.adjust_pool(self.game, tree_pool_pct, self.game.story_manager.current_area_key)
+        tree_pool_pct = seasons.adjust_pool(self.game, regional_forms.extend_pool(self.game, tree_pool_pct),
+                                            self.game.story_manager.current_area_key)
         p_id_str = Utils.weighted_random_choice(tree_pool_pct)
         raw = self.game.loader.fetch_specific(int(p_id_str))
         pokemon = Pokemon(raw, self.game.assets, size_mult=3.125)
+        levels.set_wild(self.game, pokemon, self.game.story_manager.current_area_key)
 
         from src.states.battle import WildBattleState
         battle_state = WildBattleState(
@@ -1497,10 +1491,12 @@ class PlayState(GameState):
             self.show_dialogue(["The water is too shallow to dive here."], callback=self.show_progression_menu)
             return
 
-        dive_pool = seasons.adjust_pool(self.game, dive_pool, self.game.story_manager.current_area_key)
+        dive_pool = seasons.adjust_pool(self.game, regional_forms.extend_pool(self.game, dive_pool),
+                                        self.game.story_manager.current_area_key)
         p_id_str = Utils.weighted_random_choice(dive_pool)
         raw = self.game.loader.fetch_specific(int(p_id_str))
         pokemon = Pokemon(raw, self.game.assets, size_mult=3.125)
+        levels.set_wild(self.game, pokemon, self.game.story_manager.current_area_key)
 
         from src.states.battle import WildBattleState
         battle_state = WildBattleState(
@@ -1541,10 +1537,12 @@ class PlayState(GameState):
             self.show_progression_menu()
             return
 
-        fishing_pool_pct = seasons.adjust_pool(self.game, fishing_pool_pct, self.game.story_manager.current_area_key)
+        fishing_pool_pct = seasons.adjust_pool(self.game, regional_forms.extend_pool(self.game, fishing_pool_pct),
+                                               self.game.story_manager.current_area_key)
         p_id_str = Utils.weighted_random_choice(fishing_pool_pct)
         raw = self.game.loader.fetch_specific(int(p_id_str))
         pokemon = Pokemon(raw, self.game.assets, size_mult=3.125)
+        levels.set_wild(self.game, pokemon, self.game.story_manager.current_area_key)
 
         self.show_dialogue(["Oh! A bite!"], callback=None)
 
@@ -1599,6 +1597,9 @@ class PlayState(GameState):
             pokemon.back_image = self.game.assets.get_pokemon_image(pokemon.id, pokemon.form, True, back=True)
         # A Primal boss (Groudon/Kyogre in the Cave of Origin) reverts when the battle starts.
         pokemon.primal_ready = bool(boss_data.get("primal"))
+        pokemon.level = int(boss_data.get("level") or levels.boss_level(
+            self.game, self.game.story_manager.current_area_key, pokemon.id))
+        pokemon.current_hp = pokemon.get_max_hp()
 
         bg_file = boss_data.get("background") if (boss_data.get("background") and self.game.assets.get_background(
             boss_data["background"], from_overworld=False)) else self._get_battle_background_for_area()
@@ -1661,6 +1662,9 @@ class PlayState(GameState):
         raw["display_name"] = f"{'G-MAX' if gmax else 'DYNAMAX'} {base_name}"
         pokemon = Pokemon(raw, self.game.assets, size_mult=2.0)
         pokemon.raid_stage = self.RAID_STAR_STAGE[star]
+        pokemon.raid_star = star
+        pokemon.level = levels.RAID_LEVELS[star]
+        pokemon.current_hp = pokemon.get_max_hp()
         pokemon.raid_base_name = base_name
 
         intro = [f"A {star}★ Max Raid Battle!",
@@ -1732,6 +1736,7 @@ class PlayState(GameState):
 
         raw = self.game.loader.fetch_specific(chosen_id)
         pokemon = Pokemon(raw, self.game.assets, size_mult=3.125)
+        levels.set_wild(self.game, pokemon, self.game.story_manager.current_area_key)
 
         bg_file = self._get_battle_background_for_area()
 
@@ -2091,6 +2096,11 @@ class PlayState(GameState):
     def complete_catch(self, idx):
         pokemon_caught = self.p_data[idx]
         pokemon_was_kept = False
+        # Friendship: every catch made with a Pokemon in the party brings it closer to you.
+        for member in self.game.story_manager.player_team:
+            if member and member is not pokemon_caught:
+                member.friendship += 1
+                member.counters["catches"] = member.counters.get("catches", 0) + 1
 
         pokemon_caught.caught_region = self.game.story_manager.get_current_region()
         all_owned = self.game.story_manager.player_team + [p for p in self.game.story_manager.pc_pokemon if p]
@@ -2193,6 +2203,7 @@ class PlayState(GameState):
         def post_catch_callback():
             self.check_for_evolution(force_catch_evo=True)
 
+        msgs += regional_forms.check_completion(self.game)
         self.show_dialogue(msgs, callback=post_catch_callback)
         self.pause_timer = 90 if self.boss_manager.in_boss_mode else 40
 
@@ -2718,6 +2729,9 @@ class CityState(GameState):
             raw = self.game.loader.fetch_specific(pid)
             opponent_team.append(Pokemon(raw, self.game.assets, size_mult=3.125))
         forms.mark_trainer_team(opponent_team, trainer_data)
+        region = self.game.story_manager.get_current_region()
+        role = levels.gym_role(trainer_data.get("class"), bool(trainer_data.get("badge_reward")))
+        levels.set_team(opponent_team, levels.gym_team_levels(region, self.area_key, len(opponent_team), role))
 
         sprite_name = trainer_data.get("sprite")
         trainer_sprite = self.game.assets.get_trainer_image(sprite_name)
@@ -4230,6 +4244,11 @@ class CityState(GameState):
         opponent_team = [Pokemon(self.game.loader.fetch_specific(tid), self.game.assets, size_mult=3.125)
                          for tid in team_ids]
         forms.mark_trainer_team(opponent_team, t_info)
+        if starter_battle:
+            levels.set_team(opponent_team, [5] * len(opponent_team))
+        else:
+            levels.set_team(opponent_team, levels.trainer_team_levels(
+                self.game, self.area_key, len(opponent_team), boss=True))
 
         from src.states.battle import TrainerBattleState, TrainerIntroState
         sprite = _trainer_sprite(self.game, t_info.get("sprite", "rival.png"))
@@ -4809,6 +4828,18 @@ class GymLobbyState(GameState):
             raw = self.game.loader.fetch_specific(pid)
             opponent_team.append(Pokemon(raw, self.game.assets, size_mult=3.125))
         forms.mark_trainer_team(opponent_team, t_data)
+        region = self.game.story_manager.get_current_region()
+        t_class = t_data.get("class", "GYM_LEADER")
+        if t_class == "ELITE_FOUR":
+            team_levels = levels.elite_levels(region, self.progress, len(opponent_team))
+        elif is_leader and (t_class in ("CHAMPION", "CHALLENGER") or self.leader.get("class") == "CHAMPION"):
+            team_levels = levels.gym_team_levels(region, self.area_key, len(opponent_team), "champion")
+            if t_class == "CHALLENGER":
+                team_levels = [lv + 5 for lv in team_levels]  # title defenses after becoming Champion
+        else:
+            team_levels = levels.gym_team_levels(region, self.area_key, len(opponent_team),
+                                                 levels.gym_role(t_class, is_leader))
+        levels.set_team(opponent_team, team_levels)
 
         bg_file = self.game.story_manager.get_gym_battle_background(
             self.area_key, trainer_index=self.progress, is_leader=is_leader

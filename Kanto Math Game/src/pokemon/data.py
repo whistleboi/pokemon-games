@@ -33,7 +33,12 @@ class Pokemon:
                 "SPEED": 50,
             },
         )
-        self.xp = 0
+        self.level = int(raw_data.get("level") or 5)
+        self.xp = 0  # XP into the current level
+        # Friendship grows with catches made while it's in the party (friendship evolutions),
+        # and counters track special evolution conditions (wins, attacks, crits, KOs...).
+        self.friendship = 0
+        self.counters = {}
         self.caught_region = None
         # Caught as a Gigantamax raid boss: shown normally, but keeps the G-Max Factor.
         self.gmax_factor = False
@@ -42,7 +47,6 @@ class Pokemon:
         self.sheen = 0
         self.ribbons = []
 
-        self.level = 100
         self.current_hp = self.get_max_hp()
         self.max_hp = self.get_max_hp()
 
@@ -89,124 +93,107 @@ class Pokemon:
         self.bob_speed = random.uniform(0.004, 0.006)
         self.bob_amount = random.uniform(8, 12)
 
-    # Wins required to reach each higher stage (stage+1, stage+2).
-    STAGE_THRESHOLDS = [15, 30]
-    # Progress is tracked in XP; an even-strength win is worth XP_PER_WIN, so a
-    # stage still takes 15 nominal wins. Relative-strength modifiers scale it.
+    # ---- Levels (real 1-100, fast-paced) ----
+    # A level costs 10 XP below Lv 20, then 15, 20, 30 and 40 per level in each band of 20.
+    # An even-strength wild win is worth 10 XP, so early on that's about a level per win.
+    MAX_LEVEL = 100
     XP_PER_WIN = 10
-    TIER_XP = STAGE_THRESHOLDS[0] * XP_PER_WIN
-    # Sub-stages inside one tier. Later ones cost more, so the bar slows near evolution.
-    SUB_STAGE_COSTS = (20, 30, 40, 60)
-    # Share of the gap to the next stage's stats that sub-stages can close (keeps boosts slight).
-    SUB_STAGE_GROWTH = 0.4
-    HP_BY_STAGE = (20, 20, 60, 90)
+    LEVEL_COSTS = ((20, 10), (40, 15), (60, 20), (80, 30), (100, 40))  # (below level, XP per level)
+    # Legacy stage system, only for converting old saves.
+    LEGACY_THRESHOLDS = (15, 30)
+    LEGACY_BAND_START = {1: 5, 2: 20, 3: 40}
+
+    @classmethod
+    def xp_cost(cls, level):
+        """XP needed to go from `level` to the next one (0 at Lv 100)."""
+        if level >= cls.MAX_LEVEL:
+            return 0
+        return next(cost for below, cost in cls.LEVEL_COSTS if level < below)
+
+    @property
+    def xp_to_next(self):
+        return self.xp_cost(self.level)
+
+    @property
+    def level_progress(self):
+        """0..1 along the XP bar to the next level (1.0 at Lv 100)."""
+        cost = self.xp_to_next
+        return 1.0 if not cost else min(1.0, self.xp / cost)
+
+    def gain_xp(self, amount, cap=None):
+        """Add XP and level up (never past `cap`). Returns how many levels it gained."""
+        cap = self.MAX_LEVEL if cap is None else min(self.MAX_LEVEL, cap)
+        if self.level >= cap:
+            self.xp = min(self.xp, max(0, self.xp_to_next - 1))
+            return 0
+        gained = 0
+        self.xp += max(0, int(amount))
+        while self.level < cap and self.xp >= self.xp_to_next:
+            self.xp -= self.xp_to_next
+            self.level += 1
+            gained += 1
+        if self.level >= self.MAX_LEVEL:
+            self.xp = 0
+        elif self.level >= cap:
+            self.xp = min(self.xp, max(0, self.xp_to_next - 1))
+        return gained
+
+    def level_up(self, levels=1):
+        """Rare Candy style: straight to the next level(s), keeping HP's share."""
+        share = self.current_hp / max(1, self.get_max_hp())
+        for _ in range(levels):
+            if self.level < self.MAX_LEVEL:
+                self.level += 1
+        self.xp = 0
+        self.current_hp = max(1, round(share * self.get_max_hp())) if self.current_hp > 0 else 0
+
+    @staticmethod
+    def battle_xp(my_level, foe_level, trainer=False):
+        """XP for a KO, in steps of 25%: +1 step per 4 levels the foe is above you, -1 per 4
+        below; clamped to 50%..175%. Trainers' Pokemon give 1.5x."""
+        steps = int((foe_level - my_level) / 4)
+        mult = max(0.5, min(1.75, 1 + 0.25 * steps))
+        return max(1, int(Pokemon.XP_PER_WIN * mult * (1.5 if trainer else 1.0) + 0.5))
 
     @property
     def wins(self):
-        """Nominal wins, derived from XP (evolution checks and saves still use this)."""
-        return self.xp // self.XP_PER_WIN
+        """Battles won (a stand-in for steps walked by some special evolutions)."""
+        return self.counters.get("wins", 0)
 
     @wins.setter
     def wins(self, value):
-        self.xp = int(value) * self.XP_PER_WIN
+        self.counters["wins"] = int(value)
 
     @property
     def effective_stage(self):
-        """Stage from base stage + wins crossing each threshold in STAGE_THRESHOLDS."""
-        if hasattr(self, "_stage_override"):
-            return self._stage_override
-        extra = sum(1 for t in self.STAGE_THRESHOLDS if self.wins >= t)
-        return min(3, self.stage + extra)
+        """Evolution stage (1-3). Battles use levels now; this is only for display and contests."""
+        return min(3, self.stage)
 
-    def _tier_xp(self):
-        crossed = sum(1 for t in self.STAGE_THRESHOLDS if self.wins >= t)
-        return max(0, min(self.TIER_XP, self.xp - crossed * self.TIER_XP))
+    @classmethod
+    def legacy_level(cls, stage, xp):
+        """Level for a Pokemon from an old save (stage + XP thresholds, 15 wins per stage)."""
+        wins = xp // cls.XP_PER_WIN
+        crossed = sum(1 for t in cls.LEGACY_THRESHOLDS if wins >= t)
+        st = min(3, stage + crossed)
+        used = min(crossed, 3 - stage) * 150 if stage < 3 else 0
+        into = max(0, xp - used)
+        if st < 3:
+            return cls.LEGACY_BAND_START[st] + min(14 if st == 1 else 19, into // 10)
+        return min(cls.MAX_LEVEL, 40 + into // 10)
 
-    @property
-    def sub_stage(self):
-        """(completed, total, xp_into_current, current_cost), or None when fully grown."""
-        if self.effective_stage >= 3:
-            return None
-        left = self._tier_xp()
-        for i, cost in enumerate(self.SUB_STAGE_COSTS):
-            if left < cost:
-                return (i, len(self.SUB_STAGE_COSTS), left, cost)
-            left -= cost
-        n = len(self.SUB_STAGE_COSTS)
-        return (n, n, 0, self.SUB_STAGE_COSTS[-1])
+    @staticmethod
+    def legacy_hp_scale(stage):
+        return (20, 20, 60, 90)[max(0, min(3, stage))]
 
-    @property
-    def sub_stage_fraction(self):
-        """How far stats have grown toward the next stage (0 .. <1)."""
-        sub = self.sub_stage
-        if not sub:
-            return 0.0
-        return self.SUB_STAGE_GROWTH * min(sub[0], sub[1] - 1) / (sub[1] - 1)
+    def stat_value(self, stat_name, level=None):
+        """The actual stat at a level: floor(2 x Base x Lv / 100) + 5."""
+        lv = self.level if level is None else level
+        return int(2 * self.get_stat(stat_name) * lv / 100) + 5
 
-    @property
-    def tier_progress(self):
-        """0..1 position on the XP bar for the current tier (1.0 when fully grown)."""
-        if self.effective_stage >= 3:
-            return 1.0
-        return self._tier_xp() / self.TIER_XP
-
-    @property
-    def evolution_progress(self):
-        """(xp_in_current_tier, tier_xp) for a progress bar. None if fully evolved."""
-        if self.effective_stage >= 3:
-            return None
-        return (self._tier_xp(), self.TIER_XP)
-
-    def grows_toward_next_stage(self, stage):
-        """Sub-stage boosts only apply when fighting at the Pokémon's true stage."""
-        return stage == min(self.effective_stage, 3) and stage < 3
-
-    # Level each stage stands for when working out real HP (roughly when starters evolve).
-    LEVEL_BY_STAGE = (15, 15, 35, 55)
-
-    def battle_hp_scale(self, stage_override=None):
-        """The fixed 20 / 60 / 90 HP scale (plus sub-stage growth) that damage rolls are
-        measured against. A hit is a share of this, then applied to the real HP."""
-        st = min(stage_override if stage_override is not None else self.effective_stage, 3)
-        hp = self.HP_BY_STAGE[st]
-        if self.grows_toward_next_stage(st):
-            hp += (self.HP_BY_STAGE[st + 1] - hp) * self.sub_stage_fraction
-        return hp
-
-    def get_max_hp(self, stage_override=None):
-        """Real HP from the base HP stat: floor(2 x Base x Lv / 100) + Lv + 10, with the
-        level set by stage and sub-stages moving it part-way toward the next stage."""
-        st = min(stage_override if stage_override is not None else self.effective_stage, 3)
-        level = self.LEVEL_BY_STAGE[st]
-        if self.grows_toward_next_stage(st):
-            level += (self.LEVEL_BY_STAGE[st + 1] - level) * self.sub_stage_fraction
-        return int(2 * self.get_stat("HP") * level / 100) + int(level) + 10
-
-    def battle_xp(self, my_stage, foe_stage, foe_is_weak):
-        """XP for beating a foe, in steps of 25%: +1 step per stage the foe is above you,
-        -1 per stage below, and -1 if the foe is stat-weak (the side taking the -1 stat
-        modifier). So a stage 1 beating a weak stage 2 (e.g. Metapod) nets 0 steps."""
-        steps = (foe_stage - my_stage) - (1 if foe_is_weak else 0)
-        mult = max(0.5, min(1.75, 1 + 0.25 * steps))
-        return max(1, int(self.XP_PER_WIN * mult + 0.5))
-
-    def gain_xp(self, amount):
-        """Add XP. Returns how many sub-stages were completed by this gain."""
-        stage_before, before = self.effective_stage, self.sub_stage
-        self.xp += amount
-        if not before:
-            return 0
-        if self.effective_stage > stage_before or not self.sub_stage:
-            return before[1] - before[0]
-        return max(0, self.sub_stage[0] - before[0])
-
-    # Base-stat tiers for the battle modifiers: at or above STRONG is +1, below WEAK is -1.
-    STAT_STRONG = 100
-    STAT_WEAK = 50
-
-    def stat_tier(self, stat_name):
-        value = self.get_stat(stat_name)
-        return (value >= self.STAT_STRONG) - (value < self.STAT_WEAK)
+    def get_max_hp(self, level=None, **_legacy):
+        """Real HP from the base HP stat: floor(2 x Base x Lv / 100) + Lv + 10."""
+        lv = self.level if level is None else level
+        return int(2 * self.get_stat("HP") * lv / 100) + int(lv) + 10
 
     def get_stat(self, stat_name):
         """Gets a base stat value."""

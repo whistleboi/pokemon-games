@@ -9,7 +9,7 @@ from src.config import WHITE, BLACK, BLUE, RED, GREEN, GOLD
 # [REF-0007: Battle Action UI]
 class BattleActionMenu(UIElement):
 
-    def __init__(self, game, pokemon_name, on_math, on_pkdex, on_pkmn, on_run):
+    def __init__(self, game, pokemon_name, on_math, on_pkdex, on_pkmn, on_run, on_mega=None, mega_label="MEGA"):
         rect = Utils.get_full_dialogue_rect(game)
         super().__init__(rect, None, visible=True)
         self.game = game
@@ -92,6 +92,16 @@ class BattleActionMenu(UIElement):
             )
         )
 
+        # Mega Evolution / Primal Reversion: beside the four, only while it's available.
+        self.mega_button = None
+        if on_mega:
+            mega_w = 220
+            r = pygame.Rect(self.right_rect.x - mega_w - 10, self.right_rect.centery - btn_h // 2, mega_w, btn_h)
+            color = (200, 60, 40) if mega_label == "PRIMAL" else (150, 60, 200)
+            self.mega_button = Button(r, mega_label, game.assets.fonts["s_med"], on_mega,
+                                      bg_color=color, text_color=WHITE, outline_color=BLACK, autosize=False)
+            self.buttons.append(self.mega_button)
+
     def handle_event(self, event):
         if not self.visible:
             return False
@@ -109,15 +119,21 @@ class BattleActionMenu(UIElement):
         )
 
         text = f"What will {self.pokemon_name} do?"
+        text_rect = self.left_rect.copy()
+        font, line_height = self.game.assets.fonts["med"], 65
+        if self.mega_button:
+            # Make room for the MEGA / PRIMAL button.
+            text_rect.width = self.mega_button.rect.left - self.left_rect.x
+            font, line_height = self.game.assets.fonts["s_med"], 50
         Utils.draw_multiline_text(
             surface,
             text,
-            self.game.assets.fonts["med"],
+            font,
             WHITE,
-            self.left_rect.centerx,
-            self.left_rect.centery,
-            max_width=self.left_rect.width - 60,
-            line_height=65,
+            text_rect.centerx,
+            text_rect.centery,
+            max_width=text_rect.width - 40,
+            line_height=line_height,
             center=True,
             outline_color=BLACK,
         )
@@ -241,8 +257,7 @@ class PartySlotUI(UIElement):
 
         Utils.draw_text_outline(surface, name, font, WHITE, name_x, name_y, BLACK, 2, align="left")
 
-        sub = self.pokemon.sub_stage
-        stage_str = f"Stage {self.pokemon.effective_stage}" + (f"  ({sub[0]}/{sub[1]})" if sub else "  MAX")
+        stage_str = f"Lv {self.pokemon.level}" + ("  MAX" if self.pokemon.level >= self.pokemon.MAX_LEVEL else "")
         Utils.draw_text_outline(surface, stage_str, self.game.assets.fonts["tiny"], WHITE, name_x, name_y + 30, BLACK, 2, align="left")
 
         sprite = pygame.transform.scale(self.pokemon.sidebar_image, (80, 80))
