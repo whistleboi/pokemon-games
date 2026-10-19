@@ -1142,6 +1142,8 @@ class PlayState(GameState):
             return lambda t=target: self.action_exit_route(t)
         if action == "GALACTIC_GAUNTLET":
             return self.action_search_trainer
+        if action == "MAX_RAID":
+            return self.action_max_raid
         if action == "NPC":
             key = item.get("dialogue") or item.get("target")
             if key in self.game.assets.game_text:
@@ -1458,6 +1460,67 @@ class PlayState(GameState):
             "initial_round_active": False
         }
         self.game.change_state(battle_state)
+
+    # Raid star rank -> battle stage (1★ easy, 4-5★ fully powered).
+    RAID_STAR_STAGE = {1: 1, 2: 2, 3: 2, 4: 3, 5: 3}
+
+    def _roll_raid_star(self):
+        """Star rank from the region's MAX_RAID star table, keyed by badges earned (champion counts as 9)."""
+        story = self.game.story_manager
+        region = story.get_current_region()
+        cfg = self.game.loader.area_data.get("MAX_RAID", {})
+        progress = len(story.badges.get(region, []))
+        if story.story_flags.get(f"beat_{region.lower()}_champion"):
+            progress = 9
+        rows = [r for r in cfg.get("star_odds_by_badges", [[0, [100, 0, 0, 0, 0]]]) if r[0] <= progress]
+        odds = rows[-1][1]
+        return random.choices(range(1, 6), weights=odds)[0]
+
+    def action_max_raid(self):
+        """Max Raid Battle: a Dynamax (or rare Gigantamax) boss drawn from this den's star-rank table."""
+        den = self.area_data.get("max_raid_den", {})
+        star = self._roll_raid_star()
+        while star > 1 and not den.get(str(star)):
+            star -= 1
+        table = den.get(str(star))
+        if not table:
+            self.show_progression_menu()
+            return
+
+        self.is_progression_paused = True
+        self.hide_menu_buttons()
+        self.rounds_completed += 1
+
+        pick = random.choices(list(table), weights=list(table.values()))[0]
+        gmax = pick.endswith("-gmax")
+        pid = int(pick.split("-")[0])
+        raw = self.game.loader.fetch_specific(pid, form="gmax" if gmax else "normal")
+        base_name = raw.get("display_name") or raw["name"]
+        raw["display_name"] = f"{'G-MAX' if gmax else 'DYNAMAX'} {base_name}"
+        pokemon = Pokemon(raw, self.game.assets, size_mult=2.0)
+        pokemon.raid_stage = self.RAID_STAR_STAGE[star]
+        pokemon.raid_base_name = base_name
+
+        intro = [f"A {star}★ Max Raid Battle!",
+                 f"{'A Gigantamax' if gmax else 'A Dynamax'} {base_name} burst out of the den!"]
+
+        def start_battle():
+            from src.states.battle import WildBattleState
+            battle_state = WildBattleState(
+                self.game, pokemon, self.game.story_manager.current_area_key,
+                background_image=self._get_battle_background_for_area(),
+                is_boss_battle=True
+            )
+            battle_state.play_state_data = {
+                "balls_left": self.balls_left,
+                "current_streak": self.current_streak,
+                "rounds_completed": self.rounds_completed,
+                "pending_wild_encounters": 0,
+                "initial_round_active": False
+            }
+            self.game.change_state(battle_state)
+
+        self.show_dialogue(intro, callback=start_battle)
 
     def action_flee(self):
         if (

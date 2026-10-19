@@ -179,7 +179,9 @@
       "travel_options": [
         { "text": "Route 1 (to Postwick)", "target_area": "GALAR_ROUTE_1" },
         { "text": "Route 2 (to Wild Area)", "target_area": "GALAR_ROUTE_2" },
-        { "text": "Wild Area", "target_area": "WILD_AREA" }
+        { "text": "Wild Area", "target_area": "WILD_AREA" },
+        { "text": "Isle of Armor (Train)", "target_area": "ISLE_OF_ARMOR", "condition": "beat_galar_champion" },
+        { "text": "Crown Tundra (Train)", "target_area": "CROWN_TUNDRA", "condition": "beat_galar_champion" }
       ],
       "explore_options": [
         { "text": "Pokémon Center", "action": "HEAL" },
@@ -582,16 +584,17 @@
           "flag_condition": "beat_galar_champion",
           "color": "GOLD"
         },
+        { "text": "DEEPER INTO THE WEALD", "action": "EXIT", "target_area": "WEALD_ALTAR", "condition": "boss_defeated", "color": "GOLD" },
         {
-          "text": "Encounter Zamazenta (post-game)",
-          "action": "BOSS",
-          "condition": "boss_not_defeated",
-          "flag_condition": "beat_galar_champion",
+          "text": "SPACE-TIME DISTORTION",
+          "action": "EXIT",
+          "target_area": "SPACE_TIME_DISTORTION",
+          "condition": "beat_galar_champion",
           "color": "GOLD"
         },
         { "text": "Postwick", "action": "EXIT", "target_area": "POSTWICK", "condition": "can_exit", "color": "RED" }
       ],
-      "area_boss": { "id": 888, "name": "Zacian / Zamazenta", "victory_flag": "SLUMBERING_WEALD_boss_defeated" }
+      "area_boss": { "id": 888, "name": "Zacian", "victory_flag": "SLUMBERING_WEALD_boss_defeated" }
     },
     "WILD_AREA": {
       "area_type": "dungeon",
@@ -603,13 +606,20 @@
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "MAX RAID BATTLE", "action": "TRAINER", "condition": "can_battle", "color": "GOLD" },
+        { "text": "MAX RAID BATTLE", "action": "MAX_RAID", "condition": "can_battle", "color": "PURPLE" },
         { "text": "Turffield (west)", "action": "EXIT", "target_area": "TURFFIELD", "condition": "can_exit", "color": "RED" },
         { "text": "Motostoke (east)", "action": "EXIT", "target_area": "MOTOSTOKE", "condition": "can_exit", "color": "RED" },
         { "text": "Wedgehurst (south)", "action": "EXIT", "target_area": "WEDGEHURST", "condition": "can_exit", "color": "RED" },
         { "text": "ROUTE 2", "action": "EXIT", "target_area": "GALAR_ROUTE_2", "condition": "can_exit", "color": "RED" },
         { "text": "ROUTE 3", "action": "EXIT", "target_area": "GALAR_ROUTE_3", "condition": "can_exit", "color": "RED" }
-      ]
+      ],
+      "max_raid_den": {
+        "1": { "819": 35, "821": 35, "831": 15, "829": 10, "52-gmax": 5 },
+        "2": { "827": 35, "833": 35, "835": 15, "824": 10, "133-gmax": 5 },
+        "3": { "822": 35, "836": 35, "830": 15, "854": 10, "834-gmax": 5 },
+        "4": { "823": 35, "851": 35, "844": 15, "839": 10, "823-gmax": 5 },
+        "5": { "887": 35, "884": 35, "858": 15, "861": 10, "884-gmax": 5 }
+      }
     },
     "GALAR_MINE": {
       "area_type": "dungeon",
@@ -702,8 +712,10 @@
       ],
       "route_menu": [
         { "text": "BATTLE ROSE TOWER", "action": "TRAINER", "condition": "has_trainers", "color": "GOLD", "flag_condition": "not rose_tower_cleared" },
+        { "text": "THE ENERGY PLANT ROOF", "action": "BOSS", "condition": "boss_available", "color": "GOLD" },
         { "text": "Hammerlocke", "action": "EXIT", "target_area": "HAMMERLOCKE", "condition": "can_exit", "color": "RED" }
-      ]
+      ],
+      "area_boss": { "id": 890, "name": "Eternatus", "victory_flag": "ROSE_TOWER_boss_defeated" }
     },
     "GALAR_ROUTE_1": {
       "area_type": "wild_route",
@@ -979,6 +991,204 @@
         { "text": "Wyndon", "action": "EXIT", "target_area": "WYNDON", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "WYNDON"
+    },
+    "ISLE_OF_ARMOR": {
+      "area_type": "dungeon",
+      "route_name": "Isle of Armor",
+      "region": "GALAR",
+      "battle_type": "grass",
+      "backgrounds": { "main": "isle_of_armor.png" },
+      "min_rounds": 1,
+      "trainer_pool": [],
+      "wild_pool_percentages": "GALAR_ISLE_OF_ARMOR_PERCENTAGES",
+      "max_raid_den": {
+        "1": { "833": 35, "827": 35, "845": 15, "852": 10, "25-gmax": 5 },
+        "2": { "852": 35, "845": 35, "871": 15, "856": 10, "68-gmax": 5 },
+        "3": { "853": 35, "834": 35, "99": 15, "865": 10, "99-gmax": 5 },
+        "4": { "879": 35, "844": 35, "864": 15, "851": 10, "879-gmax": 5 },
+        "5": { "94": 35, "143": 35, "131": 15, "812": 5, "815": 3, "812-gmax": 4, "815-gmax": 3 }
+      },
+      "area_boss": { "id": 893, "name": "Zarude", "victory_flag": "ISLE_OF_ARMOR_boss_defeated" },
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "MAX RAID BATTLE", "action": "MAX_RAID", "condition": "can_battle", "color": "PURPLE" },
+        {
+          "text": "Follow the Jungle Call",
+          "action": "BOSS",
+          "condition": ["boss_not_defeated"],
+          "color": "GOLD"
+        },
+        { "text": "Wedgehurst Station", "action": "EXIT", "target_area": "WEDGEHURST", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "WEDGEHURST"
+    },
+    "CROWN_TUNDRA": {
+      "area_type": "dungeon",
+      "route_name": "Crown Tundra",
+      "region": "GALAR",
+      "battle_type": "snow",
+      "backgrounds": { "main": "crown_tundra.png" },
+      "min_rounds": 1,
+      "trainer_pool": [],
+      "wild_pool_percentages": "GALAR_CROWN_TUNDRA_PERCENTAGES",
+      "max_raid_den": {
+        "1": { "872": 35, "613": 35, "875": 15, "363": 10, "131-gmax": 5 },
+        "2": { "873": 35, "614": 35, "875": 15, "615": 10, "131-gmax": 5 },
+        "3": { "873": 35, "614": 35, "881": 15, "883": 10, "3-gmax": 5 },
+        "4": { "131": 35, "873": 35, "883": 15, "713": 10, "6-gmax": 5 },
+        "5": { "884": 35, "887": 35, "131": 15, "3-gmax": 5, "6-gmax": 5, "9-gmax": 5 }
+      },
+      "area_boss": { "id": 898, "name": "Calyrex", "victory_flag": "CROWN_TUNDRA_boss_defeated" },
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "MAX RAID BATTLE", "action": "MAX_RAID", "condition": "can_battle", "color": "PURPLE" },
+        {
+          "text": "Meet the King of Bountiful Harvests",
+          "action": "BOSS",
+          "condition": ["boss_not_defeated"],
+          "color": "GOLD"
+        },
+        { "text": "SPLIT-DECISION RUINS", "action": "EXIT", "target_area": "SPLIT_DECISION_RUINS", "condition": "can_exit", "color": "RED" },
+        { "text": "OLD CEMETERY", "action": "EXIT", "target_area": "CROWN_OLD_CEMETERY", "condition": "can_exit", "color": "RED" },
+        { "text": "SNOWSLIDE SLOPE", "action": "EXIT", "target_area": "CROWN_SNOWSLIDE_SLOPE", "condition": "can_exit", "color": "RED" },
+        { "text": "Wedgehurst Station", "action": "EXIT", "target_area": "WEDGEHURST", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "WEDGEHURST"
+    },
+    "SPLIT_DECISION_RUINS": {
+      "area_type": "dungeon",
+      "route_name": "Split-Decision Ruins",
+      "region": "GALAR",
+      "battle_type": "cave",
+      "backgrounds": { "main": "split_decision_ruins.png" },
+      "min_rounds": 1,
+      "trainer_pool": [],
+      "wild_pool_percentages": "GALAR_SPLIT_DECISION_RUINS_PERCENTAGES",
+      "area_boss": { "id": 894, "name": "Regieleki", "victory_flag": "SPLIT_DECISION_RUINS_boss_defeated" },
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        {
+          "text": "Awaken Regieleki",
+          "action": "BOSS",
+          "condition": ["boss_not_defeated"],
+          "color": "GOLD"
+        },
+        { "text": "DRAGON CHAMBER", "action": "EXIT", "target_area": "SPLIT_DECISION_DRAGON_CHAMBER", "condition": "boss_defeated", "color": "GOLD" },
+        { "text": "Crown Tundra", "action": "EXIT", "target_area": "CROWN_TUNDRA", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "CROWN_TUNDRA"
+    },
+    "SPLIT_DECISION_DRAGON_CHAMBER": {
+      "area_type": "dungeon",
+      "route_name": "Split-Decision Ruins (Dragon Chamber)",
+      "region": "GALAR",
+      "battle_type": "cave",
+      "backgrounds": { "main": "split_decision_dragon_chamber.png" },
+      "min_rounds": 0,
+      "trainer_pool": [],
+      "area_boss": { "id": 895, "name": "Regidrago", "victory_flag": "SPLIT_DECISION_DRAGON_CHAMBER_boss_defeated" },
+      "route_menu": [
+        {
+          "text": "Awaken Regidrago",
+          "action": "BOSS",
+          "condition": ["boss_not_defeated"],
+          "color": "GOLD"
+        },
+        { "text": "Split-Decision Ruins", "action": "EXIT", "target_area": "SPLIT_DECISION_RUINS", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "SPLIT_DECISION_RUINS"
+    },
+    "CROWN_OLD_CEMETERY": {
+      "area_type": "dungeon",
+      "route_name": "Old Cemetery",
+      "region": "GALAR",
+      "battle_type": "cave",
+      "backgrounds": { "main": "crown_old_cemetery.png" },
+      "min_rounds": 1,
+      "trainer_pool": [],
+      "wild_pool_percentages": "GALAR_CROWN_OLD_CEMETERY_PERCENTAGES",
+      "area_boss": { "id": 897, "name": "Spectrier", "victory_flag": "CROWN_OLD_CEMETERY_boss_defeated" },
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        {
+          "text": "Lure Spectrier",
+          "action": "BOSS",
+          "condition": ["boss_not_defeated"],
+          "color": "GOLD"
+        },
+        { "text": "Crown Tundra", "action": "EXIT", "target_area": "CROWN_TUNDRA", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "CROWN_TUNDRA"
+    },
+    "CROWN_SNOWSLIDE_SLOPE": {
+      "area_type": "dungeon",
+      "route_name": "Snowslide Slope",
+      "region": "GALAR",
+      "battle_type": "snow",
+      "backgrounds": { "main": "crown_snowslide_slope.png" },
+      "min_rounds": 1,
+      "trainer_pool": [],
+      "wild_pool_percentages": "GALAR_CROWN_SNOWSLIDE_SLOPE_PERCENTAGES",
+      "area_boss": { "id": 896, "name": "Glastrier", "victory_flag": "CROWN_SNOWSLIDE_SLOPE_boss_defeated" },
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        {
+          "text": "Lure Glastrier",
+          "action": "BOSS",
+          "condition": ["boss_not_defeated"],
+          "color": "GOLD"
+        },
+        { "text": "Crown Tundra", "action": "EXIT", "target_area": "CROWN_TUNDRA", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "CROWN_TUNDRA"
+    },
+    "SPACE_TIME_DISTORTION": {
+      "area_type": "dungeon",
+      "route_name": "Space-Time Distortion",
+      "region": "GALAR",
+      "battle_type": "grass",
+      "backgrounds": { "main": "space_time_distortion.png" },
+      "min_rounds": 1,
+      "trainer_pool": [],
+      "wild_pool_percentages": "GALAR_SPACE_TIME_DISTORTION_PERCENTAGES",
+      "area_boss": { "id": 905, "name": "Enamorus", "victory_flag": "SPACE_TIME_DISTORTION_boss_defeated" },
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        {
+          "text": "Face Enamorus",
+          "action": "BOSS",
+          "condition": ["boss_not_defeated"],
+          "color": "GOLD"
+        },
+        { "text": "Slumbering Weald", "action": "EXIT", "target_area": "SLUMBERING_WEALD", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "SLUMBERING_WEALD"
+    },
+    "WEALD_ALTAR": {
+      "area_type": "dungeon",
+      "route_name": "Slumbering Weald Altar",
+      "region": "GALAR",
+      "battle_type": "grass",
+      "backgrounds": { "main": "weald_altar.png" },
+      "min_rounds": 0,
+      "trainer_pool": [],
+      "area_boss": { "id": 889, "name": "Zamazenta", "victory_flag": "WEALD_ALTAR_boss_defeated" },
+      "route_menu": [
+        {
+          "text": "Encounter Zamazenta",
+          "action": "BOSS",
+          "condition": ["boss_not_defeated"],
+          "color": "GOLD"
+        },
+        { "text": "Slumbering Weald", "action": "EXIT", "target_area": "SLUMBERING_WEALD", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "SLUMBERING_WEALD"
     }
   },
   "JOURNAL_MISSIONS": [
@@ -1055,34 +1265,34 @@
       "reward": "Rare wild Pokémon"
     }
   ],
-  "GALAR_ROUTE_1": [810, 813, 816, 831],
-  "GALAR_ROUTE_1_PERCENTAGES": { "810": 25, "813": 25, "816": 25, "831": 25 },
-  "GALAR_ROUTE_2": [831, 832, 859, 860],
-  "GALAR_ROUTE_2_PERCENTAGES": { "831": 30, "832": 25, "859": 25, "860": 20 },
+  "GALAR_ROUTE_1": [810, 813, 816, 831, 819, 821, 824],
+  "GALAR_ROUTE_1_PERCENTAGES": { "810": 15, "813": 15, "816": 15, "831": 15, "819": 15, "821": 15, "824": 10 },
+  "GALAR_ROUTE_2": [831, 832, 859, 860, 827, 829, 833],
+  "GALAR_ROUTE_2_PERCENTAGES": { "831": 20, "832": 15, "859": 15, "860": 10, "827": 15, "829": 15, "833": 10 },
   "GALAR_ROUTE_3": [837, 838, 831, 832],
   "GALAR_ROUTE_3_PERCENTAGES": { "837": 30, "838": 25, "831": 25, "832": 20 },
-  "GALAR_ROUTE_4": [840, 841, 846, 847],
-  "GALAR_ROUTE_4_PERCENTAGES": { "840": 30, "841": 25, "846": 25, "847": 20 },
-  "GALAR_ROUTE_5": [846, 847, 835, 836],
-  "GALAR_ROUTE_5_PERCENTAGES": { "846": 30, "847": 25, "835": 25, "836": 20 },
-  "GALAR_ROUTE_6": [838, 840, 850, 851],
-  "GALAR_ROUTE_6_PERCENTAGES": { "838": 30, "840": 25, "850": 25, "851": 20 },
-  "GALAR_ROUTE_7": [858, 859, 869, 870],
-  "GALAR_ROUTE_7_PERCENTAGES": { "858": 30, "859": 25, "869": 25, "870": 20 },
+  "GALAR_ROUTE_4": [840, 841, 846, 847, 868],
+  "GALAR_ROUTE_4_PERCENTAGES": { "840": 25, "841": 15, "846": 20, "847": 15, "868": 25 },
+  "GALAR_ROUTE_5": [846, 847, 835, 836, 852, 2024],
+  "GALAR_ROUTE_5_PERCENTAGES": { "846": 22, "847": 18, "835": 18, "836": 12, "852": 15, "2024": 15 },
+  "GALAR_ROUTE_6": [838, 840, 850, 851, 843, 2037],
+  "GALAR_ROUTE_6_PERCENTAGES": { "838": 22, "840": 18, "850": 18, "851": 12, "843": 18, "2037": 12 },
+  "GALAR_ROUTE_7": [858, 859, 869, 870, 876],
+  "GALAR_ROUTE_7_PERCENTAGES": { "858": 25, "859": 20, "869": 20, "870": 15, "876": 20 },
   "GALAR_ROUTE_8": [874, 875, 613, 614],
   "GALAR_ROUTE_8_PERCENTAGES": { "874": 30, "875": 25, "613": 25, "614": 20 },
-  "GALAR_ROUTE_9": [846, 848, 880, 882],
-  "GALAR_ROUTE_9_PERCENTAGES": { "846": 30, "848": 25, "880": 25, "882": 20 },
-  "GALAR_ROUTE_10": [882, 883, 884, 879],
-  "GALAR_ROUTE_10_PERCENTAGES": { "882": 30, "883": 25, "884": 25, "879": 20 },
+  "GALAR_ROUTE_9": [846, 848, 880, 882, 845, 871, 2031],
+  "GALAR_ROUTE_9_PERCENTAGES": { "846": 22, "848": 18, "880": 13, "882": 12, "845": 15, "871": 10, "2031": 10 },
+  "GALAR_ROUTE_10": [882, 883, 884, 879, 881, 877, 2026],
+  "GALAR_ROUTE_10_PERCENTAGES": { "882": 18, "883": 17, "884": 17, "879": 10, "881": 13, "877": 13, "2026": 12 },
   "GALAR_SLUMBERING_WEALD_PERCENTAGES": { "888": 5, "889": 5, "831": 30, "862": 30, "863": 30 },
   "GALAR_SLUMBERING_WEALD": [831, 862, 863, 888, 889],
-  "GALAR_WILD_AREA_PERCENTAGES": { "835": 20, "840": 20, "846": 20, "858": 20, "874": 20 },
-  "GALAR_WILD_AREA": [835, 840, 846, 858, 874],
-  "GALAR_MINE_PERCENTAGES": { "837": 35, "838": 30, "874": 20, "91": 15 },
-  "GALAR_MINE": [91, 837, 838, 874],
-  "GALAR_GLIMWOOD_PERCENTAGES": { "859": 30, "860": 25, "869": 25, "872": 20 },
-  "GALAR_GLIMWOOD": [859, 860, 869, 872],
+  "GALAR_WILD_AREA_PERCENTAGES": { "835": 15, "840": 15, "846": 15, "858": 10, "874": 10, "885": 10, "819": 10, "833": 10, "845": 5 },
+  "GALAR_WILD_AREA": [835, 840, 846, 858, 874, 885, 819, 833, 845],
+  "GALAR_MINE_PERCENTAGES": { "837": 30, "838": 25, "874": 15, "91": 10, "878": 20 },
+  "GALAR_MINE": [837, 838, 874, 91, 878],
+  "GALAR_GLIMWOOD_PERCENTAGES": { "859": 20, "860": 15, "869": 15, "872": 15, "856": 20, "854": 15 },
+  "GALAR_GLIMWOOD": [859, 860, 869, 872, 856, 854],
   "REGION_START": {
     "GALAR": {
       "order": 8,
@@ -1098,5 +1308,29 @@
       "mom_home_text": ["galar_mom_home_1", "galar_mom_home_2", "galar_mom_home_3"],
       "dex_extra": [1018]
     }
-  }
+  },
+  "MAX_RAID": {
+    "_comment": "star_odds_by_badges: [min Galar badges (9 = champion), [1-star %, 2, 3, 4, 5]]",
+    "star_odds_by_badges": [
+      [0, [80, 20, 0, 0, 0]],
+      [1, [30, 70, 0, 0, 0]],
+      [3, [20, 40, 40, 0, 0]],
+      [5, [0, 20, 40, 40, 0]],
+      [7, [0, 0, 30, 50, 20]],
+      [9, [0, 0, 20, 40, 40]]
+    ],
+    "gmax_odds_note": "Each den's rarest slot (5%) is its Gigantamax species."
+  },
+  "GALAR_ISLE_OF_ARMOR_PERCENTAGES": { "891": 10, "852": 15, "845": 15, "833": 15, "2024": 15, "2031": 15, "871": 15 },
+  "GALAR_ISLE_OF_ARMOR": [891, 852, 845, 833, 2024, 2031, 871],
+  "GALAR_CROWN_TUNDRA_PERCENTAGES": { "872": 20, "873": 15, "613": 15, "875": 15, "2026": 15, "615": 10, "363": 10 },
+  "GALAR_CROWN_TUNDRA": [872, 873, 613, 875, 2026, 615, 363],
+  "GALAR_SPLIT_DECISION_RUINS_PERCENTAGES": { "854": 40, "867": 30, "2037": 30 },
+  "GALAR_SPLIT_DECISION_RUINS": [854, 867, 2037],
+  "GALAR_CROWN_OLD_CEMETERY_PERCENTAGES": { "854": 40, "855": 20, "2037": 40 },
+  "GALAR_CROWN_OLD_CEMETERY": [854, 855, 2037],
+  "GALAR_CROWN_SNOWSLIDE_SLOPE_PERCENTAGES": { "872": 40, "873": 30, "875": 30 },
+  "GALAR_CROWN_SNOWSLIDE_SLOPE": [872, 873, 875],
+  "GALAR_SPACE_TIME_DISTORTION_PERCENTAGES": { "899": 20, "900": 15, "901": 15, "902": 20, "903": 15, "904": 15 },
+  "GALAR_SPACE_TIME_DISTORTION": [899, 900, 901, 902, 903, 904]
 }

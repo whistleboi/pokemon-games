@@ -197,6 +197,8 @@ class TrainerBattleState(GameState):
         self.is_shift_switch = False
 
     def _get_capped_stage(self, pokemon):
+        if getattr(pokemon, "raid_stage", None):
+            return pokemon.raid_stage
         is_opponent_boss = self.is_boss_battle and (self.opponent_team and pokemon in self.opponent_team)
         if is_opponent_boss or pokemon.id in self.game.loader.all_boss_ids:
             return 3
@@ -1332,6 +1334,11 @@ class WildBattleState(TrainerBattleState):
                             self.game.story_manager.story_flags[self.victory_flag] = True
                             if self.opponent_pokemon.name == "SNORLAX":
                                 self.game.story_manager.story_flags["caught_snorlax"] = True
+
+                        if getattr(self.opponent_pokemon, "raid_stage", None):
+                            # A caught raid boss is a normal party member from here on.
+                            self.opponent_pokemon.raid_stage = None
+                            self.opponent_pokemon.display_name = self.opponent_pokemon.raid_base_name
 
                         self.player_won = True
                         self.catch_phase = "CAUGHT"
