@@ -50,13 +50,17 @@ class DataManager:
             and self.data["pokedex"][p_key].get("shiny", False)
             and not pokemon.is_shiny
         ):
+            if getattr(pokemon, "gmax_factor", False):
+                self.data["pokedex"][p_key]["gmax"] = True
             return
 
+        had_gmax = self.data["pokedex"].get(p_key, {}).get("gmax", False)
         self.data["pokedex"][p_key] = {
             "id": pokemon.id,
             "name": pokemon.display_name,
             "form": pokemon.form,
             "shiny": pokemon.is_shiny,
+            "gmax": had_gmax or getattr(pokemon, "gmax_factor", False),
         }
 
     def add_defeated_boss(self, pokemon):

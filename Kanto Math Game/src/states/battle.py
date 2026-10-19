@@ -1289,6 +1289,15 @@ class WildBattleState(TrainerBattleState):
         else:
             self.game.change_state(self.game.states["play"])
 
+    def _raid_catch_to_party_pokemon(self, boss):
+        """A caught raid boss joins as a normal-size, normal-form Pokemon; G-Max bosses keep the G-Max Factor."""
+        from src.pokemon.data import Pokemon
+        raw = self.game.loader.fetch_specific(boss.id, form="normal", is_shiny=boss.is_shiny)
+        pokemon = Pokemon(raw, self.game.assets, size_mult=2.5)
+        pokemon.is_shiny = boss.is_shiny
+        pokemon.gmax_factor = boss.form == "gmax"
+        return pokemon
+
     def catch_yes(self):
         self.phase = "CATCH_ANIMATION"
         self.catch_phase = "THROWN"
@@ -1335,10 +1344,9 @@ class WildBattleState(TrainerBattleState):
                             if self.opponent_pokemon.name == "SNORLAX":
                                 self.game.story_manager.story_flags["caught_snorlax"] = True
 
-                        if getattr(self.opponent_pokemon, "raid_stage", None):
-                            # A caught raid boss is a normal party member from here on.
-                            self.opponent_pokemon.raid_stage = None
-                            self.opponent_pokemon.display_name = self.opponent_pokemon.raid_base_name
+                        caught = self.opponent_pokemon
+                        if getattr(caught, "raid_stage", None):
+                            caught = self._raid_catch_to_party_pokemon(caught)
 
                         self.player_won = True
                         self.catch_phase = "CAUGHT"
@@ -1349,7 +1357,7 @@ class WildBattleState(TrainerBattleState):
                         )
                         self.game.states["play"].p_data = [
                             None,
-                            self.opponent_pokemon,
+                            caught,
                             None,
                         ]
                         self.game.states["play"].complete_catch(1)

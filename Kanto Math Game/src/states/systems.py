@@ -13,6 +13,18 @@ from src.states.battle import TrainerBattleState, TrainerIntroState
 import random
 
 
+G_MAX_RED = (220, 30, 70)
+
+
+def _draw_gmax_tag(screen, font, x, y):
+    """Small red "G-MAX" badge marking a Pokemon with the Gigantamax Factor."""
+    label = font.render("G-MAX", True, WHITE)
+    box = label.get_rect(topleft=(x, y)).inflate(10, 6)
+    pygame.draw.rect(screen, G_MAX_RED, box, border_radius=6)
+    pygame.draw.rect(screen, WHITE, box, 2, border_radius=6)
+    screen.blit(label, label.get_rect(center=box.center))
+
+
 # [REF-0060: Journal System]
 class JournalState(GameState):
     def __init__(self, game, previous_state):
@@ -1427,7 +1439,10 @@ class PokedexState(GameState):
                 if is_caught:
                     entry["status"] = 2
                     entry["name"] = self.game.assets.pokemon_names.get(str(p_id), f"#{p_id}").upper()
-                    entry["shiny"] = caught_entry['shiny']
+                    entry["shiny"] = any(v.get("shiny") for v in caught_data.values()
+                                         if isinstance(v, dict) and v.get("id") == p_id)
+                    entry["gmax"] = any(v.get("gmax") for v in caught_data.values()
+                                        if isinstance(v, dict) and v.get("id") == p_id)
                 elif is_seen:
                     entry["status"] = 1
                     entry["name"] = self.game.assets.pokemon_names.get(str(p_id), f"#{p_id}").upper()
@@ -1476,10 +1491,11 @@ class PokedexState(GameState):
             self.full_dex = [
                 p for p in source_data.values()
                 if p.get("form", "normal") == self.current_tab
+                or (self.current_tab == "gmax" and p.get("gmax"))
             ]
 
         if self.show_shinies_only:
-            self.full_dex = [p for p in self.full_dex if p["shiny"]]
+            self.full_dex = [p for p in self.full_dex if p.get("shiny")]
 
         if self.sort_mode == "NUMBER":
             self.full_dex.sort(key=lambda x: x.get("id", 0))
@@ -1685,6 +1701,8 @@ class PokedexState(GameState):
 
                     if p_entry.get("shiny"):
                         Utils.draw_star(screen, GOLD, (rect.right - 15, rect.top + 15), 12)
+                    if p_entry.get("gmax") and status == 2:
+                        _draw_gmax_tag(screen, self.game.assets.fonts["tiny"], rect.left + 6, rect.bottom - 24)
 
                     self.dex_btns.append((rect, p_entry["id"]))
                 else:
@@ -2234,6 +2252,8 @@ class PokemonDetailState(GameState):
         if self.pokemon.image:
             img = pygame.transform.scale(self.pokemon.image, (250, 250))
             self.game.screen.blit(img, (self.game.width//2 - 125, 120))
+        if getattr(self.pokemon, "gmax_factor", False):
+            _draw_gmax_tag(self.game.screen, self.game.assets.fonts["small"], self.game.width // 2 + 110, 130)
 
         info_x = 50
         y = 400
@@ -2247,6 +2267,8 @@ class PokemonDetailState(GameState):
             f"HP: {self.pokemon.current_hp}/{self.pokemon.get_max_hp()}",
             f"Types: {'/'.join(self.pokemon.types)}"
         ]
+        if getattr(self.pokemon, "gmax_factor", False):
+            texts.append("Gigantamax Factor: YES")
 
         catch_count = self.game.story_manager.catch_counts.get(self.pokemon.id, 0)
         catch_str = f"Catches Banked: {catch_count}/5"

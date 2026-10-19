@@ -34,6 +34,8 @@ class Pokemon:
         )
         self.xp = 0
         self.caught_region = None
+        # Caught as a Gigantamax raid boss: shown normally, but keeps the G-Max Factor.
+        self.gmax_factor = False
 
         self.level = 100
         self.current_hp = self.get_max_hp()

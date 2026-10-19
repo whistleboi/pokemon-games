@@ -624,14 +624,14 @@ class StoryManager:
             "player_team": [
                 {
                     "id": p.id, "form": p.form, "shiny": p.is_shiny,
-                    "wins": p.wins, "xp": p.xp, "hp": p.current_hp, "stage": p.stage,
+                    "wins": p.wins, "xp": p.xp, "hp": p.current_hp, "stage": p.stage, "gmax": p.gmax_factor,
                     "caught_region": getattr(p, "caught_region", None)
                 } for p in self.player_team if p
             ],
             "pc_pokemon": [
                 {
                     "id": p.id, "form": p.form, "shiny": p.is_shiny,
-                    "wins": p.wins, "xp": p.xp, "hp": p.current_hp, "stage": p.stage,
+                    "wins": p.wins, "xp": p.xp, "hp": p.current_hp, "stage": p.stage, "gmax": p.gmax_factor,
                     "caught_region": getattr(p, "caught_region", None)
                 } if p else None for p in self.pc_pokemon
             ],
@@ -689,12 +689,14 @@ class StoryManager:
 
         self.player_team = []
         for p_data in data.get("player_team", []):
+            form = p_data.get("form", "normal")
             raw = loader.fetch_specific(
                 p_data["id"],
-                form=p_data.get("form", "normal"),
+                form="normal" if form == "gmax" else form,
                 is_shiny=p_data.get("shiny", False),
             )
             pokemon = Pokemon(raw, loader.game.assets, size_mult=2.5)
+            pokemon.gmax_factor = p_data.get("gmax", form == "gmax")
             pokemon.caught_region = p_data.get("caught_region")
             pokemon.xp = p_data.get("xp", p_data.get("wins", 0) * Pokemon.XP_PER_WIN)
             if "hp" in p_data:
@@ -707,12 +709,14 @@ class StoryManager:
         for i, p_data in enumerate(data.get("pc_pokemon", [])):
             if i >= 300 or p_data is None:
                 continue
+            form = p_data.get("form", "normal")
             raw = loader.fetch_specific(
                 p_data["id"],
-                form=p_data.get("form", "normal"),
+                form="normal" if form == "gmax" else form,
                 is_shiny=p_data.get("shiny", False),
             )
             pokemon = Pokemon(raw, loader.game.assets, size_mult=2.5)
+            pokemon.gmax_factor = p_data.get("gmax", form == "gmax")
             pokemon.caught_region = p_data.get("caught_region")
             pokemon.xp = p_data.get("xp", p_data.get("wins", 0) * Pokemon.XP_PER_WIN)
             if "hp" in p_data:
