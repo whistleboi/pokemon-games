@@ -498,7 +498,7 @@ class TrainerBattleState(GameState):
         Stage 1: Normal=7,  Super=10, NVE=4
         Stage 2: Normal=20, Super=28, NVE=12
         Stage 3: Normal=30, Super=42, NVE=18
-        Stat modifiers: see _stat_mod (offense, defense and speed tiers, each ±1).
+        Stat modifiers: see _stat_mod (offense and defense tiers, each ±1).
         """
         _NORMAL = (0, 7, 20, 30)
         _SUPER  = (0, 10, 28, 42)
@@ -784,15 +784,15 @@ class TrainerBattleState(GameState):
     @staticmethod
     def _stat_mod(attacker, defender, category="PHYSICAL"):
         """
-        Damage modifier from every stat but HP, each worth ±1 (range -3 .. +3):
-        the attacker's offense (Attack or Sp. Atk, matching the move) and Speed add when
-        strong and subtract when weak; the defender's matching Defense or Sp. Def does the
-        reverse. So a strong defender is cancelled out by a strong attacker.
+        Damage modifier from the stats the move uses, each worth ±1 (range -2 .. +2):
+        the attacker's offense (Attack or Sp. Atk, matching the move) adds when strong and
+        subtracts when weak; the defender's matching Defense or Sp. Def does the reverse.
+        So a strong defender is cancelled out by a strong attacker. Speed is left out.
         """
         special = category == "SPECIAL"
         offense = attacker.stat_tier("SPATK" if special else "ATTACK")
         defense = defender.stat_tier("SPDEF" if special else "DEFENSE")
-        return offense - defense + attacker.stat_tier("SPEED")
+        return offense - defense
 
     def _award_battle_xp(self):
         """Give XP for the KO, scaled by relative stage and foe strength. Returns battle messages."""
