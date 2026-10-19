@@ -558,7 +558,7 @@
       "route_name": "Aether Paradise",
       "region": "ALOLA",
       "battle_type": "indoor",
-      "wild_pool_percentages": null,
+      "wild_pool_percentages": "ALOLA_AETHER_PARADISE_PERCENTAGES",
       "min_rounds": 0,
       "trainer_pool": [
         {
@@ -584,7 +584,10 @@
         }
       ],
       "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE AETHER", "action": "TRAINER", "condition": "has_trainers", "color": "GOLD", "flag_condition": "not aether_paradise_cleared" },
+        { "text": "ULTRA WORMHOLE", "action": "EXIT", "target_area": "ULTRA_SPACE", "condition": "beat_alola_champion", "color": "GOLD" },
         { "text": "Heahea City (ferry)", "action": "EXIT", "target_area": "HEAHEA_CITY", "condition": "can_exit", "color": "RED" },
         { "text": "ROUTE 8", "action": "EXIT", "target_area": "ALOLA_ROUTE_8", "condition": "can_exit", "color": "RED" }
       ]
@@ -708,18 +711,11 @@
       "wild_pool_percentages": null,
       "min_rounds": 0,
       "route_menu": [
-        { "text": "Encounter Solgaleo / Lunala", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD" },
-        {
-          "text": "Encounter Necrozma (post-game)",
-          "action": "BOSS",
-          "condition": "boss_not_defeated",
-          "flag_condition": "beat_alola_champion",
-          "color": "GOLD"
-        },
+        { "text": "Encounter Solgaleo", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD" },
         { "text": "Vast Poni Canyon", "action": "EXIT", "target_area": "VAST_PONI_CANYON", "condition": "can_exit", "color": "RED" },
         { "text": "SEAFOLK VILLAGE", "action": "EXIT", "target_area": "SEAFOLK_VILLAGE", "condition": "can_exit", "color": "RED" }
       ],
-      "area_boss": { "id": 791, "name": "Solgaleo / Lunala", "victory_flag": "ALTAR_boss_defeated" }
+      "area_boss": { "id": 791, "name": "Solgaleo", "victory_flag": "ALTAR_boss_defeated" }
     },
     "MOUNT_LANAKILA": {
       "area_type": "dungeon",
@@ -918,6 +914,7 @@
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "RUINS OF LIFE", "action": "EXIT", "target_area": "RUINS_OF_LIFE", "condition": "beat_alola_champion", "color": "GOLD" },
         { "text": "Konikoni City", "action": "EXIT", "target_area": "KONIKONI_CITY", "condition": "can_exit", "color": "RED" },
         { "text": "Aether House", "action": "EXIT", "target_area": "AETHER_PARADISE", "condition": "can_exit", "color": "RED" }
       ],
@@ -944,10 +941,17 @@
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
+        {
+          "text": "Investigate the Machine",
+          "action": "BOSS",
+          "condition": ["boss_not_defeated", "beat_alola_champion"],
+          "color": "GOLD"
+        },
         { "text": "Malie City", "action": "EXIT", "target_area": "MALIE_CITY", "condition": "can_exit", "color": "RED" },
         { "text": "Mount Hokulani", "action": "EXIT", "target_area": "MOUNT_HOKULANI", "condition": "can_exit", "color": "RED" }
       ],
-      "next_area": "MOUNT_HOKULANI"
+      "next_area": "MOUNT_HOKULANI",
+      "area_boss": { "id": 801, "name": "Magearna", "victory_flag": "ALOLA_ROUTE_10_boss_defeated" }
     },
     "ALOLA_ROUTE_11": {
       "area_type": "wild_route",
@@ -994,10 +998,17 @@
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        {
+          "text": "Chase the Lightning",
+          "action": "BOSS",
+          "condition": ["boss_not_defeated", "beat_alola_champion"],
+          "color": "GOLD"
+        },
         { "text": "Tapu Village", "action": "EXIT", "target_area": "TAPU_VILLAGE", "condition": "can_exit", "color": "RED" },
         { "text": "Thrifty Megamart", "action": "EXIT", "target_area": "THRIFTY_MEGAMART", "condition": "can_exit", "color": "RED" }
       ],
-      "next_area": "THRIFTY_MEGAMART"
+      "next_area": "THRIFTY_MEGAMART",
+      "area_boss": { "id": 807, "name": "Zeraora", "victory_flag": "ALOLA_ROUTE_14_boss_defeated" }
     },
     "ALOLA_ROUTE_15": {
       "area_type": "wild_route",
@@ -1098,8 +1109,48 @@
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        {
+          "text": "Follow the Shadow",
+          "action": "BOSS",
+          "condition": ["boss_not_defeated", "beat_alola_champion"],
+          "color": "GOLD"
+        },
         { "text": "Konikoni City", "action": "EXIT", "target_area": "KONIKONI_CITY", "condition": "can_exit", "color": "RED" }
-      ]
+      ],
+      "area_boss": { "id": 802, "name": "Marshadow", "victory_flag": "MEMORIAL_HILL_boss_defeated" }
+    },
+    "ULTRA_SPACE": {
+      "area_type": "dungeon",
+      "route_name": "Ultra Space",
+      "region": "ALOLA",
+      "battle_type": "cave",
+      "backgrounds": { "main": "ultra_space.png" },
+      "wild_pool_percentages": "ALOLA_ULTRA_SPACE_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "Encounter Necrozma", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD" },
+        { "text": "Aether Paradise", "action": "EXIT", "target_area": "AETHER_PARADISE", "condition": "can_exit", "color": "RED" }
+      ],
+      "area_boss": { "id": 800, "name": "Necrozma", "victory_flag": "ULTRA_SPACE_boss_defeated" },
+      "next_area": "AETHER_PARADISE"
+    },
+    "RUINS_OF_LIFE": {
+      "area_type": "dungeon",
+      "route_name": "Ruins of Life",
+      "region": "ALOLA",
+      "battle_type": "indoor",
+      "backgrounds": { "main": "ruins_of_life.png" },
+      "min_rounds": 0,
+      "trainer_pool": [],
+      "route_menu": [
+        { "text": "Meet Tapu Lele", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD" },
+        { "text": "Route 8", "action": "EXIT", "target_area": "ALOLA_ROUTE_8", "condition": "can_exit", "color": "RED" }
+      ],
+      "area_boss": { "id": 786, "name": "Tapu Lele", "victory_flag": "RUINS_OF_LIFE_boss_defeated" },
+      "next_area": "ALOLA_ROUTE_8"
     }
   },
   "JOURNAL_MISSIONS": [
@@ -1192,48 +1243,48 @@
       "reward": "Necrozma encounter"
     }
   ],
-  "ALOLA_ROUTE_1": [722, 725, 728, 734],
-  "ALOLA_ROUTE_1_PERCENTAGES": { "722": 30, "725": 25, "728": 25, "734": 20 },
+  "ALOLA_ROUTE_1": [722, 725, 728, 734, 731],
+  "ALOLA_ROUTE_1_PERCENTAGES": { "722": 20, "725": 20, "728": 20, "734": 20, "731": 20 },
   "ALOLA_ROUTE_2": [734, 735, 737, 741],
   "ALOLA_ROUTE_2_PERCENTAGES": { "734": 30, "735": 25, "737": 25, "741": 20 },
-  "ALOLA_ROUTE_4": [741, 742, 753, 754],
-  "ALOLA_ROUTE_4_PERCENTAGES": { "741": 30, "742": 25, "753": 25, "754": 20 },
+  "ALOLA_ROUTE_4": [741, 742, 753, 754, 749],
+  "ALOLA_ROUTE_4_PERCENTAGES": { "741": 22, "742": 22, "753": 20, "754": 16, "749": 20 },
   "ALOLA_ROUTE_5": [741, 754, 746, 747],
   "ALOLA_ROUTE_5_PERCENTAGES": { "741": 25, "754": 25, "746": 25, "747": 25 },
   "ALOLA_ROUTE_7": [757, 758, 744, 745],
   "ALOLA_ROUTE_7_PERCENTAGES": { "757": 30, "758": 25, "744": 25, "745": 20 },
-  "ALOLA_ROUTE_8": [744, 762, 763, 764],
-  "ALOLA_ROUTE_8_PERCENTAGES": { "744": 30, "762": 25, "763": 25, "764": 20 },
+  "ALOLA_ROUTE_8": [744, 762, 763, 764, 767],
+  "ALOLA_ROUTE_8_PERCENTAGES": { "744": 25, "762": 22, "763": 20, "764": 18, "767": 15 },
   "ALOLA_ROUTE_10": [738, 739, 764, 766],
   "ALOLA_ROUTE_10_PERCENTAGES": { "738": 30, "739": 25, "764": 25, "766": 20 },
-  "ALOLA_ROUTE_11": [764, 766, 741, 769],
-  "ALOLA_ROUTE_11_PERCENTAGES": { "764": 30, "766": 25, "741": 25, "769": 20 },
+  "ALOLA_ROUTE_11": [764, 766, 741, 769, 775],
+  "ALOLA_ROUTE_11_PERCENTAGES": { "764": 25, "766": 20, "741": 20, "769": 15, "775": 20 },
   "ALOLA_ROUTE_14": [754, 764, 778, 769],
   "ALOLA_ROUTE_14_PERCENTAGES": { "754": 30, "764": 25, "778": 25, "769": 20 },
   "ALOLA_ROUTE_15": [778, 769, 764, 766],
   "ALOLA_ROUTE_15_PERCENTAGES": { "778": 30, "769": 25, "764": 25, "766": 20 },
-  "ALOLA_ROUTE_16": [730, 745, 788, 787],
-  "ALOLA_ROUTE_16_PERCENTAGES": { "730": 30, "745": 25, "788": 25, "787": 20 },
+  "ALOLA_ROUTE_16": [730, 745, 788, 787, 779, 781],
+  "ALOLA_ROUTE_16_PERCENTAGES": { "730": 22, "745": 18, "788": 15, "787": 15, "779": 15, "781": 15 },
   "ALOLA_ROUTE_17": [757, 760, 754, 758],
   "ALOLA_ROUTE_17_PERCENTAGES": { "757": 30, "760": 25, "754": 25, "758": 20 },
   "ALOLA_VERDANT_CAVERN_PERCENTAGES": { "734": 35, "735": 15, "744": 20 },
   "ALOLA_VERDANT_CAVERN": [734, 735, 744],
-  "ALOLA_BROOKLET_HILL_PERCENTAGES": { "746": 35, "747": 30, "748": 20, "730": 15 },
-  "ALOLA_BROOKLET_HILL": [730, 746, 747, 748],
+  "ALOLA_BROOKLET_HILL_PERCENTAGES": { "746": 25, "747": 22, "748": 13, "730": 10, "751": 20, "771": 10 },
+  "ALOLA_BROOKLET_HILL": [746, 747, 748, 730, 751, 771],
   "ALOLA_WELA_VOLCANO_PERCENTAGES": { "757": 35, "758": 30, "759": 20, "105": 15 },
   "ALOLA_WELA_VOLCANO": [105, 757, 758, 759],
-  "ALOLA_LUSH_JUNGLE_PERCENTAGES": { "753": 30, "754": 25, "755": 25, "741": 20 },
-  "ALOLA_LUSH_JUNGLE": [741, 753, 754, 755],
-  "ALOLA_MT_HOKULANI_PERCENTAGES": { "738": 35, "739": 30, "736": 20, "737": 15 },
-  "ALOLA_MT_HOKULANI": [736, 737, 738, 739],
+  "ALOLA_LUSH_JUNGLE_PERCENTAGES": { "753": 22, "754": 18, "755": 20, "741": 15, "761": 15, "765": 10 },
+  "ALOLA_LUSH_JUNGLE": [753, 754, 755, 741, 761, 765],
+  "ALOLA_MT_HOKULANI_PERCENTAGES": { "738": 22, "739": 22, "736": 18, "737": 10, "777": 16, "774": 12 },
+  "ALOLA_MT_HOKULANI": [738, 739, 736, 737, 777, 774],
   "ALOLA_THRIFTY_MEGAMART_PERCENTAGES": { "778": 40, "709": 30, "302": 30 },
   "ALOLA_THRIFTY_MEGAMART": [302, 709, 778],
-  "ALOLA_VAST_PONI_PERCENTAGES": { "773": 25, "745": 25, "776": 25, "783": 25 },
-  "ALOLA_VAST_PONI": [745, 773, 776, 783],
-  "ALOLA_MT_LANAKILA_PERCENTAGES": { "730": 20, "724": 20, "727": 20, "745": 20, "778": 20 },
-  "ALOLA_MT_LANAKILA": [724, 727, 730, 745, 778],
-  "ALOLA_DIGLETTS_TUNNEL_PERCENTAGES": { "50": 40, "51": 35, "100": 25 },
-  "ALOLA_DIGLETTS_TUNNEL": [50, 51, 100],
+  "ALOLA_VAST_PONI_PERCENTAGES": { "773": 15, "745": 20, "776": 20, "783": 15, "782": 30 },
+  "ALOLA_VAST_PONI": [773, 745, 776, 783, 782],
+  "ALOLA_MT_LANAKILA_PERCENTAGES": { "730": 16, "724": 16, "727": 16, "745": 16, "778": 16, "780": 20 },
+  "ALOLA_MT_LANAKILA": [730, 724, 727, 745, 778, 780],
+  "ALOLA_DIGLETTS_TUNNEL_PERCENTAGES": { "50": 35, "51": 30, "100": 20, "808": 15 },
+  "ALOLA_DIGLETTS_TUNNEL": [50, 51, 100, 808],
   "ALOLA_MEMORIAL_HILL_PERCENTAGES": { "769": 40, "764": 35, "778": 25 },
   "ALOLA_MEMORIAL_HILL": [764, 769, 778],
   "REGION_START": {
@@ -1251,5 +1302,9 @@
       "mom_home_text": ["alola_mom_home_1", "alola_mom_home_2", "alola_mom_home_3"],
       "dex_extra": []
     }
-  }
+  },
+  "ALOLA_AETHER_PARADISE_PERCENTAGES": { "772": 25, "789": 15, "749": 20, "771": 20, "777": 20 },
+  "ALOLA_AETHER_PARADISE": [772, 789, 749, 771, 777],
+  "ALOLA_ULTRA_SPACE_PERCENTAGES": { "793": 10, "794": 10, "795": 10, "796": 10, "797": 10, "798": 10, "799": 10, "805": 10, "806": 10, "803": 10 },
+  "ALOLA_ULTRA_SPACE": [793, 794, 795, 796, 797, 798, 799, 805, 806, 803]
 }

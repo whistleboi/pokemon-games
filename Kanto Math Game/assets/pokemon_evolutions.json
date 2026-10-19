@@ -377,6 +377,7 @@
     "JANGMO-O": ["HAKAMO-O"],
     "HAKAMO-O": ["KOMMO-O"],
     "COSMOG": ["COSMOEM"],
+    "MELTAN": ["MELMETAL"],
     "COSMOEM": ["SOLGALEO", "LUNALA"],
     "POIPOLE": ["NAGANADEL"],
 
