@@ -1145,7 +1145,9 @@
         { "text": "Old Chateau", "action": "EXIT", "target_area": "OLD_CHATEAU", "condition": "can_exit", "color": "GOLD" },
         { "text": "Route 205", "action": "EXIT", "target_area": "SINNOH_ROUTE_205", "condition": "can_exit", "color": "RED" },
         { "text": "Eterna City", "action": "EXIT", "target_area": "ETERNA_CITY", "condition": "can_exit", "color": "RED" }
-      ]
+      ],
+      "day_pool_percentages": "SINNOH_ETERNA_FOREST_DAY_PERCENTAGES",
+      "night_pool_percentages": "SINNOH_ETERNA_FOREST_NIGHT_PERCENTAGES"
     },
     "OLD_CHATEAU": {
       "area_type": "dungeon",
@@ -1457,7 +1459,9 @@
         { "text": "Sandgem Town", "action": "EXIT", "target_area": "SANDGEM_TOWN", "condition": "can_exit", "color": "RED" },
         { "text": "Lake Verity", "action": "EXIT", "target_area": "LAKE_VERITY", "condition": "can_exit", "color": "RED" }
       ],
-      "next_area": "SANDGEM_TOWN"
+      "next_area": "SANDGEM_TOWN",
+      "day_pool_percentages": "SINNOH_ROUTE_201_DAY_PERCENTAGES",
+      "night_pool_percentages": "SINNOH_ROUTE_201_NIGHT_PERCENTAGES"
     },
     "SINNOH_ROUTE_202": {
       "area_type": "wild_route",
@@ -1496,7 +1500,9 @@
         { "text": "Sandgem Town", "action": "EXIT", "target_area": "SANDGEM_TOWN", "condition": "can_exit", "color": "RED" },
         { "text": "Jubilife City", "action": "EXIT", "target_area": "JUBILIFE_CITY", "condition": "can_exit", "color": "RED" }
       ],
-      "next_area": "JUBILIFE_CITY"
+      "next_area": "JUBILIFE_CITY",
+      "day_pool_percentages": "SINNOH_ROUTE_202_DAY_PERCENTAGES",
+      "night_pool_percentages": "SINNOH_ROUTE_202_NIGHT_PERCENTAGES"
     },
     "SINNOH_ROUTE_203": {
       "area_type": "wild_route",
@@ -1535,7 +1541,9 @@
         { "text": "Jubilife City", "action": "EXIT", "target_area": "JUBILIFE_CITY", "condition": "can_exit", "color": "RED" },
         { "text": "Oreburgh City", "action": "EXIT", "target_area": "OREBURGH_CITY", "condition": "can_exit", "color": "RED" }
       ],
-      "next_area": "OREBURGH_CITY"
+      "next_area": "OREBURGH_CITY",
+      "day_pool_percentages": "SINNOH_ROUTE_203_DAY_PERCENTAGES",
+      "night_pool_percentages": "SINNOH_ROUTE_203_NIGHT_PERCENTAGES"
     },
     "SINNOH_ROUTE_204": {
       "area_type": "wild_route",
@@ -1574,7 +1582,9 @@
         { "text": "Jubilife City", "action": "EXIT", "target_area": "JUBILIFE_CITY", "condition": "can_exit", "color": "RED" },
         { "text": "Floaroma Town", "action": "EXIT", "target_area": "FLOAROMA_TOWN", "condition": "can_exit", "color": "RED" }
       ],
-      "next_area": "FLOAROMA_TOWN"
+      "next_area": "FLOAROMA_TOWN",
+      "day_pool_percentages": "SINNOH_ROUTE_204_DAY_PERCENTAGES",
+      "night_pool_percentages": "SINNOH_ROUTE_204_NIGHT_PERCENTAGES"
     },
     "SINNOH_ROUTE_205": {
       "area_type": "wild_route",
@@ -1616,7 +1626,9 @@
         { "text": "Eterna City", "action": "EXIT", "target_area": "ETERNA_CITY", "condition": "can_exit", "color": "RED" },
         { "text": "Eterna Forest", "action": "EXIT", "target_area": "ETERNA_FOREST", "condition": "can_exit", "color": "RED" }
       ],
-      "next_area": "ETERNA_CITY"
+      "next_area": "ETERNA_CITY",
+      "day_pool_percentages": "SINNOH_ROUTE_205_DAY_PERCENTAGES",
+      "night_pool_percentages": "SINNOH_ROUTE_205_NIGHT_PERCENTAGES"
     },
     "SINNOH_ROUTE_206": {
       "area_type": "wild_route",
@@ -1648,7 +1660,9 @@
         { "text": "Eterna City", "action": "EXIT", "target_area": "ETERNA_CITY", "condition": "can_exit", "color": "RED" },
         { "text": "Route 207", "action": "EXIT", "target_area": "SINNOH_ROUTE_207", "condition": "can_exit", "color": "RED" }
       ],
-      "next_area": "SINNOH_ROUTE_207"
+      "next_area": "SINNOH_ROUTE_207",
+      "day_pool_percentages": "SINNOH_ROUTE_206_DAY_PERCENTAGES",
+      "night_pool_percentages": "SINNOH_ROUTE_206_NIGHT_PERCENTAGES"
     },
     "SINNOH_ROUTE_207": {
       "area_type": "wild_route",
@@ -1713,7 +1727,9 @@
         { "text": "Hearthome City", "action": "EXIT", "target_area": "HEARTHOME_CITY", "condition": "can_exit", "color": "RED" },
         { "text": "Mt. Coronet", "action": "EXIT", "target_area": "MT_CORONET_BASE", "condition": "can_exit", "color": "RED" }
       ],
-      "next_area": "HEARTHOME_CITY"
+      "next_area": "HEARTHOME_CITY",
+      "day_pool_percentages": "SINNOH_ROUTE_208_DAY_PERCENTAGES",
+      "night_pool_percentages": "SINNOH_ROUTE_208_NIGHT_PERCENTAGES"
     },
     "SINNOH_ROUTE_209": {
       "area_type": "wild_route",
@@ -1784,7 +1800,9 @@
         { "text": "Solaceon Town", "action": "EXIT", "target_area": "SOLACEON_TOWN", "condition": "can_exit", "color": "RED" },
         { "text": "Celestic Town", "action": "EXIT", "target_area": "CELESTIC_TOWN", "condition": "can_exit", "color": "RED" }
       ],
-      "next_area": "CELESTIC_TOWN"
+      "next_area": "CELESTIC_TOWN",
+      "day_pool_percentages": "SINNOH_ROUTE_210_DAY_PERCENTAGES",
+      "night_pool_percentages": "SINNOH_ROUTE_210_NIGHT_PERCENTAGES"
     },
     "SINNOH_ROUTE_211": {
       "area_type": "wild_route",
@@ -1925,7 +1943,9 @@
         { "text": "Veilstone City", "action": "EXIT", "target_area": "VEILSTONE_CITY", "condition": "can_exit", "color": "RED" },
         { "text": "Lake Valor", "action": "EXIT", "target_area": "LAKE_VALOR", "condition": "can_exit", "color": "RED" }
       ],
-      "next_area": "VEILSTONE_CITY"
+      "next_area": "VEILSTONE_CITY",
+      "day_pool_percentages": "SINNOH_ROUTE_214_DAY_PERCENTAGES",
+      "night_pool_percentages": "SINNOH_ROUTE_214_NIGHT_PERCENTAGES"
     },
     "SINNOH_ROUTE_215": {
       "area_type": "wild_route",
@@ -2235,7 +2255,9 @@
         { "text": "Canalave City", "action": "EXIT", "target_area": "CANALAVE_CITY", "condition": "can_exit", "color": "RED" }
       ],
       "area_boss": { "id": 491, "name": "Darkrai", "victory_flag": "NEWMOON_ISLAND_boss_defeated" },
-      "next_area": "CANALAVE_CITY"
+      "next_area": "CANALAVE_CITY",
+      "day_pool_percentages": "SINNOH_TURNBACK_CAVE_DAY_PERCENTAGES",
+      "night_pool_percentages": "SINNOH_TURNBACK_CAVE_NIGHT_PERCENTAGES"
     },
     "FLOWER_PARADISE": {
       "area_type": "dungeon",
@@ -2253,7 +2275,9 @@
         { "text": "Floaroma Town", "action": "EXIT", "target_area": "FLOAROMA_TOWN", "condition": "can_exit", "color": "RED" }
       ],
       "area_boss": { "id": 492, "name": "Shaymin", "victory_flag": "FLOWER_PARADISE_boss_defeated" },
-      "next_area": "FLOAROMA_TOWN"
+      "next_area": "FLOAROMA_TOWN",
+      "day_pool_percentages": "SINNOH_FLOWER_PARADISE_DAY_PERCENTAGES",
+      "night_pool_percentages": "SINNOH_FLOWER_PARADISE_NIGHT_PERCENTAGES"
     },
     "SEA_TEMPLE": {
       "area_type": "dungeon",
@@ -2547,5 +2571,29 @@
   "SINNOH_FULLMOON_ISLAND_PERCENTAGES": { "35": 40, "433": 35, "436": 25 },
   "SINNOH_FULLMOON_ISLAND": [35, 433, 436],
   "SINNOH_FLOWER_PARADISE_PERCENTAGES": { "420": 35, "315": 35, "415": 30 },
-  "SINNOH_FLOWER_PARADISE": [420, 315, 415]
+  "SINNOH_FLOWER_PARADISE": [420, 315, 415],
+  "SINNOH_ETERNA_FOREST_DAY_PERCENTAGES": { "92": 7, "93": 4, "420": 50, "285": 21, "284": 9, "133": 9 },
+  "SINNOH_ETERNA_FOREST_NIGHT_PERCENTAGES": { "92": 40, "93": 27, "420": 5, "285": 15, "284": 7, "133": 6 },
+  "SINNOH_ROUTE_201_DAY_PERCENTAGES": { "396": 71, "399": 29 },
+  "SINNOH_ROUTE_201_NIGHT_PERCENTAGES": { "396": 23, "399": 77 },
+  "SINNOH_ROUTE_202_DAY_PERCENTAGES": { "396": 57, "399": 25, "403": 18 },
+  "SINNOH_ROUTE_202_NIGHT_PERCENTAGES": { "396": 14, "399": 50, "403": 36 },
+  "SINNOH_ROUTE_203_DAY_PERCENTAGES": { "396": 51, "399": 25, "403": 21, "401": 3 },
+  "SINNOH_ROUTE_203_NIGHT_PERCENTAGES": { "396": 8, "399": 33, "403": 27, "401": 32 },
+  "SINNOH_ROUTE_204_DAY_PERCENTAGES": { "401": 6, "420": 36, "406": 33, "265": 7, "412": 11, "280": 7 },
+  "SINNOH_ROUTE_204_NIGHT_PERCENTAGES": { "401": 58, "420": 6, "406": 5, "265": 8, "412": 15, "280": 8 },
+  "SINNOH_ROUTE_205_DAY_PERCENTAGES": { "415": 40, "417": 20, "422": 16, "183": 12, "446": 12 },
+  "SINNOH_ROUTE_205_NIGHT_PERCENTAGES": { "415": 8, "417": 31, "422": 25, "183": 18, "446": 18 },
+  "SINNOH_ROUTE_206_DAY_PERCENTAGES": { "434": 9, "77": 38, "402": 7, "207": 23, "449": 23 },
+  "SINNOH_ROUTE_206_NIGHT_PERCENTAGES": { "434": 35, "77": 17, "402": 28, "207": 10, "449": 10 },
+  "SINNOH_ROUTE_208_DAY_PERCENTAGES": { "420": 43, "315": 21, "113": 18, "440": 12, "175": 6 },
+  "SINNOH_ROUTE_208_NIGHT_PERCENTAGES": { "420": 8, "315": 34, "113": 29, "440": 19, "175": 10 },
+  "SINNOH_ROUTE_210_DAY_PERCENTAGES": { "164": 7, "431": 30, "234": 24, "309": 24, "397": 11, "198": 4 },
+  "SINNOH_ROUTE_210_NIGHT_PERCENTAGES": { "164": 33, "431": 16, "234": 14, "309": 13, "397": 6, "198": 18 },
+  "SINNOH_ROUTE_214_DAY_PERCENTAGES": { "190": 39, "402": 10, "234": 32, "447": 19 },
+  "SINNOH_ROUTE_214_NIGHT_PERCENTAGES": { "190": 23, "402": 46, "234": 19, "447": 12 },
+  "SINNOH_TURNBACK_CAVE_DAY_PERCENTAGES": { "436": 37, "42": 31, "355": 8, "356": 24 },
+  "SINNOH_TURNBACK_CAVE_NIGHT_PERCENTAGES": { "436": 24, "42": 20, "355": 40, "356": 16 },
+  "SINNOH_FLOWER_PARADISE_DAY_PERCENTAGES": { "420": 43, "315": 21, "415": 36 },
+  "SINNOH_FLOWER_PARADISE_NIGHT_PERCENTAGES": { "420": 17, "315": 68, "415": 15 }
 }

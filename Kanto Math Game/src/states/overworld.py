@@ -1549,8 +1549,7 @@ class PlayState(GameState):
         self.is_progression_paused = False
         self.hide_menu_buttons()
 
-        pool_name = self.area_data.get("wild_pool_percentages")
-        wild_pool_pct = self.game.loader.area_data.get(pool_name, {})
+        wild_pool_pct = self._get_wild_pool(self.area_data)
         if not wild_pool_pct:
             self.show_dialogue(["No wild Pokémon here!"])
             self.show_progression_menu()

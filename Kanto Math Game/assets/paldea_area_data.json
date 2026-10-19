@@ -798,7 +798,9 @@
         { "text": "MONTENEVERA", "action": "EXIT", "target_area": "MONTENEVERA", "condition": "can_exit", "color": "RED" },
         { "text": "MEDALI", "action": "EXIT", "target_area": "MEDALI", "condition": "can_exit", "color": "RED" }
       ],
-      "next_area": "MONTENEVERA"
+      "next_area": "MONTENEVERA",
+      "day_pool_percentages": "NORTH_PROVINCE_AREA_2_DAY_PERCENTAGES",
+      "night_pool_percentages": "NORTH_PROVINCE_AREA_2_NIGHT_PERCENTAGES"
     },
     "NORTH_PROVINCE_AREA_3": {
       "area_type": "wild_route",
@@ -1338,5 +1340,7 @@
   "PALDEA_AREA_ZERO_UNDERDEPTHS_PERCENTAGES": { "969": 40, "970": 30, "968": 30 },
   "PALDEA_AREA_ZERO_UNDERDEPTHS": [969, 970, 968],
   "PALDEA_KITAKAMI_PERCENTAGES": { "1012": 20, "840": 20, "1011": 10, "946": 15, "948": 15, "56": 10, "969": 10 },
-  "PALDEA_KITAKAMI": [1012, 840, 1011, 946, 948, 56, 969]
+  "PALDEA_KITAKAMI": [1012, 840, 1011, 946, 948, 56, 969],
+  "NORTH_PROVINCE_AREA_2_DAY_PERCENTAGES": { "971": 24, "972": 17, "854": 17, "855": 42 },
+  "NORTH_PROVINCE_AREA_2_NIGHT_PERCENTAGES": { "971": 38, "972": 27, "854": 27, "855": 8 }
 }

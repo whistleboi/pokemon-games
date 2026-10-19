@@ -792,7 +792,9 @@
         { "text": "Iki Town", "action": "EXIT", "target_area": "IKI_TOWN", "condition": "can_exit", "color": "RED" },
         { "text": "Hau'oli City", "action": "EXIT", "target_area": "HAUOLI_CITY", "condition": "can_exit", "color": "RED" }
       ],
-      "next_area": "HAUOLI_CITY"
+      "next_area": "HAUOLI_CITY",
+      "day_pool_percentages": "ALOLA_ROUTE_1_DAY_PERCENTAGES",
+      "night_pool_percentages": "ALOLA_ROUTE_1_NIGHT_PERCENTAGES"
     },
     "ALOLA_ROUTE_2": {
       "area_type": "wild_route",
@@ -817,7 +819,9 @@
         { "text": "Hau'oli City", "action": "EXIT", "target_area": "HAUOLI_CITY", "condition": "can_exit", "color": "RED" },
         { "text": "Verdant Cavern", "action": "EXIT", "target_area": "VERDANT_CAVERN", "condition": "can_exit", "color": "RED" }
       ],
-      "next_area": "VERDANT_CAVERN"
+      "next_area": "VERDANT_CAVERN",
+      "day_pool_percentages": "ALOLA_ROUTE_2_DAY_PERCENTAGES",
+      "night_pool_percentages": "ALOLA_ROUTE_2_NIGHT_PERCENTAGES"
     },
     "ALOLA_ROUTE_4": {
       "area_type": "wild_route",
@@ -1306,5 +1310,9 @@
   "ALOLA_AETHER_PARADISE_PERCENTAGES": { "772": 25, "789": 15, "749": 20, "771": 20, "777": 20 },
   "ALOLA_AETHER_PARADISE": [772, 789, 749, 771, 777],
   "ALOLA_ULTRA_SPACE_PERCENTAGES": { "793": 10, "794": 10, "795": 10, "796": 10, "797": 10, "798": 10, "799": 10, "805": 10, "806": 10, "803": 10 },
-  "ALOLA_ULTRA_SPACE": [793, 794, 795, 796, 797, 798, 799, 805, 806, 803]
+  "ALOLA_ULTRA_SPACE": [793, 794, 795, 796, 797, 798, 799, 805, 806, 803],
+  "ALOLA_ROUTE_1_DAY_PERCENTAGES": { "722": 16, "725": 16, "728": 16, "734": 32, "731": 16, "2001": 4 },
+  "ALOLA_ROUTE_1_NIGHT_PERCENTAGES": { "722": 16, "725": 16, "728": 16, "734": 4, "731": 16, "2001": 32 },
+  "ALOLA_ROUTE_2_DAY_PERCENTAGES": { "734": 35, "735": 30, "737": 15, "741": 12, "2001": 4, "2002": 4 },
+  "ALOLA_ROUTE_2_NIGHT_PERCENTAGES": { "734": 4, "735": 4, "737": 15, "741": 12, "2001": 35, "2002": 30 }
 }
