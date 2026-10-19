@@ -626,7 +626,8 @@
         "3": { "822": 35, "836": 35, "830": 15, "854": 10, "834-gmax": 5 },
         "4": { "823": 35, "851": 35, "844": 15, "839": 10, "823-gmax": 5 },
         "5": { "887": 35, "884": 35, "858": 15, "861": 10, "884-gmax": 5 }
-      }
+      },
+      "weather": "RANDOM"
     },
     "GALAR_MINE": {
       "area_type": "dungeon",
@@ -925,7 +926,8 @@
         { "text": "Circhester", "action": "EXIT", "target_area": "CIRCHESTER", "condition": "can_exit", "color": "RED" },
         { "text": "Spikemuth", "action": "EXIT", "target_area": "SPIKEMUTH", "condition": "can_exit", "color": "RED" }
       ],
-      "next_area": "SPIKEMUTH"
+      "next_area": "SPIKEMUTH",
+      "weather": "SNOW"
     },
     "GALAR_ROUTE_9": {
       "area_type": "wild_route",
@@ -952,7 +954,8 @@
         { "text": "Spikemuth", "action": "EXIT", "target_area": "SPIKEMUTH", "condition": "can_exit", "color": "RED" },
         { "text": "Hammerlocke", "action": "EXIT", "target_area": "HAMMERLOCKE", "condition": "can_exit", "color": "RED" }
       ],
-      "next_area": "HAMMERLOCKE"
+      "next_area": "HAMMERLOCKE",
+      "weather": "SNOW"
     },
     "GALAR_ROUTE_10": {
       "area_type": "wild_route",
@@ -997,7 +1000,8 @@
         { "text": "Hammerlocke", "action": "EXIT", "target_area": "HAMMERLOCKE", "condition": "can_exit", "color": "RED" },
         { "text": "Wyndon", "action": "EXIT", "target_area": "WYNDON", "condition": "can_exit", "color": "RED" }
       ],
-      "next_area": "WYNDON"
+      "next_area": "WYNDON",
+      "weather": "SNOW"
     },
     "ISLE_OF_ARMOR": {
       "area_type": "dungeon",

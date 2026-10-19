@@ -1164,7 +1164,8 @@
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "Relic Castle", "action": "EXIT", "target_area": "RELIC_CASTLE", "condition": "can_exit", "color": "GOLD" },
         { "text": "Route 4", "action": "EXIT", "target_area": "UNOVA_ROUTE_4", "condition": "can_exit", "color": "RED" }
-      ]
+      ],
+      "weather": "SAND"
     },
     "RELIC_CASTLE": {
       "area_type": "dungeon",
@@ -1658,7 +1659,8 @@
         { "text": "Castelia City", "action": "EXIT", "target_area": "CASTELIA_CITY", "condition": "can_exit", "color": "RED" },
         { "text": "Nimbasa City", "action": "EXIT", "target_area": "NIMBASA_CITY", "condition": "can_exit", "color": "RED" }
       ],
-      "next_area": "NIMBASA_CITY"
+      "next_area": "NIMBASA_CITY",
+      "weather": "SAND"
     },
     "UNOVA_ROUTE_5": {
       "area_type": "wild_route",

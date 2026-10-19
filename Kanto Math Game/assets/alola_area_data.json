@@ -631,7 +631,8 @@
         { "text": "BATTLE TEAM SKULL", "action": "TRAINER", "condition": "has_trainers", "color": "GOLD", "flag_condition": "not po_town_cleared" },
         { "text": "Route 17", "action": "EXIT", "target_area": "ALOLA_ROUTE_17", "condition": "can_exit", "color": "RED" },
         { "text": "ROUTE 15", "action": "EXIT", "target_area": "ALOLA_ROUTE_15", "condition": "can_exit", "color": "RED" }
-      ]
+      ],
+      "weather": "RAIN"
     },
     "MOUNT_HOKULANI": {
       "area_type": "dungeon",
@@ -767,7 +768,8 @@
         { "text": "Ula'ula Island", "action": "EXIT", "target_area": "MALIE_CITY", "condition": "can_exit", "color": "RED" },
         { "text": "Pokémon League", "action": "EXIT", "target_area": "ALOLA_POKEMON_LEAGUE", "condition": "can_exit", "color": "RED" }
       ],
-      "area_boss": { "id": 785, "name": "Tapu Koko", "victory_flag": "MT_LANAKILA_boss_defeated" }
+      "area_boss": { "id": 785, "name": "Tapu Koko", "victory_flag": "MT_LANAKILA_boss_defeated" },
+      "weather": "SNOW"
     },
     "ALOLA_ROUTE_1": {
       "area_type": "wild_route",
@@ -1088,7 +1090,8 @@
         { "text": "Po Town", "action": "EXIT", "target_area": "PO_TOWN", "condition": "can_exit", "color": "RED" },
         { "text": "Malie City", "action": "EXIT", "target_area": "MALIE_CITY", "condition": "can_exit", "color": "RED" }
       ],
-      "next_area": "MALIE_CITY"
+      "next_area": "MALIE_CITY",
+      "weather": "RAIN"
     },
     "DIGLETTS_TUNNEL": {
       "area_type": "dungeon",

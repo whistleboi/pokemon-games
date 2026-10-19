@@ -1522,7 +1522,8 @@
         { "text": "Dendemille Town", "action": "EXIT", "target_area": "DENDEMILLE_TOWN", "condition": "can_exit", "color": "RED" },
         { "text": "Anistar City", "action": "EXIT", "target_area": "ANISTAR_CITY", "condition": "can_exit", "color": "RED" }
       ],
-      "next_area": "ANISTAR_CITY"
+      "next_area": "ANISTAR_CITY",
+      "weather": "SNOW"
     },
     "KALOS_ROUTE_18": {
       "area_type": "wild_route",

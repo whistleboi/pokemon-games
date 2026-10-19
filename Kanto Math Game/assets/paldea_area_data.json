@@ -818,7 +818,8 @@
         { "text": "MONTENEVERA", "action": "EXIT", "target_area": "MONTENEVERA", "condition": "can_exit", "color": "RED" },
         { "text": "GLASEADO MOUNTAIN", "action": "EXIT", "target_area": "GLASEADO_MOUNTAIN", "condition": "can_exit", "color": "RED" }
       ],
-      "next_area": "GLASEADO"
+      "next_area": "GLASEADO",
+      "weather": "SNOW"
     },
     "ASADO_DESERT": {
       "area_type": "wild_route",
@@ -835,7 +836,8 @@
         { "text": "WEST PROVINCE AREA 2", "action": "EXIT", "target_area": "WEST_PROVINCE_AREA_2", "condition": "can_exit", "color": "RED" },
         { "text": "CASCARRAFA", "action": "EXIT", "target_area": "CASCARRAFA", "condition": "can_exit", "color": "RED" }
       ],
-      "next_area": "WEST_PROVINCE_AREA_2"
+      "next_area": "WEST_PROVINCE_AREA_2",
+      "weather": "SAND"
     },
     "TAGTREE_THICKET": {
       "area_type": "wild_route",
@@ -870,7 +872,8 @@
         { "text": "NARANJA ACADEMY", "action": "EXIT", "target_area": "NARANJA_ACADEMY", "condition": "can_exit", "color": "RED" },
         { "text": "NORTH PROVINCE AREA 3", "action": "EXIT", "target_area": "NORTH_PROVINCE_AREA_3", "condition": "can_exit", "color": "RED" }
       ],
-      "next_area": "GLASEADO"
+      "next_area": "GLASEADO",
+      "weather": "SNOW"
     },
     "AREA_ZERO": {
       "area_type": "dungeon",

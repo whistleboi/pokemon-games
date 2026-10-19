@@ -387,6 +387,27 @@ class PokeMartState(GameState):
             self.dialogue_box.callback = self.on_welcome_dialogue_end
             self.phase = "DIALOGUE"
 
+    WEATHER_ROCKS = {"RAIN": "DAMP_ROCK", "SUN": "HEAT_ROCK", "SAND": "SMOOTH_ROCK", "SNOW": "ICY_ROCK"}
+
+    def _shop_items(self):
+        if self._is_department_store():
+            evo_items = sorted(list(self.game.loader.evolution_map.get("EVOLUTION_ITEMS", {}).keys()))
+            items = ["POKE_BALLS", "RARE_CANDY"] + evo_items
+        else:
+            items = ["POKE_BALLS", "RARE_CANDY", "POTION", "REVIVE"]
+        return items + self._regional_weather_rocks()
+
+    def _regional_weather_rocks(self):
+        """Rocks for the kinds of weather found in this region (Galar's Wild Area has them all)."""
+        region = self.game.story_manager.get_current_region()
+        found = set()
+        for area in self.game.loader.area_data.get("STORY_PROGRESSION", {}).values():
+            if str(area.get("region") or "").upper() != region:
+                continue
+            weather = str(area.get("weather") or "").upper()
+            found.update(self.WEATHER_ROCKS if weather == "RANDOM" else {weather})
+        return [rock for w, rock in self.WEATHER_ROCKS.items() if w in found]
+
     def _is_department_store(self):
         """Celadon/Goldenrod, or any area flagged "department_store" (sells evolution items)."""
         story = self.game.story_manager
@@ -399,12 +420,7 @@ class PokeMartState(GameState):
             self.refresh_buttons()
 
     def next_page(self):
-        is_mega_mart = self._is_department_store()
-        evo_items = sorted(list(self.game.loader.evolution_map.get("EVOLUTION_ITEMS", {}).keys()))
-        if is_mega_mart:
-            all_items = ["POKE_BALLS", "RARE_CANDY"] + evo_items
-        else:
-            all_items = ["POKE_BALLS", "RARE_CANDY", "POTION", "REVIVE"]
+        all_items = self._shop_items()
         if (self.current_page + 1) * self.items_per_page < len(all_items):
             self.current_page += 1
             self.refresh_buttons()
@@ -420,13 +436,7 @@ class PokeMartState(GameState):
 
         self.shop_buttons = []
 
-        is_mega_mart = self._is_department_store()
-        evo_items = sorted(list(self.game.loader.evolution_map.get("EVOLUTION_ITEMS", {}).keys()))
-
-        if is_mega_mart:
-            all_items = ["POKE_BALLS", "RARE_CANDY"] + evo_items
-        else:
-            all_items = ["POKE_BALLS", "RARE_CANDY", "POTION", "REVIVE"]
+        all_items = self._shop_items()
 
         self.btn_prev.set_visibility(self.current_page > 0)
         self.btn_next.set_visibility((self.current_page + 1) * self.items_per_page < len(all_items))
@@ -472,7 +482,7 @@ class PokeMartState(GameState):
 
             else:
                 name = item.replace("_", " ").title().replace(" Fossil", "")
-                price = 999999 if item == "UPGRADE" else 10000
+                price = 999999 if item == "UPGRADE" else 2000 if item in self.WEATHER_ROCKS.values() else 10000
                 icon = self.game.assets.get_item_image(item)
                 if icon:
                     icon = pygame.transform.scale(icon, (32, 32))
@@ -930,7 +940,7 @@ class BagState(GameState):
 
         items_to_show = []
         if self.context == "battle":
-            for key in ["POTION", "REVIVE"]:
+            for key in ["POTION", "REVIVE", "DAMP_ROCK", "HEAT_ROCK", "SMOOTH_ROCK", "ICY_ROCK"]:
                 qty = self.game.story_manager.inventory.get(key, 0)
                 if qty > 0:
                     items_to_show.append((key, qty))
@@ -1031,6 +1041,16 @@ class BagState(GameState):
                 self.game, previous_state=self, context="use_item",
                 on_select=self.on_pokemon_select_revive
             ))
+            return
+
+        if item_key.endswith("_ROCK") and self.context == "battle":
+            battle = self.previous_state
+            self.game.change_state(battle)
+            if battle.weather_summoned:
+                battle.show_message(["The rock has already been used this battle!"],
+                                    callback=battle.return_to_menu)
+            else:
+                battle.show_message([battle.summon_weather(item_key)], callback=battle.on_item_used)
             return
 
         if item_key == "UNOWN_REPORT":

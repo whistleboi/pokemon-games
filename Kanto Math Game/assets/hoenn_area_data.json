@@ -1182,7 +1182,8 @@
         { "text": "ROUTE 113", "action": "EXIT", "target_area": "HOENN_ROUTE_113", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "HOENN_ROUTE_112",
-      "region": "HOENN"
+      "region": "HOENN",
+      "weather": "SAND"
     },
     "HOENN_ROUTE_112": {
       "area_type": "wild_route",
@@ -1534,7 +1535,8 @@
         { "text": "WEATHER INSTITUTE", "action": "TRAVEL", "target_area": "HOENN_WEATHER_INSTITUTE", "condition": "can_exit", "color": "GREEN" }
       ],
       "next_area": "FORTREE_CITY",
-      "region": "HOENN"
+      "region": "HOENN",
+      "weather": "RAIN"
     },
     "HOENN_ROUTE_120": {
       "area_type": "wild_route",
@@ -1580,7 +1582,8 @@
         { "text": "ROUTE 121", "action": "EXIT", "target_area": "HOENN_ROUTE_121", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "HOENN_ROUTE_121",
-      "region": "HOENN"
+      "region": "HOENN",
+      "weather": "RAIN"
     },
     "HOENN_ROUTE_121": {
       "area_type": "wild_route",
@@ -2639,7 +2642,8 @@
       ],
       "area_boss": { "id": 382, "name": "Kyogre", "victory_flag": "defeated_kyogre" },
       "next_area": "HOENN_ROUTE_128",
-      "region": "HOENN"
+      "region": "HOENN",
+      "weather": "RAIN"
     },
     "HOENN_CAVE_OF_ORIGIN": {
       "area_type": "dungeon",
@@ -2656,7 +2660,8 @@
       ],
       "area_boss": { "id": 383, "name": "Groudon", "victory_flag": "cave_of_origin_cleared" },
       "next_area": "SOOTOPOLIS_CITY",
-      "region": "HOENN"
+      "region": "HOENN",
+      "weather": "SUN"
     },
     "HOENN_SKY_PILLAR": {
       "area_type": "dungeon",

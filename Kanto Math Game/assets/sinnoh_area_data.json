@@ -1114,7 +1114,8 @@
         { "text": "Route 217", "action": "EXIT", "target_area": "SINNOH_ROUTE_217", "condition": "can_exit", "color": "RED" },
         { "text": "SNOWPOINT CITY", "action": "EXIT", "target_area": "SNOWPOINT_CITY", "condition": "can_exit", "color": "RED" }
       ],
-      "area_boss": { "id": 480, "name": "Uxie", "victory_flag": "LAKE_ACUITY_boss_defeated" }
+      "area_boss": { "id": 480, "name": "Uxie", "victory_flag": "LAKE_ACUITY_boss_defeated" },
+      "weather": "SNOW"
     },
     "OREBURGH_MINE": {
       "area_type": "dungeon",
@@ -1876,7 +1877,8 @@
         { "text": "Hearthome City", "action": "EXIT", "target_area": "HEARTHOME_CITY", "condition": "can_exit", "color": "RED" },
         { "text": "Pastoria City", "action": "EXIT", "target_area": "PASTORIA_CITY", "condition": "can_exit", "color": "RED" }
       ],
-      "next_area": "PASTORIA_CITY"
+      "next_area": "PASTORIA_CITY",
+      "weather": "RAIN"
     },
     "SINNOH_ROUTE_213": {
       "area_type": "wild_route",
@@ -1977,7 +1979,8 @@
         { "text": "Veilstone City", "action": "EXIT", "target_area": "VEILSTONE_CITY", "condition": "can_exit", "color": "RED" },
         { "text": "Celestic Town", "action": "EXIT", "target_area": "CELESTIC_TOWN", "condition": "can_exit", "color": "RED" }
       ],
-      "next_area": "VEILSTONE_CITY"
+      "next_area": "VEILSTONE_CITY",
+      "weather": "RAIN"
     },
     "SINNOH_ROUTE_216": {
       "area_type": "wild_route",
@@ -2010,7 +2013,8 @@
         { "text": "Route 217", "action": "EXIT", "target_area": "SINNOH_ROUTE_217", "condition": "can_exit", "color": "RED" },
         { "text": "SNOWPOINT CITY", "action": "EXIT", "target_area": "SNOWPOINT_CITY", "condition": "can_exit", "color": "RED" }
       ],
-      "next_area": "SINNOH_ROUTE_217"
+      "next_area": "SINNOH_ROUTE_217",
+      "weather": "SNOW"
     },
     "SINNOH_ROUTE_217": {
       "area_type": "wild_route",
@@ -2043,7 +2047,8 @@
         { "text": "Snowpoint City", "action": "EXIT", "target_area": "SNOWPOINT_CITY", "condition": "can_exit", "color": "RED" },
         { "text": "Lake Acuity", "action": "EXIT", "target_area": "LAKE_ACUITY", "condition": "can_exit", "color": "RED" }
       ],
-      "next_area": "SNOWPOINT_CITY"
+      "next_area": "SNOWPOINT_CITY",
+      "weather": "SNOW"
     },
     "SINNOH_ROUTE_218": {
       "area_type": "wild_route",

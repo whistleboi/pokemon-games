@@ -146,6 +146,11 @@ class TrainerBattleState(GameState):
         self.anim_ctrl = AnimationController()
         self.faint_anim = FaintAnimation()
         self.fainting_side = None
+        self.weather = None
+        self.weather_turns = 0
+        self.weather_summoned = False
+        self._turn_end_done = True
+        self._init_area_weather()
         self.setup_battle_matchup()
         self.player_hits = 0
         self.questions_needed = 3
@@ -322,19 +327,27 @@ class TrainerBattleState(GameState):
         player_types = self.player_pokemon.types
         opponent_types = self.opponent_pokemon.types
 
+        # Each side attacks with whichever of its types hits hardest; remember that type for weather.
         best_opp_mult = 0.0
         p_types_check = player_types if player_types else ["NORMAL"]
+        self.player_attack_type = p_types_check[0]
         for p_t in p_types_check:
-            best_opp_mult = max(best_opp_mult, type_advantage.get_multiplier(p_t, opponent_types))
+            mult = type_advantage.get_multiplier(p_t, opponent_types)
+            if mult > best_opp_mult:
+                best_opp_mult, self.player_attack_type = mult, p_t
         self.adv_opp = best_opp_mult if best_opp_mult > 0 else 1.0
 
         best_player_mult = 0.0
         o_types_check = opponent_types if opponent_types else ["NORMAL"]
+        self.opponent_attack_type = o_types_check[0]
         for o_t in o_types_check:
-            best_player_mult = max(best_player_mult, type_advantage.get_multiplier(o_t, player_types))
+            mult = type_advantage.get_multiplier(o_t, player_types)
+            if mult > best_player_mult:
+                best_player_mult, self.opponent_attack_type = mult, o_t
         self.adv_player = best_player_mult if best_player_mult > 0 else 1.0
         if self.starter_battle:
             self.adv_opp = self.adv_player = 1.0  # Normal moves: no type advantage either way
+            self.player_attack_type = self.opponent_attack_type = "NORMAL"
 
         opponent_stage = self._get_capped_stage(self.opponent_pokemon)
 
@@ -345,7 +358,124 @@ class TrainerBattleState(GameState):
         if reset_opponent_hp:
             self.opponent_hp = self.opp_max_hp
 
-    def _calculate_damage(self, stage, multiplier, attacker=None, defender=None):
+    # ---- Weather (modern rules: lasts 5 turns, 8 with the matching rock) ----
+    WEATHER_ROCKS = {"RAIN": "DAMP_ROCK", "SUN": "HEAT_ROCK", "SAND": "SMOOTH_ROCK", "SNOW": "ICY_ROCK"}
+    WEATHER_TEXT = {
+        "RAIN": ("It started to rain!", "Rain continues to fall.", "The rain stopped."),
+        "SUN": ("The sunlight turned harsh!", "The sunlight is strong.", "The harsh sunlight faded."),
+        "SAND": ("A sandstorm kicked up!", "The sandstorm rages.", "The sandstorm subsided."),
+        "SNOW": ("It started to snow!", "Snow continues to fall.", "The snow stopped."),
+    }
+    SAND_IMMUNE = {"ROCK", "GROUND", "STEEL"}
+
+    def _init_area_weather(self):
+        """Weather from the current area: a short spell at the start of battle, not permanent."""
+        if self.starter_battle:
+            return
+        area = self.game.loader.area_data.get("STORY_PROGRESSION", {}).get(
+            self.game.story_manager.current_area_key, {})
+        weather = str(area.get("weather") or "").upper()
+        if weather == "RANDOM":
+            # Galar Wild Area: the weather changes daily.
+            import datetime
+            day = random.Random(datetime.date.today().toordinal())
+            weather = day.choice(["CLEAR", "CLEAR", "CLEAR", "RAIN", "SUN", "SAND", "SNOW"])
+        if weather in self.WEATHER_ROCKS:
+            self.set_weather(weather)
+        self._weather_announced = False
+
+    def set_weather(self, weather):
+        self.weather = weather
+        has_rock = self.game.story_manager.inventory.get(self.WEATHER_ROCKS[weather], 0) > 0
+        self.weather_turns = 8 if has_rock else 5
+
+    def summon_weather(self, rock_item):
+        """Use a weather rock from the Bag: once per battle. Returns the battle message."""
+        weather = next(w for w, rock in self.WEATHER_ROCKS.items() if rock == rock_item)
+        self.weather_summoned = True
+        self._weather_announced = True
+        self.set_weather(weather)
+        return self.WEATHER_TEXT[weather][0]
+
+    def _weather_mult(self, attack_type, defender):
+        if not self.weather:
+            return 1.0
+        mult = 1.0
+        if self.weather == "RAIN":
+            mult = {"WATER": 1.5, "FIRE": 0.5}.get(attack_type, 1.0)
+        elif self.weather == "SUN":
+            mult = {"FIRE": 1.5, "WATER": 0.5}.get(attack_type, 1.0)
+        defender_types = defender.types if defender else []
+        if self.weather == "SAND" and "ROCK" in defender_types:
+            mult *= 2 / 3  # Sand boosts Rock types' Sp. Def
+        elif self.weather == "SNOW" and "ICE" in defender_types:
+            mult *= 2 / 3  # Snow boosts Ice types' Defense
+        return mult
+
+    def _weather_end_of_turn(self):
+        """Sandstorm chip, then count the weather down. Returns messages to show (may be empty)."""
+        if not self.weather:
+            return []
+        messages = []
+        self.weather_turns -= 1
+        if self.weather_turns <= 0:
+            messages.append(self.WEATHER_TEXT[self.weather][2])
+            self.weather = None
+            return messages
+        messages.append(self.WEATHER_TEXT[self.weather][1])
+        if self.weather == "SAND":
+            # Chip damage never knocks out here, so faints only ever come from attacks.
+            for side in ("player", "opponent"):
+                mon = self.player_pokemon if side == "player" else self.opponent_pokemon
+                if self.SAND_IMMUNE & set(mon.types or []):
+                    continue
+                max_hp = self.player_max_hp if side == "player" else self.opp_max_hp
+                hp = self.player_hp if side == "player" else self.opponent_hp
+                chip = min(max(1, max_hp // 16), hp - 1)
+                if chip <= 0:
+                    continue
+                if side == "player":
+                    self.player_hp -= chip
+                    self.player_pokemon.current_hp = self.player_hp
+                    messages.append(f"{mon.display_name.upper()} is buffeted by the sandstorm!")
+                else:
+                    self.opponent_hp -= chip
+                    self.opponent_pokemon.current_hp = self.opponent_hp
+                    messages.append(f"Foe {mon.display_name.upper()} is buffeted by the sandstorm!")
+        return messages
+
+    WEATHER_TINT = {"RAIN": (40, 70, 140, 50), "SUN": (255, 200, 60, 45),
+                    "SAND": (190, 150, 80, 70), "SNOW": (220, 235, 255, 60)}
+
+    def _draw_weather(self, screen):
+        """Tint the battlefield, drift a few particles, and show the turns left."""
+        if not self.weather:
+            return
+        field_h = Utils.get_full_dialogue_rect(self.game).top
+        w = self.game.width
+        tint = pygame.Surface((w, field_h), pygame.SRCALPHA)
+        tint.fill(self.WEATHER_TINT[self.weather])
+        t = pygame.time.get_ticks()
+        rng = random.Random(7)
+        for _ in range(60):
+            x0, y0 = rng.randrange(w), rng.randrange(field_h)
+            if self.weather == "RAIN":
+                x, y = (x0 - t // 6) % w, (y0 + t // 2) % field_h
+                pygame.draw.line(tint, (180, 200, 255, 150), (x, y), (x - 4, y + 14), 2)
+            elif self.weather == "SNOW":
+                x, y = (x0 + t // 40) % w, (y0 + t // 12) % field_h
+                pygame.draw.circle(tint, (255, 255, 255, 200), (x, y), 3)
+            elif self.weather == "SAND":
+                x, y = (x0 + t // 3) % w, (y0 + t // 20) % field_h
+                pygame.draw.circle(tint, (140, 100, 50, 180), (x, y), 2)
+        screen.blit(tint, (0, 0))
+        label = f"{self.weather}  {self.weather_turns}"
+        text = self.game.assets.fonts["tiny"].render(label, True, WHITE)
+        box = text.get_rect(midtop=(w // 2, 16)).inflate(16, 8)
+        pygame.draw.rect(screen, BLACK, box, border_radius=6)
+        screen.blit(text, text.get_rect(center=box.center))
+
+    def _calculate_damage(self, stage, multiplier, attacker=None, defender=None, weather=1.0):
         """
         Base damage scaled for HP 20/60/90 (decoupled from HP cap).
         Stage 1: Normal=7,  Super=10, NVE=4
@@ -374,7 +504,7 @@ class TrainerBattleState(GameState):
         spread = random.randint(-2, 2)
         self._last_was_crit = random.random() < 0.10
         crit_mult = 1.5 if self._last_was_crit else 1.0
-        return max(1, int((base + stat_mod + spread) * crit_mult))
+        return max(1, int((base + stat_mod + spread) * crit_mult * weather))
 
     def setup_math_ui(self):
         if hasattr(self, "math_ui") and self.math_ui in self.game.ui_manager.elements:
@@ -411,6 +541,7 @@ class TrainerBattleState(GameState):
         """Called when an item is used from the bag during battle. Triggers opponent turn."""
         self.phase = "RESOLVE_TURN"
         self.turn_actions = [self.opponent_attack]
+        self._turn_end_done = False
         self.game.change_state(self)
 
     def show_message(self, text, callback=None):
@@ -560,6 +691,10 @@ class TrainerBattleState(GameState):
         self.game.ui_manager.add_element(self.btn_yes)
         self.game.ui_manager.add_element(self.btn_no)
 
+        if self.weather and not self._weather_announced and self.phase == "MENU":
+            self._weather_announced = True
+            self.show_message(self.WEATHER_TEXT[self.weather][0], callback=self.return_to_menu)
+
     def handle_events(self, events):
         if self.phase in ["OUTRO", "RESOLVE_TURN", "ENEMY_SUMMON", "VICTORY_TEXT", "REWARD_TEXT", "TRAINER_SLIDE_IN", "RETRACT_ANIM", "PLAYER_SUMMON"] or self.faint_anim.active:
             for event in events:
@@ -615,6 +750,7 @@ class TrainerBattleState(GameState):
         self.turn_actions.clear()
 
         self.turn_count += 1
+        self._turn_end_done = False
         if player_was_correct:
             self.turn_actions.append(self.player_attack)
             self.turn_actions.append(self.opponent_attack)
@@ -664,7 +800,8 @@ class TrainerBattleState(GameState):
 
         player_stage = self._get_capped_stage(self.player_pokemon)
         damage = self._calculate_damage(player_stage, self.adv_opp,
-                                        self.player_pokemon, self.opponent_pokemon)
+                                        self.player_pokemon, self.opponent_pokemon,
+                                        self._weather_mult(self.player_attack_type, self.opponent_pokemon))
         self.opponent_hp = max(0, self.opponent_hp - damage)
 
         self.opponent_pokemon.current_hp = self.opponent_hp
@@ -705,7 +842,8 @@ class TrainerBattleState(GameState):
 
         opponent_stage = self._get_capped_stage(self.opponent_pokemon)
         damage = self._calculate_damage(opponent_stage, self.adv_player,
-                                        self.opponent_pokemon, self.player_pokemon)
+                                        self.opponent_pokemon, self.player_pokemon,
+                                        self._weather_mult(self.opponent_attack_type, self.player_pokemon))
         self.player_hp = max(0, self.player_hp - damage)
 
         self.player_pokemon.current_hp = self.player_hp
@@ -937,6 +1075,7 @@ class TrainerBattleState(GameState):
             trainer_x_offset=self.trainer_slide_offset,
             hide_opponent=is_summoning_enemy
         )
+        self._draw_weather(screen)
 
         if (self.phase == "FAINT_ANIM_RUNNING" or self.phase == "RETRACT_ANIM") and self.faint_anim.active:
             self.faint_anim.draw(screen)
@@ -1127,6 +1266,13 @@ class TrainerBattleState(GameState):
                         0
                     )
                     action()
+                elif not self._turn_end_done and self.player_hp > 0 and self.opponent_hp > 0:
+                    self._turn_end_done = True
+                    weather_msgs = self._weather_end_of_turn()
+                    if weather_msgs:
+                        self.dialogue_box.reset(weather_msgs)
+                        self.dialogue_box.set_visibility(True)
+                        self.feedback_timer = 30
                 else:
                     self.phase = "MENU"
                     self.action_menu.set_visibility(True)
@@ -1453,6 +1599,7 @@ class WildBattleState(TrainerBattleState):
             fainting_side="opponent" if hide_opponent else ("player" if self.phase == "PLAYER_SUMMON" else (self.fainting_side if self.phase == "FAINT_ANIM_RUNNING" else None)),
             hide_opponent=hide_opponent
         )
+        self._draw_weather(screen)
 
         if (self.phase == "FAINT_ANIM_RUNNING" or self.phase == "RETRACT_ANIM") and self.faint_anim.active:
             self.faint_anim.draw(screen)
