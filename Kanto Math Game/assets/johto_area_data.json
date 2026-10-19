@@ -1,5 +1,5 @@
 {
-  "REGION_START": {"JOHTO": {"order": 2, "subtitle": "GEN 2 / GOLD / SILVER", "start_area": "NEW_BARK_TOWN", "starters": [152, 155, 158], "starter_bg": "starter_johto.png", "dex_range": [152, 251], "mom_home_text": ["johto_mom_home"], "dex_extra": [429, 461, 462, 463, 465, 467, 469, 472, 473, 979, 981, 982]}},
+  "REGION_START": {"JOHTO": {"order": 2, "subtitle": "GEN 2 / GOLD / SILVER", "start_area": "NEW_BARK_TOWN", "starters": [152, 155, 158], "starter_bg": "starter_johto.png", "dex_range": [152, 251], "mom_home_text": ["johto_mom_home"], "dex_extra": [429, 430, 461, 462, 463, 465, 466, 467, 469, 472, 473, 979, 981, 982]}},
   "FORM_MAP": {
     "2001": { "id": 19, "form": "alolan", "name": "Alolan Rattata", "types": ["DARK", "NORMAL"] },
     "2002": { "id": 20, "form": "alolan", "name": "Alolan Raticate", "types": ["DARK", "NORMAL"] },
@@ -1281,6 +1281,7 @@
             "area_type": "dungeon",
             "battle_type": "forest",
             "wild_pool_percentages": "JOHTO_ILEX_FOREST_PERCENTAGES",
+            "area_boss": { "id": 251, "name": "Celebi", "victory_flag": "ILEX_FOREST_boss_defeated" },
             "min_rounds": 2,
             "backgrounds": {
                 "battle": ["battle_forest1.png", "battle_forest2.png", "battle_forest3.png"]
@@ -1300,7 +1301,7 @@
                 { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
                 { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
                 { "text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE" },
-                { "text": "CHALLENGE CELEBI", "action": "BOSS", "condition": "has_8_johto_badges", "color": "GOLD" },
+                { "text": "CHALLENGE CELEBI", "action": "BOSS", "condition": ["has_8_johto_badges", "boss_not_defeated"], "color": "GOLD" },
                 { "text": "ROUTE 34", "action": "EXIT", "target_area": "JOHTO_ROUTE_34", "condition": "can_exit", "color": "RED" },
                 { "text": "Azalea Town", "action": "EXIT", "target_area": "AZALEA_TOWN", "condition": "can_exit", "color": "RED" }
             ]
@@ -1795,8 +1796,8 @@
     "JOHTO_ROUTE_32": [179,194,19,23,27,69,187,41,2001],
     "JOHTO_ROUTE_32_PERCENTAGES": { "179": 30, "194": 20, "19": 9, "23": 10, "27": 10, "69": 10, "187": 5, "41": 5, "2001": 1},
     
-    "JOHTO_ROUTE_33": [187,21,19,23,27,163,209,132,2001],
-    "JOHTO_ROUTE_33_PERCENTAGES": { "187": 35, "21": 25, "19": 20, "23": 10, "27": 10, "2001": 1},
+    "JOHTO_ROUTE_33": [187, 21, 19, 23, 27, 174, 2001],
+    "JOHTO_ROUTE_33_PERCENTAGES": { "187": 30, "21": 22, "19": 18, "23": 10, "27": 9, "174": 10, "2001": 1 },
     
     "JOHTO_ROUTE_34": [40,96,63,19,163,209,132,2001],
     "JOHTO_ROUTE_34_PERCENTAGES": { "96": 40, "63": 15, "19": 15, "163": 15, "209": 10, "132": 5, "2001": 1},
@@ -1804,11 +1805,11 @@
     "JOHTO_ROUTE_35": [29,32,63,96,16,209,163,193],
     "JOHTO_ROUTE_35_PERCENTAGES": { "29": 15, "32": 15, "63": 15, "96": 15, "16": 15, "209": 10, "163": 10, "193": 5 },
     
-    "JOHTO_ROUTE_36": [234,29,32,58,37,16,163],
-    "JOHTO_ROUTE_36_PERCENTAGES": { "234": 30, "29": 15, "32": 15, "58": 10, "37": 10, "16": 10, "163": 10 },
+    "JOHTO_ROUTE_36": [234, 29, 32, 58, 37, 16, 163, 177, 235],
+    "JOHTO_ROUTE_36_PERCENTAGES": { "234": 25, "29": 12, "32": 12, "58": 10, "37": 10, "16": 9, "163": 9, "177": 8, "235": 5 },
     
-    "JOHTO_ROUTE_37": [16,19,58,37,167,165,234,2001],
-    "JOHTO_ROUTE_37_PERCENTAGES": { "16": 20, "19": 20, "58": 15, "37": 15, "167": 10, "165": 10, "234": 10, "2001": 1},
+    "JOHTO_ROUTE_37": [16, 19, 58, 37, 167, 165, 234, 198, 2001],
+    "JOHTO_ROUTE_37_PERCENTAGES": { "16": 18, "19": 18, "58": 13, "37": 13, "167": 10, "165": 10, "234": 9, "198": 8, "2001": 1 },
     
     "JOHTO_ROUTE_38": [19,20,17,81,83,52,209,128,241,2001,2002],
     "JOHTO_ROUTE_38_PERCENTAGES": { "19": 20, "20": 9, "17": 10, "81": 10, "83": 5, "52": 15, "209": 10, "128": 10, "241": 10, "2001": 1, "2002": 1},
@@ -1816,8 +1817,8 @@
     "JOHTO_ROUTE_39": [19,20,81,52,128,241,2001,2002],
     "JOHTO_ROUTE_39_PERCENTAGES": { "19": 15, "20": 9, "81": 15, "52": 15, "128": 20, "241": 25, "2001": 1, "2002": 1},
     
-    "JOHTO_ROUTE_40": [72,73,120],
-    "JOHTO_ROUTE_40_PERCENTAGES": { "72": 60, "73": 30, "120": 10 },
+    "JOHTO_ROUTE_40": [72, 73, 120, 222],
+    "JOHTO_ROUTE_40_PERCENTAGES": { "72": 50, "73": 25, "120": 10, "222": 15 },
     
     "JOHTO_ROUTE_41": [72,73,226],
     "JOHTO_ROUTE_41_PERCENTAGES": { "72": 50, "73": 30, "226": 20 },
@@ -1834,17 +1835,17 @@
     "JOHTO_ROUTE_45": [74,207,227,232,231],
     "JOHTO_ROUTE_45_PERCENTAGES": { "74": 30, "75": 20, "207": 15, "227": 15, "232": 10, "231": 10, "2012": 1 },
     
-    "JOHTO_ROUTE_46": [21,19,74,231,207,2001],
-    "JOHTO_ROUTE_46_PERCENTAGES": { "21": 30, "19": 24, "74": 25, "231": 10, "207": 10, "2001": 1, "2012": 1 },
+    "JOHTO_ROUTE_46": [21, 19, 74, 231, 207, 173, 2001, 2012],
+    "JOHTO_ROUTE_46_PERCENTAGES": { "21": 25, "19": 20, "74": 22, "231": 10, "207": 10, "173": 11, "2001": 1, "2012": 1 },
 
-    "JOHTO_MT_MORTAR": [41, 74, 66, 75, 67, 183],
-    "JOHTO_MT_MORTAR_PERCENTAGES": { "41": 30, "74": 25, "66": 20, "75": 10, "67": 10, "183": 5, "2012": 1 },
+    "JOHTO_MT_MORTAR": [41, 74, 66, 75, 67, 183, 236, 2012],
+    "JOHTO_MT_MORTAR_PERCENTAGES": { "41": 26, "74": 22, "66": 18, "75": 9, "67": 9, "183": 5, "236": 10, "2012": 1 },
     
-    "JOHTO_ICE_PATH": [220, 42, 124, 225, 215],
-    "JOHTO_ICE_PATH_PERCENTAGES": { "220": 40, "42": 25, "124": 15, "225": 10, "215": 10 },
+    "JOHTO_ICE_PATH": [220, 42, 124, 225, 215, 238],
+    "JOHTO_ICE_PATH_PERCENTAGES": { "220": 35, "42": 22, "124": 13, "225": 10, "215": 10, "238": 10 },
     
-    "JOHTO_BURNED_TOWER": [19, 41, 109, 20, 110, 126,2001,2002],
-    "JOHTO_BURNED_TOWER_PERCENTAGES": { "19": 29, "41": 25, "109": 20, "20": 9, "110": 10, "126": 5, "2001": 1, "2002": 1 },
+    "JOHTO_BURNED_TOWER": [19, 41, 109, 20, 110, 126, 218, 228, 240, 155, 2001, 2002],
+    "JOHTO_BURNED_TOWER_PERCENTAGES": { "19": 20, "41": 16, "109": 14, "20": 7, "110": 7, "126": 5, "218": 10, "228": 9, "240": 5, "155": 5, "2001": 1, "2002": 1 },
     
     "JOHTO_BELL_TOWER": [92, 19, 93, 200, 2001],
     "JOHTO_BELL_TOWER_PERCENTAGES": { "92": 50, "19": 29, "93": 15, "200": 5, "2001": 1 },
@@ -1864,20 +1865,20 @@
     "JOHTO_SLOWPOKE_WELL": [41, 79, 42, 2022],
     "JOHTO_SLOWPOKE_WELL_PERCENTAGES": { "41": 45, "79": 49, "42": 5, "2022": 1 },
     
-    "JOHTO_ILEX_FOREST": [46, 43, 10, 13, 11, 14, 48],
-    "JOHTO_ILEX_FOREST_PERCENTAGES": { "46": 25, "43": 20, "10": 15, "13": 15, "11": 10, "14": 10, "48": 5 },
+    "JOHTO_ILEX_FOREST": [46, 43, 10, 13, 11, 14, 48, 172],
+    "JOHTO_ILEX_FOREST_PERCENTAGES": { "46": 22, "43": 18, "10": 13, "13": 13, "11": 9, "14": 9, "48": 5, "172": 11 },
     
     "JOHTO_LAKE_OF_RAGE": [129, 130],
     "JOHTO_LAKE_OF_RAGE_PERCENTAGES": { "129": 90, "130": 10 },
     
-    "JOHTO_WHIRL_ISLANDS": [72, 73, 98, 116, 117],
-    "JOHTO_WHIRL_ISLANDS_PERCENTAGES": { "72": 40, "73": 20, "98": 20, "116": 15, "117": 5 },
+    "JOHTO_WHIRL_ISLANDS": [72, 73, 98, 116, 117, 158],
+    "JOHTO_WHIRL_ISLANDS_PERCENTAGES": { "72": 36, "73": 18, "98": 18, "116": 15, "117": 5, "158": 8 },
     
     "JOHTO_ROCKET_HQ": [19, 109, 96, 88, 2001],
     "JOHTO_ROCKET_HQ_PERCENTAGES": { "19": 39, "109": 30, "96": 20, "88": 10, "2001": 1 },
     
-    "JOHTO_UNDERGROUND": [19, 81, 100, 2001],
-    "JOHTO_UNDERGROUND_PERCENTAGES": { "19": 49, "81": 30, "100": 20, "2001": 1 },
+    "JOHTO_UNDERGROUND": [19, 81, 100, 239, 2001],
+    "JOHTO_UNDERGROUND_PERCENTAGES": { "19": 40, "81": 27, "100": 18, "239": 14, "2001": 1 },
     
     "JOHTO_DRAGON_DEN": [129, 147],
     "JOHTO_DRAGON_DEN_PERCENTAGES": { "129": 80, "147": 20 },
@@ -1888,6 +1889,6 @@
     "JOHTO_CLIFF_GATE_POOL": [74, 75, 194, 195, 41, 42, 66],
     "JOHTO_CLIFF_GATE_PERCENTAGES": { "74": 30, "194": 30, "41": 20, "75": 5, "195": 5, "42": 5, "66": 5, "2012": 1, "2013": 1 },
 
-    "JOHTO_SAFARI_POOL": [214, 212, 231, 232, 227, 241, 246, 247, 215, 207, 213, 216],
-    "JOHTO_SAFARI_PERCENTAGES": {"214": 14, "212": 5, "231": 14, "232": 5, "227": 10, "241": 10, "246": 5, "247": 2, "215": 10, "207": 14, "213": 6, "216": 5 }
+    "JOHTO_SAFARI_POOL": [214, 212, 231, 232, 227, 241, 246, 247, 215, 207, 213, 216, 152],
+    "JOHTO_SAFARI_PERCENTAGES": { "214": 13, "212": 5, "231": 13, "232": 5, "227": 9, "241": 9, "246": 5, "247": 2, "215": 10, "207": 13, "213": 6, "216": 5, "152": 5 }
 }

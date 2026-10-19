@@ -1012,9 +1012,9 @@ class PlayState(GameState):
         if condition == "has_SQUIRT_BOTTLE":
             return self.game.story_manager.inventory.get("SQUIRT_BOTTLE", 0) > 0 and not self.game.story_manager.story_flags.get("defeated_sudowoodo")
         if condition == "has_stormbadge":
-            return "STORMBADGE" in self.game.story_manager.badges
+            return self.game.story_manager.has_badge("STORMBADGE")
         if condition == "has_glacier_badge":
-            return "GLACIER" in self.game.story_manager.badges
+            return self.game.story_manager.has_badge("GLACIER")
         if condition == "has_trainers":
             return trainers_left
         if condition == "no_trainers":
@@ -3351,7 +3351,7 @@ class CityState(GameState):
         self.action_menu.set_visibility(False)
         self.npc_sprite = self.game.assets.get_trainer_image("lass.png")
 
-        if "PLAIN" in self.game.story_manager.badges:
+        if self.game.story_manager.has_badge("PLAIN"):
             if self.game.story_manager.inventory.get("SQUIRT_BOTTLE", 0) == 0:
                 msg = self.game.assets.get_text("flower_shop_reward")
                 self.game.story_manager.inventory["SQUIRT_BOTTLE"] = 1
@@ -3432,7 +3432,7 @@ class CityState(GameState):
         self.action_menu.set_visibility(False)
         self.npc_sprite = self.game.assets.get_trainer_image("oldman.png")
 
-        if "RISING" in self.game.story_manager.badges:
+        if self.game.story_manager.has_badge("RISING"):
             msg = self.game.assets.get_text("dragon_elder_pass")
         else:
             msg = self.game.assets.get_text("dragon_elder_intro")
@@ -3450,8 +3450,8 @@ class CityState(GameState):
 
         story = self.game.story_manager
         flags = story.story_flags
-        has_marsh = "MARSH" in story.badges
-        has_soul = "SOUL" in story.badges
+        has_marsh = story.has_badge("MARSH")
+        has_soul = story.has_badge("SOUL")
 
         msgs = ["Welcome to the Fighting Dojo!", "Only the strongest trainers may enter."]
 
@@ -3683,8 +3683,8 @@ class CityState(GameState):
         flags = self.game.story_manager.story_flags
         inv = self.game.story_manager.inventory
 
-        has_beat_brock = "BOULDER" in self.game.story_manager.badges
-        has_earth_badge = "EARTH" in self.game.story_manager.badges
+        has_beat_brock = self.game.story_manager.has_badge("BOULDER")
+        has_earth_badge = self.game.story_manager.has_badge("EARTH")
         got_museum_fossil = flags.get("received_museum_fossil", False)
         got_second_fossil = flags.get("received_museum_fossil_2", False)
 
@@ -3698,7 +3698,7 @@ class CityState(GameState):
                 msgs.append(f"You received the {fossil.replace('_', ' ').title()}!")
                 inv[fossil] = inv.get(fossil, 0) + 1
                 flags["received_museum_fossil"] = True
-                msgs.append("Please return after you have earned 2 badges.")
+                msgs.append("Come back once you've earned the Earth Badge. We may find another!")
             elif has_earth_badge and not got_second_fossil:
                 first_fossil = flags.get("museum_fossil_choice", "HELIX_FOSSIL")
                 second_fossil = "DOME_FOSSIL" if first_fossil == "HELIX_FOSSIL" else "HELIX_FOSSIL"
@@ -3708,9 +3708,12 @@ class CityState(GameState):
                 msgs.append(f"You received the {second_fossil.replace('_', ' ').title()}!")
                 inv[second_fossil] = inv.get(second_fossil, 0) + 1
                 flags["received_museum_fossil_2"] = True
+            elif not got_second_fossil:
+                msgs.append("Welcome to the Pewter Museum of Science!")
+                msgs.append("Come back once you've earned the Earth Badge. We may find another fossil!")
             else:
                 msgs.append("Welcome to the Pewter Museum of Science!")
-                msgs.append("Please return after you have earned 2 badges.")
+                msgs.append("Both fossils are in good hands. Thank you, Champion!")
         else:
             msgs.append("Welcome! Please return after you have defeated Brock.")
 

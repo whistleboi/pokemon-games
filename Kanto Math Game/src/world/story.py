@@ -209,6 +209,10 @@ class StoryManager:
 
         return pid_str in self.game.data.data.get("pokedex", {})
 
+    def has_badge(self, name):
+        """True if a badge with this name was earned in any region."""
+        return any(name in earned for earned in self.badges.values())
+
     def get_total_badges(self):
         """Total badges earned across all regions."""
         return sum(len(b) for b in self.badges.values())

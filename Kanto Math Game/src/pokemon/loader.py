@@ -340,7 +340,7 @@ class PokemonLoader:
 
             elif 10100 <= p_id <= 10105:
                 story = self.game.story_manager
-                badges = len(story.badges)
+                badges = story.get_total_badges()
                 stage_offset = 0
                 if badges >= 6:
                     stage_offset = 2
