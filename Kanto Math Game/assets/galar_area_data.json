@@ -1323,7 +1323,8 @@
         "SUMMER": { "SUN": 20, "RAIN": 20 },
         "AUTUMN": { "RAIN": 40 },
         "WINTER": { "SNOW": 40, "RAIN": 10 }
-      }
+      },
+      "badge_images": [51, 52, 53, 54, 56, 57, 59, 60]
     }
   },
   "MAX_RAID": {

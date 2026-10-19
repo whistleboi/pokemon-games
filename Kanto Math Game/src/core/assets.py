@@ -418,6 +418,22 @@ class AssetManager:
                 return text
         return text
 
+    def _region_bg_map(self):
+        """Every background in a region folder (backgrounds/hoenn, backgrounds/sinnoh, ...)."""
+        if getattr(self, "_region_bgs", None) is None:
+            self._region_bgs = {}
+            if self.backgrounds_dir and os.path.isdir(self.backgrounds_dir):
+                for entry in sorted(os.listdir(self.backgrounds_dir)):
+                    folder = os.path.join(self.backgrounds_dir, entry)
+                    if entry.lower() in ("battle", "kanto", "johto") or not os.path.isdir(folder):
+                        continue
+                    for root, _, files in os.walk(folder):
+                        for f in files:
+                            if f.lower().endswith(".png"):
+                                rel = os.path.relpath(os.path.join(root, f), self.backgrounds_dir)
+                                self._region_bgs.setdefault(f.lower(), rel)
+        return self._region_bgs
+
     def get_background(self, name, from_overworld=False):
         if not name:
             return None
@@ -433,6 +449,7 @@ class AssetManager:
         search_configs = [
             (self.johto_backgrounds_dir, self.johto_bg_map),
             (self.kanto_backgrounds_dir, self.kanto_bg_map),
+            (self.backgrounds_dir, self._region_bg_map()),
             (self.battle_backgrounds_dir, self.battle_bg_map),
             (self.backgrounds_dir, Utils.index_files(
                 self.backgrounds_dir) if self.backgrounds_dir else {}),

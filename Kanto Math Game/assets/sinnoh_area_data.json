@@ -2548,7 +2548,6 @@
       "route_name": "Jubilife Village",
       "region": "SINNOH",
       "subregion": "HISUI",
-      "backgrounds": { "main": "jubilife_city.png", "pokecenter": "jubilife_center.png", "pokemart": "jubilife_mart.png" },
       "has_gym": false,
       "travel_options": [
         { "text": "Obsidian Fieldlands", "target_area": "OBSIDIAN_FIELDLANDS" },

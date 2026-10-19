@@ -1790,7 +1790,8 @@
         "SUMMER": { "SUN": 35 },
         "AUTUMN": { "RAIN": 25 },
         "WINTER": { "SNOW": 35 }
-      }
+      },
+      "badge_images": [43, 47, 44, 45, 46, 48, 49, 50]
     }
   }
 }

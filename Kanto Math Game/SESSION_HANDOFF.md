@@ -210,6 +210,12 @@ The scripts live in the session scratchpad, which is temporary and may be gone n
 - `smoke_regions.py <gamedir>` is the full regression and should end with `##### 0 failures`.
 - Feature checks: `check_poffin.py`, `check_contest.py`, `check_realhp.py`, `check_weather.py`, `check_movepick.py`, `check_starter_battles.py`, `check_move.py`, `check_reverse.py`, `check_fossils.py`, `check_galar.py`, `check_xp_silph.py`.
 
+## Assets
+
+- `ASSETS_NEEDED.md` (repo root) is the per-region, story-ordered list of missing backgrounds, trainer sprites, Pokemon sprites, item icons and badges, with exact file names, folders, sizes, a style guide and AI prompt template. Regenerate with scratchpad `asset_audit.py` + `write_asset_list.py`.
+- Backgrounds in any region folder (`backgrounds/hoenn/`, `backgrounds/sinnoh/`, ...) are now found by `get_background` (Hoenn's 23 existing interiors were previously never loaded). Kalos (badges 43-50) and Galar (51-60) badge images are mapped; Alola and Paldea badges still needed.
+- Test Sinnoh art drawn in code (scratchpad `sinnoh_art.py`): `backgrounds/sinnoh/twinleaf_town.png`, `backgrounds/sinnoh/oreburgh_center.png`, `backgrounds/battle/sinnoh/gym/battle_gym_oreburgh.png`.
+
 ## Not started / ideas
 
 - Fog weather (not implemented; asked about on 2026-10-19).
