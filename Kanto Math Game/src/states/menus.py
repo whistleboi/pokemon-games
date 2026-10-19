@@ -217,47 +217,59 @@ class CharacterSelectionState(GameState):
 
 
 class RegionSelectionState(GameState):
-    """Allows the player to choose their starting region (Kanto or Johto)."""
+    """Lets the player choose any region (from REGION_START) to begin in."""
+    COLS = 3
+
     def __init__(self, game):
         super().__init__(game)
-        self.regions = ["KANTO", "JOHTO"]
+        starts = game.story_manager.get_region_starts()
+        self.regions = [r for r, _ in starts] or ["KANTO"]
+        self.subtitles = {r: cfg.get("subtitle", "") for r, cfg in starts}
         self.selected_idx = 0
 
-        cx, cy = game.width // 2, game.height // 2
-        self.rect_kanto = pygame.Rect(cx - 320, cy - 80, 300, 160)
-        self.rect_johto = pygame.Rect(cx + 20, cy - 80, 300, 160)
+        rows = (len(self.regions) + self.COLS - 1) // self.COLS
+        gap = 24
+        card_w = min(320, (game.width - 80 - gap * (self.COLS - 1)) // self.COLS)
+        card_h = min(130, (game.height - 300 - gap * (rows - 1)) // rows)
+        grid_w = self.COLS * card_w + (self.COLS - 1) * gap
+        left, top = (game.width - grid_w) // 2, 170
+        self.rects = [
+            pygame.Rect(left + (i % self.COLS) * (card_w + gap),
+                        top + (i // self.COLS) * (card_h + gap), card_w, card_h)
+            for i in range(len(self.regions))
+        ]
 
     def handle_events(self, events):
+        n = len(self.regions)
         for event in events:
             if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
-                if self.rect_kanto.collidepoint(event.pos):
-                    self.selected_idx = 0
-                    self.confirm_selection()
-                elif self.rect_johto.collidepoint(event.pos):
-                    self.selected_idx = 1
-                    self.confirm_selection()
+                for i, rect in enumerate(self.rects):
+                    if rect.collidepoint(event.pos):
+                        self.selected_idx = i
+                        self.confirm_selection()
+                        return
 
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:
-                    self.selected_idx = 0
+                    self.selected_idx = (self.selected_idx - 1) % n
                 elif event.key == pygame.K_RIGHT:
-                    self.selected_idx = 1
+                    self.selected_idx = (self.selected_idx + 1) % n
+                elif event.key == pygame.K_UP:
+                    self.selected_idx = (self.selected_idx - self.COLS) % n
+                elif event.key == pygame.K_DOWN:
+                    self.selected_idx = (self.selected_idx + self.COLS) % n
                 elif event.key == pygame.K_RETURN:
                     self.confirm_selection()
 
     def confirm_selection(self):
         region = self.regions[self.selected_idx]
-        self.game.story_manager.starting_region = region
-
-        if region == "JOHTO":
-            self.game.story_manager.story_flags["unlocked_johto_badges"] = True
-        else:
-            self.game.story_manager.story_flags["unlocked_kanto_badges"] = True
-
-        if region == "JOHTO":
-            self.game.story_manager.current_area_key = "NEW_BARK_TOWN"
-        else:
-            self.game.story_manager.current_area_key = "PALLET_TOWN"
+        story = self.game.story_manager
+        cfg = story.get_region_start(region)
+        story.starting_region = region
+        story.story_flags[f"unlocked_{region.lower()}_badges"] = True
+        story.badges.setdefault(region, [])
+        story.active_badge_region = region
+        story.current_area_key = cfg.get("start_area", "PALLET_TOWN")
 
         self.game.change_state(RivalSelectionState(self.game))
 
@@ -272,7 +284,7 @@ class RegionSelectionState(GameState):
         Utils.draw_text_outline(screen, "WHERE WILL YOUR JOURNEY BEGIN?",
                                 self.game.assets.fonts["med"], WHITE, cx, 100)
 
-        for i, rect in enumerate([self.rect_kanto, self.rect_johto]):
+        for i, rect in enumerate(self.rects):
             is_selected = (self.selected_idx == i)
             bg_color = GB_PANEL if is_selected else GB_PANEL_DARK
             border_color = GOLD if is_selected else WHITE
@@ -289,13 +301,12 @@ class RegionSelectionState(GameState):
             Utils.draw_text_outline(
                 screen, region_name,
                 self.game.assets.fonts["s_med"],
-                text_color, rect.centerx, rect.centery
+                text_color, rect.centerx, rect.centery - 14
             )
-
-            sub = "GEN 1 / RED / BLUE" if i == 0 else "GEN 2 / GOLD / SILVER"
             Utils.draw_text_outline(
-                screen, sub, self.game.assets.fonts["tiny"],
-                GRAY, rect.centerx, rect.centery + 40
+                screen, self.subtitles.get(region_name, ""),
+                self.game.assets.fonts["tiny"],
+                GRAY, rect.centerx, rect.centery + 26
             )
 
         msg = "SELECT A REGION TO CONTINUE"
@@ -363,17 +374,28 @@ class RivalSelectionState(GameState):
     def confirm_selection(self):
         char_key = self.char_list[self.selected_idx]
         self.game.rival_character = char_key
-        rival_name = self.input_name.strip()
-        self.game.rival_name = rival_name if rival_name else char_key.upper()
+        # [FIX] Set rival name to ??? initially if no name is entered
+        rival_name_input = self.input_name.strip()
+        self.game.rival_name = rival_name_input if rival_name_input else "???"
+        # Store the actual character name for later if needed, but display ???
+        self.game.rival_true_name = char_key.upper()
 
         region = self.game.story_manager.starting_region
-        starter_ids = [152, 155, 158] if region == "JOHTO" else [1, 4, 7]
+        starter_ids = self.game.story_manager.get_region_start(region).get(
+            "starters", [1, 4, 7])
 
+        # Pick math difficulty before the starter (the starter pick has math)
         self.game.change_state(
-            StarterSelectionState(
+            DifficultySelectionState(
                 self.game,
-                starter_ids=starter_ids,
-                region=region
+                on_confirm=lambda: self.game.change_state(
+                    StarterSelectionState(
+                        self.game,
+                        starter_ids=starter_ids,
+                        region=region
+                    )
+                ),
+                on_back=lambda: self.game.change_state(RivalSelectionState(self.game)),
             )
         )
 
@@ -482,11 +504,13 @@ class StarterSelectionState(GameState):
         self.selection_complete = False
         self.math_buttons_ready = False
 
-        bg_name = (
-            "starter_johto.png" if self.region == "JOHTO"
-            else "starter_bg.png"
-        )
-        background_raw = self.game.assets.get_background(bg_name)
+        self.region_cfg = self.game.story_manager.get_region_start(self.region)
+        background_raw = None
+        for bg_name in (self.region_cfg.get("starter_bg"),
+                        f"starter_{self.region.lower()}.png", "starter_bg.png"):
+            background_raw = self.game.assets.get_background(bg_name)
+            if background_raw:
+                break
         if background_raw:
             self.background = pygame.transform.scale(
                 background_raw, (self.game.width, self.game.height)
@@ -533,30 +557,31 @@ class StarterSelectionState(GameState):
             Pokemon(p, self.game.assets, size_mult=2)
             for p in self.starters_raw
         ]
-        self.dialogue_box.reset(self.game.assets.get_text("choose_partner"))
+        lines = []
+        for key in ("newgame_text", "intro_text"):
+            lines += self._region_lines(key)
+        lines.append(self.game.assets.get_text("choose_partner"))
+        self.dialogue_box.reset(lines)
+
+    def _region_lines(self, cfg_key):
+        """Region text from REGION_START, with player/rival names filled in."""
+        key = self.region_cfg.get(cfg_key)
+        if not key:
+            return []
+        text = self.game.assets.get_text(
+            key, player_name=self.game.player_name,
+            rival_name=getattr(self.game, "rival_name", "???"))
+        return text if isinstance(text, list) else [text]
+
+    @property
+    def uses_town_rival(self):
+        """Hoenn onward: the rival battle fires in the starting town, not here."""
+        return self.region not in ("KANTO", "JOHTO")
 
     def generate_math_set(self):
-        op = random.choice(["+", "-"])
-        if op == "+":
-            c = random.randint(3, 10)
-            a = random.randint(1, c - 1)
-            b = c - a
-        else:
-            a = random.randint(3, 10)
-            b = random.randint(1, a - 1)
-            c = a - b
-
-        problem_str = f"{a} {op} {b} = ?"
-        ans = c
-        opts = {c}
-        while len(opts) < 3:
-            offset = random.choice([-2, -1, 1, 2])
-            f = c + offset
-            if f >= 0 and f not in opts:
-                opts.add(f)
-        return problem_str, ans, sorted(
-            list(opts), key=lambda x: random.random()
-        )
+        # Starter pick uses the difficulty chosen on the previous screen
+        level = self.game.story_manager.get_math_level()
+        return self.game.math.generate(level, num_options=3)
 
     def update_answer_buttons(self):
         self.math_buttons_ready = True
@@ -678,14 +703,17 @@ class StarterSelectionState(GameState):
         self.game.data.add_pokemon(chosen_pokemon_obj)
         self.game.data.save()
 
-        if self.region == "JOHTO":
-            flag_key = "received_starter_johto"
-            self.game.story_manager.story_flags[flag_key] = True
-        else:
-            flag_key = "received_starter_kanto"
-            self.game.story_manager.story_flags[flag_key] = True
+        story = self.game.story_manager
+        r = self.region.lower()
+        story.story_flags[f"received_starter_{r}"] = True
+        story.story_flags[f"has_{r}_starter"] = True
+        story.story_flags[f"starter_{r}"] = chosen_pokemon_obj.id
 
-        if self.region == "JOHTO":
+        if self.uses_town_rival:
+            msg_text = (msg_text if isinstance(msg_text, list) else [msg_text])
+            msg_text += self._region_lines("starter_text")
+            story.balls_left = max(story.balls_left, 5)
+        elif self.region == "JOHTO":
             rival_map = {0: 1, 1: 2, 2: 0}
             s_idx = self.selected_idx
             rival_idx_in_list = rival_map.get(s_idx, 0)
@@ -727,18 +755,28 @@ class StarterSelectionState(GameState):
 
             self.game.story_manager.rival_starter_raw = rival_choice
 
-        if not self.game.story_manager.game_started:
-            self.game.story_manager.game_started = True
-            if self.region == "JOHTO":
-                self.game.story_manager.current_area_key = "NEW_BARK_TOWN"
-            else:
-                self.game.story_manager.current_area_key = "PALLET_TOWN"
+        if not story.game_started:
+            story.game_started = True
+            story.current_area_key = self.region_cfg.get(
+                "start_area", "PALLET_TOWN")
 
         self.selection_complete = True
         self.dialogue_box.reset(msg_text)
         self.dialogue_box.callback = self.start_rival_battle
 
     def start_rival_battle(self):
+        if self.uses_town_rival:
+            from src.states.overworld import AreaTransitionState
+            self.game.change_state(AreaTransitionState(
+                self.game, self.region_cfg.get("start_area")))
+            return
+
+        if self.region == "JOHTO":
+            self.game.story_manager.story_flags["johto_rival_met_in_lab"] = True
+            from src.states.overworld import AreaTransitionState
+            self.game.change_state(AreaTransitionState(self.game, "NEW_BARK_TOWN"))
+            return
+
         from src.states.battle import TrainerBattleState, TrainerIntroState
         rival_pokemon = Pokemon(
             self.game.story_manager.rival_starter_raw,
@@ -746,8 +784,8 @@ class StarterSelectionState(GameState):
             size_mult=2
         )
 
-        if self.region == "JOHTO":
-            rival_name = "SILVER"
+        if self.region == "JOHTO": # This block is now effectively Kanto-only
+            rival_name = getattr(self.game, "rival_name", "???") # [FIX] Use game.rival_name
             trainer_class = "RIVAL"
             rival_sprite = self.game.assets.get_trainer_image("silver.png")
             if not rival_sprite:
@@ -1243,3 +1281,203 @@ class LoadingState(GameState):
         rect = rot_img.get_rect(center=(self.game.width // 2,
                                         self.game.height * 0.6))
         self.game.screen.blit(rot_img, rect)
+
+
+# [REF-0071: Math Difficulty Selection]
+class DifficultySelectionState(GameState):
+    """
+    Lets the player pick how hard the math is. Used in two places:
+      * New Game flow (after choosing a rival, before the starter)
+      * In-game OPTIONS button (Play/City HUD)
+
+    on_confirm / on_back are callables so the same screen works in both
+    places and can never soft-lock: BACK and ESC always leave.
+    """
+
+    def __init__(self, game, on_confirm, on_back, title="CHOOSE YOUR MATH LEVEL"):
+        super().__init__(game)
+        self.on_confirm = on_confirm
+        self.on_back = on_back
+        self.title = title
+        self.story = game.story_manager
+        self.input_lock = 6  # frames; stops the click that opened us from landing here
+
+        # Card list: AUTO first, then every level from math_levels.json
+        self.entries = [{"key": "AUTO", "name": "AUTO", "desc": ""}]
+        for lv in game.math.levels:
+            self.entries.append({"key": lv["id"], "name": lv["name"], "desc": lv["desc"]})
+
+        current = self.story.math_difficulty
+        self.selected_idx = next(
+            (i for i, e in enumerate(self.entries) if e["key"] == current), 0
+        )
+
+        self._layout()
+        self._refresh_preview()
+
+    # ---------------- layout ----------------
+    def _layout(self):
+        w, h = self.game.width, self.game.height
+        # 3 columns on wide screens, 1 tall column on portrait phones
+        self.cols = 3 if w >= h else 1
+        rows = (len(self.entries) + self.cols - 1) // self.cols
+        margin, gap = int(w * 0.05), int(w * 0.015)
+        top, bottom = int(h * 0.20), int(h * 0.78)
+        card_w = (w - 2 * margin - gap * (self.cols - 1)) // self.cols
+        card_h = min(int(h * 0.16), (bottom - top - gap * (rows - 1)) // rows)
+        self.card_rects = []
+        for i in range(len(self.entries)):
+            r, c = divmod(i, self.cols)
+            self.card_rects.append(pygame.Rect(
+                margin + c * (card_w + gap), top + r * (card_h + gap), card_w, card_h
+            ))
+
+        fonts = self.game.assets.fonts
+        self.btn_back = Button((30, 30, 140, 70), "BACK", fonts["small"],
+                               self.go_back, bg_color=RED)
+        self.btn_confirm = Button((w // 2 - 150, int(h * 0.90) - 40, 300, 80),
+                                  "CONFIRM", fonts["s_med"], self.confirm,
+                                  bg_color=GREEN)
+
+    def _fit_font(self, text, max_w, keys=("s_med", "small", "tiny")):
+        """Dynamic font scaling: biggest game font that fits the space."""
+        fonts = self.game.assets.fonts
+        for k in keys:
+            if fonts[k].size(text)[0] <= max_w:
+                return fonts[k]
+        return fonts[keys[-1]]
+
+    def _entry_desc(self, entry):
+        if entry["key"] == "AUTO":
+            return f"Follows your journey (now {self._auto_name()})"
+        return entry["desc"]
+
+    def _auto_name(self):
+        region = self.story.get_current_region()
+        badges = len(self.story.badges.get(region, []))
+        return self.game.math.level_by_id[
+            self.game.math.auto_level(region, badges)]["name"]
+
+    def _selected_level(self):
+        key = self.entries[self.selected_idx]["key"]
+        saved = self.story.math_difficulty
+        self.story.math_difficulty = key
+        level = self.story.get_math_level()
+        self.story.math_difficulty = saved
+        return level
+
+    def _refresh_preview(self):
+        # Prefer a plain "a + b = ?" style example; it explains the level best
+        level = self._selected_level()
+        for _ in range(20):
+            self.preview = self.game.math.generate(level, 3)[0]
+            if self.preview.endswith("= ?") and len(self.preview.split()) == 5:
+                break
+
+    # ---------------- actions ----------------
+    def select(self, idx):
+        idx = max(0, min(len(self.entries) - 1, idx))
+        if idx != self.selected_idx:
+            self.selected_idx = idx
+            self._refresh_preview()
+
+    def confirm(self):
+        self.story.math_difficulty = self.entries[self.selected_idx]["key"]
+        self.on_confirm()
+
+    def go_back(self):
+        self.on_back()
+
+    # ---------------- GameState ----------------
+    def start(self):
+        self.input_lock = 6
+
+    def handle_events(self, events):
+        if self.input_lock > 0:
+            return
+        for event in events:
+            if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+                if self.btn_back.handle_event(event) or self.btn_confirm.handle_event(event):
+                    return  # state changed; ignore the rest of this frame
+                for i, rect in enumerate(self.card_rects):
+                    if rect.collidepoint(event.pos):
+                        if i == self.selected_idx:
+                            self.confirm()  # second tap on the same card confirms
+                            return
+                        self.select(i)
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    self.go_back()
+                    return
+                if event.key in (pygame.K_RETURN, pygame.K_KP_ENTER, pygame.K_SPACE):
+                    self.confirm()
+                    return
+                step = {pygame.K_LEFT: -1, pygame.K_RIGHT: 1,
+                        pygame.K_UP: -self.cols, pygame.K_DOWN: self.cols}.get(event.key)
+                if step:
+                    self.select(self.selected_idx + step)
+
+    def update(self):
+        if self.input_lock > 0:
+            self.input_lock -= 1
+
+    def draw(self):
+        screen = self.game.screen
+        fonts = self.game.assets.fonts
+        w, h = self.game.width, self.game.height
+        screen.fill(BLACK)
+
+        Utils.draw_text_outline(screen, self.title,
+                                self._fit_font(self.title, w - 360, ("med", "s_med", "small")),
+                                GOLD, w // 2, int(h * 0.08))
+        sub = "Pick what feels right - you can change it any time from OPTIONS."
+        Utils.draw_text_outline(screen, sub, self._fit_font(sub, w - 80, ("small", "tiny")),
+                                WHITE, w // 2, int(h * 0.145))
+
+        for i, (entry, rect) in enumerate(zip(self.entries, self.card_rects)):
+            selected = i == self.selected_idx
+            pygame.draw.rect(screen, GB_PANEL if selected else GB_PANEL_DARK, rect, border_radius=15)
+            pygame.draw.rect(screen, GOLD if selected else GB_BORDER, rect,
+                             6 if selected else 3, border_radius=15)
+            inner_w = rect.width - 30
+            name = entry["name"] if entry["key"] == "AUTO" else f"{entry['key']}. {entry['name']}"
+            Utils.draw_text_outline(screen, name, self._fit_font(name, inner_w),
+                                    WHITE, rect.centerx, rect.centery - rect.height // 5)
+            desc = self._entry_desc(entry)
+            Utils.draw_text_outline(screen, desc, self._fit_font(desc, inner_w, ("small", "tiny")),
+                                    WHITE if selected else LIGHT_GRAY,
+                                    rect.centerx, rect.centery + rect.height // 5)
+
+        example = f"EXAMPLE:  {self.preview}"
+        Utils.draw_text_outline(screen, example, self._fit_font(example, w - 80, ("s_med", "small")),
+                                GOLD, w // 2, int(h * 0.82))
+
+        self.btn_back.draw(screen)
+        self.btn_confirm.draw(screen)
+
+
+def open_difficulty_options(game, return_state):
+    """
+    Opens the difficulty screen from any in-game state (route or town HUD)
+    and comes back to return_state afterwards.
+    """
+    old_level = game.story_manager.get_math_level()
+
+    def back():
+        if hasattr(return_state, "is_resuming"):
+            return_state.is_resuming = True
+        game.change_state(return_state)
+
+    def confirm():
+        # If a question is already on screen and the level changed, swap it out
+        if (getattr(return_state, "problem_str", "") not in ("", "...")
+                and hasattr(return_state, "generate_math_set")
+                and game.story_manager.get_math_level() != old_level):
+            n = len(getattr(return_state, "options", [])) or 3
+            (return_state.problem_str, return_state.correct_ans,
+             return_state.options) = return_state.generate_math_set(num_options=n)
+        game.update_save_data()
+        back()
+
+    game.change_state(DifficultySelectionState(
+        game, on_confirm=confirm, on_back=back, title="MATH DIFFICULTY"))

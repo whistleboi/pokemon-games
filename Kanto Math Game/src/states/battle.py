@@ -43,10 +43,46 @@ class TrainerBattleState(GameState):
         self.opponent_pokemon = self.opponent_team[0] if self.opponent_team else None
 
         self.player_pokemon = self.game.story_manager.player_team[0] if self.game.story_manager.player_team else None
-        for p in self.game.story_manager.player_team:
+
+        # [FIX] Implement "disallow previous region's pokemon" logic
+        current_region = self.game.story_manager.get_current_region()
+        player_team = self.game.story_manager.player_team
+        pc_pokemon = self.game.story_manager.pc_pokemon
+        
+        # Filter out fainted Pokémon and those from previous regions
+        valid_party_pokemon = []
+        for i, p in enumerate(player_team):
             if p and p.current_hp > 0:
-                self.player_pokemon = p
-                break
+                if p.caught_region is None or p.caught_region == current_region:
+                    valid_party_pokemon.append(p)
+                else:
+                    # Move disallowed Pokémon to PC
+                    for j in range(len(pc_pokemon)):
+                        if pc_pokemon[j] is None:
+                            pc_pokemon[j] = p
+                            player_team[i] = None # Remove from party
+                            break
+                    else: # PC is full, just remove from party
+                        player_team[i] = None
+                    
+                    # Inform player (this will be handled by a dialogue box later)
+                    print(f"Moved {p.display_name} (from {p.caught_region}) to PC.")
+
+        # Clean up player_team (remove None entries)
+        self.game.story_manager.player_team = [p for p in player_team if p is not None]
+        
+        # Select the first valid Pokémon for battle
+        if self.game.story_manager.player_team:
+            self.player_pokemon = self.game.story_manager.player_team[0]
+        else:
+            # All Pokémon disallowed or fainted, force white-out
+            self.player_pokemon = None 
+            # This will be caught by the game loop and trigger a white-out
+            # For now, set a flag to indicate this state
+            self.game.story_manager.story_flags["forced_white_out"] = True
+            print("All Pokémon disallowed or fainted, forcing white-out.")
+
+        # End of "disallow previous region's pokemon" logic
 
         self.renderer = BattleRenderer(game)
         self.trainer_class = trainer_class
@@ -91,7 +127,7 @@ class TrainerBattleState(GameState):
         boss_classes = ["GYM_LEADER", "ELITE_FOUR", "CHAMPION", "ROCKET_LEADER"]
         is_scripted_boss = (self.trainer_class == "WILD" and getattr(self, "victory_flag", None))
 
-        if self.trainer_class in boss_classes or is_scripted_boss:
+        if self.trainer_class in boss_classes or is_scripted_boss or self.is_boss_battle:
             self.hard_mode = True
         elif self.trainer_class == "RIVAL" and area_key != "PALLET_TOWN":
             self.hard_mode = True
@@ -123,6 +159,10 @@ class TrainerBattleState(GameState):
         self.transforming_side = None
         self.transform_anim_timer = 0
         self.transform_anim_duration = 90
+        
+        # [FIX] If forced white-out, skip normal battle setup and go straight to outro
+        if self.game.story_manager.story_flags.get("forced_white_out", False):
+            self.trigger_outro(win=False)
 
         main_rect = Utils.get_full_dialogue_rect(self.game)
         self.dialogue_box = ClassicDialogueBox(
@@ -280,30 +320,36 @@ class TrainerBattleState(GameState):
         if reset_opponent_hp:
             self.opponent_hp = self.opp_max_hp
 
-    def _calculate_damage(self, stage, multiplier):
+    def _calculate_damage(self, stage, multiplier, attacker=None, defender=None):
         """
-        Stage 1: 3 (Reg), 4 (Super), 2 (NVE)
-        Stage 2: 4 (Reg), 5 (Super), 3 (NVE)
-        Stage 3: 6 (Reg), 8 (Super), 4 (NVE)
+        Base damage scaled for HP 20/60/90 (decoupled from HP cap).
+        Stage 1: Normal=7,  Super=10, NVE=4
+        Stage 2: Normal=20, Super=28, NVE=12
+        Stage 3: Normal=30, Super=42, NVE=18
+        Stat ±1 modifier: attacker's best ATK vs defender's best DEF.
         """
+        _NORMAL = (0, 7, 20, 30)
+        _SUPER  = (0, 10, 28, 42)
+        _NVE    = (0, 4, 12, 18)
+
+        s = min(stage, 3)
         if multiplier > 1.0:
-            if stage >= 3:
-                return 8
-            if stage == 2:
-                return 5
-            return 4
-        elif multiplier < 1.0 and multiplier > 0.0:
-            if stage >= 3:
-                return 4
-            if stage == 2:
-                return 3
-            return 2
+            table = _SUPER
+        elif 0.0 < multiplier < 1.0:
+            table = _NVE
         else:
-            if stage >= 3:
-                return 6
-            if stage == 2:
-                return 4
-            return 3
+            table = _NORMAL
+        base = table[s]
+        # Sub-stage growth: damage moves part-way toward the next stage's value.
+        if attacker is not None and attacker.grows_toward_next_stage(s):
+            base += (table[s + 1] - base) * attacker.sub_stage_fraction
+
+        stat_mod = self._stat_mod(attacker, defender) if attacker and defender else 0
+
+        spread = random.randint(-2, 2)
+        self._last_was_crit = random.random() < 0.10
+        crit_mult = 1.5 if self._last_was_crit else 1.0
+        return max(1, int((base + stat_mod + spread) * crit_mult))
 
     def setup_math_ui(self):
         if hasattr(self, "math_ui") and self.math_ui in self.game.ui_manager.elements:
@@ -535,37 +581,60 @@ class TrainerBattleState(GameState):
 
         self.turn_count += 1
         if player_was_correct:
-            self.boss_attack_timer += 1
             self.turn_actions.append(self.player_attack)
-
-            if self.is_boss_battle and self.boss_attack_timer >= 2:
-                self.turn_actions.append(self.opponent_attack)
-                self.boss_attack_timer = 0
-            elif not self.is_boss_battle and self.hard_mode and (self.turn_count % 2 == 0):
-                self.turn_actions.append(self.opponent_attack)
+            self.turn_actions.append(self.opponent_attack)
         else:
-            self.boss_attack_timer = 0
             self.turn_actions.append(self.opponent_attack)
 
         if self.math_ui:
             self.math_ui.set_visibility(False)
+
+    @staticmethod
+    def _stat_mod(attacker, defender):
+        """+1 / 0 / -1 depending on attacker's best offense vs defender's best defense."""
+        atk = max(attacker.get_stat("ATTACK"), attacker.get_stat("SPATK"))
+        def_ = max(defender.get_stat("DEFENSE"), defender.get_stat("SPDEF"))
+        return (atk > def_) - (atk < def_)
+
+    def _award_battle_xp(self):
+        """Give XP for the KO, scaled by relative stage and foe strength. Returns battle messages."""
+        foe = self.opponent_pokemon
+        foe_stage = self._get_capped_stage(foe)
+        if self.game.story_manager.inventory.get("EXP_SHARE", 0) > 0:
+            earners = [p for p in self.game.story_manager.player_team if p]
+        else:
+            earners = [self.player_pokemon]
+
+        messages = []
+        for p in earners:
+            my_stage = self._get_capped_stage(p)
+            foe_is_weak = self._stat_mod(foe, p) < 0
+            gained = p.battle_xp(my_stage, foe_stage, foe_is_weak)
+            grew = p.gain_xp(gained)
+            if p is not self.player_pokemon:
+                continue
+            note = ""
+            if foe_stage > my_stage:
+                note = " Tough foe bonus!"
+            elif foe_stage < my_stage or foe_is_weak:
+                note = " (easy foe)"
+            messages.append(f"{p.display_name.upper()} gained {gained} XP!{note}")
+            if grew and p.sub_stage:
+                messages.append(f"{p.display_name.upper()} grew a little stronger!")
+        return messages
 
     def player_attack(self):
         if self.opponent_hp <= 0:
             return
 
         player_stage = self._get_capped_stage(self.player_pokemon)
-        damage = self._calculate_damage(player_stage, self.adv_opp)
+        damage = self._calculate_damage(player_stage, self.adv_opp,
+                                        self.player_pokemon, self.opponent_pokemon)
         self.opponent_hp = max(0, self.opponent_hp - damage)
 
         self.opponent_pokemon.current_hp = self.opponent_hp
 
-        if self.opponent_hp <= 0:
-            if self.game.story_manager.inventory.get("EXP_SHARE", 0) > 0:
-                for p in self.game.story_manager.player_team:
-                    p.wins += 1
-            else:
-                self.player_pokemon.wins += 1
+        xp_messages = self._award_battle_xp() if self.opponent_hp <= 0 else []
 
         self.anim_ctrl.start_lunge("player")
         move_name = self.game.assets.get_stab_move(self.player_pokemon)
@@ -577,6 +646,8 @@ class TrainerBattleState(GameState):
             "used_move", name=self.player_pokemon.name, move=move_name
         )]
 
+        if getattr(self, "_last_was_crit", False):
+            messages.append("Critical hit!")
         if self.adv_opp > 1.0:
             messages.append("It's super effective!")
         elif self.adv_opp < 1.0 and self.adv_opp > 0.0:
@@ -585,6 +656,7 @@ class TrainerBattleState(GameState):
         if self.opponent_hp <= 0:
             self.fainting_side = "opponent"
             messages.append(f"Foe {self.opponent_pokemon.display_name.upper()} fainted!")
+            messages.extend(xp_messages)
             self.dialogue_box.callback = self._start_faint_animation
             self.phase = "MESSAGE"
 
@@ -597,7 +669,8 @@ class TrainerBattleState(GameState):
             return
 
         opponent_stage = self._get_capped_stage(self.opponent_pokemon)
-        damage = self._calculate_damage(opponent_stage, self.adv_player)
+        damage = self._calculate_damage(opponent_stage, self.adv_player,
+                                        self.opponent_pokemon, self.player_pokemon)
         self.player_hp = max(0, self.player_hp - damage)
 
         self.player_pokemon.current_hp = self.player_hp
@@ -609,6 +682,8 @@ class TrainerBattleState(GameState):
             "used_move", name=f"Foe {self.opponent_pokemon.display_name}", move=move_name
         )]
 
+        if getattr(self, "_last_was_crit", False):
+            messages.append("Critical hit!")
         if self.adv_player > 1.0:
             messages.append("It's super effective!")
         elif self.adv_player < 1.0 and self.adv_player > 0.0:
@@ -641,6 +716,26 @@ class TrainerBattleState(GameState):
                 player_pos = p_img.get_rect(center=target_p_pos)
                 self.faint_anim.start(p_img, player_pos.topleft)
 
+    def _calc_money_reward(self):
+        total = sum(len(b) for b in self.game.story_manager.badges.values())
+        if self.trainer_class == "CHAMPION":
+            return 50000
+        if self.trainer_class == "ELITE_FOUR":
+            return 25000 + total * 500
+        if self.trainer_class == "GYM_LEADER":
+            return 5000 + total * 1000
+        return 1000
+
+    def _calc_candy_reward(self):
+        total = sum(len(b) for b in self.game.story_manager.badges.values())
+        if self.trainer_class == "CHAMPION":
+            return 10
+        if self.trainer_class == "ELITE_FOUR":
+            return 4
+        if self.trainer_class == "GYM_LEADER":
+            return max(1, total // 4 + 1)
+        return 0
+
     def advance_victory_sequence(self):
         if self.phase == "VICTORY_TEXT":
             self.phase = "REWARD_TEXT"
@@ -650,8 +745,15 @@ class TrainerBattleState(GameState):
                 badge_name = self.badge_reward.replace("_", " ").title()
                 msgs.append(f"You received the {badge_name} Badge!")
 
-            money_reward = 10000 if self.trainer_class in ["GYM_LEADER", "ELITE_FOUR", "CHAMPION"] else 1000
-            msgs.append(f"You got ${money_reward} for winning!")
+            money_reward = self._calc_money_reward()
+            if self.game.story_manager.inventory.get("AMULET_COIN", 0) > 0:
+                money_reward *= 2
+            msgs.append(f"You got ${money_reward:,} for winning!")
+
+            candy = self._calc_candy_reward()
+            if candy > 0:
+                label = "Rare Candy" if candy == 1 else "Rare Candies"
+                msgs.append(f"You received {candy} {label}!")
 
             balls = self.rewards.get("balls", 0)
             if balls > 0:
@@ -687,8 +789,15 @@ class TrainerBattleState(GameState):
             if self.badge_reward not in self.game.story_manager.badges[region]:
                 self.game.story_manager.badges[region].append(self.badge_reward)
 
-        money_reward = 10000 if self.trainer_class in ["GYM_LEADER", "ELITE_FOUR", "CHAMPION"] else 1000
+        money_reward = self._calc_money_reward()
+        if self.game.story_manager.inventory.get("AMULET_COIN", 0) > 0:
+            money_reward *= 2
         self.game.story_manager.money += money_reward
+
+        candy = self._calc_candy_reward()
+        if candy > 0:
+            inv = self.game.story_manager.inventory
+            inv["RARE_CANDY"] = inv.get("RARE_CANDY", 0) + candy
 
         reward_balls = self.rewards.get("balls", 3)
 
@@ -1078,7 +1187,7 @@ class TrainerBattleState(GameState):
 
 # [REF-0025: Wild Battle Core]
 class WildBattleState(TrainerBattleState):
-    def __init__(self, game, pokemon, area_name, background_image=None):
+    def __init__(self, game, pokemon, area_name, background_image=None, is_boss_battle=False):
         super().__init__(
             game,
             pokemon,
@@ -1086,7 +1195,8 @@ class WildBattleState(TrainerBattleState):
             trainer_class="WILD",
             battle_type="field",
             area_name=area_name,
-            background_image=background_image
+            background_image=background_image,
+            is_boss_battle=is_boss_battle
         )
         self.phase = "MENU"
         self.catch_phase = "DECISION"

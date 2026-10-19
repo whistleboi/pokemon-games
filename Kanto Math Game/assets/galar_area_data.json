@@ -1,0 +1,1101 @@
+{
+  "FORM_MAP": {
+    "8001": { "id": 888, "form": "crowned", "name": "Zacian - Crowned Sword" },
+    "8002": { "id": 889, "form": "crowned", "name": "Zamazenta - Crowned Shield" },
+    "8003": { "id": 890, "form": "eternamax", "name": "Eternatus - Eternamax" },
+    "8004": { "id": 892, "form": "single", "name": "Urshifu - Single Strike Style" },
+    "8005": { "id": 892, "form": "rapid", "name": "Urshifu - Rapid Strike Style" },
+    "8006": { "id": 898, "form": "ice_rider", "name": "Calyrex - Ice Rider" },
+    "8007": { "id": 898, "form": "shadow_rider", "name": "Calyrex - Shadow Rider" }
+  },
+  "GAME_TEXT": {
+    "galar_departure_from_alola": [
+      "Your Island Challenge victory and League win made global headlines.",
+      "A letter arrives on official Macro Cosmos stationery — from Leon himself.",
+      "'Heard about your trials, champion. The Galar Championship Cup needs someone like you.'",
+      "'Consider this your personal invitation. Come show the world what you've got.'",
+      "Mom: 'Galar! Rolling green hills, ancient stadiums, Pokémon roaming wild everywhere!'",
+      "Mom: 'Your Alola prize money secured us a lovely farmhouse in Postwick. All packed!'"
+    ],
+    "galar_mom_home_1": [
+      "Mom: {player_name}! Welcome home to Postwick! Can you believe this view?",
+      "I used your Alola Championship winnings to buy this farmhouse.",
+      "The neighbors — Hop's family — are wonderful. Such lively boys.",
+      "Go have your big adventure, dear. I'll be here enjoying the countryside!"
+    ],
+    "galar_mom_home_2": [
+      "Mom: Oh, {player_name}! I've been watching the Championship Cup on TV!",
+      "You know, I've now lived in Kanto, Johto, Hoenn, Sinnoh, Unova, Kalos, Alola, and now Galar!",
+      "Each home is special. But honestly? With your prize money, I could buy a different home each year.",
+      "Maybe I will. Don't tell me I can't — I'm living the dream!"
+    ],
+    "galar_mom_home_3": [
+      "Mom: The Wooloo from next door wandered into the garden again.",
+      "I didn't mind. They're so fluffy! Is that a Galar thing?",
+      "Oh — Sonia stopped by. She says Leon is doing well as Champion.",
+      "Or WAS doing well! Now you're going to challenge him, aren't you?"
+    ],
+    "galar_leon_intro": [
+      "Leon: Oi! You must be the trainer everyone's talking about!",
+      "I'm Leon — undefeated Champion of the Galar region!",
+      "Champion time! Here's an invitation to the Championship Cup.",
+      "Come find me at Wyndon Stadium when you've got all eight badges.",
+      "Let's make it the best battle Galar's ever seen!"
+    ],
+    "galar_hop_intro": [
+      "Hop: Oi, {player_name}! My brother's the Champion — so I'm gonna be Champion too!",
+      "Battle me! I've been training all morning, and I want to see how good you are.",
+      "Let's go! This is gonna be brilliant!"
+    ],
+    "galar_hop_won": ["Hop: Mint! You're brilliant! Absolutely brilliant!", "I lost — but now I know what I'm working towards. Watch out, {player_name}!"],
+    "galar_hop_lost": ["Hop: LEE would be proud of me right now!", "I've gotten strong! Come find me in the Wild Area — I'll keep training!"],
+    "galar_sonia_intro": [
+      "Sonia: Oh! Are you a new trainer? I'm Sonia — Professor Magnolia's granddaughter.",
+      "I'm researching the legend of Zacian and Zamazenta — the legendary Pokémon of Galar.",
+      "And... okay, I'm also trying to figure out what Dynamax actually is. No big deal.",
+      "Come find me in Motostoke if you learn anything interesting!"
+    ],
+    "galar_oleana_intro": [
+      "Oleana: Mr. Rose sends his compliments.",
+      "I am Oleana — Vice President of Macro Cosmos.",
+      "We power Galar. Literally — our energy grid keeps the lights on.",
+      "Please do not interfere with our operations. That is... a polite request."
+    ],
+    "galar_rose_intro": [
+      "Rose: Ah! Our newest Championship challenger!",
+      "I'm Rose — Chairman of the Galar Pokémon League and CEO of Macro Cosmos.",
+      "I've watched your matches. You have tremendous potential.",
+      "Come speak with me at Wyndon if you make it to the finals."
+    ],
+    "galar_rose_villain": [
+      "Rose: The energy crisis won't wait a thousand years.",
+      "Eternatus can generate limitless energy. I'm simply... accelerating the timeline.",
+      "The Darkest Day will be brief. The energy will last forever.",
+      "A small cost for Galar's eternal prosperity — wouldn't you agree?"
+    ],
+    "galar_zacian_encounter": [
+      "A legendary sword materializes from the Slumbering Weald's mist...",
+      "Zacian — the Warrior Pokémon — holds a rusted blade in its mouth.",
+      "Its eyes carry the weight of an ancient battle. It has been waiting for a worthy trainer."
+    ],
+    "galar_zamazenta_encounter": [
+      "A legendary shield rises from the Slumbering Weald's fog...",
+      "Zamazenta — the Warrior Pokémon — its rusted shield form gleams dully.",
+      "A guardian born in the same ancient battle as Zacian. It chooses to stand beside you."
+    ],
+    "galar_eternatus_encounter": [
+      "The tower shakes as something tears through the roof of the Energy Plant!",
+      "An alien Pokémon — ancient beyond measure — unfurls its colossal body.",
+      "Eternatus! The Gigantic Pokémon that fell from space 20,000 years ago has awakened!"
+    ],
+    "galar_leon_champion": [
+      "Leon: You made it. You actually made it to the top!",
+      "I've beaten everyone who's stepped into this stadium.",
+      "But I've never faced someone like you.",
+      "Champion time — let's have ourselves an absolute banger of a battle!"
+    ],
+    "galar_leon_won": [
+      "Leon: ...Haha. You know what? That was incredible.",
+      "I lost. Properly lost! I can't remember the last time that happened.",
+      "You are the new Galar Champion, {player_name}. Champion time — it's YOUR time now!",
+      "Take care of this place. Galar deserves a champion as brilliant as you."
+    ],
+    "galar_departure_to_paldea": [
+      "Your Galar Championship broadcasts reached every corner of the world.",
+      "A letter arrives with the seal of Naranja/Uva Academy — Paldea's most prestigious school.",
+      "'We extend a full scholarship to the exceptional trainer known as {player_name}.'",
+      "'Explore Paldea at your own pace — three great paths await you.'",
+      "Mom: 'Paldea! Enormous open grasslands, real Pokémon living wild everywhere!'",
+      "Mom: 'The Galar Championship prize was extraordinary — I bought us a home right by the academy in Cabo Poco.'"
+    ],
+    "galar_newgame_intro": [
+      "Fluffy Wooloo graze on the hills outside your home in Postwick.",
+      "Your neighbor Hop bangs on the door. His big brother Leon, the Champion, is coming home today!",
+      "Hop: {player_name}! Leon's bringing presents. Come on, let's go meet him!"
+    ],
+    "galar_leon_starter_intro": [
+      "Leon: So you're Hop's friend! Brilliant to meet you, {player_name}!",
+      "Leon: I've brought three Pokémon. Pick a partner and we'll get you started!",
+      "Leon: Choose the one that feels right. That's the first step to a champion time!"
+    ],
+    "galar_leon_starter": [
+      "Leon: Great pick! You two are going to be an amazing team.",
+      "Leon: Here's a Pokédex too. Now let's see you and Hop have your very first battle!"
+    ],
+    "galar_mom_newstart_1": ["Mom: The Wooloo got into the garden again. They're too fluffy to be mad at!", "Mom: Hop's family invited us for tea. Such lovely neighbors."],
+    "galar_mom_newstart_2": [
+      "Mom: Gym battles here are in giant stadiums with crowds and TV cameras!",
+      "Mom: Every bit of prize money you send home goes in the 'future home' jar."
+    ],
+    "galar_mom_newstart_3": ["Mom: The Slumbering Weald is spooky. Please don't go in there alone.", "Mom: ...Unless you're with a strong Pokémon. Then it's probably fine."]
+  },
+  "STORY_PROGRESSION": {
+    "POSTWICK": {
+      "area_type": "town",
+      "route_name": "Postwick",
+      "region": "GALAR",
+      "backgrounds": { "main": "postwick.png", "mom_home": "galar_mom_home.png" },
+      "has_gym": false,
+      "travel_options": [
+        { "text": "Route 1 (to Wedgehurst)", "target_area": "GALAR_ROUTE_1" },
+        { "text": "Slumbering Weald", "target_area": "SLUMBERING_WEALD" }
+      ],
+      "explore_options": [
+        { "text": "Visit Mom", "action": "NPC", "target": "galar_mom_home_1" },
+        {
+          "text": "Chat with Mom (random)",
+          "action": "RANDOM_NPC",
+          "targets": ["galar_mom_home_1", "galar_mom_home_2", "galar_mom_home_3"]
+        },
+        { "text": "Meet Leon", "action": "NPC", "target": "galar_leon_intro", "flag_condition": "not met_leon" }
+      ],
+      "next_area": "GALAR_ROUTE_1",
+      "on_enter_event": {
+        "type": "trainer_battle",
+        "trainer": {
+          "name": "Hop",
+          "class": "PKMN_TRAINER",
+          "sprite": "hop.png",
+          "team": [813],
+          "team_choice": { "810": [813], "813": [816], "816": [810] },
+          "rewards": { "balls": 5 },
+          "victory_flag": "defeated_hop_postwick",
+          "dialogue": {
+            "intro": ["galar_hop_intro"],
+            "player_won": ["galar_hop_won"],
+            "player_lost": ["galar_hop_lost"]
+          }
+        },
+        "condition": "has_galar_starter",
+        "flag_check": "defeated_hop_postwick"
+      }
+    },
+    "WEDGEHURST": {
+      "area_type": "town",
+      "route_name": "Wedgehurst",
+      "region": "GALAR",
+      "backgrounds": { "main": "wedgehurst.png", "lab": "magnolia_lab.png" },
+      "has_gym": false,
+      "travel_options": [
+        { "text": "Route 1 (to Postwick)", "target_area": "GALAR_ROUTE_1" },
+        { "text": "Route 2 (to Wild Area)", "target_area": "GALAR_ROUTE_2" },
+        { "text": "Wild Area", "target_area": "WILD_AREA" }
+      ],
+      "explore_options": [
+        { "text": "Pokémon Center", "action": "HEAL" },
+        { "text": "Shop", "action": "SHOP" },
+        { "text": "Visit Professor Magnolia", "action": "NPC", "target": "galar_magnolia_intro", "flag_condition": "not met_magnolia" },
+        { "text": "Meet Sonia", "action": "NPC", "target": "galar_sonia_intro", "flag_condition": "not met_sonia" }
+      ],
+      "next_area": "GALAR_ROUTE_2"
+    },
+    "TURFFIELD": {
+      "area_type": "town",
+      "route_name": "Turffield",
+      "region": "GALAR",
+      "backgrounds": { "main": "turffield.png", "gym": "turffield_gym.png" },
+      "has_gym": true,
+      "gym": {
+        "trainers": [],
+        "leader": {
+          "name": "Milo",
+          "class": "GYM_LEADER",
+          "sprite": "milo.png",
+          "team": [840, 841],
+          "dialogue": {
+            "intro": ["Milo: If you lose, I think that would be quite all right, actually. Don't worry about it!"],
+            "player_won": ["Milo: Oh, that was a nice battle! Here's the Grass Badge and TM Razor Leaf!"],
+            "player_lost": ["Milo: It's all right! Come back and try again — no rush!"]
+          },
+          "rewards": { "balls": 5 },
+          "is_boss_battle": true,
+          "badge_reward": "GRASS"
+        },
+        "requirements": { "badges": 0, "fail_text": "Milo is in the gym — challenge him when ready!" }
+      },
+      "travel_options": [
+        { "text": "Wild Area (west)", "target_area": "WILD_AREA" },
+        { "text": "Route 4 (to Hulbury)", "target_area": "GALAR_ROUTE_4" }
+      ],
+      "explore_options": [
+        { "text": "Pokémon Center", "action": "HEAL" },
+        { "text": "Shop", "action": "SHOP" },
+        { "text": "Challenge Gym", "action": "GYM" }
+      ],
+      "next_area": "GALAR_ROUTE_4"
+    },
+    "HULBURY": {
+      "area_type": "town",
+      "route_name": "Hulbury",
+      "region": "GALAR",
+      "backgrounds": { "main": "hulbury.png", "gym": "hulbury_gym.png" },
+      "has_gym": true,
+      "gym": {
+        "trainers": [],
+        "leader": {
+          "name": "Nessa",
+          "class": "GYM_LEADER",
+          "sprite": "nessa.png",
+          "team": [846, 847, 880],
+          "dialogue": {
+            "intro": ["Nessa: Once I set my sights on defeating you, nothing can stop me! Prepare yourself!"],
+            "player_won": ["Nessa: A powerful wave swept over me. Here is the Water Badge!"],
+            "player_lost": ["Nessa: The current of my will was stronger. Come back when you can match it!"]
+          },
+          "rewards": { "balls": 5 },
+          "is_boss_battle": true,
+          "badge_reward": "WATER"
+        },
+        "requirements": { "badges": 1, "fail_text": "Earn the Grass Badge first!" }
+      },
+      "travel_options": [
+        { "text": "Route 4 (to Turffield)", "target_area": "GALAR_ROUTE_4" },
+        { "text": "Route 5 (to Motostoke)", "target_area": "GALAR_ROUTE_5" }
+      ],
+      "explore_options": [
+        { "text": "Pokémon Center", "action": "HEAL" },
+        { "text": "Shop", "action": "SHOP" },
+        { "text": "Challenge Gym", "action": "GYM" }
+      ],
+      "next_area": "GALAR_ROUTE_5"
+    },
+    "MOTOSTOKE": {
+      "area_type": "town",
+      "route_name": "Motostoke",
+      "region": "GALAR",
+      "backgrounds": { "main": "motostoke.png", "gym": "motostoke_gym.png" },
+      "has_gym": true,
+      "gym": {
+        "trainers": [],
+        "leader": {
+          "name": "Kabu",
+          "class": "GYM_LEADER",
+          "sprite": "kabu.png",
+          "team": [838, 839, 851],
+          "dialogue": {
+            "intro": ["Kabu: If you cannot pass through my flames, you will not be going any further!"],
+            "player_won": ["Kabu: Well done. The passion in your eyes — it sets you apart. Here is the Fire Badge."],
+            "player_lost": ["Kabu: Your flames need more fuel. Train and return!"]
+          },
+          "rewards": { "balls": 5 },
+          "is_boss_battle": true,
+          "badge_reward": "FIRE"
+        },
+        "requirements": { "badges": 2, "fail_text": "Earn the Water Badge first!" }
+      },
+      "travel_options": [
+        { "text": "Route 5 (to Hulbury)", "target_area": "GALAR_ROUTE_5" },
+        { "text": "Wild Area (east)", "target_area": "WILD_AREA" },
+        { "text": "Route 6 (to Stow-on-Side)", "target_area": "GALAR_ROUTE_6" }
+      ],
+      "explore_options": [
+        { "text": "Pokémon Center", "action": "HEAL" },
+        { "text": "Shop", "action": "SHOP" },
+        { "text": "Challenge Gym", "action": "GYM" },
+        { "text": "Meet Chairman Rose", "action": "NPC", "target": "galar_rose_intro", "flag_condition": "not met_rose" }
+      ],
+      "next_area": "GALAR_ROUTE_6"
+    },
+    "STOW_ON_SIDE": {
+      "area_type": "town",
+      "route_name": "Stow-on-Side",
+      "region": "GALAR",
+      "backgrounds": { "main": "stow_on_side.png", "gym": "stow_on_side_gym.png" },
+      "has_gym": true,
+      "gym": {
+        "trainers": [],
+        "leader": {
+          "name": "Bea (Fighting) / Allister (Ghost)",
+          "class": "GYM_LEADER",
+          "sprite": "bea_fighting_allister_ghost.png",
+          "team": [870, 870, 865],
+          "dialogue": {
+            "intro": ["Bea: I've been waiting for this. Battle me with everything you've got!"],
+            "player_won": ["Bea: A worthy challenge! You've earned the Fighting Badge!"],
+            "player_lost": ["Bea: Keep training. You'll get there."]
+          },
+          "rewards": { "balls": 5 },
+          "is_boss_battle": true,
+          "badge_reward": "FIGHTING"
+        },
+        "requirements": { "badges": 3, "fail_text": "Earn the Fire Badge first!" }
+      },
+      "travel_options": [
+        { "text": "Route 6 (to Motostoke)", "target_area": "GALAR_ROUTE_6" },
+        { "text": "Glimwood Tangle (to Ballonlea)", "target_area": "GLIMWOOD_TANGLE" }
+      ],
+      "explore_options": [
+        { "text": "Pokémon Center", "action": "HEAL" },
+        { "text": "Shop", "action": "SHOP" },
+        { "text": "Challenge Gym", "action": "GYM" },
+        { "text": "Sonia's Research (murals)", "action": "NPC", "target": "galar_sonia_murals", "flag_condition": "not saw_stow_murals" }
+      ],
+      "next_area": "GLIMWOOD_TANGLE"
+    },
+    "BALLONLEA": {
+      "area_type": "town",
+      "route_name": "Ballonlea",
+      "region": "GALAR",
+      "backgrounds": { "main": "ballonlea.png", "gym": "ballonlea_gym.png" },
+      "has_gym": true,
+      "gym": {
+        "trainers": [],
+        "leader": {
+          "name": "Opal",
+          "class": "GYM_LEADER",
+          "sprite": "opal.png",
+          "team": [869, 858, 859, 282],
+          "dialogue": {
+            "intro": ["Opal: Old age hasn't slowed me down one bit. Now, what color do I have in mind? Answer correctly and I'll go easy on you!"],
+            "player_won": ["Opal: Pink! And you answered well. The Fairy Badge is yours!"],
+            "player_lost": ["Opal: Hmm. Wrong answer AND wrong battle result. Study harder!"]
+          },
+          "rewards": { "balls": 5 },
+          "is_boss_battle": true,
+          "badge_reward": "FAIRY"
+        },
+        "requirements": { "badges": 4, "fail_text": "Earn the Fighting Badge first — and study up on Fairy-types!" }
+      },
+      "travel_options": [
+        { "text": "Glimwood Tangle (to Stow-on-Side)", "target_area": "GLIMWOOD_TANGLE" },
+        { "text": "Route 7 (to Circhester)", "target_area": "GALAR_ROUTE_7" }
+      ],
+      "explore_options": [
+        { "text": "Pokémon Center", "action": "HEAL" },
+        { "text": "Shop", "action": "SHOP" },
+        { "text": "Challenge Gym", "action": "GYM" }
+      ],
+      "next_area": "GALAR_ROUTE_7"
+    },
+    "CIRCHESTER": {
+      "area_type": "town",
+      "route_name": "Circhester",
+      "region": "GALAR",
+      "backgrounds": { "main": "circhester.png", "gym": "circhester_gym.png" },
+      "has_gym": true,
+      "gym": {
+        "trainers": [],
+        "leader": {
+          "name": "Gordie (Rock) / Melony (Ice)",
+          "class": "GYM_LEADER",
+          "sprite": "gordie_rock_melony_ice.png",
+          "team": [874, 874, 880],
+          "dialogue": {
+            "intro": ["Gordie: Don't think Fairy-type charm will work in here. Rock is absolute!"],
+            "player_won": ["Gordie: You... actually beat me. The Rock Badge is yours. Don't make a big deal of it."],
+            "player_lost": ["Gordie: Solid. Come back when you're truly solid."]
+          },
+          "rewards": { "balls": 5 },
+          "is_boss_battle": true,
+          "badge_reward": "ROCK"
+        },
+        "requirements": { "badges": 5, "fail_text": "Earn the Fairy Badge first!" }
+      },
+      "travel_options": [
+        { "text": "Route 7 (to Ballonlea)", "target_area": "GALAR_ROUTE_7" },
+        { "text": "Route 8 (to Spikemuth)", "target_area": "GALAR_ROUTE_8" }
+      ],
+      "explore_options": [
+        { "text": "Pokémon Center", "action": "HEAL" },
+        { "text": "Shop", "action": "SHOP" },
+        { "text": "Challenge Gym", "action": "GYM" },
+        { "text": "Hero's Bath (Sonia research)", "action": "NPC", "target": "galar_sonia_bath", "flag_condition": "not saw_circhester_monument" }
+      ],
+      "next_area": "GALAR_ROUTE_8"
+    },
+    "SPIKEMUTH": {
+      "area_type": "town",
+      "route_name": "Spikemuth",
+      "region": "GALAR",
+      "backgrounds": { "main": "spikemuth.png", "gym": "spikemuth_gym.png" },
+      "has_gym": true,
+      "gym": {
+        "trainers": [],
+        "leader": {
+          "name": "Piers",
+          "class": "GYM_LEADER",
+          "sprite": "piers.png",
+          "team": [877, 877, 863, 862],
+          "dialogue": {
+            "intro": ["Piers: Right. Let's not drag this out. I'll battle you, and I'll do it without any Dynamax. I never needed it."],
+            "player_won": ["Piers: ...Good battle. Here's the Dark Badge. Don't go easy on Leon."],
+            "player_lost": ["Piers: I've been practicing this set. Come back when you can break through it."]
+          },
+          "rewards": { "balls": 5 },
+          "is_boss_battle": true,
+          "badge_reward": "DARK"
+        },
+        "requirements": { "badges": 6, "fail_text": "Earn the Rock Badge first — and get past Team Yell guarding the gate!" }
+      },
+      "travel_options": [
+        { "text": "Route 8 (to Circhester)", "target_area": "GALAR_ROUTE_8" },
+        { "text": "Route 9 (to Hammerlocke)", "target_area": "GALAR_ROUTE_9" }
+      ],
+      "explore_options": [
+        { "text": "Pokémon Center", "action": "HEAL" },
+        { "text": "Shop", "action": "SHOP" },
+        { "text": "Challenge Gym", "action": "GYM" },
+        { "text": "Marnie Battle", "action": "NPC", "target": "galar_marnie_spikemuth", "flag_condition": "not defeated_marnie_spikemuth" }
+      ],
+      "next_area": "GALAR_ROUTE_9"
+    },
+    "HAMMERLOCKE": {
+      "area_type": "town",
+      "route_name": "Hammerlocke",
+      "region": "GALAR",
+      "backgrounds": { "main": "hammerlocke.png", "gym": "hammerlocke_gym.png", "vault": "hammerlocke_vault.png" },
+      "has_gym": true,
+      "gym": {
+        "trainers": [],
+        "leader": {
+          "name": "Raihan",
+          "class": "GYM_LEADER",
+          "sprite": "raihan.png",
+          "team": [844, 880, 882, 883],
+          "dialogue": {
+            "intro": ["Raihan: Alright! Let's settle this quick — my fans are watching! I'll be using Dynamax, so buckle up!"],
+            "player_won": ["Raihan: Incredible! That was AMAZING! Here's the Dragon Badge — now go beat Leon for both of us!"],
+            "player_lost": ["Raihan: Ha! That's more like it! But you'll need to do better against Leon."]
+          },
+          "rewards": { "balls": 5 },
+          "is_boss_battle": true,
+          "badge_reward": "DRAGON"
+        },
+        "requirements": { "badges": 7, "fail_text": "Earn the Dark Badge first!" }
+      },
+      "travel_options": [
+        { "text": "Route 9 (to Spikemuth)", "target_area": "GALAR_ROUTE_9" },
+        { "text": "Route 10 (to Wyndon)", "target_area": "GALAR_ROUTE_10" },
+        { "text": "Rose Tower / Energy Plant", "target_area": "ROSE_TOWER" }
+      ],
+      "explore_options": [
+        { "text": "Pokémon Center", "action": "HEAL" },
+        { "text": "Shop", "action": "SHOP" },
+        { "text": "Challenge Gym", "action": "GYM" },
+        {
+          "text": "Stop Chairman Rose",
+          "action": "NPC",
+          "target": "galar_rose_villain",
+          "condition": "has_dragon_badge",
+          "flag_condition": "not rose_tower_cleared",
+          "color": "GOLD"
+        }
+      ],
+      "next_area": "GALAR_ROUTE_10"
+    },
+    "WYNDON": {
+      "area_type": "town",
+      "route_name": "Wyndon",
+      "region": "GALAR",
+      "backgrounds": { "main": "wyndon.png", "stadium": "wyndon_stadium.png" },
+      "has_gym": true,
+      "travel_options": [{"text": "Route 10 (to Hammerlocke)", "target_area": "GALAR_ROUTE_10"}],
+      "explore_options": [
+        { "text": "Pokémon Center", "action": "HEAL" },
+        { "text": "Shop", "action": "SHOP" },
+        { "text": "CHALLENGE CHAMPIONSHIP CUP", "action": "GYM", "condition": "has_all_galar_badges", "color": "GOLD" }
+      ],
+      "post_champion_events": [
+        { "type": "npc_dialogue", "target": "galar_departure_to_paldea", "flag_condition": "not left_for_paldea", "victory_flag": "left_for_paldea" }
+      ],
+      "gym": {
+        "trainers": [
+          {
+            "name": "Marnie",
+            "class": "RIVAL",
+            "sprite": "marnie.png",
+            "is_boss_battle": true,
+            "team": [877, 877, 862, 863, 869],
+            "rewards": { "balls": 10 },
+            "dialogue": {
+              "intro": ["Marnie: I'm giving this everything I've got. Don't hold back."],
+              "player_won": ["Marnie: ...You were better. Piers will hear about this."],
+              "player_lost": ["Marnie: ...Sorry. Got a bit carried away."]
+            }
+          },
+          {
+            "name": "Hop",
+            "class": "PKMN_TRAINER",
+            "sprite": "hop.png",
+            "is_boss_battle": true,
+            "team": [884, 845, 851, 865, 880, 812],
+            "team_choice": {
+              "810": [884, 845, 851, 865, 880, 815],
+              "813": [884, 845, 724, 865, 880, 812],
+              "816": [884, 845, 851, 865, 880, 818]
+            },
+            "rewards": { "balls": 15 },
+            "victory_flag": "defeated_hop_wyndon",
+            "dialogue": {
+              "intro": ["Hop: {player_name}! I've been waiting for this! I'm different from when we started!"],
+              "player_won": ["Hop: I lost again... but this time? I'm proud of how I battled."],
+              "player_lost": ["Hop: I've grown SO much! This means everything to me!"]
+            }
+          }
+        ],
+        "leader": {
+          "name": "Champion Leon",
+          "class": "CHAMPION",
+          "sprite": "leon.png",
+          "is_boss_battle": true,
+          "team": [879, 845, 851, 880, 884, 6],
+          "team_choice": {
+            "810": [879, 845, 727, 880, 884, 6],
+            "813": [879, 845, 851, 880, 884, 6],
+            "816": [879, 845, 730, 880, 884, 6]
+          },
+          "rewards": { "balls": 20, "item": "GALAR_HALL_OF_FAME" },
+          "victory_flag": "beat_galar_champion",
+          "dialogue": {
+            "intro": [
+              "Leon: You made it. You actually made it to the top!",
+              "I've beaten everyone who's stepped into this stadium.",
+              "But I've never faced someone like you.",
+              "Champion time — let's have ourselves an absolute banger of a battle!"
+            ],
+            "player_won": [
+              "Leon: ...Haha. You know what? That was incredible.",
+              "I lost. Properly lost! I can't remember the last time that happened.",
+              "You are the new Galar Champion, {player_name}. Champion time — it's YOUR time now!",
+              "Take care of this place. Galar deserves a champion as brilliant as you."
+            ],
+            "player_lost": ["Leon: Champion time — and I still won! Come back when you're ready to take the crown!"]
+          }
+        }
+      }
+    },
+    "SLUMBERING_WEALD": {
+      "area_type": "dungeon",
+      "route_name": "Slumbering Weald",
+      "region": "GALAR",
+      "battle_type": "grass",
+      "wild_pool_percentages": "GALAR_SLUMBERING_WEALD_PERCENTAGES",
+      "min_rounds": 2,
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        {
+          "text": "Encounter Zacian (post-game)",
+          "action": "BOSS",
+          "condition": "boss_not_defeated",
+          "flag_condition": "beat_galar_champion",
+          "color": "GOLD"
+        },
+        {
+          "text": "Encounter Zamazenta (post-game)",
+          "action": "BOSS",
+          "condition": "boss_not_defeated",
+          "flag_condition": "beat_galar_champion",
+          "color": "GOLD"
+        },
+        { "text": "Postwick", "action": "EXIT", "target_area": "POSTWICK", "condition": "can_exit", "color": "RED" }
+      ],
+      "area_boss": { "id": 888, "name": "Zacian / Zamazenta", "victory_flag": "SLUMBERING_WEALD_boss_defeated" }
+    },
+    "WILD_AREA": {
+      "area_type": "dungeon",
+      "route_name": "Wild Area",
+      "region": "GALAR",
+      "battle_type": "field",
+      "wild_pool_percentages": "GALAR_WILD_AREA_PERCENTAGES",
+      "min_rounds": 2,
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "MAX RAID BATTLE", "action": "TRAINER", "condition": "can_battle", "color": "GOLD" },
+        { "text": "Turffield (west)", "action": "EXIT", "target_area": "TURFFIELD", "condition": "can_exit", "color": "RED" },
+        { "text": "Motostoke (east)", "action": "EXIT", "target_area": "MOTOSTOKE", "condition": "can_exit", "color": "RED" },
+        { "text": "Wedgehurst (south)", "action": "EXIT", "target_area": "WEDGEHURST", "condition": "can_exit", "color": "RED" },
+        { "text": "ROUTE 2", "action": "EXIT", "target_area": "GALAR_ROUTE_2", "condition": "can_exit", "color": "RED" },
+        { "text": "ROUTE 3", "action": "EXIT", "target_area": "GALAR_ROUTE_3", "condition": "can_exit", "color": "RED" }
+      ]
+    },
+    "GALAR_MINE": {
+      "area_type": "dungeon",
+      "route_name": "Galar Mine",
+      "region": "GALAR",
+      "battle_type": "cave",
+      "wild_pool_percentages": "GALAR_MINE_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Worker Russell",
+          "class": "HIKER",
+          "sprite": "hiker.png",
+          "team": [837, 838],
+          "rewards": { "balls": 2 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "Route 3", "action": "EXIT", "target_area": "GALAR_ROUTE_3", "condition": "can_exit", "color": "RED" },
+        { "text": "Route 4", "action": "EXIT", "target_area": "GALAR_ROUTE_4", "condition": "can_exit", "color": "RED" }
+      ]
+    },
+    "GLIMWOOD_TANGLE": {
+      "area_type": "dungeon",
+      "route_name": "Glimwood Tangle",
+      "region": "GALAR",
+      "battle_type": "grass",
+      "wild_pool_percentages": "GALAR_GLIMWOOD_PERCENTAGES",
+      "min_rounds": 2,
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "Stow-on-Side", "action": "EXIT", "target_area": "STOW_ON_SIDE", "condition": "can_exit", "color": "RED" },
+        { "text": "Ballonlea", "action": "EXIT", "target_area": "BALLONLEA", "condition": "can_exit", "color": "RED" }
+      ]
+    },
+    "ROSE_TOWER": {
+      "area_type": "dungeon",
+      "route_name": "Rose Tower / Energy Plant",
+      "region": "GALAR",
+      "battle_type": "indoor",
+      "wild_pool_percentages": null,
+      "min_rounds": 0,
+      "trainer_pool": [
+        {
+          "name": "Oleana",
+          "class": "RIVAL",
+          "sprite": "oleana.png",
+          "is_boss_battle": true,
+          "team": [869, 858, 879, 868],
+          "rewards": { "balls": 10 },
+          "victory_flag": "oleana_defeated",
+          "dialogue": {
+            "intro": ["Oleana: I will not let you disrupt Mr. Rose's vision."],
+            "player_won": ["Oleana: ...I see. You truly cannot be stopped."],
+            "player_lost": ["Oleana: Efficient. Mr. Rose will be pleased."]
+          }
+        },
+        {
+          "name": "Chairman Rose",
+          "class": "RIVAL",
+          "sprite": "rose.png",
+          "is_boss_battle": true,
+          "team": [869, 879, 884, 879, 890],
+          "rewards": { "balls": 15 },
+          "victory_flag": "rose_tower_cleared",
+          "dialogue": {
+            "intro": ["galar_rose_villain"],
+            "player_won": ["Rose: ...You've stopped me. Good. Maybe the future can be different."],
+            "player_lost": ["Rose: The energy of the future flows through me. This is inevitable."]
+          }
+        },
+        {
+          "name": "Eternatus",
+          "class": "WILD",
+          "sprite": "eternatus.png",
+          "is_boss_battle": true,
+          "team": [890],
+          "rewards": { "balls": 20 },
+          "victory_flag": "eternatus_defeated",
+          "dialogue": {
+            "intro": ["galar_eternatus_encounter"],
+            "player_won": ["The ancient threat is subdued. Galar is safe — for now."],
+            "player_lost": ["The energy is overwhelming! Zacian and Zamazenta appear to help!"]
+          }
+        }
+      ],
+      "route_menu": [
+        { "text": "BATTLE ROSE TOWER", "action": "TRAINER", "condition": "has_trainers", "color": "GOLD", "flag_condition": "not rose_tower_cleared" },
+        { "text": "Hammerlocke", "action": "EXIT", "target_area": "HAMMERLOCKE", "condition": "can_exit", "color": "RED" }
+      ]
+    },
+    "GALAR_ROUTE_1": {
+      "area_type": "wild_route",
+      "route_name": "Route 1",
+      "region": "GALAR",
+      "battle_type": "grass",
+      "wild_pool_percentages": "GALAR_ROUTE_1_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Youngster Rhys",
+          "class": "YOUNGSTER",
+          "sprite": "youngster.png",
+          "team": [831, 810],
+          "rewards": { "balls": 2 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "Postwick", "action": "EXIT", "target_area": "POSTWICK", "condition": "can_exit", "color": "RED" },
+        { "text": "Wedgehurst", "action": "EXIT", "target_area": "WEDGEHURST", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "WEDGEHURST"
+    },
+    "GALAR_ROUTE_2": {
+      "area_type": "wild_route",
+      "route_name": "Route 2",
+      "region": "GALAR",
+      "battle_type": "grass",
+      "wild_pool_percentages": "GALAR_ROUTE_2_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Lass Esther",
+          "class": "LASS",
+          "sprite": "lass.png",
+          "team": [831, 859],
+          "rewards": { "balls": 2 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "Wedgehurst", "action": "EXIT", "target_area": "WEDGEHURST", "condition": "can_exit", "color": "RED" },
+        { "text": "Wild Area", "action": "EXIT", "target_area": "WILD_AREA", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "WILD_AREA"
+    },
+    "GALAR_ROUTE_3": {
+      "area_type": "wild_route",
+      "route_name": "Route 3",
+      "region": "GALAR",
+      "battle_type": "grass",
+      "wild_pool_percentages": "GALAR_ROUTE_3_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Hiker Alastair",
+          "class": "HIKER",
+          "sprite": "hiker.png",
+          "team": [837, 838],
+          "rewards": { "balls": 2 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "Wild Area", "action": "EXIT", "target_area": "WILD_AREA", "condition": "can_exit", "color": "RED" },
+        { "text": "Galar Mine", "action": "EXIT", "target_area": "GALAR_MINE", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "GALAR_MINE"
+    },
+    "GALAR_ROUTE_4": {
+      "area_type": "wild_route",
+      "route_name": "Route 4",
+      "region": "GALAR",
+      "battle_type": "field",
+      "wild_pool_percentages": "GALAR_ROUTE_4_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Dancer Mathis",
+          "class": "GENTLEMAN",
+          "sprite": "gentleman.png",
+          "team": [840, 841],
+          "rewards": { "balls": 2 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "Turffield", "action": "EXIT", "target_area": "TURFFIELD", "condition": "can_exit", "color": "RED" },
+        { "text": "Hulbury", "action": "EXIT", "target_area": "HULBURY", "condition": "can_exit", "color": "RED" },
+        { "text": "GALAR MINE", "action": "EXIT", "target_area": "GALAR_MINE", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "HULBURY"
+    },
+    "GALAR_ROUTE_5": {
+      "area_type": "wild_route",
+      "route_name": "Route 5",
+      "region": "GALAR",
+      "battle_type": "field",
+      "wild_pool_percentages": "GALAR_ROUTE_5_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Ace Trainer Helena",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "team": [846, 847],
+          "rewards": { "balls": 3 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "Hulbury", "action": "EXIT", "target_area": "HULBURY", "condition": "can_exit", "color": "RED" },
+        { "text": "Motostoke", "action": "EXIT", "target_area": "MOTOSTOKE", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "MOTOSTOKE"
+    },
+    "GALAR_ROUTE_6": {
+      "area_type": "wild_route",
+      "route_name": "Route 6",
+      "region": "GALAR",
+      "battle_type": "field",
+      "wild_pool_percentages": "GALAR_ROUTE_6_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Ace Trainer Priscilla",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "team": [838, 840],
+          "rewards": { "balls": 3 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "Motostoke", "action": "EXIT", "target_area": "MOTOSTOKE", "condition": "can_exit", "color": "RED" },
+        { "text": "Stow-on-Side", "action": "EXIT", "target_area": "STOW_ON_SIDE", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "STOW_ON_SIDE"
+    },
+    "GALAR_ROUTE_7": {
+      "area_type": "wild_route",
+      "route_name": "Route 7",
+      "region": "GALAR",
+      "battle_type": "mountain",
+      "wild_pool_percentages": "GALAR_ROUTE_7_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Ace Trainer Corvin",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "is_boss_battle": true,
+          "team": [869, 858],
+          "rewards": { "balls": 5 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
+        { "text": "Ballonlea", "action": "EXIT", "target_area": "BALLONLEA", "condition": "can_exit", "color": "RED" },
+        { "text": "Circhester", "action": "EXIT", "target_area": "CIRCHESTER", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "CIRCHESTER"
+    },
+    "GALAR_ROUTE_8": {
+      "area_type": "wild_route",
+      "route_name": "Route 8",
+      "region": "GALAR",
+      "battle_type": "mountain",
+      "wild_pool_percentages": "GALAR_ROUTE_8_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Veteran Simon",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "is_boss_battle": true,
+          "team": [874, 875, 476],
+          "rewards": { "balls": 5 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
+        { "text": "Circhester", "action": "EXIT", "target_area": "CIRCHESTER", "condition": "can_exit", "color": "RED" },
+        { "text": "Spikemuth", "action": "EXIT", "target_area": "SPIKEMUTH", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "SPIKEMUTH"
+    },
+    "GALAR_ROUTE_9": {
+      "area_type": "wild_route",
+      "route_name": "Route 9",
+      "region": "GALAR",
+      "battle_type": "field",
+      "can_fish": true,
+      "wild_pool_percentages": "GALAR_ROUTE_9_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Fisherman Stewart",
+          "class": "FISHERMAN",
+          "sprite": "fisherman.png",
+          "team": [846, 848],
+          "rewards": { "balls": 2 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "Spikemuth", "action": "EXIT", "target_area": "SPIKEMUTH", "condition": "can_exit", "color": "RED" },
+        { "text": "Hammerlocke", "action": "EXIT", "target_area": "HAMMERLOCKE", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "HAMMERLOCKE"
+    },
+    "GALAR_ROUTE_10": {
+      "area_type": "wild_route",
+      "route_name": "Route 10",
+      "region": "GALAR",
+      "battle_type": "mountain",
+      "wild_pool_percentages": "GALAR_ROUTE_10_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Ace Trainer Ivy",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "is_boss_battle": true,
+          "team": [882, 883, 884],
+          "rewards": { "balls": 5 }
+        },
+        {
+          "name": "Hop",
+          "class": "PKMN_TRAINER",
+          "sprite": "hop.png",
+          "is_boss_battle": true,
+          "team": [884, 880, 851, 865, 812],
+          "team_choice": {
+            "810": [884, 880, 851, 865, 815],
+            "813": [884, 880, 724, 865, 812],
+            "816": [884, 880, 851, 865, 818]
+          },
+          "rewards": { "balls": 8 },
+          "victory_flag": "defeated_hop_route10",
+          "dialogue": {
+            "intro": ["Hop: {player_name}! I've been training so hard since Spikemuth. Let's do this!"],
+            "player_won": ["Hop: You just keep getting better... that's what I need to aim for!"],
+            "player_lost": ["Hop: YES! Everything I've worked for is paying off!"]
+          }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
+        { "text": "Hammerlocke", "action": "EXIT", "target_area": "HAMMERLOCKE", "condition": "can_exit", "color": "RED" },
+        { "text": "Wyndon", "action": "EXIT", "target_area": "WYNDON", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "WYNDON"
+    }
+  },
+  "JOURNAL_MISSIONS": [
+    {
+      "id": "galar_m1",
+      "type": "MAIN",
+      "title": "Welcome to Galar",
+      "description": "Leon gave you an invitation to the Galar Championship Cup! Register at Motostoke and start collecting badges.",
+      "condition": { "start_region": "GALAR", "badges_less": 1 },
+      "reward": "Starter Pokémon + Pokédex"
+    },
+    {
+      "id": "galar_m2",
+      "type": "MAIN",
+      "title": "Grass, Water, Fire",
+      "description": "Earn the first three badges from Milo (Grass), Nessa (Water), and Kabu (Fire).",
+      "condition": { "start_region": "GALAR", "badges_less": 3 },
+      "reward": "3 Gym Badges"
+    },
+    {
+      "id": "galar_m3",
+      "type": "MAIN",
+      "title": "The Mainland Gyms",
+      "description": "Challenge Bea/Allister (Fighting/Ghost) at Stow-on-Side, then Opal (Fairy) at Ballonlea.",
+      "condition": { "start_region": "GALAR", "badges_min": 3, "badges_less": 5 },
+      "reward": "2 more Gym Badges"
+    },
+    {
+      "id": "galar_m4",
+      "type": "MAIN",
+      "title": "The Northern Gyms",
+      "description": "Head to Circhester for Gordie/Melony (Rock/Ice), then confront Piers in Spikemuth (Dark).",
+      "condition": { "start_region": "GALAR", "badges_min": 5, "badges_less": 7 },
+      "reward": "2 more Gym Badges"
+    },
+    {
+      "id": "galar_m5",
+      "type": "MAIN",
+      "title": "Raihan's Challenge",
+      "description": "The final gym — Raihan's Dragon gym in Hammerlocke! Earn the Dragon Badge to enter the Championship Cup.",
+      "condition": { "start_region": "GALAR", "badges_min": 7, "badges_less": 8 },
+      "reward": "Dragon Badge"
+    },
+    {
+      "id": "galar_m6",
+      "type": "MAIN",
+      "title": "Stop Chairman Rose",
+      "description": "Rose has activated the Darkest Day early! Stop him at Rose Tower and face Eternatus!",
+      "condition": { "start_region": "GALAR", "badges_min": 7, "flag_not": "rose_tower_cleared" },
+      "reward": "Galar saved"
+    },
+    {
+      "id": "galar_m7",
+      "type": "MAIN",
+      "title": "Champion Cup — Wyndon Stadium",
+      "description": "Defeat Marnie, then Hop, then Champion Leon! The whole of Galar is watching!",
+      "condition": { "start_region": "GALAR", "badges_min": 8, "flag_not": "beat_galar_champion" },
+      "reward": "Galar Champion Title"
+    },
+    {
+      "id": "galar_s1",
+      "type": "SIDE",
+      "title": "The Hero Pokémon",
+      "description": "After becoming Champion, return to the Slumbering Weald. Zacian and Zamazenta await those proven worthy.",
+      "condition": { "start_region": "GALAR", "flag": "beat_galar_champion", "flag_not": "SLUMBERING_WEALD_boss_defeated" },
+      "reward": "Zacian + Zamazenta encounters"
+    },
+    {
+      "id": "galar_s2",
+      "type": "SIDE",
+      "title": "The Wild Area",
+      "description": "The Wild Area is home to powerful Pokémon and Max Raid Battles. Rare finds await — including Gigantamax forms!",
+      "condition": { "start_region": "GALAR", "badges_min": 1 },
+      "reward": "Rare wild Pokémon"
+    }
+  ],
+  "GALAR_ROUTE_1": [810, 813, 816, 831],
+  "GALAR_ROUTE_1_PERCENTAGES": { "810": 25, "813": 25, "816": 25, "831": 25 },
+  "GALAR_ROUTE_2": [831, 832, 859, 860],
+  "GALAR_ROUTE_2_PERCENTAGES": { "831": 30, "832": 25, "859": 25, "860": 20 },
+  "GALAR_ROUTE_3": [837, 838, 831, 832],
+  "GALAR_ROUTE_3_PERCENTAGES": { "837": 30, "838": 25, "831": 25, "832": 20 },
+  "GALAR_ROUTE_4": [840, 841, 846, 847],
+  "GALAR_ROUTE_4_PERCENTAGES": { "840": 30, "841": 25, "846": 25, "847": 20 },
+  "GALAR_ROUTE_5": [846, 847, 835, 836],
+  "GALAR_ROUTE_5_PERCENTAGES": { "846": 30, "847": 25, "835": 25, "836": 20 },
+  "GALAR_ROUTE_6": [838, 840, 850, 851],
+  "GALAR_ROUTE_6_PERCENTAGES": { "838": 30, "840": 25, "850": 25, "851": 20 },
+  "GALAR_ROUTE_7": [858, 859, 869, 870],
+  "GALAR_ROUTE_7_PERCENTAGES": { "858": 30, "859": 25, "869": 25, "870": 20 },
+  "GALAR_ROUTE_8": [874, 875, 613, 614],
+  "GALAR_ROUTE_8_PERCENTAGES": { "874": 30, "875": 25, "613": 25, "614": 20 },
+  "GALAR_ROUTE_9": [846, 848, 880, 882],
+  "GALAR_ROUTE_9_PERCENTAGES": { "846": 30, "848": 25, "880": 25, "882": 20 },
+  "GALAR_ROUTE_10": [882, 883, 884, 879],
+  "GALAR_ROUTE_10_PERCENTAGES": { "882": 30, "883": 25, "884": 25, "879": 20 },
+  "GALAR_SLUMBERING_WEALD_PERCENTAGES": { "888": 5, "889": 5, "831": 30, "862": 30, "863": 30 },
+  "GALAR_SLUMBERING_WEALD": [831, 862, 863, 888, 889],
+  "GALAR_WILD_AREA_PERCENTAGES": { "835": 20, "840": 20, "846": 20, "858": 20, "874": 20 },
+  "GALAR_WILD_AREA": [835, 840, 846, 858, 874],
+  "GALAR_MINE_PERCENTAGES": { "837": 35, "838": 30, "874": 20, "91": 15 },
+  "GALAR_MINE": [91, 837, 838, 874],
+  "GALAR_GLIMWOOD_PERCENTAGES": { "859": 30, "860": 25, "869": 25, "872": 20 },
+  "GALAR_GLIMWOOD": [859, 860, 869, 872],
+  "REGION_START": {
+    "GALAR": {
+      "order": 8,
+      "subtitle": "GEN 8 / SWORD / SHIELD",
+      "start_area": "POSTWICK",
+      "starters": [810, 813, 816],
+      "professor": "Leon",
+      "intro_text": "galar_leon_starter_intro",
+      "starter_text": "galar_leon_starter",
+      "newgame_text": "galar_newgame_intro",
+      "dex_range": [810, 905],
+      "mom_newstart_text": ["galar_mom_newstart_1", "galar_mom_newstart_2", "galar_mom_newstart_3"],
+      "mom_home_text": ["galar_mom_home_1", "galar_mom_home_2", "galar_mom_home_3"],
+      "dex_extra": [1018]
+    }
+  }
+}

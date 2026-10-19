@@ -1,0 +1,1162 @@
+{
+  "FORM_MAP": {
+    "9001": { "base_id": 194, "name": "Paldean Wooper", "type": "POISON/WATER", "stage": 1, "hp_bonus": 0, "dmg_bonus": 0 },
+    "9002": { "base_id": 128, "name": "Paldean Tauros (Combat)", "type": "FIGHTING", "stage": 3, "hp_bonus": 2, "dmg_bonus": 2 },
+    "9003": { "base_id": 128, "name": "Paldean Tauros (Blaze)", "type": "FIGHTING/FIRE", "stage": 3, "hp_bonus": 2, "dmg_bonus": 2 },
+    "9004": { "base_id": 128, "name": "Paldean Tauros (Aqua)", "type": "FIGHTING/WATER", "stage": 3, "hp_bonus": 2, "dmg_bonus": 2 },
+    "9005": { "base_id": 194, "name": "Clodsire", "type": "POISON/GROUND", "stage": 2, "hp_bonus": 1, "dmg_bonus": 1 }
+  },
+  "GAME_TEXT": {
+    "paldea_intro": "After defeating Leon and claiming the Galar Championship, a mysterious letter arrived — Professor Sada of the Paldea region wrote of ancient Pokémon sightings near the Great Crater. With your mother already purchasing a seaside cottage in Cabo Poco, you set sail for a land of open skies and untamed frontiers.",
+    "paldea_departure_from_galar": "The memory of Leon's smile as he handed you the Championship Crown stays with you as the ferry carries you south toward Paldea. Eight regions. Eight championships. And ahead — three paths converging on a mystery at the bottom of the world.",
+    "paldea_mom_home_cabo_poco": "Mom is sitting on the porch of her little seaside cottage. 'Oh, you're here! The prize money from Galar arrived just in time — I put the deposit down the very day you became Champion. The realtor keeps asking why I have homes in so many regions. I told her: my child wins a lot.'",
+    "paldea_mom_random_1": "Mom waves you over enthusiastically. 'I had tea with a retired professor today who asked how I could afford all these homes. I told him about Kanto, Johto, Hoenn, Sinnoh, Unova, Kalos, Alola, and now Galar. He needed to sit down after Kalos.'",
+    "paldea_mom_random_2": "Mom pulls out an enormous ledger. 'Eight regions, eight championship titles, eight homes — give or take. Your father left us one cozy apartment back in Pallet Town. You have added rather a lot since then. I am so proud, and so very comfortable.'",
+    "paldea_mom_random_3": "Mom offers you a plate of empanadas. 'The neighbors in Cabo Poco think I am some sort of eccentric heiress. I let them believe it. It is easier than explaining that my child went off at age ten and became champion of eight different Pokémon regions.'",
+    "paldea_rival_nemona_intro": "A girl with a confident grin blocks your path out of town. 'Hey! You look like you have got what it takes. I am Nemona — top student at Naranja Academy and champion-ranked Trainer. Let us battle! Go easy on me? Actually no — please do not. I want you at your best!'",
+    "paldea_rival_nemona_rematch": "Nemona is already bouncing on her heels when she sees you at the Academy. 'There you are! I have been training non-stop since our last battle. I finally feel like I can go all out. This is everything I have been building toward. Let us go!'",
+    "paldea_professor_sada": "Professor Sada greets you in dusty field gear, fresh from the Crater. 'The Pokémon in my photos exist. Koraidon — a creature of an ancient age. Miraidon — a being of a future not yet born. I have been building something in Area Zero. Something that will change everything.'",
+    "paldea_team_star_intro": "A convoy of custom-painted vehicles roars past. A red-haired girl leans out the window: 'Back off, twerp! Team Star does not mess with newbies — unless you are asking for it.' She tosses a flyer. TEAM STAR — WE DO WHAT WE WANT.",
+    "paldea_team_star_penny": "A quiet girl in a Lechonk hoodie bumps into you near the Academy. 'Oh — sorry. I am... nobody important.' She pulls her hood lower. Something about her feels oddly familiar.",
+    "paldea_penny_reveal": "The quiet girl throws back her hood. 'I am Cassiopeia. I am the boss of Team Star.' She gives a tired smile. 'I did not want it to go this far. Please — help me fix this.'",
+    "paldea_arven": "A tall boy with a worn apron approaches. 'You look strong. I need someone strong. There are Titans — giant Pokémon guarding rare herbs I need. My Pokémon is hurt. Will you help me? I cannot do this alone.'",
+    "paldea_area_zero_entrance": "The Great Crater of Paldea yawns before you — a wound in the earth so deep that different eras bleed through its walls. Paradox Pokémon wander its depths. Somewhere below, a machine hums at a frequency that should not exist.",
+    "paldea_paradox_machine": "Professor Sada stands before the Paradox Machine. Her expression is terrifyingly calm. 'I knew you would come. I built it to bring more ancient Pokémon into the present. I cannot let you stop it.' She raises a Poké Ball. The crater shakes.",
+    "paldea_koraidon_encounter": "A mighty Pokémon bursts from the depths — ancient, powerful, its body a living engine of a forgotten age. Koraidon regards you with ancient eyes. For a moment, the whole crater is still.",
+    "paldea_miraidon_encounter": "A sleek mechanical Pokémon rises from glowing fissures — Miraidon, humming with electromagnetic energy from an age not yet born. It observes you with alien curiosity.",
+    "paldea_area_zero_cleared": "The Paradox Machine goes dark. The rift closes. Arven kneels by his Mabosstiff, who stirs and opens his eyes. Penny pulls off her hood. Nemona runs over, out of breath. The four of you stand in the quiet of the crater. Champions in your own right.",
+    "paldea_gym1_intro": "Katy, the Bug-type Gym Leader of Cortondo, waves you in. 'Welcome! Our gym test is rolling a giant olive ball to the goal — while my Nymbles try to stop you. Think you can manage?'",
+    "paldea_gym1_victory": "Katy claps. 'Amazing! You have earned the Bug Badge. Paldea's gyms only get tougher from here!'",
+    "paldea_gym2_intro": "Brassius surveys his city of sculptures. 'Art speaks to the soul. My Pokémon speak with power. Let us see which language you understand.'",
+    "paldea_gym2_victory": "Brassius stares at his fallen Sudowoodo. 'Verdant rage... Surrenderance.' He hands you the Grass Badge. 'Your battle was a masterpiece.'",
+    "paldea_gym3_intro": "Iono bursts onto the gym stage in a blaze of camera flashes. 'Iooono-ma! Your number-one Gym Leader! Let us play a little find-my-partner game — livestream is already rolling, so give the fans a SHOW!'",
+    "paldea_gym3_victory": "Iono bounces on her heels. 'You found my partner AND beat my team? The chat is going WILD! Take the Electric Badge — you earned the clout!'",
+    "paldea_gym4_intro": "Kofu slaps his broad hands together. 'I am Kofu — chef and Water-type Gym Leader! Before you battle me, you must win a market auction. A chef who cannot compete for ingredients is no chef at all!'",
+    "paldea_gym4_victory": "Kofu lets out a booming laugh. 'Magnificent! You fought with total conviction. Take the Water Badge!'",
+    "paldea_gym5_intro": "Larry looks up from his menu with no expression. 'Oh. Another challenger.' He closes it. 'Normal-type Gym Leader. Larry. Let us get this done. I have a late lunch reservation.'",
+    "paldea_gym5_victory": "Larry accepts his loss with no reaction whatsoever. 'Normal Badge. Here.' He goes back to his menu.",
+    "paldea_gym6_intro": "Ryme adjusts her mic stand. 'Yo, welcome to Montenevera! Ghost-types, double battles, bars that will haunt you. Drop the beat!'",
+    "paldea_gym6_victory": "Ryme nods. 'You kept your cool against my squad. Ghost Badge — it is yours. I might write a song about this.'",
+    "paldea_gym7_intro": "Tulip examines you carefully. 'Your aura is interesting. My gym test will reveal your inner potential. Whether I like what I see... depends on how you battle.'",
+    "paldea_gym7_victory": "Tulip gives a rare genuine smile. 'Your potential is real. The Psychic Badge is yours.'",
+    "paldea_gym8_intro": "Grusha hunches against the cold. 'Was a pro snowboarder before this. Leg injury. Now I am a Gym Leader.' He sighs. 'Let us battle. Try not to make it boring.'",
+    "paldea_gym8_victory": "Grusha almost smiles. 'You are really good. Here — Ice Badge. You remind me of how I used to compete. Do not lose that.'",
+    "paldea_elite_rika": "Rika leans back, arms crossed. 'Ground-type user, Rika. Nice to meet you — briefly. Let us get serious. I want to see what you are made of before you face the top.'",
+    "paldea_elite_poppy": "Poppy bounces excitedly. 'Wow wow wow, you beat Rika! I am Poppy! I use Steel-types! I am going to try super duper hard to stop you — please do not hold back!'",
+    "paldea_elite_larry2": "Larry stands with his arms folded. 'We meet again.' He sighs. 'I joined the Elite Four because the chairman made me. I eat a late lunch between challengers. Come on then.'",
+    "paldea_elite_hassel": "Hassel strikes an artistic pose. 'Challenger! I am Hassel — art teacher, Dragon-type Elite Four member, and humble devotee of beauty in all forms. Allow me to paint you a picture... of defeat!'",
+    "paldea_champion_geeta": "Geeta turns from the window with an unhurried smile. 'You remind me of myself, years ago. I have never been defeated in this arena. I intend to maintain that record. Show me everything you have.'",
+    "paldea_champion_victory": "Geeta bows her head. 'Extraordinary. A trainer who conquered eight regions and still burns with that same hunger. You are the Champion of Paldea.' She steps aside, and the arena erupts.",
+    "paldea_post_champion": "With Paldea's championship won, all three paths complete, and the Paradox Machine dark forever, you sit with Arven, Penny, and Nemona under the stars above Area Zero. Nemona grabs your arm. 'You are the best rival I have ever had. I am going to catch up — I promise.' You believe her.",
+    "paldea_newgame_intro": [
+      "You and Mom have just moved into a seaside cottage in Cabo Poco.",
+      "Tomorrow is your first day at Naranja Academy. Director Clavell is visiting to welcome you!",
+      "Mom: Look sharp, {player_name}! The Director is here, and he brought Pokémon!"
+    ],
+    "paldea_clavell_intro": [
+      "Director Clavell: Welcome to Paldea, {player_name}! I am Clavell, Director of Naranja Academy.",
+      "Director Clavell: Every new student receives a partner Pokémon. These three are quite eager to meet you.",
+      "Director Clavell: Take your time. Choose the one you feel connected to."
+    ],
+    "paldea_clavell_starter": [
+      "Director Clavell: Splendid choice! Your partner seems delighted.",
+      "Director Clavell: Your Treasure Hunt begins tomorrow. Explore Paldea and find your own treasure!"
+    ],
+    "paldea_mom_newstart_1": [
+      "Mom: The ocean breeze here is lovely! I already miss nothing about our old place.",
+      "Mom: Your father would be so proud you're starting at the Academy."
+    ],
+    "paldea_mom_newstart_2": [
+      "Mom: Every Poké Dollar you win goes in the jar marked 'Champion Fund'!",
+      "Mom: Maybe someday we'll buy houses all over the world. Wouldn't that be something?"
+    ],
+    "paldea_mom_newstart_3": ["Mom: Nemona's family owns a huge estate up the hill. She says you two are rivals now!", "Mom: Be nice to her. And beat her anyway. Ha ha!"]
+  },
+  "STORY_PROGRESSION": {
+    "CABO_POCO": {
+      "area_type": "town",
+      "route_name": "Cabo Poco",
+      "region": "PALDEA",
+      "description": "A small coastal village where your journey in Paldea begins. The ocean breeze carries the scent of wild Pokémon from the nearby cliffs.",
+      "backgrounds": { "main": "cabo_poco.png", "mom_home": "paldea_mom_home.png" },
+      "has_gym": false,
+      "travel_options": [{"text": "Route 1", "target_area": "PALDEA_ROUTE_1"}],
+      "explore_options": [
+        { "text": "Heal", "action": "HEAL" },
+        { "text": "Shop", "action": "SHOP" },
+        { "text": "Visit Mom's seaside cottage", "action": "NPC", "target": "paldea_mom_home_1", "dialogue": "paldea_mom_home_cabo_poco" },
+        {
+          "text": "Chat with Mom",
+          "action": "RANDOM_NPC",
+          "targets": ["paldea_mom_random_1", "paldea_mom_random_2", "paldea_mom_random_3"]
+        }
+      ],
+      "next_area": "PALDEA_ROUTE_1",
+      "on_enter_event": {
+        "type": "trainer_battle",
+        "condition": "has_paldea_starter",
+        "flag_check": "met_nemona",
+        "trainer": {
+          "name": "Nemona",
+          "class": "PKMN_TRAINER",
+          "sprite": "nemona.png",
+          "team": [906],
+          "team_choice": { "906": [909], "909": [912], "912": [906] },
+          "rewards": { "balls": 5 },
+          "dialogue": {
+            "intro": [
+              "A girl with a confident grin blocks your path out of town. 'Hey! You look like you have got what it takes. I am Nemona — top student at Naranja Academy and champion-ranked Trainer. Let us battle! Go easy on me? Actually no — please do not. I want you at your best!'"
+            ],
+            "player_won": ["Nemona: Wow! You're the real deal! Let's be rivals!"],
+            "player_lost": ["Nemona: Good battle! Train up and we'll go again!"]
+          }
+        }
+      }
+    },
+    "MESAGOZA": {
+      "area_type": "town",
+      "route_name": "Mesagoza",
+      "region": "PALDEA",
+      "description": "The grand central city of Paldea, home to the prestigious Naranja Academy. Three legendary paths begin here — Victory Road, Path of Legends, and Starfall Street.",
+      "backgrounds": { "main": "mesagoza.png" },
+      "has_gym": false,
+      "travel_options": [
+        { "text": "Route 1", "target_area": "PALDEA_ROUTE_1" },
+        { "text": "South Province Area 1", "target_area": "SOUTH_PROVINCE_AREA_1" },
+        { "text": "South Province Area 2", "target_area": "SOUTH_PROVINCE_AREA_2" },
+        { "text": "East Province Area 1", "target_area": "EAST_PROVINCE_AREA_1" },
+        { "text": "West Province Area 1", "target_area": "WEST_PROVINCE_AREA_1" },
+        { "text": "Naranja Academy", "target_area": "NARANJA_ACADEMY" }
+      ],
+      "explore_options": [
+        { "text": "Heal", "action": "HEAL" },
+        { "text": "Shop", "action": "SHOP" },
+        {
+          "text": "Enter Naranja Academy",
+          "action": "NPC",
+          "target": "professor_sada",
+          "dialogue": "paldea_professor_sada",
+          "flag_condition": "not met_professor_paldea",
+          "victory_flag": "met_professor_paldea"
+        },
+        {
+          "text": "Encounter Team Star convoy",
+          "action": "NPC",
+          "target": "team_star_grunts",
+          "dialogue": "paldea_team_star_intro",
+          "flag_condition": "not met_team_star",
+          "victory_flag": "met_team_star"
+        },
+        {
+          "text": "Talk to Arven",
+          "action": "NPC",
+          "target": "arven_intro",
+          "dialogue": "paldea_arven",
+          "flag_condition": "not met_arven",
+          "victory_flag": "met_arven"
+        },
+        {
+          "text": "Meet the mysterious girl in a hoodie",
+          "action": "NPC",
+          "target": "penny_intro",
+          "dialogue": "paldea_team_star_penny",
+          "flag_condition": "not met_penny",
+          "victory_flag": "met_penny"
+        }
+      ],
+      "next_area": "WEST_PROVINCE_AREA_1",
+      "on_enter_event": null
+    },
+    "CORTONDO": {
+      "area_type": "town",
+      "route_name": "Cortondo",
+      "region": "PALDEA",
+      "description": "A sun-warmed olive-growing town. Gym Leader Katy keeps things buzzing with Bug-type Pokémon and a unique olive-rolling gym test.",
+      "backgrounds": { "main": "cortondo.png" },
+      "has_gym": true,
+      "travel_options": [
+        { "text": "South Province Area 1", "target_area": "SOUTH_PROVINCE_AREA_1" },
+        { "text": "South Province Area 3", "target_area": "SOUTH_PROVINCE_AREA_3" }
+      ],
+      "explore_options": [
+        { "text": "Heal", "action": "HEAL" },
+        { "text": "Shop", "action": "SHOP" },
+        { "text": "Gym", "action": "GYM" }
+      ],
+      "next_area": "SOUTH_PROVINCE_AREA_3",
+      "on_enter_event": null,
+      "gym": {
+        "trainers": [],
+        "leader": {
+          "name": "Katy",
+          "class": "GYM_LEADER",
+          "sprite": "katy.png",
+          "team": [919, 919, 920],
+          "dialogue": {
+            "intro": [
+              "Katy, the Bug-type Gym Leader of Cortondo, waves you in. 'Welcome! Our gym test is rolling a giant olive ball to the goal — while my Nymbles try to stop you. Think you can manage?'"
+            ],
+            "player_won": ["Katy claps. 'Amazing! You have earned the Bug Badge. Paldea's gyms only get tougher from here!'"],
+            "player_lost": ["Katy: Train harder and come back!"]
+          },
+          "rewards": { "balls": 5 },
+          "is_boss_battle": true,
+          "badge_reward": "BUG"
+        }
+      }
+    },
+    "ARTAZON": {
+      "area_type": "town",
+      "route_name": "Artazon",
+      "region": "PALDEA",
+      "description": "A sun-drenched art town where sculptures dot every corner. Gym Leader Brassius's passion for art and Grass-types is completely inseparable.",
+      "backgrounds": { "main": "artazon.png" },
+      "has_gym": true,
+      "travel_options": [
+        { "text": "South Province Area 2", "target_area": "SOUTH_PROVINCE_AREA_2" },
+        { "text": "South Province Area 3", "target_area": "SOUTH_PROVINCE_AREA_3" }
+      ],
+      "explore_options": [
+        { "text": "Heal", "action": "HEAL" },
+        { "text": "Shop", "action": "SHOP" },
+        { "text": "Gym", "action": "GYM" }
+      ],
+      "next_area": "SOUTH_PROVINCE_AREA_3",
+      "on_enter_event": null,
+      "gym": {
+        "trainers": [],
+        "leader": {
+          "name": "Brassius",
+          "class": "GYM_LEADER",
+          "sprite": "brassius.png",
+          "team": [928, 928, 185],
+          "dialogue": {
+            "intro": [
+              "Brassius surveys his city of sculptures. 'Art speaks to the soul. My Pokémon speak with power. Let us see which language you understand.'"
+            ],
+            "player_won": [
+              "Brassius stares at his fallen Sudowoodo. 'Verdant rage... Surrenderance.' He hands you the Grass Badge. 'Your battle was a masterpiece.'"
+            ],
+            "player_lost": ["Brassius: Train harder and come back!"]
+          },
+          "rewards": { "balls": 5 },
+          "is_boss_battle": true,
+          "badge_reward": "GRASS"
+        }
+      }
+    },
+    "LEVINCIA": {
+      "area_type": "town",
+      "route_name": "Levincia",
+      "region": "PALDEA",
+      "description": "A dazzling port city alive with neon signs and streaming culture. Gym Leader Iono hosts her battles like a live show for millions of followers.",
+      "backgrounds": { "main": "levincia.png" },
+      "has_gym": true,
+      "travel_options": [
+        { "text": "East Province Area 1", "target_area": "EAST_PROVINCE_AREA_1" },
+        { "text": "East Province Area 2", "target_area": "EAST_PROVINCE_AREA_2" }
+      ],
+      "explore_options": [
+        { "text": "Heal", "action": "HEAL" },
+        { "text": "Shop", "action": "SHOP" },
+        { "text": "Gym", "action": "GYM" }
+      ],
+      "next_area": "EAST_PROVINCE_AREA_2",
+      "on_enter_event": null,
+      "gym": {
+        "trainers": [],
+        "leader": {
+          "name": "Iono",
+          "class": "GYM_LEADER",
+          "sprite": "iono.png",
+          "team": [940, 940, 939, 429],
+          "dialogue": {
+            "intro": [
+              "Iono bursts onto the gym stage in a blaze of camera flashes. 'Iooono-ma! Your number-one Gym Leader! Let us play a little find-my-partner game — livestream is already rolling, so give the fans a SHOW!'"
+            ],
+            "player_won": [
+              "Iono bounces on her heels. 'You found my partner AND beat my team? The chat is going WILD! Take the Electric Badge — you earned the clout!'"
+            ],
+            "player_lost": ["Iono: Train harder and come back!"]
+          },
+          "rewards": { "balls": 5 },
+          "is_boss_battle": true,
+          "badge_reward": "ELECTRIC"
+        }
+      }
+    },
+    "CASCARRAFA": {
+      "area_type": "town",
+      "route_name": "Cascarrafa",
+      "region": "PALDEA",
+      "description": "A lively water-town built on canals and aqueducts. Gym Leader Kofu views Water-type battles the way he views fine cooking — with total passion.",
+      "backgrounds": { "main": "cascarrafa.png" },
+      "has_gym": true,
+      "travel_options": [
+        { "text": "West Province Area 1", "target_area": "WEST_PROVINCE_AREA_1" },
+        { "text": "West Province Area 2", "target_area": "WEST_PROVINCE_AREA_2" },
+        { "text": "Asado Desert", "target_area": "ASADO_DESERT" }
+      ],
+      "explore_options": [
+        { "text": "Heal", "action": "HEAL" },
+        { "text": "Shop", "action": "SHOP" },
+        { "text": "Gym", "action": "GYM" }
+      ],
+      "next_area": "ASADO_DESERT",
+      "on_enter_event": null,
+      "gym": {
+        "trainers": [],
+        "leader": {
+          "name": "Kofu",
+          "class": "GYM_LEADER",
+          "sprite": "kofu.png",
+          "team": [976, 961, 740],
+          "dialogue": {
+            "intro": [
+              "Kofu slaps his broad hands together. 'I am Kofu — chef and Water-type Gym Leader! Before you battle me, you must win a market auction. A chef who cannot compete for ingredients is no chef at all!'"
+            ],
+            "player_won": ["Kofu lets out a booming laugh. 'Magnificent! You fought with total conviction. Take the Water Badge!'"],
+            "player_lost": ["Kofu: Train harder and come back!"]
+          },
+          "rewards": { "balls": 5 },
+          "is_boss_battle": true,
+          "badge_reward": "WATER"
+        }
+      }
+    },
+    "MEDALI": {
+      "area_type": "town",
+      "route_name": "Medali",
+      "region": "PALDEA",
+      "description": "A mountain resort famous for its grilled rice dishes. Gym Leader Larry approaches everything — including Pokémon battles — with the energy of a man who would rather be eating lunch.",
+      "backgrounds": { "main": "medali.png" },
+      "has_gym": true,
+      "travel_options": [
+        { "text": "North Province Area 1", "target_area": "NORTH_PROVINCE_AREA_1" },
+        { "text": "Tagtree Thicket", "target_area": "TAGTREE_THICKET" },
+        { "text": "North Province Area 2", "target_area": "NORTH_PROVINCE_AREA_2" }
+      ],
+      "explore_options": [
+        { "text": "Heal", "action": "HEAL" },
+        { "text": "Shop", "action": "SHOP" },
+        { "text": "Gym", "action": "GYM" }
+      ],
+      "next_area": "TAGTREE_THICKET",
+      "on_enter_event": null,
+      "gym": {
+        "trainers": [],
+        "leader": {
+          "name": "Larry",
+          "class": "GYM_LEADER",
+          "sprite": "larry.png",
+          "team": [760, 982, 398],
+          "dialogue": {
+            "intro": [
+              "Larry looks up from his menu with no expression. 'Oh. Another challenger.' He closes it. 'Normal-type Gym Leader. Larry. Let us get this done. I have a late lunch reservation.'"
+            ],
+            "player_won": ["Larry accepts his loss with no reaction whatsoever. 'Normal Badge. Here.' He goes back to his menu."],
+            "player_lost": ["Larry: Train harder and come back!"]
+          },
+          "rewards": { "balls": 5 },
+          "is_boss_battle": true,
+          "badge_reward": "NORMAL"
+        }
+      }
+    },
+    "MONTENEVERA": {
+      "area_type": "town",
+      "route_name": "Montenevera",
+      "region": "PALDEA",
+      "description": "A snow-capped town bathed in perpetual mist where Ghost-type Pokémon drift through the fog. Gym Leader Ryme drops sick rhymes and runs double battles.",
+      "backgrounds": { "main": "montenevera.png" },
+      "has_gym": true,
+      "travel_options": [
+        { "text": "North Province Area 2", "target_area": "NORTH_PROVINCE_AREA_2" },
+        { "text": "Tagtree Thicket", "target_area": "TAGTREE_THICKET" },
+        { "text": "North Province Area 3", "target_area": "NORTH_PROVINCE_AREA_3" }
+      ],
+      "explore_options": [
+        { "text": "Heal", "action": "HEAL" },
+        { "text": "Shop", "action": "SHOP" },
+        { "text": "Gym", "action": "GYM" }
+      ],
+      "next_area": "TAGTREE_THICKET",
+      "on_enter_event": null,
+      "gym": {
+        "trainers": [],
+        "leader": {
+          "name": "Ryme",
+          "class": "GYM_LEADER",
+          "sprite": "ryme.png",
+          "team": [971, 971, 354, 778, 972],
+          "dialogue": {
+            "intro": ["Ryme adjusts her mic stand. 'Yo, welcome to Montenevera! Ghost-types, double battles, bars that will haunt you. Drop the beat!'"],
+            "player_won": ["Ryme nods. 'You kept your cool against my squad. Ghost Badge — it is yours. I might write a song about this.'"],
+            "player_lost": ["Ryme: Train harder and come back!"]
+          },
+          "rewards": { "balls": 5 },
+          "is_boss_battle": true,
+          "badge_reward": "GHOST"
+        }
+      }
+    },
+    "ALFORNADA": {
+      "area_type": "town",
+      "route_name": "Alfornada",
+      "region": "PALDEA",
+      "description": "A secluded highland town reached through winding mountain passes. Gym Leader Tulip reads auras as easily as most people read maps.",
+      "backgrounds": { "main": "alfornada.png" },
+      "has_gym": true,
+      "travel_options": [
+        { "text": "West Province Area 3", "target_area": "WEST_PROVINCE_AREA_3" },
+        { "text": "South Province Area 5", "target_area": "SOUTH_PROVINCE_AREA_5" }
+      ],
+      "explore_options": [
+        { "text": "Heal", "action": "HEAL" },
+        { "text": "Shop", "action": "SHOP" },
+        { "text": "Gym", "action": "GYM" }
+      ],
+      "next_area": "SOUTH_PROVINCE_AREA_5",
+      "on_enter_event": null,
+      "gym": {
+        "trainers": [],
+        "leader": {
+          "name": "Tulip",
+          "class": "GYM_LEADER",
+          "sprite": "tulip.png",
+          "team": [981, 282, 956, 671],
+          "dialogue": {
+            "intro": [
+              "Tulip examines you carefully. 'Your aura is interesting. My gym test will reveal your inner potential. Whether I like what I see... depends on how you battle.'"
+            ],
+            "player_won": ["Tulip gives a rare genuine smile. 'Your potential is real. The Psychic Badge is yours.'"],
+            "player_lost": ["Tulip: Train harder and come back!"]
+          },
+          "rewards": { "balls": 5 },
+          "is_boss_battle": true,
+          "badge_reward": "PSYCHIC"
+        }
+      }
+    },
+    "GLASEADO": {
+      "area_type": "town",
+      "route_name": "Glaseado",
+      "region": "PALDEA",
+      "description": "A frozen mountain resort where snowboarders and Ice-type Trainers share the slopes. Gym Leader Grusha is a former pro snowboarder who brings athletic intensity to every battle.",
+      "backgrounds": { "main": "glaseado.png" },
+      "has_gym": true,
+      "travel_options": [
+        { "text": "Glaseado Mountain", "target_area": "GLASEADO_MOUNTAIN" },
+        { "text": "North Province Area 3", "target_area": "NORTH_PROVINCE_AREA_3" }
+      ],
+      "explore_options": [
+        { "text": "Heal", "action": "HEAL" },
+        { "text": "Shop", "action": "SHOP" },
+        { "text": "Gym", "action": "GYM" }
+      ],
+      "next_area": "NORTH_PROVINCE_AREA_3",
+      "on_enter_event": null,
+      "gym": {
+        "trainers": [],
+        "leader": {
+          "name": "Grusha",
+          "class": "GYM_LEADER",
+          "sprite": "grusha.png",
+          "team": [873, 614, 975, 334],
+          "dialogue": {
+            "intro": [
+              "Grusha hunches against the cold. 'Was a pro snowboarder before this. Leg injury. Now I am a Gym Leader.' He sighs. 'Let us battle. Try not to make it boring.'"
+            ],
+            "player_won": ["Grusha almost smiles. 'You are really good. Here — Ice Badge. You remind me of how I used to compete. Do not lose that.'"],
+            "player_lost": ["Grusha: Train harder and come back!"]
+          },
+          "rewards": { "balls": 5 },
+          "is_boss_battle": true,
+          "badge_reward": "ICE"
+        }
+      }
+    },
+    "NARANJA_ACADEMY": {
+      "area_type": "town",
+      "route_name": "Naranja Academy",
+      "region": "PALDEA",
+      "description": "The hallowed halls of Naranja Academy serve as Paldea's Pokémon League. To reach Champion Geeta, face the Elite Four — and Nemona, who has been waiting for this moment all journey long.",
+      "backgrounds": { "main": "naranja_academy.png" },
+      "has_gym": true,
+      "travel_options": [
+        { "text": "Glaseado Mountain", "target_area": "GLASEADO_MOUNTAIN" },
+        { "text": "Mesagoza", "target_area": "MESAGOZA" },
+        { "text": "Area Zero", "target_area": "AREA_ZERO", "condition": "beat_paldea_champion" }
+      ],
+      "explore_options": [
+        { "text": "Heal", "action": "HEAL" },
+        { "text": "Shop", "action": "SHOP" },
+        { "text": "CHALLENGE LEAGUE", "action": "GYM", "condition": "has_8_paldea_badges" }
+      ],
+      "next_area": "MESAGOZA",
+      "on_enter_event": null,
+      "gym": {
+        "trainers": [
+          {
+            "name": "Elite Four Rika",
+            "class": "ELITE_FOUR",
+            "sprite": "rika.png",
+            "team": [51, 232, 323, 340, 980],
+            "rewards": { "balls": 15 },
+            "is_boss_battle": true,
+            "dialogue": {
+              "intro": [
+                "Rika leans back, arms crossed. 'Ground-type user, Rika. Nice to meet you — briefly. Let us get serious. I want to see what you are made of before you face the top.'"
+              ],
+              "player_won": ["Rika: Impressive."],
+              "player_lost": ["Rika: Better luck next time."]
+            }
+          },
+          {
+            "name": "Elite Four Poppy",
+            "class": "ELITE_FOUR",
+            "sprite": "poppy.png",
+            "team": [462, 879, 437, 959],
+            "rewards": { "balls": 15 },
+            "is_boss_battle": true,
+            "dialogue": {
+              "intro": [
+                "Poppy bounces excitedly. 'Wow wow wow, you beat Rika! I am Poppy! I use Steel-types! I am going to try super duper hard to stop you — please do not hold back!'"
+              ],
+              "player_won": ["Poppy: Impressive."],
+              "player_lost": ["Poppy: Better luck next time."]
+            }
+          },
+          {
+            "name": "Elite Four Larry",
+            "class": "ELITE_FOUR",
+            "sprite": "larry.png",
+            "team": [760, 982, 357, 973, 398],
+            "rewards": { "balls": 15 },
+            "is_boss_battle": true,
+            "dialogue": {
+              "intro": [
+                "Larry stands with his arms folded. 'We meet again.' He sighs. 'I joined the Elite Four because the chairman made me. I eat a late lunch between challengers. Come on then.'"
+              ],
+              "player_won": ["Larry: Impressive."],
+              "player_lost": ["Larry: Better luck next time."]
+            }
+          },
+          {
+            "name": "Elite Four Hassel",
+            "class": "ELITE_FOUR",
+            "sprite": "hassel.png",
+            "team": [715, 691, 841, 612, 998],
+            "rewards": { "balls": 15 },
+            "is_boss_battle": true,
+            "dialogue": {
+              "intro": [
+                "Hassel strikes an artistic pose. 'Challenger! I am Hassel — art teacher, Dragon-type Elite Four member, and humble devotee of beauty in all forms. Allow me to paint you a picture... of defeat!'"
+              ],
+              "player_won": ["Hassel: Impressive."],
+              "player_lost": ["Hassel: Better luck next time."]
+            }
+          },
+          {
+            "name": "Nemona",
+            "class": "PKMN_TRAINER",
+            "sprite": "nemona.png",
+            "team": [908, 972, 941, 931, 911],
+            "team_choice": {
+              "906": [911, 972, 941, 931, 909],
+              "909": [914, 983, 940, 931, 906],
+              "912": [908, 971, 941, 931, 912]
+            },
+            "rewards": { "balls": 15 },
+            "is_boss_battle": true,
+            "dialogue": {
+              "intro": [
+                "Nemona is already bouncing on her heels when she sees you at the Academy. 'There you are! I have been training non-stop since our last battle. I finally feel like I can go all out. This is everything I have been building toward. Let us go!'"
+              ],
+              "player_won": ["Nemona: That was the best battle of my life! You earned this."],
+              "player_lost": ["Nemona: Ha! Rematch anytime — I mean it!"]
+            }
+          }
+        ],
+        "leader": {
+          "name": "Champion Geeta",
+          "class": "CHAMPION",
+          "sprite": "geeta.png",
+          "team": [956, 706, 673, 976, 983, 970],
+          "dialogue": {
+            "intro": [
+              "Geeta turns from the window with an unhurried smile. 'You remind me of myself, years ago. I have never been defeated in this arena. I intend to maintain that record. Show me everything you have.'"
+            ],
+            "player_won": [
+              "Geeta bows her head. 'Extraordinary. A trainer who conquered eight regions and still burns with that same hunger. You are the Champion of Paldea.' She steps aside, and the arena erupts."
+            ],
+            "player_lost": ["Geeta: Train harder and come back!"]
+          },
+          "rewards": { "balls": 10 },
+          "is_boss_battle": true,
+          "victory_flag": "beat_paldea_champion"
+        }
+      }
+    },
+    "PALDEA_ROUTE_1": {
+      "area_type": "wild_route",
+      "route_name": "Route 1",
+      "region": "PALDEA",
+      "description": "A gentle coastal path winding from Cabo Poco to the grand walls of Mesagoza. Wild Lechonk and Pawmi scatter from the tall grass.",
+      "battle_type": "grass",
+      "wild_pool_percentages": "PALDEA_ROUTE_1_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "MESAGOZA", "action": "EXIT", "target_area": "MESAGOZA", "condition": "can_exit", "color": "RED" },
+        { "text": "CABO POCO", "action": "EXIT", "target_area": "CABO_POCO", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "MESAGOZA"
+    },
+    "SOUTH_PROVINCE_AREA_1": {
+      "area_type": "wild_route",
+      "route_name": "South Province Area 1",
+      "region": "PALDEA",
+      "description": "Rolling green hills south of Mesagoza, dotted with Smoliv trees. The path leads toward Cortondo through sun-soaked open land.",
+      "battle_type": "grass",
+      "wild_pool_percentages": "SOUTH_PROVINCE_AREA_1_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "CORTONDO", "action": "EXIT", "target_area": "CORTONDO", "condition": "can_exit", "color": "RED" },
+        { "text": "MESAGOZA", "action": "EXIT", "target_area": "MESAGOZA", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "CORTONDO"
+    },
+    "SOUTH_PROVINCE_AREA_2": {
+      "area_type": "wild_route",
+      "route_name": "South Province Area 2",
+      "region": "PALDEA",
+      "description": "Sunflower-lined roads heading southeast toward Artazon. The fields hum with Nymble and Capsakid.",
+      "battle_type": "grass",
+      "wild_pool_percentages": "SOUTH_PROVINCE_AREA_2_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "ARTAZON", "action": "EXIT", "target_area": "ARTAZON", "condition": "can_exit", "color": "RED" },
+        { "text": "MESAGOZA", "action": "EXIT", "target_area": "MESAGOZA", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "ARTAZON"
+    },
+    "SOUTH_PROVINCE_AREA_3": {
+      "area_type": "wild_route",
+      "route_name": "South Province Area 3",
+      "region": "PALDEA",
+      "description": "A quiet valley connecting Cortondo and Artazon through olive groves and flowering meadows.",
+      "battle_type": "grass",
+      "wild_pool_percentages": "SOUTH_PROVINCE_AREA_3_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "CORTONDO", "action": "EXIT", "target_area": "CORTONDO", "condition": "can_exit", "color": "RED" },
+        { "text": "ARTAZON", "action": "EXIT", "target_area": "ARTAZON", "condition": "can_exit", "color": "RED" },
+        { "text": "SOUTH PROVINCE AREA 5", "action": "EXIT", "target_area": "SOUTH_PROVINCE_AREA_5", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "CORTONDO"
+    },
+    "SOUTH_PROVINCE_AREA_5": {
+      "area_type": "wild_route",
+      "route_name": "South Province Area 5",
+      "region": "PALDEA",
+      "description": "A twisting highland track connecting Alfornada to the broader south province roads.",
+      "battle_type": "grass",
+      "wild_pool_percentages": "SOUTH_PROVINCE_AREA_5_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "ALFORNADA", "action": "EXIT", "target_area": "ALFORNADA", "condition": "can_exit", "color": "RED" },
+        { "text": "SOUTH PROVINCE AREA 3", "action": "EXIT", "target_area": "SOUTH_PROVINCE_AREA_3", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "ALFORNADA"
+    },
+    "EAST_PROVINCE_AREA_1": {
+      "area_type": "wild_route",
+      "route_name": "East Province Area 1",
+      "region": "PALDEA",
+      "description": "A breezy coastal stretch heading northeast from Mesagoza toward the shining port of Levincia. Wattrel wheel overhead.",
+      "battle_type": "grass",
+      "wild_pool_percentages": "EAST_PROVINCE_AREA_1_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "LEVINCIA", "action": "EXIT", "target_area": "LEVINCIA", "condition": "can_exit", "color": "RED" },
+        { "text": "MESAGOZA", "action": "EXIT", "target_area": "MESAGOZA", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "LEVINCIA"
+    },
+    "EAST_PROVINCE_AREA_2": {
+      "area_type": "wild_route",
+      "route_name": "East Province Area 2",
+      "region": "PALDEA",
+      "description": "Rugged coastal cliffs north of Levincia where sea spray meets rocky paths. Finizen leap from the waves below.",
+      "battle_type": "grass",
+      "wild_pool_percentages": "EAST_PROVINCE_AREA_2_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "NORTH PROVINCE AREA 1", "action": "EXIT", "target_area": "NORTH_PROVINCE_AREA_1", "condition": "can_exit", "color": "RED" },
+        { "text": "LEVINCIA", "action": "EXIT", "target_area": "LEVINCIA", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "NORTH_PROVINCE_AREA_1"
+    },
+    "WEST_PROVINCE_AREA_1": {
+      "area_type": "wild_route",
+      "route_name": "West Province Area 1",
+      "region": "PALDEA",
+      "description": "A wide grassy plain west of Mesagoza following the river downstream toward Cascarrafa. Flamigo flocks dot the wetlands.",
+      "battle_type": "grass",
+      "wild_pool_percentages": "WEST_PROVINCE_AREA_1_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "CASCARRAFA", "action": "EXIT", "target_area": "CASCARRAFA", "condition": "can_exit", "color": "RED" },
+        { "text": "MESAGOZA", "action": "EXIT", "target_area": "MESAGOZA", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "CASCARRAFA"
+    },
+    "WEST_PROVINCE_AREA_2": {
+      "area_type": "wild_route",
+      "route_name": "West Province Area 2",
+      "region": "PALDEA",
+      "description": "Hilly grasslands north and west of Cascarrafa leading toward Alfornada's uplands. Maschiff prowl these roads at dusk.",
+      "battle_type": "grass",
+      "wild_pool_percentages": "WEST_PROVINCE_AREA_2_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "WEST PROVINCE AREA 3", "action": "EXIT", "target_area": "WEST_PROVINCE_AREA_3", "condition": "can_exit", "color": "RED" },
+        { "text": "CASCARRAFA", "action": "EXIT", "target_area": "CASCARRAFA", "condition": "can_exit", "color": "RED" },
+        { "text": "ASADO DESERT", "action": "EXIT", "target_area": "ASADO_DESERT", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "WEST_PROVINCE_AREA_3"
+    },
+    "WEST_PROVINCE_AREA_3": {
+      "area_type": "wild_route",
+      "route_name": "West Province Area 3",
+      "region": "PALDEA",
+      "description": "A winding mountain road leading to secluded Alfornada. The paths here are quiet and steep.",
+      "battle_type": "grass",
+      "wild_pool_percentages": "WEST_PROVINCE_AREA_3_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "ALFORNADA", "action": "EXIT", "target_area": "ALFORNADA", "condition": "can_exit", "color": "RED" },
+        { "text": "WEST PROVINCE AREA 2", "action": "EXIT", "target_area": "WEST_PROVINCE_AREA_2", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "ALFORNADA"
+    },
+    "NORTH_PROVINCE_AREA_1": {
+      "area_type": "wild_route",
+      "route_name": "North Province Area 1",
+      "region": "PALDEA",
+      "description": "Rolling northern hills leading to Medali's resort town. Komala doze in the trees and Hawlucha leap between clifftops.",
+      "battle_type": "grass",
+      "wild_pool_percentages": "NORTH_PROVINCE_AREA_1_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "MEDALI", "action": "EXIT", "target_area": "MEDALI", "condition": "can_exit", "color": "RED" },
+        { "text": "EAST PROVINCE AREA 2", "action": "EXIT", "target_area": "EAST_PROVINCE_AREA_2", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "MEDALI"
+    },
+    "NORTH_PROVINCE_AREA_2": {
+      "area_type": "wild_route",
+      "route_name": "North Province Area 2",
+      "region": "PALDEA",
+      "description": "Fog-drenched mountain paths north of Medali leading to misty Montenevera. Greavard slip between the shadows here.",
+      "battle_type": "grass",
+      "wild_pool_percentages": "NORTH_PROVINCE_AREA_2_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "MONTENEVERA", "action": "EXIT", "target_area": "MONTENEVERA", "condition": "can_exit", "color": "RED" },
+        { "text": "MEDALI", "action": "EXIT", "target_area": "MEDALI", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "MONTENEVERA"
+    },
+    "NORTH_PROVINCE_AREA_3": {
+      "area_type": "wild_route",
+      "route_name": "North Province Area 3",
+      "region": "PALDEA",
+      "description": "The high northern road connecting Glaseado Mountain to the northern wilds. The air grows thin and cold.",
+      "battle_type": "grass",
+      "wild_pool_percentages": "NORTH_PROVINCE_AREA_3_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "GLASEADO", "action": "EXIT", "target_area": "GLASEADO", "condition": "can_exit", "color": "RED" },
+        { "text": "MONTENEVERA", "action": "EXIT", "target_area": "MONTENEVERA", "condition": "can_exit", "color": "RED" },
+        { "text": "GLASEADO MOUNTAIN", "action": "EXIT", "target_area": "GLASEADO_MOUNTAIN", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "GLASEADO"
+    },
+    "ASADO_DESERT": {
+      "area_type": "wild_route",
+      "route_name": "Asado Desert",
+      "region": "PALDEA",
+      "description": "A vast sun-scorched desert west of Cascarrafa where dust devils spin and Sandile burrow through the sand. Titan Pokémon lurk beneath the dunes.",
+      "battle_type": "grass",
+      "wild_pool_percentages": "ASADO_DESERT_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "WEST PROVINCE AREA 2", "action": "EXIT", "target_area": "WEST_PROVINCE_AREA_2", "condition": "can_exit", "color": "RED" },
+        { "text": "CASCARRAFA", "action": "EXIT", "target_area": "CASCARRAFA", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "WEST_PROVINCE_AREA_2"
+    },
+    "TAGTREE_THICKET": {
+      "area_type": "wild_route",
+      "route_name": "Tagtree Thicket",
+      "region": "PALDEA",
+      "description": "A dense tangled forest between Medali and Montenevera. Its canopy is so thick that even midday feels like dusk. Bramblin roll through the undergrowth.",
+      "battle_type": "grass",
+      "wild_pool_percentages": "TAGTREE_THICKET_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "MEDALI", "action": "EXIT", "target_area": "MEDALI", "condition": "can_exit", "color": "RED" },
+        { "text": "MONTENEVERA", "action": "EXIT", "target_area": "MONTENEVERA", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "MEDALI"
+    },
+    "GLASEADO_MOUNTAIN": {
+      "area_type": "wild_route",
+      "route_name": "Glaseado Mountain",
+      "region": "PALDEA",
+      "description": "A towering glacier peak connecting Glaseado Town to the broader northern Paldea. Ice-type Pokémon rule its frozen ridges. Cetoddle huddle in the snowdrifts.",
+      "battle_type": "grass",
+      "wild_pool_percentages": "GLASEADO_MOUNTAIN_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "GLASEADO", "action": "EXIT", "target_area": "GLASEADO", "condition": "can_exit", "color": "RED" },
+        { "text": "NARANJA ACADEMY", "action": "EXIT", "target_area": "NARANJA_ACADEMY", "condition": "can_exit", "color": "RED" },
+        { "text": "NORTH PROVINCE AREA 3", "action": "EXIT", "target_area": "NORTH_PROVINCE_AREA_3", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "GLASEADO"
+    },
+    "AREA_ZERO": {
+      "area_type": "dungeon",
+      "route_name": "Area Zero",
+      "region": "PALDEA",
+      "description": "The Great Crater of Paldea — a fissure where time bleeds. Paradox Pokémon from ancient eras and far futures wander its depths. Somewhere below, a machine hums at a frequency that should not exist.",
+      "battle_type": "cave",
+      "wild_pool_percentages": "PALDEA_AREA_ZERO_PERCENTAGES",
+      "min_rounds": 3,
+      "trainer_pool": [
+        {
+          "name": "Professor Sada",
+          "class": "BOSS",
+          "sprite": "sada.png",
+          "team": [984, 985, 986, 987, 988, 1007],
+          "rewards": { "balls": 20 },
+          "is_boss_battle": true,
+          "dialogue": {
+            "intro": [
+              "Professor Sada stands before the Paradox Machine. Her expression is terrifyingly calm. 'I knew you would come. I built it to bring more ancient Pokémon into the present. I cannot let you stop it.' She raises a Poké Ball. The crater shakes."
+            ],
+            "player_won": [
+              "The Paradox Machine goes dark. The rift closes. Arven kneels by his Mabosstiff, who stirs and opens his eyes. Penny pulls off her hood. Nemona runs over, out of breath. The four of you stand in the quiet of the crater. Champions in your own right."
+            ],
+            "player_lost": ["The Paradox machine hums louder..."]
+          }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "FACE PROFESSOR SADA", "action": "TRAINER", "condition": "has_trainers", "color": "PURPLE" },
+        { "text": "THE PARADOX LEGEND", "action": "BOSS", "condition": "boss_available", "color": "GOLD" },
+        { "text": "RUINOUS SHRINES", "action": "EXIT", "target_area": "PALDEA_RUINOUS_SHRINES", "condition": "boss_defeated", "color": "PURPLE" },
+        { "text": "NARANJA ACADEMY", "action": "EXIT", "target_area": "NARANJA_ACADEMY", "condition": "can_exit", "color": "RED" }
+      ],
+      "area_boss": { "id": 1007, "name": "Koraidon", "victory_flag": "caught_koraidon" },
+      "next_area": "NARANJA_ACADEMY"
+    },
+    "PALDEA_RUINOUS_SHRINES": {
+      "area_type": "town",
+      "route_name": "Ruinous Shrines",
+      "region": "PALDEA",
+      "backgrounds": { "main": "paldea_ruinous_shrines.png" },
+      "has_gym": false,
+      "travel_options": [
+        { "text": "Wo-Chien Shrine", "target_area": "PALDEA_WO_CHIEN_SHRINE" },
+        { "text": "Chien-Pao Shrine", "target_area": "PALDEA_CHIEN_PAO_SHRINE" },
+        { "text": "Ting-Lu Shrine", "target_area": "PALDEA_TING_LU_SHRINE" },
+        { "text": "Chi-Yu Shrine", "target_area": "PALDEA_CHI_YU_SHRINE" },
+        { "text": "Area Zero", "target_area": "AREA_ZERO" }
+      ],
+      "explore_options": [{"text": "Heal", "action": "HEAL"}],
+      "next_area": "AREA_ZERO",
+      "on_enter_event": null
+    },
+    "PALDEA_WO_CHIEN_SHRINE": {
+      "area_type": "dungeon",
+      "route_name": "Wo-Chien Shrine",
+      "region": "PALDEA",
+      "battle_type": "cave",
+      "wild_pool_percentages": "PALDEA_AREA_ZERO_PERCENTAGES",
+      "min_rounds": 1,
+      "trainer_pool": [],
+      "route_menu": [
+        { "text": "FACE WO-CHIEN", "action": "BOSS", "condition": "boss_available", "color": "GOLD" },
+        { "text": "RUINOUS SHRINES", "action": "EXIT", "target_area": "PALDEA_RUINOUS_SHRINES", "condition": "can_exit", "color": "RED" }
+      ],
+      "area_boss": { "id": 1001, "name": "Wo-Chien", "victory_flag": "caught_wo_chien" },
+      "next_area": "PALDEA_RUINOUS_SHRINES"
+    },
+    "PALDEA_CHIEN_PAO_SHRINE": {
+      "area_type": "dungeon",
+      "route_name": "Chien-Pao Shrine",
+      "region": "PALDEA",
+      "battle_type": "cave",
+      "wild_pool_percentages": "PALDEA_AREA_ZERO_PERCENTAGES",
+      "min_rounds": 1,
+      "trainer_pool": [],
+      "route_menu": [
+        { "text": "FACE CHIEN-PAO", "action": "BOSS", "condition": "boss_available", "color": "GOLD" },
+        { "text": "RUINOUS SHRINES", "action": "EXIT", "target_area": "PALDEA_RUINOUS_SHRINES", "condition": "can_exit", "color": "RED" }
+      ],
+      "area_boss": { "id": 1002, "name": "Chien-Pao", "victory_flag": "caught_chien_pao" },
+      "next_area": "PALDEA_RUINOUS_SHRINES"
+    },
+    "PALDEA_TING_LU_SHRINE": {
+      "area_type": "dungeon",
+      "route_name": "Ting-Lu Shrine",
+      "region": "PALDEA",
+      "battle_type": "cave",
+      "wild_pool_percentages": "PALDEA_AREA_ZERO_PERCENTAGES",
+      "min_rounds": 1,
+      "trainer_pool": [],
+      "route_menu": [
+        { "text": "FACE TING-LU", "action": "BOSS", "condition": "boss_available", "color": "GOLD" },
+        { "text": "RUINOUS SHRINES", "action": "EXIT", "target_area": "PALDEA_RUINOUS_SHRINES", "condition": "can_exit", "color": "RED" }
+      ],
+      "area_boss": { "id": 1003, "name": "Ting-Lu", "victory_flag": "caught_ting_lu" },
+      "next_area": "PALDEA_RUINOUS_SHRINES"
+    },
+    "PALDEA_CHI_YU_SHRINE": {
+      "area_type": "dungeon",
+      "route_name": "Chi-Yu Shrine",
+      "region": "PALDEA",
+      "battle_type": "cave",
+      "wild_pool_percentages": "PALDEA_AREA_ZERO_PERCENTAGES",
+      "min_rounds": 1,
+      "trainer_pool": [],
+      "route_menu": [
+        { "text": "FACE CHI-YU", "action": "BOSS", "condition": "boss_available", "color": "GOLD" },
+        { "text": "RUINOUS SHRINES", "action": "EXIT", "target_area": "PALDEA_RUINOUS_SHRINES", "condition": "can_exit", "color": "RED" }
+      ],
+      "area_boss": { "id": 1004, "name": "Chi-Yu", "victory_flag": "caught_chi_yu" },
+      "next_area": "PALDEA_RUINOUS_SHRINES"
+    }
+  },
+  "JOURNAL_MISSIONS": [
+    {
+      "id": "paldea_main_01",
+      "title": "A New Land, Three Paths",
+      "description": "Arrive in Paldea and visit Naranja Academy in Mesagoza. Meet Professor Sada, your rival Nemona, and the mysterious Arven.",
+      "type": "main",
+      "reward": "Academy enrollment"
+    },
+    {
+      "id": "paldea_main_02",
+      "title": "Victory Road — The Bug Badge",
+      "description": "Challenge Gym Leader Katy in Cortondo. Complete the olive-rolling gym test and defeat her Bug-type team.",
+      "type": "main",
+      "reward": "Bug Badge",
+      "flag_condition": "met_professor_paldea"
+    },
+    {
+      "id": "paldea_main_03",
+      "title": "Victory Road — The Grass Badge",
+      "description": "Challenge Gym Leader Brassius in Artazon. Appreciate the art, then battle the gallery's most passionate exhibit.",
+      "type": "main",
+      "reward": "Grass Badge",
+      "flag_condition": "beat_gym_cortondo"
+    },
+    {
+      "id": "paldea_main_04",
+      "title": "Victory Road — The Electric Badge",
+      "description": "Challenge Gym Leader Iono in Levincia. Find her partner and then face her in a battle livestreamed to millions.",
+      "type": "main",
+      "reward": "Electric Badge",
+      "flag_condition": "beat_gym_artazon"
+    },
+    {
+      "id": "paldea_main_05",
+      "title": "Victory Road — The Water Badge",
+      "description": "Challenge Gym Leader Kofu in Cascarrafa. Win a market auction before the real battle begins.",
+      "type": "main",
+      "reward": "Water Badge",
+      "flag_condition": "beat_gym_levincia"
+    },
+    {
+      "id": "paldea_main_06",
+      "title": "Victory Road — The Normal Badge",
+      "description": "Challenge Gym Leader Larry in Medali. Decipher the secret menu item before entering the gym.",
+      "type": "main",
+      "reward": "Normal Badge",
+      "flag_condition": "beat_gym_cascarrafa"
+    },
+    {
+      "id": "paldea_main_07",
+      "title": "Victory Road — The Ghost Badge",
+      "description": "Challenge Gym Leader Ryme in Montenevera. Face her Ghost-type double battles with rhymes and attitude.",
+      "type": "main",
+      "reward": "Ghost Badge",
+      "flag_condition": "beat_gym_medali"
+    },
+    {
+      "id": "paldea_main_08",
+      "title": "Victory Road — The Psychic Badge",
+      "description": "Challenge Gym Leader Tulip in Alfornada. Read the signs hidden in the gym's psychic-powered maze.",
+      "type": "main",
+      "reward": "Psychic Badge",
+      "flag_condition": "beat_gym_montenevera"
+    },
+    {
+      "id": "paldea_main_09",
+      "title": "Victory Road — The Ice Badge",
+      "description": "Challenge Gym Leader Grusha in Glaseado. Reach his peak and prove you can handle the cold.",
+      "type": "main",
+      "reward": "Ice Badge",
+      "flag_condition": "beat_gym_alfornada"
+    },
+    {
+      "id": "paldea_main_10",
+      "title": "The Champion Road",
+      "description": "Challenge the Elite Four at Naranja Academy — Rika, Poppy, Larry, and Hassel — then face Champion Geeta herself.",
+      "type": "main",
+      "reward": "Paldea Championship",
+      "flag_condition": "beat_gym_glaseado"
+    },
+    {
+      "id": "paldea_main_11",
+      "title": "Into Area Zero",
+      "description": "Descend into the Great Crater of Paldea with Arven, Penny, and Nemona. Confront the truth of Professor Sada and the Paradox Machine.",
+      "type": "main",
+      "reward": "Koraidon or Miraidon",
+      "flag_condition": "beat_paldea_champion"
+    },
+    {
+      "id": "paldea_main_12",
+      "title": "Shut Down the Paradox Machine",
+      "description": "Defeat Professor Sada and destroy the machine before the time rift becomes permanent.",
+      "type": "main",
+      "reward": "Peace for Paldea",
+      "flag_condition": "beat_paldea_champion"
+    },
+    {
+      "id": "paldea_side_01",
+      "title": "Path of Legends — Help Arven",
+      "description": "Help Arven find the five Herba Mystica guarded by Titan Pokémon scattered across Paldea: Stony Cliff, Open Sky, Lurking Steel, Quaking Earth, and False Dragon.",
+      "type": "side",
+      "reward": "Titan Herba Mystica"
+    },
+    {
+      "id": "paldea_side_02",
+      "title": "Starfall Street — Dismantle Team Star",
+      "description": "Challenge all five Team Star bases: Fire (Mela), Poison (Atticus), Fairy (Ortega), Fighting (Eri), and Dark (Giacomo). Find out who Cassiopeia really is.",
+      "type": "side",
+      "reward": "TM rewards and the truth about Team Star"
+    },
+    {
+      "id": "paldea_side_03",
+      "title": "The Ruin Legendaries",
+      "description": "Seek out the four Treasures of Ruin sealed across Paldea: Wo-Chien (Grass), Chien-Pao (Ice), Ting-Lu (Dark/Ground), and Chi-Yu (Fire/Dark).",
+      "type": "side",
+      "reward": "Four Ruin Legendary Pokémon",
+      "flag_condition": "cleared_area_zero"
+    }
+  ],
+  "PALDEA_ROUTE_1": [915, 917, 921, 661],
+  "PALDEA_ROUTE_1_PERCENTAGES": { "915": 30, "917": 25, "921": 25, "661": 20 },
+  "SOUTH_PROVINCE_AREA_1": [915, 928, 932, 833],
+  "SOUTH_PROVINCE_AREA_1_PERCENTAGES": { "915": 30, "928": 25, "932": 25, "833": 20 },
+  "SOUTH_PROVINCE_AREA_2": [928, 944, 942, 761],
+  "SOUTH_PROVINCE_AREA_2_PERCENTAGES": { "928": 30, "944": 25, "942": 25, "761": 20 },
+  "SOUTH_PROVINCE_AREA_3": [919, 951, 953, 669],
+  "SOUTH_PROVINCE_AREA_3_PERCENTAGES": { "919": 30, "951": 25, "953": 25, "669": 20 },
+  "SOUTH_PROVINCE_AREA_5": [956, 671, 945, 282],
+  "SOUTH_PROVINCE_AREA_5_PERCENTAGES": { "956": 25, "671": 25, "945": 25, "282": 25 },
+  "EAST_PROVINCE_AREA_1": [940, 938, 963, 418],
+  "EAST_PROVINCE_AREA_1_PERCENTAGES": { "940": 30, "938": 25, "963": 25, "418": 20 },
+  "EAST_PROVINCE_AREA_2": [940, 941, 963, 964],
+  "EAST_PROVINCE_AREA_2_PERCENTAGES": { "940": 30, "941": 25, "963": 25, "964": 20 },
+  "WEST_PROVINCE_AREA_1": [9001, 980, 973, 662],
+  "WEST_PROVINCE_AREA_1_PERCENTAGES": { "9001": 30, "980": 25, "973": 25, "662": 20 },
+  "WEST_PROVINCE_AREA_2": [942, 943, 944, 945],
+  "WEST_PROVINCE_AREA_2_PERCENTAGES": { "942": 30, "943": 25, "944": 25, "945": 20 },
+  "WEST_PROVINCE_AREA_3": [982, 981, 960, 961],
+  "WEST_PROVINCE_AREA_3_PERCENTAGES": { "982": 30, "981": 25, "960": 25, "961": 20 },
+  "NORTH_PROVINCE_AREA_1": [760, 701, 750, 863],
+  "NORTH_PROVINCE_AREA_1_PERCENTAGES": { "760": 30, "701": 25, "750": 25, "863": 20 },
+  "NORTH_PROVINCE_AREA_2": [971, 972, 854, 855],
+  "NORTH_PROVINCE_AREA_2_PERCENTAGES": { "971": 35, "972": 25, "854": 25, "855": 15 },
+  "NORTH_PROVINCE_AREA_3": [974, 975, 996, 997],
+  "NORTH_PROVINCE_AREA_3_PERCENTAGES": { "974": 30, "975": 25, "996": 25, "997": 20 },
+  "ASADO_DESERT": [551, 552, 553, 331],
+  "ASADO_DESERT_PERCENTAGES": { "551": 35, "552": 30, "553": 20, "331": 15 },
+  "TAGTREE_THICKET": [946, 947, 190, 424],
+  "TAGTREE_THICKET_PERCENTAGES": { "946": 35, "947": 25, "190": 25, "424": 15 },
+  "GLASEADO_MOUNTAIN": [974, 975, 614, 996],
+  "GLASEADO_MOUNTAIN_PERCENTAGES": { "974": 30, "975": 25, "614": 25, "996": 20 },
+  "PALDEA_AREA_ZERO": [984, 986, 1005, 990],
+  "PALDEA_AREA_ZERO_PERCENTAGES": { "984": 25, "986": 25, "1005": 25, "990": 25 },
+  "REGION_START": {
+    "PALDEA": {
+      "order": 9,
+      "subtitle": "GEN 9 / SCARLET / VIOLET",
+      "start_area": "CABO_POCO",
+      "starters": [906, 909, 912],
+      "professor": "Director Clavell",
+      "intro_text": "paldea_clavell_intro",
+      "starter_text": "paldea_clavell_starter",
+      "newgame_text": "paldea_newgame_intro",
+      "dex_range": [906, 1025],
+      "mom_newstart_text": ["paldea_mom_newstart_1", "paldea_mom_newstart_2", "paldea_mom_newstart_3"],
+      "mom_home_text": ["paldea_mom_home_cabo_poco", "paldea_mom_random_1", "paldea_mom_random_2", "paldea_mom_random_3"],
+      "dex_extra": []
+    }
+  }
+}

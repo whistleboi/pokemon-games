@@ -1,0 +1,2375 @@
+{
+  "FORM_MAP": {
+    "5001": { "id": 555, "form": "zen", "name": "Darmanitan - Zen Mode" },
+    "5002": { "id": 641, "form": "therian", "name": "Tornadus - Therian Forme" },
+    "5003": { "id": 642, "form": "therian", "name": "Thundurus - Therian Forme" },
+    "5004": { "id": 645, "form": "therian", "name": "Landorus - Therian Forme" },
+    "5005": { "id": 646, "form": "black", "name": "Kyurem - Black Kyurem" },
+    "5006": { "id": 646, "form": "white", "name": "Kyurem - White Kyurem" },
+    "5007": { "id": 647, "form": "resolute", "name": "Keldeo - Resolute Forme" },
+    "5008": { "id": 648, "form": "pirouette", "name": "Meloetta - Pirouette Forme" },
+    "5009": { "id": 649, "form": "burn", "name": "Genesect - Burn Drive" }
+  },
+  "GAME_TEXT": {
+    "unova_juniper_intro": [
+      "Professor Juniper: Oh! You're here at last.",
+      "Welcome to the world of Pokémon! I'm Professor Juniper.",
+      "I study Pokémon — creatures that live alongside people.",
+      "Your friend {rival_name} and Bianca have been eager to start.",
+      "Inside this case are three Pokémon. Choose one. Your adventure begins now."
+    ],
+    "unova_juniper_starter": [
+      "Professor Juniper: Excellent choice!",
+      "Take good care of your new partner.",
+      "Here is your Pokédex — it records every Pokémon you encounter.",
+      "And take these Poké Balls to catch wild Pokémon.",
+      "You received a Pokédex and 5 Poké Balls!"
+    ],
+    "unova_juniper_congrats": [
+      "Professor Juniper: You're the Unova Champion!",
+      "I knew from the moment you picked up that first Pokémon.",
+      "You've seen more of Unova — and more of yourself — than anyone.",
+      "Here is an upgraded Pokédex with the National mode enabled.",
+      "You received the NATIONAL DEX!"
+    ],
+    "unova_cheren_first_battle": [
+      "{rival_name}: Hey, {player_name}! I opened the Professor's case early.",
+      "I've already picked my Pokémon. Now let's see what you've got!",
+      "The strongest trainer becomes Champion — that's the goal. Don't forget it."
+    ],
+    "unova_cheren_rival_won": ["{rival_name}: Tch. You got stronger since last time.", "That's fine. It just means I need to work harder.", "I'll catch up. Count on it."],
+    "unova_cheren_rival_lost": ["{rival_name}: Yes! That's the result of my training!", "Strength is everything in battle, {player_name}.", "Keep up — I won't wait for you."],
+    "unova_cheren_victory_road": [
+      "{rival_name}: {player_name}. You made it.",
+      "This is the last time I'll battle you before the League.",
+      "Show me everything. Because I'm going to show you everything I've become."
+    ],
+    "unova_bianca_first_meet": [
+      "Bianca: Oh! {player_name}! I'm so glad you came!",
+      "Professor Juniper let me pick first — I hope that's okay!",
+      "I'm a little nervous, but... let's do our best together, okay?"
+    ],
+    "unova_bianca_won": [
+      "Bianca: Wow, you're really strong!",
+      "I got a little flustered when your Pokémon used that move!",
+      "But that's okay! I learned from it. That's what battles are for!"
+    ],
+    "unova_bianca_nimbasa": [
+      "Bianca: Oh — {player_name}! Fancy meeting you in the big city!",
+      "I've been battling everyone I can find. I'm getting better, I know it!",
+      "Even if I lose, the journey means something. Right? Right!",
+      "Let's battle! I want to see how far I've come!"
+    ],
+    "unova_bianca_surf": [
+      "Bianca: Ah, {player_name}! Professor Juniper said to find you.",
+      "She wanted me to give you this — the HM Surf!",
+      "Your Pokémon can now cross water. Be careful out there!",
+      "You received SURF!"
+    ],
+    "unova_n_accumula_speech": [
+      "N: Pokémon and people are... different. Is it right to keep them captive?",
+      "I can hear their voices. Pokémon speak to me.",
+      "They say they are tired of being used as tools for human ambition.",
+      "My dream is a world where Pokémon and people live separately — truly free.",
+      "I wonder... what do YOUR Pokémon think of you?"
+    ],
+    "unova_n_route2_battle": [
+      "N: You surprised me at Accumula Town.",
+      "You spoke up. That tells me your Pokémon trust you.",
+      "I want to understand why. So let me hear your Pokémon's voice through battle."
+    ],
+    "unova_n_route2_won": [
+      "N: I see. Your Pokémon's power comes from something I don't yet understand.",
+      "But my conviction hasn't changed.",
+      "We will meet again, {player_name}. I'm certain of it."
+    ],
+    "unova_n_route2_lost": ["N: You fought bravely.", "But perhaps your bond with your Pokémon still has room to grow.", "We'll meet again. My journey continues too."],
+    "unova_n_nimbasa_ferris_wheel": [
+      "N: From up here, the whole city looks so small.",
+      "People and Pokémon living together... it looks peaceful.",
+      "But is it peace, or just... habit?",
+      "I've chosen my path. I will become the hero who frees Pokémon.",
+      "And you... I think you might be the hero who opposes me.",
+      "One day we'll settle this. Until then, grow stronger."
+    ],
+    "unova_n_chargestone": [
+      "N: This cave hums with energy. Pokémon born of thunder and steel.",
+      "I caught the Pokémon here before entering. Just for this battle.",
+      "You see — I release them afterward. I never keep them.",
+      "That is the difference between us."
+    ],
+    "unova_n_castle_intro": [
+      "N: {player_name}. You came.",
+      "I knew you would. We were always destined to battle here.",
+      "I've called forth Zekrom — the hero of ideals.",
+      "If your truth is stronger than my ideals, prove it.",
+      "Show me the bond between you and your Pokémon!"
+    ],
+    "unova_n_castle_won": [
+      "N: You won. Your truth... it shone through.",
+      "I thought I knew what was right for Pokémon.",
+      "But standing here, looking at your team... maybe I was missing something.",
+      "I need to think about this. Really think.",
+      "Thank you, {player_name}. This battle... changed me."
+    ],
+    "unova_n_castle_lost": [
+      "N: ...This is what I believed was right.",
+      "Pokémon and people should not be bound together.",
+      "Until you can show me otherwise — my ideal stands."
+    ],
+    "unova_ghetsis_accumula": [
+      "Ghetsis: People of Unova! Hear me!",
+      "We, Team Plasma, speak for all Pokémon!",
+      "These creatures suffer under your ownership. They are enslaved!",
+      "Do the right thing. Release your Pokémon. Set them free.",
+      "Only then can a truly just world be born."
+    ],
+    "unova_ghetsis_castle_intro": [
+      "Ghetsis: Hahaha. So you defeated N.",
+      "Did you think that meant anything?",
+      "N was never my goal. He was my tool. My perfect tool.",
+      "A boy who could hear Pokémon — raised to believe in liberation.",
+      "He gathered the Legendary Pokémon for me.",
+      "Now I will use that power to rule this world. With NO ONE to oppose me.",
+      "Defeat me? A child like you? Impossible. ABSOLUTELY IMPOSSIBLE!"
+    ],
+    "unova_ghetsis_castle_won": [
+      "Ghetsis: Im...possible.",
+      "How could I lose? I planned everything! EVERYTHING!",
+      "No... no, this can't be right...",
+      "Looker: Stand down, Ghetsis. It's over.",
+      "The International Police thanks you, {player_name}.",
+      "Team Plasma is finished."
+    ],
+    "unova_plasma_grunt": [
+      "Team Plasma Grunt: Pokémon liberation is justice!",
+      "We fight for the freedom of every Pokémon from human oppression!",
+      "Lord Ghetsis will create a world where only Team Plasma wields Pokémon!"
+    ],
+    "unova_plasma_grunt_lost": ["Team Plasma Grunt: How dare you...", "Team Plasma will not be stopped by a single trainer!"],
+    "unova_alder_route2": [
+      "Alder: Well, well. A young trainer on a journey?",
+      "I'm Alder — the Pokémon League Champion. Though I haven't been challenging lately.",
+      "My Pokémon... they remind me that every battle is precious.",
+      "If you make it to the League, come find me. I'll be waiting."
+    ],
+    "unova_alder_champion_intro": [
+      "Alder: So you made it through all four of them.",
+      "I've been watching from up here. You're something special.",
+      "I've battled many trainers across Unova — none quite like you.",
+      "Come. Show me what you and your Pokémon are made of."
+    ],
+    "unova_alder_won": [
+      "Alder: Ha! Incredible!",
+      "You know, I lost my first Pokémon partner long ago.",
+      "For a time, I forgot why I battled.",
+      "But watching you just now... I remembered.",
+      "It's the bond. It's always been the bond.",
+      "You are the new Unova Champion — congratulations!"
+    ],
+    "unova_looker_intro": [
+      "Looker: I am Looker, International Police.",
+      "Team Plasma has been active across Unova — stealing Pokémon, spreading propaganda.",
+      "I am investigating their leader, Ghetsis.",
+      "If you encounter any suspicious activity... find me."
+    ],
+    "unova_looker_plasma_tip": [
+      "Looker: Team Plasma's king — they call him N — is not the real threat.",
+      "Ghetsis is manipulating N from the shadows.",
+      "The boy believes in Pokémon liberation. Ghetsis believes in domination.",
+      "Whatever you do — do not let Ghetsis get his hands on a Legendary Pokémon."
+    ],
+    "unova_reshiram_encounter": [
+      "The legendary Dragon of Truth awakens at the top of Dragonspiral Tower!",
+      "Its white fire burns with absolute conviction.",
+      "Reshiram — the Vast White Pokémon — has appeared!"
+    ],
+    "unova_zekrom_encounter": [
+      "Thunder shakes Dragonspiral Tower as the legendary Dragon of Ideals stirs!",
+      "Deep Black electricity crackles through the ancient stones.",
+      "Zekrom — the Deep Black Pokémon — has appeared!"
+    ],
+    "unova_kyurem_encounter": [
+      "A bone-chilling cold radiates from the Giant Chasm...",
+      "The boundary Pokémon — the one that waits at the edge of the world.",
+      "Kyurem has appeared!"
+    ],
+    "unova_cobalion_encounter": [
+      "A steel-bodied Pokémon watches you from the rocky plateau.",
+      "Its gaze is sharp — judging whether you are worthy.",
+      "Cobalion, the Iron Will Pokémon, challenges you!"
+    ],
+    "unova_terrakion_encounter": [
+      "The ground shakes beneath enormous hooves.",
+      "Terrakion, the Cavern Pokémon — a warrior who shattered castle walls to protect Pokémon.",
+      "It charges!"
+    ],
+    "unova_virizion_encounter": [
+      "A graceful figure steps forward from the verdant forest...",
+      "Virizion, the Grassland Pokémon — its blades are sharp as any sword.",
+      "A wild Virizion appeared!"
+    ],
+    "unova_tornadus_encounter": ["Storm clouds gather without warning!", "Tornadus — the Cyclone Pokémon — descends in a torrent of wind!", "A wild Tornadus appeared!"],
+    "unova_thundurus_encounter": ["Lightning splits the sky with no warning!", "Thundurus — the Bolt Strike Pokémon — tears across the clouds!", "A wild Thundurus appeared!"],
+    "unova_landorus_encounter": [
+      "The earth pulses with abundant energy...",
+      "Landorus — the Abundance Pokémon — descends to judge the land's balance.",
+      "A wild Landorus appeared!"
+    ],
+    "unova_victini_encounter": [
+      "A warm, mysterious light fills Liberty Garden...",
+      "A small Pokémon with enormous lucky power bounces toward you!",
+      "Victini, the Victory Pokémon, appeared!"
+    ],
+    "unova_volcarona_encounter": [
+      "Ancient ruins in Relic Castle deep below the sands...",
+      "A Pokémon born from ancient fire, said to have replaced the sun when it was covered in ash.",
+      "Volcarona has appeared!"
+    ],
+    "unova_museum_plasma": [
+      "A Team Plasma Grunt burst from the museum holding the Dragon Skull!",
+      "Lenora: They stole the Dragonite Skull! After them — please!",
+      "Team Plasma cannot be allowed to reconstruct the ancient Dragon!"
+    ],
+    "unova_plasma_nacrene_won": [
+      "The Dragon Skull has been recovered!",
+      "Lenora: Thank you. This belongs to Nacrene Museum — and to history.",
+      "That Pokémon Skull holds the secret of Unova's Dragon legend."
+    ],
+    "unova_castelia_sewers": [
+      "Burgh: Team Plasma is hiding in the sewers beneath Castelia City.",
+      "They're using it as a base — I won't let them defile my city.",
+      "I'll handle this side. You take the other. Let's push them out!"
+    ],
+    "unova_n_throne": [
+      "N: This castle rose overnight. Every stone placed by Pokémon who believe in my dream.",
+      "They trust me. And I trust them.",
+      "The age of liberation begins here, {player_name}.",
+      "Become the new hero — or fall before the hero of ideals."
+    ],
+    "unova_newgame_intro": [
+      "A package arrives in Nuvema Town, addressed to you and your friends.",
+      "Inside: a note from Professor Juniper and three Poké Balls.",
+      "'Choose one partner each. Your journey through Unova starts today!'"
+    ],
+    "unova_mom_newstart_1": [
+      "Mom: Professor Juniper's gift arrived! I'm so proud of you, {player_name}.",
+      "Mom: Go see the whole Unova region. Just call me once in a while!"
+    ],
+    "unova_mom_newstart_2": [
+      "Mom: Castelia City has the tallest buildings you've ever seen.",
+      "Mom: If you win enough prize money, buy me one of those famous Casteliacones!"
+    ],
+    "unova_mom_newstart_3": ["Mom: Your father traveled Unova when he was young, too.", "Mom: He always said the best adventures start with a single step out the door."],
+    "unova_mom_home_1": [
+      "Mom: {player_name}! Our Nuvema house has a view of the ocean!",
+      "Mom: Your Sinnoh championship paid for every brick. I made sure of it.",
+      "Mom: Five regions, five homes. My scrapbook is getting heavy!"
+    ],
+    "unova_mom_home_2": [
+      "Mom: I visited the Castelia Gym yesterday. Burgh painted my portrait!",
+      "Mom: I told him my child is a champion. He painted a crown on me, too."
+    ],
+    "unova_mom_home_3": ["Mom: The neighbors asked how a family can own houses in five regions.", "Mom: I told them: 'Math homework.' They didn't believe me."],
+    "unova_cheren_house": [
+      "{rival_name}'s Mom: {rival_name} is studying the Trainer handbook again.",
+      "{rival_name}'s Mom: He says he'll be the strongest trainer in Unova. I believe him!"
+    ]
+  },
+  "STORY_PROGRESSION": {
+    "NUVEMA_TOWN": {
+      "area_type": "town",
+      "route_name": "Nuvema Town",
+      "region": "UNOVA",
+      "backgrounds": { "main": "nuvema_town.png", "mom": "nuvema_mom.png", "lab": "juniper_lab.png" },
+      "has_gym": false,
+      "travel_options": [{"text": "Route 1", "target_area": "UNOVA_ROUTE_1"}],
+      "explore_options": [
+        { "text": "Visit Mom", "action": "NPC", "target": "mom" },
+        { "text": "Visit Professor Juniper", "action": "NPC", "target": "unova_juniper_intro" },
+        { "text": "Visit {rival_name}'s House", "action": "NPC", "target": "unova_cheren_house" }
+      ],
+      "next_area": "UNOVA_ROUTE_1",
+      "on_enter_event": {
+        "type": "trainer_battle",
+        "trainer": {
+          "name": "{rival_name}",
+          "class": "PKMN_TRAINER",
+          "sprite": "cheren.png",
+          "team": [498],
+          "team_choice": { "495": [498], "498": [501], "501": [495] },
+          "rewards": { "balls": 5 },
+          "victory_flag": "defeated_rival_nuvema",
+          "dialogue": {
+            "intro": ["Hey {player_name}! I opened Juniper's case! My Pokémon is ready — are you?"],
+            "player_won": ["Tch. You already beat me. Fine. I'll catch up."],
+            "player_lost": ["Ha! I'm the stronger trainer already. Now let's go see the Professor."]
+          }
+        },
+        "flag_check": "defeated_rival_nuvema",
+        "condition": "has_unova_starter"
+      }
+    },
+    "ACCUMULA_TOWN": {
+      "area_type": "town",
+      "route_name": "Accumula Town",
+      "region": "UNOVA",
+      "backgrounds": { "main": "accumula_town.png", "pokecenter": "accumula_center.png" },
+      "has_gym": false,
+      "travel_options": [
+        { "text": "Route 1", "target_area": "UNOVA_ROUTE_1" },
+        { "text": "Route 2", "target_area": "UNOVA_ROUTE_2" }
+      ],
+      "explore_options": [
+        { "text": "Pokémon Center", "action": "HEAL" },
+        { "text": "Shop", "action": "SHOP" },
+        { "text": "Team Plasma Rally", "action": "NPC", "target": "n_accumula_speech", "flag_condition": "not heard_n_accumula" },
+        { "text": "Talk to Looker", "action": "NPC", "target": "looker_intro", "flag_condition": "not met_looker" }
+      ],
+      "next_area": "UNOVA_ROUTE_2",
+      "on_enter_event": {
+        "type": "trainer_battle",
+        "trainer": {
+          "name": "{rival_name}",
+          "class": "PKMN_TRAINER",
+          "sprite": "cheren.png",
+          "team": [500],
+          "team_choice": { "495": [500, 504], "498": [503, 504], "501": [497, 504] },
+          "rewards": { "balls": 5 },
+          "victory_flag": "defeated_rival_accumula",
+          "dialogue": {
+            "intro": ["Training with a purpose — that's the only way to improve. Battle me!"],
+            "player_won": ["You're faster than I expected. I'll account for that next time."],
+            "player_lost": ["Excellent! Knowing your current limits is the first step to exceeding them."]
+          }
+        },
+        "condition": "has_trio_badge",
+        "flag_check": "defeated_rival_accumula"
+      }
+    },
+    "STRIATON_CITY": {
+      "area_type": "town",
+      "route_name": "Striaton City",
+      "region": "UNOVA",
+      "backgrounds": { "main": "striaton_city.png", "pokecenter": "striaton_center.png", "gym": "striaton_gym.png" },
+      "has_gym": true,
+      "gym": {
+        "trainers": [],
+        "leader": {
+          "name": "Trio (Cilan / Chili / Cress)",
+          "class": "GYM_LEADER",
+          "sprite": "trio_cilan_chili_cress.png",
+          "team": [506, 511],
+          "dialogue": {
+            "intro": [
+              "Gym Leader: Welcome to Striaton Gym!",
+              "One of us will face you — the one whose type counters your starter!",
+              "We are Cilan, Chili, and Cress — and together we serve the finest battles in Unova!"
+            ],
+            "player_won": [
+              "Gym Leader: Magnificent! You've earned the Trio Badge!",
+              "With it, Pokémon up to a certain level will obey you.",
+              "Take this TM as well — a gift from the three of us!"
+            ],
+            "player_lost": ["Gym Leader: The type advantage was decisive today.", "Come back once you've trained more. We'll be here."]
+          },
+          "rewards": { "balls": 5 },
+          "is_boss_battle": true,
+          "badge_reward": "TRIO",
+          "team_choice": { "495": [506, 515], "498": [506, 511], "501": [506, 513] }
+        },
+        "requirements": { "badges": 0, "fail_text": "The Striaton Gym is open — find the Elemental Monkey in the Dreamyard first for a type advantage!" }
+      },
+      "travel_options": [
+        { "text": "Route 2", "target_area": "UNOVA_ROUTE_2" },
+        { "text": "Route 3", "target_area": "UNOVA_ROUTE_3" },
+        { "text": "Dreamyard", "target_area": "DREAMYARD" }
+      ],
+      "explore_options": [
+        { "text": "Pokémon Center", "action": "HEAL" },
+        { "text": "Shop", "action": "SHOP" },
+        { "text": "Challenge Gym", "action": "GYM" }
+      ],
+      "next_area": "UNOVA_ROUTE_3"
+    },
+    "NACRENE_CITY": {
+      "area_type": "town",
+      "route_name": "Nacrene City",
+      "region": "UNOVA",
+      "backgrounds": { "main": "nacrene_city.png", "pokecenter": "nacrene_center.png", "gym": "nacrene_gym.png" },
+      "has_gym": true,
+      "gym": {
+        "trainers": [],
+        "leader": {
+          "name": "Lenora",
+          "class": "GYM_LEADER",
+          "sprite": "lenora.png",
+          "team": [507, 505],
+          "dialogue": {
+            "intro": [
+              "Lenora: Welcome to my gym — and my library!",
+              "I'm Lenora, the Nacrene Gym Leader.",
+              "I'm a Normal-type user. Don't underestimate what Normal can do!"
+            ],
+            "player_won": ["Lenora: You're the real deal! Congratulations on the Basic Badge!", "Take this HM Strength too — you'll need it in your travels."],
+            "player_lost": ["Lenora: You'll need to dig deeper than that!", "Come back when you've trained more. My library is always open."]
+          },
+          "rewards": { "balls": 5 },
+          "is_boss_battle": true,
+          "badge_reward": "BASIC"
+        },
+        "requirements": { "badges": 1, "fail_text": "Lenora is preparing for battle at the Nacrene Museum. Earn the Trio Badge first." }
+      },
+      "travel_options": [
+        { "text": "Route 3", "target_area": "UNOVA_ROUTE_3" },
+        { "text": "Pinwheel Forest", "target_area": "PINWHEEL_FOREST" }
+      ],
+      "explore_options": [
+        { "text": "Pokémon Center", "action": "HEAL" },
+        { "text": "Shop", "action": "SHOP" },
+        { "text": "Nacrene Museum", "action": "NPC", "target": "nacrene_museum" },
+        { "text": "Challenge Gym", "action": "GYM" },
+        {
+          "text": "Stop Team Plasma (Museum)",
+          "action": "NPC",
+          "target": "plasma_nacrene",
+          "condition": "has_trio_badge",
+          "flag_condition": "not plasma_nacrene_cleared",
+          "color": "GOLD"
+        }
+      ],
+      "next_area": "PINWHEEL_FOREST",
+      "on_enter_event": {
+        "type": "trainer_battle",
+        "trainer": {
+          "name": "Team Plasma Grunt",
+          "class": "GALACTIC",
+          "sprite": "plasma_grunt.png",
+          "team": [509, 504],
+          "rewards": { "balls": 3 },
+          "victory_flag": "plasma_nacrene_cleared",
+          "dialogue": {
+            "intro": ["We have the Dragon Skull! Team Plasma's plan is unstoppable!"],
+            "player_won": ["The skull... we've lost it. Lord Ghetsis will be furious!"],
+            "player_lost": ["Team Plasma serves a higher justice than your victories!"]
+          }
+        },
+        "condition": "has_trio_badge",
+        "flag_check": "plasma_nacrene_cleared"
+      }
+    },
+    "CASTELIA_CITY": {
+      "area_type": "town",
+      "route_name": "Castelia City",
+      "region": "UNOVA",
+      "backgrounds": { "main": "castelia_city.png", "pokecenter": "castelia_center.png", "gym": "castelia_gym.png" },
+      "has_gym": true,
+      "gym": {
+        "trainers": [],
+        "leader": {
+          "name": "Burgh",
+          "class": "GYM_LEADER",
+          "sprite": "burgh.png",
+          "team": [544, 557, 542],
+          "dialogue": {
+            "intro": [
+              "Burgh: This gym is my canvas, and this battle — our masterpiece!",
+              "I'm Burgh, the Castelia Gym Leader.",
+              "Bug-types have a delicate beauty, but don't mistake that for weakness!"
+            ],
+            "player_won": ["Burgh: Sublime! You've earned the Insect Badge!", "Here — take this TM. Use it as you see fit. Create something beautiful!"],
+            "player_lost": ["Burgh: Not quite the composition I hoped to see.", "Return when your moves flow with more intention."]
+          },
+          "rewards": { "balls": 5 },
+          "is_boss_battle": true,
+          "badge_reward": "INSECT"
+        },
+        "requirements": {
+          "badges": 2,
+          "flag": "plasma_castelia_cleared",
+          "fail_text": "Burgh is helping chase Team Plasma from Castelia's sewers. Clear the sewers first!"
+        }
+      },
+      "travel_options": [
+        { "text": "Route 4", "target_area": "UNOVA_ROUTE_4" },
+        { "text": "Pinwheel Forest", "target_area": "PINWHEEL_FOREST" },
+        { "text": "Unity Tower", "target_area": "UNITY_TOWER" },
+        { "text": "Castelia Sewers", "target_area": "CASTELIA_SEWERS" }
+      ],
+      "explore_options": [
+        { "text": "Pokémon Center", "action": "HEAL" },
+        { "text": "Shop", "action": "SHOP" },
+        {
+          "text": "Clear the Sewers with Burgh",
+          "action": "NPC",
+          "target": "burgh_sewers",
+          "condition": "has_basic_badge",
+          "flag_condition": "not plasma_castelia_cleared",
+          "color": "GOLD"
+        },
+        { "text": "Challenge Gym", "action": "GYM" },
+        {
+          "text": "Bianca Battle",
+          "action": "NPC",
+          "target": "bianca_castelia",
+          "condition": "has_basic_badge",
+          "flag_condition": "not defeated_bianca_castelia"
+        }
+      ],
+      "next_area": "UNOVA_ROUTE_4",
+      "on_enter_event": {
+        "type": "trainer_battle",
+        "trainer": {
+          "name": "Bianca",
+          "class": "PKMN_TRAINER",
+          "sprite": "bianca.png",
+          "team": [503],
+          "team_choice": { "495": [503, 519], "498": [497, 519], "501": [500, 519] },
+          "rewards": { "balls": 5 },
+          "victory_flag": "defeated_bianca_castelia",
+          "dialogue": {
+            "intro": ["Oh! {player_name}! I've been training so hard! I think I'm ready for a real battle!"],
+            "player_won": ["Aww! I lost again! But I had fun — that's what counts, right?"],
+            "player_lost": ["Yes! I won! I can't believe it! I'm going to keep training!"]
+          }
+        },
+        "condition": "has_basic_badge",
+        "flag_check": "defeated_bianca_castelia"
+      }
+    },
+    "NIMBASA_CITY": {
+      "area_type": "town",
+      "route_name": "Nimbasa City",
+      "region": "UNOVA",
+      "backgrounds": { "main": "nimbasa_city.png", "pokecenter": "nimbasa_center.png", "gym": "nimbasa_gym.png" },
+      "has_gym": true,
+      "gym": {
+        "trainers": [],
+        "leader": {
+          "name": "Elesa",
+          "class": "GYM_LEADER",
+          "sprite": "elesa.png",
+          "team": [587, 587, 523],
+          "dialogue": {
+            "intro": [
+              "Elesa: Welcome to the stage. I'm Elesa — model and Gym Leader.",
+              "Electric-types are fast, flashy, and relentless.",
+              "Don't blink. This battle moves at the speed of lightning."
+            ],
+            "player_won": [
+              "Elesa: You were faster than my Emolga. That's the Bolt Badge.",
+              "Here — take this. Bianca's father was blocking Route 5.",
+              "I called him off. You're free to head to Driftveil."
+            ],
+            "player_lost": ["Elesa: Speed and accuracy — that's all it takes.", "Come back when you've sharpened both."]
+          },
+          "rewards": { "balls": 5, "SURF_BOARD": 1 },
+          "is_boss_battle": true,
+          "badge_reward": "BOLT"
+        },
+        "requirements": { "badges": 3, "fail_text": "Elesa is on the runway. Earn three badges to challenge the Nimbasa Gym!" }
+      },
+      "travel_options": [
+        { "text": "Route 4", "target_area": "UNOVA_ROUTE_4" },
+        { "text": "Route 5", "target_area": "UNOVA_ROUTE_5" },
+        { "text": "Route 16", "target_area": "UNOVA_ROUTE_16" },
+        { "text": "Battle Subway", "target_area": "BATTLE_SUBWAY" }
+      ],
+      "explore_options": [
+        { "text": "Pokémon Center", "action": "HEAL" },
+        { "text": "Shop", "action": "SHOP" },
+        { "text": "Challenge Gym", "action": "GYM" },
+        {
+          "text": "Ferris Wheel with N",
+          "action": "NPC",
+          "target": "n_nimbasa_ferris_wheel",
+          "condition": "has_insect_badge",
+          "flag_condition": "not met_n_nimbasa"
+        },
+        {
+          "text": "Battle Bianca",
+          "action": "NPC",
+          "target": "bianca_nimbasa",
+          "condition": "has_insect_badge",
+          "flag_condition": "not defeated_bianca_nimbasa"
+        }
+      ],
+      "next_area": "UNOVA_ROUTE_5",
+      "on_enter_event": {
+        "type": "trainer_battle",
+        "trainer": {
+          "name": "{rival_name}",
+          "class": "PKMN_TRAINER",
+          "sprite": "cheren.png",
+          "team": [500, 507],
+          "team_choice": { "495": [500, 507, 521], "498": [503, 507, 521], "501": [497, 507, 521] },
+          "rewards": { "balls": 5 },
+          "victory_flag": "defeated_rival_nimbasa",
+          "dialogue": {
+            "intro": ["I've been all over Route 5 and 4 training. I won't hold back, {player_name}!"],
+            "player_won": ["You're still ahead of me. But the gap is closing — I feel it."],
+            "player_lost": ["That's more like it. I've been working toward this win."]
+          }
+        },
+        "condition": "has_insect_badge",
+        "flag_check": "defeated_rival_nimbasa"
+      }
+    },
+    "DRIFTVEIL_CITY": {
+      "area_type": "town",
+      "route_name": "Driftveil City",
+      "region": "UNOVA",
+      "backgrounds": { "main": "driftveil_city.png", "pokecenter": "driftveil_center.png", "gym": "driftveil_gym.png" },
+      "has_gym": true,
+      "gym": {
+        "trainers": [],
+        "leader": {
+          "name": "Clay",
+          "class": "GYM_LEADER",
+          "sprite": "clay.png",
+          "team": [552, 536, 530],
+          "dialogue": {
+            "intro": [
+              "Clay: Y'all came a long way to challenge me, huh?",
+              "I'm Clay. I dug this whole city outta the ground.",
+              "Ground-types are tough as the earth itself. Let's see if you can shake 'em!"
+            ],
+            "player_won": ["Clay: Not bad at all! You've got the Quake Badge, kid.", "Now get outta my gym and go challenge the rest of the world!"],
+            "player_lost": ["Clay: The earth don't move for just anyone.", "Come back when you've got more dig in you."]
+          },
+          "rewards": { "balls": 5 },
+          "is_boss_battle": true,
+          "badge_reward": "QUAKE"
+        },
+        "requirements": { "badges": 4, "flag": "plasma_relic_castle_cleared", "fail_text": "Clay is chasing Team Plasma in the Relic Castle. Help him first!" }
+      },
+      "travel_options": [
+        { "text": "Route 5", "target_area": "UNOVA_ROUTE_5" },
+        { "text": "Route 6", "target_area": "UNOVA_ROUTE_6" },
+        { "text": "Cold Storage", "target_area": "COLD_STORAGE" },
+        { "text": "Relic Castle (via Desert)", "target_area": "RELIC_CASTLE" }
+      ],
+      "explore_options": [
+        { "text": "Pokémon Center", "action": "HEAL" },
+        { "text": "Shop", "action": "SHOP" },
+        { "text": "Challenge Gym", "action": "GYM" },
+        {
+          "text": "Relic Castle — Clear Team Plasma",
+          "action": "NPC",
+          "target": "plasma_relic_castle",
+          "condition": "has_bolt_badge",
+          "flag_condition": "not plasma_relic_castle_cleared",
+          "color": "GOLD"
+        }
+      ],
+      "next_area": "UNOVA_ROUTE_6"
+    },
+    "MISTRALTON_CITY": {
+      "area_type": "town",
+      "route_name": "Mistralton City",
+      "region": "UNOVA",
+      "backgrounds": { "main": "mistralton_city.png", "pokecenter": "mistralton_center.png", "gym": "mistralton_gym.png" },
+      "has_gym": true,
+      "gym": {
+        "trainers": [],
+        "leader": {
+          "name": "Skyla",
+          "class": "GYM_LEADER",
+          "sprite": "skyla.png",
+          "team": [528, 521, 581],
+          "dialogue": {
+            "intro": [
+              "Skyla: Hi! I'm Skyla — pilot and Gym Leader!",
+              "I use Flying-types. They're free spirits, just like the sky.",
+              "Let's have a high-flying battle!"
+            ],
+            "player_won": ["Skyla: Wow, you really know how to keep pace! Here's the Jet Badge!", "And take this HM — it lets your Pokémon use Fly between towns!"],
+            "player_lost": ["Skyla: Flying-types soar above most strategies!", "Train more and come back — the sky is always open."]
+          },
+          "rewards": { "balls": 5 },
+          "is_boss_battle": true,
+          "badge_reward": "JET"
+        },
+        "requirements": { "badges": 5, "fail_text": "Skyla is running the airstrip. Earn the Quake Badge first." }
+      },
+      "travel_options": [
+        { "text": "Route 7", "target_area": "UNOVA_ROUTE_7" },
+        { "text": "Chargestone Cave", "target_area": "CHARGESTONE_CAVE" },
+        { "text": "Mistralton Cave", "target_area": "MISTRALTON_CAVE" }
+      ],
+      "explore_options": [
+        { "text": "Pokémon Center", "action": "HEAL" },
+        { "text": "Shop", "action": "SHOP" },
+        { "text": "Challenge Gym", "action": "GYM" }
+      ],
+      "next_area": "UNOVA_ROUTE_7"
+    },
+    "ICIRRUS_CITY": {
+      "area_type": "town",
+      "route_name": "Icirrus City",
+      "region": "UNOVA",
+      "backgrounds": { "main": "icirrus_city.png", "pokecenter": "icirrus_center.png", "gym": "icirrus_gym.png" },
+      "has_gym": true,
+      "gym": {
+        "trainers": [],
+        "leader": {
+          "name": "Brycen",
+          "class": "GYM_LEADER",
+          "sprite": "brycen.png",
+          "team": [583, 615, 614],
+          "dialogue": {
+            "intro": [
+              "Brycen: I am Brycen. I was once a film star — now I am a Gym Leader.",
+              "Ice-types embody discipline and stillness.",
+              "Strike with precision."
+            ],
+            "player_won": ["Brycen: You move with purpose. Well done. Accept the Freeze Badge.", "Now go — Dragonspiral Tower needs your attention."],
+            "player_lost": ["Brycen: Discipline. You need more of it.", "Return when your movements are as clean as ice."]
+          },
+          "rewards": { "balls": 5 },
+          "is_boss_battle": true,
+          "badge_reward": "FREEZE"
+        },
+        "requirements": { "badges": 6, "fail_text": "Brycen has rushed to Dragonspiral Tower — Team Plasma is there! Chase them first." }
+      },
+      "travel_options": [
+        { "text": "Route 8", "target_area": "UNOVA_ROUTE_8" },
+        { "text": "Dragonspiral Tower", "target_area": "DRAGONSPIRAL_TOWER" },
+        { "text": "Moor of Icirrus", "target_area": "MOOR_OF_ICIRRUS" },
+        { "text": "Twist Mountain", "target_area": "TWIST_MOUNTAIN" },
+        { "text": "Route 9", "target_area": "UNOVA_ROUTE_9" }
+      ],
+      "explore_options": [
+        { "text": "Pokémon Center", "action": "HEAL" },
+        { "text": "Shop", "action": "SHOP" },
+        { "text": "Challenge Gym", "action": "GYM" },
+        {
+          "text": "Dragonspiral Tower — Stop Team Plasma",
+          "action": "NPC",
+          "target": "plasma_dragonspiral",
+          "condition": "has_jet_badge",
+          "flag_condition": "not plasma_dragonspiral_cleared",
+          "color": "GOLD"
+        }
+      ],
+      "next_area": "UNOVA_ROUTE_9",
+      "on_enter_event": {
+        "type": "trainer_battle",
+        "trainer": {
+          "name": "N",
+          "class": "PKMN_TRAINER",
+          "sprite": "n.png",
+          "team": [644, 584, 601],
+          "rewards": { "balls": 5 },
+          "victory_flag": "defeated_n_dragonspiral",
+          "dialogue": {
+            "intro": ["N: This tower holds the hero's Dragon. My path leads here. Don't try to stop me."],
+            "player_won": ["N: You... you stopped me again. But Zekrom heard my call. We'll meet again."],
+            "player_lost": ["N: The Dragon of Ideals has chosen me. The hero of truth must still rise."]
+          }
+        },
+        "condition": "has_jet_badge",
+        "flag_check": "defeated_n_dragonspiral"
+      }
+    },
+    "LACUNOSA_TOWN": {
+      "area_type": "town",
+      "route_name": "Lacunosa Town",
+      "region": "UNOVA",
+      "backgrounds": { "main": "lacunosa_town.png", "pokecenter": "lacunosa_center.png" },
+      "has_gym": false,
+      "travel_options": [
+        { "text": "Route 12", "target_area": "UNOVA_ROUTE_12" },
+        { "text": "Route 13", "target_area": "UNOVA_ROUTE_13" },
+        { "text": "Giant Chasm", "target_area": "GIANT_CHASM" },
+        { "text": "Route 11", "target_area": "UNOVA_ROUTE_11" }
+      ],
+      "explore_options": [
+        { "text": "Pokémon Center", "action": "HEAL" },
+        { "text": "Shop", "action": "SHOP" },
+        { "text": "Hear the Legend of Kyurem", "action": "NPC", "target": "lacunosa_elder", "flag_condition": "not heard_kyurem_legend" }
+      ],
+      "next_area": "UNOVA_ROUTE_13"
+    },
+    "UNDELLA_TOWN": {
+      "area_type": "town",
+      "route_name": "Undella Town",
+      "region": "UNOVA",
+      "backgrounds": { "main": "undella_town.png", "pokecenter": "undella_center.png" },
+      "has_gym": false,
+      "travel_options": [
+        { "text": "Route 13", "target_area": "UNOVA_ROUTE_13" },
+        { "text": "Route 14", "target_area": "UNOVA_ROUTE_14" },
+        { "text": "Route 21", "target_area": "UNOVA_ROUTE_21" },
+        { "text": "Route 12", "target_area": "UNOVA_ROUTE_12" }
+      ],
+      "explore_options": [
+        { "text": "Pokémon Center", "action": "HEAL" },
+        { "text": "Shop", "action": "SHOP" },
+        {
+          "text": "Battle Bianca (Final)",
+          "action": "NPC",
+          "target": "bianca_undella",
+          "condition": "has_freeze_badge",
+          "flag_condition": "not defeated_bianca_undella"
+        }
+      ],
+      "next_area": "UNOVA_ROUTE_13"
+    },
+    "OPELUCID_CITY": {
+      "area_type": "town",
+      "route_name": "Opelucid City",
+      "region": "UNOVA",
+      "backgrounds": { "main": "opelucid_city.png", "pokecenter": "opelucid_center.png", "gym": "opelucid_gym.png" },
+      "has_gym": true,
+      "gym": {
+        "trainers": [],
+        "leader": {
+          "name": "Drayden",
+          "class": "GYM_LEADER",
+          "sprite": "drayden.png",
+          "team": [611, 611, 612],
+          "dialogue": {
+            "intro": [
+              "Drayden: Welcome. I am Drayden, the Opelucid Gym Leader.",
+              "I use Dragon-types — the most powerful type in existence.",
+              "If you can stand before my dragons, you can stand before anything."
+            ],
+            "player_won": ["Drayden: You've earned this — the Legend Badge.", "The road to the Pokémon League lies north.", "Go. Discover the truth of Unova."],
+            "player_lost": ["Drayden: Dragon-types are unforgiving.", "Come back stronger. The legend is still yours to write."]
+          },
+          "rewards": { "balls": 5 },
+          "is_boss_battle": true,
+          "badge_reward": "LEGEND"
+        },
+        "requirements": { "badges": 7, "fail_text": "Drayden is waiting — earn seven badges before challenging the Opelucid Gym." }
+      },
+      "travel_options": [
+        { "text": "Route 9", "target_area": "UNOVA_ROUTE_9" },
+        { "text": "Route 10", "target_area": "UNOVA_ROUTE_10" },
+        { "text": "Route 11", "target_area": "UNOVA_ROUTE_11" },
+        { "text": "Route 22", "target_area": "UNOVA_ROUTE_22" }
+      ],
+      "explore_options": [
+        { "text": "Pokémon Center", "action": "HEAL" },
+        { "text": "Shop", "action": "SHOP" },
+        { "text": "Challenge Gym", "action": "GYM" },
+        { "text": "Learn About the Dragon Stones", "action": "NPC", "target": "drayden_dragon_stones", "flag_condition": "not heard_dragon_stones" }
+      ],
+      "next_area": "UNOVA_ROUTE_10"
+    },
+    "UNOVA_POKEMON_LEAGUE": {
+      "area_type": "town",
+      "route_name": "Pokémon League",
+      "region": "UNOVA",
+      "backgrounds": { "main": "unova_pokemon_league.png", "pokecenter": "league_center.png" },
+      "has_gym": true,
+      "gym": {
+        "trainers": [
+          {
+            "name": "Shauntal",
+            "class": "ELITE_FOUR",
+            "sprite": "shauntal.png",
+            "team": [563, 592, 623, 609],
+            "dialogue": {
+              "intro": [
+                "Shauntal: Oh! A challenger! I'm writing a novel about powerful trainers.",
+                "May I use our battle as inspiration?",
+                "Ghost-types are experts at writing the perfect ending!"
+              ],
+              "player_won": ["Shauntal: Wonderful! This will make a brilliant chapter!"],
+              "player_lost": ["Shauntal: The Ghost-type ending. A classic."]
+            },
+            "rewards": { "balls": 15 },
+            "is_boss_battle": true
+          },
+          {
+            "name": "Marshal",
+            "class": "ELITE_FOUR",
+            "sprite": "marshal.png",
+            "team": [538, 539, 534, 620],
+            "dialogue": {
+              "intro": ["Marshal: The strength of body and mind — that is Fighting-type mastery.", "Show me what you're made of!"],
+              "player_won": ["Marshal: You have both strength and focus. I acknowledge you!"],
+              "player_lost": ["Marshal: Your spirit fights, but your body must follow."]
+            },
+            "rewards": { "balls": 15 },
+            "is_boss_battle": true
+          },
+          {
+            "name": "Grimsley",
+            "class": "ELITE_FOUR",
+            "sprite": "grimsley.png",
+            "team": [560, 510, 625, 553],
+            "dialogue": {
+              "intro": [
+                "Grimsley: Winning and losing are two sides of the same coin.",
+                "I don't care which side you land on — as long as the battle is interesting."
+              ],
+              "player_won": ["Grimsley: Ha. You called my bluff. Well played."],
+              "player_lost": ["Grimsley: When you gamble, you must be prepared to lose everything."]
+            },
+            "rewards": { "balls": 15 },
+            "is_boss_battle": true
+          },
+          {
+            "name": "Caitlin",
+            "class": "ELITE_FOUR",
+            "sprite": "caitlin.png",
+            "team": [518, 576, 579, 561],
+            "dialogue": {
+              "intro": [
+                "Caitlin: I've been waiting... for a trainer worthy of a proper challenge.",
+                "I am Caitlin. I hope you don't disappoint me.",
+                "Psychic-types see through everything — even your strategy."
+              ],
+              "player_won": ["Caitlin: You saw through my Pokémon too. Congratulations."],
+              "player_lost": ["Caitlin: I saw every move before you made it."]
+            },
+            "rewards": { "balls": 15 },
+            "is_boss_battle": true
+          }
+        ],
+        "leader": {
+          "name": "Alder",
+          "class": "CHAMPION",
+          "sprite": "alder.png",
+          "team": [617, 626, 621, 589, 606, 637],
+          "dialogue": {
+            "intro": [
+              "Alder: So. You've come.",
+              "I've been up here thinking... about what Pokémon battles mean.",
+              "And then you walk in — eyes full of conviction.",
+              "I used to have that look too. Before I lost my partner.",
+              "Show me that your bond can still reach that place.",
+              "Come. Let this be the battle I remember."
+            ],
+            "player_won": [
+              "Alder: Ha! Ha ha ha!",
+              "You've done it. You're the new Unova Champion.",
+              "But — wait. What's that roaring from outside?",
+              "N's Castle is rising! The battle isn't over yet, Champion."
+            ],
+            "player_lost": ["Alder: The bond is there — but it needs more time.", "Come back. I'll be here whenever you're ready."]
+          },
+          "rewards": { "balls": 20 },
+          "is_boss_battle": true,
+          "victory_flag": "beat_unova_champion"
+        },
+        "post_champion_event": {
+          "type": "trainer_battle",
+          "trainer": {
+            "name": "N",
+            "class": "PKMN_TRAINER",
+            "sprite": "n.png",
+            "team": [644, 584, 565, 601, 571, 598],
+            "rewards": { "balls": 10 },
+            "victory_flag": "defeated_n_castle",
+            "dialogue": {
+              "intro": [
+                "N: {player_name}. You became Champion. But my castle stands.",
+                "Zekrom answers to me — the hero of ideals.",
+                "Face me. And if your truth is real — prove it here."
+              ],
+              "player_won": [
+                "N: You won. Your truth... it burned through everything I prepared.",
+                "Maybe... ideals and truth don't have to be enemies.",
+                "I need time. Time to understand what I missed."
+              ],
+              "player_lost": ["N: Ideals that are unwavering — that is what wins.", "Pokémon liberation will come to Unova."]
+            }
+          },
+          "condition": "beat_alder",
+          "flag_check": "defeated_n_castle"
+        },
+        "final_event": {
+          "type": "trainer_battle",
+          "trainer": {
+            "name": "Ghetsis",
+            "class": "ROCKET_LEADER",
+            "sprite": "ghetsis.png",
+            "team": [563, 626, 537, 625, 604, 635],
+            "rewards": { "balls": 15 },
+            "victory_flag": "beat_unova_champion",
+            "dialogue": {
+              "intro": [
+                "Ghetsis: Hahaha. So N lost to a child.",
+                "No matter. N was never the point.",
+                "I will take that Legendary Pokémon — and with it, I will rule this world!",
+                "No one can stop me now. ABSOLUTELY NO ONE!"
+              ],
+              "player_won": [
+                "Ghetsis: Im...possible. A child...defeated me?!",
+                "Looker: Stand down, Ghetsis. International Police — it's over.",
+                "You received the MASTER BALL!"
+              ],
+              "player_lost": ["Ghetsis: Pathetic. Not even worthy of witnessing my new world."]
+            }
+          },
+          "condition": "defeated_n_castle",
+          "flag_check": "beat_unova_champion"
+        },
+        "requirements": { "badges": 8, "fail_text": "You need all 8 Unova Gym Badges to challenge the Pokémon League." }
+      },
+      "travel_options": [
+        { "text": "Victory Road", "target_area": "VICTORY_ROAD_UNOVA" },
+        { "text": "N's Castle", "target_area": "NS_CASTLE" }
+      ],
+      "explore_options": [
+        { "text": "Heal", "action": "HEAL" },
+        { "text": "Shop", "action": "SHOP" },
+        { "text": "CHALLENGE LEAGUE", "action": "GYM" }
+      ]
+    },
+    "DREAMYARD": {
+      "area_type": "dungeon",
+      "route_name": "Dreamyard",
+      "region": "UNOVA",
+      "battle_type": "grass",
+      "wild_pool_percentages": "UNOVA_DREAMYARD_PERCENTAGES",
+      "min_rounds": 2,
+      "backgrounds": { "main": "dreamyard.png" },
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        {
+          "text": "Find Elemental Monkey",
+          "action": "NPC",
+          "target": "dreamyard_monkey",
+          "flag_condition": "not got_elemental_monkey",
+          "color": "GOLD"
+        },
+        { "text": "Striaton City", "action": "EXIT", "target_area": "STRIATON_CITY", "condition": "can_exit", "color": "RED" }
+      ]
+    },
+    "WELLSPRING_CAVE": {
+      "area_type": "dungeon",
+      "route_name": "Wellspring Cave",
+      "region": "UNOVA",
+      "battle_type": "cave",
+      "wild_pool_percentages": "UNOVA_WELLSPRING_CAVE_PERCENTAGES",
+      "min_rounds": 2,
+      "backgrounds": { "main": "wellspring_cave.png", "battle": "battle_wellspring_cave.png" },
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "Route 3", "action": "EXIT", "target_area": "UNOVA_ROUTE_3", "condition": "can_exit", "color": "RED" }
+      ]
+    },
+    "PINWHEEL_FOREST": {
+      "area_type": "dungeon",
+      "route_name": "Pinwheel Forest",
+      "region": "UNOVA",
+      "battle_type": "grass",
+      "wild_pool_percentages": "UNOVA_PINWHEEL_FOREST_PERCENTAGES",
+      "min_rounds": 2,
+      "backgrounds": { "main": "pinwheel_forest.png", "battle": "battle_pinwheel_forest.png" },
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        {
+          "text": "Chase Team Plasma Through Forest",
+          "action": "NPC",
+          "target": "plasma_pinwheel",
+          "condition": "has_basic_badge",
+          "flag_condition": "not plasma_pinwheel_cleared",
+          "color": "GOLD"
+        },
+        { "text": "Lostlorn Forest", "action": "EXIT", "target_area": "LOSTLORN_FOREST", "condition": "can_exit", "color": "GOLD" },
+        { "text": "Nacrene City", "action": "EXIT", "target_area": "NACRENE_CITY", "condition": "can_exit", "color": "RED" },
+        { "text": "Route 3", "action": "EXIT", "target_area": "UNOVA_ROUTE_3", "condition": "can_exit", "color": "RED" },
+        { "text": "CASTELIA CITY", "action": "EXIT", "target_area": "CASTELIA_CITY", "condition": "can_exit", "color": "RED" }
+      ]
+    },
+    "LOSTLORN_FOREST": {
+      "area_type": "dungeon",
+      "route_name": "Lostlorn Forest",
+      "region": "UNOVA",
+      "battle_type": "grass",
+      "wild_pool_percentages": "UNOVA_LOSTLORN_FOREST_PERCENTAGES",
+      "min_rounds": 2,
+      "backgrounds": { "main": "lostlorn_forest.png" },
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "Pinwheel Forest", "action": "EXIT", "target_area": "PINWHEEL_FOREST", "condition": "can_exit", "color": "RED" }
+      ]
+    },
+    "CASTELIA_SEWERS": {
+      "area_type": "dungeon",
+      "route_name": "Castelia Sewers",
+      "region": "UNOVA",
+      "battle_type": "indoor",
+      "wild_pool_percentages": "UNOVA_CASTELIA_SEWERS_PERCENTAGES",
+      "min_rounds": 2,
+      "backgrounds": { "main": "castelia_sewers.png", "battle": "battle_castelia_sewers.png" },
+      "trainer_pool": [
+        {
+          "name": "Plasma Grunt",
+          "class": "GALACTIC",
+          "sprite": "plasma_grunt.png",
+          "team": [509, 568],
+          "rewards": { "balls": 3 },
+          "dialogue": {
+            "intro": ["Team Plasma owns these sewers!"],
+            "player_won": ["Fall back!"],
+            "player_lost": ["For Lord Ghetsis!"]
+          }
+        },
+        {
+          "name": "Plasma Grunt",
+          "class": "GALACTIC",
+          "sprite": "plasma_grunt.png",
+          "team": [543, 551],
+          "rewards": { "balls": 3 },
+          "dialogue": {
+            "intro": ["You won't stop Team Plasma!"],
+            "player_won": ["How dare you..."],
+            "player_lost": ["Liberation is justice!"]
+          }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        {
+          "text": "BATTLE GALACTIC",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GOLD",
+          "flag_condition": "not plasma_castelia_cleared"
+        },
+        { "text": "Castelia City", "action": "EXIT", "target_area": "CASTELIA_CITY", "condition": "can_exit", "color": "RED" }
+      ]
+    },
+    "DESERT_RESORT": {
+      "area_type": "dungeon",
+      "route_name": "Desert Resort",
+      "region": "UNOVA",
+      "battle_type": "field",
+      "wild_pool_percentages": "UNOVA_DESERT_RESORT_PERCENTAGES",
+      "min_rounds": 2,
+      "backgrounds": { "main": "desert_resort.png", "battle": "battle_desert_resort.png" },
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "Relic Castle", "action": "EXIT", "target_area": "RELIC_CASTLE", "condition": "can_exit", "color": "GOLD" },
+        { "text": "Route 4", "action": "EXIT", "target_area": "UNOVA_ROUTE_4", "condition": "can_exit", "color": "RED" }
+      ]
+    },
+    "RELIC_CASTLE": {
+      "area_type": "dungeon",
+      "route_name": "Relic Castle",
+      "region": "UNOVA",
+      "battle_type": "cave",
+      "wild_pool_percentages": "UNOVA_RELIC_CASTLE_PERCENTAGES",
+      "min_rounds": 3,
+      "backgrounds": { "main": "relic_castle.png", "battle": "battle_relic_castle.png" },
+      "trainer_pool": [
+        {
+          "name": "Plasma Grunt",
+          "class": "GALACTIC",
+          "sprite": "plasma_grunt.png",
+          "team": [562, 551],
+          "rewards": { "balls": 3 },
+          "dialogue": {
+            "intro": ["This castle will prove Team Plasma's power!"],
+            "player_won": ["We'll be back!"],
+            "player_lost": ["For the liberation!"]
+          }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        {
+          "text": "BATTLE PLASMA GRUNT",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GOLD",
+          "flag_condition": "not plasma_relic_castle_cleared"
+        },
+        { "text": "Encounter Volcarona (Deep)", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD" },
+        { "text": "Desert Resort", "action": "EXIT", "target_area": "DESERT_RESORT", "condition": "can_exit", "color": "RED" },
+        { "text": "DRIFTVEIL CITY", "action": "EXIT", "target_area": "DRIFTVEIL_CITY", "condition": "can_exit", "color": "RED" }
+      ],
+      "area_boss": { "id": 637, "name": "Volcarona", "victory_flag": "RELIC_CASTLE_boss_defeated" }
+    },
+    "COLD_STORAGE": {
+      "area_type": "dungeon",
+      "route_name": "Cold Storage",
+      "region": "UNOVA",
+      "battle_type": "indoor",
+      "wild_pool_percentages": "UNOVA_COLD_STORAGE_PERCENTAGES",
+      "min_rounds": 2,
+      "backgrounds": { "main": "cold_storage.png", "battle": "battle_cold_storage.png" },
+      "trainer_pool": [
+        {
+          "name": "Plasma Grunt",
+          "class": "GALACTIC",
+          "sprite": "plasma_grunt.png",
+          "team": [582, 613],
+          "rewards": { "balls": 3 },
+          "dialogue": {
+            "intro": ["Team Plasma is using this facility!"],
+            "player_won": ["Retreat!"],
+            "player_lost": ["Cold enough for you?"]
+          }
+        },
+        {
+          "name": "Commander Zinzolin",
+          "class": "GALACTIC",
+          "sprite": "zinzolin.png",
+          "is_boss_battle": true,
+          "team": [582, 613, 615],
+          "rewards": { "balls": 8 },
+          "dialogue": {
+            "intro": ["I am Zinzolin of the Seven Sages. You are far too persistent."],
+            "player_won": ["...My cold logic failed me."],
+            "player_lost": ["Team Plasma's grip on Unova is absolute."]
+          }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE PLASMA", "action": "TRAINER", "condition": "has_trainers", "color": "GOLD", "flag_condition": "not cold_storage_cleared" },
+        { "text": "Driftveil City", "action": "EXIT", "target_area": "DRIFTVEIL_CITY", "condition": "can_exit", "color": "RED" }
+      ]
+    },
+    "CHARGESTONE_CAVE": {
+      "area_type": "dungeon",
+      "route_name": "Chargestone Cave",
+      "region": "UNOVA",
+      "battle_type": "cave",
+      "wild_pool_percentages": "UNOVA_CHARGESTONE_CAVE_PERCENTAGES",
+      "min_rounds": 3,
+      "backgrounds": { "main": "chargestone_cave.png", "battle": "battle_chargestone_cave.png" },
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        {
+          "text": "Battle N in the Cave",
+          "action": "NPC",
+          "target": "n_chargestone",
+          "condition": "has_quake_badge",
+          "flag_condition": "not defeated_n_chargestone",
+          "color": "GOLD"
+        },
+        { "text": "Route 6", "action": "EXIT", "target_area": "UNOVA_ROUTE_6", "condition": "can_exit", "color": "RED" },
+        { "text": "Mistralton City", "action": "EXIT", "target_area": "MISTRALTON_CITY", "condition": "can_exit", "color": "RED" }
+      ]
+    },
+    "MISTRALTON_CAVE": {
+      "area_type": "dungeon",
+      "route_name": "Mistralton Cave",
+      "region": "UNOVA",
+      "battle_type": "cave",
+      "wild_pool_percentages": "UNOVA_MISTRALTON_CAVE_PERCENTAGES",
+      "min_rounds": 2,
+      "backgrounds": { "main": "mistralton_cave.png" },
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "Encounter Cobalion", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD" },
+        { "text": "Mistralton City", "action": "EXIT", "target_area": "MISTRALTON_CITY", "condition": "can_exit", "color": "RED" }
+      ],
+      "area_boss": { "id": 638, "name": "Cobalion", "victory_flag": "MISTRALTON_CAVE_boss_defeated" }
+    },
+    "TWIST_MOUNTAIN": {
+      "area_type": "dungeon",
+      "route_name": "Twist Mountain",
+      "region": "UNOVA",
+      "battle_type": "cave",
+      "wild_pool_percentages": "UNOVA_TWIST_MOUNTAIN_PERCENTAGES",
+      "min_rounds": 3,
+      "backgrounds": { "main": "twist_mountain.png", "battle": "battle_twist_mountain.png" },
+      "trainer_pool": [
+        {
+          "name": "Worker Boris",
+          "class": "HIKER",
+          "sprite": "hiker.png",
+          "team": [525, 529],
+          "rewards": { "balls": 2 }
+        },
+        {
+          "name": "Veteran Claude",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [525, 614, 530],
+          "is_boss_battle": true,
+          "rewards": { "balls": 5 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
+        { "text": "Route 7", "action": "EXIT", "target_area": "UNOVA_ROUTE_7", "condition": "can_exit", "color": "RED" },
+        { "text": "Icirrus City", "action": "EXIT", "target_area": "ICIRRUS_CITY", "condition": "can_exit", "color": "RED" }
+      ]
+    },
+    "MOOR_OF_ICIRRUS": {
+      "area_type": "dungeon",
+      "route_name": "Moor of Icirrus",
+      "region": "UNOVA",
+      "battle_type": "grass",
+      "wild_pool_percentages": "UNOVA_MOOR_PERCENTAGES",
+      "min_rounds": 2,
+      "backgrounds": { "main": "moor_of_icirrus.png" },
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "Icirrus City", "action": "EXIT", "target_area": "ICIRRUS_CITY", "condition": "can_exit", "color": "RED" },
+        { "text": "ROUTE 8", "action": "EXIT", "target_area": "UNOVA_ROUTE_8", "condition": "can_exit", "color": "RED" }
+      ]
+    },
+    "DRAGONSPIRAL_TOWER": {
+      "area_type": "dungeon",
+      "route_name": "Dragonspiral Tower",
+      "region": "UNOVA",
+      "battle_type": "indoor",
+      "wild_pool_percentages": "UNOVA_DRAGONSPIRAL_PERCENTAGES",
+      "min_rounds": 3,
+      "backgrounds": { "main": "dragonspiral_tower.png", "battle": "battle_dragonspiral_tower.png" },
+      "trainer_pool": [
+        {
+          "name": "Plasma Grunt",
+          "class": "GALACTIC",
+          "sprite": "plasma_grunt.png",
+          "team": [519, 544],
+          "rewards": { "balls": 3 }
+        },
+        {
+          "name": "Plasma Grunt",
+          "class": "GALACTIC",
+          "sprite": "plasma_grunt.png",
+          "team": [509, 551],
+          "rewards": { "balls": 3 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        {
+          "text": "BATTLE PLASMA GRUNT",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GOLD",
+          "flag_condition": "not plasma_dragonspiral_cleared"
+        },
+        { "text": "Encounter Zekrom (post-story)", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD" },
+        { "text": "Icirrus City", "action": "EXIT", "target_area": "ICIRRUS_CITY", "condition": "can_exit", "color": "RED" }
+      ],
+      "area_boss": { "id": 644, "name": "Zekrom", "victory_flag": "DRAGONSPIRAL_TOWER_boss_defeated" }
+    },
+    "ABUNDANT_SHRINE": {
+      "area_type": "dungeon",
+      "route_name": "Abundant Shrine",
+      "region": "UNOVA",
+      "battle_type": "grass",
+      "wild_pool_percentages": "UNOVA_ABUNDANT_SHRINE_PERCENTAGES",
+      "min_rounds": 2,
+      "backgrounds": { "main": "abundant_shrine.png" },
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "Encounter Landorus", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD" },
+        { "text": "Route 14", "action": "EXIT", "target_area": "UNOVA_ROUTE_14", "condition": "can_exit", "color": "RED" }
+      ],
+      "area_boss": { "id": 645, "name": "Landorus", "victory_flag": "ABUNDANT_SHRINE_boss_defeated" }
+    },
+    "GIANT_CHASM": {
+      "area_type": "dungeon",
+      "route_name": "Giant Chasm",
+      "region": "UNOVA",
+      "battle_type": "cave",
+      "wild_pool_percentages": "UNOVA_GIANT_CHASM_PERCENTAGES",
+      "min_rounds": 3,
+      "backgrounds": { "main": "giant_chasm.png", "battle": "battle_giant_chasm.png" },
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "Encounter Kyurem", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD" },
+        { "text": "Lacunosa Town", "action": "EXIT", "target_area": "LACUNOSA_TOWN", "condition": "can_exit", "color": "RED" }
+      ],
+      "area_boss": { "id": 646, "name": "Kyurem", "victory_flag": "GIANT_CHASM_boss_defeated" }
+    },
+    "NS_CASTLE": {
+      "area_type": "dungeon",
+      "route_name": "N's Castle",
+      "region": "UNOVA",
+      "battle_type": "indoor",
+      "wild_pool_percentages": null,
+      "min_rounds": 0,
+      "backgrounds": { "main": "ns_castle.png", "battle": "battle_ns_castle.png" },
+      "trainer_pool": [
+        {
+          "name": "Plasma Sage Bronius",
+          "class": "GALACTIC",
+          "sprite": "plasma_sage.png",
+          "is_boss_battle": true,
+          "team": [563, 609],
+          "rewards": { "balls": 8 }
+        },
+        {
+          "name": "Plasma Sage Ryoku",
+          "class": "GALACTIC",
+          "sprite": "plasma_sage.png",
+          "is_boss_battle": true,
+          "team": [561, 576],
+          "rewards": { "balls": 8 }
+        },
+        {
+          "name": "Plasma Sage Gorm",
+          "class": "GALACTIC",
+          "sprite": "plasma_sage.png",
+          "is_boss_battle": true,
+          "team": [538, 534],
+          "rewards": { "balls": 8 }
+        }
+      ],
+      "route_menu": [
+        { "text": "BATTLE PLASMA SAGE", "action": "TRAINER", "condition": "has_trainers", "color": "GOLD" },
+        { "text": "Pokémon League", "action": "EXIT", "target_area": "UNOVA_POKEMON_LEAGUE", "condition": "can_exit", "color": "RED" }
+      ]
+    },
+    "VICTORY_ROAD_UNOVA": {
+      "area_type": "dungeon",
+      "route_name": "Victory Road",
+      "region": "UNOVA",
+      "battle_type": "cave",
+      "wild_pool_percentages": "UNOVA_VICTORY_ROAD_PERCENTAGES",
+      "min_rounds": 3,
+      "backgrounds": { "main": "victory_road_unova.png", "battle": "battle_victory_road_unova.png" },
+      "trainer_pool": [
+        {
+          "name": "Ace Trainer Shanta",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "is_boss_battle": true,
+          "team": [612, 576],
+          "rewards": { "balls": 5 }
+        },
+        {
+          "name": "Ace Trainer Rick",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "is_boss_battle": true,
+          "team": [625, 637],
+          "rewards": { "balls": 5 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
+        {
+          "text": "Final Rival Battle",
+          "action": "NPC",
+          "target": "cheren_victory_road",
+          "flag_condition": "not defeated_rival_victory_road",
+          "color": "GOLD"
+        },
+        { "text": "Encounter Terrakion", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD" },
+        { "text": "Route 10", "action": "EXIT", "target_area": "UNOVA_ROUTE_10", "condition": "can_exit", "color": "RED" },
+        { "text": "Pokémon League", "action": "EXIT", "target_area": "UNOVA_POKEMON_LEAGUE", "condition": "can_exit", "color": "RED" },
+        { "text": "ROUTE 23", "action": "EXIT", "target_area": "UNOVA_ROUTE_23", "condition": "can_exit", "color": "RED" }
+      ],
+      "area_boss": { "id": 639, "name": "Terrakion", "victory_flag": "VICTORY_ROAD_UNOVA_boss_defeated" }
+    },
+    "UNITY_TOWER": {
+      "area_type": "dungeon",
+      "route_name": "Unity Tower",
+      "region": "UNOVA",
+      "battle_type": "indoor",
+      "wild_pool_percentages": null,
+      "min_rounds": 0,
+      "backgrounds": { "main": "unity_tower.png" },
+      "route_menu": [
+        { "text": "Castelia City", "action": "EXIT", "target_area": "CASTELIA_CITY", "condition": "can_exit", "color": "RED" }
+      ]
+    },
+    "BATTLE_SUBWAY": {
+      "area_type": "dungeon",
+      "route_name": "Battle Subway",
+      "region": "UNOVA",
+      "battle_type": "indoor",
+      "wild_pool_percentages": null,
+      "min_rounds": 0,
+      "backgrounds": { "main": "battle_subway.png" },
+      "route_menu": [
+        { "text": "CHALLENGE SUBWAY", "action": "TRAINER", "condition": "has_trainers", "color": "GOLD" },
+        { "text": "Nimbasa City", "action": "EXIT", "target_area": "NIMBASA_CITY", "condition": "can_exit", "color": "RED" }
+      ]
+    },
+    "UNOVA_ROUTE_1": {
+      "area_type": "wild_route",
+      "route_name": "Route 1",
+      "region": "UNOVA",
+      "battle_type": "grass",
+      "wild_pool_percentages": "UNOVA_ROUTE_1_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Youngster Yancy",
+          "class": "YOUNGSTER",
+          "sprite": "youngster.png",
+          "team": [504],
+          "rewards": { "balls": 2 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "Nuvema Town", "action": "EXIT", "target_area": "NUVEMA_TOWN", "condition": "can_exit", "color": "RED" },
+        { "text": "Accumula Town", "action": "EXIT", "target_area": "ACCUMULA_TOWN", "condition": "can_exit", "color": "RED" },
+        { "text": "ROUTE 17", "action": "EXIT", "target_area": "UNOVA_ROUTE_17", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "ACCUMULA_TOWN"
+    },
+    "UNOVA_ROUTE_2": {
+      "area_type": "wild_route",
+      "route_name": "Route 2",
+      "region": "UNOVA",
+      "battle_type": "grass",
+      "wild_pool_percentages": "UNOVA_ROUTE_2_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Youngster Dale",
+          "class": "YOUNGSTER",
+          "sprite": "youngster.png",
+          "team": [504, 506],
+          "rewards": { "balls": 2 }
+        },
+        {
+          "name": "Lass Mali",
+          "class": "LASS",
+          "sprite": "lass.png",
+          "team": [509, 511],
+          "rewards": { "balls": 2 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "Meet Alder", "action": "NPC", "target": "alder_route2", "flag_condition": "not met_alder", "color": "GOLD" },
+        { "text": "Battle N (Route 2)", "action": "NPC", "target": "n_route2_battle", "flag_condition": "not defeated_n_route2", "color": "GOLD" },
+        { "text": "Accumula Town", "action": "EXIT", "target_area": "ACCUMULA_TOWN", "condition": "can_exit", "color": "RED" },
+        { "text": "Striaton City", "action": "EXIT", "target_area": "STRIATON_CITY", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "STRIATON_CITY"
+    },
+    "UNOVA_ROUTE_3": {
+      "area_type": "wild_route",
+      "route_name": "Route 3",
+      "region": "UNOVA",
+      "battle_type": "grass",
+      "wild_pool_percentages": "UNOVA_ROUTE_3_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "School Kid Edgar",
+          "class": "SCHOOL_KID",
+          "sprite": "school_kid_m.png",
+          "team": [506, 522],
+          "rewards": { "balls": 2 }
+        },
+        {
+          "name": "Nursery Aide Autumn",
+          "class": "LASS",
+          "sprite": "lass.png",
+          "team": [511, 513],
+          "rewards": { "balls": 2 }
+        },
+        {
+          "name": "Preschooler Tyrone",
+          "class": "YOUNGSTER",
+          "sprite": "youngster.png",
+          "team": [509],
+          "rewards": { "balls": 2 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "Wellspring Cave", "action": "EXIT", "target_area": "WELLSPRING_CAVE", "condition": "can_exit", "color": "RED" },
+        { "text": "Striaton City", "action": "EXIT", "target_area": "STRIATON_CITY", "condition": "can_exit", "color": "RED" },
+        { "text": "Nacrene City", "action": "EXIT", "target_area": "NACRENE_CITY", "condition": "can_exit", "color": "RED" },
+        { "text": "PINWHEEL FOREST", "action": "EXIT", "target_area": "PINWHEEL_FOREST", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "NACRENE_CITY"
+    },
+    "UNOVA_ROUTE_4": {
+      "area_type": "wild_route",
+      "route_name": "Route 4",
+      "region": "UNOVA",
+      "battle_type": "field",
+      "wild_pool_percentages": "UNOVA_ROUTE_4_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Backpacker Patrick",
+          "class": "HIKER",
+          "sprite": "hiker.png",
+          "team": [551, 554],
+          "rewards": { "balls": 2 }
+        },
+        {
+          "name": "Ranger Andreas",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [554, 556],
+          "rewards": { "balls": 3 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "Desert Resort", "action": "EXIT", "target_area": "DESERT_RESORT", "condition": "can_exit", "color": "GOLD" },
+        { "text": "Castelia City", "action": "EXIT", "target_area": "CASTELIA_CITY", "condition": "can_exit", "color": "RED" },
+        { "text": "Nimbasa City", "action": "EXIT", "target_area": "NIMBASA_CITY", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "NIMBASA_CITY"
+    },
+    "UNOVA_ROUTE_5": {
+      "area_type": "wild_route",
+      "route_name": "Route 5",
+      "region": "UNOVA",
+      "battle_type": "grass",
+      "wild_pool_percentages": "UNOVA_ROUTE_5_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Musician Preston",
+          "class": "GENTLEMAN",
+          "sprite": "gentleman.png",
+          "team": [572, 587],
+          "rewards": { "balls": 2 }
+        },
+        {
+          "name": "Janitor Melvin",
+          "class": "SAILOR",
+          "sprite": "sailor.png",
+          "team": [568, 569],
+          "rewards": { "balls": 2 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "Nimbasa City", "action": "EXIT", "target_area": "NIMBASA_CITY", "condition": "can_exit", "color": "RED" },
+        { "text": "Driftveil City", "action": "EXIT", "target_area": "DRIFTVEIL_CITY", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "DRIFTVEIL_CITY"
+    },
+    "UNOVA_ROUTE_6": {
+      "area_type": "wild_route",
+      "route_name": "Route 6",
+      "region": "UNOVA",
+      "battle_type": "grass",
+      "wild_pool_percentages": "UNOVA_ROUTE_6_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Doctor Wayne",
+          "class": "GENTLEMAN",
+          "sprite": "gentleman.png",
+          "team": [590, 531],
+          "rewards": { "balls": 2 }
+        },
+        {
+          "name": "Pokémon Ranger Lois",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "team": [585, 580],
+          "rewards": { "balls": 3 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "Driftveil City", "action": "EXIT", "target_area": "DRIFTVEIL_CITY", "condition": "can_exit", "color": "RED" },
+        { "text": "Chargestone Cave", "action": "EXIT", "target_area": "CHARGESTONE_CAVE", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "CHARGESTONE_CAVE"
+    },
+    "UNOVA_ROUTE_7": {
+      "area_type": "wild_route",
+      "route_name": "Route 7",
+      "region": "UNOVA",
+      "battle_type": "grass",
+      "wild_pool_percentages": "UNOVA_ROUTE_7_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Ace Trainer Cesar",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [585, 613],
+          "rewards": { "balls": 3 }
+        },
+        {
+          "name": "Pokémon Ranger Jenna",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "team": [619, 585],
+          "rewards": { "balls": 3 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "Mistralton City", "action": "EXIT", "target_area": "MISTRALTON_CITY", "condition": "can_exit", "color": "RED" },
+        { "text": "Twist Mountain", "action": "EXIT", "target_area": "TWIST_MOUNTAIN", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "TWIST_MOUNTAIN"
+    },
+    "UNOVA_ROUTE_8": {
+      "area_type": "wild_route",
+      "route_name": "Route 8",
+      "region": "UNOVA",
+      "battle_type": "grass",
+      "wild_pool_percentages": "UNOVA_ROUTE_8_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Ace Trainer Dennis",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [613, 615],
+          "rewards": { "balls": 3 }
+        },
+        {
+          "name": "Pokémon Ranger Thalia",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "team": [618, 592],
+          "rewards": { "balls": 3 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "Icirrus City", "action": "EXIT", "target_area": "ICIRRUS_CITY", "condition": "can_exit", "color": "RED" },
+        { "text": "Moor of Icirrus", "action": "EXIT", "target_area": "MOOR_OF_ICIRRUS", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "ICIRRUS_CITY"
+    },
+    "UNOVA_ROUTE_9": {
+      "area_type": "wild_route",
+      "route_name": "Route 9",
+      "region": "UNOVA",
+      "battle_type": "field",
+      "wild_pool_percentages": "UNOVA_ROUTE_9_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Roughneck Reese",
+          "class": "BLACKBELT",
+          "sprite": "blackbelt.png",
+          "team": [626, 559],
+          "rewards": { "balls": 3 }
+        },
+        {
+          "name": "Ace Trainer Shanta",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "team": [624, 628],
+          "rewards": { "balls": 3 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "Icirrus City", "action": "EXIT", "target_area": "ICIRRUS_CITY", "condition": "can_exit", "color": "RED" },
+        { "text": "Opelucid City", "action": "EXIT", "target_area": "OPELUCID_CITY", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "OPELUCID_CITY"
+    },
+    "UNOVA_ROUTE_10": {
+      "area_type": "wild_route",
+      "route_name": "Route 10",
+      "region": "UNOVA",
+      "battle_type": "field",
+      "wild_pool_percentages": "UNOVA_ROUTE_10_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Ace Trainer Shanta",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "is_boss_battle": true,
+          "team": [587, 537],
+          "rewards": { "balls": 3 }
+        },
+        {
+          "name": "Veteran Edgar",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "is_boss_battle": true,
+          "team": [576, 539],
+          "rewards": { "balls": 5 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
+        { "text": "Opelucid City", "action": "EXIT", "target_area": "OPELUCID_CITY", "condition": "can_exit", "color": "RED" },
+        { "text": "Victory Road", "action": "EXIT", "target_area": "VICTORY_ROAD_UNOVA", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "VICTORY_ROAD_UNOVA"
+    },
+    "UNOVA_ROUTE_11": {
+      "area_type": "wild_route",
+      "route_name": "Route 11",
+      "region": "UNOVA",
+      "battle_type": "grass",
+      "wild_pool_percentages": "UNOVA_ROUTE_11_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Ace Trainer Beckett",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [507, 587],
+          "rewards": { "balls": 3 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "Opelucid City", "action": "EXIT", "target_area": "OPELUCID_CITY", "condition": "can_exit", "color": "RED" },
+        { "text": "Lacunosa Town", "action": "EXIT", "target_area": "LACUNOSA_TOWN", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "LACUNOSA_TOWN"
+    },
+    "UNOVA_ROUTE_12": {
+      "area_type": "wild_route",
+      "route_name": "Route 12",
+      "region": "UNOVA",
+      "battle_type": "grass",
+      "wild_pool_percentages": "UNOVA_ROUTE_12_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Fisherman Bruce",
+          "class": "FISHERMAN",
+          "sprite": "fisherman.png",
+          "team": [550, 592],
+          "rewards": { "balls": 2 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "Lacunosa Town", "action": "EXIT", "target_area": "LACUNOSA_TOWN", "condition": "can_exit", "color": "RED" },
+        { "text": "Undella Town", "action": "EXIT", "target_area": "UNDELLA_TOWN", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "UNDELLA_TOWN"
+    },
+    "UNOVA_ROUTE_13": {
+      "area_type": "wild_route",
+      "route_name": "Route 13",
+      "region": "UNOVA",
+      "battle_type": "field",
+      "wild_pool_percentages": "UNOVA_ROUTE_13_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Black Belt Jarrett",
+          "class": "BLACKBELT",
+          "sprite": "blackbelt.png",
+          "team": [539, 538],
+          "rewards": { "balls": 2 }
+        },
+        {
+          "name": "Ace Trainer Robbie",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [626, 621],
+          "rewards": { "balls": 3 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "Undella Town", "action": "EXIT", "target_area": "UNDELLA_TOWN", "condition": "can_exit", "color": "RED" },
+        { "text": "Lacunosa Town", "action": "EXIT", "target_area": "LACUNOSA_TOWN", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "UNDELLA_TOWN"
+    },
+    "UNOVA_ROUTE_14": {
+      "area_type": "wild_route",
+      "route_name": "Route 14",
+      "region": "UNOVA",
+      "battle_type": "grass",
+      "wild_pool_percentages": "UNOVA_ROUTE_14_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Ace Trainer Junko",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "team": [619, 571],
+          "rewards": { "balls": 3 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "Abundant Shrine", "action": "EXIT", "target_area": "ABUNDANT_SHRINE", "condition": "can_exit", "color": "GOLD" },
+        { "text": "Undella Town", "action": "EXIT", "target_area": "UNDELLA_TOWN", "condition": "can_exit", "color": "RED" },
+        { "text": "ROUTE 15", "action": "EXIT", "target_area": "UNOVA_ROUTE_15", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "UNDELLA_TOWN"
+    },
+    "UNOVA_ROUTE_15": {
+      "area_type": "wild_route",
+      "route_name": "Route 15",
+      "region": "UNOVA",
+      "battle_type": "grass",
+      "wild_pool_percentages": "UNOVA_ROUTE_15_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Veteran Gina",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "is_boss_battle": true,
+          "team": [611, 621],
+          "rewards": { "balls": 5 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
+        { "text": "Route 14", "action": "EXIT", "target_area": "UNOVA_ROUTE_14", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "UNOVA_ROUTE_14"
+    },
+    "UNOVA_ROUTE_16": {
+      "area_type": "wild_route",
+      "route_name": "Route 16",
+      "region": "UNOVA",
+      "battle_type": "grass",
+      "wild_pool_percentages": "UNOVA_ROUTE_16_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Biker Zigzag",
+          "class": "BIKER",
+          "sprite": "biker.png",
+          "team": [509, 510],
+          "rewards": { "balls": 2 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "Nimbasa City", "action": "EXIT", "target_area": "NIMBASA_CITY", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "NIMBASA_CITY"
+    },
+    "UNOVA_ROUTE_17": {
+      "area_type": "wild_route",
+      "route_name": "Route 17",
+      "region": "UNOVA",
+      "battle_type": "field",
+      "can_fish": true,
+      "wild_pool_percentages": "UNOVA_ROUTE_17_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Swimmer Paxton",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [580, 550],
+          "rewards": { "balls": 2 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "Route 18", "action": "EXIT", "target_area": "UNOVA_ROUTE_18", "condition": "can_exit", "color": "RED" },
+        { "text": "ROUTE 1", "action": "EXIT", "target_area": "UNOVA_ROUTE_1", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "UNOVA_ROUTE_18"
+    },
+    "UNOVA_ROUTE_18": {
+      "area_type": "wild_route",
+      "route_name": "Route 18",
+      "region": "UNOVA",
+      "battle_type": "field",
+      "can_fish": true,
+      "wild_pool_percentages": "UNOVA_ROUTE_18_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Veteran Chloris",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "is_boss_battle": true,
+          "team": [631, 632],
+          "rewards": { "balls": 5 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
+        { "text": "Route 17", "action": "EXIT", "target_area": "UNOVA_ROUTE_17", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "UNOVA_ROUTE_17"
+    },
+    "UNOVA_ROUTE_21": {
+      "area_type": "wild_route",
+      "route_name": "Route 21",
+      "region": "UNOVA",
+      "battle_type": "field",
+      "can_fish": true,
+      "wild_pool_percentages": "UNOVA_ROUTE_21_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Swimmer Wendy",
+          "class": "SWIMMER",
+          "sprite": "swimmer_f.png",
+          "team": [592, 580],
+          "rewards": { "balls": 2 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "Undella Town", "action": "EXIT", "target_area": "UNDELLA_TOWN", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "UNDELLA_TOWN"
+    },
+    "UNOVA_ROUTE_22": {
+      "area_type": "wild_route",
+      "route_name": "Route 22",
+      "region": "UNOVA",
+      "battle_type": "grass",
+      "wild_pool_percentages": "UNOVA_ROUTE_22_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Ace Trainer Eileen",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "is_boss_battle": true,
+          "team": [627, 636],
+          "rewards": { "balls": 5 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
+        { "text": "Discover Virizion", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD" },
+        { "text": "Opelucid City", "action": "EXIT", "target_area": "OPELUCID_CITY", "condition": "can_exit", "color": "RED" }
+      ],
+      "area_boss": { "id": 640, "name": "Virizion", "victory_flag": "UNOVA_ROUTE_22_boss_defeated" },
+      "next_area": "OPELUCID_CITY"
+    },
+    "UNOVA_ROUTE_23": {
+      "area_type": "wild_route",
+      "route_name": "Route 23",
+      "region": "UNOVA",
+      "battle_type": "mountain",
+      "wild_pool_percentages": "UNOVA_ROUTE_23_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Veteran Claude",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "is_boss_battle": true,
+          "team": [612, 625, 537],
+          "rewards": { "balls": 5 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
+        { "text": "Victory Road", "action": "EXIT", "target_area": "VICTORY_ROAD_UNOVA", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "VICTORY_ROAD_UNOVA"
+    }
+  },
+  "JOURNAL_MISSIONS": [
+    {
+      "id": "unova_m1",
+      "type": "MAIN",
+      "title": "First Pokémon, First Step",
+      "description": "Professor Juniper has three starter Pokémon for you and your friends. Head to her lab in Nuvema Town and choose your partner!",
+      "condition": { "start_region": "UNOVA", "badges_less": 1, "visited_not": "ACCUMULA_TOWN" },
+      "reward": "Starter Pokémon + Pokédex"
+    },
+    {
+      "id": "unova_m2",
+      "type": "MAIN",
+      "title": "Trio Badge",
+      "description": "Challenge one of the Striaton Gym's three leaders. Visit the Dreamyard first to find a Pokémon with a type advantage!",
+      "condition": { "start_region": "UNOVA", "badges_less": 1, "visited": "STRIATON_CITY" },
+      "reward": "Trio Badge"
+    },
+    {
+      "id": "unova_m3",
+      "type": "MAIN",
+      "title": "Basic Badge",
+      "description": "Head to Nacrene City and challenge Lenora, the Normal-type Gym Leader and museum curator.",
+      "condition": { "start_region": "UNOVA", "badges_min": 1, "badges_less": 2, "visited": "NACRENE_CITY" },
+      "reward": "Basic Badge + HM Strength"
+    },
+    {
+      "id": "unova_m4",
+      "type": "MAIN",
+      "title": "Recover the Dragon Skull",
+      "description": "Team Plasma stole an ancient Dragon Skull from the Nacrene Museum. Chase them through Pinwheel Forest and get it back!",
+      "condition": { "start_region": "UNOVA", "badges_min": 2, "flag_not": "plasma_nacrene_cleared" },
+      "reward": "Path through Pinwheel Forest opened"
+    },
+    {
+      "id": "unova_m5",
+      "type": "MAIN",
+      "title": "Insect Badge",
+      "description": "Help Burgh drive Team Plasma from Castelia's sewers, then challenge the Castelia Gym.",
+      "condition": { "start_region": "UNOVA", "badges_min": 2, "badges_less": 3, "visited": "CASTELIA_CITY" },
+      "reward": "Insect Badge"
+    },
+    {
+      "id": "unova_m6",
+      "type": "MAIN",
+      "title": "Bolt Badge",
+      "description": "Nimbasa City's Gym Leader Elesa uses Electric-types. She's on the runway — earn three badges to face her!",
+      "condition": { "start_region": "UNOVA", "badges_min": 3, "badges_less": 4, "visited": "NIMBASA_CITY" },
+      "reward": "Bolt Badge + access to Driftveil"
+    },
+    {
+      "id": "unova_m7",
+      "type": "MAIN",
+      "title": "Quake Badge",
+      "description": "Help Clay root out Team Plasma from the Relic Castle under the Desert Resort, then challenge the Driftveil Gym.",
+      "condition": { "start_region": "UNOVA", "badges_min": 4, "badges_less": 5, "visited": "DRIFTVEIL_CITY" },
+      "reward": "Quake Badge"
+    },
+    {
+      "id": "unova_m8",
+      "type": "MAIN",
+      "title": "Jet Badge",
+      "description": "Pass through Chargestone Cave to Mistralton City and challenge Skyla, the Flying-type Gym Leader.",
+      "condition": { "start_region": "UNOVA", "badges_min": 5, "badges_less": 6, "visited": "MISTRALTON_CITY" },
+      "reward": "Jet Badge + HM Fly"
+    },
+    {
+      "id": "unova_m9",
+      "type": "MAIN",
+      "title": "Freeze Badge",
+      "description": "Team Plasma is climbing Dragonspiral Tower! Stop them before they awaken Zekrom — then challenge Brycen at Icirrus City Gym.",
+      "condition": { "start_region": "UNOVA", "badges_min": 6, "badges_less": 7, "visited": "ICIRRUS_CITY" },
+      "reward": "Freeze Badge"
+    },
+    {
+      "id": "unova_m10",
+      "type": "MAIN",
+      "title": "Legend Badge",
+      "description": "Travel east through Routes 9 and beyond to Opelucid City. Challenge Dragon-type master Drayden to earn the Legend Badge.",
+      "condition": { "start_region": "UNOVA", "badges_min": 7, "badges_less": 8, "visited": "OPELUCID_CITY" },
+      "reward": "Legend Badge"
+    },
+    {
+      "id": "unova_m11",
+      "type": "MAIN",
+      "title": "Conquer the Unova League",
+      "description": "With all 8 badges, head north on Route 10 to Victory Road. Face the Elite Four and Champion Alder!",
+      "condition": { "start_region": "UNOVA", "badges_min": 8, "flag_not": "beat_unova_champion" },
+      "reward": "Unova Champion Title"
+    },
+    {
+      "id": "unova_m12",
+      "type": "MAIN",
+      "title": "N's Castle",
+      "description": "After defeating Alder, N's Castle rises from the ground! Face N and his legendary Zekrom — then stop Ghetsis!",
+      "condition": { "start_region": "UNOVA", "flag": "beat_alder", "flag_not": "beat_unova_champion" },
+      "reward": "Master Ball + Unova at peace"
+    },
+    {
+      "id": "unova_s1",
+      "type": "SIDE",
+      "title": "Team Plasma — Castelia Sewers",
+      "description": "Team Plasma is hiding in Castelia's sewers. Help Burgh flush them out before you can challenge the gym.",
+      "condition": { "start_region": "UNOVA", "visited": "CASTELIA_CITY", "flag_not": "plasma_castelia_cleared" },
+      "reward": "Insect Badge access"
+    },
+    {
+      "id": "unova_s2",
+      "type": "SIDE",
+      "title": "Team Plasma — Cold Storage",
+      "description": "Zinzolin of the Seven Sages is using Driftveil's Cold Storage facility. Clear it out!",
+      "condition": { "start_region": "UNOVA", "visited": "DRIFTVEIL_CITY", "flag_not": "cold_storage_cleared" },
+      "reward": "Story progress"
+    },
+    {
+      "id": "unova_s3",
+      "type": "SIDE",
+      "title": "The Iron Will Pokémon",
+      "description": "Cobalion, the Iron Will Pokémon, is hiding in Mistralton Cave. Are you worthy of its challenge?",
+      "condition": { "start_region": "UNOVA", "visited": "MISTRALTON_CAVE", "flag_not": "MISTRALTON_CAVE_boss_defeated" },
+      "reward": "Cobalion encounter"
+    },
+    {
+      "id": "unova_s4",
+      "type": "SIDE",
+      "title": "The Swords of Justice",
+      "description": "Virizion roams Route 22, and Terrakion guards Victory Road. Seek out both legendary warriors!",
+      "condition": { "start_region": "UNOVA", "badges_min": 7 },
+      "reward": "Virizion + Terrakion encounters"
+    },
+    {
+      "id": "unova_s5",
+      "type": "SIDE",
+      "title": "The Kami Trio",
+      "description": "Tornadus and Thundurus roam Unova's wild routes in storm clouds. After calming them, Landorus appears at the Abundant Shrine.",
+      "condition": { "start_region": "UNOVA", "badges_min": 6 },
+      "reward": "Tornadus + Thundurus + Landorus encounters"
+    },
+    {
+      "id": "unova_s6",
+      "type": "SIDE",
+      "title": "Boundary Pokémon",
+      "description": "Deep in the Giant Chasm near Lacunosa Town, the boundary Pokémon Kyurem waits in the cold.",
+      "condition": { "start_region": "UNOVA", "visited": "GIANT_CHASM", "flag_not": "GIANT_CHASM_boss_defeated" },
+      "reward": "Kyurem encounter"
+    },
+    {
+      "id": "unova_s7",
+      "type": "SIDE",
+      "title": "Ancient Sun Moth",
+      "description": "Deep in Relic Castle, an ancient Fire/Bug Pokémon waits — Volcarona, said to have taken the sun's place in ancient times.",
+      "condition": { "start_region": "UNOVA", "visited": "RELIC_CASTLE", "flag_not": "RELIC_CASTLE_boss_defeated" },
+      "reward": "Volcarona encounter"
+    },
+    {
+      "id": "unova_s8",
+      "type": "SIDE",
+      "title": "N's Dragon",
+      "description": "After the events of N's Castle, Zekrom (or Reshiram) remains at Dragonspiral Tower. Go claim the legendary Dragon!",
+      "condition": { "start_region": "UNOVA", "flag": "beat_unova_champion", "flag_not": "DRAGONSPIRAL_TOWER_boss_defeated" },
+      "reward": "Zekrom/Reshiram encounter"
+    }
+  ],
+  "UNOVA_ROUTE_1": [504, 519],
+  "UNOVA_ROUTE_1_PERCENTAGES": { "504": 60, "519": 40 },
+  "UNOVA_ROUTE_2": [504, 506, 519, 522],
+  "UNOVA_ROUTE_2_PERCENTAGES": { "504": 30, "506": 30, "519": 20, "522": 20 },
+  "UNOVA_ROUTE_3": [504, 506, 509, 511, 513, 522],
+  "UNOVA_ROUTE_3_PERCENTAGES": { "504": 20, "506": 20, "509": 20, "511": 15, "513": 15, "522": 10 },
+  "UNOVA_ROUTE_4": [551, 554, 556, 562],
+  "UNOVA_ROUTE_4_PERCENTAGES": { "551": 35, "554": 30, "556": 20, "562": 15 },
+  "UNOVA_ROUTE_5": [572, 580, 587, 590],
+  "UNOVA_ROUTE_5_PERCENTAGES": { "572": 30, "580": 25, "587": 25, "590": 20 },
+  "UNOVA_ROUTE_6": [531, 580, 585, 590],
+  "UNOVA_ROUTE_6_PERCENTAGES": { "531": 30, "580": 25, "585": 25, "590": 20 },
+  "UNOVA_ROUTE_7": [585, 613, 619, 621],
+  "UNOVA_ROUTE_7_PERCENTAGES": { "585": 30, "613": 25, "619": 25, "621": 20 },
+  "UNOVA_ROUTE_8": [592, 613, 615, 618],
+  "UNOVA_ROUTE_8_PERCENTAGES": { "592": 30, "613": 25, "615": 25, "618": 20 },
+  "UNOVA_ROUTE_9": [559, 624, 626, 628],
+  "UNOVA_ROUTE_9_PERCENTAGES": { "559": 30, "624": 25, "626": 25, "628": 20 },
+  "UNOVA_ROUTE_10": [537, 576, 587, 625],
+  "UNOVA_ROUTE_10_PERCENTAGES": { "537": 25, "576": 25, "587": 25, "625": 25 },
+  "UNOVA_ROUTE_11": [507, 587, 592, 621],
+  "UNOVA_ROUTE_11_PERCENTAGES": { "507": 30, "587": 25, "592": 25, "621": 20 },
+  "UNOVA_ROUTE_12": [550, 580, 592, 594],
+  "UNOVA_ROUTE_12_PERCENTAGES": { "550": 30, "580": 25, "592": 25, "594": 20 },
+  "UNOVA_ROUTE_13": [539, 619, 621, 626],
+  "UNOVA_ROUTE_13_PERCENTAGES": { "539": 25, "619": 25, "621": 25, "626": 25 },
+  "UNOVA_ROUTE_14": [571, 619, 621, 631],
+  "UNOVA_ROUTE_14_PERCENTAGES": { "571": 30, "619": 25, "621": 25, "631": 20 },
+  "UNOVA_ROUTE_15": [611, 612, 621, 631],
+  "UNOVA_ROUTE_15_PERCENTAGES": { "611": 30, "612": 25, "621": 25, "631": 20 },
+  "UNOVA_ROUTE_16": [509, 510, 572, 587],
+  "UNOVA_ROUTE_16_PERCENTAGES": { "509": 30, "510": 25, "572": 25, "587": 20 },
+  "UNOVA_ROUTE_17": [550, 580, 592, 594],
+  "UNOVA_ROUTE_17_PERCENTAGES": { "550": 30, "580": 25, "592": 25, "594": 20 },
+  "UNOVA_ROUTE_18": [631, 632, 550, 594],
+  "UNOVA_ROUTE_18_PERCENTAGES": { "631": 30, "632": 25, "550": 25, "594": 20 },
+  "UNOVA_ROUTE_21": [580, 592, 594, 550],
+  "UNOVA_ROUTE_21_PERCENTAGES": { "580": 30, "592": 25, "594": 25, "550": 20 },
+  "UNOVA_ROUTE_22": [619, 621, 627, 636],
+  "UNOVA_ROUTE_22_PERCENTAGES": { "619": 30, "621": 25, "627": 25, "636": 20 },
+  "UNOVA_ROUTE_23": [612, 614, 625, 628],
+  "UNOVA_ROUTE_23_PERCENTAGES": { "612": 30, "614": 25, "625": 25, "628": 20 },
+  "UNOVA_DREAMYARD_PERCENTAGES": { "517": 35, "518": 30, "574": 20, "575": 15 },
+  "UNOVA_DREAMYARD": [517, 518, 574, 575],
+  "UNOVA_WELLSPRING_CAVE_PERCENTAGES": { "529": 40, "530": 35, "524": 25 },
+  "UNOVA_WELLSPRING_CAVE": [524, 529, 530],
+  "UNOVA_PINWHEEL_FOREST_PERCENTAGES": { "511": 25, "513": 25, "515": 25, "519": 25 },
+  "UNOVA_PINWHEEL_FOREST": [511, 513, 515, 519],
+  "UNOVA_LOSTLORN_FOREST_PERCENTAGES": { "540": 35, "548": 30, "511": 20, "619": 15 },
+  "UNOVA_LOSTLORN_FOREST": [511, 540, 548, 619],
+  "UNOVA_CASTELIA_SEWERS_PERCENTAGES": { "509": 35, "568": 35, "543": 30 },
+  "UNOVA_CASTELIA_SEWERS": [509, 543, 568],
+  "UNOVA_DESERT_RESORT_PERCENTAGES": { "551": 30, "554": 25, "556": 25, "562": 20 },
+  "UNOVA_DESERT_RESORT": [551, 554, 556, 562],
+  "UNOVA_RELIC_CASTLE_PERCENTAGES": { "551": 30, "562": 30, "568": 25, "637": 15 },
+  "UNOVA_RELIC_CASTLE": [551, 562, 568, 637],
+  "UNOVA_COLD_STORAGE_PERCENTAGES": { "582": 40, "613": 35, "615": 25 },
+  "UNOVA_COLD_STORAGE": [582, 613, 615],
+  "UNOVA_CHARGESTONE_CAVE_PERCENTAGES": { "525": 30, "587": 25, "595": 25, "600": 20 },
+  "UNOVA_CHARGESTONE_CAVE": [525, 587, 595, 600],
+  "UNOVA_MISTRALTON_CAVE_PERCENTAGES": { "525": 35, "526": 30, "529": 20, "638": 15 },
+  "UNOVA_MISTRALTON_CAVE": [525, 526, 529, 638],
+  "UNOVA_TWIST_MOUNTAIN_PERCENTAGES": { "525": 25, "529": 25, "530": 25, "614": 25 },
+  "UNOVA_TWIST_MOUNTAIN": [525, 529, 530, 614],
+  "UNOVA_MOOR_PERCENTAGES": { "618": 40, "580": 35, "592": 25 },
+  "UNOVA_MOOR": [580, 592, 618],
+  "UNOVA_DRAGONSPIRAL_PERCENTAGES": { "519": 25, "544": 25, "621": 25, "635": 25 },
+  "UNOVA_DRAGONSPIRAL": [519, 544, 621, 635],
+  "UNOVA_ABUNDANT_SHRINE_PERCENTAGES": { "619": 35, "621": 30, "571": 20, "645": 15 },
+  "UNOVA_ABUNDANT_SHRINE": [571, 619, 621, 645],
+  "UNOVA_GIANT_CHASM_PERCENTAGES": { "614": 30, "615": 30, "584": 25, "646": 15 },
+  "UNOVA_GIANT_CHASM": [584, 614, 615, 646],
+  "UNOVA_VICTORY_ROAD_PERCENTAGES": { "537": 25, "576": 25, "612": 25, "625": 25 },
+  "UNOVA_VICTORY_ROAD": [537, 576, 612, 625],
+  "REGION_START": {
+    "UNOVA": {
+      "order": 5,
+      "subtitle": "GEN 5 / BLACK / WHITE",
+      "start_area": "NUVEMA_TOWN",
+      "starters": [495, 498, 501],
+      "professor": "Professor Juniper",
+      "intro_text": "unova_juniper_intro",
+      "starter_text": "unova_juniper_starter",
+      "newgame_text": "unova_newgame_intro",
+      "dex_range": [494, 649],
+      "mom_newstart_text": ["unova_mom_newstart_1", "unova_mom_newstart_2", "unova_mom_newstart_3"],
+      "mom_home_text": ["unova_mom_home_1", "unova_mom_home_2", "unova_mom_home_3"],
+      "dex_extra": [],
+      "badge_images": [33, 34, 35, 36, 37, 38, 39, 40]
+    }
+  }
+}

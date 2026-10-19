@@ -12,6 +12,7 @@ from src.config import FPS, VOLUME, MUSIC_ENDED_EVENT
 from src.utils import Utils
 from src.core.assets import AssetManager
 from src.core.data import DataManager
+from src.core.math_engine import MathEngine
 from src.world.story import StoryManager
 from src.pokemon.loader import PokemonLoader
 from src.ui.manager import UIManager
@@ -40,6 +41,9 @@ class Game:
 
         self.assets = AssetManager(self.width, self.height)
         self.data = DataManager(self.assets.base_dir)
+        self.math = MathEngine(
+            Utils.find_json_file(self.assets.assets_dir, "math_levels.json")
+        )
         self.story_manager = StoryManager()
         self.story_manager.game = self
         self.debug_mode = False
@@ -56,6 +60,12 @@ class Game:
             "area_data": "pokemon_area_data.json",
             "johto": "johto_area_data.json",
             "hoenn": "hoenn_area_data.json",
+            "sinnoh": "sinnoh_area_data.json",
+            "unova": "unova_area_data.json",
+            "kalos": "kalos_area_data.json",
+            "alola": "alola_area_data.json",
+            "galar": "galar_area_data.json",
+            "paldea": "paldea_area_data.json",
         }
 
         loaded_evolutions = {}
@@ -192,6 +202,8 @@ class Game:
         self.player_name = story_data.get("player_name", "TRAINER")
         self.player_character = story_data.get("player_char", "red")
         self.rival_character = story_data.get("rival_char", "blue")
+        self.rival_name = story_data.get("rival_name", "???")
+        self.rival_true_name = story_data.get("rival_true_name", "BLUE")
 
         self.story_manager = StoryManager()
         self.story_manager.game = self

@@ -87,6 +87,18 @@ class PokemonLoader:
         target_map = self.assets.sprite_map
         target_fname = f"{p_id}.png"
 
+        # ARCHITECT: Priority handling for Numbered/Smart IDs (>= 2000)
+        # These use the standard sprite directory and the ID itself as the filename.
+        if p_id >= 2000:
+            form_map = self.area_data.get("FORM_MAP", {})
+            mapping = form_map.get(str(p_id), {})
+            form = mapping.get("form", base_form)
+            
+            suffix = form.replace("_", " ").upper()
+            display_name = f"{suffix} {name}" if suffix not in name.upper() else name
+            
+            return form, display_name, target_dir, target_map, target_fname
+
         # Auto-detect padded filenames in loader (001.png vs 1.png)
         if base_form == "normal" and target_fname not in target_map:
             padded_name = f"{p_id:03d}.png"
@@ -200,22 +212,27 @@ class PokemonLoader:
             if not p_id:
                 continue
 
-            # Basic Name Check
-            # ARCHITECT: Check FORM_MAP for regional name overrides in wild encounters
+            # ARCHITECT: Resolve Smart IDs (>=2000) from FORM_MAP before asset resolution.
+            # This ensures regional variants in wild pools use the correct base ID for sprite lookups.
             form_map = self.area_data.get("FORM_MAP", {})
             mapping = form_map.get(str(p_id))
-            if mapping and "name" in mapping:
-                name = mapping["name"].upper()
-            else:
-                name = self.assets.pokemon_names.get(str(p_id), f"POKEMON_{p_id}").upper()
+
+            lookup_id = p_id
+            lookup_form = base_form
+            name = ""
+
+            if mapping:
+                lookup_id = mapping.get("id", p_id)
+                lookup_form = mapping.get("form", base_form)
+                name = mapping.get("name", "").upper()
+
+            if not name:
+                name = self.assets.pokemon_names.get(str(lookup_id), f"POKEMON_{lookup_id}").upper()
 
             if name in exclude_names:
                 continue
 
-            # Resolve Form (Mega X/Y, Regional, etc)
-            resolved = self._resolve_form_context(
-                p_id, base_form, name, area_data
-            )
+            resolved = self._resolve_form_context(lookup_id, lookup_form, name, area_data)
             final_form, display_name, t_dir, t_map, t_fname = resolved
 
             # --- CALCULATE STAGE ---
@@ -434,10 +451,15 @@ class PokemonLoader:
 
             back_img_bytes = b""
 
-            back_fname = f"{actual_id}.png"
+            # Priority 1: Smart ID (e.g., 2022.png)
+            back_fname = f"{actual_id}.png" 
 
             if is_shiny:
                 shiny_back = self.assets.shiny_back_sprite_map.get(back_fname.lower())
+                if not shiny_back:
+                    # Fallback for padded IDs in shiny back map
+                    shiny_back = self.assets.shiny_back_sprite_map.get(f"{int(actual_id):03d}.png")
+                
                 if shiny_back:
                     sb_path = os.path.join(self.assets.shiny_back_sprites_dir, shiny_back)
                     if os.path.exists(sb_path):
@@ -446,11 +468,16 @@ class PokemonLoader:
 
             if not back_img_bytes:
                 back_path = self.assets.back_sprite_map.get(back_fname.lower())
+                if not back_path:
+                    # Fallback for padded IDs in standard back map
+                    back_path = self.assets.back_sprite_map.get(f"{int(actual_id):03d}.png")
+                
                 if back_path and os.path.exists(os.path.join(self.assets.back_sprites_dir, back_path)):
                     with open(os.path.join(self.assets.back_sprites_dir, back_path), "rb") as f:
                         back_img_bytes = f.read()
 
-            if not back_img_bytes and form and form != "normal":
+            # Priority 2: Legacy Form Suffix (e.g., 79_galarian.png) - Fallback only
+            if not back_img_bytes and form and form != "normal" and actual_id < 2000:
                 sep = "-" if meta_id == 201 else "_"
                 form_fname = f"{meta_id}{sep}{form.lower()}.png"
                 back_path = self.assets.back_sprite_map.get(form_fname.lower())

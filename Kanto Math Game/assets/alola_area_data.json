@@ -1,0 +1,1254 @@
+{
+  "FORM_MAP": {
+    "7001": { "id": 800, "form": "dusk_mane", "name": "Necrozma - Dusk Mane" },
+    "7002": { "id": 800, "form": "dawn_wings", "name": "Necrozma - Dawn Wings" },
+    "7003": { "id": 800, "form": "ultra", "name": "Ultra Necrozma" },
+    "7004": { "id": 746, "form": "school", "name": "Wishiwashi - School Form" },
+    "7005": { "id": 773, "form": "normal", "name": "Silvally - Normal Type" },
+    "7006": { "id": 744, "form": "own_tempo", "name": "Rockruff - Own Tempo" },
+    "7007": { "id": 745, "form": "dusk", "name": "Lycanroc - Dusk Form" }
+  },
+  "GAME_TEXT": {
+    "alola_departure_from_kalos": [
+      "Your Kalos Championship victory echoed across the world.",
+      "A golden envelope arrives — Alola Tourism Board letterhead.",
+      "'Congratulations, Champion! Two first-class cruise tickets — compliments of Alola.'",
+      "'Professor Kukui is building Alola's first-ever Pokémon League. We'd be honored if you competed.'",
+      "Mom: 'Two tickets! One for you and one for me. I already have a bungalow near Iki Town.'",
+      "Mom: 'The Kalos winnings went further than expected in tropical real estate!'"
+    ],
+    "alola_mom_home_1": [
+      "Mom: {player_name}! The weather here is absolutely perfect every single day.",
+      "I used your Kalos Champion earnings to buy this little bungalow near Iki Town.",
+      "Professor Kukui's wife Burnet stops by sometimes — she studies wormholes! Isn't that something?",
+      "Go do your Island Challenge, dear. I'll be right here, enjoying paradise."
+    ],
+    "alola_mom_home_2": [
+      "Mom: {player_name}! Did you know the sunsets here are completely different colors than Kanto?",
+      "I've been to a lot of places on your prize money — Kanto, Johto, Hoenn, Sinnoh, Unova, Kalos...",
+      "Each home is special to me. But I think Alola might be my favorite.",
+      "Don't tell the other houses I said that!"
+    ],
+    "alola_mom_home_3": [
+      "Mom: Oh! You're back! How is the Island Challenge going?",
+      "I heard the Totem Pokémon in Verdant Cavern gave some trainer a real scare.",
+      "You're not scared, are you? Of course not. You've faced Legendaries before!",
+      "I packed you some malasada from the shop in Hau'oli. They're in your bag!"
+    ],
+    "alola_kukui_intro": [
+      "Professor Kukui: YEAH! You made it to Alola! Welcome, cousin!",
+      "I'm Professor Kukui — I study Pokémon moves. Specifically how they feel when they hit. Yeah!",
+      "In Alola, there's no Pokémon League — but we're building one! You're going to help!",
+      "First, though — you need to complete the Island Challenge. Each island has Trials and a Grand Trial.",
+      "Think you can handle it? OF COURSE you can! Let's go!"
+    ],
+    "alola_hau_intro": [
+      "Hau: Hey hey hey! You must be {player_name}!",
+      "I'm Hau! My grandfather is the Island Kahuna — Hala!",
+      "I wanna battle you SO bad! But first, let's get you a starter Pokémon from Kukui!",
+      "Alola has the BEST malasada! Oh — and Pokémon are great too!"
+    ],
+    "alola_lillie_intro": [
+      "Lillie: Oh! I'm sorry, I didn't mean to startle you.",
+      "I'm Lillie — Professor Kukui's assistant.",
+      "That bag I'm carrying... please don't ask about it. Not yet.",
+      "But I hope we can travel together for a while. If that's all right."
+    ],
+    "alola_hau_rival_won": ["Hau: Aww! You beat me! You're super strong!", "That's fine — it just means I need more malasada! And training!"],
+    "alola_hau_rival_lost": ["Hau: YEAH! I won! Grandfather is going to be so proud!", "Let's battle again soon — I want us both to get stronger!"],
+    "alola_lusamine_intro": [
+      "Lusamine: How lovely that you're here.",
+      "I am Lusamine — President of the Aether Foundation.",
+      "We protect Pokémon from harm. Every single one of them.",
+      "Isn't that beautiful? Protecting them. Preserving them. Keeping them... perfect. Forever."
+    ],
+    "alola_lusamine_villain": [
+      "Lusamine: Ultra Beasts. Creatures from another world — another dimension.",
+      "They are perfect. Unspoiled by this world's ordinary concerns.",
+      "I will open the door to their world. And I will go there. Where everything is beautiful. Where nothing decays.",
+      "My children... my Pokémon... they cannot follow me. But that is their failure, not mine."
+    ],
+    "alola_guzma_intro": [
+      "Guzma: Yo! Team Skull's here, and we're gonna wreck you!",
+      "Nobody ever believed in Guzma. No Island Challenge passed. No kahuna would have me.",
+      "So I made my own crew. And we're stronger than any of those stuffy trials.",
+      "Let's go, punk. Guzma's gonna show you what real power looks like."
+    ],
+    "alola_guzma_won": ["Guzma: ...What even is this guy?", "Team Skull — fall back!", "This ain't over. Guzma doesn't stay down."],
+    "alola_gladion_intro": [
+      "Gladion: Stay out of Aether Foundation's business.",
+      "You don't know what they're really doing there. What she's doing.",
+      "Type: Null — the Pokémon I have — was created by Aether. An experiment.",
+      "I took it and ran. I won't let them use it as a weapon. And I won't let Lusamine hurt anyone else."
+    ],
+    "alola_solgaleo_encounter": [
+      "The Altar of the Sunne blazes with light from another world...",
+      "A lion of the cosmos descends, blazing with stellar fire.",
+      "Solgaleo — the Sunne Pokémon — has appeared!"
+    ],
+    "alola_lunala_encounter": [
+      "The Altar of the Moone shimmers with cosmic shadow...",
+      "A creature of the night spreads wings that span the darkness.",
+      "Lunala — the Moone Pokémon — has appeared!"
+    ],
+    "alola_necrozma_encounter": [
+      "At the Altar, a fractured light tears reality open...",
+      "A being of pure refracted light — broken, hungry, ancient.",
+      "Necrozma has appeared! It seeks a light it lost long ago."
+    ],
+    "alola_kukui_champion": [
+      "Professor Kukui: You've done it! You've completed the Island Challenge — all four islands!",
+      "And now — the first-ever Alola Pokémon League awaits!",
+      "I'll be waiting at the top. Not as the Professor — as the masked Royal!",
+      "Show Alola what you're made of, cousin. YEAH!"
+    ],
+    "alola_kukui_champion_won": [
+      "Professor Kukui: ...YEAH! INCREDIBLE! That was the BEST!",
+      "You are the first-ever Alola Champion! {player_name}!",
+      "The Alola League is real now — because you made it real!",
+      "This is going in every Pokémon research paper I ever write. YEAH!"
+    ],
+    "alola_departure_to_galar": [
+      "Your Island Challenge victory and League win made global headlines.",
+      "A letter arrives on official Macro Cosmos stationery — from Leon himself.",
+      "'Heard about your Island Challenge. The Galar Championship Cup could use someone like you.'",
+      "'Consider this your personal invitation. Come show the world what you've got.'",
+      "Mom: 'Galar! I looked it up — rolling green hills, ancient stadiums, Pokémon roaming wild!'",
+      "Mom: 'Your Alola prize money secured us a lovely farmhouse in Postwick. All packed!'"
+    ],
+    "alola_tapu_koko_encounter": [
+      "The guardian deity of Melemele Island swoops down from Ruins of Conflict!",
+      "Tapu Koko — the Land Spirit Pokémon — observes you with keen, electric eyes.",
+      "It has been watching your journey since the very beginning."
+    ],
+    "alola_tapus_lore": [
+      "The four Tapu are the guardian deities of each island.",
+      "Tapu Koko watches over Melemele. Tapu Lele over Akala.",
+      "Tapu Bulu over Ula'ula. Tapu Fini over Poni.",
+      "They are powerful, willful, and not easily approached.",
+      "But they have judged you worthy of standing before them."
+    ],
+    "alola_newgame_intro": [
+      "Warm wind and ocean spray greet you at your new home on Melemele Island.",
+      "Mom: Welcome to Alola, {player_name}! Isn't it beautiful?",
+      "Mom: Professor Kukui says there's a festival in Iki Town today. Let's go!"
+    ],
+    "alola_kukui_starter": [
+      "Professor Kukui: Woo! That's a great pick, cousin!",
+      "Here's your Pokédex. It'll record every Pokémon you meet on the islands.",
+      "Now go show Alola what you've got. Yeah!"
+    ],
+    "alola_mom_newstart_1": [
+      "Mom: Our Meowth already found the sunniest spot in the house.",
+      "Mom: The Island Challenge sounds wonderful. I'll cheer for you at every trial!"
+    ],
+    "alola_mom_newstart_2": [
+      "Mom: Alolan sunsets are so pretty. I could watch them every evening.",
+      "Mom: Save a little prize money and maybe we'll take a boat tour of all four islands!"
+    ],
+    "alola_mom_newstart_3": [
+      "Mom: Hau's grandpa is the Island Kahuna! The neighbors here are amazing.",
+      "Mom: Say alola to everyone you meet. That's how they say hello here!"
+    ]
+  },
+  "STORY_PROGRESSION": {
+    "IKI_TOWN": {
+      "area_type": "town",
+      "route_name": "Iki Town",
+      "region": "ALOLA",
+      "backgrounds": { "main": "iki_town.png", "mom_home": "alola_mom_home.png", "kahuna": "iki_trial_grounds.png" },
+      "has_gym": false,
+      "travel_options": [{"text": "Route 1 (to Hau'oli)", "target_area": "ALOLA_ROUTE_1"}],
+      "explore_options": [
+        { "text": "Visit Mom", "action": "NPC", "target": "alola_mom_home_1" },
+        {
+          "text": "Chat with Mom (random)",
+          "action": "RANDOM_NPC",
+          "targets": ["alola_mom_home_1", "alola_mom_home_2", "alola_mom_home_3"]
+        },
+        { "text": "Meet Professor Kukui", "action": "NPC", "target": "alola_kukui_intro", "flag_condition": "not met_kukui" },
+        { "text": "Meet Hau", "action": "NPC", "target": "alola_hau_intro", "flag_condition": "not met_hau" }
+      ],
+      "next_area": "ALOLA_ROUTE_1",
+      "on_enter_event": {
+        "type": "trainer_battle",
+        "trainer": {
+          "name": "Hau",
+          "class": "PKMN_TRAINER",
+          "sprite": "hau.png",
+          "team": [729],
+          "team_choice": { "722": [725], "725": [728], "728": [722] },
+          "rewards": { "balls": 5 },
+          "victory_flag": "defeated_hau_iki",
+          "dialogue": {
+            "intro": ["Hau: I've been wanting to battle you since I first saw you! Let's go!"],
+            "player_won": ["alola_hau_rival_won"],
+            "player_lost": ["alola_hau_rival_lost"]
+          }
+        },
+        "condition": "has_alola_starter",
+        "flag_check": "defeated_hau_iki"
+      }
+    },
+    "HAUOLI_CITY": {
+      "area_type": "town",
+      "route_name": "Hau'oli City",
+      "region": "ALOLA",
+      "backgrounds": { "main": "hauoli_city.png", "pokecenter": "hauoli_center.png", "marina": "hauoli_marina.png" },
+      "has_gym": true,
+      "gym": {
+        "trainers": [],
+        "leader": {
+          "name": "Ilima (Trial Captain)",
+          "class": "GYM_LEADER",
+          "sprite": "ilima_trial_captain.png",
+          "team": [10, 39, 759],
+          "dialogue": {
+            "intro": ["Ilima: You've completed Verdant Cavern. Now face me — the trial captain — in a proper battle!"],
+            "player_won": ["Ilima: Wonderful! You've earned the Normalium Z! Use Z-Moves wisely."],
+            "player_lost": ["Ilima: Not quite. Train more and return — I'll be here."]
+          },
+          "rewards": { "balls": 5, "item": "NORMALIUM_Z" },
+          "is_boss_battle": true,
+          "badge_reward": "NORMALIUM_Z"
+        },
+        "requirements": { "badges": 0, "fail_text": "Complete your first trial at Verdant Cavern!" }
+      },
+      "travel_options": [
+        { "text": "Route 1 (to Iki Town)", "target_area": "ALOLA_ROUTE_1" },
+        { "text": "Route 2 (to Hau'oli Outskirts)", "target_area": "ALOLA_ROUTE_2" },
+        { "text": "Verdant Cavern", "target_area": "VERDANT_CAVERN" },
+        { "text": "Heahea City", "target_area": "HEAHEA_CITY" }
+      ],
+      "explore_options": [
+        { "text": "Pokémon Center", "action": "HEAL" },
+        { "text": "Shop", "action": "SHOP" },
+        { "text": "Ilima Trial Battle", "action": "GYM" },
+        { "text": "Meet Looker", "action": "NPC", "target": "alola_looker", "flag_condition": "not met_alola_looker" }
+      ],
+      "next_area": "ALOLA_ROUTE_2"
+    },
+    "HEAHEA_CITY": {
+      "area_type": "town",
+      "route_name": "Heahea City",
+      "region": "ALOLA",
+      "backgrounds": { "main": "heahea_city.png", "pokecenter": "heahea_center.png", "aether": "aether_paradise_entry.png" },
+      "has_gym": true,
+      "gym": {
+        "trainers": [],
+        "leader": {
+          "name": "Olivia (Kahuna — Akala Grand Trial)",
+          "class": "GYM_LEADER",
+          "sprite": "olivia_kahuna_akala_grand_trial.png",
+          "team": [744, 745, 526],
+          "dialogue": {
+            "intro": [
+              "Olivia: You've done well on your trials. Now face the Grand Trial of Akala Island!",
+              "I am Olivia, its Kahuna. Let us see if your bond with your Pokémon is as strong as stone."
+            ],
+            "player_won": ["Olivia: Beautiful. You've earned Rockium Z! Take the ferry to Ula'ula Island!"],
+            "player_lost": ["Olivia: Not quite rock-solid yet. Keep training!"]
+          },
+          "rewards": { "balls": 8, "item": "ROCKIUM_Z" },
+          "is_boss_battle": true,
+          "badge_reward": "ROCKIUM_Z"
+        },
+        "requirements": { "badges": 2, "fail_text": "Complete Lana's Water Trial and Kiawe's Fire Trial on Akala Island first!" }
+      },
+      "travel_options": [
+        { "text": "Route 4 (to Paniola Town)", "target_area": "ALOLA_ROUTE_4" },
+        { "text": "Route 5 (to Lush Jungle)", "target_area": "ALOLA_ROUTE_5" },
+        { "text": "Aether Paradise", "target_area": "AETHER_PARADISE" },
+        { "text": "Hau'oli City", "target_area": "HAUOLI_CITY" }
+      ],
+      "explore_options": [
+        { "text": "Pokémon Center", "action": "HEAL" },
+        { "text": "Shop", "action": "SHOP" },
+        { "text": "Grand Trial (Olivia)", "action": "GYM" },
+        { "text": "Meet Lillie", "action": "NPC", "target": "alola_lillie_intro", "flag_condition": "not met_lillie" }
+      ],
+      "next_area": "ALOLA_ROUTE_5"
+    },
+    "KONIKONI_CITY": {
+      "area_type": "town",
+      "route_name": "Konikoni City",
+      "region": "ALOLA",
+      "backgrounds": { "main": "konikoni_city.png", "pokecenter": "konikoni_center.png" },
+      "has_gym": false,
+      "travel_options": [
+        { "text": "Route 8 (to Aether House)", "target_area": "ALOLA_ROUTE_8" },
+        { "text": "Diglett's Tunnel", "target_area": "DIGLETTS_TUNNEL" },
+        { "text": "Memorial Hill", "target_area": "MEMORIAL_HILL" },
+        { "text": "Malie City", "target_area": "MALIE_CITY" },
+        { "text": "Route 7", "target_area": "ALOLA_ROUTE_7" }
+      ],
+      "explore_options": [{"text": "Pokémon Center", "action": "HEAL"}, {"text": "Shop", "action": "SHOP"}],
+      "next_area": "ALOLA_ROUTE_8"
+    },
+    "MALIE_CITY": {
+      "area_type": "town",
+      "route_name": "Malie City",
+      "region": "ALOLA",
+      "backgrounds": { "main": "malie_city.png", "pokecenter": "malie_center.png" },
+      "has_gym": true,
+      "gym": {
+        "trainers": [],
+        "leader": {
+          "name": "Nanu (Kahuna — Ula'ula Grand Trial)",
+          "class": "GYM_LEADER",
+          "sprite": "nanu_kahuna_ula_ula_grand_trial.png",
+          "team": [51, 319, 53],
+          "dialogue": {
+            "intro": ["Nanu: ...You again. Fine. Grand Trial of Ula'ula Island. Let's just get this over with."],
+            "player_won": ["Nanu: ...I was holding back. Take the Darkinium Z. Go."],
+            "player_lost": ["Nanu: ...Told you. You're not ready."]
+          },
+          "rewards": { "balls": 8, "item": "DARKINIUM_Z" },
+          "is_boss_battle": true,
+          "badge_reward": "DARKINIUM_Z"
+        },
+        "requirements": { "badges": 4, "fail_text": "Complete the trials on Ula'ula Island first!" }
+      },
+      "travel_options": [
+        { "text": "Route 10 (to Mount Hokulani)", "target_area": "ALOLA_ROUTE_10" },
+        { "text": "Route 11 (south)", "target_area": "ALOLA_ROUTE_11" },
+        { "text": "Mount Hokulani", "target_area": "MOUNT_HOKULANI" },
+        { "text": "Konikoni City", "target_area": "KONIKONI_CITY" },
+        { "text": "Seafolk Village", "target_area": "SEAFOLK_VILLAGE" },
+        { "text": "Mount Lanakila (Victory Road Alola)", "target_area": "MOUNT_LANAKILA" },
+        { "text": "Route 17", "target_area": "ALOLA_ROUTE_17" }
+      ],
+      "explore_options": [
+        { "text": "Pokémon Center", "action": "HEAL" },
+        { "text": "Shop", "action": "SHOP" },
+        { "text": "Grand Trial (Nanu)", "action": "GYM" },
+        {
+          "text": "Confront Team Skull",
+          "action": "NPC",
+          "target": "alola_guzma_intro",
+          "condition": "has_akala_z",
+          "flag_condition": "not malie_skull_cleared",
+          "color": "GOLD"
+        }
+      ],
+      "next_area": "ALOLA_ROUTE_10"
+    },
+    "TAPU_VILLAGE": {
+      "area_type": "town",
+      "route_name": "Tapu Village",
+      "region": "ALOLA",
+      "backgrounds": { "main": "tapu_village.png" },
+      "has_gym": false,
+      "travel_options": [
+        { "text": "Route 14 (to Aether House)", "target_area": "ALOLA_ROUTE_14" },
+        { "text": "Route 15 (north)", "target_area": "ALOLA_ROUTE_15" },
+        { "text": "Route 11", "target_area": "ALOLA_ROUTE_11" }
+      ],
+      "explore_options": [{"text": "Pokémon Center", "action": "HEAL"}, {"text": "Shop", "action": "SHOP"}],
+      "next_area": "ALOLA_ROUTE_15"
+    },
+    "SEAFOLK_VILLAGE": {
+      "area_type": "town",
+      "route_name": "Seafolk Village",
+      "region": "ALOLA",
+      "backgrounds": { "main": "seafolk_village.png", "pokecenter": "seafolk_center.png" },
+      "has_gym": true,
+      "gym": {
+        "trainers": [],
+        "leader": {
+          "name": "Hapu (Kahuna — Poni Grand Trial)",
+          "class": "GYM_LEADER",
+          "sprite": "hapu_kahuna_poni_grand_trial.png",
+          "team": [750, 750, 472],
+          "dialogue": {
+            "intro": [
+              "Hapu: You've come far. You remind me of someone who walked this path before.",
+              "The Grand Trial of Poni Island — show me what you're made of!"
+            ],
+            "player_won": ["Hapu: You are worthy. Groundium Z is yours. The path to the Altar awaits."],
+            "player_lost": ["Hapu: The earth says you're not ready. Train more."]
+          },
+          "rewards": { "balls": 10, "item": "GROUNDIUM_Z" },
+          "is_boss_battle": true,
+          "badge_reward": "GROUNDIUM_Z"
+        },
+        "requirements": { "badges": 6, "fail_text": "Complete Mina's Fairy Trial and the Vast Poni Canyon Trial first!" }
+      },
+      "travel_options": [
+        { "text": "Route 16 (to Ula'ula / ferry)", "target_area": "ALOLA_ROUTE_16" },
+        { "text": "Vast Poni Canyon", "target_area": "VAST_PONI_CANYON" },
+        { "text": "Altar of the Sunne/Moone", "target_area": "ALTAR_SUNNE_MOONE" },
+        { "text": "Malie City", "target_area": "MALIE_CITY" }
+      ],
+      "explore_options": [
+        { "text": "Pokémon Center", "action": "HEAL" },
+        { "text": "Shop", "action": "SHOP" },
+        { "text": "Grand Trial (Hapu)", "action": "GYM" }
+      ],
+      "next_area": "VAST_PONI_CANYON"
+    },
+    "ALOLA_POKEMON_LEAGUE": {
+      "area_type": "town",
+      "route_name": "Alola Pokémon League",
+      "region": "ALOLA",
+      "backgrounds": { "main": "alola_pokemon_league.png", "elite4": "alola_elite4.png" },
+      "has_gym": true,
+      "travel_options": [{"text": "Mount Lanakila (Victory Road Alola)", "target_area": "MOUNT_LANAKILA"}],
+      "explore_options": [
+        { "text": "Pokémon Center", "action": "HEAL" },
+        { "text": "Shop", "action": "SHOP" },
+        { "text": "CHALLENGE ELITE FOUR", "action": "GYM", "condition": "has_all_alola_z", "color": "GOLD" }
+      ],
+      "post_champion_events": [
+        { "type": "npc_dialogue", "target": "alola_departure_to_galar", "flag_condition": "not left_for_galar", "victory_flag": "left_for_galar" }
+      ],
+      "gym": {
+        "trainers": [
+          {
+            "name": "Hala",
+            "class": "ELITE_FOUR",
+            "sprite": "hala.png",
+            "is_boss_battle": true,
+            "team": [106, 107, 62, 760],
+            "rewards": { "balls": 10 },
+            "dialogue": {
+              "intro": ["Hala: You have grown beyond what I imagined when you first came to Iki Town.", "Let us see how far — with the power of our Pokémon!"],
+              "player_won": ["Hala: Ha ha! Magnificent! Go — Olivia and the others await!"],
+              "player_lost": ["Hala: Still some growing left to do! Come back when you're ready!"]
+            }
+          },
+          {
+            "name": "Olivia",
+            "class": "ELITE_FOUR",
+            "sprite": "olivia.png",
+            "is_boss_battle": true,
+            "team": [744, 745, 526, 526],
+            "rewards": { "balls": 10 },
+            "dialogue": {
+              "intro": ["Olivia: We meet again! This time — no holding back. My Pokémon and I are ready!"],
+              "player_won": ["Olivia: Beautiful battle. Go — Acerola's waiting for you!"],
+              "player_lost": ["Olivia: You'll get there. Keep going!"]
+            }
+          },
+          {
+            "name": "Acerola",
+            "class": "ELITE_FOUR",
+            "sprite": "acerola.png",
+            "is_boss_battle": true,
+            "team": [709, 711, 302, 778],
+            "rewards": { "balls": 10 },
+            "dialogue": {
+              "intro": ["Acerola: Ooh! You made it! My Ghost-types love new challengers!", "Don't be scared — they're mostly friendly!"],
+              "player_won": ["Acerola: You're sooo strong! Go get Kahili!"],
+              "player_lost": ["Acerola: Aww! Come back when you're ready, okay?"]
+            }
+          },
+          {
+            "name": "Kahili",
+            "class": "ELITE_FOUR",
+            "sprite": "kahili.png",
+            "is_boss_battle": true,
+            "team": [663, 468, 581, 628],
+            "rewards": { "balls": 10 },
+            "dialogue": {
+              "intro": [
+                "Kahili: You've come a long way — literally. World traveler and trial champion.",
+                "Let's see if you've got what it takes for the final round."
+              ],
+              "player_won": ["Kahili: Outstanding. The Champion awaits — give it everything you've got!"],
+              "player_lost": ["Kahili: Almost there. Train a bit more and come back."]
+            }
+          }
+        ],
+        "leader": {
+          "name": "Professor Kukui (The Royal Mask)",
+          "class": "CHAMPION",
+          "sprite": "kukui.png",
+          "is_boss_battle": true,
+          "team": [724, 727, 730, 745, 717, 143],
+          "team_choice": {
+            "722": [727, 730, 745, 717, 143, 724],
+            "725": [724, 730, 745, 717, 143, 727],
+            "728": [724, 727, 745, 717, 143, 730]
+          },
+          "rewards": { "balls": 20, "item": "ALOLA_HALL_OF_FAME" },
+          "victory_flag": "beat_alola_champion",
+          "dialogue": {
+            "intro": [
+              "Professor Kukui: You've done it! You've completed the Island Challenge — all four islands!",
+              "And now — the first-ever Alola Pokémon League awaits!",
+              "I'll be waiting at the top. Not as the Professor — as the masked Royal!",
+              "Show Alola what you're made of, cousin. YEAH!"
+            ],
+            "player_won": [
+              "Professor Kukui: ...YEAH! INCREDIBLE! That was the BEST!",
+              "You are the first-ever Alola Champion! {player_name}!",
+              "The Alola League is real now — because you made it real!",
+              "This is going in every Pokémon research paper I ever write. YEAH!"
+            ],
+            "player_lost": ["Professor Kukui: YEAH! Not quite yet — but that was amazing! Try again!"]
+          }
+        }
+      }
+    },
+    "VERDANT_CAVERN": {
+      "area_type": "dungeon",
+      "route_name": "Verdant Cavern",
+      "region": "ALOLA",
+      "battle_type": "cave",
+      "wild_pool_percentages": "ALOLA_VERDANT_CAVERN_PERCENTAGES",
+      "min_rounds": 2,
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "Totem Pokémon Trial (Gumshoos)", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD" },
+        { "text": "Route 2", "action": "EXIT", "target_area": "ALOLA_ROUTE_2", "condition": "can_exit", "color": "RED" },
+        { "text": "HAU'OLI CITY", "action": "EXIT", "target_area": "HAUOLI_CITY", "condition": "can_exit", "color": "RED" }
+      ],
+      "area_boss": { "id": 735, "name": "Totem Gumshoos", "victory_flag": "VERDANT_CAVERN_boss_defeated" }
+    },
+    "BROOKLET_HILL": {
+      "area_type": "dungeon",
+      "route_name": "Brooklet Hill",
+      "region": "ALOLA",
+      "battle_type": "grass",
+      "wild_pool_percentages": "ALOLA_BROOKLET_HILL_PERCENTAGES",
+      "min_rounds": 2,
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "Lana's Water Trial (Totem Wishiwashi)", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD" },
+        { "text": "Route 5 (south)", "action": "EXIT", "target_area": "ALOLA_ROUTE_5", "condition": "can_exit", "color": "RED" }
+      ],
+      "area_boss": { "id": 746, "name": "Totem Wishiwashi", "victory_flag": "BROOKLET_HILL_boss_defeated" }
+    },
+    "WELA_VOLCANO_PARK": {
+      "area_type": "dungeon",
+      "route_name": "Wela Volcano Park",
+      "region": "ALOLA",
+      "battle_type": "mountain",
+      "wild_pool_percentages": "ALOLA_WELA_VOLCANO_PERCENTAGES",
+      "min_rounds": 2,
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "Kiawe's Fire Trial (Totem Marowak)", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD" },
+        { "text": "Route 7 (base)", "action": "EXIT", "target_area": "ALOLA_ROUTE_7", "condition": "can_exit", "color": "RED" }
+      ],
+      "area_boss": { "id": 105, "name": "Totem Marowak (Alolan)", "victory_flag": "WELA_VOLCANO_boss_defeated" }
+    },
+    "LUSH_JUNGLE": {
+      "area_type": "dungeon",
+      "route_name": "Lush Jungle",
+      "region": "ALOLA",
+      "battle_type": "grass",
+      "wild_pool_percentages": "ALOLA_LUSH_JUNGLE_PERCENTAGES",
+      "min_rounds": 2,
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "Mallow's Grass Trial (Totem Lurantis)", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD" },
+        { "text": "Route 5", "action": "EXIT", "target_area": "ALOLA_ROUTE_5", "condition": "can_exit", "color": "RED" }
+      ],
+      "area_boss": { "id": 754, "name": "Totem Lurantis", "victory_flag": "LUSH_JUNGLE_boss_defeated" }
+    },
+    "AETHER_PARADISE": {
+      "area_type": "dungeon",
+      "route_name": "Aether Paradise",
+      "region": "ALOLA",
+      "battle_type": "indoor",
+      "wild_pool_percentages": null,
+      "min_rounds": 0,
+      "trainer_pool": [
+        {
+          "name": "Aether Employee Dana",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "team": [758, 763],
+          "rewards": { "balls": 3 }
+        },
+        {
+          "name": "Lusamine",
+          "class": "RIVAL",
+          "sprite": "lusamine.png",
+          "is_boss_battle": true,
+          "team": [763, 778, 40, 756, 778, 769],
+          "rewards": { "balls": 15 },
+          "victory_flag": "aether_paradise_cleared",
+          "dialogue": {
+            "intro": ["alola_lusamine_villain"],
+            "player_won": ["Lusamine: ...I see. You love your Pokémon. Perhaps I forgot what that feels like."],
+            "player_lost": ["Lusamine: Perfect. Everything will be perfect, forever."]
+          }
+        }
+      ],
+      "route_menu": [
+        { "text": "BATTLE AETHER", "action": "TRAINER", "condition": "has_trainers", "color": "GOLD", "flag_condition": "not aether_paradise_cleared" },
+        { "text": "Heahea City (ferry)", "action": "EXIT", "target_area": "HEAHEA_CITY", "condition": "can_exit", "color": "RED" },
+        { "text": "ROUTE 8", "action": "EXIT", "target_area": "ALOLA_ROUTE_8", "condition": "can_exit", "color": "RED" }
+      ]
+    },
+    "PO_TOWN": {
+      "area_type": "dungeon",
+      "route_name": "Po Town (Team Skull HQ)",
+      "region": "ALOLA",
+      "battle_type": "indoor",
+      "wild_pool_percentages": null,
+      "min_rounds": 0,
+      "trainer_pool": [
+        {
+          "name": "Team Skull Grunt",
+          "class": "GALACTIC",
+          "sprite": "skull_grunt.png",
+          "team": [754, 758],
+          "rewards": { "balls": 3 },
+          "dialogue": {
+            "intro": ["Yo yo yo! Team Skull don't play!"],
+            "player_won": ["Ugh, whatever..."],
+            "player_lost": ["SKULL SKULL SKULL!"]
+          }
+        },
+        {
+          "name": "Guzma",
+          "class": "RIVAL",
+          "sprite": "guzma.png",
+          "is_boss_battle": true,
+          "team": [768, 768, 752],
+          "rewards": { "balls": 10 },
+          "victory_flag": "po_town_cleared",
+          "dialogue": {
+            "intro": ["alola_guzma_intro"],
+            "player_won": ["alola_guzma_won"],
+            "player_lost": ["Guzma: That's what I'm talking about! That's the power of Guzma!"]
+          }
+        }
+      ],
+      "route_menu": [
+        { "text": "BATTLE TEAM SKULL", "action": "TRAINER", "condition": "has_trainers", "color": "GOLD", "flag_condition": "not po_town_cleared" },
+        { "text": "Route 17", "action": "EXIT", "target_area": "ALOLA_ROUTE_17", "condition": "can_exit", "color": "RED" },
+        { "text": "ROUTE 15", "action": "EXIT", "target_area": "ALOLA_ROUTE_15", "condition": "can_exit", "color": "RED" }
+      ]
+    },
+    "MOUNT_HOKULANI": {
+      "area_type": "dungeon",
+      "route_name": "Mount Hokulani",
+      "region": "ALOLA",
+      "battle_type": "mountain",
+      "wild_pool_percentages": "ALOLA_MT_HOKULANI_PERCENTAGES",
+      "min_rounds": 2,
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "Sophocles' Electric Trial (Totem Vikavolt)", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD" },
+        { "text": "Route 10 (base)", "action": "EXIT", "target_area": "ALOLA_ROUTE_10", "condition": "can_exit", "color": "RED" },
+        { "text": "MALIE CITY", "action": "EXIT", "target_area": "MALIE_CITY", "condition": "can_exit", "color": "RED" }
+      ],
+      "area_boss": { "id": 738, "name": "Totem Vikavolt", "victory_flag": "MT_HOKULANI_boss_defeated" }
+    },
+    "THRIFTY_MEGAMART": {
+      "area_type": "dungeon",
+      "route_name": "Thrifty Megamart (Abandoned)",
+      "region": "ALOLA",
+      "battle_type": "indoor",
+      "wild_pool_percentages": "ALOLA_THRIFTY_MEGAMART_PERCENTAGES",
+      "min_rounds": 2,
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "Acerola's Ghost Trial (Totem Mimikyu)", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD" },
+        { "text": "Route 14", "action": "EXIT", "target_area": "ALOLA_ROUTE_14", "condition": "can_exit", "color": "RED" }
+      ],
+      "area_boss": { "id": 778, "name": "Totem Mimikyu", "victory_flag": "THRIFTY_MEGAMART_boss_defeated" }
+    },
+    "VAST_PONI_CANYON": {
+      "area_type": "dungeon",
+      "route_name": "Vast Poni Canyon",
+      "region": "ALOLA",
+      "battle_type": "cave",
+      "wild_pool_percentages": "ALOLA_VAST_PONI_PERCENTAGES",
+      "min_rounds": 3,
+      "trainer_pool": [
+        {
+          "name": "Gladion",
+          "class": "RIVAL",
+          "sprite": "gladion.png",
+          "is_boss_battle": true,
+          "team": [773, 745, 778, 248],
+          "rewards": { "balls": 10 },
+          "victory_flag": "gladion_vast_poni_cleared",
+          "dialogue": {
+            "intro": ["alola_gladion_intro"],
+            "player_won": ["Gladion: ...You're strong. Keep going."],
+            "player_lost": ["Gladion: Good. Now keep going."]
+          }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        {
+          "text": "BATTLE GLADION",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GOLD",
+          "flag_condition": "not gladion_vast_poni_cleared"
+        },
+        { "text": "Mina's Fairy Trial (Totem Ribombee)", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD" },
+        { "text": "Seafolk Village", "action": "EXIT", "target_area": "SEAFOLK_VILLAGE", "condition": "can_exit", "color": "RED" },
+        { "text": "Altar of Sunne/Moone", "action": "EXIT", "target_area": "ALTAR_SUNNE_MOONE", "condition": "can_exit", "color": "RED" }
+      ],
+      "area_boss": { "id": 743, "name": "Totem Ribombee", "victory_flag": "VAST_PONI_boss_defeated" }
+    },
+    "ALTAR_SUNNE_MOONE": {
+      "area_type": "dungeon",
+      "route_name": "Altar of the Sunne/Moone",
+      "region": "ALOLA",
+      "battle_type": "indoor",
+      "wild_pool_percentages": null,
+      "min_rounds": 0,
+      "route_menu": [
+        { "text": "Encounter Solgaleo / Lunala", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD" },
+        {
+          "text": "Encounter Necrozma (post-game)",
+          "action": "BOSS",
+          "condition": "boss_not_defeated",
+          "flag_condition": "beat_alola_champion",
+          "color": "GOLD"
+        },
+        { "text": "Vast Poni Canyon", "action": "EXIT", "target_area": "VAST_PONI_CANYON", "condition": "can_exit", "color": "RED" },
+        { "text": "SEAFOLK VILLAGE", "action": "EXIT", "target_area": "SEAFOLK_VILLAGE", "condition": "can_exit", "color": "RED" }
+      ],
+      "area_boss": { "id": 791, "name": "Solgaleo / Lunala", "victory_flag": "ALTAR_boss_defeated" }
+    },
+    "MOUNT_LANAKILA": {
+      "area_type": "dungeon",
+      "route_name": "Mount Lanakila (Victory Road Alola)",
+      "region": "ALOLA",
+      "battle_type": "mountain",
+      "wild_pool_percentages": "ALOLA_MT_LANAKILA_PERCENTAGES",
+      "min_rounds": 3,
+      "trainer_pool": [
+        {
+          "name": "Ace Trainer Harriet",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "is_boss_battle": true,
+          "team": [730, 745],
+          "rewards": { "balls": 5 }
+        },
+        {
+          "name": "Hau",
+          "class": "PKMN_TRAINER",
+          "sprite": "hau.png",
+          "is_boss_battle": true,
+          "team": [730, 760, 745, 778, 143],
+          "team_choice": {
+            "722": [727, 760, 745, 778, 143],
+            "725": [724, 760, 745, 778, 143],
+            "728": [730, 760, 745, 778, 143]
+          },
+          "rewards": { "balls": 8 },
+          "victory_flag": "defeated_hau_lanakila",
+          "dialogue": {
+            "intro": ["Hau: {player_name}! One more battle before the League — let's go all out!"],
+            "player_won": ["Hau: You're incredible! Go be Champion! I'll be right behind you!"],
+            "player_lost": ["Hau: YES! I really have gotten stronger! Go, {player_name}!"]
+          }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
+        {
+          "text": "Tapu Koko (Ruins of Conflict)",
+          "action": "BOSS",
+          "condition": "boss_not_defeated",
+          "flag_condition": "beat_alola_champion",
+          "color": "GOLD"
+        },
+        { "text": "Ula'ula Island", "action": "EXIT", "target_area": "MALIE_CITY", "condition": "can_exit", "color": "RED" },
+        { "text": "Pokémon League", "action": "EXIT", "target_area": "ALOLA_POKEMON_LEAGUE", "condition": "can_exit", "color": "RED" }
+      ],
+      "area_boss": { "id": 785, "name": "Tapu Koko", "victory_flag": "MT_LANAKILA_boss_defeated" }
+    },
+    "ALOLA_ROUTE_1": {
+      "area_type": "wild_route",
+      "route_name": "Route 1",
+      "region": "ALOLA",
+      "battle_type": "grass",
+      "wild_pool_percentages": "ALOLA_ROUTE_1_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Youngster Koharu",
+          "class": "YOUNGSTER",
+          "sprite": "youngster.png",
+          "team": [722],
+          "rewards": { "balls": 2 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "Iki Town", "action": "EXIT", "target_area": "IKI_TOWN", "condition": "can_exit", "color": "RED" },
+        { "text": "Hau'oli City", "action": "EXIT", "target_area": "HAUOLI_CITY", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "HAUOLI_CITY"
+    },
+    "ALOLA_ROUTE_2": {
+      "area_type": "wild_route",
+      "route_name": "Route 2",
+      "region": "ALOLA",
+      "battle_type": "grass",
+      "wild_pool_percentages": "ALOLA_ROUTE_2_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Youngster Hiroshi",
+          "class": "YOUNGSTER",
+          "sprite": "youngster.png",
+          "team": [734, 735],
+          "rewards": { "balls": 2 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "Hau'oli City", "action": "EXIT", "target_area": "HAUOLI_CITY", "condition": "can_exit", "color": "RED" },
+        { "text": "Verdant Cavern", "action": "EXIT", "target_area": "VERDANT_CAVERN", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "VERDANT_CAVERN"
+    },
+    "ALOLA_ROUTE_4": {
+      "area_type": "wild_route",
+      "route_name": "Route 4",
+      "region": "ALOLA",
+      "battle_type": "grass",
+      "wild_pool_percentages": "ALOLA_ROUTE_4_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Cook Erwin",
+          "class": "GENTLEMAN",
+          "sprite": "gentleman.png",
+          "team": [741, 742],
+          "rewards": { "balls": 2 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "Heahea City", "action": "EXIT", "target_area": "HEAHEA_CITY", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "HEAHEA_CITY"
+    },
+    "ALOLA_ROUTE_5": {
+      "area_type": "wild_route",
+      "route_name": "Route 5",
+      "region": "ALOLA",
+      "battle_type": "grass",
+      "wild_pool_percentages": "ALOLA_ROUTE_5_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Ace Trainer Makoa",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [741, 754],
+          "rewards": { "balls": 3 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "Heahea City", "action": "EXIT", "target_area": "HEAHEA_CITY", "condition": "can_exit", "color": "RED" },
+        { "text": "Brooklet Hill", "action": "EXIT", "target_area": "BROOKLET_HILL", "condition": "can_exit", "color": "RED" },
+        { "text": "Lush Jungle", "action": "EXIT", "target_area": "LUSH_JUNGLE", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "BROOKLET_HILL"
+    },
+    "ALOLA_ROUTE_7": {
+      "area_type": "wild_route",
+      "route_name": "Route 7",
+      "region": "ALOLA",
+      "battle_type": "mountain",
+      "wild_pool_percentages": "ALOLA_ROUTE_7_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Hiker Kaimana",
+          "class": "HIKER",
+          "sprite": "hiker.png",
+          "team": [757, 758],
+          "rewards": { "balls": 2 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "Wela Volcano Park", "action": "EXIT", "target_area": "WELA_VOLCANO_PARK", "condition": "can_exit", "color": "RED" },
+        { "text": "Konikoni City", "action": "EXIT", "target_area": "KONIKONI_CITY", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "KONIKONI_CITY"
+    },
+    "ALOLA_ROUTE_8": {
+      "area_type": "wild_route",
+      "route_name": "Route 8",
+      "region": "ALOLA",
+      "battle_type": "field",
+      "wild_pool_percentages": "ALOLA_ROUTE_8_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Ace Trainer Leilani",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "team": [744, 762],
+          "rewards": { "balls": 3 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "Konikoni City", "action": "EXIT", "target_area": "KONIKONI_CITY", "condition": "can_exit", "color": "RED" },
+        { "text": "Aether House", "action": "EXIT", "target_area": "AETHER_PARADISE", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "MALIE_CITY"
+    },
+    "ALOLA_ROUTE_10": {
+      "area_type": "wild_route",
+      "route_name": "Route 10",
+      "region": "ALOLA",
+      "battle_type": "mountain",
+      "wild_pool_percentages": "ALOLA_ROUTE_10_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Veteran Akira",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "is_boss_battle": true,
+          "team": [738, 764],
+          "rewards": { "balls": 5 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
+        { "text": "Malie City", "action": "EXIT", "target_area": "MALIE_CITY", "condition": "can_exit", "color": "RED" },
+        { "text": "Mount Hokulani", "action": "EXIT", "target_area": "MOUNT_HOKULANI", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "MOUNT_HOKULANI"
+    },
+    "ALOLA_ROUTE_11": {
+      "area_type": "wild_route",
+      "route_name": "Route 11",
+      "region": "ALOLA",
+      "battle_type": "grass",
+      "wild_pool_percentages": "ALOLA_ROUTE_11_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Pokémon Ranger Mana",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "team": [764, 766],
+          "rewards": { "balls": 3 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "Malie City", "action": "EXIT", "target_area": "MALIE_CITY", "condition": "can_exit", "color": "RED" },
+        { "text": "Tapu Village", "action": "EXIT", "target_area": "TAPU_VILLAGE", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "TAPU_VILLAGE"
+    },
+    "ALOLA_ROUTE_14": {
+      "area_type": "wild_route",
+      "route_name": "Route 14",
+      "region": "ALOLA",
+      "battle_type": "grass",
+      "wild_pool_percentages": "ALOLA_ROUTE_14_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Skull Grunt",
+          "class": "GALACTIC",
+          "sprite": "skull_grunt.png",
+          "team": [754, 764],
+          "rewards": { "balls": 2 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "Tapu Village", "action": "EXIT", "target_area": "TAPU_VILLAGE", "condition": "can_exit", "color": "RED" },
+        { "text": "Thrifty Megamart", "action": "EXIT", "target_area": "THRIFTY_MEGAMART", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "THRIFTY_MEGAMART"
+    },
+    "ALOLA_ROUTE_15": {
+      "area_type": "wild_route",
+      "route_name": "Route 15",
+      "region": "ALOLA",
+      "battle_type": "field",
+      "wild_pool_percentages": "ALOLA_ROUTE_15_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Ace Trainer Yuki",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "is_boss_battle": true,
+          "team": [778, 769],
+          "rewards": { "balls": 5 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
+        { "text": "Tapu Village", "action": "EXIT", "target_area": "TAPU_VILLAGE", "condition": "can_exit", "color": "RED" },
+        { "text": "Po Town (Team Skull HQ)", "action": "EXIT", "target_area": "PO_TOWN", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "PO_TOWN"
+    },
+    "ALOLA_ROUTE_16": {
+      "area_type": "wild_route",
+      "route_name": "Route 16",
+      "region": "ALOLA",
+      "battle_type": "field",
+      "wild_pool_percentages": "ALOLA_ROUTE_16_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Veteran Sina",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "is_boss_battle": true,
+          "team": [730, 745, 788],
+          "rewards": { "balls": 5 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
+        { "text": "Seafolk Village", "action": "EXIT", "target_area": "SEAFOLK_VILLAGE", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "SEAFOLK_VILLAGE"
+    },
+    "ALOLA_ROUTE_17": {
+      "area_type": "wild_route",
+      "route_name": "Route 17",
+      "region": "ALOLA",
+      "battle_type": "field",
+      "wild_pool_percentages": "ALOLA_ROUTE_17_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Team Skull Grunt",
+          "class": "GALACTIC",
+          "sprite": "skull_grunt.png",
+          "team": [757, 760],
+          "rewards": { "balls": 2 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "Po Town", "action": "EXIT", "target_area": "PO_TOWN", "condition": "can_exit", "color": "RED" },
+        { "text": "Malie City", "action": "EXIT", "target_area": "MALIE_CITY", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "MALIE_CITY"
+    },
+    "DIGLETTS_TUNNEL": {
+      "area_type": "dungeon",
+      "route_name": "Diglett's Tunnel",
+      "region": "ALOLA",
+      "battle_type": "cave",
+      "wild_pool_percentages": "ALOLA_DIGLETTS_TUNNEL_PERCENTAGES",
+      "min_rounds": 2,
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "Konikoni City", "action": "EXIT", "target_area": "KONIKONI_CITY", "condition": "can_exit", "color": "RED" }
+      ]
+    },
+    "MEMORIAL_HILL": {
+      "area_type": "dungeon",
+      "route_name": "Memorial Hill",
+      "region": "ALOLA",
+      "battle_type": "grass",
+      "wild_pool_percentages": "ALOLA_MEMORIAL_HILL_PERCENTAGES",
+      "min_rounds": 2,
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "Konikoni City", "action": "EXIT", "target_area": "KONIKONI_CITY", "condition": "can_exit", "color": "RED" }
+      ]
+    }
+  },
+  "JOURNAL_MISSIONS": [
+    {
+      "id": "alola_m1",
+      "type": "MAIN",
+      "title": "Welcome to Alola",
+      "description": "Professor Kukui invited you to Alola! Get your starter Pokémon and meet your new friends Hau and Lillie.",
+      "condition": { "start_region": "ALOLA", "badges_less": 1 },
+      "reward": "Starter Pokémon + Z-Ring"
+    },
+    {
+      "id": "alola_m2",
+      "type": "MAIN",
+      "title": "Melemele Island Trials",
+      "description": "Complete Ilima's trial at Verdant Cavern and earn the Grand Trial stamp from Kahuna Hala.",
+      "condition": { "start_region": "ALOLA", "badges_less": 1 },
+      "reward": "Normalium Z + Fightinium Z"
+    },
+    {
+      "id": "alola_m3",
+      "type": "MAIN",
+      "title": "Akala Island Trials",
+      "description": "Take the ferry to Akala Island. Complete Lana's (Water), Kiawe's (Fire), and Mallow's (Grass) trials, then face Kahuna Olivia.",
+      "condition": { "start_region": "ALOLA", "badges_min": 1, "badges_less": 3 },
+      "reward": "Waterium/Firium/Grassium/Rockium Z"
+    },
+    {
+      "id": "alola_m4",
+      "type": "MAIN",
+      "title": "Stop Team Skull",
+      "description": "Team Skull is stirring up trouble across Alola. Confront Guzma in Malie City!",
+      "condition": { "start_region": "ALOLA", "badges_min": 3, "flag_not": "malie_skull_cleared" },
+      "reward": "Story progress"
+    },
+    {
+      "id": "alola_m5",
+      "type": "MAIN",
+      "title": "Ula'ula Island Trials",
+      "description": "Complete Sophocles' (Electric) and Acerola's (Ghost) trials, then face Kahuna Nanu.",
+      "condition": { "start_region": "ALOLA", "badges_min": 3, "badges_less": 5 },
+      "reward": "Electrium/Ghostium/Darkinium Z"
+    },
+    {
+      "id": "alola_m6",
+      "type": "MAIN",
+      "title": "Aether Paradise",
+      "description": "The Aether Foundation is hiding something. Infiltrate Aether Paradise and confront Lusamine!",
+      "condition": { "start_region": "ALOLA", "badges_min": 4, "flag_not": "aether_paradise_cleared" },
+      "reward": "Cosmog rescued"
+    },
+    {
+      "id": "alola_m7",
+      "type": "MAIN",
+      "title": "Poni Island Trials",
+      "description": "Reach Poni Island. Complete Mina's Fairy Trial and the Vast Poni Canyon Trial, then challenge Kahuna Hapu.",
+      "condition": { "start_region": "ALOLA", "badges_min": 5, "badges_less": 7 },
+      "reward": "Fairium/Groundium Z"
+    },
+    {
+      "id": "alola_m8",
+      "type": "MAIN",
+      "title": "The Altar",
+      "description": "Bring the Cosmog to the Altar of the Sunne/Moone. Witness the birth of a legendary Pokémon.",
+      "condition": { "start_region": "ALOLA", "badges_min": 6, "flag_not": "ALTAR_boss_defeated" },
+      "reward": "Solgaleo / Lunala"
+    },
+    {
+      "id": "alola_m9",
+      "type": "MAIN",
+      "title": "The First Alola League",
+      "description": "Climb Mount Lanakila and challenge the first-ever Alola Pokémon League. Defeat Professor Kukui at the top!",
+      "condition": { "start_region": "ALOLA", "badges_min": 7, "flag_not": "beat_alola_champion" },
+      "reward": "Alola Champion Title"
+    },
+    {
+      "id": "alola_s1",
+      "type": "SIDE",
+      "title": "The Guardian Deities",
+      "description": "Four Tapu protect Alola's islands. They may appear to those worthy of their challenge.",
+      "condition": { "start_region": "ALOLA", "flag": "beat_alola_champion" },
+      "reward": "Tapu Koko + Lele + Bulu + Fini encounters"
+    },
+    {
+      "id": "alola_s2",
+      "type": "SIDE",
+      "title": "Necrozma",
+      "description": "A fractured light has been spotted at the Altar after your championship. The Prism Pokémon awaits.",
+      "condition": { "start_region": "ALOLA", "flag": "beat_alola_champion", "flag_not": "MT_LANAKILA_boss_defeated" },
+      "reward": "Necrozma encounter"
+    }
+  ],
+  "ALOLA_ROUTE_1": [722, 725, 728, 734],
+  "ALOLA_ROUTE_1_PERCENTAGES": { "722": 30, "725": 25, "728": 25, "734": 20 },
+  "ALOLA_ROUTE_2": [734, 735, 737, 741],
+  "ALOLA_ROUTE_2_PERCENTAGES": { "734": 30, "735": 25, "737": 25, "741": 20 },
+  "ALOLA_ROUTE_4": [741, 742, 753, 754],
+  "ALOLA_ROUTE_4_PERCENTAGES": { "741": 30, "742": 25, "753": 25, "754": 20 },
+  "ALOLA_ROUTE_5": [741, 754, 746, 747],
+  "ALOLA_ROUTE_5_PERCENTAGES": { "741": 25, "754": 25, "746": 25, "747": 25 },
+  "ALOLA_ROUTE_7": [757, 758, 744, 745],
+  "ALOLA_ROUTE_7_PERCENTAGES": { "757": 30, "758": 25, "744": 25, "745": 20 },
+  "ALOLA_ROUTE_8": [744, 762, 763, 764],
+  "ALOLA_ROUTE_8_PERCENTAGES": { "744": 30, "762": 25, "763": 25, "764": 20 },
+  "ALOLA_ROUTE_10": [738, 739, 764, 766],
+  "ALOLA_ROUTE_10_PERCENTAGES": { "738": 30, "739": 25, "764": 25, "766": 20 },
+  "ALOLA_ROUTE_11": [764, 766, 741, 769],
+  "ALOLA_ROUTE_11_PERCENTAGES": { "764": 30, "766": 25, "741": 25, "769": 20 },
+  "ALOLA_ROUTE_14": [754, 764, 778, 769],
+  "ALOLA_ROUTE_14_PERCENTAGES": { "754": 30, "764": 25, "778": 25, "769": 20 },
+  "ALOLA_ROUTE_15": [778, 769, 764, 766],
+  "ALOLA_ROUTE_15_PERCENTAGES": { "778": 30, "769": 25, "764": 25, "766": 20 },
+  "ALOLA_ROUTE_16": [730, 745, 788, 787],
+  "ALOLA_ROUTE_16_PERCENTAGES": { "730": 30, "745": 25, "788": 25, "787": 20 },
+  "ALOLA_ROUTE_17": [757, 760, 754, 758],
+  "ALOLA_ROUTE_17_PERCENTAGES": { "757": 30, "760": 25, "754": 25, "758": 20 },
+  "ALOLA_VERDANT_CAVERN_PERCENTAGES": { "734": 35, "735": 15, "744": 20 },
+  "ALOLA_VERDANT_CAVERN": [734, 735, 744],
+  "ALOLA_BROOKLET_HILL_PERCENTAGES": { "746": 35, "747": 30, "748": 20, "730": 15 },
+  "ALOLA_BROOKLET_HILL": [730, 746, 747, 748],
+  "ALOLA_WELA_VOLCANO_PERCENTAGES": { "757": 35, "758": 30, "759": 20, "105": 15 },
+  "ALOLA_WELA_VOLCANO": [105, 757, 758, 759],
+  "ALOLA_LUSH_JUNGLE_PERCENTAGES": { "753": 30, "754": 25, "755": 25, "741": 20 },
+  "ALOLA_LUSH_JUNGLE": [741, 753, 754, 755],
+  "ALOLA_MT_HOKULANI_PERCENTAGES": { "738": 35, "739": 30, "736": 20, "737": 15 },
+  "ALOLA_MT_HOKULANI": [736, 737, 738, 739],
+  "ALOLA_THRIFTY_MEGAMART_PERCENTAGES": { "778": 40, "709": 30, "302": 30 },
+  "ALOLA_THRIFTY_MEGAMART": [302, 709, 778],
+  "ALOLA_VAST_PONI_PERCENTAGES": { "773": 25, "745": 25, "776": 25, "783": 25 },
+  "ALOLA_VAST_PONI": [745, 773, 776, 783],
+  "ALOLA_MT_LANAKILA_PERCENTAGES": { "730": 20, "724": 20, "727": 20, "745": 20, "778": 20 },
+  "ALOLA_MT_LANAKILA": [724, 727, 730, 745, 778],
+  "ALOLA_DIGLETTS_TUNNEL_PERCENTAGES": { "50": 40, "51": 35, "100": 25 },
+  "ALOLA_DIGLETTS_TUNNEL": [50, 51, 100],
+  "ALOLA_MEMORIAL_HILL_PERCENTAGES": { "769": 40, "764": 35, "778": 25 },
+  "ALOLA_MEMORIAL_HILL": [764, 769, 778],
+  "REGION_START": {
+    "ALOLA": {
+      "order": 7,
+      "subtitle": "GEN 7 / SUN / MOON",
+      "start_area": "IKI_TOWN",
+      "starters": [722, 725, 728],
+      "professor": "Professor Kukui",
+      "intro_text": "alola_kukui_intro",
+      "starter_text": "alola_kukui_starter",
+      "newgame_text": "alola_newgame_intro",
+      "dex_range": [722, 809],
+      "mom_newstart_text": ["alola_mom_newstart_1", "alola_mom_newstart_2", "alola_mom_newstart_3"],
+      "mom_home_text": ["alola_mom_home_1", "alola_mom_home_2", "alola_mom_home_3"],
+      "dex_extra": []
+    }
+  }
+}

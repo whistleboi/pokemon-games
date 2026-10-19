@@ -3,6 +3,8 @@ import pygame
 import random
 import math
 import os
+import re
+import datetime
 from src.states.base import GameState
 from src.utils import Utils
 from src.ui.dialogue import ClassicDialogueBox
@@ -12,6 +14,52 @@ from src.world.boss import BossManager
 from src.pokemon.data import Pokemon
 from src.vfx.particles import ShinyBurst, Starburst, IdleSparkle
 from src.config import WHITE, BLACK, GREEN, BLUE, GOLD, RED, ORANGE, PURPLE, GRAY, FPS, VOLUME
+
+
+def _fill_names(game, text):
+    if not isinstance(text, str):
+        return text
+    return (text.replace("{player_name}", getattr(game, "player_name", "TRAINER"))
+                .replace("{rival_name}", getattr(game, "rival_name", "???")))
+
+
+def _resolve_lines(game, value):
+    """GAME_TEXT key(s) or literal line(s) -> list of lines with names filled in."""
+    items = value if isinstance(value, list) else [value]
+    lines = []
+    for item in items:
+        if isinstance(item, str) and item in game.assets.game_text:
+            text = game.assets.game_text[item]
+            lines.extend(text if isinstance(text, list) else [text])
+        elif item:
+            lines.append(item)
+    return [_fill_names(game, line) for line in lines]
+
+
+def _scaled_player_image(game, char_key):
+    img = game.assets.get_player_image(char_key, back=False) if char_key else None
+    if not img:
+        return None
+    h = int(game.height * 0.6)
+    return pygame.transform.scale(img, (int(img.get_width() * (h / img.get_height())), h))
+
+
+def _trainer_sprite(game, sprite_name):
+    """Trainer art, falling back to the player-chosen rival when a region's sprite is missing."""
+    if sprite_name != "{rival_character}":
+        img = game.assets.get_trainer_image(sprite_name or "rival.png")
+        if img:
+            return img
+    return (_scaled_player_image(game, getattr(game, "rival_character", None))
+            or game.assets.get_trainer_image("rival.png"))
+
+
+def _region_starter_id(game):
+    story = game.story_manager
+    sid = story.story_flags.get(f"starter_{story.get_current_region().lower()}")
+    if sid:
+        return sid
+    return story.player_team[0].id if story.player_team else None
 
 
 # [REF-0029: Overworld & Play Logic]
@@ -93,6 +141,7 @@ class PlayState(GameState):
         self.pause_timer = 0
         self.caught_idx = -1
         self.flee_active = False
+        self.npc_sprite = None
         self.catch_selection_active = False
         self.selected_catch_idx = -1
         self.shake_amount = 0
@@ -157,6 +206,19 @@ class PlayState(GameState):
                                            self._open_map,
                                            bg_color=GOLD))
 
+        if self.game.story_manager.inventory.get("POKE_NAV", 0) > 0:
+            nav_idx = len(self.hud_buttons)
+            self.hud_buttons.append(Button((btn_x, btn_y + (btn_h+spacing)*nav_idx, btn_w, btn_h), "NAV",
+                                           game.assets.fonts["tiny"],
+                                           self._open_pokenav,
+                                           bg_color=GREEN))
+
+        opt_idx = len(self.hud_buttons)
+        self.hud_buttons.append(Button((btn_x, btn_y + (btn_h+spacing)*opt_idx, btn_w, btn_h), "OPTIONS",
+                                       game.assets.fonts["tiny"],
+                                       self._open_options,
+                                       bg_color=GRAY))
+
         self.btn_flee = Button(
             rect=(game.width - 200, game.height // 2 - 40, 180, 80),
             text="FLEE",
@@ -178,6 +240,10 @@ class PlayState(GameState):
 
         self.boss_manager = BossManager(game)
 
+    def _open_options(self):
+        from src.states.menus import open_difficulty_options
+        open_difficulty_options(self.game, self)
+
     def _open_journal(self):
         from src.states.systems import JournalState
         self.game.change_state(JournalState(self.game, self))
@@ -190,13 +256,21 @@ class PlayState(GameState):
         from src.states.systems import FlyState
         self.game.change_state(FlyState(self.game, self))
 
+    def _open_pokenav(self):
+        from src.states.systems import PokeNavState
+        self.game.change_state(PokeNavState(self.game, self))
+
     def _get_battle_background_for_area(self):
         """Returns a specific battle background filename based on the current area."""
         area_key = self.game.story_manager.current_area_key
 
         bg_config = self.area_data.get("backgrounds", {})
         if "battle" in bg_config:
-            return bg_config["battle"]
+            val = bg_config["battle"]
+            if isinstance(val, list):
+                # ARCHITECT: For wild routes/dungeons, pick a random variant from the list
+                return random.choice(val)
+            return val
 
         background_map = {
             "KANTO_POKEMON_TOWER": "battle_pokemon_tower.png",
@@ -499,7 +573,7 @@ class PlayState(GameState):
         from src.pokemon.data import Pokemon
         egg_poke = Pokemon(egg_raw, self.game.assets)
 
-        egg_path = os.path.join("assets", "sprites", "pokemon", "egg.png")
+        egg_path = os.path.join(self.game.assets.pokemon_sprites_dir, "egg.png")
         if os.path.exists(egg_path):
             try:
                 surf = pygame.image.load(egg_path).convert_alpha()
@@ -638,10 +712,7 @@ class PlayState(GameState):
                     opponent_ids.append(random.choice(rocket_pool))
 
         if not opponent_ids:
-            pool_name = self.area_data.get("wild_pool_percentages")
-            wild_pool_pct = (
-                self.game.loader.area_data.get(pool_name, {}) if pool_name else {}
-            )
+            wild_pool_pct = self._get_wild_pool(self.area_data)
 
             if wild_pool_pct:
                 keys = list(wild_pool_pct.keys())
@@ -697,9 +768,25 @@ class PlayState(GameState):
         pygame.event.clear()
         self.game.change_state(intro_state)
 
+    def _get_wild_pool(self, area_data):
+        """Returns the percentage pool dict for the current area, respecting day/night splits."""
+        hour = datetime.datetime.now().hour
+        is_night = hour < 6 or hour >= 20
+        night_key = area_data.get("night_pool_percentages")
+        day_key = area_data.get("day_pool_percentages")
+        if is_night and night_key:
+            pool = self.game.loader.area_data.get(night_key, {})
+            if pool:
+                return pool
+        if not is_night and day_key:
+            pool = self.game.loader.area_data.get(day_key, {})
+            if pool:
+                return pool
+        base_key = area_data.get("wild_pool_percentages")
+        return self.game.loader.area_data.get(base_key, {}) if base_key else {}
+
     def trigger_wild_encounter(self):
-        pool_name = self.area_data.get("wild_pool_percentages")
-        wild_pool_pct = self.game.loader.area_data.get(pool_name, {})
+        wild_pool_pct = self._get_wild_pool(self.area_data)
         if not wild_pool_pct:
             print(
                 f"Warning: No wild Pokémon defined for area {self.game.story_manager.current_area_key}"
@@ -759,92 +846,10 @@ class PlayState(GameState):
         self.game.story_manager.current_streak = self.current_streak
 
     def generate_math_set(self, score_unused=0, num_options=3):
-        badges = len(self.game.story_manager.badges)
-
-        if badges <= 1:
-            limit = 20
-        elif badges <= 3:
-            limit = 30
-        elif badges <= 5:
-            limit = 40
-        else:
-            limit = 50
-
-        p_type = random.choice([1, 2, 3])
-        op = random.choice(["+", "-"])
-
-        if op == "+":
-            c = random.randint(4, limit)
-            s = random.randint(2, min(10, c - 2))
-            if random.random() < 0.5:
-                a, b = s, c - s
-            else:
-                b, a = s, c - s
-        else:
-            if random.random() < 0.5:
-                b = random.randint(2, 10)
-                c = random.randint(2, max(2, limit - b))
-            else:
-                c = random.randint(2, 10)
-                b = random.randint(2, max(2, limit - c))
-            a = b + c
-
-        if p_type == 1:
-            problem_str = f"{a} {op} {b} = ?"
-            ans = c
-            opts = {c}
-            while len(opts) < num_options:
-                offset = random.choice([-3, -2, -1, 1, 2, 3])
-                f = c + offset
-                if f >= 0 and f not in opts:
-                    opts.add(f)
-            options = sorted(list(opts), key=lambda x: random.random())
-
-        elif p_type == 2:
-            if random.random() < 0.5:
-                problem_str = f"? {op} {b} = {c}"
-                ans = a
-            else:
-                problem_str = f"{a} {op} ? = {c}"
-                ans = b
-            opts = {ans}
-            while len(opts) < num_options:
-                offset = random.choice([-3, -2, -1, 1, 2, 3])
-                f = ans + offset
-                if f >= 2 and f not in opts:
-                    opts.add(f)
-            options = sorted(list(opts), key=lambda x: random.random())
-
-        else:
-            problem_str = f"{c} = ?"
-            ans = f"{a} {op} {b}"
-            options = [ans]
-            while len(options) < num_options:
-                mod_a, mod_b = a, b
-                mod_op = op
-                change_type = random.randint(1, 3)
-                offset = random.choice([-2, -1, 1, 2])
-                if change_type == 1:
-                    mod_a += offset
-                elif change_type == 2:
-                    mod_b += offset
-                else:
-                    mod_op = "-" if op == "+" else "+"
-                if mod_a < 2 or mod_b < 2:
-                    continue
-                if mod_op == "-" and mod_a <= mod_b:
-                    continue
-                if change_type == 3:
-                    if (mod_op == "+" and (mod_a + mod_b) == c) or (
-                        mod_op == "-" and (mod_a - mod_b) == c
-                    ):
-                        continue
-                w_eq = f"{mod_a} {mod_op} {mod_b}"
-                if w_eq not in options:
-                    options.append(w_eq)
-            random.shuffle(options)
-
-        return problem_str, ans, options
+        """Catching + battle questions. Difficulty comes from the player's
+        OPTIONS setting (or AUTO = region + badges). See src/core/math_engine.py."""
+        level = self.game.story_manager.get_math_level()
+        return self.game.math.generate(level, num_options=num_options)
 
     def get_cx(self, i):
         if self.game.assets.is_pc:
@@ -1023,6 +1028,11 @@ class PlayState(GameState):
             return has_rod and self.area_data.get("can_fish", False)
         if condition == "can_battle":
             return True
+        if condition == "has_EON_TICKET":
+            return self.game.story_manager.inventory.get("EON_TICKET", 0) > 0
+        if condition == "can_dive":
+             return self.area_data.get("battle_type") == "ocean" and self.game.story_manager.inventory.get("DIVE_GEAR", 0) > 0
+
         if condition == "mew_available":
             has_spotted = self.game.story_manager.story_flags.get("mew_spotted_mt_moon", False)
             has_caught = self.game.story_manager.story_flags.get("caught_mew", False)
@@ -1123,12 +1133,71 @@ class PlayState(GameState):
             return self.action_challenge_boss
         if action == "HEADBUTT":
             return self.action_headbutt
+        if action == "DIVE":
+            return self.action_dive
         if action == "FISH":
             return self.action_fish
         if action in ["EXIT", "TRAVEL"]:
             target = item.get("target") or item.get("target_area")
             return lambda t=target: self.action_exit_route(t)
+        if action == "GALACTIC_GAUNTLET":
+            return self.action_search_trainer
+        if action == "NPC":
+            key = item.get("dialogue") or item.get("target")
+            if key in self.game.assets.game_text:
+                return lambda k=key: self._route_npc_text(k)
         return lambda: print(f"Unknown action: {action}")
+
+    def _route_npc_text(self, key):
+        self.is_progression_paused = True
+        self.hide_menu_buttons()
+        self.show_dialogue(_resolve_lines(self.game, key), callback=self.show_progression_menu)
+
+    def visit_director_radio(self):
+        self.is_progression_paused = True
+        self.hide_menu_buttons()
+        inv = self.game.story_manager.inventory
+        if inv.get("SILVER_WING", 0) > 0:
+            lines = self.game.assets.get_text("director_radio_already", default=["Thank you!"])
+        else:
+            lines = self.game.assets.get_text("director_radio_intro")
+            inv["SILVER_WING"] = 1
+            if self.game.assets.heal_sfx: self.game.assets.heal_sfx.play()
+        path = os.path.join(self.game.assets.sprites_dir, "png", "director.png")
+        if os.path.exists(path):
+            img = pygame.image.load(path).convert_alpha()
+            h = int(self.game.height * 0.6); w = int(img.get_width() * (h / img.get_height()))
+            self.npc_sprite = pygame.transform.scale(img, (w, h))
+        self.show_dialogue(lines, callback=self._end_npc_interaction_playstate)
+
+    def visit_sage_li(self):
+        self.is_progression_paused = True
+        self.hide_menu_buttons()
+        inv = self.game.story_manager.inventory
+        caught = self.game.data.data.get("pokedex", {})
+        has_trio = all(str(pid) in caught for pid in [243, 244, 245])
+        
+        if inv.get("RAINBOW_WING", 0) > 0:
+            lines = ["Sage Li: Seek the summit, chosen one."]
+        elif has_trio:
+            lines = self.game.assets.get_text("sage_li_intro")
+            inv["RAINBOW_WING"] = 1
+            if self.game.assets.heal_sfx: self.game.assets.heal_sfx.play()
+        else:
+            lines = self.game.assets.get_text("sage_li_fail")
+            
+        path = os.path.join(self.game.assets.sprites_dir, "png", "elder.png")
+        if not os.path.exists(path): path = os.path.join(self.game.assets.sprites_dir, "png", "oldman.png")
+        if os.path.exists(path):
+            img = pygame.image.load(path).convert_alpha()
+            h = int(self.game.height * 0.6); w = int(img.get_width() * (h / img.get_height()))
+            self.npc_sprite = pygame.transform.scale(img, (w, h))
+        self.show_dialogue(lines, callback=self._end_npc_interaction_playstate)
+
+    def _end_npc_interaction_playstate(self):
+        self.npc_sprite = None
+        self.dialogue_box.visible = False
+        self.show_progression_menu()
 
     def hide_menu_buttons(self):
         for btn in self.route_buttons:
@@ -1258,6 +1327,36 @@ class PlayState(GameState):
             "initial_round_active": False
         }
         self.game.change_state(battle_state)
+
+    def action_dive(self):
+        self.is_progression_paused = False
+        self.hide_menu_buttons()
+        self.rounds_completed += 1
+
+        dive_pool = self.game.loader.area_data.get("HOENN_UNDERWATER_POOL_PERCENTAGES", {})
+        if not dive_pool:
+            self.show_dialogue(["The water is too shallow to dive here."], callback=self.show_progression_menu)
+            return
+
+        p_id_str = Utils.weighted_random_choice(dive_pool)
+        raw = self.game.loader.fetch_specific(int(p_id_str))
+        pokemon = Pokemon(raw, self.game.assets, size_mult=3.125)
+
+        from src.states.battle import WildBattleState
+        battle_state = WildBattleState(
+            self.game,
+            pokemon,
+            self.game.story_manager.current_area_key,
+            background_image="battle_ocean1.png" # ARCHITECT: Use ocean bg as placeholder for underwater
+        )
+        battle_state.play_state_data = {
+            "balls_left": self.balls_left,
+            "current_streak": self.current_streak,
+            "rounds_completed": self.rounds_completed,
+            "pending_wild_encounters": 0,
+            "initial_round_active": False
+        }
+        self.show_dialogue(["Diving deep into the blue..."], callback=lambda: self.game.change_state(battle_state))
 
     def action_fish(self):
         self.is_progression_paused = False
@@ -1467,7 +1566,6 @@ class PlayState(GameState):
                 self.was_shiny_override = is_shiny_catch and not is_correct_answer
 
                 if is_correct_answer or is_shiny_catch:
-                    self.handle_correct(target_p_idx, pi, is_shiny_catch, btn_rect.centerx)
                     self.handle_correct(target_p_idx, pi, is_shiny_catch, self.get_cx(target_p_idx))
                 else:
                     self.handle_wrong(i, pi)
@@ -1770,6 +1868,7 @@ class PlayState(GameState):
         pokemon_caught = self.p_data[idx]
         pokemon_was_kept = False
 
+        pokemon_caught.caught_region = self.game.story_manager.get_current_region()
         all_owned = self.game.story_manager.player_team + [p for p in self.game.story_manager.pc_pokemon if p]
         is_duplicate_owned = any(p.id == pokemon_caught.id and p.form == pokemon_caught.form for p in all_owned)
         is_party_full = len(self.game.story_manager.player_team) >= 6
@@ -1927,6 +2026,10 @@ class PlayState(GameState):
 
         if not self.boss_manager.in_boss_mode:
             screen.fill(BLACK)
+
+            if self.dialogue_box.visible and hasattr(self, "npc_sprite") and self.npc_sprite:
+                rect = self.npc_sprite.get_rect(center=(width // 2, height // 2 - 50))
+                screen.blit(self.npc_sprite, rect)
 
             warp_speed = 15 if self.ball_active else 1
             spd_base = (
@@ -2276,6 +2379,12 @@ class CityState(GameState):
                                            self._open_map,
                                            bg_color=GOLD))
 
+        opt_idx = len(self.hud_buttons)
+        self.hud_buttons.append(Button((btn_x, btn_y + (btn_h+spacing)*opt_idx, btn_w, btn_h), "OPTIONS",
+                                       game.assets.fonts["tiny"],
+                                       self._open_options,
+                                       bg_color=GRAY))
+
         self.yes_btn = Button((0, 0, 0, 0), "YES", game.assets.fonts["small"], None, bg_color=GREEN, visible=False, autosize=False)
         self.no_btn = Button((0, 0, 0, 0), "NO", game.assets.fonts["small"], None, bg_color=RED, visible=False, autosize=False)
 
@@ -2284,6 +2393,10 @@ class CityState(GameState):
 
         self.game.ui_manager.add_element(self.yes_btn)
         self.game.ui_manager.add_element(self.no_btn)
+
+    def _open_options(self):
+        from src.states.menus import open_difficulty_options
+        open_difficulty_options(self.game, self)
 
     def _open_journal(self):
         from src.states.systems import JournalState
@@ -2328,26 +2441,11 @@ class CityState(GameState):
             if img:
                 return img
 
-        first_part = self.area_key.split('_')[0].lower()
-        bg_name = f"{first_part}_city.png"
+        # ARCHITECT: Standardized naming logic: use the full area key name (e.g. azalea_town.png)
+        bg_name = f"{self.area_key.lower()}.png"
 
         img = self.game.assets.get_background(bg_name)
-        if img:
-            return img
-
-        kanto_dir = self.game.assets.kanto_backgrounds_dir
-        johto_dir = self.game.assets.johto_backgrounds_dir
-        for d in [kanto_dir, johto_dir]:
-            if os.path.exists(d):
-                area_name_clean = self.area_key.lower().replace("_", "")
-                try:
-                    candidates = [f for f in os.listdir(d) if area_name_clean in f.lower() and f.endswith(".png")]
-                    if candidates:
-                        path = os.path.join(d, random.choice(candidates))
-                        return pygame.image.load(path).convert()
-                except:
-                    pass
-        return None
+        return img
 
     def start_gym_battle(self):
         gym_data = self.area_data.get("gym")
@@ -2371,7 +2469,8 @@ class CityState(GameState):
         reqs = gym_data.get("requirements", {})
         if reqs:
             needed_badges = reqs.get("badges", 0)
-            if len(self.game.story_manager.badges) < needed_badges:
+            story = self.game.story_manager
+            if len(story.badges.get(story.get_current_region(), [])) < needed_badges:
                 fail_text = reqs.get("fail_text", "The Gym is closed.")
                 self.show_message(fail_text)
                 return
@@ -2384,7 +2483,7 @@ class CityState(GameState):
 
         self.game.change_state(GymLobbyState(self.game, self))
 
-    def _initiate_gym_battle(self, trainer_data, victory_flag=None):
+    def _initiate_gym_battle(self, trainer_data, victory_flag=None, trainer_index=None):
         from src.states.battle import TrainerBattleState, TrainerIntroState
         team_ids = trainer_data.get("team", [])
         opponent_team = []
@@ -2408,7 +2507,8 @@ class CityState(GameState):
             battle_type="gym_event",
             is_boss_battle=trainer_data.get("is_boss_battle", True),
             area_name=self.area_key,
-            victory_flag=victory_flag,
+            victory_flag=victory_flag or trainer_data.get("victory_flag"),
+            trainer_index=trainer_index,
             badge_reward=trainer_data.get("badge_reward"),
             background_image=bg_file
         )
@@ -2510,7 +2610,7 @@ class CityState(GameState):
 
             callback = self._get_callback_for_option(opt_data)
             if callback:
-                btn = Button(rect, opt_data['text'],
+                btn = Button(rect, _fill_names(self.game, opt_data['text']),
                              self.game.assets.fonts["tiny"], callback, autosize=False)
                 self.hover_buttons.append(btn)
                 self.game.ui_manager.add_element(btn)
@@ -2535,6 +2635,12 @@ class CityState(GameState):
                             "MINERAL", "GLACIER", "RISING"}
             player_badges = set(story.badges.get("JOHTO", []))
             return johto_badges.issubset(player_badges)
+
+        region_all = re.match(r"has_(?:8|all)_([a-z]+)_(?:badges|z)$", condition)
+        if region_all:
+            region = region_all.group(1).upper()
+            needed = len(story.get_region_gym_badges(region)) or 8
+            return len(story.badges.get(region, [])) >= needed
 
         if condition.startswith("has_") and condition.endswith("_badge"):
             badge_name = condition[4:-6].upper()
@@ -2575,7 +2681,7 @@ class CityState(GameState):
                 return self.visit_mom
             if target == "silver_mom":
                 return self.visit_silver_mom
-            if target in ["rival_mom", "blue_mom"]:
+            if target in ["rival_mom", "blue_mom", "rival_mom_johto"]:
                 return self.visit_rival_mom
             if target == "professor_oak":
                 return self.visit_prof_oak
@@ -2597,6 +2703,8 @@ class CityState(GameState):
                 return self.visit_mr_fuji
             if target == "silph_employee":
                 return self.visit_silph_employee
+            if target == "silph_president":
+                return self.visit_silph_president
             if target == "professor_elm":
                 return self.visit_prof_elm
             if target == "dojo":
@@ -2621,6 +2729,19 @@ class CityState(GameState):
                 return self.visit_euskine
             if target == "dragon_elder":
                 return self.visit_dragon_elder
+            if target and "_mom_" in f"_{target}_":
+                return self.visit_mom
+            key = self._npc_text_key(opt_data.get("dialogue") or target)
+            if key:
+                return lambda k=key, o=opt_data: self.show_npc_text(k, o)
+
+        if action == "RANDOM_NPC":
+            targets = opt_data.get("targets", [])
+            if any("_mom_" in f"_{t}_" for t in targets):
+                return self.visit_mom
+            keys = [k for k in (self._npc_text_key(t) for t in targets) if k]
+            if keys:
+                return lambda: self.show_npc_text(random.choice(keys), opt_data)
 
         if action == "ROCKET_GAUNTLET":
             return self.start_rocket_gauntlet
@@ -2633,6 +2754,31 @@ class CityState(GameState):
     def _open_shop(self):
         from src.states.systems import PokeMartState
         self.game.change_state(PokeMartState(self.game, self))
+
+    def _npc_text_key(self, key):
+        """GAME_TEXT key for a data-driven NPC (as given, or region-prefixed)."""
+        if not key:
+            return None
+        text = self.game.assets.game_text
+        if key in text:
+            return key
+        prefixed = f"{self.game.story_manager.get_current_region().lower()}_{key}"
+        return prefixed if prefixed in text else None
+
+    def show_npc_text(self, key, opt_data=None):
+        """Generic talk-to-NPC: show a GAME_TEXT entry, then set the option's flag if it has one."""
+        flag = (opt_data or {}).get("victory_flag")
+
+        def finish():
+            if flag:
+                self.game.story_manager.story_flags[flag] = True
+            self.end_npc_interaction()
+
+        self.show_message(_resolve_lines(self.game, key), callback=finish)
+        sprite = (opt_data or {}).get("sprite")
+        if sprite:
+            self.npc_sprite = self.game.assets.get_trainer_image(sprite)
+            self.npc_slide_offset = 400
 
     def visit_mr_fuji(self):
         self.clear_hover_menu()
@@ -2758,6 +2904,39 @@ class CityState(GameState):
 
         self.npc_dialogue = ClassicDialogueBox(Utils.get_full_dialogue_rect(self.game), msg, self.game.assets.fonts["med"], callback=self.end_npc_interaction)
 
+    def visit_silph_president(self):
+        story = self.game.story_manager
+        if story.story_flags.get("received_silph_reward"):
+            self.show_message(["President: Silph Co. is back in business, thanks to you!",
+                               "Take good care of that Porygon. It was our proudest invention."])
+            return
+
+        raw = self.game.loader.fetch_specific(137)
+        porygon = Pokemon(raw, self.game.assets, size_mult=2.5)
+        msgs = ["President: You saved Silph Co. from Team Rocket!",
+                "Giovanni wanted our newest inventions. Instead, I want YOU to have them.",
+                "Please take our MASTER BALL. It catches any Pokémon without fail!",
+                "And this is PORYGON, the world's first digital Pokémon, built right here at Silph!"]
+        if len(story.player_team) < 6:
+            story.player_team.append(porygon)
+            msgs.append("PORYGON joined your team!")
+        else:
+            slot = next((i for i, p in enumerate(story.pc_pokemon) if p is None), None)
+            if slot is None:
+                story.pc_pokemon.append(porygon)
+            else:
+                story.pc_pokemon[slot] = porygon
+            msgs.append("PORYGON was sent to BILL'S PC!")
+        self.game.data.add_pokemon(porygon)
+        story.inventory["MASTER_BALL"] = story.inventory.get("MASTER_BALL", 0) + 1
+        msgs.append("You received the MASTER BALL!")
+        story.story_flags["received_silph_reward"] = True
+        if self.game.assets.heal_sfx:
+            self.game.assets.heal_sfx.play()
+        self.show_message(msgs)
+        self.npc_sprite = self.game.assets.get_trainer_image("gentleman.png")
+        self.npc_slide_offset = 400
+
     def start_rocket_gauntlet(self):
         self.clear_hover_menu()
         area_key = self.game.story_manager.current_area_key
@@ -2775,7 +2954,7 @@ class CityState(GameState):
             return
 
         t_data = trainer_pool[idx]
-        self._initiate_gym_battle(t_data, victory_flag=None)
+        self._initiate_gym_battle(t_data, trainer_index=idx)
 
     def open_explore_menu(self):
         options = self.area_data.get("explore_options", [])
@@ -2808,9 +2987,16 @@ class CityState(GameState):
 
         is_reds_mom = (start_reg == "JOHTO" and self.area_key == "PALLET_TOWN" and not is_neighbor)
 
+        # Hoenn onward: Mom owns a home in every region's starting town.
+        home_region = next((r for r, cfg in story.get_region_starts()
+                            if cfg.get("start_area") == self.area_key and r not in ("KANTO", "JOHTO")), None)
+        if home_region and not is_neighbor:
+            is_home = True
+
         should_heal = is_home or is_reds_mom
 
-        bg_name = self.area_data.get("backgrounds", {}).get("mom")
+        bgs = self.area_data.get("backgrounds", {})
+        bg_name = bgs.get("mom") or bgs.get("mom_home")
         if not bg_name:
             bg_name = "pallet_city_mom.png" if "PALLET" in self.area_key else "new_city_mom.png"
 
@@ -2843,6 +3029,11 @@ class CityState(GameState):
 
             if is_reds_mom:
                 dialogue = self.game.assets.get_text("red_mom_johto_visitor", default=["Oh! A visitor from Johto?", "Red is out on Mt. Silver right now.", "He's become such a strong trainer!"])
+            elif home_region:
+                cfg = story.get_region_start(home_region)
+                fresh = start_reg == home_region and cfg.get("mom_newstart_text")
+                pool = cfg.get("mom_newstart_text") if fresh else cfg.get("mom_home_text")
+                dialogue = _resolve_lines(self.game, random.choice(pool or ["mom"]))
             else:
                 dialogue = self.game.assets.get_text("johto_mom_home", default=self.game.assets.get_text("mom"))
         elif is_silver_mom:
@@ -2853,7 +3044,7 @@ class CityState(GameState):
 
         self.npc_dialogue = ClassicDialogueBox(
             Utils.get_full_dialogue_rect(self.game),
-            dialogue,
+            _resolve_lines(self.game, dialogue),
             self.game.assets.fonts["med"],
             callback=self.end_npc_interaction
         )
@@ -2998,23 +3189,45 @@ class CityState(GameState):
         self.action_menu.set_visibility(False)
         self.npc_sprite = self.game.assets.get_trainer_image("rocket_grunt_m.png")
 
-        badges = len(self.game.story_manager.badges)
+        # ARCHITECT: Use regional badge check for Johto progression (7 badges required)
+        badges = len(self.game.story_manager.badges.get("JOHTO", []))
         flags = self.game.story_manager.story_flags
 
         if badges < 7:
             msg = self.game.assets.get_text("radio_tower_grunt_deny")
+            callback = self.end_npc_interaction
         elif not flags.get("radio_tower_cleared"):
             msg = self.game.assets.get_text("radio_tower_grunt_battle")
 
-            def trigger_gauntlet():
-                self.start_npc_exit(self.start_rocket_gauntlet)
-            self.npc_dialogue = ClassicDialogueBox(Utils.get_full_dialogue_rect(self.game), msg, self.game.assets.fonts["med"], callback=trigger_gauntlet)
-            return
-        else:
-            msg = ["The Radio Tower is safe now. Thanks for your help!"]
-            self.npc_sprite = self.game.assets.get_trainer_image("scientist.png")
+            # ARCHITECT: Instead of gauntlet (which fails in cities), trigger a gatekeeper battle.
+            def trigger_entry_battle():
+                from src.states.battle import TrainerBattleState, TrainerIntroState
+                team_ids = [19, 20, 41] # Standard Rocket team: Rattata, Raticate, Zubat
+                opponent_team = [Pokemon(self.game.loader.fetch_specific(tid), self.game.assets, size_mult=3.125) for tid in team_ids]
+                
+                # Create a specialized battle that moves the player into the tower on victory
+                class RadioTowerGateBattle(TrainerBattleState):
+                    def exit_battle(self):
+                        from src.states.overworld import AreaTransitionState
+                        self.game.change_state(AreaTransitionState(self.game, "RADIO_TOWER"))
 
-        self.npc_dialogue = ClassicDialogueBox(Utils.get_full_dialogue_rect(self.game), msg, self.game.assets.fonts["med"], callback=self.end_npc_interaction)
+                battle_state = RadioTowerGateBattle(
+                    self.game, opponent_team, trainer_sprite=self.npc_sprite,
+                    trainer_class="ROCKET", trainer_name="GRUNT", 
+                    battle_type="indoor", area_name=self.area_key
+                )
+                self.game.change_state(TrainerIntroState(self.game, self.npc_sprite, msg, battle_state))
+            
+            callback = trigger_entry_battle
+        else:
+            # Safety fallback: Tower cleared but NPC still interacted with
+            msg = ["The Radio Tower is safe now. Come on in!"]
+            def enter_tower():
+                from src.states.overworld import AreaTransitionState
+                self.game.change_state(AreaTransitionState(self.game, "RADIO_TOWER"))
+            callback = enter_tower
+
+        self.npc_dialogue = ClassicDialogueBox(Utils.get_full_dialogue_rect(self.game), msg, self.game.assets.fonts["med"], callback=callback)
 
     def visit_mr_pokemon(self):
         self.clear_hover_menu()
@@ -3132,11 +3345,21 @@ class CityState(GameState):
     def visit_euskine(self):
         self.clear_hover_menu()
         self.npc_active = True
+        self.current_npc = "eusine"
         self.npc_slide_offset = 400
         self.action_menu.set_visibility(False)
-        self.npc_sprite = self.game.assets.get_trainer_image("supernerd.png")
 
-        msg = self.game.assets.get_text("euskine_intro")
+        # ARCHITECT: Attempt to load Eusine's specific sprite, fallback to generic supernerd
+        self.npc_sprite = self.game.assets.get_trainer_image("eusine.png")
+        if not self.npc_sprite:
+            self.npc_sprite = self.game.assets.get_trainer_image("supernerd.png")
+
+        # Check if Suicune was defeated (default boss victory flag for Burned Tower)
+        if self.game.story_manager.story_flags.get("BURNED_TOWER_boss_defeated"):
+            msg = self.game.assets.get_text("eusine_suicune_defeated")
+        else:
+            msg = self.game.assets.get_text("euskine_intro")
+
         self.npc_dialogue = ClassicDialogueBox(Utils.get_full_dialogue_rect(self.game), msg, self.game.assets.fonts["med"], callback=self.end_npc_interaction)
 
     def visit_dragon_elder(self):
@@ -3642,6 +3865,64 @@ class CityState(GameState):
             self.game.ui_manager.elements.remove(self.npc_dialogue)
         self.npc_dialogue = None
 
+    def _try_on_enter_event(self, on_enter):
+        """Fire one on_enter trainer battle if its condition is met. Returns True if it fired."""
+        story = self.game.story_manager
+        condition = on_enter.get("condition")
+        v_flag = on_enter.get("flag_check")
+        met = False
+
+        if v_flag and story.story_flags.get(v_flag):
+            met = False
+        elif condition == "first_time":
+            flag = f"cleared_event_{self.area_key}_{on_enter.get('type')}"
+            if not story.story_flags.get(flag):
+                met = True
+                story.story_flags[flag] = True
+        elif condition:
+            met = self._check_menu_condition(condition)
+        if not (met and on_enter.get("type") == "trainer_battle"):
+            return False
+
+        t_info = dict(on_enter["trainer"])
+        team_ids = t_info.get("team", [])
+        newbark_rival = (self.area_key == "NEW_BARK_TOWN"
+                         and story.story_flags.get("johto_rival_met_in_lab")
+                         and not story.story_flags.get("defeated_rival_newbark_ambush"))
+        choice = (t_info.get("team_choice") or {}).get(str(_region_starter_id(self.game)))
+        if choice:
+            team_ids = list(choice)
+        elif newbark_rival:
+            team_ids = [random.choice([152, 155, 158])]
+
+        is_start_town = self.area_key == story.get_region_start(
+            story.get_current_region()).get("start_area")
+        if len(team_ids) == 1 and (newbark_rival or is_start_town):
+            story.rival_starter_raw = self.game.loader.fetch_specific(team_ids[0])
+
+        opponent_team = [Pokemon(self.game.loader.fetch_specific(tid), self.game.assets, size_mult=3.125)
+                         for tid in team_ids]
+
+        from src.states.battle import TrainerBattleState, TrainerIntroState
+        sprite = _trainer_sprite(self.game, t_info.get("sprite", "rival.png"))
+        dlg = t_info.get("dialogue") or {}
+        battle_state = TrainerBattleState(
+            self.game,
+            opponent_team,
+            trainer_sprite=sprite,
+            trainer_class=t_info.get("class", "TRAINER"),
+            trainer_name=_fill_names(self.game, t_info.get("name")),
+            custom_dialogue={k: _resolve_lines(self.game, v) for k, v in dlg.items() if k != "intro"},
+            rewards=t_info.get("rewards"),
+            battle_type="event",
+            area_name=self.area_key,
+            victory_flag=v_flag or t_info.get("victory_flag")
+        )
+        intro_text = _resolve_lines(
+            self.game, dlg.get("intro") or t_info.get("intro", "I'm gonna be the world's greatest trainer!"))
+        self.game.change_state(TrainerIntroState(self.game, sprite, intro_text, battle_state))
+        return True
+
     def go_to_area(self, area_key):
         if area_key:
             self.game.change_state(AreaTransitionState(self.game, area_key))
@@ -3663,46 +3944,11 @@ class CityState(GameState):
         if not self.game.story_manager.story_flags.get(visited_flag, False):
             self.game.story_manager.story_flags[visited_flag] = True
 
-        on_enter = self.area_data.get("on_enter_event")
-        if on_enter:
-            condition = on_enter.get("condition")
-            v_flag = on_enter.get("flag_check")
-            met = False
-
-            if v_flag and self.game.story_manager.story_flags.get(v_flag):
-                met = False
-            elif condition == "first_time":
-                flag = f"cleared_event_{self.area_key}_{on_enter.get('type')}"
-                if not self.game.story_manager.story_flags.get(flag):
-                    met = True
-                    self.game.story_manager.story_flags[flag] = True
-            elif condition:
-                met = self._check_menu_condition(condition)
-            if met and on_enter.get("type") == "trainer_battle":
-                t_info = on_enter["trainer"]
-                team_ids = t_info.get("team", [])
-
-                opponent_team = []
-                for tid in team_ids:
-                    raw = self.game.loader.fetch_specific(tid)
-                    opponent_team.append(Pokemon(raw, self.game.assets, size_mult=3.125))
-
-                from src.states.battle import TrainerBattleState, TrainerIntroState
-
-                sprite = self.game.assets.get_trainer_image(t_info.get("sprite", "rival.png"))
-
-                battle_state = TrainerBattleState(
-                    self.game,
-                    opponent_team,
-                    trainer_sprite=sprite,
-                    trainer_class=t_info.get("class", "TRAINER"),
-                    trainer_name=t_info.get("name"),
-                    battle_type="event",
-                    area_name=self.area_key,
-                    victory_flag=t_info.get("victory_flag")
-                )
-                intro_text = t_info.get("intro", "I'm gonna be the world's greatest trainer!")
-                self.game.change_state(TrainerIntroState(self.game, sprite, intro_text, battle_state))
+        events = self.area_data.get("on_enter_event")
+        if isinstance(events, dict):
+            events = [events]
+        for on_enter in events or []:
+            if self._try_on_enter_event(on_enter):
                 return
 
         if self.area_key == "INDIGO_PLATEAU":
@@ -3978,8 +4224,8 @@ class PokeCenterState(GameState):
         bg_config = area_data.get("backgrounds", {}).get(json_key)
 
         area_key = game.story_manager.current_area_key
-        first_part = area_key.split('_')[0].lower()
-        fallback_name = f"{first_part}_city_{type_suffix}.png"
+        # ARCHITECT: Fallback naming logic: [area_key]_[suffix] (e.g. azalea_town_center.png)
+        fallback_name = f"{area_key.lower()}_{type_suffix}.png"
 
         filenames = [bg_config, fallback_name] if bg_config else [fallback_name]
         box_top = Utils.get_full_dialogue_rect(game).top
@@ -4026,8 +4272,8 @@ class GymLobbyState(GameState):
         if isinstance(bg_config, list) and bg_config:
             bg_config = bg_config[0]
 
-        first_part = self.area_key.split('_')[0].lower()
-        fallback_name = f"{first_part}_city_gym.png"
+        # ARCHITECT: Standardized fallback to [area_key]_gym.png (e.g. azalea_town_gym.png)
+        fallback_name = f"{self.area_key.lower()}_gym.png"
 
         filenames = [bg_config, fallback_name] if bg_config else [fallback_name]
         box_top = Utils.get_full_dialogue_rect(self.game).top
@@ -4063,7 +4309,11 @@ class GymLobbyState(GameState):
 
             if self.progress < len(self.gauntlet):
                 self.next_opponent = self.gauntlet[self.progress]
-                self.status_text = f"{mode_text}: Match {self.progress + 1}/{len(self.gauntlet)}"
+                if self.progress == len(self.gauntlet) - 1:
+                    r_name = getattr(self.game, "rival_name", "CHAMPION")
+                    self.status_text = f"Final Match: Champion {r_name}"
+                else:
+                    self.status_text = f"{mode_text}: Match {self.progress + 1}/{len(self.gauntlet)}"
             else:
                 self.is_cleared = True
                 self.status_text = "The League has been conquered!"
@@ -4119,67 +4369,98 @@ class GymLobbyState(GameState):
         from src.states.battle import TrainerBattleState, TrainerIntroState
 
         is_leader = (self.next_opponent == self.leader)
-        if self.area_key == "INDIGO_PLATEAU" and is_leader and self.game.story_manager.story_flags.get("beat_champion"):
-            config = self.game.loader.area_data.get("GAME_CONFIG", {})
-            chars = config.get("PLAYABLE_CHARACTERS", ["red", "ethan", "lyra", "may", "rosa"])
-            player_char = getattr(self.game, "player_character", "red")
-            candidates = [c for c in chars if c != player_char]
-            chosen_char = random.choice(candidates)
+        if self.area_key == "INDIGO_PLATEAU" and is_leader:
+            if self.game.story_manager.story_flags.get("beat_champion"):
+                # Title Defense
+                config = self.game.loader.area_data.get("GAME_CONFIG", {})
+                chars = config.get("PLAYABLE_CHARACTERS", ["red", "ethan", "lyra", "may", "rosa"])
+                player_char = getattr(self.game, "player_character", "red")
+                candidates = [c for c in chars if c != player_char]
+                chosen_char = random.choice(candidates)
 
-            img = self.game.assets.get_player_image(chosen_char, back=False)
-            if img:
-                h = int(self.game.height * 0.6)
-                w = int(img.get_width() * (h / img.get_height()))
-                trainer_sprite = pygame.transform.scale(img, (w, h))
+                img = self.game.assets.get_player_image(chosen_char, back=False)
+                if img:
+                    h = int(self.game.height * 0.6)
+                    w = int(img.get_width() * (h / img.get_height()))
+                    trainer_sprite = pygame.transform.scale(img, (w, h))
+                else:
+                    trainer_sprite = self.game.assets.get_trainer_image("rival.png")
+
+                pool = self.game.loader.area_data.get("CHALLENGER_POOL", [3, 6, 9, 149, 143, 130])
+                team_ids = random.sample(pool, min(6, len(pool)))
+
+                t_data["name"] = chosen_char.upper()
+                t_data["class"] = "CHALLENGER"
+                t_data["team"] = team_ids
+                t_data["dialogue"] = {
+                    "intro": [f"I am {t_data['name']}, and I've come to take your Title!", "Your reign as Champion ends today!"],
+                    "player_won": ["Incredible... your math skills are truly legendary."],
+                    "player_lost": ["And just like that, there's a new Champion!"]
+                }
             else:
-                trainer_sprite = self.game.assets.get_trainer_image("rival.png")
+                # Initial Rival Champion Battle
+                rival_name = getattr(self.game, "rival_name", "BLUE")
+                rival_char = getattr(self.game, "rival_character", "blue")
+                img = self.game.assets.get_player_image(rival_char, back=False)
+                if img:
+                    h = int(self.game.height * 0.6); w = int(img.get_width() * (h / img.get_height()))
+                    trainer_sprite = pygame.transform.scale(img, (w, h))
+                else:
+                    trainer_sprite = self.game.assets.get_trainer_image("rival.png")
 
-            pool = self.game.loader.area_data.get("CHALLENGER_POOL", [3, 6, 9, 149, 143, 130])
-            team_ids = random.sample(pool, min(6, len(pool)))
+                # Determine team based on Rival's starter
+                starter_id = 1
+                if self.game.story_manager.rival_starter_raw:
+                    starter_id = self.game.story_manager.rival_starter_raw.get("id", 1)
 
-            t_data["name"] = chosen_char.upper()
-            t_data["class"] = "CHALLENGER"
-            t_data["team"] = team_ids
-            t_data["dialogue"] = {
-                "intro": [f"I am {t_data['name']}, and I've come to take your Title!", "Your reign as Champion ends today!"],
-                "player_won": ["Incredible... your math skills are truly legendary."],
-                "player_lost": ["And just like that, there's a new Champion!"]
-            }
+                team_ids = [18, 65, 112] # Pidgeot, Alakazam, Rhydon
+                if starter_id in [1, 152]: # Bulbasaur/Chikorita
+                    final_st = 3 if starter_id == 1 else 154; coverage = [59, 130]
+                elif starter_id in [4, 155]: # Charmander/Cyndaquil
+                    final_st = 6 if starter_id == 4 else 157; coverage = [130, 103]
+                else: # Squirtle/Totodile
+                    final_st = 9 if starter_id == 7 else 160; coverage = [103, 59]
+
+                team_ids.extend(coverage); team_ids.append(final_st)
+                t_data.update({"name": rival_name, "class": "CHAMPION", "team": team_ids})
+                t_data["dialogue"] = {
+                    "intro": [f"Hey! {self.game.player_name}!", "I'm the world's most powerful math trainer!", "I'm the Champion! Let's settle this!"],
+                    "player_won": ["No... This can't be happening!", "I'm the Champion! I should be invincible!", "But your math... it's just better."],
+                    "player_lost": ["Smell ya later! I'm the Champion!"]
+                }
         else:
-            sprite_name = t_data.get("sprite")
-            trainer_sprite = self.game.assets.get_trainer_image(sprite_name)
+            trainer_sprite = _trainer_sprite(self.game, t_data.get("sprite"))
+            choice = (t_data.get("team_choice") or {}).get(str(_region_starter_id(self.game)))
+            if choice:
+                t_data["team"] = list(choice)
+            t_data["name"] = _fill_names(self.game, t_data.get("name"))
+            if t_data.get("dialogue"):
+                t_data["dialogue"] = {k: _resolve_lines(self.game, v) for k, v in t_data["dialogue"].items()}
 
         team_ids = t_data.get("team", [])
-        if team_ids and isinstance(team_ids, list) and len(team_ids) > 0 and isinstance(team_ids[0], list):
-            team_ids = random.choice(team_ids)
-
         opponent_team = []
         for pid in team_ids:
             raw = self.game.loader.fetch_specific(pid)
             opponent_team.append(Pokemon(raw, self.game.assets, size_mult=3.125))
 
-        bg_file = self.game.story_manager.get_gym_battle_background(self.area_key, self.progress, is_leader)
+        bg_file = self.game.story_manager.get_gym_battle_background(
+            self.area_key, trainer_index=self.progress, is_leader=is_leader
+        )
 
         battle_state = TrainerBattleState(
-            self.game,
-            opponent_team,
-            trainer_sprite=trainer_sprite,
-            trainer_class=t_data.get("class", "TRAINER"),
-            trainer_name=t_data.get("name"),
-            custom_dialogue=t_data.get("dialogue", {}),
-            rewards=t_data.get("rewards"),
-            battle_type="gym",
-            is_boss_battle=t_data.get("is_boss_battle", True),
-            area_name=self.area_key,
-            victory_flag=t_data.get("victory_flag"),
-            badge_reward=t_data.get("badge_reward"),
-            background_image=bg_file
+            self.game, opponent_team, trainer_sprite=trainer_sprite,
+            trainer_class=t_data.get("class", "GYM_LEADER"), trainer_name=t_data.get("name"),
+            custom_dialogue=t_data.get("dialogue", {}), rewards=t_data.get("rewards"),
+            battle_type="gym", is_boss_battle=True, area_name=self.area_key,
+            badge_reward=t_data.get("badge_reward"), background_image=bg_file,
+            victory_flag=None if self.area_key == "INDIGO_PLATEAU" else t_data.get("victory_flag")
         )
 
         intro_text = random.choice(t_data.get("dialogue", {}).get("intro", ["Prepare to battle!"]))
         self.game.change_state(TrainerIntroState(self.game, trainer_sprite, intro_text, battle_state))
 
     def exit_gym(self):
+        from src.states.overworld import CityState
         self.game.change_state(CityState(self.game))
 
     def handle_events(self, events):
@@ -4189,30 +4470,13 @@ class GymLobbyState(GameState):
         pass
 
     def draw(self):
-        self.game.screen.fill(BLACK)
+        screen = self.game.screen
+        screen.fill(BLACK)
         if self.bg:
-            self.game.screen.blit(self.bg, (0, 0))
-
-        Utils.draw_classic_panel(
-            self.game.screen, self.bottom_rect.x, self.bottom_rect.y, self.bottom_rect.width, self.bottom_rect.height
-        )
-
+            screen.blit(self.bg, (0, 0))
+        Utils.draw_classic_panel(screen, self.bottom_rect.x, self.bottom_rect.y, self.bottom_rect.width, self.bottom_rect.height)
         left_rect_w = int(self.bottom_rect.width * 0.55)
-        Utils.draw_multiline_text(
-            self.game.screen,
-            self.status_text,
-            self.game.assets.fonts["med"],
-            WHITE,
-            self.bottom_rect.x + left_rect_w // 2,
-            self.bottom_rect.centery,
-            max_width=left_rect_w - 60,
-            line_height=50,
-            center=True,
-            outline_color=BLACK,
-        )
-
-        white_panel = self.right_rect.inflate(-18, -18)
-        pygame.draw.rect(self.game.screen, WHITE, white_panel, border_radius=12)
-        pygame.draw.rect(self.game.screen, BLACK, white_panel, 6, border_radius=12)
-
-        self.game.ui_manager.draw(self.game.screen)
+        Utils.draw_multiline_text(screen, self.status_text, self.game.assets.fonts["s_med"], WHITE,
+                                self.bottom_rect.x + left_rect_w // 2, self.bottom_rect.centery,
+                                max_width=left_rect_w - 40, outline_color=BLACK)
+        self.game.ui_manager.draw(screen)

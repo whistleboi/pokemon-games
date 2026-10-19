@@ -18,12 +18,12 @@
     "2016": { "id": 89, "form": "alolan", "name": "Alolan Muk" },
     "2017": { "id": 103, "form": "alolan", "name": "Alolan Exeggutor" },
     "2018": { "id": 105, "form": "alolan", "name": "Alolan Marowak" },
-    "2019": { "id": 54,  "form": "galarian", "name": "Galarian Meowth" },
-    "2020": { "id": 77,  "form": "galarian", "name": "Galarian Ponyta" },
-    "2021": { "id": 78,  "form": "galarian", "name": "Galarian Rapidash" },
-    "2022": { "id": 79,  "form": "galarian", "name": "Galarian Slowpoke" },
-    "2023": { "id": 80,  "form": "galarian", "name": "Galarian Slowbro" },
-    "2024": { "id": 83,  "form": "galarian", "name": "Galarian Farfetch'd" },
+    "2019": { "id": 54, "form": "galarian", "name": "Galarian Meowth" },
+    "2020": { "id": 77, "form": "galarian", "name": "Galarian Ponyta" },
+    "2021": { "id": 78, "form": "galarian", "name": "Galarian Rapidash" },
+    "2022": { "id": 79, "form": "galarian", "name": "Galarian Slowpoke" },
+    "2023": { "id": 80, "form": "galarian", "name": "Galarian Slowbro" },
+    "2024": { "id": 83, "form": "galarian", "name": "Galarian Farfetch'd" },
     "2025": { "id": 110, "form": "galarian", "name": "Galarian Weezing" },
     "2026": { "id": 122, "form": "galarian", "name": "Galarian Mr. Mime" },
     "2027": { "id": 144, "form": "galarian", "name": "Galarian Articuno" },
@@ -118,9 +118,12 @@
     "3052": { "id": 383, "form": "primal", "name": "Primal Groudon" },
     "3053": { "id": 384, "form": "mega", "name": "Mega Rayquaza" }
   },
-
   "GAME_TEXT": {
-    "hoenn_birch_intro": ["Professor Birch: Hey there! You must be the new trainer!", "I need your help! My Pokémon got loose on Route 101!", "Choose your starter: Treecko, Torchic, or Mudkip!"],
+    "hoenn_birch_intro": [
+      "Professor Birch: Hey there! You must be the new trainer!",
+      "I need your help! My Pokémon got loose on Route 101!",
+      "Choose your starter: Treecko, Torchic, or Mudkip!"
+    ],
     "hoenn_birch_starter": ["Professor Birch: Excellent choice! Here's your Pokédex and 5 Poké Balls!", "Good luck on your adventure!"],
     "hoenn_may_brendan_rival": ["Rival: Hey! Let's see who's the better trainer!", "I'll be waiting for you at the next gym!"],
     "hoenn_norman_intro": ["Norman: Welcome to the Petalburg Gym! I'm your father... and the Normal-type Gym Leader!"],
@@ -129,67 +132,111 @@
     "hoenn_steven_stone_gift": ["Steven: Here, take this Steel Wing. It will help you in battle."],
     "hoenn_wallace_intro": ["Wallace: The sea is calling... Are you ready for the final challenge?"],
     "hoenn_elite_four": ["Congratulations! You've reached the Pokémon League!"],
-    "hoenn_legendary_awakening": ["The ground shakes... Groudon/Kyogre has awakened!"]
+    "hoenn_legendary_awakening": ["The ground shakes... Groudon/Kyogre has awakened!"],
+    "hoenn_newgame_intro": [
+      "The moving truck rumbles to a stop in Littleroot Town.",
+      "Mom: Here we are, {player_name}! Our new home in the Hoenn region!",
+      "Mom: Professor Birch lives just next door. Why don't you go say hello?"
+    ],
+    "hoenn_mom_newstart_1": [
+      "Mom: The movers finally left! Most of the boxes are still packed, though.",
+      "Mom: Your father's Gym is in Petalburg City. He'd love to see how you're doing!"
+    ],
+    "hoenn_mom_newstart_2": [
+      "Mom: Littleroot is so peaceful. I can hear Wingull out by the shore.",
+      "Mom: Remember, if you win prize money, I'll keep it safe for you. Every Poké Dollar counts!"
+    ],
+    "hoenn_mom_newstart_3": [
+      "Mom: I put a little savings jar on the counter for your battle winnings.",
+      "Mom: If it ever fills up, maybe we'll buy a vacation house somewhere. Ha ha!"
+    ],
+    "hoenn_mom_home_1": [
+      "Mom: {player_name}! Welcome to our new Littleroot home!",
+      "Mom: The prize money you sent from your last League paid for the moving truck AND the house.",
+      "Mom: The neighbors think I won the lottery. I told them my kid is just really good at math."
+    ],
+    "hoenn_mom_home_2": [
+      "Mom: I've been learning to cook Hoenn style. Today it's Lava Cookies from Lavaridge!",
+      "Mom: Owning a house in every region you conquer is turning into quite the hobby."
+    ],
+    "hoenn_mom_home_3": [
+      "Mom: The weather here changes so fast! Sunny one minute, pouring rain the next.",
+      "Mom: Professor Birch says it has to do with two ancient Pokémon. Isn't that exciting?"
+    ],
+    "hoenn_birch_lab": [
+      "Aide: The Professor is out doing fieldwork on Route 101 again.",
+      "Aide: He says the best research happens in the tall grass, not behind a desk!"
+    ],
+    "hoenn_rival_intro": ["{rival_name}: So you're the new kid who moved in next door!", "{rival_name}: My dad is Professor Birch. Let's see what your Pokémon can do!"],
+    "hoenn_rival_won": ["{rival_name}: Wow, you're good! No wonder Dad trusted you with a Pokémon."],
+    "hoenn_rival_lost": ["{rival_name}: Ha! Practice your math and try again!"]
   },
-
   "STORY_PROGRESSION": {
     "LITTLEROOT_TOWN": {
       "area_type": "town",
       "route_name": "Littleroot Town",
-      "backgrounds": {
-        "main": "littleroot_town.png",
-        "lab": "birch_lab.png",
-        "mom": "littleroot_mom.png"
-      },
+      "region": "HOENN",
+      "backgrounds": { "main": "littleroot_town.png", "lab": "birch_lab.png", "mom": "littleroot_mom.png" },
       "has_gym": false,
-      "travel_options": [
-        { "text": "Route 101", "target_area": "HOENN_ROUTE_101" }
-      ],
+      "travel_options": [{"text": "Route 101", "target_area": "HOENN_ROUTE_101"}],
       "explore_options": [
         { "text": "Visit Mom", "action": "NPC", "target": "mom" },
-        { "text": "Visit Birch's Lab", "action": "NPC", "target": "professor_birch" }
+        { "text": "Visit Birch's Lab", "action": "NPC", "target": "hoenn_birch_lab" }
       ],
       "next_area": "HOENN_ROUTE_101",
-      "on_enter_event": null
+      "on_enter_event": {
+        "type": "trainer_battle",
+        "condition": "has_hoenn_starter",
+        "flag_check": "defeated_rival_littleroot",
+        "trainer": {
+          "name": "{rival_name}",
+          "class": "PKMN_TRAINER",
+          "sprite": "{rival_character}",
+          "team": [258],
+          "team_choice": { "252": [255], "255": [258], "258": [252] },
+          "rewards": { "balls": 5 },
+          "dialogue": { "intro": "hoenn_rival_intro", "player_won": "hoenn_rival_won", "player_lost": "hoenn_rival_lost" }
+        }
+      }
     },
-
     "OLDALE_TOWN": {
       "area_type": "town",
       "route_name": "Oldale Town",
-      "backgrounds": {
-        "main": "oldale_town.png",
-        "pokecenter": "oldale_center.png",
-        "pokemart": "oldale_mart.png"
-      },
+      "region": "HOENN",
+      "backgrounds": { "main": "oldale_town.png", "pokecenter": "oldale_center.png", "pokemart": "oldale_mart.png" },
       "has_gym": false,
       "travel_options": [
         { "text": "Route 101", "target_area": "HOENN_ROUTE_101" },
         { "text": "Route 102", "target_area": "HOENN_ROUTE_102" },
         { "text": "Route 103", "target_area": "HOENN_ROUTE_103" }
       ],
-      "explore_options": [
-        { "text": "Heal", "action": "HEAL" },
-        { "text": "Shop", "action": "SHOP" }
-      ],
+      "explore_options": [{"text": "Heal", "action": "HEAL"}, {"text": "Shop", "action": "SHOP"}],
       "next_area": "HOENN_ROUTE_102",
       "on_enter_event": null
     },
-
     "PETALBURG_CITY": {
       "area_type": "town",
       "route_name": "Petalburg City",
-      "backgrounds": {
-        "main": "petalburg_city.png",
-        "pokecenter": "petalburg_center.png",
-        "pokemart": "petalburg_mart.png",
-        "gym": "petalburg_gym.png"
-      },
+      "region": "HOENN",
+      "backgrounds": { "main": "petalburg_city.png", "pokecenter": "petalburg_center.png", "pokemart": "petalburg_mart.png", "gym": "petalburg_gym.png" },
       "has_gym": true,
       "gym": {
         "requirements": null,
         "trainers": [
-          { "name": "Youngster Tommy", "class": "YOUNGSTER", "sprite": "youngster.png", "team": [16, 19], "rewards": { "balls": 2 } },
-          { "name": "Lass Gina", "class": "LASS", "sprite": "lass.png", "team": [29, 32], "rewards": { "balls": 2 } }
+          {
+            "name": "Youngster Tommy",
+            "class": "YOUNGSTER",
+            "sprite": "youngster.png",
+            "team": [16, 19],
+            "rewards": { "balls": 2 }
+          },
+          {
+            "name": "Lass Gina",
+            "class": "LASS",
+            "sprite": "lass.png",
+            "team": [29, 32],
+            "rewards": { "balls": 2 }
+          }
         ],
         "leader": {
           "name": "Norman",
@@ -208,7 +255,7 @@
       "travel_options": [
         { "text": "Route 102", "target_area": "HOENN_ROUTE_102" },
         { "text": "Route 104", "target_area": "HOENN_ROUTE_104" },
-        { "text": "Petalburg Woods", "target_area": "PETALBURG_WOODS" }
+        { "text": "Petalburg Woods", "target_area": "HOENN_PETALBURG_WOODS" }
       ],
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
@@ -219,21 +266,28 @@
       "next_area": "HOENN_ROUTE_104",
       "on_enter_event": null
     },
-
     "RUSTBORO_CITY": {
       "area_type": "town",
       "route_name": "Rustboro City",
-      "backgrounds": {
-        "main": "rustboro_city.png",
-        "pokecenter": "rustboro_center.png",
-        "pokemart": "rustboro_mart.png",
-        "gym": "rustboro_gym.png"
-      },
+      "region": "HOENN",
+      "backgrounds": { "main": "rustboro_city.png", "pokecenter": "rustboro_center.png", "pokemart": "rustboro_mart.png", "gym": "rustboro_gym.png" },
       "has_gym": true,
       "gym": {
         "trainers": [
-          { "name": "Youngster Josh", "class": "YOUNGSTER", "sprite": "youngster.png", "team": [74], "rewards": { "balls": 2 } },
-          { "name": "Hiker Marc", "class": "HIKER", "sprite": "hiker.png", "team": [74, 299], "rewards": { "balls": 2 } }
+          {
+            "name": "Youngster Josh",
+            "class": "YOUNGSTER",
+            "sprite": "youngster.png",
+            "team": [74],
+            "rewards": { "balls": 2 }
+          },
+          {
+            "name": "Hiker Marc",
+            "class": "HIKER",
+            "sprite": "hiker.png",
+            "team": [74, 299],
+            "rewards": { "balls": 2 }
+          }
         ],
         "leader": {
           "name": "Roxanne",
@@ -241,7 +295,7 @@
           "sprite": "roxanne.png",
           "team": [74, 299, 299],
           "badge_reward": "STONE",
-          "rewards": { "balls": 5, "HM_ROCK_SMASH": 1 },
+          "rewards": { "balls": 5, "POKE_NAV": 1 },
           "dialogue": {
             "intro": ["Roxanne: Welcome to the Rustboro City Gym! I'm Roxanne, the Rock-type Gym Leader."],
             "player_won": ["Your strategy was flawless!"],
@@ -253,7 +307,7 @@
         { "text": "Route 104", "target_area": "HOENN_ROUTE_104" },
         { "text": "Route 115", "target_area": "HOENN_ROUTE_115" },
         { "text": "Route 116", "target_area": "HOENN_ROUTE_116" },
-        { "text": "Rusturf Tunnel", "target_area": "RUSTURF_TUNNEL" }
+        { "text": "Rusturf Tunnel", "target_area": "HOENN_RUSTURF_TUNNEL" }
       ],
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
@@ -264,20 +318,21 @@
       "next_area": "HOENN_ROUTE_116",
       "on_enter_event": null
     },
-
     "DEWFORD_TOWN": {
       "area_type": "town",
       "route_name": "Dewford Town",
-      "backgrounds": {
-        "main": "dewford_town.png",
-        "pokecenter": "dewford_center.png",
-        "pokemart": "dewford_mart.png",
-        "gym": "dewford_gym.png"
-      },
+      "region": "HOENN",
+      "backgrounds": { "main": "dewford_town.png", "pokecenter": "dewford_center.png", "pokemart": "dewford_mart.png", "gym": "dewford_gym.png" },
       "has_gym": true,
       "gym": {
         "trainers": [
-          { "name": "Blackbelt Koichi", "class": "BLACKBELT", "sprite": "blackbelt.png", "team": [66], "rewards": { "balls": 2 } }
+          {
+            "name": "Blackbelt Koichi",
+            "class": "BLACKBELT",
+            "sprite": "blackbelt.png",
+            "team": [66],
+            "rewards": { "balls": 2 }
+          }
         ],
         "leader": {
           "name": "Brawly",
@@ -285,7 +340,7 @@
           "sprite": "brawly.png",
           "team": [296, 297, 66],
           "badge_reward": "KNuckle",
-          "rewards": { "balls": 5, "HM_FLASH": 1 },
+          "rewards": { "balls": 5, "RARE_CANDY": 3 },
           "dialogue": {
             "intro": ["Brawly: Welcome to the Dewford Town Gym! I'm Brawly, the Fighting-type Gym Leader."],
             "player_won": ["You're a real wave!"],
@@ -296,30 +351,27 @@
       "travel_options": [
         { "text": "Route 106", "target_area": "HOENN_ROUTE_106" },
         { "text": "Route 107", "target_area": "HOENN_ROUTE_107" },
-        { "text": "Granite Cave", "target_area": "GRANITE_CAVE" }
+        { "text": "Granite Cave", "target_area": "HOENN_GRANITE_CAVE" }
       ],
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
         { "text": "Shop", "action": "SHOP" },
         { "text": "Gym", "action": "GYM" }
       ],
-      "next_area": "GRANITE_CAVE",
+      "next_area": "HOENN_GRANITE_CAVE",
       "on_enter_event": null
     },
-
     "SLATEPORT_CITY": {
       "area_type": "town",
       "route_name": "Slateport City",
-      "backgrounds": {
-        "main": "slateport_city.png",
-        "pokecenter": "slateport_center.png",
-        "pokemart": "slateport_mart.png"
-      },
+      "region": "HOENN",
+      "backgrounds": { "main": "slateport_city.png", "pokecenter": "slateport_center.png", "pokemart": "slateport_mart.png" },
       "has_gym": false,
       "travel_options": [
         { "text": "Route 109", "target_area": "HOENN_ROUTE_109" },
         { "text": "Route 110", "target_area": "HOENN_ROUTE_110" },
-        { "text": "Oceanic Museum", "target_area": "OCEANIC_MUSEUM" }
+        { "text": "Oceanic Museum", "target_area": "HOENN_OCEANIC_MUSEUM" },
+        { "text": "Route 134", "target_area": "HOENN_ROUTE_134" }
       ],
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
@@ -328,22 +380,33 @@
         { "text": "Talk to Stern", "action": "NPC", "target": "captain_stern" }
       ],
       "next_area": "HOENN_ROUTE_110",
-      "on_enter_event": { "type": "trainer_battle", "trainer": { "name": "Team Aqua/Magma Grunt", "class": "TEAM_AQUA", "sprite": "aqua_grunt.png", "team": [72, 72], "rewards": { "balls": 3 } }, "condition": "has_stone_badge" }
+      "on_enter_event": {
+        "type": "trainer_battle",
+        "trainer": {
+          "name": "Team Aqua/Magma Grunt",
+          "class": "TEAM_AQUA",
+          "sprite": "aqua_grunt.png",
+          "team": [72, 72],
+          "rewards": { "balls": 3 }
+        },
+        "condition": "has_stone_badge"
+      }
     },
-
     "MAUVILLE_CITY": {
       "area_type": "town",
       "route_name": "Mauville City",
-      "backgrounds": {
-        "main": "mauville_city.png",
-        "pokecenter": "mauville_center.png",
-        "pokemart": "mauville_mart.png",
-        "gym": "mauville_gym.png"
-      },
+      "region": "HOENN",
+      "backgrounds": { "main": "mauville_city.png", "pokecenter": "mauville_center.png", "pokemart": "mauville_mart.png", "gym": "mauville_gym.png" },
       "has_gym": true,
       "gym": {
         "trainers": [
-          { "name": "Guitarist Kirk", "class": "GUITARIST", "sprite": "guitarist.png", "team": [309], "rewards": { "balls": 2 } }
+          {
+            "name": "Guitarist Kirk",
+            "class": "GUITARIST",
+            "sprite": "guitarist.png",
+            "team": [309],
+            "rewards": { "balls": 2 }
+          }
         ],
         "leader": {
           "name": "Wattson",
@@ -351,7 +414,7 @@
           "sprite": "wattson.png",
           "team": [309, 310, 311],
           "badge_reward": "DYNAMO",
-          "rewards": { "balls": 5, "HM_ROCK_SMASH": 1 },
+          "rewards": { "balls": 5, "DEVON_SCOPE": 1 },
           "dialogue": {
             "intro": ["Wattson: Welcome to the Mauville City Gym! I'm Wattson, the Electric-type Gym Leader."],
             "player_won": ["Shocking performance!"],
@@ -363,7 +426,8 @@
         { "text": "Route 110", "target_area": "HOENN_ROUTE_110" },
         { "text": "Route 111", "target_area": "HOENN_ROUTE_111" },
         { "text": "Route 117", "target_area": "HOENN_ROUTE_117" },
-        { "text": "Route 118", "target_area": "HOENN_ROUTE_118" }
+        { "text": "Route 118", "target_area": "HOENN_ROUTE_118" },
+        { "text": "Route 120", "target_area": "HOENN_ROUTE_120" }
       ],
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
@@ -375,17 +439,15 @@
       "next_area": "HOENN_ROUTE_111",
       "on_enter_event": null
     },
-
     "VERDANTURF_TOWN": {
       "area_type": "town",
       "route_name": "Verdanturf Town",
-      "backgrounds": {
-        "main": "verdanturf_town.png",
-        "pokecenter": "verdanturf_center.png"
-      },
+      "region": "HOENN",
+      "backgrounds": { "main": "verdanturf_town.png", "pokecenter": "verdanturf_center.png" },
       "has_gym": false,
       "travel_options": [
-        { "text": "Route 117", "target_area": "HOENN_ROUTE_117" }
+        { "text": "Route 117", "target_area": "HOENN_ROUTE_117" },
+        { "text": "Rusturf Tunnel", "target_area": "HOENN_RUSTURF_TUNNEL" }
       ],
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
@@ -395,41 +457,39 @@
       "next_area": "HOENN_ROUTE_117",
       "on_enter_event": null
     },
-
     "FALLARBOR_TOWN": {
       "area_type": "town",
       "route_name": "Fallarbor Town",
-      "backgrounds": {
-        "main": "fallarbor_town.png",
-        "pokecenter": "fallarbor_center.png"
-      },
+      "region": "HOENN",
+      "backgrounds": { "main": "fallarbor_town.png", "pokecenter": "fallarbor_center.png" },
       "has_gym": false,
       "travel_options": [
         { "text": "Route 113", "target_area": "HOENN_ROUTE_113" },
         { "text": "Route 114", "target_area": "HOENN_ROUTE_114" },
-        { "text": "Meteor Falls", "target_area": "METEOR_FALLS" }
+        { "text": "Meteor Falls", "target_area": "HOENN_METEOR_FALLS" }
       ],
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
         { "text": "Talk to Cozmo", "action": "NPC", "target": "professor_cozmo" }
       ],
-      "next_area": "METEOR_FALLS",
+      "next_area": "HOENN_METEOR_FALLS",
       "on_enter_event": null
     },
-
     "LAVARIDGE_TOWN": {
       "area_type": "town",
       "route_name": "Lavaridge Town",
-      "backgrounds": {
-        "main": "lavaridge_town.png",
-        "pokecenter": "lavaridge_center.png",
-        "pokemart": "lavaridge_mart.png",
-        "gym": "lavaridge_gym.png"
-      },
+      "region": "HOENN",
+      "backgrounds": { "main": "lavaridge_town.png", "pokecenter": "lavaridge_center.png", "pokemart": "lavaridge_mart.png", "gym": "lavaridge_gym.png" },
       "has_gym": true,
       "gym": {
         "trainers": [
-          { "name": "Kindler Jeff", "class": "KINDLER", "sprite": "kindler.png", "team": [322], "rewards": { "balls": 2 } }
+          {
+            "name": "Kindler Jeff",
+            "class": "KINDLER",
+            "sprite": "kindler.png",
+            "team": [322],
+            "rewards": { "balls": 2 }
+          }
         ],
         "leader": {
           "name": "Flannery",
@@ -437,7 +497,7 @@
           "sprite": "flannery.png",
           "team": [322, 323, 324],
           "badge_reward": "HEAT",
-          "rewards": { "balls": 5, "HM_STRENGTH": 1 },
+          "rewards": { "balls": 5, "RARE_CANDY": 3 },
           "dialogue": {
             "intro": ["Flannery: Welcome to the Lavaridge Town Gym! I'm Flannery, the Fire-type Gym Leader."],
             "player_won": ["You're too hot to handle!"],
@@ -447,7 +507,8 @@
       },
       "travel_options": [
         { "text": "Route 112", "target_area": "HOENN_ROUTE_112" },
-        { "text": "Jagged Pass", "target_area": "JAGGED_PASS" }
+        { "text": "Jagged Pass", "target_area": "HOENN_JAGGED_PASS" },
+        { "text": "Mt. Chimney", "target_area": "HOENN_MT_CHIMNEY" }
       ],
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
@@ -455,23 +516,24 @@
         { "text": "Gym", "action": "GYM" },
         { "text": "Hot Springs", "action": "HEAL" }
       ],
-      "next_area": "JAGGED_PASS",
+      "next_area": "HOENN_JAGGED_PASS",
       "on_enter_event": null
     },
-
     "FORTREE_CITY": {
       "area_type": "town",
       "route_name": "Fortree City",
-      "backgrounds": {
-        "main": "fortree_city.png",
-        "pokecenter": "fortree_center.png",
-        "pokemart": "fortree_mart.png",
-        "gym": "fortree_gym.png"
-      },
+      "region": "HOENN",
+      "backgrounds": { "main": "fortree_city.png", "pokecenter": "fortree_center.png", "pokemart": "fortree_mart.png", "gym": "fortree_gym.png" },
       "has_gym": true,
       "gym": {
         "trainers": [
-          { "name": "Bird Keeper Jared", "class": "BIRD_KEEPER", "sprite": "bird_keeper.png", "team": [333], "rewards": { "balls": 2 } }
+          {
+            "name": "Bird Keeper Jared",
+            "class": "BIRD_KEEPER",
+            "sprite": "bird_keeper.png",
+            "team": [333],
+            "rewards": { "balls": 2 }
+          }
         ],
         "leader": {
           "name": "Winona",
@@ -479,7 +541,7 @@
           "sprite": "winona.png",
           "team": [333, 334, 227],
           "badge_reward": "FEATHER",
-          "rewards": { "balls": 5, "HM_FLY": 1 },
+          "rewards": { "balls": 5, "RARE_CANDY": 3 },
           "dialogue": {
             "intro": ["Winona: Welcome to the Fortree City Gym! I'm Winona, the Flying-type Gym Leader."],
             "player_won": ["You soared above me!"],
@@ -489,55 +551,54 @@
       },
       "travel_options": [
         { "text": "Route 119", "target_area": "HOENN_ROUTE_119" },
-        { "text": "Route 120", "target_area": "HOENN_ROUTE_120" }
+        { "text": "Route 120", "target_area": "HOENN_ROUTE_120" },
+        { "text": "Route 123", "target_area": "HOENN_ROUTE_123" }
       ],
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
         { "text": "Shop", "action": "SHOP" },
         { "text": "Gym", "action": "GYM" },
-        { "text": "Weather Institute", "action": "TRAVEL", "target_area": "WEATHER_INSTITUTE" }
+        { "text": "Weather Institute", "action": "TRAVEL", "target_area": "HOENN_WEATHER_INSTITUTE" }
       ],
       "next_area": "HOENN_ROUTE_119",
       "on_enter_event": null
     },
-
     "LILYCOVE_CITY": {
       "area_type": "town",
       "route_name": "Lilycove City",
-      "backgrounds": {
-        "main": "lilycove_city.png",
-        "pokecenter": "lilycove_center.png",
-        "pokemart": "lilycove_mart.png"
-      },
+      "region": "HOENN",
+      "backgrounds": { "main": "lilycove_city.png", "pokecenter": "lilycove_center.png", "pokemart": "lilycove_mart.png" },
       "has_gym": false,
       "travel_options": [
         { "text": "Route 121", "target_area": "HOENN_ROUTE_121" },
         { "text": "Route 124", "target_area": "HOENN_ROUTE_124" },
-        { "text": "Safari Zone", "target_area": "HOENN_SAFARI_ZONE" }
+        { "text": "Safari Zone", "target_area": "HOENN_SAFARI_ZONE" },
+        { "text": "Route 122", "target_area": "HOENN_ROUTE_122" }
       ],
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
         { "text": "Shop", "action": "SHOP" },
         { "text": "Contest Hall", "action": "NPC", "target": "contest_hall" },
-        { "text": "Team Hideout", "action": "TRAVEL", "target_area": "TEAM_HIDEOUT" }
+        { "text": "Team Hideout", "action": "TRAVEL", "target_area": "HOENN_TEAM_HIDEOUT" }
       ],
       "next_area": "HOENN_ROUTE_121",
       "on_enter_event": null
     },
-
     "MOSSDEEP_CITY": {
       "area_type": "town",
       "route_name": "Mossdeep City",
-      "backgrounds": {
-        "main": "mossdeep_city.png",
-        "pokecenter": "mossdeep_center.png",
-        "pokemart": "mossdeep_mart.png",
-        "gym": "mossdeep_gym.png"
-      },
+      "region": "HOENN",
+      "backgrounds": { "main": "mossdeep_city.png", "pokecenter": "mossdeep_center.png", "pokemart": "mossdeep_mart.png", "gym": "mossdeep_gym.png" },
       "has_gym": true,
       "gym": {
         "trainers": [
-          { "name": "Psychic Preston", "class": "PSYCHIC", "sprite": "psychic.png", "team": [307, 308], "rewards": { "balls": 2 } }
+          {
+            "name": "Psychic Preston",
+            "class": "PSYCHIC",
+            "sprite": "psychic.png",
+            "team": [307, 308],
+            "rewards": { "balls": 2 }
+          }
         ],
         "leader": {
           "name": "Tate & Liza",
@@ -545,7 +606,7 @@
           "sprite": "tate_liza.png",
           "team": [337, 338, 337],
           "badge_reward": "MIND",
-          "rewards": { "balls": 5, "HM_DIVE": 1 },
+          "rewards": { "balls": 5, "DIVE_GEAR": 1 },
           "dialogue": {
             "intro": ["Tate & Liza: Welcome to the Mossdeep City Gym! We're the Psychic-type Gym Leaders."],
             "player_won": ["Your mind is sharp!"],
@@ -556,7 +617,7 @@
       "travel_options": [
         { "text": "Route 124", "target_area": "HOENN_ROUTE_124" },
         { "text": "Route 125", "target_area": "HOENN_ROUTE_125" },
-        { "text": "Space Center", "target_area": "SPACE_CENTER" }
+        { "text": "Space Center", "target_area": "HOENN_SPACE_CENTER" }
       ],
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
@@ -566,20 +627,21 @@
       "next_area": "HOENN_ROUTE_124",
       "on_enter_event": null
     },
-
     "SOOTOPOLIS_CITY": {
       "area_type": "town",
       "route_name": "Sootopolis City",
-      "backgrounds": {
-        "main": "sootopolis_city.png",
-        "pokecenter": "sootopolis_center.png",
-        "pokemart": "sootopolis_mart.png",
-        "gym": "sootopolis_gym.png"
-      },
+      "region": "HOENN",
+      "backgrounds": { "main": "sootopolis_city.png", "pokecenter": "sootopolis_center.png", "pokemart": "sootopolis_mart.png", "gym": "sootopolis_gym.png" },
       "has_gym": true,
       "gym": {
         "trainers": [
-          { "name": "Swimmer Katie", "class": "SWIMMER", "sprite": "swimmer_f.png", "team": [118], "rewards": { "balls": 2 } }
+          {
+            "name": "Swimmer Katie",
+            "class": "SWIMMER",
+            "sprite": "swimmer_f.png",
+            "team": [118],
+            "rewards": { "balls": 2 }
+          }
         ],
         "leader": {
           "name": "Wallace",
@@ -587,7 +649,7 @@
           "sprite": "wallace.png",
           "team": [350, 351, 352],
           "badge_reward": "RAIN",
-          "rewards": { "balls": 5, "HM_WATERFALL": 1 },
+          "rewards": { "balls": 5, "EON_TICKET": 1 },
           "dialogue": {
             "intro": ["Wallace: Welcome to the Sootopolis City Gym! I'm Wallace, the Water-type Gym Leader."],
             "player_won": ["The tides have turned in your favor!"],
@@ -597,40 +659,37 @@
       },
       "travel_options": [
         { "text": "Route 126", "target_area": "HOENN_ROUTE_126" },
-        { "text": "Cave of Origin", "target_area": "CAVE_OF_ORIGIN" },
-        { "text": "Sky Pillar", "target_area": "SKY_PILLAR" }
+        { "text": "Cave of Origin", "target_area": "HOENN_CAVE_OF_ORIGIN" },
+        { "text": "Sky Pillar", "target_area": "HOENN_SKY_PILLAR" }
       ],
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
         { "text": "Shop", "action": "SHOP" },
         { "text": "Gym", "action": "GYM" }
       ],
-      "next_area": "CAVE_OF_ORIGIN",
+      "next_area": "HOENN_CAVE_OF_ORIGIN",
       "on_enter_event": null
     },
-
     "PACIFIDLOG_TOWN": {
       "area_type": "town",
       "route_name": "Pacifidlog Town",
-      "backgrounds": {
-        "main": "pacifidlog_town.png",
-        "pokecenter": "pacifidlog_center.png"
-      },
+      "region": "HOENN",
+      "backgrounds": { "main": "pacifidlog_town.png", "pokecenter": "pacifidlog_center.png" },
       "has_gym": false,
       "travel_options": [
         { "text": "Route 131", "target_area": "HOENN_ROUTE_131" },
-        { "text": "Route 132", "target_area": "HOENN_ROUTE_132" }
+        { "text": "Route 132", "target_area": "HOENN_ROUTE_132" },
+        { "text": "Shoal Cave", "target_area": "HOENN_SHOAL_CAVE" },
+        { "text": "Sky Pillar", "target_area": "HOENN_SKY_PILLAR" }
       ],
-      "explore_options": [
-        { "text": "Heal", "action": "HEAL" }
-      ],
+      "explore_options": [{"text": "Heal", "action": "HEAL"}],
       "next_area": "HOENN_ROUTE_131",
       "on_enter_event": null
     },
-
     "EVER_GRANDE_CITY": {
       "area_type": "town",
       "route_name": "Ever Grande City",
+      "region": "HOENN",
       "backgrounds": {
         "main": "ever_grande_city.png",
         "pokecenter": "ever_grande_center.png",
@@ -639,10 +698,34 @@
       "has_gym": true,
       "gym": {
         "trainers": [
-          { "name": "Sidney", "class": "ELITE_FOUR", "sprite": "sidney.png", "team": [262, 359, 336], "rewards": { "balls": 15 } },
-          { "name": "Phoebe", "class": "ELITE_FOUR", "sprite": "phoebe.png", "team": [302, 302, 355], "rewards": { "balls": 15 } },
-          { "name": "Glacia", "class": "ELITE_FOUR", "sprite": "glacia.png", "team": [362, 362, 362], "rewards": { "balls": 15 } },
-          { "name": "Drake", "class": "ELITE_FOUR", "sprite": "drake.png", "team": [334, 230, 373], "rewards": { "balls": 15 } }
+          {
+            "name": "Sidney",
+            "class": "ELITE_FOUR",
+            "sprite": "sidney.png",
+            "team": [262, 359, 336],
+            "rewards": { "balls": 15 }
+          },
+          {
+            "name": "Phoebe",
+            "class": "ELITE_FOUR",
+            "sprite": "phoebe.png",
+            "team": [302, 302, 355],
+            "rewards": { "balls": 15 }
+          },
+          {
+            "name": "Glacia",
+            "class": "ELITE_FOUR",
+            "sprite": "glacia.png",
+            "team": [362, 362, 362],
+            "rewards": { "balls": 15 }
+          },
+          {
+            "name": "Drake",
+            "class": "ELITE_FOUR",
+            "sprite": "drake.png",
+            "team": [334, 230, 373],
+            "rewards": { "balls": 15 }
+          }
         ],
         "leader": {
           "name": "Wallace",
@@ -653,1259 +736,2628 @@
           "victory_flag": "beat_hoenn_champion"
         }
       },
-      "travel_options": [],
-      "explore_options": [
-        { "text": "Heal", "action": "HEAL" },
-        { "text": "CHALLENGE LEAGUE", "action": "GYM" }
+      "travel_options": [
+        { "text": "Victory Road", "target_area": "HOENN_VICTORY_ROAD" },
+        { "text": "Route 128", "target_area": "HOENN_ROUTE_128" },
+        { "text": "Route 129", "target_area": "HOENN_ROUTE_129" }
       ],
-      "next_area": "VICTORY_ROAD",
+      "explore_options": [{"text": "Heal", "action": "HEAL"}, {"text": "CHALLENGE LEAGUE", "action": "GYM"}],
+      "next_area": "HOENN_VICTORY_ROAD",
       "on_enter_event": null
     },
-
-  "HOENN_ROUTE_101": {
-    "area_type": "wild_route",
-    "route_name": "Route 101",
-    "battle_type": "grass",
-    "wild_pool_percentages": "HOENN_ROUTE_101_PERCENTAGES",
-    "min_rounds": 2,
-    "trainer_pool": [],
-    "route_menu": [
-      { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-      { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-      { "text": "LITTLEROOT TOWN", "action": "EXIT", "target_area": "LITTLEROOT_TOWN", "condition": "can_exit", "color": "RED" },
-      { "text": "OLDALE TOWN", "action": "EXIT", "target_area": "OLDALE_TOWN", "condition": "can_exit", "color": "RED" }
-    ],
-    "next_area": "OLDALE_TOWN"
+    "HOENN_ROUTE_101": {
+      "area_type": "wild_route",
+      "route_name": "Route 101",
+      "battle_type": "grass",
+      "wild_pool_percentages": "HOENN_ROUTE_101_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Youngster Calvin",
+          "class": "YOUNGSTER",
+          "sprite": "youngster.png",
+          "team": [261],
+          "rewards": { "balls": 2 },
+          "dialogue": {
+            "intro": ["I'm practicing for my first gym battle!"],
+            "player_won": ["I need more practice..."],
+            "player_lost": ["I'm ready for Roxanne!"]
+          }
+        },
+        {
+          "name": "Lass Tiana",
+          "class": "LASS",
+          "sprite": "lass.png",
+          "team": [263],
+          "rewards": { "balls": 2 },
+          "dialogue": {
+            "intro": ["Have you seen Professor Birch?"],
+            "player_won": ["You're very helpful!"],
+            "player_lost": ["Professor! Help!"]
+          }
+        },
+        {
+          "name": "Bug Catcher Rick",
+          "class": "BUG_CATCHER",
+          "sprite": "bug_catcher.png",
+          "team": [265, 265],
+          "rewards": { "balls": 2 },
+          "dialogue": {
+            "intro": ["My bugs are small but fast!"],
+            "player_won": ["Too fast for me!"],
+            "player_lost": ["The forest is ours!"]
+          }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "LITTLEROOT TOWN", "action": "EXIT", "target_area": "LITTLEROOT_TOWN", "condition": "can_exit", "color": "RED" },
+        { "text": "OLDALE TOWN", "action": "EXIT", "target_area": "OLDALE_TOWN", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "OLDALE_TOWN",
+      "region": "HOENN"
+    },
+    "HOENN_ROUTE_102": {
+      "area_type": "wild_route",
+      "route_name": "Route 102",
+      "battle_type": "grass",
+      "wild_pool_percentages": "HOENN_ROUTE_102_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Youngster Allen",
+          "class": "YOUNGSTER",
+          "sprite": "youngster.png",
+          "team": [261, 276],
+          "rewards": { "balls": 2 }
+        },
+        {
+          "name": "Lass Katie",
+          "class": "LASS",
+          "sprite": "lass.png",
+          "team": [270, 273],
+          "rewards": { "balls": 2 }
+        },
+        {
+          "name": "Bug Catcher Lyle",
+          "class": "BUG_CATCHER",
+          "sprite": "bug_catcher.png",
+          "team": [265, 266],
+          "rewards": { "balls": 2 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "OLDALE TOWN", "action": "EXIT", "target_area": "OLDALE_TOWN", "condition": "can_exit", "color": "RED" },
+        { "text": "PETALBURG CITY", "action": "EXIT", "target_area": "PETALBURG_CITY", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "PETALBURG_CITY",
+      "region": "HOENN"
+    },
+    "HOENN_ROUTE_103": {
+      "area_type": "wild_route",
+      "route_name": "Route 103",
+      "battle_type": "grass",
+      "wild_pool_percentages": "HOENN_ROUTE_103_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Youngster Timmy",
+          "class": "YOUNGSTER",
+          "sprite": "youngster.png",
+          "team": [261, 263],
+          "rewards": { "balls": 2 }
+        },
+        {
+          "name": "Lass Natalie",
+          "class": "LASS",
+          "sprite": "lass.png",
+          "team": [263, 276],
+          "rewards": { "balls": 2 }
+        },
+        {
+          "name": "Fisherman Andrew",
+          "class": "FISHERMAN",
+          "sprite": "fisherman.png",
+          "team": [129, 129, 118],
+          "rewards": { "balls": 3 }
+        }
+      ],
+      "on_enter_event": {
+        "type": "trainer_battle",
+        "trainer": {
+          "name": "Rival",
+          "class": "RIVAL",
+          "sprite": "rival.png",
+          "is_boss_battle": true,
+          "team": [278, 285, 252],
+          "rewards": { "balls": 10, "RARE_CANDY": 1 }
+        },
+        "condition": "not defeated_rival_103",
+        "flag_check": "defeated_rival_103"
+      },
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "OLDALE TOWN", "action": "EXIT", "target_area": "OLDALE_TOWN", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "OLDALE_TOWN",
+      "region": "HOENN"
+    },
+    "HOENN_ROUTE_104": {
+      "area_type": "wild_route",
+      "route_name": "Route 104",
+      "battle_type": "grass",
+      "wild_pool_percentages": "HOENN_ROUTE_104_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Lady Cindy",
+          "class": "LASS",
+          "sprite": "beauty.png",
+          "team": [263],
+          "rewards": { "balls": 5, "NUGGET": 1 },
+          "is_boss_battle": true
+        },
+        {
+          "name": "Rich Boy Winston",
+          "class": "YOUNGSTER",
+          "sprite": "richboy.png",
+          "team": [263],
+          "rewards": { "balls": 5, "NUGGET": 1 },
+          "is_boss_battle": true
+        },
+        {
+          "name": "Fisherman Ivan",
+          "class": "FISHERMAN",
+          "sprite": "fisherman.png",
+          "team": [118, 118, 129],
+          "rewards": { "balls": 3 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "PETALBURG CITY", "action": "EXIT", "target_area": "PETALBURG_CITY", "condition": "can_exit", "color": "RED" },
+        { "text": "RUSTBORO CITY", "action": "EXIT", "target_area": "RUSTBORO_CITY", "condition": "can_exit", "color": "RED" },
+        { "text": "PETALBURG WOODS", "action": "TRAVEL", "target_area": "HOENN_PETALBURG_WOODS", "condition": "can_exit", "color": "GREEN" }
+      ],
+      "next_area": "RUSTBORO_CITY",
+      "region": "HOENN"
+    },
+    "HOENN_ROUTE_105": {
+      "area_type": "wild_route",
+      "route_name": "Route 105",
+      "battle_type": "ocean",
+      "wild_pool_percentages": "HOENN_ROUTE_105_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Swimmer Luis",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [72, 72],
+          "rewards": { "balls": 2 }
+        },
+        {
+          "name": "Swimmer Dominik",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [318],
+          "rewards": { "balls": 2 }
+        },
+        {
+          "name": "Swimmer Beverly",
+          "class": "SWIMMER",
+          "sprite": "swimmer_f.png",
+          "team": [118, 120],
+          "rewards": { "balls": 2 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "ISLAND CAVE", "action": "BOSS", "condition": "regi_trio_awakened", "color": "CYAN" },
+        { "text": "ROUTE 104", "action": "EXIT", "target_area": "HOENN_ROUTE_104", "condition": "can_exit", "color": "RED" },
+        { "text": "ROUTE 106", "action": "EXIT", "target_area": "HOENN_ROUTE_106", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "HOENN_ROUTE_106",
+      "region": "HOENN"
+    },
+    "HOENN_ROUTE_106": {
+      "area_type": "wild_route",
+      "route_name": "Route 106",
+      "battle_type": "ocean",
+      "wild_pool_percentages": "HOENN_ROUTE_106_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Fisherman Elliot",
+          "class": "FISHERMAN",
+          "sprite": "fisherman.png",
+          "team": [129, 129, 118],
+          "rewards": { "balls": 3 }
+        },
+        {
+          "name": "Swimmer Ned",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [72, 73],
+          "rewards": { "balls": 2 }
+        },
+        {
+          "name": "Team Aqua Grunt",
+          "class": "ROCKET",
+          "sprite": "aqua_grunt.png",
+          "team": [261, 318],
+          "rewards": { "balls": 3 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "ROUTE 105", "action": "EXIT", "target_area": "HOENN_ROUTE_105", "condition": "can_exit", "color": "RED" },
+        { "text": "DEWFORD TOWN", "action": "EXIT", "target_area": "DEWFORD_TOWN", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "DEWFORD_TOWN",
+      "region": "HOENN"
+    },
+    "HOENN_ROUTE_107": {
+      "area_type": "wild_route",
+      "route_name": "Route 107",
+      "battle_type": "ocean",
+      "wild_pool_percentages": "HOENN_ROUTE_107_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Swimmer Denise",
+          "class": "SWIMMER",
+          "sprite": "swimmer_f.png",
+          "team": [72, 118],
+          "rewards": { "balls": 2 }
+        },
+        {
+          "name": "Swimmer Tony",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [318, 318],
+          "rewards": { "balls": 2 }
+        },
+        {
+          "name": "Swimmer Darrin",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [72, 73, 119],
+          "rewards": { "balls": 3 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "DEWFORD TOWN", "action": "EXIT", "target_area": "DEWFORD_TOWN", "condition": "can_exit", "color": "RED" },
+        { "text": "ROUTE 108", "action": "EXIT", "target_area": "HOENN_ROUTE_108", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "HOENN_ROUTE_108",
+      "region": "HOENN"
+    },
+    "HOENN_ROUTE_108": {
+      "area_type": "wild_route",
+      "route_name": "Route 108",
+      "battle_type": "ocean",
+      "wild_pool_percentages": "HOENN_ROUTE_108_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Swimmer Matthew",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [318, 73],
+          "rewards": { "balls": 2 }
+        },
+        {
+          "name": "Swimmer Alice",
+          "class": "SWIMMER",
+          "sprite": "swimmer_f.png",
+          "team": [120, 121],
+          "rewards": { "balls": 2 }
+        },
+        {
+          "name": "Swimmer Jerome",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [72, 118, 318],
+          "rewards": { "balls": 3 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "ROUTE 107", "action": "EXIT", "target_area": "HOENN_ROUTE_107", "condition": "can_exit", "color": "RED" },
+        { "text": "ROUTE 109", "action": "EXIT", "target_area": "HOENN_ROUTE_109", "condition": "can_exit", "color": "RED" },
+        { "text": "ABANDONED SHIP", "action": "TRAVEL", "target_area": "HOENN_ABANDONED_SHIP", "condition": "can_exit", "color": "GREEN" }
+      ],
+      "next_area": "HOENN_ROUTE_109",
+      "region": "HOENN"
+    },
+    "HOENN_ROUTE_109": {
+      "area_type": "wild_route",
+      "route_name": "Route 109",
+      "battle_type": "ocean",
+      "wild_pool_percentages": "HOENN_ROUTE_109_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Swimmer Grace",
+          "class": "SWIMMER",
+          "sprite": "swimmer_f.png",
+          "team": [72, 73],
+          "rewards": { "balls": 2 }
+        },
+        {
+          "name": "Sailor Huey",
+          "class": "SAILOR",
+          "sprite": "sailor.png",
+          "team": [278, 66],
+          "rewards": { "balls": 3 }
+        },
+        {
+          "name": "Tuber Ricky",
+          "class": "YOUNGSTER",
+          "sprite": "youngster.png",
+          "team": [118, 118, 129],
+          "rewards": { "balls": 2 }
+        },
+        {
+          "name": "Tuber Lola",
+          "class": "LASS",
+          "sprite": "lass.png",
+          "team": [118, 183],
+          "rewards": { "balls": 2 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "ROUTE 108", "action": "EXIT", "target_area": "HOENN_ROUTE_108", "condition": "can_exit", "color": "RED" },
+        { "text": "SLATEPORT CITY", "action": "EXIT", "target_area": "SLATEPORT_CITY", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "SLATEPORT_CITY",
+      "region": "HOENN"
+    },
+    "HOENN_ROUTE_110": {
+      "area_type": "wild_route",
+      "route_name": "Route 110",
+      "battle_type": "grass",
+      "wild_pool_percentages": "HOENN_ROUTE_110_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Biker Edwin",
+          "class": "BIKER",
+          "sprite": "biker.png",
+          "team": [309, 310],
+          "rewards": { "balls": 3 }
+        },
+        {
+          "name": "Triathlete Alyssa",
+          "class": "TRIATHLETE",
+          "sprite": "triathlete_f.png",
+          "team": [118],
+          "rewards": { "balls": 3 }
+        },
+        {
+          "name": "Triathlete Dylan",
+          "class": "TRIATHLETE",
+          "sprite": "triathlete_m.png",
+          "team": [118],
+          "rewards": { "balls": 3 }
+        },
+        {
+          "name": "Rival",
+          "class": "RIVAL",
+          "sprite": "rival.png",
+          "is_boss_battle": true,
+          "team": [279, 286, 253],
+          "rewards": { "balls": 10, "EXP_SHARE": 1 },
+          "victory_flag": "defeated_rival_110",
+          "dialogue": {
+            "intro": ["Let's see how much you've grown!"],
+            "player_won": ["Incredible math skills!"],
+            "player_lost": ["You still have a long way to go!"]
+          }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        {
+          "text": "NEW MAUVILLE",
+          "action": "EXIT",
+          "target_area": "HOENN_NEW_MAUVILLE",
+          "condition": ["can_exit", "has_SURF_BOARD"],
+          "color": "RED"
+        },
+        { "text": "SLATEPORT CITY", "action": "EXIT", "target_area": "SLATEPORT_CITY", "condition": "can_exit", "color": "RED" },
+        { "text": "MAUVILLE CITY", "action": "EXIT", "target_area": "MAUVILLE_CITY", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "MAUVILLE_CITY",
+      "region": "HOENN"
+    },
+    "HOENN_ROUTE_111": {
+      "area_type": "wild_route",
+      "route_name": "Route 111",
+      "battle_type": "sand",
+      "wild_pool_percentages": "HOENN_ROUTE_111_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Camper Tyron",
+          "class": "CAMPER",
+          "sprite": "camper.png",
+          "team": [322, 323],
+          "rewards": { "balls": 2 }
+        },
+        {
+          "name": "Picnicker Irene",
+          "class": "PICNIKER",
+          "sprite": "picknicker.png",
+          "team": [333, 333],
+          "rewards": { "balls": 2 }
+        },
+        {
+          "name": "Hiker Clark",
+          "class": "HIKER",
+          "sprite": "hiker.png",
+          "team": [74, 75, 322],
+          "rewards": { "balls": 2 }
+        },
+        {
+          "name": "Cooltrainer Wilton",
+          "class": "COOLTRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [309, 310, 311],
+          "rewards": { "balls": 5 },
+          "is_boss_battle": true
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "MAUVILLE CITY", "action": "EXIT", "target_area": "MAUVILLE_CITY", "condition": "can_exit", "color": "RED" },
+        { "text": "ROUTE 112", "action": "EXIT", "target_area": "HOENN_ROUTE_112", "condition": "can_exit", "color": "RED" },
+        { "text": "ROUTE 113", "action": "EXIT", "target_area": "HOENN_ROUTE_113", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "HOENN_ROUTE_112",
+      "region": "HOENN"
+    },
+    "HOENN_ROUTE_112": {
+      "area_type": "wild_route",
+      "route_name": "Route 112",
+      "battle_type": "grass",
+      "wild_pool_percentages": "HOENN_ROUTE_112_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Hiker Trent",
+          "class": "HIKER",
+          "sprite": "hiker.png",
+          "team": [74, 74, 322],
+          "rewards": { "balls": 2 }
+        },
+        {
+          "name": "Team Magma Grunt",
+          "class": "ROCKET",
+          "sprite": "magma_grunt.png",
+          "team": [261, 322],
+          "rewards": { "balls": 3 }
+        },
+        {
+          "name": "Team Aqua Grunt",
+          "class": "ROCKET",
+          "sprite": "aqua_grunt.png",
+          "team": [261, 318],
+          "rewards": { "balls": 3 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "ROUTE 111", "action": "EXIT", "target_area": "HOENN_ROUTE_111", "condition": "can_exit", "color": "RED" },
+        { "text": "LAVARIDGE TOWN", "action": "EXIT", "target_area": "LAVARIDGE_TOWN", "condition": "can_exit", "color": "RED" },
+        { "text": "JAGGED PASS", "action": "TRAVEL", "target_area": "HOENN_JAGGED_PASS", "condition": "can_exit", "color": "GREEN" },
+        { "text": "FIERY PATH", "action": "EXIT", "target_area": "HOENN_FIERY_PATH", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "LAVARIDGE_TOWN",
+      "region": "HOENN"
+    },
+    "HOENN_ROUTE_113": {
+      "area_type": "wild_route",
+      "route_name": "Route 113",
+      "battle_type": "grass",
+      "wild_pool_percentages": "HOENN_ROUTE_113_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Ninja Boy Takashi",
+          "class": "NINJA_BOY",
+          "sprite": "ninja_boy.png",
+          "team": [327, 327],
+          "rewards": { "balls": 2 }
+        },
+        {
+          "name": "Parasol Lady Madeline",
+          "class": "LASS",
+          "sprite": "beauty.png",
+          "team": [322, 323],
+          "rewards": { "balls": 2 }
+        },
+        {
+          "name": "Youngster Neal",
+          "class": "YOUNGSTER",
+          "sprite": "youngster.png",
+          "team": [328, 328],
+          "rewards": { "balls": 2 }
+        },
+        {
+          "name": "Ninja Boy Lung",
+          "class": "NINJA_BOY",
+          "sprite": "ninja_boy.png",
+          "team": [110, 110],
+          "rewards": { "balls": 3 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "FALLARBOR TOWN", "action": "EXIT", "target_area": "FALLARBOR_TOWN", "condition": "can_exit", "color": "RED" },
+        { "text": "ROUTE 114", "action": "EXIT", "target_area": "HOENN_ROUTE_114", "condition": "can_exit", "color": "RED" },
+        { "text": "ROUTE 111", "action": "EXIT", "target_area": "HOENN_ROUTE_111", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "HOENN_ROUTE_114",
+      "region": "HOENN"
+    },
+    "HOENN_ROUTE_114": {
+      "area_type": "wild_route",
+      "route_name": "Route 114",
+      "battle_type": "grass",
+      "wild_pool_percentages": "HOENN_ROUTE_114_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Fisherman Kai",
+          "class": "FISHERMAN",
+          "sprite": "fisherman.png",
+          "team": [318, 318, 129],
+          "rewards": { "balls": 3 }
+        },
+        {
+          "name": "Hiker Lucas",
+          "class": "HIKER",
+          "sprite": "hiker.png",
+          "team": [74, 75],
+          "rewards": { "balls": 2 }
+        },
+        {
+          "name": "Picnicker Angelina",
+          "class": "PICNIKER",
+          "sprite": "picknicker.png",
+          "team": [333, 333],
+          "rewards": { "balls": 2 }
+        },
+        {
+          "name": "Pokemaniac Steve",
+          "class": "POKEMANIAC",
+          "sprite": "supernerd.png",
+          "team": [304, 305],
+          "rewards": { "balls": 5 },
+          "is_boss_battle": true
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "ROUTE 113", "action": "EXIT", "target_area": "HOENN_ROUTE_113", "condition": "can_exit", "color": "RED" },
+        { "text": "FALLARBOR TOWN", "action": "EXIT", "target_area": "FALLARBOR_TOWN", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "FALLARBOR_TOWN",
+      "region": "HOENN"
+    },
+    "HOENN_ROUTE_115": {
+      "area_type": "wild_route",
+      "route_name": "Route 115",
+      "battle_type": "grass",
+      "wild_pool_percentages": "HOENN_ROUTE_115_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Black Belt Nob",
+          "class": "BLACKBELT",
+          "sprite": "blackbelt.png",
+          "team": [66, 66],
+          "rewards": { "balls": 3 }
+        },
+        {
+          "name": "Battle Girl Cyndy",
+          "class": "COOLTRAINER",
+          "sprite": "acetrainer_f.png",
+          "team": [296, 296, 297],
+          "rewards": { "balls": 3 }
+        },
+        {
+          "name": "Collector Hector",
+          "class": "POKEMANIAC",
+          "sprite": "supernerd.png",
+          "team": [337, 338],
+          "rewards": { "balls": 5 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "RUSTBORO CITY", "action": "EXIT", "target_area": "RUSTBORO_CITY", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "RUSTBORO_CITY",
+      "region": "HOENN"
+    },
+    "HOENN_ROUTE_116": {
+      "area_type": "wild_route",
+      "route_name": "Route 116",
+      "battle_type": "grass",
+      "wild_pool_percentages": "HOENN_ROUTE_116_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Bug Catcher Jose",
+          "class": "BUG_CATCHER",
+          "sprite": "bug_catcher.png",
+          "team": [265, 265, 266],
+          "rewards": { "balls": 2 }
+        },
+        {
+          "name": "Lass Janice",
+          "class": "LASS",
+          "sprite": "lass.png",
+          "team": [285, 285],
+          "rewards": { "balls": 2 }
+        },
+        {
+          "name": "School Kid Jerry",
+          "class": "SCHOOL_KID",
+          "sprite": "school_kid_m.png",
+          "team": [290, 291],
+          "rewards": { "balls": 3 }
+        },
+        {
+          "name": "Hiker Clark",
+          "class": "HIKER",
+          "sprite": "hiker.png",
+          "team": [74, 74, 299],
+          "rewards": { "balls": 2 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "RUSTBORO CITY", "action": "EXIT", "target_area": "RUSTBORO_CITY", "condition": "can_exit", "color": "RED" },
+        { "text": "RUSTURF TUNNEL", "action": "TRAVEL", "target_area": "HOENN_RUSTURF_TUNNEL", "condition": "can_exit", "color": "GREEN" }
+      ],
+      "next_area": "HOENN_RUSTURF_TUNNEL",
+      "region": "HOENN"
+    },
+    "HOENN_ROUTE_117": {
+      "area_type": "wild_route",
+      "route_name": "Route 117",
+      "battle_type": "grass",
+      "wild_pool_percentages": "HOENN_ROUTE_117_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Triathlete Dylan",
+          "class": "TRIATHLETE",
+          "sprite": "triathlete_m.png",
+          "team": [118],
+          "rewards": { "balls": 2 }
+        },
+        {
+          "name": "Sr. and Jr. Anna & Meg",
+          "class": "TWINS",
+          "sprite": "twins.png",
+          "team": [315, 315],
+          "rewards": { "balls": 5 }
+        },
+        {
+          "name": "Pokémon Breeder Isaac",
+          "class": "COOLTRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [263, 278, 285],
+          "rewards": { "balls": 4 }
+        },
+        {
+          "name": "Triathlete Maria",
+          "class": "TRIATHLETE",
+          "sprite": "triathlete_f.png",
+          "team": [118],
+          "rewards": { "balls": 2 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "MAUVILLE CITY", "action": "EXIT", "target_area": "MAUVILLE_CITY", "condition": "can_exit", "color": "RED" },
+        { "text": "VERDANTURF TOWN", "action": "EXIT", "target_area": "VERDANTURF_TOWN", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "VERDANTURF_TOWN",
+      "region": "HOENN"
+    },
+    "HOENN_ROUTE_118": {
+      "area_type": "wild_route",
+      "route_name": "Route 118",
+      "battle_type": "grass",
+      "wild_pool_percentages": "HOENN_ROUTE_118_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Fisherman Barny",
+          "class": "FISHERMAN",
+          "sprite": "fisherman.png",
+          "team": [118, 118, 129],
+          "rewards": { "balls": 3 }
+        },
+        {
+          "name": "Bird Keeper Perry",
+          "class": "BIRD_KEEPER",
+          "sprite": "bird_keeper.png",
+          "team": [17, 22],
+          "rewards": { "balls": 3 }
+        },
+        {
+          "name": "Guitarist Dalton",
+          "class": "GUITARIST",
+          "sprite": "guitarist.png",
+          "team": [309, 310],
+          "rewards": { "balls": 4 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "MAUVILLE CITY", "action": "EXIT", "target_area": "MAUVILLE_CITY", "condition": "can_exit", "color": "RED" },
+        { "text": "SOUTHERN ISLAND", "action": "BOSS", "condition": "has_national_dex", "color": "PURPLE" },
+        { "text": "SOUTHERN ISLAND", "action": "BOSS", "condition": "has_EON_TICKET", "color": "PURPLE" },
+        { "text": "ROUTE 119", "action": "EXIT", "target_area": "HOENN_ROUTE_119", "condition": "can_exit", "color": "RED" },
+        { "text": "ROUTE 123", "action": "EXIT", "target_area": "HOENN_ROUTE_123", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "HOENN_ROUTE_119",
+      "region": "HOENN"
+    },
+    "HOENN_ROUTE_119": {
+      "area_type": "wild_route",
+      "route_name": "Route 119",
+      "battle_type": "grass",
+      "wild_pool_percentages": "HOENN_ROUTE_119_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Ninja Boy Takashi",
+          "class": "NINJA_BOY",
+          "sprite": "ninja_boy.png",
+          "team": [352, 290, 41],
+          "rewards": { "balls": 3 }
+        },
+        {
+          "name": "Bird Keeper Phil",
+          "class": "BIRD_KEEPER",
+          "sprite": "bird_keeper.png",
+          "team": [164, 277],
+          "rewards": { "balls": 3 }
+        },
+        {
+          "name": "Pokémon Ranger Catherine",
+          "class": "COOLTRAINER",
+          "sprite": "acetrainer_f.png",
+          "team": [285, 286, 315],
+          "rewards": { "balls": 5 }
+        },
+        {
+          "name": "Ninja Boy Hideo",
+          "class": "NINJA_BOY",
+          "sprite": "ninja_boy.png",
+          "team": [109, 110],
+          "rewards": { "balls": 3 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "ROUTE 118", "action": "EXIT", "target_area": "HOENN_ROUTE_118", "condition": "can_exit", "color": "RED" },
+        { "text": "FORTREE CITY", "action": "EXIT", "target_area": "FORTREE_CITY", "condition": "can_exit", "color": "RED" },
+        { "text": "WEATHER INSTITUTE", "action": "TRAVEL", "target_area": "HOENN_WEATHER_INSTITUTE", "condition": "can_exit", "color": "GREEN" }
+      ],
+      "next_area": "FORTREE_CITY",
+      "region": "HOENN"
+    },
+    "HOENN_ROUTE_120": {
+      "area_type": "wild_route",
+      "route_name": "Route 120",
+      "battle_type": "grass",
+      "wild_pool_percentages": "HOENN_ROUTE_120_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Bird Keeper Robert",
+          "class": "BIRD_KEEPER",
+          "sprite": "bird_keeper.png",
+          "team": [333, 333, 277],
+          "rewards": { "balls": 3 }
+        },
+        {
+          "name": "Parasol Lady Angelica",
+          "class": "LASS",
+          "sprite": "beauty.png",
+          "team": [118, 119],
+          "rewards": { "balls": 2 }
+        },
+        {
+          "name": "Cooltrainer Jennifer",
+          "class": "COOLTRAINER",
+          "sprite": "acetrainer_f.png",
+          "team": [307, 308, 315],
+          "rewards": { "balls": 5 }
+        },
+        {
+          "name": "Team Magma Grunt",
+          "class": "ROCKET",
+          "sprite": "magma_grunt.png",
+          "team": [262, 323],
+          "rewards": { "balls": 3 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "MAUVILLE CITY", "action": "EXIT", "target_area": "MAUVILLE_CITY", "condition": "can_exit", "color": "RED" },
+        { "text": "DESERT RUINS", "action": "BOSS", "condition": "regi_trio_awakened", "color": "GOLD" },
+        { "text": "ROUTE 121", "action": "EXIT", "target_area": "HOENN_ROUTE_121", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "HOENN_ROUTE_121",
+      "region": "HOENN"
+    },
+    "HOENN_ROUTE_121": {
+      "area_type": "wild_route",
+      "route_name": "Route 121",
+      "battle_type": "grass",
+      "wild_pool_percentages": "HOENN_ROUTE_121_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Hex Maniac Tammy",
+          "class": "PSYCHIC",
+          "sprite": "channeler.png",
+          "team": [353, 355],
+          "rewards": { "balls": 5 }
+        },
+        {
+          "name": "Beauty Jessica",
+          "class": "BEAUTY",
+          "sprite": "beauty.png",
+          "team": [352, 352],
+          "rewards": { "balls": 3 }
+        },
+        {
+          "name": "Gentleman Walter",
+          "class": "GENTLEMAN",
+          "sprite": "gentleman.png",
+          "team": [310, 310],
+          "rewards": { "balls": 5 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "ROUTE 120", "action": "EXIT", "target_area": "HOENN_ROUTE_120", "condition": "can_exit", "color": "RED" },
+        { "text": "LILYCOVE CITY", "action": "EXIT", "target_area": "LILYCOVE_CITY", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "LILYCOVE_CITY",
+      "region": "HOENN"
+    },
+    "HOENN_ROUTE_122": {
+      "area_type": "wild_route",
+      "route_name": "Route 122",
+      "battle_type": "ocean",
+      "wild_pool_percentages": "HOENN_ROUTE_122_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Swimmer Alice",
+          "class": "SWIMMER",
+          "sprite": "swimmer_f.png",
+          "team": [120, 121],
+          "rewards": { "balls": 2 }
+        },
+        {
+          "name": "Team Aqua Grunt",
+          "class": "ROCKET",
+          "sprite": "aqua_grunt.png",
+          "team": [318, 319, 262],
+          "rewards": { "balls": 3 }
+        },
+        {
+          "name": "Swimmer Simon",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [72, 73],
+          "rewards": { "balls": 2 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "LILYCOVE CITY", "action": "EXIT", "target_area": "LILYCOVE_CITY", "condition": "can_exit", "color": "RED" },
+        { "text": "MT. PYRE", "action": "TRAVEL", "target_area": "HOENN_MT_PYRE", "condition": "can_exit", "color": "GREEN" }
+      ],
+      "next_area": "HOENN_MT_PYRE",
+      "region": "HOENN"
+    },
+    "HOENN_ROUTE_123": {
+      "area_type": "wild_route",
+      "route_name": "Route 123",
+      "battle_type": "grass",
+      "wild_pool_percentages": "HOENN_ROUTE_123_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Psychic Cameron",
+          "class": "PSYCHIC",
+          "sprite": "supernerd.png",
+          "team": [64, 308],
+          "rewards": { "balls": 4 }
+        },
+        {
+          "name": "Cooltrainer Wendy",
+          "class": "COOLTRAINER",
+          "sprite": "acetrainer_f.png",
+          "team": [254, 257, 260],
+          "rewards": { "balls": 10, "RARE_CANDY": 1 },
+          "is_boss_battle": true
+        },
+        {
+          "name": "Hex Maniac Kindra",
+          "class": "PSYCHIC",
+          "sprite": "channeler.png",
+          "team": [354, 356],
+          "rewards": { "balls": 5 }
+        },
+        {
+          "name": "Collector Ed",
+          "class": "POKEMANIAC",
+          "sprite": "supernerd.png",
+          "team": [327, 328, 351],
+          "rewards": { "balls": 5 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "FORTREE CITY", "action": "EXIT", "target_area": "FORTREE_CITY", "condition": "can_exit", "color": "RED" },
+        { "text": "ANCIENT TOMB", "action": "BOSS", "condition": "regi_trio_awakened", "color": "GRAY" },
+        { "text": "ROUTE 124", "action": "EXIT", "target_area": "HOENN_ROUTE_124", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "HOENN_ROUTE_124",
+      "region": "HOENN"
+    },
+    "HOENN_ROUTE_124": {
+      "area_type": "wild_route",
+      "route_name": "Route 124",
+      "battle_type": "ocean",
+      "wild_pool_percentages": "HOENN_ROUTE_124_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Swimmer Grace",
+          "class": "SWIMMER",
+          "sprite": "swimmer_f.png",
+          "team": [318],
+          "rewards": { "balls": 2 }
+        },
+        {
+          "name": "Swimmer Roland",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [319],
+          "rewards": { "balls": 2 }
+        },
+        {
+          "name": "Swimmer Jenny",
+          "class": "SWIMMER",
+          "sprite": "swimmer_f.png",
+          "team": [118, 120, 170],
+          "rewards": { "balls": 3 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "ROUTE 123", "action": "EXIT", "target_area": "HOENN_ROUTE_123", "condition": "can_exit", "color": "RED" },
+        { "text": "SOUTHERN ISLAND", "action": "BOSS", "condition": "has_EON_TICKET", "color": "PURPLE" },
+        { "text": "MOSSDEEP CITY", "action": "EXIT", "target_area": "MOSSDEEP_CITY", "condition": "can_exit", "color": "RED" },
+        { "text": "ROUTE 126", "action": "EXIT", "target_area": "HOENN_ROUTE_126", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "MOSSDEEP_CITY",
+      "region": "HOENN"
+    },
+    "HOENN_ROUTE_125": {
+      "area_type": "wild_route",
+      "route_name": "Route 125",
+      "battle_type": "ocean",
+      "wild_pool_percentages": "HOENN_ROUTE_125_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Swimmer Ernest",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [121],
+          "rewards": { "balls": 2 }
+        },
+        {
+          "name": "Swimmer Nance",
+          "class": "SWIMMER",
+          "sprite": "swimmer_f.png",
+          "team": [121, 319],
+          "rewards": { "balls": 2 }
+        },
+        {
+          "name": "Sailor Forrest",
+          "class": "SAILOR",
+          "sprite": "sailor.png",
+          "team": [67, 319],
+          "rewards": { "balls": 3 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "MOSSDEEP CITY", "action": "EXIT", "target_area": "MOSSDEEP_CITY", "condition": "can_exit", "color": "RED" },
+        { "text": "SHOAL CAVE", "action": "EXIT", "target_area": "HOENN_SHOAL_CAVE", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "MOSSDEEP_CITY",
+      "region": "HOENN"
+    },
+    "HOENN_ROUTE_126": {
+      "area_type": "wild_route",
+      "route_name": "Route 126",
+      "battle_type": "ocean",
+      "wild_pool_percentages": "HOENN_ROUTE_126_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Swimmer Barry",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [130, 319],
+          "rewards": { "balls": 3 }
+        },
+        {
+          "name": "Swimmer Nikki",
+          "class": "SWIMMER",
+          "sprite": "swimmer_f.png",
+          "team": [119, 170],
+          "rewards": { "balls": 2 }
+        },
+        {
+          "name": "Swimmer Pablo",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [73, 318],
+          "rewards": { "balls": 2 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "SOOTOPOLIS CITY", "action": "EXIT", "target_area": "SOOTOPOLIS_CITY", "condition": "can_exit", "color": "RED" },
+        { "text": "ROUTE 124", "action": "EXIT", "target_area": "HOENN_ROUTE_124", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "SOOTOPOLIS_CITY",
+      "region": "HOENN"
+    },
+    "HOENN_ROUTE_127": {
+      "area_type": "wild_route",
+      "route_name": "Route 127",
+      "battle_type": "ocean",
+      "wild_pool_percentages": "HOENN_ROUTE_127_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Bird Keeper Beck",
+          "class": "BIRD_KEEPER",
+          "sprite": "bird_keeper.png",
+          "team": [227],
+          "rewards": { "balls": 3 }
+        },
+        {
+          "name": "Fisherman Henry",
+          "class": "FISHERMAN",
+          "sprite": "fisherman.png",
+          "team": [130, 130],
+          "rewards": { "balls": 3 }
+        },
+        {
+          "name": "Cooltrainer Camden",
+          "class": "COOLTRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [260, 319, 381],
+          "rewards": { "balls": 10 },
+          "is_boss_battle": true
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "ROUTE 126", "action": "EXIT", "target_area": "HOENN_ROUTE_126", "condition": "can_exit", "color": "RED" },
+        { "text": "ROUTE 128", "action": "EXIT", "target_area": "HOENN_ROUTE_128", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "HOENN_ROUTE_128",
+      "region": "HOENN"
+    },
+    "HOENN_ROUTE_128": {
+      "area_type": "wild_route",
+      "route_name": "Route 128",
+      "battle_type": "ocean",
+      "wild_pool_percentages": "HOENN_ROUTE_128_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Swimmer Isaiah",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [72, 73],
+          "rewards": { "balls": 2 }
+        },
+        {
+          "name": "Swimmer Katelyn",
+          "class": "SWIMMER",
+          "sprite": "swimmer_f.png",
+          "team": [121, 119],
+          "rewards": { "balls": 2 }
+        },
+        {
+          "name": "Team Aqua Grunt",
+          "class": "ROCKET",
+          "sprite": "aqua_grunt.png",
+          "team": [319, 262, 42],
+          "rewards": { "balls": 5 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "ROUTE 127", "action": "EXIT", "target_area": "HOENN_ROUTE_127", "condition": "can_exit", "color": "RED" },
+        { "text": "EVER GRANDE CITY", "action": "EXIT", "target_area": "EVER_GRANDE_CITY", "condition": "can_exit", "color": "RED" },
+        { "text": "SEAFLOOR CAVERN", "action": "EXIT", "target_area": "HOENN_SEAFLOOR_CAVERN", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "EVER_GRANDE_CITY",
+      "region": "HOENN"
+    },
+    "HOENN_ROUTE_129": {
+      "area_type": "wild_route",
+      "route_name": "Route 129",
+      "battle_type": "ocean",
+      "wild_pool_percentages": "HOENN_ROUTE_129_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Swimmer Reed",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [319],
+          "rewards": { "balls": 2 }
+        },
+        {
+          "name": "Swimmer Tisha",
+          "class": "SWIMMER",
+          "sprite": "swimmer_f.png",
+          "team": [319, 121],
+          "rewards": { "balls": 2 }
+        },
+        {
+          "name": "Swimmer Clarence",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [130, 319],
+          "rewards": { "balls": 3 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "EVER GRANDE CITY", "action": "EXIT", "target_area": "EVER_GRANDE_CITY", "condition": "can_exit", "color": "RED" },
+        { "text": "ROUTE 130", "action": "EXIT", "target_area": "HOENN_ROUTE_130", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "HOENN_ROUTE_130",
+      "region": "HOENN"
+    },
+    "HOENN_ROUTE_130": {
+      "area_type": "wild_route",
+      "route_name": "Route 130",
+      "battle_type": "ocean",
+      "wild_pool_percentages": "HOENN_ROUTE_130_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Swimmer Rodney",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [130],
+          "rewards": { "balls": 2 }
+        },
+        {
+          "name": "Swimmer Katie",
+          "class": "SWIMMER",
+          "sprite": "swimmer_f.png",
+          "team": [121, 319],
+          "rewards": { "balls": 2 }
+        },
+        {
+          "name": "Swimmer Santiago",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [73, 318],
+          "rewards": { "balls": 3 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "ROUTE 129", "action": "EXIT", "target_area": "HOENN_ROUTE_129", "condition": "can_exit", "color": "RED" },
+        { "text": "ROUTE 131", "action": "EXIT", "target_area": "HOENN_ROUTE_131", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "HOENN_ROUTE_131",
+      "region": "HOENN"
+    },
+    "HOENN_ROUTE_131": {
+      "area_type": "wild_route",
+      "route_name": "Route 131",
+      "battle_type": "ocean",
+      "wild_pool_percentages": "HOENN_ROUTE_131_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Swimmer Richard",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [130, 319],
+          "rewards": { "balls": 3 }
+        },
+        {
+          "name": "Swimmer Kara",
+          "class": "SWIMMER",
+          "sprite": "swimmer_f.png",
+          "team": [121, 319],
+          "rewards": { "balls": 2 }
+        },
+        {
+          "name": "Swimmer Herman",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [130, 130, 319],
+          "rewards": { "balls": 4 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "ROUTE 130", "action": "EXIT", "target_area": "HOENN_ROUTE_130", "condition": "can_exit", "color": "RED" },
+        { "text": "PACIFIDLOG TOWN", "action": "EXIT", "target_area": "PACIFIDLOG_TOWN", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "PACIFIDLOG_TOWN",
+      "region": "HOENN"
+    },
+    "HOENN_ROUTE_132": {
+      "area_type": "wild_route",
+      "route_name": "Route 132",
+      "battle_type": "ocean",
+      "wild_pool_percentages": "HOENN_ROUTE_132_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Swimmer Gilbert",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [319, 130],
+          "rewards": { "balls": 3 }
+        },
+        {
+          "name": "Swimmer Dana",
+          "class": "SWIMMER",
+          "sprite": "swimmer_f.png",
+          "team": [121, 121],
+          "rewards": { "balls": 2 }
+        },
+        {
+          "name": "Swimmer Koji",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [73, 73, 318],
+          "rewards": { "balls": 3 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "PACIFIDLOG TOWN", "action": "EXIT", "target_area": "PACIFIDLOG_TOWN", "condition": "can_exit", "color": "RED" },
+        { "text": "ROUTE 133", "action": "EXIT", "target_area": "HOENN_ROUTE_133", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "HOENN_ROUTE_133",
+      "region": "HOENN"
+    },
+    "HOENN_ROUTE_133": {
+      "area_type": "wild_route",
+      "route_name": "Route 133",
+      "battle_type": "ocean",
+      "wild_pool_percentages": "HOENN_ROUTE_133_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Swimmer Beck",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [319],
+          "rewards": { "balls": 2 }
+        },
+        {
+          "name": "Swimmer Mollie",
+          "class": "SWIMMER",
+          "sprite": "swimmer_f.png",
+          "team": [121, 319],
+          "rewards": { "balls": 2 }
+        },
+        {
+          "name": "Swimmer Warren",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [130, 319],
+          "rewards": { "balls": 3 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "ROUTE 132", "action": "EXIT", "target_area": "HOENN_ROUTE_132", "condition": "can_exit", "color": "RED" },
+        { "text": "ROUTE 134", "action": "EXIT", "target_area": "HOENN_ROUTE_134", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "HOENN_ROUTE_134",
+      "region": "HOENN"
+    },
+    "HOENN_ROUTE_134": {
+      "area_type": "wild_route",
+      "route_name": "Route 134",
+      "battle_type": "ocean",
+      "wild_pool_percentages": "HOENN_ROUTE_134_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Swimmer Laurel",
+          "class": "SWIMMER",
+          "sprite": "swimmer_f.png",
+          "team": [119, 121],
+          "rewards": { "balls": 2 }
+        },
+        {
+          "name": "Swimmer Jack",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [130, 319],
+          "rewards": { "balls": 3 }
+        },
+        {
+          "name": "Sailor Kelvin",
+          "class": "SAILOR",
+          "sprite": "sailor.png",
+          "team": [67, 319, 130],
+          "rewards": { "balls": 4 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "ROUTE 133", "action": "EXIT", "target_area": "HOENN_ROUTE_133", "condition": "can_exit", "color": "RED" },
+        { "text": "SLATEPORT CITY", "action": "EXIT", "target_area": "SLATEPORT_CITY", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "SLATEPORT_CITY",
+      "region": "HOENN"
+    },
+    "HOENN_PETALBURG_WOODS": {
+      "area_type": "dungeon",
+      "route_name": "Petalburg Woods",
+      "battle_type": "forest",
+      "wild_pool_percentages": "HOENN_PETALBURG_WOODS_PERCENTAGES",
+      "min_rounds": 3,
+      "trainer_pool": [
+        {
+          "name": "Bug Catcher Lyle",
+          "class": "BUG_CATCHER",
+          "sprite": "bug_catcher.png",
+          "team": [265, 265, 265],
+          "rewards": { "balls": 2 }
+        },
+        {
+          "name": "Bug Catcher James",
+          "class": "BUG_CATCHER",
+          "sprite": "bug_catcher.png",
+          "team": [265, 267],
+          "rewards": { "balls": 2 }
+        },
+        {
+          "name": "Team Aqua Grunt",
+          "class": "ROCKET",
+          "sprite": "aqua_grunt.png",
+          "team": [261],
+          "rewards": { "balls": 5, "RARE_CANDY": 1 },
+          "is_boss_battle": true,
+          "victory_flag": "woods_boss_defeated"
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
+        { "text": "ROUTE 104", "action": "EXIT", "target_area": "HOENN_ROUTE_104", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "HOENN_ROUTE_104",
+      "region": "HOENN"
+    },
+    "HOENN_RUSTURF_TUNNEL": {
+      "area_type": "dungeon",
+      "route_name": "Rusturf Tunnel",
+      "battle_type": "cave",
+      "wild_pool_percentages": "HOENN_RUSTURF_TUNNEL_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Team Magma Grunt",
+          "class": "ROCKET",
+          "sprite": "magma_grunt.png",
+          "team": [261, 322],
+          "rewards": { "balls": 3, "EXP_SHARE": 1 },
+          "is_boss_battle": true,
+          "victory_flag": "rusturf_rescued",
+          "dialogue": {
+            "intro": ["Hand over the goods and the bird!"],
+            "player_won": ["Arrgh! My plan!"],
+            "player_lost": ["Too slow!"]
+          }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
+        { "text": "ROUTE 116", "action": "EXIT", "target_area": "HOENN_ROUTE_116", "condition": "can_exit", "color": "RED" },
+        { "text": "VERDANTURF TOWN", "action": "EXIT", "target_area": "VERDANTURF_TOWN", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "VERDANTURF_TOWN",
+      "region": "HOENN"
+    },
+    "HOENN_GRANITE_CAVE": {
+      "area_type": "dungeon",
+      "route_name": "Granite Cave",
+      "battle_type": "cave",
+      "wild_pool_percentages": "HOENN_GRANITE_CAVE_PERCENTAGES",
+      "min_rounds": 3,
+      "trainer_pool": [
+        {
+          "name": "Hiker Devan",
+          "class": "HIKER",
+          "sprite": "hiker.png",
+          "team": [74, 74, 75],
+          "rewards": { "balls": 3 }
+        },
+        {
+          "name": "Picknicker Martha",
+          "class": "PICNIKER",
+          "sprite": "picknicker.png",
+          "team": [304],
+          "rewards": { "balls": 3 }
+        },
+        {
+          "name": "Hiker Lucas",
+          "class": "HIKER",
+          "sprite": "hiker.png",
+          "team": [74, 299],
+          "rewards": { "balls": 3 }
+        },
+        {
+          "name": "Steven Stone",
+          "class": "BOSS",
+          "sprite": "steven.png",
+          "team": [304, 305, 306],
+          "rewards": { "balls": 10, "HM_FLASH": 1 },
+          "is_boss_battle": true,
+          "victory_flag": "met_steven"
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "CHALLENGE REGICE", "action": "BOSS", "condition": "regi_trio_awakened", "color": "CYAN" },
+        { "text": "DEWFORD TOWN", "action": "EXIT", "target_area": "DEWFORD_TOWN", "condition": "can_exit", "color": "RED" }
+      ],
+      "area_boss": { "id": 378, "name": "Regice", "victory_flag": "defeated_regice" },
+      "next_area": "DEWFORD_TOWN",
+      "region": "HOENN"
+    },
+    "HOENN_METEOR_FALLS": {
+      "area_type": "dungeon",
+      "route_name": "Meteor Falls",
+      "battle_type": "cave",
+      "wild_pool_percentages": "HOENN_METEOR_FALLS_PERCENTAGES",
+      "min_rounds": 4,
+      "trainer_pool": [
+        {
+          "name": "Team Magma Grunt",
+          "class": "ROCKET",
+          "sprite": "magma_grunt.png",
+          "team": [322, 261],
+          "rewards": { "balls": 3 }
+        },
+        {
+          "name": "Team Aqua Grunt",
+          "class": "ROCKET",
+          "sprite": "aqua_grunt.png",
+          "team": [318, 261],
+          "rewards": { "balls": 3 }
+        },
+        {
+          "name": "Admin Tabitha",
+          "class": "ROCKET",
+          "sprite": "magma_grunt.png",
+          "team": [323, 262],
+          "rewards": { "balls": 10, "METEORITE": 1 },
+          "is_boss_battle": true,
+          "victory_flag": "meteor_falls_cleared"
+        },
+        {
+          "name": "Old Couple John & Jay",
+          "class": "COOLTRAINER",
+          "sprite": "oldman.png",
+          "team": [308, 282],
+          "rewards": { "balls": 10 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "FALLARBOR TOWN", "action": "EXIT", "target_area": "FALLARBOR_TOWN", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "FALLARBOR_TOWN",
+      "region": "HOENN"
+    },
+    "HOENN_JAGGED_PASS": {
+      "area_type": "wild_route",
+      "route_name": "Jagged Pass",
+      "battle_type": "mountain",
+      "wild_pool_percentages": "HOENN_JAGGED_PASS_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Hiker Eric",
+          "class": "HIKER",
+          "sprite": "hiker.png",
+          "team": [74, 74, 322],
+          "rewards": { "balls": 3 }
+        },
+        {
+          "name": "Team Magma Grunt",
+          "class": "ROCKET",
+          "sprite": "magma_grunt.png",
+          "team": [261, 322],
+          "rewards": { "balls": 3 }
+        },
+        {
+          "name": "Picnicker Diana",
+          "class": "PICNIKER",
+          "sprite": "picknicker.png",
+          "team": [187, 188],
+          "rewards": { "balls": 3 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "ROUTE 112", "action": "EXIT", "target_area": "HOENN_ROUTE_112", "condition": "can_exit", "color": "RED" },
+        { "text": "MT CHIMNEY", "action": "TRAVEL", "target_area": "HOENN_MT_CHIMNEY", "condition": "can_exit", "color": "GREEN" }
+      ],
+      "next_area": "HOENN_MT_CHIMNEY",
+      "region": "HOENN"
+    },
+    "HOENN_FIERY_PATH": {
+      "area_type": "dungeon",
+      "route_name": "Fiery Path",
+      "battle_type": "cave",
+      "wild_pool_percentages": "HOENN_FIERY_PATH_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Kindler Bernie",
+          "class": "KINDLER",
+          "sprite": "kindler.png",
+          "team": [322, 218],
+          "rewards": { "balls": 3 }
+        },
+        {
+          "name": "Battle Girl Cyndy",
+          "class": "COOLTRAINER",
+          "sprite": "acetrainer_f.png",
+          "team": [296],
+          "rewards": { "balls": 3 }
+        },
+        {
+          "name": "Team Magma Grunt",
+          "class": "ROCKET",
+          "sprite": "magma_grunt.png",
+          "team": [322, 322],
+          "rewards": { "balls": 3 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "MT CHIMNEY", "action": "EXIT", "target_area": "HOENN_MT_CHIMNEY", "condition": "can_exit", "color": "RED" },
+        { "text": "ROUTE 112", "action": "EXIT", "target_area": "HOENN_ROUTE_112", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "HOENN_MT_CHIMNEY",
+      "region": "HOENN"
+    },
+    "HOENN_MT_CHIMNEY": {
+      "area_type": "dungeon",
+      "route_name": "Mt. Chimney",
+      "battle_type": "mountain",
+      "wild_pool_percentages": "HOENN_MT_CHIMNEY_PERCENTAGES",
+      "min_rounds": 3,
+      "trainer_pool": [
+        {
+          "name": "Team Admin",
+          "class": "ROCKET",
+          "sprite": "magma_grunt.png",
+          "team": [322, 261, 41],
+          "rewards": { "balls": 5 },
+          "is_boss_battle": true
+        },
+        {
+          "name": "Magma Grunt",
+          "class": "ROCKET",
+          "sprite": "magma_grunt.png",
+          "team": [322, 261],
+          "rewards": { "balls": 3 }
+        },
+        {
+          "name": "Aqua Grunt",
+          "class": "ROCKET",
+          "sprite": "aqua_grunt.png",
+          "team": [318, 261],
+          "rewards": { "balls": 3 }
+        },
+        {
+          "name": "Team Leader",
+          "class": "BOSS",
+          "sprite": "maxie.png",
+          "is_boss_battle": true,
+          "team": [262, 323, 42],
+          "rewards": { "balls": 15, "RARE_CANDY": 2 },
+          "victory_flag": "mt_chimney_boss_defeated",
+          "dialogue": {
+            "intro": ["The power of the volcano is mine!"],
+            "player_won": ["Impossible... my plans!"],
+            "player_lost": ["The world will burn/flood!"]
+          }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "CONFRONT LEADERS", "action": "TRAINER", "condition": "has_trainers", "color": "PURPLE" },
+        { "text": "LAVARIDGE TOWN", "action": "EXIT", "target_area": "LAVARIDGE_TOWN", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "LAVARIDGE_TOWN",
+      "region": "HOENN"
+    },
+    "HOENN_NEW_MAUVILLE": {
+      "area_type": "dungeon",
+      "route_name": "New Mauville",
+      "battle_type": "cave",
+      "wild_pool_percentages": "HOENN_NEW_MAUVILLE_PERCENTAGES",
+      "min_rounds": 3,
+      "trainer_pool": [
+        {
+          "name": "Team Magma Grunt",
+          "class": "ROCKET",
+          "sprite": "magma_grunt.png",
+          "team": [100, 100, 101],
+          "rewards": { "balls": 3 }
+        },
+        {
+          "name": "Team Aqua Grunt",
+          "class": "ROCKET",
+          "sprite": "aqua_grunt.png",
+          "team": [81, 81, 82],
+          "rewards": { "balls": 3 }
+        },
+        {
+          "name": "Wattson",
+          "class": "BOSS",
+          "sprite": "wattson.png",
+          "team": [309, 310, 311],
+          "rewards": { "balls": 15, "THUNDER_STONE": 1 },
+          "is_boss_battle": true,
+          "victory_flag": "new_mauville_cleared"
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "HOENN_ROUTE_110", "action": "EXIT", "target_area": "HOENN_ROUTE_110", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "HOENN_ROUTE_110",
+      "region": "HOENN"
+    },
+    "HOENN_WEATHER_INSTITUTE": {
+      "area_type": "dungeon",
+      "route_name": "Weather Institute",
+      "battle_type": "indoor",
+      "wild_pool_percentages": "HOENN_WEATHER_INSTITUTE_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Team Grunt",
+          "class": "ROCKET",
+          "sprite": "aqua_grunt.png",
+          "team": [318, 318, 262],
+          "rewards": { "balls": 3 }
+        },
+        {
+          "name": "Team Grunt",
+          "class": "ROCKET",
+          "sprite": "magma_grunt.png",
+          "team": [322, 322, 262],
+          "rewards": { "balls": 3 }
+        },
+        {
+          "name": "Admin Tabitha",
+          "class": "ROCKET",
+          "sprite": "magma_grunt.png",
+          "team": [323, 262, 42],
+          "rewards": { "balls": 10, "MYSTERY_EGG": 1 },
+          "is_boss_battle": true,
+          "victory_flag": "weather_institute_cleared"
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
+        { "text": "ROUTE 119", "action": "EXIT", "target_area": "HOENN_ROUTE_119", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "HOENN_ROUTE_119",
+      "region": "HOENN"
+    },
+    "HOENN_ABANDONED_SHIP": {
+      "area_type": "dungeon",
+      "route_name": "Abandoned Ship",
+      "battle_type": "indoor",
+      "wild_pool_percentages": "HOENN_ABANDONED_SHIP_PERCENTAGES",
+      "min_rounds": 4,
+      "trainer_pool": [
+        {
+          "name": "Swimmer Charlie",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [121, 319],
+          "rewards": { "balls": 3 }
+        },
+        {
+          "name": "Beauty Thalia",
+          "class": "BEAUTY",
+          "sprite": "beauty.png",
+          "team": [118, 120],
+          "rewards": { "balls": 3 }
+        },
+        {
+          "name": "Sailor Duncan",
+          "class": "SAILOR",
+          "sprite": "sailor.png",
+          "team": [278, 279],
+          "rewards": { "balls": 5, "SCANNER": 1 },
+          "is_boss_battle": true,
+          "victory_flag": "abandoned_ship_cleared"
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "ROUTE 108", "action": "EXIT", "target_area": "HOENN_ROUTE_108", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "HOENN_ROUTE_108",
+      "region": "HOENN"
+    },
+    "HOENN_SAFARI_ZONE": {
+      "area_type": "dungeon",
+      "route_name": "Safari Zone",
+      "battle_type": "grass",
+      "wild_pool_percentages": "HOENN_SAFARI_ZONE_PERCENTAGES",
+      "min_rounds": 3,
+      "trainer_pool": [],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "LILYCOVE CITY", "action": "EXIT", "target_area": "LILYCOVE_CITY", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "LILYCOVE_CITY",
+      "region": "HOENN"
+    },
+    "HOENN_SHOAL_CAVE": {
+      "area_type": "dungeon",
+      "route_name": "Shoal Cave",
+      "battle_type": "cave",
+      "wild_pool_percentages": "HOENN_SHOAL_CAVE_PERCENTAGES",
+      "min_rounds": 3,
+      "trainer_pool": [
+        {
+          "name": "Swimmer Roland",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [319],
+          "rewards": { "balls": 2 }
+        },
+        {
+          "name": "Swimmer Beverly",
+          "class": "SWIMMER",
+          "sprite": "swimmer_f.png",
+          "team": [121],
+          "rewards": { "balls": 2 }
+        },
+        {
+          "name": "Sailor Kelvin",
+          "class": "SAILOR",
+          "sprite": "sailor.png",
+          "team": [319, 130],
+          "rewards": { "balls": 3, "SHOAL_SALT": 1 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "PACIFIDLOG TOWN", "action": "EXIT", "target_area": "PACIFIDLOG_TOWN", "condition": "can_exit", "color": "RED" },
+        { "text": "ROUTE 125", "action": "EXIT", "target_area": "HOENN_ROUTE_125", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "PACIFIDLOG_TOWN",
+      "region": "HOENN"
+    },
+    "HOENN_SEAFLOOR_CAVERN": {
+      "area_type": "dungeon",
+      "route_name": "Seafloor Cavern",
+      "battle_type": "cave",
+      "wild_pool_percentages": "HOENN_SEAFLOOR_CAVERN_PERCENTAGES",
+      "min_rounds": 4,
+      "trainer_pool": [
+        {
+          "name": "Team Grunt",
+          "class": "ROCKET",
+          "sprite": "aqua_grunt.png",
+          "team": [318, 262, 42],
+          "rewards": { "balls": 3 }
+        },
+        {
+          "name": "Admin Shelly",
+          "class": "ROCKET",
+          "sprite": "aqua_grunt.png",
+          "team": [319, 262, 42],
+          "rewards": { "balls": 5 },
+          "is_boss_battle": true
+        },
+        {
+          "name": "Aqua Leader Archie",
+          "class": "BOSS",
+          "sprite": "archie.png",
+          "team": [262, 42, 319],
+          "rewards": { "balls": 20, "MASTER_BALL": 1 },
+          "is_boss_battle": true,
+          "victory_flag": "seafloor_cavern_cleared",
+          "dialogue": {
+            "intro": ["The super-ancient Pokémon will wake!"],
+            "player_won": ["What have I done?"],
+            "player_lost": ["The sea claims all!"]
+          }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "STOP ARCHIE", "action": "TRAINER", "condition": "has_trainers", "color": "PURPLE" },
+        { "text": "AWAKEN KYOGRE", "action": "BOSS", "condition": "seafloor_cavern_cleared", "color": "CYAN" },
+        { "text": "ROUTE 128", "action": "EXIT", "target_area": "HOENN_ROUTE_128", "condition": "can_exit", "color": "RED" }
+      ],
+      "area_boss": { "id": 382, "name": "Kyogre", "victory_flag": "defeated_kyogre" },
+      "next_area": "HOENN_ROUTE_128",
+      "region": "HOENN"
+    },
+    "HOENN_CAVE_OF_ORIGIN": {
+      "area_type": "dungeon",
+      "route_name": "Cave of Origin",
+      "battle_type": "cave",
+      "wild_pool_percentages": "HOENN_CAVE_OF_ORIGIN_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "CONFRONT GROUDON", "action": "BOSS", "condition": "can_exit", "color": "RED" },
+        { "text": "SOOTOPOLIS CITY", "action": "EXIT", "target_area": "SOOTOPOLIS_CITY", "condition": "can_exit", "color": "RED" }
+      ],
+      "area_boss": { "id": 383, "name": "Groudon", "victory_flag": "cave_of_origin_cleared" },
+      "next_area": "SOOTOPOLIS_CITY",
+      "region": "HOENN"
+    },
+    "HOENN_SKY_PILLAR": {
+      "area_type": "dungeon",
+      "route_name": "Sky Pillar",
+      "battle_type": "mountain",
+      "wild_pool_percentages": "HOENN_SKY_PILLAR_PERCENTAGES",
+      "min_rounds": 5,
+      "trainer_pool": [],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "SUMMON RAYQUAZA", "action": "BOSS", "condition": "can_exit", "color": "GOLD" },
+        { "text": "PACIFIDLOG TOWN", "action": "EXIT", "target_area": "PACIFIDLOG_TOWN", "condition": "can_exit", "color": "RED" }
+      ],
+      "area_boss": { "id": 384, "name": "Rayquaza", "victory_flag": "rayquaza_awakened" },
+      "next_area": "PACIFIDLOG_TOWN",
+      "region": "HOENN"
+    },
+    "HOENN_MT_PYRE": {
+      "area_type": "dungeon",
+      "route_name": "Mt. Pyre",
+      "battle_type": "indoor",
+      "wild_pool_percentages": "HOENN_MT_PYRE_PERCENTAGES",
+      "min_rounds": 3,
+      "trainer_pool": [
+        {
+          "name": "Hex Maniac Leah",
+          "class": "PSYCHIC",
+          "sprite": "channeler.png",
+          "team": [353, 355],
+          "rewards": { "balls": 3 }
+        },
+        {
+          "name": "Team Magma Grunt",
+          "class": "ROCKET",
+          "sprite": "magma_grunt.png",
+          "team": [262, 323],
+          "rewards": { "balls": 3 }
+        },
+        {
+          "name": "Admin Courtney",
+          "class": "BOSS",
+          "sprite": "magma_grunt.png",
+          "team": [323, 262, 42],
+          "rewards": { "balls": 15, "RED_ORB": 1 },
+          "is_boss_battle": true,
+          "victory_flag": "mt_pyre_cleared"
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "ROUTE 122", "action": "EXIT", "target_area": "HOENN_ROUTE_122", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "HOENN_ROUTE_122",
+      "region": "HOENN"
+    },
+    "HOENN_VICTORY_ROAD": {
+      "area_type": "dungeon",
+      "route_name": "Victory Road",
+      "battle_type": "cave",
+      "wild_pool_percentages": "HOENN_VICTORY_ROAD_PERCENTAGES",
+      "min_rounds": 5,
+      "trainer_pool": [
+        {
+          "name": "Wally",
+          "class": "RIVAL",
+          "sprite": "wally.png",
+          "is_boss_battle": true,
+          "team": [282, 334, 308, 350, 311],
+          "rewards": { "balls": 15, "RARE_CANDY": 3 },
+          "victory_flag": "defeated_wally_victory",
+          "dialogue": {
+            "intro": ["I've come this far with my Pokémon!"],
+            "player_won": ["You're truly a math master."],
+            "player_lost": ["I won't give up!"]
+          }
+        },
+        {
+          "name": "Ace Trainer Vito",
+          "class": "COOLTRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [368, 369],
+          "rewards": { "balls": 5 }
+        },
+        {
+          "name": "Cooltrainer Hope",
+          "class": "COOLTRAINER",
+          "sprite": "acetrainer_f.png",
+          "team": [130, 230],
+          "rewards": { "balls": 5 }
+        },
+        {
+          "name": "Cooltrainer Albert",
+          "class": "COOLTRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [306, 311],
+          "rewards": { "balls": 5 }
+        },
+        {
+          "name": "Cooltrainer Shannon",
+          "class": "COOLTRAINER",
+          "sprite": "acetrainer_f.png",
+          "team": [282, 350],
+          "rewards": { "balls": 5 }
+        }
+      ],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
+        { "text": "CONFRONT WALLY", "action": "TRAINER", "condition": "has_trainers", "color": "ORANGE" },
+        { "text": "EVER GRANDE CITY", "action": "EXIT", "target_area": "EVER_GRANDE_CITY", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "EVER_GRANDE_CITY",
+      "region": "HOENN"
+    },
+    "HOENN_OCEANIC_MUSEUM": {
+      "area_type": "dungeon",
+      "route_name": "Oceanic Museum",
+      "region": "HOENN",
+      "battle_type": "indoor",
+      "backgrounds": { "main": "oceanic_museum.png" },
+      "min_rounds": 0,
+      "trainer_pool": [
+        {
+          "name": "Team Aqua Grunt",
+          "class": "ROCKET",
+          "sprite": "aqua_grunt.png",
+          "team": [261, 41],
+          "rewards": { "balls": 3 },
+          "dialogue": {
+            "intro": ["Grunt: Hand over those Devon Goods, kid!"],
+            "player_won": ["Grunt: Gah! You're tough!"],
+            "player_lost": ["Grunt: Ha! The Goods are ours!"]
+          }
+        },
+        {
+          "name": "Team Aqua Grunt",
+          "class": "ROCKET",
+          "sprite": "aqua_grunt.png",
+          "team": [318, 41],
+          "rewards": { "balls": 3 },
+          "dialogue": {
+            "intro": ["Grunt: Captain Stern's submarine plans belong to Team Aqua!"],
+            "player_won": ["Grunt: We have to tell the boss..."],
+            "player_lost": ["Grunt: Sink, sink, sink!"]
+          }
+        },
+        {
+          "name": "Aqua Leader Archie",
+          "class": "ROCKET_LEADER",
+          "sprite": "archie.png",
+          "team": [318, 41, 261],
+          "rewards": { "balls": 10, "SUPER_ROD": 1 },
+          "is_boss_battle": true,
+          "victory_flag": "oceanic_museum_cleared",
+          "dialogue": {
+            "intro": ["Archie: The sea is the source of all life! Expanding it is our duty!", "Archie: A kid like you can't understand our grand plan!"],
+            "player_won": ["Archie: Hmph. Team Aqua, fall back! This isn't over!", "Captain Stern: Thank you! Please, take this Super Rod as thanks."],
+            "player_lost": ["Archie: The ocean always wins."]
+          }
+        }
+      ],
+      "route_menu": [
+        { "text": "STOP TEAM AQUA", "action": "TRAINER", "condition": "has_trainers", "color": "PURPLE" },
+        { "text": "SLATEPORT CITY", "action": "EXIT", "target_area": "SLATEPORT_CITY", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "SLATEPORT_CITY"
+    },
+    "HOENN_SPACE_CENTER": {
+      "area_type": "dungeon",
+      "route_name": "Mossdeep Space Center",
+      "region": "HOENN",
+      "battle_type": "indoor",
+      "backgrounds": { "main": "space_center.png" },
+      "min_rounds": 0,
+      "trainer_pool": [
+        {
+          "name": "Team Magma Grunt",
+          "class": "ROCKET",
+          "sprite": "magma_grunt.png",
+          "team": [262, 42],
+          "rewards": { "balls": 3 },
+          "dialogue": {
+            "intro": ["Grunt: The rocket fuel is ours! Stand aside!"],
+            "player_won": ["Grunt: No way!"],
+            "player_lost": ["Grunt: Magma rules!"]
+          }
+        },
+        {
+          "name": "Magma Admin Tabitha",
+          "class": "ROCKET",
+          "sprite": "magma_grunt.png",
+          "team": [323, 42, 262],
+          "rewards": { "balls": 5 },
+          "dialogue": {
+            "intro": ["Tabitha: Hehehe! With this fuel, Mt. Chimney will erupt!"],
+            "player_won": ["Tabitha: Leader Maxie won't be happy..."],
+            "player_lost": ["Tabitha: Hehehe!"]
+          }
+        },
+        {
+          "name": "Magma Leader Maxie",
+          "class": "ROCKET_LEADER",
+          "sprite": "maxie.png",
+          "team": [262, 42, 323],
+          "rewards": { "balls": 10, "RARE_CANDY": 2 },
+          "is_boss_battle": true,
+          "victory_flag": "space_center_cleared",
+          "dialogue": {
+            "intro": ["Maxie: Humanity needs more land! The rocket fuel will awaken the volcano!", "Maxie: You will not interfere a second time!"],
+            "player_won": ["Maxie: ...Perhaps I have miscalculated. Team Magma, withdraw!", "Scientist: You saved the launch! The rocket will fly on schedule!"],
+            "player_lost": ["Maxie: Land is the future. Remember that."]
+          }
+        }
+      ],
+      "route_menu": [
+        { "text": "STOP TEAM MAGMA", "action": "TRAINER", "condition": "has_trainers", "color": "PURPLE" },
+        { "text": "MOSSDEEP CITY", "action": "EXIT", "target_area": "MOSSDEEP_CITY", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "MOSSDEEP_CITY"
+    },
+    "HOENN_TEAM_HIDEOUT": {
+      "area_type": "dungeon",
+      "route_name": "Team Aqua Hideout",
+      "region": "HOENN",
+      "battle_type": "cave",
+      "backgrounds": { "main": "aqua_hideout.png" },
+      "min_rounds": 0,
+      "trainer_pool": [
+        {
+          "name": "Team Aqua Grunt",
+          "class": "ROCKET",
+          "sprite": "aqua_grunt.png",
+          "team": [318, 72],
+          "rewards": { "balls": 3 },
+          "dialogue": {
+            "intro": ["Grunt: How did you find our hideout?!"],
+            "player_won": ["Grunt: Abandon ship!"],
+            "player_lost": ["Grunt: Get out of here!"]
+          }
+        },
+        {
+          "name": "Team Aqua Grunt",
+          "class": "ROCKET",
+          "sprite": "aqua_grunt.png",
+          "team": [41, 319],
+          "rewards": { "balls": 3 },
+          "dialogue": {
+            "intro": ["Grunt: The submarine already left! You're too late!"],
+            "player_won": ["Grunt: Maybe not too late..."],
+            "player_lost": ["Grunt: Told you!"]
+          }
+        },
+        {
+          "name": "Aqua Admin Matt",
+          "class": "ROCKET_LEADER",
+          "sprite": "aqua_grunt.png",
+          "team": [319, 279, 73],
+          "rewards": { "balls": 10, "MASTER_BALL": 1 },
+          "is_boss_battle": true,
+          "victory_flag": "aqua_hideout_cleared",
+          "dialogue": {
+            "intro": ["Matt: Hoohahah! The boss is already on his way to the Seafloor Cavern!", "Matt: You'll have to get past me first!"],
+            "player_won": ["Matt: Hoo! You're strong! Fine, take this... the boss won't miss it.", "You found a MASTER BALL in Team Aqua's storage room!"],
+            "player_lost": ["Matt: Hoohahah! Off you go!"]
+          }
+        }
+      ],
+      "route_menu": [
+        { "text": "RAID THE HIDEOUT", "action": "TRAINER", "condition": "has_trainers", "color": "PURPLE" },
+        { "text": "LILYCOVE CITY", "action": "EXIT", "target_area": "LILYCOVE_CITY", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "LILYCOVE_CITY"
+    }
   },
-
-  "HOENN_ROUTE_102": {
-    "area_type": "wild_route",
-    "route_name": "Route 102",
-    "battle_type": "grass",
-    "wild_pool_percentages": "HOENN_ROUTE_102_PERCENTAGES",
-    "min_rounds": 2,
-    "trainer_pool": [
-      { "name": "Youngster Calvin", "class": "YOUNGSTER", "sprite": "youngster.png", "team": [261], "rewards": { "balls": 2 } }
-    ],
-    "route_menu": [
-      { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-      { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-      { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
-      { "text": "OLDALE TOWN", "action": "EXIT", "target_area": "OLDALE_TOWN", "condition": "can_exit", "color": "RED" },
-      { "text": "PETALBURG CITY", "action": "EXIT", "target_area": "PETALBURG_CITY", "condition": "can_exit", "color": "RED" }
-    ],
-    "next_area": "PETALBURG_CITY"
-  },
-
-  "HOENN_ROUTE_103": {
-    "area_type": "wild_route",
-    "route_name": "Route 103",
-    "battle_type": "grass",
-    "wild_pool_percentages": "HOENN_ROUTE_103_PERCENTAGES",
-    "min_rounds": 2,
-    "trainer_pool": [
-      { "name": "Youngster Joey", "class": "YOUNGSTER", "sprite": "youngster.png", "team": [261], "rewards": { "balls": 2 } }
-    ],
-    "route_menu": [
-      { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-      { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-      { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
-      { "text": "OLDALE TOWN", "action": "EXIT", "target_area": "OLDALE_TOWN", "condition": "can_exit", "color": "RED" }
-    ],
-    "next_area": "OLDALE_TOWN"
-  },
-
-  "HOENN_ROUTE_104": {
-    "area_type": "wild_route",
-    "route_name": "Route 104",
-    "battle_type": "grass",
-    "wild_pool_percentages": "HOENN_ROUTE_104_PERCENTAGES",
-    "min_rounds": 2,
-    "trainer_pool": [
-      { "name": "Youngster Billy", "class": "YOUNGSTER", "sprite": "youngster.png", "team": [263], "rewards": { "balls": 2 } }
-    ],
-    "route_menu": [
-      { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-      { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-      { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
-      { "text": "PETALBURG CITY", "action": "EXIT", "target_area": "PETALBURG_CITY", "condition": "can_exit", "color": "RED" },
-      { "text": "RUSTBORO CITY", "action": "EXIT", "target_area": "RUSTBORO_CITY", "condition": "can_exit", "color": "RED" },
-      { "text": "PETALBURG WOODS", "action": "TRAVEL", "target_area": "PETALBURG_WOODS", "condition": "can_exit", "color": "GREEN" }
-    ],
-    "next_area": "RUSTBORO_CITY"
-  },
-
-  "HOENN_ROUTE_105": {
-    "area_type": "wild_route",
-    "route_name": "Route 105",
-    "battle_type": "ocean",
-    "wild_pool_percentages": "HOENN_ROUTE_105_PERCENTAGES",
-    "min_rounds": 2,
-    "trainer_pool": [
-      { "name": "Swimmer Luis", "class": "SWIMMER", "sprite": "swimmer_m.png", "team": [72], "rewards": { "balls": 2 } }
-    ],
-    "route_menu": [
-      { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-      { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-      { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
-      { "text": "ROUTE 104", "action": "EXIT", "target_area": "HOENN_ROUTE_104", "condition": "can_exit", "color": "RED" },
-      { "text": "ROUTE 106", "action": "EXIT", "target_area": "HOENN_ROUTE_106", "condition": "can_exit", "color": "RED" }
-    ],
-    "next_area": "HOENN_ROUTE_106"
-  },
-
-  "HOENN_ROUTE_106": {
-    "area_type": "wild_route",
-    "route_name": "Route 106",
-    "battle_type": "ocean",
-    "wild_pool_percentages": "HOENN_ROUTE_106_PERCENTAGES",
-    "min_rounds": 2,
-    "trainer_pool": [],
-    "route_menu": [
-      { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-      { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-      { "text": "ROUTE 105", "action": "EXIT", "target_area": "HOENN_ROUTE_105", "condition": "can_exit", "color": "RED" },
-      { "text": "DEWFORD TOWN", "action": "EXIT", "target_area": "DEWFORD_TOWN", "condition": "can_exit", "color": "RED" }
-    ],
-    "next_area": "DEWFORD_TOWN"
-  },
-
-  "HOENN_ROUTE_107": {
-    "area_type": "wild_route",
-    "route_name": "Route 107",
-    "battle_type": "ocean",
-    "wild_pool_percentages": "HOENN_ROUTE_107_PERCENTAGES",
-    "min_rounds": 2,
-    "trainer_pool": [
-      { "name": "Swimmer Denise", "class": "SWIMMER", "sprite": "swimmer_f.png", "team": [72], "rewards": { "balls": 2 } }
-    ],
-    "route_menu": [
-      { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-      { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-      { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
-      { "text": "DEWFORD TOWN", "action": "EXIT", "target_area": "DEWFORD_TOWN", "condition": "can_exit", "color": "RED" },
-      { "text": "ROUTE 108", "action": "EXIT", "target_area": "HOENN_ROUTE_108", "condition": "can_exit", "color": "RED" }
-    ],
-    "next_area": "HOENN_ROUTE_108"
-  },
-
-  "HOENN_ROUTE_108": {
-    "area_type": "wild_route",
-    "route_name": "Route 108",
-    "battle_type": "ocean",
-    "wild_pool_percentages": "HOENN_ROUTE_108_PERCENTAGES",
-    "min_rounds": 2,
-    "trainer_pool": [],
-    "route_menu": [
-      { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-      { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-      { "text": "ROUTE 107", "action": "EXIT", "target_area": "HOENN_ROUTE_107", "condition": "can_exit", "color": "RED" },
-      { "text": "ROUTE 109", "action": "EXIT", "target_area": "HOENN_ROUTE_109", "condition": "can_exit", "color": "RED" },
-      { "text": "ABANDONED SHIP", "action": "TRAVEL", "target_area": "ABANDONED_SHIP", "condition": "can_exit", "color": "GREEN" }
-    ],
-    "next_area": "HOENN_ROUTE_109"
-  },
-
-  "HOENN_ROUTE_109": {
-    "area_type": "wild_route",
-    "route_name": "Route 109",
-    "battle_type": "ocean",
-    "wild_pool_percentages": "HOENN_ROUTE_109_PERCENTAGES",
-    "min_rounds": 2,
-    "trainer_pool": [
-      { "name": "Swimmer Grace", "class": "SWIMMER", "sprite": "swimmer_f.png", "team": [72], "rewards": { "balls": 2 } }
-    ],
-    "route_menu": [
-      { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-      { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-      { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
-      { "text": "ROUTE 108", "action": "EXIT", "target_area": "HOENN_ROUTE_108", "condition": "can_exit", "color": "RED" },
-      { "text": "SLATEPORT CITY", "action": "EXIT", "target_area": "SLATEPORT_CITY", "condition": "can_exit", "color": "RED" }
-    ],
-    "next_area": "SLATEPORT_CITY"
-  },
-
-  "HOENN_ROUTE_110": {
-    "area_type": "wild_route",
-    "route_name": "Route 110",
-    "battle_type": "grass",
-    "wild_pool_percentages": "HOENN_ROUTE_110_PERCENTAGES",
-    "min_rounds": 2,
-    "trainer_pool": [
-      { "name": "Triathlete Alyssa", "class": "TRIATHLETE", "sprite": "triathlete_f.png", "team": [309], "rewards": { "balls": 3 } }
-    ],
-    "route_menu": [
-      { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-      { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-      { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
-      { "text": "NEW MAUVILLE", "action": "EXIT", "target_area": "NEW_MAUVILLE", "condition": ["can_exit", "has_SURF_BOARD"], "color": "RED" },
-      { "text": "SLATEPORT CITY", "action": "EXIT", "target_area": "SLATEPORT_CITY", "condition": "can_exit", "color": "RED" },
-      { "text": "MAUVILLE CITY", "action": "EXIT", "target_area": "MAUVILLE_CITY", "condition": "can_exit", "color": "RED" }
-    ],
-    "next_area": "MAUVILLE_CITY"
-  },
-
-  "HOENN_ROUTE_111": {
-    "area_type": "wild_route",
-    "route_name": "Route 111",
-    "battle_type": "sand",
-    "wild_pool_percentages": "HOENN_ROUTE_111_PERCENTAGES",
-    "min_rounds": 2,
-    "trainer_pool": [
-      { "name": "Camper Tyron", "class": "CAMPER", "sprite": "camper.png", "team": [322], "rewards": { "balls": 2 } }
-    ],
-    "route_menu": [
-      { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-      { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-      { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
-      { "text": "MAUVILLE CITY", "action": "EXIT", "target_area": "MAUVILLE_CITY", "condition": "can_exit", "color": "RED" },
-      { "text": "ROUTE 112", "action": "EXIT", "target_area": "HOENN_ROUTE_112", "condition": "can_exit", "color": "RED" }
-    ],
-    "next_area": "HOENN_ROUTE_112"
-  },
-
-  "HOENN_ROUTE_112": {
-    "area_type": "wild_route",
-    "route_name": "Route 112",
-    "battle_type": "grass",
-    "wild_pool_percentages": "HOENN_ROUTE_112_PERCENTAGES",
-    "min_rounds": 2,
-    "trainer_pool": [],
-    "route_menu": [
-      { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-      { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-      { "text": "ROUTE 111", "action": "EXIT", "target_area": "HOENN_ROUTE_111", "condition": "can_exit", "color": "RED" },
-      { "text": "LAVARIDGE TOWN", "action": "EXIT", "target_area": "LAVARIDGE_TOWN", "condition": "can_exit", "color": "RED" },
-      { "text": "JAGGED PASS", "action": "TRAVEL", "target_area": "JAGGED_PASS", "condition": "can_exit", "color": "GREEN" }
-    ],
-    "next_area": "LAVARIDGE_TOWN"
-  },
-
-  "HOENN_ROUTE_113": {
-    "area_type": "wild_route",
-    "route_name": "Route 113",
-    "battle_type": "grass",
-    "wild_pool_percentages": "HOENN_ROUTE_113_PERCENTAGES",
-    "min_rounds": 2,
-    "trainer_pool": [
-      { "name": "Ninja Boy Takashi", "class": "NINJA_BOY", "sprite": "ninja_boy.png", "team": [327], "rewards": { "balls": 2 } }
-    ],
-    "route_menu": [
-      { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-      { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-      { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
-      { "text": "FALLARBOR TOWN", "action": "EXIT", "target_area": "FALLARBOR_TOWN", "condition": "can_exit", "color": "RED" },
-      { "text": "ROUTE 114", "action": "EXIT", "target_area": "HOENN_ROUTE_114", "condition": "can_exit", "color": "RED" }
-    ],
-    "next_area": "HOENN_ROUTE_114"
-  },
-
-  "HOENN_ROUTE_114": {
-    "area_type": "wild_route",
-    "route_name": "Route 114",
-    "battle_type": "grass",
-    "wild_pool_percentages": "HOENN_ROUTE_114_PERCENTAGES",
-    "min_rounds": 2,
-    "trainer_pool": [],
-    "route_menu": [
-      { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-      { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-      { "text": "ROUTE 113", "action": "EXIT", "target_area": "HOENN_ROUTE_113", "condition": "can_exit", "color": "RED" },
-      { "text": "FALLARBOR TOWN", "action": "EXIT", "target_area": "FALLARBOR_TOWN", "condition": "can_exit", "color": "RED" }
-    ],
-    "next_area": "FALLARBOR_TOWN"
-  },
-
-  "HOENN_ROUTE_115": {
-    "area_type": "wild_route",
-    "route_name": "Route 115",
-    "battle_type": "grass",
-    "wild_pool_percentages": "HOENN_ROUTE_115_PERCENTAGES",
-    "min_rounds": 2,
-    "trainer_pool": [],
-    "route_menu": [
-      { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-      { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-      { "text": "RUSTBORO CITY", "action": "EXIT", "target_area": "RUSTBORO_CITY", "condition": "can_exit", "color": "RED" }
-    ],
-    "next_area": "RUSTBORO_CITY"
-  },
-
-  "HOENN_ROUTE_116": {
-    "area_type": "wild_route",
-    "route_name": "Route 116",
-    "battle_type": "grass",
-    "wild_pool_percentages": "HOENN_ROUTE_116_PERCENTAGES",
-    "min_rounds": 2,
-    "trainer_pool": [
-      { "name": "Bug Catcher Jerry", "class": "BUG_CATCHER", "sprite": "bug_catcher.png", "team": [290], "rewards": { "balls": 2 } }
-    ],
-    "route_menu": [
-      { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-      { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-      { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
-      { "text": "RUSTBORO CITY", "action": "EXIT", "target_area": "RUSTBORO_CITY", "condition": "can_exit", "color": "RED" },
-      { "text": "RUSTURF TUNNEL", "action": "TRAVEL", "target_area": "RUSTURF_TUNNEL", "condition": "can_exit", "color": "GREEN" }
-    ],
-    "next_area": "RUSTURF_TUNNEL"
-  },
-
-  "HOENN_ROUTE_117": {
-    "area_type": "wild_route",
-    "route_name": "Route 117",
-    "battle_type": "grass",
-    "wild_pool_percentages": "HOENN_ROUTE_117_PERCENTAGES",
-    "min_rounds": 2,
-    "trainer_pool": [
-      { "name": "Triathlete Dylan", "class": "TRIATHLETE", "sprite": "triathlete_m.png", "team": [263], "rewards": { "balls": 2 } }
-    ],
-    "route_menu": [
-      { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-      { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-      { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
-      { "text": "MAUVILLE CITY", "action": "EXIT", "target_area": "MAUVILLE_CITY", "condition": "can_exit", "color": "RED" },
-      { "text": "VERDANTURF TOWN", "action": "EXIT", "target_area": "VERDANTURF_TOWN", "condition": "can_exit", "color": "RED" }
-    ],
-    "next_area": "VERDANTURF_TOWN"
-  },
-
-  "HOENN_ROUTE_118": {
-    "area_type": "wild_route",
-    "route_name": "Route 118",
-    "battle_type": "grass",
-    "wild_pool_percentages": "HOENN_ROUTE_118_PERCENTAGES",
-    "min_rounds": 2,
-    "trainer_pool": [],
-    "route_menu": [
-      { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-      { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-      { "text": "MAUVILLE CITY", "action": "EXIT", "target_area": "MAUVILLE_CITY", "condition": "can_exit", "color": "RED" },
-      { "text": "ROUTE 119", "action": "EXIT", "target_area": "HOENN_ROUTE_119", "condition": "can_exit", "color": "RED" },
-      { "text": "ROUTE 123", "action": "EXIT", "target_area": "HOENN_ROUTE_123", "condition": "can_exit", "color": "RED" }
-    ],
-    "next_area": "HOENN_ROUTE_119"
-  },
-
-  "HOENN_ROUTE_119": {
-    "area_type": "wild_route",
-    "route_name": "Route 119",
-    "battle_type": "grass",
-    "wild_pool_percentages": "HOENN_ROUTE_119_PERCENTAGES",
-    "min_rounds": 2,
-    "trainer_pool": [
-      { "name": "Ninja Boy Takashi", "class": "NINJA_BOY", "sprite": "ninja_boy.png", "team": [352], "rewards": { "balls": 3 } }
-    ],
-    "route_menu": [
-      { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-      { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-      { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
-      { "text": "ROUTE 118", "action": "EXIT", "target_area": "HOENN_ROUTE_118", "condition": "can_exit", "color": "RED" },
-      { "text": "FORTREE CITY", "action": "EXIT", "target_area": "FORTREE_CITY", "condition": "can_exit", "color": "RED" },
-      { "text": "WEATHER INSTITUTE", "action": "TRAVEL", "target_area": "WEATHER_INSTITUTE", "condition": "can_exit", "color": "GREEN" }
-    ],
-    "next_area": "FORTREE_CITY"
-  },
-
-  "HOENN_ROUTE_120": {
-    "area_type": "wild_route",
-    "route_name": "Route 120",
-    "battle_type": "grass",
-    "wild_pool_percentages": "HOENN_ROUTE_120_PERCENTAGES",
-    "min_rounds": 2,
-    "trainer_pool": [],
-    "route_menu": [
-      { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-      { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-      { "text": "FORTREE CITY", "action": "EXIT", "target_area": "FORTREE_CITY", "condition": "can_exit", "color": "RED" },
-      { "text": "ROUTE 121", "action": "EXIT", "target_area": "HOENN_ROUTE_121", "condition": "can_exit", "color": "RED" }
-    ],
-    "next_area": "HOENN_ROUTE_121"
-  },
-
-  "HOENN_ROUTE_121": {
-    "area_type": "wild_route",
-    "route_name": "Route 121",
-    "battle_type": "grass",
-    "wild_pool_percentages": "HOENN_ROUTE_121_PERCENTAGES",
-    "min_rounds": 2,
-    "trainer_pool": [],
-    "route_menu": [
-      { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-      { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-      { "text": "ROUTE 120", "action": "EXIT", "target_area": "HOENN_ROUTE_120", "condition": "can_exit", "color": "RED" },
-      { "text": "LILYCOVE CITY", "action": "EXIT", "target_area": "LILYCOVE_CITY", "condition": "can_exit", "color": "RED" }
-    ],
-    "next_area": "LILYCOVE_CITY"
-  },
-
-  "HOENN_ROUTE_122": {
-    "area_type": "wild_route",
-    "route_name": "Route 122",
-    "battle_type": "ocean",
-    "wild_pool_percentages": "HOENN_ROUTE_122_PERCENTAGES",
-    "min_rounds": 2,
-    "trainer_pool": [],
-    "route_menu": [
-      { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-      { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-      { "text": "LILYCOVE CITY", "action": "EXIT", "target_area": "LILYCOVE_CITY", "condition": "can_exit", "color": "RED" },
-      { "text": "MT. PYRE", "action": "TRAVEL", "target_area": "MT_PYRE", "condition": "can_exit", "color": "GREEN" }
-    ],
-    "next_area": "MT_PYRE"
-  },
-
-  "HOENN_ROUTE_123": {
-    "area_type": "wild_route",
-    "route_name": "Route 123",
-    "battle_type": "grass",
-    "wild_pool_percentages": "HOENN_ROUTE_123_PERCENTAGES",
-    "min_rounds": 2,
-    "trainer_pool": [],
-    "route_menu": [
-      { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-      { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-      { "text": "ROUTE 118", "action": "EXIT", "target_area": "HOENN_ROUTE_118", "condition": "can_exit", "color": "RED" },
-      { "text": "ROUTE 124", "action": "EXIT", "target_area": "HOENN_ROUTE_124", "condition": "can_exit", "color": "RED" }
-    ],
-    "next_area": "HOENN_ROUTE_124"
-  },
-
-  "HOENN_ROUTE_124": {
-    "area_type": "wild_route",
-    "route_name": "Route 124",
-    "battle_type": "ocean",
-    "wild_pool_percentages": "HOENN_ROUTE_124_PERCENTAGES",
-    "min_rounds": 2,
-    "trainer_pool": [],
-    "route_menu": [
-      { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-      { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-      { "text": "ROUTE 123", "action": "EXIT", "target_area": "HOENN_ROUTE_123", "condition": "can_exit", "color": "RED" },
-      { "text": "MOSSDEEP CITY", "action": "EXIT", "target_area": "MOSSDEEP_CITY", "condition": "can_exit", "color": "RED" }
-    ],
-    "next_area": "MOSSDEEP_CITY"
-  },
-
-  "HOENN_ROUTE_125": {
-    "area_type": "wild_route",
-    "route_name": "Route 125",
-    "battle_type": "ocean",
-    "wild_pool_percentages": "HOENN_ROUTE_125_PERCENTAGES",
-    "min_rounds": 2,
-    "trainer_pool": [],
-    "route_menu": [
-      { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-      { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-      { "text": "MOSSDEEP CITY", "action": "EXIT", "target_area": "MOSSDEEP_CITY", "condition": "can_exit", "color": "RED" }
-    ],
-    "next_area": "MOSSDEEP_CITY"
-  },
-
-  "HOENN_ROUTE_126": {
-    "area_type": "wild_route",
-    "route_name": "Route 126",
-    "battle_type": "ocean",
-    "wild_pool_percentages": "HOENN_ROUTE_126_PERCENTAGES",
-    "min_rounds": 2,
-    "trainer_pool": [],
-    "route_menu": [
-      { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-      { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-      { "text": "SOOTOPOLIS CITY", "action": "EXIT", "target_area": "SOOTOPOLIS_CITY", "condition": "can_exit", "color": "RED" }
-    ],
-    "next_area": "SOOTOPOLIS_CITY"
-  },
-
-  "HOENN_ROUTE_127": {
-    "area_type": "wild_route",
-    "route_name": "Route 127",
-    "battle_type": "ocean",
-    "wild_pool_percentages": "HOENN_ROUTE_127_PERCENTAGES",
-    "min_rounds": 2,
-    "trainer_pool": [],
-    "route_menu": [
-      { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-      { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-      { "text": "ROUTE 126", "action": "EXIT", "target_area": "HOENN_ROUTE_126", "condition": "can_exit", "color": "RED" },
-      { "text": "ROUTE 128", "action": "EXIT", "target_area": "HOENN_ROUTE_128", "condition": "can_exit", "color": "RED" }
-    ],
-    "next_area": "HOENN_ROUTE_128"
-  },
-
-  "HOENN_ROUTE_128": {
-    "area_type": "wild_route",
-    "route_name": "Route 128",
-    "battle_type": "ocean",
-    "wild_pool_percentages": "HOENN_ROUTE_128_PERCENTAGES",
-    "min_rounds": 2,
-    "trainer_pool": [],
-    "route_menu": [
-      { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-      { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-      { "text": "ROUTE 127", "action": "EXIT", "target_area": "HOENN_ROUTE_127", "condition": "can_exit", "color": "RED" },
-      { "text": "EVER GRANDE CITY", "action": "EXIT", "target_area": "EVER_GRANDE_CITY", "condition": "can_exit", "color": "RED" }
-    ],
-    "next_area": "EVER_GRANDE_CITY"
-  },
-
-  "HOENN_ROUTE_129": {
-    "area_type": "wild_route",
-    "route_name": "Route 129",
-    "battle_type": "ocean",
-    "wild_pool_percentages": "HOENN_ROUTE_129_PERCENTAGES",
-    "min_rounds": 2,
-    "trainer_pool": [],
-    "route_menu": [
-      { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-      { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-      { "text": "EVER GRANDE CITY", "action": "EXIT", "target_area": "EVER_GRANDE_CITY", "condition": "can_exit", "color": "RED" },
-      { "text": "ROUTE 130", "action": "EXIT", "target_area": "HOENN_ROUTE_130", "condition": "can_exit", "color": "RED" }
-    ],
-    "next_area": "HOENN_ROUTE_130"
-  },
-
-  "HOENN_ROUTE_130": {
-    "area_type": "wild_route",
-    "route_name": "Route 130",
-    "battle_type": "ocean",
-    "wild_pool_percentages": "HOENN_ROUTE_130_PERCENTAGES",
-    "min_rounds": 2,
-    "trainer_pool": [],
-    "route_menu": [
-      { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-      { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-      { "text": "ROUTE 129", "action": "EXIT", "target_area": "HOENN_ROUTE_129", "condition": "can_exit", "color": "RED" },
-      { "text": "ROUTE 131", "action": "EXIT", "target_area": "HOENN_ROUTE_131", "condition": "can_exit", "color": "RED" }
-    ],
-    "next_area": "HOENN_ROUTE_131"
-  },
-
-  "HOENN_ROUTE_131": {
-    "area_type": "wild_route",
-    "route_name": "Route 131",
-    "battle_type": "ocean",
-    "wild_pool_percentages": "HOENN_ROUTE_131_PERCENTAGES",
-    "min_rounds": 2,
-    "trainer_pool": [],
-    "route_menu": [
-      { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-      { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-      { "text": "ROUTE 130", "action": "EXIT", "target_area": "HOENN_ROUTE_130", "condition": "can_exit", "color": "RED" },
-      { "text": "PACIFIDLOG TOWN", "action": "EXIT", "target_area": "PACIFIDLOG_TOWN", "condition": "can_exit", "color": "RED" }
-    ],
-    "next_area": "PACIFIDLOG_TOWN"
-  },
-
-  "HOENN_ROUTE_132": {
-    "area_type": "wild_route",
-    "route_name": "Route 132",
-    "battle_type": "ocean",
-    "wild_pool_percentages": "HOENN_ROUTE_132_PERCENTAGES",
-    "min_rounds": 2,
-    "trainer_pool": [],
-    "route_menu": [
-      { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-      { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-      { "text": "PACIFIDLOG TOWN", "action": "EXIT", "target_area": "PACIFIDLOG_TOWN", "condition": "can_exit", "color": "RED" },
-      { "text": "ROUTE 133", "action": "EXIT", "target_area": "HOENN_ROUTE_133", "condition": "can_exit", "color": "RED" }
-    ],
-    "next_area": "HOENN_ROUTE_133"
-  },
-
-  "HOENN_ROUTE_133": {
-    "area_type": "wild_route",
-    "route_name": "Route 133",
-    "battle_type": "ocean",
-    "wild_pool_percentages": "HOENN_ROUTE_133_PERCENTAGES",
-    "min_rounds": 2,
-    "trainer_pool": [],
-    "route_menu": [
-      { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-      { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-      { "text": "ROUTE 132", "action": "EXIT", "target_area": "HOENN_ROUTE_132", "condition": "can_exit", "color": "RED" },
-      { "text": "ROUTE 134", "action": "EXIT", "target_area": "HOENN_ROUTE_134", "condition": "can_exit", "color": "RED" }
-    ],
-    "next_area": "HOENN_ROUTE_134"
-  },
-
-  "HOENN_ROUTE_134": {
-    "area_type": "wild_route",
-    "route_name": "Route 134",
-    "battle_type": "ocean",
-    "wild_pool_percentages": "HOENN_ROUTE_134_PERCENTAGES",
-    "min_rounds": 2,
-    "trainer_pool": [],
-    "route_menu": [
-      { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-      { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-      { "text": "ROUTE 133", "action": "EXIT", "target_area": "HOENN_ROUTE_133", "condition": "can_exit", "color": "RED" },
-      { "text": "SLATEPORT CITY", "action": "EXIT", "target_area": "SLATEPORT_CITY", "condition": "can_exit", "color": "RED" }
-    ],
-    "next_area": "SLATEPORT_CITY"
-  },
-
-  "HOENN_PETALBURG_WOODS": {
-    "area_type": "dungeon",
-    "route_name": "Petalburg Woods",
-    "battle_type": "forest",
-    "wild_pool_percentages": "HOENN_PETALBURG_WOODS_PERCENTAGES",
-    "min_rounds": 3,
-    "trainer_pool": [
-      { "name": "Bug Catcher Rick", "class": "BUG_CATCHER", "sprite": "bug_catcher.png", "team": [265, 266], "rewards": { "balls": 2 } }
-    ],
-    "route_menu": [
-      { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-      { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-      { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
-      { "text": "ROUTE 104", "action": "EXIT", "target_area": "HOENN_ROUTE_104", "condition": "can_exit", "color": "RED" }
-    ],
-    "next_area": "HOENN_ROUTE_104"
-  },
-
-  "HOENN_RUSTURF_TUNNEL": {
-    "area_type": "dungeon",
-    "route_name": "Rusturf Tunnel",
-    "battle_type": "cave",
-    "wild_pool_percentages": "HOENN_RUSTURF_TUNNEL_PERCENTAGES",
-    "min_rounds": 2,
-    "trainer_pool": [
-      { "name": "Team Magma/Aqua Grunt", "class": "TEAM_AQUA", "sprite": "aqua_grunt.png", "team": [41, 41], "rewards": { "balls": 3 } }
-    ],
-    "route_menu": [
-      { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-      { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-      { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
-      { "text": "ROUTE 116", "action": "EXIT", "target_area": "HOENN_ROUTE_116", "condition": "can_exit", "color": "RED" },
-      { "text": "VERDANTURF TOWN", "action": "EXIT", "target_area": "VERDANTURF_TOWN", "condition": "can_exit", "color": "RED" }
-    ],
-    "next_area": "VERDANTURF_TOWN"
-  },
-
-  "HOENN_GRANITE_CAVE": {
-    "area_type": "dungeon",
-    "route_name": "Granite Cave",
-    "battle_type": "cave",
-    "wild_pool_percentages": "HOENN_GRANITE_CAVE_PERCENTAGES",
-    "min_rounds": 3,
-    "trainer_pool": [],
-    "area_boss": { "id": 208, "name": "Steelix", "victory_flag": "met_steven" },
-    "route_menu": [
-      { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-      { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-      { "text": "DEWFORD TOWN", "action": "EXIT", "target_area": "DEWFORD_TOWN", "condition": "can_exit", "color": "RED" }
-    ],
-    "next_area": "DEWFORD_TOWN"
-  },
-
-  "HOENN_METEOR_FALLS": {
-    "area_type": "dungeon",
-    "route_name": "Meteor Falls",
-    "battle_type": "cave",
-    "wild_pool_percentages": "HOENN_METEOR_FALLS_PERCENTAGES",
-    "min_rounds": 4,
-    "trainer_pool": [
-      { "name": "Team Magma Grunt", "class": "TEAM_MAGMA", "sprite": "magma_grunt.png", "team": [322, 322], "rewards": { "balls": 3 } }
-    ],
-    "route_menu": [
-      { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-      { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-      { "text": "FALLARBOR TOWN", "action": "EXIT", "target_area": "FALLARBOR_TOWN", "condition": "can_exit", "color": "RED" }
-    ],
-    "next_area": "FALLARBOR_TOWN"
-  },
-
-  "HOENN_JAGGED_PASS": {
-    "area_type": "wild_route",
-    "route_name": "Jagged Pass",
-    "battle_type": "mountain",
-    "wild_pool_percentages": "HOENN_JAGGED_PASS_PERCENTAGES",
-    "min_rounds": 2,
-    "trainer_pool": [],
-    "route_menu": [
-      { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-      { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-      { "text": "ROUTE 112", "action": "EXIT", "target_area": "HOENN_ROUTE_112", "condition": "can_exit", "color": "RED" },
-      { "text": "MT CHIMNEY", "action": "TRAVEL", "target_area": "MT_CHIMNEY", "condition": "can_exit", "color": "GREEN" }
-    ],
-    "next_area": "MT_CHIMNEY"
-  },
-
-  "HOENN_FIERY_PATH": {
-    "area_type": "dungeon",
-    "route_name": "Fiery Path",
-    "battle_type": "cave",
-    "wild_pool_percentages": "HOENN_FIERY_PATH_PERCENTAGES",
-    "min_rounds": 2,
-    "trainer_pool": [],
-    "route_menu": [
-      { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-      { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-      { "text": "MT CHIMNEY", "action": "EXIT", "target_area": "MT_CHIMNEY", "condition": "can_exit", "color": "RED" }
-    ],
-    "next_area": "MT_CHIMNEY"
-  },
-
-  "HOENN_MT_CHIMNEY": {
-    "area_type": "dungeon",
-    "route_name": "Mt. Chimney",
-    "battle_type": "mountain",
-    "wild_pool_percentages": "HOENN_MT_CHIMNEY_PERCENTAGES",
-    "min_rounds": 3,
-    "trainer_pool": [],
-    "area_boss": { "id": 383, "name": "Groudon", "victory_flag": "defeated_groudon" },
-    "route_menu": [
-      { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-      { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-      { "text": "LAVARIDGE TOWN", "action": "EXIT", "target_area": "LAVARIDGE_TOWN", "condition": "can_exit", "color": "RED" }
-    ],
-    "next_area": "LAVARIDGE_TOWN"
-  },
-
-  "HOENN_NEW_MAUVILLE": {
-    "area_type": "dungeon",
-    "route_name": "New Mauville",
-    "battle_type": "cave",
-    "wild_pool_percentages": "HOENN_NEW_MAUVILLE_PERCENTAGES",
-    "min_rounds": 3,
-    "trainer_pool": [],
-    "route_menu": [
-      { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-      { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-      { "text": "HOENN_ROUTE_110", "action": "EXIT", "target_area": "HOENN_ROUTE_110", "condition": "can_exit", "color": "RED" }
-    ],
-    "next_area": "HOENN_ROUTE_110"
-  },
-
-  "HOENN_WEATHER_INSTITUTE": {
-    "area_type": "dungeon",
-    "route_name": "Weather Institute",
-    "battle_type": "indoor",
-    "wild_pool_percentages": "HOENN_WEATHER_INSTITUTE_PERCENTAGES",
-    "min_rounds": 2,
-    "trainer_pool": [
-      { "name": "Team Magma/Aqua Grunt", "class": "TEAM_AQUA", "sprite": "aqua_grunt.png", "team": [352], "rewards": { "balls": 3 } }
-    ],
-    "route_menu": [
-      { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-      { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-      { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
-      { "text": "ROUTE 119", "action": "EXIT", "target_area": "HOENN_ROUTE_119", "condition": "can_exit", "color": "RED" }
-    ],
-    "next_area": "HOENN_ROUTE_119"
-  },
-
-  "HOENN_ABANDONED_SHIP": {
-    "area_type": "dungeon",
-    "route_name": "Abandoned Ship",
-    "battle_type": "indoor",
-    "wild_pool_percentages": "HOENN_ABANDONED_SHIP_PERCENTAGES",
-    "min_rounds": 4,
-    "trainer_pool": [],
-    "route_menu": [
-      { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-      { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-      { "text": "ROUTE 108", "action": "EXIT", "target_area": "HOENN_ROUTE_108", "condition": "can_exit", "color": "RED" }
-    ],
-    "next_area": "HOENN_ROUTE_108"
-  },
-
-  "HOENN_SHOAL_CAVE": {
-    "area_type": "dungeon",
-    "route_name": "Shoal Cave",
-    "battle_type": "cave",
-    "wild_pool_percentages": "HOENN_SHOAL_CAVE_PERCENTAGES",
-    "min_rounds": 3,
-    "trainer_pool": [],
-    "route_menu": [
-      { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-      { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-      { "text": "PACIFIDLOG TOWN", "action": "EXIT", "target_area": "PACIFIDLOG_TOWN", "condition": "can_exit", "color": "RED" }
-    ],
-    "next_area": "PACIFIDLOG_TOWN"
-  },
-
-  "HOENN_SEAFLOOR_CAVERN": {
-    "area_type": "dungeon",
-    "route_name": "Seafloor Cavern",
-    "battle_type": "cave",
-    "wild_pool_percentages": "HOENN_SEAFLOOR_CAVERN_PERCENTAGES",
-    "min_rounds": 4,
-    "trainer_pool": [],
-    "area_boss": { "id": 382, "name": "Kyogre", "victory_flag": "seafloor_cavern_cleared" },
-    "route_menu": [
-      { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-      { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-      { "text": "ROUTE 128", "action": "EXIT", "target_area": "HOENN_ROUTE_128", "condition": "can_exit", "color": "RED" }
-    ],
-    "next_area": "HOENN_ROUTE_128"
-  },
-
-  "HOENN_CAVE_OF_ORIGIN": {
-    "area_type": "dungeon",
-    "route_name": "Cave of Origin",
-    "battle_type": "cave",
-    "wild_pool_percentages": "HOENN_CAVE_OF_ORIGIN_PERCENTAGES",
-    "min_rounds": 2,
-    "trainer_pool": [],
-    "route_menu": [
-      { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-      { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-      { "text": "SOOTOPOLIS CITY", "action": "EXIT", "target_area": "SOOTOPOLIS_CITY", "condition": "can_exit", "color": "RED" }
-    ],
-    "next_area": "SOOTOPOLIS_CITY"
-  },
-
-  "HOENN_SKY_PILLAR": {
-    "area_type": "dungeon",
-    "route_name": "Sky Pillar",
-    "battle_type": "mountain",
-    "wild_pool_percentages": "HOENN_SKY_PILLAR_PERCENTAGES",
-    "min_rounds": 5,
-    "trainer_pool": [],
-    "area_boss": { "id": 384, "name": "Rayquaza", "victory_flag": "rayquaza_awakened" },
-    "route_menu": [
-      { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-      { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-      { "text": "PACIFIDLOG TOWN", "action": "EXIT", "target_area": "PACIFIDLOG_TOWN", "condition": "can_exit", "color": "RED" }
-    ],
-    "next_area": "PACIFIDLOG_TOWN"
-  },
-
-  "HOENN_MT_PYRE": {
-    "area_type": "dungeon",
-    "route_name": "Mt. Pyre",
-    "battle_type": "indoor",
-    "wild_pool_percentages": "HOENN_MT_PYRE_PERCENTAGES",
-    "min_rounds": 3,
-    "trainer_pool": [],
-    "route_menu": [
-      { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-      { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-      { "text": "ROUTE 122", "action": "EXIT", "target_area": "HOENN_ROUTE_122", "condition": "can_exit", "color": "RED" }
-    ],
-    "next_area": "HOENN_ROUTE_122"
-  },
-
-  "HOENN_VICTORY_ROAD": {
-    "area_type": "dungeon",
-    "route_name": "Victory Road",
-    "battle_type": "cave",
-    "wild_pool_percentages": "HOENN_VICTORY_ROAD_PERCENTAGES",
-    "min_rounds": 5,
-    "trainer_pool": [
-      { "name": "Ace Trainer Vito", "class": "COOLTRAINER", "sprite": "acetrainer_m.png", "team": [368, 369], "rewards": { "balls": 5 } }
-    ],
-    "route_menu": [
-      { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-      { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-      { "text": "EVER GRANDE CITY", "action": "EXIT", "target_area": "EVER_GRANDE_CITY", "condition": "can_exit", "color": "RED" }
-    ],
-    "next_area": "EVER_GRANDE_CITY"
-  }
-},
-
   "JOURNAL_MISSIONS": [
-  {
-    "id": "hoenn_m1",
-    "type": "MAIN",
-    "title": "Birch's Rescue",
-    "description": "Professor Birch is in trouble on Route 101! Help him and choose your starter Pokémon (Treecko, Torchic, or Mudkip).",
-    "condition": { "start_region": "HOENN", "visited_not": "HOENN_ROUTE_101", "badges_less": 1 },
-    "reward": "Pokédex + 5 Poké Balls"
-  },
-  {
-    "id": "hoenn_m2",
-    "type": "MAIN",
-    "title": "Rival Showdown",
-    "description": "Your rival (May or Brendan) wants to test your new Pokémon on Route 103.",
-    "condition": { "start_region": "HOENN", "visited": "HOENN_ROUTE_103", "flag_not": "defeated_rival_103" },
-    "completed_flag": "defeated_rival_103",
-    "reward": "10 Poké Balls"
-  },
-  {
-    "id": "hoenn_m3",
-    "type": "MAIN",
-    "title": "Stone Badge",
-    "description": "Defeat Roxanne at the Rustboro City Gym to earn the Stone Badge.",
-    "condition": { "start_region": "HOENN", "visited": "RUSTBORO_CITY", "badges_less": 1 },
-    "completed_flag": "badge_stone_earned",
-    "reward": "Stone Badge + HM Rock Smash"
-  },
-  {
-    "id": "hoenn_m4",
-    "type": "MAIN",
-    "title": "Devon Goods Recovery",
-    "description": "Team Magma/Aqua stole the Devon Goods! Retrieve them from the thief in Rusturf Tunnel.",
-    "condition": { "start_region": "HOENN", "flag": "badge_stone_earned", "flag_not": "devon_goods_recovered" },
-    "completed_flag": "devon_goods_recovered",
-    "reward": "PokéNav + Exp. Share"
-  },
-  {
-    "id": "hoenn_m5",
-    "type": "MAIN",
-    "title": "Knuckle Badge",
-    "description": "Defeat Brawly at the Dewford Town Gym and meet Steven Stone in Granite Cave.",
-    "condition": { "start_region": "HOENN", "badges_min": 1, "badges_less": 2, "visited": "DEWFORD_TOWN" },
-    "completed_flag": "badge_knuckle_earned",
-    "reward": "Knuckle Badge + HM Flash"
-  },
-  {
-    "id": "hoenn_m6",
-    "type": "MAIN",
-    "title": "Slateport Team Incident",
-    "description": "Investigate the suspicious activity at the Oceanic Museum in Slateport City.",
-    "condition": { "start_region": "HOENN", "flag": "badge_knuckle_earned", "visited": "SLATEPORT_CITY", "flag_not": "slateport_museum_cleared" },
-    "completed_flag": "slateport_museum_cleared",
-    "reward": "Magma/Aqua Suit"
-  },
-  {
-    "id": "hoenn_m7",
-    "type": "MAIN",
-    "title": "Dynamo Badge",
-    "description": "Defeat Wattson at the Mauville City Gym.",
-    "condition": { "start_region": "HOENN", "badges_min": 2, "badges_less": 3, "visited": "MAUVILLE_CITY" },
-    "completed_flag": "badge_dynamo_earned",
-    "reward": "Dynamo Badge + HM Rock Smash upgrade"
-  },
-  {
-    "id": "hoenn_m8",
-    "type": "MAIN",
-    "title": "Wally's Training",
-    "description": "Help Wally catch his first Pokémon in Verdanturf Town and witness his growth.",
-    "condition": { "start_region": "HOENN", "flag": "badge_dynamo_earned", "visited": "VERDANTURF_TOWN", "flag_not": "wally_verdanturf" },
-    "completed_flag": "wally_verdanturf",
-    "reward": "Rare Candy"
-  },
-  {
-    "id": "hoenn_m9",
-    "type": "MAIN",
-    "title": "Heat Badge",
-    "description": "Defeat Flannery at the Lavaridge Town Gym after the Mt. Chimney events.",
-    "condition": { "start_region": "HOENN", "badges_min": 3, "badges_less": 4, "visited": "LAVARIDGE_TOWN" },
-    "completed_flag": "badge_heat_earned",
-    "reward": "Heat Badge + HM Strength"
-  },
-  {
-    "id": "hoenn_m10",
-    "type": "MAIN",
-    "title": "Mt. Chimney Crisis",
-    "description": "Stop Team Magma/Aqua from awakening Groudon/Kyogre at Mt. Chimney.",
-    "condition": { "start_region": "HOENN", "visited": "MT_CHIMNEY", "flag_not": "chimney_crisis_cleared" },
-    "completed_flag": "chimney_crisis_cleared",
-    "reward": "Magma/Aqua Badge + Meteorite"
-  },
-  {
-    "id": "hoenn_m11",
-    "type": "MAIN",
-    "title": "Feather Badge",
-    "description": "Defeat Winona at the Fortree City Gym and clear the Weather Institute.",
-    "condition": { "start_region": "HOENN", "badges_min": 4, "badges_less": 5, "visited": "FORTREE_CITY" },
-    "completed_flag": "badge_feather_earned",
-    "reward": "Feather Badge + HM Fly"
-  },
-  {
-    "id": "hoenn_m12",
-    "type": "MAIN",
-    "title": "Weather Institute Rescue",
-    "description": "Team Magma/Aqua has taken over the Weather Institute on Route 119. Stop them and obtain Castform.",
-    "condition": { "start_region": "HOENN", "flag": "badge_feather_earned", "visited": "HOENN_ROUTE_119", "flag_not": "weather_institute_cleared" },
-    "completed_flag": "weather_institute_cleared",
-    "reward": "Castform"
-  },
-  {
-    "id": "hoenn_m13",
-    "type": "MAIN",
-    "title": "Mind Badge",
-    "description": "Defeat Tate & Liza at the Mossdeep City Gym.",
-    "condition": { "start_region": "HOENN", "badges_min": 5, "badges_less": 6, "visited": "MOSSDEEP_CITY" },
-    "completed_flag": "badge_mind_earned",
-    "reward": "Mind Badge + HM Dive"
-  },
-  {
-    "id": "hoenn_m14",
-    "type": "MAIN",
-    "title": "Space Center Defense",
-    "description": "Protect the Mossdeep Space Center from Team Magma/Aqua.",
-    "condition": { "start_region": "HOENN", "flag": "badge_mind_earned", "visited": "MOSSDEEP_CITY", "flag_not": "space_center_cleared" },
-    "completed_flag": "space_center_cleared",
-    "reward": "Magma/Aqua Submarine"
-  },
-  {
-    "id": "hoenn_m15",
-    "type": "MAIN",
-    "title": "Rain Badge",
-    "description": "Defeat Wallace at the Sootopolis City Gym.",
-    "condition": { "start_region": "HOENN", "badges_min": 6, "badges_less": 7, "visited": "SOOTOPOLIS_CITY" },
-    "completed_flag": "badge_rain_earned",
-    "reward": "Rain Badge + HM Waterfall"
-  },
-  {
-    "id": "hoenn_m16",
-    "type": "MAIN",
-    "title": "Seafloor Cavern Showdown",
-    "description": "Dive into Seafloor Cavern and stop the final Team Magma/Aqua plan to awaken the super-ancient Pokémon.",
-    "condition": { "start_region": "HOENN", "flag": "badge_rain_earned", "visited": "SEAFLOOR_CAVERN", "flag_not": "seafloor_cavern_cleared" },
-    "completed_flag": "seafloor_cavern_cleared",
-    "reward": "Legendary Orb"
-  },
-  {
-    "id": "hoenn_m17",
-    "type": "MAIN",
-    "title": "Cave of Origin",
-    "description": "Enter the Cave of Origin in Sootopolis City to calm the awakened legendary Pokémon.",
-    "condition": { "start_region": "HOENN", "flag": "seafloor_cavern_cleared", "visited": "CAVE_OF_ORIGIN", "flag_not": "cave_of_origin_cleared" },
-    "completed_flag": "cave_of_origin_cleared",
-    "reward": "Calming Orb"
-  },
-  {
-    "id": "hoenn_m18",
-    "type": "MAIN",
-    "title": "Sky Pillar Summit",
-    "description": "Climb the Sky Pillar with Steven and awaken Rayquaza to stop the weather catastrophe.",
-    "condition": { "start_region": "HOENN", "flag": "cave_of_origin_cleared", "visited": "SKY_PILLAR", "flag_not": "rayquaza_awakened" },
-    "completed_flag": "rayquaza_awakened",
-    "reward": "Rayquaza encounter"
-  },
-  {
-    "id": "hoenn_m19",
-    "type": "MAIN",
-    "title": "Balance Badge",
-    "description": "Return home and defeat your father Norman at the Petalburg Gym for the Balance Badge.",
-    "condition": { "start_region": "HOENN", "badges_min": 7, "visited": "PETALBURG_CITY", "flag_not": "badge_balance_earned" },
-    "completed_flag": "badge_balance_earned",
-    "reward": "Balance Badge + HM Cut"
-  },
-  {
-    "id": "hoenn_m20",
-    "type": "MAIN",
-    "title": "Conquer the League",
-    "description": "Travel through Victory Road, defeat the Elite Four, and become the Hoenn Champion by defeating Wallace.",
-    "condition": { "start_region": "HOENN", "badges_min": 8, "flag_not": "beat_hoenn_champion" },
-    "completed_flag": "beat_hoenn_champion",
-    "reward": "Champion Title + National Dex"
-  },
-  {
-    "id": "hoenn_m21",
-    "type": "MAIN",
-    "title": "Wally Rematch",
-    "description": "Face Wally one final time inside Victory Road.",
-    "condition": { "start_region": "HOENN", "flag": "badge_balance_earned", "visited": "VICTORY_ROAD", "flag_not": "defeated_wally_victory" },
-    "completed_flag": "defeated_wally_victory",
-    "reward": "TM Hyper Beam"
-  },
-  {
-    "id": "hoenn_s1",
-    "type": "SIDE",
-    "title": "Rusturf Tunnel Rescue",
-    "description": "Help Mr. Briney rescue the kidnapped Wingull in Rusturf Tunnel and clear the path.",
-    "condition": { "start_region": "HOENN", "visited": "RUSTURF_TUNNEL", "flag_not": "rusturf_rescued" },
-    "completed_flag": "rusturf_rescued",
-    "reward": "HM Surf"
-  },
-  {
-    "id": "hoenn_s2",
-    "type": "SIDE",
-    "title": "Steven's Gifts",
-    "description": "Meet Steven Stone multiple times and receive the Steel Wing and other rare items.",
-    "condition": { "start_region": "HOENN", "visited": "GRANITE_CAVE", "flag_not": "met_steven_multiple" },
-    "completed_flag": "met_steven_multiple",
-    "reward": "Steel Wing + Rare items"
-  },
-  {
-    "id": "hoenn_s3",
-    "type": "SIDE",
-    "title": "Abandoned Ship Mystery",
-    "description": "Explore the haunted Abandoned Ship on Route 108 and find the Scanner.",
-    "condition": { "start_region": "HOENN", "visited": "ABANDONED_SHIP", "flag_not": "abandoned_ship_cleared" },
-    "completed_flag": "abandoned_ship_cleared",
-    "reward": "DeepSeaScale/Tooth"
-  },
-  {
-    "id": "hoenn_s4",
-    "type": "SIDE",
-    "title": "Shoal Cave Treasures",
-    "description": "Collect Shoal Salt and Shoal Shells in Shoal Cave for the old man in Pacifidlog Town.",
-    "condition": { "start_region": "HOENN", "visited": "SHOAL_CAVE", "flag_not": "shoal_cave_collected" },
-    "completed_flag": "shoal_cave_collected",
-    "reward": "Slowpoke Tail / Shell Bell"
-  },
-  {
-    "id": "hoenn_s5",
-    "type": "SIDE",
-    "title": "Safari Zone Adventure",
-    "description": "Catch rare Pokémon in the Hoenn Safari Zone near Lilycove City.",
-    "condition": { "start_region": "HOENN", "visited": "HOENN_SAFARI_ZONE" },
-    "reward": "Safari Balls + rare catches"
-  },
-  {
-    "id": "hoenn_s6",
-    "type": "SIDE",
-    "title": "Regi Trio Awakening",
-    "description": "Solve the braille puzzles and awaken Regirock, Regice, and Registeel.",
-    "condition": { "start_region": "HOENN", "badges_min": 7, "flag_not": "regi_trio_awakened" },
-    "completed_flag": "regi_trio_awakened",
-    "reward": "Regi encounters"
-  },
-  {
-    "id": "hoenn_s7",
-    "type": "SIDE",
-    "title": "Contest Master",
-    "description": "Participate in Pokémon Contests in Verdanturf, Fallarbor, Lilycove, and Slateport.",
-    "condition": { "start_region": "HOENN", "visited": "LILYCOVE_CITY" },
-    "reward": "Contest Ribbons + Master Rank"
-  }
-],
-
-
-  "HOENN_ROUTE_101": [261, 263, 265],
-  "HOENN_ROUTE_101_PERCENTAGES": { "261": 45, "263": 10, "265": 45 },
-
-  "HOENN_ROUTE_102": [261, 263, 265, 270, 273],
-  "HOENN_ROUTE_102_PERCENTAGES": { "261": 30, "263": 30, "265": 20, "270": 10, "273": 10 },
-
-  "HOENN_ROUTE_103": [261, 263, 265, 278, 279],
-  "HOENN_ROUTE_103_PERCENTAGES": { "261": 30, "263": 30, "265": 20, "278": 10, "279": 10 },
-
-  "HOENN_ROUTE_104": [263, 265, 276, 277, 285],
-  "HOENN_ROUTE_104_PERCENTAGES": { "263": 30, "265": 30, "276": 15, "277": 15, "285": 10 },
-
-  "HOENN_ROUTE_105": [72, 73, 118, 119, 120],
-  "HOENN_ROUTE_105_PERCENTAGES": { "72": 40, "73": 30, "118": 15, "119": 10, "120": 5 },
-
-  "HOENN_ROUTE_106": [72, 73, 118, 119],
-  "HOENN_ROUTE_106_PERCENTAGES": { "72": 40, "73": 35, "118": 15, "119": 10 },
-
-  "HOENN_ROUTE_107": [72, 73, 118, 119, 120],
-  "HOENN_ROUTE_107_PERCENTAGES": { "72": 35, "73": 30, "118": 20, "119": 10, "120": 5 },
-
-  "HOENN_ROUTE_108": [72, 73, 118, 119, 120],
-  "HOENN_ROUTE_108_PERCENTAGES": { "72": 30, "73": 30, "118": 20, "119": 15, "120": 5 },
-
-  "HOENN_ROUTE_109": [72, 73, 118, 119, 120],
-  "HOENN_ROUTE_109_PERCENTAGES": { "72": 35, "73": 30, "118": 20, "119": 10, "120": 5 },
-
-  "HOENN_ROUTE_110": [263, 309, 310, 311, 316, 317],
-  "HOENN_ROUTE_110_PERCENTAGES": { "263": 20, "309": 30, "310": 15, "311": 15, "316": 10, "317": 10 },
-
-  "HOENN_ROUTE_111": [27, 28, 322, 323],
-  "HOENN_ROUTE_111_PERCENTAGES": { "27": 30, "28": 25, "322": 25, "323": 20 },
-
-  "HOENN_ROUTE_112": [322, 323],
-  "HOENN_ROUTE_112_PERCENTAGES": { "322": 50, "323": 50 },
-
-  "HOENN_ROUTE_113": [327, 328, 227],
-  "HOENN_ROUTE_113_PERCENTAGES": { "327": 70, "328": 25, "227": 5 },
-
-  "HOENN_ROUTE_114": [333, 273, 274, 335, 336],
-  "HOENN_ROUTE_114_PERCENTAGES": { "333": 30, "273": 20, "274": 20, "335": 15, "336": 15 },
-
-  "HOENN_ROUTE_115": [39, 40, 333, 276],
-  "HOENN_ROUTE_115_PERCENTAGES": { "39": 30, "40": 25, "333": 25, "276": 20 },
-
-  "HOENN_ROUTE_116": [263, 290, 291, 293, 294],
-  "HOENN_ROUTE_116_PERCENTAGES": { "263": 30, "290": 25, "291": 20, "293": 15, "294": 10 },
-
-  "HOENN_ROUTE_117": [263, 315, 316, 317, 318, 319],
-  "HOENN_ROUTE_117_PERCENTAGES": { "263": 30, "315": 30, "316": 10, "317": 10, "318": 10, "319": 10 },
-
-  "HOENN_ROUTE_118": [263, 309, 310, 333, 352],
-  "HOENN_ROUTE_118_PERCENTAGES": { "263": 40, "309": 20, "310": 20, "333": 15, "352": 5 },
-
-  "HOENN_ROUTE_119": [263, 352, 353, 354],
-  "HOENN_ROUTE_119_PERCENTAGES": { "263": 30, "352": 25, "353": 25, "354": 20 },
-
-  "HOENN_ROUTE_120": [263, 333, 352, 353],
-  "HOENN_ROUTE_120_PERCENTAGES": { "263": 30, "333": 25, "352": 25, "353": 20 },
-
-  "HOENN_ROUTE_121": [263, 333, 352, 353, 354],
-  "HOENN_ROUTE_121_PERCENTAGES": { "263": 25, "333": 25, "352": 20, "353": 20, "354": 10 },
-
-  "HOENN_ROUTE_122": [72, 73, 118, 119],
-  "HOENN_ROUTE_122_PERCENTAGES": { "72": 35, "73": 30, "118": 20, "119": 15 },
-
-  "HOENN_ROUTE_123": [263, 333, 352, 353],
-  "HOENN_ROUTE_123_PERCENTAGES": { "263": 30, "333": 25, "352": 25, "353": 20 },
-
-  "HOENN_ROUTE_124": [72, 73, 118, 119, 170, 171],
-  "HOENN_ROUTE_124_PERCENTAGES": { "72": 30, "73": 25, "118": 20, "119": 15, "170": 5, "171": 5 },
-
-  "HOENN_ROUTE_125": [72, 73, 118, 119, 120],
-  "HOENN_ROUTE_125_PERCENTAGES": { "72": 35, "73": 30, "118": 20, "119": 10, "120": 5 },
-
-  "HOENN_ROUTE_126": [72, 73, 118, 119, 170],
-  "HOENN_ROUTE_126_PERCENTAGES": { "72": 30, "73": 25, "118": 20, "119": 15, "170": 10 },
-
-  "HOENN_ROUTE_127": [72, 73, 118, 119, 120],
-  "HOENN_ROUTE_127_PERCENTAGES": { "72": 30, "73": 25, "118": 20, "119": 15, "120": 10 },
-
-  "HOENN_ROUTE_128": [72, 73, 118, 119, 170],
-  "HOENN_ROUTE_128_PERCENTAGES": { "72": 30, "73": 25, "118": 20, "119": 15, "170": 10 },
-
-  "HOENN_ROUTE_129": [72, 73, 118, 119],
-  "HOENN_ROUTE_129_PERCENTAGES": { "72": 35, "73": 30, "118": 20, "119": 15 },
-
-  "HOENN_ROUTE_130": [72, 73, 118, 119],
-  "HOENN_ROUTE_130_PERCENTAGES": { "72": 35, "73": 30, "118": 20, "119": 15 },
-
-  "HOENN_ROUTE_131": [72, 73, 118, 119],
-  "HOENN_ROUTE_131_PERCENTAGES": { "72": 35, "73": 30, "118": 20, "119": 15 },
-
-  "HOENN_ROUTE_132": [72, 73, 118, 119],
-  "HOENN_ROUTE_132_PERCENTAGES": { "72": 35, "73": 30, "118": 20, "119": 15 },
-
-  "HOENN_ROUTE_133": [72, 73, 118, 119],
-  "HOENN_ROUTE_133_PERCENTAGES": { "72": 35, "73": 30, "118": 20, "119": 15 },
-
-  "HOENN_ROUTE_134": [72, 73, 118, 119],
-  "HOENN_ROUTE_134_PERCENTAGES": { "72": 35, "73": 30, "118": 20, "119": 15 },
-
-  "HOENN_PETALBURG_WOODS": [265, 266, 267, 285, 286],
-  "HOENN_PETALBURG_WOODS_PERCENTAGES": { "265": 30, "266": 25, "267": 15, "285": 20, "286": 10 },
-
-  "HOENN_GRANITE_CAVE": [41, 74, 296, 299],
-  "HOENN_GRANITE_CAVE_PERCENTAGES": { "41": 30, "74": 25, "296": 25, "299": 20 },
-
-  "HOENN_MT_CHIMNEY": [322, 323, 324],
-  "HOENN_MT_CHIMNEY_PERCENTAGES": { "322": 40, "323": 35, "324": 25 },
-
-  "HOENN_NEW_MAUVILLE": [81, 82, 100, 101],
-  "HOENN_NEW_MAUVILLE_PERCENTAGES": { "81": 30, "82": 30, "100": 20, "101": 20 },
-
-  "HOENN_VICTORY_ROAD": [42, 232, 217, 368, 369],
-  "HOENN_VICTORY_ROAD_PERCENTAGES": { "42": 25, "232": 20, "217": 20, "368": 20, "369": 15 },
-
-  "HOENN_SAFARI_ZONE": [214, 212, 231, 232, 227, 241, 246, 247, 215, 207, 213, 216],
-  "HOENN_SAFARI_ZONE_PERCENTAGES": { "214": 14, "212": 5, "231": 14, "232": 5, "227": 10, "241": 10, "246": 5, "247": 2, "215": 10, "207": 14, "213": 6, "216": 5 },
-
+    {
+      "id": "hoenn_m1",
+      "type": "MAIN",
+      "title": "Birch's Rescue",
+      "description": "Professor Birch is in trouble on Route 101! Help him and choose your starter Pokémon (Treecko, Torchic, or Mudkip).",
+      "condition": { "start_region": "HOENN", "visited_not": "HOENN_ROUTE_101", "badges_less": 1 },
+      "reward": "Pokédex + 5 Poké Balls"
+    },
+    {
+      "id": "hoenn_m2",
+      "type": "MAIN",
+      "title": "Rival Showdown",
+      "description": "Your rival (May or Brendan) wants to test your new Pokémon on Route 103.",
+      "condition": { "start_region": "HOENN", "visited": "HOENN_ROUTE_103", "flag_not": "defeated_rival_103" },
+      "completed_flag": "defeated_rival_103",
+      "reward": "10 Poké Balls"
+    },
+    {
+      "id": "hoenn_m3",
+      "type": "MAIN",
+      "title": "Stone Badge",
+      "description": "Defeat Roxanne at the Rustboro City Gym to earn the Stone Badge.",
+      "condition": { "start_region": "HOENN", "visited": "RUSTBORO_CITY", "badges_less": 1 },
+      "completed_flag": "badge_stone_earned",
+      "reward": "Stone Badge + PokeNav"
+    },
+    {
+      "id": "hoenn_m4",
+      "type": "MAIN",
+      "title": "Devon Goods Recovery",
+      "description": "Team Magma/Aqua stole the Devon Goods! Retrieve them from the thief in Rusturf Tunnel.",
+      "condition": { "start_region": "HOENN", "flag": "badge_stone_earned", "flag_not": "devon_goods_recovered" },
+      "completed_flag": "devon_goods_recovered",
+      "reward": "PokéNav + Exp. Share"
+    },
+    {
+      "id": "hoenn_m5",
+      "type": "MAIN",
+      "title": "Knuckle Badge",
+      "description": "Defeat Brawly at the Dewford Town Gym and meet Steven Stone in Granite Cave.",
+      "condition": { "start_region": "HOENN", "badges_min": 1, "badges_less": 2, "visited": "DEWFORD_TOWN" },
+      "completed_flag": "badge_knuckle_earned",
+      "reward": "Knuckle Badge + 3 Rare Candies"
+    },
+    {
+      "id": "hoenn_m6",
+      "type": "MAIN",
+      "title": "Slateport Team Incident",
+      "description": "Investigate the suspicious activity at the Oceanic Museum in Slateport City.",
+      "condition": { "start_region": "HOENN", "flag": "badge_knuckle_earned", "visited": "SLATEPORT_CITY", "flag_not": "slateport_museum_cleared" },
+      "completed_flag": "slateport_museum_cleared",
+      "reward": "Magma/Aqua Suit"
+    },
+    {
+      "id": "hoenn_m7",
+      "type": "MAIN",
+      "title": "Dynamo Badge",
+      "description": "Defeat Wattson at the Mauville City Gym.",
+      "condition": { "start_region": "HOENN", "badges_min": 2, "badges_less": 3, "visited": "MAUVILLE_CITY" },
+      "completed_flag": "badge_dynamo_earned",
+      "reward": "Dynamo Badge + Devon Scope"
+    },
+    {
+      "id": "hoenn_m8",
+      "type": "MAIN",
+      "title": "Wally's Training",
+      "description": "Help Wally catch his first Pokémon in Verdanturf Town and witness his growth.",
+      "condition": { "start_region": "HOENN", "flag": "badge_dynamo_earned", "visited": "VERDANTURF_TOWN", "flag_not": "wally_verdanturf" },
+      "completed_flag": "wally_verdanturf",
+      "reward": "Rare Candy"
+    },
+    {
+      "id": "hoenn_m9",
+      "type": "MAIN",
+      "title": "Heat Badge",
+      "description": "Defeat Flannery at the Lavaridge Town Gym after the Mt. Chimney events.",
+      "condition": { "start_region": "HOENN", "badges_min": 3, "badges_less": 4, "visited": "LAVARIDGE_TOWN" },
+      "completed_flag": "badge_heat_earned",
+      "reward": "Heat Badge + 3 Rare Candies"
+    },
+    {
+      "id": "hoenn_m10",
+      "type": "MAIN",
+      "title": "Mt. Chimney Crisis",
+      "description": "Stop Team Magma/Aqua from awakening Groudon/Kyogre at Mt. Chimney.",
+      "condition": { "start_region": "HOENN", "visited": "MT_CHIMNEY", "flag_not": "chimney_crisis_cleared" },
+      "completed_flag": "chimney_crisis_cleared",
+      "reward": "Magma/Aqua Badge + Meteorite"
+    },
+    {
+      "id": "hoenn_m11",
+      "type": "MAIN",
+      "title": "Feather Badge",
+      "description": "Defeat Winona at the Fortree City Gym and clear the Weather Institute.",
+      "condition": { "start_region": "HOENN", "badges_min": 4, "badges_less": 5, "visited": "FORTREE_CITY" },
+      "completed_flag": "badge_feather_earned",
+      "reward": "Feather Badge + 3 Rare Candies"
+    },
+    {
+      "id": "hoenn_m12",
+      "type": "MAIN",
+      "title": "Weather Institute Rescue",
+      "description": "Team Magma/Aqua has taken over the Weather Institute on Route 119. Stop them and obtain Castform.",
+      "condition": { "start_region": "HOENN", "flag": "badge_feather_earned", "visited": "HOENN_ROUTE_119", "flag_not": "weather_institute_cleared" },
+      "completed_flag": "weather_institute_cleared",
+      "reward": "Castform"
+    },
+    {
+      "id": "hoenn_m13",
+      "type": "MAIN",
+      "title": "Mind Badge",
+      "description": "Defeat Tate & Liza at the Mossdeep City Gym.",
+      "condition": { "start_region": "HOENN", "badges_min": 5, "badges_less": 6, "visited": "MOSSDEEP_CITY" },
+      "completed_flag": "badge_mind_earned",
+      "reward": "Mind Badge + Dive Gear"
+    },
+    {
+      "id": "hoenn_m14",
+      "type": "MAIN",
+      "title": "Space Center Defense",
+      "description": "Protect the Mossdeep Space Center from Team Magma/Aqua.",
+      "condition": { "start_region": "HOENN", "flag": "badge_mind_earned", "visited": "MOSSDEEP_CITY", "flag_not": "space_center_cleared" },
+      "completed_flag": "space_center_cleared",
+      "reward": "Magma/Aqua Submarine"
+    },
+    {
+      "id": "hoenn_m15",
+      "type": "MAIN",
+      "title": "Rain Badge",
+      "description": "Defeat Wallace at the Sootopolis City Gym.",
+      "condition": { "start_region": "HOENN", "badges_min": 6, "badges_less": 7, "visited": "SOOTOPOLIS_CITY" },
+      "completed_flag": "badge_rain_earned",
+      "reward": "Rain Badge + Eon Ticket"
+    },
+    {
+      "id": "hoenn_m16",
+      "type": "MAIN",
+      "title": "Seafloor Cavern Showdown",
+      "description": "Dive into Seafloor Cavern and stop the final Team Magma/Aqua plan to awaken the super-ancient Pokémon.",
+      "condition": { "start_region": "HOENN", "flag": "badge_rain_earned", "visited": "SEAFLOOR_CAVERN", "flag_not": "seafloor_cavern_cleared" },
+      "completed_flag": "seafloor_cavern_cleared",
+      "reward": "Legendary Orb"
+    },
+    {
+      "id": "hoenn_m17",
+      "type": "MAIN",
+      "title": "Cave of Origin",
+      "description": "Enter the Cave of Origin in Sootopolis City to calm the awakened legendary Pokémon.",
+      "condition": { "start_region": "HOENN", "flag": "seafloor_cavern_cleared", "visited": "CAVE_OF_ORIGIN", "flag_not": "cave_of_origin_cleared" },
+      "completed_flag": "cave_of_origin_cleared",
+      "reward": "Calming Orb"
+    },
+    {
+      "id": "hoenn_m18",
+      "type": "MAIN",
+      "title": "Sky Pillar Summit",
+      "description": "Climb the Sky Pillar with Steven and awaken Rayquaza to stop the weather catastrophe.",
+      "condition": { "start_region": "HOENN", "flag": "cave_of_origin_cleared", "visited": "SKY_PILLAR", "flag_not": "rayquaza_awakened" },
+      "completed_flag": "rayquaza_awakened",
+      "reward": "Rayquaza encounter"
+    },
+    {
+      "id": "hoenn_m19",
+      "type": "MAIN",
+      "title": "Balance Badge",
+      "description": "Return home and defeat your father Norman at the Petalburg Gym for the Balance Badge.",
+      "condition": { "start_region": "HOENN", "badges_min": 7, "visited": "PETALBURG_CITY", "flag_not": "badge_balance_earned" },
+      "completed_flag": "badge_balance_earned",
+      "reward": "Balance Badge + 3 Rare Candies"
+    },
+    {
+      "id": "hoenn_m20",
+      "type": "MAIN",
+      "title": "Conquer the League",
+      "description": "Travel through Victory Road, defeat the Elite Four, and become the Hoenn Champion by defeating Wallace.",
+      "condition": { "start_region": "HOENN", "badges_min": 8, "flag_not": "beat_hoenn_champion" },
+      "completed_flag": "beat_hoenn_champion",
+      "reward": "Champion Title + National Dex"
+    },
+    {
+      "id": "hoenn_m21",
+      "type": "MAIN",
+      "title": "Wally Rematch",
+      "description": "Face Wally one final time inside Victory Road.",
+      "condition": { "start_region": "HOENN", "flag": "badge_balance_earned", "visited": "VICTORY_ROAD", "flag_not": "defeated_wally_victory" },
+      "completed_flag": "defeated_wally_victory",
+      "reward": "TM Hyper Beam"
+    },
+    {
+      "id": "hoenn_s1",
+      "type": "SIDE",
+      "title": "Rusturf Tunnel Rescue",
+      "description": "Help Mr. Briney rescue the kidnapped Wingull in Rusturf Tunnel and clear the path.",
+      "condition": { "start_region": "HOENN", "visited": "RUSTURF_TUNNEL", "flag_not": "rusturf_rescued" },
+      "completed_flag": "rusturf_rescued",
+      "reward": "HM Surf"
+    },
+    {
+      "id": "hoenn_s2",
+      "type": "SIDE",
+      "title": "Steven's Gifts",
+      "description": "Meet Steven Stone multiple times and receive the Steel Wing and other rare items.",
+      "condition": { "start_region": "HOENN", "visited": "GRANITE_CAVE", "flag_not": "met_steven_multiple" },
+      "completed_flag": "met_steven_multiple",
+      "reward": "Steel Wing + Rare items"
+    },
+    {
+      "id": "hoenn_s3",
+      "type": "SIDE",
+      "title": "Abandoned Ship Mystery",
+      "description": "Explore the haunted Abandoned Ship on Route 108 and find the Scanner.",
+      "condition": { "start_region": "HOENN", "visited": "ABANDONED_SHIP", "flag_not": "abandoned_ship_cleared" },
+      "completed_flag": "abandoned_ship_cleared",
+      "reward": "DeepSeaScale/Tooth"
+    },
+    {
+      "id": "hoenn_s4",
+      "type": "SIDE",
+      "title": "Shoal Cave Treasures",
+      "description": "Collect Shoal Salt and Shoal Shells in Shoal Cave for the old man in Pacifidlog Town.",
+      "condition": { "start_region": "HOENN", "visited": "SHOAL_CAVE", "flag_not": "shoal_cave_collected" },
+      "completed_flag": "shoal_cave_collected",
+      "reward": "Slowpoke Tail / Shell Bell"
+    },
+    {
+      "id": "hoenn_s5",
+      "type": "SIDE",
+      "title": "Safari Zone Adventure",
+      "description": "Catch rare Pokémon in the Hoenn Safari Zone near Lilycove City.",
+      "condition": { "start_region": "HOENN", "visited": "HOENN_SAFARI_ZONE" },
+      "reward": "Safari Balls + rare catches"
+    },
+    {
+      "id": "hoenn_s6",
+      "type": "SIDE",
+      "title": "Regi Trio Awakening",
+      "description": "Solve the braille puzzles and awaken Regirock, Regice, and Registeel.",
+      "condition": { "start_region": "HOENN", "badges_min": 7, "flag_not": "regi_trio_awakened" },
+      "completed_flag": "regi_trio_awakened",
+      "reward": "Regi encounters"
+    },
+    {
+      "id": "hoenn_s7",
+      "type": "SIDE",
+      "title": "Contest Master",
+      "description": "Participate in Pokémon Contests in Verdanturf, Fallarbor, Lilycove, and Slateport.",
+      "condition": { "start_region": "HOENN", "visited": "LILYCOVE_CITY" },
+      "reward": "Contest Ribbons + Master Rank"
+    }
+  ],
+  "HOENN_UNDERWATER_POOL_PERCENTAGES": { "170": 35, "171": 15, "366": 25, "369": 10, "370": 15 },
+  "HOENN_ROUTE_101": [261, 263, 265, 252, 255, 258, 2032],
+  "HOENN_ROUTE_101_PERCENTAGES": { "261": 33, "263": 32, "265": 9, "252": 9, "255": 8, "258": 8, "2032": 1 },
+  "HOENN_ROUTE_102": [261, 263, 265, 270, 273, 280, 283, 341, 2032],
+  "HOENN_ROUTE_102_PERCENTAGES": { "261": 27, "263": 8, "265": 27, "270": 9, "273": 9, "280": 4, "283": 5, "341": 10, "2032": 1 },
+  "HOENN_ROUTE_103": [261, 263, 265, 278, 2032],
+  "HOENN_ROUTE_103_PERCENTAGES": { "261": 30, "263": 39, "265": 10, "278": 20, "2032": 1 },
+  "HOENN_ROUTE_104": [261, 263, 265, 276, 278, 183, 2032],
+  "HOENN_ROUTE_104_PERCENTAGES": { "261": 20, "263": 29, "265": 20, "276": 10, "278": 10, "183": 10, "2032": 1 },
+  "HOENN_ROUTE_105": [72, 278, 279, 378],
+  "HOENN_ROUTE_105_PERCENTAGES": { "72": 63, "278": 28, "279": 5, "378": 4 },
+  "HOENN_ROUTE_106": [72, 278, 320, 279],
+  "HOENN_ROUTE_106_PERCENTAGES": { "72": 50, "278": 25, "320": 20, "279": 5 },
+  "HOENN_ROUTE_107": [72, 278, 320, 279],
+  "HOENN_ROUTE_107_PERCENTAGES": { "72": 50, "278": 25, "320": 20, "279": 5 },
+  "HOENN_ROUTE_108": [72, 278, 320, 279],
+  "HOENN_ROUTE_108_PERCENTAGES": { "72": 50, "278": 25, "320": 20, "279": 5 },
+  "HOENN_ROUTE_109": [72, 278, 320, 279],
+  "HOENN_ROUTE_109_PERCENTAGES": { "72": 50, "278": 25, "320": 20, "279": 5 },
+  "HOENN_ROUTE_110": [261, 263, 278, 309, 316, 311, 312, 2032],
+  "HOENN_ROUTE_110_PERCENTAGES": { "261": 20, "263": 9, "278": 20, "309": 30, "316": 15, "311": 3, "312": 2, "2032": 1 },
+  "HOENN_ROUTE_111": [27, 28, 2004, 2005, 328, 329, 331, 332, 343, 339, 377, 345, 347],
+  "HOENN_ROUTE_111_PERCENTAGES": { "27": 27, "28": 4, "2004": 1, "2005": 1, "328": 26, "329": 5, "331": 8, "332": 4, "343": 10, "339": 8, "377": 2, "345": 2, "347": 2 },
+  "HOENN_ROUTE_112": [66, 322, 183],
+  "HOENN_ROUTE_112_PERCENTAGES": { "66": 25, "322": 65, "183": 10 },
+  "HOENN_ROUTE_113": [27, 227, 327, 2004],
+  "HOENN_ROUTE_113_PERCENTAGES": { "27": 24, "2004": 1, "227": 5, "327": 70 },
+  "HOENN_ROUTE_114": [270, 271, 273, 274, 333, 335, 336, 339],
+  "HOENN_ROUTE_114_PERCENTAGES": { "270": 13, "271": 5, "273": 13, "274": 5, "333": 37, "335": 9, "336": 10, "339": 8 },
+  "HOENN_ROUTE_115": [39, 84, 276, 278, 333],
+  "HOENN_ROUTE_115_PERCENTAGES": { "39": 10, "84": 10, "276": 30, "278": 20, "333": 30 },
+  "HOENN_ROUTE_116": [261, 263, 276, 290, 293, 300, 2032],
+  "HOENN_ROUTE_116_PERCENTAGES": { "261": 20, "263": 9, "2032": 1, "276": 20, "290": 20, "293": 20, "300": 10 },
+  "HOENN_ROUTE_117": [43, 183, 283, 313, 314, 315, 298],
+  "HOENN_ROUTE_117_PERCENTAGES": { "43": 20, "183": 26, "283": 5, "313": 6, "314": 7, "315": 28, "298": 8 },
+  "HOENN_ROUTE_118": [264, 278, 309, 310, 352, 318, 2033],
+  "HOENN_ROUTE_118_PERCENTAGES": { "264": 26, "278": 17, "309": 27, "310": 10, "352": 9, "318": 10, "2033": 1 },
+  "HOENN_ROUTE_119": [43, 44, 264, 278, 352, 357, 349, 2033],
+  "HOENN_ROUTE_119_PERCENTAGES": { "43": 22, "44": 14, "264": 27, "278": 13, "352": 5, "357": 8, "349": 10, "2033": 1 },
+  "HOENN_ROUTE_120": [43, 183, 262, 264, 352, 357, 359, 360, 379, 2033],
+  "HOENN_ROUTE_120_PERCENTAGES": { "43": 9, "183": 9, "262": 28, "264": 27, "352": 4, "357": 9, "359": 4, "360": 7, "379": 2, "2033": 1 },
+  "HOENN_ROUTE_121": [43, 44, 264, 278, 353, 355, 381, 2033],
+  "HOENN_ROUTE_121_PERCENTAGES": { "43": 10, "44": 9, "264": 27, "278": 19, "353": 22, "355": 9, "381": 3, "2033": 1 },
+  "HOENN_ROUTE_122": [72, 278, 320, 279],
+  "HOENN_ROUTE_122_PERCENTAGES": { "72": 50, "278": 25, "320": 20, "279": 5 },
+  "HOENN_ROUTE_123": [43, 44, 263, 264, 278, 333, 352, 357, 353, 355, 380, 2032, 2033],
+  "HOENN_ROUTE_123_PERCENTAGES": { "43": 10, "44": 5, "263": 18, "264": 18, "278": 15, "333": 10, "352": 5, "357": 10, "353": 3, "355": 2, "380": 2, "2032": 1, "2033": 1 },
+  "HOENN_ROUTE_124": [72, 278, 320, 366, 369, 370],
+  "HOENN_ROUTE_124_PERCENTAGES": { "72": 35, "278": 15, "320": 15, "366": 15, "369": 8, "370": 12 },
+  "HOENN_ROUTE_125": [72, 278, 320, 279],
+  "HOENN_ROUTE_125_PERCENTAGES": { "72": 50, "278": 25, "320": 20, "279": 5 },
+  "HOENN_ROUTE_126": [72, 278, 320, 366, 369, 370],
+  "HOENN_ROUTE_126_PERCENTAGES": { "72": 35, "278": 15, "320": 15, "366": 15, "369": 8, "370": 12 },
+  "HOENN_ROUTE_127": [72, 278, 320, 279],
+  "HOENN_ROUTE_127_PERCENTAGES": { "72": 50, "278": 25, "320": 20, "279": 5 },
+  "HOENN_ROUTE_128": [72, 278, 320, 279],
+  "HOENN_ROUTE_128_PERCENTAGES": { "72": 50, "278": 25, "320": 20, "279": 5 },
+  "HOENN_ROUTE_129": [72, 278, 320, 279],
+  "HOENN_ROUTE_129_PERCENTAGES": { "72": 50, "278": 25, "320": 20, "279": 5 },
+  "HOENN_ROUTE_130": [72, 278, 320, 279],
+  "HOENN_ROUTE_130_PERCENTAGES": { "72": 50, "278": 25, "320": 20, "279": 5 },
+  "HOENN_ROUTE_131": [72, 278, 320, 279],
+  "HOENN_ROUTE_131_PERCENTAGES": { "72": 50, "278": 25, "320": 20, "279": 5 },
+  "HOENN_ROUTE_132": [72, 278, 320, 279],
+  "HOENN_ROUTE_132_PERCENTAGES": { "72": 50, "278": 25, "320": 20, "279": 5 },
+  "HOENN_ROUTE_133": [72, 278, 320, 279],
+  "HOENN_ROUTE_133_PERCENTAGES": { "72": 50, "278": 25, "320": 20, "279": 5 },
+  "HOENN_ROUTE_134": [72, 278, 320, 279],
+  "HOENN_ROUTE_134_PERCENTAGES": { "72": 50, "278": 25, "320": 20, "279": 5 },
+  "HOENN_PETALBURG_WOODS": [261, 263, 265, 266, 267, 276, 285, 287, 2032],
+  "HOENN_PETALBURG_WOODS_PERCENTAGES": { "261": 10, "263": 9, "265": 30, "266": 10, "267": 10, "276": 10, "285": 15, "287": 5, "2032": 1 },
+  "HOENN_GRANITE_CAVE": [41, 74, 296, 304, 299, 2012],
+  "HOENN_GRANITE_CAVE_PERCENTAGES": { "41": 28, "74": 17, "296": 27, "304": 17, "299": 10, "2012": 1 },
+  "HOENN_MT_CHIMNEY": [66, 322, 325],
+  "HOENN_MT_CHIMNEY_PERCENTAGES": { "66": 25, "322": 65, "325": 10 },
+  "HOENN_NEW_MAUVILLE": [81, 82, 100, 101, 2041, 2042],
+  "HOENN_NEW_MAUVILLE_PERCENTAGES": { "81": 30, "82": 10, "100": 49, "101": 9, "2041": 1, "2042": 1 },
+  "HOENN_VICTORY_ROAD": [42, 294, 297, 304, 305, 308, 374],
+  "HOENN_VICTORY_ROAD_PERCENTAGES": { "42": 23, "297": 22, "304": 13, "305": 13, "294": 9, "308": 10, "374": 10 },
+  "HOENN_METEOR_FALLS": [41, 294, 337, 338, 371, 372, 2033],
+  "HOENN_METEOR_FALLS_PERCENTAGES": { "41": 30, "294": 20, "337": 15, "338": 15, "371": 12, "372": 7, "2033": 1 },
+  "HOENN_SAFARI_ZONE": [214, 212, 231, 232, 227, 241, 246, 247, 215, 207, 213, 216, 2045],
+  "HOENN_SAFARI_ZONE_PERCENTAGES": { "214": 14, "212": 5, "231": 14, "232": 5, "227": 10, "241": 10, "246": 5, "247": 2, "215": 9, "207": 14, "213": 6, "216": 5, "2045": 1 },
   "HOENN_RUSTURF_TUNNEL": [293],
   "HOENN_RUSTURF_TUNNEL_PERCENTAGES": { "293": 100 },
-
-  "HOENN_JAGGED_PASS": [322, 66],
-  "HOENN_JAGGED_PASS_PERCENTAGES": { "322": 50, "66": 50 },
-
-  "HOENN_FIERY_PATH": [218, 322, 324, 66, 109, 88],
-  "HOENN_FIERY_PATH_PERCENTAGES": { "218": 40, "322": 35, "324": 10, "66": 8, "109": 5, "88": 2 },
-
-  "HOENN_WEATHER_INSTITUTE": [352],
-  "HOENN_WEATHER_INSTITUTE_PERCENTAGES": { "352": 100 },
-
-  "HOENN_ABANDONED_SHIP": [72, 73, 118, 119, 355, 356],
-  "HOENN_ABANDONED_SHIP_PERCENTAGES": { "72": 25, "73": 25, "118": 20, "119": 15, "355": 10, "356": 5 },
-
-  "HOENN_SHOAL_CAVE": [86, 87, 220, 221, 361],
-  "HOENN_SHOAL_CAVE_PERCENTAGES": { "86": 30, "87": 25, "220": 20, "221": 15, "361": 10 },
-
-  "HOENN_SEAFLOOR_CAVERN": [41, 42, 129, 130],
-  "HOENN_SEAFLOOR_CAVERN_PERCENTAGES": { "41": 30, "42": 25, "129": 25, "130": 20 },
-
-  "HOENN_CAVE_OF_ORIGIN": [41, 42, 129, 130],
-  "HOENN_CAVE_OF_ORIGIN_PERCENTAGES": { "41": 30, "42": 25, "129": 25, "130": 20 },
-
-  "HOENN_SKY_PILLAR": [42, 232, 334, 335],
-  "HOENN_SKY_PILLAR_PERCENTAGES": { "42": 30, "232": 25, "334": 25, "335": 20 },
-
-  "HOENN_MT_PYRE": [353, 355, 356],
-  "HOENN_MT_PYRE_PERCENTAGES": { "353": 40, "355": 30, "356": 30 }
+  "HOENN_JAGGED_PASS": [66, 322, 325],
+  "HOENN_JAGGED_PASS_PERCENTAGES": { "66": 25, "322": 50, "325": 25 },
+  "HOENN_FIERY_PATH": [66, 88, 109, 218, 322, 324, 2015],
+  "HOENN_FIERY_PATH_PERCENTAGES": { "66": 15, "88": 4, "109": 5, "218": 15, "322": 30, "324": 30, "2015": 1 },
+  "HOENN_WEATHER_INSTITUTE": [352, 351],
+  "HOENN_WEATHER_INSTITUTE_PERCENTAGES": { "352": 60, "351": 40 },
+  "HOENN_ABANDONED_SHIP": [88, 89, 109, 2015, 2016],
+  "HOENN_ABANDONED_SHIP_PERCENTAGES": { "88": 49, "89": 9, "109": 40, "2015": 1, "2016": 1 },
+  "HOENN_SHOAL_CAVE": [41, 361, 363, 364],
+  "HOENN_SHOAL_CAVE_PERCENTAGES": { "41": 25, "361": 20, "363": 40, "364": 15 },
+  "HOENN_SEAFLOOR_CAVERN": [41, 42, 72, 73],
+  "HOENN_SEAFLOOR_CAVERN_PERCENTAGES": { "41": 30, "42": 20, "72": 30, "73": 20 },
+  "HOENN_CAVE_OF_ORIGIN": [41, 42, 302, 303],
+  "HOENN_CAVE_OF_ORIGIN_PERCENTAGES": { "41": 30, "42": 30, "302": 20, "303": 20 },
+  "HOENN_SKY_PILLAR": [42, 303, 334, 354, 385, 386],
+  "HOENN_SKY_PILLAR_PERCENTAGES": { "42": 27, "303": 20, "334": 20, "354": 30, "385": 2, "386": 1 },
+  "HOENN_MT_PYRE": [37, 307, 353, 355, 358, 2006],
+  "HOENN_MT_PYRE_PERCENTAGES": { "37": 9, "307": 13, "353": 32, "355": 37, "358": 8, "2006": 1 },
+  "REGION_START": {
+    "HOENN": {
+      "order": 3,
+      "subtitle": "GEN 3 / RUBY / SAPPHIRE",
+      "start_area": "LITTLEROOT_TOWN",
+      "starters": [252, 255, 258],
+      "professor": "Professor Birch",
+      "intro_text": "hoenn_birch_intro",
+      "starter_text": "hoenn_birch_starter",
+      "newgame_text": "hoenn_newgame_intro",
+      "dex_range": [252, 386],
+      "mom_newstart_text": ["hoenn_mom_newstart_1", "hoenn_mom_newstart_2", "hoenn_mom_newstart_3"],
+      "mom_home_text": ["hoenn_mom_home_1", "hoenn_mom_home_2", "hoenn_mom_home_3"],
+      "dex_extra": [407, 461, 462, 472, 475, 476, 477, 478]
+    }
+  }
 }
-
-

@@ -232,24 +232,32 @@ class BattleRenderer:
         xp_bg_rect = (bar_x - 3, xp_bar_y, xp_bar_w + 6, xp_bar_h)
         pygame.draw.rect(screen, (50, 50, 50), xp_bg_rect, border_radius=3)
 
-        # Calculate XP Width
-        # Battle-based evolution progress
-        current_xp = player_pokemon.wins
-        
-        if player_pokemon.effective_stage >= 3:
-            xp_ratio = 1.0
+        # Sub-stage XP bar: equal-width segments, each costing more XP than the last,
+        # so the bar visibly slows as the next stage/evolution approaches.
+        sub = player_pokemon.sub_stage
+        if sub is None:
+            target = 1.0
         else:
-            if current_xp >= 15:
-                xp_ratio = 1.0
-            else:
-                xp_ratio = current_xp / 15.0
-        
-        if xp_ratio > 0:
+            done, total, into, cost = sub
+            target = (min(done, total) + (into / cost if done < total else 0)) / total
+        key = (id(player_pokemon), player_pokemon.effective_stage)
+        if getattr(self, "_xp_bar_key", None) != key:
+            self._xp_bar_key, self._xp_bar_shown = key, target
+        self._xp_bar_shown += (target - self._xp_bar_shown) * 0.08
+        if abs(target - self._xp_bar_shown) < 0.002:
+            self._xp_bar_shown = target
+
+        if self._xp_bar_shown > 0:
             xp_fill_rect = (
-                bar_x, xp_bar_y + 1, 
-                int(xp_bar_w * xp_ratio), xp_bar_h - 2
+                bar_x, xp_bar_y + 1,
+                int(xp_bar_w * self._xp_bar_shown), xp_bar_h - 2
             )
-            pygame.draw.rect(screen, (0, 200, 255), xp_fill_rect, border_radius=2)
+            color = (255, 215, 0) if sub is None else (0, 200, 255)
+            pygame.draw.rect(screen, color, xp_fill_rect, border_radius=2)
+        if sub is not None:
+            for i in range(1, sub[1]):
+                tick_x = bar_x + int(xp_bar_w * i / sub[1])
+                pygame.draw.line(screen, (20, 20, 20), (tick_x, xp_bar_y), (tick_x, xp_bar_y + xp_bar_h - 1), 2)
         
         # XP Label (Tiny)
         # Utils.draw_text_outline(screen, "EXP", self.font_tiny, (0, 200, 255), bar_x - 20, xp_bar_y - 2, outline_color=BLACK, thickness=2)

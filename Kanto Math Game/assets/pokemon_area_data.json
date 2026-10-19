@@ -1,4 +1,5 @@
 {
+  "REGION_START": {"KANTO": {"order": 1, "subtitle": "GEN 1 / RED / BLUE", "start_area": "PALLET_TOWN", "starters": [1, 4, 7], "starter_bg": "starter_bg.png", "dex_range": [1, 151], "dex_extra": [169, 182, 186, 194, 195, 196, 197, 199, 208, 212, 230, 233, 242, 462, 463, 464, 465, 466, 467, 470, 471, 474, 700, 979]}},
   "FORM_MAP": {
     "2001": { "id": 19, "form": "alolan", "name": "Alolan Rattata", "types": ["DARK", "NORMAL"] },
     "2002": { "id": 20, "form": "alolan", "name": "Alolan Raticate", "types": ["DARK", "NORMAL"] },
@@ -104,7 +105,7 @@
     "KEY_ITEMS": [
       "ROCKY_HELMET", "SILPH_SCOPE", "HELIX_FOSSIL", "DOME_FOSSIL", 
       "OLD_AMBER", "ARMOR_FOSSIL", "SKULL_FOSSIL", "ROOT_FOSSIL", "CLAW_FOSSIL", "OLD_ROD",
-      "POKE_FLUTE", "BIKE_VOUCHER", "BICYCLE", "COIN_CASE", "AIR_BALLOON", "SURF_BOARD", "SUPER_ROD", "VOLCANO_PASS", "EXP_SHARE", "CERULEAN_CAVE_MAP", "MT_SILVER_MAP", "SQUIRT_BOTTLE", "ICE_MELTER", "CLIFF_GATE_PASS", "MYSTERY_EGG", "UNOWN_REPORT", "TOWN_MAP"
+      "POKE_FLUTE", "BIKE_VOUCHER", "BICYCLE", "COIN_CASE", "AIR_BALLOON", "SURF_BOARD", "SUPER_ROD", "VOLCANO_PASS", "EXP_SHARE", "CERULEAN_CAVE_MAP", "MT_SILVER_MAP", "SQUIRT_BOTTLE", "ICE_MELTER", "CLIFF_GATE_PASS", "MYSTERY_EGG", "UNOWN_REPORT", "TOWN_MAP", "GALARICA_CUFF", "GALARICA_WREATH", "SOOTHE_BELL", "RAINBOW_WING", "SILVER_WING", "TIDAL_BELL", "AMULET_COIN", "POKE_NAV", "DEVON_SCOPE", "DIVE_GEAR", "EON_TICKET", "ROCK_SMASHER"
     ],
 
     "SPECIAL_EVOLUTION_TARGETS": {
@@ -150,11 +151,11 @@
       },
       {
         "id": "m10", "type": "MAIN", "text": "Journey to Fuchsia", "desc": "Travel south to Fuchsia City. Take the long way through Route 12-15 or the fast way via Cycling Road (Route 16-18)!",
-        "condition": { "badges_min": 4, "visited_not": "FUSCHIA_CITY" }
+        "condition": { "badges_min": 4, "visited_not": "FUCHSIA_CITY" }
       },
       {
         "id": "m11", "type": "MAIN", "text": "The Soul Badge", "desc": "Challenge Koga at the Fuchsia City Gym. His poison and traps are legendary!",
-        "condition": { "visited": "FUSCHIA_CITY", "badges_less": 5 }
+        "condition": { "visited": "FUCHSIA_CITY", "badges_less": 5 }
       },
       {
         "id": "m12", "type": "MAIN", "text": "The Marsh Badge", "desc": "Now that Saffron City is accessible, challenge Sabrina at the Saffron Gym for your sixth badge!",
@@ -207,6 +208,10 @@
       {
         "id": "s_rocket", "type": "SIDE", "text": "The Game Corner Secret", "desc": "Investigate the suspicious Team Rocket presence at the Celadon Game Corner.",
         "condition": { "visited": "CELADON_CITY", "flag_not": "game_corner_cleared" }
+      },
+      {
+        "id": "s_silph", "type": "SIDE", "text": "Silph Co. Takeover", "desc": "Team Rocket has seized Silph Co. in Saffron City! Fight your way up all 11 floors and stop Giovanni. The President may reward you.",
+        "condition": { "visited": "SAFFRON_CITY", "flag": "tower_ghost_defeated", "flag_not": "silph_co_cleared" }
       },
       {
         "id": "s2", "type": "SIDE", "text": "The Sleeping Giant", "desc": "A Snorlax blocks Route 11. Use the Poké Flute to wake it up.",
@@ -507,7 +512,7 @@
         { "text": "Cinnabar Island", "target_area": "CINNABAR_ISLAND", "flag_condition": "visited_CINNABAR_ISLAND"}  
       ],
       "explore_options": [
-        { "text": "Talk to Professor Oak", "action": "NPC", "target": "professor_oak" },
+        { "text": "Talk to Professor Oak", "action": "NPC", "target": "professor_oak" }, 
         { "text": "Talk to Mom", "action": "NPC", "target": "mom" },
         { "text": "Talk to 'Crazy Guy'", "action": "NPC", "target": "lunatic" }
       ],
@@ -968,7 +973,7 @@
         { "text": "Route 7", "target_area": "KANTO_ROUTE_8" },
         { "text": "Route 16", "target_area": "KANTO_ROUTE_16" },  
         { "text": "Saffron City", "target_area": "SAFFRON_CITY", "flag_condition": "visited_SAFFRON_CITY" },
-        { "text": "Fuschia City", "target_area": "FUSCHIA_CITY", "flag_condition": "visited_FUSCHIA_CITY" }
+        { "text": "Fuchsia City", "target_area": "FUCHSIA_CITY", "flag_condition": "visited_FUCHSIA_CITY" }
       ],
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
@@ -1038,7 +1043,8 @@
         { "text": "Celadon City", "target_area": "CELADON_CITY", "flag_condition": "visited_CELADON_CITY" },
         { "text": "Cerulean City", "target_area": "CERULEAN_CITY", "flag_condition": "visited_CERULEAN_CITY" },
         { "text": "Vermillion City", "target_area": "VERMILLION_CITY", "flag_condition": "visited_VERMILLION_CITY" },
-        { "text": "Lavender Town", "target_area": "LAVENDER_TOWN", "flag_condition": "visited_LAVENDER_TOWN" }
+        { "text": "Lavender Town", "target_area": "LAVENDER_TOWN", "flag_condition": "visited_LAVENDER_TOWN" },
+        { "text": "Silph Co.", "target_area": "SILPH_CITY", "flag_condition": "tower_ghost_defeated" }
       ],
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
@@ -1067,29 +1073,44 @@
         { "text": "Heal", "action": "HEAL" },
         { "text": "Talk to Employee", "action": "NPC", "target": "silph_employee" },
         { "text": "Confront Rocket", "action": "ROCKET_GAUNTLET", "flag_condition": "not silph_co_cleared" },
+        { "text": "Visit the President", "action": "NPC", "target": "silph_president", "flag_condition": "silph_co_cleared" },
         { "text": "Talk to 'Crazy Guy'", "action": "NPC", "target": "lunatic" }
       ],
       "trainer_pool": [
-        { "sprite": "rocket_grunt.png", "name": "Grunt", "class": "ROCKET", "is_boss_battle": true, "team": [20, 42], "rewards": { "balls": 3 } },
+        { "sprite": "rocket_grunt_m.png", "name": "Grunt", "class": "ROCKET", "is_boss_battle": true, "team": [20, 42], "rewards": { "balls": 3 },
+          "dialogue": { "intro": ["1F: Hey! Silph Co. is closed to visitors. Team Rocket's orders!"], "player_won": ["Gah! The guys upstairs will stop you!"], "player_lost": ["Scram, kid!"] } },
+        { "sprite": "rocket_grunt_f.png", "name": "Grunt", "class": "ROCKET", "is_boss_battle": true, "team": [24, 41], "rewards": { "balls": 3 },
+          "dialogue": { "intro": ["3F: The warp panels are ours now. You'll never find the way up!"], "player_won": ["How did you solve those warp panels?!"], "player_lost": ["Lost in the maze, huh?"] } },
+        { "sprite": "scientist.png", "name": "Scientist Taylor", "class": "SCIENTIST", "is_boss_battle": true, "team": [81, 100, 109], "rewards": { "balls": 3 },
+          "dialogue": { "intro": ["4F: Team Rocket pays better than Silph ever did!"], "player_won": ["My calculations... were wrong."], "player_lost": ["Science wins again!"] } },
+        { "sprite": "rocket_grunt_m.png", "name": "Grunt", "class": "ROCKET", "is_boss_battle": true, "team": [66, 67], "rewards": { "balls": 3 },
+          "dialogue": { "intro": ["5F: We've got the Card Key. Every door in this building is ours!"], "player_won": ["Ugh... take the stupid Card Key."], "player_lost": ["Get lost!"] } },
         { "sprite": "scientist.png", "name": "Connor", "class": "SCIENTIST", "team": [137, 82], "rewards": { "balls": 3 },
-          "dialogue": { "intro": ["I... I had to help them! They forced me!"], "player_won": ["Thank you for stopping me."], "player_lost": ["I have no choice!"] } },
+          "dialogue": { "intro": ["7F: I... I had to help them! They forced me to finish the Porygon project!"], "player_won": ["Thank you for stopping me. The President is held on the top floor!"], "player_lost": ["I have no choice!"] } },
+        { "sprite": "proton.png", "name": "Admin Proton", "class": "ROCKET", "is_boss_battle": true, "team": [42, 89, 110], "rewards": { "balls": 8 },
+          "dialogue": { "intro": ["8F: They call me the scariest guy in Team Rocket.", "Let's see if you can count fast enough to keep up!"], "player_won": ["Tch. Archer will deal with you."], "player_lost": ["Too slow, kid."] } },
         { "sprite": "archer.png", "name": "Archer", "class": "ROCKET", "is_boss_battle": true, "team": [110, 24, 131], "rewards": { "balls": 10 },
-          "dialogue": { "intro": ["The boss is busy. I'll handle you."], "player_won": ["This changes nothing."], "player_lost": ["Typical child."] } },
-        { "sprite": "ariana.png", "name": "Ariana", "class": "ROCKET", "is_boss_battle": true, "team": [45, 91, 53], "rewards": { "balls": 10, "MASTER_BALL": 1 },
-          "dialogue": { "intro": ["How did you get past Archer?", "No matter. Your journey ends here!"], "player_won": ["The prototype! You won't get away with it!"], "player_lost": ["Stay out of adult business."] } }
+          "dialogue": { "intro": ["9F: The boss is busy. I'll handle you."], "player_won": ["This changes nothing."], "player_lost": ["Typical child."] } },
+        { "sprite": "ariana.png", "name": "Ariana", "class": "ROCKET", "is_boss_battle": true, "team": [45, 91, 53], "rewards": { "balls": 10 },
+          "dialogue": { "intro": ["10F: How did you get past Archer?", "No matter. Your journey ends here!"], "player_won": ["The prototype! You won't get away with it!"], "player_lost": ["Stay out of adult business."] } },
+        { "sprite": "leader_giovanni.png", "name": "Boss Giovanni", "class": "ROCKET_LEADER", "is_boss_battle": true, "team": [111, 33, 115, 31],
+          "rewards": { "balls": 15, "RARE_CANDY": 2 }, "victory_flag": "silph_co_cleared",
+          "dialogue": { "intro": ["11F: So, you are the child who ruined our Game Corner and haunted my Tower plans.", "Silph Co. will hand over the Master Ball, and Team Rocket will control every Poké Ball in Kanto.", "I will not let a child stand in my way. Prepare yourself!"],
+                        "player_won": ["Blast it all! You ruined our plans for Silph!", "But Team Rocket will never fall. I will be waiting for you, child."],
+                        "player_lost": ["Ha! Go home and practice your arithmetic."] } }
       ],
       "on_enter_event": null
     },
 
 
-    "FUSCHIA_CITY": {
+    "FUCHSIA_CITY": {
       "area_type": "town",
       "route_name": "Fuchsia City",
       "backgrounds": {
-        "main": "fuschia_city.png",
+        "main": "fuchsia_city.png",
         "pokecenter": "pokecenter.png",
         "pokemart": "pokemart.png",
-        "gym": "battle_gym_fuschia.png"
+        "gym": "battle_gym_fuchsia.png"
       },
       "has_gym": true,
       "gym": {
@@ -1146,7 +1167,7 @@
         { "text": "Gym", "action": "GYM" },
         { "text": "Talk to 'Crazy Guy'", "action": "NPC", "target": "lunatic" }
       ],
-      "lunatic_dialogue_key": "fuschia_lunatic_info",
+      "lunatic_dialogue_key": "fuchsia_lunatic_info",
       "trainer_pool": [],
       "on_enter_event": null
     },
@@ -1198,7 +1219,7 @@
         { "text": "Route 20", "target_area": "KANTO_ROUTE_20" },
         { "text": "Route 21", "target_area": "KANTO_ROUTE_21" },
         { "text": "Enter Volcano", "target_area": "CINNABAR_VOLCANO", "item_condition": "VOLCANO_PASS" },
-        { "text": "Fuschia City", "target_area": "FUSCHIA_CITY", "flag_condition": "visited_FUSCHIA_CITY"},
+        { "text": "Fuchsia City", "target_area": "FUCHSIA_CITY", "flag_condition": "visited_FUCHSIA_CITY"},
         { "text": "Pallet Town", "target_area": "PALLET_TOWN", "flag_condition": "visited_KANTO_ROUTE_21" }
       ],
       "explore_options": [
@@ -1221,7 +1242,7 @@
       "trainer_encounter_rate": 0,
       "travel_options": [
         { "text": "Route 22", "target_area": "KANTO_ROUTE_22" },
-        { "text": "Victory Road", "target_area": "KANTO_VICTORY_ROAD", "condition": "has_8_kanto_badges"},
+        { "text": "Victory Road", "target_area": "VICTORY_ROAD", "condition": "has_8_kanto_badges"},
         { "text": "Route 26", "target_area": "KANTO_ROUTE_26", "flag_condition": "beat_elite_four" },
         { "text": "Mt. Silver", "target_area": "MT_SILVER", "condition": "has_8_johto_badges" }
       ],
@@ -1237,7 +1258,7 @@
         "main": "indigo_city.png",
         "pokecenter": "indigo_city.png",
         "pokemart": "indigo_city.png",
-        "gym": ["battle_loreli.png", "battle_bruno.png", "battle_agatha.png", "battle_lance.png", "battle_champion.png"]
+          "gym": ["battle_elite_loreli.png", "battle_elite_bruno.png", "battle_elite_agatha.png", "battle_elite_lance.png", "battle_champion_kanto.png"]
       },
       "has_gym": true,
       "gym": {
@@ -1269,10 +1290,10 @@
         }
         ],
         "leader": {
-          "sprite": "lunatic2.png",
-          "name": "Ancient One",
+          "sprite": "rival.png",
+          "name": "Champion",
           "class": "CHAMPION", "is_boss_battle": true,
-          "team": [14300, 14400, 14500, 14600, 14900, 15000],
+          "team": [18, 65, 112, 103, 130, 6],
           "rewards": { "balls": 25, "MASTER_BALL": 1 },
           "victory_flag": "beat_champion"
         },
@@ -1487,7 +1508,7 @@
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
-        { "text": "BACK TO MT. MOON", "action": "EXIT", "target": "MT_MOON_3F", "condition": "can_exit", "color": "RED" },
+        { "text": "BACK TO MT. MOON", "action": "EXIT", "target": "MT_MOON", "condition": "can_exit", "color": "RED" },
         { "text": "CERULEAN CITY", "action": "EXIT", "target": "CERULEAN_CITY", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "CERULEAN_CITY",
@@ -1881,9 +1902,9 @@
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         { "text": "ROUTE 14", "action": "EXIT", "target": "KANTO_ROUTE_14", "condition": "can_exit", "color": "RED" },
-        { "text": "FUSCHIA CITY", "action": "EXIT", "target": "FUSCHIA_CITY", "condition": "can_exit", "color": "RED" }
+        { "text": "FUCHSIA CITY", "action": "EXIT", "target": "FUCHSIA_CITY", "condition": "can_exit", "color": "RED" }
       ],
-      "next_area": "FUSCHIA_CITY",
+      "next_area": "FUCHSIA_CITY",
       "on_enter_event": null
     },
 
@@ -1904,9 +1925,9 @@
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
         { "text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE" },
         { "text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE" },
-        { "text": "EXIT SAFARI ZONE", "action": "EXIT", "target": "FUSCHIA_CITY", "condition": "can_exit", "color": "RED" }
+        { "text": "EXIT SAFARI ZONE", "action": "EXIT", "target": "FUCHSIA_CITY", "condition": "can_exit", "color": "RED" }
       ],
-      "next_area": "FUSCHIA_CITY",
+      "next_area": "FUCHSIA_CITY",
       "on_enter_event": null
     },
 
@@ -1978,9 +1999,9 @@
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         { "text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE" },
         { "text": "ROUTE 17", "action": "EXIT", "target": "KANTO_ROUTE_17", "condition": "can_exit", "color": "RED" },
-        { "text": "FUSCHIA CITY", "action": "EXIT", "condition": "can_exit", "color": "RED" }
+        { "text": "FUCHSIA CITY", "action": "EXIT", "condition": "can_exit", "color": "RED" }
       ],
-      "next_area": "FUSCHIA_CITY",
+      "next_area": "FUCHSIA_CITY",
       "on_enter_event": null
     },
 
@@ -2116,7 +2137,7 @@
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         { "text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE" },
         { "text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE" },
-        { "text": "VICTORY ROAD", "action": "EXIT", "target": "KANTO_VICTORY_ROAD", "condition": "can_exit", "color": "RED" }
+        { "text": "VICTORY ROAD", "action": "EXIT", "target": "VICTORY_ROAD", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "INDIGO_PLATEAU",
       "on_enter_event": null
@@ -2578,14 +2599,14 @@
   "VIRIDIAN_FOREST": [10,11,12,13,14,15,16,25],
   "VIRIDIAN_FOREST_PERCENTAGES": {"10":20,"11":10,"12":5,"13":20,"14":10,"15":5,"16":20,"25":10},
 
-  "SAFARI_ZONE": [1,2,29,30,32,33,46,47,48,49,84,102,108,111,112,113,115,123,127,128,133,2017,2055,2056,2057],
-  "SAFARI_ZONE_PERCENTAGES": {"1":9,"29":9,"32":8,"84":8,"102":7,"108":8,"111":8,"30":6,"33":6,"46":6,"48":6,"2":4,"47":2,"49":2,"112":5,"113":2,"115":2,"123":2,"127":2,"128":1,"133":1,"2017":1,"2055":1,"2056":1,"2057":1},
+  "SAFARI_ZONE": [1,2,29,30,32,33,46,47,48,49,84,102,108,111,112,113,115,123,127,128,133,2017,2055,2056,2057,2058],
+  "SAFARI_ZONE_PERCENTAGES": {"1":9,"29":9,"32":8,"84":8,"102":7,"108":8,"111":8,"30":6,"33":6,"46":6,"48":6,"2":4,"47":2,"49":2,"112":5,"113":2,"115":2,"123":2,"127":2,"128":1,"133":1,"2017":1,"2055":1,"2056":1,"2057":1, "2058": 1},
 
   "MT_MOON": [35,41,46,74,95,2012],
   "MT_MOON_PERCENTAGES": {"35":10,"41":35,"46":15,"74":29,"95":10,"2012":1},
 
-  "POWER_PLANT": [81,82,88,89,100,101,125,2015,2016,2042],
-  "POWER_PLANT_PERCENTAGES": {"81":24,"100":25,"82":15,"101":14,"88":10,"89":4,"125":5,"2015":1,"2016":1,"2042":1},
+  "POWER_PLANT": [81,82,88,89,100,101,125,2015,2016,2041,2042],
+  "POWER_PLANT_PERCENTAGES": {"81":24,"100":24,"82":15,"101":14,"88":10,"89":4,"125":5,"2015":1,"2016":1,"2041":1,"2042":1},
 
   "ROCK_TUNNEL": [41,66,67,74,75,95,104,105,111,113,115,2012,2013,2018,2014],
   "ROCK_TUNNEL_PERCENTAGES": {"41":9,"66":10,"67":5,"74":28,"75":4,"95":10,"104":10,"105":4,"111":10,"113":1,"115":5,"2012":1,"2013":1,"2018":1,"2014":1},
@@ -2673,6 +2694,8 @@
     "whats_next": "What's next?",
     "professor_oak": ["Enjoy the world of Pokémon,", "but remember to take breaks and stay hydrated!"],
     "mom": ["Don't forget to eat your vegetables", "and get some exercise!"],
+    "red_mom_johto_visitor": ["Oh! A visitor from Johto?", "Red is out on Mt. Silver right now.", "He's become such a strong trainer!"],
+    "kanto_rival_mom": ["Oh, hello {player_name}!", "My son {rival_name} is out exploring Kanto right now.", "He said he was going to become the greatest Math Master!", "You look tired, why don't you rest here for a moment?", "... ... ...", "Give my regards to your mother in New Bark Town!"],
     "viridian_lunatic_info": ["The Gym Leader here left long ago.", "They say he will return only when a math whiz", "can defeat him in battle!"],
     "pallet_town_lunatic_info": ["Hehe...", "I remember when we first started out.", "If only we could go back, eh Pikachu?"],
     "cerulean_lunatic_info": ["They say there is a secret cave nearby", "That only a Champion can find it...", "...surely just a rumor."],
@@ -2680,7 +2703,7 @@
     "vermillion_lunatic_info": ["When one path is blocked...", "Another opens...", "We've been down that road before..."],
     "lavender_lunatic_info": ["Do you believe in ghosts?", "That white hand on your shoulder...", "Is it real?"],
     "celadon_lunatic_info": ["Hehehe... slots... coins...", "Just one more spin..."],
-    "fuschia_lunatic_info": ["It screams from deep within", "The bird in the island."],
+    "fuchsia_lunatic_info": ["It screams from deep within", "The bird in the island."],
     "cinnabar_lunatic_info": ["Our laboratory created something...", "Terrible.", "It destroyed the mansion."],
     "saffron_lunatic_info": ["The psychic power in this city...", "It gives me a headache!"],
     "rock_tunnel_city_lunatic_info": ["An area down the river...", "Buzzing with excitement...", "We caught a PKMN there once."],
@@ -2695,4 +2718,16 @@
     "pewter_lunatic_info": ["...Museum stones scream of buried wrath...", "Ancient bones from drowned worlds stir...", "Revive what time entombed and old curses wake...", "The dead remember your hands, child."],
     "mt_moon_stoneman_info": ["The Stone Man is a mysterious figure.", "He seems to know more about the mountain than he lets on."]
 
-  }}
+  },
+  "SLOT_MACHINE_MESSAGES": {
+    "not_enough_money": "Not enough money!",
+    "spinning": "Spinning...",
+    "no_win": "No win.",
+    "jackpot": "JACKPOT! 3 POKEBALLS!",
+    "big_win_pokemon": "BIG WIN! 3 {pokemon_name}!",
+    "win_pokemon": "WIN! 3 {pokemon_name}!",
+    "medium_win_combo": "MEDIUM WIN! 2 MATCH + POKEBALL!",
+    "small_win_pokeballs": "SMALL WIN! 3 POKEBALLS!",
+    "won_amount": "WON: ${amount}!"
+  }
+}

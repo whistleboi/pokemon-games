@@ -32,7 +32,8 @@ class Pokemon:
                 "SPEED": 50,
             },
         )
-        self.wins = 0
+        self.xp = 0
+        self.caught_region = None
 
         self.level = 100
         self.current_hp = self.get_max_hp()
@@ -81,22 +82,101 @@ class Pokemon:
         self.bob_speed = random.uniform(0.004, 0.006)
         self.bob_amount = random.uniform(8, 12)
 
+    # Wins required to reach each higher stage (stage+1, stage+2).
+    STAGE_THRESHOLDS = [15, 30]
+    # Progress is tracked in XP; an even-strength win is worth XP_PER_WIN, so a
+    # stage still takes 15 nominal wins. Relative-strength modifiers scale it.
+    XP_PER_WIN = 10
+    TIER_XP = STAGE_THRESHOLDS[0] * XP_PER_WIN
+    # Sub-stages inside one tier. Later ones cost more, so the bar slows near evolution.
+    SUB_STAGE_COSTS = (20, 30, 40, 60)
+    # Share of the gap to the next stage's stats that sub-stages can close (keeps boosts slight).
+    SUB_STAGE_GROWTH = 0.4
+    HP_BY_STAGE = (20, 20, 60, 90)
+
+    @property
+    def wins(self):
+        """Nominal wins, derived from XP (evolution checks and saves still use this)."""
+        return self.xp // self.XP_PER_WIN
+
+    @wins.setter
+    def wins(self, value):
+        self.xp = int(value) * self.XP_PER_WIN
+
     @property
     def effective_stage(self):
-        """Calculates stage based on base stage + accumulated wins (Pseudo Stages)."""
+        """Stage from base stage + wins crossing each threshold in STAGE_THRESHOLDS."""
         if hasattr(self, "_stage_override"):
             return self._stage_override
-        bonus = self.wins // 15
-        return min(3, self.stage + bonus)
+        extra = sum(1 for t in self.STAGE_THRESHOLDS if self.wins >= t)
+        return min(3, self.stage + extra)
+
+    def _tier_xp(self):
+        crossed = sum(1 for t in self.STAGE_THRESHOLDS if self.wins >= t)
+        return max(0, min(self.TIER_XP, self.xp - crossed * self.TIER_XP))
+
+    @property
+    def sub_stage(self):
+        """(completed, total, xp_into_current, current_cost), or None when fully grown."""
+        if self.effective_stage >= 3:
+            return None
+        left = self._tier_xp()
+        for i, cost in enumerate(self.SUB_STAGE_COSTS):
+            if left < cost:
+                return (i, len(self.SUB_STAGE_COSTS), left, cost)
+            left -= cost
+        n = len(self.SUB_STAGE_COSTS)
+        return (n, n, 0, self.SUB_STAGE_COSTS[-1])
+
+    @property
+    def sub_stage_fraction(self):
+        """How far stats have grown toward the next stage (0 .. <1)."""
+        sub = self.sub_stage
+        if not sub:
+            return 0.0
+        return self.SUB_STAGE_GROWTH * min(sub[0], sub[1] - 1) / (sub[1] - 1)
+
+    @property
+    def tier_progress(self):
+        """0..1 position on the XP bar for the current tier (1.0 when fully grown)."""
+        if self.effective_stage >= 3:
+            return 1.0
+        return self._tier_xp() / self.TIER_XP
+
+    @property
+    def evolution_progress(self):
+        """(xp_in_current_tier, tier_xp) for a progress bar. None if fully evolved."""
+        if self.effective_stage >= 3:
+            return None
+        return (self._tier_xp(), self.TIER_XP)
+
+    def grows_toward_next_stage(self, stage):
+        """Sub-stage boosts only apply when fighting at the Pokémon's true stage."""
+        return stage == min(self.effective_stage, 3) and stage < 3
 
     def get_max_hp(self, stage_override=None):
-        """Returns fixed Max HP based on evolution stage."""
-        st = stage_override if stage_override is not None else self.effective_stage
-        if st >= 3:
-            return 16
-        elif st == 2:
-            return 12
-        return 8
+        """HP per stage: 20 / 60 / 90, plus sub-stage growth toward the next stage."""
+        st = min(stage_override if stage_override is not None else self.effective_stage, 3)
+        hp = self.HP_BY_STAGE[st]
+        if self.grows_toward_next_stage(st):
+            hp += (self.HP_BY_STAGE[st + 1] - hp) * self.sub_stage_fraction
+        return int(round(hp))
+
+    def battle_xp(self, my_stage, foe_stage, foe_is_weak):
+        """XP for beating a foe: tougher (higher-stage) foes give more, weaker ones less."""
+        stage_mult = max(0.5, min(1.75, 1 + 0.25 * (foe_stage - my_stage)))
+        weak_mult = 0.8 if foe_is_weak else 1.0
+        return max(1, int(self.XP_PER_WIN * stage_mult * weak_mult + 0.5))
+
+    def gain_xp(self, amount):
+        """Add XP. Returns how many sub-stages were completed by this gain."""
+        stage_before, before = self.effective_stage, self.sub_stage
+        self.xp += amount
+        if not before:
+            return 0
+        if self.effective_stage > stage_before or not self.sub_stage:
+            return before[1] - before[0]
+        return max(0, self.sub_stage[0] - before[0])
 
     def get_stat(self, stat_name):
         """Gets a base stat value."""

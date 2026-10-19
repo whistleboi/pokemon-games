@@ -381,9 +381,9 @@ class PokeMartState(GameState):
             self.refresh_buttons()
 
     def next_page(self):
-        is_celadon = self.game.story_manager.current_area_key == "CELADON_CITY"
+        is_mega_mart = self.game.story_manager.current_area_key in ["CELADON_CITY", "GOLDENROD_CITY"]
         evo_items = sorted(list(self.game.loader.evolution_map.get("EVOLUTION_ITEMS", {}).keys()))
-        if is_celadon:
+        if is_mega_mart:
             all_items = ["POKE_BALLS", "RARE_CANDY"] + evo_items
         else:
             all_items = ["POKE_BALLS", "RARE_CANDY", "POTION", "REVIVE"]
@@ -402,10 +402,10 @@ class PokeMartState(GameState):
 
         self.shop_buttons = []
 
-        is_celadon = self.game.story_manager.current_area_key == "CELADON_CITY"
+        is_mega_mart = self.game.story_manager.current_area_key in ["CELADON_CITY", "GOLDENROD_CITY"]
         evo_items = sorted(list(self.game.loader.evolution_map.get("EVOLUTION_ITEMS", {}).keys()))
 
-        if is_celadon:
+        if is_mega_mart:
             all_items = ["POKE_BALLS", "RARE_CANDY"] + evo_items
         else:
             all_items = ["POKE_BALLS", "RARE_CANDY", "POTION", "REVIVE"]
@@ -964,7 +964,7 @@ class BagState(GameState):
             icon = self.game.assets.get_item_image(item_key)
 
             if item_key == "MYSTERY_EGG":
-                egg_path = os.path.join("assets", "sprites", "pokemon", "egg.png")
+                egg_path = os.path.join(self.game.assets.pokemon_sprites_dir, "egg.png")
                 if os.path.exists(egg_path):
                     icon = pygame.image.load(egg_path).convert_alpha()
                     icon = pygame.transform.scale(icon, (128, 128))
@@ -1072,12 +1072,21 @@ class BagState(GameState):
 
         pokemon = party[slot_index]
 
-        key = pokemon.name.upper()
+        # ARCHITECT: Use standardized key generation to match regional variants in evolution_map
+        p_name = pokemon.name.upper()
+        key = p_name
         if pokemon.form and pokemon.form != "normal":
-            key += f"_{pokemon.form.upper()}"
+            key = f"{p_name}_{pokemon.form.upper()}"
+
+        # ARCHITECT: Check for item locks to prevent Rare Candy from bypassing item requirements
+        item_locks = self.game.loader.evolution_map.get("ITEM_LOCKS", [])
+        is_item_locked = (key in item_locks) or (p_name in item_locks)
 
         next_entries = self.game.loader.evolution_map.get(key)
-        if not next_entries:
+        if not next_entries and key != p_name:
+            next_entries = self.game.loader.evolution_map.get(p_name)
+
+        if not next_entries or is_item_locked:
             if pokemon.effective_stage < 3:
                 pokemon.stage += 1
                 self.game.story_manager.inventory["RARE_CANDY"] -= 1
@@ -1372,18 +1381,22 @@ class PokedexState(GameState):
             starting_region = self.game.story_manager.starting_region
             national_dex = self.game.story_manager.story_flags.get("unlocked_national_dex", False)
 
-            if national_dex:
-                id_list = list(range(1, 252))
-            elif starting_region == "KANTO":
-                id_list = list(range(1, 152))
-            else:
-                kanto_visible = []
-                caught_ids = {v['id'] for v in caught_data.values()}
-                seen_set = set(seen_ids)
-                for p_id in range(1, 152):
-                    if p_id in seen_set or p_id in caught_ids:
-                        kanto_visible.append(p_id)
-                id_list = kanto_visible + list(range(152, 252))
+            # Each region the player has reached gets its own block: its generation's range plus
+            # the later-gen evolutions obtainable there (dex_extra). Anything else shows once seen/caught.
+            story = self.game.story_manager
+            regions = [r for r, _ in story.get_region_starts()
+                       if r == starting_region or story.story_flags.get(f"unlocked_{r.lower()}_badges")
+                       or (national_dex and r in ("KANTO", "JOHTO"))]
+            id_list = []
+            for r in regions:
+                cfg = story.get_region_start(r)
+                lo, hi = cfg.get("dex_range", [1, 151])
+                id_list += list(range(lo, hi + 1)) + cfg.get("dex_extra", [])
+            caught_ids = {v['id'] for v in caught_data.values()}
+            listed = set(id_list)
+            id_list += sorted(i for i in (caught_ids | set(seen_ids))
+                              if isinstance(i, int) and i <= 1025 and i not in listed)
+            id_list = list(dict.fromkeys(id_list))
 
             for p_id in id_list:
                 is_caught = False
@@ -1796,13 +1809,12 @@ class BadgeCaseState(GameState):
         self.previous_state = previous_state
         self.earned_badges = game.story_manager.badges
 
-        self.unlocked_regions = []
-        if game.story_manager.story_flags.get("unlocked_kanto_badges"):
-            self.unlocked_regions.append("KANTO")
-        if game.story_manager.story_flags.get("unlocked_johto_badges"):
-            self.unlocked_regions.append("JOHTO")
-        if game.story_manager.story_flags.get("unlocked_hoenn_badges"):
-            self.unlocked_regions.append("HOENN")
+        story = game.story_manager
+        starts = story.get_region_starts()
+        self.unlocked_regions = [
+            r for r, _ in starts
+            if story.story_flags.get(f"unlocked_{r.lower()}_badges") or story.badges.get(r)
+        ] or [story.starting_region]
 
         home = game.story_manager.starting_region
         self.unlocked_regions.sort(key=lambda r: 0 if r == home else 1)
@@ -1850,6 +1862,31 @@ class BadgeCaseState(GameState):
             if h_img:
                 self.badge_sprites["HOENN"][i] = pygame.transform.scale(h_img, (100, 100))
 
+        for region, cfg in starts:
+            if region in self.region_maps:
+                continue
+            badges = story.get_region_gym_badges(region)
+            self.region_maps[region] = {b: i + 1 for i, b in enumerate(badges)}
+            numbered = cfg.get("badge_images", [])
+            sprites = {}
+            for i, badge in enumerate(badges, start=1):
+                img = None
+                if i <= len(numbered):
+                    path = Utils.get_actual_path(game.assets.badges_dir, f"{numbered[i - 1]}.png")
+                    if os.path.exists(path):
+                        img = pygame.image.load(path).convert_alpha()
+                sprites[i] = (pygame.transform.scale(img, (100, 100)) if img
+                              else self._placeholder_badge(badge))
+            self.badge_sprites[region] = sprites
+
+    def _placeholder_badge(self, badge_name):
+        surf = pygame.Surface((100, 100), pygame.SRCALPHA)
+        pygame.draw.circle(surf, (200, 170, 60), (50, 50), 46)
+        pygame.draw.circle(surf, (120, 90, 20), (50, 50), 46, 4)
+        label = badge_name.replace("_", " ")[:8]
+        Utils.draw_text_outline(surf, label, self.game.assets.fonts["tiny"], WHITE, 50, 50)
+        return surf
+
     def prev_page(self):
         if len(self.unlocked_regions) > 1:
             self.current_page_idx = (self.current_page_idx - 1) % len(self.unlocked_regions)
@@ -1882,7 +1919,9 @@ class BadgeCaseState(GameState):
 
         region = self.unlocked_regions[self.current_page_idx] if self.unlocked_regions else "KANTO"
 
-        bg_colors = {"KANTO": DARK_RED, "JOHTO": (15, 35, 85), "HOENN": (20, 80, 40)}
+        bg_colors = {"KANTO": DARK_RED, "JOHTO": (15, 35, 85), "HOENN": (20, 80, 40),
+                     "SINNOH": (60, 40, 90), "UNOVA": (30, 30, 30), "KALOS": (20, 60, 100),
+                     "ALOLA": (110, 70, 20), "GALAR": (90, 20, 50), "PALDEA": (120, 40, 20)}
         screen.fill(bg_colors.get(region, (40, 40, 40)))
 
         case_rect = pygame.Rect(width * 0.1, height * 0.1, width * 0.8, height * 0.8)
@@ -1900,7 +1939,8 @@ class BadgeCaseState(GameState):
         cell_w = grid_rect.width / 4
         cell_h = grid_rect.height / 2
 
-        for i in range(1, 9):
+        badge_map = self.region_maps.get(region, {})
+        for i in range(1, max(badge_map.values(), default=8) + 1):
             row = (i - 1) // 4
             col = (i - 1) % 4
 
@@ -1908,7 +1948,6 @@ class BadgeCaseState(GameState):
             cy = grid_rect.y + (row + 0.5) * cell_h + 10
 
             sprite = self.badge_sprites.get(region, {}).get(i)
-            badge_map = self.region_maps.get(region, {})
 
             if sprite:
                 regional_badges = self.earned_badges.get(region, [])
@@ -2196,7 +2235,9 @@ class PokemonDetailState(GameState):
 
         texts = [
             f"Name: {self.pokemon.display_name}",
-            f"Stage: {self.pokemon.effective_stage}",
+            f"Stage: {self.pokemon.effective_stage}" + (
+                f"  (growth {self.pokemon.sub_stage[0]}/{self.pokemon.sub_stage[1]}, XP {self.pokemon.evolution_progress[0]}/{self.pokemon.evolution_progress[1]})"
+                if self.pokemon.sub_stage else "  (fully grown)"),
             f"HP: {self.pokemon.current_hp}/{self.pokemon.get_max_hp()}",
             f"Types: {'/'.join(self.pokemon.types)}"
         ]
@@ -2357,7 +2398,11 @@ class GameCornerState(GameState):
             ("PLAY AGAIN", self.start_infinite),
             ("LEAVE", self.go_back)
         ]
-        if not self.cleared:
+        # ARCHITECT: Add Slot Machine option
+        options.insert(0, ("PLAY SLOTS", self.start_slot_machine))
+
+        is_celadon = self.game.story_manager.current_area_key == "CELADON_CITY"
+        if is_celadon and not self.cleared:
             options.insert(0, ("STAIRS", self.check_stairs))
 
         self.clear_menu()
@@ -2370,6 +2415,10 @@ class GameCornerState(GameState):
                 cb, autosize=False)
             self.menu_buttons.append(btn)
             self.game.ui_manager.add_element(btn)
+
+    def start_slot_machine(self):
+        self.clear_menu()
+        self.game.change_state(SlotMachineState(self.game, self))
 
     def open_shop(self):
         self.clear_menu()
@@ -2448,10 +2497,7 @@ class GameCornerState(GameState):
         self.game.ui_manager.add_element(self.dialogue_box)
         self.game.ui_manager.add_element(self.btn_yes)
         self.game.ui_manager.add_element(self.btn_no)
-        if self.phase == "START":
-            self.btn_yes.set_visibility(True)
-            self.btn_no.set_visibility(True)
-        elif self.phase == "VICTORY_SEQ":
+        if self.phase == "VICTORY_SEQ":
             self.on_rocket_victory()
 
     def on_rocket_victory(self):
@@ -2467,6 +2513,19 @@ class GameCornerState(GameState):
 
     def update(self):
         self.dialogue_box.update()
+
+        # ARCHITECT: Only show Yes/No buttons when the question is actually reached in the dialogue
+        if self.phase == "START":
+            # Start dialogue has 3 lines; the question is the 3rd line (index 2)
+            if self.dialogue_box.current_line == 2 and self.dialogue_box.is_waiting_for_click:
+                self.btn_yes.set_visibility(True)
+                self.btn_no.set_visibility(True)
+        elif self.phase == "STAIRS_PROMPT":
+            # Stairs prompt has 2 lines; the question is the 2nd line (index 1)
+            if self.dialogue_box.current_line == 1 and self.dialogue_box.is_waiting_for_click:
+                self.btn_yes.set_visibility(True)
+                self.btn_no.set_visibility(True)
+
         if self.phase == "START" or self.phase == "STAIRS_PROMPT":
             box = self.dialogue_box.rect
             self.btn_yes.rect = pygame.Rect(box.right - 280, box.bottom - 80, 120, 60)
@@ -2478,6 +2537,175 @@ class GameCornerState(GameState):
         if self.npc_sprite:
             self.game.screen.blit(self.npc_sprite, self.npc_sprite.get_rect(center=(self.game.width//2, self.game.height*0.45)))
         self.dialogue_box.draw(self.game.screen)
+        self.game.ui_manager.draw(self.game.screen)
+
+
+class SlotMachineState(GameState):
+    def __init__(self, game, previous_state):
+        super().__init__(game)
+        self.previous_state = previous_state
+        self.money = self.game.story_manager.money
+        self.bet = 100
+        self.max_bet = 500
+        self.reels = ["", "", ""]
+        self.spin_result_message = ""
+        self.payout = 0
+        self.is_spinning = False
+        self.spin_timer = 0
+        self.spin_duration = 90
+        self.result_display_timer = 0
+        self.result_display_duration = 120
+
+        self.symbol_pool = [
+            (25, "PIKACHU", 3), (4, "CHARMANDER", 2), (7, "SQUIRTLE", 2), (1, "BULBASAUR", 2),
+            (155, "CYNDAQUIL", 2), (158, "TOTODILE", 2), (152, "CHIKORITA", 2),
+            (19, "RATTATA", 5), (16, "PIDGEY", 5), (41, "ZUBAT", 5),
+            ("POKEBALL_SYMBOL", "POKEBALL", 10)
+        ]
+        self.symbol_images = {}
+        self._load_symbol_images()
+
+        self.btn_exit = Button((30, 30, 140, 70), "EXIT", game.assets.fonts["small"], self.go_back, bg_color=RED)
+        self.btn_bet_one = Button((self.game.width // 2 - 250, self.game.height - 100, 150, 60), "BET 100", game.assets.fonts["small"], self.bet_one, bg_color=BLUE)
+        self.btn_bet_max = Button((self.game.width // 2 - 75, self.game.height - 100, 150, 60), "BET MAX", game.assets.fonts["small"], self.bet_max, bg_color=BLUE)
+        self.btn_spin = Button((self.game.width // 2 + 100, self.game.height - 100, 150, 60), "SPIN", game.assets.fonts["small"], self.spin_reels, bg_color=GREEN)
+
+    def _load_symbol_images(self):
+        for symbol_data in self.symbol_pool:
+            symbol_key = symbol_data[0]
+            if symbol_key == "POKEBALL_SYMBOL":
+                self.symbol_images[symbol_key] = pygame.transform.scale(self.game.assets.ui_ball, (100, 100))
+            else:
+                raw_data = self.game.loader.fetch_specific(symbol_key)
+                pokemon = Pokemon(raw_data, self.game.assets)
+                if pokemon.image:
+                    self.symbol_images[symbol_key] = pygame.transform.scale(pokemon.image, (100, 100))
+                else:
+                    self.symbol_images[symbol_key] = None
+
+    def go_back(self):
+        self.game.story_manager.money = self.money
+        self.game.change_state(self.previous_state)
+
+    def bet_one(self):
+        if not self.is_spinning and self.result_display_timer == 0:
+            self.bet = min(self.max_bet, self.bet + 100)
+            self.btn_bet_one.text = f"BET {self.bet}"
+
+    def bet_max(self):
+        if not self.is_spinning and self.result_display_timer == 0:
+            self.bet = self.max_bet
+            self.btn_bet_one.text = f"BET {self.bet}"
+
+    def spin_reels(self):
+        if self.is_spinning or self.result_display_timer > 0:
+            return
+        if self.money < self.bet:
+            self.spin_result_message = "Not enough money!"
+            self.payout = 0
+            self.result_display_timer = self.result_display_duration
+            return
+
+        self.money -= self.bet
+        self.is_spinning = True
+        self.spin_timer = self.spin_duration
+        self.spin_result_message = "Spinning..."
+        self.payout = 0
+
+    def calculate_payout(self):
+        s1, s2, s3 = self.reels
+        self.spin_result_message = "No win."
+        self.payout = 0
+
+        id1 = s1[0] if isinstance(s1, tuple) else s1
+        id2 = s2[0] if isinstance(s2, tuple) else s2
+        id3 = s3[0] if isinstance(s3, tuple) else s3
+
+        if id1 == id2 == id3:
+            if id1 == "POKEBALL_SYMBOL":
+                self.spin_result_message = "JACKPOT! 3 POKEBALLS!"
+                self.payout = self.bet * 10
+            elif id1 in [25, 4, 7, 155, 158, 152]: # Starters/Legendaries
+                self.spin_result_message = f"BIG WIN! 3 {s1[1].upper()}!"
+                self.payout = self.bet * 5
+            else:
+                self.spin_result_message = f"WIN! 3 {s1[1].upper()}!"
+                self.payout = self.bet * 3
+
+        elif (id1 == id2 and id3 == "POKEBALL_SYMBOL") or \
+             (id1 == id3 and id2 == "POKEBALL_SYMBOL") or \
+             (id2 == id3 and id1 == "POKEBALL_SYMBOL"):
+            self.spin_result_message = "MEDIUM WIN! 2 MATCH + POKEBALL!"
+            self.payout = self.bet * 2
+        elif id1 == "POKEBALL_SYMBOL" and id2 == "POKEBALL_SYMBOL" and id3 == "POKEBALL_SYMBOL":
+            self.spin_result_message = "SMALL WIN! 3 POKEBALLS!"
+            self.payout = self.bet * 1
+
+        self.money += self.payout
+        self.result_display_timer = self.result_display_duration
+
+    def start(self):
+        self.game.ui_manager.add_element(self.btn_exit)
+        self.game.ui_manager.add_element(self.btn_bet_one)
+        self.game.ui_manager.add_element(self.btn_bet_max)
+        self.game.ui_manager.add_element(self.btn_spin)
+
+    def handle_events(self, events):
+        pass
+
+    def update(self):
+        if self.is_spinning:
+            self.spin_timer -= 1
+            if self.spin_timer % 5 == 0:
+                weights = [s[2] for s in self.symbol_pool]
+                self.reels = random.choices(self.symbol_pool, weights=weights, k=3)
+            if self.spin_timer <= 0:
+                self.is_spinning = False
+                self.calculate_payout()
+        elif self.result_display_timer > 0:
+            self.result_display_timer -= 1
+            if self.result_display_timer <= 0:
+                self.spin_result_message = ""
+                self.payout = 0
+
+        # ARCHITECT: Use set_visibility instead of set_enabled as the core Button class 
+        # uses visibility to manage interaction state and prevent multiple spins.
+        can_interact = not self.is_spinning and self.result_display_timer == 0
+        self.btn_spin.set_visibility(can_interact)
+        self.btn_bet_one.set_visibility(can_interact)
+        self.btn_bet_max.set_visibility(can_interact)
+
+    def draw(self):
+        self.game.screen.fill((20, 20, 40))
+
+        Utils.draw_text_outline(self.game.screen, "SLOT MACHINE", self.game.assets.fonts["med"], GOLD, self.game.width // 2, 50)
+
+        Utils.draw_text_outline(self.game.screen, f"MONEY: ${self.money}", self.game.assets.fonts["small"], WHITE, self.game.width // 2 - 200, 120, align="left")
+        Utils.draw_text_outline(self.game.screen, f"BET: ${self.bet}", self.game.assets.fonts["small"], WHITE, self.game.width // 2 + 200, 120, align="right")
+
+        reel_width = 120
+        reel_height = 120
+        reel_spacing = 50
+        start_x = self.game.width // 2 - (reel_width * 3 + reel_spacing * 2) // 2
+        start_y = self.game.height // 2 - reel_height // 2
+
+        for i, symbol_data in enumerate(self.reels):
+            rect = pygame.Rect(start_x + i * (reel_width + reel_spacing), start_y, reel_width, reel_height)
+            pygame.draw.rect(self.game.screen, (50, 50, 70), rect, border_radius=10)
+            pygame.draw.rect(self.game.screen, WHITE, rect, 3, border_radius=10)
+
+            if symbol_data:
+                symbol_key = symbol_data[0]
+                img = self.symbol_images.get(symbol_key)
+                if img:
+                    img_rect = img.get_rect(center=rect.center)
+                    self.game.screen.blit(img, img_rect)
+
+        if self.spin_result_message:
+            Utils.draw_text_outline(self.game.screen, self.spin_result_message, self.game.assets.fonts["s_med"], GOLD, self.game.width // 2, self.game.height // 2 + 150)
+            if self.payout > 0:
+                Utils.draw_text_outline(self.game.screen, f"WON: ${self.payout}!", self.game.assets.fonts["med"], GREEN, self.game.width // 2, self.game.height // 2 + 200)
+
         self.game.ui_manager.draw(self.game.screen)
 
 
@@ -2493,7 +2721,10 @@ class GameCornerShopState(GameState):
         self.btn_back = Button((20, 20, 100, 50), "BACK", game.assets.fonts["tiny"], self.go_back, bg_color=RED)
 
     def try_buy(self):
-        self.dialogue_box.reset(["Hah! You can't afford that!", "You're a pretty bad gamer, aren't you?", "Hehehe... stay away from the secret stairs!"])
+        msg = ["Hah! You can't afford that!", "You're a pretty bad gamer, aren't you?"]
+        if self.game.story_manager.current_area_key == "CELADON_CITY":
+            msg.append("Hehehe... stay away from the secret stairs!")
+        self.dialogue_box.reset(msg)
         self.dialogue_box.callback = self.go_back
 
     def go_back(self): self.game.change_state(self.previous_state)
@@ -2534,37 +2765,31 @@ class PokeMathInfiniteState(GameState):
         self.ball_img = game.assets.ball_imgs[0]
         self.stars = [[random.randint(0, game.width), random.randint(0, game.height), random.randint(2, 4)] for _ in range(40)]
         self.sprite_y = game.height * 0.4
+        self.base_level = game.story_manager.get_math_level()
         self.generate_round()
 
     def generate_round(self):
         self.p_data = [Pokemon(self.game.loader.fetch_specific(random.choice(self.pool)), self.game.assets, size_mult=3.125) for _ in range(3)]
-        limit = min(100, 20 + (self.score // 5) * 10)
-        op = random.choice(["+", "-"])
-        if op == "+":
-            c = random.randint(4, limit)
-            s = random.randint(2, min(10, c - 2))
-            a, b = s, c - s
-        else:
-            b = random.randint(2, 10)
-            c = random.randint(2, max(2, limit - b))
-            a = b + c
-        self.problem_str, self.correct_ans = f"{a} {op} {b} = ?", c
-        opts = {c}
-        while len(opts) < 3:
-            f = c + random.choice([-3, -2, -1, 1, 2, 3])
-            if f >= 0:
-                opts.add(f)
-        self.options = sorted(list(opts), key=lambda x: random.random())
+        # Starts at the player's level and climbs one level every 10 points
+        engine = self.game.math
+        level = engine.clamp_level(min(engine.max_level, self.base_level + self.score // 10))
+        self.problem_str, self.correct_ans, self.options = engine.generate(level, num_options=3)
 
     def get_cx(self, i): return (i * self.game.width // 3) + (self.game.width // 6)
+
+    def get_btn_rect(self, i):
+        return pygame.Rect(self.get_cx(i) - 60, self.game.height * 0.65, 120, 80)
+
+    def start(self):
+        self.game.ui_manager.elements.clear()
 
     def handle_events(self, events):
         for event in events:
             if event.type == pygame.MOUSEBUTTONDOWN and not self.ball_active and self.pause_timer == 0:
-                for i, r in enumerate(self.answer_btn_rects):
-                    if r.collidepoint(event.pos):
+                for i in range(3):
+                    if self.get_btn_rect(i).collidepoint(event.pos):
                         self.process_answer(i)
-                    return
+                        return
 
     def process_answer(self, idx):
         self.balls -= 1
@@ -2611,8 +2836,7 @@ class PokeMathInfiniteState(GameState):
             Utils.draw_text_outline(screen, self.problem_str, self.game.assets.fonts["big"], GOLD, self.game.width//2, 100)
             for i in range(3):
                 txt = str(self.options[i])
-                rect = pygame.Rect(self.get_cx(i) - 60, self.game.height * 0.65, 120, 80)
-                self.answer_btn_rects[i] = rect
+                rect = self.get_btn_rect(i)
                 pygame.draw.rect(screen, BLUE, rect, border_radius=15)
                 Utils.draw_text_outline(screen, txt, self.game.assets.fonts["num"], WHITE, rect.centerx, rect.centery)
         if self.ball_active:
@@ -2832,12 +3056,12 @@ class MapState(GameState):
         self.map_list = []
         inv = self.game.story_manager.inventory
         if inv.get("TOWN_MAP", 0) > 0:
-            self.map_list.append(("assets/kanto_map.png", "Kanto Region"))
+            self.map_list.append((os.path.join(self.game.assets.assets_dir, "kanto_map.png"), "Kanto Region"))
         if inv.get("JOHTO_MAP", 0) > 0:
-            self.map_list.append(("assets/johto_map.png", "Johto Region"))
+            self.map_list.append((os.path.join(self.game.assets.assets_dir, "johto_map.png"), "Johto Region"))
 
         if not self.map_list:
-            self.map_list.append(("assets/kanto_map.png", "World Map"))
+            self.map_list.append((os.path.join(self.game.assets.assets_dir, "kanto_map.png"), "World Map"))
 
         self.current_idx = 0
         self.map_img = None
@@ -2905,4 +3129,77 @@ class MapState(GameState):
         if self.map_img:
             self.game.screen.blit(self.map_img, (0, 0))
         self.dialogue_box.draw(self.game.screen)
+        self.game.ui_manager.draw(self.game.screen)
+class PokeNavState(GameState):
+    """HUD extension that displays exact route encounter rates and completion status."""
+    def __init__(self, game, previous_state):
+        super().__init__(game)
+        self.previous_state = previous_state
+        self.area_data = game.story_manager.get_current_area_data()
+        self.pool_key = self.area_data.get("wild_pool_percentages")
+        self.pool = game.loader.area_data.get(self.pool_key, {}) if self.pool_key else {}
+        
+        self.btn_back = Button((30, 30, 140, 70), "BACK", game.assets.fonts["small"], 
+                               self.go_back, bg_color=RED)
+
+    def go_back(self):
+        from src.states.overworld import PlayState
+        if isinstance(self.previous_state, PlayState):
+            self.previous_state.is_resuming = True
+        self.game.change_state(self.previous_state)
+
+    def start(self):
+        self.game.ui_manager.add_element(self.btn_back)
+
+    def handle_events(self, events):
+        pass
+
+    def update(self):
+        pass
+
+    def draw(self):
+        screen = self.game.screen
+        screen.fill((10, 40, 30)) # Dark Nav Green
+        
+        route_name = self.area_data.get("route_name", "Unknown Area")
+        Utils.draw_text_outline(screen, f"POKENAV: {route_name.upper()}", 
+                                self.game.assets.fonts["med"], GREEN, self.game.width//2, 60)
+
+        if not self.pool:
+            Utils.draw_text_outline(screen, "NO WILD DATA FOR THIS AREA", 
+                                    self.game.assets.fonts["s_med"], WHITE, self.game.width//2, self.game.height//2)
+            self.game.ui_manager.draw(screen)
+            return
+
+        start_y = 150
+        has_devon_scope = self.game.story_manager.inventory.get("DEVON_SCOPE", 0) > 0
+        caught_data = self.game.data.data.get("pokedex", {})
+        
+        sorted_pool = sorted(self.pool.items(), key=lambda x: x[1], reverse=True)
+        
+        for i, (p_id_str, chance) in enumerate(sorted_pool):
+            p_id = int(p_id_str)
+            name = self.game.assets.pokemon_names.get(str(p_id), "???").upper()
+            is_caught = str(p_id) in caught_data
+            
+            # ARCHITECT: Devon Scope highlights "Hidden" Pokémon (<5%) in Gold
+            is_rare = chance < 5
+            text_color = WHITE
+            if is_rare and has_devon_scope:
+                text_color = GOLD
+            elif is_rare:
+                name = "???" # Obscure rare ones without scope
+            
+            y_pos = start_y + i * 45
+            label = f"{name}: {chance}%"
+            
+            Utils.draw_text_outline(screen, label, self.game.assets.fonts["tiny"], 
+                                    text_color, 200, y_pos, align="left")
+            
+            if is_caught:
+                screen.blit(self.game.assets.ui_ball, (160, y_pos - 10))
+            else:
+                pygame.draw.circle(screen, GRAY, (175, y_pos), 8)
+
+        self.game.ui_manager.draw(screen)
         self.game.ui_manager.draw(self.game.screen)

@@ -26,6 +26,8 @@ class StoryManager:
         self.inventory = {}
         self.notified_missions = []
         self.initialized = False
+        # "AUTO" follows the story; a number locks a level from math_levels.json
+        self.math_difficulty = "AUTO"
 
     def initialize_new_game(self, config):
         if self.initialized:
@@ -207,14 +209,47 @@ class StoryManager:
 
         return pid_str in self.game.data.data.get("pokedex", {})
 
+    def get_total_badges(self):
+        """Total badges earned across all regions."""
+        return sum(len(b) for b in self.badges.values())
+
+    def get_math_level(self):
+        """Difficulty scales with total badges across all regions."""
+        total = self.get_total_badges()
+        return self.game.math.resolve_level(self.math_difficulty, "GLOBAL", total)
+
+    def get_math_label(self):
+        total = self.get_total_badges()
+        return self.game.math.describe(self.math_difficulty, "GLOBAL", total)
+
+    def get_region_starts(self):
+        """REGION_START configs as (region, cfg) pairs in story order."""
+        starts = self.game.loader.area_data.get("REGION_START", {})
+        return sorted(starts.items(), key=lambda kv: kv[1].get("order", 99))
+
+    def get_region_start(self, region=None):
+        region = (region or self.starting_region).upper()
+        return self.game.loader.area_data.get("REGION_START", {}).get(region, {})
+
+    def get_region_gym_badges(self, region):
+        """Badge names awarded by a region's gyms, in story order (league excluded)."""
+        badges = []
+        for area in self.game.loader.area_data.get("STORY_PROGRESSION", {}).values():
+            if str(area.get("region") or "").upper() != region:
+                continue
+            leader = area.get("gym", {}).get("leader")
+            if isinstance(leader, dict) and leader.get("badge_reward"):
+                badges.append(leader["badge_reward"])
+        return badges
+
     def get_current_region(self):
         """
         Determines the region based on the current area key.
         Future-proofed by checking area data first, then prefix.
         """
         area_data = self.get_current_area_data()
-        if "region" in area_data:
-            return area_data["region"]
+        if area_data.get("region"):
+            return str(area_data["region"]).upper()
 
         if "_" in self.current_area_key:
             prefix = self.current_area_key.split("_")[0]
@@ -340,6 +375,11 @@ class StoryManager:
 
     def get_current_hint(self):
         """Provides a contextual hint to the player."""
+        if self.get_current_region() != "KANTO":
+            main = [m for m in self.get_active_missions() if m.get("type") == "MAIN"]
+            if main:
+                return main[0]["desc"]
+            return "Explore the region, earn badges, and become Champion!"
         kanto_badges = self.badges.get("KANTO", [])
         if "BOULDER" not in kanto_badges:
             if self.current_area_key != "PEWTER_CITY":
@@ -397,7 +437,8 @@ class StoryManager:
     def sync_badges(self):
         """
         Validates badges against gym progress.
-        Ensures players get credit for badges even if a state transition failed.
+        Handles both old format (gym.leader is a dict with badge_reward)
+        and new format (gym.leader is a name string, gym.badge is the badge name).
         """
         if not hasattr(self, "game") or not self.game.loader:
             return
@@ -413,10 +454,15 @@ class StoryManager:
             leader = gym.get("leader")
 
             if leader and prog_val > len(trainers):
-                badge = leader.get("badge_reward")
+                if isinstance(leader, dict):
+                    badge = leader.get("badge_reward")
+                else:
+                    raw = gym.get("badge", "")
+                    badge = (raw.upper().replace(" ", "_").replace("'", "")
+                             if raw else None)
                 region = area_data.get("region", "KANTO")
                 if badge and badge not in self.badges.get(region, []):
-                    print(f"Sync: Awarding missing {badge} Badge for {area_key}!")
+                    print(f"Sync: Awarding missing {badge} for {area_key}!")
                     self.badges.setdefault(region, []).append(badge)
 
             if area_key == "INDIGO_PLATEAU" and prog_val > len(trainers):
@@ -427,42 +473,112 @@ class StoryManager:
         self.sync_catch_counts()
 
     def sync_key_items(self):
-        """Ensures players have key items associated with badges/flags they have already earned."""
+        """Ensures players have key items unlocked by their earned badges."""
         if not hasattr(self, "inventory") or self.inventory is None:
             self.inventory = {}
 
-        badge_to_item = {
-            "BOULDER": "TOWN_MAP",
-            "CASCADE": "BIKE_VOUCHER",
-            "THUNDER": "EXP_SHARE",
-            "RAINBOW": "COIN_CASE",
-            "MARSH": "AIR_BALLOON",
-            "SOUL": "SURF_BOARD",
-            "VOLCANO": "VOLCANO_PASS",
-            "EARTH": "CERULEAN_CAVE_MAP"
+        # region_id → list of (badge_name, item) in order earned
+        region_badge_items = {
+            "KANTO": [
+                ("BOULDER", "TOWN_MAP"),
+                ("CASCADE", "BIKE_VOUCHER"),
+                ("THUNDER", "EXP_SHARE"),
+                ("RAINBOW", "COIN_CASE"),
+                ("MARSH", "AIR_BALLOON"),
+                ("SOUL", "SURF_BOARD"),
+                ("VOLCANO", "VOLCANO_PASS"),
+                ("EARTH", "CERULEAN_CAVE_MAP"),
+            ],
+            "JOHTO": [
+                ("ZEPHYR", "JOHTO_MAP"),
+                ("HIVE", "OLD_ROD"),
+                ("PLAIN", "SQUIRT_BOTTLE"),
+                ("FOG", "SUPER_ROD"),
+                ("STORMBADGE", "AMULET_COIN"),
+                ("GLACIER", "ROCK_SMASHER"),
+                ("RISING", "MT_SILVER_MAP"),
+            ],
+            "HOENN": [
+                ("STONE_BADGE", "HOENN_MAP"),
+                ("KNUCKLE_BADGE", "OLD_ROD"),
+                ("DYNAMO_BADGE", "EXP_SHARE"),
+                ("HEAT_BADGE", "GO_GOGGLES"),
+                ("BALANCE_BADGE", "AMULET_COIN"),
+                ("FEATHER_BADGE", "ACRO_BIKE"),
+                ("MIND_BADGE", "DIVE_GOGGLES"),
+                ("RAIN_BADGE", "HOENN_CAVE_MAP"),
+            ],
+            "SINNOH": [
+                ("COAL_BADGE", "SINNOH_MAP"),
+                ("FOREST_BADGE", "OLD_ROD"),
+                ("COBBLE_BADGE", "EXP_SHARE"),
+                ("FEN_BADGE", "SUPER_ROD"),
+                ("RELIC_BADGE", "AMULET_COIN"),
+                ("MINE_BADGE", "EXPLORER_KIT"),
+                ("ICICLE_BADGE", "MEMBER_CARD"),
+                ("BEACON_BADGE", "SINNOH_CAVE_MAP"),
+            ],
+            "UNOVA": [
+                ("TRIO_BADGE", "UNOVA_MAP"),
+                ("BASIC_BADGE", "EXP_SHARE"),
+                ("INSECT_BADGE", "OLD_ROD"),
+                ("BOLT_BADGE", "SUPER_ROD"),
+                ("QUAKE_BADGE", "AMULET_COIN"),
+                ("JET_BADGE", "DOWSING_MACHINE"),
+                ("FREEZE_BADGE", "PERMIT_CARD"),
+                ("LEGEND_BADGE", "UNOVA_CAVE_MAP"),
+            ],
+            "KALOS": [
+                ("BUG_BADGE", "KALOS_MAP"),
+                ("CLIFF_BADGE", "EXP_SHARE"),
+                ("RUMBLE_BADGE", "OLD_ROD"),
+                ("PLANT_BADGE", "SUPER_ROD"),
+                ("VOLTAGE_BADGE", "AMULET_COIN"),
+                ("FAIRY_BADGE", "HOLO_CASTER"),
+                ("PSYCHIC_BADGE", "TMV_PASS"),
+                ("ICEBERG_BADGE", "MEGA_RING"),
+            ],
+            "ALOLA": [
+                ("MELEMELE_STAMP", "ALOLA_MAP"),
+                ("AKALA_STAMP", "EXP_SHARE"),
+                ("ULAUA_STAMP", "AMULET_COIN"),
+                ("PONI_STAMP", "Z_RING"),
+            ],
+            "GALAR": [
+                ("GRASS_BADGE", "GALAR_MAP"),
+                ("WATER_BADGE", "EXP_SHARE"),
+                ("FIRE_BADGE", "OLD_ROD"),
+                ("FIGHTING_BADGE", "AMULET_COIN"),
+                ("FAIRY_BADGE", "ROTOM_BIKE"),
+                ("ROCK_BADGE", "SUPER_ROD"),
+                ("DARK_BADGE", "CONTRABAND_PASS"),
+                ("DRAGON_BADGE", "WYNDON_PASS"),
+            ],
+            "PALDEA": [
+                ("BUG_BADGE", "PALDEA_MAP"),
+                ("GRASS_BADGE", "EXP_SHARE"),
+                ("ELECTRIC_BADGE", "OLD_ROD"),
+                ("WATER_BADGE", "AMULET_COIN"),
+                ("NORMAL_BADGE", "SUPER_ROD"),
+                ("GHOST_BADGE", "TERA_ORB"),
+                ("PSYCHIC_BADGE", "AREA_ZERO_PASS"),
+                ("ICE_BADGE", "ACADEMY_ACE_CARD"),
+            ],
         }
 
-        johto_badge_to_item = {
-            "ZEPHYR": "JOHTO_MAP",
-            "HIVE": "OLD_ROD",
-            "PLAIN": "SQUIRT_BOTTLE",
-            "FOG": "SUPER_ROD",
-            "STORMBADGE": "SURF_BOARD",
-            "MINERAL": "AIR_BALLOON",
-            "GLACIER": "VOLCANO_PASS",
-            "RISING": "MT_SILVER_MAP"
-        }
+        def bare(name):
+            return name[:-6] if name.endswith("_BADGE") else name
 
-        for badge, item in badge_to_item.items():
-            if badge in self.badges and self.inventory.get(item, 0) == 0:
+        for region, pairs in region_badge_items.items():
+            earned = {bare(b) for b in self.badges.get(region, [])}
+            for badge, item in pairs:
+                if bare(badge) not in earned:
+                    continue
+                if self.inventory.get(item, 0) > 0:
+                    continue
                 if item == "BIKE_VOUCHER" and self.inventory.get("BICYCLE", 0) > 0:
                     continue
-                print(f"Sync: Awarding missing {item} for {badge} Badge!")
-                self.inventory[item] = 1
-
-        for badge, item in johto_badge_to_item.items():
-            if badge in self.badges["JOHTO"] and self.inventory.get(item, 0) == 0:
-                print(f"Sync: Awarding missing {item} for Johto {badge} Badge!")
+                print(f"Sync: Awarding {item} for {badge} ({region})!")
                 self.inventory[item] = 1
 
         if self.story_flags.get("visited_RUINS_OF_ALPH") and self.inventory.get("UNOWN_REPORT", 0) == 0:
@@ -493,15 +609,18 @@ class StoryManager:
             "inventory": self.inventory,
             "notified_missions": self.notified_missions,
             "player_team": [
-                {"id": p.id, "form": p.form, "shiny": p.is_shiny, "wins": p.wins, "hp": p.current_hp, "stage": p.stage}
-                for p in self.player_team
+                {
+                    "id": p.id, "form": p.form, "shiny": p.is_shiny,
+                    "wins": p.wins, "xp": p.xp, "hp": p.current_hp, "stage": p.stage,
+                    "caught_region": getattr(p, "caught_region", None)
+                } for p in self.player_team if p
             ],
             "pc_pokemon": [
                 {
-                    "id": p.id, "form": p.form, "shiny": p.is_shiny, "wins": p.wins,
-                    "slot": i, "hp": p.current_hp, "stage": p.stage
-                } if p is not None else None
-                for i, p in enumerate(self.pc_pokemon)
+                    "id": p.id, "form": p.form, "shiny": p.is_shiny,
+                    "wins": p.wins, "xp": p.xp, "hp": p.current_hp, "stage": p.stage,
+                    "caught_region": getattr(p, "caught_region", None)
+                } if p else None for p in self.pc_pokemon
             ],
             "starting_region": self.starting_region,
             "rival_starter_id": (
@@ -512,9 +631,26 @@ class StoryManager:
             ),
             "player_name": self.game.player_name,
             "rival_name": getattr(self.game, "rival_name", "BLUE"),
+            "rival_true_name": getattr(self.game, "rival_true_name", "BLUE"),
+            "math_difficulty": self.math_difficulty,
         }
 
+    @staticmethod
+    def _migrate_area_keys(obj, renames={"FUSCHIA_CITY": "FUCHSIA_CITY"}):
+        """Rewrite renamed area keys anywhere in an older save (keys, values, flag names)."""
+        if isinstance(obj, str):
+            for old, new in renames.items():
+                obj = obj.replace(old, new)
+            return obj
+        if isinstance(obj, list):
+            return [StoryManager._migrate_area_keys(x) for x in obj]
+        if isinstance(obj, dict):
+            return {StoryManager._migrate_area_keys(k): StoryManager._migrate_area_keys(v)
+                    for k, v in obj.items()}
+        return obj
+
     def deserialize(self, data, loader):
+        data = self._migrate_area_keys(data)
         self.starting_region = data.get("starting_region", "KANTO")
         self.current_area_key = data.get("current_area_key", "PALLET_TOWN")
         raw_badges = data.get("badges", [])
@@ -535,6 +671,8 @@ class StoryManager:
 
         self.inventory = data.get("inventory", {})
         self.notified_missions = data.get("notified_missions", [])
+        # Older saves have no setting -> AUTO (follows region + badges)
+        self.math_difficulty = data.get("math_difficulty", "AUTO")
 
         self.player_team = []
         for p_data in data.get("player_team", []):
@@ -544,7 +682,8 @@ class StoryManager:
                 is_shiny=p_data.get("shiny", False),
             )
             pokemon = Pokemon(raw, loader.game.assets, size_mult=2.5)
-            pokemon.wins = p_data.get("wins", 0)
+            pokemon.caught_region = p_data.get("caught_region")
+            pokemon.xp = p_data.get("xp", p_data.get("wins", 0) * Pokemon.XP_PER_WIN)
             if "hp" in p_data:
                 pokemon.current_hp = p_data["hp"]
             if "stage" in p_data:
@@ -561,7 +700,8 @@ class StoryManager:
                 is_shiny=p_data.get("shiny", False),
             )
             pokemon = Pokemon(raw, loader.game.assets, size_mult=2.5)
-            pokemon.wins = p_data.get("wins", 0)
+            pokemon.caught_region = p_data.get("caught_region")
+            pokemon.xp = p_data.get("xp", p_data.get("wins", 0) * Pokemon.XP_PER_WIN)
             if "hp" in p_data:
                 pokemon.current_hp = p_data["hp"]
             if "stage" in p_data:
@@ -586,21 +726,22 @@ class StoryManager:
         """
         area_data = self.game.loader.area_data.get("STORY_PROGRESSION", {}).get(area_id, {})
         backgrounds = area_data.get("backgrounds", {})
-        gym_bg_config = backgrounds.get("gym")
-
-        if isinstance(gym_bg_config, list):
-            if is_leader:
-                return gym_bg_config[-1] if gym_bg_config else None
-            else:
-                if 0 <= trainer_index < len(gym_bg_config):
-                    return gym_bg_config[trainer_index]
+        
+        # ARCHITECT: Check both 'gym' and 'battle' keys for potential lists (used in Leagues)
+        for key in ["gym", "battle"]:
+            bg_config = backgrounds.get(key)
+            if isinstance(bg_config, list):
+                if is_leader:
+                    return bg_config[-1] if bg_config else None
                 else:
-                    return gym_bg_config[0]
+                    if 0 <= trainer_index < len(bg_config):
+                        return bg_config[trainer_index]
+                    else:
+                        return bg_config[0]
+            elif isinstance(bg_config, str) and key == "gym":
+                return bg_config
 
         if "battle" in backgrounds:
             return backgrounds["battle"]
-
-        elif isinstance(gym_bg_config, str):
-            return gym_bg_config
 
         return None

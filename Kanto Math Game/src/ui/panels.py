@@ -241,7 +241,8 @@ class PartySlotUI(UIElement):
 
         Utils.draw_text_outline(surface, name, font, WHITE, name_x, name_y, BLACK, 2, align="left")
 
-        stage_str = f"Stage {self.pokemon.effective_stage}"
+        sub = self.pokemon.sub_stage
+        stage_str = f"Stage {self.pokemon.effective_stage}" + (f"  ({sub[0]}/{sub[1]})" if sub else "  MAX")
         Utils.draw_text_outline(surface, stage_str, self.game.assets.fonts["tiny"], WHITE, name_x, name_y + 30, BLACK, 2, align="left")
 
         sprite = pygame.transform.scale(self.pokemon.sidebar_image, (80, 80))

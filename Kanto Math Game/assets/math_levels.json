@@ -1,0 +1,73 @@
+{
+  "_comment": "Math difficulty levels. 'ops' weights pick the operation; 'formats' weights pick how the question is asked (solve: 3 + 4 = ?, missing: 3 + ? = 7, equation: 7 = ? pick the matching sum). 'auto' maps each region's badge count to a level for players who choose AUTO.",
+  "symbols": { "add": "+", "sub": "-", "mul": "x", "div": "÷" },
+  "levels": [
+    {
+      "id": 1, "name": "POKE BALL", "desc": "Add & subtract up to 10",
+      "ops": { "add": 1, "sub": 1 },
+      "add": { "max_sum": 10, "min_term": 1 },
+      "sub": { "max_start": 10, "min_term": 1 },
+      "formats": { "solve": 1 }
+    },
+    {
+      "id": 2, "name": "GREAT BALL", "desc": "Add & subtract up to 20",
+      "ops": { "add": 1, "sub": 1 },
+      "add": { "max_sum": 20, "min_term": 1 },
+      "sub": { "max_start": 20, "min_term": 1 },
+      "formats": { "solve": 3, "missing": 1 }
+    },
+    {
+      "id": 3, "name": "ULTRA BALL", "desc": "Add & subtract up to 50",
+      "ops": { "add": 1, "sub": 1 },
+      "add": { "max_sum": 50, "min_term": 2 },
+      "sub": { "max_start": 50, "min_term": 2 },
+      "formats": { "solve": 1, "missing": 1, "equation": 1 }
+    },
+    {
+      "id": 4, "name": "QUICK BALL", "desc": "Add & subtract up to 100",
+      "ops": { "add": 1, "sub": 1 },
+      "add": { "max_sum": 100, "min_term": 2 },
+      "sub": { "max_start": 100, "min_term": 2 },
+      "formats": { "solve": 1, "missing": 1, "equation": 1 }
+    },
+    {
+      "id": 5, "name": "TIMER BALL", "desc": "Times tables 2, 5 & 10",
+      "ops": { "mul": 3, "add": 1, "sub": 1 },
+      "mul": { "tables": [2, 5, 10], "max_factor": 10 },
+      "add": { "max_sum": 100, "min_term": 2 },
+      "sub": { "max_start": 100, "min_term": 2 },
+      "formats": { "solve": 3, "missing": 1, "equation": 1 }
+    },
+    {
+      "id": 6, "name": "DUSK BALL", "desc": "All times tables to 10",
+      "ops": { "mul": 3, "div": 1 },
+      "mul": { "tables": [2, 3, 4, 5, 6, 7, 8, 9, 10], "max_factor": 10 },
+      "div": { "tables": [2, 5, 10], "max_factor": 10 },
+      "formats": { "solve": 2, "missing": 1, "equation": 1 }
+    },
+    {
+      "id": 7, "name": "LUXURY BALL", "desc": "Multiply & divide to 12",
+      "ops": { "mul": 1, "div": 1 },
+      "mul": { "tables": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], "max_factor": 12 },
+      "div": { "tables": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], "max_factor": 12 },
+      "formats": { "solve": 2, "missing": 1, "equation": 1 }
+    },
+    {
+      "id": 8, "name": "MASTER BALL", "desc": "Everything, bigger numbers",
+      "ops": { "add": 1, "sub": 1, "mul": 1, "div": 1 },
+      "add": { "max_sum": 1000, "min_term": 10 },
+      "sub": { "max_start": 1000, "min_term": 10 },
+      "mul": { "tables": [2, 3, 4, 5, 6, 7, 8, 9, 11, 12], "max_factor": 25 },
+      "div": { "tables": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], "max_factor": 12 },
+      "formats": { "solve": 1, "missing": 1, "equation": 1 }
+    }
+  ],
+  "auto": {
+    "_comment": "GLOBAL uses total badges across all regions (8 per region, 9 regions = 72 max).",
+    "GLOBAL": [[0, 2], [4, 3], [8, 4], [12, 5], [20, 6], [28, 7], [40, 8]],
+    "KANTO": [[0, 2], [4, 3]],
+    "JOHTO": [[0, 4], [3, 5], [6, 6]],
+    "HOENN": [[0, 6], [4, 7]],
+    "DEFAULT": [[0, 8]]
+  }
+}
