@@ -6,6 +6,7 @@ import math
 from dataclasses import dataclass
 from src.config import DEFAULT_BASE_STATS, VOLUME
 from src.utils import DummySound
+from src.pokemon.contest import new_condition
 
 
 # [REF-0005: Pokemon Core Class]
@@ -36,6 +37,10 @@ class Pokemon:
         self.caught_region = None
         # Caught as a Gigantamax raid boss: shown normally, but keeps the G-Max Factor.
         self.gmax_factor = False
+        # Contest condition (raised by Pokéblocks), Sheen and ribbons won.
+        self.condition = new_condition()
+        self.sheen = 0
+        self.ribbons = []
 
         self.level = 100
         self.current_hp = self.get_max_hp()

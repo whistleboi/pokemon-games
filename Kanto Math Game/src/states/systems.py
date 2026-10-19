@@ -9,6 +9,8 @@ from src.ui.dialogue import ClassicDialogueBox
 from src.utils import Utils
 from src.config import WHITE, BLACK, GREEN, BLUE, RED, GOLD, GRAY, LIGHT_GRAY, VOLUME, DARK_RED
 from src.pokemon.data import Pokemon
+from src.pokemon.contest import (feebas_ready, feed_pokeblock, POKEBLOCKS, POKEBLOCK_PRICE, CATEGORIES,
+                                 CATEGORY_COLOR, MAX_CONDITION, FEEBAS_BEAUTY)
 from src.states.battle import TrainerBattleState, TrainerIntroState
 import random
 
@@ -351,9 +353,11 @@ class PokemonPartyMenuState(GameState):
 
 # [REF-0034: PokeMart System]
 class PokeMartState(GameState):
-    def __init__(self, game, previous_state):
+    def __init__(self, game, previous_state, stock=None):
+        """stock: sell only these items (e.g. a Contest Hall's Pokéblock stand)."""
         super().__init__(game)
         self.previous_state = previous_state
+        self.stock = stock
         self.phase = "SHOP"
         self.shop_buttons = []
         self.current_page = 0
@@ -379,7 +383,7 @@ class PokeMartState(GameState):
         area_key = game.story_manager.current_area_key
         flag = f"visited_mart_{area_key}"
 
-        if not game.story_manager.story_flags.get(flag, False):
+        if stock is None and not game.story_manager.story_flags.get(flag, False):
             msg = ["Welcome to the Poké Mart!", "We are currently stocking shelves.", "Here, take these 10 Poké Balls!"]
             game.story_manager.balls_left += 10
             game.story_manager.story_flags[flag] = True
@@ -390,12 +394,21 @@ class PokeMartState(GameState):
     WEATHER_ROCKS = {"RAIN": "DAMP_ROCK", "SUN": "HEAT_ROCK", "SAND": "SMOOTH_ROCK", "SNOW": "ICY_ROCK"}
 
     def _shop_items(self):
+        if self.stock is not None:
+            return list(self.stock)
         if self._is_department_store():
             evo_items = sorted(list(self.game.loader.evolution_map.get("EVOLUTION_ITEMS", {}).keys()))
             items = ["POKE_BALLS", "RARE_CANDY"] + evo_items
         else:
             items = ["POKE_BALLS", "RARE_CANDY", "POTION", "REVIVE"]
-        return items + self._regional_weather_rocks()
+        return items + self._regional_weather_rocks() + self._contest_items()
+
+    def _contest_items(self):
+        """Towns with a Contest Hall stock Pokéblocks."""
+        options = self.game.story_manager.get_current_area_data().get("explore_options", [])
+        if any(o.get("target") == "contest_hall" for o in options):
+            return list(POKEBLOCKS)
+        return []
 
     def _regional_weather_rocks(self):
         """Rocks for the kinds of weather found in this region (Galar's Wild Area has them all)."""
@@ -482,7 +495,8 @@ class PokeMartState(GameState):
 
             else:
                 name = item.replace("_", " ").title().replace(" Fossil", "")
-                price = 999999 if item == "UPGRADE" else 2000 if item in self.WEATHER_ROCKS.values() else 10000
+                price = (999999 if item == "UPGRADE" else 2000 if item in self.WEATHER_ROCKS.values()
+                         else POKEBLOCK_PRICE if item in POKEBLOCKS else 10000)
                 icon = self.game.assets.get_item_image(item)
                 if icon:
                     icon = pygame.transform.scale(icon, (32, 32))
@@ -957,6 +971,10 @@ class BagState(GameState):
                 qty = self.game.story_manager.inventory.get(key, 0)
                 if qty > 0:
                     items_to_show.append((key, qty))
+            for key in POKEBLOCKS:
+                qty = self.game.story_manager.inventory.get(key, 0)
+                if qty > 0:
+                    items_to_show.append((key, qty))
         elif self.current_page == 1:
             config = self.game.loader.area_data.get("GAME_CONFIG", {})
             key_item_list = config.get("KEY_ITEMS", [])
@@ -1053,6 +1071,13 @@ class BagState(GameState):
                 battle.show_message([battle.summon_weather(item_key)], callback=battle.on_item_used)
             return
 
+        if item_key in POKEBLOCKS:
+            self.game.change_state(PokemonPartyMenuState(
+                self.game, previous_state=self, context="use_item",
+                on_select=self.on_pokemon_select_pokeblock
+            ))
+            return
+
         if item_key == "UNOWN_REPORT":
             self.game.change_state(UnownReportState(self.game, self))
             return
@@ -1118,7 +1143,7 @@ class BagState(GameState):
 
         # ARCHITECT: Check for item locks to prevent Rare Candy from bypassing item requirements
         item_locks = self.game.loader.evolution_map.get("ITEM_LOCKS", [])
-        is_item_locked = (key in item_locks) or (p_name in item_locks)
+        is_item_locked = (key in item_locks) or (p_name in item_locks) or not feebas_ready(pokemon)
 
         next_entries = self.game.loader.evolution_map.get(key)
         if not next_entries and key != p_name:
@@ -1163,6 +1188,31 @@ class BagState(GameState):
                     return_state=self.previous_state
                 )
             )
+
+    def on_pokemon_select_pokeblock(self, slot_index):
+        party = self.game.story_manager.player_team
+        if slot_index >= len(party):
+            return
+        p = party[slot_index]
+        block = self.selected_item
+        ate, lines = feed_pokeblock(p, block)
+        if ate:
+            inv = self.game.story_manager.inventory
+            inv[block] -= 1
+            if inv[block] <= 0:
+                del inv[block]
+            if self.game.assets.heal_sfx:
+                self.game.assets.heal_sfx.play()
+            # A Feebas that has grown enough only needed Beauty: it evolves right away.
+            if p.name.upper() == "FEEBAS" and feebas_ready(p) and p.wins >= 15:
+                milotic = self.game.name_to_id.get("MILOTIC")
+                if milotic:
+                    self.game.change_state(EvolutionState(
+                        self.game, p, milotic, slot_index, context="party", return_state=self))
+                    return
+        self.game.change_state(self)
+        self.refresh_buttons()
+        self.game.show_dialogue(lines)
 
     def on_pokemon_select_potion(self, slot_index):
         party = self.game.story_manager.player_team
@@ -2099,6 +2149,10 @@ class EvolutionState(GameState):
                     raw_data, self.game.assets, size_mult=1.5
                 )
                 self.evolved_pokemon_obj.wins = 0
+                # What the Pokémon has earned stays with it through evolution.
+                for attr in ("condition", "sheen", "ribbons", "gmax_factor", "caught_region"):
+                    if hasattr(self.pokemon, attr):
+                        setattr(self.evolved_pokemon_obj, attr, getattr(self.pokemon, attr))
 
         elif self.phase == "FLASH":
             if self.timer <= 0:
@@ -2282,7 +2336,7 @@ class PokemonDetailState(GameState):
         texts = [
             f"Name: {self.pokemon.display_name}",
             f"Stage: {self.pokemon.effective_stage}" + (
-                f"  (growth {self.pokemon.sub_stage[0]}/{self.pokemon.sub_stage[1]}, XP {self.pokemon.evolution_progress[0]}/{self.pokemon.evolution_progress[1]})"
+                f"  (growth {self.pokemon.sub_stage[0]}/{self.pokemon.sub_stage[1]})"
                 if self.pokemon.sub_stage else "  (fully grown)"),
             f"HP: {self.pokemon.current_hp}/{self.pokemon.get_max_hp()}",
             f"Types: {'/'.join(self.pokemon.types)}"
@@ -2305,7 +2359,33 @@ class PokemonDetailState(GameState):
             )
             y += 50
 
+        self._draw_condition()
         self.game.ui_manager.draw(self.game.screen)
+
+    def _draw_condition(self):
+        """Contest condition bars, Sheen and ribbon count (right side of the summary)."""
+        p = self.pokemon
+        cond = getattr(p, "condition", None)
+        if not cond:
+            return
+        screen, font = self.game.screen, self.game.assets.fonts["tiny"]
+        x, y, bar_w = self.game.width - 430, 130, 260
+        Utils.draw_text_outline(screen, "CONDITION", self.game.assets.fonts["small"], WHITE, x + 190, y - 30)
+        rows = [(c.title(), cond.get(c, 0), CATEGORY_COLOR[c]) for c in CATEGORIES]
+        rows.append(("Sheen", getattr(p, "sheen", 0), (200, 200, 200)))
+        for label, value, color in rows:
+            screen.blit(font.render(label, True, WHITE), (x, y))
+            bar = pygame.Rect(x + 110, y + 2, bar_w, 16)
+            pygame.draw.rect(screen, BLACK, bar, border_radius=6)
+            fill = bar.copy()
+            fill.width = int(bar_w * min(value, MAX_CONDITION) / MAX_CONDITION)
+            if fill.width:
+                pygame.draw.rect(screen, color, fill, border_radius=6)
+            y += 30
+        ribbons = getattr(p, "ribbons", [])
+        screen.blit(font.render(f"Ribbons: {len(ribbons)}", True, GOLD), (x, y + 6))
+        if p.name.upper() == "FEEBAS" and not feebas_ready(p):
+            screen.blit(font.render(f"Needs Beauty {FEEBAS_BEAUTY} to evolve", True, WHITE), (x, y + 36))
 
 
 # [REF-0061: Bike Shop State]

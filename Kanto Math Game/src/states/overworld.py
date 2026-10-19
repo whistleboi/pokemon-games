@@ -12,6 +12,7 @@ from src.ui.widgets import Button
 from src.ui.panels import CityActionMenu
 from src.world.boss import BossManager
 from src.pokemon.data import Pokemon
+from src.pokemon.contest import feebas_ready
 from src.vfx.particles import ShinyBurst, Starburst, IdleSparkle
 from src.config import WHITE, BLACK, GREEN, BLUE, GOLD, RED, ORANGE, PURPLE, GRAY, FPS, VOLUME
 
@@ -1251,6 +1252,8 @@ class PlayState(GameState):
             item_locks = self.game.loader.evolution_map.get("ITEM_LOCKS", [])
             if key in item_locks:
                 continue
+            if not feebas_ready(poke):
+                continue  # Feebas waits until Pokéblocks make it beautiful enough
 
             if poke.id == 201:
                 all_owned = self.game.story_manager.player_team + self.game.story_manager.pc_pokemon
@@ -2791,6 +2794,10 @@ class CityState(GameState):
                 return self.visit_euskine
             if target == "dragon_elder":
                 return self.visit_dragon_elder
+            if target == "contest_hall":
+                return self.visit_contest_hall
+            if target == "contest_museum":
+                return self.visit_contest_museum
             if target and "_mom_" in f"_{target}_":
                 return self.visit_mom
             key = self._npc_text_key(opt_data.get("dialogue") or target)
@@ -2812,6 +2819,16 @@ class CityState(GameState):
         if action == "TRAVEL":
             return lambda: self.go_to_area(opt_data.get("target_area"))
         return None
+
+    def visit_contest_hall(self):
+        from src.states.contest import ContestHallState
+        self.game.change_state(ContestHallState(self.game, self))
+
+    def visit_contest_museum(self):
+        from src.states.contest import museum_lines
+        self.show_message(museum_lines(self.game.story_manager), callback=self.end_npc_interaction)
+        self.npc_sprite = self.game.assets.get_trainer_image("gentleman.png")
+        self.npc_slide_offset = 400
 
     def _open_shop(self):
         from src.states.systems import PokeMartState

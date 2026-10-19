@@ -666,14 +666,16 @@ class StoryManager:
                 {
                     "id": p.id, "form": p.form, "shiny": p.is_shiny,
                     "wins": p.wins, "xp": p.xp, "hp": p.current_hp, "hp_real": True, "stage": p.stage, "gmax": p.gmax_factor,
-                    "caught_region": getattr(p, "caught_region", None)
+                    "caught_region": getattr(p, "caught_region", None),
+                    "condition": p.condition, "sheen": p.sheen, "ribbons": p.ribbons,
                 } for p in self.player_team if p
             ],
             "pc_pokemon": [
                 {
                     "id": p.id, "form": p.form, "shiny": p.is_shiny,
                     "wins": p.wins, "xp": p.xp, "hp": p.current_hp, "hp_real": True, "stage": p.stage, "gmax": p.gmax_factor,
-                    "caught_region": getattr(p, "caught_region", None)
+                    "caught_region": getattr(p, "caught_region", None),
+                    "condition": p.condition, "sheen": p.sheen, "ribbons": p.ribbons,
                 } if p else None for p in self.pc_pokemon
             ],
             "starting_region": self.starting_region,
@@ -747,6 +749,9 @@ class StoryManager:
             pokemon = Pokemon(raw, loader.game.assets, size_mult=2.5)
             pokemon.gmax_factor = p_data.get("gmax", form == "gmax")
             pokemon.caught_region = p_data.get("caught_region")
+            pokemon.condition.update(p_data.get("condition", {}))
+            pokemon.sheen = p_data.get("sheen", 0)
+            pokemon.ribbons = list(p_data.get("ribbons", []))
             pokemon.xp = p_data.get("xp", p_data.get("wins", 0) * Pokemon.XP_PER_WIN)
             if "stage" in p_data:
                 pokemon.stage = p_data["stage"]
@@ -767,6 +772,9 @@ class StoryManager:
             pokemon = Pokemon(raw, loader.game.assets, size_mult=2.5)
             pokemon.gmax_factor = p_data.get("gmax", form == "gmax")
             pokemon.caught_region = p_data.get("caught_region")
+            pokemon.condition.update(p_data.get("condition", {}))
+            pokemon.sheen = p_data.get("sheen", 0)
+            pokemon.ribbons = list(p_data.get("ribbons", []))
             pokemon.xp = p_data.get("xp", p_data.get("wins", 0) * Pokemon.XP_PER_WIN)
             if "stage" in p_data:
                 pokemon.stage = p_data["stage"]

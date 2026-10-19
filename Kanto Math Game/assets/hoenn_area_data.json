@@ -319,6 +319,7 @@
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
         { "text": "Shop", "action": "SHOP" },
+        { "text": "Contest Hall", "action": "NPC", "target": "contest_hall" },
         { "text": "Market", "action": "NPC", "target": "slateport_market" },
         { "text": "Talk to Stern", "action": "NPC", "target": "captain_stern" }
       ],
@@ -413,7 +414,8 @@
       ],
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
-        { "text": "Talk to Cozmo", "action": "NPC", "target": "professor_cozmo" }
+        { "text": "Talk to Cozmo", "action": "NPC", "target": "professor_cozmo" },
+        { "text": "Contest Hall", "action": "NPC", "target": "contest_hall" }
       ],
       "next_area": "HOENN_METEOR_FALLS",
       "on_enter_event": null
@@ -522,6 +524,7 @@
         { "text": "Heal", "action": "HEAL" },
         { "text": "Department Store", "action": "SHOP" },
         { "text": "Contest Hall", "action": "NPC", "target": "contest_hall" },
+        { "text": "Lilycove Museum", "action": "NPC", "target": "contest_museum" },
         { "text": "Team Hideout", "action": "TRAVEL", "target_area": "HOENN_TEAM_HIDEOUT" }
       ],
       "next_area": "HOENN_ROUTE_121",
@@ -3185,9 +3188,10 @@
       "id": "hoenn_s7",
       "type": "SIDE",
       "title": "Contest Master",
-      "description": "Participate in Pokémon Contests in Verdanturf, Fallarbor, Lilycove, and Slateport.",
+      "description": "Win Master Rank in all five contest categories and fill the Lilycove Museum with paintings.",
       "condition": { "start_region": "HOENN", "visited": "LILYCOVE_CITY" },
-      "reward": "Contest Ribbons + Master Rank"
+      "reward": "Rare Candies, Pokéblocks and $10000",
+      "completed_flag": "contest_master"
     }
   ],
   "HOENN_UNDERWATER_POOL_PERCENTAGES": { "170": 35, "171": 15, "366": 25, "369": 10, "370": 15 },
