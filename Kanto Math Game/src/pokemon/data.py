@@ -163,10 +163,12 @@ class Pokemon:
         return int(round(hp))
 
     def battle_xp(self, my_stage, foe_stage, foe_is_weak):
-        """XP for beating a foe: tougher (higher-stage) foes give more, weaker ones less."""
-        stage_mult = max(0.5, min(1.75, 1 + 0.25 * (foe_stage - my_stage)))
-        weak_mult = 0.8 if foe_is_weak else 1.0
-        return max(1, int(self.XP_PER_WIN * stage_mult * weak_mult + 0.5))
+        """XP for beating a foe, in steps of 25%: +1 step per stage the foe is above you,
+        -1 per stage below, and -1 if the foe is stat-weak (the side taking the -1 stat
+        modifier). So a stage 1 beating a weak stage 2 (e.g. Metapod) nets 0 steps."""
+        steps = (foe_stage - my_stage) - (1 if foe_is_weak else 0)
+        mult = max(0.5, min(1.75, 1 + 0.25 * steps))
+        return max(1, int(self.XP_PER_WIN * mult + 0.5))
 
     def gain_xp(self, amount):
         """Add XP. Returns how many sub-stages were completed by this gain."""
@@ -180,7 +182,13 @@ class Pokemon:
 
     def get_stat(self, stat_name):
         """Gets a base stat value."""
-        return self.base_stats.get(stat_name.upper(), 50)
+        # Stat data uses "SPECIAL-ATTACK"/"SPECIAL-DEFENSE"; the defaults use "SPATK"/"SPDEF".
+        aliases = {"SPATK": "SPECIAL-ATTACK", "SPDEF": "SPECIAL-DEFENSE",
+                   "SPECIAL-ATTACK": "SPATK", "SPECIAL-DEFENSE": "SPDEF"}
+        key = stat_name.upper()
+        if key in self.base_stats:
+            return self.base_stats[key]
+        return self.base_stats.get(aliases.get(key, key), 50)
 
     def set_volume(self, volume):
         if self.cry:

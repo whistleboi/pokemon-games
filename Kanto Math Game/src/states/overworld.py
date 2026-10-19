@@ -2914,7 +2914,7 @@ class CityState(GameState):
         raw = self.game.loader.fetch_specific(137)
         porygon = Pokemon(raw, self.game.assets, size_mult=2.5)
         msgs = ["President: You saved Silph Co. from Team Rocket!",
-                "Giovanni wanted our newest inventions. Instead, I want YOU to have them.",
+                "Team Rocket wanted our newest inventions. Instead, I want YOU to have them.",
                 "Please take our MASTER BALL. It catches any Pokémon without fail!",
                 "And this is PORYGON, the world's first digital Pokémon, built right here at Silph!"]
         if len(story.player_team) < 6:

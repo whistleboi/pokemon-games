@@ -210,7 +210,7 @@
         "condition": { "visited": "CELADON_CITY", "flag_not": "game_corner_cleared" }
       },
       {
-        "id": "s_silph", "type": "SIDE", "text": "Silph Co. Takeover", "desc": "Team Rocket has seized Silph Co. in Saffron City! Fight your way up all 11 floors and stop Giovanni. The President may reward you.",
+        "id": "s_silph", "type": "SIDE", "text": "Silph Co. Takeover", "desc": "Team Rocket has seized Silph Co. in Saffron City! Fight your way up all 11 floors and drive out their leaders. The President may reward you.",
         "condition": { "visited": "SAFFRON_CITY", "flag": "tower_ghost_defeated", "flag_not": "silph_co_cleared" }
       },
       {
@@ -1091,13 +1091,11 @@
           "dialogue": { "intro": ["8F: They call me the scariest guy in Team Rocket.", "Let's see if you can count fast enough to keep up!"], "player_won": ["Tch. Archer will deal with you."], "player_lost": ["Too slow, kid."] } },
         { "sprite": "archer.png", "name": "Archer", "class": "ROCKET", "is_boss_battle": true, "team": [110, 24, 131], "rewards": { "balls": 10 },
           "dialogue": { "intro": ["9F: The boss is busy. I'll handle you."], "player_won": ["This changes nothing."], "player_lost": ["Typical child."] } },
-        { "sprite": "ariana.png", "name": "Ariana", "class": "ROCKET", "is_boss_battle": true, "team": [45, 91, 53], "rewards": { "balls": 10 },
-          "dialogue": { "intro": ["10F: How did you get past Archer?", "No matter. Your journey ends here!"], "player_won": ["The prototype! You won't get away with it!"], "player_lost": ["Stay out of adult business."] } },
-        { "sprite": "leader_giovanni.png", "name": "Boss Giovanni", "class": "ROCKET_LEADER", "is_boss_battle": true, "team": [111, 33, 115, 31],
+        { "sprite": "ariana.png", "name": "Executive Ariana", "class": "ROCKET_LEADER", "is_boss_battle": true, "team": [45, 91, 24, 53],
           "rewards": { "balls": 15, "RARE_CANDY": 2 }, "victory_flag": "silph_co_cleared",
-          "dialogue": { "intro": ["11F: So, you are the child who ruined our Game Corner and haunted my Tower plans.", "Silph Co. will hand over the Master Ball, and Team Rocket will control every Poké Ball in Kanto.", "I will not let a child stand in my way. Prepare yourself!"],
-                        "player_won": ["Blast it all! You ruined our plans for Silph!", "But Team Rocket will never fall. I will be waiting for you, child."],
-                        "player_lost": ["Ha! Go home and practice your arithmetic."] } }
+          "dialogue": { "intro": ["11F: How did you get past Archer?", "The President will sign the Master Ball over to Team Rocket, and our boss will control every Poké Ball in Kanto.", "No child is ruining that. Your journey ends here!"],
+                        "player_won": ["The prototype! You won't get away with this!", "Team Rocket, pull out! The boss will hear about this child..."],
+                        "player_lost": ["Stay out of adult business."] } }
       ],
       "on_enter_event": null
     },
