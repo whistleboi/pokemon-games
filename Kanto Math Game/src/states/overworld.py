@@ -1145,11 +1145,39 @@ class PlayState(GameState):
             return self.action_search_trainer
         if action == "MAX_RAID":
             return self.action_max_raid
+        if action == "BERRY":
+            return self.action_pick_berries
         if action == "NPC":
             key = item.get("dialogue") or item.get("target")
             if key in self.game.assets.game_text:
                 return lambda k=key: self._route_npc_text(k)
         return lambda: print(f"Unknown action: {action}")
+
+    def action_pick_berries(self):
+        """Berry trees: once a day per route, pick a few of the berries that grow here."""
+        from src.pokemon.poffin import berry_name
+        self.is_progression_paused = True
+        self.hide_menu_buttons()
+        story = self.game.story_manager
+        trees = self.area_data.get("berry_trees", [])
+        flag = f"berries_picked_{story.current_area_key}"
+        today = datetime.date.today().isoformat()
+        if not trees:
+            lines = ["There are no berry trees here."]
+        elif story.story_flags.get(flag) == today:
+            lines = ["The berry trees have already been picked today.", "Come back tomorrow!"]
+        else:
+            story.story_flags[flag] = today
+            picked = {}
+            for _ in range(random.randint(2, 4)):
+                berry = random.choice(trees)
+                picked[berry] = picked.get(berry, 0) + 1
+            for berry, n in picked.items():
+                story.inventory[berry] = story.inventory.get(berry, 0) + n
+            lines = ["You checked the berry trees..."] + [
+                f"You picked {n} {berry_name(b)}{'s' if n > 1 else ''}!" for b, n in picked.items()]
+            lines.append("They went into your BERRY POUCH.")
+        self.show_dialogue(lines, callback=self.show_progression_menu)
 
     def _route_npc_text(self, key):
         self.is_progression_paused = True
@@ -2798,6 +2826,10 @@ class CityState(GameState):
                 return self.visit_contest_hall
             if target == "contest_museum":
                 return self.visit_contest_museum
+            if target == "poffin_house":
+                return self.visit_poffin_house
+            if target == "berry_shop":
+                return self.visit_berry_shop
             if target and "_mom_" in f"_{target}_":
                 return self.visit_mom
             key = self._npc_text_key(opt_data.get("dialogue") or target)
@@ -2823,6 +2855,37 @@ class CityState(GameState):
     def visit_contest_hall(self):
         from src.states.contest import ContestHallState
         self.game.change_state(ContestHallState(self.game, self))
+
+    def visit_poffin_house(self):
+        from src.states.poffin import PoffinHouseState
+        self.game.change_state(PoffinHouseState(self.game, self))
+
+    def visit_berry_shop(self):
+        """Floaroma's flower shop: a Berry Pouch on the first visit, then berries for sale."""
+        from src.pokemon.poffin import BASIC_BERRIES, BERRIES
+        from src.states.systems import PokeMartState
+        story = self.game.story_manager
+        stock = BASIC_BERRIES + ([b for b in BERRIES if len(BERRIES[b]) == 2 and max(BERRIES[b].values()) == 10]
+                                 if len(story.badges.get("SINNOH", [])) >= 3 else [])
+
+        def open_stand():
+            self.end_npc_interaction()
+            self.game.change_state(PokeMartState(self.game, self, stock=stock))
+
+        if story.story_flags.get("has_berry_pouch"):
+            open_stand()
+            return
+        story.story_flags["has_berry_pouch"] = True
+        story.inventory["BERRY_POUCH"] = 1
+        for b in BASIC_BERRIES:
+            story.inventory[b] = story.inventory.get(b, 0) + 3
+        self.show_message(["Welcome to Pick a Peck of Colors!",
+                           "Berries grow on trees along Sinnoh's routes. Pick them once a day!",
+                           "Cook them into Poffins at the Poffin House in Hearthome City.",
+                           "Here's a BERRY POUCH, with a few berries to get you started!",
+                           "You received the BERRY POUCH!"], callback=open_stand)
+        self.npc_sprite = self.game.assets.get_trainer_image("beauty.png")
+        self.npc_slide_offset = 400
 
     def visit_contest_museum(self):
         from src.states.contest import museum_lines

@@ -327,7 +327,8 @@
       ],
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
-        { "text": "Flower Shop", "action": "SHOP" },
+        { "text": "Shop", "action": "SHOP" },
+        { "text": "Flower Shop", "action": "NPC", "target": "berry_shop" },
         { "text": "Drive off Galactic Grunt", "action": "NPC", "target": "galactic_windworks_grunt", "flag_condition": "not windworks_cleared" }
       ],
       "next_area": "SINNOH_ROUTE_205",
@@ -481,6 +482,7 @@
         { "text": "Shop", "action": "SHOP" },
         { "text": "Gym", "action": "GYM" },
         { "text": "Contest Hall", "action": "NPC", "target": "contest_hall" },
+        { "text": "Poffin House", "action": "NPC", "target": "poffin_house" },
         { "text": "Amity Square", "action": "NPC", "target": "amity_square" },
         { "text": "Talk to Cynthia", "action": "NPC", "target": "cynthia_hm", "flag_condition": "not received_hm_cut" }
       ],
@@ -1456,13 +1458,15 @@
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "PICK BERRIES", "action": "BERRY", "condition": "has_berry_pouch", "color": "GREEN" },
         { "text": "Twinleaf Town", "action": "EXIT", "target_area": "TWINLEAF_TOWN", "condition": "can_exit", "color": "RED" },
         { "text": "Sandgem Town", "action": "EXIT", "target_area": "SANDGEM_TOWN", "condition": "can_exit", "color": "RED" },
         { "text": "Lake Verity", "action": "EXIT", "target_area": "LAKE_VERITY", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "SANDGEM_TOWN",
       "day_pool_percentages": "SINNOH_ROUTE_201_DAY_PERCENTAGES",
-      "night_pool_percentages": "SINNOH_ROUTE_201_NIGHT_PERCENTAGES"
+      "night_pool_percentages": "SINNOH_ROUTE_201_NIGHT_PERCENTAGES",
+      "berry_trees": ["CHERI_BERRY", "PECHA_BERRY"]
     },
     "SINNOH_ROUTE_202": {
       "area_type": "wild_route",
@@ -1498,12 +1502,14 @@
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "PICK BERRIES", "action": "BERRY", "condition": "has_berry_pouch", "color": "GREEN" },
         { "text": "Sandgem Town", "action": "EXIT", "target_area": "SANDGEM_TOWN", "condition": "can_exit", "color": "RED" },
         { "text": "Jubilife City", "action": "EXIT", "target_area": "JUBILIFE_CITY", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "JUBILIFE_CITY",
       "day_pool_percentages": "SINNOH_ROUTE_202_DAY_PERCENTAGES",
-      "night_pool_percentages": "SINNOH_ROUTE_202_NIGHT_PERCENTAGES"
+      "night_pool_percentages": "SINNOH_ROUTE_202_NIGHT_PERCENTAGES",
+      "berry_trees": ["ASPEAR_BERRY", "CHESTO_BERRY"]
     },
     "SINNOH_ROUTE_203": {
       "area_type": "wild_route",
@@ -1539,12 +1545,14 @@
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "PICK BERRIES", "action": "BERRY", "condition": "has_berry_pouch", "color": "GREEN" },
         { "text": "Jubilife City", "action": "EXIT", "target_area": "JUBILIFE_CITY", "condition": "can_exit", "color": "RED" },
         { "text": "Oreburgh City", "action": "EXIT", "target_area": "OREBURGH_CITY", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "OREBURGH_CITY",
       "day_pool_percentages": "SINNOH_ROUTE_203_DAY_PERCENTAGES",
-      "night_pool_percentages": "SINNOH_ROUTE_203_NIGHT_PERCENTAGES"
+      "night_pool_percentages": "SINNOH_ROUTE_203_NIGHT_PERCENTAGES",
+      "berry_trees": ["RAWST_BERRY", "CHERI_BERRY"]
     },
     "SINNOH_ROUTE_204": {
       "area_type": "wild_route",
@@ -1580,12 +1588,14 @@
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "PICK BERRIES", "action": "BERRY", "condition": "has_berry_pouch", "color": "GREEN" },
         { "text": "Jubilife City", "action": "EXIT", "target_area": "JUBILIFE_CITY", "condition": "can_exit", "color": "RED" },
         { "text": "Floaroma Town", "action": "EXIT", "target_area": "FLOAROMA_TOWN", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "FLOAROMA_TOWN",
       "day_pool_percentages": "SINNOH_ROUTE_204_DAY_PERCENTAGES",
-      "night_pool_percentages": "SINNOH_ROUTE_204_NIGHT_PERCENTAGES"
+      "night_pool_percentages": "SINNOH_ROUTE_204_NIGHT_PERCENTAGES",
+      "berry_trees": ["PECHA_BERRY", "RAWST_BERRY"]
     },
     "SINNOH_ROUTE_205": {
       "area_type": "wild_route",
@@ -1623,13 +1633,15 @@
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "PICK BERRIES", "action": "BERRY", "condition": "has_berry_pouch", "color": "GREEN" },
         { "text": "Floaroma Town", "action": "EXIT", "target_area": "FLOAROMA_TOWN", "condition": "can_exit", "color": "RED" },
         { "text": "Eterna City", "action": "EXIT", "target_area": "ETERNA_CITY", "condition": "can_exit", "color": "RED" },
         { "text": "Eterna Forest", "action": "EXIT", "target_area": "ETERNA_FOREST", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "ETERNA_CITY",
       "day_pool_percentages": "SINNOH_ROUTE_205_DAY_PERCENTAGES",
-      "night_pool_percentages": "SINNOH_ROUTE_205_NIGHT_PERCENTAGES"
+      "night_pool_percentages": "SINNOH_ROUTE_205_NIGHT_PERCENTAGES",
+      "berry_trees": ["CHESTO_BERRY", "ASPEAR_BERRY", "RAZZ_BERRY"]
     },
     "SINNOH_ROUTE_206": {
       "area_type": "wild_route",
@@ -1658,12 +1670,14 @@
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "PICK BERRIES", "action": "BERRY", "condition": "has_berry_pouch", "color": "GREEN" },
         { "text": "Eterna City", "action": "EXIT", "target_area": "ETERNA_CITY", "condition": "can_exit", "color": "RED" },
         { "text": "Route 207", "action": "EXIT", "target_area": "SINNOH_ROUTE_207", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "SINNOH_ROUTE_207",
       "day_pool_percentages": "SINNOH_ROUTE_206_DAY_PERCENTAGES",
-      "night_pool_percentages": "SINNOH_ROUTE_206_NIGHT_PERCENTAGES"
+      "night_pool_percentages": "SINNOH_ROUTE_206_NIGHT_PERCENTAGES",
+      "berry_trees": ["BLUK_BERRY", "RAWST_BERRY"]
     },
     "SINNOH_ROUTE_207": {
       "area_type": "wild_route",
@@ -1692,11 +1706,13 @@
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "PICK BERRIES", "action": "BERRY", "condition": "has_berry_pouch", "color": "GREEN" },
         { "text": "Oreburgh City", "action": "EXIT", "target_area": "OREBURGH_CITY", "condition": "can_exit", "color": "RED" },
         { "text": "Mt. Coronet", "action": "EXIT", "target_area": "MT_CORONET_BASE", "condition": "can_exit", "color": "RED" },
         { "text": "ROUTE 206 (CYCLING ROAD)", "action": "EXIT", "target_area": "SINNOH_ROUTE_206", "condition": "can_exit", "color": "RED" }
       ],
-      "next_area": "MT_CORONET_BASE"
+      "next_area": "MT_CORONET_BASE",
+      "berry_trees": ["PINAP_BERRY", "CHERI_BERRY"]
     },
     "SINNOH_ROUTE_208": {
       "area_type": "wild_route",
@@ -1725,12 +1741,14 @@
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "PICK BERRIES", "action": "BERRY", "condition": "has_berry_pouch", "color": "GREEN" },
         { "text": "Hearthome City", "action": "EXIT", "target_area": "HEARTHOME_CITY", "condition": "can_exit", "color": "RED" },
         { "text": "Mt. Coronet", "action": "EXIT", "target_area": "MT_CORONET_BASE", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "HEARTHOME_CITY",
       "day_pool_percentages": "SINNOH_ROUTE_208_DAY_PERCENTAGES",
-      "night_pool_percentages": "SINNOH_ROUTE_208_NIGHT_PERCENTAGES"
+      "night_pool_percentages": "SINNOH_ROUTE_208_NIGHT_PERCENTAGES",
+      "berry_trees": ["NANAB_BERRY", "WEPEAR_BERRY", "PINAP_BERRY", "RAZZ_BERRY", "BLUK_BERRY"]
     },
     "SINNOH_ROUTE_209": {
       "area_type": "wild_route",
@@ -1759,10 +1777,12 @@
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "PICK BERRIES", "action": "BERRY", "condition": "has_berry_pouch", "color": "GREEN" },
         { "text": "Hearthome City", "action": "EXIT", "target_area": "HEARTHOME_CITY", "condition": "can_exit", "color": "RED" },
         { "text": "Solaceon Town", "action": "EXIT", "target_area": "SOLACEON_TOWN", "condition": "can_exit", "color": "RED" }
       ],
-      "next_area": "SOLACEON_TOWN"
+      "next_area": "SOLACEON_TOWN",
+      "berry_trees": ["RAZZ_BERRY", "BLUK_BERRY"]
     },
     "SINNOH_ROUTE_210": {
       "area_type": "wild_route",
@@ -1798,12 +1818,14 @@
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "PICK BERRIES", "action": "BERRY", "condition": "has_berry_pouch", "color": "GREEN" },
         { "text": "Solaceon Town", "action": "EXIT", "target_area": "SOLACEON_TOWN", "condition": "can_exit", "color": "RED" },
         { "text": "Celestic Town", "action": "EXIT", "target_area": "CELESTIC_TOWN", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "CELESTIC_TOWN",
       "day_pool_percentages": "SINNOH_ROUTE_210_DAY_PERCENTAGES",
-      "night_pool_percentages": "SINNOH_ROUTE_210_NIGHT_PERCENTAGES"
+      "night_pool_percentages": "SINNOH_ROUTE_210_NIGHT_PERCENTAGES",
+      "berry_trees": ["WEPEAR_BERRY", "PINAP_BERRY"]
     },
     "SINNOH_ROUTE_211": {
       "area_type": "wild_route",
@@ -1874,11 +1896,13 @@
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "PICK BERRIES", "action": "BERRY", "condition": "has_berry_pouch", "color": "GREEN" },
         { "text": "Hearthome City", "action": "EXIT", "target_area": "HEARTHOME_CITY", "condition": "can_exit", "color": "RED" },
         { "text": "Pastoria City", "action": "EXIT", "target_area": "PASTORIA_CITY", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "PASTORIA_CITY",
-      "weather": "RAIN"
+      "weather": "RAIN",
+      "berry_trees": ["NANAB_BERRY", "BLUK_BERRY", "PECHA_BERRY"]
     },
     "SINNOH_ROUTE_213": {
       "area_type": "wild_route",
@@ -1909,10 +1933,12 @@
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "PICK BERRIES", "action": "BERRY", "condition": "has_berry_pouch", "color": "GREEN" },
         { "text": "Pastoria City", "action": "EXIT", "target_area": "PASTORIA_CITY", "condition": "can_exit", "color": "RED" },
         { "text": "Lake Valor", "action": "EXIT", "target_area": "LAKE_VALOR", "condition": "can_exit", "color": "RED" }
       ],
-      "next_area": "PASTORIA_CITY"
+      "next_area": "PASTORIA_CITY",
+      "berry_trees": ["SPELON_BERRY", "PAMTRE_BERRY", "WEPEAR_BERRY"]
     },
     "SINNOH_ROUTE_214": {
       "area_type": "wild_route",
@@ -1941,13 +1967,15 @@
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "PICK BERRIES", "action": "BERRY", "condition": "has_berry_pouch", "color": "GREEN" },
         { "text": "TURNBACK CAVE", "target_area": "TURNBACK_CAVE", "action": "EXIT", "color": "GOLD", "condition": "SPEAR_PILLAR_boss_defeated" },
         { "text": "Veilstone City", "action": "EXIT", "target_area": "VEILSTONE_CITY", "condition": "can_exit", "color": "RED" },
         { "text": "Lake Valor", "action": "EXIT", "target_area": "LAKE_VALOR", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "VEILSTONE_CITY",
       "day_pool_percentages": "SINNOH_ROUTE_214_DAY_PERCENTAGES",
-      "night_pool_percentages": "SINNOH_ROUTE_214_NIGHT_PERCENTAGES"
+      "night_pool_percentages": "SINNOH_ROUTE_214_NIGHT_PERCENTAGES",
+      "berry_trees": ["WATMEL_BERRY", "DURIN_BERRY", "RAZZ_BERRY"]
     },
     "SINNOH_ROUTE_215": {
       "area_type": "wild_route",
@@ -1976,11 +2004,13 @@
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "PICK BERRIES", "action": "BERRY", "condition": "has_berry_pouch", "color": "GREEN" },
         { "text": "Veilstone City", "action": "EXIT", "target_area": "VEILSTONE_CITY", "condition": "can_exit", "color": "RED" },
         { "text": "Celestic Town", "action": "EXIT", "target_area": "CELESTIC_TOWN", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "VEILSTONE_CITY",
-      "weather": "RAIN"
+      "weather": "RAIN",
+      "berry_trees": ["BELUE_BERRY", "SPELON_BERRY", "NANAB_BERRY"]
     },
     "SINNOH_ROUTE_216": {
       "area_type": "wild_route",
@@ -2079,10 +2109,12 @@
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "PICK BERRIES", "action": "BERRY", "condition": "has_berry_pouch", "color": "GREEN" },
         { "text": "Jubilife City", "action": "EXIT", "target_area": "JUBILIFE_CITY", "condition": "can_exit", "color": "RED" },
         { "text": "Canalave City", "action": "EXIT", "target_area": "CANALAVE_CITY", "condition": "can_exit", "color": "RED" }
       ],
-      "next_area": "CANALAVE_CITY"
+      "next_area": "CANALAVE_CITY",
+      "berry_trees": ["PAMTRE_BERRY", "WATMEL_BERRY"]
     },
     "SINNOH_ROUTE_222": {
       "area_type": "wild_route",
@@ -2120,10 +2152,12 @@
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "PICK BERRIES", "action": "BERRY", "condition": "has_berry_pouch", "color": "GREEN" },
         { "text": "Sunyshore City", "action": "EXIT", "target_area": "SUNYSHORE_CITY", "condition": "can_exit", "color": "RED" },
         { "text": "LAKE VALOR", "action": "EXIT", "target_area": "LAKE_VALOR", "condition": "can_exit", "color": "RED" }
       ],
-      "next_area": "SUNYSHORE_CITY"
+      "next_area": "SUNYSHORE_CITY",
+      "berry_trees": ["DURIN_BERRY", "BELUE_BERRY", "SPELON_BERRY"]
     },
     "SINNOH_ROUTE_223": {
       "area_type": "wild_route",
@@ -2484,6 +2518,15 @@
       "description": "Cyrus vanished into a rift at Spear Pillar. Somewhere, deep in the earth, the Distortion World waits. Find Giratina.",
       "condition": { "start_region": "SINNOH", "flag": "beat_sinnoh_champion", "flag_not": "sinnoh_giratina_encountered" },
       "reward": "Giratina encounter"
+    },
+    {
+      "id": "sinnoh_s9",
+      "type": "SIDE",
+      "title": "Master Poffin Chef",
+      "description": "Cook a Mild Poffin (level 50+) at the Poffin House in Hearthome City. Strong rare berries and perfect stirs are the secret.",
+      "condition": { "start_region": "SINNOH", "visited": "HEARTHOME_CITY", "flag_not": "made_mild_poffin" },
+      "completed_flag": "made_mild_poffin",
+      "reward": "Contest-ready Poffins"
     }
   ],
   "SINNOH_ROUTE_201": [396, 399],

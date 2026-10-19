@@ -9,6 +9,7 @@ from src.ui.dialogue import ClassicDialogueBox
 from src.utils import Utils
 from src.config import WHITE, BLACK, GREEN, BLUE, RED, GOLD, GRAY, LIGHT_GRAY, VOLUME, DARK_RED
 from src.pokemon.data import Pokemon
+from src.pokemon.poffin import BERRY_PRICE
 from src.pokemon.contest import (feebas_ready, feed_pokeblock, POKEBLOCKS, POKEBLOCK_PRICE, CATEGORIES,
                                  CATEGORY_COLOR, MAX_CONDITION, FEEBAS_BEAUTY)
 from src.states.battle import TrainerBattleState, TrainerIntroState
@@ -496,7 +497,8 @@ class PokeMartState(GameState):
             else:
                 name = item.replace("_", " ").title().replace(" Fossil", "")
                 price = (999999 if item == "UPGRADE" else 2000 if item in self.WEATHER_ROCKS.values()
-                         else POKEBLOCK_PRICE if item in POKEBLOCKS else 10000)
+                         else POKEBLOCK_PRICE if item in POKEBLOCKS
+                         else BERRY_PRICE if item.endswith("_BERRY") else 10000)
                 icon = self.game.assets.get_item_image(item)
                 if icon:
                     icon = pygame.transform.scale(icon, (32, 32))
@@ -1001,7 +1003,7 @@ class BagState(GameState):
             display_name = f"{item_key.replace('_', ' ').title()}  x{qty}"
 
             is_rare_candy = (item_key == "RARE_CANDY")
-            is_usable_key = item_key in ["TOWN_MAP", "JOHTO_MAP", "UNOWN_REPORT"]
+            is_usable_key = item_key in ["TOWN_MAP", "JOHTO_MAP", "UNOWN_REPORT", "POFFIN_CASE", "BERRY_POUCH"]
 
             can_use = (qty > 0 and (self.current_page == 0 or is_rare_candy or is_usable_key))
             color = BLUE if can_use else GRAY
@@ -1076,6 +1078,20 @@ class BagState(GameState):
                 self.game, previous_state=self, context="use_item",
                 on_select=self.on_pokemon_select_pokeblock
             ))
+            return
+
+        if item_key == "POFFIN_CASE":
+            from src.states.poffin import PoffinCaseState
+            self.game.change_state(PoffinCaseState(self.game, self))
+            return
+
+        if item_key == "BERRY_POUCH":
+            from src.pokemon.poffin import BERRIES, berry_name, berry_label
+            inv = self.game.story_manager.inventory
+            lines = [f"{berry_name(b)} x{inv[b]} ({berry_label(b)})" for b in BERRIES if inv.get(b, 0) > 0]
+            self.game.change_state(self)
+            self.refresh_buttons()
+            self.game.show_dialogue(lines or ["Your BERRY POUCH is empty."])
             return
 
         if item_key == "UNOWN_REPORT":

@@ -24,6 +24,7 @@ class StoryManager:
         self.money = 3000
         self.catch_counts = {}
         self.inventory = {}
+        self.poffins = []  # Poffin Case contents: dicts from src.pokemon.poffin.cook
         self.notified_missions = []
         self.initialized = False
         # "AUTO" follows the story; a number locks a level from math_levels.json
@@ -661,6 +662,7 @@ class StoryManager:
             "story_flags": self.story_flags,
             "catch_counts": self.catch_counts,
             "inventory": self.inventory,
+            "poffins": self.poffins,
             "notified_missions": self.notified_missions,
             "player_team": [
                 {
@@ -734,6 +736,7 @@ class StoryManager:
         self.catch_counts = data.get("catch_counts", {})
 
         self.inventory = data.get("inventory", {})
+        self.poffins = list(data.get("poffins", []))
         self.notified_missions = data.get("notified_missions", [])
         # Older saves have no setting -> AUTO (follows region + badges)
         self.math_difficulty = data.get("math_difficulty", "AUTO")
