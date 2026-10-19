@@ -12,6 +12,8 @@ from src.ui.widgets import Button
 from src.ui.panels import CityActionMenu
 from src.world.boss import BossManager
 from src.world import seasons
+from src.world import hoenn
+from src.pokemon import forms
 from src.pokemon.data import Pokemon
 from src.pokemon.contest import feebas_ready
 from src.vfx.particles import ShinyBurst, Starburst, IdleSparkle
@@ -77,6 +79,7 @@ def _draw_season_hud(game, screen, area_key, x, y):
 class PlayState(GameState):
     def __init__(self, game, restore_data=None):
         super().__init__(game)
+        hoenn.apply_version(game)
         self.area_data = game.story_manager.get_current_area_data()
         self._inject_regional_data()
 
@@ -737,6 +740,7 @@ class PlayState(GameState):
         for opp_id in opponent_ids:
             raw = self.game.loader.fetch_specific(opp_id)
             opponent_team.append(Pokemon(raw, self.game.assets, size_mult=3.125))
+        forms.mark_trainer_team(opponent_team, trainer_info)
 
         bg_file = self._get_battle_background_for_area()
 
@@ -1025,6 +1029,8 @@ class PlayState(GameState):
 
         if isinstance(condition, (list, tuple)):
             return all(self._check_route_condition(c, trainers_left, item) for c in condition)
+        if isinstance(condition, str) and condition.startswith("not:"):
+            return not self._check_route_condition(condition[4:], trainers_left, item)
 
         if condition == "has_balls":
             return self.balls_left > 0
@@ -1149,6 +1155,8 @@ class PlayState(GameState):
         if action == "BATTLE":
             return self.action_battle_wild
         if action == "BOSS":
+            if item.get("boss"):
+                return lambda b=item["boss"]: self.action_challenge_boss(b)
             return self.action_challenge_boss
         if action == "HEADBUTT":
             return self.action_headbutt
@@ -1167,6 +1175,8 @@ class PlayState(GameState):
             return self.action_pick_berries
         if action == "WEATHER_DIRECTOR":
             return self.visit_weather_director
+        if action == "HOENN_EVENT":
+            return lambda e=item.get("event"): self.hoenn_event(e)
         if action == "NPC":
             key = item.get("dialogue") or item.get("target")
             if key in self.game.assets.game_text:
@@ -1200,6 +1210,79 @@ class PlayState(GameState):
             lines.append("They went into your BERRY POUCH.")
         self.show_dialogue(lines, callback=self.show_progression_menu)
 
+    def _gift_pokemon(self, pid, lines):
+        """Add a gift Pokemon to the party (or the PC when the party is full)."""
+        story = self.game.story_manager
+        pokemon = Pokemon(self.game.loader.fetch_specific(pid), self.game.assets, size_mult=2.5)
+        pokemon.caught_region = story.get_current_region()
+        if len(story.player_team) < 6:
+            story.player_team.append(pokemon)
+            lines.append(f"{pokemon.name} joined your team!")
+        else:
+            slot = next((i for i, p in enumerate(story.pc_pokemon) if p is None), None)
+            if slot is None:
+                story.pc_pokemon.append(pokemon)
+            else:
+                story.pc_pokemon[slot] = pokemon
+            lines.append(f"{pokemon.name} was sent to the PC.")
+        self.game.data.mark_seen(pokemon.id)
+        self.game.data.add_pokemon(pokemon)
+
+    def _give_item(self, item, lines, qty=1):
+        inv = self.game.story_manager.inventory
+        inv[item] = inv.get(item, 0) + qty
+        lines.append(f"{self.game.player_name} received the {forms.item_label(item).upper()}!")
+
+    def hoenn_event(self, event):
+        """Omega Ruby / Alpha Sapphire story beats that happen on routes."""
+        self.is_progression_paused = True
+        self.hide_menu_buttons()
+        story = self.game.story_manager
+        flags = story.story_flags
+        v = hoenn.info(story) or hoenn.VERSIONS["OMEGA_RUBY"]
+        lines = []
+        if event == "elders":
+            lines += [f"Old man: {v['team']} took the {v['orb']}! Without it, {v['legend']} could run wild...",
+                      f"Old woman: Please, take the {v['other_orb']}. Keep it safe from them.",
+                      f"Someday the two orbs must be reunited."]
+            self._give_item(v["other_orb_item"], lines)
+            flags["got_mt_pyre_orb"] = True
+        elif event == "awakening":
+            lines += [f"{v['leader']} held up the {v['orb']}. It began to shine...",
+                      f"{v['legend']} awoke and underwent Primal Reversion!",
+                      f"Primal {v['legend']} burst out of the cavern and flew toward Sootopolis City!",
+                      ("The sunlight is extremely harsh all over Hoenn..." if v["crisis_weather"] == "SUN"
+                       else "A heavy rain is pouring down all over Hoenn..."),
+                      f"Steven: The Cave of Origin! We have to stop {v['legend']}!"]
+        elif event == "leader_orb":
+            lines += [f"{v['leader']}: I was wrong. Primal {v['legend']}'s power was never ours to control.",
+                      f"Take the {v['orb']}. You've earned it far more than I have."]
+            self._give_item(v["orb_item"], lines)
+            lines.append(f"Hold it while {v['legend']} is in your party and it will Primal Revert in battle!")
+            flags["got_stolen_orb"] = True
+        elif event == "southern_island":
+            lines += ["Steven: There you are! Come with me to Southern Island.",
+                      f"On Southern Island, {v['eon']} was waiting for you...",
+                      f"{v['eon']} wants to come with you!"]
+            self._gift_pokemon(v["eon_id"], lines)
+            self._give_item(v["eon_stone"], lines)
+            lines.append("Steven: And you'll need this to bring out its true power.")
+            self._give_item("MEGA_BRACELET", lines)
+            lines += ["Steven: With the Mega Bracelet, a Pokemon holding its Mega Stone can Mega Evolve!",
+                      "It happens when that Pokemon enters battle, once per battle."]
+            flags["got_mega_bracelet"] = True
+        elif event == "starter_stone":
+            stone = hoenn.starter_stone(self.game)
+            lines += ["Steven: You and your partner have come so far together.",
+                      "This Mega Stone belongs with your starter."]
+            self._give_item(stone, lines)
+            flags["got_starter_mega_stone"] = True
+        elif event == "stone_shop":
+            from src.states.systems import PokeMartState
+            self.game.change_state(PokeMartState(self.game, self, stock=list(hoenn.HOENN_MEGA_STONES)))
+            return
+        self.show_dialogue(lines or ["..."], callback=self.show_progression_menu)
+
     def visit_weather_director(self):
         """After Rayquaza calms the skies, the Weather Institute hands over the Weather Dial."""
         self.is_progression_paused = True
@@ -1212,14 +1295,14 @@ class PlayState(GameState):
             for rock in seasons.ROCK_WEATHER:
                 story.inventory[rock] = story.inventory.get(rock, 0) + 1
             story.story_flags["got_weather_dial"] = True
-            lines = ["DIRECTOR: You calmed Rayquaza and saved Hoenn's skies!",
+            lines = ["DIRECTOR: You calmed the super-ancient Pokemon and saved Hoenn's skies!",
                      "Our research has made this possible: the WEATHER DIAL.",
                      f"{self.game.player_name} received the WEATHER DIAL!",
                      "Set a weather rock in it on any outdoor route in a region with weather.",
                      "The rock is used up, and the weather you choose lasts until midnight.",
                      "Clearing the skies is free. Here's one of each rock to get you started!",
                      "Received a DAMP, HEAT, SMOOTH and ICY ROCK!",
-                     "Nobody can change the seasons, though. Not even Rayquaza!"]
+                     "Nobody can change the seasons, though. Not even Groudon or Kyogre!"]
         else:
             lines = ["DIRECTOR: How is the WEATHER DIAL working out?",
                      "Weather rocks are sold in marts wherever that weather happens."]
@@ -1483,7 +1566,7 @@ class PlayState(GameState):
         }
         self.game.change_state(battle_state)
 
-    def action_challenge_boss(self):
+    def action_challenge_boss(self, boss_data=None):
         if self.game.story_manager.current_area_key == "JOHTO_ROUTE_36":
             if self.game.story_manager.inventory.get("SQUIRT_BOTTLE", 0) <= 0:
                 self.hide_menu_buttons()
@@ -1496,7 +1579,7 @@ class PlayState(GameState):
 
         self.rounds_completed += 1
 
-        boss_data = self.area_data.get("area_boss", {})
+        boss_data = boss_data or self.area_data.get("area_boss", {})
         if not boss_data:
             self.show_progression_menu()
             return
@@ -1514,8 +1597,11 @@ class PlayState(GameState):
             pokemon.is_shiny = True
             pokemon.image = self.game.assets.get_pokemon_image(pokemon.id, pokemon.form, True)
             pokemon.back_image = self.game.assets.get_pokemon_image(pokemon.id, pokemon.form, True, back=True)
+        # A Primal boss (Groudon/Kyogre in the Cave of Origin) reverts when the battle starts.
+        pokemon.primal_ready = bool(boss_data.get("primal"))
 
-        bg_file = self._get_battle_background_for_area()
+        bg_file = boss_data.get("background") if (boss_data.get("background") and self.game.assets.get_background(
+            boss_data["background"], from_overworld=False)) else self._get_battle_background_for_area()
 
         flag_name = boss_data.get("victory_flag", f"{self.game.story_manager.current_area_key}_boss_defeated")
 
@@ -2459,6 +2545,7 @@ class PlayState(GameState):
 class CityState(GameState):
     def __init__(self, game):
         super().__init__(game)
+        hoenn.apply_version(game)
         self.area_key = self.game.story_manager.current_area_key
         self.area_data = self.game.story_manager.get_current_area_data()
 
@@ -2630,6 +2717,7 @@ class CityState(GameState):
         for pid in team_ids:
             raw = self.game.loader.fetch_specific(pid)
             opponent_team.append(Pokemon(raw, self.game.assets, size_mult=3.125))
+        forms.mark_trainer_team(opponent_team, trainer_data)
 
         sprite_name = trainer_data.get("sprite")
         trainer_sprite = self.game.assets.get_trainer_image(sprite_name)
@@ -2761,6 +2849,11 @@ class CityState(GameState):
             return True
 
         story = self.game.story_manager
+
+        if isinstance(condition, (list, tuple)):
+            return all(self._check_menu_condition(c) for c in condition)
+        if condition.startswith("not:"):
+            return not self._check_menu_condition(condition[4:])
 
         if condition == "has_8_badges":
             return sum(len(b) for b in story.badges.values()) >= 8
@@ -4136,6 +4229,7 @@ class CityState(GameState):
 
         opponent_team = [Pokemon(self.game.loader.fetch_specific(tid), self.game.assets, size_mult=3.125)
                          for tid in team_ids]
+        forms.mark_trainer_team(opponent_team, t_info)
 
         from src.states.battle import TrainerBattleState, TrainerIntroState
         sprite = _trainer_sprite(self.game, t_info.get("sprite", "rival.png"))
@@ -4172,6 +4266,10 @@ class CityState(GameState):
         self.game.change_state(SaveState(self.game, self))
 
     def start(self):
+        if hoenn.needs_choice(self.game.story_manager):
+            from src.states.hoenn import HoennVersionState
+            self.game.change_state(HoennVersionState(self.game, lambda: CityState(self.game)))
+            return
         self.clear_hover_menu()
         self.game.ui_manager.add_element(self.action_menu)
 
@@ -4710,6 +4808,7 @@ class GymLobbyState(GameState):
         for pid in team_ids:
             raw = self.game.loader.fetch_specific(pid)
             opponent_team.append(Pokemon(raw, self.game.assets, size_mult=3.125))
+        forms.mark_trainer_team(opponent_team, t_data)
 
         bg_file = self.game.story_manager.get_gym_battle_background(
             self.area_key, trainer_index=self.progress, is_leader=is_leader

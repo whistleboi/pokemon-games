@@ -493,6 +493,7 @@ class PokeMartState(GameState):
             else:
                 name = item.replace("_", " ").title().replace(" Fossil", "")
                 price = (999999 if item == "UPGRADE" else 2000 if item in self.WEATHER_ROCKS.values()
+                         else 5000 if item.endswith(("ITE", "ITE_X", "ITE_Y"))
                          else POKEBLOCK_PRICE if item in POKEBLOCKS
                          else BERRY_PRICE if item.endswith("_BERRY") else 10000)
                 icon = self.game.assets.get_item_image(item)

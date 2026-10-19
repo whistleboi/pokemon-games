@@ -8,9 +8,12 @@ routes roll their weather once a day from the climate's chances for the season, 
 same route keeps the same weather all day. Areas with a fixed `weather` keep it, and an
 area's `season_weather` ({"WINTER": "SNOW"}) forces weather for that season.
 
-Late in the Hoenn story the Weather Institute hands over the WEATHER_DIAL. With it the
+Late in the Hoenn story the Weather Institute hands over the WEATHER_DIAL. Once a day the
 player can burn a weather rock to set one route's weather until midnight (or clear the
 skies for free). Nothing can change the season itself.
+
+During Hoenn's Primal crisis (Seafloor Cavern cleared, Cave of Origin not yet) the box
+legend's harsh sun or heavy rain covers every outdoor Hoenn area.
 
 This module is the one place that answers "what's the weather here today?", so battles,
 wild encounters, marts and berry trees all agree.
@@ -100,6 +103,9 @@ def area_weather(game, area_key, date=None):
     if override:
         return override["weather"]
     area = _areas(game).get(area_key, {})
+    crisis = _hoenn_crisis(game, area_key, area)
+    if crisis:
+        return crisis
     region = area_region(game, area_key)
     climate = region_climate(game, region) or {}
     season = current_season(date)
@@ -133,7 +139,7 @@ def area_weather(game, area_key, date=None):
 
 # ---- Weather Dial: the player's own weather for the rest of the day ----
 WEATHER_DIAL = "WEATHER_DIAL"
-DIAL_UNLOCK_FLAG = "rayquaza_awakened"  # Sky Pillar, after the Sootopolis crisis
+DIAL_UNLOCK_FLAG = "cave_of_origin_cleared"  # once Primal Groudon/Kyogre is calmed
 ROCK_WEATHER = {"DAMP_ROCK": "RAIN", "HEAT_ROCK": "SUN", "SMOOTH_ROCK": "SAND", "ICY_ROCK": "SNOW"}
 
 
@@ -142,6 +148,21 @@ def _override(game, area_key, date):
     flags = getattr(story, "story_flags", None) or {}
     entry = (flags.get("weather_override") or {}).get(area_key)
     return entry if entry and entry.get("date") == date.isoformat() else None
+
+
+def _hoenn_crisis(game, area_key, area):
+    from src.world import hoenn
+    story = getattr(game, "story_manager", None)
+    if story is None or area_region(game, area_key) != "HOENN" or not hoenn.primal_crisis(story):
+        return None
+    v = hoenn.info(story)
+    if not v or area.get("area_type") == "dungeon" and not area.get("weather"):
+        return None
+    return v["crisis_weather"]
+
+
+def dial_used_today(game, date=None):
+    return game.story_manager.story_flags.get("weather_dial_used") == (date or today()).isoformat()
 
 
 def can_change_weather(game, area_key):
@@ -160,6 +181,7 @@ def set_weather(game, area_key, weather, date=None):
                  if v.get("date") == date.isoformat()}  # yesterday's settings are spent
     overrides[area_key] = {"date": date.isoformat(), "weather": weather}
     flags["weather_override"] = overrides
+    flags["weather_dial_used"] = date.isoformat()  # the dial works once per day
 
 
 def region_weathers(game, region, date=None):

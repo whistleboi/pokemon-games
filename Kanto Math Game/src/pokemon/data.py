@@ -279,7 +279,9 @@ class Pokemon:
             self.sidebar_image = None
 
     def revert_transform(self):
-        """Reverts a transformed Pokemon back to original state."""
+        """Reverts a transformed Pokemon back to original state (and any Mega/Primal form)."""
+        from src.pokemon.forms import revert_form
+        revert_form(self)
         if not hasattr(self, "transformed_state"):
             return
 

@@ -125,11 +125,25 @@ The data lives in JSON region files under `assets/`, named `pokemon_area_data.js
   - **Deerling/Sawsbuck:** the summary shows "Coat: Winter Form" for the current season. There are no separate form sprites.
   - Test: `check_seasons.py <scratchpad>` (fakes the date via `seasons._today`).
 - **Weather Dial (`src/states/weather.py`):**
-  - Gate: the "WEATHER DIRECTOR" option in the Weather Institute (`HOENN_WEATHER_INSTITUTE` route_menu, action `WEATHER_DIRECTOR`) appears only after `rayquaza_awakened` (Sky Pillar). The Director gives the `WEATHER_DIAL` key item plus one of each weather rock, sets `got_weather_dial`, and completes side mission `hoenn_s8` "Master of the Skies".
-  - Use: from the Bag's key items, on an outdoor route or fixed-weather area in a seasonal region (`seasons.can_change_weather`). Towns, caves, Kanto and Johto are refused.
-  - Picking a rock uses it up and sets that area's weather until midnight (`story_flags["weather_override"]`, date-stamped; older days are pruned). CLEAR SKIES is free. The override beats every other rule, so battles, encounters, berries and the HUD all follow it.
-  - Seasons can never be changed manually.
-  - Test: `check_weather_dial.py <scratchpad>`.
+  - Gate: the "WEATHER DIRECTOR" option at the Weather Institute appears after `cave_of_origin_cleared` (Primal Groudon/Kyogre calmed). The Director gives `WEATHER_DIAL` + one of each weather rock (`got_weather_dial`, side mission `hoenn_s8`).
+  - Once per real day (`story_flags["weather_dial_used"]`): a rock is used up to set an outdoor route's weather until midnight, or CLEAR SKIES for free. Seasons can never be changed manually.
+  - Test: `check_weather_dial.py`.
+- **Mega Evolution & Primal Reversion (`src/pokemon/forms.py`, `assets/mega_forms.json`):**
+  - 48 classic Megas + Primal Groudon/Kyogre: stats/types from PokeAPI, sprites in `sprites/pokemon/mega/` (`back/`, `shiny/`, `back/shiny/`), named `<id>_<form>.png`. Item icons in `sprites/items/`.
+  - Player: Key Stone (`MEGA_BRACELET` or Kalos `MEGA_RING`) + the species' stone, and it Mega Evolves automatically on entering battle, one per side per battle. Rayquaza needs no stone. Groudon + `RED_ORB` / Kyogre + `BLUE_ORB` Primal Revert on entry (doesn't use up the Mega).
+  - Foes: a trainer's `"mega": <species id>` (applied by `forms.mark_trainer_team` at all four team-building sites); a boss with `"primal": true`.
+  - Extreme weather while that Pokemon is out (no countdown, rocks can't override it, ends when it leaves): `HARSH_SUN` (Fire x1.5, Water fizzles for 0), `HEAVY_RAIN` (Water x1.5, Fire fizzles), `STRONG_WINDS` (Electric/Ice/Rock vs Flying halved). Move choice skips moves that would fizzle.
+  - Forms revert after battle (`revert_transform` also calls `forms.revert_form`; `exit_battle` and catches revert too).
+  - Test: `check_forms.py`.
+- **Hoenn follows Omega Ruby / Alpha Sapphire (`src/world/hoenn.py`, `src/states/hoenn.py`):**
+  - First arrival in a Hoenn town shows "CHOOSE YOUR STORY" (flag `hoenn_version` = `OMEGA_RUBY` / `ALPHA_SAPPHIRE`).
+  - Hoenn data is written once with tokens (`{team}`, `{leader}`, `{legend}`, `{orb}`, `{other_orb}`, `{other_legend}`, `{eon}`, `{goal}`, `{team_short}`) and villain roles (`"villain": grunt/admin_a/admin_b/leader`). `hoenn.apply_version` rewrites the in-memory data from a pristine copy (called at PlayState/CityState init): team names, sprites (Showdown art: maxie, archie, tabitha, courtney, matt, shelly, magma_grunt, aqua_grunt, zinnia), Numel/Camerupt vs Carvanha/Sharpedo, leader Mega Camerupt/Sharpedo. Areas where both teams appear (Route 112, Meteor Falls, Mt. Chimney, New Mauville) keep both teams' grunts.
+  - ORAS gym order enforced with gym `requirements`: Roxanne, Brawly, Wattson, Flannery, Norman (5th), Winona, Tate & Liza, Wallace (8th, also needs `cave_of_origin_cleared`). Leaders set `badge_<x>_earned`. Champion is Steven (Mega Metagross); Wally has Mega Gallade.
+  - Story events (route action `HOENN_EVENT`): Mt. Pyre elders give the other orb; the Seafloor Cavern leader awakens the legend, starting the Primal crisis (the version's sun/rain over every outdoor Hoenn area until the Cave of Origin); Cave of Origin Primal boss; the leader then gives the stolen orb; Steven on Route 118 (after the Balance Badge) takes you to Southern Island: Latios (OR) / Latias (AS) + its stone + Mega Bracelet; Steven on Route 120 gives the starter Mega Stone; the Route 114 stone collector sells 22 Hoenn Mega Stones ($5000) after the crisis.
+  - Delta Episode (post-champion): Sky Pillar travel opens, Zinnia battle, Rayquaza boss, "RIDE RAYQUAZA INTO SPACE" for Deoxys (`delta_episode_cleared`), then the other legend in the Cave of Origin (`counterpart_legend_caught`). Deoxys removed from the Sky Pillar wild pool. Route 118 Southern Island (Eon Ticket) now fights the other Eon dragon; Route 120 Desert Ruins fights Regirock (both buttons did nothing before).
+  - Route/town conditions accept `not:<flag>` and lists; route `BOSS` buttons can carry their own `"boss"` dict (`primal`, `background`).
+  - Journal: Hoenn missions rewritten in ORAS order with `required_region` + new `region_badges_min/less`; the journal now prefers the current region's main mission.
+  - Test: `check_oras.py`.
 - **Day/night:**
   - Applies to Johto, Sinnoh, Alola and Paldea. Night is before 6:00 or from 20:00.
   - Encounter weights shift rather than lock: a species in its own time of day gets ×2 weight, and one out of its time gets ×0.25 (never 0).
@@ -208,7 +222,13 @@ The scripts live in the session scratchpad, which is temporary and may be gone n
 - `smoke_regions.py <gamedir>` is the full regression and should end with `##### 0 failures`.
 - Feature checks: `check_poffin.py`, `check_contest.py`, `check_realhp.py`, `check_weather.py`, `check_movepick.py`, `check_starter_battles.py`, `check_move.py`, `check_reverse.py`, `check_fossils.py`, `check_galar.py`, `check_xp_silph.py`.
 
-## Not started (from the original feature list)
+## Not started / ideas
+
+- Fog weather (not implemented; asked about on 2026-10-19).
+- ORAS extras not done: Soaring/Eon Flute, Mirage Spots, DexNav, Secret Bases. Mega Evolution is automatic on switch-in (no MEGA button).
+- Side missions from other regions (e.g. Galar's 'The Wild Area') have no `required_region`, so they show in every region.
+
+### From the original feature list
 
 - Sinnoh Underground
 - Kalos Amie and Inverse Battles

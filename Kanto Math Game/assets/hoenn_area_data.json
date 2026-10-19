@@ -70,11 +70,11 @@
     "hoenn_may_brendan_rival": ["Rival: Hey! Let's see who's the better trainer!", "I'll be waiting for you at the next gym!"],
     "hoenn_norman_intro": ["Norman: Welcome to the Petalburg Gym! I'm your father... and the Normal-type Gym Leader!"],
     "hoenn_roxanne_intro": ["Roxanne: Welcome to Rustboro City Gym! I'm Roxanne, the Rock-type Gym Leader."],
-    "hoenn_team_magma_aqua_intro": ["Team Magma/Team Aqua Grunt: The boss is planning something big at Mt. Chimney!"],
+    "hoenn_team_magma_aqua_intro": ["{team} Grunt: The boss is planning something big at Mt. Chimney!"],
     "hoenn_steven_stone_gift": ["Steven: Here, take this Steel Wing. It will help you in battle."],
-    "hoenn_wallace_intro": ["Wallace: The sea is calling... Are you ready for the final challenge?"],
+    "hoenn_wallace_intro": ["Wallace: Thank you for saving Sootopolis. Now, shall we have our Gym battle?"],
     "hoenn_elite_four": ["Congratulations! You've reached the Pokémon League!"],
-    "hoenn_legendary_awakening": ["The ground shakes... Groudon/Kyogre has awakened!"],
+    "hoenn_legendary_awakening": ["The ground shakes... {legend} has awakened!"],
     "hoenn_newgame_intro": [
       "The moving truck rumbles to a stop in Littleroot Town.",
       "Mom: Here we are, {player_name}! Our new home in the Hoenn region!",
@@ -163,7 +163,10 @@
       "backgrounds": { "main": "petalburg_city.png", "pokecenter": "petalburg_center.png", "pokemart": "petalburg_mart.png", "gym": "petalburg_gym.png" },
       "has_gym": true,
       "gym": {
-        "requirements": null,
+        "requirements": {
+          "badges": 4,
+          "fail_text": ["Dad: So you want to battle me? Earn four badges first.", "Then we'll see how strong you've become!"]
+        },
         "trainers": [
           {
             "name": "Youngster Tommy",
@@ -191,7 +194,8 @@
             "intro": ["Norman: Welcome to the Petalburg Gym! I'm Norman, the Normal-type Gym Leader."],
             "player_won": ["You're stronger than I expected!"],
             "player_lost": ["Don't worry, you'll get it next time."]
-          }
+          },
+          "victory_flag": "badge_balance_earned"
         }
       },
       "travel_options": [
@@ -242,7 +246,8 @@
             "intro": ["Roxanne: Welcome to the Rustboro City Gym! I'm Roxanne, the Rock-type Gym Leader."],
             "player_won": ["Your strategy was flawless!"],
             "player_lost": ["Don't worry, you'll get it next time."]
-          }
+          },
+          "victory_flag": "badge_stone_earned"
         }
       },
       "travel_options": [
@@ -288,7 +293,12 @@
             "intro": ["Brawly: Welcome to the Dewford Town Gym! I'm Brawly, the Fighting-type Gym Leader."],
             "player_won": ["You're a real wave!"],
             "player_lost": ["Don't worry, you'll get it next time."]
-          }
+          },
+          "victory_flag": "badge_knuckle_earned"
+        },
+        "requirements": {
+          "badges": 1,
+          "fail_text": ["Brawly is only accepting challengers with 1 Hoenn badge.", "Come back after you've beaten the earlier Gyms!"]
         }
       },
       "travel_options": [
@@ -331,7 +341,8 @@
           "class": "TEAM_AQUA",
           "sprite": "aqua_grunt.png",
           "team": [72, 72],
-          "rewards": { "balls": 3 }
+          "rewards": { "balls": 3 },
+          "villain": "grunt"
         },
         "condition": "has_stone_badge"
       }
@@ -363,7 +374,12 @@
             "intro": ["Wattson: Welcome to the Mauville City Gym! I'm Wattson, the Electric-type Gym Leader."],
             "player_won": ["Shocking performance!"],
             "player_lost": ["Don't worry, you'll get it next time."]
-          }
+          },
+          "victory_flag": "badge_dynamo_earned"
+        },
+        "requirements": {
+          "badges": 2,
+          "fail_text": ["Wattson is only accepting challengers with 2 Hoenn badges.", "Come back after you've beaten the earlier Gyms!"]
         }
       },
       "travel_options": [
@@ -447,7 +463,12 @@
             "intro": ["Flannery: Welcome to the Lavaridge Town Gym! I'm Flannery, the Fire-type Gym Leader."],
             "player_won": ["You're too hot to handle!", "Take this Root Fossil too. The fossil lab in Rustboro City can revive it!"],
             "player_lost": ["Don't worry, you'll get it next time."]
-          }
+          },
+          "victory_flag": "badge_heat_earned"
+        },
+        "requirements": {
+          "badges": 3,
+          "fail_text": ["Flannery is only accepting challengers with 3 Hoenn badges.", "Come back after you've beaten the earlier Gyms!"]
         }
       },
       "travel_options": [
@@ -491,7 +512,12 @@
             "intro": ["Winona: Welcome to the Fortree City Gym! I'm Winona, the Flying-type Gym Leader."],
             "player_won": ["You soared above me!"],
             "player_lost": ["Don't worry, you'll get it next time."]
-          }
+          },
+          "victory_flag": "badge_feather_earned"
+        },
+        "requirements": {
+          "badges": 5,
+          "fail_text": ["Winona is only accepting challengers with 5 Hoenn badges.", "Come back after you've beaten the earlier Gyms!"]
         }
       },
       "travel_options": [
@@ -558,7 +584,12 @@
             "intro": ["Tate & Liza: Welcome to the Mossdeep City Gym! We're the Psychic-type Gym Leaders."],
             "player_won": ["Your mind is sharp!"],
             "player_lost": ["Don't worry, you'll get it next time."]
-          }
+          },
+          "victory_flag": "badge_mind_earned"
+        },
+        "requirements": {
+          "badges": 6,
+          "fail_text": ["Tate & Liza is only accepting challengers with 6 Hoenn badges.", "Come back after you've beaten the earlier Gyms!"]
         }
       },
       "travel_options": [
@@ -594,20 +625,26 @@
           "name": "Wallace",
           "class": "GYM_LEADER",
           "sprite": "wallace.png",
-          "team": [350, 351, 352],
+          "team": [370, 340, 364, 119, 350],
           "badge_reward": "RAIN",
           "rewards": { "balls": 5, "EON_TICKET": 1, "CLAW_FOSSIL": 1 },
           "dialogue": {
             "intro": ["Wallace: Welcome to the Sootopolis City Gym! I'm Wallace, the Water-type Gym Leader."],
             "player_won": ["The tides have turned in your favor!", "Take this Claw Fossil too. The fossil lab in Rustboro City can revive it!"],
             "player_lost": ["Don't worry, you'll get it next time."]
-          }
+          },
+          "victory_flag": "badge_rain_earned"
+        },
+        "requirements": {
+          "badges": 7,
+          "fail_text": ["The Gym is empty. Wallace has gone to the Cave of Origin...", "Hoenn needs you to stop Primal {legend} first!"],
+          "flag": "cave_of_origin_cleared"
         }
       },
       "travel_options": [
         { "text": "Route 126", "target_area": "HOENN_ROUTE_126" },
         { "text": "Cave of Origin", "target_area": "HOENN_CAVE_OF_ORIGIN" },
-        { "text": "Sky Pillar", "target_area": "HOENN_SKY_PILLAR" }
+        { "text": "Sky Pillar", "target_area": "HOENN_SKY_PILLAR", "condition": "beat_hoenn_champion" }
       ],
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
@@ -627,7 +664,7 @@
         { "text": "Route 131", "target_area": "HOENN_ROUTE_131" },
         { "text": "Route 132", "target_area": "HOENN_ROUTE_132" },
         { "text": "Shoal Cave", "target_area": "HOENN_SHOAL_CAVE" },
-        { "text": "Sky Pillar", "target_area": "HOENN_SKY_PILLAR" }
+        { "text": "Sky Pillar", "target_area": "HOENN_SKY_PILLAR", "condition": "beat_hoenn_champion" }
       ],
       "explore_options": [{"text": "Heal", "action": "HEAL"}],
       "next_area": "HOENN_ROUTE_131",
@@ -675,12 +712,21 @@
           }
         ],
         "leader": {
-          "name": "Wallace",
+          "name": "Steven",
           "class": "CHAMPION",
-          "sprite": "wallace.png",
-          "team": [350, 351, 352, 382, 384],
+          "sprite": "steven.png",
+          "team": [227, 344, 306, 346, 348, 376],
           "rewards": { "balls": 25, "NATIONAL_DEX": 1 },
-          "victory_flag": "beat_hoenn_champion"
+          "victory_flag": "beat_hoenn_champion",
+          "mega": 376,
+          "dialogue": {
+            "intro": [
+              "Steven: I knew you'd make it here. Now show me everything you've got!",
+              "Let's see if your bond with your Pokemon outshines my Mega Metagross!"
+            ],
+            "player_won": ["Congratulations! You are the new Hoenn Champion!"],
+            "player_lost": ["A fine battle. Come back stronger, my friend."]
+          }
         }
       },
       "travel_options": [
@@ -943,7 +989,8 @@
           "class": "ROCKET",
           "sprite": "aqua_grunt.png",
           "team": [261, 318],
-          "rewards": { "balls": 3 }
+          "rewards": { "balls": 3 },
+          "villain": "grunt"
         }
       ],
       "route_menu": [
@@ -1204,14 +1251,14 @@
         },
         {
           "name": "Team Magma Grunt",
-          "class": "ROCKET",
+          "class": "TEAM_MAGMA",
           "sprite": "magma_grunt.png",
           "team": [261, 322],
           "rewards": { "balls": 3 }
         },
         {
           "name": "Team Aqua Grunt",
-          "class": "ROCKET",
+          "class": "TEAM_AQUA",
           "sprite": "aqua_grunt.png",
           "team": [261, 318],
           "rewards": { "balls": 3 }
@@ -1317,6 +1364,7 @@
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "STONE COLLECTOR", "action": "HOENN_EVENT", "event": "stone_shop", "condition": "cave_of_origin_cleared", "color": "PURPLE" },
         { "text": "ROUTE 113", "action": "EXIT", "target_area": "HOENN_ROUTE_113", "condition": "can_exit", "color": "RED" },
         { "text": "FALLARBOR TOWN", "action": "EXIT", "target_area": "FALLARBOR_TOWN", "condition": "can_exit", "color": "RED" }
       ],
@@ -1484,9 +1532,21 @@
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        {
+          "text": "MEET STEVEN",
+          "action": "HOENN_EVENT",
+          "event": "southern_island",
+          "condition": ["has_balance_badge", "not:got_mega_bracelet"],
+          "color": "GOLD"
+        },
         { "text": "MAUVILLE CITY", "action": "EXIT", "target_area": "MAUVILLE_CITY", "condition": "can_exit", "color": "RED" },
-        { "text": "SOUTHERN ISLAND", "action": "BOSS", "condition": "has_national_dex", "color": "PURPLE" },
-        { "text": "SOUTHERN ISLAND", "action": "BOSS", "condition": "has_EON_TICKET", "color": "PURPLE" },
+        {
+          "text": "SOUTHERN ISLAND",
+          "action": "BOSS",
+          "condition": ["has_EON_TICKET", "not:southern_island_eon_caught"],
+          "color": "PURPLE",
+          "boss": { "legend": "other_eon", "id": 380, "name": "Latias", "victory_flag": "southern_island_eon_caught" }
+        },
         { "text": "ROUTE 119", "action": "EXIT", "target_area": "HOENN_ROUTE_119", "condition": "can_exit", "color": "RED" },
         { "text": "ROUTE 123", "action": "EXIT", "target_area": "HOENN_ROUTE_123", "condition": "can_exit", "color": "RED" }
       ],
@@ -1574,14 +1634,28 @@
           "class": "ROCKET",
           "sprite": "magma_grunt.png",
           "team": [262, 323],
-          "rewards": { "balls": 3 }
+          "rewards": { "balls": 3 },
+          "villain": "grunt"
         }
       ],
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        {
+          "text": "TALK TO STEVEN",
+          "action": "HOENN_EVENT",
+          "event": "starter_stone",
+          "condition": ["got_mega_bracelet", "weather_institute_cleared", "not:got_starter_mega_stone"],
+          "color": "GOLD"
+        },
         { "text": "MAUVILLE CITY", "action": "EXIT", "target_area": "MAUVILLE_CITY", "condition": "can_exit", "color": "RED" },
-        { "text": "DESERT RUINS", "action": "BOSS", "condition": "regi_trio_awakened", "color": "GOLD" },
+        {
+          "text": "DESERT RUINS",
+          "action": "BOSS",
+          "condition": ["regi_trio_awakened", "not:defeated_regirock"],
+          "color": "GOLD",
+          "boss": { "id": 377, "name": "Regirock", "victory_flag": "defeated_regirock" }
+        },
         { "text": "ROUTE 121", "action": "EXIT", "target_area": "HOENN_ROUTE_121", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "HOENN_ROUTE_121",
@@ -1645,7 +1719,8 @@
           "class": "ROCKET",
           "sprite": "aqua_grunt.png",
           "team": [318, 319, 262],
-          "rewards": { "balls": 3 }
+          "rewards": { "balls": 3 },
+          "villain": "grunt"
         },
         {
           "name": "Swimmer Simon",
@@ -1892,7 +1967,8 @@
           "class": "ROCKET",
           "sprite": "aqua_grunt.png",
           "team": [319, 262, 42],
-          "rewards": { "balls": 5 }
+          "rewards": { "balls": 5 },
+          "villain": "grunt"
         }
       ],
       "route_menu": [
@@ -2161,7 +2237,8 @@
           "team": [261],
           "rewards": { "balls": 5, "RARE_CANDY": 1 },
           "is_boss_battle": true,
-          "victory_flag": "woods_boss_defeated"
+          "victory_flag": "woods_boss_defeated",
+          "villain": "grunt"
         }
       ],
       "route_menu": [
@@ -2192,7 +2269,8 @@
             "intro": ["Hand over the goods and the bird!"],
             "player_won": ["Arrgh! My plan!"],
             "player_lost": ["Too slow!"]
-          }
+          },
+          "villain": "grunt"
         }
       ],
       "route_menu": [
@@ -2262,14 +2340,14 @@
       "trainer_pool": [
         {
           "name": "Team Magma Grunt",
-          "class": "ROCKET",
+          "class": "TEAM_MAGMA",
           "sprite": "magma_grunt.png",
           "team": [322, 261],
           "rewards": { "balls": 3 }
         },
         {
           "name": "Team Aqua Grunt",
-          "class": "ROCKET",
+          "class": "TEAM_AQUA",
           "sprite": "aqua_grunt.png",
           "team": [318, 261],
           "rewards": { "balls": 3 }
@@ -2281,7 +2359,8 @@
           "team": [323, 262],
           "rewards": { "balls": 10, "METEORITE": 1 },
           "is_boss_battle": true,
-          "victory_flag": "meteor_falls_cleared"
+          "victory_flag": "meteor_falls_cleared",
+          "villain": "admin_a"
         },
         {
           "name": "Old Couple John & Jay",
@@ -2318,7 +2397,8 @@
           "class": "ROCKET",
           "sprite": "magma_grunt.png",
           "team": [261, 322],
-          "rewards": { "balls": 3 }
+          "rewards": { "balls": 3 },
+          "villain": "grunt"
         },
         {
           "name": "Picnicker Diana",
@@ -2363,7 +2443,8 @@
           "class": "ROCKET",
           "sprite": "magma_grunt.png",
           "team": [322, 322],
-          "rewards": { "balls": 3 }
+          "rewards": { "balls": 3 },
+          "villain": "grunt"
         }
       ],
       "route_menu": [
@@ -2388,18 +2469,19 @@
           "sprite": "magma_grunt.png",
           "team": [322, 261, 41],
           "rewards": { "balls": 5 },
-          "is_boss_battle": true
+          "is_boss_battle": true,
+          "villain": "admin_a"
         },
         {
-          "name": "Magma Grunt",
-          "class": "ROCKET",
+          "name": "Team Magma Grunt",
+          "class": "TEAM_MAGMA",
           "sprite": "magma_grunt.png",
           "team": [322, 261],
           "rewards": { "balls": 3 }
         },
         {
-          "name": "Aqua Grunt",
-          "class": "ROCKET",
+          "name": "Team Aqua Grunt",
+          "class": "TEAM_AQUA",
           "sprite": "aqua_grunt.png",
           "team": [318, 261],
           "rewards": { "balls": 3 }
@@ -2413,10 +2495,11 @@
           "rewards": { "balls": 15, "RARE_CANDY": 2 },
           "victory_flag": "mt_chimney_boss_defeated",
           "dialogue": {
-            "intro": ["The power of the volcano is mine!"],
-            "player_won": ["Impossible... my plans!"],
-            "player_lost": ["The world will burn/flood!"]
-          }
+            "intro": ["{leader}: The Meteorite's power will help {team} {goal}!", "You won't stand in our way, child!"],
+            "player_won": ["{leader}: Hmph. Keep the Meteorite, then.", "There are other ways to awaken {legend}..."]
+          },
+          "villain": "leader",
+          "leader_mega": false
         }
       ],
       "route_menu": [
@@ -2437,14 +2520,14 @@
       "trainer_pool": [
         {
           "name": "Team Magma Grunt",
-          "class": "ROCKET",
+          "class": "TEAM_MAGMA",
           "sprite": "magma_grunt.png",
           "team": [100, 100, 101],
           "rewards": { "balls": 3 }
         },
         {
           "name": "Team Aqua Grunt",
-          "class": "ROCKET",
+          "class": "TEAM_AQUA",
           "sprite": "aqua_grunt.png",
           "team": [81, 81, 82],
           "rewards": { "balls": 3 }
@@ -2479,14 +2562,16 @@
           "class": "ROCKET",
           "sprite": "aqua_grunt.png",
           "team": [318, 318, 262],
-          "rewards": { "balls": 3 }
+          "rewards": { "balls": 3 },
+          "villain": "grunt"
         },
         {
           "name": "Team Grunt",
           "class": "ROCKET",
           "sprite": "magma_grunt.png",
           "team": [322, 322, 262],
-          "rewards": { "balls": 3 }
+          "rewards": { "balls": 3 },
+          "villain": "grunt"
         },
         {
           "name": "Admin Tabitha",
@@ -2495,14 +2580,15 @@
           "team": [323, 262, 42],
           "rewards": { "balls": 10, "MYSTERY_EGG": 1 },
           "is_boss_battle": true,
-          "victory_flag": "weather_institute_cleared"
+          "victory_flag": "weather_institute_cleared",
+          "villain": "admin_a"
         }
       ],
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
-        { "text": "WEATHER DIRECTOR", "action": "WEATHER_DIRECTOR", "condition": "rayquaza_awakened", "color": "PURPLE" },
+        { "text": "WEATHER DIRECTOR", "action": "WEATHER_DIRECTOR", "condition": "cave_of_origin_cleared", "color": "PURPLE" },
         { "text": "ROUTE 119", "action": "EXIT", "target_area": "HOENN_ROUTE_119", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "HOENN_ROUTE_119",
@@ -2612,7 +2698,8 @@
           "class": "ROCKET",
           "sprite": "aqua_grunt.png",
           "team": [318, 262, 42],
-          "rewards": { "balls": 3 }
+          "rewards": { "balls": 3 },
+          "villain": "grunt"
         },
         {
           "name": "Admin Shelly",
@@ -2620,7 +2707,8 @@
           "sprite": "aqua_grunt.png",
           "team": [319, 262, 42],
           "rewards": { "balls": 5 },
-          "is_boss_battle": true
+          "is_boss_battle": true,
+          "villain": "admin_b"
         },
         {
           "name": "Aqua Leader Archie",
@@ -2631,23 +2719,29 @@
           "is_boss_battle": true,
           "victory_flag": "seafloor_cavern_cleared",
           "dialogue": {
-            "intro": ["The super-ancient Pokémon will wake!"],
-            "player_won": ["What have I done?"],
-            "player_lost": ["The sea claims all!"]
-          }
+            "intro": ["{leader}: You're too late! With the {orb}, {legend} will awaken!", "{team} will {goal}, and nothing can stop us!"],
+            "player_won": ["{leader}: It doesn't matter... the {orb} is already shining!", "Rise, {legend}! Show us your primal power!"]
+          },
+          "villain": "leader"
         }
       ],
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "STOP ARCHIE", "action": "TRAINER", "condition": "has_trainers", "color": "PURPLE" },
-        { "text": "AWAKEN KYOGRE", "action": "BOSS", "condition": "seafloor_cavern_cleared", "color": "CYAN" },
+        { "text": "STOP {leader}", "action": "TRAINER", "condition": "has_trainers", "color": "PURPLE" },
+        {
+          "text": "THE {orb}",
+          "action": "HOENN_EVENT",
+          "event": "awakening",
+          "condition": ["seafloor_cavern_cleared", "not:cave_of_origin_cleared"],
+          "color": "GOLD"
+        },
         { "text": "ROUTE 128", "action": "EXIT", "target_area": "HOENN_ROUTE_128", "condition": "can_exit", "color": "RED" }
       ],
-      "area_boss": { "id": 382, "name": "Kyogre", "victory_flag": "defeated_kyogre" },
       "next_area": "HOENN_ROUTE_128",
       "region": "HOENN",
-      "weather": "RAIN"
+      "weather": "RAIN",
+      "crisis_weather_area": true
     },
     "HOENN_CAVE_OF_ORIGIN": {
       "area_type": "dungeon",
@@ -2659,13 +2753,33 @@
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "CONFRONT GROUDON", "action": "BOSS", "condition": "can_exit", "color": "RED" },
+        {
+          "text": "CONFRONT PRIMAL {legend}",
+          "action": "BOSS",
+          "condition": ["can_exit", "seafloor_cavern_cleared", "boss_not_defeated"],
+          "color": "RED"
+        },
+        {
+          "text": "TALK TO {leader}",
+          "action": "HOENN_EVENT",
+          "event": "leader_orb",
+          "condition": ["cave_of_origin_cleared", "not:got_stolen_orb"],
+          "color": "GOLD"
+        },
+        {
+          "text": "SEEK {other_legend}",
+          "action": "BOSS",
+          "color": "CYAN",
+          "boss": { "legend": "other", "id": 382, "name": "Kyogre", "primal": true, "victory_flag": "counterpart_legend_caught" },
+          "condition": ["delta_episode_cleared", "not:counterpart_legend_caught"]
+        },
         { "text": "SOOTOPOLIS CITY", "action": "EXIT", "target_area": "SOOTOPOLIS_CITY", "condition": "can_exit", "color": "RED" }
       ],
-      "area_boss": { "id": 383, "name": "Groudon", "victory_flag": "cave_of_origin_cleared" },
+      "area_boss": { "legend": "main", "id": 383, "name": "Groudon", "primal": true, "victory_flag": "cave_of_origin_cleared" },
       "next_area": "SOOTOPOLIS_CITY",
       "region": "HOENN",
-      "weather": "SUN"
+      "weather": "SUN",
+      "crisis_weather_area": true
     },
     "HOENN_SKY_PILLAR": {
       "area_type": "dungeon",
@@ -2673,11 +2787,44 @@
       "battle_type": "mountain",
       "wild_pool_percentages": "HOENN_SKY_PILLAR_PERCENTAGES",
       "min_rounds": 5,
-      "trainer_pool": [],
+      "trainer_pool": [
+        {
+          "name": "Lorekeeper Zinnia",
+          "class": "ROCKET_LEADER",
+          "sprite": "zinnia.png",
+          "team": [248, 334, 706, 715, 373],
+          "is_boss_battle": true,
+          "rewards": { "balls": 10 },
+          "victory_flag": "delta_zinnia_defeated",
+          "dialogue": {
+            "intro": ["Zinnia: A meteoroid is heading for Hoenn, and only Rayquaza can stop it.", "If you want to call it, you'll have to get past me!"],
+            "player_won": ["Zinnia: ...You're the real deal. Go on. Rayquaza is waiting at the top."],
+            "player_lost": ["Zinnia: Not ready yet, huh?"]
+          }
+        }
+      ],
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "SUMMON RAYQUAZA", "action": "BOSS", "condition": "can_exit", "color": "GOLD" },
+        {
+          "text": "BATTLE ZINNIA",
+          "action": "TRAINER",
+          "condition": ["has_trainers", "beat_hoenn_champion"],
+          "color": "PURPLE"
+        },
+        {
+          "text": "SUMMON RAYQUAZA",
+          "action": "BOSS",
+          "condition": ["delta_zinnia_defeated", "boss_not_defeated"],
+          "color": "GOLD"
+        },
+        {
+          "text": "RIDE RAYQUAZA INTO SPACE",
+          "action": "BOSS",
+          "color": "CYAN",
+          "boss": { "id": 386, "name": "Deoxys", "victory_flag": "delta_episode_cleared", "background": "battle_space.png" },
+          "condition": ["rayquaza_awakened", "not:delta_episode_cleared"]
+        },
         { "text": "PACIFIDLOG TOWN", "action": "EXIT", "target_area": "PACIFIDLOG_TOWN", "condition": "can_exit", "color": "RED" }
       ],
       "area_boss": { "id": 384, "name": "Rayquaza", "victory_flag": "rayquaza_awakened" },
@@ -2703,7 +2850,8 @@
           "class": "ROCKET",
           "sprite": "magma_grunt.png",
           "team": [262, 323],
-          "rewards": { "balls": 3 }
+          "rewards": { "balls": 3 },
+          "villain": "grunt"
         },
         {
           "name": "Admin Courtney",
@@ -2712,12 +2860,25 @@
           "team": [323, 262, 42],
           "rewards": { "balls": 15, "RED_ORB": 1 },
           "is_boss_battle": true,
-          "victory_flag": "mt_pyre_cleared"
+          "victory_flag": "mt_pyre_cleared",
+          "villain": "admin_b",
+          "dialogue": {
+            "intro": ["{team} is taking the {orb}! You can't stop us!"],
+            "player_won": ["Too late! The {orb} is already on its way to {leader}!"]
+          }
         }
       ],
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "STOP {team}", "action": "TRAINER", "condition": "has_trainers", "color": "PURPLE" },
+        {
+          "text": "TALK TO THE ELDERS",
+          "action": "HOENN_EVENT",
+          "event": "elders",
+          "condition": ["mt_pyre_cleared", "not:got_mt_pyre_orb"],
+          "color": "GOLD"
+        },
         { "text": "ROUTE 122", "action": "EXIT", "target_area": "HOENN_ROUTE_122", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "HOENN_ROUTE_122",
@@ -2735,14 +2896,15 @@
           "class": "RIVAL",
           "sprite": "wally.png",
           "is_boss_battle": true,
-          "team": [282, 334, 308, 350, 311],
+          "team": [334, 301, 407, 462, 475],
           "rewards": { "balls": 15, "RARE_CANDY": 3 },
           "victory_flag": "defeated_wally_victory",
           "dialogue": {
             "intro": ["I've come this far with my Pokémon!"],
             "player_won": ["You're truly a math master."],
             "player_lost": ["I won't give up!"]
-          }
+          },
+          "mega": 475
         },
         {
           "name": "Ace Trainer Vito",
@@ -2801,7 +2963,8 @@
             "intro": ["Grunt: Hand over those Devon Goods, kid!"],
             "player_won": ["Grunt: Gah! You're tough!"],
             "player_lost": ["Grunt: Ha! The Goods are ours!"]
-          }
+          },
+          "villain": "grunt"
         },
         {
           "name": "Team Aqua Grunt",
@@ -2813,7 +2976,8 @@
             "intro": ["Grunt: Captain Stern's submarine plans belong to Team Aqua!"],
             "player_won": ["Grunt: We have to tell the boss..."],
             "player_lost": ["Grunt: Sink, sink, sink!"]
-          }
+          },
+          "villain": "grunt"
         },
         {
           "name": "Aqua Leader Archie",
@@ -2824,10 +2988,11 @@
           "is_boss_battle": true,
           "victory_flag": "oceanic_museum_cleared",
           "dialogue": {
-            "intro": ["Archie: The sea is the source of all life! Expanding it is our duty!", "Archie: A kid like you can't understand our grand plan!"],
-            "player_won": ["Archie: Hmph. Team Aqua, fall back! This isn't over!", "Captain Stern: Thank you! Please, take this Super Rod as thanks."],
-            "player_lost": ["Archie: The ocean always wins."]
-          }
+            "intro": ["{leader}: So you're the kid who keeps getting in {team}'s way!"],
+            "player_won": ["{leader}: Not bad... We'll meet again, kid."]
+          },
+          "villain": "leader",
+          "leader_mega": false
         }
       ],
       "route_menu": [
@@ -2854,7 +3019,8 @@
             "intro": ["Grunt: The rocket fuel is ours! Stand aside!"],
             "player_won": ["Grunt: No way!"],
             "player_lost": ["Grunt: Magma rules!"]
-          }
+          },
+          "villain": "grunt"
         },
         {
           "name": "Magma Admin Tabitha",
@@ -2866,7 +3032,8 @@
             "intro": ["Tabitha: Hehehe! With this fuel, Mt. Chimney will erupt!"],
             "player_won": ["Tabitha: Leader Maxie won't be happy..."],
             "player_lost": ["Tabitha: Hehehe!"]
-          }
+          },
+          "villain": "admin_a"
         },
         {
           "name": "Magma Leader Maxie",
@@ -2877,10 +3044,10 @@
           "is_boss_battle": true,
           "victory_flag": "space_center_cleared",
           "dialogue": {
-            "intro": ["Maxie: Humanity needs more land! The rocket fuel will awaken the volcano!", "Maxie: You will not interfere a second time!"],
-            "player_won": ["Maxie: ...Perhaps I have miscalculated. Team Magma, withdraw!", "Scientist: You saved the launch! The rocket will fly on schedule!"],
-            "player_lost": ["Maxie: Land is the future. Remember that."]
-          }
+            "intro": ["{leader}: {team} needs the Space Center's power. Stand aside!"],
+            "player_won": ["{leader}: You're tougher than you look..."]
+          },
+          "villain": "leader"
         }
       ],
       "route_menu": [
@@ -2907,7 +3074,8 @@
             "intro": ["Grunt: How did you find our hideout?!"],
             "player_won": ["Grunt: Abandon ship!"],
             "player_lost": ["Grunt: Get out of here!"]
-          }
+          },
+          "villain": "grunt"
         },
         {
           "name": "Team Aqua Grunt",
@@ -2919,7 +3087,8 @@
             "intro": ["Grunt: The submarine already left! You're too late!"],
             "player_won": ["Grunt: Maybe not too late..."],
             "player_lost": ["Grunt: Told you!"]
-          }
+          },
+          "villain": "grunt"
         },
         {
           "name": "Aqua Admin Matt",
@@ -2933,7 +3102,8 @@
             "intro": ["Matt: Hoohahah! The boss is already on his way to the Seafloor Cavern!", "Matt: You'll have to get past me first!"],
             "player_won": ["Matt: Hoo! You're strong! Fine, take this... the boss won't miss it.", "You found a MASTER BALL in Team Aqua's storage room!"],
             "player_lost": ["Matt: Hoohahah! Off you go!"]
-          }
+          },
+          "villain": "admin_a"
         }
       ],
       "route_menu": [
@@ -2949,7 +3119,7 @@
       "type": "MAIN",
       "title": "Birch's Rescue",
       "description": "Professor Birch is in trouble on Route 101! Help him and choose your starter Pokémon (Treecko, Torchic, or Mudkip).",
-      "condition": { "start_region": "HOENN", "visited_not": "HOENN_ROUTE_101", "badges_less": 1 },
+      "condition": { "required_region": "HOENN", "visited_not": "HOENN_ROUTE_101", "badges_less": 1 },
       "reward": "Pokédex + 5 Poké Balls"
     },
     {
@@ -2957,7 +3127,7 @@
       "type": "MAIN",
       "title": "Rival Showdown",
       "description": "Your rival (May or Brendan) wants to test your new Pokémon on Route 103.",
-      "condition": { "start_region": "HOENN", "visited": "HOENN_ROUTE_103", "flag_not": "defeated_rival_103" },
+      "condition": { "required_region": "HOENN", "visited": "HOENN_ROUTE_103", "flag_not": "defeated_rival_103" },
       "completed_flag": "defeated_rival_103",
       "reward": "10 Poké Balls"
     },
@@ -2965,179 +3135,228 @@
       "id": "hoenn_m3",
       "type": "MAIN",
       "title": "Stone Badge",
-      "description": "Defeat Roxanne at the Rustboro City Gym to earn the Stone Badge.",
-      "condition": { "start_region": "HOENN", "visited": "RUSTBORO_CITY", "badges_less": 1 },
+      "description": "Defeat Roxanne at the Rustboro City Gym.",
+      "condition": { "required_region": "HOENN", "region_badges_less": 1, "visited": "RUSTBORO_CITY" },
       "completed_flag": "badge_stone_earned",
-      "reward": "Stone Badge + PokeNav"
+      "reward": "Stone Badge"
     },
     {
       "id": "hoenn_m4",
       "type": "MAIN",
-      "title": "Devon Goods Recovery",
-      "description": "Team Magma/Aqua stole the Devon Goods! Retrieve them from the thief in Rusturf Tunnel.",
-      "condition": { "start_region": "HOENN", "flag": "badge_stone_earned", "flag_not": "devon_goods_recovered" },
-      "completed_flag": "devon_goods_recovered",
-      "reward": "PokéNav + Exp. Share"
+      "title": "Devon Goods",
+      "description": "{team} stole the Devon Goods! Get them back in Rusturf Tunnel.",
+      "condition": { "required_region": "HOENN", "flag": "badge_stone_earned", "flag_not": "rusturf_rescued" },
+      "completed_flag": "rusturf_rescued"
     },
     {
       "id": "hoenn_m5",
       "type": "MAIN",
       "title": "Knuckle Badge",
-      "description": "Defeat Brawly at the Dewford Town Gym and meet Steven Stone in Granite Cave.",
-      "condition": { "start_region": "HOENN", "badges_min": 1, "badges_less": 2, "visited": "DEWFORD_TOWN" },
+      "description": "Deliver Steven's letter in Granite Cave and defeat Brawly in Dewford Town.",
+      "condition": { "required_region": "HOENN", "region_badges_min": 1, "region_badges_less": 2 },
       "completed_flag": "badge_knuckle_earned",
-      "reward": "Knuckle Badge + 3 Rare Candies"
+      "reward": "Knuckle Badge"
     },
     {
       "id": "hoenn_m6",
       "type": "MAIN",
-      "title": "Slateport Team Incident",
-      "description": "Investigate the suspicious activity at the Oceanic Museum in Slateport City.",
-      "condition": { "start_region": "HOENN", "flag": "badge_knuckle_earned", "visited": "SLATEPORT_CITY", "flag_not": "slateport_museum_cleared" },
-      "completed_flag": "slateport_museum_cleared",
-      "reward": "Magma/Aqua Suit"
+      "title": "Oceanic Museum",
+      "description": "{team} is causing trouble at the Oceanic Museum in Slateport City.",
+      "condition": { "required_region": "HOENN", "flag": "badge_knuckle_earned", "visited": "SLATEPORT_CITY", "flag_not": "oceanic_museum_cleared" },
+      "completed_flag": "oceanic_museum_cleared"
     },
     {
       "id": "hoenn_m7",
       "type": "MAIN",
       "title": "Dynamo Badge",
       "description": "Defeat Wattson at the Mauville City Gym.",
-      "condition": { "start_region": "HOENN", "badges_min": 2, "badges_less": 3, "visited": "MAUVILLE_CITY" },
+      "condition": { "required_region": "HOENN", "region_badges_min": 2, "region_badges_less": 3 },
       "completed_flag": "badge_dynamo_earned",
-      "reward": "Dynamo Badge + Devon Scope"
+      "reward": "Dynamo Badge"
     },
     {
       "id": "hoenn_m8",
       "type": "MAIN",
-      "title": "Wally's Training",
-      "description": "Help Wally catch his first Pokémon in Verdanturf Town and witness his growth.",
-      "condition": { "start_region": "HOENN", "flag": "badge_dynamo_earned", "visited": "VERDANTURF_TOWN", "flag_not": "wally_verdanturf" },
-      "completed_flag": "wally_verdanturf",
-      "reward": "Rare Candy"
+      "title": "Mt. Chimney",
+      "description": "{leader} wants the Meteorite to awaken {legend}. Stop {team} at the top of Mt. Chimney!",
+      "condition": { "required_region": "HOENN", "region_badges_min": 3, "flag_not": "mt_chimney_boss_defeated" },
+      "completed_flag": "mt_chimney_boss_defeated"
     },
     {
       "id": "hoenn_m9",
       "type": "MAIN",
       "title": "Heat Badge",
-      "description": "Defeat Flannery at the Lavaridge Town Gym after the Mt. Chimney events.",
-      "condition": { "start_region": "HOENN", "badges_min": 3, "badges_less": 4, "visited": "LAVARIDGE_TOWN" },
+      "description": "Defeat Flannery at the Lavaridge Town Gym.",
+      "condition": { "required_region": "HOENN", "region_badges_min": 3, "region_badges_less": 4, "flag": "mt_chimney_boss_defeated" },
       "completed_flag": "badge_heat_earned",
-      "reward": "Heat Badge + 3 Rare Candies"
+      "reward": "Heat Badge"
     },
     {
       "id": "hoenn_m10",
       "type": "MAIN",
-      "title": "Mt. Chimney Crisis",
-      "description": "Stop Team Magma/Aqua from awakening Groudon/Kyogre at Mt. Chimney.",
-      "condition": { "start_region": "HOENN", "visited": "MT_CHIMNEY", "flag_not": "chimney_crisis_cleared" },
-      "completed_flag": "chimney_crisis_cleared",
-      "reward": "Magma/Aqua Badge + Meteorite"
+      "title": "Balance Badge",
+      "description": "Go home to Petalburg City and battle your dad, Norman.",
+      "condition": { "required_region": "HOENN", "region_badges_min": 4, "region_badges_less": 5 },
+      "completed_flag": "badge_balance_earned",
+      "reward": "Balance Badge"
     },
     {
       "id": "hoenn_m11",
       "type": "MAIN",
-      "title": "Feather Badge",
-      "description": "Defeat Winona at the Fortree City Gym and clear the Weather Institute.",
-      "condition": { "start_region": "HOENN", "badges_min": 4, "badges_less": 5, "visited": "FORTREE_CITY" },
-      "completed_flag": "badge_feather_earned",
-      "reward": "Feather Badge + 3 Rare Candies"
+      "title": "Mega Evolution",
+      "description": "Steven is waiting on Route 118. He has something to show you on Southern Island.",
+      "condition": { "required_region": "HOENN", "flag": "badge_balance_earned", "flag_not": "got_mega_bracelet" },
+      "completed_flag": "got_mega_bracelet",
+      "reward": "Mega Bracelet + {eon}"
     },
     {
       "id": "hoenn_m12",
       "type": "MAIN",
-      "title": "Weather Institute Rescue",
-      "description": "Team Magma/Aqua has taken over the Weather Institute on Route 119. Stop them and obtain Castform.",
-      "condition": { "start_region": "HOENN", "flag": "badge_feather_earned", "visited": "HOENN_ROUTE_119", "flag_not": "weather_institute_cleared" },
+      "title": "Weather Institute",
+      "description": "{team} has taken over the Weather Institute on Route 119!",
+      "condition": { "required_region": "HOENN", "flag": "badge_balance_earned", "flag_not": "weather_institute_cleared" },
       "completed_flag": "weather_institute_cleared",
       "reward": "Castform"
     },
     {
       "id": "hoenn_m13",
       "type": "MAIN",
-      "title": "Mind Badge",
-      "description": "Defeat Tate & Liza at the Mossdeep City Gym.",
-      "condition": { "start_region": "HOENN", "badges_min": 5, "badges_less": 6, "visited": "MOSSDEEP_CITY" },
-      "completed_flag": "badge_mind_earned",
-      "reward": "Mind Badge + Dive Gear"
+      "title": "Feather Badge",
+      "description": "Defeat Winona at the Fortree City Gym.",
+      "condition": { "required_region": "HOENN", "region_badges_min": 5, "region_badges_less": 6 },
+      "completed_flag": "badge_feather_earned",
+      "reward": "Feather Badge"
     },
     {
       "id": "hoenn_m14",
       "type": "MAIN",
-      "title": "Space Center Defense",
-      "description": "Protect the Mossdeep Space Center from Team Magma/Aqua.",
-      "condition": { "start_region": "HOENN", "flag": "badge_mind_earned", "visited": "MOSSDEEP_CITY", "flag_not": "space_center_cleared" },
-      "completed_flag": "space_center_cleared",
-      "reward": "Magma/Aqua Submarine"
+      "title": "Steven's Mega Stone",
+      "description": "Steven is on Route 120 with a Mega Stone for your starter.",
+      "condition": {
+        "required_region": "HOENN",
+        "flag": ["got_mega_bracelet", "weather_institute_cleared"],
+        "flag_not": "got_starter_mega_stone"
+      },
+      "completed_flag": "got_starter_mega_stone",
+      "reward": "Starter Mega Stone"
     },
     {
       "id": "hoenn_m15",
       "type": "MAIN",
-      "title": "Rain Badge",
-      "description": "Defeat Wallace at the Sootopolis City Gym.",
-      "condition": { "start_region": "HOENN", "badges_min": 6, "badges_less": 7, "visited": "SOOTOPOLIS_CITY" },
-      "completed_flag": "badge_rain_earned",
-      "reward": "Rain Badge + Eon Ticket"
+      "title": "Mt. Pyre",
+      "description": "{team} is climbing Mt. Pyre to steal the {orb}!",
+      "condition": { "required_region": "HOENN", "flag": "badge_feather_earned", "flag_not": "got_mt_pyre_orb" },
+      "completed_flag": "got_mt_pyre_orb",
+      "reward": "{other_orb}"
     },
     {
       "id": "hoenn_m16",
       "type": "MAIN",
-      "title": "Seafloor Cavern Showdown",
-      "description": "Dive into Seafloor Cavern and stop the final Team Magma/Aqua plan to awaken the super-ancient Pokémon.",
-      "condition": { "start_region": "HOENN", "flag": "badge_rain_earned", "visited": "SEAFLOOR_CAVERN", "flag_not": "seafloor_cavern_cleared" },
-      "completed_flag": "seafloor_cavern_cleared",
-      "reward": "Legendary Orb"
+      "title": "{team} Hideout",
+      "description": "Break into {team}'s hideout near Lilycove City before they steal a submarine.",
+      "condition": { "required_region": "HOENN", "flag": "got_mt_pyre_orb", "flag_not": "aqua_hideout_cleared" },
+      "completed_flag": "aqua_hideout_cleared"
     },
     {
       "id": "hoenn_m17",
       "type": "MAIN",
-      "title": "Cave of Origin",
-      "description": "Enter the Cave of Origin in Sootopolis City to calm the awakened legendary Pokémon.",
-      "condition": { "start_region": "HOENN", "flag": "seafloor_cavern_cleared", "visited": "CAVE_OF_ORIGIN", "flag_not": "cave_of_origin_cleared" },
-      "completed_flag": "cave_of_origin_cleared",
-      "reward": "Calming Orb"
+      "title": "Mind Badge",
+      "description": "Defeat Tate & Liza at the Mossdeep City Gym.",
+      "condition": { "required_region": "HOENN", "region_badges_min": 6, "region_badges_less": 7 },
+      "completed_flag": "badge_mind_earned",
+      "reward": "Mind Badge"
     },
     {
       "id": "hoenn_m18",
       "type": "MAIN",
-      "title": "Sky Pillar Summit",
-      "description": "Climb the Sky Pillar with Steven and awaken Rayquaza to stop the weather catastrophe.",
-      "condition": { "start_region": "HOENN", "flag": "cave_of_origin_cleared", "visited": "SKY_PILLAR", "flag_not": "rayquaza_awakened" },
-      "completed_flag": "rayquaza_awakened",
-      "reward": "Rayquaza encounter"
+      "title": "Space Center",
+      "description": "{team} is attacking the Mossdeep Space Center!",
+      "condition": { "required_region": "HOENN", "flag": "badge_mind_earned", "flag_not": "space_center_cleared" },
+      "completed_flag": "space_center_cleared"
     },
     {
       "id": "hoenn_m19",
       "type": "MAIN",
-      "title": "Balance Badge",
-      "description": "Return home and defeat your father Norman at the Petalburg Gym for the Balance Badge.",
-      "condition": { "start_region": "HOENN", "badges_min": 7, "visited": "PETALBURG_CITY", "flag_not": "badge_balance_earned" },
-      "completed_flag": "badge_balance_earned",
-      "reward": "Balance Badge + 3 Rare Candies"
+      "title": "Seafloor Cavern",
+      "description": "Dive to the Seafloor Cavern and stop {leader} before the {orb} awakens {legend}!",
+      "condition": { "required_region": "HOENN", "flag": "badge_mind_earned", "flag_not": "seafloor_cavern_cleared" },
+      "completed_flag": "seafloor_cavern_cleared"
     },
     {
       "id": "hoenn_m20",
       "type": "MAIN",
-      "title": "Conquer the League",
-      "description": "Travel through Victory Road, defeat the Elite Four, and become the Hoenn Champion by defeating Wallace.",
-      "condition": { "start_region": "HOENN", "badges_min": 8, "flag_not": "beat_hoenn_champion" },
-      "completed_flag": "beat_hoenn_champion",
-      "reward": "Champion Title + National Dex"
+      "title": "Primal {legend}",
+      "description": "Primal {legend} is in the Cave of Origin and its weather is engulfing Hoenn. Calm it!",
+      "condition": { "required_region": "HOENN", "flag": "seafloor_cavern_cleared", "flag_not": "cave_of_origin_cleared" },
+      "completed_flag": "cave_of_origin_cleared",
+      "reward": "{legend}"
     },
     {
       "id": "hoenn_m21",
       "type": "MAIN",
-      "title": "Wally Rematch",
-      "description": "Face Wally one final time inside Victory Road.",
-      "condition": { "start_region": "HOENN", "flag": "badge_balance_earned", "visited": "VICTORY_ROAD", "flag_not": "defeated_wally_victory" },
-      "completed_flag": "defeated_wally_victory",
-      "reward": "TM Hyper Beam"
+      "title": "Rain Badge",
+      "description": "Wallace is back at the Sootopolis City Gym. Win your eighth badge!",
+      "condition": { "required_region": "HOENN", "flag": "cave_of_origin_cleared", "region_badges_less": 8 },
+      "completed_flag": "badge_rain_earned",
+      "reward": "Rain Badge"
+    },
+    {
+      "id": "hoenn_m22",
+      "type": "MAIN",
+      "title": "Victory Road",
+      "description": "Wally is waiting in Victory Road with his Mega Gallade.",
+      "condition": { "required_region": "HOENN", "region_badges_min": 8, "flag_not": "defeated_wally_victory" },
+      "completed_flag": "defeated_wally_victory"
+    },
+    {
+      "id": "hoenn_m23",
+      "type": "MAIN",
+      "title": "Hoenn Champion",
+      "description": "Defeat the Elite Four and Champion Steven at Ever Grande City.",
+      "condition": { "required_region": "HOENN", "region_badges_min": 8, "flag": "defeated_wally_victory", "flag_not": "beat_hoenn_champion" },
+      "completed_flag": "beat_hoenn_champion"
+    },
+    {
+      "id": "hoenn_d1",
+      "type": "MAIN",
+      "title": "Delta Episode",
+      "description": "A meteoroid is heading for Hoenn! Find Zinnia at the Sky Pillar.",
+      "condition": { "required_region": "HOENN", "flag": "beat_hoenn_champion", "flag_not": "delta_zinnia_defeated" },
+      "completed_flag": "delta_zinnia_defeated"
+    },
+    {
+      "id": "hoenn_d2",
+      "type": "MAIN",
+      "title": "Mega Rayquaza",
+      "description": "Call Rayquaza at the top of the Sky Pillar.",
+      "condition": { "required_region": "HOENN", "flag": "delta_zinnia_defeated", "flag_not": "rayquaza_awakened" },
+      "completed_flag": "rayquaza_awakened",
+      "reward": "Rayquaza"
+    },
+    {
+      "id": "hoenn_d3",
+      "type": "MAIN",
+      "title": "Into Space",
+      "description": "Ride Rayquaza into space and face what's inside the meteoroid.",
+      "condition": { "required_region": "HOENN", "flag": "rayquaza_awakened", "flag_not": "delta_episode_cleared" },
+      "completed_flag": "delta_episode_cleared",
+      "reward": "Deoxys"
+    },
+    {
+      "id": "hoenn_d4",
+      "type": "MAIN",
+      "title": "The Other Orb",
+      "description": "{other_legend} stirs in the Cave of Origin. Bring the {other_orb}!",
+      "condition": { "required_region": "HOENN", "flag": "delta_episode_cleared", "flag_not": "counterpart_legend_caught" },
+      "completed_flag": "counterpart_legend_caught",
+      "reward": "{other_legend}"
     },
     {
       "id": "hoenn_s1",
       "type": "SIDE",
       "title": "Rusturf Tunnel Rescue",
       "description": "Help Mr. Briney rescue the kidnapped Wingull in Rusturf Tunnel and clear the path.",
-      "condition": { "start_region": "HOENN", "visited": "RUSTURF_TUNNEL", "flag_not": "rusturf_rescued" },
+      "condition": { "required_region": "HOENN", "visited": "RUSTURF_TUNNEL", "flag_not": "rusturf_rescued" },
       "completed_flag": "rusturf_rescued",
       "reward": "HM Surf"
     },
@@ -3146,7 +3365,7 @@
       "type": "SIDE",
       "title": "Steven's Gifts",
       "description": "Meet Steven Stone multiple times and receive the Steel Wing and other rare items.",
-      "condition": { "start_region": "HOENN", "visited": "GRANITE_CAVE", "flag_not": "met_steven_multiple" },
+      "condition": { "required_region": "HOENN", "visited": "GRANITE_CAVE", "flag_not": "met_steven_multiple" },
       "completed_flag": "met_steven_multiple",
       "reward": "Steel Wing + Rare items"
     },
@@ -3155,7 +3374,7 @@
       "type": "SIDE",
       "title": "Abandoned Ship Mystery",
       "description": "Explore the haunted Abandoned Ship on Route 108 and find the Scanner.",
-      "condition": { "start_region": "HOENN", "visited": "ABANDONED_SHIP", "flag_not": "abandoned_ship_cleared" },
+      "condition": { "required_region": "HOENN", "visited": "ABANDONED_SHIP", "flag_not": "abandoned_ship_cleared" },
       "completed_flag": "abandoned_ship_cleared",
       "reward": "DeepSeaScale/Tooth"
     },
@@ -3164,7 +3383,7 @@
       "type": "SIDE",
       "title": "Shoal Cave Treasures",
       "description": "Collect Shoal Salt and Shoal Shells in Shoal Cave for the old man in Pacifidlog Town.",
-      "condition": { "start_region": "HOENN", "visited": "SHOAL_CAVE", "flag_not": "shoal_cave_collected" },
+      "condition": { "required_region": "HOENN", "visited": "SHOAL_CAVE", "flag_not": "shoal_cave_collected" },
       "completed_flag": "shoal_cave_collected",
       "reward": "Slowpoke Tail / Shell Bell"
     },
@@ -3173,7 +3392,7 @@
       "type": "SIDE",
       "title": "Safari Zone Adventure",
       "description": "Catch rare Pokémon in the Hoenn Safari Zone near Lilycove City.",
-      "condition": { "start_region": "HOENN", "visited": "HOENN_SAFARI_ZONE" },
+      "condition": { "required_region": "HOENN", "visited": "HOENN_SAFARI_ZONE" },
       "reward": "Safari Balls + rare catches"
     },
     {
@@ -3181,7 +3400,7 @@
       "type": "SIDE",
       "title": "Regi Trio Awakening",
       "description": "Solve the braille puzzles and awaken Regirock, Regice, and Registeel.",
-      "condition": { "start_region": "HOENN", "badges_min": 7, "flag_not": "regi_trio_awakened" },
+      "condition": { "required_region": "HOENN", "badges_min": 7, "flag_not": "regi_trio_awakened" },
       "completed_flag": "regi_trio_awakened",
       "reward": "Regi encounters"
     },
@@ -3190,7 +3409,7 @@
       "type": "SIDE",
       "title": "Contest Master",
       "description": "Win Master Rank in all five contest categories and fill the Lilycove Museum with paintings.",
-      "condition": { "start_region": "HOENN", "visited": "LILYCOVE_CITY" },
+      "condition": { "required_region": "HOENN", "visited": "LILYCOVE_CITY" },
       "reward": "Rare Candies, Pokéblocks and $10000",
       "completed_flag": "contest_master"
     },
@@ -3198,8 +3417,8 @@
       "id": "hoenn_s8",
       "type": "SIDE",
       "title": "Master of the Skies",
-      "description": "With Rayquaza awake, visit the Weather Institute on Route 119. The Director has a gift for you.",
-      "condition": { "flag": "rayquaza_awakened" },
+      "description": "With Primal {legend} calmed, visit the Weather Institute on Route 119. The Director has a gift for you.",
+      "condition": { "required_region": "HOENN", "flag": "cave_of_origin_cleared" },
       "reward": "Weather Dial + one of each weather rock",
       "completed_flag": "got_weather_dial"
     }
@@ -3304,7 +3523,7 @@
   "HOENN_CAVE_OF_ORIGIN": [41, 42, 302, 303],
   "HOENN_CAVE_OF_ORIGIN_PERCENTAGES": { "41": 30, "42": 30, "302": 20, "303": 20 },
   "HOENN_SKY_PILLAR": [42, 303, 334, 354, 385, 386],
-  "HOENN_SKY_PILLAR_PERCENTAGES": { "42": 27, "303": 20, "334": 20, "354": 30, "385": 2, "386": 1 },
+  "HOENN_SKY_PILLAR_PERCENTAGES": { "42": 27, "303": 20, "334": 20, "354": 30, "385": 2 },
   "HOENN_MT_PYRE": [37, 307, 353, 355, 358, 2006],
   "HOENN_MT_PYRE_PERCENTAGES": { "37": 9, "307": 13, "353": 32, "355": 37, "358": 8, "2006": 1 },
   "REGION_START": {
@@ -3327,6 +3546,18 @@
         "AUTUMN": { "RAIN": 25 },
         "WINTER": { "RAIN": 20 }
       }
+    }
+  },
+  "TRAINER_CLASS_DIALOGUE": {
+    "TEAM_MAGMA": {
+      "intro": ["Team Magma will expand the land for everyone!", "Out of the way, kid!"],
+      "player_won": ["Ugh... Maxie won't be happy about this."],
+      "player_lost": ["Team Magma wins again!"]
+    },
+    "TEAM_AQUA": {
+      "intro": ["Team Aqua will expand the sea for all Pokemon!", "Out of the way, kid!"],
+      "player_won": ["Argh... Archie won't be happy about this."],
+      "player_lost": ["Team Aqua wins again!"]
     }
   }
 }

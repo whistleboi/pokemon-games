@@ -79,6 +79,10 @@ class StoryManager:
                 active.append(self._prepare_mission_for_ui(m))
 
         main_missions = [m for m in active if m["type"] == "MAIN"]
+        # Missions tied to the region the player is in come first.
+        region = self.get_current_region()
+        regional = [m for m in main_missions if m.get("condition", {}).get("required_region") == region]
+        main_missions = regional or main_missions
         side_missions = [m for m in active if m["type"] == "SIDE"]
         final_list = []
 
@@ -114,6 +118,11 @@ class StoryManager:
         if "required_region" in cond and self.get_current_region() != cond["required_region"]:
             return False
         if "badges_min" in cond and total_badges < cond["badges_min"]:
+            return False
+        region_badges = len(self.badges.get(cond.get("required_region") or self.get_current_region(), []))
+        if "region_badges_min" in cond and region_badges < cond["region_badges_min"]:
+            return False
+        if "region_badges_less" in cond and region_badges >= cond["region_badges_less"]:
             return False
         if "badges_less" in cond and total_badges >= cond["badges_less"]:
             return False

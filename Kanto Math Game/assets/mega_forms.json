@@ -1,0 +1,988 @@
+{
+ "3": [
+  {
+   "form": "mega",
+   "name": "MEGA VENUSAUR",
+   "item": "VENUSAURITE",
+   "types": [
+    "GRASS",
+    "POISON"
+   ],
+   "stats": {
+    "HP": 80,
+    "ATTACK": 100,
+    "DEFENSE": 123,
+    "SPECIAL-ATTACK": 122,
+    "SPECIAL-DEFENSE": 120,
+    "SPEED": 80
+   },
+   "sprite": "3_mega.png"
+  }
+ ],
+ "6": [
+  {
+   "form": "mega_x",
+   "name": "MEGA CHARIZARD X",
+   "item": "CHARIZARDITE_X",
+   "types": [
+    "FIRE",
+    "DRAGON"
+   ],
+   "stats": {
+    "HP": 78,
+    "ATTACK": 130,
+    "DEFENSE": 111,
+    "SPECIAL-ATTACK": 130,
+    "SPECIAL-DEFENSE": 85,
+    "SPEED": 100
+   },
+   "sprite": "6_mega_x.png"
+  },
+  {
+   "form": "mega_y",
+   "name": "MEGA CHARIZARD Y",
+   "item": "CHARIZARDITE_Y",
+   "types": [
+    "FIRE",
+    "FLYING"
+   ],
+   "stats": {
+    "HP": 78,
+    "ATTACK": 104,
+    "DEFENSE": 78,
+    "SPECIAL-ATTACK": 159,
+    "SPECIAL-DEFENSE": 115,
+    "SPEED": 100
+   },
+   "sprite": "6_mega_y.png"
+  }
+ ],
+ "9": [
+  {
+   "form": "mega",
+   "name": "MEGA BLASTOISE",
+   "item": "BLASTOISINITE",
+   "types": [
+    "WATER"
+   ],
+   "stats": {
+    "HP": 79,
+    "ATTACK": 103,
+    "DEFENSE": 120,
+    "SPECIAL-ATTACK": 135,
+    "SPECIAL-DEFENSE": 115,
+    "SPEED": 78
+   },
+   "sprite": "9_mega.png"
+  }
+ ],
+ "65": [
+  {
+   "form": "mega",
+   "name": "MEGA ALAKAZAM",
+   "item": "ALAKAZITE",
+   "types": [
+    "PSYCHIC"
+   ],
+   "stats": {
+    "HP": 55,
+    "ATTACK": 50,
+    "DEFENSE": 65,
+    "SPECIAL-ATTACK": 175,
+    "SPECIAL-DEFENSE": 105,
+    "SPEED": 150
+   },
+   "sprite": "65_mega.png"
+  }
+ ],
+ "94": [
+  {
+   "form": "mega",
+   "name": "MEGA GENGAR",
+   "item": "GENGARITE",
+   "types": [
+    "GHOST",
+    "POISON"
+   ],
+   "stats": {
+    "HP": 60,
+    "ATTACK": 65,
+    "DEFENSE": 80,
+    "SPECIAL-ATTACK": 170,
+    "SPECIAL-DEFENSE": 95,
+    "SPEED": 130
+   },
+   "sprite": "94_mega.png"
+  }
+ ],
+ "115": [
+  {
+   "form": "mega",
+   "name": "MEGA KANGASKHAN",
+   "item": "KANGASKHANITE",
+   "types": [
+    "NORMAL"
+   ],
+   "stats": {
+    "HP": 105,
+    "ATTACK": 125,
+    "DEFENSE": 100,
+    "SPECIAL-ATTACK": 60,
+    "SPECIAL-DEFENSE": 100,
+    "SPEED": 100
+   },
+   "sprite": "115_mega.png"
+  }
+ ],
+ "127": [
+  {
+   "form": "mega",
+   "name": "MEGA PINSIR",
+   "item": "PINSIRITE",
+   "types": [
+    "BUG",
+    "FLYING"
+   ],
+   "stats": {
+    "HP": 65,
+    "ATTACK": 155,
+    "DEFENSE": 120,
+    "SPECIAL-ATTACK": 65,
+    "SPECIAL-DEFENSE": 90,
+    "SPEED": 105
+   },
+   "sprite": "127_mega.png"
+  }
+ ],
+ "130": [
+  {
+   "form": "mega",
+   "name": "MEGA GYARADOS",
+   "item": "GYARADOSITE",
+   "types": [
+    "WATER",
+    "DARK"
+   ],
+   "stats": {
+    "HP": 95,
+    "ATTACK": 155,
+    "DEFENSE": 109,
+    "SPECIAL-ATTACK": 70,
+    "SPECIAL-DEFENSE": 130,
+    "SPEED": 81
+   },
+   "sprite": "130_mega.png"
+  }
+ ],
+ "142": [
+  {
+   "form": "mega",
+   "name": "MEGA AERODACTYL",
+   "item": "AERODACTYLITE",
+   "types": [
+    "ROCK",
+    "FLYING"
+   ],
+   "stats": {
+    "HP": 80,
+    "ATTACK": 135,
+    "DEFENSE": 85,
+    "SPECIAL-ATTACK": 70,
+    "SPECIAL-DEFENSE": 95,
+    "SPEED": 150
+   },
+   "sprite": "142_mega.png"
+  }
+ ],
+ "150": [
+  {
+   "form": "mega_x",
+   "name": "MEGA MEWTWO X",
+   "item": "MEWTWONITE_X",
+   "types": [
+    "PSYCHIC",
+    "FIGHTING"
+   ],
+   "stats": {
+    "HP": 106,
+    "ATTACK": 190,
+    "DEFENSE": 100,
+    "SPECIAL-ATTACK": 154,
+    "SPECIAL-DEFENSE": 100,
+    "SPEED": 130
+   },
+   "sprite": "150_mega_x.png"
+  },
+  {
+   "form": "mega_y",
+   "name": "MEGA MEWTWO Y",
+   "item": "MEWTWONITE_Y",
+   "types": [
+    "PSYCHIC"
+   ],
+   "stats": {
+    "HP": 106,
+    "ATTACK": 150,
+    "DEFENSE": 70,
+    "SPECIAL-ATTACK": 194,
+    "SPECIAL-DEFENSE": 120,
+    "SPEED": 140
+   },
+   "sprite": "150_mega_y.png"
+  }
+ ],
+ "181": [
+  {
+   "form": "mega",
+   "name": "MEGA AMPHAROS",
+   "item": "AMPHAROSITE",
+   "types": [
+    "ELECTRIC",
+    "DRAGON"
+   ],
+   "stats": {
+    "HP": 90,
+    "ATTACK": 95,
+    "DEFENSE": 105,
+    "SPECIAL-ATTACK": 165,
+    "SPECIAL-DEFENSE": 110,
+    "SPEED": 45
+   },
+   "sprite": "181_mega.png"
+  }
+ ],
+ "212": [
+  {
+   "form": "mega",
+   "name": "MEGA SCIZOR",
+   "item": "SCIZORITE",
+   "types": [
+    "BUG",
+    "STEEL"
+   ],
+   "stats": {
+    "HP": 70,
+    "ATTACK": 150,
+    "DEFENSE": 140,
+    "SPECIAL-ATTACK": 65,
+    "SPECIAL-DEFENSE": 100,
+    "SPEED": 75
+   },
+   "sprite": "212_mega.png"
+  }
+ ],
+ "214": [
+  {
+   "form": "mega",
+   "name": "MEGA HERACROSS",
+   "item": "HERACRONITE",
+   "types": [
+    "BUG",
+    "FIGHTING"
+   ],
+   "stats": {
+    "HP": 80,
+    "ATTACK": 185,
+    "DEFENSE": 115,
+    "SPECIAL-ATTACK": 40,
+    "SPECIAL-DEFENSE": 105,
+    "SPEED": 75
+   },
+   "sprite": "214_mega.png"
+  }
+ ],
+ "229": [
+  {
+   "form": "mega",
+   "name": "MEGA HOUNDOOM",
+   "item": "HOUNDOOMINITE",
+   "types": [
+    "DARK",
+    "FIRE"
+   ],
+   "stats": {
+    "HP": 75,
+    "ATTACK": 90,
+    "DEFENSE": 90,
+    "SPECIAL-ATTACK": 140,
+    "SPECIAL-DEFENSE": 90,
+    "SPEED": 115
+   },
+   "sprite": "229_mega.png"
+  }
+ ],
+ "248": [
+  {
+   "form": "mega",
+   "name": "MEGA TYRANITAR",
+   "item": "TYRANITARITE",
+   "types": [
+    "ROCK",
+    "DARK"
+   ],
+   "stats": {
+    "HP": 100,
+    "ATTACK": 164,
+    "DEFENSE": 150,
+    "SPECIAL-ATTACK": 95,
+    "SPECIAL-DEFENSE": 120,
+    "SPEED": 71
+   },
+   "sprite": "248_mega.png"
+  }
+ ],
+ "257": [
+  {
+   "form": "mega",
+   "name": "MEGA BLAZIKEN",
+   "item": "BLAZIKENITE",
+   "types": [
+    "FIRE",
+    "FIGHTING"
+   ],
+   "stats": {
+    "HP": 80,
+    "ATTACK": 160,
+    "DEFENSE": 80,
+    "SPECIAL-ATTACK": 130,
+    "SPECIAL-DEFENSE": 80,
+    "SPEED": 100
+   },
+   "sprite": "257_mega.png"
+  }
+ ],
+ "282": [
+  {
+   "form": "mega",
+   "name": "MEGA GARDEVOIR",
+   "item": "GARDEVOIRITE",
+   "types": [
+    "PSYCHIC",
+    "FAIRY"
+   ],
+   "stats": {
+    "HP": 68,
+    "ATTACK": 85,
+    "DEFENSE": 65,
+    "SPECIAL-ATTACK": 165,
+    "SPECIAL-DEFENSE": 135,
+    "SPEED": 100
+   },
+   "sprite": "282_mega.png"
+  }
+ ],
+ "303": [
+  {
+   "form": "mega",
+   "name": "MEGA MAWILE",
+   "item": "MAWILITE",
+   "types": [
+    "STEEL",
+    "FAIRY"
+   ],
+   "stats": {
+    "HP": 50,
+    "ATTACK": 105,
+    "DEFENSE": 125,
+    "SPECIAL-ATTACK": 55,
+    "SPECIAL-DEFENSE": 95,
+    "SPEED": 50
+   },
+   "sprite": "303_mega.png"
+  }
+ ],
+ "306": [
+  {
+   "form": "mega",
+   "name": "MEGA AGGRON",
+   "item": "AGGRONITE",
+   "types": [
+    "STEEL"
+   ],
+   "stats": {
+    "HP": 70,
+    "ATTACK": 140,
+    "DEFENSE": 230,
+    "SPECIAL-ATTACK": 60,
+    "SPECIAL-DEFENSE": 80,
+    "SPEED": 50
+   },
+   "sprite": "306_mega.png"
+  }
+ ],
+ "308": [
+  {
+   "form": "mega",
+   "name": "MEGA MEDICHAM",
+   "item": "MEDICHAMITE",
+   "types": [
+    "FIGHTING",
+    "PSYCHIC"
+   ],
+   "stats": {
+    "HP": 60,
+    "ATTACK": 100,
+    "DEFENSE": 85,
+    "SPECIAL-ATTACK": 80,
+    "SPECIAL-DEFENSE": 85,
+    "SPEED": 100
+   },
+   "sprite": "308_mega.png"
+  }
+ ],
+ "310": [
+  {
+   "form": "mega",
+   "name": "MEGA MANECTRIC",
+   "item": "MANECTITE",
+   "types": [
+    "ELECTRIC"
+   ],
+   "stats": {
+    "HP": 70,
+    "ATTACK": 75,
+    "DEFENSE": 80,
+    "SPECIAL-ATTACK": 135,
+    "SPECIAL-DEFENSE": 80,
+    "SPEED": 135
+   },
+   "sprite": "310_mega.png"
+  }
+ ],
+ "354": [
+  {
+   "form": "mega",
+   "name": "MEGA BANETTE",
+   "item": "BANETTITE",
+   "types": [
+    "GHOST"
+   ],
+   "stats": {
+    "HP": 64,
+    "ATTACK": 165,
+    "DEFENSE": 75,
+    "SPECIAL-ATTACK": 93,
+    "SPECIAL-DEFENSE": 83,
+    "SPEED": 75
+   },
+   "sprite": "354_mega.png"
+  }
+ ],
+ "359": [
+  {
+   "form": "mega",
+   "name": "MEGA ABSOL",
+   "item": "ABSOLITE",
+   "types": [
+    "DARK"
+   ],
+   "stats": {
+    "HP": 65,
+    "ATTACK": 150,
+    "DEFENSE": 60,
+    "SPECIAL-ATTACK": 115,
+    "SPECIAL-DEFENSE": 60,
+    "SPEED": 115
+   },
+   "sprite": "359_mega.png"
+  }
+ ],
+ "445": [
+  {
+   "form": "mega",
+   "name": "MEGA GARCHOMP",
+   "item": "GARCHOMPITE",
+   "types": [
+    "DRAGON",
+    "GROUND"
+   ],
+   "stats": {
+    "HP": 108,
+    "ATTACK": 170,
+    "DEFENSE": 115,
+    "SPECIAL-ATTACK": 120,
+    "SPECIAL-DEFENSE": 95,
+    "SPEED": 92
+   },
+   "sprite": "445_mega.png"
+  }
+ ],
+ "448": [
+  {
+   "form": "mega",
+   "name": "MEGA LUCARIO",
+   "item": "LUCARIONITE",
+   "types": [
+    "FIGHTING",
+    "STEEL"
+   ],
+   "stats": {
+    "HP": 70,
+    "ATTACK": 145,
+    "DEFENSE": 88,
+    "SPECIAL-ATTACK": 140,
+    "SPECIAL-DEFENSE": 70,
+    "SPEED": 112
+   },
+   "sprite": "448_mega.png"
+  }
+ ],
+ "460": [
+  {
+   "form": "mega",
+   "name": "MEGA ABOMASNOW",
+   "item": "ABOMASITE",
+   "types": [
+    "GRASS",
+    "ICE"
+   ],
+   "stats": {
+    "HP": 90,
+    "ATTACK": 132,
+    "DEFENSE": 105,
+    "SPECIAL-ATTACK": 132,
+    "SPECIAL-DEFENSE": 105,
+    "SPEED": 30
+   },
+   "sprite": "460_mega.png"
+  }
+ ],
+ "380": [
+  {
+   "form": "mega",
+   "name": "MEGA LATIAS",
+   "item": "LATIASITE",
+   "types": [
+    "DRAGON",
+    "PSYCHIC"
+   ],
+   "stats": {
+    "HP": 80,
+    "ATTACK": 100,
+    "DEFENSE": 120,
+    "SPECIAL-ATTACK": 140,
+    "SPECIAL-DEFENSE": 150,
+    "SPEED": 110
+   },
+   "sprite": "380_mega.png"
+  }
+ ],
+ "381": [
+  {
+   "form": "mega",
+   "name": "MEGA LATIOS",
+   "item": "LATIOSITE",
+   "types": [
+    "DRAGON",
+    "PSYCHIC"
+   ],
+   "stats": {
+    "HP": 80,
+    "ATTACK": 130,
+    "DEFENSE": 100,
+    "SPECIAL-ATTACK": 160,
+    "SPECIAL-DEFENSE": 120,
+    "SPEED": 110
+   },
+   "sprite": "381_mega.png"
+  }
+ ],
+ "260": [
+  {
+   "form": "mega",
+   "name": "MEGA SWAMPERT",
+   "item": "SWAMPERTITE",
+   "types": [
+    "WATER",
+    "GROUND"
+   ],
+   "stats": {
+    "HP": 100,
+    "ATTACK": 150,
+    "DEFENSE": 110,
+    "SPECIAL-ATTACK": 95,
+    "SPECIAL-DEFENSE": 110,
+    "SPEED": 70
+   },
+   "sprite": "260_mega.png"
+  }
+ ],
+ "254": [
+  {
+   "form": "mega",
+   "name": "MEGA SCEPTILE",
+   "item": "SCEPTILITE",
+   "types": [
+    "GRASS",
+    "DRAGON"
+   ],
+   "stats": {
+    "HP": 70,
+    "ATTACK": 110,
+    "DEFENSE": 75,
+    "SPECIAL-ATTACK": 145,
+    "SPECIAL-DEFENSE": 85,
+    "SPEED": 145
+   },
+   "sprite": "254_mega.png"
+  }
+ ],
+ "302": [
+  {
+   "form": "mega",
+   "name": "MEGA SABLEYE",
+   "item": "SABLENITE",
+   "types": [
+    "DARK",
+    "GHOST"
+   ],
+   "stats": {
+    "HP": 50,
+    "ATTACK": 85,
+    "DEFENSE": 125,
+    "SPECIAL-ATTACK": 85,
+    "SPECIAL-DEFENSE": 115,
+    "SPEED": 20
+   },
+   "sprite": "302_mega.png"
+  }
+ ],
+ "334": [
+  {
+   "form": "mega",
+   "name": "MEGA ALTARIA",
+   "item": "ALTARIANITE",
+   "types": [
+    "DRAGON",
+    "FAIRY"
+   ],
+   "stats": {
+    "HP": 75,
+    "ATTACK": 110,
+    "DEFENSE": 110,
+    "SPECIAL-ATTACK": 110,
+    "SPECIAL-DEFENSE": 105,
+    "SPEED": 80
+   },
+   "sprite": "334_mega.png"
+  }
+ ],
+ "475": [
+  {
+   "form": "mega",
+   "name": "MEGA GALLADE",
+   "item": "GALLADITE",
+   "types": [
+    "PSYCHIC",
+    "FIGHTING"
+   ],
+   "stats": {
+    "HP": 68,
+    "ATTACK": 165,
+    "DEFENSE": 95,
+    "SPECIAL-ATTACK": 65,
+    "SPECIAL-DEFENSE": 115,
+    "SPEED": 110
+   },
+   "sprite": "475_mega.png"
+  }
+ ],
+ "531": [
+  {
+   "form": "mega",
+   "name": "MEGA AUDINO",
+   "item": "AUDINITE",
+   "types": [
+    "NORMAL",
+    "FAIRY"
+   ],
+   "stats": {
+    "HP": 103,
+    "ATTACK": 60,
+    "DEFENSE": 126,
+    "SPECIAL-ATTACK": 80,
+    "SPECIAL-DEFENSE": 126,
+    "SPEED": 50
+   },
+   "sprite": "531_mega.png"
+  }
+ ],
+ "319": [
+  {
+   "form": "mega",
+   "name": "MEGA SHARPEDO",
+   "item": "SHARPEDONITE",
+   "types": [
+    "WATER",
+    "DARK"
+   ],
+   "stats": {
+    "HP": 70,
+    "ATTACK": 140,
+    "DEFENSE": 70,
+    "SPECIAL-ATTACK": 110,
+    "SPECIAL-DEFENSE": 65,
+    "SPEED": 105
+   },
+   "sprite": "319_mega.png"
+  }
+ ],
+ "80": [
+  {
+   "form": "mega",
+   "name": "MEGA SLOWBRO",
+   "item": "SLOWBRONITE",
+   "types": [
+    "WATER",
+    "PSYCHIC"
+   ],
+   "stats": {
+    "HP": 95,
+    "ATTACK": 75,
+    "DEFENSE": 180,
+    "SPECIAL-ATTACK": 130,
+    "SPECIAL-DEFENSE": 80,
+    "SPEED": 30
+   },
+   "sprite": "80_mega.png"
+  }
+ ],
+ "208": [
+  {
+   "form": "mega",
+   "name": "MEGA STEELIX",
+   "item": "STEELIXITE",
+   "types": [
+    "STEEL",
+    "GROUND"
+   ],
+   "stats": {
+    "HP": 75,
+    "ATTACK": 125,
+    "DEFENSE": 230,
+    "SPECIAL-ATTACK": 55,
+    "SPECIAL-DEFENSE": 95,
+    "SPEED": 30
+   },
+   "sprite": "208_mega.png"
+  }
+ ],
+ "18": [
+  {
+   "form": "mega",
+   "name": "MEGA PIDGEOT",
+   "item": "PIDGEOTITE",
+   "types": [
+    "NORMAL",
+    "FLYING"
+   ],
+   "stats": {
+    "HP": 83,
+    "ATTACK": 80,
+    "DEFENSE": 80,
+    "SPECIAL-ATTACK": 135,
+    "SPECIAL-DEFENSE": 80,
+    "SPEED": 121
+   },
+   "sprite": "18_mega.png"
+  }
+ ],
+ "362": [
+  {
+   "form": "mega",
+   "name": "MEGA GLALIE",
+   "item": "GLALITITE",
+   "types": [
+    "ICE"
+   ],
+   "stats": {
+    "HP": 80,
+    "ATTACK": 120,
+    "DEFENSE": 80,
+    "SPECIAL-ATTACK": 120,
+    "SPECIAL-DEFENSE": 80,
+    "SPEED": 100
+   },
+   "sprite": "362_mega.png"
+  }
+ ],
+ "719": [
+  {
+   "form": "mega",
+   "name": "MEGA DIANCIE",
+   "item": "DIANCITE",
+   "types": [
+    "ROCK",
+    "FAIRY"
+   ],
+   "stats": {
+    "HP": 50,
+    "ATTACK": 160,
+    "DEFENSE": 110,
+    "SPECIAL-ATTACK": 160,
+    "SPECIAL-DEFENSE": 110,
+    "SPEED": 110
+   },
+   "sprite": "719_mega.png"
+  }
+ ],
+ "376": [
+  {
+   "form": "mega",
+   "name": "MEGA METAGROSS",
+   "item": "METAGROSSITE",
+   "types": [
+    "STEEL",
+    "PSYCHIC"
+   ],
+   "stats": {
+    "HP": 80,
+    "ATTACK": 145,
+    "DEFENSE": 150,
+    "SPECIAL-ATTACK": 105,
+    "SPECIAL-DEFENSE": 110,
+    "SPEED": 110
+   },
+   "sprite": "376_mega.png"
+  }
+ ],
+ "382": [
+  {
+   "form": "primal",
+   "name": "PRIMAL KYOGRE",
+   "item": "BLUE_ORB",
+   "types": [
+    "WATER"
+   ],
+   "stats": {
+    "HP": 100,
+    "ATTACK": 150,
+    "DEFENSE": 90,
+    "SPECIAL-ATTACK": 180,
+    "SPECIAL-DEFENSE": 160,
+    "SPEED": 90
+   },
+   "sprite": "382_primal.png"
+  }
+ ],
+ "383": [
+  {
+   "form": "primal",
+   "name": "PRIMAL GROUDON",
+   "item": "RED_ORB",
+   "types": [
+    "GROUND",
+    "FIRE"
+   ],
+   "stats": {
+    "HP": 100,
+    "ATTACK": 180,
+    "DEFENSE": 160,
+    "SPECIAL-ATTACK": 150,
+    "SPECIAL-DEFENSE": 90,
+    "SPEED": 90
+   },
+   "sprite": "383_primal.png"
+  }
+ ],
+ "384": [
+  {
+   "form": "mega",
+   "name": "MEGA RAYQUAZA",
+   "item": null,
+   "types": [
+    "DRAGON",
+    "FLYING"
+   ],
+   "stats": {
+    "HP": 105,
+    "ATTACK": 180,
+    "DEFENSE": 100,
+    "SPECIAL-ATTACK": 180,
+    "SPECIAL-DEFENSE": 100,
+    "SPEED": 115
+   },
+   "sprite": "384_mega.png"
+  }
+ ],
+ "323": [
+  {
+   "form": "mega",
+   "name": "MEGA CAMERUPT",
+   "item": "CAMERUPTITE",
+   "types": [
+    "FIRE",
+    "GROUND"
+   ],
+   "stats": {
+    "HP": 70,
+    "ATTACK": 120,
+    "DEFENSE": 100,
+    "SPECIAL-ATTACK": 145,
+    "SPECIAL-DEFENSE": 105,
+    "SPEED": 20
+   },
+   "sprite": "323_mega.png"
+  }
+ ],
+ "428": [
+  {
+   "form": "mega",
+   "name": "MEGA LOPUNNY",
+   "item": "LOPUNNITE",
+   "types": [
+    "NORMAL",
+    "FIGHTING"
+   ],
+   "stats": {
+    "HP": 65,
+    "ATTACK": 136,
+    "DEFENSE": 94,
+    "SPECIAL-ATTACK": 54,
+    "SPECIAL-DEFENSE": 96,
+    "SPEED": 135
+   },
+   "sprite": "428_mega.png"
+  }
+ ],
+ "373": [
+  {
+   "form": "mega",
+   "name": "MEGA SALAMENCE",
+   "item": "SALAMENCITE",
+   "types": [
+    "DRAGON",
+    "FLYING"
+   ],
+   "stats": {
+    "HP": 95,
+    "ATTACK": 145,
+    "DEFENSE": 130,
+    "SPECIAL-ATTACK": 120,
+    "SPECIAL-DEFENSE": 90,
+    "SPEED": 120
+   },
+   "sprite": "373_mega.png"
+  }
+ ],
+ "15": [
+  {
+   "form": "mega",
+   "name": "MEGA BEEDRILL",
+   "item": "BEEDRILLITE",
+   "types": [
+    "BUG",
+    "POISON"
+   ],
+   "stats": {
+    "HP": 65,
+    "ATTACK": 150,
+    "DEFENSE": 40,
+    "SPECIAL-ATTACK": 15,
+    "SPECIAL-DEFENSE": 80,
+    "SPEED": 145
+   },
+   "sprite": "15_mega.png"
+  }
+ ]
+}

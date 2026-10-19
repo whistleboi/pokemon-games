@@ -1,8 +1,8 @@
 # [REF-0074: Weather Dial]
 """
 The Weather Dial (from Hoenn's Weather Institute, after Rayquaza calms the skies).
-Used from the Bag on an outdoor route: a weather rock is used up to set that route's
-weather until midnight, or the skies can be cleared for free. The season can't be changed.
+Used from the Bag on an outdoor route, once per day: a weather rock is used up to set that
+route's weather until midnight, or the skies can be cleared for free. The season can't be changed.
 """
 from src.states.poffin import _MenuState, _button_row
 from src.utils import Utils
@@ -33,9 +33,13 @@ class WeatherDialState(_MenuState):
             self.say(["The WEATHER DIAL only works outdoors on routes",
                       "in regions that have weather."], self.back)
             return
+        if seasons.dial_used_today(self.game):
+            self.say(["The WEATHER DIAL is still recharging.",
+                      "It can only be used once a day. Try again tomorrow!"], self.back)
+            return
         now = seasons.weather_name(seasons.area_weather(self.game, self.area_key))
         self.say([f"{seasons.season_name()} on {self.area_name}. Today's weather: {now}.",
-                  "Set a weather rock in the dial to change it until midnight.",
+                  "Set a weather rock in the dial to change it until midnight (once a day).",
                   "The dial can't change the season, though!"], self.show_choices)
 
     def show_choices(self):
