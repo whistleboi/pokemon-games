@@ -1307,7 +1307,13 @@
       "dex_range": [722, 809],
       "mom_newstart_text": ["alola_mom_newstart_1", "alola_mom_newstart_2", "alola_mom_newstart_3"],
       "mom_home_text": ["alola_mom_home_1", "alola_mom_home_2", "alola_mom_home_3"],
-      "dex_extra": []
+      "dex_extra": [],
+      "climate": {
+        "SPRING": { "RAIN": 20, "SUN": 15 },
+        "SUMMER": { "SUN": 45 },
+        "AUTUMN": { "RAIN": 30 },
+        "WINTER": { "RAIN": 35 }
+      }
     }
   },
   "ALOLA_AETHER_PARADISE_PERCENTAGES": { "772": 25, "789": 15, "749": 20, "771": 20, "777": 20 },

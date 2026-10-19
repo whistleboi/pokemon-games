@@ -383,14 +383,9 @@ class TrainerBattleState(GameState):
         """Weather from the current area: a short spell at the start of battle, not permanent."""
         if self.starter_battle:
             return
-        area = self.game.loader.area_data.get("STORY_PROGRESSION", {}).get(
-            self.game.story_manager.current_area_key, {})
-        weather = str(area.get("weather") or "").upper()
-        if weather == "RANDOM":
-            # Galar Wild Area: the weather changes daily.
-            import datetime
-            day = random.Random(datetime.date.today().toordinal())
-            weather = day.choice(["CLEAR", "CLEAR", "CLEAR", "RAIN", "SUN", "SAND", "SNOW"])
+        # Fixed area weather, Galar's daily Wild Area weather, or today's seasonal weather.
+        from src.world import seasons
+        weather = seasons.area_weather(self.game, self.game.story_manager.current_area_key)
         if weather in self.WEATHER_ROCKS:
             self.set_weather(weather)
         self._weather_announced = False

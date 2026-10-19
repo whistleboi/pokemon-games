@@ -1335,7 +1335,13 @@
       "dex_range": [906, 1025],
       "mom_newstart_text": ["paldea_mom_newstart_1", "paldea_mom_newstart_2", "paldea_mom_newstart_3"],
       "mom_home_text": ["paldea_mom_home_cabo_poco", "paldea_mom_random_1", "paldea_mom_random_2", "paldea_mom_random_3"],
-      "dex_extra": []
+      "dex_extra": [],
+      "climate": {
+        "SPRING": { "RAIN": 20, "SUN": 15 },
+        "SUMMER": { "SUN": 50, "SAND": 5 },
+        "AUTUMN": { "RAIN": 25 },
+        "WINTER": { "SNOW": 30, "RAIN": 10 }
+      }
     }
   },
   "PALDEA_SHRINE_PERCENTAGES": { "971": 30, "972": 20, "854": 25, "999": 25 },

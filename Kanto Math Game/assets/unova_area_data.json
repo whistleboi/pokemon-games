@@ -1764,7 +1764,8 @@
         { "text": "Twist Mountain", "action": "EXIT", "target_area": "TWIST_MOUNTAIN", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "TWIST_MOUNTAIN",
-      "area_boss": { "id": 641, "name": "Tornadus", "victory_flag": "UNOVA_ROUTE_7_boss_defeated" }
+      "area_boss": { "id": 641, "name": "Tornadus", "victory_flag": "UNOVA_ROUTE_7_boss_defeated" },
+      "season_weather": { "WINTER": "SNOW" }
     },
     "UNOVA_ROUTE_8": {
       "area_type": "wild_route",
@@ -2494,7 +2495,13 @@
       "mom_newstart_text": ["unova_mom_newstart_1", "unova_mom_newstart_2", "unova_mom_newstart_3"],
       "mom_home_text": ["unova_mom_home_1", "unova_mom_home_2", "unova_mom_home_3"],
       "dex_extra": [983],
-      "badge_images": [33, 34, 35, 36, 37, 38, 39, 40]
+      "badge_images": [33, 34, 35, 36, 37, 38, 39, 40],
+      "climate": {
+        "SPRING": { "RAIN": 30 },
+        "SUMMER": { "SUN": 35, "RAIN": 10 },
+        "AUTUMN": { "RAIN": 20, "SAND": 5 },
+        "WINTER": { "SNOW": 40 }
+      }
     }
   },
   "UNOVA_CELESTIAL_TOWER_PERCENTAGES": { "607": 45, "605": 30, "519": 25 },

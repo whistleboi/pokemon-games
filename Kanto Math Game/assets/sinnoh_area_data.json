@@ -2607,7 +2607,13 @@
       "mom_newstart_text": ["sinnoh_mom_newstart_1", "sinnoh_mom_newstart_2", "sinnoh_mom_newstart_3"],
       "mom_home_text": ["sinnoh_mom_home_1", "sinnoh_mom_home_2", "sinnoh_mom_home_3"],
       "dex_extra": [700],
-      "badge_images": [25, 26, 27, 28, 29, 30, 31, 32]
+      "badge_images": [25, 26, 27, 28, 29, 30, 31, 32],
+      "climate": {
+        "SPRING": { "RAIN": 25, "SNOW": 10 },
+        "SUMMER": { "SUN": 25, "RAIN": 15 },
+        "AUTUMN": { "RAIN": 25 },
+        "WINTER": { "SNOW": 55 }
+      }
     }
   },
   "SINNOH_VALLEY_WINDWORKS_PERCENTAGES": { "425": 35, "403": 20, "417": 20, "239": 15, "137": 10 },

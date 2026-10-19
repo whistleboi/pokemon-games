@@ -1317,7 +1317,13 @@
       "dex_range": [810, 905],
       "mom_newstart_text": ["galar_mom_newstart_1", "galar_mom_newstart_2", "galar_mom_newstart_3"],
       "mom_home_text": ["galar_mom_home_1", "galar_mom_home_2", "galar_mom_home_3"],
-      "dex_extra": [1011, 1018, 1019]
+      "dex_extra": [1011, 1018, 1019],
+      "climate": {
+        "SPRING": { "RAIN": 40 },
+        "SUMMER": { "SUN": 20, "RAIN": 20 },
+        "AUTUMN": { "RAIN": 40 },
+        "WINTER": { "SNOW": 40, "RAIN": 10 }
+      }
     }
   },
   "MAX_RAID": {

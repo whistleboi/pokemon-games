@@ -11,6 +11,7 @@ from src.ui.dialogue import ClassicDialogueBox
 from src.ui.widgets import Button
 from src.ui.panels import CityActionMenu
 from src.world.boss import BossManager
+from src.world import seasons
 from src.pokemon.data import Pokemon
 from src.pokemon.contest import feebas_ready
 from src.vfx.particles import ShinyBurst, Starburst, IdleSparkle
@@ -64,6 +65,15 @@ def _region_starter_id(game):
 
 
 # [REF-0029: Overworld & Play Logic]
+
+def _draw_season_hud(game, screen, area_key, x, y):
+    """Season and today's weather under the ball count (seasonal regions only)."""
+    label = seasons.hud_label(game, area_key)
+    if label:
+        text, color = label
+        Utils.draw_text_outline(screen, text, game.assets.fonts["small"], color, x, y,
+                                align="left", outline_color=BLACK)
+
 class PlayState(GameState):
     def __init__(self, game, restore_data=None):
         super().__init__(game)
@@ -770,6 +780,14 @@ class PlayState(GameState):
         self.game.change_state(intro_state)
 
     def _get_wild_pool(self, area_data):
+        """The current area's percentage pool: day/night split, then season and weather."""
+        return seasons.adjust_pool(self.game, self._base_wild_pool(area_data),
+                                   self.game.story_manager.current_area_key)
+
+    def _draw_season_hud(self, screen, x, y):
+        _draw_season_hud(self.game, screen, self.game.story_manager.current_area_key, x, y)
+
+    def _base_wild_pool(self, area_data):
         """Returns the percentage pool dict for the current area, respecting day/night splits."""
         hour = datetime.datetime.now().hour
         is_night = hour < 6 or hour >= 20
@@ -1147,6 +1165,8 @@ class PlayState(GameState):
             return self.action_max_raid
         if action == "BERRY":
             return self.action_pick_berries
+        if action == "WEATHER_DIRECTOR":
+            return self.visit_weather_director
         if action == "NPC":
             key = item.get("dialogue") or item.get("target")
             if key in self.game.assets.game_text:
@@ -1168,15 +1188,41 @@ class PlayState(GameState):
             lines = ["The berry trees have already been picked today.", "Come back tomorrow!"]
         else:
             story.story_flags[flag] = today
+            bonus, season_lines = seasons.berry_bonus(self.game, story.current_area_key)
             picked = {}
-            for _ in range(random.randint(2, 4)):
+            for _ in range(max(1, random.randint(2, 4) + bonus)):
                 berry = random.choice(trees)
                 picked[berry] = picked.get(berry, 0) + 1
             for berry, n in picked.items():
                 story.inventory[berry] = story.inventory.get(berry, 0) + n
-            lines = ["You checked the berry trees..."] + [
+            lines = ["You checked the berry trees..."] + season_lines + [
                 f"You picked {n} {berry_name(b)}{'s' if n > 1 else ''}!" for b, n in picked.items()]
             lines.append("They went into your BERRY POUCH.")
+        self.show_dialogue(lines, callback=self.show_progression_menu)
+
+    def visit_weather_director(self):
+        """After Rayquaza calms the skies, the Weather Institute hands over the Weather Dial."""
+        self.is_progression_paused = True
+        self.hide_menu_buttons()
+        story = self.game.story_manager
+        if not story.story_flags.get(seasons.DIAL_UNLOCK_FLAG):
+            lines = ["DIRECTOR: The skies are still too wild to study.", "Come back once they have been calmed."]
+        elif story.inventory.get(seasons.WEATHER_DIAL, 0) <= 0:
+            story.inventory[seasons.WEATHER_DIAL] = 1
+            for rock in seasons.ROCK_WEATHER:
+                story.inventory[rock] = story.inventory.get(rock, 0) + 1
+            story.story_flags["got_weather_dial"] = True
+            lines = ["DIRECTOR: You calmed Rayquaza and saved Hoenn's skies!",
+                     "Our research has made this possible: the WEATHER DIAL.",
+                     f"{self.game.player_name} received the WEATHER DIAL!",
+                     "Set a weather rock in it on any outdoor route in a region with weather.",
+                     "The rock is used up, and the weather you choose lasts until midnight.",
+                     "Clearing the skies is free. Here's one of each rock to get you started!",
+                     "Received a DAMP, HEAT, SMOOTH and ICY ROCK!",
+                     "Nobody can change the seasons, though. Not even Rayquaza!"]
+        else:
+            lines = ["DIRECTOR: How is the WEATHER DIAL working out?",
+                     "Weather rocks are sold in marts wherever that weather happens."]
         self.show_dialogue(lines, callback=self.show_progression_menu)
 
     def _route_npc_text(self, key):
@@ -1340,10 +1386,7 @@ class PlayState(GameState):
             self.show_progression_menu()
             return
 
-        items = []
-        for pid, pct in tree_pool_pct.items():
-            items.append((int(pid), pct))
-
+        tree_pool_pct = seasons.adjust_pool(self.game, tree_pool_pct, self.game.story_manager.current_area_key)
         p_id_str = Utils.weighted_random_choice(tree_pool_pct)
         raw = self.game.loader.fetch_specific(int(p_id_str))
         pokemon = Pokemon(raw, self.game.assets, size_mult=3.125)
@@ -1371,6 +1414,7 @@ class PlayState(GameState):
             self.show_dialogue(["The water is too shallow to dive here."], callback=self.show_progression_menu)
             return
 
+        dive_pool = seasons.adjust_pool(self.game, dive_pool, self.game.story_manager.current_area_key)
         p_id_str = Utils.weighted_random_choice(dive_pool)
         raw = self.game.loader.fetch_specific(int(p_id_str))
         pokemon = Pokemon(raw, self.game.assets, size_mult=3.125)
@@ -1414,6 +1458,7 @@ class PlayState(GameState):
             self.show_progression_menu()
             return
 
+        fishing_pool_pct = seasons.adjust_pool(self.game, fishing_pool_pct, self.game.story_manager.current_area_key)
         p_id_str = Utils.weighted_random_choice(fishing_pool_pct)
         raw = self.game.loader.fetch_specific(int(p_id_str))
         pokemon = Pokemon(raw, self.game.assets, size_mult=3.125)
@@ -2172,6 +2217,8 @@ class PlayState(GameState):
             20 + offset_y,
             align="left",
         )
+
+        self._draw_season_hud(screen, 20 + offset_x, 58 + offset_y)
 
         pool_name = self.area_data.get("wild_pool_percentages")
         if pool_name:
@@ -4158,6 +4205,10 @@ class CityState(GameState):
         if story.is_region_champion(region) and not story.story_flags.get(offer_flag):
             story.story_flags[offer_flag] = True
             self._offer_move(region, phone=True)
+            return
+        notice = seasons.season_change_notice(self.game, story, region)
+        if notice:
+            self.show_message(notice)
 
     def _offer_move(self, region, phone):
         """Mom uses the championship prize money for a new home and asks where to move."""
@@ -4293,6 +4344,7 @@ class CityState(GameState):
             20,
             align="left"
         )
+        _draw_season_hud(self.game, screen, self.area_key, 20, 58)
 
 
 # [REF-0042: Area Transition Logic]

@@ -2502,6 +2502,7 @@
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
+        { "text": "WEATHER DIRECTOR", "action": "WEATHER_DIRECTOR", "condition": "rayquaza_awakened", "color": "PURPLE" },
         { "text": "ROUTE 119", "action": "EXIT", "target_area": "HOENN_ROUTE_119", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "HOENN_ROUTE_119",
@@ -3192,6 +3193,15 @@
       "condition": { "start_region": "HOENN", "visited": "LILYCOVE_CITY" },
       "reward": "Rare Candies, Pokéblocks and $10000",
       "completed_flag": "contest_master"
+    },
+    {
+      "id": "hoenn_s8",
+      "type": "SIDE",
+      "title": "Master of the Skies",
+      "description": "With Rayquaza awake, visit the Weather Institute on Route 119. The Director has a gift for you.",
+      "condition": { "flag": "rayquaza_awakened" },
+      "reward": "Weather Dial + one of each weather rock",
+      "completed_flag": "got_weather_dial"
     }
   ],
   "HOENN_UNDERWATER_POOL_PERCENTAGES": { "170": 35, "171": 15, "366": 25, "369": 10, "370": 15 },
@@ -3310,7 +3320,13 @@
       "dex_range": [252, 386],
       "mom_newstart_text": ["hoenn_mom_newstart_1", "hoenn_mom_newstart_2", "hoenn_mom_newstart_3"],
       "mom_home_text": ["hoenn_mom_home_1", "hoenn_mom_home_2", "hoenn_mom_home_3"],
-      "dex_extra": [407, 461, 462, 472, 475, 476, 477, 478]
+      "dex_extra": [407, 461, 462, 472, 475, 476, 477, 478],
+      "climate": {
+        "SPRING": { "RAIN": 30 },
+        "SUMMER": { "SUN": 40, "RAIN": 10 },
+        "AUTUMN": { "RAIN": 25 },
+        "WINTER": { "RAIN": 20 }
+      }
     }
   }
 }

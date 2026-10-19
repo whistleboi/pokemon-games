@@ -1784,7 +1784,13 @@
       "dex_range": [650, 721],
       "mom_newstart_text": ["kalos_mom_newstart_1", "kalos_mom_newstart_2", "kalos_mom_newstart_3"],
       "mom_home_text": ["kalos_mom_home_1", "kalos_mom_home_2", "kalos_mom_home_3"],
-      "dex_extra": []
+      "dex_extra": [],
+      "climate": {
+        "SPRING": { "RAIN": 30 },
+        "SUMMER": { "SUN": 35 },
+        "AUTUMN": { "RAIN": 25 },
+        "WINTER": { "SNOW": 35 }
+      }
     }
   }
 }

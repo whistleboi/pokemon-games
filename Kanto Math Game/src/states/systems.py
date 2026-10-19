@@ -412,14 +412,10 @@ class PokeMartState(GameState):
         return []
 
     def _regional_weather_rocks(self):
-        """Rocks for the kinds of weather found in this region (Galar's Wild Area has them all)."""
-        region = self.game.story_manager.get_current_region()
-        found = set()
-        for area in self.game.loader.area_data.get("STORY_PROGRESSION", {}).values():
-            if str(area.get("region") or "").upper() != region:
-                continue
-            weather = str(area.get("weather") or "").upper()
-            found.update(self.WEATHER_ROCKS if weather == "RANDOM" else {weather})
+        """Rocks for the kinds of weather found in this region this season
+        (Galar's Wild Area has them all)."""
+        from src.world import seasons
+        found = seasons.region_weathers(self.game, self.game.story_manager.get_current_region())
         return [rock for w, rock in self.WEATHER_ROCKS.items() if w in found]
 
     def _is_department_store(self):
@@ -1003,7 +999,7 @@ class BagState(GameState):
             display_name = f"{item_key.replace('_', ' ').title()}  x{qty}"
 
             is_rare_candy = (item_key == "RARE_CANDY")
-            is_usable_key = item_key in ["TOWN_MAP", "JOHTO_MAP", "UNOWN_REPORT", "POFFIN_CASE", "BERRY_POUCH"]
+            is_usable_key = item_key in ["TOWN_MAP", "JOHTO_MAP", "UNOWN_REPORT", "POFFIN_CASE", "BERRY_POUCH", "WEATHER_DIAL"]
 
             can_use = (qty > 0 and (self.current_page == 0 or is_rare_candy or is_usable_key))
             color = BLUE if can_use else GRAY
@@ -1083,6 +1079,11 @@ class BagState(GameState):
         if item_key == "POFFIN_CASE":
             from src.states.poffin import PoffinCaseState
             self.game.change_state(PoffinCaseState(self.game, self))
+            return
+
+        if item_key == "WEATHER_DIAL":
+            from src.states.weather import WeatherDialState
+            self.game.change_state(WeatherDialState(self.game, self))
             return
 
         if item_key == "BERRY_POUCH":
@@ -2359,6 +2360,10 @@ class PokemonDetailState(GameState):
         ]
         if getattr(self.pokemon, "gmax_factor", False):
             texts.append("Gigantamax Factor: YES")
+        from src.world import seasons
+        season_form = seasons.form_name(self.pokemon.id)
+        if season_form:
+            texts.append(f"Coat: {season_form}")
 
         catch_count = self.game.story_manager.catch_counts.get(self.pokemon.id, 0)
         catch_str = f"Catches Banked: {catch_count}/5"
