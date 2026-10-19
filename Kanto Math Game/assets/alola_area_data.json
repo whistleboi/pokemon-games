@@ -208,7 +208,7 @@
             "player_won": ["Ilima: Wonderful! You've earned the Normalium Z! Use Z-Moves wisely."],
             "player_lost": ["Ilima: Not quite. Train more and return — I'll be here."]
           },
-          "rewards": { "balls": 5, "item": "NORMALIUM_Z" },
+          "rewards": { "balls": 5, "NORMALIUM_Z": 1 },
           "is_boss_battle": true,
           "badge_reward": "NORMALIUM_Z"
         },
@@ -250,7 +250,7 @@
             "player_won": ["Olivia: Beautiful. You've earned Rockium Z! Take the ferry to Ula'ula Island!"],
             "player_lost": ["Olivia: Not quite rock-solid yet. Keep training!"]
           },
-          "rewards": { "balls": 8, "item": "ROCKIUM_Z" },
+          "rewards": { "balls": 8, "ROCKIUM_Z": 1 },
           "is_boss_battle": true,
           "badge_reward": "ROCKIUM_Z"
         },
@@ -304,7 +304,7 @@
             "player_won": ["Nanu: ...I was holding back. Take the Darkinium Z. Go."],
             "player_lost": ["Nanu: ...Told you. You're not ready."]
           },
-          "rewards": { "balls": 8, "item": "DARKINIUM_Z" },
+          "rewards": { "balls": 8, "DARKINIUM_Z": 1 },
           "is_boss_battle": true,
           "badge_reward": "DARKINIUM_Z"
         },
@@ -369,7 +369,7 @@
             "player_won": ["Hapu: You are worthy. Groundium Z is yours. The path to the Altar awaits."],
             "player_lost": ["Hapu: The earth says you're not ready. Train more."]
           },
-          "rewards": { "balls": 10, "item": "GROUNDIUM_Z" },
+          "rewards": { "balls": 10, "GROUNDIUM_Z": 1 },
           "is_boss_battle": true,
           "badge_reward": "GROUNDIUM_Z"
         },
@@ -472,7 +472,7 @@
             "725": [724, 730, 745, 717, 143, 727],
             "728": [724, 727, 745, 717, 143, 730]
           },
-          "rewards": { "balls": 20, "item": "ALOLA_HALL_OF_FAME" },
+          "rewards": { "balls": 20, "ALOLA_HALL_OF_FAME": 1 },
           "victory_flag": "beat_alola_champion",
           "dialogue": {
             "intro": [

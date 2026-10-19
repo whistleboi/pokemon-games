@@ -2760,7 +2760,7 @@ class CityState(GameState):
                 return self.visit_bill_johto
             if target == "flower_shop":
                 return self.visit_flower_shop
-            if target == "stoneman":
+            if target in ("stoneman", "fossil_lab", "nacrene_museum", "ambrette_fossil_lab"):
                 return self.visit_stoneman
             if target == "mr_fuji":
                 return self.visit_mr_fuji
@@ -3724,6 +3724,28 @@ class CityState(GameState):
             callback=self.end_npc_interaction
         )
 
+    FOSSILS = {
+        "HELIX_FOSSIL": 138, "DOME_FOSSIL": 140, "OLD_AMBER": 142,      # Kanto
+        "ROOT_FOSSIL": 345, "CLAW_FOSSIL": 347,                          # Hoenn
+        "SKULL_FOSSIL": 408, "ARMOR_FOSSIL": 410,                        # Sinnoh
+        "COVER_FOSSIL": 564, "PLUME_FOSSIL": 566,                        # Unova
+        "JAW_FOSSIL": 696, "SAIL_FOSSIL": 698,                           # Kalos
+    }
+    # Galar fossils are halves: one top (bird/fish) + one bottom (drake/dino).
+    FOSSIL_COMBOS = {
+        ("FOSSILIZED_BIRD", "FOSSILIZED_DRAKE"): 880, ("FOSSILIZED_BIRD", "FOSSILIZED_DINO"): 881,
+        ("FOSSILIZED_FISH", "FOSSILIZED_DRAKE"): 882, ("FOSSILIZED_FISH", "FOSSILIZED_DINO"): 883,
+    }
+
+    def _next_fossil_revival(self):
+        """(items to use, Pokemon id) for the next revivable fossil, preferring species not yet owned."""
+        inv = self.game.story_manager.inventory
+        owned = {v.get("id") for v in self.game.data.data.get("pokedex", {}).values() if isinstance(v, dict)}
+        options = [((name,), pid) for name, pid in self.FOSSILS.items() if inv.get(name, 0) > 0]
+        options += [(pair, pid) for pair, pid in self.FOSSIL_COMBOS.items() if all(inv.get(p, 0) > 0 for p in pair)]
+        options.sort(key=lambda o: o[1] in owned)
+        return options[0] if options else (None, None)
+
     def visit_stoneman(self):
         self.clear_hover_menu()
         self.npc_active = True
@@ -3731,32 +3753,16 @@ class CityState(GameState):
         self.action_menu.set_visibility(False)
         self.npc_sprite = self.game.assets.get_trainer_image("ruinmaniac.png")
 
-        inventory = self.game.story_manager.inventory
+        items, target_id = self._next_fossil_revival()
 
-        fossil_map = {
-            "HELIX_FOSSIL": 138,    # Omanyte
-            "DOME_FOSSIL": 140,     # Kabuto
-            "OLD_AMBER": 142,       # Aerodactyl
-            "ARMOR_FOSSIL": 410,    # Shieldon
-            "SKULL_FOSSIL": 408,    # Cranidos
-            "ROOT_FOSSIL": 345,     # Lileep
-            "CLAW_FOSSIL": 347      # Anorith
-        }
+        msgs = ["Welcome to the fossil lab!", "We can bring ancient Pokémon back to life."]
 
-        target_fossil = None
-        target_id = None
-        for f_name, p_id in fossil_map.items():
-            if inventory.get(f_name, 0) > 0:
-                target_fossil = f_name
-                target_id = p_id
-                break
-
-        msgs = ["I am the Fossil Maniac!", "I can revive fossils into Pokémon."]
-
-        if target_fossil:
-            msgs.append(f"Oh! Is that a {target_fossil.replace('_', ' ').title()}?")
-            msgs.append("I can revive it for you right now!")
-            self.pending_revival = (target_fossil, target_id)
+        if items:
+            label = " and ".join(i.replace('_', ' ').title() for i in items)
+            msgs.append(f"Oh! Is that a {label}?")
+            msgs.append("We can revive it for you right now!" if len(items) == 1
+                        else "These two pieces fit together. Let's restore them!")
+            self.pending_revival = (items, target_id)
             callback = self.perform_fossil_revival
         else:
             msgs.append("I am always looking for ancient fossils.")
@@ -3866,12 +3872,12 @@ class CityState(GameState):
         self.npc_dialogue.callback = self.end_npc_interaction
 
     def perform_fossil_revival(self):
-        f_name, p_id = getattr(self, 'pending_revival', (None, None))
-        if not f_name:
+        items, p_id = getattr(self, 'pending_revival', (None, None))
+        if not items:
             return
 
         from src.states.systems import FossilRevivalState
-        self.game.change_state(FossilRevivalState(self.game, f_name, p_id, self))
+        self.game.change_state(FossilRevivalState(self.game, items[0], p_id, self, consume=list(items)))
 
     def resolve_oldman_no(self):
         self.choice_active = False

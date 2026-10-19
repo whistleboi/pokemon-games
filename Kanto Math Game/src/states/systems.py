@@ -2919,9 +2919,10 @@ class FlyState(GameState):
 
 
 class FossilRevivalState(GameState):
-    def __init__(self, game, fossil_name, pokemon_id, previous_state):
+    def __init__(self, game, fossil_name, pokemon_id, previous_state, consume=None):
         super().__init__(game)
         self.fossil_name = fossil_name
+        self.consume = consume or [fossil_name]
         self.pokemon_id = pokemon_id
         self.previous_state = previous_state
         self.phase = "START"
@@ -2971,7 +2972,8 @@ class FossilRevivalState(GameState):
 
     def _finalize_revival(self):
         story = self.game.story_manager
-        story.inventory[self.fossil_name] -= 1
+        for item in self.consume:
+            story.inventory[item] -= 1
 
         revival_flag = f"revived_fossil_{story.current_area_key}"
         story.story_flags[revival_flag] = True

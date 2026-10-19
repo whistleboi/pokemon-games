@@ -330,7 +330,8 @@
         { "text": "Pokémon Center", "action": "HEAL" },
         { "text": "Shop", "action": "SHOP" },
         { "text": "Challenge Gym", "action": "GYM" },
-        { "text": "Sonia's Research (murals)", "action": "NPC", "target": "galar_sonia_murals", "flag_condition": "not saw_stow_murals" }
+        { "text": "Sonia's Research (murals)", "action": "NPC", "target": "galar_sonia_murals", "flag_condition": "not saw_stow_murals" },
+        { "text": "Cara Liss (Fossil Restorer)", "action": "NPC", "target": "fossil_lab" }
       ],
       "next_area": "GLIMWOOD_TANGLE"
     },
@@ -384,10 +385,13 @@
           "team": [874, 874, 880],
           "dialogue": {
             "intro": ["Gordie: Don't think Fairy-type charm will work in here. Rock is absolute!"],
-            "player_won": ["Gordie: You... actually beat me. The Rock Badge is yours. Don't make a big deal of it."],
+            "player_won": [
+              "Gordie: You... actually beat me. The Rock Badge is yours. Don't make a big deal of it.",
+              "Here, take these fossils we dug up. Cara Liss in Stow-on-Side can piece them together!"
+            ],
             "player_lost": ["Gordie: Solid. Come back when you're truly solid."]
           },
-          "rewards": { "balls": 5 },
+          "rewards": { "balls": 5, "FOSSILIZED_BIRD": 1, "FOSSILIZED_FISH": 1, "FOSSILIZED_DRAKE": 1, "FOSSILIZED_DINO": 1 },
           "is_boss_battle": true,
           "badge_reward": "ROCK"
         },
@@ -456,10 +460,13 @@
           "team": [844, 880, 882, 883],
           "dialogue": {
             "intro": ["Raihan: Alright! Let's settle this quick — my fans are watching! I'll be using Dynamax, so buckle up!"],
-            "player_won": ["Raihan: Incredible! That was AMAZING! Here's the Dragon Badge — now go beat Leon for both of us!"],
+            "player_won": [
+              "Raihan: Incredible! That was AMAZING! Here's the Dragon Badge — now go beat Leon for both of us!",
+              "Here, take these fossils we dug up. Cara Liss in Stow-on-Side can piece them together!"
+            ],
             "player_lost": ["Raihan: Ha! That's more like it! But you'll need to do better against Leon."]
           },
-          "rewards": { "balls": 5 },
+          "rewards": { "balls": 5, "FOSSILIZED_BIRD": 1, "FOSSILIZED_FISH": 1, "FOSSILIZED_DRAKE": 1, "FOSSILIZED_DINO": 1 },
           "is_boss_battle": true,
           "badge_reward": "DRAGON"
         },
@@ -547,7 +554,7 @@
             "813": [879, 845, 851, 880, 884, 6],
             "816": [879, 845, 730, 880, 884, 6]
           },
-          "rewards": { "balls": 20, "item": "GALAR_HALL_OF_FAME" },
+          "rewards": { "balls": 20, "GALAR_HALL_OF_FAME": 1 },
           "victory_flag": "beat_galar_champion",
           "dialogue": {
             "intro": [
@@ -1281,10 +1288,10 @@
   "GALAR_ROUTE_7_PERCENTAGES": { "858": 25, "859": 20, "869": 20, "870": 15, "876": 20 },
   "GALAR_ROUTE_8": [874, 875, 613, 614],
   "GALAR_ROUTE_8_PERCENTAGES": { "874": 30, "875": 25, "613": 25, "614": 20 },
-  "GALAR_ROUTE_9": [846, 848, 880, 882, 845, 871, 2031],
-  "GALAR_ROUTE_9_PERCENTAGES": { "846": 22, "848": 18, "880": 13, "882": 12, "845": 15, "871": 10, "2031": 10 },
-  "GALAR_ROUTE_10": [882, 883, 884, 879, 881, 877, 2026],
-  "GALAR_ROUTE_10_PERCENTAGES": { "882": 18, "883": 17, "884": 17, "879": 10, "881": 13, "877": 13, "2026": 12 },
+  "GALAR_ROUTE_9": [846, 848, 845, 871, 2031],
+  "GALAR_ROUTE_9_PERCENTAGES": { "846": 29, "848": 24, "845": 20, "871": 14, "2031": 13 },
+  "GALAR_ROUTE_10": [884, 879, 877, 2026],
+  "GALAR_ROUTE_10_PERCENTAGES": { "884": 33, "879": 19, "877": 25, "2026": 23 },
   "GALAR_SLUMBERING_WEALD_PERCENTAGES": { "888": 5, "889": 5, "831": 30, "862": 30, "863": 30 },
   "GALAR_SLUMBERING_WEALD": [831, 862, 863, 888, 889],
   "GALAR_WILD_AREA_PERCENTAGES": { "835": 15, "840": 15, "846": 15, "858": 10, "874": 10, "885": 10, "819": 10, "833": 10, "845": 5 },

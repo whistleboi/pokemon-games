@@ -332,10 +332,13 @@
           "team": [698, 696],
           "dialogue": {
             "intro": ["Grant: I've scaled every peak in Kalos. Can you climb to my level?"],
-            "player_won": ["Grant: You summit the challenge! Here is the Cliff Badge, and TM Rock Tomb."],
+            "player_won": [
+              "Grant: You summit the challenge! Here is the Cliff Badge, and TM Rock Tomb.",
+              "Take this Jaw Fossil too. The fossil lab in Ambrette Town can revive it!"
+            ],
             "player_lost": ["Grant: The climb continues. Train harder and try again."]
           },
-          "rewards": { "balls": 5 },
+          "rewards": { "balls": 5, "JAW_FOSSIL": 1 },
           "is_boss_battle": true,
           "badge_reward": "CLIFF"
         },
@@ -392,10 +395,13 @@
           "team": [619, 67, 701],
           "dialogue": {
             "intro": ["Korrina: The Tower of Mastery has accepted you. Now prove your bond in battle!"],
-            "player_won": ["Korrina: YES! You've done it! Take the Rumble Badge — and the Mega Ring! Mega Evolution awaits you!"],
+            "player_won": [
+              "Korrina: YES! You've done it! Take the Rumble Badge — and the Mega Ring! Mega Evolution awaits you!",
+              "Take this Sail Fossil too. The fossil lab in Ambrette Town can revive it!"
+            ],
             "player_lost": ["Korrina: Not yet! Train with your Pokémon more. The bond needs to be stronger!"]
           },
-          "rewards": { "balls": 5, "item": "MEGA_RING" },
+          "rewards": { "balls": 5, "MEGA_RING": 1, "SAIL_FOSSIL": 1 },
           "is_boss_battle": true,
           "badge_reward": "RUMBLE"
         },
@@ -698,7 +704,7 @@
           "sprite": "diantha.png",
           "is_boss_battle": true,
           "team": [701, 697, 699, 711, 706, 282],
-          "rewards": { "balls": 20, "item": "KALOS_HALL_OF_FAME" },
+          "rewards": { "balls": 20, "KALOS_HALL_OF_FAME": 1 },
           "victory_flag": "beat_kalos_champion",
           "dialogue": {
             "intro": [
@@ -1726,8 +1732,8 @@
   "KALOS_ROUTE_8_PERCENTAGES": { "690": 30, "691": 25, "692": 25, "693": 20 },
   "KALOS_ROUTE_9": [690, 691, 688, 694],
   "KALOS_ROUTE_9_PERCENTAGES": { "690": 30, "691": 25, "688": 25, "694": 20 },
-  "KALOS_ROUTE_10": [696, 697, 698, 699],
-  "KALOS_ROUTE_10_PERCENTAGES": { "696": 30, "697": 25, "698": 25, "699": 20 },
+  "KALOS_ROUTE_10": [133, 209, 193, 701, 309, 561],
+  "KALOS_ROUTE_10_PERCENTAGES": { "133": 15, "209": 20, "193": 15, "701": 15, "309": 20, "561": 15 },
   "KALOS_ROUTE_11": [677, 678, 679, 680, 702],
   "KALOS_ROUTE_11_PERCENTAGES": { "677": 25, "678": 20, "679": 20, "680": 15, "702": 20 },
   "KALOS_ROUTE_12": [692, 693, 690, 691],
@@ -1748,8 +1754,8 @@
   "KALOS_ROUTE_19_PERCENTAGES": { "700": 30, "701": 25, "704": 25, "705": 20 },
   "KALOS_SANTALUNE_FOREST_PERCENTAGES": { "664": 30, "665": 25, "666": 25, "669": 20 },
   "KALOS_SANTALUNE_FOREST": [664, 665, 666, 669],
-  "KALOS_GLITTERING_CAVE_PERCENTAGES": { "696": 30, "697": 25, "698": 25, "699": 20 },
-  "KALOS_GLITTERING_CAVE": [696, 697, 698, 699],
+  "KALOS_GLITTERING_CAVE_PERCENTAGES": { "66": 25, "104": 20, "111": 20, "95": 15, "337": 10, "338": 10 },
+  "KALOS_GLITTERING_CAVE": [66, 104, 111, 95, 337, 338],
   "KALOS_REFLECTION_CAVE_PERCENTAGES": { "677": 30, "678": 25, "679": 25, "703": 20 },
   "KALOS_REFLECTION_CAVE": [677, 678, 679, 703],
   "KALOS_CONNECTING_CAVE_PERCENTAGES": { "688": 40, "694": 35, "659": 25 },

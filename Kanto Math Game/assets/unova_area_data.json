@@ -411,10 +411,14 @@
               "I'm Lenora, the Nacrene Gym Leader.",
               "I'm a Normal-type user. Don't underestimate what Normal can do!"
             ],
-            "player_won": ["Lenora: You're the real deal! Congratulations on the Basic Badge!", "Take this HM Strength too — you'll need it in your travels."],
+            "player_won": [
+              "Lenora: You're the real deal! Congratulations on the Basic Badge!",
+              "Take this HM Strength too — you'll need it in your travels.",
+              "Take this Cover Fossil too. The fossil lab in Nacrene City can revive it!"
+            ],
             "player_lost": ["Lenora: You'll need to dig deeper than that!", "Come back when you've trained more. My library is always open."]
           },
-          "rewards": { "balls": 5 },
+          "rewards": { "balls": 5, "COVER_FOSSIL": 1 },
           "is_boss_battle": true,
           "badge_reward": "BASIC"
         },
@@ -636,10 +640,14 @@
               "I'm Clay. I dug this whole city outta the ground.",
               "Ground-types are tough as the earth itself. Let's see if you can shake 'em!"
             ],
-            "player_won": ["Clay: Not bad at all! You've got the Quake Badge, kid.", "Now get outta my gym and go challenge the rest of the world!"],
+            "player_won": [
+              "Clay: Not bad at all! You've got the Quake Badge, kid.",
+              "Now get outta my gym and go challenge the rest of the world!",
+              "Take this Plume Fossil too. The fossil lab in Nacrene City can revive it!"
+            ],
             "player_lost": ["Clay: The earth don't move for just anyone.", "Come back when you've got more dig in you."]
           },
-          "rewards": { "balls": 5 },
+          "rewards": { "balls": 5, "PLUME_FOSSIL": 1 },
           "is_boss_battle": true,
           "badge_reward": "QUAKE"
         },
@@ -2450,8 +2458,8 @@
   "UNOVA_CASTELIA_SEWERS": [509, 543, 568],
   "UNOVA_DESERT_RESORT_PERCENTAGES": { "551": 22, "554": 20, "556": 18, "562": 15, "557": 15, "561": 10 },
   "UNOVA_DESERT_RESORT": [551, 554, 556, 562, 557, 561],
-  "UNOVA_RELIC_CASTLE_PERCENTAGES": { "551": 22, "562": 22, "568": 18, "637": 10, "564": 14, "566": 14 },
-  "UNOVA_RELIC_CASTLE": [551, 562, 568, 637, 564, 566],
+  "UNOVA_RELIC_CASTLE_PERCENTAGES": { "551": 31, "562": 30, "568": 25, "637": 14 },
+  "UNOVA_RELIC_CASTLE": [551, 562, 568, 637],
   "UNOVA_COLD_STORAGE_PERCENTAGES": { "582": 40, "613": 35, "615": 25 },
   "UNOVA_COLD_STORAGE": [582, 613, 615],
   "UNOVA_CHARGESTONE_CAVE_PERCENTAGES": { "525": 20, "587": 15, "595": 20, "599": 12, "600": 8, "597": 13, "602": 12 },

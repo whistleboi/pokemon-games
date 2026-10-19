@@ -293,10 +293,10 @@
           "badge_reward": "COAL",
           "dialogue": {
             "intro": ["I'm Roark, the Oreburgh Gym Leader!", "My Rock-type Pokémon are as tough as the earth itself!"],
-            "player_won": ["Your math cracked my defense. Take the Coal Badge."],
+            "player_won": ["Your math cracked my defense. Take the Coal Badge.", "Take this Skull Fossil too. The fossil lab in Oreburgh City can revive it!"],
             "player_lost": ["Rock-solid — just like my Pokémon!"]
           },
-          "rewards": { "balls": 10, "RARE_CANDY": 1, "ADVENTURE_MAP": 1 }
+          "rewards": { "balls": 10, "RARE_CANDY": 1, "ADVENTURE_MAP": 1, "SKULL_FOSSIL": 1 }
         }
       },
       "travel_options": [
@@ -308,7 +308,8 @@
         { "text": "Heal", "action": "HEAL" },
         { "text": "Shop", "action": "SHOP" },
         { "text": "Gym", "action": "GYM" },
-        { "text": "Oreburgh Mine", "action": "TRAVEL", "target_area": "OREBURGH_MINE" }
+        { "text": "Oreburgh Mine", "action": "TRAVEL", "target_area": "OREBURGH_MINE" },
+        { "text": "Mining Museum", "action": "NPC", "target": "fossil_lab" }
       ],
       "on_enter_event": null
     },
@@ -776,10 +777,14 @@
           "badge_reward": "MINE",
           "dialogue": {
             "intro": ["I'm Byron! The Man with the Steel Body!", "My Steel-types are impervious to attack!"],
-            "player_won": ["Hmm! You broke through my steel! The Mine Badge is yours!", "Roark! Your kid is amazing!"],
+            "player_won": [
+              "Hmm! You broke through my steel! The Mine Badge is yours!",
+              "Roark! Your kid is amazing!",
+              "Take this Armor Fossil too. The fossil lab in Oreburgh City can revive it!"
+            ],
             "player_lost": ["Solid as steel! You can't crack my defense!"]
           },
-          "rewards": { "balls": 10, "RARE_CANDY": 2, "HM_STRENGTH": 1 }
+          "rewards": { "balls": 10, "RARE_CANDY": 2, "HM_STRENGTH": 1, "ARMOR_FOSSIL": 1 }
         }
       },
       "travel_options": [
@@ -2492,8 +2497,8 @@
   "SINNOH_ROUTE_222_PERCENTAGES": { "404": 25, "419": 25, "457": 20, "456": 15, "441": 15 },
   "SINNOH_ROUTE_223": [130, 73, 458, 321, 489],
   "SINNOH_ROUTE_223_PERCENTAGES": { "130": 28, "73": 28, "458": 24, "321": 15, "489": 5 },
-  "SINNOH_OREBURGH_MINE": [74, 95, 247, 207, 408, 410],
-  "SINNOH_OREBURGH_MINE_PERCENTAGES": { "74": 32, "95": 24, "247": 16, "207": 8, "408": 10, "410": 10 },
+  "SINNOH_OREBURGH_MINE": [74, 95, 247, 207],
+  "SINNOH_OREBURGH_MINE_PERCENTAGES": { "74": 40, "95": 30, "247": 20, "207": 10 },
   "SINNOH_ETERNA_FOREST": [92, 93, 420, 285, 284, 133],
   "SINNOH_ETERNA_FOREST_PERCENTAGES": { "92": 25, "93": 17, "420": 23, "285": 19, "284": 8, "133": 8 },
   "SINNOH_OLD_CHATEAU": [92, 93, 200, 354, 355],

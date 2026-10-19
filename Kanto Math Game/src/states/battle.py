@@ -821,8 +821,9 @@ class TrainerBattleState(GameState):
 
         if self.badge_reward:
             region = self.game.story_manager.get_current_region()
-            if self.badge_reward not in self.game.story_manager.badges[region]:
-                self.game.story_manager.badges[region].append(self.badge_reward)
+            earned = self.game.story_manager.badges.setdefault(region, [])
+            if self.badge_reward not in earned:
+                earned.append(self.badge_reward)
 
         money_reward = 0 if lost else self._calc_money_reward()
         if self.game.story_manager.inventory.get("AMULET_COIN", 0) > 0:
