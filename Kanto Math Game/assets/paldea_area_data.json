@@ -1,20 +1,5 @@
 {
-  "FORM_MAP": {
-    "9001": { "id": 194, "form": "paldean", "name": "Paldean Wooper", "types": ["POISON", "GROUND"] },
-    "9002": { "id": 128, "form": "paldean", "name": "Paldean Tauros (Combat)", "types": ["FIGHTING"] },
-    "9003": {
-      "id": 128,
-      "form": "paldean",
-      "name": "Paldean Tauros (Blaze)",
-      "types": ["FIGHTING", "FIRE"]
-    },
-    "9004": {
-      "id": 128,
-      "form": "paldean",
-      "name": "Paldean Tauros (Aqua)",
-      "types": ["FIGHTING", "WATER"]
-    }
-  },
+  "FORM_MAP": {},
   "GAME_TEXT": {
     "paldea_intro": "After defeating Leon and claiming the Galar Championship, a mysterious letter arrived — Professor Sada of the Paldea region wrote of ancient Pokémon sightings near the Great Crater. With your mother already purchasing a seaside cottage in Cabo Poco, you set sail for a land of open skies and untamed frontiers.",
     "paldea_departure_from_galar": "The memory of Leon's smile as he handed you the Championship Crown stays with you as the ferry carries you south toward Paldea. Eight regions. Eight championships. And ahead — three paths converging on a mystery at the bottom of the world.",
@@ -1291,12 +1276,12 @@
   "EAST_PROVINCE_AREA_1_PERCENTAGES": { "940": 30, "938": 25, "963": 25, "418": 20 },
   "EAST_PROVINCE_AREA_2": [940, 941, 963, 964, 976, 977, 978],
   "EAST_PROVINCE_AREA_2_PERCENTAGES": { "940": 20, "941": 15, "963": 15, "964": 10, "976": 15, "977": 10, "978": 15 },
-  "WEST_PROVINCE_AREA_1": [9001, 980, 973, 662, 950, 962],
-  "WEST_PROVINCE_AREA_1_PERCENTAGES": { "9001": 25, "980": 20, "973": 20, "662": 15, "950": 10, "962": 10 },
+  "WEST_PROVINCE_AREA_1": [2058, 980, 973, 662, 950, 962],
+  "WEST_PROVINCE_AREA_1_PERCENTAGES": { "2058": 25, "980": 20, "973": 20, "662": 15, "950": 10, "962": 10 },
   "WEST_PROVINCE_AREA_2": [942, 943, 944, 945],
   "WEST_PROVINCE_AREA_2_PERCENTAGES": { "942": 30, "943": 25, "944": 25, "945": 20 },
-  "WEST_PROVINCE_AREA_3": [982, 981, 960, 961],
-  "WEST_PROVINCE_AREA_3_PERCENTAGES": { "982": 30, "981": 25, "960": 25, "961": 20 },
+  "WEST_PROVINCE_AREA_3": [982, 981, 960, 961, 2057, 2056, 2055],
+  "WEST_PROVINCE_AREA_3_PERCENTAGES": { "982": 25, "981": 20, "960": 20, "961": 15, "2057": 10, "2056": 5, "2055": 5 },
   "NORTH_PROVINCE_AREA_1": [760, 701, 750, 863, 624, 625],
   "NORTH_PROVINCE_AREA_1_PERCENTAGES": { "760": 20, "701": 20, "750": 20, "863": 15, "624": 15, "625": 10 },
   "NORTH_PROVINCE_AREA_2": [971, 972, 854, 855],
