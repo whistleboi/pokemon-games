@@ -494,7 +494,8 @@
         { "text": "Route 4", "target_area": "UNOVA_ROUTE_4" },
         { "text": "Pinwheel Forest", "target_area": "PINWHEEL_FOREST" },
         { "text": "Unity Tower", "target_area": "UNITY_TOWER" },
-        { "text": "Castelia Sewers", "target_area": "CASTELIA_SEWERS" }
+        { "text": "Castelia Sewers", "target_area": "CASTELIA_SEWERS" },
+        { "text": "Liberty Garden (Ferry)", "target_area": "LIBERTY_GARDEN", "condition": "beat_unova_champion" }
       ],
       "explore_options": [
         { "text": "Pokémon Center", "action": "HEAL" },
@@ -1319,9 +1320,16 @@
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        {
+          "text": "Meet Keldeo",
+          "action": "BOSS",
+          "condition": ["boss_not_defeated", "MISTRALTON_CAVE_boss_defeated", "VICTORY_ROAD_UNOVA_boss_defeated", "UNOVA_ROUTE_22_boss_defeated"],
+          "color": "GOLD"
+        },
         { "text": "Icirrus City", "action": "EXIT", "target_area": "ICIRRUS_CITY", "condition": "can_exit", "color": "RED" },
         { "text": "ROUTE 8", "action": "EXIT", "target_area": "UNOVA_ROUTE_8", "condition": "can_exit", "color": "RED" }
-      ]
+      ],
+      "area_boss": { "id": 647, "name": "Keldeo", "victory_flag": "MOOR_OF_ICIRRUS_boss_defeated" }
     },
     "DRAGONSPIRAL_TOWER": {
       "area_type": "dungeon",
@@ -1358,6 +1366,7 @@
           "flag_condition": "not plasma_dragonspiral_cleared"
         },
         { "text": "Encounter Zekrom (post-story)", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD" },
+        { "text": "TOWER SUMMIT", "target_area": "DRAGONSPIRAL_SUMMIT", "condition": "boss_defeated", "action": "EXIT", "color": "GOLD" },
         { "text": "Icirrus City", "action": "EXIT", "target_area": "ICIRRUS_CITY", "condition": "can_exit", "color": "RED" }
       ],
       "area_boss": { "id": 644, "name": "Zekrom", "victory_flag": "DRAGONSPIRAL_TOWER_boss_defeated" }
@@ -1486,8 +1495,15 @@
       "min_rounds": 0,
       "backgrounds": { "main": "unity_tower.png" },
       "route_menu": [
+        {
+          "text": "Follow the Melody",
+          "action": "BOSS",
+          "condition": ["boss_not_defeated", "beat_unova_champion"],
+          "color": "GOLD"
+        },
         { "text": "Castelia City", "action": "EXIT", "target_area": "CASTELIA_CITY", "condition": "can_exit", "color": "RED" }
-      ]
+      ],
+      "area_boss": { "id": 648, "name": "Meloetta", "victory_flag": "UNITY_TOWER_boss_defeated" }
     },
     "BATTLE_SUBWAY": {
       "area_type": "dungeon",
@@ -1727,10 +1743,18 @@
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        {
+          "text": "Chase the Storm",
+          "action": "BOSS",
+          "condition": ["boss_not_defeated", "beat_unova_champion"],
+          "color": "GOLD"
+        },
+        { "text": "CELESTIAL TOWER", "target_area": "CELESTIAL_TOWER", "action": "EXIT", "color": "RED", "condition": "can_exit" },
         { "text": "Mistralton City", "action": "EXIT", "target_area": "MISTRALTON_CITY", "condition": "can_exit", "color": "RED" },
         { "text": "Twist Mountain", "action": "EXIT", "target_area": "TWIST_MOUNTAIN", "condition": "can_exit", "color": "RED" }
       ],
-      "next_area": "TWIST_MOUNTAIN"
+      "next_area": "TWIST_MOUNTAIN",
+      "area_boss": { "id": 641, "name": "Tornadus", "victory_flag": "UNOVA_ROUTE_7_boss_defeated" }
     },
     "UNOVA_ROUTE_8": {
       "area_type": "wild_route",
@@ -1759,10 +1783,17 @@
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        {
+          "text": "Chase the Thunder",
+          "action": "BOSS",
+          "condition": ["boss_not_defeated", "beat_unova_champion"],
+          "color": "GOLD"
+        },
         { "text": "Icirrus City", "action": "EXIT", "target_area": "ICIRRUS_CITY", "condition": "can_exit", "color": "RED" },
         { "text": "Moor of Icirrus", "action": "EXIT", "target_area": "MOOR_OF_ICIRRUS", "condition": "can_exit", "color": "RED" }
       ],
-      "next_area": "ICIRRUS_CITY"
+      "next_area": "ICIRRUS_CITY",
+      "area_boss": { "id": 642, "name": "Thundurus", "victory_flag": "UNOVA_ROUTE_8_boss_defeated" }
     },
     "UNOVA_ROUTE_9": {
       "area_type": "wild_route",
@@ -2009,6 +2040,7 @@
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "P2 LABORATORY", "target_area": "P2_LABORATORY", "condition": "beat_unova_champion", "action": "EXIT", "color": "GOLD" },
         { "text": "Route 18", "action": "EXIT", "target_area": "UNOVA_ROUTE_18", "condition": "can_exit", "color": "RED" },
         { "text": "ROUTE 1", "action": "EXIT", "target_area": "UNOVA_ROUTE_1", "condition": "can_exit", "color": "RED" }
       ],
@@ -2118,6 +2150,88 @@
         { "text": "Victory Road", "action": "EXIT", "target_area": "VICTORY_ROAD_UNOVA", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "VICTORY_ROAD_UNOVA"
+    },
+    "CELESTIAL_TOWER": {
+      "area_type": "dungeon",
+      "route_name": "Celestial Tower",
+      "region": "UNOVA",
+      "battle_type": "indoor",
+      "backgrounds": { "main": "celestial_tower.png" },
+      "min_rounds": 1,
+      "trainer_pool": [],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "Route 7", "action": "EXIT", "target_area": "UNOVA_ROUTE_7", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "UNOVA_ROUTE_7",
+      "wild_pool_percentages": "UNOVA_CELESTIAL_TOWER_PERCENTAGES"
+    },
+    "DRAGONSPIRAL_SUMMIT": {
+      "area_type": "dungeon",
+      "route_name": "Dragonspiral Tower Summit",
+      "region": "UNOVA",
+      "battle_type": "mountain",
+      "backgrounds": { "main": "dragonspiral_summit.png" },
+      "min_rounds": 0,
+      "trainer_pool": [],
+      "route_menu": [
+        {
+          "text": "Awaken Reshiram",
+          "action": "BOSS",
+          "condition": ["boss_not_defeated"],
+          "color": "GOLD"
+        },
+        { "text": "Dragonspiral Tower", "action": "EXIT", "target_area": "DRAGONSPIRAL_TOWER", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "DRAGONSPIRAL_TOWER",
+      "area_boss": { "id": 643, "name": "Reshiram", "victory_flag": "DRAGONSPIRAL_SUMMIT_boss_defeated" }
+    },
+    "LIBERTY_GARDEN": {
+      "area_type": "dungeon",
+      "route_name": "Liberty Garden",
+      "region": "UNOVA",
+      "battle_type": "grass",
+      "backgrounds": { "main": "liberty_garden.png" },
+      "min_rounds": 1,
+      "trainer_pool": [],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        {
+          "text": "Find Victini",
+          "action": "BOSS",
+          "condition": ["boss_not_defeated"],
+          "color": "GOLD"
+        },
+        { "text": "Castelia City", "action": "EXIT", "target_area": "CASTELIA_CITY", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "CASTELIA_CITY",
+      "wild_pool_percentages": "UNOVA_LIBERTY_GARDEN_PERCENTAGES",
+      "area_boss": { "id": 494, "name": "Victini", "victory_flag": "LIBERTY_GARDEN_boss_defeated" }
+    },
+    "P2_LABORATORY": {
+      "area_type": "dungeon",
+      "route_name": "P2 Laboratory",
+      "region": "UNOVA",
+      "battle_type": "indoor",
+      "backgrounds": { "main": "p2_laboratory.png" },
+      "min_rounds": 1,
+      "trainer_pool": [],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        {
+          "text": "Confront Genesect",
+          "action": "BOSS",
+          "condition": ["boss_not_defeated"],
+          "color": "GOLD"
+        },
+        { "text": "Route 17", "action": "EXIT", "target_area": "UNOVA_ROUTE_17", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "UNOVA_ROUTE_17",
+      "wild_pool_percentages": "UNOVA_P2_LAB_PERCENTAGES",
+      "area_boss": { "id": 649, "name": "Genesect", "victory_flag": "P2_LABORATORY_boss_defeated" }
     }
   },
   "JOURNAL_MISSIONS": [
@@ -2290,18 +2404,18 @@
   "UNOVA_ROUTE_3_PERCENTAGES": { "504": 20, "506": 20, "509": 20, "511": 15, "513": 15, "522": 10 },
   "UNOVA_ROUTE_4": [551, 554, 556, 562],
   "UNOVA_ROUTE_4_PERCENTAGES": { "551": 35, "554": 30, "556": 20, "562": 15 },
-  "UNOVA_ROUTE_5": [572, 580, 587, 590],
-  "UNOVA_ROUTE_5_PERCENTAGES": { "572": 30, "580": 25, "587": 25, "590": 20 },
-  "UNOVA_ROUTE_6": [531, 580, 585, 590],
-  "UNOVA_ROUTE_6_PERCENTAGES": { "531": 30, "580": 25, "585": 25, "590": 20 },
+  "UNOVA_ROUTE_5": [572, 580, 587, 590, 577],
+  "UNOVA_ROUTE_5_PERCENTAGES": { "572": 25, "580": 20, "587": 20, "590": 15, "577": 20 },
+  "UNOVA_ROUTE_6": [531, 580, 585, 590, 588, 616],
+  "UNOVA_ROUTE_6_PERCENTAGES": { "531": 25, "580": 20, "585": 20, "590": 15, "588": 10, "616": 10 },
   "UNOVA_ROUTE_7": [585, 613, 619, 621],
   "UNOVA_ROUTE_7_PERCENTAGES": { "585": 30, "613": 25, "619": 25, "621": 20 },
   "UNOVA_ROUTE_8": [592, 613, 615, 618],
   "UNOVA_ROUTE_8_PERCENTAGES": { "592": 30, "613": 25, "615": 25, "618": 20 },
   "UNOVA_ROUTE_9": [559, 624, 626, 628],
   "UNOVA_ROUTE_9_PERCENTAGES": { "559": 30, "624": 25, "626": 25, "628": 20 },
-  "UNOVA_ROUTE_10": [537, 576, 587, 625],
-  "UNOVA_ROUTE_10_PERCENTAGES": { "537": 25, "576": 25, "587": 25, "625": 25 },
+  "UNOVA_ROUTE_10": [537, 576, 587, 625, 629],
+  "UNOVA_ROUTE_10_PERCENTAGES": { "537": 20, "576": 20, "587": 20, "625": 20, "629": 20 },
   "UNOVA_ROUTE_11": [507, 587, 592, 621],
   "UNOVA_ROUTE_11_PERCENTAGES": { "507": 30, "587": 25, "592": 25, "621": 20 },
   "UNOVA_ROUTE_12": [550, 580, 592, 594],
@@ -2326,36 +2440,36 @@
   "UNOVA_ROUTE_23_PERCENTAGES": { "612": 30, "614": 25, "625": 25, "628": 20 },
   "UNOVA_DREAMYARD_PERCENTAGES": { "517": 35, "518": 30, "574": 20, "575": 15 },
   "UNOVA_DREAMYARD": [517, 518, 574, 575],
-  "UNOVA_WELLSPRING_CAVE_PERCENTAGES": { "529": 40, "530": 35, "524": 25 },
-  "UNOVA_WELLSPRING_CAVE": [524, 529, 530],
-  "UNOVA_PINWHEEL_FOREST_PERCENTAGES": { "511": 25, "513": 25, "515": 25, "519": 25 },
-  "UNOVA_PINWHEEL_FOREST": [511, 513, 515, 519],
-  "UNOVA_LOSTLORN_FOREST_PERCENTAGES": { "540": 35, "548": 30, "511": 20, "619": 15 },
-  "UNOVA_LOSTLORN_FOREST": [511, 540, 548, 619],
+  "UNOVA_WELLSPRING_CAVE_PERCENTAGES": { "529": 30, "530": 25, "524": 25, "527": 20 },
+  "UNOVA_WELLSPRING_CAVE": [529, 530, 524, 527],
+  "UNOVA_PINWHEEL_FOREST_PERCENTAGES": { "511": 12, "513": 12, "515": 12, "519": 22, "532": 12, "535": 12, "546": 10, "538": 8 },
+  "UNOVA_PINWHEEL_FOREST": [511, 513, 515, 519, 532, 535, 546, 538],
+  "UNOVA_LOSTLORN_FOREST_PERCENTAGES": { "540": 30, "548": 25, "511": 15, "619": 15, "570": 15 },
+  "UNOVA_LOSTLORN_FOREST": [540, 548, 511, 619, 570],
   "UNOVA_CASTELIA_SEWERS_PERCENTAGES": { "509": 35, "568": 35, "543": 30 },
   "UNOVA_CASTELIA_SEWERS": [509, 543, 568],
-  "UNOVA_DESERT_RESORT_PERCENTAGES": { "551": 30, "554": 25, "556": 25, "562": 20 },
-  "UNOVA_DESERT_RESORT": [551, 554, 556, 562],
-  "UNOVA_RELIC_CASTLE_PERCENTAGES": { "551": 30, "562": 30, "568": 25, "637": 15 },
-  "UNOVA_RELIC_CASTLE": [551, 562, 568, 637],
+  "UNOVA_DESERT_RESORT_PERCENTAGES": { "551": 22, "554": 20, "556": 18, "562": 15, "557": 15, "561": 10 },
+  "UNOVA_DESERT_RESORT": [551, 554, 556, 562, 557, 561],
+  "UNOVA_RELIC_CASTLE_PERCENTAGES": { "551": 22, "562": 22, "568": 18, "637": 10, "564": 14, "566": 14 },
+  "UNOVA_RELIC_CASTLE": [551, 562, 568, 637, 564, 566],
   "UNOVA_COLD_STORAGE_PERCENTAGES": { "582": 40, "613": 35, "615": 25 },
   "UNOVA_COLD_STORAGE": [582, 613, 615],
-  "UNOVA_CHARGESTONE_CAVE_PERCENTAGES": { "525": 30, "587": 25, "595": 25, "600": 20 },
-  "UNOVA_CHARGESTONE_CAVE": [525, 587, 595, 600],
-  "UNOVA_MISTRALTON_CAVE_PERCENTAGES": { "525": 35, "526": 30, "529": 20, "638": 15 },
-  "UNOVA_MISTRALTON_CAVE": [525, 526, 529, 638],
+  "UNOVA_CHARGESTONE_CAVE_PERCENTAGES": { "525": 20, "587": 15, "595": 20, "599": 12, "600": 8, "597": 13, "602": 12 },
+  "UNOVA_CHARGESTONE_CAVE": [525, 587, 595, 599, 600, 597, 602],
+  "UNOVA_MISTRALTON_CAVE_PERCENTAGES": { "525": 25, "526": 20, "529": 15, "638": 10, "610": 30 },
+  "UNOVA_MISTRALTON_CAVE": [525, 526, 529, 638, 610],
   "UNOVA_TWIST_MOUNTAIN_PERCENTAGES": { "525": 25, "529": 25, "530": 25, "614": 25 },
   "UNOVA_TWIST_MOUNTAIN": [525, 529, 530, 614],
   "UNOVA_MOOR_PERCENTAGES": { "618": 40, "580": 35, "592": 25 },
   "UNOVA_MOOR": [580, 592, 618],
-  "UNOVA_DRAGONSPIRAL_PERCENTAGES": { "519": 25, "544": 25, "621": 25, "635": 25 },
-  "UNOVA_DRAGONSPIRAL": [519, 544, 621, 635],
+  "UNOVA_DRAGONSPIRAL_PERCENTAGES": { "519": 20, "544": 20, "621": 20, "635": 15, "622": 25 },
+  "UNOVA_DRAGONSPIRAL": [519, 544, 621, 635, 622],
   "UNOVA_ABUNDANT_SHRINE_PERCENTAGES": { "619": 35, "621": 30, "571": 20, "645": 15 },
   "UNOVA_ABUNDANT_SHRINE": [571, 619, 621, 645],
   "UNOVA_GIANT_CHASM_PERCENTAGES": { "614": 30, "615": 30, "584": 25, "646": 15 },
   "UNOVA_GIANT_CHASM": [584, 614, 615, 646],
-  "UNOVA_VICTORY_ROAD_PERCENTAGES": { "537": 25, "576": 25, "612": 25, "625": 25 },
-  "UNOVA_VICTORY_ROAD": [537, 576, 612, 625],
+  "UNOVA_VICTORY_ROAD_PERCENTAGES": { "537": 20, "576": 20, "612": 20, "625": 20, "633": 20 },
+  "UNOVA_VICTORY_ROAD": [537, 576, 612, 625, 633],
   "REGION_START": {
     "UNOVA": {
       "order": 5,
@@ -2372,5 +2486,11 @@
       "dex_extra": [],
       "badge_images": [33, 34, 35, 36, 37, 38, 39, 40]
     }
-  }
+  },
+  "UNOVA_CELESTIAL_TOWER_PERCENTAGES": { "607": 45, "605": 30, "519": 25 },
+  "UNOVA_CELESTIAL_TOWER": [607, 605, 519],
+  "UNOVA_LIBERTY_GARDEN_PERCENTAGES": { "504": 40, "509": 30, "572": 30 },
+  "UNOVA_LIBERTY_GARDEN": [504, 509, 572],
+  "UNOVA_P2_LAB_PERCENTAGES": { "599": 40, "605": 30, "602": 30 },
+  "UNOVA_P2_LAB": [599, 605, 602]
 }
