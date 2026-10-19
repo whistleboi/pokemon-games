@@ -8,15 +8,15 @@ Sizes match the existing art: town maps are top-down pixel maps (~1000x850), int
 
 | Region | Required backgrounds | Optional | Trainer sprites | Pokemon sprite gaps |
 |---|---|---|---|---|
-| Kanto | 8 | 64 | 2 | 2 |
-| Johto | 9 | 36 | 1 | 0 |
-| Hoenn | 30 | 68 | 7 | 0 |
-| Sinnoh | 50 | 74 | 6 | 5 |
-| Unova | 47 | 60 | 19 | 0 |
-| Kalos | 56 | 42 | 19 | 23 |
-| Alola | 32 | 33 | 14 | 1 |
-| Galar | 41 | 33 | 14 | 5 |
-| Paldea | 53 | 33 | 14 | 76 |
+| Kanto | 8 | 64 | 0 | 0 |
+| Johto | 9 | 36 | 0 | 0 |
+| Hoenn | 30 | 68 | 0 | 0 |
+| Sinnoh | 50 | 74 | 0 | 0 |
+| Unova | 47 | 60 | 0 | 0 |
+| Kalos | 56 | 42 | 0 | 0 |
+| Alola | 32 | 33 | 0 | 0 |
+| Galar | 41 | 33 | 0 | 0 |
+| Paldea | 53 | 33 | 0 | 0 |
 
 ## Kanto
 
@@ -149,14 +149,6 @@ Sizes match the existing art: town maps are top-down pixel maps (~1000x850), int
 - **Cinnabar Volcano** (Lv 45, wild_route)
    72. Signature battle bg: `battle_cinnabar_volcano.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
 
-**Trainer sprites missing (2)** -> `sprites/trainers/` (80x80):
-
-`blue.png`, `picknicker.png`
-
-**Pokemon sprites missing (2)** -> `sprites/pokemon/<id>.png` and `sprites/pokemon/back/<id>.png`:
-
-971 (back), 972 (back)
-
 ## Johto
 
 9 required, 36 optional.
@@ -239,10 +231,6 @@ Sizes match the existing art: town maps are top-down pixel maps (~1000x850), int
    44. Signature battle bg: `battle_route_44.png` -> `backgrounds/battle/johto/` (battle scene, 630x355) *(optional)*
 - **Route 45** (Lv 24, wild_route)
    45. Signature battle bg: `battle_route_45.png` -> `backgrounds/battle/johto/` (battle scene, 630x355) *(optional)*
-
-**Trainer sprites missing (1)** -> `sprites/trainers/` (80x80):
-
-`picknicker.png`
 
 ## Hoenn
 
@@ -415,10 +403,6 @@ Sizes match the existing art: town maps are top-down pixel maps (~1000x850), int
    97. Signature battle bg: `battle_space_center.png` -> `backgrounds/battle/hoenn/` (battle scene, 630x355) *(optional)*
 - **Sky Pillar** (Lv 50, dungeon)
    98. Signature battle bg: `battle_sky_pillar.png` -> `backgrounds/battle/hoenn/` (battle scene, 630x355) *(optional)*
-
-**Trainer sprites missing (7)** -> `sprites/trainers/` (80x80):
-
-`ninja_boy.png`, `picknicker.png`, `richboy.png`, `sidney.png`, `triathlete_f.png`, `triathlete_m.png`, `wally.png`
 
 ## Sinnoh
 
@@ -613,14 +597,6 @@ Sizes match the existing art: town maps are top-down pixel maps (~1000x850), int
 - **Hall of Origin** (Lv 75, dungeon)
    124. Signature battle bg: `battle_hall_of_origin.png` -> `backgrounds/battle/sinnoh/` (battle scene, 630x355) *(optional)*
 
-**Trainer sprites missing (6)** -> `sprites/trainers/` (80x80):
-
-`barry.png`, `crasher_wake.png`, `cyrus.png`, `galactic_grunt.png`, `mars.png`, `saturn.png`
-
-**Pokemon sprites missing (5)** -> `sprites/pokemon/<id>.png` and `sprites/pokemon/back/<id>.png`:
-
-899 (back), 900 (back), 901 (back), 903 (back), 904 (back)
-
 ## Unova
 
 47 required, 60 optional.
@@ -790,10 +766,6 @@ Sizes match the existing art: town maps are top-down pixel maps (~1000x850), int
 - **Unity Tower** (Lv 60, dungeon)
    107. Signature battle bg: `battle_unity_tower.png` -> `backgrounds/battle/unova/` (battle scene, 630x355) *(optional)*
 
-**Trainer sprites missing (19)** -> `sprites/trainers/` (80x80):
-
-`alder.png`, `bianca.png`, `brycen.png`, `burgh.png`, `caitlin.png`, `cheren.png`, `clay.png`, `drayden.png`, `elesa.png`, `grimsley.png`, `lenora.png`, `marshal.png`, `n.png`, `plasma_grunt.png`, `plasma_sage.png`, `shauntal.png`, `skyla.png`, `trio_cilan_chili_cress.png`, `zinzolin.png`
-
 ## Kalos
 
 56 required, 42 optional.
@@ -946,14 +918,6 @@ Sizes match the existing art: town maps are top-down pixel maps (~1000x850), int
 - **Victory Road (Kalos)** (Lv 52, dungeon)
    98. Signature battle bg: `battle_victory_road_kalos.png` -> `backgrounds/battle/kalos/` (battle scene, 630x355) *(optional)*
 
-**Trainer sprites missing (19)** -> `sprites/trainers/` (80x80):
-
-`battle_girl.png`, `clemont.png`, `diantha.png`, `drasna.png`, `flare_admin.png`, `flare_grunt.png`, `grant.png`, `korrina.png`, `lysandre.png`, `malva.png`, `olympia.png`, `psychic_m.png`, `ramos.png`, `serena.png`, `siebold.png`, `valerie.png`, `viola.png`, `wikstrom.png`, `wulfric.png`
-
-**Pokemon sprites missing (23)** -> `sprites/pokemon/<id>.png` and `sprites/pokemon/back/<id>.png`:
-
-661 (back), 664 (back), 666 (back), 669 (back), 670 (back), 673 (back), 676 (back), 679 (back), 680 (back), 687 (back), 689 (back), 691 (back), 693 (back), 695 (back), 700 (back), 705 (back), 706 (back), 709 (back), 711 (back), 713 (back), 714 (back), 715 (back), 718 (back)
-
 ## Alola
 
 32 required, 33 optional.
@@ -1058,14 +1022,6 @@ Sizes match the existing art: town maps are top-down pixel maps (~1000x850), int
    64. Signature battle bg: `battle_ruins_of_life.png` -> `backgrounds/battle/alola/` (battle scene, 630x355) *(optional)*
 - **Ultra Space** (Lv 60, dungeon)
    65. Signature battle bg: `battle_ultra_space.png` -> `backgrounds/battle/alola/` (battle scene, 630x355) *(optional)*
-
-**Trainer sprites missing (14)** -> `sprites/trainers/` (80x80):
-
-`acerola.png`, `gladion.png`, `guzma.png`, `hala.png`, `hapu_kahuna_poni_grand_trial.png`, `hau.png`, `ilima_trial_captain.png`, `kahili.png`, `kukui.png`, `lusamine.png`, `nanu_kahuna_ula_ula_grand_trial.png`, `olivia.png`, `olivia_kahuna_akala_grand_trial.png`, `skull_grunt.png`
-
-**Pokemon sprites missing (1)** -> `sprites/pokemon/<id>.png` and `sprites/pokemon/back/<id>.png`:
-
-709 (back)
 
 ## Galar
 
@@ -1179,14 +1135,6 @@ Sizes match the existing art: town maps are top-down pixel maps (~1000x850), int
    73. Signature battle bg: `battle_split_decision_dragon_chamber.png` -> `backgrounds/battle/galar/` (battle scene, 630x355) *(optional)*
 - **Slumbering Weald Altar** (Lv 70, dungeon)
    74. Signature battle bg: `battle_weald_altar.png` -> `backgrounds/battle/galar/` (battle scene, 630x355) *(optional)*
-
-**Trainer sprites missing (14)** -> `sprites/trainers/` (80x80):
-
-`bea_fighting_allister_ghost.png`, `eternatus.png`, `gordie_rock_melony_ice.png`, `hop.png`, `kabu.png`, `leon.png`, `marnie.png`, `milo.png`, `nessa.png`, `oleana.png`, `opal.png`, `piers.png`, `raihan.png`, `rose.png`
-
-**Pokemon sprites missing (5)** -> `sprites/pokemon/<id>.png` and `sprites/pokemon/back/<id>.png`:
-
-899 (back), 900 (back), 901 (back), 903 (back), 904 (back)
 
 ## Paldea
 
@@ -1319,19 +1267,11 @@ Sizes match the existing art: town maps are top-down pixel maps (~1000x850), int
 - **Area Zero Underdepths** (Lv 70, dungeon)
    86. Signature battle bg: `battle_area_zero_underdepths.png` -> `backgrounds/battle/paldea/` (battle scene, 630x355) *(optional)*
 
-**Trainer sprites missing (14)** -> `sprites/trainers/` (80x80):
-
-`brassius.png`, `geeta.png`, `grusha.png`, `hassel.png`, `iono.png`, `katy.png`, `kofu.png`, `larry.png`, `nemona.png`, `poppy.png`, `rika.png`, `ryme.png`, `sada.png`, `tulip.png`
-
-**Pokemon sprites missing (76)** -> `sprites/pokemon/<id>.png` and `sprites/pokemon/back/<id>.png`:
-
-661 (back), 662 (back), 669 (back), 671 (back), 915 (back), 917 (back), 919 (back), 921 (back), 924 (back), 926 (back), 928 (back), 931 (back), 932 (back), 935 (back), 938 (back), 940 (back), 941 (back), 942 (back), 943 (back), 944 (back), 945 (back), 946 (back), 947 (back), 948 (back), 950 (back), 951 (back), 953 (back), 955 (back), 956 (back), 957 (back), 960 (back), 961 (back), 962 (back), 963 (back), 964 (back), 965 (back), 967 (back), 968 (back), 969 (back), 970 (back), 971 (back), 972 (back), 973 (back), 974 (back), 975 (back), 976 (back), 977 (back), 978 (back), 980 (back), 981 (back), 982 (back), 984 (back), 985 (back), 986 (back), 987 (back), 988 (back), 989 (back), 990 (back), 991 (back), 992 (back), 993 (back), 994 (back), 995 (back), 996 (back), 997 (back), 999 (back), 1005 (back), 1006 (back), 1009 (back), 1010 (back), 1011 (back), 1012 (back), 1020 (back), 1021 (back), 1022 (back), 1023 (back)
-
 ## Items (all regions)
 
-40 item icons missing -> `sprites/items/<name>.png` (lowercase, hyphens), 30x30 like the others:
+5 item icons missing -> `sprites/items/<name>.png` (lowercase, hyphens), 30x30 like the others:
 
-`adventure-map.png`, `alola-hall-of-fame.png`, `cerulean-cave-map.png`, `claw-fossil.png`, `cliff-gate-pass.png`, `cover-fossil.png`, `darkinium-z.png`, `dome-fossil.png`, `dratini.png`, `explorer-kit.png`, `fossilized-bird.png`, `fossilized-dino.png`, `fossilized-drake.png`, `fossilized-fish.png`, `galar-hall-of-fame.png`, `groundium-z.png`, `hm-cut.png`, `hm-flash.png`, `hm-strength.png`, `ice-melter.png`, `jaw-fossil.png`, `johto-map.png`, `kalos-hall-of-fame.png`, `mega-ring.png`, `meteorite.png`, `mt-silver-map.png`, `mystery-egg.png`, `national-dex.png`, `normalium-z.png`, `nugget.png`, `plume-fossil.png`, `rockium-z.png`, `root-fossil.png`, `sail-fossil.png`, `scanner.png`, `shoal-salt.png`, `skull-fossil.png`, `town-map.png`, `tyrogue.png`, `weather-dial.png`
+`alola-hall-of-fame.png`, `galar-hall-of-fame.png`, `kalos-hall-of-fame.png`, `national-dex.png`, `weather-dial.png`
 
 ## Badges
 
