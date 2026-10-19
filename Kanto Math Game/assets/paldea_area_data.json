@@ -130,7 +130,7 @@
       ],
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
-        { "text": "Shop", "action": "SHOP" },
+        { "text": "Department Store", "action": "SHOP" },
         {
           "text": "Enter Naranja Academy",
           "action": "NPC",
@@ -165,7 +165,8 @@
         }
       ],
       "next_area": "WEST_PROVINCE_AREA_1",
-      "on_enter_event": null
+      "on_enter_event": null,
+      "department_store": true
     },
     "CORTONDO": {
       "area_type": "town",

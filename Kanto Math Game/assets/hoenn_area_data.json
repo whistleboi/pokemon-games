@@ -577,12 +577,13 @@
       ],
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
-        { "text": "Shop", "action": "SHOP" },
+        { "text": "Department Store", "action": "SHOP" },
         { "text": "Contest Hall", "action": "NPC", "target": "contest_hall" },
         { "text": "Team Hideout", "action": "TRAVEL", "target_area": "HOENN_TEAM_HIDEOUT" }
       ],
       "next_area": "HOENN_ROUTE_121",
-      "on_enter_event": null
+      "on_enter_event": null,
+      "department_store": true
     },
     "MOSSDEEP_CITY": {
       "area_type": "town",

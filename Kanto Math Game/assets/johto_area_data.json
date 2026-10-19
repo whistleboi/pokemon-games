@@ -1,5 +1,5 @@
 {
-  "REGION_START": {"JOHTO": {"order": 2, "subtitle": "GEN 2 / GOLD / SILVER", "start_area": "NEW_BARK_TOWN", "starters": [152, 155, 158], "starter_bg": "starter_johto.png", "dex_range": [152, 251], "mom_home_text": ["johto_mom_home"], "dex_extra": [429, 461, 462, 463, 465, 467, 469, 472, 473, 979, 981]}},
+  "REGION_START": {"JOHTO": {"order": 2, "subtitle": "GEN 2 / GOLD / SILVER", "start_area": "NEW_BARK_TOWN", "starters": [152, 155, 158], "starter_bg": "starter_johto.png", "dex_range": [152, 251], "mom_home_text": ["johto_mom_home"], "dex_extra": [429, 461, 462, 463, 465, 467, 469, 472, 473, 979, 981, 982]}},
   "FORM_MAP": {
     "2001": { "id": 19, "form": "alolan", "name": "Alolan Rattata", "types": ["DARK", "NORMAL"] },
     "2002": { "id": 20, "form": "alolan", "name": "Alolan Raticate", "types": ["DARK", "NORMAL"] },

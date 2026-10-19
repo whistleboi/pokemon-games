@@ -1257,7 +1257,7 @@ class PlayState(GameState):
                     continue
 
             if next_entries:
-                next_entry = next_entries[0]
+                next_entry = self.game.story_manager.pick_evolution_branch(next_entries)
 
                 if "_" in next_entry:
                     base_name, form_part = next_entry.rsplit("_", 1)

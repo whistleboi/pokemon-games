@@ -470,7 +470,7 @@
       ],
       "explore_options": [
         { "text": "Pokémon Center", "action": "HEAL" },
-        { "text": "Shop", "action": "SHOP" },
+        { "text": "Department Store", "action": "SHOP" },
         { "text": "Challenge Gym", "action": "GYM" },
         {
           "text": "Stop Chairman Rose",
@@ -481,7 +481,8 @@
           "color": "GOLD"
         }
       ],
-      "next_area": "GALAR_ROUTE_10"
+      "next_area": "GALAR_ROUTE_10",
+      "department_store": true
     },
     "WYNDON": {
       "area_type": "town",

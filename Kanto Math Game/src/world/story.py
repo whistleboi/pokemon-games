@@ -222,6 +222,19 @@ class StoryManager:
         total = self.get_total_badges()
         return self.game.math.describe(self.math_difficulty, "GLOBAL", total)
 
+    def pick_evolution_branch(self, entries):
+        """For branching evolutions, prefer a branch not yet in the Pokédex so every
+        branch is reachable (first Kirlia -> Gardevoir, next -> Gallade); random after."""
+        if len(entries) <= 1:
+            return entries[0]
+        caught = {v.get("id") for v in self.game.data.data.get("pokedex", {}).values() if isinstance(v, dict)}
+        for entry in entries:
+            name = entry.rsplit("_", 1)[0] if "_" in entry else entry
+            if self.game.name_to_id.get(name.upper()) not in caught:
+                return entry
+        import random
+        return random.choice(entries)
+
     def get_region_starts(self):
         """REGION_START configs as (region, cfg) pairs in story order."""
         starts = self.game.loader.area_data.get("REGION_START", {})

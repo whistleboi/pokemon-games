@@ -222,11 +222,12 @@
       ],
       "explore_options": [
         { "text": "Pokémon Center", "action": "HEAL" },
-        { "text": "Shop", "action": "SHOP" },
+        { "text": "Department Store", "action": "SHOP" },
         { "text": "Ilima Trial Battle", "action": "GYM" },
         { "text": "Meet Looker", "action": "NPC", "target": "alola_looker", "flag_condition": "not met_alola_looker" }
       ],
-      "next_area": "ALOLA_ROUTE_2"
+      "next_area": "ALOLA_ROUTE_2",
+      "department_store": true
     },
     "HEAHEA_CITY": {
       "area_type": "town",

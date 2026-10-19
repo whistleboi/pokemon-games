@@ -321,7 +321,8 @@
       "travel_options": [
         { "text": "Route 204", "target_area": "SINNOH_ROUTE_204" },
         { "text": "Route 205", "target_area": "SINNOH_ROUTE_205" },
-        { "text": "Valley Windworks", "target_area": "VALLEY_WINDWORKS" }
+        { "text": "Valley Windworks", "target_area": "VALLEY_WINDWORKS" },
+        { "text": "Flower Paradise", "target_area": "FLOWER_PARADISE", "condition": "beat_sinnoh_champion" }
       ],
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
@@ -578,7 +579,7 @@
       ],
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
-        { "text": "Shop", "action": "SHOP" },
+        { "text": "Department Store", "action": "SHOP" },
         { "text": "Gym", "action": "GYM" },
         { "text": "Game Corner", "action": "GAMECORNER" },
         { "text": "Galactic Veilstone HQ", "action": "TRAVEL", "target_area": "TEAM_GALACTIC_HQ", "flag_condition": "has_galactic_key" },
@@ -602,7 +603,8 @@
         },
         "condition": "has_forest_badge",
         "flag_check": "defeated_rival_veilstone"
-      }
+      },
+      "department_store": true
     },
     "PASTORIA_CITY": {
       "area_type": "town",
@@ -782,7 +784,9 @@
       },
       "travel_options": [
         { "text": "Route 218", "target_area": "SINNOH_ROUTE_218" },
-        { "text": "Iron Island", "target_area": "IRON_ISLAND" }
+        { "text": "Iron Island", "target_area": "IRON_ISLAND" },
+        { "text": "Fullmoon Island", "target_area": "FULLMOON_ISLAND", "condition": "beat_sinnoh_champion" },
+        { "text": "Newmoon Island", "target_area": "NEWMOON_ISLAND", "condition": "beat_sinnoh_champion", "item_condition": "MEMBER_CARD" }
       ],
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
@@ -932,7 +936,8 @@
       "travel_options": [
         { "text": "Route 222", "target_area": "SINNOH_ROUTE_222" },
         { "text": "Route 223", "target_area": "SINNOH_ROUTE_223", "flag_condition": "has_beacon_badge" },
-        { "text": "Victory Road", "target_area": "VICTORY_ROAD_SINNOH" }
+        { "text": "Victory Road", "target_area": "VICTORY_ROAD_SINNOH" },
+        { "text": "Stark Mountain (Ferry)", "target_area": "STARK_MOUNTAIN", "condition": "beat_sinnoh_champion" }
       ],
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
@@ -1182,6 +1187,14 @@
       "route_menu": [
         { "text": "Confront Cyrus", "action": "NPC", "target": "cyrus_spear_pillar", "flag_condition": "not spear_pillar_resolved", "color": "GOLD" },
         { "text": "Encounter Dialga", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD" },
+        {
+          "text": "HALL OF ORIGIN",
+          "target_area": "HALL_OF_ORIGIN",
+          "action": "EXIT",
+          "color": "GOLD",
+          "condition": ["boss_defeated", "beat_sinnoh_champion"]
+        },
+        { "text": "SPATIAL RIFT", "target_area": "SPEAR_PILLAR_RIFT", "action": "EXIT", "color": "GOLD", "condition": "boss_defeated" },
         { "text": "Mt. Coronet", "action": "EXIT", "target_area": "MT_CORONET_BASE", "condition": "can_exit", "color": "RED" }
       ],
       "area_boss": { "id": 483, "name": "Dialga", "victory_flag": "SPEAR_PILLAR_boss_defeated" }
@@ -1319,7 +1332,7 @@
       "route_name": "Valley Windworks",
       "region": "SINNOH",
       "battle_type": "indoor",
-      "wild_pool_percentages": null,
+      "wild_pool_percentages": "SINNOH_VALLEY_WINDWORKS_PERCENTAGES",
       "min_rounds": 0,
       "backgrounds": { "main": "valley_windworks.png" },
       "trainer_pool": [
@@ -1350,6 +1363,8 @@
         }
       ],
       "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE GALACTIC", "action": "GALACTIC_GAUNTLET", "flag_condition": "not windworks_cleared", "color": "GOLD" },
         { "text": "Floaroma Town", "action": "EXIT", "target_area": "FLOAROMA_TOWN", "condition": "can_exit", "color": "RED" }
       ]
@@ -1901,6 +1916,7 @@
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "TURNBACK CAVE", "target_area": "TURNBACK_CAVE", "action": "EXIT", "color": "GOLD", "condition": "SPEAR_PILLAR_boss_defeated" },
         { "text": "Veilstone City", "action": "EXIT", "target_area": "VEILSTONE_CITY", "condition": "can_exit", "color": "RED" },
         { "text": "Lake Valor", "action": "EXIT", "target_area": "LAKE_VALOR", "condition": "can_exit", "color": "RED" }
       ],
@@ -2108,10 +2124,146 @@
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "SEA TEMPLE", "target_area": "SEA_TEMPLE", "action": "EXIT", "color": "GOLD", "condition": "beat_sinnoh_champion" },
         { "text": "Sunyshore City", "action": "EXIT", "target_area": "SUNYSHORE_CITY", "condition": "can_exit", "color": "RED" },
         { "text": "Victory Road", "action": "EXIT", "target_area": "VICTORY_ROAD_SINNOH", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "VICTORY_ROAD_SINNOH"
+    },
+    "SPEAR_PILLAR_RIFT": {
+      "area_type": "dungeon",
+      "route_name": "Spear Pillar (Spatial Rift)",
+      "region": "SINNOH",
+      "battle_type": "mountain",
+      "backgrounds": { "main": "spear_pillar_rift.png" },
+      "min_rounds": 0,
+      "trainer_pool": [],
+      "route_menu": [
+        { "text": "Face Palkia", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD" },
+        { "text": "Spear Pillar", "action": "EXIT", "target_area": "SPEAR_PILLAR", "condition": "can_exit", "color": "RED" }
+      ],
+      "area_boss": { "id": 484, "name": "Palkia", "victory_flag": "SPEAR_PILLAR_RIFT_boss_defeated" },
+      "next_area": "SPEAR_PILLAR"
+    },
+    "HALL_OF_ORIGIN": {
+      "area_type": "dungeon",
+      "route_name": "Hall of Origin",
+      "region": "SINNOH",
+      "battle_type": "mountain",
+      "backgrounds": { "main": "hall_of_origin.png" },
+      "min_rounds": 0,
+      "trainer_pool": [],
+      "route_menu": [
+        { "text": "Approach Arceus", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD" },
+        { "text": "Spear Pillar", "action": "EXIT", "target_area": "SPEAR_PILLAR", "condition": "can_exit", "color": "RED" }
+      ],
+      "area_boss": { "id": 493, "name": "Arceus", "victory_flag": "HALL_OF_ORIGIN_boss_defeated" },
+      "next_area": "SPEAR_PILLAR"
+    },
+    "TURNBACK_CAVE": {
+      "area_type": "dungeon",
+      "route_name": "Turnback Cave",
+      "region": "SINNOH",
+      "battle_type": "cave",
+      "backgrounds": { "main": "turnback_cave.png" },
+      "wild_pool_percentages": "SINNOH_TURNBACK_CAVE_PERCENTAGES",
+      "min_rounds": 1,
+      "trainer_pool": [],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "Enter the Distortion", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD" },
+        { "text": "Route 214", "action": "EXIT", "target_area": "SINNOH_ROUTE_214", "condition": "can_exit", "color": "RED" }
+      ],
+      "area_boss": { "id": 487, "name": "Giratina", "victory_flag": "TURNBACK_CAVE_boss_defeated" },
+      "next_area": "SINNOH_ROUTE_214"
+    },
+    "STARK_MOUNTAIN": {
+      "area_type": "dungeon",
+      "route_name": "Stark Mountain",
+      "region": "SINNOH",
+      "battle_type": "cave",
+      "backgrounds": { "main": "stark_mountain.png" },
+      "wild_pool_percentages": "SINNOH_STARK_MOUNTAIN_PERCENTAGES",
+      "min_rounds": 1,
+      "trainer_pool": [],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "Face Heatran", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD" },
+        { "text": "Sunyshore City", "action": "EXIT", "target_area": "SUNYSHORE_CITY", "condition": "can_exit", "color": "RED" }
+      ],
+      "area_boss": { "id": 485, "name": "Heatran", "victory_flag": "STARK_MOUNTAIN_boss_defeated" },
+      "next_area": "SUNYSHORE_CITY"
+    },
+    "FULLMOON_ISLAND": {
+      "area_type": "dungeon",
+      "route_name": "Fullmoon Island",
+      "region": "SINNOH",
+      "battle_type": "grass",
+      "backgrounds": { "main": "fullmoon_island.png" },
+      "wild_pool_percentages": "SINNOH_FULLMOON_ISLAND_PERCENTAGES",
+      "min_rounds": 1,
+      "trainer_pool": [],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "Find Cresselia", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD" },
+        { "text": "Canalave City", "action": "EXIT", "target_area": "CANALAVE_CITY", "condition": "can_exit", "color": "RED" }
+      ],
+      "area_boss": { "id": 488, "name": "Cresselia", "victory_flag": "FULLMOON_ISLAND_boss_defeated" },
+      "next_area": "CANALAVE_CITY"
+    },
+    "NEWMOON_ISLAND": {
+      "area_type": "dungeon",
+      "route_name": "Newmoon Island",
+      "region": "SINNOH",
+      "battle_type": "grass",
+      "backgrounds": { "main": "newmoon_island.png" },
+      "wild_pool_percentages": "SINNOH_TURNBACK_CAVE_PERCENTAGES",
+      "min_rounds": 1,
+      "trainer_pool": [],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "Face the Nightmare", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD" },
+        { "text": "Canalave City", "action": "EXIT", "target_area": "CANALAVE_CITY", "condition": "can_exit", "color": "RED" }
+      ],
+      "area_boss": { "id": 491, "name": "Darkrai", "victory_flag": "NEWMOON_ISLAND_boss_defeated" },
+      "next_area": "CANALAVE_CITY"
+    },
+    "FLOWER_PARADISE": {
+      "area_type": "dungeon",
+      "route_name": "Flower Paradise",
+      "region": "SINNOH",
+      "battle_type": "grass",
+      "backgrounds": { "main": "flower_paradise.png" },
+      "wild_pool_percentages": "SINNOH_FLOWER_PARADISE_PERCENTAGES",
+      "min_rounds": 1,
+      "trainer_pool": [],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "Find Shaymin", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD" },
+        { "text": "Floaroma Town", "action": "EXIT", "target_area": "FLOAROMA_TOWN", "condition": "can_exit", "color": "RED" }
+      ],
+      "area_boss": { "id": 492, "name": "Shaymin", "victory_flag": "FLOWER_PARADISE_boss_defeated" },
+      "next_area": "FLOAROMA_TOWN"
+    },
+    "SEA_TEMPLE": {
+      "area_type": "dungeon",
+      "route_name": "Sea Temple",
+      "region": "SINNOH",
+      "battle_type": "ocean",
+      "backgrounds": { "main": "sea_temple.png" },
+      "min_rounds": 0,
+      "trainer_pool": [],
+      "route_menu": [
+        { "text": "Meet Manaphy", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD" },
+        { "text": "Route 223", "action": "EXIT", "target_area": "SINNOH_ROUTE_223", "condition": "can_exit", "color": "RED" }
+      ],
+      "area_boss": { "id": 490, "name": "Manaphy", "victory_flag": "SEA_TEMPLE_boss_defeated" },
+      "next_area": "SINNOH_ROUTE_223"
     }
   },
   "JOURNAL_MISSIONS": [
@@ -2306,20 +2458,20 @@
   "SINNOH_ROUTE_202_PERCENTAGES": { "396": 40, "399": 35, "403": 25 },
   "SINNOH_ROUTE_203": [396, 399, 403, 401],
   "SINNOH_ROUTE_203_PERCENTAGES": { "396": 30, "399": 30, "403": 25, "401": 15 },
-  "SINNOH_ROUTE_204": [401, 420, 406, 265],
-  "SINNOH_ROUTE_204_PERCENTAGES": { "401": 35, "420": 30, "406": 25, "265": 10 },
-  "SINNOH_ROUTE_205": [415, 417, 422, 183],
-  "SINNOH_ROUTE_205_PERCENTAGES": { "415": 30, "417": 30, "422": 25, "183": 15 },
-  "SINNOH_ROUTE_206": [434, 77, 402, 207],
-  "SINNOH_ROUTE_206_PERCENTAGES": { "434": 30, "77": 30, "402": 25, "207": 15 },
-  "SINNOH_ROUTE_207": [74, 95, 207, 66],
-  "SINNOH_ROUTE_207_PERCENTAGES": { "74": 35, "95": 25, "207": 25, "66": 15 },
-  "SINNOH_ROUTE_208": [420, 315, 113, 440],
-  "SINNOH_ROUTE_208_PERCENTAGES": { "420": 30, "315": 30, "113": 25, "440": 15 },
-  "SINNOH_ROUTE_209": [440, 113, 439, 234],
-  "SINNOH_ROUTE_209_PERCENTAGES": { "440": 30, "113": 30, "439": 25, "234": 15 },
-  "SINNOH_ROUTE_210": [164, 431, 234, 309, 397],
-  "SINNOH_ROUTE_210_PERCENTAGES": { "164": 25, "431": 25, "234": 20, "309": 20, "397": 10 },
+  "SINNOH_ROUTE_204": [401, 420, 406, 265, 412, 280],
+  "SINNOH_ROUTE_204_PERCENTAGES": { "401": 28, "420": 22, "406": 20, "265": 8, "412": 14, "280": 8 },
+  "SINNOH_ROUTE_205": [415, 417, 422, 183, 446],
+  "SINNOH_ROUTE_205_PERCENTAGES": { "415": 25, "417": 25, "422": 20, "183": 15, "446": 15 },
+  "SINNOH_ROUTE_206": [434, 77, 402, 207, 449],
+  "SINNOH_ROUTE_206_PERCENTAGES": { "434": 25, "77": 25, "402": 20, "207": 15, "449": 15 },
+  "SINNOH_ROUTE_207": [74, 95, 207, 66, 111],
+  "SINNOH_ROUTE_207_PERCENTAGES": { "74": 30, "95": 20, "207": 20, "66": 15, "111": 15 },
+  "SINNOH_ROUTE_208": [420, 315, 113, 440, 175],
+  "SINNOH_ROUTE_208_PERCENTAGES": { "420": 27, "315": 27, "113": 23, "440": 15, "175": 8 },
+  "SINNOH_ROUTE_209": [440, 113, 439, 234, 438, 442],
+  "SINNOH_ROUTE_209_PERCENTAGES": { "440": 25, "113": 22, "439": 20, "234": 13, "438": 15, "442": 5 },
+  "SINNOH_ROUTE_210": [164, 431, 234, 309, 397, 198],
+  "SINNOH_ROUTE_210_PERCENTAGES": { "164": 22, "431": 22, "234": 18, "309": 18, "397": 8, "198": 12 },
   "SINNOH_ROUTE_211": [433, 74, 95, 207],
   "SINNOH_ROUTE_211_PERCENTAGES": { "433": 35, "74": 25, "95": 25, "207": 15 },
   "SINNOH_ROUTE_212": [453, 422, 194, 183, 315],
@@ -2328,24 +2480,24 @@
   "SINNOH_ROUTE_213_PERCENTAGES": { "278": 35, "422": 30, "320": 20, "183": 15 },
   "SINNOH_ROUTE_214": [190, 402, 234, 447],
   "SINNOH_ROUTE_214_PERCENTAGES": { "190": 30, "402": 30, "234": 25, "447": 15 },
-  "SINNOH_ROUTE_215": [309, 190, 234, 427],
-  "SINNOH_ROUTE_215_PERCENTAGES": { "309": 35, "190": 30, "234": 25, "427": 10 },
-  "SINNOH_ROUTE_216": [220, 459, 215, 363],
-  "SINNOH_ROUTE_216_PERCENTAGES": { "220": 35, "459": 30, "215": 25, "363": 10 },
+  "SINNOH_ROUTE_215": [309, 190, 234, 427, 108],
+  "SINNOH_ROUTE_215_PERCENTAGES": { "309": 30, "190": 25, "234": 20, "427": 10, "108": 15 },
+  "SINNOH_ROUTE_216": [220, 459, 215, 363, 361],
+  "SINNOH_ROUTE_216_PERCENTAGES": { "220": 30, "459": 28, "215": 22, "363": 8, "361": 12 },
   "SINNOH_ROUTE_217": [459, 220, 215, 471],
   "SINNOH_ROUTE_217_PERCENTAGES": { "459": 35, "220": 30, "215": 25, "471": 10 },
   "SINNOH_ROUTE_218": [278, 72, 320, 418],
   "SINNOH_ROUTE_218_PERCENTAGES": { "278": 35, "72": 25, "320": 25, "418": 15 },
-  "SINNOH_ROUTE_222": [404, 419, 457, 456],
-  "SINNOH_ROUTE_222_PERCENTAGES": { "404": 30, "419": 30, "457": 25, "456": 15 },
-  "SINNOH_ROUTE_223": [130, 73, 458, 321],
-  "SINNOH_ROUTE_223_PERCENTAGES": { "130": 30, "73": 30, "458": 25, "321": 15 },
-  "SINNOH_OREBURGH_MINE": [74, 95, 247, 207],
-  "SINNOH_OREBURGH_MINE_PERCENTAGES": { "74": 40, "95": 30, "247": 20, "207": 10 },
-  "SINNOH_ETERNA_FOREST": [92, 93, 420, 285, 284],
-  "SINNOH_ETERNA_FOREST_PERCENTAGES": { "92": 25, "93": 20, "420": 25, "285": 20, "284": 10 },
-  "SINNOH_OLD_CHATEAU": [92, 93, 200, 354],
-  "SINNOH_OLD_CHATEAU_PERCENTAGES": { "92": 35, "93": 30, "200": 25, "354": 10 },
+  "SINNOH_ROUTE_222": [404, 419, 457, 456, 441],
+  "SINNOH_ROUTE_222_PERCENTAGES": { "404": 25, "419": 25, "457": 20, "456": 15, "441": 15 },
+  "SINNOH_ROUTE_223": [130, 73, 458, 321, 489],
+  "SINNOH_ROUTE_223_PERCENTAGES": { "130": 28, "73": 28, "458": 24, "321": 15, "489": 5 },
+  "SINNOH_OREBURGH_MINE": [74, 95, 247, 207, 408, 410],
+  "SINNOH_OREBURGH_MINE_PERCENTAGES": { "74": 32, "95": 24, "247": 16, "207": 8, "408": 10, "410": 10 },
+  "SINNOH_ETERNA_FOREST": [92, 93, 420, 285, 284, 133],
+  "SINNOH_ETERNA_FOREST_PERCENTAGES": { "92": 25, "93": 17, "420": 23, "285": 19, "284": 8, "133": 8 },
+  "SINNOH_OLD_CHATEAU": [92, 93, 200, 354, 355],
+  "SINNOH_OLD_CHATEAU_PERCENTAGES": { "92": 30, "93": 25, "200": 20, "354": 10, "355": 15 },
   "SINNOH_MT_CORONET": [95, 74, 207, 246, 436],
   "SINNOH_MT_CORONET_PERCENTAGES": { "95": 25, "74": 25, "207": 20, "246": 20, "436": 10 },
   "SINNOH_IRON_ISLAND": [81, 82, 208, 247, 436],
@@ -2354,8 +2506,8 @@
   "SINNOH_SNOWPOINT_TEMPLE_PERCENTAGES": { "476": 30, "246": 30, "221": 25, "87": 15 },
   "SINNOH_SOLACEON_RUINS": [201],
   "SINNOH_SOLACEON_RUINS_PERCENTAGES": { "201": 100 },
-  "SINNOH_GREAT_MARSH": [46, 194, 195, 453, 118, 271, 114],
-  "SINNOH_GREAT_MARSH_PERCENTAGES": { "46": 20, "194": 15, "195": 15, "453": 15, "118": 15, "271": 10, "114": 10 },
+  "SINNOH_GREAT_MARSH": [46, 194, 195, 453, 118, 271, 114, 455, 451, 193],
+  "SINNOH_GREAT_MARSH_PERCENTAGES": { "46": 13, "194": 10, "195": 10, "453": 13, "118": 12, "271": 8, "114": 7, "455": 10, "451": 10, "193": 7 },
   "SINNOH_VICTORY_ROAD": [443, 444, 309, 207, 246, 398],
   "SINNOH_VICTORY_ROAD_PERCENTAGES": { "443": 20, "444": 20, "309": 20, "207": 15, "246": 15, "398": 10 },
   "SINNOH_LAKE_VERITY": [54, 183, 422],
@@ -2377,8 +2529,18 @@
       "dex_range": [387, 493],
       "mom_newstart_text": ["sinnoh_mom_newstart_1", "sinnoh_mom_newstart_2", "sinnoh_mom_newstart_3"],
       "mom_home_text": ["sinnoh_mom_home_1", "sinnoh_mom_home_2", "sinnoh_mom_home_3"],
-      "dex_extra": [],
+      "dex_extra": [700],
       "badge_images": [25, 26, 27, 28, 29, 30, 31, 32]
     }
-  }
+  },
+  "SINNOH_VALLEY_WINDWORKS_PERCENTAGES": { "425": 35, "403": 20, "417": 20, "239": 15, "137": 10 },
+  "SINNOH_VALLEY_WINDWORKS": [425, 403, 417, 239, 137],
+  "SINNOH_STARK_MOUNTAIN_PERCENTAGES": { "218": 25, "240": 20, "77": 20, "74": 20, "75": 15 },
+  "SINNOH_STARK_MOUNTAIN": [218, 240, 77, 74, 75],
+  "SINNOH_TURNBACK_CAVE_PERCENTAGES": { "436": 30, "42": 25, "355": 25, "356": 20 },
+  "SINNOH_TURNBACK_CAVE": [436, 42, 355, 356],
+  "SINNOH_FULLMOON_ISLAND_PERCENTAGES": { "35": 40, "433": 35, "436": 25 },
+  "SINNOH_FULLMOON_ISLAND": [35, 433, 436],
+  "SINNOH_FLOWER_PARADISE_PERCENTAGES": { "420": 35, "315": 35, "415": 30 },
+  "SINNOH_FLOWER_PARADISE": [420, 315, 415]
 }

@@ -375,13 +375,19 @@ class PokeMartState(GameState):
             self.dialogue_box.callback = self.on_welcome_dialogue_end
             self.phase = "DIALOGUE"
 
+    def _is_department_store(self):
+        """Celadon/Goldenrod, or any area flagged "department_store" (sells evolution items)."""
+        story = self.game.story_manager
+        return (story.current_area_key in ["CELADON_CITY", "GOLDENROD_CITY"]
+                or bool(story.get_current_area_data().get("department_store")))
+
     def prev_page(self):
         if self.current_page > 0:
             self.current_page -= 1
             self.refresh_buttons()
 
     def next_page(self):
-        is_mega_mart = self.game.story_manager.current_area_key in ["CELADON_CITY", "GOLDENROD_CITY"]
+        is_mega_mart = self._is_department_store()
         evo_items = sorted(list(self.game.loader.evolution_map.get("EVOLUTION_ITEMS", {}).keys()))
         if is_mega_mart:
             all_items = ["POKE_BALLS", "RARE_CANDY"] + evo_items
@@ -402,7 +408,7 @@ class PokeMartState(GameState):
 
         self.shop_buttons = []
 
-        is_mega_mart = self.game.story_manager.current_area_key in ["CELADON_CITY", "GOLDENROD_CITY"]
+        is_mega_mart = self._is_department_store()
         evo_items = sorted(list(self.game.loader.evolution_map.get("EVOLUTION_ITEMS", {}).keys()))
 
         if is_mega_mart:
@@ -1107,7 +1113,7 @@ class BagState(GameState):
         if self.game.story_manager.inventory["RARE_CANDY"] <= 0:
             del self.game.story_manager.inventory["RARE_CANDY"]
 
-        next_entry = next_entries[0]
+        next_entry = self.game.story_manager.pick_evolution_branch(next_entries)
         if "_" in next_entry:
             base_name, form_part = next_entry.rsplit("_", 1)
             next_form = form_part.lower()

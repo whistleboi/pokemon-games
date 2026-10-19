@@ -138,6 +138,11 @@ class Game:
                 self.name_to_id[data["name"].upper()] = pid
             except:
                 continue
+        # Names like "WORMADAM-PLANT" also answer to their base name ("WORMADAM"),
+        # which is how the evolution map refers to them.
+        for name, pid in sorted(self.name_to_id.items(), key=lambda kv: kv[1]):
+            if "-" in name:
+                self.name_to_id.setdefault(name.split("-", 1)[0], pid)
 
         self.ui_manager = UIManager()
         self.clock = pygame.time.Clock()

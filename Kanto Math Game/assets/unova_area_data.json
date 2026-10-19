@@ -498,7 +498,7 @@
       ],
       "explore_options": [
         { "text": "Pokémon Center", "action": "HEAL" },
-        { "text": "Shop", "action": "SHOP" },
+        { "text": "Department Store", "action": "SHOP" },
         {
           "text": "Clear the Sewers with Burgh",
           "action": "NPC",
@@ -535,7 +535,8 @@
         },
         "condition": "has_basic_badge",
         "flag_check": "defeated_bianca_castelia"
-      }
+      },
+      "department_store": true
     },
     "NIMBASA_CITY": {
       "area_type": "town",
