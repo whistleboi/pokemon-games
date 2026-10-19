@@ -161,7 +161,7 @@ class AssetManager:
         self.movesets = {}
         self.pokemon_names = self._load_pokemon_data()
 
-    def get_pokemon_image(self, p_id, form, is_shiny):
+    def get_pokemon_image(self, p_id, form, is_shiny, placeholder=True):
         """Retreives the correct sprite surface from assets based on
         metadata."""
         target_dir = self.pokemon_sprites_dir
@@ -221,6 +221,8 @@ class AssetManager:
             if os.path.exists(path) and not os.path.isdir(path):
                 return pygame.image.load(path).convert_alpha()
 
+        if not placeholder:
+            return None
         s = pygame.Surface((100, 100), pygame.SRCALPHA)
         pygame.draw.circle(s, (100, 100, 100), (50, 50), 40)
         return s

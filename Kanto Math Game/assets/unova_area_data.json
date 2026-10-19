@@ -2483,7 +2483,7 @@
       "dex_range": [494, 649],
       "mom_newstart_text": ["unova_mom_newstart_1", "unova_mom_newstart_2", "unova_mom_newstart_3"],
       "mom_home_text": ["unova_mom_home_1", "unova_mom_home_2", "unova_mom_home_3"],
-      "dex_extra": [],
+      "dex_extra": [983],
       "badge_images": [33, 34, 35, 36, 37, 38, 39, 40]
     }
   },

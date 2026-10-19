@@ -1,10 +1,19 @@
 {
   "FORM_MAP": {
-    "9001": { "base_id": 194, "name": "Paldean Wooper", "type": "POISON/WATER", "stage": 1, "hp_bonus": 0, "dmg_bonus": 0 },
-    "9002": { "base_id": 128, "name": "Paldean Tauros (Combat)", "type": "FIGHTING", "stage": 3, "hp_bonus": 2, "dmg_bonus": 2 },
-    "9003": { "base_id": 128, "name": "Paldean Tauros (Blaze)", "type": "FIGHTING/FIRE", "stage": 3, "hp_bonus": 2, "dmg_bonus": 2 },
-    "9004": { "base_id": 128, "name": "Paldean Tauros (Aqua)", "type": "FIGHTING/WATER", "stage": 3, "hp_bonus": 2, "dmg_bonus": 2 },
-    "9005": { "base_id": 194, "name": "Clodsire", "type": "POISON/GROUND", "stage": 2, "hp_bonus": 1, "dmg_bonus": 1 }
+    "9001": { "id": 194, "form": "paldean", "name": "Paldean Wooper", "types": ["POISON", "GROUND"] },
+    "9002": { "id": 128, "form": "paldean", "name": "Paldean Tauros (Combat)", "types": ["FIGHTING"] },
+    "9003": {
+      "id": 128,
+      "form": "paldean",
+      "name": "Paldean Tauros (Blaze)",
+      "types": ["FIGHTING", "FIRE"]
+    },
+    "9004": {
+      "id": 128,
+      "form": "paldean",
+      "name": "Paldean Tauros (Aqua)",
+      "types": ["FIGHTING", "WATER"]
+    }
   },
   "GAME_TEXT": {
     "paldea_intro": "After defeating Leon and claiming the Galar Championship, a mysterious letter arrived — Professor Sada of the Paldea region wrote of ancient Pokémon sightings near the Great Crater. With your mother already purchasing a seaside cottage in Cabo Poco, you set sail for a land of open skies and untamed frontiers.",
@@ -126,7 +135,8 @@
         { "text": "South Province Area 2", "target_area": "SOUTH_PROVINCE_AREA_2" },
         { "text": "East Province Area 1", "target_area": "EAST_PROVINCE_AREA_1" },
         { "text": "West Province Area 1", "target_area": "WEST_PROVINCE_AREA_1" },
-        { "text": "Naranja Academy", "target_area": "NARANJA_ACADEMY" }
+        { "text": "Naranja Academy", "target_area": "NARANJA_ACADEMY" },
+        { "text": "Kitakami (School Trip)", "target_area": "KITAKAMI", "condition": "beat_paldea_champion" }
       ],
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
@@ -907,6 +917,7 @@
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "FACE PROFESSOR SADA", "action": "TRAINER", "condition": "has_trainers", "color": "PURPLE" },
         { "text": "THE PARADOX LEGEND", "action": "BOSS", "condition": "boss_available", "color": "GOLD" },
+        { "text": "ZERO LAB", "action": "EXIT", "target_area": "ZERO_LAB", "condition": "boss_defeated", "color": "GOLD" },
         { "text": "RUINOUS SHRINES", "action": "EXIT", "target_area": "PALDEA_RUINOUS_SHRINES", "condition": "boss_defeated", "color": "PURPLE" },
         { "text": "NARANJA ACADEMY", "action": "EXIT", "target_area": "NARANJA_ACADEMY", "condition": "can_exit", "color": "RED" }
       ],
@@ -935,7 +946,7 @@
       "route_name": "Wo-Chien Shrine",
       "region": "PALDEA",
       "battle_type": "cave",
-      "wild_pool_percentages": "PALDEA_AREA_ZERO_PERCENTAGES",
+      "wild_pool_percentages": "PALDEA_SHRINE_PERCENTAGES",
       "min_rounds": 1,
       "trainer_pool": [],
       "route_menu": [
@@ -950,7 +961,7 @@
       "route_name": "Chien-Pao Shrine",
       "region": "PALDEA",
       "battle_type": "cave",
-      "wild_pool_percentages": "PALDEA_AREA_ZERO_PERCENTAGES",
+      "wild_pool_percentages": "PALDEA_SHRINE_PERCENTAGES",
       "min_rounds": 1,
       "trainer_pool": [],
       "route_menu": [
@@ -965,7 +976,7 @@
       "route_name": "Ting-Lu Shrine",
       "region": "PALDEA",
       "battle_type": "cave",
-      "wild_pool_percentages": "PALDEA_AREA_ZERO_PERCENTAGES",
+      "wild_pool_percentages": "PALDEA_SHRINE_PERCENTAGES",
       "min_rounds": 1,
       "trainer_pool": [],
       "route_menu": [
@@ -980,7 +991,7 @@
       "route_name": "Chi-Yu Shrine",
       "region": "PALDEA",
       "battle_type": "cave",
-      "wild_pool_percentages": "PALDEA_AREA_ZERO_PERCENTAGES",
+      "wild_pool_percentages": "PALDEA_SHRINE_PERCENTAGES",
       "min_rounds": 1,
       "trainer_pool": [],
       "route_menu": [
@@ -989,6 +1000,162 @@
       ],
       "area_boss": { "id": 1004, "name": "Chi-Yu", "victory_flag": "caught_chi_yu" },
       "next_area": "PALDEA_RUINOUS_SHRINES"
+    },
+    "ZERO_LAB": {
+      "area_type": "dungeon",
+      "route_name": "Zero Lab",
+      "region": "PALDEA",
+      "battle_type": "indoor",
+      "backgrounds": { "main": "zero_lab.png" },
+      "min_rounds": 0,
+      "trainer_pool": [],
+      "area_boss": { "id": 1008, "name": "Miraidon", "victory_flag": "ZERO_LAB_boss_defeated" },
+      "route_menu": [
+        {
+          "text": "Face the Future Legend",
+          "action": "BOSS",
+          "condition": ["boss_not_defeated"],
+          "color": "GOLD"
+        },
+        { "text": "UNDERDEPTHS", "action": "EXIT", "target_area": "AREA_ZERO_UNDERDEPTHS", "condition": "beat_paldea_champion", "color": "GOLD" },
+        { "text": "Area Zero", "action": "EXIT", "target_area": "AREA_ZERO", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "AREA_ZERO"
+    },
+    "AREA_ZERO_UNDERDEPTHS": {
+      "area_type": "dungeon",
+      "route_name": "Area Zero Underdepths",
+      "region": "PALDEA",
+      "battle_type": "cave",
+      "backgrounds": { "main": "area_zero_underdepths.png" },
+      "min_rounds": 1,
+      "trainer_pool": [],
+      "wild_pool_percentages": "PALDEA_AREA_ZERO_UNDERDEPTHS_PERCENTAGES",
+      "area_boss": { "id": 1024, "name": "Terapagos", "victory_flag": "AREA_ZERO_UNDERDEPTHS_boss_defeated" },
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        {
+          "text": "Awaken Terapagos",
+          "action": "BOSS",
+          "condition": ["boss_not_defeated"],
+          "color": "GOLD"
+        },
+        { "text": "Zero Lab", "action": "EXIT", "target_area": "ZERO_LAB", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "ZERO_LAB"
+    },
+    "KITAKAMI": {
+      "area_type": "dungeon",
+      "route_name": "Kitakami",
+      "region": "PALDEA",
+      "battle_type": "grass",
+      "backgrounds": { "main": "kitakami.png" },
+      "min_rounds": 1,
+      "trainer_pool": [],
+      "wild_pool_percentages": "PALDEA_KITAKAMI_PERCENTAGES",
+      "area_boss": { "id": 1017, "name": "Ogerpon", "victory_flag": "KITAKAMI_boss_defeated" },
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        {
+          "text": "Meet the Masked Ogre",
+          "action": "BOSS",
+          "condition": ["boss_not_defeated"],
+          "color": "GOLD"
+        },
+        { "text": "REVELER'S ROAD", "action": "EXIT", "target_area": "KITAKAMI_REVELERS_ROAD", "condition": "can_exit", "color": "RED" },
+        { "text": "PARADISE BARRENS", "action": "EXIT", "target_area": "KITAKAMI_PARADISE_BARRENS", "condition": "can_exit", "color": "RED" },
+        { "text": "TIMELESS WOODS", "action": "EXIT", "target_area": "KITAKAMI_TIMELESS_WOODS", "condition": "can_exit", "color": "RED" },
+        { "text": "LOYALTY PLAZA AT NIGHT", "action": "EXIT", "target_area": "KITAKAMI_LOYALTY_PLAZA", "condition": "can_exit", "color": "RED" },
+        { "text": "Mesagoza (Bus)", "action": "EXIT", "target_area": "MESAGOZA", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "MESAGOZA"
+    },
+    "KITAKAMI_REVELERS_ROAD": {
+      "area_type": "dungeon",
+      "route_name": "Reveler's Road",
+      "region": "PALDEA",
+      "battle_type": "grass",
+      "backgrounds": { "main": "kitakami_revelers_road.png" },
+      "min_rounds": 0,
+      "trainer_pool": [],
+      "area_boss": { "id": 1014, "name": "Okidogi", "victory_flag": "KITAKAMI_REVELERS_ROAD_boss_defeated" },
+      "route_menu": [
+        {
+          "text": "Face Okidogi",
+          "action": "BOSS",
+          "condition": ["boss_not_defeated"],
+          "color": "GOLD"
+        },
+        { "text": "Kitakami", "action": "EXIT", "target_area": "KITAKAMI", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "KITAKAMI"
+    },
+    "KITAKAMI_PARADISE_BARRENS": {
+      "area_type": "dungeon",
+      "route_name": "Paradise Barrens",
+      "region": "PALDEA",
+      "battle_type": "grass",
+      "backgrounds": { "main": "kitakami_paradise_barrens.png" },
+      "min_rounds": 0,
+      "trainer_pool": [],
+      "area_boss": { "id": 1015, "name": "Munkidori", "victory_flag": "KITAKAMI_PARADISE_BARRENS_boss_defeated" },
+      "route_menu": [
+        {
+          "text": "Face Munkidori",
+          "action": "BOSS",
+          "condition": ["boss_not_defeated"],
+          "color": "GOLD"
+        },
+        { "text": "Kitakami", "action": "EXIT", "target_area": "KITAKAMI", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "KITAKAMI"
+    },
+    "KITAKAMI_TIMELESS_WOODS": {
+      "area_type": "dungeon",
+      "route_name": "Timeless Woods",
+      "region": "PALDEA",
+      "battle_type": "grass",
+      "backgrounds": { "main": "kitakami_timeless_woods.png" },
+      "min_rounds": 0,
+      "trainer_pool": [],
+      "area_boss": { "id": 1016, "name": "Fezandipiti", "victory_flag": "KITAKAMI_TIMELESS_WOODS_boss_defeated" },
+      "route_menu": [
+        {
+          "text": "Face Fezandipiti",
+          "action": "BOSS",
+          "condition": ["boss_not_defeated"],
+          "color": "GOLD"
+        },
+        { "text": "Kitakami", "action": "EXIT", "target_area": "KITAKAMI", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "KITAKAMI"
+    },
+    "KITAKAMI_LOYALTY_PLAZA": {
+      "area_type": "dungeon",
+      "route_name": "Loyalty Plaza (Night)",
+      "region": "PALDEA",
+      "battle_type": "grass",
+      "backgrounds": { "main": "kitakami_loyalty_plaza.png" },
+      "min_rounds": 0,
+      "trainer_pool": [],
+      "area_boss": { "id": 1025, "name": "Pecharunt", "victory_flag": "KITAKAMI_LOYALTY_PLAZA_boss_defeated" },
+      "route_menu": [
+        {
+          "text": "Confront the Mochi Master",
+          "action": "BOSS",
+          "condition": [
+            "boss_not_defeated",
+            "KITAKAMI_REVELERS_ROAD_boss_defeated",
+            "KITAKAMI_PARADISE_BARRENS_boss_defeated",
+            "KITAKAMI_TIMELESS_WOODS_boss_defeated"
+          ],
+          "color": "GOLD"
+        },
+        { "text": "Kitakami", "action": "EXIT", "target_area": "KITAKAMI", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "KITAKAMI"
     }
   },
   "JOURNAL_MISSIONS": [
@@ -1110,40 +1277,61 @@
       "flag_condition": "cleared_area_zero"
     }
   ],
-  "PALDEA_ROUTE_1": [915, 917, 921, 661],
-  "PALDEA_ROUTE_1_PERCENTAGES": { "915": 30, "917": 25, "921": 25, "661": 20 },
-  "SOUTH_PROVINCE_AREA_1": [915, 928, 932, 833],
-  "SOUTH_PROVINCE_AREA_1_PERCENTAGES": { "915": 30, "928": 25, "932": 25, "833": 20 },
-  "SOUTH_PROVINCE_AREA_2": [928, 944, 942, 761],
-  "SOUTH_PROVINCE_AREA_2_PERCENTAGES": { "928": 30, "944": 25, "942": 25, "761": 20 },
-  "SOUTH_PROVINCE_AREA_3": [919, 951, 953, 669],
-  "SOUTH_PROVINCE_AREA_3_PERCENTAGES": { "919": 30, "951": 25, "953": 25, "669": 20 },
+  "PALDEA_ROUTE_1": [915, 917, 921, 661, 924, 926],
+  "PALDEA_ROUTE_1_PERCENTAGES": { "915": 25, "917": 20, "921": 20, "661": 15, "924": 10, "926": 10 },
+  "SOUTH_PROVINCE_AREA_1": [915, 928, 932, 833, 931, 926],
+  "SOUTH_PROVINCE_AREA_1_PERCENTAGES": { "915": 20, "928": 20, "932": 15, "833": 15, "931": 15, "926": 15 },
+  "SOUTH_PROVINCE_AREA_2": [928, 944, 942, 761, 957, 56, 967],
+  "SOUTH_PROVINCE_AREA_2_PERCENTAGES": { "928": 20, "944": 15, "942": 15, "761": 15, "957": 15, "56": 10, "967": 10 },
+  "SOUTH_PROVINCE_AREA_3": [919, 951, 953, 669, 935, 948],
+  "SOUTH_PROVINCE_AREA_3_PERCENTAGES": { "919": 20, "951": 20, "953": 15, "669": 15, "935": 15, "948": 15 },
   "SOUTH_PROVINCE_AREA_5": [956, 671, 945, 282],
   "SOUTH_PROVINCE_AREA_5_PERCENTAGES": { "956": 25, "671": 25, "945": 25, "282": 25 },
   "EAST_PROVINCE_AREA_1": [940, 938, 963, 418],
   "EAST_PROVINCE_AREA_1_PERCENTAGES": { "940": 30, "938": 25, "963": 25, "418": 20 },
-  "EAST_PROVINCE_AREA_2": [940, 941, 963, 964],
-  "EAST_PROVINCE_AREA_2_PERCENTAGES": { "940": 30, "941": 25, "963": 25, "964": 20 },
-  "WEST_PROVINCE_AREA_1": [9001, 980, 973, 662],
-  "WEST_PROVINCE_AREA_1_PERCENTAGES": { "9001": 30, "980": 25, "973": 25, "662": 20 },
+  "EAST_PROVINCE_AREA_2": [940, 941, 963, 964, 976, 977, 978],
+  "EAST_PROVINCE_AREA_2_PERCENTAGES": { "940": 20, "941": 15, "963": 15, "964": 10, "976": 15, "977": 10, "978": 15 },
+  "WEST_PROVINCE_AREA_1": [9001, 980, 973, 662, 950, 962],
+  "WEST_PROVINCE_AREA_1_PERCENTAGES": { "9001": 25, "980": 20, "973": 20, "662": 15, "950": 10, "962": 10 },
   "WEST_PROVINCE_AREA_2": [942, 943, 944, 945],
   "WEST_PROVINCE_AREA_2_PERCENTAGES": { "942": 30, "943": 25, "944": 25, "945": 20 },
   "WEST_PROVINCE_AREA_3": [982, 981, 960, 961],
   "WEST_PROVINCE_AREA_3_PERCENTAGES": { "982": 30, "981": 25, "960": 25, "961": 20 },
-  "NORTH_PROVINCE_AREA_1": [760, 701, 750, 863],
-  "NORTH_PROVINCE_AREA_1_PERCENTAGES": { "760": 30, "701": 25, "750": 25, "863": 20 },
+  "NORTH_PROVINCE_AREA_1": [760, 701, 750, 863, 624, 625],
+  "NORTH_PROVINCE_AREA_1_PERCENTAGES": { "760": 20, "701": 20, "750": 20, "863": 15, "624": 15, "625": 10 },
   "NORTH_PROVINCE_AREA_2": [971, 972, 854, 855],
   "NORTH_PROVINCE_AREA_2_PERCENTAGES": { "971": 35, "972": 25, "854": 25, "855": 15 },
   "NORTH_PROVINCE_AREA_3": [974, 975, 996, 997],
   "NORTH_PROVINCE_AREA_3_PERCENTAGES": { "974": 30, "975": 25, "996": 25, "997": 20 },
-  "ASADO_DESERT": [551, 552, 553, 331],
-  "ASADO_DESERT_PERCENTAGES": { "551": 35, "552": 30, "553": 20, "331": 15 },
-  "TAGTREE_THICKET": [946, 947, 190, 424],
-  "TAGTREE_THICKET_PERCENTAGES": { "946": 35, "947": 25, "190": 25, "424": 15 },
-  "GLASEADO_MOUNTAIN": [974, 975, 614, 996],
-  "GLASEADO_MOUNTAIN_PERCENTAGES": { "974": 30, "975": 25, "614": 25, "996": 20 },
-  "PALDEA_AREA_ZERO": [984, 986, 1005, 990],
-  "PALDEA_AREA_ZERO_PERCENTAGES": { "984": 25, "986": 25, "1005": 25, "990": 25 },
+  "ASADO_DESERT": [551, 552, 553, 331, 955, 968, 965],
+  "ASADO_DESERT_PERCENTAGES": { "551": 25, "552": 20, "553": 10, "331": 10, "955": 15, "968": 10, "965": 10 },
+  "TAGTREE_THICKET": [946, 947, 190, 424, 999],
+  "TAGTREE_THICKET_PERCENTAGES": { "946": 25, "947": 20, "190": 20, "424": 15, "999": 20 },
+  "GLASEADO_MOUNTAIN": [974, 975, 614, 996, 969, 884],
+  "GLASEADO_MOUNTAIN_PERCENTAGES": { "974": 25, "975": 20, "614": 20, "996": 15, "969": 10, "884": 10 },
+  "PALDEA_AREA_ZERO": [984, 985, 986, 987, 988, 989, 1005, 1009, 1020, 1021, 990, 991, 992, 993, 994, 995, 1006, 1010, 1022, 1023],
+  "PALDEA_AREA_ZERO_PERCENTAGES": {
+    "984": 5,
+    "985": 5,
+    "986": 5,
+    "987": 5,
+    "988": 5,
+    "989": 5,
+    "1005": 5,
+    "1009": 5,
+    "1020": 5,
+    "1021": 5,
+    "990": 5,
+    "991": 5,
+    "992": 5,
+    "993": 5,
+    "994": 5,
+    "995": 5,
+    "1006": 5,
+    "1010": 5,
+    "1022": 5,
+    "1023": 5
+  },
   "REGION_START": {
     "PALDEA": {
       "order": 9,
@@ -1159,5 +1347,11 @@
       "mom_home_text": ["paldea_mom_home_cabo_poco", "paldea_mom_random_1", "paldea_mom_random_2", "paldea_mom_random_3"],
       "dex_extra": []
     }
-  }
+  },
+  "PALDEA_SHRINE_PERCENTAGES": { "971": 30, "972": 20, "854": 25, "999": 25 },
+  "PALDEA_SHRINE": [971, 972, 854, 999],
+  "PALDEA_AREA_ZERO_UNDERDEPTHS_PERCENTAGES": { "969": 40, "970": 30, "968": 30 },
+  "PALDEA_AREA_ZERO_UNDERDEPTHS": [969, 970, 968],
+  "PALDEA_KITAKAMI_PERCENTAGES": { "1012": 20, "840": 20, "1011": 10, "946": 15, "948": 15, "56": 10, "969": 10 },
+  "PALDEA_KITAKAMI": [1012, 840, 1011, 946, 948, 56, 969]
 }

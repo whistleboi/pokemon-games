@@ -1306,7 +1306,7 @@
       "dex_range": [810, 905],
       "mom_newstart_text": ["galar_mom_newstart_1", "galar_mom_newstart_2", "galar_mom_newstart_3"],
       "mom_home_text": ["galar_mom_home_1", "galar_mom_home_2", "galar_mom_home_3"],
-      "dex_extra": [1018]
+      "dex_extra": [1011, 1018, 1019]
     }
   },
   "MAX_RAID": {

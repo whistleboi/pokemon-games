@@ -440,9 +440,10 @@ class PokemonLoader:
             p_stats = moveset_data.get("stats", DEFAULT_BASE_STATS)
 
             img_bytes = b""
-            img_surface = self.assets.get_pokemon_image(actual_id, form, is_shiny)
-            if not img_surface:
-                img_surface = self.assets.get_pokemon_image(meta_id, form, is_shiny)
+            # Form art first, then the base species' form art, then its normal art (forms without sprites).
+            img_surface = (self.assets.get_pokemon_image(actual_id, form, is_shiny, placeholder=False)
+                           or self.assets.get_pokemon_image(meta_id, form, is_shiny, placeholder=False)
+                           or self.assets.get_pokemon_image(meta_id, "normal", is_shiny))
 
             if img_surface:
                 img_buffer = io.BytesIO()
