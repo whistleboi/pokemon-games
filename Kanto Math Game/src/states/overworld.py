@@ -3148,7 +3148,31 @@ class CityState(GameState):
             self.npc_dialogue = ClassicDialogueBox(Utils.get_full_dialogue_rect(self.game), msg, self.game.assets.fonts["med"], callback=self.end_npc_interaction)
             return
 
-        if story.story_flags.get("beat_champion"):
+        if (region == "JOHTO" and story.is_region_champion("JOHTO")
+                and not story.story_flags.get("oak_johto_champion_gift")):
+            # Mirror of Elm's gift to Kanto Champions: Johto Champions get a Kanto partner from Oak.
+            story.story_flags["oak_johto_champion_gift"] = True
+            story.story_flags["unlocked_national_dex"] = True
+            story.enter_region("KANTO")
+            msg = [
+                "Professor Oak: So you're the new Johto Champion! Elm told me all about you.",
+                "You've proven yourself to be a true Math Master.",
+                "Let me upgrade your Pokédex. It can now record every species from Kanto and Johto!",
+                "And here is a Kanto Badge Case for your next challenge!",
+                "You received the NATIONAL DEX and KANTO BADGE CASE!",
+            ]
+            if story.story_flags.get("received_starter_kanto"):
+                msg.append("I see you already have a Kanto partner. Go show the Kanto Gyms what you can do!")
+                callback = self.end_npc_interaction
+            else:
+                msg.append("To help you on this new journey... please, choose one of these Kanto Pokémon!")
+
+                def kanto_starter_exit():
+                    from src.states.menus import StarterSelectionState
+                    self.start_npc_exit(lambda: self.game.change_state(
+                        StarterSelectionState(self.game, starter_ids=[1, 4, 7], region="KANTO")))
+                callback = kanto_starter_exit
+        elif story.story_flags.get("beat_champion"):
             if region == "JOHTO" and not story.story_flags.get("unlocked_national_dex"):
                 msg = [
                     "Professor Oak: Congratulations on your victory at the League!",
@@ -3177,6 +3201,10 @@ class CityState(GameState):
         elif region == "JOHTO" and not story.game_started:
             msg = ["Hello! You must be Professor Elm's new assistant.", "He's waiting for you in New Bark Town!"]
             callback = self.end_npc_interaction
+        elif region == "JOHTO" and not story.story_flags.get("received_starter_kanto"):
+            msg = ["Professor Oak: Ah, a trainer from Johto! Welcome to Pallet Town.",
+                   "Become the Johto Champion, and I'll have a Kanto partner waiting for you."]
+            callback = self.end_npc_interaction
         elif not story.story_flags.get("defeated_rival_kanto"):
             msg = [f"Wait, {self.game.player_name}!", f"{self.game.rival_name} is still waiting for a battle!"]
 
@@ -3185,7 +3213,7 @@ class CityState(GameState):
                 self.start_npc_exit(trigger_battle)
             callback = rival_exit_kanto
         else:
-            msg = [self.game.assets.get_text("professor_oak")]
+            msg = _resolve_lines(self.game, "professor_oak")
             callback = self.end_npc_interaction
 
         self.npc_dialogue = ClassicDialogueBox(Utils.get_full_dialogue_rect(self.game), msg, self.game.assets.fonts["med"], callback=callback)
