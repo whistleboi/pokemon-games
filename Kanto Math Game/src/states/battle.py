@@ -317,37 +317,45 @@ class TrainerBattleState(GameState):
         906: "Scratch", 909: "Tackle", 912: "Pound",
     }
 
-    def _move_name(self, pokemon):
+    def _pick_move(self, attacker, defender):
+        """
+        The attacker's strongest same-type move against this defender right now:
+        power x type effectiveness x weather (so rain can make Surf beat Earthquake).
+        Returns (move name, move type, effectiveness).
+        """
         if self.starter_battle:
-            return self.STARTER_MOVES.get(pokemon.id, "Tackle")
-        return self.game.assets.get_stab_move(pokemon)
+            return self.STARTER_MOVES.get(attacker.id, "Tackle"), "NORMAL", 1.0
+        chart = TypeAdvantage(self.game.loader.area_data.get("TYPE_CHART", {}))
+        target_id = getattr(attacker, "meta_id", attacker.id)
+        moves = self.game.assets.movesets.get(str(target_id), {}).get("moves", [])
+        best_score, best = -1.0, []
+        for move in moves:
+            power = move.get("power", 0) or 0
+            m_type = move.get("type")
+            if power <= 0 or m_type not in (attacker.types or []) or move.get("self_faint") or move.get("ohko"):
+                continue
+            eff = chart.get_multiplier(m_type, defender.types)
+            score = power * eff * self._weather_type_mult(m_type)
+            if score > best_score:
+                best_score, best = score, [(move["name"].upper(), m_type, eff)]
+            elif score == best_score:
+                best.append((move["name"].upper(), m_type, eff))
+        if best:
+            return random.choice(best)
+        # No damaging same-type move: Tackle, typed as the attacker's best-matching type.
+        types = attacker.types or ["NORMAL"]
+        a_type = max(types, key=lambda t: chart.get_multiplier(t, defender.types))
+        return "Tackle", a_type, chart.get_multiplier(a_type, defender.types)
+
+    def _ready_attacks(self):
+        """Choose each side's move for the current weather and set the matchup multipliers."""
+        self.player_move, self.player_attack_type, eff = self._pick_move(self.player_pokemon, self.opponent_pokemon)
+        self.adv_opp = eff if eff > 0 else 1.0
+        self.opponent_move, self.opponent_attack_type, eff = self._pick_move(self.opponent_pokemon, self.player_pokemon)
+        self.adv_player = eff if eff > 0 else 1.0
 
     def setup_battle_matchup(self, reset_opponent_hp=True):
-        type_advantage = TypeAdvantage(self.game.loader.area_data.get("TYPE_CHART", {}))
-        player_types = self.player_pokemon.types
-        opponent_types = self.opponent_pokemon.types
-
-        # Each side attacks with whichever of its types hits hardest; remember that type for weather.
-        best_opp_mult = 0.0
-        p_types_check = player_types if player_types else ["NORMAL"]
-        self.player_attack_type = p_types_check[0]
-        for p_t in p_types_check:
-            mult = type_advantage.get_multiplier(p_t, opponent_types)
-            if mult > best_opp_mult:
-                best_opp_mult, self.player_attack_type = mult, p_t
-        self.adv_opp = best_opp_mult if best_opp_mult > 0 else 1.0
-
-        best_player_mult = 0.0
-        o_types_check = opponent_types if opponent_types else ["NORMAL"]
-        self.opponent_attack_type = o_types_check[0]
-        for o_t in o_types_check:
-            mult = type_advantage.get_multiplier(o_t, player_types)
-            if mult > best_player_mult:
-                best_player_mult, self.opponent_attack_type = mult, o_t
-        self.adv_player = best_player_mult if best_player_mult > 0 else 1.0
-        if self.starter_battle:
-            self.adv_opp = self.adv_player = 1.0  # Normal moves: no type advantage either way
-            self.player_attack_type = self.opponent_attack_type = "NORMAL"
+        self._ready_attacks()
 
         opponent_stage = self._get_capped_stage(self.opponent_pokemon)
 
@@ -397,14 +405,18 @@ class TrainerBattleState(GameState):
         self.set_weather(weather)
         return self.WEATHER_TEXT[weather][0]
 
+    def _weather_type_mult(self, attack_type):
+        """Rain and sun power up or weaken the move itself."""
+        if self.weather == "RAIN":
+            return {"WATER": 1.5, "FIRE": 0.5}.get(attack_type, 1.0)
+        if self.weather == "SUN":
+            return {"FIRE": 1.5, "WATER": 0.5}.get(attack_type, 1.0)
+        return 1.0
+
     def _weather_mult(self, attack_type, defender):
         if not self.weather:
             return 1.0
-        mult = 1.0
-        if self.weather == "RAIN":
-            mult = {"WATER": 1.5, "FIRE": 0.5}.get(attack_type, 1.0)
-        elif self.weather == "SUN":
-            mult = {"FIRE": 1.5, "WATER": 0.5}.get(attack_type, 1.0)
+        mult = self._weather_type_mult(attack_type)
         defender_types = defender.types if defender else []
         if self.weather == "SAND" and "ROCK" in defender_types:
             mult *= 2 / 3  # Sand boosts Rock types' Sp. Def
@@ -798,6 +810,7 @@ class TrainerBattleState(GameState):
         if self.opponent_hp <= 0:
             return
 
+        self._ready_attacks()  # weather may have changed which move hits hardest
         player_stage = self._get_capped_stage(self.player_pokemon)
         damage = self._calculate_damage(player_stage, self.adv_opp,
                                         self.player_pokemon, self.opponent_pokemon,
@@ -809,7 +822,7 @@ class TrainerBattleState(GameState):
         xp_messages = self._award_battle_xp() if self.opponent_hp <= 0 else []
 
         self.anim_ctrl.start_lunge("player")
-        move_name = self._move_name(self.player_pokemon)
+        move_name = self.player_move
 
         if self.opponent_hp <= 0 and self.try_trigger_wild_catch_prompt():
             return
@@ -840,6 +853,7 @@ class TrainerBattleState(GameState):
         if self.player_hp <= 0:
             return
 
+        self._ready_attacks()
         opponent_stage = self._get_capped_stage(self.opponent_pokemon)
         damage = self._calculate_damage(opponent_stage, self.adv_player,
                                         self.opponent_pokemon, self.player_pokemon,
@@ -849,7 +863,7 @@ class TrainerBattleState(GameState):
         self.player_pokemon.current_hp = self.player_hp
 
         self.anim_ctrl.start_lunge("opponent")
-        move_name = self._move_name(self.opponent_pokemon)
+        move_name = self.opponent_move
 
         messages = [self.game.assets.get_text(
             "used_move", name=f"Foe {self.opponent_pokemon.display_name}", move=move_name
