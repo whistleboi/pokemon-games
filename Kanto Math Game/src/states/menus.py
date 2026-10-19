@@ -820,6 +820,7 @@ class StarterSelectionState(GameState):
             trainer_name=rival_name,
             area_name=area_name,
             battle_type="rival",
+            starter_battle=True,
         )
 
         lab_bg = self.game.assets.get_background(bg_name)

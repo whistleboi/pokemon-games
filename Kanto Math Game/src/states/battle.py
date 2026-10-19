@@ -31,8 +31,11 @@ class TrainerBattleState(GameState):
         victory_flag=None,
         badge_reward=None,
         background_image=None,
+        starter_battle=False,
     ):
         super().__init__(game)
+        # First rival battle with starters: Normal-type starter moves, and a loss still moves the story on.
+        self.starter_battle = starter_battle
 
         if isinstance(opponent_data, list):
             self.opponent_team = opponent_data
@@ -287,7 +290,11 @@ class TrainerBattleState(GameState):
                 generic_lost = all_dialogue.get(self.trainer_class, {}).get("player_lost", ["..."])
                 lines = [random.choice(generic_lost)]
 
-            text = lines + ["Player is out of usable PKMN!", "Player whited out!"]
+            if self.starter_battle:
+                text = lines + ["Your partner is worn out, but that was a great first battle!",
+                                "Your team was healed. Time to set off on your journey!"]
+            else:
+                text = lines + ["Player is out of usable PKMN!", "Player whited out!"]
             self.phase = "OUTRO"
 
         self.dialogue_box.reset(text)
@@ -295,6 +302,20 @@ class TrainerBattleState(GameState):
         self.action_menu.set_visibility(False)
         if self.math_ui:
             self.math_ui.set_visibility(False)
+
+    # Each starter's first Normal-type move in its home game.
+    STARTER_MOVES = {
+        1: "Tackle", 4: "Scratch", 7: "Tackle", 152: "Tackle", 155: "Tackle", 158: "Scratch",
+        252: "Pound", 255: "Scratch", 258: "Tackle", 387: "Tackle", 390: "Scratch", 393: "Pound",
+        495: "Tackle", 498: "Tackle", 501: "Tackle", 650: "Tackle", 653: "Scratch", 656: "Pound",
+        722: "Tackle", 725: "Scratch", 728: "Pound", 810: "Scratch", 813: "Tackle", 816: "Pound",
+        906: "Scratch", 909: "Tackle", 912: "Pound",
+    }
+
+    def _move_name(self, pokemon):
+        if self.starter_battle:
+            return self.STARTER_MOVES.get(pokemon.id, "Tackle")
+        return self.game.assets.get_stab_move(pokemon)
 
     def setup_battle_matchup(self, reset_opponent_hp=True):
         type_advantage = TypeAdvantage(self.game.loader.area_data.get("TYPE_CHART", {}))
@@ -312,6 +333,8 @@ class TrainerBattleState(GameState):
         for o_t in o_types_check:
             best_player_mult = max(best_player_mult, type_advantage.get_multiplier(o_t, player_types))
         self.adv_player = best_player_mult if best_player_mult > 0 else 1.0
+        if self.starter_battle:
+            self.adv_opp = self.adv_player = 1.0  # Normal moves: no type advantage either way
 
         opponent_stage = self._get_capped_stage(self.opponent_pokemon)
 
@@ -554,10 +577,20 @@ class TrainerBattleState(GameState):
                                 if self.player_won:
 
                                     self.exit_battle()
+                                elif self.starter_battle:
+                                    self.continue_after_starter_loss()
                                 else:
 
                                     self.perform_battle_black_out()
             return
+
+    def continue_after_starter_loss(self):
+        """Losing the starter rival battle heals the team and continues the story as if it were won (no prize money)."""
+        for p in self.game.story_manager.player_team:
+            p.current_hp = p.get_max_hp()
+            if hasattr(p, "revert_transform"):
+                p.revert_transform()
+        self.exit_battle(lost=True)
 
     def perform_battle_black_out(self):
         """Heals team and returns to the start of the current area."""
@@ -639,7 +672,7 @@ class TrainerBattleState(GameState):
         xp_messages = self._award_battle_xp() if self.opponent_hp <= 0 else []
 
         self.anim_ctrl.start_lunge("player")
-        move_name = self.game.assets.get_stab_move(self.player_pokemon)
+        move_name = self._move_name(self.player_pokemon)
 
         if self.opponent_hp <= 0 and self.try_trigger_wild_catch_prompt():
             return
@@ -678,7 +711,7 @@ class TrainerBattleState(GameState):
         self.player_pokemon.current_hp = self.player_hp
 
         self.anim_ctrl.start_lunge("opponent")
-        move_name = self.game.assets.get_stab_move(self.opponent_pokemon)
+        move_name = self._move_name(self.opponent_pokemon)
 
         messages = [self.game.assets.get_text(
             "used_move", name=f"Foe {self.opponent_pokemon.display_name}", move=move_name
@@ -778,7 +811,7 @@ class TrainerBattleState(GameState):
 
             self.dialogue_box.reset(msgs)
 
-    def exit_battle(self):
+    def exit_battle(self, lost=False):
         if self.trainer_index is not None:
             area_key = self.game.story_manager.current_area_key
             self.game.story_manager.mark_trainer_defeated(area_key, self.trainer_index)
@@ -791,12 +824,12 @@ class TrainerBattleState(GameState):
             if self.badge_reward not in self.game.story_manager.badges[region]:
                 self.game.story_manager.badges[region].append(self.badge_reward)
 
-        money_reward = self._calc_money_reward()
+        money_reward = 0 if lost else self._calc_money_reward()
         if self.game.story_manager.inventory.get("AMULET_COIN", 0) > 0:
             money_reward *= 2
         self.game.story_manager.money += money_reward
 
-        candy = self._calc_candy_reward()
+        candy = 0 if lost else self._calc_candy_reward()
         if candy > 0:
             inv = self.game.story_manager.inventory
             inv["RARE_CANDY"] = inv.get("RARE_CANDY", 0) + candy

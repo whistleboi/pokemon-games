@@ -3960,6 +3960,7 @@ class CityState(GameState):
 
         is_start_town = self.area_key == story.get_region_start(
             story.get_current_region()).get("start_area")
+        starter_battle = newbark_rival or (is_start_town and str(condition).endswith("_starter"))
         if len(team_ids) == 1 and (newbark_rival or is_start_town):
             story.rival_starter_raw = self.game.loader.fetch_specific(team_ids[0])
 
@@ -3979,7 +3980,8 @@ class CityState(GameState):
             rewards=t_info.get("rewards"),
             battle_type="event",
             area_name=self.area_key,
-            victory_flag=v_flag or t_info.get("victory_flag")
+            victory_flag=v_flag or t_info.get("victory_flag"),
+            starter_battle=starter_battle,
         )
         intro_text = _resolve_lines(
             self.game, dlg.get("intro") or t_info.get("intro", "I'm gonna be the world's greatest trainer!"))
