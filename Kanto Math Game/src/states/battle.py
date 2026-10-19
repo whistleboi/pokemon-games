@@ -321,10 +321,10 @@ class TrainerBattleState(GameState):
         """
         The attacker's strongest same-type move against this defender right now:
         power x type effectiveness x weather (so rain can make Surf beat Earthquake).
-        Returns (move name, move type, effectiveness).
+        Returns (move name, move type, effectiveness, category).
         """
         if self.starter_battle:
-            return self.STARTER_MOVES.get(attacker.id, "Tackle"), "NORMAL", 1.0
+            return self.STARTER_MOVES.get(attacker.id, "Tackle"), "NORMAL", 1.0, "PHYSICAL"
         chart = TypeAdvantage(self.game.loader.area_data.get("TYPE_CHART", {}))
         target_id = getattr(attacker, "meta_id", attacker.id)
         moves = self.game.assets.movesets.get(str(target_id), {}).get("moves", [])
@@ -336,22 +336,25 @@ class TrainerBattleState(GameState):
                 continue
             eff = chart.get_multiplier(m_type, defender.types)
             score = power * eff * self._weather_type_mult(m_type)
+            pick = (move["name"].upper(), m_type, eff, move.get("category") or "PHYSICAL")
             if score > best_score:
-                best_score, best = score, [(move["name"].upper(), m_type, eff)]
+                best_score, best = score, [pick]
             elif score == best_score:
-                best.append((move["name"].upper(), m_type, eff))
+                best.append(pick)
         if best:
             return random.choice(best)
         # No damaging same-type move: Tackle, typed as the attacker's best-matching type.
         types = attacker.types or ["NORMAL"]
         a_type = max(types, key=lambda t: chart.get_multiplier(t, defender.types))
-        return "Tackle", a_type, chart.get_multiplier(a_type, defender.types)
+        return "Tackle", a_type, chart.get_multiplier(a_type, defender.types), "PHYSICAL"
 
     def _ready_attacks(self):
         """Choose each side's move for the current weather and set the matchup multipliers."""
-        self.player_move, self.player_attack_type, eff = self._pick_move(self.player_pokemon, self.opponent_pokemon)
+        (self.player_move, self.player_attack_type, eff,
+         self.player_move_category) = self._pick_move(self.player_pokemon, self.opponent_pokemon)
         self.adv_opp = eff if eff > 0 else 1.0
-        self.opponent_move, self.opponent_attack_type, eff = self._pick_move(self.opponent_pokemon, self.player_pokemon)
+        (self.opponent_move, self.opponent_attack_type, eff,
+         self.opponent_move_category) = self._pick_move(self.opponent_pokemon, self.player_pokemon)
         self.adv_player = eff if eff > 0 else 1.0
 
     def setup_battle_matchup(self, reset_opponent_hp=True):
@@ -487,13 +490,15 @@ class TrainerBattleState(GameState):
         pygame.draw.rect(screen, BLACK, box, border_radius=6)
         screen.blit(text, text.get_rect(center=box.center))
 
-    def _calculate_damage(self, stage, multiplier, attacker=None, defender=None, weather=1.0):
+    def _calculate_damage(self, stage, multiplier, attacker=None, defender=None, weather=1.0,
+                          category="PHYSICAL", defender_stage=None, defender_max_hp=None):
         """
-        Base damage scaled for HP 20/60/90 (decoupled from HP cap).
+        Damage is rolled on the fixed 20/60/90 HP scale, then applied as that same share
+        of the defender's real HP (a 50% hit is 50% whatever the HP total).
         Stage 1: Normal=7,  Super=10, NVE=4
         Stage 2: Normal=20, Super=28, NVE=12
         Stage 3: Normal=30, Super=42, NVE=18
-        Stat ±1 modifier: attacker's best ATK vs defender's best DEF.
+        Stat modifiers: see _stat_mod (offense, defense and speed tiers, each ±1).
         """
         _NORMAL = (0, 7, 20, 30)
         _SUPER  = (0, 10, 28, 42)
@@ -511,12 +516,16 @@ class TrainerBattleState(GameState):
         if attacker is not None and attacker.grows_toward_next_stage(s):
             base += (table[s + 1] - base) * attacker.sub_stage_fraction
 
-        stat_mod = self._stat_mod(attacker, defender) if attacker and defender else 0
+        stat_mod = self._stat_mod(attacker, defender, category) if attacker and defender else 0
 
         spread = random.randint(-2, 2)
         self._last_was_crit = random.random() < 0.10
         crit_mult = 1.5 if self._last_was_crit else 1.0
-        return max(1, int((base + stat_mod + spread) * crit_mult * weather))
+        points = max(1, int((base + stat_mod + spread) * crit_mult * weather))
+        if defender is None or defender_max_hp is None:
+            return points
+        share = points / defender.battle_hp_scale(defender_stage)
+        return max(1, int(share * defender_max_hp + 0.5))
 
     def setup_math_ui(self):
         if hasattr(self, "math_ui") and self.math_ui in self.game.ui_manager.elements:
@@ -773,11 +782,17 @@ class TrainerBattleState(GameState):
             self.math_ui.set_visibility(False)
 
     @staticmethod
-    def _stat_mod(attacker, defender):
-        """+1 / 0 / -1 depending on attacker's best offense vs defender's best defense."""
-        atk = max(attacker.get_stat("ATTACK"), attacker.get_stat("SPATK"))
-        def_ = max(defender.get_stat("DEFENSE"), defender.get_stat("SPDEF"))
-        return (atk > def_) - (atk < def_)
+    def _stat_mod(attacker, defender, category="PHYSICAL"):
+        """
+        Damage modifier from every stat but HP, each worth ±1 (range -3 .. +3):
+        the attacker's offense (Attack or Sp. Atk, matching the move) and Speed add when
+        strong and subtract when weak; the defender's matching Defense or Sp. Def does the
+        reverse. So a strong defender is cancelled out by a strong attacker.
+        """
+        special = category == "SPECIAL"
+        offense = attacker.stat_tier("SPATK" if special else "ATTACK")
+        defense = defender.stat_tier("SPDEF" if special else "DEFENSE")
+        return offense - defense + attacker.stat_tier("SPEED")
 
     def _award_battle_xp(self):
         """Give XP for the KO, scaled by relative stage and foe strength. Returns battle messages."""
@@ -791,7 +806,7 @@ class TrainerBattleState(GameState):
         messages = []
         for p in earners:
             my_stage = self._get_capped_stage(p)
-            foe_is_weak = self._stat_mod(foe, p) < 0
+            foe_is_weak = self._stat_mod(foe, p, self._pick_move(foe, p)[3]) < 0
             gained = p.battle_xp(my_stage, foe_stage, foe_is_weak)
             grew = p.gain_xp(gained)
             if p is not self.player_pokemon:
@@ -814,7 +829,10 @@ class TrainerBattleState(GameState):
         player_stage = self._get_capped_stage(self.player_pokemon)
         damage = self._calculate_damage(player_stage, self.adv_opp,
                                         self.player_pokemon, self.opponent_pokemon,
-                                        self._weather_mult(self.player_attack_type, self.opponent_pokemon))
+                                        self._weather_mult(self.player_attack_type, self.opponent_pokemon),
+                                        category=self.player_move_category,
+                                        defender_stage=self._get_capped_stage(self.opponent_pokemon),
+                                        defender_max_hp=self.opp_max_hp)
         self.opponent_hp = max(0, self.opponent_hp - damage)
 
         self.opponent_pokemon.current_hp = self.opponent_hp
@@ -857,7 +875,9 @@ class TrainerBattleState(GameState):
         opponent_stage = self._get_capped_stage(self.opponent_pokemon)
         damage = self._calculate_damage(opponent_stage, self.adv_player,
                                         self.opponent_pokemon, self.player_pokemon,
-                                        self._weather_mult(self.opponent_attack_type, self.player_pokemon))
+                                        self._weather_mult(self.opponent_attack_type, self.player_pokemon),
+                                        category=self.opponent_move_category,
+                                        defender_max_hp=self.player_max_hp)
         self.player_hp = max(0, self.player_hp - damage)
 
         self.player_pokemon.current_hp = self.player_hp

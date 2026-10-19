@@ -665,14 +665,14 @@ class StoryManager:
             "player_team": [
                 {
                     "id": p.id, "form": p.form, "shiny": p.is_shiny,
-                    "wins": p.wins, "xp": p.xp, "hp": p.current_hp, "stage": p.stage, "gmax": p.gmax_factor,
+                    "wins": p.wins, "xp": p.xp, "hp": p.current_hp, "hp_real": True, "stage": p.stage, "gmax": p.gmax_factor,
                     "caught_region": getattr(p, "caught_region", None)
                 } for p in self.player_team if p
             ],
             "pc_pokemon": [
                 {
                     "id": p.id, "form": p.form, "shiny": p.is_shiny,
-                    "wins": p.wins, "xp": p.xp, "hp": p.current_hp, "stage": p.stage, "gmax": p.gmax_factor,
+                    "wins": p.wins, "xp": p.xp, "hp": p.current_hp, "hp_real": True, "stage": p.stage, "gmax": p.gmax_factor,
                     "caught_region": getattr(p, "caught_region", None)
                 } if p else None for p in self.pc_pokemon
             ],
@@ -702,6 +702,14 @@ class StoryManager:
             return {StoryManager._migrate_area_keys(k): StoryManager._migrate_area_keys(v)
                     for k, v in obj.items()}
         return obj
+
+    @staticmethod
+    def _loaded_hp(pokemon, p_data):
+        """Saves from before real HP stored HP on the 20/60/90 scale: keep the same share."""
+        if p_data.get("hp_real"):
+            return min(p_data["hp"], pokemon.get_max_hp())
+        share = min(1.0, max(0.0, p_data["hp"] / pokemon.battle_hp_scale()))
+        return int(share * pokemon.get_max_hp() + 0.5)
 
     def deserialize(self, data, loader):
         data = self._migrate_area_keys(data)
@@ -740,10 +748,10 @@ class StoryManager:
             pokemon.gmax_factor = p_data.get("gmax", form == "gmax")
             pokemon.caught_region = p_data.get("caught_region")
             pokemon.xp = p_data.get("xp", p_data.get("wins", 0) * Pokemon.XP_PER_WIN)
-            if "hp" in p_data:
-                pokemon.current_hp = p_data["hp"]
             if "stage" in p_data:
                 pokemon.stage = p_data["stage"]
+            if "hp" in p_data:
+                pokemon.current_hp = self._loaded_hp(pokemon, p_data)
             self.player_team.append(pokemon)
 
         self.pc_pokemon = [None] * 300
@@ -760,10 +768,10 @@ class StoryManager:
             pokemon.gmax_factor = p_data.get("gmax", form == "gmax")
             pokemon.caught_region = p_data.get("caught_region")
             pokemon.xp = p_data.get("xp", p_data.get("wins", 0) * Pokemon.XP_PER_WIN)
-            if "hp" in p_data:
-                pokemon.current_hp = p_data["hp"]
             if "stage" in p_data:
                 pokemon.stage = p_data["stage"]
+            if "hp" in p_data:
+                pokemon.current_hp = self._loaded_hp(pokemon, p_data)
             self.pc_pokemon[i] = pokemon
 
         rid = data.get("rival_starter_id")

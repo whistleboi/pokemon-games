@@ -156,13 +156,26 @@ class Pokemon:
         """Sub-stage boosts only apply when fighting at the Pokémon's true stage."""
         return stage == min(self.effective_stage, 3) and stage < 3
 
-    def get_max_hp(self, stage_override=None):
-        """HP per stage: 20 / 60 / 90, plus sub-stage growth toward the next stage."""
+    # Level each stage stands for when working out real HP (roughly when starters evolve).
+    LEVEL_BY_STAGE = (15, 15, 35, 55)
+
+    def battle_hp_scale(self, stage_override=None):
+        """The fixed 20 / 60 / 90 HP scale (plus sub-stage growth) that damage rolls are
+        measured against. A hit is a share of this, then applied to the real HP."""
         st = min(stage_override if stage_override is not None else self.effective_stage, 3)
         hp = self.HP_BY_STAGE[st]
         if self.grows_toward_next_stage(st):
             hp += (self.HP_BY_STAGE[st + 1] - hp) * self.sub_stage_fraction
-        return int(round(hp))
+        return hp
+
+    def get_max_hp(self, stage_override=None):
+        """Real HP from the base HP stat: floor(2 x Base x Lv / 100) + Lv + 10, with the
+        level set by stage and sub-stages moving it part-way toward the next stage."""
+        st = min(stage_override if stage_override is not None else self.effective_stage, 3)
+        level = self.LEVEL_BY_STAGE[st]
+        if self.grows_toward_next_stage(st):
+            level += (self.LEVEL_BY_STAGE[st + 1] - level) * self.sub_stage_fraction
+        return int(2 * self.get_stat("HP") * level / 100) + int(level) + 10
 
     def battle_xp(self, my_stage, foe_stage, foe_is_weak):
         """XP for beating a foe, in steps of 25%: +1 step per stage the foe is above you,
@@ -181,6 +194,14 @@ class Pokemon:
         if self.effective_stage > stage_before or not self.sub_stage:
             return before[1] - before[0]
         return max(0, self.sub_stage[0] - before[0])
+
+    # Base-stat tiers for the battle modifiers: at or above STRONG is +1, below WEAK is -1.
+    STAT_STRONG = 100
+    STAT_WEAK = 50
+
+    def stat_tier(self, stat_name):
+        value = self.get_stat(stat_name)
+        return (value >= self.STAT_STRONG) - (value < self.STAT_WEAK)
 
     def get_stat(self, stat_name):
         """Gets a base stat value."""
