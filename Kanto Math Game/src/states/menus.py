@@ -217,15 +217,30 @@ class CharacterSelectionState(GameState):
 
 
 class RegionSelectionState(GameState):
-    """Lets the player choose any region (from REGION_START) to begin in."""
+    """Choose a region: where a new game begins, or (mode="move") where Mom buys the next home."""
     COLS = 3
 
-    def __init__(self, game):
+    def __init__(self, game, mode="new", return_state=None):
         super().__init__(game)
-        starts = game.story_manager.get_region_starts()
+        self.mode = mode
+        self.return_state = return_state
+        story = game.story_manager
+        starts = story.get_region_starts()
+        if mode == "move":
+            here = story.get_current_region()
+            starts = [(r, cfg) for r, cfg in starts if r != here]
         self.regions = [r for r, _ in starts] or ["KANTO"]
         self.subtitles = {r: cfg.get("subtitle", "") for r, cfg in starts}
+        if mode == "move":
+            for r in self.regions:
+                if story.is_region_champion(r):
+                    self.subtitles[r] = "CHAMPION"
+                elif story.story_flags.get(f"unlocked_{r.lower()}_badges"):
+                    self.subtitles[r] = "VISITED"
+                else:
+                    self.subtitles[r] = "NEW - " + self.subtitles[r].split(" / ")[0]
         self.selected_idx = 0
+        self.stay_rect = pygame.Rect(game.width // 2 - 120, game.height - 110, 240, 60)
 
         rows = (len(self.regions) + self.COLS - 1) // self.COLS
         gap = 24
@@ -243,6 +258,9 @@ class RegionSelectionState(GameState):
         n = len(self.regions)
         for event in events:
             if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+                if self.mode == "move" and self.stay_rect.collidepoint(event.pos):
+                    self.stay()
+                    return
                 for i, rect in enumerate(self.rects):
                     if rect.collidepoint(event.pos):
                         self.selected_idx = i
@@ -261,9 +279,18 @@ class RegionSelectionState(GameState):
                 elif event.key == pygame.K_RETURN:
                     self.confirm_selection()
 
+    def stay(self):
+        if self.return_state:
+            self.game.change_state(self.return_state)
+            self.return_state.show_message(["Mom: No rush! The house hunt can wait.",
+                                            "Visit me at home whenever you're ready to move."])
+
     def confirm_selection(self):
         region = self.regions[self.selected_idx]
         story = self.game.story_manager
+        if self.mode == "move":
+            self.game.change_state(story.move_to_region(region))
+            return
         cfg = story.get_region_start(region)
         story.starting_region = region
         story.story_flags[f"unlocked_{region.lower()}_badges"] = True
@@ -281,8 +308,13 @@ class RegionSelectionState(GameState):
         screen.fill(BLACK)
         cx = self.game.width // 2
 
-        Utils.draw_text_outline(screen, "WHERE WILL YOUR JOURNEY BEGIN?",
-                                self.game.assets.fonts["med"], WHITE, cx, 100)
+        title = "WHERE SHOULD WE MOVE?" if self.mode == "move" else "WHERE WILL YOUR JOURNEY BEGIN?"
+        Utils.draw_text_outline(screen, title, self.game.assets.fonts["med"], WHITE, cx, 100)
+        if self.mode == "move":
+            pygame.draw.rect(screen, GB_PANEL_DARK, self.stay_rect, border_radius=12)
+            pygame.draw.rect(screen, WHITE, self.stay_rect, 2, border_radius=12)
+            Utils.draw_text_outline(screen, "STAY HERE", self.game.assets.fonts["small"], WHITE,
+                                    self.stay_rect.centerx, self.stay_rect.centery)
 
         for i, rect in enumerate(self.rects):
             is_selected = (self.selected_idx == i)
@@ -309,11 +341,11 @@ class RegionSelectionState(GameState):
                 GRAY, rect.centerx, rect.centery + 26
             )
 
-        msg = "SELECT A REGION TO CONTINUE"
-        Utils.draw_text_outline(
-            screen, msg, self.game.assets.fonts["small"],
-            GOLD, cx, self.game.height - 80
-        )
+        if self.mode != "move":
+            Utils.draw_text_outline(
+                screen, "SELECT A REGION TO CONTINUE", self.game.assets.fonts["small"],
+                GOLD, cx, self.game.height - 80
+            )
 
 
 # [REF-0057: Rival Selection State]

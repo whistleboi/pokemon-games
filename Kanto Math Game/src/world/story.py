@@ -209,6 +209,43 @@ class StoryManager:
 
         return pid_str in self.game.data.data.get("pokedex", {})
 
+    @staticmethod
+    def champion_flag(region):
+        return "beat_champion" if region == "KANTO" else f"beat_{region.lower()}_champion"
+
+    def is_region_champion(self, region):
+        return bool(self.story_flags.get(self.champion_flag(region)))
+
+    def enter_region(self, region):
+        """Unlock a region's badge case page and Pokédex section the moment the player arrives."""
+        if not region:
+            return
+        self.story_flags[f"unlocked_{region.lower()}_badges"] = True
+        self.badges.setdefault(region, [])
+
+    def move_to_region(self, region):
+        """Mom's move after a championship: unlock the region and return the state to switch to."""
+        from src.states.overworld import AreaTransitionState
+        from src.states.menus import StarterSelectionState
+        src = self.get_current_region()
+        cfg = self.get_region_start(region)
+        self.enter_region(region)
+        self.active_badge_region = region
+        self.story_flags[f"moved_to_{region.lower()}"] = True
+        self.current_area_key = cfg.get("start_area", self.current_area_key)
+        if not self.story_flags.get(f"received_starter_{region.lower()}"):
+            return StarterSelectionState(self.game, starter_ids=cfg.get("starters"), region=region)
+        text = self.game.assets.game_text
+        for key in (f"{region.lower()}_departure_from_{src.lower()}", f"{src.lower()}_departure_to_{region.lower()}"):
+            if key in text:
+                lines = text[key]
+                message = " ".join(lines) if isinstance(lines, list) else lines
+                break
+        else:
+            town = self.game.loader.area_data["STORY_PROGRESSION"].get(cfg.get("start_area"), {}).get("route_name", region.title())
+            message = f"Mom found a lovely new home in {town}! Welcome to the {region.title()} region!"
+        return AreaTransitionState(self.game, cfg.get("start_area"), initial_message=message.replace("{player_name}", self.game.player_name))
+
     def has_badge(self, name):
         """True if a badge with this name was earned in any region."""
         return any(name in earned for earned in self.badges.values())

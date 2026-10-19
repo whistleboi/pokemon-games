@@ -3111,6 +3111,9 @@ class CityState(GameState):
             self.game.assets.fonts["med"],
             callback=self.end_npc_interaction
         )
+        region = story.get_current_region()
+        if should_heal and story.is_region_champion(region):
+            self.npc_dialogue.callback = lambda: self._offer_move(region, phone=False)
 
     def visit_prof_oak(self):
         self.clear_hover_menu()
@@ -3540,11 +3543,15 @@ class CityState(GameState):
             if isinstance(msg, list): msg = msg[:]
             else: msg = [msg]
 
-            msg.append("To help you on this new leg of your journey...")
-            msg.append("Please, choose one of these Johto Pokémon!")
-
             story.story_flags["unlocked_national_dex"] = True
             story.story_flags["unlocked_johto_badges"] = True
+            if story.story_flags.get("received_starter_johto"):
+                msg.append("I see you already have a Johto partner. You two make a great team!")
+                self.npc_dialogue = ClassicDialogueBox(Utils.get_full_dialogue_rect(self.game), msg, self.game.assets.fonts["med"], callback=self.end_npc_interaction)
+                return
+
+            msg.append("To help you on this new leg of your journey...")
+            msg.append("Please, choose one of these Johto Pokémon!")
 
             def johto_starter_exit():
                 from src.states.menus import StarterSelectionState
@@ -4037,6 +4044,33 @@ class CityState(GameState):
             if btn not in self.game.ui_manager.elements:
                 self.game.ui_manager.add_element(btn)
 
+        story = self.game.story_manager
+        region = story.get_current_region()
+        story.enter_region(region)
+        offer_flag = f"move_offer_{region.lower()}"
+        if story.is_region_champion(region) and not story.story_flags.get(offer_flag):
+            story.story_flags[offer_flag] = True
+            self._offer_move(region, phone=True)
+
+    def _offer_move(self, region, phone):
+        """Mom uses the championship prize money for a new home and asks where to move."""
+        name = self.game.player_name
+        if phone:
+            lines = ["*Ring ring!* It's Mom calling!",
+                     f"Mom: {name}! I just watched the broadcast. You're the {region.title()} Champion!",
+                     "Mom: Your prize money arrived, and it's more than enough to buy us a brand-new home.",
+                     "Mom: I've been browsing houses all over the world... Where should we move next?"]
+        else:
+            lines = ["Mom: Still thinking about moving?",
+                     "Mom: There's plenty of championship money left for a new house. Where to?"]
+
+        def open_picker():
+            from src.states.menus import RegionSelectionState
+            self.end_npc_interaction()
+            self.game.change_state(RegionSelectionState(self.game, mode="move", return_state=CityState(self.game)))
+
+        self.show_message(lines, callback=open_picker)
+
     def clear_hover_menu(self):
         for btn in self.hover_buttons:
             if btn in self.game.ui_manager.elements:
@@ -4241,6 +4275,7 @@ class AreaTransitionState(GameState):
 
         if self.timer <= 0:
             self.game.story_manager.current_area_key = self.next_area_key
+            self.game.story_manager.enter_region(self.game.story_manager.get_current_region())
 
             pygame.event.clear()
 
