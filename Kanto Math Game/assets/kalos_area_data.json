@@ -750,9 +750,16 @@
       ],
       "route_menu": [
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        {
+          "text": "Investigate the Ring",
+          "action": "BOSS",
+          "condition": ["boss_not_defeated", "beat_kalos_champion"],
+          "color": "GOLD"
+        },
         { "text": "Route 6", "action": "EXIT", "target_area": "KALOS_ROUTE_6", "condition": "can_exit", "color": "RED" },
         { "text": "CAMPHRIER TOWN", "action": "EXIT", "target_area": "CAMPHRIER_TOWN", "condition": "can_exit", "color": "RED" }
-      ]
+      ],
+      "area_boss": { "id": 720, "name": "Hoopa", "victory_flag": "PARFUM_PALACE_boss_defeated" }
     },
     "GLITTERING_CAVE": {
       "area_type": "dungeon",
@@ -798,9 +805,16 @@
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        {
+          "text": "Follow the Sparkle",
+          "action": "BOSS",
+          "condition": ["boss_not_defeated", "beat_kalos_champion"],
+          "color": "GOLD"
+        },
         { "text": "Route 11 (to Geosenge)", "action": "EXIT", "target_area": "KALOS_ROUTE_11", "condition": "can_exit", "color": "RED" },
         { "text": "Shalour City", "action": "EXIT", "target_area": "SHALOUR_CITY", "condition": "can_exit", "color": "RED" }
-      ]
+      ],
+      "area_boss": { "id": 719, "name": "Diancie", "victory_flag": "REFLECTION_CAVE_boss_defeated" }
     },
     "TOWER_OF_MASTERY": {
       "area_type": "dungeon",
@@ -886,6 +900,7 @@
           "color": "GOLD",
           "flag_condition": "not xerneas_encountered"
         },
+        { "text": "INNER CHAMBER", "action": "EXIT", "target_area": "FLARE_HQ_INNER_CHAMBER", "condition": "boss_defeated", "color": "GOLD" },
         { "text": "Geosenge Town", "action": "EXIT", "target_area": "GEOSENGE_TOWN", "condition": "can_exit", "color": "RED" }
       ],
       "area_boss": { "id": 716, "name": "Xerneas", "victory_flag": "xerneas_encountered" }
@@ -1524,11 +1539,18 @@
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
+        {
+          "text": "Follow the Steam",
+          "action": "BOSS",
+          "condition": ["boss_not_defeated", "beat_kalos_champion"],
+          "color": "GOLD"
+        },
         { "text": "Terminus Cave", "action": "EXIT", "target_area": "TERMINUS_CAVE", "condition": "can_exit", "color": "GOLD" },
         { "text": "Anistar City", "action": "EXIT", "target_area": "ANISTAR_CITY", "condition": "can_exit", "color": "RED" },
         { "text": "Couriway Town", "action": "EXIT", "target_area": "COURIWAY_TOWN", "condition": "can_exit", "color": "RED" }
       ],
-      "next_area": "COURIWAY_TOWN"
+      "next_area": "COURIWAY_TOWN",
+      "area_boss": { "id": 721, "name": "Volcanion", "victory_flag": "KALOS_ROUTE_18_boss_defeated" }
     },
     "KALOS_ROUTE_19": {
       "area_type": "wild_route",
@@ -1555,6 +1577,21 @@
         { "text": "Snowbelle City", "action": "EXIT", "target_area": "SNOWBELLE_CITY", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "SNOWBELLE_CITY"
+    },
+    "FLARE_HQ_INNER_CHAMBER": {
+      "area_type": "dungeon",
+      "route_name": "Flare HQ Inner Chamber",
+      "region": "KALOS",
+      "battle_type": "indoor",
+      "backgrounds": { "main": "flare_hq_inner_chamber.png" },
+      "min_rounds": 0,
+      "trainer_pool": [],
+      "route_menu": [
+        { "text": "Encounter Yveltal", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD" },
+        { "text": "Geosenge Flare HQ", "action": "EXIT", "target_area": "GEOSENGE_FLARE_HQ", "condition": "can_exit", "color": "RED" }
+      ],
+      "area_boss": { "id": 717, "name": "Yveltal", "victory_flag": "FLARE_HQ_INNER_CHAMBER_boss_defeated" },
+      "next_area": "GEOSENGE_FLARE_HQ"
     }
   },
   "JOURNAL_MISSIONS": [
@@ -1675,8 +1712,8 @@
   "KALOS_ROUTE_1_PERCENTAGES": { "659": 60, "661": 40 },
   "KALOS_ROUTE_2": [659, 661, 664, 669],
   "KALOS_ROUTE_2_PERCENTAGES": { "659": 30, "661": 30, "664": 20, "669": 20 },
-  "KALOS_ROUTE_3": [661, 664, 669, 672],
-  "KALOS_ROUTE_3_PERCENTAGES": { "661": 30, "664": 25, "669": 25, "672": 20 },
+  "KALOS_ROUTE_3": [661, 664, 669, 672, 667],
+  "KALOS_ROUTE_3_PERCENTAGES": { "661": 25, "664": 20, "669": 20, "672": 20, "667": 15 },
   "KALOS_ROUTE_4": [659, 672, 676, 674],
   "KALOS_ROUTE_4_PERCENTAGES": { "659": 30, "672": 25, "676": 25, "674": 20 },
   "KALOS_ROUTE_5": [674, 676, 672, 673],
@@ -1691,8 +1728,8 @@
   "KALOS_ROUTE_9_PERCENTAGES": { "690": 30, "691": 25, "688": 25, "694": 20 },
   "KALOS_ROUTE_10": [696, 697, 698, 699],
   "KALOS_ROUTE_10_PERCENTAGES": { "696": 30, "697": 25, "698": 25, "699": 20 },
-  "KALOS_ROUTE_11": [677, 678, 679, 680],
-  "KALOS_ROUTE_11_PERCENTAGES": { "677": 30, "678": 25, "679": 25, "680": 20 },
+  "KALOS_ROUTE_11": [677, 678, 679, 680, 702],
+  "KALOS_ROUTE_11_PERCENTAGES": { "677": 25, "678": 20, "679": 20, "680": 15, "702": 20 },
   "KALOS_ROUTE_12": [692, 693, 690, 691],
   "KALOS_ROUTE_12_PERCENTAGES": { "692": 30, "693": 25, "690": 25, "691": 20 },
   "KALOS_ROUTE_13": [695, 700, 682, 683],
@@ -1701,8 +1738,8 @@
   "KALOS_ROUTE_14_PERCENTAGES": { "708": 30, "709": 25, "710": 25, "711": 20 },
   "KALOS_ROUTE_15": [686, 687, 684, 685],
   "KALOS_ROUTE_15_PERCENTAGES": { "686": 30, "687": 25, "684": 25, "685": 20 },
-  "KALOS_ROUTE_16": [710, 711, 714, 715],
-  "KALOS_ROUTE_16_PERCENTAGES": { "710": 30, "711": 25, "714": 25, "715": 20 },
+  "KALOS_ROUTE_16": [710, 711, 714, 715, 707],
+  "KALOS_ROUTE_16_PERCENTAGES": { "710": 25, "711": 20, "714": 20, "715": 15, "707": 20 },
   "KALOS_ROUTE_17": [614, 615, 712, 713],
   "KALOS_ROUTE_17_PERCENTAGES": { "614": 30, "615": 25, "712": 25, "713": 20 },
   "KALOS_ROUTE_18": [703, 706, 714, 715],
