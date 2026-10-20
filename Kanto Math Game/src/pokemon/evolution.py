@@ -65,6 +65,21 @@ def default_level(game, pid):
     return max(5, int(_data(game).get("min_level", {}).get(str(pid), 5)))
 
 
+def suited_to_level(game, pid, level):
+    """The species, or its earlier form, that can be found at this level: a hooked
+    Dragonair below Dragonair's evolution level comes up as a Dratini."""
+    pid = int(pid)
+    pairs = _data(game).get("pairs", {})
+    for _ in range(3):
+        if pid >= 2000 or default_level(game, pid) <= level:
+            break
+        pre = next((int(k.split(">")[0]) for k in pairs if int(k.split(">")[1]) == pid), None)
+        if pre is None:
+            break
+        pid = pre
+    return pid
+
+
 def _regional_only_targets(game):
     """Species ids that only a regional form evolves into (per the region data's evolution map)."""
     cache = getattr(game, "_regional_evo_cache", None)
@@ -222,6 +237,8 @@ def rule_met(game, poke, rule, party=None, area_key=None):
 
 def ready_evolutions(game, poke, party=None):
     """Entry names this Pokemon can evolve into right now (without items)."""
+    if getattr(poke, "everstone", False):
+        return []  # holding an Everstone: it stays as it is
     return [entry for entry, tid, rule in evolution_options(game, poke) if rule_met(game, poke, rule, party)]
 
 

@@ -288,6 +288,10 @@ class AssetManager:
                     return pygame.image.load(path).convert()
                 except Exception:
                     pass
+            # No art for this gym yet: the generic arena, not another town's gym.
+            return self.get_generic_background("battle_gym")
+
+        battle_type_lower = {"water": "ocean", "outdoor": "field"}.get(battle_type_lower, battle_type_lower)
 
         prefix = f"battle_{battle_type_lower}"
         for fname_lower, fname_actual in self.battle_bg_map.items():
@@ -302,7 +306,42 @@ class AssetManager:
             except Exception:
                 return None
 
-        return None
+        return self.get_generic_background(f"battle_{battle_type_lower}")
+
+    # Stand-in art for places that don't have their own yet (backgrounds/generic).
+    GENERIC_BACKGROUNDS = {
+        "center": "pokemoncenter.png", "mart": "mart1.png",
+        "gym": "generic/gym.png", "lab": "generic/lab.png", "house": "generic/house.png",
+        "building": "generic/building.png", "town": "generic/town.png",
+        "battle_gym": "generic/battle_gym.png", "battle_elite": "generic/battle_elite.png",
+        "battle_indoor": "generic/battle_indoor.png", "battle_sand": "generic/battle_sand.png",
+    }
+
+    def generic_kind(self, name):
+        """Which stand-in suits a missing background, from its file name."""
+        n = str(name).lower()
+        if n.startswith("battle_"):
+            if "gym" in n:
+                return "battle_gym"
+            if any(k in n for k in ("elite", "champion", "will", "league")):
+                return "battle_elite"
+            return "battle_indoor"
+        for kind, keys in (("center", ("center", "pokecenter")), ("mart", ("mart", "shop")),
+                           ("gym", ("gym",)), ("lab", ("lab",)),
+                           ("house", ("mom", "home", "house"))):
+            if any(k in n for k in keys):
+                return kind
+        return "building"
+
+    def get_generic_background(self, kind):
+        rel = self.GENERIC_BACKGROUNDS.get(kind) or self.GENERIC_BACKGROUNDS.get(self.generic_kind(kind))
+        if not rel or not self.backgrounds_dir:
+            return None
+        path = os.path.join(self.backgrounds_dir, *rel.split("/"))
+        try:
+            return pygame.image.load(path).convert()
+        except Exception:
+            return None
 
     def get_trainer_image(self, name):
         name_lower = name.lower()
@@ -425,7 +464,7 @@ class AssetManager:
             if self.backgrounds_dir and os.path.isdir(self.backgrounds_dir):
                 for entry in sorted(os.listdir(self.backgrounds_dir)):
                     folder = os.path.join(self.backgrounds_dir, entry)
-                    if entry.lower() in ("battle", "kanto", "johto") or not os.path.isdir(folder):
+                    if entry.lower() in ("battle", "kanto", "johto", "generic") or not os.path.isdir(folder):
                         continue
                     for root, _, files in os.walk(folder):
                         for f in files:
@@ -535,6 +574,10 @@ class AssetManager:
         return None
 
     def _load_sound(self, name):
+        if name not in self.sound_map:  # same sound saved as another format (Shiny.mp3)
+            stem = os.path.splitext(name)[0].lower()
+            name = next((k for k in self.sound_map
+                         if os.path.splitext(k)[0] == stem), name)
         if name in self.sound_map:
             try:
                 s = pygame.mixer.Sound(

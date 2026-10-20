@@ -1061,7 +1061,7 @@ class PlayState(GameState):
             return has_helmet and self.area_data.get("has_trees", False)
         if condition == "can_fish":
             inv = self.game.story_manager.inventory
-            has_rod = inv.get("OLD_ROD", 0) > 0 or inv.get("SUPER_ROD", 0) > 0
+            has_rod = any(inv.get(r, 0) > 0 for r in ("OLD_ROD", "GOOD_ROD", "SUPER_ROD"))
             return has_rod and self.area_data.get("can_fish", False)
         if condition == "can_battle":
             return True
@@ -1415,6 +1415,8 @@ class PlayState(GameState):
                 continue
             if target_form and poke.form != target_form:
                 continue
+            if id(poke) in getattr(self.game, "evo_declined", ()):
+                continue
 
             is_catch_evo = False
             if context != "party":
@@ -1447,7 +1449,7 @@ class PlayState(GameState):
                     evo_state = EvolutionState(
                         self.game, poke, next_id, i,
                         next_form=next_form, context=context,
-                        return_state=self,
+                        return_state=getattr(self, "_evo_return", None) or self,
                         consume_catch_count=is_catch_evo
                         )
                     self.game.change_state(evo_state)
@@ -1543,10 +1545,8 @@ class PlayState(GameState):
         inv = self.game.story_manager.inventory
         prefix = "JOHTO_" if "JOHTO" in self.game.story_manager.current_area_key or "LAKE" in self.game.story_manager.current_area_key else ""
 
-        if inv.get("SUPER_ROD", 0) > 0:
-            pool_key = f"{prefix}SUPER_ROD_POOL_PERCENTAGES"
-        else:
-            pool_key = f"{prefix}OLD_ROD_POOL_PERCENTAGES"
+        rod = next((r for r in ("SUPER_ROD", "GOOD_ROD") if inv.get(r, 0) > 0), "OLD_ROD")
+        pool_key = f"{prefix}{rod}_POOL_PERCENTAGES"
 
         fishing_pool_pct = self.game.loader.area_data.get(pool_key, {})
         if not fishing_pool_pct:
@@ -1560,9 +1560,17 @@ class PlayState(GameState):
         fishing_pool_pct = seasons.adjust_pool(self.game, regional_forms.extend_pool(self.game, fishing_pool_pct),
                                                self.game.story_manager.current_area_key)
         p_id_str = Utils.weighted_random_choice(fishing_pool_pct)
-        raw = self.game.loader.fetch_specific(int(p_id_str))
+        # Better rods reach bigger fish (Old Lv 5+, Good 10+, Super 15+), and nothing bites
+        # below the level it evolves at.
+        area_key = self.game.story_manager.current_area_key
+        level = max(levels.wild_level(self.game, area_key), {"OLD_ROD": 5, "GOOD_ROD": 10, "SUPER_ROD": 15}[rod])
+        pid = evolution.suited_to_level(self.game, int(p_id_str), level)
+        raw = self.game.loader.fetch_specific(pid)
         pokemon = Pokemon(raw, self.game.assets, size_mult=3.125)
-        levels.set_wild(self.game, pokemon, self.game.story_manager.current_area_key)
+        levels.set_wild(self.game, pokemon, area_key)
+        if not levels.is_legendary(pokemon.id):
+            pokemon.level = level
+            pokemon.current_hp = pokemon.get_max_hp()
 
         self.show_dialogue(["Oh! A bite!"], callback=None)
 
@@ -1593,6 +1601,13 @@ class PlayState(GameState):
                 return
 
         boss_data = boss_data or self.area_data.get("area_boss", {})
+        if boss_data and boss_data.get("versions"):
+            # Version-exclusive bosses (Great Tusk / Iron Treads): each save gets one version.
+            story = self.game.story_manager
+            versions = boss_data["versions"]
+            if story.story_flags.get("paldea_version") not in versions:
+                story.story_flags["paldea_version"] = random.choice(sorted(versions))
+            boss_data = dict(boss_data, versions=None, **versions[story.story_flags["paldea_version"]])
         if boss_data and boss_data.get("lines"):
             self.is_progression_paused = True
             self.hide_menu_buttons()
@@ -2085,11 +2100,8 @@ class PlayState(GameState):
             return
 
     def perform_black_out(self):
-        """Fully heals the team and restarts the current area from the beginning."""
-        for p in self.game.story_manager.player_team:
-            p.heal_full()
-
-        self.game.change_state(PlayState(self.game))
+        """Back to the last Pokemon Center (or home) with a healed team."""
+        white_out(self.game)
 
     def resolve_catch(self):
         if not self.flee_active:
@@ -2714,6 +2726,8 @@ class CityState(GameState):
         bg_name = f"{self.area_key.lower()}.png"
 
         img = self.game.assets.get_background(bg_name)
+        if img is None and self.area_data.get("area_type") == "town":
+            img = self.game.assets.get_generic_background("town")
         return img
 
     def start_gym_battle(self):
@@ -3148,10 +3162,19 @@ class CityState(GameState):
             if self.game.story_manager.inventory.get("POKE_FLUTE", 0) > 0:
                 msgs.append(self.game.assets.get_text("fuji_already_helped", default="Thank you again for your help at the tower."))
             else:
-                msgs.append(self.game.assets.get_text("fuji_gratitude", default="Thank you for pacifying the spirit in the tower!"))
-                msgs.append(self.game.assets.get_text("fuji_reward", default="Please, take this as a token of my gratitude."))
-                msgs.append(self.game.assets.get_text("received_flute", default="You received the POKé FLUTE!"))
+                msgs += [
+                    "Mr. Fuji: Thank you! With the ghost at peace, Team Rocket has fled the Pokémon Tower.",
+                    "The ghost you calmed was the spirit of a Marowak.",
+                    "Team Rocket took her life while she was protecting her child, Cubone.",
+                    "Thanks to you, her spirit has finally found peace.",
+                    "I care for the orphaned Pokémon here, and they're all safe now.",
+                    self.game.assets.get_text("fuji_reward", default="Please, take this as a token of my gratitude."),
+                    self.game.assets.get_text("received_flute", default="You received the POKé FLUTE!"),
+                    "Mr. Fuji: Its soft melody wakes up even the deepest-sleeping Pokémon.",
+                    "A Snorlax is said to be dozing on the road east of Vermilion...",
+                ]
                 self.game.story_manager.inventory["POKE_FLUTE"] = 1
+                self.game.story_manager.story_flags["met_mr_fuji"] = True
         else:
             msgs.append(self.game.assets.get_text("fuji_sadness", default="A terrible sadness hangs over the Pokémon Tower..."))
 
@@ -3166,7 +3189,7 @@ class CityState(GameState):
         self.npc_sprite = self.game.assets.get_trainer_image("scientist.png")
 
         bg_name = self.area_data.get("backgrounds", {}).get("lab", "ruins_lab.png")
-        bg_img = self.game.assets.get_background(bg_name)
+        bg_img = self.game.assets.get_background(bg_name) or self.game.assets.get_generic_background("lab")
         if bg_img:
             box_top = Utils.get_full_dialogue_rect(self.game).top
             self.npc_bg = pygame.transform.scale(bg_img, (self.game.width, box_top))
@@ -3362,7 +3385,7 @@ class CityState(GameState):
         if not bg_name:
             bg_name = "pallet_city_mom.png" if "PALLET" in self.area_key else "new_city_mom.png"
 
-        bg_img = self.game.assets.get_background(bg_name)
+        bg_img = self.game.assets.get_background(bg_name) or self.game.assets.get_generic_background("house")
         if bg_img:
             box_top = Utils.get_full_dialogue_rect(self.game).top
             self.npc_bg = pygame.transform.scale(bg_img, (self.game.width, box_top))
@@ -3841,7 +3864,7 @@ class CityState(GameState):
         else:
             self.npc_sprite = self.game.assets.get_trainer_image("scientist.png")
 
-        bg_img = self.game.assets.get_background("new_bark_lab.png")
+        bg_img = self.game.assets.get_background("new_bark_lab.png") or self.game.assets.get_generic_background("lab")
         if bg_img:
             box_top = Utils.get_full_dialogue_rect(self.game).top
             self.npc_bg = pygame.transform.scale(bg_img, (self.game.width, box_top))
@@ -3963,7 +3986,7 @@ class CityState(GameState):
             trainer_class="RIVAL", trainer_name=rival_name, battle_type="rival"
         )
 
-        lab_bg = self.game.assets.get_background(bg_name)
+        lab_bg = self.game.assets.get_background(bg_name) or self.game.assets.get_generic_background("battle_indoor")
         if lab_bg:
             box_top = Utils.get_full_dialogue_rect(self.game).top - 8
             battle_state.background = pygame.transform.scale(lab_bg, (self.game.width, box_top))
@@ -4365,6 +4388,9 @@ class CityState(GameState):
         events = self.area_data.get("on_enter_event")
         if isinstance(events, dict):
             events = [events]
+        if getattr(self.game, "skip_arrival_event", False):
+            self.game.skip_arrival_event = False
+            events = []
         for on_enter in events or []:
             if self._try_on_enter_event(on_enter):
                 return
@@ -4611,6 +4637,7 @@ class AreaTransitionState(GameState):
             self.timer -= 1
 
         if self.timer <= 0:
+            self.timer = 10**9  # only once
             self.game.story_manager.current_area_key = self.next_area_key
             self.game.story_manager.enter_region(self.game.story_manager.get_current_region())
 
@@ -4627,6 +4654,8 @@ class AreaTransitionState(GameState):
             else:
                 self.game.states["play"] = PlayState(self.game)
                 self.game.change_state(self.game.states["play"])
+            if self.game.story_manager.autosave:
+                autosave(self.game)
 
     def draw(self):
         if self.bg:
@@ -4639,19 +4668,68 @@ class AreaTransitionState(GameState):
         self.dialogue_box.draw(self.game.screen)
 
 
+def evolve_ready_party(game, return_state):
+    """Evolve a party Pokemon that is ready (e.g. it hit its level in a gym or town battle),
+    then go on to return_state. Returns True if an evolution started."""
+    scan = PlayState.__new__(PlayState)  # only the party scan is needed, not a whole route
+    scan.game = game
+    scan._evo_return = return_state
+    return scan._scan_list_for_evolution(game.story_manager.player_team, False, "party")
+
+
+def autosave(game):
+    """Save quietly (Options > AUTOSAVE); a failed write never stops the game."""
+    try:
+        game.update_save_data()
+        game.data.save()
+    except Exception as e:
+        print(f"Autosave failed: {e}")
+
+
+def white_out(game):
+    """Whiting out: heal the team and wake up at the last Pokemon Center used in
+    this region, or at home if you haven't used one yet."""
+    story = game.story_manager
+    for p in story.player_team:
+        p.heal_full()
+        if hasattr(p, "revert_transform"):
+            p.revert_transform()
+    story.current_area_key, has_center = story.whiteout_destination()
+    area = story.get_current_area_data()
+    if area.get("area_type") == "town":
+        game.skip_arrival_event = True  # no rival ambush the moment you wake up
+        town = game.states["city"] = CityState(game)
+    else:
+        town = game.states["play"] = PlayState(game)
+    if has_center:
+        game.change_state(PokeCenterState(game, town, lines=[
+            "You hurried back to the Pokémon Center, protecting your exhausted Pokémon.",
+            "Nurse: We've healed your Pokémon after that tough battle.",
+            "Please take care out there!",
+        ]))
+    else:
+        game.change_state(town)
+        game.show_dialogue([
+            "You hurried home, protecting your exhausted Pokémon.",
+            "Mom: Oh, you're back! You must have had a tough battle.",
+            "I've looked after your Pokémon. They're full of energy again!",
+        ])
+
+
 # [REF-0030: City & Building Logic]
 class PokeCenterState(GameState):
-    def __init__(self, game, previous_state):
+    def __init__(self, game, previous_state, lines=None):
         super().__init__(game)
         self.previous_state = previous_state
         self.timer = 0
         self.phase = "HEAL"
         self.bg = self._load_building_bg(game, "center")
+        game.story_manager.last_center = game.story_manager.current_area_key
 
-        self.nurse_sprite = game.assets.get_trainer_image("nurse.png")
+        self.nurse_sprite = None if getattr(self, "generic_bg", False) else game.assets.get_trainer_image("nurse.png")
         self.dialogue_box = ClassicDialogueBox(
             Utils.get_full_dialogue_rect(game),
-            ["Welcome to the Pokémon Center!", "We've restored your team to full health."],
+            lines or ["Welcome to the Pokémon Center!", "We've restored your team to full health."],
             game.assets.fonts["med"],
             callback=self.finish_heal
         )
@@ -4683,6 +4761,10 @@ class PokeCenterState(GameState):
             if img:
                 return pygame.transform.scale(img, (game.width, box_top))
 
+        img = game.assets.get_generic_background(type_suffix)
+        if img:
+            self.generic_bg = True  # the stand-in Center already has Nurse Joy at the counter
+            return pygame.transform.scale(img, (game.width, box_top))
         bg = pygame.Surface((game.width, box_top))
         bg.fill(WHITE if type_suffix == "center" else BLUE)
         return bg
@@ -4732,6 +4814,10 @@ class GymLobbyState(GameState):
                 self.bg = pygame.transform.scale(img, (self.game.width, box_top))
                 break
 
+        if not self.bg:
+            img = game.assets.get_generic_background("gym")
+            if img:
+                self.bg = pygame.transform.scale(img, (self.game.width, box_top))
         if not self.bg:
             self.bg = pygame.Surface((game.width, int(game.height * 0.75)))
             self.bg.fill((40, 40, 60))
@@ -4818,7 +4904,7 @@ class GymLobbyState(GameState):
 
     # FireRed/LeafGreen rematch (post-Sevii) teams, used once the Champion has been beaten.
     FRLG_E4_REMATCH = {
-        "LORELI": ([87, 91, 221, 124, 131], [64, 63, 63, 66, 66]),
+        "LORELEI": ([87, 91, 221, 124, 131], [64, 63, 63, 66, 66]),
         "BRUNO": ([208, 107, 106, 208, 68], [65, 65, 65, 66, 66]),
         "AGATHA": ([94, 169, 200, 24, 94], [66, 66, 65, 66, 70]),
         "LANCE": ([130, 149, 230, 142, 149], [68, 66, 66, 70, 72]),

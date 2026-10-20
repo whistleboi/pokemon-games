@@ -47,6 +47,55 @@
   - Finished boxes no longer swallow taps, and overlay messages close themselves.
   - Each tap is handled on its own, and taps right after a screen change are ignored.
   - Bag messages ("already at full health", level-ups, learned moves) now show.
+- **Whiting out** takes you to the last Pokémon Center you used in this region. The nurse says "We've healed your Pokémon after that tough battle." If you haven't used a center in the region yet, you go home and Mom heals your team.
+- **Journal:**
+  - It shows only the missions of the region you're in. Kanto's 40 missions now appear; before, they never loaded.
+  - A region's missions count that region's badges.
+  - The Hisui mission waits for the Coal Badge.
+- **Johto's routes and dungeons** are now tagged as Johto. Before, they counted as Kanto for the AUTO math level, badge counts and missions.
+- **Options:**
+  - New QUIT button: Save & Quit to Title, Quit to Title without saving, or Cancel.
+  - New AUTOSAVE toggle, on by default, which saves each time you travel to a new area.
+  - The title screen has its own QUIT button that closes the game.
+- **Battle soft-lock fixed (Eterna rival).** When a Pokémon fainted, the turn's other queued move wasn't cleared and could leak into the next turn. A KO now ends the queue. The rival battle was replayed 27 ways (every starter, solo, a fainted lead, two Pokémon, switching or not, right or wrong answers), and every run finishes.
+- **"Change Pokémon?"** is only asked when you have another Pokémon able to battle.
+- After a whiteout, a town's arrival battle (like Barry in Eterna) waits until your next visit instead of ambushing you as you leave the Pokémon Center.
+- **Bag pages.** A full pocket splits into pages with UP/DOWN buttons and a page count, so every item can be reached.
+- **Shiny Pokémon make their sound again.** The game now finds `Shiny.mp3`.
+- **Shiny back sprites:** 1,084 downloaded, including regional forms and the three Paldean Tauros breeds. "Galarian Psyduck" isn't a real form, so it keeps the normal back.
+- **Stand-in art** for anything without its own picture yet, in `assets/backgrounds/generic/`:
+  - The cute Pokémon Center and Mart pictures for every Center and Mart.
+  - New pixel-art gym, lab, Mom's house, town, and generic building (museums, lighthouses and so on).
+  - Battle backdrops for gyms, Elite Four rooms, indoor areas and deserts.
+  - A gym without its own battle art no longer borrows another town's gym.
+  - Nurse Joy appears in Pokémon Centers that have their own art.
+- **Saffron's "Confront Team Rocket"** takes you into Silph Co. (it pointed at the removed Crazy Guy). It shows after the Pokémon Tower and disappears once Silph Co. is freed.
+- **Game Corner Team Rocket** grunts have levels that fit together (around Lv 17–21), getting a little tougher each fight.
+- **Fishing:**
+  - Better rods reach bigger fish: Old Rod Lv 5+, Good Rod Lv 10+, Super Rod Lv 15+.
+  - Nothing bites below the level it evolves at; a low-level Dragonair comes up as a Dratini instead.
+  - The Good Rod now counts as a rod.
+- **Erika** uses her FireRed/LeafGreen team: Victreebel, Tangela, and Vileplume as her ace.
+- **"Loreli" is now "Lorelei".**
+- **Mr. Fuji** gives you the Poké Flute himself, with the story of the Marowak in the tower. The game no longer hands it over in the background.
+- **Evolution after gym and town battles:** a Pokémon that reaches its level while winning a badge evolves right away. The same goes for town battles, like the rival in Eterna.
+- **Several evolutions at once:** when more than one Pokémon is ready, they evolve one after another, as in the games. Saying NO to one moves on to the next without asking again.
+- **Summary screen:** Amie hearts, plus a new STATS & MOVES page with every stat, IV bars, status, XP to the next level, and the four moves with type, category, power and accuracy. Hearts also show on the party screen once a Pokémon has any.
+- **Music by situation:** towns, routes, wild battles, trainer battles and gym/Elite/Champion battles each have their own music, and a victory jingle plays after a win.
+  - New original chiptune tracks: `music_town`, `music_route`, `music_gym`, `music_victory`.
+  - The existing `kanto_wild`, `kanto_trainer` and `kanto_battle` tracks are used for their battles.
+  - Drop in a file like `johto_town1.ogg` and that region uses it automatically.
+- **Mart:**
+  - New layout: BUY and SELL tabs, item cards with price and how many you have, and a money panel.
+  - A quantity picker that shows the math (3 x $500 = $1,500, money before and after).
+  - Selling pays half price. Key items, gifts and Mega Stones can't be sold.
+  - You can hold up to 999 of each item.
+  - New **Everstone** ($3,000): give it to a Pokémon from the Bag to stop it evolving, and use it again to take it back.
+- **Keyboard:** arrow keys move a gold highlight between buttons, Enter or Space presses (or moves the text on), and Esc goes back or cancels. It works on every screen; name entry and the pickers keep their own keys.
+- **Paldea:**
+  - Orthworm moved to its real home, the new East Province Area 3.
+  - The Quaking Earth Titan is Great Tusk or Iron Treads.
+  - Casseroya Lake battles use the lake backdrop.
 - **Story:**
   - The Route 22 rival battle now happens.
   - Knocking Snorlax out clears the road.
@@ -72,8 +121,8 @@
     |---|---|---|
     | Klawf | 16 | South Province Area 3 |
     | Bombirdier | 20 | West Province Area 1 |
-    | Orthworm | 29 | East Province Area 2 |
-    | Great Tusk | 45 | Asado Desert |
+    | Orthworm | 29 | East Province Area 3 (new area, off Levincia) |
+    | Great Tusk or Iron Treads | 45 | Asado Desert (each save gets one, like Scarlet or Violet) |
     | Dondozo | 56 | Casseroya Lake (new area) |
 
   - **Starfall Street:** five Team Star bases, each boss ending on the Starmobile (Revavroom).
@@ -145,9 +194,4 @@ This covers everything since "any-region starts, playable Gen 3–9 regions". Th
 - Missing trainer sprites, back sprites and item icons were downloaded. `ASSETS_NEEDED.md` lists the art still needed per region.
 
 ### Still to do (from the latest play-test)
-- Badge-based progression gates that hide off-story destinations.
-- Whiting out sends you to the last Pokémon Center used, with the nurse's message.
-- Journal shows only the current region's missions, and the Hisui mission waits for the Coal Badge.
-- Options: Quit button and an autosave toggle (save on area travel).
-- Shiny back sprites.
 - A larger UI pass over the PC, Pokédex, Bag, badge case and battle screens.

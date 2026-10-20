@@ -259,6 +259,11 @@ class PartySlotUI(UIElement):
 
         stage_str = f"Lv {self.pokemon.level}" + ("  MAX" if self.pokemon.level >= self.pokemon.MAX_LEVEL else "")
         Utils.draw_text_outline(surface, stage_str, self.game.assets.fonts["tiny"], WHITE, name_x, name_y + 30, BLACK, 2, align="left")
+        from src.pokemon import affection
+        if affection.hearts(self.pokemon) > 0:  # Pokemon-Amie hearts, once it has any
+            from src.ui.hearts import draw_hearts
+            lv_w = self.game.assets.fonts["tiny"].size(stage_str)[0]
+            draw_hearts(surface, self.pokemon, name_x + lv_w + 60, name_y + 38, size=14)
 
         sprite = pygame.transform.scale(self.pokemon.sidebar_image, (80, 80))
         sprite_rect = sprite.get_rect(center=(self.rect.right - 60, self.rect.y + 45))

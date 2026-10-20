@@ -684,6 +684,7 @@
 
 
         "TOHJO_FALLS": {
+            "region": "JOHTO",
             "area_type": "dungeon",
             "route_name": "Tohjo Falls",
             "battle_type": "cave",
@@ -699,6 +700,7 @@
         },
 
         "JOHTO_ROUTE_29": {
+            "region": "JOHTO",
             "area_type": "wild_route",
             "route_name": "Route 29",
             "battle_type": "grass",
@@ -727,6 +729,7 @@
         },
 
         "JOHTO_ROUTE_30": {
+            "region": "JOHTO",
             "area_type": "wild_route",
             "route_name": "Route 30",
             "battle_type": "grass",
@@ -754,6 +757,7 @@
         },
         
         "JOHTO_ROUTE_31": {
+            "region": "JOHTO",
             "area_type": "wild_route",
             "route_name": "Route 31",
             "battle_type": "grass",
@@ -782,6 +786,7 @@
         },
         
         "JOHTO_ROUTE_32": {
+            "region": "JOHTO",
             "area_type": "wild_route",
             "route_name": "Route 32",
             "battle_type": "field",
@@ -811,6 +816,7 @@
         },
         
         "JOHTO_ROUTE_33": {
+            "region": "JOHTO",
             "area_type": "wild_route",
             "route_name": "Route 33",
             "battle_type": "field",
@@ -838,6 +844,7 @@
         },
         
         "JOHTO_ROUTE_34": {
+            "region": "JOHTO",
             "area_type": "wild_route",
             "route_name": "Route 34",
             "battle_type": "field",
@@ -865,6 +872,7 @@
          },
         
         "JOHTO_ROUTE_35": {
+            "region": "JOHTO",
             "area_type": "wild_route",
             "route_name": "Route 35",
             "battle_type": "grass",
@@ -890,6 +898,7 @@
         },
         
         "JOHTO_ROUTE_36": {
+            "region": "JOHTO",
             "area_type": "wild_route",
             "route_name": "Route 36",
             "battle_type": "grass",
@@ -923,6 +932,7 @@
             },
         
         "JOHTO_ROUTE_37": {
+            "region": "JOHTO",
             "area_type": "wild_route",
             "route_name": "Route 37",
             "battle_type": "field",
@@ -953,6 +963,7 @@
         },
             
         "JOHTO_ROUTE_38": {
+            "region": "JOHTO",
             "area_type": "wild_route",
             "route_name": "Route 38",
             "battle_type": "field",
@@ -980,6 +991,7 @@
         },
         
         "JOHTO_ROUTE_39": {
+            "region": "JOHTO",
             "area_type": "wild_route",
             "route_name": "Route 39",
             "battle_type": "grass",
@@ -1006,6 +1018,7 @@
         },
         
         "JOHTO_ROUTE_40": {
+            "region": "JOHTO",
             "area_type": "wild_route",
             "route_name": "Route 40",
             "battle_type": "ocean",
@@ -1030,6 +1043,7 @@
         },
         
         "JOHTO_ROUTE_41": {
+            "region": "JOHTO",
             "area_type": "wild_route",
             "route_name": "Route 41",
             "battle_type": "ocean",
@@ -1055,6 +1069,7 @@
      },
         
         "JOHTO_ROUTE_42": {
+            "region": "JOHTO",
             "area_type": "wild_route",
             "route_name": "Route 42",
             "battle_type": "grass",
@@ -1081,6 +1096,7 @@
         },
         
         "JOHTO_ROUTE_43": {
+            "region": "JOHTO",
             "area_type": "wild_route",
             "route_name": "Route 43",
             "battle_type": "field",
@@ -1108,6 +1124,7 @@
         },
         
         "LAKE_OF_RAGE": {
+            "region": "JOHTO",
             "area_type": "wild_route",
             "route_name": "Lake of Rage",
             "battle_type": "field",
@@ -1140,6 +1157,7 @@
         },
 
         "JOHTO_ROUTE_44": {
+            "region": "JOHTO",
             "area_type": "wild_route",
             "route_name": "Route 44",
             "battle_type": "grass",
@@ -1161,6 +1179,7 @@
         },
         
         "JOHTO_ROUTE_45": {
+            "region": "JOHTO",
             "area_type": "wild_route",
             "route_name": "Route 45",
             "battle_type": "field",
@@ -1183,6 +1202,7 @@
         },
         
         "JOHTO_ROUTE_46": {
+            "region": "JOHTO",
             "area_type": "wild_route",
             "route_name": "Route 46",
             "battle_type": "field",
@@ -1208,6 +1228,7 @@
         },
 
         "UNION_CAVE": {
+            "region": "JOHTO",
             "area_type": "dungeon",
             "battle_type": "cave",
             "wild_pool_percentages": "JOHTO_UNION_CAVE_PERCENTAGES",
@@ -1239,6 +1260,7 @@
         },
         
         "DARK_CAVE": {
+            "region": "JOHTO",
             "area_type": "dungeon",
             "battle_type": "cave",
             "wild_pool_percentages": "JOHTO_DARK_CAVE_PERCENTAGES",
@@ -1263,6 +1285,7 @@
         },
         
         "SLOWPOKE_WELL": {
+            "region": "JOHTO",
             "area_type": "dungeon",
             "battle_type": "cave",
             "wild_pool_percentages": "JOHTO_SLOWPOKE_WELL_PERCENTAGES",
@@ -1303,7 +1326,8 @@
             "enter_warning": "Team Rocket grunts are swarming the well!"
         },
         
-        "ILEX_FOREST": { 
+        "ILEX_FOREST": {
+            "region": "JOHTO", 
             "area_type": "dungeon",
             "battle_type": "forest",
             "wild_pool_percentages": "JOHTO_ILEX_FOREST_PERCENTAGES",
@@ -1336,6 +1360,7 @@
         },
         
         "SPROUT_TOWER": {
+            "region": "JOHTO",
             "area_type": "dungeon",
             "battle_type": "indoor",
             "wild_pool_percentages": "JOHTO_SPROUT_TOWER_PERCENTAGES",
@@ -1369,7 +1394,8 @@
             "enter_warning": "The giant pillar in the center sways gently..."
         },
         
-        "BURNED_TOWER": { 
+        "BURNED_TOWER": {
+            "region": "JOHTO", 
             "area_type": "dungeon",
             "battle_type": "indoor",
             "wild_pool_percentages": "JOHTO_BURNED_TOWER_PERCENTAGES",
@@ -1399,6 +1425,7 @@
         },
         
         "BELL_TOWER": {
+            "region": "JOHTO",
             "area_type": "dungeon",
             "battle_type": "indoor",
             "wild_pool_percentages": "JOHTO_BELL_TOWER_PERCENTAGES",
@@ -1429,6 +1456,7 @@
         },
         
         "MT_MORTAR": {
+            "region": "JOHTO",
             "area_type": "dungeon",
             "battle_type": "cave",
             "wild_pool_percentages": "JOHTO_MT_MORTAR_PERCENTAGES",
@@ -1454,7 +1482,8 @@
             "next_area": "JOHTO_ROUTE_42"
         },
         
-        "ICE_PATH": { 
+        "ICE_PATH": {
+            "region": "JOHTO", 
             "area_type": "dungeon",
             "battle_type": "cave",
             "wild_pool_percentages": "JOHTO_ICE_PATH_PERCENTAGES",
@@ -1479,6 +1508,7 @@
         },
         
         "WHIRL_ISLANDS": {
+            "region": "JOHTO",
             "area_type": "dungeon",
             "battle_type": "cave",
             "wild_pool_percentages": "JOHTO_WHIRL_ISLANDS_PERCENTAGES",
@@ -1505,6 +1535,7 @@
         },
         
         "ROCKET_HQ": {
+            "region": "JOHTO",
             "area_type": "dungeon",
             "battle_type": "indoor",
             "wild_pool_percentages": "JOHTO_ROCKET_HQ_PERCENTAGES",
@@ -1526,6 +1557,7 @@
         },
 
         "GOLDENROD_UNDERGROUND": {
+            "region": "JOHTO",
             "area_type": "dungeon",
             "battle_type": "indoor",
             "wild_pool_percentages": "JOHTO_UNDERGROUND_PERCENTAGES",
@@ -1549,6 +1581,7 @@
         },
 
         "RADIO_TOWER": {
+            "region": "JOHTO",
             "area_type": "dungeon",
             "route_name": "Radio Tower",
             "battle_type": "indoor",
@@ -1590,6 +1623,7 @@
         },
 
         "CLIFF_EDGE_GATE": {
+            "region": "JOHTO",
             "area_type": "wild_route",
             "route_name": "Cliff Edge Gate",
             "battle_type": "cave",
@@ -1602,6 +1636,7 @@
         },
 
         "JOHTO_SAFARI_ZONE": {
+            "region": "JOHTO",
             "area_type": "wild_route",
             "route_name": "Johto Safari Zone",
             "battle_type": "grass",
@@ -1615,6 +1650,7 @@
         },
 
         "DRAGONS_DEN": {
+            "region": "JOHTO",
             "area_type": "dungeon",
             "battle_type": "cave",
             "wild_pool_percentages": "JOHTO_DRAGON_DEN_PERCENTAGES",
@@ -1637,6 +1673,7 @@
         },
         
         "MT_SILVER": {
+            "region": "JOHTO",
             "area_type": "dungeon",
             "battle_type": "mountain",
             "wild_pool_percentages": "JOHTO_MT_SILVER_PERCENTAGES",

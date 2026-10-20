@@ -13,6 +13,8 @@ from src.utils import Utils
 from src.core.assets import AssetManager
 from src.core.data import DataManager
 from src.core.math_engine import MathEngine
+from src.core.music import MusicManager
+from src.ui.keyboard import KeyboardNav
 from src.world.story import StoryManager
 from src.pokemon.loader import PokemonLoader
 from src.ui.manager import UIManager
@@ -99,6 +101,10 @@ class Game:
                             if "STORY_PROGRESSION" not in loaded_area_data:
                                 loaded_area_data["STORY_PROGRESSION"] = {}
                             loaded_area_data["STORY_PROGRESSION"].update(data["STORY_PROGRESSION"])
+                        # Each mission belongs to the region whose file it came from.
+                        file_region = os.path.basename(path).split("_area_data")[0].upper()
+                        for m in data.get("JOURNAL_MISSIONS", []) or []:
+                            m.setdefault("region", file_region)
                         for k, v in data.items():
                             if k == "STORY_PROGRESSION":
                                 continue
@@ -115,6 +121,15 @@ class Game:
                     print(f"✓ Loaded {os.path.basename(path)}")
                 except Exception as e:
                     print(f"✗ Parse error on {os.path.basename(path)}: {e}")
+
+        # Kanto's missions live in its GAME_CONFIG; put them in the journal list too.
+        kanto_missions = loaded_area_data.get("GAME_CONFIG", {}).get("JOURNAL_MISSIONS", [])
+        for m in kanto_missions:
+            m.setdefault("region", "KANTO")
+        known = {m.get("id") for m in loaded_area_data.get("JOURNAL_MISSIONS", [])}
+        loaded_area_data["JOURNAL_MISSIONS"] = (
+            [m for m in kanto_missions if m.get("id") not in known]
+            + loaded_area_data.get("JOURNAL_MISSIONS", []))
 
         print("=== JSON LOADING COMPLETE ===\n")
 
@@ -158,8 +173,9 @@ class Game:
 
         self.current_state.start()
 
-        if self.assets.music_playlist:
-            self.play_music()
+        self.keyboard = KeyboardNav(self)
+        self.music = MusicManager(self)
+        self.music.for_state(self.current_state)
 
     def show_dialogue(self, lines, callback=None):
         """One-line way to show a golden text box anywhere"""
@@ -239,6 +255,8 @@ class Game:
         pygame.event.clear()
         self.state_changed_at = pygame.time.get_ticks()
         self.current_state = new_state
+        if hasattr(self, "music"):
+            self.music.for_state(new_state)
         self.current_state.start()
         if hasattr(new_state, "ui_elements"):
             self.ui_manager.elements = new_state.ui_elements
@@ -250,6 +268,8 @@ class Game:
                 continue
 
             events = pygame.event.get()
+            # Arrow keys / Enter / Esc drive the on-screen buttons (see src/ui/keyboard.py).
+            events = [e for e in events if not self.keyboard.handle(e)]
             # Capture current state to detect changes mid-loop
             frame_start_state = self.current_state
 
@@ -260,11 +280,7 @@ class Game:
                 if event.type == pygame.KEYDOWN and event.key == pygame.K_F3:
                     self.debug_mode = not self.debug_mode
                 if event.type == MUSIC_ENDED_EVENT:
-                    if self.assets.music_playlist:
-                        self.current_song_index = (self.current_song_index + 1) % len(
-                            self.assets.music_playlist
-                        )
-                        self.play_music()
+                    self.music.on_track_end()
                 for handler in self.event_handlers:
                     handler(event)
 
@@ -285,6 +301,7 @@ class Game:
                     self.current_state.handle_events(remaining)
             self.current_state.update()
             self.current_state.draw()
+            self.keyboard.draw(self.screen)
 
             pygame.display.flip()
             self.clock.tick(FPS)

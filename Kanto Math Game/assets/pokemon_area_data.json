@@ -951,7 +951,7 @@
           "name": "Erika",
           "class": "GYM_LEADER", "is_boss_battle": true,
           "sprite": "erika.png",
-          "team": [44, 45, 43],
+          "team": [71, 114, 45],
           "badge_reward": "RAINBOW",
           "dialogue": { 
             "intro": ["Welcome to my Gym! Let's see if you can handle the grass!"],
@@ -1048,7 +1048,7 @@
         { "text": "Heal", "action": "HEAL" },
         { "text": "Shop", "action": "SHOP" },
         { "text": "Gym", "action": "GYM" },
-        { "text": "Confront Team Rocket", "action": "BATTLE", "target": "lunatic" },
+        { "text": "Confront Team Rocket", "action": "TRAVEL", "target_area": "SILPH_CITY", "flag_condition": "not silph_co_cleared", "condition": "tower_ghost_defeated" },
         { "text": "Fighting Dojo", "action": "NPC", "target": "dojo" }
       ],
       "trainer_pool": [],
@@ -1264,7 +1264,7 @@
       "gym": {
         "trainers": [
           { "sprite": "loreli.png",
-          "name": "Loreli",
+          "name": "Lorelei",
           "class": "ELITE_FOUR", "is_boss_battle": true,
           "team": [87, 91, 80, 124, 131],
           "rewards": { "balls": 15 }

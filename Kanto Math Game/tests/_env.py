@@ -1,5 +1,8 @@
 """Headless test bootstrap: run `python tests/test_kanto_fixes.py` from the game folder."""
 import os, sys
+for _s in (sys.stdout, sys.stderr):  # Windows consoles default to cp1252; keep unicode output from crashing
+    try: _s.reconfigure(encoding="utf-8", errors="replace")
+    except Exception: pass
 os.environ.setdefault("SDL_VIDEODRIVER", "dummy"); os.environ.setdefault("SDL_AUDIODRIVER", "dummy")
 sys.dont_write_bytecode = True
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

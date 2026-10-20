@@ -92,6 +92,8 @@ class TrainerBattleState(GameState):
         bg_raw = None
         if background_image:
             bg_raw = self.game.assets.get_background(background_image, from_overworld=False)
+            if not bg_raw and self.game.assets.generic_kind(background_image) == "battle_elite":
+                bg_raw = self.game.assets.get_generic_background("battle_elite")
 
         if not bg_raw:
             bg_raw = self.game.assets.get_random_battle_background(battle_type, area_name)
@@ -301,6 +303,7 @@ class TrainerBattleState(GameState):
     def trigger_outro(self, win):
         self.player_won = win
         if win:
+            self.game.music.victory()
 
             if self.custom_dialogue and "player_won" in self.custom_dialogue:
                 text = self.custom_dialogue["player_won"]
@@ -938,22 +941,9 @@ class TrainerBattleState(GameState):
         self.exit_battle(lost=True)
 
     def perform_battle_black_out(self):
-        """Heals team and returns to the start of the current area."""
-        for p in self.game.story_manager.player_team:
-            p.heal_full()
-            if hasattr(p, "revert_transform"):
-                p.revert_transform()
-
-        area_key = self.game.story_manager.current_area_key
-        prog_data = self.game.loader.area_data.get("STORY_PROGRESSION", {})
-        area_info = prog_data.get(area_key, {})
-
-        if area_info.get("area_type") == "town":
-            from src.states.overworld import CityState
-            self.game.change_state(CityState(self.game))
-        else:
-            from src.states.overworld import PlayState
-            self.game.change_state(PlayState(self.game))
+        """Back to the last Pokemon Center (or home) with a healed team."""
+        from src.states.overworld import white_out
+        white_out(self.game)
 
     def _speed(self, mon):
         return mon.stat_value("SPEED") * (0.5 if getattr(mon, "status", None) == "paralysis" else 1)
@@ -1239,6 +1229,7 @@ class TrainerBattleState(GameState):
             return
 
         if self.opponent_hp <= 0:
+            self.turn_actions.clear()  # a fainted Pokemon's queued move never happens
             self.fainting_side = "opponent"
             messages.append(f"Foe {self.opponent_pokemon.display_name.upper()} fainted!")
             messages.extend(xp_messages)
@@ -1280,6 +1271,7 @@ class TrainerBattleState(GameState):
             self.anim_ctrl.start_lunge("opponent")
 
         if self.player_hp <= 0:
+            self.turn_actions.clear()  # a fainted Pokemon's queued move never happens
             self.fainting_side = "player"
             messages.append(f"{mon.display_name.upper()} fainted!")
             messages.extend(self._count_weather_on_faint())
@@ -1421,8 +1413,7 @@ class TrainerBattleState(GameState):
 
         candy = 0 if lost else self._calc_candy_reward()
         if candy > 0:
-            inv = self.game.story_manager.inventory
-            inv["RARE_CANDY"] = inv.get("RARE_CANDY", 0) + candy
+            self.game.story_manager.add_item("RARE_CANDY", candy)
 
         reward_balls = self.rewards.get("balls", 3)
 
@@ -1437,9 +1428,9 @@ class TrainerBattleState(GameState):
                 continue
 
             if item in key_items and self.game.story_manager.inventory.get(item, 0) > 0:
-                self.game.story_manager.inventory["RARE_CANDY"] = self.game.story_manager.inventory.get("RARE_CANDY", 0) + 2
+                self.game.story_manager.add_item("RARE_CANDY", 2)
             else:
-                self.game.story_manager.inventory[item] = self.game.story_manager.inventory.get(item, 0) + qty
+                self.game.story_manager.add_item(item, qty)
 
         if self.victory_flag == "beat_champion" and self.player_won:
             prog_key = f"gym_progress_{self.game.story_manager.current_area_key}"
@@ -1458,8 +1449,11 @@ class TrainerBattleState(GameState):
             prog_key = f"gym_progress_{self.game.story_manager.current_area_key}"
             if self.player_won:
                 self.game.story_manager.story_flags[prog_key] = self.game.story_manager.story_flags.get(prog_key, 0) + 1
-            from src.states.overworld import GymLobbyState
-            self.game.change_state(GymLobbyState(self.game, None))
+            from src.states.overworld import GymLobbyState, evolve_ready_party
+            lobby = GymLobbyState(self.game, None)
+            if self.player_won and evolve_ready_party(self.game, lobby):
+                return
+            self.game.change_state(lobby)
             return
 
         if self.battle_type == "rival":
@@ -1510,6 +1504,10 @@ class TrainerBattleState(GameState):
 
         if next_state and hasattr(next_state, "check_for_evolution"):
             if next_state.check_for_evolution():
+                return
+        elif next_state is not None and not lost:
+            from src.states.overworld import evolve_ready_party
+            if evolve_ready_party(self.game, next_state):
                 return
 
         self.game.change_state(next_state)
@@ -1582,7 +1580,9 @@ class TrainerBattleState(GameState):
                     if self.trainer_class == "WILD":
                         self.trigger_outro(win=True)
                     else:
-                        if self.current_opponent_idx + 1 < len(self.opponent_team):
+                        bench = any(p.current_hp > 0 and p is not self.player_pokemon
+                                    for p in self.game.story_manager.player_team)
+                        if self.current_opponent_idx + 1 < len(self.opponent_team) and bench:
                             self.phase = "SWITCH_PROMPT"
                             next_poke = self.opponent_team[self.current_opponent_idx + 1]
                             box = self.dialogue_box.rect
@@ -1777,6 +1777,7 @@ class TrainerBattleState(GameState):
         def on_selected(slot_index):
             team = self.game.story_manager.player_team
             if team[slot_index] == self.player_pokemon:
+                self.game.change_state(self)
                 self.on_switch_no()
                 return
             if team[slot_index].current_hp <= 0:
@@ -1909,6 +1910,7 @@ class WildBattleState(TrainerBattleState):
             self.dialogue_box.set_visibility(True)
             return
 
+        self.game.music.victory()
         if self.victory_flag and not balance.is_legendary(self.opponent_pokemon.id):
             # A beaten roadblock boss (Snorlax) is gone whether or not you catch it. Legendaries
             # still count only when caught, so they can be tried again.

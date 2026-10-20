@@ -34,6 +34,17 @@ class StoryManager:
         # "AUTO" follows the story; a number locks a level from math_levels.json
         self.math_difficulty = "AUTO"
         self.level_cap_mode = "STORY"  # STORY, OBEDIENCE or NONE (Options)
+        self.last_center = None  # area key of the last Pokemon Center used (whiteouts go there)
+        self.autosave = True     # Options: save every time you travel to a new area
+
+    MAX_ITEMS = 999  # the most of one item the Bag holds, as in the games
+
+    def add_item(self, key, qty=1):
+        """Put items in the Bag (never past 999). Returns how many actually went in."""
+        have = self.inventory.get(key, 0)
+        added = max(0, min(qty, self.MAX_ITEMS - have))
+        self.inventory[key] = have + added
+        return added
 
     def initialize_new_game(self, config):
         if self.initialized:
@@ -74,11 +85,11 @@ class StoryManager:
 
     def get_active_missions(self):
         """Returns a list of missions whose conditions are currently met."""
-        all_missions = self.game.loader.area_data.get("JOURNAL_MISSIONS", [])
+        all_missions = self.region_missions()
         active = []
 
         for m in all_missions:
-            if self.check_requirements(m.get("condition", {})):
+            if self.check_requirements(m.get("condition", {}), region=m.get("region")):
                 if m.get("completed_flag") and self.story_flags.get(m["completed_flag"]):
                     continue
                 active.append(self._prepare_mission_for_ui(m))
@@ -97,7 +108,13 @@ class StoryManager:
         final_list.extend(side_missions)
         return final_list
 
-    def check_requirements(self, cond):
+    def region_missions(self):
+        """Missions for the region the player is in (Hisui counts as Sinnoh)."""
+        region = self.get_current_region()
+        return [m for m in self.game.loader.area_data.get("JOURNAL_MISSIONS", [])
+                if (m.get("region") or (m.get("condition") or {}).get("required_region") or region) == region]
+
+    def check_requirements(self, cond, region=None):
         """
         Universal requirement checker. Returns True if all conditions in 'cond' are met.
         Supports: flag, flag_not, visited, visited_not, item, item_not,
@@ -118,6 +135,8 @@ class StoryManager:
             return self.story_flags.get(cond, False)
 
         total_badges = sum(len(b_list) for b_list in self.badges.values())
+        if region:  # a region's missions count that region's badges
+            total_badges = len(self.badges.get(region, []))
         unique_caught = len({v['id'] for v in self.game.data.data.get("pokedex", {}).values() if isinstance(v, dict) and 'id' in v})
 
         if "required_region" in cond and self.get_current_region() != cond["required_region"]:
@@ -130,6 +149,9 @@ class StoryManager:
         if "region_badges_less" in cond and region_badges >= cond["region_badges_less"]:
             return False
         if "badges_less" in cond and total_badges >= cond["badges_less"]:
+            return False
+
+        if "badge" in cond and not self.has_badge(cond["badge"]):
             return False
 
         if "flag" in cond:
@@ -401,6 +423,27 @@ class StoryManager:
                 badges.append(leader["badge_reward"])
         return badges
 
+    def area_region(self, area_key):
+        area = self.game.loader.area_data.get("STORY_PROGRESSION", {}).get(area_key, {})
+        return str(area.get("region") or "KANTO").upper()
+
+    def area_has_center(self, area_key):
+        area = self.game.loader.area_data.get("STORY_PROGRESSION", {}).get(area_key, {})
+        return any(o.get("action") == "HEAL" for o in area.get("explore_options", []) or [])
+
+    def whiteout_destination(self):
+        """(area_key, has_center): the last Pokemon Center used in this region,
+        otherwise the region's starting town (home)."""
+        region = self.get_current_region()
+        prog = self.game.loader.area_data.get("STORY_PROGRESSION", {})
+        if (self.last_center in prog and self.area_region(self.last_center) == region
+                and self.area_has_center(self.last_center)):
+            return self.last_center, True
+        home = self.get_region_start(region).get("start_area")
+        if home not in prog:
+            home = self.get_region_start().get("start_area", "PALLET_TOWN")
+        return home, self.area_has_center(home)
+
     def get_current_region(self):
         """
         Determines the region based on the current area key.
@@ -483,7 +526,7 @@ class StoryManager:
 
     def get_all_journal_entries(self):
         """Returns all missions categorized by Active or Completed status."""
-        all_missions = self.game.loader.area_data.get("JOURNAL_MISSIONS", [])
+        all_missions = self.region_missions()
         entries = []
 
         active_missions = self.get_active_missions()
@@ -744,10 +787,8 @@ class StoryManager:
             print("Sync: Awarding missing UNOWN_REPORT!")
             self.inventory["UNOWN_REPORT"] = 1
 
+        # The Poke Flute is Mr. Fuji's to give (talk to him in Lavender Town).
         if self.story_flags.get("tower_ghost_defeated"):
-            if self.inventory.get("POKE_FLUTE", 0) == 0:
-                print("Sync: Awarding missing POKE_FLUTE!")
-                self.inventory["POKE_FLUTE"] = 1
             if self.inventory.get("SILPH_SCOPE", 0) == 0:
                 print("Sync: Awarding missing SILPH_SCOPE!")
                 self.inventory["SILPH_SCOPE"] = 1
@@ -784,6 +825,8 @@ class StoryManager:
             "rival_true_name": getattr(self.game, "rival_true_name", "BLUE"),
             "math_difficulty": self.math_difficulty,
             "level_cap_mode": self.level_cap_mode,
+            "last_center": self.last_center,
+            "autosave": self.autosave,
         }
 
     @staticmethod
@@ -805,7 +848,7 @@ class StoryManager:
         return {
             "id": p.id, "form": p.form, "shiny": p.is_shiny,
             "level": p.level, "xp": p.xp, "friendship": p.friendship, "counters": dict(p.counters),
-            "affection": getattr(p, "affection", 0),
+            "affection": getattr(p, "affection", 0), "everstone": bool(getattr(p, "everstone", False)),
             "ivs": dict(getattr(p, "ivs", {})), "moves": list(getattr(p, "moves", [])),
             "status": getattr(p, "status", None), "sleep_turns": getattr(p, "sleep_turns", 0),
             "hp": p.current_hp, "hp_real": True, "stage": p.stage, "gmax": p.gmax_factor,
@@ -823,6 +866,7 @@ class StoryManager:
             pokemon.stage = p_data["stage"]
         pokemon.friendship = p_data.get("friendship", 0)
         pokemon.affection = p_data.get("affection", 0)
+        pokemon.everstone = bool(p_data.get("everstone", False))
         pokemon.counters = dict(p_data.get("counters", {}))
         if p_data.get("ivs"):
             pokemon.ivs = dict(p_data["ivs"])
@@ -880,6 +924,8 @@ class StoryManager:
         # Older saves have no setting -> AUTO (follows region + badges)
         self.math_difficulty = data.get("math_difficulty", "AUTO")
         self.level_cap_mode = data.get("level_cap_mode", "STORY")
+        self.last_center = data.get("last_center")
+        self.autosave = data.get("autosave", True)
 
         self.player_team = []
         for p_data in data.get("player_team", []):

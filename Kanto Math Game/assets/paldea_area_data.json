@@ -277,7 +277,8 @@
       "has_gym": true,
       "travel_options": [
         { "text": "East Province Area 1", "target_area": "EAST_PROVINCE_AREA_1" },
-        { "text": "East Province Area 2", "target_area": "EAST_PROVINCE_AREA_2" }
+        { "text": "East Province Area 2", "target_area": "EAST_PROVINCE_AREA_2" },
+        { "text": "East Province Area 3", "target_area": "EAST_PROVINCE_AREA_3" }
       ],
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
@@ -814,6 +815,23 @@
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "NORTH PROVINCE AREA 1", "action": "EXIT", "target_area": "NORTH_PROVINCE_AREA_1", "condition": "can_exit", "color": "RED" },
+        { "text": "LEVINCIA", "action": "EXIT", "target_area": "LEVINCIA", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "NORTH_PROVINCE_AREA_1"
+    },
+    "EAST_PROVINCE_AREA_3": {
+      "area_type": "wild_route",
+      "route_name": "East Province Area 3",
+      "region": "PALDEA",
+      "description": "Windswept hills north of Levincia, dotted with caves. Tadbulb glow in the long grass, and the ground sometimes rumbles...",
+      "battle_type": "grass",
+      "wild_pool_percentages": "EAST_PROVINCE_AREA_3_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         {
           "text": "LURKING STEEL TITAN",
           "action": "BOSS",
@@ -831,10 +849,10 @@
             "rewards": { "HERBA_MYSTICA": 1 }
           }
         },
-        { "text": "NORTH PROVINCE AREA 1", "action": "EXIT", "target_area": "NORTH_PROVINCE_AREA_1", "condition": "can_exit", "color": "RED" },
-        { "text": "LEVINCIA", "action": "EXIT", "target_area": "LEVINCIA", "condition": "can_exit", "color": "RED" }
+        { "text": "LEVINCIA", "action": "EXIT", "target_area": "LEVINCIA", "condition": "can_exit", "color": "RED" },
+        { "text": "EAST PROVINCE AREA 2", "action": "EXIT", "target_area": "EAST_PROVINCE_AREA_2", "condition": "can_exit", "color": "RED" }
       ],
-      "next_area": "NORTH_PROVINCE_AREA_1"
+      "next_area": "LEVINCIA"
     },
     "WEST_PROVINCE_AREA_1": {
       "area_type": "wild_route",
@@ -1075,7 +1093,35 @@
               "Arven: You did it! And look, a Herba Mystica!",
               "Arven: A Paradox Pokemon... it came from Area Zero. Just like my mom's research."
             ],
-            "rewards": { "HERBA_MYSTICA": 1 }
+            "rewards": { "HERBA_MYSTICA": 1 },
+            "versions": {
+              "SCARLET": {
+                "id": 984,
+                "name": "Great Tusk",
+                "lines": [
+                  "Arven: There it is... the Quaking Earth Titan!",
+                  "A sandstorm parts. A Great Tusk, a Pokemon from the ancient past, charges at you!"
+                ],
+                "won": [
+                  "GREAT TUSK ran off, beaten!",
+                  "Arven: You did it! And look, a Herba Mystica!",
+                  "Arven: A Paradox Pokemon... it came from Area Zero. Just like my mom's research."
+                ]
+              },
+              "VIOLET": {
+                "id": 990,
+                "name": "Iron Treads",
+                "lines": [
+                  "Arven: There it is... the Quaking Earth Titan!",
+                  "A sandstorm parts. An Iron Treads, a Pokemon from the distant future, rolls straight at you!"
+                ],
+                "won": [
+                  "IRON TREADS rolled off, beaten!",
+                  "Arven: You did it! And look, a Herba Mystica!",
+                  "Arven: A Paradox Pokemon... it came from Area Zero. Just like my mom's research."
+                ]
+              }
+            }
           }
         },
         { "text": "WEST PROVINCE AREA 2", "action": "EXIT", "target_area": "WEST_PROVINCE_AREA_2", "condition": "can_exit", "color": "RED" },
@@ -1594,6 +1640,8 @@
   "EAST_PROVINCE_AREA_1_PERCENTAGES": { "940": 30, "938": 25, "963": 25, "418": 20 },
   "EAST_PROVINCE_AREA_2": [940, 941, 963, 964, 976, 977, 978],
   "EAST_PROVINCE_AREA_2_PERCENTAGES": { "940": 20, "941": 15, "963": 15, "964": 10, "976": 15, "977": 10, "978": 15 },
+  "EAST_PROVINCE_AREA_3": [938, 940, 941, 878, 965, 404, 180, 939, 948, 922],
+  "EAST_PROVINCE_AREA_3_PERCENTAGES": { "938": 20, "940": 15, "941": 5, "878": 10, "965": 10, "404": 10, "180": 10, "939": 5, "948": 10, "922": 5 },
   "WEST_PROVINCE_AREA_1": [2058, 980, 973, 662, 950, 962],
   "WEST_PROVINCE_AREA_1_PERCENTAGES": { "2058": 25, "980": 20, "973": 20, "662": 15, "950": 10, "962": 10 },
   "WEST_PROVINCE_AREA_2": [942, 943, 944, 945],

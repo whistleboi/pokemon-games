@@ -5,6 +5,7 @@ import os
 import math
 import threading
 import json
+import sys
 from src.states.base import GameState
 from src.ui.widgets import Button
 from src.ui.dialogue import ClassicDialogueBox
@@ -42,6 +43,14 @@ class MainMenuState(GameState):
                     has_saves = True
                     break
 
+        self.btn_quit = Button(
+            (game.width // 2 - 150, game.height // 2 + 140, 300, 80),
+            "QUIT",
+            game.assets.fonts["med"],
+            self.quit_game,
+            bg_color=RED,
+        )
+
         if not has_saves:
             self.btn_load.bg_color = GRAY
             self.btn_load.text_color = LIGHT_GRAY
@@ -53,10 +62,15 @@ class MainMenuState(GameState):
     def load_game(self):
         self.game.change_state(LoadState(self.game, self))
 
+    def quit_game(self):
+        pygame.quit()
+        sys.exit()
+
     def handle_events(self, events):
         for event in events:
             self.btn_new.handle_event(event)
             self.btn_load.handle_event(event)
+            self.btn_quit.handle_event(event)
 
     def update(self):
         pass
@@ -73,10 +87,13 @@ class MainMenuState(GameState):
         )
         self.btn_new.draw(self.game.screen)
         self.btn_load.draw(self.game.screen)
+        self.btn_quit.draw(self.game.screen)
 
 
 # [REF-0056: Character Selection State]
 class CharacterSelectionState(GameState):
+    uses_keyboard = True  # its own arrow/Enter/typing handling
+
     def __init__(self, game):
         super().__init__(game)
         config = game.loader.area_data.get("GAME_CONFIG", {})
@@ -218,6 +235,8 @@ class CharacterSelectionState(GameState):
 
 class RegionSelectionState(GameState):
     """Choose a region: where a new game begins, or (mode="move") where Mom buys the next home."""
+    uses_keyboard = True  # its own arrow/Enter/typing handling
+
     COLS = 3
 
     def __init__(self, game, mode="new", return_state=None):
@@ -352,6 +371,8 @@ class RegionSelectionState(GameState):
 
 # [REF-0057: Rival Selection State]
 class RivalSelectionState(GameState):
+    uses_keyboard = True  # its own arrow/Enter/typing handling
+
     def __init__(self, game):
         super().__init__(game)
         config = game.loader.area_data.get("GAME_CONFIG", {})
@@ -859,7 +880,7 @@ class StarterSelectionState(GameState):
             starter_battle=True,
         )
 
-        lab_bg = self.game.assets.get_background(bg_name)
+        lab_bg = self.game.assets.get_background(bg_name) or self.game.assets.get_generic_background("lab")
         if lab_bg:
             box_top = Utils.get_full_dialogue_rect(self.game).top - 8
             scaled_bg = pygame.transform.scale(
@@ -1152,6 +1173,8 @@ class LoadState(GameState):
 
 # [REF-0037: Save Game State]
 class SaveState(GameState):
+    uses_keyboard = True  # its own arrow/Enter/typing handling
+
     def __init__(self, game, previous_state):
         super().__init__(game)
         self.previous_state = previous_state
@@ -1332,12 +1355,19 @@ class DifficultySelectionState(GameState):
     on_confirm / on_back are callables so the same screen works in both
     places and can never soft-lock: BACK and ESC always leave.
     """
+    uses_keyboard = True  # its own arrow/Enter/typing handling
 
-    def __init__(self, game, on_confirm, on_back, title="CHOOSE YOUR MATH LEVEL"):
+
+    def __init__(self, game, on_confirm, on_back, title="CHOOSE YOUR MATH LEVEL",
+                 return_state=None):
         super().__init__(game)
         self.on_confirm = on_confirm
         self.on_back = on_back
         self.title = title
+        # Opened from the in-game OPTIONS button: also offers AUTOSAVE and QUIT.
+        self.in_game = return_state is not None
+        self.previous_state = return_state  # lets a save pick up the route's ball count
+        self.quit_prompt = False
         self.story = game.story_manager
         self.input_lock = 6  # frames; stops the click that opened us from landing here
 
@@ -1380,6 +1410,40 @@ class DifficultySelectionState(GameState):
         # Level cap mode: STORY (default), OBEDIENCE or NONE.
         self.btn_cap = Button((30, int(h * 0.90) - 30, 300, 66), self._cap_label(), fonts["small"],
                               self.cycle_cap, bg_color=(90, 60, 150), autosize=False)
+        self.btn_autosave = Button((w - 330, int(h * 0.90) - 30, 300, 66), self._autosave_label(),
+                                   fonts["small"], self.toggle_autosave, bg_color=(40, 110, 150),
+                                   autosize=False)
+        self.btn_quit = Button((w - 170, 30, 140, 70), "QUIT", fonts["small"],
+                               self.open_quit_prompt, bg_color=RED, autosize=False)
+        cx, cy = w // 2, h // 2
+        self.quit_panel = pygame.Rect(cx - 260, cy - 170, 520, 340)
+        self.quit_buttons = [
+            Button((cx - 200, cy - 60, 400, 66), "SAVE & QUIT TO TITLE", fonts["small"],
+                   lambda: self.quit_game(save=True), bg_color=GREEN, autosize=False),
+            Button((cx - 200, cy + 15, 400, 66), "QUIT TO TITLE (NO SAVE)", fonts["small"],
+                   lambda: self.quit_game(save=False), bg_color=RED, autosize=False),
+            Button((cx - 200, cy + 90, 400, 66), "CANCEL", fonts["small"],
+                   self.close_quit_prompt, bg_color=GRAY, autosize=False),
+        ]
+
+    def _autosave_label(self):
+        return "AUTOSAVE: " + ("ON" if self.story.autosave else "OFF")
+
+    def toggle_autosave(self):
+        self.story.autosave = not self.story.autosave
+        self.btn_autosave.text = self._autosave_label()
+
+    def open_quit_prompt(self):
+        self.quit_prompt = True
+
+    def close_quit_prompt(self):
+        self.quit_prompt = False
+
+    def quit_game(self, save):
+        if save:
+            self.game.update_save_data()
+            self.game.data.save()
+        self.game.change_state(MainMenuState(self.game))
 
     def _cap_label(self):
         from src.world import levels
@@ -1447,8 +1511,20 @@ class DifficultySelectionState(GameState):
     def handle_events(self, events):
         if self.input_lock > 0:
             return
+        if self.quit_prompt:
+            for event in events:
+                if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+                    self.close_quit_prompt()
+                elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+                    for b in self.quit_buttons:
+                        if b.handle_event(event):
+                            return
+            return
         for event in events:
             if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+                if self.in_game and (self.btn_quit.handle_event(event)
+                                     or self.btn_autosave.handle_event(event)):
+                    return
                 if self.btn_back.handle_event(event) or self.btn_confirm.handle_event(event):
                     return  # state changed; ignore the rest of this frame
                 if self.btn_cap.handle_event(event):
@@ -1516,6 +1592,25 @@ class DifficultySelectionState(GameState):
         self.btn_cap.draw(screen)
         Utils.draw_text_outline(screen, note, self._fit_font(note, w // 2 - 200, ("tiny",)), LIGHT_GRAY,
                                 self.btn_cap.rect.x, self.btn_cap.rect.top - 14, align="left")
+        if not self.in_game:
+            return
+        self.btn_quit.draw(screen)
+        self.btn_autosave.draw(screen)
+        tip = "Saves each time you travel to a new area"
+        Utils.draw_text_outline(screen, tip, self._fit_font(tip, w // 2 - 200, ("tiny",)), LIGHT_GRAY,
+                                self.btn_autosave.rect.right, self.btn_autosave.rect.top - 14,
+                                align="right")
+        if self.quit_prompt:
+            shade = pygame.Surface((w, h), pygame.SRCALPHA)
+            shade.fill((0, 0, 0, 170))
+            screen.blit(shade, (0, 0))
+            pygame.draw.rect(screen, GB_PANEL_DARK, self.quit_panel, border_radius=15)
+            pygame.draw.rect(screen, GOLD, self.quit_panel, 5, border_radius=15)
+            ask = "BACK TO THE TITLE SCREEN?"
+            Utils.draw_text_outline(screen, ask, self._fit_font(ask, self.quit_panel.w - 40), GOLD,
+                                    self.quit_panel.centerx, self.quit_panel.top + 50)
+            for b in self.quit_buttons:
+                b.draw(screen)
 
 
 def open_difficulty_options(game, return_state):
@@ -1542,4 +1637,5 @@ def open_difficulty_options(game, return_state):
         back()
 
     game.change_state(DifficultySelectionState(
-        game, on_confirm=confirm, on_back=back, title="MATH DIFFICULTY"))
+        game, on_confirm=confirm, on_back=back, title="OPTIONS",
+        return_state=return_state))
