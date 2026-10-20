@@ -465,7 +465,44 @@ class AssetManager:
                 path = os.path.join(bg_dir, bg_map[name_lower])
                 return pygame.image.load(path).convert()
 
+        # Not found: try the other names art may have been saved under
+        # (cinnabar_city.png for cinnabar_island.png, rock_city for rock_tunnel_city, ...).
+        for alt in self._background_aliases(name_lower):
+            for bg_dir, bg_map in search_configs:
+                if bg_dir and bg_map and alt in bg_map:
+                    return pygame.image.load(os.path.join(bg_dir, bg_map[alt])).convert()
         return None
+
+    BG_SUFFIXES = ("_center", "_mart", "_gym", "_lab", "_mom", "")
+
+    def _background_aliases(self, name):
+        """Other file names the same background might use, most likely first."""
+        import difflib
+        base = name[:-4] if name.endswith(".png") else name
+        suffix = next(sfx for sfx in self.BG_SUFFIXES if not sfx or base.endswith(sfx))
+        place = base[:len(base) - len(suffix)] if suffix else base
+        words = place.split("_")
+        places, stems = [], []
+        for kind in ("_island", "_town", "_village", "_city"):
+            if place.endswith(kind):
+                stem = place[:-len(kind)]
+                places += [stem + k for k in ("_city", "_town", "_island", "_village") if k != kind]
+                stems.append(stem)
+        if len(words) > 2 and len(words[0]) > 2:
+            places.append(f"{words[0]}_{words[-1]}")      # rock_tunnel_city -> rock_city
+            places.append(f"{words[0]}_city")
+        places.append(place.replace("_", ""))              # ever_grande -> evergrande
+        if len(words) >= 2:
+            places.append("".join(words[:-1]) + "_" + words[-1])  # ever_grande_city -> evergrande_city
+        places += stems                                    # the bare name last (it may be a dungeon)
+        out = [f"{p}{suffix}.png" for p in dict.fromkeys(places) if p and p != place]
+        # Close spelling (fallabor_town_center.png for fallarbor_town_center.png): same start only.
+        known = set(self.kanto_bg_map) | set(self.johto_bg_map) | set(self._region_bg_map())
+        same_kind = [k for k in known if (k[:-4].endswith(suffix) if suffix else
+                                          not any(k[:-4].endswith(x) for x in self.BG_SUFFIXES if x))]
+        for cand in [f"{p}{suffix}.png" for p in [place] + places]:
+            out += [m for m in difflib.get_close_matches(cand, same_kind, n=3, cutoff=0.9) if m[:4] == cand[:4]]
+        return list(dict.fromkeys(out))
 
     def _load_balls(self):
         imgs = []

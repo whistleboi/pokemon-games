@@ -4612,7 +4612,9 @@ class PokeCenterState(GameState):
         # ARCHITECT: Fallback naming logic: [area_key]_[suffix] (e.g. azalea_town_center.png)
         fallback_name = f"{area_key.lower()}_{type_suffix}.png"
 
-        filenames = [bg_config, fallback_name] if bg_config else [fallback_name]
+        # A generic name (pokecenter.png) is only a last resort: this town's own art comes first.
+        generic = bg_config in ("pokecenter.png", "pokemart.png")
+        filenames = ([fallback_name, bg_config] if generic else [bg_config, fallback_name]) if bg_config             else [fallback_name]
         box_top = Utils.get_full_dialogue_rect(game).top
 
         for filename in filenames:

@@ -213,6 +213,7 @@ The scripts live in the session scratchpad, which is temporary and may be gone n
 ## Assets
 
 - `ASSETS_NEEDED.md` (repo root) is the per-region, story-ordered list of missing backgrounds, trainer sprites, Pokemon sprites, item icons and badges, with exact file names, folders, sizes, a style guide and AI prompt template. Regenerate with scratchpad `asset_audit.py` + `write_asset_list.py`.
+- Background names are forgiving: if the exact file is missing, `get_background` tries town/city/island swaps, dropped words (rock_tunnel_city -> rock_city), no-underscore forms (evergrande) and close spellings with the same start (fallabor). Town-specific Center/Mart art wins over the generic pokecenter.png/pokemart.png names.
 - Backgrounds in any region folder (`backgrounds/hoenn/`, `backgrounds/sinnoh/`, ...) are now found by `get_background` (Hoenn's 23 existing interiors were previously never loaded). Kalos (badges 43-50) and Galar (51-60) badge images are mapped; Alola and Paldea badges still needed.
 - Test Sinnoh art drawn in code (scratchpad `sinnoh_art.py`): `backgrounds/sinnoh/twinleaf_town.png`, `backgrounds/sinnoh/oreburgh_center.png`, `backgrounds/battle/sinnoh/gym/battle_gym_oreburgh.png`.
 
