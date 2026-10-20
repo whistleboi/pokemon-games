@@ -218,7 +218,21 @@ The scripts live in the session scratchpad, which is temporary and may be gone n
 - Backgrounds in any region folder (`backgrounds/hoenn/`, `backgrounds/sinnoh/`, ...) are now found by `get_background` (Hoenn's 23 existing interiors were previously never loaded). Kalos (badges 43-50) and Galar (51-60) badge images are mapped; Alola and Paldea badges still needed.
 - Test Sinnoh art drawn in code (scratchpad `sinnoh_art.py`): `backgrounds/sinnoh/twinleaf_town.png`, `backgrounds/sinnoh/oreburgh_center.png`, `backgrounds/battle/sinnoh/gym/battle_gym_oreburgh.png`.
 
+- **Battle moves and story events (2026-10-20):** see `CHANGELOG.md`.
+  - Moves: `src/pokemon/moves.py`, `assets/moves.json`.
+  - IVs and status are on `Pokemon`.
+  - Story NPC buttons: `src/world/story_events.py`, run by `_run_story_event` in overworld.py.
+  - `ClassicDialogueBox` callbacks are one-shot.
+
 ## Not started / ideas
+
+- **Next (from the 2026-10-20 play-test):**
+  - Badge progression gates that hide off-story destinations.
+  - Whiting out sends you to the last Pokémon Center used, with the nurse's message.
+  - Journal filtered by region, with the Hisui mission waiting for the Coal Badge.
+  - Options: Quit button and an autosave toggle.
+  - Shiny back sprites.
+  - UI overhaul for the PC, Pokédex, Bag, badges and battles.
 
 - Fog weather (not implemented; asked about on 2026-10-19).
 - BDSP mechanics for Sinnoh (requested 2026-10-19, not started yet): Grand Underground (Explorer Kit, Hideaways, digging), Ramanas Park slates, Honey Trees.

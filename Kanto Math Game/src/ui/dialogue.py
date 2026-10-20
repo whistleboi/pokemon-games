@@ -47,7 +47,10 @@ class ClassicDialogueBox(UIElement):
             if self.current_line >= len(self.text_lines):
                 self.is_finished = True
                 if self.callback:
-                    self.callback()
+                    # One-shot: a callback belongs to the text it was set for, so it must not
+                    # fire again when the box is reused (that ended battle turns early).
+                    callback, self.callback = self.callback, None
+                    callback()
         else:
             if self.current_line < len(self.text_lines):
                 self.visible_chars = len(self.text_lines[self.current_line])

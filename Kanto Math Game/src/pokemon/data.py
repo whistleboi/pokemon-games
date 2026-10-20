@@ -39,6 +39,11 @@ class Pokemon:
         # and counters track special evolution conditions (wins, attacks, crits, KOs...).
         self.friendship = 0
         self.counters = {}
+        # Individual values (0-31) like the games; they make each Pokemon's stats a little different.
+        self.ivs = {k: random.randint(0, 31) for k in self.IV_KEYS}
+        self.status = None        # burn, paralysis, poison, sleep or freeze
+        self.sleep_turns = 0
+        self.moves = []           # up to four move names (filled from its learnset when needed)
         self.caught_region = None
         # Caught as a Gigantamax raid boss: shown normally, but keeps the G-Max Factor.
         self.gmax_factor = False
@@ -147,13 +152,16 @@ class Pokemon:
         self.xp = 0
         self.current_hp = max(1, round(share * self.get_max_hp())) if self.current_hp > 0 else 0
 
-    @staticmethod
-    def battle_xp(my_level, foe_level, trainer=False):
-        """XP for a KO, in steps of 25%: +1 step per 4 levels the foe is above you, -1 per 4
-        below; clamped to 50%..175%. Trainers' Pokemon give 1.5x."""
-        steps = int((foe_level - my_level) / 4)
-        mult = max(0.5, min(1.75, 1 + 0.25 * steps))
-        return max(1, int(Pokemon.XP_PER_WIN * mult * (1.5 if trainer else 1.0) + 0.5))
+    @classmethod
+    def battle_xp(cls, my_level, foe_level, trainer=False):
+        """XP for a KO, scaled like the games (Gen 5+): an even match is worth one full level,
+        and the reward grows quickly for beating stronger foes and shrinks for weaker ones:
+            (foe / me) x ((2 x foe + 10) / (foe + me + 10)) ^ 2.5
+        Trainers' Pokemon give 1.5x."""
+        ratio = (foe_level / max(1, my_level)) * ((2 * foe_level + 10) / (foe_level + my_level + 10)) ** 2.5
+        ratio = max(0.1, min(8.0, ratio))
+        base = cls.xp_cost(my_level) or cls.XP_PER_WIN
+        return max(1, int(base * ratio * (1.5 if trainer else 1.0) + 0.5))
 
     @property
     def wins(self):
@@ -185,15 +193,22 @@ class Pokemon:
     def legacy_hp_scale(stage):
         return (20, 20, 60, 90)[max(0, min(3, stage))]
 
+    IV_KEYS = ("HP", "ATTACK", "DEFENSE", "SPATK", "SPDEF", "SPEED")
+    IV_ALIASES = {"SPECIAL-ATTACK": "SPATK", "SPECIAL-DEFENSE": "SPDEF"}
+
+    def iv(self, stat_name):
+        key = self.IV_ALIASES.get(stat_name.upper(), stat_name.upper())
+        return getattr(self, "ivs", {}).get(key, 15)
+
     def stat_value(self, stat_name, level=None):
-        """The actual stat at a level: floor(2 x Base x Lv / 100) + 5."""
+        """The actual stat at a level, as in the games: floor((2 x Base + IV) x Lv / 100) + 5."""
         lv = self.level if level is None else level
-        return int(2 * self.get_stat(stat_name) * lv / 100) + 5
+        return int((2 * self.get_stat(stat_name) + self.iv(stat_name)) * lv / 100) + 5
 
     def get_max_hp(self, level=None, **_legacy):
-        """Real HP from the base HP stat: floor(2 x Base x Lv / 100) + Lv + 10."""
+        """Real HP: floor((2 x Base + IV) x Lv / 100) + Lv + 10."""
         lv = self.level if level is None else level
-        return int(2 * self.get_stat("HP") * lv / 100) + int(lv) + 10
+        return int((2 * self.get_stat("HP") + self.iv("HP")) * lv / 100) + int(lv) + 10
 
     def get_stat(self, stat_name):
         """Gets a base stat value."""
@@ -231,7 +246,8 @@ class Pokemon:
             "cry": self.cry,
             "max_hp": self.max_hp,
             "current_hp": self.current_hp,
-            "form": self.form
+            "form": self.form,
+            "moves": list(getattr(self, "moves", [])),
         }
 
         # Copy target (Takes HP, Stage, Typing, Appearance)
@@ -242,6 +258,7 @@ class Pokemon:
         self.base_stats = target.base_stats
         self.cry = target.cry
         self.form = target.form
+        self.moves = list(getattr(target, "moves", []) or getattr(self, "moves", []))  # Transform copies moves
 
         self.max_hp = target.max_hp
         self.current_hp = target.current_hp

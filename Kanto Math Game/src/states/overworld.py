@@ -20,6 +20,7 @@ from src.pokemon import forms
 from src.pokemon.data import Pokemon
 from src.pokemon.contest import feebas_ready
 from src.vfx.particles import ShinyBurst, Starburst, IdleSparkle
+from src.world import story_events
 from src.config import WHITE, BLACK, GREEN, BLUE, GOLD, RED, ORANGE, PURPLE, GRAY, FPS, VOLUME
 
 
@@ -67,6 +68,64 @@ def _region_starter_id(game):
     if sid:
         return sid
     return story.player_team[0].id if story.player_team else None
+
+
+def _start_event_battle(game, area_key, t_info, flag):
+    """A story NPC's trainer battle (team chosen by the region starter when it has a team_choice)."""
+    from src.states.battle import TrainerBattleState, TrainerIntroState
+    team_ids = list((t_info.get("team_choice") or {}).get(str(_region_starter_id(game))) or t_info.get("team", []))
+    team = [Pokemon(game.loader.fetch_specific(tid), game.assets, size_mult=3.125) for tid in team_ids]
+    forms.mark_trainer_team(team, t_info)
+    top = t_info.get("level")  # story beats set in early areas carry their own level
+    levels.set_team(team, [max(2, top - (len(team) - 1 - i)) for i in range(len(team))] if top
+                    else levels.trainer_team_levels(game, area_key, len(team), boss=True))
+    sprite = _trainer_sprite(game, t_info.get("sprite"))
+    dlg = t_info.get("dialogue") or {}
+    battle = TrainerBattleState(
+        game, team, trainer_sprite=sprite, trainer_class=t_info.get("class", "TRAINER"),
+        trainer_name=_fill_names(game, t_info.get("name")),
+        custom_dialogue={k: _resolve_lines(game, v) for k, v in dlg.items() if k != "intro"},
+        rewards=dict(t_info.get("rewards") or {"balls": 3}), battle_type="event",
+        is_boss_battle=t_info.get("is_boss_battle", False), area_name=area_key, victory_flag=flag)
+    return TrainerIntroState(game, sprite, t_info.get("_intro_lines") or ["..."], battle)
+
+
+def _run_story_event(state, key, check, show):
+    """Play a story NPC event (see src/world/story_events.py).
+    check(condition) tests a menu condition; show(lines) shows dialogue and returns to the menu."""
+    game = state.game
+    story = game.story_manager
+    ev = story_events.get(key)
+    flag = ev.get("flag")
+    if flag and story.story_flags.get(flag):
+        show(_resolve_lines(game, ev.get("done") or ev.get("lines") or ["..."]))
+        return
+    if not all(check(c) for c in ev.get("requires", [])):
+        show(_resolve_lines(game, ev.get("fail") or ["You can't do that yet."]))
+        return
+    lines = _resolve_lines(game, ev.get("lines") or [])
+    if ev.get("battle"):
+        t_info = dict(ev["battle"], _intro_lines=lines or None)
+        game.change_state(_start_event_battle(game, story.current_area_key, t_info, flag))
+        return
+    for item, qty in (ev.get("gift_item") or {}).items():
+        if item == "balls":
+            story.balls_left = getattr(story, "balls_left", 0) + qty
+            play = game.states.get("play")
+            if play is not None and play is not state:
+                play.balls_left = getattr(play, "balls_left", 0) + qty
+            if getattr(state, "balls_left", None) is not None:
+                state.balls_left += qty
+            lines.append(f"You received {qty} Poke Balls!")
+            continue
+        story.inventory[item] = story.inventory.get(item, 0) + qty
+        lines.append(f"{getattr(game, 'player_name', 'You')} received the {forms.item_label(item).upper()}!")
+    gift = story_events.gift_for_starter(ev.get("gift_pokemon"), _region_starter_id(game))
+    if gift:
+        lines.append(story_events.gift_pokemon(game, gift))
+    if flag:
+        story.story_flags[flag] = True
+    show(lines or ["..."])
 
 
 # [REF-0029: Overworld & Play Logic]
@@ -235,6 +294,12 @@ class PlayState(GameState):
                                        game.assets.fonts["tiny"],
                                        self._open_options,
                                        bg_color=GRAY))
+
+        # Side menus return to this same route: resume where we were (keep the catch choices,
+        # don't roll new encounters).
+        for btn in self.hud_buttons:
+            if btn.text not in ("SAVE", "LOAD") and btn.callback:
+                btn.callback = (lambda cb=btn.callback: (setattr(self, "is_resuming", True), cb()))
 
         self.btn_flee = Button(
             rect=(game.width - 200, game.height // 2 - 40, 180, 80),
@@ -427,6 +492,7 @@ class PlayState(GameState):
                     self.show_dialogue(["Choose a Pokémon to catch!"])
                 elif self.p_data[0] is None and not self.boss_manager.in_boss_mode:
                     self.show_progression_menu()
+            return
 
         if self.check_roaming_encounter():
             return
@@ -883,9 +949,20 @@ class PlayState(GameState):
         self.route_buttons.clear()
 
         valid_options = []
+        flags = self.game.story_manager.story_flags
         for item in menu_config:
             condition = item.get("condition")
             action = item.get("action")
+            flag_condition = item.get("flag_condition")
+            if flag_condition:
+                parts = flag_condition.split()
+                if action == "GALACTIC_GAUNTLET" and parts[0] == "not" and trainer_pool and not trainers_left:
+                    flags[parts[1]] = True
+                if parts[0] == "not" and len(parts) == 2:
+                    if flags.get(parts[1]):
+                        continue
+                elif not flags.get(parts[0]):
+                    continue
 
             if action == "BATTLE":
                 valid_options.append(item)
@@ -1106,6 +1183,10 @@ class PlayState(GameState):
             return lambda e=item.get("event"): self.hoenn_event(e)
         if action == "NPC":
             key = item.get("dialogue") or item.get("target")
+            if key in story_events.ROUTE_METHODS:
+                return getattr(self, story_events.ROUTE_METHODS[key])
+            if story_events.get(key):
+                return lambda k=key: self.story_event(k)
             if key in self.game.assets.game_text:
                 return lambda k=key: self._route_npc_text(k)
         return lambda: print(f"Unknown action: {action}")
@@ -1234,6 +1315,12 @@ class PlayState(GameState):
             lines = ["DIRECTOR: How is the WEATHER DIAL working out?",
                      "Weather rocks are sold in marts wherever that weather happens."]
         self.show_dialogue(lines, callback=self.show_progression_menu)
+
+    def story_event(self, key):
+        self.is_progression_paused = True
+        self.hide_menu_buttons()
+        _run_story_event(self, key, lambda c: self._check_route_condition(c, False),
+                         lambda lines: self.show_dialogue(lines, callback=self.show_progression_menu))
 
     def _route_npc_text(self, key):
         self.is_progression_paused = True
@@ -2898,6 +2985,8 @@ class CityState(GameState):
                 return self.visit_berry_shop
             if target and "_mom_" in f"_{target}_":
                 return self.visit_mom
+            if story_events.get(target):
+                return lambda t=target: self.story_event(t)
             key = self._npc_text_key(opt_data.get("dialogue") or target)
             if key:
                 return lambda k=key, o=opt_data: self.show_npc_text(k, o)
@@ -2972,6 +3061,9 @@ class CityState(GameState):
             return key
         prefixed = f"{self.game.story_manager.get_current_region().lower()}_{key}"
         return prefixed if prefixed in text else None
+
+    def story_event(self, key):
+        _run_story_event(self, key, self._check_menu_condition, self.show_message)
 
     def show_npc_text(self, key, opt_data=None):
         """Generic talk-to-NPC: show a GAME_TEXT entry, then set the option's flag if it has one."""

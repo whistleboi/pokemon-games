@@ -1178,7 +1178,8 @@ class BagState(GameState):
             self.game.change_state(self)
             self.refresh_buttons()
             return
-        before = evolution.known_moves(self.game, pokemon)
+        from src.pokemon import moves as movelib
+        old_level = pokemon.level
         pokemon.level_up(1)
         inv = self.game.story_manager.inventory
         inv["RARE_CANDY"] -= 1
@@ -1196,9 +1197,8 @@ class BagState(GameState):
                     self.game, pokemon, next_id, slot_index, next_form=next_form.lower(), context="party",
                     return_state=self.previous_state))
                 return
-        new_moves = sorted(evolution.known_moves(self.game, pokemon) - before)
         lines = [f"{pokemon.display_name} grew to Lv {pokemon.level}!"]
-        lines += [f"{pokemon.display_name} learned {m.replace('-', ' ')}!" for m in new_moves[:2]]
+        lines += movelib.learn_new_moves(self.game, pokemon, old_level)
         self.game.show_dialogue(lines)
         self.game.change_state(self)
         self.refresh_buttons()
@@ -2166,7 +2166,7 @@ class EvolutionState(GameState):
                 )
                 # What the Pokémon has earned stays with it through evolution.
                 for attr in ("level", "xp", "friendship", "counters", "condition", "sheen", "ribbons",
-                             "gmax_factor", "caught_region"):
+                             "gmax_factor", "caught_region", "ivs", "moves", "status"):
                     if hasattr(self.pokemon, attr):
                         setattr(self.evolved_pokemon_obj, attr, getattr(self.pokemon, attr))
 

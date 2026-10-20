@@ -262,7 +262,7 @@
       "backgrounds": { "main": "oreburgh_city.png", "pokecenter": "oreburgh_center.png", "pokemart": "oreburgh_mart.png", "gym": "battle_gym_oreburgh.png" },
       "has_gym": true,
       "gym": {
-        "requirements": { "flag": "visited_OREBURGH_MINE", "fail_text": "Roark is digging in the Oreburgh Mine. Go find him there first!" },
+        "requirements": { "flag": "met_roark", "fail_text": "Roark is digging in the Oreburgh Mine. Go find him there first!" },
         "trainers": [
           {
             "name": "Worker Colin",
@@ -1137,7 +1137,7 @@
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "Find Roark", "action": "NPC", "target": "roark_mine", "flag_condition": "not visited_OREBURGH_MINE", "color": "GOLD" },
+        { "text": "Find Roark", "action": "NPC", "target": "roark_mine", "flag_condition": "not met_roark", "color": "GOLD" },
         { "text": "Oreburgh City", "action": "EXIT", "target_area": "OREBURGH_CITY", "condition": "can_exit", "color": "RED" }
       ]
     },

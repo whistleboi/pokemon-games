@@ -709,6 +709,8 @@ class StoryManager:
         return {
             "id": p.id, "form": p.form, "shiny": p.is_shiny,
             "level": p.level, "xp": p.xp, "friendship": p.friendship, "counters": dict(p.counters),
+            "ivs": dict(getattr(p, "ivs", {})), "moves": list(getattr(p, "moves", [])),
+            "status": getattr(p, "status", None),
             "hp": p.current_hp, "hp_real": True, "stage": p.stage, "gmax": p.gmax_factor,
             "caught_region": getattr(p, "caught_region", None),
             "condition": p.condition, "sheen": p.sheen, "ribbons": p.ribbons,
@@ -724,6 +726,10 @@ class StoryManager:
             pokemon.stage = p_data["stage"]
         pokemon.friendship = p_data.get("friendship", 0)
         pokemon.counters = dict(p_data.get("counters", {}))
+        if p_data.get("ivs"):
+            pokemon.ivs = dict(p_data["ivs"])
+        pokemon.moves = list(p_data.get("moves", []))
+        pokemon.status = p_data.get("status")
         old_scale_hp = None
         if "level" in p_data:
             pokemon.level, pokemon.xp = int(p_data["level"]), int(p_data.get("xp", 0))
