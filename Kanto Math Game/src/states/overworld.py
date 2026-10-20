@@ -390,88 +390,6 @@ class PlayState(GameState):
             return True
         return False
 
-    def check_ninja_ambush(self):
-        """Checks for global ambush events defined in data."""
-        if not self.fresh_entry:
-            return False
-        self.fresh_entry = False
-
-        if not self.game.story_manager.player_team:
-            return False
-
-        ambush_config = self.game.loader.area_data.get("AMBUSH_DATA", {})
-        if not ambush_config:
-            return False
-
-        chance = self.area_data.get("ambush_chance", ambush_config.get("chance", 0))
-
-        if random.random() < chance:
-            self.rounds_completed += 1
-
-            trainers = ambush_config.get("trainers", [])
-            if not trainers:
-                return False
-
-            t_data = random.choice(trainers)
-
-            team = []
-
-            pool = self.game.loader.area_data.get("NINJA_AMBUSH_POOL")
-            if pool:
-                count = random.randint(2, 3)
-                team_ids = [random.choice(pool) for _ in range(count)]
-            else:
-                team_ids = t_data.get("team", [])
-                if team_ids and isinstance(team_ids, list) and len(team_ids) > 0 and isinstance(team_ids[0], list):
-                    team_ids = random.choice(team_ids)
-
-            for pid in team_ids:
-                raw = self.game.loader.fetch_specific(pid)
-                team.append(Pokemon(raw, self.game.assets, size_mult=3.125))
-            levels.set_team(team, levels.trainer_team_levels(
-                self.game, self.game.story_manager.current_area_key, len(team), boss=True))
-
-            sprite_name = t_data.get("sprite", "youngster.png")
-            trainer_sprite = self.game.assets.get_trainer_image(sprite_name)
-
-            self.play_state_data = {
-                "balls_left": self.balls_left,
-                "current_streak": self.current_streak,
-                "rounds_completed": self.rounds_completed,
-                "pending_wild_encounters": 0,
-                "initial_round_active": True
-            }
-
-            from src.states.battle import TrainerBattleState, TrainerIntroState
-            battle_state = TrainerBattleState(
-                self.game,
-                team,
-                trainer_sprite=trainer_sprite,
-                trainer_class=t_data.get("class", "TRAINER"),
-                trainer_name=t_data.get("name"),
-                battle_type="field",
-                area_name=self.game.story_manager.current_area_key,
-                custom_dialogue=t_data.get("dialogue")
-            )
-            battle_state.play_state_data = self.play_state_data
-
-            intro_lines = t_data.get("dialogue", {}).get("intro", ["Ambush!"])
-            if isinstance(intro_lines, list):
-                intro_text = [random.choice(intro_lines)]
-            else:
-                intro_text = [str(intro_lines)]
-
-            bg_ambush = self.game.assets.get_background("battle_ambush.png")
-            if bg_ambush:
-                box_top = Utils.get_full_dialogue_rect(self.game).top
-                battle_state.background = pygame.transform.scale(bg_ambush, (self.game.width, box_top))
-
-            intro = TrainerIntroState(self.game, trainer_sprite, intro_text, battle_state)
-            self.game.change_state(intro)
-
-            return True
-        return False
-
     def save_game(self):
         from src.states.menus import SaveState
         self.game.change_state(SaveState(self.game, self))
@@ -509,9 +427,6 @@ class PlayState(GameState):
                     self.show_dialogue(["Choose a Pokémon to catch!"])
                 elif self.p_data[0] is None and not self.boss_manager.in_boss_mode:
                     self.show_progression_menu()
-
-        if self.check_ninja_ambush():
-            return
 
         if self.check_roaming_encounter():
             return
@@ -2582,7 +2497,6 @@ class CityState(GameState):
         self.npc_sprite = None
         self.npc_dialogue = None
         self.current_npc = None
-        self.creepy_timer = 0
         self.choice_active = False
         self.npc_slide_offset = 0
         self.is_npc_exiting = False
@@ -2920,8 +2834,6 @@ class CityState(GameState):
             return self.start_gym_battle
         if action == "NPC":
             target = opt_data.get("target")
-            if target == "lunatic":
-                return self.meet_lunatic
             if target == "giovanni":
                 return self.visit_giovanni
             if target in ["mom", "player_mom"]:
@@ -4154,37 +4066,6 @@ class CityState(GameState):
         self.npc_dialogue.reset("You left the old man to his dreams.")
         self.npc_dialogue.callback = self.end_npc_interaction
 
-    def meet_lunatic(self):
-        self.clear_hover_menu()
-        self.npc_active = True
-        self.action_menu.set_visibility(False)
-
-        if self.game.story_manager.story_flags.get("beat_champion"):
-            self.current_npc = "system"
-            self.npc_sprite = None
-            dialogue_text = [
-                "You ask around about an old man.",
-                "People tell you they don't know who you're talking about."
-            ]
-        else:
-            self.current_npc = "lunatic"
-            self.npc_sprite = self.game.assets.get_trainer_image("lunatic.png")
-            default_key = f"{self.area_key.lower().replace('kanto_', '')}_lunatic_info"
-            dialogue_key = self.area_data.get("lunatic_dialogue_key")
-            if not dialogue_key:
-                dialogue_key = default_key
-
-            dialogue_text = self.game.assets.get_text(
-                dialogue_key, default="The spirits whisper of a powerful trainer here..."
-            )
-
-        self.npc_dialogue = ClassicDialogueBox(
-            Utils.get_full_dialogue_rect(self.game),
-            dialogue_text,
-            self.game.assets.fonts["med"],
-            callback=self.end_npc_interaction,
-        )
-
     def end_npc_interaction(self):
         """Cleans up NPC states. Now triggers slide-out before fully closing."""
         if self.npc_active and not self.is_npc_exiting:
@@ -4389,8 +4270,6 @@ class CityState(GameState):
                     self.npc_slide_offset = max(0, self.npc_slide_offset - 40)
 
             self.npc_dialogue.update()
-            if self.current_npc == "lunatic":
-                self.creepy_timer += 1
 
             if self.current_npc == "oldman" and self.npc_dialogue.current_line == 2 and self.npc_dialogue.is_waiting_for_click:
                 self.choice_active = True
@@ -4416,10 +4295,7 @@ class CityState(GameState):
         screen = self.game.screen
         screen.fill(BLACK)
 
-        if self.npc_active and self.current_npc == "lunatic":
-            val = int(50 + math.sin(self.creepy_timer * 0.1) * 40)
-            screen.fill((val, 0, val//2))
-        elif self.npc_active and hasattr(self, "npc_bg") and self.npc_bg:
+        if self.npc_active and hasattr(self, "npc_bg") and self.npc_bg:
             screen.blit(self.npc_bg, (0, 0))
         else:
             if self.background:
@@ -4746,6 +4622,14 @@ class GymLobbyState(GameState):
         self.game.ui_manager.add_element(self.btn_challenge)
         self.game.ui_manager.add_element(self.btn_exit)
 
+    # Kanto Champion (FireRed/LeafGreen): the rival's team by the starter they took.
+    FRLG_RIVAL_LINE = {1: 1, 2: 1, 3: 1, 152: 1, 4: 4, 5: 4, 6: 4, 155: 4, 7: 7, 8: 7, 9: 7, 158: 7}
+    FRLG_CHAMPION = {
+        1: ([18, 65, 112, 130, 59, 3], [59, 57, 59, 59, 61, 63]),    # Venusaur
+        4: ([18, 65, 112, 103, 130, 6], [59, 57, 59, 59, 61, 63]),   # Charizard
+        7: ([18, 65, 112, 59, 103, 9], [59, 57, 59, 59, 61, 63]),    # Blastoise
+    }
+
     def challenge_gym(self):
         if self.is_cleared or not self.next_opponent or self.game.transitioning:
             return
@@ -4757,64 +4641,35 @@ class GymLobbyState(GameState):
 
         is_leader = (self.next_opponent == self.leader)
         if self.area_key == "INDIGO_PLATEAU" and is_leader:
-            if self.game.story_manager.story_flags.get("beat_champion"):
-                # Title Defense
-                config = self.game.loader.area_data.get("GAME_CONFIG", {})
-                chars = config.get("PLAYABLE_CHARACTERS", ["red", "ethan", "lyra", "may", "rosa"])
-                player_char = getattr(self.game, "player_character", "red")
-                candidates = [c for c in chars if c != player_char]
-                chosen_char = random.choice(candidates)
-
-                img = self.game.assets.get_player_image(chosen_char, back=False)
-                if img:
-                    h = int(self.game.height * 0.6)
-                    w = int(img.get_width() * (h / img.get_height()))
-                    trainer_sprite = pygame.transform.scale(img, (w, h))
-                else:
-                    trainer_sprite = self.game.assets.get_trainer_image("rival.png")
-
-                pool = self.game.loader.area_data.get("CHALLENGER_POOL", [3, 6, 9, 149, 143, 130])
-                team_ids = random.sample(pool, min(6, len(pool)))
-
-                t_data["name"] = chosen_char.upper()
-                t_data["class"] = "CHALLENGER"
-                t_data["team"] = team_ids
-                t_data["dialogue"] = {
-                    "intro": [f"I am {t_data['name']}, and I've come to take your Title!", "Your reign as Champion ends today!"],
-                    "player_won": ["Incredible... your math skills are truly legendary."],
-                    "player_lost": ["And just like that, there's a new Champion!"]
-                }
+            # Champion: your rival, with their FireRed/LeafGreen team and levels.
+            rival_name = getattr(self.game, "rival_name", "BLUE")
+            rival_char = getattr(self.game, "rival_character", "blue")
+            img = self.game.assets.get_player_image(rival_char, back=False)
+            if img:
+                h = int(self.game.height * 0.6)
+                w = int(img.get_width() * (h / img.get_height()))
+                trainer_sprite = pygame.transform.scale(img, (w, h))
             else:
-                # Initial Rival Champion Battle
-                rival_name = getattr(self.game, "rival_name", "BLUE")
-                rival_char = getattr(self.game, "rival_character", "blue")
-                img = self.game.assets.get_player_image(rival_char, back=False)
-                if img:
-                    h = int(self.game.height * 0.6); w = int(img.get_width() * (h / img.get_height()))
-                    trainer_sprite = pygame.transform.scale(img, (w, h))
-                else:
-                    trainer_sprite = self.game.assets.get_trainer_image("rival.png")
-
-                # Determine team based on Rival's starter
-                starter_id = 1
-                if self.game.story_manager.rival_starter_raw:
-                    starter_id = self.game.story_manager.rival_starter_raw.get("id", 1)
-
-                team_ids = [18, 65, 112] # Pidgeot, Alakazam, Rhydon
-                if starter_id in [1, 152]: # Bulbasaur/Chikorita
-                    final_st = 3 if starter_id == 1 else 154; coverage = [59, 130]
-                elif starter_id in [4, 155]: # Charmander/Cyndaquil
-                    final_st = 6 if starter_id == 4 else 157; coverage = [130, 103]
-                else: # Squirtle/Totodile
-                    final_st = 9 if starter_id == 7 else 160; coverage = [103, 59]
-
-                team_ids.extend(coverage); team_ids.append(final_st)
-                t_data.update({"name": rival_name, "class": "CHAMPION", "team": team_ids})
-                t_data["dialogue"] = {
-                    "intro": [f"Hey! {self.game.player_name}!", "I'm the world's most powerful math trainer!", "I'm the Champion! Let's settle this!"],
-                    "player_won": ["No... This can't be happening!", "I'm the Champion! I should be invincible!", "But your math... it's just better."],
-                    "player_lost": ["Smell ya later! I'm the Champion!"]
-                }
+                trainer_sprite = self.game.assets.get_trainer_image("rival.png")
+            starter_id = 1
+            if self.game.story_manager.rival_starter_raw:
+                starter_id = self.game.story_manager.rival_starter_raw.get("id", 1)
+            team, team_levels = self.FRLG_CHAMPION.get(self.FRLG_RIVAL_LINE.get(starter_id, 4))
+            t_data.update({"name": rival_name, "class": "CHAMPION", "team": list(team),
+                           "levels": list(team_levels)})
+            t_data["dialogue"] = {
+                "intro": [f"{rival_name}: Hey, {self.game.player_name}!",
+                          "I was looking forward to seeing you here.",
+                          "My rival should be strong to keep me sharp. While working on the Pokedex, "
+                          "I looked all over for powerful Pokemon. And now... I'm the Pokemon League Champion!",
+                          f"{self.game.player_name}! Do you know what that means? I'll tell you. "
+                          "I am the most powerful trainer in the world!"],
+                "player_won": ["NO! That can't be! You beat my best!",
+                               "After all that work to become League Champ? My reign is over already? "
+                               "It's not fair!"],
+                "player_lost": ["Hahaha! I won, I won! I'm too good for you, "
+                                f"{self.game.player_name}!"],
+            }
         else:
             trainer_sprite = _trainer_sprite(self.game, t_data.get("sprite"))
             choice = (t_data.get("team_choice") or {}).get(str(_region_starter_id(self.game)))
@@ -4832,7 +4687,9 @@ class GymLobbyState(GameState):
         forms.mark_trainer_team(opponent_team, t_data)
         region = self.game.story_manager.get_current_region()
         t_class = t_data.get("class", "GYM_LEADER")
-        if t_class == "ELITE_FOUR":
+        if t_data.get("levels"):
+            team_levels = t_data["levels"]  # exact levels from the games (Kanto's Champion)
+        elif t_class == "ELITE_FOUR":
             team_levels = levels.elite_levels(region, self.progress, len(opponent_team))
         elif is_leader and (t_class in ("CHAMPION", "CHALLENGER") or self.leader.get("class") == "CHAMPION"):
             team_levels = levels.gym_team_levels(region, self.area_key, len(opponent_team), "champion")

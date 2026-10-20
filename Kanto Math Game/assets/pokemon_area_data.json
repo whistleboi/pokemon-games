@@ -513,8 +513,7 @@
       ],
       "explore_options": [
         { "text": "Talk to Professor Oak", "action": "NPC", "target": "professor_oak" }, 
-        { "text": "Talk to Mom", "action": "NPC", "target": "mom" },
-        { "text": "Talk to 'Crazy Guy'", "action": "NPC", "target": "lunatic" }
+        { "text": "Talk to Mom", "action": "NPC", "target": "mom" }
       ],
       "next_area": "KANTO_ROUTE_1",
       "trainer_encounter_rate": 0,
@@ -586,10 +585,8 @@
         { "text": "Heal", "action": "HEAL" },
         { "text": "Shop", "action": "SHOP" },
         { "text": "Gym", "action": "GYM" },
-        { "text": "Talk to 'Crazy Guy'", "action": "NPC", "target": "lunatic" },
         { "text": "Wake Sleeping Man", "action": "NPC", "target": "oldman", "flag_condition": "not got_rocky_helmet" }
       ],
-      "lunatic_dialogue_key": "viridian_lunatic_info",
       "oldman_dialogue_key": "sleeping_man",
       "trainer_pool": [],
       "on_enter_event": null
@@ -659,7 +656,6 @@
         { "text": "Gym", "action": "GYM" },
         { "text": "Visit Museum", "action": "NPC", "target": "museum" }
       ],
-      "lunatic_dialogue_key": "pewter_lunatic_info",
       "on_enter_event": null
     },
 
@@ -729,10 +725,8 @@
         { "text": "Heal", "action": "HEAL" },
         { "text": "Shop", "action": "SHOP" },
         { "text": "Gym", "action": "GYM" },
-        { "text": "Bike Shop", "action": "BIKESHOP" },
-        { "text": "Talk to 'Crazy Guy'", "action": "NPC", "target": "lunatic" }
+        { "text": "Bike Shop", "action": "BIKESHOP" }
       ],
-      "lunatic_dialogue_key": "cerulean_lunatic_info",
       "trainer_pool": [],
       "on_enter_event": null
     },
@@ -754,11 +748,9 @@
       ],
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
-        { "text": "Talk to 'Crazy Guy'", "action": "NPC", "target": "lunatic" },
         { "text": "Talk to Fossil Maniac", "action": "NPC", "target": "stoneman" }
       ],
       "trainer_pool": [],
-      "lunatic_dialogue_key": "mt_moon_lunatic_info",
       "stoneman_dialogue_key": "mt_moon_stoneman_info",
       "on_enter_event": null
     },
@@ -776,7 +768,6 @@
       ],
       "explore_options": [
         { "text": "Talk to Bill", "action": "NPC", "target": "bill" },
-        { "text": "Talk to 'Crazy Guy'", "action": "NPC", "target": "lunatic" },
         { "text": "Talk to Fossil Maniac", "action": "NPC", "target": "stoneman" }
       ],
       "trainer_pool": [],
@@ -799,10 +790,8 @@
         { "text": "Route 8", "target_area": "KANTO_ROUTE_8", "flag_condition": "visited_LAVENDER_TOWN" }
       ],
       "explore_options": [
-        { "text": "Talk to 'Crazy Guy'", "action": "NPC", "target": "lunatic" },
         { "text": "Talk to Fossil Maniac", "action": "NPC", "target": "stoneman" }
       ],
-      "lunatic_dialogue_key": "underground_lunatic_info",
       "trainer_pool": [],
       "on_enter_event": null
     },
@@ -864,7 +853,6 @@
         { "text": "Shop", "action": "SHOP" },
         { "text": "Gym", "action": "GYM" }
       ],
-      "lunatic_dialogue_key": "vermillion_lunatic_info",
       "trainer_pool": [],
       "on_enter_event": null
     },
@@ -885,11 +873,9 @@
         { "text": "Lavendar Town", "target_area": "LAVENDER_TOWN", "flag_condition": "visited_LAVENDER_TOWN" }
       ],
       "explore_options": [
-        { "text": "Heal", "action": "HEAL" },
-        { "text": "Talk to 'Crazy Guy'", "action": "NPC", "target": "lunatic" }
+        { "text": "Heal", "action": "HEAL" }
       ],
       "trainer_pool": [],
-      "lunatic_dialogue_key": "rock_tunnel_city_lunatic_info",
       "on_enter_event": null
     },
 
@@ -915,10 +901,8 @@
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
         { "text": "Shop", "action": "SHOP" },
-        { "text": "Talk to Mr. Fuji", "action": "NPC", "target": "mr_fuji" },
-        { "text": "Talk to 'Crazy Guy'", "action": "NPC", "target": "lunatic" }
+        { "text": "Talk to Mr. Fuji", "action": "NPC", "target": "mr_fuji" }
       ],
-      "lunatic_dialogue_key": "lavender_lunatic_info",
       "on_enter_event": null
     },
 
@@ -979,10 +963,8 @@
         { "text": "Heal", "action": "HEAL" },
         { "text": "Shop", "action": "SHOP" },
         { "text": "Gym", "action": "GYM" },
-        { "text": "Game Corner", "action": "GAMECORNER" },
-        { "text": "Talk to 'Crazy Guy'", "action": "NPC", "target": "lunatic" }
+        { "text": "Game Corner", "action": "GAMECORNER" }
       ],
-      "lunatic_dialogue_key": "celadon_lunatic_info",
       "trainer_pool": [],
       "on_enter_event": null
     },
@@ -1053,7 +1035,6 @@
         { "text": "Confront Team Rocket", "action": "BATTLE", "target": "lunatic" },
         { "text": "Fighting Dojo", "action": "NPC", "target": "dojo" }
       ],
-      "lunatic_dialogue_key": "saffron_lunatic_info",
       "trainer_pool": [],
       "on_enter_event": null
     },
@@ -1073,8 +1054,7 @@
         { "text": "Heal", "action": "HEAL" },
         { "text": "Talk to Employee", "action": "NPC", "target": "silph_employee" },
         { "text": "Confront Rocket", "action": "ROCKET_GAUNTLET", "flag_condition": "not silph_co_cleared" },
-        { "text": "Visit the President", "action": "NPC", "target": "silph_president", "flag_condition": "silph_co_cleared" },
-        { "text": "Talk to 'Crazy Guy'", "action": "NPC", "target": "lunatic" }
+        { "text": "Visit the President", "action": "NPC", "target": "silph_president", "flag_condition": "silph_co_cleared" }
       ],
       "trainer_pool": [
         { "sprite": "rocket_grunt_m.png", "name": "Grunt", "class": "ROCKET", "is_boss_battle": true, "team": [20, 42], "rewards": { "balls": 3 },
@@ -1162,10 +1142,8 @@
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
         { "text": "Shop", "action": "SHOP" },
-        { "text": "Gym", "action": "GYM" },
-        { "text": "Talk to 'Crazy Guy'", "action": "NPC", "target": "lunatic" }
+        { "text": "Gym", "action": "GYM" }
       ],
-      "lunatic_dialogue_key": "fuchsia_lunatic_info",
       "trainer_pool": [],
       "on_enter_event": null
     },
@@ -1223,10 +1201,8 @@
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
         { "text": "Shop", "action": "SHOP" },
-        { "text": "Gym", "action": "GYM" },
-        { "text": "Talk to 'Crazy Guy'", "action": "NPC", "target": "lunatic" }
+        { "text": "Gym", "action": "GYM" }
       ],
-      "lunatic_dialogue_key": "cinnabar_lunatic_info",
       "trainer_pool": [],
       "on_enter_event": null
     },
@@ -1305,10 +1281,8 @@
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
         { "text": "Shop", "action": "SHOP" },
-        { "text": "ELITE_FOUR", "action": "GYM" },
-        { "text": "Talk to 'Crazy Guy'", "action": "NPC", "target": "lunatic" }
+        { "text": "ELITE_FOUR", "action": "GYM" }
       ],
-      "lunatic_dialogue_key": "indigo_lunatic_info",
       "trainer_pool": [],
       "on_enter_event": null
     },
@@ -2636,28 +2610,6 @@
   "MYTHICAL": [151, 251],
   "STANDARD_BOSS": [143, 144, 145, 146, 150, 243, 244, 245, 249, 250, 14300, 14400, 14500, 14600, 14900, 15000],
   "TEAM_ROCKET_POOL": [19, 20, 23, 24, 41, 42, 52, 58, 88, 89, 96, 97, 109, 110],
-  "NINJA_AMBUSH_POOL": [25, 41, 48, 88, 109, 120, 123, 127],
-  "AMBUSH_DATA": {
-    "chance": 0.05,
-    "trainers": [
-      {
-        "name": "Ninja Ben", "class": "NINJA", "sprite": "ninjaben.png", "team": [123, 109],
-        "dialogue": {
-          "intro": ["Sonic speed!", "You cannot see what is not there!"],
-          "player_won": ["You got me this time!", "I will find you again..."],
-          "player_lost": ["Too slow!", "Back to the shadows."]
-        }
-      },
-      {
-        "name": "Ninja Ember", "class": "NINJA", "sprite": "ninjaember.png", "team": [48, 120],
-        "dialogue": {
-          "intro": ["Ninja ambush!", "You didn't see me, did you?"],
-          "player_won": ["You got me this time!", "I will find you again..."],
-          "player_lost": ["Too slow!", "Back to the shadows."]
-        }
-      }
-    ]
-  },
   "GAME_TEXT": {
     "loading_starters": "Loading starters...",
     "choose_partner": "CHOOSE YOUR PARTNER!",
@@ -2694,26 +2646,12 @@
     "mom": ["Don't forget to eat your vegetables", "and get some exercise!"],
     "red_mom_johto_visitor": ["Oh! A visitor from Johto?", "Red is out on Mt. Silver right now.", "He's become such a strong trainer!"],
     "kanto_rival_mom": ["Oh, hello {player_name}!", "My son {rival_name} is out exploring Kanto right now.", "He said he was going to become the greatest Math Master!", "You look tired, why don't you rest here for a moment?", "... ... ...", "Give my regards to your mother in New Bark Town!"],
-    "viridian_lunatic_info": ["The Gym Leader here left long ago.", "They say he will return only when a math whiz", "can defeat him in battle!"],
-    "pallet_town_lunatic_info": ["Hehe...", "I remember when we first started out.", "If only we could go back, eh Pikachu?"],
-    "cerulean_lunatic_info": ["They say there is a secret cave nearby", "That only a Champion can find it...", "...surely just a rumor."],
-    "mt_moon_lunatic_info": ["The fossils...", "... they whisper to me."],
-    "vermillion_lunatic_info": ["When one path is blocked...", "Another opens...", "We've been down that road before..."],
-    "lavender_lunatic_info": ["Do you believe in ghosts?", "That white hand on your shoulder...", "Is it real?"],
-    "celadon_lunatic_info": ["Hehehe... slots... coins...", "Just one more spin..."],
-    "fuchsia_lunatic_info": ["It screams from deep within", "The bird in the island."],
-    "cinnabar_lunatic_info": ["Our laboratory created something...", "Terrible.", "It destroyed the mansion."],
-    "saffron_lunatic_info": ["The psychic power in this city...", "It gives me a headache!"],
-    "rock_tunnel_city_lunatic_info": ["An area down the river...", "Buzzing with excitement...", "We caught a PKMN there once."],
-    "underground_lunatic_info": ["The river flows underground...", "It carries secrets with it...", "Secrets of the past..."],
-    "indigo_lunatic_info": ["This is it, kid", "...", "until next time..."],
     "sleeping_man": {
       "intro": ["ZzzZzzz.....", "zzZZZzzzzZzzzzzz....."],
       "question": "Take the Old Man's helmet?",
       "yes_dialogue": ["You received the Rocky Helmet!", "You can now Headbutt trees."],
       "no_dialogue": ["You left the old man to his dreams."]
     },
-    "pewter_lunatic_info": ["...Museum stones scream of buried wrath...", "Ancient bones from drowned worlds stir...", "Revive what time entombed and old curses wake...", "The dead remember your hands, child."],
     "mt_moon_stoneman_info": ["The Stone Man is a mysterious figure.", "He seems to know more about the mountain than he lets on."]
 
   },

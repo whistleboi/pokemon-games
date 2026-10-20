@@ -8,7 +8,7 @@ Sizes match the existing art: town maps are top-down pixel maps (~1000x850), int
 
 | Region | Required backgrounds | Optional | Trainer sprites | Pokemon sprite gaps |
 |---|---|---|---|---|
-| Kanto | 1 | 64 | 0 | 0 |
+| Kanto | 1 | 51 | 0 | 0 |
 | Johto | 7 | 36 | 0 | 0 |
 | Hoenn | 26 | 68 | 0 | 0 |
 | Sinnoh | 50 | 74 | 0 | 0 |
@@ -20,127 +20,108 @@ Sizes match the existing art: town maps are top-down pixel maps (~1000x850), int
 
 ## Kanto
 
-1 required, 64 optional.
+1 required, 51 optional.
 
-- **Cinnabar Island** (Lv 3, town)
-   1. Building/NPC scene: "Talk to 'Crazy Guy'" -> `backgrounds/kanto/` (interior, 1248x832) *(optional)*
-- **Indigo Plateau** (Lv 3, town)
-   2. Building/NPC scene: "Talk to 'Crazy Guy'" -> `backgrounds/kanto/` (interior, 1248x832) *(optional)*
 - **Mt. Moon** (Lv 3, town)
-   3. Building/NPC scene: "Talk to 'Crazy Guy'" -> `backgrounds/kanto/` (interior, 1248x832) *(optional)*
-   4. Building/NPC scene: "Talk to Fossil Maniac" -> `backgrounds/kanto/` (interior, 1248x832) *(optional)*
+   1. Building/NPC scene: "Talk to Fossil Maniac" -> `backgrounds/kanto/` (interior, 1248x832) *(optional)*
 - **Pallet Town** (Lv 3, town)
-   5. Building/NPC scene: "Talk to Professor Oak" -> `backgrounds/kanto/` (interior, 1248x832) *(optional)*
-   6. Building/NPC scene: "Talk to Mom" -> `backgrounds/kanto/` (interior, 1248x832) *(optional)*
-   7. Building/NPC scene: "Talk to 'Crazy Guy'" -> `backgrounds/kanto/` (interior, 1248x832) *(optional)*
+   2. Building/NPC scene: "Talk to Professor Oak" -> `backgrounds/kanto/` (interior, 1248x832) *(optional)*
+   3. Building/NPC scene: "Talk to Mom" -> `backgrounds/kanto/` (interior, 1248x832) *(optional)*
 - **Pewter City** (Lv 3, town)
-   8. Building/NPC scene: "Visit Museum" -> `backgrounds/kanto/` (interior, 1248x832) *(optional)*
+   4. Building/NPC scene: "Visit Museum" -> `backgrounds/kanto/` (interior, 1248x832) *(optional)*
 - **Viridian City** (Lv 3, town)
-   9. Building/NPC scene: "Talk to 'Crazy Guy'" -> `backgrounds/kanto/` (interior, 1248x832) *(optional)*
-   10. Building/NPC scene: "Wake Sleeping Man" -> `backgrounds/kanto/` (interior, 1248x832) *(optional)*
+   5. Building/NPC scene: "Wake Sleeping Man" -> `backgrounds/kanto/` (interior, 1248x832) *(optional)*
 - **Route 1** (Lv 3, wild_route)
-   11. Signature battle bg: `battle_route_1.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
+   6. Signature battle bg: `battle_route_1.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
 - **Route 2** (Lv 4, wild_route)
-   12. Signature battle bg: `battle_route_2.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
+   7. Signature battle bg: `battle_route_2.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
 - **Viridian Forest** (Lv 4, wild_route)
-   13. Signature battle bg: `battle_viridian_forest.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
+   8. Signature battle bg: `battle_viridian_forest.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
 - **Route 22** (Lv 5, wild_route)
-   14. Signature battle bg: `battle_route_22.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
+   9. Signature battle bg: `battle_route_22.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
 - **Ilex Forest** (Lv 6, dungeon)
-   15. Signature battle bg: `battle_ilex_forest.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
+   10. Signature battle bg: `battle_ilex_forest.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
 - **Route 3** (Lv 6, wild_route)
-   16. Signature battle bg: `battle_route_3.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
+   11. Signature battle bg: `battle_route_3.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
 - **Bills House** (Lv 12, town)
-   17. Building/NPC scene: "Talk to Bill" -> `backgrounds/kanto/` (interior, 1248x832) *(optional)*
-   18. Building/NPC scene: "Talk to 'Crazy Guy'" -> `backgrounds/kanto/` (interior, 1248x832) *(optional)*
-   19. Building/NPC scene: "Talk to Fossil Maniac" -> `backgrounds/kanto/` (interior, 1248x832) *(optional)*
-- **Cerulean City** (Lv 12, town)
-   20. Building/NPC scene: "Talk to 'Crazy Guy'" -> `backgrounds/kanto/` (interior, 1248x832) *(optional)*
-- **Fuchsia City** (Lv 12, town)
-   21. Building/NPC scene: "Talk to 'Crazy Guy'" -> `backgrounds/kanto/` (interior, 1248x832) *(optional)*
+   12. Building/NPC scene: "Talk to Bill" -> `backgrounds/kanto/` (interior, 1248x832) *(optional)*
+   13. Building/NPC scene: "Talk to Fossil Maniac" -> `backgrounds/kanto/` (interior, 1248x832) *(optional)*
 - **Lavender Town** (Lv 12, town)
-   22. Building/NPC scene: "Talk to Mr. Fuji" -> `backgrounds/kanto/` (interior, 1248x832) *(optional)*
-   23. Building/NPC scene: "Talk to 'Crazy Guy'" -> `backgrounds/kanto/` (interior, 1248x832) *(optional)*
-- **Rock Tunnel** (Lv 12, town)
-   24. Building/NPC scene: "Talk to 'Crazy Guy'" -> `backgrounds/kanto/` (interior, 1248x832) *(optional)*
+   14. Building/NPC scene: "Talk to Mr. Fuji" -> `backgrounds/kanto/` (interior, 1248x832) *(optional)*
 - **Saffron City** (Lv 12, town)
-   25. Building/NPC scene: "Fighting Dojo" -> `backgrounds/kanto/` (interior, 1248x832) *(optional)*
+   15. Building/NPC scene: "Fighting Dojo" -> `backgrounds/kanto/` (interior, 1248x832) *(optional)*
 - **Silph Co.** (Lv 12, town)
-   26. Pokemon Center: `silph_city_center.png` -> `backgrounds/kanto/` (interior, 1248x832)
-   27. Building/NPC scene: "Talk to Employee" -> `backgrounds/kanto/` (interior, 1248x832) *(optional)*
-   28. Building/NPC scene: "Visit the President" -> `backgrounds/kanto/` (interior, 1248x832) *(optional)*
-   29. Building/NPC scene: "Talk to 'Crazy Guy'" -> `backgrounds/kanto/` (interior, 1248x832) *(optional)*
+   16. Pokemon Center: `silph_city_center.png` -> `backgrounds/kanto/` (interior, 1248x832)
+   17. Building/NPC scene: "Talk to Employee" -> `backgrounds/kanto/` (interior, 1248x832) *(optional)*
+   18. Building/NPC scene: "Visit the President" -> `backgrounds/kanto/` (interior, 1248x832) *(optional)*
 - **Route 4** (Lv 12, wild_route)
-   30. Signature battle bg: `battle_route_4.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
+   19. Signature battle bg: `battle_route_4.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
 - **Route 24** (Lv 13, wild_route)
-   31. Signature battle bg: `battle_route_24.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
+   20. Signature battle bg: `battle_route_24.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
 - **Nugget Bridge** (Lv 14, wild_route)
-   32. Signature battle bg: `battle_route_25.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
+   21. Signature battle bg: `battle_route_25.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
 - **Route 9** (Lv 14, wild_route)
-   33. Signature battle bg: `battle_route_9.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
+   22. Signature battle bg: `battle_route_9.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
 - **Underground Path** (Lv 15, town)
-   34. Building/NPC scene: "Talk to 'Crazy Guy'" -> `backgrounds/kanto/` (interior, 1248x832) *(optional)*
-   35. Building/NPC scene: "Talk to Fossil Maniac" -> `backgrounds/kanto/` (interior, 1248x832) *(optional)*
+   23. Building/NPC scene: "Talk to Fossil Maniac" -> `backgrounds/kanto/` (interior, 1248x832) *(optional)*
 - **Route 11** (Lv 15, wild_route)
-   36. Signature battle bg: `battle_route_11.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
+   24. Signature battle bg: `battle_route_11.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
 - **Route 5** (Lv 15, wild_route)
-   37. Signature battle bg: `battle_route_5.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
+   25. Signature battle bg: `battle_route_5.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
 - **Route 6** (Lv 15, wild_route)
-   38. Signature battle bg: `battle_route_6.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
+   26. Signature battle bg: `battle_route_6.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
 - **Route 10** (Lv 16, wild_route)
-   39. Signature battle bg: `battle_route_10.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
-- **Celadon City** (Lv 17, town)
-   40. Building/NPC scene: "Talk to 'Crazy Guy'" -> `backgrounds/kanto/` (interior, 1248x832) *(optional)*
+   27. Signature battle bg: `battle_route_10.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
 - **Dragons Den** (Lv 17, dungeon)
-   41. Signature battle bg: `battle_dragons_den.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
+   28. Signature battle bg: `battle_dragons_den.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
 - **Route 8** (Lv 17, wild_route)
-   42. Signature battle bg: `battle_route_8.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
+   29. Signature battle bg: `battle_route_8.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
 - **Route 7** (Lv 19, wild_route)
-   43. Signature battle bg: `battle_route_7.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
+   30. Signature battle bg: `battle_route_7.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
 - **Lake of Rage** (Lv 19, wild_route)
-   44. Signature battle bg: `battle_lake_of_rage.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
+   31. Signature battle bg: `battle_lake_of_rage.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
 - **Route 16** (Lv 20, wild_route)
-   45. Signature battle bg: `battle_route_16.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
+   32. Signature battle bg: `battle_route_16.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
 - **Diglett Cave** (Lv 22, wild_route)
-   46. Signature battle bg: `battle_digglett_cave.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
+   33. Signature battle bg: `battle_digglett_cave.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
 - **Tohjo Falls** (Lv 22, dungeon)
-   47. Signature battle bg: `battle_tohjo_falls.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
+   34. Signature battle bg: `battle_tohjo_falls.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
 - **Route 21** (Lv 23, wild_route)
-   48. Signature battle bg: `battle_route_21.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
+   35. Signature battle bg: `battle_route_21.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
 - **Route 12** (Lv 25, wild_route)
-   49. Signature battle bg: `battle_route_12.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
+   36. Signature battle bg: `battle_route_12.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
 - **Route 13** (Lv 25, wild_route)
-   50. Signature battle bg: `battle_route_13.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
+   37. Signature battle bg: `battle_route_13.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
 - **Route 14** (Lv 25, wild_route)
-   51. Signature battle bg: `battle_route_14.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
+   38. Signature battle bg: `battle_route_14.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
 - **Route 17** (Lv 25, wild_route)
-   52. Signature battle bg: `battle_route_17.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
+   39. Signature battle bg: `battle_route_17.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
 - **Route 18** (Lv 25, wild_route)
-   53. Signature battle bg: `battle_route_18.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
+   40. Signature battle bg: `battle_route_18.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
 - **Route 19** (Lv 25, wild_route)
-   54. Signature battle bg: `battle_route_19.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
+   41. Signature battle bg: `battle_route_19.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
 - **Route 20** (Lv 25, wild_route)
-   55. Signature battle bg: `battle_route_20.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
+   42. Signature battle bg: `battle_route_20.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
 - **Safari Zone** (Lv 25, wild_route)
-   56. Signature battle bg: `battle_safari_zone.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
+   43. Signature battle bg: `battle_safari_zone.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
 - **Route 15** (Lv 26, wild_route)
-   57. Signature battle bg: `battle_route_15.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
+   44. Signature battle bg: `battle_route_15.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
 - **Power Plant** (Lv 26, wild_route)
-   58. Signature battle bg: `battle_power_plant.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
+   45. Signature battle bg: `battle_power_plant.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
 - **Route 27** (Lv 28, wild_route)
-   59. Signature battle bg: `battle_route_27.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
+   46. Signature battle bg: `battle_route_27.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
 - **Route 26** (Lv 29, wild_route)
-   60. Signature battle bg: `battle_route_26.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
+   47. Signature battle bg: `battle_route_26.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
 - **Radio Tower** (Lv 30, dungeon)
-   61. Signature battle bg: `battle_radio_tower.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
+   48. Signature battle bg: `battle_radio_tower.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
 - **Route 23** (Lv 32, wild_route)
-   62. Signature battle bg: `battle_route_23.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
+   49. Signature battle bg: `battle_route_23.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
 - **Cliff Edge Gate** (Lv 40, wild_route)
-   63. Signature battle bg: `battle_cliff_edge_gate.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
+   50. Signature battle bg: `battle_cliff_edge_gate.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
 - **Mt Silver** (Lv 43, dungeon)
-   64. Signature battle bg: `battle_mt_silver.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
+   51. Signature battle bg: `battle_mt_silver.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
 - **Cinnabar Volcano** (Lv 45, wild_route)
-   65. Signature battle bg: `battle_cinnabar_volcano.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
+   52. Signature battle bg: `battle_cinnabar_volcano.png` -> `backgrounds/battle/kanto/` (battle scene, 630x355) *(optional)*
 
 ## Johto
 

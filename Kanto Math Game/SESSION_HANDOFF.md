@@ -194,6 +194,7 @@ The data lives in JSON region files under `assets/`, named `pokemon_area_data.js
   - **Poffin Case:** `story.poffins` is a saved list of dicts, max 100. Poffins are fed from the Poffin Case (a usable Bag key item, or from the Poffin House) and raise every flavor's condition plus Sheen. The Berry Pouch key item lists your berries.
   - **Mission:** `sinnoh_s9` "Master Poffin Chef" is completed by cooking a Mild Poffin (flag `made_mild_poffin`).
   - **Contests:** Poffins feed into Hearthome's Contest Hall, which already works and is gated by Sinnoh badges.
+- **Kanto (2026-10-20):** the 'Crazy Guy' town NPCs and the ninja ambush were removed (code and data). The Champion is always your rival with the FireRed/LeafGreen team and exact levels (Pidgeot 59, Alakazam 57, Rhydon 59, then Gyarados/Arcanine, Exeggutor/Gyarados or Arcanine/Exeggutor, and Venusaur/Charizard/Blastoise 63, by the rival's starter); the old title-defense challengers are gone. Gym/league trainers can carry an exact `levels` list.
 - **Other content:**
   - Silph Co. is a Rocket dungeon. Clearing it unlocks a Porygon and a Master Ball from the president. Giovanni was removed from it because he must stay hidden until the 8th gym.
   - Oceanic Museum, Space Center and Team Hideout areas were built.
