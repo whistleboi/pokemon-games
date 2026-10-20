@@ -224,6 +224,21 @@ The scripts live in the session scratchpad, which is temporary and may be gone n
   - Story NPC buttons: `src/world/story_events.py`, run by `_run_story_event` in overworld.py.
   - `ClassicDialogueBox` callbacks are one-shot.
 
+- **Amie, camping and Paldea paths (2026-10-20):**
+  - **Amie:** `src/pokemon/affection.py` and `src/states/amie.py`; Kalos towns use action `AMIE`.
+  - **Camping:** `src/states/camp.py`; Galar routes use action `CAMP`.
+  - **Paldea Titans:** `BOSS` route items with `no_catch`, `lines`, `won` and `rewards`.
+  - **Team Star, Arven and Penny:** inline `EVENT` items whose `"event"` uses the same fields as story_events.
+  - **Test:** `check_features.py`.
+  - **Back burner (user decision):** the remaining region mechanics don't suit the point-and-click style yet.
+
+- **Grok kanto-fixes merged + bug fixes (2026-10-20):** see `CHANGELOG.md`.
+  - **Tests:** `tests/test_kanto_fixes.py`, `tests/sim_battles.py`, plus scratchpad `check_fixes.py`.
+  - **Kanto filter and Up-Grade gift:** `regional_forms.restrict`, `form_allowed`; the gift is in `CityState.visit_silph_employee`.
+  - **Canon gates:** in the Kanto data. Gym `requirements.badge_names` is new.
+  - **Pending faints:** `TrainerBattleState._start_pending_faint` handles KOs from recoil and chip damage.
+  - **Safe saves:** `DataManager.save` / `read_json`.
+
 ## Not started / ideas
 
 - **Next (from the 2026-10-20 play-test):**

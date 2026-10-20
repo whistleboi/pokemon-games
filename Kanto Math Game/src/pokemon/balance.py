@@ -19,6 +19,7 @@ import random
 
 STAB = 1.5
 CRIT_CHANCE, CRIT_MULT = 1 / 24, 1.5
+CRIT_STAGES = (1 / 24, 1 / 8, 1 / 2, 1.0)  # Gen 7+: stage 0, +1 (Slash, Razor Leaf), +2, +3
 ROLL_MIN, ROLL_MAX = 85, 100
 DEFAULT_POWER = 40
 
@@ -48,11 +49,13 @@ def poke_round(x):
     return math.ceil(x - 0.5)
 
 
-def damage(att_level, power, attack, defense, stab=True, effectiveness=1.0, weather=1.0, crit=None, roll=None):
+def damage(att_level, power, attack, defense, stab=True, effectiveness=1.0, weather=1.0, crit=None, roll=None,
+           crit_stage=0):
     """HP lost to one hit. Returns (damage, was_crit). 0 if the weather made the move fizzle."""
     if weather == 0:
         return 0, False
-    crit = (random.random() < CRIT_CHANCE) if crit is None else crit
+    chance = CRIT_STAGES[max(0, min(int(crit_stage or 0), 3))]
+    crit = (random.random() < chance) if crit is None else crit
     roll = random.randint(ROLL_MIN, ROLL_MAX) if roll is None else roll
     dmg = math.floor(math.floor(math.floor(2 * att_level / 5 + 2) * (power or DEFAULT_POWER)
                                 * attack / max(1, defense)) / 50) + 2

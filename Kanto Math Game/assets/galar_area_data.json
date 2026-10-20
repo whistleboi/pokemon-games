@@ -591,6 +591,7 @@
           "flag_condition": "beat_galar_champion",
           "color": "GOLD"
         },
+        { "text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE" },
         { "text": "DEEPER INTO THE WEALD", "action": "EXIT", "target_area": "WEALD_ALTAR", "condition": "boss_defeated", "color": "GOLD" },
         {
           "text": "SPACE-TIME DISTORTION",
@@ -614,6 +615,7 @@
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "MAX RAID BATTLE", "action": "MAX_RAID", "condition": "can_battle", "color": "PURPLE" },
+        { "text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE" },
         { "text": "Turffield (west)", "action": "EXIT", "target_area": "TURFFIELD", "condition": "can_exit", "color": "RED" },
         { "text": "Motostoke (east)", "action": "EXIT", "target_area": "MOTOSTOKE", "condition": "can_exit", "color": "RED" },
         { "text": "Wedgehurst (south)", "action": "EXIT", "target_area": "WEDGEHURST", "condition": "can_exit", "color": "RED" },
@@ -649,6 +651,7 @@
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE" },
         { "text": "Route 3", "action": "EXIT", "target_area": "GALAR_ROUTE_3", "condition": "can_exit", "color": "RED" },
         { "text": "Route 4", "action": "EXIT", "target_area": "GALAR_ROUTE_4", "condition": "can_exit", "color": "RED" }
       ]
@@ -663,6 +666,7 @@
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE" },
         { "text": "Stow-on-Side", "action": "EXIT", "target_area": "STOW_ON_SIDE", "condition": "can_exit", "color": "RED" },
         { "text": "Ballonlea", "action": "EXIT", "target_area": "BALLONLEA", "condition": "can_exit", "color": "RED" }
       ]
@@ -745,6 +749,7 @@
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE" },
         { "text": "Postwick", "action": "EXIT", "target_area": "POSTWICK", "condition": "can_exit", "color": "RED" },
         { "text": "Wedgehurst", "action": "EXIT", "target_area": "WEDGEHURST", "condition": "can_exit", "color": "RED" }
       ],
@@ -770,6 +775,7 @@
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE" },
         { "text": "Wedgehurst", "action": "EXIT", "target_area": "WEDGEHURST", "condition": "can_exit", "color": "RED" },
         { "text": "Wild Area", "action": "EXIT", "target_area": "WILD_AREA", "condition": "can_exit", "color": "RED" }
       ],
@@ -795,6 +801,7 @@
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE" },
         { "text": "Wild Area", "action": "EXIT", "target_area": "WILD_AREA", "condition": "can_exit", "color": "RED" },
         { "text": "Galar Mine", "action": "EXIT", "target_area": "GALAR_MINE", "condition": "can_exit", "color": "RED" }
       ],
@@ -820,6 +827,7 @@
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE" },
         { "text": "Turffield", "action": "EXIT", "target_area": "TURFFIELD", "condition": "can_exit", "color": "RED" },
         { "text": "Hulbury", "action": "EXIT", "target_area": "HULBURY", "condition": "can_exit", "color": "RED" },
         { "text": "GALAR MINE", "action": "EXIT", "target_area": "GALAR_MINE", "condition": "can_exit", "color": "RED" }
@@ -846,6 +854,7 @@
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE" },
         { "text": "Hulbury", "action": "EXIT", "target_area": "HULBURY", "condition": "can_exit", "color": "RED" },
         { "text": "Motostoke", "action": "EXIT", "target_area": "MOTOSTOKE", "condition": "can_exit", "color": "RED" }
       ],
@@ -871,6 +880,7 @@
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE" },
         { "text": "Motostoke", "action": "EXIT", "target_area": "MOTOSTOKE", "condition": "can_exit", "color": "RED" },
         { "text": "Stow-on-Side", "action": "EXIT", "target_area": "STOW_ON_SIDE", "condition": "can_exit", "color": "RED" }
       ],
@@ -897,6 +907,7 @@
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
+        { "text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE" },
         { "text": "Ballonlea", "action": "EXIT", "target_area": "BALLONLEA", "condition": "can_exit", "color": "RED" },
         { "text": "Circhester", "action": "EXIT", "target_area": "CIRCHESTER", "condition": "can_exit", "color": "RED" }
       ],
@@ -923,6 +934,7 @@
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
+        { "text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE" },
         { "text": "Circhester", "action": "EXIT", "target_area": "CIRCHESTER", "condition": "can_exit", "color": "RED" },
         { "text": "Spikemuth", "action": "EXIT", "target_area": "SPIKEMUTH", "condition": "can_exit", "color": "RED" }
       ],
@@ -951,6 +963,7 @@
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
+        { "text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE" },
         { "text": "Spikemuth", "action": "EXIT", "target_area": "SPIKEMUTH", "condition": "can_exit", "color": "RED" },
         { "text": "Hammerlocke", "action": "EXIT", "target_area": "HAMMERLOCKE", "condition": "can_exit", "color": "RED" }
       ],
@@ -997,6 +1010,7 @@
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
+        { "text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE" },
         { "text": "Hammerlocke", "action": "EXIT", "target_area": "HAMMERLOCKE", "condition": "can_exit", "color": "RED" },
         { "text": "Wyndon", "action": "EXIT", "target_area": "WYNDON", "condition": "can_exit", "color": "RED" }
       ],
@@ -1030,6 +1044,7 @@
           "condition": ["boss_not_defeated"],
           "color": "GOLD"
         },
+        { "text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE" },
         { "text": "Wedgehurst Station", "action": "EXIT", "target_area": "WEDGEHURST", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "WEDGEHURST"
@@ -1061,6 +1076,7 @@
           "condition": ["boss_not_defeated"],
           "color": "GOLD"
         },
+        { "text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE" },
         { "text": "SPLIT-DECISION RUINS", "action": "EXIT", "target_area": "SPLIT_DECISION_RUINS", "condition": "can_exit", "color": "RED" },
         { "text": "OLD CEMETERY", "action": "EXIT", "target_area": "CROWN_OLD_CEMETERY", "condition": "can_exit", "color": "RED" },
         { "text": "SNOWSLIDE SLOPE", "action": "EXIT", "target_area": "CROWN_SNOWSLIDE_SLOPE", "condition": "can_exit", "color": "RED" },
@@ -1087,6 +1103,7 @@
           "condition": ["boss_not_defeated"],
           "color": "GOLD"
         },
+        { "text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE" },
         { "text": "DRAGON CHAMBER", "action": "EXIT", "target_area": "SPLIT_DECISION_DRAGON_CHAMBER", "condition": "boss_defeated", "color": "GOLD" },
         { "text": "Crown Tundra", "action": "EXIT", "target_area": "CROWN_TUNDRA", "condition": "can_exit", "color": "RED" }
       ],
@@ -1131,6 +1148,7 @@
           "condition": ["boss_not_defeated"],
           "color": "GOLD"
         },
+        { "text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE" },
         { "text": "Crown Tundra", "action": "EXIT", "target_area": "CROWN_TUNDRA", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "CROWN_TUNDRA"
@@ -1154,6 +1172,7 @@
           "condition": ["boss_not_defeated"],
           "color": "GOLD"
         },
+        { "text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE" },
         { "text": "Crown Tundra", "action": "EXIT", "target_area": "CROWN_TUNDRA", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "CROWN_TUNDRA"
@@ -1177,6 +1196,7 @@
           "condition": ["boss_not_defeated"],
           "color": "GOLD"
         },
+        { "text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE" },
         { "text": "Slumbering Weald", "action": "EXIT", "target_area": "SLUMBERING_WEALD", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "SLUMBERING_WEALD"

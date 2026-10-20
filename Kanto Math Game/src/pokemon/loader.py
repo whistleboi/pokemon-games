@@ -6,6 +6,7 @@ import os
 import threading
 import queue
 from src.config import DEFAULT_BASE_STATS
+from src.world import regional_forms
 
 
 # [REF-0013: Pokemon Loader]
@@ -153,7 +154,8 @@ class PokemonLoader:
                 if alt_config and alt_config.get("enabled"):
                     weights = alt_config.get("weights", {})
                     for k, chance in weights.items():
-                        if k.startswith(f"{p_id_str}_") and random.random() < chance:
+                        if (k.startswith(f"{p_id_str}_") and random.random() < chance
+                                and regional_forms.form_allowed(self.game, k.split("_", 1)[1])):
                             form = k.split("_", 1)[1]
                             break
 
@@ -350,7 +352,7 @@ class PokemonLoader:
                     stage_offset = 1
 
                 if p_id == 10100:
-                    rid = story.rival_starter_raw.get('id', 4) if story.rival_starter_raw else 4
+                    rid = story.rival_starter_id("KANTO", 4) if hasattr(story, "rival_starter_id") else 4
                     meta_id = rid + stage_offset
                 elif p_id == 10101:
                     meta_id = 16 + stage_offset
@@ -362,12 +364,12 @@ class PokemonLoader:
                 elif p_id == 10103:
                     meta_id = 63 + stage_offset
                 elif p_id == 10104:
-                    rid = story.rival_starter_raw.get('id', 4) if story.rival_starter_raw else 4
+                    rid = story.rival_starter_id("KANTO", 4) if hasattr(story, "rival_starter_id") else 4
                     map_4 = {1: 58, 4: 129, 7: 102}
                     base = map_4.get(rid, 58)
                     meta_id = base + min(stage_offset, 1) if base != 129 else (129 if stage_offset == 0 else 130)
                 elif p_id == 10105:
-                    rid = story.rival_starter_raw.get('id', 4) if story.rival_starter_raw else 4
+                    rid = story.rival_starter_id("KANTO", 4) if hasattr(story, "rival_starter_id") else 4
                     map_5 = {1: 129, 4: 102, 7: 58}
                     base = map_5.get(rid, 129)
                     meta_id = base + min(stage_offset, 1) if base != 129 else (129 if stage_offset == 0 else 130)
@@ -542,6 +544,8 @@ class PokemonLoader:
                 "stats": {},
             }
 
+    ITEM_ALIASES = {"UP_GRADE": "UPGRADE"}
+
     def load_level_data(self, assets_dir):
         """Real levels: evolution rules, minimum levels and learnsets (assets/pokemon_levels.json).
         Item evolutions from it join EVOLUTION_ITEMS (so marts stock the items), without
@@ -554,6 +558,10 @@ class PokemonLoader:
         except OSError:
             self.level_data = {}
             return
+        # One spelling per item: the level data says UP_GRADE, the item tables say UPGRADE.
+        for rule in self.level_data.get("pairs", {}).values():
+            if rule.get("item") in self.ITEM_ALIASES:
+                rule["item"] = self.ITEM_ALIASES[rule["item"]]
         names = self.assets.pokemon_names
         items = self.evolution_map.setdefault("EVOLUTION_ITEMS", {})
         have = {(src.upper(), dst.split("_")[0].upper()) for table in items.values() for src, dst in table.items()}

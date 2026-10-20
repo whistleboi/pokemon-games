@@ -11,6 +11,10 @@ class StoryManager:
         self.rival_starter_raw = None
         self.user_rival_starter_raw = None
         self.starting_region = "KANTO"
+        # Regions this save has been to (cross-gen evolution gating, src/pokemon/evolution.py).
+        self.visited_region_set = set()
+        # One rival per region, never repeated within a save: {region: {name, character, starter_id}}
+        self.region_rivals = {}
         self.game_started = False
         self.checkpoint = None
         self.current_area_key = "PALLET_TOWN"
@@ -233,6 +237,95 @@ class StoryManager:
             return
         self.story_flags[f"unlocked_{region.lower()}_badges"] = True
         self.badges.setdefault(region, [])
+        self.visited_region_set.add(region.upper())
+
+    # Canon rival per region (character key = player-trainer sprite), then fallbacks if that one
+    # was already used in this save (e.g. the player picked Silver as their Kanto rival).
+    REGION_RIVALS = {
+        "KANTO": [("BLUE", "blue")], "JOHTO": [("SILVER", "silver"), ("ETHAN", "ethan"), ("LYRA", "lyra")],
+        "HOENN": [("MAY", "may"), ("BRENDAN", "brendan"), ("WALLY", "wally")],
+        "SINNOH": [("BARRY", "barry"), ("DAWN", "dawn"), ("LUCAS", "lucas")],
+        "UNOVA": [("CHEREN", "cheren"), ("BIANCA", "bianca"), ("HUGH", "hugh")],
+        "KALOS": [("SERENA", "serena"), ("CALEM", "calem"), ("SHAUNA", "shauna")],
+        "ALOLA": [("HAU", "hau"), ("GLADION", "gladion")], "GALAR": [("HOP", "hop"), ("BEDE", "bede")],
+        "PALDEA": [("NEMONA", "nemona"), ("ARVEN", "arven")],
+    }
+
+    def used_rivals(self):
+        """Rival character keys and names already used in this save."""
+        keys = {str(r.get("character", "")).lower() for r in self.region_rivals.values()}
+        names = {str(r.get("name", "")).upper() for r in self.region_rivals.values()}
+        return keys, names
+
+    def record_region_rival(self, region, name, character):
+        """The rival for a region, e.g. the one the player picked for their starting region."""
+        self.region_rivals[region.upper()] = {"name": name, "character": character,
+                                              "starter_id": self.region_rivals.get(region.upper(), {}).get("starter_id")}
+
+    def assign_region_rival(self, region):
+        """Give a region its own rival, never one already used in this save (or the player)."""
+        region = region.upper()
+        if region in self.region_rivals:
+            return self.region_rivals[region]
+        keys, names = self.used_rivals()
+        player = str(getattr(self.game, "player_character", "") or "").lower()
+        playable = [c for c in self.game.loader.area_data.get("GAME_CONFIG", {}).get("PLAYABLE_CHARACTERS", [])]
+        options = list(self.REGION_RIVALS.get(region, [])) + [(c.upper(), c) for c in playable]
+        for name, char in options:
+            if char.lower() not in keys and name.upper() not in names and char.lower() != player:
+                self.region_rivals[region] = {"name": name, "character": char, "starter_id": None}
+                return self.region_rivals[region]
+        self.region_rivals[region] = {"name": "RIVAL", "character": "rival", "starter_id": None}
+        return self.region_rivals[region]
+
+    def note_rival_starter(self, region=None):
+        """Remember the rival's starter for that region (their teams/Champion team use it)."""
+        region = (region or self.get_current_region()).upper()
+        if self.rival_starter_raw and region in self.region_rivals:
+            self.region_rivals[region]["starter_id"] = self.rival_starter_raw.get("id")
+
+    def rival_starter_id(self, region=None, default=4):
+        r = self.region_rivals.get((region or self.get_current_region()).upper(), {})
+        if r.get("starter_id"):
+            return r["starter_id"]
+        return self.rival_starter_raw.get("id", default) if self.rival_starter_raw else default
+
+    def sync_rival(self):
+        """Point game.rival_name / rival_character at the current region's rival."""
+        game = self.game
+        start = (self.starting_region or "KANTO").upper()
+        if start not in self.region_rivals and getattr(game, "rival_character", None):
+            # older saves / the starting region: the rival the player picked at the start
+            self.record_region_rival(start, getattr(game, "rival_name", "???"), game.rival_character)
+        region = self.get_current_region().upper()
+        if region not in self.region_rivals and region in self.REGION_RIVALS:
+            self.assign_region_rival(region)
+        r = self.region_rivals.get(region)
+        if r:
+            game.rival_name, game.rival_character = r["name"], r["character"]
+            if region != start:
+                game.rival_true_name = str(r["name"]).upper()
+
+    def deposit_to_pc(self, pokemon):
+        """Put a Pokemon in the first empty PC slot (the PC is 300 slots, None = empty)."""
+        slot = next((i for i, p in enumerate(self.pc_pokemon) if p is None), None)
+        if slot is None:
+            self.pc_pokemon.append(pokemon)
+            return len(self.pc_pokemon) - 1
+        self.pc_pokemon[slot] = pokemon
+        return slot
+
+    def visited_regions(self):
+        """Every region this save has been in: the starting region, any recorded visit, and
+        (for older saves) any region whose badge page was unlocked on arrival."""
+        out = {r.upper() for r in self.visited_region_set}
+        if self.starting_region:
+            out.add(self.starting_region.upper())
+        for flag, on in self.story_flags.items():
+            if on and flag.startswith("unlocked_") and flag.endswith("_badges"):
+                out.add(flag[len("unlocked_"):-len("_badges")].upper())
+        out.discard("NATIONAL_DEX")
+        return out
 
     def move_to_region(self, region):
         """Mom's move after a championship: unlock the region and return the state to switch to."""
@@ -241,6 +334,7 @@ class StoryManager:
         src = self.get_current_region()
         cfg = self.get_region_start(region)
         self.enter_region(region)
+        self.assign_region_rival(region)  # a new rival for the new region (never a repeat)
         self.active_badge_region = region
         self.story_flags[f"moved_to_{region.lower()}"] = True
         self.current_area_key = cfg.get("start_area", self.current_area_key)
@@ -677,6 +771,8 @@ class StoryManager:
             "player_team": [self._pokemon_record(p) for p in self.player_team if p],
             "pc_pokemon": [self._pokemon_record(p) if p else None for p in self.pc_pokemon],
             "starting_region": self.starting_region,
+            "visited_regions": sorted(self.visited_regions()),
+            "region_rivals": self.region_rivals,
             "rival_starter_id": (
                 self.rival_starter_raw["id"] if self.rival_starter_raw else None
             ),
@@ -709,8 +805,9 @@ class StoryManager:
         return {
             "id": p.id, "form": p.form, "shiny": p.is_shiny,
             "level": p.level, "xp": p.xp, "friendship": p.friendship, "counters": dict(p.counters),
+            "affection": getattr(p, "affection", 0),
             "ivs": dict(getattr(p, "ivs", {})), "moves": list(getattr(p, "moves", [])),
-            "status": getattr(p, "status", None),
+            "status": getattr(p, "status", None), "sleep_turns": getattr(p, "sleep_turns", 0),
             "hp": p.current_hp, "hp_real": True, "stage": p.stage, "gmax": p.gmax_factor,
             "caught_region": getattr(p, "caught_region", None),
             "condition": p.condition, "sheen": p.sheen, "ribbons": p.ribbons,
@@ -725,11 +822,13 @@ class StoryManager:
         if "stage" in p_data:
             pokemon.stage = p_data["stage"]
         pokemon.friendship = p_data.get("friendship", 0)
+        pokemon.affection = p_data.get("affection", 0)
         pokemon.counters = dict(p_data.get("counters", {}))
         if p_data.get("ivs"):
             pokemon.ivs = dict(p_data["ivs"])
         pokemon.moves = list(p_data.get("moves", []))
         pokemon.status = p_data.get("status")
+        pokemon.sleep_turns = int(p_data.get("sleep_turns", 2 if pokemon.status == "sleep" else 0))
         old_scale_hp = None
         if "level" in p_data:
             pokemon.level, pokemon.xp = int(p_data["level"]), int(p_data.get("xp", 0))
@@ -755,6 +854,8 @@ class StoryManager:
     def deserialize(self, data, loader):
         data = self._migrate_area_keys(data)
         self.starting_region = data.get("starting_region", "KANTO")
+        self.visited_region_set = {str(r).upper() for r in data.get("visited_regions", [])}
+        self.region_rivals = {str(k).upper(): dict(v) for k, v in (data.get("region_rivals") or {}).items()}
         self.current_area_key = data.get("current_area_key", "PALLET_TOWN")
         raw_badges = data.get("badges", [])
         if isinstance(raw_badges, list):
@@ -767,6 +868,7 @@ class StoryManager:
             k: set(v) for k, v in data.get("defeated_trainers", {}).items()
         }
         self.story_flags = data.get("story_flags", {})
+        self.story_flags.pop("forced_white_out", None)  # stale flag from old saves
         self.balls_left = data.get("balls_left", 5)
         self.current_streak = data.get("current_streak", 0)
         self.money = data.get("money", 3000)
@@ -791,9 +893,10 @@ class StoryManager:
             self._apply_record(pokemon, p_data, form)
             self.player_team.append(pokemon)
 
-        self.pc_pokemon = [None] * 300
-        for i, p_data in enumerate(data.get("pc_pokemon", [])):
-            if i >= 300 or p_data is None:
+        saved_pc = data.get("pc_pokemon", [])
+        self.pc_pokemon = [None] * max(300, len(saved_pc))  # keep anything stored past slot 300
+        for i, p_data in enumerate(saved_pc):
+            if p_data is None:
                 continue
             form = p_data.get("form", "normal")
             raw = loader.fetch_specific(

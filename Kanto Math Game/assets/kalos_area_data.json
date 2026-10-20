@@ -196,6 +196,7 @@
       ],
       "explore_options": [
         { "text": "Pokémon Center", "action": "HEAL" },
+        { "text": "Pokémon-Amie", "action": "AMIE" },
         { "text": "Shop", "action": "SHOP" },
         { "text": "Meet Shauna & Tierno", "action": "NPC", "target": "kalos_shauna_intro", "flag_condition": "not met_kalos_friends" }
       ],
@@ -232,6 +233,7 @@
       ],
       "explore_options": [
         { "text": "Pokémon Center", "action": "HEAL" },
+        { "text": "Pokémon-Amie", "action": "AMIE" },
         { "text": "Shop", "action": "SHOP" },
         { "text": "Challenge Gym", "action": "GYM" }
       ],
@@ -269,6 +271,7 @@
       ],
       "explore_options": [
         { "text": "Pokémon Center", "action": "HEAL" },
+        { "text": "Pokémon-Amie", "action": "AMIE" },
         { "text": "Department Store", "action": "SHOP" },
         { "text": "Visit Professor Sycamore", "action": "NPC", "target": "kalos_sycamore_intro", "flag_condition": "not met_sycamore" },
         {
@@ -296,7 +299,11 @@
         { "text": "Route 7 (to Connecting Cave)", "target_area": "KALOS_ROUTE_7" },
         { "text": "Route 6", "target_area": "KALOS_ROUTE_6" }
       ],
-      "explore_options": [{"text": "Pokémon Center", "action": "HEAL"}, {"text": "Shop", "action": "SHOP"}],
+      "explore_options": [
+        { "text": "Pokémon Center", "action": "HEAL" },
+        { "text": "Pokémon-Amie", "action": "AMIE" },
+        { "text": "Shop", "action": "SHOP" }
+      ],
       "next_area": "KALOS_ROUTE_7"
     },
     "AMBRETTE_TOWN": {
@@ -312,6 +319,7 @@
       ],
       "explore_options": [
         { "text": "Pokémon Center", "action": "HEAL" },
+        { "text": "Pokémon-Amie", "action": "AMIE" },
         { "text": "Shop", "action": "SHOP" },
         { "text": "Fossil Lab", "action": "NPC", "target": "ambrette_fossil_lab" }
       ],
@@ -350,6 +358,7 @@
       ],
       "explore_options": [
         { "text": "Pokémon Center", "action": "HEAL" },
+        { "text": "Pokémon-Amie", "action": "AMIE" },
         { "text": "Shop", "action": "SHOP" },
         { "text": "Challenge Gym", "action": "GYM" }
       ],
@@ -368,6 +377,7 @@
       ],
       "explore_options": [
         { "text": "Pokémon Center", "action": "HEAL" },
+        { "text": "Pokémon-Amie", "action": "AMIE" },
         { "text": "Shop", "action": "SHOP" },
         {
           "text": "Stop the Ultimate Weapon",
@@ -414,6 +424,7 @@
       ],
       "explore_options": [
         { "text": "Pokémon Center", "action": "HEAL" },
+        { "text": "Pokémon-Amie", "action": "AMIE" },
         { "text": "Shop", "action": "SHOP" },
         { "text": "Challenge Gym", "action": "GYM" },
         {
@@ -456,6 +467,7 @@
       ],
       "explore_options": [
         { "text": "Pokémon Center", "action": "HEAL" },
+        { "text": "Pokémon-Amie", "action": "AMIE" },
         { "text": "Shop", "action": "SHOP" },
         { "text": "Challenge Gym", "action": "GYM" }
       ],
@@ -495,6 +507,7 @@
       ],
       "explore_options": [
         { "text": "Pokémon Center", "action": "HEAL" },
+        { "text": "Pokémon-Amie", "action": "AMIE" },
         { "text": "Shop", "action": "SHOP" },
         { "text": "Challenge Gym", "action": "GYM" }
       ],
@@ -512,7 +525,11 @@
         { "text": "Route 17 (to Anistar)", "target_area": "KALOS_ROUTE_17" },
         { "text": "Route 16", "target_area": "KALOS_ROUTE_16" }
       ],
-      "explore_options": [{"text": "Pokémon Center", "action": "HEAL"}, {"text": "Shop", "action": "SHOP"}],
+      "explore_options": [
+        { "text": "Pokémon Center", "action": "HEAL" },
+        { "text": "Pokémon-Amie", "action": "AMIE" },
+        { "text": "Shop", "action": "SHOP" }
+      ],
       "next_area": "KALOS_ROUTE_17"
     },
     "ANISTAR_CITY": {
@@ -545,6 +562,7 @@
       ],
       "explore_options": [
         { "text": "Pokémon Center", "action": "HEAL" },
+        { "text": "Pokémon-Amie", "action": "AMIE" },
         { "text": "Shop", "action": "SHOP" },
         { "text": "Challenge Gym", "action": "GYM" }
       ],
@@ -562,6 +580,7 @@
       ],
       "explore_options": [
         { "text": "Pokémon Center", "action": "HEAL" },
+        { "text": "Pokémon-Amie", "action": "AMIE" },
         { "text": "Shop", "action": "SHOP" },
         { "text": "Rival Battle", "action": "NPC", "target": "kalos_rival_couriway", "flag_condition": "not defeated_rival_couriway" }
       ],
@@ -620,6 +639,7 @@
       ],
       "explore_options": [
         { "text": "Pokémon Center", "action": "HEAL" },
+        { "text": "Pokémon-Amie", "action": "AMIE" },
         { "text": "Shop", "action": "SHOP" },
         { "text": "Challenge Gym", "action": "GYM" }
       ],
@@ -634,6 +654,7 @@
       "travel_options": [{"text": "Victory Road (Kalos)", "target_area": "VICTORY_ROAD_KALOS"}],
       "explore_options": [
         { "text": "Pokémon Center", "action": "HEAL" },
+        { "text": "Pokémon-Amie", "action": "AMIE" },
         { "text": "Shop", "action": "SHOP" },
         { "text": "CHALLENGE ELITE FOUR", "action": "GYM", "condition": "has_all_kalos_badges", "color": "GOLD" }
       ],

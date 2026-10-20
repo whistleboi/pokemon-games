@@ -164,7 +164,7 @@ class Game:
     def show_dialogue(self, lines, callback=None):
         """One-line way to show a golden text box anywhere"""
         box_rect = pygame.Rect(40, self.height - 200, self.width - 80, 160)
-        box = ClassicDialogueBox(box_rect, lines, self.assets.fonts["med"], callback)
+        box = ClassicDialogueBox(box_rect, lines, self.assets.fonts["med"], callback, auto_hide=True)
         self.ui_manager.add_element(box)
         return box
 
@@ -191,9 +191,14 @@ class Game:
         self.change_state(CharacterSelectionState(self))
 
     def update_save_data(self):
-        if isinstance(self.current_state, PlayState):
-            self.story_manager.balls_left = self.current_state.balls_left
-            self.story_manager.current_streak = self.current_state.current_streak
+        # The route keeps its own ball count; saving from a menu on top of it must use it too.
+        route = self.current_state if isinstance(self.current_state, PlayState) else None
+        prev = getattr(self.current_state, "previous_state", None)
+        if route is None and isinstance(prev, PlayState):
+            route = prev
+        if route is not None:
+            self.story_manager.balls_left = route.balls_left
+            self.story_manager.current_streak = route.current_streak
             
         self.data.data["story"] = self.story_manager.serialize()
         self.data.data["story"]["player_name"] = self.player_name
@@ -214,6 +219,9 @@ class Game:
         self.story_manager = StoryManager()
         self.story_manager.game = self
         self.story_manager.deserialize(story_data, self.loader)
+        prog = self.loader.area_data.get("STORY_PROGRESSION", {})
+        if self.story_manager.current_area_key not in prog:  # unknown area: back to the region's start
+            self.story_manager.current_area_key = self.story_manager.get_region_start().get("start_area", "PALLET_TOWN")
 
         area_key = self.story_manager.current_area_key
         area_info = self.loader.area_data.get("STORY_PROGRESSION", {}).get(area_key, {})
@@ -229,6 +237,7 @@ class Game:
         self.ui_manager.elements.clear()
         self.event_handlers.clear()
         pygame.event.clear()
+        self.state_changed_at = pygame.time.get_ticks()
         self.current_state = new_state
         self.current_state.start()
         if hasattr(new_state, "ui_elements"):
@@ -265,8 +274,15 @@ class Game:
                 if self.current_state != frame_start_state:
                     break
 
-            if not self.ui_manager.handle_events(events):
-                self.current_state.handle_events(events)
+            # Taps right after a screen change are ignored (a double-tap must not press a
+            # button on the new screen), and each tap is routed on its own.
+            if pygame.time.get_ticks() - getattr(self, "state_changed_at", -10**6) < 150:
+                events = [e for e in events if e.type not in (pygame.MOUSEBUTTONDOWN, pygame.MOUSEBUTTONUP)]
+            if self.current_state is frame_start_state:
+                remaining = self.ui_manager.unconsumed(
+                    events, lambda: self.current_state is not frame_start_state)
+                if remaining and self.current_state is frame_start_state:
+                    self.current_state.handle_events(remaining)
             self.current_state.update()
             self.current_state.draw()
 

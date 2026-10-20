@@ -196,6 +196,12 @@ class MultiFont:
         self.fallback = fallback_font
         self.SPECIAL_CHARS = {"#", "<", ">", "é", "É"}
 
+    def __getattr__(self, name):
+        # Anything else (get_height, get_linesize...) comes from the main font.
+        if name in ("primary", "fallback"):
+            raise AttributeError(name)
+        return getattr(self.primary, name)
+
     def render(self, text, antialias, color, background=None):
         segments = []
         current_segment = ""

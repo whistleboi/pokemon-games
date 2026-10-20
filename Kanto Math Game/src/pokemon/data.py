@@ -38,6 +38,7 @@ class Pokemon:
         # Friendship grows with catches made while it's in the party (friendship evolutions),
         # and counters track special evolution conditions (wins, attacks, crits, KOs...).
         self.friendship = 0
+        self.affection = 0  # Pokemon-Amie (0-255), see src/pokemon/affection.py
         self.counters = {}
         # Individual values (0-31) like the games; they make each Pokemon's stats a little different.
         self.ivs = {k: random.randint(0, 31) for k in self.IV_KEYS}
@@ -132,11 +133,14 @@ class Pokemon:
             self.xp = min(self.xp, max(0, self.xp_to_next - 1))
             return 0
         gained = 0
+        old_max = self.get_max_hp()
         self.xp += max(0, int(amount))
         while self.level < cap and self.xp >= self.xp_to_next:
             self.xp -= self.xp_to_next
             self.level += 1
             gained += 1
+        if gained and self.current_hp > 0:  # level-ups add the HP gained, like the games
+            self.current_hp = min(self.get_max_hp(), self.current_hp + self.get_max_hp() - old_max)
         if self.level >= self.MAX_LEVEL:
             self.xp = 0
         elif self.level >= cap:
@@ -204,6 +208,17 @@ class Pokemon:
         """The actual stat at a level, as in the games: floor((2 x Base + IV) x Lv / 100) + 5."""
         lv = self.level if level is None else level
         return int((2 * self.get_stat(stat_name) + self.iv(stat_name)) * lv / 100) + 5
+
+    def cure_status(self):
+        """Clear burn/paralysis/poison/sleep/freeze (Pokemon Center, whiteout, Full Heal)."""
+        self.status = None
+        self.sleep_turns = 0
+        self.toxic_count = 0
+
+    def heal_full(self):
+        """Full HP and no status, like a Pokemon Center."""
+        self.current_hp = self.get_max_hp()
+        self.cure_status()
 
     def get_max_hp(self, level=None, **_legacy):
         """Real HP: floor((2 x Base + IV) x Lv / 100) + Lv + 10."""

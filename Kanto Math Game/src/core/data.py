@@ -8,13 +8,37 @@ class DataManager:
         self.save_file = os.path.join(base_dir, "game_data.json")
         self.data = self._load()
 
-    def _load(self):
-        if os.path.exists(self.save_file):
+    @staticmethod
+    def _json_default(obj):
+        if isinstance(obj, (set, frozenset, tuple)):
+            return sorted(obj, key=str)
+        return str(obj)
+
+    @staticmethod
+    def read_json(path):
+        """Read a save file, falling back to its .bak copy.
+        Returns (data or None, status) with status "ok", "restored", "damaged" or "missing"."""
+        if not os.path.exists(path) and not os.path.exists(path + ".bak"):
+            return None, "missing"
+        for candidate, status in ((path, "ok"), (path + ".bak", "restored")):
             try:
-                with open(self.save_file, "r") as f:
-                    return json.load(f)
-            except Exception:
+                with open(candidate, "r", encoding="utf-8") as f:
+                    return json.load(f), status
+            except (OSError, ValueError):
+                continue
+        return None, "damaged"
+
+    def _load(self):
+        data, status = self.read_json(self.save_file)
+        if status == "damaged":
+            # Keep the broken file for rescue instead of quietly overwriting it.
+            try:
+                os.replace(self.save_file, self.save_file + ".corrupt")
+            except OSError:
                 pass
+            print(f"Save file {self.save_file} was damaged; kept it as .corrupt")
+        if data is not None:
+            return data
         return {
             "high_score": 0,
             "total_shinies": 0,
@@ -25,8 +49,22 @@ class DataManager:
         }
 
     def save(self):
-        with open(self.save_file, "w") as f:
-            json.dump(self.data, f)
+        """Safe save: build the whole text first, write it to a temp file, keep the previous
+        save as .bak, then swap the new file in. A crash mid-save can't destroy the save."""
+        text = json.dumps(self.data, default=self._json_default)
+        tmp = self.save_file + ".tmp"
+        with open(tmp, "w", encoding="utf-8") as f:
+            f.write(text)
+            f.flush()
+            os.fsync(f.fileno())
+        if os.path.exists(self.save_file):
+            try:
+                with open(self.save_file, "r", encoding="utf-8") as f:
+                    json.load(f)  # only back up a good save
+                os.replace(self.save_file, self.save_file + ".bak")
+            except (OSError, ValueError):
+                pass
+        os.replace(tmp, self.save_file)
 
     def get_high_score(self):
         return self.data.get("high_score", 0)

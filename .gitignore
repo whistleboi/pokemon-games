@@ -7,3 +7,10 @@ __pycache__/
 
 # Local secrets
 .env
+
+# Audit/handoff packages from other agents (reference only)
+kanto_handoff.zip
+**/kanto_handoff/
+*.tmp
+*.bak
+*.corrupt

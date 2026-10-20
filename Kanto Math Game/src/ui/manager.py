@@ -47,6 +47,22 @@ class UIManager:
                     return True
         return False
 
+    def unconsumed(self, events, state_changed=lambda: False):
+        """Route each event to the UI elements on its own; return the ones nobody used.
+        Stops if a click changed the screen (the rest belonged to the old screen)."""
+        left = []
+        for event in events:
+            used = False
+            for element in reversed(list(self.elements)):
+                if element.handle_event(event):
+                    used = True
+                    break
+            if used and state_changed():
+                return []
+            if not used:
+                left.append(event)
+        return left
+
     def draw(self, surface):
         for element in self.elements:
             element.draw(surface)

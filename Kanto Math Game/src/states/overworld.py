@@ -95,7 +95,7 @@ def _run_story_event(state, key, check, show):
     check(condition) tests a menu condition; show(lines) shows dialogue and returns to the menu."""
     game = state.game
     story = game.story_manager
-    ev = story_events.get(key)
+    ev = key if isinstance(key, dict) else story_events.get(key)
     flag = ev.get("flag")
     if flag and story.story_flags.get(flag):
         show(_resolve_lines(game, ev.get("done") or ev.get("lines") or ["..."]))
@@ -141,6 +141,8 @@ def _draw_season_hud(game, screen, area_key, x, y):
 class PlayState(GameState):
     def __init__(self, game, restore_data=None):
         super().__init__(game)
+        if hasattr(game.story_manager, "sync_rival"):
+            game.story_manager.sync_rival()  # this region's rival (one per region per save)
         hoenn.apply_version(game)
         self.area_data = game.story_manager.get_current_area_data()
         self._inject_regional_data()
@@ -548,10 +550,10 @@ class PlayState(GameState):
             self.game, self.game.story_manager.current_area_key, len(opponent_team), boss=True))
 
         from src.states.battle import TrainerBattleState, TrainerIntroState
-        trainer_sprite = self.game.assets.get_trainer_image(trainer_info["sprite"])
+        trainer_sprite = _trainer_sprite(self.game, trainer_info.get("sprite"))  # rival art too
         battle_state = TrainerBattleState(
-            self.game, opponent_team, trainer_img_name=trainer_info["sprite"],
-            trainer_class=trainer_info["class"], trainer_name=trainer_info.get("name"),
+            self.game, opponent_team, trainer_sprite=trainer_sprite,
+            trainer_class=trainer_info["class"], trainer_name=_fill_names(self.game, trainer_info.get("name")),
             victory_flag=on_enter.get("flag_check"),
             is_boss_battle=trainer_info.get("is_boss_battle", False),
         )
@@ -593,8 +595,7 @@ class PlayState(GameState):
             team.append(egg_poke)
             context = "party"
         else:
-            target_idx = len(self.game.story_manager.pc_pokemon)
-            self.game.story_manager.pc_pokemon.append(egg_poke)
+            target_idx = self.game.story_manager.deposit_to_pc(egg_poke)
             context = "pc"
 
         from src.states.systems import EvolutionState
@@ -1036,6 +1037,13 @@ class PlayState(GameState):
         if isinstance(condition, str) and condition.startswith("not:"):
             return not self._check_route_condition(condition[4:], trainers_left, item)
 
+        if isinstance(condition, str) and condition.startswith("has_item:"):
+            return self.game.story_manager.inventory.get(condition[9:], 0) > 0
+        if isinstance(condition, str) and condition.replace(" ", "").startswith("badges_less:"):
+            # "badges_less: N": fewer than N badges in this region (Route 22's early rival)
+            story = self.game.story_manager
+            need = int(condition.split(":", 1)[1])
+            return len(story.badges.get(story.get_current_region(), [])) < need
         if condition == "has_balls":
             return self.balls_left > 0
         if condition == "has_SQUIRT_BOTTLE":
@@ -1179,6 +1187,10 @@ class PlayState(GameState):
             return self.action_pick_berries
         if action == "WEATHER_DIRECTOR":
             return self.visit_weather_director
+        if action == "EVENT":
+            return lambda e=item.get("event") or {}: self.story_event(e)
+        if action == "CAMP":
+            return self.open_camp
         if action == "HOENN_EVENT":
             return lambda e=item.get("event"): self.hoenn_event(e)
         if action == "NPC":
@@ -1316,6 +1328,12 @@ class PlayState(GameState):
                      "Weather rocks are sold in marts wherever that weather happens."]
         self.show_dialogue(lines, callback=self.show_progression_menu)
 
+    def open_camp(self):
+        from src.states.camp import CampState
+        self.is_progression_paused = True
+        self.hide_menu_buttons()
+        self.game.change_state(CampState(self.game, self))
+
     def story_event(self, key):
         self.is_progression_paused = True
         self.hide_menu_buttons()
@@ -1408,7 +1426,7 @@ class PlayState(GameState):
 
             if poke.id == 201:
                 all_owned = self.game.story_manager.player_team + self.game.story_manager.pc_pokemon
-                owned_forms = {p.form for p in all_owned if p.id == 201}
+                owned_forms = {p.form for p in all_owned if p and p.id == 201}
                 if len(owned_forms) < 28:
                     continue
 
@@ -1574,12 +1592,18 @@ class PlayState(GameState):
                 self.show_dialogue(msg, callback=self.show_progression_menu)
                 return
 
+        boss_data = boss_data or self.area_data.get("area_boss", {})
+        if boss_data and boss_data.get("lines"):
+            self.is_progression_paused = True
+            self.hide_menu_buttons()
+            self.show_dialogue(_resolve_lines(self.game, boss_data["lines"]),
+                               callback=lambda b=dict(boss_data, lines=None): self.action_challenge_boss(b))
+            return
+
         self.is_progression_paused = False
         self.hide_menu_buttons()
 
         self.rounds_completed += 1
-
-        boss_data = boss_data or self.area_data.get("area_boss", {})
         if not boss_data:
             self.show_progression_menu()
             return
@@ -1617,6 +1641,10 @@ class PlayState(GameState):
             is_boss_battle=True
         )
         battle_state.victory_flag = flag_name
+        # Titans and other story bosses that are beaten, not caught.
+        battle_state.no_catch = bool(boss_data.get("no_catch"))
+        battle_state.win_lines = _resolve_lines(self.game, boss_data["won"]) if boss_data.get("won") else []
+        battle_state.boss_rewards = dict(boss_data.get("rewards") or {})
         battle_state.play_state_data = {
             "balls_left": self.balls_left,
             "current_streak": self.current_streak,
@@ -2046,8 +2074,8 @@ class PlayState(GameState):
                 )
 
     def check_team_hp(self):
-        if not any(
-            pokemon.get_stat("HP") > 0
+        if not any(  # current HP (get_stat("HP") is the base stat, always > 0)
+            pokemon.current_hp > 0
             for pokemon in self.game.story_manager.player_team
         ):
             self.show_dialogue(
@@ -2059,7 +2087,7 @@ class PlayState(GameState):
     def perform_black_out(self):
         """Fully heals the team and restarts the current area from the beginning."""
         for p in self.game.story_manager.player_team:
-            p.current_hp = p.get_max_hp()
+            p.heal_full()
 
         self.game.change_state(PlayState(self.game))
 
@@ -2558,6 +2586,8 @@ class PlayState(GameState):
 class CityState(GameState):
     def __init__(self, game):
         super().__init__(game)
+        if hasattr(game.story_manager, "sync_rival"):
+            game.story_manager.sync_rival()  # this region's rival (one per region per save)
         hoenn.apply_version(game)
         self.area_key = self.game.story_manager.current_area_key
         self.area_data = self.game.story_manager.get_current_area_data()
@@ -2714,6 +2744,11 @@ class CityState(GameState):
                 self.show_message(fail_text)
                 return
 
+            missing = [b for b in reqs.get("badge_names", []) if not self.game.story_manager.has_badge(b)]
+            if missing:
+                self.show_message(reqs.get("fail_text", "The Gym is closed."))
+                return
+
             req_flag = reqs.get("flag")
             if req_flag and not self.game.story_manager.story_flags.get(req_flag, False):
                 fail_text = reqs.get("fail_text", "The Gym is closed.")
@@ -2732,7 +2767,13 @@ class CityState(GameState):
         forms.mark_trainer_team(opponent_team, trainer_data)
         region = self.game.story_manager.get_current_region()
         role = levels.gym_role(trainer_data.get("class"), bool(trainer_data.get("badge_reward")))
-        levels.set_team(opponent_team, levels.gym_team_levels(region, self.area_key, len(opponent_team), role))
+        if victory_flag and not trainer_data.get("badge_reward"):
+            # A story fight at the Gym door (Viridian's Team Rocket): area levels, not the
+            # 8th Gym's, since it can happen on day one.
+            levels.set_team(opponent_team, levels.trainer_team_levels(
+                self.game, self.area_key, len(opponent_team), boss=True))
+        else:
+            levels.set_team(opponent_team, levels.gym_team_levels(region, self.area_key, len(opponent_team), role))
 
         sprite_name = trainer_data.get("sprite")
         trainer_sprite = self.game.assets.get_trainer_image(sprite_name)
@@ -2873,6 +2914,11 @@ class CityState(GameState):
         if condition == "has_8_badges":
             return sum(len(b) for b in story.badges.values()) >= 8
 
+        if condition.startswith("has_item:"):
+            return story.inventory.get(condition[9:], 0) > 0
+        if condition == "snorlax_defeated":  # canon: Snorlax (Poke Flute) blocks Cycling Road
+            return bool(story.story_flags.get("KANTO_ROUTE_11_boss_defeated") or story.story_flags.get("caught_snorlax"))
+
         if condition == "has_8_kanto_badges":
             kanto_badges = {"BOULDER", "CASCADE", "THUNDER", "RAINBOW", "SOUL", "MARSH", "VOLCANO", "EARTH"}
             player_badges = set(story.badges.get("KANTO", []))
@@ -2935,6 +2981,8 @@ class CityState(GameState):
                 return self.wake_sleeping_man
             if target == "museum":
                 return self.visit_museum
+            if target == "fishing_guru":
+                return self.visit_fishing_guru
             if target == "alph_scientist":
                 return self.visit_alph_scientist
             if target == "bill":
@@ -2999,6 +3047,11 @@ class CityState(GameState):
             if keys:
                 return lambda: self.show_npc_text(random.choice(keys), opt_data)
 
+        if action == "EVENT":
+            return lambda e=opt_data.get("event") or {}: self.story_event(e)
+        if action == "AMIE":
+            from src.states.amie import AmieState
+            return lambda: (self.clear_hover_menu(), self.game.change_state(AmieState(self.game, self)))
         if action == "ROCKET_GAUNTLET":
             return self.start_rocket_gauntlet
         if action == "RUINS":
@@ -3193,7 +3246,16 @@ class CityState(GameState):
         self.action_menu.set_visibility(False)
         self.npc_sprite = self.game.assets.get_trainer_image("supernerd.png")
 
-        if self.game.story_manager.story_flags.get("silph_co_cleared"):
+        story = self.game.story_manager
+        if (story.story_flags.get("silph_co_cleared") and "JOHTO" in story.visited_regions()
+                and not story.story_flags.get("got_upgrade")):
+            # HeartGold/SoulSilver: a Silph Co. employee hands over the Up-Grade.
+            story.story_flags["got_upgrade"] = True
+            story.inventory["UPGRADE"] = story.inventory.get("UPGRADE", 0) + 1
+            msg = ["You've been to Johto? Then you'll appreciate this!",
+                   "It's the UP-GRADE, a Silph Co. invention. Use it on a Porygon to make it even better!",
+                   f"{self.game.player_name} received the UP-GRADE!"]
+        elif story.story_flags.get("silph_co_cleared"):
             msg = ["You saved us!", "Team Rocket is gone, but I fear they already have what they need for their 'Ultimate' project."]
         else:
             msg = [
@@ -3323,7 +3385,7 @@ class CityState(GameState):
 
         if should_heal:
             for p in self.game.story_manager.player_team:
-                p.current_hp = p.get_max_hp()
+                p.heal_full()
             if self.game.assets.heal_sfx:
                 self.game.assets.heal_sfx.play()
 
@@ -3730,7 +3792,7 @@ class CityState(GameState):
                 story.player_team.append(pokemon)
                 msgs.append(f"You received {pokemon.name}!")
             else:
-                story.pc_pokemon.append(pokemon)
+                story.deposit_to_pc(pokemon)
                 msgs.append(f"You received {pokemon.name}! Sent to BILL'S PC.")
             self.game.data.add_pokemon(pokemon)
             self.game.data.save()
@@ -3932,6 +3994,30 @@ class CityState(GameState):
             callback=self.end_npc_interaction
         )
 
+    def visit_fishing_guru(self):
+        """Vermilion's Fishing Guru (canon): a guaranteed Old Rod, so fishing never depends on an
+        optional trainer."""
+        self.clear_hover_menu()
+        self.npc_active = True
+        self.current_npc = "fishing_guru"
+        self.action_menu.set_visibility(False)
+        self.npc_sprite = self.game.assets.get_trainer_image("fisherman.png")
+        story = self.game.story_manager
+        msgs = ["Fishing Guru: I'm the Fishing Guru! Do you like to fish?"]
+        if not story.story_flags.get("got_old_rod_guru"):
+            story.story_flags["got_old_rod_guru"] = True
+            if story.inventory.get("OLD_ROD", 0) > 0:
+                story.inventory["RARE_CANDY"] = story.inventory.get("RARE_CANDY", 0) + 1
+                msgs += ["You already have a rod? Then have this Rare Candy instead!"]
+            else:
+                story.inventory["OLD_ROD"] = 1
+                msgs += ["Take this Old Rod! Use FISH wherever there is water.", "You received the OLD ROD!"]
+        else:
+            msgs.append("Fishing is a way of life!")
+        self.npc_dialogue = ClassicDialogueBox(
+            Utils.get_full_dialogue_rect(self.game), msgs, self.game.assets.fonts["med"],
+            callback=self.end_npc_interaction)
+
     def visit_museum(self):
         self.clear_hover_menu()
         self.npc_active = True
@@ -3986,6 +4072,12 @@ class CityState(GameState):
             else:
                 msgs.append("Welcome to the Pewter Museum of Science!")
                 msgs.append("Both fossils are in good hands. Thank you, Champion!")
+            if not flags.get("received_old_amber"):
+                # Canon (FRLG): a scientist at the museum's back door hands over the Old Amber.
+                msgs.append("Scientist: Psst! Out back, we have a piece of amber with something inside.")
+                msgs.append("Take it to the Pokemon Lab on Cinnabar Island. You received the Old Amber!")
+                inv["OLD_AMBER"] = inv.get("OLD_AMBER", 0) + 1
+                flags["received_old_amber"] = True
         else:
             msgs.append("Welcome! Please return after you have defeated Brock.")
 
@@ -4065,7 +4157,7 @@ class CityState(GameState):
 
         story = self.game.story_manager
         flags = story.story_flags
-        owned_ids = {p.id for p in story.player_team} | {p.id for p in story.pc_pokemon}
+        owned_ids = {p.id for p in story.player_team if p} | {p.id for p in story.pc_pokemon if p}  # PC has empty (None) slots
 
         r25_data = self.game.loader.area_data.get("STORY_PROGRESSION", {}).get("KANTO_ROUTE_25", {})
         r25_pool = r25_data.get("trainer_pool", [])
@@ -4082,7 +4174,7 @@ class CityState(GameState):
                 story.player_team.append(new_eevee)
                 msgs.append("You received EEVEE!")
             else:
-                story.pc_pokemon.append(new_eevee)
+                story.deposit_to_pc(new_eevee)
                 msgs.append("You received EEVEE! Sent to BILL'S PC.")
             self.game.data.add_pokemon(new_eevee)
             self.game.data.save()
@@ -4213,6 +4305,7 @@ class CityState(GameState):
         starter_battle = newbark_rival or (is_start_town and str(condition).endswith("_starter"))
         if len(team_ids) == 1 and (newbark_rival or is_start_town):
             story.rival_starter_raw = self.game.loader.fetch_specific(team_ids[0])
+            story.note_rival_starter()
 
         opponent_team = [Pokemon(self.game.loader.fetch_specific(tid), self.game.assets, size_mult=3.125)
                          for tid in team_ids]
@@ -4564,7 +4657,7 @@ class PokeCenterState(GameState):
         )
 
         for p in self.game.story_manager.player_team:
-            p.current_hp = p.get_max_hp()
+            p.heal_full()
         if self.game.assets.heal_sfx:
             self.game.assets.heal_sfx.play()
 
@@ -4665,7 +4758,8 @@ class GymLobbyState(GameState):
             if self.progress < len(self.gauntlet):
                 self.next_opponent = self.gauntlet[self.progress]
                 if self.progress == len(self.gauntlet) - 1:
-                    r_name = getattr(self.game, "rival_name", "CHAMPION")
+                    r_name = ((game.story_manager.region_rivals.get("KANTO") or {}).get("name")
+                              or getattr(self.game, "rival_name", "CHAMPION"))
                     self.status_text = f"Final Match: Champion {r_name}"
                 else:
                     self.status_text = f"{mode_text}: Match {self.progress + 1}/{len(self.gauntlet)}"
@@ -4722,8 +4816,23 @@ class GymLobbyState(GameState):
         7: ([18, 65, 112, 59, 103, 9], [59, 57, 59, 59, 61, 63]),    # Blastoise
     }
 
+    # FireRed/LeafGreen rematch (post-Sevii) teams, used once the Champion has been beaten.
+    FRLG_E4_REMATCH = {
+        "LORELI": ([87, 91, 221, 124, 131], [64, 63, 63, 66, 66]),
+        "BRUNO": ([208, 107, 106, 208, 68], [65, 65, 65, 66, 66]),
+        "AGATHA": ([94, 169, 200, 24, 94], [66, 66, 65, 66, 70]),
+        "LANCE": ([130, 149, 230, 142, 149], [68, 66, 66, 70, 72]),
+    }
+    FRLG_CHAMPION_REMATCH = {
+        1: ([214, 65, 248, 59, 130, 3], [72, 73, 72, 73, 73, 75]),   # Venusaur
+        4: ([214, 65, 248, 130, 103, 6], [72, 73, 72, 73, 73, 75]),  # Charizard
+        7: ([214, 65, 248, 103, 59, 9], [72, 73, 72, 73, 73, 75]),   # Blastoise
+    }
+
     def challenge_gym(self):
         if self.is_cleared or not self.next_opponent or self.game.transitioning:
+            return
+        if self._start_gym_puzzle():
             return
 
         self.game.transitioning = True
@@ -4733,9 +4842,11 @@ class GymLobbyState(GameState):
 
         is_leader = (self.next_opponent == self.leader)
         if self.area_key == "INDIGO_PLATEAU" and is_leader:
-            # Champion: your rival, with their FireRed/LeafGreen team and levels.
-            rival_name = getattr(self.game, "rival_name", "BLUE")
-            rival_char = getattr(self.game, "rival_character", "blue")
+            # Champion: your KANTO rival (never the rival of a region you moved to), with their
+            # FireRed/LeafGreen team and levels.
+            kr = self.game.story_manager.region_rivals.get("KANTO") or {}
+            rival_name = kr.get("name") or getattr(self.game, "rival_name", "BLUE")
+            rival_char = kr.get("character") or getattr(self.game, "rival_character", "blue")
             img = self.game.assets.get_player_image(rival_char, back=False)
             if img:
                 h = int(self.game.height * 0.6)
@@ -4743,10 +4854,10 @@ class GymLobbyState(GameState):
                 trainer_sprite = pygame.transform.scale(img, (w, h))
             else:
                 trainer_sprite = self.game.assets.get_trainer_image("rival.png")
-            starter_id = 1
-            if self.game.story_manager.rival_starter_raw:
-                starter_id = self.game.story_manager.rival_starter_raw.get("id", 1)
-            team, team_levels = self.FRLG_CHAMPION.get(self.FRLG_RIVAL_LINE.get(starter_id, 4))
+            starter_id = self.game.story_manager.rival_starter_id("KANTO", 1)
+            rematch = bool(self.game.story_manager.story_flags.get("beat_champion"))
+            table = self.FRLG_CHAMPION_REMATCH if rematch else self.FRLG_CHAMPION
+            team, team_levels = table.get(self.FRLG_RIVAL_LINE.get(starter_id, 4))
             t_data.update({"name": rival_name, "class": "CHAMPION", "team": list(team),
                            "levels": list(team_levels)})
             t_data["dialogue"] = {
@@ -4770,6 +4881,10 @@ class GymLobbyState(GameState):
             t_data["name"] = _fill_names(self.game, t_data.get("name"))
             if t_data.get("dialogue"):
                 t_data["dialogue"] = {k: _resolve_lines(self.game, v) for k, v in t_data["dialogue"].items()}
+            rm = self.FRLG_E4_REMATCH.get(str(t_data.get("name", "")).upper())
+            if (self.area_key == "INDIGO_PLATEAU" and rm
+                    and self.game.story_manager.story_flags.get("beat_champion")):
+                t_data["team"], t_data["levels"] = list(rm[0]), list(rm[1])
 
         team_ids = t_data.get("team", [])
         opponent_team = []
@@ -4802,11 +4917,37 @@ class GymLobbyState(GameState):
             custom_dialogue=t_data.get("dialogue", {}), rewards=t_data.get("rewards"),
             battle_type="gym", is_boss_battle=True, area_name=self.area_key,
             badge_reward=t_data.get("badge_reward"), background_image=bg_file,
-            victory_flag=None if self.area_key == "INDIGO_PLATEAU" else t_data.get("victory_flag")
+            victory_flag=t_data.get("victory_flag")  # Lance: beat_elite_four, Champion: beat_champion
         )
 
         intro_text = random.choice(t_data.get("dialogue", {}).get("intro", ["Prepare to battle!"]))
         self.game.change_state(TrainerIntroState(self.game, trainer_sprite, intro_text, battle_state))
+
+    def _start_gym_puzzle(self):
+        """Kanto gym puzzles (src/states/gym_puzzles.py): Surge/Koga/Sabrina's must be solved before
+        the leader; Blaine quizzes you before each trainer. Returns True if a puzzle took over."""
+        from src.states import gym_puzzles as gp
+        story = self.game.story_manager
+        is_leader = (self.next_opponent == self.leader)
+        if is_leader and gp.needs_puzzle(story, self.area_key):
+            def done(solved):
+                self.game.change_state(GymLobbyState(self.game, None))
+            self.game.change_state(gp.GymPuzzleState(self.game, self.area_key,
+                                                     gp.PUZZLE_GYMS[self.area_key], done))
+            return True
+        quiz_flag = f"gym_quiz_{self.area_key}_{self.progress}"
+        if self.area_key in gp.QUIZ_GYMS and not is_leader and not story.story_flags.get(quiz_flag):
+            def answered(right):
+                story.story_flags[quiz_flag] = True
+                if right:  # canon: a right answer means you skip that trainer
+                    story.story_flags[self.prog_key] = story.story_flags.get(self.prog_key, 0) + 1
+                lobby = GymLobbyState(self.game, None)
+                self.game.change_state(lobby)
+                if not right:
+                    lobby.challenge_gym()  # wrong: battle the trainer now
+            self.game.change_state(gp.GymPuzzleState(self.game, self.area_key, "quiz", answered))
+            return True
+        return False
 
     def exit_gym(self):
         from src.states.overworld import CityState

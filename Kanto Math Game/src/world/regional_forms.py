@@ -39,18 +39,56 @@ def unlocked(game):
     return [f for f in FORM_REGIONS if flags.get(f"forms_complete_{f}")]
 
 
+# Home region of each regional form (Hisui is reached from Sinnoh).
+FORM_HOME = {"alolan": "ALOLA", "galarian": "GALAR", "hisuian": "SINNOH", "paldean": "PALDEA"}
+
+
+def _in_kanto(game):
+    return game.story_manager.get_current_region() == "KANTO"
+
+
+def form_allowed(game, form):
+    """Kanto only shows another region's forms once the player has been to that region."""
+    home = FORM_HOME.get(str(form).lower())
+    if not home or not _in_kanto(game):
+        return True
+    return home in game.story_manager.visited_regions()
+
+
+def species_allowed(game, pid):
+    """In Kanto, a wild Pokemon from a later region (or another region's form) only shows up
+    once the player has played that region. Other regions keep their mixed pools."""
+    if not _in_kanto(game):
+        return True
+    pid = int(pid)
+    mapping = game.loader.area_data.get("FORM_MAP", {}).get(str(pid))
+    if mapping:
+        return form_allowed(game, mapping.get("form")) and species_allowed(game, mapping.get("id", pid))
+    from src.pokemon import evolution
+    return evolution.evolution_allowed(game, pid)
+
+
+def restrict(game, pool):
+    """Drop Pokemon the player can't meet here yet (see species_allowed)."""
+    if not pool or not _in_kanto(game):
+        return pool
+    out = {k: v for k, v in pool.items() if species_allowed(game, k)}
+    return out or pool
+
+
 def extend_pool(game, pool):
-    """Add unlocked regional forms (about 1%) wherever their counterpart is in the pool."""
+    """Add unlocked regional forms (about 1%) wherever their counterpart is in the pool,
+    then keep Kanto free of Pokemon from regions not played yet."""
     forms = unlocked(game)
     if not pool or not forms:
-        return pool
+        return restrict(game, pool)
     total = sum(pool.values()) or 1
     out = dict(pool)
     for form in forms:
         for sid, base in form_sets(game)[form].items():
             if str(base) in pool and str(sid) not in out:
                 out[str(sid)] = max(total * SPAWN_SHARE, 0.5)
-    return out
+    return restrict(game, out)
 
 
 def check_completion(game):

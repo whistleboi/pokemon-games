@@ -157,6 +157,33 @@
           "dialogue": "paldea_team_star_penny",
           "flag_condition": "not met_penny",
           "victory_flag": "met_penny"
+        },
+        {
+          "text": "Arven's Battle",
+          "action": "EVENT",
+          "condition": ["titan_klawf_defeated", "titan_bombirdier_defeated", "titan_orthworm_defeated", "titan_great_tusk_defeated", "titan_dondozo_defeated"],
+          "flag_condition": "not path_of_legends_complete",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "Arven: Mabosstiff is healthy again, thanks to you.",
+              "Arven: I made every sandwich with the Herba Mystica we found together.",
+              "Arven: Now let me thank you the way trainers do. Battle me!"
+            ],
+            "flag": "path_of_legends_complete",
+            "battle": {
+              "name": "Arven",
+              "class": "PKMN_TRAINER",
+              "sprite": "arven.png",
+              "team": [820, 91, 952, 949, 934, 943],
+              "level": 60,
+              "is_boss_battle": true,
+              "rewards": { "balls": 10 },
+              "dialogue": {
+                "player_won": ["Arven: Heh. You're the real deal.", "Arven: My mom... Professor Sada is in Area Zero. When you're ready, I'll go with you."]
+              }
+            }
+          }
         }
       ],
       "next_area": "WEST_PROVINCE_AREA_1",
@@ -482,12 +509,43 @@
       "travel_options": [
         { "text": "Glaseado Mountain", "target_area": "GLASEADO_MOUNTAIN" },
         { "text": "Mesagoza", "target_area": "MESAGOZA" },
-        { "text": "Area Zero", "target_area": "AREA_ZERO", "condition": "beat_paldea_champion" }
+        {
+          "text": "Area Zero",
+          "target_area": "AREA_ZERO",
+          "condition": ["beat_paldea_champion", "path_of_legends_complete", "starfall_street_complete"]
+        }
       ],
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
         { "text": "Shop", "action": "SHOP" },
-        { "text": "CHALLENGE LEAGUE", "action": "GYM", "condition": "has_8_paldea_badges" }
+        { "text": "CHALLENGE LEAGUE", "action": "GYM", "condition": "has_8_paldea_badges" },
+        {
+          "text": "Confront Cassiopeia",
+          "action": "EVENT",
+          "condition": ["star_segin_defeated", "star_schedar_defeated", "star_navi_defeated", "star_ruchbah_defeated", "star_caph_defeated"],
+          "flag_condition": "not starfall_street_complete",
+          "color": "PURPLE",
+          "event": {
+            "lines": [
+              "paldea_penny_reveal",
+              "Penny: Team Star's bosses all stepped down because of you.",
+              "Penny: There's just me left. Let's finish Operation Starfall."
+            ],
+            "flag": "starfall_street_complete",
+            "battle": {
+              "name": "Penny",
+              "class": "TEAM_STAR_BOSS",
+              "sprite": "penny.png",
+              "team": [197, 134, 135, 136, 470, 700],
+              "level": 62,
+              "is_boss_battle": true,
+              "rewards": { "balls": 10 },
+              "dialogue": {
+                "player_won": ["Penny: ...Thank you. Team Star can be a family again, not a gang.", "Penny: If you go to Area Zero, I'm coming too."]
+              }
+            }
+          }
+        }
       ],
       "next_area": "MESAGOZA",
       "on_enter_event": null,
@@ -657,6 +715,27 @@
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        {
+          "text": "STONY CLIFF TITAN",
+          "action": "BOSS",
+          "condition": "met_arven",
+          "flag_condition": "not titan_klawf_defeated",
+          "color": "GOLD",
+          "boss": {
+            "id": 950,
+            "name": "Klawf",
+            "level": 16,
+            "no_catch": true,
+            "victory_flag": "titan_klawf_defeated",
+            "lines": ["Arven: There it is... Klawf, the Stony Cliff Titan!", "A huge Klawf drops down from the cliffs, claws snapping!"],
+            "won": [
+              "KLAWF ran off, beaten!",
+              "Arven: You did it! And look, a Herba Mystica!",
+              "Arven: That herb should help my partner Mabosstiff... Let's find the next Titan!"
+            ],
+            "rewards": { "HERBA_MYSTICA": 1 }
+          }
+        },
         { "text": "CORTONDO", "action": "EXIT", "target_area": "CORTONDO", "condition": "can_exit", "color": "RED" },
         { "text": "ARTAZON", "action": "EXIT", "target_area": "ARTAZON", "condition": "can_exit", "color": "RED" },
         { "text": "SOUTH PROVINCE AREA 5", "action": "EXIT", "target_area": "SOUTH_PROVINCE_AREA_5", "condition": "can_exit", "color": "RED" }
@@ -692,6 +771,32 @@
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        {
+          "text": "TEAM STAR FIRE CREW",
+          "action": "EVENT",
+          "condition": "met_team_star",
+          "flag_condition": "not star_schedar_defeated",
+          "color": "PURPLE",
+          "event": {
+            "lines": [
+              "You storm the Schedar Squad base, Team Star's Fire crew!",
+              "Your team blasts through the grunts' Star Barrage!",
+              "Mela: So you're the one causing all this trouble. Let's ride!"
+            ],
+            "flag": "star_schedar_defeated",
+            "done": ["The Schedar Squad base is empty now. Its boss has left Team Star."],
+            "battle": {
+              "name": "Mela",
+              "class": "TEAM_STAR_BOSS",
+              "sprite": "mela.png",
+              "team": [324, 966],
+              "level": 27,
+              "is_boss_battle": true,
+              "rewards": { "balls": 5 },
+              "dialogue": { "player_won": ["Mela: Tch. Fine! A deal's a deal. Schedar Squad is through."] }
+            }
+          }
+        },
         { "text": "LEVINCIA", "action": "EXIT", "target_area": "LEVINCIA", "condition": "can_exit", "color": "RED" },
         { "text": "MESAGOZA", "action": "EXIT", "target_area": "MESAGOZA", "condition": "can_exit", "color": "RED" }
       ],
@@ -709,6 +814,23 @@
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        {
+          "text": "LURKING STEEL TITAN",
+          "action": "BOSS",
+          "condition": "met_arven",
+          "flag_condition": "not titan_orthworm_defeated",
+          "color": "GOLD",
+          "boss": {
+            "id": 968,
+            "name": "Orthworm",
+            "level": 29,
+            "no_catch": true,
+            "victory_flag": "titan_orthworm_defeated",
+            "lines": ["Arven: There it is... Orthworm, the Lurking Steel Titan!", "The ground shakes. An enormous Orthworm bursts out of the earth!"],
+            "won": ["ORTHWORM ran off, beaten!", "Arven: You did it! And look, a Herba Mystica!", "Arven: Three down. Two to go!"],
+            "rewards": { "HERBA_MYSTICA": 1 }
+          }
+        },
         { "text": "NORTH PROVINCE AREA 1", "action": "EXIT", "target_area": "NORTH_PROVINCE_AREA_1", "condition": "can_exit", "color": "RED" },
         { "text": "LEVINCIA", "action": "EXIT", "target_area": "LEVINCIA", "condition": "can_exit", "color": "RED" }
       ],
@@ -726,6 +848,55 @@
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        {
+          "text": "OPEN SKY TITAN",
+          "action": "BOSS",
+          "condition": "met_arven",
+          "flag_condition": "not titan_bombirdier_defeated",
+          "color": "GOLD",
+          "boss": {
+            "id": 962,
+            "name": "Bombirdier",
+            "level": 20,
+            "no_catch": true,
+            "victory_flag": "titan_bombirdier_defeated",
+            "lines": ["Arven: There it is... Bombirdier, the Open Sky Titan!", "Rocks rain down from above. A giant Bombirdier circles overhead!"],
+            "won": [
+              "BOMBIRDIER ran off, beaten!",
+              "Arven: You did it! And look, a Herba Mystica!",
+              "Arven: Mabosstiff is getting stronger every time. Thank you."
+            ],
+            "rewards": { "HERBA_MYSTICA": 1 }
+          }
+        },
+        {
+          "text": "TEAM STAR DARK CREW",
+          "action": "EVENT",
+          "condition": "met_team_star",
+          "flag_condition": "not star_segin_defeated",
+          "color": "PURPLE",
+          "event": {
+            "lines": [
+              "You storm the Segin Squad base, Team Star's Dark crew!",
+              "Your team blasts through the grunts' Star Barrage!",
+              "Giacomo: So you're the one causing all this trouble. Let's ride!"
+            ],
+            "flag": "star_segin_defeated",
+            "done": ["The Segin Squad base is empty now. Its boss has left Team Star."],
+            "battle": {
+              "name": "Giacomo",
+              "class": "TEAM_STAR_BOSS",
+              "sprite": "giacomo.png",
+              "team": [624, 966],
+              "level": 21,
+              "is_boss_battle": true,
+              "rewards": { "balls": 5 },
+              "dialogue": {
+                "player_won": ["Giacomo: That beat... was too good. I'm done. Segin Squad is disbanding."]
+              }
+            }
+          }
+        },
         { "text": "CASCARRAFA", "action": "EXIT", "target_area": "CASCARRAFA", "condition": "can_exit", "color": "RED" },
         { "text": "MESAGOZA", "action": "EXIT", "target_area": "MESAGOZA", "condition": "can_exit", "color": "RED" }
       ],
@@ -778,6 +949,32 @@
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        {
+          "text": "TEAM STAR FIGHTING CREW",
+          "action": "EVENT",
+          "condition": "met_team_star",
+          "flag_condition": "not star_caph_defeated",
+          "color": "PURPLE",
+          "event": {
+            "lines": [
+              "You storm the Caph Squad base, Team Star's Fighting crew!",
+              "Your team blasts through the grunts' Star Barrage!",
+              "Eri: So you're the one causing all this trouble. Let's ride!"
+            ],
+            "flag": "star_caph_defeated",
+            "done": ["The Caph Squad base is empty now. Its boss has left Team Star."],
+            "battle": {
+              "name": "Eri",
+              "class": "TEAM_STAR_BOSS",
+              "sprite": "eri.png",
+              "team": [454, 766, 448, 979, 966],
+              "level": 56,
+              "is_boss_battle": true,
+              "rewards": { "balls": 5 },
+              "dialogue": { "player_won": ["Eri: You're strong. Truly. Caph Squad... we're finished."] }
+            }
+          }
+        },
         { "text": "MEDALI", "action": "EXIT", "target_area": "MEDALI", "condition": "can_exit", "color": "RED" },
         { "text": "EAST PROVINCE AREA 2", "action": "EXIT", "target_area": "EAST_PROVINCE_AREA_2", "condition": "can_exit", "color": "RED" }
       ],
@@ -795,6 +992,7 @@
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "CASSEROYA LAKE", "action": "EXIT", "target_area": "CASSEROYA_LAKE", "condition": "can_exit", "color": "RED" },
         { "text": "MONTENEVERA", "action": "EXIT", "target_area": "MONTENEVERA", "condition": "can_exit", "color": "RED" },
         { "text": "MEDALI", "action": "EXIT", "target_area": "MEDALI", "condition": "can_exit", "color": "RED" }
       ],
@@ -814,6 +1012,32 @@
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        {
+          "text": "TEAM STAR FAIRY CREW",
+          "action": "EVENT",
+          "condition": "met_team_star",
+          "flag_condition": "not star_ruchbah_defeated",
+          "color": "PURPLE",
+          "event": {
+            "lines": [
+              "You storm the Ruchbah Squad base, Team Star's Fairy crew!",
+              "Your team blasts through the grunts' Star Barrage!",
+              "Ortega: So you're the one causing all this trouble. Let's ride!"
+            ],
+            "flag": "star_ruchbah_defeated",
+            "done": ["The Ruchbah Squad base is empty now. Its boss has left Team Star."],
+            "battle": {
+              "name": "Ortega",
+              "class": "TEAM_STAR_BOSS",
+              "sprite": "ortega.png",
+              "team": [184, 927, 966],
+              "level": 51,
+              "is_boss_battle": true,
+              "rewards": { "balls": 5 },
+              "dialogue": { "player_won": ["Ortega: No fair! ...Okay. Ruchbah Squad is done."] }
+            }
+          }
+        },
         { "text": "GLASEADO", "action": "EXIT", "target_area": "GLASEADO", "condition": "can_exit", "color": "RED" },
         { "text": "MONTENEVERA", "action": "EXIT", "target_area": "MONTENEVERA", "condition": "can_exit", "color": "RED" },
         { "text": "GLASEADO MOUNTAIN", "action": "EXIT", "target_area": "GLASEADO_MOUNTAIN", "condition": "can_exit", "color": "RED" }
@@ -833,6 +1057,27 @@
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        {
+          "text": "QUAKING EARTH TITAN",
+          "action": "BOSS",
+          "condition": "met_arven",
+          "flag_condition": "not titan_great_tusk_defeated",
+          "color": "GOLD",
+          "boss": {
+            "id": 984,
+            "name": "Great Tusk",
+            "level": 45,
+            "no_catch": true,
+            "victory_flag": "titan_great_tusk_defeated",
+            "lines": ["Arven: There it is... the Quaking Earth Titan!", "A sandstorm parts. A Great Tusk, a Pokemon from the ancient past, charges at you!"],
+            "won": [
+              "GREAT TUSK ran off, beaten!",
+              "Arven: You did it! And look, a Herba Mystica!",
+              "Arven: A Paradox Pokemon... it came from Area Zero. Just like my mom's research."
+            ],
+            "rewards": { "HERBA_MYSTICA": 1 }
+          }
+        },
         { "text": "WEST PROVINCE AREA 2", "action": "EXIT", "target_area": "WEST_PROVINCE_AREA_2", "condition": "can_exit", "color": "RED" },
         { "text": "CASCARRAFA", "action": "EXIT", "target_area": "CASCARRAFA", "condition": "can_exit", "color": "RED" }
       ],
@@ -851,6 +1096,32 @@
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        {
+          "text": "TEAM STAR POISON CREW",
+          "action": "EVENT",
+          "condition": "met_team_star",
+          "flag_condition": "not star_navi_defeated",
+          "color": "PURPLE",
+          "event": {
+            "lines": [
+              "You storm the Navi Squad base, Team Star's Poison crew!",
+              "Your team blasts through the grunts' Star Barrage!",
+              "Atticus: So you're the one causing all this trouble. Let's ride!"
+            ],
+            "flag": "star_navi_defeated",
+            "done": ["The Navi Squad base is empty now. Its boss has left Team Star."],
+            "battle": {
+              "name": "Atticus",
+              "class": "TEAM_STAR_BOSS",
+              "sprite": "atticus.png",
+              "team": [435, 89, 966],
+              "level": 33,
+              "is_boss_battle": true,
+              "rewards": { "balls": 5 },
+              "dialogue": { "player_won": ["Atticus: A poem for my defeat... Navi Squad lays down its sword."] }
+            }
+          }
+        },
         { "text": "MEDALI", "action": "EXIT", "target_area": "MEDALI", "condition": "can_exit", "color": "RED" },
         { "text": "MONTENEVERA", "action": "EXIT", "target_area": "MONTENEVERA", "condition": "can_exit", "color": "RED" }
       ],
@@ -868,6 +1139,7 @@
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "CASSEROYA LAKE", "action": "EXIT", "target_area": "CASSEROYA_LAKE", "condition": "can_exit", "color": "RED" },
         { "text": "GLASEADO", "action": "EXIT", "target_area": "GLASEADO", "condition": "can_exit", "color": "RED" },
         { "text": "NARANJA ACADEMY", "action": "EXIT", "target_area": "NARANJA_ACADEMY", "condition": "can_exit", "color": "RED" },
         { "text": "NORTH PROVINCE AREA 3", "action": "EXIT", "target_area": "NORTH_PROVINCE_AREA_3", "condition": "can_exit", "color": "RED" }
@@ -1146,6 +1418,45 @@
         { "text": "Kitakami", "action": "EXIT", "target_area": "KITAKAMI", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "KITAKAMI"
+    },
+    "CASSEROYA_LAKE": {
+      "area_type": "wild_route",
+      "route_name": "Casseroya Lake",
+      "region": "PALDEA",
+      "description": "A vast, still lake in northwest Paldea, ringed by cliffs. Dondozo and Tatsugiri rule its waters.",
+      "battle_type": "water",
+      "wild_pool_percentages": "CASSEROYA_LAKE_PERCENTAGES",
+      "min_rounds": 2,
+      "level": 52,
+      "trainer_pool": [],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        {
+          "text": "FALSE DRAGON TITAN",
+          "action": "BOSS",
+          "condition": "met_arven",
+          "flag_condition": "not titan_dondozo_defeated",
+          "color": "GOLD",
+          "boss": {
+            "id": 977,
+            "name": "Dondozo",
+            "level": 56,
+            "no_catch": true,
+            "victory_flag": "titan_dondozo_defeated",
+            "lines": ["Arven: There it is... the False Dragon Titan!", "A colossal Dondozo rises from the lake, a Tatsugiri barking orders from its mouth!"],
+            "won": [
+              "DONDOZO ran off, beaten!",
+              "Arven: You did it! And look, a Herba Mystica!",
+              "Arven: That's the last Herba Mystica! Meet me in Mesagoza. I owe you a real battle."
+            ],
+            "rewards": { "HERBA_MYSTICA": 1 }
+          }
+        },
+        { "text": "GLASEADO MOUNTAIN", "action": "EXIT", "target_area": "GLASEADO_MOUNTAIN", "condition": "can_exit", "color": "RED" },
+        { "text": "NORTH PROVINCE AREA 2", "action": "EXIT", "target_area": "NORTH_PROVINCE_AREA_2", "condition": "can_exit", "color": "RED" }
+      ],
+      "next_area": "GLASEADO_MOUNTAIN"
     }
   },
   "JOURNAL_MISSIONS": [
@@ -1231,7 +1542,7 @@
     {
       "id": "paldea_main_11",
       "title": "Into Area Zero",
-      "description": "Descend into the Great Crater of Paldea with Arven, Penny, and Nemona. Confront the truth of Professor Sada and the Paradox Machine.",
+      "description": "Finish all three paths (Victory Road, Path of Legends and Starfall Street), then descend into the Great Crater of Paldea with Arven, Penny and Nemona to find Professor Sada.",
       "type": "main",
       "reward": "Koraidon or Miraidon",
       "flag_condition": "beat_paldea_champion"
@@ -1249,14 +1560,16 @@
       "title": "Path of Legends — Help Arven",
       "description": "Help Arven find the five Herba Mystica guarded by Titan Pokémon scattered across Paldea: Stony Cliff, Open Sky, Lurking Steel, Quaking Earth, and False Dragon.",
       "type": "side",
-      "reward": "Titan Herba Mystica"
+      "reward": "Titan Herba Mystica",
+      "condition": { "flag": "met_arven", "flag_not": "path_of_legends_complete" }
     },
     {
       "id": "paldea_side_02",
       "title": "Starfall Street — Dismantle Team Star",
       "description": "Challenge all five Team Star bases: Fire (Mela), Poison (Atticus), Fairy (Ortega), Fighting (Eri), and Dark (Giacomo). Find out who Cassiopeia really is.",
       "type": "side",
-      "reward": "TM rewards and the truth about Team Star"
+      "reward": "TM rewards and the truth about Team Star",
+      "condition": { "flag": "met_team_star", "flag_not": "starfall_street_complete" }
     },
     {
       "id": "paldea_side_03",
@@ -1351,5 +1664,7 @@
   "PALDEA_KITAKAMI_PERCENTAGES": { "1012": 20, "840": 20, "1011": 10, "946": 15, "948": 15, "56": 10, "969": 10 },
   "PALDEA_KITAKAMI": [1012, 840, 1011, 946, 948, 56, 969],
   "NORTH_PROVINCE_AREA_2_DAY_PERCENTAGES": { "971": 24, "972": 17, "854": 17, "855": 42 },
-  "NORTH_PROVINCE_AREA_2_NIGHT_PERCENTAGES": { "971": 38, "972": 27, "854": 27, "855": 8 }
+  "NORTH_PROVINCE_AREA_2_NIGHT_PERCENTAGES": { "971": 38, "972": 27, "854": 27, "855": 8 },
+  "CASSEROYA_LAKE": [977, 978, 976, 963, 847, 130, 419, 692],
+  "CASSEROYA_LAKE_PERCENTAGES": { "977": 10, "978": 20, "976": 15, "963": 15, "847": 10, "130": 10, "419": 10, "692": 10 }
 }

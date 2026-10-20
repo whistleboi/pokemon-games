@@ -394,14 +394,38 @@ class PokeMartState(GameState):
 
     WEATHER_ROCKS = {"RAIN": "DAMP_ROCK", "SUN": "HEAT_ROCK", "SAND": "SMOOTH_ROCK", "SNOW": "ICY_ROCK"}
 
+    # Kanto marts by town, after FRLG's stock using the items this game has (Full Heal stands in
+    # for Antidote/Paralyze Heal/Awakening...). Revive from Lavender on, Rare Candy (never sold in
+    # canon) only at the Celadon Dept. Store and the Indigo Plateau.
+    KANTO_MART_STOCK = {
+        "VIRIDIAN_CITY": ["POKE_BALLS", "POTION", "FULL_HEAL"],
+        "PEWTER_CITY": ["POKE_BALLS", "POTION", "FULL_HEAL"],
+        "CERULEAN_CITY": ["POKE_BALLS", "POTION", "FULL_HEAL"],
+        "VERMILLION_CITY": ["POKE_BALLS", "POTION", "FULL_HEAL"],
+        "LAVENDER_TOWN": ["POKE_BALLS", "POTION", "FULL_HEAL", "REVIVE"],
+        "SAFFRON_CITY": ["POKE_BALLS", "POTION", "FULL_HEAL", "REVIVE"],
+        "FUCHSIA_CITY": ["POKE_BALLS", "POTION", "FULL_HEAL", "REVIVE"],
+        "CINNABAR_ISLAND": ["POKE_BALLS", "POTION", "FULL_HEAL", "REVIVE"],
+        "INDIGO_PLATEAU": ["POKE_BALLS", "POTION", "FULL_HEAL", "REVIVE", "RARE_CANDY"],
+    }
+
+    # Gift-only items: never on any shelf (the Up-Grade comes from Silph Co., after Johto).
+    NEVER_SOLD = {"UPGRADE", "UP_GRADE"}
+
     def _shop_items(self):
+        return [i for i in self._stock_items() if i not in self.NEVER_SOLD]
+
+    def _stock_items(self):
         if self.stock is not None:
             return list(self.stock)
+        area = self.game.story_manager.current_area_key
         if self._is_department_store():
             evo_items = sorted(list(self.game.loader.evolution_map.get("EVOLUTION_ITEMS", {}).keys()))
-            items = ["POKE_BALLS", "RARE_CANDY"] + evo_items
+            items = ["POKE_BALLS", "POTION", "FULL_HEAL", "REVIVE", "RARE_CANDY"] + evo_items
+        elif area in self.KANTO_MART_STOCK:
+            items = list(self.KANTO_MART_STOCK[area])
         else:
-            items = ["POKE_BALLS", "RARE_CANDY", "POTION", "REVIVE"]
+            items = ["POKE_BALLS", "RARE_CANDY", "POTION", "FULL_HEAL", "REVIVE"]
         return items + self._regional_weather_rocks() + self._contest_items()
 
     def _contest_items(self):
@@ -485,6 +509,10 @@ class PokeMartState(GameState):
                 name = "Potion"
                 price = 500
                 icon = self.game.assets.get_item_image("POTION")
+            elif item == "FULL_HEAL":
+                name = "Full Heal"
+                price = 600
+                icon = self.game.assets.get_item_image("FULL_HEAL") or self.game.assets.get_item_image("POTION")
             elif item == "REVIVE":
                 name = "Revive"
                 price = 1000
@@ -492,7 +520,7 @@ class PokeMartState(GameState):
 
             else:
                 name = item.replace("_", " ").title().replace(" Fossil", "")
-                price = (999999 if item == "UPGRADE" else 2000 if item in self.WEATHER_ROCKS.values()
+                price = (2000 if item in self.WEATHER_ROCKS.values()
                          else 5000 if item.endswith(("ITE", "ITE_X", "ITE_Y"))
                          else POKEBLOCK_PRICE if item in POKEBLOCKS
                          else BERRY_PRICE if item.endswith("_BERRY") else 10000)
@@ -899,6 +927,26 @@ class PCState(GameState):
 
 
 # [REF-0032: Bag System]
+def _dex_ids(story, caught_data, seen_ids):
+    """Pokedex 'normal' tab ids. Each region the player has reached gets its own block: its
+    generation's range plus the later-gen evolutions obtainable there (dex_extra; Kanto has none,
+    so a Kanto game lists exactly #1-151). Species caught outside those blocks are appended;
+    merely-seen ones (a trainer's Crobat) are appended only once the National Dex is unlocked."""
+    national_dex = story.story_flags.get("unlocked_national_dex", False)
+    regions = [r for r, _ in story.get_region_starts()
+               if r == story.starting_region or story.story_flags.get(f"unlocked_{r.lower()}_badges")
+               or (national_dex and r in ("KANTO", "JOHTO"))]
+    id_list = []
+    for r in regions:
+        cfg = story.get_region_start(r)
+        lo, hi = cfg.get("dex_range", [1, 151])
+        id_list += list(range(lo, hi + 1)) + cfg.get("dex_extra", [])
+    listed = set(id_list)
+    extra = {v['id'] for v in caught_data.values()} | (set(seen_ids) if national_dex else set())
+    id_list += sorted(i for i in extra if isinstance(i, int) and i <= 1025 and i not in listed)
+    return list(dict.fromkeys(id_list))
+
+
 class BagState(GameState):
     def __init__(self, game, previous_state, context="normal"):
         super().__init__(game)
@@ -953,7 +1001,7 @@ class BagState(GameState):
 
         items_to_show = []
         if self.context == "battle":
-            for key in ["POTION", "REVIVE", "DAMP_ROCK", "HEAT_ROCK", "SMOOTH_ROCK", "ICY_ROCK"]:
+            for key in ["POTION", "FULL_HEAL", "REVIVE", "DAMP_ROCK", "HEAT_ROCK", "SMOOTH_ROCK", "ICY_ROCK"]:
                 qty = self.game.story_manager.inventory.get(key, 0)
                 if qty > 0:
                     items_to_show.append((key, qty))
@@ -963,6 +1011,8 @@ class BagState(GameState):
 
             if self.game.story_manager.inventory.get("POTION", 0) > 0:
                 items_to_show.append(("POTION", self.game.story_manager.inventory["POTION"]))
+            if self.game.story_manager.inventory.get("FULL_HEAL", 0) > 0:
+                items_to_show.append(("FULL_HEAL", self.game.story_manager.inventory["FULL_HEAL"]))
             if self.game.story_manager.inventory.get("REVIVE", 0) > 0:
                 items_to_show.append(("REVIVE", self.game.story_manager.inventory["REVIVE"]))
 
@@ -1053,6 +1103,13 @@ class BagState(GameState):
             ))
             return
 
+        if item_key == "FULL_HEAL":
+            self.game.change_state(PokemonPartyMenuState(
+                self.game, previous_state=self, context="use_item",
+                on_select=self.on_pokemon_select_full_heal
+            ))
+            return
+
         if item_key == "REVIVE":
             self.game.change_state(PokemonPartyMenuState(
                 self.game, previous_state=self, context="use_item",
@@ -1131,7 +1188,7 @@ class BagState(GameState):
         timed = [r for _, _, r in evolution.evolution_options(self.game, pokemon)
                  if r.get("item") == self.selected_item and r.get("time")]
         if timed:
-            self.game.show_dialogue([f"Nothing happened... try it during the {timed[0]['time']}."])
+            self._back_to_bag([f"Nothing happened... try it during the {timed[0]['time']}."])
             return
         evolution_data = self.evo_items_map.get(self.selected_item, {})
 
@@ -1158,9 +1215,9 @@ class BagState(GameState):
                     return_state=self.previous_state
                 ))
             else:
-                self.game.show_dialogue(["Error: Evolution data missing."])
+                self._back_to_bag(["Error: Evolution data missing."])
         else:
-            self.game.show_dialogue(["It won't have any effect."])
+            self._back_to_bag(["It won't have any effect."])
 
     def on_pokemon_select_rare_candy(self, slot_index):
         party = self.game.story_manager.player_team
@@ -1174,9 +1231,7 @@ class BagState(GameState):
         if pokemon.level >= min(cap, pokemon.MAX_LEVEL):
             msg = (f"{pokemon.display_name} is already Lv 100!" if pokemon.level >= pokemon.MAX_LEVEL
                    else f"{pokemon.display_name} can't grow past Lv {cap} until you beat the next Gym!")
-            self.game.show_dialogue([msg])
-            self.game.change_state(self)
-            self.refresh_buttons()
+            self._back_to_bag([msg])
             return
         from src.pokemon import moves as movelib
         old_level = pokemon.level
@@ -1187,6 +1242,7 @@ class BagState(GameState):
             del inv["RARE_CANDY"]
         if self.game.assets.heal_sfx:
             self.game.assets.heal_sfx.play()
+        new_moves = movelib.learn_new_moves(self.game, pokemon, old_level)  # before any evolution
         ready = evolution.ready_evolutions(self.game, pokemon)
         if ready:
             entry = self.game.story_manager.pick_evolution_branch(ready)
@@ -1197,12 +1253,7 @@ class BagState(GameState):
                     self.game, pokemon, next_id, slot_index, next_form=next_form.lower(), context="party",
                     return_state=self.previous_state))
                 return
-        lines = [f"{pokemon.display_name} grew to Lv {pokemon.level}!"]
-        lines += movelib.learn_new_moves(self.game, pokemon, old_level)
-        self.game.show_dialogue(lines)
-        self.game.change_state(self)
-        self.refresh_buttons()
-        return
+        self._back_to_bag([f"{pokemon.display_name} grew to Lv {pokemon.level}!"] + new_moves)
 
     def on_pokemon_select_pokeblock(self, slot_index):
         party = self.game.story_manager.player_team
@@ -1226,9 +1277,15 @@ class BagState(GameState):
                     self.game.change_state(EvolutionState(
                         self.game, p, milotic, slot_index, context="party", return_state=self))
                     return
+        self._back_to_bag(lines)
+
+    def _back_to_bag(self, lines=None):
+        """Return to the Bag, then show the message (showing it first got wiped by the
+        screen change, so the player never saw it)."""
         self.game.change_state(self)
         self.refresh_buttons()
-        self.game.show_dialogue(lines)
+        if lines:
+            self.game.show_dialogue(lines)
 
     def on_pokemon_select_potion(self, slot_index):
         party = self.game.story_manager.player_team
@@ -1236,12 +1293,14 @@ class BagState(GameState):
             return
         p = party[slot_index]
 
+        msg = None
         if p.current_hp <= 0:
-            self.game.show_dialogue([f"Potion has no effect on a fainted {p.display_name}!"])
+            msg = f"Potion has no effect on a fainted {p.display_name}!"
         elif p.current_hp >= p.get_max_hp():
-            self.game.show_dialogue([f"{p.display_name} is already at full health!"])
+            msg = f"{p.display_name} is already at full health!"
         else:
             heal = p.get_max_hp() // 2
+            msg = f"{p.display_name} recovered {min(heal, p.get_max_hp() - p.current_hp)} HP!"
             p.current_hp = min(p.get_max_hp(), p.current_hp + heal)
             self.game.story_manager.inventory["POTION"] -= 1
             if self.game.story_manager.inventory["POTION"] <= 0:
@@ -1256,8 +1315,33 @@ class BagState(GameState):
                 self.previous_state.show_message([f"Healed {p.display_name}!"], callback=self.previous_state.on_item_used)
                 return
 
-        self.game.change_state(self)
-        self.refresh_buttons()
+        self._back_to_bag([msg])
+
+    def on_pokemon_select_full_heal(self, slot_index):
+        """Full Heal: cures burn, paralysis, poison, sleep and freeze."""
+        party = self.game.story_manager.player_team
+        if slot_index >= len(party):
+            return
+        p = party[slot_index]
+        if p.current_hp <= 0:
+            msg = f"Full Heal has no effect on a fainted {p.display_name}!"
+        elif not getattr(p, "status", None):
+            msg = f"{p.display_name} has no status problem!"
+        else:
+            msg = f"{p.display_name} was cured!"
+            p.cure_status()
+            inv = self.game.story_manager.inventory
+            inv["FULL_HEAL"] -= 1
+            if inv["FULL_HEAL"] <= 0:
+                del inv["FULL_HEAL"]
+            if self.game.assets.heal_sfx:
+                self.game.assets.heal_sfx.play()
+            if self.context == "battle":
+                self.game.change_state(self.previous_state)
+                self.previous_state.show_message([f"{p.display_name} was cured!"],
+                                                 callback=self.previous_state.on_item_used)
+                return
+        self._back_to_bag([msg])
 
     def on_pokemon_select_revive(self, slot_index):
         party = self.game.story_manager.player_team
@@ -1266,8 +1350,9 @@ class BagState(GameState):
         p = party[slot_index]
 
         if p.current_hp > 0:
-            self.game.show_dialogue([f"{p.display_name} is not fainted!"])
+            msg = f"{p.display_name} is not fainted!"
         else:
+            msg = f"{p.display_name} was revived!"
             p.current_hp = p.get_max_hp() // 2
             self.game.story_manager.inventory["REVIVE"] -= 1
             if self.game.story_manager.inventory["REVIVE"] <= 0:
@@ -1282,8 +1367,7 @@ class BagState(GameState):
                 self.previous_state.show_message([f"{p.display_name} was revived!"], callback=self.previous_state.on_item_used)
                 return
 
-        self.game.change_state(self)
-        self.refresh_buttons()
+        self._back_to_bag([msg])
 
     def draw(self):
         self.game.screen.fill((40, 40, 60))
@@ -1302,6 +1386,9 @@ class BagState(GameState):
 
 # [REF-0038: Pokedex UI]
 class PokedexState(GameState):
+    def normal_dex_ids(self, caught_data, seen_ids):
+        return _dex_ids(self.game.story_manager, caught_data, seen_ids)
+
     def __init__(self, game, previous_state):
         super().__init__(game)
         self.previous_state = previous_state
@@ -1485,22 +1572,7 @@ class PokedexState(GameState):
             starting_region = self.game.story_manager.starting_region
             national_dex = self.game.story_manager.story_flags.get("unlocked_national_dex", False)
 
-            # Each region the player has reached gets its own block: its generation's range plus
-            # the later-gen evolutions obtainable there (dex_extra). Anything else shows once seen/caught.
-            story = self.game.story_manager
-            regions = [r for r, _ in story.get_region_starts()
-                       if r == starting_region or story.story_flags.get(f"unlocked_{r.lower()}_badges")
-                       or (national_dex and r in ("KANTO", "JOHTO"))]
-            id_list = []
-            for r in regions:
-                cfg = story.get_region_start(r)
-                lo, hi = cfg.get("dex_range", [1, 151])
-                id_list += list(range(lo, hi + 1)) + cfg.get("dex_extra", [])
-            caught_ids = {v['id'] for v in caught_data.values()}
-            listed = set(id_list)
-            id_list += sorted(i for i in (caught_ids | set(seen_ids))
-                              if isinstance(i, int) and i <= 1025 and i not in listed)
-            id_list = list(dict.fromkeys(id_list))
+            id_list = self.normal_dex_ids(caught_data, seen_ids)
 
             for p_id in id_list:
                 is_caught = False
@@ -2165,7 +2237,7 @@ class EvolutionState(GameState):
                     raw_data, self.game.assets, size_mult=1.5
                 )
                 # What the Pokémon has earned stays with it through evolution.
-                for attr in ("level", "xp", "friendship", "counters", "condition", "sheen", "ribbons",
+                for attr in ("level", "xp", "friendship", "affection", "counters", "condition", "sheen", "ribbons",
                              "gmax_factor", "caught_region", "ivs", "moves", "status"):
                     if hasattr(self.pokemon, attr):
                         setattr(self.evolved_pokemon_obj, attr, getattr(self.pokemon, attr))
@@ -2191,7 +2263,12 @@ class EvolutionState(GameState):
                     else:
                         self.game.story_manager.player_team[self.team_index] = self.evolved_pokemon_obj
 
-                    self.evolved_pokemon_obj.current_hp = self.evolved_pokemon_obj.get_max_hp()
+                    # Damage carries over (a fainted Pokemon stays fainted), like the games.
+                    old_max = self.pokemon.get_max_hp()
+                    new_max = self.evolved_pokemon_obj.get_max_hp()
+                    old_hp = self.pokemon.current_hp
+                    self.evolved_pokemon_obj.current_hp = (
+                        0 if old_hp <= 0 else max(1, min(new_max, old_hp + new_max - old_max)))
                     self.game.data.add_pokemon(self.evolved_pokemon_obj)
                     self._maybe_shedinja()
 
@@ -2639,7 +2716,7 @@ class GameCornerState(GameState):
         if len(self.game.story_manager.player_team) < 6:
             self.game.story_manager.player_team.append(porygon)
         else:
-            self.game.story_manager.pc_pokemon.append(porygon)
+            self.game.story_manager.deposit_to_pc(porygon)
             msg.append("PORYGON was sent to BILL'S PC.")
         self.game.data.add_pokemon(porygon)
         self.game.data.save()
@@ -3104,10 +3181,10 @@ class FossilRevivalState(GameState):
         elif self.phase == "REVEAL":
             self.scale = max(1.0, self.scale - 0.15)
             self.alpha = min(255, self.alpha + 20)
-            if self.timer <= 0:
+            if self.timer <= 0:  # once, when the reveal ends (these ran every frame before)
                 self.phase = "END"
-            self.timer = 60
-            self._finalize_revival()
+                self.timer = 60
+                self._finalize_revival()
         elif self.phase == "END" and self.timer <= 0:
             pygame.event.clear()
             self.game.change_state(self.previous_state)
@@ -3115,7 +3192,9 @@ class FossilRevivalState(GameState):
     def _finalize_revival(self):
         story = self.game.story_manager
         for item in self.consume:
-            story.inventory[item] -= 1
+            story.inventory[item] = story.inventory.get(item, 0) - 1
+            if story.inventory[item] <= 0:
+                story.inventory.pop(item, None)
 
         revival_flag = f"revived_fossil_{story.current_area_key}"
         story.story_flags[revival_flag] = True
@@ -3124,7 +3203,12 @@ class FossilRevivalState(GameState):
         if len(story.player_team) < 6:
             story.player_team.append(self.evolved_pokemon_obj)
         else:
-            story.pc_pokemon.append(self.evolved_pokemon_obj)
+            pc = story.pc_pokemon
+            slot = next((i for i, p in enumerate(pc) if p is None), None)
+            if slot is None:
+                pc.append(self.evolved_pokemon_obj)
+            else:
+                pc[slot] = self.evolved_pokemon_obj  # (append would land past the 300 saved slots)
             msg += " Sent to BILL'S PC."
 
         self.game.data.add_pokemon(self.evolved_pokemon_obj)

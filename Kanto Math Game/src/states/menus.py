@@ -293,6 +293,8 @@ class RegionSelectionState(GameState):
             return
         cfg = story.get_region_start(region)
         story.starting_region = region
+        story.visited_region_set = {region.upper()}  # a new run starts with only its own region
+        story.region_rivals = {}  # and no rivals used yet
         story.story_flags[f"unlocked_{region.lower()}_badges"] = True
         story.badges.setdefault(region, [])
         story.active_badge_region = region
@@ -413,6 +415,7 @@ class RivalSelectionState(GameState):
         self.game.rival_true_name = char_key.upper()
 
         region = self.game.story_manager.starting_region
+        self.game.story_manager.record_region_rival(region, self.game.rival_name, char_key)
         starter_ids = self.game.story_manager.get_region_start(region).get(
             "starters", [1, 4, 7])
 
@@ -724,7 +727,7 @@ class StarterSelectionState(GameState):
 
         if len(team) >= 6:
             moved_pkmn = team.pop(5)
-            pc.append(moved_pkmn)
+            self.game.story_manager.deposit_to_pc(moved_pkmn)
             pc_msg = (
                 f"{moved_pkmn.display_name.upper()} was sent to BILL'S PC!"
             )
@@ -787,6 +790,7 @@ class StarterSelectionState(GameState):
 
             self.game.story_manager.rival_starter_raw = rival_choice
 
+        story.note_rival_starter(self.region)
         if not story.game_started:
             story.game_started = True
             story.current_area_key = self.region_cfg.get(
@@ -1058,38 +1062,40 @@ class LoadState(GameState):
         )
 
     def load_save_slots(self):
+        from src.core.data import DataManager
         slots = []
         for i in range(5):
             fname = os.path.join(
                 self.game.assets.base_dir, f"game_data_{i}.json"
             )
-            if os.path.exists(fname):
-                try:
-                    with open(fname, "r") as f:
-                        data = json.load(f)
-                        slots.append({
-                                "name": data.get("save_name", f"File {i+1}"),
-                                "area": data.get("save_area", "Unknown"),
-                                "file": fname
-                            })
-                except (json.JSONDecodeError, IOError):
-                    slots.append(None)
+            data, status = DataManager.read_json(fname)
+            if data is not None:
+                slots.append({
+                    "name": data.get("save_name", f"File {i+1}"),
+                    "area": data.get("save_area", "Unknown"),
+                    "file": fname,
+                    "restored": status == "restored",
+                })
+            elif status == "damaged":
+                slots.append({"damaged": True, "file": fname})
             else:
                 slots.append(None)
         return slots
 
     def get_slot_text(self, i):
-        return (
-            f"{self.save_slots[i]['name']} - {self.save_slots[i]['area']}"
-            if self.save_slots[i]
-            else "EMPTY"
-        )
+        slot = self.save_slots[i]
+        if not slot:
+            return "EMPTY"
+        if slot.get("damaged"):
+            return "DAMAGED FILE (can't be loaded)"
+        text = f"{slot['name']} - {slot['area']}"
+        return text + " (from backup)" if slot.get("restored") else text
 
     def go_back(self):
         self.game.change_state(self.previous_state)
 
     def confirm_load(self, i):
-        if self.save_slots[i]:
+        if self.save_slots[i] and not self.save_slots[i].get("damaged"):
             self.selected_slot_index = i
             self.phase = "CONFIRM"
             self.game.ui_manager.elements.clear()

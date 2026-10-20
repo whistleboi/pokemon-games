@@ -1,5 +1,97 @@
 # Changelog
 
+## Unreleased: Kanto fixes (Grok audit) and bug fixes
+
+- **Grok "kanto-fixes" batch merged.** It includes:
+  - real type immunities, plus Struggle when nothing can hit;
+  - status cures (Full Heal, Pokémon Centers, whiteouts) and sleep lasting 1–3 turns;
+  - Thunder Wave and powder immunities, and Toxic;
+  - multi-hit, drain, recoil and high-crit moves; two-turn and recharge moves; fixed-damage moves; flinch; Fly, Dig and Dive dodging;
+  - Ned's Super Rod and a Vermilion Old Rod;
+  - Koffing in the wild;
+  - a Kanto Pokédex of exactly #1–151;
+  - the path to Indigo, and the Champion win now being recorded;
+  - the fossil revival loop and the Bill crash fixed;
+  - per-town Kanto marts and higher late-game levels;
+  - math puzzles in Surge's, Koga's and Sabrina's gyms, and Blaine's quiz;
+  - one rival per region;
+  - FireRed/LeafGreen rematch teams.
+  - Tests are in `tests/`.
+- **Kanto stays Kanto.** Pokémon and regional forms from regions you haven't played don't appear wild in Kanto. Evolutions into later-region species, such as Crobat and Porygon2, also wait until you've been to that region. Other regions keep their own listed exceptions, like Hoenn's Gallade.
+- **Up-Grade** is never sold. It's a gift from a Silph Co. employee once Silph Co. is freed and you've visited Johto.
+- **Recoil, burn, poison and sandstorm can knock Pokémon out**, as in the games.
+- **Canon Kanto gates:**
+  - Route 3 opens after Brock.
+  - Nugget Bridge must be cleared before reaching Bill.
+  - Route 9 needs Cut (the Cascade Badge and a visit to Vermilion).
+  - Cut trees block Surge's and Erika's gyms.
+  - Saffron's guards want Tea from the Celadon Mansion.
+  - Team Rocket blocks Sabrina's gym until Silph Co. is freed.
+  - Snorlax blocks Lavender → Route 12.
+  - Cycling Road needs a Bicycle.
+  - Blaine's gym needs the Secret Key from the Pokémon Mansion.
+  - Cerulean Cave opens after becoming Champion.
+- **Saves:**
+  - Saves are written safely (temp file plus a `.bak` backup), and a damaged save loads from its backup.
+  - Damaged slots say "DAMAGED" instead of "EMPTY".
+  - A stale whiteout flag that broke every battle is cleared.
+  - The Poké Ball count is now right when you save from a menu.
+- **Pokémon never vanish:** every PC deposit uses a free slot, the PC keeps anything stored past slot 300, and the region filter never deletes a Pokémon.
+- **Healing:**
+  - The overworld whiteout check works.
+  - Evolving keeps damage.
+  - Levelling up adds the HP gained.
+  - A party with no Pokémon able to fight goes straight to a whiteout.
+- **Text and taps:**
+  - Long text pages inside its box.
+  - Finished boxes no longer swallow taps, and overlay messages close themselves.
+  - Each tap is handled on its own, and taps right after a screen change are ignored.
+  - Bag messages ("already at full health", level-ups, learned moves) now show.
+- **Story:**
+  - The Route 22 rival battle now happens.
+  - Knocking Snorlax out clears the road.
+  - The early Viridian Team Rocket fight uses fair levels.
+
+## Unreleased: Pokémon-Amie, Galar camping, Paldea's three paths
+
+- **Pokémon-Amie (Kalos).** Pokémon-Amie button in every Kalos town with a Pokémon Center.
+  - PET a party Pokémon, or PLAY a timed 3-question math game, to raise its affection (0–5 hearts, up to 100 affection per Pokémon per day).
+  - Affection is saved and kept through evolution. Its battle perks work in every region:
+    - 2 hearts: 1.2× XP
+    - 3+ hearts: may hang on with 1 HP after a knockout blow
+    - 4+ hearts: may dodge an attack and shake off a status
+    - 5 hearts: double crit rate
+- **Galar camping.** SET UP CAMP on 20 Galar routes and Wild Area spots.
+  - REST fully heals and cures the team, once per day per spot.
+  - COOK CURRY: add up to 3 berries, then do three timed math stirs.
+  - The curry class (Koffing up to Charizard) heals the team and, for the better classes, also gives XP and affection.
+- **Paldea's three paths.**
+  - **Path of Legends:** the five Titans are boss fights that can't be caught. Each drops Herba Mystica.
+
+    | Titan | Level | Where |
+    |---|---|---|
+    | Klawf | 16 | South Province Area 3 |
+    | Bombirdier | 20 | West Province Area 1 |
+    | Orthworm | 29 | East Province Area 2 |
+    | Great Tusk | 45 | Asado Desert |
+    | Dondozo | 56 | Casseroya Lake (new area) |
+
+  - **Starfall Street:** five Team Star bases, each boss ending on the Starmobile (Revavroom).
+
+    | Boss | Level | Where |
+    |---|---|---|
+    | Giacomo | 21 | West Province Area 1 |
+    | Mela | 27 | East Province Area 1 |
+    | Atticus | 33 | Tagtree Thicket |
+    | Ortega | 51 | North Province Area 3 |
+    | Eri | 56 | North Province Area 1 |
+
+  - **Finales:** Arven's battle in Mesagoza after all five Titans, and Penny (Cassiopeia) at Naranja Academy after all five bases.
+  - **Area Zero** now opens only after all three paths are done: Victory Road, Path of Legends and Starfall Street.
+  - Path buttons stay hidden until you meet Arven or Team Star in Mesagoza.
+  - Area menus can now hold a full story event inline (action `EVENT`).
+  - Trainer sprites added for Giacomo, Mela, Atticus, Ortega, Eri, Penny and Arven.
+
 ## 2026-10-20: since the last push (`ac5e891`)
 
 This covers everything since "any-region starts, playable Gen 3–9 regions". That is 29 earlier local commits plus today's battle and story fixes.

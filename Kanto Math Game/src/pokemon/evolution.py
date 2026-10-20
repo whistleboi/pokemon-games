@@ -83,6 +83,54 @@ def _regional_only_targets(game):
     return cache
 
 
+def native_region(game, pid):
+    """The region whose Pokedex range (REGION_START dex_range, = PokeAPI generation) holds pid."""
+    for region, cfg in game.loader.area_data.get("REGION_START", {}).items():
+        lo, hi = cfg.get("dex_range", [0, -1])
+        if lo <= int(pid) <= hi:
+            return region.upper()
+    return None
+
+
+def _descendants(game, pid, seen=None):
+    seen = set() if seen is None else seen
+    for pair in _data(game).get("pairs", {}):
+        a, b = pair.split(">")
+        if int(a) == int(pid) and int(b) not in seen:
+            seen.add(int(b))
+            _descendants(game, int(b), seen)
+    name = str(getattr(game.assets, "pokemon_names", {}).get(str(pid), "")).upper()
+    for entry in game.loader.evolution_map.get(name, []) if name else []:
+        tid = game.name_to_id.get(str(entry).split("_")[0].upper())
+        if tid and tid not in seen:
+            seen.add(tid)
+            _descendants(game, tid, seen)
+    return seen
+
+
+def evolution_allowed(game, target_id):
+    """Cross-generation gating: evolving INTO a species introduced in a later region (Crobat,
+    Blissey, Porygon2, Magmortar...) needs that region visited, unless the species is older than
+    a visited region (start in Sinnoh: Chansey -> Blissey is fine, Sinnoh's dex has it). If any species further down the
+    line is native to a visited region, the steps leading to it are allowed too (start in Sinnoh:
+    Porygon -> Porygon2 -> Porygon-Z)."""
+    story = getattr(game, "story_manager", None)
+    if story is None or not hasattr(story, "visited_regions"):
+        return True
+    visited = story.visited_regions()
+    native = native_region(game, target_id)
+    if native is None or native in visited:
+        return True
+    starts = game.loader.area_data.get("REGION_START", {})
+    # A region's own listed exceptions (Hoenn's Gallade and Froslass...) are always fine there.
+    if int(target_id) in starts.get(story.get_current_region(), {}).get("dex_extra", []):
+        return True
+    order = lambda r: starts.get(r, {}).get("order", 99)
+    if any(order(native) < order(v) for v in visited):
+        return True  # only LATER regions' evolutions are locked (Johto/Sinnoh already have Vaporeon)
+    return any(native_region(game, d) in visited for d in _descendants(game, target_id))
+
+
 def evolution_options(game, poke):
     """[(entry_name, target_id, rule)] for everything this Pokemon can evolve into."""
     evo_map = game.loader.evolution_map
@@ -116,6 +164,8 @@ def evolution_options(game, poke):
         tid = game.name_to_id.get(entry.split("_")[0].upper())
         if not tid:
             continue
+        if not evolution_allowed(game, tid):
+            continue  # a later region's evolution: not until the player has been there
         rule = pairs.get(f"{src}>{tid}") or {"level": default_level(game, tid)}
         if hisui and "_" not in entry:
             # Like Legends: Arceus, evolving in Hisui gives the Hisuian form when there is one.
