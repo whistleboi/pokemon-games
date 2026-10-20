@@ -1,0 +1,9 @@
+# Python compiled files (rebuilt every run)
+__pycache__/
+*.pyc
+
+# Local save files (change every play session)
+**/game_data*.json
+
+# Local secrets
+.env
