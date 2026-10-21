@@ -258,6 +258,8 @@ class RegionSelectionState(GameState):
                     self.subtitles[r] = "VISITED"
                 else:
                     self.subtitles[r] = "NEW - " + self.subtitles[r].split(" / ")[0]
+                if self._travel_only(r):
+                    self.subtitles[r] = "TRAVEL THERE"
         self.selected_idx = 0
         self.stay_rect = pygame.Rect(game.width // 2 - 120, game.height - 110, 240, 60)
 
@@ -304,10 +306,29 @@ class RegionSelectionState(GameState):
             self.return_state.show_message(["Mom: No rush! The house hunt can wait.",
                                             "Visit me at home whenever you're ready to move."])
 
+    # Kanto and Johto are next door: you travel between them instead of moving house.
+    NEIGHBOURS = {"KANTO", "JOHTO"}
+    TRAVEL_LINES = {
+        "JOHTO": ["Mom: Johto? Oh, that's right next door! No need to move house for that.",
+                  "From the Pokemon League's Reception Gate, follow Route 26 and Route 27 east to New Bark Town.",
+                  "Or take the S.S. Aqua from Vermilion City to Olivine City with your S.S. Ticket!"],
+        "KANTO": ["Mom: Kanto? That's just next door! You can travel there yourself.",
+                  "From New Bark Town, take Route 27 west to the Reception Gate, then Route 22 to Viridian City.",
+                  "Or take the S.S. Aqua from Olivine City to Vermilion City with your S.S. Ticket!"],
+    }
+
+    def _travel_only(self, region):
+        here = self.game.story_manager.get_current_region()
+        return self.mode == "move" and region != here and {here, region} <= self.NEIGHBOURS
+
     def confirm_selection(self):
         region = self.regions[self.selected_idx]
         story = self.game.story_manager
         if self.mode == "move":
+            if self._travel_only(region) and self.return_state:
+                self.game.change_state(self.return_state)
+                self.return_state.show_message(self.TRAVEL_LINES[region])
+                return
             self.game.change_state(story.move_to_region(region))
             return
         cfg = story.get_region_start(region)

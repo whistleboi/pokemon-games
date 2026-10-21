@@ -1,5 +1,121 @@
 # Changelog
 
+## Unreleased: Johto teams, Silver and Red, League rematches
+
+- **Johto teams match HeartGold/SoulSilver.** Every Gym Leader, Elite Four member and Lance has their HGSS team. Levels are scaled so Lance's ace is Lv 63, the same as Kanto's Champion. Johto's wild areas are scaled to match.
+- **Silver follows the games.**
+  - The first battle is in Cherrygrove after Mr. Pokémon, not an ambush in New Bark.
+  - He battles again at Azalea, the Burned Tower, the Goldenrod Underground and Victory Road (Mt. Silver city).
+  - His team always has the starter that beats yours.
+  - The made-up Tyranitar fight on Mt. Silver is gone.
+- **Red is on Mt. Silver.** "Challenge Red" is now a trainer battle with his HGSS team: Pikachu 88, Lapras 80, Snorlax 82, Venusaur 84, Charizard 84, Blastoise 84.
+- **Every region's League works like Indigo.**
+  - A loss starts the League over from the first Elite Four member.
+  - After the title, the League becomes a rematch.
+  - Johto uses the HGSS rematch teams, and Kanto keeps its FireRed/LeafGreen ones. Other regions add 10 levels.
+- **Marts are the same everywhere.**
+  - Every mart sells Poké Balls, Potions and Full Heals.
+  - The Everstone comes after 2 badges and Revive after 3.
+  - Rare Candy is sold only at League towns and department stores.
+  - Evolution items follow the region rules, so Johto stays Johto: no Dawn Stones or later-generation items until their regions are played.
+- **Kanto and Johto are linked by travel.**
+  - After either title, a message says the road to the other region is open, and you get the S.S. Ticket.
+  - The S.S. Aqua sails between Vermilion and Olivine.
+  - Picking Kanto or Johto in Mom's region picker now says to travel there instead of moving house.
+- **Story items from the games:**
+  - **The Magnet Train:** talk to the Power Plant manager, find the Machine Part in the Cerulean Gym's pool, then return Copycat's Clefairy doll (from the Fan Club) for her Pass. The train runs between Saffron and Goldenrod.
+  - **The Red Scale:** pick it up at the Lake of Rage, and Mr. Pokémon trades it for an Exp. Share.
+  - **Celebi:** it now needs the GS Ball, which will come from Professor Ivy in the Orange Islands.
+  - **The Shiny Charm:** show Professor Oak all 251 Kanto and Johto Pokémon. It triples shiny odds.
+- **National Park** no longer shows Gym, Catch and Battle buttons that did nothing.
+
+## Unreleased: HMs, story gates and real growth curves
+
+- **Real growth curves, fast leveling.** Every species now levels on its real curve (Fast, Medium, Slow, Erratic...). XP uses the real Gen 7 formula: the foe's base XP yield, the level gap, ×1.5 from trainers and ×1.2 with strong affection. All XP is then ×3 (`XP_BOOST` in `src/pokemon/growth.py`) so leveling stays quick. An even fight is worth about a level, and early fights about two.
+- **HMs (Johto through Kalos).** Each Gym gives the HM its badge unlocks in the games, announced with the badge ("You received HM Surf!"). Saves that already have badges get their HMs automatically. HMs are key items, so they can't be sold.
+
+  | Region | Badge → HM |
+  |---|---|
+  | Johto | Zephyr Flash, Hive Cut, Plain Strength, Fog Surf, Storm Fly, Glacier Whirlpool, Rising Waterfall |
+  | Hoenn | Stone Cut, Knuckle Flash, Dynamo Rock Smash, Heat Strength, Balance Surf, Feather Fly, Mind Dive, Rain Waterfall |
+  | Sinnoh | Coal Rock Smash, Forest Cut, Cobble Fly, Fen Defog, Relic Surf, Mine Strength, Icicle Rock Climb, Beacon Waterfall |
+  | Unova | Trio Cut, Basic Strength, Bolt Surf, Quake Fly, Freeze Waterfall, Legend Dive |
+  | Kalos | Bug Cut, Cliff Strength, Rumble Surf, Plant Fly, Fairy Waterfall |
+
+- **Story gates in every region after Kanto,** so each region plays in its games' order. A test walks each region from the start, badge by badge, and checks that only the next steps open.
+  - **Johto:**
+    - Route 32 opens after Falkner.
+    - Cut opens Ilex Forest, Flash opens Dark Cave, and Surf opens the routes to Cianwood and Mahogany.
+    - Morty waits for the Burned Tower rival battle, Jasmine for Amphy's medicine, and Pryce for the Rocket Hideout.
+    - The Red Gyarados now comes before the Hideout.
+    - Route 44 opens after the Radio Tower.
+    - Whirlpool opens the Whirl Islands, and Waterfall opens the road from Tohjo Falls to the League.
+    - Kanto opens after the Johto title, and Mt. Silver after 16 badges.
+  - **Hoenn:**
+    - Mr. Briney's boat (Rustboro → Dewford → Slateport) is added.
+    - Rock Smash, Strength, Surf, Dive and Waterfall gate their places.
+    - The League needs 8 badges.
+  - **Sinnoh:**
+    - The road to Floaroma opens after Roark, and the bridge after the Windworks.
+    - The Bicycle (from the Galactic building) opens Cycling Road and Mt. Coronet.
+    - Celestic needs the Fen Badge and Defog, and Canalave needs Surf.
+    - Snowpoint needs Strength, and Spear Pillar needs Rock Climb and the Galactic HQ.
+    - Sunyshore opens after Spear Pillar.
+  - **Unova:** each city's road opens after its Gym, Victory Road after the Legend Badge, and Lacunosa and Undella after the title.
+  - **Kalos:**
+    - The Snorlax on Route 7 needs a visit to Parfum Palace (for the Poké Flute).
+    - Each city's road opens after its Gym, with Surf to Azure Bay and Waterfall and Strength for Victory Road.
+    - Pokémon Village opens after the title.
+  - **Alola:** the ferries follow the island challenge, and each kahuna waits for that island's trials.
+  - **Galar:** each town's road opens after its Gym.
+  - **Paldea** stays open-world, as in the games.
+- **Fixes found along the way:**
+  - The Silver League couldn't be reached at all.
+  - Blackthorn hid all of its exits.
+  - Lugia could never be challenged.
+  - Olivia needed a badge that comes after her, so she could never be fought.
+  - Team Flare's Geosenge showdown never appeared, so Kalos couldn't be finished.
+  - Bugsy's "clear the Slowpoke Well first" rule wasn't checked.
+  - Hoenn's "KNuckle" badge didn't count.
+  - Badges from other regions with the same name (Grass, Fairy…) unlocked gates in the wrong region.
+  - The Galactic HQ key check never worked.
+
+## Unreleased: math rules, voices and playthrough fixes
+
+- **Wrong answers don't waste the turn anymore.** Your move still happens, in normal Speed order, but with a weak damage roll (75–85% instead of the usual 85–100%). A line explains it: "The answer was off, so the attack was weaker."
+- **Quick answers earn a bonus.** A right answer in under 2 seconds (a hidden timer) gives one random bonus:
+  - a max-power damage roll;
+  - a higher critical-hit chance;
+  - a chance to make the foe flinch, if you move first.
+  A line explains it whenever the bonus makes a difference ("Your speedy answer powered up CHARMANDER's attack: max power!").
+- **XP follows the real formula only:** the level-gap scaling, 1.5x from trainers and 1.2x with strong affection. The "Tough foe bonus!" and "(easy foe)" notes and the extra cap on big level gaps are gone.
+- **Character voices with the built-in speech:** lines that start with a name ("Professor Oak: ...", "Mom: ...") are read out automatically. Each character has their own voice, with male or female, pitch and speed (a deep, slow Oak; quick rivals). The speaker button reads any line.
+- **Mew** can only be found after catching all 150 other Kanto Pokémon. Other regions' Pokémon and alternate forms no longer count toward Oak's sighting.
+- **Fixes from Grok's 151/151 playthrough:**
+  - Struggle no longer crashes the move menu.
+  - A wild Ditto's Transform no longer soft-locks the battle. A second crash right after the Transform is also fixed.
+  - The Game Corner menu comes back after Cash In or Slots.
+  - If something unexpected goes wrong, the game writes `crash.log` and returns you to the current town or route ("Your progress is safe") instead of closing.
+- **No more "ghost" exits:** route buttons ignore taps for half a second after they appear, so a quick tap left over from a catch can't send you down a route you didn't choose.
+
+## Unreleased: presentation pass (from Grok's UI comparison)
+
+- **One fixed 1280×720 canvas.** The game scales to any window or screen, with black bars if the shape differs. Every screen now looks the same on every monitor and tablet, and the window can be resized freely. This fixes text that grew with screen width while spacing didn't, like the clipped CANCEL and overlapping labels.
+- **Buttons** have a raised look (a darker lip underneath and a light top edge), glow under the mouse, and play soft click and back sounds.
+- **Text boxes** show a bobbing arrow when they're waiting for a tap, and line breaks are kept (the town panel reads "Welcome to / Viridian City!").
+- **Screens crossfade** in about a quarter of a second.
+- **Move buttons:**
+  - The move name, a type pill with the full type name, and the power.
+  - A badge you can read without words: green **!!** for super effective, orange **▼** for not very, grey **✕** for no effect, plus the word.
+  - Moves that match the Pokémon's own type have a gold border.
+- **Answer feedback:**
+  - A right answer flashes green with a star burst, a cheer ("Great job!", "Awesome!"...) and a chime.
+  - A wrong answer gently shows the right one ("Nice try! It was 18.") before the foe moves.
+- **HP bars** slide to their new value, show the HP just lost as a light-red chunk that drains away, and have bigger "HP 40/46" numbers. The level moved up to the name line.
+- **MENU button:** the column of small buttons (PC, Bag, Badges, Save, Load, Journal, Fly, Map, Options) is now one big MENU button. It opens a grid of large tiles with icons. Tapping outside the grid, CLOSE, or Esc goes back.
+- **Read-aloud (Windows):** a speaker button on the battle question, the catch question and every text box reads it out. Math reads naturally ("7 + 3 = ?" becomes "7 plus 3 equals what?").
+- The party CANCEL button fits its label, and the "USEABLE ITEMS" pocket is now "ITEMS".
+
 ## Unreleased: Kanto fixes (Grok audit) and bug fixes
 
 - **Grok "kanto-fixes" batch merged.** It includes:
@@ -194,4 +310,8 @@ This covers everything since "any-region starts, playable Gen 3–9 regions". Th
 - Missing trainer sprites, back sprites and item icons were downloaded. `ASSETS_NEEDED.md` lists the art still needed per region.
 
 ### Still to do (from the latest play-test)
-- A larger UI pass over the PC, Pokédex, Bag, badge case and battle screens.
+- A larger UI pass over the PC, Pokédex and badge case screens.
+
+### Long-term add-ins
+- An Options page: music and sound volume, text speed, big text.
+- The Sinnoh Underground.

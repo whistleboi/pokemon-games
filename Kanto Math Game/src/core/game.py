@@ -6,7 +6,7 @@ import sys
 
 # [FIX] Import config to trigger pygame.init()
 import src.config
-from src.config import FPS, VOLUME, MUSIC_ENDED_EVENT
+from src.config import FPS, VOLUME, MUSIC_ENDED_EVENT, LOGICAL_W, LOGICAL_H
 
 # [FIX] Import necessary modules
 from src.utils import Utils
@@ -26,22 +26,29 @@ from src.states.overworld import PlayState, CityState
 # [REF-0043: Main Game Class]
 class Game:
     def __init__(self):
-        info = pygame.display.Info()
-        self.width, self.height = info.current_w, info.current_h
+        # One fixed canvas on every device: the game always lays out at 1280x720 and SDL scales
+        # it to the window (letterboxed, taps mapped back). Every screen looks the same on any
+        # monitor or tablet, and the window can be resized freely.
+        self.width, self.height = LOGICAL_W, LOGICAL_H
 
         # Platform Detection
         is_android = "ANDROID_ARGUMENT" in os.environ or "ANDROID_PRIVATE" in os.environ
         self.is_pc = (sys.platform in ["win32", "linux", "darwin"]) and not is_android
+        os.environ.setdefault("SDL_RENDER_SCALE_QUALITY", "1")  # smooth scaling, not blocky
+        mode = pygame.SCALED | (pygame.RESIZABLE if self.is_pc else pygame.FULLSCREEN)
+        try:
+            self.screen = pygame.display.set_mode((self.width, self.height), mode)
+        except pygame.error:  # no renderer (headless tests): a plain window of the same size
+            self.screen = pygame.display.set_mode((self.width, self.height))
         if self.is_pc:
-            self.screen = pygame.display.set_mode(
-                (self.width, self.height), pygame.RESIZABLE
-            )
-        else:
-            self.screen = pygame.display.set_mode(
-                (self.width, self.height), pygame.FULLSCREEN
-            )
+            try:  # start filling the screen, like before
+                pygame.Window.from_display_module().maximize()
+            except Exception:
+                pass
 
         self.assets = AssetManager(self.width, self.height)
+        from src.ui.widgets import Button
+        Button.sounds = {k: v for k, v in self.assets.ui_sfx.items() if v}
         self.data = DataManager(self.assets.base_dir)
         self.math = MathEngine(
             Utils.find_json_file(self.assets.assets_dir, "math_levels.json")
@@ -249,7 +256,12 @@ class Game:
             self.change_state(self.states["play"])
         return True
 
+    FADE_FRAMES = 6  # ~0.25 s crossfade between screens
+
     def change_state(self, new_state):
+        if getattr(self, "screen", None) is not None and getattr(self, "current_state", None) is not None:
+            self._fade_from = self.screen.copy()
+            self._fade_left = self.FADE_FRAMES
         self.ui_manager.elements.clear()
         self.event_handlers.clear()
         pygame.event.clear()
@@ -266,45 +278,83 @@ class Game:
             if not pygame.display.get_active():
                 pygame.time.wait(250)
                 continue
-
-            events = pygame.event.get()
-            # Arrow keys / Enter / Esc drive the on-screen buttons (see src/ui/keyboard.py).
-            events = [e for e in events if not self.keyboard.handle(e)]
-            # Capture current state to detect changes mid-loop
-            frame_start_state = self.current_state
-
-            for event in events:
-                if event.type == pygame.QUIT:
-                    pygame.quit()
-                    sys.exit()
-                if event.type == pygame.KEYDOWN and event.key == pygame.K_F3:
-                    self.debug_mode = not self.debug_mode
-                if event.type == MUSIC_ENDED_EVENT:
-                    self.music.on_track_end()
-                for handler in self.event_handlers:
-                    handler(event)
-
-                # Ghost Click Prevention:
-                # If state changed during event processing (e.g. button click),
-                # abort processing remaining events for the old state.
-                if self.current_state != frame_start_state:
-                    break
-
-            # Taps right after a screen change are ignored (a double-tap must not press a
-            # button on the new screen), and each tap is routed on its own.
-            if pygame.time.get_ticks() - getattr(self, "state_changed_at", -10**6) < 150:
-                events = [e for e in events if e.type not in (pygame.MOUSEBUTTONDOWN, pygame.MOUSEBUTTONUP)]
-            if self.current_state is frame_start_state:
-                remaining = self.ui_manager.unconsumed(
-                    events, lambda: self.current_state is not frame_start_state)
-                if remaining and self.current_state is frame_start_state:
-                    self.current_state.handle_events(remaining)
-            self.current_state.update()
-            self.current_state.draw()
-            self.keyboard.draw(self.screen)
-
+            try:
+                self._frame()
+            except SystemExit:
+                raise
+            except Exception:
+                self._recover_from_error()
             pygame.display.flip()
             self.clock.tick(FPS)
+
+    def _recover_from_error(self):
+        """Safety net: an unexpected error writes crash.log and returns to the current town or
+        route instead of closing the game. Errors that keep repeating still stop it."""
+        import time
+        import traceback
+        now = time.time()
+        recent = [t for t in getattr(self, "_error_times", []) if now - t < 10] + [now]
+        self._error_times = recent
+        try:
+            with open(os.path.join(self.assets.base_dir, "crash.log"), "a", encoding="utf-8") as f:
+                f.write(f"\n=== {time.ctime(now)} in {type(self.current_state).__name__} ===\n")
+                f.write(traceback.format_exc())
+        except OSError:
+            pass
+        traceback.print_exc()
+        if len(recent) >= 3:
+            raise  # the same thing keeps going wrong: don't loop forever
+        story = self.story_manager
+        area = self.loader.area_data.get("STORY_PROGRESSION", {}).get(story.current_area_key, {})
+        try:
+            safe = CityState(self) if area.get("area_type") == "town" else PlayState(self)
+            self.change_state(safe)
+            self.show_dialogue(["Oops! Something went wrong, so we came back here.",
+                                "Your progress is safe."])
+        except Exception:
+            self.change_state(MainMenuState(self))
+
+    def _frame(self):
+        """One frame: input, update, draw (run() wraps it in the safety net)."""
+        events = pygame.event.get()
+        # Arrow keys / Enter / Esc drive the on-screen buttons (see src/ui/keyboard.py).
+        events = [e for e in events if not self.keyboard.handle(e)]
+        # Capture current state to detect changes mid-loop
+        frame_start_state = self.current_state
+
+        for event in events:
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_F3:
+                self.debug_mode = not self.debug_mode
+            if event.type == MUSIC_ENDED_EVENT:
+                self.music.on_track_end()
+            for handler in self.event_handlers:
+                handler(event)
+
+            # Ghost Click Prevention:
+            # If state changed during event processing (e.g. button click),
+            # abort processing remaining events for the old state.
+            if self.current_state != frame_start_state:
+                break
+
+        # Taps right after a screen change are ignored (a double-tap must not press a
+        # button on the new screen), and each tap is routed on its own.
+        if pygame.time.get_ticks() - getattr(self, "state_changed_at", -10**6) < 150:
+            events = [e for e in events if e.type not in (pygame.MOUSEBUTTONDOWN, pygame.MOUSEBUTTONUP)]
+        if self.current_state is frame_start_state:
+            remaining = self.ui_manager.unconsumed(
+                events, lambda: self.current_state is not frame_start_state)
+            if remaining and self.current_state is frame_start_state:
+                self.current_state.handle_events(remaining)
+        self.current_state.update()
+        self.current_state.draw()
+        self.keyboard.draw(self.screen)
+        if getattr(self, "_fade_left", 0) > 0 and self._fade_from is not None:
+            self._fade_from.set_alpha(int(255 * self._fade_left / self.FADE_FRAMES))
+            self.screen.blit(self._fade_from, (0, 0))
+            self._fade_left -= 1
 
 
 # [REF-0059: Main Execution]

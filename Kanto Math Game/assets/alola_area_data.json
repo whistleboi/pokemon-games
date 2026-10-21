@@ -212,13 +212,13 @@
           "is_boss_battle": true,
           "badge_reward": "NORMALIUM_Z"
         },
-        "requirements": { "badges": 0, "fail_text": "Complete your first trial at Verdant Cavern!" }
+        "requirements": { "badges": 0, "fail_text": "Complete your first trial at Verdant Cavern!", "flag": "VERDANT_CAVERN_boss_defeated" }
       },
       "travel_options": [
         { "text": "Route 1 (to Iki Town)", "target_area": "ALOLA_ROUTE_1" },
         { "text": "Route 2 (to Hau'oli Outskirts)", "target_area": "ALOLA_ROUTE_2" },
         { "text": "Verdant Cavern", "target_area": "VERDANT_CAVERN" },
-        { "text": "Heahea City", "target_area": "HEAHEA_CITY" }
+        { "text": "Heahea City", "target_area": "HEAHEA_CITY", "condition": "has_normalium_z_badge" }
       ],
       "explore_options": [
         { "text": "Pokémon Center", "action": "HEAL" },
@@ -254,7 +254,11 @@
           "is_boss_battle": true,
           "badge_reward": "ROCKIUM_Z"
         },
-        "requirements": { "badges": 2, "fail_text": "Complete Lana's Water Trial and Kiawe's Fire Trial on Akala Island first!" }
+        "requirements": {
+          "badges": 1,
+          "fail_text": ["Olivia is waiting at the ruins.", "Finish Lana's Water Trial, Mallow's Grass Trial", "and Kiawe's Fire Trial on Akala Island first!"],
+          "flags": ["BROOKLET_HILL_boss_defeated", "LUSH_JUNGLE_boss_defeated", "WELA_VOLCANO_boss_defeated"]
+        }
       },
       "travel_options": [
         { "text": "Route 4 (to Paniola Town)", "target_area": "ALOLA_ROUTE_4" },
@@ -280,7 +284,7 @@
         { "text": "Route 8 (to Aether House)", "target_area": "ALOLA_ROUTE_8" },
         { "text": "Diglett's Tunnel", "target_area": "DIGLETTS_TUNNEL" },
         { "text": "Memorial Hill", "target_area": "MEMORIAL_HILL" },
-        { "text": "Malie City", "target_area": "MALIE_CITY" },
+        { "text": "Malie City", "target_area": "MALIE_CITY", "condition": "has_rockium_z_badge" },
         { "text": "Route 7", "target_area": "ALOLA_ROUTE_7" }
       ],
       "explore_options": [{"text": "Pokémon Center", "action": "HEAL"}, {"text": "Shop", "action": "SHOP"}],
@@ -308,15 +312,19 @@
           "is_boss_battle": true,
           "badge_reward": "DARKINIUM_Z"
         },
-        "requirements": { "badges": 4, "fail_text": "Complete the trials on Ula'ula Island first!" }
+        "requirements": {
+          "badges": 2,
+          "fail_text": ["Nanu won't battle yet.", "Finish Sophocles' and Acerola's trials and deal with Team Skull", "in Po Town first!"],
+          "flags": ["MT_HOKULANI_boss_defeated", "THRIFTY_MEGAMART_boss_defeated", "po_town_cleared"]
+        }
       },
       "travel_options": [
         { "text": "Route 10 (to Mount Hokulani)", "target_area": "ALOLA_ROUTE_10" },
         { "text": "Route 11 (south)", "target_area": "ALOLA_ROUTE_11" },
         { "text": "Mount Hokulani", "target_area": "MOUNT_HOKULANI" },
         { "text": "Konikoni City", "target_area": "KONIKONI_CITY" },
-        { "text": "Seafolk Village", "target_area": "SEAFOLK_VILLAGE" },
-        { "text": "Mount Lanakila (Victory Road Alola)", "target_area": "MOUNT_LANAKILA" },
+        { "text": "Seafolk Village", "target_area": "SEAFOLK_VILLAGE", "condition": "has_darkinium_z_badge" },
+        { "text": "Mount Lanakila (Victory Road Alola)", "target_area": "MOUNT_LANAKILA", "condition": "has_groundium_z_badge" },
         { "text": "Route 17", "target_area": "ALOLA_ROUTE_17" }
       ],
       "explore_options": [
@@ -373,7 +381,11 @@
           "is_boss_battle": true,
           "badge_reward": "GROUNDIUM_Z"
         },
-        "requirements": { "badges": 6, "fail_text": "Complete Mina's Fairy Trial and the Vast Poni Canyon Trial first!" }
+        "requirements": {
+          "badges": 3,
+          "fail_text": ["Hapu is at the Vast Poni Canyon.", "Finish the trial there first!"],
+          "flags": ["VAST_PONI_boss_defeated"]
+        }
       },
       "travel_options": [
         { "text": "Route 16 (to Ula'ula / ferry)", "target_area": "ALOLA_ROUTE_16" },

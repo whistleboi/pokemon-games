@@ -240,8 +240,8 @@
       "travel_options": [
         { "text": "Route 202", "target_area": "SINNOH_ROUTE_202" },
         { "text": "Route 203", "target_area": "SINNOH_ROUTE_203" },
-        { "text": "Route 204", "target_area": "SINNOH_ROUTE_204" },
-        { "text": "Route 218", "target_area": "SINNOH_ROUTE_218", "flag_condition": "visited_CANALAVE_CITY" },
+        { "text": "Route 204", "target_area": "SINNOH_ROUTE_204", "condition": "has_coal_badge" },
+        { "text": "Route 218", "target_area": "SINNOH_ROUTE_218", "condition": "has_item:HM_SURF" },
         { "text": "Space-Time Rift (Hisui)", "target_area": "JUBILIFE_VILLAGE", "condition": "has_coal_badge" }
       ],
       "explore_options": [
@@ -307,7 +307,7 @@
         }
       },
       "travel_options": [
-        { "text": "Route 207", "target_area": "SINNOH_ROUTE_207" },
+        { "text": "Route 207", "target_area": "SINNOH_ROUTE_207", "condition": "galactic_eterna_cleared" },
         { "text": "Route 203", "target_area": "SINNOH_ROUTE_203" },
         { "text": "Oreburgh Mine", "target_area": "OREBURGH_MINE" }
       ],
@@ -328,7 +328,7 @@
       "has_gym": false,
       "travel_options": [
         { "text": "Route 204", "target_area": "SINNOH_ROUTE_204" },
-        { "text": "Route 205", "target_area": "SINNOH_ROUTE_205" },
+        { "text": "Route 205", "target_area": "SINNOH_ROUTE_205", "condition": "windworks_cleared" },
         { "text": "Valley Windworks", "target_area": "VALLEY_WINDWORKS" },
         { "text": "Flower Paradise", "target_area": "FLOWER_PARADISE", "condition": "beat_sinnoh_champion" }
       ],
@@ -389,12 +389,13 @@
             "player_lost": ["The power of nature was too much for you!"]
           },
           "rewards": { "balls": 10, "RARE_CANDY": 1, "EXPLORER_KIT": 1 }
-        }
+        },
+        "requirements": { "badges": 1, "fail_text": "Gardenia wants to see the Coal Badge from Oreburgh first!" }
       },
       "travel_options": [
         { "text": "Route 205", "target_area": "SINNOH_ROUTE_205" },
-        { "text": "Route 206", "target_area": "SINNOH_ROUTE_206" },
-        { "text": "Route 211", "target_area": "SINNOH_ROUTE_211" },
+        { "text": "Route 206", "target_area": "SINNOH_ROUTE_206", "condition": "galactic_eterna_cleared" },
+        { "text": "Route 211", "target_area": "SINNOH_ROUTE_211", "condition": "galactic_eterna_cleared" },
         { "text": "Eterna Forest", "target_area": "ETERNA_FOREST" }
       ],
       "explore_options": [
@@ -580,7 +581,8 @@
             "player_lost": ["My Fighting spirit was stronger!"]
           },
           "rewards": { "balls": 10, "RARE_CANDY": 2 }
-        }
+        },
+        "requirements": { "badges": 2, "fail_text": "Maylene is only accepting challengers with 2 Sinnoh Badges." }
       },
       "travel_options": [
         { "text": "Route 214", "target_area": "SINNOH_ROUTE_214" },
@@ -664,7 +666,8 @@
             "player_lost": ["The wave has crashed! You're swept away!"]
           },
           "rewards": { "balls": 10, "RARE_CANDY": 2, "SURF_BOARD": 1 }
-        }
+        },
+        "requirements": { "badges": 3, "fail_text": "Crasher Wake is only accepting challengers with 3 Sinnoh Badges." }
       },
       "travel_options": [
         { "text": "Route 212", "target_area": "SINNOH_ROUTE_212" },
@@ -950,7 +953,7 @@
       "travel_options": [
         { "text": "Route 222", "target_area": "SINNOH_ROUTE_222" },
         { "text": "Route 223", "target_area": "SINNOH_ROUTE_223", "flag_condition": "has_beacon_badge" },
-        { "text": "Victory Road", "target_area": "VICTORY_ROAD_SINNOH" },
+        { "text": "Victory Road", "target_area": "VICTORY_ROAD_SINNOH", "condition": "has_item:HM_WATERFALL" },
         { "text": "Stark Mountain (Ferry)", "target_area": "STARK_MOUNTAIN", "condition": "beat_sinnoh_champion" }
       ],
       "explore_options": [
@@ -1040,6 +1043,10 @@
             "player_won": ["You've won! That was wonderful!", "Your Pokémon felt the power of your math and trust.", "You are the new Sinnoh Champion!"],
             "player_lost": ["You put up a wonderful fight.", "Come back when you're ready. I'll be here."]
           }
+        },
+        "requirements": {
+          "badges": 8,
+          "fail_text": ["The guards at the Pokemon League stop you.", "Only Trainers with all 8 Sinnoh Badges may enter!"]
         }
       },
       "travel_options": [{"text": "Victory Road", "target_area": "VICTORY_ROAD_SINNOH"}],
@@ -1096,7 +1103,13 @@
         { "text": "Azelf's Lair", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD" },
         { "text": "Route 213", "action": "EXIT", "target_area": "SINNOH_ROUTE_213", "condition": "can_exit", "color": "RED" },
         { "text": "ROUTE 214", "action": "EXIT", "target_area": "SINNOH_ROUTE_214", "condition": "can_exit", "color": "RED" },
-        { "text": "ROUTE 222", "action": "EXIT", "target_area": "SINNOH_ROUTE_222", "condition": "can_exit", "color": "RED" }
+        {
+          "text": "ROUTE 222",
+          "action": "EXIT",
+          "target_area": "SINNOH_ROUTE_222",
+          "condition": ["can_exit", "spear_pillar_resolved"],
+          "color": "RED"
+        }
       ],
       "area_boss": { "id": 482, "name": "Azelf", "victory_flag": "LAKE_VALOR_boss_defeated" }
     },
@@ -1186,11 +1199,23 @@
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "Ascend to Spear Pillar", "action": "EXIT", "target_area": "SPEAR_PILLAR", "condition": "has_mine_badge", "color": "GOLD" },
+        {
+          "text": "Ascend to Spear Pillar",
+          "action": "EXIT",
+          "target_area": "SPEAR_PILLAR",
+          "condition": ["has_mine_badge", "has_item:HM_ROCK_CLIMB", "galactic_hq_cleared"],
+          "color": "GOLD"
+        },
         { "text": "Route 207", "action": "EXIT", "target_area": "SINNOH_ROUTE_207", "condition": "can_exit", "color": "RED" },
         { "text": "Route 211", "action": "EXIT", "target_area": "SINNOH_ROUTE_211", "condition": "can_exit", "color": "RED" },
         { "text": "ROUTE 208", "action": "EXIT", "target_area": "SINNOH_ROUTE_208", "condition": "can_exit", "color": "RED" },
-        { "text": "ROUTE 216", "action": "EXIT", "target_area": "SINNOH_ROUTE_216", "condition": "can_exit", "color": "RED" }
+        {
+          "text": "ROUTE 216",
+          "action": "EXIT",
+          "target_area": "SINNOH_ROUTE_216",
+          "condition": ["can_exit", "has_item:HM_STRENGTH"],
+          "color": "RED"
+        }
       ]
     },
     "SPEAR_PILLAR": {
@@ -1827,7 +1852,14 @@
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
         { "text": "PICK BERRIES", "action": "BERRY", "condition": "has_berry_pouch", "color": "GREEN" },
         { "text": "Solaceon Town", "action": "EXIT", "target_area": "SOLACEON_TOWN", "condition": "can_exit", "color": "RED" },
-        { "text": "Celestic Town", "action": "EXIT", "target_area": "CELESTIC_TOWN", "condition": "can_exit", "color": "RED" }
+        { "text": "ROUTE 215", "action": "EXIT", "target": "SINNOH_ROUTE_215", "condition": "can_exit", "color": "RED" },
+        {
+          "text": "Celestic Town",
+          "action": "EXIT",
+          "target_area": "CELESTIC_TOWN",
+          "condition": ["can_exit", "has_fen_badge", "has_item:HM_DEFOG"],
+          "color": "RED"
+        }
       ],
       "next_area": "CELESTIC_TOWN",
       "day_pool_percentages": "SINNOH_ROUTE_210_DAY_PERCENTAGES",
@@ -1863,7 +1895,13 @@
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
         { "text": "Eterna City", "action": "EXIT", "target_area": "ETERNA_CITY", "condition": "can_exit", "color": "RED" },
         { "text": "Mt. Coronet", "action": "EXIT", "target_area": "MT_CORONET_BASE", "condition": "can_exit", "color": "RED" },
-        { "text": "Celestic Town", "action": "EXIT", "target_area": "CELESTIC_TOWN", "condition": "can_exit", "color": "RED" }
+        {
+          "text": "Celestic Town",
+          "action": "EXIT",
+          "target_area": "CELESTIC_TOWN",
+          "condition": ["can_exit", "has_fen_badge"],
+          "color": "RED"
+        }
       ],
       "next_area": "CELESTIC_TOWN"
     },
@@ -2013,7 +2051,14 @@
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
         { "text": "PICK BERRIES", "action": "BERRY", "condition": "has_berry_pouch", "color": "GREEN" },
         { "text": "Veilstone City", "action": "EXIT", "target_area": "VEILSTONE_CITY", "condition": "can_exit", "color": "RED" },
-        { "text": "Celestic Town", "action": "EXIT", "target_area": "CELESTIC_TOWN", "condition": "can_exit", "color": "RED" }
+        { "text": "ROUTE 210", "action": "EXIT", "target": "SINNOH_ROUTE_210", "condition": "can_exit", "color": "RED" },
+        {
+          "text": "Celestic Town",
+          "action": "EXIT",
+          "target_area": "CELESTIC_TOWN",
+          "condition": ["can_exit", "has_fen_badge"],
+          "color": "RED"
+        }
       ],
       "next_area": "VEILSTONE_CITY",
       "weather": "RAIN",

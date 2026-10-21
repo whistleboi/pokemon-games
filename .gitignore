@@ -14,3 +14,4 @@ kanto_handoff.zip
 *.tmp
 *.bak
 *.corrupt
+crash.log

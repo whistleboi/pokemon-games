@@ -203,6 +203,8 @@ class PokemonLoader:
         else:
             shiny_odds = (charm_odds if self.shiny_charm_active
                           else base_odds)
+            if self.game.story_manager.inventory.get("SHINY_CHARM", 0) > 0:
+                shiny_odds *= 3  # the Shiny Charm (all of Kanto and Johto caught), as in the games
 
         target_pool = self._get_target_pool(pool_type, id_pool)
         base_form = pool_type.lower() if pool_type in ["MEGA", "GMAX"] else "normal"

@@ -5,7 +5,7 @@ from src.states.base import GameState
 from src.utils import Utils
 from src.vfx.renderer import BattleRenderer
 from src.ui.panels import BattleActionMenu
-from src.ui.widgets import MathBattleUI, Button
+from src.ui.widgets import MathBattleUI, Button, MoveButton
 from src.ui.dialogue import ClassicDialogueBox
 from src.pokemon.mechanics import TypeAdvantage
 from src.pokemon import forms
@@ -199,6 +199,7 @@ class TrainerBattleState(GameState):
             autosize=False
         )
         self.is_shift_switch = False
+        self.is_forced_switch = False  # read when a Ditto's Transform finishes
         if self.no_usable_party:
             self.trigger_outro(win=False)  # nobody can fight: straight to the whiteout
 
@@ -250,27 +251,29 @@ class TrainerBattleState(GameState):
         box = Utils.get_full_dialogue_rect(self.game)
         names = self._battle_moves(self.player_pokemon)
         bw, bh, gap = (box.width - 260) // 2, (box.height - 40) // 2, 12
-        font = self.game.assets.fonts["small"]
+        font, small = self.game.assets.fonts["small"], self.game.assets.fonts["tiny"]
         self._clear_move_buttons()
         chart = TypeAdvantage(self.game.loader.area_data.get("TYPE_CHART", {}))
+        own_types = {t.upper() for t in self.player_pokemon.types}
         for i, name in enumerate(names[:4]):
             d = movelib.info(self.game, name)
             power = d.get("power") or 0
-            if power:
-                eff = chart.get_multiplier(d["type"], self.opponent_pokemon.types)
-                note = "  SUPER!" if eff > 1 else "  weak" if 0 < eff < 1 else "  NO EFFECT" if eff == 0 else ""
-                label = f"{name.replace('-', ' ')}  {d['type'][:3]} {power}{note}"
-            elif name in movelib.FIXED_DAMAGE:
-                eff = chart.get_multiplier(d["type"], self.opponent_pokemon.types)
-                label = f"{name.replace('-', ' ')}  {d['type'][:3]} FIX{'  NO EFFECT' if eff == 0 else ''}"
+            mtype = d.get("type")  # None for Struggle (typeless)
+            effect = None
+            if mtype and (power or name in movelib.FIXED_DAMAGE):
+                eff = chart.get_multiplier(mtype, self.opponent_pokemon.types)
+                effect = "super" if eff > 1 else "weak" if 0 < eff < 1 else "none" if eff == 0 else None
+                detail = f"Power {power}" if power else "Fixed"
             elif name in movelib.WEATHER_MOVES:
-                label = f"{name.replace('-', ' ')}  WEATHER"
+                detail = "Weather"
             else:
-                label = f"{name.replace('-', ' ')}  {movelib.STATUS_LABEL.get(d.get('ailment'), 'STATUS')}"
+                detail = movelib.STATUS_LABEL.get(d.get("ailment"), "STATUS").title()
             x = box.x + 16 + (i % 2) * (bw + gap)
             y = box.y + 14 + (i // 2) * (bh + gap)
-            btn = Button((x, y, bw, bh), label, font, (lambda n=name: self.choose_move(n)),
-                         bg_color=self.TYPE_COLORS.get(d["type"], (120, 120, 120)), autosize=False)
+            btn = MoveButton((x, y, bw, bh), name.replace("-", " "), font, small,
+                             (lambda n=name: self.choose_move(n)), mtype or "???",
+                             self.TYPE_COLORS.get(mtype, (120, 120, 120)), detail, effect,
+                             stab=bool(power and mtype) and mtype.upper() in own_types)
             self.move_buttons.append(btn)
         back = Button((box.right - 220, box.centery - 35, 200, 70), "BACK", self.game.assets.fonts["s_med"],
                       self.close_move_menu, bg_color=RED, autosize=False)
@@ -299,6 +302,7 @@ class TrainerBattleState(GameState):
         self.action_menu.set_visibility(False)
         self.math_ui.set_visibility(True)
         self.dialogue_box.set_visibility(False)
+        self._question_at = pygame.time.get_ticks()  # hidden timer for quick-answer bonuses
 
     def trigger_outro(self, win):
         self.player_won = win
@@ -701,13 +705,23 @@ class TrainerBattleState(GameState):
         if not special and self.weather == "SNOW" and "ICE" in types:
             defense = defense * 3 // 2  # snow: Ice types' Defense x1.5
         crit = None
+        roll = None
+        mode = getattr(self, "_answer_mode", None) if attacker is self.player_pokemon else None
+        if mode == "crit":
+            crit_stage = (crit_stage or 0) + 1
         if attacker is self.player_pokemon:  # 5 hearts of affection: crits twice as often
             base = balance.CRIT_STAGES[max(0, min(int(crit_stage or 0), 3))]
             crit = random.random() < min(1.0, affection.crit_chance(attacker, base))
+        if mode == "weak":
+            roll = random.randint(*self.WEAK_ROLL)
+        elif mode == "max_roll":
+            roll = 100
         dmg, self._last_was_crit = balance.damage(
             self._level(attacker), power, attack, defense,
             stab=move_type in (attacker.types or []), effectiveness=effectiveness, weather=weather,
-            crit=crit, crit_stage=crit_stage)
+            crit=crit, crit_stage=crit_stage, roll=roll)
+        if mode and weather != 0:
+            self._answer_used = mode if mode != "crit" or self._last_was_crit else None
         return dmg
 
     def setup_math_ui(self):
@@ -715,11 +729,49 @@ class TrainerBattleState(GameState):
             self.game.ui_manager.elements.remove(self.math_ui)
 
         def callback(index):
-            self.resolve_turn(self.options[index] == self.correct_ans)
+            self._answer_feedback(index)
 
         self.math_ui = MathBattleUI(self.game, self.problem_str, self.options, callback)
         self.game.ui_manager.add_element(self.math_ui)
         self.math_ui.set_visibility(False)
+
+    PRAISE = ("Great job!", "You got it!", "Awesome!", "Correct!", "Super!")
+    QUICK_MS = 2000
+    QUICK_BONUSES = ("max_roll", "crit", "flinch")
+    WEAK_ROLL = (75, 85)       # a wrong answer: below the usual 85-100% damage roll
+    QUICK_FLINCH = 30          # % chance the quick-answer flinch bonus works
+    FEEDBACK_FRAMES = {True: 16, False: 24}  # ~0.6 s / ~1 s at 25 FPS
+
+    def _answer_feedback(self, index):
+        """A short beat before the turn: cheer a right answer, kindly show the right one
+        after a wrong answer. Taps are ignored until it's over."""
+        if self.phase == "ANSWER_FEEDBACK":
+            return
+        correct = self.options[index] == self.correct_ans
+        right_index = self.options.index(self.correct_ans) if self.correct_ans in self.options else index
+        elapsed = pygame.time.get_ticks() - getattr(self, "_question_at", 0)
+        # A wrong answer weakens the move; a right one in under 2 s may earn a bonus.
+        self._answer_mode = None if correct else "weak"
+        if correct and elapsed < self.QUICK_MS:
+            self._answer_mode = random.choice(self.QUICK_BONUSES)
+        text = random.choice(self.PRAISE) if correct else f"Nice try! It was {self.correct_ans}."
+        self.math_ui.feedback = {"index": index, "right": right_index, "correct": correct, "text": text,
+                                 "frames": self.FEEDBACK_FRAMES[correct], "total": self.FEEDBACK_FRAMES[correct]}
+        self._answer_correct = correct
+        self.phase = "ANSWER_FEEDBACK"
+        snd = getattr(self.game.assets, "ui_sfx", {}).get("correct" if correct else "wrong")
+        if snd:
+            snd.play()
+
+    def _tick_answer_feedback(self):
+        fb = getattr(self.math_ui, "feedback", None)
+        if not fb:
+            self.resolve_turn(getattr(self, "_answer_correct", False))
+            return
+        fb["frames"] -= 1
+        if fb["frames"] <= 0:
+            self.math_ui.feedback = None
+            self.resolve_turn(fb["correct"])
 
     def setup_action_menu(self):
         form = self.player_form_option()
@@ -942,15 +994,17 @@ class TrainerBattleState(GameState):
 
     def perform_battle_black_out(self):
         """Back to the last Pokemon Center (or home) with a healed team."""
-        from src.states.overworld import white_out
+        from src.states.overworld import white_out, reset_league_after_loss
+        if self.battle_type == "gym":
+            reset_league_after_loss(self.game)  # a League run starts over after a loss
         white_out(self.game)
 
     def _speed(self, mon):
         return mon.stat_value("SPEED") * (0.5 if getattr(mon, "status", None) == "paralysis" else 1)
 
     def resolve_turn(self, player_was_correct):
-        """A right answer lets your chosen move go, in Speed order (move priority first);
-        a wrong one means only the opponent moves."""
+        """Both Pokemon act in Speed order (move priority first). The answer changes how well
+        your move goes (see _answer_feedback): wrong = weaker hit, quick and right = a bonus."""
         self.phase = "RESOLVE_TURN"
         self.turn_actions.clear()
         self.turn_count += 1
@@ -959,9 +1013,8 @@ class TrainerBattleState(GameState):
             self.math_ui.set_visibility(False)
         self._flinched = set()
         self._acts_second = None
-        if not player_was_correct:
-            self.turn_actions.append(self.opponent_attack)
-            return
+        if not player_was_correct and getattr(self, "_answer_mode", None) is None:
+            self._answer_mode = "weak"
         mine = movelib.info(self.game, self._forced_move(self.player_pokemon)
                             or self.chosen_move or self._battle_moves(self.player_pokemon)[0])
         theirs = movelib.info(self.game, self._forced_move(self.opponent_pokemon)
@@ -977,7 +1030,9 @@ class TrainerBattleState(GameState):
             self.turn_actions += [self.opponent_attack, self.player_attack]
 
     def _award_battle_xp(self):
-        """XP for the KO, scaled by the level gap (and 1.5x from trainers). Returns messages."""
+        """XP for the KO, as in the games: the Gen 7 formula with the foe's base XP yield and the
+        level gap, 1.5x from trainers, 1.2x with strong affection, then growth.XP_BOOST for fast
+        leveling. Returns messages."""
         foe = self.opponent_pokemon
         foe_level = self._level(foe)
         trainer = self.trainer_class != "WILD"
@@ -990,11 +1045,15 @@ class TrainerBattleState(GameState):
         if foe.id == 625:  # Bisharp, for Kingambit
             lead.counters["bisharp"] = lead.counters.get("bisharp", 0) + 1
 
+        from src.pokemon import growth
+        from src.pokemon.evolution import base_id
+        base_yield = (self.game.assets.movesets.get(str(base_id(foe)), {}).get("base_xp") or 100)
         messages = []
         cap = levels.xp_cap(self.game.story_manager)
         for p in earners:
             my_level = self._level(p)
-            gained = int(p.battle_xp(my_level, foe_level, trainer=trainer) * affection.xp_mult(p))
+            gained = int(growth.battle_xp(base_yield, foe_level, my_level, trainer=trainer)
+                         * affection.xp_mult(p))
             if my_level >= cap:
                 if p is lead:
                     messages.append(f"{p.display_name.upper()} can't grow past Lv {cap} until you beat the next Gym!")
@@ -1006,14 +1065,7 @@ class TrainerBattleState(GameState):
                     messages.append(f"{p.display_name.upper()} grew to Lv {p.level}!")
                     messages.extend(movelib.learn_new_moves(self.game, p, old_level))
                 continue
-            note = ""
-            if affection.xp_mult(p) > 1:
-                note = " (affection bonus)"
-            if foe_level >= my_level + 4:
-                note = " Tough foe bonus!"
-            elif foe_level <= my_level - 4:
-                note = " (easy foe)"
-            messages.append(f"{p.display_name.upper()} gained {gained} XP!{note}")
+            messages.append(f"{p.display_name.upper()} gained {gained} XP!")
             if grew:
                 messages.append(f"{p.display_name.upper()} grew to Lv {p.level}!")
                 messages.extend(movelib.learn_new_moves(self.game, p, old_level))
@@ -1211,10 +1263,12 @@ class TrainerBattleState(GameState):
 
         name = self._forced_move(mon) or self.chosen_move or self._battle_moves(mon)[0]
         self.player_move = name.replace("-", " ")
+        self._answer_used = None
         damage, messages, _ = self._use_move(mon, self.opponent_pokemon, name, label,
                                              f"Foe {self.opponent_pokemon.display_name.upper()}",
                                              self.opp_max_hp // getattr(self, "opp_hp_mult", 1), self.opponent_hp)
-        messages = pre + messages
+        messages = pre + messages + self._answer_notes(label, damage)
+        self._answer_mode = None
         self.opponent_hp = max(0, self.opponent_hp - damage)
         self.opponent_pokemon.current_hp = self.opponent_hp
         if damage:
@@ -1240,6 +1294,24 @@ class TrainerBattleState(GameState):
         self.dialogue_box.reset(messages)
         self.dialogue_box.set_visibility(True)
         self.feedback_timer = 30
+
+    def _answer_notes(self, label, damage):
+        """Explain what the math answer did to this move (only when it made a difference)."""
+        used = getattr(self, "_answer_used", None)
+        mode = getattr(self, "_answer_mode", None)
+        foe = self.opponent_pokemon
+        if mode == "flinch" and damage and 0 < self.opponent_hp - damage                 and getattr(self, "_acts_second", None) == id(foe) and random.uniform(0, 100) < self.QUICK_FLINCH:
+            self.__dict__.setdefault("_flinched", set()).add(id(foe))
+            return ["Your lightning-fast answer startled the foe! It might flinch!"]
+        if not damage:
+            return []
+        if used == "weak":
+            return ["The answer was off, so the attack was weaker."]
+        if used == "max_roll":
+            return [f"Your speedy answer powered up {label}'s attack: max power!"]
+        if used == "crit":
+            return ["Your speedy answer helped land that critical hit!"]
+        return []
 
     def opponent_attack(self):
         if self.player_hp <= 0 or self.opponent_hp <= 0:
@@ -1350,6 +1422,10 @@ class TrainerBattleState(GameState):
             if self.badge_reward:
                 badge_name = self.badge_reward.replace("_", " ").title()
                 msgs.append(f"You received the {badge_name} Badge!")
+                from src.world import hms
+                hm = hms.hm_for_badge(self.game.story_manager.get_current_region(), self.badge_reward)
+                if hm and self.game.story_manager.inventory.get(hm, 0) <= 0:
+                    msgs.append(f"You received {hms.item_name(hm)}! It opens new paths on your journey.")
 
             money_reward = self._calc_money_reward()
             if self.game.story_manager.inventory.get("AMULET_COIN", 0) > 0:
@@ -1405,6 +1481,8 @@ class TrainerBattleState(GameState):
             earned = self.game.story_manager.badges.setdefault(region, [])
             if self.badge_reward not in earned:
                 earned.append(self.badge_reward)
+            from src.world import hms
+            hms.give_for_badges(self.game.story_manager)  # this badge's HM (Cut, Surf...)
 
         money_reward = 0 if lost else self._calc_money_reward()
         if self.game.story_manager.inventory.get("AMULET_COIN", 0) > 0:
@@ -1552,6 +1630,10 @@ class TrainerBattleState(GameState):
 
     def update(self):
         self.anim_ctrl.update()
+
+        if self.phase == "ANSWER_FEEDBACK":
+            self._tick_answer_feedback()
+            return
 
         if self.faint_anim.active:
             if self.faint_anim.update():
@@ -1858,7 +1940,8 @@ class WildBattleState(TrainerBattleState):
             background_image=background_image,
             is_boss_battle=is_boss_battle
         )
-        self.phase = "MENU"
+        if self.phase != "DITTO_TRANSFORM":  # a wild Ditto transforms first (was a soft-lock)
+            self.phase = "MENU"
         self.catch_phase = "DECISION"
         self.ball_pos = [0, 0]
         self.ball_target = [0, 0]

@@ -303,8 +303,10 @@
       },
       "travel_options": [
         { "text": "Route 106", "target_area": "HOENN_ROUTE_106" },
-        { "text": "Route 107", "target_area": "HOENN_ROUTE_107" },
-        { "text": "Granite Cave", "target_area": "HOENN_GRANITE_CAVE" }
+        { "text": "Route 107", "target_area": "HOENN_ROUTE_107", "condition": "has_item:HM_SURF" },
+        { "text": "Granite Cave", "target_area": "HOENN_GRANITE_CAVE" },
+        { "text": "Boat to Slateport", "target_area": "SLATEPORT_CITY", "condition": "has_knuckle_badge" },
+        { "text": "Boat to Route 104", "target_area": "HOENN_ROUTE_104" }
       ],
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
@@ -324,7 +326,8 @@
         { "text": "Route 109", "target_area": "HOENN_ROUTE_109" },
         { "text": "Route 110", "target_area": "HOENN_ROUTE_110" },
         { "text": "Oceanic Museum", "target_area": "HOENN_OCEANIC_MUSEUM" },
-        { "text": "Route 134", "target_area": "HOENN_ROUTE_134" }
+        { "text": "Route 134", "target_area": "HOENN_ROUTE_134", "condition": "has_item:HM_SURF" },
+        { "text": "Boat to Dewford", "target_area": "DEWFORD_TOWN", "condition": "has_knuckle_badge" }
       ],
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
@@ -384,10 +387,10 @@
       },
       "travel_options": [
         { "text": "Route 110", "target_area": "HOENN_ROUTE_110" },
-        { "text": "Route 111", "target_area": "HOENN_ROUTE_111" },
+        { "text": "Route 111", "target_area": "HOENN_ROUTE_111", "condition": "has_item:HM_ROCK_SMASH" },
         { "text": "Route 117", "target_area": "HOENN_ROUTE_117" },
         { "text": "Route 118", "target_area": "HOENN_ROUTE_118" },
-        { "text": "Route 120", "target_area": "HOENN_ROUTE_120" }
+        { "text": "Route 120", "target_area": "HOENN_ROUTE_120", "condition": "has_item:HM_SURF" }
       ],
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
@@ -542,7 +545,7 @@
       "has_gym": false,
       "travel_options": [
         { "text": "Route 121", "target_area": "HOENN_ROUTE_121" },
-        { "text": "Route 124", "target_area": "HOENN_ROUTE_124" },
+        { "text": "Route 124", "target_area": "HOENN_ROUTE_124", "condition": "has_item:HM_SURF" },
         { "text": "Safari Zone", "target_area": "HOENN_SAFARI_ZONE" },
         { "text": "Route 122", "target_area": "HOENN_ROUTE_122" }
       ],
@@ -727,6 +730,10 @@
             "player_won": ["Congratulations! You are the new Hoenn Champion!"],
             "player_lost": ["A fine battle. Come back stronger, my friend."]
           }
+        },
+        "requirements": {
+          "badges": 8,
+          "fail_text": ["The guards at the Pokemon League stop you.", "Only Trainers with all 8 Hoenn Badges may enter!"]
         }
       },
       "travel_options": [
@@ -918,7 +925,14 @@
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
         { "text": "PETALBURG CITY", "action": "EXIT", "target_area": "PETALBURG_CITY", "condition": "can_exit", "color": "RED" },
         { "text": "RUSTBORO CITY", "action": "EXIT", "target_area": "RUSTBORO_CITY", "condition": "can_exit", "color": "RED" },
-        { "text": "PETALBURG WOODS", "action": "TRAVEL", "target_area": "HOENN_PETALBURG_WOODS", "condition": "can_exit", "color": "GREEN" }
+        { "text": "PETALBURG WOODS", "action": "TRAVEL", "target_area": "HOENN_PETALBURG_WOODS", "condition": "can_exit", "color": "GREEN" },
+        {
+          "text": "MR. BRINEY'S BOAT",
+          "action": "EXIT",
+          "target": "DEWFORD_TOWN",
+          "condition": ["can_exit", "has_stone_badge"],
+          "color": "RED"
+        }
       ],
       "next_area": "RUSTBORO_CITY",
       "region": "HOENN"
@@ -996,7 +1010,13 @@
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "ROUTE 105", "action": "EXIT", "target_area": "HOENN_ROUTE_105", "condition": "can_exit", "color": "RED" },
+        {
+          "text": "ROUTE 105",
+          "action": "EXIT",
+          "target_area": "HOENN_ROUTE_105",
+          "condition": ["can_exit", "has_item:HM_SURF"],
+          "color": "RED"
+        },
         { "text": "DEWFORD TOWN", "action": "EXIT", "target_area": "DEWFORD_TOWN", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "DEWFORD_TOWN",
@@ -1120,7 +1140,13 @@
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
-        { "text": "ROUTE 108", "action": "EXIT", "target_area": "HOENN_ROUTE_108", "condition": "can_exit", "color": "RED" },
+        {
+          "text": "ROUTE 108",
+          "action": "EXIT",
+          "target_area": "HOENN_ROUTE_108",
+          "condition": ["can_exit", "has_item:HM_SURF"],
+          "color": "RED"
+        },
         { "text": "SLATEPORT CITY", "action": "EXIT", "target_area": "SLATEPORT_CITY", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "SLATEPORT_CITY",
@@ -1177,7 +1203,7 @@
           "text": "NEW MAUVILLE",
           "action": "EXIT",
           "target_area": "HOENN_NEW_MAUVILLE",
-          "condition": ["can_exit", "has_SURF_BOARD"],
+          "condition": ["can_exit", "has_SURF_BOARD", "has_item:HM_SURF"],
           "color": "RED"
         },
         { "text": "SLATEPORT CITY", "action": "EXIT", "target_area": "SLATEPORT_CITY", "condition": "can_exit", "color": "RED" },
@@ -1271,7 +1297,13 @@
         { "text": "ROUTE 111", "action": "EXIT", "target_area": "HOENN_ROUTE_111", "condition": "can_exit", "color": "RED" },
         { "text": "LAVARIDGE TOWN", "action": "EXIT", "target_area": "LAVARIDGE_TOWN", "condition": "can_exit", "color": "RED" },
         { "text": "JAGGED PASS", "action": "TRAVEL", "target_area": "HOENN_JAGGED_PASS", "condition": "can_exit", "color": "GREEN" },
-        { "text": "FIERY PATH", "action": "EXIT", "target_area": "HOENN_FIERY_PATH", "condition": "can_exit", "color": "RED" }
+        {
+          "text": "FIERY PATH",
+          "action": "EXIT",
+          "target_area": "HOENN_FIERY_PATH",
+          "condition": ["can_exit", "has_item:HM_STRENGTH"],
+          "color": "RED"
+        }
       ],
       "next_area": "LAVARIDGE_TOWN",
       "region": "HOENN"
@@ -1547,8 +1579,20 @@
           "color": "PURPLE",
           "boss": { "legend": "other_eon", "id": 380, "name": "Latias", "victory_flag": "southern_island_eon_caught" }
         },
-        { "text": "ROUTE 119", "action": "EXIT", "target_area": "HOENN_ROUTE_119", "condition": "can_exit", "color": "RED" },
-        { "text": "ROUTE 123", "action": "EXIT", "target_area": "HOENN_ROUTE_123", "condition": "can_exit", "color": "RED" }
+        {
+          "text": "ROUTE 119",
+          "action": "EXIT",
+          "target_area": "HOENN_ROUTE_119",
+          "condition": ["can_exit", "has_item:HM_SURF"],
+          "color": "RED"
+        },
+        {
+          "text": "ROUTE 123",
+          "action": "EXIT",
+          "target_area": "HOENN_ROUTE_123",
+          "condition": ["can_exit", "has_item:HM_SURF"],
+          "color": "RED"
+        }
       ],
       "next_area": "HOENN_ROUTE_119",
       "region": "HOENN"
@@ -1781,7 +1825,13 @@
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "FORTREE CITY", "action": "EXIT", "target_area": "FORTREE_CITY", "condition": "can_exit", "color": "RED" },
         { "text": "ANCIENT TOMB", "action": "BOSS", "condition": "regi_trio_awakened", "color": "GRAY" },
-        { "text": "ROUTE 124", "action": "EXIT", "target_area": "HOENN_ROUTE_124", "condition": "can_exit", "color": "RED" }
+        {
+          "text": "ROUTE 124",
+          "action": "EXIT",
+          "target_area": "HOENN_ROUTE_124",
+          "condition": ["can_exit", "has_item:HM_SURF"],
+          "color": "RED"
+        }
       ],
       "next_area": "HOENN_ROUTE_124",
       "region": "HOENN"
@@ -1821,7 +1871,13 @@
         { "text": "ROUTE 123", "action": "EXIT", "target_area": "HOENN_ROUTE_123", "condition": "can_exit", "color": "RED" },
         { "text": "SOUTHERN ISLAND", "action": "BOSS", "condition": "has_EON_TICKET", "color": "PURPLE" },
         { "text": "MOSSDEEP CITY", "action": "EXIT", "target_area": "MOSSDEEP_CITY", "condition": "can_exit", "color": "RED" },
-        { "text": "ROUTE 126", "action": "EXIT", "target_area": "HOENN_ROUTE_126", "condition": "can_exit", "color": "RED" }
+        {
+          "text": "ROUTE 126",
+          "action": "EXIT",
+          "target_area": "HOENN_ROUTE_126",
+          "condition": ["can_exit", "has_item:HM_DIVE"],
+          "color": "RED"
+        }
       ],
       "next_area": "MOSSDEEP_CITY",
       "region": "HOENN"
@@ -1859,7 +1915,13 @@
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "MOSSDEEP CITY", "action": "EXIT", "target_area": "MOSSDEEP_CITY", "condition": "can_exit", "color": "RED" },
-        { "text": "SHOAL CAVE", "action": "EXIT", "target_area": "HOENN_SHOAL_CAVE", "condition": "can_exit", "color": "RED" }
+        {
+          "text": "SHOAL CAVE",
+          "action": "EXIT",
+          "target_area": "HOENN_SHOAL_CAVE",
+          "condition": ["can_exit", "has_item:HM_SURF"],
+          "color": "RED"
+        }
       ],
       "next_area": "MOSSDEEP_CITY",
       "region": "HOENN"
@@ -1975,8 +2037,20 @@
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "ROUTE 127", "action": "EXIT", "target_area": "HOENN_ROUTE_127", "condition": "can_exit", "color": "RED" },
-        { "text": "EVER GRANDE CITY", "action": "EXIT", "target_area": "EVER_GRANDE_CITY", "condition": "can_exit", "color": "RED" },
-        { "text": "SEAFLOOR CAVERN", "action": "EXIT", "target_area": "HOENN_SEAFLOOR_CAVERN", "condition": "can_exit", "color": "RED" }
+        {
+          "text": "EVER GRANDE CITY",
+          "action": "EXIT",
+          "target_area": "EVER_GRANDE_CITY",
+          "condition": ["can_exit", "has_item:HM_WATERFALL"],
+          "color": "RED"
+        },
+        {
+          "text": "SEAFLOOR CAVERN",
+          "action": "EXIT",
+          "target_area": "HOENN_SEAFLOOR_CAVERN",
+          "condition": ["can_exit", "has_item:HM_DIVE"],
+          "color": "RED"
+        }
       ],
       "next_area": "EVER_GRANDE_CITY",
       "region": "HOENN"
@@ -2013,7 +2087,13 @@
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "EVER GRANDE CITY", "action": "EXIT", "target_area": "EVER_GRANDE_CITY", "condition": "can_exit", "color": "RED" },
+        {
+          "text": "EVER GRANDE CITY",
+          "action": "EXIT",
+          "target_area": "EVER_GRANDE_CITY",
+          "condition": ["can_exit", "has_item:HM_WATERFALL"],
+          "color": "RED"
+        },
         { "text": "ROUTE 130", "action": "EXIT", "target_area": "HOENN_ROUTE_130", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "HOENN_ROUTE_130",
@@ -2278,7 +2358,13 @@
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         { "text": "ROUTE 116", "action": "EXIT", "target_area": "HOENN_ROUTE_116", "condition": "can_exit", "color": "RED" },
-        { "text": "VERDANTURF TOWN", "action": "EXIT", "target_area": "VERDANTURF_TOWN", "condition": "can_exit", "color": "RED" }
+        {
+          "text": "VERDANTURF TOWN",
+          "action": "EXIT",
+          "target_area": "VERDANTURF_TOWN",
+          "condition": ["can_exit", "has_item:HM_ROCK_SMASH"],
+          "color": "RED"
+        }
       ],
       "next_area": "VERDANTURF_TOWN",
       "region": "HOENN"

@@ -103,6 +103,8 @@
     ],
 
     "KEY_ITEMS": [
+      "SS_TICKET", "MACHINE_PART", "LOST_ITEM", "PASS", "RED_SCALE", "GS_BALL", "SHINY_CHARM",
+      "HM_CUT", "HM_DEFOG", "HM_DIVE", "HM_FLASH", "HM_FLY", "HM_ROCK_CLIMB", "HM_ROCK_SMASH", "HM_STRENGTH", "HM_SURF", "HM_WATERFALL", "HM_WHIRLPOOL",
       "TEA", "SECRET_KEY", "ROCKY_HELMET", "SILPH_SCOPE", "HELIX_FOSSIL", "DOME_FOSSIL", 
       "OLD_AMBER", "ARMOR_FOSSIL", "SKULL_FOSSIL", "ROOT_FOSSIL", "CLAW_FOSSIL", "OLD_ROD",
       "POKE_FLUTE", "BIKE_VOUCHER", "BICYCLE", "COIN_CASE", "AIR_BALLOON", "SURF_BOARD", "SUPER_ROD", "VOLCANO_PASS", "EXP_SHARE", "CERULEAN_CAVE_MAP", "MT_SILVER_MAP", "SQUIRT_BOTTLE", "ICE_MELTER", "CLIFF_GATE_PASS", "MYSTERY_EGG", "UNOWN_REPORT", "TOWN_MAP", "GALARICA_CUFF", "GALARICA_WREATH", "SOOTHE_BELL", "RAINBOW_WING", "SILVER_WING", "TIDAL_BELL", "AMULET_COIN", "POKE_NAV", "DEVON_SCOPE", "DIVE_GEAR", "EON_TICKET", "ROCK_SMASHER", "CONTEST_PASS", "POKEBLOCK_CASE", "BERRY_POUCH", "POFFIN_CASE", "WEATHER_DIAL", "MEGA_BRACELET", "RED_ORB", "BLUE_ORB", "ABOMASITE", "ABSOLITE", "AERODACTYLITE", "AGGRONITE", "ALAKAZITE", "ALTARIANITE", "AMPHAROSITE", "AUDINITE", "BANETTITE", "BEEDRILLITE", "BLASTOISINITE", "BLAZIKENITE", "CAMERUPTITE", "CHARIZARDITE_X", "CHARIZARDITE_Y", "DIANCITE", "GALLADITE", "GARCHOMPITE", "GARDEVOIRITE", "GENGARITE", "GLALITITE", "GYARADOSITE", "HERACRONITE", "HOUNDOOMINITE", "KANGASKHANITE", "LATIASITE", "LATIOSITE", "LOPUNNITE", "LUCARIONITE", "MANECTITE", "MAWILITE", "MEDICHAMITE", "METAGROSSITE", "MEWTWONITE_X", "MEWTWONITE_Y", "PIDGEOTITE", "PINSIRITE", "SABLENITE", "SALAMENCITE", "SCEPTILITE", "SCIZORITE", "SHARPEDONITE", "SLOWBRONITE", "STEELIXITE", "SWAMPERTITE", "TYRANITARITE", "VENUSAURITE"
@@ -513,8 +515,9 @@
       ],
       "explore_options": [
         { "text": "Talk to Professor Oak", "action": "NPC", "target": "professor_oak" }, 
-        { "text": "Talk to Mom", "action": "NPC", "target": "mom" }
-      ],
+        { "text": "Talk to Mom", "action": "NPC", "target": "mom" },
+            {"text": "Show Oak your Pokedex", "action": "EVENT", "color": "GOLD", "event": {"requires": ["caught_range:1-251"], "fail": ["Professor Oak: Catch every Pokemon from Kanto and Johto, all 251 of them,", "and come show me your Pokedex. I'll have something special for you!"], "lines": ["Professor Oak: All 251 Pokemon of Kanto and Johto... You did it!", "You're a true Pokemon Master of research. Please, take this.", "It's the Shiny Charm! Shiny Pokemon will appear more often now."], "gift_item": {"SHINY_CHARM": 1}, "flag": "got_shiny_charm", "done": ["Professor Oak: Shiny Pokemon are such a treat to see. Keep up the great work!"]}, "flag_condition": "not got_shiny_charm"}
+        ],
       "next_area": "KANTO_ROUTE_1",
       "trainer_encounter_rate": 0,
       "prof_oak_dialogue_key": "professor_oak",
@@ -725,8 +728,9 @@
         { "text": "Heal", "action": "HEAL" },
         { "text": "Shop", "action": "SHOP" },
         { "text": "Gym", "action": "GYM" },
-        { "text": "Bike Shop", "action": "BIKESHOP" }
-      ],
+        { "text": "Bike Shop", "action": "BIKESHOP" },
+            {"text": "Search the Gym's Pool", "action": "EVENT", "color": "GOLD", "event": {"requires": ["heard_machine_part"], "lines": ["You search the bottom of the Cerulean Gym's pool...", "There's something shiny wedged between the tiles!"], "gift_item": {"MACHINE_PART": 1}, "flag": "got_machine_part"}, "flag_condition": "not got_machine_part", "condition": "heard_machine_part"}
+        ],
       "trainer_pool": [],
       "on_enter_event": null
     },
@@ -850,14 +854,16 @@
         { "text": "Cerulean City", "target_area": "CERULEAN_CITY", "flag_condition": "visited_CERULEAN_CITY" },
         { "text": "Fuchsia City", "target_area": "FUCHSIA_CITY", "flag_condition": "visited_FUCHSIA_CITY" },
         { "text": "Saffron City", "target_area": "SAFFRON_CITY", "flag_condition": "visited_SAFFRON_CITY" },
-        { "text": "Lavender Town", "target_area": "LAVENDER_TOWN", "flag_condition": "visited_LAVENDER_TOWN" }
-      ],
+        { "text": "Lavender Town", "target_area": "LAVENDER_TOWN", "flag_condition": "visited_LAVENDER_TOWN" },
+            {"text": "S.S. Aqua to Olivine", "target_area": "OLIVINE_CITY", "condition": "has_item:SS_TICKET", "message": "You board the S.S. Aqua. The ship sails west across the sea to Johto..."}
+        ],
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
         { "text": "Shop", "action": "SHOP" },
         { "text": "Gym", "action": "GYM" },
-        { "text": "Fishing Guru", "action": "NPC", "target": "fishing_guru", "flag_condition": "not got_old_rod_guru" }
-      ],
+        { "text": "Fishing Guru", "action": "NPC", "target": "fishing_guru", "flag_condition": "not got_old_rod_guru" },
+            {"text": "Pokemon Fan Club", "action": "EVENT", "color": "GOLD", "event": {"requires": ["power_plant_fixed"], "fail": ["Chairman: Did you know Pikachu can learn Surf? ...Well, I'm busy with my Rapidash right now."], "lines": ["Chairman: Oh, it's you! You fixed the Power Plant!", "A girl from Saffron left this doll here... It's a Clefairy doll.", "If you're heading to Saffron City, could you return it? Her name is Copycat."], "gift_item": {"LOST_ITEM": 1}, "flag": "got_lost_item"}, "flag_condition": "not got_lost_item"}
+        ],
       "trainer_pool": [],
       "on_enter_event": null
     },
@@ -1042,15 +1048,17 @@
         { "text": "Cerulean City", "target_area": "CERULEAN_CITY", "flag_condition": "visited_CERULEAN_CITY" },
         { "text": "Vermillion City", "target_area": "VERMILLION_CITY", "flag_condition": "visited_VERMILLION_CITY" },
         { "text": "Lavender Town", "target_area": "LAVENDER_TOWN", "flag_condition": "visited_LAVENDER_TOWN" },
-        { "text": "Silph Co.", "target_area": "SILPH_CITY", "flag_condition": "tower_ghost_defeated" }
-      ],
+        { "text": "Silph Co.", "target_area": "SILPH_CITY", "flag_condition": "tower_ghost_defeated" },
+            {"text": "Magnet Train to Goldenrod", "target_area": "GOLDENROD_CITY", "condition": ["has_item:PASS", "power_plant_fixed"], "message": "You board the Magnet Train. It races underground toward Goldenrod City in Johto!"}
+        ],
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
         { "text": "Shop", "action": "SHOP" },
         { "text": "Gym", "action": "GYM" },
         { "text": "Confront Team Rocket", "action": "TRAVEL", "target_area": "SILPH_CITY", "flag_condition": "not silph_co_cleared", "condition": "tower_ghost_defeated" },
-        { "text": "Fighting Dojo", "action": "NPC", "target": "dojo" }
-      ],
+        { "text": "Fighting Dojo", "action": "NPC", "target": "dojo" },
+            {"text": "Visit Copycat", "action": "EVENT", "color": "GOLD", "event": {"requires": ["has_item:LOST_ITEM"], "fail": ["Copycat: ...Copycat copies everyone! But I lost my Clefairy doll...", "...Have you seen it?"], "lines": ["Copycat: My Clefairy doll! You found it!", "Thank you! Thank you! Here, I don't need my Magnet Train Pass anymore.", "It lets you ride the Magnet Train between Saffron and Goldenrod as much as you like!"], "take_item": {"LOST_ITEM": 1}, "gift_item": {"PASS": 1}, "flag": "got_magnet_pass"}, "flag_condition": "not got_magnet_pass"}
+        ],
       "trainer_pool": [],
       "on_enter_event": null
     },
@@ -1241,10 +1249,11 @@
       "has_gym": false,
       "trainer_encounter_rate": 0,
       "travel_options": [
-        { "text": "Route 22", "target_area": "KANTO_ROUTE_22" },
+        { "text": "Route 22", "target_area": "KANTO_ROUTE_22", "condition": {"any": ["visited_VIRIDIAN_CITY", "beat_johto_champion"]} },
         { "text": "Victory Road", "target_area": "VICTORY_ROAD", "condition": "has_8_kanto_badges"},
-        { "text": "Route 26", "target_area": "KANTO_ROUTE_26", "flag_condition": "beat_elite_four" },
-        { "text": "Mt. Silver", "target_area": "MT_SILVER", "condition": "has_8_johto_badges" }
+        { "text": "Route 26", "target_area": "KANTO_ROUTE_26", "condition": {"any": ["beat_elite_four", "has_8_johto_badges"]} },
+        { "text": "Johto League", "target_area": "MT_SILVER_CITY", "condition": "has_8_johto_badges" },
+        { "text": "Mt. Silver", "target_area": "MT_SILVER", "condition": ["beat_johto_champion", "has_8_kanto_badges"] }
       ],
       "explore_options": [],
       "trainer_pool": [],
@@ -1737,8 +1746,10 @@
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         { "text": "CHALLENGE ZAPDOS", "action": "BOSS", "condition": "boss_available", "color": "GOLD" },
-        { "text": "EXIT TO ROUTE 10", "action": "EXIT", "target": "KANTO_ROUTE_10", "condition": "can_exit", "color": "RED" }
-      ],
+        { "text": "EXIT TO ROUTE 10", "action": "EXIT", "target": "KANTO_ROUTE_10", "condition": "can_exit", "color": "RED" },
+            {"text": "TALK TO THE MANAGER", "action": "EVENT", "color": "GOLD", "event": {"requires": ["visited_GOLDENROD_CITY", "visited_SAFFRON_CITY"], "fail": ["Manager: The Power Plant feeds the Magnet Train between Saffron and Goldenrod.", "...If only somebody who'd been to both cities could help us."], "lines": ["Manager: Disaster! Someone stole the generator's Machine Part!", "Without it, the Magnet Train between Saffron and Goldenrod can't run.", "A suspicious man in black was seen near the Cerulean Gym...", "Please, find our Machine Part!"], "flag": "heard_machine_part", "done": ["Manager: Any sign of our Machine Part? Try the Cerulean Gym!"]}, "flag_condition": "not heard_machine_part"},
+            {"text": "RETURN THE MACHINE PART", "action": "EVENT", "color": "GOLD", "event": {"requires": ["has_item:MACHINE_PART"], "lines": ["Manager: You found it! That's our Machine Part!", "With this, the generator will run again. The Magnet Train is back in service!", "Here, take these as thanks."], "take_item": {"MACHINE_PART": 1}, "gift_item": {"balls": 20}, "flag": "power_plant_fixed"}, "condition": "has_item:MACHINE_PART", "flag_condition": "not power_plant_fixed"}
+        ],
       "next_area": "KANTO_ROUTE_10",
       "on_enter_event": null
     },

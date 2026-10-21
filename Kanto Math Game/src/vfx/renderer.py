@@ -23,9 +23,38 @@ class BattleRenderer:
             self.pokeball_icon = None
 
     def _draw_level(self, screen, pokemon, panel):
-        """'Lv 23' in the panel's top-right corner, under the name line."""
+        """'Lv 23' in the panel's top-right corner, on the name line."""
         Utils.draw_text_outline(screen, f"Lv {getattr(pokemon, 'level', 5)}", self.game.assets.fonts["small"], WHITE,
-                                panel.right - 24, panel.y + 70, align="right")
+                                panel.right - 24, panel.y + 40, align="right")
+
+    def _hp_bar(self, screen, key, x, y, w, hp, max_hp, heart=False):
+        """HP bar that slides to its new value; the HP just lost shows as a light-red chunk
+        that drains away (Showdown-style). Numbers sit above the bar, right-aligned."""
+        bars = self.__dict__.setdefault("_hp_bars", {})
+        target = max(0.0, min(1.0, hp / max_hp)) if max_hp else 0.0
+        shown, ghost = bars.get(key, (target, target))
+        shown += (target - shown) * 0.25
+        if abs(target - shown) < 0.003:
+            shown = target
+        ghost = max(shown, ghost - 0.012) if ghost > shown else shown
+        bars[key] = (shown, ghost)
+
+        pygame.draw.rect(screen, BLACK, (x - 3, y - 3, w + 6, 20), border_radius=5)
+        pygame.draw.rect(screen, (60, 60, 60), (x, y, w, 14), border_radius=4)
+        if ghost > shown:
+            pygame.draw.rect(screen, (255, 150, 150), (x, y, int(w * ghost), 14), border_radius=4)
+        color = GREEN if shown > 0.5 else GOLD if shown > 0.25 else RED
+        if shown > 0:
+            pygame.draw.rect(screen, color, (x, y, max(2, int(w * shown)), 14), border_radius=4)
+            pygame.draw.line(screen, tuple(min(255, c + 70) for c in color[:3]),
+                             (x + 3, y + 3), (x + max(3, int(w * shown)) - 4, y + 3), 2)
+        if heart:
+            hx, hy = x - 22, y + 6
+            pygame.draw.circle(screen, (235, 70, 110), (hx - 4, hy - 2), 5)
+            pygame.draw.circle(screen, (235, 70, 110), (hx + 4, hy - 2), 5)
+            pygame.draw.polygon(screen, (235, 70, 110), [(hx - 9, hy), (hx + 9, hy), (hx, hy + 9)])
+        Utils.draw_text_outline(screen, f"HP {int(hp)}/{int(max_hp)}", self.game.assets.fonts["small"], WHITE,
+                                x + w, y - 32, align="right")
 
     def draw(
         self,
@@ -164,24 +193,7 @@ class BattleRenderer:
         bar_x = opp_panel.x + 65
         bar_y = opp_panel.y + 103
         bar_w = panel_w - 90
-        pygame.draw.rect(
-            screen, BLACK, (bar_x - 3, bar_y - 3, bar_w + 6, 20), border_radius=5
-        )
-        ratio = max(0, opp_hp / opp_max_hp)
-        color = GREEN if ratio > 0.5 else GOLD if ratio > 0.25 else RED
-        pygame.draw.rect(
-            screen, color, (bar_x, bar_y, int(bar_w * ratio), 14), border_radius=4
-        )
-
-        Utils.draw_text_outline(
-            screen,
-            f"{int(opp_hp)}/{int(opp_max_hp)}",
-            self.font_tiny,
-            WHITE,
-            bar_x + 5,
-            bar_y + 5,
-            align="left",
-        )
+        self._hp_bar(screen, ("opp", id(opponent_pokemon)), bar_x, bar_y, bar_w, opp_hp, opp_max_hp)
 
         # ====================== PLAYER PANEL ======================
         hud_y_base = h - int(h * 0.25)
@@ -211,24 +223,8 @@ class BattleRenderer:
         bar_x = p_panel.x + 60
         bar_y = p_panel.y + 103
         bar_w = panel_w - 90
-        pygame.draw.rect(
-            screen, BLACK, (bar_x - 3, bar_y - 3, bar_w + 6, 20), border_radius=5
-        )
-        ratio = max(0, player_hp / player_max_hp)
-        color = GREEN if ratio > 0.5 else GOLD if ratio > 0.25 else RED
-        pygame.draw.rect(
-            screen, color, (bar_x, bar_y, int(bar_w * ratio), 14), border_radius=4
-        )
-
-        Utils.draw_text_outline(
-            screen,
-            f"{int(player_hp)}/{int(player_max_hp)}",
-            self.font_tiny,
-            WHITE,
-            bar_x + 5,
-            bar_y + 5,
-            align="left",
-        )
+        self._hp_bar(screen, ("player", id(player_pokemon)), bar_x, bar_y, bar_w, player_hp, player_max_hp,
+                     heart=True)
 
         # XP Bar (Under HP Bar)
         xp_bar_y = bar_y + 18

@@ -196,15 +196,18 @@ class CityActionMenu(UIElement):
 
         welcome_text = f"Welcome to\n{self.area_name.replace('_', ' ').title()}!"
         left_rect_w = int(self.rect.width * 0.55)
+        font = self.game.assets.fonts["med"]
+        if font.size(self.area_name.replace("_", " ").title() + "!")[0] > left_rect_w - 60:
+            font = self.game.assets.fonts["s_med"]  # long town names stay on one line
         Utils.draw_multiline_text(
             surface,
             welcome_text,
-            self.game.assets.fonts["med"],
+            font,
             WHITE,
             self.rect.x + left_rect_w // 2,
             self.rect.centery,
             max_width=left_rect_w - 60,
-            line_height=50,
+            line_height=font.get_linesize() + 10,
             center=True,
             outline_color=BLACK,
         )

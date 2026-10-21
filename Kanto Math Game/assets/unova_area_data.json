@@ -426,7 +426,7 @@
       },
       "travel_options": [
         { "text": "Route 3", "target_area": "UNOVA_ROUTE_3" },
-        { "text": "Pinwheel Forest", "target_area": "PINWHEEL_FOREST" }
+        { "text": "Pinwheel Forest", "target_area": "PINWHEEL_FOREST", "condition": "has_basic_badge" }
       ],
       "explore_options": [
         { "text": "Pokémon Center", "action": "HEAL" },
@@ -495,7 +495,7 @@
         }
       },
       "travel_options": [
-        { "text": "Route 4", "target_area": "UNOVA_ROUTE_4" },
+        { "text": "Route 4", "target_area": "UNOVA_ROUTE_4", "condition": "has_insect_badge" },
         { "text": "Pinwheel Forest", "target_area": "PINWHEEL_FOREST" },
         { "text": "Unity Tower", "target_area": "UNITY_TOWER" },
         { "text": "Castelia Sewers", "target_area": "CASTELIA_SEWERS" },
@@ -577,7 +577,7 @@
       },
       "travel_options": [
         { "text": "Route 4", "target_area": "UNOVA_ROUTE_4" },
-        { "text": "Route 5", "target_area": "UNOVA_ROUTE_5" },
+        { "text": "Route 5", "target_area": "UNOVA_ROUTE_5", "condition": "has_bolt_badge" },
         { "text": "Route 16", "target_area": "UNOVA_ROUTE_16" },
         { "text": "Battle Subway", "target_area": "BATTLE_SUBWAY" }
       ],
@@ -655,7 +655,7 @@
       },
       "travel_options": [
         { "text": "Route 5", "target_area": "UNOVA_ROUTE_5" },
-        { "text": "Route 6", "target_area": "UNOVA_ROUTE_6" },
+        { "text": "Route 6", "target_area": "UNOVA_ROUTE_6", "condition": "has_quake_badge" },
         { "text": "Cold Storage", "target_area": "COLD_STORAGE" },
         { "text": "Relic Castle (via Desert)", "target_area": "RELIC_CASTLE" }
       ],
@@ -703,7 +703,7 @@
         "requirements": { "badges": 5, "fail_text": "Skyla is running the airstrip. Earn the Quake Badge first." }
       },
       "travel_options": [
-        { "text": "Route 7", "target_area": "UNOVA_ROUTE_7" },
+        { "text": "Route 7", "target_area": "UNOVA_ROUTE_7", "condition": "has_jet_badge" },
         { "text": "Chargestone Cave", "target_area": "CHARGESTONE_CAVE" },
         { "text": "Mistralton Cave", "target_area": "MISTRALTON_CAVE" }
       ],
@@ -747,7 +747,11 @@
         { "text": "Dragonspiral Tower", "target_area": "DRAGONSPIRAL_TOWER" },
         { "text": "Moor of Icirrus", "target_area": "MOOR_OF_ICIRRUS" },
         { "text": "Twist Mountain", "target_area": "TWIST_MOUNTAIN" },
-        { "text": "Route 9", "target_area": "UNOVA_ROUTE_9" }
+        {
+          "text": "Route 9",
+          "target_area": "UNOVA_ROUTE_9",
+          "condition": ["has_freeze_badge", "plasma_dragonspiral_cleared"]
+        }
       ],
       "explore_options": [
         { "text": "Pokémon Center", "action": "HEAL" },
@@ -856,8 +860,8 @@
       },
       "travel_options": [
         { "text": "Route 9", "target_area": "UNOVA_ROUTE_9" },
-        { "text": "Route 10", "target_area": "UNOVA_ROUTE_10" },
-        { "text": "Route 11", "target_area": "UNOVA_ROUTE_11" },
+        { "text": "Route 10", "target_area": "UNOVA_ROUTE_10", "condition": "has_legend_badge" },
+        { "text": "Route 11", "target_area": "UNOVA_ROUTE_11", "condition": "beat_unova_champion" },
         { "text": "Route 22", "target_area": "UNOVA_ROUTE_22" }
       ],
       "explore_options": [
@@ -1201,7 +1205,13 @@
         },
         { "text": "Encounter Volcarona (Deep)", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD" },
         { "text": "Desert Resort", "action": "EXIT", "target_area": "DESERT_RESORT", "condition": "can_exit", "color": "RED" },
-        { "text": "DRIFTVEIL CITY", "action": "EXIT", "target_area": "DRIFTVEIL_CITY", "condition": "can_exit", "color": "RED" }
+        {
+          "text": "DRIFTVEIL CITY",
+          "action": "EXIT",
+          "target_area": "DRIFTVEIL_CITY",
+          "condition": ["can_exit", "has_bolt_badge"],
+          "color": "RED"
+        }
       ],
       "area_boss": { "id": 637, "name": "Volcarona", "victory_flag": "RELIC_CASTLE_boss_defeated" }
     },
@@ -1549,7 +1559,13 @@
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
         { "text": "Nuvema Town", "action": "EXIT", "target_area": "NUVEMA_TOWN", "condition": "can_exit", "color": "RED" },
         { "text": "Accumula Town", "action": "EXIT", "target_area": "ACCUMULA_TOWN", "condition": "can_exit", "color": "RED" },
-        { "text": "ROUTE 17", "action": "EXIT", "target_area": "UNOVA_ROUTE_17", "condition": "can_exit", "color": "RED" }
+        {
+          "text": "ROUTE 17",
+          "action": "EXIT",
+          "target_area": "UNOVA_ROUTE_17",
+          "condition": ["can_exit", "has_item:HM_SURF"],
+          "color": "RED"
+        }
       ],
       "next_area": "ACCUMULA_TOWN"
     },
@@ -1624,7 +1640,13 @@
         { "text": "Wellspring Cave", "action": "EXIT", "target_area": "WELLSPRING_CAVE", "condition": "can_exit", "color": "RED" },
         { "text": "Striaton City", "action": "EXIT", "target_area": "STRIATON_CITY", "condition": "can_exit", "color": "RED" },
         { "text": "Nacrene City", "action": "EXIT", "target_area": "NACRENE_CITY", "condition": "can_exit", "color": "RED" },
-        { "text": "PINWHEEL FOREST", "action": "EXIT", "target_area": "PINWHEEL_FOREST", "condition": "can_exit", "color": "RED" }
+        {
+          "text": "PINWHEEL FOREST",
+          "action": "EXIT",
+          "target_area": "PINWHEEL_FOREST",
+          "condition": ["can_exit", "has_basic_badge"],
+          "color": "RED"
+        }
       ],
       "next_area": "NACRENE_CITY"
     },

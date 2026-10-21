@@ -43,12 +43,18 @@ def unlocked(game):
 FORM_HOME = {"alolan": "ALOLA", "galarian": "GALAR", "hisuian": "SINNOH", "paldean": "PALDEA"}
 
 
+# Kanto and Johto stay Gen 1-2 until the player has played later regions ("Kanto stays Kanto",
+# "Johto stays Johto"); the later regions keep their mixed pools.
+CLASSIC_REGIONS = ("KANTO", "JOHTO")
+
+
 def _in_kanto(game):
-    return game.story_manager.get_current_region() == "KANTO"
+    """True in Kanto or Johto (the regions that keep later regions' Pokemon out)."""
+    return game.story_manager.get_current_region() in CLASSIC_REGIONS
 
 
 def form_allowed(game, form):
-    """Kanto only shows another region's forms once the player has been to that region."""
+    """Kanto and Johto only show another region's forms once the player has been there."""
     home = FORM_HOME.get(str(form).lower())
     if not home or not _in_kanto(game):
         return True
@@ -56,8 +62,8 @@ def form_allowed(game, form):
 
 
 def species_allowed(game, pid):
-    """In Kanto, a wild Pokemon from a later region (or another region's form) only shows up
-    once the player has played that region. Other regions keep their mixed pools."""
+    """In Kanto and Johto, a wild Pokemon from a later region (or another region's form) only
+    shows up once the player has played that region. Other regions keep their mixed pools."""
     if not _in_kanto(game):
         return True
     pid = int(pid)

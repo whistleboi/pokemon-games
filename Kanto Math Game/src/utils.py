@@ -152,17 +152,17 @@ class Utils:
         """Exact multi-line wrapping from workingsim.py"""
         if isinstance(text, list):
             text = " ".join(str(t) for t in text)
-        words = text.split(" ")
         lines = []
-        current = []
-        for word in words:
-            test = " ".join(current + [word])
-            if font.size(test)[0] <= max_width:
-                current.append(word)
-            else:
-                lines.append(" ".join(current))
-                current = [word]
-        lines.append(" ".join(current))
+        for paragraph in str(text).split("\n"):  # explicit line breaks are kept
+            current = []
+            for word in paragraph.split(" "):
+                test = " ".join(current + [word])
+                if font.size(test)[0] <= max_width or not current:
+                    current.append(word)
+                else:
+                    lines.append(" ".join(current))
+                    current = [word]
+            lines.append(" ".join(current))
 
         total_h = len(lines) * line_height
         start_y = y - total_h // 2 if center else y

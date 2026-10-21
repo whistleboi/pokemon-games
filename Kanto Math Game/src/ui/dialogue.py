@@ -86,6 +86,13 @@ class ClassicDialogueBox(UIElement):
     def update(self):
         if self.is_finished or self.is_waiting_for_click:
             return
+        if self.visible and self.page == 0 and self.current_line < len(self.text_lines):
+            key = (id(self.text_lines), self.current_line, self.text_lines[self.current_line])
+            if getattr(self, "_spoken", None) != key:  # character lines speak in their own voice
+                self._spoken = key
+                from src.core import speech
+                if speech.available():
+                    speech.say_line(self.text_lines[self.current_line], auto=True)
         if self.current_line < len(self.text_lines):
             self.visible_chars += self.speed
             if self.visible_chars >= self._page_length():
@@ -119,10 +126,19 @@ class ClassicDialogueBox(UIElement):
                 callback, self.callback = self.callback, None
                 callback()
 
+    def _speak_rect(self):
+        return pygame.Rect(self.rect.x + 16, self.rect.bottom - 58, 44, 44)
+
     def handle_event(self, event):
         # A finished box lets clicks through, so buttons under it still work.
         if not self.visible or self.is_finished:
             return False
+        from src.core import speech
+        if (speech.available() and event.type == pygame.MOUSEBUTTONDOWN and event.button == 1
+                and self._speak_rect().collidepoint(event.pos)):
+            if self.current_line < len(self.text_lines):
+                speech.say_line(self.text_lines[self.current_line])
+            return True
         if (
             event.type == pygame.MOUSEBUTTONDOWN
             and event.button == 1
@@ -145,6 +161,7 @@ class ClassicDialogueBox(UIElement):
 
         more = self.is_waiting_for_click and not (
             self._last_page() and self.current_line >= len(self.text_lines) - 1)
+        waiting = self.is_waiting_for_click and not self.is_finished
         if self.current_line < len(self.text_lines):
             rows = self._page_rows()
             lh = self._line_height()
@@ -157,13 +174,15 @@ class ClassicDialogueBox(UIElement):
                     Utils.draw_text_outline(surface, shown, self.font, WHITE,
                                             self.rect.centerx, top + lh * i + lh // 2)
 
-        if more:
-            Utils.draw_text_outline(
-                surface,
-                "▼",
-                self.font,
-                GOLD,
-                self.rect.centerx,
-                self.rect.bottom - 26,
-                outline_color=BLACK,
-            )
+        from src.core import speech
+        if speech.available() and self.current_line < len(self.text_lines):
+            speech.draw_speaker(surface, self._speak_rect())
+        if waiting:
+            # A bobbing arrow: "tap to go on".
+            import math
+            bob = int(3 * math.sin(pygame.time.get_ticks() / 150))
+            x, y = self.rect.right - 40, self.rect.bottom - 34 + bob
+            pts = [(x - 12, y - 8), (x + 12, y - 8), (x, y + 8)]
+            pygame.draw.polygon(surface, BLACK, [(px, py + 2) for px, py in pts])
+            pygame.draw.polygon(surface, WHITE if more else GOLD, pts)
+            pygame.draw.polygon(surface, BLACK, pts, 2)

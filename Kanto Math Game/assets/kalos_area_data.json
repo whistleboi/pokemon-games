@@ -266,8 +266,8 @@
       "travel_options": [
         { "text": "Route 4 (to Santalune)", "target_area": "KALOS_ROUTE_4" },
         { "text": "Route 5 (to Camphrier)", "target_area": "KALOS_ROUTE_5" },
-        { "text": "Route 13 (to Laverre)", "target_area": "KALOS_ROUTE_13" },
-        { "text": "Route 14 (south)", "target_area": "KALOS_ROUTE_14" }
+        { "text": "Route 13 (to Laverre)", "target_area": "KALOS_ROUTE_13", "condition": "has_plant_badge" },
+        { "text": "Route 14 (south)", "target_area": "KALOS_ROUTE_14", "condition": "has_voltage_badge" }
       ],
       "explore_options": [
         { "text": "Pokémon Center", "action": "HEAL" },
@@ -296,7 +296,7 @@
       "travel_options": [
         { "text": "Route 5 (to Lumiose)", "target_area": "KALOS_ROUTE_5" },
         { "text": "Route 6 / Parfum Palace", "target_area": "PARFUM_PALACE" },
-        { "text": "Route 7 (to Connecting Cave)", "target_area": "KALOS_ROUTE_7" },
+        { "text": "Route 7 (to Connecting Cave)", "target_area": "KALOS_ROUTE_7", "condition": "visited_PARFUM_PALACE" },
         { "text": "Route 6", "target_area": "KALOS_ROUTE_6" }
       ],
       "explore_options": [
@@ -354,7 +354,7 @@
       },
       "travel_options": [
         { "text": "Route 9 (to Ambrette)", "target_area": "KALOS_ROUTE_9" },
-        { "text": "Route 10 (to Geosenge)", "target_area": "KALOS_ROUTE_10" }
+        { "text": "Route 10 (to Geosenge)", "target_area": "KALOS_ROUTE_10", "condition": "has_cliff_badge" }
       ],
       "explore_options": [
         { "text": "Pokémon Center", "action": "HEAL" },
@@ -383,7 +383,7 @@
           "text": "Stop the Ultimate Weapon",
           "action": "NPC",
           "target": "kalos_lysandre_ultimate_weapon",
-          "condition": "has_shalour_badge",
+          "condition": "has_psychic_badge",
           "flag_condition": "not geosenge_flare_cleared",
           "color": "GOLD"
         }
@@ -419,7 +419,11 @@
       },
       "travel_options": [
         { "text": "Route 11 / Reflection Cave (east)", "target_area": "REFLECTION_CAVE" },
-        { "text": "Route 12 (to Coumarine)", "target_area": "KALOS_ROUTE_12" },
+        {
+          "text": "Route 12 (to Coumarine)",
+          "target_area": "KALOS_ROUTE_12",
+          "condition": ["has_rumble_badge", "has_item:HM_SURF"]
+        },
         { "text": "Tower of Mastery", "target_area": "TOWER_OF_MASTERY" }
       ],
       "explore_options": [
@@ -463,7 +467,7 @@
       },
       "travel_options": [
         { "text": "Route 12 (to Shalour)", "target_area": "KALOS_ROUTE_12" },
-        { "text": "Route 13 (to Lumiose)", "target_area": "KALOS_ROUTE_13" }
+        { "text": "Route 13 (to Lumiose)", "target_area": "KALOS_ROUTE_13", "condition": "has_plant_badge" }
       ],
       "explore_options": [
         { "text": "Pokémon Center", "action": "HEAL" },
@@ -503,7 +507,7 @@
       "travel_options": [
         { "text": "Route 14 (to Lumiose/Dendemille)", "target_area": "KALOS_ROUTE_14" },
         { "text": "Poké Ball Factory", "target_area": "POKEBALL_FACTORY" },
-        { "text": "Route 15", "target_area": "KALOS_ROUTE_15" }
+        { "text": "Route 15", "target_area": "KALOS_ROUTE_15", "condition": "has_fairy_badge" }
       ],
       "explore_options": [
         { "text": "Pokémon Center", "action": "HEAL" },
@@ -558,7 +562,11 @@
       },
       "travel_options": [
         { "text": "Route 17 (to Dendemille)", "target_area": "KALOS_ROUTE_17" },
-        { "text": "Route 18 (to Couriway)", "target_area": "KALOS_ROUTE_18" }
+        {
+          "text": "Route 18 (to Couriway)",
+          "target_area": "KALOS_ROUTE_18",
+          "condition": ["has_psychic_badge", "geosenge_flare_cleared"]
+        }
       ],
       "explore_options": [
         { "text": "Pokémon Center", "action": "HEAL" },
@@ -634,8 +642,12 @@
       },
       "travel_options": [
         { "text": "Route 19 (to Couriway)", "target_area": "KALOS_ROUTE_19" },
-        { "text": "Route 20 / Pokémon Village", "target_area": "POKEMON_VILLAGE" },
-        { "text": "Victory Road (Kalos)", "target_area": "VICTORY_ROAD_KALOS" }
+        { "text": "Route 20 / Pokémon Village", "target_area": "POKEMON_VILLAGE", "condition": "beat_kalos_champion" },
+        {
+          "text": "Victory Road (Kalos)",
+          "target_area": "VICTORY_ROAD_KALOS",
+          "condition": ["has_iceberg_badge", "has_item:HM_WATERFALL", "has_item:HM_STRENGTH"]
+        }
       ],
       "explore_options": [
         { "text": "Pokémon Center", "action": "HEAL" },
@@ -1114,7 +1126,13 @@
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         { "text": "Snowbelle City", "action": "EXIT", "target_area": "SNOWBELLE_CITY", "condition": "can_exit", "color": "RED" },
         { "text": "Pokémon League", "action": "EXIT", "target_area": "KALOS_POKEMON_LEAGUE", "condition": "can_exit", "color": "RED" },
-        { "text": "POKÉMON VILLAGE", "action": "EXIT", "target_area": "POKEMON_VILLAGE", "condition": "can_exit", "color": "RED" }
+        {
+          "text": "POKÉMON VILLAGE",
+          "action": "EXIT",
+          "target_area": "POKEMON_VILLAGE",
+          "condition": ["can_exit", "beat_kalos_champion"],
+          "color": "RED"
+        }
       ]
     },
     "KALOS_ROUTE_1": {

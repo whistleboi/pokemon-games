@@ -118,7 +118,10 @@ class Pokemon:
 
     @property
     def xp_to_next(self):
-        return self.xp_cost(self.level)
+        """XP to the next level on this species' real growth curve (see src/pokemon/growth.py)."""
+        from src.pokemon import growth
+        species = int(getattr(self, "meta_id", None) or self.id) if int(self.id) >= 2000 else int(self.id)
+        return growth.level_cost(species, self.level) if self.level < self.MAX_LEVEL else 0
 
     @property
     def level_progress(self):
@@ -163,7 +166,6 @@ class Pokemon:
             (foe / me) x ((2 x foe + 10) / (foe + me + 10)) ^ 2.5
         Trainers' Pokemon give 1.5x."""
         ratio = (foe_level / max(1, my_level)) * ((2 * foe_level + 10) / (foe_level + my_level + 10)) ** 2.5
-        ratio = max(0.1, min(8.0, ratio))
         base = cls.xp_cost(my_level) or cls.XP_PER_WIN
         return max(1, int(base * ratio * (1.5 if trainer else 1.0) + 0.5))
 

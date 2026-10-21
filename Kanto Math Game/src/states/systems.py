@@ -168,14 +168,17 @@ class PokemonPartyMenuState(GameState):
         self.game.ui_manager.add_element(self.dialogue_box)
 
         if self.context != "forced_switch":
+            font = self.game.assets.fonts["s_med"]
+            w = font.size("CANCEL")[0] + 48  # sized to its label so it never clips
             self.cancel_btn = Button(
-                rect=(self.bottom_rect.right - 180, self.bottom_rect.centery - 30, 140, 60),
+                rect=(self.bottom_rect.right - w - 28, self.bottom_rect.centery - 34, w, 68),
                 text="CANCEL",
-                font=self.game.assets.fonts["med"],
+                font=font,
                 callback=self._cancel,
                 bg_color=(200, 40, 40),
                 text_color=WHITE,
-                border_radius=12
+                border_radius=12,
+                autosize=False
             )
             self.game.ui_manager.add_element(self.cancel_btn)
 
@@ -422,13 +425,40 @@ class PokeMartState(GameState):
             return list(self.stock)
         area = self.game.story_manager.current_area_key
         if self._is_department_store():
-            evo_items = sorted(list(self.game.loader.evolution_map.get("EVOLUTION_ITEMS", {}).keys()))
+            evo_items = sorted(i for i in self.game.loader.evolution_map.get("EVOLUTION_ITEMS", {})
+                               if self._item_allowed(i))
             items = ["POKE_BALLS", "POTION", "FULL_HEAL", "REVIVE", "RARE_CANDY", "EVERSTONE"] + evo_items
         elif area in self.KANTO_MART_STOCK:
             items = list(self.KANTO_MART_STOCK[area])
         else:
-            items = ["POKE_BALLS", "RARE_CANDY", "POTION", "FULL_HEAL", "REVIVE", "EVERSTONE"]
+            items = self._town_stock()
         return items + self._regional_weather_rocks() + self._contest_items()
+
+    def _town_stock(self):
+        """Every region's town marts follow one rule (Kanto keeps its FireRed/LeafGreen stock):
+        the basics everywhere, Everstone from 2 of the region's badges, Revive from 3, and
+        Rare Candy only at the League (and department stores)."""
+        story = self.game.story_manager
+        badges = len(story.badges.get(story.get_current_region(), []))
+        items = ["POKE_BALLS", "POTION", "FULL_HEAL"]
+        if badges >= 2:
+            items.append("EVERSTONE")
+        if badges >= 3:
+            items.append("REVIVE")
+        from src.states.overworld import is_league
+        if is_league(story.get_current_area_data().get("gym")):
+            items += [i for i in ("REVIVE", "RARE_CANDY") if i not in items]
+        return items
+
+    def _item_allowed(self, item):
+        """An evolution item is only sold once something it evolves can evolve here
+        (Kanto and Johto keep later regions' items until those regions are played)."""
+        targets = self.game.loader.evolution_map.get("EVOLUTION_ITEMS", {}).get(item) or {}
+        if not isinstance(targets, dict) or not targets:
+            return True
+        from src.pokemon import evolution
+        ids = [self.game.name_to_id.get(str(t).split("_")[0].upper()) for t in targets.values()]
+        return any(evolution.evolution_allowed(self.game, i) for i in ids if i)
 
     def _contest_items(self):
         """Towns with a Contest Hall stock Pokéblocks."""
@@ -1095,7 +1125,7 @@ class BagState(GameState):
         self.evo_items_map = self.game.loader.evolution_map.get("EVOLUTION_ITEMS", {})
         self.evo_keys = sorted(list(self.evo_items_map.keys()))
 
-        self.pages = ["USEABLE ITEMS", "KEY ITEMS"] if context != "battle" else ["USEABLE ITEMS"]
+        self.pages = ["ITEMS", "KEY ITEMS"] if context != "battle" else ["ITEMS"]
         self.current_page = 0
 
         self.btn_back = Button(
@@ -1214,7 +1244,8 @@ class BagState(GameState):
             x = 90 + col * col_w
             y = start_y + row * (btn_h + 10)
 
-            display_name = f"{item_key.replace('_', ' ').title()}  x{qty}"
+            from src.world import hms
+            display_name = f"{hms.item_name(item_key)}  x{qty}"
 
             is_rare_candy = (item_key == "RARE_CANDY")
             is_usable_key = item_key in ["TOWN_MAP", "JOHTO_MAP", "UNOWN_REPORT", "POFFIN_CASE", "BERRY_POUCH", "WEATHER_DIAL"]
@@ -3048,6 +3079,8 @@ class GameCornerState(GameState):
         self.game.ui_manager.add_element(self.btn_no)
         if self.phase == "VICTORY_SEQ":
             self.on_rocket_victory()
+        elif self.phase == "MAIN_MENU":
+            self.show_main_menu()  # back from Cash In / Slots: the menu buttons come back too
 
     def on_rocket_victory(self):
         if self.rocket_progress >= 4:

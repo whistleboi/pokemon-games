@@ -127,11 +127,10 @@ class AssetManager:
 
         self.font_path = Utils.get_actual_path(
             self.assets_dir, "pokemon_gsc.ttf.ttf")
-        is_android = ("ANDROID_ARGUMENT" in os.environ or
-                      "ANDROID_PRIVATE" in os.environ)
-        self.is_pc = (
-            sys.platform in ["win32", "linux", "darwin"]) and not is_android
-        self.font_scale = 0.5 if self.is_pc else 1.0
+        # The game draws on one fixed 1280x720 canvas on every device (see Game), so every
+        # layout uses the same sizes; phones and tablets just see it scaled up.
+        self.is_pc = True
+        self.font_scale = 0.5
         self.fonts = {
             "big": self._load_font(int(
                 width * 0.065 * self.font_scale), bold=True),
@@ -155,6 +154,7 @@ class AssetManager:
 
         self.shiny_sfx = self._load_sound("shiny.ogg")
         self.heal_sfx = self._load_sound("heal.ogg")
+        self.ui_sfx = {k: self._load_sound(f"ui_{k}.wav") for k in ("select", "back", "correct", "wrong")}
         self.music_playlist = self._load_music()
         self.game_text = {}
 

@@ -252,7 +252,7 @@
       },
       "travel_options": [
         { "text": "Route 4 (to Turffield)", "target_area": "GALAR_ROUTE_4" },
-        { "text": "Route 5 (to Motostoke)", "target_area": "GALAR_ROUTE_5" }
+        { "text": "Route 5 (to Motostoke)", "target_area": "GALAR_ROUTE_5", "condition": "has_water_badge" }
       ],
       "explore_options": [
         { "text": "Pokémon Center", "action": "HEAL" },
@@ -288,7 +288,7 @@
       "travel_options": [
         { "text": "Route 5 (to Hulbury)", "target_area": "GALAR_ROUTE_5" },
         { "text": "Wild Area (east)", "target_area": "WILD_AREA" },
-        { "text": "Route 6 (to Stow-on-Side)", "target_area": "GALAR_ROUTE_6" }
+        { "text": "Route 6 (to Stow-on-Side)", "target_area": "GALAR_ROUTE_6", "condition": "has_fire_badge" }
       ],
       "explore_options": [
         { "text": "Pokémon Center", "action": "HEAL" },
@@ -324,7 +324,7 @@
       },
       "travel_options": [
         { "text": "Route 6 (to Motostoke)", "target_area": "GALAR_ROUTE_6" },
-        { "text": "Glimwood Tangle (to Ballonlea)", "target_area": "GLIMWOOD_TANGLE" }
+        { "text": "Glimwood Tangle (to Ballonlea)", "target_area": "GLIMWOOD_TANGLE", "condition": "has_fighting_badge" }
       ],
       "explore_options": [
         { "text": "Pokémon Center", "action": "HEAL" },
@@ -361,7 +361,7 @@
       },
       "travel_options": [
         { "text": "Glimwood Tangle (to Stow-on-Side)", "target_area": "GLIMWOOD_TANGLE" },
-        { "text": "Route 7 (to Circhester)", "target_area": "GALAR_ROUTE_7" }
+        { "text": "Route 7 (to Circhester)", "target_area": "GALAR_ROUTE_7", "condition": "has_fairy_badge" }
       ],
       "explore_options": [
         { "text": "Pokémon Center", "action": "HEAL" },
@@ -399,7 +399,7 @@
       },
       "travel_options": [
         { "text": "Route 7 (to Ballonlea)", "target_area": "GALAR_ROUTE_7" },
-        { "text": "Route 8 (to Spikemuth)", "target_area": "GALAR_ROUTE_8" }
+        { "text": "Route 8 (to Spikemuth)", "target_area": "GALAR_ROUTE_8", "condition": "has_rock_badge" }
       ],
       "explore_options": [
         { "text": "Pokémon Center", "action": "HEAL" },
@@ -435,7 +435,7 @@
       },
       "travel_options": [
         { "text": "Route 8 (to Circhester)", "target_area": "GALAR_ROUTE_8" },
-        { "text": "Route 9 (to Hammerlocke)", "target_area": "GALAR_ROUTE_9" }
+        { "text": "Route 9 (to Hammerlocke)", "target_area": "GALAR_ROUTE_9", "condition": "has_dark_badge" }
       ],
       "explore_options": [
         { "text": "Pokémon Center", "action": "HEAL" },
@@ -474,7 +474,7 @@
       },
       "travel_options": [
         { "text": "Route 9 (to Spikemuth)", "target_area": "GALAR_ROUTE_9" },
-        { "text": "Route 10 (to Wyndon)", "target_area": "GALAR_ROUTE_10" },
+        { "text": "Route 10 (to Wyndon)", "target_area": "GALAR_ROUTE_10", "condition": "has_dragon_badge" },
         { "text": "Rose Tower / Energy Plant", "target_area": "ROSE_TOWER" }
       ],
       "explore_options": [
@@ -829,7 +829,13 @@
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
         { "text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE" },
         { "text": "Turffield", "action": "EXIT", "target_area": "TURFFIELD", "condition": "can_exit", "color": "RED" },
-        { "text": "Hulbury", "action": "EXIT", "target_area": "HULBURY", "condition": "can_exit", "color": "RED" },
+        {
+          "text": "Hulbury",
+          "action": "EXIT",
+          "target_area": "HULBURY",
+          "condition": ["can_exit", "has_grass_badge"],
+          "color": "RED"
+        },
         { "text": "GALAR MINE", "action": "EXIT", "target_area": "GALAR_MINE", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "HULBURY"
@@ -855,7 +861,13 @@
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
         { "text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE" },
-        { "text": "Hulbury", "action": "EXIT", "target_area": "HULBURY", "condition": "can_exit", "color": "RED" },
+        {
+          "text": "Hulbury",
+          "action": "EXIT",
+          "target_area": "HULBURY",
+          "condition": ["can_exit", "has_grass_badge"],
+          "color": "RED"
+        },
         { "text": "Motostoke", "action": "EXIT", "target_area": "MOTOSTOKE", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "MOTOSTOKE"

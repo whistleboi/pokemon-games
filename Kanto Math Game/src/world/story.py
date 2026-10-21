@@ -37,6 +37,16 @@ class StoryManager:
         self.last_center = None  # area key of the last Pokemon Center used (whiteouts go there)
         self.autosave = True     # Options: save every time you travel to a new area
 
+    def caught_in_range(self, lo, hi):
+        """How many different species #lo-#hi the player has caught (forms count once)."""
+        dex = self.game.data.data.get("pokedex", {}) if getattr(self, "game", None) else {}
+        return len({int(v.get("id", 0)) for v in dex.values() if lo <= int(v.get("id", 0)) <= hi})
+
+    def kanto_caught_count(self):
+        """Different Kanto species caught, #1-150 (Mew waits until all of them are)."""
+        dex = self.game.data.data.get("pokedex", {}) if getattr(self, "game", None) else {}
+        return len({int(v.get("id", 0)) for v in dex.values() if 1 <= int(v.get("id", 0)) <= 150})
+
     MAX_ITEMS = 999  # the most of one item the Bag holds, as in the games
 
     def add_item(self, key, qty=1):
@@ -374,8 +384,10 @@ class StoryManager:
         return AreaTransitionState(self.game, cfg.get("start_area"), initial_message=message.replace("{player_name}", self.game.player_name))
 
     def has_badge(self, name):
-        """True if a badge with this name was earned in any region."""
-        return any(name in earned for earned in self.badges.values())
+        """True if a badge with this name was earned in any region ("COAL", "Coal_Badge"...)."""
+        from src.world.hms import _norm
+        want = _norm(name)
+        return any(_norm(b) == want for earned in self.badges.values() for b in earned)
 
     def get_total_badges(self):
         """Total badges earned across all regions."""
@@ -678,6 +690,8 @@ class StoryManager:
         """Ensures players have key items unlocked by their earned badges."""
         if not hasattr(self, "inventory") or self.inventory is None:
             self.inventory = {}
+        from src.world import hms
+        hms.give_for_badges(self)  # HMs from badges already won
 
         # region_id → list of (badge_name, item) in order earned
         region_badge_items = {

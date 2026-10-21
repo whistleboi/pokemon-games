@@ -70,15 +70,26 @@ def _region_starter_id(game):
     return story.player_team[0].id if story.player_team else None
 
 
-def _start_event_battle(game, area_key, t_info, flag):
-    """A story NPC's trainer battle (team chosen by the region starter when it has a team_choice)."""
-    from src.states.battle import TrainerBattleState, TrainerIntroState
+def _story_team(game, area_key, t_info):
+    """A story trainer's team: picked by the player's starter ("team_choice"), at the exact
+    levels from the games when given ("levels"), else around the top "level", else the area's."""
     team_ids = list((t_info.get("team_choice") or {}).get(str(_region_starter_id(game))) or t_info.get("team", []))
     team = [Pokemon(game.loader.fetch_specific(tid), game.assets, size_mult=3.125) for tid in team_ids]
     forms.mark_trainer_team(team, t_info)
     top = t_info.get("level")  # story beats set in early areas carry their own level
-    levels.set_team(team, [max(2, top - (len(team) - 1 - i)) for i in range(len(team))] if top
-                    else levels.trainer_team_levels(game, area_key, len(team), boss=True))
+    if t_info.get("levels"):
+        levels.set_team(team, list(t_info["levels"]))
+    elif top:
+        levels.set_team(team, [max(2, top - (len(team) - 1 - i)) for i in range(len(team))])
+    else:
+        levels.set_team(team, levels.trainer_team_levels(game, area_key, len(team), boss=True))
+    return team
+
+
+def _start_event_battle(game, area_key, t_info, flag):
+    """A story NPC's trainer battle (team chosen by the region starter when it has a team_choice)."""
+    from src.states.battle import TrainerBattleState, TrainerIntroState
+    team = _story_team(game, area_key, t_info)
     sprite = _trainer_sprite(game, t_info.get("sprite"))
     dlg = t_info.get("dialogue") or {}
     battle = TrainerBattleState(
@@ -120,6 +131,8 @@ def _run_story_event(state, key, check, show):
             continue
         story.inventory[item] = story.inventory.get(item, 0) + qty
         lines.append(f"{getattr(game, 'player_name', 'You')} received the {forms.item_label(item).upper()}!")
+    for item, qty in (ev.get("take_item") or {}).items():
+        story.inventory[item] = max(0, story.inventory.get(item, 0) - qty)
     gift = story_events.gift_for_starter(ev.get("gift_pokemon"), _region_starter_id(game))
     if gift:
         lines.append(story_events.gift_pokemon(game, gift))
@@ -271,7 +284,8 @@ class PlayState(GameState):
                    bg_color=PURPLE),
         ]
 
-        if self.game.story_manager.inventory.get("AIR_BALLOON", 0) > 0:
+        if (self.game.story_manager.inventory.get("AIR_BALLOON", 0) > 0
+                or self.game.story_manager.inventory.get("HM_FLY", 0) > 0):
             self.hud_buttons.append(Button((btn_x, btn_y + (btn_h+spacing)*6, btn_w, btn_h), "FLY",
                                            game.assets.fonts["tiny"],
                                            self._open_fly,
@@ -302,6 +316,7 @@ class PlayState(GameState):
         for btn in self.hud_buttons:
             if btn.text not in ("SAVE", "LOAD") and btn.callback:
                 btn.callback = (lambda cb=btn.callback: (setattr(self, "is_resuming", True), cb()))
+        _collapse_hud(self)
 
         self.btn_flee = Button(
             rect=(game.width - 200, game.height // 2 - 40, 180, 80),
@@ -537,17 +552,11 @@ class PlayState(GameState):
         """Helper to handle the complex on_enter battle setup logic."""
         self.rounds_completed += 1
 
-        trainer_info = on_enter["trainer"]
+        trainer_info = dict(on_enter["trainer"])
         team_ids = trainer_info.get("team", [])
         if team_ids and isinstance(team_ids, list) and len(team_ids) > 0 and isinstance(team_ids[0], list):
-            team_ids = random.choice(team_ids)
-
-        opponent_team = []
-        for tid in team_ids:
-            raw = self.game.loader.fetch_specific(tid)
-            opponent_team.append(Pokemon(raw, self.game.assets, size_mult=3.125))
-        levels.set_team(opponent_team, levels.trainer_team_levels(
-            self.game, self.game.story_manager.current_area_key, len(opponent_team), boss=True))
+            trainer_info["team"] = random.choice(team_ids)
+        opponent_team = _story_team(self.game, self.game.story_manager.current_area_key, trainer_info)
 
         from src.states.battle import TrainerBattleState, TrainerIntroState
         trainer_sprite = _trainer_sprite(self.game, trainer_info.get("sprite"))  # rival art too
@@ -889,6 +898,11 @@ class PlayState(GameState):
                     continue
 
             if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+                rect = getattr(self, "speak_rect", None)
+                if rect is not None and rect.collidepoint(event.pos) and not self.catch_selection_active:
+                    from src.core import speech
+                    speech.say(speech.math_words(self.problem_str))
+                    continue
                 if not self.ball_active and self.input_delay == 0 and self.pause_timer == 0 and self.balls_left > 0:
                     if self.catch_selection_active:
                         self.check_selection(event.pos)
@@ -1022,7 +1036,7 @@ class PlayState(GameState):
                 callback,
                 bg_color=bg_color,
                 autosize=False
-            )
+            ).arm(500)  # a quick tap left over from the last round can't press an exit
             self.route_buttons.append(btn)
             self.game.ui_manager.add_element(btn)
 
@@ -1034,6 +1048,8 @@ class PlayState(GameState):
 
         if isinstance(condition, (list, tuple)):
             return all(self._check_route_condition(c, trainers_left, item) for c in condition)
+        if isinstance(condition, dict) and "any" in condition:  # {"any": [...]}: one is enough
+            return any(self._check_route_condition(c, trainers_left, item) for c in condition["any"])
         if isinstance(condition, str) and condition.startswith("not:"):
             return not self._check_route_condition(condition[4:], trainers_left, item)
 
@@ -1071,14 +1087,15 @@ class PlayState(GameState):
              return self.area_data.get("battle_type") == "ocean" and self.game.story_manager.inventory.get("DIVE_GEAR", 0) > 0
 
         if condition == "mew_available":
-            has_spotted = self.game.story_manager.story_flags.get("mew_spotted_mt_moon", False)
+            has_spotted = (self.game.story_manager.story_flags.get("mew_spotted_mt_moon", False)
+                           and self.game.story_manager.kanto_caught_count() >= 150)
             has_caught = self.game.story_manager.story_flags.get("caught_mew", False)
             return has_spotted and not has_caught and not trainers_left
 
         if condition == "can_battle_red_gyarados":
-            hq_cleared = self.game.story_manager.story_flags.get("rocket_hq_cleared", False)
+            # As in the games: the Red Gyarados comes first, then Lance and the Rocket Hideout.
             boss_beaten = self.game.story_manager.story_flags.get("defeated_red_gyarados", False)
-            return hq_cleared and not boss_beaten and not trainers_left
+            return not boss_beaten and not trainers_left
 
         if condition == "can_exit":
             if self.area_data.get("area_type") == "town":
@@ -1104,9 +1121,15 @@ class PlayState(GameState):
             return johto_badges.issubset(player_badges)
 
         if condition.startswith("has_") and condition.endswith("_badge"):
-            badge_name = condition[4:-6].upper()
-            return any(badge_name in b_list for b_list in self.game.story_manager.badges.values())
+            from src.world.hms import _norm
+            want = _norm(condition[4:-6])  # case and "_BADGE" don't matter ("KNuckle", "COAL_BADGE")
+            story = self.game.story_manager
+            # This region's badges: Galar's and Paldea's Grass Badges are different badges.
+            return any(_norm(b) == want for b in story.badges.get(story.get_current_region(), []))
 
+        if isinstance(condition, str) and condition.startswith("caught_range:"):
+            lo, hi = (int(x) for x in condition.split(":", 1)[1].split("-"))
+            return self.game.story_manager.caught_in_range(lo, hi) >= hi - lo + 1  # e.g. all of #1-251
         if condition == "boss_defeated":
             boss_data = self.area_data.get("area_boss", {})
             victory_flag = boss_data.get("victory_flag")
@@ -1153,6 +1176,8 @@ class PlayState(GameState):
         if condition == "dungeon_boss_available":
             return not self._check_route_condition("boss_defeated", trainers_left) and self._check_route_condition("dungeon_cleared", trainers_left, item)
 
+        if isinstance(condition, str) and condition.startswith("has_")                 and self.game.story_manager.inventory.get(condition[4:].upper(), 0) > 0:
+            return True  # "has_silver_wing": holding the SILVER_WING
         if isinstance(condition, str):
             return self.game.story_manager.story_flags.get(condition, False)
 
@@ -2526,6 +2551,11 @@ class PlayState(GameState):
                 width // 2,
                 height * 0.15,
             )
+            from src.core import speech
+            if speech.available():
+                tw = self.game.assets.fonts["big"].size(self.problem_str)[0]
+                self.speak_rect = pygame.Rect(width // 2 + tw // 2 + 24, int(height * 0.15) - 26, 52, 52)
+                speech.draw_speaker(screen, self.speak_rect)
 
             if self.question_timer > 0:
                 bar_w = 200
@@ -2647,7 +2677,8 @@ class CityState(GameState):
                    bg_color=PURPLE),
         ]
 
-        if self.game.story_manager.inventory.get("AIR_BALLOON", 0) > 0:
+        if (self.game.story_manager.inventory.get("AIR_BALLOON", 0) > 0
+                or self.game.story_manager.inventory.get("HM_FLY", 0) > 0):
             self.hud_buttons.append(Button((btn_x, btn_y + (btn_h+spacing)*6, btn_w, btn_h), "FLY",
                                            game.assets.fonts["tiny"],
                                            self._open_fly,
@@ -2665,6 +2696,8 @@ class CityState(GameState):
                                        game.assets.fonts["tiny"],
                                        self._open_options,
                                        bg_color=GRAY))
+
+        _collapse_hud(self)
 
         self.yes_btn = Button((0, 0, 0, 0), "YES", game.assets.fonts["small"], None, bg_color=GREEN, visible=False, autosize=False)
         self.no_btn = Button((0, 0, 0, 0), "NO", game.assets.fonts["small"], None, bg_color=RED, visible=False, autosize=False)
@@ -2767,6 +2800,13 @@ class CityState(GameState):
             if req_flag and not self.game.story_manager.story_flags.get(req_flag, False):
                 fail_text = reqs.get("fail_text", "The Gym is closed.")
                 self.show_message(fail_text)
+                return
+            # Several story steps ("flags"), or every trainer in an area beaten ("defeated_area").
+            missing_flags = [f for f in reqs.get("flags", []) if not story.story_flags.get(f, False)]
+            area_left = reqs.get("defeated_area") and not story.check_requirements(
+                {"defeated_area": reqs["defeated_area"]})
+            if missing_flags or area_left:
+                self.show_message(reqs.get("fail_text", "The Gym is closed."))
                 return
 
         self.game.change_state(GymLobbyState(self.game, self))
@@ -2922,6 +2962,8 @@ class CityState(GameState):
 
         if isinstance(condition, (list, tuple)):
             return all(self._check_menu_condition(c) for c in condition)
+        if isinstance(condition, dict) and "any" in condition:  # {"any": [...]}: one is enough
+            return any(self._check_menu_condition(c) for c in condition["any"])
         if condition.startswith("not:"):
             return not self._check_menu_condition(condition[4:])
 
@@ -2930,6 +2972,9 @@ class CityState(GameState):
 
         if condition.startswith("has_item:"):
             return story.inventory.get(condition[9:], 0) > 0
+        if isinstance(condition, str) and condition.startswith("caught_range:"):
+            lo, hi = (int(x) for x in condition.split(":", 1)[1].split("-"))
+            return story.caught_in_range(lo, hi) >= hi - lo + 1  # e.g. all of #1-251
         if condition == "snorlax_defeated":  # canon: Snorlax (Poke Flute) blocks Cycling Road
             return bool(story.story_flags.get("KANTO_ROUTE_11_boss_defeated") or story.story_flags.get("caught_snorlax"))
 
@@ -2951,12 +2996,16 @@ class CityState(GameState):
             return len(story.badges.get(region, [])) >= needed
 
         if condition.startswith("has_") and condition.endswith("_badge"):
-            badge_name = condition[4:-6].upper()
-            return any(badge_name in b_list for b_list in story.badges.values())
+            from src.world.hms import _norm
+            want = _norm(condition[4:-6])  # case and "_BADGE" don't matter ("KNuckle", "COAL_BADGE")
+            # This region's badges: Galar's and Paldea's Grass Badges are different badges.
+            return any(_norm(b) == want for b in story.badges.get(story.get_current_region(), []))
 
         if condition == "has_national_dex":
             return story.story_flags.get("unlocked_national_dex", False)
 
+        if isinstance(condition, str) and condition.startswith("has_")                 and story.inventory.get(condition[4:].upper(), 0) > 0:
+            return True  # "has_silver_wing": holding the SILVER_WING
         if isinstance(condition, str):
             return story.story_flags.get(condition, False)
 
@@ -3071,7 +3120,7 @@ class CityState(GameState):
         if action == "RUINS":
             return self.action_explore_ruins
         if action == "TRAVEL":
-            return lambda: self.go_to_area(opt_data.get("target_area"))
+            return lambda: self.go_to_area(opt_data.get("target_area"), opt_data.get("message"))
         return None
 
     def visit_contest_hall(self):
@@ -3456,8 +3505,7 @@ class CityState(GameState):
         story = self.game.story_manager
         region = getattr(story, "starting_region", "KANTO")
 
-        unique_caught = len(self.game.data.data.get("pokedex", {}))
-        if unique_caught >= 150 and not story.story_flags.get("mew_spotted_mt_moon"):
+        if story.kanto_caught_count() >= 150 and not story.story_flags.get("mew_spotted_mt_moon"):
             msg = [
                 "Professor Oak: Incredible! You've documented 150 species!",
                 "You are truly a master researcher.",
@@ -4325,15 +4373,18 @@ class CityState(GameState):
 
         is_start_town = self.area_key == story.get_region_start(
             story.get_current_region()).get("start_area")
-        starter_battle = newbark_rival or (is_start_town and str(condition).endswith("_starter"))
-        if len(team_ids) == 1 and (newbark_rival or is_start_town):
+        starter_battle = (newbark_rival or (is_start_town and str(condition).endswith("_starter"))
+                          or bool(on_enter.get("starter_battle")))  # e.g. Silver in Cherrygrove
+        if len(team_ids) == 1 and (newbark_rival or is_start_town or on_enter.get("starter_battle")):
             story.rival_starter_raw = self.game.loader.fetch_specific(team_ids[0])
             story.note_rival_starter()
 
         opponent_team = [Pokemon(self.game.loader.fetch_specific(tid), self.game.assets, size_mult=3.125)
                          for tid in team_ids]
         forms.mark_trainer_team(opponent_team, t_info)
-        if starter_battle:
+        if t_info.get("levels"):
+            levels.set_team(opponent_team, list(t_info["levels"]))  # exact levels from the games
+        elif starter_battle:
             levels.set_team(opponent_team, [5] * len(opponent_team))
         else:
             levels.set_team(opponent_team, levels.trainer_team_levels(
@@ -4360,9 +4411,10 @@ class CityState(GameState):
         self.game.change_state(TrainerIntroState(self.game, sprite, intro_text, battle_state))
         return True
 
-    def go_to_area(self, area_key):
+    def go_to_area(self, area_key, message=None):
+        """Travel; a ship or train ride shows its own message on the way."""
         if area_key:
-            self.game.change_state(AreaTransitionState(self.game, area_key))
+            self.game.change_state(AreaTransitionState(self.game, area_key, initial_message=message))
 
     def go_to_next_area(self):
         next_area = self.area_data.get("next_area")
@@ -4413,11 +4465,29 @@ class CityState(GameState):
         offer_flag = f"move_offer_{region.lower()}"
         if story.is_region_champion(region) and not story.story_flags.get(offer_flag):
             story.story_flags[offer_flag] = True
-            self._offer_move(region, phone=True)
+            road = self.ROAD_OPEN.get(region)
+            if road:  # Kanto <-> Johto: the road is open, go now or later (Mom's offer follows)
+                story.inventory["SS_TICKET"] = 1
+                road = road + ["You received an S.S. TICKET!",
+                               "The S.S. Aqua sails between Vermilion City and Olivine City."]
+                self.show_message(road, callback=lambda: self._offer_move(region, phone=True))
+            else:
+                self._offer_move(region, phone=True)
             return
         notice = seasons.season_change_notice(self.game, story, region)
         if notice:
             self.show_message(notice)
+
+    ROAD_OPEN = {
+        "KANTO": ["Professor Oak: Congratulations, Champion!",
+                  "The Pokemon League has opened the road to the Johto region for you.",
+                  "From the League's Reception Gate, follow Route 26 and Route 27 east to New Bark Town.",
+                  "Go now, or whenever you're ready. The road will stay open!"],
+        "JOHTO": ["Professor Elm: You did it, Champion!",
+                  "With the Johto title, the road to Kanto is open.",
+                  "From New Bark Town, take Route 27 west past Tohjo Falls to the Pokemon League's Reception Gate,",
+                  "then Route 22 to Viridian City. Go now, or whenever you like!"],
+    }
 
     def _offer_move(self, region, phone):
         """Mom uses the championship prize money for a new home and asks where to move."""
@@ -4668,6 +4738,21 @@ class AreaTransitionState(GameState):
         self.dialogue_box.draw(self.game.screen)
 
 
+def _collapse_hud(state):
+    """The side menus (PC, Bag, Badges, Save...) live behind one big MENU button that opens a
+    grid of large tiles, instead of a column of small buttons."""
+    state.menu_entries = state.hud_buttons
+
+    def open_menu():
+        if hasattr(state, "is_resuming"):
+            state.is_resuming = True  # a route comes back to the same encounter
+        from src.states.menu_grid import MenuGridState
+        state.game.change_state(MenuGridState(state.game, state, state.menu_entries))
+
+    state.hud_buttons = [Button((20, 70, 170, 72), "MENU", state.game.assets.fonts["s_med"], open_menu,
+                                bg_color=(60, 96, 210), autosize=False)]
+
+
 def evolve_ready_party(game, return_state):
     """Evolve a party Pokemon that is ready (e.g. it hit its level in a gym or town battle),
     then go on to return_state. Returns True if an evolution started."""
@@ -4675,6 +4760,22 @@ def evolve_ready_party(game, return_state):
     scan.game = game
     scan._evo_return = return_state
     return scan._scan_list_for_evolution(game.story_manager.player_team, False, "party")
+
+
+def is_league(gym_data):
+    """A Pokemon League: Elite Four trainers and/or a Champion (every region's)."""
+    gym_data = gym_data or {}
+    leader = gym_data.get("leader") or {}
+    return (leader.get("class") == "CHAMPION"
+            or any(t.get("class") == "ELITE_FOUR" for t in gym_data.get("trainers", [])))
+
+
+def reset_league_after_loss(game):
+    """Losing at a Pokemon League sends you back to the start of the Elite Four, as in the games."""
+    story = game.story_manager
+    area = story.get_current_area_data()
+    if is_league(area.get("gym")):
+        story.story_flags[f"gym_progress_{story.current_area_key}"] = 0
 
 
 def autosave(game):
@@ -4829,24 +4930,29 @@ class GymLobbyState(GameState):
 
         self.next_opponent = None
         self.is_cleared = False
+        self.region = game.story_manager.get_current_region()
+        self.is_league = is_league(self.gym_data)
 
-        if self.area_key == "INDIGO_PLATEAU":
+        if self.is_league:
+            # Every region's League: the Elite Four and the Champion in a row. A loss starts it
+            # over (see reset_league_after_loss), and after the title it's a rematch run.
             if self.progress > len(self.trainers):
                 self.progress = 0
                 game.story_manager.story_flags[self.prog_key] = 0
 
             self.gauntlet = self.trainers + [self.leader]
-            if not game.story_manager.story_flags.get("beat_champion"):
-                mode_text = "League Challenge"
-            else:
-                mode_text = "Title Defense"
+            self.rematch = game.story_manager.is_region_champion(self.region)
+            mode_text = "Rematch" if self.rematch else "League Challenge"
 
             if self.progress < len(self.gauntlet):
                 self.next_opponent = self.gauntlet[self.progress]
                 if self.progress == len(self.gauntlet) - 1:
-                    r_name = ((game.story_manager.region_rivals.get("KANTO") or {}).get("name")
-                              or getattr(self.game, "rival_name", "CHAMPION"))
-                    self.status_text = f"Final Match: Champion {r_name}"
+                    if self.area_key == "INDIGO_PLATEAU":
+                        r_name = ((game.story_manager.region_rivals.get("KANTO") or {}).get("name")
+                                  or getattr(self.game, "rival_name", "CHAMPION"))
+                    else:
+                        r_name = _fill_names(self.game, self.leader.get("name", "the Champion"))
+                    self.status_text = f"{mode_text} - Final Match: Champion {r_name}"
                 else:
                     self.status_text = f"{mode_text}: Match {self.progress + 1}/{len(self.gauntlet)}"
             else:
@@ -4967,10 +5073,18 @@ class GymLobbyState(GameState):
             t_data["name"] = _fill_names(self.game, t_data.get("name"))
             if t_data.get("dialogue"):
                 t_data["dialogue"] = {k: _resolve_lines(self.game, v) for k, v in t_data["dialogue"].items()}
-            rm = self.FRLG_E4_REMATCH.get(str(t_data.get("name", "")).upper())
-            if (self.area_key == "INDIGO_PLATEAU" and rm
-                    and self.game.story_manager.story_flags.get("beat_champion")):
-                t_data["team"], t_data["levels"] = list(rm[0]), list(rm[1])
+        # Rematches after the title: the games' rematch teams where we have them (FireRed/LeafGreen
+        # for Kanto, HeartGold/SoulSilver for Johto: "rematch" in the data), else 10 levels up.
+        rematch_boost = 0
+        if getattr(self, "rematch", False) and not (self.area_key == "INDIGO_PLATEAU" and is_leader):
+            rm = self.next_opponent.get("rematch")
+            if not rm and self.area_key == "INDIGO_PLATEAU":
+                frlg = self.FRLG_E4_REMATCH.get(str(t_data.get("name", "")).upper())
+                rm = {"team": frlg[0], "levels": frlg[1]} if frlg else None
+            if rm:
+                t_data["team"], t_data["levels"] = list(rm["team"]), list(rm["levels"])
+            else:
+                rematch_boost = 10
 
         team_ids = t_data.get("team", [])
         opponent_team = []
@@ -4991,6 +5105,8 @@ class GymLobbyState(GameState):
         else:
             team_levels = levels.gym_team_levels(region, self.area_key, len(opponent_team),
                                                  levels.gym_role(t_class, is_leader))
+        if rematch_boost:
+            team_levels = [min(100, int(lv) + rematch_boost) for lv in team_levels]
         levels.set_team(opponent_team, team_levels)
 
         bg_file = self.game.story_manager.get_gym_battle_background(

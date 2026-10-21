@@ -58,3 +58,4 @@ GB_HIGHLIGHT = (255, 255, 200)
 
 # Events
 MUSIC_ENDED_EVENT = pygame.USEREVENT + 2
+LOGICAL_W, LOGICAL_H = 1280, 720  # the game's fixed canvas; SDL scales it to the window
