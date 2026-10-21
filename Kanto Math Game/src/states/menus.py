@@ -244,7 +244,8 @@ class RegionSelectionState(GameState):
         self.mode = mode
         self.return_state = return_state
         story = game.story_manager
-        starts = story.get_region_starts()
+        # Travel-only regions (the Orange Islands) are reached by ship, never a new game or a move.
+        starts = [(r, cfg) for r, cfg in story.get_region_starts() if not cfg.get("travel_only")]
         if mode == "move":
             here = story.get_current_region()
             starts = [(r, cfg) for r, cfg in starts if r != here]
@@ -339,6 +340,8 @@ class RegionSelectionState(GameState):
         story.badges.setdefault(region, [])
         story.active_badge_region = region
         story.current_area_key = cfg.get("start_area", "PALLET_TOWN")
+        story.region_stores, story.linked_regions = {}, set()  # a new run: one fresh party, PC and Bag
+        story.use_region_store(region)
 
         self.game.change_state(RivalSelectionState(self.game))
 

@@ -75,6 +75,12 @@ class Game:
             "alola": "alola_area_data.json",
             "galar": "galar_area_data.json",
             "paldea": "paldea_area_data.json",
+            "orange": "orange_area_data.json",
+            "sevii": "sevii_area_data.json",
+            "decolore": "decolore_area_data.json",
+            "sinjoh": "sinjoh_area_data.json",
+            "orre": "orre_area_data.json",
+            "dlc": "dlc_area_data.json",
         }
 
         loaded_evolutions = {}

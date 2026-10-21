@@ -244,7 +244,8 @@
         "travel_options": [
             { "text": "Route 36", "target_area": "JOHTO_ROUTE_36" },
             { "text": "Route 32", "target_area": "JOHTO_ROUTE_32", "condition": "has_zephyr_badge" },
-            { "text": "Violet City", "target_area": "VIOLET_CITY", "condition": "visited_ruins_of_alph"}
+            { "text": "Violet City", "target_area": "VIOLET_CITY", "condition": "visited_ruins_of_alph"},
+            {"text": "Follow the Unown (Sinjoh Ruins)", "target_area": "SINJOH_CABIN", "condition": {"any": ["visited_SINJOH_CABIN", ["party_has:493", "all_unown_registered"]]}, "message": "Every Unown in the ruins swirls around Arceus... The world goes white. You're somewhere cold."}
         ],
         "explore_options": [
             { "text": "Enter Lab", "action": "NPC", "target": "alph_scientist" },
@@ -461,12 +462,14 @@
             { "text": "Route 39", "target_area": "JOHTO_ROUTE_39" },
             { "text": "Route 40", "target_area": "JOHTO_ROUTE_40", "condition": "has_item:HM_SURF" },
             { "text": "Lighthouse", "target_area": "OLIVINE_LIGHTHOUSE" },
-            {"text": "S.S. Aqua to Vermilion", "target_area": "VERMILLION_CITY", "condition": "has_item:SS_TICKET", "message": "You board the S.S. Aqua. The ship sails east across the sea to Kanto..."}
+            {"text": "S.S. Aqua to Vermilion", "target_area": "VERMILLION_CITY", "condition": "has_item:SS_TICKET", "message": "You board the S.S. Aqua. The ship sails east across the sea to Kanto..."},
+            {"text": "Ship to the Orange Islands", "target_area": "VALENCIA_ISLAND", "condition": ["beat_champion", "beat_johto_champion"], "message": "The ferry sails south for days over warm seas... Land ho! It's Valencia Island!"}
         ],
         "explore_options": [
             { "text": "Heal", "action": "HEAL" },
             { "text": "Shop", "action": "SHOP" },
-            { "text": "Gym", "action": "GYM" }
+            { "text": "Gym", "action": "GYM" },
+            {"text": "Orange Islands Ferry", "action": "EVENT", "color": "GOLD", "condition": {"any": ["not:beat_champion", "not:beat_johto_champion"]}, "event": {"lines": ["Sailor: This ferry sails south to the Orange Islands.", "It only takes the Champion of both Kanto and Johto. Come back when you've won both!"]}}
         ]
         },
 

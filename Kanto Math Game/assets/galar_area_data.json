@@ -581,27 +581,7 @@
       "battle_type": "grass",
       "wild_pool_percentages": "GALAR_SLUMBERING_WEALD_PERCENTAGES",
       "min_rounds": 2,
-      "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        {
-          "text": "Encounter Zacian (post-game)",
-          "action": "BOSS",
-          "condition": "boss_not_defeated",
-          "flag_condition": "beat_galar_champion",
-          "color": "GOLD"
-        },
-        { "text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE" },
-        { "text": "DEEPER INTO THE WEALD", "action": "EXIT", "target_area": "WEALD_ALTAR", "condition": "boss_defeated", "color": "GOLD" },
-        {
-          "text": "SPACE-TIME DISTORTION",
-          "action": "EXIT",
-          "target_area": "SPACE_TIME_DISTORTION",
-          "condition": "beat_galar_champion",
-          "color": "GOLD"
-        },
-        { "text": "Postwick", "action": "EXIT", "target_area": "POSTWICK", "condition": "can_exit", "color": "RED" }
-      ],
+      "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "Encounter Zacian (post-game)", "action": "BOSS", "condition": "boss_not_defeated", "flag_condition": "beat_galar_champion", "color": "GOLD"}, {"text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE"}, {"text": "DEEPER INTO THE WEALD", "action": "EXIT", "target_area": "WEALD_ALTAR", "condition": "boss_defeated", "color": "GOLD"}, {"text": "Postwick", "action": "EXIT", "target_area": "POSTWICK", "condition": "can_exit", "color": "RED"}],
       "area_boss": { "id": 888, "name": "Zacian", "victory_flag": "SLUMBERING_WEALD_boss_defeated" }
     },
     "WILD_AREA": {
@@ -663,13 +643,8 @@
       "battle_type": "grass",
       "wild_pool_percentages": "GALAR_GLIMWOOD_PERCENTAGES",
       "min_rounds": 2,
-      "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE" },
-        { "text": "Stow-on-Side", "action": "EXIT", "target_area": "STOW_ON_SIDE", "condition": "can_exit", "color": "RED" },
-        { "text": "Ballonlea", "action": "EXIT", "target_area": "BALLONLEA", "condition": "can_exit", "color": "RED" }
-      ]
+      "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE"}, {"text": "Follow the Jungle Call", "action": "BOSS", "color": "GOLD", "condition": ["beat_galar_champion", "boss_not_defeated"]}, {"text": "Stow-on-Side", "action": "EXIT", "target_area": "STOW_ON_SIDE", "condition": "can_exit", "color": "RED"}, {"text": "Ballonlea", "action": "EXIT", "target_area": "BALLONLEA", "condition": "can_exit", "color": "RED"}],
+        "area_boss": {"id": 893, "name": "Zarude", "victory_flag": "ISLE_OF_ARMOR_boss_defeated"}
     },
     "ROSE_TOWER": {
       "area_type": "dungeon",
@@ -1045,20 +1020,7 @@
         "4": { "879": 35, "844": 35, "864": 15, "851": 10, "879-gmax": 5 },
         "5": { "94": 35, "143": 35, "131": 15, "812": 5, "815": 3, "812-gmax": 4, "815-gmax": 3 }
       },
-      "area_boss": { "id": 893, "name": "Zarude", "victory_flag": "ISLE_OF_ARMOR_boss_defeated" },
-      "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "MAX RAID BATTLE", "action": "MAX_RAID", "condition": "can_battle", "color": "PURPLE" },
-        {
-          "text": "Follow the Jungle Call",
-          "action": "BOSS",
-          "condition": ["boss_not_defeated"],
-          "color": "GOLD"
-        },
-        { "text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE" },
-        { "text": "Wedgehurst Station", "action": "EXIT", "target_area": "WEDGEHURST", "condition": "can_exit", "color": "RED" }
-      ],
+      "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "MAX RAID BATTLE", "action": "MAX_RAID", "condition": "can_battle", "color": "PURPLE"}, {"text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE"}, {"text": "MASTER DOJO", "action": "EVENT", "color": "GOLD", "event": {"lines": ["Mustard: Welcome to the Master Dojo! I used to be the Galar Champion, you know.", "My students Klara and Avery will test you first. Beat them both!"], "flag": "met_mustard", "done": ["Mustard: Keep training, my student!"]}, "flag_condition": "not mustard_gave_kubfu"}, {"text": "DOJO TRIAL: KLARA", "action": "EVENT", "color": "GOLD", "event": {"requires": ["met_mustard"], "lines": ["Klara: Ugh, a new student? I'll show you who's top of the dojo!"], "battle": {"name": "Klara", "class": "DOJO_STUDENT", "sprite": "lass.png", "team": [2023, 110, 869], "levels": [66, 66, 68], "rewards": {"balls": 10}, "dialogue": {"player_won": ["Klara: No way! I'll get you next time!"]}}, "flag": "beat_klara_dojo"}, "condition": "met_mustard", "flag_condition": "not beat_klara_dojo"}, {"text": "DOJO TRIAL: AVERY", "action": "EVENT", "color": "GOLD", "event": {"requires": ["met_mustard"], "lines": ["Avery: Psychic power is the only true strength. Prepare yourself!"], "battle": {"name": "Avery", "class": "DOJO_STUDENT", "sprite": "psychic_m.png", "team": [2030, 64, 856], "levels": [66, 66, 68], "rewards": {"balls": 10}, "dialogue": {"player_won": ["Avery: Impossible... My mind was clouded."]}}, "flag": "beat_avery_dojo"}, "condition": "met_mustard", "flag_condition": "not beat_avery_dojo"}, {"text": "MUSTARD'S GIFT", "action": "EVENT", "color": "GOLD", "event": {"requires": ["beat_klara_dojo", "beat_avery_dojo"], "lines": ["Mustard: You beat them both! You've earned my most precious partner.", "This is Kubfu. Raise it well, then take it to one of the Towers of Two Fists."], "gift_pokemon": 891, "flag": "mustard_gave_kubfu"}, "condition": "beat_avery_dojo", "flag_condition": "not mustard_gave_kubfu"}, {"text": "TOWER OF DARKNESS", "action": "EVENT", "color": "GOLD", "event": {"requires": ["party_has:891"], "fail": ["The tower's door won't open. Mustard said only Kubfu can climb it."], "lines": ["Kubfu climbs the Tower of Darkness, floor by floor, and reads the scroll at the top..."], "evolve": {"891": 8004}}, "condition": "mustard_gave_kubfu"}, {"text": "TOWER OF WATERS", "action": "EVENT", "color": "GOLD", "event": {"requires": ["party_has:891"], "fail": ["The tower's door won't open. Mustard said only Kubfu can climb it."], "lines": ["Kubfu climbs the Tower of Waters, floor by floor, and reads the scroll at the top..."], "evolve": {"891": 8005}}, "condition": "mustard_gave_kubfu"}, {"text": "Wedgehurst Station", "action": "EXIT", "target_area": "WEDGEHURST", "condition": "can_exit", "color": "RED"}],
       "next_area": "WEDGEHURST"
     },
     "CROWN_TUNDRA": {
@@ -1078,22 +1040,7 @@
         "5": { "884": 35, "887": 35, "131": 15, "3-gmax": 5, "6-gmax": 5, "9-gmax": 5 }
       },
       "area_boss": { "id": 898, "name": "Calyrex", "victory_flag": "CROWN_TUNDRA_boss_defeated" },
-      "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "MAX RAID BATTLE", "action": "MAX_RAID", "condition": "can_battle", "color": "PURPLE" },
-        {
-          "text": "Meet the King of Bountiful Harvests",
-          "action": "BOSS",
-          "condition": ["boss_not_defeated"],
-          "color": "GOLD"
-        },
-        { "text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE" },
-        { "text": "SPLIT-DECISION RUINS", "action": "EXIT", "target_area": "SPLIT_DECISION_RUINS", "condition": "can_exit", "color": "RED" },
-        { "text": "OLD CEMETERY", "action": "EXIT", "target_area": "CROWN_OLD_CEMETERY", "condition": "can_exit", "color": "RED" },
-        { "text": "SNOWSLIDE SLOPE", "action": "EXIT", "target_area": "CROWN_SNOWSLIDE_SLOPE", "condition": "can_exit", "color": "RED" },
-        { "text": "Wedgehurst Station", "action": "EXIT", "target_area": "WEDGEHURST", "condition": "can_exit", "color": "RED" }
-      ],
+      "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "MAX RAID BATTLE", "action": "MAX_RAID", "condition": "can_battle", "color": "PURPLE"}, {"text": "Meet the King of Bountiful Harvests", "action": "BOSS", "condition": ["boss_not_defeated"], "color": "GOLD"}, {"text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE"}, {"text": "PEONY'S EXPEDITION", "action": "EVENT", "color": "GOLD", "event": {"lines": ["Peony: Hey hey! I'm Peony, leader of the Peony Expedition Team!", "Legends all over the Crown Tundra: a king who rules the harvest, giants in the ruins,", "and three strange birds seen near the giant tree on Dyna Tree Hill!", "Let's go find 'em all, eh?"], "flag": "met_peony"}}, {"text": "SPLIT-DECISION RUINS", "action": "EXIT", "target_area": "SPLIT_DECISION_RUINS", "condition": "can_exit", "color": "RED"}, {"text": "OLD CEMETERY", "action": "EXIT", "target_area": "CROWN_OLD_CEMETERY", "condition": "can_exit", "color": "RED"}, {"text": "SNOWSLIDE SLOPE", "action": "EXIT", "target_area": "CROWN_SNOWSLIDE_SLOPE", "condition": "can_exit", "color": "RED"}, {"text": "Wedgehurst Station", "action": "EXIT", "target_area": "WEDGEHURST", "condition": "can_exit", "color": "RED"}, {"text": "DYNA TREE HILL", "action": "EXIT", "target_area": "DYNA_TREE_HILL", "condition": "met_peony", "color": "RED"}],
       "next_area": "WEDGEHURST"
     },
     "SPLIT_DECISION_RUINS": {
@@ -1192,26 +1139,16 @@
     "SPACE_TIME_DISTORTION": {
       "area_type": "dungeon",
       "route_name": "Space-Time Distortion",
-      "region": "GALAR",
+      "region": "SINNOH",
       "battle_type": "grass",
       "backgrounds": { "main": "space_time_distortion.png" },
       "min_rounds": 1,
       "trainer_pool": [],
       "wild_pool_percentages": "GALAR_SPACE_TIME_DISTORTION_PERCENTAGES",
       "area_boss": { "id": 905, "name": "Enamorus", "victory_flag": "SPACE_TIME_DISTORTION_boss_defeated" },
-      "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        {
-          "text": "Face Enamorus",
-          "action": "BOSS",
-          "condition": ["boss_not_defeated"],
-          "color": "GOLD"
-        },
-        { "text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE" },
-        { "text": "Slumbering Weald", "action": "EXIT", "target_area": "SLUMBERING_WEALD", "condition": "can_exit", "color": "RED" }
-      ],
-      "next_area": "SLUMBERING_WEALD"
+      "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "Face Enamorus", "action": "BOSS", "condition": ["boss_not_defeated"], "color": "GOLD"}, {"text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE"}, {"text": "Obsidian Fieldlands", "action": "EXIT", "target_area": "OBSIDIAN_FIELDLANDS", "condition": "can_exit", "color": "RED"}],
+      "next_area": "SLUMBERING_WEALD",
+        "subregion": "HISUI"
     },
     "WEALD_ALTAR": {
       "area_type": "dungeon",
@@ -1371,8 +1308,8 @@
     ],
     "gmax_odds_note": "Each den's rarest slot (5%) is its Gigantamax species."
   },
-  "GALAR_ISLE_OF_ARMOR_PERCENTAGES": { "891": 10, "852": 15, "845": 15, "833": 15, "2024": 15, "2031": 15, "871": 15 },
-  "GALAR_ISLE_OF_ARMOR": [891, 852, 845, 833, 2024, 2031, 871],
+  "GALAR_ISLE_OF_ARMOR_PERCENTAGES": { "852": 15, "845": 15, "833": 15, "2024": 15, "2031": 15, "871": 15 },
+  "GALAR_ISLE_OF_ARMOR": [852, 845, 833, 2024, 2031, 871],
   "GALAR_CROWN_TUNDRA_PERCENTAGES": { "872": 20, "873": 15, "613": 15, "875": 15, "2026": 15, "615": 10, "363": 10 },
   "GALAR_CROWN_TUNDRA": [872, 873, 613, 875, 2026, 615, 363],
   "GALAR_SPLIT_DECISION_RUINS_PERCENTAGES": { "854": 40, "867": 30, "2037": 30 },

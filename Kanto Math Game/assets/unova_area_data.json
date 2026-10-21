@@ -499,8 +499,9 @@
         { "text": "Pinwheel Forest", "target_area": "PINWHEEL_FOREST" },
         { "text": "Unity Tower", "target_area": "UNITY_TOWER" },
         { "text": "Castelia Sewers", "target_area": "CASTELIA_SEWERS" },
-        { "text": "Liberty Garden (Ferry)", "target_area": "LIBERTY_GARDEN", "condition": "beat_unova_champion" }
-      ],
+        { "text": "Liberty Garden (Ferry)", "target_area": "LIBERTY_GARDEN", "condition": "beat_unova_champion" },
+            {"text": "Ferry to the Decolore Islands", "target_area": "DECOLORE_FERRY", "condition": "beat_unova_champion", "message": "The ferry leaves Castelia's pier for the colorful Decolore Islands."}
+        ],
       "explore_options": [
         { "text": "Pokémon Center", "action": "HEAL" },
         { "text": "Department Store", "action": "SHOP" },
@@ -2251,20 +2252,11 @@
       "backgrounds": { "main": "p2_laboratory.png" },
       "min_rounds": 1,
       "trainer_pool": [],
-      "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        {
-          "text": "Confront Genesect",
-          "action": "BOSS",
-          "condition": ["boss_not_defeated"],
-          "color": "GOLD"
-        },
-        { "text": "Route 17", "action": "EXIT", "target_area": "UNOVA_ROUTE_17", "condition": "can_exit", "color": "RED" }
-      ],
+      "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "Route 17", "action": "EXIT", "target_area": "UNOVA_ROUTE_17", "condition": "can_exit", "color": "RED"},
+            {"text": "READ THE LAB NOTES", "action": "EVENT", "color": "GOLD", "event": {"lines": ["The lab is empty. A note on the desk reads:", "\"Genesect capsules moved to Torom Island, Decolore. Drives to follow.\"", "The Decolore ferry leaves from Castelia City."]}}
+        ],
       "next_area": "UNOVA_ROUTE_17",
-      "wild_pool_percentages": "UNOVA_P2_LAB_PERCENTAGES",
-      "area_boss": { "id": 649, "name": "Genesect", "victory_flag": "P2_LABORATORY_boss_defeated" }
+      "wild_pool_percentages": "UNOVA_P2_LAB_PERCENTAGES"
     }
   },
   "JOURNAL_MISSIONS": [

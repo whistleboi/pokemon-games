@@ -31,6 +31,8 @@ GYM_ORDER = {
               "SPIKEMUTH", "HAMMERLOCKE"],
     "PALDEA": ["CORTONDO", "ARTAZON", "LEVINCIA", "CASCARRAFA", "MEDALI", "MONTENEVERA",
                "ALFORNADA", "GLASEADO"],
+    # The Orange Islands (the anime's Orange League): post-game, after the Kanto and Johto titles.
+    "ORANGE": ["MIKAN_ISLAND", "NAVEL_ISLAND", "TROVITA_ISLAND", "KUMQUAT_ISLAND"],
 }
 # Ace level of each gym, then (Elite Four first, last) and the Champion's ace.
 # Johto is HeartGold/SoulSilver x1.26 (JOHTO_SCALE), so Lance's ace matches Kanto's Champion (63).
@@ -41,12 +43,14 @@ GYM_ACE = {
     "UNOVA": [14, 20, 23, 27, 31, 35, 39, 43], "KALOS": [12, 25, 32, 34, 37, 42, 48, 54],
     "ALOLA": [12, 27, 39, 48], "GALAR": [20, 24, 25, 36, 38, 42, 46, 48],
     "PALDEA": [15, 17, 24, 30, 36, 42, 45, 48],
+    "ORANGE": [62, 66, 69, 72],
 }
 ELITE_FOUR = {"KANTO": (54, 60), "JOHTO": (53, 59), "HOENN": (50, 53), "SINNOH": (53, 59),
               "UNOVA": (48, 50), "KALOS": (58, 62), "ALOLA": (54, 57), "GALAR": (52, 58),
               "PALDEA": (57, 60)}
 CHAMPION_ACE = {"KANTO": 63, "JOHTO": 63, "HOENN": 59, "SINNOH": 62, "UNOVA": 54, "KALOS": 66,
-                "ALOLA": 60, "GALAR": 65, "PALDEA": 62}
+                "ALOLA": 60, "GALAR": 65, "PALDEA": 62,
+                "ORANGE": 76}
 START_LEVEL = 3
 
 # Legendaries: the box legends and their peers are Lv 70, mythicals and the rest Lv 50.
@@ -139,8 +143,8 @@ def cap_mode(story):
 def story_level_cap(story):
     """STORY mode: the next Gym Leader's ace in this region (Champion's after 8, none after)."""
     region = story.get_current_region()
-    if story.is_region_champion(region):
-        return 100
+    if story.is_region_champion(region) or story.get_region_start(region).get("no_badges"):
+        return 100  # Orre has no Gyms to cap levels by
     badges = len(story.badges.get(region, []))
     aces = gym_aces(region)
     if badges < len(aces):
@@ -157,6 +161,8 @@ def obey_level(story):
     """Highest level that always obeys: Lv 20, +10 per badge from the current region, all at 8."""
     if cap_mode(story) != "OBEDIENCE":
         return 100
+    if story.get_region_start(story.get_current_region()).get("travel_only"):
+        return 100  # post-game trips (Orange Islands, Orre): your team already obeys you
     badges = len(story.badges.get(story.get_current_region(), []))
     return 100 if badges >= 8 else 20 + 10 * badges
 
@@ -169,9 +175,11 @@ def set_wild(game, pokemon, area_key):
     return pokemon
 
 
-def set_team(team, team_levels):
+def set_team(team, team_levels, exact=False):
+    """exact: a trainer's team with levels from the data, legendaries included (Kieran's Ogerpon);
+    otherwise legendaries keep their fixed level."""
     for p, lv in zip(team, team_levels):
-        if p and not is_legendary(p.id):
+        if p and (exact or not is_legendary(p.id)):
             p.level = int(lv)
             p.current_hp = p.get_max_hp()
     return team

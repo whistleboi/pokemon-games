@@ -1,0 +1,1237 @@
+{
+  "STORY_PROGRESSION": {
+    "PHENAC_CITY": {
+      "area_type": "town",
+      "route_name": "Phenac City",
+      "region": "ORRE",
+      "level": 60,
+      "has_gym": true,
+      "explore_options": [
+        {
+          "text": "Pokemon Center",
+          "action": "HEAL"
+        },
+        {
+          "text": "Poke Mart",
+          "action": "SHOP"
+        },
+        {
+          "text": "Trouble at the Fountain",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "Men in strange uniforms are scaring people at the fountain!",
+              "Cipher Peon: Orre belongs to Cipher! Our Shadow Pokemon can't be stopped!"
+            ],
+            "battle": {
+              "name": "Cipher Peons",
+              "class": "CIPHER_PEON",
+              "sprite": "roughneck.png",
+              "team": [
+                261,
+                285,
+                296
+              ],
+              "levels": [
+                58,
+                58,
+                60
+              ],
+              "rewards": {
+                "balls": 10
+              },
+              "dialogue": {
+                "player_won": [
+                  "Peon: Retreat! Tell the admins a trainer with real Pokemon is here!"
+                ]
+              }
+            },
+            "flag": "phenac_cipher_beaten",
+            "done": [
+              "The fountain sparkles again. Phenac is safe, for now."
+            ]
+          }
+        },
+        {
+          "text": "Meet Rui",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "requires": [
+              "phenac_cipher_beaten"
+            ],
+            "lines": [
+              "Rui: You beat them! Did you see that dark aura? Those were Shadow Pokemon.",
+              "Cipher closes Pokemon's hearts so they only want to fight. It's so cruel!",
+              "Team Snagem left this machine behind when Cipher took over: a Snag Machine.",
+              "With it you can catch a Shadow Pokemon from a Cipher trainer and save it!",
+              "Take Shadow Pokemon to the Relic Stone in Agate Village to open their hearts."
+            ],
+            "gift_item": {
+              "SNAG_MACHINE": 1
+            },
+            "flag": "got_snag_machine"
+          },
+          "condition": "phenac_cipher_beaten",
+          "flag_condition": "not got_snag_machine"
+        },
+        {
+          "text": "Phenac Stadium",
+          "action": "GYM",
+          "color": "GOLD"
+        }
+      ],
+      "travel_options": [
+        {
+          "text": "Desert Trail",
+          "target_area": "ORRE_DESERT"
+        },
+        {
+          "text": "Pyrite Town",
+          "target_area": "PYRITE_TOWN",
+          "condition": "got_snag_machine"
+        },
+        {
+          "text": "Agate Village",
+          "target_area": "AGATE_VILLAGE",
+          "condition": "cleared_the_under"
+        },
+        {
+          "text": "Realgam Tower",
+          "target_area": "REALGAM_TOWER",
+          "condition": "met_agate_elder"
+        },
+        {
+          "text": "Air Transit to Hoenn (Lilycove)",
+          "target_area": "LILYCOVE_CITY",
+          "message": "The plane lifts off over the desert. Next stop: Lilycove City in Hoenn."
+        }
+      ],
+      "next_area": "ORRE_DESERT",
+      "gym": {
+        "trainers": [
+          {
+            "name": "Streetler Dax",
+            "class": "STREETLER",
+            "sprite": "roughneck.png",
+            "team": [
+              262,
+              302,
+              319
+            ],
+            "levels": [
+              59,
+              59,
+              60
+            ],
+            "rewards": {
+              "balls": 5
+            },
+            "dialogue": {
+              "intro": [
+                "Round one at Phenac Stadium!"
+              ]
+            }
+          },
+          {
+            "name": "Civilian Mona",
+            "class": "CIVILIAN",
+            "sprite": "pokefan_f.png",
+            "team": [
+              184,
+              315,
+              357
+            ],
+            "levels": [
+              60,
+              60,
+              61
+            ],
+            "rewards": {
+              "balls": 5
+            },
+            "dialogue": {
+              "intro": [
+                "The crowd is cheering for you!"
+              ]
+            }
+          }
+        ],
+        "leader": {
+          "name": "Pree Champion Justy",
+          "class": "STADIUM_CHAMPION",
+          "sprite": "acetrainer_m.png",
+          "is_boss_battle": true,
+          "team": [
+            184,
+            362,
+            373,
+            365
+          ],
+          "levels": [
+            62,
+            62,
+            63,
+            64
+          ],
+          "rewards": {
+            "balls": 15
+          },
+          "victory_flag": "phenac_stadium_won",
+          "dialogue": {
+            "intro": [
+              "Justy: The Phenac Stadium final! Show Orre a real battle!"
+            ],
+            "player_won": [
+              "Justy: You're the Phenac Stadium champion!"
+            ],
+            "player_lost": [
+              "Justy: The stadium is open every day. Come back!"
+            ]
+          }
+        },
+        "requirements": {
+          "badges": 0
+        }
+      }
+    },
+    "ORRE_DESERT": {
+      "area_type": "wild_route",
+      "route_name": "Desert Trail",
+      "region": "ORRE",
+      "level": 60,
+      "battle_type": "sand",
+      "min_rounds": 0,
+      "trainer_pool": [
+        {
+          "name": "Rider Vex",
+          "class": "RIDER",
+          "sprite": "biker.png",
+          "team": [
+            323,
+            332,
+            344
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Outlaw Rusty",
+          "class": "OUTLAW",
+          "sprite": "roughneck.png",
+          "team": [
+            229,
+            262,
+            302
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "RIDE THE MOTORBIKE",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "You rev the motorbike and race across the dunes.",
+              "Sand sprays behind you. Orre has no tall grass, only desert, rock and wind."
+            ]
+          }
+        },
+        {
+          "text": "SNAG SHADOW MAKUHITA",
+          "action": "BOSS",
+          "color": "PURPLE",
+          "condition": [
+            "has_item:SNAG_MACHINE"
+          ],
+          "flag_condition": "not snagged_shadow_makuhita",
+          "boss": {
+            "id": 9301,
+            "name": "Shadow Makuhita",
+            "level": 60,
+            "no_catch": false,
+            "victory_flag": "snagged_shadow_makuhita",
+            "lines": [
+              "Cipher Peon Folly sends out a Shadow Makuhita! A dark aura surrounds it...",
+              "Weaken it, then throw a ball. The Snag Machine will catch it!"
+            ],
+            "won": [
+              "The Shadow Makuhita ran off into the desert..."
+            ],
+            "rewards": {
+              "balls": 5
+            }
+          }
+        },
+        {
+          "text": "SNAG SHADOW TEDDIURSA",
+          "action": "BOSS",
+          "color": "PURPLE",
+          "condition": [
+            "has_item:SNAG_MACHINE"
+          ],
+          "flag_condition": "not snagged_shadow_teddiursa",
+          "boss": {
+            "id": 9302,
+            "name": "Shadow Teddiursa",
+            "level": 60,
+            "no_catch": false,
+            "victory_flag": "snagged_shadow_teddiursa",
+            "lines": [
+              "Cipher Peon Nore sends out a Shadow Teddiursa! A dark aura surrounds it...",
+              "Weaken it, then throw a ball. The Snag Machine will catch it!"
+            ],
+            "won": [
+              "The Shadow Teddiursa ran off into the desert..."
+            ],
+            "rewards": {
+              "balls": 5
+            }
+          }
+        },
+        {
+          "text": "Phenac City",
+          "action": "EXIT",
+          "target_area": "PHENAC_CITY",
+          "condition": "can_exit",
+          "color": "RED"
+        },
+        {
+          "text": "Pyrite Town",
+          "action": "EXIT",
+          "target_area": "PYRITE_TOWN",
+          "condition": "got_snag_machine",
+          "color": "RED"
+        }
+      ],
+      "next_area": "PHENAC_CITY"
+    },
+    "PYRITE_TOWN": {
+      "area_type": "town",
+      "route_name": "Pyrite Town",
+      "region": "ORRE",
+      "level": 63,
+      "has_gym": true,
+      "explore_options": [
+        {
+          "text": "Pokemon Center",
+          "action": "HEAL"
+        },
+        {
+          "text": "Poke Mart",
+          "action": "SHOP"
+        },
+        {
+          "text": "Pyrite's Sheriff",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "Sheriff: Pyrite's a rough town, kid. Outlaws on every corner.",
+              "Lately Cipher's been running things from The Under, the old city below us.",
+              "Clear them out and Agate Village will want to meet you."
+            ]
+          }
+        },
+        {
+          "text": "Pyrite Colosseum",
+          "action": "GYM",
+          "color": "GOLD"
+        }
+      ],
+      "travel_options": [
+        {
+          "text": "The Under",
+          "target_area": "THE_UNDER"
+        },
+        {
+          "text": "Desert Trail",
+          "target_area": "ORRE_DESERT"
+        },
+        {
+          "text": "Phenac City",
+          "target_area": "PHENAC_CITY"
+        }
+      ],
+      "next_area": "THE_UNDER",
+      "gym": {
+        "trainers": [
+          {
+            "name": "Thug Brock",
+            "class": "THUG",
+            "sprite": "roughneck.png",
+            "team": [
+              297,
+              302,
+              229
+            ],
+            "levels": [
+              62,
+              62,
+              63
+            ],
+            "rewards": {
+              "balls": 5
+            },
+            "dialogue": {
+              "intro": [
+                "Welcome to Pyrite, punk!"
+              ]
+            }
+          },
+          {
+            "name": "Scrapper Kit",
+            "class": "SCRAPPER",
+            "sprite": "blackbelt.png",
+            "team": [
+              237,
+              308,
+              286
+            ],
+            "levels": [
+              63,
+              63,
+              64
+            ],
+            "rewards": {
+              "balls": 5
+            },
+            "dialogue": {
+              "intro": [
+                "Nobody leaves the Colosseum easy!"
+              ]
+            }
+          }
+        ],
+        "leader": {
+          "name": "Miror B.",
+          "class": "CIPHER_ADMIN",
+          "sprite": "guitarist.png",
+          "is_boss_battle": true,
+          "team": [
+            272,
+            272,
+            272,
+            272
+          ],
+          "levels": [
+            64,
+            64,
+            65,
+            66
+          ],
+          "rewards": {
+            "balls": 15
+          },
+          "victory_flag": "pyrite_colosseum_won",
+          "dialogue": {
+            "intro": [
+              "Miror B.: Ooh, a challenger! Let's dance! My Ludicolo never miss a beat!"
+            ],
+            "player_won": [
+              "Miror B.: Aaah! My groove! You win this round, baby!"
+            ],
+            "player_lost": [
+              "Miror B.: Ha! Keep dancing and come back!"
+            ]
+          }
+        },
+        "requirements": {
+          "badges": 0
+        }
+      }
+    },
+    "THE_UNDER": {
+      "area_type": "dungeon",
+      "route_name": "The Under",
+      "region": "ORRE",
+      "level": 64,
+      "battle_type": "indoor",
+      "min_rounds": 0,
+      "trainer_pool": [
+        {
+          "name": "Cipher Peon Litnar",
+          "class": "CIPHER_PEON",
+          "sprite": "roughneck.png",
+          "team": [
+            262,
+            336,
+            342
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Cipher Peon Remil",
+          "class": "CIPHER_PEON",
+          "sprite": "biker.png",
+          "team": [
+            229,
+            317,
+            302
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "SNAG SHADOW HOUNDOUR",
+          "action": "BOSS",
+          "color": "PURPLE",
+          "condition": [
+            "has_item:SNAG_MACHINE"
+          ],
+          "flag_condition": "not snagged_shadow_houndour",
+          "boss": {
+            "id": 9303,
+            "name": "Shadow Houndour",
+            "level": 61,
+            "no_catch": false,
+            "victory_flag": "snagged_shadow_houndour",
+            "lines": [
+              "Cipher Peon Exinn sends out a Shadow Houndour! A dark aura surrounds it...",
+              "Weaken it, then throw a ball. The Snag Machine will catch it!"
+            ],
+            "won": [
+              "The Shadow Houndour ran off into the desert..."
+            ],
+            "rewards": {
+              "balls": 5
+            }
+          }
+        },
+        {
+          "text": "SNAG SHADOW BAYLEEF",
+          "action": "BOSS",
+          "color": "PURPLE",
+          "condition": [
+            "has_item:SNAG_MACHINE"
+          ],
+          "flag_condition": "not snagged_shadow_bayleef",
+          "boss": {
+            "id": 9304,
+            "name": "Shadow Bayleef",
+            "level": 62,
+            "no_catch": false,
+            "victory_flag": "snagged_shadow_bayleef",
+            "lines": [
+              "Cipher Peon Verde sends out a Shadow Bayleef! A dark aura surrounds it...",
+              "Weaken it, then throw a ball. The Snag Machine will catch it!"
+            ],
+            "won": [
+              "The Shadow Bayleef ran off into the desert..."
+            ],
+            "rewards": {
+              "balls": 5
+            }
+          }
+        },
+        {
+          "text": "SNAG SHADOW QUILAVA",
+          "action": "BOSS",
+          "color": "PURPLE",
+          "condition": [
+            "has_item:SNAG_MACHINE"
+          ],
+          "flag_condition": "not snagged_shadow_quilava",
+          "boss": {
+            "id": 9305,
+            "name": "Shadow Quilava",
+            "level": 62,
+            "no_catch": false,
+            "victory_flag": "snagged_shadow_quilava",
+            "lines": [
+              "Cipher Peon Rosso sends out a Shadow Quilava! A dark aura surrounds it...",
+              "Weaken it, then throw a ball. The Snag Machine will catch it!"
+            ],
+            "won": [
+              "The Shadow Quilava ran off into the desert..."
+            ],
+            "rewards": {
+              "balls": 5
+            }
+          }
+        },
+        {
+          "text": "SNAG SHADOW CROCONAW",
+          "action": "BOSS",
+          "color": "PURPLE",
+          "condition": [
+            "has_item:SNAG_MACHINE"
+          ],
+          "flag_condition": "not snagged_shadow_croconaw",
+          "boss": {
+            "id": 9306,
+            "name": "Shadow Croconaw",
+            "level": 62,
+            "no_catch": false,
+            "victory_flag": "snagged_shadow_croconaw",
+            "lines": [
+              "Cipher Peon Bluno sends out a Shadow Croconaw! A dark aura surrounds it...",
+              "Weaken it, then throw a ball. The Snag Machine will catch it!"
+            ],
+            "won": [
+              "The Shadow Croconaw ran off into the desert..."
+            ],
+            "rewards": {
+              "balls": 5
+            }
+          }
+        },
+        {
+          "text": "SHUT DOWN THE UNDER",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "Cipher Admin Venus: How dare you march into my studio!",
+              "My Shadow Pokemon are beautiful, and you'll see how beautiful in battle!"
+            ],
+            "battle": {
+              "name": "Cipher Admin Venus",
+              "class": "CIPHER_ADMIN",
+              "sprite": "beauty.png",
+              "team": [
+                184,
+                350,
+                186,
+                36
+              ],
+              "levels": [
+                64,
+                65,
+                65,
+                66
+              ],
+              "rewards": {
+                "balls": 15
+              },
+              "dialogue": {
+                "player_won": [
+                  "Venus: My makeup... ruined! Fine, The Under is yours!"
+                ]
+              }
+            },
+            "flag": "cleared_the_under"
+          },
+          "flag_condition": "not cleared_the_under"
+        },
+        {
+          "text": "Pyrite Town",
+          "action": "EXIT",
+          "target_area": "PYRITE_TOWN",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "PYRITE_TOWN"
+    },
+    "AGATE_VILLAGE": {
+      "area_type": "town",
+      "route_name": "Agate Village",
+      "region": "ORRE",
+      "level": 64,
+      "has_gym": false,
+      "explore_options": [
+        {
+          "text": "Pokemon Center",
+          "action": "HEAL"
+        },
+        {
+          "text": "Poke Mart",
+          "action": "SHOP"
+        },
+        {
+          "text": "Village Elder",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "Elder Eagun: So you're the trainer who saved Pyrite. Rui told me everything.",
+              "The Relic Stone in our forest can open a Shadow Pokemon's heart. Use it whenever you need.",
+              "Cipher's leader hides in Realgam Tower. When you're ready, end this."
+            ],
+            "flag": "met_agate_elder"
+          }
+        },
+        {
+          "text": "Purify at the Relic Stone",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "You lead your Shadow Pokemon to the Relic Stone. A warm, gentle light fills the forest..."
+            ],
+            "purify": true
+          }
+        }
+      ],
+      "travel_options": [
+        {
+          "text": "Relic Forest",
+          "target_area": "RELIC_FOREST"
+        },
+        {
+          "text": "Phenac City",
+          "target_area": "PHENAC_CITY"
+        }
+      ],
+      "next_area": "RELIC_FOREST"
+    },
+    "RELIC_FOREST": {
+      "area_type": "wild_route",
+      "route_name": "Relic Forest",
+      "region": "ORRE",
+      "level": 65,
+      "battle_type": "forest",
+      "min_rounds": 0,
+      "trainer_pool": [
+        {
+          "name": "Nomad Ilda",
+          "class": "NOMAD",
+          "sprite": "picnicker.png",
+          "team": [
+            357,
+            315,
+            182
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Medium Sora",
+          "class": "MEDIUM",
+          "sprite": "medium.png",
+          "team": [
+            354,
+            302,
+            200
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "SNAG SHADOW LEDIAN",
+          "action": "BOSS",
+          "color": "PURPLE",
+          "condition": [
+            "has_item:SNAG_MACHINE"
+          ],
+          "flag_condition": "not snagged_shadow_ledian",
+          "boss": {
+            "id": 9307,
+            "name": "Shadow Ledian",
+            "level": 63,
+            "no_catch": false,
+            "victory_flag": "snagged_shadow_ledian",
+            "lines": [
+              "Cipher Peon Kloak sends out a Shadow Ledian! A dark aura surrounds it...",
+              "Weaken it, then throw a ball. The Snag Machine will catch it!"
+            ],
+            "won": [
+              "The Shadow Ledian ran off into the desert..."
+            ],
+            "rewards": {
+              "balls": 5
+            }
+          }
+        },
+        {
+          "text": "SNAG SHADOW HITMONTOP",
+          "action": "BOSS",
+          "color": "PURPLE",
+          "condition": [
+            "has_item:SNAG_MACHINE"
+          ],
+          "flag_condition": "not snagged_shadow_hitmontop",
+          "boss": {
+            "id": 9308,
+            "name": "Shadow Hitmontop",
+            "level": 64,
+            "no_catch": false,
+            "victory_flag": "snagged_shadow_hitmontop",
+            "lines": [
+              "Cipher Admin Dakim's peon sends out a Shadow Hitmontop! A dark aura surrounds it...",
+              "Weaken it, then throw a ball. The Snag Machine will catch it!"
+            ],
+            "won": [
+              "The Shadow Hitmontop ran off into the desert..."
+            ],
+            "rewards": {
+              "balls": 5
+            }
+          }
+        },
+        {
+          "text": "THE WISHING STAR",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "requires": [
+              "cipher_defeated"
+            ],
+            "fail": [
+              "The Relic Stone glows softly. The forest feels like it's waiting for something."
+            ],
+            "lines": [
+              "Every Shadow Pokemon you saved gathers around the Relic Stone.",
+              "A shooting star falls into the forest... and a tiny Pokemon with a star on its head wakes up!",
+              "It's Jirachi, the Wish Pokemon. It looks at you, curious."
+            ],
+            "flag": "jirachi_awake"
+          },
+          "flag_condition": "not jirachi_awake"
+        },
+        {
+          "text": "MEET JIRACHI",
+          "action": "BOSS",
+          "color": "GOLD",
+          "condition": [
+            "jirachi_awake",
+            "boss_not_defeated"
+          ]
+        },
+        {
+          "text": "Agate Village",
+          "action": "EXIT",
+          "target_area": "AGATE_VILLAGE",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "AGATE_VILLAGE",
+      "area_boss": {
+        "id": 385,
+        "name": "Jirachi",
+        "victory_flag": "orre_jirachi_caught"
+      }
+    },
+    "REALGAM_TOWER": {
+      "area_type": "town",
+      "route_name": "Realgam Tower",
+      "region": "ORRE",
+      "level": 68,
+      "has_gym": true,
+      "explore_options": [
+        {
+          "text": "Pokemon Center",
+          "action": "HEAL"
+        },
+        {
+          "text": "Poke Mart",
+          "action": "SHOP"
+        },
+        {
+          "text": "Realgam Colosseum (Cipher)",
+          "action": "GYM",
+          "color": "GOLD"
+        }
+      ],
+      "travel_options": [
+        {
+          "text": "Cipher Command Center",
+          "target_area": "CIPHER_COMMAND",
+          "condition": "cipher_defeated"
+        },
+        {
+          "text": "Phenac City",
+          "target_area": "PHENAC_CITY"
+        }
+      ],
+      "next_area": "CIPHER_COMMAND",
+      "gym": {
+        "trainers": [
+          {
+            "name": "Cipher Admin Dakim",
+            "class": "CIPHER_ADMIN",
+            "sprite": "blackbelt.png",
+            "team": [
+              232,
+              340,
+              62,
+              297
+            ],
+            "levels": [
+              66,
+              66,
+              67,
+              68
+            ],
+            "rewards": {
+              "balls": 8
+            },
+            "dialogue": {
+              "intro": [
+                "Dakim: Crush! I'll crush you and your Pokemon!"
+              ]
+            }
+          },
+          {
+            "name": "Cipher Admin Ein",
+            "class": "CIPHER_ADMIN",
+            "sprite": "scientist.png",
+            "team": [
+              376,
+              82,
+              289,
+              344
+            ],
+            "levels": [
+              67,
+              67,
+              68,
+              69
+            ],
+            "rewards": {
+              "balls": 8
+            },
+            "dialogue": {
+              "intro": [
+                "Ein: My research made the Shadow Pokemon. You will not undo it!"
+              ]
+            }
+          }
+        ],
+        "leader": {
+          "name": "Cipher Head Evice",
+          "class": "CIPHER_BOSS",
+          "sprite": "gentleman.png",
+          "is_boss_battle": true,
+          "team": [
+            248,
+            376,
+            373,
+            330,
+            334,
+            289
+          ],
+          "levels": [
+            70,
+            70,
+            71,
+            70,
+            70,
+            72
+          ],
+          "rewards": {
+            "balls": 25,
+            "RARE_CANDY": 5
+          },
+          "victory_flag": "cipher_defeated",
+          "dialogue": {
+            "intro": [
+              "Evice: So you're the meddler. Realgam Tower is mine, and so is Orre!"
+            ],
+            "player_won": [
+              "Evice: Impossible... Cipher is finished.",
+              "Rui: You did it! Every Shadow Pokemon can be saved now!"
+            ],
+            "player_lost": [
+              "Evice: Cipher cannot be beaten! Leave my tower!"
+            ]
+          }
+        },
+        "requirements": {
+          "badges": 0,
+          "flag": "met_agate_elder",
+          "fail_text": "Realgam Tower's doors are sealed. Talk to the elder in Agate Village first."
+        }
+      }
+    },
+    "CIPHER_COMMAND": {
+      "area_type": "dungeon",
+      "route_name": "Cipher Command Center",
+      "region": "ORRE",
+      "level": 70,
+      "battle_type": "indoor",
+      "min_rounds": 0,
+      "trainer_pool": [],
+      "route_menu": [
+        {
+          "text": "SNAG SHADOW URSARING",
+          "action": "BOSS",
+          "color": "PURPLE",
+          "condition": [
+            "has_item:SNAG_MACHINE"
+          ],
+          "flag_condition": "not snagged_shadow_ursaring",
+          "boss": {
+            "id": 9309,
+            "name": "Shadow Ursaring",
+            "level": 65,
+            "no_catch": false,
+            "victory_flag": "snagged_shadow_ursaring",
+            "lines": [
+              "a Cipher Peon guarding the lab sends out a Shadow Ursaring! A dark aura surrounds it...",
+              "Weaken it, then throw a ball. The Snag Machine will catch it!"
+            ],
+            "won": [
+              "The Shadow Ursaring ran off into the desert..."
+            ],
+            "rewards": {
+              "balls": 5
+            }
+          }
+        },
+        {
+          "text": "SNAG SHADOW SKARMORY",
+          "action": "BOSS",
+          "color": "PURPLE",
+          "condition": [
+            "has_item:SNAG_MACHINE"
+          ],
+          "flag_condition": "not snagged_shadow_skarmory",
+          "boss": {
+            "id": 9310,
+            "name": "Shadow Skarmory",
+            "level": 66,
+            "no_catch": false,
+            "victory_flag": "snagged_shadow_skarmory",
+            "lines": [
+              "a Cipher Peon in the hangar sends out a Shadow Skarmory! A dark aura surrounds it...",
+              "Weaken it, then throw a ball. The Snag Machine will catch it!"
+            ],
+            "won": [
+              "The Shadow Skarmory ran off into the desert..."
+            ],
+            "rewards": {
+              "balls": 5
+            }
+          }
+        },
+        {
+          "text": "SNAG SHADOW SNORLAX",
+          "action": "BOSS",
+          "color": "PURPLE",
+          "condition": [
+            "has_item:SNAG_MACHINE"
+          ],
+          "flag_condition": "not snagged_shadow_snorlax",
+          "boss": {
+            "id": 9311,
+            "name": "Shadow Snorlax",
+            "level": 67,
+            "no_catch": false,
+            "victory_flag": "snagged_shadow_snorlax",
+            "lines": [
+              "a Cipher Peon in the storeroom sends out a Shadow Snorlax! A dark aura surrounds it...",
+              "Weaken it, then throw a ball. The Snag Machine will catch it!"
+            ],
+            "won": [
+              "The Shadow Snorlax ran off into the desert..."
+            ],
+            "rewards": {
+              "balls": 5
+            }
+          }
+        },
+        {
+          "text": "SNAG SHADOW TYRANITAR",
+          "action": "BOSS",
+          "color": "PURPLE",
+          "condition": [
+            "has_item:SNAG_MACHINE"
+          ],
+          "flag_condition": "not snagged_shadow_tyranitar",
+          "boss": {
+            "id": 9312,
+            "name": "Shadow Tyranitar",
+            "level": 70,
+            "no_catch": false,
+            "victory_flag": "snagged_shadow_tyranitar",
+            "lines": [
+              "Evice's last guard sends out a Shadow Tyranitar! A dark aura surrounds it...",
+              "Weaken it, then throw a ball. The Snag Machine will catch it!"
+            ],
+            "won": [
+              "The Shadow Tyranitar ran off into the desert..."
+            ],
+            "rewards": {
+              "balls": 5
+            }
+          }
+        },
+        {
+          "text": "READ CIPHER'S FILES",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "The files list every Shadow Pokemon Cipher made. You've found the last of them here.",
+              "One note says: \"A wishing star fell near Agate's Relic Stone. Investigate.\""
+            ]
+          }
+        },
+        {
+          "text": "Realgam Tower",
+          "action": "EXIT",
+          "target_area": "REALGAM_TOWER",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "REALGAM_TOWER"
+    }
+  },
+  "JOURNAL_MISSIONS": [
+    {
+      "id": "orre_m1",
+      "type": "SIDE",
+      "title": "Welcome to Orre",
+      "description": "Cipher Peons are attacking Phenac City's fountain. Stop them and meet Rui.",
+      "condition": {
+        "flag_not": "got_snag_machine",
+        "required_region": "ORRE"
+      },
+      "reward": "Snag Machine",
+      "region": "ORRE"
+    },
+    {
+      "id": "orre_m2",
+      "type": "SIDE",
+      "title": "Pyrite and The Under",
+      "description": "Cipher runs Pyrite Town from The Under. Snag their Shadow Pokemon and beat Admin Venus.",
+      "condition": {
+        "flag": "got_snag_machine",
+        "flag_not": "cleared_the_under",
+        "required_region": "ORRE"
+      },
+      "reward": "The way to Agate",
+      "region": "ORRE"
+    },
+    {
+      "id": "orre_m3",
+      "type": "SIDE",
+      "title": "Realgam Tower",
+      "description": "Purify your Shadow Pokemon at Agate's Relic Stone, then take down Cipher at Realgam Tower.",
+      "condition": {
+        "flag": "met_agate_elder",
+        "flag_not": "cipher_defeated",
+        "required_region": "ORRE"
+      },
+      "reward": "Orre is saved",
+      "region": "ORRE"
+    },
+    {
+      "id": "orre_m4",
+      "type": "SIDE",
+      "title": "The Wishing Star",
+      "description": "Cipher's files mention a wishing star near Agate's Relic Stone.",
+      "condition": {
+        "flag": "cipher_defeated",
+        "flag_not": "orre_jirachi_caught",
+        "required_region": "ORRE"
+      },
+      "reward": "Jirachi",
+      "region": "ORRE"
+    }
+  ],
+  "REGION_START": {
+    "ORRE": {
+      "order": 3.5,
+      "travel_only": true,
+      "no_badges": true,
+      "subtitle": "COLOSSEUM / ORRE",
+      "start_area": "PHENAC_CITY",
+      "dex_range": [
+        0,
+        -1
+      ],
+      "dex_extra": [],
+      "storage_region": "HOENN"
+    }
+  },
+  "FORM_MAP": {
+    "9301": {
+      "id": 296,
+      "form": "shadow",
+      "name": "Shadow Makuhita"
+    },
+    "9302": {
+      "id": 216,
+      "form": "shadow",
+      "name": "Shadow Teddiursa"
+    },
+    "9303": {
+      "id": 228,
+      "form": "shadow",
+      "name": "Shadow Houndour"
+    },
+    "9304": {
+      "id": 153,
+      "form": "shadow",
+      "name": "Shadow Bayleef"
+    },
+    "9305": {
+      "id": 156,
+      "form": "shadow",
+      "name": "Shadow Quilava"
+    },
+    "9306": {
+      "id": 159,
+      "form": "shadow",
+      "name": "Shadow Croconaw"
+    },
+    "9307": {
+      "id": 166,
+      "form": "shadow",
+      "name": "Shadow Ledian"
+    },
+    "9308": {
+      "id": 237,
+      "form": "shadow",
+      "name": "Shadow Hitmontop"
+    },
+    "9309": {
+      "id": 217,
+      "form": "shadow",
+      "name": "Shadow Ursaring"
+    },
+    "9310": {
+      "id": 227,
+      "form": "shadow",
+      "name": "Shadow Skarmory"
+    },
+    "9311": {
+      "id": 143,
+      "form": "shadow",
+      "name": "Shadow Snorlax"
+    },
+    "9312": {
+      "id": 248,
+      "form": "shadow",
+      "name": "Shadow Tyranitar"
+    }
+  }
+}

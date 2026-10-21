@@ -547,8 +547,9 @@
         { "text": "Route 121", "target_area": "HOENN_ROUTE_121" },
         { "text": "Route 124", "target_area": "HOENN_ROUTE_124", "condition": "has_item:HM_SURF" },
         { "text": "Safari Zone", "target_area": "HOENN_SAFARI_ZONE" },
-        { "text": "Route 122", "target_area": "HOENN_ROUTE_122" }
-      ],
+        { "text": "Route 122", "target_area": "HOENN_ROUTE_122" },
+            {"text": "Air Transit to Orre", "target_area": "PHENAC_CITY", "condition": "beat_hoenn_champion", "message": "The plane flies far over the sea to the desert region of Orre. Next stop: Phenac City!"}
+        ],
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
         { "text": "Department Store", "action": "SHOP" },
@@ -3609,7 +3610,7 @@
   "HOENN_CAVE_OF_ORIGIN": [41, 42, 302, 303],
   "HOENN_CAVE_OF_ORIGIN_PERCENTAGES": { "41": 30, "42": 30, "302": 20, "303": 20 },
   "HOENN_SKY_PILLAR": [42, 303, 334, 354, 385, 386],
-  "HOENN_SKY_PILLAR_PERCENTAGES": { "42": 27, "303": 20, "334": 20, "354": 30, "385": 2 },
+  "HOENN_SKY_PILLAR_PERCENTAGES": { "42": 27, "303": 20, "334": 20, "354": 30 },
   "HOENN_MT_PYRE": [37, 307, 353, 355, 358, 2006],
   "HOENN_MT_PYRE_PERCENTAGES": { "37": 9, "307": 13, "353": 32, "355": 37, "358": 8, "2006": 1 },
   "REGION_START": {

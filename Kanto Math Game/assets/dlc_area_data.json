@@ -1,0 +1,513 @@
+{
+  "STORY_PROGRESSION": {
+    "DYNA_TREE_HILL": {
+      "area_type": "wild_route",
+      "route_name": "Dyna Tree Hill",
+      "region": "GALAR",
+      "level": 68,
+      "wild_pool_percentages": "DLC_DYNA_TREE_HILL_PERCENTAGES",
+      "battle_type": "grass",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Expedition Member Rae",
+          "class": "EXPEDITION",
+          "sprite": "hiker.png",
+          "team": [
+            873,
+            820,
+            832
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "SEE GALARIAN ARTICUNO",
+          "action": "BOSS",
+          "color": "BLUE",
+          "condition": [
+            "met_peony"
+          ],
+          "flag_condition": "not dlc_galarian_articuno",
+          "boss": {
+            "id": 2027,
+            "name": "Galarian Articuno",
+            "level": 70,
+            "no_catch": false,
+            "victory_flag": "dlc_galarian_articuno",
+            "lines": [
+              "Something cold and graceful glides between the trees... Galarian Articuno!"
+            ],
+            "won": [
+              "Galarian Articuno vanishes in a flash of psychic light."
+            ],
+            "rewards": {
+              "balls": 5
+            }
+          }
+        },
+        {
+          "text": "SEE GALARIAN ZAPDOS",
+          "action": "BOSS",
+          "color": "ORANGE",
+          "condition": [
+            "met_peony"
+          ],
+          "flag_condition": "not dlc_galarian_zapdos",
+          "boss": {
+            "id": 2028,
+            "name": "Galarian Zapdos",
+            "level": 70,
+            "no_catch": false,
+            "victory_flag": "dlc_galarian_zapdos",
+            "lines": [
+              "Thundering footsteps! Galarian Zapdos sprints across the hill!"
+            ],
+            "won": [
+              "Galarian Zapdos dashes away over the hill."
+            ],
+            "rewards": {
+              "balls": 5
+            }
+          }
+        },
+        {
+          "text": "SEE GALARIAN MOLTRES",
+          "action": "BOSS",
+          "color": "PURPLE",
+          "condition": [
+            "met_peony"
+          ],
+          "flag_condition": "not dlc_galarian_moltres",
+          "boss": {
+            "id": 2029,
+            "name": "Galarian Moltres",
+            "level": 70,
+            "no_catch": false,
+            "victory_flag": "dlc_galarian_moltres",
+            "lines": [
+              "The sky darkens. Galarian Moltres lands on the giant tree, burning with dark flames!"
+            ],
+            "won": [
+              "Galarian Moltres flies off into the clouds."
+            ],
+            "rewards": {
+              "balls": 5
+            }
+          }
+        },
+        {
+          "text": "Crown Tundra",
+          "action": "EXIT",
+          "target_area": "CROWN_TUNDRA",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "CROWN_TUNDRA"
+    },
+    "BLUEBERRY_ACADEMY": {
+      "area_type": "town",
+      "route_name": "Blueberry Academy",
+      "region": "PALDEA",
+      "level": 70,
+      "has_gym": true,
+      "explore_options": [
+        {
+          "text": "Pokemon Center",
+          "action": "HEAL"
+        },
+        {
+          "text": "Poke Mart",
+          "action": "SHOP"
+        },
+        {
+          "text": "Briar's Expedition",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "requires": [
+              "bb_league_champion"
+            ],
+            "fail": [
+              "Briar: I'm planning an expedition deep into Area Zero... but only with the BB League Champion!"
+            ],
+            "lines": [
+              "Briar: You beat Kieran and the BB Elite Four! You're coming on my expedition.",
+              "There's something sleeping in the Area Zero Underdepths. The legend of Terapagos..."
+            ],
+            "flag": "briar_expedition"
+          }
+        },
+        {
+          "text": "BB League",
+          "action": "GYM",
+          "color": "GOLD"
+        }
+      ],
+      "travel_options": [
+        {
+          "text": "The Terarium",
+          "target_area": "TERARIUM"
+        },
+        {
+          "text": "Return to Mesagoza",
+          "target_area": "MESAGOZA",
+          "message": "Your exchange term is over for now. You fly home to Paldea."
+        }
+      ],
+      "next_area": "TERARIUM",
+      "gym": {
+        "trainers": [
+          {
+            "name": "Crispin",
+            "class": "BB_ELITE_FOUR",
+            "sprite": "kindler.png",
+            "team": [
+              324,
+              1020,
+              609,
+              637
+            ],
+            "levels": [
+              70,
+              70,
+              71,
+              72
+            ],
+            "rewards": {
+              "balls": 8
+            },
+            "dialogue": {
+              "intro": [
+                "Crispin: Fire it up! Let's goooo!"
+              ]
+            }
+          },
+          {
+            "name": "Amarys",
+            "class": "BB_ELITE_FOUR",
+            "sprite": "acetrainer_f.png",
+            "team": [
+              227,
+              1018,
+              376,
+              823
+            ],
+            "levels": [
+              71,
+              71,
+              72,
+              73
+            ],
+            "rewards": {
+              "balls": 8
+            },
+            "dialogue": {
+              "intro": [
+                "Amarys: ...Let's get this over with."
+              ]
+            }
+          },
+          {
+            "name": "Lacey",
+            "class": "BB_ELITE_FOUR",
+            "sprite": "lass.png",
+            "team": [
+              184,
+              1022,
+              959,
+              700
+            ],
+            "levels": [
+              72,
+              72,
+              73,
+              74
+            ],
+            "rewards": {
+              "balls": 8
+            },
+            "dialogue": {
+              "intro": [
+                "Lacey: Battle rules! Let's play fair and have fun!"
+              ]
+            }
+          },
+          {
+            "name": "Drayton",
+            "class": "BB_ELITE_FOUR",
+            "sprite": "acetrainer_m.png",
+            "team": [
+              1021,
+              691,
+              780,
+              998
+            ],
+            "levels": [
+              73,
+              73,
+              74,
+              75
+            ],
+            "rewards": {
+              "balls": 8
+            },
+            "dialogue": {
+              "intro": [
+                "Drayton: Eh, let's battle, I guess."
+              ]
+            }
+          }
+        ],
+        "leader": {
+          "name": "Kieran",
+          "class": "BB_CHAMPION",
+          "sprite": "school_kid_m.png",
+          "is_boss_battle": true,
+          "team": [
+            1019,
+            983,
+            727,
+            887,
+            1014,
+            1017
+          ],
+          "levels": [
+            75,
+            75,
+            75,
+            75,
+            76,
+            77
+          ],
+          "rewards": {
+            "balls": 25,
+            "RARE_CANDY": 5
+          },
+          "victory_flag": "bb_league_champion",
+          "dialogue": {
+            "intro": [
+              "Kieran: I've been waiting for this. I'm the Champion now. I won't lose to you again!"
+            ],
+            "player_won": [
+              "Kieran: ...You're still stronger. I get it now. Thanks for battling me."
+            ],
+            "player_lost": [
+              "Kieran: See? I'm the strongest now!"
+            ]
+          }
+        },
+        "requirements": {
+          "badges": 0
+        }
+      }
+    },
+    "TERARIUM": {
+      "area_type": "wild_route",
+      "route_name": "The Terarium",
+      "region": "PALDEA",
+      "level": 70,
+      "wild_pool_percentages": "DLC_TERARIUM_PERCENTAGES",
+      "battle_type": "grass",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "BB Student Nova",
+          "class": "BB_STUDENT",
+          "sprite": "school_kid_f.png",
+          "team": [
+            1018,
+            974,
+            669
+          ],
+          "rewards": {
+            "balls": 6
+          }
+        },
+        {
+          "name": "BB Student Rook",
+          "class": "BB_STUDENT",
+          "sprite": "school_kid_m.png",
+          "team": [
+            884,
+            622,
+            626
+          ],
+          "rewards": {
+            "balls": 6
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "THE FOUR BIOMES",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "The Terarium is a giant dome under the sea with four biomes:",
+              "savanna, coastal, canyon and polar. Pokemon from all over the world live here!"
+            ]
+          }
+        },
+        {
+          "text": "Blueberry Academy",
+          "action": "EXIT",
+          "target_area": "BLUEBERRY_ACADEMY",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "BLUEBERRY_ACADEMY"
+    }
+  },
+  "JOURNAL_MISSIONS": [
+    {
+      "id": "dlc_ioa",
+      "type": "SIDE",
+      "title": "The Isle of Armor",
+      "description": "Train at Mustard's Master Dojo, beat Klara and Avery, and climb a Tower of Two Fists with Kubfu.",
+      "condition": {
+        "flag": "beat_galar_champion",
+        "flag_not": "mustard_gave_kubfu",
+        "required_region": "GALAR"
+      },
+      "reward": "Kubfu",
+      "region": "GALAR"
+    },
+    {
+      "id": "dlc_ct",
+      "type": "SIDE",
+      "title": "The Crown Tundra",
+      "description": "Join Peony's expedition: the King of Bountiful Harvests, the giants, and the Galarian birds on Dyna Tree Hill.",
+      "condition": {
+        "flag": "beat_galar_champion",
+        "flag_not": "met_peony",
+        "required_region": "GALAR"
+      },
+      "reward": "Galarian birds",
+      "region": "GALAR"
+    },
+    {
+      "id": "dlc_id",
+      "type": "SIDE",
+      "title": "The Indigo Disk",
+      "description": "Go on exchange to Blueberry Academy, beat the BB League, and join Briar's expedition for Terapagos.",
+      "condition": {
+        "flag": "KITAKAMI_boss_defeated",
+        "flag_not": "briar_expedition",
+        "required_region": "PALDEA"
+      },
+      "reward": "Terapagos",
+      "region": "PALDEA"
+    }
+  ],
+  "DLC_DYNA_TREE_HILL": [
+    831,
+    832,
+    829,
+    830,
+    833,
+    819,
+    820,
+    852,
+    870,
+    2024,
+    875,
+    862
+  ],
+  "DLC_DYNA_TREE_HILL_PERCENTAGES": {
+    "831": 10,
+    "832": 6,
+    "829": 12,
+    "830": 6,
+    "833": 10,
+    "819": 12,
+    "820": 6,
+    "852": 10,
+    "870": 4,
+    "2024": 10,
+    "875": 6,
+    "862": 8
+  },
+  "DLC_TERARIUM": [
+    128,
+    111,
+    203,
+    626,
+    594,
+    131,
+    779,
+    227,
+    622,
+    884,
+    361,
+    582,
+    974,
+    1011,
+    1019,
+    1018,
+    133,
+    669
+  ],
+  "DLC_TERARIUM_PERCENTAGES": {
+    "128": 8,
+    "111": 6,
+    "203": 6,
+    "626": 6,
+    "594": 6,
+    "131": 4,
+    "779": 6,
+    "227": 6,
+    "622": 6,
+    "884": 4,
+    "361": 6,
+    "582": 6,
+    "974": 6,
+    "1011": 6,
+    "1019": 2,
+    "1018": 2,
+    "133": 6,
+    "669": 8
+  }
+}

@@ -44,12 +44,12 @@ FORM_HOME = {"alolan": "ALOLA", "galarian": "GALAR", "hisuian": "SINNOH", "palde
 
 
 # Kanto and Johto stay Gen 1-2 until the player has played later regions ("Kanto stays Kanto",
-# "Johto stays Johto"); the later regions keep their mixed pools.
-CLASSIC_REGIONS = ("KANTO", "JOHTO")
+# "Johto stays Johto"), and so do the Orange Islands; the later regions keep their mixed pools.
+CLASSIC_REGIONS = ("KANTO", "JOHTO", "ORANGE")
 
 
 def _in_kanto(game):
-    """True in Kanto or Johto (the regions that keep later regions' Pokemon out)."""
+    """True in Kanto, Johto or the Orange Islands (the regions that keep later regions' Pokemon out)."""
     return game.story_manager.get_current_region() in CLASSIC_REGIONS
 
 
@@ -61,17 +61,22 @@ def form_allowed(game, form):
     return home in game.story_manager.visited_regions()
 
 
+# Sub-regions that open a later region's Pokemon early (the Sevii Islands: Johto's, as in FireRed).
+SUBREGION_OPENS = {"SEVII": {"JOHTO"}}
+
+
 def species_allowed(game, pid):
     """In Kanto and Johto, a wild Pokemon from a later region (or another region's form) only
     shows up once the player has played that region. Other regions keep their mixed pools."""
     if not _in_kanto(game):
         return True
     pid = int(pid)
+    opens = SUBREGION_OPENS.get(game.story_manager.get_current_area_data().get("subregion"), set())
     mapping = game.loader.area_data.get("FORM_MAP", {}).get(str(pid))
     if mapping:
         return form_allowed(game, mapping.get("form")) and species_allowed(game, mapping.get("id", pid))
     from src.pokemon import evolution
-    return evolution.evolution_allowed(game, pid)
+    return evolution.evolution_allowed(game, pid) or evolution.native_region(game, pid) in opens
 
 
 def restrict(game, pool):

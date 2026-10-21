@@ -103,6 +103,11 @@
     ],
 
     "KEY_ITEMS": [
+      "SNAG_MACHINE",
+      "ADAMANT_ORB", "LUSTROUS_ORB", "GRISEOUS_ORB",
+      "BURN_DRIVE", "DOUSE_DRIVE", "CHILL_DRIVE", "SHOCK_DRIVE",
+      "TRI_PASS", "RAINBOW_PASS", "RUBY", "SAPPHIRE", "OLD_SEA_MAP",
+      "PINKAN_PERMIT", "FIRE_TREASURE", "ICE_TREASURE", "LIGHTNING_TREASURE",
       "SS_TICKET", "MACHINE_PART", "LOST_ITEM", "PASS", "RED_SCALE", "GS_BALL", "SHINY_CHARM",
       "HM_CUT", "HM_DEFOG", "HM_DIVE", "HM_FLASH", "HM_FLY", "HM_ROCK_CLIMB", "HM_ROCK_SMASH", "HM_STRENGTH", "HM_SURF", "HM_WATERFALL", "HM_WHIRLPOOL",
       "TEA", "SECRET_KEY", "ROCKY_HELMET", "SILPH_SCOPE", "HELIX_FOSSIL", "DOME_FOSSIL", 
@@ -855,14 +860,18 @@
         { "text": "Fuchsia City", "target_area": "FUCHSIA_CITY", "flag_condition": "visited_FUCHSIA_CITY" },
         { "text": "Saffron City", "target_area": "SAFFRON_CITY", "flag_condition": "visited_SAFFRON_CITY" },
         { "text": "Lavender Town", "target_area": "LAVENDER_TOWN", "flag_condition": "visited_LAVENDER_TOWN" },
-            {"text": "S.S. Aqua to Olivine", "target_area": "OLIVINE_CITY", "condition": "has_item:SS_TICKET", "message": "You board the S.S. Aqua. The ship sails west across the sea to Johto..."}
+            {"text": "S.S. Aqua to Olivine", "target_area": "OLIVINE_CITY", "condition": "has_item:SS_TICKET", "message": "You board the S.S. Aqua. The ship sails west across the sea to Johto..."},
+            {"text": "Ship to the Orange Islands", "target_area": "VALENCIA_ISLAND", "condition": ["beat_champion", "beat_johto_champion"], "message": "The ferry sails south for days over warm seas... Land ho! It's Valencia Island!"},
+            {"text": "Seagallop to One Island", "target_area": "ONE_ISLAND", "condition": "has_item:TRI_PASS", "message": "The Seagallop Ferry speeds south to the Sevii Islands. Next stop: One Island!"},
+            {"text": "Seagallop to Four Island", "target_area": "FOUR_ISLAND", "condition": "has_item:RAINBOW_PASS", "message": "The Seagallop Ferry speeds far to the south. Next stop: Four Island!"}
         ],
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
         { "text": "Shop", "action": "SHOP" },
         { "text": "Gym", "action": "GYM" },
         { "text": "Fishing Guru", "action": "NPC", "target": "fishing_guru", "flag_condition": "not got_old_rod_guru" },
-            {"text": "Pokemon Fan Club", "action": "EVENT", "color": "GOLD", "event": {"requires": ["power_plant_fixed"], "fail": ["Chairman: Did you know Pikachu can learn Surf? ...Well, I'm busy with my Rapidash right now."], "lines": ["Chairman: Oh, it's you! You fixed the Power Plant!", "A girl from Saffron left this doll here... It's a Clefairy doll.", "If you're heading to Saffron City, could you return it? Her name is Copycat."], "gift_item": {"LOST_ITEM": 1}, "flag": "got_lost_item"}, "flag_condition": "not got_lost_item"}
+            {"text": "Pokemon Fan Club", "action": "EVENT", "color": "GOLD", "event": {"requires": ["power_plant_fixed"], "fail": ["Chairman: Did you know Pikachu can learn Surf? ...Well, I'm busy with my Rapidash right now."], "lines": ["Chairman: Oh, it's you! You fixed the Power Plant!", "A girl from Saffron left this doll here... It's a Clefairy doll.", "If you're heading to Saffron City, could you return it? Her name is Copycat."], "gift_item": {"LOST_ITEM": 1}, "flag": "got_lost_item"}, "flag_condition": "not got_lost_item"},
+            {"text": "Orange Islands Ferry", "action": "EVENT", "color": "GOLD", "condition": {"any": ["not:beat_champion", "not:beat_johto_champion"]}, "event": {"lines": ["Sailor: This ferry sails south to the Orange Islands.", "It only takes the Champion of both Kanto and Johto. Come back when you've won both!"]}}
         ],
       "trainer_pool": [],
       "on_enter_event": null
@@ -1212,10 +1221,10 @@
           "badge_reward": "VOLCANO",
           "dialogue": { 
             "intro": ["Welcome to my Gym! Let's see if you can handle the fire!"],
-            "player_won": ["Not bad, but you'll need more than that to get through the heat!", "Take this Volcano Badge."],
+            "player_won": ["Not bad, but you'll need more than that to get through the heat!", "Take this Volcano Badge.", "Here, take this Tri-Pass too. The Seagallop Ferry in Vermilion goes to the Sevii Islands.", "They say a legendary bird of fire nests at the top of Mt. Ember on One Island!"],
             "player_lost": ["You got burned!"]
           },
-          "rewards": { "balls": 10, "RARE_CANDY": 1, "VOLCANO_PASS": 1 }
+          "rewards": { "balls": 10, "RARE_CANDY": 1, "VOLCANO_PASS": 1, "TRI_PASS": 1 }
         }
       },
       "trainer_encounter_rate": 0,
@@ -2285,11 +2294,6 @@
       "alt_forms": { "enabled": true, "weights": { "74_alolan": 0.01 } },
       "trainer_encounter_rate": 0.1,
       "min_rounds": 3,
-      "area_boss": {
-        "id": 151,
-        "name": "Mew",
-        "victory_flag": "caught_mew"
-      },
       "trainer_pool": [
         { "sprite": "youngster.png", "name": "Josh", "class": "YOUNGSTER", "rewards": { "balls": 3 } },
         { "sprite": "lass.png", "name": "Miriam", "class": "LASS", "team": [43, 69], "rewards": { "balls": 3 } },
@@ -2304,14 +2308,7 @@
             "player_won": ["It looks like we were the ones who found trouble!", "Team Rocket's blasting off again!"],
             "player_lost": ["Too easy!"] }, "team": [23, 109, 52], "rewards": { "balls": 3 } }
       ],
-      "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
-        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
-        { "text": "SEARCH FOR MEW", "action": "BOSS", "condition": "mew_available", "color": "GOLD" },
-        { "text": "TO PEWTER", "action": "EXIT", "target": "MT_MOON_CITY", "condition": "can_exit", "color": "RED" },
-        { "text": "TO CERULEAN", "action": "EXIT", "target": "KANTO_ROUTE_4", "condition": "can_exit", "color": "RED" }
-      ],
+      "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN"}, {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"}, {"text": "TO PEWTER", "action": "EXIT", "target": "MT_MOON_CITY", "condition": "can_exit", "color": "RED"}, {"text": "TO CERULEAN", "action": "EXIT", "target": "KANTO_ROUTE_4", "condition": "can_exit", "color": "RED"}],
       "next_area": "KANTO_ROUTE_4",
       "on_enter_event": null
     },
@@ -2451,10 +2448,6 @@
       },
       "wild_pool_percentages": "CINNABAR_VOLCANO_PERCENTAGES",
       "alt_forms": { "enabled": true, "weights": { "37_alolan": 0.01, "38_alolan": 0.01, "58_hisuian": 0.01, "59_hisuian": 0.01, "77_galarian": 0.01, "78_galarian": 0.01, "88_alolan": 0.01, "89_alolan": 0.01, "110_galarian": 0.01 } },
-      "area_boss": {
-        "id": 146,
-        "name": "Moltres"
-      },
       "trainer_encounter_rate": 0.0,
       "min_rounds": 0,
       "trainer_pool": [
@@ -2463,13 +2456,7 @@
         { "sprite": "kindler.png", "name": "Bernie", "class": "KINDLER", "team": [38, 59], "rewards": { "balls": 3 } },
         { "sprite": "firebreather.png", "name": "Burt", "class": "FIREBREATHER", "team": [6, 136], "rewards": { "balls": 3 } }
       ],
-      "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
-        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
-        { "text": "CHALLENGE MOLTRES", "action": "BOSS", "condition": "boss_available", "color": "GOLD" },
-        { "text": "EXIT VOLCANO", "action": "EXIT", "target": "CINNABAR_ISLAND", "condition": "can_exit", "color": "RED" }
-      ],
+      "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN"}, {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"}, {"text": "EXIT VOLCANO", "action": "EXIT", "target": "CINNABAR_ISLAND", "condition": "can_exit", "color": "RED"}],
       "next_area": "CINNABAR_ISLAND",
       "on_enter_event": null
     },

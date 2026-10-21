@@ -238,6 +238,10 @@ class PokemonLoader:
 
             resolved = self._resolve_form_context(lookup_id, lookup_form, name, area_data)
             final_form, display_name, t_dir, t_map, t_fname = resolved
+            if mapping and f"{p_id}.png" in self.assets.sprite_map:
+                # A form with its own art (2001.png Alolan Rattata, 9101.png Pinkan Butterfree):
+                # use it, and its back/shiny files, instead of the base species' sprite.
+                t_dir, t_map, t_fname = self.assets.pokemon_sprites_dir, self.assets.sprite_map, f"{p_id}.png"
 
             # --- CALCULATE STAGE ---
             if p_id in self.all_boss_ids:

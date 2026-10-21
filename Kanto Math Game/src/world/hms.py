@@ -42,7 +42,10 @@ def give_for_badges(story):
     """Give any HM the player's badges have earned (old saves, or badges won before HMs).
     Returns the HMs that were added."""
     added = []
+    mine = story.store_regions() if hasattr(story, "store_regions") else None
     for region, earned in (story.badges or {}).items():
+        if mine is not None and region not in mine:
+            continue  # another region's HMs stay in that region's Bag
         for badge in earned or []:
             hm = hm_for_badge(region, badge)
             if hm and story.inventory.get(hm, 0) <= 0:

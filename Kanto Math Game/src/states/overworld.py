@@ -78,7 +78,7 @@ def _story_team(game, area_key, t_info):
     forms.mark_trainer_team(team, t_info)
     top = t_info.get("level")  # story beats set in early areas carry their own level
     if t_info.get("levels"):
-        levels.set_team(team, list(t_info["levels"]))
+        levels.set_team(team, list(t_info["levels"]), exact=True)
     elif top:
         levels.set_team(team, [max(2, top - (len(team) - 1 - i)) for i in range(len(team))])
     else:
@@ -115,6 +115,9 @@ def _run_story_event(state, key, check, show):
         show(_resolve_lines(game, ev.get("fail") or ["You can't do that yet."]))
         return
     lines = _resolve_lines(game, ev.get("lines") or [])
+    if ev.get("puzzle"):  # a math minigame (Dotted Hole's braille, a Rocket door code...)
+        _start_event_puzzle(state, ev, lines, show)
+        return
     if ev.get("battle"):
         t_info = dict(ev["battle"], _intro_lines=lines or None)
         game.change_state(_start_event_battle(game, story.current_area_key, t_info, flag))
@@ -133,12 +136,60 @@ def _run_story_event(state, key, check, show):
         lines.append(f"{getattr(game, 'player_name', 'You')} received the {forms.item_label(item).upper()}!")
     for item, qty in (ev.get("take_item") or {}).items():
         story.inventory[item] = max(0, story.inventory.get(item, 0) - qty)
+    lines += _teach_move(game, ev.get("teach"))
+    lines += story.evolve_party(ev.get("evolve"))  # Kubfu at the Towers of Two Fists
+    if ev.get("purify"):  # Orre's Relic Stone
+        names = story.purify_shadow()
+        lines += ([f"{n}'s heart opened! It's no longer a Shadow Pokemon." for n in names]
+                  or ["None of your Pokemon need purifying right now."])
     gift = story_events.gift_for_starter(ev.get("gift_pokemon"), _region_starter_id(game))
     if gift:
         lines.append(story_events.gift_pokemon(game, gift))
     if flag:
         story.story_flags[flag] = True
     show(lines or ["..."])
+
+
+def _start_event_puzzle(state, ev, lines, show):
+    """Run an event's puzzle (src/states/gym_puzzles.py). Solved: the event's flag and gifts,
+    then its lines. Left or failed: back to the area with its "fail" lines."""
+    from src.states.gym_puzzles import GymPuzzleState
+    game = state.game
+    story = game.story_manager
+
+    def done(solved):
+        if hasattr(state, "is_resuming"):
+            state.is_resuming = True
+        game.change_state(state)
+        if not solved:
+            show(_resolve_lines(game, ev.get("puzzle_fail") or ["You'll have to try again."]))
+            return
+        out = list(lines)
+        for item, qty in (ev.get("gift_item") or {}).items():
+            story.add_item(item, qty)
+            out.append(f"{getattr(game, 'player_name', 'You')} received the {forms.item_label(item).upper()}!")
+        if ev.get("flag"):
+            story.story_flags[ev["flag"]] = True
+        show(out or ["..."])
+
+    game.change_state(GymPuzzleState(game, story.current_area_key, ev["puzzle"], done))
+
+
+def _teach_move(game, teach):
+    """A move tutor: {species id: move} for the first party Pokemon that can learn one."""
+    from src.pokemon import moves as movelib
+    for p in game.story_manager.player_team if teach else []:
+        move = teach.get(str(p.id))
+        if not move or move in (movelib.ensure_moves(game, p) or []):
+            continue
+        label = move.replace("-", " ")
+        if len(p.moves) < movelib.MAX_MOVES:
+            p.moves.append(move)
+            return [f"{p.display_name.upper()} learned {label}!"]
+        weakest = min(p.moves, key=lambda m: movelib.move_value(game, p, m))
+        p.moves[p.moves.index(weakest)] = move
+        return [f"{p.display_name.upper()} forgot {weakest.replace('-', ' ')} and learned {label}!"]
+    return []
 
 
 # [REF-0029: Overworld & Play Logic]
@@ -1127,6 +1178,9 @@ class PlayState(GameState):
             # This region's badges: Galar's and Paldea's Grass Badges are different badges.
             return any(_norm(b) == want for b in story.badges.get(story.get_current_region(), []))
 
+        special = self.game.story_manager.special_condition(condition)
+        if special is not None:  # party_has:493, all_unown_registered
+            return special
         if isinstance(condition, str) and condition.startswith("caught_range:"):
             lo, hi = (int(x) for x in condition.split(":", 1)[1].split("-"))
             return self.game.story_manager.caught_in_range(lo, hi) >= hi - lo + 1  # e.g. all of #1-251
@@ -2927,8 +2981,10 @@ class CityState(GameState):
         anchor_bottom = panel_rect.top - 10
 
         count = len(valid_options)
-        cols = 1
-        rows = count
+        # One column while it fits above the panel; long lists (the Orange Islands ships) wrap.
+        fit = max(1, (anchor_bottom - 20 - padding * 2 + gap_y) // (btn_h + gap_y))
+        cols = -(-count // fit)
+        rows = -(-count // cols)
 
         bg_w = cols * btn_w + (cols - 1) * gap_x + padding * 2
         bg_h = rows * btn_h + (rows - 1) * gap_y + padding * 2
@@ -2939,9 +2995,9 @@ class CityState(GameState):
         start_y = self.hover_bg_rect.top + padding
 
         for i, opt_data in enumerate(valid_options):
-            row = i
+            col, row = divmod(i, rows)
 
-            btn_x = self.hover_bg_rect.left + padding
+            btn_x = self.hover_bg_rect.left + padding + col * (btn_w + gap_x)
             btn_y = start_y + row * (btn_h + gap_y)
 
             rect = (btn_x, btn_y, btn_w, btn_h)
@@ -2972,6 +3028,9 @@ class CityState(GameState):
 
         if condition.startswith("has_item:"):
             return story.inventory.get(condition[9:], 0) > 0
+        special = self.game.story_manager.special_condition(condition)
+        if special is not None:  # party_has:493, all_unown_registered
+            return special
         if isinstance(condition, str) and condition.startswith("caught_range:"):
             lo, hi = (int(x) for x in condition.split(":", 1)[1].split("-"))
             return story.caught_in_range(lo, hi) >= hi - lo + 1  # e.g. all of #1-251
@@ -3423,7 +3482,8 @@ class CityState(GameState):
 
         # Hoenn onward: Mom owns a home in every region's starting town.
         home_region = next((r for r, cfg in story.get_region_starts()
-                            if cfg.get("start_area") == self.area_key and r not in ("KANTO", "JOHTO")), None)
+                            if cfg.get("start_area") == self.area_key and r not in ("KANTO", "JOHTO")
+                            and not cfg.get("travel_only")), None)
         if home_region and not is_neighbor:
             is_home = True
 
@@ -3509,10 +3569,10 @@ class CityState(GameState):
             msg = [
                 "Professor Oak: Incredible! You've documented 150 species!",
                 "You are truly a master researcher.",
-                "I just received a report from a hiker near Mt. Moon...",
-                "He saw a pink, floating Pokémon deep in the mountain shadows.",
-                "It could be the mythical Pokémon, MEW!",
-                "You should investigate Mt. Moon once you've cleared the area of other distractions."
+                "I just heard from Celio on One Island, in the Sevii Islands...",
+                "Sailors keep seeing a pink, floating Pokemon near an uncharted island.",
+                "It could be the mythical Pokemon, MEW!",
+                "Help Celio fix his Network Machine. He may know how to find that island."
             ]
             story.story_flags["mew_spotted_mt_moon"] = True
             self.npc_dialogue = ClassicDialogueBox(Utils.get_full_dialogue_rect(self.game), msg, self.game.assets.fonts["med"], callback=self.end_npc_interaction)
@@ -4383,7 +4443,7 @@ class CityState(GameState):
                          for tid in team_ids]
         forms.mark_trainer_team(opponent_team, t_info)
         if t_info.get("levels"):
-            levels.set_team(opponent_team, list(t_info["levels"]))  # exact levels from the games
+            levels.set_team(opponent_team, list(t_info["levels"]), exact=True)  # exact levels from the games
         elif starter_battle:
             levels.set_team(opponent_team, [5] * len(opponent_team))
         else:
@@ -4430,6 +4490,12 @@ class CityState(GameState):
             from src.states.hoenn import HoennVersionState
             self.game.change_state(HoennVersionState(self.game, lambda: CityState(self.game)))
             return
+        pending = self.game.story_manager.pending_starter()
+        if pending:  # first visit to a region: its professor's partner Pokemon, before anything else
+            from src.states.menus import StarterSelectionState
+            cfg = self.game.story_manager.get_region_start(pending)
+            self.game.change_state(StarterSelectionState(self.game, starter_ids=cfg.get("starters"), region=pending))
+            return
         self.clear_hover_menu()
         self.game.ui_manager.add_element(self.action_menu)
 
@@ -4465,12 +4531,27 @@ class CityState(GameState):
         offer_flag = f"move_offer_{region.lower()}"
         if story.is_region_champion(region) and not story.story_flags.get(offer_flag):
             story.story_flags[offer_flag] = True
+            link_lines = []
+            if story.link_champion_regions():  # a second (or later) title: PCs and Bags join up
+                names = [r.title() for r in sorted(story.linked_regions)]
+                link_lines = [
+                    "*Ring ring!* It's the Pokemon Professor!",
+                    f"Professor: Congratulations, Champion of {', '.join(names[:-1])} and {names[-1]}!",
+                    "Your regional PCs are now linked. Pokemon from any of those regions can join your team,",
+                    "and your Bags have been combined too. Use them freely in every region you've conquered!"]
+            if story.get_region_start(region).get("travel_only"):
+                self.show_message(link_lines + self.ISLAND_CHAMPION)  # a trip, not a new home: no move offer
+                return
             road = self.ROAD_OPEN.get(region)
             if road:  # Kanto <-> Johto: the road is open, go now or later (Mom's offer follows)
                 story.inventory["SS_TICKET"] = 1
                 road = road + ["You received an S.S. TICKET!",
                                "The S.S. Aqua sails between Vermilion City and Olivine City."]
-                self.show_message(road, callback=lambda: self._offer_move(region, phone=True))
+                if story.is_region_champion("KANTO") and story.is_region_champion("JOHTO"):
+                    road += self.ORANGE_INVITE
+                self.show_message(link_lines + road, callback=lambda: self._offer_move(region, phone=True))
+            elif link_lines:
+                self.show_message(link_lines, callback=lambda: self._offer_move(region, phone=True))
             else:
                 self._offer_move(region, phone=True)
             return
@@ -4488,6 +4569,14 @@ class CityState(GameState):
                   "From New Bark Town, take Route 27 west past Tohjo Falls to the Pokemon League's Reception Gate,",
                   "then Route 22 to Viridian City. Go now, or whenever you like!"],
     }
+    # Both titles: Professor Ivy invites the Champion of Kanto and Johto to the Orange Islands.
+    ORANGE_INVITE = ["...A letter has arrived from Professor Ivy of Valencia Island!",
+                     "\"Champion of Kanto AND Johto! The Orange Crew would love to meet you.",
+                     "Beat the four Gym Leaders of the Orange Islands and challenge the Orange League!\"",
+                     "Ships to the Orange Islands leave from Vermilion City and Olivine City."]
+    ISLAND_CHAMPION = ["Drake: The Winner's Trophy is yours. You're the Orange League Champion!",
+                       "Your name will be carved into the wall of Pummelo Stadium.",
+                       "The ships still sail between the islands. Come back any time for a rematch!"]
 
     def _offer_move(self, region, phone):
         """Mom uses the championship prize money for a new home and asks where to move."""
@@ -4634,13 +4723,15 @@ class AreaTransitionState(GameState):
             self.game.story_manager.balls_left = self.game.current_state.balls_left
             self.game.story_manager.current_streak = self.game.current_state.current_streak
 
-        if hasattr(self.game, 'story_manager'):
-            pass
-
         rect = Utils.get_full_dialogue_rect(self.game)
         msg = []
         if initial_message:
             msg.append(initial_message)
+        # Another region's party, PC and Bag; a first visit goes to that region's professor.
+        self.next_area_key, travel_lines = self.game.story_manager.prepare_travel(next_area_key)
+        msg += travel_lines
+        if travel_lines:
+            self.wait_for_dialogue = True
 
         next_area_data = self.game.loader.area_data.get("STORY_PROGRESSION", {}).get(self.next_area_key, {})
         route_name = next_area_data.get("route_name", self.next_area_key.replace("_", " ").title())
@@ -5107,7 +5198,7 @@ class GymLobbyState(GameState):
                                                  levels.gym_role(t_class, is_leader))
         if rematch_boost:
             team_levels = [min(100, int(lv) + rematch_boost) for lv in team_levels]
-        levels.set_team(opponent_team, team_levels)
+        levels.set_team(opponent_team, team_levels, exact=bool(t_data.get("levels")))
 
         bg_file = self.game.story_manager.get_gym_battle_background(
             self.area_key, trainer_index=self.progress, is_leader=is_leader

@@ -1,0 +1,2559 @@
+{
+  "REGION_START": {
+    "ORANGE": {
+      "order": 2.5,
+      "travel_only": true,
+      "subtitle": "ANIME / ORANGE ISLANDS",
+      "start_area": "VALENCIA_ISLAND",
+      "dex_range": [
+        0,
+        -1
+      ],
+      "dex_extra": [],
+      "badge_images": [
+        "orange_1",
+        "orange_2",
+        "orange_3",
+        "orange_4",
+        "orange_5"
+      ],
+      "storage_region": "KANTO"
+    }
+  },
+  "FORM_MAP": {
+    "9101": {
+      "id": 12,
+      "form": "pinkan",
+      "name": "Pinkan butterfree"
+    },
+    "9102": {
+      "id": 16,
+      "form": "pinkan",
+      "name": "Pinkan pidgey"
+    },
+    "9103": {
+      "id": 17,
+      "form": "pinkan",
+      "name": "Pinkan pidgeotto"
+    },
+    "9104": {
+      "id": 30,
+      "form": "pinkan",
+      "name": "Pinkan nidorina"
+    },
+    "9105": {
+      "id": 33,
+      "form": "pinkan",
+      "name": "Pinkan nidorino"
+    },
+    "9106": {
+      "id": 34,
+      "form": "pinkan",
+      "name": "Pinkan nidoking"
+    },
+    "9107": {
+      "id": 46,
+      "form": "pinkan",
+      "name": "Pinkan paras"
+    },
+    "9108": {
+      "id": 48,
+      "form": "pinkan",
+      "name": "Pinkan venonat"
+    },
+    "9109": {
+      "id": 56,
+      "form": "pinkan",
+      "name": "Pinkan mankey"
+    },
+    "9110": {
+      "id": 57,
+      "form": "pinkan",
+      "name": "Pinkan primeape"
+    },
+    "9111": {
+      "id": 70,
+      "form": "pinkan",
+      "name": "Pinkan weepinbell"
+    },
+    "9112": {
+      "id": 102,
+      "form": "pinkan",
+      "name": "Pinkan exeggcute"
+    },
+    "9113": {
+      "id": 103,
+      "form": "pinkan",
+      "name": "Pinkan exeggutor"
+    },
+    "9114": {
+      "id": 111,
+      "form": "pinkan",
+      "name": "Pinkan rhyhorn"
+    },
+    "9115": {
+      "id": 112,
+      "form": "pinkan",
+      "name": "Pinkan rhydon"
+    },
+    "9116": {
+      "id": 123,
+      "form": "pinkan",
+      "name": "Pinkan scyther"
+    },
+    "9201": {
+      "id": 95,
+      "form": "crystal",
+      "name": "Crystal Onix",
+      "types": [
+        "ROCK",
+        "ICE"
+      ]
+    }
+  },
+  "JOURNAL_MISSIONS": [
+    {
+      "id": "orange_m1",
+      "type": "MAIN",
+      "title": "Welcome to the Orange Islands",
+      "description": "Meet Professor Ivy on Valencia Island, then sail to Mikan Island for your first Orange Crew badge.",
+      "condition": {
+        "required_region": "ORANGE",
+        "region_badges_less": 1
+      },
+      "reward": "GS Ball"
+    },
+    {
+      "id": "orange_m2",
+      "type": "MAIN",
+      "title": "The Orange Crew",
+      "description": "Win the Coral-Eye, Sea Ruby, Spike Shell and Jade Star Badges from Cissy, Danny, Rudy and Luana.",
+      "condition": {
+        "required_region": "ORANGE",
+        "region_badges_min": 1,
+        "region_badges_less": 4
+      },
+      "reward": "Four Orange Crew badges"
+    },
+    {
+      "id": "orange_m3",
+      "type": "MAIN",
+      "title": "The Orange League",
+      "description": "Beat Drake's full six-Pokemon team at Pummelo Stadium to win the Winner's Trophy.",
+      "condition": {
+        "required_region": "ORANGE",
+        "region_badges_min": 4,
+        "flag_not": "beat_orange_champion"
+      },
+      "reward": "Winner's Trophy"
+    },
+    {
+      "id": "orange_s1",
+      "type": "SIDE",
+      "title": "Pink Pokemon",
+      "description": "Stop Team Rocket on Pinkan Island and earn Officer Jenny's permit to catch Pinkan Pokemon.",
+      "condition": {
+        "required_region": "ORANGE",
+        "visited": "PINKAN_ISLAND",
+        "flag_not": "got_pinkan_permit"
+      },
+      "reward": "Pinkan Permit"
+    },
+    {
+      "id": "orange_s2",
+      "type": "SIDE",
+      "title": "The Crystal Onix",
+      "description": "Mateo on Sunburst Island says a glass-clear Onix lives in the Crystal Cave.",
+      "condition": {
+        "required_region": "ORANGE",
+        "flag": "met_mateo",
+        "flag_not": "got_mateo_gift"
+      },
+      "reward": "Crystal Onix + Amulet Coin"
+    },
+    {
+      "id": "orange_s3",
+      "type": "SIDE",
+      "title": "The Chosen One",
+      "description": "Gather the treasures of Fire, Ice and Lightning Islands and bring them to the Shamouti Shrine.",
+      "condition": {
+        "required_region": "ORANGE",
+        "flag": "heard_shamouti_legend",
+        "flag_not": "shamouti_lugia_defeated"
+      },
+      "reward": "Lugia"
+    }
+  ],
+  "STORY_PROGRESSION": {
+    "VALENCIA_ISLAND": {
+      "area_type": "town",
+      "route_name": "Valencia Island",
+      "region": "ORANGE",
+      "level": 50,
+      "has_gym": false,
+      "explore_options": [
+        {
+          "text": "Pokemon Center",
+          "action": "HEAL"
+        },
+        {
+          "text": "Poke Mart",
+          "action": "SHOP"
+        },
+        {
+          "text": "Professor Ivy's Lab",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "Professor Ivy: Welcome to Valencia Island, Champion!",
+              "I study how Pokemon here differ from Kanto's. Some are new colors, some grow bigger!",
+              "Before you go, I have a favor. I found this strange ball, and nobody can open it.",
+              "Kurt in Azalea Town knows Poke Balls better than anyone. Would you take it to Johto?",
+              "They say a Pokemon that travels through time lives in Ilex Forest..."
+            ],
+            "gift_item": {
+              "GS_BALL": 1
+            },
+            "flag": "got_gs_ball",
+            "done": [
+              "Professor Ivy: The four Orange Crew Gyms are on Mikan, Navel, Trovita and Kumquat.",
+              "Win all four badges, then challenge Drake at Pummelo Stadium!"
+            ]
+          }
+        },
+        {
+          "text": "Help the Lost Lapras",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "A young Lapras is stranded in the shallows, crying for its herd.",
+              "You stay with it all afternoon. It doesn't want to leave your side!"
+            ],
+            "gift_pokemon": 131,
+            "flag": "got_orange_lapras"
+          },
+          "flag_condition": "not got_orange_lapras"
+        },
+        {
+          "text": "Battle Tracey",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "requires": [
+              "has_coral_eye_badge"
+            ],
+            "fail": [
+              "Tracey: I'm a Pokemon Watcher! Win a badge, then I'd love to sketch your team in battle."
+            ],
+            "lines": [
+              "Tracey: You won Cissy's badge! Let me watch your Pokemon up close. Battle me!"
+            ],
+            "battle": {
+              "name": "Tracey",
+              "class": "POKEMON_WATCHER",
+              "sprite": "pokefan_m.png",
+              "team": [
+                183,
+                48,
+                123
+              ],
+              "levels": [
+                58,
+                58,
+                61
+              ],
+              "rewards": {
+                "balls": 10
+              },
+              "dialogue": {
+                "player_won": [
+                  "Tracey: Amazing! I'll call this sketch Champion in Action."
+                ]
+              }
+            },
+            "flag": "defeated_tracey",
+            "done": [
+              "Tracey: My sketchbook is filling up with your Pokemon!"
+            ]
+          }
+        }
+      ],
+      "travel_options": [
+        {
+          "text": "Valencia Beach",
+          "target_area": "VALENCIA_BEACH"
+        },
+        {
+          "text": "Ship to Vermilion City",
+          "target_area": "VERMILLION_CITY",
+          "message": "The ferry sails north, back to Vermilion City in Kanto."
+        },
+        {
+          "text": "Ship to Olivine City",
+          "target_area": "OLIVINE_CITY",
+          "message": "The ferry sails north-west, back to Olivine City in Johto."
+        },
+        {
+          "text": "Ship to Mikan Island",
+          "target_area": "MIKAN_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... Mikan Island's lighthouse comes into view."
+        },
+        {
+          "text": "Ship to Pinkan Island",
+          "target_area": "PINKAN_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... Pink berry trees cover Pinkan Island.",
+          "condition": "has_coral_eye_badge"
+        },
+        {
+          "text": "Ship to Navel Island",
+          "target_area": "NAVEL_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... A snowy volcano rises over Navel Island.",
+          "condition": "has_coral_eye_badge"
+        },
+        {
+          "text": "Ship to Sunburst Island",
+          "target_area": "SUNBURST_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... Glass sparkles on every street of Sunburst Island.",
+          "condition": "has_sea_ruby_badge"
+        },
+        {
+          "text": "Ship to Trovita Island",
+          "target_area": "TROVITA_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... Trovita Island's beaches shine in the sun.",
+          "condition": "has_sea_ruby_badge"
+        },
+        {
+          "text": "Ship to Shamouti Island",
+          "target_area": "SHAMOUTI_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... Drums from a festival echo across Shamouti Island.",
+          "condition": "has_spike_shell_badge"
+        },
+        {
+          "text": "Ship to Kumquat Island",
+          "target_area": "KUMQUAT_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... Resort hotels line the shore of Kumquat Island.",
+          "condition": "has_spike_shell_badge"
+        },
+        {
+          "text": "Ship to Pummelo Island",
+          "target_area": "PUMMELO_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... Pummelo Stadium towers over the harbor.",
+          "condition": "has_jade_star_badge"
+        }
+      ],
+      "next_area": "VALENCIA_BEACH"
+    },
+    "VALENCIA_BEACH": {
+      "area_type": "wild_route",
+      "route_name": "Valencia Beach",
+      "region": "ORANGE",
+      "level": 50,
+      "battle_type": "ocean",
+      "wild_pool_percentages": "ORANGE_VALENCIA_BEACH_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Swimmer Coral",
+          "class": "SWIMMER",
+          "sprite": "swimmer_f.png",
+          "team": [
+            120,
+            121
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Fisherman Hal",
+          "class": "FISHERMAN",
+          "sprite": "fisherman.png",
+          "team": [
+            129,
+            118,
+            130
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Beauty Sandy",
+          "class": "BEAUTY",
+          "sprite": "beauty.png",
+          "team": [
+            54,
+            79,
+            80
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Valencia Island",
+          "action": "EXIT",
+          "target_area": "VALENCIA_ISLAND",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "VALENCIA_ISLAND"
+    },
+    "MIKAN_ISLAND": {
+      "area_type": "town",
+      "route_name": "Mikan Island",
+      "region": "ORANGE",
+      "level": 52,
+      "has_gym": true,
+      "explore_options": [
+        {
+          "text": "Pokemon Center",
+          "action": "HEAL"
+        },
+        {
+          "text": "Poke Mart",
+          "action": "SHOP"
+        },
+        {
+          "text": "Mikan Gym",
+          "action": "GYM",
+          "color": "GOLD"
+        }
+      ],
+      "travel_options": [
+        {
+          "text": "Mikan Reef",
+          "target_area": "MIKAN_REEF"
+        },
+        {
+          "text": "Ship to Valencia Island",
+          "target_area": "VALENCIA_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... Palm trees line the docks of Valencia Island."
+        },
+        {
+          "text": "Ship to Pinkan Island",
+          "target_area": "PINKAN_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... Pink berry trees cover Pinkan Island.",
+          "condition": "has_coral_eye_badge"
+        },
+        {
+          "text": "Ship to Navel Island",
+          "target_area": "NAVEL_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... A snowy volcano rises over Navel Island.",
+          "condition": "has_coral_eye_badge"
+        },
+        {
+          "text": "Ship to Sunburst Island",
+          "target_area": "SUNBURST_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... Glass sparkles on every street of Sunburst Island.",
+          "condition": "has_sea_ruby_badge"
+        },
+        {
+          "text": "Ship to Trovita Island",
+          "target_area": "TROVITA_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... Trovita Island's beaches shine in the sun.",
+          "condition": "has_sea_ruby_badge"
+        },
+        {
+          "text": "Ship to Shamouti Island",
+          "target_area": "SHAMOUTI_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... Drums from a festival echo across Shamouti Island.",
+          "condition": "has_spike_shell_badge"
+        },
+        {
+          "text": "Ship to Kumquat Island",
+          "target_area": "KUMQUAT_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... Resort hotels line the shore of Kumquat Island.",
+          "condition": "has_spike_shell_badge"
+        },
+        {
+          "text": "Ship to Pummelo Island",
+          "target_area": "PUMMELO_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... Pummelo Stadium towers over the harbor.",
+          "condition": "has_jade_star_badge"
+        }
+      ],
+      "next_area": "MIKAN_REEF",
+      "gym": {
+        "trainers": [
+          {
+            "name": "Swimmer Kai",
+            "class": "SWIMMER",
+            "sprite": "swimmer_m.png",
+            "team": [
+              116,
+              90,
+              120
+            ],
+            "levels": [
+              55,
+              55,
+              57
+            ],
+            "rewards": {
+              "balls": 5
+            },
+            "dialogue": {
+              "intro": [
+                "Cissy's Gym is all about water. Hope you can swim!"
+              ]
+            }
+          },
+          {
+            "name": "Fisherman Wade",
+            "class": "FISHERMAN",
+            "sprite": "fisherman.png",
+            "team": [
+              118,
+              119,
+              130
+            ],
+            "levels": [
+              56,
+              56,
+              58
+            ],
+            "rewards": {
+              "balls": 5
+            },
+            "dialogue": {
+              "intro": [
+                "The best catches come from Mikan's reef!"
+              ]
+            }
+          }
+        ],
+        "leader": {
+          "name": "Cissy",
+          "class": "GYM_LEADER",
+          "sprite": "swimmer_f.png",
+          "is_boss_battle": true,
+          "team": [
+            117,
+            9
+          ],
+          "levels": [
+            60,
+            62
+          ],
+          "badge_reward": "CORAL_EYE",
+          "rewards": {
+            "balls": 10
+          },
+          "dialogue": {
+            "intro": [
+              "Cissy: I'm Cissy of the Orange Crew. Seadra and Blastoise, let's go!"
+            ],
+            "player_won": [
+              "Cissy: What a splash! The Coral-Eye Badge is yours."
+            ],
+            "player_lost": [
+              "Cissy: Better work on that aim. Come back any time!"
+            ]
+          }
+        },
+        "requirements": {
+          "badges": 0
+        }
+      }
+    },
+    "MIKAN_REEF": {
+      "area_type": "wild_route",
+      "route_name": "Mikan Reef",
+      "region": "ORANGE",
+      "level": 52,
+      "battle_type": "ocean",
+      "wild_pool_percentages": "ORANGE_MIKAN_REEF_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Swimmer Lani",
+          "class": "SWIMMER",
+          "sprite": "swimmer_f.png",
+          "team": [
+            222,
+            117
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Sailor Brock",
+          "class": "SAILOR",
+          "sprite": "sailor.png",
+          "team": [
+            66,
+            67,
+            99
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Mikan Island",
+          "action": "EXIT",
+          "target_area": "MIKAN_ISLAND",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "MIKAN_ISLAND"
+    },
+    "NAVEL_ISLAND": {
+      "area_type": "town",
+      "route_name": "Navel Island",
+      "region": "ORANGE",
+      "level": 55,
+      "has_gym": true,
+      "explore_options": [
+        {
+          "text": "Pokemon Center",
+          "action": "HEAL"
+        },
+        {
+          "text": "Poke Mart",
+          "action": "SHOP"
+        },
+        {
+          "text": "Navel Gym",
+          "action": "GYM",
+          "color": "GOLD"
+        }
+      ],
+      "travel_options": [
+        {
+          "text": "Navel Summit",
+          "target_area": "NAVEL_SUMMIT"
+        },
+        {
+          "text": "Ship to Valencia Island",
+          "target_area": "VALENCIA_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... Palm trees line the docks of Valencia Island."
+        },
+        {
+          "text": "Ship to Mikan Island",
+          "target_area": "MIKAN_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... Mikan Island's lighthouse comes into view."
+        },
+        {
+          "text": "Ship to Pinkan Island",
+          "target_area": "PINKAN_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... Pink berry trees cover Pinkan Island.",
+          "condition": "has_coral_eye_badge"
+        },
+        {
+          "text": "Ship to Sunburst Island",
+          "target_area": "SUNBURST_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... Glass sparkles on every street of Sunburst Island.",
+          "condition": "has_sea_ruby_badge"
+        },
+        {
+          "text": "Ship to Trovita Island",
+          "target_area": "TROVITA_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... Trovita Island's beaches shine in the sun.",
+          "condition": "has_sea_ruby_badge"
+        },
+        {
+          "text": "Ship to Shamouti Island",
+          "target_area": "SHAMOUTI_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... Drums from a festival echo across Shamouti Island.",
+          "condition": "has_spike_shell_badge"
+        },
+        {
+          "text": "Ship to Kumquat Island",
+          "target_area": "KUMQUAT_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... Resort hotels line the shore of Kumquat Island.",
+          "condition": "has_spike_shell_badge"
+        },
+        {
+          "text": "Ship to Pummelo Island",
+          "target_area": "PUMMELO_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... Pummelo Stadium towers over the harbor.",
+          "condition": "has_jade_star_badge"
+        }
+      ],
+      "next_area": "NAVEL_SUMMIT",
+      "gym": {
+        "trainers": [
+          {
+            "name": "Hiker Dale",
+            "class": "HIKER",
+            "sprite": "hiker.png",
+            "team": [
+              75,
+              95,
+              76
+            ],
+            "levels": [
+              59,
+              59,
+              61
+            ],
+            "rewards": {
+              "balls": 5
+            },
+            "dialogue": {
+              "intro": [
+                "Danny's challenge starts at the bottom of the volcano!"
+              ]
+            }
+          },
+          {
+            "name": "Skier Frost",
+            "class": "SKIER",
+            "sprite": "skier.png",
+            "team": [
+              86,
+              87,
+              124
+            ],
+            "levels": [
+              60,
+              60,
+              62
+            ],
+            "rewards": {
+              "balls": 5
+            },
+            "dialogue": {
+              "intro": [
+                "It's freezing at the top. Can your Pokemon take it?"
+              ]
+            }
+          }
+        ],
+        "leader": {
+          "name": "Danny",
+          "class": "GYM_LEADER",
+          "sprite": "boarder.png",
+          "is_boss_battle": true,
+          "team": [
+            31,
+            123,
+            101
+          ],
+          "levels": [
+            64,
+            64,
+            66
+          ],
+          "badge_reward": "SEA_RUBY",
+          "rewards": {
+            "balls": 10
+          },
+          "dialogue": {
+            "intro": [
+              "Danny: You made it up the mountain. Now for a three-on-three battle!"
+            ],
+            "player_won": [
+              "Danny: Great battle! Take the Sea Ruby Badge."
+            ],
+            "player_lost": [
+              "Danny: Not bad! Climb back up when you're ready."
+            ]
+          }
+        },
+        "requirements": {
+          "badges": 1,
+          "fail_text": "Danny only battles trainers with the Coral-Eye Badge."
+        }
+      }
+    },
+    "NAVEL_SUMMIT": {
+      "area_type": "wild_route",
+      "route_name": "Navel Summit",
+      "region": "ORANGE",
+      "level": 55,
+      "battle_type": "mountain",
+      "wild_pool_percentages": "ORANGE_NAVEL_SUMMIT_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Hiker Russ",
+          "class": "HIKER",
+          "sprite": "hiker.png",
+          "team": [
+            74,
+            75,
+            95
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Skier Bree",
+          "class": "SKIER",
+          "sprite": "skier.png",
+          "team": [
+            220,
+            221,
+            225
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Navel Island",
+          "action": "EXIT",
+          "target_area": "NAVEL_ISLAND",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "NAVEL_ISLAND"
+    },
+    "TROVITA_ISLAND": {
+      "area_type": "town",
+      "route_name": "Trovita Island",
+      "region": "ORANGE",
+      "level": 58,
+      "has_gym": true,
+      "explore_options": [
+        {
+          "text": "Pokemon Center",
+          "action": "HEAL"
+        },
+        {
+          "text": "Poke Mart",
+          "action": "SHOP"
+        },
+        {
+          "text": "Trovita Gym",
+          "action": "GYM",
+          "color": "GOLD"
+        }
+      ],
+      "travel_options": [
+        {
+          "text": "Trovita Shore",
+          "target_area": "TROVITA_SHORE"
+        },
+        {
+          "text": "Ship to Valencia Island",
+          "target_area": "VALENCIA_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... Palm trees line the docks of Valencia Island."
+        },
+        {
+          "text": "Ship to Mikan Island",
+          "target_area": "MIKAN_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... Mikan Island's lighthouse comes into view."
+        },
+        {
+          "text": "Ship to Pinkan Island",
+          "target_area": "PINKAN_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... Pink berry trees cover Pinkan Island.",
+          "condition": "has_coral_eye_badge"
+        },
+        {
+          "text": "Ship to Navel Island",
+          "target_area": "NAVEL_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... A snowy volcano rises over Navel Island.",
+          "condition": "has_coral_eye_badge"
+        },
+        {
+          "text": "Ship to Sunburst Island",
+          "target_area": "SUNBURST_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... Glass sparkles on every street of Sunburst Island.",
+          "condition": "has_sea_ruby_badge"
+        },
+        {
+          "text": "Ship to Shamouti Island",
+          "target_area": "SHAMOUTI_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... Drums from a festival echo across Shamouti Island.",
+          "condition": "has_spike_shell_badge"
+        },
+        {
+          "text": "Ship to Kumquat Island",
+          "target_area": "KUMQUAT_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... Resort hotels line the shore of Kumquat Island.",
+          "condition": "has_spike_shell_badge"
+        },
+        {
+          "text": "Ship to Pummelo Island",
+          "target_area": "PUMMELO_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... Pummelo Stadium towers over the harbor.",
+          "condition": "has_jade_star_badge"
+        }
+      ],
+      "next_area": "TROVITA_SHORE",
+      "gym": {
+        "trainers": [
+          {
+            "name": "Sailor Brine",
+            "class": "SAILOR",
+            "sprite": "sailor.png",
+            "team": [
+              99,
+              73,
+              130
+            ],
+            "levels": [
+              62,
+              62,
+              64
+            ],
+            "rewards": {
+              "balls": 5
+            },
+            "dialogue": {
+              "intro": [
+                "Rudy's Gym floats on the water. Mind your footing!"
+              ]
+            }
+          },
+          {
+            "name": "Engineer Volt",
+            "class": "ENGINEER",
+            "sprite": "engineer.png",
+            "team": [
+              82,
+              101,
+              125
+            ],
+            "levels": [
+              63,
+              63,
+              65
+            ],
+            "rewards": {
+              "balls": 5
+            },
+            "dialogue": {
+              "intro": [
+                "I keep the Gym's lights on. Let's see how you handle a jolt!"
+              ]
+            }
+          }
+        ],
+        "leader": {
+          "name": "Rudy",
+          "class": "GYM_LEADER",
+          "sprite": "acetrainer_m.png",
+          "is_boss_battle": true,
+          "team": [
+            125,
+            121,
+            103
+          ],
+          "levels": [
+            67,
+            67,
+            69
+          ],
+          "badge_reward": "SPIKE_SHELL",
+          "rewards": {
+            "balls": 10
+          },
+          "dialogue": {
+            "intro": [
+              "Rudy: Welcome to Trovita! My Pokemon and I battle with style."
+            ],
+            "player_won": [
+              "Rudy: Brilliant! The Spike Shell Badge suits you."
+            ],
+            "player_lost": [
+              "Rudy: Better luck next time. The ferry will bring you back!"
+            ]
+          }
+        },
+        "requirements": {
+          "badges": 2,
+          "fail_text": "Rudy only battles trainers with two Orange Crew badges."
+        }
+      }
+    },
+    "TROVITA_SHORE": {
+      "area_type": "wild_route",
+      "route_name": "Trovita Shore",
+      "region": "ORANGE",
+      "level": 58,
+      "battle_type": "ocean",
+      "wild_pool_percentages": "ORANGE_TROVITA_SHORE_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Swimmer Marlin",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [
+            73,
+            171
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Beauty Pearl",
+          "class": "BEAUTY",
+          "sprite": "beauty.png",
+          "team": [
+            121,
+            124,
+            36
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Trovita Island",
+          "action": "EXIT",
+          "target_area": "TROVITA_ISLAND",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "TROVITA_ISLAND"
+    },
+    "KUMQUAT_ISLAND": {
+      "area_type": "town",
+      "route_name": "Kumquat Island",
+      "region": "ORANGE",
+      "level": 61,
+      "has_gym": true,
+      "explore_options": [
+        {
+          "text": "Pokemon Center",
+          "action": "HEAL"
+        },
+        {
+          "text": "Poke Mart",
+          "action": "SHOP"
+        },
+        {
+          "text": "Kumquat Gym",
+          "action": "GYM",
+          "color": "GOLD"
+        }
+      ],
+      "travel_options": [
+        {
+          "text": "Kumquat Jungle",
+          "target_area": "KUMQUAT_JUNGLE"
+        },
+        {
+          "text": "Ship to Valencia Island",
+          "target_area": "VALENCIA_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... Palm trees line the docks of Valencia Island."
+        },
+        {
+          "text": "Ship to Mikan Island",
+          "target_area": "MIKAN_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... Mikan Island's lighthouse comes into view."
+        },
+        {
+          "text": "Ship to Pinkan Island",
+          "target_area": "PINKAN_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... Pink berry trees cover Pinkan Island.",
+          "condition": "has_coral_eye_badge"
+        },
+        {
+          "text": "Ship to Navel Island",
+          "target_area": "NAVEL_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... A snowy volcano rises over Navel Island.",
+          "condition": "has_coral_eye_badge"
+        },
+        {
+          "text": "Ship to Sunburst Island",
+          "target_area": "SUNBURST_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... Glass sparkles on every street of Sunburst Island.",
+          "condition": "has_sea_ruby_badge"
+        },
+        {
+          "text": "Ship to Trovita Island",
+          "target_area": "TROVITA_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... Trovita Island's beaches shine in the sun.",
+          "condition": "has_sea_ruby_badge"
+        },
+        {
+          "text": "Ship to Shamouti Island",
+          "target_area": "SHAMOUTI_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... Drums from a festival echo across Shamouti Island.",
+          "condition": "has_spike_shell_badge"
+        },
+        {
+          "text": "Ship to Pummelo Island",
+          "target_area": "PUMMELO_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... Pummelo Stadium towers over the harbor.",
+          "condition": "has_jade_star_badge"
+        }
+      ],
+      "next_area": "KUMQUAT_JUNGLE",
+      "gym": {
+        "trainers": [
+          {
+            "name": "Beauty Lani",
+            "class": "BEAUTY",
+            "sprite": "beauty.png",
+            "team": [
+              36,
+              40,
+              210
+            ],
+            "levels": [
+              66,
+              66,
+              68
+            ],
+            "rewards": {
+              "balls": 5
+            },
+            "dialogue": {
+              "intro": [
+                "Luana's son Travis runs the hotel. I run this battle!"
+              ]
+            }
+          },
+          {
+            "name": "Gentleman Kale",
+            "class": "GENTLEMAN",
+            "sprite": "gentleman.png",
+            "team": [
+              59,
+              128,
+              241
+            ],
+            "levels": [
+              67,
+              67,
+              69
+            ],
+            "rewards": {
+              "balls": 5
+            },
+            "dialogue": {
+              "intro": [
+                "Two Pokemon at once? That's how we battle on Kumquat."
+              ]
+            }
+          }
+        ],
+        "leader": {
+          "name": "Luana",
+          "class": "GYM_LEADER",
+          "sprite": "acetrainer_f.png",
+          "is_boss_battle": true,
+          "team": [
+            65,
+            105
+          ],
+          "levels": [
+            71,
+            72
+          ],
+          "badge_reward": "JADE_STAR",
+          "rewards": {
+            "balls": 10
+          },
+          "dialogue": {
+            "intro": [
+              "Luana: Alakazam and Marowak work as one. Can your team keep up?"
+            ],
+            "player_won": [
+              "Luana: Wonderful teamwork! You've earned the Jade Star Badge.",
+              "Now you may challenge Drake at Pummelo Stadium."
+            ],
+            "player_lost": [
+              "Luana: Teamwork takes practice. Come back soon!"
+            ]
+          }
+        },
+        "requirements": {
+          "badges": 3,
+          "fail_text": "Luana only battles trainers with three Orange Crew badges."
+        }
+      }
+    },
+    "KUMQUAT_JUNGLE": {
+      "area_type": "wild_route",
+      "route_name": "Kumquat Jungle",
+      "region": "ORANGE",
+      "level": 61,
+      "battle_type": "forest",
+      "wild_pool_percentages": "ORANGE_KUMQUAT_JUNGLE_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Bug Catcher Milo",
+          "class": "BUG_CATCHER",
+          "sprite": "bug_catcher.png",
+          "team": [
+            12,
+            214,
+            127
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Picnicker Rose",
+          "class": "PICNICKER",
+          "sprite": "picnicker.png",
+          "team": [
+            182,
+            44,
+            103
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Kumquat Island",
+          "action": "EXIT",
+          "target_area": "KUMQUAT_ISLAND",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "KUMQUAT_ISLAND"
+    },
+    "PUMMELO_ISLAND": {
+      "area_type": "town",
+      "route_name": "Pummelo Island",
+      "region": "ORANGE",
+      "level": 63,
+      "has_gym": true,
+      "explore_options": [
+        {
+          "text": "Pokemon Center",
+          "action": "HEAL"
+        },
+        {
+          "text": "Poke Mart",
+          "action": "SHOP"
+        },
+        {
+          "text": "Pummelo Stadium",
+          "action": "GYM",
+          "color": "GOLD"
+        }
+      ],
+      "travel_options": [
+        {
+          "text": "Pummelo Cliffs",
+          "target_area": "PUMMELO_CLIFFS"
+        },
+        {
+          "text": "Ship to Valencia Island",
+          "target_area": "VALENCIA_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... Palm trees line the docks of Valencia Island."
+        },
+        {
+          "text": "Ship to Mikan Island",
+          "target_area": "MIKAN_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... Mikan Island's lighthouse comes into view."
+        },
+        {
+          "text": "Ship to Pinkan Island",
+          "target_area": "PINKAN_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... Pink berry trees cover Pinkan Island.",
+          "condition": "has_coral_eye_badge"
+        },
+        {
+          "text": "Ship to Navel Island",
+          "target_area": "NAVEL_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... A snowy volcano rises over Navel Island.",
+          "condition": "has_coral_eye_badge"
+        },
+        {
+          "text": "Ship to Sunburst Island",
+          "target_area": "SUNBURST_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... Glass sparkles on every street of Sunburst Island.",
+          "condition": "has_sea_ruby_badge"
+        },
+        {
+          "text": "Ship to Trovita Island",
+          "target_area": "TROVITA_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... Trovita Island's beaches shine in the sun.",
+          "condition": "has_sea_ruby_badge"
+        },
+        {
+          "text": "Ship to Shamouti Island",
+          "target_area": "SHAMOUTI_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... Drums from a festival echo across Shamouti Island.",
+          "condition": "has_spike_shell_badge"
+        },
+        {
+          "text": "Ship to Kumquat Island",
+          "target_area": "KUMQUAT_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... Resort hotels line the shore of Kumquat Island.",
+          "condition": "has_spike_shell_badge"
+        }
+      ],
+      "next_area": "PUMMELO_CLIFFS",
+      "gym": {
+        "trainers": [],
+        "leader": {
+          "name": "Drake",
+          "class": "CHAMPION",
+          "sprite": "veteran.png",
+          "is_boss_battle": true,
+          "team": [
+            132,
+            95,
+            94,
+            3,
+            125,
+            149
+          ],
+          "levels": [
+            72,
+            72,
+            73,
+            74,
+            73,
+            76
+          ],
+          "badge_reward": "WINNERS_TROPHY",
+          "rewards": {
+            "balls": 30,
+            "RARE_CANDY": 5
+          },
+          "dialogue": {
+            "intro": [
+              "Drake: I'm Drake, Supreme Gym Leader of the Orange League.",
+              "Nobody has beaten my six Pokemon in a full battle. Show me what you've got!"
+            ],
+            "player_won": [
+              "Drake: Incredible... My Dragonite has finally met its match.",
+              "The Winner's Trophy is yours, Orange League Champion!"
+            ],
+            "player_lost": [
+              "Drake: A good battle, but the trophy stays here. Train and come back!"
+            ]
+          },
+          "victory_flag": "beat_orange_champion"
+        },
+        "requirements": {
+          "badges": 4,
+          "fail_text": "Only trainers with all four Orange Crew badges may challenge Drake."
+        }
+      }
+    },
+    "PUMMELO_CLIFFS": {
+      "area_type": "wild_route",
+      "route_name": "Pummelo Cliffs",
+      "region": "ORANGE",
+      "level": 63,
+      "battle_type": "mountain",
+      "wild_pool_percentages": "ORANGE_PUMMELO_CLIFFS_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Ace Trainer Sky",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            148,
+            227,
+            142
+          ],
+          "rewards": {
+            "balls": 6
+          }
+        },
+        {
+          "name": "Dragon Tamer Ryu",
+          "class": "DRAGON_TAMER",
+          "sprite": "dragon_tamer.png",
+          "team": [
+            147,
+            148,
+            130
+          ],
+          "rewards": {
+            "balls": 6
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Pummelo Island",
+          "action": "EXIT",
+          "target_area": "PUMMELO_ISLAND",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "PUMMELO_ISLAND"
+    },
+    "PINKAN_ISLAND": {
+      "area_type": "town",
+      "route_name": "Pinkan Island",
+      "region": "ORANGE",
+      "level": 54,
+      "has_gym": false,
+      "explore_options": [
+        {
+          "text": "Pokemon Center",
+          "action": "HEAL"
+        },
+        {
+          "text": "Poke Mart",
+          "action": "SHOP"
+        },
+        {
+          "text": "Officer Jenny",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "Officer Jenny: Pinkan Island is a protected reserve.",
+              "The Pinkan Berries here turn the Pokemon pink! Poachers want them badly.",
+              "Team Rocket was spotted in the reserve. Please, stop them!"
+            ],
+            "flag": "met_pinkan_jenny",
+            "done": [
+              "Officer Jenny: Team Rocket is somewhere in the reserve. Be careful!"
+            ]
+          },
+          "flag_condition": "not defeated_pinkan_rocket"
+        },
+        {
+          "text": "Get the Research Permit",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "requires": [
+              "defeated_pinkan_rocket"
+            ],
+            "lines": [
+              "Officer Jenny: You chased off Team Rocket! The reserve is safe again.",
+              "Here's a research permit. You may catch Pinkan Pokemon to study them.",
+              "Treat them kindly. They only turn pink thanks to the berries here!"
+            ],
+            "gift_item": {
+              "PINKAN_PERMIT": 1
+            },
+            "flag": "got_pinkan_permit"
+          },
+          "condition": "defeated_pinkan_rocket",
+          "flag_condition": "not got_pinkan_permit"
+        }
+      ],
+      "travel_options": [
+        {
+          "text": "Pinkan Reserve",
+          "target_area": "PINKAN_RESERVE"
+        },
+        {
+          "text": "Ship to Valencia Island",
+          "target_area": "VALENCIA_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... Palm trees line the docks of Valencia Island."
+        },
+        {
+          "text": "Ship to Mikan Island",
+          "target_area": "MIKAN_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... Mikan Island's lighthouse comes into view."
+        },
+        {
+          "text": "Ship to Navel Island",
+          "target_area": "NAVEL_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... A snowy volcano rises over Navel Island.",
+          "condition": "has_coral_eye_badge"
+        },
+        {
+          "text": "Ship to Sunburst Island",
+          "target_area": "SUNBURST_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... Glass sparkles on every street of Sunburst Island.",
+          "condition": "has_sea_ruby_badge"
+        },
+        {
+          "text": "Ship to Trovita Island",
+          "target_area": "TROVITA_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... Trovita Island's beaches shine in the sun.",
+          "condition": "has_sea_ruby_badge"
+        },
+        {
+          "text": "Ship to Shamouti Island",
+          "target_area": "SHAMOUTI_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... Drums from a festival echo across Shamouti Island.",
+          "condition": "has_spike_shell_badge"
+        },
+        {
+          "text": "Ship to Kumquat Island",
+          "target_area": "KUMQUAT_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... Resort hotels line the shore of Kumquat Island.",
+          "condition": "has_spike_shell_badge"
+        },
+        {
+          "text": "Ship to Pummelo Island",
+          "target_area": "PUMMELO_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... Pummelo Stadium towers over the harbor.",
+          "condition": "has_jade_star_badge"
+        }
+      ],
+      "next_area": "PINKAN_RESERVE"
+    },
+    "PINKAN_RESERVE": {
+      "area_type": "wild_route",
+      "route_name": "Pinkan Reserve",
+      "region": "ORANGE",
+      "level": 54,
+      "battle_type": "forest",
+      "wild_pool_percentages": "ORANGE_PINKAN_RESERVE_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Poacher Grunt",
+          "class": "ROCKET_GRUNT",
+          "sprite": "rocket_grunt_m.png",
+          "team": [
+            24,
+            110
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Poacher Grunt",
+          "class": "ROCKET_GRUNT",
+          "sprite": "rocket_grunt_f.png",
+          "team": [
+            42,
+            89
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": [
+            "has_balls",
+            "has_item:PINKAN_PERMIT"
+          ],
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "STOP TEAM ROCKET",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "requires": [
+              "met_pinkan_jenny"
+            ],
+            "fail": [
+              "Strange footprints lead into the berry trees..."
+            ],
+            "lines": [
+              "Jessie and James are stuffing Pinkan Berries into sacks!",
+              "Team Rocket: Pink Pokemon will make us rich! Out of our way!"
+            ],
+            "battle": {
+              "name": "Jessie & James",
+              "class": "TEAM_ROCKET",
+              "sprite": "rocket_team.png",
+              "team": [
+                24,
+                110,
+                71,
+                52
+              ],
+              "levels": [
+                56,
+                56,
+                57,
+                58
+              ],
+              "rewards": {
+                "balls": 10
+              },
+              "dialogue": {
+                "player_won": [
+                  "Team Rocket: We're blasting off again!"
+                ]
+              }
+            },
+            "flag": "defeated_pinkan_rocket"
+          },
+          "condition": "met_pinkan_jenny",
+          "flag_condition": "not defeated_pinkan_rocket"
+        },
+        {
+          "text": "Pinkan Island",
+          "action": "EXIT",
+          "target_area": "PINKAN_ISLAND",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "PINKAN_ISLAND"
+    },
+    "SUNBURST_ISLAND": {
+      "area_type": "town",
+      "route_name": "Sunburst Island",
+      "region": "ORANGE",
+      "level": 57,
+      "has_gym": false,
+      "explore_options": [
+        {
+          "text": "Pokemon Center",
+          "action": "HEAL"
+        },
+        {
+          "text": "Poke Mart",
+          "action": "SHOP"
+        },
+        {
+          "text": "Mateo's Glass Workshop",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "Mateo: Welcome to Sunburst Island, the island of glass!",
+              "A Crystal Onix lives in the cave by the lake. Its body is clear as glass.",
+              "Water and Electric attacks pass right through it. Only fire can crack it.",
+              "If you can calm it down, come back. I'll make you something special."
+            ],
+            "flag": "met_mateo",
+            "done": [
+              "Mateo: The Crystal Onix is in the cave by the lake. Good luck!"
+            ]
+          },
+          "flag_condition": "not crystal_onix_defeated"
+        },
+        {
+          "text": "Show Mateo the Crystal Onix",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "requires": [
+              "crystal_onix_defeated"
+            ],
+            "lines": [
+              "Mateo: You calmed the Crystal Onix! I've never seen glass shine like that.",
+              "I made this glass coin from sand by the lake. It's said to bring good fortune!"
+            ],
+            "gift_item": {
+              "AMULET_COIN": 1
+            },
+            "flag": "got_mateo_gift"
+          },
+          "condition": "crystal_onix_defeated",
+          "flag_condition": "not got_mateo_gift"
+        }
+      ],
+      "travel_options": [
+        {
+          "text": "Crystal Cave",
+          "target_area": "CRYSTAL_CAVE",
+          "condition": "met_mateo"
+        },
+        {
+          "text": "Ship to Valencia Island",
+          "target_area": "VALENCIA_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... Palm trees line the docks of Valencia Island."
+        },
+        {
+          "text": "Ship to Mikan Island",
+          "target_area": "MIKAN_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... Mikan Island's lighthouse comes into view."
+        },
+        {
+          "text": "Ship to Pinkan Island",
+          "target_area": "PINKAN_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... Pink berry trees cover Pinkan Island.",
+          "condition": "has_coral_eye_badge"
+        },
+        {
+          "text": "Ship to Navel Island",
+          "target_area": "NAVEL_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... A snowy volcano rises over Navel Island.",
+          "condition": "has_coral_eye_badge"
+        },
+        {
+          "text": "Ship to Trovita Island",
+          "target_area": "TROVITA_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... Trovita Island's beaches shine in the sun.",
+          "condition": "has_sea_ruby_badge"
+        },
+        {
+          "text": "Ship to Shamouti Island",
+          "target_area": "SHAMOUTI_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... Drums from a festival echo across Shamouti Island.",
+          "condition": "has_spike_shell_badge"
+        },
+        {
+          "text": "Ship to Kumquat Island",
+          "target_area": "KUMQUAT_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... Resort hotels line the shore of Kumquat Island.",
+          "condition": "has_spike_shell_badge"
+        },
+        {
+          "text": "Ship to Pummelo Island",
+          "target_area": "PUMMELO_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... Pummelo Stadium towers over the harbor.",
+          "condition": "has_jade_star_badge"
+        }
+      ],
+      "next_area": "CRYSTAL_CAVE"
+    },
+    "CRYSTAL_CAVE": {
+      "area_type": "dungeon",
+      "route_name": "Crystal Cave",
+      "region": "ORANGE",
+      "level": 58,
+      "battle_type": "cave",
+      "wild_pool_percentages": "ORANGE_CRYSTAL_CAVE_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Hiker Flint",
+          "class": "HIKER",
+          "sprite": "hiker.png",
+          "team": [
+            95,
+            75,
+            208
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "CHALLENGE CRYSTAL ONIX",
+          "action": "BOSS",
+          "condition": "boss_not_defeated",
+          "color": "GOLD"
+        },
+        {
+          "text": "Sunburst Island",
+          "action": "EXIT",
+          "target_area": "SUNBURST_ISLAND",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "SUNBURST_ISLAND",
+      "area_boss": {
+        "id": 9201,
+        "name": "Crystal Onix",
+        "victory_flag": "crystal_onix_defeated"
+      }
+    },
+    "SHAMOUTI_ISLAND": {
+      "area_type": "town",
+      "route_name": "Shamouti Island",
+      "region": "ORANGE",
+      "level": 60,
+      "has_gym": false,
+      "explore_options": [
+        {
+          "text": "Pokemon Center",
+          "action": "HEAL"
+        },
+        {
+          "text": "Poke Mart",
+          "action": "SHOP"
+        },
+        {
+          "text": "The Shamouti Festival",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "Melody: Welcome to the festival! Have you heard our island's legend?",
+              "Three titans of fire, ice and lightning must never fight.",
+              "If they do, only the guardian of the sea can stop them, and it needs help.",
+              "The legend says a Chosen One will gather a treasure from each titan's island.",
+              "You came by sea on festival day... I think you're the Chosen One!",
+              "Bring the three treasures to the Shrine, and the guardian will sing."
+            ],
+            "flag": "heard_shamouti_legend",
+            "done": [
+              "Melody: Fire Island, Ice Island, Lightning Island. Then the Shrine!"
+            ]
+          }
+        }
+      ],
+      "travel_options": [
+        {
+          "text": "Fire Island",
+          "target_area": "FIRE_ISLAND",
+          "condition": "heard_shamouti_legend"
+        },
+        {
+          "text": "Ice Island",
+          "target_area": "ICE_ISLAND",
+          "condition": "heard_shamouti_legend"
+        },
+        {
+          "text": "Lightning Island",
+          "target_area": "LIGHTNING_ISLAND",
+          "condition": "heard_shamouti_legend"
+        },
+        {
+          "text": "Shamouti Shrine",
+          "target_area": "SHAMOUTI_SHRINE",
+          "condition": "heard_shamouti_legend"
+        },
+        {
+          "text": "Ship to Valencia Island",
+          "target_area": "VALENCIA_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... Palm trees line the docks of Valencia Island."
+        },
+        {
+          "text": "Ship to Mikan Island",
+          "target_area": "MIKAN_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... Mikan Island's lighthouse comes into view."
+        },
+        {
+          "text": "Ship to Pinkan Island",
+          "target_area": "PINKAN_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... Pink berry trees cover Pinkan Island.",
+          "condition": "has_coral_eye_badge"
+        },
+        {
+          "text": "Ship to Navel Island",
+          "target_area": "NAVEL_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... A snowy volcano rises over Navel Island.",
+          "condition": "has_coral_eye_badge"
+        },
+        {
+          "text": "Ship to Sunburst Island",
+          "target_area": "SUNBURST_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... Glass sparkles on every street of Sunburst Island.",
+          "condition": "has_sea_ruby_badge"
+        },
+        {
+          "text": "Ship to Trovita Island",
+          "target_area": "TROVITA_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... Trovita Island's beaches shine in the sun.",
+          "condition": "has_sea_ruby_badge"
+        },
+        {
+          "text": "Ship to Kumquat Island",
+          "target_area": "KUMQUAT_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... Resort hotels line the shore of Kumquat Island.",
+          "condition": "has_spike_shell_badge"
+        },
+        {
+          "text": "Ship to Pummelo Island",
+          "target_area": "PUMMELO_ISLAND",
+          "message": "You board the ferry. The ship sails across the Orange Archipelago... Pummelo Stadium towers over the harbor.",
+          "condition": "has_jade_star_badge"
+        }
+      ],
+      "next_area": "FIRE_ISLAND"
+    },
+    "FIRE_ISLAND": {
+      "area_type": "wild_route",
+      "route_name": "Fire Island",
+      "region": "ORANGE",
+      "level": 62,
+      "battle_type": "mountain",
+      "wild_pool_percentages": "ORANGE_FIRE_ISLAND_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "CALM MOLTRES",
+          "action": "BOSS",
+          "color": "GOLD",
+          "condition": "heard_shamouti_legend",
+          "flag_condition": "not shamouti_moltres_calmed",
+          "boss": {
+            "id": 146,
+            "name": "Moltres",
+            "level": 65,
+            "no_catch": true,
+            "victory_flag": "shamouti_moltres_calmed",
+            "lines": [
+              "Moltres guards the island's shrine, crackling with power!"
+            ],
+            "won": [
+              "Moltres settles down and flies off.",
+              "In the shrine you find the Fire Treasure!"
+            ],
+            "rewards": {
+              "FIRE_TREASURE": 1
+            }
+          }
+        },
+        {
+          "text": "Shamouti Island",
+          "action": "EXIT",
+          "target_area": "SHAMOUTI_ISLAND",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "SHAMOUTI_ISLAND"
+    },
+    "ICE_ISLAND": {
+      "area_type": "wild_route",
+      "route_name": "Ice Island",
+      "region": "ORANGE",
+      "level": 62,
+      "battle_type": "snow",
+      "wild_pool_percentages": "ORANGE_ICE_ISLAND_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "CALM ARTICUNO",
+          "action": "BOSS",
+          "color": "GOLD",
+          "condition": "heard_shamouti_legend",
+          "flag_condition": "not shamouti_articuno_calmed",
+          "boss": {
+            "id": 144,
+            "name": "Articuno",
+            "level": 65,
+            "no_catch": true,
+            "victory_flag": "shamouti_articuno_calmed",
+            "lines": [
+              "Articuno guards the island's shrine, crackling with power!"
+            ],
+            "won": [
+              "Articuno settles down and flies off.",
+              "In the shrine you find the Ice Treasure!"
+            ],
+            "rewards": {
+              "ICE_TREASURE": 1
+            }
+          }
+        },
+        {
+          "text": "Shamouti Island",
+          "action": "EXIT",
+          "target_area": "SHAMOUTI_ISLAND",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "SHAMOUTI_ISLAND"
+    },
+    "LIGHTNING_ISLAND": {
+      "area_type": "wild_route",
+      "route_name": "Lightning Island",
+      "region": "ORANGE",
+      "level": 62,
+      "battle_type": "mountain",
+      "wild_pool_percentages": "ORANGE_LIGHTNING_ISLAND_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "CALM ZAPDOS",
+          "action": "BOSS",
+          "color": "GOLD",
+          "condition": "heard_shamouti_legend",
+          "flag_condition": "not shamouti_zapdos_calmed",
+          "boss": {
+            "id": 145,
+            "name": "Zapdos",
+            "level": 65,
+            "no_catch": true,
+            "victory_flag": "shamouti_zapdos_calmed",
+            "lines": [
+              "Zapdos guards the island's shrine, crackling with power!"
+            ],
+            "won": [
+              "Zapdos settles down and flies off.",
+              "In the shrine you find the Lightning Treasure!"
+            ],
+            "rewards": {
+              "LIGHTNING_TREASURE": 1
+            }
+          }
+        },
+        {
+          "text": "Shamouti Island",
+          "action": "EXIT",
+          "target_area": "SHAMOUTI_ISLAND",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "SHAMOUTI_ISLAND"
+    },
+    "SHAMOUTI_SHRINE": {
+      "area_type": "wild_route",
+      "route_name": "Shamouti Shrine",
+      "region": "ORANGE",
+      "level": 64,
+      "battle_type": "ocean",
+      "wild_pool_percentages": "ORANGE_SHAMOUTI_SHRINE_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "PLACE THE TREASURES",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "requires": [
+              "has_item:FIRE_TREASURE",
+              "has_item:ICE_TREASURE",
+              "has_item:LIGHTNING_TREASURE"
+            ],
+            "fail": [
+              "Three empty spots on the shrine's altar are shaped like treasures..."
+            ],
+            "lines": [
+              "You place the three treasures on the altar. They glow brightly!",
+              "Slowking: The titans are calm. Listen... the guardian of the sea is singing.",
+              "Something enormous is rising from the waves!"
+            ],
+            "flag": "shamouti_song_played"
+          },
+          "flag_condition": "not shamouti_song_played"
+        },
+        {
+          "text": "CHALLENGE LUGIA",
+          "action": "BOSS",
+          "color": "BLUE",
+          "condition": [
+            "shamouti_song_played",
+            "boss_not_defeated"
+          ]
+        },
+        {
+          "text": "Shamouti Island",
+          "action": "EXIT",
+          "target_area": "SHAMOUTI_ISLAND",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "SHAMOUTI_ISLAND",
+      "area_boss": {
+        "id": 249,
+        "name": "Lugia",
+        "victory_flag": "shamouti_lugia_defeated"
+      }
+    }
+  },
+  "ORANGE_VALENCIA_BEACH": [
+    98,
+    90,
+    120,
+    72,
+    54,
+    79,
+    116,
+    118,
+    131,
+    170
+  ],
+  "ORANGE_VALENCIA_BEACH_PERCENTAGES": {
+    "98": 15,
+    "90": 12,
+    "120": 12,
+    "72": 15,
+    "54": 10,
+    "79": 10,
+    "116": 10,
+    "118": 8,
+    "131": 3,
+    "170": 5
+  },
+  "ORANGE_MIKAN_REEF": [
+    116,
+    117,
+    222,
+    90,
+    118,
+    223,
+    224,
+    226,
+    129,
+    211
+  ],
+  "ORANGE_MIKAN_REEF_PERCENTAGES": {
+    "116": 15,
+    "117": 6,
+    "222": 15,
+    "90": 12,
+    "118": 12,
+    "223": 12,
+    "224": 5,
+    "226": 8,
+    "129": 10,
+    "211": 5
+  },
+  "ORANGE_NAVEL_SUMMIT": [
+    86,
+    87,
+    124,
+    220,
+    221,
+    215,
+    225,
+    75,
+    67,
+    74
+  ],
+  "ORANGE_NAVEL_SUMMIT_PERCENTAGES": {
+    "86": 12,
+    "87": 6,
+    "124": 8,
+    "220": 14,
+    "221": 6,
+    "215": 10,
+    "225": 10,
+    "75": 14,
+    "67": 12,
+    "74": 8
+  },
+  "ORANGE_TROVITA_SHORE": [
+    102,
+    55,
+    120,
+    121,
+    114,
+    128,
+    73,
+    170,
+    171,
+    99,
+    125
+  ],
+  "ORANGE_TROVITA_SHORE_PERCENTAGES": {
+    "102": 14,
+    "55": 10,
+    "120": 12,
+    "121": 5,
+    "114": 10,
+    "128": 8,
+    "73": 12,
+    "170": 10,
+    "171": 6,
+    "99": 8,
+    "125": 5
+  },
+  "ORANGE_KUMQUAT_JUNGLE": [
+    103,
+    12,
+    17,
+    44,
+    182,
+    49,
+    166,
+    168,
+    193,
+    214,
+    127,
+    102
+  ],
+  "ORANGE_KUMQUAT_JUNGLE_PERCENTAGES": {
+    "103": 10,
+    "12": 10,
+    "17": 12,
+    "44": 10,
+    "182": 5,
+    "49": 10,
+    "166": 8,
+    "168": 8,
+    "193": 8,
+    "214": 6,
+    "127": 6,
+    "102": 7
+  },
+  "ORANGE_PUMMELO_CLIFFS": [
+    147,
+    148,
+    142,
+    22,
+    85,
+    227,
+    207,
+    112,
+    95,
+    132,
+    149
+  ],
+  "ORANGE_PUMMELO_CLIFFS_PERCENTAGES": {
+    "147": 10,
+    "148": 4,
+    "142": 3,
+    "22": 14,
+    "85": 10,
+    "227": 10,
+    "207": 12,
+    "112": 8,
+    "95": 10,
+    "132": 10,
+    "149": 1
+  },
+  "ORANGE_PINKAN_RESERVE": [
+    9101,
+    9102,
+    9103,
+    9104,
+    9105,
+    9106,
+    9107,
+    9108,
+    9109,
+    9110,
+    9111,
+    9112,
+    9113,
+    9114,
+    9115,
+    9116
+  ],
+  "ORANGE_PINKAN_RESERVE_PERCENTAGES": {
+    "9101": 10,
+    "9102": 10,
+    "9103": 6,
+    "9104": 6,
+    "9105": 6,
+    "9106": 3,
+    "9107": 8,
+    "9108": 8,
+    "9109": 8,
+    "9110": 4,
+    "9111": 8,
+    "9112": 8,
+    "9113": 3,
+    "9114": 8,
+    "9115": 3,
+    "9116": 4
+  },
+  "ORANGE_CRYSTAL_CAVE": [
+    95,
+    75,
+    42,
+    28,
+    105,
+    246,
+    185,
+    213,
+    208,
+    74
+  ],
+  "ORANGE_CRYSTAL_CAVE_PERCENTAGES": {
+    "95": 18,
+    "75": 15,
+    "42": 15,
+    "28": 10,
+    "105": 8,
+    "246": 5,
+    "185": 8,
+    "213": 7,
+    "208": 3,
+    "74": 11
+  },
+  "ORANGE_FIRE_ISLAND": [
+    58,
+    77,
+    78,
+    126,
+    218,
+    219,
+    228,
+    229,
+    37,
+    38,
+    240
+  ],
+  "ORANGE_FIRE_ISLAND_PERCENTAGES": {
+    "58": 12,
+    "77": 12,
+    "78": 6,
+    "126": 8,
+    "218": 14,
+    "219": 6,
+    "228": 12,
+    "229": 4,
+    "37": 12,
+    "38": 4,
+    "240": 10
+  },
+  "ORANGE_ICE_ISLAND": [
+    86,
+    87,
+    124,
+    215,
+    220,
+    221,
+    225,
+    131,
+    238,
+    91,
+    90
+  ],
+  "ORANGE_ICE_ISLAND_PERCENTAGES": {
+    "86": 12,
+    "87": 8,
+    "124": 10,
+    "215": 12,
+    "220": 12,
+    "221": 6,
+    "225": 12,
+    "131": 4,
+    "238": 12,
+    "91": 6,
+    "90": 6
+  },
+  "ORANGE_LIGHTNING_ISLAND": [
+    25,
+    81,
+    82,
+    100,
+    101,
+    125,
+    179,
+    180,
+    239,
+    170,
+    135,
+    26
+  ],
+  "ORANGE_LIGHTNING_ISLAND_PERCENTAGES": {
+    "25": 10,
+    "81": 12,
+    "82": 6,
+    "100": 12,
+    "101": 6,
+    "125": 6,
+    "179": 14,
+    "180": 8,
+    "239": 10,
+    "170": 8,
+    "135": 2,
+    "26": 6
+  },
+  "ORANGE_SHAMOUTI_SHRINE": [
+    79,
+    80,
+    199,
+    72,
+    73,
+    120,
+    222,
+    226,
+    171,
+    230,
+    117
+  ],
+  "ORANGE_SHAMOUTI_SHRINE_PERCENTAGES": {
+    "79": 15,
+    "80": 8,
+    "199": 4,
+    "72": 15,
+    "73": 8,
+    "120": 12,
+    "222": 12,
+    "226": 10,
+    "171": 8,
+    "230": 3,
+    "117": 5
+  }
+}

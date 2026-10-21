@@ -1,0 +1,2711 @@
+{
+  "STORY_PROGRESSION": {
+    "ONE_ISLAND": {
+      "area_type": "town",
+      "route_name": "One Island",
+      "region": "KANTO",
+      "level": 40,
+      "subregion": "SEVII",
+      "has_gym": false,
+      "explore_options": [
+        {
+          "text": "Pokemon Center",
+          "action": "HEAL"
+        },
+        {
+          "text": "Poke Mart",
+          "action": "SHOP"
+        },
+        {
+          "text": "Celio's Network Machine",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "Celio: Hi! I'm Celio, Bill's friend. I'm building the Network Machine.",
+              "It will link Kanto's PCs with faraway regions, so trainers can trade with Johto!",
+              "But it needs two special gems, a Ruby and a Sapphire, to power it.",
+              "People say Team Rocket has been sneaking around these islands looking for gems...",
+              "If you find out anything, please come back and tell me!"
+            ],
+            "flag": "met_celio",
+            "done": [
+              "Celio: Still no Ruby or Sapphire... I heard Team Rocket was seen on Mt. Ember."
+            ]
+          },
+          "flag_condition": "not network_machine_fixed"
+        },
+        {
+          "text": "Celio's Rainbow Pass",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "requires": [
+              "beat_champion",
+              "unlocked_national_dex"
+            ],
+            "fail": [
+              "Celio: The farther islands are only open to Champions with a National Pokedex."
+            ],
+            "lines": [
+              "Celio: You're the Champion, and you have the National Pokedex!",
+              "Take this Rainbow Pass. The Seagallop Ferry will take you to Islands 4 through 7.",
+              "Maybe out there you'll find where Team Rocket hid the gems!"
+            ],
+            "gift_item": {
+              "RAINBOW_PASS": 1
+            },
+            "flag": "got_rainbow_pass"
+          },
+          "condition": "beat_champion",
+          "flag_condition": "not got_rainbow_pass"
+        },
+        {
+          "text": "Give Celio the Gems",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "requires": [
+              "has_item:RUBY",
+              "has_item:SAPPHIRE"
+            ],
+            "lines": [
+              "Celio: The Ruby AND the Sapphire! You got them back from Team Rocket!",
+              "With these, the Network Machine works! Kanto is linked to the world.",
+              "Oh, and the warehouse files mentioned this old sea chart...",
+              "It shows an island that isn't on any map. Sailors see a pink Pokemon there!"
+            ],
+            "take_item": {
+              "RUBY": 1,
+              "SAPPHIRE": 1
+            },
+            "gift_item": {
+              "OLD_SEA_MAP": 1
+            },
+            "flag": "network_machine_fixed"
+          },
+          "condition": "has_item:SAPPHIRE",
+          "flag_condition": "not network_machine_fixed"
+        }
+      ],
+      "travel_options": [
+        {
+          "text": "Treasure Beach",
+          "target_area": "TREASURE_BEACH"
+        },
+        {
+          "text": "Kindle Road",
+          "target_area": "KINDLE_ROAD"
+        },
+        {
+          "text": "Seagallop to Vermilion City",
+          "target_area": "VERMILLION_CITY",
+          "message": "The Seagallop Ferry speeds back to Vermilion City."
+        },
+        {
+          "text": "Seagallop to Two Island",
+          "target_area": "TWO_ISLAND",
+          "message": "The Seagallop Ferry speeds across the waves. Next stop: Two Island!",
+          "condition": "has_item:TRI_PASS"
+        },
+        {
+          "text": "Seagallop to Three Island",
+          "target_area": "THREE_ISLAND",
+          "message": "The Seagallop Ferry speeds across the waves. Next stop: Three Island!",
+          "condition": "has_item:TRI_PASS"
+        },
+        {
+          "text": "Seagallop to Four Island",
+          "target_area": "FOUR_ISLAND",
+          "message": "The Seagallop Ferry speeds across the waves. Next stop: Four Island!",
+          "condition": "has_item:RAINBOW_PASS"
+        },
+        {
+          "text": "Seagallop to Five Island",
+          "target_area": "FIVE_ISLAND",
+          "message": "The Seagallop Ferry speeds across the waves. Next stop: Five Island!",
+          "condition": "has_item:RAINBOW_PASS"
+        },
+        {
+          "text": "Seagallop to Six Island",
+          "target_area": "SIX_ISLAND",
+          "message": "The Seagallop Ferry speeds across the waves. Next stop: Six Island!",
+          "condition": "has_item:RAINBOW_PASS"
+        },
+        {
+          "text": "Seagallop to Seven Island",
+          "target_area": "SEVEN_ISLAND",
+          "message": "The Seagallop Ferry speeds across the waves. Next stop: Seven Island!",
+          "condition": "has_item:RAINBOW_PASS"
+        },
+        {
+          "text": "Seagallop to Faraway Island",
+          "target_area": "FARAWAY_ISLAND",
+          "message": "The Seagallop Ferry speeds across the waves. Next stop: Faraway Island!",
+          "condition": "has_item:OLD_SEA_MAP"
+        }
+      ],
+      "next_area": "TREASURE_BEACH"
+    },
+    "TREASURE_BEACH": {
+      "area_type": "wild_route",
+      "route_name": "Treasure Beach",
+      "region": "KANTO",
+      "level": 38,
+      "subregion": "SEVII",
+      "wild_pool_percentages": "SEVII_TREASURE_BEACH_PERCENTAGES",
+      "battle_type": "ocean",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Swimmer Mara",
+          "class": "SWIMMER",
+          "sprite": "swimmer_f.png",
+          "team": [
+            120,
+            116
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Fisherman Ned",
+          "class": "FISHERMAN",
+          "sprite": "fisherman.png",
+          "team": [
+            129,
+            118,
+            223
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "DIG IN THE SAND",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "You dig around the washed-up driftwood...",
+              "Something shiny was buried in the sand!"
+            ],
+            "gift_item": {
+              "RARE_CANDY": 2
+            },
+            "flag": "treasure_beach_dug"
+          },
+          "flag_condition": "not treasure_beach_dug"
+        },
+        {
+          "text": "One Island",
+          "action": "EXIT",
+          "target_area": "ONE_ISLAND",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "ONE_ISLAND"
+    },
+    "KINDLE_ROAD": {
+      "area_type": "wild_route",
+      "route_name": "Kindle Road",
+      "region": "KANTO",
+      "level": 40,
+      "subregion": "SEVII",
+      "wild_pool_percentages": "SEVII_KINDLE_ROAD_PERCENTAGES",
+      "battle_type": "mountain",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Hiker Bert",
+          "class": "HIKER",
+          "sprite": "hiker.png",
+          "team": [
+            74,
+            75,
+            95
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Biker Rex",
+          "class": "BIKER",
+          "sprite": "biker.png",
+          "team": [
+            109,
+            88
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Ruin Maniac Ezra",
+          "class": "RUIN_MANIAC",
+          "sprite": "ruinmaniac.png",
+          "team": [
+            27,
+            104
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Super Nerd Blaze",
+          "class": "SUPER_NERD",
+          "sprite": "supernerd.png",
+          "team": [
+            58,
+            37,
+            126
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "One Island",
+          "action": "EXIT",
+          "target_area": "ONE_ISLAND",
+          "condition": "can_exit",
+          "color": "RED"
+        },
+        {
+          "text": "Mt. Ember",
+          "action": "EXIT",
+          "target_area": "MT_EMBER",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "ONE_ISLAND"
+    },
+    "MT_EMBER": {
+      "area_type": "dungeon",
+      "route_name": "Mt. Ember",
+      "region": "KANTO",
+      "level": 43,
+      "subregion": "SEVII",
+      "wild_pool_percentages": "SEVII_MT_EMBER_PERCENTAGES",
+      "battle_type": "cave",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Hiker Gus",
+          "class": "HIKER",
+          "sprite": "hiker.png",
+          "team": [
+            75,
+            95,
+            76
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "TALK TO THE RESEARCHERS",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "Researcher: We're studying the volcano's heat... but two men in black chased us off!",
+              "They were digging near the summit, talking about a gem called the Ruby."
+            ],
+            "flag": "met_ember_researchers"
+          },
+          "flag_condition": "not met_ember_researchers"
+        },
+        {
+          "text": "CHASE OFF TEAM ROCKET",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "requires": [
+              "met_ember_researchers"
+            ],
+            "lines": [
+              "Rocket Grunt: The boss is gone, but we've got our own plans now!",
+              "Gems, stronger Pokemon, forced evolution... Scram, kid!"
+            ],
+            "battle": {
+              "name": "Rocket Grunts",
+              "class": "ROCKET_GRUNT",
+              "sprite": "rocket_grunt_m.png",
+              "team": [
+                109,
+                41,
+                110,
+                24
+              ],
+              "levels": [
+                42,
+                42,
+                44,
+                44
+              ],
+              "rewards": {
+                "balls": 10
+              },
+              "dialogue": {
+                "player_won": [
+                  "Grunt: Fine, keep the mountain! We'll find the gems elsewhere."
+                ]
+              }
+            },
+            "flag": "sevii_ember_rocket"
+          },
+          "condition": "met_ember_researchers",
+          "flag_condition": "not sevii_ember_rocket"
+        },
+        {
+          "text": "CHALLENGE MOLTRES",
+          "action": "BOSS",
+          "color": "GOLD",
+          "condition": [
+            "boss_not_defeated",
+            "not:CINNABAR_VOLCANO_boss_defeated"
+          ]
+        },
+        {
+          "text": "Kindle Road",
+          "action": "EXIT",
+          "target_area": "KINDLE_ROAD",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "KINDLE_ROAD",
+      "area_boss": {
+        "id": 146,
+        "name": "Moltres",
+        "victory_flag": "MT_EMBER_boss_defeated"
+      }
+    },
+    "TWO_ISLAND": {
+      "area_type": "town",
+      "route_name": "Two Island",
+      "region": "KANTO",
+      "level": 42,
+      "subregion": "SEVII",
+      "has_gym": false,
+      "explore_options": [
+        {
+          "text": "Pokemon Center",
+          "action": "HEAL"
+        },
+        {
+          "text": "Poke Mart",
+          "action": "SHOP"
+        },
+        {
+          "text": "Joyful Game Corner",
+          "action": "GAMECORNER"
+        },
+        {
+          "text": "Lostelle's Dad",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "Man: My daughter Lostelle went to pick berries on Three Island and never came home!",
+              "Bikers have taken over the bridge there... Please, help me find her!"
+            ],
+            "flag": "heard_lostelle",
+            "done": [
+              "Man: Lostelle went to the Berry Forest past Bond Bridge on Three Island!"
+            ]
+          },
+          "flag_condition": "not rescued_lostelle"
+        },
+        {
+          "text": "Lostelle's Thanks",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "requires": [
+              "rescued_lostelle"
+            ],
+            "lines": [
+              "Lostelle: Thank you for saving me from that Hypno!",
+              "Dad: How can we ever repay you? Please, take these."
+            ],
+            "gift_item": {
+              "RARE_CANDY": 3,
+              "balls": 10
+            },
+            "flag": "lostelle_thanked"
+          },
+          "condition": "rescued_lostelle",
+          "flag_condition": "not lostelle_thanked"
+        }
+      ],
+      "travel_options": [
+        {
+          "text": "Cape Brink",
+          "target_area": "CAPE_BRINK"
+        },
+        {
+          "text": "Seagallop to Vermilion City",
+          "target_area": "VERMILLION_CITY",
+          "message": "The Seagallop Ferry speeds back to Vermilion City."
+        },
+        {
+          "text": "Seagallop to One Island",
+          "target_area": "ONE_ISLAND",
+          "message": "The Seagallop Ferry speeds across the waves. Next stop: One Island!",
+          "condition": "has_item:TRI_PASS"
+        },
+        {
+          "text": "Seagallop to Three Island",
+          "target_area": "THREE_ISLAND",
+          "message": "The Seagallop Ferry speeds across the waves. Next stop: Three Island!",
+          "condition": "has_item:TRI_PASS"
+        },
+        {
+          "text": "Seagallop to Four Island",
+          "target_area": "FOUR_ISLAND",
+          "message": "The Seagallop Ferry speeds across the waves. Next stop: Four Island!",
+          "condition": "has_item:RAINBOW_PASS"
+        },
+        {
+          "text": "Seagallop to Five Island",
+          "target_area": "FIVE_ISLAND",
+          "message": "The Seagallop Ferry speeds across the waves. Next stop: Five Island!",
+          "condition": "has_item:RAINBOW_PASS"
+        },
+        {
+          "text": "Seagallop to Six Island",
+          "target_area": "SIX_ISLAND",
+          "message": "The Seagallop Ferry speeds across the waves. Next stop: Six Island!",
+          "condition": "has_item:RAINBOW_PASS"
+        },
+        {
+          "text": "Seagallop to Seven Island",
+          "target_area": "SEVEN_ISLAND",
+          "message": "The Seagallop Ferry speeds across the waves. Next stop: Seven Island!",
+          "condition": "has_item:RAINBOW_PASS"
+        },
+        {
+          "text": "Seagallop to Faraway Island",
+          "target_area": "FARAWAY_ISLAND",
+          "message": "The Seagallop Ferry speeds across the waves. Next stop: Faraway Island!",
+          "condition": "has_item:OLD_SEA_MAP"
+        }
+      ],
+      "next_area": "CAPE_BRINK"
+    },
+    "CAPE_BRINK": {
+      "area_type": "wild_route",
+      "route_name": "Cape Brink",
+      "region": "KANTO",
+      "level": 42,
+      "subregion": "SEVII",
+      "wild_pool_percentages": "SEVII_CAPE_BRINK_PERCENTAGES",
+      "battle_type": "grass",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Lass Tia",
+          "class": "LASS",
+          "sprite": "lass.png",
+          "team": [
+            35,
+            39,
+            187
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Youngster Joey",
+          "class": "YOUNGSTER",
+          "sprite": "youngster.png",
+          "team": [
+            19,
+            20,
+            161
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "School Kid Ana",
+          "class": "SCHOOL_KID",
+          "sprite": "school_kid_f.png",
+          "team": [
+            43,
+            69,
+            191
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "VISIT THE MOVE TUTOR",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "Old Woman: I teach the ultimate moves of the starter Pokemon.",
+              "Show me a fully evolved starter you've raised with love, and I'll teach it!"
+            ],
+            "teach": {
+              "3": "FRENZY-PLANT",
+              "154": "FRENZY-PLANT",
+              "254": "FRENZY-PLANT",
+              "389": "FRENZY-PLANT",
+              "497": "FRENZY-PLANT",
+              "652": "FRENZY-PLANT",
+              "724": "FRENZY-PLANT",
+              "812": "FRENZY-PLANT",
+              "908": "FRENZY-PLANT",
+              "6": "BLAST-BURN",
+              "157": "BLAST-BURN",
+              "257": "BLAST-BURN",
+              "392": "BLAST-BURN",
+              "500": "BLAST-BURN",
+              "655": "BLAST-BURN",
+              "727": "BLAST-BURN",
+              "815": "BLAST-BURN",
+              "911": "BLAST-BURN",
+              "9": "HYDRO-CANNON",
+              "160": "HYDRO-CANNON",
+              "260": "HYDRO-CANNON",
+              "395": "HYDRO-CANNON",
+              "503": "HYDRO-CANNON",
+              "658": "HYDRO-CANNON",
+              "730": "HYDRO-CANNON",
+              "818": "HYDRO-CANNON",
+              "914": "HYDRO-CANNON"
+            }
+          }
+        },
+        {
+          "text": "Two Island",
+          "action": "EXIT",
+          "target_area": "TWO_ISLAND",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "TWO_ISLAND"
+    },
+    "THREE_ISLAND": {
+      "area_type": "town",
+      "route_name": "Three Island",
+      "region": "KANTO",
+      "level": 44,
+      "subregion": "SEVII",
+      "has_gym": false,
+      "explore_options": [
+        {
+          "text": "Pokemon Center",
+          "action": "HEAL"
+        },
+        {
+          "text": "Poke Mart",
+          "action": "SHOP"
+        },
+        {
+          "text": "Stop the Biker Gang",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "Biker: This island's ours now! Nobody crosses Bond Bridge without beating our leader!"
+            ],
+            "battle": {
+              "name": "Biker Paxton",
+              "class": "BIKER",
+              "sprite": "biker.png",
+              "team": [
+                109,
+                89,
+                110,
+                89
+              ],
+              "levels": [
+                43,
+                44,
+                45,
+                46
+              ],
+              "rewards": {
+                "balls": 10
+              },
+              "dialogue": {
+                "player_won": [
+                  "Paxton: Okay, okay! We're leaving! Take your bridge back!"
+                ]
+              }
+            },
+            "flag": "beat_three_island_bikers",
+            "done": [
+              "Townsfolk: The bikers are gone! You can cross Bond Bridge now."
+            ]
+          }
+        }
+      ],
+      "travel_options": [
+        {
+          "text": "Bond Bridge",
+          "target_area": "BOND_BRIDGE",
+          "condition": "beat_three_island_bikers"
+        },
+        {
+          "text": "Seagallop to Vermilion City",
+          "target_area": "VERMILLION_CITY",
+          "message": "The Seagallop Ferry speeds back to Vermilion City."
+        },
+        {
+          "text": "Seagallop to One Island",
+          "target_area": "ONE_ISLAND",
+          "message": "The Seagallop Ferry speeds across the waves. Next stop: One Island!",
+          "condition": "has_item:TRI_PASS"
+        },
+        {
+          "text": "Seagallop to Two Island",
+          "target_area": "TWO_ISLAND",
+          "message": "The Seagallop Ferry speeds across the waves. Next stop: Two Island!",
+          "condition": "has_item:TRI_PASS"
+        },
+        {
+          "text": "Seagallop to Four Island",
+          "target_area": "FOUR_ISLAND",
+          "message": "The Seagallop Ferry speeds across the waves. Next stop: Four Island!",
+          "condition": "has_item:RAINBOW_PASS"
+        },
+        {
+          "text": "Seagallop to Five Island",
+          "target_area": "FIVE_ISLAND",
+          "message": "The Seagallop Ferry speeds across the waves. Next stop: Five Island!",
+          "condition": "has_item:RAINBOW_PASS"
+        },
+        {
+          "text": "Seagallop to Six Island",
+          "target_area": "SIX_ISLAND",
+          "message": "The Seagallop Ferry speeds across the waves. Next stop: Six Island!",
+          "condition": "has_item:RAINBOW_PASS"
+        },
+        {
+          "text": "Seagallop to Seven Island",
+          "target_area": "SEVEN_ISLAND",
+          "message": "The Seagallop Ferry speeds across the waves. Next stop: Seven Island!",
+          "condition": "has_item:RAINBOW_PASS"
+        },
+        {
+          "text": "Seagallop to Faraway Island",
+          "target_area": "FARAWAY_ISLAND",
+          "message": "The Seagallop Ferry speeds across the waves. Next stop: Faraway Island!",
+          "condition": "has_item:OLD_SEA_MAP"
+        }
+      ],
+      "next_area": "BOND_BRIDGE"
+    },
+    "BOND_BRIDGE": {
+      "area_type": "wild_route",
+      "route_name": "Bond Bridge",
+      "region": "KANTO",
+      "level": 44,
+      "subregion": "SEVII",
+      "wild_pool_percentages": "SEVII_BOND_BRIDGE_PERCENTAGES",
+      "battle_type": "grass",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Biker Dan",
+          "class": "BIKER",
+          "sprite": "biker.png",
+          "team": [
+            88,
+            109
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Cue Ball Ike",
+          "class": "CUE_BALL",
+          "sprite": "cueball.png",
+          "team": [
+            56,
+            66,
+            57
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Bug Catcher Sam",
+          "class": "BUG_CATCHER",
+          "sprite": "bug_catcher.png",
+          "team": [
+            48,
+            165,
+            167
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Three Island",
+          "action": "EXIT",
+          "target_area": "THREE_ISLAND",
+          "condition": "can_exit",
+          "color": "RED"
+        },
+        {
+          "text": "Berry Forest",
+          "action": "EXIT",
+          "target_area": "BERRY_FOREST",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "THREE_ISLAND"
+    },
+    "BERRY_FOREST": {
+      "area_type": "wild_route",
+      "route_name": "Berry Forest",
+      "region": "KANTO",
+      "level": 46,
+      "subregion": "SEVII",
+      "wild_pool_percentages": "SEVII_BERRY_FOREST_PERCENTAGES",
+      "battle_type": "forest",
+      "min_rounds": 2,
+      "trainer_pool": [],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "FIND LOSTELLE",
+          "action": "BOSS",
+          "color": "GOLD",
+          "condition": "heard_lostelle",
+          "flag_condition": "not rescued_lostelle",
+          "boss": {
+            "id": 97,
+            "name": "Hypno",
+            "level": 48,
+            "no_catch": true,
+            "victory_flag": "rescued_lostelle",
+            "lines": [
+              "Deep in the misty forest, a Hypno is swinging its pendulum at a crying girl!"
+            ],
+            "won": [
+              "The Hypno runs off into the mist.",
+              "Lostelle: You saved me! I want to go home to Two Island!"
+            ],
+            "rewards": {
+              "balls": 5
+            }
+          }
+        },
+        {
+          "text": "Bond Bridge",
+          "action": "EXIT",
+          "target_area": "BOND_BRIDGE",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "BOND_BRIDGE"
+    },
+    "FOUR_ISLAND": {
+      "area_type": "town",
+      "route_name": "Four Island",
+      "region": "KANTO",
+      "level": 52,
+      "subregion": "SEVII",
+      "has_gym": false,
+      "explore_options": [
+        {
+          "text": "Pokemon Center",
+          "action": "HEAL"
+        },
+        {
+          "text": "Poke Mart",
+          "action": "SHOP"
+        },
+        {
+          "text": "Pokemon Day Care",
+          "action": "NPC",
+          "target": "day_care"
+        },
+        {
+          "text": "Lorelei's House",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "Lorelei: This is my home island. I came back to rest after the League...",
+              "But Team Rocket is in Icefall Cave, catching Lapras to sell! Please stop them."
+            ],
+            "flag": "met_lorelei_sevii",
+            "done": [
+              "Lorelei: Thank you for saving the Icefall Cave Pokemon."
+            ]
+          },
+          "flag_condition": "not sevii_icefall_cleared"
+        },
+        {
+          "text": "Battle Lorelei",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "requires": [
+              "sevii_icefall_cleared"
+            ],
+            "lines": [
+              "Lorelei: You saved the Lapras. Now, a battle, just for fun. Don't hold back!"
+            ],
+            "battle": {
+              "name": "Lorelei",
+              "class": "ELITE_FOUR",
+              "sprite": "loreli.png",
+              "team": [
+                87,
+                91,
+                80,
+                124,
+                131
+              ],
+              "levels": [
+                56,
+                57,
+                56,
+                58,
+                60
+              ],
+              "rewards": {
+                "balls": 15
+              },
+              "dialogue": {
+                "player_won": [
+                  "Lorelei: Still as strong as ever. Come back any time."
+                ]
+              }
+            },
+            "flag": "defeated_lorelei_sevii",
+            "done": [
+              "Lorelei: That was a wonderful battle."
+            ]
+          },
+          "condition": "sevii_icefall_cleared"
+        }
+      ],
+      "travel_options": [
+        {
+          "text": "Icefall Cave",
+          "target_area": "ICEFALL_CAVE"
+        },
+        {
+          "text": "Seagallop to Vermilion City",
+          "target_area": "VERMILLION_CITY",
+          "message": "The Seagallop Ferry speeds back to Vermilion City."
+        },
+        {
+          "text": "Seagallop to One Island",
+          "target_area": "ONE_ISLAND",
+          "message": "The Seagallop Ferry speeds across the waves. Next stop: One Island!",
+          "condition": "has_item:TRI_PASS"
+        },
+        {
+          "text": "Seagallop to Two Island",
+          "target_area": "TWO_ISLAND",
+          "message": "The Seagallop Ferry speeds across the waves. Next stop: Two Island!",
+          "condition": "has_item:TRI_PASS"
+        },
+        {
+          "text": "Seagallop to Three Island",
+          "target_area": "THREE_ISLAND",
+          "message": "The Seagallop Ferry speeds across the waves. Next stop: Three Island!",
+          "condition": "has_item:TRI_PASS"
+        },
+        {
+          "text": "Seagallop to Five Island",
+          "target_area": "FIVE_ISLAND",
+          "message": "The Seagallop Ferry speeds across the waves. Next stop: Five Island!",
+          "condition": "has_item:RAINBOW_PASS"
+        },
+        {
+          "text": "Seagallop to Six Island",
+          "target_area": "SIX_ISLAND",
+          "message": "The Seagallop Ferry speeds across the waves. Next stop: Six Island!",
+          "condition": "has_item:RAINBOW_PASS"
+        },
+        {
+          "text": "Seagallop to Seven Island",
+          "target_area": "SEVEN_ISLAND",
+          "message": "The Seagallop Ferry speeds across the waves. Next stop: Seven Island!",
+          "condition": "has_item:RAINBOW_PASS"
+        },
+        {
+          "text": "Seagallop to Faraway Island",
+          "target_area": "FARAWAY_ISLAND",
+          "message": "The Seagallop Ferry speeds across the waves. Next stop: Faraway Island!",
+          "condition": "has_item:OLD_SEA_MAP"
+        }
+      ],
+      "next_area": "ICEFALL_CAVE"
+    },
+    "ICEFALL_CAVE": {
+      "area_type": "dungeon",
+      "route_name": "Icefall Cave",
+      "region": "KANTO",
+      "level": 52,
+      "subregion": "SEVII",
+      "wild_pool_percentages": "SEVII_ICEFALL_CAVE_PERCENTAGES",
+      "battle_type": "cave",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Ace Trainer Nia",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "team": [
+            87,
+            221,
+            124
+          ],
+          "rewards": {
+            "balls": 6
+          }
+        },
+        {
+          "name": "Fisherman Lou",
+          "class": "FISHERMAN",
+          "sprite": "fisherman.png",
+          "team": [
+            130,
+            119,
+            91
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "STOP TEAM ROCKET",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "requires": [
+              "met_lorelei_sevii"
+            ],
+            "fail": [
+              "Voices echo from deep in the ice... Someone in town might know what's going on."
+            ],
+            "lines": [
+              "Rocket Grunts have trapped a pod of Lapras in nets!",
+              "Grunt: These Lapras will make us a fortune! And there's word of a gem on Six Island..."
+            ],
+            "battle": {
+              "name": "Rocket Grunts",
+              "class": "ROCKET_GRUNT",
+              "sprite": "rocket_grunt_f.png",
+              "team": [
+                24,
+                42,
+                110,
+                20
+              ],
+              "levels": [
+                50,
+                51,
+                52,
+                52
+              ],
+              "rewards": {
+                "balls": 10
+              },
+              "dialogue": {
+                "player_won": [
+                  "Grunt: Ugh! Let the Lapras go! Retreat to the warehouse!"
+                ]
+              }
+            },
+            "flag": "sevii_icefall_cleared"
+          },
+          "condition": "met_lorelei_sevii",
+          "flag_condition": "not sevii_icefall_cleared"
+        },
+        {
+          "text": "Four Island",
+          "action": "EXIT",
+          "target_area": "FOUR_ISLAND",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "FOUR_ISLAND"
+    },
+    "FIVE_ISLAND": {
+      "area_type": "town",
+      "route_name": "Five Island",
+      "region": "KANTO",
+      "level": 54,
+      "subregion": "SEVII",
+      "has_gym": false,
+      "explore_options": [
+        {
+          "text": "Pokemon Center",
+          "action": "HEAL"
+        },
+        {
+          "text": "Poke Mart",
+          "action": "SHOP"
+        },
+        {
+          "text": "Resort Gorgeous",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "Selphy: Welcome to my villa! Oh, a real Champion!",
+              "Please, take a little something from our resort shop."
+            ],
+            "gift_item": {
+              "balls": 10,
+              "RARE_CANDY": 2
+            },
+            "flag": "visited_resort_gorgeous",
+            "done": [
+              "Selphy: Do come again!"
+            ]
+          }
+        }
+      ],
+      "travel_options": [
+        {
+          "text": "Five Isle Meadow",
+          "target_area": "FIVE_ISLE_MEADOW"
+        },
+        {
+          "text": "Water Labyrinth",
+          "target_area": "WATER_LABYRINTH"
+        },
+        {
+          "text": "Lost Cave",
+          "target_area": "LOST_CAVE"
+        },
+        {
+          "text": "Rocket Warehouse",
+          "target_area": "ROCKET_WAREHOUSE",
+          "condition": "sapphire_stolen"
+        },
+        {
+          "text": "Seagallop to Vermilion City",
+          "target_area": "VERMILLION_CITY",
+          "message": "The Seagallop Ferry speeds back to Vermilion City."
+        },
+        {
+          "text": "Seagallop to One Island",
+          "target_area": "ONE_ISLAND",
+          "message": "The Seagallop Ferry speeds across the waves. Next stop: One Island!",
+          "condition": "has_item:TRI_PASS"
+        },
+        {
+          "text": "Seagallop to Two Island",
+          "target_area": "TWO_ISLAND",
+          "message": "The Seagallop Ferry speeds across the waves. Next stop: Two Island!",
+          "condition": "has_item:TRI_PASS"
+        },
+        {
+          "text": "Seagallop to Three Island",
+          "target_area": "THREE_ISLAND",
+          "message": "The Seagallop Ferry speeds across the waves. Next stop: Three Island!",
+          "condition": "has_item:TRI_PASS"
+        },
+        {
+          "text": "Seagallop to Four Island",
+          "target_area": "FOUR_ISLAND",
+          "message": "The Seagallop Ferry speeds across the waves. Next stop: Four Island!",
+          "condition": "has_item:RAINBOW_PASS"
+        },
+        {
+          "text": "Seagallop to Six Island",
+          "target_area": "SIX_ISLAND",
+          "message": "The Seagallop Ferry speeds across the waves. Next stop: Six Island!",
+          "condition": "has_item:RAINBOW_PASS"
+        },
+        {
+          "text": "Seagallop to Seven Island",
+          "target_area": "SEVEN_ISLAND",
+          "message": "The Seagallop Ferry speeds across the waves. Next stop: Seven Island!",
+          "condition": "has_item:RAINBOW_PASS"
+        },
+        {
+          "text": "Seagallop to Faraway Island",
+          "target_area": "FARAWAY_ISLAND",
+          "message": "The Seagallop Ferry speeds across the waves. Next stop: Faraway Island!",
+          "condition": "has_item:OLD_SEA_MAP"
+        }
+      ],
+      "next_area": "FIVE_ISLE_MEADOW"
+    },
+    "FIVE_ISLE_MEADOW": {
+      "area_type": "wild_route",
+      "route_name": "Five Isle Meadow",
+      "region": "KANTO",
+      "level": 54,
+      "subregion": "SEVII",
+      "wild_pool_percentages": "SEVII_FIVE_ISLE_MEADOW_PERCENTAGES",
+      "battle_type": "grass",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Rich Boy Theo",
+          "class": "RICH_BOY",
+          "sprite": "richboy.png",
+          "team": [
+            52,
+            53,
+            203
+          ],
+          "rewards": {
+            "balls": 8
+          }
+        },
+        {
+          "name": "Rocket Grunt",
+          "class": "ROCKET_GRUNT",
+          "sprite": "rocket_grunt_m.png",
+          "team": [
+            198,
+            228,
+            229
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Five Island",
+          "action": "EXIT",
+          "target_area": "FIVE_ISLAND",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "FIVE_ISLAND"
+    },
+    "WATER_LABYRINTH": {
+      "area_type": "wild_route",
+      "route_name": "Water Labyrinth",
+      "region": "KANTO",
+      "level": 54,
+      "subregion": "SEVII",
+      "wild_pool_percentages": "SEVII_WATER_LABYRINTH_PERCENTAGES",
+      "battle_type": "ocean",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Swimmer Gil",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [
+            61,
+            184,
+            73
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "THE OLD MAN'S EGG",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "Old Man: I raise Pokemon by the water... This Egg hatched while I wasn't looking!",
+              "Togepi needs a trainer who travels. Will you take it?"
+            ],
+            "gift_pokemon": 175,
+            "flag": "got_sevii_togepi"
+          },
+          "flag_condition": "not got_sevii_togepi"
+        },
+        {
+          "text": "Five Island",
+          "action": "EXIT",
+          "target_area": "FIVE_ISLAND",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "FIVE_ISLAND"
+    },
+    "LOST_CAVE": {
+      "area_type": "dungeon",
+      "route_name": "Lost Cave",
+      "region": "KANTO",
+      "level": 55,
+      "subregion": "SEVII",
+      "wild_pool_percentages": "SEVII_LOST_CAVE_PERCENTAGES",
+      "battle_type": "cave",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Channeler Ivy",
+          "class": "CHANNELER",
+          "sprite": "channeler.png",
+          "team": [
+            93,
+            200,
+            94
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "SEARCH THE DARK",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "You feel your way through the pitch-black cave...",
+              "Someone dropped a pouch here long ago. You found it!"
+            ],
+            "gift_item": {
+              "RARE_CANDY": 3
+            },
+            "flag": "lost_cave_searched"
+          },
+          "flag_condition": "not lost_cave_searched"
+        },
+        {
+          "text": "Five Island",
+          "action": "EXIT",
+          "target_area": "FIVE_ISLAND",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "FIVE_ISLAND"
+    },
+    "ROCKET_WAREHOUSE": {
+      "area_type": "dungeon",
+      "route_name": "Rocket Warehouse",
+      "region": "KANTO",
+      "level": 57,
+      "subregion": "SEVII",
+      "battle_type": "indoor",
+      "min_rounds": 0,
+      "trainer_pool": [
+        {
+          "name": "Rocket Grunt",
+          "class": "ROCKET_GRUNT",
+          "sprite": "rocket_grunt_m.png",
+          "team": [
+            110,
+            42,
+            24
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Rocket Grunt",
+          "class": "ROCKET_GRUNT",
+          "sprite": "rocket_grunt_f.png",
+          "team": [
+            89,
+            20,
+            53
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Scientist Gideon",
+          "class": "SCIENTIST",
+          "sprite": "scientist.png",
+          "team": [
+            82,
+            101,
+            137
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "UNLOCK THE DOORS",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "puzzle": "security",
+            "lines": [
+              "The doors open, one by one. The Admin's office is ahead!"
+            ],
+            "puzzle_fail": [
+              "The door pads reset. Try the codes again!"
+            ],
+            "flag": "warehouse_doors_open"
+          },
+          "flag_condition": "not warehouse_doors_open"
+        },
+        {
+          "text": "CONFRONT THE ADMIN",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "requires": [
+              "warehouse_doors_open"
+            ],
+            "lines": [
+              "Admin: So you're the one ruining our plans on every island.",
+              "With the Ruby and Sapphire we'd force any Pokemon to evolve! Prepare yourself!"
+            ],
+            "battle": {
+              "name": "Rocket Admin Archer",
+              "class": "ROCKET_ADMIN",
+              "sprite": "archer.png",
+              "team": [
+                229,
+                110,
+                42,
+                24,
+                112
+              ],
+              "levels": [
+                56,
+                57,
+                56,
+                57,
+                59
+              ],
+              "rewards": {
+                "balls": 15
+              },
+              "dialogue": {
+                "player_won": [
+                  "Archer: Impossible... Take your precious gems, then!"
+                ]
+              }
+            },
+            "flag": "sevii_warehouse_cleared"
+          },
+          "condition": "warehouse_doors_open",
+          "flag_condition": "not sevii_warehouse_cleared"
+        },
+        {
+          "text": "RECOVER THE GEMS",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "requires": [
+              "sevii_warehouse_cleared"
+            ],
+            "lines": [
+              "On the Admin's desk sit two glowing gems: the Ruby and the Sapphire!",
+              "Team Rocket's Sevii hideout is shut down for good. Take them to Celio!"
+            ],
+            "gift_item": {
+              "RUBY": 1,
+              "SAPPHIRE": 1
+            },
+            "flag": "got_sevii_gems"
+          },
+          "condition": "sevii_warehouse_cleared",
+          "flag_condition": "not got_sevii_gems"
+        },
+        {
+          "text": "Five Island",
+          "action": "EXIT",
+          "target_area": "FIVE_ISLAND",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "FIVE_ISLAND"
+    },
+    "SIX_ISLAND": {
+      "area_type": "town",
+      "route_name": "Six Island",
+      "region": "KANTO",
+      "level": 56,
+      "subregion": "SEVII",
+      "has_gym": false,
+      "explore_options": [
+        {
+          "text": "Pokemon Center",
+          "action": "HEAL"
+        },
+        {
+          "text": "Poke Mart",
+          "action": "SHOP"
+        },
+        {
+          "text": "Ruin Maniac's Notes",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "Ruin Maniac: There's a sealed cave in Ruin Valley called the Dotted Hole.",
+              "Its walls are covered in raised dots. Count them right and the door opens!"
+            ]
+          }
+        }
+      ],
+      "travel_options": [
+        {
+          "text": "Pattern Bush",
+          "target_area": "PATTERN_BUSH"
+        },
+        {
+          "text": "Ruin Valley",
+          "target_area": "RUIN_VALLEY"
+        },
+        {
+          "text": "Seagallop to Vermilion City",
+          "target_area": "VERMILLION_CITY",
+          "message": "The Seagallop Ferry speeds back to Vermilion City."
+        },
+        {
+          "text": "Seagallop to One Island",
+          "target_area": "ONE_ISLAND",
+          "message": "The Seagallop Ferry speeds across the waves. Next stop: One Island!",
+          "condition": "has_item:TRI_PASS"
+        },
+        {
+          "text": "Seagallop to Two Island",
+          "target_area": "TWO_ISLAND",
+          "message": "The Seagallop Ferry speeds across the waves. Next stop: Two Island!",
+          "condition": "has_item:TRI_PASS"
+        },
+        {
+          "text": "Seagallop to Three Island",
+          "target_area": "THREE_ISLAND",
+          "message": "The Seagallop Ferry speeds across the waves. Next stop: Three Island!",
+          "condition": "has_item:TRI_PASS"
+        },
+        {
+          "text": "Seagallop to Four Island",
+          "target_area": "FOUR_ISLAND",
+          "message": "The Seagallop Ferry speeds across the waves. Next stop: Four Island!",
+          "condition": "has_item:RAINBOW_PASS"
+        },
+        {
+          "text": "Seagallop to Five Island",
+          "target_area": "FIVE_ISLAND",
+          "message": "The Seagallop Ferry speeds across the waves. Next stop: Five Island!",
+          "condition": "has_item:RAINBOW_PASS"
+        },
+        {
+          "text": "Seagallop to Seven Island",
+          "target_area": "SEVEN_ISLAND",
+          "message": "The Seagallop Ferry speeds across the waves. Next stop: Seven Island!",
+          "condition": "has_item:RAINBOW_PASS"
+        },
+        {
+          "text": "Seagallop to Faraway Island",
+          "target_area": "FARAWAY_ISLAND",
+          "message": "The Seagallop Ferry speeds across the waves. Next stop: Faraway Island!",
+          "condition": "has_item:OLD_SEA_MAP"
+        }
+      ],
+      "next_area": "PATTERN_BUSH"
+    },
+    "PATTERN_BUSH": {
+      "area_type": "wild_route",
+      "route_name": "Pattern Bush",
+      "region": "KANTO",
+      "level": 56,
+      "subregion": "SEVII",
+      "wild_pool_percentages": "SEVII_PATTERN_BUSH_PERCENTAGES",
+      "battle_type": "forest",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Bug Catcher Ray",
+          "class": "BUG_CATCHER",
+          "sprite": "bug_catcher.png",
+          "team": [
+            214,
+            166,
+            168
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Psychic Mira",
+          "class": "PSYCHIC",
+          "sprite": "psychic.png",
+          "team": [
+            178,
+            64,
+            196
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Six Island",
+          "action": "EXIT",
+          "target_area": "SIX_ISLAND",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "SIX_ISLAND"
+    },
+    "RUIN_VALLEY": {
+      "area_type": "wild_route",
+      "route_name": "Ruin Valley",
+      "region": "KANTO",
+      "level": 57,
+      "subregion": "SEVII",
+      "wild_pool_percentages": "SEVII_RUIN_VALLEY_PERCENTAGES",
+      "battle_type": "mountain",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Ruin Maniac Hal",
+          "class": "RUIN_MANIAC",
+          "sprite": "ruinmaniac.png",
+          "team": [
+            232,
+            76,
+            112
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Psychic Dex",
+          "class": "PSYCHIC",
+          "sprite": "psychic_m.png",
+          "team": [
+            202,
+            203,
+            97
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Six Island",
+          "action": "EXIT",
+          "target_area": "SIX_ISLAND",
+          "condition": "can_exit",
+          "color": "RED"
+        },
+        {
+          "text": "Dotted Hole",
+          "action": "EXIT",
+          "target_area": "DOTTED_HOLE",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "SIX_ISLAND"
+    },
+    "DOTTED_HOLE": {
+      "area_type": "dungeon",
+      "route_name": "Dotted Hole",
+      "region": "KANTO",
+      "level": 58,
+      "subregion": "SEVII",
+      "battle_type": "indoor",
+      "min_rounds": 0,
+      "trainer_pool": [],
+      "route_menu": [
+        {
+          "text": "READ THE BRAILLE",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "puzzle": "braille",
+            "lines": [
+              "A hidden passage opens into the ruins below!"
+            ],
+            "puzzle_fail": [
+              "The dots stay silent. Maybe count again?"
+            ],
+            "flag": "dotted_hole_open"
+          },
+          "flag_condition": "not dotted_hole_open"
+        },
+        {
+          "text": "TAKE THE SAPPHIRE",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "requires": [
+              "dotted_hole_open"
+            ],
+            "lines": [
+              "Deep underground, a blue gem glows on a stone pedestal: the Sapphire!",
+              "As you reach for it, a man in a lab coat shoves past and grabs it!",
+              "Gideon: Thanks for opening the door! Team Rocket will pay well for this.",
+              "He runs off toward the docks... toward Five Island's Rocket Warehouse!"
+            ],
+            "flag": "sapphire_stolen"
+          },
+          "condition": "dotted_hole_open",
+          "flag_condition": "not sapphire_stolen"
+        },
+        {
+          "text": "Ruin Valley",
+          "action": "EXIT",
+          "target_area": "RUIN_VALLEY",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "RUIN_VALLEY"
+    },
+    "SEVEN_ISLAND": {
+      "area_type": "town",
+      "route_name": "Seven Island",
+      "region": "KANTO",
+      "level": 58,
+      "subregion": "SEVII",
+      "has_gym": true,
+      "explore_options": [
+        {
+          "text": "Pokemon Center",
+          "action": "HEAL"
+        },
+        {
+          "text": "Poke Mart",
+          "action": "SHOP"
+        },
+        {
+          "text": "Trainer Tower",
+          "action": "GYM",
+          "color": "GOLD"
+        }
+      ],
+      "travel_options": [
+        {
+          "text": "Sevault Canyon",
+          "target_area": "SEVAULT_CANYON"
+        },
+        {
+          "text": "Tanoby Ruins",
+          "target_area": "TANOBY_RUINS"
+        },
+        {
+          "text": "Seagallop to Vermilion City",
+          "target_area": "VERMILLION_CITY",
+          "message": "The Seagallop Ferry speeds back to Vermilion City."
+        },
+        {
+          "text": "Seagallop to One Island",
+          "target_area": "ONE_ISLAND",
+          "message": "The Seagallop Ferry speeds across the waves. Next stop: One Island!",
+          "condition": "has_item:TRI_PASS"
+        },
+        {
+          "text": "Seagallop to Two Island",
+          "target_area": "TWO_ISLAND",
+          "message": "The Seagallop Ferry speeds across the waves. Next stop: Two Island!",
+          "condition": "has_item:TRI_PASS"
+        },
+        {
+          "text": "Seagallop to Three Island",
+          "target_area": "THREE_ISLAND",
+          "message": "The Seagallop Ferry speeds across the waves. Next stop: Three Island!",
+          "condition": "has_item:TRI_PASS"
+        },
+        {
+          "text": "Seagallop to Four Island",
+          "target_area": "FOUR_ISLAND",
+          "message": "The Seagallop Ferry speeds across the waves. Next stop: Four Island!",
+          "condition": "has_item:RAINBOW_PASS"
+        },
+        {
+          "text": "Seagallop to Five Island",
+          "target_area": "FIVE_ISLAND",
+          "message": "The Seagallop Ferry speeds across the waves. Next stop: Five Island!",
+          "condition": "has_item:RAINBOW_PASS"
+        },
+        {
+          "text": "Seagallop to Six Island",
+          "target_area": "SIX_ISLAND",
+          "message": "The Seagallop Ferry speeds across the waves. Next stop: Six Island!",
+          "condition": "has_item:RAINBOW_PASS"
+        },
+        {
+          "text": "Seagallop to Faraway Island",
+          "target_area": "FARAWAY_ISLAND",
+          "message": "The Seagallop Ferry speeds across the waves. Next stop: Faraway Island!",
+          "condition": "has_item:OLD_SEA_MAP"
+        }
+      ],
+      "next_area": "SEVAULT_CANYON",
+      "gym": {
+        "trainers": [
+          {
+            "name": "Expert Rolf",
+            "class": "EXPERT",
+            "sprite": "veteran.png",
+            "team": [
+              57,
+              68,
+              107
+            ],
+            "levels": [
+              57,
+              58,
+              59
+            ],
+            "rewards": {
+              "balls": 5
+            },
+            "dialogue": {
+              "intro": [
+                "Floor 1! Can you climb the whole Tower?"
+              ]
+            }
+          },
+          {
+            "name": "Black Belt Koji",
+            "class": "BLACK_BELT",
+            "sprite": "blackbelt.png",
+            "team": [
+              106,
+              237,
+              214
+            ],
+            "levels": [
+              58,
+              59,
+              60
+            ],
+            "rewards": {
+              "balls": 5
+            },
+            "dialogue": {
+              "intro": [
+                "Floor 2! My fists are ready!"
+              ]
+            }
+          },
+          {
+            "name": "Ace Trainer Vera",
+            "class": "ACE_TRAINER",
+            "sprite": "acetrainer_f.png",
+            "team": [
+              36,
+              199,
+              230
+            ],
+            "levels": [
+              59,
+              60,
+              61
+            ],
+            "rewards": {
+              "balls": 5
+            },
+            "dialogue": {
+              "intro": [
+                "Floor 3! Almost at the top!"
+              ]
+            }
+          }
+        ],
+        "leader": {
+          "name": "Tower Master",
+          "class": "TOWER_MASTER",
+          "sprite": "master.png",
+          "is_boss_battle": true,
+          "team": [
+            248,
+            227,
+            232,
+            197,
+            229,
+            149
+          ],
+          "levels": [
+            62,
+            61,
+            61,
+            61,
+            61,
+            63
+          ],
+          "rewards": {
+            "balls": 20,
+            "RARE_CANDY": 5
+          },
+          "victory_flag": "trainer_tower_cleared",
+          "dialogue": {
+            "intro": [
+              "The top floor! I am the Tower Master. Show me your best!"
+            ],
+            "player_won": [
+              "You've conquered the Trainer Tower! Climb again any time."
+            ],
+            "player_lost": [
+              "The Tower stands. Come back and try again!"
+            ]
+          }
+        },
+        "requirements": {
+          "badges": 0
+        }
+      }
+    },
+    "SEVAULT_CANYON": {
+      "area_type": "wild_route",
+      "route_name": "Sevault Canyon",
+      "region": "KANTO",
+      "level": 58,
+      "subregion": "SEVII",
+      "wild_pool_percentages": "SEVII_SEVAULT_CANYON_PERCENTAGES",
+      "battle_type": "mountain",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Black Belt Ken",
+          "class": "BLACK_BELT",
+          "sprite": "blackbelt.png",
+          "team": [
+            107,
+            106,
+            237
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Ace Trainer Gale",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            227,
+            232,
+            247
+          ],
+          "rewards": {
+            "balls": 6
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Seven Island",
+          "action": "EXIT",
+          "target_area": "SEVEN_ISLAND",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "SEVEN_ISLAND"
+    },
+    "TANOBY_RUINS": {
+      "area_type": "dungeon",
+      "route_name": "Tanoby Ruins",
+      "region": "KANTO",
+      "level": 58,
+      "subregion": "SEVII",
+      "wild_pool_percentages": "SEVII_TANOBY_RUINS_PERCENTAGES",
+      "battle_type": "cave",
+      "min_rounds": 2,
+      "trainer_pool": [],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": [
+            "has_balls",
+            "tanoby_chambers_open"
+          ],
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "OPEN THE CHAMBERS",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "puzzle": "tanoby",
+            "lines": [
+              "Unown of every shape swirl out of the seven chambers!"
+            ],
+            "puzzle_fail": [
+              "The chamber doors stay sealed."
+            ],
+            "flag": "tanoby_chambers_open"
+          },
+          "flag_condition": "not tanoby_chambers_open"
+        },
+        {
+          "text": "Seven Island",
+          "action": "EXIT",
+          "target_area": "SEVEN_ISLAND",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "SEVEN_ISLAND"
+    },
+    "FARAWAY_ISLAND": {
+      "area_type": "wild_route",
+      "route_name": "Faraway Island",
+      "region": "KANTO",
+      "level": 60,
+      "subregion": "SEVII",
+      "battle_type": "forest",
+      "min_rounds": 0,
+      "trainer_pool": [],
+      "route_menu": [
+        {
+          "text": "FOLLOW THE PINK SHADOW",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "Tall grass sways on the uncharted island. Something pink giggles and darts away...",
+              "It only shows itself to a trainer who has met every Kanto Pokemon.",
+              "(Catch all 150 other Kanto Pokemon, then come back.)"
+            ]
+          },
+          "condition": "not:caught_range:1-150"
+        },
+        {
+          "text": "CHALLENGE MEW",
+          "action": "BOSS",
+          "color": "GOLD",
+          "condition": [
+            "boss_not_defeated",
+            "caught_range:1-150"
+          ]
+        },
+        {
+          "text": "Seagallop to One Island",
+          "action": "EXIT",
+          "target_area": "ONE_ISLAND",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "ONE_ISLAND",
+      "area_boss": {
+        "id": 151,
+        "name": "Mew",
+        "victory_flag": "caught_mew"
+      }
+    }
+  },
+  "JOURNAL_MISSIONS": [
+    {
+      "id": "sevii_m1",
+      "type": "SIDE",
+      "title": "The Sevii Islands",
+      "description": "Blaine's Tri-Pass opens the Seagallop Ferry from Vermilion. Meet Celio on One Island.",
+      "condition": {
+        "item": "TRI_PASS",
+        "flag_not": "met_celio",
+        "required_region": "KANTO"
+      },
+      "reward": "Network Machine",
+      "region": "KANTO"
+    },
+    {
+      "id": "sevii_m2",
+      "type": "SIDE",
+      "title": "Team Rocket on Mt. Ember",
+      "description": "Researchers on Mt. Ember saw Team Rocket digging for a gem. Chase them off, and look for Moltres at the summit.",
+      "condition": {
+        "flag": "met_celio",
+        "flag_not": "sevii_ember_rocket",
+        "required_region": "KANTO"
+      },
+      "reward": "Moltres",
+      "region": "KANTO"
+    },
+    {
+      "id": "sevii_m3",
+      "type": "SIDE",
+      "title": "Lost Lostelle",
+      "description": "Lostelle never came home from Three Island. Beat the bikers on Bond Bridge and search the Berry Forest.",
+      "condition": {
+        "flag": "heard_lostelle",
+        "flag_not": "rescued_lostelle",
+        "required_region": "KANTO"
+      },
+      "reward": "Rare Candy",
+      "region": "KANTO"
+    },
+    {
+      "id": "sevii_m4",
+      "type": "SIDE",
+      "title": "The Rainbow Pass",
+      "description": "As Champion with the National Pokedex, ask Celio for the Rainbow Pass to Islands 4-7.",
+      "condition": {
+        "flag": [
+          "met_celio",
+          "beat_champion"
+        ],
+        "flag_not": "got_rainbow_pass",
+        "required_region": "KANTO"
+      },
+      "reward": "Rainbow Pass",
+      "region": "KANTO"
+    },
+    {
+      "id": "sevii_m5",
+      "type": "SIDE",
+      "title": "The Ruby and the Sapphire",
+      "description": "Stop Team Rocket in Icefall Cave, open the Dotted Hole on Six Island, then raid the Rocket Warehouse on Five Island.",
+      "condition": {
+        "item": "RAINBOW_PASS",
+        "flag_not": "network_machine_fixed",
+        "required_region": "KANTO"
+      },
+      "reward": "Old Sea Map",
+      "region": "KANTO"
+    },
+    {
+      "id": "sevii_m6",
+      "type": "SIDE",
+      "title": "The Faraway Island",
+      "description": "Celio's old sea map shows an uncharted island. A pink Pokemon lives there...",
+      "condition": {
+        "item": "OLD_SEA_MAP",
+        "flag_not": "caught_mew",
+        "required_region": "KANTO"
+      },
+      "reward": "Mew",
+      "region": "KANTO"
+    }
+  ],
+  "SEVII_TREASURE_BEACH": [
+    72,
+    73,
+    116,
+    98,
+    90,
+    120,
+    118,
+    129,
+    222,
+    223
+  ],
+  "SEVII_TREASURE_BEACH_PERCENTAGES": {
+    "72": 18,
+    "73": 6,
+    "116": 12,
+    "98": 14,
+    "90": 12,
+    "120": 10,
+    "118": 10,
+    "129": 8,
+    "222": 5,
+    "223": 5
+  },
+  "SEVII_KINDLE_ROAD": [
+    77,
+    21,
+    22,
+    74,
+    75,
+    66,
+    126,
+    218,
+    129,
+    54
+  ],
+  "SEVII_KINDLE_ROAD_PERCENTAGES": {
+    "77": 15,
+    "21": 15,
+    "22": 6,
+    "74": 15,
+    "75": 8,
+    "66": 10,
+    "126": 4,
+    "218": 10,
+    "129": 7,
+    "54": 10
+  },
+  "SEVII_MT_EMBER": [
+    74,
+    75,
+    77,
+    78,
+    126,
+    218,
+    219,
+    66,
+    67,
+    95,
+    21
+  ],
+  "SEVII_MT_EMBER_PERCENTAGES": {
+    "74": 14,
+    "75": 12,
+    "77": 10,
+    "78": 5,
+    "126": 8,
+    "218": 14,
+    "219": 6,
+    "66": 12,
+    "67": 6,
+    "95": 8,
+    "21": 5
+  },
+  "SEVII_CAPE_BRINK": [
+    43,
+    44,
+    69,
+    70,
+    54,
+    55,
+    187,
+    188,
+    191,
+    161,
+    162,
+    16
+  ],
+  "SEVII_CAPE_BRINK_PERCENTAGES": {
+    "43": 14,
+    "44": 6,
+    "69": 14,
+    "70": 6,
+    "54": 12,
+    "55": 6,
+    "187": 10,
+    "188": 4,
+    "191": 10,
+    "161": 10,
+    "162": 4,
+    "16": 4
+  },
+  "SEVII_BOND_BRIDGE": [
+    16,
+    17,
+    29,
+    32,
+    206,
+    52,
+    48,
+    72,
+    165,
+    167,
+    84
+  ],
+  "SEVII_BOND_BRIDGE_PERCENTAGES": {
+    "16": 12,
+    "17": 8,
+    "29": 10,
+    "32": 10,
+    "206": 10,
+    "52": 8,
+    "48": 10,
+    "72": 10,
+    "165": 8,
+    "167": 8,
+    "84": 6
+  },
+  "SEVII_BERRY_FOREST": [
+    96,
+    97,
+    43,
+    17,
+    54,
+    49,
+    204,
+    205,
+    206,
+    102,
+    191
+  ],
+  "SEVII_BERRY_FOREST_PERCENTAGES": {
+    "96": 12,
+    "97": 6,
+    "43": 10,
+    "17": 10,
+    "54": 10,
+    "49": 8,
+    "204": 12,
+    "205": 5,
+    "206": 10,
+    "102": 10,
+    "191": 7
+  },
+  "SEVII_ICEFALL_CAVE": [
+    220,
+    221,
+    225,
+    215,
+    42,
+    86,
+    87,
+    124,
+    131,
+    90,
+    91,
+    238
+  ],
+  "SEVII_ICEFALL_CAVE_PERCENTAGES": {
+    "220": 14,
+    "221": 6,
+    "225": 12,
+    "215": 12,
+    "42": 12,
+    "86": 12,
+    "87": 6,
+    "124": 6,
+    "131": 3,
+    "90": 9,
+    "91": 3,
+    "238": 5
+  },
+  "SEVII_FIVE_ISLE_MEADOW": [
+    198,
+    228,
+    229,
+    161,
+    162,
+    17,
+    52,
+    53,
+    194,
+    183,
+    184,
+    203
+  ],
+  "SEVII_FIVE_ISLE_MEADOW_PERCENTAGES": {
+    "198": 14,
+    "228": 12,
+    "229": 4,
+    "161": 10,
+    "162": 6,
+    "17": 10,
+    "52": 10,
+    "53": 5,
+    "194": 10,
+    "183": 10,
+    "184": 5,
+    "203": 4
+  },
+  "SEVII_WATER_LABYRINTH": [
+    194,
+    195,
+    183,
+    184,
+    72,
+    73,
+    60,
+    61,
+    186,
+    118,
+    119,
+    170
+  ],
+  "SEVII_WATER_LABYRINTH_PERCENTAGES": {
+    "194": 15,
+    "195": 8,
+    "183": 15,
+    "184": 6,
+    "72": 12,
+    "73": 6,
+    "60": 10,
+    "61": 6,
+    "186": 2,
+    "118": 10,
+    "119": 5,
+    "170": 5
+  },
+  "SEVII_LOST_CAVE": [
+    92,
+    93,
+    94,
+    200,
+    41,
+    42,
+    198,
+    228,
+    177,
+    178
+  ],
+  "SEVII_LOST_CAVE_PERCENTAGES": {
+    "92": 14,
+    "93": 10,
+    "94": 3,
+    "200": 10,
+    "41": 12,
+    "42": 10,
+    "198": 10,
+    "228": 10,
+    "177": 8,
+    "178": 4
+  },
+  "SEVII_PATTERN_BUSH": [
+    214,
+    165,
+    166,
+    167,
+    168,
+    177,
+    178,
+    204,
+    193,
+    127,
+    48,
+    13
+  ],
+  "SEVII_PATTERN_BUSH_PERCENTAGES": {
+    "214": 10,
+    "165": 8,
+    "166": 8,
+    "167": 8,
+    "168": 8,
+    "177": 12,
+    "178": 6,
+    "204": 10,
+    "193": 10,
+    "127": 6,
+    "48": 8,
+    "13": 6
+  },
+  "SEVII_RUIN_VALLEY": [
+    177,
+    178,
+    194,
+    195,
+    193,
+    202,
+    203,
+    231,
+    232,
+    74,
+    207
+  ],
+  "SEVII_RUIN_VALLEY_PERCENTAGES": {
+    "177": 12,
+    "178": 8,
+    "194": 10,
+    "195": 6,
+    "193": 10,
+    "202": 6,
+    "203": 8,
+    "231": 10,
+    "232": 4,
+    "74": 14,
+    "207": 12
+  },
+  "SEVII_SEVAULT_CANYON": [
+    246,
+    231,
+    232,
+    227,
+    74,
+    75,
+    104,
+    105,
+    207,
+    111,
+    66
+  ],
+  "SEVII_SEVAULT_CANYON_PERCENTAGES": {
+    "246": 6,
+    "231": 12,
+    "232": 6,
+    "227": 10,
+    "74": 12,
+    "75": 8,
+    "104": 12,
+    "105": 6,
+    "207": 12,
+    "111": 10,
+    "66": 6
+  },
+  "SEVII_TANOBY_RUINS": [
+    201
+  ],
+  "SEVII_TANOBY_RUINS_PERCENTAGES": {
+    "201": 100
+  }
+}

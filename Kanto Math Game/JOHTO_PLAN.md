@@ -4,7 +4,7 @@ Readers: Jordan, Claude and Grok. This list comes from reviewing the Kanto chang
 
 ## Status (2026-10-20)
 
-Sections 1 to 7 are done (see CHANGELOG, "Johto teams, Silver and Red, League rematches"). Still open: the section 8 run-throughs and the section 9 full playthrough. Next up is the Orange Islands.
+Sections 1 to 7 are done (see CHANGELOG, "Johto teams, Silver and Red, League rematches"). Still open: the section 8 run-throughs and the section 9 full playthrough. The Orange Islands are built (see CHANGELOG).
 
 ## Kanto review: what Johto should match
 

@@ -121,8 +121,9 @@
         { "text": "East Province Area 1", "target_area": "EAST_PROVINCE_AREA_1" },
         { "text": "West Province Area 1", "target_area": "WEST_PROVINCE_AREA_1" },
         { "text": "Naranja Academy", "target_area": "NARANJA_ACADEMY" },
-        { "text": "Kitakami (School Trip)", "target_area": "KITAKAMI", "condition": "beat_paldea_champion" }
-      ],
+        { "text": "Kitakami (School Trip)", "target_area": "KITAKAMI", "condition": "beat_paldea_champion" },
+            {"text": "Exchange to Blueberry Academy", "target_area": "BLUEBERRY_ACADEMY", "condition": ["beat_paldea_champion", "KITAKAMI_boss_defeated"], "message": "You fly to Unova for your exchange term. Blueberry Academy floats far out at sea!"}
+        ],
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
         { "text": "Department Store", "action": "SHOP" },
@@ -1340,17 +1341,7 @@
       "trainer_pool": [],
       "wild_pool_percentages": "PALDEA_AREA_ZERO_UNDERDEPTHS_PERCENTAGES",
       "area_boss": { "id": 1024, "name": "Terapagos", "victory_flag": "AREA_ZERO_UNDERDEPTHS_boss_defeated" },
-      "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        {
-          "text": "Awaken Terapagos",
-          "action": "BOSS",
-          "condition": ["boss_not_defeated"],
-          "color": "GOLD"
-        },
-        { "text": "Zero Lab", "action": "EXIT", "target_area": "ZERO_LAB", "condition": "can_exit", "color": "RED" }
-      ],
+      "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "Awaken Terapagos", "action": "BOSS", "condition": ["boss_not_defeated", "bb_league_champion", "briar_expedition"], "color": "GOLD"}, {"text": "Zero Lab", "action": "EXIT", "target_area": "ZERO_LAB", "condition": "can_exit", "color": "RED"}],
       "next_area": "ZERO_LAB"
     },
     "KITAKAMI": {
@@ -1363,21 +1354,7 @@
       "trainer_pool": [],
       "wild_pool_percentages": "PALDEA_KITAKAMI_PERCENTAGES",
       "area_boss": { "id": 1017, "name": "Ogerpon", "victory_flag": "KITAKAMI_boss_defeated" },
-      "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        {
-          "text": "Meet the Masked Ogre",
-          "action": "BOSS",
-          "condition": ["boss_not_defeated"],
-          "color": "GOLD"
-        },
-        { "text": "REVELER'S ROAD", "action": "EXIT", "target_area": "KITAKAMI_REVELERS_ROAD", "condition": "can_exit", "color": "RED" },
-        { "text": "PARADISE BARRENS", "action": "EXIT", "target_area": "KITAKAMI_PARADISE_BARRENS", "condition": "can_exit", "color": "RED" },
-        { "text": "TIMELESS WOODS", "action": "EXIT", "target_area": "KITAKAMI_TIMELESS_WOODS", "condition": "can_exit", "color": "RED" },
-        { "text": "LOYALTY PLAZA AT NIGHT", "action": "EXIT", "target_area": "KITAKAMI_LOYALTY_PLAZA", "condition": "can_exit", "color": "RED" },
-        { "text": "Mesagoza (Bus)", "action": "EXIT", "target_area": "MESAGOZA", "condition": "can_exit", "color": "RED" }
-      ],
+      "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "MEET CARMINE AND KIERAN", "action": "EVENT", "color": "GOLD", "event": {"lines": ["Carmine: You're the exchange student from Paldea? I'm Carmine. This is my little brother Kieran.", "Kieran: Have you heard about the Loyal Three? They saved Kitakami from an ogre!", "Kieran: ...I like the ogre better, though."], "flag": "met_kitakami_rivals"}, "flag_condition": "not met_kitakami_rivals"}, {"text": "BATTLE CARMINE", "action": "EVENT", "color": "GOLD", "event": {"requires": ["met_kitakami_rivals"], "lines": ["Carmine: Outsiders don't get to just wander around Kitakami. Battle me!"], "battle": {"name": "Carmine", "class": "RIVAL", "sprite": "lass.png", "team": [1013, 1011, 166, 291], "levels": [66, 66, 67, 68], "rewards": {"balls": 10}, "dialogue": {"player_won": ["Carmine: Hmph. Fine, you're not bad."]}}, "flag": "beat_carmine_kitakami"}, "condition": "met_kitakami_rivals", "flag_condition": "not beat_carmine_kitakami"}, {"text": "BATTLE KIERAN", "action": "EVENT", "color": "GOLD", "event": {"requires": ["KITAKAMI_REVELERS_ROAD_boss_defeated", "KITAKAMI_PARADISE_BARRENS_boss_defeated", "KITAKAMI_TIMELESS_WOODS_boss_defeated"], "fail": ["Kieran: I want to find the ogre... but first, the Loyal Three. Find all of them!"], "lines": ["Kieran: You found the Loyal Three... and you met the ogre too, didn't you?", "Kieran: I'll battle you for it!"], "battle": {"name": "Kieran", "class": "RIVAL", "sprite": "school_kid_m.png", "team": [1011, 1012, 1015, 1017], "levels": [67, 67, 68, 70], "rewards": {"balls": 10}, "dialogue": {"player_won": ["Kieran: ...I lost again. I'll get stronger. Just watch."]}}, "flag": "beat_kieran_kitakami"}, "condition": "met_kitakami_rivals", "flag_condition": "not beat_kieran_kitakami"}, {"text": "Meet the Masked Ogre", "action": "BOSS", "condition": ["boss_not_defeated", "KITAKAMI_REVELERS_ROAD_boss_defeated", "KITAKAMI_PARADISE_BARRENS_boss_defeated", "KITAKAMI_TIMELESS_WOODS_boss_defeated"], "color": "GOLD"}, {"text": "REVELER'S ROAD", "action": "EXIT", "target_area": "KITAKAMI_REVELERS_ROAD", "condition": "can_exit", "color": "RED"}, {"text": "PARADISE BARRENS", "action": "EXIT", "target_area": "KITAKAMI_PARADISE_BARRENS", "condition": "can_exit", "color": "RED"}, {"text": "TIMELESS WOODS", "action": "EXIT", "target_area": "KITAKAMI_TIMELESS_WOODS", "condition": "can_exit", "color": "RED"}, {"text": "LOYALTY PLAZA AT NIGHT", "action": "EXIT", "target_area": "KITAKAMI_LOYALTY_PLAZA", "condition": "can_exit", "color": "RED"}, {"text": "Mesagoza (Bus)", "action": "EXIT", "target_area": "MESAGOZA", "condition": "can_exit", "color": "RED"}],
       "next_area": "MESAGOZA"
     },
     "KITAKAMI_REVELERS_ROAD": {

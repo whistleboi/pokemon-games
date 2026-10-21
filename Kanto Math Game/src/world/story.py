@@ -6,6 +6,10 @@ class StoryManager:
     """Tracks the player's progress through the story."""
 
     def __init__(self):
+        # Each region keeps its own party, PC and bag (see "Regional storage" below).
+        self.region_stores = {}
+        self.linked_regions = set()
+        self.active_store = "KANTO"
         self.player_team = []
         self.pc_pokemon = [None] * 300
         self.rival_starter_raw = None
@@ -37,10 +41,211 @@ class StoryManager:
         self.last_center = None  # area key of the last Pokemon Center used (whiteouts go there)
         self.autosave = True     # Options: save every time you travel to a new area
 
+    # ---- Regional storage --------------------------------------------------------------
+    # Each region has its own party, PC and bag, so a new region starts fresh (key items too).
+    # Becoming Champion of a second region links those regions' storage into one; every later
+    # title joins it. Sub-regions use their region's storage; the Orange Islands and Orre use
+    # the region they're reached from ("storage_region" in REGION_START). Money and Poke Balls
+    # are shared everywhere.
+    LINKED = "LINKED"
+    CARRY_ITEMS = {"SS_TICKET"}  # travel tickets go with you between regions' Bags
+
+    @property
+    def player_team(self):
+        return self._store()["team"]
+
+    @player_team.setter
+    def player_team(self, value):
+        self._store()["team"] = value
+
+    @property
+    def pc_pokemon(self):
+        return self._store()["pc"]
+
+    @pc_pokemon.setter
+    def pc_pokemon(self, value):
+        self._store()["pc"] = value
+
+    @property
+    def inventory(self):
+        return self._store()["bag"]
+
+    @inventory.setter
+    def inventory(self, value):
+        self._store()["bag"] = value if value is not None else {}
+
+    @property
+    def active_store(self):
+        """The storage in use: always the current area's region's (or the linked set's), so the
+        party, PC and Bag follow the player wherever the game puts them."""
+        try:
+            return self.store_key(self.get_current_region())
+        except Exception:  # before the game and loader are attached
+            return self.__dict__.get("_fallback_store", "KANTO")
+
+    @active_store.setter
+    def active_store(self, value):
+        self.__dict__["_fallback_store"] = value
+
+    def _store(self, key=None):
+        stores = self.__dict__.setdefault("region_stores", {})
+        key = key or self.active_store
+        if key not in stores:
+            stores[key] = {"team": [], "pc": [None] * 300, "bag": {}}
+        return stores[key]
+
+    def storage_region(self, region):
+        region = str(region or "KANTO").upper()
+        return str(self.get_region_start(region).get("storage_region") or region).upper() if getattr(
+            self, "game", None) else region
+
+    def store_key(self, region):
+        r = self.storage_region(region)
+        return self.LINKED if r in self.linked_regions else r
+
+    def store_regions(self):
+        """The regions sharing the storage in use (badges here award key items into this bag)."""
+        if self.active_store == self.LINKED:
+            return set(self.linked_regions)
+        return {self.active_store}
+
+    def use_region_store(self, region):
+        self.active_store = self.store_key(region)
+
+    def prepare_travel(self, area_key):
+        """Called when travelling to an area. Crossing into another region's storage switches the
+        party, PC and bag. The first trip into a region without its starter goes to its professor.
+        Returns (area to go to, lines to show)."""
+        region = self.area_region(area_key)
+        key = self.store_key(region)
+        if key == self.active_store:
+            return area_key, []
+        target = self._store(key)
+        for item, qty in self.inventory.items():  # your ticket home comes with you
+            if item in self.CARRY_ITEMS and qty > 0:
+                target["bag"][item] = max(target["bag"].get(item, 0), qty)
+        cfg = self.get_region_start(region)
+        lines = []
+        if (not target["team"] and cfg.get("starters")
+                and not self.story_flags.get(f"received_starter_{region.lower()}")):
+            start = cfg.get("start_area") or area_key
+            town = self.game.loader.area_data.get("STORY_PROGRESSION", {}).get(start, {}).get(
+                "route_name", region.title())
+            lines = [f"Welcome to {region.title()}! Your Pokemon and Bag stay in the region they're from.",
+                     f"The professor in {town} has a new partner waiting for you."]
+            area_key = start
+            self.story_flags["pending_starter"] = region
+        return area_key, lines
+
+    def pending_starter(self):
+        """The region whose starter the player must pick now (first visit, empty party), or None."""
+        region = self.story_flags.get("pending_starter")
+        if not region:
+            return None
+        if self.story_flags.get(f"received_starter_{region.lower()}") or self.player_team:
+            self.story_flags.pop("pending_starter", None)
+            return None
+        return region
+
+    def link_champion_regions(self):
+        """At a second Champion title, link those regions' PCs and Bags (and each later title's).
+        Returns the regions that just joined (empty if nothing changed)."""
+        starts = self.game.loader.area_data.get("REGION_START", {})
+        champs = {r for r, cfg in starts.items() if not cfg.get("travel_only") and self.is_region_champion(r)}
+        new = champs - self.linked_regions
+        if len(champs) < 2 or not new:
+            return []
+        stores = self.region_stores
+        current = self.active_store
+        sources = ([self.LINKED] if self.LINKED in stores else []) + [r for r in sorted(new) if r in stores]
+        team_from = current if current in sources else (self.LINKED if self.LINKED in stores else None)
+        merged = {"team": [], "pc": [], "bag": {}}
+        key_items = set(self.game.loader.area_data.get("GAME_CONFIG", {}).get("KEY_ITEMS", []))
+        for k in sources:
+            src = stores.pop(k)
+            if k == team_from:
+                merged["team"] = list(src["team"])
+            else:
+                merged["pc"] += [p for p in src["team"] if p]
+            merged["pc"] += [p for p in src["pc"] if p]
+            for item, qty in src["bag"].items():
+                have = merged["bag"].get(item, 0)
+                keep_one = item in key_items or item.startswith("HM_")
+                merged["bag"][item] = max(have, qty) if keep_one else min(self.MAX_ITEMS, have + qty)
+        if not merged["team"] and merged["pc"]:
+            merged["team"], merged["pc"] = merged["pc"][:6], merged["pc"][6:]
+        merged["pc"] += [None] * max(0, 300 - len(merged["pc"]))
+        stores[self.LINKED] = merged
+        self.linked_regions |= champs
+        return sorted(new)
+
     def caught_in_range(self, lo, hi):
         """How many different species #lo-#hi the player has caught (forms count once)."""
         dex = self.game.data.data.get("pokedex", {}) if getattr(self, "game", None) else {}
         return len({int(v.get("id", 0)) for v in dex.values() if lo <= int(v.get("id", 0)) <= hi})
+
+    UNOWN_FORMS = [chr(c) for c in range(ord("a"), ord("z") + 1)] + ["exclamation", "question"]
+
+    def unown_forms_caught(self):
+        """How many of the 28 Unown forms are registered (A-Z, ! and ?)."""
+        counts = self.catch_counts
+        return sum(1 for f in self.UNOWN_FORMS
+                   if counts.get(f"201_{f}", 0) > 0 or (f == "a" and counts.get("201_normal", 0) > 0))
+
+    def special_condition(self, condition):
+        """Conditions shared by town and route menus. None when the condition isn't one of these."""
+        if not isinstance(condition, str):
+            return None
+        if condition.startswith("party_has:"):
+            pid = int(condition.split(":", 1)[1])
+            return any(p and p.id == pid for p in self.player_team)
+        if condition == "all_unown_registered":
+            return self.unown_forms_caught() >= len(self.UNOWN_FORMS)
+        return None
+
+    def purify_shadow(self):
+        """Orre's Relic Stone: every Shadow Pokemon (a "shadow" form) in the party and PC becomes
+        its ordinary species, keeping its level, IVs, moves, friendship and shininess.
+        Returns the purified names."""
+        form_map = self.game.loader.area_data.get("FORM_MAP", {})
+        names = []
+
+        def purified(p):
+            m = form_map.get(str(p.id)) or {}
+            if m.get("form") != "shadow":
+                return p
+            new = self.change_species(p, int(m["id"]))
+            new.friendship = max(new.friendship, 100)  # a purified heart opens up to its trainer
+            names.append(new.name.upper())
+            return new
+
+        self.player_team = [purified(p) for p in self.player_team]
+        self.pc_pokemon = [purified(p) if p else p for p in self.pc_pokemon]
+        return names
+
+    def change_species(self, p, new_id):
+        """The same Pokemon as another species or form (purified, a tower evolution): it keeps
+        its level, IVs, moves, friendship and shininess, fully healed. Returns the new Pokemon."""
+        from src.pokemon.data import Pokemon
+        rec = self._pokemon_record(p)
+        new = Pokemon(self.game.loader.fetch_specific(int(new_id), is_shiny=rec["shiny"]),
+                      self.game.assets, size_mult=2.5)
+        self._apply_record(new, dict(rec, hp=new.get_max_hp(), status=None), new.form)
+        new.is_shiny = rec["shiny"]
+        self.game.data.add_pokemon(new)
+        return new
+
+    def evolve_party(self, mapping):
+        """Story evolutions ({"891": 8004}: Kubfu at the Tower of Darkness). Returns message lines."""
+        lines = []
+        for i, p in enumerate(self.player_team):
+            target = (mapping or {}).get(str(p.id))
+            if target:
+                old = p.display_name.upper()
+                self.player_team[i] = self.change_species(p, target)
+                lines.append(f"{old} evolved into {self.player_team[i].display_name.upper()}!")
+                break
+        return lines
 
     def kanto_caught_count(self):
         """Different Kanto species caught, #1-150 (Mew waits until all of them are)."""
@@ -365,6 +570,7 @@ class StoryManager:
         from src.states.menus import StarterSelectionState
         src = self.get_current_region()
         cfg = self.get_region_start(region)
+        self.use_region_store(region)  # the new home region's own party, PC and Bag
         self.enter_region(region)
         self.assign_region_rival(region)  # a new rival for the new region (never a repeat)
         self.active_badge_region = region
@@ -703,6 +909,7 @@ class StoryManager:
                 ("MARSH", "AIR_BALLOON"),
                 ("SOUL", "SURF_BOARD"),
                 ("VOLCANO", "VOLCANO_PASS"),
+                ("VOLCANO", "TRI_PASS"),  # Blaine: the Seagallop Ferry to the Sevii Islands
                 ("EARTH", "CERULEAN_CAVE_MAP"),
             ],
             "JOHTO": [
@@ -787,6 +994,8 @@ class StoryManager:
 
         for region, pairs in region_badge_items.items():
             earned = {bare(b) for b in self.badges.get(region, [])}
+            if region not in self.store_regions():
+                continue  # that region's key items live in its own Bag
             for badge, item in pairs:
                 if bare(badge) not in earned:
                     continue
@@ -797,12 +1006,13 @@ class StoryManager:
                 print(f"Sync: Awarding {item} for {badge} ({region})!")
                 self.inventory[item] = 1
 
-        if self.story_flags.get("visited_RUINS_OF_ALPH") and self.inventory.get("UNOWN_REPORT", 0) == 0:
+        if (self.story_flags.get("visited_RUINS_OF_ALPH") and "JOHTO" in self.store_regions()
+                and self.inventory.get("UNOWN_REPORT", 0) == 0):
             print("Sync: Awarding missing UNOWN_REPORT!")
             self.inventory["UNOWN_REPORT"] = 1
 
         # The Poke Flute is Mr. Fuji's to give (talk to him in Lavender Town).
-        if self.story_flags.get("tower_ghost_defeated"):
+        if self.story_flags.get("tower_ghost_defeated") and "KANTO" in self.store_regions():
             if self.inventory.get("SILPH_SCOPE", 0) == 0:
                 print("Sync: Awarding missing SILPH_SCOPE!")
                 self.inventory["SILPH_SCOPE"] = 1
@@ -825,6 +1035,14 @@ class StoryManager:
             "notified_missions": self.notified_missions,
             "player_team": [self._pokemon_record(p) for p in self.player_team if p],
             "pc_pokemon": [self._pokemon_record(p) if p else None for p in self.pc_pokemon],
+            # Every region's own party, PC and Bag (the keys above are the ones in use).
+            "region_stores": {
+                k: {"team": [self._pokemon_record(p) for p in st["team"] if p],
+                    "pc": [self._pokemon_record(p) if p else None for p in st["pc"]],
+                    "bag": st["bag"]}
+                for k, st in self.region_stores.items()},
+            "linked_regions": sorted(self.linked_regions),
+            "active_store": self.active_store,
             "starting_region": self.starting_region,
             "visited_regions": sorted(self.visited_regions()),
             "region_rivals": self.region_rivals,
@@ -869,6 +1087,14 @@ class StoryManager:
             "caught_region": getattr(p, "caught_region", None),
             "condition": p.condition, "sheen": p.sheen, "ribbons": p.ribbons,
         }
+
+    def _load_pokemon(self, p_data, loader):
+        form = p_data.get("form", "normal")
+        raw = loader.fetch_specific(p_data["id"], form="normal" if form == "gmax" else form,
+                                    is_shiny=p_data.get("shiny", False))
+        pokemon = Pokemon(raw, loader.game.assets, size_mult=2.5)
+        self._apply_record(pokemon, p_data, form)
+        return pokemon
 
     def _apply_record(self, pokemon, p_data, form):
         pokemon.gmax_factor = p_data.get("gmax", form == "gmax")
@@ -932,7 +1158,6 @@ class StoryManager:
         self.money = data.get("money", 3000)
         self.catch_counts = data.get("catch_counts", {})
 
-        self.inventory = data.get("inventory", {})
         self.poffins = list(data.get("poffins", []))
         self.notified_missions = data.get("notified_missions", [])
         # Older saves have no setting -> AUTO (follows region + badges)
@@ -941,32 +1166,26 @@ class StoryManager:
         self.last_center = data.get("last_center")
         self.autosave = data.get("autosave", True)
 
-        self.player_team = []
-        for p_data in data.get("player_team", []):
-            form = p_data.get("form", "normal")
-            raw = loader.fetch_specific(
-                p_data["id"],
-                form="normal" if form == "gmax" else form,
-                is_shiny=p_data.get("shiny", False),
-            )
-            pokemon = Pokemon(raw, loader.game.assets, size_mult=2.5)
-            self._apply_record(pokemon, p_data, form)
-            self.player_team.append(pokemon)
-
-        saved_pc = data.get("pc_pokemon", [])
-        self.pc_pokemon = [None] * max(300, len(saved_pc))  # keep anything stored past slot 300
-        for i, p_data in enumerate(saved_pc):
-            if p_data is None:
-                continue
-            form = p_data.get("form", "normal")
-            raw = loader.fetch_specific(
-                p_data["id"],
-                form="normal" if form == "gmax" else form,
-                is_shiny=p_data.get("shiny", False),
-            )
-            pokemon = Pokemon(raw, loader.game.assets, size_mult=2.5)
-            self._apply_record(pokemon, p_data, form)
-            self.pc_pokemon[i] = pokemon
+        self.region_stores = {}
+        self.linked_regions = {str(r).upper() for r in data.get("linked_regions", [])}
+        saved = data.get("region_stores")
+        if not saved:
+            # Saves from before regional storage: everything visited so far shares one storage.
+            visited = {self.storage_region(r) for r in self.visited_regions()}
+            if len(visited) > 1:
+                self.linked_regions = visited
+            key = self.store_key(self.get_current_region())
+            saved = {key: {"team": data.get("player_team", []), "pc": data.get("pc_pokemon", []),
+                           "bag": data.get("inventory", {})}}
+        for key, st in saved.items():
+            team = [self._load_pokemon(r, loader) for r in st.get("team", []) if r]
+            pc_records = st.get("pc", [])
+            pc = [None] * max(300, len(pc_records))  # keep anything stored past slot 300
+            for i, r in enumerate(pc_records):
+                if r:
+                    pc[i] = self._load_pokemon(r, loader)
+            self.region_stores[key] = {"team": team, "pc": pc, "bag": dict(st.get("bag", {}))}
+        self._store()
 
         rid = data.get("rival_starter_id")
         if rid:

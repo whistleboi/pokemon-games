@@ -1,5 +1,146 @@
 # Changelog
 
+## Unreleased: separate regional PCs, Bags and Pokédexes
+
+- **Each region has its own party, PC and Bag.**
+  - Going to a new region for the first time, whether by Mom's move, a ship, a train or a road, leaves your Pokémon and items behind in the region they're from. You collect new key items there.
+  - With no partner from that region yet, you're taken to its professor, and the starter choice opens as you arrive.
+  - Going back to a region brings back its own party, PC and Bag.
+- **Linking.** When you become Champion of a second region, the professor calls: your regional PCs are now linked, and your Bags are combined.
+  - Every region you're Champion of shares one party, PC and Bag from then on, and each new title joins in.
+  - Your current party stays as your party; the other region's party goes to the PC.
+  - Items add up, and key items aren't doubled.
+- **What's shared and where:**
+  - Money and Poké Balls are shared everywhere, so you can always catch.
+  - The S.S. Ticket goes with you, so you can always sail home.
+  - Sub-regions use their region's storage (Sevii is Kanto's, Sinjoh is Johto's). The Orange Islands use Kanto's, and Orre uses Hoenn's.
+  - Key items and HMs are only given into the Bag of the region that earned them.
+- **Old saves:** everything in an existing save stays together. Every region already visited counts as linked, so nothing goes missing.
+- **Regional Pokédexes, as in the games.**
+  - A region's Pokédex now arrives with its starter, not just when you set foot there.
+  - The Pokédex opens on the dex for the region you're in. A button at the top switches between each regional dex ("Kanto Dex", "Johto Dex"...) and the National Dex.
+  - The caught count shows that dex's progress (e.g. 98 / 151).
+
+## Unreleased: Galar and Paldea DLC accuracy
+
+The DLC areas existed but had some things wrong. Fixed:
+
+- **Isle of Armor:**
+  - Zarude wasn't in that DLC (it's from a movie); it moved to Glimwood Tangle after the Galar title.
+  - Kubfu is no longer a wild Pokémon. At Mustard's Master Dojo, beat his students Klara and Avery and Mustard gives you Kubfu. Climb the Tower of Darkness or the Tower of Waters to evolve it into Single Strike or Rapid Strike Urshifu.
+- **Crown Tundra:** Peony's expedition now opens **Dyna Tree Hill**, with catchable Galarian Articuno, Zapdos and Moltres (Lv 70) and Crown Tundra wild Pokémon.
+- **Enamorus and the Space-Time Distortion** came from Legends: Arceus, not Galar. They moved to Hisui and are now reached from the Obsidian Fieldlands instead of the Slumbering Weald.
+- **The Teal Mask:**
+  - Carmine and Kieran meet you in Kitakami. Battle Carmine, then Kieran once you've found the Loyal Three.
+  - Ogerpon now appears only after the Loyal Three, as in the game.
+- **The Indigo Disk** was missing, so I added it.
+  - After Kitakami, an exchange from Mesagoza goes to **Blueberry Academy**.
+  - The BB League: Crispin, Amarys, Lacey and Drayton, then Champion Kieran (Lv 70–77).
+  - **The Terarium** has Pokémon from its four biomes.
+  - **Terapagos** now waits until you've won the BB League and joined Briar's expedition.
+- Three journal entries.
+- **Fix:** trainers' legendary Pokémon ignored the levels in the data and stayed at their wild level (Kieran's Ogerpon at Lv 50 in a Lv 67 team). Exact team levels now apply to every Pokémon on the team.
+
+## Unreleased: Orre
+
+- **A desert region from Pokémon Colosseum.** After the Hoenn title, an air transit from Lilycove City flies to Phenac City.
+  - Orre has no wild Pokémon, no Gyms and no badges, so it gets no badge-case page. It never appears in the new-game or move pickers.
+  - The Desert Trail is a motorbike ride.
+- **Cipher and Shadow Pokémon:**
+  - **Phenac City:** stop the Cipher Peons at the fountain. Rui then gives you the **Snag Machine**.
+  - **Snagging:** Cipher trainers send out 12 Shadow Pokémon (dark, purple-tinged art) across Orre: Makuhita, Teddiursa, Houndour, the Johto starters' middle forms, Ledian, Hitmontop, Ursaring, Skarmory, Snorlax and Tyranitar. Weaken one and throw a ball to snag it. If it faints, it runs off.
+  - **Agate Village:** the **Relic Stone** opens their hearts. Every Shadow Pokémon in your party and PC becomes the normal species, keeping its level, IVs, moves and shininess, and gains friendship.
+  - **Pyrite Town:** the Colosseum, with Miror B. and his Ludicolo, and Cipher's hideout in **The Under**, run by Admin Venus.
+  - **Realgam Tower:** Admins Dakim and Ein, then Cipher Head Evice. After that, the last Shadow Pokémon wait in the Command Center.
+  - **Phenac Stadium:** a tournament.
+- **Jirachi moved here.** It was a 2% wild Pokémon in Hoenn's Sky Pillar. Once Cipher falls, a wishing star lands at the Relic Stone and Jirachi wakes up.
+- Four journal entries guide the story.
+- **Fix:** the level rules use the current region's badges. That meant Story mode capped levels at 12 in Orre, and in Obedience mode a strong team ignored you in Orre and the Orange Islands. Neither happens now.
+
+## Unreleased: the Sinjoh Ruins
+
+- **A hidden place from HeartGold/SoulSilver.** With Arceus in your party and all 28 Unown registered (A to Z, ! and ?), the Ruins of Alph offer "Follow the Unown". Once you've been, you can go back without Arceus.
+- **No flying in or out.** The guide's Abra at the Border Cabin Teleports you back to the Ruins of Alph.
+- **The Border Cabin:** a Hiker's Rest to heal (no shop) and the Sinjoh Snowfields (Snorunt, Snover, Delibird...). Cynthia studies the mixed Johto and Sinnoh carvings and warns you about the Mystri Stage.
+- **The Ruined Pathways:** restless Pokémon (Misdreavus, Murkrow, Sneasel, Swinub, Piloswine) let out strange roars.
+  - A **Phione** swept through the rift from Sinnoh's Sea Temple is frozen in a spring. Melt three ice seals by touching the carving with the bigger number, and it follows you.
+- **The Mystri Stage:** with Arceus in your party, Phione's song steadies the rift long enough to call **one** of Dialga, Palkia or Giratina. Each comes holding its orb and can be caught; the other two stay away.
+  - Afterwards, Phione says goodbye and can be caught too.
+  - Cynthia then battles you at the cabin with a full Lv 70–72 team.
+- **Phione moved here.** It was a 5% wild Pokémon on Sinnoh's Route 223.
+- Three journal entries. Two new menu conditions: `party_has:<id>` and `all_unown_registered`.
+
+## Unreleased: the Decolore Islands
+
+- **A Unova sub-region from the anime.** After the Unova title, a ferry from Castelia City sails to the Decolore Islands.
+  - The ferry deck is its own stop, with no wild Pokémon and five trainers to battle: sailors, a gentleman, a rich boy, a tourist and a swimmer.
+  - Each island opens from the ferry as the story moves on.
+- **Genesect and Team Plasma.** Genesect moved here from P2 Laboratory, where a lab note now points to the islands. Team Plasma is collecting Drives for a rebuilt Genesect:
+  - **Honey Island:** scorched beehives and the Burn Drive.
+  - **Scalchop Island:** Plasma Grunts at the shrine, then the Douse Drive in their abandoned crates.
+  - **Grand Spectrala Island:** Zoroark's illusion woods, a math puzzle (pick the door whose sign is true), then the Chill Drive.
+  - **Torom Island:** beat the Plasma Scientist and shut down the lab for the Shock Drive. Genesect breaks free to Torom Peak, where you can catch it. It won't appear twice if an old save already beat it at P2 Laboratory.
+- **Paladin Island:** the Paladin Tournament. Lenora, Burgh and Elesa, then Alder in the final.
+- **Wild Pokémon on each island,** from your list: Combee, Vespiquen and Comfey on Honey Island; Oshawott, Krabby and Wailmer at Scalchop; Zorua, Zoroark and Misdreavus on Spectrala; Rotom and Magnemite on Torom; Pikachu and the Elemental Monkeys on Paladin. Trainer classes follow the to-do (Beekeepers, Illusionists, Rangers, Scientists, Engineers, Tourists...).
+- Four journal entries guide the story.
+- **Fix (sub-region builder):** areas with no wild Pokémon (the ferry, Dotted Hole, the Rocket Warehouse, Faraway Island) asked for two rounds of battles before you could leave, so you could get stuck. You can now leave them right away.
+
+## Unreleased: the Sevii Islands
+
+- **A Kanto sub-region from FireRed/LeafGreen.** Blaine now gives a **Tri-Pass** with the Volcano Badge (saves that already have it get one), along with a tip about Moltres. The Seagallop Ferry in Vermilion goes to Islands One to Three.
+  - After the Hall of Fame, with the National Pokédex, Celio gives a **Rainbow Pass** for Islands Four to Seven.
+  - Ferries link every island you have a pass for, and each island has a ferry home.
+- **Johto Pokémon early.** The Sevii Islands are the one place in Kanto with Johto Pokémon before you've been to Johto (Hoppip, Slugma, Wooper, Murkrow, Larvitar...). The mainland still keeps them out.
+- **The story:** a Team Rocket cell left over after Giovanni's defeat is hunting the Ruby and Sapphire that Celio's Network Machine needs.
+  - **One Island:** chase them off Mt. Ember. **Moltres moved there** from Cinnabar Volcano, at the summit; if you already beat it in the volcano, it won't appear twice.
+  - **Four Island:** stop them netting Lapras in Icefall Cave. Lorelei, at home on Four Island, then battles you.
+  - **Six Island:** solve the braille puzzle in the Dotted Hole by counting the raised dots. The scientist Gideon then snatches the Sapphire.
+  - **Five Island:** crack the Rocket Warehouse door codes (adding three numbers), beat Admin Archer and recover both gems.
+  - **Back on One Island:** Celio fixes the machine and gives you the **Old Sea Map**.
+- **Mew moved to Faraway Island,** reached with the Old Sea Map. As before, it only appears once you've caught the other 150 Kanto Pokémon. Professor Oak's tip now points to the Sevii Islands instead of Mt. Moon.
+- **Each island has its own extras:**
+  - **One:** Treasure Beach (dig in the sand) and Kindle Road.
+  - **Two:** the Joyful Game Corner. At Cape Brink, a tutor teaches the ultimate move (Frenzy Plant, Blast Burn or Hydro Cannon) to any generation's fully evolved starter.
+  - **Three:** the biker gang blocks Bond Bridge. Beyond it, rescue the lost girl Lostelle from a Hypno in the Berry Forest; her family thanks you on Two Island.
+  - **Four:** a Day Care.
+  - **Five:** Resort Gorgeous, the Water Labyrinth (a Togepi from an old man) and the dark Lost Cave.
+  - **Six:** Pattern Bush and Ruin Valley.
+  - **Seven:** Sevault Canyon, the **Trainer Tower** (three floors, then the Tower Master) and the **Tanoby Ruins**. Solve seven number-pattern doors there and Unown pour out to be caught.
+- Six journal entries guide the Sevii story.
+- **New for story events:** an event can run a math puzzle, which also works from wild areas, and a move tutor can teach a move.
+
+## Unreleased: the Orange Islands
+
+- **A new post-game region from the anime.** Once you're Champion of both Kanto and Johto, Professor Ivy invites you, and a ferry sails from Vermilion and Olivine to Valencia Island. Before then, a sailor at either port explains the rule.
+- **Ships between every island.** Each island's travel menu lists a ship to every other island, and more open as you earn badges. Long menus now wrap into columns so they fit on screen.
+
+  | Islands | Open after |
+  |---|---|
+  | Valencia, Mikan | arrival |
+  | Navel, Pinkan | Coral-Eye Badge |
+  | Trovita, Sunburst | Sea Ruby Badge |
+  | Kumquat, Shamouti | Spike Shell Badge |
+  | Pummelo | Jade Star Badge |
+
+- **The Orange Crew.** Each Gym opens with its leader's challenge from the show as a math minigame, then two Gym trainers, then the leader. Badges have their own art.
+
+  | Island | Leader | Challenge | Team | Badge |
+  |---|---|---|---|---|
+  | Mikan | Cissy | Water Gun targets (addition) | Seadra 60, Blastoise 62 | Coral-Eye |
+  | Navel | Danny | Climb the volcano (subtraction; a miss slides you down) | Nidoqueen 64, Scyther 64, Electrode 66 | Sea Ruby |
+  | Trovita | Rudy | Find the Spike Shell pile (counting) | Electabuzz 67, Starmie 67, Exeggutor 69 | Spike Shell |
+  | Kumquat | Luana | Doubles (4 + 4...) | Alakazam 71, Marowak 72 | Jade Star |
+
+- **The Orange League.** Drake at Pummelo Stadium fields a full six: Ditto, Onix, Gengar, Venusaur, Electabuzz and Dragonite (Lv 76). Winning earns the Winner's Trophy and the title. There's no house move, since the islands are a trip. Drake can be rematched 10 levels higher.
+- **Three special islands:**
+  - **Pinkan Island:** a reserve of pink Pokémon (16 Pinkan forms, with their own pink art). Stop Jessie and James poaching, and Officer Jenny gives you a permit to catch them.
+  - **Sunburst Island:** Mateo the glassblower sends you to the Crystal Cave for the catchable Crystal Onix (Rock/Ice, glass-clear art). Show him and he makes you an Amulet Coin.
+  - **Shamouti Island:** at the festival you're named the Chosen One. Calm Moltres, Articuno and Zapdos on Fire, Ice and Lightning Islands for their treasures. Then place them at the Shrine and Lugia rises from the sea.
+- **Valencia Island:** Professor Ivy gives you the GS Ball (Celebi in Ilex Forest), a lost Lapras joins you, and Tracey battles you after your first badge.
+- **Every island has a wild area** with Gen 1–2 Pokémon and island trainers: swimmers, fishermen, sailors, hikers, skiers and dragon tamers. Pummelo's cliffs have Dratini and even Drake's Ditto. Levels run from 50 on Valencia to 64 at the Shrine.
+- The Orange Islands follow the "Kanto stays Kanto" rules, get their own badge case page and journal missions, and never appear in the new-game or move pickers.
+- **Fix:** wild Pokémon with their own form art (Alolan forms in Kanto pools, Pinkan forms) showed the ordinary sprite. They now show their form's art.
+
 ## Unreleased: Johto teams, Silver and Red, League rematches
 
 - **Johto teams match HeartGold/SoulSilver.** Every Gym Leader, Elite Four member and Lance has their HGSS team. Levels are scaled so Lance's ace is Lv 63, the same as Kanto's Champion. Johto's wild areas are scaled to match.

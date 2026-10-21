@@ -1,0 +1,1243 @@
+{
+  "STORY_PROGRESSION": {
+    "DECOLORE_FERRY": {
+      "area_type": "wild_route",
+      "route_name": "Decolore Ferry",
+      "region": "UNOVA",
+      "level": 57,
+      "subregion": "DECOLORE",
+      "battle_type": "ocean",
+      "min_rounds": 0,
+      "trainer_pool": [
+        {
+          "name": "Sailor Moby",
+          "class": "SAILOR",
+          "sprite": "sailor.png",
+          "team": [
+            130,
+            91,
+            594
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Gentleman Percy",
+          "class": "GENTLEMAN",
+          "sprite": "gentleman.png",
+          "team": [
+            508,
+            128,
+            59
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Rich Boy Lance",
+          "class": "RICH_BOY",
+          "sprite": "richboy.png",
+          "team": [
+            534,
+            521,
+            587
+          ],
+          "rewards": {
+            "balls": 8
+          }
+        },
+        {
+          "name": "Tourist Mae",
+          "class": "TOURIST",
+          "sprite": "pokefan_f.png",
+          "team": [
+            573,
+            25,
+            133
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Swimmer Coral",
+          "class": "SWIMMER",
+          "sprite": "swimmer_f.png",
+          "team": [
+            321,
+            593,
+            171
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "WATCH THE WAVES",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "Wingull and Ducklett glide alongside the ferry.",
+              "The captain says the islands' colors change with the seasons. That's why they're called Decolore!"
+            ]
+          }
+        },
+        {
+          "text": "Honey Island",
+          "action": "EXIT",
+          "target_area": "HONEY_ISLAND",
+          "condition": "can_exit",
+          "color": "RED"
+        },
+        {
+          "text": "Scalchop Island",
+          "action": "EXIT",
+          "target_area": "SCALCHOP_ISLAND",
+          "condition": "got_burn_drive",
+          "color": "RED"
+        },
+        {
+          "text": "Grand Spectrala Island",
+          "action": "EXIT",
+          "target_area": "GRAND_SPECTRALA_ISLAND",
+          "condition": "got_douse_drive",
+          "color": "RED"
+        },
+        {
+          "text": "Torom Island",
+          "action": "EXIT",
+          "target_area": "TOROM_ISLAND",
+          "condition": "got_chill_drive",
+          "color": "RED"
+        },
+        {
+          "text": "Paladin Island",
+          "action": "EXIT",
+          "target_area": "PALADIN_ISLAND",
+          "condition": "decolore_lab_cleared",
+          "color": "RED"
+        },
+        {
+          "text": "Castelia City",
+          "action": "EXIT",
+          "target_area": "CASTELIA_CITY",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "HONEY_ISLAND"
+    },
+    "HONEY_ISLAND": {
+      "area_type": "town",
+      "route_name": "Honey Island",
+      "region": "UNOVA",
+      "level": 56,
+      "subregion": "DECOLORE",
+      "has_gym": false,
+      "explore_options": [
+        {
+          "text": "Pokemon Center",
+          "action": "HEAL"
+        },
+        {
+          "text": "Poke Mart",
+          "action": "SHOP"
+        },
+        {
+          "text": "The Beekeepers' Hives",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "Beekeeper: Something burned our hives last night! A purple, metal bug with a cannon on its back!",
+              "It flew off toward the other islands. Team Plasma's boats were seen right after..."
+            ],
+            "flag": "decolore_heard_genesect",
+            "done": [
+              "Beekeeper: The Combee are rebuilding. Thank you for looking into it!"
+            ]
+          }
+        },
+        {
+          "text": "Search the Scorched Hives",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "requires": [
+              "decolore_heard_genesect"
+            ],
+            "lines": [
+              "In the ashes you find a red cartridge, still warm. It's labeled BURN DRIVE.",
+              "A Plasma logo is stamped on the back... Maybe Scalchop Island has more clues."
+            ],
+            "gift_item": {
+              "BURN_DRIVE": 1
+            },
+            "flag": "got_burn_drive"
+          },
+          "condition": "decolore_heard_genesect",
+          "flag_condition": "not got_burn_drive"
+        },
+        {
+          "text": "Taste the Honey",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "Beekeeper: Try some! Our Combee make the sweetest honey in Unova.",
+              "Here, take a jar for the road. Wild Pokemon love the smell!"
+            ],
+            "gift_item": {
+              "balls": 5,
+              "RARE_CANDY": 1
+            },
+            "flag": "tasted_decolore_honey",
+            "done": [
+              "Beekeeper: Sweet, isn't it?"
+            ]
+          }
+        }
+      ],
+      "travel_options": [
+        {
+          "text": "Board the Ferry",
+          "target_area": "DECOLORE_FERRY"
+        },
+        {
+          "text": "Honey Meadow",
+          "target_area": "HONEY_MEADOW"
+        }
+      ],
+      "next_area": "DECOLORE_FERRY"
+    },
+    "HONEY_MEADOW": {
+      "area_type": "wild_route",
+      "route_name": "Honey Meadow",
+      "region": "UNOVA",
+      "level": 56,
+      "subregion": "DECOLORE",
+      "wild_pool_percentages": "DECOLORE_HONEY_MEADOW_PERCENTAGES",
+      "battle_type": "grass",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Beekeeper Hal",
+          "class": "BEEKEEPER",
+          "sprite": "bug_catcher.png",
+          "team": [
+            415,
+            416,
+            15
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Bug Catcher Wes",
+          "class": "BUG_CATCHER",
+          "sprite": "bug_catcher.png",
+          "team": [
+            542,
+            545,
+            637
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Picnicker Lily",
+          "class": "PICNICKER",
+          "sprite": "picnicker.png",
+          "team": [
+            549,
+            547,
+            764
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Honey Island",
+          "action": "EXIT",
+          "target_area": "HONEY_ISLAND",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "HONEY_ISLAND"
+    },
+    "SCALCHOP_ISLAND": {
+      "area_type": "town",
+      "route_name": "Scalchop Island",
+      "region": "UNOVA",
+      "level": 58,
+      "subregion": "DECOLORE",
+      "has_gym": false,
+      "explore_options": [
+        {
+          "text": "Pokemon Center",
+          "action": "HEAL"
+        },
+        {
+          "text": "Poke Mart",
+          "action": "SHOP"
+        },
+        {
+          "text": "Scalchop Festival",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "Every Oshawott on the island is polishing its scalchop for the festival!",
+              "The best scalchop wins. Yours is judged... the shiniest one there!"
+            ],
+            "gift_item": {
+              "balls": 5
+            },
+            "flag": "scalchop_festival",
+            "done": [
+              "The Oshawott are still showing off their scalchops."
+            ]
+          }
+        },
+        {
+          "text": "Plasma at the Shrine",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "requires": [
+              "got_burn_drive"
+            ],
+            "lines": [
+              "Plasma Grunts are loading crates onto a boat at the island shrine!",
+              "Grunt: The professor needs these Drives for his Genesect! Get lost!"
+            ],
+            "battle": {
+              "name": "Plasma Grunts",
+              "class": "PLASMA_GRUNT",
+              "sprite": "plasma_grunt.png",
+              "team": [
+                510,
+                552,
+                625,
+                530
+              ],
+              "levels": [
+                56,
+                57,
+                57,
+                58
+              ],
+              "rewards": {
+                "balls": 10
+              },
+              "dialogue": {
+                "player_won": [
+                  "Grunt: The professor won't like this... Retreat!"
+                ]
+              }
+            },
+            "flag": "decolore_shrine_plasma"
+          },
+          "flag_condition": "not decolore_shrine_plasma"
+        },
+        {
+          "text": "Search the Crates",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "requires": [
+              "decolore_shrine_plasma"
+            ],
+            "lines": [
+              "One crate was left behind. Inside is a blue cartridge: the DOUSE DRIVE.",
+              "The shipping label says: Grand Spectrala Island."
+            ],
+            "gift_item": {
+              "DOUSE_DRIVE": 1
+            },
+            "flag": "got_douse_drive"
+          },
+          "condition": "decolore_shrine_plasma",
+          "flag_condition": "not got_douse_drive"
+        }
+      ],
+      "travel_options": [
+        {
+          "text": "Board the Ferry",
+          "target_area": "DECOLORE_FERRY"
+        },
+        {
+          "text": "Scalchop Coast",
+          "target_area": "SCALCHOP_COAST"
+        }
+      ],
+      "next_area": "DECOLORE_FERRY"
+    },
+    "SCALCHOP_COAST": {
+      "area_type": "wild_route",
+      "route_name": "Scalchop Coast",
+      "region": "UNOVA",
+      "level": 58,
+      "subregion": "DECOLORE",
+      "wild_pool_percentages": "DECOLORE_SCALCHOP_COAST_PERCENTAGES",
+      "battle_type": "ocean",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Fisherman Ray",
+          "class": "FISHERMAN",
+          "sprite": "fisherman.png",
+          "team": [
+            550,
+            99,
+            130
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Swimmer Nell",
+          "class": "SWIMMER",
+          "sprite": "swimmer_f.png",
+          "team": [
+            594,
+            593,
+            321
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Black Belt Taro",
+          "class": "BLACK_BELT",
+          "sprite": "blackbelt.png",
+          "team": [
+            538,
+            539,
+            534
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Scalchop Island",
+          "action": "EXIT",
+          "target_area": "SCALCHOP_ISLAND",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "SCALCHOP_ISLAND"
+    },
+    "GRAND_SPECTRALA_ISLAND": {
+      "area_type": "town",
+      "route_name": "Grand Spectrala Island",
+      "region": "UNOVA",
+      "level": 60,
+      "subregion": "DECOLORE",
+      "has_gym": false,
+      "explore_options": [
+        {
+          "text": "Pokemon Center",
+          "action": "HEAL"
+        },
+        {
+          "text": "Poke Mart",
+          "action": "SHOP"
+        },
+        {
+          "text": "The Illusion Woods",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "requires": [
+              "got_douse_drive"
+            ],
+            "fail": [
+              "Mist hangs over the woods. Something seems to be playing tricks on visitors..."
+            ],
+            "puzzle": "illusion",
+            "lines": [
+              "Behind the last illusion is a hidden Plasma camp, already abandoned.",
+              "A Zoroark was guarding a white cartridge: the CHILL DRIVE. It lets you take it.",
+              "A map on the table shows a laboratory on Torom Island..."
+            ],
+            "puzzle_fail": [
+              "The woods fold back on themselves. You're back where you started."
+            ],
+            "gift_item": {
+              "CHILL_DRIVE": 1
+            },
+            "flag": "got_chill_drive"
+          },
+          "flag_condition": "not got_chill_drive"
+        },
+        {
+          "text": "Ghost Stories",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "Old Man: On foggy nights, the ghosts of Spectrala dance in the old mansion.",
+              "Don't worry. They only play tricks. Mostly."
+            ]
+          }
+        }
+      ],
+      "travel_options": [
+        {
+          "text": "Board the Ferry",
+          "target_area": "DECOLORE_FERRY"
+        },
+        {
+          "text": "Spectrala Woods",
+          "target_area": "SPECTRALA_WOODS"
+        }
+      ],
+      "next_area": "DECOLORE_FERRY"
+    },
+    "SPECTRALA_WOODS": {
+      "area_type": "wild_route",
+      "route_name": "Spectrala Woods",
+      "region": "UNOVA",
+      "level": 60,
+      "subregion": "DECOLORE",
+      "wild_pool_percentages": "DECOLORE_SPECTRALA_WOODS_PERCENTAGES",
+      "battle_type": "forest",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Ranger Elle",
+          "class": "POKEMON_RANGER",
+          "sprite": "ranger_m.png",
+          "team": [
+            571,
+            518,
+            609
+          ],
+          "rewards": {
+            "balls": 6
+          }
+        },
+        {
+          "name": "Hiker Boulder",
+          "class": "HIKER",
+          "sprite": "hiker.png",
+          "team": [
+            525,
+            526,
+            76
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Illusionist Ivo",
+          "class": "ILLUSIONIST",
+          "sprite": "medium.png",
+          "team": [
+            570,
+            571,
+            429
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Grand Spectrala Island",
+          "action": "EXIT",
+          "target_area": "GRAND_SPECTRALA_ISLAND",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "GRAND_SPECTRALA_ISLAND"
+    },
+    "TOROM_ISLAND": {
+      "area_type": "town",
+      "route_name": "Torom Island",
+      "region": "UNOVA",
+      "level": 62,
+      "subregion": "DECOLORE",
+      "has_gym": false,
+      "explore_options": [
+        {
+          "text": "Pokemon Center",
+          "action": "HEAL"
+        },
+        {
+          "text": "Poke Mart",
+          "action": "SHOP"
+        },
+        {
+          "text": "The Plasma Laboratory",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "requires": [
+              "got_chill_drive"
+            ],
+            "fail": [
+              "A locked lab sits on the cliffs, humming with electricity."
+            ],
+            "lines": [
+              "Plasma Scientist: So you're the one collecting my Drives.",
+              "Genesect is perfection: an ancient Pokemon, rebuilt with a cannon! With all four Drives, it obeys only me.",
+              "Let's see if your Pokemon can match my research!"
+            ],
+            "battle": {
+              "name": "Plasma Scientist",
+              "class": "PLASMA_SAGE",
+              "sprite": "scientist.png",
+              "team": [
+                82,
+                375,
+                606,
+                601,
+                462
+              ],
+              "levels": [
+                61,
+                61,
+                62,
+                62,
+                64
+              ],
+              "rewards": {
+                "balls": 15
+              },
+              "dialogue": {
+                "player_won": [
+                  "Scientist: Fascinating... You've earned the right to see what happens next."
+                ]
+              }
+            },
+            "flag": "decolore_lab_cleared"
+          },
+          "flag_condition": "not decolore_lab_cleared"
+        },
+        {
+          "text": "Shut Down the Lab",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "requires": [
+              "decolore_lab_cleared"
+            ],
+            "lines": [
+              "You flip the lab's main switch. The capsules hiss open!",
+              "Genesect blasts through the roof and flies to the island's peak.",
+              "On the console is the last cartridge: the SHOCK DRIVE.",
+              "Without its Drives, Genesect is just a Pokemon that wants to be free..."
+            ],
+            "gift_item": {
+              "SHOCK_DRIVE": 1
+            },
+            "flag": "got_shock_drive"
+          },
+          "condition": "decolore_lab_cleared",
+          "flag_condition": "not got_shock_drive"
+        }
+      ],
+      "travel_options": [
+        {
+          "text": "Board the Ferry",
+          "target_area": "DECOLORE_FERRY"
+        },
+        {
+          "text": "Torom Peak",
+          "target_area": "TOROM_PEAK"
+        }
+      ],
+      "next_area": "DECOLORE_FERRY"
+    },
+    "TOROM_PEAK": {
+      "area_type": "wild_route",
+      "route_name": "Torom Peak",
+      "region": "UNOVA",
+      "level": 62,
+      "subregion": "DECOLORE",
+      "wild_pool_percentages": "DECOLORE_TOROM_PEAK_PERCENTAGES",
+      "battle_type": "mountain",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Scientist Volta",
+          "class": "SCIENTIST",
+          "sprite": "scientist.png",
+          "team": [
+            600,
+            82,
+            479
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Poke Fan Rita",
+          "class": "POKEFAN",
+          "sprite": "pokefan_f.png",
+          "team": [
+            587,
+            25,
+            702
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Engineer Ohm",
+          "class": "ENGINEER",
+          "sprite": "engineer.png",
+          "team": [
+            603,
+            101,
+            125
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "CHALLENGE GENESECT",
+          "action": "BOSS",
+          "color": "GOLD",
+          "condition": [
+            "got_shock_drive",
+            "boss_not_defeated",
+            "not:P2_LABORATORY_boss_defeated"
+          ]
+        },
+        {
+          "text": "Torom Island",
+          "action": "EXIT",
+          "target_area": "TOROM_ISLAND",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "TOROM_ISLAND",
+      "area_boss": {
+        "id": 649,
+        "name": "Genesect",
+        "victory_flag": "decolore_genesect_defeated"
+      }
+    },
+    "PALADIN_ISLAND": {
+      "area_type": "town",
+      "route_name": "Paladin Island",
+      "region": "UNOVA",
+      "level": 64,
+      "subregion": "DECOLORE",
+      "has_gym": false,
+      "explore_options": [
+        {
+          "text": "Pokemon Center",
+          "action": "HEAL"
+        },
+        {
+          "text": "Poke Mart",
+          "action": "SHOP"
+        },
+        {
+          "text": "Paladin Tournament",
+          "action": "GYM",
+          "color": "GOLD"
+        }
+      ],
+      "travel_options": [
+        {
+          "text": "Board the Ferry",
+          "target_area": "DECOLORE_FERRY"
+        },
+        {
+          "text": "Paladin Fields",
+          "target_area": "PALADIN_FIELDS"
+        }
+      ],
+      "next_area": "DECOLORE_FERRY",
+      "gym": {
+        "trainers": [
+          {
+            "name": "Lenora",
+            "class": "GYM_LEADER",
+            "sprite": "lenora.png",
+            "team": [
+              508,
+              505,
+              573
+            ],
+            "levels": [
+              62,
+              62,
+              63
+            ],
+            "rewards": {
+              "balls": 5
+            },
+            "dialogue": {
+              "intro": [
+                "Lenora: Round one! Let's research how strong you are!"
+              ]
+            }
+          },
+          {
+            "name": "Burgh",
+            "class": "GYM_LEADER",
+            "sprite": "burgh.png",
+            "team": [
+              542,
+              589,
+              617
+            ],
+            "levels": [
+              63,
+              63,
+              64
+            ],
+            "rewards": {
+              "balls": 5
+            },
+            "dialogue": {
+              "intro": [
+                "Burgh: Round two! My Bug Pokemon are a work of art!"
+              ]
+            }
+          },
+          {
+            "name": "Elesa",
+            "class": "GYM_LEADER",
+            "sprite": "elesa.png",
+            "team": [
+              523,
+              587,
+              604
+            ],
+            "levels": [
+              64,
+              64,
+              65
+            ],
+            "rewards": {
+              "balls": 5
+            },
+            "dialogue": {
+              "intro": [
+                "Elesa: The semifinal! Let's make it dazzling!"
+              ]
+            }
+          }
+        ],
+        "leader": {
+          "name": "Alder",
+          "class": "TOURNAMENT_CHAMPION",
+          "sprite": "alder.png",
+          "is_boss_battle": true,
+          "team": [
+            617,
+            626,
+            621,
+            584,
+            589,
+            637
+          ],
+          "levels": [
+            66,
+            66,
+            66,
+            66,
+            66,
+            68
+          ],
+          "rewards": {
+            "balls": 25,
+            "RARE_CANDY": 5
+          },
+          "victory_flag": "paladin_tournament_won",
+          "dialogue": {
+            "intro": [
+              "Alder: The final! The Paladin Tournament crowns the strongest trainer in Unova!"
+            ],
+            "player_won": [
+              "Alder: Ha ha! What a battle! You're the Paladin Tournament champion!"
+            ],
+            "player_lost": [
+              "Alder: Good fight! The tournament runs every day. Come back!"
+            ]
+          }
+        },
+        "requirements": {
+          "badges": 0
+        }
+      }
+    },
+    "PALADIN_FIELDS": {
+      "area_type": "wild_route",
+      "route_name": "Paladin Fields",
+      "region": "UNOVA",
+      "level": 64,
+      "subregion": "DECOLORE",
+      "wild_pool_percentages": "DECOLORE_PALADIN_FIELDS_PERCENTAGES",
+      "battle_type": "grass",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Ace Trainer Rex",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            609,
+            612,
+            635
+          ],
+          "rewards": {
+            "balls": 6
+          }
+        },
+        {
+          "name": "Tourist Joy",
+          "class": "TOURIST",
+          "sprite": "pokefan_m.png",
+          "team": [
+            516,
+            512,
+            514
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Paladin Island",
+          "action": "EXIT",
+          "target_area": "PALADIN_ISLAND",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "PALADIN_ISLAND"
+    }
+  },
+  "JOURNAL_MISSIONS": [
+    {
+      "id": "decolore_m1",
+      "type": "SIDE",
+      "title": "The Decolore Islands",
+      "description": "A ferry from Castelia City sails to the Decolore Islands. The beekeepers on Honey Island need help.",
+      "condition": {
+        "flag": "beat_unova_champion",
+        "flag_not": "got_burn_drive",
+        "required_region": "UNOVA"
+      },
+      "reward": "Burn Drive",
+      "region": "UNOVA"
+    },
+    {
+      "id": "decolore_m2",
+      "type": "SIDE",
+      "title": "The Drives",
+      "description": "Team Plasma is gathering Drives for a Genesect. Follow the trail from Scalchop to Grand Spectrala to Torom Island.",
+      "condition": {
+        "flag": "got_burn_drive",
+        "flag_not": "decolore_lab_cleared",
+        "required_region": "UNOVA"
+      },
+      "reward": "Douse and Chill Drives",
+      "region": "UNOVA"
+    },
+    {
+      "id": "decolore_m3",
+      "type": "SIDE",
+      "title": "Genesect",
+      "description": "Genesect flew to Torom Peak. Without its Drives, it's free... and waiting for a worthy trainer.",
+      "condition": {
+        "flag": "got_shock_drive",
+        "flag_not": "decolore_genesect_defeated",
+        "required_region": "UNOVA"
+      },
+      "reward": "Genesect",
+      "region": "UNOVA"
+    },
+    {
+      "id": "decolore_m4",
+      "type": "SIDE",
+      "title": "The Paladin Tournament",
+      "description": "Gym Leaders from all over Unova battle in the Paladin Tournament. Can you beat Alder in the final?",
+      "condition": {
+        "flag": "decolore_lab_cleared",
+        "flag_not": "paladin_tournament_won",
+        "required_region": "UNOVA"
+      },
+      "reward": "Rare Candy",
+      "region": "UNOVA"
+    }
+  ],
+  "DECOLORE_HONEY_MEADOW": [
+    415,
+    416,
+    15,
+    764,
+    742,
+    743,
+    12,
+    267,
+    420,
+    546,
+    548,
+    541
+  ],
+  "DECOLORE_HONEY_MEADOW_PERCENTAGES": {
+    "415": 16,
+    "416": 3,
+    "15": 8,
+    "764": 6,
+    "742": 10,
+    "743": 4,
+    "12": 8,
+    "267": 6,
+    "420": 10,
+    "546": 10,
+    "548": 10,
+    "541": 9
+  },
+  "DECOLORE_SCALCHOP_COAST": [
+    501,
+    502,
+    98,
+    99,
+    320,
+    321,
+    550,
+    594,
+    592,
+    72,
+    222,
+    535
+  ],
+  "DECOLORE_SCALCHOP_COAST_PERCENTAGES": {
+    "501": 6,
+    "502": 3,
+    "98": 12,
+    "99": 6,
+    "320": 12,
+    "321": 3,
+    "550": 12,
+    "594": 8,
+    "592": 10,
+    "72": 10,
+    "222": 8,
+    "535": 10
+  },
+  "DECOLORE_SPECTRALA_WOODS": [
+    570,
+    571,
+    200,
+    429,
+    92,
+    93,
+    94,
+    607,
+    608,
+    562,
+    574,
+    517,
+    518
+  ],
+  "DECOLORE_SPECTRALA_WOODS_PERCENTAGES": {
+    "570": 10,
+    "571": 4,
+    "200": 10,
+    "429": 3,
+    "92": 10,
+    "93": 6,
+    "94": 2,
+    "607": 10,
+    "608": 4,
+    "562": 10,
+    "574": 8,
+    "517": 10,
+    "518": 3
+  },
+  "DECOLORE_TOROM_PEAK": [
+    479,
+    81,
+    82,
+    462,
+    125,
+    466,
+    100,
+    101,
+    599,
+    600,
+    602,
+    587,
+    595,
+    596
+  ],
+  "DECOLORE_TOROM_PEAK_PERCENTAGES": {
+    "479": 6,
+    "81": 10,
+    "82": 6,
+    "462": 2,
+    "125": 8,
+    "466": 2,
+    "100": 10,
+    "101": 5,
+    "599": 10,
+    "600": 4,
+    "602": 8,
+    "587": 10,
+    "595": 10,
+    "596": 4
+  },
+  "DECOLORE_PALADIN_FIELDS": [
+    25,
+    515,
+    511,
+    513,
+    133,
+    506,
+    509,
+    519,
+    427,
+    39,
+    573,
+    587
+  ],
+  "DECOLORE_PALADIN_FIELDS_PERCENTAGES": {
+    "25": 8,
+    "515": 10,
+    "511": 10,
+    "513": 10,
+    "133": 6,
+    "506": 10,
+    "509": 10,
+    "519": 10,
+    "427": 8,
+    "39": 8,
+    "573": 5,
+    "587": 5
+  }
+}

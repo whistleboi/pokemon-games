@@ -7,7 +7,20 @@
 - Cinnabar (Blaine): quiz machine before each gym trainer. Right answer = that trainer is skipped,
   wrong answer = battle them (canon FRLG).
 
-Solving Surge/Koga/Sabrina's puzzle sets story flag gym_puzzle_<AREA> and opens the leader.
+The Orange Crew's challenges come before each Orange Islands leader, as in the anime:
+- Mikan (Cissy): Water Gun target practice. Hit the can whose sum is the target.
+- Navel (Danny): climb the mountain. Pick the ledge whose answer is the target; a wrong ledge slides you down.
+- Trovita (Rudy): count the Spike Shells on the beach and pick the right pile.
+- Kumquat (Luana): a double battle, so doubles: 4 + 4, 7 + 7...
+
+Solving a puzzle sets story flag gym_puzzle_<AREA> and opens the leader.
+
+Story events can run a puzzle too ("puzzle": kind, see overworld._start_event_puzzle):
+- braille (Sevii, Dotted Hole): count the raised dots in the wall's cells.
+- security (Sevii, Rocket Warehouse): a door code is three numbers added up.
+- tanoby (Sevii, Tanoby Ruins): what comes next in the pattern (2, 4, 6, ?).
+- illusion (Decolore, Grand Spectrala): Zoroark's fake doors. Only one sign tells the truth.
+- carvings (Sinjoh Ruins, the frozen spring): which carving shows the bigger number?
 """
 import random
 
@@ -18,7 +31,9 @@ from src.utils import Utils
 from src.ui.widgets import Button
 from src.config import WHITE, BLACK, BLUE, GREEN, RED, ORANGE, PURPLE, GOLD
 
-PUZZLE_GYMS = {"VERMILLION_CITY": "surge", "FUCHSIA_CITY": "koga", "SAFFRON_CITY": "sabrina"}
+PUZZLE_GYMS = {"VERMILLION_CITY": "surge", "FUCHSIA_CITY": "koga", "SAFFRON_CITY": "sabrina",
+               "MIKAN_ISLAND": "cissy", "NAVEL_ISLAND": "danny", "TROVITA_ISLAND": "rudy",
+               "KUMQUAT_ISLAND": "luana"}
 QUIZ_GYMS = {"CINNABAR_ISLAND"}
 
 
@@ -62,6 +77,78 @@ def make_step(kind, step, rng=random):
         tiles = [(f"{_diff_pair(target, rng)}", True)] + [(f"{_diff_pair(n, rng)}", False) for n in wrong]
         rng.shuffle(tiles)
         return (f"Room {step + 1}: step on the warp tile whose answer is {target}.", "", tiles)
+    if kind == "cissy":
+        target = rng.randint(6, 15)
+        wrong = rng.sample([n for n in range(4, 18) if n != target], 3)
+        cans = [(_sum_pair(target, rng), True)] + [(_sum_pair(n, rng), False) for n in wrong]
+        rng.shuffle(cans)
+        return (f"Target {step + 1}: use Water Gun on the can that makes {target}!", "", cans)
+    if kind == "danny":
+        target = rng.randint(3, 12)
+        wrong = rng.sample([n for n in range(1, 15) if n != target], 3)
+        ledges = [(_diff_pair(target, rng), True)] + [(_diff_pair(n, rng), False) for n in wrong]
+        rng.shuffle(ledges)
+        return (f"Climb {step + 1}: grab the ledge whose answer is {target}.", "", ledges)
+    if kind == "rudy":
+        target = rng.randint(3, 9)
+        counts = [target] + rng.sample([n for n in range(2, 11) if n != target], 2)
+        rng.shuffle(counts)
+        pics = "    ".join(f"Pile {i + 1}: " + "@" * n for i, n in enumerate(counts))
+        return (f"Rudy hid a Spike Shell pile with {target} shells. Which pile is it?", pics,
+                [(f"PILE {i + 1}", n == target) for i, n in enumerate(counts)])
+    if kind == "luana":
+        n = rng.randint(2, 10)
+        opts = {2 * n}
+        while len(opts) < 4:
+            opts.add(max(2, 2 * n + rng.choice([-3, -2, -1, 1, 2, 3])))
+        return (f"Double battle, double numbers! What is {n} + {n}?", "",
+                [(str(o), o == 2 * n) for o in sorted(opts)])
+    if kind == "braille":
+        cells = [rng.randint(1, 6) for _ in range(2)]
+        target = sum(cells)
+        pics = "    ".join("[" + "o" * n + "." * (6 - n) + "]" for n in cells)
+        opts = {target}
+        while len(opts) < 4:
+            opts.add(max(2, target + rng.choice([-3, -2, -1, 1, 2, 3])))
+        return ("Count the raised dots (o) in both cells. How many in all?", pics,
+                [(str(o), o == target) for o in sorted(opts)])
+    if kind == "security":
+        nums = [rng.randint(1, 9) for _ in range(3)]
+        code = sum(nums)
+        opts = {code}
+        while len(opts) < 4:
+            opts.add(max(3, code + rng.choice([-4, -2, -1, 1, 2, 4])))
+        return (f"Door {step + 1}: the code is {nums[0]} + {nums[1]} + {nums[2]}.", "",
+                [(str(o), o == code) for o in sorted(opts)])
+    if kind == "tanoby":
+        stepv = rng.choice([1, 2, 3, 5, 10])
+        start = rng.randint(1, 10)
+        seq = [start + stepv * i for i in range(4)]
+        ans = start + stepv * 4
+        opts = {ans}
+        while len(opts) < 4:
+            opts.add(max(1, ans + rng.choice([-stepv, stepv, -1, 1, 2])))
+        return (f"Chamber {step + 1}: the carvings count {', '.join(map(str, seq))}, ... What comes next?", "",
+                [(str(o), o == ans) for o in sorted(opts)])
+    if kind == "illusion":
+        signs = []
+        a, b = rng.randint(2, 9), rng.randint(2, 9)
+        signs.append((f"{a} + {b} = {a + b}", True))
+        while len(signs) < 4:
+            x, y = rng.randint(2, 9), rng.randint(2, 9)
+            fake = x + y + rng.choice([-2, -1, 1, 2])
+            label = f"{x} + {y} = {fake}"
+            if all(label != s[0] for s in signs):
+                signs.append((label, False))
+        rng.shuffle(signs)
+        return (f"Door {step + 1}: Zoroark made fake doors! Pick the door whose sign is TRUE.", "", signs)
+    if kind == "carvings":
+        a, b = rng.randint(2, 9), rng.randint(2, 9)
+        left = a + b
+        right = left + rng.choice([-3, -2, -1, 1, 2, 3])
+        opts = [(f"{a} + {b}", left > right), (str(right), right > left)]
+        rng.shuffle(opts)
+        return (f"Ice seal {step + 1}: touch the carving with the BIGGER number.", "", opts)
     # Blaine's quiz
     a, b = rng.randint(1, 10), rng.randint(1, 10)
     if rng.random() < 0.5 or a < b:
@@ -76,22 +163,51 @@ def make_step(kind, step, rng=random):
             [(str(o), o == ans) for o in opts])
 
 
-STEPS = {"surge": 2, "koga": 3, "sabrina": 3, "quiz": 1}
+STEPS = {"surge": 2, "koga": 3, "sabrina": 3, "quiz": 1,
+         "cissy": 3, "danny": 3, "rudy": 3, "luana": 3,
+         "braille": 3, "security": 3, "tanoby": 7, "illusion": 3, "carvings": 3}
 INTRO = {
     "surge": "Lt. Surge locked his door! Two switches are hidden in the trash cans.",
     "koga": "The Fuchsia Gym is full of invisible walls!",
     "sabrina": "The Saffron Gym is a maze of warp tiles!",
     "quiz": "Blaine's quiz machine buzzes to life!",
+    "cissy": "Cissy: Before we battle, show me your aim! Knock down three cans with Water Gun.",
+    "danny": "Danny: My challenge starts at the bottom of the volcano. Race me to the top!",
+    "rudy": "Rudy: My sister buried some Spike Shells on the beach. Find the right piles!",
+    "luana": "Luana: My Gym is all double battles. Let's see if you can think in doubles!",
+    "braille": "Strange dots are carved into the walls of the Dotted Hole...",
+    "security": "The warehouse doors are locked with number pads!",
+    "tanoby": "Seven chambers, seven sealed doors, each carved with a number pattern.",
+    "illusion": "The woods shimmer. Every path looks the same... it's an illusion!",
+    "carvings": "Three ice seals cover the spring, each carved with numbers.",
 }
 WRONG = {
     "surge": ("Nope! Only trash in there.", "The locks reset! Start over."),
     "koga": ("BONK! An invisible wall!", "BONK! An invisible wall!"),
     "sabrina": ("Whoosh! You warped back to the entrance.", "Whoosh! You warped back to the entrance."),
+    "cissy": ("Splash! Missed that one.", "Splash! Missed that one."),
+    "danny": ("Whoa! The ledge crumbled.", "Whoa! You slid back down to the bottom!"),
+    "rudy": ("Just sand in that pile!", "Just sand in that pile!"),
+    "luana": ("Not quite! Count it twice.", "Not quite! Count it twice."),
+    "braille": ("Nothing happens.", "Nothing happens."),
+    "security": ("BZZT! Wrong code.", "BZZT! Wrong code. The alarm resets the doors!"),
+    "tanoby": ("The door stays shut.", "The door stays shut."),
+    "illusion": ("Poof! That door was an illusion.", "Poof! An illusion! You're back at the start."),
+    "carvings": ("The ice stays frozen.", "The ice stays frozen."),
 }
 DONE = {
     "surge": "Click! Both switches are on. The door to Lt. Surge opened!",
     "koga": "You found the way through! Koga is waiting.",
     "sabrina": "You warped right in front of Sabrina!",
+    "cissy": "Cissy: Bullseye, three times! Now for the real battle.",
+    "danny": "Danny: You beat me to the top! Now let's battle.",
+    "rudy": "Rudy: You found every pile! You've earned your battle.",
+    "luana": "Luana: Perfect doubles! You're ready for my double battle.",
+    "braille": "The wall rumbles open! A passage leads deeper underground.",
+    "security": "Click! The last door slides open.",
+    "tanoby": "All seven chambers are open! Unown pour out of the ruins!",
+    "illusion": "The illusion fades. A Zoroark steps out, laughing, and points the way.",
+    "carvings": "Crack! The last seal melts away.",
 }
 
 
@@ -131,8 +247,8 @@ class GymPuzzleState(GameState):
         else:
             first, later = WRONG[self.kind]
             self.message = first if self.step == 0 else later
-            if self.kind in ("surge", "sabrina"):
-                self.step = 0  # Surge's locks reset; Sabrina's warp sends you back
+            if self.kind in ("surge", "sabrina", "danny", "security", "illusion"):
+                self.step = 0  # Surge's locks reset; Sabrina's warp and Danny's ledges send you back
         self._new_step()
 
     def _finish(self, solved):
@@ -161,7 +277,8 @@ class GymPuzzleState(GameState):
         x0 = (w - (cols * bw + (cols - 1) * gap)) // 2
         y0 = int(h * 0.45)
         font = self.game.assets.fonts.get("s_med") or self.game.assets.fonts["small"]
-        color = {"surge": ORANGE, "koga": PURPLE, "sabrina": BLUE, "quiz": RED}[self.kind]
+        color = {"surge": ORANGE, "koga": PURPLE, "sabrina": BLUE, "quiz": RED, "cissy": BLUE,
+                 "danny": RED, "rudy": ORANGE, "luana": GREEN}.get(self.kind, PURPLE)
         for i, (label, _) in enumerate(self.options):
             r, c = divmod(i, cols)
             self.buttons.append(Button((x0 + c * (bw + gap), y0 + r * (bh + gap), bw, bh), label, font,

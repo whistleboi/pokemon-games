@@ -1097,15 +1097,32 @@ class PCState(GameState):
 
 
 # [REF-0032: Bag System]
-def _dex_ids(story, caught_data, seen_ids):
-    """Pokedex 'normal' tab ids. Each region the player has reached gets its own block: its
-    generation's range plus the later-gen evolutions obtainable there (dex_extra; Kanto has none,
-    so a Kanto game lists exactly #1-151). Species caught outside those blocks are appended;
-    merely-seen ones (a trainer's Crobat) are appended only once the National Dex is unlocked."""
+def dex_regions(story):
+    """Regional Pokedexes the player has: the starting region's, and each region whose starter
+    they've received (a new region's dex arrives with its starter, as in the games)."""
     national_dex = story.story_flags.get("unlocked_national_dex", False)
-    regions = [r for r, _ in story.get_region_starts()
-               if r == story.starting_region or story.story_flags.get(f"unlocked_{r.lower()}_badges")
-               or (national_dex and r in ("KANTO", "JOHTO"))]
+    out = []
+    for r, cfg in story.get_region_starts():
+        lo, hi = cfg.get("dex_range", [0, -1])
+        if hi < lo:
+            continue  # travel-only places (Orange Islands, Orre) have no Pokedex of their own
+        if (r == story.starting_region or story.story_flags.get(f"received_starter_{r.lower()}")
+                or (national_dex and r in ("KANTO", "JOHTO"))):
+            out.append(r)
+    return out or [story.starting_region]
+
+
+def _dex_ids(story, caught_data, seen_ids, view=None):
+    """Pokedex 'normal' tab ids. view = a region: that region's own dex (its generation's range plus
+    the later-gen evolutions obtainable there, dex_extra). view = None/"NATIONAL": every regional
+    dex in a row; species caught outside them are appended, and merely-seen ones (a trainer's
+    Crobat) too once the National Dex is unlocked."""
+    national_dex = story.story_flags.get("unlocked_national_dex", False)
+    regions = dex_regions(story)
+    if view and view != "NATIONAL":
+        cfg = story.get_region_start(view)
+        lo, hi = cfg.get("dex_range", [1, 151])
+        return list(dict.fromkeys(list(range(lo, hi + 1)) + cfg.get("dex_extra", [])))
     id_list = []
     for r in regions:
         cfg = story.get_region_start(r)
@@ -1615,7 +1632,22 @@ class BagState(GameState):
 # [REF-0038: Pokedex UI]
 class PokedexState(GameState):
     def normal_dex_ids(self, caught_data, seen_ids):
-        return _dex_ids(self.game.story_manager, caught_data, seen_ids)
+        return _dex_ids(self.game.story_manager, caught_data, seen_ids, getattr(self, "dex_view", None))
+
+    def dex_views(self):
+        """Regional dexes the player has, then the National Dex once it's unlocked."""
+        story = self.game.story_manager
+        views = dex_regions(story)
+        if story.story_flags.get("unlocked_national_dex") or len(views) > 1:
+            views = views + ["NATIONAL"]
+        return views
+
+    def cycle_dex_view(self):
+        views = self.dex_views()
+        self.dex_view = views[(views.index(self.dex_view) + 1) % len(views)] if self.dex_view in views else views[0]
+        self.btn_dex_view.text = f"{self.dex_view.title()} Dex"
+        self.page = 0
+        self.refresh_dex()
 
     def __init__(self, game, previous_state):
         super().__init__(game)
@@ -1630,6 +1662,12 @@ class PokedexState(GameState):
         self.selected_pkmn_id = None
         self.popup_rect = pygame.Rect(0, 0, 180, 130)
 
+        # Which Pokedex: this region's own (as in the games), another region's, or the National Dex.
+        views = self.dex_views()
+        here = game.story_manager.get_current_region()
+        self.dex_view = here if here in views else views[0]
+        self.btn_dex_view = Button((game.width // 2 - 160, 30, 320, 70), f"{self.dex_view.title()} Dex",
+                                   game.assets.fonts["small"], self.cycle_dex_view, bg_color=GOLD)
         self.refresh_dex()
 
         tab_y = game.height * 0.18
@@ -1727,6 +1765,7 @@ class PokedexState(GameState):
 
     def start(self):
         self.game.ui_manager.add_element(self.btn_back)
+        self.game.ui_manager.add_element(self.btn_dex_view)
         self.game.ui_manager.add_element(self.btn_shiny_toggle)
         self.game.ui_manager.add_element(self.btn_sort)
         self.game.ui_manager.add_element(self.btn_cry)
@@ -1997,24 +2036,20 @@ class PokedexState(GameState):
         pygame.draw.circle(screen, BLACK, (width // 2, height // 2), 120)
         pygame.draw.circle(screen, WHITE, (width // 2, height // 2), 90)
 
+        # The Dex button at the top is the title ("Kanto Dex", "National Dex").
+        if self.current_tab == "normal" and not self.show_shinies_only:
+            in_view = [e for e in self.full_dex if e.get("id") != self.game.loader.get_special_id("NOWN", 3025)]
+            caught_text = f"CAUGHT: {sum(1 for e in in_view if e['status'] == 2)} / {len(in_view)}"
+        else:
+            total_caught = len({v['id'] for v in self.game.data.data["pokedex"].values() if isinstance(v, dict) and 'id' in v})
+            caught_text = f"CAUGHT: {total_caught}"
         Utils.draw_text_outline(
             screen,
-            "POKEDEX",
-            self.game.assets.fonts["med"],
-            BLACK,
-            width // 2,
-            height * 0.06,
-            outline_color=WHITE,
-        )
-
-        total_caught = len({v['id'] for v in self.game.data.data["pokedex"].values() if isinstance(v, dict) and 'id' in v})
-        Utils.draw_text_outline(
-            screen,
-            f"CAUGHT: {total_caught}",
+            caught_text,
             self.game.assets.fonts["s_med"],
             BLACK,
             width // 2,
-            height * 0.12,
+            height * 0.155,
             outline_color=WHITE,
         )
 
@@ -2222,8 +2257,9 @@ class BadgeCaseState(GameState):
         story = game.story_manager
         starts = story.get_region_starts()
         self.unlocked_regions = [
-            r for r, _ in starts
-            if story.story_flags.get(f"unlocked_{r.lower()}_badges") or story.badges.get(r)
+            r for r, cfg in starts
+            if (story.story_flags.get(f"unlocked_{r.lower()}_badges") or story.badges.get(r))
+            and not cfg.get("no_badges")  # Orre has no Gyms
         ] or [story.starting_region]
 
         home = game.story_manager.starting_region
@@ -2331,7 +2367,8 @@ class BadgeCaseState(GameState):
 
         bg_colors = {"KANTO": DARK_RED, "JOHTO": (15, 35, 85), "HOENN": (20, 80, 40),
                      "SINNOH": (60, 40, 90), "UNOVA": (30, 30, 30), "KALOS": (20, 60, 100),
-                     "ALOLA": (110, 70, 20), "GALAR": (90, 20, 50), "PALDEA": (120, 40, 20)}
+                     "ALOLA": (110, 70, 20), "GALAR": (90, 20, 50), "PALDEA": (120, 40, 20),
+                     "ORANGE": (190, 100, 20)}
         screen.fill(bg_colors.get(region, (40, 40, 40)))
 
         case_rect = pygame.Rect(width * 0.1, height * 0.1, width * 0.8, height * 0.8)
