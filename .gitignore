@@ -15,3 +15,6 @@ kanto_handoff.zip
 *.bak
 *.corrupt
 crash.log
+
+# generated test scripts and screenshots
+Kanto Math Game/dev/checks/out/
