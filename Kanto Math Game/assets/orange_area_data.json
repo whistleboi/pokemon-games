@@ -3,6 +3,7 @@
     "ORANGE": {
       "order": 2.5,
       "travel_only": true,
+      "storage_region": "KANTO",
       "subtitle": "ANIME / ORANGE ISLANDS",
       "start_area": "VALENCIA_ISLAND",
       "dex_range": [
@@ -16,8 +17,7 @@
         "orange_3",
         "orange_4",
         "orange_5"
-      ],
-      "storage_region": "KANTO"
+      ]
     }
   },
   "FORM_MAP": {
@@ -2048,6 +2048,25 @@
           }
         },
         {
+          "text": "SEARCH THE SHRINE",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "You search Fire Island's shrine again...",
+              "There it is: the Fire Treasure, glowing on the altar!"
+            ],
+            "gift_item": {
+              "FIRE_TREASURE": 1
+            }
+          },
+          "condition": [
+            "shamouti_moltres_calmed",
+            "not:has_item:FIRE_TREASURE",
+            "not:shamouti_song_played"
+          ]
+        },
+        {
           "text": "Shamouti Island",
           "action": "EXIT",
           "target_area": "SHAMOUTI_ISLAND",
@@ -2104,6 +2123,25 @@
           }
         },
         {
+          "text": "SEARCH THE SHRINE",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "You search Ice Island's shrine again...",
+              "There it is: the Ice Treasure, glowing on the altar!"
+            ],
+            "gift_item": {
+              "ICE_TREASURE": 1
+            }
+          },
+          "condition": [
+            "shamouti_articuno_calmed",
+            "not:has_item:ICE_TREASURE",
+            "not:shamouti_song_played"
+          ]
+        },
+        {
           "text": "Shamouti Island",
           "action": "EXIT",
           "target_area": "SHAMOUTI_ISLAND",
@@ -2158,6 +2196,25 @@
               "LIGHTNING_TREASURE": 1
             }
           }
+        },
+        {
+          "text": "SEARCH THE SHRINE",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "You search Lightning Island's shrine again...",
+              "There it is: the Lightning Treasure, glowing on the altar!"
+            ],
+            "gift_item": {
+              "LIGHTNING_TREASURE": 1
+            }
+          },
+          "condition": [
+            "shamouti_zapdos_calmed",
+            "not:has_item:LIGHTNING_TREASURE",
+            "not:shamouti_song_played"
+          ]
         },
         {
           "text": "Shamouti Island",

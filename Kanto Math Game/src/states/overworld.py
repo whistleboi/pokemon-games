@@ -27,8 +27,12 @@ from src.config import WHITE, BLACK, GREEN, BLUE, GOLD, RED, ORANGE, PURPLE, GRA
 def _fill_names(game, text):
     if not isinstance(text, str):
         return text
-    return (text.replace("{player_name}", getattr(game, "player_name", "TRAINER"))
+    text = (text.replace("{player_name}", getattr(game, "player_name", "TRAINER"))
                 .replace("{rival_name}", getattr(game, "rival_name", "???")))
+    if "{kanto_" in text:  # Mew's hint: Kanto species #1-150 only (other regions don't count)
+        caught = game.story_manager.kanto_caught_count()
+        text = text.replace("{kanto_caught}", str(caught)).replace("{kanto_missing}", str(150 - caught))
+    return text
 
 
 def _resolve_lines(game, value):
@@ -124,12 +128,7 @@ def _run_story_event(state, key, check, show):
         return
     for item, qty in (ev.get("gift_item") or {}).items():
         if item == "balls":
-            story.balls_left = getattr(story, "balls_left", 0) + qty
-            play = game.states.get("play")
-            if play is not None and play is not state:
-                play.balls_left = getattr(play, "balls_left", 0) + qty
-            if getattr(state, "balls_left", None) is not None:
-                state.balls_left += qty
+            story.balls_left = getattr(story, "balls_left", 0) + qty  # the one ball count
             lines.append(f"You received {qty} Poke Balls!")
             continue
         story.inventory[item] = story.inventory.get(item, 0) + qty
@@ -203,6 +202,16 @@ def _draw_season_hud(game, screen, area_key, x, y):
                                 align="left", outline_color=BLACK)
 
 class PlayState(GameState):
+    # One Poke Ball count for the whole game: the story's. Routes used to keep their own copy,
+    # and an old copy coming back (a revisited route, after a battle) erased balls you'd bought.
+    @property
+    def balls_left(self):
+        return self.game.story_manager.balls_left
+
+    @balls_left.setter
+    def balls_left(self, value):
+        self.game.story_manager.balls_left = value
+
     def __init__(self, game, restore_data=None):
         super().__init__(game)
         if hasattr(game.story_manager, "sync_rival"):
@@ -247,7 +256,7 @@ class PlayState(GameState):
         self.current_streak = game.story_manager.current_streak
 
         if restore_data:
-            self.balls_left = restore_data.get("balls_left", 0)
+            # (balls_left is the story's own count; a saved snapshot of it would be stale)
             self.current_streak = restore_data.get("current_streak", 0)
             self.rounds_completed = restore_data.get("rounds_completed", 0)
             self.pending_wild_encounters = restore_data.get(
@@ -505,7 +514,7 @@ class PlayState(GameState):
         if not self.game.story_manager.story_flags.get("visited_BURNED_TOWER"):
             return False
 
-        if random.random() < 0.05:
+        if random.random() < self.ROAMER_CHANCE:
             roamers = [243, 244]
             roamer_id = random.choice(roamers)
 
@@ -516,12 +525,26 @@ class PlayState(GameState):
 
             raw = self.game.loader.fetch_specific(roamer_id)
             pokemon = Pokemon(raw, self.game.assets, size_mult=2.0)
+            # Roamers suit the route (Lv 40 at most, as in HeartGold/SoulSilver) instead of an
+            # L50 that one-shots a badge-4 team.
+            area_key = self.game.story_manager.current_area_key
+            pokemon.level = max(10, min(self.ROAMER_MAX_LEVEL, levels.area_level(self.game, area_key) + 5))
+            pokemon.current_hp = pokemon.get_max_hp()
 
             from src.states.battle import WildBattleState
-            battle_state = WildBattleState(self.game, pokemon, self.game.story_manager.current_area_key)
+            # The battle catches into this route (not an older one left in game.states).
+            self.game.states["play"] = self
+            battle_state = WildBattleState(self.game, pokemon, area_key)
+            battle_state.play_state_data = {
+                "balls_left": self.balls_left, "current_streak": self.current_streak,
+                "rounds_completed": self.rounds_completed, "pending_wild_encounters": 0,
+                "initial_round_active": False}
             self.game.change_state(battle_state)
             return True
         return False
+
+    ROAMER_CHANCE = 0.10
+    ROAMER_MAX_LEVEL = 40
 
     def save_game(self):
         from src.states.menus import SaveState
@@ -861,6 +884,12 @@ class PlayState(GameState):
         return self.game.loader.area_data.get(base_key, {}) if base_key else {}
 
     def trigger_wild_encounter(self):
+        if self.balls_left <= 0:  # no catch screen without balls: say so and go back to the menu
+            self.p_data = [None, None, None]
+            self.catch_selection_active = False
+            self.pending_wild_encounters = 0
+            self.show_dialogue([self.game.assets.get_text("no_balls_left")], callback=self.show_progression_menu)
+            return
         wild_pool_pct = self._get_wild_pool(self.area_data)
         if not wild_pool_pct:
             print(
@@ -1153,8 +1182,12 @@ class PlayState(GameState):
                 return True
             if self.balls_left <= 0:
                 return True
-
-            return self.rounds_completed >= self.min_rounds
+            if self.rounds_completed >= self.min_rounds:
+                return True
+            # Nothing left to play here: no wild battles on the menu and every trainer beaten
+            # (the Radio Tower cleared over two visits used to leave no way out).
+            wild = any(o.get("action") in ("CATCH", "BATTLE") for o in self.area_data.get("route_menu", []))
+            return not wild and not trainers_left
 
         if condition == "has_silph_scope":
             return self.game.story_manager.inventory.get("SILPH_SCOPE", 0) > 0
@@ -1445,8 +1478,9 @@ class PlayState(GameState):
         self.is_progression_paused = True
         self.hide_menu_buttons()
         inv = self.game.story_manager.inventory
-        caught = self.game.data.data.get("pokedex", {})
-        has_trio = all(str(pid) in caught for pid in [243, 244, 245])
+        # Pokedex keys are "243-normal", so compare species ids (str(pid) in keys never matched).
+        caught_ids = {v.get("id") for v in self.game.data.data.get("pokedex", {}).values() if isinstance(v, dict)}
+        has_trio = {243, 244, 245} <= caught_ids
         
         if inv.get("RAINBOW_WING", 0) > 0:
             lines = ["Sage Li: Seek the summit, chosen one."]
@@ -1703,18 +1737,14 @@ class PlayState(GameState):
             return
 
         pid = boss_data.get("id")
-        raw = self.game.loader.fetch_specific(pid)
+        # A shiny boss (the Red Gyarados) loads its shiny front and back art straight from the loader.
+        raw = self.game.loader.fetch_specific(pid, is_shiny=bool(boss_data.get("is_shiny", False)))
 
         if "name" in boss_data:
             raw["name"] = boss_data["name"]
             raw["display_name"] = boss_data["name"]
 
-        is_shiny = boss_data.get("is_shiny", False)
         pokemon = Pokemon(raw, self.game.assets, size_mult=2.0)
-        if is_shiny:
-            pokemon.is_shiny = True
-            pokemon.image = self.game.assets.get_pokemon_image(pokemon.id, pokemon.form, True)
-            pokemon.back_image = self.game.assets.get_pokemon_image(pokemon.id, pokemon.form, True, back=True)
         # A Primal boss (Groudon/Kyogre in the Cave of Origin) reverts when the battle starts.
         pokemon.primal_ready = bool(boss_data.get("primal"))
         pokemon.level = int(boss_data.get("level") or levels.boss_level(
@@ -3322,7 +3352,8 @@ class CityState(GameState):
             msg = ["Researcher: You've started a collection! That's excellent!", "Here, take this UNOWN REPORT.", "It will help you track every form you find.", "Come back when you've documented more!"]
             self.game.story_manager.inventory["UNOWN_REPORT"] = 1
         elif remaining == 0:
-            if str(nown_id) in self.game.data.data.get("pokedex", {}):
+            if any(isinstance(v, dict) and v.get("id") == nown_id
+                   for v in self.game.data.data.get("pokedex", {}).values()):  # keys are "id-form"
                 msg = ["Researcher: Incredible! You've documented all 28 forms of UNOWN!", "Your math skills and dedication are truly legendary.", "You've solved the greatest mystery of the Johto region!"]
             else:
                 msg = ["Researcher: Incredible! You've documented all 28 forms of UNOWN!",
@@ -3686,8 +3717,17 @@ class CityState(GameState):
         self.action_menu.set_visibility(False)
         self.npc_sprite = self.game.assets.get_trainer_image("bill.png")
 
-        msg = self.game.assets.get_text("bill_johto_intro")
-        self.game.story_manager.story_flags["met_bill_johto"] = True
+        story = self.game.story_manager
+        if (self.area_key == "GOLDENROD_CITY" and story.story_flags.get("met_bill_johto")
+                and not story.story_flags.get("got_bill_eevee")):
+            # HeartGold/SoulSilver: at home in Goldenrod, Bill gives you an Eevee.
+            story.story_flags["got_bill_eevee"] = True
+            msg = ["Bill: Hey, you made it to my place! I found this Eevee while I was in Ecruteak.",
+                   "It needs a trainer who'll help it evolve. Here, it's yours!",
+                   story_events.gift_pokemon(self.game, 133)]
+        else:
+            msg = self.game.assets.get_text("bill_johto_intro")
+            story.story_flags["met_bill_johto"] = True
         self.npc_dialogue = ClassicDialogueBox(Utils.get_full_dialogue_rect(self.game), msg, self.game.assets.fonts["med"], callback=self.end_npc_interaction)
 
     def visit_lance_johto(self):
@@ -4494,6 +4534,7 @@ class CityState(GameState):
         if pending:  # first visit to a region: its professor's partner Pokemon, before anything else
             from src.states.menus import StarterSelectionState
             cfg = self.game.story_manager.get_region_start(pending)
+            self.game.story_manager.sync_rival()  # this region's rival in the intro text
             self.game.change_state(StarterSelectionState(self.game, starter_ids=cfg.get("starters"), region=pending))
             return
         self.clear_hover_menu()
@@ -4589,6 +4630,13 @@ class CityState(GameState):
         else:
             lines = ["Mom: Still thinking about moving?",
                      "Mom: There's plenty of championship money left for a new house. Where to?"]
+
+        from src.states.menus import RegionSelectionState
+        if not RegionSelectionState.new_regions(self.game.story_manager):
+            # every region played: nowhere new to move
+            self.show_message((lines[:2] if phone else []) + ["Mom: You've been Champion all over the world! I'm so proud of you.",
+                                           "Mom: There's nowhere new left to move. Enjoy being a Champion!"])
+            return
 
         def open_picker():
             from src.states.menus import RegionSelectionState

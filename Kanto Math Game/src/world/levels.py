@@ -95,7 +95,12 @@ def wild_level(game, area_key):
 
 
 def trainer_level(game, area_key, boss=False):
-    return area_level(game, area_key) + (4 if boss else random.randint(1, 3))
+    """Route trainers sit a little above the area; on the first routes (a fresh Lv 5 starter)
+    only by 0-1, so Youngster Joey's Rattata isn't a wall."""
+    base = area_level(game, area_key)
+    if boss:
+        return base + 4
+    return base + (random.randint(0, 1) if base < 8 else random.randint(1, 3))
 
 
 def legendary_level(pid):
@@ -148,7 +153,7 @@ def story_level_cap(story):
     badges = len(story.badges.get(region, []))
     aces = gym_aces(region)
     if badges < len(aces):
-        return aces[badges]
+        return max(aces[:badges + 1])  # never lower than an earlier Gym's (Pryce's ace is below Jasmine's)
     return CHAMPION_ACE.get(region, 60)
 
 

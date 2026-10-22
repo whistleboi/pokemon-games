@@ -1262,11 +1262,12 @@
         { "text": "Victory Road", "target_area": "VICTORY_ROAD", "condition": "has_8_kanto_badges"},
         { "text": "Route 26", "target_area": "KANTO_ROUTE_26", "condition": {"any": ["beat_elite_four", "has_8_johto_badges"]} },
         { "text": "Johto League", "target_area": "MT_SILVER_CITY", "condition": "has_8_johto_badges" },
-        { "text": "Mt. Silver", "target_area": "MT_SILVER", "condition": ["beat_johto_champion", "has_8_kanto_badges"] }
+        { "text": "Mt. Silver", "target_area": "MT_SILVER", "condition": ["beat_johto_champion", "has_8_johto_badges"] }
       ],
       "explore_options": [],
       "trainer_pool": [],
-      "on_enter_event": null
+      "on_enter_event": null,
+        "border": true
     },
 
     "INDIGO_PLATEAU": {
@@ -2253,7 +2254,8 @@
         { "text": "ROUTE 27", "action": "EXIT", "target": "KANTO_ROUTE_27", "condition": ["can_exit"],  "color": "RED" }
       ],
       "next_area": "KANTO_ROUTE_27",
-      "on_enter_event": null
+      "on_enter_event": null,
+        "region": "JOHTO"
     },
 
     "KANTO_ROUTE_27": {
@@ -2283,7 +2285,8 @@
         { "text": "NEW BARK TOWN", "action": "EXIT", "target": "NEW_BARK_TOWN", "condition": ["can_exit"],  "color": "RED" }
       ],
       "next_area": "NEW_BARK_TOWN",
-      "on_enter_event": null
+      "on_enter_event": null,
+        "region": "JOHTO"
     },
 
     "MT_MOON": {

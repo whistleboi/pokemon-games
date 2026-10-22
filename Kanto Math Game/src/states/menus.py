@@ -247,8 +247,7 @@ class RegionSelectionState(GameState):
         # Travel-only regions (the Orange Islands) are reached by ship, never a new game or a move.
         starts = [(r, cfg) for r, cfg in story.get_region_starts() if not cfg.get("travel_only")]
         if mode == "move":
-            here = story.get_current_region()
-            starts = [(r, cfg) for r, cfg in starts if r != here]
+            starts = self.new_regions(story)
         self.regions = [r for r, _ in starts] or ["KANTO"]
         self.subtitles = {r: cfg.get("subtitle", "") for r, cfg in starts}
         if mode == "move":
@@ -275,6 +274,14 @@ class RegionSelectionState(GameState):
                         top + (i // self.COLS) * (card_h + gap), card_w, card_h)
             for i in range(len(self.regions))
         ]
+
+    @staticmethod
+    def new_regions(story):
+        """Where Mom can move: only regions not played yet. The goal is to work through all nine
+        without repeating one (the regions you've finished keep their own save of your progress)."""
+        visited = story.visited_regions()
+        return [(r, cfg) for r, cfg in story.get_region_starts()
+                if not cfg.get("travel_only") and r not in visited]
 
     def handle_events(self, events):
         n = len(self.regions)
@@ -637,11 +644,23 @@ class StarterSelectionState(GameState):
             Pokemon(p, self.game.assets, size_mult=2)
             for p in self.starters_raw
         ]
-        lines = []
+        lines = self._fresh_start_lines()
         for key in ("newgame_text", "intro_text"):
             lines += self._region_lines(key)
         lines.append(self.game.assets.get_text("choose_partner"))
         self.dialogue_box.reset(lines)
+
+    PROFESSORS = {"KANTO": "Professor Oak", "JOHTO": "Professor Elm"}
+
+    def _fresh_start_lines(self):
+        """A new region after another one: the old team waits at home, the challenge starts over."""
+        story = self.game.story_manager
+        came = story.story_flags.pop("came_from_region", None)
+        if not came or came.upper() == self.region:
+            return []
+        prof = self.region_cfg.get("professor") or self.PROFESSORS.get(self.region, "Professor")
+        return [f"{prof}: Welcome to {self.region.title()}! Your Pokemon from {came.title()} are safe at home in its PC.",
+                f"{prof}: Your challenge starts over here, with a new partner. Let's pick one!"]
 
     def _region_lines(self, cfg_key):
         """Region text from REGION_START, with player/rival names filled in."""

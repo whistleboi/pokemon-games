@@ -52,23 +52,11 @@ class TrainerBattleState(GameState):
 
         self.player_pokemon = self.game.story_manager.player_team[0] if self.game.story_manager.player_team else None
 
-        # Pokemon caught in another region sit out (they go to a free PC slot). A Pokemon is
-        # never deleted, and the party is never emptied: if nobody from this region is in the
-        # party, or the PC has no room, they stay.
+        # Regions keep their own party, PC and Bag (StoryManager regional storage), so the party
+        # is used as it is: no boxing Pokemon from another region at the start of a battle.
         story = self.game.story_manager
-        current_region = story.get_current_region()
         story.story_flags.pop("forced_white_out", None)  # old saves stored this; it bricked battles
         team = [p for p in story.player_team if p is not None]
-        home = [p for p in team if p.caught_region is None or p.caught_region == current_region]
-        if home:
-            kept = []
-            for p in team:
-                if p in home or None not in story.pc_pokemon:
-                    kept.append(p)
-                else:
-                    story.deposit_to_pc(p)
-                    print(f"Moved {p.display_name} (from {p.caught_region}) to PC.")
-            team = kept
         story.player_team = team
         # The lead is the first Pokemon that can still fight. If none can, the battle ends at once
         # in a whiteout (set up below, once the dialogue box exists).
@@ -1388,21 +1376,28 @@ class TrainerBattleState(GameState):
             pos = self.opponent_pokemon.image.get_rect(center=target_pos)
             self.faint_anim.start(self.opponent_pokemon.image, pos.topleft)
         elif self.fainting_side == "player":
-            if self.player_pokemon and self.player_pokemon.back_image:
-                p_img = self.player_pokemon.back_image
-                target_p_pos = (self.game.width * 0.27, self.game.height * 0.69)
-                player_pos = p_img.get_rect(center=target_p_pos)
-                self.faint_anim.start(p_img, player_pos.topleft)
+            # Always run the animation (its end moves the battle on): 60 Gen 6-9 species have no
+            # back sprite, and skipping it froze the battle for good (Nemona's first battle).
+            mon = self.player_pokemon
+            p_img = getattr(mon, "back_image", None)
+            if p_img is None and getattr(mon, "image", None) is not None:
+                p_img = pygame.transform.flip(mon.image, True, False)
+            if p_img is None:
+                p_img = pygame.Surface((1, 1), pygame.SRCALPHA)
+            target_p_pos = (self.game.width * 0.27, self.game.height * 0.69)
+            player_pos = p_img.get_rect(center=target_p_pos)
+            self.faint_anim.start(p_img, player_pos.topleft)
+
+    # Prize money as in the games: the opponent's highest level x a rate for its class. (A flat
+    # 25,000 per Elite Four win let a lost League run be farmed for 200k+.)
+    PRIZE_RATE = {"CHAMPION": 200, "ELITE_FOUR": 100, "GYM_LEADER": 100}
 
     def _calc_money_reward(self):
-        total = sum(len(b) for b in self.game.story_manager.badges.values())
-        if self.trainer_class == "CHAMPION":
-            return 50000
-        if self.trainer_class == "ELITE_FOUR":
-            return 25000 + total * 500
-        if self.trainer_class == "GYM_LEADER":
-            return 5000 + total * 1000
-        return 1000
+        rate = self.PRIZE_RATE.get(self.trainer_class)
+        if rate is None:
+            return 1000
+        top = max((p.level for p in self.opponent_team if p), default=10)
+        return rate * top
 
     def _calc_candy_reward(self):
         total = sum(len(b) for b in self.game.story_manager.badges.values())
@@ -1510,17 +1505,22 @@ class TrainerBattleState(GameState):
             else:
                 self.game.story_manager.add_item(item, qty)
 
-        if self.victory_flag == "beat_champion" and self.player_won:
-            prog_key = f"gym_progress_{self.game.story_manager.current_area_key}"
-            self.game.story_manager.story_flags[prog_key] = 0  # next visit: Title Defense from match 1
-            self.game.story_manager.story_flags["beat_elite_four"] = True
+        vf = str(self.victory_flag or "")
+        if self.player_won and (vf == "beat_champion" or (vf.startswith("beat_") and vf.endswith("_champion"))):
+            # Any region's title: home to celebrate, where the post-title story runs (Mom's call,
+            # linked PCs, the road to the next region). The lobby would already be in rematch mode.
+            story = self.game.story_manager
+            story.story_flags[f"gym_progress_{story.current_area_key}"] = 0  # next visit: rematch from match 1
+            if vf == "beat_champion":
+                story.story_flags["beat_elite_four"] = True
+            home = story.get_region_start(story.get_current_region()).get("start_area") or "PALLET_TOWN"
             try:  # persist the title right away (Mom's call, exit dialogue, region select read it)
                 self.game.update_save_data()
                 self.game.data.save()
             except Exception as e:  # never block the victory screen on a save error
                 print("Champion save failed:", e)
             from src.states.overworld import AreaTransitionState
-            self.game.change_state(AreaTransitionState(self.game, "PALLET_TOWN", initial_message="You returned home to share your victory!"))
+            self.game.change_state(AreaTransitionState(self.game, home, initial_message="You returned home to share your victory!"))
             return
 
         if self.battle_type == "gym":
@@ -1543,7 +1543,7 @@ class TrainerBattleState(GameState):
         if self.trainer_class == "RIVAL" and self.game.story_manager.current_area_key == "PALLET_TOWN":
             outcome = self.game.story_manager.get_victory_outcome(battle_type="rival")
             play_state_data = getattr(self, 'play_state_data', {})
-            play_state_data['balls_left'] = play_state_data.get('balls_left', 0) + reward_balls + outcome.get("rewards", {}).get("balls", 5)
+            self.game.story_manager.balls_left += reward_balls + outcome.get("rewards", {}).get("balls", 5)
             from src.states.overworld import PlayState, AreaTransitionState
             self.game.states["play"] = PlayState(self.game, restore_data=play_state_data)
 
@@ -1559,7 +1559,7 @@ class TrainerBattleState(GameState):
             return
 
         play_state_data = getattr(self, 'play_state_data', {}).copy()
-        play_state_data['balls_left'] = play_state_data.get('balls_left', 0) + reward_balls
+        self.game.story_manager.balls_left += reward_balls  # the one ball count (see PlayState)
 
         area_key = self.game.story_manager.current_area_key
 
@@ -1994,9 +1994,12 @@ class WildBattleState(TrainerBattleState):
             return
 
         self.game.music.victory()
-        if self.victory_flag and not balance.is_legendary(self.opponent_pokemon.id):
-            # A beaten roadblock boss (Snorlax) is gone whether or not you catch it. Legendaries
-            # still count only when caught, so they can be tried again.
+        form = (self.game.loader.area_data.get("FORM_MAP", {}).get(str(self.opponent_pokemon.id)) or {}).get("form")
+        catch_only = balance.is_legendary(self.opponent_pokemon.id) or form in ("crystal", "shadow")
+        if self.victory_flag and not catch_only:
+            # A beaten roadblock boss (Snorlax) is gone whether or not you catch it. Legendaries,
+            # the Crystal Onix and Orre's Shadow Pokemon count only when caught, so they can be
+            # tried again instead of being lost for good.
             self.game.story_manager.story_flags[self.victory_flag] = True
 
         if getattr(self, "no_catch", False):
@@ -2051,8 +2054,10 @@ class WildBattleState(TrainerBattleState):
 
             self.btn_yes.set_visibility(True)
             self.btn_no.set_visibility(True)
-        else:
-            self.game.change_state(self.game.states["play"])
+        else:  # no balls: say so (a legendary can be found again) instead of silently leaving
+            self.show_message([f"You have no Poke Balls left!",
+                               f"{self.opponent_pokemon.display_name.upper()} got away..."],
+                              callback=self.on_flee_complete)
 
     def _raid_catch_to_party_pokemon(self, boss):
         """A caught raid boss joins as a normal-size, normal-form Pokemon; G-Max bosses keep the G-Max Factor."""

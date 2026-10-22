@@ -116,6 +116,10 @@ class StoryManager:
         """Called when travelling to an area. Crossing into another region's storage switches the
         party, PC and bag. The first trip into a region without its starter goes to its professor.
         Returns (area to go to, lines to show)."""
+        target_data = self.game.loader.area_data.get("STORY_PROGRESSION", {}).get(area_key, {})
+        if target_data.get("border"):  # a border keeps the party and region you arrive with
+            self.story_flags["border_region"] = self.get_current_region()
+            return area_key, []
         region = self.area_region(area_key)
         key = self.store_key(region)
         if key == self.active_store:
@@ -135,6 +139,7 @@ class StoryManager:
                      f"The professor in {town} has a new partner waiting for you."]
             area_key = start
             self.story_flags["pending_starter"] = region
+            self.story_flags["came_from_region"] = self.get_current_region()
         return area_key, lines
 
     def pending_starter(self):
@@ -459,7 +464,8 @@ class StoryManager:
             search_key = "201_a" if f_lower == "normal" else f"201_{f_lower}"
             return str(search_key) in self.catch_counts
 
-        return pid_str in self.game.data.data.get("pokedex", {})
+        dex = self.game.data.data.get("pokedex", {})  # keys are "id-form": compare the ids
+        return any(isinstance(v, dict) and str(v.get("id")) == pid_str for v in dex.values())
 
     @staticmethod
     def champion_flag(region):
@@ -570,12 +576,14 @@ class StoryManager:
         from src.states.menus import StarterSelectionState
         src = self.get_current_region()
         cfg = self.get_region_start(region)
+        self.story_flags["came_from_region"] = src  # the professor mentions it at the starter screen
         self.use_region_store(region)  # the new home region's own party, PC and Bag
         self.enter_region(region)
         self.assign_region_rival(region)  # a new rival for the new region (never a repeat)
         self.active_badge_region = region
         self.story_flags[f"moved_to_{region.lower()}"] = True
         self.current_area_key = cfg.get("start_area", self.current_area_key)
+        self.sync_rival()  # the new region's rival now, so its intro names the right one
         if not self.story_flags.get(f"received_starter_{region.lower()}"):
             return StarterSelectionState(self.game, starter_ids=cfg.get("starters"), region=region)
         text = self.game.assets.game_text
@@ -668,6 +676,8 @@ class StoryManager:
         Future-proofed by checking area data first, then prefix.
         """
         area_data = self.get_current_area_data()
+        if area_data.get("border"):  # the League Reception Gate: still the region you came from
+            return str(self.story_flags.get("border_region") or area_data.get("region") or "KANTO").upper()
         if area_data.get("region"):
             return str(area_data["region"]).upper()
 

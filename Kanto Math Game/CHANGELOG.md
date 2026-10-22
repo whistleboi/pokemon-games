@@ -1,5 +1,62 @@
 # Changelog
 
+## Unreleased: no repeated regions, local rivals, Mew's count
+
+- **No repeating regions.** The goal is to work through all nine regions once. After a title, Mom's move picker now offers only regions you haven't played.
+  - Kanto and Johto still connect by ship, train and road.
+  - When every region has been played, Mom says there's nowhere new to move.
+- **Sub-region rivals are their own characters.** None of the sub-regions borrow a region's rival. Kitakami's Carmine and Kieran are now ordinary local trainers, so nothing treats them as Paldea's rival.
+- **Mew's hint counts Kanto Pokémon only.** On Faraway Island the hint now shows your progress, e.g. "Your Pokédex: 100 of the 150 Kanto Pokémon. 50 still to catch!". It counts species #1–150 only, so Pokémon from other regions don't help.
+
+## Unreleased: fixes from Grok's handoff (sub-regions and travel)
+
+- **Battle freeze fixed (Paldea and more).**
+  - 60 Gen 6–9 species (the Paldea starters, Ogerpon and others) had no back sprite. When one fainted on your side, the faint animation never started and the battle froze. The animation now always runs.
+  - All 60 now have their real back and shiny back sprites from PokeAPI.
+- **Catching a story boss uses up the ball.** It used to be refunded (fixed with the single ball count).
+  - The Crystal Onix and Orre's Shadow Pokémon now work like legendaries: beating one without catching it leaves it there to try again, instead of losing it for good.
+- **Ho-Oh is reachable.** Sage Li checked the Pokédex in a way that could never match, so the Rainbow Wing was never given.
+  - The same mistake hid the Poké Ball icon on wild Pokémon you'd already caught, and let the Unown researcher hand out Nown repeatedly.
+- **Red and Mt. Silver open after the Johto title.** They no longer need 8 Kanto badges.
+- **New region, fresh start, explained.** When you start another region, its professor says your old Pokémon are safe at home in that region's PC and your challenge starts over.
+  - Johto now has a Professor Elm introduction on the starter screen.
+- **The right rival in each intro.** Moving to a new region could name the previous region's rival ("Your neighbor BLUE...").
+- **Sinnoh:** Rowan's "Choose wisely: Turtwig, Chimchar or Piplup" now comes before you choose.
+- **No Poké Balls after beating a legendary:** it now says so and that the Pokémon got away, instead of the battle just ending.
+- **Bill gives his Eevee** in Goldenrod after you meet him in Ecruteak, as in HeartGold/SoulSilver.
+- **Shamouti treasures can't be lost.** If you calmed a bird but don't have its treasure, you can search that island's shrine again until the song is played.
+
+## Unreleased: fixes from Grok's Johto playthrough
+
+- **Crash at the Red Gyarados fixed.** The shiny boss asked for its back sprite in an unsupported way, which stopped the story at 6 badges. Shiny bosses now load their shiny art through the normal loader.
+- **The team no longer gets boxed on the way to the League.**
+  - A leftover rule sent Pokémon caught in another region to the PC at the start of every battle. Routes 26 and 27 counted as Kanto, so a Johto team lost everyone but its starter right before Silver's 6-Pokémon fight.
+  - The rule is gone; regional storage now does that job properly.
+  - Routes 26 and 27 are Johto routes again.
+  - The League Reception Gate is a border that keeps the region you arrive with.
+- **No more softlocks:**
+  - **Radio Tower:** clearing it over two visits left no exit. Any area with no wild battles on its menu and no trainers left now lets you leave.
+  - **Silver League Plateau:** now has exits back to Mt. Silver City and the Reception Gate.
+  - **No Poké Balls:** the catch screen no longer opens. It says "You have no Poké Balls left!" and goes back to the menu.
+- **Poké Balls you buy stay bought.** Each route kept its own copy of your ball count, and an old copy coming back (a revisited route, an event battle from town) erased the balls you'd bought. There's now one ball count for the whole game.
+- **League prize money uses the games' formula:** the opponent's top level × 100, or × 200 for the Champion. A flat 25,000 per Elite Four win, doubled by the Amulet Coin, let a lost League run be farmed for 200k+.
+- **Roaming Raikou and Entei:**
+  - They now suit the route (Lv 40 at most, as in HeartGold/SoulSilver) instead of a Lv 50 that knocked out a team at 4 badges in one hit.
+  - Beating one and choosing YES now catches it. The battle was catching into an older route screen.
+  - They show up a little more often (10% per route entry). This also makes Ho-Oh reachable, since it needs all three beasts.
+- **Johto levels:**
+  - Union Cave and Slowpoke Well are now Lv 13 and 15; they're required before Bugsy.
+  - Mt. Mortar, the Whirl Islands, Route 44, the Ice Path, Route 45 and the Dragon's Den now rise in steps toward the late Gyms.
+  - The road to the League after the 8th badge is the training ground: Route 27 Lv 45, Tohjo Falls 48, Route 26 50. Before, there was nowhere to earn XP between Lv 58 and the Lv 63 Champion.
+  - The level cap never goes down: Pryce's ace is lower than Jasmine's, so the cap now keeps the highest ace so far.
+  - First-route trainers sit only 0–1 levels above the area, so Youngster Joey's Rattata isn't a wall for a fresh starter.
+- **Johto details:**
+  - The League's journal missions now check the Johto title.
+  - A man in Goldenrod gives a Coin Case, so a Johto-first game can use the Game Corner.
+  - Morty's Gym note hints that you can battle your rival again at the Burned Tower.
+  - Fixed the "MAHOGNAY TOWN" typo at the Lake of Rage.
+- **After any region's title, you go home** to celebrate, where Mom's call and the next-region story run. Before, every region except Kanto went back to the League lobby, which was already in rematch mode (Grok saw a rematch Will).
+
 ## Unreleased: separate regional PCs, Bags and Pokédexes
 
 - **Each region has its own party, PC and Bag.**
@@ -48,7 +105,7 @@ The DLC areas existed but had some things wrong. Fixed:
   - The Desert Trail is a motorbike ride.
 - **Cipher and Shadow Pokémon:**
   - **Phenac City:** stop the Cipher Peons at the fountain. Rui then gives you the **Snag Machine**.
-  - **Snagging:** Cipher trainers send out 12 Shadow Pokémon (dark, purple-tinged art) across Orre: Makuhita, Teddiursa, Houndour, the Johto starters' middle forms, Ledian, Hitmontop, Ursaring, Skarmory, Snorlax and Tyranitar. Weaken one and throw a ball to snag it. If it faints, it runs off.
+  - **Snagging:** Cipher trainers send out 12 Shadow Pokémon (dark, purple-tinged art) across Orre: Makuhita, Teddiursa, Houndour, the Johto starters' middle forms, Ledian, Hitmontop, Ursaring, Skarmory, Snorlax and Tyranitar. Weaken one and throw a ball to snag it. If it faints, you can find it again and try another snag.
   - **Agate Village:** the **Relic Stone** opens their hearts. Every Shadow Pokémon in your party and PC becomes the normal species, keeping its level, IVs, moves and shininess, and gains friendship.
   - **Pyrite Town:** the Colosseum, with Miror B. and his Ludicolo, and Cipher's hideout in **The Under**, run by Admin Venus.
   - **Realgam Tower:** Admins Dakim and Ein, then Cipher Head Evice. After that, the last Shadow Pokémon wait in the Command Center.

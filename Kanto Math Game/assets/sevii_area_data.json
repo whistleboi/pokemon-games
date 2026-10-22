@@ -2246,8 +2246,8 @@
           "event": {
             "lines": [
               "Tall grass sways on the uncharted island. Something pink giggles and darts away...",
-              "It only shows itself to a trainer who has met every Kanto Pokemon.",
-              "(Catch all 150 other Kanto Pokemon, then come back.)"
+              "It only shows itself to a trainer who has caught all 150 other Kanto Pokemon.",
+              "Your Pokedex: {kanto_caught} of the 150 Kanto Pokemon. {kanto_missing} still to catch!"
             ]
           },
           "condition": "not:caught_range:1-150"
