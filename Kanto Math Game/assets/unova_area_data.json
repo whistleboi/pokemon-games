@@ -843,7 +843,7 @@
           "name": "Drayden",
           "class": "GYM_LEADER",
           "sprite": "drayden.png",
-          "team": [611, 611, 612], "levels": [41, 41, 43],
+          "team": [611, 621, 612], "levels": [41, 41, 43],
           "dialogue": {
             "intro": [
               "Drayden: Welcome. I am Drayden, the Opelucid Gym Leader.",
@@ -885,7 +885,7 @@
             "name": "Shauntal",
             "class": "ELITE_FOUR",
             "sprite": "shauntal.png",
-            "team": [563, 592, 623, 609], "levels": [48, 48, 48, 50], "rematch": {"levels": [71, 71, 71, 73]},
+            "team": [563, 593, 623, 609], "levels": [57, 57, 57, 59], "rematch": {"team": [563, 593, 478, 426, 623, 609], "levels": [71, 71, 71, 71, 71, 73]},
             "dialogue": {
               "intro": [
                 "Shauntal: Oh! A challenger! I'm writing a novel about powerful trainers.",
@@ -902,7 +902,7 @@
             "name": "Marshal",
             "class": "ELITE_FOUR",
             "sprite": "marshal.png",
-            "team": [538, 539, 534, 620], "levels": [48, 48, 48, 50], "rematch": {"levels": [71, 71, 73, 71]},
+            "team": [538, 539, 534, 620], "levels": [57, 57, 57, 59], "rematch": {"team": [286, 538, 539, 454, 620, 534], "levels": [71, 71, 71, 71, 71, 73]},
             "dialogue": {
               "intro": ["Marshal: The strength of body and mind — that is Fighting-type mastery.", "Show me what you're made of!"],
               "player_won": ["Marshal: You have both strength and focus. I acknowledge you!"],
@@ -915,7 +915,7 @@
             "name": "Grimsley",
             "class": "ELITE_FOUR",
             "sprite": "grimsley.png",
-            "team": [560, 510, 625, 553], "levels": [48, 48, 50, 48], "rematch": {"levels": [71, 71, 73, 71]},
+            "team": [560, 510, 553, 625], "levels": [57, 57, 57, 59], "rematch": {"team": [319, 510, 560, 452, 553, 625], "levels": [71, 71, 71, 71, 71, 73]},
             "dialogue": {
               "intro": [
                 "Grimsley: Winning and losing are two sides of the same coin.",
@@ -931,7 +931,7 @@
             "name": "Caitlin",
             "class": "ELITE_FOUR",
             "sprite": "caitlin.png",
-            "team": [518, 576, 579, 561], "levels": [48, 50, 48, 48], "rematch": {"levels": [71, 71, 71, 71]},
+            "team": [579, 518, 561, 576], "levels": [57, 57, 57, 59], "rematch": {"team": [518, 561, 437, 579, 576, 376], "levels": [71, 71, 71, 71, 71, 73]},
             "dialogue": {
               "intro": [
                 "Caitlin: I've been waiting... for a trainer worthy of a proper challenge.",
@@ -949,7 +949,7 @@
           "name": "Alder",
           "class": "CHAMPION",
           "sprite": "alder.png",
-          "team": [617, 626, 621, 589, 606, 637], "levels": [52, 52, 52, 52, 52, 54], "rematch": {"levels": [75, 75, 75, 75, 75, 77]},
+          "team": [617, 626, 621, 584, 589, 637], "levels": [61, 61, 61, 61, 61, 63], "rematch": {"team": [617, 626, 621, 584, 589, 637], "levels": [75, 75, 75, 75, 75, 77]},
           "dialogue": {
             "intro": [
               "Alder: So. You've come.",

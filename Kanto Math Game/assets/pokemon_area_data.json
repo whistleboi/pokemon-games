@@ -562,7 +562,7 @@
           "name": "Giovanni",
           "class": "GYM_LEADER", "is_boss_battle": true,
           "sprite": "leader_giovanni.png",
-          "team": [31, 34, 51, 53, 112], "levels": [44, 45, 42, 45, 50],
+          "team": [111, 51, 31, 34, 111], "levels": [45, 42, 44, 45, 50],
           "badge_reward": "EARTH",
           "dialogue": {
             "intro": ["This is the last time you meddle with Team Rocket!"],
@@ -842,7 +842,7 @@
           "name": "Lt. Surge",
           "class": "GYM_LEADER", "is_boss_battle": true,
           "sprite": "surge.png",
-          "team": [100, 26, 25], "levels": [21, 24, 18],
+          "team": [100, 25, 26], "levels": [21, 18, 24],
           "badge_reward": "THUNDER",
           "dialogue": { 
             "intro": ["Welcome to my Gym! Let's see if you can handle the shock!"],
@@ -1037,7 +1037,7 @@
           "name": "Sabrina",
           "class": "GYM_LEADER", "is_boss_battle": true,
           "sprite": "sabrina.png",
-          "team": [122, 93, 94], "levels": [37, 38, 43],
+          "team": [64, 122, 49, 65], "levels": [38, 37, 38, 43],
           "badge_reward": "MARSH",
           "dialogue": { 
             "intro": ["Welcome to my Gym! Let's see if you can handle the psychic power!"],
@@ -1151,7 +1151,7 @@
           "name": "Koga",
           "class": "GYM_LEADER", "is_boss_battle": true,
           "sprite": "koga.png",
-          "team": [109, 110, 111], "levels": [37, 43, 39],
+          "team": [109, 109, 89, 110], "levels": [37, 37, 39, 43],
           "badge_reward": "SOUL",
           "dialogue": { 
             "intro": ["Welcome to my Gym! Let's see if you can handle the poison!"],
@@ -1303,7 +1303,7 @@
         { "sprite": "lance.png",
           "name": "Lance",
           "class": "ELITE_FOUR", "is_boss_battle": true,
-          "team": [130, 149, 6, 142, 149], "levels": [56, 54, 54, 58, 60],
+          "team": [130, 148, 148, 142, 149], "levels": [56, 54, 54, 58, 60],
           "rewards": { "balls": 15 },
           "victory_flag": "beat_elite_four"
         }

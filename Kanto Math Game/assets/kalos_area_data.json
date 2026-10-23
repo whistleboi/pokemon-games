@@ -453,7 +453,7 @@
           "name": "Ramos",
           "class": "GYM_LEADER",
           "sprite": "ramos.png",
-          "team": [70, 673, 189], "levels": [31, 34, 30],
+          "team": [189, 70, 673], "levels": [30, 31, 34],
           "dialogue": {
             "intro": ["Ramos: Yer roots run deep, do they? Let's see if they're deep enough for my Pokémon!"],
             "player_won": ["Ramos: Well, I'll be! You've grown into quite the trainer! Take the Plant Badge!"],
@@ -489,7 +489,7 @@
           "name": "Valerie",
           "class": "GYM_LEADER",
           "sprite": "valerie.png",
-          "team": [303, 122, 700], "levels": [38, 39, 42],
+          "team": [122, 303, 700], "levels": [39, 38, 42],
           "dialogue": {
             "intro": [
               "Valerie: Oh my... a visitor from another world? No — from another time, perhaps?",
@@ -625,7 +625,7 @@
           "name": "Wulfric",
           "class": "GYM_LEADER",
           "sprite": "wulfric.png",
-          "team": [460, 615, 713], "levels": [56, 55, 59],
+          "team": [460, 713, 615], "levels": [56, 59, 55],
           "dialogue": {
             "intro": [
               "Wulfric: Brrr-illiant! You made it! The cold has a way of weeding out the weak!",
@@ -680,7 +680,7 @@
             "class": "ELITE_FOUR",
             "sprite": "malva.png",
             "is_boss_battle": true,
-            "team": [668, 324, 609, 663], "levels": [63, 63, 63, 65],
+            "team": [668, 663, 324, 609], "levels": [63, 65, 63, 63],
             "rewards": { "balls": 10 },
             "dialogue": {
               "intro": ["Malva: I had hoped never to see a challenger make it this far.", "My flames will reduce your hopes to ash. Come."],
@@ -693,7 +693,7 @@
             "class": "ELITE_FOUR",
             "sprite": "siebold.png",
             "is_boss_battle": true,
-            "team": [693, 130, 689, 9], "levels": [63, 63, 65, 63],
+            "team": [693, 121, 130, 689], "levels": [63, 63, 63, 65],
             "rewards": { "balls": 10 },
             "dialogue": {
               "intro": [
@@ -722,7 +722,7 @@
             "class": "ELITE_FOUR",
             "sprite": "drasna.png",
             "is_boss_battle": true,
-            "team": [691, 621, 334, 715], "levels": [63, 63, 63, 65],
+            "team": [691, 334, 715, 621], "levels": [63, 63, 65, 63],
             "rewards": { "balls": 10 },
             "dialogue": {
               "intro": ["Drasna: Oh my, you've come so far! How delightful! My Dragons love a good challenge!"],
@@ -736,7 +736,7 @@
           "class": "CHAMPION",
           "sprite": "diantha.png",
           "is_boss_battle": true,
-          "team": [701, 697, 699, 711, 706, 282], "levels": [64, 65, 65, 65, 66, 68],
+          "team": [701, 699, 697, 706, 711, 282], "levels": [64, 65, 65, 66, 65, 68],
           "rewards": { "balls": 20, "KALOS_HALL_OF_FAME": 1 },
           "victory_flag": "beat_kalos_champion",
           "dialogue": {

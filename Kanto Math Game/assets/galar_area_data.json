@@ -203,7 +203,7 @@
           "name": "Milo",
           "class": "GYM_LEADER",
           "sprite": "milo.png",
-          "team": [840, 841], "levels": [19, 20],
+          "team": [829, 830], "levels": [19, 20],
           "dialogue": {
             "intro": ["Milo: If you lose, I think that would be quite all right, actually. Don't worry about it!"],
             "player_won": ["Milo: Oh, that was a nice battle! Here's the Grass Badge and TM Razor Leaf!"],
@@ -238,7 +238,7 @@
           "name": "Nessa",
           "class": "GYM_LEADER",
           "sprite": "nessa.png",
-          "team": [846, 847, 880], "levels": [23, 22, 24],
+          "team": [118, 846, 834], "levels": [22, 23, 24],
           "dialogue": {
             "intro": ["Nessa: Once I set my sights on defeating you, nothing can stop me! Prepare yourself!"],
             "player_won": ["Nessa: A powerful wave swept over me. Here is the Water Badge!"],
@@ -273,7 +273,7 @@
           "name": "Kabu",
           "class": "GYM_LEADER",
           "sprite": "kabu.png",
-          "team": [838, 839, 851], "levels": [25, 25, 27],
+          "team": [38, 59, 851], "levels": [25, 25, 27],
           "dialogue": {
             "intro": ["Kabu: If you cannot pass through my flames, you will not be going any further!"],
             "player_won": ["Kabu: Well done. The passion in your eyes — it sets you apart. Here is the Fire Badge."],
@@ -310,7 +310,7 @@
           "name": "Bea (Fighting) / Allister (Ghost)",
           "class": "GYM_LEADER",
           "sprite": "bea_fighting_allister_ghost.png",
-          "team": [870, 870, 865], "levels": [34, 36, 35],
+          "team": [237, 675, 865, 68], "levels": [34, 34, 35, 36],
           "dialogue": {
             "intro": ["Bea: I've been waiting for this. Battle me with everything you've got!"],
             "player_won": ["Bea: A worthy challenge! You've earned the Fighting Badge!"],
@@ -347,7 +347,7 @@
           "name": "Opal",
           "class": "GYM_LEADER",
           "sprite": "opal.png",
-          "team": [869, 858, 859, 282], "levels": [38, 36, 36, 37],
+          "team": [110, 303, 468, 869], "levels": [36, 36, 37, 38],
           "dialogue": {
             "intro": ["Opal: Old age hasn't slowed me down one bit. Now, what color do I have in mind? Answer correctly and I'll go easy on you!"],
             "player_won": ["Opal: Pink! And you answered well. The Fairy Badge is yours!"],
@@ -382,7 +382,7 @@
           "name": "Gordie (Rock) / Melony (Ice)",
           "class": "GYM_LEADER",
           "sprite": "gordie_rock_melony_ice.png",
-          "team": [874, 874, 880], "levels": [40, 41, 42],
+          "team": [689, 213, 874, 839], "levels": [40, 40, 41, 42],
           "dialogue": {
             "intro": ["Gordie: Don't think Fairy-type charm will work in here. Rock is absolute!"],
             "player_won": [
@@ -421,7 +421,7 @@
           "name": "Piers",
           "class": "GYM_LEADER",
           "sprite": "piers.png",
-          "team": [877, 877, 863, 862], "levels": [44, 45, 45, 46],
+          "team": [560, 687, 435, 862], "levels": [44, 45, 45, 46],
           "dialogue": {
             "intro": ["Piers: Right. Let's not drag this out. I'll battle you, and I'll do it without any Dynamax. I never needed it."],
             "player_won": ["Piers: ...Good battle. Here's the Dark Badge. Don't go easy on Leon."],
@@ -457,7 +457,7 @@
           "name": "Raihan",
           "class": "GYM_LEADER",
           "sprite": "raihan.png",
-          "team": [844, 880, 882, 883], "levels": [46, 46, 47, 48],
+          "team": [526, 330, 844, 884], "levels": [46, 47, 46, 48],
           "dialogue": {
             "intro": ["Raihan: Alright! Let's settle this quick — my fans are watching! I'll be using Dynamax, so buckle up!"],
             "player_won": [
@@ -515,7 +515,7 @@
             "class": "RIVAL",
             "sprite": "marnie.png",
             "is_boss_battle": true,
-            "team": [877, 877, 862, 863, 869], "levels": [47, 48, 47, 47, 49],
+            "team": [510, 454, 560, 877, 861], "levels": [54, 54, 54, 55, 56],
             "rewards": { "balls": 10 },
             "dialogue": {
               "intro": ["Marnie: I'm giving this everything I've got. Don't hold back."],
@@ -528,12 +528,8 @@
             "class": "PKMN_TRAINER",
             "sprite": "hop.png",
             "is_boss_battle": true,
-            "team": [884, 845, 851, 865, 880, 812], "levels": [47, 47, 48, 48, 47, 49],
-            "team_choice": {
-              "810": [884, 845, 851, 865, 880, 815],
-              "813": [884, 845, 724, 865, 880, 812],
-              "816": [884, 845, 851, 865, 880, 818]
-            },
+            "team": [832, 823, 871, 143, 818], "levels": [55, 55, 54, 54, 56],
+            "team_choice": {"810": [832, 823, 871, 143, 818], "813": [832, 823, 871, 143, 812], "816": [832, 823, 871, 143, 815]},
             "rewards": { "balls": 15 },
             "victory_flag": "defeated_hop_wyndon",
             "dialogue": {
@@ -548,12 +544,8 @@
           "class": "CHAMPION",
           "sprite": "leon.png",
           "is_boss_battle": true,
-          "team": [879, 845, 851, 880, 884, 6], "levels": [62, 62, 63, 64, 64, 65],
-          "team_choice": {
-            "810": [879, 845, 727, 880, 884, 6],
-            "813": [879, 845, 851, 880, 884, 6],
-            "816": [879, 845, 730, 880, 884, 6]
-          },
+          "team": [681, 887, 612, 537, 815, 6], "levels": [62, 62, 63, 64, 64, 65],
+          "team_choice": {"810": [681, 887, 612, 537, 815, 6], "813": [681, 887, 612, 866, 818, 6], "816": [681, 887, 612, 464, 812, 6]},
           "rewards": { "balls": 20, "GALAR_HALL_OF_FAME": 1 },
           "victory_flag": "beat_galar_champion",
           "dialogue": {

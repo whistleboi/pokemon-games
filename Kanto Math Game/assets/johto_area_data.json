@@ -592,7 +592,7 @@
             ],
             "leader": {
             "name": "Clair", "class": "GYM_LEADER", "sprite": "clair.png",
-            "team": [130, 148, 148, 230], "levels": [38, 38, 38, 41], "badge_reward": "RISING", "rewards": { "balls": 5, "MT_SILVER_MAP": 1 }, "is_boss_battle": true,
+            "team": [148, 148, 130, 230], "levels": [38, 38, 38, 41], "badge_reward": "RISING", "rewards": { "balls": 5, "MT_SILVER_MAP": 1 }, "is_boss_battle": true,
             "dialogue": {
                 "intro": ["Welcome to the Blackthorn City Gym! I'm Clair, the Dragon-type Gym Leader."],
                 "player_won": ["You're a skilled trainer!"],
@@ -670,17 +670,17 @@
             "gym": {
                 "trainers": [
                     { "sprite": "will.png", "name": "Will", "class": "ELITE_FOUR",
-                    "team": [178, 124, 103, 80, 178], "levels": [40, 41, 41, 41, 42], "rematch": {"team": [437, 124, 326, 80, 282, 178], "levels": [58, 60, 59, 60, 61, 62]},"rewards": { "balls": 15 }, "is_boss_battle": true },
+                    "team": [178, 124, 103, 80, 178], "levels": [53, 54, 54, 54, 55], "rematch": {"team": [437, 124, 326, 80, 282, 178], "levels": [58, 60, 59, 60, 61, 62]},"rewards": { "balls": 15 }, "is_boss_battle": true },
                     { "sprite": "koga_johto.png", "name": "Koga", "class": "ELITE_FOUR",
-                    "team": [168, 49, 205, 89, 169], "levels": [40, 41, 43, 42, 44], "rematch": {"team": [435, 454, 317, 49, 89, 169], "levels": [61, 60, 62, 63, 62, 64]}, "rewards": { "balls": 15 }, "is_boss_battle": true },
+                    "team": [168, 49, 89, 205, 169], "levels": [53, 54, 55, 56, 57], "rematch": {"team": [435, 454, 317, 49, 89, 169], "levels": [61, 60, 62, 63, 62, 64]}, "rewards": { "balls": 15 }, "is_boss_battle": true },
                     { "sprite": "bruno.png", "name": "Bruno", "class": "ELITE_FOUR",
-                    "team": [237, 106, 107, 95, 68], "levels": [42, 42, 42, 43, 46], "rematch": {"team": [237, 106, 297, 68, 448, 107], "levels": [62, 61, 62, 64, 64, 61]}, "rewards": { "balls": 15 }, "is_boss_battle": true },
+                    "team": [237, 106, 107, 95, 68], "levels": [55, 55, 55, 56, 59], "rematch": {"team": [237, 106, 297, 68, 448, 107], "levels": [62, 61, 62, 64, 64, 61]}, "rewards": { "balls": 15 }, "is_boss_battle": true },
                     { "sprite": "karen.png", "name": "Karen", "class": "ELITE_FOUR",
-                    "team": [197, 45, 94, 198, 229], "levels": [42, 42, 45, 44, 47], "rematch": {"team": [461, 442, 430, 197, 229, 359], "levels": [62, 62, 64, 64, 63, 63]}, "rewards": { "balls": 15 }, "victory_flag": "beat_johto_elite_four", "is_boss_battle": true }
+                    "team": [197, 45, 198, 94, 229], "levels": [55, 55, 57, 58, 60], "rematch": {"team": [461, 442, 430, 197, 229, 359], "levels": [62, 62, 64, 64, 63, 63]}, "rewards": { "balls": 15 }, "victory_flag": "beat_johto_elite_four", "is_boss_battle": true }
                 ],
                 "leader": {
                     "sprite": "lance.png", "name": "Lance", "class": "CHAMPION",
-                    "team": [130, 149, 149, 142, 6, 149], "levels": [44, 49, 49, 48, 48, 50], "rematch": {"team": [373, 445, 149, 6, 334, 130], "levels": [72, 72, 75, 68, 73, 68]}, "is_boss_battle": true,
+                    "team": [130, 149, 149, 142, 6, 149], "levels": [57, 62, 62, 61, 61, 63], "rematch": {"team": [373, 445, 149, 6, 334, 130], "levels": [72, 72, 75, 68, 73, 68]}, "is_boss_battle": true,
                     "rewards": { "balls": 25, "MASTER_BALL": 1 },
                     "victory_flag": "beat_johto_champion"
                 }

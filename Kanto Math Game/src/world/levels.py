@@ -52,13 +52,18 @@ GYM_ACE = {
     # Kanto's Champion (63); his rematch (+10) is 69-73, close to Kanto's FRLG rematch (72-75).
     "ORANGE": [54, 56, 58, 60],
 }
-ELITE_FOUR = {"KANTO": (54, 60), "JOHTO": (42, 47), "HOENN": (49, 55), "SINNOH": (53, 59),
-              "UNOVA": (50, 50), "KALOS": (65, 65), "ALOLA": (55, 55), "GALAR": (49, 49),
+# Jordan (patch 11): Leagues well below the others are raised to the Kanto band (Champion ace 63),
+# every level shifted by the same amount so the canon spread is kept: Johto +13, Hoenn +5,
+# Unova +9 (Alder's first run too), Alola +5; Galar's League rivals Marnie and Hop +7 (Kanto's
+# Elite Four band). Nemona's League battle has its ace at the level cap (70). Gyms stay canon.
+LEAGUE_SHIFT = {"JOHTO": 13, "HOENN": 5, "UNOVA": 9, "ALOLA": 5}
+ELITE_FOUR = {"KANTO": (54, 60), "JOHTO": (55, 60), "HOENN": (54, 60), "SINNOH": (53, 59),
+              "UNOVA": (59, 59), "KALOS": (65, 65), "ALOLA": (60, 60), "GALAR": (56, 56),
               "PALDEA": (58, 61)}
 # Unova: in Black/White the Champion is only fought after the story (75-77, his rematch here);
-# the first run uses the story's final battle band (Ghetsis, 52-54).
-CHAMPION_ACE = {"KANTO": 63, "JOHTO": 50, "HOENN": 58, "SINNOH": 62, "UNOVA": 54, "KALOS": 68,
-                "ALOLA": 58, "GALAR": 65, "PALDEA": 62,
+# the first run uses the story's final battle band (Ghetsis, 52-54), raised +9 (patch 11) to 61-63.
+CHAMPION_ACE = {"KANTO": 63, "JOHTO": 63, "HOENN": 63, "SINNOH": 62, "UNOVA": 63, "KALOS": 68,
+                "ALOLA": 63, "GALAR": 65, "PALDEA": 62,
                 "ORANGE": 63}
 # Orange Islands post-game (Jordan, Q4): once Drake is beaten, the Orange Gyms scale to the Orange
 # Champion's post-game band: each Gym team is lifted so its ace is Drake's rematch ace (63 + 10).
@@ -189,8 +194,8 @@ def cap_mode(story):
 # (LEAGUE_CLASSES): Galar's Marnie/Hop and Paldea's Nemona are post-game rematches on the cap
 # rules. Recomputed for the canon League levels and canon rematches (patch 10): the games' rematch
 # teams where they exist (FRLG, HGSS, Platinum, BW post-game, SM title defenses, SV Geeta), else
-# the canon first run + 10.
-LEAGUE_REMATCH_FLOOR = {"KANTO": 63, "JOHTO": 58, "HOENN": 56, "SINNOH": 65, "UNOVA": 71,
+# the canon first run + 10. Patch 11: Hoenn 56 -> 61 (its League is raised +5; RS has no rematch, so +10 on top).
+LEAGUE_REMATCH_FLOOR = {"KANTO": 63, "JOHTO": 58, "HOENN": 61, "SINNOH": 65, "UNOVA": 71,
                         "KALOS": 73, "ALOLA": 63, "GALAR": 72, "PALDEA": 67}
 # Post-game spreads around the cap (Jordan): wild Pokemon a few levels under it (area level =
 # cap - 3, wild = area -2..+1 -> cap-5..cap-2), route/story trainers about at it (area +1..+3 ->

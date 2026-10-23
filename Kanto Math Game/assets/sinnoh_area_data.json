@@ -470,7 +470,7 @@
           "class": "GYM_LEADER",
           "is_boss_battle": true,
           "sprite": "fantina.png",
-          "team": [355, 93, 429], "levels": [32, 34, 36],
+          "team": [426, 94, 429], "levels": [32, 34, 36],
           "badge_reward": "RELIC",
           "dialogue": {
             "intro": ["Ohohoho! I am Fantina, ze Gym Leader!", "I shall defeat you! Oui, certainement!"],
@@ -785,7 +785,7 @@
           "class": "GYM_LEADER",
           "is_boss_battle": true,
           "sprite": "byron.png",
-          "team": [82, 208, 411], "levels": [36, 36, 39],
+          "team": [436, 208, 411], "levels": [36, 36, 39],
           "badge_reward": "MINE",
           "dialogue": {
             "intro": ["I'm Byron! The Man with the Steel Body!", "My Steel-types are impervious to attack!"],
@@ -872,7 +872,7 @@
           "class": "GYM_LEADER",
           "is_boss_battle": true,
           "sprite": "candice.png",
-          "team": [215, 221, 308, 460], "levels": [38, 38, 40, 42],
+          "team": [459, 215, 308, 460], "levels": [38, 38, 40, 42],
           "badge_reward": "ICICLE",
           "dialogue": {
             "intro": ["I'm Candice! I can tell you've come a long way!", "My Ice Pokémon have been waiting for a trainer like you!"],
@@ -940,7 +940,7 @@
           "class": "GYM_LEADER",
           "is_boss_battle": true,
           "sprite": "volkner.png",
-          "team": [135, 26, 424, 405], "levels": [48, 46, 47, 49],
+          "team": [26, 424, 224, 405], "levels": [46, 47, 48, 49],
           "badge_reward": "BEACON",
           "dialogue": {
             "intro": ["I'm Volkner. I've been waiting for a trainer who could excite me.", "Let's find out if you're the one."],
@@ -981,7 +981,7 @@
             "class": "ELITE_FOUR",
             "sprite": "aaron.png",
             "is_boss_battle": true,
-            "team": [469, 212, 416, 214, 452], "levels": [49, 49, 50, 51, 53], "rematch": {"levels": [65, 65, 66, 67, 69]},
+            "team": [469, 212, 416, 214, 452], "levels": [49, 49, 50, 51, 53], "rematch": {"team": [469, 212, 416, 214, 452], "levels": [65, 65, 66, 67, 69]},
             "rewards": { "balls": 15 },
             "dialogue": {
               "intro": ["I'm Aaron of the Elite Four!", "I've worked hard to build my Bug-type team!"],
@@ -994,7 +994,7 @@
             "class": "ELITE_FOUR",
             "sprite": "bertha.png",
             "is_boss_battle": true,
-            "team": [340, 472, 76, 450, 464], "levels": [50, 53, 52, 55, 52], "rematch": {"levels": [66, 69, 68, 68, 71]},
+            "team": [340, 472, 76, 464, 450], "levels": [50, 53, 52, 52, 55], "rematch": {"team": [340, 472, 76, 464, 450], "levels": [66, 69, 68, 71, 68]},
             "rewards": { "balls": 15 },
             "dialogue": {
               "intro": ["Hohoho! I'm Bertha!", "Youngsters like you bring a smile to my face — now defend yourself!"],
@@ -1007,7 +1007,7 @@
             "class": "ELITE_FOUR",
             "sprite": "flint.png",
             "is_boss_battle": true,
-            "team": [78, 426, 392, 208, 428], "levels": [53, 52, 55, 55, 57], "rematch": {"levels": [69, 68, 71, 71, 73]},
+            "team": [229, 136, 78, 392, 467], "levels": [52, 55, 53, 55, 57], "rematch": {"team": [229, 136, 78, 392, 467], "levels": [68, 71, 69, 71, 73]},
             "rewards": { "balls": 15 },
             "dialogue": {
               "intro": ["I'm Flint! Things are about to heat up!"],
@@ -1020,7 +1020,7 @@
             "class": "ELITE_FOUR",
             "sprite": "lucian.png",
             "is_boss_battle": true,
-            "team": [122, 196, 437, 308, 475], "levels": [53, 55, 54, 56, 59], "rematch": {"levels": [69, 71, 70, 72, 75]},
+            "team": [122, 196, 437, 65, 475], "levels": [53, 55, 54, 56, 59], "rematch": {"team": [122, 196, 437, 65, 475], "levels": [69, 71, 70, 72, 75]},
             "rewards": { "balls": 15 },
             "victory_flag": "beat_sinnoh_elite_four",
             "dialogue": {
@@ -1035,7 +1035,7 @@
           "class": "CHAMPION",
           "is_boss_battle": true,
           "sprite": "cynthia.png",
-          "team": [442, 407, 468, 448, 350, 445], "levels": [58, 58, 60, 60, 58, 62], "rematch": {"levels": [74, 74, 76, 76, 74, 78]},
+          "team": [442, 407, 468, 448, 350, 445], "levels": [58, 58, 60, 60, 58, 62], "rematch": {"team": [442, 407, 468, 448, 350, 445], "levels": [74, 74, 76, 76, 74, 78]},
           "victory_flag": "beat_sinnoh_champion",
           "rewards": { "balls": 25, "MASTER_BALL": 1 },
           "dialogue": {

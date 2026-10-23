@@ -31,7 +31,7 @@ story.story_flags.update({"defeated_elder_li": True, "defeated_rival_burned_towe
                           "ampharos_cured": True, "rocket_hq_cleared": True})
 story.player_team = [mk(157)]
 expected = {"VIOLET_CITY": [(16, 9), (17, 13)], "OLIVINE_CITY": [(81, 30), (81, 30), (208, 35)],
-            "BLACKTHORN_CITY": [(130, 38), (148, 38), (148, 38), (230, 41)]}  # canon HGSS levels
+            "BLACKTHORN_CITY": [(148, 38), (148, 38), (130, 38), (230, 41)]}  # canon HGSS teams and levels
 for area, want in expected.items():
     story.current_area_key = area
     story.story_flags[f"gym_progress_{area}"] = len(prog[area]["gym"]["trainers"])
@@ -47,7 +47,7 @@ g.change_state(lobby)
 check(lobby.is_league and "Final Match" in lobby.status_text, lobby.status_text)
 lobby.challenge_gym()
 got = lineup(battle_of(g.current_state))
-check(got == [(130, 44), (149, 49), (149, 49), (142, 48), (6, 48), (149, 50)], f"Lance (canon HGSS, ace 50): {got}")
+check(got == [(130, 57), (149, 62), (149, 62), (142, 61), (6, 61), (149, 63)], f"Lance (canon HGSS +13, ace 63): {got}")
 
 print("2) League loss resets; rematches after the title")
 story.story_flags["gym_progress_SILVER_LEAGUE_PLATEAU"] = 3
