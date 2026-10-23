@@ -81,7 +81,9 @@ def _story_team(game, area_key, t_info):
     team = [Pokemon(game.loader.fetch_specific(tid), game.assets, size_mult=3.125) for tid in team_ids]
     forms.mark_trainer_team(team, t_info)
     top = t_info.get("level")  # story beats set in early areas carry their own level
-    if t_info.get("levels"):
+    if levels.postgame_trainers(game, area_key):  # post-game: every trainer follows the player's cap
+        levels.set_team(team, levels.trainer_team_levels(game, area_key, len(team), boss=True), exact=True)
+    elif t_info.get("levels"):
         levels.set_team(team, list(t_info["levels"]), exact=True)
     elif top:
         levels.set_team(team, [max(2, top - (len(team) - 1 - i)) for i in range(len(team))])
@@ -1771,6 +1773,8 @@ class PlayState(GameState):
         # A Primal boss (Groudon/Kyogre in the Cave of Origin) reverts when the battle starts.
         pokemon.primal_ready = bool(boss_data.get("primal"))
         if levels.is_legendary(pokemon.id):  # legendaries follow the cap rule, even with a data level
+            pokemon.level = levels.boss_level(self.game, self.game.story_manager.current_area_key, pokemon.id)
+        elif levels.postgame_trainers(self.game):  # post-game: area bosses follow the cap too
             pokemon.level = levels.boss_level(self.game, self.game.story_manager.current_area_key, pokemon.id)
         else:
             pokemon.level = int(boss_data.get("level") or levels.boss_level(
@@ -4479,7 +4483,10 @@ class CityState(GameState):
         opponent_team = [Pokemon(self.game.loader.fetch_specific(tid), self.game.assets, size_mult=3.125)
                          for tid in team_ids]
         forms.mark_trainer_team(opponent_team, t_info)
-        if t_info.get("levels"):
+        if levels.postgame_trainers(self.game, self.area_key) and not starter_battle:
+            levels.set_team(opponent_team, levels.trainer_team_levels(
+                self.game, self.area_key, len(opponent_team), boss=True), exact=True)  # post-game cap
+        elif t_info.get("levels"):
             levels.set_team(opponent_team, list(t_info["levels"]), exact=True)  # exact levels from the games
         elif starter_battle:
             levels.set_team(opponent_team, [5] * len(opponent_team))
@@ -5249,7 +5256,12 @@ class GymLobbyState(GameState):
         # Rematches after the title: the games' rematch teams where we have them (FireRed/LeafGreen
         # for Kanto, HeartGold/SoulSilver for Johto: "rematch" in the data), else 10 levels up.
         rematch_boost = 0
-        if getattr(self, "rematch", False) and not (self.area_key == "INDIGO_PLATEAU" and is_leader):
+        # A League rematch roster's non-League trainers (Galar's Marnie/Hop, Paldea's Nemona) are
+        # post-game rematches: they follow the post-game cap. The Elite Four and Champion don't.
+        cap_rematch = (getattr(self, "rematch", False) and not is_leader
+                       and t_data.get("class") not in levels.LEAGUE_CLASSES and not t_data.get("rematch"))
+        if (getattr(self, "rematch", False) and not cap_rematch
+                and not (self.area_key == "INDIGO_PLATEAU" and is_leader)):
             rm = self.next_opponent.get("rematch")
             if not rm and self.area_key == "INDIGO_PLATEAU":
                 frlg = self.FRLG_E4_REMATCH.get(str(t_data.get("name", "")).upper())
@@ -5267,7 +5279,9 @@ class GymLobbyState(GameState):
         forms.mark_trainer_team(opponent_team, t_data)
         region = self.game.story_manager.get_current_region()
         t_class = t_data.get("class", "GYM_LEADER")
-        if t_data.get("levels"):
+        if cap_rematch:  # the region's title is won, so the League area is post-game: cap-2..cap
+            team_levels = levels.trainer_team_levels(self.game, self.area_key, len(opponent_team))
+        elif t_data.get("levels"):
             team_levels = t_data["levels"]  # exact levels from the games (Kanto's Champion)
         elif t_class == "ELITE_FOUR":
             team_levels = levels.elite_levels(region, self.progress, len(opponent_team))

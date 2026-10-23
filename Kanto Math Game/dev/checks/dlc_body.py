@@ -15,7 +15,9 @@ check(prog["GLIMWOOD_TANGLE"]["area_boss"]["id"] == 893 and "Follow the Jungle C
       "Zarude in Glimwood Tangle after the title")
 run("ISLE_OF_ARMOR", "MASTER DOJO")
 run("ISLE_OF_ARMOR", "DOJO TRIAL: KLARA")
-check(lineup(battle_of(g.current_state))[0] == (2023, 66), "Klara's Galarian Slowbro")
+from src.world import levels
+kl = lineup(battle_of(g.current_state))
+check(kl[0][0] == 2023 and kl[-1][1] == levels.postgame_cap(story, story.area_region(story.current_area_key)) + 1, f"Klara's Galarian Slowbro, post-game cap levels {kl}")
 story.story_flags.update({"beat_klara_dojo": True, "beat_avery_dojo": True})
 run("ISLE_OF_ARMOR", "MUSTARD'S GIFT")
 check(any(p.id == 891 for p in story.player_team), "Mustard gives Kubfu")
@@ -54,7 +56,8 @@ for f in ("KITAKAMI_REVELERS_ROAD_boss_defeated", "KITAKAMI_PARADISE_BARRENS_bos
 check("Meet the Masked Ogre" in menu("KITAKAMI"), "Ogerpon after the Loyal Three")
 run("KITAKAMI", "BATTLE KIERAN")
 kb = battle_of(g.current_state)
-check(lineup(kb) == [(1011, 67), (1012, 67), (1015, 68), (1017, 70)], f"Kieran with Ogerpon: {lineup(kb)}")
+ace = levels.postgame_cap(story, story.area_region(story.current_area_key)) + 1
+check(lineup(kb) == [(1011, ace - 3), (1012, ace - 2), (1015, ace - 1), (1017, ace)], f"Kieran with Ogerpon (post-game cap): {lineup(kb)}")
 
 print("5) Indigo Disk")
 check("Exchange to Blueberry Academy" not in travel("MESAGOZA"), "Blueberry after Kitakami")

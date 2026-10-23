@@ -28,7 +28,9 @@ story.enter_region("ORRE")
 check("ORRE" not in BadgeCaseState(g, ow.CityState(g)).unlocked_regions, "no empty badge page for Orre")
 story.current_area_key = "PHENAC_CITY"
 story.level_cap_mode = "STORY"
-check(levels.story_level_cap(story) == 100, "no level cap in Orre")
+check(levels.xp_cap(story) == 100 and levels.story_level_cap(story) == levels.postgame_cap(story)
+      == max([levels.LEAGUE_REMATCH_FLOOR["HOENN"]] + [p.level for p in story.player_team if p]),
+      "Orre: XP uncapped; post-game cap = team's highest level, Hoenn rematch floor")
 story.level_cap_mode = "OBEDIENCE"
 check(levels.obey_level(story) == 100, "your team obeys you in Orre")
 story.current_area_key = "VALENCIA_ISLAND"
@@ -38,7 +40,7 @@ story.level_cap_mode = "NONE"
 print("2) The Snag Machine")
 check("Pyrite Town" not in travel("PHENAC_CITY"), "Pyrite waits for the Snag Machine")
 run("PHENAC_CITY", "Trouble at the Fountain")
-check(lineup(battle_of(g.current_state))[-1] == (296, 60), "Cipher Peons at the fountain")
+check(lineup(battle_of(g.current_state))[-1] == (296, levels.postgame_cap(story, story.area_region(story.current_area_key)) + 1), f"Cipher Peons at the fountain (post-game cap) {lineup(battle_of(g.current_state))}")
 story.story_flags["phenac_cipher_beaten"] = True
 run("PHENAC_CITY", "Meet Rui")
 check(story.inventory.get("SNAG_MACHINE") == 1 and "Pyrite Town" in travel("PHENAC_CITY"), "Rui: Snag Machine")

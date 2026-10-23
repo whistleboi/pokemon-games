@@ -103,7 +103,9 @@ b.player_won = True
 b.perform_battle_outcome() if hasattr(b, "perform_battle_outcome") else None
 story.story_flags["beat_orange_champion"] = True
 story.badges["ORANGE"].append("WINNERS_TROPHY")
-check(levels.story_level_cap(story) == 100, "after the trophy: no level cap")
+check(levels.xp_cap(story) == 100 and levels.story_level_cap(story) == levels.postgame_cap(story)
+      == max([levels.LEAGUE_REMATCH_FLOOR["KANTO"]] + [p.level for p in story.player_team if p]),
+      "after the trophy: XP uncapped; post-game cap = team's highest level, Kanto rematch floor")
 story.story_flags.pop("move_offer_orange", None)
 c = ow.CityState(g)
 g.change_state(c)

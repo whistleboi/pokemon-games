@@ -26,7 +26,8 @@ run("HONEY_ISLAND", "The Beekeepers' Hives")
 run("HONEY_ISLAND", "Search the Scorched Hives")
 check(story.inventory.get("BURN_DRIVE") == 1 and "Scalchop Island" in exits("DECOLORE_FERRY"), "Burn Drive opens Scalchop")
 run("SCALCHOP_ISLAND", "Plasma at the Shrine")
-check(lineup(battle_of(g.current_state))[-1] == (530, 58), "Plasma Grunts at the shrine")
+from src.world import levels
+check(lineup(battle_of(g.current_state))[-1] == (530, levels.postgame_cap(story, story.area_region(story.current_area_key)) + 1), f"Plasma Grunts at the shrine (post-game cap) {lineup(battle_of(g.current_state))}")
 story.story_flags["decolore_shrine_plasma"] = True
 run("SCALCHOP_ISLAND", "Search the Crates")
 check(story.inventory.get("DOUSE_DRIVE") == 1 and "Grand Spectrala Island" in exits("DECOLORE_FERRY"), "Douse Drive")
@@ -40,7 +41,7 @@ st = state_for("TOROM_PEAK")
 gen = opt("TOROM_PEAK", "CHALLENGE GENESECT")
 check(not st._check_route_condition(gen["condition"], False), "no Genesect before the lab")
 run("TOROM_ISLAND", "The Plasma Laboratory")
-check(lineup(battle_of(g.current_state))[-1] == (462, 64), "Plasma Scientist")
+check(lineup(battle_of(g.current_state))[-1] == (462, levels.postgame_cap(story, story.area_region(story.current_area_key)) + 1), f"Plasma Scientist (post-game cap) {lineup(battle_of(g.current_state))}")
 story.story_flags["decolore_lab_cleared"] = True
 run("TOROM_ISLAND", "Shut Down the Lab")
 st = state_for("TOROM_PEAK")

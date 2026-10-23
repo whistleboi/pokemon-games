@@ -83,7 +83,13 @@ def gym_aces(region):
 
 
 def area_level(game, area_key):
-    """An area's wild level (an area's own "level" key wins)."""
+    """An area's wild level (an area's own "level" key wins). Post-game (the area's region, or
+    its parent, has been won) every area follows the player instead: postgame_cap - POSTGAME_UNDER,
+    so wild Pokemon are a few levels under the cap and trainers at about the cap (see
+    postgame_area_level). The League never uses area levels, so it is not affected."""
+    scaled = postgame_area_level(game, area_key)
+    if scaled is not None:
+        return scaled
     area = game.loader.area_data.get("STORY_PROGRESSION", {}).get(area_key, {})
     if area.get("level"):
         return int(area["level"])
@@ -117,14 +123,10 @@ LEGEND_OVER_CAP = 3
 
 def legendary_encounter_level(game, area_key=None):
     """Level of a legendary met in the wild, as a boss, a roamer or a gift: the story level cap
-    + LEGEND_OVER_CAP. With no cap (after the region's title, or Orre/Orange trips) the region's
-    Champion ace stands in for the cap, or the area's level when the region has no Champion."""
+    + LEGEND_OVER_CAP. After the title (and in Orre) that cap is the player-controlled post-game
+    cap (postgame_cap: the team's highest level, never below the League rematch floor)."""
     story = game.story_manager
-    cap = story_level_cap(story)
-    if cap >= 100:
-        cap = CHAMPION_ACE.get(story.get_current_region()) or area_level(
-            game, area_key or story.current_area_key)
-    return max(5, min(100, int(cap) + LEGEND_OVER_CAP))
+    return max(5, min(100, int(story_level_cap(story)) + LEGEND_OVER_CAP))
 
 
 def boss_level(game, area_key, pid):
@@ -162,11 +164,74 @@ def cap_mode(story):
     return getattr(story, "level_cap_mode", "STORY")
 
 
+# Jordan's post-game rule: once a region's Champion is beaten, the cap is player-controlled.
+# It is the team's highest level, but never below the lowest level met in that region's League
+# rematch. Lowest rematch level per region, as GymLobbyState.challenge_gym builds the rematch
+# teams (the games' rematch teams, else the League's levels + 10). The League itself is NOT
+# scaled by this cap: rematch levels stay as they are. Only Elite Four and Champion teams count
+# (LEAGUE_CLASSES): Galar's Marnie/Hop and Paldea's Nemona are post-game rematches on the cap
+# rules, so Galar's floor is Leon's lowest (65) and Paldea's is Rika's (59).
+LEAGUE_REMATCH_FLOOR = {"KANTO": 63, "JOHTO": 58, "HOENN": 56, "SINNOH": 55, "UNOVA": 52,
+                        "KALOS": 62, "ALOLA": 58, "GALAR": 65, "PALDEA": 59}
+# Post-game spreads around the cap (Jordan): wild Pokemon a few levels under it (area level =
+# cap - 3, wild = area -2..+1 -> cap-5..cap-2), route/story trainers about at it (area +1..+3 ->
+# cap-2..cap, bosses cap+1), non-legendary area bosses cap+2, legendaries cap+3.
+POSTGAME_UNDER = 3
+# League rosters: only these classes keep the League's own (rematch) levels. Anyone else in a
+# League lobby (Galar's Marnie/Hop, Paldea's Nemona) is a post-game rematch on the cap rules.
+LEAGUE_CLASSES = ("ELITE_FOUR", "CHAMPION")
+
+
+def parent_region(story, region=None):
+    """The main region a region or sub-region belongs to. Sub-region areas already carry their
+    parent's "region" (Sevii: KANTO, Decolore: UNOVA, Sinjoh and Hisui: SINNOH, the DLC areas:
+    GALAR/PALDEA); the Orange Islands and Orre are trips from KANTO and HOENN ("storage_region")."""
+    region = str(region or story.get_current_region()).upper()
+    return str(story.get_region_start(region).get("storage_region") or region).upper()
+
+
+def is_postgame(story, region=None):
+    """After this region's title or its parent region's (a sub-region or trip such as Sevii,
+    Orange, Decolore, Sinjoh, Hisui, Orre and the DLC areas follows its parent), and anywhere
+    without Gyms (Orre)."""
+    region = str(region or story.get_current_region()).upper()
+    return bool(story.is_region_champion(region) or story.is_region_champion(parent_region(story, region))
+                or story.get_region_start(region).get("no_badges"))
+
+
+def postgame_area_level(game, area_key):
+    """The post-game level an area's wild Pokemon and trainers are built around, or None before
+    the title (then the area's own level is used)."""
+    story = getattr(game, "story_manager", None)
+    if story is None or not hasattr(story, "is_region_champion"):
+        return None
+    region = story.area_region(area_key) if area_key and hasattr(story, "area_region") else None
+    if region is None or not is_postgame(story, region):
+        return None
+    return max(2, postgame_cap(story, region) - POSTGAME_UNDER)
+
+
+def postgame_trainers(game, area_key=None):
+    """True when trainers here follow the post-game cap (data levels from the games are ignored)."""
+    story = game.story_manager
+    return postgame_area_level(game, area_key or story.current_area_key) is not None
+
+
+def postgame_cap(story, region=None):
+    """The player-controlled post-game cap: the party's highest level, floored at the parent
+    region's League rematch floor. It moves up with the team (see xp_cap), so a team that
+    over-levels meets stronger wild Pokemon, trainers and legendaries; the League keeps its own."""
+    top = max((int(p.level) for p in getattr(story, "player_team", []) if p), default=0)
+    floor = LEAGUE_REMATCH_FLOOR.get(parent_region(story, region), 50)
+    return max(5, min(100, max(top, floor)))
+
+
 def story_level_cap(story):
-    """STORY mode: the next Gym Leader's ace in this region (Champion's after 8, none after)."""
+    """STORY mode: the next Gym Leader's ace in this region (Champion's after 8). After the title
+    (and in Orre, which has no Gyms) the player-controlled post-game cap (postgame_cap)."""
     region = story.get_current_region()
-    if story.is_region_champion(region) or story.get_region_start(region).get("no_badges"):
-        return 100  # Orre has no Gyms to cap levels by
+    if is_postgame(story, region):
+        return postgame_cap(story, region)
     badges = len(story.badges.get(region, []))
     aces = gym_aces(region)
     if badges < len(aces):
@@ -175,8 +240,12 @@ def story_level_cap(story):
 
 
 def xp_cap(story):
-    """Highest level XP can take a Pokemon to right now (100 when uncapped)."""
-    return story_level_cap(story) if cap_mode(story) == "STORY" else 100
+    """Highest level XP can take a Pokemon to right now (100 when uncapped). Post-game the cap
+    is the team's own highest level, so XP is not blocked: the player controls the level and the
+    cap (and the legendaries over it) follows the team."""
+    if cap_mode(story) != "STORY" or is_postgame(story):
+        return 100
+    return story_level_cap(story)
 
 
 def obey_level(story):
