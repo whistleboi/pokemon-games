@@ -161,7 +161,2413 @@
       "Be careful of the Noble Pokemon. Calm them and they'll trust you."
     ]
   },
+  "SINNOH_ROUTE_219": [72, 278, 73, 279],
+  "SINNOH_ROUTE_219_PERCENTAGES": { "72": 60, "278": 30, "73": 9, "279": 1 },
+  "SINNOH_ROUTE_220": [72, 278, 73, 279],
+  "SINNOH_ROUTE_220_PERCENTAGES": { "72": 60, "278": 30, "73": 9, "279": 1 },
+  "SINNOH_ROUTE_221": [185, 203, 315, 419, 72, 278, 73, 279],
+  "SINNOH_ROUTE_221_PERCENTAGES": { "185": 17, "203": 19, "315": 19, "419": 19, "72": 15, "278": 8, "73": 2, "279": 1 },
+  "SINNOH_ROUTE_225": [55, 67, 22, 75, 20, 354, 19, 21, 54],
+  "SINNOH_ROUTE_225_PERCENTAGES": { "55": 22, "67": 19, "22": 18, "75": 15, "20": 11, "354": 5, "19": 4, "21": 4, "54": 2 },
+  "SINNOH_ROUTE_226": [278, 67, 75, 20, 22, 279, 354, 19, 73],
+  "SINNOH_ROUTE_226_PERCENTAGES": { "278": 26, "67": 19, "75": 15, "20": 11, "22": 10, "279": 8, "354": 5, "19": 4, "73": 2 },
+  "SINNOH_ROUTE_227": [61, 112, 323, 22, 75, 110, 60, 111, 227, 322],
+  "SINNOH_ROUTE_227_PERCENTAGES": { "61": 17, "112": 15, "323": 15, "22": 13, "75": 12, "110": 8, "60": 8, "111": 4, "227": 4, "322": 4 },
+  "SINNOH_ROUTE_228": [51, 332, 61, 112, 450, 60, 50, 331],
+  "SINNOH_ROUTE_228_PERCENTAGES": { "51": 22, "332": 20, "61": 18, "112": 12, "450": 12, "60": 8, "50": 4, "331": 4 },
+  "SINNOH_ROUTE_229": [315, 283, 16, 313, 314, 166, 168, 267, 269, 284],
+  "SINNOH_ROUTE_229_PERCENTAGES": { "315": 32, "283": 24, "16": 9, "313": 8, "314": 8, "166": 5, "168": 5, "267": 4, "269": 4, "284": 1 },
+  "SINNOH_ROUTE_230": [279, 419, 364, 69, 315, 43, 44, 70, 278, 73],
+  "SINNOH_ROUTE_230_PERCENTAGES": { "279": 29, "419": 19, "364": 15, "69": 10, "315": 8, "43": 5, "44": 4, "70": 4, "278": 4, "73": 2 },
+  "SINNOH_ROUTE_224": [279, 315, 419, 69, 423, 73, 43, 44, 70, 267],
+  "SINNOH_ROUTE_224_PERCENTAGES": { "279": 23, "315": 16, "419": 16, "69": 10, "423": 10, "73": 8, "43": 5, "44": 4, "70": 4, "267": 4 },
+  "WAYWARD_CAVE": [74, 436, 95, 41, 443],
+  "WAYWARD_CAVE_PERCENTAGES": { "74": 33, "436": 30, "95": 15, "41": 12, "443": 10 },
+  "LOST_TOWER": [92, 41, 355],
+  "LOST_TOWER_PERCENTAGES": { "92": 58, "41": 35, "355": 7 },
+  "FUEGO_IRONWORKS": [81, 126, 419, 72, 423, 422, 73],
+  "FUEGO_IRONWORKS_PERCENTAGES": { "81": 22, "126": 20, "419": 19, "72": 15, "423": 14, "422": 8, "73": 2 },
+  "RAVAGED_PATH": [41, 54, 42, 55],
+  "RAVAGED_PATH_PERCENTAGES": { "41": 48, "54": 48, "42": 2, "55": 2 },
+  "MANIAC_TUNNEL": [74, 449],
+  "MANIAC_TUNNEL_PERCENTAGES": { "74": 80, "449": 20 },
+  "TROPHY_GARDEN": [172, 315, 397, 25, 402, 35, 39, 52, 113, 132],
+  "TROPHY_GARDEN_PERCENTAGES": { "172": 26, "315": 28, "397": 18, "25": 9, "402": 9, "35": 2, "39": 2, "52": 2, "113": 2, "132": 2 },
+  "ACUITY_LAKEFRONT": [459, 220, 215, 361],
+  "ACUITY_LAKEFRONT_PERCENTAGES": { "459": 37, "220": 36, "215": 20, "361": 7 },
+  "VALOR_LAKEFRONT": [400, 203, 397, 228, 402],
+  "VALOR_LAKEFRONT_PERCENTAGES": { "400": 30, "203": 25, "397": 25, "228": 13, "402": 7 },
+  "SENDOFF_SPRING": [75, 400, 397, 433, 356, 42],
+  "SENDOFF_SPRING_PERCENTAGES": { "75": 32, "400": 30, "397": 17, "433": 10, "356": 8, "42": 3 },
+  "OREBURGH_GATE": [41, 54, 74, 42, 55],
+  "OREBURGH_GATE_PERCENTAGES": { "41": 44, "54": 43, "74": 8, "42": 3, "55": 2 },
+  "GRAND_UNDERGROUND": [108, 111, 123, 229, 220, 333, 207, 81, 280, 238],
+  "GRAND_UNDERGROUND_PERCENTAGES": { "108": 18, "111": 18, "123": 15, "229": 11, "220": 10, "333": 7, "207": 7, "81": 5, "280": 5, "238": 4 },
   "STORY_PROGRESSION": {
+    "GRAND_UNDERGROUND": {
+      "area_type": "dungeon",
+      "route_name": "Grand Underground",
+      "region": "sinnoh",
+      "battle_type": "cave",
+      "wild_pool_percentages": "GRAND_UNDERGROUND_PERCENTAGES",
+      "min_rounds": 1,
+      "trainer_pool": [],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "Eterna City",
+          "action": "EXIT",
+          "target_area": "ETERNA_CITY",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "ETERNA_CITY"
+    },
+    "GALACTIC_WAREHOUSE": {
+      "area_type": "dungeon",
+      "route_name": "Galactic Warehouse",
+      "region": "sinnoh",
+      "battle_type": "indoor",
+      "wild_pool_percentages": null,
+      "min_rounds": 0,
+      "trainer_pool": [
+        {
+          "name": "Galactic Grunt",
+          "class": "PKMN_TRAINER",
+          "sprite": "galactic_grunt.png",
+          "team": [
+            42
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Galactic Grunt",
+          "class": "PKMN_TRAINER",
+          "sprite": "galactic_grunt.png",
+          "team": [
+            228,
+            198
+          ],
+          "rewards": {
+            "balls": 10
+          },
+          "is_boss_battle": true,
+          "victory_flag": "galactic_warehouse_cleared"
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "RAID THE WAREHOUSE",
+          "action": "GALACTIC_GAUNTLET",
+          "flag_condition": "not galactic_warehouse_cleared",
+          "color": "GOLD"
+        },
+        {
+          "text": "Veilstone City",
+          "action": "EXIT",
+          "target_area": "VEILSTONE_CITY",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "VEILSTONE_CITY"
+    },
+    "ETERNA_GALACTIC_BUILDING": {
+      "area_type": "dungeon",
+      "route_name": "Galactic Eterna Building",
+      "region": "sinnoh",
+      "battle_type": "indoor",
+      "wild_pool_percentages": null,
+      "min_rounds": 0,
+      "trainer_pool": [
+        {
+          "name": "Galactic Grunt",
+          "class": "PKMN_TRAINER",
+          "sprite": "galactic_grunt.png",
+          "team": [
+            41,
+            434
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Galactic Grunt",
+          "class": "PKMN_TRAINER",
+          "sprite": "galactic_grunt.png",
+          "team": [
+            41,
+            431
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Galactic Grunt",
+          "class": "PKMN_TRAINER",
+          "sprite": "galactic_grunt.png",
+          "team": [
+            431
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Galactic Grunt",
+          "class": "PKMN_TRAINER",
+          "sprite": "galactic_grunt.png",
+          "team": [
+            453
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Galactic Grunt",
+          "class": "PKMN_TRAINER",
+          "sprite": "galactic_grunt.png",
+          "team": [
+            434,
+            453,
+            431
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        },
+        {
+          "name": "Scientist Travon",
+          "class": "SCIENTIST",
+          "sprite": "scientist.png",
+          "team": [
+            64
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Commander Jupiter",
+          "class": "COMMANDER",
+          "sprite": "galactic_grunt.png",
+          "team": [
+            41,
+            435
+          ],
+          "rewards": {
+            "balls": 10
+          },
+          "is_boss_battle": true,
+          "victory_flag": "eterna_galactic_building_cleared"
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "STORM THE BUILDING",
+          "action": "GALACTIC_GAUNTLET",
+          "flag_condition": "not eterna_galactic_building_cleared",
+          "color": "GOLD"
+        },
+        {
+          "text": "Eterna City",
+          "action": "EXIT",
+          "target_area": "ETERNA_CITY",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "ETERNA_CITY"
+    },
+    "OREBURGH_GATE": {
+      "area_type": "dungeon",
+      "route_name": "Oreburgh Gate",
+      "region": "sinnoh",
+      "battle_type": "cave",
+      "wild_pool_percentages": "OREBURGH_GATE_PERCENTAGES",
+      "min_rounds": 1,
+      "trainer_pool": [
+        {
+          "name": "Picnicker Diana",
+          "class": "PICNIKER",
+          "sprite": "picnicker.png",
+          "team": [
+            399
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Camper Curtis",
+          "class": "CAMPER",
+          "sprite": "camper.png",
+          "team": [
+            396,
+            403
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Veteran Grant",
+          "class": "VETERAN",
+          "sprite": "grant.png",
+          "team": [
+            447,
+            398,
+            75
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Route 203",
+          "action": "EXIT",
+          "target_area": "SINNOH_ROUTE_203",
+          "condition": "can_exit",
+          "color": "RED"
+        },
+        {
+          "text": "Oreburgh City",
+          "action": "EXIT",
+          "target_area": "OREBURGH_CITY",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "SINNOH_ROUTE_203"
+    },
+    "SENDOFF_SPRING": {
+      "area_type": "wild_route",
+      "route_name": "Sendoff Spring",
+      "region": "sinnoh",
+      "battle_type": "grass",
+      "can_fish": true,
+      "wild_pool_percentages": "SENDOFF_SPRING_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "FISH",
+          "action": "FISH",
+          "condition": "can_fish",
+          "color": "ORANGE"
+        },
+        {
+          "text": "Route 214",
+          "action": "EXIT",
+          "target_area": "SINNOH_ROUTE_214",
+          "condition": "can_exit",
+          "color": "RED"
+        },
+        {
+          "text": "Turnback Cave",
+          "action": "EXIT",
+          "target_area": "TURNBACK_CAVE",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "SINNOH_ROUTE_214"
+    },
+    "VERITY_LAKEFRONT": {
+      "area_type": "wild_route",
+      "route_name": "Verity Lakefront",
+      "region": "sinnoh",
+      "battle_type": "grass",
+      "wild_pool_percentages": null,
+      "min_rounds": 0,
+      "trainer_pool": [],
+      "route_menu": [
+        {
+          "text": "Route 201",
+          "action": "EXIT",
+          "target_area": "SINNOH_ROUTE_201",
+          "condition": "can_exit",
+          "color": "RED"
+        },
+        {
+          "text": "Lake Verity",
+          "action": "EXIT",
+          "target_area": "LAKE_VERITY",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "SINNOH_ROUTE_201"
+    },
+    "VALOR_LAKEFRONT": {
+      "area_type": "wild_route",
+      "route_name": "Valor Lakefront",
+      "region": "sinnoh",
+      "battle_type": "grass",
+      "wild_pool_percentages": "VALOR_LAKEFRONT_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Galactic Grunt",
+          "class": "PKMN_TRAINER",
+          "sprite": "galactic_grunt.png",
+          "team": [
+            453
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Route 213",
+          "action": "EXIT",
+          "target_area": "SINNOH_ROUTE_213",
+          "condition": "can_exit",
+          "color": "RED"
+        },
+        {
+          "text": "Route 214",
+          "action": "EXIT",
+          "target_area": "SINNOH_ROUTE_214",
+          "condition": "can_exit",
+          "color": "RED"
+        },
+        {
+          "text": "Lake Valor",
+          "action": "EXIT",
+          "target_area": "LAKE_VALOR",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "SINNOH_ROUTE_213"
+    },
+    "ACUITY_LAKEFRONT": {
+      "area_type": "wild_route",
+      "route_name": "Acuity Lakefront",
+      "region": "sinnoh",
+      "battle_type": "snow",
+      "wild_pool_percentages": "ACUITY_LAKEFRONT_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "Route 217",
+          "action": "EXIT",
+          "target_area": "SINNOH_ROUTE_217",
+          "condition": "can_exit",
+          "color": "RED"
+        },
+        {
+          "text": "Snowpoint City",
+          "action": "EXIT",
+          "target_area": "SNOWPOINT_CITY",
+          "condition": "can_exit",
+          "color": "RED"
+        },
+        {
+          "text": "Lake Acuity",
+          "action": "EXIT",
+          "target_area": "LAKE_ACUITY",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "SINNOH_ROUTE_217"
+    },
+    "TROPHY_GARDEN": {
+      "area_type": "wild_route",
+      "route_name": "Trophy Garden",
+      "region": "sinnoh",
+      "battle_type": "grass",
+      "wild_pool_percentages": "TROPHY_GARDEN_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "Route 212",
+          "action": "EXIT",
+          "target_area": "SINNOH_ROUTE_212",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "SINNOH_ROUTE_212"
+    },
+    "MANIAC_TUNNEL": {
+      "area_type": "dungeon",
+      "route_name": "Maniac Tunnel",
+      "region": "sinnoh",
+      "battle_type": "cave",
+      "wild_pool_percentages": "MANIAC_TUNNEL_PERCENTAGES",
+      "min_rounds": 1,
+      "trainer_pool": [],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "Route 214",
+          "action": "EXIT",
+          "target_area": "SINNOH_ROUTE_214",
+          "condition": "can_exit",
+          "color": "RED"
+        },
+        {
+          "text": "Solaceon Ruins",
+          "action": "EXIT",
+          "target_area": "SOLACEON_RUINS",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "SINNOH_ROUTE_214"
+    },
+    "RAVAGED_PATH": {
+      "area_type": "dungeon",
+      "route_name": "Ravaged Path",
+      "region": "sinnoh",
+      "battle_type": "cave",
+      "can_fish": true,
+      "wild_pool_percentages": "RAVAGED_PATH_PERCENTAGES",
+      "min_rounds": 1,
+      "trainer_pool": [],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "FISH",
+          "action": "FISH",
+          "condition": "can_fish",
+          "color": "ORANGE"
+        },
+        {
+          "text": "Route 204",
+          "action": "EXIT",
+          "target_area": "SINNOH_ROUTE_204",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "SINNOH_ROUTE_204"
+    },
+    "FUEGO_IRONWORKS": {
+      "area_type": "wild_route",
+      "route_name": "Fuego Ironworks",
+      "region": "sinnoh",
+      "battle_type": "field",
+      "can_fish": true,
+      "wild_pool_percentages": "FUEGO_IRONWORKS_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Worker Dillan",
+          "class": "ENGINEER",
+          "sprite": "engineer.png",
+          "team": [
+            66,
+            67
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Worker Holden",
+          "class": "ENGINEER",
+          "sprite": "engineer.png",
+          "team": [
+            81,
+            81,
+            81
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        },
+        {
+          "name": "Worker Conrad",
+          "class": "ENGINEER",
+          "sprite": "engineer.png",
+          "team": [
+            126
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "FISH",
+          "action": "FISH",
+          "condition": "can_fish",
+          "color": "ORANGE"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Floaroma Meadow",
+          "action": "EXIT",
+          "target_area": "FLOAROMA_MEADOW",
+          "condition": "can_exit",
+          "color": "RED"
+        },
+        {
+          "text": "Route 205",
+          "action": "EXIT",
+          "target_area": "SINNOH_ROUTE_205",
+          "condition": [
+            "can_exit",
+            "has_item:HM_SURF"
+          ],
+          "color": "RED"
+        }
+      ],
+      "next_area": "FLOAROMA_MEADOW"
+    },
+    "FLOAROMA_MEADOW": {
+      "area_type": "wild_route",
+      "route_name": "Floaroma Meadow",
+      "region": "sinnoh",
+      "battle_type": "grass",
+      "wild_pool_percentages": null,
+      "min_rounds": 0,
+      "trainer_pool": [
+        {
+          "name": "Galactic Grunt",
+          "class": "PKMN_TRAINER",
+          "sprite": "galactic_grunt.png",
+          "team": [
+            434
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Galactic Grunt",
+          "class": "PKMN_TRAINER",
+          "sprite": "galactic_grunt.png",
+          "team": [
+            41,
+            41
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Floaroma Town",
+          "action": "EXIT",
+          "target_area": "FLOAROMA_TOWN",
+          "condition": "can_exit",
+          "color": "RED"
+        },
+        {
+          "text": "Fuego Ironworks",
+          "action": "EXIT",
+          "target_area": "FUEGO_IRONWORKS",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "FLOAROMA_TOWN"
+    },
+    "LOST_TOWER": {
+      "area_type": "dungeon",
+      "route_name": "Lost Tower",
+      "region": "sinnoh",
+      "battle_type": "indoor",
+      "wild_pool_percentages": "LOST_TOWER_PERCENTAGES",
+      "min_rounds": 1,
+      "trainer_pool": [
+        {
+          "name": "Youngster Oliver",
+          "class": "YOUNGSTER",
+          "sprite": "youngster.png",
+          "team": [
+            414,
+            339,
+            441
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        },
+        {
+          "name": "Pokefan Leonard",
+          "class": "POKEFAN",
+          "sprite": "pokefan_f.png",
+          "team": [
+            172,
+            172,
+            25
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        },
+        {
+          "name": "Roughneck Kirby",
+          "class": "ROUGHNECK",
+          "sprite": "roughneck.png",
+          "team": [
+            173
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Pokefan Rebekah",
+          "class": "POKEFAN",
+          "sprite": "pokefan_f.png",
+          "team": [
+            438
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Young Couple Mike & Nat",
+          "class": "TWINS",
+          "sprite": "twins.png",
+          "team": [
+            198,
+            200
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Belle & Pa Beth & Bob",
+          "class": "TWINS",
+          "sprite": "twins.png",
+          "team": [
+            77,
+            77
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Route 209",
+          "action": "EXIT",
+          "target_area": "SINNOH_ROUTE_209",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "SINNOH_ROUTE_209"
+    },
+    "WAYWARD_CAVE": {
+      "area_type": "dungeon",
+      "route_name": "Wayward Cave",
+      "region": "sinnoh",
+      "battle_type": "cave",
+      "wild_pool_percentages": "WAYWARD_CAVE_PERCENTAGES",
+      "min_rounds": 1,
+      "trainer_pool": [
+        {
+          "name": "Pkmn Trainer Mira",
+          "class": "PKMN_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            64
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Camper Diego",
+          "class": "CAMPER",
+          "sprite": "camper.png",
+          "team": [
+            190
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Picnicker Tori",
+          "class": "PICNIKER",
+          "sprite": "picnicker.png",
+          "team": [
+            54
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Lass Cassidy",
+          "class": "LASS",
+          "sprite": "lass.png",
+          "team": [
+            427
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Youngster Wayne",
+          "class": "YOUNGSTER",
+          "sprite": "youngster.png",
+          "team": [
+            422,
+            77
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Hiker Reginald",
+          "class": "HIKER",
+          "sprite": "hiker.png",
+          "team": [
+            74,
+            74
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Collector Terry",
+          "class": "POKEMANIAC",
+          "sprite": "pokemaniac.png",
+          "team": [
+            443
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Picnicker Ana",
+          "class": "PICNIKER",
+          "sprite": "picnicker.png",
+          "team": [
+            163
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Route 206 (Cycling Road)",
+          "action": "EXIT",
+          "target_area": "SINNOH_ROUTE_206",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "SINNOH_ROUTE_206"
+    },
+    "DISTORTION_WORLD": {
+      "area_type": "dungeon",
+      "route_name": "Distortion World",
+      "region": "sinnoh",
+      "battle_type": "indoor",
+      "wild_pool_percentages": null,
+      "min_rounds": 0,
+      "trainer_pool": [
+        {
+          "name": "Galactic Boss Cyrus",
+          "class": "GALACTIC_BOSS",
+          "sprite": "cyrus.png",
+          "team": [
+            229,
+            430,
+            169,
+            130,
+            461
+          ],
+          "rewards": {
+            "balls": 10
+          },
+          "is_boss_battle": true,
+          "victory_flag": "distortion_world_cleared"
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CONFRONT CYRUS",
+          "action": "GALACTIC_GAUNTLET",
+          "flag_condition": "not distortion_world_cleared",
+          "color": "GOLD"
+        },
+        {
+          "text": "Spear Pillar",
+          "action": "EXIT",
+          "target_area": "SPEAR_PILLAR",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "SPEAR_PILLAR"
+    },
+    "SINNOH_BATTLE_FRONTIER": {
+      "area_type": "dungeon",
+      "route_name": "Battle Frontier",
+      "region": "sinnoh",
+      "battle_type": "indoor",
+      "wild_pool_percentages": null,
+      "min_rounds": 0,
+      "trainer_pool": [
+        {
+          "name": "Arcade Star Dahlia",
+          "class": "FRONTIER_BRAIN",
+          "sprite": "master.png",
+          "team": [
+            308,
+            272,
+            477
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        },
+        {
+          "name": "Castle Valet Darach",
+          "class": "FRONTIER_BRAIN",
+          "sprite": "master.png",
+          "team": [
+            395,
+            398,
+            229
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        },
+        {
+          "name": "Tower Tycoon Palmer",
+          "class": "FRONTIER_BRAIN",
+          "sprite": "master.png",
+          "team": [
+            464,
+            350,
+            149
+          ],
+          "rewards": {
+            "balls": 10
+          },
+          "is_boss_battle": true,
+          "victory_flag": "sinnoh_battle_frontier_cleared"
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "TAKE THE FRONTIER CHALLENGE",
+          "action": "GALACTIC_GAUNTLET",
+          "flag_condition": "not sinnoh_battle_frontier_cleared",
+          "color": "GOLD"
+        },
+        {
+          "text": "Fight Area",
+          "action": "EXIT",
+          "target_area": "FIGHT_AREA",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "FIGHT_AREA"
+    },
+    "SINNOH_ROUTE_224": {
+      "area_type": "wild_route",
+      "route_name": "Route 224",
+      "region": "sinnoh",
+      "battle_type": "grass",
+      "wild_pool_percentages": "SINNOH_ROUTE_224_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Ace Trainer Ruben",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            274,
+            130
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Psychic Maxwell",
+          "class": "PSYCHIC",
+          "sprite": "psychic.png",
+          "team": [
+            200,
+            93
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Black Belt Carl",
+          "class": "BLACKBELT",
+          "sprite": "blackbelt.png",
+          "team": [
+            236,
+            106
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Veteran Armando",
+          "class": "VETERAN",
+          "sprite": "veteran.png",
+          "team": [
+            89,
+            262,
+            108
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        },
+        {
+          "name": "Psychic Brittney",
+          "class": "PSYCHIC",
+          "sprite": "psychic_m.png",
+          "team": [
+            96,
+            65
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Ace Trainer Jamie",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "team": [
+            376
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Ruin Maniac Larry",
+          "class": "RUIN_MANIAC",
+          "sprite": "larry.png",
+          "team": [
+            142
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Dragon Tamer Hayden",
+          "class": "DRAGON_TAMER",
+          "sprite": "dragon_tamer.png",
+          "team": [
+            334,
+            117
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Victory Road",
+          "action": "EXIT",
+          "target_area": "VICTORY_ROAD_SINNOH",
+          "condition": "can_exit",
+          "color": "RED"
+        },
+        {
+          "text": "Flower Paradise",
+          "action": "EXIT",
+          "target_area": "FLOWER_PARADISE",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "VICTORY_ROAD_SINNOH"
+    },
+    "SINNOH_ROUTE_230": {
+      "area_type": "wild_route",
+      "route_name": "Route 230",
+      "region": "sinnoh",
+      "battle_type": "ocean",
+      "can_fish": true,
+      "wild_pool_percentages": "SINNOH_ROUTE_230_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Swimmer Glenn",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [
+            224,
+            61
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Swimmer Joanna",
+          "class": "SWIMMER",
+          "sprite": "swimmer_f.png",
+          "team": [
+            370,
+            131
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Swimmer Kurt",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [
+            98,
+            341,
+            99
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        },
+        {
+          "name": "Swimmer Sophia",
+          "class": "SWIMMER",
+          "sprite": "swimmer_f.png",
+          "team": [
+            225,
+            226
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Swimmer Sam",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [
+            364,
+            423
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Swimmer Mallory",
+          "class": "SWIMMER",
+          "sprite": "swimmer_f.png",
+          "team": [
+            283,
+            271
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "FISH",
+          "action": "FISH",
+          "condition": "can_fish",
+          "color": "ORANGE"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Route 229",
+          "action": "EXIT",
+          "target_area": "SINNOH_ROUTE_229",
+          "condition": [
+            "can_exit",
+            "has_item:HM_SURF"
+          ],
+          "color": "RED"
+        },
+        {
+          "text": "Fight Area",
+          "action": "EXIT",
+          "target_area": "FIGHT_AREA",
+          "condition": [
+            "can_exit",
+            "has_item:HM_SURF"
+          ],
+          "color": "RED"
+        }
+      ],
+      "next_area": "SINNOH_ROUTE_229"
+    },
+    "RESORT_AREA": {
+      "area_type": "town",
+      "route_name": "Resort Area",
+      "region": "sinnoh",
+      "has_gym": false,
+      "travel_options": [
+        {
+          "text": "Route 229",
+          "target_area": "SINNOH_ROUTE_229"
+        }
+      ],
+      "explore_options": [],
+      "next_area": "SINNOH_ROUTE_229"
+    },
+    "SINNOH_ROUTE_229": {
+      "area_type": "wild_route",
+      "route_name": "Route 229",
+      "region": "sinnoh",
+      "battle_type": "forest",
+      "can_fish": true,
+      "wild_pool_percentages": "SINNOH_ROUTE_229_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Pkmn Ranger Deshawn",
+          "class": "POKEMON_RANGER",
+          "sprite": "ranger_m.png",
+          "team": [
+            327,
+            352,
+            210
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        },
+        {
+          "name": "Ace Trainer Felix",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "team": [
+            356,
+            373
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Ace Trainer Dana",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            262,
+            281
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Ace Trainer Sandra",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "team": [
+            51,
+            26,
+            38
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "FISH",
+          "action": "FISH",
+          "condition": "can_fish",
+          "color": "ORANGE"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Route 228",
+          "action": "EXIT",
+          "target_area": "SINNOH_ROUTE_228",
+          "condition": "can_exit",
+          "color": "RED"
+        },
+        {
+          "text": "Resort Area",
+          "action": "EXIT",
+          "target_area": "RESORT_AREA",
+          "condition": "can_exit",
+          "color": "RED"
+        },
+        {
+          "text": "Route 230",
+          "action": "EXIT",
+          "target_area": "SINNOH_ROUTE_230",
+          "condition": [
+            "can_exit",
+            "has_item:HM_SURF"
+          ],
+          "color": "RED"
+        }
+      ],
+      "next_area": "SINNOH_ROUTE_228"
+    },
+    "SINNOH_ROUTE_228": {
+      "area_type": "wild_route",
+      "route_name": "Route 228",
+      "region": "sinnoh",
+      "battle_type": "sand",
+      "can_fish": true,
+      "wild_pool_percentages": "SINNOH_ROUTE_228_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Ace Trainer Jose",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            55,
+            28,
+            310
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        },
+        {
+          "name": "Ace Trainer Moira",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "team": [
+            28,
+            423,
+            344
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        },
+        {
+          "name": "Pkmn Ranger Kyler",
+          "class": "POKEMON_RANGER",
+          "sprite": "ranger_m.png",
+          "team": [
+            102,
+            335,
+            395
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        },
+        {
+          "name": "Pkmn Ranger Krista",
+          "class": "POKEMON_RANGER",
+          "sprite": "ranger_m.png",
+          "team": [
+            305,
+            105
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Dragon Tamer Keegan",
+          "class": "DRAGON_TAMER",
+          "sprite": "dragon_tamer.png",
+          "team": [
+            328,
+            329
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Psychic Corbin",
+          "class": "PSYCHIC",
+          "sprite": "psychic.png",
+          "team": [
+            178,
+            475
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Ace Trainer Meagan",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            301,
+            460
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Black Belt Davon",
+          "class": "BLACKBELT",
+          "sprite": "blackbelt.png",
+          "team": [
+            236,
+            296,
+            68
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "FISH",
+          "action": "FISH",
+          "condition": "can_fish",
+          "color": "ORANGE"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Route 226",
+          "action": "EXIT",
+          "target_area": "SINNOH_ROUTE_226",
+          "condition": [
+            "can_exit",
+            "has_item:HM_SURF"
+          ],
+          "color": "RED"
+        },
+        {
+          "text": "Route 229",
+          "action": "EXIT",
+          "target_area": "SINNOH_ROUTE_229",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "SINNOH_ROUTE_226"
+    },
+    "SINNOH_ROUTE_227": {
+      "area_type": "wild_route",
+      "route_name": "Route 227",
+      "region": "sinnoh",
+      "battle_type": "mountain",
+      "wild_pool_percentages": "SINNOH_ROUTE_227_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Ace Trainer Saul",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            128
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Pkmn Ranger Felicia",
+          "class": "POKEMON_RANGER",
+          "sprite": "ranger_m.png",
+          "team": [
+            188,
+            428
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Black Belt Griffin",
+          "class": "BLACKBELT",
+          "sprite": "blackbelt.png",
+          "team": [
+            286,
+            308
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Ace Trainer Mikayla",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "team": [
+            336,
+            53,
+            359
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Route 226",
+          "action": "EXIT",
+          "target_area": "SINNOH_ROUTE_226",
+          "condition": "can_exit",
+          "color": "RED"
+        },
+        {
+          "text": "Stark Mountain",
+          "action": "EXIT",
+          "target_area": "STARK_MOUNTAIN",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "SINNOH_ROUTE_226"
+    },
+    "SINNOH_ROUTE_226": {
+      "area_type": "wild_route",
+      "route_name": "Route 226",
+      "region": "sinnoh",
+      "battle_type": "mountain",
+      "can_fish": true,
+      "wild_pool_percentages": "SINNOH_ROUTE_226_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Swimmer Lydia",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [
+            183,
+            363,
+            320
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        },
+        {
+          "name": "Ace Trainer Graham",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "team": [
+            236,
+            107
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Bird Keeper Geneva",
+          "class": "BIRD_KEEPER",
+          "sprite": "bird_keeper.png",
+          "team": [
+            22,
+            178
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Dragon Tamer Stanley",
+          "class": "DRAGON_TAMER",
+          "sprite": "dragon_tamer.png",
+          "team": [
+            147,
+            334
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Swimmer Wade",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [
+            318,
+            318,
+            319
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "FISH",
+          "action": "FISH",
+          "condition": "can_fish",
+          "color": "ORANGE"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Survival Area",
+          "action": "EXIT",
+          "target_area": "SURVIVAL_AREA",
+          "condition": "can_exit",
+          "color": "RED"
+        },
+        {
+          "text": "Route 227",
+          "action": "EXIT",
+          "target_area": "SINNOH_ROUTE_227",
+          "condition": "can_exit",
+          "color": "RED"
+        },
+        {
+          "text": "Route 228",
+          "action": "EXIT",
+          "target_area": "SINNOH_ROUTE_228",
+          "condition": [
+            "can_exit",
+            "has_item:HM_SURF"
+          ],
+          "color": "RED"
+        }
+      ],
+      "next_area": "SURVIVAL_AREA"
+    },
+    "SURVIVAL_AREA": {
+      "area_type": "town",
+      "route_name": "Survival Area",
+      "region": "sinnoh",
+      "has_gym": false,
+      "travel_options": [
+        {
+          "text": "Route 225",
+          "target_area": "SINNOH_ROUTE_225"
+        },
+        {
+          "text": "Route 226",
+          "target_area": "SINNOH_ROUTE_226"
+        }
+      ],
+      "explore_options": [
+        {
+          "text": "Pok\u00e9mon Center",
+          "action": "HEAL"
+        },
+        {
+          "text": "Shop",
+          "action": "SHOP"
+        }
+      ],
+      "next_area": "SINNOH_ROUTE_225"
+    },
+    "SINNOH_ROUTE_225": {
+      "area_type": "wild_route",
+      "route_name": "Route 225",
+      "region": "sinnoh",
+      "battle_type": "mountain",
+      "can_fish": true,
+      "wild_pool_percentages": "SINNOH_ROUTE_225_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Ace Trainer Rodolfo",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            121,
+            329
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Pkmn Ranger Ashlee",
+          "class": "POKEMON_RANGER",
+          "sprite": "ranger_m.png",
+          "team": [
+            264,
+            24
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Bird Keeper Audrey",
+          "class": "BIRD_KEEPER",
+          "sprite": "bird_keeper.png",
+          "team": [
+            276,
+            83,
+            18
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        },
+        {
+          "name": "Psychic Daisy",
+          "class": "PSYCHIC",
+          "sprite": "psychic.png",
+          "team": [
+            79,
+            80
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Dragon Tamer Geoffrey",
+          "class": "DRAGON_TAMER",
+          "sprite": "dragon_tamer.png",
+          "team": [
+            444,
+            334
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Ace Trainer Deanna",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "team": [
+            180,
+            357
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Pkmn Ranger Dwayne",
+          "class": "POKEMON_RANGER",
+          "sprite": "ranger_m.png",
+          "team": [
+            227,
+            55,
+            232
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        },
+        {
+          "name": "Ace Trainer Quinn",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "team": [
+            127,
+            171
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "FISH",
+          "action": "FISH",
+          "condition": "can_fish",
+          "color": "ORANGE"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Fight Area",
+          "action": "EXIT",
+          "target_area": "FIGHT_AREA",
+          "condition": "can_exit",
+          "color": "RED"
+        },
+        {
+          "text": "Survival Area",
+          "action": "EXIT",
+          "target_area": "SURVIVAL_AREA",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "FIGHT_AREA"
+    },
+    "FIGHT_AREA": {
+      "area_type": "town",
+      "route_name": "Fight Area",
+      "region": "sinnoh",
+      "has_gym": false,
+      "travel_options": [
+        {
+          "text": "Snowpoint City",
+          "target_area": "SNOWPOINT_CITY"
+        },
+        {
+          "text": "Route 225",
+          "target_area": "SINNOH_ROUTE_225"
+        },
+        {
+          "text": "Route 230",
+          "target_area": "SINNOH_ROUTE_230"
+        },
+        {
+          "text": "Battle Frontier",
+          "target_area": "SINNOH_BATTLE_FRONTIER"
+        }
+      ],
+      "explore_options": [
+        {
+          "text": "Pok\u00e9mon Center",
+          "action": "HEAL"
+        },
+        {
+          "text": "Shop",
+          "action": "SHOP"
+        }
+      ],
+      "next_area": "SNOWPOINT_CITY"
+    },
+    "SINNOH_ROUTE_221": {
+      "area_type": "wild_route",
+      "route_name": "Route 221",
+      "region": "sinnoh",
+      "battle_type": "grass",
+      "wild_pool_percentages": "SINNOH_ROUTE_221_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Swimmer Dillon",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [
+            223,
+            419
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Swimmer Vanessa",
+          "class": "SWIMMER",
+          "sprite": "swimmer_f.png",
+          "team": [
+            55
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Fisherman Cory",
+          "class": "FISHERMAN",
+          "sprite": "fisherman.png",
+          "team": [
+            456,
+            456,
+            456
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        },
+        {
+          "name": "Collector Ivan",
+          "class": "POKEMANIAC",
+          "sprite": "pokemaniac.png",
+          "team": [
+            176
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Ace Trainer Jake",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            398,
+            203
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Ace Trainer Shannon",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "team": [
+            421,
+            184,
+            428
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Route 220",
+          "action": "EXIT",
+          "target_area": "SINNOH_ROUTE_220",
+          "condition": [
+            "can_exit",
+            "has_item:HM_SURF"
+          ],
+          "color": "RED"
+        }
+      ],
+      "next_area": "SINNOH_ROUTE_220"
+    },
+    "SINNOH_ROUTE_220": {
+      "area_type": "wild_route",
+      "route_name": "Route 220",
+      "region": "sinnoh",
+      "battle_type": "ocean",
+      "can_fish": true,
+      "wild_pool_percentages": "SINNOH_ROUTE_220_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Swimmer Erik",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [
+            73
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Swimmer Vincent",
+          "class": "SWIMMER",
+          "sprite": "swimmer_f.png",
+          "team": [
+            279,
+            423
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Swimmer Jessica",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [
+            118,
+            118,
+            118,
+            119
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        },
+        {
+          "name": "Swimmer Erica",
+          "class": "SWIMMER",
+          "sprite": "swimmer_f.png",
+          "team": [
+            456
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Swimmer Adrian",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [
+            223,
+            72,
+            224
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        },
+        {
+          "name": "Swimmer Katelyn",
+          "class": "SWIMMER",
+          "sprite": "swimmer_f.png",
+          "team": [
+            418,
+            308,
+            119
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        },
+        {
+          "name": "Swimmer Claire",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [
+            419
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "FISH",
+          "action": "FISH",
+          "condition": "can_fish",
+          "color": "ORANGE"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Route 219",
+          "action": "EXIT",
+          "target_area": "SINNOH_ROUTE_219",
+          "condition": "can_exit",
+          "color": "RED"
+        },
+        {
+          "text": "Route 221",
+          "action": "EXIT",
+          "target_area": "SINNOH_ROUTE_221",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "SINNOH_ROUTE_219"
+    },
+    "SINNOH_ROUTE_219": {
+      "area_type": "wild_route",
+      "route_name": "Route 219",
+      "region": "sinnoh",
+      "battle_type": "water",
+      "can_fish": true,
+      "wild_pool_percentages": "SINNOH_ROUTE_219_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Tuber Trenton",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [
+            422,
+            422
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Tuber Mariel",
+          "class": "SWIMMER",
+          "sprite": "swimmer_f.png",
+          "team": [
+            183,
+            183
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "FISH",
+          "action": "FISH",
+          "condition": "can_fish",
+          "color": "ORANGE"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Sandgem Town",
+          "action": "EXIT",
+          "target_area": "SANDGEM_TOWN",
+          "condition": "can_exit",
+          "color": "RED"
+        },
+        {
+          "text": "Route 220",
+          "action": "EXIT",
+          "target_area": "SINNOH_ROUTE_220",
+          "condition": [
+            "can_exit",
+            "has_item:HM_SURF"
+          ],
+          "color": "RED"
+        }
+      ],
+      "next_area": "SANDGEM_TOWN"
+    },
     "TWINLEAF_TOWN": {
       "area_type": "town",
       "route_name": "Twinleaf Town",
@@ -221,7 +2627,8 @@
       "has_gym": false,
       "travel_options": [
         { "text": "Route 201", "target_area": "SINNOH_ROUTE_201" },
-        { "text": "Route 202", "target_area": "SINNOH_ROUTE_202" }
+        { "text": "Route 202", "target_area": "SINNOH_ROUTE_202" },
+        {"text": "Route 219", "target_area": "SINNOH_ROUTE_219"}
       ],
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
@@ -309,7 +2716,8 @@
       "travel_options": [
         { "text": "Route 207", "target_area": "SINNOH_ROUTE_207", "condition": "galactic_eterna_cleared" },
         { "text": "Route 203", "target_area": "SINNOH_ROUTE_203" },
-        { "text": "Oreburgh Mine", "target_area": "OREBURGH_MINE" }
+        { "text": "Oreburgh Mine", "target_area": "OREBURGH_MINE" },
+        {"text": "Oreburgh Gate", "target_area": "OREBURGH_GATE"}
       ],
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
@@ -330,7 +2738,8 @@
         { "text": "Route 204", "target_area": "SINNOH_ROUTE_204" },
         { "text": "Route 205", "target_area": "SINNOH_ROUTE_205", "condition": "windworks_cleared" },
         { "text": "Valley Windworks", "target_area": "VALLEY_WINDWORKS" },
-        { "text": "Flower Paradise", "target_area": "FLOWER_PARADISE", "condition": "beat_sinnoh_champion" }
+        { "text": "Flower Paradise", "target_area": "FLOWER_PARADISE", "condition": "beat_sinnoh_champion" },
+        {"text": "Floaroma Meadow", "target_area": "FLOAROMA_MEADOW"}
       ],
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
@@ -396,7 +2805,9 @@
         { "text": "Route 205", "target_area": "SINNOH_ROUTE_205" },
         { "text": "Route 206", "target_area": "SINNOH_ROUTE_206", "condition": "galactic_eterna_cleared" },
         { "text": "Route 211", "target_area": "SINNOH_ROUTE_211", "condition": "galactic_eterna_cleared" },
-        { "text": "Eterna Forest", "target_area": "ETERNA_FOREST" }
+        { "text": "Eterna Forest", "target_area": "ETERNA_FOREST" },
+        {"text": "Galactic Eterna Building", "target_area": "ETERNA_GALACTIC_BUILDING", "condition": "has_forest_badge"},
+        {"text": "Grand Underground", "target_area": "GRAND_UNDERGROUND"}
       ],
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
@@ -587,7 +2998,8 @@
       "travel_options": [
         { "text": "Route 214", "target_area": "SINNOH_ROUTE_214" },
         { "text": "Route 215", "target_area": "SINNOH_ROUTE_215" },
-        { "text": "Team Galactic HQ", "target_area": "TEAM_GALACTIC_HQ", "flag_condition": "has_galactic_key" }
+        { "text": "Team Galactic HQ", "target_area": "TEAM_GALACTIC_HQ", "flag_condition": "has_galactic_key" },
+        {"text": "Galactic Warehouse", "target_area": "GALACTIC_WAREHOUSE", "condition": "has_cobble_badge"}
       ],
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
@@ -886,7 +3298,9 @@
         { "text": "Route 216", "target_area": "SINNOH_ROUTE_216" },
         { "text": "Route 217", "target_area": "SINNOH_ROUTE_217" },
         { "text": "Lake Acuity", "target_area": "LAKE_ACUITY" },
-        { "text": "Snowpoint Temple", "target_area": "SNOWPOINT_TEMPLE", "flag_condition": "has_icicle_badge" }
+        { "text": "Snowpoint Temple", "target_area": "SNOWPOINT_TEMPLE", "flag_condition": "has_icicle_badge" },
+        {"text": "Fight Area", "target_area": "FIGHT_AREA", "condition": "beat_sinnoh_champion"},
+        {"text": "Acuity Lakefront", "target_area": "ACUITY_LAKEFRONT"}
       ],
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
@@ -953,8 +3367,7 @@
       "travel_options": [
         { "text": "Route 222", "target_area": "SINNOH_ROUTE_222" },
         { "text": "Route 223", "target_area": "SINNOH_ROUTE_223", "flag_condition": "has_beacon_badge" },
-        { "text": "Victory Road", "target_area": "VICTORY_ROAD_SINNOH", "condition": "has_item:HM_WATERFALL" },
-        { "text": "Stark Mountain (Ferry)", "target_area": "STARK_MOUNTAIN", "condition": "beat_sinnoh_champion" }
+        { "text": "Victory Road", "target_area": "VICTORY_ROAD_SINNOH", "condition": "has_item:HM_WATERFALL" }
       ],
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
@@ -1077,7 +3490,8 @@
         },
         { "text": "Mesprit's Lair", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD" },
         { "text": "Route 201", "action": "EXIT", "target_area": "SINNOH_ROUTE_201", "condition": "can_exit", "color": "RED" },
-        { "text": "TWINLEAF TOWN", "action": "EXIT", "target_area": "TWINLEAF_TOWN", "condition": "can_exit", "color": "RED" }
+        { "text": "TWINLEAF TOWN", "action": "EXIT", "target_area": "TWINLEAF_TOWN", "condition": "can_exit", "color": "RED" },
+        {"text": "Verity Lakefront", "action": "EXIT", "target_area": "VERITY_LAKEFRONT", "condition": "can_exit", "color": "RED"}
       ],
       "area_boss": { "id": 481, "name": "Mesprit", "victory_flag": "LAKE_VERITY_boss_defeated" }
     },
@@ -1109,7 +3523,8 @@
           "target_area": "SINNOH_ROUTE_222",
           "condition": ["can_exit", "spear_pillar_resolved"],
           "color": "RED"
-        }
+        },
+        {"text": "Valor Lakefront", "action": "EXIT", "target_area": "VALOR_LAKEFRONT", "condition": "can_exit", "color": "RED"}
       ],
       "area_boss": { "id": 482, "name": "Azelf", "victory_flag": "LAKE_VALOR_boss_defeated" }
     },
@@ -1134,7 +3549,8 @@
         },
         { "text": "Uxie's Lair", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD" },
         { "text": "Route 217", "action": "EXIT", "target_area": "SINNOH_ROUTE_217", "condition": "can_exit", "color": "RED" },
-        { "text": "SNOWPOINT CITY", "action": "EXIT", "target_area": "SNOWPOINT_CITY", "condition": "can_exit", "color": "RED" }
+        { "text": "SNOWPOINT CITY", "action": "EXIT", "target_area": "SNOWPOINT_CITY", "condition": "can_exit", "color": "RED" },
+        {"text": "Acuity Lakefront", "action": "EXIT", "target_area": "ACUITY_LAKEFRONT", "condition": "can_exit", "color": "RED"}
       ],
       "area_boss": { "id": 480, "name": "Uxie", "victory_flag": "LAKE_ACUITY_boss_defeated" },
       "weather": "SNOW"
@@ -1237,7 +3653,8 @@
           "condition": ["boss_defeated", "beat_sinnoh_champion"]
         },
         { "text": "SPATIAL RIFT", "target_area": "SPEAR_PILLAR_RIFT", "action": "EXIT", "color": "GOLD", "condition": "boss_defeated" },
-        { "text": "Mt. Coronet", "action": "EXIT", "target_area": "MT_CORONET_BASE", "condition": "can_exit", "color": "RED" }
+        { "text": "Mt. Coronet", "action": "EXIT", "target_area": "MT_CORONET_BASE", "condition": "can_exit", "color": "RED" },
+        {"text": "Distortion World", "action": "EXIT", "target_area": "DISTORTION_WORLD", "condition": ["can_exit", "spear_pillar_resolved"], "color": "RED"}
       ],
       "area_boss": { "id": 483, "name": "Dialga", "victory_flag": "SPEAR_PILLAR_boss_defeated" }
     },
@@ -1353,7 +3770,8 @@
       "backgrounds": { "main": "solaceon_ruins.png" },
       "route_menu": [
         { "text": "CATCH WILD PKMN (UNOWN)", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "Solaceon Town", "action": "EXIT", "target_area": "SOLACEON_TOWN", "condition": "can_exit", "color": "RED" }
+        { "text": "Solaceon Town", "action": "EXIT", "target_area": "SOLACEON_TOWN", "condition": "can_exit", "color": "RED" },
+        {"text": "Maniac Tunnel", "action": "EXIT", "target_area": "MANIAC_TUNNEL", "condition": "can_exit", "color": "RED"}
       ]
     },
     "GREAT_MARSH": {
@@ -1460,7 +3878,8 @@
         },
         { "text": "Sunyshore City", "action": "EXIT", "target_area": "SUNYSHORE_CITY", "condition": "can_exit", "color": "RED" },
         { "text": "Pokémon League", "action": "EXIT", "target_area": "SINNOH_POKEMON_LEAGUE", "condition": "can_exit", "color": "RED" },
-        { "text": "ROUTE 223", "action": "EXIT", "target_area": "SINNOH_ROUTE_223", "condition": "can_exit", "color": "RED" }
+        { "text": "ROUTE 223", "action": "EXIT", "target_area": "SINNOH_ROUTE_223", "condition": "can_exit", "color": "RED" },
+        {"text": "Route 224", "action": "EXIT", "target_area": "SINNOH_ROUTE_224", "condition": ["can_exit", "beat_sinnoh_champion"], "color": "RED"}
       ]
     },
     "SINNOH_ROUTE_201": {
@@ -1493,7 +3912,8 @@
         { "text": "PICK BERRIES", "action": "BERRY", "condition": "has_berry_pouch", "color": "GREEN" },
         { "text": "Twinleaf Town", "action": "EXIT", "target_area": "TWINLEAF_TOWN", "condition": "can_exit", "color": "RED" },
         { "text": "Sandgem Town", "action": "EXIT", "target_area": "SANDGEM_TOWN", "condition": "can_exit", "color": "RED" },
-        { "text": "Lake Verity", "action": "EXIT", "target_area": "LAKE_VERITY", "condition": "can_exit", "color": "RED" }
+        { "text": "Lake Verity", "action": "EXIT", "target_area": "LAKE_VERITY", "condition": "can_exit", "color": "RED" },
+        {"text": "Verity Lakefront", "action": "EXIT", "target_area": "VERITY_LAKEFRONT", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "SANDGEM_TOWN",
       "day_pool_percentages": "SINNOH_ROUTE_201_DAY_PERCENTAGES",
@@ -1579,7 +3999,8 @@
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
         { "text": "PICK BERRIES", "action": "BERRY", "condition": "has_berry_pouch", "color": "GREEN" },
         { "text": "Jubilife City", "action": "EXIT", "target_area": "JUBILIFE_CITY", "condition": "can_exit", "color": "RED" },
-        { "text": "Oreburgh City", "action": "EXIT", "target_area": "OREBURGH_CITY", "condition": "can_exit", "color": "RED" }
+        { "text": "Oreburgh City", "action": "EXIT", "target_area": "OREBURGH_CITY", "condition": "can_exit", "color": "RED" },
+        {"text": "Oreburgh Gate", "action": "EXIT", "target_area": "OREBURGH_GATE", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "OREBURGH_CITY",
       "day_pool_percentages": "SINNOH_ROUTE_203_DAY_PERCENTAGES",
@@ -1622,7 +4043,8 @@
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
         { "text": "PICK BERRIES", "action": "BERRY", "condition": "has_berry_pouch", "color": "GREEN" },
         { "text": "Jubilife City", "action": "EXIT", "target_area": "JUBILIFE_CITY", "condition": "can_exit", "color": "RED" },
-        { "text": "Floaroma Town", "action": "EXIT", "target_area": "FLOAROMA_TOWN", "condition": "can_exit", "color": "RED" }
+        { "text": "Floaroma Town", "action": "EXIT", "target_area": "FLOAROMA_TOWN", "condition": "can_exit", "color": "RED" },
+        {"text": "Ravaged Path", "action": "EXIT", "target_area": "RAVAGED_PATH", "condition": ["can_exit", "has_coal_badge"], "color": "RED"}
       ],
       "next_area": "FLOAROMA_TOWN",
       "day_pool_percentages": "SINNOH_ROUTE_204_DAY_PERCENTAGES",
@@ -1668,7 +4090,8 @@
         { "text": "PICK BERRIES", "action": "BERRY", "condition": "has_berry_pouch", "color": "GREEN" },
         { "text": "Floaroma Town", "action": "EXIT", "target_area": "FLOAROMA_TOWN", "condition": "can_exit", "color": "RED" },
         { "text": "Eterna City", "action": "EXIT", "target_area": "ETERNA_CITY", "condition": "can_exit", "color": "RED" },
-        { "text": "Eterna Forest", "action": "EXIT", "target_area": "ETERNA_FOREST", "condition": "can_exit", "color": "RED" }
+        { "text": "Eterna Forest", "action": "EXIT", "target_area": "ETERNA_FOREST", "condition": "can_exit", "color": "RED" },
+        {"text": "Fuego Ironworks", "action": "EXIT", "target_area": "FUEGO_IRONWORKS", "condition": ["can_exit", "has_item:HM_SURF"], "color": "RED"}
       ],
       "next_area": "ETERNA_CITY",
       "day_pool_percentages": "SINNOH_ROUTE_205_DAY_PERCENTAGES",
@@ -1704,7 +4127,8 @@
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
         { "text": "PICK BERRIES", "action": "BERRY", "condition": "has_berry_pouch", "color": "GREEN" },
         { "text": "Eterna City", "action": "EXIT", "target_area": "ETERNA_CITY", "condition": "can_exit", "color": "RED" },
-        { "text": "Route 207", "action": "EXIT", "target_area": "SINNOH_ROUTE_207", "condition": "can_exit", "color": "RED" }
+        { "text": "Route 207", "action": "EXIT", "target_area": "SINNOH_ROUTE_207", "condition": "can_exit", "color": "RED" },
+        {"text": "Wayward Cave", "action": "EXIT", "target_area": "WAYWARD_CAVE", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "SINNOH_ROUTE_207",
       "day_pool_percentages": "SINNOH_ROUTE_206_DAY_PERCENTAGES",
@@ -1811,7 +4235,8 @@
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
         { "text": "PICK BERRIES", "action": "BERRY", "condition": "has_berry_pouch", "color": "GREEN" },
         { "text": "Hearthome City", "action": "EXIT", "target_area": "HEARTHOME_CITY", "condition": "can_exit", "color": "RED" },
-        { "text": "Solaceon Town", "action": "EXIT", "target_area": "SOLACEON_TOWN", "condition": "can_exit", "color": "RED" }
+        { "text": "Solaceon Town", "action": "EXIT", "target_area": "SOLACEON_TOWN", "condition": "can_exit", "color": "RED" },
+        {"text": "Lost Tower", "action": "EXIT", "target_area": "LOST_TOWER", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "SOLACEON_TOWN",
       "berry_trees": ["RAZZ_BERRY", "BLUK_BERRY"]
@@ -1943,7 +4368,8 @@
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
         { "text": "PICK BERRIES", "action": "BERRY", "condition": "has_berry_pouch", "color": "GREEN" },
         { "text": "Hearthome City", "action": "EXIT", "target_area": "HEARTHOME_CITY", "condition": "can_exit", "color": "RED" },
-        { "text": "Pastoria City", "action": "EXIT", "target_area": "PASTORIA_CITY", "condition": "can_exit", "color": "RED" }
+        { "text": "Pastoria City", "action": "EXIT", "target_area": "PASTORIA_CITY", "condition": "can_exit", "color": "RED" },
+        {"text": "Trophy Garden", "action": "EXIT", "target_area": "TROPHY_GARDEN", "condition": ["can_exit", "beat_sinnoh_champion"], "color": "RED"}
       ],
       "next_area": "PASTORIA_CITY",
       "weather": "RAIN",
@@ -1980,7 +4406,8 @@
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
         { "text": "PICK BERRIES", "action": "BERRY", "condition": "has_berry_pouch", "color": "GREEN" },
         { "text": "Pastoria City", "action": "EXIT", "target_area": "PASTORIA_CITY", "condition": "can_exit", "color": "RED" },
-        { "text": "Lake Valor", "action": "EXIT", "target_area": "LAKE_VALOR", "condition": "can_exit", "color": "RED" }
+        { "text": "Lake Valor", "action": "EXIT", "target_area": "LAKE_VALOR", "condition": "can_exit", "color": "RED" },
+        {"text": "Valor Lakefront", "action": "EXIT", "target_area": "VALOR_LAKEFRONT", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "PASTORIA_CITY",
       "berry_trees": ["SPELON_BERRY", "PAMTRE_BERRY", "WEPEAR_BERRY"]
@@ -2015,7 +4442,10 @@
         { "text": "PICK BERRIES", "action": "BERRY", "condition": "has_berry_pouch", "color": "GREEN" },
         { "text": "TURNBACK CAVE", "target_area": "TURNBACK_CAVE", "action": "EXIT", "color": "GOLD", "condition": "SPEAR_PILLAR_boss_defeated" },
         { "text": "Veilstone City", "action": "EXIT", "target_area": "VEILSTONE_CITY", "condition": "can_exit", "color": "RED" },
-        { "text": "Lake Valor", "action": "EXIT", "target_area": "LAKE_VALOR", "condition": "can_exit", "color": "RED" }
+        { "text": "Lake Valor", "action": "EXIT", "target_area": "LAKE_VALOR", "condition": "can_exit", "color": "RED" },
+        {"text": "Maniac Tunnel", "action": "EXIT", "target_area": "MANIAC_TUNNEL", "condition": "can_exit", "color": "RED"},
+        {"text": "Valor Lakefront", "action": "EXIT", "target_area": "VALOR_LAKEFRONT", "condition": "can_exit", "color": "RED"},
+        {"text": "Sendoff Spring", "action": "EXIT", "target_area": "SENDOFF_SPRING", "condition": ["can_exit", "beat_sinnoh_champion"], "color": "RED"}
       ],
       "next_area": "VEILSTONE_CITY",
       "day_pool_percentages": "SINNOH_ROUTE_214_DAY_PERCENTAGES",
@@ -2127,7 +4557,8 @@
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
         { "text": "Route 216", "action": "EXIT", "target_area": "SINNOH_ROUTE_216", "condition": "can_exit", "color": "RED" },
         { "text": "Snowpoint City", "action": "EXIT", "target_area": "SNOWPOINT_CITY", "condition": "can_exit", "color": "RED" },
-        { "text": "Lake Acuity", "action": "EXIT", "target_area": "LAKE_ACUITY", "condition": "can_exit", "color": "RED" }
+        { "text": "Lake Acuity", "action": "EXIT", "target_area": "LAKE_ACUITY", "condition": "can_exit", "color": "RED" },
+        {"text": "Acuity Lakefront", "action": "EXIT", "target_area": "ACUITY_LAKEFRONT", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "SNOWPOINT_CITY",
       "weather": "SNOW"
@@ -2289,7 +4720,8 @@
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "Enter the Distortion", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD" },
-        { "text": "Route 214", "action": "EXIT", "target_area": "SINNOH_ROUTE_214", "condition": "can_exit", "color": "RED" }
+        { "text": "Route 214", "action": "EXIT", "target_area": "SINNOH_ROUTE_214", "condition": "can_exit", "color": "RED" },
+        {"text": "Sendoff Spring", "action": "EXIT", "target_area": "SENDOFF_SPRING", "condition": ["can_exit", "beat_sinnoh_champion"], "color": "RED"}
       ],
       "area_boss": { "id": 487, "name": "Giratina", "victory_flag": "TURNBACK_CAVE_boss_defeated" },
       "next_area": "SINNOH_ROUTE_214"
@@ -2307,7 +4739,7 @@
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "Face Heatran", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD" },
-        { "text": "Sunyshore City", "action": "EXIT", "target_area": "SUNYSHORE_CITY", "condition": "can_exit", "color": "RED" }
+        {"text": "Route 227", "action": "EXIT", "target_area": "SINNOH_ROUTE_227", "condition": "can_exit", "color": "RED"}
       ],
       "area_boss": { "id": 485, "name": "Heatran", "victory_flag": "STARK_MOUNTAIN_boss_defeated" },
       "next_area": "SUNYSHORE_CITY"
@@ -2363,7 +4795,8 @@
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "Find Shaymin", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD" },
-        { "text": "Floaroma Town", "action": "EXIT", "target_area": "FLOAROMA_TOWN", "condition": "can_exit", "color": "RED" }
+        { "text": "Floaroma Town", "action": "EXIT", "target_area": "FLOAROMA_TOWN", "condition": "can_exit", "color": "RED" },
+        {"text": "Route 224", "action": "EXIT", "target_area": "SINNOH_ROUTE_224", "condition": "can_exit", "color": "RED"}
       ],
       "area_boss": { "id": 492, "name": "Shaymin", "victory_flag": "FLOWER_PARADISE_boss_defeated" },
       "next_area": "FLOAROMA_TOWN",
