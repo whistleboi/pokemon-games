@@ -120,6 +120,7 @@
         },
         {
           "text": "Abra's Teleport (Ruins of Alph)",
+          "heal": "teleport",
           "target_area": "RUINS_OF_ALPH",
           "message": "The guide's Abra glows... and you're back in the Ruins of Alph."
         }
