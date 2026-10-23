@@ -276,7 +276,1776 @@
       "{rival_name}'s Mom: He says he'll be the strongest trainer in Unova. I believe him!"
     ]
   },
+  "VIRBANK_COMPLEX": [504, 519, 240, 81, 239, 592, 456, 98, 211, 58, 109],
+  "VIRBANK_COMPLEX_PERCENTAGES": { "504": 10, "519": 9, "240": 9, "81": 9, "239": 9, "592": 9, "456": 9, "98": 9, "211": 9, "58": 9, "109": 9 },
+  "UNOVA_ROUTE_20": [540, 519, 504, 509, 191, 543, 550, 298, 183, 184, 60, 61],
+  "UNOVA_ROUTE_20_PERCENTAGES": { "540": 12, "519": 8, "504": 8, "509": 8, "191": 8, "543": 8, "550": 8, "298": 8, "183": 8, "184": 8, "60": 8, "61": 8 },
+  "FLOCCESY_RANCH": [506, 298, 504, 179, 54, 519, 447, 550, 60, 61, 186],
+  "FLOCCESY_RANCH_PERCENTAGES": { "506": 10, "298": 9, "504": 9, "179": 9, "54": 9, "519": 9, "447": 9, "550": 9, "60": 9, "61": 9, "186": 9 },
+  "UNOVA_ROUTE_19": [504, 509, 550, 60, 61, 186],
+  "UNOVA_ROUTE_19_PERCENTAGES": { "504": 15, "509": 17, "550": 17, "60": 17, "61": 17, "186": 17 },
+  "RELIC_PASSAGE": [525, 527, 533, 95, 20, 550, 183, 60, 524, 532, 19],
+  "RELIC_PASSAGE_PERCENTAGES": { "525": 10, "527": 9, "533": 9, "95": 9, "20": 9, "550": 9, "183": 9, "60": 9, "524": 9, "532": 9, "19": 9 },
+  "CLAY_TUNNEL": [525, 632, 305, 299, 527, 95, 550, 60],
+  "CLAY_TUNNEL_PERCENTAGES": { "525": 16, "632": 12, "305": 12, "299": 12, "527": 12, "95": 12, "550": 12, "60": 12 },
+  "REVERSAL_MOUNTAIN": [451, 325, 426, 328, 326, 227, 322, 323, 329, 527, 525],
+  "REVERSAL_MOUNTAIN_PERCENTAGES": { "451": 10, "325": 9, "426": 9, "328": 9, "326": 9, "227": 9, "322": 9, "323": 9, "329": 9, "527": 9, "525": 9 },
+  "STRANGE_HOUSE": [607, 574, 20, 42, 354, 575, 577, 578],
+  "STRANGE_HOUSE_PERCENTAGES": { "607": 16, "574": 12, "20": 12, "42": 12, "354": 12, "575": 12, "577": 12, "578": 12 },
+  "UNDELLA_BAY": [278, 458, 279, 363, 592, 223, 320, 226, 321, 364, 365, 593],
+  "UNDELLA_BAY_PERCENTAGES": { "278": 12, "458": 8, "279": 8, "363": 8, "592": 8, "223": 8, "320": 8, "226": 8, "321": 8, "364": 8, "365": 8, "593": 8 },
+  "SEASIDE_CAVE": [527, 55, 525, 86, 602, 592, 370, 90, 603, 213],
+  "SEASIDE_CAVE_PERCENTAGES": { "527": 10, "55": 10, "525": 10, "86": 10, "602": 10, "592": 10, "370": 10, "90": 10, "603": 10, "213": 10 },
+  "NATURE_PRESERVE": [274, 334, 55, 164, 203, 611, 352, 550, 418, 129, 130],
+  "NATURE_PRESERVE_PERCENTAGES": { "274": 10, "334": 9, "55": 9, "164": 9, "203": 9, "611": 9, "352": 9, "550": 9, "418": 9, "129": 9, "130": 9 },
+  "VILLAGE_BRIDGE": [55, 400, 629, 335, 336, 627, 183, 630, 628, 550, 318, 319],
+  "VILLAGE_BRIDGE_PERCENTAGES": { "55": 12, "400": 8, "629": 8, "335": 8, "336": 8, "627": 8, "183": 8, "630": 8, "628": 8, "550": 8, "318": 8, "319": 8 },
+  "CHALLENGERS_CAVE": [525, 527, 75, 108, 302, 303, 447, 550, 60, 61],
+  "CHALLENGERS_CAVE_PERCENTAGES": { "525": 10, "527": 10, "75": 10, "108": 10, "302": 10, "303": 10, "447": 10, "550": 10, "60": 10, "61": 10 },
   "STORY_PROGRESSION": {
+    "CHALLENGERS_CAVE": {
+      "area_type": "dungeon",
+      "route_name": "Challenger's Cave",
+      "region": "unova",
+      "battle_type": "cave",
+      "wild_pool_percentages": "CHALLENGERS_CAVE_PERCENTAGES",
+      "min_rounds": 1,
+      "trainer_pool": [
+        {
+          "name": "Backpacker Toru",
+          "class": "CAMPER",
+          "sprite": "camper.png",
+          "team": [
+            42
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Ace Trainer Terry",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "team": [
+            147,
+            123,
+            185,
+            310
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        },
+        {
+          "name": "Ace Trainer Beverly",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            162,
+            326,
+            444
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        },
+        {
+          "name": "Veteran Shaun",
+          "class": "VETERAN",
+          "sprite": "veteran.png",
+          "team": [
+            130,
+            530,
+            169,
+            621,
+            526,
+            143
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        },
+        {
+          "name": "Veteran Julia",
+          "class": "VETERAN",
+          "sprite": "veteran.png",
+          "team": [
+            413,
+            91,
+            38,
+            542
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Victory Road",
+          "action": "EXIT",
+          "target_area": "VICTORY_ROAD_UNOVA",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "VICTORY_ROAD_UNOVA"
+    },
+    "VILLAGE_BRIDGE": {
+      "area_type": "wild_route",
+      "route_name": "Village Bridge",
+      "region": "unova",
+      "battle_type": "grass",
+      "can_fish": true,
+      "wild_pool_percentages": "VILLAGE_BRIDGE_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Smasher Lizzy",
+          "class": "BATTLE_GIRL",
+          "sprite": "battle_girl.png",
+          "team": [
+            547
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Smasher Amy",
+          "class": "BATTLE_GIRL",
+          "sprite": "battle_girl.png",
+          "team": [
+            549
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Artist Gough",
+          "class": "GENTLEMAN",
+          "sprite": "gentleman.png",
+          "team": [
+            192
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Gentleman Stonewall",
+          "class": "GENTLEMAN",
+          "sprite": "gentleman.png",
+          "team": [
+            632,
+            448
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Baker Chris",
+          "class": "BEAUTY",
+          "sprite": "beauty.png",
+          "team": [
+            631
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Youngster Karl",
+          "class": "YOUNGSTER",
+          "sprite": "youngster.png",
+          "team": [
+            28
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Hoopster Derrick",
+          "class": "YOUNGSTER",
+          "sprite": "youngster.png",
+          "team": [
+            239,
+            125,
+            239
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        },
+        {
+          "name": "Hoopster Nicolas",
+          "class": "YOUNGSTER",
+          "sprite": "youngster.png",
+          "team": [
+            240,
+            126,
+            240
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "FISH",
+          "action": "FISH",
+          "condition": "can_fish",
+          "color": "ORANGE"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Route 11",
+          "action": "EXIT",
+          "target_area": "UNOVA_ROUTE_11",
+          "condition": "can_exit",
+          "color": "RED"
+        },
+        {
+          "text": "Route 12",
+          "action": "EXIT",
+          "target_area": "UNOVA_ROUTE_12",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "UNOVA_ROUTE_11"
+    },
+    "MARVELOUS_BRIDGE": {
+      "area_type": "wild_route",
+      "route_name": "Marvelous Bridge",
+      "region": "unova",
+      "battle_type": "field",
+      "wild_pool_percentages": null,
+      "min_rounds": 0,
+      "trainer_pool": [
+        {
+          "name": "Ace Trainer Glinda",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            594,
+            601,
+            606
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Route 16",
+          "action": "EXIT",
+          "target_area": "UNOVA_ROUTE_16",
+          "condition": "can_exit",
+          "color": "RED"
+        },
+        {
+          "text": "Route 15",
+          "action": "EXIT",
+          "target_area": "UNOVA_ROUTE_15",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "UNOVA_ROUTE_16"
+    },
+    "NATURE_PRESERVE": {
+      "area_type": "wild_route",
+      "route_name": "Nature Preserve",
+      "region": "unova",
+      "battle_type": "forest",
+      "wild_pool_percentages": "NATURE_PRESERVE_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "Humilau City",
+          "action": "EXIT",
+          "target_area": "HUMILAU_CITY",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "HUMILAU_CITY"
+    },
+    "PLASMA_FRIGATE": {
+      "area_type": "dungeon",
+      "route_name": "Plasma Frigate",
+      "region": "unova",
+      "battle_type": "indoor",
+      "wild_pool_percentages": null,
+      "min_rounds": 0,
+      "trainer_pool": [
+        {
+          "name": "Team Plasma Grunt",
+          "class": "PLASMA_GRUNT",
+          "sprite": "plasma_grunt.png",
+          "team": [
+            109
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Team Plasma Grunt",
+          "class": "PLASMA_GRUNT",
+          "sprite": "plasma_grunt.png",
+          "team": [
+            568
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Team Plasma Grunt",
+          "class": "PLASMA_GRUNT",
+          "sprite": "plasma_grunt.png",
+          "team": [
+            88,
+            552
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Team Plasma Shadow",
+          "class": "PKMN_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "team": [
+            624,
+            624,
+            359
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        },
+        {
+          "name": "Team Plasma Zinzolin",
+          "class": "PKMN_TRAINER",
+          "sprite": "zinzolin.png",
+          "team": [
+            615,
+            615,
+            461
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        },
+        {
+          "name": "PKMN Trainer Colress",
+          "class": "PKMN_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "team": [
+            82,
+            479,
+            376,
+            606,
+            462,
+            601
+          ],
+          "rewards": {
+            "balls": 10
+          },
+          "is_boss_battle": true,
+          "victory_flag": "plasma_frigate_cleared"
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "BOARD THE FRIGATE",
+          "action": "GALACTIC_GAUNTLET",
+          "flag_condition": "not plasma_frigate_cleared",
+          "color": "GOLD"
+        },
+        {
+          "text": "Humilau City",
+          "action": "EXIT",
+          "target_area": "HUMILAU_CITY",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "HUMILAU_CITY"
+    },
+    "SEASIDE_CAVE": {
+      "area_type": "dungeon",
+      "route_name": "Seaside Cave",
+      "region": "unova",
+      "battle_type": "cave",
+      "wild_pool_percentages": "SEASIDE_CAVE_PERCENTAGES",
+      "min_rounds": 1,
+      "trainer_pool": [
+        {
+          "name": "Battle Girl Tia",
+          "class": "BATTLE_GIRL",
+          "sprite": "battle_girl.png",
+          "team": [
+            214
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "PKMN Ranger Mikiko",
+          "class": "PKMN_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "team": [
+            329,
+            207
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "PKMN Ranger Johan",
+          "class": "PKMN_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            95,
+            305
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Black Belt Rocky",
+          "class": "BLACKBELT",
+          "sprite": "blackbelt.png",
+          "team": [
+            524,
+            524,
+            524,
+            524
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        },
+        {
+          "name": "Black Belt Drago",
+          "class": "BLACKBELT",
+          "sprite": "blackbelt.png",
+          "team": [
+            560
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Black Belt Rich",
+          "class": "BLACKBELT",
+          "sprite": "blackbelt.png",
+          "team": [
+            533
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Battle Girl Maki",
+          "class": "BATTLE_GIRL",
+          "sprite": "battle_girl.png",
+          "team": [
+            619
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Undella Bay",
+          "action": "EXIT",
+          "target_area": "UNDELLA_BAY",
+          "condition": "can_exit",
+          "color": "RED"
+        },
+        {
+          "text": "Route 21",
+          "action": "EXIT",
+          "target_area": "UNOVA_ROUTE_21",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "UNDELLA_BAY"
+    },
+    "UNDELLA_BAY": {
+      "area_type": "wild_route",
+      "route_name": "Undella Bay",
+      "region": "unova",
+      "battle_type": "water",
+      "can_fish": true,
+      "wild_pool_percentages": "UNDELLA_BAY_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Swimmer Arissa",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [
+            594
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Ace Trainer Summer",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "team": [
+            279,
+            121
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Swimmer Matt",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [
+            458
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Swimmer Bart",
+          "class": "SWIMMER",
+          "sprite": "swimmer_f.png",
+          "team": [
+            550
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Swimmer Tim",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [
+            364
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Swimmer Mitzi",
+          "class": "SWIMMER",
+          "sprite": "swimmer_f.png",
+          "team": [
+            363,
+            320
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "FISH",
+          "action": "FISH",
+          "condition": "can_fish",
+          "color": "ORANGE"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Undella Town",
+          "action": "EXIT",
+          "target_area": "UNDELLA_TOWN",
+          "condition": "can_exit",
+          "color": "RED"
+        },
+        {
+          "text": "Seaside Cave",
+          "action": "EXIT",
+          "target_area": "SEASIDE_CAVE",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "UNDELLA_TOWN"
+    },
+    "HUMILAU_CITY": {
+      "area_type": "town",
+      "route_name": "Humilau City",
+      "region": "unova",
+      "has_gym": false,
+      "travel_options": [
+        {
+          "text": "Route 21",
+          "target_area": "UNOVA_ROUTE_21"
+        },
+        {
+          "text": "Route 22",
+          "target_area": "UNOVA_ROUTE_22"
+        },
+        {
+          "text": "Undella Town",
+          "target_area": "UNDELLA_TOWN"
+        },
+        {
+          "text": "Plasma Frigate",
+          "target_area": "PLASMA_FRIGATE"
+        },
+        {
+          "text": "Nature Preserve",
+          "target_area": "NATURE_PRESERVE"
+        }
+      ],
+      "explore_options": [
+        {
+          "text": "Pok\u00e9mon Center",
+          "action": "HEAL"
+        },
+        {
+          "text": "Shop",
+          "action": "SHOP"
+        }
+      ],
+      "next_area": "UNOVA_ROUTE_21"
+    },
+    "STRANGE_HOUSE": {
+      "area_type": "dungeon",
+      "route_name": "Strange House",
+      "region": "unova",
+      "battle_type": "indoor",
+      "wild_pool_percentages": "STRANGE_HOUSE_PERCENTAGES",
+      "min_rounds": 1,
+      "trainer_pool": [
+        {
+          "name": "Backpacker Boone",
+          "class": "CAMPER",
+          "sprite": "camper.png",
+          "team": [
+            322,
+            561
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Psychic Lynette",
+          "class": "PSYCHIC",
+          "sprite": "psychic.png",
+          "team": [
+            425,
+            325,
+            426
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Reversal Mountain",
+          "action": "EXIT",
+          "target_area": "REVERSAL_MOUNTAIN",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "REVERSAL_MOUNTAIN"
+    },
+    "REVERSAL_MOUNTAIN": {
+      "area_type": "dungeon",
+      "route_name": "Reversal Mountain",
+      "region": "unova",
+      "battle_type": "cave",
+      "wild_pool_percentages": "REVERSAL_MOUNTAIN_PERCENTAGES",
+      "min_rounds": 1,
+      "trainer_pool": [
+        {
+          "name": "Cyclist Jeremiah",
+          "class": "BIKER",
+          "sprite": "biker.png",
+          "team": [
+            523
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Cyclist Adelaide",
+          "class": "BIKER",
+          "sprite": "biker.png",
+          "team": [
+            521
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Black Belt Corey",
+          "class": "BLACKBELT",
+          "sprite": "blackbelt.png",
+          "team": [
+            533,
+            559,
+            559
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        },
+        {
+          "name": "Backpacker Kumiko",
+          "class": "CAMPER",
+          "sprite": "camper.png",
+          "team": [
+            42,
+            555
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Ace Trainer Cora",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            326,
+            426
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Ace Trainer Ray",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "team": [
+            329,
+            323
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Backpacker Kiyo",
+          "class": "CAMPER",
+          "sprite": "camper.png",
+          "team": [
+            42,
+            581
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Hiker Markus",
+          "class": "HIKER",
+          "sprite": "hiker.png",
+          "team": [
+            533,
+            558
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Lentimas Town",
+          "action": "EXIT",
+          "target_area": "LENTIMAS_TOWN",
+          "condition": "can_exit",
+          "color": "RED"
+        },
+        {
+          "text": "Strange House",
+          "action": "EXIT",
+          "target_area": "STRANGE_HOUSE",
+          "condition": "can_exit",
+          "color": "RED"
+        },
+        {
+          "text": "Undella Town",
+          "action": "EXIT",
+          "target_area": "UNDELLA_TOWN",
+          "condition": [
+            "can_exit",
+            "beat_unova_champion"
+          ],
+          "color": "RED"
+        }
+      ],
+      "next_area": "LENTIMAS_TOWN"
+    },
+    "LENTIMAS_TOWN": {
+      "area_type": "town",
+      "route_name": "Lentimas Town",
+      "region": "unova",
+      "has_gym": false,
+      "travel_options": [
+        {
+          "text": "Mistralton City",
+          "target_area": "MISTRALTON_CITY"
+        },
+        {
+          "text": "Reversal Mountain",
+          "target_area": "REVERSAL_MOUNTAIN"
+        }
+      ],
+      "explore_options": [
+        {
+          "text": "Pok\u00e9mon Center",
+          "action": "HEAL"
+        },
+        {
+          "text": "Shop",
+          "action": "SHOP"
+        }
+      ],
+      "next_area": "MISTRALTON_CITY"
+    },
+    "TUBELINE_BRIDGE": {
+      "area_type": "wild_route",
+      "route_name": "Tubeline Bridge",
+      "region": "unova",
+      "battle_type": "field",
+      "wild_pool_percentages": null,
+      "min_rounds": 0,
+      "trainer_pool": [
+        {
+          "name": "Biker Morgann",
+          "class": "BIKER",
+          "sprite": "biker.png",
+          "team": [
+            626
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Biker Jeremy",
+          "class": "BIKER",
+          "sprite": "biker.png",
+          "team": [
+            595,
+            559,
+            552
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Route 8",
+          "action": "EXIT",
+          "target_area": "UNOVA_ROUTE_8",
+          "condition": "can_exit",
+          "color": "RED"
+        },
+        {
+          "text": "Opelucid City",
+          "action": "EXIT",
+          "target_area": "OPELUCID_CITY",
+          "condition": [
+            "can_exit",
+            "has_freeze_badge"
+          ],
+          "color": "RED"
+        }
+      ],
+      "next_area": "UNOVA_ROUTE_8"
+    },
+    "CLAY_TUNNEL": {
+      "area_type": "dungeon",
+      "route_name": "Clay Tunnel",
+      "region": "unova",
+      "battle_type": "cave",
+      "wild_pool_percentages": "CLAY_TUNNEL_PERCENTAGES",
+      "min_rounds": 1,
+      "trainer_pool": [
+        {
+          "name": "Hiker Teppei",
+          "class": "HIKER",
+          "sprite": "hiker.png",
+          "team": [
+            304,
+            303
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Worker Morgann",
+          "class": "ENGINEER",
+          "sprite": "engineer.png",
+          "team": [
+            302,
+            51
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Hiker Manuel",
+          "class": "HIKER",
+          "sprite": "hiker.png",
+          "team": [
+            528,
+            76
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Worker Herman",
+          "class": "ENGINEER",
+          "sprite": "engineer.png",
+          "team": [
+            50,
+            68
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Worker Paul",
+          "class": "ENGINEER",
+          "sprite": "engineer.png",
+          "team": [
+            530,
+            34,
+            112
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        },
+        {
+          "name": "PKMN Ranger Maxwell",
+          "class": "PKMN_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "team": [
+            205,
+            558,
+            348
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        },
+        {
+          "name": "Worker Leo",
+          "class": "ENGINEER",
+          "sprite": "engineer.png",
+          "team": [
+            95,
+            75,
+            208
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        },
+        {
+          "name": "Worker Brand",
+          "class": "ENGINEER",
+          "sprite": "engineer.png",
+          "team": [
+            75,
+            95,
+            76
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Driftveil City",
+          "action": "EXIT",
+          "target_area": "DRIFTVEIL_CITY",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "DRIFTVEIL_CITY"
+    },
+    "RELIC_PASSAGE": {
+      "area_type": "dungeon",
+      "route_name": "Relic Passage",
+      "region": "unova",
+      "battle_type": "cave",
+      "wild_pool_percentages": "RELIC_PASSAGE_PERCENTAGES",
+      "min_rounds": 1,
+      "trainer_pool": [
+        {
+          "name": "Backpacker Randall",
+          "class": "CAMPER",
+          "sprite": "camper.png",
+          "team": [
+            20
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Hiker Keith",
+          "class": "HIKER",
+          "sprite": "hiker.png",
+          "team": [
+            529,
+            524
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Backpacker Eileen",
+          "class": "CAMPER",
+          "sprite": "camper.png",
+          "team": [
+            28
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Hiker Tobias",
+          "class": "HIKER",
+          "sprite": "hiker.png",
+          "team": [
+            524,
+            532
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Psychic Tully",
+          "class": "PSYCHIC",
+          "sprite": "psychic_m.png",
+          "team": [
+            528
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Psychic Ena",
+          "class": "PSYCHIC",
+          "sprite": "psychic.png",
+          "team": [
+            343,
+            562
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Backpacker Annie",
+          "class": "CAMPER",
+          "sprite": "camper.png",
+          "team": [
+            505
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Scientist Terrance",
+          "class": "SCIENTIST",
+          "sprite": "scientist.png",
+          "team": [
+            88
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Castelia Sewers",
+          "action": "EXIT",
+          "target_area": "CASTELIA_SEWERS",
+          "condition": "can_exit",
+          "color": "RED"
+        },
+        {
+          "text": "Relic Castle",
+          "action": "EXIT",
+          "target_area": "RELIC_CASTLE",
+          "condition": [
+            "can_exit",
+            "has_bolt_badge"
+          ],
+          "color": "RED"
+        }
+      ],
+      "next_area": "CASTELIA_SEWERS"
+    },
+    "ASPERTIA_CITY": {
+      "area_type": "town",
+      "route_name": "Aspertia City",
+      "region": "unova",
+      "has_gym": false,
+      "travel_options": [
+        {
+          "text": "Route 19",
+          "target_area": "UNOVA_ROUTE_19"
+        }
+      ],
+      "explore_options": [
+        {
+          "text": "Pok\u00e9mon Center",
+          "action": "HEAL"
+        },
+        {
+          "text": "Shop",
+          "action": "SHOP"
+        }
+      ],
+      "next_area": "UNOVA_ROUTE_19"
+    },
+    "UNOVA_ROUTE_19": {
+      "area_type": "wild_route",
+      "route_name": "Route 19",
+      "region": "unova",
+      "battle_type": "grass",
+      "wild_pool_percentages": "UNOVA_ROUTE_19_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "Floccesy Town",
+          "action": "EXIT",
+          "target_area": "FLOCCESY_TOWN",
+          "condition": "can_exit",
+          "color": "RED"
+        },
+        {
+          "text": "Aspertia City",
+          "action": "EXIT",
+          "target_area": "ASPERTIA_CITY",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "FLOCCESY_TOWN"
+    },
+    "FLOCCESY_TOWN": {
+      "area_type": "town",
+      "route_name": "Floccesy Town",
+      "region": "unova",
+      "has_gym": false,
+      "travel_options": [
+        {
+          "text": "Route 20",
+          "target_area": "UNOVA_ROUTE_20"
+        },
+        {
+          "text": "Route 19",
+          "target_area": "UNOVA_ROUTE_19"
+        }
+      ],
+      "explore_options": [
+        {
+          "text": "Pok\u00e9mon Center",
+          "action": "HEAL"
+        },
+        {
+          "text": "Shop",
+          "action": "SHOP"
+        }
+      ],
+      "next_area": "UNOVA_ROUTE_20"
+    },
+    "FLOCCESY_RANCH": {
+      "area_type": "wild_route",
+      "route_name": "Floccesy Ranch",
+      "region": "unova",
+      "battle_type": "field",
+      "wild_pool_percentages": "FLOCCESY_RANCH_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Youngster Kenny",
+          "class": "YOUNGSTER",
+          "sprite": "youngster.png",
+          "team": [
+            504,
+            54
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Lass Molly",
+          "class": "LASS",
+          "sprite": "lass.png",
+          "team": [
+            509,
+            540
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Janitor Orville",
+          "class": "ENGINEER",
+          "sprite": "engineer.png",
+          "team": [
+            506,
+            179
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Route 20",
+          "action": "EXIT",
+          "target_area": "UNOVA_ROUTE_20",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "UNOVA_ROUTE_20"
+    },
+    "UNOVA_ROUTE_20": {
+      "area_type": "wild_route",
+      "route_name": "Route 20",
+      "region": "unova",
+      "battle_type": "grass",
+      "can_fish": true,
+      "wild_pool_percentages": "UNOVA_ROUTE_20_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Youngster Terrell",
+          "class": "YOUNGSTER",
+          "sprite": "youngster.png",
+          "team": [
+            504
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Youngster Petey",
+          "class": "YOUNGSTER",
+          "sprite": "youngster.png",
+          "team": [
+            504
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Lass Isabel",
+          "class": "LASS",
+          "sprite": "lass.png",
+          "team": [
+            509
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Hiker Jerome",
+          "class": "HIKER",
+          "sprite": "hiker.png",
+          "team": [
+            447
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Preschooler Albert",
+          "class": "YOUNGSTER",
+          "sprite": "youngster.png",
+          "team": [
+            54
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Preschooler Lin",
+          "class": "YOUNGSTER",
+          "sprite": "youngster.png",
+          "team": [
+            506
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Nursery Aide Kimya",
+          "class": "PKMN_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            206
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Twins Lia & Lily",
+          "class": "TWINS",
+          "sprite": "twins.png",
+          "team": [
+            191,
+            191
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "FISH",
+          "action": "FISH",
+          "condition": "can_fish",
+          "color": "ORANGE"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Virbank City",
+          "action": "EXIT",
+          "target_area": "VIRBANK_CITY",
+          "condition": "can_exit",
+          "color": "RED"
+        },
+        {
+          "text": "Floccesy Town",
+          "action": "EXIT",
+          "target_area": "FLOCCESY_TOWN",
+          "condition": "can_exit",
+          "color": "RED"
+        },
+        {
+          "text": "Floccesy Ranch",
+          "action": "EXIT",
+          "target_area": "FLOCCESY_RANCH",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "VIRBANK_CITY"
+    },
+    "VIRBANK_COMPLEX": {
+      "area_type": "dungeon",
+      "route_name": "Virbank Complex",
+      "region": "unova",
+      "battle_type": "field",
+      "wild_pool_percentages": "VIRBANK_COMPLEX_PERCENTAGES",
+      "min_rounds": 1,
+      "trainer_pool": [
+        {
+          "name": "Youngster Masahiro",
+          "class": "YOUNGSTER",
+          "sprite": "youngster.png",
+          "team": [
+            506
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Youngster Waylon",
+          "class": "YOUNGSTER",
+          "sprite": "youngster.png",
+          "team": [
+            504
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Lass Daya",
+          "class": "LASS",
+          "sprite": "lass.png",
+          "team": [
+            527
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Worker Mitchell",
+          "class": "ENGINEER",
+          "sprite": "engineer.png",
+          "team": [
+            504,
+            239
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Worker Isaac",
+          "class": "ENGINEER",
+          "sprite": "engineer.png",
+          "team": [
+            240,
+            109
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Worker Nathan",
+          "class": "ENGINEER",
+          "sprite": "engineer.png",
+          "team": [
+            447,
+            506
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Virbank City",
+          "action": "EXIT",
+          "target_area": "VIRBANK_CITY",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "VIRBANK_CITY"
+    },
+    "VIRBANK_CITY": {
+      "area_type": "town",
+      "route_name": "Virbank City",
+      "region": "unova",
+      "has_gym": false,
+      "travel_options": [
+        {
+          "text": "Castelia City",
+          "target_area": "CASTELIA_CITY"
+        },
+        {
+          "text": "Virbank Complex",
+          "target_area": "VIRBANK_COMPLEX"
+        },
+        {
+          "text": "Route 20",
+          "target_area": "UNOVA_ROUTE_20"
+        }
+      ],
+      "explore_options": [
+        {
+          "text": "Pok\u00e9mon Center",
+          "action": "HEAL"
+        },
+        {
+          "text": "Shop",
+          "action": "SHOP"
+        }
+      ],
+      "next_area": "CASTELIA_CITY"
+    },
     "NUVEMA_TOWN": {
       "area_type": "town",
       "route_name": "Nuvema Town",
@@ -500,7 +2269,8 @@
         { "text": "Unity Tower", "target_area": "UNITY_TOWER" },
         { "text": "Castelia Sewers", "target_area": "CASTELIA_SEWERS" },
         { "text": "Liberty Garden (Ferry)", "target_area": "LIBERTY_GARDEN", "condition": "beat_unova_champion" },
-            {"text": "Ferry to the Decolore Islands", "long_ride": true, "target_area": "DECOLORE_FERRY", "condition": "beat_unova_champion", "message": "The ferry leaves Castelia's pier for the colorful Decolore Islands."}
+            {"text": "Ferry to the Decolore Islands", "long_ride": true, "target_area": "DECOLORE_FERRY", "condition": "beat_unova_champion", "message": "The ferry leaves Castelia's pier for the colorful Decolore Islands."},
+            {"text": "Virbank City", "target_area": "VIRBANK_CITY"}
         ],
       "explore_options": [
         { "text": "Pokémon Center", "action": "HEAL" },
@@ -658,7 +2428,8 @@
         { "text": "Route 5", "target_area": "UNOVA_ROUTE_5" },
         { "text": "Route 6", "target_area": "UNOVA_ROUTE_6", "condition": "has_quake_badge" },
         { "text": "Cold Storage", "target_area": "COLD_STORAGE" },
-        { "text": "Relic Castle (via Desert)", "target_area": "RELIC_CASTLE" }
+        { "text": "Relic Castle (via Desert)", "target_area": "RELIC_CASTLE" },
+        {"text": "Clay Tunnel", "target_area": "CLAY_TUNNEL", "condition": "beat_unova_champion"}
       ],
       "explore_options": [
         { "text": "Pokémon Center", "action": "HEAL" },
@@ -706,7 +2477,8 @@
       "travel_options": [
         { "text": "Route 7", "target_area": "UNOVA_ROUTE_7", "condition": "has_jet_badge" },
         { "text": "Chargestone Cave", "target_area": "CHARGESTONE_CAVE" },
-        { "text": "Mistralton Cave", "target_area": "MISTRALTON_CAVE" }
+        { "text": "Mistralton Cave", "target_area": "MISTRALTON_CAVE" },
+        {"text": "Lentimas Town", "target_area": "LENTIMAS_TOWN", "condition": "has_jet_badge"}
       ],
       "explore_options": [
         { "text": "Pokémon Center", "action": "HEAL" },
@@ -816,7 +2588,10 @@
         { "text": "Route 13", "target_area": "UNOVA_ROUTE_13" },
         { "text": "Route 14", "target_area": "UNOVA_ROUTE_14" },
         { "text": "Route 21", "target_area": "UNOVA_ROUTE_21" },
-        { "text": "Route 12", "target_area": "UNOVA_ROUTE_12" }
+        { "text": "Route 12", "target_area": "UNOVA_ROUTE_12" },
+        {"text": "Reversal Mountain", "target_area": "REVERSAL_MOUNTAIN"},
+        {"text": "Humilau City", "target_area": "HUMILAU_CITY", "condition": "beat_unova_champion"},
+        {"text": "Undella Bay", "target_area": "UNDELLA_BAY", "condition": "beat_unova_champion"}
       ],
       "explore_options": [
         { "text": "Pokémon Center", "action": "HEAL" },
@@ -863,7 +2638,8 @@
         { "text": "Route 9", "target_area": "UNOVA_ROUTE_9" },
         { "text": "Route 10", "target_area": "UNOVA_ROUTE_10", "condition": "has_legend_badge" },
         { "text": "Route 11", "target_area": "UNOVA_ROUTE_11", "condition": "beat_unova_champion" },
-        { "text": "Route 22", "target_area": "UNOVA_ROUTE_22" }
+        { "text": "Route 22", "target_area": "UNOVA_ROUTE_22" },
+        {"text": "Tubeline Bridge", "target_area": "TUBELINE_BRIDGE"}
       ],
       "explore_options": [
         { "text": "Pokémon Center", "action": "HEAL" },
@@ -1153,7 +2929,8 @@
           "color": "GOLD",
           "flag_condition": "not plasma_castelia_cleared"
         },
-        { "text": "Castelia City", "action": "EXIT", "target_area": "CASTELIA_CITY", "condition": "can_exit", "color": "RED" }
+        { "text": "Castelia City", "action": "EXIT", "target_area": "CASTELIA_CITY", "condition": "can_exit", "color": "RED" },
+        {"text": "Relic Passage", "action": "EXIT", "target_area": "RELIC_PASSAGE", "condition": "can_exit", "color": "RED"}
       ]
     },
     "DESERT_RESORT": {
@@ -1212,7 +2989,8 @@
           "target_area": "DRIFTVEIL_CITY",
           "condition": ["can_exit", "has_bolt_badge"],
           "color": "RED"
-        }
+        },
+        {"text": "Relic Passage", "action": "EXIT", "target_area": "RELIC_PASSAGE", "condition": "can_exit", "color": "RED"}
       ],
       "area_boss": { "id": 637, "name": "Volcarona", "victory_flag": "RELIC_CASTLE_boss_defeated" }
     },
@@ -1503,7 +3281,8 @@
         { "text": "Encounter Terrakion", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD" },
         { "text": "Route 10", "action": "EXIT", "target_area": "UNOVA_ROUTE_10", "condition": "can_exit", "color": "RED" },
         { "text": "Pokémon League", "action": "EXIT", "target_area": "UNOVA_POKEMON_LEAGUE", "condition": "can_exit", "color": "RED" },
-        { "text": "ROUTE 23", "action": "EXIT", "target_area": "UNOVA_ROUTE_23", "condition": "can_exit", "color": "RED" }
+        { "text": "ROUTE 23", "action": "EXIT", "target_area": "UNOVA_ROUTE_23", "condition": "can_exit", "color": "RED" },
+        {"text": "Challenger's Cave", "action": "EXIT", "target_area": "CHALLENGERS_CAVE", "condition": ["can_exit", "beat_unova_champion"], "color": "RED"}
       ],
       "area_boss": { "id": 639, "name": "Terrakion", "victory_flag": "VICTORY_ROAD_UNOVA_boss_defeated" }
     },
@@ -1826,7 +3605,8 @@
           "color": "GOLD"
         },
         { "text": "Icirrus City", "action": "EXIT", "target_area": "ICIRRUS_CITY", "condition": "can_exit", "color": "RED" },
-        { "text": "Moor of Icirrus", "action": "EXIT", "target_area": "MOOR_OF_ICIRRUS", "condition": "can_exit", "color": "RED" }
+        { "text": "Moor of Icirrus", "action": "EXIT", "target_area": "MOOR_OF_ICIRRUS", "condition": "can_exit", "color": "RED" },
+        {"text": "Tubeline Bridge", "action": "EXIT", "target_area": "TUBELINE_BRIDGE", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "ICIRRUS_CITY",
       "area_boss": { "id": 642, "name": "Thundurus", "victory_flag": "UNOVA_ROUTE_8_boss_defeated" }
@@ -1918,7 +3698,8 @@
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
         { "text": "Opelucid City", "action": "EXIT", "target_area": "OPELUCID_CITY", "condition": "can_exit", "color": "RED" },
-        { "text": "Lacunosa Town", "action": "EXIT", "target_area": "LACUNOSA_TOWN", "condition": "can_exit", "color": "RED" }
+        { "text": "Lacunosa Town", "action": "EXIT", "target_area": "LACUNOSA_TOWN", "condition": "can_exit", "color": "RED" },
+        {"text": "Village Bridge", "action": "EXIT", "target_area": "VILLAGE_BRIDGE", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "LACUNOSA_TOWN"
     },
@@ -1943,7 +3724,8 @@
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
         { "text": "Lacunosa Town", "action": "EXIT", "target_area": "LACUNOSA_TOWN", "condition": "can_exit", "color": "RED" },
-        { "text": "Undella Town", "action": "EXIT", "target_area": "UNDELLA_TOWN", "condition": "can_exit", "color": "RED" }
+        { "text": "Undella Town", "action": "EXIT", "target_area": "UNDELLA_TOWN", "condition": "can_exit", "color": "RED" },
+        {"text": "Village Bridge", "action": "EXIT", "target_area": "VILLAGE_BRIDGE", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "UNDELLA_TOWN"
     },
@@ -3250,7 +5032,8 @@
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         { "text": "Black City", "action": "EXIT", "target_area": "BLACK_CITY", "condition": "can_exit", "color": "RED" },
         { "text": "White Forest", "action": "EXIT", "target_area": "WHITE_FOREST", "condition": ["can_exit", "black_tower_cleared"], "color": "RED" },
-        { "text": "Route 16", "action": "EXIT", "target_area": "UNOVA_ROUTE_16", "condition": "can_exit", "color": "RED" }
+        { "text": "Route 16", "action": "EXIT", "target_area": "UNOVA_ROUTE_16", "condition": "can_exit", "color": "RED" },
+        {"text": "Marvelous Bridge", "action": "EXIT", "target_area": "MARVELOUS_BRIDGE", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "BLACK_CITY"
     },
@@ -3275,7 +5058,8 @@
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
         { "text": "Nimbasa City", "action": "EXIT", "target_area": "NIMBASA_CITY", "condition": "can_exit", "color": "RED" },
-        { "text": "Route 15", "action": "EXIT", "target_area": "UNOVA_ROUTE_15", "condition": ["can_exit", "visited_UNOVA_ROUTE_15"], "color": "RED" }
+        { "text": "Route 15", "action": "EXIT", "target_area": "UNOVA_ROUTE_15", "condition": ["can_exit", "visited_UNOVA_ROUTE_15"], "color": "RED" },
+        {"text": "Marvelous Bridge", "action": "EXIT", "target_area": "MARVELOUS_BRIDGE", "condition": ["can_exit", "beat_unova_champion"], "color": "RED"}
       ],
       "next_area": "NIMBASA_CITY"
     },
@@ -3356,7 +5140,9 @@
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
-        { "text": "Undella Town", "action": "EXIT", "target_area": "UNDELLA_TOWN", "condition": "can_exit", "color": "RED" }
+        { "text": "Undella Town", "action": "EXIT", "target_area": "UNDELLA_TOWN", "condition": "can_exit", "color": "RED" },
+        {"text": "Humilau City", "action": "EXIT", "target_area": "HUMILAU_CITY", "condition": ["can_exit", "beat_unova_champion"], "color": "RED"},
+        {"text": "Seaside Cave", "action": "EXIT", "target_area": "SEASIDE_CAVE", "condition": ["can_exit", "beat_unova_champion"], "color": "RED"}
       ],
       "next_area": "UNDELLA_TOWN"
     },
@@ -3382,7 +5168,8 @@
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         { "text": "Discover Virizion", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD" },
-        { "text": "Opelucid City", "action": "EXIT", "target_area": "OPELUCID_CITY", "condition": "can_exit", "color": "RED" }
+        { "text": "Opelucid City", "action": "EXIT", "target_area": "OPELUCID_CITY", "condition": "can_exit", "color": "RED" },
+        {"text": "Humilau City", "action": "EXIT", "target_area": "HUMILAU_CITY", "condition": ["can_exit", "beat_unova_champion"], "color": "RED"}
       ],
       "area_boss": { "id": 640, "name": "Virizion", "victory_flag": "UNOVA_ROUTE_22_boss_defeated" },
       "next_area": "OPELUCID_CITY"

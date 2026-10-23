@@ -50,3 +50,15 @@ seen, _ = reach(S)
 bc_check({"WHITE_FOREST", "WHITE_TREEHOLLOW", "BLACK_TOWER_UPPER"} <= seen, "White Forest, the Treehollow and Areas 6-10 open after the Black Tower")
 for a, b in (("UNOVA_ROUTE_14", "WHITE_FOREST"), ("UNOVA_ROUTE_15", "WHITE_FOREST"), ("UNOVA_ROUTE_14", "BLACK_CITY"), ("UNOVA_ROUTE_15", "BLACK_CITY")):
     bc_check(b in links(a) and a in links(b), f"{a} <-> {b}")
+
+# ---- areas expansion (areas_05_unova.patch): B2W2 side areas, BW1 Challenger's Cave
+story.story_flags.update(saved)
+story.story_flags["beat_unova_champion"] = False
+B2_EARLY = ["VIRBANK_CITY", "VIRBANK_COMPLEX", "UNOVA_ROUTE_20", "FLOCCESY_RANCH", "FLOCCESY_TOWN", "UNOVA_ROUTE_19", "ASPERTIA_CITY",
+            "RELIC_PASSAGE", "TUBELINE_BRIDGE", "LENTIMAS_TOWN", "REVERSAL_MOUNTAIN", "STRANGE_HOUSE"]
+B2_POST = ["HUMILAU_CITY", "UNDELLA_BAY", "SEASIDE_CAVE", "PLASMA_FRIGATE", "NATURE_PRESERVE", "MARVELOUS_BRIDGE", "VILLAGE_BRIDGE",
+           "CHALLENGERS_CAVE", "CLAY_TUNNEL"]
+expansion_check("unova b2w2 side areas", B2_EARLY, S)
+gate_check("unova post-game side areas", B2_POST, S, "beat_unova_champion")
+story.story_flags["beat_unova_champion"] = True
+expansion_check("unova post-game side areas", B2_POST, S)
