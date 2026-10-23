@@ -15,3 +15,12 @@ expansion_check("paldea expansion", PALDEA_NEW, S)
 gate_check("great crater", ["GREAT_CRATER_OF_PALDEA"], S, "beat_paldea_champion")
 story.story_flags.update({"beat_paldea_champion": True, "path_of_legends_complete": True, "starfall_street_complete": True})
 expansion_check("paldea post-game expansion", ["GREAT_CRATER_OF_PALDEA"], S)
+
+# ---- Kitakami expansion (areas_10_kitakami.patch)
+KITA_NEW = ["MOSSUI_TOWN", "KITAKAMI_HALL", "APPLE_HILLS", "MOSSFELL_CONFLUENCE", "ONI_MOUNTAIN", "INFERNAL_PASS",
+            "FELLHORN_GORGE", "ONIS_MAW", "CHILLING_WATERHEAD", "WISTFUL_FIELDS"]
+expansion_check("kitakami expansion", KITA_NEW, S)
+story.story_flags.update({"KITAKAMI_REVELERS_ROAD_boss_defeated": True, "KITAKAMI_PARADISE_BARRENS_boss_defeated": True})
+gate_check("crystal pool / dreaded den", ["CRYSTAL_POOL", "DREADED_DEN"], S, "KITAKAMI_TIMELESS_WOODS_boss_defeated")
+story.story_flags["KITAKAMI_TIMELESS_WOODS_boss_defeated"] = True
+expansion_check("kitakami loyal-three expansion", ["CRYSTAL_POOL", "DREADED_DEN"], S)
