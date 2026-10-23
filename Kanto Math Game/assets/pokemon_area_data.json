@@ -503,6 +503,108 @@
 
 
   "STORY_PROGRESSION": {
+    "KANTO_SS_ANNE": {
+      "area_type": "dungeon",
+      "route_name": "S.S. Anne",
+      "region": "kanto",
+      "battle_type": "indoor",
+      "wild_pool_percentages": null,
+      "min_rounds": 0,
+      "trainer_pool": [
+        {
+          "name": "Sailor Trevor",
+          "class": "SAILOR",
+          "sprite": "sailor.png",
+          "team": [
+            66,
+            72
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Sailor Edmond",
+          "class": "SAILOR",
+          "sprite": "sailor.png",
+          "team": [
+            66,
+            90
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Gentleman Thomas",
+          "class": "GENTLEMAN",
+          "sprite": "gentleman.png",
+          "team": [
+            58,
+            58
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Gentleman Arthur",
+          "class": "GENTLEMAN",
+          "sprite": "gentleman.png",
+          "team": [
+            29,
+            29
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Lass Ann",
+          "class": "LASS",
+          "sprite": "lass.png",
+          "team": [
+            16,
+            29
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Rival Blue",
+          "class": "PKMN_TRAINER",
+          "sprite": "blue.png",
+          "team": [
+            17,
+            20,
+            64,
+            8
+          ],
+          "rewards": {
+            "balls": 10
+          },
+          "is_boss_battle": true,
+          "victory_flag": "ss_anne_cleared"
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "BATTLE THROUGH THE CABINS",
+          "action": "GALACTIC_GAUNTLET",
+          "flag_condition": "not ss_anne_cleared",
+          "color": "GOLD"
+        },
+        {
+          "text": "Vermillion City",
+          "action": "EXIT",
+          "target_area": "VERMILLION_CITY",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "VERMILLION_CITY"
+    },
     "PALLET_TOWN": {
       "area_type": "town",
       "route_name": "Pallet Town",
@@ -864,7 +966,8 @@
             {"text": "Ship to the Orange Islands", "long_ride": true, "target_area": "VALENCIA_ISLAND", "condition": ["beat_champion", "beat_johto_champion"], "message": "The ferry sails south for days over warm seas... Land ho! It's Valencia Island!"},
             {"text": "Seagallop to One Island", "long_ride": true, "target_area": "ONE_ISLAND", "condition": "has_item:TRI_PASS", "message": "The Seagallop Ferry speeds south to the Sevii Islands. Next stop: One Island!"},
             {"text": "Seagallop to Four Island", "long_ride": true, "target_area": "FOUR_ISLAND", "condition": "has_item:RAINBOW_PASS", "message": "The Seagallop Ferry speeds far to the south. Next stop: Four Island!"},
-            {"text": "S.S. Aqua", "target_area": "JOHTO_SS_AQUA", "condition": "has_item:SS_TICKET"}
+            {"text": "S.S. Aqua", "target_area": "JOHTO_SS_AQUA", "condition": "has_item:SS_TICKET"},
+            {"text": "S.S. Anne", "target_area": "KANTO_SS_ANNE", "condition": "has_item:SS_TICKET"}
         ],
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },

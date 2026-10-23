@@ -15,7 +15,7 @@ for t in $HELPED $PLAIN; do
   r=$(timeout 600 python $O/check_$t.py $O 2>&1)
   echo "== $t: $(echo "$r" | grep -cE 'FAIL ') fails"; echo "$r" | grep -E "FAIL " | head -5
 done
-for r in johto hoenn sinnoh unova kalos alola galar paldea; do
+for r in johto hoenn sinnoh unova kalos alola galar paldea kanto; do
   cat $C/harness_head.py $C/reach_lib.py $C/walk_$r.py > $O/check_walk_$r.py
   echo "walk $r: $(timeout 600 python $O/check_walk_$r.py $O 2>&1 | grep -ciE 'FAIL|Traceback') problems"
 done
