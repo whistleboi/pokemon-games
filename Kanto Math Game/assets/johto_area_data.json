@@ -1,4 +1,10 @@
 {
+  "JOHTO_CLIFF_CAVE": [42, 74, 66, 95, 98, 99, 67, 194, 195, 75],
+  "JOHTO_CLIFF_CAVE_PERCENTAGES": { "42": 20, "74": 21, "66": 11, "95": 11, "98": 11, "99": 11, "67": 4, "194": 4, "195": 4, "75": 3 },
+  "JOHTO_ROUTE_48": [128, 44, 58, 83, 187, 22, 203, 50],
+  "JOHTO_ROUTE_48_PERCENTAGES": { "128": 21, "44": 20, "58": 16, "83": 13, "187": 11, "22": 10, "203": 5, "50": 4 },
+  "JOHTO_ROUTE_47": [132, 241, 72, 83, 86, 164, 20, 21, 44, 22],
+  "JOHTO_ROUTE_47_PERCENTAGES": { "132": 32, "241": 15, "72": 15, "83": 10, "86": 8, "164": 5, "20": 4, "21": 4, "44": 4, "22": 3 },
   "REGION_START": {"JOHTO": {"order": 2, "subtitle": "GEN 2 / GOLD / SILVER", "start_area": "NEW_BARK_TOWN", "starters": [152, 155, 158], "starter_bg": "starter_johto.png", "dex_range": [152, 251], "mom_home_text": ["johto_mom_home"], "dex_extra": [429, 430, 461, 462, 463, 465, 466, 467, 469, 472, 473, 979, 981, 982],
         "professor": "Professor Elm",
         "intro_text": "johto_elm_intro"
@@ -95,6 +101,406 @@
         "flower_shop_reward": ["Oh! You defeated Whitney? That's amazing!", "You'll need this to get past that strange wiggling tree on Route 36.", "It hates being watered, so be ready for a battle!", "You received the SQUIRT BOTTLE!"]
     },
     "STORY_PROGRESSION": {
+        "JOHTO_BATTLE_FRONTIER": {
+          "area_type": "dungeon",
+          "route_name": "Battle Frontier",
+          "region": "johto",
+          "battle_type": "indoor",
+          "wild_pool_percentages": null,
+          "min_rounds": 0,
+          "trainer_pool": [
+            {
+              "name": "Tower Tycoon Palmer",
+              "class": "FRONTIER_BRAIN",
+              "sprite": "master.png",
+              "team": [
+                464,
+                350,
+                149
+              ],
+              "rewards": {
+                "balls": 5
+              }
+            },
+            {
+              "name": "Arcade Star Dahlia",
+              "class": "FRONTIER_BRAIN",
+              "sprite": "master.png",
+              "team": [
+                308,
+                272,
+                477
+              ],
+              "rewards": {
+                "balls": 5
+              }
+            },
+            {
+              "name": "Castle Valet Darach",
+              "class": "FRONTIER_BRAIN",
+              "sprite": "master.png",
+              "team": [
+                395,
+                398,
+                229
+              ],
+              "rewards": {
+                "balls": 10
+              },
+              "is_boss_battle": true,
+              "victory_flag": "johto_battle_frontier_cleared"
+            }
+          ],
+          "route_menu": [
+            {
+              "text": "CHALLENGE THE FRONTIER BRAINS",
+              "action": "GALACTIC_GAUNTLET",
+              "flag_condition": "not johto_battle_frontier_cleared",
+              "color": "GOLD"
+            },
+            {
+              "text": "Route 40",
+              "action": "EXIT",
+              "target_area": "JOHTO_ROUTE_40",
+              "condition": "can_exit",
+              "color": "RED"
+            }
+          ],
+          "next_area": "JOHTO_ROUTE_40"
+        },
+        "JOHTO_SS_AQUA": {
+          "area_type": "dungeon",
+          "route_name": "S.S. Aqua",
+          "region": "johto",
+          "battle_type": "indoor",
+          "wild_pool_percentages": null,
+          "min_rounds": 0,
+          "trainer_pool": [
+            {
+              "name": "Super Nerd Shawn",
+              "class": "SUPER_NERD",
+              "sprite": "supernerd.png",
+              "team": [
+                81,
+                89,
+                81
+              ],
+              "rewards": {
+                "balls": 5
+              }
+            },
+            {
+              "name": "Psychic Rodney",
+              "class": "PSYCHIC",
+              "sprite": "psychic.png",
+              "team": [
+                433,
+                97
+              ],
+              "rewards": {
+                "balls": 4
+              }
+            },
+            {
+              "name": "Ace Trainer Shaye",
+              "class": "ACE_TRAINER",
+              "sprite": "acetrainer_m.png",
+              "team": [
+                135,
+                114,
+                128
+              ],
+              "rewards": {
+                "balls": 5
+              }
+            },
+            {
+              "name": "Ace Trainer Carol",
+              "class": "ACE_TRAINER",
+              "sprite": "acetrainer_f.png",
+              "team": [
+                101,
+                121,
+                38
+              ],
+              "rewards": {
+                "balls": 5
+              }
+            },
+            {
+              "name": "Beauty Cassie",
+              "class": "BEAUTY",
+              "sprite": "beauty.png",
+              "team": [
+                45,
+                12
+              ],
+              "rewards": {
+                "balls": 4
+              }
+            },
+            {
+              "name": "Gentleman Edward",
+              "class": "GENTLEMAN",
+              "sprite": "gentleman.png",
+              "team": [
+                53
+              ],
+              "rewards": {
+                "balls": 10
+              },
+              "is_boss_battle": true,
+              "victory_flag": "ss_aqua_cleared"
+            }
+          ],
+          "route_menu": [
+            {
+              "text": "BATTLE THROUGH THE CABINS",
+              "action": "GALACTIC_GAUNTLET",
+              "flag_condition": "not ss_aqua_cleared",
+              "color": "GOLD"
+            },
+            {
+              "text": "Olivine City",
+              "action": "EXIT",
+              "target_area": "OLIVINE_CITY",
+              "condition": "can_exit",
+              "color": "RED"
+            },
+            {
+              "text": "Vermillion City",
+              "action": "EXIT",
+              "target_area": "VERMILLION_CITY",
+              "condition": "can_exit",
+              "color": "RED"
+            }
+          ],
+          "next_area": "OLIVINE_CITY"
+        },
+        "JOHTO_EMBEDDED_TOWER": {
+          "area_type": "dungeon",
+          "route_name": "Embedded Tower",
+          "region": "johto",
+          "battle_type": "cave",
+          "wild_pool_percentages": null,
+          "min_rounds": 0,
+          "trainer_pool": [],
+          "area_boss": {
+            "id": 383,
+            "name": "Groudon",
+            "victory_flag": "JOHTO_EMBEDDED_TOWER_boss_defeated"
+          },
+          "route_menu": [
+            {
+              "text": "Embedded Tower",
+              "action": "BOSS",
+              "condition": "boss_not_defeated",
+              "color": "GOLD"
+            },
+            {
+              "text": "Cliff Cave",
+              "action": "EXIT",
+              "target_area": "JOHTO_CLIFF_CAVE",
+              "condition": "can_exit",
+              "color": "RED"
+            }
+          ],
+          "next_area": "JOHTO_CLIFF_CAVE"
+        },
+        "JOHTO_CLIFF_CAVE": {
+          "area_type": "dungeon",
+          "route_name": "Cliff Cave",
+          "region": "johto",
+          "battle_type": "cave",
+          "can_fish": true,
+          "wild_pool_percentages": "JOHTO_CLIFF_CAVE_PERCENTAGES",
+          "min_rounds": 1,
+          "trainer_pool": [],
+          "route_menu": [
+            {
+              "text": "CATCH WILD PKMN",
+              "action": "CATCH",
+              "condition": "has_balls",
+              "color": "BLUE"
+            },
+            {
+              "text": "BATTLE WILD PKMN",
+              "action": "BATTLE",
+              "condition": "can_battle",
+              "color": "GREEN"
+            },
+            {
+              "text": "FISH",
+              "action": "FISH",
+              "condition": "can_fish",
+              "color": "ORANGE"
+            },
+            {
+              "text": "Route 47",
+              "action": "EXIT",
+              "target_area": "JOHTO_ROUTE_47",
+              "condition": "can_exit",
+              "color": "RED"
+            },
+            {
+              "text": "Embedded Tower",
+              "action": "EXIT",
+              "target_area": "JOHTO_EMBEDDED_TOWER",
+              "condition": [
+                "can_exit",
+                "beat_johto_champion"
+              ],
+              "color": "RED"
+            }
+          ],
+          "next_area": "JOHTO_ROUTE_47"
+        },
+        "JOHTO_ROUTE_48": {
+          "area_type": "wild_route",
+          "route_name": "Route 48",
+          "region": "johto",
+          "battle_type": "grass",
+          "wild_pool_percentages": "JOHTO_ROUTE_48_PERCENTAGES",
+          "min_rounds": 2,
+          "trainer_pool": [],
+          "route_menu": [
+            {
+              "text": "CATCH WILD PKMN",
+              "action": "CATCH",
+              "condition": "has_balls",
+              "color": "BLUE"
+            },
+            {
+              "text": "BATTLE WILD PKMN",
+              "action": "BATTLE",
+              "condition": "can_battle",
+              "color": "GREEN"
+            },
+            {
+              "text": "Route 47",
+              "action": "EXIT",
+              "target_area": "JOHTO_ROUTE_47",
+              "condition": "can_exit",
+              "color": "RED"
+            },
+            {
+              "text": "Johto Safari Zone",
+              "action": "EXIT",
+              "target_area": "JOHTO_SAFARI_ZONE",
+              "condition": "can_exit",
+              "color": "RED"
+            }
+          ],
+          "next_area": "JOHTO_ROUTE_47"
+        },
+        "JOHTO_ROUTE_47": {
+          "area_type": "wild_route",
+          "route_name": "Route 47",
+          "region": "johto",
+          "battle_type": "mountain",
+          "can_fish": true,
+          "wild_pool_percentages": "JOHTO_ROUTE_47_PERCENTAGES",
+          "min_rounds": 2,
+          "trainer_pool": [
+            {
+              "name": "Hiker Devin",
+              "class": "HIKER",
+              "sprite": "hiker.png",
+              "team": [
+                206,
+                206,
+                206
+              ],
+              "rewards": {
+                "balls": 5
+              }
+            },
+            {
+              "name": "Camper Grant",
+              "class": "CAMPER",
+              "sprite": "camper.png",
+              "team": [
+                188,
+                183
+              ],
+              "rewards": {
+                "balls": 4
+              }
+            },
+            {
+              "name": "Double Team Thom & Kae",
+              "class": "TWINS",
+              "sprite": "twins.png",
+              "team": [
+                125,
+                126
+              ],
+              "rewards": {
+                "balls": 4
+              }
+            },
+            {
+              "name": "Young Couple Duff & Eda",
+              "class": "TWINS",
+              "sprite": "twins.png",
+              "team": [
+                95,
+                91
+              ],
+              "rewards": {
+                "balls": 4
+              }
+            }
+          ],
+          "route_menu": [
+            {
+              "text": "CATCH WILD PKMN",
+              "action": "CATCH",
+              "condition": "has_balls",
+              "color": "BLUE"
+            },
+            {
+              "text": "BATTLE WILD PKMN",
+              "action": "BATTLE",
+              "condition": "can_battle",
+              "color": "GREEN"
+            },
+            {
+              "text": "FISH",
+              "action": "FISH",
+              "condition": "can_fish",
+              "color": "ORANGE"
+            },
+            {
+              "text": "BATTLE TRAINER",
+              "action": "TRAINER",
+              "condition": "has_trainers",
+              "color": "GREEN"
+            },
+            {
+              "text": "Cliff Edge Gate",
+              "action": "EXIT",
+              "target_area": "CLIFF_EDGE_GATE",
+              "condition": "can_exit",
+              "color": "RED"
+            },
+            {
+              "text": "Route 48",
+              "action": "EXIT",
+              "target_area": "JOHTO_ROUTE_48",
+              "condition": "can_exit",
+              "color": "RED"
+            },
+            {
+              "text": "Cliff Cave",
+              "action": "EXIT",
+              "target_area": "JOHTO_CLIFF_CAVE",
+              "condition": "can_exit",
+              "color": "RED"
+            }
+          ],
+          "next_area": "CLIFF_EDGE_GATE"
+        },
         "NEW_BARK_TOWN": {
         "area_type": "town",
         "route_name": "New Bark Town",
@@ -468,7 +874,8 @@
             { "text": "Route 40", "target_area": "JOHTO_ROUTE_40", "condition": "has_item:HM_SURF" },
             { "text": "Lighthouse", "target_area": "OLIVINE_LIGHTHOUSE" },
             {"text": "S.S. Aqua to Vermilion", "long_ride": true, "target_area": "VERMILLION_CITY", "condition": "has_item:SS_TICKET", "message": "You board the S.S. Aqua. The ship sails east across the sea to Kanto..."},
-            {"text": "Ship to the Orange Islands", "long_ride": true, "target_area": "VALENCIA_ISLAND", "condition": ["beat_champion", "beat_johto_champion"], "message": "The ferry sails south for days over warm seas... Land ho! It's Valencia Island!"}
+            {"text": "Ship to the Orange Islands", "long_ride": true, "target_area": "VALENCIA_ISLAND", "condition": ["beat_champion", "beat_johto_champion"], "message": "The ferry sails south for days over warm seas... Land ho! It's Valencia Island!"},
+            {"text": "S.S. Aqua", "target_area": "JOHTO_SS_AQUA", "condition": "has_item:SS_TICKET"}
         ],
         "explore_options": [
             { "text": "Heal", "action": "HEAL" },
@@ -1050,7 +1457,8 @@
                 {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
                 {"text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE" },
                 {"text": "Olivine City", "action": "EXIT", "target_area": "OLIVINE_CITY", "condition": "can_exit", "color": "RED"},
-                {"text": "Route 41", "action": "EXIT", "target_area": "JOHTO_ROUTE_41", "condition": "can_exit", "color": "RED"}
+                {"text": "Route 41", "action": "EXIT", "target_area": "JOHTO_ROUTE_41", "condition": "can_exit", "color": "RED"},
+                {"text": "Battle Frontier", "action": "EXIT", "target_area": "JOHTO_BATTLE_FRONTIER", "condition": ["can_exit", "beat_johto_champion"], "color": "RED"}
                 ],
             "next_area": "JOHTO_ROUTE_41" 
         },
@@ -1632,7 +2040,8 @@
             "min_rounds": 1,
             "route_menu": [
                 { "text": "CIANWOOD CITY", "action": "EXIT", "target_area": "CIANWOOD_CITY", "condition": "can_exit", "color": "RED" },
-                { "text": "SAFARI ZONE", "action": "EXIT", "target_area": "JOHTO_SAFARI_ZONE", "condition": "can_exit", "color": "RED" }
+                { "text": "SAFARI ZONE", "action": "EXIT", "target_area": "JOHTO_SAFARI_ZONE", "condition": "can_exit", "color": "RED" },
+                {"text": "Route 47", "action": "EXIT", "target_area": "JOHTO_ROUTE_47", "condition": "can_exit", "color": "RED"}
             ]
         },
 
@@ -1646,7 +2055,8 @@
             "route_menu": [
                 { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
                 { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
-                { "text": "EXIT SAFARI", "action": "EXIT", "target_area": "CIANWOOD_CITY", "condition": "can_exit", "color": "RED" }
+                { "text": "EXIT SAFARI", "action": "EXIT", "target_area": "CIANWOOD_CITY", "condition": "can_exit", "color": "RED" },
+                {"text": "Route 48", "action": "EXIT", "target_area": "JOHTO_ROUTE_48", "condition": "can_exit", "color": "RED"}
             ]
         },
 

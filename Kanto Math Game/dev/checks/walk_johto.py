@@ -43,3 +43,14 @@ for b in ["BOULDER", "CASCADE", "THUNDER", "RAINBOW", "SOUL", "MARSH", "VOLCANO"
     badge("KANTO", b)
 seen = report("+ 8 Kanto badges (Mt. Silver?)", S, seen)
 print("HMs:", sorted(k for k in story.inventory if k.startswith("HM_")))
+
+# ---- areas expansion (areas_07_johto.patch): Routes 47/48, Cliff Cave, Embedded Tower, S.S. Aqua, Battle Frontier
+J_ALL = ["JOHTO_ROUTE_47", "JOHTO_ROUTE_48", "JOHTO_CLIFF_CAVE", "JOHTO_EMBEDDED_TOWER", "JOHTO_SS_AQUA", "JOHTO_BATTLE_FRONTIER"]
+gate_check("johto post-game side areas", ["JOHTO_EMBEDDED_TOWER", "JOHTO_BATTLE_FRONTIER"], S, "beat_johto_champion")
+_inv = dict(story.inventory); story.inventory.pop("SS_TICKET", None)
+seen, _ = reach(S)
+print("   FAIL" if "JOHTO_SS_AQUA" in seen else "   OK", "S.S. Aqua needs the S.S. Ticket")
+story.inventory["SS_TICKET"] = 1
+expansion_check("johto side areas", J_ALL, S)
+print("   OK" if {"VERMILLION_CITY", "OLIVINE_CITY"} <= set(links("JOHTO_SS_AQUA")) else "   FAIL", "S.S. Aqua docks at Olivine and Vermilion")
+story.inventory = _inv
