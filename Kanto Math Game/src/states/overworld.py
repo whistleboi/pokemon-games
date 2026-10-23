@@ -1063,6 +1063,10 @@ class PlayState(GameState):
                 valid_options.append(item)
                 continue
 
+            if action == "BOSS" and flags.get(f"legend_rematch_{self._boss_flag_for(item)}"):
+                valid_options.append(item)  # a beaten legendary that got away: rematch until caught
+                continue
+
             if condition in ["has_balls", "has_trainers"] and not self._check_route_condition(condition, trainers_left, item):
                 item_copy = item.copy()
                 item_copy["disabled"] = True
@@ -1704,6 +1708,11 @@ class PlayState(GameState):
             "initial_round_active": False
         }
         self.game.change_state(battle_state)
+
+    def _boss_flag_for(self, item):
+        """The victory flag a BOSS button's battle will use (same rule as action_challenge_boss)."""
+        boss = item.get("boss") or self.area_data.get("area_boss") or {}
+        return boss.get("victory_flag", f"{self.game.story_manager.current_area_key}_boss_defeated")
 
     def action_challenge_boss(self, boss_data=None):
         if self.game.story_manager.current_area_key == "JOHTO_ROUTE_36":

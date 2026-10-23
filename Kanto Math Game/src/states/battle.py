@@ -1955,6 +1955,8 @@ class WildBattleState(TrainerBattleState):
             self.trigger_outro(win=False)
 
     def try_trigger_wild_catch_prompt(self):
+        if getattr(self, "no_catch", False):
+            return False  # an uncatchable boss (Paldea titans): the win goes through trigger_outro
         if self.opponent_pokemon.id == 10500:
             return False
         if self.opponent_pokemon.id == 245 and not self.game.story_manager.story_flags.get("suicune_encountered"):
@@ -1996,11 +1998,8 @@ class WildBattleState(TrainerBattleState):
         self.game.music.victory()
         form = (self.game.loader.area_data.get("FORM_MAP", {}).get(str(self.opponent_pokemon.id)) or {}).get("form")
         catch_only = balance.is_legendary(self.opponent_pokemon.id) or form in ("crystal", "shadow")
-        if self.victory_flag and not catch_only:
-            # A beaten roadblock boss (Snorlax) is gone whether or not you catch it. Legendaries,
-            # the Crystal Onix and Orre's Shadow Pokemon count only when caught, so they can be
-            # tried again instead of being lost for good.
-            self.game.story_manager.story_flags[self.victory_flag] = True
+        if not catch_only or balance.is_legendary(self.opponent_pokemon.id):
+            self._record_boss_win()
 
         if getattr(self, "no_catch", False):
             story = self.game.story_manager
@@ -2081,9 +2080,25 @@ class WildBattleState(TrainerBattleState):
         self.ball_pos = [self.game.width * 0.27, self.game.height * 0.69]
         self.ball_target = [self.game.width * 0.73, self.game.height * 0.39]
 
+    def _record_boss_win(self):
+        """A beaten boss counts for the story whether or not it is caught (Jordan's rule).
+        A beaten legendary that was not caught keeps a rematch button (legend_rematch_<flag>)
+        until it is caught, so the Pokedex can still be finished. The Crystal Onix and Orre's
+        Shadow Pokemon stay catch-only (their flags mean "caught/snagged")."""
+        if not self.victory_flag:
+            return
+        flags = self.game.story_manager.story_flags
+        flags[self.victory_flag] = True
+        if balance.is_legendary(self.opponent_pokemon.id):
+            flags[f"legend_rematch_{self.victory_flag}"] = True
+
     def catch_no(self):
         self.btn_yes.set_visibility(False)
         self.btn_no.set_visibility(False)
+        # Saying NO (or letting the 15 s prompt run out) after a KO still counts as a win.
+        form = (self.game.loader.area_data.get("FORM_MAP", {}).get(str(self.opponent_pokemon.id)) or {}).get("form")
+        if self.opponent_hp <= 0 and form not in ("crystal", "shadow"):
+            self._record_boss_win()
         self.show_message("Got away safely!", callback=self.on_flee_complete)
 
     def update(self):
@@ -2111,6 +2126,7 @@ class WildBattleState(TrainerBattleState):
                     if success:
                         if self.victory_flag:
                             self.game.story_manager.story_flags[self.victory_flag] = True
+                            self.game.story_manager.story_flags.pop(f"legend_rematch_{self.victory_flag}", None)
                             if self.opponent_pokemon.name == "SNORLAX":
                                 self.game.story_manager.story_flags["caught_snorlax"] = True
 
