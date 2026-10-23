@@ -66,7 +66,1228 @@
     ],
     "paldea_mom_newstart_3": ["Mom: Nemona's family owns a huge estate up the hill. She says you two are rivals now!", "Mom: Be nice to her. And beat her anyway. Ha ha!"]
   },
+  "SOCARRAT_TRAIL": [26, 135, 185, 205, 214, 289, 430, 442, 470, 571, 586, 591],
+  "SOCARRAT_TRAIL_PERCENTAGES": { "26": 12, "135": 8, "185": 8, "205": 8, "214": 8, "289": 8, "430": 8, "442": 8, "470": 8, "571": 8, "586": 8, "591": 8 },
+  "DALIZAPA_PASSAGE": [51, 82, 93, 97, 129, 136, 197, 200, 206, 215, 217, 231],
+  "DALIZAPA_PASSAGE_PERCENTAGES": { "51": 12, "82": 8, "93": 8, "97": 8, "129": 8, "136": 8, "197": 8, "200": 8, "206": 8, "215": 8, "217": 8, "231": 8 },
+  "SOUTH_PROVINCE_AREA_4": [25, 53, 54, 57, 59, 113, 123, 129, 180, 183, 194, 198],
+  "SOUTH_PROVINCE_AREA_4_PERCENTAGES": { "25": 12, "53": 8, "54": 8, "57": 8, "59": 8, "113": 8, "123": 8, "129": 8, "180": 8, "183": 8, "194": 8, "198": 8 },
+  "SOUTH_PROVINCE_AREA_6": [54, 55, 97, 113, 123, 129, 134, 136, 147, 192, 200, 206],
+  "SOUTH_PROVINCE_AREA_6_PERCENTAGES": { "54": 12, "55": 8, "97": 8, "113": 8, "123": 8, "129": 8, "134": 8, "136": 8, "147": 8, "192": 8, "200": 8, "206": 8 },
+  "ALFORNADA_CAVERN": [50, 51, 181, 197, 206, 246, 247, 297, 302, 307, 308, 334],
+  "ALFORNADA_CAVERN_PERCENTAGES": { "50": 12, "51": 8, "181": 8, "197": 8, "206": 8, "246": 8, "247": 8, "297": 8, "302": 8, "307": 8, "308": 8, "334": 8 },
+  "INLET_GROTTO": [50, 54, 228, 624, 734, 735],
+  "INLET_GROTTO_PERCENTAGES": { "50": 15, "54": 17, "228": 17, "624": 17, "734": 17, "735": 17 },
+  "SOUTH_PALDEAN_SEA": [90, 91, 129, 130, 211, 278, 370, 418, 419, 603, 690, 692, 693, 846],
+  "SOUTH_PALDEAN_SEA_PERCENTAGES": { "90": 9, "91": 7, "129": 7, "130": 7, "211": 7, "278": 7, "370": 7, "418": 7, "419": 7, "603": 7, "690": 7, "692": 7, "693": 7, "846": 7 },
+  "WEST_PALDEAN_SEA": [90, 91, 129, 130, 211, 278, 279, 370, 418, 419, 456, 457, 602, 603],
+  "WEST_PALDEAN_SEA_PERCENTAGES": { "90": 9, "91": 7, "129": 7, "130": 7, "211": 7, "278": 7, "279": 7, "370": 7, "418": 7, "419": 7, "456": 7, "457": 7, "602": 7, "603": 7 },
+  "EAST_PALDEAN_SEA": [90, 91, 129, 130, 192, 211, 370, 415, 416, 418, 419, 666, 669, 670],
+  "EAST_PALDEAN_SEA_PERCENTAGES": { "90": 9, "91": 7, "129": 7, "130": 7, "192": 7, "211": 7, "370": 7, "415": 7, "416": 7, "418": 7, "419": 7, "666": 7, "669": 7, "670": 7 },
+  "NORTH_PALDEAN_SEA": [90, 91, 129, 130, 211, 279, 419, 457, 594, 602, 603, 690, 691, 692],
+  "NORTH_PALDEAN_SEA_PERCENTAGES": { "90": 9, "91": 7, "129": 7, "130": 7, "211": 7, "279": 7, "419": 7, "457": 7, "594": 7, "602": 7, "603": 7, "690": 7, "691": 7, "692": 7 },
+  "GREAT_CRATER_OF_PALDEA": [445, 462],
+  "GREAT_CRATER_OF_PALDEA_PERCENTAGES": { "445": 50, "462": 50 },
   "STORY_PROGRESSION": {
+    "GREAT_CRATER_OF_PALDEA": {
+      "area_type": "wild_route",
+      "route_name": "Great Crater of Paldea",
+      "region": "paldea",
+      "battle_type": "mountain",
+      "wild_pool_percentages": "GREAT_CRATER_OF_PALDEA_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "Area Zero",
+          "action": "EXIT",
+          "target_area": "AREA_ZERO",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "AREA_ZERO"
+    },
+    "NORTH_PALDEAN_SEA": {
+      "area_type": "wild_route",
+      "route_name": "North Paldean Sea",
+      "region": "paldea",
+      "battle_type": "ocean",
+      "can_fish": true,
+      "wild_pool_percentages": "NORTH_PALDEAN_SEA_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Office Lady Susana",
+          "class": "PKMN_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            961
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "FISH",
+          "action": "FISH",
+          "condition": "can_fish",
+          "color": "ORANGE"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Casseroya Lake",
+          "action": "EXIT",
+          "target_area": "CASSEROYA_LAKE",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "CASSEROYA_LAKE"
+    },
+    "EAST_PALDEAN_SEA": {
+      "area_type": "wild_route",
+      "route_name": "East Paldean Sea",
+      "region": "paldea",
+      "battle_type": "ocean",
+      "can_fish": true,
+      "wild_pool_percentages": "EAST_PALDEAN_SEA_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Office Worker Yago",
+          "class": "GENTLEMAN",
+          "sprite": "gentleman.png",
+          "team": [
+            976
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "FISH",
+          "action": "FISH",
+          "condition": "can_fish",
+          "color": "ORANGE"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Levincia",
+          "action": "EXIT",
+          "target_area": "LEVINCIA",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "LEVINCIA"
+    },
+    "WEST_PALDEAN_SEA": {
+      "area_type": "wild_route",
+      "route_name": "West Paldean Sea",
+      "region": "paldea",
+      "battle_type": "ocean",
+      "can_fish": true,
+      "wild_pool_percentages": "WEST_PALDEAN_SEA_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Poke Maniac Jaume",
+          "class": "PKMN_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            148
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "FISH",
+          "action": "FISH",
+          "condition": "can_fish",
+          "color": "ORANGE"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Porto Marinada",
+          "action": "EXIT",
+          "target_area": "PORTO_MARINADA",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "PORTO_MARINADA"
+    },
+    "SOUTH_PALDEAN_SEA": {
+      "area_type": "wild_route",
+      "route_name": "South Paldean Sea",
+      "region": "paldea",
+      "battle_type": "ocean",
+      "can_fish": true,
+      "wild_pool_percentages": "SOUTH_PALDEAN_SEA_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Model Naiara",
+          "class": "PKMN_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            456
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "FISH",
+          "action": "FISH",
+          "condition": "can_fish",
+          "color": "ORANGE"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "South Province Area 4",
+          "action": "EXIT",
+          "target_area": "SOUTH_PROVINCE_AREA_4",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "SOUTH_PROVINCE_AREA_4"
+    },
+    "PORTO_MARINADA": {
+      "area_type": "town",
+      "route_name": "Porto Marinada",
+      "region": "paldea",
+      "has_gym": false,
+      "travel_options": [
+        {
+          "text": "West Province Area 2",
+          "target_area": "WEST_PROVINCE_AREA_2"
+        },
+        {
+          "text": "West Paldean Sea",
+          "target_area": "WEST_PALDEAN_SEA"
+        }
+      ],
+      "explore_options": [
+        {
+          "text": "Pok\u00e9mon Center",
+          "action": "HEAL"
+        },
+        {
+          "text": "Shop",
+          "action": "SHOP"
+        }
+      ],
+      "next_area": "WEST_PROVINCE_AREA_2"
+    },
+    "INLET_GROTTO": {
+      "area_type": "dungeon",
+      "route_name": "Inlet Grotto",
+      "region": "paldea",
+      "battle_type": "cave",
+      "wild_pool_percentages": "INLET_GROTTO_PERCENTAGES",
+      "min_rounds": 1,
+      "trainer_pool": [],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "Route 1",
+          "action": "EXIT",
+          "target_area": "PALDEA_ROUTE_1",
+          "condition": "can_exit",
+          "color": "RED"
+        },
+        {
+          "text": "South Province Area 4",
+          "action": "EXIT",
+          "target_area": "SOUTH_PROVINCE_AREA_4",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "PALDEA_ROUTE_1"
+    },
+    "ALFORNADA_CAVERN": {
+      "area_type": "dungeon",
+      "route_name": "Alfornada Cavern",
+      "region": "paldea",
+      "battle_type": "cave",
+      "wild_pool_percentages": "ALFORNADA_CAVERN_PERCENTAGES",
+      "min_rounds": 1,
+      "trainer_pool": [
+        {
+          "name": "Courier Joel",
+          "class": "PKMN_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            750
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Dragon Tamer Tamara",
+          "class": "DRAGON_TAMER",
+          "sprite": "dragon_tamer.png",
+          "team": [
+            372,
+            705,
+            612
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        },
+        {
+          "name": "Hiker Daniela",
+          "class": "HIKER",
+          "sprite": "hiker.png",
+          "team": [
+            450,
+            745
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Student Eloisa",
+          "class": "SCHOOL_KID",
+          "sprite": "school_kid_f.png",
+          "team": [
+            857,
+            282
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Student Yolanda",
+          "class": "SCHOOL_KID",
+          "sprite": "school_kid_m.png",
+          "team": [
+            552,
+            754
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Youngster Adan",
+          "class": "YOUNGSTER",
+          "sprite": "youngster.png",
+          "team": [
+            49,
+            205
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Student Alexis",
+          "class": "SCHOOL_KID",
+          "sprite": "school_kid_m.png",
+          "team": [
+            954
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Scientist Domingo",
+          "class": "SCIENTIST",
+          "sprite": "scientist.png",
+          "team": [
+            101
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "South Province Area 6",
+          "action": "EXIT",
+          "target_area": "SOUTH_PROVINCE_AREA_6",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "SOUTH_PROVINCE_AREA_6"
+    },
+    "SOUTH_PROVINCE_AREA_6": {
+      "area_type": "wild_route",
+      "route_name": "South Province Area 6",
+      "region": "paldea",
+      "battle_type": "mountain",
+      "wild_pool_percentages": "SOUTH_PROVINCE_AREA_6_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Backpacker Pau",
+          "class": "CAMPER",
+          "sprite": "camper.png",
+          "team": [
+            673
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Backpacker Aitor",
+          "class": "CAMPER",
+          "sprite": "camper.png",
+          "team": [
+            405
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Courier Izan",
+          "class": "PKMN_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            966
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Black Belt Jacobo",
+          "class": "BLACKBELT",
+          "sprite": "blackbelt.png",
+          "team": [
+            766,
+            57
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Hiker Rocio",
+          "class": "HIKER",
+          "sprite": "hiker.png",
+          "team": [
+            947
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Student Andres",
+          "class": "SCHOOL_KID",
+          "sprite": "school_kid_f.png",
+          "team": [
+            586,
+            55,
+            668
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        },
+        {
+          "name": "Student Paul",
+          "class": "SCHOOL_KID",
+          "sprite": "school_kid_m.png",
+          "team": [
+            875
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Student Alan",
+          "class": "SCHOOL_KID",
+          "sprite": "school_kid_f.png",
+          "team": [
+            976,
+            614
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "South Province Area 4",
+          "action": "EXIT",
+          "target_area": "SOUTH_PROVINCE_AREA_4",
+          "condition": "can_exit",
+          "color": "RED"
+        },
+        {
+          "text": "Alfornada",
+          "action": "EXIT",
+          "target_area": "ALFORNADA",
+          "condition": "can_exit",
+          "color": "RED"
+        },
+        {
+          "text": "Alfornada Cavern",
+          "action": "EXIT",
+          "target_area": "ALFORNADA_CAVERN",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "SOUTH_PROVINCE_AREA_4"
+    },
+    "SOUTH_PROVINCE_AREA_4": {
+      "area_type": "wild_route",
+      "route_name": "South Province Area 4",
+      "region": "paldea",
+      "battle_type": "grass",
+      "wild_pool_percentages": "SOUTH_PROVINCE_AREA_4_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Backpacker Jaime",
+          "class": "CAMPER",
+          "sprite": "camper.png",
+          "team": [
+            741,
+            397,
+            199
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        },
+        {
+          "name": "Black Belt Iago",
+          "class": "BLACKBELT",
+          "sprite": "blackbelt.png",
+          "team": [
+            870
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Black Belt Armando",
+          "class": "BLACKBELT",
+          "sprite": "blackbelt.png",
+          "team": [
+            453
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Poke Maniac Matias",
+          "class": "PKMN_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "team": [
+            610
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Hiker Carla",
+          "class": "HIKER",
+          "sprite": "hiker.png",
+          "team": [
+            322
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Student Patricia",
+          "class": "SCHOOL_KID",
+          "sprite": "school_kid_f.png",
+          "team": [
+            819
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Student Pascal",
+          "class": "SCHOOL_KID",
+          "sprite": "school_kid_m.png",
+          "team": [
+            331
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Student Isona",
+          "class": "SCHOOL_KID",
+          "sprite": "school_kid_f.png",
+          "team": [
+            548,
+            188
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "South Province Area 1",
+          "action": "EXIT",
+          "target_area": "SOUTH_PROVINCE_AREA_1",
+          "condition": "can_exit",
+          "color": "RED"
+        },
+        {
+          "text": "South Province Area 2",
+          "action": "EXIT",
+          "target_area": "SOUTH_PROVINCE_AREA_2",
+          "condition": "can_exit",
+          "color": "RED"
+        },
+        {
+          "text": "West Province Area 1",
+          "action": "EXIT",
+          "target_area": "WEST_PROVINCE_AREA_1",
+          "condition": "can_exit",
+          "color": "RED"
+        },
+        {
+          "text": "South Province Area 6",
+          "action": "EXIT",
+          "target_area": "SOUTH_PROVINCE_AREA_6",
+          "condition": "can_exit",
+          "color": "RED"
+        },
+        {
+          "text": "Inlet Grotto",
+          "action": "EXIT",
+          "target_area": "INLET_GROTTO",
+          "condition": "can_exit",
+          "color": "RED"
+        },
+        {
+          "text": "South Paldean Sea",
+          "action": "EXIT",
+          "target_area": "SOUTH_PALDEAN_SEA",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "SOUTH_PROVINCE_AREA_1"
+    },
+    "DALIZAPA_PASSAGE": {
+      "area_type": "dungeon",
+      "route_name": "Dalizapa Passage",
+      "region": "paldea",
+      "battle_type": "cave",
+      "wild_pool_percentages": "DALIZAPA_PASSAGE_PERCENTAGES",
+      "min_rounds": 1,
+      "trainer_pool": [
+        {
+          "name": "Hiker Mar",
+          "class": "HIKER",
+          "sprite": "hiker.png",
+          "team": [
+            750
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Artist Carolina",
+          "class": "GENTLEMAN",
+          "sprite": "gentleman.png",
+          "team": [
+            671,
+            779,
+            861
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        },
+        {
+          "name": "Artist Tania",
+          "class": "GENTLEMAN",
+          "sprite": "gentleman.png",
+          "team": [
+            457,
+            478
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Courier Andre",
+          "class": "PKMN_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "team": [
+            823
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Courier Martin",
+          "class": "PKMN_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            128
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Dragon Tamer Luisa",
+          "class": "DRAGON_TAMER",
+          "sprite": "dragon_tamer.png",
+          "team": [
+            997
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Dragon Tamer Anna",
+          "class": "DRAGON_TAMER",
+          "sprite": "dragon_tamer.png",
+          "team": [
+            148
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Black Belt Sayid",
+          "class": "BLACKBELT",
+          "sprite": "blackbelt.png",
+          "team": [
+            308
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Glaseado Mountain",
+          "action": "EXIT",
+          "target_area": "GLASEADO_MOUNTAIN",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "GLASEADO_MOUNTAIN"
+    },
+    "SOCARRAT_TRAIL": {
+      "area_type": "wild_route",
+      "route_name": "Socarrat Trail",
+      "region": "paldea",
+      "battle_type": "mountain",
+      "wild_pool_percentages": "SOCARRAT_TRAIL_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Student Natalia",
+          "class": "SCHOOL_KID",
+          "sprite": "school_kid_m.png",
+          "team": [
+            927
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Cook Irma",
+          "class": "GENTLEMAN",
+          "sprite": "gentleman.png",
+          "team": [
+            286,
+            591,
+            949
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Casseroya Lake",
+          "action": "EXIT",
+          "target_area": "CASSEROYA_LAKE",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "CASSEROYA_LAKE"
+    },
+    "CAPH_SQUAD_BASE": {
+      "area_type": "dungeon",
+      "route_name": "Caph Squad's Base",
+      "region": "paldea",
+      "battle_type": "field",
+      "wild_pool_percentages": null,
+      "min_rounds": 0,
+      "trainer_pool": [
+        {
+          "name": "Team Star Carmen",
+          "class": "PKMN_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            453,
+            57
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Team Star Boss Eri",
+          "class": "PKMN_TRAINER",
+          "sprite": "eri.png",
+          "team": [
+            454,
+            766,
+            448,
+            979
+          ],
+          "rewards": {
+            "balls": 10
+          },
+          "is_boss_battle": true,
+          "victory_flag": "star_caph_defeated"
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "RAID THE FIGHTING CREW BASE",
+          "action": "GALACTIC_GAUNTLET",
+          "flag_condition": "not star_caph_defeated",
+          "color": "GOLD"
+        },
+        {
+          "text": "North Province Area 2",
+          "action": "EXIT",
+          "target_area": "NORTH_PROVINCE_AREA_2",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "NORTH_PROVINCE_AREA_2"
+    },
+    "RUCHBAH_SQUAD_BASE": {
+      "area_type": "dungeon",
+      "route_name": "Ruchbah Squad's Base",
+      "region": "paldea",
+      "battle_type": "field",
+      "wild_pool_percentages": null,
+      "min_rounds": 0,
+      "trainer_pool": [
+        {
+          "name": "Team Star Ortega",
+          "class": "PKMN_TRAINER",
+          "sprite": "ortega.png",
+          "team": [
+            184,
+            40,
+            927
+          ],
+          "rewards": {
+            "balls": 10
+          },
+          "is_boss_battle": true,
+          "victory_flag": "star_ruchbah_defeated"
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "RAID THE FAIRY CREW BASE",
+          "action": "GALACTIC_GAUNTLET",
+          "flag_condition": "not star_ruchbah_defeated",
+          "color": "GOLD"
+        },
+        {
+          "text": "North Province Area 3",
+          "action": "EXIT",
+          "target_area": "NORTH_PROVINCE_AREA_3",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "NORTH_PROVINCE_AREA_3"
+    },
+    "NAVI_SQUAD_BASE": {
+      "area_type": "dungeon",
+      "route_name": "Navi Squad's Base",
+      "region": "paldea",
+      "battle_type": "field",
+      "wild_pool_percentages": null,
+      "min_rounds": 0,
+      "trainer_pool": [
+        {
+          "name": "Team Star Youssef",
+          "class": "PKMN_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            316,
+            944
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Team Star Atticus",
+          "class": "PKMN_TRAINER",
+          "sprite": "atticus.png",
+          "team": [
+            435,
+            89,
+            966
+          ],
+          "rewards": {
+            "balls": 10
+          },
+          "is_boss_battle": true,
+          "victory_flag": "star_navi_defeated"
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "RAID THE POISON CREW BASE",
+          "action": "GALACTIC_GAUNTLET",
+          "flag_condition": "not star_navi_defeated",
+          "color": "GOLD"
+        },
+        {
+          "text": "Tagtree Thicket",
+          "action": "EXIT",
+          "target_area": "TAGTREE_THICKET",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "TAGTREE_THICKET"
+    },
+    "SCHEDAR_SQUAD_BASE": {
+      "area_type": "dungeon",
+      "route_name": "Schedar Squad's Base",
+      "region": "paldea",
+      "battle_type": "field",
+      "wild_pool_percentages": null,
+      "min_rounds": 0,
+      "trainer_pool": [
+        {
+          "name": "Team Star Grunt",
+          "class": "TEAM_STAR",
+          "sprite": "rocker.png",
+          "team": [
+            228
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Team Star Mela",
+          "class": "PKMN_TRAINER",
+          "sprite": "mela.png",
+          "team": [
+            324
+          ],
+          "rewards": {
+            "balls": 10
+          },
+          "is_boss_battle": true,
+          "victory_flag": "star_schedar_defeated"
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "RAID THE FIRE CREW BASE",
+          "action": "GALACTIC_GAUNTLET",
+          "flag_condition": "not star_schedar_defeated",
+          "color": "GOLD"
+        },
+        {
+          "text": "East Province Area 1",
+          "action": "EXIT",
+          "target_area": "EAST_PROVINCE_AREA_1",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "EAST_PROVINCE_AREA_1"
+    },
+    "SEGIN_SQUAD_BASE": {
+      "area_type": "dungeon",
+      "route_name": "Segin Squad's Base",
+      "region": "paldea",
+      "battle_type": "field",
+      "wild_pool_percentages": null,
+      "min_rounds": 0,
+      "trainer_pool": [
+        {
+          "name": "Team Star Grunt",
+          "class": "TEAM_STAR",
+          "sprite": "rocker.png",
+          "team": [
+            198
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Team Star Giacomo",
+          "class": "PKMN_TRAINER",
+          "sprite": "giacomo.png",
+          "team": [
+            624
+          ],
+          "rewards": {
+            "balls": 10
+          },
+          "is_boss_battle": true,
+          "victory_flag": "star_segin_defeated"
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "RAID THE DARK CREW BASE",
+          "action": "GALACTIC_GAUNTLET",
+          "flag_condition": "not star_segin_defeated",
+          "color": "GOLD"
+        },
+        {
+          "text": "West Province Area 1",
+          "action": "EXIT",
+          "target_area": "WEST_PROVINCE_AREA_1",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "WEST_PROVINCE_AREA_1"
+    },
     "CABO_POCO": {
       "area_type": "town",
       "route_name": "Cabo Poco",
@@ -279,7 +1500,8 @@
       "travel_options": [
         { "text": "East Province Area 1", "target_area": "EAST_PROVINCE_AREA_1" },
         { "text": "East Province Area 2", "target_area": "EAST_PROVINCE_AREA_2" },
-        { "text": "East Province Area 3", "target_area": "EAST_PROVINCE_AREA_3" }
+        { "text": "East Province Area 3", "target_area": "EAST_PROVINCE_AREA_3" },
+        {"text": "East Paldean Sea", "target_area": "EAST_PALDEAN_SEA"}
       ],
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
@@ -434,7 +1656,8 @@
       "has_gym": true,
       "travel_options": [
         { "text": "West Province Area 3", "target_area": "WEST_PROVINCE_AREA_3" },
-        { "text": "South Province Area 5", "target_area": "SOUTH_PROVINCE_AREA_5" }
+        { "text": "South Province Area 5", "target_area": "SOUTH_PROVINCE_AREA_5" },
+        {"text": "South Province Area 6", "target_area": "SOUTH_PROVINCE_AREA_6"}
       ],
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
@@ -663,7 +1886,8 @@
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "MESAGOZA", "action": "EXIT", "target_area": "MESAGOZA", "condition": "can_exit", "color": "RED" },
-        { "text": "CABO POCO", "action": "EXIT", "target_area": "CABO_POCO", "condition": "can_exit", "color": "RED" }
+        { "text": "CABO POCO", "action": "EXIT", "target_area": "CABO_POCO", "condition": "can_exit", "color": "RED" },
+        {"text": "Inlet Grotto", "action": "EXIT", "target_area": "INLET_GROTTO", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "MESAGOZA"
     },
@@ -680,7 +1904,8 @@
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "CORTONDO", "action": "EXIT", "target_area": "CORTONDO", "condition": "can_exit", "color": "RED" },
-        { "text": "MESAGOZA", "action": "EXIT", "target_area": "MESAGOZA", "condition": "can_exit", "color": "RED" }
+        { "text": "MESAGOZA", "action": "EXIT", "target_area": "MESAGOZA", "condition": "can_exit", "color": "RED" },
+        {"text": "South Province Area 4", "action": "EXIT", "target_area": "SOUTH_PROVINCE_AREA_4", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "CORTONDO"
     },
@@ -697,7 +1922,8 @@
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "ARTAZON", "action": "EXIT", "target_area": "ARTAZON", "condition": "can_exit", "color": "RED" },
-        { "text": "MESAGOZA", "action": "EXIT", "target_area": "MESAGOZA", "condition": "can_exit", "color": "RED" }
+        { "text": "MESAGOZA", "action": "EXIT", "target_area": "MESAGOZA", "condition": "can_exit", "color": "RED" },
+        {"text": "South Province Area 4", "action": "EXIT", "target_area": "SOUTH_PROVINCE_AREA_4", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "ARTAZON"
     },
@@ -796,7 +2022,8 @@
           }
         },
         { "text": "LEVINCIA", "action": "EXIT", "target_area": "LEVINCIA", "condition": "can_exit", "color": "RED" },
-        { "text": "MESAGOZA", "action": "EXIT", "target_area": "MESAGOZA", "condition": "can_exit", "color": "RED" }
+        { "text": "MESAGOZA", "action": "EXIT", "target_area": "MESAGOZA", "condition": "can_exit", "color": "RED" },
+        {"text": "Schedar Squad's Base", "action": "EXIT", "target_area": "SCHEDAR_SQUAD_BASE", "condition": ["can_exit", "met_team_star"], "color": "RED"}
       ],
       "next_area": "LEVINCIA"
     },
@@ -913,7 +2140,9 @@
           }
         },
         { "text": "CASCARRAFA", "action": "EXIT", "target_area": "CASCARRAFA", "condition": "can_exit", "color": "RED" },
-        { "text": "MESAGOZA", "action": "EXIT", "target_area": "MESAGOZA", "condition": "can_exit", "color": "RED" }
+        { "text": "MESAGOZA", "action": "EXIT", "target_area": "MESAGOZA", "condition": "can_exit", "color": "RED" },
+        {"text": "Segin Squad's Base", "action": "EXIT", "target_area": "SEGIN_SQUAD_BASE", "condition": ["can_exit", "met_team_star"], "color": "RED"},
+        {"text": "South Province Area 4", "action": "EXIT", "target_area": "SOUTH_PROVINCE_AREA_4", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "CASCARRAFA"
     },
@@ -931,7 +2160,8 @@
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "WEST PROVINCE AREA 3", "action": "EXIT", "target_area": "WEST_PROVINCE_AREA_3", "condition": "can_exit", "color": "RED" },
         { "text": "CASCARRAFA", "action": "EXIT", "target_area": "CASCARRAFA", "condition": "can_exit", "color": "RED" },
-        { "text": "ASADO DESERT", "action": "EXIT", "target_area": "ASADO_DESERT", "condition": "can_exit", "color": "RED" }
+        { "text": "ASADO DESERT", "action": "EXIT", "target_area": "ASADO_DESERT", "condition": "can_exit", "color": "RED" },
+        {"text": "Porto Marinada", "action": "EXIT", "target_area": "PORTO_MARINADA", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "WEST_PROVINCE_AREA_3"
     },
@@ -1009,7 +2239,8 @@
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "CASSEROYA LAKE", "action": "EXIT", "target_area": "CASSEROYA_LAKE", "condition": "can_exit", "color": "RED" },
         { "text": "MONTENEVERA", "action": "EXIT", "target_area": "MONTENEVERA", "condition": "can_exit", "color": "RED" },
-        { "text": "MEDALI", "action": "EXIT", "target_area": "MEDALI", "condition": "can_exit", "color": "RED" }
+        { "text": "MEDALI", "action": "EXIT", "target_area": "MEDALI", "condition": "can_exit", "color": "RED" },
+        {"text": "Caph Squad's Base", "action": "EXIT", "target_area": "CAPH_SQUAD_BASE", "condition": ["can_exit", "met_team_star"], "color": "RED"}
       ],
       "next_area": "MONTENEVERA",
       "day_pool_percentages": "NORTH_PROVINCE_AREA_2_DAY_PERCENTAGES",
@@ -1055,7 +2286,8 @@
         },
         { "text": "GLASEADO", "action": "EXIT", "target_area": "GLASEADO", "condition": "can_exit", "color": "RED" },
         { "text": "MONTENEVERA", "action": "EXIT", "target_area": "MONTENEVERA", "condition": "can_exit", "color": "RED" },
-        { "text": "GLASEADO MOUNTAIN", "action": "EXIT", "target_area": "GLASEADO_MOUNTAIN", "condition": "can_exit", "color": "RED" }
+        { "text": "GLASEADO MOUNTAIN", "action": "EXIT", "target_area": "GLASEADO_MOUNTAIN", "condition": "can_exit", "color": "RED" },
+        {"text": "Ruchbah Squad's Base", "action": "EXIT", "target_area": "RUCHBAH_SQUAD_BASE", "condition": ["can_exit", "met_team_star"], "color": "RED"}
       ],
       "next_area": "GLASEADO",
       "weather": "SNOW"
@@ -1166,7 +2398,8 @@
           }
         },
         { "text": "MEDALI", "action": "EXIT", "target_area": "MEDALI", "condition": "can_exit", "color": "RED" },
-        { "text": "MONTENEVERA", "action": "EXIT", "target_area": "MONTENEVERA", "condition": "can_exit", "color": "RED" }
+        { "text": "MONTENEVERA", "action": "EXIT", "target_area": "MONTENEVERA", "condition": "can_exit", "color": "RED" },
+        {"text": "Navi Squad's Base", "action": "EXIT", "target_area": "NAVI_SQUAD_BASE", "condition": ["can_exit", "met_team_star"], "color": "RED"}
       ],
       "next_area": "MEDALI"
     },
@@ -1185,7 +2418,8 @@
         { "text": "CASSEROYA LAKE", "action": "EXIT", "target_area": "CASSEROYA_LAKE", "condition": "can_exit", "color": "RED" },
         { "text": "GLASEADO", "action": "EXIT", "target_area": "GLASEADO", "condition": "can_exit", "color": "RED" },
         { "text": "NARANJA ACADEMY", "action": "EXIT", "target_area": "NARANJA_ACADEMY", "condition": "can_exit", "color": "RED" },
-        { "text": "NORTH PROVINCE AREA 3", "action": "EXIT", "target_area": "NORTH_PROVINCE_AREA_3", "condition": "can_exit", "color": "RED" }
+        { "text": "NORTH PROVINCE AREA 3", "action": "EXIT", "target_area": "NORTH_PROVINCE_AREA_3", "condition": "can_exit", "color": "RED" },
+        {"text": "Dalizapa Passage", "action": "EXIT", "target_area": "DALIZAPA_PASSAGE", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "GLASEADO",
       "weather": "SNOW"
@@ -1224,7 +2458,8 @@
         { "text": "THE PARADOX LEGEND", "action": "BOSS", "condition": "boss_available", "color": "GOLD" },
         { "text": "ZERO LAB", "action": "EXIT", "target_area": "ZERO_LAB", "condition": "boss_defeated", "color": "GOLD" },
         { "text": "RUINOUS SHRINES", "action": "EXIT", "target_area": "PALDEA_RUINOUS_SHRINES", "condition": "boss_defeated", "color": "PURPLE" },
-        { "text": "NARANJA ACADEMY", "action": "EXIT", "target_area": "NARANJA_ACADEMY", "condition": "can_exit", "color": "RED" }
+        { "text": "NARANJA ACADEMY", "action": "EXIT", "target_area": "NARANJA_ACADEMY", "condition": "can_exit", "color": "RED" },
+        {"text": "Great Crater of Paldea", "action": "EXIT", "target_area": "GREAT_CRATER_OF_PALDEA", "condition": "can_exit", "color": "RED"}
       ],
       "area_boss": { "id": 1007, "name": "Koraidon", "victory_flag": "caught_koraidon" },
       "next_area": "NARANJA_ACADEMY"
@@ -1473,7 +2708,9 @@
           }
         },
         { "text": "GLASEADO MOUNTAIN", "action": "EXIT", "target_area": "GLASEADO_MOUNTAIN", "condition": "can_exit", "color": "RED" },
-        { "text": "NORTH PROVINCE AREA 2", "action": "EXIT", "target_area": "NORTH_PROVINCE_AREA_2", "condition": "can_exit", "color": "RED" }
+        { "text": "NORTH PROVINCE AREA 2", "action": "EXIT", "target_area": "NORTH_PROVINCE_AREA_2", "condition": "can_exit", "color": "RED" },
+        {"text": "Socarrat Trail", "action": "EXIT", "target_area": "SOCARRAT_TRAIL", "condition": "can_exit", "color": "RED"},
+        {"text": "North Paldean Sea", "action": "EXIT", "target_area": "NORTH_PALDEAN_SEA", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "GLASEADO_MOUNTAIN"
     }
