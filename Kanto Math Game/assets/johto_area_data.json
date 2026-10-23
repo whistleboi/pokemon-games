@@ -104,7 +104,7 @@
         "JOHTO_BATTLE_FRONTIER": {
           "area_type": "dungeon",
           "route_name": "Battle Frontier",
-          "region": "johto",
+          "region": "JOHTO",
           "battle_type": "indoor",
           "wild_pool_percentages": null,
           "min_rounds": 0,
@@ -171,7 +171,7 @@
         "JOHTO_SS_AQUA": {
           "area_type": "dungeon",
           "route_name": "S.S. Aqua",
-          "region": "johto",
+          "region": "JOHTO",
           "battle_type": "indoor",
           "wild_pool_percentages": null,
           "min_rounds": 0,
@@ -280,7 +280,7 @@
         "JOHTO_EMBEDDED_TOWER": {
           "area_type": "dungeon",
           "route_name": "Embedded Tower",
-          "region": "johto",
+          "region": "JOHTO",
           "battle_type": "cave",
           "wild_pool_percentages": null,
           "min_rounds": 0,
@@ -310,7 +310,7 @@
         "JOHTO_CLIFF_CAVE": {
           "area_type": "dungeon",
           "route_name": "Cliff Cave",
-          "region": "johto",
+          "region": "JOHTO",
           "battle_type": "cave",
           "can_fish": true,
           "wild_pool_percentages": "JOHTO_CLIFF_CAVE_PERCENTAGES",
@@ -358,7 +358,7 @@
         "JOHTO_ROUTE_48": {
           "area_type": "wild_route",
           "route_name": "Route 48",
-          "region": "johto",
+          "region": "JOHTO",
           "battle_type": "grass",
           "wild_pool_percentages": "JOHTO_ROUTE_48_PERCENTAGES",
           "min_rounds": 2,
@@ -396,7 +396,7 @@
         "JOHTO_ROUTE_47": {
           "area_type": "wild_route",
           "route_name": "Route 47",
-          "region": "johto",
+          "region": "JOHTO",
           "battle_type": "mountain",
           "can_fish": true,
           "wild_pool_percentages": "JOHTO_ROUTE_47_PERCENTAGES",

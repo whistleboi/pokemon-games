@@ -207,7 +207,7 @@
     "GRAND_UNDERGROUND": {
       "area_type": "dungeon",
       "route_name": "Grand Underground",
-      "region": "sinnoh",
+      "region": "SINNOH",
       "battle_type": "cave",
       "wild_pool_percentages": "GRAND_UNDERGROUND_PERCENTAGES",
       "min_rounds": 1,
@@ -238,7 +238,7 @@
     "GALACTIC_WAREHOUSE": {
       "area_type": "dungeon",
       "route_name": "Galactic Warehouse",
-      "region": "sinnoh",
+      "region": "SINNOH",
       "battle_type": "indoor",
       "wild_pool_percentages": null,
       "min_rounds": 0,
@@ -289,7 +289,7 @@
     "ETERNA_GALACTIC_BUILDING": {
       "area_type": "dungeon",
       "route_name": "Galactic Eterna Building",
-      "region": "sinnoh",
+      "region": "SINNOH",
       "battle_type": "indoor",
       "wild_pool_percentages": null,
       "min_rounds": 0,
@@ -399,7 +399,7 @@
     "OREBURGH_GATE": {
       "area_type": "dungeon",
       "route_name": "Oreburgh Gate",
-      "region": "sinnoh",
+      "region": "SINNOH",
       "battle_type": "cave",
       "wild_pool_percentages": "OREBURGH_GATE_PERCENTAGES",
       "min_rounds": 1,
@@ -480,7 +480,7 @@
     "SENDOFF_SPRING": {
       "area_type": "wild_route",
       "route_name": "Sendoff Spring",
-      "region": "sinnoh",
+      "region": "SINNOH",
       "battle_type": "grass",
       "can_fish": true,
       "wild_pool_percentages": "SENDOFF_SPRING_PERCENTAGES",
@@ -525,7 +525,7 @@
     "VERITY_LAKEFRONT": {
       "area_type": "wild_route",
       "route_name": "Verity Lakefront",
-      "region": "sinnoh",
+      "region": "SINNOH",
       "battle_type": "grass",
       "wild_pool_percentages": null,
       "min_rounds": 0,
@@ -551,7 +551,7 @@
     "VALOR_LAKEFRONT": {
       "area_type": "wild_route",
       "route_name": "Valor Lakefront",
-      "region": "sinnoh",
+      "region": "SINNOH",
       "battle_type": "grass",
       "wild_pool_percentages": "VALOR_LAKEFRONT_PERCENTAGES",
       "min_rounds": 2,
@@ -614,7 +614,7 @@
     "ACUITY_LAKEFRONT": {
       "area_type": "wild_route",
       "route_name": "Acuity Lakefront",
-      "region": "sinnoh",
+      "region": "SINNOH",
       "battle_type": "snow",
       "wild_pool_percentages": "ACUITY_LAKEFRONT_PERCENTAGES",
       "min_rounds": 2,
@@ -659,7 +659,7 @@
     "TROPHY_GARDEN": {
       "area_type": "wild_route",
       "route_name": "Trophy Garden",
-      "region": "sinnoh",
+      "region": "SINNOH",
       "battle_type": "grass",
       "wild_pool_percentages": "TROPHY_GARDEN_PERCENTAGES",
       "min_rounds": 2,
@@ -690,7 +690,7 @@
     "MANIAC_TUNNEL": {
       "area_type": "dungeon",
       "route_name": "Maniac Tunnel",
-      "region": "sinnoh",
+      "region": "SINNOH",
       "battle_type": "cave",
       "wild_pool_percentages": "MANIAC_TUNNEL_PERCENTAGES",
       "min_rounds": 1,
@@ -728,7 +728,7 @@
     "RAVAGED_PATH": {
       "area_type": "dungeon",
       "route_name": "Ravaged Path",
-      "region": "sinnoh",
+      "region": "SINNOH",
       "battle_type": "cave",
       "can_fish": true,
       "wild_pool_percentages": "RAVAGED_PATH_PERCENTAGES",
@@ -766,7 +766,7 @@
     "FUEGO_IRONWORKS": {
       "area_type": "wild_route",
       "route_name": "Fuego Ironworks",
-      "region": "sinnoh",
+      "region": "SINNOH",
       "battle_type": "field",
       "can_fish": true,
       "wild_pool_percentages": "FUEGO_IRONWORKS_PERCENTAGES",
@@ -857,7 +857,7 @@
     "FLOAROMA_MEADOW": {
       "area_type": "wild_route",
       "route_name": "Floaroma Meadow",
-      "region": "sinnoh",
+      "region": "SINNOH",
       "battle_type": "grass",
       "wild_pool_percentages": null,
       "min_rounds": 0,
@@ -913,7 +913,7 @@
     "LOST_TOWER": {
       "area_type": "dungeon",
       "route_name": "Lost Tower",
-      "region": "sinnoh",
+      "region": "SINNOH",
       "battle_type": "indoor",
       "wild_pool_percentages": "LOST_TOWER_PERCENTAGES",
       "min_rounds": 1,
@@ -1023,7 +1023,7 @@
     "WAYWARD_CAVE": {
       "area_type": "dungeon",
       "route_name": "Wayward Cave",
-      "region": "sinnoh",
+      "region": "SINNOH",
       "battle_type": "cave",
       "wild_pool_percentages": "WAYWARD_CAVE_PERCENTAGES",
       "min_rounds": 1,
@@ -1151,7 +1151,7 @@
     "DISTORTION_WORLD": {
       "area_type": "dungeon",
       "route_name": "Distortion World",
-      "region": "sinnoh",
+      "region": "SINNOH",
       "battle_type": "indoor",
       "wild_pool_percentages": null,
       "min_rounds": 0,
@@ -1194,7 +1194,7 @@
     "SINNOH_BATTLE_FRONTIER": {
       "area_type": "dungeon",
       "route_name": "Battle Frontier",
-      "region": "sinnoh",
+      "region": "SINNOH",
       "battle_type": "indoor",
       "wild_pool_percentages": null,
       "min_rounds": 0,
@@ -1261,7 +1261,7 @@
     "SINNOH_ROUTE_224": {
       "area_type": "wild_route",
       "route_name": "Route 224",
-      "region": "sinnoh",
+      "region": "SINNOH",
       "battle_type": "grass",
       "wild_pool_percentages": "SINNOH_ROUTE_224_PERCENTAGES",
       "min_rounds": 2,
@@ -1401,7 +1401,7 @@
     "SINNOH_ROUTE_230": {
       "area_type": "wild_route",
       "route_name": "Route 230",
-      "region": "sinnoh",
+      "region": "SINNOH",
       "battle_type": "ocean",
       "can_fish": true,
       "wild_pool_percentages": "SINNOH_ROUTE_230_PERCENTAGES",
@@ -1532,7 +1532,7 @@
     "RESORT_AREA": {
       "area_type": "town",
       "route_name": "Resort Area",
-      "region": "sinnoh",
+      "region": "SINNOH",
       "has_gym": false,
       "travel_options": [
         {
@@ -1546,7 +1546,7 @@
     "SINNOH_ROUTE_229": {
       "area_type": "wild_route",
       "route_name": "Route 229",
-      "region": "sinnoh",
+      "region": "SINNOH",
       "battle_type": "forest",
       "can_fish": true,
       "wild_pool_percentages": "SINNOH_ROUTE_229_PERCENTAGES",
@@ -1658,7 +1658,7 @@
     "SINNOH_ROUTE_228": {
       "area_type": "wild_route",
       "route_name": "Route 228",
-      "region": "sinnoh",
+      "region": "SINNOH",
       "battle_type": "sand",
       "can_fish": true,
       "wild_pool_percentages": "SINNOH_ROUTE_228_PERCENTAGES",
@@ -1813,7 +1813,7 @@
     "SINNOH_ROUTE_227": {
       "area_type": "wild_route",
       "route_name": "Route 227",
-      "region": "sinnoh",
+      "region": "SINNOH",
       "battle_type": "mountain",
       "wild_pool_percentages": "SINNOH_ROUTE_227_PERCENTAGES",
       "min_rounds": 2,
@@ -1906,7 +1906,7 @@
     "SINNOH_ROUTE_226": {
       "area_type": "wild_route",
       "route_name": "Route 226",
-      "region": "sinnoh",
+      "region": "SINNOH",
       "battle_type": "mountain",
       "can_fish": true,
       "wild_pool_percentages": "SINNOH_ROUTE_226_PERCENTAGES",
@@ -2030,7 +2030,7 @@
     "SURVIVAL_AREA": {
       "area_type": "town",
       "route_name": "Survival Area",
-      "region": "sinnoh",
+      "region": "SINNOH",
       "has_gym": false,
       "travel_options": [
         {
@@ -2057,7 +2057,7 @@
     "SINNOH_ROUTE_225": {
       "area_type": "wild_route",
       "route_name": "Route 225",
-      "region": "sinnoh",
+      "region": "SINNOH",
       "battle_type": "mountain",
       "can_fish": true,
       "wild_pool_percentages": "SINNOH_ROUTE_225_PERCENTAGES",
@@ -2207,7 +2207,7 @@
     "FIGHT_AREA": {
       "area_type": "town",
       "route_name": "Fight Area",
-      "region": "sinnoh",
+      "region": "SINNOH",
       "has_gym": false,
       "travel_options": [
         {
@@ -2242,7 +2242,7 @@
     "SINNOH_ROUTE_221": {
       "area_type": "wild_route",
       "route_name": "Route 221",
-      "region": "sinnoh",
+      "region": "SINNOH",
       "battle_type": "grass",
       "wild_pool_percentages": "SINNOH_ROUTE_221_PERCENTAGES",
       "min_rounds": 2,
@@ -2355,7 +2355,7 @@
     "SINNOH_ROUTE_220": {
       "area_type": "wild_route",
       "route_name": "Route 220",
-      "region": "sinnoh",
+      "region": "SINNOH",
       "battle_type": "ocean",
       "can_fish": true,
       "wild_pool_percentages": "SINNOH_ROUTE_220_PERCENTAGES",
@@ -2492,7 +2492,7 @@
     "SINNOH_ROUTE_219": {
       "area_type": "wild_route",
       "route_name": "Route 219",
-      "region": "sinnoh",
+      "region": "SINNOH",
       "battle_type": "water",
       "can_fish": true,
       "wild_pool_percentages": "SINNOH_ROUTE_219_PERCENTAGES",

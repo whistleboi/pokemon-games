@@ -15,7 +15,7 @@
     "CHARGESTONE_CAVERN": {
       "area_type": "dungeon",
       "route_name": "Chargestone Cavern",
-      "region": "paldea",
+      "region": "PALDEA",
       "battle_type": "cave",
       "wild_pool_percentages": "CHARGESTONE_CAVERN_PERCENTAGES",
       "min_rounds": 1,
@@ -46,7 +46,7 @@
     "TORCHLIT_LABYRINTH": {
       "area_type": "dungeon",
       "route_name": "Torchlit Labyrinth",
-      "region": "paldea",
+      "region": "PALDEA",
       "battle_type": "cave",
       "wild_pool_percentages": "TORCHLIT_LABYRINTH_PERCENTAGES",
       "min_rounds": 1,
@@ -77,7 +77,7 @@
     "POLAR_BIOME": {
       "area_type": "wild_route",
       "route_name": "Polar Biome",
-      "region": "paldea",
+      "region": "PALDEA",
       "battle_type": "mountain",
       "can_fish": true,
       "wild_pool_percentages": "POLAR_BIOME_PERCENTAGES",
@@ -203,7 +203,7 @@
     "CANYON_BIOME": {
       "area_type": "wild_route",
       "route_name": "Canyon Biome",
-      "region": "paldea",
+      "region": "PALDEA",
       "battle_type": "mountain",
       "wild_pool_percentages": "CANYON_BIOME_PERCENTAGES",
       "min_rounds": 2,
@@ -327,7 +327,7 @@
     "COASTAL_BIOME": {
       "area_type": "wild_route",
       "route_name": "Coastal Biome",
-      "region": "paldea",
+      "region": "PALDEA",
       "battle_type": "ocean",
       "can_fish": true,
       "wild_pool_percentages": "COASTAL_BIOME_PERCENTAGES",
@@ -444,7 +444,7 @@
     "SAVANNA_BIOME": {
       "area_type": "wild_route",
       "route_name": "Savanna Biome",
-      "region": "paldea",
+      "region": "PALDEA",
       "battle_type": "grass",
       "wild_pool_percentages": "SAVANNA_BIOME_PERCENTAGES",
       "min_rounds": 2,
@@ -558,7 +558,7 @@
     "TERARIUM_CENTRAL_PLAZA": {
       "area_type": "town",
       "route_name": "Central Plaza",
-      "region": "paldea",
+      "region": "PALDEA",
       "has_gym": false,
       "travel_options": [
         {

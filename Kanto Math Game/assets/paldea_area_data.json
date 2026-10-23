@@ -110,7 +110,7 @@
     "DREADED_DEN": {
       "area_type": "dungeon",
       "route_name": "Dreaded Den",
-      "region": "paldea",
+      "region": "PALDEA",
       "battle_type": "cave",
       "wild_pool_percentages": null,
       "min_rounds": 0,
@@ -140,7 +140,7 @@
     "WISTFUL_FIELDS": {
       "area_type": "wild_route",
       "route_name": "Wistful Fields",
-      "region": "paldea",
+      "region": "PALDEA",
       "battle_type": "grass",
       "wild_pool_percentages": "WISTFUL_FIELDS_PERCENTAGES",
       "min_rounds": 2,
@@ -233,7 +233,7 @@
     "CHILLING_WATERHEAD": {
       "area_type": "wild_route",
       "route_name": "Chilling Waterhead",
-      "region": "paldea",
+      "region": "PALDEA",
       "battle_type": "ocean",
       "can_fish": true,
       "wild_pool_percentages": "CHILLING_WATERHEAD_PERCENTAGES",
@@ -289,7 +289,7 @@
     "ONIS_MAW": {
       "area_type": "dungeon",
       "route_name": "Oni's Maw",
-      "region": "paldea",
+      "region": "PALDEA",
       "battle_type": "cave",
       "wild_pool_percentages": "ONIS_MAW_PERCENTAGES",
       "min_rounds": 1,
@@ -320,7 +320,7 @@
     "FELLHORN_GORGE": {
       "area_type": "wild_route",
       "route_name": "Fellhorn Gorge",
-      "region": "paldea",
+      "region": "PALDEA",
       "battle_type": "mountain",
       "wild_pool_percentages": "FELLHORN_GORGE_PERCENTAGES",
       "min_rounds": 2,
@@ -398,7 +398,7 @@
     "INFERNAL_PASS": {
       "area_type": "dungeon",
       "route_name": "Infernal Pass",
-      "region": "paldea",
+      "region": "PALDEA",
       "battle_type": "cave",
       "wild_pool_percentages": "INFERNAL_PASS_PERCENTAGES",
       "min_rounds": 1,
@@ -436,7 +436,7 @@
     "CRYSTAL_POOL": {
       "area_type": "dungeon",
       "route_name": "Crystal Pool",
-      "region": "paldea",
+      "region": "PALDEA",
       "battle_type": "mountain",
       "wild_pool_percentages": "CRYSTAL_POOL_PERCENTAGES",
       "min_rounds": 1,
@@ -488,7 +488,7 @@
     "ONI_MOUNTAIN": {
       "area_type": "wild_route",
       "route_name": "Oni Mountain",
-      "region": "paldea",
+      "region": "PALDEA",
       "battle_type": "mountain",
       "wild_pool_percentages": "ONI_MOUNTAIN_PERCENTAGES",
       "min_rounds": 2,
@@ -618,7 +618,7 @@
     "MOSSFELL_CONFLUENCE": {
       "area_type": "wild_route",
       "route_name": "Mossfell Confluence",
-      "region": "paldea",
+      "region": "PALDEA",
       "battle_type": "grass",
       "can_fish": true,
       "wild_pool_percentages": "MOSSFELL_CONFLUENCE_PERCENTAGES",
@@ -719,7 +719,7 @@
     "APPLE_HILLS": {
       "area_type": "wild_route",
       "route_name": "Apple Hills",
-      "region": "paldea",
+      "region": "PALDEA",
       "battle_type": "grass",
       "wild_pool_percentages": "APPLE_HILLS_PERCENTAGES",
       "min_rounds": 2,
@@ -824,7 +824,7 @@
     "KITAKAMI_HALL": {
       "area_type": "town",
       "route_name": "Kitakami Hall",
-      "region": "paldea",
+      "region": "PALDEA",
       "has_gym": false,
       "travel_options": [
         {
@@ -838,7 +838,7 @@
     "MOSSUI_TOWN": {
       "area_type": "town",
       "route_name": "Mossui Town",
-      "region": "paldea",
+      "region": "PALDEA",
       "has_gym": false,
       "travel_options": [
         {
@@ -873,7 +873,7 @@
     "GREAT_CRATER_OF_PALDEA": {
       "area_type": "wild_route",
       "route_name": "Great Crater of Paldea",
-      "region": "paldea",
+      "region": "PALDEA",
       "battle_type": "mountain",
       "wild_pool_percentages": "GREAT_CRATER_OF_PALDEA_PERCENTAGES",
       "min_rounds": 2,
@@ -904,7 +904,7 @@
     "NORTH_PALDEAN_SEA": {
       "area_type": "wild_route",
       "route_name": "North Paldean Sea",
-      "region": "paldea",
+      "region": "PALDEA",
       "battle_type": "ocean",
       "can_fish": true,
       "wild_pool_percentages": "NORTH_PALDEAN_SEA_PERCENTAGES",
@@ -960,7 +960,7 @@
     "EAST_PALDEAN_SEA": {
       "area_type": "wild_route",
       "route_name": "East Paldean Sea",
-      "region": "paldea",
+      "region": "PALDEA",
       "battle_type": "ocean",
       "can_fish": true,
       "wild_pool_percentages": "EAST_PALDEAN_SEA_PERCENTAGES",
@@ -1016,7 +1016,7 @@
     "WEST_PALDEAN_SEA": {
       "area_type": "wild_route",
       "route_name": "West Paldean Sea",
-      "region": "paldea",
+      "region": "PALDEA",
       "battle_type": "ocean",
       "can_fish": true,
       "wild_pool_percentages": "WEST_PALDEAN_SEA_PERCENTAGES",
@@ -1072,7 +1072,7 @@
     "SOUTH_PALDEAN_SEA": {
       "area_type": "wild_route",
       "route_name": "South Paldean Sea",
-      "region": "paldea",
+      "region": "PALDEA",
       "battle_type": "ocean",
       "can_fish": true,
       "wild_pool_percentages": "SOUTH_PALDEAN_SEA_PERCENTAGES",
@@ -1128,7 +1128,7 @@
     "PORTO_MARINADA": {
       "area_type": "town",
       "route_name": "Porto Marinada",
-      "region": "paldea",
+      "region": "PALDEA",
       "has_gym": false,
       "travel_options": [
         {
@@ -1155,7 +1155,7 @@
     "INLET_GROTTO": {
       "area_type": "dungeon",
       "route_name": "Inlet Grotto",
-      "region": "paldea",
+      "region": "PALDEA",
       "battle_type": "cave",
       "wild_pool_percentages": "INLET_GROTTO_PERCENTAGES",
       "min_rounds": 1,
@@ -1193,7 +1193,7 @@
     "ALFORNADA_CAVERN": {
       "area_type": "dungeon",
       "route_name": "Alfornada Cavern",
-      "region": "paldea",
+      "region": "PALDEA",
       "battle_type": "cave",
       "wild_pool_percentages": "ALFORNADA_CAVERN_PERCENTAGES",
       "min_rounds": 1,
@@ -1325,7 +1325,7 @@
     "SOUTH_PROVINCE_AREA_6": {
       "area_type": "wild_route",
       "route_name": "South Province Area 6",
-      "region": "paldea",
+      "region": "PALDEA",
       "battle_type": "mountain",
       "wild_pool_percentages": "SOUTH_PROVINCE_AREA_6_PERCENTAGES",
       "min_rounds": 2,
@@ -1469,7 +1469,7 @@
     "SOUTH_PROVINCE_AREA_4": {
       "area_type": "wild_route",
       "route_name": "South Province Area 4",
-      "region": "paldea",
+      "region": "PALDEA",
       "battle_type": "grass",
       "wild_pool_percentages": "SOUTH_PROVINCE_AREA_4_PERCENTAGES",
       "min_rounds": 2,
@@ -1633,7 +1633,7 @@
     "DALIZAPA_PASSAGE": {
       "area_type": "dungeon",
       "route_name": "Dalizapa Passage",
-      "region": "paldea",
+      "region": "PALDEA",
       "battle_type": "cave",
       "wild_pool_percentages": "DALIZAPA_PASSAGE_PERCENTAGES",
       "min_rounds": 1,
@@ -1762,7 +1762,7 @@
     "SOCARRAT_TRAIL": {
       "area_type": "wild_route",
       "route_name": "Socarrat Trail",
-      "region": "paldea",
+      "region": "PALDEA",
       "battle_type": "mountain",
       "wild_pool_percentages": "SOCARRAT_TRAIL_PERCENTAGES",
       "min_rounds": 2,
@@ -1824,7 +1824,7 @@
     "CAPH_SQUAD_BASE": {
       "area_type": "dungeon",
       "route_name": "Caph Squad's Base",
-      "region": "paldea",
+      "region": "PALDEA",
       "battle_type": "field",
       "wild_pool_percentages": null,
       "min_rounds": 0,
@@ -1878,7 +1878,7 @@
     "RUCHBAH_SQUAD_BASE": {
       "area_type": "dungeon",
       "route_name": "Ruchbah Squad's Base",
-      "region": "paldea",
+      "region": "PALDEA",
       "battle_type": "field",
       "wild_pool_percentages": null,
       "min_rounds": 0,
@@ -1919,7 +1919,7 @@
     "NAVI_SQUAD_BASE": {
       "area_type": "dungeon",
       "route_name": "Navi Squad's Base",
-      "region": "paldea",
+      "region": "PALDEA",
       "battle_type": "field",
       "wild_pool_percentages": null,
       "min_rounds": 0,
@@ -1972,7 +1972,7 @@
     "SCHEDAR_SQUAD_BASE": {
       "area_type": "dungeon",
       "route_name": "Schedar Squad's Base",
-      "region": "paldea",
+      "region": "PALDEA",
       "battle_type": "field",
       "wild_pool_percentages": null,
       "min_rounds": 0,
@@ -2022,7 +2022,7 @@
     "SEGIN_SQUAD_BASE": {
       "area_type": "dungeon",
       "route_name": "Segin Squad's Base",
-      "region": "paldea",
+      "region": "PALDEA",
       "battle_type": "field",
       "wild_pool_percentages": null,
       "min_rounds": 0,

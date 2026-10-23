@@ -145,7 +145,7 @@
     "HOENN_MIRAGE_ISLAND": {
       "area_type": "dungeon",
       "route_name": "Mirage Island",
-      "region": "hoenn",
+      "region": "HOENN",
       "battle_type": "grass",
       "wild_pool_percentages": "HOENN_MIRAGE_ISLAND_PERCENTAGES",
       "min_rounds": 1,
@@ -176,7 +176,7 @@
     "HOENN_MIRAGE_MOUNTAIN": {
       "area_type": "dungeon",
       "route_name": "Mirage Mountain",
-      "region": "hoenn",
+      "region": "HOENN",
       "battle_type": "cave",
       "wild_pool_percentages": "HOENN_MIRAGE_MOUNTAIN_PERCENTAGES",
       "min_rounds": 1,
@@ -207,7 +207,7 @@
     "HOENN_MIRAGE_FOREST": {
       "area_type": "dungeon",
       "route_name": "Mirage Forest",
-      "region": "hoenn",
+      "region": "HOENN",
       "battle_type": "forest",
       "wild_pool_percentages": "HOENN_MIRAGE_FOREST_PERCENTAGES",
       "min_rounds": 1,
@@ -238,7 +238,7 @@
     "HOENN_MIRAGE_CAVE": {
       "area_type": "dungeon",
       "route_name": "Mirage Cave",
-      "region": "hoenn",
+      "region": "HOENN",
       "battle_type": "cave",
       "wild_pool_percentages": "HOENN_MIRAGE_CAVE_PERCENTAGES",
       "min_rounds": 1,
@@ -269,7 +269,7 @@
     "HOENN_SOARING_IN_THE_SKY": {
       "area_type": "wild_route",
       "route_name": "Soaring in the Sky",
-      "region": "hoenn",
+      "region": "HOENN",
       "battle_type": "field",
       "wild_pool_percentages": "HOENN_SOARING_IN_THE_SKY_PERCENTAGES",
       "min_rounds": 2,
@@ -328,7 +328,7 @@
     "HOENN_BATTLE_RESORT": {
       "area_type": "wild_route",
       "route_name": "Battle Resort",
-      "region": "hoenn",
+      "region": "HOENN",
       "battle_type": "field",
       "can_fish": true,
       "wild_pool_percentages": "HOENN_BATTLE_RESORT_PERCENTAGES",
@@ -443,7 +443,7 @@
     "HOENN_ARTISAN_CAVE": {
       "area_type": "dungeon",
       "route_name": "Artisan Cave",
-      "region": "hoenn",
+      "region": "HOENN",
       "battle_type": "cave",
       "wild_pool_percentages": "HOENN_ARTISAN_CAVE_PERCENTAGES",
       "min_rounds": 1,
@@ -474,7 +474,7 @@
     "HOENN_BATTLE_FRONTIER": {
       "area_type": "dungeon",
       "route_name": "Battle Frontier",
-      "region": "hoenn",
+      "region": "HOENN",
       "battle_type": "indoor",
       "wild_pool_percentages": null,
       "min_rounds": 0,
@@ -587,7 +587,7 @@
     "HOENN_DESERT_UNDERPASS": {
       "area_type": "dungeon",
       "route_name": "Desert Underpass",
-      "region": "hoenn",
+      "region": "HOENN",
       "battle_type": "cave",
       "wild_pool_percentages": "HOENN_DESERT_UNDERPASS_PERCENTAGES",
       "min_rounds": 1,
@@ -618,7 +618,7 @@
     "HOENN_SEALED_CHAMBER": {
       "area_type": "dungeon",
       "route_name": "Sealed Chamber",
-      "region": "hoenn",
+      "region": "HOENN",
       "battle_type": "cave",
       "wild_pool_percentages": "HOENN_SEALED_CHAMBER_PERCENTAGES",
       "min_rounds": 1,
@@ -665,7 +665,7 @@
     "HOENN_SS_TIDAL": {
       "area_type": "dungeon",
       "route_name": "S.S. Tidal",
-      "region": "hoenn",
+      "region": "HOENN",
       "battle_type": "indoor",
       "wild_pool_percentages": null,
       "min_rounds": 0,
@@ -780,7 +780,7 @@
     "HOENN_SCORCHED_SLAB": {
       "area_type": "dungeon",
       "route_name": "Scorched Slab",
-      "region": "hoenn",
+      "region": "HOENN",
       "battle_type": "cave",
       "can_fish": true,
       "wild_pool_percentages": "HOENN_SCORCHED_SLAB_PERCENTAGES",
@@ -818,7 +818,7 @@
     "HOENN_SEA_MAUVILLE": {
       "area_type": "dungeon",
       "route_name": "Sea Mauville",
-      "region": "hoenn",
+      "region": "HOENN",
       "battle_type": "indoor",
       "can_fish": true,
       "wild_pool_percentages": "HOENN_SEA_MAUVILLE_PERCENTAGES",
@@ -910,7 +910,7 @@
     "HOENN_ALTERING_CAVE": {
       "area_type": "dungeon",
       "route_name": "Altering Cave",
-      "region": "hoenn",
+      "region": "HOENN",
       "battle_type": "cave",
       "wild_pool_percentages": "HOENN_ALTERING_CAVE_PERCENTAGES",
       "min_rounds": 1,
@@ -941,7 +941,7 @@
     "HOENN_MIRAGE_TOWER": {
       "area_type": "dungeon",
       "route_name": "Mirage Tower",
-      "region": "hoenn",
+      "region": "HOENN",
       "battle_type": "cave",
       "wild_pool_percentages": "HOENN_MIRAGE_TOWER_PERCENTAGES",
       "min_rounds": 1,
@@ -972,7 +972,7 @@
     "HOENN_MAGMA_HIDEOUT": {
       "area_type": "dungeon",
       "route_name": "Magma Hideout",
-      "region": "hoenn",
+      "region": "HOENN",
       "battle_type": "cave",
       "wild_pool_percentages": "HOENN_MAGMA_HIDEOUT_PERCENTAGES",
       "min_rounds": 0,

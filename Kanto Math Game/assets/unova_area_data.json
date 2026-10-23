@@ -306,7 +306,7 @@
     "CHALLENGERS_CAVE": {
       "area_type": "dungeon",
       "route_name": "Challenger's Cave",
-      "region": "unova",
+      "region": "UNOVA",
       "battle_type": "cave",
       "wild_pool_percentages": "CHALLENGERS_CAVE_PERCENTAGES",
       "min_rounds": 1,
@@ -412,7 +412,7 @@
     "VILLAGE_BRIDGE": {
       "area_type": "wild_route",
       "route_name": "Village Bridge",
-      "region": "unova",
+      "region": "UNOVA",
       "battle_type": "grass",
       "can_fish": true,
       "wild_pool_percentages": "VILLAGE_BRIDGE_PERCENTAGES",
@@ -557,7 +557,7 @@
     "MARVELOUS_BRIDGE": {
       "area_type": "wild_route",
       "route_name": "Marvelous Bridge",
-      "region": "unova",
+      "region": "UNOVA",
       "battle_type": "field",
       "wild_pool_percentages": null,
       "min_rounds": 0,
@@ -603,7 +603,7 @@
     "NATURE_PRESERVE": {
       "area_type": "wild_route",
       "route_name": "Nature Preserve",
-      "region": "unova",
+      "region": "UNOVA",
       "battle_type": "forest",
       "wild_pool_percentages": "NATURE_PRESERVE_PERCENTAGES",
       "min_rounds": 2,
@@ -634,7 +634,7 @@
     "PLASMA_FRIGATE": {
       "area_type": "dungeon",
       "route_name": "Plasma Frigate",
-      "region": "unova",
+      "region": "UNOVA",
       "battle_type": "indoor",
       "wild_pool_percentages": null,
       "min_rounds": 0,
@@ -738,7 +738,7 @@
     "SEASIDE_CAVE": {
       "area_type": "dungeon",
       "route_name": "Seaside Cave",
-      "region": "unova",
+      "region": "UNOVA",
       "battle_type": "cave",
       "wild_pool_percentages": "SEASIDE_CAVE_PERCENTAGES",
       "min_rounds": 1,
@@ -865,7 +865,7 @@
     "UNDELLA_BAY": {
       "area_type": "wild_route",
       "route_name": "Undella Bay",
-      "region": "unova",
+      "region": "UNOVA",
       "battle_type": "water",
       "can_fish": true,
       "wild_pool_percentages": "UNDELLA_BAY_PERCENTAGES",
@@ -985,7 +985,7 @@
     "HUMILAU_CITY": {
       "area_type": "town",
       "route_name": "Humilau City",
-      "region": "unova",
+      "region": "UNOVA",
       "has_gym": false,
       "travel_options": [
         {
@@ -1024,7 +1024,7 @@
     "STRANGE_HOUSE": {
       "area_type": "dungeon",
       "route_name": "Strange House",
-      "region": "unova",
+      "region": "UNOVA",
       "battle_type": "indoor",
       "wild_pool_percentages": "STRANGE_HOUSE_PERCENTAGES",
       "min_rounds": 1,
@@ -1087,7 +1087,7 @@
     "REVERSAL_MOUNTAIN": {
       "area_type": "dungeon",
       "route_name": "Reversal Mountain",
-      "region": "unova",
+      "region": "UNOVA",
       "battle_type": "cave",
       "wild_pool_percentages": "REVERSAL_MOUNTAIN_PERCENTAGES",
       "min_rounds": 1,
@@ -1237,7 +1237,7 @@
     "LENTIMAS_TOWN": {
       "area_type": "town",
       "route_name": "Lentimas Town",
-      "region": "unova",
+      "region": "UNOVA",
       "has_gym": false,
       "travel_options": [
         {
@@ -1264,7 +1264,7 @@
     "TUBELINE_BRIDGE": {
       "area_type": "wild_route",
       "route_name": "Tubeline Bridge",
-      "region": "unova",
+      "region": "UNOVA",
       "battle_type": "field",
       "wild_pool_percentages": null,
       "min_rounds": 0,
@@ -1324,7 +1324,7 @@
     "CLAY_TUNNEL": {
       "area_type": "dungeon",
       "route_name": "Clay Tunnel",
-      "region": "unova",
+      "region": "UNOVA",
       "battle_type": "cave",
       "wild_pool_percentages": "CLAY_TUNNEL_PERCENTAGES",
       "min_rounds": 1,
@@ -1462,7 +1462,7 @@
     "RELIC_PASSAGE": {
       "area_type": "dungeon",
       "route_name": "Relic Passage",
-      "region": "unova",
+      "region": "UNOVA",
       "battle_type": "cave",
       "wild_pool_percentages": "RELIC_PASSAGE_PERCENTAGES",
       "min_rounds": 1,
@@ -1601,7 +1601,7 @@
     "ASPERTIA_CITY": {
       "area_type": "town",
       "route_name": "Aspertia City",
-      "region": "unova",
+      "region": "UNOVA",
       "has_gym": false,
       "travel_options": [
         {
@@ -1624,7 +1624,7 @@
     "UNOVA_ROUTE_19": {
       "area_type": "wild_route",
       "route_name": "Route 19",
-      "region": "unova",
+      "region": "UNOVA",
       "battle_type": "grass",
       "wild_pool_percentages": "UNOVA_ROUTE_19_PERCENTAGES",
       "min_rounds": 2,
@@ -1662,7 +1662,7 @@
     "FLOCCESY_TOWN": {
       "area_type": "town",
       "route_name": "Floccesy Town",
-      "region": "unova",
+      "region": "UNOVA",
       "has_gym": false,
       "travel_options": [
         {
@@ -1689,7 +1689,7 @@
     "FLOCCESY_RANCH": {
       "area_type": "wild_route",
       "route_name": "Floccesy Ranch",
-      "region": "unova",
+      "region": "UNOVA",
       "battle_type": "field",
       "wild_pool_percentages": "FLOCCESY_RANCH_PERCENTAGES",
       "min_rounds": 2,
@@ -1763,7 +1763,7 @@
     "UNOVA_ROUTE_20": {
       "area_type": "wild_route",
       "route_name": "Route 20",
-      "region": "unova",
+      "region": "UNOVA",
       "battle_type": "grass",
       "can_fish": true,
       "wild_pool_percentages": "UNOVA_ROUTE_20_PERCENTAGES",
@@ -1911,7 +1911,7 @@
     "VIRBANK_COMPLEX": {
       "area_type": "dungeon",
       "route_name": "Virbank Complex",
-      "region": "unova",
+      "region": "UNOVA",
       "battle_type": "field",
       "wild_pool_percentages": "VIRBANK_COMPLEX_PERCENTAGES",
       "min_rounds": 1,
@@ -2018,7 +2018,7 @@
     "VIRBANK_CITY": {
       "area_type": "town",
       "route_name": "Virbank City",
-      "region": "unova",
+      "region": "UNOVA",
       "has_gym": false,
       "travel_options": [
         {

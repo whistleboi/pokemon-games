@@ -137,7 +137,7 @@
     "MEETUP_SPOT": {
       "area_type": "town",
       "route_name": "Meetup Spot",
-      "region": "galar",
+      "region": "GALAR",
       "has_gym": false,
       "travel_options": [
         {
@@ -160,7 +160,7 @@
     "GALAR_MINE_NO_2": {
       "area_type": "dungeon",
       "route_name": "Galar Mine No. 2",
-      "region": "galar",
+      "region": "GALAR",
       "battle_type": "cave",
       "can_fish": true,
       "wild_pool_percentages": "GALAR_MINE_NO_2_PERCENTAGES",
@@ -273,7 +273,7 @@
     "MOTOSTOKE_OUTSKIRTS": {
       "area_type": "wild_route",
       "route_name": "Motostoke Outskirts",
-      "region": "galar",
+      "region": "GALAR",
       "battle_type": "grass",
       "wild_pool_percentages": "MOTOSTOKE_OUTSKIRTS_PERCENTAGES",
       "min_rounds": 2,

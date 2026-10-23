@@ -506,7 +506,7 @@
     "KANTO_SS_ANNE": {
       "area_type": "dungeon",
       "route_name": "S.S. Anne",
-      "region": "kanto",
+      "region": "KANTO",
       "battle_type": "indoor",
       "wild_pool_percentages": null,
       "min_rounds": 0,
