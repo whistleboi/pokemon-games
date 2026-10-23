@@ -181,6 +181,8 @@ def evolution_options(game, poke):
             continue
         if not evolution_allowed(game, tid):
             continue  # a later region's evolution: not until the player has been there
+        if src == NINCADA and tid == SHEDINJA:
+            continue  # Shedinja is the extra Pokemon Nincada -> Ninjask leaves behind, never an evolution
         rule = pairs.get(f"{src}>{tid}") or {"level": default_level(game, tid)}
         if hisui and "_" not in entry:
             # Like Legends: Arceus, evolving in Hisui gives the Hisuian form when there is one.
