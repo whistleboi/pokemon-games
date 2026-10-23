@@ -513,6 +513,11 @@ class PlayState(GameState):
 
         if not self.game.story_manager.story_flags.get("visited_BURNED_TOWER"):
             return False
+        # Raikou and Entei roam Johto's own routes only: not a sub-region (the Sinjoh Ruins) or
+        # any other region, even though the Burned Tower flag stays set for the whole save.
+        if (self.game.story_manager.get_current_region() != "JOHTO"
+                or self.area_data.get("subregion")):
+            return False
 
         if random.random() < self.ROAMER_CHANCE:
             roamers = [243, 244]
