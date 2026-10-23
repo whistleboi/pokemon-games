@@ -422,7 +422,7 @@
             "class": "ELITE_FOUR",
             "sprite": "hala.png",
             "is_boss_battle": true,
-            "team": [297, 57, 760, 62, 740], "levels": [59, 59, 59, 59, 60], "rematch": {"team": [297, 57, 760, 62, 740], "levels": [63, 63, 63, 63, 63]},
+            "team": [297, 57, 760, 62, 740], "levels": [59, 59, 59, 59, 60], "rematch": {"team": [297, 57, 760, 62, 740], "levels": [68, 68, 68, 68, 68]},
             "rewards": { "balls": 10 },
             "dialogue": {
               "intro": ["Hala: You have grown beyond what I imagined when you first came to Iki Town.", "Let us see how far — with the power of our Pokémon!"],
@@ -435,7 +435,7 @@
             "class": "ELITE_FOUR",
             "sprite": "olivia.png",
             "is_boss_battle": true,
-            "team": [369, 703, 76, 476, 745], "levels": [59, 59, 59, 59, 60], "rematch": {"team": [369, 703, 76, 476, 745], "levels": [63, 63, 63, 63, 63]},
+            "team": [369, 703, 76, 476, 745], "levels": [59, 59, 59, 59, 60], "rematch": {"team": [369, 703, 76, 476, 745], "levels": [68, 68, 68, 68, 68]},
             "rewards": { "balls": 10 },
             "dialogue": {
               "intro": ["Olivia: We meet again! This time — no holding back. My Pokémon and I are ready!"],
@@ -448,7 +448,7 @@
             "class": "ELITE_FOUR",
             "sprite": "acerola.png",
             "is_boss_battle": true,
-            "team": [302, 426, 781, 478, 770], "levels": [59, 59, 59, 59, 60], "rematch": {"team": [302, 426, 781, 478, 770], "levels": [63, 63, 63, 63, 63]},
+            "team": [302, 426, 781, 478, 770], "levels": [59, 59, 59, 59, 60], "rematch": {"team": [302, 426, 781, 478, 770], "levels": [68, 68, 68, 68, 68]},
             "rewards": { "balls": 10 },
             "dialogue": {
               "intro": ["Acerola: Ooh! You made it! My Ghost-types love new challengers!", "Don't be scared — they're mostly friendly!"],
@@ -461,7 +461,7 @@
             "class": "ELITE_FOUR",
             "sprite": "kahili.png",
             "is_boss_battle": true,
-            "team": [227, 169, 741, 630, 733], "levels": [59, 59, 59, 59, 60], "rematch": {"team": [227, 169, 741, 630, 733], "levels": [63, 63, 63, 63, 63]},
+            "team": [227, 169, 741, 630, 733], "levels": [59, 59, 59, 59, 60], "rematch": {"team": [227, 169, 741, 630, 733], "levels": [68, 68, 68, 68, 68]},
             "rewards": { "balls": 10 },
             "dialogue": {
               "intro": [
@@ -478,7 +478,7 @@
           "class": "CHAMPION",
           "sprite": "kukui.png",
           "is_boss_battle": true,
-          "team": [745, 38, 628, 462, 143, 727], "levels": [62, 62, 62, 62, 62, 63], "rematch": {"levels": [65, 65, 65, 65, 65, 65]},
+          "team": [745, 38, 628, 462, 143, 727], "levels": [62, 62, 62, 62, 62, 63], "rematch": {"levels": [70, 70, 70, 70, 70, 70]},
           "team_choice": {"722": [745, 38, 628, 462, 143, 727], "725": [745, 38, 628, 462, 143, 730], "728": [745, 38, 628, 462, 143, 724]},
           "rewards": { "balls": 20, "ALOLA_HALL_OF_FAME": 1 },
           "victory_flag": "beat_alola_champion",

@@ -111,7 +111,7 @@ check(any(v.get("id") == pid for v in g.data.data["pokedex"].values()), "and YES
 
 print("3.2 / 3.4 / 3.5) levels")
 check(levels.area_level(g, "UNION_CAVE") == 13 and levels.area_level(g, "SLOWPOKE_WELL") == 15, "Union Cave 13, Slowpoke Well 15")
-check(levels.area_level(g, "KANTO_ROUTE_26") == 50, "Route 26 trains you for the League (Lv 50)")
+check(levels.area_level(g, "KANTO_ROUTE_26") == 52, "Route 26 trains you for the League (Lv 52, patch 12)")
 story.current_area_key = "MAHOGANY_TOWN"
 story.level_cap_mode = "STORY"
 story.badges["JOHTO"] = ["ZEPHYR", "HIVE", "PLAIN", "FOG", "STORMBADGE"]

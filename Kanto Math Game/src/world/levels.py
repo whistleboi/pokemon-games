@@ -195,8 +195,9 @@ def cap_mode(story):
 # rules. Recomputed for the canon League levels and canon rematches (patch 10): the games' rematch
 # teams where they exist (FRLG, HGSS, Platinum, BW post-game, SM title defenses, SV Geeta), else
 # the canon first run + 10. Patch 11: Hoenn 56 -> 61 (its League is raised +5; RS has no rematch, so +10 on top).
+# Patch 12: Alola 63 -> 68 (its title-defense rematch raised +5 like its first run: Elite Four 68, Kukui 70).
 LEAGUE_REMATCH_FLOOR = {"KANTO": 63, "JOHTO": 58, "HOENN": 61, "SINNOH": 65, "UNOVA": 71,
-                        "KALOS": 73, "ALOLA": 63, "GALAR": 72, "PALDEA": 67}
+                        "KALOS": 73, "ALOLA": 68, "GALAR": 72, "PALDEA": 67}
 # Post-game spreads around the cap (Jordan): wild Pokemon a few levels under it (area level =
 # cap - 3, wild = area -2..+1 -> cap-5..cap-2), route/story trainers about at it (area +1..+3 ->
 # cap-2..cap, bosses cap+1), non-legendary area bosses cap+2. Post-game legendaries stay at 70 (LEGEND_LEVEL).
