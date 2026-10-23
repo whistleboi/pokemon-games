@@ -282,8 +282,9 @@ def condition_hint(rule):
         text = "?"
     if rule.get("level") and "item" not in rule and not text.startswith("reach"):
         text = f"reach Lv {rule['level']} and {text}"
-    if rule.get("time"):
-        text += f" ({rule['time']})"
+    if rule.get("time"):  # real clock, so say when (Gliscor, Weavile, Umbreon...)
+        text += {"night": " at night (8 PM-6 AM)", "day": " during the day (6 AM-8 PM)"}.get(
+            rule["time"], f" ({rule['time']})")
     if rule.get("weather"):
         text += " while it's raining"
     if rule.get("party_species"):
