@@ -129,7 +129,215 @@
     ],
     "galar_mom_newstart_3": ["Mom: The Slumbering Weald is spooky. Please don't go in there alone.", "Mom: ...Unless you're with a strong Pokémon. Then it's probably fine."]
   },
+  "MOTOSTOKE_OUTSKIRTS": [164, 559, 185, 524, 624, 109, 856, 833, 539, 859],
+  "MOTOSTOKE_OUTSKIRTS_PERCENTAGES": { "164": 20, "559": 18, "185": 15, "524": 15, "624": 10, "109": 8, "856": 5, "833": 5, "539": 2, "859": 2 },
+  "GALAR_MINE_NO_2": [422, 767, 688, 559, 714, 833, 213],
+  "GALAR_MINE_NO_2_PERCENTAGES": { "422": 25, "767": 25, "688": 15, "559": 15, "714": 10, "833": 5, "213": 5 },
   "STORY_PROGRESSION": {
+    "MEETUP_SPOT": {
+      "area_type": "town",
+      "route_name": "Meetup Spot",
+      "region": "galar",
+      "has_gym": false,
+      "travel_options": [
+        {
+          "text": "Wild Area",
+          "target_area": "WILD_AREA"
+        }
+      ],
+      "explore_options": [
+        {
+          "text": "Pok\u00e9mon Center",
+          "action": "HEAL"
+        },
+        {
+          "text": "Shop",
+          "action": "SHOP"
+        }
+      ],
+      "next_area": "WILD_AREA"
+    },
+    "GALAR_MINE_NO_2": {
+      "area_type": "dungeon",
+      "route_name": "Galar Mine No. 2",
+      "region": "galar",
+      "battle_type": "cave",
+      "can_fish": true,
+      "wild_pool_percentages": "GALAR_MINE_NO_2_PERCENTAGES",
+      "min_rounds": 1,
+      "trainer_pool": [
+        {
+          "name": "Pokemon Trainer Bede",
+          "class": "PKMN_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            577,
+            574,
+            77,
+            856
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        },
+        {
+          "name": "Worker Francis",
+          "class": "ENGINEER",
+          "sprite": "engineer.png",
+          "team": [
+            838
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Worker Yvonne",
+          "class": "ENGINEER",
+          "sprite": "engineer.png",
+          "team": [
+            524,
+            532
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Team Yell Grunt",
+          "class": "PKMN_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            828,
+            510
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Team Yell Grunt",
+          "class": "PKMN_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "team": [
+            264,
+            674
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "FISH",
+          "action": "FISH",
+          "condition": "can_fish",
+          "color": "ORANGE"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Motostoke Outskirts",
+          "action": "EXIT",
+          "target_area": "MOTOSTOKE_OUTSKIRTS",
+          "condition": "can_exit",
+          "color": "RED"
+        },
+        {
+          "text": "Hulbury",
+          "action": "EXIT",
+          "target_area": "HULBURY",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "MOTOSTOKE_OUTSKIRTS"
+    },
+    "MOTOSTOKE_OUTSKIRTS": {
+      "area_type": "wild_route",
+      "route_name": "Motostoke Outskirts",
+      "region": "galar",
+      "battle_type": "grass",
+      "wild_pool_percentages": "MOTOSTOKE_OUTSKIRTS_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Madame Caroline",
+          "class": "BEAUTY",
+          "sprite": "beauty.png",
+          "team": [
+            835,
+            528
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Police Officer Raymond",
+          "class": "PKMN_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "team": [
+            58
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Motostoke",
+          "action": "EXIT",
+          "target_area": "MOTOSTOKE",
+          "condition": "can_exit",
+          "color": "RED"
+        },
+        {
+          "text": "Galar Mine No. 2",
+          "action": "EXIT",
+          "target_area": "GALAR_MINE_NO_2",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "MOTOSTOKE"
+    },
     "POSTWICK": {
       "area_type": "town",
       "route_name": "Postwick",
@@ -252,7 +460,8 @@
       },
       "travel_options": [
         { "text": "Route 4 (to Turffield)", "target_area": "GALAR_ROUTE_4" },
-        { "text": "Route 5 (to Motostoke)", "target_area": "GALAR_ROUTE_5", "condition": "has_water_badge" }
+        { "text": "Route 5 (to Motostoke)", "target_area": "GALAR_ROUTE_5", "condition": "has_water_badge" },
+        {"text": "Galar Mine No. 2", "target_area": "GALAR_MINE_NO_2"}
       ],
       "explore_options": [
         { "text": "Pokémon Center", "action": "HEAL" },
@@ -288,7 +497,8 @@
       "travel_options": [
         { "text": "Route 5 (to Hulbury)", "target_area": "GALAR_ROUTE_5" },
         { "text": "Wild Area (east)", "target_area": "WILD_AREA" },
-        { "text": "Route 6 (to Stow-on-Side)", "target_area": "GALAR_ROUTE_6", "condition": "has_fire_badge" }
+        { "text": "Route 6 (to Stow-on-Side)", "target_area": "GALAR_ROUTE_6", "condition": "has_fire_badge" },
+        {"text": "Motostoke Outskirts", "target_area": "MOTOSTOKE_OUTSKIRTS", "condition": "has_grass_badge"}
       ],
       "explore_options": [
         { "text": "Pokémon Center", "action": "HEAL" },
@@ -591,7 +801,8 @@
         { "text": "Motostoke (east)", "action": "EXIT", "target_area": "MOTOSTOKE", "condition": "can_exit", "color": "RED" },
         { "text": "Wedgehurst (south)", "action": "EXIT", "target_area": "WEDGEHURST", "condition": "can_exit", "color": "RED" },
         { "text": "ROUTE 2", "action": "EXIT", "target_area": "GALAR_ROUTE_2", "condition": "can_exit", "color": "RED" },
-        { "text": "ROUTE 3", "action": "EXIT", "target_area": "GALAR_ROUTE_3", "condition": "can_exit", "color": "RED" }
+        { "text": "ROUTE 3", "action": "EXIT", "target_area": "GALAR_ROUTE_3", "condition": "can_exit", "color": "RED" },
+        {"text": "Meetup Spot", "action": "EXIT", "target_area": "MEETUP_SPOT", "condition": "can_exit", "color": "RED"}
       ],
       "max_raid_den": {
         "1": { "819": 35, "821": 35, "831": 15, "829": 10, "52-gmax": 5 },
