@@ -32,16 +32,9 @@ class MainMenuState(GameState):
             self.load_game,
         )
 
-        has_saves = False
-        if os.path.exists(game.data.save_file) and game.data.data.get("story"):
-            has_saves = True
-        else:
-            for i in range(5):
-                fname = os.path.join(
-                    game.assets.base_dir, f"game_data_{i}.json")
-                if os.path.exists(fname):
-                    has_saves = True
-                    break
+        from src.core import save_slots
+        has_saves = bool(os.path.exists(game.data.save_file) and game.data.data.get("story")) \
+            or save_slots.any_saves(save_slots.folder(game))
 
         self.btn_quit = Button(
             (game.width // 2 - 150, game.height // 2 + 140, 300, 80),
@@ -57,7 +50,8 @@ class MainMenuState(GameState):
             self.btn_load.callback = None
 
     def new_game(self):
-        self.game.start_new_game()
+        # Pick which of the SAVE_SLOTS files the new game lives in (empty slots start at once).
+        self.game.change_state(LoadState(self.game, self, mode="new"))
 
     def load_game(self):
         self.game.change_state(LoadState(self.game, self))
@@ -1072,47 +1066,46 @@ class StarterSelectionState(GameState):
 
 # [REF-0033: Load Game State]
 class LoadState(GameState):
-    """Allows loading a game from the pause menu with confirmation."""
-    def __init__(self, game, previous_state):
+    """Slot screen for LOAD GAME (mode="load") and for picking the file of a NEW GAME (mode="new").
+    Pages through all SAVE_SLOTS slots (see src.ui.slot_list), with a YES/NO confirmation."""
+    uses_keyboard = True  # its own arrow/Page/Enter handling (all of it also works by tap)
+
+    def __init__(self, game, previous_state, mode="load"):
         super().__init__(game)
+        from src.ui.slot_list import SlotList
+        from src.core import save_slots
         self.previous_state = previous_state
-        self.save_slots = self.load_save_slots()
-        self.buttons = []
+        self.mode = mode
         self.phase = "SELECT"
         self.selected_slot_index = -1
-
-        for i in range(5):
-            y_pos = game.height * 0.2 + i * 100
-            rect = (game.width / 2 - 300, y_pos, 600, 80)
-
-            def make_callback(index):
-                return lambda: self.confirm_load(index)
-
-            slot_text = self.get_slot_text(i)
-            btn = Button(
-                rect, slot_text, game.assets.fonts["tiny"], make_callback(i)
-            )
-            self.buttons.append(btn)
+        if mode == "new":  # a new game starts on the first free file
+            current = save_slots.first_empty(save_slots.folder(game)) or 0
+        else:
+            current = save_slots.slot_index(game.data.save_file) or 0
+        self.slot_list = SlotList(game, self.pick, selected=current)
+        if mode == "load" and current == 0 and save_slots.used_slots(save_slots.folder(game)):
+            self.slot_list.select(min(save_slots.used_slots(save_slots.folder(game))))
 
         self.btn_back = Button(
-            (game.width / 2 - 100, game.height - 100, 200, 60),
+            (game.width / 2 - 100, self.slot_list.btn_prev.rect.y, 200, 60),
             "BACK",
             game.assets.fonts["small"],
             self.go_back,
             bg_color=RED,
+            autosize=False,
         )
 
+        lines = (["Load this file?", "Unsaved progress will be lost."] if mode == "load"
+                 else ["Start a new game here?", "The game in this file will be replaced."])
         self.confirm_dialogue = ClassicDialogueBox(
-            Utils.get_full_dialogue_rect(game),
-            ["Load this file?", "Unsaved progress will be lost."],
-            game.assets.fonts["med"]
+            Utils.get_full_dialogue_rect(game), lines, game.assets.fonts["med"]
         )
         cx, cy = game.width // 2, game.height // 2
         self.btn_yes = Button(
             (cx - 150, cy + 50, 120, 60),
             "YES",
             game.assets.fonts["small"],
-            self.do_load,
+            self.do_load if mode == "load" else self.do_new,
             bg_color=GREEN,
             autosize=False
         )
@@ -1125,29 +1118,13 @@ class LoadState(GameState):
             autosize=False
         )
 
-    def load_save_slots(self):
-        from src.core.data import DataManager
-        slots = []
-        for i in range(5):
-            fname = os.path.join(
-                self.game.assets.base_dir, f"game_data_{i}.json"
-            )
-            data, status = DataManager.read_json(fname)
-            if data is not None:
-                slots.append({
-                    "name": data.get("save_name", f"File {i+1}"),
-                    "area": data.get("save_area", "Unknown"),
-                    "file": fname,
-                    "restored": status == "restored",
-                })
-            elif status == "damaged":
-                slots.append({"damaged": True, "file": fname})
-            else:
-                slots.append(None)
-        return slots
+    @property
+    def save_slots(self):
+        """Summaries of every slot (None = empty). Reads only the slots that have files."""
+        return [self.slot_list.summary(i) for i in range(self.slot_list.count)]
 
     def get_slot_text(self, i):
-        slot = self.save_slots[i]
+        slot = self.slot_list.summary(i)
         if not slot:
             return "EMPTY"
         if slot.get("damaged"):
@@ -1158,17 +1135,32 @@ class LoadState(GameState):
     def go_back(self):
         self.game.change_state(self.previous_state)
 
-    def confirm_load(self, i):
-        if self.save_slots[i] and not self.save_slots[i].get("damaged"):
+    def pick(self, i):
+        slot = self.slot_list.summary(i)
+        if self.mode == "new":
             self.selected_slot_index = i
-            self.phase = "CONFIRM"
-            self.game.ui_manager.elements.clear()
-            self.game.ui_manager.add_element(self.confirm_dialogue)
-            self.game.ui_manager.add_element(self.btn_yes)
-            self.game.ui_manager.add_element(self.btn_no)
+            if slot is None:
+                self.do_new()
+            else:
+                self._ask()
+        else:
+            self.confirm_load(i)
+
+    def _ask(self):
+        self.phase = "CONFIRM"
+        self.game.ui_manager.elements.clear()
+        self.game.ui_manager.add_element(self.confirm_dialogue)
+        self.game.ui_manager.add_element(self.btn_yes)
+        self.game.ui_manager.add_element(self.btn_no)
+
+    def confirm_load(self, i):
+        slot = self.slot_list.summary(i)
+        if slot and not slot.get("damaged"):
+            self.selected_slot_index = i
+            self._ask()
 
     def do_load(self):
-        slot_data = self.save_slots[self.selected_slot_index]
+        slot_data = self.slot_list.summary(self.selected_slot_index)
         self.game.data.save_file = slot_data["file"]
 
         self.game.data.data = self.game.data._load()
@@ -1179,18 +1171,34 @@ class LoadState(GameState):
             self.game.show_dialogue(["Error loading save file."])
             self.cancel_load()
 
+    def do_new(self):
+        from src.core import save_slots
+        path = save_slots.slot_path(save_slots.folder(self.game), self.selected_slot_index)
+        self.game.data.save_file = path
+        save_slots.forget(path)
+        self.game.start_new_game()
+
     def cancel_load(self):
         self.phase = "SELECT"
         self.start()
 
     def start(self):
         self.game.ui_manager.elements.clear()
-        for btn in self.buttons:
+        self.slot_list.refresh()
+        for btn in self.slot_list.buttons():
             self.game.ui_manager.add_element(btn)
         self.game.ui_manager.add_element(self.btn_back)
 
     def handle_events(self, events):
-        pass
+        if self.phase != "SELECT":
+            return
+        for event in events:
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+                self.go_back()
+                return
+            self.slot_list.handle(event)
+            if self.phase != "SELECT" or self.game.current_state is not self:
+                return
 
     def update(self):
         if self.phase == "CONFIRM":
@@ -1201,12 +1209,13 @@ class LoadState(GameState):
         if self.phase == "SELECT":
             Utils.draw_text_outline(
                 self.game.screen,
-                "LOAD GAME",
+                "LOAD GAME" if self.mode == "load" else "NEW GAME - PICK A FILE",
                 self.game.assets.fonts["med"],
                 WHITE,
                 self.game.width // 2,
-                50
+                40
             )
+            self.slot_list.draw(self.game.screen)
             self.game.ui_manager.draw(self.game.screen)
         elif self.phase == "CONFIRM":
             self.confirm_dialogue.draw(self.game.screen)
@@ -1222,10 +1231,13 @@ class SaveState(GameState):
         super().__init__(game)
         self.previous_state = previous_state
 
-        current_file = os.path.basename(self.game.data.save_file)
-        is_data = 'game_data_' in current_file
-        self.selected_slot = int(
-            current_file.split('_')[-1].split('.')[0]) if is_data else 0
+        from src.core import save_slots
+        from src.ui.slot_list import slot_font
+        slot = save_slots.slot_index(self.game.data.save_file)
+        if slot is None:  # not playing from a numbered file yet: offer the first free one
+            slot = save_slots.first_empty(save_slots.folder(game))
+        self.selected_slot = slot or 0
+        self.slot_list = None  # the paged slot picker, while choosing a different file
 
         self.input_text = self.game.data.data.get("save_name", f"File {
             self.selected_slot + 1}")
@@ -1244,6 +1256,49 @@ class SaveState(GameState):
             visible=True
         )
 
+        self.btn_slot = Button(
+            (game.width / 2 - 320, game.height / 2 - 175, 640, 56),
+            self.slot_label(),
+            slot_font(game.assets, 16),
+            self.open_slots,
+            bg_color=(70, 100, 240),
+            autosize=False,
+        )
+        self.btn_slots_back = Button(
+            (game.width / 2 - 100, 632, 200, 60), "BACK", game.assets.fonts["small"],
+            self.close_slots, bg_color=RED, autosize=False,
+        )
+
+    def slot_label(self):
+        from src.core import save_slots
+        from src.ui.slot_list import slot_font, fit
+        info = save_slots.summary(save_slots.folder(self.game), self.selected_slot)
+        what = "EMPTY" if info is None else ("DAMAGED" if info.get("damaged") else "REPLACES " + info["name"])
+        head = f"No.{self.selected_slot + 1:03d} "
+        font = slot_font(self.game.assets, 16)
+        return head + fit(font, what, 600 - font.size(head + " - CHANGE")[0]) + " - CHANGE"
+
+    def open_slots(self):
+        from src.ui.slot_list import SlotList
+        self.input_active = False
+        self.slot_list = SlotList(self.game, self.pick_slot, selected=self.selected_slot)
+        self.game.ui_manager.elements.clear()
+        for btn in self.slot_list.buttons() + [self.btn_slots_back]:
+            self.game.ui_manager.add_element(btn)
+
+    def pick_slot(self, i):
+        if self.input_text == "File " + str(self.selected_slot + 1):  # untouched default name
+            self.input_text = "File " + str(i + 1)
+        self.selected_slot = i
+        self.close_slots()
+
+    def close_slots(self):
+        self.slot_list = None
+        self.input_active = True
+        self.btn_slot.text = self.slot_label()
+        self.game.ui_manager.elements.clear()
+        self.start()
+
     def cancel_input(self):
         self.go_back()
 
@@ -1258,17 +1313,26 @@ class SaveState(GameState):
         )
 
         original_save_file = self.game.data.save_file
-        self.game.data.save_file = os.path.join(
-            self.game.assets.base_dir, f"game_data_{slot_index}.json"
-        )
+        from src.core import save_slots
+        self.game.data.save_file = save_slots.slot_path(save_slots.folder(self.game), slot_index)
         self.game.data.save()
         self.game.data.save_file = original_save_file
         self.go_back()
 
     def start(self):
+        self.game.ui_manager.add_element(self.btn_slot)
         self.game.ui_manager.add_element(self.btn_cancel_input)
 
     def handle_events(self, events):
+        if self.slot_list is not None:
+            for event in events:
+                if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+                    self.close_slots()
+                    return
+                self.slot_list.handle(event)
+                if self.slot_list is None:
+                    return
+            return
         if not self.input_active:
             return
         for event in events:
@@ -1286,6 +1350,13 @@ class SaveState(GameState):
         pass
 
     def draw(self):
+        if self.slot_list is not None:
+            self.game.screen.fill(BLACK)
+            Utils.draw_text_outline(self.game.screen, "SAVE GAME - PICK A FILE",
+                                    self.game.assets.fonts["med"], WHITE, self.game.width / 2, 40)
+            self.slot_list.draw(self.game.screen)
+            self.game.ui_manager.draw(self.game.screen)
+            return
         self.game.screen.fill(BLACK)
 
         pygame.draw.rect(
