@@ -24,3 +24,9 @@ story.story_flags.update({"KITAKAMI_REVELERS_ROAD_boss_defeated": True, "KITAKAM
 gate_check("crystal pool / dreaded den", ["CRYSTAL_POOL", "DREADED_DEN"], S, "KITAKAMI_TIMELESS_WOODS_boss_defeated")
 story.story_flags["KITAKAMI_TIMELESS_WOODS_boss_defeated"] = True
 expansion_check("kitakami loyal-three expansion", ["CRYSTAL_POOL", "DREADED_DEN"], S)
+
+# ---- Terarium biomes (areas_11_terarium.patch)
+TERA_NEW = ["TERARIUM_CENTRAL_PLAZA", "SAVANNA_BIOME", "COASTAL_BIOME", "CANYON_BIOME", "POLAR_BIOME", "TORCHLIT_LABYRINTH", "CHARGESTONE_CAVERN"]
+story.story_flags.update({"beat_paldea_champion": True, "KITAKAMI_boss_defeated": True})  # canon: exchange after The Teal Mask
+expansion_check("terarium biomes", TERA_NEW, S)
+print("   OK" if "TERARIUM_CENTRAL_PLAZA" in links("TERARIUM") and "TERARIUM" in links("TERARIUM_CENTRAL_PLAZA") else "   FAIL", "Terarium <-> Central Plaza")
