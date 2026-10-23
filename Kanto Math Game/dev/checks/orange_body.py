@@ -61,8 +61,8 @@ check(all(r.top >= 0 for r in rects) and len(rects) == len(t), f"{len(rects)} bu
 print("3) Gyms: Orange Crew challenges, then the leader")
 story.badges["ORANGE"] = []
 story.player_team = [mk(6)]
-for area, kind, want in (("MIKAN_ISLAND", "cissy", [(117, 60), (9, 62)]),
-                         ("KUMQUAT_ISLAND", "luana", [(65, 71), (105, 72)])):
+for area, kind, want in (("MIKAN_ISLAND", "cissy", [(117, 52), (9, 54)]),
+                         ("KUMQUAT_ISLAND", "luana", [(65, 59), (105, 60)])):
     story.current_area_key = area
     story.badges["ORANGE"] = ["CORAL_EYE", "SEA_RUBY", "SPIKE_SHELL"][:0 if area == "MIKAN_ISLAND" else 3]
     story.story_flags[f"gym_progress_{area}"] = 2
@@ -98,7 +98,7 @@ g.change_state(lobby)
 check(lobby.is_league, f"Pummelo is a league: {lobby.status_text}")
 lobby.challenge_gym()
 b = battle_of(g.current_state)
-check(lineup(b) == [(132, 72), (95, 72), (94, 73), (3, 74), (125, 73), (149, 76)], f"Drake: {lineup(b)}")
+check(lineup(b) == [(132, 59), (95, 59), (94, 60), (3, 61), (125, 60), (149, 63)], f"Drake (Kanto Champion levels): {lineup(b)}")
 b.player_won = True
 b.perform_battle_outcome() if hasattr(b, "perform_battle_outcome") else None
 story.story_flags["beat_orange_champion"] = True
@@ -120,7 +120,7 @@ story.story_flags["gym_progress_PUMMELO_ISLAND"] = 1
 lobby = ow.GymLobbyState(g, None)
 g.change_state(lobby)
 lobby.challenge_gym()
-check(lineup(battle_of(g.current_state))[-1] == (149, 86), "rematch: Drake +10 levels")
+check(lineup(battle_of(g.current_state))[-1] == (149, 73), "rematch: Drake +10 levels (73)")
 
 print("5) Region rules")
 pick = RegionSelectionState(g, mode="new")

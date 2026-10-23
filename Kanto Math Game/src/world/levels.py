@@ -43,14 +43,16 @@ GYM_ACE = {
     "UNOVA": [14, 20, 23, 27, 31, 35, 39, 43], "KALOS": [12, 25, 32, 34, 37, 42, 48, 54],
     "ALOLA": [12, 27, 39, 48], "GALAR": [20, 24, 25, 36, 38, 42, 46, 48],
     "PALDEA": [15, 17, 24, 30, 36, 42, 45, 48],
-    "ORANGE": [62, 66, 69, 72],
+    # Orange League in line with Kanto's League (Jordan): Gyms like the Elite Four (54-60), Drake like
+    # Kanto's Champion (63); his rematch (+10) is 69-73, close to Kanto's FRLG rematch (72-75).
+    "ORANGE": [54, 56, 58, 60],
 }
 ELITE_FOUR = {"KANTO": (54, 60), "JOHTO": (53, 59), "HOENN": (50, 53), "SINNOH": (53, 59),
               "UNOVA": (48, 50), "KALOS": (58, 62), "ALOLA": (54, 57), "GALAR": (52, 58),
               "PALDEA": (57, 60)}
 CHAMPION_ACE = {"KANTO": 63, "JOHTO": 63, "HOENN": 59, "SINNOH": 62, "UNOVA": 54, "KALOS": 66,
                 "ALOLA": 60, "GALAR": 65, "PALDEA": 62,
-                "ORANGE": 76}
+                "ORANGE": 63}
 START_LEVEL = 3
 
 # Legendaries: the box legends and their peers are Lv 70, mythicals and the rest Lv 50.
