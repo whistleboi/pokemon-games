@@ -111,28 +111,33 @@ def trainer_level(game, area_key, boss=False):
     return base + (random.randint(0, 1) if base < 8 else random.randint(1, 3))
 
 
-def legendary_level(pid):
-    pid = int(pid)
-    if pid in MYTHICAL_HIGH:
-        return MYTHICAL_HIGH[pid]
-    return 70 if pid in BOX_LEGENDS else 50
-
-
-# Jordan's rule: every legendary/mythical encounter is a little over the player's CURRENT level
-# cap (a slight challenge that a team kept at the cap can still beat and catch).
+# Jordan's legendary rule:
+# - before the region's last Gym badge: the story level cap + LEGEND_OVER_CAP (Hoenn patch 09);
+# - from the last Gym badge on (Victory Road, the League) and the whole post-game, including the
+#   post-game sub-regions and DLC areas: a flat LEGEND_LEVEL (70). Legendaries are never part of
+#   the player-led post-game scaling. This replaces 09's "Champion's ace stands in for the cap".
 LEGEND_OVER_CAP = 3
+LEGEND_LEVEL = 70
+
+
+def legendary_level(pid):
+    """A legendary or mythical made outside an encounter (trainer teams without levels, a fresh
+    Pokemon from the loader): LEGEND_LEVEL. Replaces the old 70/50/80/60 split."""
+    return LEGEND_LEVEL
 
 
 def legendary_encounter_level(game, area_key=None):
-    """Level of a legendary met in the wild, as a boss, a roamer or a gift: the story level cap
-    + LEGEND_OVER_CAP. After the title (and in Orre) that cap is the player-controlled post-game
-    cap (postgame_cap: the team's highest level, never below the League rematch floor)."""
+    """Level of a legendary met in the wild, as a boss (data levels included), a roamer or a
+    gift: cap + 3 before the last Gym badge, LEGEND_LEVEL (70) from then on and post-game."""
     story = game.story_manager
+    region = story.get_current_region()
+    if is_postgame(story, region) or len(story.badges.get(region, [])) >= len(gym_aces(region)):
+        return LEGEND_LEVEL
     return max(5, min(100, int(story_level_cap(story)) + LEGEND_OVER_CAP))
 
 
 def boss_level(game, area_key, pid):
-    """Area bosses: legendaries just over the level cap, others a little above the area."""
+    """Area bosses: legendaries per legendary_encounter_level, others a little above the area."""
     if is_legendary(pid):
         return legendary_encounter_level(game, area_key)
     return area_level(game, area_key) + 5
@@ -177,7 +182,7 @@ LEAGUE_REMATCH_FLOOR = {"KANTO": 63, "JOHTO": 58, "HOENN": 56, "SINNOH": 55, "UN
                         "KALOS": 62, "ALOLA": 58, "GALAR": 65, "PALDEA": 59}
 # Post-game spreads around the cap (Jordan): wild Pokemon a few levels under it (area level =
 # cap - 3, wild = area -2..+1 -> cap-5..cap-2), route/story trainers about at it (area +1..+3 ->
-# cap-2..cap, bosses cap+1), non-legendary area bosses cap+2, legendaries cap+3.
+# cap-2..cap, bosses cap+1), non-legendary area bosses cap+2. Post-game legendaries stay at 70 (LEGEND_LEVEL).
 POSTGAME_UNDER = 3
 # League rosters: only these classes keep the League's own (rematch) levels. Anyone else in a
 # League lobby (Galar's Marnie/Hop, Paldea's Nemona) is a post-game rematch on the cap rules.
@@ -222,14 +227,15 @@ def postgame_trainers(game, area_key=None):
 def postgame_cap(story, region=None):
     """The player-controlled post-game cap: the party's highest level, floored at the parent
     region's League rematch floor. It moves up with the team (see xp_cap), so a team that
-    over-levels meets stronger wild Pokemon, trainers and legendaries; the League keeps its own."""
+    over-levels meets stronger wild Pokemon and trainers (not legendaries: always 70); the League
+    keeps its own."""
     top = max((int(p.level) for p in getattr(story, "player_team", []) if p), default=0)
     floor = LEAGUE_REMATCH_FLOOR.get(parent_region(story, region), 50)
     return max(5, min(100, max(top, floor)))
 
 
 # Jordan: after the last Gym badge and before the title (Victory Road / the League) the cap is 70
-# in every region (sub-regions follow their parent's rule). Legendaries met then are 73 (cap + 3).
+# in every region (sub-regions follow their parent's rule). Legendaries are a flat 70 from then on.
 # The League's own levels are not raised: the Elite Four and Champions (aces 48-66) sit below it.
 PRE_LEAGUE_CAP = 70
 
@@ -250,7 +256,7 @@ def story_level_cap(story):
 def xp_cap(story):
     """Highest level XP can take a Pokemon to right now (100 when uncapped). Post-game the cap
     is the team's own highest level, so XP is not blocked: the player controls the level and the
-    cap (and the legendaries over it) follows the team."""
+    cap follows the team."""
     if cap_mode(story) != "STORY" or is_postgame(story):
         return 100
     return story_level_cap(story)
@@ -267,7 +273,7 @@ def obey_level(story):
 
 
 def set_wild(game, pokemon, area_key):
-    """A wild Pokemon's level: legendaries just over the level cap, the rest suit the area."""
+    """A wild Pokemon's level: legendaries per legendary_encounter_level, the rest suit the area."""
     if pokemon and is_legendary(pokemon.id):
         pokemon.level = legendary_encounter_level(game, area_key)
         pokemon.current_hp = pokemon.get_max_hp()

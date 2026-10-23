@@ -57,7 +57,9 @@ check("Meet the Masked Ogre" in menu("KITAKAMI"), "Ogerpon after the Loyal Three
 run("KITAKAMI", "BATTLE KIERAN")
 kb = battle_of(g.current_state)
 ace = levels.postgame_cap(story, story.area_region(story.current_area_key)) + 1
-check(lineup(kb) == [(1011, ace - 3), (1012, ace - 2), (1015, ace - 1), (1017, ace)], f"Kieran with Ogerpon (post-game cap): {lineup(kb)}")
+from src.pokemon.balance import is_legendary
+check(lineup(kb) == [(pid, 70 if is_legendary(pid) else lv) for pid, lv in zip((1011, 1012, 1015, 1017), range(ace - 3, ace + 1))],
+      f"Kieran (post-game cap), legendaries Munkidori/Ogerpon at Lv 70: {lineup(kb)}")
 
 print("5) Indigo Disk")
 check("Exchange to Blueberry Academy" not in travel("MESAGOZA"), "Blueberry after Kitakami")

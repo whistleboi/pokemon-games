@@ -82,7 +82,7 @@ def _story_team(game, area_key, t_info):
     forms.mark_trainer_team(team, t_info)
     top = t_info.get("level")  # story beats set in early areas carry their own level
     if levels.postgame_trainers(game, area_key):  # post-game: every trainer follows the player's cap
-        levels.set_team(team, levels.trainer_team_levels(game, area_key, len(team), boss=True), exact=True)
+        levels.set_team(team, levels.trainer_team_levels(game, area_key, len(team), boss=True))  # legendaries stay 70
     elif t_info.get("levels"):
         levels.set_team(team, list(t_info["levels"]), exact=True)
     elif top:
@@ -535,7 +535,7 @@ class PlayState(GameState):
             # Roamers suit the route (Lv 40 at most, as in HeartGold/SoulSilver) instead of an
             # L50 that one-shots a badge-4 team.
             area_key = self.game.story_manager.current_area_key
-            pokemon.level = levels.legendary_encounter_level(self.game, area_key)  # cap + 3, like every legendary
+            pokemon.level = levels.legendary_encounter_level(self.game, area_key)  # cap + 3, or 70 from the last badge on
             pokemon.current_hp = pokemon.get_max_hp()
 
             from src.states.battle import WildBattleState
@@ -4485,7 +4485,7 @@ class CityState(GameState):
         forms.mark_trainer_team(opponent_team, t_info)
         if levels.postgame_trainers(self.game, self.area_key) and not starter_battle:
             levels.set_team(opponent_team, levels.trainer_team_levels(
-                self.game, self.area_key, len(opponent_team), boss=True), exact=True)  # post-game cap
+                self.game, self.area_key, len(opponent_team), boss=True))  # post-game cap; legendaries stay 70
         elif t_info.get("levels"):
             levels.set_team(opponent_team, list(t_info["levels"]), exact=True)  # exact levels from the games
         elif starter_battle:
