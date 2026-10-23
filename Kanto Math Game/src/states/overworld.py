@@ -528,7 +528,7 @@ class PlayState(GameState):
             # Roamers suit the route (Lv 40 at most, as in HeartGold/SoulSilver) instead of an
             # L50 that one-shots a badge-4 team.
             area_key = self.game.story_manager.current_area_key
-            pokemon.level = max(10, min(self.ROAMER_MAX_LEVEL, levels.area_level(self.game, area_key) + 5))
+            pokemon.level = levels.legendary_encounter_level(self.game, area_key)  # cap + 3, like every legendary
             pokemon.current_hp = pokemon.get_max_hp()
 
             from src.states.battle import WildBattleState
@@ -1756,8 +1756,11 @@ class PlayState(GameState):
         pokemon = Pokemon(raw, self.game.assets, size_mult=2.0)
         # A Primal boss (Groudon/Kyogre in the Cave of Origin) reverts when the battle starts.
         pokemon.primal_ready = bool(boss_data.get("primal"))
-        pokemon.level = int(boss_data.get("level") or levels.boss_level(
-            self.game, self.game.story_manager.current_area_key, pokemon.id))
+        if levels.is_legendary(pokemon.id):  # legendaries follow the cap rule, even with a data level
+            pokemon.level = levels.boss_level(self.game, self.game.story_manager.current_area_key, pokemon.id)
+        else:
+            pokemon.level = int(boss_data.get("level") or levels.boss_level(
+                self.game, self.game.story_manager.current_area_key, pokemon.id))
         pokemon.current_hp = pokemon.get_max_hp()
 
         bg_file = boss_data.get("background") if (boss_data.get("background") and self.game.assets.get_background(

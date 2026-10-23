@@ -96,9 +96,9 @@ try:
 finally:
     random.random = _orig
 b = g.current_state
-lv = levels.area_level(g, story.current_area_key) + 5
-check(fired and isinstance(b, WildBattleState) and b.opponent_pokemon.level == min(40, lv),
-      f"roamer Lv {b.opponent_pokemon.level} on a Lv {lv - 5} route (was 50)")
+lv = levels.legendary_encounter_level(g, story.current_area_key)  # Jordan: legendaries = level cap + 3
+check(fired and isinstance(b, WildBattleState) and b.opponent_pokemon.level == lv,
+      f"roamer Lv {b.opponent_pokemon.level} = cap {levels.story_level_cap(story)} + {levels.LEGEND_OVER_CAP} (was 50)")
 pid = b.opponent_pokemon.id
 b.trigger_outro(True)
 check(b.phase == "CATCH_PROMPT", "beating it offers a catch")

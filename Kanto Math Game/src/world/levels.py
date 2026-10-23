@@ -110,10 +110,27 @@ def legendary_level(pid):
     return 70 if pid in BOX_LEGENDS else 50
 
 
+# Jordan's rule: every legendary/mythical encounter is a little over the player's CURRENT level
+# cap (a slight challenge that a team kept at the cap can still beat and catch).
+LEGEND_OVER_CAP = 3
+
+
+def legendary_encounter_level(game, area_key=None):
+    """Level of a legendary met in the wild, as a boss, a roamer or a gift: the story level cap
+    + LEGEND_OVER_CAP. With no cap (after the region's title, or Orre/Orange trips) the region's
+    Champion ace stands in for the cap, or the area's level when the region has no Champion."""
+    story = game.story_manager
+    cap = story_level_cap(story)
+    if cap >= 100:
+        cap = CHAMPION_ACE.get(story.get_current_region()) or area_level(
+            game, area_key or story.current_area_key)
+    return max(5, min(100, int(cap) + LEGEND_OVER_CAP))
+
+
 def boss_level(game, area_key, pid):
-    """Area bosses: legendaries at their fixed level, others a little above the area."""
+    """Area bosses: legendaries just over the level cap, others a little above the area."""
     if is_legendary(pid):
-        return legendary_level(pid)
+        return legendary_encounter_level(game, area_key)
     return area_level(game, area_key) + 5
 
 
@@ -173,8 +190,11 @@ def obey_level(story):
 
 
 def set_wild(game, pokemon, area_key):
-    """A wild Pokemon's level: legendaries keep their fixed level, the rest suit the area."""
-    if pokemon and not is_legendary(pokemon.id):
+    """A wild Pokemon's level: legendaries just over the level cap, the rest suit the area."""
+    if pokemon and is_legendary(pokemon.id):
+        pokemon.level = legendary_encounter_level(game, area_key)
+        pokemon.current_hp = pokemon.get_max_hp()
+    elif pokemon:
         pokemon.level = wild_level(game, area_key)
         pokemon.current_hp = pokemon.get_max_hp()
     return pokemon
