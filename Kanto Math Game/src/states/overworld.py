@@ -4589,6 +4589,9 @@ class CityState(GameState):
                     f"Professor: Congratulations, Champion of {', '.join(names[:-1])} and {names[-1]}!",
                     "Your regional PCs are now linked. Pokemon from any of those regions can join your team,",
                     "and your Bags have been combined too. Use them freely in every region you've conquered!"]
+            # Save the new title now: the move picker comes next, and a child who closes the
+            # game there used to lose the Champion win (the newest save was from before the League).
+            autosave(self.game)
             if story.get_region_start(region).get("travel_only"):
                 self.show_message(link_lines + self.ISLAND_CHAMPION)  # a trip, not a new home: no move offer
                 return
