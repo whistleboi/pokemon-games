@@ -9,7 +9,7 @@ t = travel("VERMILLION_CITY")
 check("Seagallop to One Island" in t and "Seagallop to Four Island" not in t, "Vermilion: Seagallop to One Island")
 t = travel("ONE_ISLAND")
 check({"Seagallop to Two Island", "Seagallop to Three Island"} <= set(t) and "Seagallop to Four Island" not in t, f"One Island: {t}")
-check(len(SEVII) == 24, f"{len(SEVII)} Sevii areas")
+check(len(SEVII) == 31, f"{len(SEVII)} Sevii areas")  # 24 + 7 added by areas_09_sevii.patch
 bad = [(k, o.get("target_area")) for k in SEVII for o in prog[k].get("travel_options", []) + prog[k].get("route_menu", [])
        if o.get("target_area") and o["target_area"] not in prog]
 check(not bad, f"every link leads somewhere {bad}")
@@ -107,4 +107,11 @@ for k in SEVII:
         check(False, f"{k}: {type(e).__name__} {e}")
 missions = [m for m in g.loader.area_data["JOURNAL_MISSIONS"] if m["id"].startswith("sevii")]
 check(len(missions) == 6 and all(m["region"] == "KANTO" for m in missions), "6 Sevii journal entries")
+# areas_09_sevii.patch: the seven added Sevii areas, linked both ways and opening cleanly
+NEW7 = ["CANYON_ENTRANCE", "GREEN_PATH", "OUTCAST_ISLAND", "SEVII_ALTERING_CAVE", "WATER_PATH", "MEMORIAL_PILLAR", "RESORT_GORGEOUS"]
+def _tg(k): return {o.get("target_area") for o in prog[k].get("travel_options", []) + prog[k].get("route_menu", []) if o.get("target_area")}
+check(all(k in SEVII for k in NEW7), "added areas are tagged SEVII")
+oneway = [(k, t) for k in NEW7 for t in _tg(k) if k not in _tg(t)]
+check(not oneway, f"added Sevii links go both ways {oneway}")
+no_traps(NEW7)
 print("FAILURES:", fails)
