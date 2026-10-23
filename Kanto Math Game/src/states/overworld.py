@@ -2263,54 +2263,24 @@ class PlayState(GameState):
                 member.counters["catches"] = member.counters.get("catches", 0) + 1
 
         pokemon_caught.caught_region = self.game.story_manager.get_current_region()
-        all_owned = self.game.story_manager.player_team + [p for p in self.game.story_manager.pc_pokemon if p]
-        is_duplicate_owned = any(p.id == pokemon_caught.id and p.form == pokemon_caught.form for p in all_owned)
+        # Every catch is kept, duplicates too (Jordan's rule): branched lines (Ralts, Wurmple,
+        # Snorunt, Clamperl, Applin, Burmy...) need a second copy. Full party -> the PC.
+        is_new_species = not any(isinstance(v, dict) and v.get("id") == pokemon_caught.id
+                                 for v in self.game.data.data.get("pokedex", {}).values())
         is_party_full = len(self.game.story_manager.player_team) >= 6
 
         msgs = []
-
-        if pokemon_caught.id == 201:
-            is_duplicate_owned = False
-
-        if is_duplicate_owned:
-            upgraded = False
-            if pokemon_caught.is_shiny:
-                for i, p in enumerate(self.game.story_manager.player_team):
-                    if p and p.id == pokemon_caught.id and p.form == pokemon_caught.form and not p.is_shiny:
-                        self.game.story_manager.player_team[i] = pokemon_caught
-                        upgraded = True
-                        break
-
-                if not upgraded:
-                    for i, p in enumerate(self.game.story_manager.pc_pokemon):
-                        if p and p.id == pokemon_caught.id and p.form == pokemon_caught.form and not p.is_shiny:
-                            self.game.story_manager.pc_pokemon[i] = pokemon_caught
-                            upgraded = True
-                            break
-
-            if upgraded:
-                msgs.append(f"Shiny Upgrade! {pokemon_caught.display_name.upper()} is now Shiny!")
-                pokemon_was_kept = True
+        pokemon_was_kept = True
+        if not is_party_full:
+            self.game.story_manager.player_team.append(pokemon_caught)
+            if self.was_shiny_override:
+                msgs.append(self.game.assets.get_text("shiny_pass"))
             else:
-                msgs.append("Gained evolution XP!")
-                pokemon_was_kept = False
+                msgs.append(self.game.assets.get_text("caught_pokemon", name=pokemon_caught.display_name.upper()))
         else:
-            pokemon_was_kept = True
-            if not is_party_full:
-                self.game.story_manager.player_team.append(pokemon_caught)
-                if self.was_shiny_override:
-                    msgs.append(self.game.assets.get_text("shiny_pass"))
-                else:
-                    msgs.append(self.game.assets.get_text("caught_pokemon", name=pokemon_caught.display_name.upper()))
-            else:
-                pc = self.game.story_manager.pc_pokemon
-                for i in range(len(pc)):
-                    if pc[i] is None:
-                        pc[i] = pokemon_caught
-                        break
-
-                msgs.append("Party is full.")
-                msgs.append(f"{pokemon_caught.display_name.upper()} was sent to BILL'S PC!")
+            self.game.story_manager.deposit_to_pc(pokemon_caught)
+            msgs.append("Party is full.")
+            msgs.append(f"{pokemon_caught.display_name.upper()} was sent to BILL'S PC!")
 
         self.total_caught += 1
         self.game.loader.total_caught = self.total_caught
@@ -2325,7 +2295,7 @@ class PlayState(GameState):
             self.game.story_manager.catch_counts[pid_str] = self.game.story_manager.catch_counts.get(pid_str, 0) + 1
 
         unique_count = len({v['id'] for v in self.game.data.data.get("pokedex", {}).values() if isinstance(v, dict) and 'id' in v})
-        if pokemon_was_kept and unique_count > 0 and unique_count % 30 == 0:
+        if is_new_species and unique_count > 0 and unique_count % 30 == 0:
             self.game.story_manager.money += 50000
             msgs.append(f"Milestone: {unique_count} species caught!")
             msgs.append("You received a $50,000 bonus!")
