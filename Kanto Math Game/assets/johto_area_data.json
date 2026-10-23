@@ -195,7 +195,7 @@
         "name": "Falkner",
         "class": "GYM_LEADER", "is_boss_battle": true,
         "sprite": "falkner.png",
-        "team": [16, 17], "levels": [11, 16],
+        "team": [16, 17], "levels": [9, 13],
         "badge_reward": "ZEPHYR",
         "dialogue": {
             "intro": ["Welcome to the Violet City Gym! I'm Falkner, the Flying-type Gym Leader."],
@@ -281,7 +281,7 @@
             ],
             "leader": {
             "name": "Bugsy", "class": "GYM_LEADER", "sprite": "bugsy.png", "is_boss_battle": true,
-            "team": [11, 14, 123], "levels": [19, 19, 21], "badge_reward": "HIVE", "rewards": { "balls": 5, "RARE_CANDY": 3 },
+            "team": [11, 14, 123], "levels": [15, 15, 17], "badge_reward": "HIVE", "rewards": { "balls": 5, "RARE_CANDY": 3 },
             "dialogue": {
                 "intro": ["Welcome to the Azalea Town Gym! I'm Bugsy, the Bug-type Gym Leader."],
                 "player_won": ["You really bugged me!"],
@@ -323,7 +323,7 @@
             ],
             "leader": {
             "name": "Whitney", "class": "GYM_LEADER", "sprite": "whitney.png", "is_boss_battle": true,
-            "team": [35, 241], "levels": [21, 24], "badge_reward": "PLAIN", "rewards": { "balls": 5, "SQUIRT_BOTTLE": 1 },
+            "team": [35, 241], "levels": [17, 19], "badge_reward": "PLAIN", "rewards": { "balls": 5, "SQUIRT_BOTTLE": 1 },
             "dialogue": {
                 "intro": ["Welcome to the Goldenrod City Gym! I'm Whitney, the Normal-type Gym Leader."],
                 "player_won": ["You're pretty good at this!"],
@@ -403,7 +403,7 @@
             ],
             "leader": {
             "name": "Morty", "class": "GYM_LEADER", "sprite": "morty.png",
-            "team": [92, 93, 93, 94], "levels": [26, 26, 29, 32], "badge_reward": "FOG", "rewards": { "balls": 5, "AMULET_COIN": 1 }, "is_boss_battle": true,
+            "team": [92, 93, 93, 94], "levels": [21, 21, 23, 25], "badge_reward": "FOG", "rewards": { "balls": 5, "AMULET_COIN": 1 }, "is_boss_battle": true,
             "dialogue": {
                 "intro": ["Welcome to the Ecruteak City Gym! I'm Morty, the Flying-type Gym Leader."],
                 "player_won": ["You're a skilled trainer!"],
@@ -453,7 +453,7 @@
             ],
             "leader": {
             "name": "Jasmine", "class": "GYM_LEADER", "sprite": "jasmine.png",
-            "team": [81, 81, 208], "levels": [38, 38, 44], "badge_reward": "MINERAL", "rewards": { "balls": 5, "RARE_CANDY": 3 }, "is_boss_battle": true,
+            "team": [81, 81, 208], "levels": [30, 30, 35], "badge_reward": "MINERAL", "rewards": { "balls": 5, "RARE_CANDY": 3 }, "is_boss_battle": true,
             "dialogue": {
                 "intro": ["Welcome to the Olivine City Gym! I'm Jasmine, the Steel-type Gym Leader."],
                 "player_won": ["You're a skilled trainer!"],
@@ -501,7 +501,7 @@
             ],
             "leader": {
             "name": "Chuck", "class": "GYM_LEADER", "sprite": "chuck.png",
-            "team": [57, 62], "levels": [37, 39], "badge_reward": "STORMBADGE", "rewards": { "balls": 5, "ROCK_SMASHER": 1 }, "is_boss_battle": true,
+            "team": [57, 62], "levels": [29, 31], "badge_reward": "STORMBADGE", "rewards": { "balls": 5, "ROCK_SMASHER": 1 }, "is_boss_battle": true,
             "dialogue": {
                 "intro": ["Welcome to the Cianwood City Gym! I'm Chuck, the Fighting-type Gym Leader."],
                 "player_won": ["You're a skilled trainer!"],
@@ -547,7 +547,7 @@
             ],
             "leader": {
             "name": "Pryce", "class": "GYM_LEADER", "sprite": "pryce.png",
-            "team": [86, 87, 221], "levels": [38, 40, 43], "badge_reward": "GLACIER", "rewards": { "balls": 5, "ICE_MELTER": 1, "VOLCANO_PASS": 1 }, "is_boss_battle": true,
+            "team": [86, 87, 221], "levels": [30, 32, 34], "badge_reward": "GLACIER", "rewards": { "balls": 5, "ICE_MELTER": 1, "VOLCANO_PASS": 1 }, "is_boss_battle": true,
             "dialogue": {
                 "intro": ["Welcome to the Mahogany Town Gym! I'm Pryce, the Ice-type Gym Leader."],
                 "player_won": ["Your math burned right through my defense.", "The path to Blackthorn is frozen solid. Take this.", "You received the ICE MELTER!"],
@@ -592,7 +592,7 @@
             ],
             "leader": {
             "name": "Clair", "class": "GYM_LEADER", "sprite": "clair.png",
-            "team": [130, 148, 148, 230], "levels": [48, 48, 48, 52], "badge_reward": "RISING", "rewards": { "balls": 5, "MT_SILVER_MAP": 1 }, "is_boss_battle": true,
+            "team": [130, 148, 148, 230], "levels": [38, 38, 38, 41], "badge_reward": "RISING", "rewards": { "balls": 5, "MT_SILVER_MAP": 1 }, "is_boss_battle": true,
             "dialogue": {
                 "intro": ["Welcome to the Blackthorn City Gym! I'm Clair, the Dragon-type Gym Leader."],
                 "player_won": ["You're a skilled trainer!"],
@@ -670,17 +670,17 @@
             "gym": {
                 "trainers": [
                     { "sprite": "will.png", "name": "Will", "class": "ELITE_FOUR",
-                    "team": [178, 124, 103, 80, 178], "levels": [50, 52, 52, 52, 53], "rematch": {"team": [437, 124, 326, 80, 282, 178], "levels": [58, 60, 59, 60, 61, 62]},"rewards": { "balls": 15 }, "is_boss_battle": true },
+                    "team": [178, 124, 103, 80, 178], "levels": [40, 41, 41, 41, 42], "rematch": {"team": [437, 124, 326, 80, 282, 178], "levels": [58, 60, 59, 60, 61, 62]},"rewards": { "balls": 15 }, "is_boss_battle": true },
                     { "sprite": "koga_johto.png", "name": "Koga", "class": "ELITE_FOUR",
-                    "team": [168, 49, 205, 89, 169], "levels": [50, 52, 54, 53, 55], "rematch": {"team": [435, 454, 317, 49, 89, 169], "levels": [61, 60, 62, 63, 62, 64]}, "rewards": { "balls": 15 }, "is_boss_battle": true },
+                    "team": [168, 49, 205, 89, 169], "levels": [40, 41, 43, 42, 44], "rematch": {"team": [435, 454, 317, 49, 89, 169], "levels": [61, 60, 62, 63, 62, 64]}, "rewards": { "balls": 15 }, "is_boss_battle": true },
                     { "sprite": "bruno.png", "name": "Bruno", "class": "ELITE_FOUR",
-                    "team": [237, 106, 107, 95, 68], "levels": [53, 53, 53, 54, 58], "rematch": {"team": [237, 106, 297, 68, 448, 107], "levels": [62, 61, 62, 64, 64, 61]}, "rewards": { "balls": 15 }, "is_boss_battle": true },
+                    "team": [237, 106, 107, 95, 68], "levels": [42, 42, 42, 43, 46], "rematch": {"team": [237, 106, 297, 68, 448, 107], "levels": [62, 61, 62, 64, 64, 61]}, "rewards": { "balls": 15 }, "is_boss_battle": true },
                     { "sprite": "karen.png", "name": "Karen", "class": "ELITE_FOUR",
-                    "team": [197, 45, 94, 198, 229], "levels": [53, 53, 57, 55, 59], "rematch": {"team": [461, 442, 430, 197, 229, 359], "levels": [62, 62, 64, 64, 63, 63]}, "rewards": { "balls": 15 }, "victory_flag": "beat_johto_elite_four", "is_boss_battle": true }
+                    "team": [197, 45, 94, 198, 229], "levels": [42, 42, 45, 44, 47], "rematch": {"team": [461, 442, 430, 197, 229, 359], "levels": [62, 62, 64, 64, 63, 63]}, "rewards": { "balls": 15 }, "victory_flag": "beat_johto_elite_four", "is_boss_battle": true }
                 ],
                 "leader": {
                     "sprite": "lance.png", "name": "Lance", "class": "CHAMPION",
-                    "team": [130, 149, 149, 142, 6, 149], "levels": [55, 62, 62, 60, 60, 63], "rematch": {"team": [373, 445, 149, 6, 334, 130], "levels": [72, 72, 75, 68, 73, 68]}, "is_boss_battle": true,
+                    "team": [130, 149, 149, 142, 6, 149], "levels": [44, 49, 49, 48, 48, 50], "rematch": {"team": [373, 445, 149, 6, 334, 130], "levels": [72, 72, 75, 68, 73, 68]}, "is_boss_battle": true,
                     "rewards": { "balls": 25, "MASTER_BALL": 1 },
                     "victory_flag": "beat_johto_champion"
                 }

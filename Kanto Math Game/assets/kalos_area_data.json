@@ -214,7 +214,7 @@
           "name": "Viola",
           "class": "GYM_LEADER",
           "sprite": "viola.png",
-          "team": [283, 666],
+          "team": [283, 666], "levels": [10, 12],
           "dialogue": {
             "intro": ["Viola: My lens is focused on you! A battle is just like photography — timing is everything!"],
             "player_won": ["Viola: Wonderful! You've earned the Bug Badge! Here, take this TM — Struggle Bug!"],
@@ -251,7 +251,7 @@
           "name": "Clemont",
           "class": "GYM_LEADER",
           "sprite": "clemont.png",
-          "team": [587, 82, 695],
+          "team": [587, 82, 695], "levels": [35, 35, 37],
           "dialogue": {
             "intro": ["Clemont: Science is amazing! But so is battling! The future is now, {player_name}!"],
             "player_won": ["Clemont: Incredible! My calculations were off! You've earned the Voltage Badge!"],
@@ -337,7 +337,7 @@
           "name": "Grant",
           "class": "GYM_LEADER",
           "sprite": "grant.png",
-          "team": [698, 696],
+          "team": [698, 696], "levels": [25, 25],
           "dialogue": {
             "intro": ["Grant: I've scaled every peak in Kalos. Can you climb to my level?"],
             "player_won": [
@@ -402,7 +402,7 @@
           "name": "Korrina",
           "class": "GYM_LEADER",
           "sprite": "korrina.png",
-          "team": [619, 67, 701],
+          "team": [619, 67, 701], "levels": [29, 28, 32],
           "dialogue": {
             "intro": ["Korrina: The Tower of Mastery has accepted you. Now prove your bond in battle!"],
             "player_won": [
@@ -453,7 +453,7 @@
           "name": "Ramos",
           "class": "GYM_LEADER",
           "sprite": "ramos.png",
-          "team": [70, 673, 189],
+          "team": [70, 673, 189], "levels": [31, 34, 30],
           "dialogue": {
             "intro": ["Ramos: Yer roots run deep, do they? Let's see if they're deep enough for my Pokémon!"],
             "player_won": ["Ramos: Well, I'll be! You've grown into quite the trainer! Take the Plant Badge!"],
@@ -489,7 +489,7 @@
           "name": "Valerie",
           "class": "GYM_LEADER",
           "sprite": "valerie.png",
-          "team": [303, 122, 700],
+          "team": [303, 122, 700], "levels": [38, 39, 42],
           "dialogue": {
             "intro": [
               "Valerie: Oh my... a visitor from another world? No — from another time, perhaps?",
@@ -548,7 +548,7 @@
           "name": "Olympia",
           "class": "GYM_LEADER",
           "sprite": "olympia.png",
-          "team": [561, 199, 678],
+          "team": [561, 199, 678], "levels": [44, 45, 48],
           "dialogue": {
             "intro": ["Olympia: We have foreseen your arrival. The stars spoke your name.", "Come — let us see if your future holds victory today."],
             "player_won": ["Olympia: The stars do not lie. The Psychic Badge is yours. May your path remain clear."],
@@ -625,7 +625,7 @@
           "name": "Wulfric",
           "class": "GYM_LEADER",
           "sprite": "wulfric.png",
-          "team": [460, 615, 713],
+          "team": [460, 615, 713], "levels": [56, 55, 59],
           "dialogue": {
             "intro": [
               "Wulfric: Brrr-illiant! You made it! The cold has a way of weeding out the weak!",
@@ -680,7 +680,7 @@
             "class": "ELITE_FOUR",
             "sprite": "malva.png",
             "is_boss_battle": true,
-            "team": [668, 324, 609, 663],
+            "team": [668, 324, 609, 663], "levels": [63, 63, 63, 65],
             "rewards": { "balls": 10 },
             "dialogue": {
               "intro": ["Malva: I had hoped never to see a challenger make it this far.", "My flames will reduce your hopes to ash. Come."],
@@ -693,7 +693,7 @@
             "class": "ELITE_FOUR",
             "sprite": "siebold.png",
             "is_boss_battle": true,
-            "team": [693, 130, 689, 9],
+            "team": [693, 130, 689, 9], "levels": [63, 63, 65, 63],
             "rewards": { "balls": 10 },
             "dialogue": {
               "intro": [
@@ -709,7 +709,7 @@
             "class": "ELITE_FOUR",
             "sprite": "wikstrom.png",
             "is_boss_battle": true,
-            "team": [707, 476, 681, 212],
+            "team": [707, 476, 681, 212], "levels": [63, 63, 65, 63],
             "rewards": { "balls": 10 },
             "dialogue": {
               "intro": ["Wikstrom: Ha! A challenger of some renown! My steel is untarnished — can you scratch it?"],
@@ -722,7 +722,7 @@
             "class": "ELITE_FOUR",
             "sprite": "drasna.png",
             "is_boss_battle": true,
-            "team": [691, 621, 334, 715],
+            "team": [691, 621, 334, 715], "levels": [63, 63, 63, 65],
             "rewards": { "balls": 10 },
             "dialogue": {
               "intro": ["Drasna: Oh my, you've come so far! How delightful! My Dragons love a good challenge!"],
@@ -736,7 +736,7 @@
           "class": "CHAMPION",
           "sprite": "diantha.png",
           "is_boss_battle": true,
-          "team": [701, 697, 699, 711, 706, 282],
+          "team": [701, 697, 699, 711, 706, 282], "levels": [64, 65, 65, 65, 66, 68],
           "rewards": { "balls": 20, "KALOS_HALL_OF_FAME": 1 },
           "victory_flag": "beat_kalos_champion",
           "dialogue": {

@@ -359,7 +359,7 @@
           "name": "Trio (Cilan / Chili / Cress)",
           "class": "GYM_LEADER",
           "sprite": "trio_cilan_chili_cress.png",
-          "team": [506, 511],
+          "team": [506, 511], "levels": [12, 14],
           "dialogue": {
             "intro": [
               "Gym Leader: Welcome to Striaton Gym!",
@@ -404,7 +404,7 @@
           "name": "Lenora",
           "class": "GYM_LEADER",
           "sprite": "lenora.png",
-          "team": [507, 505],
+          "team": [507, 505], "levels": [18, 20],
           "dialogue": {
             "intro": [
               "Lenora: Welcome to my gym — and my library!",
@@ -474,7 +474,7 @@
           "name": "Burgh",
           "class": "GYM_LEADER",
           "sprite": "burgh.png",
-          "team": [544, 557, 542],
+          "team": [544, 557, 542], "levels": [21, 21, 23],
           "dialogue": {
             "intro": [
               "Burgh: This gym is my canvas, and this battle — our masterpiece!",
@@ -556,7 +556,7 @@
           "name": "Elesa",
           "class": "GYM_LEADER",
           "sprite": "elesa.png",
-          "team": [587, 587, 523],
+          "team": [587, 587, 523], "levels": [25, 25, 27],
           "dialogue": {
             "intro": [
               "Elesa: Welcome to the stage. I'm Elesa — model and Gym Leader.",
@@ -634,7 +634,7 @@
           "name": "Clay",
           "class": "GYM_LEADER",
           "sprite": "clay.png",
-          "team": [552, 536, 530],
+          "team": [552, 536, 530], "levels": [29, 29, 31],
           "dialogue": {
             "intro": [
               "Clay: Y'all came a long way to challenge me, huh?",
@@ -687,7 +687,7 @@
           "name": "Skyla",
           "class": "GYM_LEADER",
           "sprite": "skyla.png",
-          "team": [528, 521, 581],
+          "team": [528, 521, 581], "levels": [33, 33, 35],
           "dialogue": {
             "intro": [
               "Skyla: Hi! I'm Skyla — pilot and Gym Leader!",
@@ -727,7 +727,7 @@
           "name": "Brycen",
           "class": "GYM_LEADER",
           "sprite": "brycen.png",
-          "team": [583, 615, 614],
+          "team": [583, 615, 614], "levels": [37, 37, 39],
           "dialogue": {
             "intro": [
               "Brycen: I am Brycen. I was once a film star — now I am a Gym Leader.",
@@ -843,7 +843,7 @@
           "name": "Drayden",
           "class": "GYM_LEADER",
           "sprite": "drayden.png",
-          "team": [611, 611, 612],
+          "team": [611, 611, 612], "levels": [41, 41, 43],
           "dialogue": {
             "intro": [
               "Drayden: Welcome. I am Drayden, the Opelucid Gym Leader.",
@@ -885,7 +885,7 @@
             "name": "Shauntal",
             "class": "ELITE_FOUR",
             "sprite": "shauntal.png",
-            "team": [563, 592, 623, 609],
+            "team": [563, 592, 623, 609], "levels": [48, 48, 48, 50], "rematch": {"levels": [71, 71, 71, 73]},
             "dialogue": {
               "intro": [
                 "Shauntal: Oh! A challenger! I'm writing a novel about powerful trainers.",
@@ -902,7 +902,7 @@
             "name": "Marshal",
             "class": "ELITE_FOUR",
             "sprite": "marshal.png",
-            "team": [538, 539, 534, 620],
+            "team": [538, 539, 534, 620], "levels": [48, 48, 48, 50], "rematch": {"levels": [71, 71, 73, 71]},
             "dialogue": {
               "intro": ["Marshal: The strength of body and mind — that is Fighting-type mastery.", "Show me what you're made of!"],
               "player_won": ["Marshal: You have both strength and focus. I acknowledge you!"],
@@ -915,7 +915,7 @@
             "name": "Grimsley",
             "class": "ELITE_FOUR",
             "sprite": "grimsley.png",
-            "team": [560, 510, 625, 553],
+            "team": [560, 510, 625, 553], "levels": [48, 48, 50, 48], "rematch": {"levels": [71, 71, 73, 71]},
             "dialogue": {
               "intro": [
                 "Grimsley: Winning and losing are two sides of the same coin.",
@@ -931,7 +931,7 @@
             "name": "Caitlin",
             "class": "ELITE_FOUR",
             "sprite": "caitlin.png",
-            "team": [518, 576, 579, 561],
+            "team": [518, 576, 579, 561], "levels": [48, 50, 48, 48], "rematch": {"levels": [71, 71, 71, 71]},
             "dialogue": {
               "intro": [
                 "Caitlin: I've been waiting... for a trainer worthy of a proper challenge.",
@@ -949,7 +949,7 @@
           "name": "Alder",
           "class": "CHAMPION",
           "sprite": "alder.png",
-          "team": [617, 626, 621, 589, 606, 637],
+          "team": [617, 626, 621, 589, 606, 637], "levels": [52, 52, 52, 52, 52, 54], "rematch": {"levels": [75, 75, 75, 75, 75, 77]},
           "dialogue": {
             "intro": [
               "Alder: So. You've come.",

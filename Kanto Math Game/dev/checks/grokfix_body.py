@@ -118,7 +118,7 @@ story.badges["JOHTO"] = ["ZEPHYR", "HIVE", "PLAIN", "FOG", "STORMBADGE"]
 cap5 = levels.story_level_cap(story)
 story.badges["JOHTO"].append("MINERAL")
 cap6 = levels.story_level_cap(story)
-check(cap5 == 44 and cap6 == 44, f"the cap never drops: 5 badges {cap5}, 6 badges {cap6} (was 43)")
+check(cap5 == 35 and cap6 == 35, f"the cap never drops: 5 badges {cap5}, 6 badges {cap6} (HGSS: Jasmine 35, Pryce 34)")
 story.level_cap_mode = "NONE"
 joey = [levels.trainer_level(g, "JOHTO_ROUTE_29") for _ in range(200)]
 check(max(joey) <= 5, f"Route 29 trainers top out at Lv {max(joey)}")

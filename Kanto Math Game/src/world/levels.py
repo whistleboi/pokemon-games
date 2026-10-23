@@ -35,24 +35,34 @@ GYM_ORDER = {
     "ORANGE": ["MIKAN_ISLAND", "NAVEL_ISLAND", "TROVITA_ISLAND", "KUMQUAT_ISLAND"],
 }
 # Ace level of each gym, then (Elite Four first, last) and the Champion's ace.
-# Johto is HeartGold/SoulSilver x1.26 (JOHTO_SCALE), so Lance's ace matches Kanto's Champion (63).
-JOHTO_SCALE = 63 / 50
+# Jordan: every Gym Leader, Elite Four, Champion and League rival uses the CANON levels of the base
+# game of its region (exact per-Pokemon levels in the area data, "levels"; these tables are the
+# aces, used for the story cap, gym trainers and fallbacks):
+# Kanto FireRed/LeafGreen, Johto HeartGold/SoulSilver, Hoenn Ruby/Sapphire, Sinnoh gyms
+# Diamond/Pearl (the gym order and rosters here are DP's) and League Platinum (the rosters are
+# Platinum's), Unova Black/White, Kalos X/Y, Alola Sun/Moon, Galar Sword (Bea, Gordie) and the
+# Champion Cup, Paldea Scarlet/Violet. The Orange League has no game: it keeps Kanto's levels.
 GYM_ACE = {
-    "KANTO": [14, 21, 24, 29, 37, 43, 47, 50], "JOHTO": [16, 21, 24, 32, 39, 44, 43, 52],
-    "HOENN": [14, 16, 21, 28, 30, 35, 45, 46], "SINNOH": [14, 22, 30, 32, 36, 39, 44, 50],
-    "UNOVA": [14, 20, 23, 27, 31, 35, 39, 43], "KALOS": [12, 25, 32, 34, 37, 42, 48, 54],
-    "ALOLA": [12, 27, 39, 48], "GALAR": [20, 24, 25, 36, 38, 42, 46, 48],
+    "KANTO": [14, 21, 24, 29, 43, 43, 47, 50], "JOHTO": [13, 17, 19, 25, 31, 35, 34, 41],
+    "HOENN": [15, 18, 23, 28, 31, 33, 42, 43], "SINNOH": [14, 22, 30, 30, 36, 39, 42, 49],
+    "UNOVA": [14, 20, 23, 27, 31, 35, 39, 43], "KALOS": [12, 25, 32, 34, 37, 42, 48, 59],
+    "ALOLA": [10, 27, 39, 48], "GALAR": [20, 24, 27, 36, 38, 42, 46, 48],
     "PALDEA": [15, 17, 24, 30, 36, 42, 45, 48],
     # Orange League in line with Kanto's League (Jordan): Gyms like the Elite Four (54-60), Drake like
     # Kanto's Champion (63); his rematch (+10) is 69-73, close to Kanto's FRLG rematch (72-75).
     "ORANGE": [54, 56, 58, 60],
 }
-ELITE_FOUR = {"KANTO": (54, 60), "JOHTO": (53, 59), "HOENN": (50, 53), "SINNOH": (53, 59),
-              "UNOVA": (48, 50), "KALOS": (58, 62), "ALOLA": (54, 57), "GALAR": (52, 58),
-              "PALDEA": (57, 60)}
-CHAMPION_ACE = {"KANTO": 63, "JOHTO": 63, "HOENN": 59, "SINNOH": 62, "UNOVA": 54, "KALOS": 66,
-                "ALOLA": 60, "GALAR": 65, "PALDEA": 62,
+ELITE_FOUR = {"KANTO": (54, 60), "JOHTO": (42, 47), "HOENN": (49, 55), "SINNOH": (53, 59),
+              "UNOVA": (50, 50), "KALOS": (65, 65), "ALOLA": (55, 55), "GALAR": (49, 49),
+              "PALDEA": (58, 61)}
+# Unova: in Black/White the Champion is only fought after the story (75-77, his rematch here);
+# the first run uses the story's final battle band (Ghetsis, 52-54).
+CHAMPION_ACE = {"KANTO": 63, "JOHTO": 50, "HOENN": 58, "SINNOH": 62, "UNOVA": 54, "KALOS": 68,
+                "ALOLA": 58, "GALAR": 65, "PALDEA": 62,
                 "ORANGE": 63}
+# Orange Islands post-game (Jordan, Q4): once Drake is beaten, the Orange Gyms scale to the Orange
+# Champion's post-game band: each Gym team is lifted so its ace is Drake's rematch ace (63 + 10).
+ORANGE_POSTGAME_ACE = CHAMPION_ACE["ORANGE"] + 10
 START_LEVEL = 3
 
 # Legendaries: the box legends and their peers are Lv 70, mythicals and the rest Lv 50.
@@ -177,9 +187,11 @@ def cap_mode(story):
 # teams (the games' rematch teams, else the League's levels + 10). The League itself is NOT
 # scaled by this cap: rematch levels stay as they are. Only Elite Four and Champion teams count
 # (LEAGUE_CLASSES): Galar's Marnie/Hop and Paldea's Nemona are post-game rematches on the cap
-# rules, so Galar's floor is Leon's lowest (65) and Paldea's is Rika's (59).
-LEAGUE_REMATCH_FLOOR = {"KANTO": 63, "JOHTO": 58, "HOENN": 56, "SINNOH": 55, "UNOVA": 52,
-                        "KALOS": 62, "ALOLA": 58, "GALAR": 65, "PALDEA": 59}
+# rules. Recomputed for the canon League levels and canon rematches (patch 10): the games' rematch
+# teams where they exist (FRLG, HGSS, Platinum, BW post-game, SM title defenses, SV Geeta), else
+# the canon first run + 10.
+LEAGUE_REMATCH_FLOOR = {"KANTO": 63, "JOHTO": 58, "HOENN": 56, "SINNOH": 65, "UNOVA": 71,
+                        "KALOS": 73, "ALOLA": 63, "GALAR": 72, "PALDEA": 67}
 # Post-game spreads around the cap (Jordan): wild Pokemon a few levels under it (area level =
 # cap - 3, wild = area -2..+1 -> cap-5..cap-2), route/story trainers about at it (area +1..+3 ->
 # cap-2..cap, bosses cap+1), non-legendary area bosses cap+2. Post-game legendaries stay at 70 (LEGEND_LEVEL).
@@ -236,7 +248,7 @@ def postgame_cap(story, region=None):
 
 # Jordan: after the last Gym badge and before the title (Victory Road / the League) the cap is 70
 # in every region (sub-regions follow their parent's rule). Legendaries are a flat 70 from then on.
-# The League's own levels are not raised: the Elite Four and Champions (aces 48-66) sit below it.
+# The League's own levels are canon (patch 10): first-run Champion aces 50-68 all sit below it (open question).
 PRE_LEAGUE_CAP = 70
 
 
@@ -312,3 +324,13 @@ def gym_role(trainer_class, is_leader):
     if trainer_class == "ELITE_FOUR":
         return "elite"
     return "leader" if is_leader else "trainer"
+
+
+def orange_postgame_levels(gym_data, team_levels):
+    """After the Orange title: an Orange Gym's battles are lifted by the gap between its leader's ace
+    and ORANGE_POSTGAME_ACE (Drake's rematch ace), so the leader's ace is 73 and the Gym trainers
+    keep their distance below it."""
+    leader = (gym_data or {}).get("leader") or {}
+    lead = leader.get("levels") or [0]
+    delta = max(0, ORANGE_POSTGAME_ACE - max(int(x) for x in lead))
+    return [min(100, int(lv) + delta) for lv in team_levels]

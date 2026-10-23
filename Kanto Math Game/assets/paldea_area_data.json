@@ -215,7 +215,7 @@
           "name": "Katy",
           "class": "GYM_LEADER",
           "sprite": "katy.png",
-          "team": [919, 919, 920],
+          "team": [919, 919, 920], "levels": [14, 14, 15],
           "dialogue": {
             "intro": [
               "Katy, the Bug-type Gym Leader of Cortondo, waves you in. 'Welcome! Our gym test is rolling a giant olive ball to the goal — while my Nymbles try to stop you. Think you can manage?'"
@@ -253,7 +253,7 @@
           "name": "Brassius",
           "class": "GYM_LEADER",
           "sprite": "brassius.png",
-          "team": [928, 928, 185],
+          "team": [928, 928, 185], "levels": [16, 16, 17],
           "dialogue": {
             "intro": [
               "Brassius surveys his city of sculptures. 'Art speaks to the soul. My Pokémon speak with power. Let us see which language you understand.'"
@@ -294,7 +294,7 @@
           "name": "Iono",
           "class": "GYM_LEADER",
           "sprite": "iono.png",
-          "team": [940, 940, 939, 429],
+          "team": [940, 940, 939, 429], "levels": [23, 23, 23, 24],
           "dialogue": {
             "intro": [
               "Iono bursts onto the gym stage in a blaze of camera flashes. 'Iooono-ma! Your number-one Gym Leader! Let us play a little find-my-partner game — livestream is already rolling, so give the fans a SHOW!'"
@@ -335,7 +335,7 @@
           "name": "Kofu",
           "class": "GYM_LEADER",
           "sprite": "kofu.png",
-          "team": [976, 961, 740],
+          "team": [976, 961, 740], "levels": [29, 29, 30],
           "dialogue": {
             "intro": [
               "Kofu slaps his broad hands together. 'I am Kofu — chef and Water-type Gym Leader! Before you battle me, you must win a market auction. A chef who cannot compete for ingredients is no chef at all!'"
@@ -374,7 +374,7 @@
           "name": "Larry",
           "class": "GYM_LEADER",
           "sprite": "larry.png",
-          "team": [760, 982, 398],
+          "team": [760, 982, 398], "levels": [35, 35, 36],
           "dialogue": {
             "intro": [
               "Larry looks up from his menu with no expression. 'Oh. Another challenger.' He closes it. 'Normal-type Gym Leader. Larry. Let us get this done. I have a late lunch reservation.'"
@@ -413,7 +413,7 @@
           "name": "Ryme",
           "class": "GYM_LEADER",
           "sprite": "ryme.png",
-          "team": [971, 971, 354, 778, 972],
+          "team": [971, 971, 354, 778, 972], "levels": [41, 42, 41, 41, 41],
           "dialogue": {
             "intro": ["Ryme adjusts her mic stand. 'Yo, welcome to Montenevera! Ghost-types, double battles, bars that will haunt you. Drop the beat!'"],
             "player_won": ["Ryme nods. 'You kept your cool against my squad. Ghost Badge — it is yours. I might write a song about this.'"],
@@ -449,7 +449,7 @@
           "name": "Tulip",
           "class": "GYM_LEADER",
           "sprite": "tulip.png",
-          "team": [981, 282, 956, 671],
+          "team": [981, 282, 956, 671], "levels": [44, 44, 44, 45],
           "dialogue": {
             "intro": [
               "Tulip examines you carefully. 'Your aura is interesting. My gym test will reveal your inner potential. Whether I like what I see... depends on how you battle.'"
@@ -487,7 +487,7 @@
           "name": "Grusha",
           "class": "GYM_LEADER",
           "sprite": "grusha.png",
-          "team": [873, 614, 975, 334],
+          "team": [873, 614, 975, 334], "levels": [47, 47, 47, 48],
           "dialogue": {
             "intro": [
               "Grusha hunches against the cold. 'Was a pro snowboarder before this. Leg injury. Now I am a Gym Leader.' He sighs. 'Let us battle. Try not to make it boring.'"
@@ -557,7 +557,7 @@
             "name": "Elite Four Rika",
             "class": "ELITE_FOUR",
             "sprite": "rika.png",
-            "team": [51, 232, 323, 340, 980],
+            "team": [51, 232, 323, 340, 980], "levels": [57, 57, 57, 57, 58],
             "rewards": { "balls": 15 },
             "is_boss_battle": true,
             "dialogue": {
@@ -572,7 +572,7 @@
             "name": "Elite Four Poppy",
             "class": "ELITE_FOUR",
             "sprite": "poppy.png",
-            "team": [462, 879, 437, 959],
+            "team": [462, 879, 437, 959], "levels": [58, 58, 58, 59],
             "rewards": { "balls": 15 },
             "is_boss_battle": true,
             "dialogue": {
@@ -587,7 +587,7 @@
             "name": "Elite Four Larry",
             "class": "ELITE_FOUR",
             "sprite": "larry.png",
-            "team": [760, 982, 357, 973, 398],
+            "team": [760, 982, 357, 973, 398], "levels": [59, 59, 59, 60, 59],
             "rewards": { "balls": 15 },
             "is_boss_battle": true,
             "dialogue": {
@@ -602,7 +602,7 @@
             "name": "Elite Four Hassel",
             "class": "ELITE_FOUR",
             "sprite": "hassel.png",
-            "team": [715, 691, 841, 612, 998],
+            "team": [715, 691, 841, 612, 998], "levels": [60, 60, 60, 60, 61],
             "rewards": { "balls": 15 },
             "is_boss_battle": true,
             "dialogue": {
@@ -617,7 +617,7 @@
             "name": "Nemona",
             "class": "PKMN_TRAINER",
             "sprite": "nemona.png",
-            "team": [908, 972, 941, 931, 911],
+            "team": [908, 972, 941, 931, 911], "levels": [65, 65, 65, 65, 66],
             "team_choice": {
               "906": [911, 972, 941, 931, 909],
               "909": [914, 983, 940, 931, 906],
@@ -638,7 +638,7 @@
           "name": "Champion Geeta",
           "class": "CHAMPION",
           "sprite": "geeta.png",
-          "team": [956, 706, 673, 976, 983, 970],
+          "team": [956, 706, 673, 976, 983, 970], "levels": [61, 61, 61, 61, 61, 62], "rematch": {"levels": [69, 69, 69, 69, 69, 70]},
           "dialogue": {
             "intro": [
               "Geeta turns from the window with an unhurried smile. 'You remind me of myself, years ago. I have never been defeated in this arena. I intend to maintain that record. Show me everything you have.'"

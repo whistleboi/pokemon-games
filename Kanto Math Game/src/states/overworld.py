@@ -5139,6 +5139,13 @@ class GymLobbyState(GameState):
                 self.is_cleared = True
                 self.status_text = "The League has been conquered!"
         else:
+            # Orange Islands post-game (Jordan): after Drake, a cleared Orange Gym can be battled
+            # again from its first trainer, at the Orange Champion's post-game band (no badge again).
+            self.orange_rematch = (self.region == "ORANGE" and bool(self.leader)
+                                   and game.story_manager.is_region_champion("ORANGE"))
+            if self.orange_rematch and self.progress > len(self.trainers):
+                self.progress = 0
+                game.story_manager.story_flags[self.prog_key] = 0
             if self.progress < len(self.trainers):
                 self.next_opponent = self.trainers[self.progress]
                 self.status_text = f"Trainer {self.progress + 1}/{len(self.trainers) + 1} is up next!"
@@ -5191,8 +5198,8 @@ class GymLobbyState(GameState):
     # FireRed/LeafGreen rematch (post-Sevii) teams, used once the Champion has been beaten.
     FRLG_E4_REMATCH = {
         "LORELEI": ([87, 91, 221, 124, 131], [64, 63, 63, 66, 66]),
-        "BRUNO": ([208, 107, 106, 208, 68], [65, 65, 65, 66, 66]),
-        "AGATHA": ([94, 169, 200, 24, 94], [66, 66, 65, 66, 70]),
+        "BRUNO": ([208, 107, 106, 208, 68], [65, 65, 65, 66, 68]),
+        "AGATHA": ([94, 169, 200, 24, 94], [66, 66, 65, 68, 70]),
         "LANCE": ([130, 149, 230, 142, 149], [68, 66, 66, 70, 72]),
     }
     FRLG_CHAMPION_REMATCH = {
@@ -5266,8 +5273,9 @@ class GymLobbyState(GameState):
             if not rm and self.area_key == "INDIGO_PLATEAU":
                 frlg = self.FRLG_E4_REMATCH.get(str(t_data.get("name", "")).upper())
                 rm = {"team": frlg[0], "levels": frlg[1]} if frlg else None
-            if rm:
-                t_data["team"], t_data["levels"] = list(rm["team"]), list(rm["levels"])
+            if rm:  # a rematch without its own "team" keeps the (starter-dependent) team, canon levels
+                t_data["team"] = list(rm.get("team") or t_data.get("team", []))
+                t_data["levels"] = list(rm["levels"])
             else:
                 rematch_boost = 10
 
@@ -5292,6 +5300,9 @@ class GymLobbyState(GameState):
         else:
             team_levels = levels.gym_team_levels(region, self.area_key, len(opponent_team),
                                                  levels.gym_role(t_class, is_leader))
+        if getattr(self, "orange_rematch", False) and not self.is_league:
+            team_levels = levels.orange_postgame_levels(self.gym_data, team_levels)
+            t_data["badge_reward"] = None  # the badge was won before the title
         if rematch_boost:
             team_levels = [min(100, int(lv) + rematch_boost) for lv in team_levels]
         levels.set_team(opponent_team, team_levels, exact=bool(t_data.get("levels")))

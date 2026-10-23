@@ -202,7 +202,7 @@
           "name": "Ilima (Trial Captain)",
           "class": "GYM_LEADER",
           "sprite": "ilima_trial_captain.png",
-          "team": [10, 39, 759],
+          "team": [10, 39, 759], "levels": [9, 9, 10],
           "dialogue": {
             "intro": ["Ilima: You've completed Verdant Cavern. Now face me — the trial captain — in a proper battle!"],
             "player_won": ["Ilima: Wonderful! You've earned the Normalium Z! Use Z-Moves wisely."],
@@ -241,7 +241,7 @@
           "name": "Olivia (Kahuna — Akala Grand Trial)",
           "class": "GYM_LEADER",
           "sprite": "olivia_kahuna_akala_grand_trial.png",
-          "team": [744, 745, 526],
+          "team": [744, 745, 526], "levels": [26, 27, 26],
           "dialogue": {
             "intro": [
               "Olivia: You've done well on your trials. Now face the Grand Trial of Akala Island!",
@@ -302,7 +302,7 @@
           "name": "Nanu (Kahuna — Ula'ula Grand Trial)",
           "class": "GYM_LEADER",
           "sprite": "nanu_kahuna_ula_ula_grand_trial.png",
-          "team": [51, 319, 53],
+          "team": [51, 319, 53], "levels": [38, 38, 39],
           "dialogue": {
             "intro": ["Nanu: ...You again. Fine. Grand Trial of Ula'ula Island. Let's just get this over with."],
             "player_won": ["Nanu: ...I was holding back. Take the Darkinium Z. Go."],
@@ -368,7 +368,7 @@
           "name": "Hapu (Kahuna — Poni Grand Trial)",
           "class": "GYM_LEADER",
           "sprite": "hapu_kahuna_poni_grand_trial.png",
-          "team": [750, 750, 472],
+          "team": [750, 750, 472], "levels": [47, 48, 47],
           "dialogue": {
             "intro": [
               "Hapu: You've come far. You remind me of someone who walked this path before.",
@@ -422,7 +422,7 @@
             "class": "ELITE_FOUR",
             "sprite": "hala.png",
             "is_boss_battle": true,
-            "team": [106, 107, 62, 760],
+            "team": [106, 107, 62, 760], "levels": [54, 55, 54, 54], "rematch": {"levels": [63, 63, 63, 63]},
             "rewards": { "balls": 10 },
             "dialogue": {
               "intro": ["Hala: You have grown beyond what I imagined when you first came to Iki Town.", "Let us see how far — with the power of our Pokémon!"],
@@ -435,7 +435,7 @@
             "class": "ELITE_FOUR",
             "sprite": "olivia.png",
             "is_boss_battle": true,
-            "team": [744, 745, 526, 526],
+            "team": [744, 745, 526, 526], "levels": [54, 55, 54, 54], "rematch": {"levels": [63, 63, 63, 63]},
             "rewards": { "balls": 10 },
             "dialogue": {
               "intro": ["Olivia: We meet again! This time — no holding back. My Pokémon and I are ready!"],
@@ -448,7 +448,7 @@
             "class": "ELITE_FOUR",
             "sprite": "acerola.png",
             "is_boss_battle": true,
-            "team": [709, 711, 302, 778],
+            "team": [709, 711, 302, 778], "levels": [54, 54, 54, 55], "rematch": {"levels": [63, 63, 63, 63]},
             "rewards": { "balls": 10 },
             "dialogue": {
               "intro": ["Acerola: Ooh! You made it! My Ghost-types love new challengers!", "Don't be scared — they're mostly friendly!"],
@@ -461,7 +461,7 @@
             "class": "ELITE_FOUR",
             "sprite": "kahili.png",
             "is_boss_battle": true,
-            "team": [663, 468, 581, 628],
+            "team": [663, 468, 581, 628], "levels": [54, 54, 54, 55], "rematch": {"levels": [63, 63, 63, 63]},
             "rewards": { "balls": 10 },
             "dialogue": {
               "intro": [
@@ -478,7 +478,7 @@
           "class": "CHAMPION",
           "sprite": "kukui.png",
           "is_boss_battle": true,
-          "team": [724, 727, 730, 745, 717, 143],
+          "team": [724, 727, 730, 745, 717, 143], "levels": [57, 57, 57, 57, 57, 58], "rematch": {"levels": [65, 65, 65, 65, 65, 65]},
           "team_choice": {
             "722": [727, 730, 745, 717, 143, 724],
             "725": [724, 730, 745, 717, 143, 727],
