@@ -1961,7 +1961,8 @@
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "SOOTOPOLIS CITY", "action": "EXIT", "target_area": "SOOTOPOLIS_CITY", "condition": "can_exit", "color": "RED" },
-        { "text": "ROUTE 124", "action": "EXIT", "target_area": "HOENN_ROUTE_124", "condition": "can_exit", "color": "RED" }
+        { "text": "ROUTE 124", "action": "EXIT", "target_area": "HOENN_ROUTE_124", "condition": "can_exit", "color": "RED" },
+        { "text": "ROUTE 127", "action": "EXIT", "target_area": "HOENN_ROUTE_127", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "SOOTOPOLIS_CITY",
       "region": "HOENN"
