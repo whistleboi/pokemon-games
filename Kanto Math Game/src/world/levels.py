@@ -228,8 +228,14 @@ def postgame_cap(story, region=None):
     return max(5, min(100, max(top, floor)))
 
 
+# Jordan: after the last Gym badge and before the title (Victory Road / the League) the cap is 70
+# in every region (sub-regions follow their parent's rule). Legendaries met then are 73 (cap + 3).
+# The League's own levels are not raised: the Elite Four and Champions (aces 48-66) sit below it.
+PRE_LEAGUE_CAP = 70
+
+
 def story_level_cap(story):
-    """STORY mode: the next Gym Leader's ace in this region (Champion's after 8). After the title
+    """STORY mode: the next Gym Leader's ace in this region (PRE_LEAGUE_CAP after the last). After the title
     (and in Orre, which has no Gyms) the player-controlled post-game cap (postgame_cap)."""
     region = story.get_current_region()
     if is_postgame(story, region):
@@ -238,7 +244,7 @@ def story_level_cap(story):
     aces = gym_aces(region)
     if badges < len(aces):
         return max(aces[:badges + 1])  # never lower than an earlier Gym's (Pryce's ace is below Jasmine's)
-    return CHAMPION_ACE.get(region, 60)
+    return PRE_LEAGUE_CAP  # every Gym badge, no title yet (Victory Road / the League): Lv 70 everywhere
 
 
 def xp_cap(story):
