@@ -248,6 +248,7 @@
             { "text": "Route 36", "target_area": "JOHTO_ROUTE_36" },
             { "text": "Route 32", "target_area": "JOHTO_ROUTE_32", "condition": "has_zephyr_badge" },
             { "text": "Violet City", "target_area": "VIOLET_CITY", "condition": "visited_RUINS_OF_ALPH"},
+            { "text": "Union Cave", "target_area": "UNION_CAVE", "condition": "has_zephyr_badge" },
             {"text": "Follow the Unown (Sinjoh Ruins)", "target_area": "SINJOH_CABIN", "condition": {"any": ["visited_SINJOH_CABIN", ["beat_sinnoh_champion", "party_has:493", "all_unown_registered"]]}, "message": "Every Unown in the ruins swirls around Arceus... The world goes white. You're somewhere cold."}
         ],
         "explore_options": [
@@ -1237,7 +1238,7 @@
                 {"text": "Dark Cave", "action": "EXIT", "target_area": "DARK_CAVE", "condition": ["can_exit", "has_item:HM_FLASH"], "color": "RED"},
                 {"text": "ROUTE 29", "action": "EXIT", "target_area": "JOHTO_ROUTE_29", "condition": "can_exit", "color": "RED"}
             ],
-            "next_area": "NEW_BARK_TOWN" 
+            "next_area": "JOHTO_ROUTE_29" 
         },
 
         "UNION_CAVE": {
@@ -1268,7 +1269,8 @@
                 {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
                 { "text": "CHALLENGE LAPRAS", "action": "BOSS", "condition": "boss_available", "color": "CYAN" },
                 {"text": "Route 32", "action": "EXIT", "target_area": "JOHTO_ROUTE_32", "condition": "can_exit", "color": "RED"},
-                {"text": "Route 33", "action": "EXIT", "target_area": "JOHTO_ROUTE_33", "condition": "can_exit", "color": "RED"}
+                {"text": "Route 33", "action": "EXIT", "target_area": "JOHTO_ROUTE_33", "condition": "can_exit", "color": "RED"},
+                {"text": "Ruins of Alph", "action": "EXIT", "target_area": "RUINS_OF_ALPH", "condition": "can_exit", "color": "RED"}
             ]
         },
         
@@ -1690,7 +1692,7 @@
                 {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
                 {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
                 {"text": "CHALLENGE RED", "action": "EVENT", "color": "GOLD", "flag_condition": "not defeated_red", "event": {"lines": ["At the summit, a silent Trainer stands in the snow.", "...", "......", "Red wants to battle!"], "flag": "defeated_red", "done": ["The summit is quiet. Red has gone.", "...But you get the feeling you'll meet again."], "battle": {"name": "Red", "class": "PKMN_TRAINER", "sprite": "red.png", "team": [25, 131, 143, 3, 6, 9], "levels": [88, 80, 82, 84, 84, 84], "is_boss_battle": true, "rewards": {"balls": 30, "MASTER_BALL": 1}, "dialogue": {"player_won": ["......", "..."], "player_lost": ["......"]}}}},
-                {"text": "EXIT MOUNTAIN", "action": "EXIT", "target_area": "JOHTO_ROUTE_29", "condition": "can_exit", "color": "RED"}
+                {"text": "ROUTE 28", "action": "EXIT", "target_area": "KANTO_ROUTE_28", "condition": "can_exit", "color": "RED"}
             ],
             "next_area": "MT_SILVER_CITY"
         }

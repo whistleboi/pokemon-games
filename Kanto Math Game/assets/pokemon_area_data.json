@@ -1262,7 +1262,7 @@
         { "text": "Victory Road", "target_area": "VICTORY_ROAD", "condition": "has_8_kanto_badges"},
         { "text": "Route 26", "target_area": "KANTO_ROUTE_26", "condition": {"any": ["beat_elite_four", "has_8_johto_badges"]} },
         { "text": "Johto League", "target_area": "MT_SILVER_CITY", "condition": "has_8_johto_badges" },
-        { "text": "Mt. Silver", "target_area": "MT_SILVER", "condition": ["beat_johto_champion", "has_8_johto_badges"] }
+        { "text": "Route 28", "target_area": "KANTO_ROUTE_28", "condition": ["beat_johto_champion", "has_8_johto_badges"] }
       ],
       "explore_options": [],
       "trainer_pool": [],
@@ -2258,6 +2258,27 @@
         "region": "JOHTO"
     },
 
+    "KANTO_ROUTE_28": {
+      "area_type": "wild_route",
+      "route_name": "Route 28",
+      "battle_type": "field",
+      "can_fish": true,
+      "wild_pool_percentages": "KANTO_ROUTE_28_PERCENTAGES",
+      "trainer_encounter_rate": 0,
+      "min_rounds": 2,
+      "trainer_pool": [],
+      "route_menu": [
+        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
+        { "text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE" },
+        { "text": "MT. SILVER", "action": "EXIT", "target": "MT_SILVER", "condition": ["can_exit"],  "color": "RED" },
+        { "text": "RECEPTION GATE", "action": "EXIT", "target": "POKEMON_LEAGUE_GATE", "condition": ["can_exit"],  "color": "RED" }
+      ],
+      "next_area": "MT_SILVER",
+      "on_enter_event": null,
+        "region": "JOHTO"
+    },
+
     "KANTO_ROUTE_27": {
       "area_type": "wild_route",
       "route_name": "Route 27",
@@ -2594,6 +2615,8 @@
   "KANTO_ROUTE_26": [20,24,28,77,84,85,194,195,2002,2005,2020,2058],
   "KANTO_ROUTE_26_PERCENTAGES": {"20":19,"24":20,"28":19,"77":19,"84":20,"85":5,"194":19,"195":5,"2002":1,"2005":1,"2020":1,"2058":1},
 
+  "KANTO_ROUTE_28": [77,78,84,85,114,217,232,215,60,61,129],
+  "KANTO_ROUTE_28_PERCENTAGES": {"77":12,"78":8,"84":10,"85":8,"114":12,"217":10,"232":10,"215":8,"60":8,"61":4,"129":10},
   "KANTO_ROUTE_27": [20,24,28,77,84,85,194,195,2002,2005,2020,2058],
   "KANTO_ROUTE_27_PERCENTAGES": {"20":15,"24":16,"28":14,"77":14,"84":15,"194":14,"85":4,"195":4,"2002":1,"2005":1,"2020":1,"2058":1},
 

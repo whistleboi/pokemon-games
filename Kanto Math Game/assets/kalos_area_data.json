@@ -1281,7 +1281,8 @@
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
         { "text": "Camphrier Town", "action": "EXIT", "target_area": "CAMPHRIER_TOWN", "condition": "can_exit", "color": "RED" },
-        { "text": "Parfum Palace", "action": "EXIT", "target_area": "PARFUM_PALACE", "condition": "can_exit", "color": "RED" }
+        { "text": "Parfum Palace", "action": "EXIT", "target_area": "PARFUM_PALACE", "condition": "can_exit", "color": "RED" },
+        { "text": "Route 7", "action": "EXIT", "target_area": "KALOS_ROUTE_7", "condition": ["can_exit", "visited_PARFUM_PALACE"], "color": "RED" }
       ],
       "next_area": "PARFUM_PALACE"
     },
@@ -1306,7 +1307,8 @@
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
         { "text": "Camphrier Town", "action": "EXIT", "target_area": "CAMPHRIER_TOWN", "condition": "can_exit", "color": "RED" },
-        { "text": "Connecting Cave", "action": "EXIT", "target_area": "CONNECTING_CAVE", "condition": "can_exit", "color": "RED" }
+        { "text": "Connecting Cave", "action": "EXIT", "target_area": "CONNECTING_CAVE", "condition": "can_exit", "color": "RED" },
+        { "text": "Route 6", "action": "EXIT", "target_area": "KALOS_ROUTE_6", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "CONNECTING_CAVE"
     },
@@ -1508,7 +1510,8 @@
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
         { "text": "Laverre City", "action": "EXIT", "target_area": "LAVERRE_CITY", "condition": "can_exit", "color": "RED" },
-        { "text": "Lost Hotel", "action": "EXIT", "target_area": "LOST_HOTEL", "condition": "can_exit", "color": "RED" }
+        { "text": "Lost Hotel", "action": "EXIT", "target_area": "LOST_HOTEL", "condition": "can_exit", "color": "RED" },
+        { "text": "Route 16", "action": "EXIT", "target_area": "KALOS_ROUTE_16", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "LOST_HOTEL"
     },
@@ -1533,7 +1536,8 @@
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
         { "text": "Lost Hotel", "action": "EXIT", "target_area": "LOST_HOTEL", "condition": "can_exit", "color": "RED" },
-        { "text": "Dendemille Town", "action": "EXIT", "target_area": "DENDEMILLE_TOWN", "condition": "can_exit", "color": "RED" }
+        { "text": "Dendemille Town", "action": "EXIT", "target_area": "DENDEMILLE_TOWN", "condition": "can_exit", "color": "RED" },
+        { "text": "Route 15", "action": "EXIT", "target_area": "KALOS_ROUTE_15", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "DENDEMILLE_TOWN"
     },

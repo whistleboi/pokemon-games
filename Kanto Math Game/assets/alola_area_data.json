@@ -264,7 +264,9 @@
         { "text": "Route 4 (to Paniola Town)", "target_area": "ALOLA_ROUTE_4" },
         { "text": "Route 5 (to Lush Jungle)", "target_area": "ALOLA_ROUTE_5" },
         { "text": "Aether Paradise", "target_area": "AETHER_PARADISE" },
-        { "text": "Hau'oli City", "target_area": "HAUOLI_CITY" }
+        { "text": "Hau'oli City", "target_area": "HAUOLI_CITY" },
+        { "text": "Diglett's Tunnel (to Konikoni City)", "target_area": "DIGLETTS_TUNNEL" },
+        { "text": "Malie City (ferry)", "target_area": "MALIE_CITY", "condition": "has_rockium_z_badge" }
       ],
       "explore_options": [
         { "text": "Pokémon Center", "action": "HEAL" },
@@ -281,14 +283,12 @@
       "backgrounds": { "main": "konikoni_city.png", "pokecenter": "konikoni_center.png" },
       "has_gym": false,
       "travel_options": [
-        { "text": "Route 8 (to Aether House)", "target_area": "ALOLA_ROUTE_8" },
         { "text": "Diglett's Tunnel", "target_area": "DIGLETTS_TUNNEL" },
         { "text": "Memorial Hill", "target_area": "MEMORIAL_HILL" },
-        { "text": "Malie City", "target_area": "MALIE_CITY", "condition": "has_rockium_z_badge" },
         { "text": "Route 7", "target_area": "ALOLA_ROUTE_7" }
       ],
       "explore_options": [{"text": "Pokémon Center", "action": "HEAL"}, {"text": "Shop", "action": "SHOP"}],
-      "next_area": "ALOLA_ROUTE_8"
+      "next_area": "DIGLETTS_TUNNEL"
     },
     "MALIE_CITY": {
       "area_type": "town",
@@ -322,7 +322,7 @@
         { "text": "Route 10 (to Mount Hokulani)", "target_area": "ALOLA_ROUTE_10" },
         { "text": "Route 11 (south)", "target_area": "ALOLA_ROUTE_11" },
         { "text": "Mount Hokulani", "target_area": "MOUNT_HOKULANI" },
-        { "text": "Konikoni City", "target_area": "KONIKONI_CITY" },
+        { "text": "Heahea City (ferry)", "target_area": "HEAHEA_CITY" },
         { "text": "Seafolk Village", "target_area": "SEAFOLK_VILLAGE", "condition": "has_darkinium_z_badge" },
         { "text": "Mount Lanakila (Victory Road Alola)", "target_area": "MOUNT_LANAKILA", "condition": "has_groundium_z_badge" },
         { "text": "Route 17", "target_area": "ALOLA_ROUTE_17" }
@@ -596,8 +596,7 @@
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE AETHER", "action": "TRAINER", "condition": "has_trainers", "color": "GOLD", "flag_condition": "not aether_paradise_cleared" },
         { "text": "ULTRA WORMHOLE", "action": "EXIT", "target_area": "ULTRA_SPACE", "condition": "beat_alola_champion", "color": "GOLD" },
-        { "text": "Heahea City (ferry)", "action": "EXIT", "target_area": "HEAHEA_CITY", "condition": "can_exit", "color": "RED" },
-        { "text": "ROUTE 8", "action": "EXIT", "target_area": "ALOLA_ROUTE_8", "condition": "can_exit", "color": "RED" }
+        { "text": "Heahea City (ferry)", "action": "EXIT", "target_area": "HEAHEA_CITY", "condition": "can_exit", "color": "RED" }
       ]
     },
     "PO_TOWN": {
@@ -879,7 +878,8 @@
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
         { "text": "Heahea City", "action": "EXIT", "target_area": "HEAHEA_CITY", "condition": "can_exit", "color": "RED" },
         { "text": "Brooklet Hill", "action": "EXIT", "target_area": "BROOKLET_HILL", "condition": "can_exit", "color": "RED" },
-        { "text": "Lush Jungle", "action": "EXIT", "target_area": "LUSH_JUNGLE", "condition": "can_exit", "color": "RED" }
+        { "text": "Lush Jungle", "action": "EXIT", "target_area": "LUSH_JUNGLE", "condition": "can_exit", "color": "RED" },
+        { "text": "Route 8", "action": "EXIT", "target_area": "ALOLA_ROUTE_8", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "BROOKLET_HILL"
     },
@@ -904,7 +904,8 @@
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
         { "text": "Wela Volcano Park", "action": "EXIT", "target_area": "WELA_VOLCANO_PARK", "condition": "can_exit", "color": "RED" },
-        { "text": "Konikoni City", "action": "EXIT", "target_area": "KONIKONI_CITY", "condition": "can_exit", "color": "RED" }
+        { "text": "Konikoni City", "action": "EXIT", "target_area": "KONIKONI_CITY", "condition": "can_exit", "color": "RED" },
+        { "text": "Route 8", "action": "EXIT", "target_area": "ALOLA_ROUTE_8", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "KONIKONI_CITY"
     },
@@ -929,10 +930,10 @@
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
         { "text": "RUINS OF LIFE", "action": "EXIT", "target_area": "RUINS_OF_LIFE", "condition": "beat_alola_champion", "color": "GOLD" },
-        { "text": "Konikoni City", "action": "EXIT", "target_area": "KONIKONI_CITY", "condition": "can_exit", "color": "RED" },
-        { "text": "Aether House", "action": "EXIT", "target_area": "AETHER_PARADISE", "condition": "can_exit", "color": "RED" }
+        { "text": "Route 7", "action": "EXIT", "target_area": "ALOLA_ROUTE_7", "condition": "can_exit", "color": "RED" },
+        { "text": "Route 5", "action": "EXIT", "target_area": "ALOLA_ROUTE_5", "condition": "can_exit", "color": "RED" }
       ],
-      "next_area": "MALIE_CITY"
+      "next_area": "ALOLA_ROUTE_7"
     },
     "ALOLA_ROUTE_10": {
       "area_type": "wild_route",
@@ -1111,7 +1112,8 @@
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "Konikoni City", "action": "EXIT", "target_area": "KONIKONI_CITY", "condition": "can_exit", "color": "RED" }
+        { "text": "Konikoni City", "action": "EXIT", "target_area": "KONIKONI_CITY", "condition": "can_exit", "color": "RED" },
+        { "text": "Heahea City", "action": "EXIT", "target_area": "HEAHEA_CITY", "condition": "can_exit", "color": "RED" }
       ]
     },
     "MEMORIAL_HILL": {

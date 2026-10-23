@@ -360,15 +360,14 @@
         "requirements": { "badges": 4, "fail_text": "Earn the Fighting Badge first — and study up on Fairy-types!" }
       },
       "travel_options": [
-        { "text": "Glimwood Tangle (to Stow-on-Side)", "target_area": "GLIMWOOD_TANGLE" },
-        { "text": "Route 7 (to Circhester)", "target_area": "GALAR_ROUTE_7", "condition": "has_fairy_badge" }
+        { "text": "Glimwood Tangle (to Stow-on-Side)", "target_area": "GLIMWOOD_TANGLE" }
       ],
       "explore_options": [
         { "text": "Pokémon Center", "action": "HEAL" },
         { "text": "Shop", "action": "SHOP" },
         { "text": "Challenge Gym", "action": "GYM" }
       ],
-      "next_area": "GALAR_ROUTE_7"
+      "next_area": "GLIMWOOD_TANGLE"
     },
     "CIRCHESTER": {
       "area_type": "town",
@@ -398,8 +397,8 @@
         "requirements": { "badges": 5, "fail_text": "Earn the Fairy Badge first!" }
       },
       "travel_options": [
-        { "text": "Route 7 (to Ballonlea)", "target_area": "GALAR_ROUTE_7" },
-        { "text": "Route 8 (to Spikemuth)", "target_area": "GALAR_ROUTE_8", "condition": "has_rock_badge" }
+        { "text": "Route 8 (to Hammerlocke)", "target_area": "GALAR_ROUTE_8" },
+        { "text": "Route 9 (to Spikemuth)", "target_area": "GALAR_ROUTE_9", "condition": "has_rock_badge" }
       ],
       "explore_options": [
         { "text": "Pokémon Center", "action": "HEAL" },
@@ -407,7 +406,7 @@
         { "text": "Challenge Gym", "action": "GYM" },
         { "text": "Hero's Bath (Sonia research)", "action": "NPC", "target": "galar_sonia_bath", "flag_condition": "not saw_circhester_monument" }
       ],
-      "next_area": "GALAR_ROUTE_8"
+      "next_area": "GALAR_ROUTE_9"
     },
     "SPIKEMUTH": {
       "area_type": "town",
@@ -434,8 +433,7 @@
         "requirements": { "badges": 6, "fail_text": "Earn the Rock Badge first — and get past Team Yell guarding the gate!" }
       },
       "travel_options": [
-        { "text": "Route 8 (to Circhester)", "target_area": "GALAR_ROUTE_8" },
-        { "text": "Route 9 (to Hammerlocke)", "target_area": "GALAR_ROUTE_9", "condition": "has_dark_badge" }
+        { "text": "Route 9 (to Circhester / Route 9 Tunnel)", "target_area": "GALAR_ROUTE_9" }
       ],
       "explore_options": [
         { "text": "Pokémon Center", "action": "HEAL" },
@@ -473,7 +471,8 @@
         "requirements": { "badges": 7, "fail_text": "Earn the Dark Badge first!" }
       },
       "travel_options": [
-        { "text": "Route 9 (to Spikemuth)", "target_area": "GALAR_ROUTE_9" },
+        { "text": "Route 7 (to Circhester)", "target_area": "GALAR_ROUTE_7" },
+        { "text": "Route 6 (to Stow-on-Side)", "target_area": "GALAR_ROUTE_6" },
         { "text": "Route 10 (to Wyndon)", "target_area": "GALAR_ROUTE_10", "condition": "has_dragon_badge" },
         { "text": "Rose Tower / Energy Plant", "target_area": "ROSE_TOWER" }
       ],
@@ -861,7 +860,8 @@
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
         { "text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE" },
         { "text": "Motostoke", "action": "EXIT", "target_area": "MOTOSTOKE", "condition": "can_exit", "color": "RED" },
-        { "text": "Stow-on-Side", "action": "EXIT", "target_area": "STOW_ON_SIDE", "condition": "can_exit", "color": "RED" }
+        { "text": "Stow-on-Side", "action": "EXIT", "target_area": "STOW_ON_SIDE", "condition": "can_exit", "color": "RED" },
+        { "text": "Hammerlocke", "action": "EXIT", "target_area": "HAMMERLOCKE", "condition": ["can_exit", "has_fairy_badge"], "color": "RED" }
       ],
       "next_area": "STOW_ON_SIDE"
     },
@@ -887,10 +887,11 @@
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         { "text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE" },
-        { "text": "Ballonlea", "action": "EXIT", "target_area": "BALLONLEA", "condition": "can_exit", "color": "RED" },
-        { "text": "Circhester", "action": "EXIT", "target_area": "CIRCHESTER", "condition": "can_exit", "color": "RED" }
+        { "text": "Hammerlocke", "action": "EXIT", "target_area": "HAMMERLOCKE", "condition": "can_exit", "color": "RED" },
+        { "text": "Route 8", "action": "EXIT", "target_area": "GALAR_ROUTE_8", "condition": "can_exit", "color": "RED" },
+        { "text": "Route 9 Tunnel", "action": "EXIT", "target_area": "GALAR_ROUTE_9", "condition": ["can_exit", "has_dark_badge"], "color": "RED" }
       ],
-      "next_area": "CIRCHESTER"
+      "next_area": "GALAR_ROUTE_8"
     },
     "GALAR_ROUTE_8": {
       "area_type": "wild_route",
@@ -914,10 +915,10 @@
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         { "text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE" },
-        { "text": "Circhester", "action": "EXIT", "target_area": "CIRCHESTER", "condition": "can_exit", "color": "RED" },
-        { "text": "Spikemuth", "action": "EXIT", "target_area": "SPIKEMUTH", "condition": "can_exit", "color": "RED" }
+        { "text": "Route 7", "action": "EXIT", "target_area": "GALAR_ROUTE_7", "condition": "can_exit", "color": "RED" },
+        { "text": "Circhester", "action": "EXIT", "target_area": "CIRCHESTER", "condition": "can_exit", "color": "RED" }
       ],
-      "next_area": "SPIKEMUTH",
+      "next_area": "CIRCHESTER",
       "weather": "SNOW"
     },
     "GALAR_ROUTE_9": {
@@ -943,10 +944,11 @@
         { "text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
         { "text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE" },
+        { "text": "Circhester", "action": "EXIT", "target_area": "CIRCHESTER", "condition": "can_exit", "color": "RED" },
         { "text": "Spikemuth", "action": "EXIT", "target_area": "SPIKEMUTH", "condition": "can_exit", "color": "RED" },
-        { "text": "Hammerlocke", "action": "EXIT", "target_area": "HAMMERLOCKE", "condition": "can_exit", "color": "RED" }
+        { "text": "Route 9 Tunnel (to Route 7)", "action": "EXIT", "target_area": "GALAR_ROUTE_7", "condition": ["can_exit", "has_dark_badge"], "color": "RED" }
       ],
-      "next_area": "HAMMERLOCKE",
+      "next_area": "SPIKEMUTH",
       "weather": "SNOW"
     },
     "GALAR_ROUTE_10": {

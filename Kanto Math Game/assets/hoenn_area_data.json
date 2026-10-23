@@ -1354,10 +1354,9 @@
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
         { "text": "FALLARBOR TOWN", "action": "EXIT", "target_area": "FALLARBOR_TOWN", "condition": "can_exit", "color": "RED" },
-        { "text": "ROUTE 114", "action": "EXIT", "target_area": "HOENN_ROUTE_114", "condition": "can_exit", "color": "RED" },
         { "text": "ROUTE 111", "action": "EXIT", "target_area": "HOENN_ROUTE_111", "condition": "can_exit", "color": "RED" }
       ],
-      "next_area": "HOENN_ROUTE_114",
+      "next_area": "FALLARBOR_TOWN",
       "region": "HOENN"
     },
     "HOENN_ROUTE_114": {
@@ -1402,7 +1401,6 @@
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
         { "text": "STONE COLLECTOR", "action": "HOENN_EVENT", "event": "stone_shop", "condition": "cave_of_origin_cleared", "color": "PURPLE" },
-        { "text": "ROUTE 113", "action": "EXIT", "target_area": "HOENN_ROUTE_113", "condition": "can_exit", "color": "RED" },
         { "text": "FALLARBOR TOWN", "action": "EXIT", "target_area": "FALLARBOR_TOWN", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "FALLARBOR_TOWN",
@@ -1748,7 +1746,8 @@
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         { "text": "ROUTE 120", "action": "EXIT", "target_area": "HOENN_ROUTE_120", "condition": "can_exit", "color": "RED" },
-        { "text": "LILYCOVE CITY", "action": "EXIT", "target_area": "LILYCOVE_CITY", "condition": "can_exit", "color": "RED" }
+        { "text": "LILYCOVE CITY", "action": "EXIT", "target_area": "LILYCOVE_CITY", "condition": "can_exit", "color": "RED" },
+        { "text": "ROUTE 122", "action": "EXIT", "target_area": "HOENN_ROUTE_122", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "LILYCOVE_CITY",
       "region": "HOENN"
@@ -1788,6 +1787,8 @@
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         { "text": "LILYCOVE CITY", "action": "EXIT", "target_area": "LILYCOVE_CITY", "condition": "can_exit", "color": "RED" },
+        { "text": "ROUTE 121", "action": "EXIT", "target_area": "HOENN_ROUTE_121", "condition": "can_exit", "color": "RED" },
+        { "text": "ROUTE 123", "action": "EXIT", "target_area": "HOENN_ROUTE_123", "condition": ["can_exit", "has_item:HM_SURF"], "color": "RED" },
         { "text": "MT. PYRE", "action": "TRAVEL", "target_area": "HOENN_MT_PYRE", "condition": "can_exit", "color": "GREEN" }
       ],
       "next_area": "HOENN_MT_PYRE",
@@ -1837,14 +1838,14 @@
         { "text": "FORTREE CITY", "action": "EXIT", "target_area": "FORTREE_CITY", "condition": "can_exit", "color": "RED" },
         { "text": "ANCIENT TOMB", "action": "BOSS", "condition": "regi_trio_awakened", "color": "GRAY" },
         {
-          "text": "ROUTE 124",
+          "text": "ROUTE 122",
           "action": "EXIT",
-          "target_area": "HOENN_ROUTE_124",
+          "target_area": "HOENN_ROUTE_122",
           "condition": ["can_exit", "has_item:HM_SURF"],
           "color": "RED"
         }
       ],
-      "next_area": "HOENN_ROUTE_124",
+      "next_area": "HOENN_ROUTE_122",
       "region": "HOENN"
     },
     "HOENN_ROUTE_124": {
@@ -1880,7 +1881,6 @@
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
-        { "text": "ROUTE 123", "action": "EXIT", "target_area": "HOENN_ROUTE_123", "condition": "can_exit", "color": "RED" },
         { "text": "SOUTHERN ISLAND", "action": "BOSS", "condition": "has_EON_TICKET", "color": "PURPLE" },
         { "text": "MOSSDEEP CITY", "action": "EXIT", "target_area": "MOSSDEEP_CITY", "condition": "can_exit", "color": "RED" },
         {
@@ -2054,6 +2054,7 @@
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         { "text": "ROUTE 127", "action": "EXIT", "target_area": "HOENN_ROUTE_127", "condition": "can_exit", "color": "RED" },
+        { "text": "ROUTE 129", "action": "EXIT", "target_area": "HOENN_ROUTE_129", "condition": "can_exit", "color": "RED" },
         {
           "text": "EVER GRANDE CITY",
           "action": "EXIT",
@@ -2105,6 +2106,7 @@
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
+        { "text": "ROUTE 128", "action": "EXIT", "target_area": "HOENN_ROUTE_128", "condition": "can_exit", "color": "RED" },
         {
           "text": "EVER GRANDE CITY",
           "action": "EXIT",

@@ -1292,7 +1292,8 @@
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "Encounter Cobalion", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD" },
-        { "text": "Mistralton City", "action": "EXIT", "target_area": "MISTRALTON_CITY", "condition": "can_exit", "color": "RED" }
+        { "text": "Mistralton City", "action": "EXIT", "target_area": "MISTRALTON_CITY", "condition": "can_exit", "color": "RED" },
+        { "text": "Route 6", "action": "EXIT", "target_area": "UNOVA_ROUTE_6", "condition": "can_exit", "color": "RED" }
       ],
       "area_boss": { "id": 638, "name": "Cobalion", "victory_flag": "MISTRALTON_CAVE_boss_defeated" }
     },
@@ -1745,7 +1746,8 @@
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
         { "text": "Driftveil City", "action": "EXIT", "target_area": "DRIFTVEIL_CITY", "condition": "can_exit", "color": "RED" },
-        { "text": "Chargestone Cave", "action": "EXIT", "target_area": "CHARGESTONE_CAVE", "condition": "can_exit", "color": "RED" }
+        { "text": "Chargestone Cave", "action": "EXIT", "target_area": "CHARGESTONE_CAVE", "condition": "can_exit", "color": "RED" },
+        { "text": "Mistralton Cave", "action": "EXIT", "target_area": "MISTRALTON_CAVE", "condition": ["can_exit", "visited_MISTRALTON_CITY"], "color": "RED" }
       ],
       "next_area": "CHARGESTONE_CAVE"
     },
@@ -1977,6 +1979,1227 @@
       ],
       "next_area": "UNDELLA_TOWN"
     },
+    "BLACK_CITY": {
+      "area_type": "town",
+      "route_name": "Black City",
+      "region": "UNOVA",
+      "has_gym": false,
+      "travel_options": [
+        {
+          "text": "Route 14",
+          "target_area": "UNOVA_ROUTE_14"
+        },
+        {
+          "text": "Route 15",
+          "target_area": "UNOVA_ROUTE_15"
+        },
+        {
+          "text": "Black Tower",
+          "target_area": "BLACK_TOWER",
+          "flag_condition": "not black_tower_cleared"
+        },
+        {
+          "text": "Black Tower (Areas 6-10)",
+          "target_area": "BLACK_TOWER_UPPER",
+          "condition": "black_tower_cleared"
+        }
+      ],
+      "explore_options": [
+        {
+          "text": "Pok\u00e9mon Center",
+          "action": "HEAL"
+        },
+        {
+          "text": "Shop",
+          "action": "SHOP"
+        }
+      ],
+      "next_area": "BLACK_TOWER"
+    },
+    "BLACK_TOWER": {
+      "area_type": "dungeon",
+      "route_name": "Black Tower",
+      "region": "UNOVA",
+      "battle_type": "indoor",
+      "wild_pool_percentages": null,
+      "min_rounds": 0,
+      "trainer_pool": [
+        {
+          "name": "Rich Boy Pierce",
+          "class": "GENTLEMAN",
+          "sprite": "richboy.png",
+          "team": [
+            181
+          ],
+          "rewards": {
+            "balls": 4
+          },
+          "dialogue": {
+            "intro": [
+              "Black Tower - Area 1. I'm the gate Trainer!",
+              "Beat me to open the Boss Trainer's door."
+            ],
+            "player_won": [
+              "The door to the Boss Trainer's room is open!"
+            ],
+            "player_lost": [
+              "The gate stays shut for now."
+            ]
+          }
+        },
+        {
+          "name": "Boss Trainer Abed",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "is_boss_battle": true,
+          "team": [
+            521,
+            525,
+            624
+          ],
+          "rewards": {
+            "balls": 6
+          },
+          "dialogue": {
+            "intro": [
+              "Black Tower - Area 1 Boss Trainer Abed.",
+              "Show me what you've got!"
+            ],
+            "player_won": [
+              "Area 1 cleared!",
+              "The next area awaits."
+            ],
+            "player_lost": [
+              "Train up and challenge the area again!"
+            ]
+          }
+        },
+        {
+          "name": "Lady Lynette",
+          "class": "BEAUTY",
+          "sprite": "beauty.png",
+          "team": [
+            45,
+            182
+          ],
+          "rewards": {
+            "balls": 4
+          },
+          "dialogue": {
+            "intro": [
+              "Black Tower - Area 2. I'm the gate Trainer!",
+              "Beat me to open the Boss Trainer's door."
+            ],
+            "player_won": [
+              "The door to the Boss Trainer's room is open!"
+            ],
+            "player_lost": [
+              "The gate stays shut for now."
+            ]
+          }
+        },
+        {
+          "name": "Boss Trainer Bess",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "is_boss_battle": true,
+          "team": [
+            505,
+            528,
+            550
+          ],
+          "rewards": {
+            "balls": 6
+          },
+          "dialogue": {
+            "intro": [
+              "Black Tower - Area 2 Boss Trainer Bess.",
+              "Show me what you've got!"
+            ],
+            "player_won": [
+              "Area 2 cleared!",
+              "The next area awaits."
+            ],
+            "player_lost": [
+              "Train up and challenge the area again!"
+            ]
+          }
+        },
+        {
+          "name": "Youngster Robbie",
+          "class": "YOUNGSTER",
+          "sprite": "youngster.png",
+          "team": [
+            466
+          ],
+          "rewards": {
+            "balls": 4
+          },
+          "dialogue": {
+            "intro": [
+              "Black Tower - Area 3. I'm the gate Trainer!",
+              "Beat me to open the Boss Trainer's door."
+            ],
+            "player_won": [
+              "The door to the Boss Trainer's room is open!"
+            ],
+            "player_lost": [
+              "The gate stays shut for now."
+            ]
+          }
+        },
+        {
+          "name": "Boss Trainer Carlen",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "is_boss_battle": true,
+          "team": [
+            626,
+            581,
+            545
+          ],
+          "rewards": {
+            "balls": 6
+          },
+          "dialogue": {
+            "intro": [
+              "Black Tower - Area 3 Boss Trainer Carlen.",
+              "Show me what you've got!"
+            ],
+            "player_won": [
+              "Area 3 cleared!",
+              "The next area awaits."
+            ],
+            "player_lost": [
+              "Train up and challenge the area again!"
+            ]
+          }
+        },
+        {
+          "name": "Lass Miki",
+          "class": "LASS",
+          "sprite": "lass.png",
+          "team": [
+            468
+          ],
+          "rewards": {
+            "balls": 4
+          },
+          "dialogue": {
+            "intro": [
+              "Black Tower - Area 4. I'm the gate Trainer!",
+              "Beat me to open the Boss Trainer's door."
+            ],
+            "player_won": [
+              "The door to the Boss Trainer's room is open!"
+            ],
+            "player_lost": [
+              "The gate stays shut for now."
+            ]
+          }
+        },
+        {
+          "name": "Boss Trainer Danelle",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "is_boss_battle": true,
+          "team": [
+            526,
+            336,
+            632
+          ],
+          "rewards": {
+            "balls": 6
+          },
+          "dialogue": {
+            "intro": [
+              "Black Tower - Area 4 Boss Trainer Danelle.",
+              "Show me what you've got!"
+            ],
+            "player_won": [
+              "Area 4 cleared!",
+              "The next area awaits."
+            ],
+            "player_lost": [
+              "Train up and challenge the area again!"
+            ]
+          }
+        },
+        {
+          "name": "School Kid Leo",
+          "class": "SCHOOL_KID",
+          "sprite": "school_kid_m.png",
+          "team": [
+            18
+          ],
+          "rewards": {
+            "balls": 4
+          },
+          "dialogue": {
+            "intro": [
+              "Black Tower - Area 5. I'm the gate Trainer!",
+              "Beat me to open the Boss Trainer's door."
+            ],
+            "player_won": [
+              "The door to the Boss Trainer's room is open!"
+            ],
+            "player_lost": [
+              "The gate stays shut for now."
+            ]
+          }
+        },
+        {
+          "name": "Boss Trainer Ellas",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "is_boss_battle": true,
+          "team": [
+            437,
+            141,
+            623
+          ],
+          "rewards": {
+            "balls": 12
+          },
+          "victory_flag": "black_tower_cleared",
+          "dialogue": {
+            "intro": [
+              "Black Tower - Area 5 Boss Trainer Ellas.",
+              "Show me what you've got!"
+            ],
+            "player_won": [
+              "Area 5 cleared!",
+              "You've conquered this part of the challenge!"
+            ],
+            "player_lost": [
+              "Train up and challenge the area again!"
+            ]
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CHALLENGE BLACK TOWER",
+          "action": "GALACTIC_GAUNTLET",
+          "flag_condition": "not black_tower_cleared",
+          "color": "GOLD"
+        },
+        {
+          "text": "Black City",
+          "action": "EXIT",
+          "target_area": "BLACK_CITY",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "BLACK_CITY"
+    },
+    "BLACK_TOWER_UPPER": {
+      "area_type": "dungeon",
+      "route_name": "Black Tower Areas 6-10",
+      "region": "UNOVA",
+      "battle_type": "indoor",
+      "wild_pool_percentages": null,
+      "min_rounds": 0,
+      "trainer_pool": [
+        {
+          "name": "Gentleman Frederic",
+          "class": "GENTLEMAN",
+          "sprite": "gentleman.png",
+          "team": [
+            407
+          ],
+          "rewards": {
+            "balls": 4
+          },
+          "dialogue": {
+            "intro": [
+              "Black Tower - Area 6. I'm the gate Trainer!",
+              "Beat me to open the Boss Trainer's door."
+            ],
+            "player_won": [
+              "The door to the Boss Trainer's room is open!"
+            ],
+            "player_lost": [
+              "The gate stays shut for now."
+            ]
+          }
+        },
+        {
+          "name": "Boss Trainer Freira",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "is_boss_battle": true,
+          "team": [
+            474,
+            286,
+            348
+          ],
+          "rewards": {
+            "balls": 6
+          },
+          "dialogue": {
+            "intro": [
+              "Black Tower - Area 6 Boss Trainer Freira.",
+              "Show me what you've got!"
+            ],
+            "player_won": [
+              "Area 6 cleared!",
+              "The next area awaits."
+            ],
+            "player_lost": [
+              "Train up and challenge the area again!"
+            ]
+          }
+        },
+        {
+          "name": "Socialite Grace",
+          "class": "BEAUTY",
+          "sprite": "beauty.png",
+          "team": [
+            373
+          ],
+          "rewards": {
+            "balls": 4
+          },
+          "dialogue": {
+            "intro": [
+              "Black Tower - Area 7. I'm the gate Trainer!",
+              "Beat me to open the Boss Trainer's door."
+            ],
+            "player_won": [
+              "The door to the Boss Trainer's room is open!"
+            ],
+            "player_lost": [
+              "The gate stays shut for now."
+            ]
+          }
+        },
+        {
+          "name": "Boss Trainer Gaius",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "is_boss_battle": true,
+          "team": [
+            130,
+            477,
+            461
+          ],
+          "rewards": {
+            "balls": 6
+          },
+          "dialogue": {
+            "intro": [
+              "Black Tower - Area 7 Boss Trainer Gaius.",
+              "Show me what you've got!"
+            ],
+            "player_won": [
+              "Area 7 cleared!",
+              "The next area awaits."
+            ],
+            "player_lost": [
+              "Train up and challenge the area again!"
+            ]
+          }
+        },
+        {
+          "name": "Scientist Marie",
+          "class": "SCIENTIST",
+          "sprite": "scientist.png",
+          "team": [
+            462
+          ],
+          "rewards": {
+            "balls": 4
+          },
+          "dialogue": {
+            "intro": [
+              "Black Tower - Area 8. I'm the gate Trainer!",
+              "Beat me to open the Boss Trainer's door."
+            ],
+            "player_won": [
+              "The door to the Boss Trainer's room is open!"
+            ],
+            "player_lost": [
+              "The gate stays shut for now."
+            ]
+          }
+        },
+        {
+          "name": "Boss Trainer Harmony",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "is_boss_battle": true,
+          "team": [
+            392,
+            567,
+            641
+          ],
+          "rewards": {
+            "balls": 6
+          },
+          "dialogue": {
+            "intro": [
+              "Black Tower - Area 8 Boss Trainer Harmony.",
+              "Show me what you've got!"
+            ],
+            "player_won": [
+              "Area 8 cleared!",
+              "The next area awaits."
+            ],
+            "player_lost": [
+              "Train up and challenge the area again!"
+            ]
+          }
+        },
+        {
+          "name": "Psychic Collin",
+          "class": "PSYCHIC",
+          "sprite": "psychic_m.png",
+          "team": [
+            65
+          ],
+          "rewards": {
+            "balls": 4
+          },
+          "dialogue": {
+            "intro": [
+              "Black Tower - Area 9. I'm the gate Trainer!",
+              "Beat me to open the Boss Trainer's door."
+            ],
+            "player_won": [
+              "The door to the Boss Trainer's room is open!"
+            ],
+            "player_lost": [
+              "The gate stays shut for now."
+            ]
+          }
+        },
+        {
+          "name": "Boss Trainer Ira",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "is_boss_battle": true,
+          "team": [
+            635,
+            144,
+            244
+          ],
+          "rewards": {
+            "balls": 6
+          },
+          "dialogue": {
+            "intro": [
+              "Black Tower - Area 9 Boss Trainer Ira.",
+              "Show me what you've got!"
+            ],
+            "player_won": [
+              "Area 9 cleared!",
+              "The next area awaits."
+            ],
+            "player_lost": [
+              "Train up and challenge the area again!"
+            ]
+          }
+        },
+        {
+          "name": "Scientist Jacques",
+          "class": "SCIENTIST",
+          "sprite": "scientist.png",
+          "team": [
+            31
+          ],
+          "rewards": {
+            "balls": 4
+          },
+          "dialogue": {
+            "intro": [
+              "Black Tower - Area 10. I'm the gate Trainer!",
+              "Beat me to open the Boss Trainer's door."
+            ],
+            "player_won": [
+              "The door to the Boss Trainer's room is open!"
+            ],
+            "player_lost": [
+              "The gate stays shut for now."
+            ]
+          }
+        },
+        {
+          "name": "Boss Trainer Benga",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "is_boss_battle": true,
+          "team": [
+            381,
+            445,
+            637
+          ],
+          "rewards": {
+            "balls": 12
+          },
+          "victory_flag": "black_tower_upper_cleared",
+          "dialogue": {
+            "intro": [
+              "Black Tower - Area 10 Boss Trainer Benga.",
+              "Show me what you've got!"
+            ],
+            "player_won": [
+              "Area 10 cleared!",
+              "You've conquered this part of the challenge!"
+            ],
+            "player_lost": [
+              "Train up and challenge the area again!"
+            ]
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CHALLENGE AREAS 6-10",
+          "action": "GALACTIC_GAUNTLET",
+          "flag_condition": "not black_tower_upper_cleared",
+          "color": "GOLD"
+        },
+        {
+          "text": "Black City",
+          "action": "EXIT",
+          "target_area": "BLACK_CITY",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "BLACK_CITY"
+    },
+    "WHITE_FOREST": {
+      "area_type": "wild_route",
+      "route_name": "White Forest",
+      "region": "UNOVA",
+      "battle_type": "forest",
+      "wild_pool_percentages": "WHITE_FOREST_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Nursery Aide Briana",
+          "class": "PICNIKER",
+          "sprite": "picnicker.png",
+          "team": [
+            584,
+            573,
+            609
+          ],
+          "rewards": {
+            "balls": 4
+          },
+          "dialogue": {
+            "intro": [
+              "The forest's Pokemon are my little helpers!"
+            ],
+            "player_won": [
+              "You raised yours well!"
+            ],
+            "player_lost": [
+              "Back to the nursery with you!"
+            ]
+          }
+        },
+        {
+          "name": "School Kid Shaye",
+          "class": "SCHOOL_KID",
+          "sprite": "school_kid_m.png",
+          "team": [
+            579,
+            563,
+            560
+          ],
+          "rewards": {
+            "balls": 4
+          },
+          "dialogue": {
+            "intro": [
+              "I study battles here in the forest!"
+            ],
+            "player_won": [
+              "I need to study harder..."
+            ],
+            "player_lost": [
+              "Just like my notes said!"
+            ]
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "White Treehollow",
+          "action": "EXIT",
+          "target_area": "WHITE_TREEHOLLOW",
+          "condition": "can_exit",
+          "color": "GOLD"
+        },
+        {
+          "text": "Route 14",
+          "action": "EXIT",
+          "target_area": "UNOVA_ROUTE_14",
+          "condition": "can_exit",
+          "color": "RED"
+        },
+        {
+          "text": "Route 15",
+          "action": "EXIT",
+          "target_area": "UNOVA_ROUTE_15",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "UNOVA_ROUTE_15"
+    },
+    "WHITE_TREEHOLLOW": {
+      "area_type": "dungeon",
+      "route_name": "White Treehollow",
+      "region": "UNOVA",
+      "battle_type": "forest",
+      "wild_pool_percentages": null,
+      "min_rounds": 0,
+      "trainer_pool": [
+        {
+          "name": "Backpacker Molly",
+          "class": "PICNIKER",
+          "sprite": "picnicker.png",
+          "team": [
+            184
+          ],
+          "rewards": {
+            "balls": 4
+          },
+          "dialogue": {
+            "intro": [
+              "White Treehollow - Area 1. I'm the gate Trainer!",
+              "Beat me to open the Boss Trainer's door."
+            ],
+            "player_won": [
+              "The door to the Boss Trainer's room is open!"
+            ],
+            "player_lost": [
+              "The gate stays shut for now."
+            ]
+          }
+        },
+        {
+          "name": "Boss Trainer Abigail",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "is_boss_battle": true,
+          "team": [
+            505,
+            544,
+            622
+          ],
+          "rewards": {
+            "balls": 6
+          },
+          "dialogue": {
+            "intro": [
+              "White Treehollow - Area 1 Boss Trainer Abigail.",
+              "Show me what you've got!"
+            ],
+            "player_won": [
+              "Area 1 cleared!",
+              "The next area awaits."
+            ],
+            "player_lost": [
+              "Train up and challenge the area again!"
+            ]
+          }
+        },
+        {
+          "name": "Backpacker Carlos",
+          "class": "CAMPER",
+          "sprite": "camper.png",
+          "team": [
+            398
+          ],
+          "rewards": {
+            "balls": 4
+          },
+          "dialogue": {
+            "intro": [
+              "White Treehollow - Area 2. I'm the gate Trainer!",
+              "Beat me to open the Boss Trainer's door."
+            ],
+            "player_won": [
+              "The door to the Boss Trainer's room is open!"
+            ],
+            "player_lost": [
+              "The gate stays shut for now."
+            ]
+          }
+        },
+        {
+          "name": "Boss Trainer Brent",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "is_boss_battle": true,
+          "team": [
+            521,
+            603,
+            531
+          ],
+          "rewards": {
+            "balls": 6
+          },
+          "dialogue": {
+            "intro": [
+              "White Treehollow - Area 2 Boss Trainer Brent.",
+              "Show me what you've got!"
+            ],
+            "player_won": [
+              "Area 2 cleared!",
+              "The next area awaits."
+            ],
+            "player_lost": [
+              "Train up and challenge the area again!"
+            ]
+          }
+        },
+        {
+          "name": "School Kid Silvia",
+          "class": "SCHOOL_KID",
+          "sprite": "school_kid_f.png",
+          "team": [
+            267,
+            269
+          ],
+          "rewards": {
+            "balls": 4
+          },
+          "dialogue": {
+            "intro": [
+              "White Treehollow - Area 3. I'm the gate Trainer!",
+              "Beat me to open the Boss Trainer's door."
+            ],
+            "player_won": [
+              "The door to the Boss Trainer's room is open!"
+            ],
+            "player_lost": [
+              "The gate stays shut for now."
+            ]
+          }
+        },
+        {
+          "name": "Boss Trainer Carleigh",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "is_boss_battle": true,
+          "team": [
+            508,
+            587,
+            542
+          ],
+          "rewards": {
+            "balls": 6
+          },
+          "dialogue": {
+            "intro": [
+              "White Treehollow - Area 3 Boss Trainer Carleigh.",
+              "Show me what you've got!"
+            ],
+            "player_won": [
+              "Area 3 cleared!",
+              "The next area awaits."
+            ],
+            "player_lost": [
+              "Train up and challenge the area again!"
+            ]
+          }
+        },
+        {
+          "name": "Backpacker Emi",
+          "class": "PICNIKER",
+          "sprite": "picnicker.png",
+          "team": [
+            242
+          ],
+          "rewards": {
+            "balls": 4
+          },
+          "dialogue": {
+            "intro": [
+              "White Treehollow - Area 4. I'm the gate Trainer!",
+              "Beat me to open the Boss Trainer's door."
+            ],
+            "player_won": [
+              "The door to the Boss Trainer's room is open!"
+            ],
+            "player_lost": [
+              "The gate stays shut for now."
+            ]
+          }
+        },
+        {
+          "name": "Boss Trainer Daneil",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "is_boss_battle": true,
+          "team": [
+            560,
+            335,
+            631
+          ],
+          "rewards": {
+            "balls": 6
+          },
+          "dialogue": {
+            "intro": [
+              "White Treehollow - Area 4 Boss Trainer Daneil.",
+              "Show me what you've got!"
+            ],
+            "player_won": [
+              "Area 4 cleared!",
+              "The next area awaits."
+            ],
+            "player_lost": [
+              "Train up and challenge the area again!"
+            ]
+          }
+        },
+        {
+          "name": "Psychic Britney",
+          "class": "PSYCHIC",
+          "sprite": "psychic.png",
+          "team": [
+            189
+          ],
+          "rewards": {
+            "balls": 4
+          },
+          "dialogue": {
+            "intro": [
+              "White Treehollow - Area 5. I'm the gate Trainer!",
+              "Beat me to open the Boss Trainer's door."
+            ],
+            "player_won": [
+              "The door to the Boss Trainer's room is open!"
+            ],
+            "player_lost": [
+              "The gate stays shut for now."
+            ]
+          }
+        },
+        {
+          "name": "Boss Trainer Elie",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "is_boss_battle": true,
+          "team": [
+            344,
+            139,
+            593
+          ],
+          "rewards": {
+            "balls": 6
+          },
+          "dialogue": {
+            "intro": [
+              "White Treehollow - Area 5 Boss Trainer Elie.",
+              "Show me what you've got!"
+            ],
+            "player_won": [
+              "Area 5 cleared!",
+              "The next area awaits."
+            ],
+            "player_lost": [
+              "Train up and challenge the area again!"
+            ]
+          }
+        },
+        {
+          "name": "Gentleman Doug",
+          "class": "GENTLEMAN",
+          "sprite": "gentleman.png",
+          "team": [
+            405
+          ],
+          "rewards": {
+            "balls": 4
+          },
+          "dialogue": {
+            "intro": [
+              "White Treehollow - Area 6. I'm the gate Trainer!",
+              "Beat me to open the Boss Trainer's door."
+            ],
+            "player_won": [
+              "The door to the Boss Trainer's room is open!"
+            ],
+            "player_lost": [
+              "The gate stays shut for now."
+            ]
+          }
+        },
+        {
+          "name": "Boss Trainer Frederick",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "is_boss_battle": true,
+          "team": [
+            468,
+            214,
+            409
+          ],
+          "rewards": {
+            "balls": 6
+          },
+          "dialogue": {
+            "intro": [
+              "White Treehollow - Area 6 Boss Trainer Frederick.",
+              "Show me what you've got!"
+            ],
+            "player_won": [
+              "Area 6 cleared!",
+              "The next area awaits."
+            ],
+            "player_lost": [
+              "Train up and challenge the area again!"
+            ]
+          }
+        },
+        {
+          "name": "Socialite Miho",
+          "class": "BEAUTY",
+          "sprite": "beauty.png",
+          "team": [
+            275
+          ],
+          "rewards": {
+            "balls": 4
+          },
+          "dialogue": {
+            "intro": [
+              "White Treehollow - Area 7. I'm the gate Trainer!",
+              "Beat me to open the Boss Trainer's door."
+            ],
+            "player_won": [
+              "The door to the Boss Trainer's room is open!"
+            ],
+            "player_lost": [
+              "The gate stays shut for now."
+            ]
+          }
+        },
+        {
+          "name": "Boss Trainer Gail",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "is_boss_battle": true,
+          "team": [
+            350,
+            473,
+            448
+          ],
+          "rewards": {
+            "balls": 6
+          },
+          "dialogue": {
+            "intro": [
+              "White Treehollow - Area 7 Boss Trainer Gail.",
+              "Show me what you've got!"
+            ],
+            "player_won": [
+              "Area 7 cleared!",
+              "The next area awaits."
+            ],
+            "player_lost": [
+              "Train up and challenge the area again!"
+            ]
+          }
+        },
+        {
+          "name": "Scientist Piper",
+          "class": "SCIENTIST",
+          "sprite": "scientist.png",
+          "team": [
+            71
+          ],
+          "rewards": {
+            "balls": 4
+          },
+          "dialogue": {
+            "intro": [
+              "White Treehollow - Area 8. I'm the gate Trainer!",
+              "Beat me to open the Boss Trainer's door."
+            ],
+            "player_won": [
+              "The door to the Boss Trainer's room is open!"
+            ],
+            "player_lost": [
+              "The gate stays shut for now."
+            ]
+          }
+        },
+        {
+          "name": "Boss Trainer Harmon",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "is_boss_battle": true,
+          "team": [
+            389,
+            59,
+            642
+          ],
+          "rewards": {
+            "balls": 6
+          },
+          "dialogue": {
+            "intro": [
+              "White Treehollow - Area 8 Boss Trainer Harmon.",
+              "Show me what you've got!"
+            ],
+            "player_won": [
+              "Area 8 cleared!",
+              "The next area awaits."
+            ],
+            "player_lost": [
+              "Train up and challenge the area again!"
+            ]
+          }
+        },
+        {
+          "name": "Lass Lena",
+          "class": "LASS",
+          "sprite": "lass.png",
+          "team": [
+            282,
+            475
+          ],
+          "rewards": {
+            "balls": 4
+          },
+          "dialogue": {
+            "intro": [
+              "White Treehollow - Area 9. I'm the gate Trainer!",
+              "Beat me to open the Boss Trainer's door."
+            ],
+            "player_won": [
+              "The door to the Boss Trainer's room is open!"
+            ],
+            "player_lost": [
+              "The gate stays shut for now."
+            ]
+          }
+        },
+        {
+          "name": "Boss Trainer Iria",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "is_boss_battle": true,
+          "team": [
+            373,
+            146,
+            243
+          ],
+          "rewards": {
+            "balls": 6
+          },
+          "dialogue": {
+            "intro": [
+              "White Treehollow - Area 9 Boss Trainer Iria.",
+              "Show me what you've got!"
+            ],
+            "player_won": [
+              "Area 9 cleared!",
+              "The next area awaits."
+            ],
+            "player_lost": [
+              "Train up and challenge the area again!"
+            ]
+          }
+        },
+        {
+          "name": "Youngster Shane",
+          "class": "YOUNGSTER",
+          "sprite": "youngster.png",
+          "team": [
+            464
+          ],
+          "rewards": {
+            "balls": 4
+          },
+          "dialogue": {
+            "intro": [
+              "White Treehollow - Area 10. I'm the gate Trainer!",
+              "Beat me to open the Boss Trainer's door."
+            ],
+            "player_won": [
+              "The door to the Boss Trainer's room is open!"
+            ],
+            "player_lost": [
+              "The gate stays shut for now."
+            ]
+          }
+        },
+        {
+          "name": "Boss Trainer Benga",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "is_boss_battle": true,
+          "team": [
+            380,
+            149,
+            637
+          ],
+          "rewards": {
+            "balls": 12
+          },
+          "victory_flag": "white_treehollow_cleared",
+          "dialogue": {
+            "intro": [
+              "White Treehollow - Area 10 Boss Trainer Benga.",
+              "Show me what you've got!"
+            ],
+            "player_won": [
+              "Area 10 cleared!",
+              "You've conquered this part of the challenge!"
+            ],
+            "player_lost": [
+              "Train up and challenge the area again!"
+            ]
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CHALLENGE TREEHOLLOW",
+          "action": "GALACTIC_GAUNTLET",
+          "flag_condition": "not white_treehollow_cleared",
+          "color": "GOLD"
+        },
+        {
+          "text": "White Forest",
+          "action": "EXIT",
+          "target_area": "WHITE_FOREST",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "WHITE_FOREST"
+    },
     "UNOVA_ROUTE_14": {
       "area_type": "wild_route",
       "route_name": "Route 14",
@@ -1999,7 +3222,8 @@
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
         { "text": "Abundant Shrine", "action": "EXIT", "target_area": "ABUNDANT_SHRINE", "condition": "can_exit", "color": "GOLD" },
         { "text": "Undella Town", "action": "EXIT", "target_area": "UNDELLA_TOWN", "condition": "can_exit", "color": "RED" },
-        { "text": "ROUTE 15", "action": "EXIT", "target_area": "UNOVA_ROUTE_15", "condition": "can_exit", "color": "RED" }
+        { "text": "Black City", "action": "EXIT", "target_area": "BLACK_CITY", "condition": ["can_exit", "beat_unova_champion"], "color": "RED" },
+        { "text": "White Forest", "action": "EXIT", "target_area": "WHITE_FOREST", "condition": ["can_exit", "black_tower_cleared"], "color": "RED" }
       ],
       "next_area": "UNDELLA_TOWN"
     },
@@ -2024,9 +3248,11 @@
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
-        { "text": "Route 14", "action": "EXIT", "target_area": "UNOVA_ROUTE_14", "condition": "can_exit", "color": "RED" }
+        { "text": "Black City", "action": "EXIT", "target_area": "BLACK_CITY", "condition": "can_exit", "color": "RED" },
+        { "text": "White Forest", "action": "EXIT", "target_area": "WHITE_FOREST", "condition": ["can_exit", "black_tower_cleared"], "color": "RED" },
+        { "text": "Route 16", "action": "EXIT", "target_area": "UNOVA_ROUTE_16", "condition": "can_exit", "color": "RED" }
       ],
-      "next_area": "UNOVA_ROUTE_14"
+      "next_area": "BLACK_CITY"
     },
     "UNOVA_ROUTE_16": {
       "area_type": "wild_route",
@@ -2048,7 +3274,8 @@
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
-        { "text": "Nimbasa City", "action": "EXIT", "target_area": "NIMBASA_CITY", "condition": "can_exit", "color": "RED" }
+        { "text": "Nimbasa City", "action": "EXIT", "target_area": "NIMBASA_CITY", "condition": "can_exit", "color": "RED" },
+        { "text": "Route 15", "action": "EXIT", "target_area": "UNOVA_ROUTE_15", "condition": ["can_exit", "visited_UNOVA_ROUTE_15"], "color": "RED" }
       ],
       "next_area": "NIMBASA_CITY"
     },
@@ -2451,6 +3678,8 @@
   "UNOVA_ROUTE_14_PERCENTAGES": { "571": 30, "619": 25, "621": 25, "631": 20 },
   "UNOVA_ROUTE_15": [611, 612, 621, 631],
   "UNOVA_ROUTE_15_PERCENTAGES": { "611": 30, "612": 25, "621": 25, "631": 20 },
+  "WHITE_FOREST": [16, 29, 32, 43, 63, 66, 81, 92, 280, 371],
+  "WHITE_FOREST_PERCENTAGES": { "16": 10, "29": 10, "32": 10, "43": 10, "63": 10, "66": 10, "81": 10, "92": 10, "280": 10, "371": 10 },
   "UNOVA_ROUTE_16": [509, 510, 572, 587],
   "UNOVA_ROUTE_16_PERCENTAGES": { "509": 30, "510": 25, "572": 25, "587": 20 },
   "UNOVA_ROUTE_17": [550, 580, 592, 594],
