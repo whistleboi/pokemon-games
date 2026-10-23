@@ -347,7 +347,8 @@
           "rewards": { "balls": 3 },
           "villain": "grunt"
         },
-        "condition": "has_stone_badge"
+        "condition": "has_stone_badge",
+        "flag_check": "slateport_grunt_defeated"
       }
     },
     "MAUVILLE_CITY": {
