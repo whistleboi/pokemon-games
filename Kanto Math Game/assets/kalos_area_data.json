@@ -147,7 +147,1021 @@
     "kalos_mom_newstart_2": ["Mom: Lumiose City has a café on every corner. Bring me a pastry someday!", "Mom: And remember to rest. Even champions need naps."],
     "kalos_mom_newstart_3": ["Mom: I used to race Rhyhorn when I was young, you know.", "Mom: Your journey is your own race. Run it at your own pace!"]
   },
+  "KALOS_ROUTE_22": [54, 667, 184, 298, 659, 83, 400, 399, 206, 447],
+  "KALOS_ROUTE_22_PERCENTAGES": { "54": 44, "667": 10, "184": 9, "298": 7, "659": 7, "83": 7, "400": 7, "399": 3, "206": 3, "447": 3 },
+  "KALOS_ROUTE_21": [419, 271, 217, 327, 334, 123],
+  "KALOS_ROUTE_21_PERCENTAGES": { "419": 28, "271": 22, "217": 17, "327": 13, "334": 13, "123": 7 },
+  "KALOS_ROUTE_20": [591, 164, 575, 39, 709, 571],
+  "KALOS_ROUTE_20_PERCENTAGES": { "591": 25, "164": 20, "575": 20, "39": 15, "709": 15, "571": 5 },
+  "AZURE_BAY": [72, 79, 441, 686, 458, 102, 131],
+  "AZURE_BAY_PERCENTAGES": { "72": 40, "79": 20, "441": 18, "686": 8, "458": 8, "102": 5, "131": 1 },
   "STORY_PROGRESSION": {
+    "KALOS_POWER_PLANT": {
+      "area_type": "dungeon",
+      "route_name": "Kalos Power Plant",
+      "region": "kalos",
+      "battle_type": "indoor",
+      "wild_pool_percentages": null,
+      "min_rounds": 0,
+      "trainer_pool": [
+        {
+          "name": "Team Flare Grunt",
+          "class": "FLARE_GRUNT",
+          "sprite": "flare_grunt.png",
+          "team": [
+            559,
+            453
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Team Flare Grunt",
+          "class": "FLARE_GRUNT",
+          "sprite": "flare_grunt.png",
+          "team": [
+            453,
+            42
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Team Flare Grunt",
+          "class": "FLARE_GRUNT",
+          "sprite": "flare_grunt.png",
+          "team": [
+            262
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Team Flare Grunt",
+          "class": "FLARE_GRUNT",
+          "sprite": "flare_grunt.png",
+          "team": [
+            559,
+            42
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Team Flare Grunt",
+          "class": "FLARE_GRUNT",
+          "sprite": "flare_grunt.png",
+          "team": [
+            42,
+            262
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Team Flare Grunt",
+          "class": "FLARE_GRUNT",
+          "sprite": "flare_grunt.png",
+          "team": [
+            317
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Team Flare Aliana",
+          "class": "FLARE_ADMIN",
+          "sprite": "flare_admin.png",
+          "team": [
+            262
+          ],
+          "rewards": {
+            "balls": 10
+          },
+          "is_boss_battle": true,
+          "victory_flag": "kalos_power_plant_cleared"
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "RETAKE THE PLANT",
+          "action": "GALACTIC_GAUNTLET",
+          "flag_condition": "not kalos_power_plant_cleared",
+          "color": "GOLD"
+        },
+        {
+          "text": "Route 13",
+          "action": "EXIT",
+          "target_area": "KALOS_ROUTE_13",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "KALOS_ROUTE_13"
+    },
+    "LYSANDRE_LABS": {
+      "area_type": "dungeon",
+      "route_name": "Lysandre Labs",
+      "region": "kalos",
+      "battle_type": "indoor",
+      "wild_pool_percentages": null,
+      "min_rounds": 0,
+      "trainer_pool": [
+        {
+          "name": "Team Flare Grunt",
+          "class": "FLARE_GRUNT",
+          "sprite": "flare_grunt.png",
+          "team": [
+            317
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Team Flare Grunt",
+          "class": "FLARE_GRUNT",
+          "sprite": "flare_grunt.png",
+          "team": [
+            317,
+            510
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Team Flare Grunt",
+          "class": "FLARE_GRUNT",
+          "sprite": "flare_grunt.png",
+          "team": [
+            510,
+            262
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Team Flare Grunt",
+          "class": "FLARE_GRUNT",
+          "sprite": "flare_grunt.png",
+          "team": [
+            229,
+            454
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Team Flare Grunt",
+          "class": "FLARE_GRUNT",
+          "sprite": "flare_grunt.png",
+          "team": [
+            310,
+            560
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Team Flare Grunt",
+          "class": "FLARE_GRUNT",
+          "sprite": "flare_grunt.png",
+          "team": [
+            262,
+            454
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Team Flare Lysandre",
+          "class": "FLARE_ADMIN",
+          "sprite": "lysandre.png",
+          "team": [
+            619,
+            130,
+            668,
+            198
+          ],
+          "rewards": {
+            "balls": 10
+          },
+          "is_boss_battle": true,
+          "victory_flag": "lysandre_labs_cleared"
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "INFILTRATE THE LABS",
+          "action": "GALACTIC_GAUNTLET",
+          "flag_condition": "not lysandre_labs_cleared",
+          "color": "GOLD"
+        },
+        {
+          "text": "Lumiose City",
+          "action": "EXIT",
+          "target_area": "LUMIOSE_CITY",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "LUMIOSE_CITY"
+    },
+    "BATTLE_CHATEAU": {
+      "area_type": "dungeon",
+      "route_name": "Battle Chateau",
+      "region": "kalos",
+      "battle_type": "indoor",
+      "wild_pool_percentages": null,
+      "min_rounds": 0,
+      "trainer_pool": [
+        {
+          "name": "Baron Moray",
+          "class": "NOBILITY",
+          "sprite": "gentleman.png",
+          "team": [
+            661
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Baroness Francine",
+          "class": "NOBILITY",
+          "sprite": "beauty.png",
+          "team": [
+            669
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Viscount Braine",
+          "class": "NOBILITY",
+          "sprite": "gentleman.png",
+          "team": [
+            690
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Viscountess Beatrice",
+          "class": "NOBILITY",
+          "sprite": "beauty.png",
+          "team": [
+            72
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Earl Glen",
+          "class": "NOBILITY",
+          "sprite": "gentleman.png",
+          "team": [
+            702,
+            397
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Countess Patricia",
+          "class": "NOBILITY",
+          "sprite": "beauty.png",
+          "team": [
+            324,
+            679
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Marquis Grant",
+          "class": "NOBILITY",
+          "sprite": "grant.png",
+          "team": [
+            697,
+            699
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Marchioness Armandine",
+          "class": "NOBILITY",
+          "sprite": "beauty.png",
+          "team": [
+            470,
+            713
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Duke Wiksttrom",
+          "class": "NOBILITY",
+          "sprite": "gentleman.png",
+          "team": [
+            212,
+            476,
+            681
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        },
+        {
+          "name": "Duchess Malva",
+          "class": "NOBILITY",
+          "sprite": "malva.png",
+          "team": [
+            668,
+            663,
+            609
+          ],
+          "rewards": {
+            "balls": 10
+          },
+          "is_boss_battle": true,
+          "victory_flag": "battle_chateau_cleared"
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "ENTER THE CHATEAU",
+          "action": "GALACTIC_GAUNTLET",
+          "flag_condition": "not battle_chateau_cleared",
+          "color": "GOLD"
+        },
+        {
+          "text": "Route 7",
+          "action": "EXIT",
+          "target_area": "KALOS_ROUTE_7",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "KALOS_ROUTE_7"
+    },
+    "SEA_SPIRITS_DEN": {
+      "area_type": "dungeon",
+      "route_name": "Sea Spirit's Den",
+      "region": "kalos",
+      "battle_type": "cave",
+      "wild_pool_percentages": null,
+      "min_rounds": 0,
+      "trainer_pool": [],
+      "area_boss": {
+        "id": 144,
+        "name": "Articuno",
+        "victory_flag": "SEA_SPIRITS_DEN_boss_defeated"
+      },
+      "route_menu": [
+        {
+          "text": "Sea Spirit's Den",
+          "action": "BOSS",
+          "condition": "boss_not_defeated",
+          "color": "GOLD"
+        },
+        {
+          "text": "Azure Bay",
+          "action": "EXIT",
+          "target_area": "AZURE_BAY",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "AZURE_BAY"
+    },
+    "AZURE_BAY": {
+      "area_type": "wild_route",
+      "route_name": "Azure Bay",
+      "region": "kalos",
+      "battle_type": "water",
+      "can_fish": true,
+      "wild_pool_percentages": "AZURE_BAY_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Swimmer M Kieran",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [
+            223,
+            690,
+            320
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        },
+        {
+          "name": "Swimmer F Romy",
+          "class": "SWIMMER",
+          "sprite": "swimmer_f.png",
+          "team": [
+            79
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Fisherman Ewan",
+          "class": "FISHERMAN",
+          "sprite": "fisherman.png",
+          "team": [
+            692,
+            318
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Sky Trainer Indra",
+          "class": "SKY_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "team": [
+            561
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Swimmer F Islad",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [
+            222,
+            171
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Sky Trainer Elata",
+          "class": "SKY_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "team": [
+            662,
+            279
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "FISH",
+          "action": "FISH",
+          "condition": "can_fish",
+          "color": "ORANGE"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Route 12",
+          "action": "EXIT",
+          "target_area": "KALOS_ROUTE_12",
+          "condition": "can_exit",
+          "color": "RED"
+        },
+        {
+          "text": "Sea Spirit's Den",
+          "action": "EXIT",
+          "target_area": "SEA_SPIRITS_DEN",
+          "condition": [
+            "can_exit",
+            "beat_kalos_champion"
+          ],
+          "color": "RED"
+        }
+      ],
+      "next_area": "KALOS_ROUTE_12"
+    },
+    "BATTLE_MAISON_KALOS": {
+      "area_type": "dungeon",
+      "route_name": "Battle Maison",
+      "region": "kalos",
+      "battle_type": "indoor",
+      "wild_pool_percentages": null,
+      "min_rounds": 0,
+      "trainer_pool": [
+        {
+          "name": "Battle Chatelaine Nita",
+          "class": "FRONTIER_BRAIN",
+          "sprite": "beauty.png",
+          "team": [
+            40,
+            432,
+            326
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        },
+        {
+          "name": "Battle Chatelaine Evelyn",
+          "class": "FRONTIER_BRAIN",
+          "sprite": "beauty.png",
+          "team": [
+            57,
+            53,
+            417,
+            457
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        },
+        {
+          "name": "Battle Chatelaine Dana",
+          "class": "FRONTIER_BRAIN",
+          "sprite": "beauty.png",
+          "team": [
+            691,
+            547,
+            219,
+            82,
+            221,
+            203
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        },
+        {
+          "name": "Battle Chatelaine Morgan",
+          "class": "FRONTIER_BRAIN",
+          "sprite": "beauty.png",
+          "team": [
+            586,
+            226,
+            707,
+            317
+          ],
+          "rewards": {
+            "balls": 10
+          },
+          "is_boss_battle": true,
+          "victory_flag": "battle_maison_kalos_cleared"
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "TAKE THE MAISON CHALLENGE",
+          "action": "GALACTIC_GAUNTLET",
+          "flag_condition": "not battle_maison_kalos_cleared",
+          "color": "GOLD"
+        },
+        {
+          "text": "Kiloude City",
+          "action": "EXIT",
+          "target_area": "KILOUDE_CITY",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "KILOUDE_CITY"
+    },
+    "KILOUDE_CITY": {
+      "area_type": "town",
+      "route_name": "Kiloude City",
+      "region": "kalos",
+      "has_gym": false,
+      "travel_options": [
+        {
+          "text": "Lumiose City",
+          "target_area": "LUMIOSE_CITY"
+        },
+        {
+          "text": "Battle Maison",
+          "target_area": "BATTLE_MAISON_KALOS"
+        }
+      ],
+      "explore_options": [
+        {
+          "text": "Pok\u00e9mon Center",
+          "action": "HEAL"
+        },
+        {
+          "text": "Shop",
+          "action": "SHOP"
+        }
+      ],
+      "next_area": "LUMIOSE_CITY"
+    },
+    "KALOS_ROUTE_20": {
+      "area_type": "wild_route",
+      "route_name": "Route 20",
+      "region": "kalos",
+      "battle_type": "forest",
+      "wild_pool_percentages": "KALOS_ROUTE_20_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Twins Nana & Nina",
+          "class": "TWINS",
+          "sprite": "twins.png",
+          "team": [
+            683,
+            685
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Poke Fan Roisin",
+          "class": "POKEFAN",
+          "sprite": "pokefan_f.png",
+          "team": [
+            209,
+            210
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Fairy Tale Girl Wynne",
+          "class": "LASS",
+          "sprite": "lass.png",
+          "team": [
+            707,
+            184
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Poke Fan Corey",
+          "class": "POKEFAN",
+          "sprite": "pokefan_f.png",
+          "team": [
+            702
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Hex Maniac Desdemona",
+          "class": "CHANNELER",
+          "sprite": "channeler.png",
+          "team": [
+            709
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Snowbelle City",
+          "action": "EXIT",
+          "target_area": "SNOWBELLE_CITY",
+          "condition": "can_exit",
+          "color": "RED"
+        },
+        {
+          "text": "Pokemon Village",
+          "action": "EXIT",
+          "target_area": "POKEMON_VILLAGE",
+          "condition": [
+            "can_exit",
+            "beat_kalos_champion"
+          ],
+          "color": "RED"
+        }
+      ],
+      "next_area": "SNOWBELLE_CITY"
+    },
+    "KALOS_ROUTE_21": {
+      "area_type": "wild_route",
+      "route_name": "Route 21",
+      "region": "kalos",
+      "battle_type": "field",
+      "can_fish": true,
+      "wild_pool_percentages": "KALOS_ROUTE_21_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Ace Trainer Mireille",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            302,
+            558
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Ace Duo Elina & Sean",
+          "class": "TWINS",
+          "sprite": "twins.png",
+          "team": [
+            321,
+            45
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Veteran Louis",
+          "class": "VETERAN",
+          "sprite": "veteran.png",
+          "team": [
+            450,
+            699
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Ace Trainer Evan",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "team": [
+            609
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Veteran Trisha",
+          "class": "VETERAN",
+          "sprite": "veteran.png",
+          "team": [
+            697
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "FISH",
+          "action": "FISH",
+          "condition": "can_fish",
+          "color": "ORANGE"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Snowbelle City",
+          "action": "EXIT",
+          "target_area": "SNOWBELLE_CITY",
+          "condition": "can_exit",
+          "color": "RED"
+        },
+        {
+          "text": "Victory Road (Kalos)",
+          "action": "EXIT",
+          "target_area": "VICTORY_ROAD_KALOS",
+          "condition": [
+            "can_exit",
+            "has_iceberg_badge",
+            "has_item:HM_WATERFALL",
+            "has_item:HM_STRENGTH"
+          ],
+          "color": "RED"
+        }
+      ],
+      "next_area": "SNOWBELLE_CITY"
+    },
+    "KALOS_ROUTE_22": {
+      "area_type": "wild_route",
+      "route_name": "Route 22",
+      "region": "kalos",
+      "battle_type": "grass",
+      "wild_pool_percentages": "KALOS_ROUTE_22_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Rising Star Louise",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            54,
+            667
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Lass Elin",
+          "class": "LASS",
+          "sprite": "lass.png",
+          "team": [
+            118,
+            183
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Rising Star Loic",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            447
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Schoolboy Rabbie",
+          "class": "SCHOOL_KID",
+          "sprite": "school_kid_m.png",
+          "team": [
+            16,
+            11
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Schoolgirl Mackenzie",
+          "class": "SCHOOL_KID",
+          "sprite": "school_kid_f.png",
+          "team": [
+            659
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Lass Elsa",
+          "class": "LASS",
+          "sprite": "lass.png",
+          "team": [
+            669
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Ace Trainer Hilde",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            319,
+            282
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Ace Trainer Adelbert",
+          "class": "ACE_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "team": [
+            448
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Santalune City",
+          "action": "EXIT",
+          "target_area": "SANTALUNE_CITY",
+          "condition": "can_exit",
+          "color": "RED"
+        },
+        {
+          "text": "Lumiose City",
+          "action": "EXIT",
+          "target_area": "LUMIOSE_CITY",
+          "condition": "can_exit",
+          "color": "RED"
+        },
+        {
+          "text": "Victory Road (Kalos)",
+          "action": "EXIT",
+          "target_area": "VICTORY_ROAD_KALOS",
+          "condition": [
+            "can_exit",
+            "has_iceberg_badge",
+            "has_item:HM_WATERFALL",
+            "has_item:HM_STRENGTH"
+          ],
+          "color": "RED"
+        }
+      ],
+      "next_area": "SANTALUNE_CITY"
+    },
     "VANIVILLE_TOWN": {
       "area_type": "town",
       "route_name": "Vaniville Town",
@@ -229,7 +1243,8 @@
       "travel_options": [
         { "text": "Route 2 / Santalune Forest", "target_area": "SANTALUNE_FOREST" },
         { "text": "Route 3", "target_area": "KALOS_ROUTE_3" },
-        { "text": "Route 4 (to Lumiose)", "target_area": "KALOS_ROUTE_4" }
+        { "text": "Route 4 (to Lumiose)", "target_area": "KALOS_ROUTE_4" },
+        {"text": "Route 22", "target_area": "KALOS_ROUTE_22"}
       ],
       "explore_options": [
         { "text": "Pokémon Center", "action": "HEAL" },
@@ -267,7 +1282,10 @@
         { "text": "Route 4 (to Santalune)", "target_area": "KALOS_ROUTE_4" },
         { "text": "Route 5 (to Camphrier)", "target_area": "KALOS_ROUTE_5" },
         { "text": "Route 13 (to Laverre)", "target_area": "KALOS_ROUTE_13", "condition": "has_plant_badge" },
-        { "text": "Route 14 (south)", "target_area": "KALOS_ROUTE_14", "condition": "has_voltage_badge" }
+        { "text": "Route 14 (south)", "target_area": "KALOS_ROUTE_14", "condition": "has_voltage_badge" },
+        {"text": "Route 22", "target_area": "KALOS_ROUTE_22"},
+        {"text": "Kiloude City", "target_area": "KILOUDE_CITY", "condition": "beat_kalos_champion"},
+        {"text": "Lysandre Labs", "target_area": "LYSANDRE_LABS", "condition": "has_psychic_badge"}
       ],
       "explore_options": [
         { "text": "Pokémon Center", "action": "HEAL" },
@@ -647,7 +1665,9 @@
           "text": "Victory Road (Kalos)",
           "target_area": "VICTORY_ROAD_KALOS",
           "condition": ["has_iceberg_badge", "has_item:HM_WATERFALL", "has_item:HM_STRENGTH"]
-        }
+        },
+        {"text": "Route 21", "target_area": "KALOS_ROUTE_21"},
+        {"text": "Route 20", "target_area": "KALOS_ROUTE_20"}
       ],
       "explore_options": [
         { "text": "Pokémon Center", "action": "HEAL" },
@@ -1058,7 +2078,8 @@
         { "text": "Encounter Mewtwo", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD" },
         { "text": "Encounter AZ's Floette", "action": "NPC", "target": "kalos_az_story", "flag_condition": "not met_az", "color": "GOLD" },
         { "text": "Snowbelle City", "action": "EXIT", "target_area": "SNOWBELLE_CITY", "condition": "can_exit", "color": "RED" },
-        { "text": "Victory Road (Kalos)", "action": "EXIT", "target_area": "VICTORY_ROAD_KALOS", "condition": "can_exit", "color": "RED" }
+        { "text": "Victory Road (Kalos)", "action": "EXIT", "target_area": "VICTORY_ROAD_KALOS", "condition": "can_exit", "color": "RED" },
+        {"text": "Route 20", "action": "EXIT", "target_area": "KALOS_ROUTE_20", "condition": "can_exit", "color": "RED"}
       ],
       "area_boss": { "id": 150, "name": "Mewtwo", "victory_flag": "POKEMON_VILLAGE_boss_defeated" }
     },
@@ -1132,7 +2153,9 @@
           "target_area": "POKEMON_VILLAGE",
           "condition": ["can_exit", "beat_kalos_champion"],
           "color": "RED"
-        }
+        },
+        {"text": "Route 22", "action": "EXIT", "target_area": "KALOS_ROUTE_22", "condition": "can_exit", "color": "RED"},
+        {"text": "Route 21", "action": "EXIT", "target_area": "KALOS_ROUTE_21", "condition": "can_exit", "color": "RED"}
       ]
     },
     "KALOS_ROUTE_1": {
@@ -1308,7 +2331,8 @@
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
         { "text": "Camphrier Town", "action": "EXIT", "target_area": "CAMPHRIER_TOWN", "condition": "can_exit", "color": "RED" },
         { "text": "Connecting Cave", "action": "EXIT", "target_area": "CONNECTING_CAVE", "condition": "can_exit", "color": "RED" },
-        { "text": "Route 6", "action": "EXIT", "target_area": "KALOS_ROUTE_6", "condition": "can_exit", "color": "RED" }
+        { "text": "Route 6", "action": "EXIT", "target_area": "KALOS_ROUTE_6", "condition": "can_exit", "color": "RED" },
+        {"text": "Battle Chateau", "action": "EXIT", "target_area": "BATTLE_CHATEAU", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "CONNECTING_CAVE"
     },
@@ -1435,7 +2459,8 @@
         { "text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
         { "text": "Shalour City", "action": "EXIT", "target_area": "SHALOUR_CITY", "condition": "can_exit", "color": "RED" },
-        { "text": "Coumarine City", "action": "EXIT", "target_area": "COUMARINE_CITY", "condition": "can_exit", "color": "RED" }
+        { "text": "Coumarine City", "action": "EXIT", "target_area": "COUMARINE_CITY", "condition": "can_exit", "color": "RED" },
+        {"text": "Azure Bay", "action": "EXIT", "target_area": "AZURE_BAY", "condition": ["can_exit", "has_item:HM_SURF"], "color": "RED"}
       ],
       "next_area": "COUMARINE_CITY"
     },
@@ -1460,7 +2485,8 @@
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
         { "text": "Coumarine City", "action": "EXIT", "target_area": "COUMARINE_CITY", "condition": "can_exit", "color": "RED" },
-        { "text": "Lumiose City", "action": "EXIT", "target_area": "LUMIOSE_CITY", "condition": "can_exit", "color": "RED" }
+        { "text": "Lumiose City", "action": "EXIT", "target_area": "LUMIOSE_CITY", "condition": "can_exit", "color": "RED" },
+        {"text": "Kalos Power Plant", "action": "EXIT", "target_area": "KALOS_POWER_PLANT", "condition": ["can_exit", "has_plant_badge"], "color": "RED"}
       ],
       "next_area": "LUMIOSE_CITY"
     },
