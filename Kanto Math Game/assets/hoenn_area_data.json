@@ -794,6 +794,7 @@
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         { "text": "LITTLEROOT TOWN", "action": "EXIT", "target_area": "LITTLEROOT_TOWN", "condition": "can_exit", "color": "RED" },
         { "text": "OLDALE TOWN", "action": "EXIT", "target_area": "OLDALE_TOWN", "condition": "can_exit", "color": "RED" }
       ],
@@ -1012,6 +1013,7 @@
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         {
           "text": "ROUTE 105",
           "action": "EXIT",
@@ -1095,6 +1097,7 @@
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         { "text": "ROUTE 107", "action": "EXIT", "target_area": "HOENN_ROUTE_107", "condition": "can_exit", "color": "RED" },
         { "text": "ROUTE 109", "action": "EXIT", "target_area": "HOENN_ROUTE_109", "condition": "can_exit", "color": "RED" },
         { "text": "ABANDONED SHIP", "action": "TRAVEL", "target_area": "HOENN_ABANDONED_SHIP", "condition": "can_exit", "color": "GREEN" }
@@ -1437,6 +1440,7 @@
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         { "text": "RUSTBORO CITY", "action": "EXIT", "target_area": "RUSTBORO_CITY", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "RUSTBORO_CITY",
@@ -1566,6 +1570,7 @@
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         {
           "text": "MEET STEVEN",
           "action": "HOENN_EVENT",
@@ -1687,6 +1692,7 @@
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         {
           "text": "TALK TO STEVEN",
           "action": "HOENN_EVENT",
@@ -1740,6 +1746,7 @@
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         { "text": "ROUTE 120", "action": "EXIT", "target_area": "HOENN_ROUTE_120", "condition": "can_exit", "color": "RED" },
         { "text": "LILYCOVE CITY", "action": "EXIT", "target_area": "LILYCOVE_CITY", "condition": "can_exit", "color": "RED" }
       ],
@@ -1779,6 +1786,7 @@
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         { "text": "LILYCOVE CITY", "action": "EXIT", "target_area": "LILYCOVE_CITY", "condition": "can_exit", "color": "RED" },
         { "text": "MT. PYRE", "action": "TRAVEL", "target_area": "HOENN_MT_PYRE", "condition": "can_exit", "color": "GREEN" }
       ],
@@ -1825,6 +1833,7 @@
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         { "text": "FORTREE CITY", "action": "EXIT", "target_area": "FORTREE_CITY", "condition": "can_exit", "color": "RED" },
         { "text": "ANCIENT TOMB", "action": "BOSS", "condition": "regi_trio_awakened", "color": "GRAY" },
         {
@@ -1870,6 +1879,7 @@
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         { "text": "ROUTE 123", "action": "EXIT", "target_area": "HOENN_ROUTE_123", "condition": "can_exit", "color": "RED" },
         { "text": "SOUTHERN ISLAND", "action": "BOSS", "condition": "has_EON_TICKET", "color": "PURPLE" },
         { "text": "MOSSDEEP CITY", "action": "EXIT", "target_area": "MOSSDEEP_CITY", "condition": "can_exit", "color": "RED" },
@@ -1916,6 +1926,7 @@
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         { "text": "MOSSDEEP CITY", "action": "EXIT", "target_area": "MOSSDEEP_CITY", "condition": "can_exit", "color": "RED" },
         {
           "text": "SHOAL CAVE",
@@ -1960,6 +1971,7 @@
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         { "text": "SOOTOPOLIS CITY", "action": "EXIT", "target_area": "SOOTOPOLIS_CITY", "condition": "can_exit", "color": "RED" },
         { "text": "ROUTE 124", "action": "EXIT", "target_area": "HOENN_ROUTE_124", "condition": "can_exit", "color": "RED" },
         { "text": "ROUTE 127", "action": "EXIT", "target_area": "HOENN_ROUTE_127", "condition": "can_exit", "color": "RED" }
@@ -2000,6 +2012,7 @@
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         { "text": "ROUTE 126", "action": "EXIT", "target_area": "HOENN_ROUTE_126", "condition": "can_exit", "color": "RED" },
         { "text": "ROUTE 128", "action": "EXIT", "target_area": "HOENN_ROUTE_128", "condition": "can_exit", "color": "RED" }
       ],
@@ -2039,6 +2052,7 @@
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         { "text": "ROUTE 127", "action": "EXIT", "target_area": "HOENN_ROUTE_127", "condition": "can_exit", "color": "RED" },
         {
           "text": "EVER GRANDE CITY",
@@ -2090,6 +2104,7 @@
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         {
           "text": "EVER GRANDE CITY",
           "action": "EXIT",
@@ -2134,6 +2149,7 @@
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         { "text": "ROUTE 129", "action": "EXIT", "target_area": "HOENN_ROUTE_129", "condition": "can_exit", "color": "RED" },
         { "text": "ROUTE 131", "action": "EXIT", "target_area": "HOENN_ROUTE_131", "condition": "can_exit", "color": "RED" }
       ],
@@ -2172,6 +2188,7 @@
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         { "text": "ROUTE 130", "action": "EXIT", "target_area": "HOENN_ROUTE_130", "condition": "can_exit", "color": "RED" },
         { "text": "PACIFIDLOG TOWN", "action": "EXIT", "target_area": "PACIFIDLOG_TOWN", "condition": "can_exit", "color": "RED" }
       ],
@@ -2210,6 +2227,7 @@
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         { "text": "PACIFIDLOG TOWN", "action": "EXIT", "target_area": "PACIFIDLOG_TOWN", "condition": "can_exit", "color": "RED" },
         { "text": "ROUTE 133", "action": "EXIT", "target_area": "HOENN_ROUTE_133", "condition": "can_exit", "color": "RED" }
       ],
@@ -2248,6 +2266,7 @@
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         { "text": "ROUTE 132", "action": "EXIT", "target_area": "HOENN_ROUTE_132", "condition": "can_exit", "color": "RED" },
         { "text": "ROUTE 134", "action": "EXIT", "target_area": "HOENN_ROUTE_134", "condition": "can_exit", "color": "RED" }
       ],
@@ -2286,6 +2305,7 @@
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         { "text": "ROUTE 133", "action": "EXIT", "target_area": "HOENN_ROUTE_133", "condition": "can_exit", "color": "RED" },
         { "text": "SLATEPORT CITY", "action": "EXIT", "target_area": "SLATEPORT_CITY", "condition": "can_exit", "color": "RED" }
       ],
@@ -2413,6 +2433,7 @@
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         { "text": "CHALLENGE REGICE", "action": "BOSS", "condition": "regi_trio_awakened", "color": "CYAN" },
         { "text": "DEWFORD TOWN", "action": "EXIT", "target_area": "DEWFORD_TOWN", "condition": "can_exit", "color": "RED" }
       ],
@@ -2462,6 +2483,7 @@
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         { "text": "FALLARBOR TOWN", "action": "EXIT", "target_area": "FALLARBOR_TOWN", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "FALLARBOR_TOWN",
@@ -2500,6 +2522,7 @@
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         { "text": "ROUTE 112", "action": "EXIT", "target_area": "HOENN_ROUTE_112", "condition": "can_exit", "color": "RED" },
         { "text": "MT CHIMNEY", "action": "TRAVEL", "target_area": "HOENN_MT_CHIMNEY", "condition": "can_exit", "color": "GREEN" }
       ],
@@ -2539,6 +2562,7 @@
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         { "text": "MT CHIMNEY", "action": "EXIT", "target_area": "HOENN_MT_CHIMNEY", "condition": "can_exit", "color": "RED" },
         { "text": "ROUTE 112", "action": "EXIT", "target_area": "HOENN_ROUTE_112", "condition": "can_exit", "color": "RED" }
       ],
@@ -2634,6 +2658,7 @@
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         { "text": "HOENN_ROUTE_110", "action": "EXIT", "target_area": "HOENN_ROUTE_110", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "HOENN_ROUTE_110",
@@ -2717,6 +2742,7 @@
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         { "text": "ROUTE 108", "action": "EXIT", "target_area": "HOENN_ROUTE_108", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "HOENN_ROUTE_108",
@@ -2769,6 +2795,7 @@
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         { "text": "PACIFIDLOG TOWN", "action": "EXIT", "target_area": "PACIFIDLOG_TOWN", "condition": "can_exit", "color": "RED" },
         { "text": "ROUTE 125", "action": "EXIT", "target_area": "HOENN_ROUTE_125", "condition": "can_exit", "color": "RED" }
       ],
