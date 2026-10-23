@@ -335,7 +335,7 @@
             { "text": "Route 34", "target_area": "JOHTO_ROUTE_34" },
             { "text": "Route 35", "target_area": "JOHTO_ROUTE_35" },
             { "text": "Underground", "target_area": "GOLDENROD_UNDERGROUND" },
-            {"text": "Magnet Train to Saffron", "target_area": "SAFFRON_CITY", "condition": ["has_item:PASS", "power_plant_fixed"], "message": "You board the Magnet Train. It races underground toward Saffron City in Kanto!"}
+            {"text": "Magnet Train to Saffron", "long_ride": true, "target_area": "SAFFRON_CITY", "condition": ["has_item:PASS", "power_plant_fixed"], "message": "You board the Magnet Train. It races underground toward Saffron City in Kanto!"}
         ],
         "explore_options": [
             { "text": "Heal","action": "HEAL" },
@@ -466,8 +466,8 @@
             { "text": "Route 39", "target_area": "JOHTO_ROUTE_39" },
             { "text": "Route 40", "target_area": "JOHTO_ROUTE_40", "condition": "has_item:HM_SURF" },
             { "text": "Lighthouse", "target_area": "OLIVINE_LIGHTHOUSE" },
-            {"text": "S.S. Aqua to Vermilion", "target_area": "VERMILLION_CITY", "condition": "has_item:SS_TICKET", "message": "You board the S.S. Aqua. The ship sails east across the sea to Kanto..."},
-            {"text": "Ship to the Orange Islands", "target_area": "VALENCIA_ISLAND", "condition": ["beat_champion", "beat_johto_champion"], "message": "The ferry sails south for days over warm seas... Land ho! It's Valencia Island!"}
+            {"text": "S.S. Aqua to Vermilion", "long_ride": true, "target_area": "VERMILLION_CITY", "condition": "has_item:SS_TICKET", "message": "You board the S.S. Aqua. The ship sails east across the sea to Kanto..."},
+            {"text": "Ship to the Orange Islands", "long_ride": true, "target_area": "VALENCIA_ISLAND", "condition": ["beat_champion", "beat_johto_champion"], "message": "The ferry sails south for days over warm seas... Land ho! It's Valencia Island!"}
         ],
         "explore_options": [
             { "text": "Heal", "action": "HEAL" },

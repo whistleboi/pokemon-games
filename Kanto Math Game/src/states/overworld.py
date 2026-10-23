@@ -1312,6 +1312,8 @@ class PlayState(GameState):
             return lambda e=item.get("event") or {}: self.story_event(e)
         if action == "CAMP":
             return self.open_camp
+        if action == "REST":  # a long ride's cabin (the Decolore ferry): a free full heal
+            return self.action_rest_in_cabin
         if action == "HOENN_EVENT":
             return lambda e=item.get("event"): self.hoenn_event(e)
         if action == "NPC":
@@ -1454,6 +1456,13 @@ class PlayState(GameState):
         self.is_progression_paused = True
         self.hide_menu_buttons()
         self.game.change_state(CampState(self.game, self))
+
+    def action_rest_in_cabin(self):
+        """REST IN CABIN on a long ride: the whole team is healed, like a Pokemon Center."""
+        self.is_progression_paused = True
+        self.hide_menu_buttons()
+        heal_team(self.game)
+        self.show_dialogue(list(CABIN_REST_LINES), callback=self.show_progression_menu)
 
     def story_event(self, key):
         self.is_progression_paused = True
@@ -3196,7 +3205,8 @@ class CityState(GameState):
         if action == "RUINS":
             return self.action_explore_ruins
         if action == "TRAVEL":
-            return lambda: self.go_to_area(opt_data.get("target_area"), opt_data.get("message"))
+            return lambda: self.go_to_area(opt_data.get("target_area"), opt_data.get("message"),
+                                           heal=travel_heal(opt_data))
         return None
 
     def visit_contest_hall(self):
@@ -4498,10 +4508,11 @@ class CityState(GameState):
         self.game.change_state(TrainerIntroState(self.game, sprite, intro_text, battle_state))
         return True
 
-    def go_to_area(self, area_key, message=None):
-        """Travel; a ship or train ride shows its own message on the way."""
+    def go_to_area(self, area_key, message=None, heal=None):
+        """Travel; a ship or train ride shows its own message on the way. heal: see travel_heal."""
         if area_key:
-            self.game.change_state(AreaTransitionState(self.game, area_key, initial_message=message))
+            self.game.change_state(AreaTransitionState(self.game, area_key, initial_message=message,
+                                                       heal=heal))
 
     def go_to_next_area(self):
         next_area = self.area_data.get("next_area")
@@ -4748,9 +4759,36 @@ class CityState(GameState):
         _draw_season_hud(self.game, screen, self.area_key, 20, 58)
 
 
+# Jordan: only LONG rides between two regions/sub-regions heal (ships, the Seagallop to and from
+# Kanto, the Magnet Train, the Hoenn-Orre plane, the Decolore ferry): "long_ride": true on the
+# travel option. Island hops inside a region or sub-region are plain, decorative trips.
+TRAVEL_HEAL_LINES = {
+    "long_ride": ["Your Pokemon rested during the long trip.", "Your team is fully healed!"],
+    "teleport": ["Your team is fully healed, as if you'd stopped at a Pokemon Center."],
+}
+CABIN_REST_LINES = ["You rest in the cabin with your Pokemon...", "Your team is fully healed!"]
+
+
+def travel_heal(opt_data):
+    """None, "long_ride" or "teleport" for a travel option (see TRAVEL_HEAL_LINES)."""
+    if opt_data.get("long_ride"):
+        return "long_ride"
+    heal = opt_data.get("heal")
+    return str(heal) if heal else None
+
+
+def heal_team(game):
+    """Full HP and no status for the whole party, like a Pokemon Center."""
+    for p in game.story_manager.player_team:
+        if p:
+            p.heal_full()
+    if getattr(game.assets, "heal_sfx", None):
+        game.assets.heal_sfx.play()
+
+
 # [REF-0042: Area Transition Logic]
 class AreaTransitionState(GameState):
-    def __init__(self, game, next_area_key, initial_message=None):
+    def __init__(self, game, next_area_key, initial_message=None, heal=None):
         super().__init__(game)
         self.next_area_key = next_area_key
         self.timer = 75
@@ -4765,10 +4803,16 @@ class AreaTransitionState(GameState):
         msg = []
         if initial_message:
             msg.append(initial_message)
+        if heal:  # the team that sets off is healed...
+            heal_team(self.game)
         # Another region's party, PC and Bag; a first visit goes to that region's professor.
         self.next_area_key, travel_lines = self.game.story_manager.prepare_travel(next_area_key)
         msg += travel_lines
         if travel_lines:
+            self.wait_for_dialogue = True
+        if heal:  # ...and so is the team you arrive with, if the trip switched to another region's party
+            heal_team(self.game)
+            msg += TRAVEL_HEAL_LINES.get(heal, TRAVEL_HEAL_LINES["long_ride"])
             self.wait_for_dialogue = True
 
         next_area_data = self.game.loader.area_data.get("STORY_PROGRESSION", {}).get(self.next_area_key, {})

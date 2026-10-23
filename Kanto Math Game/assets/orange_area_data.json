@@ -287,11 +287,13 @@
         },
         {
           "text": "Ship to Vermilion City",
+          "long_ride": true,
           "target_area": "VERMILLION_CITY",
           "message": "The ferry sails north, back to Vermilion City in Kanto."
         },
         {
           "text": "Ship to Olivine City",
+          "long_ride": true,
           "target_area": "OLIVINE_CITY",
           "message": "The ferry sails north-west, back to Olivine City in Johto."
         },

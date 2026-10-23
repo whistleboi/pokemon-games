@@ -500,7 +500,7 @@
         { "text": "Unity Tower", "target_area": "UNITY_TOWER" },
         { "text": "Castelia Sewers", "target_area": "CASTELIA_SEWERS" },
         { "text": "Liberty Garden (Ferry)", "target_area": "LIBERTY_GARDEN", "condition": "beat_unova_champion" },
-            {"text": "Ferry to the Decolore Islands", "target_area": "DECOLORE_FERRY", "condition": "beat_unova_champion", "message": "The ferry leaves Castelia's pier for the colorful Decolore Islands."}
+            {"text": "Ferry to the Decolore Islands", "long_ride": true, "target_area": "DECOLORE_FERRY", "condition": "beat_unova_champion", "message": "The ferry leaves Castelia's pier for the colorful Decolore Islands."}
         ],
       "explore_options": [
         { "text": "Pokémon Center", "action": "HEAL" },
