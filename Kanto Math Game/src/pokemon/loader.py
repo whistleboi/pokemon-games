@@ -448,6 +448,13 @@ class PokemonLoader:
                 p_types = ["DRAGON", random.choice(types_pool)]
 
             p_stats = moveset_data.get("stats", DEFAULT_BASE_STATS)
+            if form == "shadow":
+                # Shadow Pokemon are a "reverse" variant: same total, Attack <-> Defense and
+                # Sp. Atk <-> Sp. Def swapped (Jordan's rule).
+                p_stats = dict(p_stats)
+                for x, y in (("ATTACK", "DEFENSE"), ("SPECIAL-ATTACK", "SPECIAL-DEFENSE"), ("SPATK", "SPDEF")):
+                    if x in p_stats and y in p_stats:
+                        p_stats[x], p_stats[y] = p_stats[y], p_stats[x]
 
             img_bytes = b""
             # Form art first, then the base species' form art, then its normal art (forms without sprites).

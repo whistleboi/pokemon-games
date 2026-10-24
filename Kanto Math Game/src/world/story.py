@@ -228,6 +228,20 @@ class StoryManager:
         self.pc_pokemon = [purified(p) if p else p for p in self.pc_pokemon]
         return names
 
+    def is_shadow(self, p):
+        form_map = self.game.loader.area_data.get("FORM_MAP", {})
+        return bool(p) and (form_map.get(str(p.id)) or {}).get("form") == "shadow"
+
+    def purify_slot(self, i):
+        """Purify the Shadow Pokemon in party slot i (the Relic Stone). Returns its new name."""
+        p = self.player_team[i]
+        m = self.game.loader.area_data.get("FORM_MAP", {}).get(str(p.id)) or {}
+        new = self.change_species(p, int(m["id"]))
+        new.friendship = max(new.friendship, 100)  # a purified heart opens up to its trainer
+        self.player_team[i] = new
+        self.game.data.add_pokemon(new)
+        return new.name.upper()
+
     def change_species(self, p, new_id):
         """The same Pokemon as another species or form (purified, a tower evolution): it keeps
         its level, IVs, moves, friendship and shininess, fully healed. Returns the new Pokemon."""

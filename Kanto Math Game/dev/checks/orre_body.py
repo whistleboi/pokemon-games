@@ -17,7 +17,7 @@ story.story_flags, story.inventory = {}, {}
 check("Air Transit to Orre" not in travel("LILYCOVE_CITY"), "before the Hoenn title: no flight")
 story.story_flags["beat_hoenn_champion"] = True
 check("Air Transit to Orre" in travel("LILYCOVE_CITY"), "Hoenn Champion: fly from Lilycove")
-check(len(ORRE) == 8, f"{len(ORRE)} Orre areas")
+check(len(ORRE) == 13, f"{len(ORRE)} Orre areas (8 Colosseum, 5 XD)")
 bad = [(k, o.get("target_area")) for k in ORRE for o in prog[k].get("travel_options", []) + prog[k].get("route_menu", [])
        if o.get("target_area") and o["target_area"] not in prog]
 check(not bad, f"every link leads somewhere {bad}")
@@ -45,7 +45,7 @@ story.story_flags["phenac_cipher_beaten"] = True
 run("PHENAC_CITY", "Meet Rui")
 check(story.inventory.get("SNAG_MACHINE") == 1 and "Pyrite Town" in travel("PHENAC_CITY"), "Rui: Snag Machine")
 m = menu("ORRE_DESERT")
-check("SNAG SHADOW MAKUHITA" in m and "SNAG SHADOW TEDDIURSA" in m, f"desert snags: {m}")
+check(m.count("SNAG SHADOW POKEMON") == 1, f"desert: one SNAG button for its Shadow pool: {m}")
 raw = g.loader.fetch_specific(9301)
 check(raw["name"] == "SHADOW MAKUHITA" and raw["img"], f"Shadow form: {raw['name']}")
 
@@ -55,13 +55,16 @@ sh.level, sh.moves, sh.ivs = 70, ["CRUNCH", "EARTHQUAKE"], {k: 31 for k in sh.IV
 story.player_team = [mk(25), sh]
 story.pc_pokemon = [Pokemon(g.loader.fetch_specific(9301), g.assets, size_mult=2.5), None]
 said = run("AGATE_VILLAGE", "Purify at the Relic Stone")
+pm = g.current_state
+check(type(pm).__name__ == "PokemonPartyMenuState", "Relic Stone: choose which Pokemon (purifying is optional)")
+pm.on_select(1)
 ty = story.player_team[1]
 check(ty.id == 248 and ty.level == 70 and ty.moves == ["CRUNCH", "EARTHQUAKE"] and set(ty.ivs.values()) == {31},
       f"Shadow Tyranitar -> Tyranitar, same level, moves and IVs ({ty.id} Lv {ty.level})")
-check(story.pc_pokemon[0].id == 296, "PC Shadow Pokemon purified too")
-check(any("heart opened" in l for l in said[-1]), f"{said[-1][-1]}")
+check(story.pc_pokemon[0].id == 9301, "a Shadow Pokemon you didn't choose stays Shadow")
 said = run("AGATE_VILLAGE", "Purify at the Relic Stone")
-check("None of your Pokemon" in said[-1][-1], "nothing left to purify")
+check(type(g.current_state).__name__ != "PokemonPartyMenuState" and "None of the Pokemon" in said[-1][-1],
+      "nothing in the party to purify")
 
 print("4) Cipher and Jirachi")
 story.story_flags["cleared_the_under"] = True

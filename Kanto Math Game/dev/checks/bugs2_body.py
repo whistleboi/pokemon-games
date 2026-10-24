@@ -125,7 +125,7 @@ g.data.data["pokedex"] = {}
 g.data.add_pokemon(Pokemon(g.loader.fetch_specific(9301), g.assets, size_mult=2.5))
 g.data.add_pokemon(Pokemon(g.loader.fetch_specific(8004), g.assets, size_mult=2.5))
 keys = set(g.data.data["pokedex"])
-check("296-normal" in keys and not any(k.startswith("9301") for k in keys), f"Shadow Makuhita registers as #296: {keys}")
+check("9301-shadow" in keys and "296-normal" not in keys, f"Shadow Makuhita is its own variant entry: {keys}")
 check("892-normal" in keys and "8004-single" in keys, "Urshifu registers as #892 too")
 
 # O-4 purified Pokemon evolve when due.

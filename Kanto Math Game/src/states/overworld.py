@@ -139,7 +139,10 @@ def _run_story_event(state, key, check, show):
         story.inventory[item] = max(0, story.inventory.get(item, 0) - qty)
     lines += _teach_move(game, ev.get("teach"))
     lines += story.evolve_party(ev.get("evolve"))  # Kubfu at the Towers of Two Fists
-    if ev.get("purify"):  # Orre's Relic Stone
+    if ev.get("purify") == "choose":  # Orre's Relic Stone: purify one Shadow Pokemon, if you want to
+        _choose_purify(state, lines, show)
+        return
+    if ev.get("purify"):
         names = story.purify_shadow()
         lines += ([f"{n}'s heart opened! It's no longer a Shadow Pokemon." for n in names]
                   or ["None of your Pokemon need purifying right now."])
@@ -151,6 +154,34 @@ def _run_story_event(state, key, check, show):
     if flag:
         story.story_flags[flag] = True
     show(lines or ["..."])
+
+
+def _choose_purify(state, lines, show):
+    """Pick a party Pokemon at the Relic Stone. Shadow Pokemon are a variant: nothing is purified
+    unless the player picks one."""
+    from src.states.systems import PokemonPartyMenuState
+    game = state.game
+    story = game.story_manager
+    if not any(story.is_shadow(p) for p in story.player_team if p):
+        show(lines + ["None of the Pokemon with you are Shadow Pokemon."])
+        return
+
+    def back(out):
+        if hasattr(state, "is_resuming"):
+            state.is_resuming = True
+        game.change_state(state)
+        show(out)
+
+    def picked(i):
+        team = story.player_team
+        if i >= len(team) or not story.is_shadow(team[i]):
+            back(["That Pokemon isn't a Shadow Pokemon. Nothing happened."])
+            return
+        name = story.purify_slot(i)
+        back([f"{name}'s heart opened! It's no longer a Shadow Pokemon."] + _evolve_due(game, [name]))
+
+    game.change_state(PokemonPartyMenuState(game, previous_state=state, context="use_item", on_select=picked,
+                                            on_cancel=lambda: back(["You left the Relic Stone."])))
 
 
 def _evolve_due(game, names):
@@ -1269,6 +1300,9 @@ class PlayState(GameState):
                 return self.game.story_manager.story_flags.get(victory_flag, False)
             default_flag = f"{self.game.story_manager.current_area_key}_boss_defeated"
             return self.game.story_manager.story_flags.get(default_flag, False)
+        if condition == "shadows_left":  # Orre: a Shadow Pokemon here not yet snagged
+            return self._next_shadow() is not None
+
         if condition == "boss_available":
             is_defeated = self._check_route_condition("boss_defeated", trainers_left)
             if is_defeated or trainers_left:
@@ -1339,6 +1373,8 @@ class PlayState(GameState):
             return self.action_search_trainer
         if action == "MAX_RAID":
             return self.action_max_raid
+        if action == "SNAG":
+            return self.action_snag_shadow
         if action == "BERRY":
             return self.action_pick_berries
         if action == "WEATHER_DIRECTOR":
@@ -1360,6 +1396,29 @@ class PlayState(GameState):
             if key in self.game.assets.game_text:
                 return lambda k=key: self._route_npc_text(k)
         return lambda: print(f"Unknown action: {action}")
+
+    def _next_shadow(self):
+        """The next Shadow Pokemon in this area's shadow_pool that hasn't been snagged."""
+        flags = self.game.story_manager.story_flags
+        return next((s for s in self.area_data.get("shadow_pool", []) if not flags.get(s["flag"])), None)
+
+    def action_snag_shadow(self):
+        """Orre: a Cipher trainer sends out the next Shadow Pokemon; weaken it and snag it."""
+        shadow = self._next_shadow()
+        if not shadow:
+            self.is_progression_paused = True
+            self.hide_menu_buttons()
+            self.show_dialogue(["There are no more Shadow Pokemon here."], callback=self.show_progression_menu)
+            return
+        name = shadow["name"]
+        left = sum(1 for s in self.area_data.get("shadow_pool", [])
+                   if not self.game.story_manager.story_flags.get(s["flag"])) - 1
+        self.action_challenge_boss({
+            "id": shadow["id"], "name": name, "no_catch": False, "victory_flag": shadow["flag"],
+            "lines": [f"{shadow.get('trainer') or 'A Cipher trainer'} sends out a {name}! A dark aura surrounds it...",
+                      "Weaken it, then throw a ball. The Snag Machine will catch it!",
+                      f"({left} more Shadow Pokemon here after this one.)" if left else "(It's the last one here!)"],
+            "won": [f"The {name} ran off... it will be back."], "rewards": {"balls": 5}})
 
     def action_pick_berries(self):
         """Berry trees: once a day per route, pick a few of the berries that grow here."""

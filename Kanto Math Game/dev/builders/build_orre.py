@@ -1,6 +1,8 @@
-"""Orre (Pokemon Colosseum): Phenac City, Pyrite Town, Agate Village, Realgam Tower. No wild Pokemon:
-snag Shadow Pokemon from Cipher with the Snag Machine and purify them at the Relic Stone. Jirachi after.
-Run from the game folder: python build_orre.py <scratchpad>"""
+"""Orre (Pokemon Colosseum, then XD): Phenac City, Pyrite Town, Agate Village, Realgam Tower, and after
+Cipher falls, Gateon Port and the XD lairs. No wild Pokemon: snag every Shadow Pokemon from Colosseum and
+XD (orre_shadows.py) with the Snag Machine. Shadow Pokemon are a variant: they stay Shadow unless you
+choose to purify one at the Relic Stone. Jirachi after Cipher.
+Run from the game folder: python dev/builders/build_orre.py dev/builders"""
 import json
 import os
 import re
@@ -9,30 +11,30 @@ import sys
 sys.path.insert(0, sys.argv[1])
 from sublib import Sub, event, trainer, battle, boss  # noqa: E402
 from textjson import TextJSON  # noqa: E402
+from orre_shadows import SHADOW_LIST  # noqa: E402
 
 S = Sub("ORRE", None, "ORRE", {})
 SNAG = "has_item:SNAG_MACHINE"
 names = json.load(open("assets/pokemon_names.json", encoding="utf-8"))
 
-# Shadow forms: smart IDs 9301+ (dark sprites made below). (sid, base, level)
-SHADOWS = {"MAKUHITA": (9301, 296, 60), "TEDDIURSA": (9302, 216, 60), "HOUNDOUR": (9303, 228, 61),
-           "BAYLEEF": (9304, 153, 62), "QUILAVA": (9305, 156, 62), "CROCONAW": (9306, 159, 62),
-           "LEDIAN": (9307, 166, 63), "HITMONTOP": (9308, 237, 64), "URSARING": (9309, 217, 65),
-           "SKARMORY": (9310, 227, 66), "SNORLAX": (9311, 143, 67), "TYRANITAR": (9312, 248, 70)}
+# Shadow forms: smart IDs 9301+ (dark sprites made below), one per species, from orre_shadows.py.
+def _slug(name):
+    return "".join(ch for ch in name.lower().replace(" ", "_") if ch.isalnum() or ch == "_")
 
 
-def snag(key, who):
-    sid, base, lv = SHADOWS[key]
-    name = names[str(base)].title()
-    return boss(f"SNAG SHADOW {key}", sid, f"Shadow {name}", lv, f"snagged_shadow_{key.lower()}",
-                [f"{who} sends out a Shadow {name}! A dark aura surrounds it...",
-                 "Weaken it, then throw a ball. The Snag Machine will catch it!"],
-                [f"The Shadow {name} ran off into the desert..."],
-                [SNAG], no_catch=False, color="PURPLE")
+def shadow_pool(area):
+    """The Shadow Pokemon snagged in an area, in story order (one SNAG button fights the next one)."""
+    return [{"id": sid, "name": f"Shadow {name}", "flag": f"snagged_shadow_{_slug(name)}", "trainer": tr}
+            for sid, base, name, lv, a, game, tr in SHADOW_LIST if a == area]
+
+
+def snag_button():
+    return {"text": "SNAG SHADOW POKEMON", "action": "SNAG", "color": "PURPLE",
+            "condition": [SNAG, "shadows_left"]}
 
 
 HOME = {"text": "Air Transit to Hoenn (Lilycove)", "target_area": "LILYCOVE_CITY",
-        "message": "The plane lifts off over the desert. Next stop: Lilycove City in Hoenn."}
+        "message": "The plane lifts off over the desert. Next stop: Lilycove City in Hoenn.", "long_ride": True}
 
 # ---- 1. Phenac City: the oasis. Cipher attacks; Rui and the Snag Machine; Phenac Stadium.
 S.town("PHENAC_CITY", "Phenac City", 60, [
@@ -55,7 +57,8 @@ S.town("PHENAC_CITY", "Phenac City", 60, [
     {"text": "Phenac Stadium", "action": "GYM", "color": "GOLD"},
 ], local=[("Desert Trail", "ORRE_DESERT", None), ("Pyrite Town", "PYRITE_TOWN", "got_snag_machine"),
           ("Agate Village", "AGATE_VILLAGE", "cleared_the_under"),
-          ("Realgam Tower", "REALGAM_TOWER", "met_agate_elder")],
+          ("Realgam Tower", "REALGAM_TOWER", "met_agate_elder"),
+          ("Gateon Port", "GATEON_PORT", "cipher_defeated")],
     extra_travel=[HOME], ships=False,
     gym={"trainers": [
         {"name": "Streetler Dax", "class": "STREETLER", "sprite": "roughneck.png", "team": [262, 302, 319],
@@ -77,7 +80,8 @@ S.wild("ORRE_DESERT", "Desert Trail", 60, "sand", {},
        extra=[event("RIDE THE MOTORBIKE", {
                   "lines": ["You rev the motorbike and race across the dunes.",
                             "Sand sprays behind you. Orre has no tall grass, only desert, rock and wind."]}),
-              snag("MAKUHITA", "Cipher Peon Folly"), snag("TEDDIURSA", "Cipher Peon Nore")])
+              snag_button()],
+       shadow_pool=shadow_pool("ORRE_DESERT"))
 
 # ---- 2. Pyrite Town: outlaws, the Colosseum, and Cipher in The Under.
 S.town("PYRITE_TOWN", "Pyrite Town", 63, [
@@ -105,8 +109,8 @@ S.wild("THE_UNDER", "The Under", 64, "indoor", {},
        [("Pyrite Town", "PYRITE_TOWN")],
        [trainer("Cipher Peon Litnar", "CIPHER_PEON", "roughneck.png", [262, 336, 342]),
         trainer("Cipher Peon Remil", "CIPHER_PEON", "biker.png", [229, 317, 302])],
-       extra=[snag("HOUNDOUR", "Cipher Peon Exinn"), snag("BAYLEEF", "Cipher Peon Verde"),
-              snag("QUILAVA", "Cipher Peon Rosso"), snag("CROCONAW", "Cipher Peon Bluno"),
+       shadow_pool=shadow_pool("THE_UNDER"),
+       extra=[snag_button(),
               event("SHUT DOWN THE UNDER", {
                   "lines": ["Cipher Admin Venus: How dare you march into my studio!",
                             "My Shadow Pokemon are beautiful, and you'll see how beautiful in battle!"],
@@ -123,15 +127,17 @@ S.town("AGATE_VILLAGE", "Agate Village", 64, [
                   "Cipher's leader hides in Realgam Tower. When you're ready, end this."],
         "flag": "met_agate_elder"}),
     event("Purify at the Relic Stone", {
-        "lines": ["You lead your Shadow Pokemon to the Relic Stone. A warm, gentle light fills the forest..."],
-        "purify": True}),
+        "lines": ["Elder Eagun: The Relic Stone can open a Shadow Pokemon's heart, if you wish it.",
+                  "Some trainers keep their Shadow Pokemon as they are. Choose one to purify, or none."],
+        "purify": "choose"}),
 ], local=[("Relic Forest", "RELIC_FOREST", None), ("Phenac City", "PHENAC_CITY", None)], ships=False)
 
 S.wild("RELIC_FOREST", "Relic Forest", 65, "forest", {},
        [("Agate Village", "AGATE_VILLAGE")],
        [trainer("Nomad Ilda", "NOMAD", "picnicker.png", [357, 315, 182]),
         trainer("Medium Sora", "MEDIUM", "medium.png", [354, 302, 200])],
-       extra=[snag("LEDIAN", "Cipher Peon Kloak"), snag("HITMONTOP", "Cipher Admin Dakim's peon"),
+       shadow_pool=shadow_pool("RELIC_FOREST"),
+       extra=[snag_button(),
               event("THE WISHING STAR", {
                   "requires": ["cipher_defeated"],
                   "fail": ["The Relic Stone glows softly. The forest feels like it's waiting for something."],
@@ -168,11 +174,52 @@ S.town("REALGAM_TOWER", "Realgam Tower", 68, [
 
 S.wild("CIPHER_COMMAND", "Cipher Command Center", 70, "indoor", {},
        [("Realgam Tower", "REALGAM_TOWER")],
-       extra=[snag("URSARING", "a Cipher Peon guarding the lab"), snag("SKARMORY", "a Cipher Peon in the hangar"),
-              snag("SNORLAX", "a Cipher Peon in the storeroom"), snag("TYRANITAR", "Evice's last guard"),
+       shadow_pool=shadow_pool("CIPHER_COMMAND"),
+       extra=[snag_button(),
               event("READ CIPHER'S FILES", {
-                  "lines": ["The files list every Shadow Pokemon Cipher made. You've found the last of them here.",
-                            "One note says: \"A wishing star fell near Agate's Relic Stone. Investigate.\""]})])
+                  "lines": ["The files list the Shadow Pokemon Cipher made here.",
+                            "One note says: \"A wishing star fell near Agate's Relic Stone. Investigate.\"",
+                            "Another: \"Project XD: ship the new Shadow Pokemon through Gateon Port.\""]})])
+
+# ---- 5. XD: Gale of Darkness. Cipher regroups under Greevil; Gateon Port and its lairs.
+S.town("GATEON_PORT", "Gateon Port", 66, [
+    event("The Cipher Rumor", {
+        "lines": ["Sailor: Cipher's back, they say. New Shadow Pokemon, and a ship nobody can find.",
+                  "Start at their lab outside town. Then the ONBS building, the Key Lair... and Citadark Isle."]}),
+], local=[("Cipher Lab", "XD_CIPHER_LAB", None), ("ONBS Building", "XD_ONBS", "xd_lovrina_beaten"),
+          ("Cipher Key Lair", "XD_CIPHER_KEY_LAIR", "xd_exol_beaten"),
+          ("Citadark Isle", "XD_CITADARK_ISLE", "xd_gorigan_beaten"), ("Phenac City", "PHENAC_CITY", None)],
+    ships=False)
+
+
+def xd_lair(key, name, level, battle_type, admin_text, admin, admin_flag):
+    ev = {"lines": [admin_text], "battle": admin, "flag": admin_flag}
+    S.wild(key, name, level, battle_type, {}, [("Gateon Port", "GATEON_PORT")],
+           shadow_pool=shadow_pool(key),
+           extra=[snag_button(), event(f"BATTLE {admin['name'].upper()}", ev, flag_condition=f"not {admin_flag}")])
+
+
+xd_lair("XD_CIPHER_LAB", "Cipher Lab", 66, "indoor",
+        "Cipher Admin Lovrina: You found my lab? My lovely Shadow Pokemon will deal with you!",
+        battle("Cipher Admin Lovrina", "CIPHER_ADMIN", "beauty.png", [301, 315, 184], [65, 66, 67],
+               ["Lovrina: Ugh! Fine, the ONBS building is next. Not that it'll help you!"], balls=12),
+        "xd_lovrina_beaten")
+xd_lair("XD_ONBS", "ONBS Building", 68, "indoor",
+        "Cipher Commander Exol: The Orre news station is ours. Shadow Pokemon on every channel!",
+        battle("Cipher Cmdr Exol", "CIPHER_ADMIN", "gentleman.png", [303, 359, 330], [67, 68, 69],
+               ["Exol: Broadcast cut... The Key Lair in Pyrite holds the real secrets."], balls=12),
+        "xd_exol_beaten")
+xd_lair("XD_CIPHER_KEY_LAIR", "Cipher Key Lair", 70, "indoor",
+        "Cipher Admin Gorigan: Here's where Cipher keeps its keys. You'll go no further!",
+        battle("Cipher Admin Gorigan", "CIPHER_ADMIN", "blackbelt.png", [57, 97, 68, 62], [69, 69, 70, 70],
+               ["Gorigan: The key... to Citadark Isle. Take it, then. Greevil is waiting."], balls=15),
+        "xd_gorigan_beaten")
+xd_lair("XD_CITADARK_ISLE", "Citadark Isle", 72, "field",
+        "Grand Master Greevil: So you crossed the sea to my island. Cipher will rule Orre!",
+        battle("Grand Master Greevil", "CIPHER_BOSS", "gentleman.png", [112, 103, 128, 373, 376],
+               [71, 71, 72, 72, 73], ["Greevil: My Shadow Pokemon... my perfect plan... Cipher is finished!"],
+               balls=25),
+        "xd_greevil_beaten")
 
 S.mission("orre_m1", "SIDE", "Welcome to Orre",
           "Cipher Peons are attacking Phenac City's fountain. Stop them and meet Rui.",
@@ -186,9 +233,12 @@ S.mission("orre_m3", "SIDE", "Realgam Tower",
 S.mission("orre_m4", "SIDE", "The Wishing Star",
           "Cipher's files mention a wishing star near Agate's Relic Stone.",
           {"flag": "cipher_defeated", "flag_not": "orre_jirachi_caught"}, "Jirachi")
+S.mission("orre_m5", "SIDE", "Gale of Darkness",
+          "Cipher is back under Greevil. Clear the lairs from Gateon Port and stop him on Citadark Isle.",
+          {"flag": "cipher_defeated", "flag_not": "xd_greevil_beaten"}, "Every Shadow Pokemon")
 
-form_map = {str(sid): {"id": base, "form": "shadow", "name": f"Shadow {names[str(base)].title()}"}
-            for sid, base, _ in SHADOWS.values()}
+form_map = {str(sid): {"id": base, "form": "shadow", "name": f"Shadow {name}"}
+            for sid, base, name, *_ in SHADOW_LIST}
 S.save("assets/orre_area_data.json", extra={
     "REGION_START": {"ORRE": {"order": 3.5, "travel_only": True, "storage_region": "HOENN", "no_badges": True, "subtitle": "COLOSSEUM / ORRE",
                               "start_area": "PHENAC_CITY", "dex_range": [0, -1], "dex_extra": []}},
@@ -209,10 +259,14 @@ def shadow(r, g, b, a):
 
 
 SP = "assets/sprites/pokemon"
+# Hand-made art that the tint must never overwrite: Jordan's Shadow Lugia (front) and its back sprite.
+CUSTOM_ART = {f"{SP}/9424.png", f"{SP}/back/9424.png"}
 made = 0
-for sid, base, _ in SHADOWS.values():
+for sid, base, *_ in SHADOW_LIST:
     for d in (SP, f"{SP}/back", f"{SP}/shiny"):
         src = f"{d}/{base}.png"
+        if f"{d}/{sid}.png" in CUSTOM_ART:
+            continue
         if os.path.exists(src):
             img = pygame.image.load(src).convert_alpha()
             for x in range(img.get_width()):

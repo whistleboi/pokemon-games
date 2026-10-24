@@ -81,9 +81,9 @@ class DataManager:
     def reset_shinies(self):
         self.data["total_shinies"] = 0
 
-    # Forms that count as their base species in the Pokedex: a Shadow Pokemon is that species
-    # (no entry of its own), and Urshifu's styles are both #892 (kept as styles too).
-    BASE_ONLY_FORMS = {"shadow"}
+    # Forms that also count as their base species in the Pokedex: Urshifu's styles are both #892
+    # (kept as styles too). Shadow Pokemon are a variant with an entry of their own, like regional forms.
+    BASE_ONLY_FORMS = set()
     ALSO_BASE_FORMS = {"single", "rapid"}
 
     def add_pokemon(self, pokemon):
