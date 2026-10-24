@@ -20,13 +20,8 @@ from textjson import TextJSON  # noqa: E402
 names = json.load(open("assets/pokemon_names.json", encoding="utf-8"))
 SP = "assets/sprites/pokemon"
 
-# ---- Pinkan: every line seen on Pinkan Island (In the Pink). 9101-9116 already exist.
-PINKAN_OLD = {9101: 12, 9102: 16, 9103: 17, 9104: 30, 9105: 33, 9106: 34, 9107: 46, 9108: 48,
-              9109: 56, 9110: 57, 9111: 70, 9112: 102, 9113: 103, 9114: 111, 9115: 112, 9116: 123}
-PINKAN_NEW = {9117: 10, 9118: 11, 9119: 13, 9120: 14, 9121: 15, 9122: 18, 9123: 19, 9124: 20, 9125: 29,
-              9126: 31, 9127: 32, 9128: 43, 9129: 44, 9130: 45, 9131: 47, 9132: 49, 9133: 50, 9134: 51,
-              9135: 69, 9136: 71}
-PINKAN = {**PINKAN_OLD, **PINKAN_NEW}
+# ---- Pinkan: every line seen on Pinkan Island (In the Pink), smart IDs 9101-9136 in dex order.
+from orange_special import PINKAN  # noqa: E402
 PINKAN_LINES = [[10, 11, 12], [13, 14, 15], [16, 17, 18], [19, 20], [29, 30, 31], [32, 33, 34], [43, 44, 45],
                 [46, 47], [48, 49], [50, 51], [56, 57], [69, 70, 71], [102, 103], [111, 112]]
 ITEM_STEPS = {(30, 31): "MOON_STONE", (33, 34): "MOON_STONE", (44, 45): "LEAF_STONE", (70, 71): "LEAF_STONE",
@@ -96,9 +91,9 @@ def hue_shift(deg, tint):
 
 
 made = 0
-for sid, base in PINKAN_NEW.items():
+for sid, base in PINKAN.items():  # only the missing ones: the first Pinkan art came from make_orange_art.py
     for d in (SP, f"{SP}/back", f"{SP}/shiny"):
-        made += recolor(f"{d}/{base}.png", f"{d}/{sid}.png", pink)
+        made += not os.path.exists(f"{d}/{sid}.png") and recolor(f"{d}/{base}.png", f"{d}/{sid}.png", pink)
 for sid, base, deg, tint in VALENCIA:
     for d in (SP, f"{SP}/back", f"{SP}/shiny"):
         made += recolor(f"{d}/{base}.png", f"{d}/{sid}.png", hue_shift(deg, tint))
@@ -115,7 +110,7 @@ print("sprites:", made)
 p = "assets/orange_area_data.json"
 d = json.load(open(p, encoding="utf-8-sig"))
 fm = d["FORM_MAP"]
-for sid, base in PINKAN_NEW.items():
+for sid, base in PINKAN.items():
     fm[str(sid)] = {"id": base, "form": "pinkan", "name": pname(base, "pinkan")}
 for sid, base, *_ in VALENCIA:
     fm[str(sid)] = {"id": base, "form": "valencia", "name": pname(base, "valencia")}

@@ -21,82 +21,82 @@
     }
   },
   "FORM_MAP": {
-    "9101": {
+    "9103": {
       "id": 12,
       "form": "pinkan",
       "name": "Pinkan butterfree"
     },
-    "9102": {
+    "9107": {
       "id": 16,
       "form": "pinkan",
       "name": "Pinkan pidgey"
     },
-    "9103": {
+    "9108": {
       "id": 17,
       "form": "pinkan",
       "name": "Pinkan pidgeotto"
     },
-    "9104": {
+    "9113": {
       "id": 30,
       "form": "pinkan",
       "name": "Pinkan nidorina"
     },
-    "9105": {
+    "9116": {
       "id": 33,
       "form": "pinkan",
       "name": "Pinkan nidorino"
     },
-    "9106": {
+    "9117": {
       "id": 34,
       "form": "pinkan",
       "name": "Pinkan nidoking"
     },
-    "9107": {
+    "9121": {
       "id": 46,
       "form": "pinkan",
       "name": "Pinkan paras"
     },
-    "9108": {
+    "9123": {
       "id": 48,
       "form": "pinkan",
       "name": "Pinkan venonat"
     },
-    "9109": {
+    "9127": {
       "id": 56,
       "form": "pinkan",
       "name": "Pinkan mankey"
     },
-    "9110": {
+    "9128": {
       "id": 57,
       "form": "pinkan",
       "name": "Pinkan primeape"
     },
-    "9111": {
+    "9130": {
       "id": 70,
       "form": "pinkan",
       "name": "Pinkan weepinbell"
     },
-    "9112": {
+    "9132": {
       "id": 102,
       "form": "pinkan",
       "name": "Pinkan exeggcute"
     },
-    "9113": {
+    "9133": {
       "id": 103,
       "form": "pinkan",
       "name": "Pinkan exeggutor"
     },
-    "9114": {
+    "9134": {
       "id": 111,
       "form": "pinkan",
       "name": "Pinkan rhyhorn"
     },
-    "9115": {
+    "9135": {
       "id": 112,
       "form": "pinkan",
       "name": "Pinkan rhydon"
     },
-    "9116": {
+    "9136": {
       "id": 123,
       "form": "pinkan",
       "name": "Pinkan scyther"
@@ -110,102 +110,102 @@
         "ICE"
       ]
     },
-    "9117": {
+    "9101": {
       "id": 10,
       "form": "pinkan",
       "name": "Pinkan caterpie"
     },
-    "9118": {
+    "9102": {
       "id": 11,
       "form": "pinkan",
       "name": "Pinkan metapod"
     },
-    "9119": {
+    "9104": {
       "id": 13,
       "form": "pinkan",
       "name": "Pinkan weedle"
     },
-    "9120": {
+    "9105": {
       "id": 14,
       "form": "pinkan",
       "name": "Pinkan kakuna"
     },
-    "9121": {
+    "9106": {
       "id": 15,
       "form": "pinkan",
       "name": "Pinkan beedrill"
     },
-    "9122": {
+    "9109": {
       "id": 18,
       "form": "pinkan",
       "name": "Pinkan pidgeot"
     },
-    "9123": {
+    "9110": {
       "id": 19,
       "form": "pinkan",
       "name": "Pinkan rattata"
     },
-    "9124": {
+    "9111": {
       "id": 20,
       "form": "pinkan",
       "name": "Pinkan raticate"
     },
-    "9125": {
+    "9112": {
       "id": 29,
       "form": "pinkan",
       "name": "Pinkan nidoran-f"
     },
-    "9126": {
+    "9114": {
       "id": 31,
       "form": "pinkan",
       "name": "Pinkan nidoqueen"
     },
-    "9127": {
+    "9115": {
       "id": 32,
       "form": "pinkan",
       "name": "Pinkan nidoran-m"
     },
-    "9128": {
+    "9118": {
       "id": 43,
       "form": "pinkan",
       "name": "Pinkan oddish"
     },
-    "9129": {
+    "9119": {
       "id": 44,
       "form": "pinkan",
       "name": "Pinkan gloom"
     },
-    "9130": {
+    "9120": {
       "id": 45,
       "form": "pinkan",
       "name": "Pinkan vileplume"
     },
-    "9131": {
+    "9122": {
       "id": 47,
       "form": "pinkan",
       "name": "Pinkan parasect"
     },
-    "9132": {
+    "9124": {
       "id": 49,
       "form": "pinkan",
       "name": "Pinkan venomoth"
     },
-    "9133": {
+    "9125": {
       "id": 50,
       "form": "pinkan",
       "name": "Pinkan diglett"
     },
-    "9134": {
+    "9126": {
       "id": 51,
       "form": "pinkan",
       "name": "Pinkan dugtrio"
     },
-    "9135": {
+    "9129": {
       "id": 69,
       "form": "pinkan",
       "name": "Pinkan bellsprout"
     },
-    "9136": {
+    "9131": {
       "id": 71,
       "form": "pinkan",
       "name": "Pinkan victreebel"
@@ -2635,78 +2635,78 @@
     "149": 1
   },
   "ORANGE_PINKAN_RESERVE": [
+    9101,
+    9102,
+    9103,
+    9104,
+    9105,
+    9106,
+    9107,
+    9108,
+    9109,
+    9110,
+    9111,
+    9112,
+    9113,
+    9114,
+    9115,
+    9116,
     9117,
     9118,
-    9101,
     9119,
     9120,
     9121,
-    9102,
-    9103,
     9122,
     9123,
     9124,
     9125,
-    9104,
     9126,
     9127,
-    9105,
-    9106,
     9128,
     9129,
     9130,
-    9107,
     9131,
-    9108,
     9132,
     9133,
     9134,
-    9109,
-    9110,
-    9135,
-    9111,
-    9136,
-    9112,
-    9113,
-    9114,
-    9115
+    9135
   ],
   "ORANGE_PINKAN_RESERVE_PERCENTAGES": {
-    "9117": 4,
-    "9118": 2,
-    "9101": 1,
-    "9119": 4,
-    "9120": 2,
-    "9121": 1,
-    "9102": 4,
-    "9103": 2,
-    "9122": 1,
-    "9123": 4,
-    "9124": 2,
-    "9125": 4,
-    "9104": 2,
-    "9126": 1,
-    "9127": 5,
+    "9101": 4,
+    "9102": 2,
+    "9103": 1,
+    "9104": 4,
     "9105": 2,
     "9106": 1,
-    "9128": 5,
-    "9129": 2,
-    "9130": 1,
-    "9107": 5,
-    "9131": 2,
-    "9108": 5,
-    "9132": 2,
-    "9133": 5,
-    "9134": 2,
-    "9109": 5,
-    "9110": 2,
-    "9135": 5,
+    "9107": 4,
+    "9108": 2,
+    "9109": 1,
+    "9110": 4,
     "9111": 2,
-    "9136": 1,
-    "9112": 5,
+    "9112": 4,
     "9113": 2,
-    "9114": 5,
-    "9115": 2
+    "9114": 1,
+    "9115": 5,
+    "9116": 2,
+    "9117": 1,
+    "9118": 5,
+    "9119": 2,
+    "9120": 1,
+    "9121": 5,
+    "9122": 2,
+    "9123": 5,
+    "9124": 2,
+    "9125": 5,
+    "9126": 2,
+    "9127": 5,
+    "9128": 2,
+    "9129": 5,
+    "9130": 2,
+    "9131": 1,
+    "9132": 5,
+    "9133": 2,
+    "9134": 5,
+    "9135": 2
   },
   "ORANGE_CRYSTAL_CAVE": [
     95,

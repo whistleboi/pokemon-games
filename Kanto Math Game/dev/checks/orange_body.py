@@ -138,7 +138,7 @@ story.current_area_key = "PUMMELO_ISLAND"
 check("RARE_CANDY" in PokeMartState(g, None)._shop_items(), "Pummelo (League) sells Rare Candy")
 
 print("6) Special islands")
-raw = g.loader.fetch_specific(9101)
+raw = g.loader.fetch_specific(9103)
 check(raw["name"] == "PINKAN BUTTERFREE" and raw["img"], f"Pinkan form: {raw['name']}")
 raw = g.loader.fetch_specific(9201)
 check(raw["name"] == "CRYSTAL ONIX" and raw["types"] == ["ROCK", "ICE"], f"Crystal Onix: {raw['types']}")

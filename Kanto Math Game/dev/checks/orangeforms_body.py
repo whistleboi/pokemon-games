@@ -18,11 +18,11 @@ story.current_area_key = "PINKAN_RESERVE"
 pinkan = {int(k): v["id"] for k, v in FM.items() if v.get("form") == "pinkan"}
 check(len(pinkan) == 36, f"36 Pinkan forms: {len(pinkan)}")
 pool = g.loader.area_data["ORANGE_PINKAN_RESERVE_PERCENTAGES"]
-check(sum(pool.values()) == 100 and "9116" not in pool, "Pinkan Reserve pool: the listed lines (no Scyther)")
-cat = mkf(9117); cat.level = 7
+check(sum(pool.values()) == 100 and "9136" not in pool, "Pinkan Reserve pool: the listed lines (no Scyther)")
+cat = mkf(9101); cat.level = 7
 ready = evolution.ready_evolutions(g, cat)
 check(ready == ["METAPOD_PINKAN"], f"Pinkan Caterpie -> Pinkan Metapod: {ready}")
-gloom = mkf(9129)
+gloom = mkf(9119)
 check(evolution.item_evolution(g, gloom, "LEAF_STONE") == ("VILEPLUME_PINKAN", 45), "Pinkan Gloom + Leaf Stone")
 valencia = [k for k, v in FM.items() if v.get("form") == "valencia"]
 check(len(valencia) == 11, f"11 Valencia variants: {len(valencia)}")
@@ -57,7 +57,7 @@ check("CRYSTAL_STONE" not in PokeMartState(g, None)._shop_items(), "no departmen
 
 # Forms on the summary page.
 g.data.data["pokedex"] = {}
-for pid in (12, 9101, 9501):
+for pid in (12, 9103, 9501):
     g.data.add_pokemon(mkf(pid))
 bf = mkf(12)
 d = PokemonDetailState(g, bf, None); g.change_state(d)
