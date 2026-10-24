@@ -3,7 +3,7 @@
     "SINJOH_CABIN": {
       "area_type": "town",
       "route_name": "Sinjoh Border Cabin",
-      "region": "JOHTO",
+      "region": "SINNOH",
       "level": 65,
       "subregion": "SINJOH",
       "has_gym": false,
@@ -120,6 +120,7 @@
         },
         {
           "text": "Abra's Teleport (Ruins of Alph)",
+          "heal": "teleport",
           "target_area": "RUINS_OF_ALPH",
           "message": "The guide's Abra glows... and you're back in the Ruins of Alph."
         }
@@ -129,7 +130,7 @@
     "SINJOH_SNOWFIELDS": {
       "area_type": "wild_route",
       "route_name": "Sinjoh Snowfields",
-      "region": "JOHTO",
+      "region": "SINNOH",
       "level": 65,
       "subregion": "SINJOH",
       "wild_pool_percentages": "SINJOH_SINJOH_SNOWFIELDS_PERCENTAGES",
@@ -208,7 +209,7 @@
     "SINJOH_PATHWAYS": {
       "area_type": "wild_route",
       "route_name": "Ruined Pathways",
-      "region": "JOHTO",
+      "region": "SINNOH",
       "level": 67,
       "subregion": "SINJOH",
       "wild_pool_percentages": "SINJOH_SINJOH_PATHWAYS_PERCENTAGES",
@@ -320,7 +321,7 @@
     "MYSTRI_STAGE": {
       "area_type": "dungeon",
       "route_name": "Mystri Stage",
-      "region": "JOHTO",
+      "region": "SINNOH",
       "level": 70,
       "subregion": "SINJOH",
       "battle_type": "indoor",
@@ -465,8 +466,9 @@
       "id": "sinjoh_m1",
       "type": "SIDE",
       "title": "The Sinjoh Ruins",
-      "description": "With Arceus and every Unown, follow the Unown out of the Ruins of Alph. Cynthia is waiting.",
+      "description": "Sinnoh Champion with Arceus and every Unown? Follow the Unown out of the Ruins of Alph. Cynthia is waiting.",
       "condition": {
+        "flag": "beat_sinnoh_champion",
         "flag_not": "visited_SINJOH_CABIN",
         "visited": "RUINS_OF_ALPH",
         "required_region": "JOHTO"
@@ -482,10 +484,10 @@
       "condition": {
         "flag": "met_sinjoh_cynthia",
         "flag_not": "phione_freed",
-        "required_region": "JOHTO"
+        "required_region": "SINNOH"
       },
       "reward": "Phione",
-      "region": "JOHTO"
+      "region": "SINNOH"
     },
     {
       "id": "sinjoh_m3",
@@ -495,10 +497,10 @@
       "condition": {
         "flag": "phione_freed",
         "flag_not": "sinjoh_phione_caught",
-        "required_region": "JOHTO"
+        "required_region": "SINNOH"
       },
       "reward": "Dialga, Palkia or Giratina, and Phione",
-      "region": "JOHTO"
+      "region": "SINNOH"
     }
   ],
   "SINJOH_SINJOH_SNOWFIELDS": [

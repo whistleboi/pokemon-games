@@ -46,6 +46,8 @@ FORM_HOME = {"alolan": "ALOLA", "galarian": "GALAR", "hisuian": "SINNOH", "palde
 # Kanto and Johto stay Gen 1-2 until the player has played later regions ("Kanto stays Kanto",
 # "Johto stays Johto"), and so do the Orange Islands; the later regions keep their mixed pools.
 CLASSIC_REGIONS = ("KANTO", "JOHTO", "ORANGE")
+# (The Sinjoh Ruins are a Sinnoh sub-region, "region": "SINNOH", reached from Johto's Ruins of Alph
+# once the player is Sinnoh Champion, so they keep Sinnoh's mixed pools: no Johto filter there.)
 
 
 def _in_kanto(game):

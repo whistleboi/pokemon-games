@@ -2557,15 +2557,27 @@ class EvolutionState(GameState):
             self._return()
 
     def _maybe_shedinja(self):
-        """Nincada -> Ninjask also leaves a Shedinja behind if the party has room."""
-        team = self.game.story_manager.player_team
-        if self.pokemon.id != 290 or self.evolution_id != 291 or len(team) >= 6 or self.context == "pc":
+        """Nincada -> Ninjask also leaves a Shedinja behind (as in the games). It is a new
+        Pokemon built from the Nincada (same level, IVs, shininess, home region); it joins the
+        party, or goes to the PC when the party is full, and both land in the Pokedex."""
+        if self.pokemon.id != 290 or self.evolution_id != 291:
             return
-        shed = Pokemon(self.game.loader.fetch_specific(292), self.game.assets, size_mult=2.5)
-        shed.level = self.pokemon.level
+        story = self.game.story_manager
+        nincada = self.pokemon
+        shiny = bool(getattr(nincada, "is_shiny", False))
+        shed = Pokemon(self.game.loader.fetch_specific(292, is_shiny=shiny), self.game.assets, size_mult=2.5)
+        shed.is_shiny = shiny
+        shed.level = nincada.level
+        for attr in ("ivs", "caught_region"):
+            if hasattr(nincada, attr):
+                setattr(shed, attr, getattr(nincada, attr))
         shed.current_hp = shed.get_max_hp()
-        shed.caught_region = getattr(self.pokemon, "caught_region", None)
-        team.append(shed)
+        if len(story.player_team) < 6:
+            story.player_team.append(shed)
+            self.shedinja_where = "party"
+        else:
+            story.deposit_to_pc(shed)
+            self.shedinja_where = "pc"
         self.game.data.add_pokemon(shed)
         self.shedinja_added = True
 

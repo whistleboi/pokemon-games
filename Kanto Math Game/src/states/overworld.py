@@ -81,7 +81,9 @@ def _story_team(game, area_key, t_info):
     team = [Pokemon(game.loader.fetch_specific(tid), game.assets, size_mult=3.125) for tid in team_ids]
     forms.mark_trainer_team(team, t_info)
     top = t_info.get("level")  # story beats set in early areas carry their own level
-    if t_info.get("levels"):
+    if levels.postgame_trainers(game, area_key):  # post-game: every trainer follows the player's cap
+        levels.set_team(team, levels.trainer_team_levels(game, area_key, len(team), boss=True))  # legendaries stay 70
+    elif t_info.get("levels"):
         levels.set_team(team, list(t_info["levels"]), exact=True)
     elif top:
         levels.set_team(team, [max(2, top - (len(team) - 1 - i)) for i in range(len(team))])
@@ -513,6 +515,11 @@ class PlayState(GameState):
 
         if not self.game.story_manager.story_flags.get("visited_BURNED_TOWER"):
             return False
+        # Raikou and Entei roam Johto's own routes only: not a sub-region (the Sinjoh Ruins) or
+        # any other region, even though the Burned Tower flag stays set for the whole save.
+        if (self.game.story_manager.get_current_region() != "JOHTO"
+                or self.area_data.get("subregion")):
+            return False
 
         if random.random() < self.ROAMER_CHANCE:
             roamers = [243, 244]
@@ -528,7 +535,7 @@ class PlayState(GameState):
             # Roamers suit the route (Lv 40 at most, as in HeartGold/SoulSilver) instead of an
             # L50 that one-shots a badge-4 team.
             area_key = self.game.story_manager.current_area_key
-            pokemon.level = max(10, min(self.ROAMER_MAX_LEVEL, levels.area_level(self.game, area_key) + 5))
+            pokemon.level = levels.legendary_encounter_level(self.game, area_key)  # cap + 3, or 70 from the last badge on
             pokemon.current_hp = pokemon.get_max_hp()
 
             from src.states.battle import WildBattleState
@@ -1063,6 +1070,10 @@ class PlayState(GameState):
                 valid_options.append(item)
                 continue
 
+            if action == "BOSS" and flags.get(f"legend_rematch_{self._boss_flag_for(item)}"):
+                valid_options.append(item)  # a beaten legendary that got away: rematch until caught
+                continue
+
             if condition in ["has_balls", "has_trainers"] and not self._check_route_condition(condition, trainers_left, item):
                 item_copy = item.copy()
                 item_copy["disabled"] = True
@@ -1303,6 +1314,8 @@ class PlayState(GameState):
             return lambda e=item.get("event") or {}: self.story_event(e)
         if action == "CAMP":
             return self.open_camp
+        if action == "REST":  # a long ride's cabin (the Decolore ferry): a free full heal
+            return self.action_rest_in_cabin
         if action == "HOENN_EVENT":
             return lambda e=item.get("event"): self.hoenn_event(e)
         if action == "NPC":
@@ -1445,6 +1458,13 @@ class PlayState(GameState):
         self.is_progression_paused = True
         self.hide_menu_buttons()
         self.game.change_state(CampState(self.game, self))
+
+    def action_rest_in_cabin(self):
+        """REST IN CABIN on a long ride: the whole team is healed, like a Pokemon Center."""
+        self.is_progression_paused = True
+        self.hide_menu_buttons()
+        heal_team(self.game)
+        self.show_dialogue(list(CABIN_REST_LINES), callback=self.show_progression_menu)
 
     def story_event(self, key):
         self.is_progression_paused = True
@@ -1705,6 +1725,11 @@ class PlayState(GameState):
         }
         self.game.change_state(battle_state)
 
+    def _boss_flag_for(self, item):
+        """The victory flag a BOSS button's battle will use (same rule as action_challenge_boss)."""
+        boss = item.get("boss") or self.area_data.get("area_boss") or {}
+        return boss.get("victory_flag", f"{self.game.story_manager.current_area_key}_boss_defeated")
+
     def action_challenge_boss(self, boss_data=None):
         if self.game.story_manager.current_area_key == "JOHTO_ROUTE_36":
             if self.game.story_manager.inventory.get("SQUIRT_BOTTLE", 0) <= 0:
@@ -1747,8 +1772,13 @@ class PlayState(GameState):
         pokemon = Pokemon(raw, self.game.assets, size_mult=2.0)
         # A Primal boss (Groudon/Kyogre in the Cave of Origin) reverts when the battle starts.
         pokemon.primal_ready = bool(boss_data.get("primal"))
-        pokemon.level = int(boss_data.get("level") or levels.boss_level(
-            self.game, self.game.story_manager.current_area_key, pokemon.id))
+        if levels.is_legendary(pokemon.id):  # legendaries follow the cap rule, even with a data level
+            pokemon.level = levels.boss_level(self.game, self.game.story_manager.current_area_key, pokemon.id)
+        elif levels.postgame_trainers(self.game):  # post-game: area bosses follow the cap too
+            pokemon.level = levels.boss_level(self.game, self.game.story_manager.current_area_key, pokemon.id)
+        else:
+            pokemon.level = int(boss_data.get("level") or levels.boss_level(
+                self.game, self.game.story_manager.current_area_key, pokemon.id))
         pokemon.current_hp = pokemon.get_max_hp()
 
         bg_file = boss_data.get("background") if (boss_data.get("background") and self.game.assets.get_background(
@@ -2254,54 +2284,24 @@ class PlayState(GameState):
                 member.counters["catches"] = member.counters.get("catches", 0) + 1
 
         pokemon_caught.caught_region = self.game.story_manager.get_current_region()
-        all_owned = self.game.story_manager.player_team + [p for p in self.game.story_manager.pc_pokemon if p]
-        is_duplicate_owned = any(p.id == pokemon_caught.id and p.form == pokemon_caught.form for p in all_owned)
+        # Every catch is kept, duplicates too (Jordan's rule): branched lines (Ralts, Wurmple,
+        # Snorunt, Clamperl, Applin, Burmy...) need a second copy. Full party -> the PC.
+        is_new_species = not any(isinstance(v, dict) and v.get("id") == pokemon_caught.id
+                                 for v in self.game.data.data.get("pokedex", {}).values())
         is_party_full = len(self.game.story_manager.player_team) >= 6
 
         msgs = []
-
-        if pokemon_caught.id == 201:
-            is_duplicate_owned = False
-
-        if is_duplicate_owned:
-            upgraded = False
-            if pokemon_caught.is_shiny:
-                for i, p in enumerate(self.game.story_manager.player_team):
-                    if p and p.id == pokemon_caught.id and p.form == pokemon_caught.form and not p.is_shiny:
-                        self.game.story_manager.player_team[i] = pokemon_caught
-                        upgraded = True
-                        break
-
-                if not upgraded:
-                    for i, p in enumerate(self.game.story_manager.pc_pokemon):
-                        if p and p.id == pokemon_caught.id and p.form == pokemon_caught.form and not p.is_shiny:
-                            self.game.story_manager.pc_pokemon[i] = pokemon_caught
-                            upgraded = True
-                            break
-
-            if upgraded:
-                msgs.append(f"Shiny Upgrade! {pokemon_caught.display_name.upper()} is now Shiny!")
-                pokemon_was_kept = True
+        pokemon_was_kept = True
+        if not is_party_full:
+            self.game.story_manager.player_team.append(pokemon_caught)
+            if self.was_shiny_override:
+                msgs.append(self.game.assets.get_text("shiny_pass"))
             else:
-                msgs.append("Gained evolution XP!")
-                pokemon_was_kept = False
+                msgs.append(self.game.assets.get_text("caught_pokemon", name=pokemon_caught.display_name.upper()))
         else:
-            pokemon_was_kept = True
-            if not is_party_full:
-                self.game.story_manager.player_team.append(pokemon_caught)
-                if self.was_shiny_override:
-                    msgs.append(self.game.assets.get_text("shiny_pass"))
-                else:
-                    msgs.append(self.game.assets.get_text("caught_pokemon", name=pokemon_caught.display_name.upper()))
-            else:
-                pc = self.game.story_manager.pc_pokemon
-                for i in range(len(pc)):
-                    if pc[i] is None:
-                        pc[i] = pokemon_caught
-                        break
-
-                msgs.append("Party is full.")
-                msgs.append(f"{pokemon_caught.display_name.upper()} was sent to BILL'S PC!")
+            self.game.story_manager.deposit_to_pc(pokemon_caught)
+            msgs.append("Party is full.")
+            msgs.append(f"{pokemon_caught.display_name.upper()} was sent to BILL'S PC!")
 
         self.total_caught += 1
         self.game.loader.total_caught = self.total_caught
@@ -2316,7 +2316,7 @@ class PlayState(GameState):
             self.game.story_manager.catch_counts[pid_str] = self.game.story_manager.catch_counts.get(pid_str, 0) + 1
 
         unique_count = len({v['id'] for v in self.game.data.data.get("pokedex", {}).values() if isinstance(v, dict) and 'id' in v})
-        if pokemon_was_kept and unique_count > 0 and unique_count % 30 == 0:
+        if is_new_species and unique_count > 0 and unique_count % 30 == 0:
             self.game.story_manager.money += 50000
             msgs.append(f"Milestone: {unique_count} species caught!")
             msgs.append("You received a $50,000 bonus!")
@@ -3209,7 +3209,8 @@ class CityState(GameState):
         if action == "RUINS":
             return self.action_explore_ruins
         if action == "TRAVEL":
-            return lambda: self.go_to_area(opt_data.get("target_area"), opt_data.get("message"))
+            return lambda: self.go_to_area(opt_data.get("target_area"), opt_data.get("message"),
+                                           heal=travel_heal(opt_data))
         return None
 
     def visit_contest_hall(self):
@@ -4482,7 +4483,10 @@ class CityState(GameState):
         opponent_team = [Pokemon(self.game.loader.fetch_specific(tid), self.game.assets, size_mult=3.125)
                          for tid in team_ids]
         forms.mark_trainer_team(opponent_team, t_info)
-        if t_info.get("levels"):
+        if levels.postgame_trainers(self.game, self.area_key) and not starter_battle:
+            levels.set_team(opponent_team, levels.trainer_team_levels(
+                self.game, self.area_key, len(opponent_team), boss=True))  # post-game cap; legendaries stay 70
+        elif t_info.get("levels"):
             levels.set_team(opponent_team, list(t_info["levels"]), exact=True)  # exact levels from the games
         elif starter_battle:
             levels.set_team(opponent_team, [5] * len(opponent_team))
@@ -4511,10 +4515,11 @@ class CityState(GameState):
         self.game.change_state(TrainerIntroState(self.game, sprite, intro_text, battle_state))
         return True
 
-    def go_to_area(self, area_key, message=None):
-        """Travel; a ship or train ride shows its own message on the way."""
+    def go_to_area(self, area_key, message=None, heal=None):
+        """Travel; a ship or train ride shows its own message on the way. heal: see travel_heal."""
         if area_key:
-            self.game.change_state(AreaTransitionState(self.game, area_key, initial_message=message))
+            self.game.change_state(AreaTransitionState(self.game, area_key, initial_message=message,
+                                                       heal=heal))
 
     def go_to_next_area(self):
         next_area = self.area_data.get("next_area")
@@ -4580,6 +4585,9 @@ class CityState(GameState):
                     f"Professor: Congratulations, Champion of {', '.join(names[:-1])} and {names[-1]}!",
                     "Your regional PCs are now linked. Pokemon from any of those regions can join your team,",
                     "and your Bags have been combined too. Use them freely in every region you've conquered!"]
+            # Save the new title now: the move picker comes next, and a child who closes the
+            # game there used to lose the Champion win (the newest save was from before the League).
+            autosave(self.game)
             if story.get_region_start(region).get("travel_only"):
                 self.show_message(link_lines + self.ISLAND_CHAMPION)  # a trip, not a new home: no move offer
                 return
@@ -4758,9 +4766,36 @@ class CityState(GameState):
         _draw_season_hud(self.game, screen, self.area_key, 20, 58)
 
 
+# Jordan: only LONG rides between two regions/sub-regions heal (ships, the Seagallop to and from
+# Kanto, the Magnet Train, the Hoenn-Orre plane, the Decolore ferry): "long_ride": true on the
+# travel option. Island hops inside a region or sub-region are plain, decorative trips.
+TRAVEL_HEAL_LINES = {
+    "long_ride": ["Your Pokemon rested during the long trip.", "Your team is fully healed!"],
+    "teleport": ["Your team is fully healed, as if you'd stopped at a Pokemon Center."],
+}
+CABIN_REST_LINES = ["You rest in the cabin with your Pokemon...", "Your team is fully healed!"]
+
+
+def travel_heal(opt_data):
+    """None, "long_ride" or "teleport" for a travel option (see TRAVEL_HEAL_LINES)."""
+    if opt_data.get("long_ride"):
+        return "long_ride"
+    heal = opt_data.get("heal")
+    return str(heal) if heal else None
+
+
+def heal_team(game):
+    """Full HP and no status for the whole party, like a Pokemon Center."""
+    for p in game.story_manager.player_team:
+        if p:
+            p.heal_full()
+    if getattr(game.assets, "heal_sfx", None):
+        game.assets.heal_sfx.play()
+
+
 # [REF-0042: Area Transition Logic]
 class AreaTransitionState(GameState):
-    def __init__(self, game, next_area_key, initial_message=None):
+    def __init__(self, game, next_area_key, initial_message=None, heal=None):
         super().__init__(game)
         self.next_area_key = next_area_key
         self.timer = 75
@@ -4775,10 +4810,16 @@ class AreaTransitionState(GameState):
         msg = []
         if initial_message:
             msg.append(initial_message)
+        if heal:  # the team that sets off is healed...
+            heal_team(self.game)
         # Another region's party, PC and Bag; a first visit goes to that region's professor.
         self.next_area_key, travel_lines = self.game.story_manager.prepare_travel(next_area_key)
         msg += travel_lines
         if travel_lines:
+            self.wait_for_dialogue = True
+        if heal:  # ...and so is the team you arrive with, if the trip switched to another region's party
+            heal_team(self.game)
+            msg += TRAVEL_HEAL_LINES.get(heal, TRAVEL_HEAL_LINES["long_ride"])
             self.wait_for_dialogue = True
 
         next_area_data = self.game.loader.area_data.get("STORY_PROGRESSION", {}).get(self.next_area_key, {})
@@ -5098,6 +5139,13 @@ class GymLobbyState(GameState):
                 self.is_cleared = True
                 self.status_text = "The League has been conquered!"
         else:
+            # Orange Islands post-game (Jordan): after Drake, a cleared Orange Gym can be battled
+            # again from its first trainer, at the Orange Champion's post-game band (no badge again).
+            self.orange_rematch = (self.region == "ORANGE" and bool(self.leader)
+                                   and game.story_manager.is_region_champion("ORANGE"))
+            if self.orange_rematch and self.progress > len(self.trainers):
+                self.progress = 0
+                game.story_manager.story_flags[self.prog_key] = 0
             if self.progress < len(self.trainers):
                 self.next_opponent = self.trainers[self.progress]
                 self.status_text = f"Trainer {self.progress + 1}/{len(self.trainers) + 1} is up next!"
@@ -5150,8 +5198,8 @@ class GymLobbyState(GameState):
     # FireRed/LeafGreen rematch (post-Sevii) teams, used once the Champion has been beaten.
     FRLG_E4_REMATCH = {
         "LORELEI": ([87, 91, 221, 124, 131], [64, 63, 63, 66, 66]),
-        "BRUNO": ([208, 107, 106, 208, 68], [65, 65, 65, 66, 66]),
-        "AGATHA": ([94, 169, 200, 24, 94], [66, 66, 65, 66, 70]),
+        "BRUNO": ([208, 107, 106, 208, 68], [65, 65, 65, 66, 68]),
+        "AGATHA": ([94, 169, 200, 24, 94], [66, 66, 65, 68, 70]),
         "LANCE": ([130, 149, 230, 142, 149], [68, 66, 66, 70, 72]),
     }
     FRLG_CHAMPION_REMATCH = {
@@ -5215,13 +5263,19 @@ class GymLobbyState(GameState):
         # Rematches after the title: the games' rematch teams where we have them (FireRed/LeafGreen
         # for Kanto, HeartGold/SoulSilver for Johto: "rematch" in the data), else 10 levels up.
         rematch_boost = 0
-        if getattr(self, "rematch", False) and not (self.area_key == "INDIGO_PLATEAU" and is_leader):
+        # A League rematch roster's non-League trainers (Galar's Marnie/Hop, Paldea's Nemona) are
+        # post-game rematches: they follow the post-game cap. The Elite Four and Champion don't.
+        cap_rematch = (getattr(self, "rematch", False) and not is_leader
+                       and t_data.get("class") not in levels.LEAGUE_CLASSES and not t_data.get("rematch"))
+        if (getattr(self, "rematch", False) and not cap_rematch
+                and not (self.area_key == "INDIGO_PLATEAU" and is_leader)):
             rm = self.next_opponent.get("rematch")
             if not rm and self.area_key == "INDIGO_PLATEAU":
                 frlg = self.FRLG_E4_REMATCH.get(str(t_data.get("name", "")).upper())
                 rm = {"team": frlg[0], "levels": frlg[1]} if frlg else None
-            if rm:
-                t_data["team"], t_data["levels"] = list(rm["team"]), list(rm["levels"])
+            if rm:  # a rematch without its own "team" keeps the (starter-dependent) team, canon levels
+                t_data["team"] = list(rm.get("team") or t_data.get("team", []))
+                t_data["levels"] = list(rm["levels"])
             else:
                 rematch_boost = 10
 
@@ -5233,7 +5287,9 @@ class GymLobbyState(GameState):
         forms.mark_trainer_team(opponent_team, t_data)
         region = self.game.story_manager.get_current_region()
         t_class = t_data.get("class", "GYM_LEADER")
-        if t_data.get("levels"):
+        if cap_rematch:  # the region's title is won, so the League area is post-game: cap-2..cap
+            team_levels = levels.trainer_team_levels(self.game, self.area_key, len(opponent_team))
+        elif t_data.get("levels"):
             team_levels = t_data["levels"]  # exact levels from the games (Kanto's Champion)
         elif t_class == "ELITE_FOUR":
             team_levels = levels.elite_levels(region, self.progress, len(opponent_team))
@@ -5244,6 +5300,9 @@ class GymLobbyState(GameState):
         else:
             team_levels = levels.gym_team_levels(region, self.area_key, len(opponent_team),
                                                  levels.gym_role(t_class, is_leader))
+        if getattr(self, "orange_rematch", False) and not self.is_league:
+            team_levels = levels.orange_postgame_levels(self.gym_data, team_levels)
+            t_data["badge_reward"] = None  # the badge was won before the title
         if rematch_boost:
             team_levels = [min(100, int(lv) + rematch_boost) for lv in team_levels]
         levels.set_team(opponent_team, team_levels, exact=bool(t_data.get("levels")))

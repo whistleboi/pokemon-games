@@ -20,7 +20,10 @@ for f in story.UNOWN_FORMS[:-1]:
     story.catch_counts[f"201_{f}"] = 1
 check(story.unown_forms_caught() == 27 and ENTRY not in travel("RUINS_OF_ALPH"), "27 of 28 Unown: not yet")
 story.catch_counts["201_question"] = 1
-check(ENTRY in travel("RUINS_OF_ALPH"), "Arceus + all 28 Unown: the Unown lead the way")
+check(ENTRY not in travel("RUINS_OF_ALPH"), "Arceus + all 28 Unown, but not Sinnoh Champion: not yet")
+story.story_flags["beat_sinnoh_champion"] = True
+check(ENTRY in travel("RUINS_OF_ALPH"), "Sinnoh Champion + Arceus + all 28 Unown: the Unown lead the way")
+check(all(prog[k].get("region") == "SINNOH" for k in SIN), "Sinjoh is a Sinnoh sub-region (parent SINNOH)")
 state_for("SINJOH_CABIN")
 story.player_team = [mk(25)]
 check(ENTRY in travel("RUINS_OF_ALPH"), "after a visit: back any time, even without Arceus")

@@ -35,22 +35,39 @@ GYM_ORDER = {
     "ORANGE": ["MIKAN_ISLAND", "NAVEL_ISLAND", "TROVITA_ISLAND", "KUMQUAT_ISLAND"],
 }
 # Ace level of each gym, then (Elite Four first, last) and the Champion's ace.
-# Johto is HeartGold/SoulSilver x1.26 (JOHTO_SCALE), so Lance's ace matches Kanto's Champion (63).
-JOHTO_SCALE = 63 / 50
+# Jordan: every Gym Leader, Elite Four, Champion and League rival uses the CANON levels of the base
+# game of its region (exact per-Pokemon levels in the area data, "levels"; these tables are the
+# aces, used for the story cap, gym trainers and fallbacks):
+# Kanto FireRed/LeafGreen, Johto HeartGold/SoulSilver, Hoenn Ruby/Sapphire, Sinnoh gyms
+# Diamond/Pearl (the gym order and rosters here are DP's) and League Platinum (the rosters are
+# Platinum's), Unova Black/White, Kalos X/Y, Alola Sun/Moon, Galar Sword (Bea, Gordie) and the
+# Champion Cup, Paldea Scarlet/Violet. The Orange League has no game: it keeps Kanto's levels.
 GYM_ACE = {
-    "KANTO": [14, 21, 24, 29, 37, 43, 47, 50], "JOHTO": [16, 21, 24, 32, 39, 44, 43, 52],
-    "HOENN": [14, 16, 21, 28, 30, 35, 45, 46], "SINNOH": [14, 22, 30, 32, 36, 39, 44, 50],
-    "UNOVA": [14, 20, 23, 27, 31, 35, 39, 43], "KALOS": [12, 25, 32, 34, 37, 42, 48, 54],
-    "ALOLA": [12, 27, 39, 48], "GALAR": [20, 24, 25, 36, 38, 42, 46, 48],
+    "KANTO": [14, 21, 24, 29, 43, 43, 47, 50], "JOHTO": [13, 17, 19, 25, 31, 35, 34, 41],
+    "HOENN": [15, 18, 23, 28, 31, 33, 42, 43], "SINNOH": [14, 22, 30, 30, 36, 39, 42, 49],
+    "UNOVA": [14, 20, 23, 27, 31, 35, 39, 43], "KALOS": [12, 25, 32, 34, 37, 42, 48, 59],
+    "ALOLA": [10, 27, 39, 48], "GALAR": [20, 24, 27, 36, 38, 42, 46, 48],
     "PALDEA": [15, 17, 24, 30, 36, 42, 45, 48],
-    "ORANGE": [62, 66, 69, 72],
+    # Orange League in line with Kanto's League (Jordan): Gyms like the Elite Four (54-60), Drake like
+    # Kanto's Champion (63); his rematch (+10) is 69-73, close to Kanto's FRLG rematch (72-75).
+    "ORANGE": [54, 56, 58, 60],
 }
-ELITE_FOUR = {"KANTO": (54, 60), "JOHTO": (53, 59), "HOENN": (50, 53), "SINNOH": (53, 59),
-              "UNOVA": (48, 50), "KALOS": (58, 62), "ALOLA": (54, 57), "GALAR": (52, 58),
-              "PALDEA": (57, 60)}
-CHAMPION_ACE = {"KANTO": 63, "JOHTO": 63, "HOENN": 59, "SINNOH": 62, "UNOVA": 54, "KALOS": 66,
-                "ALOLA": 60, "GALAR": 65, "PALDEA": 62,
-                "ORANGE": 76}
+# Jordan (patch 11): Leagues well below the others are raised to the Kanto band (Champion ace 63),
+# every level shifted by the same amount so the canon spread is kept: Johto +13, Hoenn +5,
+# Unova +9 (Alder's first run too), Alola +5; Galar's League rivals Marnie and Hop +7 (Kanto's
+# Elite Four band). Nemona's League battle has its ace at the level cap (70). Gyms stay canon.
+LEAGUE_SHIFT = {"JOHTO": 13, "HOENN": 5, "UNOVA": 9, "ALOLA": 5}
+ELITE_FOUR = {"KANTO": (54, 60), "JOHTO": (55, 60), "HOENN": (54, 60), "SINNOH": (53, 59),
+              "UNOVA": (59, 59), "KALOS": (65, 65), "ALOLA": (60, 60), "GALAR": (56, 56),
+              "PALDEA": (58, 61)}
+# Unova: in Black/White the Champion is only fought after the story (75-77, his rematch here);
+# the first run uses the story's final battle band (Ghetsis, 52-54), raised +9 (patch 11) to 61-63.
+CHAMPION_ACE = {"KANTO": 63, "JOHTO": 63, "HOENN": 63, "SINNOH": 62, "UNOVA": 63, "KALOS": 68,
+                "ALOLA": 63, "GALAR": 65, "PALDEA": 62,
+                "ORANGE": 63}
+# Orange Islands post-game (Jordan, Q4): once Drake is beaten, the Orange Gyms scale to the Orange
+# Champion's post-game band: each Gym team is lifted so its ace is Drake's rematch ace (63 + 10).
+ORANGE_POSTGAME_ACE = CHAMPION_ACE["ORANGE"] + 10
 START_LEVEL = 3
 
 # Legendaries: the box legends and their peers are Lv 70, mythicals and the rest Lv 50.
@@ -83,7 +100,13 @@ def gym_aces(region):
 
 
 def area_level(game, area_key):
-    """An area's wild level (an area's own "level" key wins)."""
+    """An area's wild level (an area's own "level" key wins). Post-game (the area's region, or
+    its parent, has been won) every area follows the player instead: postgame_cap - POSTGAME_UNDER,
+    so wild Pokemon are a few levels under the cap and trainers at about the cap (see
+    postgame_area_level). The League never uses area levels, so it is not affected."""
+    scaled = postgame_area_level(game, area_key)
+    if scaled is not None:
+        return scaled
     area = game.loader.area_data.get("STORY_PROGRESSION", {}).get(area_key, {})
     if area.get("level"):
         return int(area["level"])
@@ -103,17 +126,35 @@ def trainer_level(game, area_key, boss=False):
     return base + (random.randint(0, 1) if base < 8 else random.randint(1, 3))
 
 
+# Jordan's legendary rule:
+# - before the region's last Gym badge: the story level cap + LEGEND_OVER_CAP (Hoenn patch 09);
+# - from the last Gym badge on (Victory Road, the League) and the whole post-game, including the
+#   post-game sub-regions and DLC areas: a flat LEGEND_LEVEL (70). Legendaries are never part of
+#   the player-led post-game scaling. This replaces 09's "Champion's ace stands in for the cap".
+LEGEND_OVER_CAP = 3
+LEGEND_LEVEL = 70
+
+
 def legendary_level(pid):
-    pid = int(pid)
-    if pid in MYTHICAL_HIGH:
-        return MYTHICAL_HIGH[pid]
-    return 70 if pid in BOX_LEGENDS else 50
+    """A legendary or mythical made outside an encounter (trainer teams without levels, a fresh
+    Pokemon from the loader): LEGEND_LEVEL. Replaces the old 70/50/80/60 split."""
+    return LEGEND_LEVEL
+
+
+def legendary_encounter_level(game, area_key=None):
+    """Level of a legendary met in the wild, as a boss (data levels included), a roamer or a
+    gift: cap + 3 before the last Gym badge, LEGEND_LEVEL (70) from then on and post-game."""
+    story = game.story_manager
+    region = story.get_current_region()
+    if is_postgame(story, region) or len(story.badges.get(region, [])) >= len(gym_aces(region)):
+        return LEGEND_LEVEL
+    return max(5, min(100, int(story_level_cap(story)) + LEGEND_OVER_CAP))
 
 
 def boss_level(game, area_key, pid):
-    """Area bosses: legendaries at their fixed level, others a little above the area."""
+    """Area bosses: legendaries per legendary_encounter_level, others a little above the area."""
     if is_legendary(pid):
-        return legendary_level(pid)
+        return legendary_encounter_level(game, area_key)
     return area_level(game, area_key) + 5
 
 
@@ -145,21 +186,98 @@ def cap_mode(story):
     return getattr(story, "level_cap_mode", "STORY")
 
 
+# Jordan's post-game rule: once a region's Champion is beaten, the cap is player-controlled.
+# It is the team's highest level, but never below the lowest level met in that region's League
+# rematch. Lowest rematch level per region, as GymLobbyState.challenge_gym builds the rematch
+# teams (the games' rematch teams, else the League's levels + 10). The League itself is NOT
+# scaled by this cap: rematch levels stay as they are. Only Elite Four and Champion teams count
+# (LEAGUE_CLASSES): Galar's Marnie/Hop and Paldea's Nemona are post-game rematches on the cap
+# rules. Recomputed for the canon League levels and canon rematches (patch 10): the games' rematch
+# teams where they exist (FRLG, HGSS, Platinum, BW post-game, SM title defenses, SV Geeta), else
+# the canon first run + 10. Patch 11: Hoenn 56 -> 61 (its League is raised +5; RS has no rematch, so +10 on top).
+# Patch 12: Alola 63 -> 68 (its title-defense rematch raised +5 like its first run: Elite Four 68, Kukui 70).
+LEAGUE_REMATCH_FLOOR = {"KANTO": 63, "JOHTO": 58, "HOENN": 61, "SINNOH": 65, "UNOVA": 71,
+                        "KALOS": 73, "ALOLA": 68, "GALAR": 72, "PALDEA": 67}
+# Post-game spreads around the cap (Jordan): wild Pokemon a few levels under it (area level =
+# cap - 3, wild = area -2..+1 -> cap-5..cap-2), route/story trainers about at it (area +1..+3 ->
+# cap-2..cap, bosses cap+1), non-legendary area bosses cap+2. Post-game legendaries stay at 70 (LEGEND_LEVEL).
+POSTGAME_UNDER = 3
+# League rosters: only these classes keep the League's own (rematch) levels. Anyone else in a
+# League lobby (Galar's Marnie/Hop, Paldea's Nemona) is a post-game rematch on the cap rules.
+LEAGUE_CLASSES = ("ELITE_FOUR", "CHAMPION")
+
+
+def parent_region(story, region=None):
+    """The main region a region or sub-region belongs to. Sub-region areas already carry their
+    parent's "region" (Sevii: KANTO, Decolore: UNOVA, Sinjoh and Hisui: SINNOH, the DLC areas:
+    GALAR/PALDEA); the Orange Islands and Orre are trips from KANTO and HOENN ("storage_region")."""
+    region = str(region or story.get_current_region()).upper()
+    return str(story.get_region_start(region).get("storage_region") or region).upper()
+
+
+def is_postgame(story, region=None):
+    """After this region's title or its parent region's (a sub-region or trip such as Sevii,
+    Orange, Decolore, Sinjoh, Hisui, Orre and the DLC areas follows its parent), and anywhere
+    without Gyms (Orre)."""
+    region = str(region or story.get_current_region()).upper()
+    return bool(story.is_region_champion(region) or story.is_region_champion(parent_region(story, region))
+                or story.get_region_start(region).get("no_badges"))
+
+
+def postgame_area_level(game, area_key):
+    """The post-game level an area's wild Pokemon and trainers are built around, or None before
+    the title (then the area's own level is used)."""
+    story = getattr(game, "story_manager", None)
+    if story is None or not hasattr(story, "is_region_champion"):
+        return None
+    region = story.area_region(area_key) if area_key and hasattr(story, "area_region") else None
+    if region is None or not is_postgame(story, region):
+        return None
+    return max(2, postgame_cap(story, region) - POSTGAME_UNDER)
+
+
+def postgame_trainers(game, area_key=None):
+    """True when trainers here follow the post-game cap (data levels from the games are ignored)."""
+    story = game.story_manager
+    return postgame_area_level(game, area_key or story.current_area_key) is not None
+
+
+def postgame_cap(story, region=None):
+    """The player-controlled post-game cap: the party's highest level, floored at the parent
+    region's League rematch floor. It moves up with the team (see xp_cap), so a team that
+    over-levels meets stronger wild Pokemon and trainers (not legendaries: always 70); the League
+    keeps its own."""
+    top = max((int(p.level) for p in getattr(story, "player_team", []) if p), default=0)
+    floor = LEAGUE_REMATCH_FLOOR.get(parent_region(story, region), 50)
+    return max(5, min(100, max(top, floor)))
+
+
+# Jordan: after the last Gym badge and before the title (Victory Road / the League) the cap is 70
+# in every region (sub-regions follow their parent's rule). Legendaries are a flat 70 from then on.
+# The League's own levels are canon (patch 10): first-run Champion aces 50-68 all sit below it (open question).
+PRE_LEAGUE_CAP = 70
+
+
 def story_level_cap(story):
-    """STORY mode: the next Gym Leader's ace in this region (Champion's after 8, none after)."""
+    """STORY mode: the next Gym Leader's ace in this region (PRE_LEAGUE_CAP after the last). After the title
+    (and in Orre, which has no Gyms) the player-controlled post-game cap (postgame_cap)."""
     region = story.get_current_region()
-    if story.is_region_champion(region) or story.get_region_start(region).get("no_badges"):
-        return 100  # Orre has no Gyms to cap levels by
+    if is_postgame(story, region):
+        return postgame_cap(story, region)
     badges = len(story.badges.get(region, []))
     aces = gym_aces(region)
     if badges < len(aces):
         return max(aces[:badges + 1])  # never lower than an earlier Gym's (Pryce's ace is below Jasmine's)
-    return CHAMPION_ACE.get(region, 60)
+    return PRE_LEAGUE_CAP  # every Gym badge, no title yet (Victory Road / the League): Lv 70 everywhere
 
 
 def xp_cap(story):
-    """Highest level XP can take a Pokemon to right now (100 when uncapped)."""
-    return story_level_cap(story) if cap_mode(story) == "STORY" else 100
+    """Highest level XP can take a Pokemon to right now (100 when uncapped). Post-game the cap
+    is the team's own highest level, so XP is not blocked: the player controls the level and the
+    cap follows the team."""
+    if cap_mode(story) != "STORY" or is_postgame(story):
+        return 100
+    return story_level_cap(story)
 
 
 def obey_level(story):
@@ -173,8 +291,11 @@ def obey_level(story):
 
 
 def set_wild(game, pokemon, area_key):
-    """A wild Pokemon's level: legendaries keep their fixed level, the rest suit the area."""
-    if pokemon and not is_legendary(pokemon.id):
+    """A wild Pokemon's level: legendaries per legendary_encounter_level, the rest suit the area."""
+    if pokemon and is_legendary(pokemon.id):
+        pokemon.level = legendary_encounter_level(game, area_key)
+        pokemon.current_hp = pokemon.get_max_hp()
+    elif pokemon:
         pokemon.level = wild_level(game, area_key)
         pokemon.current_hp = pokemon.get_max_hp()
     return pokemon
@@ -209,3 +330,13 @@ def gym_role(trainer_class, is_leader):
     if trainer_class == "ELITE_FOUR":
         return "elite"
     return "leader" if is_leader else "trainer"
+
+
+def orange_postgame_levels(gym_data, team_levels):
+    """After the Orange title: an Orange Gym's battles are lifted by the gap between its leader's ace
+    and ORANGE_POSTGAME_ACE (Drake's rematch ace), so the leader's ace is 73 and the Gym trainers
+    keep their distance below it."""
+    leader = (gym_data or {}).get("leader") or {}
+    lead = leader.get("levels") or [0]
+    delta = max(0, ORANGE_POSTGAME_ACE - max(int(x) for x in lead))
+    return [min(100, int(lv) + delta) for lv in team_levels]

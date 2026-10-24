@@ -181,6 +181,8 @@ def evolution_options(game, poke):
             continue
         if not evolution_allowed(game, tid):
             continue  # a later region's evolution: not until the player has been there
+        if src == NINCADA and tid == SHEDINJA:
+            continue  # Shedinja is the extra Pokemon Nincada -> Ninjask leaves behind, never an evolution
         rule = pairs.get(f"{src}>{tid}") or {"level": default_level(game, tid)}
         if hisui and "_" not in entry:
             # Like Legends: Arceus, evolving in Hisui gives the Hisuian form when there is one.
@@ -280,8 +282,9 @@ def condition_hint(rule):
         text = "?"
     if rule.get("level") and "item" not in rule and not text.startswith("reach"):
         text = f"reach Lv {rule['level']} and {text}"
-    if rule.get("time"):
-        text += f" ({rule['time']})"
+    if rule.get("time"):  # real clock, so say when (Gliscor, Weavile, Umbreon...)
+        text += {"night": " at night (8 PM-6 AM)", "day": " during the day (6 AM-8 PM)"}.get(
+            rule["time"], f" ({rule['time']})")
     if rule.get("weather"):
         text += " while it's raining"
     if rule.get("party_species"):

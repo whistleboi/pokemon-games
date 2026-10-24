@@ -1,5 +1,690 @@
 {
+  "CANYON_ENTRANCE": [161, 21, 22, 231, 52, 53, 54],
+  "CANYON_ENTRANCE_PERCENTAGES": { "161": 30, "21": 20, "22": 15, "231": 15, "52": 10, "53": 5, "54": 5 },
+  "GREEN_PATH": [72, 73],
+  "GREEN_PATH_PERCENTAGES": { "72": 95, "73": 5 },
+  "OUTCAST_ISLAND": [72, 73],
+  "OUTCAST_ISLAND_PERCENTAGES": { "72": 95, "73": 5 },
+  "SEVII_ALTERING_CAVE": [41, 179, 204, 228, 216, 190, 213, 234, 235],
+  "SEVII_ALTERING_CAVE_PERCENTAGES": { "41": 12, "179": 11, "204": 11, "228": 11, "216": 11, "190": 11, "213": 11, "234": 11, "235": 11 },
+  "WATER_PATH": [72, 161, 21, 22, 43, 52, 44, 53, 54, 73],
+  "WATER_PATH_PERCENTAGES": { "72": 49, "161": 15, "21": 10, "22": 8, "43": 5, "52": 5, "44": 2, "53": 2, "54": 2, "73": 2 },
+  "MEMORIAL_PILLAR": [72, 187, 73],
+  "MEMORIAL_PILLAR_PERCENTAGES": { "72": 65, "187": 30, "73": 5 },
+  "RESORT_GORGEOUS": [72, 187, 73],
+  "RESORT_GORGEOUS_PERCENTAGES": { "72": 65, "187": 30, "73": 5 },
   "STORY_PROGRESSION": {
+    "RESORT_GORGEOUS": {
+      "area_type": "wild_route",
+      "route_name": "Resort Gorgeous",
+      "region": "KANTO",
+      "battle_type": "ocean",
+      "can_fish": true,
+      "wild_pool_percentages": "RESORT_GORGEOUS_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Painter Rayna",
+          "class": "PKMN_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            235
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Lady Jacki",
+          "class": "BEAUTY",
+          "sprite": "beauty.png",
+          "team": [
+            187,
+            188
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Youngster Destin",
+          "class": "YOUNGSTER",
+          "sprite": "youngster.png",
+          "team": [
+            20,
+            17
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Painter Celina",
+          "class": "PKMN_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "team": [
+            235
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Lady Gillian",
+          "class": "BEAUTY",
+          "sprite": "beauty.png",
+          "team": [
+            179,
+            179,
+            180
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        },
+        {
+          "name": "Painter Daisy",
+          "class": "PKMN_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "team": [
+            235
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        }
+      ],
+      "level": 55,
+      "subregion": "SEVII",
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "FISH",
+          "action": "FISH",
+          "condition": "can_fish",
+          "color": "ORANGE"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Water Labyrinth",
+          "action": "EXIT",
+          "target_area": "WATER_LABYRINTH",
+          "condition": "can_exit",
+          "color": "RED"
+        },
+        {
+          "text": "Lost Cave",
+          "action": "EXIT",
+          "target_area": "LOST_CAVE",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "WATER_LABYRINTH"
+    },
+    "MEMORIAL_PILLAR": {
+      "area_type": "wild_route",
+      "route_name": "Memorial Pillar",
+      "region": "KANTO",
+      "battle_type": "ocean",
+      "can_fish": true,
+      "wild_pool_percentages": "MEMORIAL_PILLAR_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Bird Keeper Milo",
+          "class": "BIRD_KEEPER",
+          "sprite": "bird_keeper.png",
+          "team": [
+            16,
+            17
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Bird Keeper Chaz",
+          "class": "BIRD_KEEPER",
+          "sprite": "bird_keeper.png",
+          "team": [
+            21,
+            22
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Bird Keeper Harold",
+          "class": "BIRD_KEEPER",
+          "sprite": "bird_keeper.png",
+          "team": [
+            163,
+            164
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        }
+      ],
+      "level": 55,
+      "subregion": "SEVII",
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "FISH",
+          "action": "FISH",
+          "condition": "can_fish",
+          "color": "ORANGE"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Five Isle Meadow",
+          "action": "EXIT",
+          "target_area": "FIVE_ISLE_MEADOW",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "FIVE_ISLE_MEADOW"
+    },
+    "WATER_PATH": {
+      "area_type": "wild_route",
+      "route_name": "Water Path",
+      "region": "KANTO",
+      "battle_type": "ocean",
+      "can_fish": true,
+      "wild_pool_percentages": "WATER_PATH_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Hiker Earl",
+          "class": "HIKER",
+          "sprite": "hiker.png",
+          "team": [
+            95,
+            67
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Juggler Edward",
+          "class": "JUGGLER",
+          "sprite": "juggler.png",
+          "team": [
+            100,
+            100,
+            101,
+            122
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        },
+        {
+          "name": "Swimmer F Denise",
+          "class": "SWIMMER",
+          "sprite": "swimmer_f.png",
+          "team": [
+            170,
+            171
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Swimmer M Samir",
+          "class": "SWIMMER",
+          "sprite": "swimmer_f.png",
+          "team": [
+            130
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Twins Miu & Mia",
+          "class": "TWINS",
+          "sprite": "twins.png",
+          "team": [
+            25,
+            25
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Aroma Lady Rose",
+          "class": "BEAUTY",
+          "sprite": "rose.png",
+          "team": [
+            191,
+            192
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        }
+      ],
+      "level": 55,
+      "subregion": "SEVII",
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "FISH",
+          "action": "FISH",
+          "condition": "can_fish",
+          "color": "ORANGE"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Green Path",
+          "action": "EXIT",
+          "target_area": "GREEN_PATH",
+          "condition": "can_exit",
+          "color": "RED"
+        },
+        {
+          "text": "Ruin Valley",
+          "action": "EXIT",
+          "target_area": "RUIN_VALLEY",
+          "condition": "can_exit",
+          "color": "RED"
+        },
+        {
+          "text": "Six Island",
+          "action": "EXIT",
+          "target_area": "SIX_ISLAND",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "GREEN_PATH"
+    },
+    "SEVII_ALTERING_CAVE": {
+      "area_type": "dungeon",
+      "route_name": "Altering Cave",
+      "region": "KANTO",
+      "battle_type": "cave",
+      "wild_pool_percentages": "SEVII_ALTERING_CAVE_PERCENTAGES",
+      "min_rounds": 1,
+      "trainer_pool": [],
+      "level": 55,
+      "subregion": "SEVII",
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "Outcast Island",
+          "action": "EXIT",
+          "target_area": "OUTCAST_ISLAND",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "OUTCAST_ISLAND"
+    },
+    "OUTCAST_ISLAND": {
+      "area_type": "wild_route",
+      "route_name": "Outcast Island",
+      "region": "KANTO",
+      "battle_type": "ocean",
+      "can_fish": true,
+      "wild_pool_percentages": "OUTCAST_ISLAND_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Swimmer F Nicole",
+          "class": "SWIMMER",
+          "sprite": "swimmer_f.png",
+          "team": [
+            183
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Sis And Bro Ava & Geb",
+          "class": "PKMN_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "team": [
+            61,
+            121
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Swimmer M Mymo",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [
+            99,
+            8
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Team Rocket Grunt",
+          "class": "ROCKET_GRUNT",
+          "sprite": "rocket_grunt_f.png",
+          "team": [
+            89,
+            42,
+            20
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        },
+        {
+          "name": "Fisherman Tylor",
+          "class": "FISHERMAN",
+          "sprite": "fisherman.png",
+          "team": [
+            211,
+            211
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        }
+      ],
+      "level": 55,
+      "subregion": "SEVII",
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "FISH",
+          "action": "FISH",
+          "condition": "can_fish",
+          "color": "ORANGE"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Green Path",
+          "action": "EXIT",
+          "target_area": "GREEN_PATH",
+          "condition": "can_exit",
+          "color": "RED"
+        },
+        {
+          "text": "Altering Cave",
+          "action": "EXIT",
+          "target_area": "SEVII_ALTERING_CAVE",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "GREEN_PATH"
+    },
+    "GREEN_PATH": {
+      "area_type": "wild_route",
+      "route_name": "Green Path",
+      "region": "KANTO",
+      "battle_type": "grass",
+      "can_fish": true,
+      "wild_pool_percentages": "GREEN_PATH_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Psychic Jaclyn",
+          "class": "PSYCHIC",
+          "sprite": "psychic.png",
+          "team": [
+            177,
+            80,
+            64
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        }
+      ],
+      "level": 55,
+      "subregion": "SEVII",
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "FISH",
+          "action": "FISH",
+          "condition": "can_fish",
+          "color": "ORANGE"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Outcast Island",
+          "action": "EXIT",
+          "target_area": "OUTCAST_ISLAND",
+          "condition": "can_exit",
+          "color": "RED"
+        },
+        {
+          "text": "Water Path",
+          "action": "EXIT",
+          "target_area": "WATER_PATH",
+          "condition": "can_exit",
+          "color": "RED"
+        },
+        {
+          "text": "Pattern Bush",
+          "action": "EXIT",
+          "target_area": "PATTERN_BUSH",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "OUTCAST_ISLAND"
+    },
+    "CANYON_ENTRANCE": {
+      "area_type": "wild_route",
+      "route_name": "Canyon Entrance",
+      "region": "KANTO",
+      "battle_type": "mountain",
+      "wild_pool_percentages": "CANYON_ENTRANCE_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Aroma Lady Miah",
+          "class": "BEAUTY",
+          "sprite": "beauty.png",
+          "team": [
+            182,
+            182
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Juggler Mason",
+          "class": "JUGGLER",
+          "sprite": "juggler.png",
+          "team": [
+            100,
+            204,
+            100,
+            204
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        },
+        {
+          "name": "Pkmn Ranger Nicolas",
+          "class": "POKEMON_RANGER",
+          "sprite": "ranger_m.png",
+          "team": [
+            70,
+            71
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Pkmn Ranger Madeline",
+          "class": "POKEMON_RANGER",
+          "sprite": "ranger_m.png",
+          "team": [
+            44,
+            45
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Young Couple Eve & Jon",
+          "class": "TWINS",
+          "sprite": "twins.png",
+          "team": [
+            55,
+            54
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        }
+      ],
+      "level": 55,
+      "subregion": "SEVII",
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Seven Island",
+          "action": "EXIT",
+          "target_area": "SEVEN_ISLAND",
+          "condition": "can_exit",
+          "color": "RED"
+        },
+        {
+          "text": "Sevault Canyon",
+          "action": "EXIT",
+          "target_area": "SEVAULT_CANYON",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "SEVEN_ISLAND"
+    },
     "ONE_ISLAND": {
       "area_type": "town",
       "route_name": "One Island",
@@ -99,6 +784,7 @@
         },
         {
           "text": "Seagallop to Vermilion City",
+          "long_ride": true,
           "target_area": "VERMILLION_CITY",
           "message": "The Seagallop Ferry speeds back to Vermilion City."
         },
@@ -512,6 +1198,7 @@
         },
         {
           "text": "Seagallop to Vermilion City",
+          "long_ride": true,
           "target_area": "VERMILLION_CITY",
           "message": "The Seagallop Ferry speeds back to Vermilion City."
         },
@@ -743,6 +1430,7 @@
         },
         {
           "text": "Seagallop to Vermilion City",
+          "long_ride": true,
           "target_area": "VERMILLION_CITY",
           "message": "The Seagallop Ferry speeds back to Vermilion City."
         },
@@ -1023,6 +1711,7 @@
         },
         {
           "text": "Seagallop to Vermilion City",
+          "long_ride": true,
           "target_area": "VERMILLION_CITY",
           "message": "The Seagallop Ferry speeds back to Vermilion City."
         },
@@ -1238,6 +1927,7 @@
         },
         {
           "text": "Seagallop to Vermilion City",
+          "long_ride": true,
           "target_area": "VERMILLION_CITY",
           "message": "The Seagallop Ferry speeds back to Vermilion City."
         },
@@ -1348,7 +2038,8 @@
           "target_area": "FIVE_ISLAND",
           "condition": "can_exit",
           "color": "RED"
-        }
+        },
+        {"text": "Memorial Pillar", "action": "EXIT", "target_area": "MEMORIAL_PILLAR", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "FIVE_ISLAND"
     },
@@ -1415,7 +2106,8 @@
           "target_area": "FIVE_ISLAND",
           "condition": "can_exit",
           "color": "RED"
-        }
+        },
+        {"text": "Resort Gorgeous", "action": "EXIT", "target_area": "RESORT_GORGEOUS", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "FIVE_ISLAND"
     },
@@ -1484,7 +2176,8 @@
           "target_area": "FIVE_ISLAND",
           "condition": "can_exit",
           "color": "RED"
-        }
+        },
+        {"text": "Resort Gorgeous", "action": "EXIT", "target_area": "RESORT_GORGEOUS", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "FIVE_ISLAND"
     },
@@ -1674,6 +2367,7 @@
         },
         {
           "text": "Seagallop to Vermilion City",
+          "long_ride": true,
           "target_area": "VERMILLION_CITY",
           "message": "The Seagallop Ferry speeds back to Vermilion City."
         },
@@ -1718,7 +2412,8 @@
           "target_area": "FARAWAY_ISLAND",
           "message": "The Seagallop Ferry speeds across the waves. Next stop: Faraway Island!",
           "condition": "has_item:OLD_SEA_MAP"
-        }
+        },
+        {"text": "Water Path", "target_area": "WATER_PATH"}
       ],
       "next_area": "PATTERN_BUSH"
     },
@@ -1784,7 +2479,8 @@
           "target_area": "SIX_ISLAND",
           "condition": "can_exit",
           "color": "RED"
-        }
+        },
+        {"text": "Green Path", "action": "EXIT", "target_area": "GREEN_PATH", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "SIX_ISLAND"
     },
@@ -1857,7 +2553,8 @@
           "target_area": "DOTTED_HOLE",
           "condition": "can_exit",
           "color": "RED"
-        }
+        },
+        {"text": "Water Path", "action": "EXIT", "target_area": "WATER_PATH", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "SIX_ISLAND"
     },
@@ -1949,6 +2646,7 @@
         },
         {
           "text": "Seagallop to Vermilion City",
+          "long_ride": true,
           "target_area": "VERMILLION_CITY",
           "message": "The Seagallop Ferry speeds back to Vermilion City."
         },
@@ -1993,7 +2691,8 @@
           "target_area": "FARAWAY_ISLAND",
           "message": "The Seagallop Ferry speeds across the waves. Next stop: Faraway Island!",
           "condition": "has_item:OLD_SEA_MAP"
-        }
+        },
+        {"text": "Canyon Entrance", "target_area": "CANYON_ENTRANCE"}
       ],
       "next_area": "SEVAULT_CANYON",
       "gym": {
@@ -2173,7 +2872,8 @@
           "target_area": "SEVEN_ISLAND",
           "condition": "can_exit",
           "color": "RED"
-        }
+        },
+        {"text": "Canyon Entrance", "action": "EXIT", "target_area": "CANYON_ENTRANCE", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "SEVEN_ISLAND"
     },

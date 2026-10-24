@@ -96,9 +96,9 @@ try:
 finally:
     random.random = _orig
 b = g.current_state
-lv = levels.area_level(g, story.current_area_key) + 5
-check(fired and isinstance(b, WildBattleState) and b.opponent_pokemon.level == min(40, lv),
-      f"roamer Lv {b.opponent_pokemon.level} on a Lv {lv - 5} route (was 50)")
+lv = levels.legendary_encounter_level(g, story.current_area_key)  # Jordan: cap + 3 before the last badge, then 70
+check(fired and isinstance(b, WildBattleState) and b.opponent_pokemon.level == lv,
+      f"roamer Lv {b.opponent_pokemon.level} = legendary rule {lv} (was 50)")
 pid = b.opponent_pokemon.id
 b.trigger_outro(True)
 check(b.phase == "CATCH_PROMPT", "beating it offers a catch")
@@ -111,14 +111,14 @@ check(any(v.get("id") == pid for v in g.data.data["pokedex"].values()), "and YES
 
 print("3.2 / 3.4 / 3.5) levels")
 check(levels.area_level(g, "UNION_CAVE") == 13 and levels.area_level(g, "SLOWPOKE_WELL") == 15, "Union Cave 13, Slowpoke Well 15")
-check(levels.area_level(g, "KANTO_ROUTE_26") == 50, "Route 26 trains you for the League (Lv 50)")
+check(levels.area_level(g, "KANTO_ROUTE_26") == 52, "Route 26 trains you for the League (Lv 52, patch 12)")
 story.current_area_key = "MAHOGANY_TOWN"
 story.level_cap_mode = "STORY"
 story.badges["JOHTO"] = ["ZEPHYR", "HIVE", "PLAIN", "FOG", "STORMBADGE"]
 cap5 = levels.story_level_cap(story)
 story.badges["JOHTO"].append("MINERAL")
 cap6 = levels.story_level_cap(story)
-check(cap5 == 44 and cap6 == 44, f"the cap never drops: 5 badges {cap5}, 6 badges {cap6} (was 43)")
+check(cap5 == 35 and cap6 == 35, f"the cap never drops: 5 badges {cap5}, 6 badges {cap6} (HGSS: Jasmine 35, Pryce 34)")
 story.level_cap_mode = "NONE"
 joey = [levels.trainer_level(g, "JOHTO_ROUTE_29") for _ in range(200)]
 check(max(joey) <= 5, f"Route 29 trainers top out at Lv {max(joey)}")

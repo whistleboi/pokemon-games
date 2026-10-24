@@ -94,6 +94,11 @@
           }
         },
         {
+          "text": "REST IN CABIN",
+          "action": "REST",
+          "color": "BLUE"
+        },
+        {
           "text": "Honey Island",
           "action": "EXIT",
           "target_area": "HONEY_ISLAND",
@@ -211,8 +216,34 @@
       ],
       "travel_options": [
         {
-          "text": "Board the Ferry",
-          "target_area": "DECOLORE_FERRY"
+          "text": "Ferry to Castelia City",
+          "long_ride": true,
+          "target_area": "DECOLORE_FERRY",
+          "message": "You board the big ferry for the long trip back to Castelia City."
+        },
+        {
+          "text": "Boat to Scalchop Island",
+          "target_area": "SCALCHOP_ISLAND",
+          "message": "A little island boat carries you across to Scalchop Island.",
+          "condition": "got_burn_drive"
+        },
+        {
+          "text": "Boat to Grand Spectrala Island",
+          "target_area": "GRAND_SPECTRALA_ISLAND",
+          "message": "A little island boat carries you across to Grand Spectrala Island.",
+          "condition": "got_douse_drive"
+        },
+        {
+          "text": "Boat to Torom Island",
+          "target_area": "TOROM_ISLAND",
+          "message": "A little island boat carries you across to Torom Island.",
+          "condition": "got_chill_drive"
+        },
+        {
+          "text": "Boat to Paladin Island",
+          "target_area": "PALADIN_ISLAND",
+          "message": "A little island boat carries you across to Paladin Island.",
+          "condition": "decolore_lab_cleared"
         },
         {
           "text": "Honey Meadow",
@@ -398,8 +429,33 @@
       ],
       "travel_options": [
         {
-          "text": "Board the Ferry",
-          "target_area": "DECOLORE_FERRY"
+          "text": "Ferry to Castelia City",
+          "long_ride": true,
+          "target_area": "DECOLORE_FERRY",
+          "message": "You board the big ferry for the long trip back to Castelia City."
+        },
+        {
+          "text": "Boat to Honey Island",
+          "target_area": "HONEY_ISLAND",
+          "message": "A little island boat carries you across to Honey Island."
+        },
+        {
+          "text": "Boat to Grand Spectrala Island",
+          "target_area": "GRAND_SPECTRALA_ISLAND",
+          "message": "A little island boat carries you across to Grand Spectrala Island.",
+          "condition": "got_douse_drive"
+        },
+        {
+          "text": "Boat to Torom Island",
+          "target_area": "TOROM_ISLAND",
+          "message": "A little island boat carries you across to Torom Island.",
+          "condition": "got_chill_drive"
+        },
+        {
+          "text": "Boat to Paladin Island",
+          "target_area": "PALADIN_ISLAND",
+          "message": "A little island boat carries you across to Paladin Island.",
+          "condition": "decolore_lab_cleared"
         },
         {
           "text": "Scalchop Coast",
@@ -544,8 +600,33 @@
       ],
       "travel_options": [
         {
-          "text": "Board the Ferry",
-          "target_area": "DECOLORE_FERRY"
+          "text": "Ferry to Castelia City",
+          "long_ride": true,
+          "target_area": "DECOLORE_FERRY",
+          "message": "You board the big ferry for the long trip back to Castelia City."
+        },
+        {
+          "text": "Boat to Honey Island",
+          "target_area": "HONEY_ISLAND",
+          "message": "A little island boat carries you across to Honey Island."
+        },
+        {
+          "text": "Boat to Scalchop Island",
+          "target_area": "SCALCHOP_ISLAND",
+          "message": "A little island boat carries you across to Scalchop Island.",
+          "condition": "got_burn_drive"
+        },
+        {
+          "text": "Boat to Torom Island",
+          "target_area": "TOROM_ISLAND",
+          "message": "A little island boat carries you across to Torom Island.",
+          "condition": "got_chill_drive"
+        },
+        {
+          "text": "Boat to Paladin Island",
+          "target_area": "PALADIN_ISLAND",
+          "message": "A little island boat carries you across to Paladin Island.",
+          "condition": "decolore_lab_cleared"
         },
         {
           "text": "Spectrala Woods",
@@ -721,8 +802,33 @@
       ],
       "travel_options": [
         {
-          "text": "Board the Ferry",
-          "target_area": "DECOLORE_FERRY"
+          "text": "Ferry to Castelia City",
+          "long_ride": true,
+          "target_area": "DECOLORE_FERRY",
+          "message": "You board the big ferry for the long trip back to Castelia City."
+        },
+        {
+          "text": "Boat to Honey Island",
+          "target_area": "HONEY_ISLAND",
+          "message": "A little island boat carries you across to Honey Island."
+        },
+        {
+          "text": "Boat to Scalchop Island",
+          "target_area": "SCALCHOP_ISLAND",
+          "message": "A little island boat carries you across to Scalchop Island.",
+          "condition": "got_burn_drive"
+        },
+        {
+          "text": "Boat to Grand Spectrala Island",
+          "target_area": "GRAND_SPECTRALA_ISLAND",
+          "message": "A little island boat carries you across to Grand Spectrala Island.",
+          "condition": "got_douse_drive"
+        },
+        {
+          "text": "Boat to Paladin Island",
+          "target_area": "PALADIN_ISLAND",
+          "message": "A little island boat carries you across to Paladin Island.",
+          "condition": "decolore_lab_cleared"
         },
         {
           "text": "Torom Peak",
@@ -849,8 +955,33 @@
       ],
       "travel_options": [
         {
-          "text": "Board the Ferry",
-          "target_area": "DECOLORE_FERRY"
+          "text": "Ferry to Castelia City",
+          "long_ride": true,
+          "target_area": "DECOLORE_FERRY",
+          "message": "You board the big ferry for the long trip back to Castelia City."
+        },
+        {
+          "text": "Boat to Honey Island",
+          "target_area": "HONEY_ISLAND",
+          "message": "A little island boat carries you across to Honey Island."
+        },
+        {
+          "text": "Boat to Scalchop Island",
+          "target_area": "SCALCHOP_ISLAND",
+          "message": "A little island boat carries you across to Scalchop Island.",
+          "condition": "got_burn_drive"
+        },
+        {
+          "text": "Boat to Grand Spectrala Island",
+          "target_area": "GRAND_SPECTRALA_ISLAND",
+          "message": "A little island boat carries you across to Grand Spectrala Island.",
+          "condition": "got_douse_drive"
+        },
+        {
+          "text": "Boat to Torom Island",
+          "target_area": "TOROM_ISLAND",
+          "message": "A little island boat carries you across to Torom Island.",
+          "condition": "got_chill_drive"
         },
         {
           "text": "Paladin Fields",

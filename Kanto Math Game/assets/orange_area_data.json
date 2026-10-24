@@ -287,11 +287,13 @@
         },
         {
           "text": "Ship to Vermilion City",
+          "long_ride": true,
           "target_area": "VERMILLION_CITY",
           "message": "The ferry sails north, back to Vermilion City in Kanto."
         },
         {
           "text": "Ship to Olivine City",
+          "long_ride": true,
           "target_area": "OLIVINE_CITY",
           "message": "The ferry sails north-west, back to Olivine City in Johto."
         },
@@ -509,9 +511,9 @@
               120
             ],
             "levels": [
-              55,
-              55,
-              57
+              48,
+              48,
+              50
             ],
             "rewards": {
               "balls": 5
@@ -532,9 +534,9 @@
               130
             ],
             "levels": [
-              56,
-              56,
-              58
+              49,
+              49,
+              51
             ],
             "rewards": {
               "balls": 5
@@ -556,8 +558,8 @@
             9
           ],
           "levels": [
-            60,
-            62
+            52,
+            54
           ],
           "badge_reward": "CORAL_EYE",
           "rewards": {
@@ -730,9 +732,9 @@
               76
             ],
             "levels": [
-              59,
-              59,
-              61
+              50,
+              50,
+              52
             ],
             "rewards": {
               "balls": 5
@@ -753,9 +755,9 @@
               124
             ],
             "levels": [
-              60,
-              60,
-              62
+              51,
+              51,
+              53
             ],
             "rewards": {
               "balls": 5
@@ -778,9 +780,9 @@
             101
           ],
           "levels": [
-            64,
-            64,
-            66
+            54,
+            54,
+            56
           ],
           "badge_reward": "SEA_RUBY",
           "rewards": {
@@ -955,9 +957,9 @@
               130
             ],
             "levels": [
-              62,
-              62,
-              64
+              52,
+              52,
+              54
             ],
             "rewards": {
               "balls": 5
@@ -978,9 +980,9 @@
               125
             ],
             "levels": [
-              63,
-              63,
-              65
+              53,
+              53,
+              55
             ],
             "rewards": {
               "balls": 5
@@ -1003,9 +1005,9 @@
             103
           ],
           "levels": [
-            67,
-            67,
-            69
+            56,
+            56,
+            58
           ],
           "badge_reward": "SPIKE_SHELL",
           "rewards": {
@@ -1179,9 +1181,9 @@
               210
             ],
             "levels": [
-              66,
-              66,
-              68
+              54,
+              54,
+              56
             ],
             "rewards": {
               "balls": 5
@@ -1202,9 +1204,9 @@
               241
             ],
             "levels": [
-              67,
-              67,
-              69
+              55,
+              55,
+              57
             ],
             "rewards": {
               "balls": 5
@@ -1226,8 +1228,8 @@
             105
           ],
           "levels": [
-            71,
-            72
+            59,
+            60
           ],
           "badge_reward": "JADE_STAR",
           "rewards": {
@@ -1407,12 +1409,12 @@
             149
           ],
           "levels": [
-            72,
-            72,
-            73,
-            74,
-            73,
-            76
+            59,
+            59,
+            60,
+            61,
+            60,
+            63
           ],
           "badge_reward": "WINNERS_TROPHY",
           "rewards": {

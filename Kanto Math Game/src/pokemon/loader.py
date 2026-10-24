@@ -577,7 +577,10 @@ class PokemonLoader:
             a, b = pair.split(">")
             src, dst = names.get(a, "").upper(), names.get(b, "").upper()
             if src and dst and (src, dst) not in have:
-                items.setdefault(rule["item"], {})[src] = dst
+                # First pair wins: Sneasel's RAZOR_CLAW -> Weavile must not be overwritten by
+                # -> Sneasler (Hisui-only), or no Mart outside Hisui/Galar ever stocks Razor Claw.
+                # Using the item still picks the right target from the rules (item_evolution).
+                items.setdefault(rule["item"], {}).setdefault(src, dst)
 
     def default_level(self, p_id):
         """Level for a newly made Pokemon: legendaries at their fixed level, others at the

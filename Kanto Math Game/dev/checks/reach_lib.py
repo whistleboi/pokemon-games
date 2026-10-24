@@ -113,3 +113,59 @@ def report(title, start, prev):
     print("    gyms open:", sorted(a for a, ok in gyms.items() if ok),
           "| locked:", sorted(a for a, ok in gyms.items() if not ok))
     return seen
+
+
+def _raw_targets(area):
+    a = PROG.get(area) or {}
+    out = []
+    for o in (a.get("travel_options") or []) + (a.get("route_menu") or []):
+        t = o.get("target_area") or (o.get("target") if o.get("action") in ("TRAVEL", "EXIT") else None)
+        if t:
+            out.append(t)
+    return out
+
+
+def expansion_check(tag, keys, start):
+    """Added-area check: every key exists, is reachable from start with the current story state,
+    has no dangling exits and every exit has a way back."""
+    seen, _ = reach(start)
+    bad = 0
+    for k in keys:
+        if k not in PROG:
+            print(f"   FAIL {tag}: {k} missing"); bad += 1; continue
+        if k not in seen:
+            print(f"   FAIL {tag}: {k} unreachable from {start}"); bad += 1
+        for t in _raw_targets(k):
+            if t not in PROG:
+                print(f"   FAIL {tag}: {k} -> {t} dangling"); bad += 1
+            elif k not in _raw_targets(t):
+                print(f"   FAIL {tag}: {k} -> {t} has no way back"); bad += 1
+        a = PROG.get(k) or {}
+        try:  # the area opens in the game's own state
+            st = _state(k)
+            if a.get("area_type") != "town":
+                st.show_progression_menu()
+        except Exception as e:  # noqa: BLE001
+            print(f"   FAIL {tag}: {k} does not open: {e!r}"); bad += 1
+        pk = a.get("wild_pool_percentages")
+        if pk and not g.loader.area_data.get(pk):
+            print(f"   FAIL {tag}: {k} pool {pk} missing"); bad += 1
+        if any(m.get("action") == "GALACTIC_GAUNTLET" for m in a.get("route_menu") or []):
+            fl = a["trainer_pool"][-1].get("victory_flag")
+            clear_area(k)
+            _state(k).show_progression_menu()
+            if not fl or not story.story_flags.get(fl):
+                print(f"   FAIL {tag}: gauntlet {k} does not set {fl}"); bad += 1
+    print(f"--- {tag}: {len(keys)} added areas checked, {bad} problems")
+    return seen
+
+
+def gate_check(tag, keys, start, flag):
+    """keys must NOT be reachable while story flag `flag` is unset."""
+    old = story.story_flags.get(flag)
+    story.story_flags[flag] = False
+    seen, _ = reach(start)
+    for k in keys:
+        if k in seen:
+            print(f"   FAIL {tag}: {k} reachable without {flag}")
+    story.story_flags[flag] = old

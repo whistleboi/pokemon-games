@@ -129,7 +129,215 @@
     ],
     "galar_mom_newstart_3": ["Mom: The Slumbering Weald is spooky. Please don't go in there alone.", "Mom: ...Unless you're with a strong Pokémon. Then it's probably fine."]
   },
+  "MOTOSTOKE_OUTSKIRTS": [164, 559, 185, 524, 624, 109, 856, 833, 539, 859],
+  "MOTOSTOKE_OUTSKIRTS_PERCENTAGES": { "164": 20, "559": 18, "185": 15, "524": 15, "624": 10, "109": 8, "856": 5, "833": 5, "539": 2, "859": 2 },
+  "GALAR_MINE_NO_2": [422, 767, 688, 559, 714, 833, 213],
+  "GALAR_MINE_NO_2_PERCENTAGES": { "422": 25, "767": 25, "688": 15, "559": 15, "714": 10, "833": 5, "213": 5 },
   "STORY_PROGRESSION": {
+    "MEETUP_SPOT": {
+      "area_type": "town",
+      "route_name": "Meetup Spot",
+      "region": "GALAR",
+      "has_gym": false,
+      "travel_options": [
+        {
+          "text": "Wild Area",
+          "target_area": "WILD_AREA"
+        }
+      ],
+      "explore_options": [
+        {
+          "text": "Pok\u00e9mon Center",
+          "action": "HEAL"
+        },
+        {
+          "text": "Shop",
+          "action": "SHOP"
+        }
+      ],
+      "next_area": "WILD_AREA"
+    },
+    "GALAR_MINE_NO_2": {
+      "area_type": "dungeon",
+      "route_name": "Galar Mine No. 2",
+      "region": "GALAR",
+      "battle_type": "cave",
+      "can_fish": true,
+      "wild_pool_percentages": "GALAR_MINE_NO_2_PERCENTAGES",
+      "min_rounds": 1,
+      "trainer_pool": [
+        {
+          "name": "Pokemon Trainer Bede",
+          "class": "PKMN_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            577,
+            574,
+            77,
+            856
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        },
+        {
+          "name": "Worker Francis",
+          "class": "ENGINEER",
+          "sprite": "engineer.png",
+          "team": [
+            838
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Worker Yvonne",
+          "class": "ENGINEER",
+          "sprite": "engineer.png",
+          "team": [
+            524,
+            532
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Team Yell Grunt",
+          "class": "PKMN_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            828,
+            510
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Team Yell Grunt",
+          "class": "PKMN_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "team": [
+            264,
+            674
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "FISH",
+          "action": "FISH",
+          "condition": "can_fish",
+          "color": "ORANGE"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Motostoke Outskirts",
+          "action": "EXIT",
+          "target_area": "MOTOSTOKE_OUTSKIRTS",
+          "condition": "can_exit",
+          "color": "RED"
+        },
+        {
+          "text": "Hulbury",
+          "action": "EXIT",
+          "target_area": "HULBURY",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "MOTOSTOKE_OUTSKIRTS"
+    },
+    "MOTOSTOKE_OUTSKIRTS": {
+      "area_type": "wild_route",
+      "route_name": "Motostoke Outskirts",
+      "region": "GALAR",
+      "battle_type": "grass",
+      "wild_pool_percentages": "MOTOSTOKE_OUTSKIRTS_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "Madame Caroline",
+          "class": "BEAUTY",
+          "sprite": "beauty.png",
+          "team": [
+            835,
+            528
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "Police Officer Raymond",
+          "class": "PKMN_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "team": [
+            58
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Motostoke",
+          "action": "EXIT",
+          "target_area": "MOTOSTOKE",
+          "condition": "can_exit",
+          "color": "RED"
+        },
+        {
+          "text": "Galar Mine No. 2",
+          "action": "EXIT",
+          "target_area": "GALAR_MINE_NO_2",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "MOTOSTOKE"
+    },
     "POSTWICK": {
       "area_type": "town",
       "route_name": "Postwick",
@@ -203,7 +411,7 @@
           "name": "Milo",
           "class": "GYM_LEADER",
           "sprite": "milo.png",
-          "team": [840, 841],
+          "team": [829, 830], "levels": [19, 20],
           "dialogue": {
             "intro": ["Milo: If you lose, I think that would be quite all right, actually. Don't worry about it!"],
             "player_won": ["Milo: Oh, that was a nice battle! Here's the Grass Badge and TM Razor Leaf!"],
@@ -238,7 +446,7 @@
           "name": "Nessa",
           "class": "GYM_LEADER",
           "sprite": "nessa.png",
-          "team": [846, 847, 880],
+          "team": [118, 846, 834], "levels": [22, 23, 24],
           "dialogue": {
             "intro": ["Nessa: Once I set my sights on defeating you, nothing can stop me! Prepare yourself!"],
             "player_won": ["Nessa: A powerful wave swept over me. Here is the Water Badge!"],
@@ -252,7 +460,8 @@
       },
       "travel_options": [
         { "text": "Route 4 (to Turffield)", "target_area": "GALAR_ROUTE_4" },
-        { "text": "Route 5 (to Motostoke)", "target_area": "GALAR_ROUTE_5", "condition": "has_water_badge" }
+        { "text": "Route 5 (to Motostoke)", "target_area": "GALAR_ROUTE_5", "condition": "has_water_badge" },
+        {"text": "Galar Mine No. 2", "target_area": "GALAR_MINE_NO_2"}
       ],
       "explore_options": [
         { "text": "Pokémon Center", "action": "HEAL" },
@@ -273,7 +482,7 @@
           "name": "Kabu",
           "class": "GYM_LEADER",
           "sprite": "kabu.png",
-          "team": [838, 839, 851],
+          "team": [38, 59, 851], "levels": [25, 25, 27],
           "dialogue": {
             "intro": ["Kabu: If you cannot pass through my flames, you will not be going any further!"],
             "player_won": ["Kabu: Well done. The passion in your eyes — it sets you apart. Here is the Fire Badge."],
@@ -288,7 +497,8 @@
       "travel_options": [
         { "text": "Route 5 (to Hulbury)", "target_area": "GALAR_ROUTE_5" },
         { "text": "Wild Area (east)", "target_area": "WILD_AREA" },
-        { "text": "Route 6 (to Stow-on-Side)", "target_area": "GALAR_ROUTE_6", "condition": "has_fire_badge" }
+        { "text": "Route 6 (to Stow-on-Side)", "target_area": "GALAR_ROUTE_6", "condition": "has_fire_badge" },
+        {"text": "Motostoke Outskirts", "target_area": "MOTOSTOKE_OUTSKIRTS", "condition": "has_grass_badge"}
       ],
       "explore_options": [
         { "text": "Pokémon Center", "action": "HEAL" },
@@ -310,7 +520,7 @@
           "name": "Bea (Fighting) / Allister (Ghost)",
           "class": "GYM_LEADER",
           "sprite": "bea_fighting_allister_ghost.png",
-          "team": [870, 870, 865],
+          "team": [237, 675, 865, 68], "levels": [34, 34, 35, 36],
           "dialogue": {
             "intro": ["Bea: I've been waiting for this. Battle me with everything you've got!"],
             "player_won": ["Bea: A worthy challenge! You've earned the Fighting Badge!"],
@@ -347,7 +557,7 @@
           "name": "Opal",
           "class": "GYM_LEADER",
           "sprite": "opal.png",
-          "team": [869, 858, 859, 282],
+          "team": [110, 303, 468, 869], "levels": [36, 36, 37, 38],
           "dialogue": {
             "intro": ["Opal: Old age hasn't slowed me down one bit. Now, what color do I have in mind? Answer correctly and I'll go easy on you!"],
             "player_won": ["Opal: Pink! And you answered well. The Fairy Badge is yours!"],
@@ -360,15 +570,14 @@
         "requirements": { "badges": 4, "fail_text": "Earn the Fighting Badge first — and study up on Fairy-types!" }
       },
       "travel_options": [
-        { "text": "Glimwood Tangle (to Stow-on-Side)", "target_area": "GLIMWOOD_TANGLE" },
-        { "text": "Route 7 (to Circhester)", "target_area": "GALAR_ROUTE_7", "condition": "has_fairy_badge" }
+        { "text": "Glimwood Tangle (to Stow-on-Side)", "target_area": "GLIMWOOD_TANGLE" }
       ],
       "explore_options": [
         { "text": "Pokémon Center", "action": "HEAL" },
         { "text": "Shop", "action": "SHOP" },
         { "text": "Challenge Gym", "action": "GYM" }
       ],
-      "next_area": "GALAR_ROUTE_7"
+      "next_area": "GLIMWOOD_TANGLE"
     },
     "CIRCHESTER": {
       "area_type": "town",
@@ -382,7 +591,7 @@
           "name": "Gordie (Rock) / Melony (Ice)",
           "class": "GYM_LEADER",
           "sprite": "gordie_rock_melony_ice.png",
-          "team": [874, 874, 880],
+          "team": [689, 213, 874, 839], "levels": [40, 40, 41, 42],
           "dialogue": {
             "intro": ["Gordie: Don't think Fairy-type charm will work in here. Rock is absolute!"],
             "player_won": [
@@ -398,8 +607,8 @@
         "requirements": { "badges": 5, "fail_text": "Earn the Fairy Badge first!" }
       },
       "travel_options": [
-        { "text": "Route 7 (to Ballonlea)", "target_area": "GALAR_ROUTE_7" },
-        { "text": "Route 8 (to Spikemuth)", "target_area": "GALAR_ROUTE_8", "condition": "has_rock_badge" }
+        { "text": "Route 8 (to Hammerlocke)", "target_area": "GALAR_ROUTE_8" },
+        { "text": "Route 9 (to Spikemuth)", "target_area": "GALAR_ROUTE_9", "condition": "has_rock_badge" }
       ],
       "explore_options": [
         { "text": "Pokémon Center", "action": "HEAL" },
@@ -407,7 +616,7 @@
         { "text": "Challenge Gym", "action": "GYM" },
         { "text": "Hero's Bath (Sonia research)", "action": "NPC", "target": "galar_sonia_bath", "flag_condition": "not saw_circhester_monument" }
       ],
-      "next_area": "GALAR_ROUTE_8"
+      "next_area": "GALAR_ROUTE_9"
     },
     "SPIKEMUTH": {
       "area_type": "town",
@@ -421,7 +630,7 @@
           "name": "Piers",
           "class": "GYM_LEADER",
           "sprite": "piers.png",
-          "team": [877, 877, 863, 862],
+          "team": [560, 687, 435, 862], "levels": [44, 45, 45, 46],
           "dialogue": {
             "intro": ["Piers: Right. Let's not drag this out. I'll battle you, and I'll do it without any Dynamax. I never needed it."],
             "player_won": ["Piers: ...Good battle. Here's the Dark Badge. Don't go easy on Leon."],
@@ -434,8 +643,7 @@
         "requirements": { "badges": 6, "fail_text": "Earn the Rock Badge first — and get past Team Yell guarding the gate!" }
       },
       "travel_options": [
-        { "text": "Route 8 (to Circhester)", "target_area": "GALAR_ROUTE_8" },
-        { "text": "Route 9 (to Hammerlocke)", "target_area": "GALAR_ROUTE_9", "condition": "has_dark_badge" }
+        { "text": "Route 9 (to Circhester / Route 9 Tunnel)", "target_area": "GALAR_ROUTE_9" }
       ],
       "explore_options": [
         { "text": "Pokémon Center", "action": "HEAL" },
@@ -457,7 +665,7 @@
           "name": "Raihan",
           "class": "GYM_LEADER",
           "sprite": "raihan.png",
-          "team": [844, 880, 882, 883],
+          "team": [526, 330, 844, 884], "levels": [46, 47, 46, 48],
           "dialogue": {
             "intro": ["Raihan: Alright! Let's settle this quick — my fans are watching! I'll be using Dynamax, so buckle up!"],
             "player_won": [
@@ -473,7 +681,8 @@
         "requirements": { "badges": 7, "fail_text": "Earn the Dark Badge first!" }
       },
       "travel_options": [
-        { "text": "Route 9 (to Spikemuth)", "target_area": "GALAR_ROUTE_9" },
+        { "text": "Route 7 (to Circhester)", "target_area": "GALAR_ROUTE_7" },
+        { "text": "Route 6 (to Stow-on-Side)", "target_area": "GALAR_ROUTE_6" },
         { "text": "Route 10 (to Wyndon)", "target_area": "GALAR_ROUTE_10", "condition": "has_dragon_badge" },
         { "text": "Rose Tower / Energy Plant", "target_area": "ROSE_TOWER" }
       ],
@@ -515,7 +724,7 @@
             "class": "RIVAL",
             "sprite": "marnie.png",
             "is_boss_battle": true,
-            "team": [877, 877, 862, 863, 869],
+            "team": [510, 454, 560, 877, 861], "levels": [54, 54, 54, 55, 56],
             "rewards": { "balls": 10 },
             "dialogue": {
               "intro": ["Marnie: I'm giving this everything I've got. Don't hold back."],
@@ -528,12 +737,8 @@
             "class": "PKMN_TRAINER",
             "sprite": "hop.png",
             "is_boss_battle": true,
-            "team": [884, 845, 851, 865, 880, 812],
-            "team_choice": {
-              "810": [884, 845, 851, 865, 880, 815],
-              "813": [884, 845, 724, 865, 880, 812],
-              "816": [884, 845, 851, 865, 880, 818]
-            },
+            "team": [832, 823, 871, 143, 818], "levels": [55, 55, 54, 54, 56],
+            "team_choice": {"810": [832, 823, 871, 143, 818], "813": [832, 823, 871, 143, 812], "816": [832, 823, 871, 143, 815]},
             "rewards": { "balls": 15 },
             "victory_flag": "defeated_hop_wyndon",
             "dialogue": {
@@ -548,12 +753,8 @@
           "class": "CHAMPION",
           "sprite": "leon.png",
           "is_boss_battle": true,
-          "team": [879, 845, 851, 880, 884, 6],
-          "team_choice": {
-            "810": [879, 845, 727, 880, 884, 6],
-            "813": [879, 845, 851, 880, 884, 6],
-            "816": [879, 845, 730, 880, 884, 6]
-          },
+          "team": [681, 887, 612, 537, 815, 6], "levels": [62, 62, 63, 64, 64, 65],
+          "team_choice": {"810": [681, 887, 612, 537, 815, 6], "813": [681, 887, 612, 866, 818, 6], "816": [681, 887, 612, 464, 812, 6]},
           "rewards": { "balls": 20, "GALAR_HALL_OF_FAME": 1 },
           "victory_flag": "beat_galar_champion",
           "dialogue": {
@@ -600,7 +801,8 @@
         { "text": "Motostoke (east)", "action": "EXIT", "target_area": "MOTOSTOKE", "condition": "can_exit", "color": "RED" },
         { "text": "Wedgehurst (south)", "action": "EXIT", "target_area": "WEDGEHURST", "condition": "can_exit", "color": "RED" },
         { "text": "ROUTE 2", "action": "EXIT", "target_area": "GALAR_ROUTE_2", "condition": "can_exit", "color": "RED" },
-        { "text": "ROUTE 3", "action": "EXIT", "target_area": "GALAR_ROUTE_3", "condition": "can_exit", "color": "RED" }
+        { "text": "ROUTE 3", "action": "EXIT", "target_area": "GALAR_ROUTE_3", "condition": "can_exit", "color": "RED" },
+        {"text": "Meetup Spot", "action": "EXIT", "target_area": "MEETUP_SPOT", "condition": "can_exit", "color": "RED"}
       ],
       "max_raid_den": {
         "1": { "819": 35, "821": 35, "831": 15, "829": 10, "52-gmax": 5 },
@@ -869,7 +1071,8 @@
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
         { "text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE" },
         { "text": "Motostoke", "action": "EXIT", "target_area": "MOTOSTOKE", "condition": "can_exit", "color": "RED" },
-        { "text": "Stow-on-Side", "action": "EXIT", "target_area": "STOW_ON_SIDE", "condition": "can_exit", "color": "RED" }
+        { "text": "Stow-on-Side", "action": "EXIT", "target_area": "STOW_ON_SIDE", "condition": "can_exit", "color": "RED" },
+        { "text": "Hammerlocke", "action": "EXIT", "target_area": "HAMMERLOCKE", "condition": ["can_exit", "has_fairy_badge"], "color": "RED" }
       ],
       "next_area": "STOW_ON_SIDE"
     },
@@ -895,10 +1098,11 @@
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         { "text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE" },
-        { "text": "Ballonlea", "action": "EXIT", "target_area": "BALLONLEA", "condition": "can_exit", "color": "RED" },
-        { "text": "Circhester", "action": "EXIT", "target_area": "CIRCHESTER", "condition": "can_exit", "color": "RED" }
+        { "text": "Hammerlocke", "action": "EXIT", "target_area": "HAMMERLOCKE", "condition": "can_exit", "color": "RED" },
+        { "text": "Route 8", "action": "EXIT", "target_area": "GALAR_ROUTE_8", "condition": "can_exit", "color": "RED" },
+        { "text": "Route 9 Tunnel", "action": "EXIT", "target_area": "GALAR_ROUTE_9", "condition": ["can_exit", "has_dark_badge"], "color": "RED" }
       ],
-      "next_area": "CIRCHESTER"
+      "next_area": "GALAR_ROUTE_8"
     },
     "GALAR_ROUTE_8": {
       "area_type": "wild_route",
@@ -922,10 +1126,10 @@
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         { "text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE" },
-        { "text": "Circhester", "action": "EXIT", "target_area": "CIRCHESTER", "condition": "can_exit", "color": "RED" },
-        { "text": "Spikemuth", "action": "EXIT", "target_area": "SPIKEMUTH", "condition": "can_exit", "color": "RED" }
+        { "text": "Route 7", "action": "EXIT", "target_area": "GALAR_ROUTE_7", "condition": "can_exit", "color": "RED" },
+        { "text": "Circhester", "action": "EXIT", "target_area": "CIRCHESTER", "condition": "can_exit", "color": "RED" }
       ],
-      "next_area": "SPIKEMUTH",
+      "next_area": "CIRCHESTER",
       "weather": "SNOW"
     },
     "GALAR_ROUTE_9": {
@@ -951,10 +1155,11 @@
         { "text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
         { "text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE" },
+        { "text": "Circhester", "action": "EXIT", "target_area": "CIRCHESTER", "condition": "can_exit", "color": "RED" },
         { "text": "Spikemuth", "action": "EXIT", "target_area": "SPIKEMUTH", "condition": "can_exit", "color": "RED" },
-        { "text": "Hammerlocke", "action": "EXIT", "target_area": "HAMMERLOCKE", "condition": "can_exit", "color": "RED" }
+        { "text": "Route 9 Tunnel (to Route 7)", "action": "EXIT", "target_area": "GALAR_ROUTE_7", "condition": ["can_exit", "has_dark_badge"], "color": "RED" }
       ],
-      "next_area": "HAMMERLOCKE",
+      "next_area": "SPIKEMUTH",
       "weather": "SNOW"
     },
     "GALAR_ROUTE_10": {

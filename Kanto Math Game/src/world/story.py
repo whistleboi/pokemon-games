@@ -901,6 +901,17 @@ class StoryManager:
 
         self.sync_key_items()
         self.sync_catch_counts()
+        self.sync_story_flags()
+
+    # Story flags that follow from others: set once any of the listed flags is set.
+    # sinjoh_rite_done: the Sinjoh rite is over once one of the three gods has been met (beaten or
+    # caught), so Cynthia's "Talk to Cynthia" intro (flag_condition "not sinjoh_rite_done") goes away.
+    DERIVED_FLAGS = {"sinjoh_rite_done": ("sinjoh_dialga", "sinjoh_palkia", "sinjoh_giratina")}
+
+    def sync_story_flags(self):
+        for flag, sources in self.DERIVED_FLAGS.items():
+            if not self.story_flags.get(flag) and any(self.story_flags.get(f) for f in sources):
+                self.story_flags[flag] = True
 
     def sync_key_items(self):
         """Ensures players have key items unlocked by their earned badges."""

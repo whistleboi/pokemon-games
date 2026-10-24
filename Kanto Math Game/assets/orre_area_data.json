@@ -104,6 +104,7 @@
         },
         {
           "text": "Air Transit to Hoenn (Lilycove)",
+          "long_ride": true,
           "target_area": "LILYCOVE_CITY",
           "message": "The plane lifts off over the desert. Next stop: Lilycove City in Hoenn."
         }

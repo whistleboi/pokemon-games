@@ -1,5 +1,599 @@
 {
+  "SAVANNA_BIOME": [128, 329, 954, 126, 102, 123, 84, 103, 113, 330, 667, 668, 111, 49],
+  "SAVANNA_BIOME_PERCENTAGES": { "128": 9, "329": 7, "954": 7, "126": 7, "102": 7, "123": 7, "84": 7, "103": 7, "113": 7, "330": 7, "667": 7, "668": 7, "111": 7, "49": 7 },
+  "COASTAL_BIOME": [732, 779, 117, 89, 72, 73, 456, 457, 171, 686, 594, 662, 739, 678],
+  "COASTAL_BIOME_PERCENTAGES": { "732": 9, "779": 7, "117": 7, "89": 7, "72": 7, "73": 7, "456": 7, "457": 7, "171": 7, "686": 7, "594": 7, "662": 7, "739": 7, "678": 7 },
+  "CANYON_BIOME": [82, 237, 559, 236, 586, 572, 239, 125, 529, 623, 622, 854, 235, 212],
+  "CANYON_BIOME_PERCENTAGES": { "82": 9, "237": 7, "559": 7, "236": 7, "586": 7, "572": 7, "239": 7, "125": 7, "529": 7, "623": 7, "622": 7, "854": 7, "235": 7, "212": 7 },
+  "POLAR_BIOME": [623, 87, 460, 884, 131, 579, 375, 459, 868, 209, 27, 37, 739, 210],
+  "POLAR_BIOME_PERCENTAGES": { "623": 9, "87": 7, "460": 7, "884": 7, "131": 7, "579": 7, "375": 7, "459": 7, "868": 7, "209": 7, "27": 7, "37": 7, "739": 7, "210": 7 },
+  "TORCHLIT_LABYRINTH": [50, 51, 79, 126, 152, 235, 240, 242, 287, 322, 323, 324, 335, 336],
+  "TORCHLIT_LABYRINTH_PERCENTAGES": { "50": 9, "51": 7, "79": 7, "126": 7, "152": 7, "235": 7, "240": 7, "242": 7, "287": 7, "322": 7, "323": 7, "324": 7, "335": 7, "336": 7 },
+  "CHARGESTONE_CAVERN": [604, 137, 596, 239, 82, 603, 81, 125, 212, 311, 312, 374, 375, 479],
+  "CHARGESTONE_CAVERN_PERCENTAGES": { "604": 9, "137": 7, "596": 7, "239": 7, "82": 7, "603": 7, "81": 7, "125": 7, "212": 7, "311": 7, "312": 7, "374": 7, "375": 7, "479": 7 },
   "STORY_PROGRESSION": {
+    "CHARGESTONE_CAVERN": {
+      "area_type": "dungeon",
+      "route_name": "Chargestone Cavern",
+      "region": "PALDEA",
+      "battle_type": "cave",
+      "wild_pool_percentages": "CHARGESTONE_CAVERN_PERCENTAGES",
+      "min_rounds": 1,
+      "trainer_pool": [],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "Polar Biome",
+          "action": "EXIT",
+          "target_area": "POLAR_BIOME",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "POLAR_BIOME"
+    },
+    "TORCHLIT_LABYRINTH": {
+      "area_type": "dungeon",
+      "route_name": "Torchlit Labyrinth",
+      "region": "PALDEA",
+      "battle_type": "cave",
+      "wild_pool_percentages": "TORCHLIT_LABYRINTH_PERCENTAGES",
+      "min_rounds": 1,
+      "trainer_pool": [],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "Canyon Biome",
+          "action": "EXIT",
+          "target_area": "CANYON_BIOME",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "CANYON_BIOME"
+    },
+    "POLAR_BIOME": {
+      "area_type": "wild_route",
+      "route_name": "Polar Biome",
+      "region": "PALDEA",
+      "battle_type": "mountain",
+      "can_fish": true,
+      "wild_pool_percentages": "POLAR_BIOME_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "League Club Craig",
+          "class": "PKMN_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            409,
+            411
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "League Club Winter",
+          "class": "PKMN_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "team": [
+            87,
+            28
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "League Club Ray",
+          "class": "PKMN_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            523,
+            462
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "League Club Eve",
+          "class": "PKMN_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            578,
+            211
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "League Club Apinya",
+          "class": "PKMN_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "team": [
+            774,
+            623,
+            774,
+            774
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        },
+        {
+          "name": "League Club Rebeccah",
+          "class": "PKMN_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            578,
+            375
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "FISH",
+          "action": "FISH",
+          "condition": "can_fish",
+          "color": "ORANGE"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Central Plaza",
+          "action": "EXIT",
+          "target_area": "TERARIUM_CENTRAL_PLAZA",
+          "condition": "can_exit",
+          "color": "RED"
+        },
+        {
+          "text": "Chargestone Cavern",
+          "action": "EXIT",
+          "target_area": "CHARGESTONE_CAVERN",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "TERARIUM_CENTRAL_PLAZA"
+    },
+    "CANYON_BIOME": {
+      "area_type": "wild_route",
+      "route_name": "Canyon Biome",
+      "region": "PALDEA",
+      "battle_type": "mountain",
+      "wild_pool_percentages": "CANYON_BIOME_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "League Club Ramona",
+          "class": "PKMN_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "team": [
+            237,
+            106,
+            560
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        },
+        {
+          "name": "League Club Chun",
+          "class": "PKMN_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            311,
+            312
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "League Club Seori",
+          "class": "PKMN_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "team": [
+            237,
+            560,
+            740
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        },
+        {
+          "name": "League Club Wayne",
+          "class": "PKMN_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            855,
+            576,
+            623
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        },
+        {
+          "name": "League Club Danyo",
+          "class": "PKMN_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "team": [
+            774,
+            462,
+            479,
+            623
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        },
+        {
+          "name": "League Club Tsubasa",
+          "class": "PKMN_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            227,
+            409,
+            123,
+            466
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Central Plaza",
+          "action": "EXIT",
+          "target_area": "TERARIUM_CENTRAL_PLAZA",
+          "condition": "can_exit",
+          "color": "RED"
+        },
+        {
+          "text": "Torchlit Labyrinth",
+          "action": "EXIT",
+          "target_area": "TORCHLIT_LABYRINTH",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "TERARIUM_CENTRAL_PLAZA"
+    },
+    "COASTAL_BIOME": {
+      "area_type": "wild_route",
+      "route_name": "Coastal Biome",
+      "region": "PALDEA",
+      "battle_type": "ocean",
+      "can_fish": true,
+      "wild_pool_percentages": "COASTAL_BIOME_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "League Club Tony",
+          "class": "PKMN_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            370,
+            25
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "League Club Peter",
+          "class": "PKMN_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "team": [
+            49,
+            576
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "League Club Felicia",
+          "class": "PKMN_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            855,
+            80
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "League Club Seth",
+          "class": "PKMN_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "team": [
+            774,
+            774
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "League Club Vanessa",
+          "class": "PKMN_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            573,
+            553
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "League Club Yun Hee",
+          "class": "PKMN_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            324,
+            288
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "FISH",
+          "action": "FISH",
+          "condition": "can_fish",
+          "color": "ORANGE"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Central Plaza",
+          "action": "EXIT",
+          "target_area": "TERARIUM_CENTRAL_PLAZA",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "TERARIUM_CENTRAL_PLAZA"
+    },
+    "SAVANNA_BIOME": {
+      "area_type": "wild_route",
+      "route_name": "Savanna Biome",
+      "region": "PALDEA",
+      "battle_type": "grass",
+      "wild_pool_percentages": "SAVANNA_BIOME_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {
+          "name": "League Club Carmela",
+          "class": "PKMN_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            668,
+            668
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "League Club Julienne",
+          "class": "PKMN_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "team": [
+            323,
+            604
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "League Club Roux",
+          "class": "PKMN_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            324,
+            182,
+            45,
+            126
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        },
+        {
+          "name": "League Club Imani",
+          "class": "PKMN_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            103,
+            85
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "League Club Riley",
+          "class": "PKMN_TRAINER",
+          "sprite": "acetrainer_f.png",
+          "team": [
+            869,
+            954
+          ],
+          "rewards": {
+            "balls": 4
+          }
+        },
+        {
+          "name": "League Club Sophie",
+          "class": "PKMN_TRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            242,
+            981,
+            752,
+            954
+          ],
+          "rewards": {
+            "balls": 5
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Central Plaza",
+          "action": "EXIT",
+          "target_area": "TERARIUM_CENTRAL_PLAZA",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "TERARIUM_CENTRAL_PLAZA"
+    },
+    "TERARIUM_CENTRAL_PLAZA": {
+      "area_type": "town",
+      "route_name": "Central Plaza",
+      "region": "PALDEA",
+      "has_gym": false,
+      "travel_options": [
+        {
+          "text": "The Terarium",
+          "target_area": "TERARIUM"
+        },
+        {
+          "text": "Savanna Biome",
+          "target_area": "SAVANNA_BIOME"
+        },
+        {
+          "text": "Coastal Biome",
+          "target_area": "COASTAL_BIOME"
+        },
+        {
+          "text": "Canyon Biome",
+          "target_area": "CANYON_BIOME"
+        },
+        {
+          "text": "Polar Biome",
+          "target_area": "POLAR_BIOME"
+        }
+      ],
+      "explore_options": [
+        {
+          "text": "Pok\u00e9mon Center",
+          "action": "HEAL"
+        },
+        {
+          "text": "Shop",
+          "action": "SHOP"
+        }
+      ],
+      "next_area": "TERARIUM"
+    },
     "DYNA_TREE_HILL": {
       "area_type": "wild_route",
       "route_name": "Dyna Tree Hill",
@@ -396,7 +990,8 @@
           "target_area": "BLUEBERRY_ACADEMY",
           "condition": "can_exit",
           "color": "RED"
-        }
+        },
+        {"text": "Central Plaza", "action": "EXIT", "target_area": "TERARIUM_CENTRAL_PLAZA", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "BLUEBERRY_ACADEMY"
     }
