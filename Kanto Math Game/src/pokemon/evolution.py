@@ -43,10 +43,23 @@ def learnset(game, pid):
     return _data(game).get("learnsets", {}).get(str(pid), [])
 
 
+def move_species(game, poke):
+    """Whose learnset a Pokemon uses: its own form's (Crystal Onix) when it has one, else its species'."""
+    sets = _data(game).get("learnsets", {})
+    if str(poke.id) in sets and int(poke.id) >= 2000:
+        return int(poke.id)
+    form = getattr(poke, "form", "normal")
+    if form and form != "normal":  # an evolved form keeps the base id (Onix + crystal): find the form's id
+        for sid, m in game.loader.area_data.get("FORM_MAP", {}).items():
+            if m.get("id") == base_id(poke) and m.get("form") == form and sid in sets:
+                return int(sid)
+    return base_id(poke)
+
+
 def known_moves(game, poke, level=None):
     """Moves it has learned by level-up at its level (names as in the movesets, e.g. IRON-TAIL)."""
     lv = poke.level if level is None else level
-    return {m for l, m in learnset(game, base_id(poke)) if max(1, l) <= lv}
+    return {m for l, m in learnset(game, move_species(game, poke)) if max(1, l) <= lv}
 
 
 def _move_types(game):
@@ -147,13 +160,14 @@ def evolution_allowed(game, target_id):
 
 
 def _form_item_rules(game):
-    """{(form key, target entry): item} for regional-form item evolutions in EVOLUTION_ITEMS."""
+    """{(source key, target entry): item} for item evolutions from or into a form in EVOLUTION_ITEMS
+    (Galarian Slowpoke + Galarica Cuff; Onix + Crystal Stone -> Crystal Onix)."""
     cache = getattr(game, "_form_item_rules", None)
     if cache is None:
         cache = {}
         for item, pairs in game.loader.evolution_map.get("EVOLUTION_ITEMS", {}).items():
             for src_key, target in (pairs.items() if isinstance(pairs, dict) else pairs):
-                if "_" in str(src_key):
+                if "_" in str(src_key) or "_" in str(target):
                     cache.setdefault((str(src_key).upper(), str(target).upper()), item)
         game._form_item_rules = cache
     return cache
@@ -197,7 +211,7 @@ def evolution_options(game, poke):
         if src == NINCADA and tid == SHEDINJA:
             continue  # Shedinja is the extra Pokemon Nincada -> Ninjask leaves behind, never an evolution
         rule = pairs.get(f"{src}>{tid}") or {"level": default_level(game, tid)}
-        if key != poke.name.upper() and (key, entry) in _form_item_rules(game):
+        if (key, entry) in _form_item_rules(game):
             # A regional form's own item evolution (Galarian Slowpoke: Galarica Cuff -> Slowbro,
             # Galarica Wreath -> Slowking), not the base species' rule (level 37 / King's Rock).
             rule = {"item": _form_item_rules(game)[(key, entry)]}

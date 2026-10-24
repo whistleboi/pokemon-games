@@ -109,6 +109,161 @@
         "ROCK",
         "ICE"
       ]
+    },
+    "9117": {
+      "id": 10,
+      "form": "pinkan",
+      "name": "Pinkan caterpie"
+    },
+    "9118": {
+      "id": 11,
+      "form": "pinkan",
+      "name": "Pinkan metapod"
+    },
+    "9119": {
+      "id": 13,
+      "form": "pinkan",
+      "name": "Pinkan weedle"
+    },
+    "9120": {
+      "id": 14,
+      "form": "pinkan",
+      "name": "Pinkan kakuna"
+    },
+    "9121": {
+      "id": 15,
+      "form": "pinkan",
+      "name": "Pinkan beedrill"
+    },
+    "9122": {
+      "id": 18,
+      "form": "pinkan",
+      "name": "Pinkan pidgeot"
+    },
+    "9123": {
+      "id": 19,
+      "form": "pinkan",
+      "name": "Pinkan rattata"
+    },
+    "9124": {
+      "id": 20,
+      "form": "pinkan",
+      "name": "Pinkan raticate"
+    },
+    "9125": {
+      "id": 29,
+      "form": "pinkan",
+      "name": "Pinkan nidoran-f"
+    },
+    "9126": {
+      "id": 31,
+      "form": "pinkan",
+      "name": "Pinkan nidoqueen"
+    },
+    "9127": {
+      "id": 32,
+      "form": "pinkan",
+      "name": "Pinkan nidoran-m"
+    },
+    "9128": {
+      "id": 43,
+      "form": "pinkan",
+      "name": "Pinkan oddish"
+    },
+    "9129": {
+      "id": 44,
+      "form": "pinkan",
+      "name": "Pinkan gloom"
+    },
+    "9130": {
+      "id": 45,
+      "form": "pinkan",
+      "name": "Pinkan vileplume"
+    },
+    "9131": {
+      "id": 47,
+      "form": "pinkan",
+      "name": "Pinkan parasect"
+    },
+    "9132": {
+      "id": 49,
+      "form": "pinkan",
+      "name": "Pinkan venomoth"
+    },
+    "9133": {
+      "id": 50,
+      "form": "pinkan",
+      "name": "Pinkan diglett"
+    },
+    "9134": {
+      "id": 51,
+      "form": "pinkan",
+      "name": "Pinkan dugtrio"
+    },
+    "9135": {
+      "id": 69,
+      "form": "pinkan",
+      "name": "Pinkan bellsprout"
+    },
+    "9136": {
+      "id": 71,
+      "form": "pinkan",
+      "name": "Pinkan victreebel"
+    },
+    "9501": {
+      "id": 12,
+      "form": "valencia",
+      "name": "Valencia butterfree"
+    },
+    "9502": {
+      "id": 20,
+      "form": "valencia",
+      "name": "Valencia raticate"
+    },
+    "9503": {
+      "id": 29,
+      "form": "valencia",
+      "name": "Valencia nidoran-f"
+    },
+    "9504": {
+      "id": 30,
+      "form": "valencia",
+      "name": "Valencia nidorina"
+    },
+    "9505": {
+      "id": 32,
+      "form": "valencia",
+      "name": "Valencia nidoran-m"
+    },
+    "9506": {
+      "id": 45,
+      "form": "valencia",
+      "name": "Valencia vileplume"
+    },
+    "9507": {
+      "id": 46,
+      "form": "valencia",
+      "name": "Valencia paras"
+    },
+    "9508": {
+      "id": 61,
+      "form": "valencia",
+      "name": "Valencia poliwhirl"
+    },
+    "9509": {
+      "id": 70,
+      "form": "valencia",
+      "name": "Valencia weepinbell"
+    },
+    "9510": {
+      "id": 91,
+      "form": "valencia",
+      "name": "Valencia cloyster"
+    },
+    "9511": {
+      "id": 130,
+      "form": "valencia",
+      "name": "Valencia gyarados"
     }
   },
   "JOURNAL_MISSIONS": [
@@ -1440,7 +1595,13 @@
           "badges": 4,
           "fail_text": "Only trainers with all four Orange Crew badges may challenge Drake."
         }
-      }
+      },
+      "extra_stock": [
+        {
+          "item": "CRYSTAL_STONE",
+          "condition": "beat_orange_champion"
+        }
+      ]
     },
     "PUMMELO_CLIFFS": {
       "area_type": "wild_route",
@@ -1769,10 +1930,12 @@
             ],
             "lines": [
               "Mateo: You calmed the Crystal Onix! I've never seen glass shine like that.",
-              "I made this glass coin from sand by the lake. It's said to bring good fortune!"
+              "I made this glass coin from sand by the lake. It's said to bring good fortune!",
+              "And this Crystal Stone: an Onix that touches it turns to living crystal, like the one in the cave!"
             ],
             "gift_item": {
-              "AMULET_COIN": 1
+              "AMULET_COIN": 1,
+              "CRYSTAL_STONE": 1
             },
             "flag": "got_mateo_gift"
           },
@@ -2307,19 +2470,41 @@
     116,
     118,
     131,
-    170
+    170,
+    9501,
+    9502,
+    9503,
+    9504,
+    9505,
+    9506,
+    9507,
+    9508,
+    9509,
+    9510,
+    9511
   ],
   "ORANGE_VALENCIA_BEACH_PERCENTAGES": {
-    "98": 15,
-    "90": 12,
-    "120": 12,
-    "72": 15,
-    "54": 10,
-    "79": 10,
-    "116": 10,
-    "118": 8,
-    "131": 3,
-    "170": 5
+    "98": 10,
+    "90": 8,
+    "120": 8,
+    "72": 10,
+    "54": 7,
+    "79": 7,
+    "116": 7,
+    "118": 5,
+    "131": 2,
+    "170": 3,
+    "9501": 2,
+    "9502": 3,
+    "9503": 4,
+    "9504": 3,
+    "9505": 4,
+    "9506": 2,
+    "9507": 4,
+    "9508": 4,
+    "9509": 3,
+    "9510": 2,
+    "9511": 2
   },
   "ORANGE_MIKAN_REEF": [
     116,
@@ -2450,40 +2635,78 @@
     "149": 1
   },
   "ORANGE_PINKAN_RESERVE": [
+    9117,
+    9118,
     9101,
+    9119,
+    9120,
+    9121,
     9102,
     9103,
+    9122,
+    9123,
+    9124,
+    9125,
     9104,
+    9126,
+    9127,
     9105,
     9106,
+    9128,
+    9129,
+    9130,
     9107,
+    9131,
     9108,
+    9132,
+    9133,
+    9134,
     9109,
     9110,
+    9135,
     9111,
+    9136,
     9112,
     9113,
     9114,
-    9115,
-    9116
+    9115
   ],
   "ORANGE_PINKAN_RESERVE_PERCENTAGES": {
-    "9101": 10,
-    "9102": 10,
-    "9103": 6,
-    "9104": 6,
-    "9105": 6,
-    "9106": 3,
-    "9107": 8,
-    "9108": 8,
-    "9109": 8,
-    "9110": 4,
-    "9111": 8,
-    "9112": 8,
-    "9113": 3,
-    "9114": 8,
-    "9115": 3,
-    "9116": 4
+    "9117": 4,
+    "9118": 2,
+    "9101": 1,
+    "9119": 4,
+    "9120": 2,
+    "9121": 1,
+    "9102": 4,
+    "9103": 2,
+    "9122": 1,
+    "9123": 4,
+    "9124": 2,
+    "9125": 4,
+    "9104": 2,
+    "9126": 1,
+    "9127": 5,
+    "9105": 2,
+    "9106": 1,
+    "9128": 5,
+    "9129": 2,
+    "9130": 1,
+    "9107": 5,
+    "9131": 2,
+    "9108": 5,
+    "9132": 2,
+    "9133": 5,
+    "9134": 2,
+    "9109": 5,
+    "9110": 2,
+    "9135": 5,
+    "9111": 2,
+    "9136": 1,
+    "9112": 5,
+    "9113": 2,
+    "9114": 5,
+    "9115": 2
   },
   "ORANGE_CRYSTAL_CAVE": [
     95,

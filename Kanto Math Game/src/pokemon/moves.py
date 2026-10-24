@@ -85,12 +85,17 @@ def _species(poke):
     return base_id(poke)
 
 
+def _learner(game, poke):
+    from src.pokemon.evolution import move_species
+    return move_species(game, poke)
+
+
 def learnable(game, poke, up_to=None, after=0):
     """Usable level-up moves learned in (after, up_to], oldest first."""
     from src.pokemon.evolution import learnset
     lv = poke.level if up_to is None else up_to
     out = []
-    for learn_level, name in sorted(learnset(game, _species(poke)), key=lambda x: x[0]):
+    for learn_level, name in sorted(learnset(game, _learner(game, poke)), key=lambda x: x[0]):
         if after < max(1, learn_level) <= lv and name not in out and usable(info(game, name)):
             out.append(name)
     return out

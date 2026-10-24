@@ -351120,5 +351120,412 @@
       }
     ],
     "evolution": null
+  },
+  "95_crystal": {
+    "name": "CRYSTAL ONIX",
+    "types": [
+      "ROCK",
+      "ICE"
+    ],
+    "stats": {
+      "HP": 70,
+      "ATTACK": 90,
+      "DEFENSE": 60,
+      "SPECIAL-ATTACK": 110,
+      "SPECIAL-DEFENSE": 70,
+      "SPEED": 110
+    },
+    "base_xp": 77,
+    "capture_rate": 45,
+    "moves": [
+      {
+        "name": "BIND",
+        "power": 15,
+        "type": "NORMAL",
+        "accuracy": 85,
+        "category": "PHYSICAL"
+      },
+      {
+        "name": "HARDEN",
+        "power": 0,
+        "type": "NORMAL",
+        "accuracy": null,
+        "category": "STATUS"
+      },
+      {
+        "name": "TACKLE",
+        "power": 40,
+        "type": "NORMAL",
+        "accuracy": 100,
+        "category": "PHYSICAL"
+      },
+      {
+        "name": "CURSE",
+        "power": 0,
+        "type": "GHOST",
+        "accuracy": null,
+        "category": "STATUS"
+      },
+      {
+        "name": "ROCK-THROW",
+        "power": 50,
+        "type": "ROCK",
+        "accuracy": 90,
+        "category": "PHYSICAL"
+      },
+      {
+        "name": "ICE-SHARD",
+        "power": 40,
+        "type": "ICE",
+        "accuracy": 100,
+        "category": "PHYSICAL"
+      },
+      {
+        "name": "COIL",
+        "power": 0,
+        "type": "POISON",
+        "accuracy": null,
+        "category": "STATUS"
+      },
+      {
+        "name": "ROCK-BLAST",
+        "power": 25,
+        "type": "ROCK",
+        "accuracy": 90,
+        "category": "PHYSICAL"
+      },
+      {
+        "name": "ICICLE-SPEAR",
+        "power": 25,
+        "type": "ICE",
+        "accuracy": 100,
+        "category": "PHYSICAL"
+      },
+      {
+        "name": "DRAGON-BREATH",
+        "power": 60,
+        "type": "DRAGON",
+        "accuracy": 100,
+        "category": "SPECIAL"
+      },
+      {
+        "name": "DRAGON-TAIL",
+        "power": 60,
+        "type": "DRAGON",
+        "accuracy": 90,
+        "category": "PHYSICAL"
+      },
+      {
+        "name": "ROCK-SLIDE",
+        "power": 75,
+        "type": "ROCK",
+        "accuracy": 90,
+        "category": "PHYSICAL"
+      },
+      {
+        "name": "ICICLE-CRASH",
+        "power": 85,
+        "type": "ICE",
+        "accuracy": 90,
+        "category": "PHYSICAL"
+      },
+      {
+        "name": "ROCK-POLISH",
+        "power": 0,
+        "type": "ROCK",
+        "accuracy": null,
+        "category": "STATUS"
+      },
+      {
+        "name": "POWER-GEM",
+        "power": 80,
+        "type": "ROCK",
+        "accuracy": 100,
+        "category": "SPECIAL"
+      },
+      {
+        "name": "STONE-EDGE",
+        "power": 100,
+        "type": "ROCK",
+        "accuracy": 80,
+        "category": "PHYSICAL"
+      },
+      {
+        "name": "FROST-BREATH",
+        "power": 60,
+        "type": "ICE",
+        "accuracy": 90,
+        "category": "SPECIAL"
+      },
+      {
+        "name": "HEAVY-SLAM",
+        "power": 0,
+        "type": "STEEL",
+        "accuracy": 100,
+        "category": "PHYSICAL"
+      },
+      {
+        "name": "EARTH-POWER",
+        "power": 90,
+        "type": "GROUND",
+        "accuracy": 100,
+        "category": "SPECIAL"
+      },
+      {
+        "name": "HEAD-SMASH",
+        "power": 150,
+        "type": "ROCK",
+        "accuracy": 80,
+        "category": "PHYSICAL"
+      },
+      {
+        "name": "ROAR",
+        "power": 0,
+        "type": "NORMAL",
+        "accuracy": null,
+        "category": "STATUS"
+      },
+      {
+        "name": "TOXIC",
+        "power": 0,
+        "type": "POISON",
+        "accuracy": 90,
+        "category": "STATUS"
+      },
+      {
+        "name": "HAIL",
+        "power": 0,
+        "type": "ICE",
+        "accuracy": null,
+        "category": "STATUS"
+      },
+      {
+        "name": "SUNNY-DAY",
+        "power": 0,
+        "type": "FIRE",
+        "accuracy": null,
+        "category": "STATUS"
+      },
+      {
+        "name": "TAUNT",
+        "power": 0,
+        "type": "DARK",
+        "accuracy": 100,
+        "category": "STATUS"
+      },
+      {
+        "name": "ICE-BEAM",
+        "power": 90,
+        "type": "ICE",
+        "accuracy": 100,
+        "category": "SPECIAL"
+      },
+      {
+        "name": "BLIZZARD",
+        "power": 110,
+        "type": "ICE",
+        "accuracy": 70,
+        "category": "SPECIAL"
+      },
+      {
+        "name": "HYPER-BEAM",
+        "power": 150,
+        "type": "NORMAL",
+        "accuracy": 90,
+        "category": "SPECIAL"
+      },
+      {
+        "name": "PROTECT",
+        "power": 0,
+        "type": "NORMAL",
+        "accuracy": null,
+        "category": "STATUS"
+      },
+      {
+        "name": "IRON-TAIL",
+        "power": 100,
+        "type": "STEEL",
+        "accuracy": 75,
+        "category": "PHYSICAL"
+      },
+      {
+        "name": "EARTHQUAKE",
+        "power": 100,
+        "type": "GROUND",
+        "accuracy": 100,
+        "category": "PHYSICAL"
+      },
+      {
+        "name": "DIG",
+        "power": 80,
+        "type": "GROUND",
+        "accuracy": 100,
+        "category": "PHYSICAL"
+      },
+      {
+        "name": "SANDSTORM",
+        "power": 0,
+        "type": "ROCK",
+        "accuracy": null,
+        "category": "STATUS"
+      },
+      {
+        "name": "ROCK-TOMB",
+        "power": 60,
+        "type": "ROCK",
+        "accuracy": 95,
+        "category": "PHYSICAL"
+      },
+      {
+        "name": "FACADE",
+        "power": 70,
+        "type": "NORMAL",
+        "accuracy": 100,
+        "category": "PHYSICAL"
+      },
+      {
+        "name": "REST",
+        "power": 0,
+        "type": "PSYCHIC",
+        "accuracy": null,
+        "category": "STATUS"
+      },
+      {
+        "name": "DRAGON-PULSE",
+        "power": 85,
+        "type": "DRAGON",
+        "accuracy": 100,
+        "category": "SPECIAL"
+      },
+      {
+        "name": "PAYBACK",
+        "power": 50,
+        "type": "DARK",
+        "accuracy": 100,
+        "category": "PHYSICAL"
+      },
+      {
+        "name": "AVALANCHE",
+        "power": 60,
+        "type": "ICE",
+        "accuracy": 100,
+        "category": "PHYSICAL"
+      },
+      {
+        "name": "GYRO-BALL",
+        "power": 0,
+        "type": "STEEL",
+        "accuracy": 100,
+        "category": "PHYSICAL"
+      },
+      {
+        "name": "STEALTH-ROCK",
+        "power": 0,
+        "type": "ROCK",
+        "accuracy": null,
+        "category": "STATUS"
+      },
+      {
+        "name": "DAZZLING-GLEAM",
+        "power": 80,
+        "type": "FAIRY",
+        "accuracy": 100,
+        "category": "SPECIAL"
+      },
+      {
+        "name": "FLASH-CANNON",
+        "power": 80,
+        "type": "STEEL",
+        "accuracy": 100,
+        "category": "SPECIAL"
+      },
+      {
+        "name": "SURF",
+        "power": 90,
+        "type": "WATER",
+        "accuracy": 100,
+        "category": "SPECIAL"
+      },
+      {
+        "name": "STRENGTH",
+        "power": 80,
+        "type": "NORMAL",
+        "accuracy": 100,
+        "category": "PHYSICAL"
+      },
+      {
+        "name": "ROCK-SMASH",
+        "power": 40,
+        "type": "FIGHTING",
+        "accuracy": 100,
+        "category": "PHYSICAL"
+      },
+      {
+        "name": "BULLDOZE",
+        "power": 60,
+        "type": "GROUND",
+        "accuracy": 100,
+        "category": "PHYSICAL"
+      },
+      {
+        "name": "ROLLOUT",
+        "power": 30,
+        "type": "ROCK",
+        "accuracy": 90,
+        "category": "PHYSICAL"
+      },
+      {
+        "name": "MUD-SLAP",
+        "power": 20,
+        "type": "GROUND",
+        "accuracy": 100,
+        "category": "SPECIAL"
+      },
+      {
+        "name": "IRON-DEFENSE",
+        "power": 0,
+        "type": "STEEL",
+        "accuracy": null,
+        "category": "STATUS"
+      },
+      {
+        "name": "IRON-HEAD",
+        "power": 80,
+        "type": "STEEL",
+        "accuracy": 100,
+        "category": "PHYSICAL"
+      },
+      {
+        "name": "ZAP-CANNON",
+        "power": 120,
+        "type": "ELECTRIC",
+        "accuracy": 50,
+        "category": "SPECIAL"
+      },
+      {
+        "name": "TWISTER",
+        "power": 40,
+        "type": "DRAGON",
+        "accuracy": 100,
+        "category": "SPECIAL"
+      },
+      {
+        "name": "ANCIENT-POWER",
+        "power": 60,
+        "type": "ROCK",
+        "accuracy": 100,
+        "category": "SPECIAL"
+      },
+      {
+        "name": "STOMPING-TANTRUM",
+        "power": 75,
+        "type": "GROUND",
+        "accuracy": 100,
+        "category": "PHYSICAL"
+      }
+    ],
+    "evolution": [
+      "STEELIX"
+    ]
   }
 }

@@ -415,10 +415,19 @@ class PokeMartState(GameState):
     }
 
     # Gift-only items: never on any shelf (the Up-Grade comes from Silph Co., after Johto).
-    NEVER_SOLD = {"UPGRADE", "UP_GRADE"}
+    NEVER_SOLD = {"UPGRADE", "UP_GRADE", "CRYSTAL_STONE"}
 
     def _shop_items(self):
-        return [i for i in self._stock_items() if i not in self.NEVER_SOLD]
+        return [i for i in self._stock_items() if i not in self.NEVER_SOLD] + self._extra_stock()
+
+    def _extra_stock(self):
+        """An area's own extra shelf ("extra_stock": [{"item", "condition"}]): Pummelo Island sells the
+        Crystal Stone once you're the Orange League Champion."""
+        if self.stock is not None:
+            return []
+        flags = self.game.story_manager.story_flags
+        return [e["item"] for e in self.game.story_manager.get_current_area_data().get("extra_stock", [])
+                if not e.get("condition") or flags.get(e["condition"])]
 
     def _stock_items(self):
         if self.stock is not None:
@@ -1683,6 +1692,8 @@ class PokedexState(GameState):
 
         self.btn_cry = Button((0, 0, 160, 50), "CRY", game.assets.fonts["tiny"], self.play_selected_cry, bg_color=BLUE, visible=False)
         self.btn_area = Button((0, 0, 160, 50), "AREA", game.assets.fonts["tiny"], self.show_selected_area, bg_color=GREEN, visible=False)
+        self.btn_info = Button((0, 0, 160, 50), "INFO", game.assets.fonts["tiny"], self.show_selected_info, bg_color=GOLD, visible=False)
+        self.popup_rect.height = 190
 
         self.btn_shiny_toggle = Button(
             rect=(game.width - 250, 30, 220, 70),
@@ -1770,6 +1781,7 @@ class PokedexState(GameState):
         self.game.ui_manager.add_element(self.btn_sort)
         self.game.ui_manager.add_element(self.btn_cry)
         self.game.ui_manager.add_element(self.btn_area)
+        self.game.ui_manager.add_element(self.btn_info)
         for btn in self.tab_buttons:
             self.game.ui_manager.add_element(btn)
 
@@ -1804,6 +1816,21 @@ class PokedexState(GameState):
         self.popup_active = False
         self.btn_cry.set_visibility(False)
         self.btn_area.set_visibility(False)
+        self.btn_info.set_visibility(False)
+
+    def _caught_entry(self, pid):
+        return next((v for v in self.game.data.data.get("pokedex", {}).values()
+                     if isinstance(v, dict) and int(v.get("id", -1)) == int(pid)), None)
+
+    def show_selected_info(self):
+        """The summary page for a caught species (cycle its forms there)."""
+        entry = self._caught_entry(self.selected_pkmn_id) if self.selected_pkmn_id else None
+        self.hide_popup()
+        if not entry:
+            return
+        mon = Pokemon(self.game.loader.fetch_specific(int(entry["id"]), form=entry.get("form", "normal")),
+                      self.game.assets, size_mult=2.5)
+        self.game.change_state(PokemonDetailState(self.game, mon, self))
 
     def toggle_sort(self):
         self.sort_mode = "NAME" if self.sort_mode == "NUMBER" else "NUMBER"
@@ -1962,8 +1989,14 @@ class PokedexState(GameState):
 
                             self.btn_cry.rect.topleft = (self.popup_rect.x + 10, self.popup_rect.y + 10)
                             self.btn_area.rect.topleft = (self.popup_rect.x + 10, self.popup_rect.y + 70)
+                            self.btn_info.rect.topleft = (self.popup_rect.x + 10, self.popup_rect.y + 130)
+                            if self.popup_rect.bottom > self.game.height:
+                                self.popup_rect.bottom = self.game.height - 10
+                                for k, btn in enumerate((self.btn_cry, self.btn_area, self.btn_info)):
+                                    btn.rect.topleft = (self.popup_rect.x + 10, self.popup_rect.y + 10 + 60 * k)
                             self.btn_cry.set_visibility(True)
                             self.btn_area.set_visibility(True)
+                            self.btn_info.set_visibility(bool(self._caught_entry(p_id)))
                             return
 
     def confirm_wipe(self):
@@ -2687,6 +2720,9 @@ class EvolutionState(GameState):
 
 
 # [REF-0022: Pokemon Detail View]
+PURPLE_BTN = (120, 70, 170)
+
+
 class PokemonDetailState(GameState):
     STAT_ROWS = (("HP", "HP"), ("ATTACK", "Attack"), ("DEFENSE", "Defense"),
                  ("SPATK", "Sp. Atk"), ("SPDEF", "Sp. Def"), ("SPEED", "Speed"))
@@ -2696,8 +2732,17 @@ class PokemonDetailState(GameState):
     def __init__(self, game, pokemon, previous_state):
         super().__init__(game)
         self.pokemon = pokemon
+        self.own = pokemon  # the Pokemon this summary was opened for
         self.previous_state = previous_state
         self.tab = "INFO"
+        # Every form of this species the player has obtained (regional, Pinkan, Valencia, Shadow...).
+        self.forms = self._obtained_forms(pokemon)
+        self.form_idx = 0
+        y = 230
+        self.btn_form_prev = Button((game.width // 2 - 205, y, 70, 70), "<", game.assets.fonts["med"],
+                                    lambda: self.cycle_form(-1), bg_color=PURPLE_BTN, autosize=False)
+        self.btn_form_next = Button((game.width // 2 + 135, y, 70, 70), ">", game.assets.fonts["med"],
+                                    lambda: self.cycle_form(1), bg_color=PURPLE_BTN, autosize=False)
         self.btn_back = Button(
             (game.width - 140, game.height - 80, 120, 60),
             "BACK",
@@ -2718,6 +2763,37 @@ class PokemonDetailState(GameState):
         self.tab = tab
         self._color_tabs()
 
+    def _obtained_forms(self, pokemon):
+        """[pokemon] + a display Pokemon for each other obtained form of its species (Pokedex data)."""
+        form_map = self.game.loader.area_data.get("FORM_MAP", {})
+
+        def species(pid):
+            pid = int(pid)
+            return int((form_map.get(str(pid)) or {}).get("id", pid)) if pid >= 2000 else pid
+
+        base = species(pokemon.id)
+        seen = {pokemon.form}  # one page per form (an evolved Crystal Onix and a caught one are the same form)
+        out = [pokemon]
+        entries = sorted((v for v in self.game.data.data.get("pokedex", {}).values()
+                          if isinstance(v, dict) and "id" in v), key=lambda v: (int(v["id"]) >= 2000, int(v["id"])))
+        for v in entries:
+            pid, form = int(v["id"]), v.get("form", "normal")
+            if species(pid) != base or form in seen or form == "gmax" or str(form).startswith("mega"):
+                continue
+            seen.add(form)
+            try:
+                mon = Pokemon(self.game.loader.fetch_specific(pid, form=form), self.game.assets, size_mult=2.5)
+            except Exception:
+                continue
+            mon.level = pokemon.level
+            out.append(mon)
+        return out
+
+    def cycle_form(self, step):
+        if len(self.forms) > 1:
+            self.form_idx = (self.form_idx + step) % len(self.forms)
+            self.pokemon = self.forms[self.form_idx]
+
     def _color_tabs(self):
         for name, btn in self.tab_buttons.items():
             btn.bg_color = GOLD if name == self.tab else BLUE
@@ -2730,11 +2806,16 @@ class PokemonDetailState(GameState):
         self.game.ui_manager.add_element(self.btn_back)
         for btn in self.tab_buttons.values():
             self.game.ui_manager.add_element(btn)
+        if len(self.forms) > 1:
+            self.game.ui_manager.add_element(self.btn_form_prev)
+            self.game.ui_manager.add_element(self.btn_form_next)
 
     def handle_events(self, events):
         for event in events:
             if event.type == pygame.KEYDOWN and event.key in (pygame.K_LEFT, pygame.K_RIGHT):
                 self.show_tab("STATS" if self.tab == "INFO" else "INFO")
+            elif event.type == pygame.KEYDOWN and event.key in (pygame.K_UP, pygame.K_DOWN):
+                self.cycle_form(-1 if event.key == pygame.K_UP else 1)
 
     def update(self):
         pass
@@ -2759,13 +2840,21 @@ class PokemonDetailState(GameState):
         y = 400
         font = self.game.assets.fonts["med"]
 
-        texts = [
-            f"Name: {self.pokemon.display_name}",
-            f"Level: {self.pokemon.level}" + (
-                f"  (XP {self.pokemon.xp}/{self.pokemon.xp_to_next})" if self.pokemon.xp_to_next else "  (MAX)"),
-            f"HP: {self.pokemon.current_hp}/{self.pokemon.get_max_hp()}",
-            f"Types: {'/'.join(self.pokemon.types)}"
-        ]
+        if self.pokemon is self.own:
+            texts = [
+                f"Name: {self.pokemon.display_name}",
+                f"Level: {self.pokemon.level}" + (
+                    f"  (XP {self.pokemon.xp}/{self.pokemon.xp_to_next})" if self.pokemon.xp_to_next else "  (MAX)"),
+                f"HP: {self.pokemon.current_hp}/{self.pokemon.get_max_hp()}",
+                f"Types: {'/'.join(self.pokemon.types)}"
+            ]
+        else:  # another form of this species from the Pokedex
+            texts = [f"Name: {self.pokemon.display_name}",
+                     f"Form: {str(self.pokemon.form).title()}",
+                     f"Types: {'/'.join(self.pokemon.types)}"]
+        if len(self.forms) > 1:
+            Utils.draw_text_outline(self.game.screen, f"FORM {self.form_idx + 1}/{len(self.forms)}",
+                                    self.game.assets.fonts["small"], GOLD, self.game.width // 2, 385)
         if getattr(self.pokemon, "gmax_factor", False):
             texts.append("Gigantamax Factor: YES")
         if getattr(self.pokemon, "everstone", False):
