@@ -2998,7 +2998,7 @@
       "travel_options": [
         { "text": "Route 214", "target_area": "SINNOH_ROUTE_214" },
         { "text": "Route 215", "target_area": "SINNOH_ROUTE_215" },
-        { "text": "Team Galactic HQ", "target_area": "TEAM_GALACTIC_HQ", "flag_condition": "has_galactic_key" },
+        { "text": "Team Galactic HQ", "target_area": "TEAM_GALACTIC_HQ", "item_condition": "GALACTIC_KEY" },
         {"text": "Galactic Warehouse", "target_area": "GALACTIC_WAREHOUSE", "condition": "has_cobble_badge"}
       ],
       "explore_options": [
@@ -3006,7 +3006,7 @@
         { "text": "Department Store", "action": "SHOP" },
         { "text": "Gym", "action": "GYM" },
         { "text": "Game Corner", "action": "GAMECORNER" },
-        { "text": "Galactic Veilstone HQ", "action": "TRAVEL", "target_area": "TEAM_GALACTIC_HQ", "flag_condition": "has_galactic_key" },
+        { "text": "Galactic Veilstone HQ", "action": "TRAVEL", "target_area": "TEAM_GALACTIC_HQ", "item_condition": "GALACTIC_KEY" },
         { "text": "Talk to Looker", "action": "NPC", "target": "looker_veilstone", "flag_condition": "has_cobble_badge" }
       ],
       "on_enter_event": {

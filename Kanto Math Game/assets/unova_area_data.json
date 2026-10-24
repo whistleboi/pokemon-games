@@ -2546,7 +2546,7 @@
           "name": "N",
           "class": "PKMN_TRAINER",
           "sprite": "n.png",
-          "team": [644, 584, 601],
+          "team": [525, 595, 597, 599],
           "rewards": { "balls": 5 },
           "victory_flag": "defeated_n_dragonspiral",
           "dialogue": {

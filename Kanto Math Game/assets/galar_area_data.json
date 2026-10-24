@@ -875,7 +875,7 @@
           "class": "RIVAL",
           "sprite": "rose.png",
           "is_boss_battle": true,
-          "team": [869, 879, 884, 879, 890],
+          "team": [589, 598, 863, 601, 879],
           "rewards": { "balls": 15 },
           "victory_flag": "rose_tower_cleared",
           "dialogue": {
@@ -900,7 +900,7 @@
         }
       ],
       "route_menu": [
-        { "text": "BATTLE ROSE TOWER", "action": "TRAINER", "condition": "has_trainers", "color": "GOLD", "flag_condition": "not rose_tower_cleared" },
+        { "text": "BATTLE ROSE TOWER", "action": "TRAINER", "condition": "has_trainers", "color": "GOLD", "flag_condition": "not eternatus_defeated" },
         { "text": "THE ENERGY PLANT ROOF", "action": "BOSS", "condition": "boss_available", "color": "GOLD" },
         { "text": "Hammerlocke", "action": "EXIT", "target_area": "HAMMERLOCKE", "condition": "can_exit", "color": "RED" }
       ],
