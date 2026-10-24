@@ -23,7 +23,7 @@ check(not missing, f"every Shadow form has a sprite (missing {missing[:5]})")
 
 # Reverse stats: same total, Attack <-> Defense, Sp. Atk <-> Sp. Def.
 base = Pokemon(g.loader.fetch_specific(248), g.assets, size_mult=2.5)
-shade = Pokemon(g.loader.fetch_specific(9312), g.assets, size_mult=2.5)
+shade = Pokemon(g.loader.fetch_specific(9399), g.assets, size_mult=2.5)
 b, s = base.base_stats, shade.base_stats
 check(s["ATTACK"] == b["DEFENSE"] and s["DEFENSE"] == b["ATTACK"]
       and s["SPECIAL-ATTACK"] == b["SPECIAL-DEFENSE"] and s["SPECIAL-DEFENSE"] == b["SPECIAL-ATTACK"]
@@ -59,11 +59,11 @@ check("Cipher Lab" in t and "ONBS Building" not in t, f"XD lairs gated: {t}")
 # Pokedex: a Shadow Pokemon is its own variant entry.
 g.data.data["pokedex"] = {}
 g.data.add_pokemon(shade)
-check(set(g.data.data["pokedex"]) == {"9312-shadow"}, f"Shadow Tyranitar registers as a variant: {set(g.data.data['pokedex'])}")
+check(set(g.data.data["pokedex"]) == {"9399-shadow"}, f"Shadow Tyranitar registers as a variant: {set(g.data.data['pokedex'])}")
 
 # Optional purify at the Relic Stone: only the chosen Shadow Pokemon.
-sh1 = Pokemon(g.loader.fetch_specific(9304), g.assets, size_mult=2.5); sh1.level = 40   # Bayleef
-sh2 = Pokemon(g.loader.fetch_specific(9301), g.assets, size_mult=2.5); sh2.level = 20   # Makuhita
+sh1 = Pokemon(g.loader.fetch_specific(9348), g.assets, size_mult=2.5); sh1.level = 40   # Bayleef
+sh2 = Pokemon(g.loader.fetch_specific(9406), g.assets, size_mult=2.5); sh2.level = 20   # Makuhita
 story.player_team = [sh1, sh2]
 story.current_area_key = "AGATE_VILLAGE"
 c = CityState(g); g.change_state(c)
@@ -72,7 +72,7 @@ _run_story_event(c, {"purify": "choose", "lines": ["The Relic Stone glows."]}, l
 menu = g.current_state
 check(type(menu).__name__ == "PokemonPartyMenuState", "Relic Stone asks which Pokemon")
 menu.on_select(0)
-check(story.player_team[0].id == 154 and story.player_team[1].id == 9301,
+check(story.player_team[0].id == 154 and story.player_team[1].id == 9406,
       f"only the chosen one purified (and evolved): {[p.name for p in story.player_team]}")
 check(any("MEGANIUM" in l for l in shown[-1]), f"purify message: {shown[-1]}")
 

@@ -25,12 +25,16 @@ from orange_special import PINKAN  # noqa: E402
 PINKAN_LINES = [[10, 11, 12], [13, 14, 15], [16, 17, 18], [19, 20], [29, 30, 31], [32, 33, 34], [43, 44, 45],
                 [46, 47], [48, 49], [50, 51], [56, 57], [69, 70, 71], [102, 103], [111, 112]]
 ITEM_STEPS = {(30, 31): "MOON_STONE", (33, 34): "MOON_STONE", (44, 45): "LEAF_STONE", (70, 71): "LEAF_STONE",
-              (102, 103): "LEAF_STONE"}
+              (102, 103): "LEAF_STONE", (61, 62): "WATER_STONE"}
 
-# ---- Valencia: Ivy's colour variants. (form id, base, hue shift in degrees, warm tint on light parts)
+# ---- Valencia: Ivy's colour variants, smart IDs 9501-9517 in dex order. (form id, base, hue shift in
+# degrees, warm tint on light parts); an evolution shares its line's shift.
 VALENCIA = [(9501, 12, 150, (255, 170, 80)), (9502, 20, 200, None), (9503, 29, 80, None), (9504, 30, 80, None),
-            (9505, 32, -60, None), (9506, 45, 25, None), (9507, 46, 60, None), (9508, 61, 60, None),
-            (9509, 70, -45, None), (9510, 91, -100, None), (9511, 130, -60, None)]
+            (9505, 31, 80, None), (9506, 32, -60, None), (9507, 33, -60, None), (9508, 34, -60, None),
+            (9509, 45, 25, None), (9510, 46, 60, None), (9511, 47, 60, None), (9512, 61, 60, None),
+            (9513, 62, 60, None), (9514, 70, -45, None), (9515, 71, -45, None), (9516, 91, -100, None),
+            (9517, 130, -60, None)]
+VALENCIA_LINES = [[29, 30, 31], [32, 33, 34], [46, 47], [61, 62], [70, 71]]
 
 CRYSTAL_ONIX = 9201
 CRYSTAL_STATS = {"HP": 70, "ATTACK": 90, "DEFENSE": 60, "SPECIAL-ATTACK": 110, "SPECIAL-DEFENSE": 70, "SPEED": 110}
@@ -158,19 +162,22 @@ evo = json.loads(s)
 add = {}
 for form, table in (("pinkan", PINKAN), ("valencia", {sid: base for sid, base, *_ in VALENCIA})):
     have = set(table.values())
-    for line in PINKAN_LINES if form == "pinkan" else [[29, 30]]:
+    for line in PINKAN_LINES if form == "pinkan" else VALENCIA_LINES:
         for a, b in zip(line, line[1:]):
             if a in have and b in have:
                 add[f"{pname(a, form).upper()}_{form.upper()}"] = [f"{names[str(b)].upper()}_{form.upper()}"]
 new_lines = "".join(f'    {json.dumps(k)}: {json.dumps(v)},\n' for k, v in add.items() if k not in evo)
 if new_lines:
     s = s.replace('    "ONIX": ["STEELIX", "ONIX_CRYSTAL"],\n', '    "ONIX": ["STEELIX", "ONIX_CRYSTAL"],\n' + new_lines, 1)
-for (a, b), item in ITEM_STEPS.items():
-    key = f"{pname(a, 'pinkan').upper()}_PINKAN"
-    target = f"{names[str(b)].upper()}_PINKAN"
-    m = re.search(r'("%s": \{)' % item, s)
-    if f'"{key}"' not in s[m.end():m.end() + 2000].split("}")[0]:
-        s = s[:m.end()] + f'"{key}": "{target}", ' + s[m.end():]
+for form, table in (("pinkan", PINKAN), ("valencia", {sid: base for sid, base, *_ in VALENCIA})):
+    for (a, b), item in ITEM_STEPS.items():
+        if a not in table.values() or b not in table.values():
+            continue
+        key = f"{pname(a, form).upper()}_{form.upper()}"
+        target = f"{names[str(b)].upper()}_{form.upper()}"
+        m = re.search(r'("%s": \{)' % item, s)
+        if f'"{key}"' not in s[m.end():m.end() + 2000].split("}")[0]:
+            s = s[:m.end()] + f'"{key}": "{target}", ' + s[m.end():]
 if '"CRYSTAL_STONE"' not in s:
     s = s.replace('        "METAL_COAT": {', '        "CRYSTAL_STONE": {"ONIX": "ONIX_CRYSTAL"},\n        "METAL_COAT": {', 1)
 json.loads(s)

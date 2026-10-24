@@ -231,36 +231,66 @@
       "name": "Valencia nidorina"
     },
     "9505": {
+      "id": 31,
+      "form": "valencia",
+      "name": "Valencia nidoqueen"
+    },
+    "9506": {
       "id": 32,
       "form": "valencia",
       "name": "Valencia nidoran-m"
     },
-    "9506": {
+    "9507": {
+      "id": 33,
+      "form": "valencia",
+      "name": "Valencia nidorino"
+    },
+    "9508": {
+      "id": 34,
+      "form": "valencia",
+      "name": "Valencia nidoking"
+    },
+    "9509": {
       "id": 45,
       "form": "valencia",
       "name": "Valencia vileplume"
     },
-    "9507": {
+    "9510": {
       "id": 46,
       "form": "valencia",
       "name": "Valencia paras"
     },
-    "9508": {
+    "9511": {
+      "id": 47,
+      "form": "valencia",
+      "name": "Valencia parasect"
+    },
+    "9512": {
       "id": 61,
       "form": "valencia",
       "name": "Valencia poliwhirl"
     },
-    "9509": {
+    "9513": {
+      "id": 62,
+      "form": "valencia",
+      "name": "Valencia poliwrath"
+    },
+    "9514": {
       "id": 70,
       "form": "valencia",
       "name": "Valencia weepinbell"
     },
-    "9510": {
+    "9515": {
+      "id": 71,
+      "form": "valencia",
+      "name": "Valencia victreebel"
+    },
+    "9516": {
       "id": 91,
       "form": "valencia",
       "name": "Valencia cloyster"
     },
-    "9511": {
+    "9517": {
       "id": 130,
       "form": "valencia",
       "name": "Valencia gyarados"
@@ -2481,30 +2511,42 @@
     9508,
     9509,
     9510,
-    9511
+    9511,
+    9512,
+    9513,
+    9514,
+    9515,
+    9516,
+    9517
   ],
   "ORANGE_VALENCIA_BEACH_PERCENTAGES": {
-    "98": 10,
-    "90": 8,
-    "120": 8,
-    "72": 10,
-    "54": 7,
-    "79": 7,
-    "116": 7,
-    "118": 5,
+    "98": 7,
+    "90": 7,
+    "120": 7,
+    "72": 7,
+    "54": 6,
+    "79": 6,
+    "116": 6,
+    "118": 4,
     "131": 2,
     "170": 3,
     "9501": 2,
     "9502": 3,
     "9503": 4,
     "9504": 3,
-    "9505": 4,
-    "9506": 2,
-    "9507": 4,
-    "9508": 4,
-    "9509": 3,
-    "9510": 2,
-    "9511": 2
+    "9505": 2,
+    "9506": 4,
+    "9507": 2,
+    "9508": 2,
+    "9509": 2,
+    "9510": 4,
+    "9511": 2,
+    "9512": 4,
+    "9513": 2,
+    "9514": 3,
+    "9515": 2,
+    "9516": 2,
+    "9517": 2
   },
   "ORANGE_MIKAN_REEF": [
     116,

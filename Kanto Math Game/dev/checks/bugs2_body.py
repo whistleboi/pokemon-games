@@ -122,14 +122,14 @@ check(evolution.item_evolution(g, gslow, "GALARICA_CUFF") == ("SLOWBRO_GALARIAN"
 
 # O-1 / D-1 Pokedex: Shadow forms count as the species; Urshifu counts as #892.
 g.data.data["pokedex"] = {}
-g.data.add_pokemon(Pokemon(g.loader.fetch_specific(9301), g.assets, size_mult=2.5))
+g.data.add_pokemon(Pokemon(g.loader.fetch_specific(9406), g.assets, size_mult=2.5))
 g.data.add_pokemon(Pokemon(g.loader.fetch_specific(8004), g.assets, size_mult=2.5))
 keys = set(g.data.data["pokedex"])
-check("9301-shadow" in keys and "296-normal" not in keys, f"Shadow Makuhita is its own variant entry: {keys}")
+check("9406-shadow" in keys and "296-normal" not in keys, f"Shadow Makuhita is its own variant entry: {keys}")
 check("892-normal" in keys and "8004-single" in keys, "Urshifu registers as #892 too")
 
 # O-4 purified Pokemon evolve when due.
-shadow = Pokemon(g.loader.fetch_specific(9301), g.assets, size_mult=2.5)
+shadow = Pokemon(g.loader.fetch_specific(9406), g.assets, size_mult=2.5)
 shadow.level = 40
 story.player_team = [shadow]
 story.current_area_key = "PHENAC_CITY" if "PHENAC_CITY" in SP else story.current_area_key

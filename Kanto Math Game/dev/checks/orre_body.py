@@ -46,14 +46,14 @@ run("PHENAC_CITY", "Meet Rui")
 check(story.inventory.get("SNAG_MACHINE") == 1 and "Pyrite Town" in travel("PHENAC_CITY"), "Rui: Snag Machine")
 m = menu("ORRE_DESERT")
 check(m.count("SNAG SHADOW POKEMON") == 1, f"desert: one SNAG button for its Shadow pool: {m}")
-raw = g.loader.fetch_specific(9301)
+raw = g.loader.fetch_specific(9406)
 check(raw["name"] == "SHADOW MAKUHITA" and raw["img"], f"Shadow form: {raw['name']}")
 
 print("3) Purifying at the Relic Stone")
-sh = Pokemon(g.loader.fetch_specific(9312), g.assets, size_mult=2.5)
+sh = Pokemon(g.loader.fetch_specific(9399), g.assets, size_mult=2.5)
 sh.level, sh.moves, sh.ivs = 70, ["CRUNCH", "EARTHQUAKE"], {k: 31 for k in sh.IV_KEYS}
 story.player_team = [mk(25), sh]
-story.pc_pokemon = [Pokemon(g.loader.fetch_specific(9301), g.assets, size_mult=2.5), None]
+story.pc_pokemon = [Pokemon(g.loader.fetch_specific(9406), g.assets, size_mult=2.5), None]
 said = run("AGATE_VILLAGE", "Purify at the Relic Stone")
 pm = g.current_state
 check(type(pm).__name__ == "PokemonPartyMenuState", "Relic Stone: choose which Pokemon (purifying is optional)")
@@ -61,7 +61,7 @@ pm.on_select(1)
 ty = story.player_team[1]
 check(ty.id == 248 and ty.level == 70 and ty.moves == ["CRUNCH", "EARTHQUAKE"] and set(ty.ivs.values()) == {31},
       f"Shadow Tyranitar -> Tyranitar, same level, moves and IVs ({ty.id} Lv {ty.level})")
-check(story.pc_pokemon[0].id == 9301, "a Shadow Pokemon you didn't choose stays Shadow")
+check(story.pc_pokemon[0].id == 9406, "a Shadow Pokemon you didn't choose stays Shadow")
 said = run("AGATE_VILLAGE", "Purify at the Relic Stone")
 check(type(g.current_state).__name__ != "PokemonPartyMenuState" and "None of the Pokemon" in said[-1][-1],
       "nothing in the party to purify")

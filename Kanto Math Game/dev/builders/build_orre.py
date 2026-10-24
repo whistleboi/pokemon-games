@@ -17,7 +17,7 @@ S = Sub("ORRE", None, "ORRE", {})
 SNAG = "has_item:SNAG_MACHINE"
 names = json.load(open("assets/pokemon_names.json", encoding="utf-8"))
 
-# Shadow forms: smart IDs 9301+ (dark sprites made below), one per species, from orre_shadows.py.
+# Shadow forms: smart IDs 9301-9431 in dex order (dark sprites made below), one per species, from orre_shadows.py.
 def _slug(name):
     return "".join(ch for ch in name.lower().replace(" ", "_") if ch.isalnum() or ch == "_")
 
@@ -302,7 +302,7 @@ def shadow(r, g, b, a):
 
 SP = "assets/sprites/pokemon"
 # Hand-made art that the tint must never overwrite: Jordan's Shadow Lugia (front) and its back sprite.
-CUSTOM_ART = {f"{SP}/9424.png", f"{SP}/back/9424.png"}
+CUSTOM_ART = {f"{SP}/9400.png", f"{SP}/back/9400.png"}
 made = 0
 for sid, base, *_ in SHADOW_LIST:
     for d in (SP, f"{SP}/back", f"{SP}/shiny"):

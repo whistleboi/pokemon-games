@@ -282,61 +282,61 @@
       "next_area": "PHENAC_CITY",
       "shadow_pool": [
         {
-          "id": 9301,
+          "id": 9406,
           "name": "Shadow Makuhita",
           "flag": "snagged_shadow_makuhita",
           "trainer": "Miror B. Peon Trudly"
         },
         {
-          "id": 9313,
+          "id": 9382,
           "name": "Shadow Slugma",
           "flag": "snagged_shadow_slugma",
           "trainer": "Roller Boy Lon"
         },
         {
-          "id": 9314,
+          "id": 9352,
           "name": "Shadow Noctowl",
           "flag": "snagged_shadow_noctowl",
           "trainer": "Rider Nover"
         },
         {
-          "id": 9315,
+          "id": 9361,
           "name": "Shadow Flaaffy",
           "flag": "snagged_shadow_flaaffy",
           "trainer": "St.Performer Diogo"
         },
         {
-          "id": 9316,
+          "id": 9363,
           "name": "Shadow Skiploom",
           "flag": "snagged_shadow_skiploom",
           "trainer": "Rider Leba"
         },
         {
-          "id": 9317,
+          "id": 9367,
           "name": "Shadow Quagsire",
           "flag": "snagged_shadow_quagsire",
           "trainer": "Bandana Guy Divel"
         },
         {
-          "id": 9318,
+          "id": 9369,
           "name": "Shadow Misdreavus",
           "flag": "snagged_shadow_misdreavus",
           "trainer": "Rider Vant"
         },
         {
-          "id": 9319,
+          "id": 9351,
           "name": "Shadow Furret",
           "flag": "snagged_shadow_furret",
           "trainer": "Rogue Cail"
         },
         {
-          "id": 9351,
+          "id": 9358,
           "name": "Shadow Togetic",
           "flag": "snagged_shadow_togetic",
           "trainer": "Cipher Peon Fein"
         },
         {
-          "id": 9302,
+          "id": 9380,
           "name": "Shadow Teddiursa",
           "flag": "snagged_shadow_teddiursa",
           "trainer": "Cipher Peon Naps"
@@ -582,103 +582,103 @@
       "next_area": "PYRITE_TOWN",
       "shadow_pool": [
         {
-          "id": 9304,
+          "id": 9348,
           "name": "Shadow Bayleef",
           "flag": "snagged_shadow_bayleef",
           "trainer": "Cipher Peon Verde"
         },
         {
-          "id": 9305,
+          "id": 9349,
           "name": "Shadow Quilava",
           "flag": "snagged_shadow_quilava",
           "trainer": "Cipher Peon Rosso"
         },
         {
-          "id": 9306,
+          "id": 9350,
           "name": "Shadow Croconaw",
           "flag": "snagged_shadow_croconaw",
           "trainer": "Cipher Peon Bluno"
         },
         {
-          "id": 9320,
+          "id": 9366,
           "name": "Shadow Yanma",
           "flag": "snagged_shadow_yanma",
           "trainer": "Cipher Peon Nore"
         },
         {
-          "id": 9321,
+          "id": 9386,
           "name": "Shadow Remoraid",
           "flag": "snagged_shadow_remoraid",
           "trainer": "Miror B. Peon Reath"
         },
         {
-          "id": 9322,
+          "id": 9388,
           "name": "Shadow Mantine",
           "flag": "snagged_shadow_mantine",
           "trainer": "Miror B. Peon Ferma"
         },
         {
-          "id": 9323,
+          "id": 9375,
           "name": "Shadow Qwilfish",
           "flag": "snagged_shadow_qwilfish",
           "trainer": "Hunter Doken"
         },
         {
-          "id": 9324,
+          "id": 9411,
           "name": "Shadow Meditite",
           "flag": "snagged_shadow_meditite",
           "trainer": "Rider Twan"
         },
         {
-          "id": 9325,
+          "id": 9372,
           "name": "Shadow Dunsparce",
           "flag": "snagged_shadow_dunsparce",
           "trainer": "Rider Sosh"
         },
         {
-          "id": 9326,
+          "id": 9418,
           "name": "Shadow Swablu",
           "flag": "snagged_shadow_swablu",
           "trainer": "Hunter Zalo"
         },
         {
-          "id": 9327,
+          "id": 9362,
           "name": "Shadow Sudowoodo",
           "flag": "snagged_shadow_sudowoodo",
           "trainer": "Cipher Admin Miror B."
         },
         {
-          "id": 9329,
+          "id": 9398,
           "name": "Shadow Suicune",
           "flag": "snagged_shadow_suicune",
           "trainer": "Cipher Admin Venus"
         },
         {
-          "id": 9330,
+          "id": 9373,
           "name": "Shadow Gligar",
           "flag": "snagged_shadow_gligar",
           "trainer": "Hunter Frena"
         },
         {
-          "id": 9331,
+          "id": 9392,
           "name": "Shadow Stantler",
           "flag": "snagged_shadow_stantler",
           "trainer": "Chaser Liaks"
         },
         {
-          "id": 9332,
+          "id": 9385,
           "name": "Shadow Piloswine",
           "flag": "snagged_shadow_piloswine",
           "trainer": "Bodybuilder Lonia"
         },
         {
-          "id": 9333,
+          "id": 9379,
           "name": "Shadow Sneasel",
           "flag": "snagged_shadow_sneasel",
           "trainer": "Rider Nelis"
         },
         {
-          "id": 9303,
+          "id": 9390,
           "name": "Shadow Houndour",
           "flag": "snagged_shadow_houndour",
           "trainer": "Cipher Peon Resix"
@@ -1484,37 +1484,37 @@
       "next_area": "AGATE_VILLAGE",
       "shadow_pool": [
         {
-          "id": 9308,
+          "id": 9394,
           "name": "Shadow Hitmontop",
           "flag": "snagged_shadow_hitmontop",
           "trainer": "Cipher Peon Skrub"
         },
         {
-          "id": 9328,
+          "id": 9397,
           "name": "Shadow Entei",
           "flag": "snagged_shadow_entei",
           "trainer": "Cipher Admin Dakim"
         },
         {
-          "id": 9307,
+          "id": 9354,
           "name": "Shadow Ledian",
           "flag": "snagged_shadow_ledian",
           "trainer": "Cipher Peon Kloak"
         },
         {
-          "id": 9352,
+          "id": 9357,
           "name": "Shadow Togepi",
           "flag": "snagged_shadow_togepi",
           "trainer": "a Cipher trainer"
         },
         {
-          "id": 9353,
+          "id": 9360,
           "name": "Shadow Mareep",
           "flag": "snagged_shadow_mareep",
           "trainer": "a Cipher trainer"
         },
         {
-          "id": 9354,
+          "id": 9376,
           "name": "Shadow Scizor",
           "flag": "snagged_shadow_scizor",
           "trainer": "a Cipher trainer"
@@ -1699,127 +1699,127 @@
       "next_area": "REALGAM_TOWER",
       "shadow_pool": [
         {
-          "id": 9334,
+          "id": 9364,
           "name": "Shadow Aipom",
           "flag": "snagged_shadow_aipom",
           "trainer": "Cipher Peon Cole"
         },
         {
-          "id": 9335,
+          "id": 9368,
           "name": "Shadow Murkrow",
           "flag": "snagged_shadow_murkrow",
           "trainer": "Cipher Peon Lare"
         },
         {
-          "id": 9336,
+          "id": 9371,
           "name": "Shadow Forretress",
           "flag": "snagged_shadow_forretress",
           "trainer": "Cipher Peon Vana"
         },
         {
-          "id": 9337,
+          "id": 9356,
           "name": "Shadow Ariados",
           "flag": "snagged_shadow_ariados",
           "trainer": "Cipher Peon Lesar"
         },
         {
-          "id": 9338,
+          "id": 9374,
           "name": "Shadow Granbull",
           "flag": "snagged_shadow_granbull",
           "trainer": "Cipher Peon Tanie"
         },
         {
-          "id": 9339,
+          "id": 9417,
           "name": "Shadow Vibrava",
           "flag": "snagged_shadow_vibrava",
           "trainer": "Cipher Peon Remil"
         },
         {
-          "id": 9340,
+          "id": 9396,
           "name": "Shadow Raikou",
           "flag": "snagged_shadow_raikou",
           "trainer": "Cipher Admin Ein"
         },
         {
-          "id": 9341,
+          "id": 9365,
           "name": "Shadow Sunflora",
           "flag": "snagged_shadow_sunflora",
           "trainer": "Cipher Peon Baila"
         },
         {
-          "id": 9342,
+          "id": 9387,
           "name": "Shadow Delibird",
           "flag": "snagged_shadow_delibird",
           "trainer": "Cipher Peon Arton"
         },
         {
-          "id": 9343,
+          "id": 9378,
           "name": "Shadow Heracross",
           "flag": "snagged_shadow_heracross",
           "trainer": "Cipher Peon Dioge"
         },
         {
-          "id": 9310,
+          "id": 9389,
           "name": "Shadow Skarmory",
           "flag": "snagged_shadow_skarmory",
           "trainer": "Snagem Head Gonzap"
         },
         {
-          "id": 9344,
+          "id": 9395,
           "name": "Shadow Miltank",
           "flag": "snagged_shadow_miltank",
           "trainer": "Bodybuilder Jomas"
         },
         {
-          "id": 9345,
+          "id": 9427,
           "name": "Shadow Absol",
           "flag": "snagged_shadow_absol",
           "trainer": "Rider Delan"
         },
         {
-          "id": 9346,
+          "id": 9391,
           "name": "Shadow Houndoom",
           "flag": "snagged_shadow_houndoom",
           "trainer": "Cipher Peon Nella"
         },
         {
-          "id": 9347,
+          "id": 9426,
           "name": "Shadow Tropius",
           "flag": "snagged_shadow_tropius",
           "trainer": "Cipher Peon Ston"
         },
         {
-          "id": 9348,
+          "id": 9431,
           "name": "Shadow Metagross",
           "flag": "snagged_shadow_metagross",
           "trainer": "Cipher Nascour"
         },
         {
-          "id": 9312,
+          "id": 9399,
           "name": "Shadow Tyranitar",
           "flag": "snagged_shadow_tyranitar",
           "trainer": "Cipher Head Evice"
         },
         {
-          "id": 9349,
+          "id": 9393,
           "name": "Shadow Smeargle",
           "flag": "snagged_shadow_smeargle",
           "trainer": "Team Snagem Biden"
         },
         {
-          "id": 9309,
+          "id": 9381,
           "name": "Shadow Ursaring",
           "flag": "snagged_shadow_ursaring",
           "trainer": "Team Snagem Agrev"
         },
         {
-          "id": 9350,
+          "id": 9377,
           "name": "Shadow Shuckle",
           "flag": "snagged_shadow_shuckle",
           "trainer": "Deep King Agnol"
         },
         {
-          "id": 9311,
+          "id": 9343,
           "name": "Shadow Snorlax",
           "flag": "snagged_shadow_snorlax",
           "trainer": "Cipher Admin Ardos"
@@ -1944,85 +1944,85 @@
       "next_area": "GATEON_PORT",
       "shadow_pool": [
         {
-          "id": 9355,
+          "id": 9353,
           "name": "Shadow Ledyba",
           "flag": "snagged_shadow_ledyba",
           "trainer": "Casual Guy Cyle"
         },
         {
-          "id": 9356,
+          "id": 9401,
           "name": "Shadow Poochyena",
           "flag": "snagged_shadow_poochyena",
           "trainer": "Bodybuilder Kilen"
         },
         {
-          "id": 9357,
+          "id": 9423,
           "name": "Shadow Baltoy",
           "flag": "snagged_shadow_baltoy",
           "trainer": "Cipher Peon Browsix"
         },
         {
-          "id": 9358,
+          "id": 9402,
           "name": "Shadow Seedot",
           "flag": "snagged_shadow_seedot",
           "trainer": "Cipher Peon Greesix"
         },
         {
-          "id": 9359,
+          "id": 9429,
           "name": "Shadow Spheal",
           "flag": "snagged_shadow_spheal",
           "trainer": "Cipher Peon Blusix"
         },
         {
-          "id": 9360,
+          "id": 9414,
           "name": "Shadow Gulpin",
           "flag": "snagged_shadow_gulpin",
           "trainer": "Cipher Peon Purpsix"
         },
         {
-          "id": 9361,
+          "id": 9355,
           "name": "Shadow Spinarak",
           "flag": "snagged_shadow_spinarak",
           "trainer": "Cipher Peon Nexir"
         },
         {
-          "id": 9362,
+          "id": 9416,
           "name": "Shadow Numel",
           "flag": "snagged_shadow_numel",
           "trainer": "Cipher Peon Solox"
         },
         {
-          "id": 9363,
+          "id": 9415,
           "name": "Shadow Carvanha",
           "flag": "snagged_shadow_carvanha",
           "trainer": "Cipher Peon Cabol"
         },
         {
-          "id": 9364,
+          "id": 9405,
           "name": "Shadow Shroomish",
           "flag": "snagged_shadow_shroomish",
           "trainer": "Cipher R&D Klots"
         },
         {
-          "id": 9365,
+          "id": 9408,
           "name": "Shadow Delcatty",
           "flag": "snagged_shadow_delcatty",
           "trainer": "Cipher Admin Lovrina"
         },
         {
-          "id": 9366,
+          "id": 9325,
           "name": "Shadow Voltorb",
           "flag": "snagged_shadow_voltorb",
           "trainer": "Wanderer Miror B."
         },
         {
-          "id": 9381,
+          "id": 9407,
           "name": "Shadow Nosepass",
           "flag": "snagged_shadow_nosepass",
           "trainer": "Wanderer Miror B."
         },
         {
-          "id": 9431,
+          "id": 9347,
           "name": "Shadow Dragonite",
           "flag": "snagged_shadow_dragonite",
           "trainer": "Wanderer Miror B."
@@ -2093,85 +2093,85 @@
       "next_area": "GATEON_PORT",
       "shadow_pool": [
         {
-          "id": 9367,
+          "id": 9307,
           "name": "Shadow Vulpix",
           "flag": "snagged_shadow_vulpix",
           "trainer": "Cipher Peon Mesin"
         },
         {
-          "id": 9368,
+          "id": 9425,
           "name": "Shadow Duskull",
           "flag": "snagged_shadow_duskull",
           "trainer": "Cipher Peon Lobar"
         },
         {
-          "id": 9369,
+          "id": 9404,
           "name": "Shadow Ralts",
           "flag": "snagged_shadow_ralts",
           "trainer": "Cipher Peon Feldas"
         },
         {
-          "id": 9370,
+          "id": 9410,
           "name": "Shadow Mawile",
           "flag": "snagged_shadow_mawile",
           "trainer": "Cipher Cmdr Exol"
         },
         {
-          "id": 9371,
+          "id": 9428,
           "name": "Shadow Snorunt",
           "flag": "snagged_shadow_snorunt",
           "trainer": "Cipher Peon Exinn"
         },
         {
-          "id": 9372,
+          "id": 9370,
           "name": "Shadow Pineco",
           "flag": "snagged_shadow_pineco",
           "trainer": "Cipher Peon Gonrag"
         },
         {
-          "id": 9373,
+          "id": 9359,
           "name": "Shadow Natu",
           "flag": "snagged_shadow_natu",
           "trainer": "Cipher Peon Eloin"
         },
         {
-          "id": 9374,
+          "id": 9413,
           "name": "Shadow Roselia",
           "flag": "snagged_shadow_roselia",
           "trainer": "Cipher Peon Fasin"
         },
         {
-          "id": 9375,
+          "id": 9311,
           "name": "Shadow Meowth",
           "flag": "snagged_shadow_meowth",
           "trainer": "Cipher Peon Fostin"
         },
         {
-          "id": 9376,
+          "id": 9384,
           "name": "Shadow Swinub",
           "flag": "snagged_shadow_swinub",
           "trainer": "Cipher Peon Greck"
         },
         {
-          "id": 9377,
+          "id": 9305,
           "name": "Shadow Spearow",
           "flag": "snagged_shadow_spearow",
           "trainer": "Cipher Peon Ezin"
         },
         {
-          "id": 9378,
+          "id": 9322,
           "name": "Shadow Grimer",
           "flag": "snagged_shadow_grimer",
           "trainer": "Cipher Peon Faltly"
         },
         {
-          "id": 9379,
+          "id": 9321,
           "name": "Shadow Seel",
           "flag": "snagged_shadow_seel",
           "trainer": "Cipher Peon Egrog"
         },
         {
-          "id": 9380,
+          "id": 9421,
           "name": "Shadow Lunatone",
           "flag": "snagged_shadow_lunatone",
           "trainer": "Cipher Admin Snattle"
@@ -2244,85 +2244,85 @@
       "next_area": "GATEON_PORT",
       "shadow_pool": [
         {
-          "id": 9382,
+          "id": 9420,
           "name": "Shadow Zangoose",
           "flag": "snagged_shadow_zangoose",
           "trainer": "Thug Zook"
         },
         {
-          "id": 9383,
+          "id": 9308,
           "name": "Shadow Paras",
           "flag": "snagged_shadow_paras",
           "trainer": "Cipher Peon Humah"
         },
         {
-          "id": 9384,
+          "id": 9314,
           "name": "Shadow Growlithe",
           "flag": "snagged_shadow_growlithe",
           "trainer": "Cipher Peon Humah"
         },
         {
-          "id": 9385,
+          "id": 9323,
           "name": "Shadow Shellder",
           "flag": "snagged_shadow_shellder",
           "trainer": "Cipher Peon Gorog"
         },
         {
-          "id": 9386,
+          "id": 9302,
           "name": "Shadow Beedrill",
           "flag": "snagged_shadow_beedrill",
           "trainer": "Cipher Peon Lok"
         },
         {
-          "id": 9387,
+          "id": 9303,
           "name": "Shadow Pidgeotto",
           "flag": "snagged_shadow_pidgeotto",
           "trainer": "Cipher Peon Lok"
         },
         {
-          "id": 9388,
+          "id": 9333,
           "name": "Shadow Tangela",
           "flag": "snagged_shadow_tangela",
           "trainer": "Cipher Peon Targ"
         },
         {
-          "id": 9389,
+          "id": 9301,
           "name": "Shadow Butterfree",
           "flag": "snagged_shadow_butterfree",
           "trainer": "Cipher Peon Targ"
         },
         {
-          "id": 9390,
+          "id": 9318,
           "name": "Shadow Magneton",
           "flag": "snagged_shadow_magneton",
           "trainer": "Cipher Peon Snidle"
         },
         {
-          "id": 9391,
+          "id": 9309,
           "name": "Shadow Venomoth",
           "flag": "snagged_shadow_venomoth",
           "trainer": "Cipher Peon Angic"
         },
         {
-          "id": 9392,
+          "id": 9316,
           "name": "Shadow Weepinbell",
           "flag": "snagged_shadow_weepinbell",
           "trainer": "Cipher Peon Angic"
         },
         {
-          "id": 9393,
+          "id": 9306,
           "name": "Shadow Arbok",
           "flag": "snagged_shadow_arbok",
           "trainer": "Cipher Peon Smarton"
         },
         {
-          "id": 9394,
+          "id": 9313,
           "name": "Shadow Primeape",
           "flag": "snagged_shadow_primeape",
           "trainer": "Cipher Admin Gorigan"
         },
         {
-          "id": 9395,
+          "id": 9324,
           "name": "Shadow Hypno",
           "flag": "snagged_shadow_hypno",
           "trainer": "Cipher Admin Gorigan"
@@ -2397,211 +2397,211 @@
       "next_area": "GATEON_PORT",
       "shadow_pool": [
         {
-          "id": 9396,
+          "id": 9312,
           "name": "Shadow Golduck",
           "flag": "snagged_shadow_golduck",
           "trainer": "Navigator Abson"
         },
         {
-          "id": 9397,
+          "id": 9409,
           "name": "Shadow Sableye",
           "flag": "snagged_shadow_sableye",
           "trainer": "Navigator Abson"
         },
         {
-          "id": 9398,
+          "id": 9320,
           "name": "Shadow Dodrio",
           "flag": "snagged_shadow_dodrio",
           "trainer": "Chaser Furgy"
         },
         {
-          "id": 9399,
+          "id": 9304,
           "name": "Shadow Raticate",
           "flag": "snagged_shadow_raticate",
           "trainer": "Chaser Furgy"
         },
         {
-          "id": 9400,
+          "id": 9319,
           "name": "Shadow Farfetch'd",
           "flag": "snagged_shadow_farfetchd",
           "trainer": "Cipher Admin Lovrina"
         },
         {
-          "id": 9401,
+          "id": 9419,
           "name": "Shadow Altaria",
           "flag": "snagged_shadow_altaria",
           "trainer": "Cipher Admin Lovrina"
         },
         {
-          "id": 9402,
+          "id": 9334,
           "name": "Shadow Kangaskhan",
           "flag": "snagged_shadow_kangaskhan",
           "trainer": "Cipher Peon Litnar"
         },
         {
-          "id": 9403,
+          "id": 9424,
           "name": "Shadow Banette",
           "flag": "snagged_shadow_banette",
           "trainer": "Cipher Peon Litnar"
         },
         {
-          "id": 9404,
+          "id": 9339,
           "name": "Shadow Magmar",
           "flag": "snagged_shadow_magmar",
           "trainer": "Cipher Peon Grupel"
         },
         {
-          "id": 9405,
+          "id": 9340,
           "name": "Shadow Pinsir",
           "flag": "snagged_shadow_pinsir",
           "trainer": "Cipher Peon Grupel"
         },
         {
-          "id": 9406,
+          "id": 9317,
           "name": "Shadow Rapidash",
           "flag": "snagged_shadow_rapidash",
           "trainer": "Cipher Peon Kolest"
         },
         {
-          "id": 9407,
+          "id": 9383,
           "name": "Shadow Magcargo",
           "flag": "snagged_shadow_magcargo",
           "trainer": "Cipher Peon Kolest"
         },
         {
-          "id": 9408,
+          "id": 9329,
           "name": "Shadow Hitmonchan",
           "flag": "snagged_shadow_hitmonchan",
           "trainer": "Cipher Peon Karbon"
         },
         {
-          "id": 9409,
+          "id": 9328,
           "name": "Shadow Hitmonlee",
           "flag": "snagged_shadow_hitmonlee",
           "trainer": "Cipher Peon Petro"
         },
         {
-          "id": 9410,
+          "id": 9330,
           "name": "Shadow Lickitung",
           "flag": "snagged_shadow_lickitung",
           "trainer": "Cipher Peon Geftal"
         },
         {
-          "id": 9411,
+          "id": 9337,
           "name": "Shadow Scyther",
           "flag": "snagged_shadow_scyther",
           "trainer": "Cipher Peon Leden"
         },
         {
-          "id": 9412,
+          "id": 9332,
           "name": "Shadow Chansey",
           "flag": "snagged_shadow_chansey",
           "trainer": "Cipher Peon Leden"
         },
         {
-          "id": 9413,
+          "id": 9422,
           "name": "Shadow Solrock",
           "flag": "snagged_shadow_solrock",
           "trainer": "Cipher Admin Snattle"
         },
         {
-          "id": 9414,
+          "id": 9335,
           "name": "Shadow Starmie",
           "flag": "snagged_shadow_starmie",
           "trainer": "Cipher Admin Snattle"
         },
         {
-          "id": 9415,
+          "id": 9403,
           "name": "Shadow Swellow",
           "flag": "snagged_shadow_swellow",
           "trainer": "Cipher Admin Ardos"
         },
         {
-          "id": 9416,
+          "id": 9338,
           "name": "Shadow Electabuzz",
           "flag": "snagged_shadow_electabuzz",
           "trainer": "Cipher Admin Ardos"
         },
         {
-          "id": 9417,
+          "id": 9315,
           "name": "Shadow Poliwrath",
           "flag": "snagged_shadow_poliwrath",
           "trainer": "Cipher Admin Gorigan"
         },
         {
-          "id": 9418,
+          "id": 9336,
           "name": "Shadow Mr. Mime",
           "flag": "snagged_shadow_mr_mime",
           "trainer": "Cipher Admin Gorigan"
         },
         {
-          "id": 9419,
+          "id": 9310,
           "name": "Shadow Dugtrio",
           "flag": "snagged_shadow_dugtrio",
           "trainer": "Cipher Peon Kolax"
         },
         {
-          "id": 9420,
+          "id": 9412,
           "name": "Shadow Manectric",
           "flag": "snagged_shadow_manectric",
           "trainer": "Cipher Admin Eldes"
         },
         {
-          "id": 9421,
+          "id": 9430,
           "name": "Shadow Salamence",
           "flag": "snagged_shadow_salamence",
           "trainer": "Cipher Admin Eldes"
         },
         {
-          "id": 9422,
+          "id": 9327,
           "name": "Shadow Marowak",
           "flag": "snagged_shadow_marowak",
           "trainer": "Cipher Admin Eldes"
         },
         {
-          "id": 9423,
+          "id": 9342,
           "name": "Shadow Lapras",
           "flag": "snagged_shadow_lapras",
           "trainer": "Cipher Admin Eldes"
         },
         {
-          "id": 9424,
+          "id": 9400,
           "name": "Shadow Lugia",
           "flag": "snagged_shadow_lugia",
           "trainer": "Grand Master Greevil"
         },
         {
-          "id": 9425,
+          "id": 9331,
           "name": "Shadow Rhydon",
           "flag": "snagged_shadow_rhydon",
           "trainer": "Grand Master Greevil"
         },
         {
-          "id": 9426,
+          "id": 9346,
           "name": "Shadow Moltres",
           "flag": "snagged_shadow_moltres",
           "trainer": "Grand Master Greevil"
         },
         {
-          "id": 9427,
+          "id": 9326,
           "name": "Shadow Exeggutor",
           "flag": "snagged_shadow_exeggutor",
           "trainer": "Grand Master Greevil"
         },
         {
-          "id": 9428,
+          "id": 9341,
           "name": "Shadow Tauros",
           "flag": "snagged_shadow_tauros",
           "trainer": "Grand Master Greevil"
         },
         {
-          "id": 9429,
+          "id": 9344,
           "name": "Shadow Articuno",
           "flag": "snagged_shadow_articuno",
           "trainer": "Grand Master Greevil"
         },
         {
-          "id": 9430,
+          "id": 9345,
           "name": "Shadow Zapdos",
           "flag": "snagged_shadow_zapdos",
           "trainer": "Grand Master Greevil"
@@ -2703,657 +2703,657 @@
     }
   },
   "FORM_MAP": {
-    "9301": {
+    "9406": {
       "id": 296,
       "form": "shadow",
       "name": "Shadow Makuhita"
     },
-    "9304": {
+    "9348": {
       "id": 153,
       "form": "shadow",
       "name": "Shadow Bayleef"
     },
-    "9305": {
+    "9349": {
       "id": 156,
       "form": "shadow",
       "name": "Shadow Quilava"
     },
-    "9306": {
+    "9350": {
       "id": 159,
       "form": "shadow",
       "name": "Shadow Croconaw"
     },
-    "9313": {
+    "9382": {
       "id": 218,
       "form": "shadow",
       "name": "Shadow Slugma"
     },
-    "9314": {
+    "9352": {
       "id": 164,
       "form": "shadow",
       "name": "Shadow Noctowl"
     },
-    "9315": {
+    "9361": {
       "id": 180,
       "form": "shadow",
       "name": "Shadow Flaaffy"
     },
-    "9316": {
+    "9363": {
       "id": 188,
       "form": "shadow",
       "name": "Shadow Skiploom"
     },
-    "9317": {
+    "9367": {
       "id": 195,
       "form": "shadow",
       "name": "Shadow Quagsire"
     },
-    "9318": {
+    "9369": {
       "id": 200,
       "form": "shadow",
       "name": "Shadow Misdreavus"
     },
-    "9319": {
+    "9351": {
       "id": 162,
       "form": "shadow",
       "name": "Shadow Furret"
     },
-    "9320": {
+    "9366": {
       "id": 193,
       "form": "shadow",
       "name": "Shadow Yanma"
     },
-    "9321": {
+    "9386": {
       "id": 223,
       "form": "shadow",
       "name": "Shadow Remoraid"
     },
-    "9322": {
+    "9388": {
       "id": 226,
       "form": "shadow",
       "name": "Shadow Mantine"
     },
-    "9323": {
+    "9375": {
       "id": 211,
       "form": "shadow",
       "name": "Shadow Qwilfish"
     },
-    "9324": {
+    "9411": {
       "id": 307,
       "form": "shadow",
       "name": "Shadow Meditite"
     },
-    "9325": {
+    "9372": {
       "id": 206,
       "form": "shadow",
       "name": "Shadow Dunsparce"
     },
-    "9326": {
+    "9418": {
       "id": 333,
       "form": "shadow",
       "name": "Shadow Swablu"
     },
-    "9327": {
+    "9362": {
       "id": 185,
       "form": "shadow",
       "name": "Shadow Sudowoodo"
     },
-    "9308": {
+    "9394": {
       "id": 237,
       "form": "shadow",
       "name": "Shadow Hitmontop"
     },
-    "9328": {
+    "9397": {
       "id": 244,
       "form": "shadow",
       "name": "Shadow Entei"
     },
-    "9307": {
+    "9354": {
       "id": 166,
       "form": "shadow",
       "name": "Shadow Ledian"
     },
-    "9329": {
+    "9398": {
       "id": 245,
       "form": "shadow",
       "name": "Shadow Suicune"
     },
-    "9330": {
+    "9373": {
       "id": 207,
       "form": "shadow",
       "name": "Shadow Gligar"
     },
-    "9331": {
+    "9392": {
       "id": 234,
       "form": "shadow",
       "name": "Shadow Stantler"
     },
-    "9332": {
+    "9385": {
       "id": 221,
       "form": "shadow",
       "name": "Shadow Piloswine"
     },
-    "9333": {
+    "9379": {
       "id": 215,
       "form": "shadow",
       "name": "Shadow Sneasel"
     },
-    "9334": {
+    "9364": {
       "id": 190,
       "form": "shadow",
       "name": "Shadow Aipom"
     },
-    "9335": {
+    "9368": {
       "id": 198,
       "form": "shadow",
       "name": "Shadow Murkrow"
     },
-    "9336": {
+    "9371": {
       "id": 205,
       "form": "shadow",
       "name": "Shadow Forretress"
     },
-    "9337": {
+    "9356": {
       "id": 168,
       "form": "shadow",
       "name": "Shadow Ariados"
     },
-    "9338": {
+    "9374": {
       "id": 210,
       "form": "shadow",
       "name": "Shadow Granbull"
     },
-    "9339": {
+    "9417": {
       "id": 329,
       "form": "shadow",
       "name": "Shadow Vibrava"
     },
-    "9340": {
+    "9396": {
       "id": 243,
       "form": "shadow",
       "name": "Shadow Raikou"
     },
-    "9341": {
+    "9365": {
       "id": 192,
       "form": "shadow",
       "name": "Shadow Sunflora"
     },
-    "9342": {
+    "9387": {
       "id": 225,
       "form": "shadow",
       "name": "Shadow Delibird"
     },
-    "9343": {
+    "9378": {
       "id": 214,
       "form": "shadow",
       "name": "Shadow Heracross"
     },
-    "9310": {
+    "9389": {
       "id": 227,
       "form": "shadow",
       "name": "Shadow Skarmory"
     },
-    "9344": {
+    "9395": {
       "id": 241,
       "form": "shadow",
       "name": "Shadow Miltank"
     },
-    "9345": {
+    "9427": {
       "id": 359,
       "form": "shadow",
       "name": "Shadow Absol"
     },
-    "9346": {
+    "9391": {
       "id": 229,
       "form": "shadow",
       "name": "Shadow Houndoom"
     },
-    "9347": {
+    "9426": {
       "id": 357,
       "form": "shadow",
       "name": "Shadow Tropius"
     },
-    "9348": {
+    "9431": {
       "id": 376,
       "form": "shadow",
       "name": "Shadow Metagross"
     },
-    "9312": {
+    "9399": {
       "id": 248,
       "form": "shadow",
       "name": "Shadow Tyranitar"
     },
-    "9349": {
+    "9393": {
       "id": 235,
       "form": "shadow",
       "name": "Shadow Smeargle"
     },
-    "9309": {
+    "9381": {
       "id": 217,
       "form": "shadow",
       "name": "Shadow Ursaring"
     },
-    "9350": {
+    "9377": {
       "id": 213,
       "form": "shadow",
       "name": "Shadow Shuckle"
     },
-    "9351": {
+    "9358": {
       "id": 176,
       "form": "shadow",
       "name": "Shadow Togetic"
     },
-    "9352": {
+    "9357": {
       "id": 175,
       "form": "shadow",
       "name": "Shadow Togepi"
     },
-    "9353": {
+    "9360": {
       "id": 179,
       "form": "shadow",
       "name": "Shadow Mareep"
     },
-    "9354": {
+    "9376": {
       "id": 212,
       "form": "shadow",
       "name": "Shadow Scizor"
     },
-    "9302": {
+    "9380": {
       "id": 216,
       "form": "shadow",
       "name": "Shadow Teddiursa"
     },
-    "9355": {
+    "9353": {
       "id": 165,
       "form": "shadow",
       "name": "Shadow Ledyba"
     },
-    "9356": {
+    "9401": {
       "id": 261,
       "form": "shadow",
       "name": "Shadow Poochyena"
     },
-    "9303": {
+    "9390": {
       "id": 228,
       "form": "shadow",
       "name": "Shadow Houndour"
     },
-    "9357": {
+    "9423": {
       "id": 343,
       "form": "shadow",
       "name": "Shadow Baltoy"
     },
-    "9358": {
+    "9402": {
       "id": 273,
       "form": "shadow",
       "name": "Shadow Seedot"
     },
-    "9359": {
+    "9429": {
       "id": 363,
       "form": "shadow",
       "name": "Shadow Spheal"
     },
-    "9360": {
+    "9414": {
       "id": 316,
       "form": "shadow",
       "name": "Shadow Gulpin"
     },
-    "9361": {
+    "9355": {
       "id": 167,
       "form": "shadow",
       "name": "Shadow Spinarak"
     },
-    "9362": {
+    "9416": {
       "id": 322,
       "form": "shadow",
       "name": "Shadow Numel"
     },
-    "9363": {
+    "9415": {
       "id": 318,
       "form": "shadow",
       "name": "Shadow Carvanha"
     },
-    "9364": {
+    "9405": {
       "id": 285,
       "form": "shadow",
       "name": "Shadow Shroomish"
     },
-    "9365": {
+    "9408": {
       "id": 301,
       "form": "shadow",
       "name": "Shadow Delcatty"
     },
-    "9366": {
+    "9325": {
       "id": 100,
       "form": "shadow",
       "name": "Shadow Voltorb"
     },
-    "9367": {
+    "9307": {
       "id": 37,
       "form": "shadow",
       "name": "Shadow Vulpix"
     },
-    "9368": {
+    "9425": {
       "id": 355,
       "form": "shadow",
       "name": "Shadow Duskull"
     },
-    "9369": {
+    "9404": {
       "id": 280,
       "form": "shadow",
       "name": "Shadow Ralts"
     },
-    "9370": {
+    "9410": {
       "id": 303,
       "form": "shadow",
       "name": "Shadow Mawile"
     },
-    "9371": {
+    "9428": {
       "id": 361,
       "form": "shadow",
       "name": "Shadow Snorunt"
     },
-    "9372": {
+    "9370": {
       "id": 204,
       "form": "shadow",
       "name": "Shadow Pineco"
     },
-    "9373": {
+    "9359": {
       "id": 177,
       "form": "shadow",
       "name": "Shadow Natu"
     },
-    "9374": {
+    "9413": {
       "id": 315,
       "form": "shadow",
       "name": "Shadow Roselia"
     },
-    "9375": {
+    "9311": {
       "id": 52,
       "form": "shadow",
       "name": "Shadow Meowth"
     },
-    "9376": {
+    "9384": {
       "id": 220,
       "form": "shadow",
       "name": "Shadow Swinub"
     },
-    "9377": {
+    "9305": {
       "id": 21,
       "form": "shadow",
       "name": "Shadow Spearow"
     },
-    "9378": {
+    "9322": {
       "id": 88,
       "form": "shadow",
       "name": "Shadow Grimer"
     },
-    "9379": {
+    "9321": {
       "id": 86,
       "form": "shadow",
       "name": "Shadow Seel"
     },
-    "9380": {
+    "9421": {
       "id": 337,
       "form": "shadow",
       "name": "Shadow Lunatone"
     },
-    "9381": {
+    "9407": {
       "id": 299,
       "form": "shadow",
       "name": "Shadow Nosepass"
     },
-    "9382": {
+    "9420": {
       "id": 335,
       "form": "shadow",
       "name": "Shadow Zangoose"
     },
-    "9383": {
+    "9308": {
       "id": 46,
       "form": "shadow",
       "name": "Shadow Paras"
     },
-    "9384": {
+    "9314": {
       "id": 58,
       "form": "shadow",
       "name": "Shadow Growlithe"
     },
-    "9385": {
+    "9323": {
       "id": 90,
       "form": "shadow",
       "name": "Shadow Shellder"
     },
-    "9386": {
+    "9302": {
       "id": 15,
       "form": "shadow",
       "name": "Shadow Beedrill"
     },
-    "9387": {
+    "9303": {
       "id": 17,
       "form": "shadow",
       "name": "Shadow Pidgeotto"
     },
-    "9388": {
+    "9333": {
       "id": 114,
       "form": "shadow",
       "name": "Shadow Tangela"
     },
-    "9389": {
+    "9301": {
       "id": 12,
       "form": "shadow",
       "name": "Shadow Butterfree"
     },
-    "9390": {
+    "9318": {
       "id": 82,
       "form": "shadow",
       "name": "Shadow Magneton"
     },
-    "9391": {
+    "9309": {
       "id": 49,
       "form": "shadow",
       "name": "Shadow Venomoth"
     },
-    "9392": {
+    "9316": {
       "id": 70,
       "form": "shadow",
       "name": "Shadow Weepinbell"
     },
-    "9393": {
+    "9306": {
       "id": 24,
       "form": "shadow",
       "name": "Shadow Arbok"
     },
-    "9394": {
+    "9313": {
       "id": 57,
       "form": "shadow",
       "name": "Shadow Primeape"
     },
-    "9395": {
+    "9324": {
       "id": 97,
       "form": "shadow",
       "name": "Shadow Hypno"
     },
-    "9396": {
+    "9312": {
       "id": 55,
       "form": "shadow",
       "name": "Shadow Golduck"
     },
-    "9397": {
+    "9409": {
       "id": 302,
       "form": "shadow",
       "name": "Shadow Sableye"
     },
-    "9398": {
+    "9320": {
       "id": 85,
       "form": "shadow",
       "name": "Shadow Dodrio"
     },
-    "9399": {
+    "9304": {
       "id": 20,
       "form": "shadow",
       "name": "Shadow Raticate"
     },
-    "9400": {
+    "9319": {
       "id": 83,
       "form": "shadow",
       "name": "Shadow Farfetch'd"
     },
-    "9401": {
+    "9419": {
       "id": 334,
       "form": "shadow",
       "name": "Shadow Altaria"
     },
-    "9402": {
+    "9334": {
       "id": 115,
       "form": "shadow",
       "name": "Shadow Kangaskhan"
     },
-    "9403": {
+    "9424": {
       "id": 354,
       "form": "shadow",
       "name": "Shadow Banette"
     },
-    "9404": {
+    "9339": {
       "id": 126,
       "form": "shadow",
       "name": "Shadow Magmar"
     },
-    "9405": {
+    "9340": {
       "id": 127,
       "form": "shadow",
       "name": "Shadow Pinsir"
     },
-    "9406": {
+    "9317": {
       "id": 78,
       "form": "shadow",
       "name": "Shadow Rapidash"
     },
-    "9407": {
+    "9383": {
       "id": 219,
       "form": "shadow",
       "name": "Shadow Magcargo"
     },
-    "9408": {
+    "9329": {
       "id": 107,
       "form": "shadow",
       "name": "Shadow Hitmonchan"
     },
-    "9409": {
+    "9328": {
       "id": 106,
       "form": "shadow",
       "name": "Shadow Hitmonlee"
     },
-    "9410": {
+    "9330": {
       "id": 108,
       "form": "shadow",
       "name": "Shadow Lickitung"
     },
-    "9411": {
+    "9337": {
       "id": 123,
       "form": "shadow",
       "name": "Shadow Scyther"
     },
-    "9412": {
+    "9332": {
       "id": 113,
       "form": "shadow",
       "name": "Shadow Chansey"
     },
-    "9413": {
+    "9422": {
       "id": 338,
       "form": "shadow",
       "name": "Shadow Solrock"
     },
-    "9414": {
+    "9335": {
       "id": 121,
       "form": "shadow",
       "name": "Shadow Starmie"
     },
-    "9415": {
+    "9403": {
       "id": 277,
       "form": "shadow",
       "name": "Shadow Swellow"
     },
-    "9416": {
+    "9338": {
       "id": 125,
       "form": "shadow",
       "name": "Shadow Electabuzz"
     },
-    "9311": {
+    "9343": {
       "id": 143,
       "form": "shadow",
       "name": "Shadow Snorlax"
     },
-    "9417": {
+    "9315": {
       "id": 62,
       "form": "shadow",
       "name": "Shadow Poliwrath"
     },
-    "9418": {
+    "9336": {
       "id": 122,
       "form": "shadow",
       "name": "Shadow Mr. Mime"
     },
-    "9419": {
+    "9310": {
       "id": 51,
       "form": "shadow",
       "name": "Shadow Dugtrio"
     },
-    "9420": {
+    "9412": {
       "id": 310,
       "form": "shadow",
       "name": "Shadow Manectric"
     },
-    "9421": {
+    "9430": {
       "id": 373,
       "form": "shadow",
       "name": "Shadow Salamence"
     },
-    "9422": {
+    "9327": {
       "id": 105,
       "form": "shadow",
       "name": "Shadow Marowak"
     },
-    "9423": {
+    "9342": {
       "id": 131,
       "form": "shadow",
       "name": "Shadow Lapras"
     },
-    "9424": {
+    "9400": {
       "id": 249,
       "form": "shadow",
       "name": "Shadow Lugia"
     },
-    "9425": {
+    "9331": {
       "id": 112,
       "form": "shadow",
       "name": "Shadow Rhydon"
     },
-    "9426": {
+    "9346": {
       "id": 146,
       "form": "shadow",
       "name": "Shadow Moltres"
     },
-    "9427": {
+    "9326": {
       "id": 103,
       "form": "shadow",
       "name": "Shadow Exeggutor"
     },
-    "9428": {
+    "9341": {
       "id": 128,
       "form": "shadow",
       "name": "Shadow Tauros"
     },
-    "9429": {
+    "9344": {
       "id": 144,
       "form": "shadow",
       "name": "Shadow Articuno"
     },
-    "9430": {
+    "9345": {
       "id": 145,
       "form": "shadow",
       "name": "Shadow Zapdos"
     },
-    "9431": {
+    "9347": {
       "id": 149,
       "form": "shadow",
       "name": "Shadow Dragonite"
