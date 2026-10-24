@@ -1,7 +1,7 @@
 {
-  "KALOS_OLD_ROD_POOL_PERCENTAGES": {"129": 70, "370": 30},
-  "KALOS_GOOD_ROD_POOL_PERCENTAGES": {"690": 30, "692": 30, "223": 20, "72": 20},
-  "KALOS_SUPER_ROD_POOL_PERCENTAGES": {"690": 20, "692": 20, "130": 15, "341": 15, "211": 15, "224": 15},
+  "KALOS_OLD_ROD_POOL_PERCENTAGES": { "129": 6, "370": 3, "60": 91 },
+  "KALOS_GOOD_ROD_POOL_PERCENTAGES": { "690": 1, "692": 1, "223": 2, "72": 1, "118": 8, "341": 3, "116": 3, "90": 1, "120": 1, "170": 3, "366": 1, "61": 46, "339": 5, "550": 22, "147": 1, "318": 1 },
+  "KALOS_SUPER_ROD_POOL_PERCENTAGES": { "690": 1, "692": 1, "130": 1, "341": 1, "211": 1, "224": 1, "119": 3, "342": 1, "117": 1, "369": 3, "691": 3, "693": 3, "91": 1, "121": 1, "171": 1, "594": 4, "222": 1, "367": 1, "368": 1, "61": 44, "340": 2, "550": 20, "186": 1, "148": 1, "319": 1, "62": 1 },
   "TRAINER_CLASS_DIALOGUE": {"FLARE": {"intro": ["Team Flare wants a beautiful world, and you're not in it!", "Stylish, aren't I? Now battle!"], "player_won": ["How unfashionable...", "Team Flare won't forget this!"], "player_lost": ["Team Flare stays stylish!"]}},
   "FORM_MAP": {
     "6001": { "id": 718, "form": "ten_percent", "name": "Zygarde - 10% Forme" },
@@ -152,13 +152,13 @@
     "kalos_mom_newstart_3": ["Mom: I used to race Rhyhorn when I was young, you know.", "Mom: Your journey is your own race. Run it at your own pace!"]
   },
   "KALOS_ROUTE_22": [54, 667, 184, 298, 659, 83, 400, 399, 206, 447],
-  "KALOS_ROUTE_22_PERCENTAGES": { "54": 44, "667": 10, "184": 9, "298": 7, "659": 7, "83": 7, "400": 7, "399": 3, "206": 3, "447": 3 },
+  "KALOS_ROUTE_22_PERCENTAGES": { "54": 40, "667": 9, "184": 8, "298": 7, "659": 6, "83": 6, "400": 6, "399": 3, "206": 3, "447": 3, "660": 9 },
   "KALOS_ROUTE_21": [419, 271, 217, 327, 334, 123],
-  "KALOS_ROUTE_21_PERCENTAGES": { "419": 28, "271": 22, "217": 17, "327": 13, "334": 13, "123": 7 },
+  "KALOS_ROUTE_21_PERCENTAGES": { "419": 18, "271": 13, "217": 9, "327": 9, "334": 8, "123": 5, "333": 23, "270": 5, "418": 5, "216": 5 },
   "KALOS_ROUTE_20": [591, 164, 575, 39, 709, 571],
-  "KALOS_ROUTE_20_PERCENTAGES": { "591": 25, "164": 20, "575": 20, "39": 15, "709": 15, "571": 5 },
+  "KALOS_ROUTE_20_PERCENTAGES": { "591": 3, "164": 3, "575": 3, "39": 2, "709": 2, "571": 2, "185": 2, "590": 6, "60": 12, "61": 12, "132": 4, "271": 5, "354": 7, "569": 7, "163": 5, "174": 5, "353": 5, "570": 5, "574": 5, "438": 5 },
   "AZURE_BAY": [72, 79, 441, 686, 458, 102, 131],
-  "AZURE_BAY_PERCENTAGES": { "72": 40, "79": 20, "441": 18, "686": 8, "458": 8, "102": 5, "131": 1 },
+  "AZURE_BAY_PERCENTAGES": { "72": 15, "79": 8, "441": 7, "686": 3, "458": 3, "102": 2, "131": 1, "278": 23, "557": 25, "688": 13 },
   "STORY_PROGRESSION": {
     "KALOS_POWER_PLANT": {
       "area_type": "dungeon",
@@ -541,21 +541,7 @@
         "name": "Articuno",
         "victory_flag": "SEA_SPIRITS_DEN_boss_defeated"
       },
-      "route_menu": [
-        {
-          "text": "Sea Spirit's Den",
-          "action": "BOSS",
-          "condition": "boss_not_defeated",
-          "color": "GOLD"
-        },
-        {
-          "text": "Azure Bay",
-          "action": "EXIT",
-          "target_area": "AZURE_BAY",
-          "condition": "can_exit",
-          "color": "RED"
-        }
-      ],
+      "route_menu": [{"text": "Sea Spirit's Den", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD"}, {"text": "ZAPDOS OF THE DEN", "action": "BOSS", "color": "GOLD", "condition": ["not:defeated_kalos_zapdos"], "boss": {"id": 145, "name": "Zapdos", "victory_flag": "defeated_kalos_zapdos"}}, {"text": "MOLTRES OF THE DEN", "action": "BOSS", "color": "GOLD", "condition": ["not:defeated_kalos_moltres"], "boss": {"id": 146, "name": "Moltres", "victory_flag": "defeated_kalos_moltres"}}, {"text": "Azure Bay", "action": "EXIT", "target_area": "AZURE_BAY", "condition": "can_exit", "color": "RED"}],
       "next_area": "AZURE_BAY"
     },
     "AZURE_BAY": {
@@ -1291,21 +1277,7 @@
         {"text": "Kiloude City", "target_area": "KILOUDE_CITY", "condition": "beat_kalos_champion"},
         {"text": "Lysandre Labs", "target_area": "LYSANDRE_LABS", "condition": "has_psychic_badge"}
       ],
-      "explore_options": [
-        { "text": "Pokémon Center", "action": "HEAL" },
-        { "text": "Pokémon-Amie", "action": "AMIE" },
-        { "text": "Department Store", "action": "SHOP" },
-        { "text": "Visit Professor Sycamore", "action": "NPC", "target": "kalos_sycamore_intro", "flag_condition": "not met_sycamore", "victory_flag": "met_sycamore" },
-        {
-          "text": "Choose Starter Pokémon",
-          "action": "NPC",
-          "target": "kalos_sycamore_starters",
-          "condition": "no_kalos_starter",
-          "flag_condition": "not got_kalos_starter"
-        },
-        { "text": "Challenge Gym", "action": "GYM" },
-        { "text": "Lysandre Café", "action": "NPC", "target": "kalos_lysandre_intro", "flag_condition": "not met_lysandre", "victory_flag": "met_lysandre" }
-      ],
+      "explore_options": [{"text": "Pokémon Center", "action": "HEAL"}, {"text": "Pokémon-Amie", "action": "AMIE"}, {"text": "Department Store", "action": "SHOP"}, {"text": "Visit Professor Sycamore", "action": "NPC", "target": "kalos_sycamore_intro", "flag_condition": "not met_sycamore", "victory_flag": "met_sycamore"}, {"text": "Choose Starter Pokémon", "action": "NPC", "target": "kalos_sycamore_starters", "condition": "no_kalos_starter", "flag_condition": "not got_kalos_starter"}, {"text": "Sycamore's Kanto Pokemon", "action": "EVENT", "color": "GOLD", "condition": "has_bug_badge", "flag_condition": "not got_kalos_kanto_starter", "event": {"lines": ["Professor Sycamore: These Pokemon come from Kanto, far away.", "Your partner and this one should get along. Take good care of it!"], "gift_pokemon": {"650": 1, "653": 4, "656": 7, "default": 1}, "flag": "got_kalos_kanto_starter"}}, {"text": "Challenge Gym", "action": "GYM"}, {"text": "Lysandre Café", "action": "NPC", "target": "kalos_lysandre_intro", "flag_condition": "not met_lysandre", "victory_flag": "met_lysandre"}],
       "next_area": "KALOS_ROUTE_5",
       "department_store": true
     },
@@ -1846,18 +1818,7 @@
           }
         }
       ],
-      "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        {
-          "text": "BATTLE TEAM FLARE",
-          "action": "TRAINER",
-          "condition": "has_trainers",
-          "color": "GOLD",
-          "flag_condition": "not glittering_cave_cleared"
-        },
-        { "text": "Ambrette Town", "action": "EXIT", "target_area": "AMBRETTE_TOWN", "condition": "can_exit", "color": "RED" }
-      ]
+      "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "BATTLE TEAM FLARE", "action": "TRAINER", "condition": "has_trainers", "color": "GOLD", "flag_condition": "not glittering_cave_cleared"}, {"text": "SEARCH THE FOSSIL DIG", "action": "EVENT", "color": "ORANGE", "flag_condition": "not got_kalos_old_amber", "event": {"lines": ["A Hiker is digging near the cave wall. \"Found another one! I've got plenty.\"", "\"Take this Old Amber. The lab in Ambrette Town can bring it back to life.\""], "gift_item": {"OLD_AMBER": 1}, "flag": "got_kalos_old_amber"}}, {"text": "Ambrette Town", "action": "EXIT", "target_area": "AMBRETTE_TOWN", "condition": "can_exit", "color": "RED"}]
     },
     "REFLECTION_CAVE": {
       "area_type": "dungeon",
@@ -2792,58 +2753,58 @@
   "KALOS_ROUTE_1": [659, 661],
   "KALOS_ROUTE_1_PERCENTAGES": { "659": 60, "661": 40 },
   "KALOS_ROUTE_2": [659, 661, 664, 669],
-  "KALOS_ROUTE_2_PERCENTAGES": { "659": 30, "661": 30, "664": 20, "669": 20 },
+  "KALOS_ROUTE_2_PERCENTAGES": { "659": 20, "661": 20, "664": 13, "669": 13, "10": 8, "13": 7, "16": 9, "263": 10 },
   "KALOS_ROUTE_3": [661, 664, 669, 672, 667],
-  "KALOS_ROUTE_3_PERCENTAGES": { "661": 25, "664": 20, "669": 20, "672": 20, "667": 15 },
+  "KALOS_ROUTE_3_PERCENTAGES": { "661": 8, "664": 7, "669": 7, "672": 7, "667": 5, "16": 4, "25": 2, "183": 11, "206": 2, "284": 23, "298": 4, "399": 6, "412": 3, "659": 6, "283": 5 },
   "KALOS_ROUTE_4": [659, 672, 676, 674],
-  "KALOS_ROUTE_4_PERCENTAGES": { "659": 30, "672": 25, "676": 25, "674": 20 },
+  "KALOS_ROUTE_4_PERCENTAGES": { "659": 10, "672": 9, "676": 8, "674": 7, "165": 13, "280": 3, "300": 7, "406": 7, "415": 13, "669": 23 },
   "KALOS_ROUTE_5": [674, 676, 672, 673],
-  "KALOS_ROUTE_5_PERCENTAGES": { "674": 30, "676": 25, "672": 25, "673": 20 },
+  "KALOS_ROUTE_5_PERCENTAGES": { "674": 10, "676": 8, "672": 8, "673": 6, "63": 3, "84": 6, "311": 5, "312": 5, "316": 25, "559": 11, "659": 13 },
   "KALOS_ROUTE_6": [672, 673, 664, 665],
-  "KALOS_ROUTE_6_PERCENTAGES": { "672": 35, "673": 30, "664": 20, "665": 15 },
+  "KALOS_ROUTE_6_PERCENTAGES": { "672": 11, "673": 10, "664": 7, "665": 5, "43": 10, "161": 7, "290": 3, "352": 1, "531": 7, "543": 27, "677": 7, "679": 5 },
   "KALOS_ROUTE_7": [688, 689, 694, 695],
-  "KALOS_ROUTE_7_PERCENTAGES": { "688": 30, "689": 25, "694": 25, "695": 20 },
+  "KALOS_ROUTE_7_PERCENTAGES": { "688": 5, "689": 4, "694": 4, "695": 3, "54": 5, "143": 15, "187": 8, "235": 5, "313": 5, "314": 5, "315": 5, "453": 6, "580": 5, "669": 11, "682": 5, "684": 5, "446": 4 },
   "KALOS_ROUTE_8": [690, 691, 692, 693],
-  "KALOS_ROUTE_8_PERCENTAGES": { "690": 30, "691": 25, "692": 25, "693": 20 },
+  "KALOS_ROUTE_8_PERCENTAGES": { "690": 4, "691": 4, "692": 4, "693": 3, "72": 10, "95": 5, "320": 4, "557": 9, "688": 5, "276": 2, "278": 9, "325": 4, "335": 8, "336": 8, "359": 4, "371": 1, "425": 6, "619": 6, "686": 4 },
   "KALOS_ROUTE_9": [690, 691, 688, 694],
-  "KALOS_ROUTE_9_PERCENTAGES": { "690": 30, "691": 25, "688": 25, "694": 20 },
+  "KALOS_ROUTE_9_PERCENTAGES": { "690": 17, "691": 14, "688": 14, "694": 11, "449": 22, "551": 22 },
   "KALOS_ROUTE_10": [133, 209, 193, 701, 309, 561],
-  "KALOS_ROUTE_10_PERCENTAGES": { "133": 15, "209": 20, "193": 15, "701": 15, "309": 20, "561": 15 },
+  "KALOS_ROUTE_10_PERCENTAGES": { "133": 6, "209": 8, "193": 6, "701": 6, "309": 8, "561": 6, "228": 14, "299": 25, "587": 4, "622": 17 },
   "KALOS_ROUTE_11": [677, 678, 679, 680, 702],
-  "KALOS_ROUTE_11_PERCENTAGES": { "677": 25, "678": 20, "679": 20, "680": 15, "702": 20 },
+  "KALOS_ROUTE_11_PERCENTAGES": { "677": 6, "678": 5, "679": 5, "680": 4, "702": 5, "29": 15, "30": 2, "32": 15, "33": 3, "297": 5, "396": 2, "397": 5, "433": 3, "434": 11, "538": 5, "539": 5, "296": 4 },
   "KALOS_ROUTE_12": [692, 693, 690, 691],
-  "KALOS_ROUTE_12_PERCENTAGES": { "692": 30, "693": 25, "690": 25, "691": 20 },
+  "KALOS_ROUTE_12_PERCENTAGES": { "692": 4, "693": 4, "690": 4, "691": 3, "72": 12, "458": 2, "79": 6, "102": 3, "127": 1, "128": 6, "131": 14, "179": 5, "214": 1, "241": 6, "278": 8, "417": 1, "441": 6, "557": 9, "688": 5 },
   "KALOS_ROUTE_13": [695, 700, 682, 683],
-  "KALOS_ROUTE_13_PERCENTAGES": { "695": 30, "700": 25, "682": 25, "683": 20 },
+  "KALOS_ROUTE_13_PERCENTAGES": { "695": 8, "700": 6, "682": 6, "683": 5, "51": 19, "75": 16, "218": 7, "328": 19, "443": 9, "50": 5 },
   "KALOS_ROUTE_14": [708, 709, 710, 711],
-  "KALOS_ROUTE_14_PERCENTAGES": { "708": 30, "709": 25, "710": 25, "711": 20 },
+  "KALOS_ROUTE_14_PERCENTAGES": { "708": 6, "709": 5, "710": 5, "711": 4, "23": 1, "69": 12, "70": 4, "93": 2, "195": 18, "451": 11, "455": 4, "588": 4, "616": 4, "618": 11, "704": 9 },
   "KALOS_ROUTE_15": [686, 687, 684, 685],
-  "KALOS_ROUTE_15_PERCENTAGES": { "686": 30, "687": 25, "684": 25, "685": 20 },
+  "KALOS_ROUTE_15_PERCENTAGES": { "686": 6, "687": 5, "684": 5, "685": 4, "198": 8, "262": 6, "271": 9, "419": 6, "451": 5, "505": 5, "510": 5, "590": 11, "624": 5, "707": 5, "509": 5, "261": 5, "504": 5 },
   "KALOS_ROUTE_16": [710, 711, 714, 715, 707],
-  "KALOS_ROUTE_16_PERCENTAGES": { "710": 25, "711": 20, "714": 20, "715": 15, "707": 20 },
+  "KALOS_ROUTE_16_PERCENTAGES": { "710": 6, "711": 5, "714": 5, "715": 3, "707": 5, "70": 5, "198": 14, "271": 16, "419": 13, "451": 5, "590": 18, "708": 5 },
   "KALOS_ROUTE_17": [614, 615, 712, 713],
-  "KALOS_ROUTE_17_PERCENTAGES": { "614": 30, "615": 25, "712": 25, "713": 20 },
+  "KALOS_ROUTE_17_PERCENTAGES": { "614": 15, "615": 13, "712": 12, "713": 10, "215": 14, "225": 20, "459": 15, "460": 1 },
   "KALOS_ROUTE_18": [703, 706, 714, 715],
-  "KALOS_ROUTE_18_PERCENTAGES": { "703": 25, "706": 25, "714": 25, "715": 25 },
+  "KALOS_ROUTE_18_PERCENTAGES": { "703": 3, "706": 3, "714": 3, "715": 3, "28": 4, "74": 7, "75": 16, "213": 2, "247": 5, "305": 5, "324": 4, "533": 5, "631": 3, "632": 19, "271": 8, "419": 5, "532": 5 },
   "KALOS_ROUTE_19": [700, 701, 704, 705],
-  "KALOS_ROUTE_19_PERCENTAGES": { "700": 26, "701": 20, "704": 20, "705": 16, "650": 6, "653": 6, "656": 6 },
-  "KALOS_SANTALUNE_FOREST_PERCENTAGES": { "664": 30, "665": 25, "666": 25, "669": 20 },
+  "KALOS_ROUTE_19_PERCENTAGES": { "700": 5, "701": 4, "704": 4, "705": 3, "650": 2, "653": 2, "656": 2, "24": 2, "70": 13, "93": 3, "195": 18, "207": 5, "452": 6, "455": 3, "588": 5, "616": 4, "618": 6, "194": 4, "1": 3, "4": 3, "7": 3 },
+  "KALOS_SANTALUNE_FOREST_PERCENTAGES": { "664": 15, "665": 12, "666": 12, "669": 10, "10": 10, "11": 2, "13": 9, "14": 2, "25": 3, "511": 5, "513": 5, "515": 5, "661": 5, "172": 5 },
   "KALOS_SANTALUNE_FOREST": [664, 665, 666, 669],
-  "KALOS_GLITTERING_CAVE_PERCENTAGES": { "66": 25, "104": 20, "111": 20, "95": 15, "337": 10, "338": 10 },
+  "KALOS_GLITTERING_CAVE_PERCENTAGES": { "66": 9, "104": 7, "111": 7, "95": 5, "337": 4, "338": 4, "115": 2, "303": 2, "527": 31, "597": 5, "557": 24 },
   "KALOS_GLITTERING_CAVE": [66, 104, 111, 95, 337, 338],
-  "KALOS_REFLECTION_CAVE_PERCENTAGES": { "677": 30, "678": 25, "679": 25, "703": 20 },
+  "KALOS_REFLECTION_CAVE_PERCENTAGES": { "677": 7, "678": 6, "679": 5, "703": 5, "122": 5, "202": 3, "302": 2, "433": 4, "439": 14, "524": 14, "527": 21, "577": 5, "597": 4, "360": 5 },
   "KALOS_REFLECTION_CAVE": [677, 678, 679, 703],
-  "KALOS_CONNECTING_CAVE_PERCENTAGES": { "688": 40, "694": 35, "659": 25 },
+  "KALOS_CONNECTING_CAVE_PERCENTAGES": { "688": 13, "694": 12, "659": 8, "41": 22, "293": 30, "307": 10, "610": 5 },
   "KALOS_CONNECTING_CAVE": [659, 688, 694],
-  "KALOS_LOST_HOTEL_PERCENTAGES": { "686": 35, "687": 30, "710": 20, "711": 15 },
+  "KALOS_LOST_HOTEL_PERCENTAGES": { "686": 8, "687": 6, "710": 5, "711": 4, "82": 5, "101": 5, "479": 18, "568": 19, "569": 5, "607": 5, "624": 5, "707": 5, "81": 5, "100": 5 },
   "KALOS_LOST_HOTEL": [686, 687, 710, 711],
-  "KALOS_FROST_CAVERN_PERCENTAGES": { "614": 30, "615": 25, "712": 25, "713": 20 },
+  "KALOS_FROST_CAVERN_PERCENTAGES": { "614": 6, "615": 6, "712": 6, "713": 4, "61": 32, "238": 2, "419": 5, "582": 11, "613": 6, "93": 4, "124": 4, "221": 4, "92": 5, "220": 5 },
   "KALOS_FROST_CAVERN": [614, 615, 712, 713],
   "KALOS_POKEMON_VILLAGE_PERCENTAGES": { "150": 5, "670": 20, "706": 30, "711": 25, "715": 20 },
   "KALOS_POKEMON_VILLAGE": [150, 670, 706, 711, 715],
-  "KALOS_TERMINUS_CAVE_PERCENTAGES": { "718": 5, "703": 25, "706": 30, "714": 20, "715": 20 },
+  "KALOS_TERMINUS_CAVE_PERCENTAGES": { "718": 2, "703": 5, "706": 5, "714": 4, "715": 4, "28": 4, "74": 4, "75": 20, "168": 13, "213": 2, "246": 2, "247": 4, "304": 2, "305": 4, "632": 17, "27": 4, "167": 4 },
   "KALOS_TERMINUS_CAVE": [703, 706, 714, 715, 718],
-  "KALOS_VICTORY_ROAD_PERCENTAGES": { "701": 25, "704": 20, "706": 25, "714": 15, "715": 15 },
+  "KALOS_VICTORY_ROAD_PERCENTAGES": { "701": 3, "704": 2, "706": 2, "714": 2, "715": 2, "61": 17, "74": 6, "75": 20, "93": 2, "108": 2, "168": 3, "213": 2, "419": 6, "533": 2, "621": 2, "634": 2, "22": 7, "227": 2, "271": 5, "635": 2, "21": 4, "633": 5 },
   "KALOS_VICTORY_ROAD": [701, 704, 706, 714, 715],
   "REGION_START": {
     "KALOS": {
@@ -2858,7 +2819,7 @@
       "dex_range": [650, 721],
       "mom_newstart_text": ["kalos_mom_newstart_1", "kalos_mom_newstart_2", "kalos_mom_newstart_3"],
       "mom_home_text": ["kalos_mom_home_1", "kalos_mom_home_2", "kalos_mom_home_3"],
-      "dex_extra": [],
+      "dex_extra": [263, 264, 16, 17, 18, 10, 11, 12, 13, 14, 15, 511, 512, 513, 514, 515, 516, 172, 25, 26, 399, 400, 206, 298, 183, 184, 412, 413, 414, 283, 284, 129, 130, 341, 342, 118, 119, 318, 319, 54, 55, 83, 447, 448, 280, 281, 282, 475, 406, 315, 407, 165, 166, 415, 416, 300, 301, 1, 2, 3, 4, 5, 6, 7, 8, 9, 84, 85, 311, 312, 316, 317, 559, 560, 63, 64, 65, 43, 44, 45, 182, 161, 162, 290, 291, 292, 352, 543, 544, 545, 531, 235, 453, 454, 580, 581, 313, 314, 187, 188, 189, 446, 143, 293, 294, 295, 307, 308, 41, 42, 169, 610, 611, 612, 425, 426, 619, 620, 335, 336, 325, 326, 359, 337, 338, 371, 372, 373, 278, 279, 276, 277, 557, 558, 72, 73, 320, 321, 370, 120, 121, 90, 91, 211, 116, 117, 230, 369, 551, 552, 553, 449, 450, 111, 112, 464, 95, 208, 527, 528, 66, 67, 68, 104, 105, 115, 303, 142, 597, 598, 209, 210, 309, 310, 228, 229, 133, 134, 135, 136, 196, 197, 470, 471, 587, 193, 469, 561, 622, 623, 299, 476, 296, 297, 538, 539, 396, 397, 398, 434, 435, 29, 30, 31, 32, 33, 34, 433, 358, 439, 122, 577, 578, 579, 360, 202, 524, 525, 526, 302, 128, 241, 179, 180, 181, 127, 214, 417, 79, 80, 199, 102, 103, 441, 458, 226, 366, 367, 368, 223, 224, 222, 170, 171, 594, 131, 144, 145, 146, 50, 51, 328, 329, 330, 443, 444, 445, 74, 75, 76, 218, 219, 213, 451, 452, 194, 195, 588, 589, 616, 617, 69, 70, 71, 455, 92, 93, 94, 60, 61, 62, 186, 23, 24, 618, 339, 340, 509, 510, 261, 262, 504, 505, 624, 625, 198, 430, 590, 591, 270, 271, 272, 418, 419, 550, 607, 608, 609, 479, 81, 82, 462, 100, 101, 568, 569, 220, 221, 473, 613, 614, 238, 124, 582, 583, 584, 459, 460, 225, 215, 461, 532, 533, 534, 324, 27, 28, 304, 305, 306, 246, 247, 248, 631, 632, 167, 168, 21, 22, 615, 227, 207, 472, 163, 164, 174, 39, 40, 353, 354, 570, 571, 574, 575, 576, 438, 185, 327, 216, 217, 108, 463, 123, 212, 132, 333, 334, 621, 633, 634, 635, 147, 148, 149, 150], "dex_list": [650, 651, 652, 653, 654, 655, 656, 657, 658, 659, 660, 263, 264, 661, 662, 663, 16, 17, 18, 664, 665, 666, 10, 11, 12, 13, 14, 15, 511, 512, 513, 514, 515, 516, 172, 25, 26, 399, 400, 206, 298, 183, 184, 412, 413, 414, 283, 284, 129, 130, 341, 342, 118, 119, 318, 319, 667, 668, 54, 55, 83, 447, 448, 280, 281, 282, 475, 669, 670, 671, 406, 315, 407, 165, 166, 415, 416, 300, 301, 1, 2, 3, 4, 5, 6, 7, 8, 9, 672, 673, 674, 675, 676, 84, 85, 311, 312, 316, 317, 559, 560, 63, 64, 65, 43, 44, 45, 182, 161, 162, 290, 291, 292, 677, 678, 352, 679, 680, 681, 543, 544, 545, 531, 235, 453, 454, 580, 581, 682, 683, 684, 685, 313, 314, 187, 188, 189, 446, 143, 293, 294, 295, 307, 308, 41, 42, 169, 610, 611, 612, 719, 720, 721, 425, 426, 619, 620, 335, 336, 325, 326, 359, 686, 687, 337, 338, 371, 372, 373, 278, 279, 276, 277, 688, 689, 557, 558, 72, 73, 320, 321, 370, 690, 691, 692, 693, 120, 121, 90, 91, 211, 116, 117, 230, 369, 551, 552, 553, 694, 695, 449, 450, 111, 112, 464, 95, 208, 527, 528, 66, 67, 68, 104, 105, 115, 303, 696, 697, 698, 699, 142, 597, 598, 209, 210, 309, 310, 228, 229, 133, 134, 135, 136, 196, 197, 470, 471, 700, 587, 193, 469, 701, 561, 622, 623, 299, 476, 296, 297, 538, 539, 396, 397, 398, 434, 435, 29, 30, 31, 32, 33, 34, 702, 433, 358, 439, 122, 577, 578, 579, 360, 202, 524, 525, 526, 302, 703, 128, 241, 179, 180, 181, 127, 214, 417, 79, 80, 199, 102, 103, 441, 458, 226, 366, 367, 368, 223, 224, 222, 170, 171, 594, 131, 144, 145, 146, 50, 51, 328, 329, 330, 443, 444, 445, 74, 75, 76, 218, 219, 213, 451, 452, 194, 195, 704, 705, 706, 588, 589, 616, 617, 69, 70, 71, 455, 92, 93, 94, 60, 61, 62, 186, 23, 24, 618, 339, 340, 509, 510, 261, 262, 504, 505, 624, 625, 707, 198, 430, 590, 591, 270, 271, 272, 418, 419, 550, 708, 709, 710, 711, 607, 608, 609, 479, 81, 82, 462, 100, 101, 568, 569, 220, 221, 473, 712, 713, 613, 614, 238, 124, 582, 583, 584, 459, 460, 225, 215, 461, 532, 533, 534, 324, 27, 28, 304, 305, 306, 246, 247, 248, 631, 632, 167, 168, 21, 22, 615, 227, 714, 715, 207, 472, 163, 164, 174, 39, 40, 353, 354, 570, 571, 574, 575, 576, 438, 185, 327, 216, 217, 108, 463, 123, 212, 132, 333, 334, 621, 633, 634, 635, 147, 148, 149, 716, 717, 718, 150],
       "climate": {
         "SPRING": { "RAIN": 30 },
         "SUMMER": { "SUN": 35 },

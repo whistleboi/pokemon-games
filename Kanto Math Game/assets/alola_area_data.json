@@ -4009,11 +4009,7 @@
       "battle_type": "indoor",
       "wild_pool_percentages": null,
       "min_rounds": 0,
-      "route_menu": [
-        { "text": "Encounter Solgaleo", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD" },
-        { "text": "Vast Poni Canyon", "action": "EXIT", "target_area": "VAST_PONI_CANYON", "condition": "can_exit", "color": "RED" },
-        { "text": "SEAFOLK VILLAGE", "action": "EXIT", "target_area": "SEAFOLK_VILLAGE", "condition": "can_exit", "color": "RED" }
-      ],
+      "route_menu": [{"text": "Encounter Solgaleo", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD"}, {"text": "LILLIE'S GIFT", "action": "EVENT", "color": "GOLD", "condition": "ALTAR_boss_defeated", "flag_condition": "not got_second_cosmoem", "event": {"lines": ["Lillie: You did it! The light of the altar answered you.", "There was another Cosmog here... it's already grown into a Cosmoem.", "Please take it. When it's ready, you can choose who it becomes!"], "gift_pokemon": 790, "flag": "got_second_cosmoem"}}, {"text": "Vast Poni Canyon", "action": "EXIT", "target_area": "VAST_PONI_CANYON", "condition": "can_exit", "color": "RED"}, {"text": "SEAFOLK VILLAGE", "action": "EXIT", "target_area": "SEAFOLK_VILLAGE", "condition": "can_exit", "color": "RED"}],
       "area_boss": { "id": 791, "name": "Solgaleo", "victory_flag": "ALTAR_boss_defeated" }
     },
     "MOUNT_LANAKILA": {

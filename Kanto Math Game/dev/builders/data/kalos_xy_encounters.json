@@ -1,0 +1,4063 @@
+{
+ "aquacorde-town": {
+  "650": {
+   "methods": [
+    "gift"
+   ],
+   "chance": 100
+  },
+  "653": {
+   "methods": [
+    "gift"
+   ],
+   "chance": 100
+  },
+  "656": {
+   "methods": [
+    "gift"
+   ],
+   "chance": 100
+  }
+ },
+ "kalos-route-2": {
+  "10": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 11
+  },
+  "13": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 11
+  },
+  "16": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 14
+  },
+  "263": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 15
+  },
+  "659": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 20
+  },
+  "661": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 20
+  },
+  "664": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 20
+  }
+ },
+ "santalune-forest": {
+  "10": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 20
+  },
+  "11": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 4
+  },
+  "13": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 20
+  },
+  "14": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 4
+  },
+  "25": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 6
+  },
+  "511": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 10
+  },
+  "513": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 10
+  },
+  "515": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 10
+  },
+  "661": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 10
+  },
+  "664": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 20
+  }
+ },
+ "kalos-route-3": {
+  "16": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 10
+  },
+  "25": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 5
+  },
+  "118": {
+   "methods": [
+    "good-rod"
+   ],
+   "chance": 65
+  },
+  "119": {
+   "methods": [
+    "super-rod"
+   ],
+   "chance": 35
+  },
+  "129": {
+   "methods": [
+    "old-rod"
+   ],
+   "chance": 100
+  },
+  "130": {
+   "methods": [
+    "super-rod"
+   ],
+   "chance": 60
+  },
+  "183": {
+   "methods": [
+    "surf"
+   ],
+   "chance": 34
+  },
+  "206": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 5
+  },
+  "284": {
+   "methods": [
+    "surf"
+   ],
+   "chance": 66
+  },
+  "298": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 10
+  },
+  "341": {
+   "methods": [
+    "good-rod"
+   ],
+   "chance": 35
+  },
+  "342": {
+   "methods": [
+    "super-rod"
+   ],
+   "chance": 5
+  },
+  "399": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 20
+  },
+  "412": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 10
+  },
+  "659": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 20
+  },
+  "661": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 20
+  }
+ },
+ "kalos-route-4": {
+  "165": {
+   "methods": [
+    "yellow-flowers",
+    "red-flowers"
+   ],
+   "chance": 40
+  },
+  "280": {
+   "methods": [
+    "yellow-flowers",
+    "red-flowers"
+   ],
+   "chance": 10
+  },
+  "300": {
+   "methods": [
+    "yellow-flowers",
+    "red-flowers"
+   ],
+   "chance": 20
+  },
+  "406": {
+   "methods": [
+    "yellow-flowers",
+    "red-flowers"
+   ],
+   "chance": 20
+  },
+  "415": {
+   "methods": [
+    "yellow-flowers",
+    "red-flowers"
+   ],
+   "chance": 40
+  },
+  "669": {
+   "methods": [
+    "yellow-flowers",
+    "red-flowers"
+   ],
+   "chance": 70
+  }
+ },
+ "lumiose-city": {
+  "1": {
+   "methods": [
+    "gift"
+   ],
+   "chance": 100
+  },
+  "4": {
+   "methods": [
+    "gift"
+   ],
+   "chance": 100
+  },
+  "7": {
+   "methods": [
+    "gift"
+   ],
+   "chance": 100
+  }
+ },
+ "kalos-route-5": {
+  "63": {
+   "methods": [
+    "walk",
+    "purple-flowers"
+   ],
+   "chance": 10
+  },
+  "84": {
+   "methods": [
+    "walk",
+    "purple-flowers"
+   ],
+   "chance": 20
+  },
+  "311": {
+   "methods": [
+    "walk",
+    "purple-flowers",
+    "horde"
+   ],
+   "chance": 15
+  },
+  "312": {
+   "methods": [
+    "horde",
+    "walk",
+    "purple-flowers"
+   ],
+   "chance": 15
+  },
+  "316": {
+   "methods": [
+    "walk",
+    "purple-flowers",
+    "horde"
+   ],
+   "chance": 80
+  },
+  "559": {
+   "methods": [
+    "horde"
+   ],
+   "chance": 35
+  },
+  "659": {
+   "methods": [
+    "walk",
+    "purple-flowers"
+   ],
+   "chance": 40
+  },
+  "672": {
+   "methods": [
+    "walk",
+    "purple-flowers"
+   ],
+   "chance": 40
+  },
+  "674": {
+   "methods": [
+    "walk",
+    "purple-flowers"
+   ],
+   "chance": 30
+  },
+  "676": {
+   "methods": [
+    "walk",
+    "purple-flowers"
+   ],
+   "chance": 30
+  }
+ },
+ "kalos-route-6": {
+  "43": {
+   "methods": [
+    "rough-terrain"
+   ],
+   "chance": 30
+  },
+  "161": {
+   "methods": [
+    "rough-terrain"
+   ],
+   "chance": 20
+  },
+  "290": {
+   "methods": [
+    "rough-terrain"
+   ],
+   "chance": 10
+  },
+  "352": {
+   "methods": [
+    "rough-terrain"
+   ],
+   "chance": 5
+  },
+  "531": {
+   "methods": [
+    "rustling-bush-ambush"
+   ],
+   "chance": 20
+  },
+  "543": {
+   "methods": [
+    "rustling-bush-ambush"
+   ],
+   "chance": 80
+  },
+  "677": {
+   "methods": [
+    "rough-terrain"
+   ],
+   "chance": 20
+  },
+  "679": {
+   "methods": [
+    "rough-terrain"
+   ],
+   "chance": 15
+  }
+ },
+ "parfum-palace": {
+  "118": {
+   "methods": [
+    "good-rod"
+   ],
+   "chance": 65
+  },
+  "119": {
+   "methods": [
+    "super-rod"
+   ],
+   "chance": 35
+  },
+  "129": {
+   "methods": [
+    "old-rod"
+   ],
+   "chance": 100
+  },
+  "130": {
+   "methods": [
+    "super-rod"
+   ],
+   "chance": 60
+  },
+  "341": {
+   "methods": [
+    "good-rod"
+   ],
+   "chance": 35
+  },
+  "342": {
+   "methods": [
+    "super-rod"
+   ],
+   "chance": 5
+  }
+ },
+ "kalos-route-7": {
+  "54": {
+   "methods": [
+    "horde"
+   ],
+   "chance": 35
+  },
+  "143": {
+   "methods": [
+    "static"
+   ],
+   "chance": 100
+  },
+  "187": {
+   "methods": [
+    "horde"
+   ],
+   "chance": 60
+  },
+  "235": {
+   "methods": [
+    "walk",
+    "yellow-flowers",
+    "purple-flowers"
+   ],
+   "chance": 30
+  },
+  "313": {
+   "methods": [
+    "walk",
+    "yellow-flowers",
+    "purple-flowers"
+   ],
+   "chance": 30
+  },
+  "314": {
+   "methods": [
+    "walk",
+    "yellow-flowers",
+    "purple-flowers"
+   ],
+   "chance": 30
+  },
+  "315": {
+   "methods": [
+    "walk",
+    "yellow-flowers",
+    "purple-flowers",
+    "horde"
+   ],
+   "chance": 35
+  },
+  "453": {
+   "methods": [
+    "walk",
+    "yellow-flowers",
+    "purple-flowers"
+   ],
+   "chance": 45
+  },
+  "580": {
+   "methods": [
+    "walk",
+    "yellow-flowers",
+    "purple-flowers"
+   ],
+   "chance": 30
+  },
+  "669": {
+   "methods": [
+    "walk",
+    "yellow-flowers",
+    "purple-flowers"
+   ],
+   "chance": 75
+  },
+  "682": {
+   "methods": [
+    "walk",
+    "yellow-flowers",
+    "purple-flowers"
+   ],
+   "chance": 30
+  },
+  "684": {
+   "methods": [
+    "walk",
+    "yellow-flowers",
+    "purple-flowers"
+   ],
+   "chance": 30
+  }
+ },
+ "cyllage-city": {
+  "72": {
+   "methods": [
+    "surf"
+   ],
+   "chance": 69
+  },
+  "95": {
+   "methods": [
+    "rock-smash"
+   ],
+   "chance": 35
+  },
+  "116": {
+   "methods": [
+    "good-rod"
+   ],
+   "chance": 35
+  },
+  "117": {
+   "methods": [
+    "super-rod"
+   ],
+   "chance": 5
+  },
+  "320": {
+   "methods": [
+    "surf"
+   ],
+   "chance": 31
+  },
+  "369": {
+   "methods": [
+    "super-rod"
+   ],
+   "chance": 60
+  },
+  "370": {
+   "methods": [
+    "old-rod"
+   ],
+   "chance": 100
+  },
+  "557": {
+   "methods": [
+    "rock-smash"
+   ],
+   "chance": 66
+  },
+  "688": {
+   "methods": [
+    "rock-smash"
+   ],
+   "chance": 34
+  },
+  "690": {
+   "methods": [
+    "good-rod"
+   ],
+   "chance": 65
+  },
+  "691": {
+   "methods": [
+    "super-rod"
+   ],
+   "chance": 35
+  },
+  "692": {
+   "methods": [
+    "good-rod"
+   ],
+   "chance": 65
+  },
+  "693": {
+   "methods": [
+    "super-rod"
+   ],
+   "chance": 35
+  }
+ },
+ "kalos-route-8": {
+  "72": {
+   "methods": [
+    "surf"
+   ],
+   "chance": 69
+  },
+  "90": {
+   "methods": [
+    "good-rod"
+   ],
+   "chance": 35
+  },
+  "91": {
+   "methods": [
+    "super-rod"
+   ],
+   "chance": 5
+  },
+  "120": {
+   "methods": [
+    "good-rod"
+   ],
+   "chance": 35
+  },
+  "121": {
+   "methods": [
+    "super-rod"
+   ],
+   "chance": 5
+  },
+  "211": {
+   "methods": [
+    "super-rod"
+   ],
+   "chance": 60
+  },
+  "276": {
+   "methods": [
+    "horde"
+   ],
+   "chance": 5
+  },
+  "278": {
+   "methods": [
+    "horde"
+   ],
+   "chance": 60
+  },
+  "320": {
+   "methods": [
+    "surf"
+   ],
+   "chance": 31
+  },
+  "325": {
+   "methods": [
+    "walk",
+    "yellow-flowers"
+   ],
+   "chance": 30
+  },
+  "335": {
+   "methods": [
+    "walk",
+    "yellow-flowers",
+    "horde"
+   ],
+   "chance": 55
+  },
+  "336": {
+   "methods": [
+    "horde",
+    "walk",
+    "yellow-flowers"
+   ],
+   "chance": 55
+  },
+  "359": {
+   "methods": [
+    "walk",
+    "yellow-flowers"
+   ],
+   "chance": 30
+  },
+  "370": {
+   "methods": [
+    "old-rod"
+   ],
+   "chance": 100
+  },
+  "371": {
+   "methods": [
+    "walk",
+    "yellow-flowers"
+   ],
+   "chance": 10
+  },
+  "425": {
+   "methods": [
+    "walk",
+    "yellow-flowers"
+   ],
+   "chance": 40
+  },
+  "557": {
+   "methods": [
+    "rock-smash"
+   ],
+   "chance": 66
+  },
+  "619": {
+   "methods": [
+    "walk",
+    "yellow-flowers"
+   ],
+   "chance": 40
+  },
+  "686": {
+   "methods": [
+    "walk",
+    "yellow-flowers"
+   ],
+   "chance": 30
+  },
+  "688": {
+   "methods": [
+    "rock-smash"
+   ],
+   "chance": 34
+  },
+  "690": {
+   "methods": [
+    "good-rod"
+   ],
+   "chance": 65
+  },
+  "691": {
+   "methods": [
+    "super-rod"
+   ],
+   "chance": 35
+  },
+  "692": {
+   "methods": [
+    "good-rod"
+   ],
+   "chance": 65
+  },
+  "693": {
+   "methods": [
+    "super-rod"
+   ],
+   "chance": 35
+  }
+ },
+ "ambrette-town": {
+  "72": {
+   "methods": [
+    "surf"
+   ],
+   "chance": 69
+  },
+  "116": {
+   "methods": [
+    "good-rod"
+   ],
+   "chance": 35
+  },
+  "117": {
+   "methods": [
+    "super-rod"
+   ],
+   "chance": 5
+  },
+  "320": {
+   "methods": [
+    "surf"
+   ],
+   "chance": 31
+  },
+  "369": {
+   "methods": [
+    "super-rod"
+   ],
+   "chance": 60
+  },
+  "370": {
+   "methods": [
+    "old-rod"
+   ],
+   "chance": 100
+  },
+  "557": {
+   "methods": [
+    "rock-smash"
+   ],
+   "chance": 66
+  },
+  "688": {
+   "methods": [
+    "rock-smash"
+   ],
+   "chance": 34
+  },
+  "690": {
+   "methods": [
+    "good-rod"
+   ],
+   "chance": 65
+  },
+  "691": {
+   "methods": [
+    "super-rod"
+   ],
+   "chance": 35
+  },
+  "692": {
+   "methods": [
+    "good-rod"
+   ],
+   "chance": 65
+  },
+  "693": {
+   "methods": [
+    "super-rod"
+   ],
+   "chance": 35
+  }
+ },
+ "kalos-route-9": {
+  "449": {
+   "methods": [
+    "rough-terrain"
+   ],
+   "chance": 40
+  },
+  "551": {
+   "methods": [
+    "rough-terrain"
+   ],
+   "chance": 40
+  },
+  "694": {
+   "methods": [
+    "rough-terrain"
+   ],
+   "chance": 20
+  }
+ },
+ "kalos-route-10": {
+  "133": {
+   "methods": [
+    "walk",
+    "yellow-flowers"
+   ],
+   "chance": 25
+  },
+  "193": {
+   "methods": [
+    "horde"
+   ],
+   "chance": 35
+  },
+  "209": {
+   "methods": [
+    "walk",
+    "yellow-flowers"
+   ],
+   "chance": 40
+  },
+  "228": {
+   "methods": [
+    "walk",
+    "yellow-flowers",
+    "horde"
+   ],
+   "chance": 35
+  },
+  "299": {
+   "methods": [
+    "horde"
+   ],
+   "chance": 60
+  },
+  "309": {
+   "methods": [
+    "walk",
+    "yellow-flowers",
+    "horde"
+   ],
+   "chance": 35
+  },
+  "561": {
+   "methods": [
+    "walk",
+    "yellow-flowers"
+   ],
+   "chance": 30
+  },
+  "587": {
+   "methods": [
+    "walk",
+    "yellow-flowers"
+   ],
+   "chance": 10
+  },
+  "622": {
+   "methods": [
+    "walk",
+    "yellow-flowers"
+   ],
+   "chance": 40
+  },
+  "701": {
+   "methods": [
+    "walk",
+    "yellow-flowers"
+   ],
+   "chance": 25
+  }
+ },
+ "kalos-route-11": {
+  "29": {
+   "methods": [
+    "horde"
+   ],
+   "chance": 60
+  },
+  "30": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 5
+  },
+  "32": {
+   "methods": [
+    "horde"
+   ],
+   "chance": 60
+  },
+  "33": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 10
+  },
+  "297": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 20
+  },
+  "396": {
+   "methods": [
+    "horde"
+   ],
+   "chance": 5
+  },
+  "397": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 20
+  },
+  "433": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 10
+  },
+  "434": {
+   "methods": [
+    "walk",
+    "horde"
+   ],
+   "chance": 45
+  },
+  "538": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 20
+  },
+  "539": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 20
+  },
+  "702": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 5
+  }
+ },
+ "reflection-cave": {
+  "122": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 20
+  },
+  "202": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 10
+  },
+  "302": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 5
+  },
+  "433": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 15
+  },
+  "439": {
+   "methods": [
+    "horde"
+   ],
+   "chance": 60
+  },
+  "524": {
+   "methods": [
+    "walk",
+    "horde"
+   ],
+   "chance": 60
+  },
+  "527": {
+   "methods": [
+    "ceiling-ambush"
+   ],
+   "chance": 85
+  },
+  "577": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 20
+  },
+  "597": {
+   "methods": [
+    "ceiling-ambush"
+   ],
+   "chance": 15
+  },
+  "703": {
+   "methods": [
+    "walk",
+    "horde"
+   ],
+   "chance": 15
+  }
+ },
+ "shalour-city": {
+  "72": {
+   "methods": [
+    "surf"
+   ],
+   "chance": 84
+  },
+  "170": {
+   "methods": [
+    "good-rod"
+   ],
+   "chance": 35
+  },
+  "171": {
+   "methods": [
+    "super-rod"
+   ],
+   "chance": 5
+  },
+  "223": {
+   "methods": [
+    "good-rod"
+   ],
+   "chance": 65
+  },
+  "224": {
+   "methods": [
+    "super-rod"
+   ],
+   "chance": 35
+  },
+  "370": {
+   "methods": [
+    "old-rod"
+   ],
+   "chance": 100
+  },
+  "458": {
+   "methods": [
+    "surf"
+   ],
+   "chance": 16
+  },
+  "594": {
+   "methods": [
+    "super-rod"
+   ],
+   "chance": 60
+  }
+ },
+ "tower-of-mastery": {
+  "448": {
+   "methods": [
+    "gift"
+   ],
+   "chance": 100
+  }
+ },
+ "kalos-route-12": {
+  "72": {
+   "methods": [
+    "surf"
+   ],
+   "chance": 84
+  },
+  "79": {
+   "methods": [
+    "walk",
+    "yellow-flowers"
+   ],
+   "chance": 40
+  },
+  "102": {
+   "methods": [
+    "walk",
+    "yellow-flowers"
+   ],
+   "chance": 20
+  },
+  "127": {
+   "methods": [
+    "walk",
+    "yellow-flowers"
+   ],
+   "chance": 10
+  },
+  "128": {
+   "methods": [
+    "walk",
+    "yellow-flowers",
+    "horde"
+   ],
+   "chance": 45
+  },
+  "131": {
+   "methods": [
+    "surf",
+    "gift"
+   ],
+   "chance": 101
+  },
+  "179": {
+   "methods": [
+    "horde"
+   ],
+   "chance": 35
+  },
+  "214": {
+   "methods": [
+    "walk",
+    "yellow-flowers"
+   ],
+   "chance": 10
+  },
+  "222": {
+   "methods": [
+    "super-rod"
+   ],
+   "chance": 60
+  },
+  "223": {
+   "methods": [
+    "good-rod"
+   ],
+   "chance": 65
+  },
+  "224": {
+   "methods": [
+    "super-rod"
+   ],
+   "chance": 35
+  },
+  "241": {
+   "methods": [
+    "walk",
+    "yellow-flowers",
+    "horde"
+   ],
+   "chance": 45
+  },
+  "278": {
+   "methods": [
+    "horde"
+   ],
+   "chance": 60
+  },
+  "366": {
+   "methods": [
+    "good-rod"
+   ],
+   "chance": 35
+  },
+  "367": {
+   "methods": [
+    "super-rod"
+   ],
+   "chance": 5
+  },
+  "368": {
+   "methods": [
+    "super-rod"
+   ],
+   "chance": 5
+  },
+  "370": {
+   "methods": [
+    "old-rod"
+   ],
+   "chance": 100
+  },
+  "417": {
+   "methods": [
+    "walk",
+    "yellow-flowers"
+   ],
+   "chance": 10
+  },
+  "441": {
+   "methods": [
+    "walk",
+    "yellow-flowers"
+   ],
+   "chance": 40
+  },
+  "458": {
+   "methods": [
+    "surf"
+   ],
+   "chance": 15
+  },
+  "557": {
+   "methods": [
+    "rock-smash"
+   ],
+   "chance": 66
+  },
+  "688": {
+   "methods": [
+    "rock-smash"
+   ],
+   "chance": 34
+  }
+ },
+ "kalos-route-13": {
+  "51": {
+   "methods": [
+    "rough-terrain",
+    "ground-ambush"
+   ],
+   "chance": 80
+  },
+  "75": {
+   "methods": [
+    "rock-smash"
+   ],
+   "chance": 66
+  },
+  "218": {
+   "methods": [
+    "rock-smash"
+   ],
+   "chance": 34
+  },
+  "328": {
+   "methods": [
+    "rough-terrain",
+    "ground-ambush"
+   ],
+   "chance": 80
+  },
+  "443": {
+   "methods": [
+    "rough-terrain",
+    "ground-ambush"
+   ],
+   "chance": 40
+  }
+ },
+ "kalos-route-14": {
+  "23": {
+   "methods": [
+    "horde"
+   ],
+   "chance": 5
+  },
+  "60": {
+   "methods": [
+    "old-rod"
+   ],
+   "chance": 100
+  },
+  "61": {
+   "methods": [
+    "good-rod",
+    "super-rod"
+   ],
+   "chance": 100
+  },
+  "69": {
+   "methods": [
+    "horde"
+   ],
+   "chance": 60
+  },
+  "70": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 20
+  },
+  "93": {
+   "methods": [
+    "walk",
+    "rough-terrain"
+   ],
+   "chance": 10
+  },
+  "195": {
+   "methods": [
+    "walk",
+    "rough-terrain",
+    "surf"
+   ],
+   "chance": 90
+  },
+  "339": {
+   "methods": [
+    "good-rod"
+   ],
+   "chance": 65
+  },
+  "340": {
+   "methods": [
+    "super-rod"
+   ],
+   "chance": 35
+  },
+  "451": {
+   "methods": [
+    "walk",
+    "horde"
+   ],
+   "chance": 55
+  },
+  "455": {
+   "methods": [
+    "walk",
+    "rough-terrain"
+   ],
+   "chance": 20
+  },
+  "588": {
+   "methods": [
+    "walk",
+    "rough-terrain"
+   ],
+   "chance": 20
+  },
+  "616": {
+   "methods": [
+    "walk",
+    "rough-terrain"
+   ],
+   "chance": 20
+  },
+  "618": {
+   "methods": [
+    "rough-terrain",
+    "surf"
+   ],
+   "chance": 55
+  },
+  "704": {
+   "methods": [
+    "walk",
+    "rough-terrain",
+    "surf"
+   ],
+   "chance": 45
+  }
+ },
+ "laverre-city": {
+  "60": {
+   "methods": [
+    "old-rod"
+   ],
+   "chance": 100
+  },
+  "61": {
+   "methods": [
+    "good-rod",
+    "super-rod"
+   ],
+   "chance": 100
+  },
+  "550": {
+   "methods": [
+    "super-rod",
+    "good-rod"
+   ],
+   "chance": 65
+  },
+  "10016": {
+   "methods": [
+    "good-rod",
+    "super-rod"
+   ],
+   "chance": 65
+  }
+ },
+ "kalos-route-15": {
+  "60": {
+   "methods": [
+    "old-rod"
+   ],
+   "chance": 100
+  },
+  "61": {
+   "methods": [
+    "good-rod",
+    "super-rod"
+   ],
+   "chance": 100
+  },
+  "198": {
+   "methods": [
+    "horde"
+   ],
+   "chance": 60
+  },
+  "262": {
+   "methods": [
+    "walk",
+    "red-flowers"
+   ],
+   "chance": 40
+  },
+  "271": {
+   "methods": [
+    "surf"
+   ],
+   "chance": 66
+  },
+  "419": {
+   "methods": [
+    "surf"
+   ],
+   "chance": 34
+  },
+  "451": {
+   "methods": [
+    "walk",
+    "red-flowers"
+   ],
+   "chance": 30
+  },
+  "505": {
+   "methods": [
+    "walk",
+    "red-flowers"
+   ],
+   "chance": 40
+  },
+  "510": {
+   "methods": [
+    "walk",
+    "red-flowers"
+   ],
+   "chance": 40
+  },
+  "550": {
+   "methods": [
+    "super-rod",
+    "good-rod"
+   ],
+   "chance": 65
+  },
+  "590": {
+   "methods": [
+    "walk",
+    "red-flowers",
+    "horde"
+   ],
+   "chance": 75
+  },
+  "624": {
+   "methods": [
+    "walk",
+    "red-flowers"
+   ],
+   "chance": 30
+  },
+  "707": {
+   "methods": [
+    "walk",
+    "red-flowers",
+    "horde"
+   ],
+   "chance": 25
+  },
+  "10016": {
+   "methods": [
+    "good-rod",
+    "super-rod"
+   ],
+   "chance": 65
+  }
+ },
+ "kalos-route-16": {
+  "60": {
+   "methods": [
+    "old-rod"
+   ],
+   "chance": 100
+  },
+  "61": {
+   "methods": [
+    "good-rod",
+    "super-rod"
+   ],
+   "chance": 100
+  },
+  "70": {
+   "methods": [
+    "yellow-flowers"
+   ],
+   "chance": 20
+  },
+  "198": {
+   "methods": [
+    "horde"
+   ],
+   "chance": 60
+  },
+  "271": {
+   "methods": [
+    "surf"
+   ],
+   "chance": 66
+  },
+  "419": {
+   "methods": [
+    "yellow-flowers",
+    "surf"
+   ],
+   "chance": 54
+  },
+  "451": {
+   "methods": [
+    "yellow-flowers"
+   ],
+   "chance": 20
+  },
+  "550": {
+   "methods": [
+    "super-rod",
+    "good-rod"
+   ],
+   "chance": 65
+  },
+  "590": {
+   "methods": [
+    "yellow-flowers",
+    "rough-terrain",
+    "horde"
+   ],
+   "chance": 75
+  },
+  "707": {
+   "methods": [
+    "yellow-flowers",
+    "rough-terrain",
+    "horde"
+   ],
+   "chance": 24
+  },
+  "708": {
+   "methods": [
+    "yellow-flowers",
+    "rough-terrain"
+   ],
+   "chance": 20
+  },
+  "710": {
+   "methods": [
+    "rough-terrain"
+   ],
+   "chance": 30
+  },
+  "10016": {
+   "methods": [
+    "good-rod",
+    "super-rod"
+   ],
+   "chance": 65
+  },
+  "10027": {
+   "methods": [
+    "rough-terrain"
+   ],
+   "chance": 20
+  },
+  "10028": {
+   "methods": [
+    "rough-terrain"
+   ],
+   "chance": 10
+  },
+  "10029": {
+   "methods": [
+    "rough-terrain"
+   ],
+   "chance": 1
+  }
+ },
+ "frost-cavern": {
+  "60": {
+   "methods": [
+    "old-rod"
+   ],
+   "chance": 100
+  },
+  "61": {
+   "methods": [
+    "surf",
+    "good-rod",
+    "super-rod"
+   ],
+   "chance": 166
+  },
+  "238": {
+   "methods": [
+    "horde"
+   ],
+   "chance": 5
+  },
+  "419": {
+   "methods": [
+    "surf"
+   ],
+   "chance": 34
+  },
+  "550": {
+   "methods": [
+    "super-rod",
+    "good-rod"
+   ],
+   "chance": 65
+  },
+  "582": {
+   "methods": [
+    "horde"
+   ],
+   "chance": 60
+  },
+  "613": {
+   "methods": [
+    "horde"
+   ],
+   "chance": 35
+  },
+  "10016": {
+   "methods": [
+    "good-rod",
+    "super-rod"
+   ],
+   "chance": 65
+  },
+  "93": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 20
+  },
+  "124": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 20
+  },
+  "221": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 20
+  },
+  "614": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 20
+  },
+  "615": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 4
+  },
+  "712": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 20
+  }
+ },
+ "kalos-route-17": {
+  "215": {
+   "methods": [
+    "rough-terrain"
+   ],
+   "chance": 29
+  },
+  "225": {
+   "methods": [
+    "rough-terrain"
+   ],
+   "chance": 40
+  },
+  "459": {
+   "methods": [
+    "rough-terrain"
+   ],
+   "chance": 30
+  },
+  "460": {
+   "methods": [
+    "rough-terrain"
+   ],
+   "chance": 1
+  }
+ },
+ "kalos-route-18": {
+  "28": {
+   "methods": [
+    "walk",
+    "red-flowers"
+   ],
+   "chance": 30
+  },
+  "74": {
+   "methods": [
+    "horde"
+   ],
+   "chance": 60
+  },
+  "75": {
+   "methods": [
+    "walk",
+    "red-flowers",
+    "rock-smash"
+   ],
+   "chance": 125
+  },
+  "213": {
+   "methods": [
+    "rock-smash"
+   ],
+   "chance": 5
+  },
+  "247": {
+   "methods": [
+    "walk",
+    "red-flowers"
+   ],
+   "chance": 40
+  },
+  "305": {
+   "methods": [
+    "walk",
+    "red-flowers"
+   ],
+   "chance": 40
+  },
+  "324": {
+   "methods": [
+    "walk",
+    "red-flowers"
+   ],
+   "chance": 30
+  },
+  "533": {
+   "methods": [
+    "walk",
+    "red-flowers"
+   ],
+   "chance": 40
+  },
+  "631": {
+   "methods": [
+    "walk",
+    "red-flowers",
+    "horde",
+    "rustling-bush-ambush"
+   ],
+   "chance": 25
+  },
+  "632": {
+   "methods": [
+    "walk",
+    "red-flowers",
+    "horde",
+    "rustling-bush-ambush"
+   ],
+   "chance": 150
+  }
+ },
+ "couriway-town": {
+  "60": {
+   "methods": [
+    "old-rod"
+   ],
+   "chance": 100
+  },
+  "61": {
+   "methods": [
+    "good-rod",
+    "super-rod"
+   ],
+   "chance": 100
+  },
+  "271": {
+   "methods": [
+    "surf"
+   ],
+   "chance": 66
+  },
+  "419": {
+   "methods": [
+    "surf"
+   ],
+   "chance": 34
+  },
+  "550": {
+   "methods": [
+    "super-rod",
+    "good-rod"
+   ],
+   "chance": 65
+  },
+  "10016": {
+   "methods": [
+    "good-rod",
+    "super-rod"
+   ],
+   "chance": 65
+  }
+ },
+ "kalos-route-19": {
+  "24": {
+   "methods": [
+    "horde"
+   ],
+   "chance": 5
+  },
+  "60": {
+   "methods": [
+    "old-rod"
+   ],
+   "chance": 100
+  },
+  "61": {
+   "methods": [
+    "good-rod",
+    "super-rod"
+   ],
+   "chance": 95
+  },
+  "70": {
+   "methods": [
+    "yellow-flowers",
+    "purple-flowers",
+    "horde"
+   ],
+   "chance": 90
+  },
+  "93": {
+   "methods": [
+    "yellow-flowers",
+    "purple-flowers",
+    "rough-terrain"
+   ],
+   "chance": 15
+  },
+  "186": {
+   "methods": [
+    "super-rod"
+   ],
+   "chance": 5
+  },
+  "195": {
+   "methods": [
+    "yellow-flowers",
+    "purple-flowers",
+    "rough-terrain",
+    "surf"
+   ],
+   "chance": 120
+  },
+  "207": {
+   "methods": [
+    "horde"
+   ],
+   "chance": 35
+  },
+  "339": {
+   "methods": [
+    "good-rod"
+   ],
+   "chance": 65
+  },
+  "340": {
+   "methods": [
+    "super-rod"
+   ],
+   "chance": 35
+  },
+  "452": {
+   "methods": [
+    "yellow-flowers",
+    "purple-flowers"
+   ],
+   "chance": 40
+  },
+  "455": {
+   "methods": [
+    "yellow-flowers",
+    "purple-flowers",
+    "rough-terrain"
+   ],
+   "chance": 15
+  },
+  "588": {
+   "methods": [
+    "yellow-flowers",
+    "purple-flowers",
+    "rough-terrain"
+   ],
+   "chance": 30
+  },
+  "616": {
+   "methods": [
+    "yellow-flowers",
+    "purple-flowers",
+    "rough-terrain"
+   ],
+   "chance": 30
+  },
+  "618": {
+   "methods": [
+    "rough-terrain",
+    "surf"
+   ],
+   "chance": 54
+  },
+  "705": {
+   "methods": [
+    "yellow-flowers",
+    "purple-flowers",
+    "rough-terrain",
+    "surf"
+   ],
+   "chance": 66
+  }
+ },
+ "kalos-route-20": {
+  "39": {
+   "methods": [
+    "walk",
+    "red-flowers"
+   ],
+   "chance": 30
+  },
+  "164": {
+   "methods": [
+    "walk",
+    "red-flowers"
+   ],
+   "chance": 40
+  },
+  "185": {
+   "methods": [
+    "horde"
+   ],
+   "chance": 5
+  },
+  "571": {
+   "methods": [
+    "walk",
+    "red-flowers"
+   ],
+   "chance": 10
+  },
+  "575": {
+   "methods": [
+    "walk",
+    "red-flowers"
+   ],
+   "chance": 40
+  },
+  "590": {
+   "methods": [
+    "horde"
+   ],
+   "chance": 60
+  },
+  "591": {
+   "methods": [
+    "walk",
+    "red-flowers"
+   ],
+   "chance": 50
+  },
+  "709": {
+   "methods": [
+    "walk",
+    "red-flowers",
+    "horde"
+   ],
+   "chance": 70
+  }
+ },
+ "pokemon-village": {
+  "39": {
+   "methods": [
+    "yellow-flowers",
+    "purple-flowers"
+   ],
+   "chance": 30
+  },
+  "60": {
+   "methods": [
+    "old-rod",
+    "horde"
+   ],
+   "chance": 135
+  },
+  "61": {
+   "methods": [
+    "surf",
+    "good-rod",
+    "super-rod"
+   ],
+   "chance": 134
+  },
+  "132": {
+   "methods": [
+    "yellow-flowers",
+    "purple-flowers"
+   ],
+   "chance": 30
+  },
+  "164": {
+   "methods": [
+    "yellow-flowers",
+    "purple-flowers"
+   ],
+   "chance": 40
+  },
+  "271": {
+   "methods": [
+    "surf",
+    "horde"
+   ],
+   "chance": 71
+  },
+  "354": {
+   "methods": [
+    "trash-can-ambush"
+   ],
+   "chance": 100
+  },
+  "550": {
+   "methods": [
+    "super-rod",
+    "good-rod"
+   ],
+   "chance": 65
+  },
+  "569": {
+   "methods": [
+    "trash-can-ambush"
+   ],
+   "chance": 100
+  },
+  "571": {
+   "methods": [
+    "yellow-flowers",
+    "purple-flowers"
+   ],
+   "chance": 20
+  },
+  "575": {
+   "methods": [
+    "yellow-flowers",
+    "purple-flowers"
+   ],
+   "chance": 40
+  },
+  "590": {
+   "methods": [
+    "horde"
+   ],
+   "chance": 60
+  },
+  "591": {
+   "methods": [
+    "yellow-flowers",
+    "purple-flowers"
+   ],
+   "chance": 40
+  },
+  "10016": {
+   "methods": [
+    "good-rod",
+    "super-rod"
+   ],
+   "chance": 65
+  }
+ },
+ "kalos-route-21": {
+  "60": {
+   "methods": [
+    "old-rod"
+   ],
+   "chance": 100
+  },
+  "61": {
+   "methods": [
+    "good-rod",
+    "super-rod"
+   ],
+   "chance": 95
+  },
+  "123": {
+   "methods": [
+    "purple-flowers",
+    "red-flowers",
+    "horde"
+   ],
+   "chance": 25
+  },
+  "147": {
+   "methods": [
+    "good-rod"
+   ],
+   "chance": 5
+  },
+  "148": {
+   "methods": [
+    "super-rod"
+   ],
+   "chance": 5
+  },
+  "217": {
+   "methods": [
+    "purple-flowers",
+    "red-flowers"
+   ],
+   "chance": 50
+  },
+  "271": {
+   "methods": [
+    "surf"
+   ],
+   "chance": 66
+  },
+  "327": {
+   "methods": [
+    "purple-flowers",
+    "red-flowers",
+    "horde"
+   ],
+   "chance": 100
+  },
+  "333": {
+   "methods": [
+    "horde"
+   ],
+   "chance": 35
+  },
+  "334": {
+   "methods": [
+    "purple-flowers",
+    "red-flowers"
+   ],
+   "chance": 40
+  },
+  "419": {
+   "methods": [
+    "purple-flowers",
+    "red-flowers",
+    "surf"
+   ],
+   "chance": 84
+  },
+  "550": {
+   "methods": [
+    "good-rod",
+    "super-rod"
+   ],
+   "chance": 95
+  }
+ },
+ "kalos-route-22": {
+  "54": {
+   "methods": [
+    "walk",
+    "yellow-flowers",
+    "surf"
+   ],
+   "chance": 125
+  },
+  "83": {
+   "methods": [
+    "walk",
+    "yellow-flowers"
+   ],
+   "chance": 20
+  },
+  "118": {
+   "methods": [
+    "good-rod"
+   ],
+   "chance": 65
+  },
+  "119": {
+   "methods": [
+    "super-rod"
+   ],
+   "chance": 35
+  },
+  "129": {
+   "methods": [
+    "old-rod"
+   ],
+   "chance": 100
+  },
+  "130": {
+   "methods": [
+    "super-rod"
+   ],
+   "chance": 60
+  },
+  "184": {
+   "methods": [
+    "yellow-flowers",
+    "surf"
+   ],
+   "chance": 25
+  },
+  "206": {
+   "methods": [
+    "walk",
+    "yellow-flowers"
+   ],
+   "chance": 10
+  },
+  "298": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 20
+  },
+  "318": {
+   "methods": [
+    "good-rod"
+   ],
+   "chance": 35
+  },
+  "319": {
+   "methods": [
+    "super-rod"
+   ],
+   "chance": 5
+  },
+  "399": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 10
+  },
+  "400": {
+   "methods": [
+    "yellow-flowers"
+   ],
+   "chance": 20
+  },
+  "447": {
+   "methods": [
+    "walk",
+    "yellow-flowers"
+   ],
+   "chance": 10
+  },
+  "659": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 20
+  },
+  "660": {
+   "methods": [
+    "yellow-flowers"
+   ],
+   "chance": 10
+  },
+  "667": {
+   "methods": [
+    "walk",
+    "yellow-flowers"
+   ],
+   "chance": 30
+  }
+ },
+ "kalos-victory-road": {
+  "60": {
+   "methods": [
+    "old-rod"
+   ],
+   "chance": 100
+  },
+  "61": {
+   "methods": [
+    "surf",
+    "good-rod",
+    "super-rod"
+   ],
+   "chance": 166
+  },
+  "74": {
+   "methods": [
+    "horde"
+   ],
+   "chance": 60
+  },
+  "75": {
+   "methods": [
+    "walk",
+    "rock-smash",
+    "ceiling-ambush",
+    "horde"
+   ],
+   "chance": 195
+  },
+  "93": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 10
+  },
+  "108": {
+   "methods": [
+    "walk",
+    "horde"
+   ],
+   "chance": 20
+  },
+  "168": {
+   "methods": [
+    "ceiling-ambush"
+   ],
+   "chance": 33
+  },
+  "213": {
+   "methods": [
+    "rock-smash"
+   ],
+   "chance": 5
+  },
+  "419": {
+   "methods": [
+    "surf",
+    "horde"
+   ],
+   "chance": 69
+  },
+  "533": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 30
+  },
+  "550": {
+   "methods": [
+    "super-rod",
+    "good-rod"
+   ],
+   "chance": 65
+  },
+  "621": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 20
+  },
+  "634": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 5
+  },
+  "714": {
+   "methods": [
+    "ceiling-ambush"
+   ],
+   "chance": 22
+  },
+  "10016": {
+   "methods": [
+    "good-rod",
+    "super-rod"
+   ],
+   "chance": 65
+  },
+  "22": {
+   "methods": [
+    "sky-ambush"
+   ],
+   "chance": 77
+  },
+  "227": {
+   "methods": [
+    "sky-ambush"
+   ],
+   "chance": 18
+  },
+  "271": {
+   "methods": [
+    "surf"
+   ],
+   "chance": 66
+  },
+  "635": {
+   "methods": [
+    "sky-ambush"
+   ],
+   "chance": 5
+  },
+  "62": {
+   "methods": [
+    "super-rod"
+   ],
+   "chance": 5
+  }
+ },
+ "azure-bay": {
+  "72": {
+   "methods": [
+    "surf"
+   ],
+   "chance": 84
+  },
+  "79": {
+   "methods": [
+    "walk",
+    "horde"
+   ],
+   "chance": 75
+  },
+  "102": {
+   "methods": [
+    "walk",
+    "horde"
+   ],
+   "chance": 15
+  },
+  "131": {
+   "methods": [
+    "surf"
+   ],
+   "chance": 1
+  },
+  "170": {
+   "methods": [
+    "good-rod"
+   ],
+   "chance": 35
+  },
+  "171": {
+   "methods": [
+    "super-rod"
+   ],
+   "chance": 5
+  },
+  "223": {
+   "methods": [
+    "good-rod"
+   ],
+   "chance": 65
+  },
+  "224": {
+   "methods": [
+    "super-rod"
+   ],
+   "chance": 35
+  },
+  "278": {
+   "methods": [
+    "horde"
+   ],
+   "chance": 60
+  },
+  "370": {
+   "methods": [
+    "old-rod"
+   ],
+   "chance": 100
+  },
+  "441": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 35
+  },
+  "458": {
+   "methods": [
+    "surf"
+   ],
+   "chance": 15
+  },
+  "557": {
+   "methods": [
+    "rock-smash"
+   ],
+   "chance": 66
+  },
+  "594": {
+   "methods": [
+    "super-rod"
+   ],
+   "chance": 60
+  },
+  "686": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 15
+  },
+  "688": {
+   "methods": [
+    "rock-smash"
+   ],
+   "chance": 34
+  }
+ },
+ "glittering-cave": {
+  "66": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 30
+  },
+  "95": {
+   "methods": [
+    "walk",
+    "rock-smash"
+   ],
+   "chance": 35
+  },
+  "104": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 20
+  },
+  "111": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 10
+  },
+  "115": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 5
+  },
+  "303": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 5
+  },
+  "337": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 10
+  },
+  "338": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 10
+  },
+  "527": {
+   "methods": [
+    "ceiling-ambush"
+   ],
+   "chance": 85
+  },
+  "597": {
+   "methods": [
+    "ceiling-ambush"
+   ],
+   "chance": 15
+  },
+  "696": {
+   "methods": [
+    "gift"
+   ],
+   "chance": 100
+  },
+  "698": {
+   "methods": [
+    "gift"
+   ],
+   "chance": 100
+  },
+  "557": {
+   "methods": [
+    "rock-smash"
+   ],
+   "chance": 65
+  }
+ },
+ "connecting-cave": {
+  "41": {
+   "methods": [
+    "walk",
+    "horde"
+   ],
+   "chance": 65
+  },
+  "293": {
+   "methods": [
+    "walk",
+    "horde"
+   ],
+   "chance": 90
+  },
+  "307": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 30
+  },
+  "610": {
+   "methods": [
+    "walk",
+    "horde"
+   ],
+   "chance": 15
+  }
+ },
+ "team-flare-secret-hq": {
+  "716": {
+   "methods": [
+    "static"
+   ],
+   "chance": 100
+  },
+  "717": {
+   "methods": [
+    "static"
+   ],
+   "chance": 100
+  }
+ },
+ "terminus-cave": {
+  "28": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 20
+  },
+  "74": {
+   "methods": [
+    "horde"
+   ],
+   "chance": 35
+  },
+  "75": {
+   "methods": [
+    "walk",
+    "rock-smash"
+   ],
+   "chance": 115
+  },
+  "168": {
+   "methods": [
+    "ceiling-ambush"
+   ],
+   "chance": 80
+  },
+  "213": {
+   "methods": [
+    "rock-smash"
+   ],
+   "chance": 5
+  },
+  "246": {
+   "methods": [
+    "horde"
+   ],
+   "chance": 5
+  },
+  "247": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 20
+  },
+  "304": {
+   "methods": [
+    "horde"
+   ],
+   "chance": 5
+  },
+  "305": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 20
+  },
+  "632": {
+   "methods": [
+    "walk",
+    "horde"
+   ],
+   "chance": 100
+  },
+  "714": {
+   "methods": [
+    "ceiling-ambush"
+   ],
+   "chance": 20
+  },
+  "718": {
+   "methods": [
+    "static"
+   ],
+   "chance": 100
+  }
+ },
+ "lost-hotel": {
+  "82": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 20
+  },
+  "101": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 20
+  },
+  "479": {
+   "methods": [
+    "trash-can-ambush"
+   ],
+   "chance": 75
+  },
+  "568": {
+   "methods": [
+    "trash-can-ambush"
+   ],
+   "chance": 80
+  },
+  "569": {
+   "methods": [
+    "trash-can-ambush"
+   ],
+   "chance": 20
+  },
+  "607": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 20
+  },
+  "624": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 20
+  },
+  "707": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 20
+  }
+ },
+ "sea-spirits-den": {
+  "144": {
+   "methods": [
+    "static"
+   ],
+   "chance": 100
+  },
+  "145": {
+   "methods": [
+    "static"
+   ],
+   "chance": 100
+  },
+  "146": {
+   "methods": [
+    "static"
+   ],
+   "chance": 100
+  }
+ },
+ "friend-safari": {
+  "113": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "132": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "133": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "190": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "206": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "216": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "235": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "294": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "352": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "506": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "531": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "572": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "5": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "38": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "58": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "77": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "126": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "218": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "513": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "636": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "654": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "662": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "668": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "56": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "67": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "236": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "286": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "297": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "307": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "447": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "538": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "539": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "619": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "674": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "8": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "61": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "98": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "130": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "184": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "195": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "224": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "400": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "419": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "515": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "657": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "16": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "21": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "83": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "84": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "163": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "357": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "520": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "527": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "581": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "627": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "701": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "2": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "43": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "114": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "191": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "511": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "541": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "548": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "556": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "586": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "651": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "673": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "14": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "44": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "49": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "89": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "168": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "268": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "317": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "336": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "452": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "454": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "544": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "569": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "25": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "101": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "125": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "310": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "404": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "417": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "523": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "587": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "596": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "618": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "694": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "702": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "27": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "51": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "105": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "194": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "231": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "290": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "323": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "328": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "423": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "536": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "660": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "63": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "96": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "178": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "202": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "203": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "326": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "517": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "561": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "575": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "578": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "677": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "95": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "112": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "213": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "219": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "222": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "247": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "299": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "525": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "557": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "689": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "87": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "91": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "131": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "215": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "221": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "225": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "361": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "363": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "459": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "614": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "712": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "12": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "46": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "127": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "165": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "214": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "267": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "284": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "313": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "314": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "415": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "666": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "148": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "372": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "444": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "611": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "621": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "705": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "714": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "353": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "356": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "426": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "442": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "608": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "623": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "708": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "710": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "262": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "274": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "302": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "332": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "342": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "359": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "510": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "551": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "624": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "629": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "686": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "82": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "205": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "227": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "303": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "375": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "437": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "530": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "597": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "600": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "707": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "35": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "39": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "175": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "209": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "281": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "670": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "682": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  },
+  "684": {
+   "methods": [
+    "walk"
+   ],
+   "chance": 33
+  }
+ },
+ "unknown-dungeon": {
+  "150": {
+   "methods": [
+    "static"
+   ],
+   "chance": 100
+  }
+ },
+ "roaming-kalos": {
+  "144": {
+   "methods": [
+    "static"
+   ],
+   "chance": 100
+  },
+  "145": {
+   "methods": [
+    "static"
+   ],
+   "chance": 100
+  },
+  "146": {
+   "methods": [
+    "static"
+   ],
+   "chance": 100
+  }
+ },
+ "kalos-berry-fields": {
+  "165": {
+   "methods": [
+    "berry-trees"
+   ],
+   "chance": 100
+  },
+  "313": {
+   "methods": [
+    "berry-trees"
+   ],
+   "chance": 100
+  },
+  "314": {
+   "methods": [
+    "berry-trees"
+   ],
+   "chance": 100
+  },
+  "412": {
+   "methods": [
+    "berry-trees"
+   ],
+   "chance": 100
+  },
+  "415": {
+   "methods": [
+    "berry-trees"
+   ],
+   "chance": 100
+  },
+  "665": {
+   "methods": [
+    "berry-trees"
+   ],
+   "chance": 100
+  }
+ }
+}

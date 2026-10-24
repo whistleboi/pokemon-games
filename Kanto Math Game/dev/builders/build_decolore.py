@@ -51,11 +51,11 @@ island("HONEY_ISLAND", "Honey Island", 56, [
         "done": ["Beekeeper: Sweet, isn't it?"]}),
 ], [("Honey Meadow", "HONEY_MEADOW", None)])
 S.wild("HONEY_MEADOW", "Honey Meadow", 56, "grass",
-       {415: 16, 416: 3, 15: 8, 764: 6, 742: 10, 743: 4, 12: 8, 267: 6, 420: 10, 546: 10, 548: 10, 541: 9},
+       {415: 26, 416: 7, 15: 8, 12: 8, 267: 6, 420: 10, 546: 10, 548: 16, 541: 9}  # Gen 5 or earlier only (Jordan),
        [("Honey Island", "HONEY_ISLAND")],
        [trainer("Beekeeper Hal", "BEEKEEPER", "bug_catcher.png", [415, 416, 15]),
         trainer("Bug Catcher Wes", "BUG_CATCHER", "bug_catcher.png", [542, 545, 637]),
-        trainer("Picnicker Lily", "PICNICKER", "picnicker.png", [549, 547, 764])])
+        trainer("Picnicker Lily", "PICNICKER", "picnicker.png", [549, 547, 548])])
 
 # ---- 2. Scalchop Island: Oshawott's island, Team Plasma at the shrine, the Douse Drive.
 island("SCALCHOP_ISLAND", "Scalchop Island", 58, [
@@ -135,7 +135,7 @@ S.wild("TOROM_PEAK", "Torom Peak", 62, "mountain",
        {479: 6, 81: 10, 82: 6, 462: 2, 125: 8, 466: 2, 100: 10, 101: 5, 599: 10, 600: 4, 602: 8, 587: 10, 595: 10, 596: 4},
        [("Torom Island", "TOROM_ISLAND")],
        [trainer("Scientist Volta", "SCIENTIST", "scientist.png", [600, 82, 479]),
-        trainer("Poke Fan Rita", "POKEFAN", "pokefan_f.png", [587, 25, 702]),
+        trainer("Poke Fan Rita", "POKEFAN", "pokefan_f.png", [587, 25, 523]),
         trainer("Engineer Ohm", "ENGINEER", "engineer.png", [603, 101, 125])],
        extra=[{"text": "CHALLENGE GENESECT", "action": "BOSS", "color": "GOLD",
                "condition": ["got_shock_drive", "boss_not_defeated", "not:P2_LABORATORY_boss_defeated"]}],

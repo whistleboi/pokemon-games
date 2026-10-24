@@ -137,6 +137,10 @@ def _run_story_event(state, key, check, show):
         lines.append(f"{getattr(game, 'player_name', 'You')} received the {forms.item_label(item).upper()}!")
     for item, qty in (ev.get("take_item") or {}).items():
         story.inventory[item] = max(0, story.inventory.get(item, 0) - qty)
+    if ev.get("reset_area"):  # Mt. Battle: start the mountain over (its trainers can be fought again)
+        story.defeated_trainers.pop(story.current_area_key, None)
+        for f in ev.get("clear_flags", []):
+            story.story_flags.pop(f, None)
     lines += _teach_move(game, ev.get("teach"))
     lines += story.evolve_party(ev.get("evolve"))  # Kubfu at the Towers of Two Fists
     if ev.get("purify") == "choose":  # Orre's Relic Stone: purify one Shadow Pokemon, if you want to
@@ -1675,7 +1679,8 @@ class PlayState(GameState):
                         self.game, poke, next_id, i,
                         next_form=next_form, context=context,
                         return_state=getattr(self, "_evo_return", None) or self,
-                        consume_catch_count=is_catch_evo
+                        consume_catch_count=is_catch_evo,
+                        choices=next_entries if len(next_entries) > 1 else None
                         )
                     self.game.change_state(evo_state)
                     return True
@@ -3513,14 +3518,11 @@ class CityState(GameState):
         self.npc_sprite = self.game.assets.get_trainer_image("supernerd.png")
 
         story = self.game.story_manager
-        if (story.story_flags.get("silph_co_cleared") and "JOHTO" in story.visited_regions()
-                and not story.story_flags.get("got_upgrade")):
-            # HeartGold/SoulSilver: a Silph Co. employee hands over the Up-Grade.
-            story.story_flags["got_upgrade"] = True
-            story.inventory["UPGRADE"] = story.inventory.get("UPGRADE", 0) + 1
-            msg = ["You've been to Johto? Then you'll appreciate this!",
-                   "It's the UP-GRADE, a Silph Co. invention. Use it on a Porygon to make it even better!",
-                   f"{self.game.player_name} received the UP-GRADE!"]
+        # The Up-Grade isn't given in Kanto any more: it's sold only at the Veilstone Department Store
+        # in Sinnoh (Jordan, 10-23). The employee points the way.
+        if story.story_flags.get("silph_co_cleared") and "JOHTO" in story.visited_regions():
+            msg = ["You saved us! Silph's UP-GRADE, a part that makes Porygon even better, is made in Sinnoh now.",
+                   "You can buy one at the Veilstone Department Store there."]
         elif story.story_flags.get("silph_co_cleared"):
             msg = ["You saved us!", "Team Rocket is gone, but I fear they already have what they need for their 'Ultimate' project."]
         else:

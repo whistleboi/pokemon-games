@@ -91,7 +91,7 @@ S.town("PYRITE_TOWN", "Pyrite Town", 63, [
                   "Clear them out and Agate Village will want to meet you."]}),
     {"text": "Pyrite Colosseum", "action": "GYM", "color": "GOLD"},
 ], local=[("The Under", "THE_UNDER", None), ("Desert Trail", "ORRE_DESERT", None),
-          ("Phenac City", "PHENAC_CITY", None)], ships=False,
+          ("Mt. Battle", "MT_BATTLE", None), ("Phenac City", "PHENAC_CITY", None)], ships=False,
     gym={"trainers": [
         {"name": "Thug Brock", "class": "THUG", "sprite": "roughneck.png", "team": [297, 302, 229],
          "levels": [62, 62, 63], "rewards": {"balls": 5}, "dialogue": {"intro": ["Welcome to Pyrite, punk!"]}},
@@ -118,6 +118,45 @@ S.wild("THE_UNDER", "The Under", 64, "indoor", {},
                                    [64, 65, 65, 66], ["Venus: My makeup... ruined! Fine, The Under is yours!"], balls=15),
                   "flag": "cleared_the_under"},
                   flag_condition="not cleared_the_under")])
+
+# ---- Mt. Battle: 10 areas of 4 trainers, then Mt. Battle Master Vander. It can be climbed again and
+# again, so purified Pokemon have battles to grow in (Jordan, 10-23).
+import random as _r  # noqa: E402
+_rng = _r.Random(1003)
+_MON = [19, 21, 23, 27, 41, 52, 56, 58, 60, 66, 74, 77, 79, 81, 84, 86, 95, 98, 104, 109, 111, 114, 116, 120,
+        123, 125, 126, 127, 128, 131, 133, 137, 142, 147, 163, 165, 167, 170, 177, 179, 183, 185, 190, 193,
+        198, 200, 203, 204, 206, 207, 209, 211, 213, 214, 215, 216, 218, 220, 222, 223, 225, 227, 228, 231,
+        234, 241, 246, 252, 255, 258, 261, 263, 270, 273, 276, 278, 280, 285, 287, 293, 296, 299, 300, 302,
+        303, 304, 307, 309, 311, 312, 315, 318, 320, 322, 324, 325, 327, 328, 331, 333, 335, 336, 337, 338,
+        339, 341, 343, 345, 347, 349, 351, 352, 353, 355, 357, 358, 359, 361, 363, 366, 369, 370, 371, 374]
+_CLASSES = [("Cooltrainer", "COOLTRAINER", "acetrainer_m.png"), ("Cooltrainer", "COOLTRAINER", "acetrainer_f.png"),
+            ("Bodybuilder", "BODYBUILDER", "blackbelt.png"), ("Hunter", "HUNTER", "hiker.png"),
+            ("Rider", "RIDER", "biker.png"), ("Chaser", "CHASER", "roughneck.png"),
+            ("Teacher", "TEACHER", "beauty.png"), ("Researcher", "RESEARCHER", "scientist.png")]
+_NAMES = ["Kai", "Mira", "Dax", "Lena", "Rook", "Tess", "Oren", "Vale", "Juno", "Pike", "Sora", "Bram", "Nell",
+          "Cyr", "Ivy", "Tor", "Esme", "Hale", "Rin", "Quill", "Lark", "Moss", "Faye", "Gil", "Sage", "Wren",
+          "Ash", "Brin", "Cole", "Dina", "Ezra", "Fern", "Gale", "Holt", "Isla", "Jett", "Kira", "Lyle", "Maya", "Nash"]
+_mt = []
+for _area in range(1, 11):
+    for _k in range(4):
+        _title, _cls, _spr = _CLASSES[(_area * 4 + _k) % len(_CLASSES)]
+        _size = 2 if _area <= 3 else 3 if _area <= 6 else 4 if _area <= 9 else 6
+        _mt.append(trainer(f"Area {_area} {_title} {_NAMES[(_area - 1) * 4 + _k]}", _cls, _spr,
+                           _rng.sample(_MON, _size), balls=3 if _area < 10 else 5,
+                           is_boss_battle=_area == 10))
+S.wild("MT_BATTLE", "Mt. Battle", 64, "field", {}, [("Pyrite Town", "PYRITE_TOWN")], _mt,
+       extra=[event("MT. BATTLE MASTER", {
+                  "lines": ["Mt. Battle Master Vander: You beat all ten areas? Then face the master of the mountain!"],
+                  "battle": battle("Mt. Battle Master Vander", "MT_BATTLE_MASTER", "blackbelt.png",
+                                   [289, 248, 373, 376, 230, 242], [70, 70, 71, 71, 72, 73],
+                                   ["Vander: What a climb! You're the true master of Mt. Battle!"], balls=15),
+                  "flag": "mt_battle_master_beaten"},
+                  condition="not:has_trainers", flag_condition="not mt_battle_master_beaten"),
+              event("START OVER FROM AREA 1", {
+                  "lines": ["Mt. Battle's trainers are ready for another round. Back to Area 1!"],
+                  "reset_area": True, "clear_flags": ["mt_battle_master_beaten"]},
+                  condition="mt_battle_master_beaten")])
+S.areas["MT_BATTLE"]["route_menu"][0]["text"] = "CLIMB MT. BATTLE"
 
 # ---- 3. Agate Village: the elders, the Relic Stone, the Relic Forest.
 S.town("AGATE_VILLAGE", "Agate Village", 64, [
@@ -233,6 +272,9 @@ S.mission("orre_m3", "SIDE", "Realgam Tower",
 S.mission("orre_m4", "SIDE", "The Wishing Star",
           "Cipher's files mention a wishing star near Agate's Relic Stone.",
           {"flag": "cipher_defeated", "flag_not": "orre_jirachi_caught"}, "Jirachi")
+S.mission("orre_m6", "SIDE", "Mt. Battle",
+          "Climb Mt. Battle near Pyrite Town: 40 trainers in 10 areas, then Mt. Battle Master Vander. Climb again any time.",
+          {"flag_not": "mt_battle_master_beaten"}, "Battle practice")
 S.mission("orre_m5", "SIDE", "Gale of Darkness",
           "Cipher is back under Greevil. Clear the lairs from Gateon Port and stop him on Citadark Isle.",
           {"flag": "cipher_defeated", "flag_not": "xd_greevil_beaten"}, "Every Shadow Pokemon")

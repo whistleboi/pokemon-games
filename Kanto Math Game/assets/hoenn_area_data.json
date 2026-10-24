@@ -1932,14 +1932,7 @@
           "rewards": { "balls": 2 }
         }
       ],
-      "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
-        { "text": "ISLAND CAVE", "action": "BOSS", "condition": "regi_trio_awakened", "color": "CYAN" },
-        { "text": "ROUTE 104", "action": "EXIT", "target_area": "HOENN_ROUTE_104", "condition": "can_exit", "color": "RED" },
-        { "text": "ROUTE 106", "action": "EXIT", "target_area": "HOENN_ROUTE_106", "condition": "can_exit", "color": "RED" }
-      ],
+      "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"}, {"text": "ISLAND CAVE", "action": "BOSS", "color": "CYAN", "condition": ["regi_trio_awakened", "not:defeated_regice"], "boss": {"id": 378, "name": "Regice", "victory_flag": "defeated_regice"}}, {"text": "ROUTE 104", "action": "EXIT", "target_area": "HOENN_ROUTE_104", "condition": "can_exit", "color": "RED"}, {"text": "ROUTE 106", "action": "EXIT", "target_area": "HOENN_ROUTE_106", "condition": "can_exit", "color": "RED"}],
       "next_area": "HOENN_ROUTE_106",
       "region": "HOENN"
     },
@@ -2218,15 +2211,7 @@
           "is_boss_battle": true
         }
       ],
-      "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
-        { "text": "MAUVILLE CITY", "action": "EXIT", "target_area": "MAUVILLE_CITY", "condition": "can_exit", "color": "RED" },
-        { "text": "ROUTE 112", "action": "EXIT", "target_area": "HOENN_ROUTE_112", "condition": "can_exit", "color": "RED" },
-        { "text": "ROUTE 113", "action": "EXIT", "target_area": "HOENN_ROUTE_113", "condition": "can_exit", "color": "RED" },
-        {"text": "Mirage Tower", "action": "EXIT", "target_area": "HOENN_MIRAGE_TOWER", "condition": ["can_exit", "has_heat_badge"], "color": "RED"}
-      ],
+      "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"}, {"text": "DESERT RUINS", "action": "BOSS", "color": "ORANGE", "condition": ["regi_trio_awakened", "not:defeated_regirock"], "boss": {"id": 377, "name": "Regirock", "victory_flag": "defeated_regirock"}}, {"text": "MAUVILLE CITY", "action": "EXIT", "target_area": "MAUVILLE_CITY", "condition": "can_exit", "color": "RED"}, {"text": "ROUTE 112", "action": "EXIT", "target_area": "HOENN_ROUTE_112", "condition": "can_exit", "color": "RED"}, {"text": "ROUTE 113", "action": "EXIT", "target_area": "HOENN_ROUTE_113", "condition": "can_exit", "color": "RED"}, {"text": "Mirage Tower", "action": "EXIT", "target_area": "HOENN_MIRAGE_TOWER", "condition": ["can_exit", "has_heat_badge"], "color": "RED"}],
       "next_area": "HOENN_ROUTE_112",
       "region": "HOENN",
       "weather": "SAND"
@@ -2653,28 +2638,7 @@
           "villain": "grunt"
         }
       ],
-      "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
-        {
-          "text": "TALK TO STEVEN",
-          "action": "HOENN_EVENT",
-          "event": "starter_stone",
-          "condition": ["got_mega_bracelet", "weather_institute_cleared", "not:got_starter_mega_stone"],
-          "color": "GOLD"
-        },
-        { "text": "MAUVILLE CITY", "action": "EXIT", "target_area": "MAUVILLE_CITY", "condition": "can_exit", "color": "RED" },
-        {
-          "text": "DESERT RUINS",
-          "action": "BOSS",
-          "condition": ["regi_trio_awakened", "not:defeated_regirock"],
-          "color": "GOLD",
-          "boss": { "id": 377, "name": "Regirock", "victory_flag": "defeated_regirock" }
-        },
-        { "text": "ROUTE 121", "action": "EXIT", "target_area": "HOENN_ROUTE_121", "condition": "can_exit", "color": "RED" },
-        {"text": "Scorched Slab", "action": "EXIT", "target_area": "HOENN_SCORCHED_SLAB", "condition": ["can_exit", "has_item:HM_SURF"], "color": "RED"}
-      ],
+      "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"}, {"text": "TALK TO STEVEN", "action": "HOENN_EVENT", "event": "starter_stone", "condition": ["got_mega_bracelet", "weather_institute_cleared", "not:got_starter_mega_stone"], "color": "GOLD"}, {"text": "ANCIENT TOMB", "action": "BOSS", "color": "GRAY", "condition": ["regi_trio_awakened", "not:defeated_registeel"], "boss": {"id": 379, "name": "Registeel", "victory_flag": "defeated_registeel"}}, {"text": "MAUVILLE CITY", "action": "EXIT", "target_area": "MAUVILLE_CITY", "condition": "can_exit", "color": "RED"}, {"text": "ROUTE 121", "action": "EXIT", "target_area": "HOENN_ROUTE_121", "condition": "can_exit", "color": "RED"}, {"text": "Scorched Slab", "action": "EXIT", "target_area": "HOENN_SCORCHED_SLAB", "condition": ["can_exit", "has_item:HM_SURF"], "color": "RED"}],
       "next_area": "HOENN_ROUTE_121",
       "region": "HOENN",
       "weather": "RAIN"
@@ -2798,20 +2762,7 @@
           "rewards": { "balls": 5 }
         }
       ],
-      "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
-        { "text": "FORTREE CITY", "action": "EXIT", "target_area": "FORTREE_CITY", "condition": "can_exit", "color": "RED" },
-        { "text": "ANCIENT TOMB", "action": "BOSS", "condition": "regi_trio_awakened", "color": "GRAY" },
-        {
-          "text": "ROUTE 122",
-          "action": "EXIT",
-          "target_area": "HOENN_ROUTE_122",
-          "condition": ["can_exit", "has_item:HM_SURF"],
-          "color": "RED"
-        }
-      ],
+      "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"}, {"text": "FORTREE CITY", "action": "EXIT", "target_area": "FORTREE_CITY", "condition": "can_exit", "color": "RED"}, {"text": "ROUTE 122", "action": "EXIT", "target_area": "HOENN_ROUTE_122", "condition": ["can_exit", "has_item:HM_SURF"], "color": "RED"}],
       "next_area": "HOENN_ROUTE_122",
       "region": "HOENN"
     },
@@ -3400,14 +3351,7 @@
           "victory_flag": "met_steven"
         }
       ],
-      "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
-        { "text": "CHALLENGE REGICE", "action": "BOSS", "condition": "regi_trio_awakened", "color": "CYAN" },
-        { "text": "DEWFORD TOWN", "action": "EXIT", "target_area": "DEWFORD_TOWN", "condition": "can_exit", "color": "RED" }
-      ],
-      "area_boss": { "id": 378, "name": "Regice", "victory_flag": "defeated_regice" },
+      "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"}, {"text": "DEWFORD TOWN", "action": "EXIT", "target_area": "DEWFORD_TOWN", "condition": "can_exit", "color": "RED"}],
       "next_area": "DEWFORD_TOWN",
       "region": "HOENN"
     },
@@ -4519,8 +4463,8 @@
   "HOENN_ROUTE_103_PERCENTAGES": { "261": 30, "263": 39, "265": 10, "278": 20, "2032": 1 },
   "HOENN_ROUTE_104": [261, 263, 265, 276, 278, 183, 2032],
   "HOENN_ROUTE_104_PERCENTAGES": { "261": 20, "263": 29, "265": 20, "276": 10, "278": 10, "183": 10, "2032": 1 },
-  "HOENN_ROUTE_105": [72, 278, 279, 378],
-  "HOENN_ROUTE_105_PERCENTAGES": { "72": 63, "278": 28, "279": 5, "378": 4 },
+  "HOENN_ROUTE_105": [72, 278, 279],
+  "HOENN_ROUTE_105_PERCENTAGES": { "72": 66, "278": 29, "279": 5 },
   "HOENN_ROUTE_106": [72, 278, 320, 279],
   "HOENN_ROUTE_106_PERCENTAGES": { "72": 50, "278": 25, "320": 20, "279": 5 },
   "HOENN_ROUTE_107": [72, 278, 320, 279],
@@ -4531,8 +4475,8 @@
   "HOENN_ROUTE_109_PERCENTAGES": { "72": 50, "278": 25, "320": 20, "279": 5 },
   "HOENN_ROUTE_110": [261, 263, 278, 309, 316, 311, 312, 2032],
   "HOENN_ROUTE_110_PERCENTAGES": { "261": 20, "263": 9, "278": 20, "309": 30, "316": 15, "311": 3, "312": 2, "2032": 1 },
-  "HOENN_ROUTE_111": [27, 28, 2004, 2005, 328, 329, 331, 332, 343, 339, 377],
-  "HOENN_ROUTE_111_PERCENTAGES": { "27": 28, "28": 4, "2004": 1, "2005": 1, "328": 27, "329": 5, "331": 9, "332": 4, "343": 11, "339": 8, "377": 2 },
+  "HOENN_ROUTE_111": [27, 28, 2004, 2005, 328, 329, 331, 332, 343, 339],
+  "HOENN_ROUTE_111_PERCENTAGES": { "27": 29, "28": 4, "2004": 1, "2005": 1, "328": 28, "329": 5, "331": 9, "332": 4, "343": 11, "339": 8 },
   "HOENN_ROUTE_112": [66, 322, 183],
   "HOENN_ROUTE_112_PERCENTAGES": { "66": 25, "322": 65, "183": 10 },
   "HOENN_ROUTE_113": [27, 227, 327, 2004],
@@ -4549,8 +4493,8 @@
   "HOENN_ROUTE_118_PERCENTAGES": { "264": 26, "278": 17, "309": 27, "310": 10, "352": 9, "318": 10, "2033": 1 },
   "HOENN_ROUTE_119": [43, 44, 264, 278, 352, 357, 349, 2033],
   "HOENN_ROUTE_119_PERCENTAGES": { "43": 22, "44": 14, "264": 27, "278": 13, "352": 5, "357": 8, "349": 10, "2033": 1 },
-  "HOENN_ROUTE_120": [43, 183, 262, 264, 352, 357, 359, 360, 379, 2033],
-  "HOENN_ROUTE_120_PERCENTAGES": { "43": 9, "183": 9, "262": 28, "264": 27, "352": 4, "357": 9, "359": 4, "360": 7, "379": 2, "2033": 1 },
+  "HOENN_ROUTE_120": [43, 183, 262, 264, 352, 357, 359, 360, 2033],
+  "HOENN_ROUTE_120_PERCENTAGES": { "43": 9, "183": 9, "262": 29, "264": 28, "352": 4, "357": 9, "359": 4, "360": 7, "2033": 1 },
   "HOENN_ROUTE_121": [43, 44, 264, 278, 353, 355, 381, 2033],
   "HOENN_ROUTE_121_PERCENTAGES": { "43": 8, "44": 7, "264": 23, "278": 16, "353": 18, "355": 7, "381": 2, "2033": 1, "252": 6, "255": 6, "258": 6 },
   "HOENN_ROUTE_122": [72, 278, 320, 279],

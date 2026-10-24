@@ -414,7 +414,8 @@ class PokeMartState(GameState):
         "INDIGO_PLATEAU": ["POKE_BALLS", "POTION", "FULL_HEAL", "REVIVE", "RARE_CANDY"],
     }
 
-    # Gift-only items: never on any shelf (the Up-Grade comes from Silph Co., after Johto).
+    # Never on an ordinary shelf. The Up-Grade is sold only at Veilstone (Sinnoh) and the Crystal Stone
+    # only at Pummelo (Orange Islands), through those areas' "extra_stock".
     NEVER_SOLD = {"UPGRADE", "UP_GRADE", "CRYSTAL_STONE"}
 
     def _shop_items(self):
@@ -1121,6 +1122,15 @@ def dex_regions(story):
     return out or [story.starting_region]
 
 
+def region_dex(cfg):
+    """A region's Pokedex in its own order: an explicit dex_list (Kalos uses the X/Y Kalos dex), else
+    its generation's range plus dex_extra."""
+    if cfg.get("dex_list"):
+        return list(cfg["dex_list"])
+    lo, hi = cfg.get("dex_range", [1, 151])
+    return list(dict.fromkeys(list(range(lo, hi + 1)) + cfg.get("dex_extra", [])))
+
+
 def _dex_ids(story, caught_data, seen_ids, view=None):
     """Pokedex 'normal' tab ids. view = a region: that region's own dex (its generation's range plus
     the later-gen evolutions obtainable there, dex_extra). view = None/"NATIONAL": every regional
@@ -1129,14 +1139,10 @@ def _dex_ids(story, caught_data, seen_ids, view=None):
     national_dex = story.story_flags.get("unlocked_national_dex", False)
     regions = dex_regions(story)
     if view and view != "NATIONAL":
-        cfg = story.get_region_start(view)
-        lo, hi = cfg.get("dex_range", [1, 151])
-        return list(dict.fromkeys(list(range(lo, hi + 1)) + cfg.get("dex_extra", [])))
+        return region_dex(story.get_region_start(view))
     id_list = []
     for r in regions:
-        cfg = story.get_region_start(r)
-        lo, hi = cfg.get("dex_range", [1, 151])
-        id_list += list(range(lo, hi + 1)) + cfg.get("dex_extra", [])
+        id_list += region_dex(story.get_region_start(r))
     listed = set(id_list)
     extra = {v['id'] for v in caught_data.values()} | (set(seen_ids) if national_dex else set())
     id_list += sorted(i for i in extra if isinstance(i, int) and i <= 1025 and i not in listed)
@@ -1483,7 +1489,7 @@ class BagState(GameState):
             if next_id:
                 self.game.change_state(EvolutionState(
                     self.game, pokemon, next_id, slot_index, next_form=next_form.lower(), context="party",
-                    return_state=self.previous_state))
+                    return_state=self.previous_state, choices=ready if len(ready) > 1 else None))
                 return
         self._back_to_bag([f"{pokemon.display_name} grew to Lv {pokemon.level}!"] + new_moves)
 
@@ -2450,8 +2456,11 @@ class BadgeCaseState(GameState):
 # [REF-0041: Evolution Logic]
 class EvolutionState(GameState):
     def __init__(
-        self, game, pokemon_to_evolve, evolution_id, team_index, next_form="normal", context="party", return_state=None, consume_catch_count=False
+        self, game, pokemon_to_evolve, evolution_id, team_index, next_form="normal", context="party", return_state=None, consume_catch_count=False,
+        choices=None
     ):
+        """choices: evolution entries ("SOLGALEO", "LUNALA") when more than one is ready; the player
+        picks one on this screen (Jordan: Cosmoem)."""
         super().__init__(game)
         self.consume_catch_count = consume_catch_count
         self.pokemon = pokemon_to_evolve
@@ -2489,6 +2498,26 @@ class EvolutionState(GameState):
             bg_color=RED,
             visible=False,
         )
+        # Branch choice: one button per evolution in place of YES.
+        self.choice_buttons = []
+        for k, entry in enumerate(choices or []):
+            base, form = (entry.rsplit("_", 1) + ["normal"])[:2] if "_" in entry else (entry, "normal")
+            pid = game.name_to_id.get(base.upper())
+            if not pid:
+                continue
+            label = base.replace("-", " ").upper() + ("" if form == "normal" else f" ({form.title()})")
+            self.choice_buttons.append(Button(
+                rect=(box.right - 150 - 230 * (len(choices) - k), box.centery - 30, 220, btn_h), text=label,
+                font=game.assets.fonts["tiny"], callback=lambda p=pid, f=form.lower(): self.choose(p, f),
+                bg_color=GREEN, visible=False, autosize=False))
+        if len(self.choice_buttons) < 2:
+            self.choice_buttons = []
+
+    def choose(self, pid, form):
+        self.evolution_id, self.next_form = pid, form
+        for btn in self.choice_buttons:
+            btn.set_visibility(False)
+        self.evolve_yes()
 
     def evolve_yes(self):
         self.phase = "START"
@@ -2506,9 +2535,13 @@ class EvolutionState(GameState):
     def start(self):
         self.game.ui_manager.add_element(self.btn_yes)
         self.game.ui_manager.add_element(self.btn_no)
+        for btn in self.choice_buttons:
+            self.game.ui_manager.add_element(btn)
         if self.phase == "DECISION":
-            self.btn_yes.set_visibility(True)
+            self.btn_yes.set_visibility(not self.choice_buttons)
             self.btn_no.set_visibility(True)
+            for btn in self.choice_buttons:
+                btn.set_visibility(True)
 
     def handle_events(self, events):
         pass

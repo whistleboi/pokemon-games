@@ -17,7 +17,7 @@ story.story_flags, story.inventory = {}, {}
 check("Air Transit to Orre" not in travel("LILYCOVE_CITY"), "before the Hoenn title: no flight")
 story.story_flags["beat_hoenn_champion"] = True
 check("Air Transit to Orre" in travel("LILYCOVE_CITY"), "Hoenn Champion: fly from Lilycove")
-check(len(ORRE) == 13, f"{len(ORRE)} Orre areas (8 Colosseum, 5 XD)")
+check(len(ORRE) == 14, f"{len(ORRE)} Orre areas (8 Colosseum, Mt. Battle, 5 XD)")
 bad = [(k, o.get("target_area")) for k in ORRE for o in prog[k].get("travel_options", []) + prog[k].get("route_menu", [])
        if o.get("target_area") and o["target_area"] not in prog]
 check(not bad, f"every link leads somewhere {bad}")

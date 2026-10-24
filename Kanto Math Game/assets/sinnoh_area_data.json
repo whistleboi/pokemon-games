@@ -3032,7 +3032,8 @@
         "condition": "has_forest_badge",
         "flag_check": "defeated_rival_veilstone"
       },
-      "department_store": true
+      "department_store": true,
+        "extra_stock": [{"item": "UPGRADE"}]
     },
     "PASTORIA_CITY": {
       "area_type": "town",

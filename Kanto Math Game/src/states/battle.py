@@ -1263,6 +1263,8 @@ class TrainerBattleState(GameState):
             mon.counters["attacks"] = mon.counters.get("attacks", 0) + 1
             if self._last_was_crit:
                 self._battle_crits[id(mon)] = self._battle_crits.get(id(mon), 0) + 1
+                # Sirfetch'd: critical hits add up over every battle (Jordan), not just one.
+                mon.counters["crits"] = mon.counters.get("crits", 0) + 1
             self.anim_ctrl.start_lunge("player")
 
         xp_messages = self._award_battle_xp() if self.opponent_hp <= 0 else []
@@ -1458,8 +1460,6 @@ class TrainerBattleState(GameState):
     def exit_battle(self, lost=False):
         for p in self.game.story_manager.player_team:
             forms.revert_form(p)
-            crits = getattr(self, "_battle_crits", {}).get(id(p), 0)
-            p.counters["crits"] = max(p.counters.get("crits", 0), crits)
             if not lost and p.current_hp > 0:
                 taken = getattr(self, "_battle_damage", {}).get(id(p), 0)
                 p.counters["damage_battle"] = max(p.counters.get("damage_battle", 0), taken)

@@ -160,7 +160,10 @@ story.visited_region_set.add("JOHTO")
 check(evolution.item_evolution(g, por, "UPGRADE") is not None, "Up-Grade works once Johto is visited")
 story.current_area_key = "SILPH_CITY"; story.story_flags["silph_co_cleared"] = True
 c = CityState(g); c.visit_silph_employee()
-check(story.inventory.get("UPGRADE") == 1 and story.story_flags.get("got_upgrade"), "Silph employee gives it")
+check(not story.inventory.get("UPGRADE") and "Veilstone" in " ".join(c.npc_dialogue.text_lines),
+      "Silph employee points to Veilstone (no Kanto Up-Grade)")
+story.current_area_key = "VEILSTONE_CITY"
+check("UPGRADE" in PokeMartState(g, None)._shop_items(), "Veilstone Department Store sells the Up-Grade")
 
 print("9) canon gates")
 kanto_only(); story.badges["KANTO"] = []; story.inventory = {}

@@ -11,7 +11,7 @@ Rules come from the real games, with stand-ins where the real trigger can't happ
     party_species/party_type   that Pokemon / a Pokemon of that type is also in the party
     weather        it's raining where you are
     beauty         Feebas: Beauty from Pokeblocks (contests)
-    counter        battle feats: crits in one battle, damage taken in a battle or in total,
+    counter        battle feats: crits (they add up over battles), damage taken in a battle or in total,
                    attacks used, battles won, Bisharp defeated, catches made together
     money          you have at least this much money (Gimmighoul's coins)
     shed           Nincada: Shedinja also appears if there's room in the party
@@ -298,7 +298,7 @@ def condition_hint(rule):
         text = f"level up knowing a {rule['move_type'].title()} move"
     elif rule.get("counter"):
         (name, need), = rule["counter"].items()
-        text = {"crits": f"land {need} critical hits in one battle",
+        text = {"crits": f"land {need} critical hits in battle (they add up)",
                 "damage_battle": f"win a battle after losing {need}+ HP",
                 "damage_total": f"take {need} damage in total",
                 "attacks": f"attack {need} times", "wins": f"win {need} battles",

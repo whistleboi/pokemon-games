@@ -386,6 +386,10 @@
           "target_area": "ORRE_DESERT"
         },
         {
+          "text": "Mt. Battle",
+          "target_area": "MT_BATTLE"
+        },
+        {
           "text": "Phenac City",
           "target_area": "PHENAC_CITY"
         }
@@ -680,6 +684,661 @@
           "trainer": "Cipher Peon Resix"
         }
       ]
+    },
+    "MT_BATTLE": {
+      "area_type": "wild_route",
+      "route_name": "Mt. Battle",
+      "region": "ORRE",
+      "level": 64,
+      "battle_type": "field",
+      "min_rounds": 0,
+      "trainer_pool": [
+        {
+          "name": "Area 1 Rider Kai",
+          "class": "RIDER",
+          "sprite": "biker.png",
+          "team": [
+            231,
+            263
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "is_boss_battle": false
+        },
+        {
+          "name": "Area 1 Chaser Mira",
+          "class": "CHASER",
+          "sprite": "roughneck.png",
+          "team": [
+            203,
+            128
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "is_boss_battle": false
+        },
+        {
+          "name": "Area 1 Teacher Dax",
+          "class": "TEACHER",
+          "sprite": "beauty.png",
+          "team": [
+            320,
+            223
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "is_boss_battle": false
+        },
+        {
+          "name": "Area 1 Researcher Lena",
+          "class": "RESEARCHER",
+          "sprite": "scientist.png",
+          "team": [
+            220,
+            258
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "is_boss_battle": false
+        },
+        {
+          "name": "Area 2 Cooltrainer Rook",
+          "class": "COOLTRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            222,
+            211
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "is_boss_battle": false
+        },
+        {
+          "name": "Area 2 Cooltrainer Tess",
+          "class": "COOLTRAINER",
+          "sprite": "acetrainer_f.png",
+          "team": [
+            27,
+            311
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "is_boss_battle": false
+        },
+        {
+          "name": "Area 2 Bodybuilder Oren",
+          "class": "BODYBUILDER",
+          "sprite": "blackbelt.png",
+          "team": [
+            190,
+            60
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "is_boss_battle": false
+        },
+        {
+          "name": "Area 2 Hunter Vale",
+          "class": "HUNTER",
+          "sprite": "hiker.png",
+          "team": [
+            225,
+            234
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "is_boss_battle": false
+        },
+        {
+          "name": "Area 3 Rider Juno",
+          "class": "RIDER",
+          "sprite": "biker.png",
+          "team": [
+            220,
+            234
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "is_boss_battle": false
+        },
+        {
+          "name": "Area 3 Chaser Pike",
+          "class": "CHASER",
+          "sprite": "roughneck.png",
+          "team": [
+            77,
+            357
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "is_boss_battle": false
+        },
+        {
+          "name": "Area 3 Teacher Sora",
+          "class": "TEACHER",
+          "sprite": "beauty.png",
+          "team": [
+            170,
+            352
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "is_boss_battle": false
+        },
+        {
+          "name": "Area 3 Researcher Bram",
+          "class": "RESEARCHER",
+          "sprite": "scientist.png",
+          "team": [
+            193,
+            276
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "is_boss_battle": false
+        },
+        {
+          "name": "Area 4 Cooltrainer Nell",
+          "class": "COOLTRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            358,
+            234,
+            318
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "is_boss_battle": false
+        },
+        {
+          "name": "Area 4 Cooltrainer Cyr",
+          "class": "COOLTRAINER",
+          "sprite": "acetrainer_f.png",
+          "team": [
+            304,
+            358,
+            311
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "is_boss_battle": false
+        },
+        {
+          "name": "Area 4 Bodybuilder Ivy",
+          "class": "BODYBUILDER",
+          "sprite": "blackbelt.png",
+          "team": [
+            41,
+            300,
+            131
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "is_boss_battle": false
+        },
+        {
+          "name": "Area 4 Hunter Tor",
+          "class": "HUNTER",
+          "sprite": "hiker.png",
+          "team": [
+            309,
+            255,
+            258
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "is_boss_battle": false
+        },
+        {
+          "name": "Area 5 Rider Esme",
+          "class": "RIDER",
+          "sprite": "biker.png",
+          "team": [
+            58,
+            183,
+            131
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "is_boss_battle": false
+        },
+        {
+          "name": "Area 5 Chaser Hale",
+          "class": "CHASER",
+          "sprite": "roughneck.png",
+          "team": [
+            309,
+            263,
+            261
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "is_boss_battle": false
+        },
+        {
+          "name": "Area 5 Teacher Rin",
+          "class": "TEACHER",
+          "sprite": "beauty.png",
+          "team": [
+            19,
+            98,
+            209
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "is_boss_battle": false
+        },
+        {
+          "name": "Area 5 Researcher Quill",
+          "class": "RESEARCHER",
+          "sprite": "scientist.png",
+          "team": [
+            193,
+            41,
+            258
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "is_boss_battle": false
+        },
+        {
+          "name": "Area 6 Cooltrainer Lark",
+          "class": "COOLTRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            133,
+            312,
+            357
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "is_boss_battle": false
+        },
+        {
+          "name": "Area 6 Cooltrainer Moss",
+          "class": "COOLTRAINER",
+          "sprite": "acetrainer_f.png",
+          "team": [
+            331,
+            207,
+            58
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "is_boss_battle": false
+        },
+        {
+          "name": "Area 6 Bodybuilder Faye",
+          "class": "BODYBUILDER",
+          "sprite": "blackbelt.png",
+          "team": [
+            163,
+            211,
+            359
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "is_boss_battle": false
+        },
+        {
+          "name": "Area 6 Hunter Gil",
+          "class": "HUNTER",
+          "sprite": "hiker.png",
+          "team": [
+            95,
+            349,
+            371
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "is_boss_battle": false
+        },
+        {
+          "name": "Area 7 Rider Sage",
+          "class": "RIDER",
+          "sprite": "biker.png",
+          "team": [
+            142,
+            206,
+            215,
+            361
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "is_boss_battle": false
+        },
+        {
+          "name": "Area 7 Chaser Wren",
+          "class": "CHASER",
+          "sprite": "roughneck.png",
+          "team": [
+            125,
+            328,
+            142,
+            222
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "is_boss_battle": false
+        },
+        {
+          "name": "Area 7 Teacher Ash",
+          "class": "TEACHER",
+          "sprite": "beauty.png",
+          "team": [
+            341,
+            331,
+            125,
+            327
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "is_boss_battle": false
+        },
+        {
+          "name": "Area 7 Researcher Brin",
+          "class": "RESEARCHER",
+          "sprite": "scientist.png",
+          "team": [
+            307,
+            98,
+            349,
+            276
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "is_boss_battle": false
+        },
+        {
+          "name": "Area 8 Cooltrainer Cole",
+          "class": "COOLTRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            325,
+            293,
+            352,
+            142
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "is_boss_battle": false
+        },
+        {
+          "name": "Area 8 Cooltrainer Dina",
+          "class": "COOLTRAINER",
+          "sprite": "acetrainer_f.png",
+          "team": [
+            120,
+            27,
+            349,
+            206
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "is_boss_battle": false
+        },
+        {
+          "name": "Area 8 Bodybuilder Ezra",
+          "class": "BODYBUILDER",
+          "sprite": "blackbelt.png",
+          "team": [
+            125,
+            322,
+            193,
+            220
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "is_boss_battle": false
+        },
+        {
+          "name": "Area 8 Hunter Fern",
+          "class": "HUNTER",
+          "sprite": "hiker.png",
+          "team": [
+            299,
+            203,
+            109,
+            261
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "is_boss_battle": false
+        },
+        {
+          "name": "Area 9 Rider Gale",
+          "class": "RIDER",
+          "sprite": "biker.png",
+          "team": [
+            241,
+            347,
+            216,
+            207
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "is_boss_battle": false
+        },
+        {
+          "name": "Area 9 Chaser Holt",
+          "class": "CHASER",
+          "sprite": "roughneck.png",
+          "team": [
+            79,
+            125,
+            58,
+            311
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "is_boss_battle": false
+        },
+        {
+          "name": "Area 9 Teacher Isla",
+          "class": "TEACHER",
+          "sprite": "beauty.png",
+          "team": [
+            216,
+            120,
+            234,
+            163
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "is_boss_battle": false
+        },
+        {
+          "name": "Area 9 Researcher Jett",
+          "class": "RESEARCHER",
+          "sprite": "scientist.png",
+          "team": [
+            241,
+            133,
+            60,
+            220
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "is_boss_battle": false
+        },
+        {
+          "name": "Area 10 Cooltrainer Kira",
+          "class": "COOLTRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            216,
+            215,
+            296,
+            315,
+            185,
+            325
+          ],
+          "rewards": {
+            "balls": 5
+          },
+          "is_boss_battle": true
+        },
+        {
+          "name": "Area 10 Cooltrainer Lyle",
+          "class": "COOLTRAINER",
+          "sprite": "acetrainer_f.png",
+          "team": [
+            311,
+            355,
+            209,
+            285,
+            270,
+            357
+          ],
+          "rewards": {
+            "balls": 5
+          },
+          "is_boss_battle": true
+        },
+        {
+          "name": "Area 10 Bodybuilder Maya",
+          "class": "BODYBUILDER",
+          "sprite": "blackbelt.png",
+          "team": [
+            95,
+            261,
+            19,
+            320,
+            315,
+            241
+          ],
+          "rewards": {
+            "balls": 5
+          },
+          "is_boss_battle": true
+        },
+        {
+          "name": "Area 10 Hunter Nash",
+          "class": "HUNTER",
+          "sprite": "hiker.png",
+          "team": [
+            223,
+            21,
+            56,
+            193,
+            363,
+            296
+          ],
+          "rewards": {
+            "balls": 5
+          },
+          "is_boss_battle": true
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CLIMB MT. BATTLE",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "MT. BATTLE MASTER",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "Mt. Battle Master Vander: You beat all ten areas? Then face the master of the mountain!"
+            ],
+            "battle": {
+              "name": "Mt. Battle Master Vander",
+              "class": "MT_BATTLE_MASTER",
+              "sprite": "blackbelt.png",
+              "team": [
+                289,
+                248,
+                373,
+                376,
+                230,
+                242
+              ],
+              "levels": [
+                70,
+                70,
+                71,
+                71,
+                72,
+                73
+              ],
+              "rewards": {
+                "balls": 15
+              },
+              "dialogue": {
+                "player_won": [
+                  "Vander: What a climb! You're the true master of Mt. Battle!"
+                ]
+              }
+            },
+            "flag": "mt_battle_master_beaten"
+          },
+          "condition": "not:has_trainers",
+          "flag_condition": "not mt_battle_master_beaten"
+        },
+        {
+          "text": "START OVER FROM AREA 1",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "Mt. Battle's trainers are ready for another round. Back to Area 1!"
+            ],
+            "reset_area": true,
+            "clear_flags": [
+              "mt_battle_master_beaten"
+            ]
+          },
+          "condition": "mt_battle_master_beaten"
+        },
+        {
+          "text": "Pyrite Town",
+          "action": "EXIT",
+          "target_area": "PYRITE_TOWN",
+          "condition": "can_exit",
+          "color": "RED"
+        }
+      ],
+      "next_area": "PYRITE_TOWN"
     },
     "AGATE_VILLAGE": {
       "area_type": "town",
@@ -2000,6 +2659,18 @@
         "required_region": "ORRE"
       },
       "reward": "Jirachi",
+      "region": "ORRE"
+    },
+    {
+      "id": "orre_m6",
+      "type": "SIDE",
+      "title": "Mt. Battle",
+      "description": "Climb Mt. Battle near Pyrite Town: 40 trainers in 10 areas, then Mt. Battle Master Vander. Climb again any time.",
+      "condition": {
+        "flag_not": "mt_battle_master_beaten",
+        "required_region": "ORRE"
+      },
+      "reward": "Battle practice",
       "region": "ORRE"
     },
     {
