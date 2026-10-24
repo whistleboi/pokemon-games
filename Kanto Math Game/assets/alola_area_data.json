@@ -1,4 +1,8 @@
 {
+  "ALOLA_OLD_ROD_POOL_PERCENTAGES": {"129": 50, "746": 30, "72": 20},
+  "ALOLA_GOOD_ROD_POOL_PERCENTAGES": {"746": 30, "320": 20, "456": 20, "90": 15, "170": 15},
+  "ALOLA_SUPER_ROD_POOL_PERCENTAGES": {"746": 25, "779": 15, "320": 15, "456": 15, "130": 10, "222": 10, "171": 10},
+  "TRAINER_CLASS_DIALOGUE": {"SKULL": {"intro": ["Yo! Team Skull's here, so step off!", "You messin' with Team Skull?"], "player_won": ["Ugh, whatever... not cool, yo.", "Team Skull don't care anyway!"], "player_lost": ["Skull! Skull! That's how we roll!"]}},
   "FORM_MAP": {
     "7001": { "id": 800, "form": "dusk_mane", "name": "Necrozma - Dusk Mane" },
     "7002": { "id": 800, "form": "dawn_wings", "name": "Necrozma - Dawn Wings" },
@@ -3615,8 +3619,9 @@
           "text": "Confront Team Skull",
           "action": "NPC",
           "target": "alola_guzma_intro",
-          "condition": "has_akala_z",
+          "condition": "has_rockium_z_badge",
           "flag_condition": "not malie_skull_cleared",
+          "victory_flag": "malie_skull_cleared",
           "color": "GOLD"
         }
       ],
@@ -3893,7 +3898,7 @@
       "trainer_pool": [
         {
           "name": "Team Skull Grunt",
-          "class": "GALACTIC",
+          "class": "SKULL",
           "sprite": "skull_grunt.png",
           "team": [754, 758],
           "rewards": { "balls": 3 },
@@ -4299,7 +4304,7 @@
       "trainer_pool": [
         {
           "name": "Skull Grunt",
-          "class": "GALACTIC",
+          "class": "SKULL",
           "sprite": "skull_grunt.png",
           "team": [754, 764],
           "rewards": { "balls": 2 }
@@ -4384,7 +4389,7 @@
       "trainer_pool": [
         {
           "name": "Team Skull Grunt",
-          "class": "GALACTIC",
+          "class": "SKULL",
           "sprite": "skull_grunt.png",
           "team": [757, 760],
           "rewards": { "balls": 2 }

@@ -1,4 +1,8 @@
 {
+  "UNOVA_OLD_ROD_POOL_PERCENTAGES": {"550": 40, "118": 30, "129": 30},
+  "UNOVA_GOOD_ROD_POOL_PERCENTAGES": {"550": 35, "118": 25, "592": 25, "339": 15},
+  "UNOVA_SUPER_ROD_POOL_PERCENTAGES": {"550": 25, "592": 25, "594": 15, "119": 15, "223": 10, "90": 10},
+  "TRAINER_CLASS_DIALOGUE": {"PLASMA": {"intro": ["Team Plasma will set your Pokemon free!", "Hand over your Pokemon, in the name of Team Plasma!"], "player_won": ["Your bond with your Pokemon... it's real?", "Team Plasma will remember this!"], "player_lost": ["Now your Pokemon can be free!"]}},
   "FORM_MAP": {
     "5001": { "id": 555, "form": "zen", "name": "Darmanitan - Zen Mode" },
     "5002": { "id": 641, "form": "therian", "name": "Tornadus - Therian Forme" },
@@ -2103,7 +2107,7 @@
           "class": "PKMN_TRAINER",
           "sprite": "cheren.png",
           "team": [500],
-          "team_choice": { "495": [500, 504], "498": [503, 504], "501": [497, 504] },
+          "team_choice": { "495": [498, 504], "498": [501, 504], "501": [495, 504] },
           "rewards": { "balls": 5 },
           "victory_flag": "defeated_rival_accumula",
           "dialogue": {
@@ -2145,7 +2149,7 @@
           "rewards": { "balls": 5 },
           "is_boss_battle": true,
           "badge_reward": "TRIO",
-          "team_choice": { "495": [506, 515], "498": [506, 511], "501": [506, 513] }
+          "team_choice": { "495": [506, 513], "498": [506, 515], "501": [506, 511] }
         },
         "requirements": { "badges": 0, "fail_text": "The Striaton Gym is open — find the Elemental Monkey in the Dreamyard first for a type advantage!" }
       },
@@ -2216,7 +2220,7 @@
         "type": "trainer_battle",
         "trainer": {
           "name": "Team Plasma Grunt",
-          "class": "GALACTIC",
+          "class": "PLASMA",
           "sprite": "plasma_grunt.png",
           "team": [509, 504],
           "rewards": { "balls": 3 },
@@ -2300,7 +2304,7 @@
           "class": "PKMN_TRAINER",
           "sprite": "bianca.png",
           "team": [503],
-          "team_choice": { "495": [503, 519], "498": [497, 519], "501": [500, 519] },
+          "team_choice": { "495": [502, 519], "498": [496, 519], "501": [499, 519] },
           "rewards": { "balls": 5 },
           "victory_flag": "defeated_bianca_castelia",
           "dialogue": {
@@ -2379,7 +2383,7 @@
           "class": "PKMN_TRAINER",
           "sprite": "cheren.png",
           "team": [500, 507],
-          "team_choice": { "495": [500, 507, 521], "498": [503, 507, 521], "501": [497, 507, 521] },
+          "team_choice": { "495": [499, 507, 520], "498": [502, 507, 520], "501": [496, 507, 520] },
           "rewards": { "balls": 5 },
           "victory_flag": "defeated_rival_nimbasa",
           "dialogue": {
@@ -2745,67 +2749,11 @@
           },
           "rewards": { "balls": 20 },
           "is_boss_battle": true,
-          "victory_flag": "beat_unova_champion"
-        },
-        "post_champion_event": {
-          "type": "trainer_battle",
-          "trainer": {
-            "name": "N",
-            "class": "PKMN_TRAINER",
-            "sprite": "n.png",
-            "team": [644, 584, 565, 601, 571, 598],
-            "rewards": { "balls": 10 },
-            "victory_flag": "defeated_n_castle",
-            "dialogue": {
-              "intro": [
-                "N: {player_name}. You became Champion. But my castle stands.",
-                "Zekrom answers to me — the hero of ideals.",
-                "Face me. And if your truth is real — prove it here."
-              ],
-              "player_won": [
-                "N: You won. Your truth... it burned through everything I prepared.",
-                "Maybe... ideals and truth don't have to be enemies.",
-                "I need time. Time to understand what I missed."
-              ],
-              "player_lost": ["N: Ideals that are unwavering — that is what wins.", "Pokémon liberation will come to Unova."]
-            }
-          },
-          "condition": "beat_alder",
-          "flag_check": "defeated_n_castle"
-        },
-        "final_event": {
-          "type": "trainer_battle",
-          "trainer": {
-            "name": "Ghetsis",
-            "class": "ROCKET_LEADER",
-            "sprite": "ghetsis.png",
-            "team": [563, 626, 537, 625, 604, 635],
-            "rewards": { "balls": 15 },
-            "victory_flag": "beat_unova_champion",
-            "dialogue": {
-              "intro": [
-                "Ghetsis: Hahaha. So N lost to a child.",
-                "No matter. N was never the point.",
-                "I will take that Legendary Pokémon — and with it, I will rule this world!",
-                "No one can stop me now. ABSOLUTELY NO ONE!"
-              ],
-              "player_won": [
-                "Ghetsis: Im...possible. A child...defeated me?!",
-                "Looker: Stand down, Ghetsis. International Police — it's over.",
-                "You received the MASTER BALL!"
-              ],
-              "player_lost": ["Ghetsis: Pathetic. Not even worthy of witnessing my new world."]
-            }
-          },
-          "condition": "defeated_n_castle",
-          "flag_check": "beat_unova_champion"
+          "victory_flag": "beat_alder"
         },
         "requirements": { "badges": 8, "fail_text": "You need all 8 Unova Gym Badges to challenge the Pokémon League." }
       },
-      "travel_options": [
-        { "text": "Victory Road", "target_area": "VICTORY_ROAD_UNOVA" },
-        { "text": "N's Castle", "target_area": "NS_CASTLE" }
-      ],
+      "travel_options": [{"text": "Victory Road", "target_area": "VICTORY_ROAD_UNOVA"}, {"text": "N's Castle", "target_area": "NS_CASTLE", "condition": "beat_alder"}],
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
         { "text": "Shop", "action": "SHOP" },
@@ -2897,7 +2845,7 @@
       "trainer_pool": [
         {
           "name": "Plasma Grunt",
-          "class": "GALACTIC",
+          "class": "PLASMA",
           "sprite": "plasma_grunt.png",
           "team": [509, 568],
           "rewards": { "balls": 3 },
@@ -2909,7 +2857,7 @@
         },
         {
           "name": "Plasma Grunt",
-          "class": "GALACTIC",
+          "class": "PLASMA",
           "sprite": "plasma_grunt.png",
           "team": [543, 551],
           "rewards": { "balls": 3 },
@@ -2923,7 +2871,7 @@
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         {
-          "text": "BATTLE GALACTIC",
+          "text": "BATTLE PLASMA",
           "action": "TRAINER",
           "condition": "has_trainers",
           "color": "GOLD",
@@ -2960,7 +2908,7 @@
       "trainer_pool": [
         {
           "name": "Plasma Grunt",
-          "class": "GALACTIC",
+          "class": "PLASMA",
           "sprite": "plasma_grunt.png",
           "team": [562, 551],
           "rewards": { "balls": 3 },
@@ -3005,7 +2953,7 @@
       "trainer_pool": [
         {
           "name": "Plasma Grunt",
-          "class": "GALACTIC",
+          "class": "PLASMA",
           "sprite": "plasma_grunt.png",
           "team": [582, 613],
           "rewards": { "balls": 3 },
@@ -3017,7 +2965,7 @@
         },
         {
           "name": "Commander Zinzolin",
-          "class": "GALACTIC",
+          "class": "PLASMA",
           "sprite": "zinzolin.png",
           "is_boss_battle": true,
           "team": [582, 613, 615],
@@ -3141,14 +3089,14 @@
       "trainer_pool": [
         {
           "name": "Plasma Grunt",
-          "class": "GALACTIC",
+          "class": "PLASMA",
           "sprite": "plasma_grunt.png",
           "team": [519, 544],
           "rewards": { "balls": 3 }
         },
         {
           "name": "Plasma Grunt",
-          "class": "GALACTIC",
+          "class": "PLASMA",
           "sprite": "plasma_grunt.png",
           "team": [509, 551],
           "rewards": { "balls": 3 }
@@ -3210,36 +3158,8 @@
       "wild_pool_percentages": null,
       "min_rounds": 0,
       "backgrounds": { "main": "ns_castle.png", "battle": "battle_ns_castle.png" },
-      "trainer_pool": [
-        {
-          "name": "Plasma Sage Bronius",
-          "class": "GALACTIC",
-          "sprite": "plasma_sage.png",
-          "is_boss_battle": true,
-          "team": [563, 609],
-          "rewards": { "balls": 8 }
-        },
-        {
-          "name": "Plasma Sage Ryoku",
-          "class": "GALACTIC",
-          "sprite": "plasma_sage.png",
-          "is_boss_battle": true,
-          "team": [561, 576],
-          "rewards": { "balls": 8 }
-        },
-        {
-          "name": "Plasma Sage Gorm",
-          "class": "GALACTIC",
-          "sprite": "plasma_sage.png",
-          "is_boss_battle": true,
-          "team": [538, 534],
-          "rewards": { "balls": 8 }
-        }
-      ],
-      "route_menu": [
-        { "text": "BATTLE PLASMA SAGE", "action": "TRAINER", "condition": "has_trainers", "color": "GOLD" },
-        { "text": "Pokémon League", "action": "EXIT", "target_area": "UNOVA_POKEMON_LEAGUE", "condition": "can_exit", "color": "RED" }
-      ]
+      "trainer_pool": [{"name": "Plasma Sage Bronius", "class": "PLASMA", "sprite": "plasma_sage.png", "is_boss_battle": true, "team": [563, 609], "rewards": {"balls": 8}}, {"name": "Plasma Sage Ryoku", "class": "PLASMA", "sprite": "plasma_sage.png", "is_boss_battle": true, "team": [561, 576], "rewards": {"balls": 8}}, {"name": "Plasma Sage Gorm", "class": "PLASMA", "sprite": "plasma_sage.png", "is_boss_battle": true, "team": [538, 534], "rewards": {"balls": 8}, "victory_flag": "plasma_sages_defeated"}],
+      "route_menu": [{"text": "BATTLE PLASMA SAGE", "action": "TRAINER", "condition": "has_trainers", "color": "GOLD"}, {"text": "CONFRONT N", "action": "EVENT", "color": "GOLD", "flag_condition": "not defeated_n_castle", "event": {"requires": ["beat_alder", "plasma_sages_defeated"], "fail": ["The Seven Sages block the way to N's throne room. Defeat the Plasma Sages first!"], "lines": ["N: {player_name}. You became Champion. But my castle stands.", "Zekrom answers to me — the hero of ideals.", "Face me. And if your truth is real — prove it here."], "battle": {"name": "N", "class": "PKMN_TRAINER", "sprite": "n.png", "team": [644, 584, 565, 601, 571, 598], "rewards": {"balls": 10}, "is_boss_battle": true, "dialogue": {"player_won": ["N: You won. Your truth... it burned through everything I prepared.", "Maybe... ideals and truth don't have to be enemies.", "I need time. Time to understand what I missed."], "player_lost": ["N: Ideals that are unwavering — that is what wins.", "Pokémon liberation will come to Unova."]}}, "flag": "defeated_n_castle"}}, {"text": "STOP GHETSIS", "action": "EVENT", "color": "GOLD", "flag_condition": "not beat_unova_champion", "event": {"requires": ["defeated_n_castle"], "fail": ["N is still waiting in his throne room."], "lines": ["Ghetsis: Hahaha. So N lost to a child.", "No matter. N was never the point.", "I will take that Legendary Pokémon — and with it, I will rule this world!", "No one can stop me now. ABSOLUTELY NO ONE!"], "battle": {"name": "Ghetsis", "class": "ROCKET_LEADER", "sprite": "ghetsis.png", "team": [563, 626, 537, 625, 604, 635], "rewards": {"balls": 15, "MASTER_BALL": 1}, "is_boss_battle": true, "dialogue": {"player_won": ["Ghetsis: Im...possible. A child...defeated me?!", "Looker: Stand down, Ghetsis. International Police — it's over.", "You received the MASTER BALL!"], "player_lost": ["Ghetsis: Pathetic. Not even worthy of witnessing my new world."]}}, "flag": "beat_unova_champion"}}, {"text": "Pokémon League", "action": "EXIT", "target_area": "UNOVA_POKEMON_LEAGUE", "condition": "can_exit", "color": "RED"}]
     },
     "VICTORY_ROAD_UNOVA": {
       "area_type": "dungeon",

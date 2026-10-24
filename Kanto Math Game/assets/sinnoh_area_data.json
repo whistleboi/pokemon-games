@@ -1,4 +1,8 @@
 {
+  "SINNOH_OLD_ROD_POOL_PERCENTAGES": {"129": 80, "72": 20},
+  "SINNOH_GOOD_ROD_POOL_PERCENTAGES": {"129": 25, "456": 30, "118": 25, "339": 20},
+  "SINNOH_SUPER_ROD_POOL_PERCENTAGES": {"130": 15, "457": 20, "119": 15, "340": 20, "223": 15, "211": 15},
+  "TRAINER_CLASS_DIALOGUE": {"GALACTIC": {"intro": ["Team Galactic will build a new world!", "Out of our way, kid!"], "player_won": ["This is just a setback for Team Galactic...", "The boss won't be happy."], "player_lost": ["Nothing stops Team Galactic!"]}},
   "FORM_MAP": {
     "4001": { "id": 487, "form": "origin", "name": "Giratina - Origin Forme" },
     "4002": { "id": 492, "form": "sky", "name": "Shaymin - Sky Forme" },
@@ -4277,7 +4281,7 @@
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
         { "text": "PICK BERRIES", "action": "BERRY", "condition": "has_berry_pouch", "color": "GREEN" },
         { "text": "Solaceon Town", "action": "EXIT", "target_area": "SOLACEON_TOWN", "condition": "can_exit", "color": "RED" },
-        { "text": "ROUTE 215", "action": "EXIT", "target": "SINNOH_ROUTE_215", "condition": "can_exit", "color": "RED" },
+        { "text": "ROUTE 215", "action": "EXIT", "target_area": "SINNOH_ROUTE_215", "condition": "can_exit", "color": "RED" },
         {
           "text": "Celestic Town",
           "action": "EXIT",
@@ -4481,7 +4485,7 @@
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
         { "text": "PICK BERRIES", "action": "BERRY", "condition": "has_berry_pouch", "color": "GREEN" },
         { "text": "Veilstone City", "action": "EXIT", "target_area": "VEILSTONE_CITY", "condition": "can_exit", "color": "RED" },
-        { "text": "ROUTE 210", "action": "EXIT", "target": "SINNOH_ROUTE_210", "condition": "can_exit", "color": "RED" },
+        { "text": "ROUTE 210", "action": "EXIT", "target_area": "SINNOH_ROUTE_210", "condition": "can_exit", "color": "RED" },
         {
           "text": "Celestic Town",
           "action": "EXIT",

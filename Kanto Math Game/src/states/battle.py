@@ -1511,6 +1511,13 @@ class TrainerBattleState(GameState):
             # linked PCs, the road to the next region). The lobby would already be in rematch mode.
             story = self.game.story_manager
             story.story_flags[f"gym_progress_{story.current_area_key}"] = 0  # next visit: rematch from match 1
+            # The title can be won outside the League (Unova: Ghetsis at N's Castle), so reset the
+            # region's League too.
+            from src.states.overworld import is_league
+            region = story.get_current_region()
+            for key, area in self.game.loader.area_data.get("STORY_PROGRESSION", {}).items():
+                if str(area.get("region") or "").upper() == region and area.get("gym") and is_league(area["gym"]):
+                    story.story_flags[f"gym_progress_{key}"] = 0
             if vf == "beat_champion":
                 story.story_flags["beat_elite_four"] = True
             home = story.get_region_start(story.get_current_region()).get("start_area") or "PALLET_TOWN"

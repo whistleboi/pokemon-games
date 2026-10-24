@@ -1,4 +1,8 @@
 {
+  "KALOS_OLD_ROD_POOL_PERCENTAGES": {"129": 70, "370": 30},
+  "KALOS_GOOD_ROD_POOL_PERCENTAGES": {"690": 30, "692": 30, "223": 20, "72": 20},
+  "KALOS_SUPER_ROD_POOL_PERCENTAGES": {"690": 20, "692": 20, "130": 15, "341": 15, "211": 15, "224": 15},
+  "TRAINER_CLASS_DIALOGUE": {"FLARE": {"intro": ["Team Flare wants a beautiful world, and you're not in it!", "Stylish, aren't I? Now battle!"], "player_won": ["How unfashionable...", "Team Flare won't forget this!"], "player_lost": ["Team Flare stays stylish!"]}},
   "FORM_MAP": {
     "6001": { "id": 718, "form": "ten_percent", "name": "Zygarde - 10% Forme" },
     "6002": { "id": 718, "form": "complete", "name": "Zygarde - Complete Forme" },
@@ -1212,7 +1216,7 @@
         { "text": "Pokémon Center", "action": "HEAL" },
         { "text": "Pokémon-Amie", "action": "AMIE" },
         { "text": "Shop", "action": "SHOP" },
-        { "text": "Meet Shauna & Tierno", "action": "NPC", "target": "kalos_shauna_intro", "flag_condition": "not met_kalos_friends" }
+        { "text": "Meet Shauna & Tierno", "action": "NPC", "target": "kalos_shauna_intro", "flag_condition": "not met_kalos_friends", "victory_flag": "met_kalos_friends" }
       ],
       "next_area": "KALOS_ROUTE_2"
     },
@@ -1291,7 +1295,7 @@
         { "text": "Pokémon Center", "action": "HEAL" },
         { "text": "Pokémon-Amie", "action": "AMIE" },
         { "text": "Department Store", "action": "SHOP" },
-        { "text": "Visit Professor Sycamore", "action": "NPC", "target": "kalos_sycamore_intro", "flag_condition": "not met_sycamore" },
+        { "text": "Visit Professor Sycamore", "action": "NPC", "target": "kalos_sycamore_intro", "flag_condition": "not met_sycamore", "victory_flag": "met_sycamore" },
         {
           "text": "Choose Starter Pokémon",
           "action": "NPC",
@@ -1300,7 +1304,7 @@
           "flag_condition": "not got_kalos_starter"
         },
         { "text": "Challenge Gym", "action": "GYM" },
-        { "text": "Lysandre Café", "action": "NPC", "target": "kalos_lysandre_intro", "flag_condition": "not met_lysandre" }
+        { "text": "Lysandre Café", "action": "NPC", "target": "kalos_lysandre_intro", "flag_condition": "not met_lysandre", "victory_flag": "met_lysandre" }
       ],
       "next_area": "KALOS_ROUTE_5",
       "department_store": true
@@ -1830,7 +1834,8 @@
       "trainer_pool": [
         {
           "name": "Team Flare Grunt",
-          "class": "GALACTIC",
+          "class": "FLARE",
+          "victory_flag": "glittering_cave_cleared",
           "sprite": "flare_grunt.png",
           "team": [667, 694],
           "rewards": { "balls": 3 },
@@ -1918,7 +1923,7 @@
       "trainer_pool": [
         {
           "name": "Team Flare Admin",
-          "class": "GALACTIC",
+          "class": "FLARE",
           "sprite": "flare_admin.png",
           "is_boss_battle": true,
           "team": [668, 687, 663],
@@ -1974,7 +1979,7 @@
       "trainer_pool": [
         {
           "name": "Team Flare Grunt",
-          "class": "GALACTIC",
+          "class": "FLARE",
           "sprite": "flare_grunt.png",
           "team": [685, 671],
           "rewards": { "balls": 5 },
@@ -1986,7 +1991,7 @@
         },
         {
           "name": "Team Flare Admin Celosia",
-          "class": "GALACTIC",
+          "class": "FLARE",
           "sprite": "flare_admin.png",
           "is_boss_battle": true,
           "team": [679, 679, 680],
@@ -2045,7 +2050,7 @@
       "trainer_pool": [
         {
           "name": "Team Flare Admin Mable",
-          "class": "GALACTIC",
+          "class": "FLARE",
           "sprite": "flare_admin.png",
           "is_boss_battle": true,
           "team": [614, 460],

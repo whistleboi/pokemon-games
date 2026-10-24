@@ -6,7 +6,7 @@ story.defeated_trainers = {}
 story.starting_region = "HOENN"
 R, S = "HOENN", "LITTLEROOT_TOWN"
 seen = report("start", S, set())
-for b, extra in [("STONE", {}), ("KNuckle", {}), ("DYNAMO", {}), ("HEAT", {}), ("BALANCE", {}),
+for b, extra in [("STONE", {}), ("KNUCKLE", {}), ("DYNAMO", {}), ("HEAT", {}), ("BALANCE", {}),
                  ("FEATHER", {"weather_institute_cleared": True}), ("MIND", {"seafloor_cavern_cleared": True}),
                  ("RAIN", {"cave_of_origin_cleared": True})]:
     badge(R, b)

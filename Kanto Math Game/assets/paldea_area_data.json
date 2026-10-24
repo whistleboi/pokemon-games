@@ -1,4 +1,7 @@
 {
+  "PALDEA_OLD_ROD_POOL_PERCENTAGES": {"129": 50, "960": 30, "963": 20},
+  "PALDEA_GOOD_ROD_POOL_PERCENTAGES": {"963": 25, "960": 25, "846": 20, "976": 15, "211": 15},
+  "PALDEA_SUPER_ROD_POOL_PERCENTAGES": {"963": 20, "976": 15, "978": 15, "847": 10, "961": 10, "130": 10, "977": 10, "211": 10},
   "FORM_MAP": {},
   "GAME_TEXT": {
     "paldea_intro": "After defeating Leon and claiming the Galar Championship, a mysterious letter arrived — Professor Sada of the Paldea region wrote of ancient Pokémon sightings near the Great Crater. With your mother already purchasing a seaside cottage in Cabo Poco, you set sail for a land of open skies and untamed frontiers.",
@@ -40,7 +43,7 @@
     "paldea_elite_larry2": "Larry stands with his arms folded. 'We meet again.' He sighs. 'I joined the Elite Four because the chairman made me. I eat a late lunch between challengers. Come on then.'",
     "paldea_elite_hassel": "Hassel strikes an artistic pose. 'Challenger! I am Hassel — art teacher, Dragon-type Elite Four member, and humble devotee of beauty in all forms. Allow me to paint you a picture... of defeat!'",
     "paldea_champion_geeta": "Geeta turns from the window with an unhurried smile. 'You remind me of myself, years ago. I have never been defeated in this arena. I intend to maintain that record. Show me everything you have.'",
-    "paldea_champion_victory": "Geeta bows her head. 'Extraordinary. A trainer who conquered eight regions and still burns with that same hunger. You are the Champion of Paldea.' She steps aside, and the arena erupts.",
+    "paldea_champion_victory": "Geeta bows her head. 'Extraordinary. A trainer who has come this far and still burns with that same hunger. You are the Champion of Paldea.' She steps aside, and the arena erupts.",
     "paldea_post_champion": "With Paldea's championship won, all three paths complete, and the Paradox Machine dark forever, you sit with Arven, Penny, and Nemona under the stars above Area Zero. Nemona grabs your arm. 'You are the best rival I have ever had. I am going to catch up — I promise.' You believe her.",
     "paldea_newgame_intro": [
       "You and Mom have just moved into a seaside cottage in Cabo Poco.",
@@ -2644,7 +2647,7 @@
               "Geeta turns from the window with an unhurried smile. 'You remind me of myself, years ago. I have never been defeated in this arena. I intend to maintain that record. Show me everything you have.'"
             ],
             "player_won": [
-              "Geeta bows her head. 'Extraordinary. A trainer who conquered eight regions and still burns with that same hunger. You are the Champion of Paldea.' She steps aside, and the arena erupts."
+              "Geeta bows her head. 'Extraordinary. A trainer who has come this far and still burns with that same hunger. You are the Champion of Paldea.' She steps aside, and the arena erupts."
             ],
             "player_lost": ["Geeta: Train harder and come back!"]
           },

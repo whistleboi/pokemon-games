@@ -68,7 +68,7 @@ if not gsp["GLIMWOOD_TANGLE"].get("area_boss"):
     menu.insert(exit_i, {"text": "Follow the Jungle Call", "action": "BOSS", "color": "GOLD",
                          "condition": ["beat_galar_champion", "boss_not_defeated"]})
     G.set("GLIMWOOD_TANGLE", "route_menu", menu)
-    G.set("GLIMWOOD_TANGLE", "area_boss", {"id": 893, "name": "Zarude", "victory_flag": "ISLE_OF_ARMOR_boss_defeated"})
+    G.set("GLIMWOOD_TANGLE", "area_boss", {"id": 893, "name": "Zarude", "victory_flag": "GLIMWOOD_TANGLE_boss_defeated"})
 
 # Crown Tundra: Peony's expedition, and the road to Dyna Tree Hill (the Galarian birds).
 ct = gsp["CROWN_TUNDRA"]

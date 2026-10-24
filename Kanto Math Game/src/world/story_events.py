@@ -144,7 +144,7 @@ EVENTS = {
     "dreamyard_monkey": {
         "lines": ["A girl named Fennel is studying the Dreamyard.",
                   "Fennel: This Pokemon is perfect against the Striaton Gym Leaders. Please take it!"],
-        "gift_pokemon": {"495": 513, "498": 515, "501": 511, "default": 511}, "flag": "got_elemental_monkey"},
+        "gift_pokemon": {"495": 515, "498": 511, "501": 513, "default": 511}, "flag": "got_elemental_monkey"},
     "plasma_nacrene": {
         "lines": ["unova_museum_plasma"], "flag": "plasma_nacrene_cleared",
         "battle": _t(GRUNT_P, team=[509], dialogue={"player_won": ["unova_plasma_nacrene_won"],

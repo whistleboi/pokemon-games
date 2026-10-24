@@ -143,12 +143,39 @@ def _run_story_event(state, key, check, show):
         names = story.purify_shadow()
         lines += ([f"{n}'s heart opened! It's no longer a Shadow Pokemon." for n in names]
                   or ["None of your Pokemon need purifying right now."])
+        if names:
+            lines += _evolve_due(game, names)
     gift = story_events.gift_for_starter(ev.get("gift_pokemon"), _region_starter_id(game))
     if gift:
         lines.append(story_events.gift_pokemon(game, gift))
     if flag:
         story.story_flags[flag] = True
     show(lines or ["..."])
+
+
+def _evolve_due(game, names):
+    """Party Pokemon (by name) whose evolution is already due evolve now. Purified Shadow
+    Pokemon are often past their evolution level, and Orre has no battles left to trigger it."""
+    from src.pokemon import evolution
+    story = game.story_manager
+    out = []
+    for i, p in enumerate(story.player_team):
+        if not p or p.name.upper() not in names:
+            continue
+        ready = evolution.ready_evolutions(game, p)
+        if not ready:
+            continue
+        entry = story.pick_evolution_branch(ready)
+        if "_" in entry:
+            continue  # a form evolution: leave it to the usual evolution screen
+        new_id = game.name_to_id.get(entry.upper())
+        if not new_id:
+            continue
+        old_name = p.display_name.upper()
+        story.player_team[i] = new = story.change_species(p, new_id)
+        game.data.add_pokemon(new)
+        out.append(f"What? {old_name} evolved into {new.display_name.upper()}!")
+    return out
 
 
 def _start_event_puzzle(state, ev, lines, show):
@@ -229,7 +256,9 @@ class PlayState(GameState):
         main_rect = Utils.get_full_dialogue_rect(self.game)
         self.dialogue_box = ClassicDialogueBox(
             main_rect,
-            [self.game.assets.get_text("welcome_kanto")],
+            [self.game.assets.get_text(
+                f"welcome_{self.game.story_manager.get_current_region().lower()}",
+                default=f"Welcome to {self.game.story_manager.get_current_region().title()}!")],
             self.game.assets.fonts["med"],
             visible=False,
         )
@@ -773,8 +802,12 @@ class PlayState(GameState):
 
         trainer_info = trainer_pool[trainer_idx]
         trainer_class = trainer_info.get("class", "YOUNGSTER")
-        trainer_name = trainer_info.get("name")
+        # Names like "{rival_name}" and text keys are filled in, as story battles do.
+        trainer_name = _fill_names(self.game, trainer_info.get("name"))
         custom_dialogue = trainer_info.get("dialogue")
+        if isinstance(custom_dialogue, dict):
+            custom_dialogue = {k: (v if k == "intro" else _resolve_lines(self.game, v))
+                               for k, v in custom_dialogue.items()}
         rewards = trainer_info.get("rewards")
         victory_flag = trainer_info.get("victory_flag")
 
@@ -828,7 +861,7 @@ class PlayState(GameState):
 
         from src.states.battle import TrainerBattleState, TrainerIntroState
 
-        trainer_sprite = self.game.assets.get_trainer_image(trainer_info["sprite"])
+        trainer_sprite = _trainer_sprite(self.game, trainer_info.get("sprite"))
         battle_state = TrainerBattleState(
             self.game,
             opponent_team,
@@ -857,7 +890,7 @@ class PlayState(GameState):
         intro_text_options = all_dialogue.get(trainer_class, {}).get("intro", ["Prepare to battle!"])
         if custom_dialogue and "intro" in custom_dialogue:
             intro_text_options = custom_dialogue["intro"]
-        intro_text = random.choice(intro_text_options)
+        intro_text = _resolve_lines(self.game, random.choice(intro_text_options))
 
         intro_state = TrainerIntroState(
             self.game, trainer_sprite, intro_text, battle_state
@@ -1669,6 +1702,18 @@ class PlayState(GameState):
         }
         self.show_dialogue(["Diving deep into the blue..."], callback=lambda: self.game.change_state(battle_state))
 
+    def _fishing_pool(self, rod):
+        """The region's own rod pool (e.g. UNOVA_SUPER_ROD_POOL_PERCENTAGES), else its weaker rods'
+        pools, else the Kanto pools that every region used to share."""
+        data = self.game.loader.area_data
+        region = self.game.story_manager.get_current_region()
+        rods = ["SUPER_ROD", "GOOD_ROD", "OLD_ROD"]
+        tried = rods[rods.index(rod):]
+        for key in [f"{region}_{r}_POOL_PERCENTAGES" for r in tried] + [f"{rod}_POOL_PERCENTAGES"]:
+            if data.get(key):
+                return data[key]
+        return {}
+
     def action_fish(self):
         self.is_progression_paused = False
         self.hide_menu_buttons()
@@ -1676,14 +1721,8 @@ class PlayState(GameState):
         self.rounds_completed += 1
 
         inv = self.game.story_manager.inventory
-        prefix = "JOHTO_" if "JOHTO" in self.game.story_manager.current_area_key or "LAKE" in self.game.story_manager.current_area_key else ""
-
         rod = next((r for r in ("SUPER_ROD", "GOOD_ROD") if inv.get(r, 0) > 0), "OLD_ROD")
-        pool_key = f"{prefix}{rod}_POOL_PERCENTAGES"
-
-        fishing_pool_pct = self.game.loader.area_data.get(pool_key, {})
-        if not fishing_pool_pct:
-            fishing_pool_pct = self.game.loader.area_data.get(pool_key.replace("JOHTO_", ""), {})
+        fishing_pool_pct = self._fishing_pool(rod)
 
         if not fishing_pool_pct:
             self.show_dialogue(["Not even a nibble..."])
@@ -3356,6 +3395,11 @@ class CityState(GameState):
             if any(isinstance(v, dict) and v.get("id") == nown_id
                    for v in self.game.data.data.get("pokedex", {}).values()):  # keys are "id-form"
                 msg = ["Researcher: Incredible! You've documented all 28 forms of UNOWN!", "Your math skills and dedication are truly legendary.", "You've solved the greatest mystery of the Johto region!"]
+                if not self.game.story_manager.story_flags.get("visited_SINJOH_CABIN"):
+                    # The Sinjoh Ruins open for all 28 Unown plus Arceus (Sinnoh's Hall of Origin).
+                    msg += ["One more thing... the carvings say the Unown gather around ARCEUS.",
+                            "It's said to wait in the Hall of Origin, far away in Sinnoh.",
+                            "If you ever bring ARCEUS here, the Unown may show you something amazing!"]
             else:
                 msg = ["Researcher: Incredible! You've documented all 28 forms of UNOWN!",
                        "The air in the ruins is vibrating...",

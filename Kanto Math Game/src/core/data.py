@@ -81,8 +81,23 @@ class DataManager:
     def reset_shinies(self):
         self.data["total_shinies"] = 0
 
+    # Forms that count as their base species in the Pokedex: a Shadow Pokemon is that species
+    # (no entry of its own), and Urshifu's styles are both #892 (kept as styles too).
+    BASE_ONLY_FORMS = {"shadow"}
+    ALSO_BASE_FORMS = {"single", "rapid"}
+
     def add_pokemon(self, pokemon):
-        p_key = f"{pokemon.id}-{pokemon.form}"
+        base = getattr(pokemon, "meta_id", pokemon.id)
+        if pokemon.form in self.BASE_ONLY_FORMS | self.ALSO_BASE_FORMS and base != pokemon.id:
+            name = str(pokemon.display_name)
+            if name.upper().startswith("SHADOW "):
+                name = name[7:]
+            self._register(f"{base}-normal", base, name.split(" - ")[0], "normal", pokemon)
+            if pokemon.form in self.BASE_ONLY_FORMS:
+                return
+        self._register(f"{pokemon.id}-{pokemon.form}", pokemon.id, pokemon.display_name, pokemon.form, pokemon)
+
+    def _register(self, p_key, pid, name, form, pokemon):
         if (
             p_key in self.data["pokedex"]
             and self.data["pokedex"][p_key].get("shiny", False)
@@ -94,9 +109,9 @@ class DataManager:
 
         had_gmax = self.data["pokedex"].get(p_key, {}).get("gmax", False)
         self.data["pokedex"][p_key] = {
-            "id": pokemon.id,
-            "name": pokemon.display_name,
-            "form": pokemon.form,
+            "id": pid,
+            "name": name,
+            "form": form,
             "shiny": pokemon.is_shiny,
             "gmax": had_gmax or getattr(pokemon, "gmax_factor", False),
         }

@@ -19,7 +19,7 @@
     "2016": { "id": 89, "form": "alolan", "name": "Alolan Muk", "types": ["POISON", "DARK"] },
     "2017": { "id": 103, "form": "alolan", "name": "Alolan Exeggutor", "types": ["GRASS", "DRAGON"] },
     "2018": { "id": 105, "form": "alolan", "name": "Alolan Marowak", "types": ["FIRE", "GHOST"] },
-    "2019": { "id": 54, "form": "galarian", "name": "Galarian Meowth", "types": ["STEEL"] },
+    "2019": { "id": 52, "form": "galarian", "name": "Galarian Meowth", "types": ["STEEL"] },
     "2020": { "id": 77, "form": "galarian", "name": "Galarian Ponyta", "types": ["PSYCHIC"] },
     "2021": { "id": 78, "form": "galarian", "name": "Galarian Rapidash", "types": ["PSYCHIC", "FAIRY"] },
     "2022": { "id": 79, "form": "galarian", "name": "Galarian Slowpoke", "types": ["PSYCHIC"] },

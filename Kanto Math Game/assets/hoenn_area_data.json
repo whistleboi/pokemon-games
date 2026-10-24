@@ -1,4 +1,7 @@
 {
+  "HOENN_OLD_ROD_POOL_PERCENTAGES": {"129": 70, "72": 30},
+  "HOENN_GOOD_ROD_POOL_PERCENTAGES": {"129": 30, "72": 20, "320": 25, "318": 25},
+  "HOENN_SUPER_ROD_POOL_PERCENTAGES": {"320": 25, "319": 15, "341": 20, "120": 20, "130": 10, "349": 10},
   "FORM_MAP": {
     "2200": { "id": 386, "form": "attack", "name": "Deoxys - Attack" },
     "2201": { "id": 386, "form": "defense", "name": "Deoxys - Defense" },
@@ -1242,7 +1245,7 @@
           "class": "GYM_LEADER",
           "sprite": "brawly.png",
           "team": [66, 296], "levels": [17, 18],
-          "badge_reward": "KNuckle",
+          "badge_reward": "KNUCKLE",
           "rewards": { "balls": 5, "RARE_CANDY": 3 },
           "dialogue": {
             "intro": ["Brawly: Welcome to the Dewford Town Gym! I'm Brawly, the Fighting-type Gym Leader."],

@@ -1083,7 +1083,8 @@ class StoryManager:
         }
 
     @staticmethod
-    def _migrate_area_keys(obj, renames={"FUSCHIA_CITY": "FUCHSIA_CITY"}):
+    def _migrate_area_keys(obj, renames={"FUSCHIA_CITY": "FUCHSIA_CITY", "KNuckle": "KNUCKLE",
+                                          "ISLE_OF_ARMOR_boss_defeated": "GLIMWOOD_TANGLE_boss_defeated"}):
         """Rewrite renamed area keys anywhere in an older save (keys, values, flag names)."""
         if isinstance(obj, str):
             for old, new in renames.items():

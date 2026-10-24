@@ -146,6 +146,19 @@ def evolution_allowed(game, target_id):
     return any(native_region(game, d) in visited for d in _descendants(game, target_id))
 
 
+def _form_item_rules(game):
+    """{(form key, target entry): item} for regional-form item evolutions in EVOLUTION_ITEMS."""
+    cache = getattr(game, "_form_item_rules", None)
+    if cache is None:
+        cache = {}
+        for item, pairs in game.loader.evolution_map.get("EVOLUTION_ITEMS", {}).items():
+            for src_key, target in (pairs.items() if isinstance(pairs, dict) else pairs):
+                if "_" in str(src_key):
+                    cache.setdefault((str(src_key).upper(), str(target).upper()), item)
+        game._form_item_rules = cache
+    return cache
+
+
 def evolution_options(game, poke):
     """[(entry_name, target_id, rule)] for everything this Pokemon can evolve into."""
     evo_map = game.loader.evolution_map
@@ -184,6 +197,10 @@ def evolution_options(game, poke):
         if src == NINCADA and tid == SHEDINJA:
             continue  # Shedinja is the extra Pokemon Nincada -> Ninjask leaves behind, never an evolution
         rule = pairs.get(f"{src}>{tid}") or {"level": default_level(game, tid)}
+        if key != poke.name.upper() and (key, entry) in _form_item_rules(game):
+            # A regional form's own item evolution (Galarian Slowpoke: Galarica Cuff -> Slowbro,
+            # Galarica Wreath -> Slowking), not the base species' rule (level 37 / King's Rock).
+            rule = {"item": _form_item_rules(game)[(key, entry)]}
         if hisui and "_" not in entry:
             # Like Legends: Arceus, evolving in Hisui gives the Hisuian form when there is one.
             entry = regional_forms.hisuian_entry(game, tid) or entry
