@@ -159,6 +159,10 @@ def evolution_allowed(game, target_id):
     return any(native_region(game, d) in visited for d in _descendants(game, target_id))
 
 
+# Evolutions that become the Alolan form when they happen in Alola (Raichu, Exeggutor, Marowak).
+ALOLA_EVOLVES = {26, 103, 105}
+
+
 def _form_item_rules(game):
     """{(source key, target entry): item} for item evolutions from or into a form in EVOLUTION_ITEMS
     (Galarian Slowpoke + Galarica Cuff; Onix + Crystal Stone -> Crystal Onix)."""
@@ -218,6 +222,16 @@ def evolution_options(game, poke):
         if hisui and "_" not in entry:
             # Like Legends: Arceus, evolving in Hisui gives the Hisuian form when there is one.
             entry = regional_forms.hisuian_entry(game, tid) or entry
+        elif tid in ALOLA_EVOLVES and key == poke.name.upper():
+            # Sun/Moon: Pikachu, Exeggcute and Cubone evolve into the Alolan forms in Alola, and only
+            # there (Alolan forms belong to Alola).
+            in_alola = game.story_manager.get_current_region() == "ALOLA"
+            if entry.endswith("_ALOLAN") and not in_alola:
+                continue
+            if in_alola and "_" not in entry:
+                entry = f"{entry}_ALOLAN"
+        if any(o[0] == entry for o in out):
+            continue
         out.append((entry, tid, rule))
     return out
 

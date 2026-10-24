@@ -161,38 +161,38 @@
   "MELEMELE_MEADOW_PERCENTAGES": { "741": 20, "669": 20, "546": 17, "742": 17, "12": 10, "10": 10, "11": 6 },
   "SEAWARD_CAVE": [41, 54, 225, 238, 86, 124, 440],
   "SEAWARD_CAVE_PERCENTAGES": { "41": 39, "54": 17, "225": 15, "238": 14, "86": 13, "124": 1, "440": 1 },
-  "KALAE_BAY": [278, 79, 72, 734, 19, 371, 458, 456, 80, 199],
-  "KALAE_BAY_PERCENTAGES": { "278": 31, "79": 13, "72": 11, "734": 10, "19": 10, "371": 7, "458": 6, "456": 6, "80": 4, "199": 2 },
+  "KALAE_BAY": [278, 79, 72, 734, 2001, 371, 458, 456, 80, 199],
+  "KALAE_BAY_PERCENTAGES": { "278": 31, "79": 13, "72": 11, "734": 10, "2001": 10, "371": 7, "458": 6, "456": 6, "80": 4, "199": 2 },
   "HAUOLI_CEMETERY": [92, 41, 425, 198],
   "HAUOLI_CEMETERY_PERCENTAGES": { "92": 38, "41": 22, "425": 20, "198": 20 },
   "SANDY_CAVE": [41, 54],
   "SANDY_CAVE_PERCENTAGES": { "41": 71, "54": 29 },
   "PANIOLA_RANCH": [749, 179, 506, 241, 128],
   "PANIOLA_RANCH_PERCENTAGES": { "749": 38, "179": 28, "506": 20, "241": 7, "128": 7 },
-  "ALOLA_ROUTE_6": [506, 731, 736, 749, 741, 133, 174, 734, 19, 39],
-  "ALOLA_ROUTE_6_PERCENTAGES": { "506": 21, "731": 21, "736": 11, "749": 9, "741": 9, "133": 8, "174": 8, "734": 6, "19": 5, "39": 2 },
+  "ALOLA_ROUTE_6": [506, 731, 736, 749, 741, 133, 174, 734, 2001, 39],
+  "ALOLA_ROUTE_6_PERCENTAGES": { "506": 21, "731": 21, "736": 11, "749": 9, "741": 9, "133": 8, "174": 8, "734": 6, "2001": 5, "39": 2 },
   "HANO_BEACH": [72, 771, 456, 278],
   "HANO_BEACH_PERCENTAGES": { "72": 51, "771": 22, "456": 20, "278": 7 },
-  "AKALA_OUTSKIRTS": [278, 759, 299, 735, 177, 20, 178],
-  "AKALA_OUTSKIRTS_PERCENTAGES": { "278": 38, "759": 18, "299": 16, "735": 10, "177": 9, "20": 8, "178": 1 },
+  "AKALA_OUTSKIRTS": [278, 759, 299, 735, 177, 2002, 178],
+  "AKALA_OUTSKIRTS_PERCENTAGES": { "278": 38, "759": 18, "299": 16, "735": 10, "177": 9, "2002": 8, "178": 1 },
   "DIVIDING_PEAK_TUNNEL": [352, 767],
   "DIVIDING_PEAK_TUNNEL_PERCENTAGES": { "352": 50, "767": 50 },
-  "MALIE_GARDEN": [61, 52, 166, 168, 54, 546, 752, 284, 53],
-  "MALIE_GARDEN_PERCENTAGES": { "61": 17, "52": 16, "166": 12, "168": 12, "54": 11, "546": 11, "752": 10, "284": 10, "53": 1 },
-  "ALOLA_ROUTE_12": [75, 749, 229, 324, 750],
-  "ALOLA_ROUTE_12_PERCENTAGES": { "75": 28, "749": 25, "229": 25, "324": 20, "750": 2 },
+  "MALIE_GARDEN": [61, 2010, 166, 168, 54, 546, 752, 284, 2011],
+  "MALIE_GARDEN_PERCENTAGES": { "61": 17, "2010": 16, "166": 12, "168": 12, "54": 11, "546": 11, "752": 10, "284": 10, "2011": 1 },
+  "ALOLA_ROUTE_12": [2013, 749, 229, 324, 750],
+  "ALOLA_ROUTE_12_PERCENTAGES": { "2013": 28, "749": 25, "229": 25, "324": 20, "750": 2 },
   "SECLUDED_SHORE": [739, 456, 72, 279],
   "SECLUDED_SHORE_PERCENTAGES": { "739": 48, "456": 22, "72": 20, "279": 10 },
   "ULAULA_BEACH": [739],
   "ULAULA_BEACH_PERCENTAGES": { "739": 100 },
-  "BLUSH_MOUNTAIN": [75, 749, 239, 777, 776, 324, 702, 737, 125, 736],
-  "BLUSH_MOUNTAIN_PERCENTAGES": { "75": 17, "749": 15, "239": 11, "777": 11, "776": 11, "324": 11, "702": 11, "737": 8, "125": 3, "736": 2 },
-  "HAINA_DESERT": [552, 51, 622],
-  "HAINA_DESERT_PERCENTAGES": { "552": 66, "51": 26, "622": 8 },
+  "BLUSH_MOUNTAIN": [2013, 749, 239, 777, 776, 324, 702, 737, 125, 736],
+  "BLUSH_MOUNTAIN_PERCENTAGES": { "2013": 17, "749": 15, "239": 11, "777": 11, "776": 11, "324": 11, "702": 11, "737": 8, "125": 3, "736": 2 },
+  "HAINA_DESERT": [552, 2009, 622],
+  "HAINA_DESERT_PERCENTAGES": { "552": 66, "2009": 26, "622": 8 },
   "ULAULA_MEADOW": [741, 670, 546, 743, 166, 168],
   "ULAULA_MEADOW_PERCENTAGES": { "741": 20, "670": 20, "546": 18, "743": 18, "166": 12, "168": 12 },
-  "EXEGGUTOR_ISLAND": [102, 357, 279, 103, 423, 127],
-  "EXEGGUTOR_ISLAND_PERCENTAGES": { "102": 22, "357": 20, "279": 19, "103": 19, "423": 10, "127": 10 },
+  "EXEGGUTOR_ISLAND": [102, 357, 279, 2017, 423, 127],
+  "EXEGGUTOR_ISLAND_PERCENTAGES": { "102": 22, "357": 20, "279": 19, "2017": 19, "423": 10, "127": 10 },
   "PONI_WILDS": [739, 279, 686, 210, 676, 423],
   "PONI_WILDS_PERCENTAGES": { "739": 41, "279": 12, "686": 9, "210": 8, "676": 8, "423": 4, "722": 6, "725": 6, "728": 6 },
   "ANCIENT_PONI_PATH": [279, 686, 210, 676, 423],
@@ -201,12 +201,12 @@
   "PONI_BREAKER_COAST_PERCENTAGES": { "320": 34, "73": 15, "457": 13, "279": 10, "423": 10, "693": 10, "321": 5, "131": 3 },
   "PONI_GROVE": [427, 732, 571, 127, 214, 447, 733, 428, 448, 440],
   "PONI_GROVE_PERCENTAGES": { "427": 23, "732": 22, "571": 20, "127": 11, "214": 11, "447": 6, "733": 4, "428": 1, "448": 1, "440": 1 },
-  "PONI_PLAINS": [546, 732, 735, 20, 241, 128, 739, 279, 22, 750],
-  "PONI_PLAINS_PERCENTAGES": { "546": 23, "732": 13, "735": 11, "20": 11, "241": 11, "128": 11, "739": 8, "279": 4, "22": 4, "750": 4 },
+  "PONI_PLAINS": [546, 732, 735, 2002, 241, 128, 739, 279, 22, 750],
+  "PONI_PLAINS_PERCENTAGES": { "546": 23, "732": 13, "735": 11, "2002": 11, "241": 11, "128": 11, "739": 8, "279": 4, "22": 4, "750": 4 },
   "PONI_MEADOW": [546, 743, 741, 670, 200],
   "PONI_MEADOW_PERCENTAGES": { "546": 32, "743": 23, "741": 20, "670": 20, "200": 5 },
-  "PONI_COAST": [51],
-  "PONI_COAST_PERCENTAGES": { "51": 100 },
+  "PONI_COAST": [2009],
+  "PONI_COAST_PERCENTAGES": { "2009": 100 },
   "PONI_GAUNTLET": [279, 210, 108, 686, 55, 760],
   "PONI_GAUNTLET_PERCENTAGES": { "279": 25, "210": 20, "108": 19, "686": 16, "55": 10, "760": 10 },
   "STORY_PROGRESSION": {
@@ -432,9 +432,7 @@
           "name": "Team Rainbow Rocket Grunt",
           "class": "PKMN_TRAINER",
           "sprite": "acetrainer_f.png",
-          "team": [
-            20
-          ],
+          "team": [2002],
           "rewards": {
             "balls": 3
           }
@@ -443,9 +441,7 @@
           "name": "Team Rainbow Rocket Grunt",
           "class": "PKMN_TRAINER",
           "sprite": "acetrainer_m.png",
-          "team": [
-            22
-          ],
+          "team": [22],
           "rewards": {
             "balls": 3
           }
@@ -454,9 +450,7 @@
           "name": "Team Rainbow Rocket Grunt",
           "class": "PKMN_TRAINER",
           "sprite": "acetrainer_m.png",
-          "team": [
-            73
-          ],
+          "team": [73],
           "rewards": {
             "balls": 3
           }
@@ -465,13 +459,7 @@
           "name": "Team Aqua Archie",
           "class": "PKMN_TRAINER",
           "sprite": "archie.png",
-          "team": [
-            262,
-            169,
-            89,
-            319,
-            382
-          ],
+          "team": [262, 169, 2016, 319, 382],
           "rewards": {
             "balls": 5
           }
@@ -480,13 +468,7 @@
           "name": "Team Magma Maxie",
           "class": "PKMN_TRAINER",
           "sprite": "maxie.png",
-          "team": [
-            262,
-            169,
-            110,
-            323,
-            383
-          ],
+          "team": [262, 169, 110, 323, 383],
           "rewards": {
             "balls": 5
           }
@@ -495,13 +477,7 @@
           "name": "Team Galactic Cyrus",
           "class": "PKMN_TRAINER",
           "sprite": "cyrus.png",
-          "team": [
-            229,
-            430,
-            169,
-            461,
-            483
-          ],
+          "team": [229, 430, 169, 461, 483],
           "rewards": {
             "balls": 5
           }
@@ -510,13 +486,7 @@
           "name": "Team Flare Lysandre",
           "class": "FLARE_ADMIN",
           "sprite": "lysandre.png",
-          "team": [
-            620,
-            668,
-            430,
-            130,
-            716
-          ],
+          "team": [620, 668, 430, 130, 716],
           "rewards": {
             "balls": 5
           }
@@ -525,13 +495,7 @@
           "name": "Team Plasma Ghetsis",
           "class": "PKMN_TRAINER",
           "sprite": "acetrainer_f.png",
-          "team": [
-            563,
-            626,
-            625,
-            635,
-            644
-          ],
+          "team": [563, 626, 625, 635, 644],
           "rewards": {
             "balls": 5
           }
@@ -540,13 +504,7 @@
           "name": "Team Rainbow Rocket Giovanni",
           "class": "PKMN_TRAINER",
           "sprite": "leader_giovanni.png",
-          "team": [
-            51,
-            34,
-            31,
-            464,
-            150
-          ],
+          "team": [2009, 34, 31, 464, 150],
           "rewards": {
             "balls": 10
           },
@@ -583,14 +541,7 @@
           "name": "Pokemon Trainer Red",
           "class": "PKMN_TRAINER",
           "sprite": "red.png",
-          "team": [
-            25,
-            131,
-            143,
-            3,
-            6,
-            9
-          ],
+          "team": [25, 131, 143, 3, 6, 9],
           "rewards": {
             "balls": 5
           }
@@ -599,14 +550,7 @@
           "name": "Pokemon Trainer Blue",
           "class": "PKMN_TRAINER",
           "sprite": "blue.png",
-          "team": [
-            65,
-            68,
-            142,
-            103,
-            59,
-            130
-          ],
+          "team": [65, 68, 142, 2017, 59, 130],
           "rewards": {
             "balls": 10
           },
@@ -643,10 +587,7 @@
           "name": "Veteran Leticia",
           "class": "VETERAN",
           "sprite": "veteran.png",
-          "team": [
-            743,
-            760
-          ],
+          "team": [743, 760],
           "rewards": {
             "balls": 4
           }
@@ -655,9 +596,7 @@
           "name": "Backpacker Maria",
           "class": "CAMPER",
           "sprite": "camper.png",
-          "team": [
-            310
-          ],
+          "team": [310],
           "rewards": {
             "balls": 3
           }
@@ -666,10 +605,7 @@
           "name": "Hiker Travis",
           "class": "HIKER",
           "sprite": "hiker.png",
-          "team": [
-            51,
-            750
-          ],
+          "team": [2009, 750],
           "rewards": {
             "balls": 4
           }
@@ -716,10 +652,7 @@
           "name": "Scientist Kyle",
           "class": "SCIENTIST",
           "sprite": "scientist.png",
-          "team": [
-            132,
-            474
-          ],
+          "team": [132, 474],
           "rewards": {
             "balls": 4
           }
@@ -728,11 +661,7 @@
           "name": "Veteran Sheri",
           "class": "VETERAN",
           "sprite": "veteran.png",
-          "team": [
-            593,
-            668,
-            478
-          ],
+          "team": [593, 668, 478],
           "rewards": {
             "balls": 5
           }
@@ -741,9 +670,7 @@
           "name": "Backpacker Yuho",
           "class": "CAMPER",
           "sprite": "camper.png",
-          "team": [
-            424
-          ],
+          "team": [424],
           "rewards": {
             "balls": 3
           }
@@ -752,9 +679,7 @@
           "name": "Punk Guy Troy",
           "class": "ROCKER",
           "sprite": "rocker.png",
-          "team": [
-            430
-          ],
+          "team": [430],
           "rewards": {
             "balls": 3
           }
@@ -763,9 +688,7 @@
           "name": "Punk Girl Marie",
           "class": "ROCKER",
           "sprite": "rocker.png",
-          "team": [
-            745
-          ],
+          "team": [745],
           "rewards": {
             "balls": 3
           }
@@ -774,11 +697,7 @@
           "name": "Veteran Tsunekazu",
           "class": "VETERAN",
           "sprite": "veteran.png",
-          "team": [
-            229,
-            467,
-            637
-          ],
+          "team": [229, 467, 637],
           "rewards": {
             "balls": 5
           }
@@ -787,11 +706,7 @@
           "name": "Veteran Nobuko",
           "class": "VETERAN",
           "sprite": "veteran.png",
-          "team": [
-            764,
-            547,
-            549
-          ],
+          "team": [764, 547, 549],
           "rewards": {
             "balls": 5
           }
@@ -800,10 +715,7 @@
           "name": "Black Belt Tracy",
           "class": "BLACKBELT",
           "sprite": "blackbelt.png",
-          "team": [
-            701,
-            68
-          ],
+          "team": [701, 68],
           "rewards": {
             "balls": 4
           }
@@ -863,9 +775,7 @@
           "name": "Sightseer Steve",
           "class": "PKMN_TRAINER",
           "sprite": "acetrainer_m.png",
-          "team": [
-            103
-          ],
+          "team": [2017],
           "rewards": {
             "balls": 3
           }
@@ -874,9 +784,7 @@
           "name": "Punk Girl Reika",
           "class": "ROCKER",
           "sprite": "rocker.png",
-          "team": [
-            103
-          ],
+          "team": [2017],
           "rewards": {
             "balls": 3
           }
@@ -885,9 +793,7 @@
           "name": "Youth Athlete Anton",
           "class": "PKMN_TRAINER",
           "sprite": "acetrainer_m.png",
-          "team": [
-            28
-          ],
+          "team": [2005],
           "rewards": {
             "balls": 3
           }
@@ -896,11 +802,7 @@
           "name": "Sightseer Devin",
           "class": "PKMN_TRAINER",
           "sprite": "acetrainer_f.png",
-          "team": [
-            74,
-            75,
-            76
-          ],
+          "team": [2012, 2013, 2014],
           "rewards": {
             "balls": 5
           }
@@ -909,10 +811,7 @@
           "name": "Sightseer Noriko",
           "class": "PKMN_TRAINER",
           "sprite": "acetrainer_m.png",
-          "team": [
-            38,
-            28
-          ],
+          "team": [2007, 2005],
           "rewards": {
             "balls": 4
           }
@@ -921,10 +820,7 @@
           "name": "Firefighter Aiden",
           "class": "PKMN_TRAINER",
           "sprite": "acetrainer_f.png",
-          "team": [
-            224,
-            693
-          ],
+          "team": [224, 693],
           "rewards": {
             "balls": 4
           }
@@ -979,9 +875,7 @@
           "name": "Actor Meredith",
           "class": "PKMN_TRAINER",
           "sprite": "acetrainer_m.png",
-          "team": [
-            741
-          ],
+          "team": [741],
           "rewards": {
             "balls": 3
           }
@@ -1041,13 +935,7 @@
           "name": "Pokemon Trainer Dexio",
           "class": "PKMN_TRAINER",
           "sprite": "acetrainer_m.png",
-          "team": [
-            196,
-            26,
-            199,
-            376,
-            65
-          ],
+          "team": [196, 2003, 199, 376, 65],
           "rewards": {
             "balls": 5
           }
@@ -1056,11 +944,7 @@
           "name": "Veteran Leon",
           "class": "VETERAN",
           "sprite": "veteran.png",
-          "team": [
-            227,
-            752,
-            466
-          ],
+          "team": [227, 752, 466],
           "rewards": {
             "balls": 5
           }
@@ -1069,10 +953,7 @@
           "name": "Ace Trainer Angela",
           "class": "ACE_TRAINER",
           "sprite": "acetrainer_m.png",
-          "team": [
-            368,
-            754
-          ],
+          "team": [368, 754],
           "rewards": {
             "balls": 4
           }
@@ -1081,9 +962,7 @@
           "name": "Hiker Ryan",
           "class": "HIKER",
           "sprite": "hiker.png",
-          "team": [
-            142
-          ],
+          "team": [142],
           "rewards": {
             "balls": 3
           }
@@ -1092,9 +971,7 @@
           "name": "Police Officer Sheriff",
           "class": "PKMN_TRAINER",
           "sprite": "acetrainer_m.png",
-          "team": [
-            508
-          ],
+          "team": [508],
           "rewards": {
             "balls": 3
           }
@@ -1103,11 +980,7 @@
           "name": "Ace Trainer Cole",
           "class": "ACE_TRAINER",
           "sprite": "acetrainer_f.png",
-          "team": [
-            621,
-            691,
-            784
-          ],
+          "team": [621, 691, 784],
           "rewards": {
             "balls": 5
           }
@@ -1168,9 +1041,7 @@
           "name": "Black Belt Roy",
           "class": "BLACKBELT",
           "sprite": "blackbelt.png",
-          "team": [
-            620
-          ],
+          "team": [620],
           "rewards": {
             "balls": 3
           }
@@ -1179,11 +1050,7 @@
           "name": "Ace Trainer Jackson",
           "class": "ACE_TRAINER",
           "sprite": "acetrainer_f.png",
-          "team": [
-            367,
-            105,
-            628
-          ],
+          "team": [367, 2018, 628],
           "rewards": {
             "balls": 5
           }
@@ -1238,10 +1105,7 @@
           "name": "Sightseer Jamie",
           "class": "PKMN_TRAINER",
           "sprite": "acetrainer_m.png",
-          "team": [
-            27,
-            53
-          ],
+          "team": [2004, 2011],
           "rewards": {
             "balls": 4
           }
@@ -1250,9 +1114,7 @@
           "name": "Swimmer Derek",
           "class": "SWIMMER",
           "sprite": "swimmer_f.png",
-          "team": [
-            691
-          ],
+          "team": [691],
           "rewards": {
             "balls": 3
           }
@@ -1261,9 +1123,7 @@
           "name": "Swimmer Kylie",
           "class": "SWIMMER",
           "sprite": "swimmer_m.png",
-          "team": [
-            457
-          ],
+          "team": [457],
           "rewards": {
             "balls": 3
           }
@@ -1272,9 +1132,7 @@
           "name": "Swimmer Ashlyn",
           "class": "SWIMMER",
           "sprite": "swimmer_f.png",
-          "team": [
-            171
-          ],
+          "team": [171],
           "rewards": {
             "balls": 3
           }
@@ -1327,10 +1185,7 @@
           "name": "Collector Raymond",
           "class": "POKEMANIAC",
           "sprite": "pokemaniac.png",
-          "team": [
-            776,
-            780
-          ],
+          "team": [776, 780],
           "rewards": {
             "balls": 4
           }
@@ -1339,9 +1194,7 @@
           "name": "Team Skull Grunt",
           "class": "SKULL_GRUNT",
           "sprite": "skull_grunt.png",
-          "team": [
-            23
-          ],
+          "team": [23],
           "rewards": {
             "balls": 3
           }
@@ -1350,13 +1203,7 @@
           "name": "Team Skull Grunt",
           "class": "SKULL_GRUNT",
           "sprite": "skull_grunt.png",
-          "team": [
-            753,
-            747,
-            228,
-            42,
-            20
-          ],
+          "team": [753, 747, 228, 42, 2002],
           "rewards": {
             "balls": 5
           }
@@ -1428,10 +1275,7 @@
           "name": "Ace Trainer Elwood",
           "class": "ACE_TRAINER",
           "sprite": "acetrainer_m.png",
-          "team": [
-            357,
-            549
-          ],
+          "team": [357, 549],
           "rewards": {
             "balls": 4
           }
@@ -1440,9 +1284,7 @@
           "name": "Black Belt Douglas",
           "class": "BLACKBELT",
           "sprite": "blackbelt.png",
-          "team": [
-            619
-          ],
+          "team": [619],
           "rewards": {
             "balls": 3
           }
@@ -1451,9 +1293,7 @@
           "name": "Dancer Cara",
           "class": "BEAUTY",
           "sprite": "beauty.png",
-          "team": [
-            619
-          ],
+          "team": [619],
           "rewards": {
             "balls": 3
           }
@@ -1462,10 +1302,7 @@
           "name": "Ace Trainer Lindsey",
           "class": "ACE_TRAINER",
           "sprite": "acetrainer_f.png",
-          "team": [
-            569,
-            748
-          ],
+          "team": [569, 748],
           "rewards": {
             "balls": 4
           }
@@ -1474,11 +1311,7 @@
           "name": "Ace Trainer Kekoa",
           "class": "ACE_TRAINER",
           "sprite": "acetrainer_m.png",
-          "team": [
-            210,
-            319,
-            181
-          ],
+          "team": [210, 319, 181],
           "rewards": {
             "balls": 5
           }
@@ -1487,10 +1320,7 @@
           "name": "Cook Fil",
           "class": "GENTLEMAN",
           "sprite": "gentleman.png",
-          "team": [
-            102,
-            743
-          ],
+          "team": [102, 743],
           "rewards": {
             "balls": 4
           }
@@ -1499,12 +1329,7 @@
           "name": "Dancer Julia",
           "class": "BEAUTY",
           "sprite": "beauty.png",
-          "team": [
-            741,
-            741,
-            741,
-            741
-          ],
+          "team": [741, 741, 741, 741],
           "rewards": {
             "balls": 5
           }
@@ -1602,10 +1427,7 @@
           "name": "Office Worker Michelle",
           "class": "GENTLEMAN",
           "sprite": "gentleman.png",
-          "team": [
-            324,
-            547
-          ],
+          "team": [324, 547],
           "rewards": {
             "balls": 4
           }
@@ -1614,9 +1436,7 @@
           "name": "Dancer Mireille",
           "class": "BEAUTY",
           "sprite": "beauty.png",
-          "team": [
-            670
-          ],
+          "team": [670],
           "rewards": {
             "balls": 3
           }
@@ -1625,10 +1445,7 @@
           "name": "Lass Rylee",
           "class": "LASS",
           "sprite": "lass.png",
-          "team": [
-            215,
-            775
-          ],
+          "team": [215, 775],
           "rewards": {
             "balls": 4
           }
@@ -1637,10 +1454,7 @@
           "name": "Golfer Dean",
           "class": "GENTLEMAN",
           "sprite": "gentleman.png",
-          "team": [
-            297,
-            65
-          ],
+          "team": [297, 65],
           "rewards": {
             "balls": 4
           }
@@ -1649,9 +1463,7 @@
           "name": "Actor Meredith",
           "class": "PKMN_TRAINER",
           "sprite": "acetrainer_m.png",
-          "team": [
-            741
-          ],
+          "team": [741],
           "rewards": {
             "balls": 3
           }
@@ -1705,9 +1517,7 @@
           "name": "Preschooler Hunter",
           "class": "YOUNGSTER",
           "sprite": "youngster.png",
-          "team": [
-            239
-          ],
+          "team": [239],
           "rewards": {
             "balls": 3
           }
@@ -1836,10 +1646,7 @@
           "name": "Office Worker Shane",
           "class": "GENTLEMAN",
           "sprite": "gentleman.png",
-          "team": [
-            309,
-            125
-          ],
+          "team": [309, 125],
           "rewards": {
             "balls": 4
           }
@@ -1848,9 +1655,7 @@
           "name": "Espeon User Ishaan",
           "class": "PKMN_TRAINER",
           "sprite": "acetrainer_f.png",
-          "team": [
-            196
-          ],
+          "team": [196],
           "rewards": {
             "balls": 3
           }
@@ -1952,9 +1757,7 @@
           "name": "Swimmer Sara",
           "class": "SWIMMER",
           "sprite": "swimmer_m.png",
-          "team": [
-            594
-          ],
+          "team": [594],
           "rewards": {
             "balls": 3
           }
@@ -1963,10 +1766,7 @@
           "name": "Swimmer Robert",
           "class": "SWIMMER",
           "sprite": "swimmer_f.png",
-          "team": [
-            340,
-            769
-          ],
+          "team": [340, 769],
           "rewards": {
             "balls": 4
           }
@@ -2013,9 +1813,7 @@
           "name": "Punk Guy Lane",
           "class": "ROCKER",
           "sprite": "rocker.png",
-          "team": [
-            552
-          ],
+          "team": [552],
           "rewards": {
             "balls": 3
           }
@@ -2024,9 +1822,7 @@
           "name": "Punk Girl Yoko",
           "class": "ROCKER",
           "sprite": "rocker.png",
-          "team": [
-            674
-          ],
+          "team": [674],
           "rewards": {
             "balls": 3
           }
@@ -2035,9 +1831,7 @@
           "name": "Rising Star Matthew",
           "class": "ACE_TRAINER",
           "sprite": "acetrainer_m.png",
-          "team": [
-            408
-          ],
+          "team": [408],
           "rewards": {
             "balls": 3
           }
@@ -2046,10 +1840,7 @@
           "name": "Scientist Jayson",
           "class": "SCIENTIST",
           "sprite": "scientist.png",
-          "team": [
-            137,
-            82
-          ],
+          "team": [137, 82],
           "rewards": {
             "balls": 4
           }
@@ -2058,9 +1849,7 @@
           "name": "Swimmer Sara",
           "class": "SWIMMER",
           "sprite": "swimmer_m.png",
-          "team": [
-            121
-          ],
+          "team": [121],
           "rewards": {
             "balls": 3
           }
@@ -2069,10 +1858,7 @@
           "name": "Surfer Robert",
           "class": "SWIMMER",
           "sprite": "swimmer_m.png",
-          "team": [
-            223,
-            769
-          ],
+          "team": [223, 769],
           "rewards": {
             "balls": 4
           }
@@ -2081,9 +1867,7 @@
           "name": "Rising Star Leilani",
           "class": "ACE_TRAINER",
           "sprite": "acetrainer_m.png",
-          "team": [
-            564
-          ],
+          "team": [564],
           "rewards": {
             "balls": 3
           }
@@ -2092,10 +1876,7 @@
           "name": "Collector Andrew",
           "class": "POKEMANIAC",
           "sprite": "pokemaniac.png",
-          "team": [
-            636,
-            127
-          ],
+          "team": [636, 127],
           "rewards": {
             "balls": 4
           }
@@ -2171,9 +1952,7 @@
           "name": "Preschooler Nancy",
           "class": "YOUNGSTER",
           "sprite": "youngster.png",
-          "team": [
-            173
-          ],
+          "team": [173],
           "rewards": {
             "balls": 3
           }
@@ -2182,9 +1961,7 @@
           "name": "Bellhop Landon",
           "class": "PKMN_TRAINER",
           "sprite": "acetrainer_f.png",
-          "team": [
-            37
-          ],
+          "team": [2006],
           "rewards": {
             "balls": 3
           }
@@ -2193,9 +1970,7 @@
           "name": "Sightseer Yuriko",
           "class": "PKMN_TRAINER",
           "sprite": "acetrainer_m.png",
-          "team": [
-            37
-          ],
+          "team": [2006],
           "rewards": {
             "balls": 3
           }
@@ -2204,10 +1979,7 @@
           "name": "Rising Star Elijah",
           "class": "ACE_TRAINER",
           "sprite": "acetrainer_f.png",
-          "team": [
-            10,
-            13
-          ],
+          "team": [10, 13],
           "rewards": {
             "balls": 4
           }
@@ -2216,10 +1988,7 @@
           "name": "Lass Rika",
           "class": "LASS",
           "sprite": "rika.png",
-          "team": [
-            16,
-            29
-          ],
+          "team": [16, 29],
           "rewards": {
             "balls": 4
           }
@@ -2228,11 +1997,7 @@
           "name": "Youngster Tyler",
           "class": "YOUNGSTER",
           "sprite": "youngster.png",
-          "team": [
-            19,
-            23,
-            41
-          ],
+          "team": [2001, 23, 41],
           "rewards": {
             "balls": 5
           }
@@ -2241,10 +2006,7 @@
           "name": "Lass Emmy",
           "class": "LASS",
           "sprite": "lass.png",
-          "team": [
-            16,
-            29
-          ],
+          "team": [16, 29],
           "rewards": {
             "balls": 4
           }
@@ -2253,9 +2015,7 @@
           "name": "Rising Star Sean",
           "class": "ACE_TRAINER",
           "sprite": "acetrainer_f.png",
-          "team": [
-            56
-          ],
+          "team": [56],
           "rewards": {
             "balls": 3
           }
@@ -2347,9 +2107,7 @@
           "name": "Fisherman Vernon",
           "class": "FISHERMAN",
           "sprite": "fisherman.png",
-          "team": [
-            746
-          ],
+          "team": [746],
           "rewards": {
             "balls": 3
           }
@@ -2358,9 +2116,7 @@
           "name": "Black Belt Kenji",
           "class": "BLACKBELT",
           "sprite": "blackbelt.png",
-          "team": [
-            739
-          ],
+          "team": [739],
           "rewards": {
             "balls": 3
           }
@@ -2424,9 +2180,7 @@
           "name": "Police Officer Haruki",
           "class": "PKMN_TRAINER",
           "sprite": "acetrainer_m.png",
-          "team": [
-            507
-          ],
+          "team": [507],
           "rewards": {
             "balls": 3
           }
@@ -2435,10 +2189,7 @@
           "name": "Fisherman Mike",
           "class": "FISHERMAN",
           "sprite": "fisherman.png",
-          "team": [
-            170,
-            72
-          ],
+          "team": [170, 72],
           "rewards": {
             "balls": 4
           }
@@ -2537,9 +2288,7 @@
           "name": "Swimmer Alicia",
           "class": "SWIMMER",
           "sprite": "swimmer_m.png",
-          "team": [
-            279
-          ],
+          "team": [279],
           "rewards": {
             "balls": 3
           }
@@ -2548,10 +2297,7 @@
           "name": "Swimmer Lawrence",
           "class": "SWIMMER",
           "sprite": "swimmer_f.png",
-          "team": [
-            550,
-            61
-          ],
+          "team": [550, 61],
           "rewards": {
             "balls": 4
           }
@@ -2560,10 +2306,7 @@
           "name": "Swimmer Laura",
           "class": "SWIMMER",
           "sprite": "swimmer_m.png",
-          "team": [
-            118,
-            120
-          ],
+          "team": [118, 120],
           "rewards": {
             "balls": 4
           }
@@ -2572,9 +2315,7 @@
           "name": "Swimmer Roddy",
           "class": "SWIMMER",
           "sprite": "swimmer_f.png",
-          "team": [
-            130
-          ],
+          "team": [130],
           "rewards": {
             "balls": 3
           }
@@ -2583,9 +2324,7 @@
           "name": "Swimmer Chelsea",
           "class": "SWIMMER",
           "sprite": "swimmer_m.png",
-          "team": [
-            771
-          ],
+          "team": [771],
           "rewards": {
             "balls": 3
           }
@@ -2594,9 +2333,7 @@
           "name": "Leafeon User Linnea",
           "class": "PKMN_TRAINER",
           "sprite": "acetrainer_f.png",
-          "team": [
-            470
-          ],
+          "team": [470],
           "rewards": {
             "balls": 3
           }
@@ -2676,9 +2413,7 @@
           "name": "Pro Wrestler The Royal",
           "class": "PKMN_TRAINER",
           "sprite": "acetrainer_m.png",
-          "team": [
-            744
-          ],
+          "team": [744],
           "rewards": {
             "balls": 3
           }
@@ -2687,9 +2422,7 @@
           "name": "Actor Meredith",
           "class": "PKMN_TRAINER",
           "sprite": "acetrainer_f.png",
-          "team": [
-            741
-          ],
+          "team": [741],
           "rewards": {
             "balls": 3
           }
@@ -2698,9 +2431,7 @@
           "name": "Eevee User Kagetora",
           "class": "PKMN_TRAINER",
           "sprite": "acetrainer_m.png",
-          "team": [
-            133
-          ],
+          "team": [133],
           "rewards": {
             "balls": 3
           }
@@ -2709,9 +2440,7 @@
           "name": "Youngster Kenway",
           "class": "YOUNGSTER",
           "sprite": "youngster.png",
-          "team": [
-            745
-          ],
+          "team": [745],
           "rewards": {
             "balls": 3
           }
@@ -2753,9 +2482,7 @@
           "name": "Office Worker Jen",
           "class": "GENTLEMAN",
           "sprite": "gentleman.png",
-          "team": [
-            39
-          ],
+          "team": [39],
           "rewards": {
             "balls": 3
           }
@@ -2764,9 +2491,7 @@
           "name": "Preschooler Fumiko",
           "class": "YOUNGSTER",
           "sprite": "youngster.png",
-          "team": [
-            174
-          ],
+          "team": [174],
           "rewards": {
             "balls": 3
           }
@@ -2775,10 +2500,7 @@
           "name": "Pokemon Breeder William",
           "class": "POKEFAN",
           "sprite": "pokefan_m.png",
-          "team": [
-            761,
-            179
-          ],
+          "team": [761, 179],
           "rewards": {
             "balls": 4
           }
@@ -2787,9 +2509,7 @@
           "name": "Beauty Brittney",
           "class": "BEAUTY",
           "sprite": "beauty.png",
-          "team": [
-            104
-          ],
+          "team": [104],
           "rewards": {
             "balls": 3
           }
@@ -2798,9 +2518,7 @@
           "name": "Dancer Maika",
           "class": "BEAUTY",
           "sprite": "beauty.png",
-          "team": [
-            741
-          ],
+          "team": [741],
           "rewards": {
             "balls": 3
           }
@@ -2809,9 +2527,7 @@
           "name": "Team Skull Grunt",
           "class": "SKULL_GRUNT",
           "sprite": "skull_grunt.png",
-          "team": [
-            96
-          ],
+          "team": [96],
           "rewards": {
             "balls": 3
           }
@@ -2879,9 +2595,7 @@
           "name": "Madame Elizabeth",
           "class": "BEAUTY",
           "sprite": "beauty.png",
-          "team": [
-            703
-          ],
+          "team": [703],
           "rewards": {
             "balls": 3
           }
@@ -2890,9 +2604,7 @@
           "name": "Pokemon Breeder Wesley",
           "class": "POKEFAN",
           "sprite": "pokefan_f.png",
-          "team": [
-            128
-          ],
+          "team": [128],
           "rewards": {
             "balls": 3
           }
@@ -2901,9 +2613,7 @@
           "name": "Pokemon Breeder Glenn",
           "class": "POKEFAN",
           "sprite": "pokefan_m.png",
-          "team": [
-            749
-          ],
+          "team": [749],
           "rewards": {
             "balls": 3
           }
@@ -2912,10 +2622,7 @@
           "name": "Rising Star Micah",
           "class": "ACE_TRAINER",
           "sprite": "acetrainer_f.png",
-          "team": [
-            506,
-            81
-          ],
+          "team": [506, 81],
           "rewards": {
             "balls": 4
           }
@@ -2924,9 +2631,7 @@
           "name": "Gentleman Gerald",
           "class": "GENTLEMAN",
           "sprite": "gentleman.png",
-          "team": [
-            302
-          ],
+          "team": [302],
           "rewards": {
             "balls": 3
           }
@@ -2935,9 +2640,7 @@
           "name": "Ultra Recon Squad Dulse",
           "class": "PKMN_TRAINER",
           "sprite": "acetrainer_f.png",
-          "team": [
-            803
-          ],
+          "team": [803],
           "rewards": {
             "balls": 3
           }
@@ -2946,9 +2649,7 @@
           "name": "Ultra Recon Squad Soliera",
           "class": "PKMN_TRAINER",
           "sprite": "acetrainer_m.png",
-          "team": [
-            803
-          ],
+          "team": [803],
           "rewards": {
             "balls": 3
           }
@@ -3103,9 +2804,7 @@
           "name": "Office Worker Jeremy",
           "class": "GENTLEMAN",
           "sprite": "gentleman.png",
-          "team": [
-            731
-          ],
+          "team": [731],
           "rewards": {
             "balls": 3
           }
@@ -3114,9 +2813,7 @@
           "name": "Preschooler Malia",
           "class": "YOUNGSTER",
           "sprite": "youngster.png",
-          "team": [
-            440
-          ],
+          "team": [440],
           "rewards": {
             "balls": 3
           }
@@ -3125,9 +2822,7 @@
           "name": "Pokemon Breeder Ikue",
           "class": "POKEFAN",
           "sprite": "pokefan_m.png",
-          "team": [
-            25
-          ],
+          "team": [25],
           "rewards": {
             "balls": 3
           }
@@ -3136,9 +2831,7 @@
           "name": "Umbreon User Braiden",
           "class": "PKMN_TRAINER",
           "sprite": "acetrainer_f.png",
-          "team": [
-            197
-          ],
+          "team": [197],
           "rewards": {
             "balls": 3
           }
@@ -3223,9 +2916,7 @@
           "name": "Ultra Recon Squad Dulse",
           "class": "PKMN_TRAINER",
           "sprite": "acetrainer_m.png",
-          "team": [
-            676
-          ],
+          "team": [676],
           "rewards": {
             "balls": 3
           }
@@ -3234,9 +2925,7 @@
           "name": "Ultra Recon Squad Soliera",
           "class": "PKMN_TRAINER",
           "sprite": "acetrainer_f.png",
-          "team": [
-            676
-          ],
+          "team": [676],
           "rewards": {
             "balls": 3
           }
@@ -3290,9 +2979,7 @@
           "name": "Actor Meredith",
           "class": "PKMN_TRAINER",
           "sprite": "acetrainer_m.png",
-          "team": [
-            741
-          ],
+          "team": [741],
           "rewards": {
             "balls": 3
           }
@@ -3346,9 +3033,7 @@
           "name": "Rising Star Ian",
           "class": "ACE_TRAINER",
           "sprite": "acetrainer_m.png",
-          "team": [
-            54
-          ],
+          "team": [54],
           "rewards": {
             "balls": 3
           }
@@ -3357,9 +3042,7 @@
           "name": "Rising Star Tatiana",
           "class": "ACE_TRAINER",
           "sprite": "acetrainer_f.png",
-          "team": [
-            546
-          ],
+          "team": [546],
           "rewards": {
             "balls": 3
           }
@@ -3368,9 +3051,7 @@
           "name": "Rising Star Joshua",
           "class": "ACE_TRAINER",
           "sprite": "acetrainer_m.png",
-          "team": [
-            58
-          ],
+          "team": [58],
           "rewards": {
             "balls": 3
           }
@@ -3379,10 +3060,7 @@
           "name": "Ace Trainer Makana",
           "class": "ACE_TRAINER",
           "sprite": "acetrainer_f.png",
-          "team": [
-            79,
-            12
-          ],
+          "team": [79, 12],
           "rewards": {
             "balls": 4
           }
@@ -3585,7 +3263,7 @@
           "name": "Nanu (Kahuna — Ula'ula Grand Trial)",
           "class": "GYM_LEADER",
           "sprite": "nanu_kahuna_ula_ula_grand_trial.png",
-          "team": [302, 552, 53], "levels": [38, 38, 39],
+          "team": [302, 552, 2011], "levels": [38, 38, 39],
           "dialogue": {
             "intro": ["Nanu: ...You again. Fine. Grand Trial of Ula'ula Island. Let's just get this over with."],
             "player_won": ["Nanu: ...I was holding back. Take the Darkinium Z. Go."],
@@ -3654,7 +3332,7 @@
           "name": "Hapu (Kahuna — Poni Grand Trial)",
           "class": "GYM_LEADER",
           "sprite": "hapu_kahuna_poni_grand_trial.png",
-          "team": [51, 423, 330, 750], "levels": [47, 47, 47, 48],
+          "team": [2009, 423, 330, 750], "levels": [47, 47, 47, 48],
           "dialogue": {
             "intro": [
               "Hapu: You've come far. You remind me of someone who walked this path before.",
@@ -3723,7 +3401,7 @@
             "class": "ELITE_FOUR",
             "sprite": "olivia.png",
             "is_boss_battle": true,
-            "team": [369, 703, 76, 476, 745], "levels": [59, 59, 59, 59, 60], "rematch": {"team": [369, 703, 76, 476, 745], "levels": [68, 68, 68, 68, 68]},
+            "team": [369, 703, 2014, 476, 745], "levels": [59, 59, 59, 59, 60], "rematch": {"team": [369, 703, 2014, 476, 745], "levels": [68, 68, 68, 68, 68]},
             "rewards": { "balls": 10 },
             "dialogue": {
               "intro": ["Olivia: We meet again! This time — no holding back. My Pokémon and I are ready!"],
@@ -3766,8 +3444,8 @@
           "class": "CHAMPION",
           "sprite": "kukui.png",
           "is_boss_battle": true,
-          "team": [745, 38, 628, 462, 143, 727], "levels": [62, 62, 62, 62, 62, 63], "rematch": {"levels": [70, 70, 70, 70, 70, 70]},
-          "team_choice": {"722": [745, 38, 628, 462, 143, 727], "725": [745, 38, 628, 462, 143, 730], "728": [745, 38, 628, 462, 143, 724]},
+          "team": [745, 2007, 628, 462, 143, 727], "levels": [62, 62, 62, 62, 62, 63], "rematch": {"levels": [70, 70, 70, 70, 70, 70]},
+          "team_choice": {"722": [745, 2007, 628, 462, 143, 727], "725": [745, 2007, 628, 462, 143, 730], "728": [745, 2007, 628, 462, 143, 724]},
           "rewards": { "balls": 20, "ALOLA_HALL_OF_FAME": 1 },
           "victory_flag": "beat_alola_champion",
           "dialogue": {
@@ -4599,8 +4277,8 @@
   "ALOLA_VERDANT_CAVERN": [734, 735, 744],
   "ALOLA_BROOKLET_HILL_PERCENTAGES": { "746": 25, "747": 22, "748": 13, "730": 10, "751": 20, "771": 10 },
   "ALOLA_BROOKLET_HILL": [746, 747, 748, 730, 751, 771],
-  "ALOLA_WELA_VOLCANO_PERCENTAGES": { "757": 35, "758": 30, "759": 20, "105": 15 },
-  "ALOLA_WELA_VOLCANO": [105, 757, 758, 759],
+  "ALOLA_WELA_VOLCANO_PERCENTAGES": { "757": 35, "758": 30, "759": 20, "2018": 15 },
+  "ALOLA_WELA_VOLCANO": [2018, 757, 758, 759],
   "ALOLA_LUSH_JUNGLE_PERCENTAGES": { "753": 22, "754": 18, "755": 20, "741": 15, "761": 15, "765": 10 },
   "ALOLA_LUSH_JUNGLE": [753, 754, 755, 741, 761, 765],
   "ALOLA_MT_HOKULANI_PERCENTAGES": { "738": 22, "739": 22, "736": 18, "737": 10, "777": 16, "774": 12 },
@@ -4611,8 +4289,8 @@
   "ALOLA_VAST_PONI": [773, 745, 776, 783, 782],
   "ALOLA_MT_LANAKILA_PERCENTAGES": { "730": 16, "724": 16, "727": 16, "745": 16, "778": 16, "780": 20 },
   "ALOLA_MT_LANAKILA": [730, 724, 727, 745, 778, 780],
-  "ALOLA_DIGLETTS_TUNNEL_PERCENTAGES": { "50": 35, "51": 30, "100": 20, "808": 15 },
-  "ALOLA_DIGLETTS_TUNNEL": [50, 51, 100, 808],
+  "ALOLA_DIGLETTS_TUNNEL_PERCENTAGES": { "2008": 35, "2009": 30, "100": 20, "808": 15 },
+  "ALOLA_DIGLETTS_TUNNEL": [2008, 2009, 100, 808],
   "ALOLA_MEMORIAL_HILL_PERCENTAGES": { "769": 40, "764": 35, "778": 25 },
   "ALOLA_MEMORIAL_HILL": [764, 769, 778],
   "REGION_START": {
@@ -4628,7 +4306,7 @@
       "dex_range": [722, 809],
       "mom_newstart_text": ["alola_mom_newstart_1", "alola_mom_newstart_2", "alola_mom_newstart_3"],
       "mom_home_text": ["alola_mom_home_1", "alola_mom_home_2", "alola_mom_home_3"],
-      "dex_extra": [],
+      "dex_extra": [2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018],
       "climate": {
         "SPRING": { "RAIN": 20, "SUN": 15 },
         "SUMMER": { "SUN": 45 },

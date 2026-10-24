@@ -86,4 +86,17 @@ check({144, 145, 146} <= set(den), f"all three birds at the Sea Spirit's Den: {d
 for pid in (1, 4, 7, 650, 653, 656):
     check(str(pid) in AD["KALOS_ROUTE_19_PERCENTAGES"], f"#{pid} rare on Route 19")
 
+# Alola: the Alolan forms are Alola's own (its dex, pools, trainers, and its evolutions).
+alolan = {int(k): v["id"] for k, v in AD["FORM_MAP"].items() if v.get("form") == "alolan"}
+check(set(alolan) <= set(_dex_ids(story, {}, [], view="ALOLA")), "Alolan forms are in the Alola dex")
+kanto_forms = [(k, x) for k, v in AD.items() if k.endswith("PERCENTAGES") and isinstance(v, dict)
+               and k in {a.get("wild_pool_percentages") for a in SP.values() if str(a.get("region")).upper() == "ALOLA"}
+               for x in v if int(x) in set(alolan.values())]
+check(not kanto_forms, f"Alola's pools use Alolan forms only {kanto_forms[:5]}")
+story.current_area_key = "IKI_TOWN"; story.enter_region("ALOLA")
+pika = Pokemon(g.loader.fetch_specific(25), g.assets, size_mult=2.5)
+check(evolution.item_evolution(g, pika, "THUNDER_STONE") == ("RAICHU_ALOLAN", 26), "Pikachu -> Alolan Raichu in Alola")
+story.current_area_key = "VIRIDIAN_CITY"
+check([e for e, _, _ in evolution.evolution_options(g, pika)] == ["RAICHU"], "Pikachu -> Raichu outside Alola")
+
 print(f"##### answers1023: {fails} fails")
