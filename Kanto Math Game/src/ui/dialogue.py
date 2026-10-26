@@ -35,10 +35,14 @@ class ClassicDialogueBox(UIElement):
         self.font = font
         self.auto_hide = auto_hide
         self.speed = 3
+        self.reserve = None  # optional fn -> px kept free at the right (a YES / NO prompt's buttons)
         self._set_lines(text_lines)
 
     def _set_lines(self, text_lines):
-        self.text_lines = text_lines if isinstance(text_lines, list) else [text_lines]
+        from src.ui.theme import pokemon_word  # the data's "PKMN", written out
+        lines = text_lines if isinstance(text_lines, list) else [text_lines]
+        self.text_lines = [pokemon_word(t) if isinstance(t, str) else t for t in lines]
+        self._cued = -1  # the last line whose fanfare was cued (src/core/music.py)
         self.current_line = 0
         self.page = 0
         self.visible_chars = 0
@@ -54,10 +58,11 @@ class ClassicDialogueBox(UIElement):
 
     def _pages(self, index):
         """Pages (lists of wrapped rows) for logical line `index`."""
-        key = (index, self.rect.width, self.rect.height)
+        extra = self.reserve() if self.reserve else 0
+        key = (index, self.rect.width, self.rect.height, extra)
         if key not in self._page_cache:
             text = str(self.text_lines[index]) if index < len(self.text_lines) else ""
-            rows = wrap_text(text, self.font, self.rect.width - 80)
+            rows = wrap_text(text, self.font, self.rect.width - max(170, extra))  # (room for the arrow and speaker)
             per_page = max(1, (self.rect.height - 44) // self._line_height())
             self._page_cache[key] = [rows[i:i + per_page] for i in range(0, len(rows), per_page)] or [[""]]
         return self._page_cache[key]
@@ -127,7 +132,7 @@ class ClassicDialogueBox(UIElement):
                 callback()
 
     def _speak_rect(self):
-        return pygame.Rect(self.rect.x + 16, self.rect.bottom - 58, 44, 44)
+        return pygame.Rect(self.rect.right - 110, self.rect.bottom - 62, 44, 44)
 
     def handle_event(self, event):
         # A finished box lets clicks through, so buttons under it still work.
@@ -155,9 +160,14 @@ class ClassicDialogueBox(UIElement):
     def draw(self, surface):
         if not self.visible:
             return
-        Utils.draw_classic_panel(
-            surface, self.rect.x, self.rect.y, self.rect.width, self.rect.height
-        )
+        if getattr(self, "self_update", False):  # a pop-up box no state updates (game.show_dialogue)
+            self.update()
+        if getattr(self, "_cued", -1) != self.current_line and self.current_line < len(self.text_lines):
+            self._cued = self.current_line  # a new line: its fanfare ("... grew to Lv 12!")
+            from src.core import music
+            music.line_cue(self.text_lines[self.current_line])
+        from src.ui import theme
+        theme.draw_textbox(surface, self.rect)  # the games' white box, dark text (src/ui/theme.py)
 
         more = self.is_waiting_for_click and not (
             self._last_page() and self.current_line >= len(self.text_lines) - 1)
@@ -165,14 +175,13 @@ class ClassicDialogueBox(UIElement):
         if self.current_line < len(self.text_lines):
             rows = self._page_rows()
             lh = self._line_height()
-            top = self.rect.centery - (len(rows) * lh) // 2 - (10 if more else 0)
+            top = self.rect.y + max(22, (self.rect.h - len(rows) * lh) // 2 - 4)
             left = self.visible_chars
             for i, row in enumerate(rows):
                 shown = row[:max(0, left)]
                 left -= len(row) + 1
                 if shown:
-                    Utils.draw_text_outline(surface, shown, self.font, WHITE,
-                                            self.rect.centerx, top + lh * i + lh // 2)
+                    theme.shadow_text(surface, shown, self.font, self.rect.x + 40, top + lh * i)
 
         from src.core import speech
         if speech.available() and self.current_line < len(self.text_lines):
@@ -181,8 +190,8 @@ class ClassicDialogueBox(UIElement):
             # A bobbing arrow: "tap to go on".
             import math
             bob = int(3 * math.sin(pygame.time.get_ticks() / 150))
-            x, y = self.rect.right - 40, self.rect.bottom - 34 + bob
+            x, y = self.rect.right - 44, self.rect.bottom - 38 + bob
             pts = [(x - 12, y - 8), (x + 12, y - 8), (x, y + 8)]
-            pygame.draw.polygon(surface, BLACK, [(px, py + 2) for px, py in pts])
-            pygame.draw.polygon(surface, WHITE if more else GOLD, pts)
-            pygame.draw.polygon(surface, BLACK, pts, 2)
+            from src.ui import theme
+            pygame.draw.polygon(surface, theme.TEXT_SHADOW, [(px + 2, py + 2) for px, py in pts])
+            pygame.draw.polygon(surface, theme.TEXT_ARROW if more else theme.TEXTBOX_FRAME, pts)

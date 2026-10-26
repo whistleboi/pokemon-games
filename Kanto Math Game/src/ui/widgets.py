@@ -108,13 +108,55 @@ class Button(UIElement):
         )
 
 
+class Backdrop(UIElement):
+    """The white text box behind a set of buttons (the battle's move list)."""
+
+    def __init__(self, rect):
+        super().__init__(rect, None, visible=True)
+
+    def handle_event(self, event):
+        return False
+
+    def draw(self, surface):
+        if self.visible:
+            from src.ui import theme
+            theme.draw_textbox(surface, self.rect)
+
+
+class ItemCard(Button):
+    """A Bag entry (the menu redesign): a white card with the item's icon, name and count; one
+    that can't be used right now is greyed (tapping it still says why)."""
+
+    def __init__(self, rect, name, qty, font, callback, icon=None, usable=True, key=None):
+        super().__init__(rect, f"{name}  x{qty}", font, callback, icon=icon, autosize=False)
+        self.name, self.qty, self.usable, self.key = name, qty, usable, key
+        self._icon = pygame.transform.scale(icon, (40, 40)) if icon else None
+
+    def draw(self, surface):
+        if not self.visible:
+            return
+        from src.ui import theme
+        r = self.rect
+        hover = r.collidepoint(pygame.mouse.get_pos())
+        theme.card(surface, r, hover=hover, accent=theme.ACCENT["bag"],
+                   fill=theme.TEXTBOX if self.usable else (222, 226, 234))
+        x = r.x + 14
+        if self._icon:
+            surface.blit(self._icon, (x, r.centery - 20))
+            x += 52
+        color = theme.TEXT if self.usable else (128, 132, 146)
+        y = r.centery - self.font.get_height() // 2 - 1
+        theme.shadow_text(surface, self.name, self.font, x, y, color=color)
+        theme.shadow_text(surface, f"x{self.qty}", self.font, r.right - 16, y, color=color, align="right")
+
+
 class MoveButton(Button):
-    """A move in the FIGHT menu: name on top, a type pill and power below, and a badge that
-    shows how well it works on the foe by colour and shape (for pre-readers too):
-    green !! = super effective, orange down-arrow = not very, grey X = no effect.
-    Moves that match the user's own type get a gold border."""
-    EFFECT = {"super": ((46, 184, 74), "SUPER!"), "weak": ((240, 140, 46), "weak"),
-              "none": ((138, 138, 138), "NO EFFECT")}
+    """A move in the FIGHT menu, like the games' move buttons: its type colour, the name, a type
+    label and its power, and how well it works on the foe in words and a badge (for pre-readers
+    too): green !! = super effective, orange arrow = not very, grey X = no effect. Moves that match
+    the user's own type get a gold edge."""
+    EFFECT = {"super": ((46, 170, 74), "SUPER!"), "weak": ((222, 128, 40), "WEAK"),
+              "none": ((128, 128, 136), "NO EFFECT")}
 
     def __init__(self, rect, name, font, small_font, callback, type_name, type_color, detail,
                  effect=None, stab=False):
@@ -129,72 +171,69 @@ class MoveButton(Button):
     def draw(self, surface):
         if not self.visible:
             return
-        label, self.text = self.text, ""
-        super().draw(surface)
-        self.text = label
         r = self.rect
-        if self.stab:
-            pygame.draw.rect(surface, GOLD, r.inflate(4, 4), 4, border_radius=self.border_radius + 2)
-        Utils.draw_text_outline(surface, label, self.font, WHITE, r.x + 16, r.y + 8, align="left")
-        # type pill + power
-        pill_txt = self.type_name.title()
+        hover = r.collidepoint(pygame.mouse.get_pos())
+        dark = self._shade(self.type_color, 0.6)
+        pygame.draw.rect(surface, dark, r.move(0, 5), border_radius=14)
+        pygame.draw.rect(surface, self._shade(self.type_color, 1.12) if hover else self.type_color, r, border_radius=14)
+        pygame.draw.rect(surface, GOLD if self.stab else (255, 255, 255) if hover else (20, 20, 30), r,
+                         4 if self.stab else 3, border_radius=14)
+        name_font = self.font if self.font.size(self.text.upper())[0] <= r.w - 70 else self.small_font
+        Utils.draw_text_outline(surface, self.text.upper(), name_font, WHITE, r.x + 16, r.y + 6, align="left",
+                                outline_color=dark, thickness=2)
+        pill_txt = self.type_name.upper()
         tw = self.small_font.size(pill_txt)[0]
-        pill = pygame.Rect(r.x + 14, r.bottom - 30, tw + 20, 22)
-        pygame.draw.rect(surface, self._shade(self.type_color, 0.7), pill, border_radius=11)
-        pygame.draw.rect(surface, WHITE, pill, 2, border_radius=11)
-        Utils.draw_text_outline(surface, pill_txt, self.small_font, WHITE, pill.centerx, pill.centery, thickness=2)
+        pill = pygame.Rect(r.x + 14, r.bottom - 27, tw + 16, 23)
+        pygame.draw.rect(surface, dark, pill, border_radius=13)
+        pygame.draw.rect(surface, WHITE, pill, 2, border_radius=13)
+        Utils.draw_text_outline(surface, pill_txt, self.small_font, WHITE, pill.centerx, pill.centery,
+                                outline_color=dark, thickness=1)
         if self.detail:
-            Utils.draw_text_outline(surface, self.detail, self.small_font, WHITE, pill.right + 12,
-                                    pill.y + 2, align="left", thickness=2)
-        # effectiveness badge
+            Utils.draw_text_outline(surface, self.detail, self.small_font, WHITE, pill.right + 10, pill.y + 1,
+                                    align="left", outline_color=dark, thickness=2)
         if self.effect in self.EFFECT:
             color, word = self.EFFECT[self.effect]
-            cx, cy, rad = r.right - 30, r.centery, min(18, r.h // 3)
-            pygame.draw.circle(surface, BLACK, (cx, cy + 2), rad + 2)
+            cx, cy, rad = r.right - 24, r.y + 20, 13
+            pygame.draw.circle(surface, (20, 20, 30), (cx, cy + 2), rad + 2)
             pygame.draw.circle(surface, color, (cx, cy), rad)
             pygame.draw.circle(surface, WHITE, (cx, cy), rad, 2)
             if self.effect == "super":
-                for dx in (-5, 5):
-                    pygame.draw.line(surface, WHITE, (cx + dx, cy - 9), (cx + dx, cy + 2), 4)
-                    pygame.draw.circle(surface, WHITE, (cx + dx, cy + 8), 2)
+                for dx in (-4, 4):
+                    pygame.draw.line(surface, WHITE, (cx + dx, cy - 7), (cx + dx, cy + 1), 3)
+                    pygame.draw.circle(surface, WHITE, (cx + dx, cy + 6), 2)
             elif self.effect == "weak":
-                pygame.draw.polygon(surface, WHITE, [(cx - 8, cy - 5), (cx + 8, cy - 5), (cx, cy + 7)])
+                pygame.draw.polygon(surface, WHITE, [(cx - 6, cy - 4), (cx + 6, cy - 4), (cx, cy + 6)])
             else:
-                pygame.draw.line(surface, WHITE, (cx - 7, cy - 7), (cx + 7, cy + 7), 4)
-                pygame.draw.line(surface, WHITE, (cx + 7, cy - 7), (cx - 7, cy + 7), 4)
-            Utils.draw_text_outline(surface, word, self.small_font, color, cx - rad - 10, pill.y + 2,
-                                    align="right", thickness=2)
+                pygame.draw.line(surface, WHITE, (cx - 5, cy - 5), (cx + 5, cy + 5), 3)
+                pygame.draw.line(surface, WHITE, (cx + 5, cy - 5), (cx - 5, cy + 5), 3)
+            tag_w = self.small_font.size(word)[0] + 14
+            tag = pygame.Rect(r.right - tag_w - 10, r.bottom - 27, tag_w, 23)
+            pygame.draw.rect(surface, WHITE, tag, border_radius=13)
+            pygame.draw.rect(surface, color, tag, 2, border_radius=13)
+            Utils.draw_text_outline(surface, word, self.small_font, color, tag.centerx, tag.centery,
+                                    outline_color=WHITE, thickness=1)
 
 
 # [REF-0010: Math Battle UI]
 class MathAnswerGrid(UIElement):
+    """The four answers: big white buttons with dark numbers (clear digits come first in a math
+    game), 2 x 2 in the right part of the bottom bar."""
 
-    def __init__(self, rect, options, font, callback):
+    def __init__(self, rect, options, font, callback, small_font=None):
         super().__init__(rect, callback, visible=True)
         self.options = options
         self.font = font
+        self.small_font = small_font or font  # for an answer too wide for its button
         self.answer_callback = callback
         self.button_rects = []
         self.button_texts = []
-
-        grid_w = self.rect.width
-        grid_h = self.rect.height
-        btn_w = grid_w // 2 - 10
-        btn_h = grid_h // 2 - 10
-
-        positions = [
-            (self.rect.left + grid_w * 0.25, self.rect.top + grid_h * 0.3),
-            (self.rect.left + grid_w * 0.75, self.rect.top + grid_h * 0.3),
-            (self.rect.left + grid_w * 0.25, self.rect.top + grid_h * 0.7),
-            (self.rect.left + grid_w * 0.75, self.rect.top + grid_h * 0.7),
-        ]
-
-        for i, option in enumerate(self.options):
-            if i < 4:
-                r = pygame.Rect(0, 0, btn_w, btn_h)
-                r.center = positions[i]
-                self.button_rects.append(r)
-                self.button_texts.append(str(option))
+        pad, gap = 20, 14
+        bw = (self.rect.width - pad * 2 - gap) // 2
+        bh = (self.rect.height - pad * 2 - gap - 4) // 2
+        for i, option in enumerate(self.options[:4]):
+            r = pygame.Rect(self.rect.x + pad + (i % 2) * (bw + gap), self.rect.y + pad + (i // 2) * (bh + gap), bw, bh)
+            self.button_rects.append(r)
+            self.button_texts.append(str(option))
 
     def handle_event(self, event):
         if not self.visible:
@@ -207,23 +246,38 @@ class MathAnswerGrid(UIElement):
                     return True
         return False
 
-    def draw(self, surface):
+    def draw(self, surface, marks=None):
+        """marks: {index: colour} to paint answers (the right one green, a wrong pick red)."""
         if not self.visible:
             return
+        from src.ui import theme
+        mouse = pygame.mouse.get_pos()
         for i, r in enumerate(self.button_rects):
-            Utils.draw_text_outline(
-                surface,
-                str(self.button_texts[i]),
-                self.font,
-                WHITE,
-                r.centerx,
-                r.centery,
-                outline_color=BLACK
-            )
+            fill = (marks or {}).get(i)
+            hover = fill is None and r.collidepoint(mouse)
+            lip = r.move(0, 5)
+            pygame.draw.rect(surface, theme.TEXTBOX_FRAME, lip, border_radius=14)
+            pygame.draw.rect(surface, fill or ((236, 244, 255) if hover else WHITE), r, border_radius=14)
+            pygame.draw.rect(surface, theme.TEXTBOX_FRAME, r, 4, border_radius=14)
+            color = WHITE if fill else theme.TEXT
+            text = self.button_texts[i]
+            font = self.font
+            if font.size(text)[0] > r.w - 24:
+                font = self.small_font
+            if fill:
+                Utils.draw_text_outline(surface, text, font, WHITE, r.centerx, r.centery, outline_color=fill, thickness=2)
+            else:
+                theme.shadow_text(surface, text, font, r.centerx, r.centery, align="center")
 
 
 # [REF-0048: Math Battle UI with Integrated Answer Grid and Problem Display]
 class MathBattleUI(UIElement):
+    """The math question in battle: the question on a white card at the left of the bottom bar,
+    the four answers at the right. After an answer: the right one turns green (with a star burst
+    when you got it), a wrong pick red and it wobbles, and a short cheer or "It was 19." shows."""
+
+    QUESTION_SHARE = 0.44
+
     def __init__(self, game, problem_str, options, callback):
         rect = Utils.get_full_dialogue_rect(game)
         super().__init__(rect, None, visible=True)
@@ -231,23 +285,16 @@ class MathBattleUI(UIElement):
         self.problem_str = problem_str
         self.options = options
         self.answer_callback = callback
-
-        left_zone_w = int(rect.width * 0.55)
-        left_zone = pygame.Rect(rect.x, rect.y, left_zone_w, rect.height)
-
-        self.right_rect = pygame.Rect(rect.x + left_zone_w, rect.y, rect.width - left_zone_w, rect.height)
-        self.text_x = self.right_rect.centerx
+        q_w = int(rect.width * self.QUESTION_SHARE)
+        self.question_rect = pygame.Rect(rect.x, rect.y, q_w, rect.height)
+        self.right_rect = pygame.Rect(rect.x + q_w, rect.y, rect.width - q_w, rect.height)  # (older callers)
+        self.text_x = self.question_rect.centerx
         self.text_y = rect.centery
-
-        use_small_font = any(len(str(o)) > 4 for o in options)
-        font = game.assets.fonts["s_med"] if use_small_font else game.assets.fonts["num"]
-
-        self.answer_grid = MathAnswerGrid(
-            left_zone, options, font, self.on_click
-        )
+        font = game.assets.fonts["num"] if max((len(str(o)) for o in options), default=0) <= 5 else game.assets.fonts["s_med"]
+        self.answer_grid = MathAnswerGrid(self.right_rect, options, font, self.on_click,
+                                          small_font=game.assets.fonts["s_med"])
         self.feedback = None  # set by the battle while it shows "Great job!" / the right answer
-        card = self.right_rect.inflate(-18, -18)
-        self.speak_rect = pygame.Rect(card.right - 58, card.y + 10, 46, 46)
+        self.speak_rect = pygame.Rect(self.question_rect.right - 74, self.question_rect.y + 24, 46, 46)
 
     def on_click(self, idx):
         if self.feedback:
@@ -270,31 +317,18 @@ class MathBattleUI(UIElement):
     def draw(self, surface):
         if not self.visible:
             return
-        Utils.draw_classic_panel(
-            surface, self.rect.x, self.rect.y, self.rect.width, self.rect.height
-        )
-
-        white_panel = self.right_rect.inflate(-18, -18)
-        pygame.draw.rect(surface, WHITE, white_panel, border_radius=12)
-        pygame.draw.rect(surface, BLACK, white_panel, 6, border_radius=12)
-
+        from src.ui import theme
+        theme.draw_textbox(surface, self.rect)
+        card = self.question_rect.inflate(-28, -36)
+        pygame.draw.rect(surface, (236, 242, 252), card, border_radius=14)
+        pygame.draw.rect(surface, theme.TEXTBOX_ACCENT, card, 3, border_radius=14)
         if self.feedback:
-            self._draw_feedback(surface, white_panel)
+            self._draw_feedback(surface, card)
             return
-
         font = self.game.assets.fonts["big"]
-        if len(self.problem_str) > 8:
+        if font.size(self.problem_str)[0] > card.width - 90:
             font = self.game.assets.fonts["num"]
-
-        Utils.draw_text_outline(
-            surface,
-            self.problem_str,
-            font,
-            BLACK,
-            self.text_x,
-            self.text_y,
-            outline_color=WHITE,
-        )
+        theme.shadow_text(surface, self.problem_str, font, card.centerx - 20, card.centery, align="center")
         self.answer_grid.draw(surface)
         from src.core import speech
         if speech.available():
@@ -302,18 +336,22 @@ class MathBattleUI(UIElement):
 
     def _draw_feedback(self, surface, card):
         import math
+        from src.ui import theme
         fb = self.feedback
         grid = self.answer_grid
         t = 1 - fb["frames"] / max(1, fb["total"])  # 0 -> 1 over the beat
-        right = grid.button_rects[fb["right"]] if fb["right"] < len(grid.button_rects) else None
+        marks = {fb["right"]: (46, 170, 74)}
+        if not fb["correct"]:
+            marks[fb["index"]] = (214, 72, 64)
         picked = grid.button_rects[fb["index"]] if fb["index"] < len(grid.button_rects) else None
-        if right is not None:
-            pygame.draw.rect(surface, (46, 184, 74), right.inflate(-6, -6), border_radius=14)
-            pygame.draw.rect(surface, WHITE, right.inflate(-6, -6), 4, border_radius=14)
-        if picked is not None and not fb["correct"]:
+        if picked is not None and not fb["correct"]:  # the wrong pick wobbles
             wobble = int(6 * math.sin(t * 30) * (1 - t))
-            pygame.draw.rect(surface, (200, 120, 90), picked.inflate(-6, -6).move(wobble, 0), 4, border_radius=14)
-        grid.draw(surface)
+            grid.button_rects[fb["index"]] = picked.move(wobble, 0)
+            grid.draw(surface, marks)
+            grid.button_rects[fb["index"]] = picked
+        else:
+            grid.draw(surface, marks)
+        right = grid.button_rects[fb["right"]] if fb["right"] < len(grid.button_rects) else None
         if fb["correct"] and right is not None:  # star burst
             cx, cy = right.center
             for k in range(10):
@@ -327,11 +365,14 @@ class MathBattleUI(UIElement):
                     a = ang + j * math.pi / 5
                     pts.append((x + math.cos(a) * rad, y + math.sin(a) * rad))
                 pygame.draw.polygon(surface, GOLD, pts)
-        font = self.game.assets.fonts["s_med"]
-        color = (30, 150, 60) if fb["correct"] else (60, 60, 60)
-        Utils.draw_multiline_text(surface, fb["text"], font, color, card.centerx, card.centery,
-                                  max_width=card.width - 30, line_height=font.get_linesize() + 6,
-                                  center=True, outline_color=WHITE)
+        font = self.game.assets.fonts["dialog"]
+        color = (36, 140, 64) if fb["correct"] else theme.TEXT
+        from src.ui.dialogue import wrap_text
+        rows = wrap_text(fb["text"], font, card.width - 30)
+        lh = font.get_linesize() + 6
+        top = card.centery - len(rows) * lh // 2
+        for i, row in enumerate(rows):
+            theme.shadow_text(surface, row, font, card.centerx, top + i * lh + lh // 2, color=color, align="center")
 
 
 # [REF-0050: Health Bar UI]

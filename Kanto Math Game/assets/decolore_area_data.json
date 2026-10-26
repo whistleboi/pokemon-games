@@ -685,33 +685,7 @@
           }
         }
       ],
-      "route_menu": [
-        {
-          "text": "CATCH WILD PKMN",
-          "action": "CATCH",
-          "condition": "has_balls",
-          "color": "BLUE"
-        },
-        {
-          "text": "BATTLE WILD PKMN",
-          "action": "BATTLE",
-          "condition": "can_battle",
-          "color": "GREEN"
-        },
-        {
-          "text": "BATTLE TRAINER",
-          "action": "TRAINER",
-          "condition": "has_trainers",
-          "color": "GREEN"
-        },
-        {
-          "text": "Grand Spectrala Island",
-          "action": "EXIT",
-          "target_area": "GRAND_SPECTRALA_ISLAND",
-          "condition": "can_exit",
-          "color": "RED"
-        }
-      ],
+      "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"}, {"text": "THE BLACK FOG", "action": "BOSS", "color": "PURPLE", "flag_condition": "not black_fog_banished_spectrala_woods", "boss": {"id": 10501, "name": "Black Fog", "level": 68, "no_catch": true, "victory_flag": "black_fog_banished_spectrala_woods", "lines": ["The air turns ice-cold. A black fog pours across the floor...", "Two huge eyes open in the dark. A giant Haunter rises: the Black Fog!", "Long ago people worshipped it as a god. It feeds on dreams. Don't let it get yours!"], "won": ["The Black Fog is too proud to ever be caught.", "It Self-Destructs in a burst of black mist... and is gone.", "But a cold whisper lingers: it will rise again in another haunted place."], "rewards": {"balls": 10, "RARE_CANDY": 3}}}, {"text": "Grand Spectrala Island", "action": "EXIT", "target_area": "GRAND_SPECTRALA_ISLAND", "condition": "can_exit", "color": "RED"}],
       "next_area": "GRAND_SPECTRALA_ISLAND"
     },
     "TOROM_ISLAND": {
@@ -989,120 +963,7 @@
         }
       ],
       "next_area": "DECOLORE_FERRY",
-      "gym": {
-        "trainers": [
-          {
-            "name": "Lenora",
-            "class": "GYM_LEADER",
-            "sprite": "lenora.png",
-            "team": [
-              508,
-              505,
-              573
-            ],
-            "levels": [
-              62,
-              62,
-              63
-            ],
-            "rewards": {
-              "balls": 5
-            },
-            "dialogue": {
-              "intro": [
-                "Lenora: Round one! Let's research how strong you are!"
-              ]
-            }
-          },
-          {
-            "name": "Burgh",
-            "class": "GYM_LEADER",
-            "sprite": "burgh.png",
-            "team": [
-              542,
-              589,
-              617
-            ],
-            "levels": [
-              63,
-              63,
-              64
-            ],
-            "rewards": {
-              "balls": 5
-            },
-            "dialogue": {
-              "intro": [
-                "Burgh: Round two! My Bug Pokemon are a work of art!"
-              ]
-            }
-          },
-          {
-            "name": "Elesa",
-            "class": "GYM_LEADER",
-            "sprite": "elesa.png",
-            "team": [
-              523,
-              587,
-              604
-            ],
-            "levels": [
-              64,
-              64,
-              65
-            ],
-            "rewards": {
-              "balls": 5
-            },
-            "dialogue": {
-              "intro": [
-                "Elesa: The semifinal! Let's make it dazzling!"
-              ]
-            }
-          }
-        ],
-        "leader": {
-          "name": "Alder",
-          "class": "TOURNAMENT_CHAMPION",
-          "sprite": "alder.png",
-          "is_boss_battle": true,
-          "team": [
-            617,
-            626,
-            621,
-            584,
-            589,
-            637
-          ],
-          "levels": [
-            66,
-            66,
-            66,
-            66,
-            66,
-            68
-          ],
-          "rewards": {
-            "balls": 25,
-            "RARE_CANDY": 5
-          },
-          "victory_flag": "paladin_tournament_won",
-          "dialogue": {
-            "intro": [
-              "Alder: The final! The Paladin Tournament crowns the strongest trainer in Unova!"
-            ],
-            "player_won": [
-              "Alder: Ha ha! What a battle! You're the Paladin Tournament champion!"
-            ],
-            "player_lost": [
-              "Alder: Good fight! The tournament runs every day. Come back!"
-            ]
-          }
-        },
-        "requirements": {
-          "badges": 0
-        }
-      }
+      "gym": {"trainers": [{"name": "Lenora", "class": "GYM_LEADER", "sprite": "lenora.png", "team": [508, 505, 573], "levels": [62, 62, 63], "rewards": {"balls": 5}, "dialogue": {"intro": ["Lenora: Round one! Let's research how strong you are!"]}, "movesets": {"505": ["HYPNOSIS", "CONFUSE-RAY", "SUPER-FANG", "FLAIL"], "573": ["FOCUS-BLAST", "SWIFT", "THUNDERBOLT", "GRASS-KNOT"]}}, {"name": "Burgh", "class": "GYM_LEADER", "sprite": "burgh.png", "team": [542, 589, 617], "levels": [63, 63, 64], "rewards": {"balls": 5}, "dialogue": {"intro": ["Burgh: Round two! My Bug Pokemon are a work of art!"]}, "movesets": {"542": ["SWORDS-DANCE", "AERIAL-ACE", "LEAF-BLADE", "X-SCISSOR"], "589": ["SWORDS-DANCE", "POISON-JAB", "MEGAHORN", "IRON-HEAD"], "617": ["GUARD-SPLIT", "FOCUS-BLAST", "BUG-BUZZ", "SPIKES"]}}, {"name": "Elesa", "class": "GYM_LEADER", "sprite": "elesa.png", "team": [523, 587, 604], "levels": [64, 64, 65], "rewards": {"balls": 5}, "dialogue": {"intro": ["Elesa: The semifinal! Let's make it dazzling!"]}, "movesets": {"523": ["WILD-CHARGE", "FLAME-CHARGE", "THRASH", "ME-FIRST"], "587": ["VOLT-SWITCH", "THUNDER-WAVE", "ACROBATICS", "ATTRACT"], "604": ["COIL", "ZAP-CANNON", "FLAMETHROWER", "DRAGON-CLAW"]}}], "leader": {"name": "Alder", "class": "TOURNAMENT_CHAMPION", "sprite": "alder.png", "is_boss_battle": true, "team": [617, 626, 621, 584, 589, 637], "levels": [66, 66, 66, 66, 66, 68], "rewards": {"balls": 25, "RARE_CANDY": 5}, "victory_flag": "paladin_tournament_won", "dialogue": {"intro": ["Alder: The final! The Paladin Tournament crowns the strongest trainer in Unova!"], "player_won": ["Alder: Ha ha! What a battle! You're the Paladin Tournament champion!"], "player_lost": ["Alder: Good fight! The tournament runs every day. Come back!"]}, "movesets": {"617": ["BUG-BUZZ", "FOCUS-BLAST", "ME-FIRST", "ENERGY-BALL"], "626": ["HEAD-CHARGE", "MEGAHORN", "STONE-EDGE", "EARTHQUAKE"], "621": ["NIGHT-SLASH", "OUTRAGE", "SUPERPOWER", "PAYBACK"], "584": ["BLIZZARD", "LIGHT-SCREEN", "FLASH-CANNON", "ACID-ARMOR"], "589": ["X-SCISSOR", "GIGA-IMPACT", "IRON-HEAD", "AERIAL-ACE"], "637": ["OVERHEAT", "BUG-BUZZ", "QUIVER-DANCE", "HYPER-BEAM"]}}, "requirements": {"badges": 0}}
     },
     "PALADIN_FIELDS": {
       "area_type": "wild_route",

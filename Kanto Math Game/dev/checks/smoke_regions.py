@@ -58,8 +58,25 @@ for idx, (region, cfg) in enumerate(game.story_manager.get_region_starts()):
     rs.confirm_selection()
     game.current_state.input_name = "GARY"
     game.current_state.confirm_selection()
+    if hasattr(game.current_state, "friend"):  # Kalos / Alola: then the second friend's name
+        game.current_state.confirm_selection()
     game.current_state.on_confirm()
     st = game.current_state
+    if not hasattr(st, "load_starters"):  # Hoenn: the story choice, home, then the starter on Route 101
+        from src.states.overworld import PlayState
+        if hasattr(st, "choose"):
+            st.choose("OMEGA_RUBY")
+            st.finish()
+        if isinstance(game.current_state, AreaTransitionState):
+            step_until_changed()
+        print("  opening ->", type(game.current_state).__name__, "| area:", game.story_manager.current_area_key)
+        game.story_manager.current_area_key = game.story_manager.starter_on_route(region)
+        ps = PlayState(game)
+        game.states["play"] = ps
+        game.change_state(ps)
+        print("  on the route:", ps.dialogue_box.text_lines[:2])
+        ps.dialogue_box.callback()  # the professor's call for help -> his bag of starters
+        st = game.current_state
     st.load_starters()
     print("  starter screen lines:", st.dialogue_box.text_lines[:2],
           "| starters:", [p.name for p in st.starters])

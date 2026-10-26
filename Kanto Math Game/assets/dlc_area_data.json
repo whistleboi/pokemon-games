@@ -1,16 +1,196 @@
 {
-  "SAVANNA_BIOME": [128, 329, 954, 126, 102, 123, 84, 103, 113, 330, 667, 668, 111, 49],
-  "SAVANNA_BIOME_PERCENTAGES": { "128": 9, "329": 7, "954": 7, "126": 7, "102": 7, "123": 7, "84": 7, "103": 7, "113": 7, "330": 7, "667": 7, "668": 7, "111": 7, "49": 7 },
-  "COASTAL_BIOME": [732, 779, 117, 89, 72, 73, 456, 457, 171, 686, 594, 662, 739, 678],
-  "COASTAL_BIOME_PERCENTAGES": { "732": 9, "779": 7, "117": 7, "89": 7, "72": 7, "73": 7, "456": 7, "457": 7, "171": 7, "686": 7, "594": 7, "662": 7, "739": 7, "678": 7 },
-  "CANYON_BIOME": [82, 237, 559, 236, 586, 572, 239, 125, 529, 623, 622, 854, 235, 212],
-  "CANYON_BIOME_PERCENTAGES": { "82": 9, "237": 7, "559": 7, "236": 7, "586": 7, "572": 7, "239": 7, "125": 7, "529": 7, "623": 7, "622": 7, "854": 7, "235": 7, "212": 7 },
-  "POLAR_BIOME": [623, 87, 460, 884, 131, 579, 375, 459, 868, 209, 27, 37, 739, 210],
-  "POLAR_BIOME_PERCENTAGES": { "623": 9, "87": 7, "460": 7, "884": 7, "131": 7, "579": 7, "375": 7, "459": 7, "868": 7, "209": 7, "27": 7, "37": 7, "739": 7, "210": 7 },
-  "TORCHLIT_LABYRINTH": [50, 51, 79, 126, 152, 235, 240, 242, 287, 322, 323, 324, 335, 336],
-  "TORCHLIT_LABYRINTH_PERCENTAGES": { "50": 9, "51": 7, "79": 7, "126": 7, "152": 7, "235": 7, "240": 7, "242": 7, "287": 7, "322": 7, "323": 7, "324": 7, "335": 7, "336": 7 },
-  "CHARGESTONE_CAVERN": [604, 137, 596, 239, 82, 603, 81, 125, 212, 311, 312, 374, 375, 479],
-  "CHARGESTONE_CAVERN_PERCENTAGES": { "604": 9, "137": 7, "596": 7, "239": 7, "82": 7, "603": 7, "81": 7, "125": 7, "212": 7, "311": 7, "312": 7, "374": 7, "375": 7, "479": 7 },
+  "SAVANNA_BIOME": [
+    128,
+    329,
+    954,
+    126,
+    102,
+    123,
+    84,
+    103,
+    113,
+    330,
+    667,
+    668,
+    111,
+    49
+  ],
+  "SAVANNA_BIOME_PERCENTAGES": {
+    "128": 9,
+    "329": 7,
+    "954": 7,
+    "126": 7,
+    "102": 7,
+    "123": 7,
+    "84": 7,
+    "103": 7,
+    "113": 7,
+    "330": 7,
+    "667": 7,
+    "668": 7,
+    "111": 7,
+    "49": 7
+  },
+  "COASTAL_BIOME": [
+    732,
+    779,
+    117,
+    89,
+    72,
+    73,
+    456,
+    457,
+    171,
+    686,
+    594,
+    662,
+    739,
+    678
+  ],
+  "COASTAL_BIOME_PERCENTAGES": {
+    "732": 9,
+    "779": 7,
+    "117": 7,
+    "89": 7,
+    "72": 7,
+    "73": 7,
+    "456": 7,
+    "457": 7,
+    "171": 7,
+    "686": 7,
+    "594": 7,
+    "662": 7,
+    "739": 7,
+    "678": 7
+  },
+  "CANYON_BIOME": [
+    82,
+    237,
+    559,
+    236,
+    586,
+    572,
+    239,
+    125,
+    529,
+    623,
+    622,
+    854,
+    235,
+    212
+  ],
+  "CANYON_BIOME_PERCENTAGES": {
+    "82": 9,
+    "237": 7,
+    "559": 7,
+    "236": 7,
+    "586": 7,
+    "572": 7,
+    "239": 7,
+    "125": 7,
+    "529": 7,
+    "623": 7,
+    "622": 7,
+    "854": 7,
+    "235": 7,
+    "212": 7
+  },
+  "POLAR_BIOME": [
+    623,
+    87,
+    460,
+    884,
+    131,
+    579,
+    375,
+    459,
+    868,
+    209,
+    27,
+    37,
+    739,
+    210
+  ],
+  "POLAR_BIOME_PERCENTAGES": {
+    "623": 9,
+    "87": 7,
+    "460": 7,
+    "884": 7,
+    "131": 7,
+    "579": 7,
+    "375": 7,
+    "459": 7,
+    "868": 7,
+    "209": 7,
+    "27": 7,
+    "37": 7,
+    "739": 7,
+    "210": 7
+  },
+  "TORCHLIT_LABYRINTH": [
+    50,
+    51,
+    79,
+    126,
+    152,
+    235,
+    240,
+    242,
+    287,
+    322,
+    323,
+    324,
+    335,
+    336
+  ],
+  "TORCHLIT_LABYRINTH_PERCENTAGES": {
+    "50": 9,
+    "51": 7,
+    "79": 7,
+    "126": 7,
+    "152": 7,
+    "235": 7,
+    "240": 7,
+    "242": 7,
+    "287": 7,
+    "322": 7,
+    "323": 7,
+    "324": 7,
+    "335": 7,
+    "336": 7
+  },
+  "CHARGESTONE_CAVERN": [
+    604,
+    137,
+    596,
+    239,
+    82,
+    603,
+    81,
+    125,
+    212,
+    311,
+    312,
+    374,
+    375,
+    479
+  ],
+  "CHARGESTONE_CAVERN_PERCENTAGES": {
+    "604": 9,
+    "137": 7,
+    "596": 7,
+    "239": 7,
+    "82": 7,
+    "603": 7,
+    "81": 7,
+    "125": 7,
+    "212": 7,
+    "311": 7,
+    "312": 7,
+    "374": 7,
+    "375": 7,
+    "479": 7
+  },
   "STORY_PROGRESSION": {
     "CHARGESTONE_CAVERN": {
       "area_type": "dungeon",
@@ -584,7 +764,7 @@
       ],
       "explore_options": [
         {
-          "text": "Pok\u00e9mon Center",
+          "text": "Pokémon Center",
           "action": "HEAL"
         },
         {
@@ -772,151 +952,7 @@
         }
       ],
       "next_area": "TERARIUM",
-      "gym": {
-        "trainers": [
-          {
-            "name": "Crispin",
-            "class": "BB_ELITE_FOUR",
-            "sprite": "kindler.png",
-            "team": [
-              324,
-              1020,
-              609,
-              637
-            ],
-            "levels": [
-              70,
-              70,
-              71,
-              72
-            ],
-            "rewards": {
-              "balls": 8
-            },
-            "dialogue": {
-              "intro": [
-                "Crispin: Fire it up! Let's goooo!"
-              ]
-            }
-          },
-          {
-            "name": "Amarys",
-            "class": "BB_ELITE_FOUR",
-            "sprite": "acetrainer_f.png",
-            "team": [
-              227,
-              1018,
-              376,
-              823
-            ],
-            "levels": [
-              71,
-              71,
-              72,
-              73
-            ],
-            "rewards": {
-              "balls": 8
-            },
-            "dialogue": {
-              "intro": [
-                "Amarys: ...Let's get this over with."
-              ]
-            }
-          },
-          {
-            "name": "Lacey",
-            "class": "BB_ELITE_FOUR",
-            "sprite": "lass.png",
-            "team": [
-              184,
-              1022,
-              959,
-              700
-            ],
-            "levels": [
-              72,
-              72,
-              73,
-              74
-            ],
-            "rewards": {
-              "balls": 8
-            },
-            "dialogue": {
-              "intro": [
-                "Lacey: Battle rules! Let's play fair and have fun!"
-              ]
-            }
-          },
-          {
-            "name": "Drayton",
-            "class": "BB_ELITE_FOUR",
-            "sprite": "acetrainer_m.png",
-            "team": [
-              1021,
-              691,
-              780,
-              998
-            ],
-            "levels": [
-              73,
-              73,
-              74,
-              75
-            ],
-            "rewards": {
-              "balls": 8
-            },
-            "dialogue": {
-              "intro": [
-                "Drayton: Eh, let's battle, I guess."
-              ]
-            }
-          }
-        ],
-        "leader": {
-          "name": "Kieran",
-          "class": "BB_CHAMPION",
-          "sprite": "school_kid_m.png",
-          "is_boss_battle": true,
-          "team": [
-            1019,
-            983,
-            727,
-            887,
-            1014,
-            1017
-          ],
-          "levels": [
-            75,
-            75,
-            75,
-            75,
-            76,
-            77
-          ],
-          "rewards": {
-            "balls": 25,
-            "RARE_CANDY": 5
-          },
-          "victory_flag": "bb_league_champion",
-          "dialogue": {
-            "intro": [
-              "Kieran: I've been waiting for this. I'm the Champion now. I won't lose to you again!"
-            ],
-            "player_won": [
-              "Kieran: ...You're still stronger. I get it now. Thanks for battling me."
-            ],
-            "player_lost": [
-              "Kieran: See? I'm the strongest now!"
-            ]
-          }
-        },
-        "requirements": {
-          "badges": 0
-        }
-      }
+      "gym": {"trainers": [{"name": "Crispin", "class": "BB_ELITE_FOUR", "sprite": "kindler.png", "team": [479, 663, 103, 323, 467, 257], "levels": [69, 69, 70, 70, 71, 72], "rewards": {"balls": 8}, "dialogue": {"intro": ["Crispin: Fire it up! Let's goooo!"]}, "movesets": {"479": ["WILL-O-WISP", "OVERHEAT", "THUNDERBOLT", "HEX"], "663": ["SUNNY-DAY", "BRAVE-BIRD", "FLARE-BLITZ", "ROOST"], "103": ["LEECH-SEED", "PSYSHOCK", "PROTECT", "SOLAR-BEAM"], "323": ["EARTH-POWER", "HEAT-WAVE", "ANCIENT-POWER", "ZEN-HEADBUTT"], "467": ["PSYCHIC", "THUNDERBOLT", "HEAT-WAVE", "SUNNY-DAY"], "257": ["STONE-EDGE", "FOCUS-BLAST", "TEMPER-FLARE", "SHADOW-CLAW"]}}, {"name": "Amarys", "class": "BB_ELITE_FOUR", "sprite": "acetrainer_f.png", "team": [227, 51, 212, 579, 395, 376], "levels": [70, 70, 71, 71, 72, 73], "rewards": {"balls": 8}, "dialogue": {"intro": ["Amarys: ...Let's get this over with."]}, "movesets": {"227": ["STEALTH-ROCK", "WHIRLWIND", "BODY-PRESS", "DUAL-WINGBEAT"], "51": ["EARTHQUAKE", "SUCKER-PUNCH", "IRON-HEAD", "STONE-EDGE"], "212": ["BULLET-PUNCH", "TRAILBLAZE", "POUNCE", "AERIAL-ACE"], "579": ["TRICK-ROOM", "PROTECT", "ENERGY-BALL", "PSYCHIC"], "395": ["ICE-BEAM", "HYDRO-PUMP", "FLASH-CANNON", "GRASS-KNOT"], "376": ["HARD-PRESS", "ICE-PUNCH", "ZEN-HEADBUTT", "BRICK-BREAK"]}}, {"name": "Lacey", "class": "BB_ELITE_FOUR", "sprite": "lass.png", "team": [547, 210, 730, 80, 869, 530], "levels": [71, 71, 72, 72, 73, 74], "rewards": {"balls": 8}, "dialogue": {"intro": ["Lacey: Battle rules! Let's play fair and have fun!"]}, "movesets": {"547": ["LIGHT-SCREEN", "TAILWIND", "ENERGY-BALL", "MOONBLAST"], "210": ["PLAY-ROUGH", "FIRE-PUNCH", "ICE-PUNCH", "STOMPING&NBSP;TANTRUM"], "730": ["HYPER-VOICE", "MOONBLAST", "ICE-BEAM", "SHADOW-BALL"], "80": ["SHELL-SIDE-ARM", "PSYCHIC", "FLAMETHROWER", "ICE-BEAM"], "869": ["DECORATE", "RECOVER", "GIGA-DRAIN", "ALLURING-VOICE"], "530": ["TERA-BLAST", "IRON-HEAD", "ROCK-TOMB", "HIGH&NBSP;HORSEPOWER"]}}, {"name": "Drayton", "class": "BB_ELITE_FOUR", "sprite": "acetrainer_m.png", "team": [149, 330, 612, 254, 230, 1018], "levels": [72, 72, 73, 73, 74, 75], "rewards": {"balls": 8}, "dialogue": {"intro": ["Drayton: Eh, let's battle, I guess."]}, "movesets": {"149": ["EXTREME-SPEED", "THUNDER-PUNCH", "ICE-SPINNER", "TAILWIND"], "330": ["EARTHQUAKE", "STONE-EDGE", "FIRE-PUNCH", "BREAKING-SWIPE"], "612": ["EARTHQUAKE", "BREAKING-SWIPE", "IRON-HEAD", "DRAGON-DANCE"], "254": ["DRAGON-CHEER", "LEAF-STORM", "X-SCISSOR", "ACROBATICS"], "230": ["RAIN-DANCE", "ICE-BEAM", "HYDRO-PUMP", "HURRICANE"], "1018": ["ELECTRO-SHOT", "{{#SWITCH:-{{#EXPR:-{{#TIME:-U", "FLASH-CANNON", "SNARL"]}}], "leader": {"name": "Kieran", "class": "BB_CHAMPION", "sprite": "school_kid_m.png", "is_boss_battle": true, "team": [149, 186, 474, 861, 727, 1019], "levels": [75, 75, 76, 76, 76, 77], "rewards": {"balls": 25, "RARE_CANDY": 5}, "victory_flag": "bb_league_champion", "dialogue": {"intro": ["Kieran: I've been waiting for this. I'm the Champion now. I won't lose to you again!"], "player_won": ["Kieran: ...You're still stronger. I get it now. Thanks for battling me."], "player_lost": ["Kieran: See? I'm the strongest now!"]}, "movesets": {"149": ["BREAKING-SWIPE", "HURRICANE", "EXTREME-SPEED", "THUNDER"], "186": ["ICE-BEAM", "HELPING-HAND", "WEATHER-BALL", "PSYCHIC"], "474": ["HYPER-BEAM", "SHADOW-BALL", "THUNDERBOLT", "ICE-BEAM"], "861": ["REFLECT", "LIGHT-SCREEN", "SPIRIT-BREAK", "SUCKER-PUNCH"], "727": ["DARKEST-LARIAT", "FLARE-BLITZ", "FAKE-OUT", "BRICK-BREAK"], "1019": ["FICKLE-BEAM", "TERA-BLAST", "EARTH-POWER", "GYRO-BALL"]}}, "requirements": {"badges": 0}}
     },
     "TERARIUM": {
       "area_type": "wild_route",
@@ -991,7 +1027,13 @@
           "condition": "can_exit",
           "color": "RED"
         },
-        {"text": "Central Plaza", "action": "EXIT", "target_area": "TERARIUM_CENTRAL_PLAZA", "condition": "can_exit", "color": "RED"}
+        {
+          "text": "Central Plaza",
+          "action": "EXIT",
+          "target_area": "TERARIUM_CENTRAL_PLAZA",
+          "condition": "can_exit",
+          "color": "RED"
+        }
       ],
       "next_area": "BLUEBERRY_ACADEMY"
     }

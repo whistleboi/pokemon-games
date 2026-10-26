@@ -46,12 +46,12 @@
       "Let's make it the best battle Galar's ever seen!"
     ],
     "galar_hop_intro": [
-      "Hop: Oi, {player_name}! My brother's the Champion — so I'm gonna be Champion too!",
+      "{rival_name}: Oi, {player_name}! My brother's the Champion — so I'm gonna be Champion too!",
       "Battle me! I've been training all morning, and I want to see how good you are.",
       "Let's go! This is gonna be brilliant!"
     ],
-    "galar_hop_won": ["Hop: Mint! You're brilliant! Absolutely brilliant!", "I lost — but now I know what I'm working towards. Watch out, {player_name}!"],
-    "galar_hop_lost": ["Hop: LEE would be proud of me right now!", "I've gotten strong! Come find me in the Wild Area — I'll keep training!"],
+    "galar_hop_won": ["{rival_name}: Mint! You're brilliant! Absolutely brilliant!", "I lost — but now I know what I'm working towards. Watch out, {player_name}!"],
+    "galar_hop_lost": ["{rival_name}: LEE would be proud of me right now!", "I've gotten strong! Come find me in the Wild Area — I'll keep training!"],
     "galar_sonia_intro": [
       "Sonia: Oh! Are you a new trainer? I'm Sonia — Professor Magnolia's granddaughter.",
       "I'm researching the legend of Zacian and Zamazenta — the legendary Pokémon of Galar.",
@@ -113,8 +113,8 @@
     ],
     "galar_newgame_intro": [
       "Fluffy Wooloo graze on the hills outside your home in Postwick.",
-      "Your neighbor Hop bangs on the door. His big brother Leon, the Champion, is coming home today!",
-      "Hop: {player_name}! Leon's bringing presents. Come on, let's go meet him!"
+      "Your neighbor {rival_name} bangs on the door. His big brother Leon, the Champion, is coming home today!",
+      "{rival_name}: {player_name}! Leon's bringing presents. Come on, let's go meet him!"
     ],
     "galar_leon_starter_intro": [
       "Leon: So you're Hop's friend! Brilliant to meet you, {player_name}!",
@@ -123,7 +123,7 @@
     ],
     "galar_leon_starter": [
       "Leon: Great pick! You two are going to be an amazing team.",
-      "Leon: Here's a Pokédex too. Now let's see you and Hop have your very first battle!"
+      "Leon: Here's a Pokédex too. Now let's see you and {rival_name} have your very first battle!"
     ],
     "galar_mom_newstart_1": ["Mom: The Wooloo got into the garden again. They're too fluffy to be mad at!", "Mom: Hop's family invited us for tea. Such lovely neighbors."],
     "galar_mom_newstart_2": [
@@ -364,9 +364,9 @@
       "on_enter_event": {
         "type": "trainer_battle",
         "trainer": {
-          "name": "Hop",
+          "name": "{rival_name}",
           "class": "PKMN_TRAINER",
-          "sprite": "hop.png",
+          "sprite": "{rival_character}",
           "team": [813],
           "team_choice": { "810": [813], "813": [816], "816": [810] },
           "rewards": { "balls": 5 },
@@ -408,24 +408,7 @@
       "region": "GALAR",
       "backgrounds": { "main": "turffield.png", "gym": "turffield_gym.png" },
       "has_gym": true,
-      "gym": {
-        "trainers": [],
-        "leader": {
-          "name": "Milo",
-          "class": "GYM_LEADER",
-          "sprite": "milo.png",
-          "team": [829, 830], "levels": [19, 20],
-          "dialogue": {
-            "intro": ["Milo: If you lose, I think that would be quite all right, actually. Don't worry about it!"],
-            "player_won": ["Milo: Oh, that was a nice battle! Here's the Grass Badge and TM Razor Leaf!"],
-            "player_lost": ["Milo: It's all right! Come back and try again — no rush!"]
-          },
-          "rewards": { "balls": 5 },
-          "is_boss_battle": true,
-          "badge_reward": "GRASS"
-        },
-        "requirements": { "badges": 0, "fail_text": "Milo is in the gym — challenge him when ready!" }
-      },
+      "gym": {"trainers": [], "leader": {"name": "Milo", "class": "GYM_LEADER", "sprite": "milo.png", "team": [829, 830], "levels": [19, 20], "dialogue": {"intro": ["Milo: If you lose, I think that would be quite all right, actually. Don't worry about it!"], "player_won": ["Milo: Oh, that was a nice battle! Here's the Grass Badge and TM Razor Leaf!"], "player_lost": ["Milo: It's all right! Come back and try again — no rush!"]}, "rewards": {"balls": 5}, "is_boss_battle": true, "badge_reward": "GRASS", "movesets": {"829": ["MAGICAL-LEAF", "ROUND", "RAPID-SPIN"], "830": ["MAGICAL-LEAF", "LEAFAGE", "ROUND"]}}, "requirements": {"badges": 0, "fail_text": "Milo is in the gym — challenge him when ready!"}},
       "travel_options": [
         { "text": "Wild Area (west)", "target_area": "WILD_AREA" },
         { "text": "Route 4 (to Hulbury)", "target_area": "GALAR_ROUTE_4" }
@@ -443,24 +426,7 @@
       "region": "GALAR",
       "backgrounds": { "main": "hulbury.png", "gym": "hulbury_gym.png" },
       "has_gym": true,
-      "gym": {
-        "trainers": [],
-        "leader": {
-          "name": "Nessa",
-          "class": "GYM_LEADER",
-          "sprite": "nessa.png",
-          "team": [118, 846, 834], "levels": [22, 23, 24],
-          "dialogue": {
-            "intro": ["Nessa: Once I set my sights on defeating you, nothing can stop me! Prepare yourself!"],
-            "player_won": ["Nessa: A powerful wave swept over me. Here is the Water Badge!"],
-            "player_lost": ["Nessa: The current of my will was stronger. Come back when you can match it!"]
-          },
-          "rewards": { "balls": 5 },
-          "is_boss_battle": true,
-          "badge_reward": "WATER"
-        },
-        "requirements": { "badges": 1, "fail_text": "Earn the Grass Badge first!" }
-      },
+      "gym": {"trainers": [], "leader": {"name": "Nessa", "class": "GYM_LEADER", "sprite": "nessa.png", "team": [118, 846, 834], "levels": [22, 23, 24], "dialogue": {"intro": ["Nessa: Once I set my sights on defeating you, nothing can stop me! Prepare yourself!"], "player_won": ["Nessa: A powerful wave swept over me. Here is the Water Badge!"], "player_lost": ["Nessa: The current of my will was stronger. Come back when you can match it!"]}, "rewards": {"balls": 5}, "is_boss_battle": true, "badge_reward": "WATER", "movesets": {"118": ["WATER-PULSE", "WHIRLPOOL", "HORN-ATTACK", "AGILITY"], "846": ["AQUA-JET", "BITE", "WHIRLPOOL", "FURY-ATTACK"], "834": ["RAZOR-SHELL", "WATER-GUN", "BITE", "HEADBUTT"]}}, "requirements": {"badges": 1, "fail_text": "Earn the Grass Badge first!"}},
       "travel_options": [
         { "text": "Route 4 (to Turffield)", "target_area": "GALAR_ROUTE_4" },
         { "text": "Route 5 (to Motostoke)", "target_area": "GALAR_ROUTE_5", "condition": "has_water_badge" },
@@ -479,24 +445,7 @@
       "region": "GALAR",
       "backgrounds": { "main": "motostoke.png", "gym": "motostoke_gym.png" },
       "has_gym": true,
-      "gym": {
-        "trainers": [],
-        "leader": {
-          "name": "Kabu",
-          "class": "GYM_LEADER",
-          "sprite": "kabu.png",
-          "team": [38, 59, 851], "levels": [25, 25, 27],
-          "dialogue": {
-            "intro": ["Kabu: If you cannot pass through my flames, you will not be going any further!"],
-            "player_won": ["Kabu: Well done. The passion in your eyes — it sets you apart. Here is the Fire Badge."],
-            "player_lost": ["Kabu: Your flames need more fuel. Train and return!"]
-          },
-          "rewards": { "balls": 5 },
-          "is_boss_battle": true,
-          "badge_reward": "FIRE"
-        },
-        "requirements": { "badges": 2, "fail_text": "Earn the Water Badge first!" }
-      },
+      "gym": {"trainers": [], "leader": {"name": "Kabu", "class": "GYM_LEADER", "sprite": "kabu.png", "team": [38, 59, 851], "levels": [25, 25, 27], "dialogue": {"intro": ["Kabu: If you cannot pass through my flames, you will not be going any further!"], "player_won": ["Kabu: Well done. The passion in your eyes — it sets you apart. Here is the Fire Badge."], "player_lost": ["Kabu: Your flames need more fuel. Train and return!"]}, "rewards": {"balls": 5}, "is_boss_battle": true, "badge_reward": "FIRE", "movesets": {"38": ["WILL-O-WISP", "FIRE-SPIN", "QUICK-ATTACK", "EMBER"], "59": ["WILL-O-WISP", "FLAME-WHEEL", "BITE", "AGILITY"], "851": ["FLAME-WHEEL", "COIL", "BUG-BITE", "SMOKESCREEN"]}}, "requirements": {"badges": 2, "fail_text": "Earn the Water Badge first!"}},
       "travel_options": [
         { "text": "Route 5 (to Hulbury)", "target_area": "GALAR_ROUTE_5" },
         { "text": "Wild Area (east)", "target_area": "WILD_AREA" },
@@ -517,24 +466,7 @@
       "region": "GALAR",
       "backgrounds": { "main": "stow_on_side.png", "gym": "stow_on_side_gym.png" },
       "has_gym": true,
-      "gym": {
-        "trainers": [],
-        "leader": {
-          "name": "Bea (Fighting) / Allister (Ghost)",
-          "class": "GYM_LEADER",
-          "sprite": "bea_fighting_allister_ghost.png",
-          "team": [237, 675, 865, 68], "levels": [34, 34, 35, 36],
-          "dialogue": {
-            "intro": ["Bea: I've been waiting for this. Battle me with everything you've got!"],
-            "player_won": ["Bea: A worthy challenge! You've earned the Fighting Badge!"],
-            "player_lost": ["Bea: Keep training. You'll get there."]
-          },
-          "rewards": { "balls": 5 },
-          "is_boss_battle": true,
-          "badge_reward": "FIGHTING"
-        },
-        "requirements": { "badges": 3, "fail_text": "Earn the Fire Badge first!" }
-      },
+      "gym": {"trainers": [], "leader": {"name": "Bea (Fighting) / Allister (Ghost)", "class": "GYM_LEADER", "sprite": "bea_fighting_allister_ghost.png", "team": [237, 675, 865, 68], "levels": [34, 34, 35, 36], "dialogue": {"intro": ["Bea: I've been waiting for this. Battle me with everything you've got!"], "player_won": ["Bea: A worthy challenge! You've earned the Fighting Badge!"], "player_lost": ["Bea: Keep training. You'll get there."]}, "rewards": {"balls": 5}, "is_boss_battle": true, "badge_reward": "FIGHTING", "movesets": {"237": ["TRIPLE-KICK", "QUICK-ATTACK", "COUNTER", "REVENGE"], "675": ["BULLET-PUNCH", "CIRCLE-THROW", "NIGHT-SLASH", "WORK-UP"], "865": ["DETECT", "SWORDS-DANCE", "BRUTAL-SWING", "REVENGE"], "68": ["SCARY-FACE", "REVENGE", "KNOCK-OFF", "STRENGTH"]}}, "requirements": {"badges": 3, "fail_text": "Earn the Fire Badge first!"}},
       "travel_options": [
         { "text": "Route 6 (to Motostoke)", "target_area": "GALAR_ROUTE_6" },
         { "text": "Glimwood Tangle (to Ballonlea)", "target_area": "GLIMWOOD_TANGLE", "condition": "has_fighting_badge" }
@@ -554,24 +486,7 @@
       "region": "GALAR",
       "backgrounds": { "main": "ballonlea.png", "gym": "ballonlea_gym.png" },
       "has_gym": true,
-      "gym": {
-        "trainers": [],
-        "leader": {
-          "name": "Opal",
-          "class": "GYM_LEADER",
-          "sprite": "opal.png",
-          "team": [110, 303, 468, 869], "levels": [36, 36, 37, 38],
-          "dialogue": {
-            "intro": ["Opal: Old age hasn't slowed me down one bit. Now, what color do I have in mind? Answer correctly and I'll go easy on you!"],
-            "player_won": ["Opal: Pink! And you answered well. The Fairy Badge is yours!"],
-            "player_lost": ["Opal: Hmm. Wrong answer AND wrong battle result. Study harder!"]
-          },
-          "rewards": { "balls": 5 },
-          "is_boss_battle": true,
-          "badge_reward": "FAIRY"
-        },
-        "requirements": { "badges": 4, "fail_text": "Earn the Fighting Badge first — and study up on Fairy-types!" }
-      },
+      "gym": {"trainers": [], "leader": {"name": "Opal", "class": "GYM_LEADER", "sprite": "opal.png", "team": [110, 303, 468, 869], "levels": [36, 36, 37, 38], "dialogue": {"intro": ["Opal: Old age hasn't slowed me down one bit. Now, what color do I have in mind? Answer correctly and I'll go easy on you!"], "player_won": ["Opal: Pink! And you answered well. The Fairy Badge is yours!"], "player_lost": ["Opal: Hmm. Wrong answer AND wrong battle result. Study harder!"]}, "rewards": {"balls": 5}, "is_boss_battle": true, "badge_reward": "FAIRY", "movesets": {"110": ["SLUDGE", "FAIRY-WIND", "TACKLE"], "303": ["DRAINING-KISS", "CRUNCH", "IRON-DEFENSE", "ASTONISH"], "468": ["AIR-SLASH", "DRAINING-KISS", "ANCIENT-POWER"], "869": ["DRAINING-KISS", "ACID-ARMOR", "SWEET-KISS"]}}, "requirements": {"badges": 4, "fail_text": "Earn the Fighting Badge first — and study up on Fairy-types!"}},
       "travel_options": [
         { "text": "Glimwood Tangle (to Stow-on-Side)", "target_area": "GLIMWOOD_TANGLE" }
       ],
@@ -588,27 +503,7 @@
       "region": "GALAR",
       "backgrounds": { "main": "circhester.png", "gym": "circhester_gym.png" },
       "has_gym": true,
-      "gym": {
-        "trainers": [],
-        "leader": {
-          "name": "Gordie (Rock) / Melony (Ice)",
-          "class": "GYM_LEADER",
-          "sprite": "gordie_rock_melony_ice.png",
-          "team": [689, 213, 874, 839], "levels": [40, 40, 41, 42],
-          "dialogue": {
-            "intro": ["Gordie: Don't think Fairy-type charm will work in here. Rock is absolute!"],
-            "player_won": [
-              "Gordie: You... actually beat me. The Rock Badge is yours. Don't make a big deal of it.",
-              "Here, take these fossils we dug up. Cara Liss in Stow-on-Side can piece them together!"
-            ],
-            "player_lost": ["Gordie: Solid. Come back when you're truly solid."]
-          },
-          "rewards": { "balls": 5, "FOSSILIZED_BIRD": 1, "FOSSILIZED_FISH": 1, "FOSSILIZED_DRAKE": 1, "FOSSILIZED_DINO": 1 },
-          "is_boss_battle": true,
-          "badge_reward": "ROCK"
-        },
-        "requirements": { "badges": 5, "fail_text": "Earn the Fairy Badge first!" }
-      },
+      "gym": {"trainers": [], "leader": {"name": "Gordie (Rock) / Melony (Ice)", "class": "GYM_LEADER", "sprite": "gordie_rock_melony_ice.png", "team": [689, 213, 874, 839], "levels": [40, 40, 41, 42], "dialogue": {"intro": ["Gordie: Don't think Fairy-type charm will work in here. Rock is absolute!"], "player_won": ["Gordie: You... actually beat me. The Rock Badge is yours. Don't make a big deal of it.", "Here, take these fossils we dug up. Cara Liss in Stow-on-Side can piece them together!"], "player_lost": ["Gordie: Solid. Come back when you're truly solid."]}, "rewards": {"balls": 5, "FOSSILIZED_BIRD": 1, "FOSSILIZED_FISH": 1, "FOSSILIZED_DRAKE": 1, "FOSSILIZED_DINO": 1}, "is_boss_battle": true, "badge_reward": "ROCK", "movesets": {"689": ["SHELL-SMASH", "ROCK-TOMB", "RAZOR-SHELL"], "213": ["POWER-SPLIT", "STONE-EDGE", "STRUGGLE-BUG", "ROCK-TOMB"], "874": ["STEALTH-ROCK", "ROCK-TOMB", "BODY-SLAM", "WONDER-ROOM"], "839": ["TAR-SHOT", "STEALTH-ROCK", "HEAT-CRASH", "ROCK-TOMB"]}}, "requirements": {"badges": 5, "fail_text": "Earn the Fairy Badge first!"}},
       "travel_options": [
         { "text": "Route 8 (to Hammerlocke)", "target_area": "GALAR_ROUTE_8" },
         { "text": "Route 9 (to Spikemuth)", "target_area": "GALAR_ROUTE_9", "condition": "has_rock_badge" }
@@ -627,24 +522,7 @@
       "region": "GALAR",
       "backgrounds": { "main": "spikemuth.png", "gym": "spikemuth_gym.png" },
       "has_gym": true,
-      "gym": {
-        "trainers": [],
-        "leader": {
-          "name": "Piers",
-          "class": "GYM_LEADER",
-          "sprite": "piers.png",
-          "team": [560, 687, 435, 862], "levels": [44, 45, 45, 46],
-          "dialogue": {
-            "intro": ["Piers: Right. Let's not drag this out. I'll battle you, and I'll do it without any Dynamax. I never needed it."],
-            "player_won": ["Piers: ...Good battle. Here's the Dark Badge. Don't go easy on Leon."],
-            "player_lost": ["Piers: I've been practicing this set. Come back when you can break through it."]
-          },
-          "rewards": { "balls": 5 },
-          "is_boss_battle": true,
-          "badge_reward": "DARK"
-        },
-        "requirements": { "badges": 6, "fail_text": "Earn the Rock Badge first — and get past Team Yell guarding the gate!" }
-      },
+      "gym": {"trainers": [], "leader": {"name": "Piers", "class": "GYM_LEADER", "sprite": "piers.png", "team": [560, 687, 435, 862], "levels": [44, 45, 45, 46], "dialogue": {"intro": ["Piers: Right. Let's not drag this out. I'll battle you, and I'll do it without any Dynamax. I never needed it."], "player_won": ["Piers: ...Good battle. Here's the Dark Badge. Don't go easy on Leon."], "player_lost": ["Piers: I've been practicing this set. Come back when you can break through it."]}, "rewards": {"balls": 5}, "is_boss_battle": true, "badge_reward": "DARK", "movesets": {"560": ["FAKE-OUT", "SAND-ATTACK", "BRICK-BREAK", "PAYBACK"], "687": ["NIGHT-SLASH", "FOUL-PLAY", "PSYCHO-CUT", "PAYBACK"], "435": ["SUCKER-PUNCH", "SCREECH", "TOXIC", "SNARL"], "862": ["OBSTRUCT", "THROAT-CHOP", "COUNTER", "SHADOW-CLAW"]}}, "requirements": {"badges": 6, "fail_text": "Earn the Rock Badge first — and get past Team Yell guarding the gate!"}},
       "travel_options": [
         { "text": "Route 9 (to Circhester / Route 9 Tunnel)", "target_area": "GALAR_ROUTE_9" }
       ],
@@ -662,27 +540,7 @@
       "region": "GALAR",
       "backgrounds": { "main": "hammerlocke.png", "gym": "hammerlocke_gym.png", "vault": "hammerlocke_vault.png" },
       "has_gym": true,
-      "gym": {
-        "trainers": [],
-        "leader": {
-          "name": "Raihan",
-          "class": "GYM_LEADER",
-          "sprite": "raihan.png",
-          "team": [526, 330, 844, 884], "levels": [46, 47, 46, 48],
-          "dialogue": {
-            "intro": ["Raihan: Alright! Let's settle this quick — my fans are watching! I'll be using Dynamax, so buckle up!"],
-            "player_won": [
-              "Raihan: Incredible! That was AMAZING! Here's the Dragon Badge — now go beat Leon for both of us!",
-              "Here, take these fossils we dug up. Cara Liss in Stow-on-Side can piece them together!"
-            ],
-            "player_lost": ["Raihan: Ha! That's more like it! But you'll need to do better against Leon."]
-          },
-          "rewards": { "balls": 5, "FOSSILIZED_BIRD": 1, "FOSSILIZED_FISH": 1, "FOSSILIZED_DRAKE": 1, "FOSSILIZED_DINO": 1 },
-          "is_boss_battle": true,
-          "badge_reward": "DRAGON"
-        },
-        "requirements": { "badges": 7, "fail_text": "Earn the Dark Badge first!" }
-      },
+      "gym": {"trainers": [], "leader": {"name": "Raihan", "class": "GYM_LEADER", "sprite": "raihan.png", "team": [526, 330, 844, 884], "levels": [46, 47, 46, 48], "dialogue": {"intro": ["Raihan: Alright! Let's settle this quick — my fans are watching! I'll be using Dynamax, so buckle up!"], "player_won": ["Raihan: Incredible! That was AMAZING! Here's the Dragon Badge — now go beat Leon for both of us!", "Here, take these fossils we dug up. Cara Liss in Stow-on-Side can piece them together!"], "player_lost": ["Raihan: Ha! That's more like it! But you'll need to do better against Leon."]}, "rewards": {"balls": 5, "FOSSILIZED_BIRD": 1, "FOSSILIZED_FISH": 1, "FOSSILIZED_DRAKE": 1, "FOSSILIZED_DINO": 1}, "is_boss_battle": true, "badge_reward": "DRAGON", "movesets": {"526": ["STEALTH-ROCK", "SAND-TOMB", "ROCK-BLAST", "BODY-PRESS"], "330": ["THUNDER-PUNCH", "BREAKING-SWIPE", "CRUNCH", "STEEL-WING"], "844": ["PROTECT", "GLARE", "FIRE-FANG", "EARTH-POWER"], "884": ["BREAKING-SWIPE", "BODY-PRESS", "STONE-EDGE", "IRON-HEAD"]}}, "requirements": {"badges": 7, "fail_text": "Earn the Dark Badge first!"}},
       "travel_options": [
         { "text": "Route 7 (to Circhester)", "target_area": "GALAR_ROUTE_7" },
         { "text": "Route 6 (to Stow-on-Side)", "target_area": "GALAR_ROUTE_6" },
@@ -720,63 +578,7 @@
       "post_champion_events": [
         { "type": "npc_dialogue", "target": "galar_departure_to_paldea", "flag_condition": "not left_for_paldea", "victory_flag": "left_for_paldea" }
       ],
-      "gym": {
-        "trainers": [
-          {
-            "name": "Marnie",
-            "class": "RIVAL",
-            "sprite": "marnie.png",
-            "is_boss_battle": true,
-            "team": [510, 454, 560, 877, 861], "levels": [54, 54, 54, 55, 56],
-            "rewards": { "balls": 10 },
-            "dialogue": {
-              "intro": ["Marnie: I'm giving this everything I've got. Don't hold back."],
-              "player_won": ["Marnie: ...You were better. Piers will hear about this."],
-              "player_lost": ["Marnie: ...Sorry. Got a bit carried away."]
-            }
-          },
-          {
-            "name": "Hop",
-            "class": "PKMN_TRAINER",
-            "sprite": "hop.png",
-            "is_boss_battle": true,
-            "team": [832, 823, 871, 143, 818], "levels": [55, 55, 54, 54, 56],
-            "team_choice": {"810": [832, 823, 871, 143, 818], "813": [832, 823, 871, 143, 812], "816": [832, 823, 871, 143, 815]},
-            "rewards": { "balls": 15 },
-            "victory_flag": "defeated_hop_wyndon",
-            "dialogue": {
-              "intro": ["Hop: {player_name}! I've been waiting for this! I'm different from when we started!"],
-              "player_won": ["Hop: I lost again... but this time? I'm proud of how I battled."],
-              "player_lost": ["Hop: I've grown SO much! This means everything to me!"]
-            }
-          }
-        ],
-        "leader": {
-          "name": "Champion Leon",
-          "class": "CHAMPION",
-          "sprite": "leon.png",
-          "is_boss_battle": true,
-          "team": [681, 887, 612, 537, 815, 6], "levels": [62, 62, 63, 64, 64, 65],
-          "team_choice": {"810": [681, 887, 612, 537, 815, 6], "813": [681, 887, 612, 866, 818, 6], "816": [681, 887, 612, 464, 812, 6]},
-          "rewards": { "balls": 20, "GALAR_HALL_OF_FAME": 1 },
-          "victory_flag": "beat_galar_champion",
-          "dialogue": {
-            "intro": [
-              "Leon: You made it. You actually made it to the top!",
-              "I've beaten everyone who's stepped into this stadium.",
-              "But I've never faced someone like you.",
-              "Champion time — let's have ourselves an absolute banger of a battle!"
-            ],
-            "player_won": [
-              "Leon: ...Haha. You know what? That was incredible.",
-              "I lost. Properly lost! I can't remember the last time that happened.",
-              "You are the new Galar Champion, {player_name}. Champion time — it's YOUR time now!",
-              "Take care of this place. Galar deserves a champion as brilliant as you."
-            ],
-            "player_lost": ["Leon: Champion time — and I still won! Come back when you're ready to take the crown!"]
-          }
-        }
-      }
+      "gym": {"trainers": [{"name": "Marnie", "class": "RIVAL", "sprite": "marnie.png", "is_boss_battle": true, "team": [510, 454, 560, 877, 861], "levels": [54, 54, 54, 55, 56], "rewards": {"balls": 10}, "dialogue": {"intro": ["Marnie: I'm giving this everything I've got. Don't hold back."], "player_won": ["Marnie: ...You were better. Piers will hear about this."], "player_lost": ["Marnie: ...Sorry. Got a bit carried away."]}, "movesets": {"510": ["FAKE-OUT", "TORMENT", "NASTY-PLOT", "SNARL"], "454": ["VENOSHOCK", "SUCKER-PUNCH", "SWAGGER", "TOXIC"], "560": ["SWAGGER", "SCARY-FACE", "BRICK-BREAK", "CRUNCH"], "877": ["BULLET-SEED", "TORMENT", "SPARK", "BITE"], "861": ["SPIRIT-BREAK", "DARKEST-LARIAT", "BULK-UP", "TORMENT"]}}, {"name": "{rival_name}", "class": "PKMN_TRAINER", "sprite": "{rival_character}", "is_boss_battle": true, "team": [832, 823, 871, 143, 818], "levels": [55, 55, 54, 54, 56], "team_choice": {"810": [832, 823, 871, 143, 818], "813": [832, 823, 871, 143, 812], "816": [832, 823, 871, 143, 815]}, "rewards": {"balls": 15}, "victory_flag": "defeated_hop_wyndon", "dialogue": {"intro": ["{rival_name}: {player_name}! I've been waiting for this! I'm different from when we started!"], "player_won": ["{rival_name}: I lost again... but this time? I'm proud of how I battled."], "player_lost": ["{rival_name}: I've grown SO much! This means everything to me!"]}}], "leader": {"name": "Champion Leon", "class": "CHAMPION", "sprite": "leon.png", "is_boss_battle": true, "team": [681, 887, 612, 537, 815, 6], "levels": [62, 62, 63, 64, 64, 65], "team_choice": {"810": [681, 887, 612, 537, 815, 6], "813": [681, 887, 612, 866, 818, 6], "816": [681, 887, 612, 464, 812, 6]}, "rewards": {"balls": 20, "GALAR_HALL_OF_FAME": 1}, "victory_flag": "beat_galar_champion", "dialogue": {"intro": ["Leon: You made it. You actually made it to the top!", "I've beaten everyone who's stepped into this stadium.", "But I've never faced someone like you.", "Champion time — let's have ourselves an absolute banger of a battle!"], "player_won": ["Leon: ...Haha. You know what? That was incredible.", "I lost. Properly lost! I can't remember the last time that happened.", "You are the new Galar Champion, {player_name}. Champion time — it's YOUR time now!", "Take care of this place. Galar deserves a champion as brilliant as you."], "player_lost": ["Leon: Champion time — and I still won! Come back when you're ready to take the crown!"]}, "movesets": {"681": ["KINGS-SHIELD", "SHADOW-BALL", "SACRED-SWORD", "FLASH-CANNON"], "887": ["SHADOW-BALL", "FLAMETHROWER", "THUNDERBOLT", "DRAGON-BREATH"], "612": ["POISON-JAB", "IRON-TAIL", "OUTRAGE", "EARTHQUAKE"], "537": ["TOXIC", "DRAIN-PUNCH", "LIQUIDATION", "EARTHQUAKE"], "815": ["PYRO-BALL", "FEINT", "ACROBATICS", "QUICK-ATTACK"], "6": ["FIRE-BLAST", "AIR-SLASH", "SOLAR-BEAM", "ANCIENT-POWER"], "866": ["TEETER-DANCE", "PSYCHIC", "FREEZE-DRY", "THUNDERBOLT"], "818": ["SNIPE-SHOT", "DARK-PULSE", "MUD-SHOT", "TEARFUL-LOOK"], "464": ["EARTHQUAKE", "STONE-EDGE", "MEGAHORN", "HEAT-CRASH"], "812": ["DRUM-BEATING", "KNOCK-OFF", "HIGH&NBSP;HORSEPOWER", "ENDEAVOR"]}}}
     },
     "SLUMBERING_WEALD": {
       "area_type": "dungeon",
@@ -858,50 +660,7 @@
       "battle_type": "indoor",
       "wild_pool_percentages": null,
       "min_rounds": 0,
-      "trainer_pool": [
-        {
-          "name": "Oleana",
-          "class": "RIVAL",
-          "sprite": "oleana.png",
-          "is_boss_battle": true,
-          "team": [869, 858, 879, 868],
-          "rewards": { "balls": 10 },
-          "victory_flag": "oleana_defeated",
-          "dialogue": {
-            "intro": ["Oleana: I will not let you disrupt Mr. Rose's vision."],
-            "player_won": ["Oleana: ...I see. You truly cannot be stopped."],
-            "player_lost": ["Oleana: Efficient. Mr. Rose will be pleased."]
-          }
-        },
-        {
-          "name": "Chairman Rose",
-          "class": "RIVAL",
-          "sprite": "rose.png",
-          "is_boss_battle": true,
-          "team": [589, 598, 863, 601, 879],
-          "rewards": { "balls": 15 },
-          "victory_flag": "rose_tower_cleared",
-          "dialogue": {
-            "intro": ["galar_rose_villain"],
-            "player_won": ["Rose: ...You've stopped me. Good. Maybe the future can be different."],
-            "player_lost": ["Rose: The energy of the future flows through me. This is inevitable."]
-          }
-        },
-        {
-          "name": "Eternatus",
-          "class": "WILD",
-          "sprite": "eternatus.png",
-          "is_boss_battle": true,
-          "team": [890],
-          "rewards": { "balls": 20 },
-          "victory_flag": "eternatus_defeated",
-          "dialogue": {
-            "intro": ["galar_eternatus_encounter"],
-            "player_won": ["The ancient threat is subdued. Galar is safe — for now."],
-            "player_lost": ["The energy is overwhelming! Zacian and Zamazenta appear to help!"]
-          }
-        }
-      ],
+      "trainer_pool": [{"name": "Oleana", "class": "RIVAL", "sprite": "oleana.png", "is_boss_battle": true, "team": [869, 858, 879, 868], "rewards": {"balls": 10}, "victory_flag": "oleana_defeated", "dialogue": {"intro": ["Oleana: I will not let you disrupt Mr. Rose's vision."], "player_won": ["Oleana: ...I see. You truly cannot be stopped."], "player_lost": ["Oleana: Efficient. Mr. Rose will be pleased."]}}, {"name": "Chairman Rose", "class": "RIVAL", "sprite": "rose.png", "is_boss_battle": true, "team": [589, 598, 863, 601, 879], "rewards": {"balls": 15}, "victory_flag": "rose_tower_cleared", "dialogue": {"intro": ["galar_rose_villain"], "player_won": ["Rose: ...You've stopped me. Good. Maybe the future can be different."], "player_lost": ["Rose: The energy of the future flows through me. This is inevitable."]}, "movesets": {"589": ["DRILL-RUN", "IRON-HEAD", "MEGAHORN", "SWORDS-DANCE"], "598": ["GYRO-BALL", "POWER-WHIP", "BODY-PRESS", "CURSE"], "863": ["IRON-HEAD", "SCREECH", "SHADOW-CLAW", "THROAT-CHOP"], "601": ["GEAR-GRIND", "SHIFT-GEAR", "WILD-CHARGE", "ASSURANCE"], "879": ["HEAVY-SLAM", "IRON-HEAD", "HIGH&NBSP;HORSEPOWER", "ZEN-HEADBUTT"]}}, {"name": "Eternatus", "class": "WILD", "sprite": "eternatus.png", "is_boss_battle": true, "team": [890], "rewards": {"balls": 20}, "victory_flag": "eternatus_defeated", "dialogue": {"intro": ["galar_eternatus_encounter"], "player_won": ["The ancient threat is subdued. Galar is safe — for now."], "player_lost": ["The energy is overwhelming! Zacian and Zamazenta appear to help!"]}}],
       "route_menu": [
         { "text": "BATTLE ROSE TOWER", "action": "TRAINER", "condition": "has_trainers", "color": "GOLD", "flag_condition": "not eternatus_defeated" },
         { "text": "THE ENERGY PLANT ROOF", "action": "BOSS", "condition": "boss_available", "color": "GOLD" },
@@ -1182,9 +941,9 @@
           "rewards": { "balls": 5 }
         },
         {
-          "name": "Hop",
+          "name": "{rival_name}",
           "class": "PKMN_TRAINER",
-          "sprite": "hop.png",
+          "sprite": "{rival_character}",
           "is_boss_battle": true,
           "team": [884, 880, 851, 865, 812],
           "team_choice": {
@@ -1195,9 +954,9 @@
           "rewards": { "balls": 8 },
           "victory_flag": "defeated_hop_route10",
           "dialogue": {
-            "intro": ["Hop: {player_name}! I've been training so hard since Spikemuth. Let's do this!"],
-            "player_won": ["Hop: You just keep getting better... that's what I need to aim for!"],
-            "player_lost": ["Hop: YES! Everything I've worked for is paying off!"]
+            "intro": ["{rival_name}: {player_name}! I've been training so hard since Spikemuth. Let's do this!"],
+            "player_won": ["{rival_name}: You just keep getting better... that's what I need to aim for!"],
+            "player_lost": ["{rival_name}: YES! Everything I've worked for is paying off!"]
           }
         }
       ],
@@ -1306,18 +1065,7 @@
       "trainer_pool": [],
       "wild_pool_percentages": "GALAR_CROWN_OLD_CEMETERY_PERCENTAGES",
       "area_boss": { "id": 897, "name": "Spectrier", "victory_flag": "CROWN_OLD_CEMETERY_boss_defeated" },
-      "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        {
-          "text": "Lure Spectrier",
-          "action": "BOSS",
-          "condition": ["boss_not_defeated"],
-          "color": "GOLD"
-        },
-        { "text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE" },
-        { "text": "Crown Tundra", "action": "EXIT", "target_area": "CROWN_TUNDRA", "condition": "can_exit", "color": "RED" }
-      ],
+      "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "Lure Spectrier", "action": "BOSS", "condition": ["boss_not_defeated"], "color": "GOLD"}, {"text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE"}, {"text": "THE BLACK FOG", "action": "BOSS", "color": "PURPLE", "flag_condition": "not black_fog_banished_crown_old_cemetery", "boss": {"id": 10501, "name": "Black Fog", "level": 73, "no_catch": true, "victory_flag": "black_fog_banished_crown_old_cemetery", "lines": ["The air turns ice-cold. A black fog pours across the floor...", "Two huge eyes open in the dark. A giant Haunter rises: the Black Fog!", "Long ago people worshipped it as a god. It feeds on dreams. Don't let it get yours!"], "won": ["The Black Fog is too proud to ever be caught.", "It Self-Destructs in a burst of black mist... and is gone.", "But a cold whisper lingers: it will rise again in another haunted place."], "rewards": {"balls": 10, "RARE_CANDY": 3}}}, {"text": "Crown Tundra", "action": "EXIT", "target_area": "CROWN_TUNDRA", "condition": "can_exit", "color": "RED"}],
       "next_area": "CROWN_TUNDRA"
     },
     "CROWN_SNOWSLIDE_SLOPE": {

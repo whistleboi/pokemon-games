@@ -4,11 +4,14 @@ import random
 from src.states.base import GameState
 from src.utils import Utils
 from src.vfx.renderer import BattleRenderer
-from src.ui.panels import BattleActionMenu
-from src.ui.widgets import MathBattleUI, Button, MoveButton
+from src.ui.panels import BattleActionMenu, CommandButton
+from src.ui import theme
+from src.ui.widgets import MathBattleUI, Button, MoveButton, Backdrop
 from src.ui.dialogue import ClassicDialogueBox
 from src.pokemon.mechanics import TypeAdvantage
 from src.pokemon import forms
+from src.pokemon import catching
+from src.states.battle_effects import MoveEffects, usable_status
 from src.pokemon import balance
 from src.pokemon import evolution
 from src.pokemon import moves as movelib, affection
@@ -18,7 +21,7 @@ from src.config import WHITE, BLACK, GREEN, RED, GOLD, FPS
 
 
 # [REF-0024: Trainer Battle Core]
-class TrainerBattleState(GameState):
+class TrainerBattleState(MoveEffects, GameState):
     def __init__(
         self,
         game,
@@ -168,24 +171,26 @@ class TrainerBattleState(GameState):
             self.dialogue_box.visible = False
             self.setup_math_ui()
 
-        self.btn_yes = Button(
-            rect=(0, 0, 140, 60),
+        self.btn_yes = CommandButton(
+            rect=(0, 0, 180, 62),
             text="YES",
-            font=game.assets.fonts["small"],
+            font=game.assets.fonts["button"],
             callback=None,
-            bg_color=GREEN,
+            bg_color=theme.POKEMON,
             visible=False,
             autosize=False
         )
-        self.btn_no = Button(
-            rect=(0, 0, 140, 60),
+        self.btn_no = CommandButton(
+            rect=(0, 0, 180, 62),
             text="NO",
-            font=game.assets.fonts["small"],
+            font=game.assets.fonts["button"],
             callback=None,
-            bg_color=RED,
+            bg_color=theme.FIGHT,
             visible=False,
             autosize=False
         )
+        # A YES / NO prompt keeps its text clear of the buttons.
+        self.dialogue_box.reserve = lambda: self._prompt_reserve() if self.btn_yes.visible else 0
         self.is_shift_switch = False
         self.is_forced_switch = False  # read when a Ditto's Transform finishes
         if self.no_usable_party:
@@ -229,6 +234,20 @@ class TrainerBattleState(GameState):
                    "ROCK": (184, 160, 56), "GHOST": (112, 88, 152), "DRAGON": (112, 56, 248),
                    "DARK": (112, 88, 72), "STEEL": (160, 160, 192), "FAIRY": (238, 153, 172)}
 
+    def _place_yes_no(self):
+        """YES above NO at the right of the text box (the games' choice box), BALL beside them."""
+        box = self.dialogue_box.rect
+        w, h, pad, gap = 180, 62, 22, 12
+        self.btn_yes.rect = pygame.Rect(box.right - pad - w, box.y + pad, w, h)
+        self.btn_no.rect = pygame.Rect(box.right - pad - w, box.y + pad + h + gap, w, h)
+        if hasattr(self, "btn_ball"):
+            self.btn_ball.rect = pygame.Rect(self.btn_yes.rect.x - 16 - 290, box.centery - h // 2 - 2, 290, h)
+
+    def _prompt_reserve(self):
+        """Px of the text box the YES / NO (and BALL) buttons take up."""
+        ball = getattr(self, "btn_ball", None)
+        return self.dialogue_box.rect.right - (ball.rect.x if ball and ball.visible else self.btn_yes.rect.x) + 80  # (text starts 40 px in)
+
     def open_move_menu(self):
         """FIGHT: pick one of the four moves, then answer the math question to use it."""
         if self.phase != "MENU":
@@ -238,9 +257,13 @@ class TrainerBattleState(GameState):
         self.dialogue_box.set_visibility(False)
         box = Utils.get_full_dialogue_rect(self.game)
         names = self._battle_moves(self.player_pokemon)
-        bw, bh, gap = (box.width - 260) // 2, (box.height - 40) // 2, 12
-        font, small = self.game.assets.fonts["small"], self.game.assets.fonts["tiny"]
+        pad, gap, back_w = 16, 10, 170
+        bw = (box.width - pad * 3 - back_w - gap) // 2
+        bh = (box.height - pad * 2 - gap - 4) // 2
+        font, small = self.game.assets.fonts["button"], self.game.assets.fonts["label"]
         self._clear_move_buttons()
+        self._move_backdrop = Backdrop(box)  # the white text box behind the moves
+        self.game.ui_manager.add_element(self._move_backdrop)
         chart = TypeAdvantage(self.game.loader.area_data.get("TYPE_CHART", {}))
         own_types = {t.upper() for t in self.player_pokemon.types}
         for i, name in enumerate(names[:4]):
@@ -256,24 +279,27 @@ class TrainerBattleState(GameState):
                 detail = "Weather"
             else:
                 detail = movelib.STATUS_LABEL.get(d.get("ailment"), "STATUS").title()
-            x = box.x + 16 + (i % 2) * (bw + gap)
-            y = box.y + 14 + (i // 2) * (bh + gap)
+            x = box.x + pad + (i % 2) * (bw + gap)
+            y = box.y + pad + (i // 2) * (bh + gap)
             btn = MoveButton((x, y, bw, bh), name.replace("-", " "), font, small,
                              (lambda n=name: self.choose_move(n)), mtype or "???",
                              self.TYPE_COLORS.get(mtype, (120, 120, 120)), detail, effect,
                              stab=bool(power and mtype) and mtype.upper() in own_types)
             self.move_buttons.append(btn)
-        back = Button((box.right - 220, box.centery - 35, 200, 70), "BACK", self.game.assets.fonts["s_med"],
-                      self.close_move_menu, bg_color=RED, autosize=False)
+        from src.ui.panels import CommandButton
+        back = CommandButton((box.right - pad - back_w, box.y + pad, back_w, box.height - pad * 2 - 4), "BACK",
+                             self.game.assets.fonts["button"], self.close_move_menu, bg_color=(120, 124, 144),
+                             autosize=False)
         self.move_buttons.append(back)
         for btn in self.move_buttons:
             self.game.ui_manager.add_element(btn)
 
     def _clear_move_buttons(self):
-        for btn in self.move_buttons:
-            if btn in self.game.ui_manager.elements:
+        for btn in self.move_buttons + [getattr(self, "_move_backdrop", None)]:
+            if btn is not None and btn in self.game.ui_manager.elements:
                 self.game.ui_manager.elements.remove(btn)
         self.move_buttons = []
+        self._move_backdrop = None
 
     def close_move_menu(self):
         self._clear_move_buttons()
@@ -320,7 +346,7 @@ class TrainerBattleState(GameState):
                 text = lines + ["Your partner is worn out, but that was a great first battle!",
                                 "Your team was healed. Time to set off on your journey!"]
             else:
-                text = lines + ["Player is out of usable PKMN!", "Player whited out!"]
+                text = lines + ["Player is out of usable Pokémon!", "Player whited out!"]
             self.phase = "OUTRO"
 
         self.dialogue_box.reset(text)
@@ -412,14 +438,35 @@ class TrainerBattleState(GameState):
                 w = movelib.WEATHER_MOVES[name]
                 helps = {"RAIN": "WATER", "SUN": "FIRE", "SAND": "ROCK", "SNOW": "ICE"}[w] in (attacker.types or [])
                 score = 45 if (helps and self.weather != w and not self.weather_primal) else 0
+            elif self._can_inflict(d.get("ailment"), defender):
+                score = 40 * acc
             else:
-                score = 40 * acc if self._can_inflict(d.get("ailment"), defender) else 0
+                score = self._status_score(name, d, attacker, defender) * acc
             scored.append((score, name))
         scored = [x for x in scored if x[0] > 0] or scored
         scored.sort(reverse=True)
         if len(scored) > 1 and random.random() < 0.2:
             return random.choice(scored)[1]
         return scored[0][1]
+
+    def _status_score(self, name, d, attacker, defender):
+        """How much an opponent wants a status move now (0 = useless here)."""
+        meta, changes = d.get("category_meta"), d.get("stat_changes") or []
+        hp_share = self._hp(attacker) / max(1, self._max_hp(attacker))
+        if meta == "heal" or name in ("REST", "MOONLIGHT", "MORNING-SUN", "SYNTHESIS", "ROOST"):
+            return 70 if hp_share < 0.4 else 0
+        if d.get("ailment") == "confusion" or meta == "swagger":
+            return 0 if self.vol(defender).get("confused") else 30
+        if d.get("ailment") in ("leech-seed", "trap", "yawn", "infatuation"):
+            return 0 if self.vol(defender).get({"leech-seed": "seeded", "trap": "trapped", "yawn": "drowsy",
+                                                  "infatuation": "infatuated"}[d["ailment"]]) else 30
+        if changes:
+            if d.get("target") in ("user", "users-field", "user-and-allies") or all(n > 0 for _, n in changes):
+                return 30 if all(self.stages(attacker).get(s, 0) < 2 for s, _ in changes) else 0
+            return 25 if all(self.stages(defender).get(s, 0) > -2 for s, _ in changes) else 0
+        if name in ("PROTECT", "DETECT"):
+            return 10
+        return 15 if usable_status(d) else 0
 
     def _ready_attacks(self):
         """Effectiveness previews for the HUD: the player's chosen (or first) move and the
@@ -435,7 +482,15 @@ class TrainerBattleState(GameState):
         self.adv_player = eff if eff > 0 else 1.0
 
     def _check_forms(self):
-        """On every switch-in: extreme weather ends if its Pokemon left, then Mega/Primal changes."""
+        """On every switch-in: extreme weather ends if its Pokemon left, then Mega/Primal changes.
+        Stat stages and volatile conditions of a Pokemon that left end; entry hazards hit the new one."""
+        self.forget_switched_out()
+        seen = self.__dict__.setdefault("_on_field", set())
+        for mon in (self.player_pokemon, self.opponent_pokemon):
+            if mon and id(mon) not in seen:
+                seen.add(id(mon))
+                self._form_msgs.extend(self.entry_hazards(mon))
+        seen.intersection_update({id(self.player_pokemon), id(self.opponent_pokemon)})
         if self.weather_primal and self.weather_primal not in (self.player_pokemon, self.opponent_pokemon):
             self._form_msgs.append(self.WEATHER_TEXT[self.weather][2])
             self.weather, self.weather_primal, self.weather_turns = None, None, 0
@@ -587,8 +642,16 @@ class TrainerBattleState(GameState):
             else:
                 self.opponent_hp -= chip
                 mon.current_hp = self.opponent_hp
-            out.append(f"{label} is hurt by its {'burn' if st == 'burn' else 'poison'}!")
+            out.append(f"{label} is hurt by its {'burn' if st == 'burn' else 'poison'}! It lost {chip} HP.")
+            explained = self.__dict__.setdefault("_status_explained", set())
+            if st not in explained:  # the first time in a battle: what the status does
+                explained.add(st)
+                out.append(self.STATUS_HELP[st])
         return out
+
+    STATUS_HELP = {"burn": "A burn takes 1/16 of its HP at the end of every turn and weakens its physical moves.",
+                   "poison": "Poison takes 1/8 of its HP at the end of every turn.",
+                   "toxic": "Bad poison takes more HP every turn it stays in battle."}
 
     def _count_weather_on_faint(self):
         """A knockout still ends the turn: the weather counts down so it can't outlast its
@@ -697,9 +760,17 @@ class TrainerBattleState(GameState):
         mode = getattr(self, "_answer_mode", None) if attacker is self.player_pokemon else None
         if mode == "crit":
             crit_stage = (crit_stage or 0) + 1
+        crit_stage = (crit_stage or 0) + self.vol(attacker).get("focus", 0)  # Focus Energy
+        base = balance.CRIT_STAGES[max(0, min(int(crit_stage or 0), 3))]
         if attacker is self.player_pokemon:  # 5 hearts of affection: crits twice as often
-            base = balance.CRIT_STAGES[max(0, min(int(crit_stage or 0), 3))]
             crit = random.random() < min(1.0, affection.crit_chance(attacker, base))
+        else:
+            crit = random.random() < base
+        if self.vol(attacker).get("laser_focus"):
+            crit = True
+        # Stat stages (a critical hit ignores the attacker's drops and the defender's boosts).
+        attack = attack * self.stat_mult(attacker, "SPATK" if special else "ATTACK", crit, True)
+        defense = defense * self.stat_mult(defender, "SPDEF" if special else "DEFENSE", crit, False)
         if mode == "weak":
             roll = random.randint(*self.WEAK_ROLL)
         elif mode == "max_roll":
@@ -708,6 +779,13 @@ class TrainerBattleState(GameState):
             self._level(attacker), power, attack, defense,
             stab=move_type in (attacker.types or []), effectiveness=effectiveness, weather=weather,
             crit=crit, crit_stage=crit_stage, roll=roll)
+        foe_side = self.side(defender)
+        if dmg and not self._last_was_crit and (foe_side.get("aurora_veil") or foe_side.get(
+                "light_screen" if special else "reflect")):
+            dmg = max(1, dmg // 2)  # Reflect / Light Screen / Aurora Veil
+        if dmg and ((move_type == "ELECTRIC" and self.field().get("mud_sport"))
+                    or (move_type == "FIRE" and self.field().get("water_sport"))):
+            dmg = max(1, dmg // 3)
         if mode and weather != 0:
             self._answer_used = mode if mode != "crit" or self._last_was_crit else None
         return dmg
@@ -727,6 +805,7 @@ class TrainerBattleState(GameState):
     QUICK_MS = 2000
     QUICK_BONUSES = ("max_roll", "crit", "flinch")
     WEAK_ROLL = (75, 85)       # a wrong answer: below the usual 85-100% damage roll
+    WRONG_ANSWER_CAP = 49      # ...and at most 49% of the foe's max HP per move
     QUICK_FLINCH = 30          # % chance the quick-answer flinch bonus works
     FEEDBACK_FRAMES = {True: 16, False: 24}  # ~0.6 s / ~1 s at 25 FPS
 
@@ -813,6 +892,10 @@ class TrainerBattleState(GameState):
         self.dialogue_box.set_visibility(False)
 
     def handle_run(self):
+        v = self.vol(self.player_pokemon)
+        if self.trainer_class == "WILD" and (v.get("no_escape") or v.get("trapped")):
+            self.show_message("You can't escape!", callback=self.return_to_menu)
+            return
         if self.trainer_class == "WILD":
             self.show_message(
                 "Got away safely!", callback=self.on_flee_complete
@@ -988,7 +1071,9 @@ class TrainerBattleState(GameState):
         white_out(self.game)
 
     def _speed(self, mon):
-        return mon.stat_value("SPEED") * (0.5 if getattr(mon, "status", None) == "paralysis" else 1)
+        speed = mon.stat_value("SPEED") * (0.5 if getattr(mon, "status", None) == "paralysis" else 1)
+        speed *= self.speed_mult(mon)  # Speed stages, Tailwind
+        return -speed if self.field().get("trick_room") else speed  # Trick Room: slower first
 
     def resolve_turn(self, player_was_correct):
         """Both Pokemon act in Speed order (move priority first). The answer changes how well
@@ -1122,6 +1207,10 @@ class TrainerBattleState(GameState):
     def _use_move(self, attacker, defender, name, att_label, def_label, defender_max_hp, defender_hp):
         """Run one move. Returns (damage dealt, message lines, was_effective_hit)."""
         d = movelib.info(self.game, name)
+        blocked = self.move_blocked(attacker, name, d)  # Taunt, Disable
+        if blocked:
+            return 0, [blocked], False
+        self.vol(attacker)["last_move"] = name
         lines = [self.game.assets.get_text("used_move", name=att_label, move=name.replace("-", " "))]
         self._last_was_crit = False  # fixed-damage/charge/status turns never crit
         charging = self.__dict__.setdefault("_charging", {})
@@ -1142,8 +1231,11 @@ class TrainerBattleState(GameState):
             if name not in hits:
                 return 0, lines + [f"{def_label} avoided the attack!"], False
             semi_mult = hits[name]
+        if self.protected(attacker, defender, d):
+            return 0, lines + [f"{def_label} protected itself!"], False
         acc = d.get("accuracy")
-        if acc and random.uniform(0, 100) >= acc:
+        if acc and d.get("target") != "user" and d.get("category_meta") != "ohko" \
+                and random.uniform(0, 100) >= acc * self.acc_mult(attacker, defender):
             return 0, lines + [f"{att_label}'s attack missed!"], False
         if (defender is self.player_pokemon and attacker is not defender and name not in movelib.WEATHER_MOVES
                 and affection.evades(defender)):
@@ -1161,6 +1253,8 @@ class TrainerBattleState(GameState):
             kind = movelib.FIXED_DAMAGE[name]
             dmg = (self._level(attacker) if kind == "level" else max(1, defender_hp // 2) if kind == "half"
                    else int(kind))
+            if attacker is self.player_pokemon and getattr(self, "_answer_mode", None) == "weak":
+                dmg = min(dmg, max(1, defender_max_hp * self.WRONG_ANSWER_CAP // 100))  # (see below)
             return min(dmg, defender_hp), lines, False
         if name == movelib.STRUGGLE:
             dmg = self._calculate_damage(attacker, defender, 50, 1.0, 1.0, category="PHYSICAL",
@@ -1168,10 +1262,37 @@ class TrainerBattleState(GameState):
             mx = self.player_max_hp if attacker is self.player_pokemon else self.opp_max_hp
             self._adjust_hp(attacker, -max(1, mx // 4))
             return dmg, lines + [f"{att_label} is hit with recoil!"], False
+        if d.get("category_meta") == "ohko":  # Fissure, Guillotine, Horn Drill, Sheer Cold
+            lv_a, lv_d = self._level(attacker), self._level(defender)
+            chart = TypeAdvantage(self.game.loader.area_data.get("TYPE_CHART", {}))
+            if chart.get_multiplier(d["type"], defender.types) == 0:
+                return 0, lines + [f"It doesn't affect {def_label}..."], False
+            if lv_a < lv_d or random.uniform(0, 100) >= 30 + lv_a - lv_d:
+                return 0, lines + [f"{att_label}'s attack missed!"], False
+            dmg = defender_hp
+            if attacker is self.player_pokemon and getattr(self, "_answer_mode", None) == "weak":
+                dmg = min(dmg, max(1, defender_max_hp * self.WRONG_ANSWER_CAP // 100))
+                return dmg, lines + ["The answer was off, so it wasn't a one-hit KO."], False
+            return dmg, lines + ["It's a one-hit KO!"], False
         if not (d.get("power") or 0):
-            if self._status_move_works(d, defender):
-                ailment = "toxic" if name == "TOXIC" else d["ailment"]
-                return 0, lines + [self._inflict(ailment, defender, def_label)], False
+            if attacker is self.player_pokemon and getattr(self, "_answer_mode", None) == "weak" \
+                    and random.random() < 0.5:
+                return 0, lines + ["The answer was off, so the move didn't work!"], False
+            if d.get("ailment") in movelib.STATUSES and d.get("category_meta") == "ailment":
+                if self._status_move_works(d, defender) and not self.vol(defender).get("substitute") \
+                        and not self.side(defender).get("safeguard"):
+                    ailment = "toxic" if name == "TOXIC" else d["ailment"]
+                    return 0, lines + [self._inflict(ailment, defender, def_label)], False
+                return 0, lines + ["But it failed!"], False
+            extra = self.status_effect(name, d, attacker, defender, att_label, def_label)
+            pick = getattr(self, "_metronome", None)
+            if pick:  # Metronome: the random move runs now
+                self._metronome = None
+                dmg, more, eff = self._use_move(attacker, defender, pick, att_label, def_label,
+                                                defender_max_hp, defender_hp)
+                return dmg, lines + (extra or []) + more[1:], eff
+            if extra is not None:
+                return 0, lines + extra, False
             return 0, lines + ["But it failed!"], False
         chart = TypeAdvantage(self.game.loader.area_data.get("TYPE_CHART", {}))
         eff = chart.get_multiplier(d["type"], defender.types) if d.get("type") else 1.0
@@ -1194,6 +1315,16 @@ class TrainerBattleState(GameState):
         self._last_was_crit = crit_any
         if semi_mult != 1 and damage:
             damage *= semi_mult  # Gust vs Fly, Earthquake vs Dig, Surf vs Dive: double damage
+        if damage and attacker is self.player_pokemon and getattr(self, "_answer_mode", None) == "weak":
+            # Jordan: a wrong answer can never take more than 49% of the foe's HP (all hits
+            # together), so tapping answers at random can't knock anything out in one go.
+            damage = min(damage, max(1, defender_max_hp * self.WRONG_ANSWER_CAP // 100))
+        if damage and attacker is not defender:  # a Substitute takes the hit
+            damage, sub_lines = self.absorb_with_substitute(defender, damage, def_label)
+            lines += sub_lines
+        if damage >= defender_hp > 1 and self.vol(defender).get("endure"):
+            damage = defender_hp - 1
+            lines.append(f"{def_label} endured the hit!")
         if landed > 1:
             lines.append(f"Hit {landed} times!")
         # Drain (Giga Drain +50) heals the user; negative drain is recoil (Take Down -25).
@@ -1225,6 +1356,7 @@ class TrainerBattleState(GameState):
         if getattr(defender, "status", None) == "freeze" and d["type"] == "FIRE" and damage:
             defender.status = None
             lines.append(f"{def_label} thawed out!")
+        lines += self.after_hit(name, d, attacker, defender, att_label, def_label, damage, damage < defender_hp)
         return damage, lines, eff > 1.0
 
     def player_attack(self):
@@ -1243,19 +1375,23 @@ class TrainerBattleState(GameState):
             self.feedback_timer = 30
             return
         stopped, pre = self._status_stops(mon, label)
+        if not stopped:
+            stopped, more = self.before_move(mon)  # confusion, infatuation
+            pre = pre + more
         if stopped:
             self.dialogue_box.reset(pre)
             self.dialogue_box.set_visibility(True)
             self.feedback_timer = 30
             return
 
-        name = self._forced_move(mon) or self.chosen_move or self._battle_moves(mon)[0]
+        name = (self._forced_move(mon) or self.forced_effect_move(mon) or self.chosen_move
+                or self._battle_moves(mon)[0])
         self.player_move = name.replace("-", " ")
         self._answer_used = None
         damage, messages, _ = self._use_move(mon, self.opponent_pokemon, name, label,
                                              f"Foe {self.opponent_pokemon.display_name.upper()}",
                                              self.opp_max_hp // getattr(self, "opp_hp_mult", 1), self.opponent_hp)
-        messages = pre + messages + self._answer_notes(label, damage)
+        messages = pre + messages + self._answer_notes(label, damage) + self.end_rampage_turn(mon)
         self._answer_mode = None
         self.opponent_hp = max(0, self.opponent_hp - damage)
         self.opponent_pokemon.current_hp = self.opponent_hp
@@ -1281,9 +1417,19 @@ class TrainerBattleState(GameState):
             self.dialogue_box.callback = self._start_faint_animation
             self.phase = "MESSAGE"
 
+        self._end_if_fled(messages)
         self.dialogue_box.reset(messages)
         self.dialogue_box.set_visibility(True)
         self.feedback_timer = 30
+
+    def _end_if_fled(self, messages):
+        """Teleport, Roar or Whirlwind in a wild battle: the battle ends after the message."""
+        if getattr(self, "_flee_by_move", None) is None:
+            return
+        self._flee_by_move = None
+        self.turn_actions.clear()
+        self.phase = "MESSAGE"
+        self.dialogue_box.callback = self.on_flee_complete
 
     def _answer_notes(self, label, damage):
         """Explain what the math answer did to this move (only when it made a difference)."""
@@ -1309,18 +1455,22 @@ class TrainerBattleState(GameState):
         foe = self.opponent_pokemon
         label = f"Foe {foe.display_name.upper()}"
         stopped, pre = self._status_stops(foe, label)
+        if not stopped:
+            stopped, more = self.before_move(foe)  # confusion, infatuation
+            pre = pre + more
         if stopped:
             self.dialogue_box.reset(pre)
             self.dialogue_box.set_visibility(True)
             self.feedback_timer = 30
             return
         mon = self.player_pokemon
-        name = self._forced_move(foe) or getattr(self, "_foe_next_move", None) or self._ai_choose(foe, mon)
+        name = (self._forced_move(foe) or self.forced_effect_move(foe) or getattr(self, "_foe_next_move", None)
+                or self._ai_choose(foe, mon))
         self._foe_next_move = None
         self.opponent_move = name.replace("-", " ")
         damage, messages, _ = self._use_move(foe, mon, name, label, mon.display_name.upper(),
                                              self.player_max_hp, self.player_hp)
-        messages = pre + messages
+        messages = pre + messages + self.end_rampage_turn(foe)
         if damage >= self.player_hp > 1 and affection.endures(mon):
             damage = self.player_hp - 1
             messages.append(affection.ENDURE_TEXT.format(n=mon.display_name.upper()))
@@ -1340,6 +1490,7 @@ class TrainerBattleState(GameState):
             self.dialogue_box.callback = self._start_faint_animation
             self.phase = "MESSAGE"
 
+        self._end_if_fled(messages)
         self.dialogue_box.reset(messages)
         self.dialogue_box.set_visibility(True)
         self.feedback_timer = 30
@@ -1542,7 +1693,7 @@ class TrainerBattleState(GameState):
             return
 
         if self.battle_type == "rival":
-            if self.trainer_name == "SILVER":
+            if self.game.story_manager.get_current_region() == "JOHTO":  # Silver (whatever he's called)
                 self.game.story_manager.story_flags["defeated_rival_johto"] = True
             else:
                 self.game.story_manager.story_flags["defeated_rival_kanto"] = True
@@ -1637,6 +1788,7 @@ class TrainerBattleState(GameState):
 
     def update(self):
         self.anim_ctrl.update()
+        self.renderer.tick()
 
         if self.phase == "ANSWER_FEEDBACK":
             self._tick_answer_feedback()
@@ -1674,19 +1826,7 @@ class TrainerBattleState(GameState):
                         if self.current_opponent_idx + 1 < len(self.opponent_team) and bench:
                             self.phase = "SWITCH_PROMPT"
                             next_poke = self.opponent_team[self.current_opponent_idx + 1]
-                            box = self.dialogue_box.rect
-
-                            btn_w, btn_h = 140, 60
-                            self.btn_yes.rect = pygame.Rect(
-                                box.right - 300,
-                                box.bottom - 80,
-                                btn_w, btn_h
-                            )
-                            self.btn_no.rect = pygame.Rect(
-                                box.right - 140,
-                                box.bottom - 80,
-                                btn_w, btn_h
-                            )
+                            self._place_yes_no()
 
                             self.btn_yes.text = "YES"
                             self.btn_no.text = "NO"
@@ -1697,7 +1837,7 @@ class TrainerBattleState(GameState):
 
                             tr_display = (self.trainer_name
                                           or self.trainer_class)
-                            msg = f"{tr_display} is about to use {next_poke.display_name}! Change PKMN?"
+                            msg = f"{tr_display} is about to use {next_poke.display_name}! Change Pokémon?"
                             self.dialogue_box.reset(msg)
                             self.dialogue_box.set_visibility(True)
                             self.dialogue_box.callback = None
@@ -1817,6 +1957,8 @@ class TrainerBattleState(GameState):
             if self.dialogue_box.visible:
                 if not self.dialogue_box.is_finished:
                     return
+            if self.renderer.hp_animating() or self.anim_ctrl.is_lunging:
+                return  # the next message waits for the attack and the HP bar
 
             if self.feedback_timer == 0:
                 self.dialogue_box.visible = False
@@ -1834,7 +1976,7 @@ class TrainerBattleState(GameState):
                     action()
                 elif not self._turn_end_done and self.player_hp > 0 and self.opponent_hp > 0:
                     self._turn_end_done = True
-                    weather_msgs = self._weather_end_of_turn()
+                    weather_msgs = self._weather_end_of_turn() + self.effects_end_of_turn()
                     if weather_msgs:
                         self.dialogue_box.reset(weather_msgs)
                         self.dialogue_box.set_visibility(True)
@@ -1966,18 +2108,25 @@ class WildBattleState(TrainerBattleState):
             return False  # an uncatchable boss (Paldea titans): the win goes through trigger_outro
         if self.opponent_pokemon.id == 10500:
             return False
+        if not self.game.story_manager.catch_unlocked():  # Hoenn: no Pokedex from Birch yet
+            return False
         if self.opponent_pokemon.id == 245 and not self.game.story_manager.story_flags.get("suicune_encountered"):
             return False
 
-        if self.game.states["play"].balls_left > 0:
+        story = self.game.story_manager
+        if catching.total_balls(story) > 0:
             self.phase = "CATCH_PROMPT"
-            self.dialogue_box.reset(f"{self.opponent_pokemon.name} is weak! Throw ball?")
+            self._catch_prompt_text()
             self.catch_timer = 15 * FPS
 
-            box = self.dialogue_box.rect
-            btn_w, btn_h = 140, 60
-            self.btn_yes.rect = pygame.Rect(box.right - 300, box.bottom - 80, btn_w, btn_h)
-            self.btn_no.rect = pygame.Rect(box.right - 140, box.bottom - 80, btn_w, btn_h)
+            # Which ball to throw (only when you have more than one kind).
+            if not hasattr(self, "btn_ball"):
+                self.btn_ball = CommandButton((0, 0, 240, 62), "", self.game.assets.fonts["label"], self._next_ball,
+                                              bg_color=theme.RUN, autosize=False)
+                self.game.ui_manager.add_element(self.btn_ball)
+            self.btn_ball.set_visibility(len(catching.balls_owned(story)) > 1)
+            self._place_yes_no()
+            self._catch_prompt_text()
 
             self.btn_yes.set_visibility(True)
             self.btn_no.set_visibility(True)
@@ -2048,15 +2197,7 @@ class WildBattleState(TrainerBattleState):
             self.dialogue_box.reset(f"Will you catch {self.opponent_pokemon.name}?")
             self.catch_timer = 15 * FPS
 
-            box = self.dialogue_box.rect
-            btn_w, btn_h = 140, 60
-
-            self.btn_yes.rect = pygame.Rect(
-                box.right - 300, box.bottom - 80, btn_w, btn_h
-            )
-            self.btn_no.rect = pygame.Rect(
-                box.right - 140, box.bottom - 80, btn_w, btn_h
-            )
+            self._place_yes_no()
 
             self.btn_yes.set_visibility(True)
             self.btn_no.set_visibility(True)
@@ -2074,18 +2215,62 @@ class WildBattleState(TrainerBattleState):
         pokemon.gmax_factor = boss.form == "gmax"
         return pokemon
 
+    def _catch_prompt_text(self):
+        story = self.game.story_manager
+        ball = catching.selected(story)
+        count = catching.owned(story, ball)
+        if getattr(self, "btn_ball", None) is not None:
+            self.btn_ball.text = f"{catching.label(ball)} x{count}"
+        many = len(catching.balls_owned(story)) > 1  # the BALL button shows the count
+        self.dialogue_box.reset(f"{self.opponent_pokemon.name} is weak!\nThrow a {catching.label(ball)}?"
+                                + ("" if many else f" ({count} left)"))
+
+    def _next_ball(self):
+        story = self.game.story_manager
+        catching.cycle(story)
+        self._catch_prompt_text()
+        self.catch_timer = 15 * FPS
+
+    # The games' lines when a Pokemon breaks free, by how many times the ball shook.
+    BREAK_FREE = ("Oh no! The Pokemon broke free!", "Aww! It appeared to be caught!",
+                  "Aargh! Almost had it!", "Gah! It was so close, too!")
+
     def catch_yes(self):
+        """Throw the chosen ball: the games' catch formula decides (src/pokemon/catching.py). A
+        knocked-out Pokemon counts as having 1 HP left."""
         self.phase = "CATCH_ANIMATION"
         self.catch_phase = "THROWN"
-        self.game.states["play"].balls_left -= 1
+        story = self.game.story_manager
+        ball = catching.selected(story)
+        catching.use(story, ball)
+        self._thrown_ball = ball
+        foe = self.opponent_pokemon
+        terrain = self.game.loader.area_data.get("STORY_PROGRESSION", {}).get(
+            story.current_area_key, {}).get("battle_type", "")
+        kw = dict(hp=max(1, self.opponent_hp), max_hp=self.opp_max_hp, turn=max(1, self.turn_count),
+                  fishing=getattr(self, "fishing", False), terrain=terrain)
+        if getattr(self, "_mid_battle_throw", False):  # from the Bag mid-battle: the plain odds
+            self._catch_result = catching.throw(self.game, foe, ball, **kw)
+        else:  # the catch window: bosses are a sure catch, other fails are halved
+            self._catch_result = catching.window_throw(self.game, foe, ball, guaranteed=self._sure_catch(), **kw)
+        img = self.game.assets.get_item_image(ball if ball != catching.POKE else "POKE_BALL")
+        self.ball_img = pygame.transform.scale(img, (84, 84)) if img else self.game.assets.ball_imgs[0]
 
         self.btn_yes.set_visibility(False)
         self.btn_no.set_visibility(False)
+        if hasattr(self, "btn_ball"):
+            self.btn_ball.set_visibility(False)
 
         self.anim_ctrl.impact_shake = 0
 
         self.ball_pos = [self.game.width * 0.27, self.game.height * 0.69]
         self.ball_target = [self.game.width * 0.73, self.game.height * 0.39]
+
+    def _sure_catch(self):
+        """Legendaries, mythicals and boss Pokemon are a sure catch at the catch window (Jordan)."""
+        foe = self.opponent_pokemon
+        return bool(balance.is_legendary(foe.id) or self.victory_flag or self.is_boss_battle
+                    or foe.id in self.game.loader.all_boss_ids)
 
     def _record_boss_win(self):
         """A beaten boss counts for the story whether or not it is caught (Jordan's rule).
@@ -2102,6 +2287,8 @@ class WildBattleState(TrainerBattleState):
     def catch_no(self):
         self.btn_yes.set_visibility(False)
         self.btn_no.set_visibility(False)
+        if hasattr(self, "btn_ball"):
+            self.btn_ball.set_visibility(False)
         # Saying NO (or letting the 15 s prompt run out) after a KO still counts as a win.
         form = (self.game.loader.area_data.get("FORM_MAP", {}).get(str(self.opponent_pokemon.id)) or {}).get("form")
         if self.opponent_hp <= 0 and form not in ("crystal", "shadow"):
@@ -2124,11 +2311,15 @@ class WildBattleState(TrainerBattleState):
 
                 if abs(self.ball_pos[1] - self.ball_target[1]) < 10:
                     self.catch_phase = "SHAKE"
-                    self.shake_timer = 60
+                    # one wobble per shake check passed (a critical capture wobbles once)
+                    self.shake_timer = 20 + 20 * getattr(self, "_catch_result", (True, 3, False))[1]
             elif self.catch_phase == "SHAKE":
                 self.shake_timer -= 1
                 if self.shake_timer <= 0:
-                    success = True
+                    success, shakes, critical = getattr(self, "_catch_result", (True, 3, False))
+                    if not success:
+                        self._broke_free(shakes)
+                        return
 
                     if success:
                         if self.victory_flag:
@@ -2144,11 +2335,12 @@ class WildBattleState(TrainerBattleState):
 
                         self.player_won = True
                         self.catch_phase = "CAUGHT"
-                        self.dialogue_box.reset(
-                            self.game.assets.get_text(
-                                "caught_pokemon", name=self.opponent_pokemon.name
-                            )
-                        )
+                        caught_lines = self.game.assets.get_text("caught_pokemon", name=self.opponent_pokemon.name)
+                        caught_lines = caught_lines if isinstance(caught_lines, list) else [caught_lines]
+                        if critical:
+                            caught_lines = ["A critical capture!"] + caught_lines
+                        self.dialogue_box.reset(caught_lines)
+                        catching.after_catch(self.game, caught, getattr(self, "_thrown_ball", None))
                         self.game.states["play"].p_data = [
                             None,
                             caught,
@@ -2166,6 +2358,33 @@ class WildBattleState(TrainerBattleState):
             return
 
         super().update()
+
+    def throw_from_bag(self):
+        """A ball thrown from the Bag during a wild battle (it still has its HP): the foe gets its
+        turn if the ball doesn't hold."""
+        self._mid_battle_throw = True
+        self.action_menu.set_visibility(False)
+        if self.math_ui:
+            self.math_ui.set_visibility(False)
+        self.dialogue_box.reset([f"{self.game.player_name} threw a "
+                                 f"{catching.label(catching.selected(self.game.story_manager))}!"])
+        self.dialogue_box.set_visibility(True)
+        self.catch_yes()
+
+    def _broke_free(self, shakes):
+        """The ball didn't hold: say so, then offer another throw (or end it if you're out)."""
+        self.catch_phase = "DECISION"
+        self.phase = "MESSAGE"
+        lines = [self.BREAK_FREE[min(shakes, 3)]]
+        story = self.game.story_manager
+        if getattr(self, "_mid_battle_throw", False) and self.opponent_hp > 0:
+            self._mid_battle_throw = False
+            self.show_message(lines, callback=self.on_item_used)  # the foe's turn
+            return
+        if catching.total_balls(story) > 0:
+            self.show_message(lines, callback=self.try_trigger_wild_catch_prompt)
+        else:
+            self.show_message(lines + ["You're out of Poke Balls!"], callback=self.catch_no)
 
     def _on_catch_exit(self):
         from src.states.overworld import PlayState

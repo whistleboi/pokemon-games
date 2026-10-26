@@ -19,6 +19,8 @@ for area, a in prog.items():
         if isinstance(o, dict):
             if o.get("action") == "NPC" and o.get("target") in story_events.EVENTS:
                 where.setdefault(o["target"], area)
+            if o.get("type") == "event" and o.get("event") in story_events.EVENTS:  # on arrival
+                where.setdefault(o["event"], area)
             for v in o.values():
                 walk(v)
         elif isinstance(o, list):
@@ -91,6 +93,16 @@ for key, ev in story_events.EVENTS.items():
                     check(after == team_before + 1, f"{key}: gift Pokemon {item} received")
                 elif item != "balls":
                     check(story.inventory.get(item, 0) > 0, f"{key}: reward {item}")
+    elif ev.get("scene"):  # a scene that plays itself (Wally's Ralts), then the event finishes
+        box = getattr(cur, "npc_dialogue", None) or getattr(cur, "dialogue_box", None)
+        if box is not None and box.callback:  # the lines before it, then the scene
+            box.callback()
+        scene = g.current_state
+        for _ in range(3000):
+            if g.current_state is not scene:
+                break
+            scene.update()
+        check(g.current_state is not scene and story.story_flags.get(flag), f"{key}: the scene ends and sets {flag}")
     else:
         lines = shown(cur)
         check(bool(lines) and all("{" not in l for l in lines), f"{key} @ {area}: {lines[:1]}")

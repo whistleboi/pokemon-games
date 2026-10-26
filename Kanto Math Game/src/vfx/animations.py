@@ -4,33 +4,66 @@ import pygame
 
 # [REF-0016: Battle Animations]
 class AnimationController:
-    """Manages visual states like lunging, shaking, and flashing."""
+    """Attack animations, like the games: the attacker lunges toward the foe (eased, out and back),
+    and at the peak the foe is hit: it blinks and is knocked back a little. (The old version shook
+    the whole screen 15 px on every attack.)"""
+
+    LUNGE_FRAMES = 16
+    HIT_AT = 6          # the lunge frame where the blow lands
+    HIT_FRAMES = 18     # how long the foe blinks
 
     def __init__(self):
         self.lunge_timer = 0
         self.is_lunging = False
         self.lunge_side = None
         self.impact_flash = 0
-        self.impact_shake = 0
+        self.impact_shake = 0   # (kept for older code; the screen no longer shakes)
+        self.hit_side = None
+        self.hit_timer = 0
 
     def start_lunge(self, side):
         self.is_lunging = True
         self.lunge_side = side
         self.lunge_timer = 0
-        self.impact_shake = 15
+
+    def lunge_amount(self):
+        """0..1: how far forward the attacker is (fast out, eased back)."""
+        if not self.is_lunging:
+            return 0.0
+        t = self.lunge_timer
+        if t <= self.HIT_AT:
+            k = t / self.HIT_AT
+            return 1 - (1 - k) ** 2
+        k = (t - self.HIT_AT) / (self.LUNGE_FRAMES - self.HIT_AT)
+        return max(0.0, 1 - k * k)
+
+    def hit_visible(self, side):
+        """False on the blink frames of the Pokemon that was just hit."""
+        return not (self.hit_timer > 0 and self.hit_side == side and (self.hit_timer // 3) % 2 == 0)
+
+    def knockback(self, side):
+        """A small push away from the attacker while it's hit."""
+        if self.hit_timer <= 0 or self.hit_side != side:
+            return 0
+        return int(10 * self.hit_timer / self.HIT_FRAMES)
 
     def update(self):
         if self.is_lunging:
             self.lunge_timer += 1
-            if self.lunge_timer >= 20:
+            if self.lunge_timer == self.HIT_AT:
+                self.hit_side = "opponent" if self.lunge_side == "player" else "player"
+                self.hit_timer = self.HIT_FRAMES
+            if self.lunge_timer >= self.LUNGE_FRAMES:
                 self.is_lunging = False
                 self.lunge_timer = 0
+        if self.hit_timer > 0:
+            self.hit_timer -= 1
         if self.impact_flash > 0:
             self.impact_flash -= 1
         if self.impact_shake > 0:
             self.impact_shake -= 1
 
-            
+
 # [REF-0054: Fainting Animation]
 class FaintAnimation:
     """Handles Pokémon fainting animation."""

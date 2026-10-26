@@ -2595,7 +2595,7 @@
           "trainer": {
             "name": "{rival_name}",
             "class": "PKMN_TRAINER",
-            "sprite": "barry.png",
+            "sprite": "{rival_character}",
             "team": [390],
             "team_choice": { "387": [390], "390": [393], "393": [387] },
             "rewards": { "balls": 5 },
@@ -2607,7 +2607,7 @@
           "trainer": {
             "name": "{rival_name}",
             "class": "PKMN_TRAINER",
-            "sprite": "barry.png",
+            "sprite": "{rival_character}",
             "team": [390],
             "team_choice": { "387": [390], "390": [393], "393": [387] },
             "rewards": { "balls": 5 },
@@ -2672,51 +2672,7 @@
       "region": "SINNOH",
       "backgrounds": { "main": "oreburgh_city.png", "pokecenter": "oreburgh_center.png", "pokemart": "oreburgh_mart.png", "gym": "battle_gym_oreburgh.png" },
       "has_gym": true,
-      "gym": {
-        "requirements": { "flag": "met_roark", "fail_text": "Roark is digging in the Oreburgh Mine. Go find him there first!" },
-        "trainers": [
-          {
-            "name": "Worker Colin",
-            "class": "HIKER",
-            "sprite": "hiker.png",
-            "is_boss_battle": true,
-            "team": [74, 74],
-            "rewards": { "balls": 2 },
-            "dialogue": {
-              "intro": ["Rock types are unbreakable!"],
-              "player_won": ["Crumbled..."],
-              "player_lost": ["Solid as stone!"]
-            }
-          },
-          {
-            "name": "Youngster Matthew",
-            "class": "YOUNGSTER",
-            "sprite": "youngster.png",
-            "is_boss_battle": true,
-            "team": [95, 74],
-            "rewards": { "balls": 2 },
-            "dialogue": {
-              "intro": ["Rocks are my thing!"],
-              "player_won": ["Rolled away!"],
-              "player_lost": ["Rock solid!"]
-            }
-          }
-        ],
-        "leader": {
-          "name": "Roark",
-          "class": "GYM_LEADER",
-          "is_boss_battle": true,
-          "sprite": "roark.png",
-          "team": [74, 95, 408], "levels": [12, 12, 14],
-          "badge_reward": "COAL",
-          "dialogue": {
-            "intro": ["I'm Roark, the Oreburgh Gym Leader!", "My Rock-type Pokémon are as tough as the earth itself!"],
-            "player_won": ["Your math cracked my defense. Take the Coal Badge.", "Take this Skull Fossil too. The fossil lab in Oreburgh City can revive it!"],
-            "player_lost": ["Rock-solid — just like my Pokémon!"]
-          },
-          "rewards": { "balls": 10, "RARE_CANDY": 1, "ADVENTURE_MAP": 1, "SKULL_FOSSIL": 1 }
-        }
-      },
+      "gym": {"requirements": {"flag": "met_roark", "fail_text": "Roark is digging in the Oreburgh Mine. Go find him there first!"}, "trainers": [{"name": "Worker Colin", "class": "HIKER", "sprite": "hiker.png", "is_boss_battle": true, "team": [74, 74], "rewards": {"balls": 2}, "dialogue": {"intro": ["Rock types are unbreakable!"], "player_won": ["Crumbled..."], "player_lost": ["Solid as stone!"]}}, {"name": "Youngster Matthew", "class": "YOUNGSTER", "sprite": "youngster.png", "is_boss_battle": true, "team": [95, 74], "rewards": {"balls": 2}, "dialogue": {"intro": ["Rocks are my thing!"], "player_won": ["Rolled away!"], "player_lost": ["Rock solid!"]}}], "leader": {"name": "Roark", "class": "GYM_LEADER", "is_boss_battle": true, "sprite": "roark.png", "team": [74, 95, 408], "levels": [12, 12, 14], "badge_reward": "COAL", "dialogue": {"intro": ["I'm Roark, the Oreburgh Gym Leader!", "My Rock-type Pokémon are as tough as the earth itself!"], "player_won": ["Your math cracked my defense. Take the Coal Badge.", "Take this Skull Fossil too. The fossil lab in Oreburgh City can revive it!"], "player_lost": ["Rock-solid — just like my Pokémon!"]}, "rewards": {"balls": 10, "RARE_CANDY": 1, "ADVENTURE_MAP": 1, "SKULL_FOSSIL": 1}, "movesets": {"74": ["ROCK-THROW", "STEALTH-ROCK"], "95": ["ROCK-THROW", "SCREECH", "STEALTH-ROCK"], "408": ["HEADBUTT", "PURSUIT", "LEER"]}}},
       "travel_options": [
         { "text": "Route 207", "target_area": "SINNOH_ROUTE_207", "condition": "galactic_eterna_cleared" },
         { "text": "Route 203", "target_area": "SINNOH_ROUTE_203" },
@@ -2760,51 +2716,7 @@
       "region": "SINNOH",
       "backgrounds": { "main": "eterna_city.png", "pokecenter": "eterna_center.png", "pokemart": "eterna_mart.png", "gym": "battle_gym_eterna.png" },
       "has_gym": true,
-      "gym": {
-        "trainers": [
-          {
-            "name": "Lass Cassidy",
-            "class": "LASS",
-            "sprite": "lass.png",
-            "is_boss_battle": true,
-            "team": [420, 315],
-            "rewards": { "balls": 2 },
-            "dialogue": {
-              "intro": ["Grass Pokémon are gorgeous!"],
-              "player_won": ["Wilted!"],
-              "player_lost": ["Blooming victory!"]
-            }
-          },
-          {
-            "name": "Aroma Lady Rose",
-            "class": "BEAUTY",
-            "sprite": "beauty.png",
-            "is_boss_battle": true,
-            "team": [406, 420],
-            "rewards": { "balls": 2 },
-            "dialogue": {
-              "intro": ["My Pokémon smell like flowers!"],
-              "player_won": ["Petals scattered..."],
-              "player_lost": ["Blooming power!"]
-            }
-          }
-        ],
-        "leader": {
-          "name": "Gardenia",
-          "class": "GYM_LEADER",
-          "is_boss_battle": true,
-          "sprite": "gardenia.png",
-          "team": [420, 387, 407], "levels": [19, 19, 22],
-          "badge_reward": "FOREST",
-          "dialogue": {
-            "intro": ["I'm Gardenia! Oh, you have an amazing aura around you!", "But that won't save you from my Grass-types!"],
-            "player_won": ["Wow! You're something else! Take the Forest Badge!"],
-            "player_lost": ["The power of nature was too much for you!"]
-          },
-          "rewards": { "balls": 10, "RARE_CANDY": 1, "EXPLORER_KIT": 1 }
-        },
-        "requirements": { "badges": 1, "fail_text": "Gardenia wants to see the Coal Badge from Oreburgh first!" }
-      },
+      "gym": {"trainers": [{"name": "Lass Cassidy", "class": "LASS", "sprite": "lass.png", "is_boss_battle": true, "team": [420, 315], "rewards": {"balls": 2}, "dialogue": {"intro": ["Grass Pokémon are gorgeous!"], "player_won": ["Wilted!"], "player_lost": ["Blooming victory!"]}}, {"name": "Aroma Lady Rose", "class": "BEAUTY", "sprite": "beauty.png", "is_boss_battle": true, "team": [406, 420], "rewards": {"balls": 2}, "dialogue": {"intro": ["My Pokémon smell like flowers!"], "player_won": ["Petals scattered..."], "player_lost": ["Blooming power!"]}}], "leader": {"name": "Gardenia", "class": "GYM_LEADER", "is_boss_battle": true, "sprite": "gardenia.png", "team": [420, 387, 407], "levels": [19, 19, 22], "badge_reward": "FOREST", "dialogue": {"intro": ["I'm Gardenia! Oh, you have an amazing aura around you!", "But that won't save you from my Grass-types!"], "player_won": ["Wow! You're something else! Take the Forest Badge!"], "player_lost": ["The power of nature was too much for you!"]}, "rewards": {"balls": 10, "RARE_CANDY": 1, "EXPLORER_KIT": 1}, "movesets": {"420": ["GRASS-KNOT", "LEECH-SEED", "SAFEGUARD", "GROWTH"], "387": ["GRASS-KNOT", "RAZOR-LEAF", "WITHDRAW", "REFLECT"], "407": ["GRASS-KNOT", "MAGICAL-LEAF", "POISON-STING", "STUN-SPORE"]}}, "requirements": {"badges": 1, "fail_text": "Gardenia wants to see the Coal Badge from Oreburgh first!"}},
       "travel_options": [
         { "text": "Route 205", "target_area": "SINNOH_ROUTE_205" },
         { "text": "Route 206", "target_area": "SINNOH_ROUTE_206", "condition": "galactic_eterna_cleared" },
@@ -2826,7 +2738,7 @@
         "trainer": {
           "name": "{rival_name}",
           "class": "PKMN_TRAINER",
-          "sprite": "barry.png",
+          "sprite": "{rival_character}",
           "team": [391, 397],
           "team_choice": { "387": [391, 397], "390": [394, 397], "393": [388, 397] },
           "rewards": { "balls": 5 },
@@ -2847,54 +2759,7 @@
       "region": "SINNOH",
       "backgrounds": { "main": "hearthome_city.png", "pokecenter": "hearthome_center.png", "pokemart": "hearthome_mart.png", "gym": "battle_gym_hearthome.png" },
       "has_gym": true,
-      "gym": {
-        "requirements": {
-          "badges": 4,
-          "fail_text": "Fantina is at the Contest Hall, admiring performances. She'll return to the gym once you've proven yourself with four badges."
-        },
-        "trainers": [
-          {
-            "name": "Channeler Mindy",
-            "class": "CHANNELER",
-            "sprite": "channeler.png",
-            "is_boss_battle": true,
-            "team": [355, 92],
-            "rewards": { "balls": 2 },
-            "dialogue": {
-              "intro": ["The spirits speak to me..."],
-              "player_won": ["They've gone quiet..."],
-              "player_lost": ["The spirits are pleased!"]
-            }
-          },
-          {
-            "name": "Psychic Alexis",
-            "class": "PSYCHIC",
-            "sprite": "psychic.png",
-            "is_boss_battle": true,
-            "team": [93, 355],
-            "rewards": { "balls": 2 },
-            "dialogue": {
-              "intro": ["I see your defeat!"],
-              "player_won": ["I didn't foresee this!"],
-              "player_lost": ["As foreseen!"]
-            }
-          }
-        ],
-        "leader": {
-          "name": "Fantina",
-          "class": "GYM_LEADER",
-          "is_boss_battle": true,
-          "sprite": "fantina.png",
-          "team": [426, 94, 429], "levels": [32, 34, 36],
-          "badge_reward": "RELIC",
-          "dialogue": {
-            "intro": ["Ohohoho! I am Fantina, ze Gym Leader!", "I shall defeat you! Oui, certainement!"],
-            "player_won": ["Mon Dieu! You are fantastique! Take ze Relic Badge!"],
-            "player_lost": ["Ohohoho! Magnifique! You could not beat me!"]
-          },
-          "rewards": { "balls": 10, "RARE_CANDY": 2 }
-        }
-      },
+      "gym": {"requirements": {"badges": 4, "fail_text": "Fantina is at the Contest Hall, admiring performances. She'll return to the gym once you've proven yourself with four badges."}, "trainers": [{"name": "Channeler Mindy", "class": "CHANNELER", "sprite": "channeler.png", "is_boss_battle": true, "team": [355, 92], "rewards": {"balls": 2}, "dialogue": {"intro": ["The spirits speak to me..."], "player_won": ["They've gone quiet..."], "player_lost": ["The spirits are pleased!"]}}, {"name": "Psychic Alexis", "class": "PSYCHIC", "sprite": "psychic.png", "is_boss_battle": true, "team": [93, 355], "rewards": {"balls": 2}, "dialogue": {"intro": ["I see your defeat!"], "player_won": ["I didn't foresee this!"], "player_lost": ["As foreseen!"]}}], "leader": {"name": "Fantina", "class": "GYM_LEADER", "is_boss_battle": true, "sprite": "fantina.png", "team": [426, 94, 429], "levels": [32, 34, 36], "badge_reward": "RELIC", "dialogue": {"intro": ["Ohohoho! I am Fantina, ze Gym Leader!", "I shall defeat you! Oui, certainement!"], "player_won": ["Mon Dieu! You are fantastique! Take ze Relic Badge!"], "player_lost": ["Ohohoho! Magnifique! You could not beat me!"]}, "rewards": {"balls": 10, "RARE_CANDY": 2}, "movesets": {"426": ["PSYCHIC", "SILVER-WIND", "OMINOUS-WIND", "BATON-PASS"], "94": ["FOCUS-BLAST", "THUNDER", "SHADOW-BALL", "PSYCHIC"], "429": ["SHADOW-BALL", "THUNDERBOLT", "PSYCHIC", "MAGICAL-LEAF"]}}},
       "travel_options": [
         { "text": "Route 208", "target_area": "SINNOH_ROUTE_208" },
         { "text": "Route 209", "target_area": "SINNOH_ROUTE_209" },
@@ -2914,7 +2779,7 @@
         "trainer": {
           "name": "{rival_name}",
           "class": "PKMN_TRAINER",
-          "sprite": "barry.png",
+          "sprite": "{rival_character}",
           "team": [391, 397, 315],
           "team_choice": { "387": [391, 397, 315], "390": [394, 397, 315], "393": [388, 397, 315] },
           "rewards": { "balls": 5 },
@@ -2954,51 +2819,7 @@
       "region": "SINNOH",
       "backgrounds": { "main": "veilstone_city.png", "pokecenter": "veilstone_center.png", "pokemart": "veilstone_mart.png", "gym": "battle_gym_veilstone.png" },
       "has_gym": true,
-      "gym": {
-        "trainers": [
-          {
-            "name": "Black Belt Jeffery",
-            "class": "BLACKBELT",
-            "sprite": "blackbelt.png",
-            "is_boss_battle": true,
-            "team": [66, 307],
-            "rewards": { "balls": 2 },
-            "dialogue": {
-              "intro": ["My fists are my weapons!"],
-              "player_won": ["Knocked out..."],
-              "player_lost": ["Fighting spirit wins!"]
-            }
-          },
-          {
-            "name": "Black Belt Kyle",
-            "class": "BLACKBELT",
-            "sprite": "blackbelt.png",
-            "is_boss_battle": true,
-            "team": [67, 307],
-            "rewards": { "balls": 2 },
-            "dialogue": {
-              "intro": ["True strength comes from within!"],
-              "player_won": ["My training failed me..."],
-              "player_lost": ["Power of the fist!"]
-            }
-          }
-        ],
-        "leader": {
-          "name": "Maylene",
-          "class": "GYM_LEADER",
-          "is_boss_battle": true,
-          "sprite": "maylene.png",
-          "team": [307, 67, 448], "levels": [27, 27, 30],
-          "badge_reward": "COBBLE",
-          "dialogue": {
-            "intro": ["I'm Maylene. I may not look it, but I'm the Gym Leader here.", "I'll give you everything I have!"],
-            "player_won": ["You've proven your strength. Take the Cobble Badge."],
-            "player_lost": ["My Fighting spirit was stronger!"]
-          },
-          "rewards": { "balls": 10, "RARE_CANDY": 2 }
-        },
-        "requirements": { "badges": 2, "fail_text": "Maylene is only accepting challengers with 2 Sinnoh Badges." }
-      },
+      "gym": {"trainers": [{"name": "Black Belt Jeffery", "class": "BLACKBELT", "sprite": "blackbelt.png", "is_boss_battle": true, "team": [66, 307], "rewards": {"balls": 2}, "dialogue": {"intro": ["My fists are my weapons!"], "player_won": ["Knocked out..."], "player_lost": ["Fighting spirit wins!"]}}, {"name": "Black Belt Kyle", "class": "BLACKBELT", "sprite": "blackbelt.png", "is_boss_battle": true, "team": [67, 307], "rewards": {"balls": 2}, "dialogue": {"intro": ["True strength comes from within!"], "player_won": ["My training failed me..."], "player_lost": ["Power of the fist!"]}}], "leader": {"name": "Maylene", "class": "GYM_LEADER", "is_boss_battle": true, "sprite": "maylene.png", "team": [307, 67, 448], "levels": [27, 27, 30], "badge_reward": "COBBLE", "dialogue": {"intro": ["I'm Maylene. I may not look it, but I'm the Gym Leader here.", "I'll give you everything I have!"], "player_won": ["You've proven your strength. Take the Cobble Badge."], "player_lost": ["My Fighting spirit was stronger!"]}, "rewards": {"balls": 10, "RARE_CANDY": 2}, "movesets": {"307": ["DRAIN-PUNCH", "CONFUSION", "FAKE-OUT", "ROCK-TOMB"], "67": ["KARATE-CHOP", "STRENGTH", "FOCUS-ENERGY", "ROCK-TOMB"], "448": ["DRAIN-PUNCH", "METAL-CLAW", "BONE-RUSH", "FORCE-PALM"]}}, "requirements": {"badges": 2, "fail_text": "Maylene is only accepting challengers with 2 Sinnoh Badges."}},
       "travel_options": [
         { "text": "Route 214", "target_area": "SINNOH_ROUTE_214" },
         { "text": "Route 215", "target_area": "SINNOH_ROUTE_215" },
@@ -3018,7 +2839,7 @@
         "trainer": {
           "name": "{rival_name}",
           "class": "PKMN_TRAINER",
-          "sprite": "barry.png",
+          "sprite": "{rival_character}",
           "team": [392, 398, 418],
           "team_choice": { "387": [392, 398, 418], "390": [395, 398, 418], "393": [389, 398, 418] },
           "rewards": { "balls": 5 },
@@ -3041,51 +2862,7 @@
       "region": "SINNOH",
       "backgrounds": { "main": "pastoria_city.png", "pokecenter": "pastoria_center.png", "pokemart": "pastoria_mart.png", "gym": "battle_gym_pastoria.png" },
       "has_gym": true,
-      "gym": {
-        "trainers": [
-          {
-            "name": "Swimmer Brenden",
-            "class": "SWIMMER",
-            "sprite": "swimmer_m.png",
-            "is_boss_battle": true,
-            "team": [418, 422],
-            "rewards": { "balls": 2 },
-            "dialogue": {
-              "intro": ["Water beats everything!"],
-              "player_won": ["Washed away..."],
-              "player_lost": ["Flood victory!"]
-            }
-          },
-          {
-            "name": "Swimmer Jessica",
-            "class": "SWIMMER",
-            "sprite": "swimmer_f.png",
-            "is_boss_battle": true,
-            "team": [129, 418],
-            "rewards": { "balls": 2 },
-            "dialogue": {
-              "intro": ["Splash around with me!"],
-              "player_won": ["All dried out!"],
-              "player_lost": ["Soaked you!"]
-            }
-          }
-        ],
-        "leader": {
-          "name": "Crasher Wake",
-          "class": "GYM_LEADER",
-          "is_boss_battle": true,
-          "sprite": "crasher_wake.png",
-          "team": [130, 195, 419], "levels": [27, 27, 30],
-          "badge_reward": "FEN",
-          "dialogue": {
-            "intro": ["I'm Crasher Wake! The Torrential Masked Master!", "Feel the power of the waves!"],
-            "player_won": ["You're strong — as strong as a raging current! Fen Badge is yours!"],
-            "player_lost": ["The wave has crashed! You're swept away!"]
-          },
-          "rewards": { "balls": 10, "RARE_CANDY": 2, "SURF_BOARD": 1 }
-        },
-        "requirements": { "badges": 3, "fail_text": "Crasher Wake is only accepting challengers with 3 Sinnoh Badges." }
-      },
+      "gym": {"trainers": [{"name": "Swimmer Brenden", "class": "SWIMMER", "sprite": "swimmer_m.png", "is_boss_battle": true, "team": [418, 422], "rewards": {"balls": 2}, "dialogue": {"intro": ["Water beats everything!"], "player_won": ["Washed away..."], "player_lost": ["Flood victory!"]}}, {"name": "Swimmer Jessica", "class": "SWIMMER", "sprite": "swimmer_f.png", "is_boss_battle": true, "team": [129, 418], "rewards": {"balls": 2}, "dialogue": {"intro": ["Splash around with me!"], "player_won": ["All dried out!"], "player_lost": ["Soaked you!"]}}], "leader": {"name": "Crasher Wake", "class": "GYM_LEADER", "is_boss_battle": true, "sprite": "crasher_wake.png", "team": [130, 195, 419], "levels": [27, 27, 30], "badge_reward": "FEN", "dialogue": {"intro": ["I'm Crasher Wake! The Torrential Masked Master!", "Feel the power of the waves!"], "player_won": ["You're strong — as strong as a raging current! Fen Badge is yours!"], "player_lost": ["The wave has crashed! You're swept away!"]}, "rewards": {"balls": 10, "RARE_CANDY": 2, "SURF_BOARD": 1}, "movesets": {"130": ["BRINE", "WATERFALL", "BITE", "TWISTER"], "195": ["WATER-PULSE", "MUD-SHOT", "ROCK-TOMB", "YAWN"], "419": ["BRINE", "CRUNCH", "ICE-FANG", "AQUA-JET"]}}, "requirements": {"badges": 3, "fail_text": "Crasher Wake is only accepting challengers with 3 Sinnoh Badges."}},
       "travel_options": [
         { "text": "Route 212", "target_area": "SINNOH_ROUTE_212" },
         { "text": "Route 213", "target_area": "SINNOH_ROUTE_213" },
@@ -3102,7 +2879,7 @@
         "trainer": {
           "name": "{rival_name}",
           "class": "PKMN_TRAINER",
-          "sprite": "barry.png",
+          "sprite": "{rival_character}",
           "team": [392, 398, 419],
           "team_choice": { "387": [392, 398, 419], "390": [395, 398, 419], "393": [389, 398, 419] },
           "rewards": { "balls": 5 },
@@ -3164,58 +2941,7 @@
       "region": "SINNOH",
       "backgrounds": { "main": "canalave_city.png", "pokecenter": "canalave_center.png", "pokemart": "canalave_mart.png", "gym": "battle_gym_canalave.png" },
       "has_gym": true,
-      "gym": {
-        "requirements": {
-          "flag": "visited_IRON_ISLAND",
-          "fail_text": "Byron is at Iron Island training. Head there and look for him — and maybe bring a friend named Riley."
-        },
-        "trainers": [
-          {
-            "name": "Worker Mason",
-            "class": "HIKER",
-            "sprite": "hiker.png",
-            "is_boss_battle": true,
-            "team": [82, 436],
-            "rewards": { "balls": 2 },
-            "dialogue": {
-              "intro": ["Steel bends for no one!"],
-              "player_won": ["Rusted through..."],
-              "player_lost": ["Unbendable!"]
-            }
-          },
-          {
-            "name": "Gentleman Phillip",
-            "class": "GENTLEMAN",
-            "sprite": "gentleman.png",
-            "is_boss_battle": true,
-            "team": [208, 306],
-            "rewards": { "balls": 2 },
-            "dialogue": {
-              "intro": ["My Steel Pokémon have class!"],
-              "player_won": ["Refined defeat..."],
-              "player_lost": ["Steel and style!"]
-            }
-          }
-        ],
-        "leader": {
-          "name": "Byron",
-          "class": "GYM_LEADER",
-          "is_boss_battle": true,
-          "sprite": "byron.png",
-          "team": [436, 208, 411], "levels": [36, 36, 39],
-          "badge_reward": "MINE",
-          "dialogue": {
-            "intro": ["I'm Byron! The Man with the Steel Body!", "My Steel-types are impervious to attack!"],
-            "player_won": [
-              "Hmm! You broke through my steel! The Mine Badge is yours!",
-              "Roark! Your kid is amazing!",
-              "Take this Armor Fossil too. The fossil lab in Oreburgh City can revive it!"
-            ],
-            "player_lost": ["Solid as steel! You can't crack my defense!"]
-          },
-          "rewards": { "balls": 10, "RARE_CANDY": 2, "HM_STRENGTH": 1, "ARMOR_FOSSIL": 1 }
-        }
-      },
+      "gym": {"requirements": {"flag": "visited_IRON_ISLAND", "fail_text": "Byron is at Iron Island training. Head there and look for him — and maybe bring a friend named Riley."}, "trainers": [{"name": "Worker Mason", "class": "HIKER", "sprite": "hiker.png", "is_boss_battle": true, "team": [82, 436], "rewards": {"balls": 2}, "dialogue": {"intro": ["Steel bends for no one!"], "player_won": ["Rusted through..."], "player_lost": ["Unbendable!"]}}, {"name": "Gentleman Phillip", "class": "GENTLEMAN", "sprite": "gentleman.png", "is_boss_battle": true, "team": [208, 306], "rewards": {"balls": 2}, "dialogue": {"intro": ["My Steel Pokémon have class!"], "player_won": ["Refined defeat..."], "player_lost": ["Steel and style!"]}}], "leader": {"name": "Byron", "class": "GYM_LEADER", "is_boss_battle": true, "sprite": "byron.png", "team": [436, 208, 411], "levels": [36, 36, 39], "badge_reward": "MINE", "dialogue": {"intro": ["I'm Byron! The Man with the Steel Body!", "My Steel-types are impervious to attack!"], "player_won": ["Hmm! You broke through my steel! The Mine Badge is yours!", "Roark! Your kid is amazing!", "Take this Armor Fossil too. The fossil lab in Oreburgh City can revive it!"], "player_lost": ["Solid as steel! You can't crack my defense!"]}, "rewards": {"balls": 10, "RARE_CANDY": 2, "HM_STRENGTH": 1, "ARMOR_FOSSIL": 1}, "movesets": {"436": ["FLASH-CANNON", "EXTRASENSORY", "CONFUSE-RAY", "HYPNOSIS"], "208": ["GYRO-BALL", "DRAGONBREATH", "ICE-FANG", "SANDSTORM"], "411": ["FLASH-CANNON", "ANCIENT-POWER", "IRON-DEFENSE", "REST"]}}},
       "travel_options": [
         { "text": "Route 218", "target_area": "SINNOH_ROUTE_218" },
         { "text": "Iron Island", "target_area": "IRON_ISLAND" },
@@ -3234,7 +2960,7 @@
         "trainer": {
           "name": "{rival_name}",
           "class": "PKMN_TRAINER",
-          "sprite": "barry.png",
+          "sprite": "{rival_character}",
           "team": [392, 398, 419, 445],
           "team_choice": { "387": [392, 398, 419, 445], "390": [395, 398, 419, 445], "393": [389, 398, 419, 445] },
           "rewards": { "balls": 5 },
@@ -3255,50 +2981,7 @@
       "region": "SINNOH",
       "backgrounds": { "main": "snowpoint_city.png", "pokecenter": "snowpoint_center.png", "pokemart": "snowpoint_mart.png", "gym": "battle_gym_snowpoint.png" },
       "has_gym": true,
-      "gym": {
-        "trainers": [
-          {
-            "name": "Ace Trainer Sergio",
-            "class": "ACE_TRAINER",
-            "sprite": "acetrainer_m.png",
-            "is_boss_battle": true,
-            "team": [459, 215],
-            "rewards": { "balls": 3 },
-            "dialogue": {
-              "intro": ["Cold as ice, sharp as a blade!"],
-              "player_won": ["Melted..."],
-              "player_lost": ["Frozen solid!"]
-            }
-          },
-          {
-            "name": "Ace Trainer Alicia",
-            "class": "ACE_TRAINER",
-            "sprite": "acetrainer_f.png",
-            "is_boss_battle": true,
-            "team": [220, 459],
-            "rewards": { "balls": 3 },
-            "dialogue": {
-              "intro": ["The cold makes you stronger!"],
-              "player_won": ["That was really cool!"],
-              "player_lost": ["Brain freeze — for you!"]
-            }
-          }
-        ],
-        "leader": {
-          "name": "Candice",
-          "class": "GYM_LEADER",
-          "is_boss_battle": true,
-          "sprite": "candice.png",
-          "team": [459, 215, 308, 460], "levels": [38, 38, 40, 42],
-          "badge_reward": "ICICLE",
-          "dialogue": {
-            "intro": ["I'm Candice! I can tell you've come a long way!", "My Ice Pokémon have been waiting for a trainer like you!"],
-            "player_won": ["Wow! You're red-hot! The Icicle Badge is all yours!"],
-            "player_lost": ["Cool! You've been frozen out!"]
-          },
-          "rewards": { "balls": 10, "RARE_CANDY": 3 }
-        }
-      },
+      "gym": {"trainers": [{"name": "Ace Trainer Sergio", "class": "ACE_TRAINER", "sprite": "acetrainer_m.png", "is_boss_battle": true, "team": [459, 215], "rewards": {"balls": 3}, "dialogue": {"intro": ["Cold as ice, sharp as a blade!"], "player_won": ["Melted..."], "player_lost": ["Frozen solid!"]}}, {"name": "Ace Trainer Alicia", "class": "ACE_TRAINER", "sprite": "acetrainer_f.png", "is_boss_battle": true, "team": [220, 459], "rewards": {"balls": 3}, "dialogue": {"intro": ["The cold makes you stronger!"], "player_won": ["That was really cool!"], "player_lost": ["Brain freeze — for you!"]}}], "leader": {"name": "Candice", "class": "GYM_LEADER", "is_boss_battle": true, "sprite": "candice.png", "team": [459, 215, 308, 460], "levels": [38, 38, 40, 42], "badge_reward": "ICICLE", "dialogue": {"intro": ["I'm Candice! I can tell you've come a long way!", "My Ice Pokémon have been waiting for a trainer like you!"], "player_won": ["Wow! You're red-hot! The Icicle Badge is all yours!"], "player_lost": ["Cool! You've been frozen out!"]}, "rewards": {"balls": 10, "RARE_CANDY": 3}, "movesets": {"459": ["RAZOR-LEAF", "AVALANCHE", "INGRAIN", "LEER"], "215": ["FEINT-ATTACK", "SLASH", "TAUNT", "AVALANCHE"], "308": ["FORCE-PALM", "BULK-UP", "DETECT", "ICE-PUNCH"], "460": ["WOOD-HAMMER", "SWAGGER", "GRASSWHISTLE", "AVALANCHE"]}}},
       "travel_options": [
         { "text": "Route 216", "target_area": "SINNOH_ROUTE_216" },
         { "text": "Route 217", "target_area": "SINNOH_ROUTE_217" },
@@ -3321,54 +3004,7 @@
       "region": "SINNOH",
       "backgrounds": { "main": "sunyshore_city.png", "pokecenter": "sunyshore_center.png", "pokemart": "sunyshore_mart.png", "gym": "battle_gym_sunyshore.png" },
       "has_gym": true,
-      "gym": {
-        "requirements": {
-          "flag": "spear_pillar_resolved",
-          "fail_text": "Volkner left the Gym. He heard about a trainer defeating Cyrus at the Spear Pillar — he went to find you. Defeat Team Galactic at Spear Pillar first!"
-        },
-        "trainers": [
-          {
-            "name": "Sailor Zachariah",
-            "class": "SAILOR",
-            "sprite": "sailor.png",
-            "is_boss_battle": true,
-            "team": [135, 404],
-            "rewards": { "balls": 3 },
-            "dialogue": {
-              "intro": ["Feel the electric sea!"],
-              "player_won": ["Shorted out..."],
-              "player_lost": ["Zapstruck!"]
-            }
-          },
-          {
-            "name": "Guitarist Arturo",
-            "class": "GUITARIST",
-            "sprite": "guitarist.png",
-            "is_boss_battle": true,
-            "team": [403, 404],
-            "rewards": { "balls": 3 },
-            "dialogue": {
-              "intro": ["My riffs are electrifying!"],
-              "player_won": ["Off-key!"],
-              "player_lost": ["Electric encore!"]
-            }
-          }
-        ],
-        "leader": {
-          "name": "Volkner",
-          "class": "GYM_LEADER",
-          "is_boss_battle": true,
-          "sprite": "volkner.png",
-          "team": [26, 424, 224, 405], "levels": [46, 47, 48, 49],
-          "badge_reward": "BEACON",
-          "dialogue": {
-            "intro": ["I'm Volkner. I've been waiting for a trainer who could excite me.", "Let's find out if you're the one."],
-            "player_won": ["Ha! I haven't felt this in years! Take the Beacon Badge!", "Head through Route 223 — the Pokémon League awaits!"],
-            "player_lost": ["Just as I thought. Nothing to be excited about."]
-          },
-          "rewards": { "balls": 10, "RARE_CANDY": 3 }
-        }
-      },
+      "gym": {"requirements": {"flag": "spear_pillar_resolved", "fail_text": "Volkner left the Gym. He heard about a trainer defeating Cyrus at the Spear Pillar — he went to find you. Defeat Team Galactic at Spear Pillar first!"}, "trainers": [{"name": "Sailor Zachariah", "class": "SAILOR", "sprite": "sailor.png", "is_boss_battle": true, "team": [135, 404], "rewards": {"balls": 3}, "dialogue": {"intro": ["Feel the electric sea!"], "player_won": ["Shorted out..."], "player_lost": ["Zapstruck!"]}}, {"name": "Guitarist Arturo", "class": "GUITARIST", "sprite": "guitarist.png", "is_boss_battle": true, "team": [403, 404], "rewards": {"balls": 3}, "dialogue": {"intro": ["My riffs are electrifying!"], "player_won": ["Off-key!"], "player_lost": ["Electric encore!"]}}], "leader": {"name": "Volkner", "class": "GYM_LEADER", "is_boss_battle": true, "sprite": "volkner.png", "team": [26, 424, 224, 405], "levels": [46, 47, 48, 49], "badge_reward": "BEACON", "dialogue": {"intro": ["I'm Volkner. I've been waiting for a trainer who could excite me.", "Let's find out if you're the one."], "player_won": ["Ha! I haven't felt this in years! Take the Beacon Badge!", "Head through Route 223 — the Pokémon League awaits!"], "player_lost": ["Just as I thought. Nothing to be excited about."]}, "rewards": {"balls": 10, "RARE_CANDY": 3}, "movesets": {"26": ["CHARGE-BEAM", "BRICK-BREAK", "LIGHT-SCREEN", "THUNDER-WAVE"], "424": ["SHOCK-WAVE", "NASTY-PLOT", "AGILITY", "BATON-PASS"], "224": ["CHARGE-BEAM", "OCTAZOOKA", "AURORA-BEAM", "BULLET-SEED"], "405": ["CHARGE-BEAM", "THUNDER-WAVE", "THUNDER-FANG", "CRUNCH"]}}},
       "travel_options": [
         { "text": "Route 222", "target_area": "SINNOH_ROUTE_222" },
         { "text": "Route 223", "target_area": "SINNOH_ROUTE_223", "flag_condition": "has_beacon_badge" },
@@ -3392,81 +3028,7 @@
         "gym": ["battle_elite_aaron.png", "battle_elite_bertha.png", "battle_elite_flint.png", "battle_elite_lucian.png", "battle_champion_cynthia.png"]
       },
       "has_gym": true,
-      "gym": {
-        "trainers": [
-          {
-            "name": "Aaron",
-            "class": "ELITE_FOUR",
-            "sprite": "aaron.png",
-            "is_boss_battle": true,
-            "team": [469, 212, 416, 214, 452], "levels": [49, 49, 50, 51, 53], "rematch": {"team": [469, 212, 416, 214, 452], "levels": [65, 65, 66, 67, 69]},
-            "rewards": { "balls": 15 },
-            "dialogue": {
-              "intro": ["I'm Aaron of the Elite Four!", "I've worked hard to build my Bug-type team!"],
-              "player_won": ["You're tough! My bugs were no match!"],
-              "player_lost": ["Bug-types are underestimated no more!"]
-            }
-          },
-          {
-            "name": "Bertha",
-            "class": "ELITE_FOUR",
-            "sprite": "bertha.png",
-            "is_boss_battle": true,
-            "team": [340, 472, 76, 464, 450], "levels": [50, 53, 52, 52, 55], "rematch": {"team": [340, 472, 76, 464, 450], "levels": [66, 69, 68, 71, 68]},
-            "rewards": { "balls": 15 },
-            "dialogue": {
-              "intro": ["Hohoho! I'm Bertha!", "Youngsters like you bring a smile to my face — now defend yourself!"],
-              "player_won": ["Marvelous! You truly are something!"],
-              "player_lost": ["The earth has swallowed you up!"]
-            }
-          },
-          {
-            "name": "Flint",
-            "class": "ELITE_FOUR",
-            "sprite": "flint.png",
-            "is_boss_battle": true,
-            "team": [229, 136, 78, 392, 467], "levels": [52, 55, 53, 55, 57], "rematch": {"team": [229, 136, 78, 392, 467], "levels": [68, 71, 69, 71, 73]},
-            "rewards": { "balls": 15 },
-            "dialogue": {
-              "intro": ["I'm Flint! Things are about to heat up!"],
-              "player_won": ["Whoa! You're on fire — literally!"],
-              "player_lost": ["Blazing victory!"]
-            }
-          },
-          {
-            "name": "Lucian",
-            "class": "ELITE_FOUR",
-            "sprite": "lucian.png",
-            "is_boss_battle": true,
-            "team": [122, 196, 437, 65, 475], "levels": [53, 55, 54, 56, 59], "rematch": {"team": [122, 196, 437, 65, 475], "levels": [69, 71, 70, 72, 75]},
-            "rewards": { "balls": 15 },
-            "victory_flag": "beat_sinnoh_elite_four",
-            "dialogue": {
-              "intro": ["I'm Lucian. I've read every book in Canalave Library.", "Math, psychology, strategy — I've mastered them all."],
-              "player_won": ["Astonishing. You've rendered me speechless."],
-              "player_lost": ["My mind is an unbreakable fortress."]
-            }
-          }
-        ],
-        "leader": {
-          "name": "Cynthia",
-          "class": "CHAMPION",
-          "is_boss_battle": true,
-          "sprite": "cynthia.png",
-          "team": [442, 407, 468, 448, 350, 445], "levels": [58, 58, 60, 60, 58, 62], "rematch": {"team": [442, 407, 468, 448, 350, 445], "levels": [74, 74, 76, 76, 74, 78]},
-          "victory_flag": "beat_sinnoh_champion",
-          "rewards": { "balls": 25, "MASTER_BALL": 1 },
-          "dialogue": {
-            "intro": ["I'm Cynthia, the Pokémon League Champion.", "I've been watching you since Eterna City.", "Now — show me everything you have."],
-            "player_won": ["You've won! That was wonderful!", "Your Pokémon felt the power of your math and trust.", "You are the new Sinnoh Champion!"],
-            "player_lost": ["You put up a wonderful fight.", "Come back when you're ready. I'll be here."]
-          }
-        },
-        "requirements": {
-          "badges": 8,
-          "fail_text": ["The guards at the Pokemon League stop you.", "Only Trainers with all 8 Sinnoh Badges may enter!"]
-        }
-      },
+      "gym": {"trainers": [{"name": "Aaron", "class": "ELITE_FOUR", "sprite": "aaron.png", "is_boss_battle": true, "team": [469, 212, 416, 214, 452], "levels": [49, 49, 50, 51, 53], "rematch": {"team": [469, 212, 416, 214, 452], "levels": [65, 65, 66, 67, 69], "movesets": {"469": ["BUG-BUZZ", "AIR-SLASH", "U-TURN", "DOUBLE-TEAM"], "212": ["X-SCISSOR", "IRON-HEAD", "NIGHT-SLASH", "QUICK-ATTACK"], "416": ["ATTACK-ORDER", "DEFEND-ORDER", "HEAL-ORDER", "POWER-GEM"], "214": ["MEGAHORN", "CLOSE-COMBAT", "NIGHT-SLASH", "STONE-EDGE"], "452": ["X-SCISSOR", "CROSS-POISON", "ICE-FANG", "AERIAL-ACE"]}}, "rewards": {"balls": 15}, "dialogue": {"intro": ["I'm Aaron of the Elite Four!", "I've worked hard to build my Bug-type team!"], "player_won": ["You're tough! My bugs were no match!"], "player_lost": ["Bug-types are underestimated no more!"]}, "movesets": {"469": ["BUG-BUZZ", "AIR-SLASH", "U-TURN", "DOUBLE-TEAM"], "212": ["X-SCISSOR", "IRON-HEAD", "NIGHT-SLASH", "QUICK-ATTACK"], "416": ["ATTACK-ORDER", "DEFEND-ORDER", "HEAL-ORDER", "POWER-GEM"], "214": ["MEGAHORN", "CLOSE-COMBAT", "NIGHT-SLASH", "STONE-EDGE"], "452": ["X-SCISSOR", "CROSS-POISON", "ICE-FANG", "AERIAL-ACE"]}}, {"name": "Bertha", "class": "ELITE_FOUR", "sprite": "bertha.png", "is_boss_battle": true, "team": [340, 472, 76, 464, 450], "levels": [50, 53, 52, 52, 55], "rematch": {"team": [340, 472, 76, 464, 450], "levels": [66, 69, 68, 71, 68], "movesets": {"340": ["EARTH-POWER", "AQUA-TAIL", "ZEN-HEADBUTT", "SANDSTORM"], "472": ["EARTHQUAKE", "ICE-FANG", "FIRE-FANG", "THUNDER-FANG"], "76": ["EARTHQUAKE", "FIRE-PUNCH", "THUNDER-PUNCH", "SANDSTORM"], "464": ["EARTHQUAKE", "ROCK-WRECKER", "MEGAHORN", "AVALANCHE"], "450": ["EARTHQUAKE", "STONE-EDGE", "CRUNCH", "YAWN"]}}, "rewards": {"balls": 15}, "dialogue": {"intro": ["Hohoho! I'm Bertha!", "Youngsters like you bring a smile to my face — now defend yourself!"], "player_won": ["Marvelous! You truly are something!"], "player_lost": ["The earth has swallowed you up!"]}, "movesets": {"340": ["EARTH-POWER", "AQUA-TAIL", "ZEN-HEADBUTT", "SANDSTORM"], "472": ["EARTHQUAKE", "ICE-FANG", "FIRE-FANG", "THUNDER-FANG"], "76": ["EARTHQUAKE", "FIRE-PUNCH", "THUNDER-PUNCH", "SANDSTORM"], "464": ["EARTHQUAKE", "ROCK-WRECKER", "MEGAHORN", "AVALANCHE"], "450": ["EARTHQUAKE", "STONE-EDGE", "CRUNCH", "YAWN"]}}, {"name": "Flint", "class": "ELITE_FOUR", "sprite": "flint.png", "is_boss_battle": true, "team": [229, 136, 78, 392, 467], "levels": [52, 55, 53, 55, 57], "rematch": {"team": [229, 136, 78, 392, 467], "levels": [68, 71, 69, 71, 73], "movesets": {"229": ["FLAMETHROWER", "SLUDGE-BOMB", "DARK-PULSE", "SUNNY-DAY"], "136": ["OVERHEAT", "GIGA-IMPACT", "QUICK-ATTACK", "WILL-O-WISP"], "78": ["FLARE-BLITZ", "SOLAR-BEAM", "BOUNCE", "SUNNY-DAY"], "392": ["FLARE-BLITZ", "THUNDER-PUNCH", "MACH-PUNCH", "EARTHQUAKE"], "467": ["FLAMETHROWER", "THUNDERBOLT", "SOLAR-BEAM", "HYPER-BEAM"]}}, "rewards": {"balls": 15}, "dialogue": {"intro": ["I'm Flint! Things are about to heat up!"], "player_won": ["Whoa! You're on fire — literally!"], "player_lost": ["Blazing victory!"]}, "movesets": {"229": ["FLAMETHROWER", "SLUDGE-BOMB", "DARK-PULSE", "SUNNY-DAY"], "136": ["OVERHEAT", "GIGA-IMPACT", "QUICK-ATTACK", "WILL-O-WISP"], "78": ["FLARE-BLITZ", "SOLAR-BEAM", "BOUNCE", "SUNNY-DAY"], "392": ["FLARE-BLITZ", "THUNDER-PUNCH", "MACH-PUNCH", "EARTHQUAKE"], "467": ["FLAMETHROWER", "THUNDERBOLT", "SOLAR-BEAM", "HYPER-BEAM"]}}, {"name": "Lucian", "class": "ELITE_FOUR", "sprite": "lucian.png", "is_boss_battle": true, "team": [122, 196, 437, 65, 475], "levels": [53, 55, 54, 56, 59], "rematch": {"team": [122, 196, 437, 65, 475], "levels": [69, 71, 70, 72, 75], "movesets": {"122": ["PSYCHIC", "THUNDERBOLT", "REFLECT", "LIGHT-SCREEN"], "196": ["PSYCHIC", "SHADOW-BALL", "QUICK-ATTACK", "SIGNAL-BEAM"], "437": ["PSYCHIC", "GYRO-BALL", "EARTHQUAKE", "CALM-MIND"], "65": ["PSYCHIC", "ENERGY-BALL", "FOCUS-BLAST", "RECOVER"], "475": ["DRAIN-PUNCH", "PSYCHO-CUT", "LEAF-BLADE", "STONE-EDGE"]}}, "rewards": {"balls": 15}, "victory_flag": "beat_sinnoh_elite_four", "dialogue": {"intro": ["I'm Lucian. I've read every book in Canalave Library.", "Math, psychology, strategy — I've mastered them all."], "player_won": ["Astonishing. You've rendered me speechless."], "player_lost": ["My mind is an unbreakable fortress."]}, "movesets": {"122": ["PSYCHIC", "THUNDERBOLT", "REFLECT", "LIGHT-SCREEN"], "196": ["PSYCHIC", "SHADOW-BALL", "QUICK-ATTACK", "SIGNAL-BEAM"], "437": ["PSYCHIC", "GYRO-BALL", "EARTHQUAKE", "CALM-MIND"], "65": ["PSYCHIC", "ENERGY-BALL", "FOCUS-BLAST", "RECOVER"], "475": ["DRAIN-PUNCH", "PSYCHO-CUT", "LEAF-BLADE", "STONE-EDGE"]}}], "leader": {"name": "Cynthia", "class": "CHAMPION", "is_boss_battle": true, "sprite": "cynthia.png", "team": [442, 407, 468, 448, 350, 445], "levels": [58, 58, 60, 60, 58, 62], "rematch": {"team": [442, 407, 468, 448, 350, 445], "levels": [74, 74, 76, 76, 74, 78], "movesets": {"442": ["DARK-PULSE", "PSYCHIC", "SILVER-WIND", "SHADOW-BALL"], "407": ["ENERGY-BALL", "SLUDGE-BOMB", "TOXIC", "EXTRASENSORY"], "468": ["AIR-SLASH", "AURA-SPHERE", "WATER-PULSE", "SHOCK-WAVE"], "448": ["AURA-SPHERE", "EXTREME-SPEED", "SHADOW-BALL", "STONE-EDGE"], "350": ["SURF", "ICE-BEAM", "MIRROR-COAT", "DRAGON-PULSE"], "445": ["DRAGON-RUSH", "EARTHQUAKE", "FLAMETHROWER", "GIGA-IMPACT"]}}, "victory_flag": "beat_sinnoh_champion", "rewards": {"balls": 25, "MASTER_BALL": 1}, "dialogue": {"intro": ["I'm Cynthia, the Pokémon League Champion.", "I've been watching you since Eterna City.", "Now — show me everything you have."], "player_won": ["You've won! That was wonderful!", "Your Pokémon felt the power of your math and trust.", "You are the new Sinnoh Champion!"], "player_lost": ["You put up a wonderful fight.", "Come back when you're ready. I'll be here."]}, "movesets": {"442": ["DARK-PULSE", "PSYCHIC", "SILVER-WIND", "SHADOW-BALL"], "407": ["ENERGY-BALL", "SLUDGE-BOMB", "TOXIC", "EXTRASENSORY"], "468": ["AIR-SLASH", "AURA-SPHERE", "WATER-PULSE", "SHOCK-WAVE"], "448": ["AURA-SPHERE", "EXTREME-SPEED", "SHADOW-BALL", "STONE-EDGE"], "350": ["SURF", "ICE-BEAM", "MIRROR-COAT", "DRAGON-PULSE"], "445": ["DRAGON-RUSH", "EARTHQUAKE", "FLAMETHROWER", "GIGA-IMPACT"]}}, "requirements": {"badges": 8, "fail_text": ["The guards at the Pokemon League stop you.", "Only Trainers with all 8 Sinnoh Badges may enter!"]}},
       "travel_options": [{"text": "Victory Road", "target_area": "VICTORY_ROAD_SINNOH"}],
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
@@ -3601,12 +3163,7 @@
       "wild_pool_percentages": "SINNOH_OLD_CHATEAU_PERCENTAGES",
       "min_rounds": 2,
       "backgrounds": { "main": "old_chateau.png", "battle": "battle_old_chateau.png" },
-      "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "Encounter Rotom", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD" },
-        { "text": "Eterna Forest", "action": "EXIT", "target_area": "ETERNA_FOREST", "condition": "can_exit", "color": "RED" }
-      ],
+      "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "Encounter Rotom", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD"}, {"text": "THE BLACK FOG", "action": "BOSS", "color": "PURPLE", "flag_condition": "not black_fog_banished_old_chateau", "boss": {"id": 10501, "name": "Black Fog", "level": 24, "no_catch": true, "victory_flag": "black_fog_banished_old_chateau", "lines": ["The air turns ice-cold. A black fog pours across the floor...", "Two huge eyes open in the dark. A giant Haunter rises: the Black Fog!", "Long ago people worshipped it as a god. It feeds on dreams. Don't let it get yours!"], "won": ["The Black Fog is too proud to ever be caught.", "It Self-Destructs in a burst of black mist... and is gone.", "But a cold whisper lingers: it will rise again in another haunted place."], "rewards": {"balls": 10, "RARE_CANDY": 3}}}, {"text": "Eterna Forest", "action": "EXIT", "target_area": "ETERNA_FOREST", "condition": "can_exit", "color": "RED"}],
       "area_boss": { "id": 479, "name": "Rotom", "victory_flag": "OLD_CHATEAU_boss_defeated" }
     },
     "MT_CORONET_BASE": {

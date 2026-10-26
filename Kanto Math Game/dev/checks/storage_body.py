@@ -32,7 +32,8 @@ arrived, said = go("OLIVINE_CITY")
 check(arrived == "NEW_BARK_TOWN" and "professor" in said.lower(), f"no Johto starter yet: off to New Bark ({arrived})")
 story.current_area_key = arrived
 check(story.active_store == "JOHTO" and story.player_team == [] and ids(story.pc_pokemon) == [], "Johto: empty party and PC")
-check(story.inventory == {"SS_TICKET": 1}, f"new Bag: only the S.S. Ticket comes along {story.inventory}")
+check(story.inventory == {"SS_TICKET": 1, "POKE_BALLS": 5},
+      f"new Bag: the S.S. Ticket comes along, plus the region's own 5 Poke Balls {story.inventory}")
 story.sync_key_items()
 check("SILPH_SCOPE" not in story.inventory and "HM_FLY" not in story.inventory, "Kanto key items stay in Kanto")
 check(ids(story.region_stores["KANTO"]["team"]) == [6, 25], "Kanto party waits in Kanto")

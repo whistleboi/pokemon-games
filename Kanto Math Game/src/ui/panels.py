@@ -4,220 +4,115 @@ from src.ui.manager import UIElement
 from src.ui.widgets import Button
 from src.utils import Utils
 from src.config import WHITE, BLACK, BLUE, RED, GREEN, GOLD
+from src.ui import theme
+
+
+class CommandButton(Button):
+    """A big coloured command (FIGHT, BAG, POKeMON, RUN; the town menu's too): src/ui/theme.py."""
+
+    def draw(self, surface):
+        if not self.visible:
+            return
+        hover = self.callback is not None and self.rect.collidepoint(pygame.mouse.get_pos())
+        color = self.bg_color if self.callback is not None else (128, 132, 144)  # disabled: grey
+        theme.command_button(surface, self.rect, self.text, self.font, color, hover=hover)
+
+
+class CommandMenu(UIElement):
+    """The bottom bar shared by battles and towns: the games' white text box with a prompt on the
+    left ("What will PIKACHU do?", "Welcome to Viridian City!") and four coloured commands on the
+    right. Same size and place on every screen (Utils.get_full_dialogue_rect)."""
+
+    LEFT_SHARE = 0.52
+
+    def __init__(self, game, specs):
+        rect = Utils.get_full_dialogue_rect(game)
+        super().__init__(rect, None, visible=True)
+        self.game = game
+        self.left_rect = pygame.Rect(rect.x, rect.y, int(rect.width * self.LEFT_SHARE), rect.height)
+        self.right_rect = pygame.Rect(self.left_rect.right, rect.y, rect.width - self.left_rect.width, rect.height)
+        pad, gap = 22, 14
+        btn_w = (self.right_rect.width - pad * 2 - gap) // 2
+        btn_h = (self.right_rect.height - pad * 2 - gap - 4) // 2
+        self.buttons = []
+        for i, (label, callback, color) in enumerate(specs):
+            r = pygame.Rect(self.right_rect.x + pad + (i % 2) * (btn_w + gap),
+                            self.right_rect.y + pad + (i // 2) * (btn_h + gap), btn_w, btn_h)
+            self.buttons.append(CommandButton(r, label, game.assets.fonts["button"], callback, bg_color=color,
+                                              autosize=False))
+
+    def handle_event(self, event):
+        if not self.visible:
+            return False
+        for btn in self.buttons:
+            if btn.handle_event(event):
+                return True
+        return False
+
+    def prompt_lines(self):
+        return []
+
+    def prompt_rect(self):
+        return self.left_rect
+
+    def draw(self, surface):
+        if not self.visible:
+            return
+        theme.draw_textbox(surface, self.rect)
+        area = self.prompt_rect()
+        font = self.game.assets.fonts["dialog"]
+        lines = []
+        for line in self.prompt_lines():
+            from src.ui.dialogue import wrap_text
+            lines += wrap_text(line, font, area.width - 70)
+        lh = int(font.get_linesize() * 1.2)
+        top = area.y + (area.h - len(lines) * lh) // 2
+        for i, line in enumerate(lines):
+            theme.shadow_text(surface, line, font, area.x + 40, top + i * lh)
+        for btn in self.buttons:
+            btn.draw(surface)
 
 
 # [REF-0007: Battle Action UI]
-class BattleActionMenu(UIElement):
+class BattleActionMenu(CommandMenu):
+    """FIGHT / BAG / POKeMON / RUN (the order the battle's tests and keyboard rely on), and a
+    MEGA / PRIMAL button beside them while it's available."""
 
     def __init__(self, game, pokemon_name, on_math, on_pkdex, on_pkmn, on_run, on_mega=None, mega_label="MEGA"):
-        rect = Utils.get_full_dialogue_rect(game)
-        super().__init__(rect, None, visible=True)
-        self.game = game
-
+        super().__init__(game, [("FIGHT", on_math, theme.FIGHT), ("BAG", on_pkdex, theme.BAG),
+                                ("POKéMON", on_pkmn, theme.POKEMON), ("RUN", on_run, theme.RUN)])
         self.pokemon_name = pokemon_name.upper()
-        self.on_math = on_math
-        self.on_pkdex = on_pkdex
-        self.on_run = on_run
-
-        self.left_rect = pygame.Rect(
-            rect.x, rect.y, int(rect.width * 0.55), rect.height
-        )
-        self.right_rect = pygame.Rect(
-            rect.x + self.left_rect.width,
-            rect.y,
-            rect.width - self.left_rect.width,
-            rect.height
-        )
-
-        btn_w = (self.right_rect.width - 50) // 2
-        btn_h = (self.right_rect.height - 50) // 2
-
-        self.buttons = []
-
-        r = pygame.Rect(self.right_rect.x + 20, self.right_rect.y + 15, btn_w, btn_h)
-        self.buttons.append(
-            Button(
-                r,
-                "MATH",
-                game.assets.fonts["s_med"],
-                on_math,
-                bg_color=WHITE,
-                text_color=WHITE,
-                outline_color=BLACK,
-            )
-        )
-
-        r = pygame.Rect(
-            self.right_rect.x + btn_w + 30, self.right_rect.y + 15, btn_w, btn_h
-        )
-        self.buttons.append(
-            Button(
-                r,
-                "BAG",
-                game.assets.fonts["s_med"],
-                on_pkdex,
-                bg_color=WHITE,
-                text_color=WHITE,
-                outline_color=BLACK,
-            )
-        )
-
-        r = pygame.Rect(
-            self.right_rect.x + 20, self.right_rect.y + btn_h + 25, btn_w, btn_h
-        )
-        self.buttons.append(
-            Button(
-                r,
-                "PKMN",
-                self.game.assets.fonts["s_med"],
-                on_pkmn,
-                bg_color=WHITE,
-                text_color=WHITE,
-                outline_color=BLACK,
-            )
-        )
-
-        r = pygame.Rect(
-            self.right_rect.x + btn_w + 30, self.right_rect.y + btn_h + 25, btn_w, btn_h
-        )
-        self.buttons.append(
-            Button(
-                r,
-                "RUN",
-                self.game.assets.fonts["s_med"],
-                on_run,
-                bg_color=WHITE,
-                text_color=WHITE,
-                outline_color=BLACK,
-            )
-        )
-
-        # Mega Evolution / Primal Reversion: beside the four, only while it's available.
+        self.on_math, self.on_pkdex, self.on_run = on_math, on_pkdex, on_run
         self.mega_button = None
         if on_mega:
-            mega_w = 220
-            r = pygame.Rect(self.right_rect.x - mega_w - 10, self.right_rect.centery - btn_h // 2, mega_w, btn_h)
-            color = (200, 60, 40) if mega_label == "PRIMAL" else (150, 60, 200)
-            self.mega_button = Button(r, mega_label, game.assets.fonts["s_med"], on_mega,
-                                      bg_color=color, text_color=WHITE, outline_color=BLACK, autosize=False)
+            h = self.buttons[0].rect.h
+            r = pygame.Rect(self.left_rect.right - 200, self.rect.centery - h // 2, 180, h)
+            color = (200, 60, 40) if mega_label == "PRIMAL" else theme.MEGA
+            self.mega_button = CommandButton(r, mega_label, game.assets.fonts["button"], on_mega, bg_color=color,
+                                             autosize=False)
             self.buttons.append(self.mega_button)
 
-    def handle_event(self, event):
-        if not self.visible:
-            return False
-        for btn in self.buttons:
-            if btn.handle_event(event):
-                return True
-        return False
+    def prompt_lines(self):
+        return [f"What will {self.pokemon_name} do?"]
 
-    def draw(self, surface):
-        if not self.visible:
-            return
-
-        Utils.draw_classic_panel(
-            surface, self.rect.x, self.rect.y, self.rect.width, self.rect.height
-        )
-
-        text = f"What will {self.pokemon_name} do?"
-        text_rect = self.left_rect.copy()
-        font, line_height = self.game.assets.fonts["med"], 65
-        if self.mega_button:
-            # Make room for the MEGA / PRIMAL button.
-            text_rect.width = self.mega_button.rect.left - self.left_rect.x
-            font, line_height = self.game.assets.fonts["s_med"], 50
-        Utils.draw_multiline_text(
-            surface,
-            text,
-            font,
-            WHITE,
-            text_rect.centerx,
-            text_rect.centery,
-            max_width=text_rect.width - 40,
-            line_height=line_height,
-            center=True,
-            outline_color=BLACK,
-        )
-
-        white_panel = self.right_rect.inflate(-18, -18)
-        pygame.draw.rect(surface, WHITE, white_panel, border_radius=12)
-        pygame.draw.rect(surface, BLACK, white_panel, 6, border_radius=12)
-
-        for btn in self.buttons:
-            btn.draw(surface)
+    def prompt_rect(self):
+        if self.mega_button:  # room for MEGA / PRIMAL
+            return pygame.Rect(self.left_rect.x, self.left_rect.y, self.mega_button.rect.left - self.left_rect.x,
+                               self.left_rect.h)
+        return self.left_rect
 
 
 # [REF-0008: City Action UI]
-class CityActionMenu(UIElement):
+class CityActionMenu(CommandMenu):
+    """A town's EXPLORE / PKDEX / POKéMON / TRAVEL, in the battle menu's style and place."""
 
     def __init__(self, game, area_name, on_explore, on_pkdex, on_pkmn, on_travel):
-        rect = Utils.get_full_dialogue_rect(game)
-        super().__init__(rect, None, visible=True)
-        self.game = game
+        super().__init__(game, [("EXPLORE", on_explore, theme.RUN), ("PKDEX", on_pkdex, theme.FIGHT),
+                                ("POKéMON", on_pkmn, theme.POKEMON), ("TRAVEL", on_travel, theme.BAG)])
         self.area_name = area_name
 
-        self.right_rect = pygame.Rect(
-            rect.x + int(rect.width * 0.55),
-            rect.y,
-            rect.width - int(rect.width * 0.55),
-            rect.height
-        )
-
-        btn_w = (self.right_rect.width - 50) // 2
-        btn_h = (self.right_rect.height - 50) // 2
-
-        self.buttons = []
-        font = game.assets.fonts["s_med"]
-
-        button_defs = [
-            (pygame.Rect(self.right_rect.x + 20, self.right_rect.y + 15, btn_w, btn_h), "EXPLORE", on_explore, BLUE),
-            (pygame.Rect(self.right_rect.x + btn_w + 30, self.right_rect.y + 15, btn_w, btn_h), "PKDEX", on_pkdex, RED),
-            (pygame.Rect(self.right_rect.x + 20, self.right_rect.y + btn_h + 25, btn_w, btn_h), "PKMN", on_pkmn, GREEN),
-            (pygame.Rect(self.right_rect.x + btn_w + 30, self.right_rect.y + btn_h + 25, btn_w, btn_h), "TRAVEL", on_travel, GOLD),
-        ]
-
-        for r, text, callback, color in button_defs:
-            self.buttons.append(Button(r, text, font, callback, bg_color=color, text_color=WHITE, outline_color=BLACK))
-
-    def handle_event(self, event):
-        if not self.visible:
-            return False
-        for btn in self.buttons:
-            if btn.handle_event(event):
-                return True
-        return False
-
-    def draw(self, surface):
-        if not self.visible:
-            return
-
-        Utils.draw_classic_panel(
-            surface, self.rect.x, self.rect.y, self.rect.width, self.rect.height
-        )
-
-        welcome_text = f"Welcome to\n{self.area_name.replace('_', ' ').title()}!"
-        left_rect_w = int(self.rect.width * 0.55)
-        font = self.game.assets.fonts["med"]
-        if font.size(self.area_name.replace("_", " ").title() + "!")[0] > left_rect_w - 60:
-            font = self.game.assets.fonts["s_med"]  # long town names stay on one line
-        Utils.draw_multiline_text(
-            surface,
-            welcome_text,
-            font,
-            WHITE,
-            self.rect.x + left_rect_w // 2,
-            self.rect.centery,
-            max_width=left_rect_w - 60,
-            line_height=font.get_linesize() + 10,
-            center=True,
-            outline_color=BLACK,
-        )
-
-        white_panel = self.right_rect.inflate(-18, -18)
-        pygame.draw.rect(surface, WHITE, white_panel, border_radius=12)
-        pygame.draw.rect(surface, BLACK, white_panel, 6, border_radius=12)
-
-        for btn in self.buttons:
-            btn.draw(surface)
+    def prompt_lines(self):
+        return ["Welcome to", self.area_name.replace("_", " ").title() + "!"]
 
 
 # [REF-0009: Party Slot UI]
@@ -243,50 +138,30 @@ class PartySlotUI(UIElement):
         return False
 
     def draw(self, surface):
+        """A white card (the menu redesign): sprite, name, level and status, HP bar and numbers;
+        a fainted Pokemon's card is tinted red."""
         if not self.visible or not self.pokemon:
             return
-
-        base_color = (65, 130, 255) if not self.hovered else (100, 165, 255)
-        pygame.draw.rect(surface, base_color, self.rect, border_radius=14)
-        pygame.draw.rect(surface, WHITE, self.rect, 5, border_radius=14)
-
-        name_x = self.rect.x + 20
-        name_y = self.rect.y + 25
-        name = self.pokemon.display_name.upper()
-
-        font = self.game.assets.fonts["s_med"]
-        if len(name) > 10:
-            font = self.game.assets.fonts["small"]
-
-        Utils.draw_text_outline(surface, name, font, WHITE, name_x, name_y, BLACK, 2, align="left")
-
-        stage_str = f"Lv {self.pokemon.level}" + ("  MAX" if self.pokemon.level >= self.pokemon.MAX_LEVEL else "")
-        Utils.draw_text_outline(surface, stage_str, self.game.assets.fonts["tiny"], WHITE, name_x, name_y + 30, BLACK, 2, align="left")
+        p, r, f = self.pokemon, self.rect, self.game.assets.fonts
+        fainted = p.current_hp <= 0
+        selected = getattr(self, "selected", False)
+        theme.card(surface, r, hover=self.hovered, selected=selected, accent=theme.ACCENT["party"],
+                   fill=(250, 222, 218) if fainted else theme.TEXTBOX)
+        from src.states.systems import fit_sprite
+        art = p.image or p.sidebar_image
+        if art:
+            spr = fit_sprite(art, r.h - 20, r.h - 20)
+            surface.blit(spr, spr.get_rect(center=(r.x + 12 + (r.h - 20) // 2, r.centery)))
+        x = r.x + r.h + 4
+        name = p.display_name.title()
+        nf = f["s_med"] if f["s_med"].size(name)[0] <= r.right - x - 110 else f["label"]
+        theme.shadow_text(surface, name, nf, x, r.y + 12)
+        lv = f"Lv{p.level}" + (" MAX" if p.level >= p.MAX_LEVEL else "")
+        theme.shadow_text(surface, lv, f["label"], r.right - 16, r.y + 16, align="right")
+        tag_w = theme.status_tag(surface, "faint" if fainted else getattr(p, "status", None), f["caption"],
+                                 x, r.y + 48)
         from src.pokemon import affection
-        if affection.hearts(self.pokemon) > 0:  # Pokemon-Amie hearts, once it has any
+        if affection.hearts(p) > 0:  # Pokemon-Amie hearts, once it has any
             from src.ui.hearts import draw_hearts
-            lv_w = self.game.assets.fonts["tiny"].size(stage_str)[0]
-            draw_hearts(surface, self.pokemon, name_x + lv_w + 60, name_y + 38, size=14)
-
-        sprite = pygame.transform.scale(self.pokemon.sidebar_image, (80, 80))
-        sprite_rect = sprite.get_rect(center=(self.rect.right - 60, self.rect.y + 45))
-        surface.blit(sprite, sprite_rect)
-
-        bar_h = 14
-        bar_margin = 15
-        bar_w = self.rect.width - (bar_margin * 2)
-        hp_y = self.rect.bottom - bar_h - 10
-
-        bar_bg = pygame.Rect(self.rect.x + bar_margin, hp_y, bar_w, bar_h)
-        pygame.draw.rect(surface, BLACK, bar_bg)
-        pygame.draw.rect(surface, (50, 50, 50), bar_bg.inflate(-6, -6))
-
-        max_hp = self.pokemon.get_max_hp()
-        current_hp = self.pokemon.current_hp
-        ratio = current_hp / max_hp if max_hp > 0 else 0
-        hp_color = GREEN if ratio > 0.5 else GOLD if ratio > 0.25 else RED
-        bar = pygame.Rect(bar_bg.x + 2, bar_bg.y + 2, int((bar_w - 4) * ratio), 8)
-        pygame.draw.rect(surface, hp_color, bar, border_radius=4)
-
-        hp_str = f"{int(current_hp)}/{int(max_hp)}"
-        Utils.draw_text_outline(surface, "HP: " + hp_str, self.game.assets.fonts["tiny"], WHITE, bar_bg.x, hp_y - 12, BLACK, 1, align="left")
+            draw_hearts(surface, p, x + tag_w + (60 if tag_w else 40), r.y + 60, size=13)
+        theme.hp_bar(surface, x, r.bottom - 40, r.right - 16 - x, p.current_hp, p.get_max_hp(), f["caption"])

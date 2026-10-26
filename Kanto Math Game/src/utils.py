@@ -103,31 +103,13 @@ class Utils:
 
     @staticmethod
     def draw_classic_panel(surface, x, y, w, h, title=None):
-        """Clean forest-style textbox — frames battle circles perfectly"""
+        """The game's panel (src/ui/theme.py): slate blue with a light edge, the same everywhere."""
+        from src.ui import theme
         rect = pygame.Rect(x, y, w, h)
-
-        shadow = rect.move(8, 8)
-        pygame.draw.rect(surface, (60, 45, 30), shadow, border_radius=12)
-
-        pygame.draw.rect(surface, GB_PANEL, rect, border_radius=12)
-
-        inner = rect.inflate(-12, -12)
-        pygame.draw.rect(surface, GB_PANEL_DARK, inner, border_radius=8)
-
-        pygame.draw.rect(surface, GB_BORDER, rect, 8, border_radius=12)
-
-        pygame.draw.line(surface, GB_HIGHLIGHT, (x + 8, y + 8), (x + w - 8, y + 8), 4)
-        pygame.draw.line(surface, GB_HIGHLIGHT, (x + 8, y + 8), (x + 8, y + h - 8), 4)
-
+        theme.draw_panel(surface, rect)
         if title:
-            Utils.draw_text_outline(
-                surface,
-                title,
-                pygame.font.SysFont("impact", 26, bold=True),
-                GB_TEXT,
-                rect.centerx,
-                rect.centery - h // 2 - 20,
-            )
+            Utils.draw_text_outline(surface, title, pygame.font.SysFont("impact", 26, bold=True), WHITE,
+                                    rect.centerx, rect.centery - h // 2 - 20)
 
     @staticmethod
     def get_full_dialogue_rect(game):
@@ -195,6 +177,10 @@ class MultiFont:
         self.primary = primary_font
         self.fallback = fallback_font
         self.SPECIAL_CHARS = {"#", "<", ">", "é", "É"}
+        # The game font (TightFont) draws its own é to match the other letters (Jordan: the
+        # fallback font's é looked out of place).
+        if "é" in getattr(primary_font, "ACCENTED", {}):
+            self.SPECIAL_CHARS.discard("é")
 
     def __getattr__(self, name):
         # Anything else (get_height, get_linesize...) comes from the main font.

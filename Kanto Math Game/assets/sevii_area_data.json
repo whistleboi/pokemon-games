@@ -1628,82 +1628,7 @@
       "level": 52,
       "subregion": "SEVII",
       "has_gym": false,
-      "explore_options": [
-        {
-          "text": "Pokemon Center",
-          "action": "HEAL"
-        },
-        {
-          "text": "Poke Mart",
-          "action": "SHOP"
-        },
-        {
-          "text": "Pokemon Day Care",
-          "action": "NPC",
-          "target": "day_care"
-        },
-        {
-          "text": "Lorelei's House",
-          "action": "EVENT",
-          "color": "GOLD",
-          "event": {
-            "lines": [
-              "Lorelei: This is my home island. I came back to rest after the League...",
-              "But Team Rocket is in Icefall Cave, catching Lapras to sell! Please stop them."
-            ],
-            "flag": "met_lorelei_sevii",
-            "done": [
-              "Lorelei: Thank you for saving the Icefall Cave Pokemon."
-            ]
-          },
-          "flag_condition": "not sevii_icefall_cleared"
-        },
-        {
-          "text": "Battle Lorelei",
-          "action": "EVENT",
-          "color": "GOLD",
-          "event": {
-            "requires": [
-              "sevii_icefall_cleared"
-            ],
-            "lines": [
-              "Lorelei: You saved the Lapras. Now, a battle, just for fun. Don't hold back!"
-            ],
-            "battle": {
-              "name": "Lorelei",
-              "class": "ELITE_FOUR",
-              "sprite": "loreli.png",
-              "team": [
-                87,
-                91,
-                80,
-                124,
-                131
-              ],
-              "levels": [
-                56,
-                57,
-                56,
-                58,
-                60
-              ],
-              "rewards": {
-                "balls": 15
-              },
-              "dialogue": {
-                "player_won": [
-                  "Lorelei: Still as strong as ever. Come back any time."
-                ]
-              }
-            },
-            "flag": "defeated_lorelei_sevii",
-            "done": [
-              "Lorelei: That was a wonderful battle."
-            ]
-          },
-          "condition": "sevii_icefall_cleared"
-        }
-      ],
+      "explore_options": [{"text": "Pokemon Center", "action": "HEAL"}, {"text": "Poke Mart", "action": "SHOP"}, {"text": "Pokemon Day Care", "action": "NPC", "target": "day_care"}, {"text": "Lorelei's House", "action": "EVENT", "color": "GOLD", "event": {"lines": ["Lorelei: This is my home island. I came back to rest after the League...", "But Team Rocket is in Icefall Cave, catching Lapras to sell! Please stop them."], "flag": "met_lorelei_sevii", "done": ["Lorelei: Thank you for saving the Icefall Cave Pokemon."]}, "flag_condition": "not sevii_icefall_cleared"}, {"text": "Battle Lorelei", "action": "EVENT", "color": "GOLD", "event": {"requires": ["sevii_icefall_cleared"], "lines": ["Lorelei: You saved the Lapras. Now, a battle, just for fun. Don't hold back!"], "battle": {"name": "Lorelei", "class": "ELITE_FOUR", "sprite": "loreli.png", "team": [87, 91, 80, 124, 131], "levels": [56, 57, 56, 58, 60], "rewards": {"balls": 15}, "dialogue": {"player_won": ["Lorelei: Still as strong as ever. Come back any time."]}, "movesets": {"87": ["SURF", "ICE-BEAM", "HAIL", "SAFEGUARD"], "91": ["SPIKES", "DIVE", "HAIL", "PROTECT"], "80": ["ICE-BEAM", "SURF", "AMNESIA", "YAWN"], "124": ["DOUBLE-SLAP", "ICE-PUNCH", "LOVELY-KISS", "ATTRACT"], "131": ["BODY-SLAM", "CONFUSE-RAY", "SURF", "ICE-BEAM"]}}, "flag": "defeated_lorelei_sevii", "done": ["Lorelei: That was a wonderful battle."]}, "condition": "sevii_icefall_cleared"}],
       "travel_options": [
         {
           "text": "Icefall Cave",
@@ -2135,50 +2060,7 @@
           }
         }
       ],
-      "route_menu": [
-        {
-          "text": "CATCH WILD PKMN",
-          "action": "CATCH",
-          "condition": "has_balls",
-          "color": "BLUE"
-        },
-        {
-          "text": "BATTLE WILD PKMN",
-          "action": "BATTLE",
-          "condition": "can_battle",
-          "color": "GREEN"
-        },
-        {
-          "text": "BATTLE TRAINER",
-          "action": "TRAINER",
-          "condition": "has_trainers",
-          "color": "GREEN"
-        },
-        {
-          "text": "SEARCH THE DARK",
-          "action": "EVENT",
-          "color": "GOLD",
-          "event": {
-            "lines": [
-              "You feel your way through the pitch-black cave...",
-              "Someone dropped a pouch here long ago. You found it!"
-            ],
-            "gift_item": {
-              "RARE_CANDY": 3
-            },
-            "flag": "lost_cave_searched"
-          },
-          "flag_condition": "not lost_cave_searched"
-        },
-        {
-          "text": "Five Island",
-          "action": "EXIT",
-          "target_area": "FIVE_ISLAND",
-          "condition": "can_exit",
-          "color": "RED"
-        },
-        {"text": "Resort Gorgeous", "action": "EXIT", "target_area": "RESORT_GORGEOUS", "condition": "can_exit", "color": "RED"}
-      ],
+      "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"}, {"text": "SEARCH THE DARK", "action": "EVENT", "color": "GOLD", "event": {"lines": ["You feel your way through the pitch-black cave...", "Someone dropped a pouch here long ago. You found it!"], "gift_item": {"RARE_CANDY": 3}, "flag": "lost_cave_searched"}, "flag_condition": "not lost_cave_searched"}, {"text": "THE BLACK FOG", "action": "BOSS", "color": "PURPLE", "flag_condition": "not black_fog_banished_lost_cave", "boss": {"id": 10501, "name": "Black Fog", "level": 63, "no_catch": true, "victory_flag": "black_fog_banished_lost_cave", "lines": ["The air turns ice-cold. A black fog pours across the floor...", "Two huge eyes open in the dark. A giant Haunter rises: the Black Fog!", "Long ago people worshipped it as a god. It feeds on dreams. Don't let it get yours!"], "won": ["The Black Fog is too proud to ever be caught.", "It Self-Destructs in a burst of black mist... and is gone.", "But a cold whisper lingers: it will rise again in another haunted place."], "rewards": {"balls": 10, "RARE_CANDY": 3}}}, {"text": "Five Island", "action": "EXIT", "target_area": "FIVE_ISLAND", "condition": "can_exit", "color": "RED"}, {"text": "Resort Gorgeous", "action": "EXIT", "target_area": "RESORT_GORGEOUS", "condition": "can_exit", "color": "RED"}],
       "next_area": "FIVE_ISLAND"
     },
     "ROCKET_WAREHOUSE": {

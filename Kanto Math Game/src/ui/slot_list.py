@@ -7,8 +7,8 @@ Only the rows on screen are summarised (see src.core.save_slots), so 100 slots s
 import os
 import pygame
 from src.core import save_slots
-from src.ui.widgets import Button
 from src.config import WHITE, GOLD, BLACK, LIGHT_GRAY, RED
+from src.ui import theme
 
 ROW_BG = (28, 36, 72)
 ROW_EMPTY_BG = (22, 22, 30)
@@ -28,7 +28,8 @@ def slot_font(assets, size):
             path = os.path.join(assets.assets_dir or "", name)
             if os.path.exists(path):
                 try:
-                    font = pygame.font.Font(path, size)
+                    from src.ui.fonts import TightFont
+                    font = TightFont(path, size)
                     break
                 except (OSError, pygame.error):
                     pass
@@ -46,14 +47,20 @@ def fit(font, text, width):
 
 
 class SlotList:
+    """In the menu frame (src/ui/theme.py): the files as white cards under the header, PREV /
+    NEXT and the page in the text box along the bottom."""
     PER_PAGE = 8
 
-    def __init__(self, game, on_pick, top=96, bottom_bar=616, selected=0):
+    def __init__(self, game, on_pick, top=None, bottom_bar=None, selected=0):
+        from src.ui.panels import CommandButton
         self.game = game
         self.on_pick = on_pick
         self.count = save_slots.SAVE_SLOTS
-        w = min(1120, game.width - 80)
-        self.left = (game.width - w) // 2
+        self.bar_rect = pygame.Rect(16, game.height - 86, game.width - 32, 78)
+        top = theme.HEADER_H + 14 if top is None else top
+        bottom_bar = self.bar_rect.top - 8 if bottom_bar is None else bottom_bar
+        w = game.width - 48
+        self.left = 24
         self.width = w
         self.top = top
         self.row_h = (bottom_bar - top) // self.PER_PAGE
@@ -64,11 +71,11 @@ class SlotList:
         self._down = None
         self.big = slot_font(game.assets, 24)
         self.small = slot_font(game.assets, 16)
-        by = bottom_bar + 16
-        self.btn_prev = Button((self.left, by, 200, 60), "< PREV", game.assets.fonts["small"],
-                               lambda: self.goto_page(self.page - 1), autosize=False)
-        self.btn_next = Button((self.left + w - 200, by, 200, 60), "NEXT >", game.assets.fonts["small"],
-                               lambda: self.goto_page(self.page + 1), autosize=False)
+        b, f = self.bar_rect, game.assets.fonts
+        self.btn_prev = CommandButton((b.x + 16, b.y + 12, 170, b.h - 28), "< PREV", f["label"],
+                                      lambda: self.goto_page(self.page - 1), bg_color=theme.RUN, autosize=False)
+        self.btn_next = CommandButton((b.right - 16 - 170, b.y + 12, 170, b.h - 28), "NEXT >", f["label"],
+                                      lambda: self.goto_page(self.page + 1), bg_color=theme.RUN, autosize=False)
         self._sync_buttons()
 
     # ---- state
@@ -97,8 +104,7 @@ class SlotList:
 
     def _sync_buttons(self):
         for btn, on in ((self.btn_prev, self.page > 0), (self.btn_next, self.page < self.page_count - 1)):
-            btn.bg_color = (70, 100, 240) if on else (60, 60, 70)
-            btn.text_color = WHITE if on else DIM
+            btn.bg_color = theme.RUN if on else theme.TAB_OFF
 
     def row_rect(self, k):
         return pygame.Rect(self.left, self.top + k * self.row_h, self.width, self.row_h - 6)
@@ -153,39 +159,47 @@ class SlotList:
 
     # ---- drawing
     def draw(self, surface):
+        """The files on show, then the bottom bar (its PREV / NEXT are the screen's buttons)."""
+        mouse = pygame.mouse.get_pos()
+        f = self.game.assets.fonts
         for k, i in enumerate(self.visible_slots()):
             r = self.row_rect(k)
             s = self.summary(i)
             sel = i == self.selected
-            bg = ROW_SEL_BG if sel else (ROW_BG if s else ROW_EMPTY_BG)
-            pygame.draw.rect(surface, bg, r, border_radius=10)
-            pygame.draw.rect(surface, GOLD if sel else ROW_BORDER, r, 3 if sel else 1, border_radius=10)
-            num = self.big.render(f"No.{i + 1:03d}", False, GOLD)
-            surface.blit(num, (r.x + 16, r.centery - num.get_height() // 2))
-            tx = r.x + 16 + self.big.size("No.000")[0] + 28
+            if s is None:  # an empty file: a dim slot
+                pygame.draw.rect(surface, theme.shade(theme.PANEL_INNER, 0.85), r, border_radius=10)
+                pygame.draw.rect(surface, theme.RUN if sel else theme.PANEL_EDGE, r, 3 if sel else 2, border_radius=10)
+            else:
+                theme.card(surface, r, hover=r.collidepoint(mouse), selected=sel, accent=theme.RUN, radius=10)
+            chip = pygame.Rect(r.x + 10, r.y + 8, 112, r.h - 16)
+            pygame.draw.rect(surface, theme.RUN if s else theme.TAB_OFF, chip, border_radius=8)
+            num = f"No.{i + 1:03d}"
+            from src.utils import Utils
+            Utils.draw_text_outline(surface, num, f["label"], WHITE, chip.centerx, chip.centery,
+                                    outline_color=theme.shade(theme.RUN if s else theme.TAB_OFF, 0.5), thickness=2)
+            tx = chip.right + 18
             tw = r.right - 16 - tx
             if s is None:
-                t = self.big.render("- EMPTY -", False, DIM)
-                surface.blit(t, (tx, r.centery - t.get_height() // 2))
+                theme.shadow_text(surface, "- EMPTY -", f["label"], tx, r.centery - 11, color=(170, 178, 204),
+                                  shadow=theme.MENU_BG)
                 continue
             if s.get("damaged"):
-                t = self.big.render(fit(self.big, "DAMAGED FILE (can't be loaded)", tw), False, RED)
-                surface.blit(t, (tx, r.centery - t.get_height() // 2))
+                theme.shadow_text(surface, fit(f["label"], "DAMAGED FILE (can't be loaded)", tw), f["label"], tx,
+                                  r.centery - 11, color=theme.HP_RED)
                 continue
             name = s["name"] + ("  (from backup)" if s.get("restored") else "")
             badges = s.get("badges", 0)
             bits = [b for b in (s.get("region"), s.get("area"),
                                 f"{badges} badge" + ("" if badges == 1 else "s")) if b]
-            when = self.small.render(s.get("saved", ""), False, LIGHT_GRAY)
-            line1 = self.big.render(fit(self.big, name, tw - when.get_width() - 24), False, WHITE)
-            line2 = self.small.render(fit(self.small, " - ".join(bits), tw), False, LIGHT_GRAY)
-            gap = 6
-            y = r.centery - (line1.get_height() + gap + line2.get_height()) // 2
-            surface.blit(line1, (tx, y))
-            surface.blit(when, (r.right - 16 - when.get_width(), y + line1.get_height() - when.get_height()))
-            surface.blit(line2, (tx, y + line1.get_height() + gap))
+            when = s.get("saved", "")
+            ww = f["caption"].size(when)[0]
+            theme.shadow_text(surface, fit(f["label"], name, tw - ww - 24), f["label"], tx, r.y + 7)
+            theme.shadow_text(surface, fit(f["caption"], " - ".join(bits), tw), f["caption"], tx, r.bottom - 25,
+                              color=(110, 116, 136))
+            theme.shadow_text(surface, when, f["caption"], r.right - 16, r.y + 10, color=(110, 116, 136),
+                              align="right")
         first = self.page * self.PER_PAGE + 1
         last = min(self.count, first + self.PER_PAGE - 1)
-        label = self.small.render(f"PAGE {self.page + 1}/{self.page_count}   No.{first:03d}-{last:03d}",
-                                  False, WHITE)
-        surface.blit(label, label.get_rect(midright=(self.left + self.width, self.top - 22)))
+        theme.draw_textbox(surface, self.bar_rect)
+        theme.shadow_text(surface, f"Page {self.page + 1}/{self.page_count}   No.{first:03d}-{last:03d}",
+                          f["s_med"], self.bar_rect.centerx, self.bar_rect.centery - 2, align="center")

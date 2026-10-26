@@ -77,8 +77,8 @@ q1, names = fight(b)
 log = run(b)
 print("    moves offered:", names)
 print("    turn 1:", log)
-check(any(l.startswith("Foe GEODUDE used") or "Foe GEODUDE" in l and "used" in l.lower() for l in log),
-      "the Geodude attacked")
+check(any(l.startswith("Foe GEODUDE used") or "Foe GEODUDE" in l and ("used" in l.lower() or "flinched" in l)
+          for l in log), "the Geodude acted (or flinched from a quick answer)")
 check(not any("TACKLE" in l and "super effective" in l for l in log), "no super-effective Tackle")
 # switch to Shinx through the PKMN button and the party menu
 click(b.action_menu.buttons[2].rect.center)

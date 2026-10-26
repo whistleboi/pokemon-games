@@ -18,8 +18,15 @@ g = gm.Game()
 g.start_new_game(); g.player_name, g.player_character = "ASH", "red"
 rs = RegionSelectionState(g); rs.selected_idx = 2; rs.confirm_selection()
 g.current_state.input_name = "GARY"; g.current_state.confirm_selection(); g.current_state.on_confirm()
-st = g.current_state; st.load_starters(); st.selected_idx = 2; st.complete_selection()
+st = g.current_state
+if not hasattr(st, "load_starters"):  # Hoenn starts at home (Route 101's starter): pick it straight away
+    from src.states.menus import StarterSelectionState
+    st = StarterSelectionState(g, starter_ids=g.story_manager.get_region_start("HOENN")["starters"], region="HOENN")
+st.load_starters(); st.selected_idx = 2; st.complete_selection()
 story = g.story_manager
+story._migrate_hoenn_start()  # the suites start past the opening (Pokedex in hand), like older saves
+for _r in story.RIVAL_CHOICES:  # every region's rival already picked (no rival screen in the suites)
+    story.assign_region_rival(_r)["chosen"] = True
 mk = lambda pid: Pokemon(g.loader.fetch_specific(pid), g.assets, size_mult=2.5)
 
 

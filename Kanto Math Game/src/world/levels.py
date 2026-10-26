@@ -109,8 +109,33 @@ def area_level(game, area_key):
         return scaled
     area = game.loader.area_data.get("STORY_PROGRESSION", {}).get(area_key, {})
     if area.get("level"):
-        return int(area["level"])
-    return int(_area_levels(game).get(area_key, START_LEVEL + 2))
+        return max(int(area["level"]), team_area_level(game))
+    return max(int(_area_levels(game).get(area_key, START_LEVEL + 2)), team_area_level(game))
+
+
+# Jordan: wild Pokemon and trainers always scale with the player's highest team member, so a
+# fast-levelled team can't knock everything out in one hit after a wrong answer. Before the title
+# an area's level never drops below (team's highest - POSTGAME_UNDER), the same spread as the
+# post-game: wild cap-5..cap-2, route trainers cap-2..cap, story trainers' aces at least the cap. Gyms, the
+# League, legendaries and the first rival battle keep their own levels.
+def team_top(game):
+    story = getattr(game, "story_manager", None)
+    return max((int(p.level) for p in getattr(story, "player_team", None) or [] if p), default=0)
+
+
+def team_area_level(game):
+    top = team_top(game)
+    return max(2, top - POSTGAME_UNDER) if top else 0
+
+
+def follow_team(game, team_levels):
+    """Data levels (a story trainer's canon team, an area boss) lifted so the ace is at least
+    the team's best; the team's spread is kept. Canon levels at or above it are left alone."""
+    team_levels = [int(lv) for lv in team_levels]
+    if not team_levels or not team_top(game):
+        return team_levels
+    delta = max(0, team_top(game) - max(team_levels))
+    return [min(100, lv + delta) for lv in team_levels]
 
 
 def wild_level(game, area_key):

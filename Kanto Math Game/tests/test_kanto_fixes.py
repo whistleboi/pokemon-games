@@ -61,7 +61,8 @@ def status_cured_on_blackout_and_full_heal():
     assert m.status is None and "FULL_HEAL" not in G.story_manager.inventory
     from src.states.systems import PokeMartState
     G.story_manager.current_area_key = "VIRIDIAN_CITY"
-    assert "FULL_HEAL" in PokeMartState(G, None)._shop_items()
+    G.story_manager.badges["KANTO"] = []  # the games' counter: Antidote / Paralyze Heal first
+    assert {"ANTIDOTE", "PARALYZE_HEAL"} <= set(PokeMartState(G, None)._shop_items())
 
 @test
 def koffing_weezing_wild():
@@ -262,12 +263,15 @@ def kanto_mart_stock():
     st = G.story_manager
     def items(area):
         st.current_area_key = area; return PokeMartState(G, None)._shop_items()
-    v = items("VIRIDIAN_CITY")
-    assert "RARE_CANDY" not in v and "REVIVE" not in v and "POTION" in v and "FULL_HEAL" in v
-    c = items("CELADON_CITY")
-    assert {"POTION", "POKE_BALLS", "FULL_HEAL", "REVIVE"} <= set(c) and "FIRE_STONE" in c
-    assert "REVIVE" in items("LAVENDER_TOWN") and "RARE_CANDY" in items("INDIGO_PLATEAU")
-    j = items("GOLDENROD_CITY"); assert "RARE_CANDY" in j  # other regions unchanged
+    st.badges["KANTO"] = []
+    v = items("VIRIDIAN_CITY")  # the games' Poke Mart counter, by badges
+    assert "RARE_CANDY" not in v and "REVIVE" not in v and {"POTION", "ANTIDOTE"} <= set(v)
+    st.badges["KANTO"] = ["BOULDER", "CASCADE", "THUNDER"]
+    assert "REVIVE" in items("LAVENDER_TOWN") and "GREAT_BALL" in items("LAVENDER_TOWN")
+    c = items("CELADON_CITY")  # department store: X items and evolution stones too
+    assert {"POTION", "POKE_BALLS", "REVIVE", "X_ATTACK"} <= set(c) and "FIRE_STONE" in c
+    assert "RARE_CANDY" in items("INDIGO_PLATEAU")
+    j = items("GOLDENROD_CITY"); assert "RARE_CANDY" in j
 
 @test
 def late_area_levels():
@@ -359,21 +363,20 @@ def rival_per_region_fresh_and_multi_region():
         for region, name in canon.items():           # fresh start in each region
             st = _fresh_story(region)
             assert st.assign_region_rival(region)["name"] == name, region
-        # Kanto start, the player picked Silver as their rival and named him GARY
-        st = _fresh_story("KANTO"); st.record_region_rival("KANTO", "GARY", "silver")
+        # Kanto start: Blue, renamed GARY by the player; every other region has its own rival
+        st = _fresh_story("KANTO"); st.record_region_rival("KANTO", "GARY", "blue")
         st.rival_starter_raw = {"id": 4}; st.note_rival_starter("KANTO")
         seen = []
         for region in ["JOHTO", "HOENN", "SINNOH", "UNOVA", "KALOS", "ALOLA", "GALAR", "PALDEA"]:
             r = st.assign_region_rival(region)
             st.rival_starter_raw = {"id": 999}; st.note_rival_starter(region)
             seen.append((r["name"], r["character"]))
-        assert st.region_rivals["JOHTO"]["name"] != "SILVER"        # Silver already used in Kanto
+        assert st.region_rivals["JOHTO"]["name"] == "SILVER"        # each region's own rival
         keys = [st.region_rivals[r]["character"] for r in st.region_rivals]
-        names = [st.region_rivals[r]["name"] for r in st.region_rivals]
-        assert len(set(keys)) == len(keys) == 9 and len(set(names)) == 9 and "red" not in keys, seen
+        assert len(set(keys)) == len(keys) == 9 and "red" not in keys, seen
         assert st.rival_starter_id("KANTO") == 4                     # Kanto rival keeps a Kanto team
         st.current_area_key = "PALLET_TOWN"; st.sync_rival()
-        assert G.rival_name == "GARY" and G.rival_character == "silver"
+        assert G.rival_name == "GARY" and G.rival_character == "blue"
         data = st.serialize(); st2 = _fresh_story("KANTO"); st2.region_rivals = {}
         st2.region_rivals = {k.upper(): dict(v) for k, v in data["region_rivals"].items()}
         assert st2.region_rivals == st.region_rivals

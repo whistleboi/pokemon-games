@@ -19,7 +19,7 @@
       "Professor Juniper: Oh! You're here at last.",
       "Welcome to the world of Pokémon! I'm Professor Juniper.",
       "I study Pokémon — creatures that live alongside people.",
-      "Your friend {rival_name} and Bianca have been eager to start.",
+      "Your friend {rival_name} and {friend_name} have been eager to start.",
       "Inside this case are three Pokémon. Choose one. Your adventure begins now."
     ],
     "unova_juniper_starter": [
@@ -49,23 +49,23 @@
       "Show me everything. Because I'm going to show you everything I've become."
     ],
     "unova_bianca_first_meet": [
-      "Bianca: Oh! {player_name}! I'm so glad you came!",
+      "{friend_name}: Oh! {player_name}! I'm so glad you came!",
       "Professor Juniper let me pick first — I hope that's okay!",
       "I'm a little nervous, but... let's do our best together, okay?"
     ],
     "unova_bianca_won": [
-      "Bianca: Wow, you're really strong!",
+      "{friend_name}: Wow, you're really strong!",
       "I got a little flustered when your Pokémon used that move!",
       "But that's okay! I learned from it. That's what battles are for!"
     ],
     "unova_bianca_nimbasa": [
-      "Bianca: Oh — {player_name}! Fancy meeting you in the big city!",
+      "{friend_name}: Oh — {player_name}! Fancy meeting you in the big city!",
       "I've been battling everyone I can find. I'm getting better, I know it!",
       "Even if I lose, the journey means something. Right? Right!",
       "Let's battle! I want to see how far I've come!"
     ],
     "unova_bianca_surf": [
-      "Bianca: Ah, {player_name}! Professor Juniper said to find you.",
+      "{friend_name}: Ah, {player_name}! Professor Juniper said to find you.",
       "She wanted me to give you this — the HM Surf!",
       "Your Pokémon can now cross water. Be careful out there!",
       "You received SURF!"
@@ -2068,7 +2068,7 @@
         "trainer": {
           "name": "{rival_name}",
           "class": "PKMN_TRAINER",
-          "sprite": "cheren.png",
+          "sprite": "{rival_character}",
           "team": [498],
           "team_choice": { "495": [498], "498": [501], "501": [495] },
           "rewards": { "balls": 5 },
@@ -2105,7 +2105,7 @@
         "trainer": {
           "name": "{rival_name}",
           "class": "PKMN_TRAINER",
-          "sprite": "cheren.png",
+          "sprite": "{rival_character}",
           "team": [500],
           "team_choice": { "495": [498, 504], "498": [501, 504], "501": [495, 504] },
           "rewards": { "balls": 5 },
@@ -2126,33 +2126,7 @@
       "region": "UNOVA",
       "backgrounds": { "main": "striaton_city.png", "pokecenter": "striaton_center.png", "gym": "striaton_gym.png" },
       "has_gym": true,
-      "gym": {
-        "trainers": [],
-        "leader": {
-          "name": "Trio (Cilan / Chili / Cress)",
-          "class": "GYM_LEADER",
-          "sprite": "trio_cilan_chili_cress.png",
-          "team": [506, 511], "levels": [12, 14],
-          "dialogue": {
-            "intro": [
-              "Gym Leader: Welcome to Striaton Gym!",
-              "One of us will face you — the one whose type counters your starter!",
-              "We are Cilan, Chili, and Cress — and together we serve the finest battles in Unova!"
-            ],
-            "player_won": [
-              "Gym Leader: Magnificent! You've earned the Trio Badge!",
-              "With it, Pokémon up to a certain level will obey you.",
-              "Take this TM as well — a gift from the three of us!"
-            ],
-            "player_lost": ["Gym Leader: The type advantage was decisive today.", "Come back once you've trained more. We'll be here."]
-          },
-          "rewards": { "balls": 5 },
-          "is_boss_battle": true,
-          "badge_reward": "TRIO",
-          "team_choice": { "495": [506, 513], "498": [506, 515], "501": [506, 511] }
-        },
-        "requirements": { "badges": 0, "fail_text": "The Striaton Gym is open — find the Elemental Monkey in the Dreamyard first for a type advantage!" }
-      },
+      "gym": {"trainers": [], "leader": {"name": "Trio (Cilan / Chili / Cress)", "class": "GYM_LEADER", "sprite": "trio_cilan_chili_cress.png", "team": [506, 511], "levels": [12, 14], "dialogue": {"intro": ["Gym Leader: Welcome to Striaton Gym!", "One of us will face you — the one whose type counters your starter!", "We are Cilan, Chili, and Cress — and together we serve the finest battles in Unova!"], "player_won": ["Gym Leader: Magnificent! You've earned the Trio Badge!", "With it, Pokémon up to a certain level will obey you.", "Take this TM as well — a gift from the three of us!"], "player_lost": ["Gym Leader: The type advantage was decisive today.", "Come back once you've trained more. We'll be here."]}, "rewards": {"balls": 5}, "is_boss_battle": true, "badge_reward": "TRIO", "team_choice": {"495": [506, 513], "498": [506, 515], "501": [506, 511]}, "movesets": {"506": ["BITE", "WORK-UP"], "511": ["VINE-WHIP", "WORK-UP"], "513": ["INCINERATE", "WORK-UP"], "515": ["WATER-GUN", "WORK-UP"]}}, "requirements": {"badges": 0, "fail_text": "The Striaton Gym is open — find the Elemental Monkey in the Dreamyard first for a type advantage!"}},
       "travel_options": [
         { "text": "Route 2", "target_area": "UNOVA_ROUTE_2" },
         { "text": "Route 3", "target_area": "UNOVA_ROUTE_3" },
@@ -2171,32 +2145,7 @@
       "region": "UNOVA",
       "backgrounds": { "main": "nacrene_city.png", "pokecenter": "nacrene_center.png", "gym": "nacrene_gym.png" },
       "has_gym": true,
-      "gym": {
-        "trainers": [],
-        "leader": {
-          "name": "Lenora",
-          "class": "GYM_LEADER",
-          "sprite": "lenora.png",
-          "team": [507, 505], "levels": [18, 20],
-          "dialogue": {
-            "intro": [
-              "Lenora: Welcome to my gym — and my library!",
-              "I'm Lenora, the Nacrene Gym Leader.",
-              "I'm a Normal-type user. Don't underestimate what Normal can do!"
-            ],
-            "player_won": [
-              "Lenora: You're the real deal! Congratulations on the Basic Badge!",
-              "Take this HM Strength too — you'll need it in your travels.",
-              "Take this Cover Fossil too. The fossil lab in Nacrene City can revive it!"
-            ],
-            "player_lost": ["Lenora: You'll need to dig deeper than that!", "Come back when you've trained more. My library is always open."]
-          },
-          "rewards": { "balls": 5, "COVER_FOSSIL": 1 },
-          "is_boss_battle": true,
-          "badge_reward": "BASIC"
-        },
-        "requirements": { "badges": 1, "fail_text": "Lenora is preparing for battle at the Nacrene Museum. Earn the Trio Badge first." }
-      },
+      "gym": {"trainers": [], "leader": {"name": "Lenora", "class": "GYM_LEADER", "sprite": "lenora.png", "team": [507, 505], "levels": [18, 20], "dialogue": {"intro": ["Lenora: Welcome to my gym — and my library!", "I'm Lenora, the Nacrene Gym Leader.", "I'm a Normal-type user. Don't underestimate what Normal can do!"], "player_won": ["Lenora: You're the real deal! Congratulations on the Basic Badge!", "Take this HM Strength too — you'll need it in your travels.", "Take this Cover Fossil too. The fossil lab in Nacrene City can revive it!"], "player_lost": ["Lenora: You'll need to dig deeper than that!", "Come back when you've trained more. My library is always open."]}, "rewards": {"balls": 5, "COVER_FOSSIL": 1}, "is_boss_battle": true, "badge_reward": "BASIC", "movesets": {"507": ["TAKE-DOWN", "BITE", "RETALIATE", "LEER"], "505": ["LEER", "CRUNCH", "RETALIATE", "HYPNOSIS"]}}, "requirements": {"badges": 1, "fail_text": "Lenora is preparing for battle at the Nacrene Museum. Earn the Trio Badge first."}},
       "travel_options": [
         { "text": "Route 3", "target_area": "UNOVA_ROUTE_3" },
         { "text": "Pinwheel Forest", "target_area": "PINWHEEL_FOREST", "condition": "has_basic_badge" }
@@ -2241,32 +2190,7 @@
       "region": "UNOVA",
       "backgrounds": { "main": "castelia_city.png", "pokecenter": "castelia_center.png", "gym": "castelia_gym.png" },
       "has_gym": true,
-      "gym": {
-        "trainers": [],
-        "leader": {
-          "name": "Burgh",
-          "class": "GYM_LEADER",
-          "sprite": "burgh.png",
-          "team": [544, 557, 542], "levels": [21, 21, 23],
-          "dialogue": {
-            "intro": [
-              "Burgh: This gym is my canvas, and this battle — our masterpiece!",
-              "I'm Burgh, the Castelia Gym Leader.",
-              "Bug-types have a delicate beauty, but don't mistake that for weakness!"
-            ],
-            "player_won": ["Burgh: Sublime! You've earned the Insect Badge!", "Here — take this TM. Use it as you see fit. Create something beautiful!"],
-            "player_lost": ["Burgh: Not quite the composition I hoped to see.", "Return when your moves flow with more intention."]
-          },
-          "rewards": { "balls": 5 },
-          "is_boss_battle": true,
-          "badge_reward": "INSECT"
-        },
-        "requirements": {
-          "badges": 2,
-          "flag": "plasma_castelia_cleared",
-          "fail_text": "Burgh is helping chase Team Plasma from Castelia's sewers. Clear the sewers first!"
-        }
-      },
+      "gym": {"trainers": [], "leader": {"name": "Burgh", "class": "GYM_LEADER", "sprite": "burgh.png", "team": [544, 557, 542], "levels": [21, 21, 23], "dialogue": {"intro": ["Burgh: This gym is my canvas, and this battle — our masterpiece!", "I'm Burgh, the Castelia Gym Leader.", "Bug-types have a delicate beauty, but don't mistake that for weakness!"], "player_won": ["Burgh: Sublime! You've earned the Insect Badge!", "Here — take this TM. Use it as you see fit. Create something beautiful!"], "player_lost": ["Burgh: Not quite the composition I hoped to see.", "Return when your moves flow with more intention."]}, "rewards": {"balls": 5}, "is_boss_battle": true, "badge_reward": "INSECT", "movesets": {"544": ["SCREECH", "PURSUIT", "POISON-TAIL", "STRUGGLE-BUG"], "557": ["SAND-ATTACK", "FEINT-ATTACK", "SMACK-DOWN", "STRUGGLE-BUG"], "542": ["PROTECT", "STRING-SHOT", "RAZOR-LEAF", "STRUGGLE-BUG"]}}, "requirements": {"badges": 2, "flag": "plasma_castelia_cleared", "fail_text": "Burgh is helping chase Team Plasma from Castelia's sewers. Clear the sewers first!"}},
       "travel_options": [
         { "text": "Route 4", "target_area": "UNOVA_ROUTE_4", "condition": "has_insect_badge" },
         { "text": "Pinwheel Forest", "target_area": "PINWHEEL_FOREST" },
@@ -2289,7 +2213,7 @@
         },
         { "text": "Challenge Gym", "action": "GYM" },
         {
-          "text": "Bianca Battle",
+          "text": "{friend_name} Battle",
           "action": "NPC",
           "target": "bianca_castelia",
           "condition": "has_basic_badge",
@@ -2300,9 +2224,9 @@
       "on_enter_event": {
         "type": "trainer_battle",
         "trainer": {
-          "name": "Bianca",
+          "name": "{friend_name}",
           "class": "PKMN_TRAINER",
-          "sprite": "bianca.png",
+          "sprite": "{friend_character}",
           "team": [503],
           "team_choice": { "495": [502, 519], "498": [496, 519], "501": [499, 519] },
           "rewards": { "balls": 5 },
@@ -2324,32 +2248,7 @@
       "region": "UNOVA",
       "backgrounds": { "main": "nimbasa_city.png", "pokecenter": "nimbasa_center.png", "gym": "nimbasa_gym.png" },
       "has_gym": true,
-      "gym": {
-        "trainers": [],
-        "leader": {
-          "name": "Elesa",
-          "class": "GYM_LEADER",
-          "sprite": "elesa.png",
-          "team": [587, 587, 523], "levels": [25, 25, 27],
-          "dialogue": {
-            "intro": [
-              "Elesa: Welcome to the stage. I'm Elesa — model and Gym Leader.",
-              "Electric-types are fast, flashy, and relentless.",
-              "Don't blink. This battle moves at the speed of lightning."
-            ],
-            "player_won": [
-              "Elesa: You were faster than my Emolga. That's the Bolt Badge.",
-              "Here — take this. Bianca's father was blocking Route 5.",
-              "I called him off. You're free to head to Driftveil."
-            ],
-            "player_lost": ["Elesa: Speed and accuracy — that's all it takes.", "Come back when you've sharpened both."]
-          },
-          "rewards": { "balls": 5, "SURF_BOARD": 1 },
-          "is_boss_battle": true,
-          "badge_reward": "BOLT"
-        },
-        "requirements": { "badges": 3, "fail_text": "Elesa is on the runway. Earn three badges to challenge the Nimbasa Gym!" }
-      },
+      "gym": {"trainers": [], "leader": {"name": "Elesa", "class": "GYM_LEADER", "sprite": "elesa.png", "team": [587, 587, 523], "levels": [25, 25, 27], "dialogue": {"intro": ["Elesa: Welcome to the stage. I'm Elesa — model and Gym Leader.", "Electric-types are fast, flashy, and relentless.", "Don't blink. This battle moves at the speed of lightning."], "player_won": ["Elesa: You were faster than my Emolga. That's the Bolt Badge.", "Here — take this. Bianca's father was blocking Route 5.", "I called him off. You're free to head to Driftveil."], "player_lost": ["Elesa: Speed and accuracy — that's all it takes.", "Come back when you've sharpened both."]}, "rewards": {"balls": 5, "SURF_BOARD": 1}, "is_boss_battle": true, "badge_reward": "BOLT", "movesets": {"587": ["QUICK-ATTACK", "PURSUIT", "AERIAL-ACE", "VOLT-SWITCH"], "523": ["QUICK-ATTACK", "FLAME-CHARGE", "SPARK", "VOLT-SWITCH"]}}, "requirements": {"badges": 3, "fail_text": "Elesa is on the runway. Earn three badges to challenge the Nimbasa Gym!"}},
       "travel_options": [
         { "text": "Route 4", "target_area": "UNOVA_ROUTE_4" },
         { "text": "Route 5", "target_area": "UNOVA_ROUTE_5", "condition": "has_bolt_badge" },
@@ -2368,7 +2267,7 @@
           "flag_condition": "not met_n_nimbasa"
         },
         {
-          "text": "Battle Bianca",
+          "text": "Battle {friend_name}",
           "action": "NPC",
           "target": "bianca_nimbasa",
           "condition": "has_insect_badge",
@@ -2381,7 +2280,7 @@
         "trainer": {
           "name": "{rival_name}",
           "class": "PKMN_TRAINER",
-          "sprite": "cheren.png",
+          "sprite": "{rival_character}",
           "team": [500, 507],
           "team_choice": { "495": [499, 507, 520], "498": [502, 507, 520], "501": [496, 507, 520] },
           "rewards": { "balls": 5 },
@@ -2402,32 +2301,7 @@
       "region": "UNOVA",
       "backgrounds": { "main": "driftveil_city.png", "pokecenter": "driftveil_center.png", "gym": "driftveil_gym.png" },
       "has_gym": true,
-      "gym": {
-        "trainers": [],
-        "leader": {
-          "name": "Clay",
-          "class": "GYM_LEADER",
-          "sprite": "clay.png",
-          "team": [552, 536, 530], "levels": [29, 29, 31],
-          "dialogue": {
-            "intro": [
-              "Clay: Y'all came a long way to challenge me, huh?",
-              "I'm Clay. I dug this whole city outta the ground.",
-              "Ground-types are tough as the earth itself. Let's see if you can shake 'em!"
-            ],
-            "player_won": [
-              "Clay: Not bad at all! You've got the Quake Badge, kid.",
-              "Now get outta my gym and go challenge the rest of the world!",
-              "Take this Plume Fossil too. The fossil lab in Nacrene City can revive it!"
-            ],
-            "player_lost": ["Clay: The earth don't move for just anyone.", "Come back when you've got more dig in you."]
-          },
-          "rewards": { "balls": 5, "PLUME_FOSSIL": 1 },
-          "is_boss_battle": true,
-          "badge_reward": "QUAKE"
-        },
-        "requirements": { "badges": 4, "flag": "plasma_relic_castle_cleared", "fail_text": "Clay is chasing Team Plasma in the Relic Castle. Help him first!" }
-      },
+      "gym": {"trainers": [], "leader": {"name": "Clay", "class": "GYM_LEADER", "sprite": "clay.png", "team": [552, 536, 530], "levels": [29, 29, 31], "dialogue": {"intro": ["Clay: Y'all came a long way to challenge me, huh?", "I'm Clay. I dug this whole city outta the ground.", "Ground-types are tough as the earth itself. Let's see if you can shake 'em!"], "player_won": ["Clay: Not bad at all! You've got the Quake Badge, kid.", "Now get outta my gym and go challenge the rest of the world!", "Take this Plume Fossil too. The fossil lab in Nacrene City can revive it!"], "player_lost": ["Clay: The earth don't move for just anyone.", "Come back when you've got more dig in you."]}, "rewards": {"balls": 5, "PLUME_FOSSIL": 1}, "is_boss_battle": true, "badge_reward": "QUAKE", "movesets": {"552": ["SWAGGER", "TORMENT", "CRUNCH", "BULLDOZE"], "536": ["AQUA-RING", "BUBBLEBEAM", "MUDDY-WATER", "BULLDOZE"], "530": ["HONE-CLAWS", "SLASH", "ROCK-SLIDE", "BULLDOZE"]}}, "requirements": {"badges": 4, "flag": "plasma_relic_castle_cleared", "fail_text": "Clay is chasing Team Plasma in the Relic Castle. Help him first!"}},
       "travel_options": [
         { "text": "Route 5", "target_area": "UNOVA_ROUTE_5" },
         { "text": "Route 6", "target_area": "UNOVA_ROUTE_6", "condition": "has_quake_badge" },
@@ -2456,28 +2330,7 @@
       "region": "UNOVA",
       "backgrounds": { "main": "mistralton_city.png", "pokecenter": "mistralton_center.png", "gym": "mistralton_gym.png" },
       "has_gym": true,
-      "gym": {
-        "trainers": [],
-        "leader": {
-          "name": "Skyla",
-          "class": "GYM_LEADER",
-          "sprite": "skyla.png",
-          "team": [528, 521, 581], "levels": [33, 33, 35],
-          "dialogue": {
-            "intro": [
-              "Skyla: Hi! I'm Skyla — pilot and Gym Leader!",
-              "I use Flying-types. They're free spirits, just like the sky.",
-              "Let's have a high-flying battle!"
-            ],
-            "player_won": ["Skyla: Wow, you really know how to keep pace! Here's the Jet Badge!", "And take this HM — it lets your Pokémon use Fly between towns!"],
-            "player_lost": ["Skyla: Flying-types soar above most strategies!", "Train more and come back — the sky is always open."]
-          },
-          "rewards": { "balls": 5 },
-          "is_boss_battle": true,
-          "badge_reward": "JET"
-        },
-        "requirements": { "badges": 5, "fail_text": "Skyla is running the airstrip. Earn the Quake Badge first." }
-      },
+      "gym": {"trainers": [], "leader": {"name": "Skyla", "class": "GYM_LEADER", "sprite": "skyla.png", "team": [528, 521, 581], "levels": [33, 33, 35], "dialogue": {"intro": ["Skyla: Hi! I'm Skyla — pilot and Gym Leader!", "I use Flying-types. They're free spirits, just like the sky.", "Let's have a high-flying battle!"], "player_won": ["Skyla: Wow, you really know how to keep pace! Here's the Jet Badge!", "And take this HM — it lets your Pokémon use Fly between towns!"], "player_lost": ["Skyla: Flying-types soar above most strategies!", "Train more and come back — the sky is always open."]}, "rewards": {"balls": 5}, "is_boss_battle": true, "badge_reward": "JET", "movesets": {"528": ["ACROBATICS", "AMNESIA", "ASSURANCE", "HEART-STAMP"], "521": ["LEER", "QUICK-ATTACK", "AIR-SLASH", "RAZOR-WIND"], "581": ["AQUA-RING", "AERIAL-ACE", "BUBBLEBEAM", "AIR-SLASH"]}}, "requirements": {"badges": 5, "fail_text": "Skyla is running the airstrip. Earn the Quake Badge first."}},
       "travel_options": [
         { "text": "Route 7", "target_area": "UNOVA_ROUTE_7", "condition": "has_jet_badge" },
         { "text": "Chargestone Cave", "target_area": "CHARGESTONE_CAVE" },
@@ -2497,28 +2350,7 @@
       "region": "UNOVA",
       "backgrounds": { "main": "icirrus_city.png", "pokecenter": "icirrus_center.png", "gym": "icirrus_gym.png" },
       "has_gym": true,
-      "gym": {
-        "trainers": [],
-        "leader": {
-          "name": "Brycen",
-          "class": "GYM_LEADER",
-          "sprite": "brycen.png",
-          "team": [583, 615, 614], "levels": [37, 37, 39],
-          "dialogue": {
-            "intro": [
-              "Brycen: I am Brycen. I was once a film star — now I am a Gym Leader.",
-              "Ice-types embody discipline and stillness.",
-              "Strike with precision."
-            ],
-            "player_won": ["Brycen: You move with purpose. Well done. Accept the Freeze Badge.", "Now go — Dragonspiral Tower needs your attention."],
-            "player_lost": ["Brycen: Discipline. You need more of it.", "Return when your movements are as clean as ice."]
-          },
-          "rewards": { "balls": 5 },
-          "is_boss_battle": true,
-          "badge_reward": "FREEZE"
-        },
-        "requirements": { "badges": 6, "fail_text": "Brycen has rushed to Dragonspiral Tower — Team Plasma is there! Chase them first." }
-      },
+      "gym": {"trainers": [], "leader": {"name": "Brycen", "class": "GYM_LEADER", "sprite": "brycen.png", "team": [583, 615, 614], "levels": [37, 37, 39], "dialogue": {"intro": ["Brycen: I am Brycen. I was once a film star — now I am a Gym Leader.", "Ice-types embody discipline and stillness.", "Strike with precision."], "player_won": ["Brycen: You move with purpose. Well done. Accept the Freeze Badge.", "Now go — Dragonspiral Tower needs your attention."], "player_lost": ["Brycen: Discipline. You need more of it.", "Return when your movements are as clean as ice."]}, "rewards": {"balls": 5}, "is_boss_battle": true, "badge_reward": "FREEZE", "movesets": {"583": ["ACID-ARMOR", "ASTONISH", "MIRROR-SHOT", "FROST-BREATH"], "615": ["REFLECT", "RAPID-SPIN", "AURORA-BEAM", "FROST-BREATH"], "614": ["SWAGGER", "BRINE", "SLASH", "ICICLE-CRASH"]}}, "requirements": {"badges": 6, "fail_text": "Brycen has rushed to Dragonspiral Tower — Team Plasma is there! Chase them first."}},
       "travel_options": [
         { "text": "Route 8", "target_area": "UNOVA_ROUTE_8" },
         { "text": "Dragonspiral Tower", "target_area": "DRAGONSPIRAL_TOWER" },
@@ -2601,7 +2433,7 @@
         { "text": "Pokémon Center", "action": "HEAL" },
         { "text": "Shop", "action": "SHOP" },
         {
-          "text": "Battle Bianca (Final)",
+          "text": "Battle {friend_name} (Final)",
           "action": "NPC",
           "target": "bianca_undella",
           "condition": "has_freeze_badge",
@@ -2616,28 +2448,7 @@
       "region": "UNOVA",
       "backgrounds": { "main": "opelucid_city.png", "pokecenter": "opelucid_center.png", "gym": "opelucid_gym.png" },
       "has_gym": true,
-      "gym": {
-        "trainers": [],
-        "leader": {
-          "name": "Drayden",
-          "class": "GYM_LEADER",
-          "sprite": "drayden.png",
-          "team": [611, 621, 612], "levels": [41, 41, 43],
-          "dialogue": {
-            "intro": [
-              "Drayden: Welcome. I am Drayden, the Opelucid Gym Leader.",
-              "I use Dragon-types — the most powerful type in existence.",
-              "If you can stand before my dragons, you can stand before anything."
-            ],
-            "player_won": ["Drayden: You've earned this — the Legend Badge.", "The road to the Pokémon League lies north.", "Go. Discover the truth of Unova."],
-            "player_lost": ["Drayden: Dragon-types are unforgiving.", "Come back stronger. The legend is still yours to write."]
-          },
-          "rewards": { "balls": 5 },
-          "is_boss_battle": true,
-          "badge_reward": "LEGEND"
-        },
-        "requirements": { "badges": 7, "fail_text": "Drayden is waiting — earn seven badges before challenging the Opelucid Gym." }
-      },
+      "gym": {"trainers": [], "leader": {"name": "Drayden", "class": "GYM_LEADER", "sprite": "drayden.png", "team": [611, 621, 612], "levels": [41, 41, 43], "dialogue": {"intro": ["Drayden: Welcome. I am Drayden, the Opelucid Gym Leader.", "I use Dragon-types — the most powerful type in existence.", "If you can stand before my dragons, you can stand before anything."], "player_won": ["Drayden: You've earned this — the Legend Badge.", "The road to the Pokémon League lies north.", "Go. Discover the truth of Unova."], "player_lost": ["Drayden: Dragon-types are unforgiving.", "Come back stronger. The legend is still yours to write."]}, "rewards": {"balls": 5}, "is_boss_battle": true, "badge_reward": "LEGEND", "movesets": {"611": ["DRAGON-DANCE", "DRAGON-RAGE", "ASSURANCE", "DRAGON-TAIL"], "621": ["REVENGE", "CHIP-AWAY", "NIGHT-SLASH", "DRAGON-TAIL"], "612": ["DRAGON-DANCE", "ASSURANCE", "SLASH", "DRAGON-TAIL"]}}, "requirements": {"badges": 7, "fail_text": "Drayden is waiting — earn seven badges before challenging the Opelucid Gym."}},
       "travel_options": [
         { "text": "Route 9", "target_area": "UNOVA_ROUTE_9" },
         { "text": "Route 10", "target_area": "UNOVA_ROUTE_10", "condition": "has_legend_badge" },
@@ -2659,100 +2470,7 @@
       "region": "UNOVA",
       "backgrounds": { "main": "unova_pokemon_league.png", "pokecenter": "league_center.png" },
       "has_gym": true,
-      "gym": {
-        "trainers": [
-          {
-            "name": "Shauntal",
-            "class": "ELITE_FOUR",
-            "sprite": "shauntal.png",
-            "team": [563, 593, 623, 609], "levels": [57, 57, 57, 59], "rematch": {"team": [563, 593, 478, 426, 623, 609], "levels": [71, 71, 71, 71, 71, 73]},
-            "dialogue": {
-              "intro": [
-                "Shauntal: Oh! A challenger! I'm writing a novel about powerful trainers.",
-                "May I use our battle as inspiration?",
-                "Ghost-types are experts at writing the perfect ending!"
-              ],
-              "player_won": ["Shauntal: Wonderful! This will make a brilliant chapter!"],
-              "player_lost": ["Shauntal: The Ghost-type ending. A classic."]
-            },
-            "rewards": { "balls": 15 },
-            "is_boss_battle": true
-          },
-          {
-            "name": "Marshal",
-            "class": "ELITE_FOUR",
-            "sprite": "marshal.png",
-            "team": [538, 539, 534, 620], "levels": [57, 57, 57, 59], "rematch": {"team": [286, 538, 539, 454, 620, 534], "levels": [71, 71, 71, 71, 71, 73]},
-            "dialogue": {
-              "intro": ["Marshal: The strength of body and mind — that is Fighting-type mastery.", "Show me what you're made of!"],
-              "player_won": ["Marshal: You have both strength and focus. I acknowledge you!"],
-              "player_lost": ["Marshal: Your spirit fights, but your body must follow."]
-            },
-            "rewards": { "balls": 15 },
-            "is_boss_battle": true
-          },
-          {
-            "name": "Grimsley",
-            "class": "ELITE_FOUR",
-            "sprite": "grimsley.png",
-            "team": [560, 510, 553, 625], "levels": [57, 57, 57, 59], "rematch": {"team": [319, 510, 560, 452, 553, 625], "levels": [71, 71, 71, 71, 71, 73]},
-            "dialogue": {
-              "intro": [
-                "Grimsley: Winning and losing are two sides of the same coin.",
-                "I don't care which side you land on — as long as the battle is interesting."
-              ],
-              "player_won": ["Grimsley: Ha. You called my bluff. Well played."],
-              "player_lost": ["Grimsley: When you gamble, you must be prepared to lose everything."]
-            },
-            "rewards": { "balls": 15 },
-            "is_boss_battle": true
-          },
-          {
-            "name": "Caitlin",
-            "class": "ELITE_FOUR",
-            "sprite": "caitlin.png",
-            "team": [579, 518, 561, 576], "levels": [57, 57, 57, 59], "rematch": {"team": [518, 561, 437, 579, 576, 376], "levels": [71, 71, 71, 71, 71, 73]},
-            "dialogue": {
-              "intro": [
-                "Caitlin: I've been waiting... for a trainer worthy of a proper challenge.",
-                "I am Caitlin. I hope you don't disappoint me.",
-                "Psychic-types see through everything — even your strategy."
-              ],
-              "player_won": ["Caitlin: You saw through my Pokémon too. Congratulations."],
-              "player_lost": ["Caitlin: I saw every move before you made it."]
-            },
-            "rewards": { "balls": 15 },
-            "is_boss_battle": true
-          }
-        ],
-        "leader": {
-          "name": "Alder",
-          "class": "CHAMPION",
-          "sprite": "alder.png",
-          "team": [617, 626, 621, 584, 589, 637], "levels": [61, 61, 61, 61, 61, 63], "rematch": {"team": [617, 626, 621, 584, 589, 637], "levels": [75, 75, 75, 75, 75, 77]},
-          "dialogue": {
-            "intro": [
-              "Alder: So. You've come.",
-              "I've been up here thinking... about what Pokémon battles mean.",
-              "And then you walk in — eyes full of conviction.",
-              "I used to have that look too. Before I lost my partner.",
-              "Show me that your bond can still reach that place.",
-              "Come. Let this be the battle I remember."
-            ],
-            "player_won": [
-              "Alder: Ha! Ha ha ha!",
-              "You've done it. You're the new Unova Champion.",
-              "But — wait. What's that roaring from outside?",
-              "N's Castle is rising! The battle isn't over yet, Champion."
-            ],
-            "player_lost": ["Alder: The bond is there — but it needs more time.", "Come back. I'll be here whenever you're ready."]
-          },
-          "rewards": { "balls": 20 },
-          "is_boss_battle": true,
-          "victory_flag": "beat_alder"
-        },
-        "requirements": { "badges": 8, "fail_text": "You need all 8 Unova Gym Badges to challenge the Pokémon League." }
-      },
+      "gym": {"trainers": [{"name": "Shauntal", "class": "ELITE_FOUR", "sprite": "shauntal.png", "team": [563, 593, 623, 609], "levels": [57, 57, 57, 59], "rematch": {"team": [563, 593, 478, 426, 623, 609], "levels": [71, 71, 71, 71, 71, 73], "movesets": {"563": ["SHADOW-BALL", "WILL-O-WISP", "PSYCHIC", "ENERGY-BALL"], "593": ["SLUDGE-WAVE", "HYDRO-PUMP", "PSYCHIC", "SHADOW-BALL"], "478": ["BLIZZARD", "ICE-SHARD", "SHADOW-BALL", "PSYCHIC"], "426": ["THUNDER", "SHADOW-BALL", "ACROBATICS", "PSYCHIC"], "623": ["HAMMER-ARM", "EARTHQUAKE", "SHADOW-PUNCH", "CURSE"], "609": ["FIRE-BLAST", "PSYCHIC", "SHADOW-BALL", "PAYBACK"]}}, "dialogue": {"intro": ["Shauntal: Oh! A challenger! I'm writing a novel about powerful trainers.", "May I use our battle as inspiration?", "Ghost-types are experts at writing the perfect ending!"], "player_won": ["Shauntal: Wonderful! This will make a brilliant chapter!"], "player_lost": ["Shauntal: The Ghost-type ending. A classic."]}, "rewards": {"balls": 15}, "is_boss_battle": true, "movesets": {"563": ["PSYCHIC", "WILL-O-WISP", "SHADOW-BALL", "GRASS-KNOT"], "593": ["SHADOW-BALL", "SURF", "ENERGY-BALL", "BRINE"], "623": ["CURSE", "BRICK-BREAK", "EARTHQUAKE", "SHADOW-PUNCH"], "609": ["FIRE-BLAST", "PSYCHIC", "SHADOW-BALL", "PAYBACK"]}}, {"name": "Marshal", "class": "ELITE_FOUR", "sprite": "marshal.png", "team": [538, 539, 534, 620], "levels": [57, 57, 57, 59], "rematch": {"team": [286, 538, 539, 454, 620, 534], "levels": [71, 71, 71, 71, 71, 73], "movesets": {"286": ["SPORE", "SKY-UPPERCUT", "MACH-PUNCH", "GRASS-KNOT"], "538": ["EARTHQUAKE", "SUPERPOWER", "RETALIATE", "GRASS-KNOT"], "539": ["CLOSE-COMBAT", "STONE-EDGE", "POISON-JAB", "RETALIATE"], "454": ["EARTHQUAKE", "TOXIC", "VENOSHOCK", "LOW-SWEEP"], "620": ["U-TURN", "FAKE-OUT", "ACROBATICS", "HIGH-JUMP-KICK"], "534": ["HAMMER-ARM", "EARTHQUAKE", "STONE-EDGE", "PAYBACK"]}}, "dialogue": {"intro": ["Marshal: The strength of body and mind — that is Fighting-type mastery.", "Show me what you're made of!"], "player_won": ["Marshal: You have both strength and focus. I acknowledge you!"], "player_lost": ["Marshal: Your spirit fights, but your body must follow."]}, "rewards": {"balls": 15}, "is_boss_battle": true, "movesets": {"538": ["STONE-EDGE", "PAYBACK", "BULLDOZE", "STORM-THROW"], "539": ["STONE-EDGE", "KARATE-CHOP", "GRASS-KNOT", "RETALIATE"], "534": ["STONE-EDGE", "HAMMER-ARM", "RETALIATE", "GRASS-KNOT"], "620": ["U-TURN", "JUMP-KICK", "ROCK-SLIDE", "RETALIATE"]}}, {"name": "Grimsley", "class": "ELITE_FOUR", "sprite": "grimsley.png", "team": [560, 510, 553, 625], "levels": [57, 57, 57, 59], "rematch": {"team": [319, 510, 560, 452, 553, 625], "levels": [71, 71, 71, 71, 71, 73], "movesets": {"319": ["WATERFALL", "NIGHT-SLASH", "EARTHQUAKE", "AQUA-JET"], "510": ["SUCKER-PUNCH", "FAKE-OUT", "AERIAL-ACE", "ATTRACT"], "560": ["CRUNCH", "POISON-JAB", "HEAD-SMASH", "BRICK-BREAK"], "452": ["POISON-FANG", "FIRE-FANG", "CRUNCH", "THUNDER-FANG"], "553": ["OUTRAGE", "EARTHQUAKE", "FOUL-PLAY", "SMACK-DOWN"], "625": ["X-SCISSOR", "NIGHT-SLASH", "AERIAL-ACE", "GUILLOTINE"]}}, "dialogue": {"intro": ["Grimsley: Winning and losing are two sides of the same coin.", "I don't care which side you land on — as long as the battle is interesting."], "player_won": ["Grimsley: Ha. You called my bluff. Well played."], "player_lost": ["Grimsley: When you gamble, you must be prepared to lose everything."]}, "rewards": {"balls": 15}, "is_boss_battle": true, "movesets": {"560": ["SAND-ATTACK", "CRUNCH", "POISON-JAB", "BRICK-BREAK"], "510": ["FAKE-OUT", "ATTRACT", "AERIAL-ACE", "NIGHT-SLASH"], "553": ["CRUNCH", "DRAGON-CLAW", "FOUL-PLAY", "EARTHQUAKE"], "625": ["X-SCISSOR", "NIGHT-SLASH", "METAL-CLAW", "AERIAL-ACE"]}}, {"name": "Caitlin", "class": "ELITE_FOUR", "sprite": "caitlin.png", "team": [579, 518, 561, 576], "levels": [57, 57, 57, 59], "rematch": {"team": [518, 561, 437, 579, 576, 376], "levels": [71, 71, 71, 71, 71, 73], "movesets": {"518": ["REFLECT", "HYPNOSIS", "DREAM-EATER", "PSYCHIC"], "561": ["FLASH-CANNON", "ICE-BEAM", "AIR-SLASH", "PSYCHIC"], "437": ["PAYBACK", "CHARGE-BEAM", "FLASH-CANNON", "PSYCHIC"], "579": ["ENERGY-BALL", "THUNDER", "FOCUS-BLAST", "PSYCHIC"], "576": ["FLATTER", "PAYBACK", "THUNDERBOLT", "PSYCHIC"], "376": ["BULLET-PUNCH", "EARTHQUAKE", "ZEN-HEADBUTT", "GIGA-IMPACT"]}}, "dialogue": {"intro": ["Caitlin: I've been waiting... for a trainer worthy of a proper challenge.", "I am Caitlin. I hope you don't disappoint me.", "Psychic-types see through everything — even your strategy."], "player_won": ["Caitlin: You saw through my Pokémon too. Congratulations."], "player_lost": ["Caitlin: I saw every move before you made it."]}, "rewards": {"balls": 15}, "is_boss_battle": true, "movesets": {"579": ["ENERGY-BALL", "THUNDER", "FOCUS-BLAST", "PSYCHIC"], "518": ["REFLECT", "CHARGE-BEAM", "SHADOW-BALL", "PSYCHIC"], "561": ["SHADOW-BALL", "ICE-BEAM", "AIR-SLASH", "PSYCHIC"], "576": ["CALM-MIND", "THUNDERBOLT", "SHADOW-BALL", "PSYCHIC"]}}], "leader": {"name": "Alder", "class": "CHAMPION", "sprite": "alder.png", "team": [617, 626, 621, 584, 589, 637], "levels": [61, 61, 61, 61, 61, 63], "rematch": {"team": [617, 626, 621, 584, 589, 637], "levels": [75, 75, 75, 75, 75, 77], "movesets": {"617": ["BUG-BUZZ", "FOCUS-BLAST", "ME-FIRST", "ENERGY-BALL"], "626": ["HEAD-CHARGE", "MEGAHORN", "STONE-EDGE", "EARTHQUAKE"], "621": ["NIGHT-SLASH", "OUTRAGE", "SUPERPOWER", "PAYBACK"], "584": ["BLIZZARD", "LIGHT-SCREEN", "FLASH-CANNON", "ACID-ARMOR"], "589": ["X-SCISSOR", "GIGA-IMPACT", "IRON-HEAD", "AERIAL-ACE"], "637": ["OVERHEAT", "BUG-BUZZ", "QUIVER-DANCE", "HYPER-BEAM"]}}, "dialogue": {"intro": ["Alder: So. You've come.", "I've been up here thinking... about what Pokémon battles mean.", "And then you walk in — eyes full of conviction.", "I used to have that look too. Before I lost my partner.", "Show me that your bond can still reach that place.", "Come. Let this be the battle I remember."], "player_won": ["Alder: Ha! Ha ha ha!", "You've done it. You're the new Unova Champion.", "But — wait. What's that roaring from outside?", "N's Castle is rising! The battle isn't over yet, Champion."], "player_lost": ["Alder: The bond is there — but it needs more time.", "Come back. I'll be here whenever you're ready."]}, "rewards": {"balls": 20}, "is_boss_battle": true, "victory_flag": "beat_alder", "movesets": {"617": ["BUG-BUZZ", "FOCUS-BLAST", "ME-FIRST", "ENERGY-BALL"], "626": ["HEAD-CHARGE", "MEGAHORN", "STONE-EDGE", "EARTHQUAKE"], "621": ["NIGHT-SLASH", "OUTRAGE", "SUPERPOWER", "PAYBACK"], "584": ["BLIZZARD", "LIGHT-SCREEN", "FLASH-CANNON", "ACID-ARMOR"], "589": ["X-SCISSOR", "GIGA-IMPACT", "IRON-HEAD", "AERIAL-ACE"], "637": ["OVERHEAT", "BUG-BUZZ", "QUIVER-DANCE", "HYPER-BEAM"]}}, "requirements": {"badges": 8, "fail_text": "You need all 8 Unova Gym Badges to challenge the Pokémon League."}},
       "travel_options": [{"text": "Victory Road", "target_area": "VICTORY_ROAD_UNOVA"}, {"text": "N's Castle", "target_area": "NS_CASTLE", "condition": "beat_alder"}],
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
@@ -3159,7 +2877,7 @@
       "min_rounds": 0,
       "backgrounds": { "main": "ns_castle.png", "battle": "battle_ns_castle.png" },
       "trainer_pool": [{"name": "Plasma Sage Bronius", "class": "PLASMA", "sprite": "plasma_sage.png", "is_boss_battle": true, "team": [563, 609], "rewards": {"balls": 8}}, {"name": "Plasma Sage Ryoku", "class": "PLASMA", "sprite": "plasma_sage.png", "is_boss_battle": true, "team": [561, 576], "rewards": {"balls": 8}}, {"name": "Plasma Sage Gorm", "class": "PLASMA", "sprite": "plasma_sage.png", "is_boss_battle": true, "team": [538, 534], "rewards": {"balls": 8}, "victory_flag": "plasma_sages_defeated"}],
-      "route_menu": [{"text": "BATTLE PLASMA SAGE", "action": "TRAINER", "condition": "has_trainers", "color": "GOLD"}, {"text": "CONFRONT N", "action": "EVENT", "color": "GOLD", "flag_condition": "not defeated_n_castle", "event": {"requires": ["beat_alder", "plasma_sages_defeated"], "fail": ["The Seven Sages block the way to N's throne room. Defeat the Plasma Sages first!"], "lines": ["N: {player_name}. You became Champion. But my castle stands.", "Zekrom answers to me — the hero of ideals.", "Face me. And if your truth is real — prove it here."], "battle": {"name": "N", "class": "PKMN_TRAINER", "sprite": "n.png", "team": [644, 584, 565, 601, 571, 598], "rewards": {"balls": 10}, "is_boss_battle": true, "dialogue": {"player_won": ["N: You won. Your truth... it burned through everything I prepared.", "Maybe... ideals and truth don't have to be enemies.", "I need time. Time to understand what I missed."], "player_lost": ["N: Ideals that are unwavering — that is what wins.", "Pokémon liberation will come to Unova."]}}, "flag": "defeated_n_castle"}}, {"text": "STOP GHETSIS", "action": "EVENT", "color": "GOLD", "flag_condition": "not beat_unova_champion", "event": {"requires": ["defeated_n_castle"], "fail": ["N is still waiting in his throne room."], "lines": ["Ghetsis: Hahaha. So N lost to a child.", "No matter. N was never the point.", "I will take that Legendary Pokémon — and with it, I will rule this world!", "No one can stop me now. ABSOLUTELY NO ONE!"], "battle": {"name": "Ghetsis", "class": "ROCKET_LEADER", "sprite": "ghetsis.png", "team": [563, 626, 537, 625, 604, 635], "rewards": {"balls": 15, "MASTER_BALL": 1}, "is_boss_battle": true, "dialogue": {"player_won": ["Ghetsis: Im...possible. A child...defeated me?!", "Looker: Stand down, Ghetsis. International Police — it's over.", "You received the MASTER BALL!"], "player_lost": ["Ghetsis: Pathetic. Not even worthy of witnessing my new world."]}}, "flag": "beat_unova_champion"}}, {"text": "Pokémon League", "action": "EXIT", "target_area": "UNOVA_POKEMON_LEAGUE", "condition": "can_exit", "color": "RED"}]
+      "route_menu": [{"text": "BATTLE PLASMA SAGE", "action": "TRAINER", "condition": "has_trainers", "color": "GOLD"}, {"text": "CONFRONT N", "action": "EVENT", "color": "GOLD", "flag_condition": "not defeated_n_castle", "event": {"requires": ["beat_alder", "plasma_sages_defeated"], "fail": ["The Seven Sages block the way to N's throne room. Defeat the Plasma Sages first!"], "lines": ["N: {player_name}. You became Champion. But my castle stands.", "Zekrom answers to me — the hero of ideals.", "Face me. And if your truth is real — prove it here."], "battle": {"name": "N", "class": "PKMN_TRAINER", "sprite": "n.png", "team": [644, 584, 565, 601, 571, 598], "rewards": {"balls": 10}, "is_boss_battle": true, "dialogue": {"player_won": ["N: You won. Your truth... it burned through everything I prepared.", "Maybe... ideals and truth don't have to be enemies.", "I need time. Time to understand what I missed."], "player_lost": ["N: Ideals that are unwavering — that is what wins.", "Pokémon liberation will come to Unova."]}}, "flag": "defeated_n_castle"}}, {"text": "STOP GHETSIS", "action": "EVENT", "color": "GOLD", "flag_condition": "not beat_unova_champion", "event": {"requires": ["defeated_n_castle"], "fail": ["N is still waiting in his throne room."], "lines": ["Ghetsis: Hahaha. So N lost to a child.", "No matter. N was never the point.", "I will take that Legendary Pokémon — and with it, I will rule this world!", "No one can stop me now. ABSOLUTELY NO ONE!"], "battle": {"name": "Ghetsis", "class": "ROCKET_LEADER", "sprite": "ghetsis.png", "team": [563, 626, 537, 625, 604, 635], "rewards": {"balls": 15, "MASTER_BALL": 1}, "is_boss_battle": true, "dialogue": {"player_won": ["Ghetsis: Im...possible. A child...defeated me?!", "Looker: Stand down, Ghetsis. International Police — it's over.", "You received the MASTER BALL!"], "player_lost": ["Ghetsis: Pathetic. Not even worthy of witnessing my new world."]}, "movesets": {"563": ["SHADOW-BALL", "PROTECT", "PSYCHIC", "TOXIC"], "626": ["HEAD-CHARGE", "WILD-CHARGE", "EARTHQUAKE", "POISON-JAB"], "537": ["MUDDY-WATER", "RAIN-DANCE", "EARTHQUAKE", "SLUDGE-WAVE"], "625": ["NIGHT-SLASH", "STONE-EDGE", "X-SCISSOR", "METAL-BURST"], "604": ["WILD-CHARGE", "FLAMETHROWER", "ACROBATICS", "CRUNCH"], "635": ["DRAGON-PULSE", "FIRE-BLAST", "SURF", "FOCUS-BLAST"]}}, "flag": "beat_unova_champion"}}, {"text": "Pokémon League", "action": "EXIT", "target_area": "UNOVA_POKEMON_LEAGUE", "condition": "can_exit", "color": "RED"}]
     },
     "VICTORY_ROAD_UNOVA": {
       "area_type": "dungeon",
@@ -5127,11 +4845,7 @@
       "backgrounds": { "main": "celestial_tower.png" },
       "min_rounds": 1,
       "trainer_pool": [],
-      "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "Route 7", "action": "EXIT", "target_area": "UNOVA_ROUTE_7", "condition": "can_exit", "color": "RED" }
-      ],
+      "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "THE BLACK FOG", "action": "BOSS", "color": "PURPLE", "flag_condition": "not black_fog_banished_celestial_tower", "boss": {"id": 10501, "name": "Black Fog", "level": 36, "no_catch": true, "victory_flag": "black_fog_banished_celestial_tower", "lines": ["The air turns ice-cold. A black fog pours across the floor...", "Two huge eyes open in the dark. A giant Haunter rises: the Black Fog!", "Long ago people worshipped it as a god. It feeds on dreams. Don't let it get yours!"], "won": ["The Black Fog is too proud to ever be caught.", "It Self-Destructs in a burst of black mist... and is gone.", "But a cold whisper lingers: it will rise again in another haunted place."], "rewards": {"balls": 10, "RARE_CANDY": 3}}}, {"text": "Route 7", "action": "EXIT", "target_area": "UNOVA_ROUTE_7", "condition": "can_exit", "color": "RED"}],
       "next_area": "UNOVA_ROUTE_7",
       "wild_pool_percentages": "UNOVA_CELESTIAL_TOWER_PERCENTAGES"
     },

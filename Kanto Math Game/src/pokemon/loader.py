@@ -388,10 +388,6 @@ class PokemonLoader:
             else:
                 if p_id == 10500:
                     meta_id = 105
-                elif 10000 <= p_id <= 10005:
-                    meta_id = 151
-                elif p_id >= 11000 and p_id % 100 == 0:
-                    meta_id = p_id // 100
 
             if not self.all_boss_ids:
                 boss_keys = ["UB", "PAST", "FUTURE", "MYTHICAL", "MEGA", "GMAX", "STANDARD_BOSS"]
@@ -438,14 +434,6 @@ class PokemonLoader:
 
             if json_types:
                 p_types = json_types
-
-            if 10000 <= p_id <= 10005:
-                types_pool = [
-                    "NORMAL", "FIRE", "WATER", "ELECTRIC", "GRASS", "ICE",
-                    "FIGHTING", "POISON", "GROUND", "FLYING", "PSYCHIC", "BUG",
-                    "ROCK", "GHOST", "STEEL", "DARK", "FAIRY"
-                ]
-                p_types = ["DRAGON", random.choice(types_pool)]
 
             p_stats = moveset_data.get("stats", DEFAULT_BASE_STATS)
             if form == "shadow":

@@ -45,7 +45,11 @@ class Pokemon:
         self.status = None        # burn, paralysis, poison, sleep or freeze
         self.sleep_turns = 0
         self.moves = []           # up to four move names (filled from its learnset when needed)
+        self.move_pool = []       # every move it has learned; the player picks four in the Summary
         self.caught_region = None
+        # The level it was caught at: a level evolution waits until it has levelled up once
+        # (Jordan), so a Charmander caught at Lv 20 doesn't turn into Charmeleon on the spot.
+        self.caught_level = None
         # Caught as a Gigantamax raid boss: shown normally, but keeps the G-Max Factor.
         self.gmax_factor = False
         # Contest condition (raised by Pokéblocks), Sheen and ribbons won.

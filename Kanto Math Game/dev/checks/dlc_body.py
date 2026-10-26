@@ -71,7 +71,7 @@ lobby = ow.GymLobbyState(g, None)
 g.change_state(lobby)
 check(not lobby.is_league, "BB League doesn't trigger Paldea's rematch mode")
 lobby.challenge_gym()
-check(lineup(battle_of(g.current_state)) == [(324, 70), (1020, 70), (609, 71), (637, 72)], "BB Elite Four: Crispin, Gouging Fire at 70")
+check(lineup(battle_of(g.current_state)) == [(479, 69), (663, 69), (103, 70), (323, 70), (467, 71), (257, 72)], "BB Elite Four: Crispin's canon team")
 story.story_flags["bb_league_champion"] = True
 run("BLUEBERRY_ACADEMY", "Briar's Expedition")
 check("Awaken Terapagos" in menu("AREA_ZERO_UNDERDEPTHS"), "Briar's expedition: Terapagos")

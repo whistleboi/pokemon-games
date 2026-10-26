@@ -1,7 +1,14 @@
+from src.world.story import StoryManager
 
 story.badges = {"HOENN": []}
 story.inventory = {}
 story.story_flags = {"visited_LITTLEROOT_TOWN": True, "hoenn_version": "OMEGA_RUBY"}
+# The ORAS story beats (build_hoenn_story.py) as they happen before each badge.
+story.story_flags.update({f: True for f in StoryManager.HOENN_START_FLAGS}, helped_wally=True)
+BEATS = {"STONE": ["rusturf_rescued", "met_mr_stone"], "KNUCKLE": ["met_steven", "oceanic_museum_cleared"],
+         "DYNAMO": ["defeated_wally_mauville", "got_strength_hoenn", "meteor_falls_cleared", "mt_chimney_boss_defeated"],
+         "BALANCE": ["got_mega_bracelet", "weather_institute_cleared", "hoenn_rival_119", "got_starter_mega_stone"],
+         "FEATHER": ["got_mt_pyre_orb", "hoenn_rival_lilycove"], "RAIN": ["defeated_wally_victory"]}
 story.defeated_trainers = {}
 story.starting_region = "HOENN"
 R, S = "HOENN", "LITTLEROOT_TOWN"
@@ -11,6 +18,9 @@ for b, extra in [("STONE", {}), ("KNUCKLE", {}), ("DYNAMO", {}), ("HEAT", {}), (
                  ("RAIN", {"cave_of_origin_cleared": True})]:
     badge(R, b)
     story.story_flags.update(extra)
+    story.story_flags.update({f: True for f in BEATS.get(b, [])})
+    if "got_strength_hoenn" in BEATS.get(b, []):
+        story.inventory["HM_STRENGTH"] = 1  # the rival's gift on Route 112
     seen = report(f"{b} badge", S, seen)
 story.story_flags["beat_hoenn_champion"] = True
 seen = report("champion", S, seen)

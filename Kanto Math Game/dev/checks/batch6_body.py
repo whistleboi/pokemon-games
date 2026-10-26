@@ -94,6 +94,7 @@ for starter, silver in ((152, 155), (155, 158), (158, 152)):
 story.story_flags = {"starter_johto": 155, "defeated_rival_cherrygrove": True}
 story.badges = {"JOHTO": ["ZEPHYR", "HIVE", "PLAIN"]}
 story.current_area_key = "BURNED_TOWER"
+story.player_team = [mk(7)]; story.player_team[0].level = 5  # canon levels: a team that hasn't outgrown them
 ps = ow.PlayState(g)
 g.change_state(ps)
 got = lineup(battle_of(g.current_state))
@@ -116,7 +117,7 @@ check(got == [(25, 88), (131, 80), (143, 82), (3, 84), (6, 84), (9, 84)], f"Red:
 print("5) Marts")
 story.badges = {"JOHTO": []}
 story.current_area_key = "CHERRYGROVE_CITY"
-check(PokeMartState(g, None)._shop_items()[:3] == ["POKE_BALLS", "POTION", "FULL_HEAL"]
+check(PokeMartState(g, None)._shop_items()[:3] == ["POKE_BALLS", "POTION", "ANTIDOTE"]
       and "RARE_CANDY" not in PokeMartState(g, None)._shop_items(), "a first-town mart: basics, no Rare Candy")
 story.badges = {"JOHTO": ["ZEPHYR", "HIVE", "PLAIN"]}
 story.current_area_key = "ECRUTEAK_CITY"
@@ -158,7 +159,7 @@ opt = next(o for o in prog["OLIVINE_CITY"]["travel_options"] if "S.S. Aqua" in o
 check(c._check_menu_condition(opt["condition"]), "S.S. Aqua to Vermilion is open with the ticket")
 seen = {}
 _orig = ow.AreaTransitionState.__init__
-owinit = lambda self, game, key, initial_message=None: (seen.update(msg=initial_message), _orig(self, game, key, initial_message))[1]
+owinit = lambda self, game, key, initial_message=None, **k: (seen.update(msg=initial_message), _orig(self, game, key, initial_message, **k))[1]
 ow.AreaTransitionState.__init__ = owinit
 c._get_callback_for_option(dict(opt, action="TRAVEL"))()
 ow.AreaTransitionState.__init__ = _orig

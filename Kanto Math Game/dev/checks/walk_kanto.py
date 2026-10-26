@@ -14,4 +14,4 @@ story.inventory["SS_TICKET"] = 1
 expansion_check("kanto side areas", ["KANTO_SS_ANNE"], S)
 print("   OK" if "VERMILLION_CITY" in links("KANTO_SS_ANNE") and "KANTO_SS_ANNE" in links("VERMILLION_CITY") else "   FAIL", "S.S. Anne <-> Vermilion")
 pool = PROG["KANTO_SS_ANNE"]["trainer_pool"]
-print("   OK" if pool[-1]["name"] == "Rival Blue" and pool[-1].get("is_boss_battle") else "   FAIL", "S.S. Anne ends on the rival")
+print("   OK" if pool[-1]["name"] == "{rival_name}" and pool[-1].get("is_boss_battle") else "   FAIL", "S.S. Anne ends on the rival")

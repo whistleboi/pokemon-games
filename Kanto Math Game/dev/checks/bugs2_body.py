@@ -105,7 +105,7 @@ for area, want in (("UNOVA_ROUTE_17", "UNOVA"), ("JOHTO_ROUTE_32", "JOHTO"), ("K
 
 # J-D1 / J-D2 Johto: National Park catches, headbutt buttons.
 p, btns = route_buttons("NATIONAL_PARK")
-check("CATCH WILD PKMN" in btns and "Route 35" in btns, f"National Park is a wild route: {btns}")
+check("CATCH WILD POKéMON" in btns and "Route 35" in btns, f"National Park is a wild route: {btns}")
 for r in ("JOHTO_ROUTE_30", "JOHTO_ROUTE_42"):
     check(any(o.get("action") == "HEADBUTT" for o in SP[r]["route_menu"]), f"{r} has HEADBUTT")
 

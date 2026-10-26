@@ -47,8 +47,8 @@
       "Think you can handle it? OF COURSE you can! Let's go!"
     ],
     "alola_hau_intro": [
-      "Hau: Hey hey hey! You must be {player_name}!",
-      "I'm Hau! My grandfather is the Island Kahuna — Hala!",
+      "{rival_name}: Hey hey hey! You must be {player_name}!",
+      "I'm {rival_name}! My grandfather is the Island Kahuna — Hala!",
       "I wanna battle you SO bad! But first, let's get you a starter Pokémon from Kukui!",
       "Alola has the BEST malasada! Oh — and Pokémon are great too!"
     ],
@@ -58,8 +58,8 @@
       "That bag I'm carrying... please don't ask about it. Not yet.",
       "But I hope we can travel together for a while. If that's all right."
     ],
-    "alola_hau_rival_won": ["Hau: Aww! You beat me! You're super strong!", "That's fine — it just means I need more malasada! And training!"],
-    "alola_hau_rival_lost": ["Hau: YEAH! I won! Grandfather is going to be so proud!", "Let's battle again soon — I want us both to get stronger!"],
+    "alola_hau_rival_won": ["{rival_name}: Aww! You beat me! You're super strong!", "That's fine — it just means I need more malasada! And training!"],
+    "alola_hau_rival_lost": ["{rival_name}: YEAH! I won! Grandfather is going to be so proud!", "Let's battle again soon — I want us both to get stronger!"],
     "alola_lusamine_intro": [
       "Lusamine: How lovely that you're here.",
       "I am Lusamine — President of the Aether Foundation.",
@@ -80,7 +80,7 @@
     ],
     "alola_guzma_won": ["Guzma: ...What even is this guy?", "Team Skull — fall back!", "This ain't over. Guzma doesn't stay down."],
     "alola_gladion_intro": [
-      "Gladion: Stay out of Aether Foundation's business.",
+      "{friend_name}: Stay out of Aether Foundation's business.",
       "You don't know what they're really doing there. What she's doing.",
       "Type: Null — the Pokémon I have — was created by Aether. An experiment.",
       "I took it and ran. I won't let them use it as a weapon. And I won't let Lusamine hurt anyone else."
@@ -3124,21 +3124,21 @@
           "targets": ["alola_mom_home_1", "alola_mom_home_2", "alola_mom_home_3"]
         },
         { "text": "Meet Professor Kukui", "action": "NPC", "target": "alola_kukui_intro", "flag_condition": "not met_kukui" },
-        { "text": "Meet Hau", "action": "NPC", "target": "alola_hau_intro", "flag_condition": "not met_hau" }
+        { "text": "Meet {rival_name}", "action": "NPC", "target": "alola_hau_intro", "flag_condition": "not met_hau" }
       ],
       "next_area": "ALOLA_ROUTE_1",
       "on_enter_event": {
         "type": "trainer_battle",
         "trainer": {
-          "name": "Hau",
+          "name": "{rival_name}",
           "class": "PKMN_TRAINER",
-          "sprite": "hau.png",
+          "sprite": "{rival_character}",
           "team": [729],
           "team_choice": { "722": [725], "725": [728], "728": [722] },
           "rewards": { "balls": 5 },
           "victory_flag": "defeated_hau_iki",
           "dialogue": {
-            "intro": ["Hau: I've been wanting to battle you since I first saw you! Let's go!"],
+            "intro": ["{rival_name}: I've been wanting to battle you since I first saw you! Let's go!"],
             "player_won": ["alola_hau_rival_won"],
             "player_lost": ["alola_hau_rival_lost"]
           }
@@ -3153,24 +3153,7 @@
       "region": "ALOLA",
       "backgrounds": { "main": "hauoli_city.png", "pokecenter": "hauoli_center.png", "marina": "hauoli_marina.png" },
       "has_gym": true,
-      "gym": {
-        "trainers": [],
-        "leader": {
-          "name": "Ilima (Trial Captain)",
-          "class": "GYM_LEADER",
-          "sprite": "ilima_trial_captain.png",
-          "team": [734, 235], "levels": [9, 10],
-          "dialogue": {
-            "intro": ["Ilima: You've completed Verdant Cavern. Now face me — the trial captain — in a proper battle!"],
-            "player_won": ["Ilima: Wonderful! You've earned the Normalium Z! Use Z-Moves wisely."],
-            "player_lost": ["Ilima: Not quite. Train more and return — I'll be here."]
-          },
-          "rewards": { "balls": 5, "NORMALIUM_Z": 1 },
-          "is_boss_battle": true,
-          "badge_reward": "NORMALIUM_Z"
-        },
-        "requirements": { "badges": 0, "fail_text": "Complete your first trial at Verdant Cavern!", "flag": "VERDANT_CAVERN_boss_defeated" }
-      },
+      "gym": {"trainers": [], "leader": {"name": "Ilima (Trial Captain)", "class": "GYM_LEADER", "sprite": "ilima_trial_captain.png", "team": [734, 235], "levels": [9, 10], "dialogue": {"intro": ["Ilima: You've completed Verdant Cavern. Now face me — the trial captain — in a proper battle!"], "player_won": ["Ilima: Wonderful! You've earned the Normalium Z! Use Z-Moves wisely."], "player_lost": ["Ilima: Not quite. Train more and return — I'll be here."]}, "rewards": {"balls": 5, "NORMALIUM_Z": 1}, "is_boss_battle": true, "badge_reward": "NORMALIUM_Z", "movesets": {"734": ["TACKLE", "PURSUIT", "LEER"], "235": ["EMBER", "TACKLE"]}}, "requirements": {"badges": 0, "fail_text": "Complete your first trial at Verdant Cavern!", "flag": "VERDANT_CAVERN_boss_defeated"}},
       "travel_options": [
         { "text": "Route 1 (to Iki Town)", "target_area": "ALOLA_ROUTE_1" },
         { "text": "Route 2 (to Hau'oli Outskirts)", "target_area": "ALOLA_ROUTE_2" },
@@ -3192,31 +3175,7 @@
       "region": "ALOLA",
       "backgrounds": { "main": "heahea_city.png", "pokecenter": "heahea_center.png", "aether": "aether_paradise_entry.png" },
       "has_gym": true,
-      "gym": {
-        "trainers": [],
-        "leader": {
-          "name": "Olivia (Kahuna — Akala Grand Trial)",
-          "class": "GYM_LEADER",
-          "sprite": "olivia_kahuna_akala_grand_trial.png",
-          "team": [299, 525, 745], "levels": [26, 26, 27],
-          "dialogue": {
-            "intro": [
-              "Olivia: You've done well on your trials. Now face the Grand Trial of Akala Island!",
-              "I am Olivia, its Kahuna. Let us see if your bond with your Pokémon is as strong as stone."
-            ],
-            "player_won": ["Olivia: Beautiful. You've earned Rockium Z! Take the ferry to Ula'ula Island!"],
-            "player_lost": ["Olivia: Not quite rock-solid yet. Keep training!"]
-          },
-          "rewards": { "balls": 8, "ROCKIUM_Z": 1 },
-          "is_boss_battle": true,
-          "badge_reward": "ROCKIUM_Z"
-        },
-        "requirements": {
-          "badges": 1,
-          "fail_text": ["Olivia is waiting at the ruins.", "Finish Lana's Water Trial, Mallow's Grass Trial", "and Kiawe's Fire Trial on Akala Island first!"],
-          "flags": ["BROOKLET_HILL_boss_defeated", "LUSH_JUNGLE_boss_defeated", "WELA_VOLCANO_boss_defeated"]
-        }
-      },
+      "gym": {"trainers": [], "leader": {"name": "Olivia (Kahuna — Akala Grand Trial)", "class": "GYM_LEADER", "sprite": "olivia_kahuna_akala_grand_trial.png", "team": [299, 525, 745], "levels": [26, 26, 27], "dialogue": {"intro": ["Olivia: You've done well on your trials. Now face the Grand Trial of Akala Island!", "I am Olivia, its Kahuna. Let us see if your bond with your Pokémon is as strong as stone."], "player_won": ["Olivia: Beautiful. You've earned Rockium Z! Take the ferry to Ula'ula Island!"], "player_lost": ["Olivia: Not quite rock-solid yet. Keep training!"]}, "rewards": {"balls": 8, "ROCKIUM_Z": 1}, "is_boss_battle": true, "badge_reward": "ROCKIUM_Z", "movesets": {"299": ["ROCK-SLIDE", "SPARK", "THUNDER-WAVE"], "525": ["ROCK-BLAST", "MUD-SLAP", "HEADBUTT"], "745": ["BITE", "ROCK-THROW"]}}, "requirements": {"badges": 1, "fail_text": ["Olivia is waiting at the ruins.", "Finish Lana's Water Trial, Mallow's Grass Trial", "and Kiawe's Fire Trial on Akala Island first!"], "flags": ["BROOKLET_HILL_boss_defeated", "LUSH_JUNGLE_boss_defeated", "WELA_VOLCANO_boss_defeated"]}},
       "travel_options": [
         { "text": "Route 4 (to Paniola Town)", "target_area": "ALOLA_ROUTE_4" },
         { "text": "Route 5 (to Lush Jungle)", "target_area": "ALOLA_ROUTE_5" },
@@ -3257,28 +3216,7 @@
       "region": "ALOLA",
       "backgrounds": { "main": "malie_city.png", "pokecenter": "malie_center.png" },
       "has_gym": true,
-      "gym": {
-        "trainers": [],
-        "leader": {
-          "name": "Nanu (Kahuna — Ula'ula Grand Trial)",
-          "class": "GYM_LEADER",
-          "sprite": "nanu_kahuna_ula_ula_grand_trial.png",
-          "team": [302, 552, 2011], "levels": [38, 38, 39],
-          "dialogue": {
-            "intro": ["Nanu: ...You again. Fine. Grand Trial of Ula'ula Island. Let's just get this over with."],
-            "player_won": ["Nanu: ...I was holding back. Take the Darkinium Z. Go."],
-            "player_lost": ["Nanu: ...Told you. You're not ready."]
-          },
-          "rewards": { "balls": 8, "DARKINIUM_Z": 1 },
-          "is_boss_battle": true,
-          "badge_reward": "DARKINIUM_Z"
-        },
-        "requirements": {
-          "badges": 2,
-          "fail_text": ["Nanu won't battle yet.", "Finish Sophocles' and Acerola's trials and deal with Team Skull", "in Po Town first!"],
-          "flags": ["MT_HOKULANI_boss_defeated", "THRIFTY_MEGAMART_boss_defeated", "po_town_cleared"]
-        }
-      },
+      "gym": {"trainers": [], "leader": {"name": "Nanu (Kahuna — Ula'ula Grand Trial)", "class": "GYM_LEADER", "sprite": "nanu_kahuna_ula_ula_grand_trial.png", "team": [302, 552, 2011], "levels": [38, 38, 39], "dialogue": {"intro": ["Nanu: ...You again. Fine. Grand Trial of Ula'ula Island. Let's just get this over with."], "player_won": ["Nanu: ...I was holding back. Take the Darkinium Z. Go."], "player_lost": ["Nanu: ...Told you. You're not ready."]}, "rewards": {"balls": 8, "DARKINIUM_Z": 1}, "is_boss_battle": true, "badge_reward": "DARKINIUM_Z", "movesets": {"302": ["POWER-GEM", "SHADOW-BALL", "FAKE-OUT"], "552": ["CRUNCH", "ASSURANCE", "SWAGGER", "EARTHQUAKE"], "2011": ["POWER-GEM", "FAKE-OUT", "DARK-PULSE"]}}, "requirements": {"badges": 2, "fail_text": ["Nanu won't battle yet.", "Finish Sophocles' and Acerola's trials and deal with Team Skull", "in Po Town first!"], "flags": ["MT_HOKULANI_boss_defeated", "THRIFTY_MEGAMART_boss_defeated", "po_town_cleared"]}},
       "travel_options": [
         { "text": "Route 10 (to Mount Hokulani)", "target_area": "ALOLA_ROUTE_10" },
         { "text": "Route 11 (south)", "target_area": "ALOLA_ROUTE_11" },
@@ -3326,31 +3264,7 @@
       "region": "ALOLA",
       "backgrounds": { "main": "seafolk_village.png", "pokecenter": "seafolk_center.png" },
       "has_gym": true,
-      "gym": {
-        "trainers": [],
-        "leader": {
-          "name": "Hapu (Kahuna — Poni Grand Trial)",
-          "class": "GYM_LEADER",
-          "sprite": "hapu_kahuna_poni_grand_trial.png",
-          "team": [2009, 423, 330, 750], "levels": [47, 47, 47, 48],
-          "dialogue": {
-            "intro": [
-              "Hapu: You've come far. You remind me of someone who walked this path before.",
-              "The Grand Trial of Poni Island — show me what you're made of!"
-            ],
-            "player_won": ["Hapu: You are worthy. Groundium Z is yours. The path to the Altar awaits."],
-            "player_lost": ["Hapu: The earth says you're not ready. Train more."]
-          },
-          "rewards": { "balls": 10, "GROUNDIUM_Z": 1 },
-          "is_boss_battle": true,
-          "badge_reward": "GROUNDIUM_Z"
-        },
-        "requirements": {
-          "badges": 3,
-          "fail_text": ["Hapu is at the Vast Poni Canyon.", "Finish the trial there first!"],
-          "flags": ["VAST_PONI_boss_defeated"]
-        }
-      },
+      "gym": {"trainers": [], "leader": {"name": "Hapu (Kahuna — Poni Grand Trial)", "class": "GYM_LEADER", "sprite": "hapu_kahuna_poni_grand_trial.png", "team": [2009, 423, 330, 750], "levels": [47, 47, 47, 48], "dialogue": {"intro": ["Hapu: You've come far. You remind me of someone who walked this path before.", "The Grand Trial of Poni Island — show me what you're made of!"], "player_won": ["Hapu: You are worthy. Groundium Z is yours. The path to the Altar awaits."], "player_lost": ["Hapu: The earth says you're not ready. Train more."]}, "rewards": {"balls": 10, "GROUNDIUM_Z": 1}, "is_boss_battle": true, "badge_reward": "GROUNDIUM_Z", "movesets": {"2009": ["IRON-HEAD", "EARTHQUAKE", "SUCKER-PUNCH", "SANDSTORM"], "423": ["MUDDY-WATER", "MUD-BOMB", "RECOVER"], "330": ["EARTH-POWER", "DRAGON-BREATH"], "750": ["HEAVY-SLAM", "EARTHQUAKE", "DOUBLE-KICK", "COUNTER"]}}, "requirements": {"badges": 3, "fail_text": ["Hapu is at the Vast Poni Canyon.", "Finish the trial there first!"], "flags": ["VAST_PONI_boss_defeated"]}},
       "travel_options": [
         { "text": "Route 16 (to Ula'ula / ferry)", "target_area": "ALOLA_ROUTE_16" },
         { "text": "Vast Poni Canyon", "target_area": "VAST_PONI_CANYON" },
@@ -3381,90 +3295,7 @@
       "post_champion_events": [
         { "type": "npc_dialogue", "target": "alola_departure_to_galar", "flag_condition": "not left_for_galar", "victory_flag": "left_for_galar" }
       ],
-      "gym": {
-        "trainers": [
-          {
-            "name": "Hala",
-            "class": "ELITE_FOUR",
-            "sprite": "hala.png",
-            "is_boss_battle": true,
-            "team": [297, 57, 760, 62, 740], "levels": [59, 59, 59, 59, 60], "rematch": {"team": [297, 57, 760, 62, 740], "levels": [68, 68, 68, 68, 68]},
-            "rewards": { "balls": 10 },
-            "dialogue": {
-              "intro": ["Hala: You have grown beyond what I imagined when you first came to Iki Town.", "Let us see how far — with the power of our Pokémon!"],
-              "player_won": ["Hala: Ha ha! Magnificent! Go — Olivia and the others await!"],
-              "player_lost": ["Hala: Still some growing left to do! Come back when you're ready!"]
-            }
-          },
-          {
-            "name": "Olivia",
-            "class": "ELITE_FOUR",
-            "sprite": "olivia.png",
-            "is_boss_battle": true,
-            "team": [369, 703, 2014, 476, 745], "levels": [59, 59, 59, 59, 60], "rematch": {"team": [369, 703, 2014, 476, 745], "levels": [68, 68, 68, 68, 68]},
-            "rewards": { "balls": 10 },
-            "dialogue": {
-              "intro": ["Olivia: We meet again! This time — no holding back. My Pokémon and I are ready!"],
-              "player_won": ["Olivia: Beautiful battle. Go — Acerola's waiting for you!"],
-              "player_lost": ["Olivia: You'll get there. Keep going!"]
-            }
-          },
-          {
-            "name": "Acerola",
-            "class": "ELITE_FOUR",
-            "sprite": "acerola.png",
-            "is_boss_battle": true,
-            "team": [302, 426, 781, 478, 770], "levels": [59, 59, 59, 59, 60], "rematch": {"team": [302, 426, 781, 478, 770], "levels": [68, 68, 68, 68, 68]},
-            "rewards": { "balls": 10 },
-            "dialogue": {
-              "intro": ["Acerola: Ooh! You made it! My Ghost-types love new challengers!", "Don't be scared — they're mostly friendly!"],
-              "player_won": ["Acerola: You're sooo strong! Go get Kahili!"],
-              "player_lost": ["Acerola: Aww! Come back when you're ready, okay?"]
-            }
-          },
-          {
-            "name": "Kahili",
-            "class": "ELITE_FOUR",
-            "sprite": "kahili.png",
-            "is_boss_battle": true,
-            "team": [227, 169, 741, 630, 733], "levels": [59, 59, 59, 59, 60], "rematch": {"team": [227, 169, 741, 630, 733], "levels": [68, 68, 68, 68, 68]},
-            "rewards": { "balls": 10 },
-            "dialogue": {
-              "intro": [
-                "Kahili: You've come a long way — literally. World traveler and trial champion.",
-                "Let's see if you've got what it takes for the final round."
-              ],
-              "player_won": ["Kahili: Outstanding. The Champion awaits — give it everything you've got!"],
-              "player_lost": ["Kahili: Almost there. Train a bit more and come back."]
-            }
-          }
-        ],
-        "leader": {
-          "name": "Professor Kukui (The Royal Mask)",
-          "class": "CHAMPION",
-          "sprite": "kukui.png",
-          "is_boss_battle": true,
-          "team": [745, 2007, 628, 462, 143, 727], "levels": [62, 62, 62, 62, 62, 63], "rematch": {"levels": [70, 70, 70, 70, 70, 70]},
-          "team_choice": {"722": [745, 2007, 628, 462, 143, 727], "725": [745, 2007, 628, 462, 143, 730], "728": [745, 2007, 628, 462, 143, 724]},
-          "rewards": { "balls": 20, "ALOLA_HALL_OF_FAME": 1 },
-          "victory_flag": "beat_alola_champion",
-          "dialogue": {
-            "intro": [
-              "Professor Kukui: You've done it! You've completed the Island Challenge — all four islands!",
-              "And now — the first-ever Alola Pokémon League awaits!",
-              "I'll be waiting at the top. Not as the Professor — as the masked Royal!",
-              "Show Alola what you're made of, cousin. YEAH!"
-            ],
-            "player_won": [
-              "Professor Kukui: ...YEAH! INCREDIBLE! That was the BEST!",
-              "You are the first-ever Alola Champion! {player_name}!",
-              "The Alola League is real now — because you made it real!",
-              "This is going in every Pokémon research paper I ever write. YEAH!"
-            ],
-            "player_lost": ["Professor Kukui: YEAH! Not quite yet — but that was amazing! Try again!"]
-          }
-        }
-      }
+      "gym": {"trainers": [{"name": "Hala", "class": "ELITE_FOUR", "sprite": "hala.png", "is_boss_battle": true, "team": [297, 57, 760, 62, 740], "levels": [59, 59, 59, 59, 60], "rematch": {"team": [297, 57, 760, 62, 740], "levels": [68, 68, 68, 68, 68], "movesets": {"297": ["FAKE-OUT", "CLOSE-COMBAT", "KNOCK-OFF"], "57": ["CROSS-CHOP", "OUTRAGE", "PUNISHMENT", "PURSUIT"], "760": ["HAMMER-ARM", "BRUTAL-SWING"], "62": ["WATERFALL", "SUBMISSION"], "740": ["ICE-HAMMER", "CLOSE-COMBAT"]}}, "rewards": {"balls": 10}, "dialogue": {"intro": ["Hala: You have grown beyond what I imagined when you first came to Iki Town.", "Let us see how far — with the power of our Pokémon!"], "player_won": ["Hala: Ha ha! Magnificent! Go — Olivia and the others await!"], "player_lost": ["Hala: Still some growing left to do! Come back when you're ready!"]}, "movesets": {"297": ["FAKE-OUT", "CLOSE-COMBAT", "KNOCK-OFF"], "57": ["CROSS-CHOP", "OUTRAGE", "PUNISHMENT", "PURSUIT"], "760": ["HAMMER-ARM", "BRUTAL-SWING"], "62": ["WATERFALL", "SUBMISSION"], "740": ["ICE-HAMMER", "CLOSE-COMBAT"]}}, {"name": "Olivia", "class": "ELITE_FOUR", "sprite": "olivia.png", "is_boss_battle": true, "team": [369, 703, 2014, 476, 745], "levels": [59, 59, 59, 59, 60], "rematch": {"team": [369, 703, 2014, 476, 745], "levels": [68, 68, 68, 68, 68], "movesets": {"369": ["HYDRO-PUMP", "ANCIENT-POWER", "YAWN"], "703": ["POWER-GEM", "MOONBLAST", "REFLECT"], "2014": ["THUNDER-PUNCH", "ROCK-BLAST", "STEAMROLLER"], "476": ["EARTH-POWER", "POWER-GEM", "THUNDER-WAVE", "SANDSTORM"], "745": ["CRUNCH", "STONE-EDGE", "COUNTER", "ROCK-CLIMB"]}}, "rewards": {"balls": 10}, "dialogue": {"intro": ["Olivia: We meet again! This time — no holding back. My Pokémon and I are ready!"], "player_won": ["Olivia: Beautiful battle. Go — Acerola's waiting for you!"], "player_lost": ["Olivia: You'll get there. Keep going!"]}, "movesets": {"369": ["HYDRO-PUMP", "ANCIENT-POWER", "YAWN"], "703": ["POWER-GEM", "MOONBLAST", "REFLECT"], "2014": ["THUNDER-PUNCH", "ROCK-BLAST", "STEAMROLLER"], "476": ["EARTH-POWER", "POWER-GEM", "THUNDER-WAVE", "SANDSTORM"], "745": ["CRUNCH", "STONE-EDGE", "COUNTER", "ROCK-CLIMB"]}}, {"name": "Acerola", "class": "ELITE_FOUR", "sprite": "acerola.png", "is_boss_battle": true, "team": [302, 426, 781, 478, 770], "levels": [59, 59, 59, 59, 60], "rematch": {"team": [302, 426, 781, 478, 770], "levels": [68, 68, 68, 68, 68], "movesets": {"302": ["SHADOW-CLAW", "ZEN-HEADBUTT", "CONFUSE-RAY", "FAKE-OUT"], "426": ["OMINOUS-WIND", "FOCUS-ENERGY", "AMNESIA", "BATON-PASS"], "781": ["SLAM", "SHADOW-BALL", "ENERGY-BALL", "WHIRLPOOL"], "478": ["BLIZZARD", "SHADOW-BALL", "CONFUSE-RAY", "ICE-SHARD"], "770": ["SHADOW-BALL", "EARTH-POWER", "GIGA-DRAIN", "IRON-DEFENSE"]}}, "rewards": {"balls": 10}, "dialogue": {"intro": ["Acerola: Ooh! You made it! My Ghost-types love new challengers!", "Don't be scared — they're mostly friendly!"], "player_won": ["Acerola: You're sooo strong! Go get Kahili!"], "player_lost": ["Acerola: Aww! Come back when you're ready, okay?"]}, "movesets": {"302": ["SHADOW-CLAW", "ZEN-HEADBUTT", "CONFUSE-RAY", "FAKE-OUT"], "426": ["OMINOUS-WIND", "FOCUS-ENERGY", "AMNESIA", "BATON-PASS"], "781": ["SLAM", "SHADOW-BALL", "ENERGY-BALL", "WHIRLPOOL"], "478": ["BLIZZARD", "SHADOW-BALL", "CONFUSE-RAY", "ICE-SHARD"], "770": ["SHADOW-BALL", "EARTH-POWER", "GIGA-DRAIN", "IRON-DEFENSE"]}}, {"name": "Kahili", "class": "ELITE_FOUR", "sprite": "kahili.png", "is_boss_battle": true, "team": [227, 169, 741, 630, 733], "levels": [59, 59, 59, 59, 60], "rematch": {"team": [227, 169, 741, 630, 733], "levels": [68, 68, 68, 68, 68], "movesets": {"227": ["SLASH", "STEEL-WING", "FEINT", "SPIKES"], "169": ["AIR-SLASH", "SWIFT", "SUPERSONIC", "POISON-FANG"], "741": ["REVELATION&NBSP;DANCE", "TEETER-DANCE", "AIR-SLASH", "FEATHER-DANCE"], "630": ["BONE-RUSH", "BRAVE-BIRD", "PUNISHMENT", "FLATTER"], "733": ["BULLET-SEED", "ROCK-BLAST", "BEAK-BLAST", "SCREECH"]}}, "rewards": {"balls": 10}, "dialogue": {"intro": ["Kahili: You've come a long way — literally. World traveler and trial champion.", "Let's see if you've got what it takes for the final round."], "player_won": ["Kahili: Outstanding. The Champion awaits — give it everything you've got!"], "player_lost": ["Kahili: Almost there. Train a bit more and come back."]}, "movesets": {"227": ["SLASH", "STEEL-WING", "FEINT", "SPIKES"], "169": ["AIR-SLASH", "SWIFT", "SUPERSONIC", "POISON-FANG"], "741": ["REVELATION&NBSP;DANCE", "TEETER-DANCE", "AIR-SLASH", "FEATHER-DANCE"], "630": ["BONE-RUSH", "BRAVE-BIRD", "PUNISHMENT", "FLATTER"], "733": ["BULLET-SEED", "ROCK-BLAST", "BEAK-BLAST", "SCREECH"]}}], "leader": {"name": "Professor Kukui (The Royal Mask)", "class": "CHAMPION", "sprite": "kukui.png", "is_boss_battle": true, "team": [745, 2007, 628, 462, 143, 727], "levels": [62, 62, 62, 62, 62, 63], "rematch": {"levels": [70, 70, 70, 70, 70, 70]}, "team_choice": {"722": [745, 2007, 628, 462, 143, 727], "725": [745, 2007, 628, 462, 143, 730], "728": [745, 2007, 628, 462, 143, 724]}, "rewards": {"balls": 20, "ALOLA_HALL_OF_FAME": 1}, "victory_flag": "beat_alola_champion", "dialogue": {"intro": ["Professor Kukui: You've done it! You've completed the Island Challenge — all four islands!", "And now — the first-ever Alola Pokémon League awaits!", "I'll be waiting at the top. Not as the Professor — as the masked Royal!", "Show Alola what you're made of, cousin. YEAH!"], "player_won": ["Professor Kukui: ...YEAH! INCREDIBLE! That was the BEST!", "You are the first-ever Alola Champion! {player_name}!", "The Alola League is real now — because you made it real!", "This is going in every Pokémon research paper I ever write. YEAH!"], "player_lost": ["Professor Kukui: YEAH! Not quite yet — but that was amazing! Try again!"]}, "movesets": {"745": ["STONE-EDGE", "ACCELEROCK", "CRUNCH", "STEALTH-ROCK"], "2007": ["DAZZLING-GLEAM", "BLIZZARD", "ICE-SHARD", "SAFEGUARD"], "628": ["CRUSH-CLAW", "BRAVE-BIRD", "TAILWIND", "WHIRLWIND"], "462": ["THUNDERBOLT", "FLASH-CANNON", "THUNDER-WAVE", "MIRROR-COAT"], "143": ["BODY-SLAM", "CRUNCH", "HEAVY-SLAM", "HIGH&NBSP;HORSEPOWER"], "727": ["FLARE-BLITZ", "DARKEST-LARIAT", "OUTRAGE", "CROSS-CHOP"], "730": ["SPARKLING-ARIA", "MOONBLAST", "AQUA-JET", "HYPER-VOICE"], "724": ["LEAF-BLADE", "SPIRIT-SHACKLE", "BRAVE-BIRD", "SUCKER-PUNCH"]}}}
     },
     "VERDANT_CAVERN": {
       "area_type": "dungeon",
@@ -3573,34 +3404,7 @@
       "battle_type": "indoor",
       "wild_pool_percentages": null,
       "min_rounds": 0,
-      "trainer_pool": [
-        {
-          "name": "Team Skull Grunt",
-          "class": "SKULL",
-          "sprite": "skull_grunt.png",
-          "team": [754, 758],
-          "rewards": { "balls": 3 },
-          "dialogue": {
-            "intro": ["Yo yo yo! Team Skull don't play!"],
-            "player_won": ["Ugh, whatever..."],
-            "player_lost": ["SKULL SKULL SKULL!"]
-          }
-        },
-        {
-          "name": "Guzma",
-          "class": "RIVAL",
-          "sprite": "guzma.png",
-          "is_boss_battle": true,
-          "team": [768, 768, 752],
-          "rewards": { "balls": 10 },
-          "victory_flag": "po_town_cleared",
-          "dialogue": {
-            "intro": ["alola_guzma_intro"],
-            "player_won": ["alola_guzma_won"],
-            "player_lost": ["Guzma: That's what I'm talking about! That's the power of Guzma!"]
-          }
-        }
-      ],
+      "trainer_pool": [{"name": "Team Skull Grunt", "class": "SKULL", "sprite": "skull_grunt.png", "team": [754, 758], "rewards": {"balls": 3}, "dialogue": {"intro": ["Yo yo yo! Team Skull don't play!"], "player_won": ["Ugh, whatever..."], "player_lost": ["SKULL SKULL SKULL!"]}}, {"name": "Guzma", "class": "RIVAL", "sprite": "guzma.png", "is_boss_battle": true, "team": [768, 768, 752], "rewards": {"balls": 10}, "victory_flag": "po_town_cleared", "dialogue": {"intro": ["alola_guzma_intro"], "player_won": ["alola_guzma_won"], "player_lost": ["Guzma: That's what I'm talking about! That's the power of Guzma!"]}, "movesets": {"768": ["SUCKER-PUNCH", "RAZOR-SHELL", "FIRST-IMPRESSION"]}}],
       "route_menu": [
         { "text": "BATTLE TEAM SKULL", "action": "TRAINER", "condition": "has_trainers", "color": "GOLD", "flag_condition": "not po_town_cleared" },
         { "text": "Route 17", "action": "EXIT", "target_area": "ALOLA_ROUTE_17", "condition": "can_exit", "color": "RED" },
@@ -3632,12 +3436,7 @@
       "battle_type": "indoor",
       "wild_pool_percentages": "ALOLA_THRIFTY_MEGAMART_PERCENTAGES",
       "min_rounds": 2,
-      "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "Acerola's Ghost Trial (Totem Mimikyu)", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD" },
-        { "text": "Route 14", "action": "EXIT", "target_area": "ALOLA_ROUTE_14", "condition": "can_exit", "color": "RED" }
-      ],
+      "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "Acerola's Ghost Trial (Totem Mimikyu)", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD"}, {"text": "THE BLACK FOG", "action": "BOSS", "color": "PURPLE", "flag_condition": "not black_fog_banished_thrifty_megamart", "boss": {"id": 10501, "name": "Black Fog", "level": 42, "no_catch": true, "victory_flag": "black_fog_banished_thrifty_megamart", "lines": ["The air turns ice-cold. A black fog pours across the floor...", "Two huge eyes open in the dark. A giant Haunter rises: the Black Fog!", "Long ago people worshipped it as a god. It feeds on dreams. Don't let it get yours!"], "won": ["The Black Fog is too proud to ever be caught.", "It Self-Destructs in a burst of black mist... and is gone.", "But a cold whisper lingers: it will rise again in another haunted place."], "rewards": {"balls": 10, "RARE_CANDY": 3}}}, {"text": "Route 14", "action": "EXIT", "target_area": "ALOLA_ROUTE_14", "condition": "can_exit", "color": "RED"}],
       "area_boss": { "id": 778, "name": "Totem Mimikyu", "victory_flag": "THRIFTY_MEGAMART_boss_defeated" }
     },
     "VAST_PONI_CANYON": {
@@ -3647,22 +3446,7 @@
       "battle_type": "cave",
       "wild_pool_percentages": "ALOLA_VAST_PONI_PERCENTAGES",
       "min_rounds": 3,
-      "trainer_pool": [
-        {
-          "name": "Gladion",
-          "class": "RIVAL",
-          "sprite": "gladion.png",
-          "is_boss_battle": true,
-          "team": [773, 745, 778, 248],
-          "rewards": { "balls": 10 },
-          "victory_flag": "gladion_vast_poni_cleared",
-          "dialogue": {
-            "intro": ["alola_gladion_intro"],
-            "player_won": ["Gladion: ...You're strong. Keep going."],
-            "player_lost": ["Gladion: Good. Now keep going."]
-          }
-        }
-      ],
+      "trainer_pool": [{"name": "{friend_name}", "class": "RIVAL", "sprite": "{friend_character}", "is_boss_battle": true, "team": [773, 745, 778, 248], "rewards": {"balls": 10}, "victory_flag": "gladion_vast_poni_cleared", "dialogue": {"intro": ["alola_gladion_intro"], "player_won": ["{friend_name}: ...You're strong. Keep going."], "player_lost": ["{friend_name}: Good. Now keep going."]}, "movesets": {"773": ["CRUNCH", "CRUSH-CLAW", "X-SCISSOR", "MULTI-ATTACK"]}}],
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
@@ -3707,9 +3491,9 @@
           "rewards": { "balls": 5 }
         },
         {
-          "name": "Hau",
+          "name": "{rival_name}",
           "class": "PKMN_TRAINER",
-          "sprite": "hau.png",
+          "sprite": "{rival_character}",
           "is_boss_battle": true,
           "team": [730, 760, 745, 778, 143],
           "team_choice": {
@@ -3720,9 +3504,9 @@
           "rewards": { "balls": 8 },
           "victory_flag": "defeated_hau_lanakila",
           "dialogue": {
-            "intro": ["Hau: {player_name}! One more battle before the League — let's go all out!"],
-            "player_won": ["Hau: You're incredible! Go be Champion! I'll be right behind you!"],
-            "player_lost": ["Hau: YES! I really have gotten stronger! Go, {player_name}!"]
+            "intro": ["{rival_name}: {player_name}! One more battle before the League — let's go all out!"],
+            "player_won": ["{rival_name}: You're incredible! Go be Champion! I'll be right behind you!"],
+            "player_lost": ["{rival_name}: YES! I really have gotten stronger! Go, {player_name}!"]
           }
         }
       ],

@@ -214,7 +214,7 @@ g.rival_name, g.rival_character = "GARY", "blue"
 story.current_area_key = "KANTO_ROUTE_22"; p22 = PlayState(g)
 g.change_state(p22)
 intro = g.current_state
-check(type(intro).__name__ == "TrainerIntroState" and intro.next_state.trainer_name == "GARY",
+check(type(intro).__name__ == "TrainerIntroState" and intro.next_state.trainer_name == story.region_rivals["KANTO"]["name"],
       f"Route 22 rival appears at 0 badges: {getattr(getattr(intro, 'next_state', None), 'trainer_name', None)}")
 story.current_area_key = "KANTO_ROUTE_11"; story.player_team = [mk(9)]
 snor = mk(143)
@@ -224,6 +224,7 @@ story.story_flags.pop("KANTO_ROUTE_11_boss_defeated", None)
 wb.trigger_outro(True)
 check(story.story_flags.get("KANTO_ROUTE_11_boss_defeated"), "knocking Snorlax out clears the road (no catch needed)")
 story.badges["KANTO"] = []; story.story_flags.pop("viridian_rocket_defeated", None)
+story.player_team = [mk(7)]; story.player_team[0].level = 5  # canon levels: a team that hasn't outgrown them
 story.current_area_key = "VIRIDIAN_CITY"; vc = CityState(g); g.change_state(vc); vc.start_gym_battle()
 rb = g.current_state.next_state
 check(max(p.level for p in rb.opponent_team) <= 10, f"Viridian Team Rocket at fair levels: {[p.level for p in rb.opponent_team]}")

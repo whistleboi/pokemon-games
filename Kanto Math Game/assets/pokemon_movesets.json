@@ -2992,7 +2992,7 @@
       "SPEED": 45
     },
     "base_xp": 39,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "TACKLE",
@@ -3073,7 +3073,7 @@
       "SPEED": 30
     },
     "base_xp": 72,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "HARDEN",
@@ -3499,7 +3499,7 @@
       "SPEED": 50
     },
     "base_xp": 39,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "POISON-STING",
@@ -3581,7 +3581,7 @@
       "SPEED": 35
     },
     "base_xp": 72,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "HARDEN",
@@ -3963,7 +3963,7 @@
       "SPEED": 56
     },
     "base_xp": 50,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "GUST",
@@ -4273,7 +4273,7 @@
       "SPEED": 71
     },
     "base_xp": 122,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "GUST",
@@ -4890,7 +4890,7 @@
       "SPEED": 72
     },
     "base_xp": 51,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "TACKLE",
@@ -5155,7 +5155,7 @@
       "SPEED": 97
     },
     "base_xp": 145,
-    "capture_rate": 45,
+    "capture_rate": 127,
     "moves": [
       {
         "name": "SWORDS-DANCE",
@@ -5503,7 +5503,7 @@
       "SPEED": 70
     },
     "base_xp": 52,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "WING-ATTACK",
@@ -5785,7 +5785,7 @@
       "SPEED": 100
     },
     "base_xp": 155,
-    "capture_rate": 45,
+    "capture_rate": 90,
     "moves": [
       {
         "name": "WING-ATTACK",
@@ -6104,7 +6104,7 @@
       "SPEED": 55
     },
     "base_xp": 58,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "WRAP",
@@ -6469,7 +6469,7 @@
       "SPEED": 80
     },
     "base_xp": 157,
-    "capture_rate": 45,
+    "capture_rate": 90,
     "moves": [
       {
         "name": "SLAM",
@@ -6964,7 +6964,7 @@
       "SPEED": 90
     },
     "base_xp": 112,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "SLAM",
@@ -7385,7 +7385,7 @@
       "SPEED": 110
     },
     "base_xp": 218,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "SLAM",
@@ -7768,7 +7768,7 @@
       "SPEED": 40
     },
     "base_xp": 60,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "SCRATCH",
@@ -8029,7 +8029,7 @@
       "SPEED": 65
     },
     "base_xp": 158,
-    "capture_rate": 45,
+    "capture_rate": 90,
     "moves": [
       {
         "name": "SCRATCH",
@@ -8308,7 +8308,7 @@
       "SPEED": 41
     },
     "base_xp": 55,
-    "capture_rate": 45,
+    "capture_rate": 235,
     "moves": [
       {
         "name": "SCRATCH",
@@ -8633,7 +8633,7 @@
       "SPEED": 56
     },
     "base_xp": 128,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "SCRATCH",
@@ -9302,7 +9302,7 @@
       "SPEED": 50
     },
     "base_xp": 55,
-    "capture_rate": 45,
+    "capture_rate": 235,
     "moves": [
       {
         "name": "DOUBLE-KICK",
@@ -9623,7 +9623,7 @@
       "SPEED": 65
     },
     "base_xp": 128,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "DOUBLE-KICK",
@@ -10264,7 +10264,7 @@
       "SPEED": 35
     },
     "base_xp": 113,
-    "capture_rate": 45,
+    "capture_rate": 150,
     "moves": [
       {
         "name": "POUND",
@@ -10885,7 +10885,7 @@
       "SPEED": 60
     },
     "base_xp": 217,
-    "capture_rate": 45,
+    "capture_rate": 25,
     "moves": [
       {
         "name": "POUND",
@@ -11384,7 +11384,7 @@
       "SPEED": 65
     },
     "base_xp": 60,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "TACKLE",
@@ -11809,7 +11809,7 @@
       "SPEED": 100
     },
     "base_xp": 177,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "TACKLE",
@@ -12153,7 +12153,7 @@
       "SPEED": 20
     },
     "base_xp": 95,
-    "capture_rate": 45,
+    "capture_rate": 170,
     "moves": [
       {
         "name": "POUND",
@@ -12595,7 +12595,7 @@
       "SPEED": 45
     },
     "base_xp": 196,
-    "capture_rate": 45,
+    "capture_rate": 50,
     "moves": [
       {
         "name": "POUND",
@@ -12895,7 +12895,7 @@
       "SPEED": 55
     },
     "base_xp": 49,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "WING-ATTACK",
@@ -13229,7 +13229,7 @@
       "SPEED": 90
     },
     "base_xp": 159,
-    "capture_rate": 45,
+    "capture_rate": 90,
     "moves": [
       {
         "name": "GUST",
@@ -13663,7 +13663,7 @@
       "SPEED": 30
     },
     "base_xp": 64,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "ACID",
@@ -13965,7 +13965,7 @@
       "SPEED": 40
     },
     "base_xp": 138,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "ACID",
@@ -14588,7 +14588,7 @@
       "SPEED": 25
     },
     "base_xp": 57,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "SCRATCH",
@@ -14890,7 +14890,7 @@
       "SPEED": 30
     },
     "base_xp": 142,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "SCRATCH",
@@ -15250,7 +15250,7 @@
       "SPEED": 45
     },
     "base_xp": 61,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "TACKLE",
@@ -15556,7 +15556,7 @@
       "SPEED": 90
     },
     "base_xp": 158,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "GUST",
@@ -16003,7 +16003,7 @@
       "SPEED": 95
     },
     "base_xp": 53,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "SCRATCH",
@@ -16308,7 +16308,7 @@
       "SPEED": 120
     },
     "base_xp": 149,
-    "capture_rate": 45,
+    "capture_rate": 50,
     "moves": [
       {
         "name": "SCRATCH",
@@ -16711,7 +16711,7 @@
       "SPEED": 90
     },
     "base_xp": 58,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "PAY-DAY",
@@ -17040,7 +17040,7 @@
       "SPEED": 115
     },
     "base_xp": 154,
-    "capture_rate": 45,
+    "capture_rate": 90,
     "moves": [
       {
         "name": "PAY-DAY",
@@ -17447,7 +17447,7 @@
       "SPEED": 55
     },
     "base_xp": 64,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "SCRATCH",
@@ -17752,7 +17752,7 @@
       "SPEED": 85
     },
     "base_xp": 175,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "SCRATCH",
@@ -18175,7 +18175,7 @@
       "SPEED": 70
     },
     "base_xp": 61,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "KARATE-CHOP",
@@ -18536,7 +18536,7 @@
       "SPEED": 95
     },
     "base_xp": 159,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "KARATE-CHOP",
@@ -18917,7 +18917,7 @@
       "SPEED": 60
     },
     "base_xp": 70,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "TAKE-DOWN",
@@ -19286,7 +19286,7 @@
       "SPEED": 95
     },
     "base_xp": 194,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "TAKE-DOWN",
@@ -19637,7 +19637,7 @@
       "SPEED": 90
     },
     "base_xp": 60,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "POUND",
@@ -19958,7 +19958,7 @@
       "SPEED": 90
     },
     "base_xp": 135,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "POUND",
@@ -20600,7 +20600,7 @@
       "SPEED": 90
     },
     "base_xp": 62,
-    "capture_rate": 45,
+    "capture_rate": 200,
     "moves": [
       {
         "name": "TELEPORT",
@@ -20641,7 +20641,7 @@
       "SPEED": 105
     },
     "base_xp": 140,
-    "capture_rate": 45,
+    "capture_rate": 100,
     "moves": [
       {
         "name": "DISABLE",
@@ -21002,7 +21002,7 @@
       "SPEED": 120
     },
     "base_xp": 225,
-    "capture_rate": 45,
+    "capture_rate": 50,
     "moves": [
       {
         "name": "DISABLE",
@@ -21401,7 +21401,7 @@
       "SPEED": 35
     },
     "base_xp": 61,
-    "capture_rate": 45,
+    "capture_rate": 180,
     "moves": [
       {
         "name": "KARATE-CHOP",
@@ -21742,7 +21742,7 @@
       "SPEED": 45
     },
     "base_xp": 142,
-    "capture_rate": 45,
+    "capture_rate": 90,
     "moves": [
       {
         "name": "KARATE-CHOP",
@@ -22523,7 +22523,7 @@
       "SPEED": 40
     },
     "base_xp": 60,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "SLAM",
@@ -22825,7 +22825,7 @@
       "SPEED": 55
     },
     "base_xp": 137,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "SLAM",
@@ -23547,7 +23547,7 @@
       "SPEED": 70
     },
     "base_xp": 67,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "WRAP",
@@ -23889,7 +23889,7 @@
       "SPEED": 100
     },
     "base_xp": 180,
-    "capture_rate": 45,
+    "capture_rate": 60,
     "moves": [
       {
         "name": "WRAP",
@@ -24309,7 +24309,7 @@
       "SPEED": 20
     },
     "base_xp": 60,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "SAND-ATTACK",
@@ -24651,7 +24651,7 @@
       "SPEED": 35
     },
     "base_xp": 137,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "SAND-ATTACK",
@@ -25376,7 +25376,7 @@
       "SPEED": 90
     },
     "base_xp": 82,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "STOMP",
@@ -25661,7 +25661,7 @@
       "SPEED": 105
     },
     "base_xp": 175,
-    "capture_rate": 45,
+    "capture_rate": 60,
     "moves": [
       {
         "name": "STOMP",
@@ -26085,7 +26085,7 @@
       "SPEED": 15
     },
     "base_xp": 63,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "HEADBUTT",
@@ -26376,7 +26376,7 @@
       "SPEED": 30
     },
     "base_xp": 172,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "STOMP",
@@ -26708,7 +26708,7 @@
       "SPEED": 45
     },
     "base_xp": 65,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "TACKLE",
@@ -27070,7 +27070,7 @@
       "SPEED": 70
     },
     "base_xp": 163,
-    "capture_rate": 45,
+    "capture_rate": 60,
     "moves": [
       {
         "name": "TACKLE",
@@ -27876,7 +27876,7 @@
       "SPEED": 75
     },
     "base_xp": 62,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "SWORDS-DANCE",
@@ -28697,7 +28697,7 @@
       "SPEED": 45
     },
     "base_xp": 65,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "HEADBUTT",
@@ -29003,7 +29003,7 @@
       "SPEED": 70
     },
     "base_xp": 166,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "HEADBUTT",
@@ -29350,7 +29350,7 @@
       "SPEED": 25
     },
     "base_xp": 65,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "POUND",
@@ -29711,7 +29711,7 @@
       "SPEED": 50
     },
     "base_xp": 175,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "POUND",
@@ -30130,7 +30130,7 @@
       "SPEED": 40
     },
     "base_xp": 61,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "TACKLE",
@@ -30432,7 +30432,7 @@
       "SPEED": 70
     },
     "base_xp": 184,
-    "capture_rate": 45,
+    "capture_rate": 60,
     "moves": [
       {
         "name": "TACKLE",
@@ -30816,7 +30816,7 @@
       "SPEED": 80
     },
     "base_xp": 62,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "HYPNOSIS",
@@ -31122,7 +31122,7 @@
       "SPEED": 95
     },
     "base_xp": 142,
-    "capture_rate": 45,
+    "capture_rate": 90,
     "moves": [
       {
         "name": "HYPNOSIS",
@@ -32241,7 +32241,7 @@
       "SPEED": 42
     },
     "base_xp": 66,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "POUND",
@@ -32610,7 +32610,7 @@
       "SPEED": 67
     },
     "base_xp": 169,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "POUND",
@@ -33017,7 +33017,7 @@
       "SPEED": 50
     },
     "base_xp": 65,
-    "capture_rate": 45,
+    "capture_rate": 225,
     "moves": [
       {
         "name": "VICE-GRIP",
@@ -33302,7 +33302,7 @@
       "SPEED": 75
     },
     "base_xp": 166,
-    "capture_rate": 45,
+    "capture_rate": 60,
     "moves": [
       {
         "name": "VICE-GRIP",
@@ -33705,7 +33705,7 @@
       "SPEED": 100
     },
     "base_xp": 66,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "TACKLE",
@@ -34086,7 +34086,7 @@
       "SPEED": 150
     },
     "base_xp": 172,
-    "capture_rate": 45,
+    "capture_rate": 60,
     "moves": [
       {
         "name": "TACKLE",
@@ -34486,7 +34486,7 @@
       "SPEED": 40
     },
     "base_xp": 65,
-    "capture_rate": 45,
+    "capture_rate": 90,
     "moves": [
       {
         "name": "PSYBEAM",
@@ -35139,7 +35139,7 @@
       "SPEED": 35
     },
     "base_xp": 64,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "HEADBUTT",
@@ -35468,7 +35468,7 @@
       "SPEED": 45
     },
     "base_xp": 149,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "HEADBUTT",
@@ -37030,7 +37030,7 @@
       "SPEED": 35
     },
     "base_xp": 68,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "TACKLE",
@@ -37331,7 +37331,7 @@
       "SPEED": 60
     },
     "base_xp": 172,
-    "capture_rate": 45,
+    "capture_rate": 60,
     "moves": [
       {
         "name": "TACKLE",
@@ -37691,7 +37691,7 @@
       "SPEED": 25
     },
     "base_xp": 69,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "STOMP",
@@ -38097,7 +38097,7 @@
       "SPEED": 40
     },
     "base_xp": 170,
-    "capture_rate": 45,
+    "capture_rate": 60,
     "moves": [
       {
         "name": "STOMP",
@@ -38502,7 +38502,7 @@
       "SPEED": 50
     },
     "base_xp": 395,
-    "capture_rate": 45,
+    "capture_rate": 30,
     "moves": [
       {
         "name": "POUND",
@@ -39751,7 +39751,7 @@
       "SPEED": 60
     },
     "base_xp": 59,
-    "capture_rate": 45,
+    "capture_rate": 225,
     "moves": [
       {
         "name": "LEER",
@@ -40016,7 +40016,7 @@
       "SPEED": 85
     },
     "base_xp": 154,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "LEER",
@@ -40301,7 +40301,7 @@
       "SPEED": 63
     },
     "base_xp": 64,
-    "capture_rate": 45,
+    "capture_rate": 225,
     "moves": [
       {
         "name": "HORN-ATTACK",
@@ -40606,7 +40606,7 @@
       "SPEED": 68
     },
     "base_xp": 158,
-    "capture_rate": 45,
+    "capture_rate": 60,
     "moves": [
       {
         "name": "HORN-ATTACK",
@@ -40949,7 +40949,7 @@
       "SPEED": 85
     },
     "base_xp": 68,
-    "capture_rate": 45,
+    "capture_rate": 225,
     "moves": [
       {
         "name": "TACKLE",
@@ -41291,7 +41291,7 @@
       "SPEED": 115
     },
     "base_xp": 182,
-    "capture_rate": 45,
+    "capture_rate": 60,
     "moves": [
       {
         "name": "TACKLE",
@@ -44148,7 +44148,7 @@
       "SPEED": 80
     },
     "base_xp": 40,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "TACKLE",
@@ -44961,7 +44961,7 @@
       "SPEED": 48
     },
     "base_xp": 101,
-    "capture_rate": 45,
+    "capture_rate": 35,
     "moves": [
       {
         "name": "TRANSFORM",
@@ -49202,7 +49202,7 @@
       "SPEED": 30
     },
     "base_xp": 189,
-    "capture_rate": 45,
+    "capture_rate": 25,
     "moves": [
       {
         "name": "HEADBUTT",
@@ -49754,7 +49754,7 @@
       "SPEED": 85
     },
     "base_xp": 261,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "GUST",
@@ -50114,7 +50114,7 @@
       "SPEED": 100
     },
     "base_xp": 261,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "LEER",
@@ -50414,7 +50414,7 @@
       "SPEED": 90
     },
     "base_xp": 261,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "GUST",
@@ -51827,7 +51827,7 @@
       "SPEED": 130
     },
     "base_xp": 306,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "DISABLE",
@@ -55472,7 +55472,7 @@
       "SPEED": 20
     },
     "base_xp": 43,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "SCRATCH",
@@ -55813,7 +55813,7 @@
       "SPEED": 90
     },
     "base_xp": 145,
-    "capture_rate": 45,
+    "capture_rate": 90,
     "moves": [
       {
         "name": "SCRATCH",
@@ -56193,7 +56193,7 @@
       "SPEED": 50
     },
     "base_xp": 52,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "TACKLE",
@@ -56587,7 +56587,7 @@
       "SPEED": 70
     },
     "base_xp": 158,
-    "capture_rate": 45,
+    "capture_rate": 90,
     "moves": [
       {
         "name": "TACKLE",
@@ -57003,7 +57003,7 @@
       "SPEED": 55
     },
     "base_xp": 53,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "COMET-PUNCH",
@@ -57289,7 +57289,7 @@
       "SPEED": 85
     },
     "base_xp": 137,
-    "capture_rate": 45,
+    "capture_rate": 90,
     "moves": [
       {
         "name": "COMET-PUNCH",
@@ -57593,7 +57593,7 @@
       "SPEED": 30
     },
     "base_xp": 50,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "POISON-STING",
@@ -57995,7 +57995,7 @@
       "SPEED": 40
     },
     "base_xp": 140,
-    "capture_rate": 45,
+    "capture_rate": 90,
     "moves": [
       {
         "name": "SWORDS-DANCE",
@@ -58495,7 +58495,7 @@
       "SPEED": 130
     },
     "base_xp": 241,
-    "capture_rate": 45,
+    "capture_rate": 90,
     "moves": [
       {
         "name": "GUST",
@@ -58887,7 +58887,7 @@
       "SPEED": 67
     },
     "base_xp": 66,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "TAKE-DOWN",
@@ -59229,7 +59229,7 @@
       "SPEED": 67
     },
     "base_xp": 161,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "TAKE-DOWN",
@@ -59668,7 +59668,7 @@
       "SPEED": 60
     },
     "base_xp": 41,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "TAIL-WHIP",
@@ -59889,7 +59889,7 @@
       "SPEED": 15
     },
     "base_xp": 44,
-    "capture_rate": 45,
+    "capture_rate": 150,
     "moves": [
       {
         "name": "POUND",
@@ -60171,7 +60171,7 @@
       "SPEED": 15
     },
     "base_xp": 42,
-    "capture_rate": 45,
+    "capture_rate": 170,
     "moves": [
       {
         "name": "POUND",
@@ -60352,7 +60352,7 @@
       "SPEED": 20
     },
     "base_xp": 49,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "POUND",
@@ -60814,7 +60814,7 @@
       "SPEED": 40
     },
     "base_xp": 142,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "POUND",
@@ -61344,7 +61344,7 @@
       "SPEED": 70
     },
     "base_xp": 64,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "LEER",
@@ -61686,7 +61686,7 @@
       "SPEED": 95
     },
     "base_xp": 165,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "LEER",
@@ -62069,7 +62069,7 @@
       "SPEED": 35
     },
     "base_xp": 56,
-    "capture_rate": 45,
+    "capture_rate": 235,
     "moves": [
       {
         "name": "TACKLE",
@@ -62370,7 +62370,7 @@
       "SPEED": 45
     },
     "base_xp": 128,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "TACKLE",
@@ -63510,7 +63510,7 @@
       "SPEED": 40
     },
     "base_xp": 88,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "SLAM",
@@ -63852,7 +63852,7 @@
       "SPEED": 50
     },
     "base_xp": 189,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "SLAM",
@@ -64211,7 +64211,7 @@
       "SPEED": 30
     },
     "base_xp": 144,
-    "capture_rate": 45,
+    "capture_rate": 65,
     "moves": [
       {
         "name": "SLAM",
@@ -64854,7 +64854,7 @@
       "SPEED": 50
     },
     "base_xp": 50,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "TACKLE",
@@ -65236,7 +65236,7 @@
       "SPEED": 80
     },
     "base_xp": 119,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "TACKLE",
@@ -66342,7 +66342,7 @@
       "SPEED": 30
     },
     "base_xp": 36,
-    "capture_rate": 45,
+    "capture_rate": 235,
     "moves": [
       {
         "name": "TACKLE",
@@ -66603,7 +66603,7 @@
       "SPEED": 30
     },
     "base_xp": 149,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "POUND",
@@ -66963,7 +66963,7 @@
       "SPEED": 95
     },
     "base_xp": 78,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "GUST",
@@ -67349,7 +67349,7 @@
       "SPEED": 15
     },
     "base_xp": 42,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "SLAM",
@@ -67611,7 +67611,7 @@
       "SPEED": 35
     },
     "base_xp": 151,
-    "capture_rate": 45,
+    "capture_rate": 90,
     "moves": [
       {
         "name": "SLAM",
@@ -68797,7 +68797,7 @@
       "SPEED": 91
     },
     "base_xp": 81,
-    "capture_rate": 45,
+    "capture_rate": 30,
     "moves": [
       {
         "name": "GUST",
@@ -69147,7 +69147,7 @@
       "SPEED": 30
     },
     "base_xp": 172,
-    "capture_rate": 45,
+    "capture_rate": 70,
     "moves": [
       {
         "name": "HEADBUTT",
@@ -69863,7 +69863,7 @@
       "SPEED": 48
     },
     "base_xp": 118,
-    "capture_rate": 45,
+    "capture_rate": 225,
     "moves": [
       {
         "name": "HIDDEN-POWER",
@@ -70082,7 +70082,7 @@
       "SPEED": 85
     },
     "base_xp": 159,
-    "capture_rate": 45,
+    "capture_rate": 60,
     "moves": [
       {
         "name": "STOMP",
@@ -70435,7 +70435,7 @@
       "SPEED": 15
     },
     "base_xp": 58,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "TACKLE",
@@ -70757,7 +70757,7 @@
       "SPEED": 40
     },
     "base_xp": 163,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "TACKLE",
@@ -71176,7 +71176,7 @@
       "SPEED": 45
     },
     "base_xp": 145,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "TAKE-DOWN",
@@ -71506,7 +71506,7 @@
       "SPEED": 85
     },
     "base_xp": 86,
-    "capture_rate": 45,
+    "capture_rate": 60,
     "moves": [
       {
         "name": "GUILLOTINE",
@@ -71848,7 +71848,7 @@
       "SPEED": 30
     },
     "base_xp": 179,
-    "capture_rate": 45,
+    "capture_rate": 25,
     "moves": [
       {
         "name": "BIND",
@@ -72259,7 +72259,7 @@
       "SPEED": 30
     },
     "base_xp": 60,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "TACKLE",
@@ -72596,7 +72596,7 @@
       "SPEED": 45
     },
     "base_xp": 158,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "TACKLE",
@@ -73392,7 +73392,7 @@
       "SPEED": 65
     },
     "base_xp": 175,
-    "capture_rate": 45,
+    "capture_rate": 25,
     "moves": [
       {
         "name": "RAZOR-WIND",
@@ -73840,7 +73840,7 @@
       "SPEED": 5
     },
     "base_xp": 177,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "WRAP",
@@ -74600,7 +74600,7 @@
       "SPEED": 115
     },
     "base_xp": 86,
-    "capture_rate": 45,
+    "capture_rate": 60,
     "moves": [
       {
         "name": "SCRATCH",
@@ -74881,7 +74881,7 @@
       "SPEED": 40
     },
     "base_xp": 66,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "SCRATCH",
@@ -75266,7 +75266,7 @@
       "SPEED": 55
     },
     "base_xp": 175,
-    "capture_rate": 45,
+    "capture_rate": 60,
     "moves": [
       {
         "name": "SCRATCH",
@@ -75689,7 +75689,7 @@
       "SPEED": 20
     },
     "base_xp": 50,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "BODY-SLAM",
@@ -76015,7 +76015,7 @@
       "SPEED": 30
     },
     "base_xp": 151,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "BODY-SLAM",
@@ -76359,7 +76359,7 @@
       "SPEED": 50
     },
     "base_xp": 50,
-    "capture_rate": 45,
+    "capture_rate": 225,
     "moves": [
       {
         "name": "TACKLE",
@@ -76641,7 +76641,7 @@
       "SPEED": 50
     },
     "base_xp": 158,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "HORN-ATTACK",
@@ -77051,7 +77051,7 @@
       "SPEED": 35
     },
     "base_xp": 144,
-    "capture_rate": 45,
+    "capture_rate": 60,
     "moves": [
       {
         "name": "TACKLE",
@@ -77430,7 +77430,7 @@
       "SPEED": 65
     },
     "base_xp": 60,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "WATER-GUN",
@@ -77731,7 +77731,7 @@
       "SPEED": 45
     },
     "base_xp": 168,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "WRAP",
@@ -78211,7 +78211,7 @@
       "SPEED": 70
     },
     "base_xp": 170,
-    "capture_rate": 45,
+    "capture_rate": 25,
     "moves": [
       {
         "name": "WING-ATTACK",
@@ -78575,7 +78575,7 @@
       "SPEED": 70
     },
     "base_xp": 163,
-    "capture_rate": 45,
+    "capture_rate": 25,
     "moves": [
       {
         "name": "WING-ATTACK",
@@ -78939,7 +78939,7 @@
       "SPEED": 65
     },
     "base_xp": 66,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "LEER",
@@ -79924,7 +79924,7 @@
       "SPEED": 40
     },
     "base_xp": 66,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "SLAM",
@@ -80205,7 +80205,7 @@
       "SPEED": 50
     },
     "base_xp": 175,
-    "capture_rate": 45,
+    "capture_rate": 60,
     "moves": [
       {
         "name": "SLAM",
@@ -81423,7 +81423,7 @@
       "SPEED": 35
     },
     "base_xp": 42,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "TACKLE",
@@ -83292,7 +83292,7 @@
       "SPEED": 55
     },
     "base_xp": 608,
-    "capture_rate": 45,
+    "capture_rate": 30,
     "moves": [
       {
         "name": "POUND",
@@ -83831,7 +83831,7 @@
       "SPEED": 115
     },
     "base_xp": 261,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "LEER",
@@ -84182,7 +84182,7 @@
       "SPEED": 100
     },
     "base_xp": 261,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "STOMP",
@@ -84617,7 +84617,7 @@
       "SPEED": 85
     },
     "base_xp": 261,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "GUST",
@@ -86161,7 +86161,7 @@
       "SPEED": 110
     },
     "base_xp": 306,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "GUST",
@@ -86533,7 +86533,7 @@
       "SPEED": 90
     },
     "base_xp": 306,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "GUST",
@@ -90567,7 +90567,7 @@
       "SPEED": 35
     },
     "base_xp": 56,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "SAND-ATTACK",
@@ -90892,7 +90892,7 @@
       "SPEED": 70
     },
     "base_xp": 147,
-    "capture_rate": 45,
+    "capture_rate": 127,
     "moves": [
       {
         "name": "SAND-ATTACK",
@@ -91347,7 +91347,7 @@
       "SPEED": 60
     },
     "base_xp": 56,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "SAND-ATTACK",
@@ -91692,7 +91692,7 @@
       "SPEED": 100
     },
     "base_xp": 147,
-    "capture_rate": 45,
+    "capture_rate": 90,
     "moves": [
       {
         "name": "SAND-ATTACK",
@@ -92135,7 +92135,7 @@
       "SPEED": 20
     },
     "base_xp": 56,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "TACKLE",
@@ -92237,7 +92237,7 @@
       "SPEED": 15
     },
     "base_xp": 72,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "TACKLE",
@@ -92702,7 +92702,7 @@
       "SPEED": 15
     },
     "base_xp": 72,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "TACKLE",
@@ -93168,7 +93168,7 @@
       "SPEED": 30
     },
     "base_xp": 44,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "GROWL",
@@ -93438,7 +93438,7 @@
       "SPEED": 50
     },
     "base_xp": 119,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "GROWL",
@@ -94159,7 +94159,7 @@
       "SPEED": 30
     },
     "base_xp": 44,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "TACKLE",
@@ -94445,7 +94445,7 @@
       "SPEED": 60
     },
     "base_xp": 119,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "POUND",
@@ -95231,7 +95231,7 @@
       "SPEED": 85
     },
     "base_xp": 54,
-    "capture_rate": 45,
+    "capture_rate": 200,
     "moves": [
       {
         "name": "WING-ATTACK",
@@ -95801,7 +95801,7 @@
       "SPEED": 85
     },
     "base_xp": 54,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "WING-ATTACK",
@@ -96471,7 +96471,7 @@
       "SPEED": 40
     },
     "base_xp": 40,
-    "capture_rate": 45,
+    "capture_rate": 235,
     "moves": [
       {
         "name": "GROWL",
@@ -96873,7 +96873,7 @@
       "SPEED": 50
     },
     "base_xp": 97,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "GROWL",
@@ -97796,7 +97796,7 @@
       "SPEED": 65
     },
     "base_xp": 54,
-    "capture_rate": 45,
+    "capture_rate": 200,
     "moves": [
       {
         "name": "MIST",
@@ -98058,7 +98058,7 @@
       "SPEED": 80
     },
     "base_xp": 159,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "GUST",
@@ -98541,7 +98541,7 @@
       "SPEED": 35
     },
     "base_xp": 59,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "HEADBUTT",
@@ -98807,7 +98807,7 @@
       "SPEED": 70
     },
     "base_xp": 161,
-    "capture_rate": 45,
+    "capture_rate": 90,
     "moves": [
       {
         "name": "HEADBUTT",
@@ -99170,7 +99170,7 @@
       "SPEED": 30
     },
     "base_xp": 56,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "SCRATCH",
@@ -99431,7 +99431,7 @@
       "SPEED": 90
     },
     "base_xp": 154,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "SCRATCH",
@@ -100232,7 +100232,7 @@
       "SPEED": 40
     },
     "base_xp": 53,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "SCRATCH",
@@ -100495,7 +100495,7 @@
       "SPEED": 160
     },
     "base_xp": 160,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "SCRATCH",
@@ -101174,7 +101174,7 @@
       "SPEED": 28
     },
     "base_xp": 48,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "POUND",
@@ -101443,7 +101443,7 @@
       "SPEED": 48
     },
     "base_xp": 126,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "POUND",
@@ -102159,7 +102159,7 @@
       "SPEED": 25
     },
     "base_xp": 47,
-    "capture_rate": 45,
+    "capture_rate": 180,
     "moves": [
       {
         "name": "WHIRLWIND",
@@ -102524,7 +102524,7 @@
       "SPEED": 50
     },
     "base_xp": 166,
-    "capture_rate": 45,
+    "capture_rate": 200,
     "moves": [
       {
         "name": "WHIRLWIND",
@@ -102928,7 +102928,7 @@
       "SPEED": 20
     },
     "base_xp": 38,
-    "capture_rate": 45,
+    "capture_rate": 150,
     "moves": [
       {
         "name": "SLAM",
@@ -103109,7 +103109,7 @@
       "SPEED": 30
     },
     "base_xp": 75,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "TACKLE",
@@ -103454,7 +103454,7 @@
       "SPEED": 50
     },
     "base_xp": 52,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "DOUBLE-SLAP",
@@ -103899,7 +103899,7 @@
       "SPEED": 90
     },
     "base_xp": 140,
-    "capture_rate": 45,
+    "capture_rate": 60,
     "moves": [
       {
         "name": "DOUBLE-SLAP",
@@ -105007,7 +105007,7 @@
       "SPEED": 30
     },
     "base_xp": 66,
-    "capture_rate": 45,
+    "capture_rate": 180,
     "moves": [
       {
         "name": "HEADBUTT",
@@ -105357,7 +105357,7 @@
       "SPEED": 40
     },
     "base_xp": 151,
-    "capture_rate": 45,
+    "capture_rate": 90,
     "moves": [
       {
         "name": "HEADBUTT",
@@ -106055,7 +106055,7 @@
       "SPEED": 60
     },
     "base_xp": 56,
-    "capture_rate": 45,
+    "capture_rate": 180,
     "moves": [
       {
         "name": "POUND",
@@ -106417,7 +106417,7 @@
       "SPEED": 80
     },
     "base_xp": 144,
-    "capture_rate": 45,
+    "capture_rate": 90,
     "moves": [
       {
         "name": "POUND",
@@ -106836,7 +106836,7 @@
       "SPEED": 65
     },
     "base_xp": 59,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "TACKLE",
@@ -107496,7 +107496,7 @@
       "SPEED": 95
     },
     "base_xp": 142,
-    "capture_rate": 45,
+    "capture_rate": 200,
     "moves": [
       {
         "name": "GROWL",
@@ -107955,7 +107955,7 @@
       "SPEED": 95
     },
     "base_xp": 142,
-    "capture_rate": 45,
+    "capture_rate": 200,
     "moves": [
       {
         "name": "GROWL",
@@ -108374,7 +108374,7 @@
       "SPEED": 85
     },
     "base_xp": 151,
-    "capture_rate": 45,
+    "capture_rate": 150,
     "moves": [
       {
         "name": "TACKLE",
@@ -108697,7 +108697,7 @@
       "SPEED": 85
     },
     "base_xp": 151,
-    "capture_rate": 45,
+    "capture_rate": 150,
     "moves": [
       {
         "name": "TACKLE",
@@ -109021,7 +109021,7 @@
       "SPEED": 65
     },
     "base_xp": 140,
-    "capture_rate": 45,
+    "capture_rate": 150,
     "moves": [
       {
         "name": "POISON-STING",
@@ -109402,7 +109402,7 @@
       "SPEED": 40
     },
     "base_xp": 60,
-    "capture_rate": 45,
+    "capture_rate": 225,
     "moves": [
       {
         "name": "POUND",
@@ -109743,7 +109743,7 @@
       "SPEED": 55
     },
     "base_xp": 163,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "POUND",
@@ -110123,7 +110123,7 @@
       "SPEED": 65
     },
     "base_xp": 61,
-    "capture_rate": 45,
+    "capture_rate": 225,
     "moves": [
       {
         "name": "TAKE-DOWN",
@@ -110453,7 +110453,7 @@
       "SPEED": 95
     },
     "base_xp": 161,
-    "capture_rate": 45,
+    "capture_rate": 60,
     "moves": [
       {
         "name": "TAKE-DOWN",
@@ -110860,7 +110860,7 @@
       "SPEED": 60
     },
     "base_xp": 80,
-    "capture_rate": 45,
+    "capture_rate": 125,
     "moves": [
       {
         "name": "GROWL",
@@ -111185,7 +111185,7 @@
       "SPEED": 60
     },
     "base_xp": 175,
-    "capture_rate": 45,
+    "capture_rate": 60,
     "moves": [
       {
         "name": "GROWL",
@@ -111549,7 +111549,7 @@
       "SPEED": 35
     },
     "base_xp": 61,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "TACKLE",
@@ -111871,7 +111871,7 @@
       "SPEED": 40
     },
     "base_xp": 161,
-    "capture_rate": 45,
+    "capture_rate": 150,
     "moves": [
       {
         "name": "TACKLE",
@@ -112234,7 +112234,7 @@
       "SPEED": 20
     },
     "base_xp": 165,
-    "capture_rate": 45,
+    "capture_rate": 90,
     "moves": [
       {
         "name": "BODY-SLAM",
@@ -112613,7 +112613,7 @@
       "SPEED": 60
     },
     "base_xp": 66,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "GROWL",
@@ -112982,7 +112982,7 @@
       "SPEED": 80
     },
     "base_xp": 165,
-    "capture_rate": 45,
+    "capture_rate": 60,
     "moves": [
       {
         "name": "GROWL",
@@ -113389,7 +113389,7 @@
       "SPEED": 60
     },
     "base_xp": 126,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "TACKLE",
@@ -113668,7 +113668,7 @@
       "SPEED": 10
     },
     "base_xp": 58,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "SAND-ATTACK",
@@ -113998,7 +113998,7 @@
       "SPEED": 70
     },
     "base_xp": 119,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "SAND-ATTACK",
@@ -114883,7 +114883,7 @@
       "SPEED": 35
     },
     "base_xp": 67,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "SAND-ATTACK",
@@ -115269,7 +115269,7 @@
       "SPEED": 55
     },
     "base_xp": 166,
-    "capture_rate": 45,
+    "capture_rate": 60,
     "moves": [
       {
         "name": "SAND-ATTACK",
@@ -115693,7 +115693,7 @@
       "SPEED": 50
     },
     "base_xp": 62,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "FURY-ATTACK",
@@ -116466,7 +116466,7 @@
       "SPEED": 90
     },
     "base_xp": 160,
-    "capture_rate": 45,
+    "capture_rate": 90,
     "moves": [
       {
         "name": "SCRATCH",
@@ -116825,7 +116825,7 @@
       "SPEED": 65
     },
     "base_xp": 160,
-    "capture_rate": 45,
+    "capture_rate": 90,
     "moves": [
       {
         "name": "SWORDS-DANCE",
@@ -117973,7 +117973,7 @@
       "SPEED": 60
     },
     "base_xp": 58,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "WATER-GUN",
@@ -118283,7 +118283,7 @@
       "SPEED": 60
     },
     "base_xp": 164,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "THRASH",
@@ -118670,7 +118670,7 @@
       "SPEED": 35
     },
     "base_xp": 62,
-    "capture_rate": 45,
+    "capture_rate": 205,
     "moves": [
       {
         "name": "VICE-GRIP",
@@ -119012,7 +119012,7 @@
       "SPEED": 55
     },
     "base_xp": 164,
-    "capture_rate": 45,
+    "capture_rate": 155,
     "moves": [
       {
         "name": "VICE-GRIP",
@@ -119352,7 +119352,7 @@
       "SPEED": 55
     },
     "base_xp": 60,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "PSYBEAM",
@@ -119738,7 +119738,7 @@
       "SPEED": 75
     },
     "base_xp": 175,
-    "capture_rate": 45,
+    "capture_rate": 90,
     "moves": [
       {
         "name": "PSYBEAM",
@@ -121413,7 +121413,7 @@
       "SPEED": 80
     },
     "base_xp": 40,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "TACKLE",
@@ -121494,7 +121494,7 @@
       "SPEED": 81
     },
     "base_xp": 189,
-    "capture_rate": 45,
+    "capture_rate": 60,
     "moves": [
       {
         "name": "TACKLE",
@@ -122160,7 +122160,7 @@
       "SPEED": 40
     },
     "base_xp": 154,
-    "capture_rate": 45,
+    "capture_rate": 200,
     "moves": [
       {
         "name": "SCRATCH",
@@ -122563,7 +122563,7 @@
       "SPEED": 45
     },
     "base_xp": 59,
-    "capture_rate": 45,
+    "capture_rate": 225,
     "moves": [
       {
         "name": "NIGHT-SHADE",
@@ -123223,7 +123223,7 @@
       "SPEED": 25
     },
     "base_xp": 59,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "LEER",
@@ -123568,7 +123568,7 @@
       "SPEED": 25
     },
     "base_xp": 159,
-    "capture_rate": 45,
+    "capture_rate": 90,
     "moves": [
       {
         "name": "BIND",
@@ -123974,7 +123974,7 @@
       "SPEED": 51
     },
     "base_xp": 161,
-    "capture_rate": 45,
+    "capture_rate": 200,
     "moves": [
       {
         "name": "GUST",
@@ -124748,7 +124748,7 @@
       "SPEED": 75
     },
     "base_xp": 163,
-    "capture_rate": 45,
+    "capture_rate": 30,
     "moves": [
       {
         "name": "SCRATCH",
@@ -125151,7 +125151,7 @@
       "SPEED": 23
     },
     "base_xp": 52,
-    "capture_rate": 45,
+    "capture_rate": 125,
     "moves": [
       {
         "name": "COUNTER",
@@ -125332,7 +125332,7 @@
       "SPEED": 50
     },
     "base_xp": 60,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "HEADBUTT",
@@ -125650,7 +125650,7 @@
       "SPEED": 80
     },
     "base_xp": 168,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "HEADBUTT",
@@ -126050,7 +126050,7 @@
       "SPEED": 25
     },
     "base_xp": 58,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "BODY-SLAM",
@@ -126336,7 +126336,7 @@
       "SPEED": 45
     },
     "base_xp": 144,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "BODY-SLAM",
@@ -126929,7 +126929,7 @@
       "SPEED": 32
     },
     "base_xp": 69,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "WATER-GUN",
@@ -127051,7 +127051,7 @@
       "SPEED": 52
     },
     "base_xp": 170,
-    "capture_rate": 45,
+    "capture_rate": 60,
     "moves": [
       {
         "name": "BITE",
@@ -127398,7 +127398,7 @@
       "SPEED": 52
     },
     "base_xp": 170,
-    "capture_rate": 45,
+    "capture_rate": 60,
     "moves": [
       {
         "name": "WATER-GUN",
@@ -127758,7 +127758,7 @@
       "SPEED": 55
     },
     "base_xp": 170,
-    "capture_rate": 45,
+    "capture_rate": 25,
     "moves": [
       {
         "name": "TACKLE",
@@ -128037,7 +128037,7 @@
       "SPEED": 97
     },
     "base_xp": 116,
-    "capture_rate": 45,
+    "capture_rate": 225,
     "moves": [
       {
         "name": "TACKLE",
@@ -129387,7 +129387,7 @@
       "SPEED": 30
     },
     "base_xp": 60,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "TACKLE",
@@ -129449,7 +129449,7 @@
       "SPEED": 50
     },
     "base_xp": 147,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "TACKLE",
@@ -129775,7 +129775,7 @@
       "SPEED": 70
     },
     "base_xp": 270,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "TACKLE",
@@ -130118,7 +130118,7 @@
       "SPEED": 50
     },
     "base_xp": 261,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "STOMP",
@@ -130401,7 +130401,7 @@
       "SPEED": 50
     },
     "base_xp": 261,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "STOMP",
@@ -130664,7 +130664,7 @@
       "SPEED": 50
     },
     "base_xp": 261,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "STOMP",
@@ -131012,7 +131012,7 @@
       "SPEED": 110
     },
     "base_xp": 270,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "CONFUSION",
@@ -131436,7 +131436,7 @@
       "SPEED": 110
     },
     "base_xp": 270,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "CONFUSION",
@@ -131879,7 +131879,7 @@
       "SPEED": 90
     },
     "base_xp": 302,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "BODY-SLAM",
@@ -132198,7 +132198,7 @@
       "SPEED": 90
     },
     "base_xp": 302,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "SOLAR-BEAM",
@@ -132846,7 +132846,7 @@
       "SPEED": 100
     },
     "base_xp": 270,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "DOUBLE-EDGE",
@@ -133229,7 +133229,7 @@
       "SPEED": 150
     },
     "base_xp": 270,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "WRAP",
@@ -136972,7 +136972,7 @@
       "SPEED": 60
     },
     "base_xp": 49,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "GUST",
@@ -137298,7 +137298,7 @@
       "SPEED": 80
     },
     "base_xp": 119,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "GUST",
@@ -137987,7 +137987,7 @@
       "SPEED": 31
     },
     "base_xp": 50,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "SWORDS-DANCE",
@@ -138321,7 +138321,7 @@
       "SPEED": 71
     },
     "base_xp": 144,
-    "capture_rate": 45,
+    "capture_rate": 127,
     "moves": [
       {
         "name": "SWORDS-DANCE",
@@ -138732,7 +138732,7 @@
       "SPEED": 25
     },
     "base_xp": 39,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "POUND",
@@ -139272,7 +139272,7 @@
       "SPEED": 45
     },
     "base_xp": 53,
-    "capture_rate": 45,
+    "capture_rate": 235,
     "moves": [
       {
         "name": "TACKLE",
@@ -139581,7 +139581,7 @@
       "SPEED": 60
     },
     "base_xp": 127,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "TACKLE",
@@ -140218,7 +140218,7 @@
       "SPEED": 55
     },
     "base_xp": 56,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "POISON-STING",
@@ -140440,7 +140440,7 @@
       "SPEED": 90
     },
     "base_xp": 232,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "POISON-STING",
@@ -142073,7 +142073,7 @@
       "SPEED": 36
     },
     "base_xp": 45,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "TACKLE",
@@ -142880,7 +142880,7 @@
       "SPEED": 70
     },
     "base_xp": 49,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "GUST",
@@ -143445,7 +143445,7 @@
       "SPEED": 95
     },
     "base_xp": 142,
-    "capture_rate": 45,
+    "capture_rate": 200,
     "moves": [
       {
         "name": "GROWL",
@@ -143788,7 +143788,7 @@
       "SPEED": 85
     },
     "base_xp": 66,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "RAZOR-WIND",
@@ -144173,7 +144173,7 @@
       "SPEED": 115
     },
     "base_xp": 173,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "RAZOR-WIND",
@@ -144580,7 +144580,7 @@
       "SPEED": 35
     },
     "base_xp": 55,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "TACKLE",
@@ -144961,7 +144961,7 @@
       "SPEED": 85
     },
     "base_xp": 158,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "TACKLE",
@@ -145360,7 +145360,7 @@
       "SPEED": 34
     },
     "base_xp": 65,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "TACKLE",
@@ -145622,7 +145622,7 @@
       "SPEED": 39
     },
     "base_xp": 166,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "TACKLE",
@@ -146285,7 +146285,7 @@
       "SPEED": 70
     },
     "base_xp": 70,
-    "capture_rate": 45,
+    "capture_rate": 125,
     "moves": [
       {
         "name": "GUST",
@@ -146695,7 +146695,7 @@
       "SPEED": 80
     },
     "base_xp": 174,
-    "capture_rate": 45,
+    "capture_rate": 60,
     "moves": [
       {
         "name": "GUST",
@@ -147182,7 +147182,7 @@
       "SPEED": 85
     },
     "base_xp": 70,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "POUND",
@@ -147623,7 +147623,7 @@
       "SPEED": 105
     },
     "base_xp": 168,
-    "capture_rate": 45,
+    "capture_rate": 60,
     "moves": [
       {
         "name": "POUND",
@@ -148590,7 +148590,7 @@
       "SPEED": 71
     },
     "base_xp": 177,
-    "capture_rate": 45,
+    "capture_rate": 30,
     "moves": [
       {
         "name": "GUST",
@@ -148961,7 +148961,7 @@
       "SPEED": 85
     },
     "base_xp": 62,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "SCRATCH",
@@ -149346,7 +149346,7 @@
       "SPEED": 112
     },
     "base_xp": 158,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "SCRATCH",
@@ -149749,7 +149749,7 @@
       "SPEED": 45
     },
     "base_xp": 57,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "TACKLE",
@@ -150019,7 +150019,7 @@
       "SPEED": 74
     },
     "base_xp": 66,
-    "capture_rate": 45,
+    "capture_rate": 225,
     "moves": [
       {
         "name": "SCRATCH",
@@ -150405,7 +150405,7 @@
       "SPEED": 84
     },
     "base_xp": 168,
-    "capture_rate": 45,
+    "capture_rate": 60,
     "moves": [
       {
         "name": "SCRATCH",
@@ -150809,7 +150809,7 @@
       "SPEED": 23
     },
     "base_xp": 60,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "TACKLE",
@@ -151155,7 +151155,7 @@
       "SPEED": 33
     },
     "base_xp": 175,
-    "capture_rate": 45,
+    "capture_rate": 90,
     "moves": [
       {
         "name": "TACKLE",
@@ -151578,7 +151578,7 @@
       "SPEED": 10
     },
     "base_xp": 58,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "SLAM",
@@ -151964,7 +151964,7 @@
       "SPEED": 60
     },
     "base_xp": 62,
-    "capture_rate": 45,
+    "capture_rate": 145,
     "moves": [
       {
         "name": "POUND",
@@ -152449,7 +152449,7 @@
       "SPEED": 30
     },
     "base_xp": 110,
-    "capture_rate": 45,
+    "capture_rate": 130,
     "moves": [
       {
         "name": "POUND",
@@ -152771,7 +152771,7 @@
       "SPEED": 91
     },
     "base_xp": 144,
-    "capture_rate": 45,
+    "capture_rate": 30,
     "moves": [
       {
         "name": "GUST",
@@ -153215,7 +153215,7 @@
       "SPEED": 35
     },
     "base_xp": 170,
-    "capture_rate": 45,
+    "capture_rate": 100,
     "moves": [
       {
         "name": "HYPNOSIS",
@@ -154494,7 +154494,7 @@
       "SPEED": 5
     },
     "base_xp": 78,
-    "capture_rate": 45,
+    "capture_rate": 50,
     "moves": [
       {
         "name": "TACKLE",
@@ -154959,7 +154959,7 @@
       "SPEED": 60
     },
     "base_xp": 57,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "COUNTER",
@@ -155908,7 +155908,7 @@
       "SPEED": 32
     },
     "base_xp": 66,
-    "capture_rate": 45,
+    "capture_rate": 140,
     "moves": [
       {
         "name": "SAND-ATTACK",
@@ -156173,7 +156173,7 @@
       "SPEED": 47
     },
     "base_xp": 184,
-    "capture_rate": 45,
+    "capture_rate": 60,
     "moves": [
       {
         "name": "SAND-ATTACK",
@@ -156529,7 +156529,7 @@
       "SPEED": 65
     },
     "base_xp": 66,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "POISON-STING",
@@ -157291,7 +157291,7 @@
       "SPEED": 50
     },
     "base_xp": 60,
-    "capture_rate": 45,
+    "capture_rate": 140,
     "moves": [
       {
         "name": "POISON-STING",
@@ -157677,7 +157677,7 @@
       "SPEED": 85
     },
     "base_xp": 172,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "POISON-STING",
@@ -158060,7 +158060,7 @@
       "SPEED": 46
     },
     "base_xp": 159,
-    "capture_rate": 45,
+    "capture_rate": 200,
     "moves": [
       {
         "name": "BIND",
@@ -158383,7 +158383,7 @@
       "SPEED": 66
     },
     "base_xp": 66,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "POUND",
@@ -158768,7 +158768,7 @@
       "SPEED": 91
     },
     "base_xp": 161,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "POUND",
@@ -159172,7 +159172,7 @@
       "SPEED": 50
     },
     "base_xp": 69,
-    "capture_rate": 45,
+    "capture_rate": 25,
     "moves": [
       {
         "name": "WING-ATTACK",
@@ -159542,7 +159542,7 @@
       "SPEED": 40
     },
     "base_xp": 67,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "LEER",
@@ -159848,7 +159848,7 @@
       "SPEED": 60
     },
     "base_xp": 173,
-    "capture_rate": 45,
+    "capture_rate": 60,
     "moves": [
       {
         "name": "ICE-PUNCH",
@@ -160656,7 +160656,7 @@
       "SPEED": 60
     },
     "base_xp": 241,
-    "capture_rate": 45,
+    "capture_rate": 30,
     "moves": [
       {
         "name": "TACKLE",
@@ -161095,7 +161095,7 @@
       "SPEED": 50
     },
     "base_xp": 180,
-    "capture_rate": 45,
+    "capture_rate": 30,
     "moves": [
       {
         "name": "SLAM",
@@ -161499,7 +161499,7 @@
       "SPEED": 40
     },
     "base_xp": 241,
-    "capture_rate": 45,
+    "capture_rate": 30,
     "moves": [
       {
         "name": "STOMP",
@@ -161882,7 +161882,7 @@
       "SPEED": 50
     },
     "base_xp": 187,
-    "capture_rate": 45,
+    "capture_rate": 30,
     "moves": [
       {
         "name": "BIND",
@@ -162321,7 +162321,7 @@
       "SPEED": 95
     },
     "base_xp": 243,
-    "capture_rate": 45,
+    "capture_rate": 30,
     "moves": [
       {
         "name": "FIRE-PUNCH",
@@ -162720,7 +162720,7 @@
       "SPEED": 83
     },
     "base_xp": 243,
-    "capture_rate": 45,
+    "capture_rate": 30,
     "moves": [
       {
         "name": "FIRE-PUNCH",
@@ -163140,7 +163140,7 @@
       "SPEED": 80
     },
     "base_xp": 245,
-    "capture_rate": 45,
+    "capture_rate": 30,
     "moves": [
       {
         "name": "POUND",
@@ -163632,7 +163632,7 @@
       "SPEED": 95
     },
     "base_xp": 180,
-    "capture_rate": 45,
+    "capture_rate": 30,
     "moves": [
       {
         "name": "GUST",
@@ -165146,7 +165146,7 @@
       "SPEED": 95
     },
     "base_xp": 179,
-    "capture_rate": 45,
+    "capture_rate": 30,
     "moves": [
       {
         "name": "GUILLOTINE",
@@ -165638,7 +165638,7 @@
       "SPEED": 80
     },
     "base_xp": 239,
-    "capture_rate": 45,
+    "capture_rate": 50,
     "moves": [
       {
         "name": "FURY-ATTACK",
@@ -166145,7 +166145,7 @@
       "SPEED": 90
     },
     "base_xp": 241,
-    "capture_rate": 45,
+    "capture_rate": 30,
     "moves": [
       {
         "name": "TACKLE",
@@ -167185,7 +167185,7 @@
       "SPEED": 40
     },
     "base_xp": 184,
-    "capture_rate": 45,
+    "capture_rate": 60,
     "moves": [
       {
         "name": "TACKLE",
@@ -168172,7 +168172,7 @@
       "SPEED": 110
     },
     "base_xp": 168,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "LEER",
@@ -168911,7 +168911,7 @@
       "SPEED": 95
     },
     "base_xp": 261,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "PSYBEAM",
@@ -169234,7 +169234,7 @@
       "SPEED": 80
     },
     "base_xp": 261,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "PSYBEAM",
@@ -169577,7 +169577,7 @@
       "SPEED": 115
     },
     "base_xp": 261,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "PSYBEAM",
@@ -169881,7 +169881,7 @@
       "SPEED": 90
     },
     "base_xp": 306,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "SLASH",
@@ -170161,7 +170161,7 @@
       "SPEED": 100
     },
     "base_xp": 306,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "HYDRO-PUMP",
@@ -170461,7 +170461,7 @@
       "SPEED": 77
     },
     "base_xp": 270,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "LEER",
@@ -170788,7 +170788,7 @@
       "SPEED": 100
     },
     "base_xp": 302,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "POUND",
@@ -171256,7 +171256,7 @@
       "SPEED": 90
     },
     "base_xp": 306,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "SLASH",
@@ -171555,7 +171555,7 @@
       "SPEED": 85
     },
     "base_xp": 270,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "TACKLE",
@@ -171894,7 +171894,7 @@
       "SPEED": 80
     },
     "base_xp": 216,
-    "capture_rate": 45,
+    "capture_rate": 30,
     "moves": [
       {
         "name": "SUPERSONIC",
@@ -172237,7 +172237,7 @@
       "SPEED": 100
     },
     "base_xp": 270,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "SUPERSONIC",
@@ -172620,7 +172620,7 @@
       "SPEED": 125
     },
     "base_xp": 270,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "DISABLE",
@@ -173426,7 +173426,7 @@
       "SPEED": 120
     },
     "base_xp": 324,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "HYPER-BEAM",
@@ -173810,7 +173810,7 @@
       "SPEED": 100
     },
     "base_xp": 270,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "HEADBUTT",
@@ -177362,7 +177362,7 @@
       "SPEED": 42
     },
     "base_xp": 51,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "SLAM",
@@ -177731,7 +177731,7 @@
       "SPEED": 77
     },
     "base_xp": 147,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "SLAM",
@@ -178158,7 +178158,7 @@
       "SPEED": 55
     },
     "base_xp": 55,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "TACKLE",
@@ -178483,7 +178483,7 @@
       "SPEED": 60
     },
     "base_xp": 130,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "TACKLE",
@@ -179203,7 +179203,7 @@
       "SPEED": 66
     },
     "base_xp": 56,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "SCRATCH",
@@ -179568,7 +179568,7 @@
       "SPEED": 106
     },
     "base_xp": 156,
-    "capture_rate": 45,
+    "capture_rate": 90,
     "moves": [
       {
         "name": "SCRATCH",
@@ -179931,7 +179931,7 @@
       "SPEED": 64
     },
     "base_xp": 63,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "SCRATCH",
@@ -180276,7 +180276,7 @@
       "SPEED": 101
     },
     "base_xp": 174,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "LEER",
@@ -180375,7 +180375,7 @@
       "SPEED": 64
     },
     "base_xp": 63,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "SCRATCH",
@@ -180720,7 +180720,7 @@
       "SPEED": 101
     },
     "base_xp": 174,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "LEER",
@@ -180819,7 +180819,7 @@
       "SPEED": 64
     },
     "base_xp": 63,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "SCRATCH",
@@ -181164,7 +181164,7 @@
       "SPEED": 101
     },
     "base_xp": 174,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "LEER",
@@ -181263,7 +181263,7 @@
       "SPEED": 24
     },
     "base_xp": 58,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "PSYBEAM",
@@ -181648,7 +181648,7 @@
       "SPEED": 29
     },
     "base_xp": 170,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "PSYBEAM",
@@ -181888,7 +181888,7 @@
       "SPEED": 43
     },
     "base_xp": 53,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "RAZOR-WIND",
@@ -182218,7 +182218,7 @@
       "SPEED": 65
     },
     "base_xp": 125,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "RAZOR-WIND",
@@ -182875,7 +182875,7 @@
       "SPEED": 76
     },
     "base_xp": 59,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "STOMP",
@@ -183160,7 +183160,7 @@
       "SPEED": 116
     },
     "base_xp": 174,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "STOMP",
@@ -183463,7 +183463,7 @@
       "SPEED": 15
     },
     "base_xp": 56,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "SAND-ATTACK",
@@ -183752,7 +183752,7 @@
       "SPEED": 20
     },
     "base_xp": 137,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "SAND-ATTACK",
@@ -184369,7 +184369,7 @@
       "SPEED": 72
     },
     "base_xp": 65,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "GUST",
@@ -185026,7 +185026,7 @@
       "SPEED": 68
     },
     "base_xp": 66,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "SCRATCH",
@@ -185352,7 +185352,7 @@
       "SPEED": 88
     },
     "base_xp": 178,
-    "capture_rate": 45,
+    "capture_rate": 60,
     "moves": [
       {
         "name": "SCRATCH",
@@ -185735,7 +185735,7 @@
       "SPEED": 50
     },
     "base_xp": 390,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "POUND",
@@ -186134,7 +186134,7 @@
       "SPEED": 35
     },
     "base_xp": 61,
-    "capture_rate": 45,
+    "capture_rate": 180,
     "moves": [
       {
         "name": "POUND",
@@ -186499,7 +186499,7 @@
       "SPEED": 40
     },
     "base_xp": 142,
-    "capture_rate": 45,
+    "capture_rate": 90,
     "moves": [
       {
         "name": "POUND",
@@ -187227,7 +187227,7 @@
       "SPEED": 64
     },
     "base_xp": 59,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "GROWL",
@@ -187549,7 +187549,7 @@
       "SPEED": 69
     },
     "base_xp": 134,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "GROWL",
@@ -188869,7 +188869,7 @@
       "SPEED": 42
     },
     "base_xp": 62,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "TACKLE",
@@ -189071,7 +189071,7 @@
       "SPEED": 42
     },
     "base_xp": 133,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "TACKLE",
@@ -189593,7 +189593,7 @@
       "SPEED": 57
     },
     "base_xp": 52,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "DOUBLE-EDGE",
@@ -189919,7 +189919,7 @@
       "SPEED": 47
     },
     "base_xp": 126,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "TAKE-DOWN",
@@ -190669,7 +190669,7 @@
       "SPEED": 66
     },
     "base_xp": 56,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "ABSORB",
@@ -191031,7 +191031,7 @@
       "SPEED": 116
     },
     "base_xp": 168,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "GUST",
@@ -191370,7 +191370,7 @@
       "SPEED": 30
     },
     "base_xp": 56,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "ABSORB",
@@ -191771,7 +191771,7 @@
       "SPEED": 90
     },
     "base_xp": 168,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "ABSORB",
@@ -192090,7 +192090,7 @@
       "SPEED": 98
     },
     "base_xp": 161,
-    "capture_rate": 45,
+    "capture_rate": 25,
     "moves": [
       {
         "name": "HEADBUTT",
@@ -192478,7 +192478,7 @@
       "SPEED": 65
     },
     "base_xp": 58,
-    "capture_rate": 45,
+    "capture_rate": 180,
     "moves": [
       {
         "name": "SAND-ATTACK",
@@ -192844,7 +192844,7 @@
       "SPEED": 74
     },
     "base_xp": 123,
-    "capture_rate": 45,
+    "capture_rate": 90,
     "moves": [
       {
         "name": "SAND-ATTACK",
@@ -193633,7 +193633,7 @@
       "SPEED": 50
     },
     "base_xp": 63,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "FIRE-PUNCH",
@@ -194026,7 +194026,7 @@
       "SPEED": 95
     },
     "base_xp": 168,
-    "capture_rate": 45,
+    "capture_rate": 60,
     "moves": [
       {
         "name": "FIRE-PUNCH",
@@ -194437,7 +194437,7 @@
       "SPEED": 60
     },
     "base_xp": 161,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "PIN-MISSILE",
@@ -194861,7 +194861,7 @@
       "SPEED": 55
     },
     "base_xp": 65,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "SAND-ATTACK",
@@ -195187,7 +195187,7 @@
       "SPEED": 45
     },
     "base_xp": 170,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "SAND-ATTACK",
@@ -195511,7 +195511,7 @@
       "SPEED": 48
     },
     "base_xp": 70,
-    "capture_rate": 45,
+    "capture_rate": 180,
     "moves": [
       {
         "name": "SAND-ATTACK",
@@ -195877,7 +195877,7 @@
       "SPEED": 58
     },
     "base_xp": 171,
-    "capture_rate": 45,
+    "capture_rate": 90,
     "moves": [
       {
         "name": "SAND-ATTACK",
@@ -196628,7 +196628,7 @@
       "SPEED": 30
     },
     "base_xp": 61,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "DISABLE",
@@ -196953,7 +196953,7 @@
       "SPEED": 30
     },
     "base_xp": 169,
-    "capture_rate": 45,
+    "capture_rate": 90,
     "moves": [
       {
         "name": "DISABLE",
@@ -198884,7 +198884,7 @@
       "SPEED": 65
     },
     "base_xp": 66,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "POUND",
@@ -199245,7 +199245,7 @@
       "SPEED": 75
     },
     "base_xp": 166,
-    "capture_rate": 45,
+    "capture_rate": 60,
     "moves": [
       {
         "name": "POUND",
@@ -199644,7 +199644,7 @@
       "SPEED": 65
     },
     "base_xp": 66,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "SCRATCH",
@@ -200384,7 +200384,7 @@
       "SPEED": 75
     },
     "base_xp": 60,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "POUND",
@@ -200765,7 +200765,7 @@
       "SPEED": 115
     },
     "base_xp": 165,
-    "capture_rate": 45,
+    "capture_rate": 60,
     "moves": [
       {
         "name": "POUND",
@@ -201024,7 +201024,7 @@
       "SPEED": 45
     },
     "base_xp": 58,
-    "capture_rate": 45,
+    "capture_rate": 200,
     "moves": [
       {
         "name": "POUND",
@@ -201405,7 +201405,7 @@
       "SPEED": 55
     },
     "base_xp": 137,
-    "capture_rate": 45,
+    "capture_rate": 100,
     "moves": [
       {
         "name": "POUND",
@@ -201786,7 +201786,7 @@
       "SPEED": 65
     },
     "base_xp": 221,
-    "capture_rate": 45,
+    "capture_rate": 50,
     "moves": [
       {
         "name": "POUND",
@@ -202165,7 +202165,7 @@
       "SPEED": 20
     },
     "base_xp": 58,
-    "capture_rate": 45,
+    "capture_rate": 200,
     "moves": [
       {
         "name": "PSYBEAM",
@@ -202546,7 +202546,7 @@
       "SPEED": 30
     },
     "base_xp": 130,
-    "capture_rate": 45,
+    "capture_rate": 100,
     "moves": [
       {
         "name": "PSYBEAM",
@@ -202927,7 +202927,7 @@
       "SPEED": 30
     },
     "base_xp": 221,
-    "capture_rate": 45,
+    "capture_rate": 50,
     "moves": [
       {
         "name": "PSYBEAM",
@@ -203347,7 +203347,7 @@
       "SPEED": 55
     },
     "base_xp": 61,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "WING-ATTACK",
@@ -203996,7 +203996,7 @@
       "SPEED": 44
     },
     "base_xp": 61,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "MIST",
@@ -204321,7 +204321,7 @@
       "SPEED": 59
     },
     "base_xp": 138,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "MIST",
@@ -205034,7 +205034,7 @@
       "SPEED": 75
     },
     "base_xp": 67,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "DOUBLE-KICK",
@@ -205400,7 +205400,7 @@
       "SPEED": 95
     },
     "base_xp": 166,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "DOUBLE-KICK",
@@ -205804,7 +205804,7 @@
       "SPEED": 103
     },
     "base_xp": 150,
-    "capture_rate": 45,
+    "capture_rate": 200,
     "moves": [
       {
         "name": "TAIL-WHIP",
@@ -206143,7 +206143,7 @@
       "SPEED": 60
     },
     "base_xp": 63,
-    "capture_rate": 45,
+    "capture_rate": 200,
     "moves": [
       {
         "name": "SWORDS-DANCE",
@@ -206489,7 +206489,7 @@
       "SPEED": 20
     },
     "base_xp": 173,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "SWORDS-DANCE",
@@ -206997,7 +206997,7 @@
       "SPEED": 15
     },
     "base_xp": 59,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "ABSORB",
@@ -207323,7 +207323,7 @@
       "SPEED": 30
     },
     "base_xp": 162,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "ABSORB",
@@ -207667,7 +207667,7 @@
       "SPEED": 40
     },
     "base_xp": 67,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "POISON-STING",
@@ -208049,7 +208049,7 @@
       "SPEED": 60
     },
     "base_xp": 168,
-    "capture_rate": 45,
+    "capture_rate": 60,
     "moves": [
       {
         "name": "POISON-STING",
@@ -208448,7 +208448,7 @@
       "SPEED": 65
     },
     "base_xp": 165,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "POUND",
@@ -208848,7 +208848,7 @@
       "SPEED": 65
     },
     "base_xp": 64,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "ABSORB",
@@ -209210,7 +209210,7 @@
       "SPEED": 108
     },
     "base_xp": 165,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "ABSORB",
@@ -209590,7 +209590,7 @@
       "SPEED": 10
     },
     "base_xp": 61,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "TACKLE",
@@ -209916,7 +209916,7 @@
       "SPEED": 20
     },
     "base_xp": 171,
-    "capture_rate": 45,
+    "capture_rate": 90,
     "moves": [
       {
         "name": "TACKLE",
@@ -210279,7 +210279,7 @@
       "SPEED": 30
     },
     "base_xp": 60,
-    "capture_rate": 45,
+    "capture_rate": 130,
     "moves": [
       {
         "name": "VICE-GRIP",
@@ -210600,7 +210600,7 @@
       "SPEED": 50
     },
     "base_xp": 154,
-    "capture_rate": 45,
+    "capture_rate": 60,
     "moves": [
       {
         "name": "VICE-GRIP",
@@ -210921,7 +210921,7 @@
       "SPEED": 90
     },
     "base_xp": 234,
-    "capture_rate": 45,
+    "capture_rate": 30,
     "moves": [
       {
         "name": "VICE-GRIP",
@@ -211300,7 +211300,7 @@
       "SPEED": 60
     },
     "base_xp": 55,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "TACKLE",
@@ -211401,7 +211401,7 @@
       "SPEED": 40
     },
     "base_xp": 142,
-    "capture_rate": 45,
+    "capture_rate": 60,
     "moves": [
       {
         "name": "BIND",
@@ -211726,7 +211726,7 @@
       "SPEED": 50
     },
     "base_xp": 232,
-    "capture_rate": 45,
+    "capture_rate": 30,
     "moves": [
       {
         "name": "HEADBUTT",
@@ -211929,7 +211929,7 @@
       "SPEED": 30
     },
     "base_xp": 67,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "HEADBUTT",
@@ -212318,7 +212318,7 @@
       "SPEED": 40
     },
     "base_xp": 170,
-    "capture_rate": 45,
+    "capture_rate": 90,
     "moves": [
       {
         "name": "HEADBUTT",
@@ -212746,7 +212746,7 @@
       "SPEED": 20
     },
     "base_xp": 55,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "EMBER",
@@ -213112,7 +213112,7 @@
       "SPEED": 55
     },
     "base_xp": 130,
-    "capture_rate": 45,
+    "capture_rate": 90,
     "moves": [
       {
         "name": "EMBER",
@@ -213761,7 +213761,7 @@
       "SPEED": 57
     },
     "base_xp": 64,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "SCRATCH",
@@ -214166,7 +214166,7 @@
       "SPEED": 67
     },
     "base_xp": 144,
-    "capture_rate": 45,
+    "capture_rate": 60,
     "moves": [
       {
         "name": "SCRATCH",
@@ -214954,7 +214954,7 @@
       "SPEED": 40
     },
     "base_xp": 61,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "THRASH",
@@ -215295,7 +215295,7 @@
       "SPEED": 50
     },
     "base_xp": 177,
-    "capture_rate": 45,
+    "capture_rate": 60,
     "moves": [
       {
         "name": "THRASH",
@@ -215718,7 +215718,7 @@
       "SPEED": 105
     },
     "base_xp": 180,
-    "capture_rate": 45,
+    "capture_rate": 25,
     "moves": [
       {
         "name": "BIND",
@@ -216137,7 +216137,7 @@
       "SPEED": 25
     },
     "base_xp": 61,
-    "capture_rate": 45,
+    "capture_rate": 200,
     "moves": [
       {
         "name": "BODY-SLAM",
@@ -216478,7 +216478,7 @@
       "SPEED": 145
     },
     "base_xp": 173,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "BODY-SLAM",
@@ -216958,7 +216958,7 @@
       "SPEED": 32
     },
     "base_xp": 165,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "TACKLE",
@@ -217377,7 +217377,7 @@
       "SPEED": 65
     },
     "base_xp": 70,
-    "capture_rate": 45,
+    "capture_rate": 180,
     "moves": [
       {
         "name": "POUND",
@@ -218509,7 +218509,7 @@
       "SPEED": 35
     },
     "base_xp": 61,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "POUND",
@@ -218895,7 +218895,7 @@
       "SPEED": 55
     },
     "base_xp": 169,
-    "capture_rate": 45,
+    "capture_rate": 90,
     "moves": [
       {
         "name": "POUND",
@@ -219299,7 +219299,7 @@
       "SPEED": 60
     },
     "base_xp": 68,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "SCRATCH",
@@ -220368,7 +220368,7 @@
       "SPEED": 60
     },
     "base_xp": 70,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "WING-ATTACK",
@@ -220778,7 +220778,7 @@
       "SPEED": 80
     },
     "base_xp": 179,
-    "capture_rate": 45,
+    "capture_rate": 60,
     "moves": [
       {
         "name": "WING-ATTACK",
@@ -221142,7 +221142,7 @@
       "SPEED": 60
     },
     "base_xp": 74,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "GUST",
@@ -221492,7 +221492,7 @@
       "SPEED": 80
     },
     "base_xp": 179,
-    "capture_rate": 45,
+    "capture_rate": 60,
     "moves": [
       {
         "name": "GUST",
@@ -221859,7 +221859,7 @@
       "SPEED": 65
     },
     "base_xp": 169,
-    "capture_rate": 45,
+    "capture_rate": 90,
     "moves": [
       {
         "name": "BIND",
@@ -222259,7 +222259,7 @@
       "SPEED": 109
     },
     "base_xp": 169,
-    "capture_rate": 45,
+    "capture_rate": 90,
     "moves": [
       {
         "name": "VICE-GRIP",
@@ -224129,7 +224129,7 @@
       "SPEED": 100
     },
     "base_xp": 248,
-    "capture_rate": 45,
+    "capture_rate": 15,
     "moves": [
       {
         "name": "GUST",
@@ -224569,7 +224569,7 @@
       "SPEED": 108
     },
     "base_xp": 261,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "SWORDS-DANCE",
@@ -224873,7 +224873,7 @@
       "SPEED": 108
     },
     "base_xp": 261,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "SWORDS-DANCE",
@@ -225177,7 +225177,7 @@
       "SPEED": 108
     },
     "base_xp": 261,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "SWORDS-DANCE",
@@ -225476,7 +225476,7 @@
       "SPEED": 111
     },
     "base_xp": 261,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "GUST",
@@ -225920,7 +225920,7 @@
       "SPEED": 111
     },
     "base_xp": 261,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "TACKLE",
@@ -226400,7 +226400,7 @@
       "SPEED": 90
     },
     "base_xp": 306,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "FLAMETHROWER",
@@ -226748,7 +226748,7 @@
       "SPEED": 90
     },
     "base_xp": 306,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "DRAGON-RAGE",
@@ -227096,7 +227096,7 @@
       "SPEED": 101
     },
     "base_xp": 270,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "SWORDS-DANCE",
@@ -227592,7 +227592,7 @@
       "SPEED": 95
     },
     "base_xp": 297,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "ICE-BEAM",
@@ -227952,7 +227952,7 @@
       "SPEED": 108
     },
     "base_xp": 261,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "SWORDS-DANCE",
@@ -228252,7 +228252,7 @@
       "SPEED": 90
     },
     "base_xp": 270,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "SING",
@@ -228572,7 +228572,7 @@
       "SPEED": 99
     },
     "base_xp": 270,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "HYPER-BEAM",
@@ -232241,7 +232241,7 @@
       "SPEED": 57
     },
     "base_xp": 47,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "DOUBLE-SLAP",
@@ -232623,7 +232623,7 @@
       "SPEED": 78
     },
     "base_xp": 148,
-    "capture_rate": 45,
+    "capture_rate": 127,
     "moves": [
       {
         "name": "DOUBLE-SLAP",
@@ -233063,7 +233063,7 @@
       "SPEED": 62
     },
     "base_xp": 56,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "RAZOR-WIND",
@@ -233385,7 +233385,7 @@
       "SPEED": 84
     },
     "base_xp": 134,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "RAZOR-WIND",
@@ -234106,7 +234106,7 @@
       "SPEED": 35
     },
     "base_xp": 40,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "TACKLE",
@@ -234207,7 +234207,7 @@
       "SPEED": 29
     },
     "base_xp": 75,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "HARDEN",
@@ -234589,7 +234589,7 @@
       "SPEED": 72
     },
     "base_xp": 74,
-    "capture_rate": 45,
+    "capture_rate": 220,
     "moves": [
       {
         "name": "HEADBUTT",
@@ -234919,7 +234919,7 @@
       "SPEED": 106
     },
     "base_xp": 177,
-    "capture_rate": 45,
+    "capture_rate": 65,
     "moves": [
       {
         "name": "HEADBUTT",
@@ -235266,7 +235266,7 @@
       "SPEED": 42
     },
     "base_xp": 61,
-    "capture_rate": 45,
+    "capture_rate": 225,
     "moves": [
       {
         "name": "VINE-WHIP",
@@ -235567,7 +235567,7 @@
       "SPEED": 52
     },
     "base_xp": 130,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "VINE-WHIP",
@@ -236127,7 +236127,7 @@
       "SPEED": 52
     },
     "base_xp": 70,
-    "capture_rate": 45,
+    "capture_rate": 200,
     "moves": [
       {
         "name": "VINE-WHIP",
@@ -236847,7 +236847,7 @@
       "SPEED": 43
     },
     "base_xp": 70,
-    "capture_rate": 45,
+    "capture_rate": 220,
     "moves": [
       {
         "name": "KARATE-CHOP",
@@ -237169,7 +237169,7 @@
       "SPEED": 58
     },
     "base_xp": 173,
-    "capture_rate": 45,
+    "capture_rate": 65,
     "moves": [
       {
         "name": "KARATE-CHOP",
@@ -237568,7 +237568,7 @@
       "SPEED": 102
     },
     "base_xp": 165,
-    "capture_rate": 45,
+    "capture_rate": 160,
     "moves": [
       {
         "name": "SAND-ATTACK",
@@ -237855,7 +237855,7 @@
       "SPEED": 68
     },
     "base_xp": 71,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "SCRATCH",
@@ -238060,7 +238060,7 @@
       "SPEED": 104
     },
     "base_xp": 163,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "SCRATCH",
@@ -238484,7 +238484,7 @@
       "SPEED": 28
     },
     "base_xp": 65,
-    "capture_rate": 45,
+    "capture_rate": 180,
     "moves": [
       {
         "name": "SWORDS-DANCE",
@@ -238810,7 +238810,7 @@
       "SPEED": 35
     },
     "base_xp": 157,
-    "capture_rate": 45,
+    "capture_rate": 90,
     "moves": [
       {
         "name": "SWORDS-DANCE",
@@ -239479,7 +239479,7 @@
       "SPEED": 23
     },
     "base_xp": 68,
-    "capture_rate": 45,
+    "capture_rate": 200,
     "moves": [
       {
         "name": "PSYCHIC",
@@ -239820,7 +239820,7 @@
       "SPEED": 29
     },
     "base_xp": 162,
-    "capture_rate": 45,
+    "capture_rate": 140,
     "moves": [
       {
         "name": "PSYCHIC",
@@ -240239,7 +240239,7 @@
       "SPEED": 49
     },
     "base_xp": 68,
-    "capture_rate": 45,
+    "capture_rate": 200,
     "moves": [
       {
         "name": "TACKLE",
@@ -240600,7 +240600,7 @@
       "SPEED": 72
     },
     "base_xp": 168,
-    "capture_rate": 45,
+    "capture_rate": 140,
     "moves": [
       {
         "name": "TACKLE",
@@ -240980,7 +240980,7 @@
       "SPEED": 45
     },
     "base_xp": 58,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "TACKLE",
@@ -241382,7 +241382,7 @@
       "SPEED": 73
     },
     "base_xp": 169,
-    "capture_rate": 45,
+    "capture_rate": 80,
     "moves": [
       {
         "name": "TACKLE",
@@ -241802,7 +241802,7 @@
       "SPEED": 50
     },
     "base_xp": 61,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "SCRATCH",
@@ -242524,7 +242524,7 @@
       "SPEED": 30
     },
     "base_xp": 64,
-    "capture_rate": 45,
+    "capture_rate": 225,
     "moves": [
       {
         "name": "TACKLE",
@@ -242866,7 +242866,7 @@
       "SPEED": 44
     },
     "base_xp": 173,
-    "capture_rate": 45,
+    "capture_rate": 55,
     "moves": [
       {
         "name": "TACKLE",
@@ -243249,7 +243249,7 @@
       "SPEED": 44
     },
     "base_xp": 66,
-    "capture_rate": 45,
+    "capture_rate": 225,
     "moves": [
       {
         "name": "VICE-GRIP",
@@ -243570,7 +243570,7 @@
       "SPEED": 59
     },
     "base_xp": 100,
-    "capture_rate": 45,
+    "capture_rate": 55,
     "moves": [
       {
         "name": "VICE-GRIP",
@@ -243954,7 +243954,7 @@
       "SPEED": 70
     },
     "base_xp": 58,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "POUND",
@@ -244236,7 +244236,7 @@
       "SPEED": 109
     },
     "base_xp": 168,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "POUND",
@@ -246523,7 +246523,7 @@
       "SPEED": 118
     },
     "base_xp": 175,
-    "capture_rate": 45,
+    "capture_rate": 100,
     "moves": [
       {
         "name": "KARATE-CHOP",
@@ -246907,7 +246907,7 @@
       "SPEED": 101
     },
     "base_xp": 151,
-    "capture_rate": 45,
+    "capture_rate": 180,
     "moves": [
       {
         "name": "TACKLE",
@@ -247251,7 +247251,7 @@
       "SPEED": 50
     },
     "base_xp": 100,
-    "capture_rate": 45,
+    "capture_rate": 60,
     "moves": [
       {
         "name": "TACKLE",
@@ -248632,7 +248632,7 @@
       "SPEED": 75
     },
     "base_xp": 165,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "TACKLE",
@@ -248976,7 +248976,7 @@
       "SPEED": 38
     },
     "base_xp": 62,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "TACKLE",
@@ -249322,7 +249322,7 @@
       "SPEED": 56
     },
     "base_xp": 166,
-    "capture_rate": 45,
+    "capture_rate": 60,
     "moves": [
       {
         "name": "TACKLE",
@@ -249686,7 +249686,7 @@
       "SPEED": 51
     },
     "base_xp": 67,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "LEECH-SEED",
@@ -249970,7 +249970,7 @@
       "SPEED": 84
     },
     "base_xp": 173,
-    "capture_rate": 45,
+    "capture_rate": 60,
     "moves": [
       {
         "name": "LEECH-SEED",
@@ -250313,7 +250313,7 @@
       "SPEED": 28
     },
     "base_xp": 61,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "TACKLE",
@@ -250682,7 +250682,7 @@
       "SPEED": 28
     },
     "base_xp": 180,
-    "capture_rate": 45,
+    "capture_rate": 55,
     "moves": [
       {
         "name": "TACKLE",
@@ -251134,7 +251134,7 @@
       "SPEED": 55
     },
     "base_xp": 49,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "RAZOR-WIND",
@@ -252747,7 +252747,7 @@
       "SPEED": 95
     },
     "base_xp": 270,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "BIND",
@@ -253131,7 +253131,7 @@
       "SPEED": 50
     },
     "base_xp": 270,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "TACKLE",
@@ -253511,7 +253511,7 @@
       "SPEED": 70
     },
     "base_xp": 270,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "PSYBEAM",
@@ -253919,7 +253919,7 @@
       "SPEED": 70
     },
     "base_xp": 270,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "STOMP",
@@ -257835,7 +257835,7 @@
       "SPEED": 65
     },
     "base_xp": 53,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "FURY-ATTACK",
@@ -258117,7 +258117,7 @@
       "SPEED": 75
     },
     "base_xp": 124,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "FURY-ATTACK",
@@ -258738,7 +258738,7 @@
       "SPEED": 45
     },
     "base_xp": 51,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "SAND-ATTACK",
@@ -259087,7 +259087,7 @@
       "SPEED": 45
     },
     "base_xp": 146,
-    "capture_rate": 45,
+    "capture_rate": 127,
     "moves": [
       {
         "name": "SAND-ATTACK",
@@ -259434,7 +259434,7 @@
       "SPEED": 46
     },
     "base_xp": 60,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "VICE-GRIP",
@@ -259680,7 +259680,7 @@
       "SPEED": 36
     },
     "base_xp": 140,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "VICE-GRIP",
@@ -260393,7 +260393,7 @@
       "SPEED": 63
     },
     "base_xp": 68,
-    "capture_rate": 45,
+    "capture_rate": 225,
     "moves": [
       {
         "name": "SLAM",
@@ -260695,7 +260695,7 @@
       "SPEED": 43
     },
     "base_xp": 167,
-    "capture_rate": 45,
+    "capture_rate": 60,
     "moves": [
       {
         "name": "ICE-PUNCH",
@@ -261379,7 +261379,7 @@
       "SPEED": 84
     },
     "base_xp": 61,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "ABSORB",
@@ -261641,7 +261641,7 @@
       "SPEED": 124
     },
     "base_xp": 162,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "ABSORB",
@@ -261920,7 +261920,7 @@
       "SPEED": 60
     },
     "base_xp": 56,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "SAND-ATTACK",
@@ -262249,7 +262249,7 @@
       "SPEED": 112
     },
     "base_xp": 170,
-    "capture_rate": 45,
+    "capture_rate": 90,
     "moves": [
       {
         "name": "SAND-ATTACK",
@@ -262656,7 +262656,7 @@
       "SPEED": 40
     },
     "base_xp": 61,
-    "capture_rate": 45,
+    "capture_rate": 60,
     "moves": [
       {
         "name": "TAKE-DOWN",
@@ -262996,7 +262996,7 @@
       "SPEED": 45
     },
     "base_xp": 61,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "POISON-STING",
@@ -263302,7 +263302,7 @@
       "SPEED": 35
     },
     "base_xp": 173,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "POISON-STING",
@@ -263625,7 +263625,7 @@
       "SPEED": 45
     },
     "base_xp": 77,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "STOMP",
@@ -263970,7 +263970,7 @@
       "SPEED": 35
     },
     "base_xp": 175,
-    "capture_rate": 45,
+    "capture_rate": 60,
     "moves": [
       {
         "name": "STOMP",
@@ -264314,7 +264314,7 @@
       "SPEED": 27
     },
     "base_xp": 54,
-    "capture_rate": 45,
+    "capture_rate": 200,
     "moves": [
       {
         "name": "HEADBUTT",
@@ -264684,7 +264684,7 @@
       "SPEED": 42
     },
     "base_xp": 159,
-    "capture_rate": 45,
+    "capture_rate": 100,
     "moves": [
       {
         "name": "HEADBUTT",
@@ -265051,7 +265051,7 @@
       "SPEED": 35
     },
     "base_xp": 50,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "GROWTH",
@@ -265292,7 +265292,7 @@
       "SPEED": 45
     },
     "base_xp": 168,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "GROWTH",
@@ -265592,7 +265592,7 @@
       "SPEED": 15
     },
     "base_xp": 57,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "ABSORB",
@@ -265898,7 +265898,7 @@
       "SPEED": 30
     },
     "base_xp": 142,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "ABSORB",
@@ -266202,7 +266202,7 @@
       "SPEED": 77
     },
     "base_xp": 64,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "DOUBLE-SLAP",
@@ -267064,7 +267064,7 @@
       "SPEED": 50
     },
     "base_xp": 68,
-    "capture_rate": 45,
+    "capture_rate": 140,
     "moves": [
       {
         "name": "TACKLE",
@@ -267366,7 +267366,7 @@
       "SPEED": 60
     },
     "base_xp": 175,
-    "capture_rate": 45,
+    "capture_rate": 70,
     "moves": [
       {
         "name": "BIND",
@@ -267705,7 +267705,7 @@
       "SPEED": 32
     },
     "base_xp": 42,
-    "capture_rate": 45,
+    "capture_rate": 235,
     "moves": [
       {
         "name": "RAZOR-LEAF",
@@ -267926,7 +267926,7 @@
       "SPEED": 62
     },
     "base_xp": 102,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "DOUBLE-SLAP",
@@ -268634,7 +268634,7 @@
       "SPEED": 100
     },
     "base_xp": 170,
-    "capture_rate": 45,
+    "capture_rate": 60,
     "moves": [
       {
         "name": "VINE-WHIP",
@@ -269677,7 +269677,7 @@
       "SPEED": 80
     },
     "base_xp": 46,
-    "capture_rate": 45,
+    "capture_rate": 90,
     "moves": [
       {
         "name": "SAND-ATTACK",
@@ -270099,7 +270099,7 @@
       "SPEED": 15
     },
     "base_xp": 64,
-    "capture_rate": 45,
+    "capture_rate": 140,
     "moves": [
       {
         "name": "SAND-ATTACK",
@@ -270405,7 +270405,7 @@
       "SPEED": 35
     },
     "base_xp": 168,
-    "capture_rate": 45,
+    "capture_rate": 60,
     "moves": [
       {
         "name": "SAND-ATTACK",
@@ -270708,7 +270708,7 @@
       "SPEED": 5
     },
     "base_xp": 144,
-    "capture_rate": 45,
+    "capture_rate": 60,
     "moves": [
       {
         "name": "COUNTER",
@@ -271067,7 +271067,7 @@
       "SPEED": 59
     },
     "base_xp": 107,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "RAZOR-WIND",
@@ -271456,7 +271456,7 @@
       "SPEED": 95
     },
     "base_xp": 257,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "RAZOR-WIND",
@@ -272020,7 +272020,7 @@
       "SPEED": 60
     },
     "base_xp": 154,
-    "capture_rate": 45,
+    "capture_rate": 30,
     "moves": [
       {
         "name": "TACKLE",
@@ -272619,7 +272619,7 @@
       "SPEED": 36
     },
     "base_xp": 170,
-    "capture_rate": 45,
+    "capture_rate": 70,
     "moves": [
       {
         "name": "TACKLE",
@@ -272939,7 +272939,7 @@
       "SPEED": 96
     },
     "base_xp": 152,
-    "capture_rate": 45,
+    "capture_rate": 180,
     "moves": [
       {
         "name": "TACKLE",
@@ -273607,7 +273607,7 @@
       "SPEED": 92
     },
     "base_xp": 166,
-    "capture_rate": 45,
+    "capture_rate": 80,
     "moves": [
       {
         "name": "BITE",
@@ -273895,7 +273895,7 @@
       "SPEED": 36
     },
     "base_xp": 170,
-    "capture_rate": 45,
+    "capture_rate": 70,
     "moves": [
       {
         "name": "FLY",
@@ -274223,7 +274223,7 @@
       "SPEED": 40
     },
     "base_xp": 181,
-    "capture_rate": 45,
+    "capture_rate": 25,
     "moves": [
       {
         "name": "SLAM",
@@ -275722,7 +275722,7 @@
       "SPEED": 130
     },
     "base_xp": 257,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "THUNDER-SHOCK",
@@ -276122,7 +276122,7 @@
       "SPEED": 95
     },
     "base_xp": 257,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "PSYBEAM",
@@ -276510,7 +276510,7 @@
       "SPEED": 75
     },
     "base_xp": 257,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "WHIRLWIND",
@@ -276934,7 +276934,7 @@
       "SPEED": 85
     },
     "base_xp": 257,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "MIST",
@@ -281063,7 +281063,7 @@
       "SPEED": 79
     },
     "base_xp": 270,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "CONFUSION",
@@ -281463,7 +281463,7 @@
       "SPEED": 65
     },
     "base_xp": 270,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "SONIC-BOOM",
@@ -281967,7 +281967,7 @@
       "SPEED": 125
     },
     "base_xp": 270,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "FIRE-PUNCH",
@@ -283040,7 +283040,7 @@
       "SPEED": 13
     },
     "base_xp": 257,
-    "capture_rate": 45,
+    "capture_rate": 30,
     "moves": [
       {
         "name": "STOMP",
@@ -283372,7 +283372,7 @@
       "SPEED": 107
     },
     "base_xp": 257,
-    "capture_rate": 45,
+    "capture_rate": 30,
     "moves": [
       {
         "name": "EMBER",
@@ -283735,7 +283735,7 @@
       "SPEED": 143
     },
     "base_xp": 270,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "THUNDER-PUNCH",
@@ -284118,7 +284118,7 @@
       "SPEED": 34
     },
     "base_xp": 135,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "HEADBUTT",
@@ -284281,7 +284281,7 @@
       "SPEED": 34
     },
     "base_xp": 270,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "MEGA-PUNCH",
@@ -287023,7 +287023,7 @@
       "SPEED": 25
     },
     "base_xp": 55,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "TACKLE",
@@ -287308,7 +287308,7 @@
       "SPEED": 20
     },
     "base_xp": 161,
-    "capture_rate": 45,
+    "capture_rate": 90,
     "moves": [
       {
         "name": "TACKLE",
@@ -287611,7 +287611,7 @@
       "SPEED": 57
     },
     "base_xp": 49,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "FURY-ATTACK",
@@ -287852,7 +287852,7 @@
       "SPEED": 77
     },
     "base_xp": 128,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "FURY-ATTACK",
@@ -288393,7 +288393,7 @@
       "SPEED": 45
     },
     "base_xp": 36,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "STRUGGLE-BUG",
@@ -288435,7 +288435,7 @@
       "SPEED": 30
     },
     "base_xp": 117,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "CONFUSION",
@@ -288876,7 +288876,7 @@
       "SPEED": 50
     },
     "base_xp": 49,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "TAIL-WHIP",
@@ -289115,7 +289115,7 @@
       "SPEED": 90
     },
     "base_xp": 159,
-    "capture_rate": 45,
+    "capture_rate": 127,
     "moves": [
       {
         "name": "TAIL-WHIP",
@@ -289394,7 +289394,7 @@
       "SPEED": 10
     },
     "base_xp": 50,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "SING",
@@ -289635,7 +289635,7 @@
       "SPEED": 60
     },
     "base_xp": 161,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "SING",
@@ -289914,7 +289914,7 @@
       "SPEED": 48
     },
     "base_xp": 122,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "DOUBLE-KICK",
@@ -290179,7 +290179,7 @@
       "SPEED": 88
     },
     "base_xp": 172,
-    "capture_rate": 45,
+    "capture_rate": 127,
     "moves": [
       {
         "name": "DOUBLE-KICK",
@@ -290462,7 +290462,7 @@
       "SPEED": 44
     },
     "base_xp": 57,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "HEADBUTT",
@@ -290672,7 +290672,7 @@
       "SPEED": 74
     },
     "base_xp": 170,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "HEADBUTT",
@@ -290979,7 +290979,7 @@
       "SPEED": 26
     },
     "base_xp": 54,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "TACKLE",
@@ -291507,7 +291507,7 @@
       "SPEED": 30
     },
     "base_xp": 48,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "TACKLE",
@@ -291729,7 +291729,7 @@
       "SPEED": 50
     },
     "base_xp": 144,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "TACKLE",
@@ -292271,7 +292271,7 @@
       "SPEED": 20
     },
     "base_xp": 52,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "WITHDRAW",
@@ -293081,7 +293081,7 @@
       "SPEED": 46
     },
     "base_xp": 63,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "SLAM",
@@ -293344,7 +293344,7 @@
       "SPEED": 71
     },
     "base_xp": 179,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "SLAM",
@@ -293907,7 +293907,7 @@
       "SPEED": 66
     },
     "base_xp": 56,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "FURY-ATTACK",
@@ -294132,7 +294132,7 @@
       "SPEED": 136
     },
     "base_xp": 172,
-    "capture_rate": 45,
+    "capture_rate": 60,
     "moves": [
       {
         "name": "FURY-ATTACK",
@@ -294376,7 +294376,7 @@
       "SPEED": 40
     },
     "base_xp": 48,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "GROWL",
@@ -295038,7 +295038,7 @@
       "SPEED": 45
     },
     "base_xp": 61,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "SLAM",
@@ -295324,7 +295324,7 @@
       "SPEED": 65
     },
     "base_xp": 184,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "SLAM",
@@ -295627,7 +295627,7 @@
       "SPEED": 32
     },
     "base_xp": 62,
-    "capture_rate": 45,
+    "capture_rate": 180,
     "moves": [
       {
         "name": "BIND",
@@ -296167,7 +296167,7 @@
       "SPEED": 50
     },
     "base_xp": 62,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "MEGA-DRAIN",
@@ -296452,7 +296452,7 @@
       "SPEED": 70
     },
     "base_xp": 178,
-    "capture_rate": 45,
+    "capture_rate": 60,
     "moves": [
       {
         "name": "MEGA-DRAIN",
@@ -296795,7 +296795,7 @@
       "SPEED": 39
     },
     "base_xp": 53,
-    "capture_rate": 45,
+    "capture_rate": 235,
     "moves": [
       {
         "name": "PSYBEAM",
@@ -297036,7 +297036,7 @@
       "SPEED": 49
     },
     "base_xp": 130,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "PSYBEAM",
@@ -297638,7 +297638,7 @@
       "SPEED": 50
     },
     "base_xp": 53,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "BITE",
@@ -297932,7 +297932,7 @@
       "SPEED": 70
     },
     "base_xp": 130,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "BITE",
@@ -299081,7 +299081,7 @@
       "SPEED": 50
     },
     "base_xp": 154,
-    "capture_rate": 45,
+    "capture_rate": 90,
     "moves": [
       {
         "name": "PAY-DAY",
@@ -299428,7 +299428,7 @@
       "SPEED": 30
     },
     "base_xp": 179,
-    "capture_rate": 45,
+    "capture_rate": 30,
     "moves": [
       {
         "name": "TACKLE",
@@ -300731,7 +300731,7 @@
       "SPEED": 30
     },
     "base_xp": 169,
-    "capture_rate": 45,
+    "capture_rate": 90,
     "moves": [
       {
         "name": "SLAM",
@@ -301114,7 +301114,7 @@
       "SPEED": 34
     },
     "base_xp": 54,
-    "capture_rate": 45,
+    "capture_rate": 200,
     "moves": [
       {
         "name": "TACKLE",
@@ -301375,7 +301375,7 @@
       "SPEED": 64
     },
     "base_xp": 173,
-    "capture_rate": 45,
+    "capture_rate": 100,
     "moves": [
       {
         "name": "TACKLE",
@@ -301957,7 +301957,7 @@
       "SPEED": 15
     },
     "base_xp": 152,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "FURY-ATTACK",
@@ -302261,7 +302261,7 @@
       "SPEED": 20
     },
     "base_xp": 37,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "POWDER-SNOW",
@@ -302323,7 +302323,7 @@
       "SPEED": 65
     },
     "base_xp": 166,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "MIST",
@@ -302702,7 +302702,7 @@
       "SPEED": 70
     },
     "base_xp": 165,
-    "capture_rate": 45,
+    "capture_rate": 60,
     "moves": [
       {
         "name": "STOMP",
@@ -302989,7 +302989,7 @@
       "SPEED": 50
     },
     "base_xp": 165,
-    "capture_rate": 45,
+    "capture_rate": 60,
     "moves": [
       {
         "name": "HEADBUTT",
@@ -303253,7 +303253,7 @@
       "SPEED": 95
     },
     "base_xp": 166,
-    "capture_rate": 45,
+    "capture_rate": 30,
     "moves": [
       {
         "name": "PSYBEAM",
@@ -303553,7 +303553,7 @@
       "SPEED": 97
     },
     "base_xp": 153,
-    "capture_rate": 45,
+    "capture_rate": 180,
     "moves": [
       {
         "name": "THRASH",
@@ -303856,7 +303856,7 @@
       "SPEED": 40
     },
     "base_xp": 66,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "STOMP",
@@ -304145,7 +304145,7 @@
       "SPEED": 30
     },
     "base_xp": 175,
-    "capture_rate": 45,
+    "capture_rate": 90,
     "moves": [
       {
         "name": "STOMP",
@@ -306802,7 +306802,7 @@
       "SPEED": 138
     },
     "base_xp": 335,
-    "capture_rate": 45,
+    "capture_rate": 10,
     "moves": [
       {
         "name": "SWORDS-DANCE",
@@ -307129,7 +307129,7 @@
       "SPEED": 138
     },
     "base_xp": 335,
-    "capture_rate": 45,
+    "capture_rate": 10,
     "moves": [
       {
         "name": "BITE",
@@ -307437,7 +307437,7 @@
       "SPEED": 130
     },
     "base_xp": 345,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "FLAMETHROWER",
@@ -307776,7 +307776,7 @@
       "SPEED": 72
     },
     "base_xp": 77,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "HEADBUTT",
@@ -308106,7 +308106,7 @@
       "SPEED": 97
     },
     "base_xp": 275,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "HEADBUTT",
@@ -308474,7 +308474,7 @@
       "SPEED": 105
     },
     "base_xp": 300,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "SCRATCH",
@@ -308837,7 +308837,7 @@
       "SPEED": 200
     },
     "base_xp": 290,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "THRASH",
@@ -309156,7 +309156,7 @@
       "SPEED": 80
     },
     "base_xp": 290,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "VICE-GRIP",
@@ -309483,7 +309483,7 @@
       "SPEED": 30
     },
     "base_xp": 290,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "SWORDS-DANCE",
@@ -309790,7 +309790,7 @@
       "SPEED": 130
     },
     "base_xp": 290,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "STOMP",
@@ -310094,7 +310094,7 @@
       "SPEED": 80
     },
     "base_xp": 250,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "POUND",
@@ -310414,7 +310414,7 @@
       "SPEED": 65
     },
     "base_xp": 263,
-    "capture_rate": 45,
+    "capture_rate": 135,
     "moves": [
       {
         "name": "STOMP",
@@ -310770,7 +310770,7 @@
       "SPEED": 85
     },
     "base_xp": 175,
-    "capture_rate": 45,
+    "capture_rate": 115,
     "moves": [
       {
         "name": "SWORDS-DANCE",
@@ -311158,7 +311158,7 @@
       "SPEED": 50
     },
     "base_xp": 275,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "SCRATCH",
@@ -311602,7 +311602,7 @@
       "SPEED": 78
     },
     "base_xp": 265,
-    "capture_rate": 45,
+    "capture_rate": 135,
     "moves": [
       {
         "name": "HEADBUTT",
@@ -312014,7 +312014,7 @@
       "SPEED": 120
     },
     "base_xp": 102,
-    "capture_rate": 45,
+    "capture_rate": 135,
     "moves": [
       {
         "name": "SCRATCH",
@@ -312354,7 +312354,7 @@
       "SPEED": 85
     },
     "base_xp": 179,
-    "capture_rate": 45,
+    "capture_rate": 135,
     "moves": [
       {
         "name": "TACKLE",
@@ -312822,7 +312822,7 @@
       "SPEED": 106
     },
     "base_xp": 116,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "TACKLE",
@@ -316019,7 +316019,7 @@
       "SPEED": 35
     },
     "base_xp": 51,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "HEADBUTT",
@@ -316304,7 +316304,7 @@
       "SPEED": 65
     },
     "base_xp": 171,
-    "capture_rate": 45,
+    "capture_rate": 100,
     "moves": [
       {
         "name": "HEADBUTT",
@@ -316627,7 +316627,7 @@
       "SPEED": 20
     },
     "base_xp": 42,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "HEADBUTT",
@@ -316932,7 +316932,7 @@
       "SPEED": 35
     },
     "base_xp": 141,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "HEADBUTT",
@@ -317235,7 +317235,7 @@
       "SPEED": 45
     },
     "base_xp": 42,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "DOUBLE-KICK",
@@ -317521,7 +317521,7 @@
       "SPEED": 92
     },
     "base_xp": 158,
-    "capture_rate": 45,
+    "capture_rate": 30,
     "moves": [
       {
         "name": "DOUBLE-KICK",
@@ -317904,7 +317904,7 @@
       "SPEED": 60
     },
     "base_xp": 48,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "SCRATCH",
@@ -318230,7 +318230,7 @@
       "SPEED": 85
     },
     "base_xp": 123,
-    "capture_rate": 45,
+    "capture_rate": 80,
     "moves": [
       {
         "name": "SCRATCH",
@@ -318939,7 +318939,7 @@
       "SPEED": 75
     },
     "base_xp": 61,
-    "capture_rate": 45,
+    "capture_rate": 150,
     "moves": [
       {
         "name": "POUND",
@@ -319220,7 +319220,7 @@
       "SPEED": 111
     },
     "base_xp": 165,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "POUND",
@@ -319519,7 +319519,7 @@
       "SPEED": 65
     },
     "base_xp": 62,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "TACKLE",
@@ -319844,7 +319844,7 @@
       "SPEED": 95
     },
     "base_xp": 167,
-    "capture_rate": 45,
+    "capture_rate": 90,
     "moves": [
       {
         "name": "TACKLE",
@@ -320168,7 +320168,7 @@
       "SPEED": 30
     },
     "base_xp": 52,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "TACKLE",
@@ -320450,7 +320450,7 @@
       "SPEED": 33
     },
     "base_xp": 124,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "TACKLE",
@@ -321092,7 +321092,7 @@
       "SPEED": 92
     },
     "base_xp": 146,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "FLY",
@@ -321431,7 +321431,7 @@
       "SPEED": 25
     },
     "base_xp": 56,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "HEADBUTT",
@@ -321740,7 +321740,7 @@
       "SPEED": 35
     },
     "base_xp": 124,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "HEADBUTT",
@@ -322436,7 +322436,7 @@
       "SPEED": 35
     },
     "base_xp": 51,
-    "capture_rate": 45,
+    "capture_rate": 90,
     "moves": [
       {
         "name": "LEER",
@@ -322663,7 +322663,7 @@
       "SPEED": 75
     },
     "base_xp": 263,
-    "capture_rate": 45,
+    "capture_rate": 25,
     "moves": [
       {
         "name": "LEER",
@@ -323027,7 +323027,7 @@
       "SPEED": 85
     },
     "base_xp": 263,
-    "capture_rate": 45,
+    "capture_rate": 25,
     "moves": [
       {
         "name": "SWORDS-DANCE",
@@ -323350,7 +323350,7 @@
       "SPEED": 45
     },
     "base_xp": 54,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "TACKLE",
@@ -323631,7 +323631,7 @@
       "SPEED": 45
     },
     "base_xp": 173,
-    "capture_rate": 45,
+    "capture_rate": 50,
     "moves": [
       {
         "name": "TACKLE",
@@ -323931,7 +323931,7 @@
       "SPEED": 70
     },
     "base_xp": 56,
-    "capture_rate": 45,
+    "capture_rate": 180,
     "moves": [
       {
         "name": "GROWL",
@@ -324193,7 +324193,7 @@
       "SPEED": 125
     },
     "base_xp": 172,
-    "capture_rate": 45,
+    "capture_rate": 90,
     "moves": [
       {
         "name": "GROWL",
@@ -324492,7 +324492,7 @@
       "SPEED": 51
     },
     "base_xp": 68,
-    "capture_rate": 45,
+    "capture_rate": 150,
     "moves": [
       {
         "name": "HEADBUTT",
@@ -324821,7 +324821,7 @@
       "SPEED": 85
     },
     "base_xp": 177,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "HEADBUTT",
@@ -325169,7 +325169,7 @@
       "SPEED": 75
     },
     "base_xp": 58,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "SCRATCH",
@@ -325495,7 +325495,7 @@
       "SPEED": 110
     },
     "base_xp": 170,
-    "capture_rate": 45,
+    "capture_rate": 90,
     "moves": [
       {
         "name": "SCRATCH",
@@ -325795,7 +325795,7 @@
       "SPEED": 60
     },
     "base_xp": 55,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "DISABLE",
@@ -326445,7 +326445,7 @@
       "SPEED": 70
     },
     "base_xp": 67,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "TACKLE",
@@ -326807,7 +326807,7 @@
       "SPEED": 100
     },
     "base_xp": 180,
-    "capture_rate": 45,
+    "capture_rate": 90,
     "moves": [
       {
         "name": "TACKLE",
@@ -327186,7 +327186,7 @@
       "SPEED": 75
     },
     "base_xp": 158,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "GUILLOTINE",
@@ -327489,7 +327489,7 @@
       "SPEED": 50
     },
     "base_xp": 61,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "HEADBUTT",
@@ -327763,7 +327763,7 @@
       "SPEED": 75
     },
     "base_xp": 170,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "HEADBUTT",
@@ -328118,7 +328118,7 @@
       "SPEED": 30
     },
     "base_xp": 54,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "SAND-ATTACK",
@@ -328683,7 +328683,7 @@
       "SPEED": 75
     },
     "base_xp": 51,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "GROWL",
@@ -328904,7 +328904,7 @@
       "SPEED": 105
     },
     "base_xp": 168,
-    "capture_rate": 45,
+    "capture_rate": 60,
     "moves": [
       {
         "name": "GROWL",
@@ -329224,7 +329224,7 @@
       "SPEED": 58
     },
     "base_xp": 59,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "SLAM",
@@ -329574,7 +329574,7 @@
       "SPEED": 78
     },
     "base_xp": 133,
-    "capture_rate": 45,
+    "capture_rate": 90,
     "moves": [
       {
         "name": "SLAM",
@@ -330271,7 +330271,7 @@
       "SPEED": 95
     },
     "base_xp": 49,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "SLAM",
@@ -330536,7 +330536,7 @@
       "SPEED": 120
     },
     "base_xp": 149,
-    "capture_rate": 45,
+    "capture_rate": 50,
     "moves": [
       {
         "name": "SLAM",
@@ -330800,7 +330800,7 @@
       "SPEED": 82
     },
     "base_xp": 243,
-    "capture_rate": 45,
+    "capture_rate": 25,
     "moves": [
       {
         "name": "WING-ATTACK",
@@ -331143,7 +331143,7 @@
       "SPEED": 75
     },
     "base_xp": 63,
-    "capture_rate": 45,
+    "capture_rate": 200,
     "moves": [
       {
         "name": "SUPERSONIC",
@@ -331752,7 +331752,7 @@
       "SPEED": 47
     },
     "base_xp": 60,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "HEADBUTT",
@@ -332062,7 +332062,7 @@
       "SPEED": 90
     },
     "base_xp": 175,
-    "capture_rate": 45,
+    "capture_rate": 75,
     "moves": [
       {
         "name": "HEADBUTT",
@@ -332410,7 +332410,7 @@
       "SPEED": 121
     },
     "base_xp": 175,
-    "capture_rate": 45,
+    "capture_rate": 190,
     "moves": [
       {
         "name": "TACKLE",
@@ -332697,7 +332697,7 @@
       "SPEED": 65
     },
     "base_xp": 240,
-    "capture_rate": 45,
+    "capture_rate": 25,
     "moves": [
       {
         "name": "TACKLE",
@@ -332981,7 +332981,7 @@
       "SPEED": 60
     },
     "base_xp": 70,
-    "capture_rate": 45,
+    "capture_rate": 70,
     "moves": [
       {
         "name": "ROCK-THROW",
@@ -333287,7 +333287,7 @@
       "SPEED": 86
     },
     "base_xp": 184,
-    "capture_rate": 45,
+    "capture_rate": 25,
     "moves": [
       {
         "name": "ROCK-THROW",
@@ -333630,7 +333630,7 @@
       "SPEED": 34
     },
     "base_xp": 58,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "HEADBUTT",
@@ -333959,7 +333959,7 @@
       "SPEED": 68
     },
     "base_xp": 171,
-    "capture_rate": 45,
+    "capture_rate": 60,
     "moves": [
       {
         "name": "HEADBUTT",
@@ -334287,7 +334287,7 @@
       "SPEED": 90
     },
     "base_xp": 175,
-    "capture_rate": 45,
+    "capture_rate": 100,
     "moves": [
       {
         "name": "WING-ATTACK",
@@ -334610,7 +334610,7 @@
       "SPEED": 43
     },
     "base_xp": 67,
-    "capture_rate": 45,
+    "capture_rate": 150,
     "moves": [
       {
         "name": "TACKLE",
@@ -334911,7 +334911,7 @@
       "SPEED": 73
     },
     "base_xp": 182,
-    "capture_rate": 45,
+    "capture_rate": 50,
     "moves": [
       {
         "name": "TACKLE",
@@ -335211,7 +335211,7 @@
       "SPEED": 70
     },
     "base_xp": 167,
-    "capture_rate": 45,
+    "capture_rate": 100,
     "moves": [
       {
         "name": "TACKLE",
@@ -335450,7 +335450,7 @@
       "SPEED": 35
     },
     "base_xp": 265,
-    "capture_rate": 45,
+    "capture_rate": 25,
     "moves": [
       {
         "name": "TACKLE",
@@ -335770,7 +335770,7 @@
       "SPEED": 82
     },
     "base_xp": 166,
-    "capture_rate": 45,
+    "capture_rate": 100,
     "moves": [
       {
         "name": "WATER-GUN",
@@ -336410,7 +336410,7 @@
       "SPEED": 20
     },
     "base_xp": 151,
-    "capture_rate": 45,
+    "capture_rate": 90,
     "moves": [
       {
         "name": "SLAM",
@@ -337361,7 +337361,7 @@
       "SPEED": 50
     },
     "base_xp": 275,
-    "capture_rate": 45,
+    "capture_rate": 25,
     "moves": [
       {
         "name": "SCRATCH",
@@ -337705,7 +337705,7 @@
       "SPEED": 87
     },
     "base_xp": 285,
-    "capture_rate": 45,
+    "capture_rate": 30,
     "moves": [
       {
         "name": "HORN-ATTACK",
@@ -338045,7 +338045,7 @@
       "SPEED": 111
     },
     "base_xp": 285,
-    "capture_rate": 45,
+    "capture_rate": 50,
     "moves": [
       {
         "name": "POUND",
@@ -338389,7 +338389,7 @@
       "SPEED": 55
     },
     "base_xp": 285,
-    "capture_rate": 45,
+    "capture_rate": 50,
     "moves": [
       {
         "name": "THRASH",
@@ -338713,7 +338713,7 @@
       "SPEED": 135
     },
     "base_xp": 285,
-    "capture_rate": 45,
+    "capture_rate": 30,
     "moves": [
       {
         "name": "PSYBEAM",
@@ -339057,7 +339057,7 @@
       "SPEED": 81
     },
     "base_xp": 285,
-    "capture_rate": 45,
+    "capture_rate": 30,
     "moves": [
       {
         "name": "GUST",
@@ -339421,7 +339421,7 @@
       "SPEED": 101
     },
     "base_xp": 285,
-    "capture_rate": 45,
+    "capture_rate": 30,
     "moves": [
       {
         "name": "SUPERSONIC",
@@ -339781,7 +339781,7 @@
       "SPEED": 106
     },
     "base_xp": 285,
-    "capture_rate": 45,
+    "capture_rate": 30,
     "moves": [
       {
         "name": "HORN-ATTACK",
@@ -340125,7 +340125,7 @@
       "SPEED": 136
     },
     "base_xp": 285,
-    "capture_rate": 45,
+    "capture_rate": 50,
     "moves": [
       {
         "name": "TAKE-DOWN",
@@ -340405,7 +340405,7 @@
       "SPEED": 50
     },
     "base_xp": 285,
-    "capture_rate": 45,
+    "capture_rate": 50,
     "moves": [
       {
         "name": "THUNDER-PUNCH",
@@ -340769,7 +340769,7 @@
       "SPEED": 108
     },
     "base_xp": 285,
-    "capture_rate": 45,
+    "capture_rate": 30,
     "moves": [
       {
         "name": "ROAR",
@@ -341137,7 +341137,7 @@
       "SPEED": 110
     },
     "base_xp": 285,
-    "capture_rate": 45,
+    "capture_rate": 30,
     "moves": [
       {
         "name": "GUST",
@@ -341497,7 +341497,7 @@
       "SPEED": 72
     },
     "base_xp": 285,
-    "capture_rate": 45,
+    "capture_rate": 30,
     "moves": [
       {
         "name": "PIN-MISSILE",
@@ -342171,7 +342171,7 @@
       "SPEED": 62
     },
     "base_xp": 148,
-    "capture_rate": 45,
+    "capture_rate": 25,
     "moves": [
       {
         "name": "TACKLE",
@@ -342445,7 +342445,7 @@
       "SPEED": 87
     },
     "base_xp": 300,
-    "capture_rate": 45,
+    "capture_rate": 10,
     "moves": [
       {
         "name": "TACKLE",
@@ -343086,7 +343086,7 @@
       "SPEED": 70
     },
     "base_xp": 285,
-    "capture_rate": 45,
+    "capture_rate": 6,
     "moves": [
       {
         "name": "ABSORB",
@@ -343470,7 +343470,7 @@
       "SPEED": 135
     },
     "base_xp": 285,
-    "capture_rate": 45,
+    "capture_rate": 6,
     "moves": [
       {
         "name": "SWORDS-DANCE",
@@ -343838,7 +343838,7 @@
       "SPEED": 45
     },
     "base_xp": 285,
-    "capture_rate": 45,
+    "capture_rate": 6,
     "moves": [
       {
         "name": "WHIRLWIND",
@@ -344210,7 +344210,7 @@
       "SPEED": 100
     },
     "base_xp": 285,
-    "capture_rate": 45,
+    "capture_rate": 6,
     "moves": [
       {
         "name": "EMBER",
@@ -344574,7 +344574,7 @@
       "SPEED": 119
     },
     "base_xp": 295,
-    "capture_rate": 45,
+    "capture_rate": 10,
     "moves": [
       {
         "name": "FLY",
@@ -344950,7 +344950,7 @@
       "SPEED": 116
     },
     "base_xp": 295,
-    "capture_rate": 45,
+    "capture_rate": 10,
     "moves": [
       {
         "name": "DISABLE",
@@ -345330,7 +345330,7 @@
       "SPEED": 135
     },
     "base_xp": 335,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "FLAMETHROWER",
@@ -345650,7 +345650,7 @@
       "SPEED": 135
     },
     "base_xp": 335,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "HYPER-BEAM",
@@ -345970,7 +345970,7 @@
       "SPEED": 109
     },
     "base_xp": 295,
-    "capture_rate": 45,
+    "capture_rate": 5,
     "moves": [
       {
         "name": "LEER",
@@ -346282,7 +346282,7 @@
       "SPEED": 104
     },
     "base_xp": 295,
-    "capture_rate": 45,
+    "capture_rate": 5,
     "moves": [
       {
         "name": "SWORDS-DANCE",
@@ -346946,7 +346946,7 @@
       "SPEED": 50
     },
     "base_xp": 62,
-    "capture_rate": 45,
+    "capture_rate": 120,
     "moves": [
       {
         "name": "ABSORB",
@@ -347230,7 +347230,7 @@
       "SPEED": 70
     },
     "base_xp": 178,
-    "capture_rate": 45,
+    "capture_rate": 60,
     "moves": [
       {
         "name": "ABSORB",
@@ -347514,7 +347514,7 @@
       "SPEED": 80
     },
     "base_xp": 278,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "BITE",
@@ -347778,7 +347778,7 @@
       "SPEED": 106
     },
     "base_xp": 278,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "SCRATCH",
@@ -348062,7 +348062,7 @@
       "SPEED": 99
     },
     "base_xp": 278,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "WING-ATTACK",
@@ -348361,7 +348361,7 @@
       "SPEED": 110
     },
     "base_xp": 275,
-    "capture_rate": 45,
+    "capture_rate": 5,
     "moves": [
       {
         "name": "SLAM",
@@ -348661,7 +348661,7 @@
       "SPEED": 85
     },
     "base_xp": 300,
-    "capture_rate": 45,
+    "capture_rate": 10,
     "moves": [
       {
         "name": "LEER",
@@ -348941,7 +348941,7 @@
       "SPEED": 44
     },
     "base_xp": 270,
-    "capture_rate": 45,
+    "capture_rate": 10,
     "moves": [
       {
         "name": "GROWTH",
@@ -349265,7 +349265,7 @@
       "SPEED": 91
     },
     "base_xp": 295,
-    "capture_rate": 45,
+    "capture_rate": 10,
     "moves": [
       {
         "name": "STOMP",
@@ -349601,7 +349601,7 @@
       "SPEED": 75
     },
     "base_xp": 295,
-    "capture_rate": 45,
+    "capture_rate": 10,
     "moves": [
       {
         "name": "STOMP",
@@ -349949,7 +349949,7 @@
       "SPEED": 124
     },
     "base_xp": 295,
-    "capture_rate": 45,
+    "capture_rate": 10,
     "moves": [
       {
         "name": "SWORDS-DANCE",
@@ -350289,7 +350289,7 @@
       "SPEED": 98
     },
     "base_xp": 295,
-    "capture_rate": 45,
+    "capture_rate": 10,
     "moves": [
       {
         "name": "LEER",
@@ -350628,7 +350628,7 @@
       "SPEED": 60
     },
     "base_xp": 90,
-    "capture_rate": 45,
+    "capture_rate": 255,
     "moves": [
       {
         "name": "HEADBUTT",
@@ -350872,7 +350872,7 @@
       "SPEED": 88
     },
     "base_xp": 300,
-    "capture_rate": 45,
+    "capture_rate": 3,
     "moves": [
       {
         "name": "TOXIC",

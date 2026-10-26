@@ -244,6 +244,9 @@ def rule_met(game, poke, rule, party=None, area_key=None):
     party = party if party is not None else story.player_team
     if rule.get("level") and poke.level < rule["level"]:
         return False
+    caught_at = getattr(poke, "caught_level", None)
+    if rule.get("level") and caught_at is not None and poke.level <= caught_at:
+        return False  # caught past its evolution level: it evolves at its next level up
     if rule.get("time") == "day" and is_night():
         return False
     if rule.get("time") == "night" and not is_night():

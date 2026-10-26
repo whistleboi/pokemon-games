@@ -9,10 +9,14 @@ from src.states.base import GameState
 from src.utils import Utils
 from src.ui.dialogue import ClassicDialogueBox
 from src.ui.widgets import Button
-from src.ui.panels import CityActionMenu
+from src.ui.panels import CityActionMenu, CommandButton
+from src.ui import theme
 from src.world.boss import BossManager
 from src.world import seasons
 from src.world import hoenn
+from src.world import guide
+from src.pokemon import catching
+from src.pokemon import balance
 from src.world import levels
 from src.pokemon import evolution
 from src.world import regional_forms
@@ -28,7 +32,8 @@ def _fill_names(game, text):
     if not isinstance(text, str):
         return text
     text = (text.replace("{player_name}", getattr(game, "player_name", "TRAINER"))
-                .replace("{rival_name}", getattr(game, "rival_name", "???")))
+                .replace("{rival_name}", getattr(game, "rival_name", "???"))
+                .replace("{friend_name}", getattr(game, "friend_name", None) or "???"))
     if "{kanto_" in text:  # Mew's hint: Kanto species #1-150 only (other regions don't count)
         caught = game.story_manager.kanto_caught_count()
         text = text.replace("{kanto_caught}", str(caught)).replace("{kanto_missing}", str(150 - caught))
@@ -56,13 +61,23 @@ def _scaled_player_image(game, char_key):
     return pygame.transform.scale(img, (int(img.get_width() * (h / img.get_height())), h))
 
 
+def rival_image(game, char_key):
+    """A rival's art: their trainer sprite (blue.png, silver.png, may.png...), else the player art."""
+    img = game.assets.get_trainer_image(f"{char_key}.png") if char_key else None
+    return img or _scaled_player_image(game, char_key)
+
+
 def _trainer_sprite(game, sprite_name):
-    """Trainer art, falling back to the player-chosen rival when a region's sprite is missing."""
-    if sprite_name != "{rival_character}":
+    """Trainer art; "{rival_character}" / "{friend_character}" are this region's rival and friend."""
+    if sprite_name == "{friend_character}":
+        img = rival_image(game, getattr(game, "friend_character", None))
+        if img:
+            return img
+    elif sprite_name != "{rival_character}":
         img = game.assets.get_trainer_image(sprite_name or "rival.png")
         if img:
             return img
-    return (_scaled_player_image(game, getattr(game, "rival_character", None))
+    return (rival_image(game, getattr(game, "rival_character", None))
             or game.assets.get_trainer_image("rival.png"))
 
 
@@ -84,9 +99,9 @@ def _story_team(game, area_key, t_info):
     if levels.postgame_trainers(game, area_key):  # post-game: every trainer follows the player's cap
         levels.set_team(team, levels.trainer_team_levels(game, area_key, len(team), boss=True))  # legendaries stay 70
     elif t_info.get("levels"):
-        levels.set_team(team, list(t_info["levels"]), exact=True)
+        levels.set_team(team, levels.follow_team(game, t_info["levels"]), exact=True)
     elif top:
-        levels.set_team(team, [max(2, top - (len(team) - 1 - i)) for i in range(len(team))])
+        levels.set_team(team, levels.follow_team(game, [max(2, top - (len(team) - 1 - i)) for i in range(len(team))]))
     else:
         levels.set_team(team, levels.trainer_team_levels(game, area_key, len(team), boss=True))
     return team
@@ -113,6 +128,10 @@ def _run_story_event(state, key, check, show):
     game = state.game
     story = game.story_manager
     ev = key if isinstance(key, dict) else story_events.get(key)
+    if ev.get("stages"):  # one NPC through the story: the first stage that is ready and not done
+        stage = next((st for st in ev["stages"] if not story.story_flags.get(st.get("flag") or "")
+                      and all(check(c) for c in st.get("requires", []))), None)
+        ev = stage or {"lines": ev.get("done") or ["..."]}
     flag = ev.get("flag")
     if flag and story.story_flags.get(flag):
         show(_resolve_lines(game, ev.get("done") or ev.get("lines") or ["..."]))
@@ -127,6 +146,20 @@ def _run_story_event(state, key, check, show):
     if ev.get("battle"):
         t_info = dict(ev["battle"], _intro_lines=lines or None)
         game.change_state(_start_event_battle(game, story.current_area_key, t_info, flag))
+        return
+    if ev.get("scene") == "wally_catch":  # Wally catches his Ralts (src/states/hoenn.py)
+        from src.states.hoenn import WallyCatchState
+
+        def after():
+            if flag:  # first, so arriving back doesn't start the scene again
+                story.story_flags[flag] = True
+            if hasattr(state, "is_resuming"):
+                state.is_resuming = True
+            game.change_state(state)
+            _run_story_event(state, dict(ev, scene=None, flag=None, lines=ev.get("after") or ["..."]), check, show)
+        show_then = lines or ["..."]
+        state_show = getattr(state, "show_message", None) or getattr(state, "show_dialogue")
+        state_show(show_then, callback=lambda: game.change_state(WallyCatchState(game, after)))
         return
     for item, qty in (ev.get("gift_item") or {}).items():
         if item == "balls":
@@ -243,27 +276,44 @@ def _teach_move(game, teach):
     from src.pokemon import moves as movelib
     for p in game.story_manager.player_team if teach else []:
         move = teach.get(str(p.id))
-        if not move or move in (movelib.ensure_moves(game, p) or []):
+        pool = movelib.move_pool(game, p) if move else []
+        if not move or move in pool:
             continue
         label = move.replace("-", " ")
+        pool.append(move)  # it joins the move pool; the player sets it in the Summary
         if len(p.moves) < movelib.MAX_MOVES:
             p.moves.append(move)
             return [f"{p.display_name.upper()} learned {label}!"]
-        weakest = min(p.moves, key=lambda m: movelib.move_value(game, p, m))
-        p.moves[p.moves.index(weakest)] = move
-        return [f"{p.display_name.upper()} forgot {weakest.replace('-', ' ')} and learned {label}!"]
+        return [f"{p.display_name.upper()} learned {label}! Set its moves in the Summary."]
     return []
 
 
 # [REF-0029: Overworld & Play Logic]
 
-def _draw_season_hud(game, screen, area_key, x, y):
-    """Season and today's weather under the ball count (seasonal regions only)."""
+HUD_INFO_Y = 128  # the season / Repel / Journal lines start under the MENU button
+
+
+def _draw_season_hud(game, screen, area_key, x, y=HUD_INFO_Y):
+    """Season and today's weather, Repel and the tracked Journal mission, stacked under the MENU
+    button (top left) on a soft dark panel so they read on any background."""
+    lines = []
     label = seasons.hud_label(game, area_key)
     if label:
-        text, color = label
-        Utils.draw_text_outline(screen, text, game.assets.fonts["small"], color, x, y,
-                                align="left", outline_color=BLACK)
+        lines.append(label)
+    if getattr(game.story_manager, "repel_routes", 0) > 0:
+        lines.append((f"Repel: {game.story_manager.repel_routes} routes left", WHITE))
+    lines += [(line, GOLD) for line in guide.cached(game, "hud")]  # where to go next
+    if not lines:
+        return
+    font = game.assets.fonts["small"]
+    lh = font.get_linesize() + 4
+    panel = pygame.Rect(x - 10, y - 6, max(font.size(t)[0] for t, _ in lines) + 24, lh * len(lines) + 10)
+    shade = pygame.Surface(panel.size, pygame.SRCALPHA)
+    pygame.draw.rect(shade, (16, 20, 36, 150), shade.get_rect(), border_radius=10)
+    screen.blit(shade, panel)
+    for text, color in lines:
+        Utils.draw_text_outline(screen, text, font, color, x, y, align="left", outline_color=BLACK)
+        y += lh
 
 class PlayState(GameState):
     # One Poke Ball count for the whole game: the story's. Routes used to keep their own copy,
@@ -308,6 +358,11 @@ class PlayState(GameState):
         if self.game.story_manager.inventory.get("BICYCLE", 0) > 0:
             if self.game.story_manager.story_flags.get(f"visited_{self.game.story_manager.current_area_key}"):
                 self.min_rounds = 0
+        story = self.game.story_manager
+        if restore_data is None and getattr(story, "repel_routes", 0) > 0 and self.min_rounds:
+            # A Repel keeps wild Pokemon away: this route can be left without battling.
+            self.min_rounds = 0
+            story.repel_routes -= 1
 
         self.rounds_completed = 0
         self.pending_wild_encounters = (
@@ -370,6 +425,7 @@ class PlayState(GameState):
         )
 
         self.answer_btn_rects = [pygame.Rect(0, 0, 0, 0) for _ in range(3)]
+        self.route_bg = self._load_route_background()
 
         self.stars = [
             [
@@ -444,21 +500,22 @@ class PlayState(GameState):
                 btn.callback = (lambda cb=btn.callback: (setattr(self, "is_resuming", True), cb()))
         _collapse_hud(self)
 
-        self.btn_flee = Button(
-            rect=(game.width - 200, game.height // 2 - 40, 180, 80),
+        self.btn_flee = CommandButton(
+            rect=(game.width - 200, game.height // 2 - 40, 180, 70),
             text="FLEE",
-            font=game.assets.fonts["small"],
+            font=game.assets.fonts["button"],
             callback=self.action_flee,
-            bg_color=ORANGE,
+            bg_color=theme.RUN,
             visible=False,
+            autosize=False,
         )
 
-        self.btn_yes = Button((0, 0, 0, 0), "YES", game.assets.fonts["small"],
-                              self.boss_catch_yes, bg_color=GREEN,
-                              visible=False, autosize=False)
-        self.btn_no = Button((0, 0, 0, 0), "NO", game.assets.fonts["small"],
-                             self.boss_catch_no, bg_color=RED,
-                             visible=False, autosize=False)
+        self.btn_yes = CommandButton((0, 0, 0, 0), "YES", game.assets.fonts["button"],
+                                     self.boss_catch_yes, bg_color=theme.POKEMON,
+                                     visible=False, autosize=False)
+        self.btn_no = CommandButton((0, 0, 0, 0), "NO", game.assets.fonts["button"],
+                                    self.boss_catch_no, bg_color=theme.FIGHT,
+                                    visible=False, autosize=False)
         self.boss_prompt_active = False
 
         self.route_buttons = []
@@ -474,16 +531,41 @@ class PlayState(GameState):
         self.game.change_state(JournalState(self.game, self))
 
     def _open_map(self):
-        from src.states.systems import MapState
-        self.game.change_state(MapState(self.game, self))
+        from src.states.region_map import RegionMapState
+        self.game.change_state(RegionMapState(self.game, self))
 
     def _open_fly(self):
-        from src.states.systems import FlyState
-        self.game.change_state(FlyState(self.game, self))
+        from src.states.region_map import RegionMapState
+        self.game.change_state(RegionMapState(self.game, self, fly=True))
 
     def _open_pokenav(self):
         from src.states.systems import PokeNavState
         self.game.change_state(PokeNavState(self.game, self))
+
+    def _load_route_background(self):
+        """The route's own picture (Pokemon Journeys' maps, framed on its tall grass), else its
+        battle background; None leaves the old starfield."""
+        key = self.game.story_manager.current_area_key
+        img = self.game.assets.get_journeys_background("routes", key)
+        if img is None:
+            name = self._get_battle_background_for_area()
+            img = self.game.assets.get_background(name) if name else None
+        if img is None:
+            return None
+        box_top = Utils.get_full_dialogue_rect(self.game).top
+        return pygame.transform.scale(img, (self.game.width, box_top))
+
+    ROUTE_GROUND = {"cave": (128, 108, 86), "dungeon": (128, 108, 86), "water": (72, 132, 206),
+                    "surf": (72, 132, 206), "ocean": (72, 132, 206)}
+
+    def _draw_ground(self, screen, x, y, w):
+        """The patch a wild Pokemon stands on: tall grass on a route, rock in a cave, a ripple on
+        the water (like the battle screen's bases)."""
+        color = self.ROUTE_GROUND.get(self.area_data.get("battle_type", ""), (70, 150, 64))
+        patch = pygame.Surface((w, w // 4), pygame.SRCALPHA)
+        pygame.draw.ellipse(patch, (*color, 210), patch.get_rect())
+        pygame.draw.ellipse(patch, (*[min(255, c + 60) for c in color], 230), patch.get_rect(), 4)
+        screen.blit(patch, patch.get_rect(center=(int(x), int(y))))
 
     def _get_battle_background_for_area(self):
         """Returns a specific battle background filename based on the current area."""
@@ -656,6 +738,9 @@ class PlayState(GameState):
                     self.show_progression_menu()
             return
 
+        if self.route_starter_event():
+            return
+
         if self.check_roaming_encounter():
             return
 
@@ -672,8 +757,10 @@ class PlayState(GameState):
         if is_gauntlet_area and self.rounds_completed == 0 and self.fresh_entry:
             self.create_checkpoint()
 
-        on_enter = self.area_data.get("on_enter_event")
-        if on_enter and on_enter.get("type") == "trainer_battle":
+        events = self.area_data.get("on_enter_event")
+        for on_enter in (events if isinstance(events, list) else [events] if events else []):
+            if on_enter.get("type") != "trainer_battle":  # (one list can hold several story battles)
+                continue
             v_flag = on_enter.get("flag_check")
             cond = on_enter.get("condition")
             met = True
@@ -693,6 +780,30 @@ class PlayState(GameState):
         else:
             self.show_progression_menu()
 
+    def route_starter_event(self):
+        """A starter chosen on a route (REGION_START "starter_area"; Hoenn's Route 101): the
+        professor calls for help, the player picks a partner from his bag, then fights the wild
+        Pokemon chasing him ("starter_event": lines, boss). Returns True when it took over."""
+        ev = self.area_data.get("starter_event")
+        story = self.game.story_manager
+        region = story.get_current_region()
+        if not ev or story.starter_on_route(region) != story.current_area_key:
+            return False
+        if not story.story_flags.get(f"received_starter_{region.lower()}"):
+            from src.states.menus import StarterSelectionState
+            cfg = story.get_region_start(region)
+            self.is_progression_paused = True
+            self.hide_menu_buttons()
+            self.show_dialogue(_resolve_lines(self.game, ev.get("lines") or ["..."]), callback=lambda: (
+                self.game.change_state(StarterSelectionState(
+                    self.game, starter_ids=cfg.get("starters"), region=region, on_route=True))))
+            return True
+        boss = ev.get("boss") or {}
+        if boss and not story.story_flags.get(boss.get("victory_flag")):
+            self.action_challenge_boss(dict(boss))
+            return True
+        return False
+
     def trigger_scripted_on_enter_battle(self, on_enter):
         """Helper to handle the complex on_enter battle setup logic."""
         self.rounds_completed += 1
@@ -705,13 +816,17 @@ class PlayState(GameState):
 
         from src.states.battle import TrainerBattleState, TrainerIntroState
         trainer_sprite = _trainer_sprite(self.game, trainer_info.get("sprite"))  # rival art too
+        dlg = trainer_info.get("dialogue") or {}
         battle_state = TrainerBattleState(
             self.game, opponent_team, trainer_sprite=trainer_sprite,
             trainer_class=trainer_info["class"], trainer_name=_fill_names(self.game, trainer_info.get("name")),
             victory_flag=on_enter.get("flag_check"),
             is_boss_battle=trainer_info.get("is_boss_battle", False),
+            rewards=dict(trainer_info["rewards"]) if trainer_info.get("rewards") else None,
+            custom_dialogue={k: _resolve_lines(self.game, v) for k, v in dlg.items() if k != "intro"} or None,
         )
-        intro_text = on_enter.get("dialogue_override", "Stop right there!")
+        intro_text = on_enter.get("dialogue_override") or (
+            _resolve_lines(self.game, dlg["intro"]) if dlg.get("intro") else "Stop right there!")
         if isinstance(intro_text, str):
             intro_text = [intro_text]
         self.game.change_state(TrainerIntroState(self.game, trainer_sprite, intro_text, battle_state))
@@ -776,7 +891,7 @@ class PlayState(GameState):
         self.hide_menu_buttons()
         self.route_buttons.clear()
 
-        if self.balls_left <= 0:
+        if catching.total_balls(self.game.story_manager) <= 0 and self.game.story_manager.catch_unlocked():
             area_key = self.game.story_manager.current_area_key
             trainer_pool = self.area_data.get("trainer_pool", [])
 
@@ -865,6 +980,9 @@ class PlayState(GameState):
                 opponent_ids = random.choice(team_override)
             else:
                 opponent_ids = team_override
+            choice = (trainer_info.get("team_choice") or {}).get(str(_region_starter_id(self.game)))
+            if choice:  # a rival's team follows the player's starter
+                opponent_ids = list(choice)
 
         elif trainer_class == "ROCKET":
             rocket_pool = self.game.loader.area_data.get("TEAM_ROCKET_POOL", [])
@@ -890,7 +1008,11 @@ class PlayState(GameState):
         forms.mark_trainer_team(opponent_team, trainer_info)
         is_boss = bool(trainer_info.get("is_boss_battle") or trainer_info.get("villain") == "leader"
                        or trainer_class in ("ROCKET_LEADER", "RIVAL"))
-        levels.set_team(opponent_team, levels.trainer_team_levels(self.game, area_key, len(opponent_team), is_boss))
+        if trainer_info.get("levels") and not levels.postgame_trainers(self.game, area_key):
+            # a story trainer's levels from the games (a rival), lifted if the team has outgrown them
+            levels.set_team(opponent_team, levels.follow_team(self.game, trainer_info["levels"]), exact=True)
+        else:
+            levels.set_team(opponent_team, levels.trainer_team_levels(self.game, area_key, len(opponent_team), is_boss))
 
         bg_file = self._get_battle_background_for_area()
 
@@ -959,7 +1081,7 @@ class PlayState(GameState):
         return self.game.loader.area_data.get(base_key, {}) if base_key else {}
 
     def trigger_wild_encounter(self):
-        if self.balls_left <= 0:  # no catch screen without balls: say so and go back to the menu
+        if catching.total_balls(self.game.story_manager) <= 0:  # no catch screen without balls: say so
             self.p_data = [None, None, None]
             self.catch_selection_active = False
             self.pending_wild_encounters = 0
@@ -1032,6 +1154,29 @@ class PlayState(GameState):
         level = self.game.story_manager.get_math_level()
         return self.game.math.generate(level, num_options=num_options)
 
+    def _hud_shade(self, width):
+        """A soft dark band along the top so the ball count and goal read on a bright route."""
+        if getattr(self, "_shade", None) is None or self._shade.get_width() != width:
+            self._shade = pygame.Surface((width, 120), pygame.SRCALPHA)
+            for yy in range(120):
+                pygame.draw.line(self._shade, (0, 0, 0, int(110 * (1 - yy / 120))), (0, yy), (width, yy))
+        return self._shade
+
+    def _bar_text(self, screen, bar, text, color):
+        """Feedback ("Gotcha!", the right answer) in the bottom bar, centred: dark text, or a
+        light colour (gold, white) with a dark edge so it reads on the white box."""
+        from src.ui.dialogue import wrap_text
+        font = self.game.assets.fonts["dialog"]
+        rows = [r for line in str(text).split("\n") for r in wrap_text(line, font, bar.width - 120)]
+        lh = int(font.get_linesize() * 1.15)
+        top = bar.centery - lh * len(rows) // 2 + lh // 2
+        for k, row in enumerate(rows):
+            if sum(color[:3]) > 450:
+                Utils.draw_text_outline(screen, row, font, color, bar.centerx, top + k * lh,
+                                        outline_color=theme.TEXTBOX_FRAME, thickness=3)
+            else:
+                theme.shadow_text(screen, row, font, bar.centerx, top + k * lh, color=color, align="center")
+
     def get_cx(self, i):
         if self.game.assets.is_pc:
             return self.game.width // 2 + (i - 1) * (
@@ -1053,12 +1198,16 @@ class PlayState(GameState):
                     continue
 
             if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+                ball_rect = getattr(self, "ball_hud_rect", None)
+                if ball_rect is not None and ball_rect.collidepoint(event.pos):  # tap the ball count: switch ball
+                    catching.cycle(self.game.story_manager)
+                    continue
                 rect = getattr(self, "speak_rect", None)
                 if rect is not None and rect.collidepoint(event.pos) and not self.catch_selection_active:
                     from src.core import speech
                     speech.say(speech.math_words(self.problem_str))
                     continue
-                if not self.ball_active and self.input_delay == 0 and self.pause_timer == 0 and self.balls_left > 0:
+                if not self.ball_active and self.input_delay == 0 and self.pause_timer == 0 and catching.total_balls(self.game.story_manager) > 0:
                     if self.catch_selection_active:
                         self.check_selection(event.pos)
                     elif not self.dialogue_box.visible:
@@ -1154,8 +1303,8 @@ class PlayState(GameState):
             if self.rounds_completed >= self.min_rounds or not trainers_left:
                 valid_options.append({"text": "EXIT ROUTE", "action": "EXIT", "color": "RED"})
 
-        btn_w, btn_h = 280, 80
-        gap_x, gap_y = 60, 40
+        btn_w, btn_h = 350, 76
+        gap_x, gap_y = 30, 24
         cols = 3
 
         count = len(valid_options)
@@ -1178,23 +1327,25 @@ class PlayState(GameState):
             x = row_start_x + col * (btn_w + gap_x)
             y = start_y + row * (btn_h + gap_y)
 
-            color_map = {
-                "BLUE": BLUE, "GREEN": GREEN, "RED": RED, "ORANGE": ORANGE,
-                "GOLD": GOLD, "PURPLE": PURPLE, "GRAY": GRAY, "CYAN": (0, 255, 255)
+            color_map = {  # the battle menu's colours (src/ui/theme.py)
+                "BLUE": theme.RUN, "GREEN": theme.POKEMON, "RED": theme.FIGHT, "ORANGE": (232, 132, 40),
+                "GOLD": theme.BAG, "PURPLE": theme.MEGA, "GRAY": (120, 124, 144), "CYAN": (40, 170, 200)
             }
-            bg_color = color_map.get(item.get("color", "BLUE"), BLUE)
+            bg_color = color_map.get(item.get("color", "BLUE"), theme.RUN)
+            toward = (item.get("action") in ("EXIT", "TRAVEL")
+                      and (item.get("target_area") or item.get("target")) == guide.cached(self.game, "hop"))
+            if toward:  # the way to the tracked Journal mission
+                bg_color = theme.BAG
 
             callback = self._get_route_callback(item)
             if item.get("disabled"):
                 callback = None
 
-            btn = Button(
-                pygame.Rect(x, y, btn_w, btn_h),
-                item["text"],
-                self.game.assets.fonts["tiny"],
-                callback,
-                bg_color=bg_color,
-                autosize=False
+            label = ("> " if toward else "") + theme.pokemon_word(_fill_names(self.game, item["text"]))  # "BATTLE {rival_name}"
+            font = next((self.game.assets.fonts[f] for f in ("button", "label")
+                         if self.game.assets.fonts[f].size(label)[0] <= btn_w - 30), self.game.assets.fonts["tiny"])
+            btn = CommandButton(
+                pygame.Rect(x, y, btn_w, btn_h), label, font, callback, bg_color=bg_color, autosize=False
             ).arm(500)  # a quick tap left over from the last round can't press an exit
             self.route_buttons.append(btn)
             self.game.ui_manager.add_element(btn)
@@ -1219,8 +1370,8 @@ class PlayState(GameState):
             story = self.game.story_manager
             need = int(condition.split(":", 1)[1])
             return len(story.badges.get(story.get_current_region(), [])) < need
-        if condition == "has_balls":
-            return self.balls_left > 0
+        if condition == "has_balls":  # any ball (Hoenn: no catching before Birch's Pokedex)
+            return catching.total_balls(self.game.story_manager) > 0 and self.game.story_manager.catch_unlocked()
         if condition == "has_SQUIRT_BOTTLE":
             return self.game.story_manager.inventory.get("SQUIRT_BOTTLE", 0) > 0 and not self.game.story_manager.story_flags.get("defeated_sudowoodo")
         if condition == "has_stormbadge":
@@ -1259,7 +1410,7 @@ class PlayState(GameState):
         if condition == "can_exit":
             if self.area_data.get("area_type") == "town":
                 return True
-            if self.balls_left <= 0:
+            if catching.total_balls(self.game.story_manager) <= 0:
                 return True
             if self.rounds_completed >= self.min_rounds:
                 return True
@@ -1514,6 +1665,9 @@ class PlayState(GameState):
             flags["got_mega_bracelet"] = True
         elif event == "starter_stone":
             stone = hoenn.starter_stone(self.game)
+            lines += ["Steven: Something invisible is blocking the way on this bridge... and at the Fortree Gym too.",
+                      "Steven: This Devon Scope shows hidden Pokemon. Take it!"]
+            self._give_item("DEVON_SCOPE", lines)
             lines += ["Steven: You and your partner have come so far together.",
                       "This Mega Stone belongs with your starter."]
             self._give_item(stone, lines)
@@ -1879,9 +2033,11 @@ class PlayState(GameState):
             pokemon.level = levels.boss_level(self.game, self.game.story_manager.current_area_key, pokemon.id)
         elif levels.postgame_trainers(self.game):  # post-game: area bosses follow the cap too
             pokemon.level = levels.boss_level(self.game, self.game.story_manager.current_area_key, pokemon.id)
+        elif boss_data.get("exact_level"):  # a scripted fight (Birch's Poochyena, Lv 2)
+            pokemon.level = int(boss_data["level"])
         else:
-            pokemon.level = int(boss_data.get("level") or levels.boss_level(
-                self.game, self.game.story_manager.current_area_key, pokemon.id))
+            pokemon.level = levels.follow_team(self.game, [boss_data.get("level") or levels.boss_level(
+                self.game, self.game.story_manager.current_area_key, pokemon.id)])[0]
         pokemon.current_hp = pokemon.get_max_hp()
 
         bg_file = boss_data.get("background") if (boss_data.get("background") and self.game.assets.get_background(
@@ -2062,8 +2218,13 @@ class PlayState(GameState):
                 continue
 
             if btn_rect.width > 0 and btn_rect.collidepoint(pos):
-                self.balls_left -= 1
-                self.current_ball_img = random.choice(self.game.assets.ball_imgs)
+                story = self.game.story_manager
+                ball = catching.selected(story)  # the ball you picked (BALL button)
+                catching.use(story, ball)
+                img = self.game.assets.get_item_image("POKE_BALL" if ball == catching.POKE else ball)
+                size = self.game.assets.ball_imgs[0].get_size()
+                self.current_ball_img = pygame.transform.scale(img, size) if img else self.game.assets.ball_imgs[0]
+                self._thrown_ball = ball
 
                 target_p_idx = self.selected_catch_idx if self.selected_catch_idx != -1 else i
 
@@ -2081,6 +2242,16 @@ class PlayState(GameState):
 
                 self.was_shiny_override = is_shiny_catch and not is_correct_answer
 
+                self._catch_roll = None
+                if (is_correct_answer or is_shiny_catch) and not self.boss_manager.in_boss_mode:
+                    # The games' catch formula: a right answer has weakened it to a quarter of its
+                    # HP, a quick one (under 5 s) all the way to 1 HP.
+                    quick = (30 * FPS - self.question_timer) < 5 * FPS
+                    max_hp = pi.get_max_hp()
+                    terrain = self.area_data.get("battle_type", "")
+                    self._catch_roll = catching.window_throw(
+                        self.game, pi, ball, guaranteed=balance.is_legendary(pi.id),
+                        hp=1 if quick else max(1, max_hp // 4), max_hp=max_hp, terrain=terrain)
                 if is_correct_answer or is_shiny_catch:
                     self.handle_correct(target_p_idx, pi, is_shiny_catch, self.get_cx(target_p_idx))
                 else:
@@ -2274,7 +2445,7 @@ class PlayState(GameState):
         if self.is_progression_paused:
             return
 
-        if self.balls_left <= 0 and not self.ball_active and self.pause_timer == 0:
+        if catching.total_balls(self.game.story_manager) <= 0 and not self.ball_active and self.pause_timer == 0:
             if self.boss_manager.in_boss_mode:
                 self.show_dialogue(
                     [
@@ -2375,7 +2546,16 @@ class PlayState(GameState):
                 self.question_timer = 30 * FPS
 
         elif not self.flee_active:
+            roll = getattr(self, "_catch_roll", None)
+            if roll and not roll[0]:  # it broke free: same Pokemon, another question
+                from src.states.battle import WildBattleState
+                self._retry_idx = self.caught_idx
+                self.feedback_text = WildBattleState.BREAK_FREE[min(roll[1], 3)]
+                self.feedback_color = RED
+                return
             self.complete_catch(self.caught_idx)
+            caught = self.p_data[self.caught_idx] if 0 <= self.caught_idx < len(self.p_data) else None
+            catching.after_catch(self.game, caught, getattr(self, "_thrown_ball", None))
 
     def complete_catch(self, idx):
         pokemon_caught = self.p_data[idx]
@@ -2387,6 +2567,7 @@ class PlayState(GameState):
                 member.counters["catches"] = member.counters.get("catches", 0) + 1
 
         pokemon_caught.caught_region = self.game.story_manager.get_current_region()
+        pokemon_caught.caught_level = pokemon_caught.level  # no level evolution until its next level
         # Every catch is kept, duplicates too (Jordan's rule): branched lines (Ralts, Wurmple,
         # Snorunt, Clamperl, Applin, Burmy...) need a second copy. Full party -> the PC.
         is_new_species = not any(isinstance(v, dict) and v.get("id") == pokemon_caught.id
@@ -2461,7 +2642,24 @@ class PlayState(GameState):
         self.show_dialogue(msgs, callback=post_catch_callback)
         self.pause_timer = 90 if self.boss_manager.in_boss_mode else 40
 
+    def _retry_catch(self, idx):
+        """After a ball breaks open: the same Pokemon waits, here's another question."""
+        self.feedback_text = ""
+        self.caught_idx = -1
+        self.catch_selection_active = False
+        self.selected_catch_idx = idx
+        self.problem_str, self.correct_ans, self.options = self.generate_math_set(self.total_caught, num_options=3)
+        self.question_timer = 30 * FPS
+        name = self.p_data[idx].display_name.upper() if self.p_data[idx] else "It"
+        self.show_dialogue([f"{name} broke free! Answer again to throw another ball."])
+
     def reset_round(self):
+        retry = getattr(self, "_retry_idx", None)
+        self._retry_idx = None
+        if (retry is not None and 0 <= retry < len(self.p_data) and self.p_data[retry]
+                and catching.total_balls(self.game.story_manager) > 0):
+            self._retry_catch(retry)
+            return
         self.starbursts, self.idle_sparkles, self.scr_shake_timer, self.shake_amount = (
             [],
             [],
@@ -2513,8 +2711,12 @@ class PlayState(GameState):
         if self.boss_manager.draw(screen, width, height, offset_x, offset_y):
             return
 
+        bar = Utils.get_full_dialogue_rect(self.game)
         if not self.boss_manager.in_boss_mode:
             screen.fill(BLACK)
+            if self.route_bg:  # the route itself (redesign); the HUD gets a soft shade to read on
+                screen.blit(self.route_bg, (offset_x, offset_y))
+                screen.blit(self._hud_shade(width), (0, 0))
 
             if self.dialogue_box.visible and hasattr(self, "npc_sprite") and self.npc_sprite:
                 rect = self.npc_sprite.get_rect(center=(width // 2, height // 2 - 50))
@@ -2528,7 +2730,7 @@ class PlayState(GameState):
                 )
                 else 1
             )
-            for s in self.stars:
+            for s in (self.stars if not self.route_bg else []):
                 s[1] += s[2] * spd_base * warp_speed
                 if s[1] > height:
                     s[1], s[0] = 0, random.randint(0, width)
@@ -2536,7 +2738,11 @@ class PlayState(GameState):
                     screen, (150, 150, 150), (s[0] + offset_x, s[1] + offset_y), 1
                 )
 
-        lbl_text = "Balls Remaining: "
+        if not self.boss_manager.in_boss_mode:
+            theme.draw_textbox(screen, bar)  # the bottom bar: answers, feedback, the route menu's words
+        story = self.game.story_manager
+        ball = catching.selected(story)
+        lbl_text = f"{catching.label(ball).title()}: "  # the ball you'll throw; tap to switch
         lbl_width = self.game.assets.fonts["small"].size(lbl_text)[0]
 
         Utils.draw_text_outline(
@@ -2554,22 +2760,15 @@ class PlayState(GameState):
             self.game.assets.ui_ball,
             (20 + lbl_width + 5 + offset_x, 15 + offset_y),
         )
-        Utils.draw_text_outline(
-            screen,
-            f": {self.balls_left}",
-            self.game.assets.fonts["small"],
-            WHITE,
-            20
-            + lbl_width
-            + 5
-            + offset_x
-            + self.game.assets.ui_ball.get_width()
-            + 5,
-            20 + offset_y,
-            align="left",
-        )
+        count_x = 20 + lbl_width + 5 + offset_x + self.game.assets.ui_ball.get_width() + 5
+        count = f"x{catching.owned(story, ball)}"
+        if len(catching.balls_owned(story)) > 1:
+            count += "  (tap to switch)"
+        Utils.draw_text_outline(screen, count, self.game.assets.fonts["small"], WHITE, count_x, 20 + offset_y,
+                                align="left")
+        self.ball_hud_rect = pygame.Rect(10, 5, count_x + self.game.assets.fonts["small"].size(count)[0], 40)
 
-        self._draw_season_hud(screen, 20 + offset_x, 58 + offset_y)
+        self._draw_season_hud(screen, 20 + offset_x, HUD_INFO_Y + offset_y)
 
         pool_name = self.area_data.get("wild_pool_percentages")
         if pool_name:
@@ -2596,6 +2795,10 @@ class PlayState(GameState):
                     )
                     Utils.draw_star(screen, GOLD, (width // 2 + 160 + offset_x, 25 + offset_y), 12)
 
+        if self.is_progression_paused:  # dim the route under the route menu's buttons
+            overlay = pygame.Surface((width, bar.top), pygame.SRCALPHA)
+            overlay.fill((0, 0, 0, 110 if self.route_bg else 180))
+            screen.blit(overlay, (0, 0))
         self.game.ui_manager.draw(screen)
         unique_team_for_display = []
         seen_ids = set()
@@ -2684,6 +2887,10 @@ class PlayState(GameState):
                         self.boss_manager.in_boss_mode and self.boss_manager.boss_hp > 0
                     )
                 )
+                if not should_hide and not self.boss_manager.in_boss_mode and self.runaway_x_offsets[i] == 0:
+                    ink = p_info.image.get_bounding_rect()  # the sprite without its empty margin
+                    feet = self.sprite_y - p_info.image.get_height() / 2 + ink.bottom
+                    self._draw_ground(screen, cx + offset_x, feet - 4, max(120, int(ink.width * 1.3)))
                 if not should_hide:
                     draw_img = p_info.image.copy()
                     if is_other and not self.ball_active:
@@ -2700,78 +2907,50 @@ class PlayState(GameState):
                             screen.blit(self.caught_indicator, (r.right - 60, r.top))
 
             if self.pause_timer == 0 and not self.is_progression_paused and not self.dialogue_box.visible and not self.catch_selection_active:
+                # The answer under each Pokemon, in the bottom bar: the battle's white answer card.
                 txt = str(self.options[i])
                 font = self.game.assets.fonts["num"]
                 if len(txt) > 3:
                     font = self.game.assets.fonts["s_med"]
-
-                text_surf = font.render(txt, True, WHITE)
-                padding_x = 60
-                padding_y = 40
-                btn_w = text_surf.get_width() + padding_x
-                btn_h = text_surf.get_height() + padding_y
-
-                cy = height * 0.60
-                if i == 1:
-                    cy += btn_h + 10
-
-                btn_rect = pygame.Rect(cx - btn_w // 2, cy - btn_h // 2, btn_w, btn_h)
-                self.answer_btn_rects[i] = (
-                    btn_rect
-                )
-
-                pygame.draw.rect(screen, BLUE, btn_rect, border_radius=25)
-                Utils.draw_text_outline(
-                    screen, txt, font, WHITE, btn_rect.centerx, btn_rect.centery
-                )
+                btn_w = max(220, font.size(txt)[0] + 60)
+                btn_rect = pygame.Rect(0, 0, btn_w, bar.height - 56)
+                btn_rect.center = (cx, bar.centery - 2)
+                self.answer_btn_rects[i] = btn_rect
+                hover = btn_rect.collidepoint(pygame.mouse.get_pos())
+                pygame.draw.rect(screen, theme.TEXTBOX_FRAME, btn_rect.move(0, 5), border_radius=14)
+                pygame.draw.rect(screen, (236, 244, 255) if hover else WHITE, btn_rect, border_radius=14)
+                pygame.draw.rect(screen, theme.TEXTBOX_FRAME, btn_rect, 4, border_radius=14)
+                theme.shadow_text(screen, txt, font, btn_rect.centerx, btn_rect.centery, align="center")
 
         if self.game.debug_mode:
             for r in self.answer_btn_rects:
                 pygame.draw.rect(screen, (255, 0, 255), r, 2)
 
         if self.pause_timer == 0 and not self.is_progression_paused and not self.catch_selection_active:
-            Utils.draw_text_outline(
-                screen,
-                self.problem_str,
-                self.game.assets.fonts["big"],
-                GOLD,
-                width // 2,
-                height * 0.15,
-            )
+            # The question on a card at the top (the battle's text box style), the time left
+            # as a bar along its bottom.
+            qfont = self.game.assets.fonts["big"]
+            tw = qfont.size(self.problem_str)[0]
+            card = pygame.Rect(0, 0, max(360, tw + 120), 100)
+            card.center = (width // 2, 92)
+            theme.draw_textbox(screen, card)
+            theme.shadow_text(screen, self.problem_str, qfont, card.centerx, card.centery - 4, align="center")
             from src.core import speech
             if speech.available():
-                tw = self.game.assets.fonts["big"].size(self.problem_str)[0]
-                self.speak_rect = pygame.Rect(width // 2 + tw // 2 + 24, int(height * 0.15) - 26, 52, 52)
+                self.speak_rect = pygame.Rect(card.right + 12, card.centery - 26, 52, 52)
                 speech.draw_speaker(screen, self.speak_rect)
 
             if self.question_timer > 0:
-                bar_w = 200
-                bar_h = 10
                 ratio = max(0, min(1, self.question_timer / (30 * FPS)))
-                bar_x = width // 2 - bar_w // 2
-                bar_y = int(height * 0.22)
-                pygame.draw.rect(screen, BLACK, (bar_x, bar_y, bar_w, bar_h))
-                pygame.draw.rect(screen, GOLD, (bar_x, bar_y, int(bar_w * ratio), bar_h))
+                track = pygame.Rect(card.x + 24, card.bottom - 20, card.w - 48, 8)
+                pygame.draw.rect(screen, (210, 214, 224), track, border_radius=4)
+                color = theme.HP_GREEN if ratio > 0.5 else theme.HP_YELLOW if ratio > 0.2 else theme.HP_RED
+                pygame.draw.rect(screen, color, (track.x, track.y, int(track.w * ratio), track.h), border_radius=4)
 
-        if self.flash_timer > 0:
-            Utils.draw_text_outline(
-                screen,
-                self.flash_msg,
-                self.game.assets.fonts["s_med"],
-                GOLD,
-                width // 2,
-                height // 2,
-            )
+        if self.flash_timer > 0 and not (self.pause_timer > 0 and self.feedback_text):
+            self._bar_text(screen, bar, self.flash_msg, GOLD)
         if self.pause_timer > 0:
-            Utils.draw_multiline_text(
-                screen,
-                self.feedback_text,
-                self.game.assets.fonts["s_med"],
-                self.feedback_color,
-                width // 2,
-                height * 0.35,
-                max_width=width - 40,
-            )
+            self._bar_text(screen, bar, self.feedback_text, self.feedback_color)
 
         if self.ball_active:
             screen.blit(
@@ -2779,10 +2958,6 @@ class PlayState(GameState):
             )
 
         if self.is_progression_paused:
-            overlay = pygame.Surface((width, height), pygame.SRCALPHA)
-            overlay.fill((0, 0, 0, 180))
-            screen.blit(overlay, (0, 0))
-
             if self.rounds_completed == 0:
                 route_name = self.area_data.get(
                     "route_name",
@@ -2791,24 +2966,12 @@ class PlayState(GameState):
                 msg = f"Entered {route_name}"
             else:
                 msg = self.game.assets.get_text("explored_area")
-            Utils.draw_multiline_text(
-                screen,
-                msg,
-                self.game.assets.fonts["med"],
-                WHITE,
-                width // 2,
-                height * 0.3,
-                max_width=width - 100
-            )
-            Utils.draw_multiline_text(
-                screen,
-                self.game.assets.get_text("whats_next"),
-                self.game.assets.fonts["s_med"],
-                WHITE,
-                width // 2,
-                height * 0.4,
-                max_width=width - 100
-            )
+            if not self.dialogue_box.visible:  # as in the town menu: the words in the text box
+                theme.draw_textbox(screen, bar)
+                font = self.game.assets.fonts["dialog"]
+                theme.shadow_text(screen, msg, font, bar.x + 40, bar.y + 34)
+                theme.shadow_text(screen, self.game.assets.get_text("whats_next"), font, bar.x + 40,
+                                  bar.y + 34 + int(font.get_linesize() * 1.25))
 
 
 # [REF-0036: City Hub State]
@@ -2904,12 +3067,12 @@ class CityState(GameState):
         self.game.change_state(JournalState(self.game, self))
 
     def _open_map(self):
-        from src.states.systems import MapState
-        self.game.change_state(MapState(self.game, self))
+        from src.states.region_map import RegionMapState
+        self.game.change_state(RegionMapState(self.game, self))
 
     def _open_fly(self):
-        from src.states.systems import FlyState
-        self.game.change_state(FlyState(self.game, self))
+        from src.states.region_map import RegionMapState
+        self.game.change_state(RegionMapState(self.game, self, fly=True))
 
     def _open_pc(self):
         from src.states.systems import PCState
@@ -2936,6 +3099,10 @@ class CityState(GameState):
         self.game.change_state(PokemonPartyMenuState(self.game, self, context="normal"))
 
     def load_area_background(self):
+        # One look for a region's towns (Jordan): Pokemon Journeys' maps where it has the town.
+        img = self.game.assets.get_journeys_background("towns", self.area_key)
+        if img:
+            return img
         bg_config = self.area_data.get("backgrounds", {}).get("main")
         if bg_config:
             img = self.game.assets.get_background(bg_config)
@@ -3137,8 +3304,10 @@ class CityState(GameState):
 
             callback = self._get_callback_for_option(opt_data)
             if callback:
-                btn = Button(rect, _fill_names(self.game, opt_data['text']),
-                             self.game.assets.fonts["tiny"], callback, autosize=False)
+                toward = opt_data.get("target_area") and opt_data.get("target_area") == guide.cached(self.game, "hop")
+                btn = Button(rect, ("> " if toward else "") + _fill_names(self.game, opt_data['text']),
+                             self.game.assets.fonts["tiny"], callback, autosize=False,
+                             bg_color=GOLD if toward else BLUE)  # the way to the tracked mission
                 self.hover_buttons.append(btn)
                 self.game.ui_manager.add_element(btn)
 
@@ -3604,6 +3773,7 @@ class CityState(GameState):
         self.visit_mom(is_neighbor=True, is_silver_mom=True)
 
     def visit_mom(self, is_neighbor=False, is_silver_mom=False):
+        self.game.music.play("home")
         self.clear_hover_menu()
         self.npc_active = True
         self.current_npc = "silver_mom" if is_silver_mom else "mom"
@@ -3684,6 +3854,7 @@ class CityState(GameState):
             self.npc_dialogue.callback = lambda: self._offer_move(region, phone=False)
 
     def visit_prof_oak(self):
+        self.game.music.play("oak")
         self.clear_hover_menu()
         self.npc_active = True
         self.current_npc = "professor_oak"
@@ -4216,7 +4387,7 @@ class CityState(GameState):
         rival_pkmn = Pokemon(story.rival_starter_raw, self.game.assets, size_mult=2)
 
         if region == "JOHTO":
-            rival_name = "SILVER"
+            rival_name = getattr(self.game, "rival_name", "SILVER")
             rival_sprite = self.game.assets.get_trainer_image("silver.png")
             if not rival_sprite:
                 rival_sprite = self.game.assets.get_trainer_image("rival.png")
@@ -4224,14 +4395,8 @@ class CityState(GameState):
             intro_text = "...You think you're strong?"
         else:
             rival_name = getattr(self.game, "rival_name", "BLUE")
-            rival_sprite_key = getattr(self.game, "rival_character", "blue")
-            rival_sprite = self.game.assets.get_player_image(rival_sprite_key, back=False)
-            if rival_sprite:
-                h = int(self.game.height * 0.6)
-                w = int(rival_sprite.get_width() * (h / rival_sprite.get_height()))
-                rival_sprite = pygame.transform.scale(rival_sprite, (w, h))
-            else:
-                rival_sprite = self.game.assets.get_trainer_image("rival.png")
+            rival_sprite = (rival_image(self.game, getattr(self.game, "rival_character", "blue"))
+                            or self.game.assets.get_trainer_image("rival.png"))
             bg_name = "battle_oaklab.png"
             intro_text = "Let's settle this!"
 
@@ -4537,6 +4702,8 @@ class CityState(GameState):
         self.is_npc_exiting = False
         self.npc_exit_callback = None
         self.npc_sprite = None
+        if self.current_npc in ("mom", "silver_mom", "professor_oak"):
+            self.game.music.play("town")  # back to the town's own music
         self.current_npc = None
         self.npc_bg = None
         self.choice_active = False
@@ -4563,6 +4730,11 @@ class CityState(GameState):
                 story.story_flags[flag] = True
         elif condition:
             met = self._check_menu_condition(condition)
+        elif on_enter.get("type") == "event":
+            met = True
+        if met and on_enter.get("type") == "event":  # a story scene on arrival (Norman and Wally)
+            self.story_event(on_enter["event"])
+            return True
         if not (met and on_enter.get("type") == "trainer_battle"):
             return False
 
@@ -4591,8 +4763,10 @@ class CityState(GameState):
         if levels.postgame_trainers(self.game, self.area_key) and not starter_battle:
             levels.set_team(opponent_team, levels.trainer_team_levels(
                 self.game, self.area_key, len(opponent_team), boss=True))  # post-game cap; legendaries stay 70
-        elif t_info.get("levels"):
-            levels.set_team(opponent_team, list(t_info["levels"]), exact=True)  # exact levels from the games
+        elif t_info.get("levels") and starter_battle:
+            levels.set_team(opponent_team, list(t_info["levels"]), exact=True)
+        elif t_info.get("levels"):  # exact levels from the games, lifted if the team has outgrown them
+            levels.set_team(opponent_team, levels.follow_team(self.game, t_info["levels"]), exact=True)
         elif starter_battle:
             levels.set_team(opponent_team, [5] * len(opponent_team))
         else:
@@ -4639,6 +4813,12 @@ class CityState(GameState):
         if hoenn.needs_choice(self.game.story_manager):
             from src.states.hoenn import HoennVersionState
             self.game.change_state(HoennVersionState(self.game, lambda: CityState(self.game)))
+            return
+        if self.game.story_manager.needs_rival_choice():  # this region's rival, picked and named
+            from src.states.menus import RivalSelectionState
+            self.game.change_state(RivalSelectionState(
+                self.game, region=self.game.story_manager.get_current_region(),
+                on_done=lambda: self.game.change_state(CityState(self.game))))
             return
         pending = self.game.story_manager.pending_starter()
         if pending:  # first visit to a region: its professor's partner Pokemon, before anything else
@@ -4868,7 +5048,7 @@ class CityState(GameState):
             20,
             align="left"
         )
-        _draw_season_hud(self.game, screen, self.area_key, 20, 58)
+        _draw_season_hud(self.game, screen, self.area_key, 20)
 
 
 # Jordan: only LONG rides between two regions/sub-regions heal (ships, the Seagallop to and from
@@ -4913,7 +5093,9 @@ class AreaTransitionState(GameState):
 
         rect = Utils.get_full_dialogue_rect(self.game)
         msg = []
-        if initial_message:
+        if isinstance(initial_message, list):  # several lines (a new game's opening scene)
+            msg += initial_message
+        elif initial_message:
             msg.append(initial_message)
         if heal:  # the team that sets off is healed...
             heal_team(self.game)
@@ -4949,6 +5131,7 @@ class AreaTransitionState(GameState):
             is_elm = "Elm" in initial_message
 
             if is_oak or is_elm:
+                self.game.music.play("lab")
                 bg_name = "pallet_city_lab.png" if is_oak else "new_bark_lab.png"
                 kanto_dir = self.game.assets.kanto_backgrounds_dir
                 johto_dir = os.path.join(os.path.dirname(kanto_dir), "johto")
@@ -5034,8 +5217,8 @@ def _collapse_hud(state):
         from src.states.menu_grid import MenuGridState
         state.game.change_state(MenuGridState(state.game, state, state.menu_entries))
 
-    state.hud_buttons = [Button((20, 70, 170, 72), "MENU", state.game.assets.fonts["s_med"], open_menu,
-                                bg_color=(60, 96, 210), autosize=False)]
+    state.hud_buttons = [CommandButton((20, 56, 170, 60), "MENU", state.game.assets.fonts["button"], open_menu,
+                                       bg_color=theme.RUN, autosize=False)]
 
 
 def evolve_ready_party(game, return_state):
@@ -5122,11 +5305,13 @@ class PokeCenterState(GameState):
 
         for p in self.game.story_manager.player_team:
             p.heal_full()
-        if self.game.assets.heal_sfx:
-            self.game.assets.heal_sfx.play()
 
     def start(self):
         self.game.ui_manager.add_element(self.dialogue_box)
+        from src.core import music
+        if not any(p.search(str(t)) for t in self.dialogue_box.text_lines for p, n in music.JINGLE_CUES
+                   if n == "pokemon_healed"):
+            self.game.music.jingle("pokemon_healed")  # (a nurse line that doesn't say it)
 
     def _load_building_bg(self, game, type_suffix):
         area_data = game.story_manager.get_current_area_data()
@@ -5331,13 +5516,7 @@ class GymLobbyState(GameState):
             kr = self.game.story_manager.region_rivals.get("KANTO") or {}
             rival_name = kr.get("name") or getattr(self.game, "rival_name", "BLUE")
             rival_char = kr.get("character") or getattr(self.game, "rival_character", "blue")
-            img = self.game.assets.get_player_image(rival_char, back=False)
-            if img:
-                h = int(self.game.height * 0.6)
-                w = int(img.get_width() * (h / img.get_height()))
-                trainer_sprite = pygame.transform.scale(img, (w, h))
-            else:
-                trainer_sprite = self.game.assets.get_trainer_image("rival.png")
+            trainer_sprite = rival_image(self.game, rival_char) or self.game.assets.get_trainer_image("rival.png")
             starter_id = self.game.story_manager.rival_starter_id("KANTO", 1)
             rematch = bool(self.game.story_manager.story_flags.get("beat_champion"))
             table = self.FRLG_CHAMPION_REMATCH if rematch else self.FRLG_CHAMPION
@@ -5381,6 +5560,8 @@ class GymLobbyState(GameState):
             if rm:  # a rematch without its own "team" keeps the (starter-dependent) team, canon levels
                 t_data["team"] = list(rm.get("team") or t_data.get("team", []))
                 t_data["levels"] = list(rm["levels"])
+                if rm.get("movesets"):  # the rematch team's own canon moves
+                    t_data["movesets"] = rm["movesets"]
             else:
                 rematch_boost = 10
 

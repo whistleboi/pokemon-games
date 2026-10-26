@@ -35,16 +35,12 @@ class Game:
         is_android = "ANDROID_ARGUMENT" in os.environ or "ANDROID_PRIVATE" in os.environ
         self.is_pc = (sys.platform in ["win32", "linux", "darwin"]) and not is_android
         os.environ.setdefault("SDL_RENDER_SCALE_QUALITY", "1")  # smooth scaling, not blocky
-        mode = pygame.SCALED | (pygame.RESIZABLE if self.is_pc else pygame.FULLSCREEN)
+        # Fullscreen everywhere (Jordan). On a PC, F11 switches between fullscreen and a window.
+        mode = pygame.SCALED | pygame.FULLSCREEN
         try:
             self.screen = pygame.display.set_mode((self.width, self.height), mode)
         except pygame.error:  # no renderer (headless tests): a plain window of the same size
             self.screen = pygame.display.set_mode((self.width, self.height))
-        if self.is_pc:
-            try:  # start filling the screen, like before
-                pygame.Window.from_display_module().maximize()
-            except Exception:
-                pass
 
         self.assets = AssetManager(self.width, self.height)
         from src.ui.widgets import Button
@@ -194,6 +190,9 @@ class Game:
         """One-line way to show a golden text box anywhere"""
         box_rect = pygame.Rect(40, self.height - 200, self.width - 80, 160)
         box = ClassicDialogueBox(box_rect, lines, self.assets.fonts["med"], callback, auto_hide=True)
+        # Nothing else updates this box, so it types itself out as it's drawn (the Bag's "grew to
+        # Lv 12!" and "can't grow past the cap" messages used to stay blank).
+        box.self_update = True
         self.ui_manager.add_element(box)
         return box
 
@@ -282,7 +281,13 @@ class Game:
     def run(self):
         while True:
             if not pygame.display.get_active():
-                pygame.time.wait(250)
+                # Minimized: keep answering the window's events (Windows marks a window that
+                # stops reading them as "Not Responding" and offers to close it), but skip drawing.
+                for event in pygame.event.get():
+                    if event.type == pygame.QUIT:
+                        pygame.quit()
+                        sys.exit()
+                pygame.time.wait(100)
                 continue
             try:
                 self._frame()
@@ -290,8 +295,18 @@ class Game:
                 raise
             except Exception:
                 self._recover_from_error()
-            pygame.display.flip()
+            try:
+                pygame.display.flip()
+            except pygame.error:  # the screen can be lost for a moment while the window comes back
+                pass
             self.clock.tick(FPS)
+
+    def toggle_fullscreen(self):
+        """F11 on a PC: fullscreen <-> a window."""
+        try:
+            pygame.display.toggle_fullscreen()
+        except pygame.error:
+            pass
 
     def _recover_from_error(self):
         """Safety net: an unexpected error writes crash.log and returns to the current town or
@@ -334,6 +349,8 @@ class Game:
                 sys.exit()
             if event.type == pygame.KEYDOWN and event.key == pygame.K_F3:
                 self.debug_mode = not self.debug_mode
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_F11 and self.is_pc:
+                self.toggle_fullscreen()
             if event.type == MUSIC_ENDED_EVENT:
                 self.music.on_track_end()
             for handler in self.event_handlers:
@@ -355,6 +372,8 @@ class Game:
             if remaining and self.current_state is frame_start_state:
                 self.current_state.handle_events(remaining)
         self.current_state.update()
+        if hasattr(self, "music"):
+            self.music.update()  # a fanfare that ended lets the music carry on
         self.current_state.draw()
         self.keyboard.draw(self.screen)
         if getattr(self, "_fade_left", 0) > 0 and self._fade_from is not None:

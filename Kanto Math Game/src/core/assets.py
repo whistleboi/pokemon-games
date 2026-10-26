@@ -144,6 +144,11 @@ class AssetManager:
                 width * 0.02 * self.font_scale), bold=True),
             "tiny": self._load_font(int(
                 width * 0.015 * self.font_scale), bold=True),
+            # The redesigned battle screen and menus (src/ui/theme.py): labels and buttons.
+            "caption": self._load_font(16, bold=True),
+            "label": self._load_font(20, bold=True),
+            "button": self._load_font(28, bold=True),
+            "dialog": self._load_font(32, bold=True),
         }
 
         self.ball_imgs = self._load_balls()
@@ -387,17 +392,19 @@ class AssetManager:
 
     def _load_font(self, size, bold=False):
         primary_font = None
-        candidates = [
+        candidates = [  # the rebuilt font has a proper accented e (Pokémon)
+            Utils.get_actual_path(self.assets_dir, "pokemon_gsc_rebuilt.ttf"),
             self.font_path,
             Utils.get_actual_path(self.assets_dir, "pokemon_gsc.ttf"),
             Utils.get_actual_path(self.assets_dir, "pokemon_gsc.ttf.ttf"),
         ]
+        from src.ui.fonts import TightFont
         for path in candidates:
             if primary_font:
                 break
             if os.path.exists(path):
                 try:
-                    font = pygame.font.Font(path, size)
+                    font = TightFont(path, size)  # the games' proportional spacing
                     font.render("Test", False, WHITE)
                     primary_font = font
                 except Exception as e:
@@ -441,21 +448,37 @@ class AssetManager:
 
         if isinstance(text, list):
             if kwargs:
-                formatted = []
-                for line in text:
-                    try:
-                        formatted.append(line.format(**kwargs))
-                    except Exception:
-                        formatted.append(line)
-                return formatted
+                return [self._format(line, kwargs) for line in text]
             return text
 
         if kwargs:
-            try:
-                return text.format(**kwargs)
-            except Exception:
-                return text
+            return self._format(text, kwargs)
         return text
+
+    @staticmethod
+    def _format(line, kwargs):
+        """str.format that leaves tokens it wasn't given ({friend_name}...) for a later pass."""
+        class Keep(dict):
+            def __missing__(self, k):
+                return "{" + k + "}"
+        try:
+            return line.format_map(Keep(kwargs))
+        except Exception:
+            return line
+
+    def get_journeys_background(self, kind, area_key):
+        """A town ('towns') or route ('routes') background drawn from Pokemon Journeys' maps
+        (dev/builders/render_journeys_backgrounds.py): Kanto, Johto, Hoenn, Sinnoh, Sevii and the
+        Orange Islands share its look. None where there isn't one."""
+        cache = self.__dict__.setdefault("_journeys_bgs", {})
+        key = (kind, str(area_key).lower())
+        if key not in cache:
+            path = os.path.join(self.assets_dir, "journeys", kind, f"{key[1]}.png")
+            try:
+                cache[key] = pygame.image.load(path).convert() if os.path.isfile(path) else None
+            except pygame.error:
+                cache[key] = None
+        return cache[key]
 
     def _region_bg_map(self):
         """Every background in a region folder (backgrounds/hoenn, backgrounds/sinnoh, ...)."""

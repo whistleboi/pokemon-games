@@ -1,5 +1,213 @@
 # Changelog
 
+## Unreleased: opponents follow your team, Hoenn's story as in Omega Ruby / Alpha Sapphire
+
+- **The rest of the Journeys soundtrack, hooked up.**
+  - **Screen themes, in every region:** the Pokémon Center, the starter lab and the Oak and Elm lab scenes, Mom's house, Professor Oak, the Game Corner, and evolution.
+  - **Trainer encounters:** each has its "eyes meet" theme by trainer: the boys' or girls' theme, Team Rocket and the other villain teams, the rival, and Jessie & James. Gym Leaders, the Elite Four and Champions keep their battle music.
+  - **Fanfares:** healing at a Pokémon Center, receiving an item ("received the …"), a badge, a catch, a level up, an evolution, and picking up items. Each pauses the music, plays once, and the music carries on where it was, like in the games. They're cued by the text box line that announces the moment, so every place those happen gets them.
+- **The Journal, uncluttered.** Missions are a compact list at the left (a STORY/SIDE tag, the title, a dot for active, guided or done). The one you tap shows in full at the right with its status, whole description, reward under its own heading, and GUIDE ME. The mission being guided is in the text box, and it opens on that one.
+- **A new title screen.** A town or route from the Journeys maps drifts slowly behind the screen, with the "POKéMATH ADVENTURES" logo in the series' yellow and blue. A showcase Pokémon (starters, legendaries) changes every few seconds. NEW GAME, LOAD GAME and QUIT use the battle menu's buttons; LOAD GAME is greyed until there's a save.
+- **Load, Save and the new-game file picker in the menu frame.** Files are white cards with a "No.001" tag, the name, region, area, badges and date. PREV and NEXT sit in the text box with the page. Loading asks on a card with YES and NO, and the Save screen got a SAVE button (it used to need Enter).
+- **The new-game steps redesigned.**
+  - **Trainer and rival:** you pick on a stage with < >, type the name in a proper name box (the default shows until you type), and NEXT is in the text box. A "Step 1 of 4" marker shows in the header.
+  - **Region:** each region is a picture card of its first town, labelled with its games and the sub-regions it opens up (Kanto: Sevii and Orange Islands; Hoenn: Orre; Sinnoh: Hisui and Sinjoh Ruins; Unova: Decolore Islands; Galar: Isle of Armor and Crown Tundra; Paldea: Kitakami and Blueberry Academy).
+- **Kanto's own soundtrack, from Pokémon Journeys.** Its 48 Kanto tracks are in `assets/music/kanto` (`dev/builders/import_journeys_music.py` copies them).
+  - **Areas:** in Kanto, every town, route and dungeon plays its own theme, shared out the way the original games did (Viridian, Pewter and Saffron share one; Routes 3-10 share Route 3's; the caves share Mt. Moon's).
+  - **Battles:** wild, trainer, Gym, Elite Four and Champion battles use the Kanto battle themes, followed by the trainer or Gym victory tunes. Gyms play the Gym theme inside.
+  - **Title screen:** plays the Hall of Fame theme. Other regions keep their music.
+- **More menus in the new frame: party, summary, Mart, Badge Case and Options.**
+  - **Party:** white cards with each Pokémon's sprite, level, status tag (fainted ones are tinted) and HP bar. The message and CANCEL sit in the text box.
+    - **Tap menu:** tapping a Pokémon opens a small menu beside it with its name, SUMMARY and MOVE (SWITCH in battle).
+    - **Closing it:** tapping anywhere else closes the menu, tapping another Pokémon moves it there, and tapping the same Pokémon closes it.
+  - **Summary:**
+    - **Header:** takes the Pokémon's own type colour and holds the INFO, STATS and MOVES tabs.
+    - **Portrait card (left):** sprite, name, level, type chips, status and HP. The tabs show on cards at the right, and the text box at the bottom explains the tab.
+    - **STATS:** the bars now judge each stat against what's strong at its level. SHOW IVs switches to the IVs (0-31), like the games' judge view.
+  - **PC:** tapping a Pokémon (party or Box) opens a menu with MOVE, SUMMARY and, in the Box, RELEASE. MOVE picks it up and the next tap puts it down, as before. Tapping elsewhere closes the menu.
+  - **Mart:** a blue header with EXIT, BUY / SELL and your money, and the shelf as white item cards. The text box says what the item under the pointer does, and the quantity picker is a card.
+  - **Badge Case:** a case in the region's colour with a velvet pocket per badge. Earned badges show their names; ones not yet earned are faint. The bottom bar holds the count and the region arrows.
+  - **Options:** the math levels as white cards with a tick on the chosen one. The level cap and autosave each have their own card, the example question and CONFIRM sit in the text box, and QUIT is in the header.
+- **"Pokémon" is written out, with a matching é.**
+  - **The é:** the game font now draws é as its own "e" with an accent, instead of borrowing a different font's é.
+  - **"PKMN":** it reads Pokémon (or POKéMON on buttons) everywhere it's shown: route buttons, the town menu, party and battle messages, and every dialogue line.
+- **The menus redesigned to match the battle screen.** The Pokédex, PC, Journal and Bag share one frame. Each has a slate background, a coloured header band (Pokédex red, PC teal, Journal gold, Bag orange) with BACK and the title, white cards with dark text, the battle menu's buttons, and the battle text box along the bottom. Everything works as before.
+  - **Pokédex:** 18 entries a page instead of 12, each a card with its number, sprite, name and a ball for caught ones; seen ones show as silhouettes. The filter tabs and the Shinies and Sort toggles sit in one row under the header. The bottom bar shows the page and the Pokémon under the pointer.
+  - **PC:** a Box shows all 30 slots at once (6 × 5, like the games) instead of scrolling through big cards, and the mouse wheel flips Boxes. Party cards show the level and an HP bar. The bottom bar shows the Pokémon under the pointer, and RELEASE sits in it.
+  - **Journal:** each mission is a card with a STORY or SIDE tag, a status tag, its description, its reward and GUIDE ME. The bottom bar shows which mission is being guided, with UP and DOWN for longer lists.
+  - **Bag:** the pocket tabs run across the top. Items are cards with an icon, name and count; ones that can't be used right now are greyed. The bottom bar says what the item under the pointer does, and your money is in the header.
+- **The top-left HUD no longer overlaps.** The season, Repel and Journal-guide lines sit under the MENU button on a soft dark panel, instead of behind it.
+- **Caught past its evolution level? It evolves at its next level up.** A Pokémon caught at or above the level it would evolve at doesn't evolve on the catch. It evolves the first time it levels up after that. Friendship, item and trade evolutions are unchanged.
+- **Towns and routes drawn from Pokémon Journeys' maps, in one style.**
+  - **Coverage:** Kanto, Johto, Hoenn, Sinnoh, the Sevii Islands and the Orange Islands now use the hand-built maps of the Pokémon Journeys V18 fan game: 69 towns and 163 routes and caves. These regions look the same throughout, with no stretching.
+  - **Towns:** each town is framed on the town itself, as close up as still shows most of it. Where a map is smaller than the screen, its sea, forest or rock carries on past the edge.
+  - **Other regions:** Unova, Orre and the 3D-only regions keep their current backgrounds, because Journeys built only a few of their maps or none at all. Indoor and empty Journeys maps are left out too.
+- **The route screen, redesigned.** Every route function works as before.
+  - **Backdrop:** the route itself, framed on its tall grass (or the area's battle background where Journeys has no map) instead of a starfield.
+  - **Wild Pokémon:** each one stands on a patch of grass, rock or water.
+  - **Question:** it sits on a card at the top, with a timer bar that turns from green to red.
+  - **Answers:** they're white cards in the bottom bar, each under its Pokémon. "Gotcha!" and the other messages show there too.
+  - **Route menu:** "Entered Route 1 / What's next?" sits in the text box, like the town menu, and the menu buttons, FLEE and YES / NO use the battle menu's colours.
+- `dev/builders/render_journeys_backgrounds.py` draws all of these into `assets/journeys/`, and `dev/builders/rxdata.py` reads RPG Maker XP files.
+- **Easier catching at the catch window.**
+  - Legendaries, Mythicals and boss Pokémon are a sure catch at the end of the battle, like SwSh's Dynamax Adventures.
+  - Every other Pokémon keeps its ball's odds, but half of the throws that would have broken free now catch. This applies after a battle and on a route's right answer. A ball thrown from the Bag mid-battle keeps the plain odds.
+- **Poké Balls are in the Bag.** Each region's Bag keeps its own Poké Balls, and a new region's Bag starts with 5. Old saves put their Poké Balls in the Bag in use.
+- **A new battle screen, in the games' style, carried across every menu.**
+  - **Text:** the Pokémon font is now spaced by letter width, so lines read like the games' text and fit more words. Text boxes are the games' white box with a blue frame and dark, shadowed text.
+  - **Menus:** panels everywhere are deep slate blue with a light edge. Battles and towns share one bottom bar: a prompt on the left ("What will CHARIZARD do?", "Welcome to Pallet Town!") and four coloured commands on the right (FIGHT red, BAG yellow, POKéMON green, RUN blue).
+  - **Info boxes:** the foe's at the top left and yours above the text box, cream with dark text, an "HP" label, status tags, your HP numbers and EXP bar.
+  - **Moves:** each move card shows its type colour, name, type and power, plus a short SUPER! / WEAK / NO EFFECT tag and badge. Moves that match your type have a gold edge.
+  - **Math:** the question sits on a card at the left with four big, clear answer buttons. The right answer turns green with a star burst; a wrong pick turns red and wobbles.
+  - **Catching:** YES and NO sit at the right of the text box, with the ball choice and count beside them.
+  - **Animations and timing:** attacks lunge and the target blinks and is knocked back. The screen no longer shakes. HP bars drain at a steady speed, and the next battle message waits for the attack and the bar to finish.
+
+- **Every move and its effects.**
+  - All 847 main-series moves have their game data (power, accuracy, PP, priority, target) and effect text, from PokeAPI. These are the effects pokemondb.net lists.
+  - **Stat moves work.** Growl, Swords Dance, Close Combat's drops and Ancient Power's boosts all use the games' stages (−6 to +6) and messages ("rose sharply!", "won't go any lower!"). Stages reset when a Pokémon switches out.
+  - **Effects added:** confusion, infatuation, trapping moves (Wrap, Fire Spin), Leech Seed, Curse, Ingrain, Aqua Ring, Yawn, Perish Song, Taunt, Disable, Substitute, Protect, Endure, Focus Energy and rampaging moves (Thrash, Outrage).
+  - **Field moves:** Reflect, Light Screen, Aurora Veil, Safeguard, Mist, Tailwind, Trick Room, Mud Sport and Water Sport, plus the entry hazards Spikes, Toxic Spikes, Stealth Rock and Sticky Web.
+  - **Healing moves:** Recover, Rest, Wish and the weather-based ones (Moonlight, Synthesis, Morning Sun).
+  - **One-hit KO moves** now work too.
+  - **About twenty unique moves:** Metronome, Pain Split, Belly Drum, Haze, Psych Up, Teleport, Roar and others.
+  - Pokémon now learn status moves like in the games (Bulbasaur starts with Growl).
+  - **Wrong answers:** a wrong answer gives a status move a 50% chance to fail.
+  - **Opponents** use status moves when they help.
+  - The Summary shows what the selected move does.
+- **Poké Balls work like the games.**
+  - Catching uses the Gen 8/9 formula: catch rate, HP left, status, the low-level bonus, up to three shakes and critical captures. The game had every species at catch rate 45; each now has its real rate.
+  - **Balls:** Great, Ultra and Master Balls, plus the specialty balls with their real bonuses (Net, Dive, Nest, Repeat, Timer, Quick, Dusk, Level, Lure, Moon, Fast, Dream, Beast...). Heal, Friend and Luxury Balls do their extra effects.
+  - **After a KO:** you can keep throwing until it's caught or you stop.
+  - **From the Bag:** you can throw a ball any time in a wild battle; if it breaks free, the foe gets its turn.
+  - **Breaking free:** you get the games' lines ("Aww! It appeared to be caught!").
+  - **Route catching:** a right answer counts as having weakened the Pokémon, and a quick one as down to 1 HP. If it breaks free you get another question.
+  - **Choosing a ball:** tap the ball count on a route, or use the BALL button in battle.
+- **Poké Marts sell what the games sell.**
+  - **Badge-based counter:** Poké Balls, Potions and status heals to start, then Great Balls and Super Potions (1 badge), Hyper Potions and Revives (3), Ultra Balls and Full Heals (5), Max Potions (7) and Full Restores (8).
+  - **Specialty balls** unlock by badges too.
+  - **Department stores** add X items, Dire Hit, Guard Spec. and drinks.
+  - Buying 10 Poké Balls gives a Premier Ball. The purchase screen shows what each item does.
+- **Items do what they do in the games.**
+  - **Medicine:** Potion 20 HP, Super Potion 60, Hyper Potion 120, Max Potion full; Antidote, Paralyze Heal, Awakening, Burn Heal and Ice Heal; Full Heal; Full Restore; Revive and Max Revive; the drinks.
+  - **Battle items:** X items (+2), Dire Hit and Guard Spec.
+  - **Repel:** routes have no step-based encounters, so while a Repel lasts you can leave a route without battling (Repel 2 routes, Super 4, Max 5).
+  - **Escape Rope:** takes you out of a cave or building to the last Pokémon Center.
+- **The Bag has the games' pockets:** Items, Medicine, Poké Balls, Berries, TMs & HMs and Key Items. In battle it shows Medicine, Poké Balls and Battle Items. Items with no use here say so.
+- **Using items:**
+  - Rare Candies can be used several at a time (−10 / −1 / +1 / +10 / MAX), up to the level cap.
+  - Every item message now shows. A pop-up message bug kept the Bag's lines ("grew to Lv 12!", "can't grow past the cap") from ever typing out.
+  - Battle items say who used what and how much it healed.
+- **Status tags in battle.** BRN, PAR, PSN, TOX, SLP and FRZ show in the games' colours beside each Pokémon's name. End-of-turn burn and poison say how much HP was lost, and explain the status the first time.
+- **Wrong answers can't knock out.** A move made after a wrong answer deals at most 49% of the foe's HP, all hits together, fixed-damage moves too.
+- **Pokémon sent to the PC are healed,** as in the games.
+- **Town Map and Fly on the region's map.**
+  - Every region hands you its Town Map when you arrive.
+  - The map is that region's part of the world map. It shows where you are, the towns you've visited and your Journal goal.
+  - Fly: tap a town, then FLY. LIST still opens the town list.
+- **Route guide.** Pick GUIDE ME on a Journal mission (the first story mission is guided otherwise). The way there lights up gold in town and route menus ("> Route 104"), and GOAL / NEXT show on screen.
+- **Town backgrounds** for 121 towns, from each region's own games on Bulbapedia. The pixel-art version is used where a region was in several generations: Emerald, Platinum, Black/White, HeartGold/SoulSilver. The Orange and Decolore Islands use the anime. 17 towns still use the generic background.
+
+- **Fullscreen, and no more crash when minimized.**
+  - The game now starts fullscreen. On a PC, F11 switches between fullscreen and a window.
+  - Minimizing used to stop the game from answering Windows, so Windows flagged it as not responding. While minimized it now keeps answering the window and just pauses drawing.
+- **Fly is easier to read.** Three columns of bigger buttons, grouped by region with the region you're in first. The list scrolls like the PC (mouse wheel), with UP/DN buttons, Page Up/Page Down and a scroll bar.
+- **Each region has its own rival, and you name them.** The name starts as the canon one; type another to change it.
+
+  | Region | Rival | Second friend |
+  |---|---|---|
+  | Kanto | Blue | |
+  | Johto | Silver | |
+  | Hoenn | May or Brendan | |
+  | Sinnoh | Barry | |
+  | Unova | Cheren or Bianca | the other one |
+  | Kalos | Serena or Calem | Shauna |
+  | Alola | Hau | Gladion |
+  | Galar | Hop | |
+  | Paldea | Nemona | |
+
+  - The rival screen appears for your starting region, and again the first time you reach each new region.
+  - Rivals use their trainer sprites (Calem and Shauna from Pokémon Showdown). The names you choose show in all the region's battles and dialogue.
+  - Saves from before this keep the rivals they already have.
+
+- **Wild Pokémon and trainers now scale with your strongest Pokémon,** in every region. A fast-levelled team can no longer knock out everything in one hit after a wrong answer.
+  - An area's level never drops below your best Pokémon's level −3, which is the post-game spread: wild Pokémon land 2–5 levels under your best, route trainers 0–2 under it.
+  - Story trainers (rivals, villains, area bosses) keep their canon levels unless your team has outgrown them. Then their ace is lifted to your best Pokémon's level, keeping the team's spread.
+  - Areas whose own level is higher keep it.
+  - Unchanged: Gym Leaders, the Elite Four and Champions (canon levels), legendaries, the first rival battle and all the post-game rules.
+- **Hoenn's opening follows Omega Ruby / Alpha Sapphire.** After the story choice you arrive home in Littleroot without a Pokémon.
+  - Professor Birch isn't at his lab, and his wife next door says he's out on Route 101.
+  - On Route 101 a wild Poochyena is chasing Birch. You pick Treecko, Torchic or Mudkip from his bag, then fight the Poochyena (Lv 2, can't be caught).
+  - Back at the lab, Birch lets you keep it and sends you to meet his kid, your rival, on Route 103 (their starter beats yours, Lv 5).
+  - After that battle, Birch gives you the Pokédex and the rival gives you 10 Poké Balls. You can't catch Pokémon before then.
+  - A boy sketching on the path keeps Route 102 closed until you have the Pokédex. The Oldale Poké Mart clerk gives you 10 free Potions.
+  - In Petalburg, your dad Norman meets Wally and lends him Zigzagoon. **Wally then catches his Ralts in a scene that plays itself:** Wally's back sprite stands where your Pokémon would be, Zigzagoon tackles, Wally throws the ball and Ralts is caught. Norman then sends you to Rustboro.
+- **The rest of Hoenn matches the walkthrough's story beats:**
+  - The Petalburg Woods grunt (Lv 9 Poochyena) guards a Devon researcher, who gives you the Exp. Share.
+  - Mr. Stone wants the stolen Devon Parts back from Rusturf Tunnel before he hands over the Letter. Mr. Briney's boat waits for that errand.
+  - Steven no longer battles in Granite Cave: you deliver the Letter, and the ferry to Slateport waits for it. Captain Stern takes the Devon Parts after the Oceanic Museum, and Route 110 opens after the museum.
+  - Wally battles you at the Mauville Gym door (Ralts Lv 17). His uncle gives you HM Rock Smash, then the Gym opens.
+  - Your rival gives you HM Strength on Route 112. The Cable Car (Route 112 and the Fiery Path) opens after Meteor Falls, and Jagged Pass and Lavaridge open after Mt. Chimney.
+  - Professor Cozmo thanks you after Meteor Falls.
+  - The Weather Institute scientists give you Castform. Your rival battles you on Route 119 and gives you HM Fly; Fortree opens after that battle.
+  - Steven's Route 120 gift now includes the Devon Scope. It reveals a Kecleon on the bridge, and the Fortree Gym needs it.
+  - Your rival battles you in Lilycove before the Team Hideout opens.
+  - Wally has his ORAS Victory Road team (Altaria, Delcatty, Roselia, Magneton, Mega Gallade), and the League waits until you beat him.
+  - A post-credits rival battle is on Route 103: their fully evolved starter Mega Evolves.
+  - Rival teams and levels are ORAS's and depend on your starter (Bulbapedia).
+- Saves already past Hoenn's opening skip it (Pokédex and Poké Balls count as received).
+
+## Earlier unreleased: move pools, latest learnsets, canon movesets, the Black Fog
+
+- **Move pools, like Legends: Z-A.** Your Pokémon no longer forget a move when they learn a new one.
+  - Every move a Pokémon learns goes into its move pool and stays there, through evolution too.
+  - While it knows fewer than four moves, a new move is set right away. After that the game says "...learned X! Set its moves in the Summary."
+  - The Summary has a new **MOVES** tab: its four moves on the left, its move pool on the right. Tap one of its moves, then a pool move to swap it in.
+  - Move tutors (Cape Brink) add to the pool the same way.
+  - Older saves build each Pokémon's pool from its learnset.
+- **Latest learnsets for every Pokémon.** Each species now learns moves from the newest main-series game it's in: Scarlet/Violet for 733 species, Sword/Shield for 244, Brilliant Diamond/Shining Pearl for 39 and Ultra Sun/Moon for 9. The old learnsets mixed generations (Charmander had Rage and Dragon Rage next to Fire Fang). Data comes from PokeAPI.
+- **Wild and trainer Pokémon** know the last four supported moves they'd have learned by their level.
+- **Canon movesets for important battles.** 149 Gym Leaders, Elite Four members, Champions, rivals and villains now use their moves from the game each region follows:
+
+  | Region | Game |
+  |---|---|
+  | Kanto | FireRed/LeafGreen |
+  | Johto | HeartGold/SoulSilver |
+  | Hoenn | Emerald |
+  | Sinnoh | Platinum |
+  | Unova | Black/White |
+  | Kalos | X/Y |
+  | Alola | Ultra Sun/Moon |
+  | Galar | Sword/Shield |
+  | Paldea | Scarlet/Violet |
+  | Orre | Colosseum/XD |
+
+  - Rematch teams use their own rematch moves.
+  - Moves this game doesn't support (stat moves like Growl or Swords Dance) are skipped, and the set is filled with the Pokémon's best learnset moves.
+  - Where our team differs from canon, the matching Pokémon get canon moves and the rest use their learnset.
+- **The Blueberry League now has its canon Indigo Disk teams.** Crispin, Amarys, Lacey and Drayton have six Pokémon each, and Kieran has his Champion team (Dragonite, Politoed, Porygon-Z, Grimmsnarl, Incineroar, Hydrapple).
+- **The Black Fog.** From *The Electric Tale of Pikachu* manga: an ancient giant Haunter that feeds on dreams. It's an optional boss that can't be caught, haunting:
+
+  | Region | Place |
+  |---|---|
+  | Kanto | Pokémon Tower |
+  | Johto | Burned Tower |
+  | Hoenn | Mt. Pyre |
+  | Sinnoh | Old Chateau |
+  | Unova | Celestial Tower |
+  | Kalos | Lost Hotel |
+  | Alola | Thrifty Megamart |
+  | Galar | Old Cemetery |
+  | Paldea | Dalizapa Passage |
+  | Sevii Islands | Lost Cave |
+  | Decolore Islands | Spectrala Woods |
+
+  - It's 8 levels above the area.
+  - When beaten, it Self-Destructs rather than be caught, and it's gone from that place.
+- **Removed old features:**
+  - The "Ancient" bosses (Snorlax, Articuno, Zapdos, Moltres, Dragonite, Mewtwo).
+  - The colour-name bosses ("Blue" to "Red").
+- **Shadow Lugia's art** is now 96×96 like every other sprite. The art itself is unchanged; only the empty border was trimmed.
+
 ## Unreleased: no repeated regions, local rivals, Mew's count
 
 - **No repeating regions.** The goal is to work through all nine regions once. After a title, Mom's move picker now offers only regions you haven't played.

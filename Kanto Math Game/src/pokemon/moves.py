@@ -4,12 +4,21 @@ Each Pokemon knows up to four moves, chosen from its level-up learnset
 (assets/pokemon_levels.json) using real move data (assets/moves.json, from PokeAPI).
 
 Only moves that work in this game are learned:
-  - damaging moves (power > 0, not one-hit KOs or self-KO moves),
+  - damaging moves (power > 0, one-hit KO moves; not self-KO moves),
   - weather moves (Rain Dance, Sunny Day, Sandstorm, Hail/Snowscape),
-  - status moves that inflict burn, paralysis, poison, sleep or freeze.
+  - status moves the battle runs (src/states/battle_effects.py): burn, paralysis, poison, sleep,
+    freeze, confusion and the other conditions, stat moves, healing, field moves and a set of
+    unique moves (Protect, Substitute, Rest, Metronome...).
 
 A new Pokemon knows the last four of those it learned by its level, like the games.
-On level-up it learns new ones; with four already it forgets its weakest move.
+
+Move pool (like Legends: Z-A): every move a Pokemon has learned stays in its move pool (kept through
+evolution). A new move is set right away while it has fewer than four; after that it just joins the
+pool, and the player picks the four it uses from the Summary screen. Nothing is forgotten.
+
+Trainers can list canon moves per species ("movesets": {"25": ["THUNDERBOLT", ...]}, see
+forms.mark_trainer_team); moves this game can't use are skipped and the set is filled from the
+learnset.
 """
 import json
 import os
@@ -70,14 +79,18 @@ def info(game, name):
 
 
 def usable(d):
-    """Can this game use the move?"""
-    if d.get("name") in SELF_KO or d.get("category_meta") == "ohko":
+    """Can this game use the move? Damaging moves, one-hit KO moves, weather moves and the status
+    moves the battle runs (stat moves, conditions, healing, field moves...: battle_effects)."""
+    if d.get("name") in SELF_KO:
         return False
-    if (d.get("power") or 0) > 0 or d.get("name") in FIXED_DAMAGE:
+    if (d.get("power") or 0) > 0 or d.get("name") in FIXED_DAMAGE or d.get("category_meta") == "ohko":
         return True
     if d.get("name") in WEATHER_MOVES:
         return True
-    return d.get("category") == "STATUS" and d.get("ailment") in STATUSES and d.get("category_meta") == "ailment"
+    if d.get("category") == "STATUS" and d.get("ailment") in STATUSES and d.get("category_meta") == "ailment":
+        return True
+    from src.states.battle_effects import usable_status
+    return d.get("category") == "STATUS" and usable_status(d)
 
 
 def _species(poke):
@@ -109,8 +122,50 @@ def default_moves(game, poke):
 
 def ensure_moves(game, poke):
     if not getattr(poke, "moves", None):
-        poke.moves = default_moves(game, poke)
+        preset = getattr(poke, "preset_moves", None)
+        poke.moves = preset_moves(game, poke, preset) if preset else default_moves(game, poke)
     return poke.moves
+
+
+def preset_moves(game, poke, names):
+    """A trainer's canon moves (the ones this game can use), topped up to four from its learnset."""
+    known = table(game)
+    out = []
+    for name in names:
+        name = str(name).upper().replace(" ", "-")
+        if name in known and usable(info(game, name)) and name not in out:
+            out.append(name)
+    for name in reversed(default_moves(game, poke)):
+        if len(out) >= MAX_MOVES:
+            break
+        if name not in out and name != FALLBACK:
+            out.append(name)
+    return out[:MAX_MOVES] or [FALLBACK]
+
+
+def move_pool(game, poke):
+    """Every move this Pokemon can choose from: everything it has learned (kept through evolution)
+    plus its learnset up to its level, its current moves included."""
+    pool = list(getattr(poke, "move_pool", None) or [])
+    for name in learnable(game, poke) + list(ensure_moves(game, poke)):
+        if name not in pool:
+            pool.append(name)
+    poke.move_pool = pool
+    return pool
+
+
+def set_move(poke, slot, name):
+    """Put a pool move in slot 0-3 (or add it while it knows fewer than four). Returns True if set."""
+    moves = poke.moves
+    if name in moves:
+        return False
+    if slot is None or slot >= len(moves):
+        if len(moves) >= MAX_MOVES:
+            return False
+        moves.append(name)
+        return True
+    moves[slot] = name
+    return True
 
 
 def move_value(game, poke, name):
@@ -125,20 +180,20 @@ def move_value(game, poke, name):
 
 
 def learn_new_moves(game, poke, old_level):
-    """Learn moves reached between old_level and its level. Returns message lines."""
+    """Learn moves reached between old_level and its level (into the move pool; set while it knows
+    fewer than four). Returns message lines."""
     ensure_moves(game, poke)
+    pool = move_pool(game, poke)
     lines = []
     for name in learnable(game, poke, after=old_level):
+        label = name.replace("-", " ")
         if name in poke.moves:
             continue
-        label = name.replace("-", " ")
+        if name not in pool:
+            pool.append(name)
         if len(poke.moves) < MAX_MOVES:
             poke.moves.append(name)
             lines.append(f"{poke.display_name.upper()} learned {label}!")
-            continue
-        weakest = min(poke.moves, key=lambda m: move_value(game, poke, m))
-        if move_value(game, poke, name) <= move_value(game, poke, weakest):
-            continue  # not worth replacing anything
-        poke.moves[poke.moves.index(weakest)] = name
-        lines.append(f"{poke.display_name.upper()} forgot {weakest.replace('-', ' ')} and learned {label}!")
+        else:
+            lines.append(f"{poke.display_name.upper()} learned {label}! Set its moves in the Summary.")
     return lines

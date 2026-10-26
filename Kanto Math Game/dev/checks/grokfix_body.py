@@ -102,6 +102,8 @@ check(fired and isinstance(b, WildBattleState) and b.opponent_pokemon.level == l
 pid = b.opponent_pokemon.id
 b.trigger_outro(True)
 check(b.phase == "CATCH_PROMPT", "beating it offers a catch")
+story.inventory["MASTER_BALL"] = 1  # real catch rates: a legendary needs luck, or a Master Ball
+story.selected_ball = "MASTER_BALL"
 b.catch_yes()
 for _ in range(200):
     if b.phase == "OUTRO":
@@ -110,6 +112,7 @@ for _ in range(200):
 check(any(v.get("id") == pid for v in g.data.data["pokedex"].values()), "and YES catches it")
 
 print("3.2 / 3.4 / 3.5) levels")
+story.player_team = [mk(7)]; story.player_team[0].level = 5  # canon levels: a team that hasn't outgrown them
 check(levels.area_level(g, "UNION_CAVE") == 13 and levels.area_level(g, "SLOWPOKE_WELL") == 15, "Union Cave 13, Slowpoke Well 15")
 check(levels.area_level(g, "KANTO_ROUTE_26") == 52, "Route 26 trains you for the League (Lv 52, patch 12)")
 story.current_area_key = "MAHOGANY_TOWN"
@@ -177,6 +180,8 @@ st = state_for("CRYSTAL_CAVE")
 st.action_challenge_boss(dict(prog["CRYSTAL_CAVE"]["area_boss"], lines=None))
 b = g.current_state
 b.trigger_outro(True)
+story.inventory["MASTER_BALL"] = 1  # real catch rates: a sure catch needs the Master Ball
+story.selected_ball = "MASTER_BALL"
 b.catch_yes()
 for _ in range(200):
     if b.phase == "OUTRO":
@@ -184,7 +189,8 @@ for _ in range(200):
     b.update()
 if b.dialogue_box.callback:
     b.dialogue_box.callback()
-check(story.balls_left == 29 and story.story_flags.get("crystal_onix_defeated"), f"caught: one ball used ({story.balls_left})")
+check(not story.inventory.get("MASTER_BALL") and story.story_flags.get("crystal_onix_defeated"),
+      "caught with the Master Ball")
 
 print("HANDOFF F-3) a legendary beaten with no balls says so")
 story.balls_left = 0
@@ -214,6 +220,10 @@ print("HANDOFF R-1 / F-1) moving on: the right rival, and the professor explains
 story.current_area_key = "NEW_BARK_TOWN"
 story.region_rivals = {}
 nxt = story.move_to_region("SINNOH")
+if type(nxt).__name__ == "RivalSelectionState":  # the new region's rival is picked first
+    g.change_state(nxt)
+    nxt.confirm_selection()
+    nxt = g.current_state
 check(g.rival_name.upper() == story.region_rivals["SINNOH"]["name"].upper(), f"Sinnoh rival named: {g.rival_name}")
 import time
 for _ in range(100):  # the starter screen loads its Pokemon (and text) in the background

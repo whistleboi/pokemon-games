@@ -58,7 +58,7 @@
     "kalos_rival_won": ["{rival_name}: Hmph. You're already stronger than I expected.", "Fine. I'll just have to work harder. I won't lose twice."],
     "kalos_rival_lost": ["{rival_name}: Yes! My training already shows!", "Don't get discouraged — we're just getting started."],
     "kalos_shauna_intro": [
-      "Shauna: Oh WOW! You must be {player_name}! I'm Shauna!",
+      "{friend_name}: Oh WOW! You must be {player_name}! I'm {friend_name}!",
       "I'm SO excited to start our journey — I want to fill the Pokédex AND make tons of memories!",
       "Let's be rivals! No wait — friends! No — both! Both is good!"
     ],
@@ -1173,7 +1173,7 @@
         "trainer": {
           "name": "{rival_name}",
           "class": "PKMN_TRAINER",
-          "sprite": "serena.png",
+          "sprite": "{rival_character}",
           "team": [656],
           "team_choice": { "650": [653], "653": [656], "656": [650] },
           "rewards": { "balls": 5 },
@@ -1202,7 +1202,7 @@
         { "text": "Pokémon Center", "action": "HEAL" },
         { "text": "Pokémon-Amie", "action": "AMIE" },
         { "text": "Shop", "action": "SHOP" },
-        { "text": "Meet Shauna & Tierno", "action": "NPC", "target": "kalos_shauna_intro", "flag_condition": "not met_kalos_friends", "victory_flag": "met_kalos_friends" }
+        { "text": "Meet {friend_name} & Tierno", "action": "NPC", "target": "kalos_shauna_intro", "flag_condition": "not met_kalos_friends", "victory_flag": "met_kalos_friends" }
       ],
       "next_area": "KALOS_ROUTE_2"
     },
@@ -1212,24 +1212,7 @@
       "region": "KALOS",
       "backgrounds": { "main": "santalune_city.png", "gym": "santalune_gym.png" },
       "has_gym": true,
-      "gym": {
-        "trainers": [],
-        "leader": {
-          "name": "Viola",
-          "class": "GYM_LEADER",
-          "sprite": "viola.png",
-          "team": [283, 666], "levels": [10, 12],
-          "dialogue": {
-            "intro": ["Viola: My lens is focused on you! A battle is just like photography — timing is everything!"],
-            "player_won": ["Viola: Wonderful! You've earned the Bug Badge! Here, take this TM — Struggle Bug!"],
-            "player_lost": ["Viola: The shot wasn't quite right. Come back when your timing improves!"]
-          },
-          "rewards": { "balls": 5 },
-          "is_boss_battle": true,
-          "badge_reward": "BUG"
-        },
-        "requirements": { "badges": 0, "fail_text": "Viola is in the gym — challenge her when you're ready!" }
-      },
+      "gym": {"trainers": [], "leader": {"name": "Viola", "class": "GYM_LEADER", "sprite": "viola.png", "team": [283, 666], "levels": [10, 12], "dialogue": {"intro": ["Viola: My lens is focused on you! A battle is just like photography — timing is everything!"], "player_won": ["Viola: Wonderful! You've earned the Bug Badge! Here, take this TM — Struggle Bug!"], "player_lost": ["Viola: The shot wasn't quite right. Come back when your timing improves!"]}, "rewards": {"balls": 5}, "is_boss_battle": true, "badge_reward": "BUG", "movesets": {"283": ["QUICK-ATTACK", "BUBBLE", "WATER-SPORT"], "666": ["HARDEN", "INFESTATION", "TACKLE"]}}, "requirements": {"badges": 0, "fail_text": "Viola is in the gym — challenge her when you're ready!"}},
       "travel_options": [
         { "text": "Route 2 / Santalune Forest", "target_area": "SANTALUNE_FOREST" },
         { "text": "Route 3", "target_area": "KALOS_ROUTE_3" },
@@ -1250,24 +1233,7 @@
       "region": "KALOS",
       "backgrounds": { "main": "lumiose_city.png", "lab": "sycamore_lab.png", "gym": "lumiose_gym.png" },
       "has_gym": true,
-      "gym": {
-        "trainers": [],
-        "leader": {
-          "name": "Clemont",
-          "class": "GYM_LEADER",
-          "sprite": "clemont.png",
-          "team": [587, 82, 695], "levels": [35, 35, 37],
-          "dialogue": {
-            "intro": ["Clemont: Science is amazing! But so is battling! The future is now, {player_name}!"],
-            "player_won": ["Clemont: Incredible! My calculations were off! You've earned the Voltage Badge!"],
-            "player_lost": ["Clemont: The science checks out — you need more training. Come back!"]
-          },
-          "rewards": { "balls": 5 },
-          "is_boss_battle": true,
-          "badge_reward": "VOLTAGE"
-        },
-        "requirements": { "badges": 4, "fail_text": "Clemont's gym requires a special pass. Earn 4 badges first — his auto-lock system is no joke." }
-      },
+      "gym": {"trainers": [], "leader": {"name": "Clemont", "class": "GYM_LEADER", "sprite": "clemont.png", "team": [587, 82, 695], "levels": [35, 35, 37], "dialogue": {"intro": ["Clemont: Science is amazing! But so is battling! The future is now, {player_name}!"], "player_won": ["Clemont: Incredible! My calculations were off! You've earned the Voltage Badge!"], "player_lost": ["Clemont: The science checks out — you need more training. Come back!"]}, "rewards": {"balls": 5}, "is_boss_battle": true, "badge_reward": "VOLTAGE", "movesets": {"587": ["VOLT-SWITCH", "QUICK-ATTACK", "AERIAL-ACE"], "82": ["THUNDERBOLT", "ELECTRIC-TERRAIN", "MIRROR-SHOT"], "695": ["THUNDERBOLT", "QUICK-ATTACK", "GRASS-KNOT"]}}, "requirements": {"badges": 4, "fail_text": "Clemont's gym requires a special pass. Earn 4 badges first — his auto-lock system is no joke."}},
       "travel_options": [
         { "text": "Route 4 (to Santalune)", "target_area": "KALOS_ROUTE_4" },
         { "text": "Route 5 (to Camphrier)", "target_area": "KALOS_ROUTE_5" },
@@ -1325,27 +1291,7 @@
       "region": "KALOS",
       "backgrounds": { "main": "cyllage_city.png", "gym": "cyllage_gym.png" },
       "has_gym": true,
-      "gym": {
-        "trainers": [],
-        "leader": {
-          "name": "Grant",
-          "class": "GYM_LEADER",
-          "sprite": "grant.png",
-          "team": [698, 696], "levels": [25, 25],
-          "dialogue": {
-            "intro": ["Grant: I've scaled every peak in Kalos. Can you climb to my level?"],
-            "player_won": [
-              "Grant: You summit the challenge! Here is the Cliff Badge, and TM Rock Tomb.",
-              "Take this Jaw Fossil too. The fossil lab in Ambrette Town can revive it!"
-            ],
-            "player_lost": ["Grant: The climb continues. Train harder and try again."]
-          },
-          "rewards": { "balls": 5, "JAW_FOSSIL": 1 },
-          "is_boss_battle": true,
-          "badge_reward": "CLIFF"
-        },
-        "requirements": { "badges": 1, "fail_text": "Grant is climbing. Earn the Bug Badge first." }
-      },
+      "gym": {"trainers": [], "leader": {"name": "Grant", "class": "GYM_LEADER", "sprite": "grant.png", "team": [698, 696], "levels": [25, 25], "dialogue": {"intro": ["Grant: I've scaled every peak in Kalos. Can you climb to my level?"], "player_won": ["Grant: You summit the challenge! Here is the Cliff Badge, and TM Rock Tomb.", "Take this Jaw Fossil too. The fossil lab in Ambrette Town can revive it!"], "player_lost": ["Grant: The climb continues. Train harder and try again."]}, "rewards": {"balls": 5, "JAW_FOSSIL": 1}, "is_boss_battle": true, "badge_reward": "CLIFF", "movesets": {"698": ["AURORA-BEAM", "ROCK-TOMB", "THUNDER-WAVE", "TAKE-DOWN"], "696": ["ROCK-TOMB", "BITE", "STOMP"]}}, "requirements": {"badges": 1, "fail_text": "Grant is climbing. Earn the Bug Badge first."}},
       "travel_options": [
         { "text": "Route 9 (to Ambrette)", "target_area": "KALOS_ROUTE_9" },
         { "text": "Route 10 (to Geosenge)", "target_area": "KALOS_ROUTE_10", "condition": "has_cliff_badge" }
@@ -1390,27 +1336,7 @@
       "region": "KALOS",
       "backgrounds": { "main": "shalour_city.png", "gym": "shalour_gym.png", "tower": "tower_of_mastery.png" },
       "has_gym": true,
-      "gym": {
-        "trainers": [],
-        "leader": {
-          "name": "Korrina",
-          "class": "GYM_LEADER",
-          "sprite": "korrina.png",
-          "team": [619, 67, 701], "levels": [29, 28, 32],
-          "dialogue": {
-            "intro": ["Korrina: The Tower of Mastery has accepted you. Now prove your bond in battle!"],
-            "player_won": [
-              "Korrina: YES! You've done it! Take the Rumble Badge — and the Mega Ring! Mega Evolution awaits you!",
-              "Take this Sail Fossil too. The fossil lab in Ambrette Town can revive it!"
-            ],
-            "player_lost": ["Korrina: Not yet! Train with your Pokémon more. The bond needs to be stronger!"]
-          },
-          "rewards": { "balls": 5, "MEGA_RING": 1, "SAIL_FOSSIL": 1 },
-          "is_boss_battle": true,
-          "badge_reward": "RUMBLE"
-        },
-        "requirements": { "badges": 2, "fail_text": "Korrina is at the Tower of Mastery. Earn the Cliff Badge first." }
-      },
+      "gym": {"trainers": [], "leader": {"name": "Korrina", "class": "GYM_LEADER", "sprite": "korrina.png", "team": [619, 67, 701], "levels": [29, 28, 32], "dialogue": {"intro": ["Korrina: The Tower of Mastery has accepted you. Now prove your bond in battle!"], "player_won": ["Korrina: YES! You've done it! Take the Rumble Badge — and the Mega Ring! Mega Evolution awaits you!", "Take this Sail Fossil too. The fossil lab in Ambrette Town can revive it!"], "player_lost": ["Korrina: Not yet! Train with your Pokémon more. The bond needs to be stronger!"]}, "rewards": {"balls": 5, "MEGA_RING": 1, "SAIL_FOSSIL": 1}, "is_boss_battle": true, "badge_reward": "RUMBLE", "movesets": {"619": ["POWER-UP-PUNCH", "FAKE-OUT", "DOUBLE-SLAP"], "67": ["POWER-UP-PUNCH", "ROCK-TOMB", "LEER"], "701": ["FLYING-PRESS", "HONE-CLAWS", "POWER-UP-PUNCH"]}}, "requirements": {"badges": 2, "fail_text": "Korrina is at the Tower of Mastery. Earn the Cliff Badge first."}},
       "travel_options": [
         { "text": "Route 11 / Reflection Cave (east)", "target_area": "REFLECTION_CAVE" },
         {
@@ -1441,24 +1367,7 @@
       "region": "KALOS",
       "backgrounds": { "main": "coumarine_city.png", "gym": "coumarine_gym.png" },
       "has_gym": true,
-      "gym": {
-        "trainers": [],
-        "leader": {
-          "name": "Ramos",
-          "class": "GYM_LEADER",
-          "sprite": "ramos.png",
-          "team": [189, 70, 673], "levels": [30, 31, 34],
-          "dialogue": {
-            "intro": ["Ramos: Yer roots run deep, do they? Let's see if they're deep enough for my Pokémon!"],
-            "player_won": ["Ramos: Well, I'll be! You've grown into quite the trainer! Take the Plant Badge!"],
-            "player_lost": ["Ramos: Yer still a seedling, sonny. Come back when you've grown a bit more."]
-          },
-          "rewards": { "balls": 5 },
-          "is_boss_battle": true,
-          "badge_reward": "PLANT"
-        },
-        "requirements": { "badges": 3, "fail_text": "Ramos tends to his garden. Earn the Rumble Badge first." }
-      },
+      "gym": {"trainers": [], "leader": {"name": "Ramos", "class": "GYM_LEADER", "sprite": "ramos.png", "team": [189, 70, 673], "levels": [30, 31, 34], "dialogue": {"intro": ["Ramos: Yer roots run deep, do they? Let's see if they're deep enough for my Pokémon!"], "player_won": ["Ramos: Well, I'll be! You've grown into quite the trainer! Take the Plant Badge!"], "player_lost": ["Ramos: Yer still a seedling, sonny. Come back when you've grown a bit more."]}, "rewards": {"balls": 5}, "is_boss_battle": true, "badge_reward": "PLANT", "movesets": {"189": ["GRASS-KNOT", "ACROBATICS", "LEECH-SEED"], "70": ["GRASS-KNOT", "ACID", "POISON-POWDER", "GASTRO-ACID"], "673": ["GRASS-KNOT", "BULLDOZE", "TAKE-DOWN"]}}, "requirements": {"badges": 3, "fail_text": "Ramos tends to his garden. Earn the Rumble Badge first."}},
       "travel_options": [
         { "text": "Route 12 (to Shalour)", "target_area": "KALOS_ROUTE_12" },
         { "text": "Route 13 (to Lumiose)", "target_area": "KALOS_ROUTE_13", "condition": "has_plant_badge" }
@@ -1477,27 +1386,7 @@
       "region": "KALOS",
       "backgrounds": { "main": "laverre_city.png", "gym": "laverre_gym.png" },
       "has_gym": true,
-      "gym": {
-        "trainers": [],
-        "leader": {
-          "name": "Valerie",
-          "class": "GYM_LEADER",
-          "sprite": "valerie.png",
-          "team": [122, 303, 700], "levels": [39, 38, 42],
-          "dialogue": {
-            "intro": [
-              "Valerie: Oh my... a visitor from another world? No — from another time, perhaps?",
-              "I am Valerie. I adore Pokémon so deeply I sometimes wish I were one myself."
-            ],
-            "player_won": ["Valerie: How... lovely. You have earned the Fairy Badge. Please take this TM — Dazzling Gleam!"],
-            "player_lost": ["Valerie: My Fairy-types danced beautifully today. Come back when your steps are more graceful."]
-          },
-          "rewards": { "balls": 5 },
-          "is_boss_battle": true,
-          "badge_reward": "FAIRY"
-        },
-        "requirements": { "badges": 5, "fail_text": "Valerie awaits in her otherworldly gym. Earn the Voltage Badge first." }
-      },
+      "gym": {"trainers": [], "leader": {"name": "Valerie", "class": "GYM_LEADER", "sprite": "valerie.png", "team": [122, 303, 700], "levels": [39, 38, 42], "dialogue": {"intro": ["Valerie: Oh my... a visitor from another world? No — from another time, perhaps?", "I am Valerie. I adore Pokémon so deeply I sometimes wish I were one myself."], "player_won": ["Valerie: How... lovely. You have earned the Fairy Badge. Please take this TM — Dazzling Gleam!"], "player_lost": ["Valerie: My Fairy-types danced beautifully today. Come back when your steps are more graceful."]}, "rewards": {"balls": 5}, "is_boss_battle": true, "badge_reward": "FAIRY", "movesets": {"122": ["LIGHT-SCREEN", "REFLECT", "PSYCHIC", "DAZZLING-GLEAM"], "303": ["FEINT-ATTACK", "CRUNCH", "IRON-DEFENSE"], "700": ["DAZZLING-GLEAM", "QUICK-ATTACK", "SWIFT", "CHARM"]}}, "requirements": {"badges": 5, "fail_text": "Valerie awaits in her otherworldly gym. Earn the Voltage Badge first."}},
       "travel_options": [
         { "text": "Route 14 (to Lumiose/Dendemille)", "target_area": "KALOS_ROUTE_14" },
         { "text": "Poké Ball Factory", "target_area": "POKEBALL_FACTORY" },
@@ -1536,24 +1425,7 @@
       "region": "KALOS",
       "backgrounds": { "main": "anistar_city.png", "gym": "anistar_gym.png" },
       "has_gym": true,
-      "gym": {
-        "trainers": [],
-        "leader": {
-          "name": "Olympia",
-          "class": "GYM_LEADER",
-          "sprite": "olympia.png",
-          "team": [561, 199, 678], "levels": [44, 45, 48],
-          "dialogue": {
-            "intro": ["Olympia: We have foreseen your arrival. The stars spoke your name.", "Come — let us see if your future holds victory today."],
-            "player_won": ["Olympia: The stars do not lie. The Psychic Badge is yours. May your path remain clear."],
-            "player_lost": ["Olympia: The future shifted. Return — your destiny is not yet written."]
-          },
-          "rewards": { "balls": 5 },
-          "is_boss_battle": true,
-          "badge_reward": "PSYCHIC"
-        },
-        "requirements": { "badges": 6, "fail_text": "Olympia reads the stars. Earn the Fairy Badge first." }
-      },
+      "gym": {"trainers": [], "leader": {"name": "Olympia", "class": "GYM_LEADER", "sprite": "olympia.png", "team": [561, 199, 678], "levels": [44, 45, 48], "dialogue": {"intro": ["Olympia: We have foreseen your arrival. The stars spoke your name.", "Come — let us see if your future holds victory today."], "player_won": ["Olympia: The stars do not lie. The Psychic Badge is yours. May your path remain clear."], "player_lost": ["Olympia: The future shifted. Return — your destiny is not yet written."]}, "rewards": {"balls": 5}, "is_boss_battle": true, "badge_reward": "PSYCHIC", "movesets": {"561": ["PSYCHIC", "AIR-SLASH", "LIGHT-SCREEN", "REFLECT"], "199": ["PSYCHIC", "CALM-MIND", "POWER-GEM", "YAWN"], "678": ["PSYCHIC", "CALM-MIND", "FAKE-OUT", "SHADOW-BALL"]}}, "requirements": {"badges": 6, "fail_text": "Olympia reads the stars. Earn the Fairy Badge first."}},
       "travel_options": [
         { "text": "Route 17 (to Dendemille)", "target_area": "KALOS_ROUTE_17" },
         {
@@ -1592,7 +1464,7 @@
         "trainer": {
           "name": "{rival_name}",
           "class": "PKMN_TRAINER",
-          "sprite": "serena.png",
+          "sprite": "{rival_character}",
           "team": [658, 668, 700],
           "team_choice": { "650": [658, 668, 700], "653": [652, 691, 700], "656": [655, 668, 706] },
           "rewards": { "balls": 8 },
@@ -1613,27 +1485,7 @@
       "region": "KALOS",
       "backgrounds": { "main": "snowbelle_city.png", "gym": "snowbelle_gym.png" },
       "has_gym": true,
-      "gym": {
-        "trainers": [],
-        "leader": {
-          "name": "Wulfric",
-          "class": "GYM_LEADER",
-          "sprite": "wulfric.png",
-          "team": [460, 713, 615], "levels": [56, 59, 55],
-          "dialogue": {
-            "intro": [
-              "Wulfric: Brrr-illiant! You made it! The cold has a way of weeding out the weak!",
-              "Come then — let's see if you burn hot enough to melt my Ice-types!"
-            ],
-            "player_won": ["Wulfric: Ha! You were burning bright! Take the Iceberg Badge — and head to Victory Road!"],
-            "player_lost": ["Wulfric: Too cold for you! Train harder and return when you're fired up enough!"]
-          },
-          "rewards": { "balls": 5 },
-          "is_boss_battle": true,
-          "badge_reward": "ICEBERG"
-        },
-        "requirements": { "badges": 7, "fail_text": "Wulfric waits inside. Earn the Psychic Badge first." }
-      },
+      "gym": {"trainers": [], "leader": {"name": "Wulfric", "class": "GYM_LEADER", "sprite": "wulfric.png", "team": [460, 713, 615], "levels": [56, 59, 55], "dialogue": {"intro": ["Wulfric: Brrr-illiant! You made it! The cold has a way of weeding out the weak!", "Come then — let's see if you burn hot enough to melt my Ice-types!"], "player_won": ["Wulfric: Ha! You were burning bright! Take the Iceberg Badge — and head to Victory Road!"], "player_lost": ["Wulfric: Too cold for you! Train harder and return when you're fired up enough!"]}, "rewards": {"balls": 5}, "is_boss_battle": true, "badge_reward": "ICEBERG", "movesets": {"460": ["ICE-BEAM", "ICE-SHARD", "ENERGY-BALL"], "713": ["AVALANCHE", "CRUNCH", "CURSE", "GYRO-BALL"], "615": ["ICE-BEAM", "CONFUSE-RAY", "FLASH-CANNON", "HAIL"]}}, "requirements": {"badges": 7, "fail_text": "Wulfric waits inside. Earn the Psychic Badge first."}},
       "travel_options": [
         { "text": "Route 19 (to Couriway)", "target_area": "KALOS_ROUTE_19" },
         { "text": "Route 20 / Pokémon Village", "target_area": "POKEMON_VILLAGE", "condition": "beat_kalos_champion" },
@@ -1669,88 +1521,7 @@
       "post_champion_events": [
         { "type": "npc_dialogue", "target": "kalos_departure_to_alola", "flag_condition": "not left_for_alola", "victory_flag": "left_for_alola" }
       ],
-      "gym": {
-        "trainers": [
-          {
-            "name": "Elite Four Malva",
-            "class": "ELITE_FOUR",
-            "sprite": "malva.png",
-            "is_boss_battle": true,
-            "team": [668, 663, 324, 609], "levels": [63, 65, 63, 63],
-            "rewards": { "balls": 10 },
-            "dialogue": {
-              "intro": ["Malva: I had hoped never to see a challenger make it this far.", "My flames will reduce your hopes to ash. Come."],
-              "player_won": ["Malva: ...Tch. You've beaten me. Even if I am Team Flare — I won't deny that."],
-              "player_lost": ["Malva: Reduced to cinders. As expected."]
-            }
-          },
-          {
-            "name": "Elite Four Siebold",
-            "class": "ELITE_FOUR",
-            "sprite": "siebold.png",
-            "is_boss_battle": true,
-            "team": [693, 121, 130, 689], "levels": [63, 63, 63, 65],
-            "rewards": { "balls": 10 },
-            "dialogue": {
-              "intro": [
-                "Siebold: Ah, a challenger. Like preparing a new dish — I shall taste your strength.",
-                "Water is the essence of life. Today it is the essence of your defeat."
-              ],
-              "player_won": ["Siebold: A flawless recipe. I have nothing but respect."],
-              "player_lost": ["Siebold: The dish was lacking. More seasoning — more training."]
-            }
-          },
-          {
-            "name": "Elite Four Wikstrom",
-            "class": "ELITE_FOUR",
-            "sprite": "wikstrom.png",
-            "is_boss_battle": true,
-            "team": [707, 476, 681, 212], "levels": [63, 63, 65, 63],
-            "rewards": { "balls": 10 },
-            "dialogue": {
-              "intro": ["Wikstrom: Ha! A challenger of some renown! My steel is untarnished — can you scratch it?"],
-              "player_won": ["Wikstrom: By the ancient code of chivalry — you have bested me honorably!"],
-              "player_lost": ["Wikstrom: Your armor has holes! Forge yourself stronger and return!"]
-            }
-          },
-          {
-            "name": "Elite Four Drasna",
-            "class": "ELITE_FOUR",
-            "sprite": "drasna.png",
-            "is_boss_battle": true,
-            "team": [691, 334, 715, 621], "levels": [63, 63, 65, 63],
-            "rewards": { "balls": 10 },
-            "dialogue": {
-              "intro": ["Drasna: Oh my, you've come so far! How delightful! My Dragons love a good challenge!"],
-              "player_won": ["Drasna: Oh my... you've done it! How wonderful! Go on — the Champion awaits!"],
-              "player_lost": ["Drasna: Oh dear! Don't be discouraged, dearie. Try again soon!"]
-            }
-          }
-        ],
-        "leader": {
-          "name": "Champion Diantha",
-          "class": "CHAMPION",
-          "sprite": "diantha.png",
-          "is_boss_battle": true,
-          "team": [701, 699, 697, 706, 711, 282], "levels": [64, 65, 65, 66, 65, 68],
-          "rewards": { "balls": 20, "KALOS_HALL_OF_FAME": 1 },
-          "victory_flag": "beat_kalos_champion",
-          "dialogue": {
-            "intro": [
-              "Diantha: I've watched your journey through Kalos from afar.",
-              "It takes a rare kind of spirit to come this far.",
-              "I am Diantha — actress, and Champion of the Kalos Pokémon League.",
-              "Let me see the full picture of what you and your Pokémon have become."
-            ],
-            "player_won": [
-              "Diantha: Magnificent. Truly, a performance worth remembering.",
-              "You've grasped something about battling — about Pokémon — that I spent years learning.",
-              "You are the new Champion of Kalos. Congratulations, {player_name}!"
-            ],
-            "player_lost": ["Diantha: You have real talent. The script just needs another draft.", "Come back when your story is ready for its final act."]
-          }
-        }
-      }
+      "gym": {"trainers": [{"name": "Elite Four Malva", "class": "ELITE_FOUR", "sprite": "malva.png", "is_boss_battle": true, "team": [668, 663, 324, 609], "levels": [63, 65, 63, 63], "rewards": {"balls": 10}, "dialogue": {"intro": ["Malva: I had hoped never to see a challenger make it this far.", "My flames will reduce your hopes to ash. Come."], "player_won": ["Malva: ...Tch. You've beaten me. Even if I am Team Flare — I won't deny that."], "player_lost": ["Malva: Reduced to cinders. As expected."]}, "movesets": {"668": ["HYPER-VOICE", "FLAMETHROWER", "WILD-CHARGE", "NOBLE-ROAR"], "663": ["BRAVE-BIRD", "QUICK-ATTACK", "FLARE-BLITZ", "FLAIL"], "324": ["CURSE", "EARTHQUAKE", "STONE-EDGE", "FLAME-WHEEL"], "609": ["FLAMETHROWER", "SHADOW-BALL", "CONFUSE-RAY", "CONFIDE"]}}, {"name": "Elite Four Siebold", "class": "ELITE_FOUR", "sprite": "siebold.png", "is_boss_battle": true, "team": [693, 121, 130, 689], "levels": [63, 63, 63, 65], "rewards": {"balls": 10}, "dialogue": {"intro": ["Siebold: Ah, a challenger. Like preparing a new dish — I shall taste your strength.", "Water is the essence of life. Today it is the essence of your defeat."], "player_won": ["Siebold: A flawless recipe. I have nothing but respect."], "player_lost": ["Siebold: The dish was lacking. More seasoning — more training."]}, "movesets": {"693": ["WATER-PULSE", "DARK-PULSE", "DRAGON-PULSE", "AURA-SPHERE"], "121": ["DAZZLING-GLEAM", "PSYCHIC", "SURF", "LIGHT-SCREEN"], "130": ["WATERFALL", "ICE-FANG", "EARTHQUAKE", "DRAGON-DANCE"], "689": ["CROSS-CHOP", "STONE-EDGE", "RAZOR-SHELL", "X-SCISSOR"]}}, {"name": "Elite Four Wikstrom", "class": "ELITE_FOUR", "sprite": "wikstrom.png", "is_boss_battle": true, "team": [707, 476, 681, 212], "levels": [63, 63, 65, 63], "rewards": {"balls": 10}, "dialogue": {"intro": ["Wikstrom: Ha! A challenger of some renown! My steel is untarnished — can you scratch it?"], "player_won": ["Wikstrom: By the ancient code of chivalry — you have bested me honorably!"], "player_lost": ["Wikstrom: Your armor has holes! Forge yourself stronger and return!"]}, "movesets": {"707": ["DAZZLING-GLEAM", "FLASH-CANNON", "TORMENT", "SPIKES"], "476": ["EARTH-POWER", "POWER-GEM", "DISCHARGE", "FLASH-CANNON"], "681": ["KINGS-SHIELD", "SACRED-SWORD", "SHADOW-CLAW", "IRON-HEAD"], "212": ["BULLET-PUNCH", "X-SCISSOR", "IRON-HEAD", "NIGHT-SLASH"]}}, {"name": "Elite Four Drasna", "class": "ELITE_FOUR", "sprite": "drasna.png", "is_boss_battle": true, "team": [691, 334, 715, 621], "levels": [63, 63, 65, 63], "rewards": {"balls": 10}, "dialogue": {"intro": ["Drasna: Oh my, you've come so far! How delightful! My Dragons love a good challenge!"], "player_won": ["Drasna: Oh my... you've done it! How wonderful! Go on — the Champion awaits!"], "player_lost": ["Drasna: Oh dear! Don't be discouraged, dearie. Try again soon!"]}, "movesets": {"691": ["DRAGON-PULSE", "SURF", "SLUDGE-BOMB", "THUNDERBOLT"], "334": ["MOONBLAST", "DRAGON-PULSE", "COTTON-GUARD", "SING"], "715": ["AIR-SLASH", "DRAGON-PULSE", "FLAMETHROWER", "SUPER-FANG"], "621": ["DRAGON-TAIL", "REVENGE", "RETALIATE", "CHIP-AWAY"]}}], "leader": {"name": "Champion Diantha", "class": "CHAMPION", "sprite": "diantha.png", "is_boss_battle": true, "team": [701, 699, 697, 706, 711, 282], "levels": [64, 65, 65, 66, 65, 68], "rewards": {"balls": 20, "KALOS_HALL_OF_FAME": 1}, "victory_flag": "beat_kalos_champion", "dialogue": {"intro": ["Diantha: I've watched your journey through Kalos from afar.", "It takes a rare kind of spirit to come this far.", "I am Diantha — actress, and Champion of the Kalos Pokémon League.", "Let me see the full picture of what you and your Pokémon have become."], "player_won": ["Diantha: Magnificent. Truly, a performance worth remembering.", "You've grasped something about battling — about Pokémon — that I spent years learning.", "You are the new Champion of Kalos. Congratulations, {player_name}!"], "player_lost": ["Diantha: You have real talent. The script just needs another draft.", "Come back when your story is ready for its final act."]}, "movesets": {"701": ["SWORDS-DANCE", "FLYING-PRESS", "X-SCISSOR", "POISON-JAB"], "699": ["THUNDER", "BLIZZARD", "LIGHT-SCREEN", "REFLECT"], "697": ["HEAD-SMASH", "EARTHQUAKE", "DRAGON-CLAW", "CRUNCH"], "706": ["DRAGON-PULSE", "MUDDY-WATER", "FIRE-BLAST", "FOCUS-BLAST"], "711": ["TRICK-OR-TREAT", "PHANTOM-FORCE", "SEED-BOMB", "SHADOW-SNEAK"], "282": ["MOONBLAST", "PSYCHIC", "SHADOW-BALL", "THUNDERBOLT"]}}}
     },
     "SANTALUNE_FOREST": {
       "area_type": "dungeon",
@@ -1881,35 +1652,7 @@
       "battle_type": "indoor",
       "wild_pool_percentages": null,
       "min_rounds": 0,
-      "trainer_pool": [
-        {
-          "name": "Team Flare Admin",
-          "class": "FLARE",
-          "sprite": "flare_admin.png",
-          "is_boss_battle": true,
-          "team": [668, 687, 663],
-          "rewards": { "balls": 8 },
-          "dialogue": {
-            "intro": ["You dare intrude on Lord Lysandre's plan?!"],
-            "player_won": ["The beautiful world... slipping away..."],
-            "player_lost": ["Beauty and power are one!"]
-          }
-        },
-        {
-          "name": "Lysandre",
-          "class": "RIVAL",
-          "sprite": "lysandre.png",
-          "is_boss_battle": true,
-          "team": [700, 687, 663, 668],
-          "rewards": { "balls": 15 },
-          "victory_flag": "geosenge_flare_cleared",
-          "dialogue": {
-            "intro": ["Lysandre: The world is finite. What exists must be preserved — by eliminating excess."],
-            "player_won": ["Lysandre: ...A worthy beauty. I underestimated what you and your Pokémon represent."],
-            "player_lost": ["Lysandre: This is the only logical conclusion. A beautiful world cannot sustain everyone."]
-          }
-        }
-      ],
+      "trainer_pool": [{"name": "Team Flare Admin", "class": "FLARE", "sprite": "flare_admin.png", "is_boss_battle": true, "team": [668, 687, 663], "rewards": {"balls": 8}, "dialogue": {"intro": ["You dare intrude on Lord Lysandre's plan?!"], "player_won": ["The beautiful world... slipping away..."], "player_lost": ["Beauty and power are one!"]}}, {"name": "Lysandre", "class": "RIVAL", "sprite": "lysandre.png", "is_boss_battle": true, "team": [700, 687, 663, 668], "rewards": {"balls": 15}, "victory_flag": "geosenge_flare_cleared", "dialogue": {"intro": ["Lysandre: The world is finite. What exists must be preserved — by eliminating excess."], "player_won": ["Lysandre: ...A worthy beauty. I underestimated what you and your Pokémon represent."], "player_lost": ["Lysandre: This is the only logical conclusion. A beautiful world cannot sustain everyone."]}, "movesets": {"668": ["HYPER-VOICE", "FIRE-BLAST", "DARK-PULSE"]}}],
       "route_menu": [
         {
           "text": "BATTLE TEAM FLARE",
@@ -1992,14 +1735,7 @@
           "rewards": { "balls": 3 }
         }
       ],
-      "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
-        { "text": "Route 15", "action": "EXIT", "target_area": "KALOS_ROUTE_15", "condition": "can_exit", "color": "RED" },
-        { "text": "Route 16", "action": "EXIT", "target_area": "KALOS_ROUTE_16", "condition": "can_exit", "color": "RED" },
-        { "text": "DENDEMILLE TOWN", "action": "EXIT", "target_area": "DENDEMILLE_TOWN", "condition": "can_exit", "color": "RED" }
-      ]
+      "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"}, {"text": "THE BLACK FOG", "action": "BOSS", "color": "PURPLE", "flag_condition": "not black_fog_banished_lost_hotel", "boss": {"id": 10501, "name": "Black Fog", "level": 45, "no_catch": true, "victory_flag": "black_fog_banished_lost_hotel", "lines": ["The air turns ice-cold. A black fog pours across the floor...", "Two huge eyes open in the dark. A giant Haunter rises: the Black Fog!", "Long ago people worshipped it as a god. It feeds on dreams. Don't let it get yours!"], "won": ["The Black Fog is too proud to ever be caught.", "It Self-Destructs in a burst of black mist... and is gone.", "But a cold whisper lingers: it will rise again in another haunted place."], "rewards": {"balls": 10, "RARE_CANDY": 3}}}, {"text": "Route 15", "action": "EXIT", "target_area": "KALOS_ROUTE_15", "condition": "can_exit", "color": "RED"}, {"text": "Route 16", "action": "EXIT", "target_area": "KALOS_ROUTE_16", "condition": "can_exit", "color": "RED"}, {"text": "DENDEMILLE TOWN", "action": "EXIT", "target_area": "DENDEMILLE_TOWN", "condition": "can_exit", "color": "RED"}]
     },
     "FROST_CAVERN": {
       "area_type": "dungeon",
@@ -2094,7 +1830,7 @@
         {
           "name": "{rival_name}",
           "class": "PKMN_TRAINER",
-          "sprite": "serena.png",
+          "sprite": "{rival_character}",
           "is_boss_battle": true,
           "team": [658, 668, 706],
           "team_choice": { "650": [658, 668, 706], "653": [652, 706, 700], "656": [655, 706, 671] },

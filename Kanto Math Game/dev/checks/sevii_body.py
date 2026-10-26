@@ -49,7 +49,8 @@ zard = mk(6)
 zard.level = 50
 story.player_team = [zard]
 said = run("CAPE_BRINK", "VISIT THE MOVE TUTOR")
-check("BLAST-BURN" in zard.moves, f"tutor: {said[-1][-1] if said else said}")
+from src.pokemon import moves as _ml
+check("BLAST-BURN" in _ml.move_pool(g, zard), f"tutor: {said[-1][-1] if said else said}")
 
 print("5) Islands 4-7 and the gems")
 story.story_flags.update({"beat_champion": True, "unlocked_national_dex": True, "met_celio": True})
@@ -79,6 +80,7 @@ check("Seagallop to Faraway Island" in travel("ONE_ISLAND"), "ferry to Faraway I
 
 print("6) Seven Island and Mew")
 run("TANOBY_RUINS", "OPEN THE CHAMBERS")
+story.balls_left = 10  # (Poke Balls are in the Bag in use now)
 st = state_for("TANOBY_RUINS")
 check(st._check_route_condition(opt("TANOBY_RUINS", "CATCH WILD PKMN")["condition"], False), "Tanoby chambers: Unown")
 story.current_area_key = "SEVEN_ISLAND"

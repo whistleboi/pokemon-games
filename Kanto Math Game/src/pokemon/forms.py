@@ -156,10 +156,18 @@ def form_weather(pokemon):
 
 
 def mark_trainer_team(team, trainer_info):
-    """A trainer's `mega` (species id) Mega Evolves when it comes out."""
-    mega_id = (trainer_info or {}).get("mega")
+    """A trainer's `mega` (species id, or a list when the team depends on the player's starter)
+    Mega Evolves when it comes out. `movesets` gives canon moves by species id ({"25": ["THUNDERBOLT",
+    ...]}); moves.ensure_moves turns them into the real set."""
+    mega = (trainer_info or {}).get("mega")
+    megas = {int(m) for m in (mega if isinstance(mega, list) else [mega] if mega else [])}
     for p in team:
-        if p and mega_id and p.id == int(mega_id):
+        if p and p.id in megas:
             p.mega_ready = True
             break
+    sets = (trainer_info or {}).get("movesets") or {}
+    for p in team:
+        if p and str(p.id) in sets:
+            p.preset_moves = list(sets[str(p.id)])
+            p.moves = []
     return team
