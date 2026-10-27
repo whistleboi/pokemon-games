@@ -3411,6 +3411,9 @@ class CityState(GameState):
             return lambda: self.game.change_state(PokeCenterState
                                                   (self.game, self))
         if action == "SHOP":
+            if opt_data.get("stock"):  # a shop with its own shelf (Lumiose's Stone Emporium)
+                from src.states.systems import PokeMartState
+                return lambda s=list(opt_data["stock"]): self.game.change_state(PokeMartState(self.game, self, stock=s))
             return self._open_shop
         if action == "GAMECORNER":
             from src.states.systems import GameCornerState

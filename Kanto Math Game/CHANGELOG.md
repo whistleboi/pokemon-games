@@ -14,6 +14,12 @@
     - The fossil revival in Mt. Moon is gone.
   - **Real HMs:** the Surf Board and Air Balloon are gone (they were stand-ins for story gates). Kanto's badges give HM Cut (Cascade), HM Fly (Rainbow) and HM Surf (Soul), and the Surf routes check HM Surf. The Surf Board is also gone from Johto, Sinnoh and Unova, where each region's own HM Surf already opens the water. Hoenn's New Mauville no longer needs both.
   - **Older saves:** a save that already has its Kanto partner counts the opening as done. A save that cleared the hideout without getting the Scope is given it.
+- **Lumiose City has neighborhoods:** Centrico Plaza is still the hub, and five districts are their own small areas.
+  - **Vert:** the lab library, and a battle with Dexio and Sina.
+  - **Rouge:** a café job (a math puzzle), and Restaurant Le Wow's battles.
+  - **Magenta:** a galette-stall job, and Friseur Furfrou.
+  - **Bleu:** the Stone Emporium and the Lumiose Museum.
+  - **Hibernal:** the five-trainer Battle Institute, and a rest at Café Introversion.
 - **Kanto, Sevii, Johto and Hoenn rechecked against Serebii PokéEarth** (every area page; details in the handoff's `SEREBII_RECHECK_2026-10-26.md`):
   - **Johto story:**
     - Ecruteak's travel list links Route 38, not Route 36.

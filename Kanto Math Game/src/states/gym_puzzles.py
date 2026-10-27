@@ -21,6 +21,8 @@ Story events can run a puzzle too ("puzzle": kind, see overworld._start_event_pu
 - tanoby (Sevii, Tanoby Ruins): what comes next in the pattern (2, 4, 6, ?).
 - illusion (Decolore, Grand Spectrala): Zoroark's fake doors. Only one sign tells the truth.
 - carvings (Sinjoh Ruins, the frozen spring): which carving shows the bigger number?
+- cafe (Lumiose, Rouge District): a cafe job. Find the order whose two prices add up to the bill.
+- galette (Lumiose, Magenta District): count the galettes on each tray and hand over the right one.
 """
 import random
 
@@ -149,6 +151,19 @@ def make_step(kind, step, rng=random):
         opts = [(f"{a} + {b}", left > right), (str(right), right > left)]
         rng.shuffle(opts)
         return (f"Ice seal {step + 1}: touch the carving with the BIGGER number.", "", opts)
+    if kind == "cafe":
+        target = rng.randint(6, 15)
+        wrong = rng.sample([n for n in range(4, 18) if n != target], 3)
+        orders = [(_sum_pair(target, rng), True)] + [(_sum_pair(n, rng), False) for n in wrong]
+        rng.shuffle(orders)
+        return (f"Table {step + 1}'s bill is ${target}. Which order did they have?", "", orders)
+    if kind == "galette":
+        target = rng.randint(3, 9)
+        counts = [target] + rng.sample([n for n in range(2, 11) if n != target], 2)
+        rng.shuffle(counts)
+        pics = "    ".join(f"Tray {i + 1}: " + "o" * n for i, n in enumerate(counts))
+        return (f"A customer wants {target} Lumiose Galettes. Which tray is it?", pics,
+                [(f"TRAY {i + 1}", n == target) for i, n in enumerate(counts)])
     # Blaine's quiz
     a, b = rng.randint(1, 10), rng.randint(1, 10)
     if rng.random() < 0.5 or a < b:
@@ -165,7 +180,7 @@ def make_step(kind, step, rng=random):
 
 STEPS = {"surge": 2, "koga": 3, "sabrina": 3, "quiz": 1,
          "cissy": 3, "danny": 3, "rudy": 3, "luana": 3,
-         "braille": 3, "security": 3, "tanoby": 7, "illusion": 3, "carvings": 3}
+         "braille": 3, "security": 3, "tanoby": 7, "illusion": 3, "carvings": 3, "cafe": 3, "galette": 3}
 INTRO = {
     "surge": "Lt. Surge locked his door! Two switches are hidden in the trash cans.",
     "koga": "The Fuchsia Gym is full of invisible walls!",
@@ -180,6 +195,8 @@ INTRO = {
     "tanoby": "Seven chambers, seven sealed doors, each carved with a number pattern.",
     "illusion": "The woods shimmer. Every path looks the same... it's an illusion!",
     "carvings": "Three ice seals cover the spring, each carved with numbers.",
+    "cafe": "Cafe Soleil is busy! Help ring up three tables.",
+    "galette": "The galette stall has a line of customers. Hand each the right tray!",
 }
 WRONG = {
     "surge": ("Nope! Only trash in there.", "The locks reset! Start over."),
@@ -194,6 +211,8 @@ WRONG = {
     "tanoby": ("The door stays shut.", "The door stays shut."),
     "illusion": ("Poof! That door was an illusion.", "Poof! An illusion! You're back at the start."),
     "carvings": ("The ice stays frozen.", "The ice stays frozen."),
+    "cafe": ("That's not their order!", "Oops! The orders got mixed up. Start again."),
+    "galette": ("That's the wrong tray!", "Oops! Those trays got mixed up. Start again."),
 }
 DONE = {
     "surge": "Click! Both switches are on. The door to Lt. Surge opened!",
@@ -208,6 +227,8 @@ DONE = {
     "tanoby": "All seven chambers are open! Unown pour out of the ruins!",
     "illusion": "The illusion fades. A Zoroark steps out, laughing, and points the way.",
     "carvings": "Crack! The last seal melts away.",
+    "cafe": "Every table is paid up. The owner is delighted!",
+    "galette": "Every customer leaves happy, munching a galette!",
 }
 
 
