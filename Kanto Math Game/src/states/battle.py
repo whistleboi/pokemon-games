@@ -2100,8 +2100,94 @@ class WildBattleState(TrainerBattleState):
 
         self.btn_yes.callback = self.catch_yes
         self.btn_no.callback = self.catch_no
+        self.sos_ally = None  # an ally called by S.O.S., waiting to step in
+        self.sos_chain = 0
         if self.no_usable_party:
             self.trigger_outro(win=False)
+
+    # ---- S.O.S. battles (Sun/Moon, Ultra Sun/Ultra Moon) ----
+    # A weakened wild Pokemon may call for help instead of attacking. The battle is one on one,
+    # so the ally steps in once the caller is caught or knocked out, and it can call in turn.
+    SOS_CALL_CHANCE = (0.5, 0.25)  # at half HP or less / at a fifth or less
+    SOS_ANSWER_CHANCE = 0.35
+    SOS_SAME_SPECIES = 0.5
+
+    def _sos_pool(self):
+        """This area's S.O.S. table ("sos_pool" in its area data), or {} where nobody answers."""
+        if (self.is_boss_battle or self.victory_flag or getattr(self, "no_catch", False)
+                or balance.is_legendary(self.opponent_pokemon.id)
+                or getattr(self.opponent_pokemon, "raid_stage", None)):
+            return {}
+        data = self.game.loader.area_data
+        area = data.get("STORY_PROGRESSION", {}).get(self.game.story_manager.current_area_key, {})
+        return data.get(area.get("sos_pool") or "", {})
+
+    def _try_sos_call(self):
+        """The foe's turn spent calling for help. Returns the lines to show, or None (it attacks)."""
+        pool = self._sos_pool()
+        if not pool or self.sos_ally is not None or self.opponent_hp <= 0:
+            return None
+        ratio = self.opponent_hp / max(1, self.opp_max_hp)
+        if ratio > 0.5 or random.random() > (self.SOS_CALL_CHANCE[0] if ratio > 0.2 else
+                                             self.SOS_CALL_CHANCE[0] + self.SOS_CALL_CHANCE[1]):
+            return None
+        name = self.opponent_pokemon.display_name.upper()
+        lines = [f"Foe {name} called for help!"]
+        if random.random() > self.SOS_ANSWER_CHANCE:
+            return lines + ["...But no one came."]
+        from src.pokemon.data import Pokemon
+        pid = (self.opponent_pokemon.id if random.random() < self.SOS_SAME_SPECIES
+               else int(str(Utils.weighted_random_choice(pool)).split("_")[0]))
+        ally = Pokemon(self.game.loader.fetch_specific(pid), self.game.assets, size_mult=3.125)
+        levels.set_wild(self.game, ally, self.game.story_manager.current_area_key)
+        self.sos_ally = ally
+        return lines + [f"A wild {ally.display_name.upper()} came to help!",
+                        f"It's waiting to step in when {name} is done."]
+
+    def opponent_attack(self):
+        if self.player_hp > 0 and self.opponent_hp > 0 and not self._status_stops_silently():
+            lines = self._try_sos_call()
+            if lines:
+                self.dialogue_box.reset(lines)
+                self.dialogue_box.set_visibility(True)
+                self.feedback_timer = 30
+                return
+        super().opponent_attack()
+
+    def _status_stops_silently(self):
+        """A foe that can't act this turn (asleep, frozen, recharging, flinched) can't call for help;
+        the attack path says why."""
+        foe = self.opponent_pokemon
+        return (getattr(foe, "status", None) in ("sleep", "freeze")
+                or id(foe) in self.__dict__.get("_recharging", ()) or id(foe) in getattr(self, "_flinched", ()))
+
+    def _sos_continue(self):
+        """The waiting S.O.S. ally steps in. Returns False if there's none (or nobody left to fight it)."""
+        ally, self.sos_ally = self.sos_ally, None
+        if ally is None or not any(p.current_hp > 0 for p in self.game.story_manager.player_team):
+            return False
+        self.sos_chain += 1
+        for b in (self.btn_yes, self.btn_no, getattr(self, "btn_ball", None)):
+            if b is not None:
+                b.set_visibility(False)
+        self.catch_phase = "DECISION"
+        self._mid_battle_throw = False
+        self.player_won = False
+        self.opponent_pokemon = ally
+        self.opponent_team = [ally]
+        self.current_opponent_idx = 0
+        if self.player_pokemon.current_hp <= 0:  # our Pokemon went down too: the next one is sent in first
+            self.player_pokemon = next(p for p in self.game.story_manager.player_team if p.current_hp > 0)
+        self.game.music.play("wild", force=True)
+        self.setup_battle_matchup()
+        if self.check_ditto_transform():  # a Ditto ally transforms as it steps in
+            return True
+        self.enemy_summon_anim = PokemonSummonAnimation(self.game, ally, "opponent")
+        self.phase = "ENEMY_SUMMON"
+        self.dialogue_box.callback = None
+        self.dialogue_box.reset(f"The wild {ally.display_name.upper()} stepped in!")
+        self.dialogue_box.set_visibility(True)
+        return True
 
     def try_trigger_wild_catch_prompt(self):
         if getattr(self, "no_catch", False):
@@ -2204,7 +2290,7 @@ class WildBattleState(TrainerBattleState):
         else:  # no balls: say so (a legendary can be found again) instead of silently leaving
             self.show_message([f"You have no Poke Balls left!",
                                f"{self.opponent_pokemon.display_name.upper()} got away..."],
-                              callback=self.on_flee_complete)
+                              callback=lambda: self._sos_continue() or self.on_flee_complete())
 
     def _raid_catch_to_party_pokemon(self, boss):
         """A caught raid boss joins as a normal-size, normal-form Pokemon; G-Max bosses keep the G-Max Factor."""
@@ -2308,6 +2394,9 @@ class WildBattleState(TrainerBattleState):
         form = (self.game.loader.area_data.get("FORM_MAP", {}).get(str(self.opponent_pokemon.id)) or {}).get("form")
         if self.opponent_hp <= 0 and form not in ("crystal", "shadow"):
             self._record_boss_win()
+        if self.opponent_hp <= 0 and self.sos_ally is not None:
+            self._sos_continue()
+            return
         self.show_message("Got away safely!", callback=self.on_flee_complete)
 
     def update(self):
@@ -2429,6 +2518,8 @@ class WildBattleState(TrainerBattleState):
             self.show_message(lines + ["You're out of Poke Balls!"], callback=self.catch_no)
 
     def _on_catch_exit(self):
+        if self._sos_continue():
+            return
         from src.states.overworld import PlayState
         next_state = self._get_play_state_instance()
         if hasattr(self, 'play_state_data') and self.play_state_data:

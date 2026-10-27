@@ -156,59 +156,111 @@
     ]
   },
   "ALOLA_ROUTE_3": [739, 56, 21, 742, 701, 371, 373],
-  "ALOLA_ROUTE_3_PERCENTAGES": { "739": 29, "56": 21, "21": 21, "742": 20, "701": 7, "371": 1, "373": 1 },
+  "ALOLA_ROUTE_3_PERCENTAGES": {"21": 36, "56": 20, "742": 14, "371": 6, "701": 4, "739": 4, "225": 4, "734": 4, "2001": 4, "627": 2, "629": 2, "373": 1},
   "MELEMELE_MEADOW": [741, 669, 546, 742, 12, 10, 11],
-  "MELEMELE_MEADOW_PERCENTAGES": { "741": 20, "669": 20, "546": 17, "742": 17, "12": 10, "10": 10, "11": 6 },
+  "MELEMELE_MEADOW_PERCENTAGES": {"741": 18, "11": 18, "742": 15, "10": 12, "12": 12, "669": 9, "546": 8, "548": 8},
   "SEAWARD_CAVE": [41, 54, 225, 238, 86, 124, 440],
-  "SEAWARD_CAVE_PERCENTAGES": { "41": 39, "54": 17, "225": 15, "238": 14, "86": 13, "124": 1, "440": 1 },
+  "SEAWARD_CAVE_PERCENTAGES": {"41": 45, "129": 12, "339": 12, "54": 10, "238": 6, "225": 6, "86": 4, "2008": 4, "124": 1, "440": 1},
   "KALAE_BAY": [278, 79, 72, 734, 2001, 371, 458, 456, 80, 199],
-  "KALAE_BAY_PERCENTAGES": { "278": 31, "79": 13, "72": 11, "734": 10, "2001": 10, "371": 7, "458": 6, "456": 6, "80": 4, "199": 2 },
+  "KALAE_BAY_PERCENTAGES": {"278": 19, "79": 17, "456": 8, "371": 7, "746": 7, "129": 7, "90": 7, "734": 5, "2001": 5, "72": 5, "458": 4, "223": 3, "80": 4, "199": 2},
   "HAUOLI_CEMETERY": [92, 41, 425, 198],
-  "HAUOLI_CEMETERY_PERCENTAGES": { "92": 38, "41": 22, "425": 20, "198": 20 },
+  "HAUOLI_CEMETERY_PERCENTAGES": {"41": 38, "92": 35, "425": 13, "198": 8, "200": 6},
   "SANDY_CAVE": [41, 54],
-  "SANDY_CAVE_PERCENTAGES": { "41": 71, "54": 29 },
+  "SANDY_CAVE_PERCENTAGES": {"41": 75, "54": 25},
   "PANIOLA_RANCH": [749, 179, 506, 241, 128],
-  "PANIOLA_RANCH_PERCENTAGES": { "749": 38, "179": 28, "506": 20, "241": 7, "128": 7 },
+  "PANIOLA_RANCH_PERCENTAGES": {"749": 31, "506": 24, "241": 21, "128": 14, "179": 10},
   "ALOLA_ROUTE_6": [506, 731, 736, 749, 741, 133, 174, 734, 2001, 39],
-  "ALOLA_ROUTE_6_PERCENTAGES": { "506": 21, "731": 21, "736": 11, "749": 9, "741": 9, "133": 8, "174": 8, "734": 6, "2001": 5, "39": 2 },
+  "ALOLA_ROUTE_6_PERCENTAGES": {"731": 22, "133": 19, "506": 17, "736": 13, "174": 8, "749": 6, "734": 6, "2001": 6, "39": 2},
   "HANO_BEACH": [72, 771, 456, 278],
-  "HANO_BEACH_PERCENTAGES": { "72": 51, "771": 22, "456": 20, "278": 7 },
+  "HANO_BEACH_PERCENTAGES": {"771": 31, "72": 24, "456": 17, "278": 13, "120": 7, "769": 7},
   "AKALA_OUTSKIRTS": [278, 759, 299, 735, 177, 2002, 178],
-  "AKALA_OUTSKIRTS_PERCENTAGES": { "278": 38, "759": 18, "299": 16, "735": 10, "177": 9, "2002": 8, "178": 1 },
+  "AKALA_OUTSKIRTS_PERCENTAGES": {"278": 23, "759": 17, "299": 15, "129": 10, "746": 10, "170": 10, "735": 6, "2002": 6, "177": 2, "178": 1},
   "DIVIDING_PEAK_TUNNEL": [352, 767],
-  "DIVIDING_PEAK_TUNNEL_PERCENTAGES": { "352": 50, "767": 50 },
+  "DIVIDING_PEAK_TUNNEL_PERCENTAGES": {"352": 50, "767": 50},
   "MALIE_GARDEN": [61, 2010, 166, 168, 54, 546, 752, 284, 2011],
-  "MALIE_GARDEN_PERCENTAGES": { "61": 17, "2010": 16, "166": 12, "168": 12, "54": 11, "546": 11, "752": 10, "284": 10, "2011": 1 },
+  "MALIE_GARDEN_PERCENTAGES": {"351": 22, "61": 9, "166": 8, "168": 8, "2010": 6, "54": 6, "752": 5, "284": 5, "129": 5, "118": 5, "546": 3, "548": 3, "550": 3, "130": 3, "62": 3, "186": 3, "60": 3, "2011": 1},
   "ALOLA_ROUTE_12": [2013, 749, 229, 324, 750],
-  "ALOLA_ROUTE_12_PERCENTAGES": { "2013": 28, "749": 25, "229": 25, "324": 20, "750": 2 },
+  "ALOLA_ROUTE_12_PERCENTAGES": {"749": 21, "324": 21, "2012": 19, "239": 19, "2013": 7, "229": 6, "310": 6, "750": 2},
   "SECLUDED_SHORE": [739, 456, 72, 279],
-  "SECLUDED_SHORE_PERCENTAGES": { "739": 48, "456": 22, "72": 20, "279": 10 },
+  "SECLUDED_SHORE_PERCENTAGES": {"456": 26, "129": 15, "746": 15, "779": 15, "72": 11, "279": 11, "739": 7},
   "ULAULA_BEACH": [739],
-  "ULAULA_BEACH_PERCENTAGES": { "739": 100 },
+  "ULAULA_BEACH_PERCENTAGES": {"739": 100},
   "BLUSH_MOUNTAIN": [2013, 749, 239, 777, 776, 324, 702, 737, 125, 736],
-  "BLUSH_MOUNTAIN_PERCENTAGES": { "2013": 17, "749": 15, "239": 11, "777": 11, "776": 11, "324": 11, "702": 11, "737": 8, "125": 3, "736": 2 },
+  "BLUSH_MOUNTAIN_PERCENTAGES": {"239": 22, "324": 14, "749": 11, "777": 11, "737": 11, "2012": 8, "2013": 6, "776": 6, "702": 6, "125": 3, "736": 2},
   "HAINA_DESERT": [552, 2009, 622],
-  "HAINA_DESERT_PERCENTAGES": { "552": 66, "2009": 26, "622": 8 },
+  "HAINA_DESERT_PERCENTAGES": {"351": 31, "552": 19, "551": 19, "2009": 17, "328": 7, "444": 7},
   "ULAULA_MEADOW": [741, 670, 546, 743, 166, 168],
-  "ULAULA_MEADOW_PERCENTAGES": { "741": 20, "670": 20, "546": 18, "743": 18, "166": 12, "168": 12 },
+  "ULAULA_MEADOW_PERCENTAGES": {"741": 21, "166": 17, "743": 17, "168": 17, "670": 10, "546": 9, "548": 9},
   "EXEGGUTOR_ISLAND": [102, 357, 279, 2017, 423, 127],
-  "EXEGGUTOR_ISLAND_PERCENTAGES": { "102": 22, "357": 20, "279": 19, "2017": 19, "423": 10, "127": 10 },
+  "EXEGGUTOR_ISLAND_PERCENTAGES": {"351": 35, "102": 23, "279": 10, "2017": 8, "423": 8, "705": 8, "357": 6, "127": 4},
   "PONI_WILDS": [739, 279, 686, 210, 676, 423],
-  "PONI_WILDS_PERCENTAGES": { "739": 41, "279": 12, "686": 9, "210": 8, "676": 8, "423": 4, "722": 6, "725": 6, "728": 6 },
+  "PONI_WILDS_PERCENTAGES": {"279": 12, "210": 9, "423": 8, "102": 8, "320": 6, "686": 5, "739": 4, "457": 4, "129": 4, "369": 4, "735": 3, "2002": 3, "73": 3, "131": 3, "676": 2, "767": 2, "321": 2, "722": 6, "725": 6, "728": 6},
   "ANCIENT_PONI_PATH": [279, 686, 210, 676, 423],
-  "ANCIENT_PONI_PATH_PERCENTAGES": { "279": 29, "686": 22, "210": 20, "676": 19, "423": 10 },
+  "ANCIENT_PONI_PATH_PERCENTAGES": {"279": 20, "210": 20, "102": 18, "423": 13, "686": 11, "735": 7, "2002": 7, "676": 4},
   "PONI_BREAKER_COAST": [320, 73, 457, 279, 423, 693, 321, 131],
-  "PONI_BREAKER_COAST_PERCENTAGES": { "320": 34, "73": 15, "457": 13, "279": 10, "423": 10, "693": 10, "321": 5, "131": 3 },
+  "PONI_BREAKER_COAST_PERCENTAGES": {"320": 19, "129": 15, "457": 8, "767": 8, "318": 8, "369": 8, "319": 8, "73": 6, "279": 6, "131": 6, "423": 4, "321": 4, "693": 2, "691": 2},
   "PONI_GROVE": [427, 732, 571, 127, 214, 447, 733, 428, 448, 440],
-  "PONI_GROVE_PERCENTAGES": { "427": 23, "732": 22, "571": 20, "127": 11, "214": 11, "447": 6, "733": 4, "428": 1, "448": 1, "440": 1 },
+  "PONI_GROVE_PERCENTAGES": {"732": 18, "447": 18, "127": 12, "427": 11, "571": 9, "210": 9, "214": 6, "735": 5, "2002": 5, "733": 4, "428": 1, "448": 1, "440": 1},
   "PONI_PLAINS": [546, 732, 735, 2002, 241, 128, 739, 279, 22, 750],
-  "PONI_PLAINS_PERCENTAGES": { "546": 23, "732": 13, "735": 11, "2002": 11, "241": 11, "128": 11, "739": 8, "279": 4, "22": 4, "750": 4 },
+  "PONI_PLAINS_PERCENTAGES": {"546": 13, "548": 13, "732": 12, "241": 10, "128": 10, "735": 8, "2002": 8, "22": 4, "297": 3, "97": 3, "279": 3, "750": 3, "57": 1, "587": 1, "668": 1, "123": 1, "739": 1, "190": 1, "628": 1, "630": 1, "113": 1},
   "PONI_MEADOW": [546, 743, 741, 670, 200],
-  "PONI_MEADOW_PERCENTAGES": { "546": 32, "743": 23, "741": 20, "670": 20, "200": 5 },
+  "PONI_MEADOW_PERCENTAGES": {"741": 14, "546": 13, "548": 13, "743": 12, "129": 12, "339": 12, "147": 12, "670": 9, "200": 3},
   "PONI_COAST": [2009],
-  "PONI_COAST_PERCENTAGES": { "2009": 100 },
+  "PONI_COAST_PERCENTAGES": {"2009": 100},
   "PONI_GAUNTLET": [279, 210, 108, 686, 55, 760],
-  "PONI_GAUNTLET_PERCENTAGES": { "279": 25, "210": 20, "108": 19, "686": 16, "55": 10, "760": 10 },
+  "PONI_GAUNTLET_PERCENTAGES": {"279": 13, "210": 13, "55": 11, "760": 11, "129": 11, "339": 11, "147": 11, "686": 6, "735": 4, "2002": 4, "108": 3},
+  "AKALA_OUTSKIRTS_SOS_PERCENTAGES": {"746": 19, "170": 14, "278": 11, "759": 11, "130": 11, "299": 8, "129": 8, "735": 6, "171": 6, "178": 3, "177": 3},
+  "ALOLA_ROUTE_1_SOS_PERCENTAGES": {"731": 13, "10": 12, "734": 8, "2001": 8, "440": 7, "446": 7, "185": 6, "438": 6, "736": 6, "744": 6, "165": 6, "167": 6, "427": 2, "25": 2, "172": 2, "143": 2},
+  "ALOLA_ROUTE_10_SOS_PERCENTAGES": {"22": 20, "166": 17, "168": 17, "227": 13, "675": 13, "735": 10, "2002": 10},
+  "ALOLA_ROUTE_11_SOS_PERCENTAGES": {"775": 18, "166": 16, "168": 16, "674": 10, "732": 10, "675": 10, "47": 5, "756": 5, "733": 3, "735": 2, "46": 2, "2002": 2, "755": 2},
+  "ALOLA_ROUTE_12_SOS_PERCENTAGES": {"324": 21, "2012": 21, "749": 19, "125": 7, "113": 7, "239": 7, "2013": 5, "229": 4, "310": 4, "750": 3},
+  "ALOLA_ROUTE_13_SOS_PERCENTAGES": {"746": 33, "779": 33, "130": 19, "129": 14},
+  "ALOLA_ROUTE_14_SOS_PERCENTAGES": {"746": 33, "779": 33, "130": 19, "129": 14},
+  "ALOLA_ROUTE_15_SOS_PERCENTAGES": {"746": 21, "779": 21, "130": 14, "366": 11, "129": 7, "457": 5, "456": 5, "73": 4, "279": 4, "368": 3, "367": 3},
+  "ALOLA_ROUTE_16_SOS_PERCENTAGES": {"457": 27, "456": 27, "73": 23, "279": 23},
+  "ALOLA_ROUTE_17_SOS_PERCENTAGES": {"22": 18, "559": 13, "168": 13, "227": 12, "2002": 10, "2013": 10, "675": 8, "735": 7, "624": 5, "166": 4},
+  "ALOLA_ROUTE_3_SOS_PERCENTAGES": {"21": 36, "56": 22, "742": 16, "373": 7, "371": 7, "701": 4, "734": 4, "2001": 4},
+  "ALOLA_ROUTE_4_SOS_PERCENTAGES": {"731": 20, "506": 16, "749": 12, "736": 12, "133": 12, "734": 8, "39": 5, "2001": 4, "196": 3, "197": 3, "440": 2, "174": 2},
+  "ALOLA_ROUTE_5_SOS_PERCENTAGES": {"12": 22, "753": 19, "10": 16, "736": 15, "732": 8, "506": 6, "731": 5, "438": 4, "185": 3, "440": 2},
+  "ALOLA_ROUTE_6_SOS_PERCENTAGES": {"731": 21, "506": 17, "736": 13, "133": 13, "734": 9, "749": 6, "39": 5, "2001": 4, "196": 3, "197": 3, "440": 3, "174": 3},
+  "ALOLA_ROUTE_7_SOS_PERCENTAGES": {"746": 33, "120": 22, "130": 19, "129": 14, "121": 11},
+  "ALOLA_ROUTE_8_SOS_PERCENTAGES": {"757": 14, "759": 9, "732": 9, "662": 9, "746": 7, "170": 5, "223": 5, "130": 4, "734": 4, "2002": 4, "129": 3, "72": 3, "456": 3, "278": 3, "661": 3, "731": 3, "458": 3, "2001": 3, "224": 2, "171": 2, "735": 2},
+  "ALOLA_ROUTE_9_SOS_PERCENTAGES": {"370": 25, "746": 25, "747": 17, "129": 17, "130": 8, "222": 8},
+  "BLUSH_MOUNTAIN_SOS_PERCENTAGES": {"324": 15, "777": 12, "749": 9, "239": 9, "125": 8, "737": 8, "2013": 7, "702": 7, "2012": 7, "776": 6, "736": 3, "440": 3, "113": 3, "750": 2, "738": 1},
+  "BROOKLET_HILL_SOS_PERCENTAGES": {"130": 17, "349": 15, "746": 15, "594": 15, "129": 13, "119": 9, "550": 9, "118": 7},
+  "DIGLETTS_TUNNEL_SOS_PERCENTAGES": {"246": 31, "42": 23, "2008": 23, "41": 23},
+  "HAINA_DESERT_SOS_PERCENTAGES": {"552": 33, "622": 23, "343": 23, "2009": 15, "328": 6},
+  "HANO_BEACH_SOS_PERCENTAGES": {"771": 23, "769": 18, "456": 14, "72": 14, "278": 14, "121": 9, "120": 9},
+  "HAUOLI_CITY_SOS_PERCENTAGES": {"63": 15, "278": 14, "676": 12, "2010": 11, "81": 11, "2015": 11, "440": 4, "439": 4, "72": 2, "456": 2, "734": 2, "25": 2, "172": 2, "2001": 2, "223": 2, "458": 2, "122": 2},
+  "KALAE_BAY_SOS_PERCENTAGES": {"278": 22, "80": 12, "79": 8, "734": 7, "2001": 7, "746": 6, "90": 6, "372": 5, "371": 5, "199": 4, "223": 4, "130": 3, "129": 2, "72": 2, "456": 2, "458": 2, "224": 2},
+  "LUSH_JUNGLE_SOS_PERCENTAGES": {"732": 18, "764": 13, "753": 11, "10": 8, "127": 7, "46": 7, "755": 7, "762": 6, "438": 4, "12": 3, "185": 3, "440": 3, "163": 2, "761": 2, "169": 2, "2009": 2, "757": 1, "164": 1, "42": 1, "758": 1, "636": 1},
+  "MALIE_CITY_SOS_PERCENTAGES": {"81": 36, "2015": 21, "569": 11, "735": 11, "568": 11, "2002": 11},
+  "MALIE_GARDEN_SOS_PERCENTAGES": {"130": 12, "166": 10, "168": 10, "61": 8, "54": 8, "550": 8, "752": 6, "284": 6, "119": 6, "129": 6, "118": 6, "2011": 4, "546": 4, "2010": 4, "548": 4},
+  "MELEMELE_MEADOW_SOS_PERCENTAGES": {"12": 23, "741": 20, "742": 17, "10": 14, "669": 10, "546": 9, "548": 7},
+  "MEMORIAL_HILL_SOS_PERCENTAGES": {"92": 38, "708": 23, "42": 19, "41": 19},
+  "MOUNT_HOKULANI_SOS_PERCENTAGES": {"132": 24, "774": 15, "374": 14, "22": 12, "605": 9, "227": 9, "440": 4, "35": 4, "173": 4, "125": 2, "239": 2, "113": 1},
+  "MOUNT_LANAKILA_SOS_PERCENTAGES": {"215": 35, "362": 21, "359": 20, "2006": 8, "2004": 8, "42": 5, "780": 2},
+  "PANIOLA_RANCH_SOS_PERCENTAGES": {"749": 31, "506": 24, "128": 21, "241": 14, "179": 10},
+  "PANIOLA_TOWN_SOS_PERCENTAGES": {"130": 29, "340": 29, "129": 21, "339": 21},
+  "PONI_BREAKER_COAST_SOS_PERCENTAGES": {"319": 20, "130": 16, "321": 16, "369": 16, "129": 12, "320": 12, "318": 8},
+  "PONI_GAUNTLET_SOS_PERCENTAGES": {"130": 19, "340": 19, "129": 14, "339": 14, "149": 11, "148": 11, "147": 11},
+  "PONI_GROVE_SOS_PERCENTAGES": {"732": 14, "127": 13, "447": 10, "210": 10, "571": 9, "427": 9, "214": 6, "733": 5, "448": 5, "735": 5, "2002": 5, "113": 3, "428": 2, "440": 2},
+  "PONI_MEADOW_SOS_PERCENTAGES": {"546": 11, "741": 11, "670": 11, "743": 10, "130": 9, "340": 9, "148": 9, "548": 7, "129": 7, "339": 7, "147": 7, "200": 3},
+  "PONI_PLAINS_SOS_PERCENTAGES": {"546": 13, "548": 13, "241": 12, "128": 12, "732": 10, "735": 8, "2002": 8, "97": 4, "733": 3, "297": 3, "279": 3, "22": 3, "750": 3, "57": 1, "587": 1, "123": 1, "424": 1, "190": 1, "242": 1, "113": 1},
+  "PONI_WILDS_SOS_PERCENTAGES": {"369": 18, "457": 15, "130": 12, "321": 12, "279": 9, "131": 9, "423": 6, "73": 6, "129": 6, "320": 6},
+  "RESOLUTION_CAVE_SOS_PERCENTAGES": {"42": 25, "2009": 21, "621": 20, "169": 17, "715": 16},
+  "SEAFOLK_VILLAGE_SOS_PERCENTAGES": {"781": 33, "130": 19, "321": 19, "129": 14, "320": 14},
+  "SEAWARD_CAVE_SOS_PERCENTAGES": {"41": 29, "54": 12, "225": 10, "340": 10, "129": 8, "238": 7, "130": 7, "86": 5, "339": 5, "124": 3, "440": 3},
+  "SECLUDED_SHORE_SOS_PERCENTAGES": {"746": 33, "779": 33, "130": 22, "129": 11},
+  "THRIFTY_MEGAMART_SOS_PERCENTAGES": {"42": 21, "707": 21, "778": 21, "353": 14, "94": 12, "93": 12},
+  "ULAULA_MEADOW_SOS_PERCENTAGES": {"741": 20, "670": 20, "166": 17, "168": 17, "743": 13, "546": 7, "548": 7},
+  "VAST_PONI_CANYON_SOS_PERCENTAGES": {"525": 16, "302": 11, "703": 10, "67": 9, "745": 7, "227": 7, "42": 6, "619": 5, "784": 5, "783": 5, "2009": 4, "198": 3, "130": 2, "550": 2, "340": 2, "129": 1, "339": 1, "342": 1, "341": 1, "148": 1, "147": 1},
+  "WELA_VOLCANO_PARK_SOS_PERCENTAGES": {"104": 19, "115": 19, "757": 17, "661": 15, "126": 9, "240": 9, "662": 6, "758": 3, "440": 3},
+  "TEN_CARAT_HILL_PERCENTAGES": {"303": 12, "41": 112, "524": 38, "703": 46, "54": 24, "2008": 8, "327": 10, "66": 12, "744": 10},
+  "TEN_CARAT_HILL_SOS_PERCENTAGES": {"303": 12, "41": 32, "524": 28, "302": 28, "54": 8, "2008": 8},
+  "MELEMELE_SEA_PERCENTAGES": {"370": 40, "746": 40, "129": 40, "223": 24, "366": 24, "222": 40, "72": 24, "458": 20, "456": 40, "278": 24},
+  "MELEMELE_SEA_SOS_PERCENTAGES": {"370": 136, "746": 136, "130": 64, "224": 48, "368": 13, "747": 96, "366": 72, "129": 72, "223": 68, "222": 40, "367": 11, "72": 24, "456": 24, "278": 24, "458": 20},
+  "PIKACHU_VALLEY_PERCENTAGES": {"25": 100},
   "STORY_PROGRESSION": {
     "ULTRA_RUIN": {
       "area_type": "dungeon",
@@ -637,7 +689,8 @@
           "color": "RED"
         }
       ],
-      "next_area": "PONI_MEADOW"
+      "next_area": "PONI_MEADOW",
+        "sos_pool": "RESOLUTION_CAVE_SOS_PERCENTAGES"
     },
     "PONI_GAUNTLET": {
       "area_type": "wild_route",
@@ -761,7 +814,8 @@
           "color": "RED"
         }
       ],
-      "next_area": "PONI_COAST"
+      "next_area": "PONI_COAST",
+        "sos_pool": "PONI_GAUNTLET_SOS_PERCENTAGES"
     },
     "PONI_COAST": {
       "area_type": "wild_route",
@@ -882,46 +936,16 @@
         }
       ],
       "route_menu": [
-        {
-          "text": "CATCH WILD PKMN",
-          "action": "CATCH",
-          "condition": "has_balls",
-          "color": "BLUE"
-        },
-        {
-          "text": "BATTLE WILD PKMN",
-          "action": "BATTLE",
-          "condition": "can_battle",
-          "color": "GREEN"
-        },
-        {
-          "text": "FISH",
-          "action": "FISH",
-          "condition": "can_fish",
-          "color": "ORANGE"
-        },
-        {
-          "text": "BATTLE TRAINER",
-          "action": "TRAINER",
-          "condition": "has_trainers",
-          "color": "GREEN"
-        },
-        {
-          "text": "Poni Plains",
-          "action": "EXIT",
-          "target_area": "PONI_PLAINS",
-          "condition": "can_exit",
-          "color": "RED"
-        },
-        {
-          "text": "Resolution Cave",
-          "action": "EXIT",
-          "target_area": "RESOLUTION_CAVE",
-          "condition": "can_exit",
-          "color": "RED"
-        }
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        {"text": "Mina's Fairy Trial (Totem Ribombee)", "action": "BOSS", "color": "GOLD", "boss": {"id": 743, "name": "Totem Ribombee", "victory_flag": "mina_trial_cleared"}, "condition": "not:mina_trial_cleared"},
+        {"text": "Poni Plains", "action": "EXIT", "target_area": "PONI_PLAINS", "condition": "can_exit", "color": "RED"},
+        {"text": "Resolution Cave", "action": "EXIT", "target_area": "RESOLUTION_CAVE", "condition": "can_exit", "color": "RED"}
       ],
-      "next_area": "PONI_PLAINS"
+      "next_area": "PONI_PLAINS",
+        "sos_pool": "PONI_MEADOW_SOS_PERCENTAGES"
     },
     "PONI_PLAINS": {
       "area_type": "wild_route",
@@ -931,60 +955,12 @@
       "wild_pool_percentages": "PONI_PLAINS_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
-          "name": "Pokemon Trainer Dexio",
-          "class": "PKMN_TRAINER",
-          "sprite": "acetrainer_m.png",
-          "team": [196, 2003, 199, 376, 65],
-          "rewards": {
-            "balls": 5
-          }
-        },
-        {
-          "name": "Veteran Leon",
-          "class": "VETERAN",
-          "sprite": "veteran.png",
-          "team": [227, 752, 466],
-          "rewards": {
-            "balls": 5
-          }
-        },
-        {
-          "name": "Ace Trainer Angela",
-          "class": "ACE_TRAINER",
-          "sprite": "acetrainer_m.png",
-          "team": [368, 754],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "Hiker Ryan",
-          "class": "HIKER",
-          "sprite": "hiker.png",
-          "team": [142],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Police Officer Sheriff",
-          "class": "PKMN_TRAINER",
-          "sprite": "acetrainer_m.png",
-          "team": [508],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Ace Trainer Cole",
-          "class": "ACE_TRAINER",
-          "sprite": "acetrainer_f.png",
-          "team": [621, 691, 784],
-          "rewards": {
-            "balls": 5
-          }
-        }
+        {"name": "Pokemon Trainer Dexio", "class": "PKMN_TRAINER", "sprite": "acetrainer_m.png", "team": [196, 2003, 199, 376, 65], "rewards": {"balls": 5}},
+        {"name": "Ace Trainer Angela", "class": "ACE_TRAINER", "sprite": "acetrainer_m.png", "team": [368, 754], "rewards": {"balls": 4}},
+        {"name": "Hiker Ryan", "class": "HIKER", "sprite": "hiker.png", "team": [142], "rewards": {"balls": 3}},
+        {"name": "Police Officer Sheriff", "class": "PKMN_TRAINER", "sprite": "acetrainer_m.png", "team": [508], "rewards": {"balls": 3}},
+        {"name": "Ace Trainer Cole", "class": "ACE_TRAINER", "sprite": "acetrainer_f.png", "team": [621, 691, 784], "rewards": {"balls": 5}},
+        {"name": "Veteran Leon", "class": "VETERAN", "sprite": "veteran.png", "team": [227, 752, 466], "rewards": {"balls": 5}}
       ],
       "route_menu": [
         {
@@ -1027,7 +1003,8 @@
           "color": "RED"
         }
       ],
-      "next_area": "PONI_GROVE"
+      "next_area": "PONI_GROVE",
+        "sos_pool": "PONI_PLAINS_SOS_PERCENTAGES"
     },
     "PONI_GROVE": {
       "area_type": "wild_route",
@@ -1090,7 +1067,8 @@
           "color": "RED"
         }
       ],
-      "next_area": "ANCIENT_PONI_PATH"
+      "next_area": "ANCIENT_PONI_PATH",
+        "sos_pool": "PONI_GROVE_SOS_PERCENTAGES"
     },
     "PONI_BREAKER_COAST": {
       "area_type": "wild_route",
@@ -1139,39 +1117,15 @@
         }
       ],
       "route_menu": [
-        {
-          "text": "CATCH WILD PKMN",
-          "action": "CATCH",
-          "condition": "has_balls",
-          "color": "BLUE"
-        },
-        {
-          "text": "BATTLE WILD PKMN",
-          "action": "BATTLE",
-          "condition": "can_battle",
-          "color": "GREEN"
-        },
-        {
-          "text": "FISH",
-          "action": "FISH",
-          "condition": "can_fish",
-          "color": "ORANGE"
-        },
-        {
-          "text": "BATTLE TRAINER",
-          "action": "TRAINER",
-          "condition": "has_trainers",
-          "color": "GREEN"
-        },
-        {
-          "text": "Ancient Poni Path",
-          "action": "EXIT",
-          "target_area": "ANCIENT_PONI_PATH",
-          "condition": "can_exit",
-          "color": "RED"
-        }
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        {"text": "Ancient Poni Path", "action": "EXIT", "target_area": "ANCIENT_PONI_PATH", "condition": "can_exit", "color": "RED"},
+        {"text": "Ruins of Hope", "action": "EXIT", "target_area": "RUINS_OF_HOPE", "condition": ["can_exit", "beat_alola_champion"], "color": "RED"}
       ],
-      "next_area": "ANCIENT_PONI_PATH"
+      "next_area": "ANCIENT_PONI_PATH",
+        "sos_pool": "PONI_BREAKER_COAST_SOS_PERCENTAGES"
     },
     "ANCIENT_PONI_PATH": {
       "area_type": "wild_route",
@@ -1382,7 +1336,8 @@
           "color": "RED"
         }
       ],
-      "next_area": "SEAFOLK_VILLAGE"
+      "next_area": "SEAFOLK_VILLAGE",
+        "sos_pool": "PONI_WILDS_SOS_PERCENTAGES"
     },
     "EXEGGUTOR_ISLAND": {
       "area_type": "wild_route",
@@ -1470,40 +1425,15 @@
         }
       ],
       "route_menu": [
-        {
-          "text": "CATCH WILD PKMN",
-          "action": "CATCH",
-          "condition": "has_balls",
-          "color": "BLUE"
-        },
-        {
-          "text": "BATTLE WILD PKMN",
-          "action": "BATTLE",
-          "condition": "can_battle",
-          "color": "GREEN"
-        },
-        {
-          "text": "BATTLE TRAINER",
-          "action": "TRAINER",
-          "condition": "has_trainers",
-          "color": "GREEN"
-        },
-        {
-          "text": "Route 17",
-          "action": "EXIT",
-          "target_area": "ALOLA_ROUTE_17",
-          "condition": "can_exit",
-          "color": "RED"
-        },
-        {
-          "text": "Route 16",
-          "action": "EXIT",
-          "target_area": "ALOLA_ROUTE_16",
-          "condition": "can_exit",
-          "color": "RED"
-        }
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        {"text": "Route 17", "action": "EXIT", "target_area": "ALOLA_ROUTE_17", "condition": "can_exit", "color": "RED"},
+        {"text": "Route 16", "action": "EXIT", "target_area": "ALOLA_ROUTE_16", "condition": "can_exit", "color": "RED"},
+        {"text": "Lake of the Sunne and Moone", "action": "EXIT", "target_area": "LAKE_OF_THE_SUNNE_MOONE", "condition": ["can_exit", "beat_alola_champion"], "color": "RED"}
       ],
-      "next_area": "ALOLA_ROUTE_17"
+      "next_area": "ALOLA_ROUTE_17",
+        "sos_pool": "ULAULA_MEADOW_SOS_PERCENTAGES"
     },
     "AETHER_HOUSE": {
       "area_type": "dungeon",
@@ -1512,17 +1442,7 @@
       "battle_type": "indoor",
       "wild_pool_percentages": null,
       "min_rounds": 0,
-      "trainer_pool": [
-        {
-          "name": "Preschooler Hunter",
-          "class": "YOUNGSTER",
-          "sprite": "youngster.png",
-          "team": [239],
-          "rewards": {
-            "balls": 3
-          }
-        }
-      ],
+      "trainer_pool": [{"name": "Preschooler Hunter", "class": "YOUNGSTER", "sprite": "youngster.png", "team": [239], "rewards": {"balls": 3}}],
       "route_menu": [
         {
           "text": "BATTLE TRAINER",
@@ -1538,7 +1458,8 @@
           "color": "RED"
         }
       ],
-      "next_area": "ALOLA_ROUTE_15"
+      "next_area": "ALOLA_ROUTE_15",
+        "on_enter_event": [{"type": "trainer_battle", "trainer": {"name": "{friend_name}", "class": "RIVAL", "sprite": "{friend_character}", "is_boss_battle": true, "team": [42, 571, 772], "levels": [42, 42, 43], "rewards": {"balls": 6}, "victory_flag": "defeated_gladion_aether_house", "dialogue": {"intro": ["{friend_name}: ...You. Battle me. I need to see how strong I really am."], "player_won": ["{friend_name}: Hmph. Not bad."], "player_lost": ["{friend_name}: Is that all?"]}}, "flag_check": "defeated_gladion_aether_house", "condition": "has_rockium_z_badge"}]
     },
     "HOKULANI_OBSERVATORY": {
       "area_type": "town",
@@ -1552,14 +1473,9 @@
         }
       ],
       "explore_options": [
-        {
-          "text": "Pok\u00e9mon Center",
-          "action": "HEAL"
-        },
-        {
-          "text": "Shop",
-          "action": "SHOP"
-        }
+        {"text": "Pokémon Center", "action": "HEAL"},
+        {"text": "Shop", "action": "SHOP"},
+        {"text": "Battle Captain Sophocles", "action": "EVENT", "color": "GOLD", "flag_condition": "not captain_rematch_sophocles", "event": {"lines": ["Sophocles: The Champion, here? Let's battle!"], "flag": "captain_rematch_sophocles", "battle": {"name": "Captain Sophocles", "class": "CAPTAIN", "sprite": "sophocles.png", "is_boss_battle": true, "team": [777, 462], "levels": [51, 51], "rewards": {"balls": 10}, "dialogue": {"intro": ["Sophocles: The Champion, here? Let's battle!"], "player_won": ["Sophocles: As expected of Alola's Champion!"]}}}, "condition": "beat_alola_champion"}
       ],
       "next_area": "MOUNT_HOKULANI"
     },
@@ -1572,27 +1488,13 @@
       "min_rounds": 1,
       "trainer_pool": [],
       "route_menu": [
-        {
-          "text": "CATCH WILD PKMN",
-          "action": "CATCH",
-          "condition": "has_balls",
-          "color": "BLUE"
-        },
-        {
-          "text": "BATTLE WILD PKMN",
-          "action": "BATTLE",
-          "condition": "can_battle",
-          "color": "GREEN"
-        },
-        {
-          "text": "Route 13",
-          "action": "EXIT",
-          "target_area": "ALOLA_ROUTE_13",
-          "condition": "can_exit",
-          "color": "RED"
-        }
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "Route 13", "action": "EXIT", "target_area": "ALOLA_ROUTE_13", "condition": "can_exit", "color": "RED"},
+        {"text": "Ruins of Abundance", "action": "EXIT", "target_area": "RUINS_OF_ABUNDANCE", "condition": ["can_exit", "beat_alola_champion"], "color": "RED"}
       ],
-      "next_area": "ALOLA_ROUTE_13"
+      "next_area": "ALOLA_ROUTE_13",
+        "sos_pool": "HAINA_DESERT_SOS_PERCENTAGES"
     },
     "ALOLA_ROUTE_13": {
       "area_type": "wild_route",
@@ -1632,7 +1534,8 @@
           "color": "RED"
         }
       ],
-      "next_area": "ALOLA_ROUTE_12"
+      "next_area": "ALOLA_ROUTE_12",
+        "sos_pool": "ALOLA_ROUTE_13_SOS_PERCENTAGES"
     },
     "BLUSH_MOUNTAIN": {
       "area_type": "wild_route",
@@ -1688,7 +1591,8 @@
           "color": "RED"
         }
       ],
-      "next_area": "ALOLA_ROUTE_12"
+      "next_area": "ALOLA_ROUTE_12",
+        "sos_pool": "BLUSH_MOUNTAIN_SOS_PERCENTAGES"
     },
     "ULAULA_BEACH": {
       "area_type": "wild_route",
@@ -1799,7 +1703,8 @@
           "color": "RED"
         }
       ],
-      "next_area": "ALOLA_ROUTE_12"
+      "next_area": "ALOLA_ROUTE_12",
+        "sos_pool": "SECLUDED_SHORE_SOS_PERCENTAGES"
     },
     "ALOLA_ROUTE_12": {
       "area_type": "wild_route",
@@ -1937,7 +1842,8 @@
           "color": "RED"
         }
       ],
-      "next_area": "ALOLA_ROUTE_11"
+      "next_area": "ALOLA_ROUTE_11",
+        "sos_pool": "ALOLA_ROUTE_12_SOS_PERCENTAGES"
     },
     "MALIE_GARDEN": {
       "area_type": "wild_route",
@@ -1948,78 +1854,19 @@
       "wild_pool_percentages": "MALIE_GARDEN_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
-          "name": "Preschooler Nancy",
-          "class": "YOUNGSTER",
-          "sprite": "youngster.png",
-          "team": [173],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Bellhop Landon",
-          "class": "PKMN_TRAINER",
-          "sprite": "acetrainer_f.png",
-          "team": [2006],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Sightseer Yuriko",
-          "class": "PKMN_TRAINER",
-          "sprite": "acetrainer_m.png",
-          "team": [2006],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Rising Star Elijah",
-          "class": "ACE_TRAINER",
-          "sprite": "acetrainer_f.png",
-          "team": [10, 13],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "Lass Rika",
-          "class": "LASS",
-          "sprite": "rika.png",
-          "team": [16, 29],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "Youngster Tyler",
-          "class": "YOUNGSTER",
-          "sprite": "youngster.png",
-          "team": [2001, 23, 41],
-          "rewards": {
-            "balls": 5
-          }
-        },
-        {
-          "name": "Lass Emmy",
-          "class": "LASS",
-          "sprite": "lass.png",
-          "team": [16, 29],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "Rising Star Sean",
-          "class": "ACE_TRAINER",
-          "sprite": "acetrainer_f.png",
-          "team": [56],
-          "rewards": {
-            "balls": 3
-          }
-        }
+        {"name": "Preschooler Nancy", "class": "YOUNGSTER", "sprite": "youngster.png", "team": [173], "rewards": {"balls": 3}},
+        {"name": "Bellhop Landon", "class": "PKMN_TRAINER", "sprite": "acetrainer_f.png", "team": [2006], "rewards": {"balls": 3}},
+        {"name": "Sightseer Yuriko", "class": "PKMN_TRAINER", "sprite": "acetrainer_m.png", "team": [2006], "rewards": {"balls": 3}},
+        {"name": "Rising Star Elijah", "class": "ACE_TRAINER", "sprite": "acetrainer_f.png", "team": [10, 13], "rewards": {"balls": 4}},
+        {"name": "Lass Rika", "class": "LASS", "sprite": "rika.png", "team": [16, 29], "rewards": {"balls": 4}},
+        {"name": "Youngster Tyler", "class": "YOUNGSTER", "sprite": "youngster.png", "team": [2001, 23, 41], "rewards": {"balls": 5}},
+        {"name": "Lass Emmy", "class": "LASS", "sprite": "lass.png", "team": [16, 29], "rewards": {"balls": 4}},
+        {"name": "Rising Star Sean", "class": "ACE_TRAINER", "sprite": "acetrainer_f.png", "team": [56], "rewards": {"balls": 3}},
+        {"name": "Sightseer Mitch", "class": "SIGHTSEER", "sprite": "pokefan.png", "team": [53, 105], "rewards": {"balls": 2}, "levels": [27, 26]},
+        {"name": "Preschooler Ailey", "class": "PRESCHOOLER", "sprite": "school_kid_m.png", "team": [173], "rewards": {"balls": 2}, "levels": [26]},
+        {"name": "Sightseer Akali", "class": "SIGHTSEER", "sprite": "pokefan.png", "team": [20, 26], "rewards": {"balls": 2}, "levels": [26, 27]},
+        {"name": "Veteran Don", "class": "VETERAN", "sprite": "veteran.png", "team": [23, 41], "rewards": {"balls": 2}, "levels": [30, 31]},
+        {"name": "Lass Lisa", "class": "LASS", "sprite": "lass.png", "team": [751], "rewards": {"balls": 2}, "levels": [28]}
       ],
       "route_menu": [
         {
@@ -2054,7 +1901,9 @@
           "color": "RED"
         }
       ],
-      "next_area": "MALIE_CITY"
+      "next_area": "MALIE_CITY",
+        "sos_pool": "MALIE_GARDEN_SOS_PERCENTAGES",
+        "on_enter_event": [{"type": "trainer_battle", "trainer": {"name": "Team Skull Boss Guzma", "class": "TEAM_SKULL", "sprite": "guzma.png", "is_boss_battle": true, "team": [768, 168], "levels": [31, 30], "rewards": {"balls": 6}, "victory_flag": "defeated_guzma_malie_garden", "dialogue": {"intro": ["Guzma: Guzma! The boss who beats you down and keeps on beating you down!"], "player_won": ["Guzma: Tch. Lucky."]}}, "flag_check": "defeated_guzma_malie_garden", "condition": "has_rockium_z_badge"}]
     },
     "DIVIDING_PEAK_TUNNEL": {
       "area_type": "dungeon",
@@ -2165,7 +2014,9 @@
           "color": "RED"
         }
       ],
-      "next_area": "MEMORIAL_HILL"
+      "next_area": "MEMORIAL_HILL",
+        "sos_pool": "AKALA_OUTSKIRTS_SOS_PERCENTAGES",
+        "on_enter_event": [{"type": "trainer_battle", "trainer": {"name": "Team Skull Admin Plumeria", "class": "TEAM_SKULL", "sprite": "plumeria.png", "is_boss_battle": true, "team": [42, 757], "levels": [25, 26], "rewards": {"balls": 6}, "victory_flag": "defeated_plumeria_akala", "dialogue": {"intro": ["Plumeria: So you're the kid giving my grunts a hard time. Let's see it."], "player_won": ["Plumeria: Fine. You win this one."]}}, "flag_check": "defeated_plumeria_akala"}]
     },
     "ALOLA_ROUTE_9": {
       "area_type": "wild_route",
@@ -2230,7 +2081,8 @@
           "color": "RED"
         }
       ],
-      "next_area": "KONIKONI_CITY"
+      "next_area": "KONIKONI_CITY",
+        "sos_pool": "ALOLA_ROUTE_9_SOS_PERCENTAGES"
     },
     "HEAHEA_BEACH": {
       "area_type": "wild_route",
@@ -2284,60 +2136,13 @@
       "wild_pool_percentages": "HANO_BEACH_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
-          "name": "Swimmer Alicia",
-          "class": "SWIMMER",
-          "sprite": "swimmer_m.png",
-          "team": [279],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Swimmer Lawrence",
-          "class": "SWIMMER",
-          "sprite": "swimmer_f.png",
-          "team": [550, 61],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "Swimmer Laura",
-          "class": "SWIMMER",
-          "sprite": "swimmer_m.png",
-          "team": [118, 120],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "Swimmer Roddy",
-          "class": "SWIMMER",
-          "sprite": "swimmer_f.png",
-          "team": [130],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Swimmer Chelsea",
-          "class": "SWIMMER",
-          "sprite": "swimmer_m.png",
-          "team": [771],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Leafeon User Linnea",
-          "class": "PKMN_TRAINER",
-          "sprite": "acetrainer_f.png",
-          "team": [470],
-          "rewards": {
-            "balls": 3
-          }
-        }
+        {"name": "Swimmer Alicia", "class": "SWIMMER", "sprite": "swimmer_m.png", "team": [279], "rewards": {"balls": 3}},
+        {"name": "Swimmer Lawrence", "class": "SWIMMER", "sprite": "swimmer_f.png", "team": [550, 61], "rewards": {"balls": 4}},
+        {"name": "Swimmer Laura", "class": "SWIMMER", "sprite": "swimmer_m.png", "team": [118, 120], "rewards": {"balls": 4}},
+        {"name": "Swimmer Roddy", "class": "SWIMMER", "sprite": "swimmer_f.png", "team": [130], "rewards": {"balls": 3}},
+        {"name": "Swimmer Chelsea", "class": "SWIMMER", "sprite": "swimmer_m.png", "team": [771], "rewards": {"balls": 3}},
+        {"name": "Leafeon User Linnea", "class": "PKMN_TRAINER", "sprite": "acetrainer_f.png", "team": [470], "rewards": {"balls": 3}},
+        {"name": "Swimmer Logan", "class": "SWIMMER", "sprite": "swimmer_m.png", "team": [746], "rewards": {"balls": 2}, "levels": [25]}
       ],
       "route_menu": [
         {
@@ -2372,7 +2177,8 @@
           "color": "RED"
         }
       ],
-      "next_area": "HANO_GRAND_RESORT"
+      "next_area": "HANO_GRAND_RESORT",
+        "sos_pool": "HANO_BEACH_SOS_PERCENTAGES"
     },
     "HANO_GRAND_RESORT": {
       "area_type": "town",
@@ -2409,42 +2215,10 @@
       "wild_pool_percentages": null,
       "min_rounds": 0,
       "trainer_pool": [
-        {
-          "name": "Pro Wrestler The Royal",
-          "class": "PKMN_TRAINER",
-          "sprite": "acetrainer_m.png",
-          "team": [744],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Actor Meredith",
-          "class": "PKMN_TRAINER",
-          "sprite": "acetrainer_f.png",
-          "team": [741],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Eevee User Kagetora",
-          "class": "PKMN_TRAINER",
-          "sprite": "acetrainer_m.png",
-          "team": [133],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Youngster Kenway",
-          "class": "YOUNGSTER",
-          "sprite": "youngster.png",
-          "team": [745],
-          "rewards": {
-            "balls": 3
-          }
-        }
+        {"name": "Pro Wrestler The Royal", "class": "PKMN_TRAINER", "sprite": "acetrainer_m.png", "team": [744], "rewards": {"balls": 3}},
+        {"name": "Actor Meredith", "class": "PKMN_TRAINER", "sprite": "acetrainer_f.png", "team": [741], "rewards": {"balls": 3}},
+        {"name": "Eevee User Kagetora", "class": "PKMN_TRAINER", "sprite": "acetrainer_m.png", "team": [133], "rewards": {"balls": 3}},
+        {"name": "Youngster Kenway", "class": "YOUNGSTER", "sprite": "youngster.png", "team": [745], "rewards": {"balls": 3}}
       ],
       "route_menu": [
         {
@@ -2468,7 +2242,8 @@
           "color": "RED"
         }
       ],
-      "next_area": "ALOLA_ROUTE_6"
+      "next_area": "ALOLA_ROUTE_6",
+        "on_enter_event": [{"type": "trainer_battle", "trainer": {"name": "Captain Kiawe", "class": "CAPTAIN", "sprite": "kiawe.png", "is_boss_battle": true, "team": [58, 662], "levels": [26, 26], "rewards": {"balls": 6}, "victory_flag": "defeated_kiawe_royal", "dialogue": {"intro": ["Kiawe: You've cleared my trial, but how about a real battle?"], "player_won": ["Kiawe: That was great! Keep going on your island challenge!"]}}, "flag_check": "defeated_kiawe_royal", "condition": "has_rockium_z_badge"}]
     },
     "ALOLA_ROUTE_6": {
       "area_type": "wild_route",
@@ -2478,60 +2253,13 @@
       "wild_pool_percentages": "ALOLA_ROUTE_6_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
-          "name": "Office Worker Jen",
-          "class": "GENTLEMAN",
-          "sprite": "gentleman.png",
-          "team": [39],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Preschooler Fumiko",
-          "class": "YOUNGSTER",
-          "sprite": "youngster.png",
-          "team": [174],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Pokemon Breeder William",
-          "class": "POKEFAN",
-          "sprite": "pokefan_m.png",
-          "team": [761, 179],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "Beauty Brittney",
-          "class": "BEAUTY",
-          "sprite": "beauty.png",
-          "team": [104],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Dancer Maika",
-          "class": "BEAUTY",
-          "sprite": "beauty.png",
-          "team": [741],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Team Skull Grunt",
-          "class": "SKULL_GRUNT",
-          "sprite": "skull_grunt.png",
-          "team": [96],
-          "rewards": {
-            "balls": 3
-          }
-        }
+        {"name": "Office Worker Jen", "class": "GENTLEMAN", "sprite": "gentleman.png", "team": [39], "rewards": {"balls": 3}},
+        {"name": "Preschooler Fumiko", "class": "YOUNGSTER", "sprite": "youngster.png", "team": [174], "rewards": {"balls": 3}},
+        {"name": "Pokemon Breeder William", "class": "POKEFAN", "sprite": "pokefan_m.png", "team": [761, 179], "rewards": {"balls": 4}},
+        {"name": "Beauty Brittney", "class": "BEAUTY", "sprite": "beauty.png", "team": [104], "rewards": {"balls": 3}},
+        {"name": "Dancer Maika", "class": "BEAUTY", "sprite": "beauty.png", "team": [741], "rewards": {"balls": 3}},
+        {"name": "Team Skull Grunt", "class": "SKULL_GRUNT", "sprite": "skull_grunt.png", "team": [96], "rewards": {"balls": 3}},
+        {"name": "Youngster Anthony", "class": "YOUNGSTER", "sprite": "youngster.png", "team": [240, 734], "rewards": {"balls": 2}, "levels": [15, 16]}
       ],
       "route_menu": [
         {
@@ -2581,7 +2309,8 @@
           "color": "RED"
         }
       ],
-      "next_area": "PANIOLA_RANCH"
+      "next_area": "PANIOLA_RANCH",
+        "sos_pool": "ALOLA_ROUTE_6_SOS_PERCENTAGES"
     },
     "PANIOLA_RANCH": {
       "area_type": "wild_route",
@@ -2591,69 +2320,14 @@
       "wild_pool_percentages": "PANIOLA_RANCH_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
-          "name": "Madame Elizabeth",
-          "class": "BEAUTY",
-          "sprite": "beauty.png",
-          "team": [703],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Pokemon Breeder Wesley",
-          "class": "POKEFAN",
-          "sprite": "pokefan_f.png",
-          "team": [128],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Pokemon Breeder Glenn",
-          "class": "POKEFAN",
-          "sprite": "pokefan_m.png",
-          "team": [749],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Rising Star Micah",
-          "class": "ACE_TRAINER",
-          "sprite": "acetrainer_f.png",
-          "team": [506, 81],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "Gentleman Gerald",
-          "class": "GENTLEMAN",
-          "sprite": "gentleman.png",
-          "team": [302],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Ultra Recon Squad Dulse",
-          "class": "PKMN_TRAINER",
-          "sprite": "acetrainer_f.png",
-          "team": [803],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Ultra Recon Squad Soliera",
-          "class": "PKMN_TRAINER",
-          "sprite": "acetrainer_m.png",
-          "team": [803],
-          "rewards": {
-            "balls": 3
-          }
-        }
+        {"name": "Madame Elizabeth", "class": "BEAUTY", "sprite": "beauty.png", "team": [703], "rewards": {"balls": 3}},
+        {"name": "Pokemon Breeder Wesley", "class": "POKEFAN", "sprite": "pokefan_f.png", "team": [128], "rewards": {"balls": 3}},
+        {"name": "Pokemon Breeder Glenn", "class": "POKEFAN", "sprite": "pokefan_m.png", "team": [749], "rewards": {"balls": 3}},
+        {"name": "Rising Star Micah", "class": "ACE_TRAINER", "sprite": "acetrainer_f.png", "team": [506, 81], "rewards": {"balls": 4}},
+        {"name": "Gentleman Gerald", "class": "GENTLEMAN", "sprite": "gentleman.png", "team": [302], "rewards": {"balls": 3}},
+        {"name": "Ultra Recon Squad Dulse", "class": "PKMN_TRAINER", "sprite": "acetrainer_f.png", "team": [803], "rewards": {"balls": 3}},
+        {"name": "Ultra Recon Squad Soliera", "class": "PKMN_TRAINER", "sprite": "acetrainer_m.png", "team": [803], "rewards": {"balls": 3}},
+        {"name": "Pokemon Breeder Amanda", "class": "POKEMON_BREEDER", "sprite": "pokefan_f.png", "team": [506, 58], "rewards": {"balls": 2}, "levels": [14, 15]}
       ],
       "route_menu": [
         {
@@ -2696,7 +2370,8 @@
           "color": "RED"
         }
       ],
-      "next_area": "PANIOLA_TOWN"
+      "next_area": "PANIOLA_TOWN",
+        "sos_pool": "PANIOLA_RANCH_SOS_PERCENTAGES"
     },
     "PANIOLA_TOWN": {
       "area_type": "town",
@@ -2727,7 +2402,9 @@
           "action": "SHOP"
         }
       ],
-      "next_area": "ALOLA_ROUTE_4"
+      "next_area": "ALOLA_ROUTE_4",
+        "sos_pool": "PANIOLA_TOWN_SOS_PERCENTAGES",
+        "on_enter_event": [{"type": "trainer_battle", "trainer": {"name": "{rival_name}", "class": "PKMN_TRAINER", "sprite": "{rival_character}", "is_boss_battle": true, "team": [729, 25, 714, 133], "levels": [16, 15, 14, 14], "team_choice": {"725": [729, 25, 714, 133], "728": [723, 25, 714, 133], "722": [726, 25, 714, 133]}, "rewards": {"balls": 6}, "victory_flag": "defeated_hau_paniola", "dialogue": {"intro": ["{rival_name}: Akala Island! Let's celebrate with a battle!"], "player_won": ["{rival_name}: Aw, you're so strong! I'm going to keep at it!"], "player_lost": ["{rival_name}: Yes! I did it! Let's both keep going!"]}}, "flag_check": "defeated_hau_paniola", "condition": "has_fightinium_z_badge"}]
     },
     "SANDY_CAVE": {
       "area_type": "dungeon",
@@ -2800,69 +2477,18 @@
       "wild_pool_percentages": "HAUOLI_CEMETERY_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
-          "name": "Office Worker Jeremy",
-          "class": "GENTLEMAN",
-          "sprite": "gentleman.png",
-          "team": [731],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Preschooler Malia",
-          "class": "YOUNGSTER",
-          "sprite": "youngster.png",
-          "team": [440],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Pokemon Breeder Ikue",
-          "class": "POKEFAN",
-          "sprite": "pokefan_m.png",
-          "team": [25],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Umbreon User Braiden",
-          "class": "PKMN_TRAINER",
-          "sprite": "acetrainer_f.png",
-          "team": [197],
-          "rewards": {
-            "balls": 3
-          }
-        }
+        {"name": "Office Worker Jeremy", "class": "GENTLEMAN", "sprite": "gentleman.png", "team": [731], "rewards": {"balls": 3}},
+        {"name": "Preschooler Malia", "class": "YOUNGSTER", "sprite": "youngster.png", "team": [440], "rewards": {"balls": 3}},
+        {"name": "Pokemon Breeder Ikue", "class": "POKEFAN", "sprite": "pokefan_m.png", "team": [25], "rewards": {"balls": 3}},
+        {"name": "Umbreon User Braiden", "class": "PKMN_TRAINER", "sprite": "acetrainer_f.png", "team": [197], "rewards": {"balls": 3}},
+        {"name": "Gentleman Stanley", "class": "GENTLEMAN", "sprite": "gentleman.png", "team": [296], "rewards": {"balls": 2}, "levels": [9]}
       ],
       "route_menu": [
-        {
-          "text": "CATCH WILD PKMN",
-          "action": "CATCH",
-          "condition": "has_balls",
-          "color": "BLUE"
-        },
-        {
-          "text": "BATTLE WILD PKMN",
-          "action": "BATTLE",
-          "condition": "can_battle",
-          "color": "GREEN"
-        },
-        {
-          "text": "BATTLE TRAINER",
-          "action": "TRAINER",
-          "condition": "has_trainers",
-          "color": "GREEN"
-        },
-        {
-          "text": "Route 2",
-          "action": "EXIT",
-          "target_area": "ALOLA_ROUTE_2",
-          "condition": "can_exit",
-          "color": "RED"
-        }
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        {"text": "Battle Captain Ilima", "action": "EVENT", "color": "GOLD", "flag_condition": "not captain_rematch_ilima", "event": {"lines": ["Ilima: The Champion, here? Let's battle!"], "flag": "captain_rematch_ilima", "battle": {"name": "Captain Ilima", "class": "CAPTAIN", "sprite": "ilima_trial_captain.png", "is_boss_battle": true, "team": [735, 235, 775], "levels": [51, 51, 51], "rewards": {"balls": 10}, "dialogue": {"intro": ["Ilima: The Champion, here? Let's battle!"], "player_won": ["Ilima: As expected of Alola's Champion!"]}}}, "condition": "beat_alola_champion"},
+        {"text": "Route 2", "action": "EXIT", "target_area": "ALOLA_ROUTE_2", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "ALOLA_ROUTE_2"
     },
@@ -2902,7 +2528,8 @@
           "color": "RED"
         }
       ],
-      "next_area": "SEAWARD_CAVE"
+      "next_area": "SEAWARD_CAVE",
+        "sos_pool": "KALAE_BAY_SOS_PERCENTAGES"
     },
     "SEAWARD_CAVE": {
       "area_type": "dungeon",
@@ -2965,7 +2592,8 @@
           "color": "RED"
         }
       ],
-      "next_area": "MELEMELE_MEADOW"
+      "next_area": "MELEMELE_MEADOW",
+        "sos_pool": "SEAWARD_CAVE_SOS_PERCENTAGES"
     },
     "MELEMELE_MEADOW": {
       "area_type": "wild_route",
@@ -3019,7 +2647,8 @@
           "color": "RED"
         }
       ],
-      "next_area": "ALOLA_ROUTE_3"
+      "next_area": "ALOLA_ROUTE_3",
+        "sos_pool": "MELEMELE_MEADOW_SOS_PERCENTAGES"
     },
     "ALOLA_ROUTE_3": {
       "area_type": "wild_route",
@@ -3107,24 +2736,26 @@
           "color": "RED"
         }
       ],
-      "next_area": "ALOLA_ROUTE_1"
+      "next_area": "ALOLA_ROUTE_1",
+        "sos_pool": "ALOLA_ROUTE_3_SOS_PERCENTAGES",
+        "on_enter_event": [{"type": "trainer_battle", "trainer": {"name": "{rival_name}", "class": "PKMN_TRAINER", "sprite": "{rival_character}", "is_boss_battle": true, "team": [728, 714, 25], "levels": [13, 11, 12], "team_choice": {"725": [728, 714, 25], "728": [722, 714, 25], "722": [725, 714, 25]}, "rewards": {"balls": 6}, "victory_flag": "defeated_hau_route3", "dialogue": {"intro": ["{rival_name}: Hey, {player_name}! Let's see whose Pokemon have grown more!"], "player_won": ["{rival_name}: Aw, you're so strong! I'm going to keep at it!"], "player_lost": ["{rival_name}: Yes! I did it! Let's both keep going!"]}}, "flag_check": "defeated_hau_route3", "condition": "has_normalium_z_badge"}]
     },
     "IKI_TOWN": {
       "area_type": "town",
       "route_name": "Iki Town",
       "region": "ALOLA",
       "backgrounds": { "main": "iki_town.png", "mom_home": "alola_mom_home.png", "kahuna": "iki_trial_grounds.png" },
-      "has_gym": false,
-      "travel_options": [{"text": "Route 1 (to Hau'oli)", "target_area": "ALOLA_ROUTE_1"}],
+      "has_gym": true,
+      "travel_options": [
+        {"text": "Route 1 (to Hau'oli)", "target_area": "ALOLA_ROUTE_1"},
+        {"text": "Ruins of Conflict", "target_area": "RUINS_OF_CONFLICT", "condition": "beat_alola_champion"}
+      ],
       "explore_options": [
-        { "text": "Visit Mom", "action": "NPC", "target": "alola_mom_home_1" },
-        {
-          "text": "Chat with Mom (random)",
-          "action": "RANDOM_NPC",
-          "targets": ["alola_mom_home_1", "alola_mom_home_2", "alola_mom_home_3"]
-        },
-        { "text": "Meet Professor Kukui", "action": "NPC", "target": "alola_kukui_intro", "flag_condition": "not met_kukui" },
-        { "text": "Meet {rival_name}", "action": "NPC", "target": "alola_hau_intro", "flag_condition": "not met_hau" }
+        {"text": "Visit Mom", "action": "NPC", "target": "alola_mom_home_1"},
+        {"text": "Chat with Mom (random)", "action": "RANDOM_NPC", "targets": ["alola_mom_home_1", "alola_mom_home_2", "alola_mom_home_3"]},
+        {"text": "Grand Trial (Hala)", "action": "GYM", "color": "GOLD"},
+        {"text": "Meet Professor Kukui", "action": "NPC", "target": "alola_kukui_intro", "flag_condition": "not met_kukui"},
+        {"text": "Meet {rival_name}", "action": "NPC", "target": "alola_hau_intro", "flag_condition": "not met_hau"}
       ],
       "next_area": "ALOLA_ROUTE_1",
       "on_enter_event": {
@@ -3145,7 +2776,8 @@
         },
         "condition": "has_alola_starter",
         "flag_check": "defeated_hau_iki"
-      }
+      },
+        "gym": {"trainers": [], "leader": {"name": "Hala (Kahuna — Melemele Grand Trial)", "class": "GYM_LEADER", "sprite": "hala.png", "team": [66, 296, 739], "levels": [15, 15, 16], "dialogue": {"intro": ["Hala: Ho ho! You've cleared Ilima's trial. Now for the grand trial of Melemele Island!", "I'm Hala, its Kahuna. Show me what you and your Pokemon have built together!"], "player_won": ["Hala: Splendid! You've earned the Fightinium Z. The ferry to Akala Island is yours to take!"], "player_lost": ["Hala: Not yet! Train a little more and come back to the trial grounds."]}, "rewards": {"balls": 6, "FIGHTINIUM_Z": 1}, "is_boss_battle": true, "badge_reward": "FIGHTINIUM_Z", "movesets": {"66": ["LOW-KICK", "LEER", "FOCUS-ENERGY"], "296": ["ARM-THRUST", "FAKE-OUT", "SAND-ATTACK"], "739": ["BUBBLE", "ROCK-SMASH", "LEER"]}}, "requirements": {"badges": 1, "fail_text": ["Hala: The grand trial comes after your first trial.", "Clear Verdant Cavern and beat Captain Ilima in Hau'oli City first!"]}}
     },
     "HAUOLI_CITY": {
       "area_type": "town",
@@ -3155,10 +2787,11 @@
       "has_gym": true,
       "gym": {"trainers": [], "leader": {"name": "Ilima (Trial Captain)", "class": "GYM_LEADER", "sprite": "ilima_trial_captain.png", "team": [734, 235], "levels": [9, 10], "dialogue": {"intro": ["Ilima: You've completed Verdant Cavern. Now face me — the trial captain — in a proper battle!"], "player_won": ["Ilima: Wonderful! You've earned the Normalium Z! Use Z-Moves wisely."], "player_lost": ["Ilima: Not quite. Train more and return — I'll be here."]}, "rewards": {"balls": 5, "NORMALIUM_Z": 1}, "is_boss_battle": true, "badge_reward": "NORMALIUM_Z", "movesets": {"734": ["TACKLE", "PURSUIT", "LEER"], "235": ["EMBER", "TACKLE"]}}, "requirements": {"badges": 0, "fail_text": "Complete your first trial at Verdant Cavern!", "flag": "VERDANT_CAVERN_boss_defeated"}},
       "travel_options": [
-        { "text": "Route 1 (to Iki Town)", "target_area": "ALOLA_ROUTE_1" },
-        { "text": "Route 2 (to Hau'oli Outskirts)", "target_area": "ALOLA_ROUTE_2" },
-        { "text": "Verdant Cavern", "target_area": "VERDANT_CAVERN" },
-        { "text": "Heahea City", "target_area": "HEAHEA_CITY", "condition": "has_normalium_z_badge" }
+        {"text": "Route 1 (to Iki Town)", "target_area": "ALOLA_ROUTE_1"},
+        {"text": "Route 2 (to Hau'oli Outskirts)", "target_area": "ALOLA_ROUTE_2"},
+        {"text": "Verdant Cavern", "target_area": "VERDANT_CAVERN"},
+        {"text": "Heahea City", "target_area": "HEAHEA_CITY", "condition": "has_fightinium_z_badge"},
+        {"text": "Melemele Sea", "target_area": "MELEMELE_SEA"}
       ],
       "explore_options": [
         { "text": "Pokémon Center", "action": "HEAL" },
@@ -3167,7 +2800,8 @@
         { "text": "Meet Looker", "action": "NPC", "target": "alola_looker", "flag_condition": "not met_alola_looker" }
       ],
       "next_area": "ALOLA_ROUTE_2",
-      "department_store": true
+      "department_store": true,
+        "sos_pool": "HAUOLI_CITY_SOS_PERCENTAGES"
     },
     "HEAHEA_CITY": {
       "area_type": "town",
@@ -3175,7 +2809,7 @@
       "region": "ALOLA",
       "backgrounds": { "main": "heahea_city.png", "pokecenter": "heahea_center.png", "aether": "aether_paradise_entry.png" },
       "has_gym": true,
-      "gym": {"trainers": [], "leader": {"name": "Olivia (Kahuna — Akala Grand Trial)", "class": "GYM_LEADER", "sprite": "olivia_kahuna_akala_grand_trial.png", "team": [299, 525, 745], "levels": [26, 26, 27], "dialogue": {"intro": ["Olivia: You've done well on your trials. Now face the Grand Trial of Akala Island!", "I am Olivia, its Kahuna. Let us see if your bond with your Pokémon is as strong as stone."], "player_won": ["Olivia: Beautiful. You've earned Rockium Z! Take the ferry to Ula'ula Island!"], "player_lost": ["Olivia: Not quite rock-solid yet. Keep training!"]}, "rewards": {"balls": 8, "ROCKIUM_Z": 1}, "is_boss_battle": true, "badge_reward": "ROCKIUM_Z", "movesets": {"299": ["ROCK-SLIDE", "SPARK", "THUNDER-WAVE"], "525": ["ROCK-BLAST", "MUD-SLAP", "HEADBUTT"], "745": ["BITE", "ROCK-THROW"]}}, "requirements": {"badges": 1, "fail_text": ["Olivia is waiting at the ruins.", "Finish Lana's Water Trial, Mallow's Grass Trial", "and Kiawe's Fire Trial on Akala Island first!"], "flags": ["BROOKLET_HILL_boss_defeated", "LUSH_JUNGLE_boss_defeated", "WELA_VOLCANO_boss_defeated"]}},
+      "gym": {"trainers": [], "leader": {"name": "Olivia (Kahuna — Akala Grand Trial)", "class": "GYM_LEADER", "sprite": "olivia_kahuna_akala_grand_trial.png", "team": [299, 525, 745], "levels": [26, 26, 27], "dialogue": {"intro": ["Olivia: You've done well on your trials. Now face the Grand Trial of Akala Island!", "I am Olivia, its Kahuna. Let us see if your bond with your Pokémon is as strong as stone."], "player_won": ["Olivia: Beautiful. You've earned Rockium Z! Take the ferry to Ula'ula Island!"], "player_lost": ["Olivia: Not quite rock-solid yet. Keep training!"]}, "rewards": {"balls": 8, "ROCKIUM_Z": 1}, "is_boss_battle": true, "badge_reward": "ROCKIUM_Z", "movesets": {"299": ["ROCK-SLIDE", "SPARK", "THUNDER-WAVE"], "525": ["ROCK-BLAST", "MUD-SLAP", "HEADBUTT"], "745": ["BITE", "ROCK-THROW"]}}, "requirements": {"badges": 2, "fail_text": ["Olivia is waiting at the ruins.", "Finish Lana's Water Trial, Mallow's Grass Trial", "and Kiawe's Fire Trial on Akala Island first!"], "flags": ["BROOKLET_HILL_boss_defeated", "LUSH_JUNGLE_boss_defeated", "WELA_VOLCANO_boss_defeated"]}},
       "travel_options": [
         { "text": "Route 4 (to Paniola Town)", "target_area": "ALOLA_ROUTE_4" },
         { "text": "Route 5 (to Lush Jungle)", "target_area": "ALOLA_ROUTE_5" },
@@ -3208,7 +2842,8 @@
         {"text": "Route 9", "target_area": "ALOLA_ROUTE_9"}
       ],
       "explore_options": [{"text": "Pokémon Center", "action": "HEAL"}, {"text": "Shop", "action": "SHOP"}],
-      "next_area": "DIGLETTS_TUNNEL"
+      "next_area": "DIGLETTS_TUNNEL",
+        "on_enter_event": [{"type": "trainer_battle", "trainer": {"name": "Captain Lana", "class": "CAPTAIN", "sprite": "lana.png", "is_boss_battle": true, "team": [170, 90, 752], "levels": [26, 26, 27], "rewards": {"balls": 6}, "victory_flag": "defeated_lana_konikoni", "dialogue": {"intro": ["Lana: You've cleared my trial, but how about a real battle?"], "player_won": ["Lana: That was great! Keep going on your island challenge!"]}}, "flag_check": "defeated_lana_konikoni", "condition": "has_rockium_z_badge"}]
     },
     "MALIE_CITY": {
       "area_type": "town",
@@ -3216,7 +2851,7 @@
       "region": "ALOLA",
       "backgrounds": { "main": "malie_city.png", "pokecenter": "malie_center.png" },
       "has_gym": true,
-      "gym": {"trainers": [], "leader": {"name": "Nanu (Kahuna — Ula'ula Grand Trial)", "class": "GYM_LEADER", "sprite": "nanu_kahuna_ula_ula_grand_trial.png", "team": [302, 552, 2011], "levels": [38, 38, 39], "dialogue": {"intro": ["Nanu: ...You again. Fine. Grand Trial of Ula'ula Island. Let's just get this over with."], "player_won": ["Nanu: ...I was holding back. Take the Darkinium Z. Go."], "player_lost": ["Nanu: ...Told you. You're not ready."]}, "rewards": {"balls": 8, "DARKINIUM_Z": 1}, "is_boss_battle": true, "badge_reward": "DARKINIUM_Z", "movesets": {"302": ["POWER-GEM", "SHADOW-BALL", "FAKE-OUT"], "552": ["CRUNCH", "ASSURANCE", "SWAGGER", "EARTHQUAKE"], "2011": ["POWER-GEM", "FAKE-OUT", "DARK-PULSE"]}}, "requirements": {"badges": 2, "fail_text": ["Nanu won't battle yet.", "Finish Sophocles' and Acerola's trials and deal with Team Skull", "in Po Town first!"], "flags": ["MT_HOKULANI_boss_defeated", "THRIFTY_MEGAMART_boss_defeated", "po_town_cleared"]}},
+      "gym": {"trainers": [], "leader": {"name": "Nanu (Kahuna — Ula'ula Grand Trial)", "class": "GYM_LEADER", "sprite": "nanu_kahuna_ula_ula_grand_trial.png", "team": [302, 552, 2011], "levels": [38, 38, 39], "dialogue": {"intro": ["Nanu: ...You again. Fine. Grand Trial of Ula'ula Island. Let's just get this over with."], "player_won": ["Nanu: ...I was holding back. Take the Darkinium Z. Go."], "player_lost": ["Nanu: ...Told you. You're not ready."]}, "rewards": {"balls": 8, "DARKINIUM_Z": 1}, "is_boss_battle": true, "badge_reward": "DARKINIUM_Z", "movesets": {"302": ["POWER-GEM", "SHADOW-BALL", "FAKE-OUT"], "552": ["CRUNCH", "ASSURANCE", "SWAGGER", "EARTHQUAKE"], "2011": ["POWER-GEM", "FAKE-OUT", "DARK-PULSE"]}}, "requirements": {"badges": 3, "fail_text": ["Nanu won't battle yet.", "Finish Sophocles' and Acerola's trials and deal with Team Skull", "in Po Town first!"], "flags": ["MT_HOKULANI_boss_defeated", "THRIFTY_MEGAMART_boss_defeated", "po_town_cleared"]}},
       "travel_options": [
         { "text": "Route 10 (to Mount Hokulani)", "target_area": "ALOLA_ROUTE_10" },
         { "text": "Route 11 (south)", "target_area": "ALOLA_ROUTE_11" },
@@ -3241,7 +2876,9 @@
           "color": "GOLD"
         }
       ],
-      "next_area": "ALOLA_ROUTE_10"
+      "next_area": "ALOLA_ROUTE_10",
+        "sos_pool": "MALIE_CITY_SOS_PERCENTAGES",
+        "on_enter_event": [{"type": "trainer_battle", "trainer": {"name": "{rival_name}", "class": "PKMN_TRAINER", "sprite": "{rival_character}", "is_boss_battle": true, "team": [729, 136, 714, 128], "levels": [30, 28, 28, 28], "team_choice": {"725": [729, 136, 714, 128], "728": [723, 134, 714, 128], "722": [726, 470, 714, 128]}, "rewards": {"balls": 6}, "victory_flag": "defeated_hau_malie", "dialogue": {"intro": ["{rival_name}: Ula'ula Island already! I've been training hard, {player_name}!"], "player_won": ["{rival_name}: Aw, you're so strong! I'm going to keep at it!"], "player_lost": ["{rival_name}: Yes! I did it! Let's both keep going!"]}}, "flag_check": "defeated_hau_malie", "condition": "has_rockium_z_badge"}]
     },
     "TAPU_VILLAGE": {
       "area_type": "town",
@@ -3264,7 +2901,7 @@
       "region": "ALOLA",
       "backgrounds": { "main": "seafolk_village.png", "pokecenter": "seafolk_center.png" },
       "has_gym": true,
-      "gym": {"trainers": [], "leader": {"name": "Hapu (Kahuna — Poni Grand Trial)", "class": "GYM_LEADER", "sprite": "hapu_kahuna_poni_grand_trial.png", "team": [2009, 423, 330, 750], "levels": [47, 47, 47, 48], "dialogue": {"intro": ["Hapu: You've come far. You remind me of someone who walked this path before.", "The Grand Trial of Poni Island — show me what you're made of!"], "player_won": ["Hapu: You are worthy. Groundium Z is yours. The path to the Altar awaits."], "player_lost": ["Hapu: The earth says you're not ready. Train more."]}, "rewards": {"balls": 10, "GROUNDIUM_Z": 1}, "is_boss_battle": true, "badge_reward": "GROUNDIUM_Z", "movesets": {"2009": ["IRON-HEAD", "EARTHQUAKE", "SUCKER-PUNCH", "SANDSTORM"], "423": ["MUDDY-WATER", "MUD-BOMB", "RECOVER"], "330": ["EARTH-POWER", "DRAGON-BREATH"], "750": ["HEAVY-SLAM", "EARTHQUAKE", "DOUBLE-KICK", "COUNTER"]}}, "requirements": {"badges": 3, "fail_text": ["Hapu is at the Vast Poni Canyon.", "Finish the trial there first!"], "flags": ["VAST_PONI_boss_defeated"]}},
+      "gym": {"trainers": [], "leader": {"name": "Hapu (Kahuna — Poni Grand Trial)", "class": "GYM_LEADER", "sprite": "hapu_kahuna_poni_grand_trial.png", "team": [2009, 423, 330, 750], "levels": [47, 47, 47, 48], "dialogue": {"intro": ["Hapu: You've come far. You remind me of someone who walked this path before.", "The Grand Trial of Poni Island — show me what you're made of!"], "player_won": ["Hapu: You are worthy. Groundium Z is yours. The path to the Altar awaits."], "player_lost": ["Hapu: The earth says you're not ready. Train more."]}, "rewards": {"balls": 10, "GROUNDIUM_Z": 1}, "is_boss_battle": true, "badge_reward": "GROUNDIUM_Z", "movesets": {"2009": ["IRON-HEAD", "EARTHQUAKE", "SUCKER-PUNCH", "SANDSTORM"], "423": ["MUDDY-WATER", "MUD-BOMB", "RECOVER"], "330": ["EARTH-POWER", "DRAGON-BREATH"], "750": ["HEAVY-SLAM", "EARTHQUAKE", "DOUBLE-KICK", "COUNTER"]}}, "requirements": {"badges": 4, "fail_text": ["Hapu is at the Vast Poni Canyon.", "Finish the trial there first!"], "flags": ["VAST_PONI_boss_defeated"]}},
       "travel_options": [
         { "text": "Route 16 (to Ula'ula / ferry)", "target_area": "ALOLA_ROUTE_16" },
         { "text": "Vast Poni Canyon", "target_area": "VAST_PONI_CANYON" },
@@ -3274,11 +2911,13 @@
         {"text": "Poni Wilds", "target_area": "PONI_WILDS"}
       ],
       "explore_options": [
-        { "text": "Pokémon Center", "action": "HEAL" },
-        { "text": "Shop", "action": "SHOP" },
-        { "text": "Grand Trial (Hapu)", "action": "GYM" }
+        {"text": "Pokémon Center", "action": "HEAL"},
+        {"text": "Shop", "action": "SHOP"},
+        {"text": "Grand Trial (Hapu)", "action": "GYM"},
+        {"text": "Battle Captain Mina", "action": "EVENT", "color": "GOLD", "flag_condition": "not captain_battle_mina", "event": {"lines": ["Mina: The Champion, here? Let's battle!"], "flag": "captain_battle_mina", "battle": {"name": "Captain Mina", "class": "CAPTAIN", "sprite": "mina.png", "is_boss_battle": true, "team": [303, 210, 743], "levels": [51, 51, 51], "rewards": {"balls": 10}, "dialogue": {"intro": ["Mina: The Champion, here? Let's battle!"], "player_won": ["Mina: As expected of Alola's Champion!"]}}}, "condition": "beat_alola_champion"}
       ],
-      "next_area": "VAST_PONI_CANYON"
+      "next_area": "VAST_PONI_CANYON",
+        "sos_pool": "SEAFOLK_VILLAGE_SOS_PERCENTAGES"
     },
     "ALOLA_POKEMON_LEAGUE": {
       "area_type": "town",
@@ -3288,9 +2927,10 @@
       "has_gym": true,
       "travel_options": [{"text": "Mount Lanakila (Victory Road Alola)", "target_area": "MOUNT_LANAKILA"}],
       "explore_options": [
-        { "text": "Pokémon Center", "action": "HEAL" },
-        { "text": "Shop", "action": "SHOP" },
-        { "text": "CHALLENGE ELITE FOUR", "action": "GYM", "condition": "has_all_alola_z", "color": "GOLD" }
+        {"text": "Pokémon Center", "action": "HEAL"},
+        {"text": "Shop", "action": "SHOP"},
+        {"text": "CHALLENGE ELITE FOUR", "action": "GYM", "condition": "has_all_alola_z", "color": "GOLD"},
+        {"text": "Title Defense: {rival_name}", "action": "EVENT", "color": "GOLD", "flag_condition": "not alola_title_defense_hau", "event": {"lines": ["{rival_name}: You're the Champion now, so I'm your first challenger! Let's make it a great one!"], "flag": "alola_title_defense_hau", "battle": {"name": "{rival_name}", "class": "PKMN_TRAINER", "sprite": "{rival_character}", "is_boss_battle": true, "team": [136, 775, 740, 730], "levels": [63, 63, 63, 63], "team_choice": {"725": [136, 775, 740, 730], "728": [134, 775, 740, 724], "722": [470, 775, 740, 727]}, "rewards": {"balls": 15}, "dialogue": {"intro": ["{rival_name}: You're the Champion now, so I'm your first challenger! Let's make it a great one!"], "player_won": ["{rival_name}: Ha ha, you really are the Champion! I'm proud of you!"]}}}, "condition": "beat_alola_champion"}
       ],
       "post_champion_events": [
         { "type": "npc_dialogue", "target": "alola_departure_to_galar", "flag_condition": "not left_for_galar", "victory_flag": "left_for_galar" }
@@ -3321,12 +2961,14 @@
       "wild_pool_percentages": "ALOLA_BROOKLET_HILL_PERCENTAGES",
       "min_rounds": 2,
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "Lana's Water Trial (Totem Wishiwashi)", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD" },
-        { "text": "Route 5 (south)", "action": "EXIT", "target_area": "ALOLA_ROUTE_5", "condition": "can_exit", "color": "RED" }
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "Lana's Water Trial (Totem Araquanid)", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD"},
+        {"text": "Battle Captain Lana", "action": "EVENT", "color": "GOLD", "flag_condition": "not captain_rematch_lana", "event": {"lines": ["Lana: The Champion, here? Let's battle!"], "flag": "captain_rematch_lana", "battle": {"name": "Captain Lana", "class": "CAPTAIN", "sprite": "lana.png", "is_boss_battle": true, "team": [171, 91, 752], "levels": [60, 60, 60], "rewards": {"balls": 10}, "dialogue": {"intro": ["Lana: The Champion, here? Let's battle!"], "player_won": ["Lana: As expected of Alola's Champion!"]}}}, "condition": "beat_alola_champion"},
+        {"text": "Route 5 (south)", "action": "EXIT", "target_area": "ALOLA_ROUTE_5", "condition": "can_exit", "color": "RED"}
       ],
-      "area_boss": { "id": 746, "name": "Totem Wishiwashi", "victory_flag": "BROOKLET_HILL_boss_defeated" }
+      "area_boss": {"id": 752, "name": "Totem Araquanid", "victory_flag": "BROOKLET_HILL_boss_defeated"},
+        "sos_pool": "BROOKLET_HILL_SOS_PERCENTAGES"
     },
     "WELA_VOLCANO_PARK": {
       "area_type": "dungeon",
@@ -3341,7 +2983,8 @@
         { "text": "Kiawe's Fire Trial (Totem Marowak)", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD" },
         { "text": "Route 7 (base)", "action": "EXIT", "target_area": "ALOLA_ROUTE_7", "condition": "can_exit", "color": "RED" }
       ],
-      "area_boss": { "id": 105, "name": "Totem Marowak (Alolan)", "victory_flag": "WELA_VOLCANO_boss_defeated" }
+      "area_boss": { "id": 105, "name": "Totem Marowak (Alolan)", "victory_flag": "WELA_VOLCANO_boss_defeated" },
+        "sos_pool": "WELA_VOLCANO_PARK_SOS_PERCENTAGES"
     },
     "LUSH_JUNGLE": {
       "area_type": "dungeon",
@@ -3356,7 +2999,9 @@
         { "text": "Mallow's Grass Trial (Totem Lurantis)", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD" },
         { "text": "Route 5", "action": "EXIT", "target_area": "ALOLA_ROUTE_5", "condition": "can_exit", "color": "RED" }
       ],
-      "area_boss": { "id": 754, "name": "Totem Lurantis", "victory_flag": "LUSH_JUNGLE_boss_defeated" }
+      "area_boss": { "id": 754, "name": "Totem Lurantis", "victory_flag": "LUSH_JUNGLE_boss_defeated" },
+        "sos_pool": "LUSH_JUNGLE_SOS_PERCENTAGES",
+        "on_enter_event": [{"type": "trainer_battle", "trainer": {"name": "Captain Mallow", "class": "CAPTAIN", "sprite": "mallow.png", "is_boss_battle": true, "team": [708, 756, 762], "levels": [26, 26, 27], "rewards": {"balls": 6}, "victory_flag": "defeated_mallow_jungle", "dialogue": {"intro": ["Mallow: You've cleared my trial, but how about a real battle?"], "player_won": ["Mallow: That was great! Keep going on your island challenge!"]}}, "flag_check": "defeated_mallow_jungle", "condition": "has_rockium_z_badge"}]
     },
     "AETHER_PARADISE": {
       "area_type": "dungeon",
@@ -3366,34 +3011,21 @@
       "wild_pool_percentages": "ALOLA_AETHER_PARADISE_PERCENTAGES",
       "min_rounds": 0,
       "trainer_pool": [
-        {
-          "name": "Aether Employee Dana",
-          "class": "ACE_TRAINER",
-          "sprite": "acetrainer_f.png",
-          "team": [758, 763],
-          "rewards": { "balls": 3 }
-        },
-        {
-          "name": "Lusamine",
-          "class": "RIVAL",
-          "sprite": "lusamine.png",
-          "is_boss_battle": true,
-          "team": [763, 778, 40, 756, 778, 769],
-          "rewards": { "balls": 15 },
-          "victory_flag": "aether_paradise_cleared",
-          "dialogue": {
-            "intro": ["alola_lusamine_villain"],
-            "player_won": ["Lusamine: ...I see. You love your Pokémon. Perhaps I forgot what that feels like."],
-            "player_lost": ["Lusamine: Perfect. Everything will be perfect, forever."]
-          }
-        }
+        {"name": "Aether Employee Dana", "class": "ACE_TRAINER", "sprite": "acetrainer_f.png", "team": [758, 763], "rewards": {"balls": 3}},
+        {"name": "Aether Foundation Employee", "class": "AETHER_FOUNDATION", "sprite": "scientist.png", "team": [705], "rewards": {"balls": 2}, "levels": [37]},
+        {"name": "Team Skull Grunt", "class": "TEAM_SKULL", "sprite": "skull_grunt.png", "team": [42], "rewards": {"balls": 2}, "levels": [37]},
+        {"name": "{friend_name}", "class": "RIVAL", "sprite": "{friend_character}", "is_boss_battle": true, "team": [772, 42, 571], "levels": [44, 43, 43], "rewards": {"balls": 6}, "dialogue": {"intro": ["{friend_name}: Let me test you once more before we go in."]}},
+        {"name": "Aether Branch Chief Faba", "class": "AETHER", "sprite": "faba.png", "is_boss_battle": true, "team": [80, 779, 97], "levels": [39, 39, 40], "rewards": {"balls": 6}, "dialogue": {"intro": ["Faba: You think you can walk into Aether Paradise uninvited?"]}},
+        {"name": "Team Skull Boss Guzma", "class": "TEAM_SKULL", "sprite": "guzma.png", "is_boss_battle": true, "team": [768, 168, 284, 127], "levels": [41, 40, 40, 40], "rewards": {"balls": 6}, "dialogue": {"intro": ["Guzma: The President's busy. You'll have to go through me."]}},
+        {"name": "Lusamine", "class": "RIVAL", "sprite": "lusamine.png", "is_boss_battle": true, "team": [763, 778, 40, 756, 778, 769], "rewards": {"balls": 15}, "victory_flag": "aether_paradise_cleared", "dialogue": {"intro": ["alola_lusamine_villain"], "player_won": ["Lusamine: ...I see. You love your Pokémon. Perhaps I forgot what that feels like."], "player_lost": ["Lusamine: Perfect. Everything will be perfect, forever."]}}
       ],
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "BATTLE AETHER", "action": "TRAINER", "condition": "has_trainers", "color": "GOLD", "flag_condition": "not aether_paradise_cleared" },
-        { "text": "ULTRA WORMHOLE", "action": "EXIT", "target_area": "ULTRA_SPACE", "condition": "beat_alola_champion", "color": "GOLD" },
-        { "text": "Heahea City (ferry)", "action": "EXIT", "target_area": "HEAHEA_CITY", "condition": "can_exit", "color": "RED" },
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "BATTLE AETHER", "action": "TRAINER", "condition": "has_trainers", "color": "GOLD", "flag_condition": "not aether_paradise_cleared"},
+        {"text": "GLADION'S REQUEST", "action": "EVENT", "color": "GOLD", "condition": "beat_alola_champion", "flag_condition": "not got_type_null", "event": {"lines": ["{friend_name}: This is Type: Null. It was made here, to fight the Ultra Beasts.", "It deserves a trainer who'll treat it right. Take it."], "gift_pokemon": 772, "flag": "got_type_null"}},
+        {"text": "ULTRA WORMHOLE", "action": "EXIT", "target_area": "ULTRA_SPACE", "condition": "beat_alola_champion", "color": "GOLD"},
+        {"text": "Heahea City (ferry)", "action": "EXIT", "target_area": "HEAHEA_CITY", "condition": "can_exit", "color": "RED"},
         {"text": "Team Rocket's Castle", "action": "EXIT", "target_area": "ROCKET_CASTLE", "condition": ["can_exit", "beat_alola_champion"], "color": "RED"}
       ]
     },
@@ -3404,7 +3036,11 @@
       "battle_type": "indoor",
       "wild_pool_percentages": null,
       "min_rounds": 0,
-      "trainer_pool": [{"name": "Team Skull Grunt", "class": "SKULL", "sprite": "skull_grunt.png", "team": [754, 758], "rewards": {"balls": 3}, "dialogue": {"intro": ["Yo yo yo! Team Skull don't play!"], "player_won": ["Ugh, whatever..."], "player_lost": ["SKULL SKULL SKULL!"]}}, {"name": "Guzma", "class": "RIVAL", "sprite": "guzma.png", "is_boss_battle": true, "team": [768, 768, 752], "rewards": {"balls": 10}, "victory_flag": "po_town_cleared", "dialogue": {"intro": ["alola_guzma_intro"], "player_won": ["alola_guzma_won"], "player_lost": ["Guzma: That's what I'm talking about! That's the power of Guzma!"]}, "movesets": {"768": ["SUCKER-PUNCH", "RAZOR-SHELL", "FIRST-IMPRESSION"]}}],
+      "trainer_pool": [
+        {"name": "Team Skull Grunt", "class": "SKULL", "sprite": "skull_grunt.png", "team": [754, 758], "rewards": {"balls": 3}, "dialogue": {"intro": ["Yo yo yo! Team Skull don't play!"], "player_won": ["Ugh, whatever..."], "player_lost": ["SKULL SKULL SKULL!"]}},
+        {"name": "Guzma", "class": "RIVAL", "sprite": "guzma.png", "is_boss_battle": true, "team": [768, 768, 752], "rewards": {"balls": 10}, "victory_flag": "po_town_cleared", "dialogue": {"intro": ["alola_guzma_intro"], "player_won": ["alola_guzma_won"], "player_lost": ["Guzma: That's what I'm talking about! That's the power of Guzma!"]}, "movesets": {"768": ["SUCKER-PUNCH", "RAZOR-SHELL", "FIRST-IMPRESSION"]}},
+        {"name": "Office Worker Royce", "class": "OFFICE_WORKER", "sprite": "gentleman.png", "team": [605, 375], "rewards": {"balls": 2}, "levels": [40, 40]}
+      ],
       "route_menu": [
         { "text": "BATTLE TEAM SKULL", "action": "TRAINER", "condition": "has_trainers", "color": "GOLD", "flag_condition": "not po_town_cleared" },
         { "text": "Route 17", "action": "EXIT", "target_area": "ALOLA_ROUTE_17", "condition": "can_exit", "color": "RED" },
@@ -3420,14 +3056,15 @@
       "wild_pool_percentages": "ALOLA_MT_HOKULANI_PERCENTAGES",
       "min_rounds": 2,
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "Sophocles' Electric Trial (Totem Vikavolt)", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD" },
-        { "text": "Route 10 (base)", "action": "EXIT", "target_area": "ALOLA_ROUTE_10", "condition": "can_exit", "color": "RED" },
-        { "text": "MALIE CITY", "action": "EXIT", "target_area": "MALIE_CITY", "condition": "can_exit", "color": "RED" },
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "Sophocles' Electric Trial (Totem Togedemaru)", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD"},
+        {"text": "Route 10 (base)", "action": "EXIT", "target_area": "ALOLA_ROUTE_10", "condition": "can_exit", "color": "RED"},
+        {"text": "MALIE CITY", "action": "EXIT", "target_area": "MALIE_CITY", "condition": "can_exit", "color": "RED"},
         {"text": "Hokulani Observatory", "action": "EXIT", "target_area": "HOKULANI_OBSERVATORY", "condition": "can_exit", "color": "RED"}
       ],
-      "area_boss": { "id": 738, "name": "Totem Vikavolt", "victory_flag": "MT_HOKULANI_boss_defeated" }
+      "area_boss": {"id": 777, "name": "Totem Togedemaru", "victory_flag": "MT_HOKULANI_boss_defeated"},
+        "sos_pool": "MOUNT_HOKULANI_SOS_PERCENTAGES"
     },
     "THRIFTY_MEGAMART": {
       "area_type": "dungeon",
@@ -3437,7 +3074,8 @@
       "wild_pool_percentages": "ALOLA_THRIFTY_MEGAMART_PERCENTAGES",
       "min_rounds": 2,
       "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "Acerola's Ghost Trial (Totem Mimikyu)", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD"}, {"text": "THE BLACK FOG", "action": "BOSS", "color": "PURPLE", "flag_condition": "not black_fog_banished_thrifty_megamart", "boss": {"id": 10501, "name": "Black Fog", "level": 42, "no_catch": true, "victory_flag": "black_fog_banished_thrifty_megamart", "lines": ["The air turns ice-cold. A black fog pours across the floor...", "Two huge eyes open in the dark. A giant Haunter rises: the Black Fog!", "Long ago people worshipped it as a god. It feeds on dreams. Don't let it get yours!"], "won": ["The Black Fog is too proud to ever be caught.", "It Self-Destructs in a burst of black mist... and is gone.", "But a cold whisper lingers: it will rise again in another haunted place."], "rewards": {"balls": 10, "RARE_CANDY": 3}}}, {"text": "Route 14", "action": "EXIT", "target_area": "ALOLA_ROUTE_14", "condition": "can_exit", "color": "RED"}],
-      "area_boss": { "id": 778, "name": "Totem Mimikyu", "victory_flag": "THRIFTY_MEGAMART_boss_defeated" }
+      "area_boss": { "id": 778, "name": "Totem Mimikyu", "victory_flag": "THRIFTY_MEGAMART_boss_defeated" },
+        "sos_pool": "THRIFTY_MEGAMART_SOS_PERCENTAGES"
     },
     "VAST_PONI_CANYON": {
       "area_type": "dungeon",
@@ -3446,23 +3084,26 @@
       "battle_type": "cave",
       "wild_pool_percentages": "ALOLA_VAST_PONI_PERCENTAGES",
       "min_rounds": 3,
-      "trainer_pool": [{"name": "{friend_name}", "class": "RIVAL", "sprite": "{friend_character}", "is_boss_battle": true, "team": [773, 745, 778, 248], "rewards": {"balls": 10}, "victory_flag": "gladion_vast_poni_cleared", "dialogue": {"intro": ["alola_gladion_intro"], "player_won": ["{friend_name}: ...You're strong. Keep going."], "player_lost": ["{friend_name}: Good. Now keep going."]}, "movesets": {"773": ["CRUNCH", "CRUSH-CLAW", "X-SCISSOR", "MULTI-ATTACK"]}}],
+      "trainer_pool": [
+        {"name": "Veteran Harry", "class": "VETERAN", "sprite": "veteran.png", "team": [324, 59], "rewards": {"balls": 2}, "levels": [46, 46]},
+        {"name": "Backpacker Perdy", "class": "BACKPACKER", "sprite": "camper.png", "team": [547], "rewards": {"balls": 2}, "levels": [44]},
+        {"name": "Punk Girl Anna", "class": "PUNK_GIRL", "sprite": "roughneck.png", "team": [430], "rewards": {"balls": 2}, "levels": [44]},
+        {"name": "Punk Guy Adam", "class": "PUNK_GUY", "sprite": "roughneck.png", "team": [675], "rewards": {"balls": 2}, "levels": [44]},
+        {"name": "Black Belt Earl", "class": "BLACK_BELT", "sprite": "blackbelt.png", "team": [62], "rewards": {"balls": 2}, "levels": [46]},
+        {"name": "Ace Trainer Hiroshi", "class": "ACE_TRAINER", "sprite": "acetrainer_m.png", "team": [359, 131], "rewards": {"balls": 2}, "levels": [46, 47]},
+        {"name": "{friend_name}", "class": "RIVAL", "sprite": "{friend_character}", "is_boss_battle": true, "team": [773, 745, 778, 248], "rewards": {"balls": 10}, "victory_flag": "gladion_vast_poni_cleared", "dialogue": {"intro": ["alola_gladion_intro"], "player_won": ["{friend_name}: ...You're strong. Keep going."], "player_lost": ["{friend_name}: Good. Now keep going."]}, "movesets": {"773": ["CRUNCH", "CRUSH-CLAW", "X-SCISSOR", "MULTI-ATTACK"]}}
+      ],
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        {
-          "text": "BATTLE GLADION",
-          "action": "TRAINER",
-          "condition": "has_trainers",
-          "color": "GOLD",
-          "flag_condition": "not gladion_vast_poni_cleared"
-        },
-        { "text": "Mina's Fairy Trial (Totem Ribombee)", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD" },
-        { "text": "Seafolk Village", "action": "EXIT", "target_area": "SEAFOLK_VILLAGE", "condition": "can_exit", "color": "RED" },
-        { "text": "Altar of Sunne/Moone", "action": "EXIT", "target_area": "ALTAR_SUNNE_MOONE", "condition": "can_exit", "color": "RED" },
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "BATTLE GLADION", "action": "TRAINER", "condition": "has_trainers", "color": "GOLD", "flag_condition": "not gladion_vast_poni_cleared"},
+        {"text": "Vast Poni Canyon Trial (Totem Kommo-o)", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD"},
+        {"text": "Seafolk Village", "action": "EXIT", "target_area": "SEAFOLK_VILLAGE", "condition": "can_exit", "color": "RED"},
+        {"text": "Altar of Sunne/Moone", "action": "EXIT", "target_area": "ALTAR_SUNNE_MOONE", "condition": "can_exit", "color": "RED"},
         {"text": "Ancient Poni Path", "action": "EXIT", "target_area": "ANCIENT_PONI_PATH", "condition": "can_exit", "color": "RED"}
       ],
-      "area_boss": { "id": 743, "name": "Totem Ribombee", "victory_flag": "VAST_PONI_boss_defeated" }
+      "area_boss": {"id": 784, "name": "Totem Kommo-o", "victory_flag": "VAST_PONI_boss_defeated"},
+        "sos_pool": "VAST_PONI_CANYON_SOS_PERCENTAGES"
     },
     "ALTAR_SUNNE_MOONE": {
       "area_type": "dungeon",
@@ -3471,7 +3112,13 @@
       "battle_type": "indoor",
       "wild_pool_percentages": null,
       "min_rounds": 0,
-      "route_menu": [{"text": "Encounter Solgaleo", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD"}, {"text": "LILLIE'S GIFT", "action": "EVENT", "color": "GOLD", "condition": "ALTAR_boss_defeated", "flag_condition": "not got_second_cosmoem", "event": {"lines": ["Lillie: You did it! The light of the altar answered you.", "There was another Cosmog here... it's already grown into a Cosmoem.", "Please take it. When it's ready, you can choose who it becomes!"], "gift_pokemon": 790, "flag": "got_second_cosmoem"}}, {"text": "Vast Poni Canyon", "action": "EXIT", "target_area": "VAST_PONI_CANYON", "condition": "can_exit", "color": "RED"}, {"text": "SEAFOLK VILLAGE", "action": "EXIT", "target_area": "SEAFOLK_VILLAGE", "condition": "can_exit", "color": "RED"}],
+      "route_menu": [
+        {"text": "Encounter Solgaleo", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD"},
+        {"text": "LILLIE'S GIFT", "action": "EVENT", "color": "GOLD", "condition": "ALTAR_boss_defeated", "flag_condition": "not got_second_cosmoem", "event": {"lines": ["Lillie: You did it! The light of the altar answered you.", "There was another Cosmog here... it's already grown into a Cosmoem.", "Please take it. When it's ready, you can choose who it becomes!"], "gift_pokemon": 790, "flag": "got_second_cosmoem"}},
+        {"text": "Vast Poni Canyon", "action": "EXIT", "target_area": "VAST_PONI_CANYON", "condition": "can_exit", "color": "RED"},
+        {"text": "SEAFOLK VILLAGE", "action": "EXIT", "target_area": "SEAFOLK_VILLAGE", "condition": "can_exit", "color": "RED"},
+        {"text": "Ultra Wormhole (Megalo Tower)", "action": "EXIT", "target_area": "MEGALO_TOWER", "condition": ["can_exit", "ALTAR_boss_defeated"], "color": "RED"}
+      ],
       "area_boss": { "id": 791, "name": "Solgaleo", "victory_flag": "ALTAR_boss_defeated" }
     },
     "MOUNT_LANAKILA": {
@@ -3482,50 +3129,25 @@
       "wild_pool_percentages": "ALOLA_MT_LANAKILA_PERCENTAGES",
       "min_rounds": 3,
       "trainer_pool": [
-        {
-          "name": "Ace Trainer Harriet",
-          "class": "ACE_TRAINER",
-          "sprite": "acetrainer_f.png",
-          "is_boss_battle": true,
-          "team": [730, 745],
-          "rewards": { "balls": 5 }
-        },
-        {
-          "name": "{rival_name}",
-          "class": "PKMN_TRAINER",
-          "sprite": "{rival_character}",
-          "is_boss_battle": true,
-          "team": [730, 760, 745, 778, 143],
-          "team_choice": {
-            "722": [727, 760, 745, 778, 143],
-            "725": [724, 760, 745, 778, 143],
-            "728": [730, 760, 745, 778, 143]
-          },
-          "rewards": { "balls": 8 },
-          "victory_flag": "defeated_hau_lanakila",
-          "dialogue": {
-            "intro": ["{rival_name}: {player_name}! One more battle before the League — let's go all out!"],
-            "player_won": ["{rival_name}: You're incredible! Go be Champion! I'll be right behind you!"],
-            "player_lost": ["{rival_name}: YES! I really have gotten stronger! Go, {player_name}!"]
-          }
-        }
+        {"name": "Hiker Anuhea", "class": "HIKER", "sprite": "hiker.png", "team": [526], "rewards": {"balls": 2}, "levels": [51]},
+        {"name": "Ace Trainer Seth", "class": "ACE_TRAINER", "sprite": "acetrainer_m.png", "team": [123, 687], "rewards": {"balls": 2}, "levels": [51, 52]},
+        {"name": "Ace Trainer Kailee", "class": "ACE_TRAINER", "sprite": "acetrainer_m.png", "team": [756, 36], "rewards": {"balls": 2}, "levels": [51, 52]},
+        {"name": "Veteran Alonsa", "class": "VETERAN", "sprite": "veteran.png", "team": [108, 706], "rewards": {"balls": 2}, "levels": [52, 52]},
+        {"name": "Worker Ovid", "class": "WORKER", "sprite": "engineer.png", "team": [369], "rewards": {"balls": 2}, "levels": [50]},
+        {"name": "Black Belt Allon", "class": "BLACK_BELT", "sprite": "blackbelt.png", "team": [619, 68], "rewards": {"balls": 2}, "levels": [51, 51]},
+        {"name": "Ace Trainer Harriet", "class": "ACE_TRAINER", "sprite": "acetrainer_f.png", "is_boss_battle": true, "team": [730, 745], "rewards": {"balls": 5}},
+        {"name": "{rival_name}", "class": "PKMN_TRAINER", "sprite": "{rival_character}", "is_boss_battle": true, "team": [730, 760, 745, 778, 143], "team_choice": {"722": [727, 760, 745, 778, 143], "725": [724, 760, 745, 778, 143], "728": [730, 760, 745, 778, 143]}, "rewards": {"balls": 8}, "victory_flag": "defeated_hau_lanakila", "dialogue": {"intro": ["{rival_name}: {player_name}! One more battle before the League — let's go all out!"], "player_won": ["{rival_name}: You're incredible! Go be Champion! I'll be right behind you!"], "player_lost": ["{rival_name}: YES! I really have gotten stronger! Go, {player_name}!"]}}
       ],
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
-        {
-          "text": "Tapu Koko (Ruins of Conflict)",
-          "action": "BOSS",
-          "condition": "boss_not_defeated",
-          "flag_condition": "beat_alola_champion",
-          "color": "GOLD"
-        },
-        { "text": "Ula'ula Island", "action": "EXIT", "target_area": "MALIE_CITY", "condition": "can_exit", "color": "RED" },
-        { "text": "Pokémon League", "action": "EXIT", "target_area": "ALOLA_POKEMON_LEAGUE", "condition": "can_exit", "color": "RED" }
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        {"text": "Ula'ula Island", "action": "EXIT", "target_area": "MALIE_CITY", "condition": "can_exit", "color": "RED"},
+        {"text": "Pokémon League", "action": "EXIT", "target_area": "ALOLA_POKEMON_LEAGUE", "condition": "can_exit", "color": "RED"}
       ],
-      "area_boss": { "id": 785, "name": "Tapu Koko", "victory_flag": "MT_LANAKILA_boss_defeated" },
-      "weather": "SNOW"
+      "weather": "SNOW",
+        "sos_pool": "MOUNT_LANAKILA_SOS_PERCENTAGES",
+        "on_enter_event": [{"type": "trainer_battle", "trainer": {"name": "{friend_name}", "class": "RIVAL", "sprite": "{friend_character}", "is_boss_battle": true, "team": [169, 461, 448, 773], "levels": [52, 52, 52, 53], "rewards": {"balls": 6}, "victory_flag": "defeated_gladion_lanakila", "dialogue": {"intro": ["{friend_name}: ...You. Battle me. I need to see how strong I really am."], "player_won": ["{friend_name}: Hmph. Not bad."], "player_lost": ["{friend_name}: Is that all?"]}}, "flag_check": "defeated_gladion_lanakila", "condition": "has_groundium_z_badge"}]
     },
     "ALOLA_ROUTE_1": {
       "area_type": "wild_route",
@@ -3535,25 +3157,28 @@
       "wild_pool_percentages": "ALOLA_ROUTE_1_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
-          "name": "Youngster Koharu",
-          "class": "YOUNGSTER",
-          "sprite": "youngster.png",
-          "team": [722],
-          "rewards": { "balls": 2 }
-        }
+        {"name": "Youngster Koharu", "class": "YOUNGSTER", "sprite": "youngster.png", "team": [722], "rewards": {"balls": 2}},
+        {"name": "Lass Audrey", "class": "LASS", "sprite": "lass.png", "team": [10], "rewards": {"balls": 2}, "levels": [3]},
+        {"name": "Preschooler Oliver", "class": "PRESCHOOLER", "sprite": "school_kid_m.png", "team": [734], "rewards": {"balls": 2}, "levels": [4]},
+        {"name": "Youngster Kevin", "class": "YOUNGSTER", "sprite": "youngster.png", "team": [736], "rewards": {"balls": 2}, "levels": [6]},
+        {"name": "Lass Madison", "class": "LASS", "sprite": "lass.png", "team": [278], "rewards": {"balls": 2}, "levels": [6]},
+        {"name": "Youngster Jimmy", "class": "YOUNGSTER", "sprite": "youngster.png", "team": [10], "rewards": {"balls": 2}, "levels": [3]},
+        {"name": "Swimmer Natasha", "class": "SWIMMER", "sprite": "swimmer_m.png", "team": [278], "rewards": {"balls": 2}, "levels": [7]}
       ],
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
-        { "text": "Iki Town", "action": "EXIT", "target_area": "IKI_TOWN", "condition": "can_exit", "color": "RED" },
-        { "text": "Hau'oli City", "action": "EXIT", "target_area": "HAUOLI_CITY", "condition": "can_exit", "color": "RED" },
-        {"text": "Route 3", "action": "EXIT", "target_area": "ALOLA_ROUTE_3", "condition": "can_exit", "color": "RED"}
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"},
+        {"text": "Iki Town", "action": "EXIT", "target_area": "IKI_TOWN", "condition": "can_exit", "color": "RED"},
+        {"text": "Hau'oli City", "action": "EXIT", "target_area": "HAUOLI_CITY", "condition": "can_exit", "color": "RED"},
+        {"text": "Route 3", "action": "EXIT", "target_area": "ALOLA_ROUTE_3", "condition": "can_exit", "color": "RED"},
+        {"text": "Ten Carat Hill", "action": "EXIT", "target_area": "TEN_CARAT_HILL", "condition": ["can_exit"], "color": "RED"},
+        {"text": "Melemele Sea", "action": "EXIT", "target_area": "MELEMELE_SEA", "condition": ["can_exit"], "color": "RED"}
       ],
       "next_area": "HAUOLI_CITY",
       "day_pool_percentages": "ALOLA_ROUTE_1_DAY_PERCENTAGES",
-      "night_pool_percentages": "ALOLA_ROUTE_1_NIGHT_PERCENTAGES"
+      "night_pool_percentages": "ALOLA_ROUTE_1_NIGHT_PERCENTAGES",
+        "sos_pool": "ALOLA_ROUTE_1_SOS_PERCENTAGES"
     },
     "ALOLA_ROUTE_2": {
       "area_type": "wild_route",
@@ -3563,13 +3188,13 @@
       "wild_pool_percentages": "ALOLA_ROUTE_2_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
-          "name": "Youngster Hiroshi",
-          "class": "YOUNGSTER",
-          "sprite": "youngster.png",
-          "team": [734, 735],
-          "rewards": { "balls": 2 }
-        }
+        {"name": "Youngster Hiroshi", "class": "YOUNGSTER", "sprite": "youngster.png", "team": [734, 735], "rewards": {"balls": 2}},
+        {"name": "Beauty Krystal", "class": "BEAUTY", "sprite": "beauty.png", "team": [92], "rewards": {"balls": 2}, "levels": [9]},
+        {"name": "Preschooler Kaleb", "class": "PRESCHOOLER", "sprite": "school_kid_m.png", "team": [21], "rewards": {"balls": 2}, "levels": [8]},
+        {"name": "Backpacker Ashley", "class": "BACKPACKER", "sprite": "camper.png", "team": [546], "rewards": {"balls": 2}, "levels": [10]},
+        {"name": "Preschooler Malia", "class": "PRESCHOOLER", "sprite": "school_kid_m.png", "team": [742], "rewards": {"balls": 2}, "levels": [9]},
+        {"name": "Pokemon Breeder Jay", "class": "POKEMON_BREEDER", "sprite": "pokefan_f.png", "team": [12], "rewards": {"balls": 2}, "levels": [10]},
+        {"name": "Lass Isabella", "class": "LASS", "sprite": "lass.png", "team": [200], "rewards": {"balls": 2}, "levels": [9]}
       ],
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
@@ -3593,22 +3218,23 @@
       "wild_pool_percentages": "ALOLA_ROUTE_4_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
-          "name": "Cook Erwin",
-          "class": "GENTLEMAN",
-          "sprite": "gentleman.png",
-          "team": [741, 742],
-          "rewards": { "balls": 2 }
-        }
+        {"name": "Cook Erwin", "class": "GENTLEMAN", "sprite": "gentleman.png", "team": [741, 742], "rewards": {"balls": 2}},
+        {"name": "Bellhop Jody", "class": "BELLHOP", "sprite": "gentleman.png", "team": [425], "rewards": {"balls": 2}, "levels": [14]},
+        {"name": "Collector Bryan", "class": "COLLECTOR", "sprite": "pokemaniac.png", "team": [446, 371], "rewards": {"balls": 2}, "levels": [13, 14]},
+        {"name": "Sightseer Scotty", "class": "SIGHTSEER", "sprite": "pokefan.png", "team": [19], "rewards": {"balls": 2}, "levels": [14]},
+        {"name": "Cook Ernie", "class": "COOK", "sprite": "veteran.png", "team": [742], "rewards": {"balls": 2}, "levels": [14]},
+        {"name": "Sightseer Perdita", "class": "SIGHTSEER", "sprite": "pokefan.png", "team": [52], "rewards": {"balls": 2}, "levels": [14]}
       ],
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
-        { "text": "Heahea City", "action": "EXIT", "target_area": "HEAHEA_CITY", "condition": "can_exit", "color": "RED" },
-        {"text": "Paniola Town", "action": "EXIT", "target_area": "PANIOLA_TOWN", "condition": "can_exit", "color": "RED"}
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"},
+        {"text": "Heahea City", "action": "EXIT", "target_area": "HEAHEA_CITY", "condition": "can_exit", "color": "RED"},
+        {"text": "Paniola Town", "action": "EXIT", "target_area": "PANIOLA_TOWN", "condition": "can_exit", "color": "RED"},
+        {"text": "Pikachu Valley", "action": "EXIT", "target_area": "PIKACHU_VALLEY", "condition": ["can_exit"], "color": "RED"}
       ],
-      "next_area": "HEAHEA_CITY"
+      "next_area": "HEAHEA_CITY",
+        "sos_pool": "ALOLA_ROUTE_4_SOS_PERCENTAGES"
     },
     "ALOLA_ROUTE_5": {
       "area_type": "wild_route",
@@ -3618,13 +3244,12 @@
       "wild_pool_percentages": "ALOLA_ROUTE_5_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
-          "name": "Ace Trainer Makoa",
-          "class": "ACE_TRAINER",
-          "sprite": "acetrainer_m.png",
-          "team": [741, 754],
-          "rewards": { "balls": 3 }
-        }
+        {"name": "Ace Trainer Makoa", "class": "ACE_TRAINER", "sprite": "acetrainer_m.png", "team": [741, 754], "rewards": {"balls": 3}},
+        {"name": "Preschooler Isa", "class": "PRESCHOOLER", "sprite": "school_kid_m.png", "team": [440], "rewards": {"balls": 2}, "levels": [15]},
+        {"name": "Preschooler Nico", "class": "PRESCHOOLER", "sprite": "school_kid_m.png", "team": [174], "rewards": {"balls": 2}, "levels": [15]},
+        {"name": "Pokemon Breeder Yuka", "class": "POKEMON_BREEDER", "sprite": "pokefan_f.png", "team": [755, 165], "rewards": {"balls": 2}, "levels": [15, 16]},
+        {"name": "Rising Star Justin", "class": "RISING_STAR", "sprite": "acetrainer_m.png", "team": [627], "rewards": {"balls": 2}, "levels": [17]},
+        {"name": "Rising Star Lauren", "class": "RISING_STAR", "sprite": "acetrainer_m.png", "team": [629], "rewards": {"balls": 2}, "levels": [17]}
       ],
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
@@ -3636,7 +3261,9 @@
         { "text": "Route 8", "action": "EXIT", "target_area": "ALOLA_ROUTE_8", "condition": "can_exit", "color": "RED" },
         {"text": "Paniola Ranch", "action": "EXIT", "target_area": "PANIOLA_RANCH", "condition": "can_exit", "color": "RED"}
       ],
-      "next_area": "BROOKLET_HILL"
+      "next_area": "BROOKLET_HILL",
+        "sos_pool": "ALOLA_ROUTE_5_SOS_PERCENTAGES",
+        "on_enter_event": [{"type": "trainer_battle", "trainer": {"name": "{friend_name}", "class": "RIVAL", "sprite": "{friend_character}", "is_boss_battle": true, "team": [570, 772, 41], "levels": [17, 18, 17], "rewards": {"balls": 6}, "victory_flag": "defeated_gladion_route5", "dialogue": {"intro": ["{friend_name}: ...You. Battle me. I need to see how strong I really am."], "player_won": ["{friend_name}: Hmph. Not bad."], "player_lost": ["{friend_name}: Is that all?"]}}, "flag_check": "defeated_gladion_route5", "condition": "has_fightinium_z_badge"}]
     },
     "ALOLA_ROUTE_7": {
       "area_type": "wild_route",
@@ -3646,13 +3273,11 @@
       "wild_pool_percentages": "ALOLA_ROUTE_7_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
-          "name": "Hiker Kaimana",
-          "class": "HIKER",
-          "sprite": "hiker.png",
-          "team": [757, 758],
-          "rewards": { "balls": 2 }
-        }
+        {"name": "Hiker Kaimana", "class": "HIKER", "sprite": "hiker.png", "team": [757, 758], "rewards": {"balls": 2}},
+        {"name": "Swimmer Dakota", "class": "SWIMMER", "sprite": "swimmer_m.png", "team": [283, 751], "rewards": {"balls": 2}, "levels": [19, 19]},
+        {"name": "Swimmer Tiare", "class": "SWIMMER", "sprite": "swimmer_m.png", "team": [594], "rewards": {"balls": 2}, "levels": [19]},
+        {"name": "Swimmer Casey", "class": "SWIMMER", "sprite": "swimmer_m.png", "team": [747], "rewards": {"balls": 2}, "levels": [19]},
+        {"name": "Swimmer Vanessa", "class": "SWIMMER", "sprite": "swimmer_m.png", "team": [90, 222], "rewards": {"balls": 2}, "levels": [18, 19]}
       ],
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
@@ -3664,7 +3289,8 @@
         {"text": "Royal Avenue", "action": "EXIT", "target_area": "ROYAL_AVENUE", "condition": "can_exit", "color": "RED"},
         {"text": "Dividing Peak Tunnel", "action": "EXIT", "target_area": "DIVIDING_PEAK_TUNNEL", "condition": "can_exit", "color": "RED"}
       ],
-      "next_area": "KONIKONI_CITY"
+      "next_area": "KONIKONI_CITY",
+        "sos_pool": "ALOLA_ROUTE_7_SOS_PERCENTAGES"
     },
     "ALOLA_ROUTE_8": {
       "area_type": "wild_route",
@@ -3674,13 +3300,13 @@
       "wild_pool_percentages": "ALOLA_ROUTE_8_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
-          "name": "Ace Trainer Leilani",
-          "class": "ACE_TRAINER",
-          "sprite": "acetrainer_f.png",
-          "team": [744, 762],
-          "rewards": { "balls": 3 }
-        }
+        {"name": "Ace Trainer Leilani", "class": "ACE_TRAINER", "sprite": "acetrainer_f.png", "team": [744, 762], "rewards": {"balls": 3}},
+        {"name": "Backpacker Kiana", "class": "BACKPACKER", "sprite": "camper.png", "team": [133], "rewards": {"balls": 2}, "levels": [20]},
+        {"name": "Rising Star Mikey", "class": "RISING_STAR", "sprite": "acetrainer_m.png", "team": [761, 732], "rewards": {"balls": 2}, "levels": [20, 21]},
+        {"name": "Rising Star Nicki", "class": "RISING_STAR", "sprite": "acetrainer_m.png", "team": [241], "rewards": {"balls": 2}, "levels": [21]},
+        {"name": "Scientist Tyrone", "class": "SCIENTIST", "sprite": "scientist.png", "team": [566, 410], "rewards": {"balls": 2}, "levels": [20, 20]},
+        {"name": "Golfer Alan", "class": "GOLFER", "sprite": "richboy.png", "team": [744], "rewards": {"balls": 2}, "levels": [20]},
+        {"name": "Black Belt Guy", "class": "BLACK_BELT", "sprite": "blackbelt.png", "team": [66], "rewards": {"balls": 2}, "levels": [21]}
       ],
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
@@ -3691,7 +3317,8 @@
         { "text": "Route 5", "action": "EXIT", "target_area": "ALOLA_ROUTE_5", "condition": "can_exit", "color": "RED" },
         {"text": "Dividing Peak Tunnel", "action": "EXIT", "target_area": "DIVIDING_PEAK_TUNNEL", "condition": "can_exit", "color": "RED"}
       ],
-      "next_area": "ALOLA_ROUTE_7"
+      "next_area": "ALOLA_ROUTE_7",
+        "sos_pool": "ALOLA_ROUTE_8_SOS_PERCENTAGES"
     },
     "ALOLA_ROUTE_10": {
       "area_type": "wild_route",
@@ -3701,14 +3328,11 @@
       "wild_pool_percentages": "ALOLA_ROUTE_10_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
-          "name": "Veteran Akira",
-          "class": "ACE_TRAINER",
-          "sprite": "acetrainer_m.png",
-          "is_boss_battle": true,
-          "team": [738, 764],
-          "rewards": { "balls": 5 }
-        }
+        {"name": "Veteran Akira", "class": "ACE_TRAINER", "sprite": "acetrainer_m.png", "is_boss_battle": true, "team": [738, 764], "rewards": {"balls": 5}},
+        {"name": "Firefighter Alex", "class": "FIREFIGHTER", "sprite": "firebreather.png", "team": [61], "rewards": {"balls": 2}, "levels": [28]},
+        {"name": "Beauty Andrea", "class": "BEAUTY", "sprite": "beauty.png", "team": [762], "rewards": {"balls": 2}, "levels": [27]},
+        {"name": "Police Officer Mitchell", "class": "POLICE_OFFICER", "sprite": "officer.png", "team": [58], "rewards": {"balls": 2}, "levels": [28]},
+        {"name": "Team Skull Grunt", "class": "TEAM_SKULL", "sprite": "skull_grunt.png", "team": [42], "rewards": {"balls": 2}, "levels": [27]}
       ],
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
@@ -3724,7 +3348,8 @@
         { "text": "Mount Hokulani", "action": "EXIT", "target_area": "MOUNT_HOKULANI", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "MOUNT_HOKULANI",
-      "area_boss": { "id": 801, "name": "Magearna", "victory_flag": "ALOLA_ROUTE_10_boss_defeated" }
+      "area_boss": { "id": 801, "name": "Magearna", "victory_flag": "ALOLA_ROUTE_10_boss_defeated" },
+        "sos_pool": "ALOLA_ROUTE_10_SOS_PERCENTAGES"
     },
     "ALOLA_ROUTE_11": {
       "area_type": "wild_route",
@@ -3734,13 +3359,12 @@
       "wild_pool_percentages": "ALOLA_ROUTE_11_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
-          "name": "Pokémon Ranger Mana",
-          "class": "ACE_TRAINER",
-          "sprite": "acetrainer_f.png",
-          "team": [764, 766],
-          "rewards": { "balls": 3 }
-        }
+        {"name": "Pokémon Ranger Mana", "class": "ACE_TRAINER", "sprite": "acetrainer_f.png", "team": [764, 766], "rewards": {"balls": 3}},
+        {"name": "Youth Athlete Alyssa", "class": "YOUTH_ATHLETE", "sprite": "triathlete_m.png", "team": [507], "rewards": {"balls": 2}, "levels": [27]},
+        {"name": "Youth Athlete Sho", "class": "YOUTH_ATHLETE", "sprite": "triathlete_m.png", "team": [662], "rewards": {"balls": 2}, "levels": [27]},
+        {"name": "Preschooler Hayden", "class": "PRESCHOOLER", "sprite": "school_kid_m.png", "team": [759], "rewards": {"balls": 2}, "levels": [26]},
+        {"name": "Black Belt Clayton", "class": "BLACK_BELT", "sprite": "blackbelt.png", "team": [297], "rewards": {"balls": 2}, "levels": [28]},
+        {"name": "Black Belt Alvaro", "class": "BLACK_BELT", "sprite": "blackbelt.png", "team": [760], "rewards": {"balls": 2}, "levels": [30]}
       ],
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
@@ -3750,7 +3374,8 @@
         { "text": "Tapu Village", "action": "EXIT", "target_area": "TAPU_VILLAGE", "condition": "can_exit", "color": "RED" },
         {"text": "Route 12", "action": "EXIT", "target_area": "ALOLA_ROUTE_12", "condition": "can_exit", "color": "RED"}
       ],
-      "next_area": "TAPU_VILLAGE"
+      "next_area": "TAPU_VILLAGE",
+        "sos_pool": "ALOLA_ROUTE_11_SOS_PERCENTAGES"
     },
     "ALOLA_ROUTE_14": {
       "area_type": "wild_route",
@@ -3760,13 +3385,11 @@
       "wild_pool_percentages": "ALOLA_ROUTE_14_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
-          "name": "Skull Grunt",
-          "class": "SKULL",
-          "sprite": "skull_grunt.png",
-          "team": [754, 764],
-          "rewards": { "balls": 2 }
-        }
+        {"name": "Skull Grunt", "class": "SKULL", "sprite": "skull_grunt.png", "team": [754, 764], "rewards": {"balls": 2}},
+        {"name": "Swimmer Keoni", "class": "SWIMMER", "sprite": "swimmer_m.png", "team": [771], "rewards": {"balls": 2}, "levels": [31]},
+        {"name": "Fisherman Hisato", "class": "FISHERMAN", "sprite": "fisherman.png", "team": [349, 130], "rewards": {"balls": 2}, "levels": [30, 31]},
+        {"name": "Collector Kawika", "class": "COLLECTOR", "sprite": "pokemaniac.png", "team": [777, 444], "rewards": {"balls": 2}, "levels": [30, 31]},
+        {"name": "Veteran Brone", "class": "VETERAN", "sprite": "veteran.png", "team": [340, 430], "rewards": {"balls": 2}, "levels": [36, 36]}
       ],
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
@@ -3782,7 +3405,8 @@
         { "text": "Thrifty Megamart", "action": "EXIT", "target_area": "THRIFTY_MEGAMART", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "THRIFTY_MEGAMART",
-      "area_boss": { "id": 807, "name": "Zeraora", "victory_flag": "ALOLA_ROUTE_14_boss_defeated" }
+      "area_boss": { "id": 807, "name": "Zeraora", "victory_flag": "ALOLA_ROUTE_14_boss_defeated" },
+        "sos_pool": "ALOLA_ROUTE_14_SOS_PERCENTAGES"
     },
     "ALOLA_ROUTE_15": {
       "area_type": "wild_route",
@@ -3792,24 +3416,26 @@
       "wild_pool_percentages": "ALOLA_ROUTE_15_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
-          "name": "Ace Trainer Yuki",
-          "class": "ACE_TRAINER",
-          "sprite": "acetrainer_f.png",
-          "is_boss_battle": true,
-          "team": [778, 769],
-          "rewards": { "balls": 5 }
-        }
+        {"name": "Ace Trainer Yuki", "class": "ACE_TRAINER", "sprite": "acetrainer_f.png", "is_boss_battle": true, "team": [778, 769], "rewards": {"balls": 5}},
+        {"name": "Team Skull Grunt", "class": "TEAM_SKULL", "sprite": "skull_grunt.png", "team": [96], "rewards": {"balls": 2}, "levels": [33]},
+        {"name": "Swimmer Jared", "class": "SWIMMER", "sprite": "swimmer_m.png", "team": [73], "rewards": {"balls": 2}, "levels": [33]},
+        {"name": "Ace Trainer Karla", "class": "ACE_TRAINER", "sprite": "acetrainer_m.png", "team": [93, 40], "rewards": {"balls": 2}, "levels": [34, 34]},
+        {"name": "Swimmer Yumi", "class": "SWIMMER", "sprite": "swimmer_m.png", "team": [80], "rewards": {"balls": 2}, "levels": [33]},
+        {"name": "Swimmer Jake", "class": "SWIMMER", "sprite": "swimmer_m.png", "team": [55], "rewards": {"balls": 2}, "levels": [33]},
+        {"name": "Swimmer Alexandria", "class": "SWIMMER", "sprite": "swimmer_m.png", "team": [370, 222, 594], "rewards": {"balls": 2}, "levels": [33, 33, 33]}
       ],
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
-        { "text": "Tapu Village", "action": "EXIT", "target_area": "TAPU_VILLAGE", "condition": "can_exit", "color": "RED" },
-        { "text": "Po Town (Team Skull HQ)", "action": "EXIT", "target_area": "PO_TOWN", "condition": "can_exit", "color": "RED" },
-        {"text": "Aether House", "action": "EXIT", "target_area": "AETHER_HOUSE", "condition": "can_exit", "color": "RED"}
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        {"text": "Tapu Village", "action": "EXIT", "target_area": "TAPU_VILLAGE", "condition": "can_exit", "color": "RED"},
+        {"text": "Po Town (Team Skull HQ)", "action": "EXIT", "target_area": "PO_TOWN", "condition": "can_exit", "color": "RED"},
+        {"text": "Aether House", "action": "EXIT", "target_area": "AETHER_HOUSE", "condition": "can_exit", "color": "RED"},
+        {"text": "Route 16", "action": "EXIT", "target_area": "ALOLA_ROUTE_16", "condition": ["can_exit"], "color": "RED"}
       ],
-      "next_area": "PO_TOWN"
+      "next_area": "PO_TOWN",
+        "sos_pool": "ALOLA_ROUTE_15_SOS_PERCENTAGES",
+        "on_enter_event": [{"type": "trainer_battle", "trainer": {"name": "Team Skull Admin Plumeria", "class": "TEAM_SKULL", "sprite": "plumeria.png", "is_boss_battle": true, "team": [42, 758], "levels": [34, 35], "rewards": {"balls": 6}, "victory_flag": "defeated_plumeria_route15", "dialogue": {"intro": ["Plumeria: You again? Po Town is our turf. Turn around."], "player_won": ["Plumeria: ...Go on, then. Guzma's waiting."]}}, "flag_check": "defeated_plumeria_route15", "condition": "has_rockium_z_badge"}]
     },
     "ALOLA_ROUTE_16": {
       "area_type": "wild_route",
@@ -3819,23 +3445,21 @@
       "wild_pool_percentages": "ALOLA_ROUTE_16_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
-          "name": "Veteran Sina",
-          "class": "ACE_TRAINER",
-          "sprite": "acetrainer_f.png",
-          "is_boss_battle": true,
-          "team": [730, 745, 788],
-          "rewards": { "balls": 5 }
-        }
+        {"name": "Veteran Sina", "class": "ACE_TRAINER", "sprite": "acetrainer_f.png", "is_boss_battle": true, "team": [730, 745, 788], "rewards": {"balls": 5}},
+        {"name": "Scientist Reid", "class": "SCIENTIST", "sprite": "scientist.png", "team": [737], "rewards": {"balls": 2}, "levels": [32]},
+        {"name": "Preschooler Kindra", "class": "PRESCHOOLER", "sprite": "school_kid_m.png", "team": [778], "rewards": {"balls": 2}, "levels": [34]},
+        {"name": "Team Skull Grunt", "class": "TEAM_SKULL", "sprite": "skull_grunt.png", "team": [568], "rewards": {"balls": 2}, "levels": [35]}
       ],
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
-        { "text": "Seafolk Village", "action": "EXIT", "target_area": "SEAFOLK_VILLAGE", "condition": "can_exit", "color": "RED" },
-        {"text": "Ula'ula Meadow", "action": "EXIT", "target_area": "ULAULA_MEADOW", "condition": "can_exit", "color": "RED"}
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        {"text": "Seafolk Village", "action": "EXIT", "target_area": "SEAFOLK_VILLAGE", "condition": "can_exit", "color": "RED"},
+        {"text": "Ula'ula Meadow", "action": "EXIT", "target_area": "ULAULA_MEADOW", "condition": "can_exit", "color": "RED"},
+        {"text": "Route 15", "action": "EXIT", "target_area": "ALOLA_ROUTE_15", "condition": ["can_exit"], "color": "RED"}
       ],
-      "next_area": "SEAFOLK_VILLAGE"
+      "next_area": "SEAFOLK_VILLAGE",
+        "sos_pool": "ALOLA_ROUTE_16_SOS_PERCENTAGES"
     },
     "ALOLA_ROUTE_17": {
       "area_type": "wild_route",
@@ -3862,7 +3486,8 @@
         {"text": "Ula'ula Meadow", "action": "EXIT", "target_area": "ULAULA_MEADOW", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "MALIE_CITY",
-      "weather": "RAIN"
+      "weather": "RAIN",
+        "sos_pool": "ALOLA_ROUTE_17_SOS_PERCENTAGES"
     },
     "DIGLETTS_TUNNEL": {
       "area_type": "dungeon",
@@ -3877,7 +3502,9 @@
         { "text": "Konikoni City", "action": "EXIT", "target_area": "KONIKONI_CITY", "condition": "can_exit", "color": "RED" },
         { "text": "Heahea City", "action": "EXIT", "target_area": "HEAHEA_CITY", "condition": "can_exit", "color": "RED" },
         {"text": "Route 9", "action": "EXIT", "target_area": "ALOLA_ROUTE_9", "condition": "can_exit", "color": "RED"}
-      ]
+      ],
+        "sos_pool": "DIGLETTS_TUNNEL_SOS_PERCENTAGES",
+        "on_enter_event": [{"type": "trainer_battle", "trainer": {"name": "{rival_name}", "class": "PKMN_TRAINER", "sprite": "{rival_character}", "is_boss_battle": true, "team": [133, 25, 714, 729], "levels": [23, 24, 23, 25], "team_choice": {"725": [133, 25, 714, 729], "728": [133, 25, 714, 723], "722": [133, 25, 714, 726]}, "rewards": {"balls": 6}, "victory_flag": "defeated_hau_diglett", "dialogue": {"intro": ["{rival_name}: I knew I'd catch up with you in here! Battle me!"], "player_won": ["{rival_name}: Aw, you're so strong! I'm going to keep at it!"], "player_lost": ["{rival_name}: Yes! I did it! Let's both keep going!"]}}, "flag_check": "defeated_hau_diglett", "condition": "has_fightinium_z_badge"}]
     },
     "MEMORIAL_HILL": {
       "area_type": "dungeon",
@@ -3899,7 +3526,8 @@
         {"text": "Route 9", "action": "EXIT", "target_area": "ALOLA_ROUTE_9", "condition": "can_exit", "color": "RED"},
         {"text": "Akala Outskirts", "action": "EXIT", "target_area": "AKALA_OUTSKIRTS", "condition": "can_exit", "color": "RED"}
       ],
-      "area_boss": { "id": 802, "name": "Marshadow", "victory_flag": "MEMORIAL_HILL_boss_defeated" }
+      "area_boss": { "id": 802, "name": "Marshadow", "victory_flag": "MEMORIAL_HILL_boss_defeated" },
+        "sos_pool": "MEMORIAL_HILL_SOS_PERCENTAGES"
     },
     "ULTRA_SPACE": {
       "area_type": "dungeon",
@@ -3941,7 +3569,28 @@
       ],
       "area_boss": { "id": 786, "name": "Tapu Lele", "victory_flag": "RUINS_OF_LIFE_boss_defeated" },
       "next_area": "ALOLA_ROUTE_8"
-    }
+    },
+    "MEGALO_TOWER": {"area_type": "dungeon", "route_name": "Megalo Tower (Ultra Megalopolis)", "region": "ALOLA", "battle_type": "indoor", "min_rounds": 0, "trainer_pool": [], "description": "The city beyond the Ultra Wormhole has lost its light. Necrozma waits at the top of Megalo Tower.", "route_menu": [{"text": "FACE ULTRA NECROZMA", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD"}, {"text": "Altar of the Sunne/Moone", "action": "EXIT", "target_area": "ALTAR_SUNNE_MOONE", "condition": "can_exit", "color": "RED"}], "area_boss": {"id": 7003, "name": "Ultra Necrozma", "victory_flag": "beat_ultra_necrozma", "lines": ["Necrozma has taken the light it stole and burns brighter than the sun.", "Ultra Necrozma blazes down from the top of Megalo Tower!"]}, "next_area": "ALTAR_SUNNE_MOONE"},
+    "LAKE_OF_THE_SUNNE_MOONE": {"area_type": "dungeon", "route_name": "Lake of the Sunne and Moone", "region": "ALOLA", "battle_type": "water", "min_rounds": 0, "trainer_pool": [], "route_menu": [{"text": "THE LAKESIDE COSMOG", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_lake_cosmog", "event": {"lines": ["A tiny Pokemon floats over the lake, like a wisp of cloud.", "It drifts over to you and won't leave your side. Cosmog joined you!"], "gift_pokemon": 789, "flag": "got_lake_cosmog"}}, {"text": "Ula'ula Meadow", "action": "EXIT", "target_area": "ULAULA_MEADOW", "condition": "can_exit", "color": "RED"}], "next_area": "ULAULA_MEADOW"},
+    "PIKACHU_VALLEY": {"area_type": "wild_route", "route_name": "Pikachu Valley", "region": "ALOLA", "battle_type": "grass", "wild_pool_percentages": "PIKACHU_VALLEY_PERCENTAGES", "min_rounds": 2, "trainer_pool": [], "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"}, {"text": "Route 4", "action": "EXIT", "target_area": "ALOLA_ROUTE_4", "condition": "can_exit", "color": "RED"}], "next_area": "ALOLA_ROUTE_4", "level": 15},
+    "MELEMELE_SEA": {"area_type": "wild_route", "route_name": "Melemele Sea", "region": "ALOLA", "battle_type": "water", "wild_pool_percentages": "MELEMELE_SEA_PERCENTAGES", "min_rounds": 2, "trainer_pool": [
+      {"name": "Swimmer Kelsie", "class": "SWIMMER", "sprite": "swimmer_m.png", "team": [456], "rewards": {"balls": 2}, "levels": [18]},
+      {"name": "Swimmer Shelby", "class": "SWIMMER", "sprite": "swimmer_m.png", "team": [222], "rewards": {"balls": 2}, "levels": [18]},
+      {"name": "Swimmer Yasu", "class": "SWIMMER", "sprite": "swimmer_m.png", "team": [72], "rewards": {"balls": 2}, "levels": [18]},
+      {"name": "Swimmer Kalani", "class": "SWIMMER", "sprite": "swimmer_m.png", "team": [746, 339], "rewards": {"balls": 2}, "levels": [18, 18]},
+      {"name": "Black Belt Francis", "class": "BLACK_BELT", "sprite": "blackbelt.png", "team": [701], "rewards": {"balls": 2}, "levels": [18]},
+      {"name": "Swimmer Jade", "class": "SWIMMER", "sprite": "swimmer_m.png", "team": [118], "rewards": {"balls": 2}, "levels": [13]}
+    ], "route_menu": [
+      {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+      {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+      {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+      {"text": "Route 1", "action": "EXIT", "target_area": "ALOLA_ROUTE_1", "condition": "can_exit", "color": "RED"},
+      {"text": "Hau'oli City", "action": "EXIT", "target_area": "HAUOLI_CITY", "condition": ["can_exit"], "color": "RED"}
+    ], "next_area": "ALOLA_ROUTE_1", "level": 12, "sos_pool": "MELEMELE_SEA_SOS_PERCENTAGES", "can_fish": true},
+    "TEN_CARAT_HILL": {"area_type": "wild_route", "route_name": "Ten Carat Hill", "region": "ALOLA", "battle_type": "cave", "wild_pool_percentages": "TEN_CARAT_HILL_PERCENTAGES", "min_rounds": 2, "trainer_pool": [], "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"}, {"text": "Route 1", "action": "EXIT", "target_area": "ALOLA_ROUTE_1", "condition": "can_exit", "color": "RED"}], "next_area": "ALOLA_ROUTE_1", "level": 12, "sos_pool": "TEN_CARAT_HILL_SOS_PERCENTAGES"},
+    "RUINS_OF_HOPE": {"area_type": "dungeon", "route_name": "Ruins of Hope", "region": "ALOLA", "battle_type": "indoor", "min_rounds": 0, "trainer_pool": [], "route_menu": [{"text": "Meet Tapu Fini", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD"}, {"text": "Poni Breaker Coast", "action": "EXIT", "target_area": "PONI_BREAKER_COAST", "condition": "can_exit", "color": "RED"}], "area_boss": {"id": 788, "name": "Tapu Fini", "victory_flag": "RUINS_OF_HOPE_boss_defeated"}, "next_area": "PONI_BREAKER_COAST"},
+    "RUINS_OF_ABUNDANCE": {"area_type": "dungeon", "route_name": "Ruins of Abundance", "region": "ALOLA", "battle_type": "indoor", "min_rounds": 0, "trainer_pool": [], "route_menu": [{"text": "Meet Tapu Bulu", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD"}, {"text": "Haina Desert", "action": "EXIT", "target_area": "HAINA_DESERT", "condition": "can_exit", "color": "RED"}], "area_boss": {"id": 787, "name": "Tapu Bulu", "victory_flag": "RUINS_OF_ABUNDANCE_boss_defeated"}, "next_area": "HAINA_DESERT"},
+    "RUINS_OF_CONFLICT": {"area_type": "dungeon", "route_name": "Ruins of Conflict", "region": "ALOLA", "battle_type": "indoor", "min_rounds": 0, "trainer_pool": [], "route_menu": [{"text": "Meet Tapu Koko", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD"}, {"text": "Mahalo Trail (to Iki Town)", "action": "EXIT", "target_area": "IKI_TOWN", "condition": "can_exit", "color": "RED"}], "area_boss": {"id": 785, "name": "Tapu Koko", "victory_flag": "RUINS_OF_CONFLICT_boss_defeated"}, "next_area": "IKI_TOWN"}
   },
   "JOURNAL_MISSIONS": [
     {
@@ -4029,53 +3678,53 @@
       "type": "SIDE",
       "title": "Necrozma",
       "description": "A fractured light has been spotted at the Altar after your championship. The Prism Pokémon awaits.",
-      "condition": { "start_region": "ALOLA", "flag": "beat_alola_champion", "flag_not": "MT_LANAKILA_boss_defeated" },
+      "condition": { "start_region": "ALOLA", "flag": "beat_alola_champion", "flag_not": "ULTRA_SPACE_boss_defeated" },
       "reward": "Necrozma encounter"
     }
   ],
   "ALOLA_ROUTE_1": [722, 725, 728, 734, 731],
-  "ALOLA_ROUTE_1_PERCENTAGES": { "734": 50, "731": 50 },
+  "ALOLA_ROUTE_1_PERCENTAGES": {"10": 12, "731": 10, "734": 8, "2001": 8, "165": 6, "167": 6, "438": 6, "278": 5, "79": 5, "427": 4, "172": 4, "446": 4, "736": 4, "2010": 4, "81": 3, "11": 3, "744": 2, "2015": 2, "686": 1, "570": 1},
   "ALOLA_ROUTE_2": [734, 735, 737, 741],
-  "ALOLA_ROUTE_2_PERCENTAGES": { "734": 30, "735": 25, "737": 25, "741": 20 },
+  "ALOLA_ROUTE_2_PERCENTAGES": {"21": 13, "235": 12, "296": 11, "96": 11, "734": 8, "2001": 8, "63": 7, "742": 7, "23": 6, "58": 6, "2010": 5, "676": 2, "206": 2, "739": 2},
   "ALOLA_ROUTE_4": [741, 742, 753, 754, 749],
-  "ALOLA_ROUTE_4_PERCENTAGES": { "741": 22, "742": 22, "753": 20, "754": 16, "749": 20 },
+  "ALOLA_ROUTE_4_PERCENTAGES": {"731": 20, "133": 17, "506": 16, "749": 11, "736": 11, "174": 7, "734": 6, "2001": 6, "739": 6},
   "ALOLA_ROUTE_5": [741, 754, 746, 747],
-  "ALOLA_ROUTE_5_PERCENTAGES": { "741": 25, "754": 25, "746": 25, "747": 25 },
+  "ALOLA_ROUTE_5_PERCENTAGES": {"753": 16, "11": 14, "736": 13, "10": 12, "12": 12, "506": 7, "731": 5, "732": 5, "438": 5, "2008": 5, "739": 5},
   "ALOLA_ROUTE_7": [757, 758, 744, 745],
-  "ALOLA_ROUTE_7_PERCENTAGES": { "757": 30, "758": 25, "744": 25, "745": 20 },
+  "ALOLA_ROUTE_7_PERCENTAGES": {"771": 18, "129": 14, "746": 14, "120": 14, "456": 11, "72": 11, "278": 11, "2008": 7},
   "ALOLA_ROUTE_8": [744, 762, 763, 764, 767],
-  "ALOLA_ROUTE_8_PERCENTAGES": { "744": 25, "762": 22, "763": 20, "764": 18, "767": 15 },
+  "ALOLA_ROUTE_8_PERCENTAGES": {"757": 11, "732": 10, "456": 8, "759": 8, "129": 7, "746": 7, "170": 7, "734": 6, "72": 5, "278": 5, "661": 5, "662": 5, "458": 4, "2001": 4, "767": 3, "223": 3, "739": 3},
   "ALOLA_ROUTE_10": [738, 739, 764, 766],
-  "ALOLA_ROUTE_10_PERCENTAGES": { "738": 30, "739": 25, "764": 25, "766": 20 },
+  "ALOLA_ROUTE_10_PERCENTAGES": {"22": 22, "227": 16, "166": 14, "168": 14, "674": 11, "735": 8, "2002": 8, "739": 5, "204": 3},
   "ALOLA_ROUTE_11": [764, 766, 741, 769, 775],
-  "ALOLA_ROUTE_11_PERCENTAGES": { "764": 25, "766": 20, "741": 20, "769": 15, "775": 20 },
+  "ALOLA_ROUTE_11_PERCENTAGES": {"674": 19, "775": 16, "166": 16, "168": 16, "732": 13, "47": 3, "756": 3, "735": 3, "46": 3, "2002": 3, "755": 3},
   "ALOLA_ROUTE_14": [754, 764, 778, 769],
-  "ALOLA_ROUTE_14_PERCENTAGES": { "754": 30, "764": 25, "778": 25, "769": 20 },
+  "ALOLA_ROUTE_14_PERCENTAGES": {"456": 25, "129": 16, "746": 16, "779": 16, "279": 12, "73": 6, "72": 6, "592": 4},
   "ALOLA_ROUTE_15": [778, 769, 764, 766],
-  "ALOLA_ROUTE_15_PERCENTAGES": { "778": 30, "769": 25, "764": 25, "766": 20 },
+  "ALOLA_ROUTE_15_PERCENTAGES": {"279": 21, "79": 16, "456": 11, "129": 10, "746": 10, "779": 10, "366": 7, "735": 5, "2002": 5, "73": 2, "72": 2},
   "ALOLA_ROUTE_16": [730, 745, 788, 787, 779, 781],
-  "ALOLA_ROUTE_16_PERCENTAGES": { "730": 22, "745": 18, "788": 15, "787": 15, "779": 15, "781": 15 },
+  "ALOLA_ROUTE_16_PERCENTAGES": {"279": 30, "79": 28, "456": 10, "559": 8, "735": 7, "2002": 7, "739": 6, "73": 4},
   "ALOLA_ROUTE_17": [757, 760, 754, 758],
-  "ALOLA_ROUTE_17_PERCENTAGES": { "757": 30, "760": 25, "754": 25, "758": 20 },
-  "ALOLA_VERDANT_CAVERN_PERCENTAGES": { "734": 35, "735": 15, "744": 20 },
+  "ALOLA_ROUTE_17_PERCENTAGES": {"22": 14, "351": 12, "559": 11, "227": 10, "2013": 8, "166": 7, "735": 7, "168": 7, "2002": 7, "674": 7, "625": 4, "739": 3, "704": 3},
+  "ALOLA_VERDANT_CAVERN_PERCENTAGES": {"41": 45, "2008": 28, "714": 14, "734": 7, "2001": 7},
   "ALOLA_VERDANT_CAVERN": [734, 735, 744],
-  "ALOLA_BROOKLET_HILL_PERCENTAGES": { "746": 25, "747": 22, "748": 13, "730": 10, "751": 20, "771": 10 },
+  "ALOLA_BROOKLET_HILL_PERCENTAGES": {"54": 20, "60": 15, "278": 11, "751": 7, "283": 7, "129": 7, "456": 6, "46": 4, "755": 4, "118": 3, "349": 3, "746": 3, "594": 3, "72": 2, "550": 2, "506": 2},
   "ALOLA_BROOKLET_HILL": [746, 747, 748, 730, 751, 771],
-  "ALOLA_WELA_VOLCANO_PERCENTAGES": { "757": 35, "758": 30, "759": 20, "2018": 15 },
+  "ALOLA_WELA_VOLCANO_PERCENTAGES": {"104": 27, "661": 20, "757": 20, "240": 20, "115": 13},
   "ALOLA_WELA_VOLCANO": [2018, 757, 758, 759],
-  "ALOLA_LUSH_JUNGLE_PERCENTAGES": { "753": 22, "754": 18, "755": 20, "741": 15, "761": 15, "765": 10 },
+  "ALOLA_LUSH_JUNGLE_PERCENTAGES": {"351": 17, "753": 9, "764": 9, "732": 9, "11": 5, "438": 5, "127": 5, "46": 5, "755": 5, "762": 4, "766": 4, "765": 4, "704": 4, "761": 3, "41": 3, "163": 2, "42": 2, "10": 1, "757": 1, "2009": 1, "2008": 1, "636": 1},
   "ALOLA_LUSH_JUNGLE": [753, 754, 755, 741, 761, 765],
-  "ALOLA_MT_HOKULANI_PERCENTAGES": { "738": 22, "739": 22, "736": 18, "737": 10, "777": 16, "774": 12 },
+  "ALOLA_MT_HOKULANI_PERCENTAGES": {"132": 25, "774": 18, "374": 15, "22": 13, "605": 9, "227": 8, "173": 7, "239": 4},
   "ALOLA_MT_HOKULANI": [738, 739, 736, 737, 777, 774],
-  "ALOLA_THRIFTY_MEGAMART_PERCENTAGES": { "778": 40, "709": 30, "302": 30 },
+  "ALOLA_THRIFTY_MEGAMART_PERCENTAGES": {"93": 24, "42": 21, "707": 21, "778": 21, "353": 14},
   "ALOLA_THRIFTY_MEGAMART": [302, 709, 778],
-  "ALOLA_VAST_PONI_PERCENTAGES": { "773": 15, "745": 20, "776": 20, "783": 15, "782": 30 },
+  "ALOLA_VAST_PONI_PERCENTAGES": {"703": 22, "525": 17, "42": 15, "2009": 7, "782": 7, "67": 6, "745": 5, "227": 5, "619": 4, "198": 2, "129": 2, "339": 2, "55": 1, "550": 1, "341": 1, "147": 1},
   "ALOLA_VAST_PONI": [773, 745, 776, 783, 782],
-  "ALOLA_MT_LANAKILA_PERCENTAGES": { "730": 16, "724": 16, "727": 16, "745": 16, "778": 16, "780": 20 },
+  "ALOLA_MT_LANAKILA_PERCENTAGES": {"215": 23, "359": 18, "351": 17, "361": 9, "362": 8, "2006": 6, "2004": 6, "42": 5, "583": 4, "735": 2, "2002": 2, "780": 2, "584": 1},
   "ALOLA_MT_LANAKILA": [730, 724, 727, 745, 778, 780],
-  "ALOLA_DIGLETTS_TUNNEL_PERCENTAGES": { "2008": 35, "2009": 30, "100": 20, "808": 15 },
+  "ALOLA_DIGLETTS_TUNNEL_PERCENTAGES": {"41": 52, "2008": 34, "246": 14},
   "ALOLA_DIGLETTS_TUNNEL": [2008, 2009, 100, 808],
-  "ALOLA_MEMORIAL_HILL_PERCENTAGES": { "769": 40, "764": 35, "778": 25 },
+  "ALOLA_MEMORIAL_HILL_PERCENTAGES": {"92": 38, "41": 38, "708": 23},
   "ALOLA_MEMORIAL_HILL": [764, 769, 778],
   "REGION_START": {
     "ALOLA": {
@@ -4099,12 +3748,12 @@
       }
     }
   },
-  "ALOLA_AETHER_PARADISE_PERCENTAGES": { "772": 25, "789": 15, "749": 20, "771": 20, "777": 20 },
+  "ALOLA_AETHER_PARADISE_PERCENTAGES": {"749": 34, "771": 33, "777": 33},
   "ALOLA_AETHER_PARADISE": [772, 789, 749, 771, 777],
   "ALOLA_ULTRA_SPACE_PERCENTAGES": { "793": 10, "794": 10, "795": 10, "796": 10, "797": 10, "798": 10, "799": 10, "805": 10, "806": 10, "803": 10 },
   "ALOLA_ULTRA_SPACE": [793, 794, 795, 796, 797, 798, 799, 805, 806, 803],
-  "ALOLA_ROUTE_1_DAY_PERCENTAGES": { "734": 61, "731": 31, "2001": 8 },
-  "ALOLA_ROUTE_1_NIGHT_PERCENTAGES": { "734": 8, "731": 31, "2001": 61 },
-  "ALOLA_ROUTE_2_DAY_PERCENTAGES": { "734": 35, "735": 30, "737": 15, "741": 12, "2001": 4, "2002": 4 },
-  "ALOLA_ROUTE_2_NIGHT_PERCENTAGES": { "734": 4, "735": 4, "737": 15, "741": 12, "2001": 35, "2002": 30 }
+  "ALOLA_ROUTE_1_DAY_PERCENTAGES": {"734": 19, "165": 15, "10": 14, "731": 12, "438": 7, "427": 5, "172": 5, "446": 5, "736": 4, "278": 4, "79": 4, "11": 3, "744": 2},
+  "ALOLA_ROUTE_1_NIGHT_PERCENTAGES": {"2001": 19, "167": 15, "10": 14, "731": 12, "438": 7, "427": 5, "172": 5, "446": 5, "736": 4, "278": 4, "79": 4, "11": 3, "744": 2},
+  "ALOLA_ROUTE_2_DAY_PERCENTAGES": {"734": 15, "96": 12, "21": 12, "235": 11, "296": 8, "63": 7, "742": 7, "23": 6, "58": 6, "2010": 5, "676": 2, "206": 2, "2001": 4, "2002": 4},
+  "ALOLA_ROUTE_2_NIGHT_PERCENTAGES": {"2001": 14, "296": 11, "21": 11, "235": 10, "96": 8, "63": 7, "742": 7, "23": 6, "58": 6, "2010": 5, "739": 4, "676": 2, "206": 2, "734": 4, "735": 4}
 }

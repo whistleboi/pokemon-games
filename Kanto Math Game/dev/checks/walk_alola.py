@@ -6,7 +6,7 @@ story.defeated_trainers = {}
 story.starting_region = "ALOLA"
 R, S = "ALOLA", "IKI_TOWN"
 seen = report("start", S, set())
-steps = [("Verdant Cavern", {"VERDANT_CAVERN_boss_defeated": True}, None), ("NORMALIUM (Ilima)", {}, "NORMALIUM_Z"),
+steps = [("Verdant Cavern", {"VERDANT_CAVERN_boss_defeated": True}, None), ("NORMALIUM (Ilima)", {}, "NORMALIUM_Z"), ("FIGHTINIUM (Hala)", {}, "FIGHTINIUM_Z"),
          ("Akala trials", {"BROOKLET_HILL_boss_defeated": True, "LUSH_JUNGLE_boss_defeated": True,
                            "WELA_VOLCANO_boss_defeated": True}, None),
          ("ROCKIUM (Olivia)", {}, "ROCKIUM_Z"),
@@ -33,6 +33,7 @@ POST = ["PONI_GROVE", "PONI_PLAINS", "PONI_MEADOW", "PONI_COAST", "PONI_GAUNTLET
         "ULTRA_DEEP_SEA", "ULTRA_JUNGLE", "ULTRA_DESERT", "ULTRA_PLANT", "ULTRA_CRATER", "ULTRA_FOREST", "ULTRA_RUIN"]
 story.story_flags.update({"VERDANT_CAVERN_boss_defeated": True})
 badge(R, "NORMALIUM_Z")
+badge(R, "FIGHTINIUM_Z")
 expansion_check("melemele+akala expansion", MELE + AKALA, S)
 gate_check("ula'ula expansion", ULA, S, "ROCKIUM_Z")
 story.story_flags.update({"BROOKLET_HILL_boss_defeated": True, "LUSH_JUNGLE_boss_defeated": True, "WELA_VOLCANO_boss_defeated": True})

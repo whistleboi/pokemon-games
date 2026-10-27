@@ -133,9 +133,24 @@
     "galar_mom_newstart_3": ["Mom: The Slumbering Weald is spooky. Please don't go in there alone.", "Mom: ...Unless you're with a strong Pokémon. Then it's probably fine."]
   },
   "MOTOSTOKE_OUTSKIRTS": [164, 559, 185, 524, 624, 109, 856, 833, 539, 859],
-  "MOTOSTOKE_OUTSKIRTS_PERCENTAGES": { "164": 20, "559": 18, "185": 15, "524": 15, "624": 10, "109": 8, "856": 5, "833": 5, "539": 2, "859": 2 },
+  "MOTOSTOKE_OUTSKIRTS_PERCENTAGES": {"164": 10, "185": 10, "109": 10, "856": 10, "524": 10, "624": 10, "833": 10, "859": 10, "539": 5, "538": 5, "757": 5, "559": 5, "453": 5},
   "GALAR_MINE_NO_2": [422, 767, 688, 559, 714, 833, 213],
-  "GALAR_MINE_NO_2_PERCENTAGES": { "422": 25, "767": 25, "688": 15, "559": 15, "714": 10, "833": 5, "213": 5 },
+  "GALAR_MINE_NO_2_PERCENTAGES": {"422": 15, "767": 15, "833": 15, "213": 15, "714": 15, "688": 8, "559": 8, "453": 8},
+  "WILD_AREA_OLD_ROD_PERCENTAGES": {"129": 17, "746": 10, "118": 7, "90": 7, "223": 7, "130": 7, "339": 7, "550": 7, "771": 7, "519": 3, "12": 3, "224": 3, "91": 3, "846": 3, "847": 3, "747": 3, "278": 2, "425": 2},
+  "GALAR_WILD_AREA_NORTH_PERCENTAGES": {"710": 5, "2032": 3, "215": 3, "825": 3, "613": 2, "536": 2, "202": 2, "686": 2, "827": 2, "109": 2, "597": 1, "833": 1, "622": 1, "830": 1, "557": 1, "66": 1, "44": 1, "343": 1, "714": 1, "582": 1, "859": 1, "67": 1, "529": 1, "823": 1, "132": 1, "848": 1, "761": 1, "599": 1, "572": 1, "623": 1, "164": 1, "163": 1, "559": 1, "828": 1, "453": 1, "759": 1, "677": 1, "422": 1, "517": 1, "751": 1, "213": 1, "857": 1, "225": 1, "2033": 1, "820": 1, "420": 1, "742": 1, "556": 1, "627": 1, "185": 1, "629": 1, "459": 1, "451": 1, "177": 1, "361": 1, "436": 1, "605": 1, "878": 1, "660": 1, "845": 1, "838": 1, "438": 1, "291": 1, "525": 1, "25": 1, "856": 1, "309": 1, "834": 1, "220": 1, "449": 1, "51": 1, "520": 1, "324": 1, "194": 1, "886": 1, "175": 1, "588": 1, "616": 1, "767": 1, "111": 1, "236": 1, "533": 1, "835": 1, "840": 1, "624": 1, "279": 1, "595": 1, "195": 1, "447": 1, "35": 1, "885": 1, "757": 1, "510": 1, "688": 1, "607": 1, "868": 1, "743": 1, "832": 1, "435": 1, "315": 1, "689": 1, "836": 1, "737": 1, "583": 1, "221": 1, "460": 1, "437": 1, "112": 1, "2038": 1, "839": 1, "355": 1, "282": 1, "632": 1, "631": 1, "450": 1, "755": 1, "822": 1, "679": 1, "824": 1, "837": 1, "659": 1, "862": 1, "479": 1, "584": 1, "303": 1, "524": 1, "58": 1, "37": 1, "575": 1, "577": 1, "539": 1, "538": 1, "592": 1, "546": 1, "684": 1, "682": 1, "339": 1, "176": 1, "106": 1, "107": 1, "600": 1, "598": 1, "750": 1, "302": 1, "578": 1, "678": 1, "527": 1, "406": 1, "12": 1, "694": 1, "50": 1, "778": 1, "521": 1, "701": 1, "92": 1, "434": 1, "310": 1, "749": 1, "574": 1, "606": 1, "561": 1, "760": 1, "826": 1, "569": 1, "452": 1, "2025": 1, "237": 1, "861": 1, "675": 1, "870": 1, "782": 1, "246": 1, "537": 1, "752": 1, "768": 1, "596": 1, "715": 1, "612": 1, "877": 1, "593": 1, "634": 1, "362": 1, "712": 1, "872": 1, "2026": 1, "875": 1, "601": 1, "625": 1, "879": 1, "863": 1, "680": 1, "777": 1, "884": 1, "608": 1, "330": 1, "844": 1, "874": 1, "530": 1, "247": 1, "858": 1, "344": 1, "876": 1, "454": 1, "2024": 1, "2031": 1, "610": 1, "328": 1, "274": 1, "271": 1, "628": 1, "630": 1, "633": 1, "704": 1, "783": 1, "780": 1, "705": 1, "38": 1, "59": 1, "776": 1, "576": 1, "579": 1},
+  "WILD_AREA_NORTH_OLD_ROD_PERCENTAGES": {"130": 22, "171": 13, "211": 13, "834": 9, "847": 9, "129": 4, "747": 4, "170": 4, "520": 4, "822": 4, "118": 4, "98": 4, "341": 4},
+  "ISLE_OF_ARMOR_OLD_ROD_PERCENTAGES": {"129": 11, "72": 7, "278": 6, "320": 6, "130": 6, "117": 5, "746": 5, "319": 5, "692": 3, "693": 3, "690": 3, "691": 3, "846": 3, "120": 2, "90": 2, "91": 2, "833": 2, "223": 2, "224": 2, "341": 2, "845": 2, "458": 2, "593": 2, "279": 2, "781": 1, "852": 1, "2022": 1, "118": 1, "73": 1, "170": 1, "171": 1, "230": 1, "662": 1, "425": 1, "769": 1, "339": 1, "340": 1, "194": 1, "318": 1},
+  "CROWN_TUNDRA_OLD_ROD_PERCENTAGES": {"129": 17, "550": 17, "130": 17, "339": 12, "340": 12, "345": 8, "320": 4, "781": 4, "349": 4, "147": 4},
+  "CROWN_SNOWSLIDE_SLOPE_OLD_ROD_PERCENTAGES": {"129": 33, "550": 33, "130": 33},
+  "GALAR_MINE_NO_2_OLD_ROD_PERCENTAGES": {"339": 33, "833": 33, "341": 33},
+  "GALAR_ROUTE_2_OLD_ROD_PERCENTAGES": {"129": 43, "833": 29, "846": 14, "349": 14},
+  "GALAR_ROUTE_4_OLD_ROD_PERCENTAGES": {"129": 33, "833": 33, "118": 33},
+  "GALAR_ROUTE_5_OLD_ROD_PERCENTAGES": {"129": 33, "833": 33, "118": 33},
+  "GALAR_ROUTE_6_OLD_ROD_PERCENTAGES": {"129": 33, "834": 33, "118": 33},
+  "GALAR_ROUTE_9_OLD_ROD_PERCENTAGES": {"458": 19, "320": 12, "226": 12, "224": 6, "746": 6, "771": 6, "279": 6, "211": 6, "593": 6, "321": 6, "131": 6, "223": 6},
+  "HULBURY_OLD_ROD_PERCENTAGES": {"846": 20, "833": 20, "170": 20, "550": 20, "746": 20},
+  "MOTOSTOKE_OLD_ROD_PERCENTAGES": {"129": 33, "833": 33, "339": 33},
+  "SLUMBERING_WEALD_OLD_ROD_PERCENTAGES": {"340": 33, "339": 33, "129": 33},
   "STORY_PROGRESSION": {
     "MEETUP_SPOT": {
       "area_type": "town",
@@ -169,67 +184,10 @@
       "wild_pool_percentages": "GALAR_MINE_NO_2_PERCENTAGES",
       "min_rounds": 1,
       "trainer_pool": [
-        {
-          "name": "Pokemon Trainer Bede",
-          "class": "PKMN_TRAINER",
-          "sprite": "acetrainer_m.png",
-          "team": [
-            577,
-            574,
-            77,
-            856
-          ],
-          "rewards": {
-            "balls": 5
-          }
-        },
-        {
-          "name": "Worker Francis",
-          "class": "ENGINEER",
-          "sprite": "engineer.png",
-          "team": [
-            838
-          ],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Worker Yvonne",
-          "class": "ENGINEER",
-          "sprite": "engineer.png",
-          "team": [
-            524,
-            532
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "Team Yell Grunt",
-          "class": "PKMN_TRAINER",
-          "sprite": "acetrainer_m.png",
-          "team": [
-            828,
-            510
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "Team Yell Grunt",
-          "class": "PKMN_TRAINER",
-          "sprite": "acetrainer_f.png",
-          "team": [
-            264,
-            674
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        }
+        {"name": "Worker Francis", "class": "ENGINEER", "sprite": "engineer.png", "team": [838], "rewards": {"balls": 3}},
+        {"name": "Worker Yvonne", "class": "ENGINEER", "sprite": "engineer.png", "team": [524, 532], "rewards": {"balls": 4}},
+        {"name": "Team Yell Grunt", "class": "PKMN_TRAINER", "sprite": "acetrainer_m.png", "team": [828, 510], "rewards": {"balls": 4}},
+        {"name": "Team Yell Grunt", "class": "PKMN_TRAINER", "sprite": "acetrainer_f.png", "team": [264, 674], "rewards": {"balls": 4}}
       ],
       "route_menu": [
         {
@@ -271,7 +229,11 @@
           "color": "RED"
         }
       ],
-      "next_area": "MOTOSTOKE_OUTSKIRTS"
+      "next_area": "MOTOSTOKE_OUTSKIRTS",
+        "on_enter_event": [
+          {"type": "trainer_battle", "trainer": {"name": "{rival_name}", "class": "PKMN_TRAINER", "sprite": "{rival_character}", "is_boss_battle": true, "team": [831, 822, 817], "levels": [22, 21, 24], "team_choice": {"813": [831, 822, 817], "816": [831, 822, 811], "810": [831, 822, 814]}, "rewards": {"balls": 6}, "victory_flag": "defeated_hop_mine2", "dialogue": {"intro": ["{rival_name}: I've been training down here! Ready?"], "player_won": ["{rival_name}: Aw, man! You're the real deal, mate!"], "player_lost": ["{rival_name}: Yes! I'm getting there!"]}}, "flag_check": "defeated_hop_mine2"},
+          {"type": "trainer_battle", "trainer": {"name": "Bede", "class": "PKMN_TRAINER", "sprite": "bede.png", "is_boss_battle": true, "team": [577, 574, 856], "levels": [21, 22, 22], "rewards": {"balls": 6}, "victory_flag": "defeated_bede_mine2", "dialogue": {"intro": ["Bede: You again? I'll show you what a real challenger looks like."], "player_won": ["Bede: ...That was a fluke."]}}, "flag_check": "defeated_bede_mine2"}
+        ]
     },
     "MOTOSTOKE_OUTSKIRTS": {
       "area_type": "wild_route",
@@ -400,7 +362,11 @@
         { "text": "Visit Professor Magnolia", "action": "NPC", "target": "galar_magnolia_intro", "flag_condition": "not met_magnolia" },
         { "text": "Meet Sonia", "action": "NPC", "target": "galar_sonia_intro", "flag_condition": "not met_sonia" }
       ],
-      "next_area": "GALAR_ROUTE_2"
+      "next_area": "GALAR_ROUTE_2",
+        "on_enter_event": [
+          {"type": "trainer_battle", "trainer": {"name": "Sordward", "class": "PKMN_TRAINER", "sprite": "sordward.png", "is_boss_battle": true, "team": [768, 680, 625], "levels": [62, 62, 62], "rewards": {"balls": 6}, "victory_flag": "defeated_sordward_wedgehurst", "dialogue": {"intro": ["Sordward: We are the true heirs to Galar's kings! Out of our way!"], "player_won": ["Sordward: This is not the end!"]}}, "flag_check": "defeated_sordward_wedgehurst", "condition": "beat_galar_champion"},
+          {"type": "trainer_battle", "trainer": {"name": "Shielbert", "class": "PKMN_TRAINER", "sprite": "shielbert.png", "is_boss_battle": true, "team": [437, 870, 601], "levels": [62, 62, 62], "rewards": {"balls": 6}, "victory_flag": "defeated_shielbert_wedgehurst", "dialogue": {"intro": ["Shielbert: Brother, step aside. I'll handle this one."], "player_won": ["Shielbert: To the Weald, brother!"]}}, "flag_check": "defeated_shielbert_wedgehurst", "condition": "beat_galar_champion"}
+        ]
     },
     "TURFFIELD": {
       "area_type": "town",
@@ -410,8 +376,9 @@
       "has_gym": true,
       "gym": {"trainers": [], "leader": {"name": "Milo", "class": "GYM_LEADER", "sprite": "milo.png", "team": [829, 830], "levels": [19, 20], "dialogue": {"intro": ["Milo: If you lose, I think that would be quite all right, actually. Don't worry about it!"], "player_won": ["Milo: Oh, that was a nice battle! Here's the Grass Badge and TM Razor Leaf!"], "player_lost": ["Milo: It's all right! Come back and try again — no rush!"]}, "rewards": {"balls": 5}, "is_boss_battle": true, "badge_reward": "GRASS", "movesets": {"829": ["MAGICAL-LEAF", "ROUND", "RAPID-SPIN"], "830": ["MAGICAL-LEAF", "LEAFAGE", "ROUND"]}}, "requirements": {"badges": 0, "fail_text": "Milo is in the gym — challenge him when ready!"}},
       "travel_options": [
-        { "text": "Wild Area (west)", "target_area": "WILD_AREA" },
-        { "text": "Route 4 (to Hulbury)", "target_area": "GALAR_ROUTE_4" }
+        {"text": "Wild Area (west)", "target_area": "WILD_AREA"},
+        {"text": "Route 4 (to Hulbury)", "target_area": "GALAR_ROUTE_4"},
+        {"text": "Route 5", "target_area": "GALAR_ROUTE_5"}
       ],
       "explore_options": [
         { "text": "Pokémon Center", "action": "HEAL" },
@@ -437,7 +404,8 @@
         { "text": "Shop", "action": "SHOP" },
         { "text": "Challenge Gym", "action": "GYM" }
       ],
-      "next_area": "GALAR_ROUTE_5"
+      "next_area": "GALAR_ROUTE_5",
+        "can_fish": true
     },
     "MOTOSTOKE": {
       "area_type": "town",
@@ -447,10 +415,11 @@
       "has_gym": true,
       "gym": {"trainers": [], "leader": {"name": "Kabu", "class": "GYM_LEADER", "sprite": "kabu.png", "team": [38, 59, 851], "levels": [25, 25, 27], "dialogue": {"intro": ["Kabu: If you cannot pass through my flames, you will not be going any further!"], "player_won": ["Kabu: Well done. The passion in your eyes — it sets you apart. Here is the Fire Badge."], "player_lost": ["Kabu: Your flames need more fuel. Train and return!"]}, "rewards": {"balls": 5}, "is_boss_battle": true, "badge_reward": "FIRE", "movesets": {"38": ["WILL-O-WISP", "FIRE-SPIN", "QUICK-ATTACK", "EMBER"], "59": ["WILL-O-WISP", "FLAME-WHEEL", "BITE", "AGILITY"], "851": ["FLAME-WHEEL", "COIL", "BUG-BITE", "SMOKESCREEN"]}}, "requirements": {"badges": 2, "fail_text": "Earn the Water Badge first!"}},
       "travel_options": [
-        { "text": "Route 5 (to Hulbury)", "target_area": "GALAR_ROUTE_5" },
-        { "text": "Wild Area (east)", "target_area": "WILD_AREA" },
-        { "text": "Route 6 (to Stow-on-Side)", "target_area": "GALAR_ROUTE_6", "condition": "has_fire_badge" },
-        {"text": "Motostoke Outskirts", "target_area": "MOTOSTOKE_OUTSKIRTS", "condition": "has_grass_badge"}
+        {"text": "Route 5 (to Hulbury)", "target_area": "GALAR_ROUTE_5"},
+        {"text": "Wild Area (east)", "target_area": "WILD_AREA"},
+        {"text": "Route 6 (to Stow-on-Side)", "target_area": "GALAR_ROUTE_6", "condition": "has_fire_badge"},
+        {"text": "Motostoke Outskirts", "target_area": "MOTOSTOKE_OUTSKIRTS", "condition": "has_grass_badge"},
+        {"text": "Route 3", "target_area": "GALAR_ROUTE_3"}
       ],
       "explore_options": [
         { "text": "Pokémon Center", "action": "HEAL" },
@@ -458,7 +427,12 @@
         { "text": "Challenge Gym", "action": "GYM" },
         { "text": "Meet Chairman Rose", "action": "NPC", "target": "galar_rose_intro", "flag_condition": "not met_rose" }
       ],
-      "next_area": "GALAR_ROUTE_6"
+      "next_area": "GALAR_ROUTE_6",
+        "can_fish": true,
+        "on_enter_event": [
+          {"type": "trainer_battle", "trainer": {"name": "{rival_name}", "class": "PKMN_TRAINER", "sprite": "{rival_character}", "is_boss_battle": true, "team": [831, 821, 816], "levels": [10, 11, 12], "team_choice": {"813": [831, 821, 816], "816": [831, 821, 810], "810": [831, 821, 813]}, "rewards": {"balls": 6}, "victory_flag": "defeated_hop_motostoke", "dialogue": {"intro": ["{rival_name}: Our Gym Challenge starts tomorrow! One more battle to warm up!"], "player_won": ["{rival_name}: Aw, man! You're the real deal, mate!"], "player_lost": ["{rival_name}: Yes! I'm getting there!"]}}, "flag_check": "defeated_hop_motostoke", "condition": "has_galar_starter"},
+          {"type": "trainer_battle", "trainer": {"name": "Marnie", "class": "PKMN_TRAINER", "sprite": "marnie.png", "is_boss_battle": true, "team": [453, 559, 877], "levels": [24, 24, 26], "rewards": {"balls": 6}, "victory_flag": "defeated_marnie_motostoke", "dialogue": {"intro": ["Marnie: You're the one Leon's always on about. Let's battle."], "player_won": ["Marnie: Hm. You're good."]}}, "flag_check": "defeated_marnie_motostoke", "condition": "has_water_badge"}
+        ]
     },
     "STOW_ON_SIDE": {
       "area_type": "town",
@@ -478,7 +452,11 @@
         { "text": "Sonia's Research (murals)", "action": "NPC", "target": "galar_sonia_murals", "flag_condition": "not saw_stow_murals" },
         { "text": "Cara Liss (Fossil Restorer)", "action": "NPC", "target": "fossil_lab" }
       ],
-      "next_area": "GLIMWOOD_TANGLE"
+      "next_area": "GLIMWOOD_TANGLE",
+        "on_enter_event": [
+          {"type": "trainer_battle", "trainer": {"name": "{rival_name}", "class": "PKMN_TRAINER", "sprite": "{rival_character}", "is_boss_battle": true, "team": [845, 848, 843, 817], "levels": [28, 29, 30, 33], "team_choice": {"813": [845, 848, 843, 817], "816": [845, 848, 843, 811], "810": [845, 848, 843, 814]}, "rewards": {"balls": 6}, "victory_flag": "defeated_hop_stow", "dialogue": {"intro": ["{rival_name}: I've switched up my team! Let me show you!"], "player_won": ["{rival_name}: Aw, man! You're the real deal, mate!"], "player_lost": ["{rival_name}: Yes! I'm getting there!"]}}, "flag_check": "defeated_hop_stow", "condition": "has_fire_badge"},
+          {"type": "trainer_battle", "trainer": {"name": "Bede", "class": "PKMN_TRAINER", "sprite": "bede.png", "is_boss_battle": true, "team": [578, 575, 857], "levels": [32, 32, 33], "rewards": {"balls": 6}, "victory_flag": "defeated_bede_stow", "dialogue": {"intro": ["Bede: You again? I'll show you what a real challenger looks like."], "player_won": ["Bede: ...That was a fluke."]}}, "flag_check": "defeated_bede_stow", "condition": "has_fire_badge"}
+        ]
     },
     "BALLONLEA": {
       "area_type": "town",
@@ -491,9 +469,10 @@
         { "text": "Glimwood Tangle (to Stow-on-Side)", "target_area": "GLIMWOOD_TANGLE" }
       ],
       "explore_options": [
-        { "text": "Pokémon Center", "action": "HEAL" },
-        { "text": "Shop", "action": "SHOP" },
-        { "text": "Challenge Gym", "action": "GYM" }
+        {"text": "Pokémon Center", "action": "HEAL"},
+        {"text": "Shop", "action": "SHOP"},
+        {"text": "Challenge Gym", "action": "GYM"},
+        {"text": "Gym Leader Bede", "action": "EVENT", "color": "GOLD", "flag_condition": "not defeated_bede_ballonlea", "event": {"lines": ["Bede: I'm Ballonlea's Gym Leader now. Show me your best!"], "flag": "defeated_bede_ballonlea", "battle": {"name": "Gym Leader Bede", "class": "GYM_LEADER", "sprite": "bede.png", "is_boss_battle": true, "team": [303, 282, 858], "levels": [61, 61, 62], "rewards": {"balls": 10}, "dialogue": {"intro": ["Bede: I'm Ballonlea's Gym Leader now. Show me your best!"], "player_won": ["Bede: Hmph. Opal will be pleased with neither of us."]}}}, "condition": "beat_galar_champion"}
       ],
       "next_area": "GLIMWOOD_TANGLE"
     },
@@ -514,7 +493,8 @@
         { "text": "Challenge Gym", "action": "GYM" },
         { "text": "Hero's Bath (Sonia research)", "action": "NPC", "target": "galar_sonia_bath", "flag_condition": "not saw_circhester_monument" }
       ],
-      "next_area": "GALAR_ROUTE_9"
+      "next_area": "GALAR_ROUTE_9",
+        "on_enter_event": [{"type": "trainer_battle", "trainer": {"name": "{rival_name}", "class": "PKMN_TRAINER", "sprite": "{rival_character}", "is_boss_battle": true, "team": [832, 823, 871, 143, 818], "levels": [40, 40, 39, 39, 41], "team_choice": {"813": [832, 823, 871, 143, 818], "816": [832, 823, 871, 143, 812], "810": [832, 823, 871, 143, 815]}, "rewards": {"balls": 6}, "victory_flag": "defeated_hop_circhester", "dialogue": {"intro": ["{rival_name}: I've worked out how to battle my own way. Let's go!"], "player_won": ["{rival_name}: Aw, man! You're the real deal, mate!"], "player_lost": ["{rival_name}: Yes! I'm getting there!"]}}, "flag_check": "defeated_hop_circhester", "condition": "has_rock_badge"}]
     },
     "SPIKEMUTH": {
       "area_type": "town",
@@ -542,10 +522,11 @@
       "has_gym": true,
       "gym": {"trainers": [], "leader": {"name": "Raihan", "class": "GYM_LEADER", "sprite": "raihan.png", "team": [526, 330, 844, 884], "levels": [46, 47, 46, 48], "dialogue": {"intro": ["Raihan: Alright! Let's settle this quick — my fans are watching! I'll be using Dynamax, so buckle up!"], "player_won": ["Raihan: Incredible! That was AMAZING! Here's the Dragon Badge — now go beat Leon for both of us!", "Here, take these fossils we dug up. Cara Liss in Stow-on-Side can piece them together!"], "player_lost": ["Raihan: Ha! That's more like it! But you'll need to do better against Leon."]}, "rewards": {"balls": 5, "FOSSILIZED_BIRD": 1, "FOSSILIZED_FISH": 1, "FOSSILIZED_DRAKE": 1, "FOSSILIZED_DINO": 1}, "is_boss_battle": true, "badge_reward": "DRAGON", "movesets": {"526": ["STEALTH-ROCK", "SAND-TOMB", "ROCK-BLAST", "BODY-PRESS"], "330": ["THUNDER-PUNCH", "BREAKING-SWIPE", "CRUNCH", "STEEL-WING"], "844": ["PROTECT", "GLARE", "FIRE-FANG", "EARTH-POWER"], "884": ["BREAKING-SWIPE", "BODY-PRESS", "STONE-EDGE", "IRON-HEAD"]}}, "requirements": {"badges": 7, "fail_text": "Earn the Dark Badge first!"}},
       "travel_options": [
-        { "text": "Route 7 (to Circhester)", "target_area": "GALAR_ROUTE_7" },
-        { "text": "Route 6 (to Stow-on-Side)", "target_area": "GALAR_ROUTE_6" },
-        { "text": "Route 10 (to Wyndon)", "target_area": "GALAR_ROUTE_10", "condition": "has_dragon_badge" },
-        { "text": "Rose Tower / Energy Plant", "target_area": "ROSE_TOWER" }
+        {"text": "Route 7 (to Circhester)", "target_area": "GALAR_ROUTE_7"},
+        {"text": "Route 6 (to Stow-on-Side)", "target_area": "GALAR_ROUTE_6"},
+        {"text": "Route 10 (to Wyndon)", "target_area": "GALAR_ROUTE_10", "condition": "has_dragon_badge"},
+        {"text": "Rose Tower / Energy Plant", "target_area": "ROSE_TOWER"},
+        {"text": "Wild Area (North)", "target_area": "WILD_AREA_NORTH"}
       ],
       "explore_options": [
         { "text": "Pokémon Center", "action": "HEAL" },
@@ -571,14 +552,15 @@
       "has_gym": true,
       "travel_options": [{"text": "Route 10 (to Hammerlocke)", "target_area": "GALAR_ROUTE_10"}],
       "explore_options": [
-        { "text": "Pokémon Center", "action": "HEAL" },
-        { "text": "Shop", "action": "SHOP" },
-        { "text": "CHALLENGE CHAMPIONSHIP CUP", "action": "GYM", "condition": "has_all_galar_badges", "color": "GOLD" }
+        {"text": "Pokémon Center", "action": "HEAL"},
+        {"text": "Shop", "action": "SHOP"},
+        {"text": "CHALLENGE CHAMPIONSHIP CUP", "action": "GYM", "condition": "has_all_galar_badges", "color": "GOLD"},
+        {"text": "Battle Tower: Leon", "action": "EVENT", "color": "GOLD", "flag_condition": "not defeated_leon_battle_tower", "event": {"lines": ["Leon: Welcome to the Battle Tower! Let's have a champion time!"], "flag": "defeated_leon_battle_tower", "battle": {"name": "Leon", "class": "PKMN_TRAINER", "sprite": "leon.png", "is_boss_battle": true, "team": [681, 887, 537, 815, 6], "levels": [70, 68, 69, 70, 70], "team_choice": {"810": [681, 887, 537, 815, 6], "813": [681, 887, 866, 818, 6], "816": [681, 887, 464, 812, 6]}, "rewards": {"balls": 15}, "dialogue": {"intro": ["Leon: Welcome to the Battle Tower! Let's have a champion time!"], "player_won": ["Leon: What a battle! Again sometime!"]}}}, "condition": "beat_galar_champion"}
       ],
       "post_champion_events": [
         { "type": "npc_dialogue", "target": "galar_departure_to_paldea", "flag_condition": "not left_for_paldea", "victory_flag": "left_for_paldea" }
       ],
-      "gym": {"trainers": [{"name": "Marnie", "class": "RIVAL", "sprite": "marnie.png", "is_boss_battle": true, "team": [510, 454, 560, 877, 861], "levels": [54, 54, 54, 55, 56], "rewards": {"balls": 10}, "dialogue": {"intro": ["Marnie: I'm giving this everything I've got. Don't hold back."], "player_won": ["Marnie: ...You were better. Piers will hear about this."], "player_lost": ["Marnie: ...Sorry. Got a bit carried away."]}, "movesets": {"510": ["FAKE-OUT", "TORMENT", "NASTY-PLOT", "SNARL"], "454": ["VENOSHOCK", "SUCKER-PUNCH", "SWAGGER", "TOXIC"], "560": ["SWAGGER", "SCARY-FACE", "BRICK-BREAK", "CRUNCH"], "877": ["BULLET-SEED", "TORMENT", "SPARK", "BITE"], "861": ["SPIRIT-BREAK", "DARKEST-LARIAT", "BULK-UP", "TORMENT"]}}, {"name": "{rival_name}", "class": "PKMN_TRAINER", "sprite": "{rival_character}", "is_boss_battle": true, "team": [832, 823, 871, 143, 818], "levels": [55, 55, 54, 54, 56], "team_choice": {"810": [832, 823, 871, 143, 818], "813": [832, 823, 871, 143, 812], "816": [832, 823, 871, 143, 815]}, "rewards": {"balls": 15}, "victory_flag": "defeated_hop_wyndon", "dialogue": {"intro": ["{rival_name}: {player_name}! I've been waiting for this! I'm different from when we started!"], "player_won": ["{rival_name}: I lost again... but this time? I'm proud of how I battled."], "player_lost": ["{rival_name}: I've grown SO much! This means everything to me!"]}}], "leader": {"name": "Champion Leon", "class": "CHAMPION", "sprite": "leon.png", "is_boss_battle": true, "team": [681, 887, 612, 537, 815, 6], "levels": [62, 62, 63, 64, 64, 65], "team_choice": {"810": [681, 887, 612, 537, 815, 6], "813": [681, 887, 612, 866, 818, 6], "816": [681, 887, 612, 464, 812, 6]}, "rewards": {"balls": 20, "GALAR_HALL_OF_FAME": 1}, "victory_flag": "beat_galar_champion", "dialogue": {"intro": ["Leon: You made it. You actually made it to the top!", "I've beaten everyone who's stepped into this stadium.", "But I've never faced someone like you.", "Champion time — let's have ourselves an absolute banger of a battle!"], "player_won": ["Leon: ...Haha. You know what? That was incredible.", "I lost. Properly lost! I can't remember the last time that happened.", "You are the new Galar Champion, {player_name}. Champion time — it's YOUR time now!", "Take care of this place. Galar deserves a champion as brilliant as you."], "player_lost": ["Leon: Champion time — and I still won! Come back when you're ready to take the crown!"]}, "movesets": {"681": ["KINGS-SHIELD", "SHADOW-BALL", "SACRED-SWORD", "FLASH-CANNON"], "887": ["SHADOW-BALL", "FLAMETHROWER", "THUNDERBOLT", "DRAGON-BREATH"], "612": ["POISON-JAB", "IRON-TAIL", "OUTRAGE", "EARTHQUAKE"], "537": ["TOXIC", "DRAIN-PUNCH", "LIQUIDATION", "EARTHQUAKE"], "815": ["PYRO-BALL", "FEINT", "ACROBATICS", "QUICK-ATTACK"], "6": ["FIRE-BLAST", "AIR-SLASH", "SOLAR-BEAM", "ANCIENT-POWER"], "866": ["TEETER-DANCE", "PSYCHIC", "FREEZE-DRY", "THUNDERBOLT"], "818": ["SNIPE-SHOT", "DARK-PULSE", "MUD-SHOT", "TEARFUL-LOOK"], "464": ["EARTHQUAKE", "STONE-EDGE", "MEGAHORN", "HEAT-CRASH"], "812": ["DRUM-BEATING", "KNOCK-OFF", "HIGH&NBSP;HORSEPOWER", "ENDEAVOR"]}}}
+      "gym": {"trainers": [{"name": "Marnie", "class": "RIVAL", "sprite": "marnie.png", "is_boss_battle": true, "team": [510, 454, 560, 877, 861], "levels": [54, 54, 54, 55, 56], "rewards": {"balls": 10}, "dialogue": {"intro": ["Marnie: I'm giving this everything I've got. Don't hold back."], "player_won": ["Marnie: ...You were better. Piers will hear about this."], "player_lost": ["Marnie: ...Sorry. Got a bit carried away."]}, "movesets": {"510": ["FAKE-OUT", "TORMENT", "NASTY-PLOT", "SNARL"], "454": ["VENOSHOCK", "SUCKER-PUNCH", "SWAGGER", "TOXIC"], "560": ["SWAGGER", "SCARY-FACE", "BRICK-BREAK", "CRUNCH"], "877": ["BULLET-SEED", "TORMENT", "SPARK", "BITE"], "861": ["SPIRIT-BREAK", "DARKEST-LARIAT", "BULK-UP", "TORMENT"]}}, {"name": "{rival_name}", "class": "PKMN_TRAINER", "sprite": "{rival_character}", "is_boss_battle": true, "team": [832, 823, 871, 143, 818], "levels": [55, 55, 54, 54, 56], "team_choice": {"810": [832, 823, 871, 143, 818], "813": [832, 823, 871, 143, 812], "816": [832, 823, 871, 143, 815]}, "rewards": {"balls": 15}, "victory_flag": "defeated_hop_wyndon", "dialogue": {"intro": ["{rival_name}: {player_name}! I've been waiting for this! I'm different from when we started!"], "player_won": ["{rival_name}: I lost again... but this time? I'm proud of how I battled."], "player_lost": ["{rival_name}: I've grown SO much! This means everything to me!"]}}, {"name": "Gym Leader Nessa", "class": "GYM_LEADER", "sprite": "nessa.png", "is_boss_battle": true, "team": [768, 279, 847, 119], "levels": [58, 58, 59, 59], "dialogue": {"intro": ["Nessa: The Finals! Let's give the crowd a battle to remember!"]}}, {"name": "Gym Leader Bea", "class": "GYM_LEADER", "sprite": "bea_fighting_allister_ghost.png", "is_boss_battle": true, "team": [701, 853, 865, 870], "levels": [59, 59, 60, 60], "dialogue": {"intro": ["Bea: The Finals! Let's give the crowd a battle to remember!"]}}, {"name": "Gym Leader Raihan", "class": "GYM_LEADER", "sprite": "raihan.png", "is_boss_battle": true, "team": [324, 706, 776, 330], "levels": [60, 61, 61, 61], "dialogue": {"intro": ["Raihan: The Finals! Let's give the crowd a battle to remember!"]}}], "leader": {"name": "Champion Leon", "class": "CHAMPION", "sprite": "leon.png", "is_boss_battle": true, "team": [681, 887, 612, 537, 815, 6], "levels": [62, 62, 63, 64, 64, 65], "team_choice": {"810": [681, 887, 612, 537, 815, 6], "813": [681, 887, 612, 866, 818, 6], "816": [681, 887, 612, 464, 812, 6]}, "rewards": {"balls": 20, "GALAR_HALL_OF_FAME": 1}, "victory_flag": "beat_galar_champion", "dialogue": {"intro": ["Leon: You made it. You actually made it to the top!", "I've beaten everyone who's stepped into this stadium.", "But I've never faced someone like you.", "Champion time — let's have ourselves an absolute banger of a battle!"], "player_won": ["Leon: ...Haha. You know what? That was incredible.", "I lost. Properly lost! I can't remember the last time that happened.", "You are the new Galar Champion, {player_name}. Champion time — it's YOUR time now!", "Take care of this place. Galar deserves a champion as brilliant as you."], "player_lost": ["Leon: Champion time — and I still won! Come back when you're ready to take the crown!"]}, "movesets": {"681": ["KINGS-SHIELD", "SHADOW-BALL", "SACRED-SWORD", "FLASH-CANNON"], "887": ["SHADOW-BALL", "FLAMETHROWER", "THUNDERBOLT", "DRAGON-BREATH"], "612": ["POISON-JAB", "IRON-TAIL", "OUTRAGE", "EARTHQUAKE"], "537": ["TOXIC", "DRAIN-PUNCH", "LIQUIDATION", "EARTHQUAKE"], "815": ["PYRO-BALL", "FEINT", "ACROBATICS", "QUICK-ATTACK"], "6": ["FIRE-BLAST", "AIR-SLASH", "SOLAR-BEAM", "ANCIENT-POWER"], "866": ["TEETER-DANCE", "PSYCHIC", "FREEZE-DRY", "THUNDERBOLT"], "818": ["SNIPE-SHOT", "DARK-PULSE", "MUD-SHOT", "TEARFUL-LOOK"], "464": ["EARTHQUAKE", "STONE-EDGE", "MEGAHORN", "HEAT-CRASH"], "812": ["DRUM-BEATING", "KNOCK-OFF", "HIGH&NBSP;HORSEPOWER", "ENDEAVOR"]}}}
     },
     "SLUMBERING_WEALD": {
       "area_type": "dungeon",
@@ -587,26 +569,49 @@
       "battle_type": "grass",
       "wild_pool_percentages": "GALAR_SLUMBERING_WEALD_PERCENTAGES",
       "min_rounds": 2,
-      "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "Encounter Zacian (post-game)", "action": "BOSS", "condition": "boss_not_defeated", "flag_condition": "beat_galar_champion", "color": "GOLD"}, {"text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE"}, {"text": "DEEPER INTO THE WEALD", "action": "EXIT", "target_area": "WEALD_ALTAR", "condition": "boss_defeated", "color": "GOLD"}, {"text": "Postwick", "action": "EXIT", "target_area": "POSTWICK", "condition": "can_exit", "color": "RED"}],
-      "area_boss": { "id": 888, "name": "Zacian", "victory_flag": "SLUMBERING_WEALD_boss_defeated" }
+      "route_menu": [
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "Encounter Zacian (post-game)", "action": "BOSS", "condition": "boss_not_defeated", "flag_condition": "beat_galar_champion", "color": "GOLD"},
+        {"text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE"},
+        {"text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE"},
+        {"text": "Battle {rival_name}", "action": "EVENT", "color": "GOLD", "flag_condition": "not defeated_hop_weald_final", "event": {"lines": ["{rival_name}: Champion! One more battle in the Weald, for real this time!"], "flag": "defeated_hop_weald_final", "battle": {"name": "{rival_name}", "class": "PKMN_TRAINER", "sprite": "{rival_character}", "is_boss_battle": true, "team": [832, 143, 871, 823, 818], "levels": [69, 68, 68, 69, 70], "team_choice": {"813": [832, 143, 871, 823, 818], "816": [832, 143, 871, 823, 812], "810": [832, 143, 871, 823, 815]}, "rewards": {"balls": 6}, "dialogue": {"intro": ["{rival_name}: Champion! One more battle in the Weald, for real this time!"], "player_won": ["{rival_name}: Aw, man! You're the real deal, mate!"], "player_lost": ["{rival_name}: Yes! I'm getting there!"]}}}, "condition": "beat_galar_champion"},
+        {"text": "DEEPER INTO THE WEALD", "action": "EXIT", "target_area": "WEALD_ALTAR", "condition": "boss_defeated", "color": "GOLD"},
+        {"text": "Postwick", "action": "EXIT", "target_area": "POSTWICK", "condition": "can_exit", "color": "RED"}
+      ],
+      "area_boss": { "id": 888, "name": "Zacian", "victory_flag": "SLUMBERING_WEALD_boss_defeated" },
+        "can_fish": true
+    },
+    "WILD_AREA_NORTH": {"area_type": "dungeon", "route_name": "Wild Area (North)", "region": "GALAR", "battle_type": "field", "level": 26, "wild_pool_percentages": "GALAR_WILD_AREA_NORTH_PERCENTAGES", "min_rounds": 2, "description": "The northern half of the Wild Area: Bridge Field, Stony Wilderness, Dusty Bowl, Giant's Mirror, Hammerlocke Hills, Giant's Cap and the Lake of Outrage.", "route_menu": [
+      {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+      {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+      {"text": "MAX RAID BATTLE", "action": "MAX_RAID", "condition": "can_battle", "color": "PURPLE"},
+      {"text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE"},
+      {"text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE"},
+      {"text": "Wild Area (South)", "action": "EXIT", "target_area": "WILD_AREA", "condition": "can_exit", "color": "RED"},
+      {"text": "Hammerlocke", "action": "EXIT", "target_area": "HAMMERLOCKE", "condition": ["can_exit", "has_fairy_badge"], "color": "RED"}
+    ], "max_raid_den": {"1": {"827": 35, "833": 35, "835": 15, "824": 10, "133-gmax": 5}, "2": {"822": 35, "836": 35, "830": 15, "854": 10, "834-gmax": 5}, "3": {"823": 35, "851": 35, "844": 15, "839": 10, "823-gmax": 5}, "4": {"887": 35, "884": 35, "858": 15, "861": 10, "884-gmax": 5}, "5": {"887": 35, "884": 35, "858": 15, "861": 10, "884-gmax": 5}}, "weather": "RANDOM",
+        "can_fish": true
     },
     "WILD_AREA": {
       "area_type": "dungeon",
-      "route_name": "Wild Area",
+      "route_name": "Wild Area (South)",
       "region": "GALAR",
       "battle_type": "field",
       "wild_pool_percentages": "GALAR_WILD_AREA_PERCENTAGES",
       "min_rounds": 2,
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "MAX RAID BATTLE", "action": "MAX_RAID", "condition": "can_battle", "color": "PURPLE" },
-        { "text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE" },
-        { "text": "Turffield (west)", "action": "EXIT", "target_area": "TURFFIELD", "condition": "can_exit", "color": "RED" },
-        { "text": "Motostoke (east)", "action": "EXIT", "target_area": "MOTOSTOKE", "condition": "can_exit", "color": "RED" },
-        { "text": "Wedgehurst (south)", "action": "EXIT", "target_area": "WEDGEHURST", "condition": "can_exit", "color": "RED" },
-        { "text": "ROUTE 2", "action": "EXIT", "target_area": "GALAR_ROUTE_2", "condition": "can_exit", "color": "RED" },
-        { "text": "ROUTE 3", "action": "EXIT", "target_area": "GALAR_ROUTE_3", "condition": "can_exit", "color": "RED" },
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "MAX RAID BATTLE", "action": "MAX_RAID", "condition": "can_battle", "color": "PURPLE"},
+        {"text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE"},
+        {"text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE"},
+        {"text": "Wild Area (North)", "action": "EXIT", "target_area": "WILD_AREA_NORTH", "condition": ["can_exit", "has_fire_badge"], "color": "RED"},
+        {"text": "Turffield (west)", "action": "EXIT", "target_area": "TURFFIELD", "condition": "can_exit", "color": "RED"},
+        {"text": "Motostoke (east)", "action": "EXIT", "target_area": "MOTOSTOKE", "condition": "can_exit", "color": "RED"},
+        {"text": "Wedgehurst (south)", "action": "EXIT", "target_area": "WEDGEHURST", "condition": "can_exit", "color": "RED"},
+        {"text": "ROUTE 2", "action": "EXIT", "target_area": "GALAR_ROUTE_2", "condition": "can_exit", "color": "RED"},
+        {"text": "ROUTE 3", "action": "EXIT", "target_area": "GALAR_ROUTE_3", "condition": "can_exit", "color": "RED"},
         {"text": "Meetup Spot", "action": "EXIT", "target_area": "MEETUP_SPOT", "condition": "can_exit", "color": "RED"}
       ],
       "max_raid_den": {
@@ -616,7 +621,8 @@
         "4": { "823": 35, "851": 35, "844": 15, "839": 10, "823-gmax": 5 },
         "5": { "887": 35, "884": 35, "858": 15, "861": 10, "884-gmax": 5 }
       },
-      "weather": "RANDOM"
+      "weather": "RANDOM",
+        "can_fish": true
     },
     "GALAR_MINE": {
       "area_type": "dungeon",
@@ -626,13 +632,11 @@
       "wild_pool_percentages": "GALAR_MINE_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
-          "name": "Worker Russell",
-          "class": "HIKER",
-          "sprite": "hiker.png",
-          "team": [837, 838],
-          "rewards": { "balls": 2 }
-        }
+        {"name": "Worker Russell", "class": "HIKER", "sprite": "hiker.png", "team": [837, 838], "rewards": {"balls": 2}},
+        {"name": "Worker Keith", "class": "WORKER", "sprite": "engineer.png", "team": [524], "rewards": {"balls": 2}, "levels": [14]},
+        {"name": "Worker Georgia", "class": "WORKER", "sprite": "engineer.png", "team": [532, 532, 532], "rewards": {"balls": 2}, "levels": [14, 14, 14]},
+        {"name": "Worker Sandra", "class": "WORKER", "sprite": "engineer.png", "team": [50, 529], "rewards": {"balls": 2}, "levels": [14, 15]},
+        {"name": "Worker Russel", "class": "WORKER", "sprite": "engineer.png", "team": [837], "rewards": {"balls": 2}, "levels": [15]}
       ],
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
@@ -641,7 +645,8 @@
         { "text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE" },
         { "text": "Route 3", "action": "EXIT", "target_area": "GALAR_ROUTE_3", "condition": "can_exit", "color": "RED" },
         { "text": "Route 4", "action": "EXIT", "target_area": "GALAR_ROUTE_4", "condition": "can_exit", "color": "RED" }
-      ]
+      ],
+        "on_enter_event": [{"type": "trainer_battle", "trainer": {"name": "Bede", "class": "PKMN_TRAINER", "sprite": "bede.png", "is_boss_battle": true, "team": [577, 574, 856], "levels": [13, 15, 16], "rewards": {"balls": 6}, "victory_flag": "defeated_bede_mine", "dialogue": {"intro": ["Bede: You again? I'll show you what a real challenger looks like."], "player_won": ["Bede: ...That was a fluke."]}}, "flag_check": "defeated_bede_mine"}]
     },
     "GLIMWOOD_TANGLE": {
       "area_type": "dungeon",
@@ -660,13 +665,27 @@
       "battle_type": "indoor",
       "wild_pool_percentages": null,
       "min_rounds": 0,
-      "trainer_pool": [{"name": "Oleana", "class": "RIVAL", "sprite": "oleana.png", "is_boss_battle": true, "team": [869, 858, 879, 868], "rewards": {"balls": 10}, "victory_flag": "oleana_defeated", "dialogue": {"intro": ["Oleana: I will not let you disrupt Mr. Rose's vision."], "player_won": ["Oleana: ...I see. You truly cannot be stopped."], "player_lost": ["Oleana: Efficient. Mr. Rose will be pleased."]}}, {"name": "Chairman Rose", "class": "RIVAL", "sprite": "rose.png", "is_boss_battle": true, "team": [589, 598, 863, 601, 879], "rewards": {"balls": 15}, "victory_flag": "rose_tower_cleared", "dialogue": {"intro": ["galar_rose_villain"], "player_won": ["Rose: ...You've stopped me. Good. Maybe the future can be different."], "player_lost": ["Rose: The energy of the future flows through me. This is inevitable."]}, "movesets": {"589": ["DRILL-RUN", "IRON-HEAD", "MEGAHORN", "SWORDS-DANCE"], "598": ["GYRO-BALL", "POWER-WHIP", "BODY-PRESS", "CURSE"], "863": ["IRON-HEAD", "SCREECH", "SHADOW-CLAW", "THROAT-CHOP"], "601": ["GEAR-GRIND", "SHIFT-GEAR", "WILD-CHARGE", "ASSURANCE"], "879": ["HEAVY-SLAM", "IRON-HEAD", "HIGH&NBSP;HORSEPOWER", "ZEN-HEADBUTT"]}}, {"name": "Eternatus", "class": "WILD", "sprite": "eternatus.png", "is_boss_battle": true, "team": [890], "rewards": {"balls": 20}, "victory_flag": "eternatus_defeated", "dialogue": {"intro": ["galar_eternatus_encounter"], "player_won": ["The ancient threat is subdued. Galar is safe — for now."], "player_lost": ["The energy is overwhelming! Zacian and Zamazenta appear to help!"]}}],
+      "trainer_pool": [
+        {"name": "Macro Cosmos's Elijah", "class": "MACRO_COSMOSS", "sprite": "gentleman.png", "team": [632], "rewards": {"balls": 2}, "levels": [48]},
+        {"name": "Macro Cosmos's Jane", "class": "MACRO_COSMOSS", "sprite": "gentleman.png", "team": [878], "rewards": {"balls": 2}, "levels": [48]},
+        {"name": "Macro Cosmos's Mateo", "class": "MACRO_COSMOSS", "sprite": "gentleman.png", "team": [437], "rewards": {"balls": 2}, "levels": [48]},
+        {"name": "Macro Cosmos's Kevin", "class": "MACRO_COSMOSS", "sprite": "gentleman.png", "team": [600], "rewards": {"balls": 2}, "levels": [48]},
+        {"name": "Macro Cosmos's Carla", "class": "MACRO_COSMOSS", "sprite": "gentleman.png", "team": [303], "rewards": {"balls": 2}, "levels": [48]},
+        {"name": "Macro Cosmos's Adalyn", "class": "MACRO_COSMOSS", "sprite": "gentleman.png", "team": [208], "rewards": {"balls": 2}, "levels": [49]},
+        {"name": "Oleana", "class": "RIVAL", "sprite": "oleana.png", "is_boss_battle": true, "team": [869, 858, 879, 868], "rewards": {"balls": 10}, "victory_flag": "oleana_defeated", "dialogue": {"intro": ["Oleana: I will not let you disrupt Mr. Rose's vision."], "player_won": ["Oleana: ...I see. You truly cannot be stopped."], "player_lost": ["Oleana: Efficient. Mr. Rose will be pleased."]}},
+        {"name": "Chairman Rose", "class": "RIVAL", "sprite": "rose.png", "is_boss_battle": true, "team": [589, 598, 863, 601, 879], "rewards": {"balls": 15}, "victory_flag": "rose_tower_cleared", "dialogue": {"intro": ["galar_rose_villain"], "player_won": ["Rose: ...You've stopped me. Good. Maybe the future can be different."], "player_lost": ["Rose: The energy of the future flows through me. This is inevitable."]}, "movesets": {"589": ["DRILL-RUN", "IRON-HEAD", "MEGAHORN", "SWORDS-DANCE"], "598": ["GYRO-BALL", "POWER-WHIP", "BODY-PRESS", "CURSE"], "863": ["IRON-HEAD", "SCREECH", "SHADOW-CLAW", "THROAT-CHOP"], "601": ["GEAR-GRIND", "SHIFT-GEAR", "WILD-CHARGE", "ASSURANCE"], "879": ["HEAVY-SLAM", "IRON-HEAD", "HIGH&NBSP;HORSEPOWER", "ZEN-HEADBUTT"]}},
+        {"name": "Eternatus", "class": "WILD", "sprite": "eternatus.png", "is_boss_battle": true, "team": [890], "rewards": {"balls": 20}, "victory_flag": "eternatus_defeated", "dialogue": {"intro": ["galar_eternatus_encounter"], "player_won": ["The ancient threat is subdued. Galar is safe — for now."], "player_lost": ["The energy is overwhelming! Zacian and Zamazenta appear to help!"]}}
+      ],
       "route_menu": [
         { "text": "BATTLE ROSE TOWER", "action": "TRAINER", "condition": "has_trainers", "color": "GOLD", "flag_condition": "not eternatus_defeated" },
         { "text": "THE ENERGY PLANT ROOF", "action": "BOSS", "condition": "boss_available", "color": "GOLD" },
         { "text": "Hammerlocke", "action": "EXIT", "target_area": "HAMMERLOCKE", "condition": "can_exit", "color": "RED" }
       ],
-      "area_boss": { "id": 890, "name": "Eternatus", "victory_flag": "ROSE_TOWER_boss_defeated" }
+      "area_boss": { "id": 890, "name": "Eternatus", "victory_flag": "ROSE_TOWER_boss_defeated" },
+        "on_enter_event": [
+          {"type": "trainer_battle", "trainer": {"name": "Sordward", "class": "PKMN_TRAINER", "sprite": "sordward.png", "is_boss_battle": true, "team": [865, 768, 680, 625], "levels": [64, 64, 64, 64], "rewards": {"balls": 6}, "victory_flag": "defeated_sordward_energy_plant", "dialogue": {"intro": ["Sordward: The Darkest Day will prove we are the rightful kings!"], "player_won": ["Sordward: Impossible..."]}}, "flag_check": "defeated_sordward_energy_plant", "condition": "beat_galar_champion"},
+          {"type": "trainer_battle", "trainer": {"name": "Shielbert", "class": "PKMN_TRAINER", "sprite": "shielbert.png", "is_boss_battle": true, "team": [865, 437, 870, 601], "levels": [64, 64, 64, 64], "rewards": {"balls": 6}, "victory_flag": "defeated_shielbert_energy_plant", "dialogue": {"intro": ["Shielbert: The Darkest Day will prove we are the rightful kings!"], "player_won": ["Shielbert: Impossible..."]}}, "flag_check": "defeated_shielbert_energy_plant", "condition": "beat_galar_champion"}
+        ]
     },
     "GALAR_ROUTE_1": {
       "area_type": "wild_route",
@@ -702,23 +721,23 @@
       "wild_pool_percentages": "GALAR_ROUTE_2_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
-          "name": "Lass Esther",
-          "class": "LASS",
-          "sprite": "lass.png",
-          "team": [831, 859],
-          "rewards": { "balls": 2 }
-        }
+        {"name": "Lass Esther", "class": "LASS", "sprite": "lass.png", "team": [831, 859], "rewards": {"balls": 2}},
+        {"name": "Youngster Jake", "class": "YOUNGSTER", "sprite": "youngster.png", "team": [819], "rewards": {"balls": 2}, "levels": [6]},
+        {"name": "Lass Lauren", "class": "LASS", "sprite": "lass.png", "team": [833], "rewards": {"balls": 2}, "levels": [6]},
+        {"name": "Youngster Benjamin", "class": "YOUNGSTER", "sprite": "youngster.png", "team": [824, 827], "rewards": {"balls": 2}, "levels": [5, 7]}
       ],
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
-        { "text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE" },
-        { "text": "Wedgehurst", "action": "EXIT", "target_area": "WEDGEHURST", "condition": "can_exit", "color": "RED" },
-        { "text": "Wild Area", "action": "EXIT", "target_area": "WILD_AREA", "condition": "can_exit", "color": "RED" }
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"},
+        {"text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE"},
+        {"text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE"},
+        {"text": "Wedgehurst", "action": "EXIT", "target_area": "WEDGEHURST", "condition": "can_exit", "color": "RED"},
+        {"text": "Wild Area", "action": "EXIT", "target_area": "WILD_AREA", "condition": "can_exit", "color": "RED"}
       ],
-      "next_area": "WILD_AREA"
+      "next_area": "WILD_AREA",
+        "can_fish": true,
+        "on_enter_event": [{"type": "trainer_battle", "trainer": {"name": "{rival_name}", "class": "PKMN_TRAINER", "sprite": "{rival_character}", "is_boss_battle": true, "team": [831, 821, 816], "levels": [6, 5, 8], "team_choice": {"813": [831, 821, 816], "816": [831, 821, 810], "810": [831, 821, 813]}, "rewards": {"balls": 6}, "victory_flag": "defeated_hop_route2", "dialogue": {"intro": ["{rival_name}: Before we see the Professor, let's have another go!"], "player_won": ["{rival_name}: Aw, man! You're the real deal, mate!"], "player_lost": ["{rival_name}: Yes! I'm getting there!"]}}, "flag_check": "defeated_hop_route2"}]
     },
     "GALAR_ROUTE_3": {
       "area_type": "wild_route",
@@ -728,21 +747,22 @@
       "wild_pool_percentages": "GALAR_ROUTE_3_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
-          "name": "Hiker Alastair",
-          "class": "HIKER",
-          "sprite": "hiker.png",
-          "team": [837, 838],
-          "rewards": { "balls": 2 }
-        }
+        {"name": "Hiker Alastair", "class": "HIKER", "sprite": "hiker.png", "team": [837, 838], "rewards": {"balls": 2}},
+        {"name": "Lass Rei", "class": "LASS", "sprite": "lass.png", "team": [37], "rewards": {"balls": 2}, "levels": [12]},
+        {"name": "Schoolgirl Hannah", "class": "SCHOOLGIRL", "sprite": "school_kid_f.png", "team": [674], "rewards": {"balls": 2}, "levels": [13]},
+        {"name": "Schoolboy Marvin", "class": "SCHOOLBOY", "sprite": "school_kid_m.png", "team": [406, 829], "rewards": {"balls": 2}, "levels": [12, 12]},
+        {"name": "Schoolgirl Kayleigh", "class": "SCHOOLGIRL", "sprite": "school_kid_f.png", "team": [509, 819], "rewards": {"balls": 2}, "levels": [12, 13]},
+        {"name": "Postman Tad", "class": "POSTMAN", "sprite": "youngster.png", "team": [225], "rewards": {"balls": 2}, "levels": [14]},
+        {"name": "Schoolboy Peter", "class": "SCHOOLBOY", "sprite": "school_kid_m.png", "team": [850, 825], "rewards": {"balls": 2}, "levels": [13, 14]}
       ],
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
-        { "text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE" },
-        { "text": "Wild Area", "action": "EXIT", "target_area": "WILD_AREA", "condition": "can_exit", "color": "RED" },
-        { "text": "Galar Mine", "action": "EXIT", "target_area": "GALAR_MINE", "condition": "can_exit", "color": "RED" }
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"},
+        {"text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE"},
+        {"text": "Wild Area", "action": "EXIT", "target_area": "WILD_AREA", "condition": "can_exit", "color": "RED"},
+        {"text": "Galar Mine", "action": "EXIT", "target_area": "GALAR_MINE", "condition": "can_exit", "color": "RED"},
+        {"text": "Motostoke", "action": "EXIT", "target_area": "MOTOSTOKE", "condition": ["can_exit"], "color": "RED"}
       ],
       "next_area": "GALAR_MINE"
     },
@@ -754,30 +774,26 @@
       "wild_pool_percentages": "GALAR_ROUTE_4_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
-          "name": "Dancer Mathis",
-          "class": "GENTLEMAN",
-          "sprite": "gentleman.png",
-          "team": [840, 841],
-          "rewards": { "balls": 2 }
-        }
+        {"name": "Dancer Mathis", "class": "GENTLEMAN", "sprite": "gentleman.png", "team": [840, 841], "rewards": {"balls": 2}},
+        {"name": "Pokemon Breeder Jaime", "class": "POKEMON_BREEDER", "sprite": "pokefan_f.png", "team": [273, 12], "rewards": {"balls": 2}, "levels": [14, 14]},
+        {"name": "Poke Kid Shane", "class": "POKE_KID", "sprite": "school_kid_f.png", "team": [25], "rewards": {"balls": 2}, "levels": [15]},
+        {"name": "Pokemon Breeder Bradley", "class": "POKEMON_BREEDER", "sprite": "pokefan_f.png", "team": [309, 270], "rewards": {"balls": 2}, "levels": [15, 15]},
+        {"name": "Poke Kid Mia", "class": "POKE_KID", "sprite": "school_kid_f.png", "team": [133], "rewards": {"balls": 2}, "levels": [15]},
+        {"name": "Poke Kid Rhys", "class": "POKE_KID", "sprite": "school_kid_f.png", "team": [595, 736], "rewards": {"balls": 2}, "levels": [14, 14]},
+        {"name": "Poke Kid Sunny", "class": "POKE_KID", "sprite": "school_kid_f.png", "team": [868], "rewards": {"balls": 2}, "levels": [15]}
       ],
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
-        { "text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE" },
-        { "text": "Turffield", "action": "EXIT", "target_area": "TURFFIELD", "condition": "can_exit", "color": "RED" },
-        {
-          "text": "Hulbury",
-          "action": "EXIT",
-          "target_area": "HULBURY",
-          "condition": ["can_exit", "has_grass_badge"],
-          "color": "RED"
-        },
-        { "text": "GALAR MINE", "action": "EXIT", "target_area": "GALAR_MINE", "condition": "can_exit", "color": "RED" }
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"},
+        {"text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE"},
+        {"text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE"},
+        {"text": "Turffield", "action": "EXIT", "target_area": "TURFFIELD", "condition": "can_exit", "color": "RED"},
+        {"text": "Hulbury", "action": "EXIT", "target_area": "HULBURY", "condition": ["can_exit", "has_grass_badge"], "color": "RED"},
+        {"text": "GALAR MINE", "action": "EXIT", "target_area": "GALAR_MINE", "condition": "can_exit", "color": "RED"}
       ],
-      "next_area": "HULBURY"
+      "next_area": "HULBURY",
+        "can_fish": true
     },
     "GALAR_ROUTE_5": {
       "area_type": "wild_route",
@@ -787,29 +803,27 @@
       "wild_pool_percentages": "GALAR_ROUTE_5_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
-          "name": "Ace Trainer Helena",
-          "class": "ACE_TRAINER",
-          "sprite": "acetrainer_f.png",
-          "team": [846, 847],
-          "rewards": { "balls": 3 }
-        }
+        {"name": "Ace Trainer Helena", "class": "ACE_TRAINER", "sprite": "acetrainer_f.png", "team": [846, 847], "rewards": {"balls": 3}},
+        {"name": "Reporter Gillian", "class": "REPORTER", "sprite": "pokefan_f.png", "team": [694], "rewards": {"balls": 2}, "levels": [18]},
+        {"name": "Cameraman Cam", "class": "CAMERAMAN", "sprite": "pokefan_m.png", "team": [599], "rewards": {"balls": 2}, "levels": [18]},
+        {"name": "Cook Stuart", "class": "COOK", "sprite": "veteran.png", "team": [840], "rewards": {"balls": 2}, "levels": [20]},
+        {"name": "Pokemon Breeder Debra", "class": "POKEMON_BREEDER", "sprite": "pokefan_f.png", "team": [572, 762], "rewards": {"balls": 2}, "levels": [17, 19]},
+        {"name": "Pokemon Breeder Adrian", "class": "POKEMON_BREEDER", "sprite": "pokefan_f.png", "team": [759, 742, 280], "rewards": {"balls": 2}, "levels": [17, 18, 19]},
+        {"name": "Team Yell Grunt", "class": "TEAM_YELL", "sprite": "roughneck.png", "team": [828], "rewards": {"balls": 2}, "levels": [17]}
       ],
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
-        { "text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE" },
-        {
-          "text": "Hulbury",
-          "action": "EXIT",
-          "target_area": "HULBURY",
-          "condition": ["can_exit", "has_grass_badge"],
-          "color": "RED"
-        },
-        { "text": "Motostoke", "action": "EXIT", "target_area": "MOTOSTOKE", "condition": "can_exit", "color": "RED" }
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"},
+        {"text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE"},
+        {"text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE"},
+        {"text": "Hulbury", "action": "EXIT", "target_area": "HULBURY", "condition": ["can_exit", "has_grass_badge"], "color": "RED"},
+        {"text": "Motostoke", "action": "EXIT", "target_area": "MOTOSTOKE", "condition": "can_exit", "color": "RED"},
+        {"text": "Turffield", "action": "EXIT", "target_area": "TURFFIELD", "condition": ["can_exit"], "color": "RED"}
       ],
-      "next_area": "MOTOSTOKE"
+      "next_area": "MOTOSTOKE",
+        "can_fish": true,
+        "on_enter_event": [{"type": "trainer_battle", "trainer": {"name": "{rival_name}", "class": "PKMN_TRAINER", "sprite": "{rival_character}", "is_boss_battle": true, "team": [831, 822, 817], "levels": [18, 19, 21], "team_choice": {"813": [831, 822, 817], "816": [831, 822, 811], "810": [831, 822, 814]}, "rewards": {"balls": 6}, "victory_flag": "defeated_hop_route5", "dialogue": {"intro": ["{rival_name}: Two badges for me too! Let's battle!"], "player_won": ["{rival_name}: Aw, man! You're the real deal, mate!"], "player_lost": ["{rival_name}: Yes! I'm getting there!"]}}, "flag_check": "defeated_hop_route5"}]
     },
     "GALAR_ROUTE_6": {
       "area_type": "wild_route",
@@ -819,24 +833,26 @@
       "wild_pool_percentages": "GALAR_ROUTE_6_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
-          "name": "Ace Trainer Priscilla",
-          "class": "ACE_TRAINER",
-          "sprite": "acetrainer_f.png",
-          "team": [838, 840],
-          "rewards": { "balls": 3 }
-        }
+        {"name": "Ace Trainer Priscilla", "class": "ACE_TRAINER", "sprite": "acetrainer_f.png", "team": [838, 840], "rewards": {"balls": 3}},
+        {"name": "Team Yell Grunt", "class": "TEAM_YELL", "sprite": "roughneck.png", "team": [434], "rewards": {"balls": 2}, "levels": [29]},
+        {"name": "Beauty Anita", "class": "BEAUTY", "sprite": "beauty.png", "team": [35, 36], "rewards": {"balls": 2}, "levels": [29, 30]},
+        {"name": "Doctor Iwan", "class": "DOCTOR", "sprite": "scientist.png", "team": [624], "rewards": {"balls": 2}, "levels": [31]},
+        {"name": "Doctor Evelyn", "class": "DOCTOR", "sprite": "scientist.png", "team": [176], "rewards": {"balls": 2}, "levels": [31]},
+        {"name": "Backpacker Diane", "class": "BACKPACKER", "sprite": "camper.png", "team": [539], "rewards": {"balls": 2}, "levels": [31]},
+        {"name": "Model Nicola", "class": "MODEL", "sprite": "beauty.png", "team": [451, 624], "rewards": {"balls": 2}, "levels": [30, 30]}
       ],
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
-        { "text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE" },
-        { "text": "Motostoke", "action": "EXIT", "target_area": "MOTOSTOKE", "condition": "can_exit", "color": "RED" },
-        { "text": "Stow-on-Side", "action": "EXIT", "target_area": "STOW_ON_SIDE", "condition": "can_exit", "color": "RED" },
-        { "text": "Hammerlocke", "action": "EXIT", "target_area": "HAMMERLOCKE", "condition": ["can_exit", "has_fairy_badge"], "color": "RED" }
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"},
+        {"text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE"},
+        {"text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE"},
+        {"text": "Motostoke", "action": "EXIT", "target_area": "MOTOSTOKE", "condition": "can_exit", "color": "RED"},
+        {"text": "Stow-on-Side", "action": "EXIT", "target_area": "STOW_ON_SIDE", "condition": "can_exit", "color": "RED"},
+        {"text": "Hammerlocke", "action": "EXIT", "target_area": "HAMMERLOCKE", "condition": ["can_exit", "has_fairy_badge"], "color": "RED"}
       ],
-      "next_area": "STOW_ON_SIDE"
+      "next_area": "STOW_ON_SIDE",
+        "can_fish": true
     },
     "GALAR_ROUTE_7": {
       "area_type": "wild_route",
@@ -846,14 +862,10 @@
       "wild_pool_percentages": "GALAR_ROUTE_7_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
-          "name": "Ace Trainer Corvin",
-          "class": "ACE_TRAINER",
-          "sprite": "acetrainer_m.png",
-          "is_boss_battle": true,
-          "team": [869, 858],
-          "rewards": { "balls": 5 }
-        }
+        {"name": "Ace Trainer Corvin", "class": "ACE_TRAINER", "sprite": "acetrainer_m.png", "is_boss_battle": true, "team": [869, 858], "rewards": {"balls": 5}},
+        {"name": "Model Mila", "class": "MODEL", "sprite": "beauty.png", "team": [743, 416], "rewards": {"balls": 2}, "levels": [35, 36]},
+        {"name": "Cabbie Bruce", "class": "CABBIE", "sprite": "gentleman.png", "team": [822, 627], "rewards": {"balls": 2}, "levels": [35, 36]},
+        {"name": "Gentleman Caden", "class": "GENTLEMAN", "sprite": "gentleman.png", "team": [680, 766, 855], "rewards": {"balls": 2}, "levels": [44, 44, 44]}
       ],
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
@@ -864,7 +876,8 @@
         { "text": "Route 8", "action": "EXIT", "target_area": "GALAR_ROUTE_8", "condition": "can_exit", "color": "RED" },
         { "text": "Route 9 Tunnel", "action": "EXIT", "target_area": "GALAR_ROUTE_9", "condition": ["can_exit", "has_dark_badge"], "color": "RED" }
       ],
-      "next_area": "GALAR_ROUTE_8"
+      "next_area": "GALAR_ROUTE_8",
+        "on_enter_event": [{"type": "trainer_battle", "trainer": {"name": "{rival_name}", "class": "PKMN_TRAINER", "sprite": "{rival_character}", "is_boss_battle": true, "team": [709, 631, 143, 836, 818], "levels": [34, 34, 35, 35, 37], "team_choice": {"813": [709, 631, 143, 836, 818], "816": [709, 631, 143, 836, 812], "810": [709, 631, 143, 836, 815]}, "rewards": {"balls": 6}, "victory_flag": "defeated_hop_route7", "dialogue": {"intro": ["{rival_name}: I'm not giving up on beating you!"], "player_won": ["{rival_name}: Aw, man! You're the real deal, mate!"], "player_lost": ["{rival_name}: Yes! I'm getting there!"]}}, "flag_check": "defeated_hop_route7"}]
     },
     "GALAR_ROUTE_8": {
       "area_type": "wild_route",
@@ -874,14 +887,13 @@
       "wild_pool_percentages": "GALAR_ROUTE_8_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
-          "name": "Veteran Simon",
-          "class": "ACE_TRAINER",
-          "sprite": "acetrainer_m.png",
-          "is_boss_battle": true,
-          "team": [874, 875, 476],
-          "rewards": { "balls": 5 }
-        }
+        {"name": "Veteran Simon", "class": "ACE_TRAINER", "sprite": "acetrainer_m.png", "is_boss_battle": true, "team": [874, 875, 476], "rewards": {"balls": 5}},
+        {"name": "Doctor Joanna", "class": "DOCTOR", "sprite": "scientist.png", "team": [315, 857], "rewards": {"balls": 2}, "levels": [36, 36]},
+        {"name": "Backpacker Barbara", "class": "BACKPACKER", "sprite": "camper.png", "team": [885, 629], "rewards": {"balls": 2}, "levels": [36, 37]},
+        {"name": "Musician Charles", "class": "MUSICIAN", "sprite": "guitarist.png", "team": [777], "rewards": {"balls": 2}, "levels": [37]},
+        {"name": "Office Worker Jordan", "class": "OFFICE_WORKER", "sprite": "gentleman.png", "team": [530, 448], "rewards": {"balls": 2}, "levels": [36, 37]},
+        {"name": "Office Worker Alison", "class": "OFFICE_WORKER", "sprite": "gentleman.png", "team": [450, 863], "rewards": {"balls": 2}, "levels": [36, 37]},
+        {"name": "Police Officer Bobby", "class": "POLICE_OFFICER", "sprite": "officer.png", "team": [59, 836], "rewards": {"balls": 2}, "levels": [37, 37]}
       ],
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
@@ -903,13 +915,13 @@
       "wild_pool_percentages": "GALAR_ROUTE_9_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
-          "name": "Fisherman Stewart",
-          "class": "FISHERMAN",
-          "sprite": "fisherman.png",
-          "team": [846, 848],
-          "rewards": { "balls": 2 }
-        }
+        {"name": "Fisherman Stewart", "class": "FISHERMAN", "sprite": "fisherman.png", "team": [846, 848], "rewards": {"balls": 2}},
+        {"name": "Fisher Harriet", "class": "FISHER", "sprite": "fisherman.png", "team": [847, 171], "rewards": {"balls": 2}, "levels": [39, 39]},
+        {"name": "Dancer Zoe", "class": "DANCER", "sprite": "beauty.png", "team": [182], "rewards": {"balls": 2}, "levels": [39]},
+        {"name": "Team Yell Grunt", "class": "TEAM_YELL", "sprite": "roughneck.png", "team": [675], "rewards": {"balls": 2}, "levels": [39]},
+        {"name": "Fisher Marina", "class": "FISHER", "sprite": "fisherman.png", "team": [211, 771], "rewards": {"balls": 2}, "levels": [39, 40]},
+        {"name": "Swimmer Jacob", "class": "SWIMMER", "sprite": "swimmer_m.png", "team": [91], "rewards": {"balls": 2}, "levels": [39]},
+        {"name": "Swimmer Logan", "class": "SWIMMER", "sprite": "swimmer_m.png", "team": [746, 321], "rewards": {"balls": 2}, "levels": [40, 40]}
       ],
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
@@ -922,7 +934,8 @@
         { "text": "Route 9 Tunnel (to Route 7)", "action": "EXIT", "target_area": "GALAR_ROUTE_7", "condition": ["can_exit", "has_dark_badge"], "color": "RED" }
       ],
       "next_area": "SPIKEMUTH",
-      "weather": "SNOW"
+      "weather": "SNOW",
+        "on_enter_event": [{"type": "trainer_battle", "trainer": {"name": "Marnie", "class": "PKMN_TRAINER", "sprite": "marnie.png", "is_boss_battle": true, "team": [510, 454, 560, 877], "levels": [42, 43, 43, 44], "rewards": {"balls": 6}, "victory_flag": "defeated_marnie_route9", "dialogue": {"intro": ["Marnie: Spikemuth's my home. Let's battle before you go in."], "player_won": ["Marnie: You're the real deal."]}}, "flag_check": "defeated_marnie_route9"}]
     },
     "GALAR_ROUTE_10": {
       "area_type": "wild_route",
@@ -932,33 +945,14 @@
       "wild_pool_percentages": "GALAR_ROUTE_10_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
-          "name": "Ace Trainer Ivy",
-          "class": "ACE_TRAINER",
-          "sprite": "acetrainer_f.png",
-          "is_boss_battle": true,
-          "team": [882, 883, 884],
-          "rewards": { "balls": 5 }
-        },
-        {
-          "name": "{rival_name}",
-          "class": "PKMN_TRAINER",
-          "sprite": "{rival_character}",
-          "is_boss_battle": true,
-          "team": [884, 880, 851, 865, 812],
-          "team_choice": {
-            "810": [884, 880, 851, 865, 815],
-            "813": [884, 880, 724, 865, 812],
-            "816": [884, 880, 851, 865, 818]
-          },
-          "rewards": { "balls": 8 },
-          "victory_flag": "defeated_hop_route10",
-          "dialogue": {
-            "intro": ["{rival_name}: {player_name}! I've been training so hard since Spikemuth. Let's do this!"],
-            "player_won": ["{rival_name}: You just keep getting better... that's what I need to aim for!"],
-            "player_lost": ["{rival_name}: YES! Everything I've worked for is paying off!"]
-          }
-        }
+        {"name": "Ace Trainer Ivy", "class": "ACE_TRAINER", "sprite": "acetrainer_f.png", "is_boss_battle": true, "team": [882, 883, 884], "rewards": {"balls": 5}},
+        {"name": "{rival_name}", "class": "PKMN_TRAINER", "sprite": "{rival_character}", "is_boss_battle": true, "team": [884, 880, 851, 865, 812], "team_choice": {"810": [884, 880, 851, 865, 815], "813": [884, 880, 724, 865, 812], "816": [884, 880, 851, 865, 818]}, "rewards": {"balls": 8}, "victory_flag": "defeated_hop_route10", "dialogue": {"intro": ["{rival_name}: {player_name}! I've been training so hard since Spikemuth. Let's do this!"], "player_won": ["{rival_name}: You just keep getting better... that's what I need to aim for!"], "player_lost": ["{rival_name}: YES! Everything I've worked for is paying off!"]}},
+        {"name": "Doctor Graham", "class": "DOCTOR", "sprite": "scientist.png", "team": [282], "rewards": {"balls": 2}, "levels": [45]},
+        {"name": "Hiker Douglas", "class": "HIKER", "sprite": "hiker.png", "team": [208, 750], "rewards": {"balls": 2}, "levels": [45, 45]},
+        {"name": "Office Worker Ronald", "class": "OFFICE_WORKER", "sprite": "gentleman.png", "team": [461, 344], "rewards": {"balls": 2}, "levels": [45, 45]},
+        {"name": "Cabbie Geoffrey", "class": "CABBIE", "sprite": "gentleman.png", "team": [823, 330], "rewards": {"balls": 2}, "levels": [45, 46]},
+        {"name": "Postman Harper", "class": "POSTMAN", "sprite": "youngster.png", "team": [279, 164], "rewards": {"balls": 2}, "levels": [46, 46]},
+        {"name": "Hiker Donald", "class": "HIKER", "sprite": "hiker.png", "team": [526, 112], "rewards": {"balls": 2}, "levels": [46, 46]}
       ],
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
@@ -987,8 +981,24 @@
         "4": { "879": 35, "844": 35, "864": 15, "851": 10, "879-gmax": 5 },
         "5": { "94": 35, "143": 35, "131": 15, "812": 5, "815": 3, "812-gmax": 4, "815-gmax": 3 }
       },
-      "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "MAX RAID BATTLE", "action": "MAX_RAID", "condition": "can_battle", "color": "PURPLE"}, {"text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE"}, {"text": "MASTER DOJO", "action": "EVENT", "color": "GOLD", "event": {"lines": ["Mustard: Welcome to the Master Dojo! I used to be the Galar Champion, you know.", "My students Klara and Avery will test you first. Beat them both!"], "flag": "met_mustard", "done": ["Mustard: Keep training, my student!"]}, "flag_condition": "not mustard_gave_kubfu"}, {"text": "DOJO TRIAL: KLARA", "action": "EVENT", "color": "GOLD", "event": {"requires": ["met_mustard"], "lines": ["Klara: Ugh, a new student? I'll show you who's top of the dojo!"], "battle": {"name": "Klara", "class": "DOJO_STUDENT", "sprite": "lass.png", "team": [2023, 110, 869], "levels": [66, 66, 68], "rewards": {"balls": 10}, "dialogue": {"player_won": ["Klara: No way! I'll get you next time!"]}}, "flag": "beat_klara_dojo"}, "condition": "met_mustard", "flag_condition": "not beat_klara_dojo"}, {"text": "DOJO TRIAL: AVERY", "action": "EVENT", "color": "GOLD", "event": {"requires": ["met_mustard"], "lines": ["Avery: Psychic power is the only true strength. Prepare yourself!"], "battle": {"name": "Avery", "class": "DOJO_STUDENT", "sprite": "psychic_m.png", "team": [2030, 64, 856], "levels": [66, 66, 68], "rewards": {"balls": 10}, "dialogue": {"player_won": ["Avery: Impossible... My mind was clouded."]}}, "flag": "beat_avery_dojo"}, "condition": "met_mustard", "flag_condition": "not beat_avery_dojo"}, {"text": "MUSTARD'S GIFT", "action": "EVENT", "color": "GOLD", "event": {"requires": ["beat_klara_dojo", "beat_avery_dojo"], "lines": ["Mustard: You beat them both! You've earned my most precious partner.", "This is Kubfu. Raise it well, then take it to one of the Towers of Two Fists."], "gift_pokemon": 891, "flag": "mustard_gave_kubfu"}, "condition": "beat_avery_dojo", "flag_condition": "not mustard_gave_kubfu"}, {"text": "TOWER OF DARKNESS", "action": "EVENT", "color": "GOLD", "event": {"requires": ["party_has:891"], "fail": ["The tower's door won't open. Mustard said only Kubfu can climb it.", "Kubfu has to be in your party. If it went to the PC, take it out first."], "lines": ["Kubfu climbs the Tower of Darkness, floor by floor, and reads the scroll at the top..."], "evolve": {"891": 8004}}, "condition": "mustard_gave_kubfu"}, {"text": "TOWER OF WATERS", "action": "EVENT", "color": "GOLD", "event": {"requires": ["party_has:891"], "fail": ["The tower's door won't open. Mustard said only Kubfu can climb it.", "Kubfu has to be in your party. If it went to the PC, take it out first."], "lines": ["Kubfu climbs the Tower of Waters, floor by floor, and reads the scroll at the top..."], "evolve": {"891": 8005}}, "condition": "mustard_gave_kubfu"}, {"text": "Wedgehurst Station", "action": "EXIT", "target_area": "WEDGEHURST", "condition": "can_exit", "color": "RED"}],
-      "next_area": "WEDGEHURST"
+      "route_menu": [
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "MAX RAID BATTLE", "action": "MAX_RAID", "condition": "can_battle", "color": "PURPLE"},
+        {"text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE"},
+        {"text": "MASTER DOJO", "action": "EVENT", "color": "GOLD", "event": {"lines": ["Mustard: Welcome to the Master Dojo! I used to be the Galar Champion, you know.", "My students Klara and Avery will test you first. Beat them both!"], "flag": "met_mustard", "done": ["Mustard: Keep training, my student!"]}, "flag_condition": "not mustard_gave_kubfu"},
+        {"text": "DOJO TRIAL: KLARA", "action": "EVENT", "color": "GOLD", "event": {"requires": ["met_mustard"], "lines": ["Klara: Ugh, a new student? I'll show you who's top of the dojo!"], "battle": {"name": "Klara", "class": "DOJO_STUDENT", "sprite": "lass.png", "team": [2023, 110, 869], "levels": [66, 66, 68], "rewards": {"balls": 10}, "dialogue": {"player_won": ["Klara: No way! I'll get you next time!"]}}, "flag": "beat_klara_dojo"}, "condition": "met_mustard", "flag_condition": "not beat_klara_dojo"},
+        {"text": "DOJO TRIAL: AVERY", "action": "EVENT", "color": "GOLD", "event": {"requires": ["met_mustard"], "lines": ["Avery: Psychic power is the only true strength. Prepare yourself!"], "battle": {"name": "Avery", "class": "DOJO_STUDENT", "sprite": "psychic_m.png", "team": [2030, 64, 856], "levels": [66, 66, 68], "rewards": {"balls": 10}, "dialogue": {"player_won": ["Avery: Impossible... My mind was clouded."]}}, "flag": "beat_avery_dojo"}, "condition": "met_mustard", "flag_condition": "not beat_avery_dojo"},
+        {"text": "MUSTARD'S GIFT", "action": "EVENT", "color": "GOLD", "event": {"requires": ["beat_klara_dojo", "beat_avery_dojo"], "lines": ["Mustard: You beat them both! You've earned my most precious partner.", "This is Kubfu. Raise it well, then take it to one of the Towers of Two Fists."], "gift_pokemon": 891, "flag": "mustard_gave_kubfu"}, "condition": "beat_avery_dojo", "flag_condition": "not mustard_gave_kubfu"},
+        {"text": "TOWER OF DARKNESS", "action": "EVENT", "color": "GOLD", "event": {"requires": ["party_has:891"], "fail": ["The tower's door won't open. Mustard said only Kubfu can climb it.", "Kubfu has to be in your party. If it went to the PC, take it out first."], "lines": ["Kubfu climbs the Tower of Darkness, floor by floor, and reads the scroll at the top..."], "evolve": {"891": 8004}}, "condition": "mustard_gave_kubfu"},
+        {"text": "TOWER OF WATERS", "action": "EVENT", "color": "GOLD", "event": {"requires": ["party_has:891"], "fail": ["The tower's door won't open. Mustard said only Kubfu can climb it.", "Kubfu has to be in your party. If it went to the PC, take it out first."], "lines": ["Kubfu climbs the Tower of Waters, floor by floor, and reads the scroll at the top..."], "evolve": {"891": 8005}}, "condition": "mustard_gave_kubfu"},
+        {"text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE"},
+        {"text": "MUSTARD'S FINAL TRIAL", "action": "EVENT", "color": "GOLD", "flag_condition": "not defeated_mustard_final", "event": {"lines": ["Mustard: Time for your final trial. Show this old man everything!"], "flag": "defeated_mustard_final", "battle": {"name": "Dojo Master Mustard", "class": "DOJO_MASTER", "sprite": "mustard.png", "is_boss_battle": true, "team": [620, 405, 745, 823, 784], "levels": [73, 73, 75, 74, 75], "rewards": {"balls": 15}, "dialogue": {"intro": ["Mustard: Time for your final trial. Show this old man everything!"], "player_won": ["Mustard: Wonderful! You're a true master now!"]}}}, "condition": "mustard_gave_kubfu"},
+        {"text": "Battle Honey", "action": "EVENT", "color": "GOLD", "flag_condition": "not defeated_honey", "event": {"lines": ["Honey: Mustard says you're special. Let's see, shall we?"], "flag": "defeated_honey", "battle": {"name": "Dojo Matron Honey", "class": "DOJO_MASTER", "sprite": "beauty.png", "is_boss_battle": true, "team": [242, 475, 758, 468], "levels": [60, 59, 58, 58], "rewards": {"balls": 10}, "dialogue": {"intro": ["Honey: Mustard says you're special. Let's see, shall we?"], "player_won": ["Honey: Oh my! You really are!"]}}}, "condition": "mustard_gave_kubfu"},
+        {"text": "Wedgehurst Station", "action": "EXIT", "target_area": "WEDGEHURST", "condition": "can_exit", "color": "RED"}
+      ],
+      "next_area": "WEDGEHURST",
+        "can_fish": true
     },
     "CROWN_TUNDRA": {
       "area_type": "dungeon",
@@ -1007,9 +1017,26 @@
         "5": { "884": 35, "887": 35, "131": 15, "3-gmax": 5, "6-gmax": 5, "9-gmax": 5 }
       },
       "area_boss": { "id": 898, "name": "Calyrex", "victory_flag": "CROWN_TUNDRA_boss_defeated" },
-      "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "MAX RAID BATTLE", "action": "MAX_RAID", "condition": "can_battle", "color": "PURPLE"}, {"text": "Meet the King of Bountiful Harvests", "action": "BOSS", "condition": ["boss_not_defeated"], "color": "GOLD"}, {"text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE"}, {"text": "PEONY'S EXPEDITION", "action": "EVENT", "color": "GOLD", "event": {"lines": ["Peony: Hey hey! I'm Peony, leader of the Peony Expedition Team!", "Legends all over the Crown Tundra: a king who rules the harvest, giants in the ruins,", "and three strange birds seen near the giant tree on Dyna Tree Hill!", "Let's go find 'em all, eh?"], "flag": "met_peony"}}, {"text": "SPLIT-DECISION RUINS", "action": "EXIT", "target_area": "SPLIT_DECISION_RUINS", "condition": "can_exit", "color": "RED"}, {"text": "OLD CEMETERY", "action": "EXIT", "target_area": "CROWN_OLD_CEMETERY", "condition": "can_exit", "color": "RED"}, {"text": "SNOWSLIDE SLOPE", "action": "EXIT", "target_area": "CROWN_SNOWSLIDE_SLOPE", "condition": "can_exit", "color": "RED"}, {"text": "Wedgehurst Station", "action": "EXIT", "target_area": "WEDGEHURST", "condition": "can_exit", "color": "RED"}, {"text": "DYNA TREE HILL", "action": "EXIT", "target_area": "DYNA_TREE_HILL", "condition": "met_peony", "color": "RED"}],
-      "next_area": "WEDGEHURST"
+      "route_menu": [
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "MAX RAID BATTLE", "action": "MAX_RAID", "condition": "can_battle", "color": "PURPLE"},
+        {"text": "Meet the King of Bountiful Harvests", "action": "BOSS", "condition": ["boss_not_defeated"], "color": "GOLD"},
+        {"text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE"},
+        {"text": "PEONY'S EXPEDITION", "action": "EVENT", "color": "GOLD", "event": {"lines": ["Peony: Hey hey! I'm Peony, leader of the Peony Expedition Team!", "Legends all over the Crown Tundra: a king who rules the harvest, giants in the ruins,", "and three strange birds seen near the giant tree on Dyna Tree Hill!", "Let's go find 'em all, eh?"], "flag": "met_peony"}},
+        {"text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE"},
+        {"text": "Battle Peony", "action": "EVENT", "color": "GOLD", "flag_condition": "not defeated_peony", "event": {"lines": ["Peony: Before the expedition, let me see if you're tough enough!"], "flag": "defeated_peony", "battle": {"name": "Peony", "class": "PKMN_TRAINER", "sprite": "peony.png", "is_boss_battle": true, "team": [879, 306], "levels": [70, 70], "rewards": {"balls": 10}, "dialogue": {"intro": ["Peony: Before the expedition, let me see if you're tough enough!"], "player_won": ["Peony: You're tougher than steel!"]}}}},
+        {"text": "SPLIT-DECISION RUINS", "action": "EXIT", "target_area": "SPLIT_DECISION_RUINS", "condition": "can_exit", "color": "RED"},
+        {"text": "OLD CEMETERY", "action": "EXIT", "target_area": "CROWN_OLD_CEMETERY", "condition": "can_exit", "color": "RED"},
+        {"text": "SNOWSLIDE SLOPE", "action": "EXIT", "target_area": "CROWN_SNOWSLIDE_SLOPE", "condition": "can_exit", "color": "RED"},
+        {"text": "Wedgehurst Station", "action": "EXIT", "target_area": "WEDGEHURST", "condition": "can_exit", "color": "RED"},
+        {"text": "DYNA TREE HILL", "action": "EXIT", "target_area": "DYNA_TREE_HILL", "condition": "met_peony", "color": "RED"},
+        {"text": "Max Lair", "action": "EXIT", "target_area": "MAX_LAIR", "condition": ["can_exit", "defeated_peony"], "color": "RED"}
+      ],
+      "next_area": "WEDGEHURST",
+        "can_fish": true
     },
+    "MAX_LAIR": {"area_type": "dungeon", "route_name": "Max Lair", "region": "GALAR", "battle_type": "cave", "min_rounds": 0, "level": 65, "description": "Dynamax Adventures: Peony and Peonia's expedition into the den where legendary Pokemon sleep.", "route_menu": [{"text": "DYNAMAX ADVENTURE", "action": "MAX_RAID", "condition": "can_battle", "color": "PURPLE"}, {"text": "The Crown Tundra", "action": "EXIT", "target_area": "CROWN_TUNDRA", "condition": "can_exit", "color": "RED"}], "max_raid_den": {"1": {"144": 4, "145": 4, "146": 4, "150": 2, "243": 4, "244": 4, "245": 4, "249": 2, "250": 2, "380": 3, "381": 3, "382": 2, "383": 2, "384": 2, "480": 3, "481": 3, "482": 3, "483": 2, "484": 2, "485": 3, "487": 2, "488": 3, "641": 3, "642": 3, "643": 2, "644": 2, "645": 3, "716": 2, "717": 2, "718": 2, "785": 3, "786": 3, "787": 3, "788": 3, "791": 2, "792": 2, "800": 2}, "2": {"144": 4, "145": 4, "146": 4, "150": 2, "243": 4, "244": 4, "245": 4, "249": 2, "250": 2, "380": 3, "381": 3, "382": 2, "383": 2, "384": 2, "480": 3, "481": 3, "482": 3, "483": 2, "484": 2, "485": 3, "487": 2, "488": 3, "641": 3, "642": 3, "643": 2, "644": 2, "645": 3, "716": 2, "717": 2, "718": 2, "785": 3, "786": 3, "787": 3, "788": 3, "791": 2, "792": 2, "800": 2}, "3": {"144": 4, "145": 4, "146": 4, "150": 2, "243": 4, "244": 4, "245": 4, "249": 2, "250": 2, "380": 3, "381": 3, "382": 2, "383": 2, "384": 2, "480": 3, "481": 3, "482": 3, "483": 2, "484": 2, "485": 3, "487": 2, "488": 3, "641": 3, "642": 3, "643": 2, "644": 2, "645": 3, "716": 2, "717": 2, "718": 2, "785": 3, "786": 3, "787": 3, "788": 3, "791": 2, "792": 2, "800": 2}, "4": {"144": 4, "145": 4, "146": 4, "150": 2, "243": 4, "244": 4, "245": 4, "249": 2, "250": 2, "380": 3, "381": 3, "382": 2, "383": 2, "384": 2, "480": 3, "481": 3, "482": 3, "483": 2, "484": 2, "485": 3, "487": 2, "488": 3, "641": 3, "642": 3, "643": 2, "644": 2, "645": 3, "716": 2, "717": 2, "718": 2, "785": 3, "786": 3, "787": 3, "788": 3, "791": 2, "792": 2, "800": 2}, "5": {"144": 4, "145": 4, "146": 4, "150": 2, "243": 4, "244": 4, "245": 4, "249": 2, "250": 2, "380": 3, "381": 3, "382": 2, "383": 2, "384": 2, "480": 3, "481": 3, "482": 3, "483": 2, "484": 2, "485": 3, "487": 2, "488": 3, "641": 3, "642": 3, "643": 2, "644": 2, "645": 3, "716": 2, "717": 2, "718": 2, "785": 3, "786": 3, "787": 3, "788": 3, "791": 2, "792": 2, "800": 2}}, "next_area": "CROWN_TUNDRA"},
     "SPLIT_DECISION_RUINS": {
       "area_type": "dungeon",
       "route_name": "Split-Decision Ruins",
@@ -1079,18 +1106,15 @@
       "wild_pool_percentages": "GALAR_CROWN_SNOWSLIDE_SLOPE_PERCENTAGES",
       "area_boss": { "id": 896, "name": "Glastrier", "victory_flag": "CROWN_SNOWSLIDE_SLOPE_boss_defeated" },
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        {
-          "text": "Lure Glastrier",
-          "action": "BOSS",
-          "condition": ["boss_not_defeated"],
-          "color": "GOLD"
-        },
-        { "text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE" },
-        { "text": "Crown Tundra", "action": "EXIT", "target_area": "CROWN_TUNDRA", "condition": "can_exit", "color": "RED" }
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "Lure Glastrier", "action": "BOSS", "condition": ["boss_not_defeated"], "color": "GOLD"},
+        {"text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE"},
+        {"text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE"},
+        {"text": "Crown Tundra", "action": "EXIT", "target_area": "CROWN_TUNDRA", "condition": "can_exit", "color": "RED"}
       ],
-      "next_area": "CROWN_TUNDRA"
+      "next_area": "CROWN_TUNDRA",
+        "can_fish": true
     },
     "SPACE_TIME_DISTORTION": {
       "area_type": "dungeon",
@@ -1202,32 +1226,32 @@
     }
   ],
   "GALAR_ROUTE_1": [810, 813, 816, 831, 819, 821, 824],
-  "GALAR_ROUTE_1_PERCENTAGES": { "810": 15, "813": 15, "816": 15, "831": 15, "819": 15, "821": 15, "824": 10 },
+  "GALAR_ROUTE_1_PERCENTAGES": {"819": 22, "821": 11, "831": 11, "827": 11, "824": 11, "10": 11, "736": 11, "163": 11},
   "GALAR_ROUTE_2": [831, 832, 859, 860, 827, 829, 833],
-  "GALAR_ROUTE_2_PERCENTAGES": { "831": 20, "832": 15, "859": 15, "860": 10, "827": 15, "829": 15, "833": 10 },
+  "GALAR_ROUTE_2_PERCENTAGES": {"824": 15, "821": 10, "827": 10, "833": 10, "835": 10, "2032": 10, "509": 10, "819": 5, "273": 5, "163": 5, "270": 5, "829": 5},
   "GALAR_ROUTE_3": [837, 838, 831, 832],
-  "GALAR_ROUTE_3_PERCENTAGES": { "837": 30, "838": 25, "831": 25, "832": 20 },
+  "GALAR_ROUTE_3_PERCENTAGES": {"2032": 8, "829": 8, "434": 8, "568": 8, "236": 8, "821": 8, "66": 8, "674": 8, "749": 8, "599": 8, "850": 8, "37": 4, "58": 4},
   "GALAR_ROUTE_4": [840, 841, 846, 847, 868],
-  "GALAR_ROUTE_4_PERCENTAGES": { "840": 25, "841": 15, "846": 20, "847": 15, "868": 25 },
+  "GALAR_ROUTE_4_PERCENTAGES": {"710": 25, "2019": 12, "309": 6, "835": 6, "25": 6, "133": 6, "831": 6, "868": 6, "595": 6, "742": 6, "406": 6, "597": 6},
   "GALAR_ROUTE_5": [846, 847, 835, 836, 852, 2024],
-  "GALAR_ROUTE_5_PERCENTAGES": { "846": 22, "847": 18, "835": 18, "836": 12, "852": 15, "2024": 15 },
+  "GALAR_ROUTE_5_PERCENTAGES": {"759": 8, "684": 8, "572": 8, "202": 8, "425": 8, "682": 8, "825": 8, "677": 8, "751": 8, "840": 8, "290": 8, "2024": 4, "274": 4, "271": 4},
   "GALAR_ROUTE_6": [838, 840, 850, 851, 843, 2037],
-  "GALAR_ROUTE_6_PERCENTAGES": { "838": 22, "840": 18, "850": 18, "851": 12, "843": 18, "2037": 12 },
+  "GALAR_ROUTE_6_PERCENTAGES": {"2037": 7, "694": 7, "51": 7, "556": 7, "610": 7, "328": 7, "843": 7, "632": 7, "355": 7, "451": 7, "449": 7, "631": 7, "324": 7, "701": 7, "820": 7},
   "GALAR_ROUTE_7": [858, 859, 869, 870, 876],
-  "GALAR_ROUTE_7_PERCENTAGES": { "858": 25, "859": 20, "869": 20, "870": 15, "876": 20 },
+  "GALAR_ROUTE_7_PERCENTAGES": {"510": 15, "863": 7, "828": 7, "596": 7, "686": 7, "877": 7, "848": 7, "588": 7, "823": 7, "678": 7, "537": 7, "616": 7, "820": 4},
   "GALAR_ROUTE_8": [874, 875, 613, 614],
-  "GALAR_ROUTE_8_PERCENTAGES": { "874": 30, "875": 25, "613": 25, "614": 20 },
+  "GALAR_ROUTE_8_PERCENTAGES": {"872": 8, "215": 8, "622": 4, "533": 4, "624": 4, "525": 4, "777": 4, "844": 4, "111": 4, "356": 4, "93": 4, "437": 4, "450": 4, "452": 4, "870": 4, "361": 4, "583": 4, "459": 4, "225": 4, "627": 2, "338": 2, "629": 2, "337": 2, "539": 2, "538": 2, "2034": 2},
   "GALAR_ROUTE_9": [846, 848, 845, 871, 2031],
-  "GALAR_ROUTE_9_PERCENTAGES": { "846": 24, "848": 20, "845": 16, "871": 11, "2031": 11, "810": 6, "813": 6, "816": 6 },
+  "GALAR_ROUTE_9_PERCENTAGES": {"747": 12, "852": 12, "712": 12, "781": 12, "593": 11, "423": 2, "845": 2, "224": 2, "871": 2, "748": 2, "279": 1, "771": 1, "99": 1, "689": 1, "686": 1, "863": 1, "828": 1, "510": 1, "877": 1, "820": 1, "810": 6, "813": 6, "816": 6},
   "GALAR_ROUTE_10": [884, 879, 877, 2026],
-  "GALAR_ROUTE_10_PERCENTAGES": { "884": 33, "879": 19, "877": 25, "2026": 23 },
-  "GALAR_SLUMBERING_WEALD_PERCENTAGES": { "888": 5, "889": 5, "831": 30, "862": 30, "863": 30 },
+  "GALAR_ROUTE_10_PERCENTAGES": {"583": 14, "2026": 10, "613": 10, "459": 10, "872": 10, "362": 5, "584": 5, "600": 5, "112": 5, "2034": 5, "215": 5, "884": 5, "460": 5, "614": 5, "874": 2, "875": 2},
+  "GALAR_SLUMBERING_WEALD_PERCENTAGES": {"819": 11, "821": 11, "824": 11, "736": 11, "2025": 11, "517": 11, "826": 11, "823": 11, "163": 5, "12": 5, "2038": 5},
   "GALAR_SLUMBERING_WEALD": [831, 862, 863, 888, 889],
-  "GALAR_WILD_AREA_PERCENTAGES": { "835": 15, "840": 15, "846": 15, "858": 10, "874": 10, "885": 10, "819": 10, "833": 10, "845": 5 },
+  "GALAR_WILD_AREA_PERCENTAGES": {"659": 4, "236": 4, "509": 4, "66": 3, "759": 3, "434": 3, "11": 3, "582": 2, "535": 2, "760": 2, "436": 2, "459": 2, "355": 2, "361": 2, "674": 2, "278": 2, "225": 2, "343": 2, "43": 2, "98": 2, "341": 2, "280": 1, "557": 1, "92": 1, "309": 1, "749": 1, "425": 1, "660": 1, "194": 1, "406": 1, "37": 1, "58": 1, "822": 1, "561": 1, "572": 1, "622": 1, "274": 1, "761": 1, "595": 1, "271": 1, "736": 1, "599": 1, "519": 1, "95": 1, "521": 1, "420": 1, "177": 1, "750": 1, "451": 1, "164": 1, "819": 1, "517": 1, "163": 1, "44": 1, "220": 1, "610": 1, "342": 1, "742": 1, "215": 1, "111": 1, "270": 1, "67": 1, "273": 1, "290": 1, "820": 1, "99": 1, "315": 1, "583": 1, "558": 1, "536": 1, "415": 1, "213": 1, "537": 1, "310": 1, "344": 1, "510": 1, "831": 1, "832": 1, "767": 1, "624": 1, "837": 1, "833": 1, "762": 1, "279": 1, "737": 1, "437": 1, "426": 1, "129": 1, "771": 1, "520": 1, "93": 1, "195": 1, "178": 1, "829": 1, "446": 1, "830": 1, "109": 1, "821": 1, "751": 1, "588": 1, "688": 1, "616": 1, "835": 1, "848": 1, "422": 1, "836": 1, "597": 1, "324": 1, "607": 1, "185": 1, "35": 1, "202": 1, "677": 1, "605": 1, "539": 1, "538": 1, "747": 1, "757": 1, "845": 5},
   "GALAR_WILD_AREA": [835, 840, 846, 858, 874, 885, 819, 833, 845],
-  "GALAR_MINE_PERCENTAGES": { "837": 30, "838": 25, "874": 15, "91": 10, "878": 20 },
+  "GALAR_MINE_PERCENTAGES": {"837": 17, "532": 17, "527": 17, "50": 17, "529": 17, "524": 17},
   "GALAR_MINE": [837, 838, 874, 91, 878],
-  "GALAR_GLIMWOOD_PERCENTAGES": { "859": 20, "860": 15, "869": 15, "872": 15, "856": 20, "854": 15 },
+  "GALAR_GLIMWOOD_PERCENTAGES": {"854": 21, "860": 11, "756": 11, "857": 11, "708": 11, "876": 11, "684": 5, "766": 5, "2020": 5, "682": 5, "765": 5},
   "GALAR_GLIMWOOD": [859, 860, 869, 872, 856, 854],
   "REGION_START": {
     "GALAR": {
@@ -1264,15 +1288,15 @@
     ],
     "gmax_odds_note": "Each den's rarest slot (5%) is its Gigantamax species."
   },
-  "GALAR_ISLE_OF_ARMOR_PERCENTAGES": { "852": 15, "845": 15, "833": 15, "2024": 15, "2031": 15, "871": 15 },
+  "GALAR_ISLE_OF_ARMOR_PERCENTAGES": {"113": 10, "440": 6, "824": 4, "278": 3, "102": 3, "39": 3, "427": 2, "819": 2, "242": 2, "619": 2, "108": 2, "524": 2, "871": 2, "557": 2, "543": 2, "590": 2, "852": 2, "324": 2, "451": 2, "206": 2, "506": 2, "527": 1, "403": 1, "753": 1, "54": 1, "840": 1, "98": 1, "341": 1, "415": 1, "548": 1, "72": 1, "132": 1, "686": 1, "744": 1, "293": 1, "298": 1, "81": 1, "702": 1, "877": 1, "757": 1, "227": 1, "624": 1, "843": 1, "833": 1, "63": 1, "707": 1, "114": 1, "25": 1, "588": 1, "747": 1, "551": 1, "111": 1, "194": 1, "626": 1, "616": 1, "592": 1, "130": 1, "128": 1, "241": 1, "123": 1, "27": 1, "104": 1, "115": 1, "60": 1, "767": 1, "661": 1, "766": 1, "765": 1, "627": 1, "629": 1, "692": 1, "693": 1, "690": 1, "691": 1, "127": 1, "214": 1, "425": 1, "280": 1, "570": 1, "458": 1, "593": 1, "279": 1, "704": 1, "339": 1, "782": 1, "559": 1, "587": 1, "453": 1, "73": 1, "170": 1, "171": 1, "662": 1, "841": 1, "842": 1},
   "GALAR_ISLE_OF_ARMOR": [852, 845, 833, 2024, 2031, 871],
-  "GALAR_CROWN_TUNDRA_PERCENTAGES": { "872": 20, "873": 15, "613": 15, "875": 15, "2026": 15, "615": 10, "363": 10 },
+  "GALAR_CROWN_TUNDRA_PERCENTAGES": {"531": 9, "439": 8, "437": 4, "819": 3, "872": 3, "29": 2, "32": 2, "344": 2, "436": 2, "713": 2, "712": 2, "363": 2, "124": 2, "698": 2, "238": 2, "333": 2, "615": 2, "583": 2, "582": 2, "752": 2, "751": 2, "832": 1, "831": 1, "856": 1, "874": 1, "616": 1, "879": 1, "566": 1, "878": 1, "446": 1, "221": 1, "778": 1, "564": 1, "836": 1, "696": 1, "835": 1, "220": 1, "126": 1, "240": 1, "460": 1, "459": 1, "857": 1, "873": 1, "820": 1, "708": 1, "125": 1, "239": 1, "361": 1, "359": 1, "596": 1, "829": 1, "546": 1, "875": 1, "215": 1, "41": 1, "703": 1, "621": 1, "715": 1, "533": 1, "133": 1, "2033": 1, "608": 1, "631": 1, "632": 1, "860": 1, "35": 1, "851": 1, "850": 1, "614": 1, "623": 1, "822": 1, "213": 1, "876": 1, "877": 1, "838": 1, "859": 1, "575": 1, "578": 1, "574": 1, "577": 1, "447": 1, "871": 1, "304": 1, "597": 1, "371": 1, "443": 1, "633": 1, "246": 1, "303": 1, "302": 1},
   "GALAR_CROWN_TUNDRA": [872, 873, 613, 875, 2026, 615, 363],
   "GALAR_SPLIT_DECISION_RUINS_PERCENTAGES": { "854": 40, "867": 30, "2037": 30 },
   "GALAR_SPLIT_DECISION_RUINS": [854, 867, 2037],
-  "GALAR_CROWN_OLD_CEMETERY_PERCENTAGES": { "854": 40, "855": 20, "2037": 40 },
+  "GALAR_CROWN_OLD_CEMETERY_PERCENTAGES": {"854": 26, "29": 13, "32": 13, "886": 7, "531": 7, "439": 7, "588": 7, "608": 2, "708": 2, "752": 2, "751": 2, "615": 2, "583": 2, "582": 2, "596": 1, "125": 1, "239": 1, "359": 1, "126": 1, "631": 1, "632": 1, "240": 1, "857": 1, "778": 1, "856": 1, "2020": 1},
   "GALAR_CROWN_OLD_CEMETERY": [854, 855, 2037],
-  "GALAR_CROWN_SNOWSLIDE_SLOPE_PERCENTAGES": { "872": 40, "873": 30, "875": 30 },
+  "GALAR_CROWN_SNOWSLIDE_SLOPE_PERCENTAGES": {"872": 18, "374": 18, "698": 9, "531": 9, "439": 9, "832": 3, "621": 3, "831": 3, "708": 3, "615": 3, "361": 3, "583": 3, "614": 3, "582": 3, "215": 1, "225": 1, "359": 1, "126": 1, "240": 1, "860": 1, "778": 1, "35": 1, "2034": 1},
   "GALAR_CROWN_SNOWSLIDE_SLOPE": [872, 873, 875],
   "GALAR_SPACE_TIME_DISTORTION_PERCENTAGES": { "899": 20, "900": 15, "901": 15, "902": 20, "903": 15, "904": 15 },
   "GALAR_SPACE_TIME_DISTORTION": [899, 900, 901, 902, 903, 904]

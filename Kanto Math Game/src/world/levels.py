@@ -27,7 +27,7 @@ GYM_ORDER = {
               "MISTRALTON_CITY", "ICIRRUS_CITY", "OPELUCID_CITY"],
     "KALOS": ["SANTALUNE_CITY", "CYLLAGE_CITY", "SHALOUR_CITY", "COUMARINE_CITY", "LUMIOSE_CITY",
               "LAVERRE_CITY", "ANISTAR_CITY", "SNOWBELLE_CITY"],
-    "ALOLA": ["HAUOLI_CITY", "HEAHEA_CITY", "MALIE_CITY", "SEAFOLK_VILLAGE"],
+    "ALOLA": ["HAUOLI_CITY", "IKI_TOWN", "HEAHEA_CITY", "MALIE_CITY", "SEAFOLK_VILLAGE"],
     "GALAR": ["TURFFIELD", "HULBURY", "MOTOSTOKE", "STOW_ON_SIDE", "BALLONLEA", "CIRCHESTER",
               "SPIKEMUTH", "HAMMERLOCKE"],
     "PALDEA": ["CORTONDO", "ARTAZON", "LEVINCIA", "CASCARRAFA", "MEDALI", "MONTENEVERA",
@@ -47,7 +47,7 @@ GYM_ACE = {
     "KANTO": [14, 21, 24, 29, 43, 43, 47, 50], "JOHTO": [13, 17, 19, 25, 31, 35, 34, 41],
     "HOENN": [14, 16, 21, 28, 30, 35, 45, 46], "SINNOH": [14, 22, 30, 30, 36, 39, 42, 49],
     "UNOVA": [14, 20, 23, 27, 31, 35, 39, 43], "KALOS": [12, 25, 32, 34, 37, 42, 48, 59],
-    "ALOLA": [10, 27, 39, 48], "GALAR": [20, 24, 27, 36, 38, 42, 46, 48],
+    "ALOLA": [10, 16, 27, 39, 48], "GALAR": [20, 24, 27, 36, 38, 42, 46, 48],
     "PALDEA": [15, 17, 24, 30, 36, 42, 45, 48],
     # Orange League in line with Kanto's League (Jordan): Gyms like the Elite Four (54-60), Drake like
     # Kanto's Champion (63); his rematch (+10) is 69-73, close to Kanto's FRLG rematch (72-75).

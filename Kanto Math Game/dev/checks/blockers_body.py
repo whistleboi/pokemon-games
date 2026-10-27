@@ -47,14 +47,19 @@ check(lv <= 39, f"Icirrus trainer level {lv} is under the badge-6 cap (39)")
 # Galar: Oleana, Rose and the Eternatus fight, then the catchable Eternatus boss.
 area = "ROSE_TOWER"
 pool = g.loader.area_data["STORY_PROGRESSION"][area]["trainer_pool"]
-check(not any(levels.is_legendary(pid) for pid in pool[1]["team"]), f"Rose's team has no legendary: {pool[1]['team']}")
+# Macro Cosmos's staff come first (PokeEarth recheck, 10-27), then Oleana, Rose and Eternatus.
+story_idx = [next(i for i, t in enumerate(pool) if t["name"] == n) for n in ("Oleana", "Chairman Rose", "Eternatus")]
+check(story_idx == sorted(story_idx) and story_idx[0] == len(pool) - 3, f"the three story battles come last: {story_idx}")
+check(not any(levels.is_legendary(pid) for pid in pool[story_idx[1]]["team"]), f"Rose's team has no legendary: {pool[story_idx[1]]['team']}")
 for i in range(len(pool)):
     story.defeated_trainers.get(area, set()).discard(i)
 for f in ("oleana_defeated", "rose_tower_cleared", "eternatus_defeated", "ROSE_TOWER_boss_defeated"):
     story.story_flags.pop(f, None)
-for i, flag in enumerate(["oleana_defeated", "rose_tower_cleared", "eternatus_defeated"]):
+for i in range(story_idx[0]):
+    story.mark_trainer_defeated(area, i)
+for i, flag in zip(story_idx, ["oleana_defeated", "rose_tower_cleared", "eternatus_defeated"]):
     btns = route_buttons(area)
-    check("BATTLE ROSE TOWER" in btns and "THE ENERGY PLANT ROOF" not in btns, f"before trainer {i + 1} ({pool[i]['name']}): {btns}")
+    check("BATTLE ROSE TOWER" in btns and "THE ENERGY PLANT ROOF" not in btns, f"before {pool[i]['name']}: {btns}")
     story.mark_trainer_defeated(area, i)
     story.story_flags[flag] = True
 btns = route_buttons(area)

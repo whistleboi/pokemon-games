@@ -2,6 +2,40 @@
 
 ## Unreleased: opponents follow your team, Hoenn's story as in Omega Ruby / Alpha Sapphire
 
+- **S.O.S. battles (Alola):** a wild Pokémon at half HP or less may call for help instead of attacking. Help comes about a third of the time: its own species, or one from the area's S.O.S. list. The ally steps in when the first is caught or knocked out, and can call for help too. Bosses, legendaries and story battles never call.
+- **Alola, Galar and Hisui rechecked against Serebii PokéEarth** (Alola: Ultra Sun/Ultra Moon with Sun/Moon; Galar: Sword/Shield and its DLC; Hisui: Legends: Arceus):
+  - **Wild Pokémon:**
+    - The Wild Area is split in two. The South half is the old Wild Area. The North half opens after Kabu's badge and leads to Hammerlocke once you have the Fairy Badge.
+    - The two halves, the Isle of Armor, the Crown Tundra and Hisui's five zones have the games' full lists: about 90–220 species each, up from 6–22.
+    - Every Alola and Galar route has the games' walking Pokémon, and Galar's waters can be fished.
+    - Legendaries are out of the wild pools: the Tapus (Route 16), Zacian and Zamazenta (Slumbering Weald), Silvally, Cosmog and Type: Null.
+  - **Alola story:**
+    - Hala's Grand Trial at Iki Town gives the Fightinium Z. You need it to take the ferry to Akala Island, and the later Kahunas expect it.
+    - Hau battles you on Route 3, in Paniola Town, Diglett's Tunnel and Malie City. He takes the starter strong against yours. After the title he challenges you at the League.
+    - Gladion battles you on Route 5, at the Aether House, at Aether Paradise and on Mount Lanakila.
+    - Plumeria (Akala Outskirts, Route 15), Guzma (Malie Garden, Aether Paradise) and Faba (Aether Paradise).
+    - Captains Kiawe, Mallow and Lana battle you after Olivia's trial. Ilima, Mina, Sophocles and Lana battle you after the title.
+    - Ultra Sun/Ultra Moon's Totems: Araquanid (Brooklet Hill), Togedemaru (Hokulani) and Kommo-o (Vast Poni Canyon). Mina's Totem Ribombee moves to Poni Meadow.
+    - Ultra Necrozma waits at Megalo Tower, through a wormhole at the Altar.
+  - **New Alola places:**
+    - The Ruins of Conflict (Tapu Koko, moved from Mount Lanakila), Abundance (Tapu Bulu) and Hope (Tapu Fini). They open after the title.
+    - Ten Carat Hill, the Melemele Sea and Pikachu Valley.
+    - The Lake of the Sunne and Moone, where a Cosmog joins you after the title. Gladion gives you Type: Null at Aether Paradise.
+  - **Galar story:**
+    - Hop battles you on Route 2, in Motostoke, on Route 5, in Galar Mine No. 2, Stow-on-Side, on Route 7 and in Circhester. After the title he waits in the Slumbering Weald.
+    - Bede battles you in both Galar Mines and Stow-on-Side, and leads Ballonlea's Gym after the title.
+    - Marnie battles you in Motostoke and on Route 9.
+    - The Champion Cup Finals have Nessa, Bea and Raihan before Leon.
+    - After the title: Sordward and Shielbert (Wedgehurst, the Energy Plant), and Leon at the Battle Tower.
+    - In the DLC: Mustard's final trial, Honey and Peony. Max Lair (after Peony) holds the older legendaries as Dynamax Adventures.
+  - **Hisui:**
+    - Volo, Akari and Adaman battle you in Jubilife Village.
+    - The Wardens, the Pearl and Diamond Clans and the Bandits join the zones' trainers.
+    - After the Sinnoh title: Zisu, Ingo's full team, Kamado, Adaman and Irida at the lakes, and Volo's final battle at the Temple of Sinnoh.
+    - Hisui's legendaries come after the Sinnoh title: the lake trio, Heatran, Manaphy, Phione, Giratina (Origin Forme), Dialga, Palkia, Cresselia, Darkrai, Shaymin, Regigigas and the Forces of Nature. Arceus appears once Dialga, Palkia and Giratina are caught.
+  - **Route trainers:** Alola and Galar routes have up to six more trainers each, with the games' teams.
+  - **Trainer art:** 31 new sprites from Pokémon Showdown, including Plumeria, Faba, the Captains, Bede, Sordward and Shielbert, Mustard, Peony, Volo, Akari, Rei, Adaman, Irida, Kamado, Zisu, Hisui's Ingo, the Wardens and the Bandits.
+
 - **Kanto's story follows FireRed/LeafGreen:**
   - **The opening:** a new Kanto game starts in Pallet Town, not at the starter screen. Heading for Route 1 brings Oak running, and he takes you to his lab to choose a partner. Route 1 stays closed until then.
   - **Oak's Parcel:** the Viridian Mart gives you a parcel for Oak. He trades it for the Pokédex and 5 Poké Balls. Until then you can't catch, the Mart sells nothing and Viridian Forest is closed. The Journal follows each step.
