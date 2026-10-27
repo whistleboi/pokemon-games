@@ -14,6 +14,31 @@
     - The fossil revival in Mt. Moon is gone.
   - **Real HMs:** the Surf Board and Air Balloon are gone (they were stand-ins for story gates). Kanto's badges give HM Cut (Cascade), HM Fly (Rainbow) and HM Surf (Soul), and the Surf routes check HM Surf. The Surf Board is also gone from Johto, Sinnoh and Unova, where each region's own HM Surf already opens the water. Hoenn's New Mauville no longer needs both.
   - **Older saves:** a save that already has its Kanto partner counts the opening as done. A save that cleared the hideout without getting the Scope is given it.
+- **Unova and Kalos rechecked against Serebii PokéEarth** (Unova: Black/White, with Black 2/White 2 merged in; Kalos: X/Y):
+  - **Battles follow the character, not the role:** a story battle can name a character (Cheren, Bianca, Serena, Calem). It appears as your rival or your friend, whichever that character is in your save, and uses their own team.
+  - **Unova story:**
+    - Cheren and Bianca battle you where they do in BW, with BW's teams for each starter. The made-up Accumula, Castelia, Nimbasa and Undella battles are gone.
+    - N battles you in Nacrene and has his BW castle team.
+    - Post-game, Bianca waits in Nuvema, and Cheren has his B2W2 Victory Road team.
+  - **Unova post-game, from B2W2:**
+    - Leaders Cheren, Roxie and Marlon, and Champion Iris.
+    - Janna and Jariel in the Black Tower and White Treehollow.
+    - Legendaries: the three beasts, Latios and Latias, the lake trio, Heatran, Regigigas, Cresselia, the Regis and Keldeo.
+  - **New Unova areas:**
+    - Skyarrow Bridge, Driftveil Drawbridge and the Marine Tube.
+    - The PWT, a post-game tournament of Unova's Gym Leaders.
+    - Pledge Grove, Underground Ruins, Abyssal Ruins and the Cave of Being.
+    - PokéStar Studios (film a Brycen-Man battle) and Join Avenue (a market).
+    - Anville Town by train, and the Entralink.
+  - **Unova links and wild Pokémon:**
+    - The missing links are added; those that lead to post-game areas open after the title.
+    - Walking pools follow BW and B2W2. Every species that was catchable before still is.
+  - **Kalos story:**
+    - Serena and Calem battle you at the Tower of Mastery, Coumarine, Route 14, Anistar, Victory Road and Kiloude, each with their own X/Y team. The Couriway battle is gone.
+    - Shauna battles you in Aquacorde and on Route 19, Tierno on Routes 5, 7 and 19, Trevor on Routes 7 and 19.
+    - Team Flare's Scientists (including Bryony and Xerosic) and Lysandre have X/Y's teams.
+    - Korrina battles you in Geosenge.
+  - **Kalos places:** the Lysandre Café between Lumiose and Lysandre Labs, the Chamber of Emptiness, the missing links, and four Route 7 Pokémon.
 - **Lumiose City has neighborhoods:** Centrico Plaza is still the hub, and five districts are their own small areas.
   - **Vert:** the lab library, and a battle with Dexio and Sina.
   - **Rouge:** a café job (a math puzzle), and Restaurant Le Wow's battles.

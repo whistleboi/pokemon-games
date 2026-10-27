@@ -25,8 +25,10 @@ for pid in (377, 378, 379, 637, 638, 645, 646):
     check(not pools_with(pid), f"#{pid} is not a wild encounter ({pools_with(pid)})")
 bosses = {(o.get("boss") or {}).get("id"): k for k, a in SP.items() for o in a.get("route_menu", [])}
 bosses.update({(a.get("area_boss") or {}).get("id"): k for k, a in SP.items()})
-check(bosses.get(377) == "HOENN_ROUTE_111" and bosses.get(378) == "HOENN_ROUTE_105" and bosses.get(379) == "HOENN_ROUTE_120",
-      f"Regis at the Desert Ruins, Island Cave and Ancient Tomb: {[bosses.get(i) for i in (377, 378, 379)]}")
+hoenn = {(o.get("boss") or {}).get("id"): k for k, a in SP.items() for o in a.get("route_menu", []) if k.startswith("HOENN_")}
+hoenn.update({(a.get("area_boss") or {}).get("id"): k for k, a in SP.items() if k.startswith("HOENN_")})  # (Unova's Underground Ruins has them too)
+check(hoenn.get(377) == "HOENN_ROUTE_111" and hoenn.get(378) == "HOENN_ROUTE_105" and hoenn.get(379) == "HOENN_ROUTE_120",
+      f"Regis at the Desert Ruins, Island Cave and Ancient Tomb: {[hoenn.get(i) for i in (377, 378, 379)]}")
 check(all(bosses.get(i) for i in (637, 638, 645, 646)), "Unova's legendaries all have bosses")
 
 # Up-Grade: only at Veilstone.

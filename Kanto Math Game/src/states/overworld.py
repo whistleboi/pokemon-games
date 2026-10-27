@@ -89,9 +89,36 @@ def _region_starter_id(game):
     return story.player_team[0].id if story.player_team else None
 
 
+def _cast_trainer(game, t_info):
+    """A story trainer tied to a character of this region rather than a role (Jordan, 10-27).
+    "who": "cheren" makes the battle show as whichever role that character holds in this save (the
+    rival or the friend), and "by_character": {character: {team, team_choice, levels}} gives each
+    character their own team (Cheren and Bianca in Unova, Serena and Calem in Kalos)."""
+    who, by = t_info.get("who"), t_info.get("by_character")
+    if not who and not by:
+        return t_info
+    t_info = dict(t_info)
+    rival = str(getattr(game, "rival_character", "") or "").lower()
+    friend = str(getattr(game, "friend_character", "") or "").lower()
+    if who:
+        if rival == who:
+            t_info["name"], t_info["sprite"] = "{rival_name}", "{rival_character}"
+        elif friend == who:
+            t_info["name"], t_info["sprite"] = "{friend_name}", "{friend_character}"
+        else:
+            t_info.setdefault("name", who.title())
+            t_info.setdefault("sprite", f"{who}.png")
+        key = who
+    else:
+        key = friend if "{friend_name}" in str(t_info.get("name")) else rival
+    t_info.update((by or {}).get(key) or {})
+    return t_info
+
+
 def _story_team(game, area_key, t_info):
     """A story trainer's team: picked by the player's starter ("team_choice"), at the exact
     levels from the games when given ("levels"), else around the top "level", else the area's."""
+    t_info = _cast_trainer(game, t_info)
     team_ids = list((t_info.get("team_choice") or {}).get(str(_region_starter_id(game))) or t_info.get("team", []))
     team = [Pokemon(game.loader.fetch_specific(tid), game.assets, size_mult=3.125) for tid in team_ids]
     forms.mark_trainer_team(team, t_info)
@@ -110,6 +137,7 @@ def _story_team(game, area_key, t_info):
 def _start_event_battle(game, area_key, t_info, flag):
     """A story NPC's trainer battle (team chosen by the region starter when it has a team_choice)."""
     from src.states.battle import TrainerBattleState, TrainerIntroState
+    t_info = _cast_trainer(game, t_info)
     team = _story_team(game, area_key, t_info)
     sprite = _trainer_sprite(game, t_info.get("sprite"))
     dlg = t_info.get("dialogue") or {}
@@ -835,7 +863,7 @@ class PlayState(GameState):
         """Helper to handle the complex on_enter battle setup logic."""
         self.rounds_completed += 1
 
-        trainer_info = dict(on_enter["trainer"])
+        trainer_info = _cast_trainer(self.game, dict(on_enter["trainer"]))
         team_ids = trainer_info.get("team", [])
         if team_ids and isinstance(team_ids, list) and len(team_ids) > 0 and isinstance(team_ids[0], list):
             trainer_info["team"] = random.choice(team_ids)
@@ -977,7 +1005,7 @@ class PlayState(GameState):
                 return
             trainer_idx = available[0]
 
-        trainer_info = trainer_pool[trainer_idx]
+        trainer_info = _cast_trainer(self.game, trainer_pool[trainer_idx])
         trainer_class = trainer_info.get("class", "YOUNGSTER")
         # Names like "{rival_name}" and text keys are filled in, as story battles do.
         trainer_name = _fill_names(self.game, trainer_info.get("name"))
@@ -4807,7 +4835,7 @@ class CityState(GameState):
         if not (met and on_enter.get("type") == "trainer_battle"):
             return False
 
-        t_info = dict(on_enter["trainer"])
+        t_info = _cast_trainer(self.game, dict(on_enter["trainer"]))
         team_ids = t_info.get("team", [])
         newbark_rival = (self.area_key == "NEW_BARK_TOWN"
                          and story.story_flags.get("johto_rival_met_in_lab")
@@ -5610,7 +5638,7 @@ class GymLobbyState(GameState):
 
         self.game.transitioning = True
 
-        t_data = self.next_opponent.copy()
+        t_data = _cast_trainer(self.game, self.next_opponent.copy())
         from src.states.battle import TrainerBattleState, TrainerIntroState
 
         is_leader = (self.next_opponent == self.leader)

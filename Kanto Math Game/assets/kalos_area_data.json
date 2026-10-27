@@ -277,108 +277,22 @@
       "wild_pool_percentages": null,
       "min_rounds": 0,
       "trainer_pool": [
-        {
-          "name": "Team Flare Grunt",
-          "class": "FLARE_GRUNT",
-          "sprite": "flare_grunt.png",
-          "team": [
-            317
-          ],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Team Flare Grunt",
-          "class": "FLARE_GRUNT",
-          "sprite": "flare_grunt.png",
-          "team": [
-            317,
-            510
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "Team Flare Grunt",
-          "class": "FLARE_GRUNT",
-          "sprite": "flare_grunt.png",
-          "team": [
-            510,
-            262
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "Team Flare Grunt",
-          "class": "FLARE_GRUNT",
-          "sprite": "flare_grunt.png",
-          "team": [
-            229,
-            454
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "Team Flare Grunt",
-          "class": "FLARE_GRUNT",
-          "sprite": "flare_grunt.png",
-          "team": [
-            310,
-            560
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "Team Flare Grunt",
-          "class": "FLARE_GRUNT",
-          "sprite": "flare_grunt.png",
-          "team": [
-            262,
-            454
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "Team Flare Lysandre",
-          "class": "FLARE_ADMIN",
-          "sprite": "lysandre.png",
-          "team": [
-            619,
-            130,
-            668,
-            198
-          ],
-          "rewards": {
-            "balls": 10
-          },
-          "is_boss_battle": true,
-          "victory_flag": "lysandre_labs_cleared"
-        }
+        {"name": "Team Flare Grunt", "class": "FLARE_GRUNT", "sprite": "flare_grunt.png", "team": [317], "rewards": {"balls": 3}},
+        {"name": "Team Flare Grunt", "class": "FLARE_GRUNT", "sprite": "flare_grunt.png", "team": [317, 510], "rewards": {"balls": 4}},
+        {"name": "Team Flare Grunt", "class": "FLARE_GRUNT", "sprite": "flare_grunt.png", "team": [510, 262], "rewards": {"balls": 4}},
+        {"name": "Team Flare Grunt", "class": "FLARE_GRUNT", "sprite": "flare_grunt.png", "team": [229, 454], "rewards": {"balls": 4}},
+        {"name": "Team Flare Grunt", "class": "FLARE_GRUNT", "sprite": "flare_grunt.png", "team": [310, 560], "rewards": {"balls": 4}},
+        {"name": "Team Flare Grunt", "class": "FLARE_GRUNT", "sprite": "flare_grunt.png", "team": [262, 454], "rewards": {"balls": 4}},
+        {"name": "Team Flare Aliana", "class": "FLARE_ADMIN", "sprite": "scientist.png", "team": [262, 621], "levels": [46, 48], "is_boss_battle": true, "rewards": {"balls": 5}},
+        {"name": "Team Flare Celosia", "class": "FLARE_ADMIN", "sprite": "scientist.png", "team": [310, 452], "levels": [46, 48], "is_boss_battle": true, "rewards": {"balls": 5}},
+        {"name": "Team Flare Bryony", "class": "FLARE_ADMIN", "sprite": "scientist.png", "team": [510, 625], "levels": [46, 48], "is_boss_battle": true, "rewards": {"balls": 5}},
+        {"name": "Team Flare Mable", "class": "FLARE_ADMIN", "sprite": "scientist.png", "team": [229, 461], "levels": [46, 48], "is_boss_battle": true, "rewards": {"balls": 5}},
+        {"name": "Team Flare Xerosic", "class": "FLARE_ADMIN", "sprite": "scientist.png", "team": [169, 687], "levels": [46, 48], "is_boss_battle": true, "rewards": {"balls": 5}},
+        {"name": "Team Flare Lysandre", "class": "FLARE_ADMIN", "sprite": "lysandre.png", "team": [619, 130, 668, 198], "rewards": {"balls": 10}, "is_boss_battle": true, "victory_flag": "lysandre_labs_cleared"}
       ],
       "route_menu": [
-        {
-          "text": "INFILTRATE THE LABS",
-          "action": "GALACTIC_GAUNTLET",
-          "flag_condition": "not lysandre_labs_cleared",
-          "color": "GOLD"
-        },
-        {
-          "text": "Lumiose City",
-          "action": "EXIT",
-          "target_area": "LUMIOSE_CITY",
-          "condition": "can_exit",
-          "color": "RED"
-        }
+        {"text": "INFILTRATE THE LABS", "action": "GALACTIC_GAUNTLET", "flag_condition": "not lysandre_labs_cleared", "color": "GOLD"},
+        {"text": "LYSANDRE CAFE", "action": "EXIT", "condition": "can_exit", "color": "RED", "target": "KALOS_FLARE_CAFE"}
       ],
       "next_area": "LUMIOSE_CITY"
     },
@@ -780,7 +694,8 @@
           "action": "SHOP"
         }
       ],
-      "next_area": "LUMIOSE_CITY"
+      "next_area": "LUMIOSE_CITY",
+        "on_enter_event": {"type": "trainer_battle", "trainer": {"name": "{rival_name}", "class": "RIVAL", "sprite": "{rival_character}", "team": [36, 135, 359, 334, 655], "team_choice": {"650": [36, 135, 359, 334, 655], "653": [36, 136, 359, 334, 658], "656": [36, 134, 359, 334, 652]}, "levels": [66, 68, 68, 68, 68], "is_boss_battle": true, "rewards": {"balls": 8}, "by_character": {"calem": {"team": [678, 36, 135, 359, 334, 655], "team_choice": {"650": [678, 36, 135, 359, 334, 655], "653": [678, 36, 136, 359, 334, 658], "656": [678, 36, 134, 359, 334, 652]}, "levels": [66, 68, 68, 68, 68, 70]}}, "dialogue": {"intro": ["{rival_name}: Champion! I've been waiting for you here. One more battle, for real this time!"], "player_won": ["{rival_name}: You really are the Champion."], "player_lost": ["{rival_name}: Keep at it, {player_name}."]}}, "condition": "beat_kalos_champion", "flag_check": "defeated_rival_kiloude"}
     },
     "KALOS_ROUTE_20": {
       "area_type": "wild_route",
@@ -1105,50 +1020,13 @@
         }
       ],
       "route_menu": [
-        {
-          "text": "CATCH WILD PKMN",
-          "action": "CATCH",
-          "condition": "has_balls",
-          "color": "BLUE"
-        },
-        {
-          "text": "BATTLE WILD PKMN",
-          "action": "BATTLE",
-          "condition": "can_battle",
-          "color": "GREEN"
-        },
-        {
-          "text": "BATTLE TRAINER",
-          "action": "TRAINER",
-          "condition": "has_trainers",
-          "color": "GREEN"
-        },
-        {
-          "text": "Santalune City",
-          "action": "EXIT",
-          "target_area": "SANTALUNE_CITY",
-          "condition": "can_exit",
-          "color": "RED"
-        },
-        {
-          "text": "Lumiose City",
-          "action": "EXIT",
-          "target_area": "LUMIOSE_CITY",
-          "condition": "can_exit",
-          "color": "RED"
-        },
-        {
-          "text": "Victory Road (Kalos)",
-          "action": "EXIT",
-          "target_area": "VICTORY_ROAD_KALOS",
-          "condition": [
-            "can_exit",
-            "has_iceberg_badge",
-            "has_item:HM_WATERFALL",
-            "has_item:HM_STRENGTH"
-          ],
-          "color": "RED"
-        }
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        {"text": "Santalune City", "action": "EXIT", "target_area": "SANTALUNE_CITY", "condition": "can_exit", "color": "RED"},
+        {"text": "Lumiose City", "action": "EXIT", "target_area": "LUMIOSE_CITY", "condition": "can_exit", "color": "RED"},
+        {"text": "Victory Road (Kalos)", "action": "EXIT", "target_area": "VICTORY_ROAD_KALOS", "condition": ["can_exit", "has_iceberg_badge", "has_item:HM_WATERFALL", "has_item:HM_STRENGTH"], "color": "RED"},
+        {"text": "CHAMBER OF EMPTINESS", "action": "EXIT", "target": "CHAMBER_OF_EMPTINESS", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "SANTALUNE_CITY"
     },
@@ -1204,7 +1082,8 @@
         { "text": "Shop", "action": "SHOP" },
         { "text": "Meet {friend_name} & Tierno", "action": "NPC", "target": "kalos_shauna_intro", "flag_condition": "not met_kalos_friends", "victory_flag": "met_kalos_friends" }
       ],
-      "next_area": "KALOS_ROUTE_2"
+      "next_area": "KALOS_ROUTE_2",
+        "on_enter_event": {"type": "trainer_battle", "trainer": {"name": "{friend_name}", "class": "PKMN_TRAINER", "sprite": "{friend_character}", "team": [656], "levels": [5], "is_boss_battle": true, "rewards": {"balls": 5}, "dialogue": {"intro": ["{friend_name}: Let's try out our new partners! Ready?"], "player_won": ["{friend_name}: That was so fun!"]}, "team_choice": {"650": [656], "653": [650], "656": [653]}}, "condition": ["received_starter_kalos", "not:has_bug_badge"], "flag_check": "defeated_shauna_aquacorde"}
     },
     "SANTALUNE_CITY": {
       "area_type": "town",
@@ -1241,12 +1120,13 @@
         {"text": "Route 14 (south)", "target_area": "KALOS_ROUTE_14", "condition": "has_voltage_badge"},
         {"text": "Route 22", "target_area": "KALOS_ROUTE_22"},
         {"text": "Kiloude City", "target_area": "KILOUDE_CITY", "condition": "beat_kalos_champion"},
-        {"text": "Lysandre Labs", "target_area": "LYSANDRE_LABS", "condition": "has_psychic_badge"},
+        {"text": "Lysandre Café", "target_area": "KALOS_FLARE_CAFE", "condition": "has_psychic_badge"},
         {"text": "Vert District", "target_area": "LUMIOSE_VERT_DISTRICT"},
         {"text": "Rouge District", "target_area": "LUMIOSE_ROUGE_DISTRICT"},
         {"text": "Magenta District", "target_area": "LUMIOSE_MAGENTA_DISTRICT"},
         {"text": "Bleu District", "target_area": "LUMIOSE_BLEU_DISTRICT"},
-        {"text": "Hibernal District", "target_area": "LUMIOSE_HIBERNAL_DISTRICT"}
+        {"text": "Hibernal District", "target_area": "LUMIOSE_HIBERNAL_DISTRICT"},
+        {"text": "Route 16", "target_area": "KALOS_ROUTE_16"}
       ],
       "explore_options": [{"text": "Pokémon Center", "action": "HEAL"}, {"text": "Pokémon-Amie", "action": "AMIE"}, {"text": "Department Store", "action": "SHOP"}, {"text": "Visit Professor Sycamore", "action": "NPC", "target": "kalos_sycamore_intro", "flag_condition": "not met_sycamore", "victory_flag": "met_sycamore"}, {"text": "Choose Starter Pokémon", "action": "NPC", "target": "kalos_sycamore_starters", "condition": "no_kalos_starter", "flag_condition": "not got_kalos_starter"}, {"text": "Sycamore's Kanto Pokemon", "action": "EVENT", "color": "GOLD", "condition": "has_bug_badge", "flag_condition": "not got_kalos_kanto_starter", "event": {"lines": ["Professor Sycamore: These Pokemon come from Kanto, far away.", "Your partner and this one should get along. Take good care of it!"], "gift_pokemon": {"650": 1, "653": 4, "656": 7, "default": 1}, "flag": "got_kalos_kanto_starter"}}, {"text": "Challenge Gym", "action": "GYM"}, {"text": "Lysandre Café", "action": "NPC", "target": "kalos_lysandre_intro", "flag_condition": "not met_lysandre", "victory_flag": "met_lysandre"}],
       "next_area": "KALOS_ROUTE_5",
@@ -1298,8 +1178,10 @@
       "has_gym": true,
       "gym": {"trainers": [], "leader": {"name": "Grant", "class": "GYM_LEADER", "sprite": "grant.png", "team": [698, 696], "levels": [25, 25], "dialogue": {"intro": ["Grant: I've scaled every peak in Kalos. Can you climb to my level?"], "player_won": ["Grant: You summit the challenge! Here is the Cliff Badge, and TM Rock Tomb.", "Take this Jaw Fossil too. The fossil lab in Ambrette Town can revive it!"], "player_lost": ["Grant: The climb continues. Train harder and try again."]}, "rewards": {"balls": 5, "JAW_FOSSIL": 1}, "is_boss_battle": true, "badge_reward": "CLIFF", "movesets": {"698": ["AURORA-BEAM", "ROCK-TOMB", "THUNDER-WAVE", "TAKE-DOWN"], "696": ["ROCK-TOMB", "BITE", "STOMP"]}}, "requirements": {"badges": 1, "fail_text": "Grant is climbing. Earn the Bug Badge first."}},
       "travel_options": [
-        { "text": "Route 9 (to Ambrette)", "target_area": "KALOS_ROUTE_9" },
-        { "text": "Route 10 (to Geosenge)", "target_area": "KALOS_ROUTE_10", "condition": "has_cliff_badge" }
+        {"text": "Route 9 (to Ambrette)", "target_area": "KALOS_ROUTE_9"},
+        {"text": "Route 10 (to Geosenge)", "target_area": "KALOS_ROUTE_10", "condition": "has_cliff_badge"},
+        {"text": "Route 8", "target_area": "KALOS_ROUTE_8"},
+        {"text": "Connecting Cave", "target_area": "CONNECTING_CAVE"}
       ],
       "explore_options": [
         { "text": "Pokémon Center", "action": "HEAL" },
@@ -1321,17 +1203,11 @@
         { "text": "Team Flare HQ (Stone)", "target_area": "GEOSENGE_FLARE_HQ" }
       ],
       "explore_options": [
-        { "text": "Pokémon Center", "action": "HEAL" },
-        { "text": "Pokémon-Amie", "action": "AMIE" },
-        { "text": "Shop", "action": "SHOP" },
-        {
-          "text": "Stop the Ultimate Weapon",
-          "action": "NPC",
-          "target": "kalos_lysandre_ultimate_weapon",
-          "condition": "has_psychic_badge",
-          "flag_condition": "not geosenge_flare_cleared",
-          "color": "GOLD"
-        }
+        {"text": "Pokémon Center", "action": "HEAL"},
+        {"text": "Pokémon-Amie", "action": "AMIE"},
+        {"text": "Shop", "action": "SHOP"},
+        {"text": "Stop the Ultimate Weapon", "action": "NPC", "target": "kalos_lysandre_ultimate_weapon", "condition": "has_psychic_badge", "flag_condition": "not geosenge_flare_cleared", "color": "GOLD"},
+        {"text": "Battle Korrina", "action": "EVENT", "color": "GOLD", "condition": "has_cliff_badge", "flag_condition": "not korrina_geosenge", "event": {"lines": ["Korrina skates up. 'You're the one Professor Sycamore told me about! Let's see your bond in battle!'"], "flag": "korrina_geosenge", "battle": {"name": "Leader Korrina", "class": "GYM_LEADER", "sprite": "korrina.png", "team": [448, 448], "levels": [25, 25], "is_boss_battle": true, "rewards": {"balls": 5}, "dialogue": {"player_won": ["Korrina: Wow! Meet me at the Tower of Mastery. There's something you should see."]}}}}
       ],
       "next_area": "KALOS_ROUTE_11"
     },
@@ -1383,7 +1259,8 @@
         { "text": "Shop", "action": "SHOP" },
         { "text": "Challenge Gym", "action": "GYM" }
       ],
-      "next_area": "KALOS_ROUTE_13"
+      "next_area": "KALOS_ROUTE_13",
+        "on_enter_event": {"type": "trainer_battle", "trainer": {"name": "{rival_name}", "class": "RIVAL", "sprite": "{rival_character}", "team": [359, 654], "team_choice": {"650": [359, 654], "653": [359, 657], "656": [359, 651]}, "levels": [31, 31], "is_boss_battle": true, "rewards": {"balls": 8}, "by_character": {"calem": {"team": [678, 359, 654], "team_choice": {"650": [678, 359, 654], "653": [678, 359, 657], "656": [678, 359, 651]}, "levels": [31, 31, 33]}}, "dialogue": {"intro": ["{rival_name}: Coumarine's Gym is next for both of us. Warm-up battle?"], "player_won": ["{rival_name}: You're getting stronger every time."], "player_lost": ["{rival_name}: Keep at it, {player_name}."]}}, "condition": ["has_rumble_badge", "not:has_plant_badge"], "flag_check": "defeated_rival_coumarine"}
     },
     "LAVERRE_CITY": {
       "area_type": "town",
@@ -1412,10 +1289,11 @@
       "backgrounds": { "main": "dendemille_town.png" },
       "has_gym": false,
       "travel_options": [
-        { "text": "Route 15 / Lost Hotel (west)", "target_area": "LOST_HOTEL" },
-        { "text": "Frost Cavern (north)", "target_area": "FROST_CAVERN" },
-        { "text": "Route 17 (to Anistar)", "target_area": "KALOS_ROUTE_17" },
-        { "text": "Route 16", "target_area": "KALOS_ROUTE_16" }
+        {"text": "Route 15 / Lost Hotel (west)", "target_area": "LOST_HOTEL"},
+        {"text": "Frost Cavern (north)", "target_area": "FROST_CAVERN"},
+        {"text": "Route 17 (to Anistar)", "target_area": "KALOS_ROUTE_17"},
+        {"text": "Route 16", "target_area": "KALOS_ROUTE_16"},
+        {"text": "Route 15", "target_area": "KALOS_ROUTE_15"}
       ],
       "explore_options": [
         { "text": "Pokémon Center", "action": "HEAL" },
@@ -1445,7 +1323,8 @@
         { "text": "Shop", "action": "SHOP" },
         { "text": "Challenge Gym", "action": "GYM" }
       ],
-      "next_area": "KALOS_ROUTE_18"
+      "next_area": "KALOS_ROUTE_18",
+        "on_enter_event": {"type": "trainer_battle", "trainer": {"name": "{rival_name}", "class": "RIVAL", "sprite": "{rival_character}", "team": [135, 359, 655], "team_choice": {"650": [135, 359, 655], "653": [136, 359, 658], "656": [134, 359, 652]}, "levels": [44, 44, 44], "is_boss_battle": true, "rewards": {"balls": 8}, "by_character": {"calem": {"team": [678, 135, 359, 655], "team_choice": {"650": [678, 135, 359, 655], "653": [678, 136, 359, 658], "656": [678, 134, 359, 652]}, "levels": [44, 44, 44, 46]}}, "dialogue": {"intro": ["{rival_name}: After everything with Team Flare... I need to know I'm strong enough. Battle me."], "player_won": ["{rival_name}: Thank you. I feel ready now."], "player_lost": ["{rival_name}: Keep at it, {player_name}."]}}, "condition": ["has_fairy_badge", "not:has_psychic_badge"], "flag_check": "defeated_rival_anistar"}
     },
     "COURIWAY_TOWN": {
       "area_type": "town",
@@ -1458,31 +1337,12 @@
         { "text": "Route 19 (to Snowbelle)", "target_area": "KALOS_ROUTE_19" }
       ],
       "explore_options": [
-        { "text": "Pokémon Center", "action": "HEAL" },
-        { "text": "Pokémon-Amie", "action": "AMIE" },
-        { "text": "Shop", "action": "SHOP" },
-        { "text": "Rival Battle", "action": "NPC", "target": "kalos_rival_couriway", "flag_condition": "not defeated_rival_couriway" }
+        {"text": "Pokémon Center", "action": "HEAL"},
+        {"text": "Pokémon-Amie", "action": "AMIE"},
+        {"text": "Shop", "action": "SHOP"}
       ],
       "next_area": "KALOS_ROUTE_19",
-      "on_enter_event": {
-        "type": "trainer_battle",
-        "trainer": {
-          "name": "{rival_name}",
-          "class": "PKMN_TRAINER",
-          "sprite": "{rival_character}",
-          "team": [658, 668, 700],
-          "team_choice": { "650": [658, 668, 700], "653": [652, 691, 700], "656": [655, 668, 706] },
-          "rewards": { "balls": 8 },
-          "victory_flag": "defeated_rival_couriway",
-          "dialogue": {
-            "intro": ["{rival_name}: {player_name}. I've been waiting here.", "I've grown a lot since Vaniville. And I intend to prove it."],
-            "player_won": ["{rival_name}: ...You're incredible. I'll catch up. I promise."],
-            "player_lost": ["{rival_name}: I've become stronger. Good — the League needs competition."]
-          }
-        },
-        "condition": "has_psychic_badge",
-        "flag_check": "defeated_rival_couriway"
-      }
+      "on_enter_event": null
     },
     "SNOWBELLE_CITY": {
       "area_type": "town",
@@ -1579,22 +1439,15 @@
       "battle_type": "cave",
       "wild_pool_percentages": "KALOS_GLITTERING_CAVE_PERCENTAGES",
       "min_rounds": 2,
-      "trainer_pool": [
-        {
-          "name": "Team Flare Grunt",
-          "class": "FLARE",
-          "victory_flag": "glittering_cave_cleared",
-          "sprite": "flare_grunt.png",
-          "team": [667, 694],
-          "rewards": { "balls": 3 },
-          "dialogue": {
-            "intro": ["Team Flare owns these fossils!"],
-            "player_won": ["How uncouth!"],
-            "player_lost": ["Style is power!"]
-          }
-        }
-      ],
-      "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "BATTLE TEAM FLARE", "action": "TRAINER", "condition": "has_trainers", "color": "GOLD", "flag_condition": "not glittering_cave_cleared"}, {"text": "SEARCH THE FOSSIL DIG", "action": "EVENT", "color": "ORANGE", "flag_condition": "not got_kalos_old_amber", "event": {"lines": ["A Hiker is digging near the cave wall. \"Found another one! I've got plenty.\"", "\"Take this Old Amber. The lab in Ambrette Town can bring it back to life.\""], "gift_item": {"OLD_AMBER": 1}, "flag": "got_kalos_old_amber"}}, {"text": "Ambrette Town", "action": "EXIT", "target_area": "AMBRETTE_TOWN", "condition": "can_exit", "color": "RED"}]
+      "trainer_pool": [{"name": "Team Flare Grunt", "class": "FLARE", "victory_flag": "glittering_cave_cleared", "sprite": "flare_grunt.png", "team": [228, 41], "rewards": {"balls": 3}, "dialogue": {"intro": ["Team Flare owns these fossils!"], "player_won": ["How uncouth!"], "player_lost": ["Style is power!"]}}],
+      "route_menu": [
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "BATTLE TEAM FLARE", "action": "TRAINER", "condition": "has_trainers", "color": "GOLD", "flag_condition": "not glittering_cave_cleared"},
+        {"text": "SEARCH THE FOSSIL DIG", "action": "EVENT", "color": "ORANGE", "flag_condition": "not got_kalos_old_amber", "event": {"lines": ["A Hiker is digging near the cave wall. \"Found another one! I've got plenty.\"", "\"Take this Old Amber. The lab in Ambrette Town can bring it back to life.\""], "gift_item": {"OLD_AMBER": 1}, "flag": "got_kalos_old_amber"}},
+        {"text": "Ambrette Town", "action": "EXIT", "target_area": "AMBRETTE_TOWN", "condition": "can_exit", "color": "RED"},
+        {"text": "ROUTE 9", "action": "EXIT", "target": "KALOS_ROUTE_9", "condition": "can_exit", "color": "RED"}
+      ]
     },
     "REFLECTION_CAVE": {
       "area_type": "dungeon",
@@ -1634,7 +1487,8 @@
           "color": "GOLD"
         },
         { "text": "Shalour City", "action": "EXIT", "target_area": "SHALOUR_CITY", "condition": "can_exit", "color": "RED" }
-      ]
+      ],
+        "on_enter_event": {"type": "trainer_battle", "trainer": {"name": "{rival_name}", "class": "RIVAL", "sprite": "{rival_character}", "team": [678, 654, 359], "team_choice": {"650": [678, 654, 359], "653": [678, 657, 359], "656": [678, 651, 359]}, "levels": [28, 30, 28], "is_boss_battle": true, "rewards": {"balls": 8}, "by_character": {"calem": {"team": [678, 654, 359], "team_choice": {"650": [678, 654, 359], "653": [678, 657, 359], "656": [678, 651, 359]}, "levels": [28, 30, 28]}}, "dialogue": {"intro": ["{rival_name}: So you made it to the Tower of Mastery too. Let's see whose bond is stronger!"], "player_won": ["{rival_name}: Your Pokémon really trust you."], "player_lost": ["{rival_name}: Keep at it, {player_name}."]}}, "condition": ["has_cliff_badge", "not:has_rumble_badge"], "flag_check": "defeated_rival_mastery"}
     },
     "CONNECTING_CAVE": {
       "area_type": "dungeon",
@@ -1644,10 +1498,11 @@
       "wild_pool_percentages": "KALOS_CONNECTING_CAVE_PERCENTAGES",
       "min_rounds": 2,
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "Route 7 (west)", "action": "EXIT", "target_area": "KALOS_ROUTE_7", "condition": "can_exit", "color": "RED" },
-        { "text": "Route 8 (east to Ambrette)", "action": "EXIT", "target_area": "KALOS_ROUTE_8", "condition": "can_exit", "color": "RED" }
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "Route 7 (west)", "action": "EXIT", "target_area": "KALOS_ROUTE_7", "condition": "can_exit", "color": "RED"},
+        {"text": "Route 8 (east to Ambrette)", "action": "EXIT", "target_area": "KALOS_ROUTE_8", "condition": "can_exit", "color": "RED"},
+        {"text": "CYLLAGE CITY", "action": "EXIT", "target": "CYLLAGE_CITY", "condition": "can_exit", "color": "RED"}
       ]
     },
     "GEOSENGE_FLARE_HQ": {
@@ -1657,7 +1512,10 @@
       "battle_type": "indoor",
       "wild_pool_percentages": null,
       "min_rounds": 0,
-      "trainer_pool": [{"name": "Team Flare Admin", "class": "FLARE", "sprite": "flare_admin.png", "is_boss_battle": true, "team": [668, 687, 663], "rewards": {"balls": 8}, "dialogue": {"intro": ["You dare intrude on Lord Lysandre's plan?!"], "player_won": ["The beautiful world... slipping away..."], "player_lost": ["Beauty and power are one!"]}}, {"name": "Lysandre", "class": "RIVAL", "sprite": "lysandre.png", "is_boss_battle": true, "team": [700, 687, 663, 668], "rewards": {"balls": 15}, "victory_flag": "geosenge_flare_cleared", "dialogue": {"intro": ["Lysandre: The world is finite. What exists must be preserved — by eliminating excess."], "player_won": ["Lysandre: ...A worthy beauty. I underestimated what you and your Pokémon represent."], "player_lost": ["Lysandre: This is the only logical conclusion. A beautiful world cannot sustain everyone."]}, "movesets": {"668": ["HYPER-VOICE", "FIRE-BLAST", "DARK-PULSE"]}}],
+      "trainer_pool": [
+        {"name": "Team Flare Admin", "class": "FLARE", "sprite": "flare_admin.png", "is_boss_battle": true, "team": [454], "rewards": {"balls": 8}, "dialogue": {"intro": ["You dare intrude on Lord Lysandre's plan?!"], "player_won": ["The beautiful world... slipping away..."], "player_lost": ["Beauty and power are one!"]}, "levels": [50]},
+        {"name": "Lysandre", "class": "RIVAL", "sprite": "lysandre.png", "is_boss_battle": true, "team": [620, 668, 430, 130], "rewards": {"balls": 15}, "victory_flag": "geosenge_flare_cleared", "dialogue": {"intro": ["Lysandre: The world is finite. What exists must be preserved — by eliminating excess."], "player_won": ["Lysandre: ...A worthy beauty. I underestimated what you and your Pokémon represent."], "player_lost": ["Lysandre: This is the only logical conclusion. A beautiful world cannot sustain everyone."]}, "movesets": {"668": ["HYPER-VOICE", "FIRE-BLAST", "DARK-PULSE"]}, "levels": [49, 51, 49, 53]}
+      ],
       "route_menu": [
         {
           "text": "BATTLE TEAM FLARE",
@@ -1686,32 +1544,9 @@
       "wild_pool_percentages": null,
       "min_rounds": 0,
       "trainer_pool": [
-        {
-          "name": "Team Flare Grunt",
-          "class": "FLARE",
-          "sprite": "flare_grunt.png",
-          "team": [685, 671],
-          "rewards": { "balls": 5 },
-          "dialogue": {
-            "intro": ["This factory produces only for Team Flare!"],
-            "player_won": ["Our style cannot be beaten by force..."],
-            "player_lost": ["Fashion IS force!"]
-          }
-        },
-        {
-          "name": "Team Flare Admin Celosia",
-          "class": "FLARE",
-          "sprite": "flare_admin.png",
-          "is_boss_battle": true,
-          "team": [679, 679, 680],
-          "rewards": { "balls": 10 },
-          "victory_flag": "pokeball_factory_cleared",
-          "dialogue": {
-            "intro": ["Celosia: You won't leave here with Team Flare's resources!"],
-            "player_won": ["Celosia: How... unfashionable."],
-            "player_lost": ["Celosia: Impeccably done!"]
-          }
-        }
+        {"name": "Team Flare Grunt", "class": "FLARE", "sprite": "flare_grunt.png", "team": [685, 671], "rewards": {"balls": 5}, "dialogue": {"intro": ["This factory produces only for Team Flare!"], "player_won": ["Our style cannot be beaten by force..."], "player_lost": ["Fashion IS force!"]}},
+        {"name": "Team Flare Admin Bryony", "class": "FLARE", "sprite": "scientist.png", "team": [510], "levels": [41], "is_boss_battle": true, "rewards": {"balls": 5}},
+        {"name": "Team Flare Admin Celosia", "class": "FLARE", "sprite": "flare_admin.png", "is_boss_battle": true, "team": [310], "rewards": {"balls": 10}, "victory_flag": "pokeball_factory_cleared", "dialogue": {"intro": ["Celosia: You won't leave here with Team Flare's resources!"], "player_won": ["Celosia: How... unfashionable."], "player_lost": ["Celosia: Impeccably done!"]}, "levels": [41]}
       ],
       "route_menu": [
         {
@@ -1749,22 +1584,7 @@
       "battle_type": "cave",
       "wild_pool_percentages": "KALOS_FROST_CAVERN_PERCENTAGES",
       "min_rounds": 2,
-      "trainer_pool": [
-        {
-          "name": "Team Flare Admin Mable",
-          "class": "FLARE",
-          "sprite": "flare_admin.png",
-          "is_boss_battle": true,
-          "team": [614, 460],
-          "rewards": { "balls": 8 },
-          "victory_flag": "frost_cavern_cleared",
-          "dialogue": {
-            "intro": ["Mable: You're interfering with Team Flare's beautiful plans!"],
-            "player_won": ["Mable: You'll regret crossing Team Flare!"],
-            "player_lost": ["Mable: Everything proceeds according to Lord Lysandre's vision."]
-          }
-        }
-      ],
+      "trainer_pool": [{"name": "Team Flare Admin Mable", "class": "FLARE", "sprite": "flare_admin.png", "is_boss_battle": true, "team": [229], "rewards": {"balls": 8}, "victory_flag": "frost_cavern_cleared", "dialogue": {"intro": ["Mable: You're interfering with Team Flare's beautiful plans!"], "player_won": ["Mable: You'll regret crossing Team Flare!"], "player_lost": ["Mable: Everything proceeds according to Lord Lysandre's vision."]}, "levels": [48]}],
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
@@ -1824,29 +1644,8 @@
       "wild_pool_percentages": "KALOS_VICTORY_ROAD_PERCENTAGES",
       "min_rounds": 3,
       "trainer_pool": [
-        {
-          "name": "Ace Trainer Bence",
-          "class": "ACE_TRAINER",
-          "sprite": "acetrainer_m.png",
-          "is_boss_battle": true,
-          "team": [700, 715],
-          "rewards": { "balls": 5 }
-        },
-        {
-          "name": "{rival_name}",
-          "class": "PKMN_TRAINER",
-          "sprite": "{rival_character}",
-          "is_boss_battle": true,
-          "team": [658, 668, 706],
-          "team_choice": { "650": [658, 668, 706], "653": [652, 706, 700], "656": [655, 706, 671] },
-          "rewards": { "balls": 8 },
-          "victory_flag": "defeated_rival_victory_road_kalos",
-          "dialogue": {
-            "intro": ["{rival_name}: {player_name}. This is it. The last time we meet before the League.", "Show me everything."],
-            "player_won": ["{rival_name}: ...Amazing. Go, {player_name}. Be Champion."],
-            "player_lost": ["{rival_name}: I've grown so much. Now — go. Win the whole thing."]
-          }
-        }
+        {"name": "Ace Trainer Bence", "class": "ACE_TRAINER", "sprite": "acetrainer_m.png", "is_boss_battle": true, "team": [700, 715], "rewards": {"balls": 5}},
+        {"name": "{rival_name}", "class": "PKMN_TRAINER", "sprite": "{rival_character}", "is_boss_battle": true, "team": [334, 135, 359, 655], "team_choice": {"650": [334, 135, 359, 655], "653": [334, 136, 359, 658], "656": [334, 134, 359, 652]}, "rewards": {"balls": 8}, "victory_flag": "defeated_rival_victory_road_kalos", "dialogue": {"intro": ["{rival_name}: {player_name}. This is it. The last time we meet before the League.", "Show me everything."], "player_won": ["{rival_name}: ...Amazing. Go, {player_name}. Be Champion."], "player_lost": ["{rival_name}: I've grown so much. Now — go. Win the whole thing."]}, "levels": [57, 57, 57, 59], "by_character": {"calem": {"team": [678, 334, 135, 359, 655], "team_choice": {"650": [678, 334, 135, 359, 655], "653": [678, 334, 136, 359, 658], "656": [678, 334, 134, 359, 652]}, "levels": [57, 57, 57, 59, 61]}}}
       ],
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
@@ -1988,7 +1787,8 @@
         { "text": "Lumiose City", "action": "EXIT", "target_area": "LUMIOSE_CITY", "condition": "can_exit", "color": "RED" },
         { "text": "Camphrier Town", "action": "EXIT", "target_area": "CAMPHRIER_TOWN", "condition": "can_exit", "color": "RED" }
       ],
-      "next_area": "CAMPHRIER_TOWN"
+      "next_area": "CAMPHRIER_TOWN",
+        "on_enter_event": {"type": "trainer_battle", "trainer": {"name": "Tierno", "class": "PKMN_TRAINER", "sprite": "pokefan_m.png", "team": [341], "levels": [12], "is_boss_battle": true, "rewards": {"balls": 5}, "dialogue": {"intro": ["Tierno: Let's dance... I mean battle!"], "player_won": ["Tierno: Your moves are so smooth!"]}}, "condition": ["has_bug_badge", "not:has_cliff_badge"], "flag_check": "defeated_tierno_route5"}
     },
     "KALOS_ROUTE_6": {
       "area_type": "wild_route",
@@ -2041,7 +1841,11 @@
         { "text": "Route 6", "action": "EXIT", "target_area": "KALOS_ROUTE_6", "condition": "can_exit", "color": "RED" },
         {"text": "Battle Chateau", "action": "EXIT", "target_area": "BATTLE_CHATEAU", "condition": "can_exit", "color": "RED"}
       ],
-      "next_area": "CONNECTING_CAVE"
+      "next_area": "CONNECTING_CAVE",
+        "on_enter_event": [
+          {"type": "trainer_battle", "trainer": {"name": "Tierno", "class": "PKMN_TRAINER", "sprite": "pokefan_m.png", "team": [341], "levels": [14], "is_boss_battle": true, "rewards": {"balls": 5}, "dialogue": {"intro": ["Tierno: Rematch! My Corphish has new moves!"], "player_won": ["Tierno: Still the best dancer around!"]}}, "condition": ["has_bug_badge", "not:has_cliff_badge"], "flag_check": "defeated_tierno_route7"},
+          {"type": "trainer_battle", "trainer": {"name": "Trevor", "class": "PKMN_TRAINER", "sprite": "youngster.png", "team": [25], "levels": [16], "is_boss_battle": true, "rewards": {"balls": 5}, "dialogue": {"intro": ["Trevor: Um... could we battle? For my Pokédex research?"], "player_won": ["Trevor: I learned a lot. Thank you!"]}}, "condition": ["has_bug_badge", "not:has_cliff_badge"], "flag_check": "defeated_trevor_route7"}
+        ]
     },
     "KALOS_ROUTE_8": {
       "area_type": "wild_route",
@@ -2060,11 +1864,12 @@
         }
       ],
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
-        { "text": "Connecting Cave", "action": "EXIT", "target_area": "CONNECTING_CAVE", "condition": "can_exit", "color": "RED" },
-        { "text": "Ambrette Town", "action": "EXIT", "target_area": "AMBRETTE_TOWN", "condition": "can_exit", "color": "RED" }
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"},
+        {"text": "Connecting Cave", "action": "EXIT", "target_area": "CONNECTING_CAVE", "condition": "can_exit", "color": "RED"},
+        {"text": "Ambrette Town", "action": "EXIT", "target_area": "AMBRETTE_TOWN", "condition": "can_exit", "color": "RED"},
+        {"text": "CYLLAGE CITY", "action": "EXIT", "target": "CYLLAGE_CITY", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "AMBRETTE_TOWN"
     },
@@ -2085,11 +1890,12 @@
         }
       ],
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
-        { "text": "Ambrette Town", "action": "EXIT", "target_area": "AMBRETTE_TOWN", "condition": "can_exit", "color": "RED" },
-        { "text": "Cyllage City", "action": "EXIT", "target_area": "CYLLAGE_CITY", "condition": "can_exit", "color": "RED" }
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"},
+        {"text": "Ambrette Town", "action": "EXIT", "target_area": "AMBRETTE_TOWN", "condition": "can_exit", "color": "RED"},
+        {"text": "Cyllage City", "action": "EXIT", "target_area": "CYLLAGE_CITY", "condition": "can_exit", "color": "RED"},
+        {"text": "GLITTERING CAVE", "action": "EXIT", "target": "GLITTERING_CAVE", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "CYLLAGE_CITY"
     },
@@ -2220,7 +2026,8 @@
         { "text": "Lumiose City", "action": "EXIT", "target_area": "LUMIOSE_CITY", "condition": "can_exit", "color": "RED" },
         { "text": "Laverre City", "action": "EXIT", "target_area": "LAVERRE_CITY", "condition": "can_exit", "color": "RED" }
       ],
-      "next_area": "LAVERRE_CITY"
+      "next_area": "LAVERRE_CITY",
+        "on_enter_event": {"type": "trainer_battle", "trainer": {"name": "{rival_name}", "class": "RIVAL", "sprite": "{rival_character}", "team": [359, 655], "team_choice": {"650": [359, 655], "653": [359, 658], "656": [359, 652]}, "levels": [35, 35], "is_boss_battle": true, "rewards": {"balls": 8}, "by_character": {"calem": {"team": [678, 359, 655], "team_choice": {"650": [678, 359, 655], "653": [678, 359, 658], "656": [678, 359, 652]}, "levels": [35, 35, 37]}}, "dialogue": {"intro": ["{rival_name}: My partner just evolved! Let me show you!"], "player_won": ["{rival_name}: ...I'll keep training."], "player_lost": ["{rival_name}: Keep at it, {player_name}."]}}, "condition": ["has_voltage_badge", "not:has_fairy_badge"], "flag_check": "defeated_rival_route14"}
     },
     "KALOS_ROUTE_15": {
       "area_type": "wild_route",
@@ -2239,12 +2046,13 @@
         }
       ],
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
-        { "text": "Laverre City", "action": "EXIT", "target_area": "LAVERRE_CITY", "condition": "can_exit", "color": "RED" },
-        { "text": "Lost Hotel", "action": "EXIT", "target_area": "LOST_HOTEL", "condition": "can_exit", "color": "RED" },
-        { "text": "Route 16", "action": "EXIT", "target_area": "KALOS_ROUTE_16", "condition": "can_exit", "color": "RED" }
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"},
+        {"text": "Laverre City", "action": "EXIT", "target_area": "LAVERRE_CITY", "condition": "can_exit", "color": "RED"},
+        {"text": "Lost Hotel", "action": "EXIT", "target_area": "LOST_HOTEL", "condition": "can_exit", "color": "RED"},
+        {"text": "Route 16", "action": "EXIT", "target_area": "KALOS_ROUTE_16", "condition": "can_exit", "color": "RED"},
+        {"text": "DENDEMILLE TOWN", "action": "EXIT", "target": "DENDEMILLE_TOWN", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "LOST_HOTEL"
     },
@@ -2265,12 +2073,13 @@
         }
       ],
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
-        { "text": "Lost Hotel", "action": "EXIT", "target_area": "LOST_HOTEL", "condition": "can_exit", "color": "RED" },
-        { "text": "Dendemille Town", "action": "EXIT", "target_area": "DENDEMILLE_TOWN", "condition": "can_exit", "color": "RED" },
-        { "text": "Route 15", "action": "EXIT", "target_area": "KALOS_ROUTE_15", "condition": "can_exit", "color": "RED" }
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"},
+        {"text": "Lost Hotel", "action": "EXIT", "target_area": "LOST_HOTEL", "condition": "can_exit", "color": "RED"},
+        {"text": "Dendemille Town", "action": "EXIT", "target_area": "DENDEMILLE_TOWN", "condition": "can_exit", "color": "RED"},
+        {"text": "Route 15", "action": "EXIT", "target_area": "KALOS_ROUTE_15", "condition": "can_exit", "color": "RED"},
+        {"text": "LUMIOSE CITY", "action": "EXIT", "target": "LUMIOSE_CITY", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "DENDEMILLE_TOWN"
     },
@@ -2359,7 +2168,12 @@
         { "text": "Couriway Town", "action": "EXIT", "target_area": "COURIWAY_TOWN", "condition": "can_exit", "color": "RED" },
         { "text": "Snowbelle City", "action": "EXIT", "target_area": "SNOWBELLE_CITY", "condition": "can_exit", "color": "RED" }
       ],
-      "next_area": "SNOWBELLE_CITY"
+      "next_area": "SNOWBELLE_CITY",
+        "on_enter_event": [
+          {"type": "trainer_battle", "trainer": {"name": "{friend_name}", "class": "PKMN_TRAINER", "sprite": "{friend_character}", "team": [301, 706, 658], "levels": [49, 49, 51], "is_boss_battle": true, "rewards": {"balls": 5}, "dialogue": {"intro": ["{friend_name}: We came to cheer you on! But first... battle!"], "player_won": ["{friend_name}: You're amazing!"]}, "team_choice": {"650": [301, 706, 658], "653": [301, 706, 652], "656": [301, 706, 655]}}, "condition": ["has_psychic_badge", "not:has_iceberg_badge"], "flag_check": "defeated_shauna_route19"},
+          {"type": "trainer_battle", "trainer": {"name": "Tierno", "class": "PKMN_TRAINER", "sprite": "pokefan_m.png", "team": [663, 407, 342], "levels": [48, 49, 52], "is_boss_battle": true, "rewards": {"balls": 5}, "dialogue": {"intro": ["Tierno: My team's grooving! Battle!"], "player_won": ["Tierno: You've got the best rhythm in Kalos!"]}}, "condition": ["has_psychic_badge", "not:has_iceberg_badge"], "flag_check": "defeated_tierno_route19"},
+          {"type": "trainer_battle", "trainer": {"name": "Trevor", "class": "PKMN_TRAINER", "sprite": "youngster.png", "team": [26, 142], "levels": [49, 49], "is_boss_battle": true, "rewards": {"balls": 5}, "dialogue": {"intro": ["Trevor: I've been training too! Please, one battle!"], "player_won": ["Trevor: You're incredible."]}}, "condition": ["has_psychic_badge", "not:has_iceberg_badge"], "flag_check": "defeated_trevor_route19"}
+        ]
     },
     "FLARE_HQ_INNER_CHAMBER": {
       "area_type": "dungeon",
@@ -2380,7 +2194,9 @@
         "LUMIOSE_ROUGE_DISTRICT": {"area_type": "town", "route_name": "Rouge District", "region": "KALOS", "has_gym": false, "trainer_encounter_rate": 0, "travel_options": [{"text": "Centrico Plaza (Prism Tower)", "target_area": "LUMIOSE_CITY"}, {"text": "Vert District", "target_area": "LUMIOSE_VERT_DISTRICT"}, {"text": "Magenta District", "target_area": "LUMIOSE_MAGENTA_DISTRICT"}], "explore_options": [{"text": "Help at Café Soleil", "action": "EVENT", "color": "GOLD", "flag_condition": "not lumiose_cafe_job", "event": {"puzzle": "cafe", "flag": "lumiose_cafe_job", "gift_item": {"RARE_CANDY": 1}, "lines": ["Owner: Merci! Here, a little something for your hard work."], "puzzle_fail": ["Owner: Don't worry, come back and try again when it's less busy!"]}}, {"text": "Restaurant Le Wow: Waiter", "action": "EVENT", "flag_condition": "not lumiose_le_wow_1", "event": {"lines": ["Restaurant Le Wow serves battles with every course. Your first course: Waiter Gaston!"], "flag": "lumiose_le_wow_1", "battle": {"name": "Waiter Gaston", "class": "GENTLEMAN", "sprite": "gentleman.png", "team": [678, 675], "is_boss_battle": true, "rewards": {"balls": 5}, "dialogue": {"player_won": ["Gaston: Magnifique! Your next course awaits."]}}}}, {"text": "Restaurant Le Wow: Chef", "action": "EVENT", "color": "GOLD", "condition": "lumiose_le_wow_1", "flag_condition": "not lumiose_le_wow_2", "event": {"lines": ["Chef Pierre: Dessert is served... in battle!"], "flag": "lumiose_le_wow_2", "battle": {"name": "Chef Pierre", "class": "GENTLEMAN", "sprite": "gentleman.png", "team": [668, 609, 707], "is_boss_battle": true, "rewards": {"balls": 10, "RARE_CANDY": 2}, "dialogue": {"player_won": ["Chef Pierre: A perfect meal! The house thanks you."]}}}}], "trainer_pool": [], "on_enter_event": null},
         "LUMIOSE_MAGENTA_DISTRICT": {"area_type": "town", "route_name": "Magenta District", "region": "KALOS", "has_gym": false, "trainer_encounter_rate": 0, "travel_options": [{"text": "Centrico Plaza (Prism Tower)", "target_area": "LUMIOSE_CITY"}, {"text": "Rouge District", "target_area": "LUMIOSE_ROUGE_DISTRICT"}, {"text": "Bleu District", "target_area": "LUMIOSE_BLEU_DISTRICT"}], "explore_options": [{"text": "Work the Galette Stall", "action": "EVENT", "color": "GOLD", "flag_condition": "not lumiose_galette_job", "event": {"puzzle": "galette", "flag": "lumiose_galette_job", "gift_item": {"FULL_HEAL": 3}, "lines": ["Vendor: You're a natural! Take some of the stall's medicine, the same stuff we bake into the galettes."], "puzzle_fail": ["Vendor: Don't worry, come back when the line's shorter!"]}}, {"text": "Friseur Furfrou", "action": "EVENT", "condition": "party_has:676", "event": {"lines": ["Groomer: What a lovely Furfrou! A quick trim, on the house.", "Your Furfrou struts out with a fresh, fluffy cut. It looks very pleased with itself!"]}}, {"text": "Window shopping", "action": "EVENT", "event": {"lines": ["Boutiques line Magenta Plaza. The prices make your eyes water!"]}}], "trainer_pool": [], "on_enter_event": null},
         "LUMIOSE_BLEU_DISTRICT": {"area_type": "town", "route_name": "Bleu District", "region": "KALOS", "has_gym": false, "trainer_encounter_rate": 0, "travel_options": [{"text": "Centrico Plaza (Prism Tower)", "target_area": "LUMIOSE_CITY"}, {"text": "Magenta District", "target_area": "LUMIOSE_MAGENTA_DISTRICT"}, {"text": "Hibernal District", "target_area": "LUMIOSE_HIBERNAL_DISTRICT"}], "explore_options": [{"text": "Stone Emporium", "action": "SHOP", "stock": ["FIRE_STONE", "WATER_STONE", "THUNDER_STONE", "LEAF_STONE", "MOON_STONE", "SUN_STONE", "SHINY_STONE", "DUSK_STONE", "DAWN_STONE"]}, {"text": "Lumiose Museum", "action": "EVENT", "event": {"lines": ["Paintings and suits of armour fill the museum's halls.", "A plaque tells of a king, a war, and a weapon built 3,000 years ago..."]}}], "trainer_pool": [], "on_enter_event": null},
-        "LUMIOSE_HIBERNAL_DISTRICT": {"area_type": "dungeon", "route_name": "Hibernal District", "region": "KALOS", "battle_type": "indoor", "min_rounds": 0, "trainer_pool": [{"name": "Ace Trainer Arthur", "class": "ACE_TRAINER", "sprite": "acetrainer_m.png", "team": [685, 683], "rewards": {"balls": 3}}, {"name": "Ace Trainer Beatrice", "class": "ACE_TRAINER", "sprite": "acetrainer_f.png", "team": [671, 680], "rewards": {"balls": 3}}, {"name": "Ace Trainer Collin", "class": "ACE_TRAINER", "sprite": "acetrainer_m.png", "team": [695, 697], "rewards": {"balls": 3}}, {"name": "Veteran Dominique", "class": "VETERAN", "sprite": "veteran.png", "team": [699, 706], "rewards": {"balls": 5}}, {"name": "Institute Head Evelyn", "class": "ACE_TRAINER", "sprite": "acetrainer_f.png", "team": [715, 701, 663], "is_boss_battle": true, "rewards": {"balls": 10, "RARE_CANDY": 2}, "victory_flag": "lumiose_battle_institute", "dialogue": {"intro": ["Evelyn: Five battles in a row: that's the Battle Institute test. Last one!"], "player_won": ["Evelyn: Top marks! Your name goes on the Institute's board."]}}], "route_menu": [{"text": "TAKE THE BATTLE INSTITUTE TEST", "action": "GALACTIC_GAUNTLET", "color": "GOLD", "flag_condition": "not lumiose_battle_institute"}, {"text": "REST AT CAFE INTROVERSION", "action": "REST", "color": "BLUE"}, {"text": "BLEU DISTRICT", "action": "EXIT", "target": "LUMIOSE_BLEU_DISTRICT", "condition": "can_exit", "color": "RED"}, {"text": "CENTRICO PLAZA", "action": "EXIT", "target": "LUMIOSE_CITY", "condition": "can_exit", "color": "RED"}], "next_area": "LUMIOSE_CITY"}
+        "LUMIOSE_HIBERNAL_DISTRICT": {"area_type": "dungeon", "route_name": "Hibernal District", "region": "KALOS", "battle_type": "indoor", "min_rounds": 0, "trainer_pool": [{"name": "Ace Trainer Arthur", "class": "ACE_TRAINER", "sprite": "acetrainer_m.png", "team": [685, 683], "rewards": {"balls": 3}}, {"name": "Ace Trainer Beatrice", "class": "ACE_TRAINER", "sprite": "acetrainer_f.png", "team": [671, 680], "rewards": {"balls": 3}}, {"name": "Ace Trainer Collin", "class": "ACE_TRAINER", "sprite": "acetrainer_m.png", "team": [695, 697], "rewards": {"balls": 3}}, {"name": "Veteran Dominique", "class": "VETERAN", "sprite": "veteran.png", "team": [699, 706], "rewards": {"balls": 5}}, {"name": "Institute Head Evelyn", "class": "ACE_TRAINER", "sprite": "acetrainer_f.png", "team": [715, 701, 663], "is_boss_battle": true, "rewards": {"balls": 10, "RARE_CANDY": 2}, "victory_flag": "lumiose_battle_institute", "dialogue": {"intro": ["Evelyn: Five battles in a row: that's the Battle Institute test. Last one!"], "player_won": ["Evelyn: Top marks! Your name goes on the Institute's board."]}}], "route_menu": [{"text": "TAKE THE BATTLE INSTITUTE TEST", "action": "GALACTIC_GAUNTLET", "color": "GOLD", "flag_condition": "not lumiose_battle_institute"}, {"text": "REST AT CAFE INTROVERSION", "action": "REST", "color": "BLUE"}, {"text": "BLEU DISTRICT", "action": "EXIT", "target": "LUMIOSE_BLEU_DISTRICT", "condition": "can_exit", "color": "RED"}, {"text": "CENTRICO PLAZA", "action": "EXIT", "target": "LUMIOSE_CITY", "condition": "can_exit", "color": "RED"}], "next_area": "LUMIOSE_CITY"},
+        "KALOS_FLARE_CAFE": {"area_type": "town", "route_name": "Lysandre Café", "region": "KALOS", "has_gym": false, "trainer_encounter_rate": 0, "travel_options": [{"text": "Lumiose City", "target_area": "LUMIOSE_CITY"}, {"text": "Lysandre Labs", "target_area": "LYSANDRE_LABS"}], "explore_options": [{"text": "Order a coffee", "action": "HEAL"}, {"text": "Talk to the staff", "action": "EVENT", "event": {"lines": ["The waiters in red suits smile a little too widely..."]}}], "trainer_pool": [], "on_enter_event": null},
+        "CHAMBER_OF_EMPTINESS": {"area_type": "dungeon", "route_name": "Chamber of Emptiness", "region": "KALOS", "battle_type": "cave", "min_rounds": 0, "trainer_pool": [], "next_area": "KALOS_ROUTE_22", "route_menu": [{"text": "SIT IN THE SILENCE", "action": "EVENT", "color": "BLUE", "event": {"lines": ["An empty stone room. It is perfectly quiet.", "A sign reads: 'Clear your mind, and your Pokémon will follow.'"]}}, {"text": "ROUTE 22", "action": "EXIT", "target": "KALOS_ROUTE_22", "condition": "can_exit", "color": "RED"}]}
     },
   "JOURNAL_MISSIONS": [
     {
@@ -2509,7 +2325,7 @@
   "KALOS_ROUTE_6": [672, 673, 664, 665],
   "KALOS_ROUTE_6_PERCENTAGES": { "672": 11, "673": 10, "664": 7, "665": 5, "43": 10, "161": 7, "290": 3, "352": 1, "531": 7, "543": 27, "677": 7, "679": 5 },
   "KALOS_ROUTE_7": [688, 689, 694, 695],
-  "KALOS_ROUTE_7_PERCENTAGES": { "688": 5, "689": 4, "694": 4, "695": 3, "54": 5, "143": 15, "187": 8, "235": 5, "313": 5, "314": 5, "315": 5, "453": 6, "580": 5, "669": 11, "682": 5, "684": 5, "446": 4 },
+  "KALOS_ROUTE_7_PERCENTAGES": {"688": 5, "689": 4, "694": 4, "695": 3, "54": 5, "143": 15, "187": 8, "235": 5, "313": 5, "314": 5, "315": 5, "453": 6, "580": 5, "669": 11, "682": 5, "684": 5, "446": 4, "165": 3, "412": 3, "415": 3, "665": 3},
   "KALOS_ROUTE_8": [690, 691, 692, 693],
   "KALOS_ROUTE_8_PERCENTAGES": { "690": 4, "691": 4, "692": 4, "693": 3, "72": 10, "95": 5, "320": 4, "557": 9, "688": 5, "276": 2, "278": 9, "325": 4, "335": 8, "336": 8, "359": 4, "371": 1, "425": 6, "619": 6, "686": 4 },
   "KALOS_ROUTE_9": [690, 691, 688, 694],

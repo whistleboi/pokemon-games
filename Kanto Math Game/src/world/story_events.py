@@ -171,24 +171,11 @@ EVENTS = {
     "burgh_sewers": {
         "lines": ["unova_castelia_sewers"], "flag": "plasma_castelia_cleared",
         "battle": _t(GRUNT_P, team=[509, 504], dialogue={"player_won": ["unova_plasma_grunt_lost"]})},
-    "bianca_castelia": {
-        "lines": ["{friend_name}: {player_name}! Let's see how much we've both grown!"], "flag": "defeated_bianca_castelia",
-        "battle": {"name": "{friend_name}", "class": "PKMN_TRAINER", "sprite": "{friend_character}",
-                   "team": [507, 517, 502],
-                   "team_choice": {"495": [507, 517, 502], "498": [507, 517, 496], "501": [507, 517, 499]},
-                   "dialogue": {"player_won": ["unova_bianca_won"]}}},
     "n_nimbasa_ferris_wheel": {
         "lines": ["unova_n_nimbasa_ferris_wheel", "N: I am the king of Team Plasma. Now, let us battle."],
         "flag": "met_n_nimbasa",
         "battle": {"name": "N", "class": "PKMN_TRAINER", "sprite": "n.png", "team": [551, 554, 559, 561],
                    "dialogue": {"player_won": ["N: I'll become the hero, and find Reshiram... or Zekrom."]}}},
-    "bianca_nimbasa": {
-        "lines": ["unova_bianca_nimbasa"], "flag": "defeated_bianca_nimbasa",
-        "battle": {"name": "{friend_name}", "class": "PKMN_TRAINER", "sprite": "{friend_character}",
-                   "team": [507, 517, 513, 502],
-                   "team_choice": {"495": [507, 517, 513, 502], "498": [507, 517, 511, 496],
-                                   "501": [507, 517, 515, 499]},
-                   "dialogue": {"player_won": ["unova_bianca_won"]}}},
     "plasma_relic_castle": {
         "lines": ["Sand pours through Relic Castle. Team Plasma is digging for something!"],
         "flag": "plasma_relic_castle_cleared",
@@ -205,24 +192,17 @@ EVENTS = {
                                  "On cold nights it comes to town and takes people away. So we stay inside at night.",
                                  "That monster... some say it is the empty shell of the original dragon. Kyurem."],
                        "flag": "heard_kyurem_legend"},
-    "bianca_undella": {
-        "lines": ["unova_bianca_surf", "{friend_name}: One more battle before the League, okay?"],
-        "flag": "defeated_bianca_undella",
-        "battle": {"name": "{friend_name}", "class": "PKMN_TRAINER", "sprite": "{friend_character}",
-                   "team": [508, 518, 514, 503],
-                   "team_choice": {"495": [508, 518, 514, 503], "498": [508, 518, 512, 497],
-                                   "501": [508, 518, 516, 500]},
-                   "dialogue": {"player_won": ["unova_bianca_won"]}}},
     "drayden_dragon_stones": {"lines": ["Drayden: The Light Stone and Dark Stone hold the dragons of truth and ideals.",
                                         "N has one. The other must be awakened by someone the dragon accepts.",
                                         "I believe that someone is you."],
                               "flag": "heard_dragon_stones"},
+    # Cheren's B2W2 battle (Serebii PokeEarth): tied to Cheren, whichever role he holds in this save.
     "cheren_victory_road": {
         "lines": ["unova_cheren_victory_road"], "flag": "defeated_rival_victory_road",
-        "battle": {"name": "{rival_name}", "class": "RIVAL", "sprite": "{rival_character}", "is_boss_battle": True,
-                   "team": [521, 510, 526, 516, 500],
-                   "team_choice": {"495": [521, 510, 526, 516, 500], "498": [521, 510, 526, 512, 503],
-                                   "501": [521, 510, 526, 514, 497]},
+        "battle": {"who": "cheren", "class": "RIVAL", "is_boss_battle": True,
+                   "team": [510, 512, 521, 526, 612, 500], "levels": [65, 65, 65, 65, 65, 67],
+                   "team_choice": {"495": [510, 512, 521, 526, 612, 500], "498": [510, 514, 521, 526, 612, 503],
+                                   "501": [510, 516, 521, 526, 612, 497]},
                    "dialogue": {"player_won": ["unova_cheren_rival_won"],
                                 "player_lost": ["unova_cheren_rival_lost"]}}},
     "n_chargestone": {
@@ -349,14 +329,6 @@ EVENTS = {
         "done": ["Professor Cozmo: I'll keep studying meteorites. Come by anytime!"]},
 
     # ---------------- Kalos / Alola / Galar ----------------
-    "kalos_rival_couriway": {
-        "lines": ["{rival_name}: Couriway Town! The waterfalls are amazing, right?",
-                  "{rival_name}: Before the Victory Road, I want one more battle."],
-        "flag": "defeated_rival_couriway",
-        "battle": {"name": "{rival_name}", "class": "RIVAL", "sprite": "{rival_character}", "is_boss_battle": True,
-                   "team": [678, 359, 657],
-                   "team_choice": {"650": [678, 359, 654], "653": [678, 359, 657], "656": [678, 359, 651]},
-                   "dialogue": {"player_won": ["kalos_rival_won"], "player_lost": ["kalos_rival_lost"]}}},
     "alola_looker": {"lines": ["Looker: I am Looker of the International Police.",
                                "Creatures called Ultra Beasts have been sighted in Alola.",
                                "If you see anything strange, let me know."],

@@ -281,31 +281,31 @@
     ]
   },
   "VIRBANK_COMPLEX": [504, 519, 240, 81, 239, 592, 456, 98, 211, 58, 109],
-  "VIRBANK_COMPLEX_PERCENTAGES": { "504": 10, "519": 9, "240": 9, "81": 9, "239": 9, "592": 9, "456": 9, "98": 9, "211": 9, "58": 9, "109": 9 },
+  "VIRBANK_COMPLEX_PERCENTAGES": {"504": 12, "519": 12, "240": 9, "81": 9, "239": 9, "531": 36, "58": 7, "109": 5, "592": 2, "456": 2, "98": 2, "211": 2},
   "UNOVA_ROUTE_20": [540, 519, 504, 509, 191, 543, 550, 298, 183, 184, 60, 61],
-  "UNOVA_ROUTE_20_PERCENTAGES": { "540": 12, "519": 8, "504": 8, "509": 8, "191": 8, "543": 8, "550": 8, "298": 8, "183": 8, "184": 8, "60": 8, "61": 8 },
+  "UNOVA_ROUTE_20_PERCENTAGES": {"540": 15, "519": 10, "504": 8, "509": 6, "191": 11, "543": 8, "531": 37, "206": 4, "550": 2, "60": 2, "61": 2},
   "FLOCCESY_RANCH": [506, 298, 504, 179, 54, 519, 447, 550, 60, 61, 186],
-  "FLOCCESY_RANCH_PERCENTAGES": { "506": 10, "298": 9, "504": 9, "179": 9, "54": 9, "519": 9, "447": 9, "550": 9, "60": 9, "61": 9, "186": 9 },
+  "FLOCCESY_RANCH_PERCENTAGES": {"506": 20, "298": 10, "504": 5, "179": 5, "54": 5, "519": 2, "447": 2, "531": 45, "206": 5, "550": 2, "60": 2, "61": 2, "186": 2},
   "UNOVA_ROUTE_19": [504, 509, 550, 60, 61, 186],
-  "UNOVA_ROUTE_19_PERCENTAGES": { "504": 15, "509": 17, "550": 17, "60": 17, "61": 17, "186": 17 },
+  "UNOVA_ROUTE_19_PERCENTAGES": {"504": 67, "509": 33, "550": 2, "60": 2, "61": 2, "186": 2},
   "RELIC_PASSAGE": [525, 527, 533, 95, 20, 550, 183, 60, 524, 532, 19],
-  "RELIC_PASSAGE_PERCENTAGES": { "525": 10, "527": 9, "533": 9, "95": 9, "20": 9, "550": 9, "183": 9, "60": 9, "524": 9, "532": 9, "19": 9 },
+  "RELIC_PASSAGE_PERCENTAGES": {"525": 14, "527": 13, "533": 7, "95": 7, "529": 30, "20": 4, "524": 13, "532": 7, "19": 4, "550": 2, "60": 2},
   "CLAY_TUNNEL": [525, 632, 305, 299, 527, 95, 550, 60],
-  "CLAY_TUNNEL_PERCENTAGES": { "525": 16, "632": 12, "305": 12, "299": 12, "527": 12, "95": 12, "550": 12, "60": 12 },
+  "CLAY_TUNNEL_PERCENTAGES": {"525": 18, "632": 10, "305": 8, "299": 8, "527": 5, "95": 10, "530": 38, "208": 3, "550": 2, "60": 2},
   "REVERSAL_MOUNTAIN": [451, 325, 426, 328, 326, 227, 322, 323, 329, 527, 525],
-  "REVERSAL_MOUNTAIN_PERCENTAGES": { "451": 10, "325": 9, "426": 9, "328": 9, "326": 9, "227": 9, "322": 9, "323": 9, "329": 9, "527": 9, "525": 9 },
+  "REVERSAL_MOUNTAIN_PERCENTAGES": {"451": 7, "325": 4, "426": 4, "328": 3, "326": 7, "227": 3, "322": 4, "323": 7, "329": 1, "531": 22, "527": 8, "525": 6, "530": 22},
   "STRANGE_HOUSE": [607, 574, 20, 42, 354, 575, 577, 578],
-  "STRANGE_HOUSE_PERCENTAGES": { "607": 16, "574": 12, "20": 12, "42": 12, "354": 12, "575": 12, "577": 12, "578": 12 },
+  "STRANGE_HOUSE_PERCENTAGES": {"607": 24, "574": 16, "20": 12, "42": 12, "354": 12, "575": 4, "577": 16, "578": 4},
   "UNDELLA_BAY": [278, 458, 279, 363, 592, 223, 320, 226, 321, 364, 365, 593],
   "UNDELLA_BAY_PERCENTAGES": { "278": 12, "458": 8, "279": 8, "363": 8, "592": 8, "223": 8, "320": 8, "226": 8, "321": 8, "364": 8, "365": 8, "593": 8 },
   "SEASIDE_CAVE": [527, 55, 525, 86, 602, 592, 370, 90, 603, 213],
-  "SEASIDE_CAVE_PERCENTAGES": { "527": 10, "55": 10, "525": 10, "86": 10, "602": 10, "592": 10, "370": 10, "90": 10, "603": 10, "213": 10 },
+  "SEASIDE_CAVE_PERCENTAGES": {"527": 15, "55": 15, "525": 15, "86": 4, "602": 2, "530": 43, "603": 2, "213": 2, "592": 2, "370": 2, "90": 2},
   "NATURE_PRESERVE": [274, 334, 55, 164, 203, 611, 352, 550, 418, 129, 130],
-  "NATURE_PRESERVE_PERCENTAGES": { "274": 10, "334": 9, "55": 9, "164": 9, "203": 9, "611": 9, "352": 9, "550": 9, "418": 9, "129": 9, "130": 9 },
+  "NATURE_PRESERVE_PERCENTAGES": {"274": 15, "334": 10, "55": 5, "164": 5, "203": 8, "611": 5, "352": 2, "531": 42, "206": 5, "275": 2, "550": 2, "418": 2, "129": 2, "130": 2},
   "VILLAGE_BRIDGE": [55, 400, 629, 335, 336, 627, 183, 630, 628, 550, 318, 319],
-  "VILLAGE_BRIDGE_PERCENTAGES": { "55": 12, "400": 8, "629": 8, "335": 8, "336": 8, "627": 8, "183": 8, "630": 8, "628": 8, "550": 8, "318": 8, "319": 8 },
+  "VILLAGE_BRIDGE_PERCENTAGES": {"55": 11, "400": 8, "629": 6, "335": 5, "336": 5, "627": 6, "183": 11, "630": 6, "628": 6, "531": 28, "587": 3, "206": 3, "184": 2, "550": 2, "318": 2, "319": 2},
   "CHALLENGERS_CAVE": [525, 527, 75, 108, 302, 303, 447, 550, 60, 61],
-  "CHALLENGERS_CAVE_PERCENTAGES": { "525": 10, "527": 10, "75": 10, "108": 10, "302": 10, "303": 10, "447": 10, "550": 10, "60": 10, "61": 10 },
+  "CHALLENGERS_CAVE_PERCENTAGES": {"525": 10, "527": 10, "75": 10, "108": 10, "302": 5, "303": 5, "530": 49, "447": 2, "550": 2, "60": 2, "61": 2},
   "STORY_PROGRESSION": {
     "CHALLENGERS_CAVE": {
       "area_type": "dungeon",
@@ -385,31 +385,11 @@
         }
       ],
       "route_menu": [
-        {
-          "text": "CATCH WILD PKMN",
-          "action": "CATCH",
-          "condition": "has_balls",
-          "color": "BLUE"
-        },
-        {
-          "text": "BATTLE WILD PKMN",
-          "action": "BATTLE",
-          "condition": "can_battle",
-          "color": "GREEN"
-        },
-        {
-          "text": "BATTLE TRAINER",
-          "action": "TRAINER",
-          "condition": "has_trainers",
-          "color": "GREEN"
-        },
-        {
-          "text": "Victory Road",
-          "action": "EXIT",
-          "target_area": "VICTORY_ROAD_UNOVA",
-          "condition": "can_exit",
-          "color": "RED"
-        }
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        {"text": "Victory Road", "action": "EXIT", "target_area": "VICTORY_ROAD_UNOVA", "condition": "can_exit", "color": "RED"},
+        {"text": "ROUTE 9", "action": "EXIT", "target": "UNOVA_ROUTE_9", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "VICTORY_ROAD_UNOVA"
     },
@@ -581,26 +561,10 @@
         }
       ],
       "route_menu": [
-        {
-          "text": "BATTLE TRAINER",
-          "action": "TRAINER",
-          "condition": "has_trainers",
-          "color": "GREEN"
-        },
-        {
-          "text": "Route 16",
-          "action": "EXIT",
-          "target_area": "UNOVA_ROUTE_16",
-          "condition": "can_exit",
-          "color": "RED"
-        },
-        {
-          "text": "Route 15",
-          "action": "EXIT",
-          "target_area": "UNOVA_ROUTE_15",
-          "condition": "can_exit",
-          "color": "RED"
-        }
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        {"text": "SEEK CRESSELIA", "action": "BOSS", "color": "GOLD", "condition": "beat_alder", "flag_condition": "not marvelous_cresselia", "boss": {"id": 488, "name": "Cresselia", "victory_flag": "marvelous_cresselia", "lines": ["Cresselia appears!"]}},
+        {"text": "Route 16", "action": "EXIT", "target_area": "UNOVA_ROUTE_16", "condition": "can_exit", "color": "RED"},
+        {"text": "Route 15", "action": "EXIT", "target_area": "UNOVA_ROUTE_15", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "UNOVA_ROUTE_16"
     },
@@ -723,19 +687,9 @@
         }
       ],
       "route_menu": [
-        {
-          "text": "BOARD THE FRIGATE",
-          "action": "GALACTIC_GAUNTLET",
-          "flag_condition": "not plasma_frigate_cleared",
-          "color": "GOLD"
-        },
-        {
-          "text": "Humilau City",
-          "action": "EXIT",
-          "target_area": "HUMILAU_CITY",
-          "condition": "can_exit",
-          "color": "RED"
-        }
+        {"text": "BOARD THE FRIGATE", "action": "GALACTIC_GAUNTLET", "flag_condition": "not plasma_frigate_cleared", "color": "GOLD"},
+        {"text": "Humilau City", "action": "EXIT", "target_area": "HUMILAU_CITY", "condition": "can_exit", "color": "RED"},
+        {"text": "P2 LABORATORY", "action": "EXIT", "target": "P2_LABORATORY", "condition": ["can_exit", "beat_unova_champion"], "color": "RED"}
       ],
       "next_area": "HUMILAU_CITY"
     },
@@ -945,44 +899,14 @@
         }
       ],
       "route_menu": [
-        {
-          "text": "CATCH WILD PKMN",
-          "action": "CATCH",
-          "condition": "has_balls",
-          "color": "BLUE"
-        },
-        {
-          "text": "BATTLE WILD PKMN",
-          "action": "BATTLE",
-          "condition": "can_battle",
-          "color": "GREEN"
-        },
-        {
-          "text": "FISH",
-          "action": "FISH",
-          "condition": "can_fish",
-          "color": "ORANGE"
-        },
-        {
-          "text": "BATTLE TRAINER",
-          "action": "TRAINER",
-          "condition": "has_trainers",
-          "color": "GREEN"
-        },
-        {
-          "text": "Undella Town",
-          "action": "EXIT",
-          "target_area": "UNDELLA_TOWN",
-          "condition": "can_exit",
-          "color": "RED"
-        },
-        {
-          "text": "Seaside Cave",
-          "action": "EXIT",
-          "target_area": "SEASIDE_CAVE",
-          "condition": "can_exit",
-          "color": "RED"
-        }
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        {"text": "Undella Town", "action": "EXIT", "target_area": "UNDELLA_TOWN", "condition": "can_exit", "color": "RED"},
+        {"text": "Seaside Cave", "action": "EXIT", "target_area": "SEASIDE_CAVE", "condition": "can_exit", "color": "RED"},
+        {"text": "ABYSSAL RUINS", "action": "EXIT", "target": "ABYSSAL_RUINS", "condition": ["can_exit", "has_item:HM_DIVE"], "color": "RED"},
+        {"text": "ROUTE 21", "action": "EXIT", "target": "UNOVA_ROUTE_21", "condition": ["can_exit", "has_item:HM_SURF", "beat_unova_champion"], "color": "RED"}
       ],
       "next_area": "UNDELLA_TOWN"
     },
@@ -992,36 +916,17 @@
       "region": "UNOVA",
       "has_gym": false,
       "travel_options": [
-        {
-          "text": "Route 21",
-          "target_area": "UNOVA_ROUTE_21"
-        },
-        {
-          "text": "Route 22",
-          "target_area": "UNOVA_ROUTE_22"
-        },
-        {
-          "text": "Undella Town",
-          "target_area": "UNDELLA_TOWN"
-        },
-        {
-          "text": "Plasma Frigate",
-          "target_area": "PLASMA_FRIGATE"
-        },
-        {
-          "text": "Nature Preserve",
-          "target_area": "NATURE_PRESERVE"
-        }
+        {"text": "Route 21", "target_area": "UNOVA_ROUTE_21"},
+        {"text": "Route 22", "target_area": "UNOVA_ROUTE_22"},
+        {"text": "Undella Town", "target_area": "UNDELLA_TOWN"},
+        {"text": "Plasma Frigate", "target_area": "PLASMA_FRIGATE"},
+        {"text": "Nature Preserve", "target_area": "NATURE_PRESERVE"},
+        {"text": "Marine Tube", "target_area": "MARINE_TUBE", "condition": ["beat_unova_champion"]}
       ],
       "explore_options": [
-        {
-          "text": "Pok\u00e9mon Center",
-          "action": "HEAL"
-        },
-        {
-          "text": "Shop",
-          "action": "SHOP"
-        }
+        {"text": "Pokémon Center", "action": "HEAL"},
+        {"text": "Shop", "action": "SHOP"},
+        {"text": "Battle Leader Marlon", "action": "EVENT", "color": "GOLD", "condition": "beat_alder", "flag_condition": "not b2w2_marlon", "event": {"lines": ["Marlon: The Champion's here? Let's ride the waves together!"], "flag": "b2w2_marlon", "battle": {"name": "Leader Marlon", "class": "GYM_LEADER", "sprite": "swimmer_m.png", "team": [321, 565, 226, 593], "levels": [53, 53, 53, 55], "is_boss_battle": true, "rewards": {"balls": 15, "RARE_CANDY": 1}, "dialogue": {"player_won": ["Marlon: You're strong as a tidal wave!"]}}}}
       ],
       "next_area": "UNOVA_ROUTE_21"
     },
@@ -1193,48 +1098,13 @@
         }
       ],
       "route_menu": [
-        {
-          "text": "CATCH WILD PKMN",
-          "action": "CATCH",
-          "condition": "has_balls",
-          "color": "BLUE"
-        },
-        {
-          "text": "BATTLE WILD PKMN",
-          "action": "BATTLE",
-          "condition": "can_battle",
-          "color": "GREEN"
-        },
-        {
-          "text": "BATTLE TRAINER",
-          "action": "TRAINER",
-          "condition": "has_trainers",
-          "color": "GREEN"
-        },
-        {
-          "text": "Lentimas Town",
-          "action": "EXIT",
-          "target_area": "LENTIMAS_TOWN",
-          "condition": "can_exit",
-          "color": "RED"
-        },
-        {
-          "text": "Strange House",
-          "action": "EXIT",
-          "target_area": "STRANGE_HOUSE",
-          "condition": "can_exit",
-          "color": "RED"
-        },
-        {
-          "text": "Undella Town",
-          "action": "EXIT",
-          "target_area": "UNDELLA_TOWN",
-          "condition": [
-            "can_exit",
-            "beat_unova_champion"
-          ],
-          "color": "RED"
-        }
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        {"text": "SEEK HEATRAN", "action": "BOSS", "color": "GOLD", "condition": "beat_alder", "flag_condition": "not reversal_heatran", "boss": {"id": 485, "name": "Heatran", "victory_flag": "reversal_heatran", "lines": ["Heatran appears!"]}},
+        {"text": "Lentimas Town", "action": "EXIT", "target_area": "LENTIMAS_TOWN", "condition": "can_exit", "color": "RED"},
+        {"text": "Strange House", "action": "EXIT", "target_area": "STRANGE_HOUSE", "condition": "can_exit", "color": "RED"},
+        {"text": "Undella Town", "action": "EXIT", "target_area": "UNDELLA_TOWN", "condition": ["can_exit", "beat_unova_champion"], "color": "RED"}
       ],
       "next_area": "LENTIMAS_TOWN"
     },
@@ -1299,29 +1169,10 @@
         }
       ],
       "route_menu": [
-        {
-          "text": "BATTLE TRAINER",
-          "action": "TRAINER",
-          "condition": "has_trainers",
-          "color": "GREEN"
-        },
-        {
-          "text": "Route 8",
-          "action": "EXIT",
-          "target_area": "UNOVA_ROUTE_8",
-          "condition": "can_exit",
-          "color": "RED"
-        },
-        {
-          "text": "Opelucid City",
-          "action": "EXIT",
-          "target_area": "OPELUCID_CITY",
-          "condition": [
-            "can_exit",
-            "has_freeze_badge"
-          ],
-          "color": "RED"
-        }
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        {"text": "Route 8", "action": "EXIT", "target_area": "UNOVA_ROUTE_8", "condition": "can_exit", "color": "RED"},
+        {"text": "Opelucid City", "action": "EXIT", "target_area": "OPELUCID_CITY", "condition": ["can_exit", "has_freeze_badge"], "color": "RED"},
+        {"text": "ROUTE 9", "action": "EXIT", "target": "UNOVA_ROUTE_9", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "UNOVA_ROUTE_8"
     },
@@ -1435,31 +1286,13 @@
         }
       ],
       "route_menu": [
-        {
-          "text": "CATCH WILD PKMN",
-          "action": "CATCH",
-          "condition": "has_balls",
-          "color": "BLUE"
-        },
-        {
-          "text": "BATTLE WILD PKMN",
-          "action": "BATTLE",
-          "condition": "can_battle",
-          "color": "GREEN"
-        },
-        {
-          "text": "BATTLE TRAINER",
-          "action": "TRAINER",
-          "condition": "has_trainers",
-          "color": "GREEN"
-        },
-        {
-          "text": "Driftveil City",
-          "action": "EXIT",
-          "target_area": "DRIFTVEIL_CITY",
-          "condition": "can_exit",
-          "color": "RED"
-        }
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        {"text": "Driftveil City", "action": "EXIT", "target_area": "DRIFTVEIL_CITY", "condition": "can_exit", "color": "RED"},
+        {"text": "UNDERGROUND RUINS", "action": "EXIT", "target": "UNDERGROUND_RUINS", "condition": ["can_exit", "beat_alder"], "color": "RED"},
+        {"text": "MISTRALTON CAVE", "action": "EXIT", "target": "MISTRALTON_CAVE", "condition": "can_exit", "color": "RED"},
+        {"text": "TWIST MOUNTAIN", "action": "EXIT", "target": "TWIST_MOUNTAIN", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "DRIFTVEIL_CITY"
     },
@@ -1614,14 +1447,9 @@
         }
       ],
       "explore_options": [
-        {
-          "text": "Pok\u00e9mon Center",
-          "action": "HEAL"
-        },
-        {
-          "text": "Shop",
-          "action": "SHOP"
-        }
+        {"text": "Pokémon Center", "action": "HEAL"},
+        {"text": "Shop", "action": "SHOP"},
+        {"text": "Battle Leader Cheren", "action": "EVENT", "color": "GOLD", "condition": "beat_alder", "flag_condition": "not b2w2_cheren", "event": {"lines": ["Cheren has opened a Gym in Aspertia City. 'A Champion visiting my Gym? Let's see how I measure up!'"], "flag": "b2w2_cheren", "battle": {"name": "Leader Cheren", "class": "GYM_LEADER", "sprite": "cheren.png", "team": [504, 519, 506], "levels": [12, 12, 14], "is_boss_battle": true, "rewards": {"balls": 15, "RARE_CANDY": 1}, "dialogue": {"player_won": ["Cheren: Ha. I'm proud to have lost to you."]}}}}
       ],
       "next_area": "UNOVA_ROUTE_19"
     },
@@ -1669,14 +1497,9 @@
       "region": "UNOVA",
       "has_gym": false,
       "travel_options": [
-        {
-          "text": "Route 20",
-          "target_area": "UNOVA_ROUTE_20"
-        },
-        {
-          "text": "Route 19",
-          "target_area": "UNOVA_ROUTE_19"
-        }
+        {"text": "Route 20", "target_area": "UNOVA_ROUTE_20"},
+        {"text": "Route 19", "target_area": "UNOVA_ROUTE_19"},
+        {"text": "Pledge Grove", "target_area": "PLEDGE_GROVE", "condition": "beat_alder"}
       ],
       "explore_options": [
         {
@@ -1864,51 +1687,14 @@
         }
       ],
       "route_menu": [
-        {
-          "text": "CATCH WILD PKMN",
-          "action": "CATCH",
-          "condition": "has_balls",
-          "color": "BLUE"
-        },
-        {
-          "text": "BATTLE WILD PKMN",
-          "action": "BATTLE",
-          "condition": "can_battle",
-          "color": "GREEN"
-        },
-        {
-          "text": "FISH",
-          "action": "FISH",
-          "condition": "can_fish",
-          "color": "ORANGE"
-        },
-        {
-          "text": "BATTLE TRAINER",
-          "action": "TRAINER",
-          "condition": "has_trainers",
-          "color": "GREEN"
-        },
-        {
-          "text": "Virbank City",
-          "action": "EXIT",
-          "target_area": "VIRBANK_CITY",
-          "condition": "can_exit",
-          "color": "RED"
-        },
-        {
-          "text": "Floccesy Town",
-          "action": "EXIT",
-          "target_area": "FLOCCESY_TOWN",
-          "condition": "can_exit",
-          "color": "RED"
-        },
-        {
-          "text": "Floccesy Ranch",
-          "action": "EXIT",
-          "target_area": "FLOCCESY_RANCH",
-          "condition": "can_exit",
-          "color": "RED"
-        }
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        {"text": "Virbank City", "action": "EXIT", "target_area": "VIRBANK_CITY", "condition": "can_exit", "color": "RED"},
+        {"text": "Floccesy Town", "action": "EXIT", "target_area": "FLOCCESY_TOWN", "condition": "can_exit", "color": "RED"},
+        {"text": "Floccesy Ranch", "action": "EXIT", "target_area": "FLOCCESY_RANCH", "condition": "can_exit", "color": "RED"},
+        {"text": "CAVE OF BEING", "action": "EXIT", "target": "CAVE_OF_BEING", "condition": ["can_exit", "beat_alder"], "color": "RED"}
       ],
       "next_area": "VIRBANK_CITY"
     },
@@ -2025,28 +1811,15 @@
       "region": "UNOVA",
       "has_gym": false,
       "travel_options": [
-        {
-          "text": "Castelia City",
-          "target_area": "CASTELIA_CITY"
-        },
-        {
-          "text": "Virbank Complex",
-          "target_area": "VIRBANK_COMPLEX"
-        },
-        {
-          "text": "Route 20",
-          "target_area": "UNOVA_ROUTE_20"
-        }
+        {"text": "Castelia City", "target_area": "CASTELIA_CITY"},
+        {"text": "Virbank Complex", "target_area": "VIRBANK_COMPLEX"},
+        {"text": "Route 20", "target_area": "UNOVA_ROUTE_20"},
+        {"text": "PokéStar Studios", "target_area": "POKESTAR_STUDIOS"}
       ],
       "explore_options": [
-        {
-          "text": "Pok\u00e9mon Center",
-          "action": "HEAL"
-        },
-        {
-          "text": "Shop",
-          "action": "SHOP"
-        }
+        {"text": "Pokémon Center", "action": "HEAL"},
+        {"text": "Shop", "action": "SHOP"},
+        {"text": "Battle Leader Roxie", "action": "EVENT", "color": "GOLD", "condition": "beat_alder", "flag_condition": "not b2w2_roxie", "event": {"lines": ["Roxie: You're the Champion? Then let's make some noise!"], "flag": "b2w2_roxie", "battle": {"name": "Leader Roxie", "class": "GYM_LEADER", "sprite": "lass.png", "team": [109, 88, 544], "levels": [17, 17, 19], "is_boss_battle": true, "rewards": {"balls": 15, "RARE_CANDY": 1}, "dialogue": {"player_won": ["Roxie: Whoa, what a show! You rock!"]}}}}
       ],
       "next_area": "CASTELIA_CITY"
     },
@@ -2056,32 +1829,20 @@
       "region": "UNOVA",
       "backgrounds": { "main": "nuvema_town.png", "mom": "nuvema_mom.png", "lab": "juniper_lab.png" },
       "has_gym": false,
-      "travel_options": [{"text": "Route 1", "target_area": "UNOVA_ROUTE_1"}],
+      "travel_options": [
+        {"text": "Route 1", "target_area": "UNOVA_ROUTE_1"},
+        {"text": "Entralink", "target_area": "ENTRALINK", "condition": "beat_alder"}
+      ],
       "explore_options": [
         { "text": "Visit Mom", "action": "NPC", "target": "mom" },
         { "text": "Visit Professor Juniper", "action": "NPC", "target": "unova_juniper_intro" },
         { "text": "Visit {rival_name}'s House", "action": "NPC", "target": "unova_cheren_house" }
       ],
       "next_area": "UNOVA_ROUTE_1",
-      "on_enter_event": {
-        "type": "trainer_battle",
-        "trainer": {
-          "name": "{rival_name}",
-          "class": "PKMN_TRAINER",
-          "sprite": "{rival_character}",
-          "team": [498],
-          "team_choice": { "495": [498], "498": [501], "501": [495] },
-          "rewards": { "balls": 5 },
-          "victory_flag": "defeated_rival_nuvema",
-          "dialogue": {
-            "intro": ["Hey {player_name}! I opened Juniper's case! My Pokémon is ready — are you?"],
-            "player_won": ["Tch. You already beat me. Fine. I'll catch up."],
-            "player_lost": ["Ha! I'm the stronger trainer already. Now let's go see the Professor."]
-          }
-        },
-        "flag_check": "defeated_rival_nuvema",
-        "condition": "has_unova_starter"
-      }
+      "on_enter_event": [
+        {"type": "trainer_battle", "trainer": {"name": "{rival_name}", "class": "PKMN_TRAINER", "sprite": "{rival_character}", "team": [498], "team_choice": {"495": [498], "498": [501], "501": [495]}, "rewards": {"balls": 5}, "victory_flag": "defeated_rival_nuvema", "dialogue": {"intro": ["Hey {player_name}! I opened Juniper's case! My Pokémon is ready — are you?"], "player_won": ["Tch. You already beat me. Fine. I'll catch up."], "player_lost": ["Ha! I'm the stronger trainer already. Now let's go see the Professor."]}, "by_character": {"cheren": {"team_choice": {"495": [498], "498": [501], "501": [495]}}, "bianca": {"team_choice": {"495": [501], "498": [495], "501": [498]}}}}, "flag_check": "defeated_rival_nuvema", "condition": "has_unova_starter"},
+        {"type": "trainer_battle", "trainer": {"who": "bianca", "class": "PKMN_TRAINER", "team": [508, 514, 518, 620, 609, 503], "team_choice": {"495": [508, 514, 518, 620, 609, 503], "498": [508, 516, 518, 620, 609, 497], "501": [508, 512, 518, 620, 609, 500]}, "levels": [63, 63, 63, 63, 63, 65], "is_boss_battle": true, "rewards": {"balls": 5}, "dialogue": {"intro": ["Bianca: Welcome home, Champion! I've been training the whole time. Battle me!"], "player_won": ["Bianca: Hehe, you're still the best!"], "player_lost": ["Better luck next time!"]}}, "condition": "beat_alder", "flag_check": "defeated_bianca_postgame"}
+      ]
     },
     "ACCUMULA_TOWN": {
       "area_type": "town",
@@ -2100,25 +1861,7 @@
         { "text": "Talk to Looker", "action": "NPC", "target": "looker_intro", "flag_condition": "not met_looker" }
       ],
       "next_area": "UNOVA_ROUTE_2",
-      "on_enter_event": {
-        "type": "trainer_battle",
-        "trainer": {
-          "name": "{rival_name}",
-          "class": "PKMN_TRAINER",
-          "sprite": "{rival_character}",
-          "team": [500],
-          "team_choice": { "495": [498, 504], "498": [501, 504], "501": [495, 504] },
-          "rewards": { "balls": 5 },
-          "victory_flag": "defeated_rival_accumula",
-          "dialogue": {
-            "intro": ["Training with a purpose — that's the only way to improve. Battle me!"],
-            "player_won": ["You're faster than I expected. I'll account for that next time."],
-            "player_lost": ["Excellent! Knowing your current limits is the first step to exceeding them."]
-          }
-        },
-        "condition": "has_trio_badge",
-        "flag_check": "defeated_rival_accumula"
-      }
+      "on_enter_event": null
     },
     "STRIATON_CITY": {
       "area_type": "town",
@@ -2137,7 +1880,8 @@
         { "text": "Shop", "action": "SHOP" },
         { "text": "Challenge Gym", "action": "GYM" }
       ],
-      "next_area": "UNOVA_ROUTE_3"
+      "next_area": "UNOVA_ROUTE_3",
+        "on_enter_event": {"type": "trainer_battle", "trainer": {"who": "cheren", "class": "PKMN_TRAINER", "team": [498, 509], "team_choice": {"495": [498, 509], "498": [501, 509], "501": [495, 509]}, "levels": [8, 8], "is_boss_battle": true, "rewards": {"balls": 5}, "dialogue": {"intro": ["Cheren: Before the Gym, let's see how our Pokémon have grown."], "player_won": ["Cheren: I see. I need to think this through."], "player_lost": ["Better luck next time!"]}}, "condition": "not:has_trio_badge", "flag_check": "defeated_cheren_striaton"}
     },
     "NACRENE_CITY": {
       "area_type": "town",
@@ -2165,24 +1909,10 @@
         }
       ],
       "next_area": "PINWHEEL_FOREST",
-      "on_enter_event": {
-        "type": "trainer_battle",
-        "trainer": {
-          "name": "Team Plasma Grunt",
-          "class": "PLASMA",
-          "sprite": "plasma_grunt.png",
-          "team": [509, 504],
-          "rewards": { "balls": 3 },
-          "victory_flag": "plasma_nacrene_cleared",
-          "dialogue": {
-            "intro": ["We have the Dragon Skull! Team Plasma's plan is unstoppable!"],
-            "player_won": ["The skull... we've lost it. Lord Ghetsis will be furious!"],
-            "player_lost": ["Team Plasma serves a higher justice than your victories!"]
-          }
-        },
-        "condition": "has_trio_badge",
-        "flag_check": "plasma_nacrene_cleared"
-      }
+      "on_enter_event": [
+        {"type": "trainer_battle", "trainer": {"name": "Team Plasma Grunt", "class": "PLASMA", "sprite": "plasma_grunt.png", "team": [509, 504], "rewards": {"balls": 3}, "victory_flag": "plasma_nacrene_cleared", "dialogue": {"intro": ["We have the Dragon Skull! Team Plasma's plan is unstoppable!"], "player_won": ["The skull... we've lost it. Lord Ghetsis will be furious!"], "player_lost": ["Team Plasma serves a higher justice than your victories!"]}}, "condition": "has_trio_badge", "flag_check": "plasma_nacrene_cleared"},
+        {"type": "trainer_battle", "trainer": {"name": "N", "class": "PKMN_TRAINER", "sprite": "n.png", "team": [519, 535, 532], "levels": [13, 13, 13], "is_boss_battle": true, "rewards": {"balls": 5}, "dialogue": {"intro": ["N: Your Pokémon... I want to hear them speak. Battle me."], "player_won": ["N: They said they like you. How strange."]}}, "condition": ["has_trio_badge", "not:has_basic_badge"], "flag_check": "defeated_n_nacrene"}
+      ]
     },
     "CASTELIA_CITY": {
       "area_type": "town",
@@ -2192,54 +1922,23 @@
       "has_gym": true,
       "gym": {"trainers": [], "leader": {"name": "Burgh", "class": "GYM_LEADER", "sprite": "burgh.png", "team": [544, 557, 542], "levels": [21, 21, 23], "dialogue": {"intro": ["Burgh: This gym is my canvas, and this battle — our masterpiece!", "I'm Burgh, the Castelia Gym Leader.", "Bug-types have a delicate beauty, but don't mistake that for weakness!"], "player_won": ["Burgh: Sublime! You've earned the Insect Badge!", "Here — take this TM. Use it as you see fit. Create something beautiful!"], "player_lost": ["Burgh: Not quite the composition I hoped to see.", "Return when your moves flow with more intention."]}, "rewards": {"balls": 5}, "is_boss_battle": true, "badge_reward": "INSECT", "movesets": {"544": ["SCREECH", "PURSUIT", "POISON-TAIL", "STRUGGLE-BUG"], "557": ["SAND-ATTACK", "FEINT-ATTACK", "SMACK-DOWN", "STRUGGLE-BUG"], "542": ["PROTECT", "STRING-SHOT", "RAZOR-LEAF", "STRUGGLE-BUG"]}}, "requirements": {"badges": 2, "flag": "plasma_castelia_cleared", "fail_text": "Burgh is helping chase Team Plasma from Castelia's sewers. Clear the sewers first!"}},
       "travel_options": [
-        { "text": "Route 4", "target_area": "UNOVA_ROUTE_4", "condition": "has_insect_badge" },
-        { "text": "Pinwheel Forest", "target_area": "PINWHEEL_FOREST" },
-        { "text": "Unity Tower", "target_area": "UNITY_TOWER" },
-        { "text": "Castelia Sewers", "target_area": "CASTELIA_SEWERS" },
-        { "text": "Liberty Garden (Ferry)", "target_area": "LIBERTY_GARDEN", "condition": "beat_unova_champion" },
-            {"text": "Ferry to the Decolore Islands", "long_ride": true, "target_area": "DECOLORE_FERRY", "condition": "beat_unova_champion", "message": "The ferry leaves Castelia's pier for the colorful Decolore Islands."},
-            {"text": "Virbank City", "target_area": "VIRBANK_CITY"}
-        ],
+        {"text": "Route 4", "target_area": "UNOVA_ROUTE_4", "condition": "has_insect_badge"},
+        {"text": "Pinwheel Forest", "target_area": "PINWHEEL_FOREST"},
+        {"text": "Unity Tower", "target_area": "UNITY_TOWER"},
+        {"text": "Castelia Sewers", "target_area": "CASTELIA_SEWERS"},
+        {"text": "Liberty Garden (Ferry)", "target_area": "LIBERTY_GARDEN", "condition": "beat_unova_champion"},
+        {"text": "Ferry to the Decolore Islands", "long_ride": true, "target_area": "DECOLORE_FERRY", "condition": "beat_unova_champion", "message": "The ferry leaves Castelia's pier for the colorful Decolore Islands."},
+        {"text": "Virbank City", "target_area": "VIRBANK_CITY"},
+        {"text": "Skyarrow Bridge", "target_area": "SKYARROW_BRIDGE"}
+      ],
       "explore_options": [
-        { "text": "Pokémon Center", "action": "HEAL" },
-        { "text": "Department Store", "action": "SHOP" },
-        {
-          "text": "Clear the Sewers with Burgh",
-          "action": "NPC",
-          "target": "burgh_sewers",
-          "condition": "has_basic_badge",
-          "flag_condition": "not plasma_castelia_cleared",
-          "color": "GOLD"
-        },
-        { "text": "Challenge Gym", "action": "GYM" },
-        {
-          "text": "{friend_name} Battle",
-          "action": "NPC",
-          "target": "bianca_castelia",
-          "condition": "has_basic_badge",
-          "flag_condition": "not defeated_bianca_castelia"
-        }
+        {"text": "Pokémon Center", "action": "HEAL"},
+        {"text": "Department Store", "action": "SHOP"},
+        {"text": "Clear the Sewers with Burgh", "action": "NPC", "target": "burgh_sewers", "condition": "has_basic_badge", "flag_condition": "not plasma_castelia_cleared", "color": "GOLD"},
+        {"text": "Challenge Gym", "action": "GYM"}
       ],
       "next_area": "UNOVA_ROUTE_4",
-      "on_enter_event": {
-        "type": "trainer_battle",
-        "trainer": {
-          "name": "{friend_name}",
-          "class": "PKMN_TRAINER",
-          "sprite": "{friend_character}",
-          "team": [503],
-          "team_choice": { "495": [502, 519], "498": [496, 519], "501": [499, 519] },
-          "rewards": { "balls": 5 },
-          "victory_flag": "defeated_bianca_castelia",
-          "dialogue": {
-            "intro": ["Oh! {player_name}! I've been training so hard! I think I'm ready for a real battle!"],
-            "player_won": ["Aww! I lost again! But I had fun — that's what counts, right?"],
-            "player_lost": ["Yes! I won! I can't believe it! I'm going to keep training!"]
-          }
-        },
-        "condition": "has_basic_badge",
-        "flag_check": "defeated_bianca_castelia"
-      },
+      "on_enter_event": null,
       "department_store": true
     },
     "NIMBASA_CITY": {
@@ -2250,50 +1949,21 @@
       "has_gym": true,
       "gym": {"trainers": [], "leader": {"name": "Elesa", "class": "GYM_LEADER", "sprite": "elesa.png", "team": [587, 587, 523], "levels": [25, 25, 27], "dialogue": {"intro": ["Elesa: Welcome to the stage. I'm Elesa — model and Gym Leader.", "Electric-types are fast, flashy, and relentless.", "Don't blink. This battle moves at the speed of lightning."], "player_won": ["Elesa: You were faster than my Emolga. That's the Bolt Badge.", "Here — take this. Bianca's father was blocking Route 5.", "I called him off. You're free to head to Driftveil."], "player_lost": ["Elesa: Speed and accuracy — that's all it takes.", "Come back when you've sharpened both."]}, "rewards": {"balls": 5}, "is_boss_battle": true, "badge_reward": "BOLT", "movesets": {"587": ["QUICK-ATTACK", "PURSUIT", "AERIAL-ACE", "VOLT-SWITCH"], "523": ["QUICK-ATTACK", "FLAME-CHARGE", "SPARK", "VOLT-SWITCH"]}}, "requirements": {"badges": 3, "fail_text": "Elesa is on the runway. Earn three badges to challenge the Nimbasa Gym!"}},
       "travel_options": [
-        { "text": "Route 4", "target_area": "UNOVA_ROUTE_4" },
-        { "text": "Route 5", "target_area": "UNOVA_ROUTE_5", "condition": "has_bolt_badge" },
-        { "text": "Route 16", "target_area": "UNOVA_ROUTE_16" },
-        { "text": "Battle Subway", "target_area": "BATTLE_SUBWAY" }
+        {"text": "Route 4", "target_area": "UNOVA_ROUTE_4"},
+        {"text": "Route 5", "target_area": "UNOVA_ROUTE_5", "condition": "has_bolt_badge"},
+        {"text": "Route 16", "target_area": "UNOVA_ROUTE_16"},
+        {"text": "Battle Subway", "target_area": "BATTLE_SUBWAY"},
+        {"text": "Join Avenue", "target_area": "JOIN_AVENUE"},
+        {"text": "Train to Anville Town", "target_area": "ANVILLE_TOWN", "condition": "beat_alder", "long_ride": true, "message": "The train heads out across the plains to Anville Town."}
       ],
       "explore_options": [
-        { "text": "Pokémon Center", "action": "HEAL" },
-        { "text": "Shop", "action": "SHOP" },
-        { "text": "Challenge Gym", "action": "GYM" },
-        {
-          "text": "Ferris Wheel with N",
-          "action": "NPC",
-          "target": "n_nimbasa_ferris_wheel",
-          "condition": "has_insect_badge",
-          "flag_condition": "not met_n_nimbasa"
-        },
-        {
-          "text": "Battle {friend_name}",
-          "action": "NPC",
-          "target": "bianca_nimbasa",
-          "condition": "has_insect_badge",
-          "flag_condition": "not defeated_bianca_nimbasa"
-        }
+        {"text": "Pokémon Center", "action": "HEAL"},
+        {"text": "Shop", "action": "SHOP"},
+        {"text": "Challenge Gym", "action": "GYM"},
+        {"text": "Ferris Wheel with N", "action": "NPC", "target": "n_nimbasa_ferris_wheel", "condition": "has_insect_badge", "flag_condition": "not met_n_nimbasa"}
       ],
       "next_area": "UNOVA_ROUTE_5",
-      "on_enter_event": {
-        "type": "trainer_battle",
-        "trainer": {
-          "name": "{rival_name}",
-          "class": "PKMN_TRAINER",
-          "sprite": "{rival_character}",
-          "team": [500, 507],
-          "team_choice": { "495": [499, 507, 520], "498": [502, 507, 520], "501": [496, 507, 520] },
-          "rewards": { "balls": 5 },
-          "victory_flag": "defeated_rival_nimbasa",
-          "dialogue": {
-            "intro": ["I've been all over Route 5 and 4 training. I won't hold back, {player_name}!"],
-            "player_won": ["You're still ahead of me. But the gap is closing — I feel it."],
-            "player_lost": ["That's more like it. I've been working toward this win."]
-          }
-        },
-        "condition": "has_insect_badge",
-        "flag_check": "defeated_rival_nimbasa"
-      }
+      "on_enter_event": null
     },
     "DRIFTVEIL_CITY": {
       "area_type": "town",
@@ -2303,11 +1973,13 @@
       "has_gym": true,
       "gym": {"trainers": [], "leader": {"name": "Clay", "class": "GYM_LEADER", "sprite": "clay.png", "team": [552, 536, 530], "levels": [29, 29, 31], "dialogue": {"intro": ["Clay: Y'all came a long way to challenge me, huh?", "I'm Clay. I dug this whole city outta the ground.", "Ground-types are tough as the earth itself. Let's see if you can shake 'em!"], "player_won": ["Clay: Not bad at all! You've got the Quake Badge, kid.", "Now get outta my gym and go challenge the rest of the world!", "Take this Plume Fossil too. The fossil lab in Nacrene City can revive it!"], "player_lost": ["Clay: The earth don't move for just anyone.", "Come back when you've got more dig in you."]}, "rewards": {"balls": 5, "PLUME_FOSSIL": 1}, "is_boss_battle": true, "badge_reward": "QUAKE", "movesets": {"552": ["SWAGGER", "TORMENT", "CRUNCH", "BULLDOZE"], "536": ["AQUA-RING", "BUBBLEBEAM", "MUDDY-WATER", "BULLDOZE"], "530": ["HONE-CLAWS", "SLASH", "ROCK-SLIDE", "BULLDOZE"]}}, "requirements": {"badges": 4, "flag": "plasma_relic_castle_cleared", "fail_text": "Clay is chasing Team Plasma in the Relic Castle. Help him first!"}},
       "travel_options": [
-        { "text": "Route 5", "target_area": "UNOVA_ROUTE_5" },
-        { "text": "Route 6", "target_area": "UNOVA_ROUTE_6", "condition": "has_quake_badge" },
-        { "text": "Cold Storage", "target_area": "COLD_STORAGE" },
-        { "text": "Relic Castle (via Desert)", "target_area": "RELIC_CASTLE" },
-        {"text": "Clay Tunnel", "target_area": "CLAY_TUNNEL", "condition": "beat_unova_champion"}
+        {"text": "Route 5", "target_area": "UNOVA_ROUTE_5"},
+        {"text": "Route 6", "target_area": "UNOVA_ROUTE_6", "condition": "has_quake_badge"},
+        {"text": "Cold Storage", "target_area": "COLD_STORAGE"},
+        {"text": "Relic Castle (via Desert)", "target_area": "RELIC_CASTLE"},
+        {"text": "Clay Tunnel", "target_area": "CLAY_TUNNEL", "condition": "beat_unova_champion"},
+        {"text": "Driftveil Drawbridge", "target_area": "DRIFTVEIL_DRAWBRIDGE"},
+        {"text": "Pokémon World Tournament", "target_area": "PWT", "condition": "beat_alder"}
       ],
       "explore_options": [
         { "text": "Pokémon Center", "action": "HEAL" },
@@ -2322,7 +1994,8 @@
           "color": "GOLD"
         }
       ],
-      "next_area": "UNOVA_ROUTE_6"
+      "next_area": "UNOVA_ROUTE_6",
+        "on_enter_event": {"type": "trainer_battle", "trainer": {"who": "bianca", "class": "PKMN_TRAINER", "team": [507, 513, 518, 502], "team_choice": {"495": [507, 513, 518, 502], "498": [507, 515, 518, 496], "501": [507, 511, 518, 499]}, "levels": [26, 26, 26, 28], "is_boss_battle": true, "rewards": {"balls": 5}, "dialogue": {"intro": ["Bianca: My dad wanted me to go home... but I'm not giving up! Battle!"], "player_won": ["Bianca: I'm going to keep traveling. I've decided!"], "player_lost": ["Better luck next time!"]}}, "condition": ["has_bolt_badge", "not:has_quake_badge"], "flag_check": "defeated_bianca_driftveil"}
     },
     "MISTRALTON_CITY": {
       "area_type": "town",
@@ -2421,24 +2094,18 @@
       "backgrounds": { "main": "undella_town.png", "pokecenter": "undella_center.png" },
       "has_gym": false,
       "travel_options": [
-        { "text": "Route 13", "target_area": "UNOVA_ROUTE_13" },
-        { "text": "Route 14", "target_area": "UNOVA_ROUTE_14" },
-        { "text": "Route 21", "target_area": "UNOVA_ROUTE_21" },
-        { "text": "Route 12", "target_area": "UNOVA_ROUTE_12" },
+        {"text": "Route 13", "target_area": "UNOVA_ROUTE_13"},
+        {"text": "Route 14", "target_area": "UNOVA_ROUTE_14"},
+        {"text": "Route 21", "target_area": "UNOVA_ROUTE_21"},
+        {"text": "Route 12", "target_area": "UNOVA_ROUTE_12"},
         {"text": "Reversal Mountain", "target_area": "REVERSAL_MOUNTAIN"},
         {"text": "Humilau City", "target_area": "HUMILAU_CITY", "condition": "beat_unova_champion"},
-        {"text": "Undella Bay", "target_area": "UNDELLA_BAY", "condition": "beat_unova_champion"}
+        {"text": "Undella Bay", "target_area": "UNDELLA_BAY", "condition": "beat_unova_champion"},
+        {"text": "Marine Tube", "target_area": "MARINE_TUBE", "condition": ["beat_unova_champion"]}
       ],
       "explore_options": [
-        { "text": "Pokémon Center", "action": "HEAL" },
-        { "text": "Shop", "action": "SHOP" },
-        {
-          "text": "Battle {friend_name} (Final)",
-          "action": "NPC",
-          "target": "bianca_undella",
-          "condition": "has_freeze_badge",
-          "flag_condition": "not defeated_bianca_undella"
-        }
+        {"text": "Pokémon Center", "action": "HEAL"},
+        {"text": "Shop", "action": "SHOP"}
       ],
       "next_area": "UNOVA_ROUTE_13"
     },
@@ -2473,9 +2140,10 @@
       "gym": {"trainers": [{"name": "Shauntal", "class": "ELITE_FOUR", "sprite": "shauntal.png", "team": [563, 593, 623, 609], "levels": [57, 57, 57, 59], "rematch": {"team": [563, 593, 478, 426, 623, 609], "levels": [71, 71, 71, 71, 71, 73], "movesets": {"563": ["SHADOW-BALL", "WILL-O-WISP", "PSYCHIC", "ENERGY-BALL"], "593": ["SLUDGE-WAVE", "HYDRO-PUMP", "PSYCHIC", "SHADOW-BALL"], "478": ["BLIZZARD", "ICE-SHARD", "SHADOW-BALL", "PSYCHIC"], "426": ["THUNDER", "SHADOW-BALL", "ACROBATICS", "PSYCHIC"], "623": ["HAMMER-ARM", "EARTHQUAKE", "SHADOW-PUNCH", "CURSE"], "609": ["FIRE-BLAST", "PSYCHIC", "SHADOW-BALL", "PAYBACK"]}}, "dialogue": {"intro": ["Shauntal: Oh! A challenger! I'm writing a novel about powerful trainers.", "May I use our battle as inspiration?", "Ghost-types are experts at writing the perfect ending!"], "player_won": ["Shauntal: Wonderful! This will make a brilliant chapter!"], "player_lost": ["Shauntal: The Ghost-type ending. A classic."]}, "rewards": {"balls": 15}, "is_boss_battle": true, "movesets": {"563": ["PSYCHIC", "WILL-O-WISP", "SHADOW-BALL", "GRASS-KNOT"], "593": ["SHADOW-BALL", "SURF", "ENERGY-BALL", "BRINE"], "623": ["CURSE", "BRICK-BREAK", "EARTHQUAKE", "SHADOW-PUNCH"], "609": ["FIRE-BLAST", "PSYCHIC", "SHADOW-BALL", "PAYBACK"]}}, {"name": "Marshal", "class": "ELITE_FOUR", "sprite": "marshal.png", "team": [538, 539, 534, 620], "levels": [57, 57, 57, 59], "rematch": {"team": [286, 538, 539, 454, 620, 534], "levels": [71, 71, 71, 71, 71, 73], "movesets": {"286": ["SPORE", "SKY-UPPERCUT", "MACH-PUNCH", "GRASS-KNOT"], "538": ["EARTHQUAKE", "SUPERPOWER", "RETALIATE", "GRASS-KNOT"], "539": ["CLOSE-COMBAT", "STONE-EDGE", "POISON-JAB", "RETALIATE"], "454": ["EARTHQUAKE", "TOXIC", "VENOSHOCK", "LOW-SWEEP"], "620": ["U-TURN", "FAKE-OUT", "ACROBATICS", "HIGH-JUMP-KICK"], "534": ["HAMMER-ARM", "EARTHQUAKE", "STONE-EDGE", "PAYBACK"]}}, "dialogue": {"intro": ["Marshal: The strength of body and mind — that is Fighting-type mastery.", "Show me what you're made of!"], "player_won": ["Marshal: You have both strength and focus. I acknowledge you!"], "player_lost": ["Marshal: Your spirit fights, but your body must follow."]}, "rewards": {"balls": 15}, "is_boss_battle": true, "movesets": {"538": ["STONE-EDGE", "PAYBACK", "BULLDOZE", "STORM-THROW"], "539": ["STONE-EDGE", "KARATE-CHOP", "GRASS-KNOT", "RETALIATE"], "534": ["STONE-EDGE", "HAMMER-ARM", "RETALIATE", "GRASS-KNOT"], "620": ["U-TURN", "JUMP-KICK", "ROCK-SLIDE", "RETALIATE"]}}, {"name": "Grimsley", "class": "ELITE_FOUR", "sprite": "grimsley.png", "team": [560, 510, 553, 625], "levels": [57, 57, 57, 59], "rematch": {"team": [319, 510, 560, 452, 553, 625], "levels": [71, 71, 71, 71, 71, 73], "movesets": {"319": ["WATERFALL", "NIGHT-SLASH", "EARTHQUAKE", "AQUA-JET"], "510": ["SUCKER-PUNCH", "FAKE-OUT", "AERIAL-ACE", "ATTRACT"], "560": ["CRUNCH", "POISON-JAB", "HEAD-SMASH", "BRICK-BREAK"], "452": ["POISON-FANG", "FIRE-FANG", "CRUNCH", "THUNDER-FANG"], "553": ["OUTRAGE", "EARTHQUAKE", "FOUL-PLAY", "SMACK-DOWN"], "625": ["X-SCISSOR", "NIGHT-SLASH", "AERIAL-ACE", "GUILLOTINE"]}}, "dialogue": {"intro": ["Grimsley: Winning and losing are two sides of the same coin.", "I don't care which side you land on — as long as the battle is interesting."], "player_won": ["Grimsley: Ha. You called my bluff. Well played."], "player_lost": ["Grimsley: When you gamble, you must be prepared to lose everything."]}, "rewards": {"balls": 15}, "is_boss_battle": true, "movesets": {"560": ["SAND-ATTACK", "CRUNCH", "POISON-JAB", "BRICK-BREAK"], "510": ["FAKE-OUT", "ATTRACT", "AERIAL-ACE", "NIGHT-SLASH"], "553": ["CRUNCH", "DRAGON-CLAW", "FOUL-PLAY", "EARTHQUAKE"], "625": ["X-SCISSOR", "NIGHT-SLASH", "METAL-CLAW", "AERIAL-ACE"]}}, {"name": "Caitlin", "class": "ELITE_FOUR", "sprite": "caitlin.png", "team": [579, 518, 561, 576], "levels": [57, 57, 57, 59], "rematch": {"team": [518, 561, 437, 579, 576, 376], "levels": [71, 71, 71, 71, 71, 73], "movesets": {"518": ["REFLECT", "HYPNOSIS", "DREAM-EATER", "PSYCHIC"], "561": ["FLASH-CANNON", "ICE-BEAM", "AIR-SLASH", "PSYCHIC"], "437": ["PAYBACK", "CHARGE-BEAM", "FLASH-CANNON", "PSYCHIC"], "579": ["ENERGY-BALL", "THUNDER", "FOCUS-BLAST", "PSYCHIC"], "576": ["FLATTER", "PAYBACK", "THUNDERBOLT", "PSYCHIC"], "376": ["BULLET-PUNCH", "EARTHQUAKE", "ZEN-HEADBUTT", "GIGA-IMPACT"]}}, "dialogue": {"intro": ["Caitlin: I've been waiting... for a trainer worthy of a proper challenge.", "I am Caitlin. I hope you don't disappoint me.", "Psychic-types see through everything — even your strategy."], "player_won": ["Caitlin: You saw through my Pokémon too. Congratulations."], "player_lost": ["Caitlin: I saw every move before you made it."]}, "rewards": {"balls": 15}, "is_boss_battle": true, "movesets": {"579": ["ENERGY-BALL", "THUNDER", "FOCUS-BLAST", "PSYCHIC"], "518": ["REFLECT", "CHARGE-BEAM", "SHADOW-BALL", "PSYCHIC"], "561": ["SHADOW-BALL", "ICE-BEAM", "AIR-SLASH", "PSYCHIC"], "576": ["CALM-MIND", "THUNDERBOLT", "SHADOW-BALL", "PSYCHIC"]}}], "leader": {"name": "Alder", "class": "CHAMPION", "sprite": "alder.png", "team": [617, 626, 621, 584, 589, 637], "levels": [61, 61, 61, 61, 61, 63], "rematch": {"team": [617, 626, 621, 584, 589, 637], "levels": [75, 75, 75, 75, 75, 77], "movesets": {"617": ["BUG-BUZZ", "FOCUS-BLAST", "ME-FIRST", "ENERGY-BALL"], "626": ["HEAD-CHARGE", "MEGAHORN", "STONE-EDGE", "EARTHQUAKE"], "621": ["NIGHT-SLASH", "OUTRAGE", "SUPERPOWER", "PAYBACK"], "584": ["BLIZZARD", "LIGHT-SCREEN", "FLASH-CANNON", "ACID-ARMOR"], "589": ["X-SCISSOR", "GIGA-IMPACT", "IRON-HEAD", "AERIAL-ACE"], "637": ["OVERHEAT", "BUG-BUZZ", "QUIVER-DANCE", "HYPER-BEAM"]}}, "dialogue": {"intro": ["Alder: So. You've come.", "I've been up here thinking... about what Pokémon battles mean.", "And then you walk in — eyes full of conviction.", "I used to have that look too. Before I lost my partner.", "Show me that your bond can still reach that place.", "Come. Let this be the battle I remember."], "player_won": ["Alder: Ha! Ha ha ha!", "You've done it. You're the new Unova Champion.", "But — wait. What's that roaring from outside?", "N's Castle is rising! The battle isn't over yet, Champion."], "player_lost": ["Alder: The bond is there — but it needs more time.", "Come back. I'll be here whenever you're ready."]}, "rewards": {"balls": 20}, "is_boss_battle": true, "victory_flag": "beat_alder", "movesets": {"617": ["BUG-BUZZ", "FOCUS-BLAST", "ME-FIRST", "ENERGY-BALL"], "626": ["HEAD-CHARGE", "MEGAHORN", "STONE-EDGE", "EARTHQUAKE"], "621": ["NIGHT-SLASH", "OUTRAGE", "SUPERPOWER", "PAYBACK"], "584": ["BLIZZARD", "LIGHT-SCREEN", "FLASH-CANNON", "ACID-ARMOR"], "589": ["X-SCISSOR", "GIGA-IMPACT", "IRON-HEAD", "AERIAL-ACE"], "637": ["OVERHEAT", "BUG-BUZZ", "QUIVER-DANCE", "HYPER-BEAM"]}}, "requirements": {"badges": 8, "fail_text": "You need all 8 Unova Gym Badges to challenge the Pokémon League."}},
       "travel_options": [{"text": "Victory Road", "target_area": "VICTORY_ROAD_UNOVA"}, {"text": "N's Castle", "target_area": "NS_CASTLE", "condition": "beat_alder"}],
       "explore_options": [
-        { "text": "Heal", "action": "HEAL" },
-        { "text": "Shop", "action": "SHOP" },
-        { "text": "CHALLENGE LEAGUE", "action": "GYM" }
+        {"text": "Heal", "action": "HEAL"},
+        {"text": "Shop", "action": "SHOP"},
+        {"text": "CHALLENGE LEAGUE", "action": "GYM"},
+        {"text": "Challenge Iris", "action": "EVENT", "color": "GOLD", "condition": "beat_alder", "flag_condition": "not b2w2_iris", "event": {"lines": ["Iris: I'm Iris! Alder said someday I'd be Champion. Show me your strength!"], "flag": "b2w2_iris", "battle": {"name": "Champion Iris", "class": "GYM_LEADER", "sprite": "dragon_tamer.png", "team": [635, 621, 567, 306, 131, 612], "levels": [57, 57, 57, 57, 57, 59], "is_boss_battle": true, "rewards": {"balls": 15, "RARE_CANDY": 1}, "dialogue": {"player_won": ["Iris: Wow! You're incredible!"]}}}}
       ]
     },
     "DREAMYARD": {
@@ -2487,16 +2155,12 @@
       "min_rounds": 2,
       "backgrounds": { "main": "dreamyard.png" },
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        {
-          "text": "Find Elemental Monkey",
-          "action": "NPC",
-          "target": "dreamyard_monkey",
-          "flag_condition": "not got_elemental_monkey",
-          "color": "GOLD"
-        },
-        { "text": "Striaton City", "action": "EXIT", "target_area": "STRIATON_CITY", "condition": "can_exit", "color": "RED" }
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "Find Elemental Monkey", "action": "NPC", "target": "dreamyard_monkey", "flag_condition": "not got_elemental_monkey", "color": "GOLD"},
+        {"text": "SEEK LATIAS", "action": "BOSS", "color": "GOLD", "condition": "beat_alder", "flag_condition": "not dreamyard_latias", "boss": {"id": 380, "name": "Latias", "victory_flag": "dreamyard_latias", "lines": ["Latias appears!"]}},
+        {"text": "SEEK LATIOS", "action": "BOSS", "color": "GOLD", "condition": "beat_alder", "flag_condition": "not dreamyard_latios", "boss": {"id": 381, "name": "Latios", "victory_flag": "dreamyard_latios", "lines": ["Latios appears!"]}},
+        {"text": "Striaton City", "action": "EXIT", "target_area": "STRIATON_CITY", "condition": "can_exit", "color": "RED"}
       ]
     },
     "WELLSPRING_CAVE": {
@@ -2522,20 +2186,14 @@
       "min_rounds": 2,
       "backgrounds": { "main": "pinwheel_forest.png", "battle": "battle_pinwheel_forest.png" },
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        {
-          "text": "Chase Team Plasma Through Forest",
-          "action": "NPC",
-          "target": "plasma_pinwheel",
-          "condition": "has_basic_badge",
-          "flag_condition": "not plasma_pinwheel_cleared",
-          "color": "GOLD"
-        },
-        { "text": "Lostlorn Forest", "action": "EXIT", "target_area": "LOSTLORN_FOREST", "condition": "can_exit", "color": "GOLD" },
-        { "text": "Nacrene City", "action": "EXIT", "target_area": "NACRENE_CITY", "condition": "can_exit", "color": "RED" },
-        { "text": "Route 3", "action": "EXIT", "target_area": "UNOVA_ROUTE_3", "condition": "can_exit", "color": "RED" },
-        { "text": "CASTELIA CITY", "action": "EXIT", "target_area": "CASTELIA_CITY", "condition": "can_exit", "color": "RED" }
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "Chase Team Plasma Through Forest", "action": "NPC", "target": "plasma_pinwheel", "condition": "has_basic_badge", "flag_condition": "not plasma_pinwheel_cleared", "color": "GOLD"},
+        {"text": "Lostlorn Forest", "action": "EXIT", "target_area": "LOSTLORN_FOREST", "condition": "can_exit", "color": "GOLD"},
+        {"text": "Nacrene City", "action": "EXIT", "target_area": "NACRENE_CITY", "condition": "can_exit", "color": "RED"},
+        {"text": "Route 3", "action": "EXIT", "target_area": "UNOVA_ROUTE_3", "condition": "can_exit", "color": "RED"},
+        {"text": "CASTELIA CITY", "action": "EXIT", "target_area": "CASTELIA_CITY", "condition": "can_exit", "color": "RED"},
+        {"text": "SKYARROW BRIDGE", "action": "EXIT", "target": "SKYARROW_BRIDGE", "condition": "can_exit", "color": "RED"}
       ]
     },
     "LOSTLORN_FOREST": {
@@ -2547,9 +2205,13 @@
       "min_rounds": 2,
       "backgrounds": { "main": "lostlorn_forest.png" },
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "Pinwheel Forest", "action": "EXIT", "target_area": "PINWHEEL_FOREST", "condition": "can_exit", "color": "RED" }
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "SEEK RAIKOU", "action": "BOSS", "color": "GOLD", "condition": "beat_alder", "flag_condition": "not lostlorn_raikou", "boss": {"id": 243, "name": "Raikou", "victory_flag": "lostlorn_raikou", "lines": ["Raikou appears!"]}},
+        {"text": "SEEK ENTEI", "action": "BOSS", "color": "GOLD", "condition": "beat_alder", "flag_condition": "not lostlorn_entei", "boss": {"id": 244, "name": "Entei", "victory_flag": "lostlorn_entei", "lines": ["Entei appears!"]}},
+        {"text": "SEEK SUICUNE", "action": "BOSS", "color": "GOLD", "condition": "beat_alder", "flag_condition": "not lostlorn_suicune", "boss": {"id": 245, "name": "Suicune", "victory_flag": "lostlorn_suicune", "lines": ["Suicune appears!"]}},
+        {"text": "Pinwheel Forest", "action": "EXIT", "target_area": "PINWHEEL_FOREST", "condition": "can_exit", "color": "RED"},
+        {"text": "ROUTE 16", "action": "EXIT", "target": "UNOVA_ROUTE_16", "condition": "can_exit", "color": "RED"}
       ]
     },
     "CASTELIA_SEWERS": {
@@ -2733,11 +2395,12 @@
       "min_rounds": 2,
       "backgrounds": { "main": "mistralton_cave.png" },
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "Encounter Cobalion", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD" },
-        { "text": "Mistralton City", "action": "EXIT", "target_area": "MISTRALTON_CITY", "condition": "can_exit", "color": "RED" },
-        { "text": "Route 6", "action": "EXIT", "target_area": "UNOVA_ROUTE_6", "condition": "can_exit", "color": "RED" }
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "Encounter Cobalion", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD"},
+        {"text": "Mistralton City", "action": "EXIT", "target_area": "MISTRALTON_CITY", "condition": "can_exit", "color": "RED"},
+        {"text": "Route 6", "action": "EXIT", "target_area": "UNOVA_ROUTE_6", "condition": "can_exit", "color": "RED"},
+        {"text": "CLAY TUNNEL", "action": "EXIT", "target": "CLAY_TUNNEL", "condition": ["can_exit", "beat_unova_champion"], "color": "RED"}
       ],
       "area_boss": { "id": 638, "name": "Cobalion", "victory_flag": "MISTRALTON_CAVE_boss_defeated" }
     },
@@ -2767,12 +2430,15 @@
         }
       ],
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
-        { "text": "Route 7", "action": "EXIT", "target_area": "UNOVA_ROUTE_7", "condition": "can_exit", "color": "RED" },
-        { "text": "Icirrus City", "action": "EXIT", "target_area": "ICIRRUS_CITY", "condition": "can_exit", "color": "RED" }
-      ]
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        {"text": "SEEK REGIGIGAS", "action": "BOSS", "color": "GOLD", "condition": ["ruins_regirock", "ruins_regice", "ruins_registeel"], "flag_condition": "not twist_regigigas", "boss": {"id": 486, "name": "Regigigas", "victory_flag": "twist_regigigas", "lines": ["Regigigas appears!"]}},
+        {"text": "Route 7", "action": "EXIT", "target_area": "UNOVA_ROUTE_7", "condition": "can_exit", "color": "RED"},
+        {"text": "Icirrus City", "action": "EXIT", "target_area": "ICIRRUS_CITY", "condition": "can_exit", "color": "RED"},
+        {"text": "CLAY TUNNEL", "action": "EXIT", "target": "CLAY_TUNNEL", "condition": ["can_exit", "beat_unova_champion"], "color": "RED"}
+      ],
+        "on_enter_event": {"type": "trainer_battle", "trainer": {"who": "cheren", "class": "PKMN_TRAINER", "team": [521, 510, 512, 499], "team_choice": {"495": [521, 510, 512, 499], "498": [521, 510, 514, 502], "501": [521, 510, 516, 496]}, "levels": [33, 33, 33, 35], "is_boss_battle": true, "rewards": {"balls": 5}, "dialogue": {"intro": ["Cheren: The Champion fights for his own reasons. I need mine. Battle!"], "player_won": ["Cheren: You never hesitate, do you?"], "player_lost": ["Better luck next time!"]}}, "condition": ["has_jet_badge", "not:has_freeze_badge"], "flag_check": "defeated_cheren_twist"}
     },
     "MOOR_OF_ICIRRUS": {
       "area_type": "dungeon",
@@ -2861,10 +2527,13 @@
       "min_rounds": 3,
       "backgrounds": { "main": "giant_chasm.png", "battle": "battle_giant_chasm.png" },
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "Encounter Kyurem", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD" },
-        { "text": "Lacunosa Town", "action": "EXIT", "target_area": "LACUNOSA_TOWN", "condition": "can_exit", "color": "RED" }
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "Encounter Kyurem", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD"},
+        {"text": "Lacunosa Town", "action": "EXIT", "target_area": "LACUNOSA_TOWN", "condition": "can_exit", "color": "RED"},
+        {"text": "ROUTE 13", "action": "EXIT", "target": "UNOVA_ROUTE_13", "condition": ["can_exit", "beat_unova_champion"], "color": "RED"},
+        {"text": "ROUTE 22", "action": "EXIT", "target": "UNOVA_ROUTE_22", "condition": ["can_exit", "beat_unova_champion"], "color": "RED"},
+        {"text": "ROUTE 23", "action": "EXIT", "target": "UNOVA_ROUTE_23", "condition": ["can_exit", "beat_unova_champion"], "color": "RED"}
       ],
       "area_boss": { "id": 646, "name": "Kyurem", "victory_flag": "GIANT_CHASM_boss_defeated" }
     },
@@ -2876,7 +2545,11 @@
       "wild_pool_percentages": null,
       "min_rounds": 0,
       "backgrounds": { "main": "ns_castle.png", "battle": "battle_ns_castle.png" },
-      "trainer_pool": [{"name": "Plasma Sage Bronius", "class": "PLASMA", "sprite": "plasma_sage.png", "is_boss_battle": true, "team": [563, 609], "rewards": {"balls": 8}}, {"name": "Plasma Sage Ryoku", "class": "PLASMA", "sprite": "plasma_sage.png", "is_boss_battle": true, "team": [561, 576], "rewards": {"balls": 8}}, {"name": "Plasma Sage Gorm", "class": "PLASMA", "sprite": "plasma_sage.png", "is_boss_battle": true, "team": [538, 534], "rewards": {"balls": 8}, "victory_flag": "plasma_sages_defeated"}],
+      "trainer_pool": [
+        {"name": "Plasma Sage Bronius", "class": "PLASMA", "sprite": "plasma_sage.png", "is_boss_battle": true, "team": [563, 609], "rewards": {"balls": 8}},
+        {"name": "Plasma Sage Ryoku", "class": "PLASMA", "sprite": "plasma_sage.png", "is_boss_battle": true, "team": [561, 576], "rewards": {"balls": 8}},
+        {"name": "Plasma Sage Gorm", "class": "PLASMA", "sprite": "plasma_sage.png", "is_boss_battle": true, "team": [538, 534], "rewards": {"balls": 8}, "victory_flag": "plasma_sages_defeated"}
+      ],
       "route_menu": [{"text": "BATTLE PLASMA SAGE", "action": "TRAINER", "condition": "has_trainers", "color": "GOLD"}, {"text": "CONFRONT N", "action": "EVENT", "color": "GOLD", "flag_condition": "not defeated_n_castle", "event": {"requires": ["beat_alder", "plasma_sages_defeated"], "fail": ["The Seven Sages block the way to N's throne room. Defeat the Plasma Sages first!"], "lines": ["N: {player_name}. You became Champion. But my castle stands.", "Zekrom answers to me — the hero of ideals.", "Face me. And if your truth is real — prove it here."], "battle": {"name": "N", "class": "PKMN_TRAINER", "sprite": "n.png", "team": [644, 584, 565, 601, 571, 598], "rewards": {"balls": 10}, "is_boss_battle": true, "dialogue": {"player_won": ["N: You won. Your truth... it burned through everything I prepared.", "Maybe... ideals and truth don't have to be enemies.", "I need time. Time to understand what I missed."], "player_lost": ["N: Ideals that are unwavering — that is what wins.", "Pokémon liberation will come to Unova."]}}, "flag": "defeated_n_castle"}}, {"text": "STOP GHETSIS", "action": "EVENT", "color": "GOLD", "flag_condition": "not beat_unova_champion", "event": {"requires": ["defeated_n_castle"], "fail": ["N is still waiting in his throne room."], "lines": ["Ghetsis: Hahaha. So N lost to a child.", "No matter. N was never the point.", "I will take that Legendary Pokémon — and with it, I will rule this world!", "No one can stop me now. ABSOLUTELY NO ONE!"], "battle": {"name": "Ghetsis", "class": "ROCKET_LEADER", "sprite": "ghetsis.png", "team": [563, 626, 537, 625, 604, 635], "rewards": {"balls": 15, "MASTER_BALL": 1}, "is_boss_battle": true, "dialogue": {"player_won": ["Ghetsis: Im...possible. A child...defeated me?!", "Looker: Stand down, Ghetsis. International Police — it's over.", "You received the MASTER BALL!"], "player_lost": ["Ghetsis: Pathetic. Not even worthy of witnessing my new world."]}, "movesets": {"563": ["SHADOW-BALL", "PROTECT", "PSYCHIC", "TOXIC"], "626": ["HEAD-CHARGE", "WILD-CHARGE", "EARTHQUAKE", "POISON-JAB"], "537": ["MUDDY-WATER", "RAIN-DANCE", "EARTHQUAKE", "SLUDGE-WAVE"], "625": ["NIGHT-SLASH", "STONE-EDGE", "X-SCISSOR", "METAL-BURST"], "604": ["WILD-CHARGE", "FLAMETHROWER", "ACROBATICS", "CRUNCH"], "635": ["DRAGON-PULSE", "FIRE-BLAST", "SURF", "FOCUS-BLAST"]}}, "flag": "beat_unova_champion"}}, {"text": "Pokémon League", "action": "EXIT", "target_area": "UNOVA_POKEMON_LEAGUE", "condition": "can_exit", "color": "RED"}]
     },
     "VICTORY_ROAD_UNOVA": {
@@ -3020,7 +2693,8 @@
         { "text": "Accumula Town", "action": "EXIT", "target_area": "ACCUMULA_TOWN", "condition": "can_exit", "color": "RED" },
         { "text": "Striaton City", "action": "EXIT", "target_area": "STRIATON_CITY", "condition": "can_exit", "color": "RED" }
       ],
-      "next_area": "STRIATON_CITY"
+      "next_area": "STRIATON_CITY",
+        "on_enter_event": {"type": "trainer_battle", "trainer": {"who": "bianca", "class": "PKMN_TRAINER", "team": [506, 501], "team_choice": {"495": [506, 501], "498": [506, 495], "501": [506, 498]}, "levels": [6, 7], "is_boss_battle": true, "rewards": {"balls": 5}, "dialogue": {"intro": ["Bianca: Wait for meee! Let's battle, okay?"], "player_won": ["Bianca: Aww, I lost! You're really good!"], "player_lost": ["Better luck next time!"]}}, "condition": "badges_less: 1", "flag_check": "defeated_bianca_route2"}
     },
     "UNOVA_ROUTE_3": {
       "area_type": "wild_route",
@@ -3067,7 +2741,8 @@
           "color": "RED"
         }
       ],
-      "next_area": "NACRENE_CITY"
+      "next_area": "NACRENE_CITY",
+        "on_enter_event": {"type": "trainer_battle", "trainer": {"who": "cheren", "class": "PKMN_TRAINER", "team": [498, 509], "team_choice": {"495": [498, 509], "498": [501, 509], "501": [495, 509]}, "levels": [14, 12], "is_boss_battle": true, "rewards": {"balls": 5}, "dialogue": {"intro": ["Cheren: I've been training. Battle me!"], "player_won": ["Cheren: Hmm. Still not enough."], "player_lost": ["Better luck next time!"]}}, "condition": ["has_trio_badge", "not:has_basic_badge"], "flag_check": "defeated_cheren_route3"}
     },
     "UNOVA_ROUTE_4": {
       "area_type": "wild_route",
@@ -3093,15 +2768,20 @@
         }
       ],
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
-        { "text": "Desert Resort", "action": "EXIT", "target_area": "DESERT_RESORT", "condition": "can_exit", "color": "GOLD" },
-        { "text": "Castelia City", "action": "EXIT", "target_area": "CASTELIA_CITY", "condition": "can_exit", "color": "RED" },
-        { "text": "Nimbasa City", "action": "EXIT", "target_area": "NIMBASA_CITY", "condition": "can_exit", "color": "RED" }
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"},
+        {"text": "Desert Resort", "action": "EXIT", "target_area": "DESERT_RESORT", "condition": "can_exit", "color": "GOLD"},
+        {"text": "Castelia City", "action": "EXIT", "target_area": "CASTELIA_CITY", "condition": "can_exit", "color": "RED"},
+        {"text": "Nimbasa City", "action": "EXIT", "target_area": "NIMBASA_CITY", "condition": "can_exit", "color": "RED"},
+        {"text": "JOIN AVENUE", "action": "EXIT", "target": "JOIN_AVENUE", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "NIMBASA_CITY",
-      "weather": "SAND"
+      "weather": "SAND",
+        "on_enter_event": [
+          {"type": "trainer_battle", "trainer": {"who": "cheren", "class": "PKMN_TRAINER", "team": [519, 510, 511, 499], "team_choice": {"495": [519, 510, 511, 499], "498": [519, 510, 513, 502], "501": [519, 510, 515, 496]}, "levels": [20, 20, 20, 22], "is_boss_battle": true, "rewards": {"balls": 5}, "dialogue": {"intro": ["Cheren: Castelia's Gym is behind us. Let's see what you've learned."], "player_won": ["Cheren: You're strong. Stronger than me."], "player_lost": ["Better luck next time!"]}}, "condition": ["has_insect_badge", "not:has_bolt_badge"], "flag_check": "defeated_cheren_route4"},
+          {"type": "trainer_battle", "trainer": {"who": "bianca", "class": "PKMN_TRAINER", "team": [507, 513, 517, 502], "team_choice": {"495": [507, 513, 517, 502], "498": [507, 515, 517, 496], "501": [507, 511, 517, 499]}, "levels": [18, 18, 18, 20], "is_boss_battle": true, "rewards": {"balls": 5}, "dialogue": {"intro": ["Bianca: Ooh, my turn! I've been practicing too!"], "player_won": ["Bianca: Wow... you're amazing!"], "player_lost": ["Better luck next time!"]}}, "condition": ["has_insect_badge", "not:has_bolt_badge"], "flag_check": "defeated_bianca_route4"}
+        ]
     },
     "UNOVA_ROUTE_5": {
       "area_type": "wild_route",
@@ -3127,13 +2807,15 @@
         }
       ],
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
-        { "text": "Nimbasa City", "action": "EXIT", "target_area": "NIMBASA_CITY", "condition": "can_exit", "color": "RED" },
-        { "text": "Driftveil City", "action": "EXIT", "target_area": "DRIFTVEIL_CITY", "condition": "can_exit", "color": "RED" }
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"},
+        {"text": "Nimbasa City", "action": "EXIT", "target_area": "NIMBASA_CITY", "condition": "can_exit", "color": "RED"},
+        {"text": "Driftveil City", "action": "EXIT", "target_area": "DRIFTVEIL_CITY", "condition": "can_exit", "color": "RED"},
+        {"text": "DRIFTVEIL DRAWBRIDGE", "action": "EXIT", "target": "DRIFTVEIL_DRAWBRIDGE", "condition": "can_exit", "color": "RED"}
       ],
-      "next_area": "DRIFTVEIL_CITY"
+      "next_area": "DRIFTVEIL_CITY",
+        "on_enter_event": {"type": "trainer_battle", "trainer": {"who": "cheren", "class": "PKMN_TRAINER", "team": [510, 511, 520, 499], "team_choice": {"495": [510, 511, 520, 499], "498": [510, 513, 520, 502], "501": [510, 515, 520, 496]}, "levels": [24, 24, 24, 26], "is_boss_battle": true, "rewards": {"balls": 5}, "dialogue": {"intro": ["Cheren: I want to know what it means to be strong. Battle me again!"], "player_won": ["Cheren: ...I'm still looking for the answer."], "player_lost": ["Better luck next time!"]}}, "condition": ["has_bolt_badge", "not:has_quake_badge"], "flag_check": "defeated_cheren_route5"}
     },
     "UNOVA_ROUTE_6": {
       "area_type": "wild_route",
@@ -3247,7 +2929,8 @@
         {"text": "Tubeline Bridge", "action": "EXIT", "target_area": "TUBELINE_BRIDGE", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "ICIRRUS_CITY",
-      "area_boss": { "id": 642, "name": "Thundurus", "victory_flag": "UNOVA_ROUTE_8_boss_defeated" }
+      "area_boss": { "id": 642, "name": "Thundurus", "victory_flag": "UNOVA_ROUTE_8_boss_defeated" },
+        "on_enter_event": {"type": "trainer_battle", "trainer": {"who": "bianca", "class": "PKMN_TRAINER", "team": [508, 514, 518, 503], "team_choice": {"495": [508, 514, 518, 503], "498": [508, 516, 518, 497], "501": [508, 512, 518, 500]}, "levels": [38, 38, 38, 40], "is_boss_battle": true, "rewards": {"balls": 5}, "dialogue": {"intro": ["Bianca: I've gotten so much stronger. Battle me, please!"], "player_won": ["Bianca: You're the best, {player_name}!"], "player_lost": ["Better luck next time!"]}}, "condition": ["has_freeze_badge", "not:has_legend_badge"], "flag_check": "defeated_bianca_route8"}
     },
     "UNOVA_ROUTE_9": {
       "area_type": "wild_route",
@@ -3273,11 +2956,13 @@
         }
       ],
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
-        { "text": "Icirrus City", "action": "EXIT", "target_area": "ICIRRUS_CITY", "condition": "can_exit", "color": "RED" },
-        { "text": "Opelucid City", "action": "EXIT", "target_area": "OPELUCID_CITY", "condition": "can_exit", "color": "RED" }
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"},
+        {"text": "Icirrus City", "action": "EXIT", "target_area": "ICIRRUS_CITY", "condition": "can_exit", "color": "RED"},
+        {"text": "Opelucid City", "action": "EXIT", "target_area": "OPELUCID_CITY", "condition": "can_exit", "color": "RED"},
+        {"text": "CHALLENGER'S CAVE", "action": "EXIT", "target": "CHALLENGERS_CAVE", "condition": ["can_exit", "beat_unova_champion"], "color": "RED"},
+        {"text": "TUBELINE BRIDGE", "action": "EXIT", "target": "TUBELINE_BRIDGE", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "OPELUCID_CITY"
     },
@@ -3313,7 +2998,8 @@
         { "text": "Opelucid City", "action": "EXIT", "target_area": "OPELUCID_CITY", "condition": "can_exit", "color": "RED" },
         { "text": "Victory Road", "action": "EXIT", "target_area": "VICTORY_ROAD_UNOVA", "condition": "can_exit", "color": "RED" }
       ],
-      "next_area": "VICTORY_ROAD_UNOVA"
+      "next_area": "VICTORY_ROAD_UNOVA",
+        "on_enter_event": {"type": "trainer_battle", "trainer": {"who": "cheren", "class": "PKMN_TRAINER", "team": [521, 510, 512, 500], "team_choice": {"495": [521, 510, 512, 500], "498": [521, 510, 514, 503], "501": [521, 510, 516, 497]}, "levels": [43, 43, 43, 45], "is_boss_battle": true, "rewards": {"balls": 5}, "dialogue": {"intro": ["Cheren: The League is close. One more battle, to see where we stand."], "player_won": ["Cheren: Go on. You'll reach the Champion."], "player_lost": ["Better luck next time!"]}}, "condition": ["has_legend_badge", "not:beat_alder"], "flag_check": "defeated_cheren_route10"}
     },
     "UNOVA_ROUTE_11": {
       "area_type": "wild_route",
@@ -3391,11 +3077,12 @@
         }
       ],
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
-        { "text": "Undella Town", "action": "EXIT", "target_area": "UNDELLA_TOWN", "condition": "can_exit", "color": "RED" },
-        { "text": "Lacunosa Town", "action": "EXIT", "target_area": "LACUNOSA_TOWN", "condition": "can_exit", "color": "RED" }
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"},
+        {"text": "Undella Town", "action": "EXIT", "target_area": "UNDELLA_TOWN", "condition": "can_exit", "color": "RED"},
+        {"text": "Lacunosa Town", "action": "EXIT", "target_area": "LACUNOSA_TOWN", "condition": "can_exit", "color": "RED"},
+        {"text": "GIANT CHASM", "action": "EXIT", "target": "GIANT_CHASM", "condition": ["can_exit", "beat_unova_champion"], "color": "RED"}
       ],
       "next_area": "UNDELLA_TOWN"
     },
@@ -3722,257 +3409,17 @@
       "wild_pool_percentages": null,
       "min_rounds": 0,
       "trainer_pool": [
-        {
-          "name": "Gentleman Frederic",
-          "class": "GENTLEMAN",
-          "sprite": "gentleman.png",
-          "team": [
-            407
-          ],
-          "rewards": {
-            "balls": 4
-          },
-          "dialogue": {
-            "intro": [
-              "Black Tower - Area 6. I'm the gate Trainer!",
-              "Beat me to open the Boss Trainer's door."
-            ],
-            "player_won": [
-              "The door to the Boss Trainer's room is open!"
-            ],
-            "player_lost": [
-              "The gate stays shut for now."
-            ]
-          }
-        },
-        {
-          "name": "Boss Trainer Freira",
-          "class": "ACE_TRAINER",
-          "sprite": "acetrainer_f.png",
-          "is_boss_battle": true,
-          "team": [
-            474,
-            286,
-            348
-          ],
-          "rewards": {
-            "balls": 6
-          },
-          "dialogue": {
-            "intro": [
-              "Black Tower - Area 6 Boss Trainer Freira.",
-              "Show me what you've got!"
-            ],
-            "player_won": [
-              "Area 6 cleared!",
-              "The next area awaits."
-            ],
-            "player_lost": [
-              "Train up and challenge the area again!"
-            ]
-          }
-        },
-        {
-          "name": "Socialite Grace",
-          "class": "BEAUTY",
-          "sprite": "beauty.png",
-          "team": [
-            373
-          ],
-          "rewards": {
-            "balls": 4
-          },
-          "dialogue": {
-            "intro": [
-              "Black Tower - Area 7. I'm the gate Trainer!",
-              "Beat me to open the Boss Trainer's door."
-            ],
-            "player_won": [
-              "The door to the Boss Trainer's room is open!"
-            ],
-            "player_lost": [
-              "The gate stays shut for now."
-            ]
-          }
-        },
-        {
-          "name": "Boss Trainer Gaius",
-          "class": "ACE_TRAINER",
-          "sprite": "acetrainer_m.png",
-          "is_boss_battle": true,
-          "team": [
-            130,
-            477,
-            461
-          ],
-          "rewards": {
-            "balls": 6
-          },
-          "dialogue": {
-            "intro": [
-              "Black Tower - Area 7 Boss Trainer Gaius.",
-              "Show me what you've got!"
-            ],
-            "player_won": [
-              "Area 7 cleared!",
-              "The next area awaits."
-            ],
-            "player_lost": [
-              "Train up and challenge the area again!"
-            ]
-          }
-        },
-        {
-          "name": "Scientist Marie",
-          "class": "SCIENTIST",
-          "sprite": "scientist.png",
-          "team": [
-            462
-          ],
-          "rewards": {
-            "balls": 4
-          },
-          "dialogue": {
-            "intro": [
-              "Black Tower - Area 8. I'm the gate Trainer!",
-              "Beat me to open the Boss Trainer's door."
-            ],
-            "player_won": [
-              "The door to the Boss Trainer's room is open!"
-            ],
-            "player_lost": [
-              "The gate stays shut for now."
-            ]
-          }
-        },
-        {
-          "name": "Boss Trainer Harmony",
-          "class": "ACE_TRAINER",
-          "sprite": "acetrainer_f.png",
-          "is_boss_battle": true,
-          "team": [
-            392,
-            567,
-            641
-          ],
-          "rewards": {
-            "balls": 6
-          },
-          "dialogue": {
-            "intro": [
-              "Black Tower - Area 8 Boss Trainer Harmony.",
-              "Show me what you've got!"
-            ],
-            "player_won": [
-              "Area 8 cleared!",
-              "The next area awaits."
-            ],
-            "player_lost": [
-              "Train up and challenge the area again!"
-            ]
-          }
-        },
-        {
-          "name": "Psychic Collin",
-          "class": "PSYCHIC",
-          "sprite": "psychic_m.png",
-          "team": [
-            65
-          ],
-          "rewards": {
-            "balls": 4
-          },
-          "dialogue": {
-            "intro": [
-              "Black Tower - Area 9. I'm the gate Trainer!",
-              "Beat me to open the Boss Trainer's door."
-            ],
-            "player_won": [
-              "The door to the Boss Trainer's room is open!"
-            ],
-            "player_lost": [
-              "The gate stays shut for now."
-            ]
-          }
-        },
-        {
-          "name": "Boss Trainer Ira",
-          "class": "ACE_TRAINER",
-          "sprite": "acetrainer_m.png",
-          "is_boss_battle": true,
-          "team": [
-            635,
-            144,
-            244
-          ],
-          "rewards": {
-            "balls": 6
-          },
-          "dialogue": {
-            "intro": [
-              "Black Tower - Area 9 Boss Trainer Ira.",
-              "Show me what you've got!"
-            ],
-            "player_won": [
-              "Area 9 cleared!",
-              "The next area awaits."
-            ],
-            "player_lost": [
-              "Train up and challenge the area again!"
-            ]
-          }
-        },
-        {
-          "name": "Scientist Jacques",
-          "class": "SCIENTIST",
-          "sprite": "scientist.png",
-          "team": [
-            31
-          ],
-          "rewards": {
-            "balls": 4
-          },
-          "dialogue": {
-            "intro": [
-              "Black Tower - Area 10. I'm the gate Trainer!",
-              "Beat me to open the Boss Trainer's door."
-            ],
-            "player_won": [
-              "The door to the Boss Trainer's room is open!"
-            ],
-            "player_lost": [
-              "The gate stays shut for now."
-            ]
-          }
-        },
-        {
-          "name": "Boss Trainer Benga",
-          "class": "ACE_TRAINER",
-          "sprite": "acetrainer_m.png",
-          "is_boss_battle": true,
-          "team": [
-            381,
-            445,
-            637
-          ],
-          "rewards": {
-            "balls": 12
-          },
-          "victory_flag": "black_tower_upper_cleared",
-          "dialogue": {
-            "intro": [
-              "Black Tower - Area 10 Boss Trainer Benga.",
-              "Show me what you've got!"
-            ],
-            "player_won": [
-              "Area 10 cleared!",
-              "You've conquered this part of the challenge!"
-            ],
-            "player_lost": [
-              "Train up and challenge the area again!"
-            ]
-          }
-        }
+        {"name": "Gentleman Frederic", "class": "GENTLEMAN", "sprite": "gentleman.png", "team": [407], "rewards": {"balls": 4}, "dialogue": {"intro": ["Black Tower - Area 6. I'm the gate Trainer!", "Beat me to open the Boss Trainer's door."], "player_won": ["The door to the Boss Trainer's room is open!"], "player_lost": ["The gate stays shut for now."]}},
+        {"name": "Boss Trainer Freira", "class": "ACE_TRAINER", "sprite": "acetrainer_f.png", "is_boss_battle": true, "team": [474, 286, 348], "rewards": {"balls": 6}, "dialogue": {"intro": ["Black Tower - Area 6 Boss Trainer Freira.", "Show me what you've got!"], "player_won": ["Area 6 cleared!", "The next area awaits."], "player_lost": ["Train up and challenge the area again!"]}},
+        {"name": "Socialite Grace", "class": "BEAUTY", "sprite": "beauty.png", "team": [373], "rewards": {"balls": 4}, "dialogue": {"intro": ["Black Tower - Area 7. I'm the gate Trainer!", "Beat me to open the Boss Trainer's door."], "player_won": ["The door to the Boss Trainer's room is open!"], "player_lost": ["The gate stays shut for now."]}},
+        {"name": "Boss Trainer Gaius", "class": "ACE_TRAINER", "sprite": "acetrainer_m.png", "is_boss_battle": true, "team": [130, 477, 461], "rewards": {"balls": 6}, "dialogue": {"intro": ["Black Tower - Area 7 Boss Trainer Gaius.", "Show me what you've got!"], "player_won": ["Area 7 cleared!", "The next area awaits."], "player_lost": ["Train up and challenge the area again!"]}},
+        {"name": "Scientist Marie", "class": "SCIENTIST", "sprite": "scientist.png", "team": [462], "rewards": {"balls": 4}, "dialogue": {"intro": ["Black Tower - Area 8. I'm the gate Trainer!", "Beat me to open the Boss Trainer's door."], "player_won": ["The door to the Boss Trainer's room is open!"], "player_lost": ["The gate stays shut for now."]}},
+        {"name": "Boss Trainer Harmony", "class": "ACE_TRAINER", "sprite": "acetrainer_f.png", "is_boss_battle": true, "team": [392, 567, 641], "rewards": {"balls": 6}, "dialogue": {"intro": ["Black Tower - Area 8 Boss Trainer Harmony.", "Show me what you've got!"], "player_won": ["Area 8 cleared!", "The next area awaits."], "player_lost": ["Train up and challenge the area again!"]}},
+        {"name": "Psychic Collin", "class": "PSYCHIC", "sprite": "psychic_m.png", "team": [65], "rewards": {"balls": 4}, "dialogue": {"intro": ["Black Tower - Area 9. I'm the gate Trainer!", "Beat me to open the Boss Trainer's door."], "player_won": ["The door to the Boss Trainer's room is open!"], "player_lost": ["The gate stays shut for now."]}},
+        {"name": "Boss Trainer Ira", "class": "ACE_TRAINER", "sprite": "acetrainer_m.png", "is_boss_battle": true, "team": [635, 144, 244], "rewards": {"balls": 6}, "dialogue": {"intro": ["Black Tower - Area 9 Boss Trainer Ira.", "Show me what you've got!"], "player_won": ["Area 9 cleared!", "The next area awaits."], "player_lost": ["Train up and challenge the area again!"]}},
+        {"name": "Scientist Jacques", "class": "SCIENTIST", "sprite": "scientist.png", "team": [31], "rewards": {"balls": 4}, "dialogue": {"intro": ["Black Tower - Area 10. I'm the gate Trainer!", "Beat me to open the Boss Trainer's door."], "player_won": ["The door to the Boss Trainer's room is open!"], "player_lost": ["The gate stays shut for now."]}},
+        {"name": "Boss Trainer Janna", "class": "PKMN_TRAINER", "sprite": "pokefan_f.png", "team": [245, 485, 381], "levels": [80, 80, 80], "is_boss_battle": true, "rewards": {"balls": 10}},
+        {"name": "Boss Trainer Benga", "class": "ACE_TRAINER", "sprite": "acetrainer_m.png", "is_boss_battle": true, "team": [381, 445, 637], "rewards": {"balls": 12}, "victory_flag": "black_tower_upper_cleared", "dialogue": {"intro": ["Black Tower - Area 10 Boss Trainer Benga.", "Show me what you've got!"], "player_won": ["Area 10 cleared!", "You've conquered this part of the challenge!"], "player_lost": ["Train up and challenge the area again!"]}}
       ],
       "route_menu": [
         {
@@ -4099,509 +3546,27 @@
       "wild_pool_percentages": null,
       "min_rounds": 0,
       "trainer_pool": [
-        {
-          "name": "Backpacker Molly",
-          "class": "PICNIKER",
-          "sprite": "picnicker.png",
-          "team": [
-            184
-          ],
-          "rewards": {
-            "balls": 4
-          },
-          "dialogue": {
-            "intro": [
-              "White Treehollow - Area 1. I'm the gate Trainer!",
-              "Beat me to open the Boss Trainer's door."
-            ],
-            "player_won": [
-              "The door to the Boss Trainer's room is open!"
-            ],
-            "player_lost": [
-              "The gate stays shut for now."
-            ]
-          }
-        },
-        {
-          "name": "Boss Trainer Abigail",
-          "class": "ACE_TRAINER",
-          "sprite": "acetrainer_f.png",
-          "is_boss_battle": true,
-          "team": [
-            505,
-            544,
-            622
-          ],
-          "rewards": {
-            "balls": 6
-          },
-          "dialogue": {
-            "intro": [
-              "White Treehollow - Area 1 Boss Trainer Abigail.",
-              "Show me what you've got!"
-            ],
-            "player_won": [
-              "Area 1 cleared!",
-              "The next area awaits."
-            ],
-            "player_lost": [
-              "Train up and challenge the area again!"
-            ]
-          }
-        },
-        {
-          "name": "Backpacker Carlos",
-          "class": "CAMPER",
-          "sprite": "camper.png",
-          "team": [
-            398
-          ],
-          "rewards": {
-            "balls": 4
-          },
-          "dialogue": {
-            "intro": [
-              "White Treehollow - Area 2. I'm the gate Trainer!",
-              "Beat me to open the Boss Trainer's door."
-            ],
-            "player_won": [
-              "The door to the Boss Trainer's room is open!"
-            ],
-            "player_lost": [
-              "The gate stays shut for now."
-            ]
-          }
-        },
-        {
-          "name": "Boss Trainer Brent",
-          "class": "ACE_TRAINER",
-          "sprite": "acetrainer_m.png",
-          "is_boss_battle": true,
-          "team": [
-            521,
-            603,
-            531
-          ],
-          "rewards": {
-            "balls": 6
-          },
-          "dialogue": {
-            "intro": [
-              "White Treehollow - Area 2 Boss Trainer Brent.",
-              "Show me what you've got!"
-            ],
-            "player_won": [
-              "Area 2 cleared!",
-              "The next area awaits."
-            ],
-            "player_lost": [
-              "Train up and challenge the area again!"
-            ]
-          }
-        },
-        {
-          "name": "School Kid Silvia",
-          "class": "SCHOOL_KID",
-          "sprite": "school_kid_f.png",
-          "team": [
-            267,
-            269
-          ],
-          "rewards": {
-            "balls": 4
-          },
-          "dialogue": {
-            "intro": [
-              "White Treehollow - Area 3. I'm the gate Trainer!",
-              "Beat me to open the Boss Trainer's door."
-            ],
-            "player_won": [
-              "The door to the Boss Trainer's room is open!"
-            ],
-            "player_lost": [
-              "The gate stays shut for now."
-            ]
-          }
-        },
-        {
-          "name": "Boss Trainer Carleigh",
-          "class": "ACE_TRAINER",
-          "sprite": "acetrainer_f.png",
-          "is_boss_battle": true,
-          "team": [
-            508,
-            587,
-            542
-          ],
-          "rewards": {
-            "balls": 6
-          },
-          "dialogue": {
-            "intro": [
-              "White Treehollow - Area 3 Boss Trainer Carleigh.",
-              "Show me what you've got!"
-            ],
-            "player_won": [
-              "Area 3 cleared!",
-              "The next area awaits."
-            ],
-            "player_lost": [
-              "Train up and challenge the area again!"
-            ]
-          }
-        },
-        {
-          "name": "Backpacker Emi",
-          "class": "PICNIKER",
-          "sprite": "picnicker.png",
-          "team": [
-            242
-          ],
-          "rewards": {
-            "balls": 4
-          },
-          "dialogue": {
-            "intro": [
-              "White Treehollow - Area 4. I'm the gate Trainer!",
-              "Beat me to open the Boss Trainer's door."
-            ],
-            "player_won": [
-              "The door to the Boss Trainer's room is open!"
-            ],
-            "player_lost": [
-              "The gate stays shut for now."
-            ]
-          }
-        },
-        {
-          "name": "Boss Trainer Daneil",
-          "class": "ACE_TRAINER",
-          "sprite": "acetrainer_m.png",
-          "is_boss_battle": true,
-          "team": [
-            560,
-            335,
-            631
-          ],
-          "rewards": {
-            "balls": 6
-          },
-          "dialogue": {
-            "intro": [
-              "White Treehollow - Area 4 Boss Trainer Daneil.",
-              "Show me what you've got!"
-            ],
-            "player_won": [
-              "Area 4 cleared!",
-              "The next area awaits."
-            ],
-            "player_lost": [
-              "Train up and challenge the area again!"
-            ]
-          }
-        },
-        {
-          "name": "Psychic Britney",
-          "class": "PSYCHIC",
-          "sprite": "psychic.png",
-          "team": [
-            189
-          ],
-          "rewards": {
-            "balls": 4
-          },
-          "dialogue": {
-            "intro": [
-              "White Treehollow - Area 5. I'm the gate Trainer!",
-              "Beat me to open the Boss Trainer's door."
-            ],
-            "player_won": [
-              "The door to the Boss Trainer's room is open!"
-            ],
-            "player_lost": [
-              "The gate stays shut for now."
-            ]
-          }
-        },
-        {
-          "name": "Boss Trainer Elie",
-          "class": "ACE_TRAINER",
-          "sprite": "acetrainer_f.png",
-          "is_boss_battle": true,
-          "team": [
-            344,
-            139,
-            593
-          ],
-          "rewards": {
-            "balls": 6
-          },
-          "dialogue": {
-            "intro": [
-              "White Treehollow - Area 5 Boss Trainer Elie.",
-              "Show me what you've got!"
-            ],
-            "player_won": [
-              "Area 5 cleared!",
-              "The next area awaits."
-            ],
-            "player_lost": [
-              "Train up and challenge the area again!"
-            ]
-          }
-        },
-        {
-          "name": "Gentleman Doug",
-          "class": "GENTLEMAN",
-          "sprite": "gentleman.png",
-          "team": [
-            405
-          ],
-          "rewards": {
-            "balls": 4
-          },
-          "dialogue": {
-            "intro": [
-              "White Treehollow - Area 6. I'm the gate Trainer!",
-              "Beat me to open the Boss Trainer's door."
-            ],
-            "player_won": [
-              "The door to the Boss Trainer's room is open!"
-            ],
-            "player_lost": [
-              "The gate stays shut for now."
-            ]
-          }
-        },
-        {
-          "name": "Boss Trainer Frederick",
-          "class": "ACE_TRAINER",
-          "sprite": "acetrainer_m.png",
-          "is_boss_battle": true,
-          "team": [
-            468,
-            214,
-            409
-          ],
-          "rewards": {
-            "balls": 6
-          },
-          "dialogue": {
-            "intro": [
-              "White Treehollow - Area 6 Boss Trainer Frederick.",
-              "Show me what you've got!"
-            ],
-            "player_won": [
-              "Area 6 cleared!",
-              "The next area awaits."
-            ],
-            "player_lost": [
-              "Train up and challenge the area again!"
-            ]
-          }
-        },
-        {
-          "name": "Socialite Miho",
-          "class": "BEAUTY",
-          "sprite": "beauty.png",
-          "team": [
-            275
-          ],
-          "rewards": {
-            "balls": 4
-          },
-          "dialogue": {
-            "intro": [
-              "White Treehollow - Area 7. I'm the gate Trainer!",
-              "Beat me to open the Boss Trainer's door."
-            ],
-            "player_won": [
-              "The door to the Boss Trainer's room is open!"
-            ],
-            "player_lost": [
-              "The gate stays shut for now."
-            ]
-          }
-        },
-        {
-          "name": "Boss Trainer Gail",
-          "class": "ACE_TRAINER",
-          "sprite": "acetrainer_f.png",
-          "is_boss_battle": true,
-          "team": [
-            350,
-            473,
-            448
-          ],
-          "rewards": {
-            "balls": 6
-          },
-          "dialogue": {
-            "intro": [
-              "White Treehollow - Area 7 Boss Trainer Gail.",
-              "Show me what you've got!"
-            ],
-            "player_won": [
-              "Area 7 cleared!",
-              "The next area awaits."
-            ],
-            "player_lost": [
-              "Train up and challenge the area again!"
-            ]
-          }
-        },
-        {
-          "name": "Scientist Piper",
-          "class": "SCIENTIST",
-          "sprite": "scientist.png",
-          "team": [
-            71
-          ],
-          "rewards": {
-            "balls": 4
-          },
-          "dialogue": {
-            "intro": [
-              "White Treehollow - Area 8. I'm the gate Trainer!",
-              "Beat me to open the Boss Trainer's door."
-            ],
-            "player_won": [
-              "The door to the Boss Trainer's room is open!"
-            ],
-            "player_lost": [
-              "The gate stays shut for now."
-            ]
-          }
-        },
-        {
-          "name": "Boss Trainer Harmon",
-          "class": "ACE_TRAINER",
-          "sprite": "acetrainer_m.png",
-          "is_boss_battle": true,
-          "team": [
-            389,
-            59,
-            642
-          ],
-          "rewards": {
-            "balls": 6
-          },
-          "dialogue": {
-            "intro": [
-              "White Treehollow - Area 8 Boss Trainer Harmon.",
-              "Show me what you've got!"
-            ],
-            "player_won": [
-              "Area 8 cleared!",
-              "The next area awaits."
-            ],
-            "player_lost": [
-              "Train up and challenge the area again!"
-            ]
-          }
-        },
-        {
-          "name": "Lass Lena",
-          "class": "LASS",
-          "sprite": "lass.png",
-          "team": [
-            282,
-            475
-          ],
-          "rewards": {
-            "balls": 4
-          },
-          "dialogue": {
-            "intro": [
-              "White Treehollow - Area 9. I'm the gate Trainer!",
-              "Beat me to open the Boss Trainer's door."
-            ],
-            "player_won": [
-              "The door to the Boss Trainer's room is open!"
-            ],
-            "player_lost": [
-              "The gate stays shut for now."
-            ]
-          }
-        },
-        {
-          "name": "Boss Trainer Iria",
-          "class": "ACE_TRAINER",
-          "sprite": "acetrainer_f.png",
-          "is_boss_battle": true,
-          "team": [
-            373,
-            146,
-            243
-          ],
-          "rewards": {
-            "balls": 6
-          },
-          "dialogue": {
-            "intro": [
-              "White Treehollow - Area 9 Boss Trainer Iria.",
-              "Show me what you've got!"
-            ],
-            "player_won": [
-              "Area 9 cleared!",
-              "The next area awaits."
-            ],
-            "player_lost": [
-              "Train up and challenge the area again!"
-            ]
-          }
-        },
-        {
-          "name": "Youngster Shane",
-          "class": "YOUNGSTER",
-          "sprite": "youngster.png",
-          "team": [
-            464
-          ],
-          "rewards": {
-            "balls": 4
-          },
-          "dialogue": {
-            "intro": [
-              "White Treehollow - Area 10. I'm the gate Trainer!",
-              "Beat me to open the Boss Trainer's door."
-            ],
-            "player_won": [
-              "The door to the Boss Trainer's room is open!"
-            ],
-            "player_lost": [
-              "The gate stays shut for now."
-            ]
-          }
-        },
-        {
-          "name": "Boss Trainer Benga",
-          "class": "ACE_TRAINER",
-          "sprite": "acetrainer_m.png",
-          "is_boss_battle": true,
-          "team": [
-            380,
-            149,
-            637
-          ],
-          "rewards": {
-            "balls": 12
-          },
-          "victory_flag": "white_treehollow_cleared",
-          "dialogue": {
-            "intro": [
-              "White Treehollow - Area 10 Boss Trainer Benga.",
-              "Show me what you've got!"
-            ],
-            "player_won": [
-              "Area 10 cleared!",
-              "You've conquered this part of the challenge!"
-            ],
-            "player_lost": [
-              "Train up and challenge the area again!"
-            ]
-          }
-        }
+        {"name": "Backpacker Molly", "class": "PICNIKER", "sprite": "picnicker.png", "team": [184], "rewards": {"balls": 4}, "dialogue": {"intro": ["White Treehollow - Area 1. I'm the gate Trainer!", "Beat me to open the Boss Trainer's door."], "player_won": ["The door to the Boss Trainer's room is open!"], "player_lost": ["The gate stays shut for now."]}},
+        {"name": "Boss Trainer Abigail", "class": "ACE_TRAINER", "sprite": "acetrainer_f.png", "is_boss_battle": true, "team": [505, 544, 622], "rewards": {"balls": 6}, "dialogue": {"intro": ["White Treehollow - Area 1 Boss Trainer Abigail.", "Show me what you've got!"], "player_won": ["Area 1 cleared!", "The next area awaits."], "player_lost": ["Train up and challenge the area again!"]}},
+        {"name": "Backpacker Carlos", "class": "CAMPER", "sprite": "camper.png", "team": [398], "rewards": {"balls": 4}, "dialogue": {"intro": ["White Treehollow - Area 2. I'm the gate Trainer!", "Beat me to open the Boss Trainer's door."], "player_won": ["The door to the Boss Trainer's room is open!"], "player_lost": ["The gate stays shut for now."]}},
+        {"name": "Boss Trainer Brent", "class": "ACE_TRAINER", "sprite": "acetrainer_m.png", "is_boss_battle": true, "team": [521, 603, 531], "rewards": {"balls": 6}, "dialogue": {"intro": ["White Treehollow - Area 2 Boss Trainer Brent.", "Show me what you've got!"], "player_won": ["Area 2 cleared!", "The next area awaits."], "player_lost": ["Train up and challenge the area again!"]}},
+        {"name": "School Kid Silvia", "class": "SCHOOL_KID", "sprite": "school_kid_f.png", "team": [267, 269], "rewards": {"balls": 4}, "dialogue": {"intro": ["White Treehollow - Area 3. I'm the gate Trainer!", "Beat me to open the Boss Trainer's door."], "player_won": ["The door to the Boss Trainer's room is open!"], "player_lost": ["The gate stays shut for now."]}},
+        {"name": "Boss Trainer Carleigh", "class": "ACE_TRAINER", "sprite": "acetrainer_f.png", "is_boss_battle": true, "team": [508, 587, 542], "rewards": {"balls": 6}, "dialogue": {"intro": ["White Treehollow - Area 3 Boss Trainer Carleigh.", "Show me what you've got!"], "player_won": ["Area 3 cleared!", "The next area awaits."], "player_lost": ["Train up and challenge the area again!"]}},
+        {"name": "Backpacker Emi", "class": "PICNIKER", "sprite": "picnicker.png", "team": [242], "rewards": {"balls": 4}, "dialogue": {"intro": ["White Treehollow - Area 4. I'm the gate Trainer!", "Beat me to open the Boss Trainer's door."], "player_won": ["The door to the Boss Trainer's room is open!"], "player_lost": ["The gate stays shut for now."]}},
+        {"name": "Boss Trainer Daneil", "class": "ACE_TRAINER", "sprite": "acetrainer_m.png", "is_boss_battle": true, "team": [560, 335, 631], "rewards": {"balls": 6}, "dialogue": {"intro": ["White Treehollow - Area 4 Boss Trainer Daneil.", "Show me what you've got!"], "player_won": ["Area 4 cleared!", "The next area awaits."], "player_lost": ["Train up and challenge the area again!"]}},
+        {"name": "Psychic Britney", "class": "PSYCHIC", "sprite": "psychic.png", "team": [189], "rewards": {"balls": 4}, "dialogue": {"intro": ["White Treehollow - Area 5. I'm the gate Trainer!", "Beat me to open the Boss Trainer's door."], "player_won": ["The door to the Boss Trainer's room is open!"], "player_lost": ["The gate stays shut for now."]}},
+        {"name": "Boss Trainer Elie", "class": "ACE_TRAINER", "sprite": "acetrainer_f.png", "is_boss_battle": true, "team": [344, 139, 593], "rewards": {"balls": 6}, "dialogue": {"intro": ["White Treehollow - Area 5 Boss Trainer Elie.", "Show me what you've got!"], "player_won": ["Area 5 cleared!", "The next area awaits."], "player_lost": ["Train up and challenge the area again!"]}},
+        {"name": "Gentleman Doug", "class": "GENTLEMAN", "sprite": "gentleman.png", "team": [405], "rewards": {"balls": 4}, "dialogue": {"intro": ["White Treehollow - Area 6. I'm the gate Trainer!", "Beat me to open the Boss Trainer's door."], "player_won": ["The door to the Boss Trainer's room is open!"], "player_lost": ["The gate stays shut for now."]}},
+        {"name": "Boss Trainer Frederick", "class": "ACE_TRAINER", "sprite": "acetrainer_m.png", "is_boss_battle": true, "team": [468, 214, 409], "rewards": {"balls": 6}, "dialogue": {"intro": ["White Treehollow - Area 6 Boss Trainer Frederick.", "Show me what you've got!"], "player_won": ["Area 6 cleared!", "The next area awaits."], "player_lost": ["Train up and challenge the area again!"]}},
+        {"name": "Socialite Miho", "class": "BEAUTY", "sprite": "beauty.png", "team": [275], "rewards": {"balls": 4}, "dialogue": {"intro": ["White Treehollow - Area 7. I'm the gate Trainer!", "Beat me to open the Boss Trainer's door."], "player_won": ["The door to the Boss Trainer's room is open!"], "player_lost": ["The gate stays shut for now."]}},
+        {"name": "Boss Trainer Gail", "class": "ACE_TRAINER", "sprite": "acetrainer_f.png", "is_boss_battle": true, "team": [350, 473, 448], "rewards": {"balls": 6}, "dialogue": {"intro": ["White Treehollow - Area 7 Boss Trainer Gail.", "Show me what you've got!"], "player_won": ["Area 7 cleared!", "The next area awaits."], "player_lost": ["Train up and challenge the area again!"]}},
+        {"name": "Scientist Piper", "class": "SCIENTIST", "sprite": "scientist.png", "team": [71], "rewards": {"balls": 4}, "dialogue": {"intro": ["White Treehollow - Area 8. I'm the gate Trainer!", "Beat me to open the Boss Trainer's door."], "player_won": ["The door to the Boss Trainer's room is open!"], "player_lost": ["The gate stays shut for now."]}},
+        {"name": "Boss Trainer Harmon", "class": "ACE_TRAINER", "sprite": "acetrainer_m.png", "is_boss_battle": true, "team": [389, 59, 642], "rewards": {"balls": 6}, "dialogue": {"intro": ["White Treehollow - Area 8 Boss Trainer Harmon.", "Show me what you've got!"], "player_won": ["Area 8 cleared!", "The next area awaits."], "player_lost": ["Train up and challenge the area again!"]}},
+        {"name": "Lass Lena", "class": "LASS", "sprite": "lass.png", "team": [282, 475], "rewards": {"balls": 4}, "dialogue": {"intro": ["White Treehollow - Area 9. I'm the gate Trainer!", "Beat me to open the Boss Trainer's door."], "player_won": ["The door to the Boss Trainer's room is open!"], "player_lost": ["The gate stays shut for now."]}},
+        {"name": "Boss Trainer Iria", "class": "ACE_TRAINER", "sprite": "acetrainer_f.png", "is_boss_battle": true, "team": [373, 146, 243], "rewards": {"balls": 6}, "dialogue": {"intro": ["White Treehollow - Area 9 Boss Trainer Iria.", "Show me what you've got!"], "player_won": ["Area 9 cleared!", "The next area awaits."], "player_lost": ["Train up and challenge the area again!"]}},
+        {"name": "Youngster Shane", "class": "YOUNGSTER", "sprite": "youngster.png", "team": [464], "rewards": {"balls": 4}, "dialogue": {"intro": ["White Treehollow - Area 10. I'm the gate Trainer!", "Beat me to open the Boss Trainer's door."], "player_won": ["The door to the Boss Trainer's room is open!"], "player_lost": ["The gate stays shut for now."]}},
+        {"name": "Boss Trainer Jariel", "class": "PKMN_TRAINER", "sprite": "pokefan_m.png", "team": [145, 488, 380], "levels": [80, 80, 80], "is_boss_battle": true, "rewards": {"balls": 10}},
+        {"name": "Boss Trainer Benga", "class": "ACE_TRAINER", "sprite": "acetrainer_m.png", "is_boss_battle": true, "team": [380, 149, 637], "rewards": {"balls": 12}, "victory_flag": "white_treehollow_cleared", "dialogue": {"intro": ["White Treehollow - Area 10 Boss Trainer Benga.", "Show me what you've got!"], "player_won": ["Area 10 cleared!", "You've conquered this part of the challenge!"], "player_lost": ["Train up and challenge the area again!"]}}
       ],
       "route_menu": [
         {
@@ -4692,12 +3657,13 @@
         }
       ],
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
-        { "text": "Nimbasa City", "action": "EXIT", "target_area": "NIMBASA_CITY", "condition": "can_exit", "color": "RED" },
-        { "text": "Route 15", "action": "EXIT", "target_area": "UNOVA_ROUTE_15", "condition": ["can_exit", "visited_UNOVA_ROUTE_15"], "color": "RED" },
-        {"text": "Marvelous Bridge", "action": "EXIT", "target_area": "MARVELOUS_BRIDGE", "condition": ["can_exit", "beat_unova_champion"], "color": "RED"}
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"},
+        {"text": "Nimbasa City", "action": "EXIT", "target_area": "NIMBASA_CITY", "condition": "can_exit", "color": "RED"},
+        {"text": "Route 15", "action": "EXIT", "target_area": "UNOVA_ROUTE_15", "condition": ["can_exit", "visited_UNOVA_ROUTE_15"], "color": "RED"},
+        {"text": "Marvelous Bridge", "action": "EXIT", "target_area": "MARVELOUS_BRIDGE", "condition": ["can_exit", "beat_unova_champion"], "color": "RED"},
+        {"text": "LOSTLORN FOREST", "action": "EXIT", "target": "LOSTLORN_FOREST", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "NIMBASA_CITY"
     },
@@ -4748,11 +3714,12 @@
         }
       ],
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE" },
-        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
-        { "text": "Route 17", "action": "EXIT", "target_area": "UNOVA_ROUTE_17", "condition": "can_exit", "color": "RED" }
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        {"text": "Route 17", "action": "EXIT", "target_area": "UNOVA_ROUTE_17", "condition": "can_exit", "color": "RED"},
+        {"text": "P2 LABORATORY", "action": "EXIT", "target": "P2_LABORATORY", "condition": ["can_exit", "has_item:HM_SURF"], "color": "RED"}
       ],
       "next_area": "UNOVA_ROUTE_17"
     },
@@ -4774,13 +3741,14 @@
         }
       ],
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE" },
-        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
-        { "text": "Undella Town", "action": "EXIT", "target_area": "UNDELLA_TOWN", "condition": "can_exit", "color": "RED" },
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"},
+        {"text": "Undella Town", "action": "EXIT", "target_area": "UNDELLA_TOWN", "condition": "can_exit", "color": "RED"},
         {"text": "Humilau City", "action": "EXIT", "target_area": "HUMILAU_CITY", "condition": ["can_exit", "beat_unova_champion"], "color": "RED"},
-        {"text": "Seaside Cave", "action": "EXIT", "target_area": "SEASIDE_CAVE", "condition": ["can_exit", "beat_unova_champion"], "color": "RED"}
+        {"text": "Seaside Cave", "action": "EXIT", "target_area": "SEASIDE_CAVE", "condition": ["can_exit", "beat_unova_champion"], "color": "RED"},
+        {"text": "UNDELLA BAY", "action": "EXIT", "target": "UNDELLA_BAY", "condition": ["can_exit", "has_item:HM_SURF", "beat_unova_champion"], "color": "RED"}
       ],
       "next_area": "UNDELLA_TOWN"
     },
@@ -4802,12 +3770,13 @@
         }
       ],
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
-        { "text": "Discover Virizion", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD" },
-        { "text": "Opelucid City", "action": "EXIT", "target_area": "OPELUCID_CITY", "condition": "can_exit", "color": "RED" },
-        {"text": "Humilau City", "action": "EXIT", "target_area": "HUMILAU_CITY", "condition": ["can_exit", "beat_unova_champion"], "color": "RED"}
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        {"text": "Discover Virizion", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD"},
+        {"text": "Opelucid City", "action": "EXIT", "target_area": "OPELUCID_CITY", "condition": "can_exit", "color": "RED"},
+        {"text": "Humilau City", "action": "EXIT", "target_area": "HUMILAU_CITY", "condition": ["can_exit", "beat_unova_champion"], "color": "RED"},
+        {"text": "GIANT CHASM", "action": "EXIT", "target": "GIANT_CHASM", "condition": ["can_exit", "beat_unova_champion"], "color": "RED"}
       ],
       "area_boss": { "id": 640, "name": "Virizion", "victory_flag": "UNOVA_ROUTE_22_boss_defeated" },
       "next_area": "OPELUCID_CITY"
@@ -4830,10 +3799,11 @@
         }
       ],
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
-        { "text": "Victory Road", "action": "EXIT", "target_area": "VICTORY_ROAD_UNOVA", "condition": "can_exit", "color": "RED" }
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        {"text": "Victory Road", "action": "EXIT", "target_area": "VICTORY_ROAD_UNOVA", "condition": "can_exit", "color": "RED"},
+        {"text": "GIANT CHASM", "action": "EXIT", "target": "GIANT_CHASM", "condition": ["can_exit", "beat_unova_champion"], "color": "RED"}
       ],
       "next_area": "VICTORY_ROAD_UNOVA"
     },
@@ -4900,13 +3870,34 @@
       "backgrounds": { "main": "p2_laboratory.png" },
       "min_rounds": 1,
       "trainer_pool": [],
-      "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "Route 17", "action": "EXIT", "target_area": "UNOVA_ROUTE_17", "condition": "can_exit", "color": "RED"},
-            {"text": "READ THE LAB NOTES", "action": "EVENT", "color": "GOLD", "event": {"lines": ["The lab is empty. A note on the desk reads:", "\"Genesect capsules moved to Torom Island, Decolore. Drives to follow.\"", "The Decolore ferry leaves from Castelia City."]}}
-        ],
+      "route_menu": [
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "Route 17", "action": "EXIT", "target_area": "UNOVA_ROUTE_17", "condition": "can_exit", "color": "RED"},
+        {"text": "READ THE LAB NOTES", "action": "EVENT", "color": "GOLD", "event": {"lines": ["The lab is empty. A note on the desk reads:", "\"Genesect capsules moved to Torom Island, Decolore. Drives to follow.\"", "The Decolore ferry leaves from Castelia City."]}},
+        {"text": "ROUTE 18", "action": "EXIT", "target": "UNOVA_ROUTE_18", "condition": ["can_exit", "has_item:HM_SURF"], "color": "RED"},
+        {"text": "PLASMA FRIGATE", "action": "EXIT", "target": "PLASMA_FRIGATE", "condition": ["can_exit", "beat_unova_champion"], "color": "RED"}
+      ],
       "next_area": "UNOVA_ROUTE_17",
       "wild_pool_percentages": "UNOVA_P2_LAB_PERCENTAGES"
-    }
-  },
+    },
+        "SKYARROW_BRIDGE": {"area_type": "dungeon", "route_name": "Skyarrow Bridge", "region": "UNOVA", "battle_type": "cave", "min_rounds": 0, "trainer_pool": [], "route_menu": [{"text": "PINWHEEL FOREST", "action": "EXIT", "target": "PINWHEEL_FOREST", "condition": "can_exit", "color": "RED"}, {"text": "CASTELIA CITY", "action": "EXIT", "target": "CASTELIA_CITY", "condition": "can_exit", "color": "RED"}], "next_area": "CASTELIA_CITY"},
+        "DRIFTVEIL_DRAWBRIDGE": {"area_type": "dungeon", "route_name": "Driftveil Drawbridge", "region": "UNOVA", "battle_type": "cave", "min_rounds": 0, "trainer_pool": [], "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "ROUTE 5", "action": "EXIT", "target": "UNOVA_ROUTE_5", "condition": "can_exit", "color": "RED"}, {"text": "DRIFTVEIL CITY", "action": "EXIT", "target": "DRIFTVEIL_CITY", "condition": "can_exit", "color": "RED"}], "next_area": "DRIFTVEIL_CITY", "wild_pool_percentages": "DRIFTVEIL_DRAWBRIDGE_PERCENTAGES"},
+        "UNDERGROUND_RUINS": {"area_type": "dungeon", "route_name": "Underground Ruins", "region": "UNOVA", "battle_type": "cave", "min_rounds": 0, "trainer_pool": [], "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "AWAKEN REGIROCK", "action": "BOSS", "color": "GOLD", "condition": "beat_alder", "flag_condition": "not ruins_regirock", "boss": {"id": 377, "name": "Regirock", "victory_flag": "ruins_regirock", "lines": ["Regirock appears!"]}}, {"text": "AWAKEN REGICE", "action": "BOSS", "color": "GOLD", "condition": "beat_alder", "flag_condition": "not ruins_regice", "boss": {"id": 378, "name": "Regice", "victory_flag": "ruins_regice", "lines": ["Regice appears!"]}}, {"text": "AWAKEN REGISTEEL", "action": "BOSS", "color": "GOLD", "condition": "beat_alder", "flag_condition": "not ruins_registeel", "boss": {"id": 379, "name": "Registeel", "victory_flag": "ruins_registeel", "lines": ["Registeel appears!"]}}, {"text": "CLAY TUNNEL", "action": "EXIT", "target": "CLAY_TUNNEL", "condition": "can_exit", "color": "RED"}], "next_area": "CLAY_TUNNEL", "wild_pool_percentages": "UNDERGROUND_RUINS_PERCENTAGES"},
+        "PWT": {"area_type": "dungeon", "route_name": "Pokémon World Tournament", "region": "UNOVA", "battle_type": "indoor", "min_rounds": 0, "trainer_pool": [{"name": "Leader Trio (Cilan / Chili / Cress)", "class": "GYM_LEADER", "sprite": "trio_cilan_chili_cress.png", "team": [506, 511], "is_boss_battle": true, "rewards": {"balls": 5}}, {"name": "Leader Lenora", "class": "GYM_LEADER", "sprite": "lenora.png", "team": [507, 505], "is_boss_battle": true, "rewards": {"balls": 5}}, {"name": "Leader Burgh", "class": "GYM_LEADER", "sprite": "burgh.png", "team": [544, 557, 542], "is_boss_battle": true, "rewards": {"balls": 5}}, {"name": "Leader Elesa", "class": "GYM_LEADER", "sprite": "elesa.png", "team": [587, 587, 523], "is_boss_battle": true, "rewards": {"balls": 5}}, {"name": "Leader Clay", "class": "GYM_LEADER", "sprite": "clay.png", "team": [552, 536, 530], "is_boss_battle": true, "rewards": {"balls": 5}}, {"name": "Leader Skyla", "class": "GYM_LEADER", "sprite": "skyla.png", "team": [528, 521, 581], "is_boss_battle": true, "rewards": {"balls": 5}}, {"name": "Leader Brycen", "class": "GYM_LEADER", "sprite": "brycen.png", "team": [583, 615, 614], "is_boss_battle": true, "rewards": {"balls": 5}}, {"name": "Leader Drayden", "class": "GYM_LEADER", "sprite": "drayden.png", "team": [611, 621, 612], "is_boss_battle": true, "rewards": {"balls": 20, "RARE_CANDY": 3}, "victory_flag": "pwt_cleared"}], "route_menu": [{"text": "ENTER THE UNOVA LEADERS TOURNAMENT", "action": "GALACTIC_GAUNTLET", "color": "GOLD", "flag_condition": "not pwt_cleared"}, {"text": "DRIFTVEIL CITY", "action": "EXIT", "target": "DRIFTVEIL_CITY", "condition": "can_exit", "color": "RED"}], "next_area": "DRIFTVEIL_CITY"},
+        "PLEDGE_GROVE": {"area_type": "dungeon", "route_name": "Pledge Grove", "region": "UNOVA", "battle_type": "cave", "min_rounds": 0, "trainer_pool": [], "route_menu": [{"text": "SEEK KELDEO", "action": "BOSS", "color": "GOLD", "condition": "beat_alder", "flag_condition": "not pledge_grove_keldeo", "boss": {"id": 647, "name": "Keldeo", "victory_flag": "pledge_grove_keldeo", "lines": ["A small Pokémon stands proudly in the grove: Keldeo, the Colt Pokémon!"]}}, {"text": "FLOCCESY TOWN", "action": "EXIT", "target": "FLOCCESY_TOWN", "condition": "can_exit", "color": "RED"}], "next_area": "FLOCCESY_TOWN"},
+        "ABYSSAL_RUINS": {"area_type": "dungeon", "route_name": "Abyssal Ruins", "region": "UNOVA", "battle_type": "cave", "min_rounds": 0, "trainer_pool": [], "route_menu": [{"text": "SEARCH THE RUINS", "action": "EVENT", "color": "GOLD", "flag_condition": "not abyssal_ruins_searched", "event": {"lines": ["You dive deep into the sunken ruins. Strange carvings cover the walls...", "Something glitters in the silt!"], "gift_item": {"RARE_CANDY": 2}, "flag": "abyssal_ruins_searched"}}, {"text": "SURFACE", "action": "EXIT", "target": "UNDELLA_BAY", "condition": "can_exit", "color": "RED"}], "next_area": "UNDELLA_BAY"},
+        "CAVE_OF_BEING": {"area_type": "dungeon", "route_name": "Cave of Being", "region": "UNOVA", "battle_type": "cave", "min_rounds": 0, "trainer_pool": [], "route_menu": [{"text": "SEEK UXIE", "action": "BOSS", "color": "GOLD", "condition": "beat_alder", "flag_condition": "not cave_of_being_uxie", "boss": {"id": 480, "name": "Uxie", "victory_flag": "cave_of_being_uxie", "lines": ["Uxie appears!"]}}, {"text": "SEEK MESPRIT", "action": "BOSS", "color": "GOLD", "condition": "beat_alder", "flag_condition": "not cave_of_being_mesprit", "boss": {"id": 481, "name": "Mesprit", "victory_flag": "cave_of_being_mesprit", "lines": ["Mesprit appears!"]}}, {"text": "SEEK AZELF", "action": "BOSS", "color": "GOLD", "condition": "beat_alder", "flag_condition": "not cave_of_being_azelf", "boss": {"id": 482, "name": "Azelf", "victory_flag": "cave_of_being_azelf", "lines": ["Azelf appears!"]}}, {"text": "ROUTE 20", "action": "EXIT", "target": "UNOVA_ROUTE_20", "condition": "can_exit", "color": "RED"}], "next_area": "UNOVA_ROUTE_20"},
+        "MARINE_TUBE": {"area_type": "dungeon", "route_name": "Marine Tube", "region": "UNOVA", "battle_type": "cave", "min_rounds": 0, "trainer_pool": [], "route_menu": [
+          {"text": "WATCH THE SEA", "action": "EVENT", "color": "BLUE", "event": {"lines": ["Through the glass tunnel, Wailord and Mantine glide past overhead."]}},
+          {"text": "HUMILAU CITY", "action": "EXIT", "target": "HUMILAU_CITY", "condition": ["can_exit", "beat_unova_champion"], "color": "RED"},
+          {"text": "UNDELLA TOWN", "action": "EXIT", "target": "UNDELLA_TOWN", "condition": "can_exit", "color": "RED"}
+        ], "next_area": "UNDELLA_TOWN"},
+        "POKESTAR_STUDIOS": {"area_type": "town", "route_name": "PokéStar Studios", "region": "UNOVA", "has_gym": false, "trainer_encounter_rate": 0, "travel_options": [{"text": "Virbank City", "target_area": "VIRBANK_CITY"}], "explore_options": [{"text": "Film 'Brycen-Man'", "action": "EVENT", "color": "GOLD", "flag_condition": "not pokestar_brycen_man", "event": {"lines": ["Director: Action! Brycen-Man has kidnapped the city! Only you can save it!"], "flag": "pokestar_brycen_man", "battle": {"name": "Brycen-Man", "class": "PKMN_TRAINER", "sprite": "veteran.png", "team": [614, 615], "is_boss_battle": true, "rewards": {"balls": 5, "RARE_CANDY": 1}, "dialogue": {"player_won": ["Director: Cut! What a hit! The fans will love it!"]}}}}, {"text": "Watch a premiere", "action": "EVENT", "event": {"lines": ["The crowd cheers as the latest PokéStar film rolls."]}}], "trainer_pool": [], "on_enter_event": null},
+        "JOIN_AVENUE": {"area_type": "town", "route_name": "Join Avenue", "region": "UNOVA", "has_gym": false, "trainer_encounter_rate": 0, "travel_options": [{"text": "Nimbasa City", "target_area": "NIMBASA_CITY"}, {"text": "Route 4", "target_area": "UNOVA_ROUTE_4"}], "explore_options": [{"text": "Join Avenue Market", "action": "SHOP", "stock": ["POTION", "SUPER_POTION", "HYPER_POTION", "FULL_HEAL", "REVIVE", "RARE_CANDY"]}, {"text": "Café", "action": "HEAL"}], "trainer_pool": [], "on_enter_event": null},
+        "ANVILLE_TOWN": {"area_type": "town", "route_name": "Anville Town", "region": "UNOVA", "has_gym": false, "trainer_encounter_rate": 0, "travel_options": [{"text": "Train to Nimbasa City", "target_area": "NIMBASA_CITY", "long_ride": true, "message": "The train rolls back across the plains to Nimbasa City."}], "explore_options": [{"text": "Pokémon Center", "action": "HEAL"}, {"text": "Watch the turntable", "action": "EVENT", "event": {"lines": ["A great turntable swings a train around. Train fans cheer from the platform!"]}}], "trainer_pool": [], "on_enter_event": null},
+        "ENTRALINK": {"area_type": "town", "route_name": "Entralink", "region": "UNOVA", "has_gym": false, "trainer_encounter_rate": 0, "travel_options": [{"text": "Back to Nuvema Town", "target_area": "NUVEMA_TOWN"}], "explore_options": [{"text": "Rest in the Dream Forest", "action": "HEAL"}, {"text": "Listen to the Entree Forest", "action": "EVENT", "event": {"lines": ["Pokémon from dreams drift between the trees... then fade, smiling."]}}], "trainer_pool": [], "on_enter_event": null}
+    },
   "JOURNAL_MISSIONS": [
     {
       "id": "unova_m1",
@@ -5070,80 +4061,80 @@
     }
   ],
   "UNOVA_ROUTE_1": [504, 519],
-  "UNOVA_ROUTE_1_PERCENTAGES": { "504": 60, "519": 40 },
+  "UNOVA_ROUTE_1_PERCENTAGES": {"504": 14, "506": 14, "507": 14, "505": 11, "39": 3, "559": 7, "560": 3, "531": 28, "206": 3, "508": 1, "40": 1},
   "UNOVA_ROUTE_2": [504, 506, 519, 522],
-  "UNOVA_ROUTE_2_PERCENTAGES": { "504": 30, "506": 30, "519": 20, "522": 20 },
+  "UNOVA_ROUTE_2_PERCENTAGES": {"504": 12, "506": 12, "509": 6, "505": 9, "507": 9, "510": 6, "39": 3, "108": 3, "531": 31, "206": 3, "463": 2, "508": 2, "40": 2},
   "UNOVA_ROUTE_3": [504, 506, 509, 511, 513, 522],
-  "UNOVA_ROUTE_3_PERCENTAGES": { "504": 20, "506": 20, "509": 20, "511": 15, "513": 15, "522": 10 },
+  "UNOVA_ROUTE_3_PERCENTAGES": {"519": 13, "504": 7, "522": 7, "506": 3, "509": 3, "520": 10, "505": 7, "523": 7, "193": 3, "507": 3, "531": 33, "469": 2, "521": 2, "508": 2},
   "UNOVA_ROUTE_4": [551, 554, 556, 562],
-  "UNOVA_ROUTE_4_PERCENTAGES": { "551": 35, "554": 30, "556": 20, "562": 15 },
+  "UNOVA_ROUTE_4_PERCENTAGES": {"551": 27, "554": 27, "559": 13, "568": 17, "572": 17},
   "UNOVA_ROUTE_5": [572, 580, 587, 590, 577],
-  "UNOVA_ROUTE_5_PERCENTAGES": { "572": 25, "580": 20, "587": 20, "590": 15, "577": 20 },
+  "UNOVA_ROUTE_5_PERCENTAGES": {"574": 13, "572": 13, "568": 9, "510": 9, "577": 13, "531": 37, "587": 4, "573": 2, "580": 2},
   "UNOVA_ROUTE_6": [531, 580, 585, 590, 588, 616],
-  "UNOVA_ROUTE_6_PERCENTAGES": { "531": 25, "580": 20, "585": 20, "590": 15, "588": 10, "616": 10 },
+  "UNOVA_ROUTE_6_PERCENTAGES": {"585": 14, "588": 10, "520": 6, "590": 6, "541": 4, "616": 10, "183": 2, "531": 29, "587": 8, "521": 2, "542": 2, "206": 4, "184": 2, "351": 2, "580": 2},
   "UNOVA_ROUTE_7": [585, 613, 619, 621],
-  "UNOVA_ROUTE_7_PERCENTAGES": { "585": 30, "613": 25, "619": 25, "621": 20 },
+  "UNOVA_ROUTE_7_PERCENTAGES": {"520": 14, "585": 9, "505": 9, "523": 9, "590": 5, "335": 2, "336": 2, "531": 40, "587": 7, "521": 2},
   "UNOVA_ROUTE_8": [592, 613, 615, 618],
-  "UNOVA_ROUTE_8_PERCENTAGES": { "592": 30, "613": 25, "615": 25, "618": 20 },
+  "UNOVA_ROUTE_8_PERCENTAGES": {"536": 30, "616": 30, "618": 15, "453": 11, "588": 15, "592": 2},
   "UNOVA_ROUTE_9": [559, 624, 626, 628],
-  "UNOVA_ROUTE_9_PERCENTAGES": { "559": 30, "624": 25, "626": 25, "628": 20 },
+  "UNOVA_ROUTE_9_PERCENTAGES": {"575": 12, "572": 12, "569": 8, "624": 8, "510": 4, "578": 12, "89": 2, "531": 32, "587": 4, "573": 2, "576": 2, "579": 2},
   "UNOVA_ROUTE_10": [537, 576, 587, 625, 629],
-  "UNOVA_ROUTE_10_PERCENTAGES": { "537": 17, "576": 17, "587": 16, "625": 16, "629": 16, "495": 6, "498": 6, "501": 6 },
+  "UNOVA_ROUTE_10_PERCENTAGES": {"507": 12, "629": 12, "626": 8, "590": 4, "539": 4, "627": 12, "538": 4, "591": 4, "531": 33, "587": 4, "508": 2, "495": 2, "498": 2, "501": 2},
   "UNOVA_ROUTE_11": [507, 587, 592, 621],
-  "UNOVA_ROUTE_11_PERCENTAGES": { "507": 30, "587": 25, "592": 25, "621": 20 },
+  "UNOVA_ROUTE_11_PERCENTAGES": {"629": 7, "55": 6, "207": 4, "591": 3, "335": 3, "336": 3, "588": 7, "624": 1, "627": 7, "616": 7, "183": 3, "630": 7, "625": 1, "628": 7, "531": 25, "587": 3, "472": 1, "184": 1, "592": 2},
   "UNOVA_ROUTE_12": [550, 580, 592, 594],
-  "UNOVA_ROUTE_12_PERCENTAGES": { "550": 30, "580": 25, "592": 25, "594": 20 },
+  "UNOVA_ROUTE_12_PERCENTAGES": {"415": 7, "191": 7, "520": 8, "14": 3, "78": 3, "421": 3, "214": 5, "127": 5, "206": 3, "11": 3, "315": 8, "540": 5, "531": 23, "587": 3, "15": 2, "192": 2, "416": 2, "521": 2, "12": 2, "542": 2, "407": 2, "550": 2, "580": 2, "592": 2, "594": 2},
   "UNOVA_ROUTE_13": [539, 619, 621, 626],
-  "UNOVA_ROUTE_13_PERCENTAGES": { "539": 25, "619": 25, "621": 25, "626": 25 },
+  "UNOVA_ROUTE_13_PERCENTAGES": {"114": 10, "277": 8, "42": 6, "337": 4, "338": 4, "426": 6, "359": 6, "279": 10, "531": 35, "587": 4, "169": 2, "465": 2},
   "UNOVA_ROUTE_14": [571, 619, 621, 631],
-  "UNOVA_ROUTE_14_PERCENTAGES": { "571": 30, "619": 25, "621": 25, "631": 20 },
+  "UNOVA_ROUTE_14_PERCENTAGES": {"55": 9, "39": 7, "357": 5, "619": 11, "334": 5, "426": 5, "606": 4, "213": 2, "333": 7, "359": 5, "620": 4, "531": 32, "587": 4, "40": 2, "571": 2},
   "UNOVA_ROUTE_15": [611, 612, 621, 631],
-  "UNOVA_ROUTE_15_PERCENTAGES": { "611": 30, "612": 25, "621": 25, "631": 20 },
+  "UNOVA_ROUTE_15_PERCENTAGES": {"22": 11, "105": 7, "207": 9, "539": 7, "115": 4, "247": 5, "538": 7, "28": 11, "560": 4, "505": 2, "531": 27, "587": 4, "248": 2, "472": 2, "612": 2},
   "WHITE_FOREST": [16, 29, 32, 43, 63, 66, 81, 92, 280, 371],
   "WHITE_FOREST_PERCENTAGES": { "16": 10, "29": 10, "32": 10, "43": 10, "63": 10, "66": 10, "81": 10, "92": 10, "280": 10, "371": 10 },
   "UNOVA_ROUTE_16": [509, 510, 572, 587],
-  "UNOVA_ROUTE_16_PERCENTAGES": { "509": 30, "510": 25, "572": 25, "587": 20 },
+  "UNOVA_ROUTE_16_PERCENTAGES": {"574": 13, "572": 13, "568": 9, "510": 9, "577": 13, "531": 37, "587": 4, "573": 2},
   "UNOVA_ROUTE_17": [550, 580, 592, 594],
   "UNOVA_ROUTE_17_PERCENTAGES": { "550": 30, "580": 25, "592": 25, "594": 20 },
   "UNOVA_ROUTE_18": [631, 632, 550, 594],
-  "UNOVA_ROUTE_18_PERCENTAGES": { "631": 30, "632": 25, "550": 25, "594": 20 },
+  "UNOVA_ROUTE_18_PERCENTAGES": {"559": 13, "557": 10, "505": 6, "539": 6, "538": 6, "560": 10, "558": 10, "357": 3, "455": 3, "531": 30, "206": 3, "550": 2, "594": 2},
   "UNOVA_ROUTE_21": [580, 592, 594, 550],
   "UNOVA_ROUTE_21_PERCENTAGES": { "580": 30, "592": 25, "594": 25, "550": 20 },
   "UNOVA_ROUTE_22": [619, 621, 627, 636],
-  "UNOVA_ROUTE_22_PERCENTAGES": { "619": 30, "621": 25, "627": 25, "636": 20 },
+  "UNOVA_ROUTE_22_PERCENTAGES": {"619": 12, "591": 10, "279": 5, "55": 5, "337": 5, "338": 5, "183": 5, "225": 2, "531": 42, "587": 5, "184": 2, "636": 2},
   "UNOVA_ROUTE_23": [612, 614, 625, 628],
-  "UNOVA_ROUTE_23_PERCENTAGES": { "612": 30, "614": 25, "625": 25, "628": 20 },
-  "UNOVA_DREAMYARD_PERCENTAGES": { "517": 35, "518": 30, "574": 20, "575": 15 },
+  "UNOVA_ROUTE_23_PERCENTAGES": {"626": 10, "539": 10, "619": 6, "207": 4, "591": 4, "55": 4, "629": 2, "538": 10, "627": 2, "620": 6, "531": 33, "587": 4, "472": 2, "612": 2},
+  "UNOVA_DREAMYARD_PERCENTAGES": {"504": 12, "509": 12, "517": 6, "505": 7, "510": 7, "20": 3, "39": 3, "42": 3, "166": 3, "168": 3, "402": 3, "49": 3, "531": 28, "518": 1, "206": 3, "40": 1, "169": 1},
   "UNOVA_DREAMYARD": [517, 518, 574, 575],
-  "UNOVA_WELLSPRING_CAVE_PERCENTAGES": { "529": 30, "530": 25, "524": 25, "527": 20 },
+  "UNOVA_WELLSPRING_CAVE_PERCENTAGES": {"524": 14, "527": 14, "525": 14, "529": 29, "530": 29},
   "UNOVA_WELLSPRING_CAVE": [529, 530, 524, 527],
-  "UNOVA_PINWHEEL_FOREST_PERCENTAGES": { "511": 12, "513": 12, "515": 12, "519": 22, "532": 12, "535": 12, "546": 10, "538": 8 },
+  "UNOVA_PINWHEEL_FOREST_PERCENTAGES": {"535": 7, "519": 5, "532": 3, "539": 3, "538": 3, "533": 7, "536": 4, "454": 2, "193": 2, "531": 16, "469": 1, "537": 1, "546": 8, "540": 6, "543": 3, "548": 8, "541": 6, "288": 3, "544": 3, "520": 3, "511": 2, "513": 2, "515": 2, "547": 1, "549": 1, "545": 1, "289": 1},
   "UNOVA_PINWHEEL_FOREST": [511, 513, 515, 519, 532, 535, 546, 538],
-  "UNOVA_LOSTLORN_FOREST_PERCENTAGES": { "540": 30, "548": 25, "511": 15, "619": 15, "570": 15 },
+  "UNOVA_LOSTLORN_FOREST_PERCENTAGES": {"546": 11, "541": 11, "520": 5, "543": 6, "548": 11, "315": 5, "415": 3, "214": 2, "127": 2, "544": 6, "531": 15, "587": 3, "511": 3, "513": 3, "515": 3, "521": 2, "542": 2, "547": 2, "549": 2, "416": 2, "407": 2, "570": 2},
   "UNOVA_LOSTLORN_FOREST": [540, 548, 511, 619, 570],
-  "UNOVA_CASTELIA_SEWERS_PERCENTAGES": { "509": 35, "568": 35, "543": 30 },
+  "UNOVA_CASTELIA_SEWERS_PERCENTAGES": {"19": 45, "41": 45, "88": 10},
   "UNOVA_CASTELIA_SEWERS": [509, 543, 568],
-  "UNOVA_DESERT_RESORT_PERCENTAGES": { "551": 22, "554": 20, "556": 18, "562": 15, "557": 15, "561": 10 },
+  "UNOVA_DESERT_RESORT_PERCENTAGES": {"551": 31, "554": 23, "556": 8, "559": 8, "557": 8, "27": 12, "561": 8, "328": 4},
   "UNOVA_DESERT_RESORT": [551, 554, 556, 562, 557, 561],
-  "UNOVA_RELIC_CASTLE_PERCENTAGES": { "551": 36, "562": 35, "568": 29 },
+  "UNOVA_RELIC_CASTLE_PERCENTAGES": {"551": 11, "562": 11, "27": 4, "552": 11, "563": 11, "28": 6, "95": 3, "344": 22, "343": 22},
   "UNOVA_RELIC_CASTLE": [551, 562, 568],
-  "UNOVA_COLD_STORAGE_PERCENTAGES": { "582": 40, "613": 35, "615": 25 },
+  "UNOVA_COLD_STORAGE_PERCENTAGES": {"507": 18, "582": 15, "572": 10, "532": 8, "531": 45, "573": 2, "508": 2},
   "UNOVA_COLD_STORAGE": [582, 613, 615],
-  "UNOVA_CHARGESTONE_CAVE_PERCENTAGES": { "525": 20, "587": 15, "595": 20, "599": 12, "600": 8, "597": 13, "602": 12 },
+  "UNOVA_CHARGESTONE_CAVE_PERCENTAGES": {"595": 18, "599": 13, "597": 9, "525": 5, "602": 4, "299": 5, "529": 46},
   "UNOVA_CHARGESTONE_CAVE": [525, 587, 595, 599, 600, 597, 602],
-  "UNOVA_MISTRALTON_CAVE_PERCENTAGES": { "525": 28, "526": 22, "529": 17, "610": 33 },
+  "UNOVA_MISTRALTON_CAVE_PERCENTAGES": {"525": 23, "527": 14, "610": 9, "304": 9, "529": 45, "526": 2},
   "UNOVA_MISTRALTON_CAVE": [525, 526, 529, 610],
-  "UNOVA_TWIST_MOUNTAIN_PERCENTAGES": { "525": 25, "529": 25, "530": 25, "614": 25 },
+  "UNOVA_TWIST_MOUNTAIN_PERCENTAGES": {"525": 12, "533": 7, "527": 5, "613": 11, "615": 4, "632": 4, "614": 5, "631": 5, "95": 5, "529": 24, "530": 18, "208": 1},
   "UNOVA_TWIST_MOUNTAIN": [525, 529, 530, 614],
-  "UNOVA_MOOR_PERCENTAGES": { "618": 40, "580": 35, "592": 25 },
+  "UNOVA_MOOR_PERCENTAGES": {"536": 30, "616": 30, "618": 15, "453": 11, "588": 15, "580": 2, "592": 2},
   "UNOVA_MOOR": [580, 592, 618],
-  "UNOVA_DRAGONSPIRAL_PERCENTAGES": { "519": 20, "544": 20, "621": 20, "635": 15, "622": 25 },
+  "UNOVA_DRAGONSPIRAL_PERCENTAGES": {"520": 7, "585": 6, "619": 6, "621": 6, "586": 7, "620": 5, "531": 17, "587": 2, "521": 1, "584": 1, "583": 5, "614": 3, "622": 19, "623": 19, "635": 2},
   "UNOVA_DRAGONSPIRAL": [519, 544, 621, 635, 622],
-  "UNOVA_ABUNDANT_SHRINE_PERCENTAGES": { "619": 41, "621": 35, "571": 24 },
+  "UNOVA_ABUNDANT_SHRINE_PERCENTAGES": {"358": 9, "37": 6, "164": 4, "234": 3, "546": 10, "437": 3, "198": 1, "548": 10, "200": 1, "333": 6, "436": 4, "183": 3, "55": 3, "334": 4, "531": 21, "587": 3, "430": 1, "547": 1, "38": 1, "429": 1, "549": 1, "184": 1, "571": 2},
   "UNOVA_ABUNDANT_SHRINE": [571, 619, 621],
-  "UNOVA_GIANT_CHASM_PERCENTAGES": { "614": 35, "615": 35, "584": 30 },
+  "UNOVA_GIANT_CHASM_PERCENTAGES": {"114": 6, "277": 4, "42": 4, "337": 2, "338": 2, "426": 2, "359": 2, "279": 4, "35": 6, "583": 3, "225": 2, "531": 17, "587": 2, "169": 1, "465": 1, "36": 1, "584": 1, "221": 6, "215": 4, "124": 2, "525": 1, "530": 20, "132": 3, "375": 2, "473": 1, "376": 1},
   "UNOVA_GIANT_CHASM": [584, 614, 615],
-  "UNOVA_VICTORY_ROAD_PERCENTAGES": { "537": 20, "576": 20, "612": 20, "625": 20, "633": 20 },
+  "UNOVA_VICTORY_ROAD_PERCENTAGES": {"631": 11, "629": 8, "619": 2, "611": 2, "627": 8, "632": 10, "525": 19, "633": 5, "527": 5, "530": 24, "95": 5, "612": 2},
   "UNOVA_VICTORY_ROAD": [537, 576, 612, 625, 633],
   "REGION_START": {
     "UNOVA": {
@@ -5168,10 +4159,12 @@
       }
     }
   },
-  "UNOVA_CELESTIAL_TOWER_PERCENTAGES": { "607": 45, "605": 30, "519": 25 },
+  "UNOVA_CELESTIAL_TOWER_PERCENTAGES": {"607": 59, "605": 29, "42": 12},
   "UNOVA_CELESTIAL_TOWER": [607, 605, 519],
   "UNOVA_LIBERTY_GARDEN_PERCENTAGES": { "504": 40, "509": 30, "572": 30 },
   "UNOVA_LIBERTY_GARDEN": [504, 509, 572],
-  "UNOVA_P2_LAB_PERCENTAGES": { "599": 40, "605": 30, "602": 30 },
-  "UNOVA_P2_LAB": [599, 605, 602]
+  "UNOVA_P2_LAB_PERCENTAGES": {"505": 13, "507": 13, "599": 5, "559": 5, "110": 6, "82": 6, "600": 6, "560": 6, "531": 35, "508": 2, "462": 2, "601": 2},
+  "UNOVA_P2_LAB": [599, 605, 602],
+  "DRIFTVEIL_DRAWBRIDGE_PERCENTAGES": {"580": 100},
+  "UNDERGROUND_RUINS_PERCENTAGES": {"525": 18, "632": 10, "305": 8, "299": 8, "527": 5, "95": 10, "530": 38, "208": 3}
 }
