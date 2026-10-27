@@ -171,7 +171,7 @@ class AmieState(_MenuState):
             draw_heart(screen, x, y, 14, (255, 190, 210))
         cx = self.game.width // 2
         Utils.draw_text_outline(screen, "POKEMON-AMIE", self.game.assets.fonts["big"], GOLD, cx, 60)
-        font = self.game.assets.fonts["small"]
+        font = self.game.assets.fonts["label"]
         if self.mon is None:
             Utils.draw_text_outline(screen, "Who would you like to spend time with?", font, WHITE, cx, 110)
             # Hearts under each party button.
@@ -198,5 +198,5 @@ class AmieState(_MenuState):
                 pygame.draw.rect(screen, GREEN if ratio > 0.5 else GOLD if ratio > 0.25 else RED, fill,
                                  border_radius=8)
         if not self.dialogue_box.visible and self.phase != "PLAY":
-            Utils.draw_classic_panel(screen, *self.box_rect)
+            Utils.draw_textbox(screen, *self.box_rect)
         self.game.ui_manager.draw(screen)

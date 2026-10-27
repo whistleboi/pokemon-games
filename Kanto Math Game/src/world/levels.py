@@ -6,7 +6,8 @@ Levels for everything the player fights.
   The rest of a leader's team sits a few levels below the ace.
 - Elite Four and Champion: per-region ladders.
 - Wild Pokemon and route trainers: the area's level from assets/area_levels.json (real
-  encounter levels from the games; an area's own `"level"` key overrides it).
+  encounter levels from the games; an area's own `"level"` key overrides it) is the floor, and
+  the player's team is the ceiling (see area_level).
 - Legendaries use fixed levels; Max Raid bosses take their level from the star rank.
 """
 import random
@@ -38,13 +39,13 @@ GYM_ORDER = {
 # Jordan: every Gym Leader, Elite Four, Champion and League rival uses the CANON levels of the base
 # game of its region (exact per-Pokemon levels in the area data, "levels"; these tables are the
 # aces, used for the story cap, gym trainers and fallbacks):
-# Kanto FireRed/LeafGreen, Johto HeartGold/SoulSilver, Hoenn Ruby/Sapphire, Sinnoh gyms
+# Kanto FireRed/LeafGreen, Johto HeartGold/SoulSilver, Hoenn Omega Ruby/Alpha Sapphire (10-26; was RS), Sinnoh gyms
 # Diamond/Pearl (the gym order and rosters here are DP's) and League Platinum (the rosters are
 # Platinum's), Unova Black/White, Kalos X/Y, Alola Sun/Moon, Galar Sword (Bea, Gordie) and the
 # Champion Cup, Paldea Scarlet/Violet. The Orange League has no game: it keeps Kanto's levels.
 GYM_ACE = {
     "KANTO": [14, 21, 24, 29, 43, 43, 47, 50], "JOHTO": [13, 17, 19, 25, 31, 35, 34, 41],
-    "HOENN": [15, 18, 23, 28, 31, 33, 42, 43], "SINNOH": [14, 22, 30, 30, 36, 39, 42, 49],
+    "HOENN": [14, 16, 21, 28, 30, 35, 45, 46], "SINNOH": [14, 22, 30, 30, 36, 39, 42, 49],
     "UNOVA": [14, 20, 23, 27, 31, 35, 39, 43], "KALOS": [12, 25, 32, 34, 37, 42, 48, 59],
     "ALOLA": [10, 27, 39, 48], "GALAR": [20, 24, 27, 36, 38, 42, 46, 48],
     "PALDEA": [15, 17, 24, 30, 36, 42, 45, 48],
@@ -100,24 +101,34 @@ def gym_aces(region):
 
 
 def area_level(game, area_key):
-    """An area's wild level (an area's own "level" key wins). Post-game (the area's region, or
-    its parent, has been won) every area follows the player instead: postgame_cap - POSTGAME_UNDER,
-    so wild Pokemon are a few levels under the cap and trainers at about the cap (see
-    postgame_area_level). The League never uses area levels, so it is not affected."""
+    """The level an area's wild Pokemon and route trainers are built around (Jordan, 10-26):
+    - the floor is the area's own level (its "level" key, else area_levels.json), so a late area
+      stays strong;
+    - it never drops more than POSTGAME_UNDER below the team's highest, so an over-levelled team
+      can't knock everything out in one hit;
+    - the ceiling is the team's highest, so an area set above the team can't wall it (Route 36 at
+      15 against a Lv 10 team, Grok's Johto walk). In STORY mode the team can't pass the level cap
+      until the next badge, so the ceiling only rises at each milestone.
+    Post-game (the area's region, or its parent, has been won) the base is postgame_cap -
+    POSTGAME_UNDER instead (see postgame_area_level). Gyms, the League, rivals and story trainers,
+    legendaries and area bosses with their own levels don't use this."""
     scaled = postgame_area_level(game, area_key)
     if scaled is not None:
         return scaled
     area = game.loader.area_data.get("STORY_PROGRESSION", {}).get(area_key, {})
-    if area.get("level"):
-        return max(int(area["level"]), team_area_level(game))
-    return max(int(_area_levels(game).get(area_key, START_LEVEL + 2)), team_area_level(game))
+    own = int(area["level"]) if area.get("level") else int(_area_levels(game).get(area_key, START_LEVEL + 2))
+    top = team_top(game)
+    if not top:
+        return own
+    return min(max(own, team_area_level(game)), max(2, top))
 
 
 # Jordan: wild Pokemon and trainers always scale with the player's highest team member, so a
-# fast-levelled team can't knock everything out in one hit after a wrong answer. Before the title
-# an area's level never drops below (team's highest - POSTGAME_UNDER), the same spread as the
-# post-game: wild cap-5..cap-2, route trainers cap-2..cap, story trainers' aces at least the cap. Gyms, the
-# League, legendaries and the first rival battle keep their own levels.
+# fast-levelled team can't knock everything out in one hit after a wrong answer, and an area set
+# above the team can't wall it. Before the title an area's level sits between (team's highest -
+# POSTGAME_UNDER) and the team's highest, at the area's own level when that is in between: wild
+# about area-2..area+1, route trainers area+1..area+3, story trainers' aces at least the top.
+# Gyms, the League, legendaries and the first rival battle keep their own levels.
 def team_top(game):
     story = getattr(game, "story_manager", None)
     return max((int(p.level) for p in getattr(story, "player_team", None) or [] if p), default=0)
@@ -220,8 +231,9 @@ def cap_mode(story):
 # rules. Recomputed for the canon League levels and canon rematches (patch 10): the games' rematch
 # teams where they exist (FRLG, HGSS, Platinum, BW post-game, SM title defenses, SV Geeta), else
 # the canon first run + 10. Patch 11: Hoenn 56 -> 61 (its League is raised +5; RS has no rematch, so +10 on top).
+# 10-26: Hoenn 61 -> 70: ORAS has its own rematch teams (Elite Four 70-75, Steven 77-79; Serebii).
 # Patch 12: Alola 63 -> 68 (its title-defense rematch raised +5 like its first run: Elite Four 68, Kukui 70).
-LEAGUE_REMATCH_FLOOR = {"KANTO": 63, "JOHTO": 58, "HOENN": 61, "SINNOH": 65, "UNOVA": 71,
+LEAGUE_REMATCH_FLOOR = {"KANTO": 63, "JOHTO": 58, "HOENN": 70, "SINNOH": 65, "UNOVA": 71,
                         "KALOS": 73, "ALOLA": 68, "GALAR": 72, "PALDEA": 67}
 # Post-game spreads around the cap (Jordan): wild Pokemon a few levels under it (area level =
 # cap - 3, wild = area -2..+1 -> cap-5..cap-2), route/story trainers about at it (area +1..+3 ->

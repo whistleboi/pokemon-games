@@ -64,9 +64,32 @@ class AnimationController:
             self.impact_shake -= 1
 
 
+# Where each side's Pokemon stands (the battle renderer's spots), as shares of the screen.
+SPOTS = {"player": (0.27, 0.69), "opponent": (0.73, 0.39)}
+
+
+def white_silhouette(sprite, amount):
+    """The sprite washed toward white (amount 0..1), for a ball's flash."""
+    img = sprite.copy()
+    if amount > 0:
+        v = int(255 * amount)
+        img.fill((v, v, v, 0), special_flags=pygame.BLEND_RGBA_ADD)
+    return img
+
+
+def ball_arc(start, end, t, height):
+    """A thrown ball's point at t (0..1) on an arc `height` px above the straight line."""
+    x = start[0] + (end[0] - start[0]) * t
+    y = start[1] + (end[1] - start[1]) * t - height * 4 * t * (1 - t)
+    return x, y
+
+
 # [REF-0054: Fainting Animation]
 class FaintAnimation:
-    """Handles Pokémon fainting animation."""
+    """A fainted Pokemon sinks out of sight into the ground (clipped at its feet, as in the
+    games), fading at the end. Also used when a Pokemon is called back for a switch."""
+
+    FRAMES = 22
 
     def __init__(self):
         self.active = False
@@ -88,10 +111,11 @@ class FaintAnimation:
         if not self.active:
             return False
         self.timer += 1
-        if self.timer > 10:
-            self.y_offset += 10
-            self.alpha = max(0, self.alpha - 20)
-        if self.alpha <= 0:
+        k = min(1.0, self.timer / self.FRAMES)
+        h = self.sprite.get_height() if self.sprite else 100
+        self.y_offset = int(h * k * k)                 # slow, then faster, like a slump
+        self.alpha = 255 if k < 0.6 else int(255 * (1 - (k - 0.6) / 0.4))
+        if self.timer >= self.FRAMES:
             self.active = False
             return True
         return False
@@ -99,54 +123,84 @@ class FaintAnimation:
     def draw(self, surface):
         if not self.active or not self.sprite:
             return
-        temp_sprite = self.sprite.copy()
-        temp_sprite.set_alpha(self.alpha)
-        surface.blit(temp_sprite, (self.pos[0], self.pos[1] + self.y_offset))
+        w, h = self.sprite.get_size()
+        visible = h - self.y_offset
+        if visible <= 0:
+            return
+        part = self.sprite.subsurface((0, 0, w, visible)).copy()
+        part.set_alpha(self.alpha)
+        surface.blit(part, (self.pos[0], self.pos[1] + self.y_offset))
 
 
 # [REF-0055: Pokémon Summoning Animation]
 class PokemonSummonAnimation:
-    """Classic Gen 1/2 Poké Ball toss + pop-out + cry"""
+    """Sending a Pokemon out, as in the games: the ball arcs in from the trainer's side to the
+    Pokemon's battle spot, bursts open in a white flash, and the Pokemon grows out of it (white,
+    then its colours), with its cry. It appears exactly where the battle draws it afterwards."""
+
+    THROW = 18
+    OPEN = 14
+
     def __init__(self, game, pokemon, side="player", use_back_sprite=False):
         self.game = game
         self.pokemon = pokemon
         self.side = side
         self.use_back_sprite = use_back_sprite
+        sx, sy = SPOTS["player" if side == "player" else "opponent"]
+        self.spot = (game.width * sx, game.height * sy)
+        self.start = ((game.width * 0.06, game.height * 0.95) if side == "player"
+                      else (game.width * 0.95, game.height * 0.12))
         self.phase = 0
-        self.ball_x = game.width * (0.25 if side == "player" else 0.75)
-        self.ball_y = game.height * 0.55
-        self.target_x = game.width * (0.35 if side == "player" else 0.65)
+        self.timer = 0
+        self.finished = False
+        ball = game.assets.ball_imgs[0]
+        self.ball = pygame.transform.smoothscale(ball, (44, 44))
+        # (older code reads these)
+        self.ball_x, self.ball_y = self.start
+        self.target_x = self.spot[0]
         self.angle = 0
         self.alpha = 255
-        self.finished = False
+
+    def _sprite(self):
+        p = self.pokemon
+        if not p:
+            return None
+        if self.side == "player" and self.use_back_sprite and getattr(p, "back_image", None):
+            return p.back_image
+        return p.image
 
     def update(self):
+        self.timer += 1
         if self.phase == 0:
-            self.ball_x += (self.target_x - self.ball_x) * 0.18
-            self.angle += 25
-            if abs(self.ball_x - self.target_x) < 15:
-                self.phase = 1
-                if self.pokemon and self.pokemon.cry:
+            t = min(1.0, self.timer / self.THROW)
+            self.ball_x, self.ball_y = ball_arc(self.start, self.spot, t, 140)
+            self.angle = (self.angle + 30) % 360
+            if t >= 1.0:
+                self.phase, self.timer = 1, 0
+                if self.pokemon and getattr(self.pokemon, "cry", None):
                     self.pokemon.cry.play()
-        elif self.phase == 1:
-            self.alpha = max(0, self.alpha - 15)
-            if self.alpha <= 30:
-                self.phase = 2
-                self.finished = True
+        elif self.phase == 1 and self.timer >= self.OPEN:
+            self.phase = 2
+            self.finished = True
 
     def draw(self, surface):
-        if self.phase == 1 or self.phase == 2:
-            if self.pokemon:
-                sprite = self.pokemon.image
-                if self.side == "player" and self.use_back_sprite and self.pokemon.back_image:
-                    sprite = self.pokemon.back_image
-
-                p = sprite.copy()
-                alpha = 255 - self.alpha if self.phase == 1 else 255
-                p.set_alpha(alpha)
-                surface.blit(p, p.get_rect(center=(self.target_x, self.ball_y - 20)))
-
-        if self.phase == 0 or self.phase == 1:
-            ball = pygame.transform.rotate(self.game.assets.ball_imgs[0], self.angle)
-            ball.set_alpha(self.alpha)
-            surface.blit(ball, ball.get_rect(center=(self.ball_x, self.ball_y)))
+        if self.phase == 0:
+            ball = pygame.transform.rotate(self.ball, self.angle)
+            surface.blit(ball, ball.get_rect(center=(int(self.ball_x), int(self.ball_y))))
+            return
+        sprite = self._sprite()
+        if sprite is None:
+            return
+        k = min(1.0, self.timer / self.OPEN) if self.phase == 1 else 1.0
+        if self.phase == 1:
+            # the burst: a white ring, the Pokemon growing out of it
+            ring = pygame.Surface((240, 240), pygame.SRCALPHA)
+            pygame.draw.circle(ring, (255, 255, 255, int(200 * (1 - k))), (120, 120), int(30 + 90 * k), 6)
+            surface.blit(ring, ring.get_rect(center=(int(self.spot[0]), int(self.spot[1]))))
+            scale = 0.2 + 0.8 * (1 - (1 - k) ** 2)
+            w, h = sprite.get_size()
+            img = pygame.transform.smoothscale(white_silhouette(sprite, 1 - k), (max(1, int(w * scale)), max(1, int(h * scale))))
+            # grow from the feet, so it stands where the battle draws it
+            surface.blit(img, img.get_rect(midbottom=(int(self.spot[0]), int(self.spot[1] + h / 2))))
+        else:
+            surface.blit(sprite, sprite.get_rect(center=(int(self.spot[0]), int(self.spot[1]))))

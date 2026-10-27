@@ -202,8 +202,9 @@ class JournalState(GameState):
             st = pygame.Rect(0, 0, f["caption"].size(m["status"])[0] + 24, 30)
             st.topleft = (chip.right + 10, chip.y)
             pygame.draw.rect(screen, st_color, st, border_radius=15)
-            Utils.draw_text_outline(screen, m["status"], f["caption"], WHITE, st.centerx, st.centery,
-                                    outline_color=theme.shade(st_color, 0.5), thickness=1)
+            tc, oc = theme.text_on(st_color)
+            Utils.draw_text_outline(screen, m["status"], f["caption"], tc, st.centerx, st.centery,
+                                    outline_color=oc, thickness=1)
             y = chip.bottom + 18
             for row in wrap_text(m["text"], f["s_med"], d.w - 48)[:2]:
                 theme.shadow_text(screen, row, f["s_med"], d.x + 24, y)
@@ -475,7 +476,7 @@ class PokeMartState(GameState):
         self.btn_next = Button((self.bottom_rect.right - 60, self.bottom_rect.centery - 25, 50, 50), ">", game.assets.fonts["med"], self.next_page, visible=False)
 
         cx, cy = game.width // 2, game.height // 2
-        self.btn_yes = Button((cx - 150, cy + 50, 120, 60), "BUY", game.assets.fonts["small"], self.confirm_purchase, bg_color=GREEN, autosize=False, visible=False)
+        self.btn_yes = CommandButton((cx - 150, cy + 50, 140, 60), "BUY", game.assets.fonts["button"], self.confirm_purchase, bg_color=theme.POKEMON, autosize=False, visible=False)
         self.btn_no = Button((cx + 30, cy + 50, 120, 60), "CANCEL", game.assets.fonts["small"], self.cancel_purchase, bg_color=RED, autosize=False, visible=False)
 
         self.dialogue_box = ClassicDialogueBox(self.bottom_rect, [], game.assets.fonts["med"], visible=False)
@@ -1217,7 +1218,7 @@ class PCState(GameState):
         screen = self.game.screen
         f = self.game.assets.fonts
         accent = theme.ACCENT["pc"]
-        theme.menu_background(screen, accent, "BILL'S PC", f["button"], title_x=176)
+        theme.menu_background(screen, accent, self.game.story_manager.pc_name().upper(), f["button"], title_x=176)
         Utils.draw_text_outline(screen, f"{sum(1 for p in self.pc if p)} stored", f["button"], WHITE,
                                 self.game.width - 24, theme.HEADER_H // 2 - 4, align="right",
                                 outline_color=theme.shade(accent, 0.45), thickness=3)
@@ -2067,18 +2068,21 @@ class ItemCountState(GameState):
         screen = self.game.screen
         fonts = self.game.assets.fonts
         cx = self.game.width // 2
-        screen.fill((40, 40, 60))
         from src.world import hms
-        Utils.draw_text_outline(screen, "USE HOW MANY?", fonts["med"], WHITE, cx, 60)
         name = hms.item_name(self.item).upper()
+        theme.menu_background(screen, theme.ACCENT["bag"], "USE HOW MANY?", fonts["button"], title_x=24)
         Utils.draw_text_outline(screen, f"{name}: {self.game.story_manager.inventory.get(self.item, 0)} in the Bag",
-                                fonts["small"], GOLD, cx, 115)
+                                fonts["label"], WHITE, self.game.width - 24, theme.HEADER_H // 2 - 4, align="right",
+                                outline_color=theme.shade(theme.ACCENT["bag"], 0.45), thickness=2)
+        card = pygame.Rect(cx - 360, theme.HEADER_H + 20, 720, 340)
+        theme.card(screen, card, radius=16)
         if self.sprite:
-            screen.blit(self.sprite, self.sprite.get_rect(center=(cx, 220)))
-        Utils.draw_text_outline(screen, self.pokemon.display_name.upper(), fonts["small"], WHITE, cx, 340)
-        Utils.draw_text_outline(screen, f"x{self.count}", fonts["big"], GOLD, cx, 400)
-        Utils.draw_text_outline(screen, f"{self.preview(self.count)}   (up to {self.most})", fonts["small"], WHITE,
-                                cx, 450)
+            spr = fit_sprite(self.sprite, 200, 170)
+            screen.blit(spr, spr.get_rect(center=(cx, card.y + 100)))
+        theme.shadow_text(screen, self.pokemon.display_name.upper(), fonts["s_med"], cx, card.y + 200, align="center")
+        theme.shadow_text(screen, f"x{self.count}", fonts["big"], cx, card.y + 252, align="center")
+        theme.shadow_text(screen, f"{self.preview(self.count)}   (up to {self.most})", fonts["label"], cx,
+                          card.y + 302, color=(110, 116, 136), align="center")
         self.game.ui_manager.draw(screen)
 
 
@@ -2866,23 +2870,13 @@ class EvolutionState(GameState):
         self.is_hatching = (self.original_name == "Mystery Egg")
 
         box = Utils.get_full_dialogue_rect(game)
-        btn_w, btn_h = 120, 60
-        self.btn_yes = Button(
-            rect=(box.right - 280, box.centery - 30, btn_w, btn_h),
-            text="YES",
-            font=game.assets.fonts["small"],
-            callback=self.evolve_yes,
-            bg_color=GREEN,
-            visible=False,
-        )
-        self.btn_no = Button(
-            rect=(box.right - 140, box.centery - 30, btn_w, btn_h),
-            text="NO",
-            font=game.assets.fonts["small"],
-            callback=self.evolve_no,
-            bg_color=RED,
-            visible=False,
-        )
+        btn_w, btn_h = 180, 64  # (the battle's YES / NO)
+        self.btn_yes = CommandButton((box.right - 2 * btn_w - 46, box.centery - btn_h // 2, btn_w, btn_h), "YES",
+                                     game.assets.fonts["button"], self.evolve_yes, bg_color=theme.POKEMON,
+                                     visible=False, autosize=False)
+        self.btn_no = CommandButton((box.right - btn_w - 28, box.centery - btn_h // 2, btn_w, btn_h), "NO",
+                                    game.assets.fonts["button"], self.evolve_no, bg_color=theme.FIGHT,
+                                    visible=False, autosize=False)
         # Branch choice: one button per evolution in place of YES.
         self.choice_buttons = []
         for k, entry in enumerate(choices or []):
@@ -3060,27 +3054,18 @@ class EvolutionState(GameState):
             self.game.screen.blit(img, rect)
 
             box_rect = Utils.get_full_dialogue_rect(self.game)
-            Utils.draw_classic_panel(self.game.screen, *box_rect)
-
-            text_rect = pygame.Rect(
-                box_rect.left, box_rect.top, box_rect.width / 2, box_rect.height
-            )
+            theme.draw_textbox(self.game.screen, box_rect)
             if self.is_hatching:
                 text = f"What? The {self.original_name} is hatching!"
             else:
                 text = f"What? {self.original_name} is evolving!"
-
-            Utils.draw_multiline_text(
-                self.game.screen,
-                text,
-                self.game.assets.fonts["s_med"],
-                WHITE,
-                text_rect.centerx,
-                text_rect.centery,
-                max_width=text_rect.width - 40,
-                center=True,
-                outline_color=BLACK,
-            )
+            from src.ui.dialogue import wrap_text
+            f = self.game.assets.fonts["dialog"]
+            rows = wrap_text(text, f, box_rect.width * 0.55)
+            lh = int(f.get_linesize() * 1.2)
+            top = box_rect.centery - lh * len(rows) // 2
+            for k, row in enumerate(rows):
+                theme.shadow_text(self.game.screen, row, f, box_rect.x + 40, top + k * lh)
             self.game.ui_manager.draw(self.game.screen)
             return
 
@@ -3590,6 +3575,17 @@ class BikeShopState(GameState):
 
         if has_bike:
             lines = ["How's that bike treating you?", "Those Miracle Cycles are top of the line!"]
+        elif self.game.story_manager.current_area_key == "GOLDENROD_CITY":
+            # HeartGold/SoulSilver: the new Goldenrod shop has no customers yet, so it lends you a
+            # bike to ride around and show off (Grok's Johto walk: there was no Bike Shop).
+            lines = [
+                "Welcome! We just opened, but nobody knows about us yet...",
+                "Tell you what: ride one of our bikes around Johto and show it off for us!",
+                "You received the BICYCLE!"
+            ]
+            inv["BICYCLE"] = 1
+            if self.game.assets.heal_sfx:
+                self.game.assets.heal_sfx.play()
         elif has_voucher:
             lines = [
                 "Is that from Misty? Oh wow, she's pretty...",
@@ -3754,9 +3750,15 @@ class GameCornerState(GameState):
         self.btn_no.set_visibility(False)
         self.next_rocket_battle()
 
+    # The Rocket Hideout's boss on B4F (FireRed/LeafGreen): Giovanni, who drops the Silph Scope.
+    HIDEOUT_GIOVANNI = ([95, 111, 115], [25, 24, 29])
+
     def next_rocket_battle(self):
-        if self.rocket_progress >= 4:
+        if self.rocket_progress >= 5:
             self.give_porygon()
+            return
+        if self.rocket_progress == 4:
+            self.giovanni_battle()
             return
 
         rocket_pool = self.game.loader.area_data.get("TEAM_ROCKET_POOL", [19, 23, 52])
@@ -3781,11 +3783,43 @@ class GameCornerState(GameState):
         self.game.change_state(TrainerIntroState(self.game, trainer_sprite, "You shouldn't be here!",
                                                  RocketGauntletBattle(self.game, opponent_team, trainer_sprite=trainer_sprite, trainer_class="ROCKET", trainer_name="GRUNT", battle_type="indoor", area_name="CELADON_CITY")))
 
+    def giovanni_battle(self):
+        from src.world import levels
+        team_ids, team_levels = self.HIDEOUT_GIOVANNI
+        team = [Pokemon(self.game.loader.fetch_specific(pid), self.game.assets, size_mult=3.125) for pid in team_ids]
+        levels.set_team(team, levels.follow_team(self.game, team_levels), exact=True)
+        sprite = self.game.assets.get_trainer_image("leader_giovanni.png")
+        intro = ["B4F: Giovanni: So, you've made it all the way down here.",
+                 "I am Giovanni, the leader of Team Rocket. You'll regret getting in my way!"]
+
+        class GiovanniBattle(TrainerBattleState):
+            def exit_battle(self):
+                story = self.game.story_manager
+                if self.player_won:
+                    story.story_flags["game_corner_rocket_progress"] = 5
+                state = GameCornerState(self.game, self.game.states.get("city"))
+                state.rocket_progress = story.story_flags.get("game_corner_rocket_progress", 0)
+                state.phase = "VICTORY_SEQ"
+                self.game.change_state(state)
+
+        battle = GiovanniBattle(
+            self.game, team, trainer_sprite=sprite, trainer_class="ROCKET_LEADER", trainer_name="GIOVANNI",
+            battle_type="indoor", area_name="CELADON_CITY", is_boss_battle=True, rewards={"balls": 10},
+            custom_dialogue={"player_won": ["Giovanni: ...What! This can't be!",
+                                            "I'll leave the hideout. But Team Rocket isn't finished."],
+                             "player_lost": ["Giovanni: Leave Team Rocket's business to the adults."]})
+        self.game.change_state(TrainerIntroState(self.game, sprite, intro, battle))
+
     def give_porygon(self):
-        self.game.story_manager.story_flags["game_corner_cleared"] = True
+        story = self.game.story_manager
+        story.story_flags["game_corner_cleared"] = True
         self.cleared = True
         porygon = Pokemon(self.game.loader.fetch_specific(137), self.game.assets, size_mult=2.5)
-        msg = ["You cleared out Team Rocket!", "In the chaos, you found a PORYGON!", "You rescued PORYGON!"]
+        msg = ["You drove Team Rocket out of their hideout!"]
+        if story.inventory.get("SILPH_SCOPE", 0) <= 0:
+            story.inventory["SILPH_SCOPE"] = 1
+            msg.append("Giovanni dropped the SILPH SCOPE! Now you can see ghosts for what they are.")
+        msg += ["In the chaos, you found a PORYGON!", "You rescued PORYGON!"]
         if len(self.game.story_manager.player_team) < 6:
             self.game.story_manager.player_team.append(porygon)
         else:
@@ -3823,8 +3857,11 @@ class GameCornerState(GameState):
             self.show_main_menu()  # back from Cash In / Slots: the menu buttons come back too
 
     def on_rocket_victory(self):
-        if self.rocket_progress >= 4:
+        if self.rocket_progress >= 5:
             self.give_porygon()
+        elif self.rocket_progress == 4:  # the last grunt down: B4F and the boss
+            self.dialogue_box.reset(["Defeated Rocket Grunt 4!", "A man in a dark suit is waiting at the bottom of the stairs..."])
+            self.dialogue_box.callback = self.next_rocket_battle
         else:
             self.dialogue_box.reset([f"Defeated Rocket Grunt {self.rocket_progress}!", "Another one is approaching!"])
             self.dialogue_box.callback = self.next_rocket_battle
@@ -3887,10 +3924,17 @@ class SlotMachineState(GameState):
         self.symbol_images = {}
         self._load_symbol_images()
 
-        self.btn_exit = Button((30, 30, 140, 70), "EXIT", game.assets.fonts["small"], self.go_back, bg_color=RED)
-        self.btn_bet_one = Button((self.game.width // 2 - 250, self.game.height - 100, 150, 60), "BET 100", game.assets.fonts["small"], self.bet_one, bg_color=BLUE)
-        self.btn_bet_max = Button((self.game.width // 2 - 75, self.game.height - 100, 150, 60), "BET MAX", game.assets.fonts["small"], self.bet_max, bg_color=BLUE)
-        self.btn_spin = Button((self.game.width // 2 + 100, self.game.height - 100, 150, 60), "SPIN", game.assets.fonts["small"], self.spin_reels, bg_color=GREEN)
+        f = game.assets.fonts
+        self.bar_rect = pygame.Rect(16, game.height - 86, game.width - 32, 78)
+        by, bh = self.bar_rect.y + 10, self.bar_rect.h - 26
+        self.btn_exit = CommandButton((16, 14, 140, 56), "EXIT", f["button"], self.go_back, bg_color=theme.BACK,
+                                      autosize=False)
+        self.btn_bet_one = CommandButton((self.bar_rect.right - 18 - 3 * 170 - 20, by, 170, bh), "BET 100", f["label"],
+                                         self.bet_one, bg_color=theme.RUN, autosize=False)
+        self.btn_bet_max = CommandButton((self.bar_rect.right - 18 - 2 * 170 - 10, by, 170, bh), "BET MAX", f["label"],
+                                         self.bet_max, bg_color=theme.RUN, autosize=False)
+        self.btn_spin = CommandButton((self.bar_rect.right - 18 - 170, by, 170, bh), "SPIN", f["button"],
+                                      self.spin_reels, bg_color=theme.POKEMON, autosize=False)
 
     def _load_symbol_images(self):
         for symbol_data in self.symbol_pool:
@@ -3998,23 +4042,26 @@ class SlotMachineState(GameState):
         self.btn_bet_max.set_visibility(can_interact)
 
     def draw(self):
-        self.game.screen.fill((20, 20, 40))
+        screen, f = self.game.screen, self.game.assets.fonts
+        accent = theme.ACCENT["fun"]
+        theme.menu_background(screen, accent, "SLOT MACHINE", f["button"], title_x=176)
+        Utils.draw_text_outline(screen, f"${self.money:,}   Bet ${self.bet}", f["button"], WHITE, self.game.width - 24,
+                                theme.HEADER_H // 2 - 4, align="right", outline_color=theme.shade(accent, 0.45),
+                                thickness=3)
+        machine = pygame.Rect(0, 0, 3 * 180 + 2 * 40 + 80, 260)
+        machine.center = (self.game.width // 2, (theme.HEADER_H + self.bar_rect.top) // 2)
+        theme.draw_panel(screen, machine)
 
-        Utils.draw_text_outline(self.game.screen, "SLOT MACHINE", self.game.assets.fonts["med"], GOLD, self.game.width // 2, 50)
-
-        Utils.draw_text_outline(self.game.screen, f"MONEY: ${self.money}", self.game.assets.fonts["small"], WHITE, self.game.width // 2 - 200, 120, align="left")
-        Utils.draw_text_outline(self.game.screen, f"BET: ${self.bet}", self.game.assets.fonts["small"], WHITE, self.game.width // 2 + 200, 120, align="right")
-
-        reel_width = 120
-        reel_height = 120
-        reel_spacing = 50
+        reel_width = 180
+        reel_height = 180
+        reel_spacing = 40
         start_x = self.game.width // 2 - (reel_width * 3 + reel_spacing * 2) // 2
         start_y = self.game.height // 2 - reel_height // 2
 
         for i, symbol_data in enumerate(self.reels):
             rect = pygame.Rect(start_x + i * (reel_width + reel_spacing), start_y, reel_width, reel_height)
-            pygame.draw.rect(self.game.screen, (50, 50, 70), rect, border_radius=10)
-            pygame.draw.rect(self.game.screen, WHITE, rect, 3, border_radius=10)
+            rect.centery = machine.centery
+            theme.card(self.game.screen, rect, radius=14)
 
             if symbol_data:
                 symbol_key = symbol_data[0]
@@ -4023,11 +4070,12 @@ class SlotMachineState(GameState):
                     img_rect = img.get_rect(center=rect.center)
                     self.game.screen.blit(img, img_rect)
 
-        if self.spin_result_message:
-            Utils.draw_text_outline(self.game.screen, self.spin_result_message, self.game.assets.fonts["s_med"], GOLD, self.game.width // 2, self.game.height // 2 + 150)
-            if self.payout > 0:
-                Utils.draw_text_outline(self.game.screen, f"WON: ${self.payout}!", self.game.assets.fonts["med"], GREEN, self.game.width // 2, self.game.height // 2 + 200)
-
+        theme.draw_textbox(screen, self.bar_rect)
+        line = self.spin_result_message or "Pick a bet, then SPIN!"
+        if self.payout > 0:
+            line += f"   You won ${self.payout}!"
+        bf = f["s_med"]
+        theme.shadow_text(screen, line, bf, self.bar_rect.x + 32, self.bar_rect.centery - bf.get_height() // 2 - 2)
         self.game.ui_manager.draw(self.game.screen)
 
 
@@ -4100,7 +4148,7 @@ class PokeMathInfiniteState(GameState):
     def get_cx(self, i): return (i * self.game.width // 3) + (self.game.width // 6)
 
     def get_btn_rect(self, i):
-        return pygame.Rect(self.get_cx(i) - 60, self.game.height * 0.65, 120, 80)
+        return pygame.Rect(self.get_cx(i) - 90, self.game.height * 0.65, 180, 90)
 
     def start(self):
         self.game.ui_manager.elements.clear()
@@ -4148,33 +4196,41 @@ class PokeMathInfiniteState(GameState):
             if s[1] > self.game.height:
                 s[1], s[0] = 0, random.randint(0, self.game.width)
             pygame.draw.circle(screen, (150, 150, 150), (s[0], s[1]), 1)
-        Utils.draw_text_outline(screen, f"SCORE: {self.score}", self.game.assets.fonts["small"], GOLD, 20, 20, align="left")
-        Utils.draw_text_outline(screen, f"BALLS: {self.balls}", self.game.assets.fonts["small"], WHITE, 20, 60, align="left")
+        f = self.game.assets.fonts
+        Utils.draw_text_outline(screen, f"SCORE: {self.score}", f["button"], theme.BAG, 24, 30, align="left",
+                                outline_color=(20, 20, 30), thickness=3)
+        Utils.draw_text_outline(screen, f"BALLS: {self.balls}", f["label"], WHITE, 24, 66, align="left",
+                                outline_color=(20, 20, 30), thickness=2)
         for i, p in enumerate(self.p_data):
             if p and p.image:
                 if not (self.pause_timer > 0 and i == self.caught_idx):
                     screen.blit(p.image, p.image.get_rect(center=(self.get_cx(i), self.sprite_y)))
         if not self.ball_active and self.pause_timer == 0:
-            Utils.draw_text_outline(screen, self.problem_str, self.game.assets.fonts["big"], GOLD, self.game.width//2, 100)
+            qf = f["big"]
+            card = pygame.Rect(0, 0, max(360, qf.size(self.problem_str)[0] + 120), 100)
+            card.center = (self.game.width // 2, 100)
+            theme.draw_textbox(screen, card)
+            theme.shadow_text(screen, self.problem_str, qf, card.centerx, card.centery, align="center")
+            mouse = pygame.mouse.get_pos()
             for i in range(3):
                 txt = str(self.options[i])
                 rect = self.get_btn_rect(i)
-                pygame.draw.rect(screen, BLUE, rect, border_radius=15)
-                Utils.draw_text_outline(screen, txt, self.game.assets.fonts["num"], WHITE, rect.centerx, rect.centery)
+                theme.card(screen, rect, hover=rect.collidepoint(mouse), accent=theme.RUN)
+                theme.shadow_text(screen, txt, f["num"], rect.centerx, rect.centery, align="center")
         if self.ball_active:
             screen.blit(self.ball_img, (self.ball_pos[0]-42, self.ball_pos[1]-42))
 
 
 class FlyState(GameState):
-    """Fly / Air Balloon: every town you've visited, three columns, grouped by region (the
+    """Fly: every town you've visited, three columns, grouped by region (the
     region you're in first). The list scrolls like the PC: the mouse wheel, plus the arrow
     buttons and Page Up / Page Down."""
 
     COLS = 3
     ROW_H = 74      # a row of towns (or a region heading)
     CELL_H = 60
-    LEFT, RIGHT = 70, 90     # margins (the arrows sit in the right one)
-    TOP = 110                # first row of the list
+    LEFT, RIGHT = 40, 90     # margins (the arrows sit in the right one)
+    TOP = 104                # first row of the list (under the menu frame's header)
     BOTTOM_PAD = 20
 
     def __init__(self, game, previous_state):
@@ -4182,8 +4238,8 @@ class FlyState(GameState):
         self.previous_state = previous_state
         story = game.story_manager
         fonts = game.assets.fonts
-        self.btn_back = Button((20, 20, 120, 56), "BACK", fonts["small"], self.go_back, bg_color=RED,
-                               autosize=False)
+        self.btn_back = CommandButton((16, 14, 140, 56), "BACK", fonts["button"], self.go_back,
+                                      bg_color=theme.BACK, autosize=False)
         x = game.width - self.RIGHT + 15
         self.btn_up = Button((x, self.TOP, 60, 60), "UP", fonts["tiny"], lambda: self.scroll_by(-1),
                              autosize=False)
@@ -4279,17 +4335,17 @@ class FlyState(GameState):
     def draw(self):
         screen = self.game.screen
         fonts = self.game.assets.fonts
-        screen.fill((30, 30, 50))
-        title = "FLY" if self.game.story_manager.inventory.get("HM_FLY", 0) > 0 else "AIR BALLOON - FLY"
-        Utils.draw_text_outline(screen, title, fonts["med"], GOLD, self.game.width // 2, 55)
+        title = "FLY"
+        theme.menu_background(screen, theme.ACCENT["map"], title, fonts["button"], title_x=176)
         if not self.cities:
-            Utils.draw_text_outline(screen, "You haven't visited any towns yet.", fonts["small"], WHITE,
-                                    self.game.width // 2, self.game.height // 2)
+            theme.shadow_text(screen, "You haven't visited any towns yet.", fonts["s_med"], self.game.width // 2,
+                              self.game.height // 2, color=WHITE, shadow=theme.MENU_BG, align="center")
         for n, (kind, data) in enumerate(self.rows[self.first_row:self.first_row + self.visible_rows]):
             if kind == "heading":
                 y = self.TOP + n * self.ROW_H + self.CELL_H // 2
-                Utils.draw_text_outline(screen, data.upper(), fonts["small"], GOLD, self.LEFT, y, align="left")
-                pygame.draw.line(screen, (90, 90, 130), (self.LEFT + 260, y), (self.game.width - self.RIGHT, y), 2)
+                head = Utils.draw_text_outline(screen, data.upper(), fonts["button"], WHITE, self.LEFT, y,
+                                               align="left", outline_color=theme.PANEL_BORDER, thickness=3)
+                pygame.draw.line(screen, theme.PANEL_EDGE, (self.LEFT + 240, y), (self.game.width - self.RIGHT, y), 3)
         if self.max_first_row:  # where you are in the list
             track = pygame.Rect(self.game.width - self.RIGHT + 40, self.TOP + 75, 10,
                                 self.game.height - self.TOP - self.BOTTOM_PAD - 150)
@@ -4411,8 +4467,8 @@ class UnownReportState(GameState):
     def __init__(self, game, previous_state):
         super().__init__(game)
         self.previous_state = previous_state
-        self.btn_back = Button((30, 30, 140, 70), "BACK", game.assets.fonts["small"],
-                               self.go_back, bg_color=RED)
+        self.btn_back = CommandButton((16, 14, 140, 56), "BACK", game.assets.fonts["button"], self.go_back,
+                                      bg_color=theme.BACK, autosize=False)
 
         self.forms = ["normal", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
                       "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "question", "exclamation"]
@@ -4437,34 +4493,35 @@ class UnownReportState(GameState):
         pass
 
     def draw(self):
+        """The menu frame: one card per Unown form (28), caught ones with their sprite."""
         screen = self.game.screen
-        screen.fill((25, 25, 35))
-        Utils.draw_text_outline(screen, "UNOWN RESEARCH REPORT", self.game.assets.fonts["med"], GOLD, self.game.width//2, 50)
-
-        cols = 7
-        start_x, start_y = 100, 140
-        gap_x, gap_y = 150, 130
-
-        for i, f in enumerate(self.forms):
+        f = self.game.assets.fonts
+        accent = theme.ACCENT["tool"]
+        theme.menu_background(screen, accent, "UNOWN REPORT", f["button"], title_x=176)
+        found = sum(1 for x in self.forms if x in (self.caught_forms or ()))
+        Utils.draw_text_outline(screen, f"{found} / {len(self.forms)} forms", f["button"], WHITE,
+                                self.game.width - 24, theme.HEADER_H // 2 - 4, align="right",
+                                outline_color=theme.shade(accent, 0.45), thickness=3)
+        cols, gap = 7, 12
+        top = theme.HEADER_H + 16
+        cw = (self.game.width - 48 - gap * (cols - 1)) // cols
+        ch = (self.game.height - 16 - top - gap * 3) // 4
+        for i, form in enumerate(self.forms):
             col, row = i % cols, i // cols
-            dx, dy = start_x + col * gap_x, start_y + row * gap_y
-
-            is_caught = f in self.caught_forms if self.caught_forms else False
-            pygame.draw.rect(screen, (45, 45, 60), (dx-60, dy-60, 120, 120), border_radius=10)
-
-            if is_caught:
-                img = self.game.assets.get_pokemon_image(201, f, False)
+            rect = pygame.Rect(24 + col * (cw + gap), top + row * (ch + gap), cw, ch)
+            caught = form in (self.caught_forms or ())
+            theme.card(screen, rect, fill=theme.TEXTBOX if caught else (214, 218, 228))
+            lbl = "A" if form == "normal" else ("?" if form == "question" else "!" if form == "exclamation"
+                                                 else form.upper())
+            if caught:
+                img = self.game.assets.get_pokemon_image(201, form, False)
                 if img:
-                    img = pygame.transform.scale(img, (90, 90))
-                    screen.blit(img, img.get_rect(center=(dx, dy)))
-
-                lbl = f.upper() if len(f) == 1 else ("?" if f == "question" else "!")
-                if f == "normal":
-                    lbl = "A"
-                Utils.draw_text_outline(screen, lbl, self.game.assets.fonts["tiny"], WHITE, dx, dy + 75)
+                    spr = fit_sprite(img, cw - 30, ch - 50)
+                    screen.blit(spr, spr.get_rect(center=(rect.centerx, rect.centery - 10)))
+                theme.shadow_text(screen, lbl, f["s_med"], rect.centerx, rect.bottom - 22, align="center")
             else:
-                Utils.draw_text_outline(screen, "?", self.game.assets.fonts["med"], (80, 80, 100), dx, dy)
-
+                theme.shadow_text(screen, "?", f["big"], rect.centerx, rect.centery, color=(150, 156, 172),
+                                  align="center")
         self.game.ui_manager.draw(screen)
 
 
@@ -4559,8 +4616,8 @@ class PokeNavState(GameState):
         self.pool_key = self.area_data.get("wild_pool_percentages")
         self.pool = game.loader.area_data.get(self.pool_key, {}) if self.pool_key else {}
         
-        self.btn_back = Button((30, 30, 140, 70), "BACK", game.assets.fonts["small"], 
-                               self.go_back, bg_color=RED)
+        self.btn_back = CommandButton((16, 14, 140, 56), "BACK", game.assets.fonts["button"], self.go_back,
+                                      bg_color=theme.BACK, autosize=False)
 
     def go_back(self):
         from src.states.overworld import PlayState
@@ -4578,48 +4635,44 @@ class PokeNavState(GameState):
         pass
 
     def draw(self):
+        """The menu frame: the area's wild Pokemon as white rows (sprite, name, caught ball, how often
+        it appears), in two columns. Rare ones (< 5%) stay hidden without the Devon Scope."""
         screen = self.game.screen
-        screen.fill((10, 40, 30)) # Dark Nav Green
-        
+        f = self.game.assets.fonts
+        accent = theme.ACCENT["tool"]
         route_name = self.area_data.get("route_name", "Unknown Area")
-        Utils.draw_text_outline(screen, f"POKENAV: {route_name.upper()}", 
-                                self.game.assets.fonts["med"], GREEN, self.game.width//2, 60)
-
+        theme.menu_background(screen, accent, f"POKENAV: {route_name.upper()}", f["button"], title_x=176)
         if not self.pool:
-            Utils.draw_text_outline(screen, "NO WILD DATA FOR THIS AREA", 
-                                    self.game.assets.fonts["s_med"], WHITE, self.game.width//2, self.game.height//2)
+            theme.shadow_text(screen, "No wild Pokemon data for this area.", f["s_med"], self.game.width // 2,
+                              self.game.height // 2, color=WHITE, shadow=theme.MENU_BG, align="center")
             self.game.ui_manager.draw(screen)
             return
-
-        start_y = 150
         has_devon_scope = self.game.story_manager.inventory.get("DEVON_SCOPE", 0) > 0
         caught_data = self.game.data.data.get("pokedex", {})
-        
-        sorted_pool = sorted(self.pool.items(), key=lambda x: x[1], reverse=True)
-        
-        for i, (p_id_str, chance) in enumerate(sorted_pool):
+        caught_ids = {int(v.get("id", -1)) for v in caught_data.values() if isinstance(v, dict)}
+        rows = sorted(self.pool.items(), key=lambda x: x[1], reverse=True)
+        top, gap, rh = theme.HEADER_H + 16, 10, 64
+        per_col = max(1, (self.game.height - 16 - top + gap) // (rh + gap))
+        cw = (self.game.width - 48 - 16) // 2
+        for i, (p_id_str, chance) in enumerate(rows[:per_col * 2]):
             p_id = int(p_id_str)
-            name = self.game.assets.pokemon_names.get(str(p_id), "???").upper()
-            is_caught = str(p_id) in caught_data
-            
-            # ARCHITECT: Devon Scope highlights "Hidden" Pokémon (<5%) in Gold
-            is_rare = chance < 5
-            text_color = WHITE
-            if is_rare and has_devon_scope:
-                text_color = GOLD
-            elif is_rare:
-                name = "???" # Obscure rare ones without scope
-            
-            y_pos = start_y + i * 45
-            label = f"{name}: {chance}%"
-            
-            Utils.draw_text_outline(screen, label, self.game.assets.fonts["tiny"], 
-                                    text_color, 200, y_pos, align="left")
-            
-            if is_caught:
-                screen.blit(self.game.assets.ui_ball, (160, y_pos - 10))
-            else:
-                pygame.draw.circle(screen, GRAY, (175, y_pos), 8)
-
+            col, row = i // per_col, i % per_col
+            rect = pygame.Rect(24 + col * (cw + 16), top + row * (rh + gap), cw, rh)
+            rare = chance < 5
+            hidden = rare and not has_devon_scope
+            theme.card(screen, rect, selected=rare and has_devon_scope, accent=theme.BAG, radius=10)
+            if not hidden:
+                img = self.game.assets.get_pokemon_image(p_id, "normal", False)
+                if img:
+                    spr = fit_sprite(img, 52, 52)
+                    screen.blit(spr, spr.get_rect(center=(rect.x + 36, rect.centery)))
+            name = "???" if hidden else self.game.assets.pokemon_names.get(str(p_id), "???").title()
+            theme.shadow_text(screen, name, f["label"], rect.x + 74, rect.y + 10)
+            if p_id in caught_ids and self.game.assets.ui_ball:
+                screen.blit(pygame.transform.scale(self.game.assets.ui_ball, (20, 20)), (rect.right - 34, rect.y + 10))
+            bar = pygame.Rect(rect.x + 74, rect.bottom - 20, rect.w - 74 - 90, 10)
+            pygame.draw.rect(screen, (210, 214, 224), bar, border_radius=5)
+            pygame.draw.rect(screen, theme.BAG if rare else theme.POKEMON,
+                             (bar.x, bar.y, max(4, int(bar.w * min(1.0, chance / 50))), bar.h), border_radius=5)
+            theme.shadow_text(screen, f"{chance}%", f["label"], rect.right - 16, rect.bottom - 30, align="right")
         self.game.ui_manager.draw(screen)
-        self.game.ui_manager.draw(self.game.screen)

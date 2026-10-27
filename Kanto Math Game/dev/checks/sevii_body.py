@@ -1,6 +1,6 @@
 print("1) Getting there")
 story.badges = {"KANTO": ["BOULDER", "CASCADE", "THUNDER", "RAINBOW", "SOUL", "MARSH"]}
-story.story_flags, story.inventory = {}, {}
+story.story_flags, story.inventory = {"received_starter_kanto": True, "received_pokedex_kanto": True}, {}  # past Oak's Parcel
 check("Seagallop to One Island" not in travel("VERMILLION_CITY"), "no Tri-Pass: no ferry")
 story.badges["KANTO"].append("VOLCANO")
 story.sync_key_items()
@@ -9,7 +9,7 @@ t = travel("VERMILLION_CITY")
 check("Seagallop to One Island" in t and "Seagallop to Four Island" not in t, "Vermilion: Seagallop to One Island")
 t = travel("ONE_ISLAND")
 check({"Seagallop to Two Island", "Seagallop to Three Island"} <= set(t) and "Seagallop to Four Island" not in t, f"One Island: {t}")
-check(len(SEVII) == 31, f"{len(SEVII)} Sevii areas")  # 24 + 7 added by areas_09_sevii.patch
+check(len(SEVII) == 35, f"{len(SEVII)} Sevii areas")  # 24 + 7 (areas_09_sevii.patch) + 4 (Three Isle Path/Port, Navel Rock, Birth Island)
 bad = [(k, o.get("target_area")) for k in SEVII for o in prog[k].get("travel_options", []) + prog[k].get("route_menu", [])
        if o.get("target_area") and o["target_area"] not in prog]
 check(not bad, f"every link leads somewhere {bad}")
@@ -17,12 +17,12 @@ check(not bad, f"every link leads somewhere {bad}")
 print("2) Johto Pokemon early, only on Sevii")
 story.visited_region_set = {"KANTO"}
 story.starting_region = "KANTO"
-story.current_area_key = "CAPE_BRINK"
-pool = g.loader.area_data["SEVII_CAPE_BRINK_PERCENTAGES"]
-check("187" in regional_forms.restrict(g, dict(pool)), "Hoppip on Cape Brink before Johto")
+story.current_area_key = "RUIN_VALLEY"  # (FRLG: Cape Brink has no Johto Pokemon; Ruin Valley does)
+pool = g.loader.area_data["SEVII_RUIN_VALLEY_PERCENTAGES"]
+check("193" in regional_forms.restrict(g, dict(pool)), "Yanma in Ruin Valley before Johto")
 story.current_area_key = "VIRIDIAN_FOREST"
 print("   (mainland:", story.get_current_region(), story.visited_regions(), prog["VIRIDIAN_FOREST"].get("subregion"), ")")
-check("187" not in regional_forms.restrict(g, {"187": 10, "16": 10}), "but not on the Kanto mainland")
+check("193" not in regional_forms.restrict(g, {"193": 10, "16": 10}), "but not on the Kanto mainland")
 
 print("3) Mt. Ember and Moltres")
 run("MT_EMBER", "TALK TO THE RESEARCHERS")

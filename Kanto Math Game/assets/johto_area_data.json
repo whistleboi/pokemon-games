@@ -152,19 +152,8 @@
             }
           ],
           "route_menu": [
-            {
-              "text": "CHALLENGE THE FRONTIER BRAINS",
-              "action": "GALACTIC_GAUNTLET",
-              "flag_condition": "not johto_battle_frontier_cleared",
-              "color": "GOLD"
-            },
-            {
-              "text": "Route 40",
-              "action": "EXIT",
-              "target_area": "JOHTO_ROUTE_40",
-              "condition": "can_exit",
-              "color": "RED"
-            }
+            {"text": "CHALLENGE THE FRONTIER BRAINS", "action": "GALACTIC_GAUNTLET", "flag_condition": "not johto_battle_frontier_cleared", "color": "GOLD"},
+            {"text": "Frontier Access", "action": "EXIT", "target_area": "FRONTIER_ACCESS", "condition": "can_exit", "color": "RED"}
           ],
           "next_area": "JOHTO_ROUTE_40"
         },
@@ -291,19 +280,10 @@
             "victory_flag": "JOHTO_EMBEDDED_TOWER_boss_defeated"
           },
           "route_menu": [
-            {
-              "text": "Embedded Tower",
-              "action": "BOSS",
-              "condition": "boss_not_defeated",
-              "color": "GOLD"
-            },
-            {
-              "text": "Cliff Cave",
-              "action": "EXIT",
-              "target_area": "JOHTO_CLIFF_CAVE",
-              "condition": "can_exit",
-              "color": "RED"
-            }
+            {"text": "Embedded Tower", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD"},
+            {"text": "AWAKEN KYOGRE", "action": "BOSS", "color": "GOLD", "flag_condition": "not embedded_kyogre_defeated", "boss": {"id": 382, "name": "Kyogre", "victory_flag": "embedded_kyogre_defeated", "lines": ["A powerful presence fills the air... Kyogre appears!"]}, "condition": ["beat_johto_champion"]},
+            {"text": "CALL RAYQUAZA", "action": "BOSS", "color": "GOLD", "flag_condition": "not embedded_rayquaza_defeated", "boss": {"id": 384, "name": "Rayquaza", "victory_flag": "embedded_rayquaza_defeated", "lines": ["The Jade Orb glows... Rayquaza descends from the sky!"]}, "condition": ["JOHTO_EMBEDDED_TOWER_boss_defeated", "embedded_kyogre_defeated"]},
+            {"text": "Cliff Cave", "action": "EXIT", "target_area": "JOHTO_CLIFF_CAVE", "condition": "can_exit", "color": "RED"}
           ],
           "next_area": "JOHTO_CLIFF_CAVE"
         },
@@ -364,32 +344,10 @@
           "min_rounds": 2,
           "trainer_pool": [],
           "route_menu": [
-            {
-              "text": "CATCH WILD PKMN",
-              "action": "CATCH",
-              "condition": "has_balls",
-              "color": "BLUE"
-            },
-            {
-              "text": "BATTLE WILD PKMN",
-              "action": "BATTLE",
-              "condition": "can_battle",
-              "color": "GREEN"
-            },
-            {
-              "text": "Route 47",
-              "action": "EXIT",
-              "target_area": "JOHTO_ROUTE_47",
-              "condition": "can_exit",
-              "color": "RED"
-            },
-            {
-              "text": "Johto Safari Zone",
-              "action": "EXIT",
-              "target_area": "JOHTO_SAFARI_ZONE",
-              "condition": "can_exit",
-              "color": "RED"
-            }
+            {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+            {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+            {"text": "Route 47", "action": "EXIT", "target_area": "JOHTO_ROUTE_47", "condition": "can_exit", "color": "RED"},
+            {"text": "Safari Zone Gate", "action": "EXIT", "target_area": "SAFARI_ZONE_GATE", "condition": "can_exit", "color": "RED"}
           ],
           "next_area": "JOHTO_ROUTE_47"
         },
@@ -563,7 +521,7 @@
             { "text": "Wake Sleeping Man", "action": "NPC", "target": "oldman", "flag_condition": "not got_rocky_helmet" }
         ],
             "next_area": "JOHTO_ROUTE_30",
-            "on_enter_event": {"type": "trainer_battle", "starter_battle": true, "condition": "met_mr_pokemon", "flag_check": "defeated_rival_cherrygrove", "trainer": {"name": "{rival_name}", "class": "RIVAL", "sprite": "silver.png", "team": [155], "team_choice": {"152": [155], "155": [158], "158": [152]}, "levels": [6], "rewards": {"balls": 5}, "victory_flag": "defeated_rival_cherrygrove", "dialogue": {"intro": ["...You got a Pokemon at the lab. What a waste.", "A wimp like you doesn't deserve it.", "...Don't you get what I'm saying?", "Well, I too have a good Pokemon. I'll show you what I mean!"], "player_won": ["...Humph! Are you happy you won?"], "player_lost": ["...Humph. I knew it. You're weak."]}, "movesets": {"155": ["TACKLE", "LEER"], "158": ["SCRATCH", "LEER"], "152": ["TACKLE", "GROWL"]}}}
+            "on_enter_event": {"type": "trainer_battle", "starter_battle": true, "condition": "met_mr_pokemon", "flag_check": "defeated_rival_cherrygrove", "trainer": {"name": "{rival_name}", "class": "RIVAL", "sprite": "silver.png", "team": [155], "team_choice": {"152": [155], "155": [158], "158": [152]}, "levels": [5], "rewards": {"balls": 5}, "victory_flag": "defeated_rival_cherrygrove", "dialogue": {"intro": ["...You got a Pokemon at the lab. What a waste.", "A wimp like you doesn't deserve it.", "...Don't you get what I'm saying?", "Well, I too have a good Pokemon. I'll show you what I mean!"], "player_won": ["...Humph! Are you happy you won?"], "player_lost": ["...Humph. I knew it. You're weak."]}, "movesets": {"155": ["TACKLE", "LEER"], "158": ["SCRATCH", "LEER"], "152": ["TACKLE", "GROWL"]}}}
         },
 
         "VIOLET_CITY": {
@@ -656,7 +614,7 @@
             { "text": "Gym", "action": "GYM" },
             { "text": "Visit Kurt", "action": "NPC", "target": "kurt" }
         ],
-        "on_enter_event": {"type": "trainer_battle", "trainer": {"name": "{rival_name}", "class": "RIVAL", "sprite": "silver.png", "team": [92, 41, 156], "team_choice": {"152": [92, 41, 156], "155": [92, 41, 159], "158": [92, 41, 153]}, "levels": [18, 20, 23], "rewards": {"balls": 5}, "movesets": {"92": ["LICK", "SPITE", "MEAN-LOOK", "CURSE"], "41": ["LEECH-LIFE", "SUPERSONIC", "ASTONISH", "BITE"], "156": ["LEER", "SMOKESCREEN", "EMBER", "QUICK-ATTACK"], "159": ["WATER-GUN", "RAGE", "BITE", "SCARY-FACE"], "153": ["POISONPOWDER", "REFLECT", "SYNTHESIS", "RAZOR-LEAF"]}}, "condition": "has_hive_badge", "flag_check": "defeated_rival_azalea"}
+        "on_enter_event": {"type": "trainer_battle", "trainer": {"name": "{rival_name}", "class": "RIVAL", "sprite": "silver.png", "team": [92, 41, 156], "team_choice": {"152": [92, 41, 156], "155": [92, 41, 159], "158": [92, 41, 153]}, "levels": [14, 16, 18], "rewards": {"balls": 5}, "movesets": {"92": ["LICK", "SPITE", "MEAN-LOOK", "CURSE"], "41": ["LEECH-LIFE", "SUPERSONIC", "ASTONISH", "BITE"], "156": ["LEER", "SMOKESCREEN", "EMBER", "QUICK-ATTACK"], "159": ["WATER-GUN", "RAGE", "BITE", "SCARY-FACE"], "153": ["POISONPOWDER", "REFLECT", "SYNTHESIS", "RAZOR-LEAF"]}}, "condition": "has_hive_badge", "flag_check": "defeated_rival_azalea"}
         },
 
         "GOLDENROD_CITY": {
@@ -678,15 +636,16 @@
             {"text": "Magnet Train to Saffron", "long_ride": true, "target_area": "SAFFRON_CITY", "condition": ["has_item:PASS", "power_plant_fixed"], "message": "You board the Magnet Train. It races underground toward Saffron City in Kanto!"}
         ],
         "explore_options": [
-            { "text": "Heal","action": "HEAL" },
-            { "text": "Shop", "action": "SHOP" },
-            { "text": "Gym", "action": "GYM" },
-            { "text": "Game Corner", "action": "GAMECORNER" },
-            { "text": "Radio Tower", "action": "TRAVEL", "target_area": "RADIO_TOWER", "flag_condition": "radio_tower_cleared" },
-            { "text": "Radio Tower", "action": "NPC", "target": "radio_tower_grunt", "flag_condition": "not radio_tower_cleared" },
-            { "text": "Talk to Bill", "action": "NPC", "target": "bill_johto", "condition": "met_bill_johto" },
-            { "text": "Flower Shop", "action": "NPC", "target": "flower_shop" },
-            {"text": "Coin Case Man", "action": "EVENT", "color": "GOLD", "condition": "not:has_item:COIN_CASE", "event": {"lines": ["Man: Hey, kid! I found this in the Underground, but I never play the slots.", "Take it! A Coin Case lets you play at the Game Corner."], "gift_item": {"COIN_CASE": 1}, "flag": "got_johto_coin_case"}}
+          {"text": "Heal", "action": "HEAL"},
+          {"text": "Dept. Store", "action": "SHOP"},
+          {"text": "Bike Shop", "action": "BIKESHOP"},
+          {"text": "Gym", "action": "GYM"},
+          {"text": "Game Corner", "action": "GAMECORNER"},
+          {"text": "Radio Tower", "action": "TRAVEL", "target_area": "RADIO_TOWER", "flag_condition": "radio_tower_cleared"},
+          {"text": "Radio Tower", "action": "NPC", "target": "radio_tower_grunt", "flag_condition": "not radio_tower_cleared"},
+          {"text": "Talk to Bill", "action": "NPC", "target": "bill_johto", "condition": "met_bill_johto"},
+          {"text": "Flower Shop", "action": "NPC", "target": "flower_shop"},
+          {"text": "Coin Case Man", "action": "EVENT", "color": "GOLD", "condition": "not:has_item:COIN_CASE", "event": {"lines": ["Man: Hey, kid! I found this in the Underground, but I never play the slots.", "Take it! A Coin Case lets you play at the Game Corner."], "gift_item": {"COIN_CASE": 1}, "flag": "got_johto_coin_case"}}
         ]
         },
 
@@ -711,12 +670,13 @@
             { "name": "Pokefan Beverly", "class": "POKEFAN", "sprite": "pokefan_f.png", "team": [35], "rewards": { "balls": 2 } }
         ],
         "route_menu": [
-            {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-            {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-            {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
-            {"text": "BUG-CATCHING CONTEST", "action": "NPC", "target": "bug_catching_contest", "color": "GOLD" },
-            {"text": "Route 35", "action": "EXIT", "target_area": "JOHTO_ROUTE_35", "condition": "can_exit", "color": "RED" },
-            {"text": "Route 36", "action": "EXIT", "target_area": "JOHTO_ROUTE_36", "condition": "can_exit", "color": "RED" }
+          {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+          {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+          {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"},
+          {"text": "BUG-CATCHING CONTEST", "action": "NPC", "target": "bug_catching_contest", "color": "GOLD"},
+          {"text": "POKEATHLON DOME", "action": "EXIT", "target": "POKEATHLON_DOME", "condition": "can_exit", "color": "RED"},
+          {"text": "Route 35", "action": "EXIT", "target_area": "JOHTO_ROUTE_35", "condition": "can_exit", "color": "RED"},
+          {"text": "Route 36", "action": "EXIT", "target_area": "JOHTO_ROUTE_36", "condition": "can_exit", "color": "RED"}
         ]
         },
 
@@ -733,19 +693,19 @@
         "has_gym": true,
         "gym": {"requirements": {"flag": "defeated_rival_burned_tower", "fail_text": ["Morty is at the Burned Tower, searching for the legendary Pokemon. Go and find him there first!", "(If your rival beat you there, go back in and battle him again.)"]}, "trainers": [{"name": "Sage Ping", "class": "SAGE", "sprite": "oldman.png", "is_boss_battle": true, "team": [92, 92], "rewards": {"balls": 2}}, {"name": "Sage Jeffrey", "class": "SAGE", "sprite": "oldman.png", "is_boss_battle": true, "team": [93], "rewards": {"balls": 2}}], "leader": {"name": "Morty", "class": "GYM_LEADER", "sprite": "morty.png", "team": [92, 93, 93, 94], "levels": [21, 21, 23, 25], "badge_reward": "FOG", "rewards": {"balls": 5, "AMULET_COIN": 1}, "is_boss_battle": true, "dialogue": {"intro": ["Welcome to the Ecruteak City Gym! I'm Morty, the Flying-type Gym Leader."], "player_won": ["You're a skilled trainer!"], "player_lost": ["Don't worry, you'll get it next time."]}, "movesets": {"92": ["LICK", "SPITE", "MEAN-LOOK", "CURSE"], "93": ["HYPNOSIS", "DREAM-EATER", "CURSE", "NIGHTMARE"], "94": ["HYPNOSIS", "SHADOW-BALL", "MEAN-LOOK", "SUCKER-PUNCH"]}}},
         "travel_options": [
-            { "text": "Route 36", "target_area": "JOHTO_ROUTE_36" },
+            { "text": "Route 38", "target_area": "JOHTO_ROUTE_38" },
             { "text": "Route 37", "target_area": "JOHTO_ROUTE_37" },
             { "text": "Route 42", "target_area": "JOHTO_ROUTE_42", "condition": "has_item:HM_SURF" }
         ],
         "explore_options": [
-            { "text": "Heal", "action": "HEAL" },
-            { "text": "Shop", "action": "SHOP" },
-            { "text": "Gym", "action": "GYM" },
-            { "text": "Route 38", "action": "TRAVEL", "target_area": "JOHTO_ROUTE_38" },
-            { "text": "Talk to Bill", "action": "NPC", "target": "bill_johto", "flag_condition": "not met_bill_johto" },
-            { "text": "Dance Theater", "action": "TRAVEL", "target_area": "ECRUTEAK_DANCE_THEATER" },
-            { "text": "Burned Tower", "action": "TRAVEL", "target_area": "BURNED_TOWER" },
-            { "text": "Bell Tower", "action": "TRAVEL", "target_area": "BELL_TOWER" }
+          {"text": "Heal", "action": "HEAL"},
+          {"text": "Shop", "action": "SHOP"},
+          {"text": "Gym", "action": "GYM"},
+          {"text": "Route 38", "action": "TRAVEL", "target_area": "JOHTO_ROUTE_38"},
+          {"text": "Talk to Bill", "action": "NPC", "target": "bill_johto", "flag_condition": "not met_bill_johto"},
+          {"text": "Dance Theater", "action": "TRAVEL", "target_area": "ECRUTEAK_DANCE_THEATER"},
+          {"text": "Burned Tower", "action": "TRAVEL", "target_area": "BURNED_TOWER"},
+          {"text": "Bellchime Trail", "action": "TRAVEL", "target_area": "BELLCHIME_TRAIL"}
         ]
         },
 
@@ -793,12 +753,13 @@
             { "text": "Route 41", "target_area": "JOHTO_ROUTE_41" }
         ],
         "explore_options": [
-            { "text": "Heal", "action": "HEAL" },
-            { "text": "Shop", "action": "SHOP" },
-            { "text": "Gym", "action": "GYM" },
-            { "text": "Pharmacy", "action": "NPC", "target": "pharmacist" },
-            { "text": "Talk to Euskine", "action": "NPC", "target": "euskine" },
-                { "text": "Cliff Edge Gate", "action": "TRAVEL", "target_area": "CLIFF_EDGE_GATE", "condition": "has_ROCK_SMASHER" }
+          {"text": "Heal", "action": "HEAL"},
+          {"text": "Shop", "action": "SHOP"},
+          {"text": "Gym", "action": "GYM"},
+          {"text": "Pharmacy", "action": "NPC", "target": "pharmacist"},
+          {"text": "Talk to Euskine", "action": "NPC", "target": "euskine"},
+          {"text": "Cliff Edge Gate", "action": "TRAVEL", "target_area": "CLIFF_EDGE_GATE", "condition": "has_ROCK_SMASHER"},
+          {"text": "Battle Eusine", "action": "EVENT", "color": "GOLD", "flag_condition": "not defeated_eusine", "event": {"lines": ["Eusine: I'm Eusine. I've been chasing Suicune for years.", "You've seen it too? Then show me what kind of trainer you are!"], "flag": "defeated_eusine", "battle": {"name": "Mystery Man Eusine", "class": "MYSTERY_MAN", "sprite": "eusine.png", "team": [96, 93, 101], "levels": [25, 25, 27], "is_boss_battle": true, "rewards": {"balls": 10}, "dialogue": {"player_won": ["Eusine: ...I see why Suicune keeps appearing near you."]}}}}
         ]
         },
 
@@ -866,7 +827,7 @@
         "explore_options": [
             { "text": "Heal",
             "action": "HEAL" } ],
-        "on_enter_event": {"type": "trainer_battle", "condition": "has_8_johto_badges", "flag_check": "defeated_rival_victory_road_johto", "trainer": {"name": "{rival_name}", "class": "RIVAL", "sprite": "silver.png", "team": [215, 42, 82, 64, 93, 157], "team_choice": {"152": [215, 42, 82, 64, 93, 157], "155": [215, 42, 82, 64, 93, 160], "158": [215, 42, 82, 64, 93, 154]}, "levels": [45, 48, 47, 47, 47, 50], "rewards": {"balls": 10}, "dialogue": {"intro": ["...Hold it.", "Are you going to take the Pokemon League challenge?", "...Don't make me laugh. You're so much weaker than I am.", "I'm not like I was before. I now have the best and strongest Pokemon with me!"], "player_won": ["...I haven't given up on becoming the greatest Trainer...", "I'm going to find out why I can't win and become stronger.", "When I do, I will challenge you. And I'll beat you down with all my power.", "...Humph! You keep at it until then."], "player_lost": ["...Humph! I knew it. Go home, the League isn't for you."]}, "movesets": {"215": ["FEINT-ATTACK", "ICY-WIND", "FURY-SWIPES", "QUICK-ATTACK"], "42": ["BITE", "CONFUSE-RAY", "AIR-CUTTER", "ASTONISH"], "82": ["SPARK", "THUNDER-WAVE", "SUPERSONIC", "MAGNET-BOMB"], "64": ["REFLECT", "DISABLE", "PSYBEAM", "RECOVER"], "93": ["CURSE", "MEAN-LOOK", "CONFUSE-RAY", "SHADOW-BALL"], "157": ["LAVA-PLUME", "SWIFT", "FLAME-WHEEL", "QUICK-ATTACK"], "160": ["WATERFALL", "SLASH", "ICE-FANG", "CRUNCH"], "154": ["REFLECT", "PETAL-DANCE", "POISONPOWDER", "SYNTHESIS"]}}}
+        "on_enter_event": {"type": "trainer_battle", "condition": "has_8_johto_badges", "flag_check": "defeated_rival_victory_road_johto", "trainer": {"name": "{rival_name}", "class": "RIVAL", "sprite": "silver.png", "team": [215, 42, 82, 93, 64, 157], "team_choice": {"152": [215, 42, 82, 93, 64, 157], "155": [215, 42, 82, 93, 64, 160], "158": [215, 42, 82, 93, 64, 154]}, "levels": [36, 38, 37, 37, 37, 40], "rewards": {"balls": 10}, "dialogue": {"intro": ["...Hold it.", "Are you going to take the Pokemon League challenge?", "...Don't make me laugh. You're so much weaker than I am.", "I'm not like I was before. I now have the best and strongest Pokemon with me!"], "player_won": ["...I haven't given up on becoming the greatest Trainer...", "I'm going to find out why I can't win and become stronger.", "When I do, I will challenge you. And I'll beat you down with all my power.", "...Humph! You keep at it until then."], "player_lost": ["...Humph! I knew it. Go home, the League isn't for you."]}, "movesets": {"215": ["FEINT-ATTACK", "ICY-WIND", "FURY-SWIPES", "QUICK-ATTACK"], "42": ["BITE", "CONFUSE-RAY", "AIR-CUTTER", "ASTONISH"], "82": ["SPARK", "THUNDER-WAVE", "SUPERSONIC", "MAGNET-BOMB"], "64": ["REFLECT", "DISABLE", "PSYBEAM", "RECOVER"], "93": ["CURSE", "MEAN-LOOK", "CONFUSE-RAY", "SHADOW-BALL"], "157": ["LAVA-PLUME", "SWIFT", "FLAME-WHEEL", "QUICK-ATTACK"], "160": ["WATERFALL", "SLASH", "ICE-FANG", "CRUNCH"], "154": ["REFLECT", "PETAL-DANCE", "POISONPOWDER", "SYNTHESIS"]}}}
         },
 
         "MR_POKEMONS_HOUSE": {
@@ -1271,14 +1232,14 @@
                 { "name": "Swimmer Randall", "class": "SWIMMER", "sprite": "swimmer_m.png", "team": [90, 8], "rewards": { "balls": 2 } }
             ],
             "route_menu": [
-                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-                {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
-                {"text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE" },
-                {"text": "Olivine City", "action": "EXIT", "target_area": "OLIVINE_CITY", "condition": "can_exit", "color": "RED"},
-                {"text": "Route 41", "action": "EXIT", "target_area": "JOHTO_ROUTE_41", "condition": "can_exit", "color": "RED"},
-                {"text": "Battle Frontier", "action": "EXIT", "target_area": "JOHTO_BATTLE_FRONTIER", "condition": ["can_exit", "beat_johto_champion"], "color": "RED"}
-                ],
+              {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+              {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+              {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"},
+              {"text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE"},
+              {"text": "Olivine City", "action": "EXIT", "target_area": "OLIVINE_CITY", "condition": "can_exit", "color": "RED"},
+              {"text": "Route 41", "action": "EXIT", "target_area": "JOHTO_ROUTE_41", "condition": "can_exit", "color": "RED"},
+              {"text": "Frontier Access", "action": "EXIT", "target_area": "FRONTIER_ACCESS", "condition": ["can_exit", "beat_johto_champion"], "color": "RED"}
+            ],
             "next_area": "JOHTO_ROUTE_41" 
         },
         
@@ -1459,12 +1420,13 @@
                 { "name": "Hiker Michael", "class": "HIKER", "sprite": "hiker.png", "team": [74, 75], "rewards": { "balls": 2 } }
             ],
             "route_menu": [
-                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-                {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
-                { "text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE" },
-                {"text": "Dark Cave", "action": "EXIT", "target_area": "DARK_CAVE", "condition": ["can_exit", "has_item:HM_FLASH"], "color": "RED"},
-                {"text": "ROUTE 29", "action": "EXIT", "target_area": "JOHTO_ROUTE_29", "condition": "can_exit", "color": "RED"}
+              {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+              {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+              {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+              {"text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE"},
+              {"text": "Dark Cave", "action": "EXIT", "target_area": "DARK_CAVE", "condition": ["can_exit", "has_item:HM_FLASH"], "color": "RED"},
+              {"text": "ROUTE 29", "action": "EXIT", "target_area": "JOHTO_ROUTE_29", "condition": "can_exit", "color": "RED"},
+              {"text": "ROUTE 45", "action": "EXIT", "target": "JOHTO_ROUTE_45", "condition": "can_exit", "color": "RED"}
             ],
             "next_area": "JOHTO_ROUTE_29" 
         },
@@ -1644,7 +1606,7 @@
                 { "name": "Firebreather Ned", "class": "FIREBREATHER", "sprite": "firebreather.png", "team": [110], "rewards": { "balls": 2 } },
                 { "name": "Firebreather Burt", "class": "FIREBREATHER", "sprite": "firebreather.png", "team": [109, 58], "rewards": { "balls": 2 } }
             ],
-            "on_enter_event": {"type": "trainer_battle", "condition": "has_plain_badge", "flag_check": "defeated_rival_burned_tower", "trainer": {"name": "{rival_name}", "class": "RIVAL", "sprite": "silver.png", "team": [92, 41, 81, 156], "team_choice": {"152": [92, 41, 81, 156], "155": [92, 41, 81, 159], "158": [92, 41, 81, 153]}, "levels": [25, 25, 23, 28], "rewards": {"balls": 5}, "dialogue": {"intro": ["...You again?", "I'm looking for the legendary Pokemon.", "Only the strongest trainers deserve them!", "That's not you!"], "player_won": ["Humph. You got lucky."], "player_lost": ["As I thought. Weak."]}, "movesets": {"92": ["LICK", "CONFUSE-RAY", "MEAN-LOOK", "CURSE"], "41": ["WING-ATTACK", "SUPERSONIC", "ASTONISH", "BITE"], "81": ["THUNDER-SHOCK", "SUPERSONIC", "SONICBOOM", "THUNDER-WAVE"], "156": ["FLAME-WHEEL", "SMOKESCREEN", "EMBER", "QUICK-ATTACK"], "159": ["WATER-GUN", "SCARY-FACE", "ICE-FANG", "BITE"], "153": ["REFLECT", "MAGICAL-LEAF", "POISONPOWDER", "SYNTHESIS"]}}},
+            "on_enter_event": {"type": "trainer_battle", "condition": "has_plain_badge", "flag_check": "defeated_rival_burned_tower", "trainer": {"name": "{rival_name}", "class": "RIVAL", "sprite": "silver.png", "team": [92, 81, 41, 156], "team_choice": {"152": [92, 81, 41, 156], "155": [92, 81, 41, 159], "158": [92, 81, 41, 153]}, "levels": [20, 18, 20, 22], "rewards": {"balls": 5}, "dialogue": {"intro": ["...You again?", "I'm looking for the legendary Pokemon.", "Only the strongest trainers deserve them!", "That's not you!"], "player_won": ["Humph. You got lucky."], "player_lost": ["As I thought. Weak."]}, "movesets": {"92": ["LICK", "CONFUSE-RAY", "MEAN-LOOK", "CURSE"], "41": ["WING-ATTACK", "SUPERSONIC", "ASTONISH", "BITE"], "81": ["THUNDER-SHOCK", "SUPERSONIC", "SONICBOOM", "THUNDER-WAVE"], "156": ["FLAME-WHEEL", "SMOKESCREEN", "EMBER", "QUICK-ATTACK"], "159": ["WATER-GUN", "SCARY-FACE", "ICE-FANG", "BITE"], "153": ["REFLECT", "MAGICAL-LEAF", "POISONPOWDER", "SYNTHESIS"]}}},
             "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"}, {"text": "ENCOUNTER SUICUNE", "action": "BOSS", "condition": "boss_available", "color": "CYAN"}, {"text": "THE BLACK FOG", "action": "BOSS", "color": "PURPLE", "flag_condition": "not black_fog_banished_burned_tower", "boss": {"id": 10501, "name": "Black Fog", "level": 26, "no_catch": true, "victory_flag": "black_fog_banished_burned_tower", "lines": ["The air turns ice-cold. A black fog pours across the floor...", "Two huge eyes open in the dark. A giant Haunter rises: the Black Fog!", "Long ago people worshipped it as a god. It feeds on dreams. Don't let it get yours!"], "won": ["The Black Fog is too proud to ever be caught.", "It Self-Destructs in a burst of black mist... and is gone.", "But a cold whisper lingers: it will rise again in another haunted place."], "rewards": {"balls": 10, "RARE_CANDY": 3}}}, {"text": "EXIT TOWER", "action": "EXIT", "target_area": "ECRUTEAK_CITY", "condition": "can_exit", "color": "RED"}]
         },
         
@@ -1669,12 +1631,12 @@
                 { "name": "Sage Li", "class": "SAGE", "sprite": "oldman.png", "team": [164], "rewards": { "balls": 2 } }
             ],
             "route_menu": [
-                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-                {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
-                { "text": "CHALLENGE HO-OH", "action": "BOSS", "condition": ["boss_available", "has_rainbow_wing"], "color": "GOLD" },
-                { "text": "TALK TO SAGE LI", "action": "NPC", "target": "sage_li", "condition": "no_trainers", "color": "GOLD" },
-                { "text": "EXIT TOWER", "action": "EXIT", "target_area": "ECRUTEAK_CITY", "condition": "can_exit", "color": "RED" }
+              {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+              {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+              {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+              {"text": "CHALLENGE HO-OH", "action": "BOSS", "condition": ["boss_available", "has_rainbow_wing"], "color": "GOLD"},
+              {"text": "TALK TO SAGE LI", "action": "NPC", "target": "sage_li", "condition": "no_trainers", "color": "GOLD"},
+              {"text": "BELLCHIME TRAIL", "action": "EXIT", "target_area": "BELLCHIME_TRAIL", "condition": "can_exit", "color": "RED"}
             ]
         },
         
@@ -1765,11 +1727,11 @@
             "min_rounds": 2,
             "next_area": "MAHOGANY_TOWN",
             "trainer_pool": [
-                { "name": "Rocket Grunt", "class": "ROCKET", "sprite": "rocket_grunt_m.png", "team": [19, 20, 41], "rewards": { "balls": 2 } },
-                { "name": "Rocket Grunt", "class": "ROCKET", "sprite": "rocket_grunt_f.png", "team": [41, 42], "rewards": { "balls": 2 } },
-                { "name": "Rocket Grunt", "class": "ROCKET", "sprite": "rocket_grunt_m.png", "team": [19, 20], "rewards": { "balls": 2 } },
-                {"name": "Executive Arianna", "class": "ROCKET", "sprite": "rocket_grunt_f.png", "team": [197, 45, 198], "rewards": { "balls": 5, "RARE_CANDY": 1 },
-                    "victory_flag": "rocket_hq_cleared"}
+              {"name": "Rocket Grunt", "class": "ROCKET", "sprite": "rocket_grunt_m.png", "team": [19, 20, 41], "rewards": {"balls": 2}},
+              {"name": "Rocket Grunt", "class": "ROCKET", "sprite": "rocket_grunt_f.png", "team": [41, 42], "rewards": {"balls": 2}},
+              {"name": "Rocket Grunt", "class": "ROCKET", "sprite": "rocket_grunt_m.png", "team": [19, 20], "rewards": {"balls": 2}},
+              {"name": "Executive Petrel", "class": "ROCKET", "sprite": "petrel.png", "team": [41, 20, 109], "levels": [22, 24, 22], "is_boss_battle": true, "rewards": {"balls": 8}, "dialogue": {"intro": ["Petrel: Hah! Fooled you. I'm no Giovanni, but I'm still an Executive of Team Rocket!"], "player_won": ["Petrel: Fine. The password? Go figure it out yourself!"]}},
+              {"name": "Executive Ariana", "class": "ROCKET", "sprite": "ariana.png", "team": [24, 44, 198], "rewards": {"balls": 5, "RARE_CANDY": 1}, "victory_flag": "rocket_hq_cleared", "levels": [25, 25, 27], "is_boss_battle": true}
             ],
             "route_menu": [
                 { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
@@ -1796,7 +1758,7 @@
                 {"text": "GOLDENROD CITY", "action": "EXIT", "target_area": "GOLDENROD_CITY", "condition": "can_exit", "color": "RED"}
             ],
             "next_area": "GOLDENROD_CITY",
-            "on_enter_event": {"type": "trainer_battle", "trainer": {"name": "{rival_name}", "class": "RIVAL", "sprite": "silver.png", "team": [93, 42, 81, 215, 157], "team_choice": {"152": [93, 42, 81, 215, 157], "155": [93, 42, 81, 215, 160], "158": [93, 42, 81, 215, 154]}, "levels": [40, 40, 38, 43, 43], "rewards": {"balls": 5}, "movesets": {"93": ["SHADOW-BALL", "CONFUSE-RAY", "MEAN-LOOK", "CURSE"], "42": ["AIR-CUTTER", "CONFUSE-RAY", "BITE", "ASTONISH"], "81": ["THUNDER-WAVE", "SPARK", "SUPERSONIC", "SONICBOOM"], "215": ["FEINT-ATTACK", "QUICK-ATTACK", "ICY-WIND", "FURY-SWIPES"], "157": ["LAVA-PLUME", "SWIFT", "FLAME-WHEEL", "QUICK-ATTACK"], "160": ["WATER-GUN", "ICE-FANG", "CRUNCH", "THRASH"], "154": ["REFLECT", "PETAL-DANCE", "POISONPOWDER", "SYNTHESIS"]}}, "condition": "has_glacier_badge", "flag_check": "defeated_rival_underground"}
+            "on_enter_event": {"type": "trainer_battle", "trainer": {"name": "{rival_name}", "class": "RIVAL", "sprite": "silver.png", "team": [42, 81, 93, 215, 156], "team_choice": {"152": [42, 81, 93, 215, 156], "155": [42, 81, 93, 215, 160], "158": [42, 81, 93, 215, 154]}, "levels": [32, 30, 32, 34, 34], "rewards": {"balls": 5}, "movesets": {"93": ["SHADOW-BALL", "CONFUSE-RAY", "MEAN-LOOK", "CURSE"], "42": ["AIR-CUTTER", "CONFUSE-RAY", "BITE", "ASTONISH"], "81": ["THUNDER-WAVE", "SPARK", "SUPERSONIC", "SONICBOOM"], "215": ["FEINT-ATTACK", "QUICK-ATTACK", "ICY-WIND", "FURY-SWIPES"], "157": ["LAVA-PLUME", "SWIFT", "FLAME-WHEEL", "QUICK-ATTACK"], "160": ["WATER-GUN", "ICE-FANG", "CRUNCH", "THRASH"], "154": ["REFLECT", "PETAL-DANCE", "POISONPOWDER", "SYNTHESIS"]}}, "condition": "has_glacier_badge", "flag_check": "defeated_rival_underground"}
         },
 
         "RADIO_TOWER": {
@@ -1807,9 +1769,12 @@
             "wild_pool_percentages": "JOHTO_ROCKET_HQ_PERCENTAGES",
             "min_rounds": 2,
             "trainer_pool": [
-                { "name": "Rocket Grunt", "class": "ROCKET", "sprite": "rocket_grunt_m.png", "team": [19, 20], "rewards": { "balls": 2 } },
-                { "name": "Rocket Grunt", "class": "ROCKET", "sprite": "rocket_grunt_f.png", "team": [41, 42], "rewards": { "balls": 2 } },
-                { "name": "Executive Petrel", "class": "ROCKET", "sprite": "rocket_grunt_m.png", "team": [109, 109, 110], "rewards": { "balls": 10, "BIKE_VOUCHER": 1 }, "victory_flag": "radio_tower_cleared" }
+              {"name": "Rocket Grunt", "class": "ROCKET", "sprite": "rocket_grunt_m.png", "team": [19, 20], "rewards": {"balls": 2}},
+              {"name": "Rocket Grunt", "class": "ROCKET", "sprite": "rocket_grunt_f.png", "team": [41, 42], "rewards": {"balls": 2}},
+              {"name": "Executive Petrel", "class": "ROCKET", "sprite": "petrel.png", "team": [109, 109, 109, 110, 109, 109], "rewards": {"balls": 10}, "levels": [30, 30, 30, 32, 30, 30], "is_boss_battle": true},
+              {"name": "Executive Proton", "class": "ROCKET", "sprite": "proton.png", "team": [42, 110], "levels": [28, 33], "is_boss_battle": true, "rewards": {"balls": 8}, "dialogue": {"intro": ["Proton: They call me the scariest guy in Team Rocket. You're about to find out why!"], "player_won": ["Proton: Tch. Ariana and Archer will finish you."]}},
+              {"name": "Executive Ariana", "class": "ROCKET", "sprite": "ariana.png", "team": [24, 45, 198], "levels": [32, 32, 32], "is_boss_battle": true, "rewards": {"balls": 8}, "dialogue": {"intro": ["Ariana: You again? This time you won't walk away."], "player_won": ["Ariana: Archer... it's up to you now."]}},
+              {"name": "Executive Archer", "class": "ROCKET", "sprite": "archer.png", "team": [228, 109, 229], "levels": [35, 35, 38], "is_boss_battle": true, "rewards": {"balls": 8}, "victory_flag": "radio_tower_cleared", "dialogue": {"intro": ["Archer: So you're the one who keeps getting in our way. Giovanni will hear our broadcast. Stand aside!"], "player_won": ["Archer: ...We failed. Team Rocket is disbanding, for good this time."]}}
             ],
             "route_menu": [
                 { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "PURPLE" },
@@ -1832,12 +1797,11 @@
                 { "text": "EXIT THEATER", "action": "EXIT", "target_area": "ECRUTEAK_CITY", "color": "RED" }
             ],
             "trainer_pool": [
-                { "name": "Kimono Girl Naoko", "class": "KIMONO_GIRL", "sprite": "kimono_girl.png", "team": [136], "rewards": { "balls": 2 } },
-                { "name": "Kimono Girl Satsuki", "class": "KIMONO_GIRL", "sprite": "kimono_girl.png", "team": [135], "rewards": { "balls": 2 } },
-                { "name": "Kimono Girl Tamao", "class": "KIMONO_GIRL", "sprite": "kimono_girl.png", "team": [197], "rewards": { "balls": 2 } },
-                { "name": "Kimono Girl Koyo", "class": "KIMONO_GIRL", "sprite": "kimono_girl.png", "team": [196], "rewards": { "balls": 2 } },
-                { "name": "Kimono Girl Zuki", "class": "KIMONO_GIRL", "sprite": "kimono_girl.png", "team": [134], "rewards": { "balls": 5, "TIDAL_BELL": 1 }, 
-                    "victory_flag": "kimono_girls_defeated", "is_boss_battle": true, "dialogue": { "intro": ["I am the last of the sisters.", "Let us dance!"], "player_won": ["Incredible. The bell resonates with you."] } }
+              {"name": "Kimono Girl Naoko", "class": "KIMONO_GIRL", "sprite": "kimono_girl.png", "team": [196], "rewards": {"balls": 2}, "levels": [38]},
+              {"name": "Kimono Girl Sayo", "class": "KIMONO_GIRL", "sprite": "kimono_girl.png", "team": [135], "rewards": {"balls": 2}, "levels": [38]},
+              {"name": "Kimono Girl Zuki", "class": "KIMONO_GIRL", "sprite": "kimono_girl.png", "team": [197], "rewards": {"balls": 2}, "levels": [38]},
+              {"name": "Kimono Girl Kuni", "class": "KIMONO_GIRL", "sprite": "kimono_girl.png", "team": [134], "rewards": {"balls": 2}, "levels": [38]},
+              {"name": "Kimono Girl Miki", "class": "KIMONO_GIRL", "sprite": "kimono_girl.png", "team": [136], "rewards": {"balls": 5, "TIDAL_BELL": 1}, "victory_flag": "kimono_girls_defeated", "is_boss_battle": true, "dialogue": {"intro": ["I am the last of the sisters.", "Let us dance!"], "player_won": ["Incredible. The bell resonates with you."]}, "levels": [38]}
             ]
         },
 
@@ -1863,10 +1827,10 @@
             "wild_pool_percentages": "JOHTO_SAFARI_PERCENTAGES",
             "min_rounds": 0,
             "route_menu": [
-                { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-                { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
-                { "text": "EXIT SAFARI", "action": "EXIT", "target_area": "CIANWOOD_CITY", "condition": "can_exit", "color": "RED" },
-                {"text": "Route 48", "action": "EXIT", "target_area": "JOHTO_ROUTE_48", "condition": "can_exit", "color": "RED"}
+              {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+              {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN"},
+              {"text": "EXIT SAFARI", "action": "EXIT", "target_area": "CIANWOOD_CITY", "condition": "can_exit", "color": "RED"},
+              {"text": "Safari Zone Gate", "action": "EXIT", "target_area": "SAFARI_ZONE_GATE", "condition": "can_exit", "color": "RED"}
             ]
         },
 
@@ -1884,11 +1848,13 @@
                 "team": [147, 147, 148], "rewards": { "balls": 5, "DRATINI": 1 }, "victory_flag": "received_den_dratini" }
             ],
             "route_menu": [
-                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-                {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
-                {"text": "BLACKTHORN CITY", "action": "EXIT", "target_area": "BLACKTHORN_CITY", "condition": "can_exit", "color": "RED"},
-                {"text": "Dragon Shrine", "action": "NPC", "target": "dragon_elder" }
+              {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+              {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+              {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"},
+              {"text": "BATTLE CLAIR", "action": "EVENT", "color": "GOLD", "flag_condition": "not dragons_den_clair", "condition": ["beat_johto_champion"], "event": {"lines": ["{rival_name} is training in the Dragon's Den. 'Clair and Lance want a double battle... I'm with you!'", "Clair: Two of you? Fine. Show me your dragon spirit!"], "flag": "dragons_den_clair", "battle": {"name": "Leader Clair", "class": "GYM_LEADER", "sprite": "clair.png", "team": [148, 230, 149], "levels": [52, 56, 60], "is_boss_battle": true, "rewards": {"balls": 15}, "dialogue": {"player_won": ["Clair: ...Not bad, you two.", "Lance steps forward: 'My turn.'"]}}}},
+              {"text": "BATTLE LANCE", "action": "EVENT", "color": "GOLD", "flag_condition": "not dragons_den_lance", "condition": ["dragons_den_clair"], "event": {"lines": ["Lance: You and {rival_name} make quite a team. Let's see it against a Champion!"], "flag": "dragons_den_lance", "battle": {"name": "Champion Lance", "class": "CHAMPION", "sprite": "lance.png", "team": [130, 6, 149], "levels": [68, 68, 75], "is_boss_battle": true, "rewards": {"balls": 15}, "dialogue": {"player_won": ["Lance: Excellent! {rival_name}, you've grown. And you, Champion, even more."]}}}},
+              {"text": "BLACKTHORN CITY", "action": "EXIT", "target_area": "BLACKTHORN_CITY", "condition": "can_exit", "color": "RED"},
+              {"text": "Dragon Shrine", "action": "NPC", "target": "dragon_elder"}
             ],
             "next_area": "BLACKTHORN_CITY"
         },
@@ -1908,14 +1874,19 @@
                 { "name": "Ace Trainer Reena", "class": "COOLTRAINER", "sprite": "acetrainer_f.png", "team": [9, 196, 232], "rewards": { "balls": 5 } }
             ],
             "route_menu": [
-                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-                {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-                {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
-                {"text": "CHALLENGE RED", "action": "EVENT", "color": "GOLD", "flag_condition": "not defeated_red", "event": {"lines": ["At the summit, a silent Trainer stands in the snow.", "...", "......", "Red wants to battle!"], "flag": "defeated_red", "done": ["The summit is quiet. Red has gone.", "...But you get the feeling you'll meet again."], "battle": {"name": "Red", "class": "PKMN_TRAINER", "sprite": "red.png", "team": [25, 131, 143, 3, 6, 9], "levels": [88, 80, 82, 84, 84, 84], "is_boss_battle": true, "rewards": {"balls": 30, "MASTER_BALL": 1}, "dialogue": {"player_won": ["......", "..."], "player_lost": ["......"]}}}},
-                {"text": "ROUTE 28", "action": "EXIT", "target_area": "KANTO_ROUTE_28", "condition": "can_exit", "color": "RED"}
+              {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+              {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+              {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+              {"text": "CHALLENGE RED", "action": "EVENT", "color": "GOLD", "flag_condition": "not defeated_red", "event": {"lines": ["At the summit, a silent Trainer stands in the snow.", "...", "......", "Red wants to battle!"], "flag": "defeated_red", "done": ["The summit is quiet. Red has gone.", "...But you get the feeling you'll meet again."], "battle": {"name": "Red", "class": "PKMN_TRAINER", "sprite": "red.png", "team": [25, 131, 143, 3, 6, 9], "levels": [88, 80, 82, 84, 84, 84], "is_boss_battle": true, "rewards": {"balls": 30, "MASTER_BALL": 1}, "dialogue": {"player_won": ["......", "..."], "player_lost": ["......"]}}}},
+              {"text": "SEEK MOLTRES", "action": "BOSS", "color": "GOLD", "flag_condition": "not mt_silver_moltres_defeated", "boss": {"id": 146, "name": "Moltres", "victory_flag": "mt_silver_moltres_defeated", "lines": ["Heat shimmers off the rocks... Moltres blazes down!"]}, "condition": ["beat_johto_champion"]},
+              {"text": "ROUTE 28", "action": "EXIT", "target_area": "KANTO_ROUTE_28", "condition": "can_exit", "color": "RED"}
             ],
             "next_area": "MT_SILVER_CITY"
-        }
+        },
+        "BELLCHIME_TRAIL": {"area_type": "dungeon", "route_name": "Bellchime Trail", "region": "JOHTO", "battle_type": "field", "min_rounds": 0, "trainer_pool": [], "route_menu": [{"text": "LISTEN TO THE BELL", "action": "EVENT", "color": "BLUE", "event": {"lines": ["Autumn leaves drift along the trail. Somewhere above, a bell rings softly..."]}}, {"text": "ECRUTEAK CITY", "action": "EXIT", "target": "ECRUTEAK_CITY", "condition": "can_exit", "color": "RED"}, {"text": "BELL TOWER", "action": "EXIT", "target": "BELL_TOWER", "condition": "can_exit", "color": "RED"}], "next_area": "BELL_TOWER"},
+        "SAFARI_ZONE_GATE": {"area_type": "dungeon", "route_name": "Safari Zone Gate", "region": "JOHTO", "battle_type": "field", "min_rounds": 0, "trainer_pool": [], "route_menu": [{"text": "ROUTE 48", "action": "EXIT", "target": "JOHTO_ROUTE_48", "condition": "can_exit", "color": "RED"}, {"text": "SAFARI ZONE", "action": "EXIT", "target": "JOHTO_SAFARI_ZONE", "condition": "can_exit", "color": "RED"}], "next_area": "JOHTO_SAFARI_ZONE"},
+        "FRONTIER_ACCESS": {"area_type": "dungeon", "route_name": "Frontier Access", "region": "JOHTO", "battle_type": "field", "min_rounds": 0, "trainer_pool": [], "route_menu": [{"text": "ROUTE 40", "action": "EXIT", "target": "JOHTO_ROUTE_40", "condition": "can_exit", "color": "RED"}, {"text": "BATTLE FRONTIER", "action": "EXIT", "target": "JOHTO_BATTLE_FRONTIER", "condition": ["can_exit", "beat_johto_champion"], "color": "RED"}], "next_area": "JOHTO_BATTLE_FRONTIER"},
+        "POKEATHLON_DOME": {"area_type": "town", "route_name": "Pokéathlon Dome", "region": "JOHTO", "has_gym": false, "trainer_encounter_rate": 0, "travel_options": [{"text": "National Park", "target_area": "NATIONAL_PARK"}], "explore_options": [{"text": "Heal", "action": "HEAL"}, {"text": "Watch the Pokéathlon", "action": "EVENT", "event": {"lines": ["Pokémon race, jump and juggle in the Pokéathlon Dome!", "The crowd cheers for speed, power, skill, stamina and jump."]}}], "trainer_pool": [], "on_enter_event": null}
     },
 
     "JOURNAL_MISSIONS": [
@@ -1979,8 +1950,7 @@
         },
         {
             "id": "johto_m11", "type": "MAIN", "title": "Lighthouse Rescue", "description": "The Jasmine's Ampharos is ill! Travel across the sea to Cianwood City to fetch the Secret Potion.",
-            "condition": { "start_region": "JOHTO", "visited": "OLIVINE_CITY", "badges_min": 4, "visited_not": "CIANWOOD_CITY" },
-            "reward": "Surf Board"
+            "condition": { "start_region": "JOHTO", "visited": "OLIVINE_CITY", "badges_min": 4, "visited_not": "CIANWOOD_CITY" }
         },
         {
             "id": "johto_m12", "type": "MAIN", "title": "The Storm Badge", "description": "While in Cianwood, challenge Chuck at the Gym. His Fighting-type Pokemon will test your math stamina!",
@@ -2060,9 +2030,9 @@
     "JOHTO_SUPER_ROD_POOL_PERCENTAGES": { "129": 30, "130": 10, "211": 15, "223": 15, "170": 15, "147": 15 },
 
     "JOHTO_NATIONAL_PARK_POOL": [10,13,191,16,19],
-    "JOHTO_NATIONAL_PARK_PERCENTAGES": { "10": 20, "13": 20, "191": 30, "16": 20, "19": 10 },
-    "JOHTO_NATIONAL_PARK_NIGHT_PERCENTAGES": { "10": 16, "13": 15, "191": 23, "16": 15, "19": 31 },
-    "JOHTO_NATIONAL_PARK_DAY_PERCENTAGES": { "10": 21, "13": 21, "191": 32, "16": 21, "19": 5 },
+    "JOHTO_NATIONAL_PARK_PERCENTAGES": {"10": 15, "11": 9, "16": 5, "13": 15, "14": 9, "191": 7, "163": 29, "46": 3, "48": 3, "12": 1, "15": 1, "123": 1, "127": 1},
+    "JOHTO_NATIONAL_PARK_NIGHT_PERCENTAGES": {"10": 15, "11": 9, "16": 5, "13": 15, "14": 9, "191": 7, "163": 29, "46": 3, "48": 3, "12": 1, "15": 1, "123": 1, "127": 1},
+    "JOHTO_NATIONAL_PARK_DAY_PERCENTAGES": {"10": 15, "11": 9, "16": 5, "13": 15, "14": 9, "191": 7, "163": 29, "46": 3, "48": 3, "12": 1, "15": 1, "123": 1, "127": 1},
 
     "JOHTO_TOHJO_FALLS_POOL": [118,119,129,130],
     "JOHTO_TOHJO_FALLS_PERCENTAGES": { "118": 40, "119": 10, "129": 40, "130": 10 },
@@ -2193,13 +2163,26 @@
     "JOHTO_DRAGON_DEN_PERCENTAGES": { "129": 80, "147": 20 },
     
     "JOHTO_MT_SILVER": [42, 232, 217, 246, 200, 247],
-    "JOHTO_MT_SILVER_PERCENTAGES": { "42": 20, "232": 20, "217": 20, "246": 15, "200": 15, "247": 10 },
-    "JOHTO_MT_SILVER_NIGHT_PERCENTAGES": { "42": 18, "232": 17, "217": 17, "246": 13, "200": 26, "247": 9 },
-    "JOHTO_MT_SILVER_DAY_PERCENTAGES": { "42": 23, "232": 23, "217": 22, "246": 17, "200": 4, "247": 11 },
+    "JOHTO_MT_SILVER_PERCENTAGES": {"77": 7, "114": 7, "232": 7, "78": 2, "84": 1, "85": 1, "217": 7, "215": 5, "195": 11, "208": 5, "55": 7, "42": 11, "246": 2, "200": 7, "231": 2, "216": 2, "95": 7, "75": 5, "247": 1},
+    "JOHTO_MT_SILVER_NIGHT_PERCENTAGES": {"77": 7, "114": 7, "232": 7, "78": 2, "84": 1, "85": 1, "217": 7, "215": 5, "195": 11, "208": 5, "55": 7, "42": 11, "246": 2, "200": 7, "231": 2, "216": 2, "95": 7, "75": 5, "247": 1},
+    "JOHTO_MT_SILVER_DAY_PERCENTAGES": {"77": 7, "114": 7, "232": 7, "78": 2, "84": 1, "85": 1, "217": 7, "215": 5, "195": 11, "208": 5, "55": 7, "42": 11, "246": 2, "200": 7, "231": 2, "216": 2, "95": 7, "75": 5, "247": 1},
 
     "JOHTO_CLIFF_GATE_POOL": [74, 75, 194, 195, 41, 42, 66],
     "JOHTO_CLIFF_GATE_PERCENTAGES": { "74": 30, "194": 30, "41": 20, "75": 5, "195": 5, "42": 5, "66": 5, "2012": 1, "2013": 1 },
 
     "JOHTO_SAFARI_POOL": [214, 212, 231, 232, 227, 241, 246, 247, 215, 207, 213, 216, 152],
-    "JOHTO_SAFARI_PERCENTAGES": { "214": 13, "212": 5, "231": 13, "232": 5, "227": 9, "241": 9, "246": 5, "247": 2, "215": 10, "207": 13, "213": 6, "216": 5, "152": 5 }
+    "JOHTO_SAFARI_PERCENTAGES": { "214": 13, "212": 5, "231": 13, "232": 5, "227": 9, "241": 9, "246": 5, "247": 2, "215": 10, "207": 13, "213": 6, "216": 5, "152": 5 },
+  "JOHTO_ROUTE_47_OLD_ROD_PERCENTAGES": {"129": 95, "72": 5},
+  "JOHTO_ROUTE_47_GOOD_ROD_PERCENTAGES": {"129": 60, "72": 30, "170": 7, "90": 3},
+  "JOHTO_ROUTE_47_SUPER_ROD_PERCENTAGES": {"170": 60, "90": 30, "73": 7, "171": 3},
+  "JOHTO_ROUTE_32_OLD_ROD_PERCENTAGES": {"129": 95, "72": 5},
+  "JOHTO_ROUTE_32_GOOD_ROD_PERCENTAGES": {"129": 60, "72": 38, "211": 2},
+  "JOHTO_ROUTE_32_SUPER_ROD_PERCENTAGES": {"72": 48, "129": 4, "211": 48},
+  "JOHTO_ROUTE_40_OLD_ROD_PERCENTAGES": {"129": 42, "98": 30, "222": 13, "120": 13, "99": 1},
+  "JOHTO_ROUTE_41_OLD_ROD_PERCENTAGES": {"129": 95, "72": 5},
+  "JOHTO_ROUTE_41_GOOD_ROD_PERCENTAGES": {"129": 60, "72": 30, "170": 7, "90": 3},
+  "JOHTO_ROUTE_41_SUPER_ROD_PERCENTAGES": {"170": 60, "90": 30, "73": 7, "171": 3},
+  "JOHTO_ROUTE_42_OLD_ROD_PERCENTAGES": {"129": 95, "118": 5},
+  "JOHTO_ROUTE_42_GOOD_ROD_PERCENTAGES": {"129": 60, "118": 40},
+  "JOHTO_ROUTE_42_SUPER_ROD_PERCENTAGES": {"118": 90, "129": 7, "119": 3}
 }

@@ -112,7 +112,7 @@ class BattleRenderer:
     # ------------------------------------------------------------------ the scene
     def draw(self, screen, opponent_pokemon, player_pokemon, opp_hp, player_hp, opp_max_hp, player_max_hp,
              adv_opp=1.0, adv_player=1.0, is_trainer_battle=False, trainer_img=None, background=None,
-             anim_ctrl=None, fainting_side=None, trainer_x_offset=0, hide_opponent=False):
+             anim_ctrl=None, fainting_side=None, trainer_x_offset=0, hide_opponent=False, show_fainted=False):
         w, h = self.game.width, self.game.height
         screen.fill(BLACK)
         if background:
@@ -124,7 +124,8 @@ class BattleRenderer:
         lunge_side = anim_ctrl.lunge_side if anim_ctrl and anim_ctrl.is_lunging else None
 
         # The foe.
-        if fainting_side != "opponent" and not hide_opponent and opponent_pokemon.current_hp > 0 \
+        # (show_fainted: a knocked-out wild Pokemon stays in view for the catch window)
+        if fainting_side != "opponent" and not hide_opponent and (opponent_pokemon.current_hp > 0 or show_fainted) \
                 and (not anim_ctrl or anim_ctrl.hit_visible("opponent")):
             img = opponent_pokemon.image
             ox, oy = 0, 0

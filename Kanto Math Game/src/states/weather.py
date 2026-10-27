@@ -81,10 +81,10 @@ class WeatherDialState(_MenuState):
                                 self.game.width // 2, 60)
         weather = seasons.weather_name(seasons.area_weather(self.game, self.area_key))
         Utils.draw_text_outline(screen, f"{seasons.season_name(season)}  -  {weather}",
-                                self.game.assets.fonts["small"], seasons.SEASON_COLORS[season],
+                                self.game.assets.fonts["label"], seasons.SEASON_COLORS[season],
                                 self.game.width // 2, 125)
-        Utils.draw_text_outline(screen, self.area_name, self.game.assets.fonts["tiny"], WHITE,
+        Utils.draw_text_outline(screen, self.area_name, self.game.assets.fonts["caption"], WHITE,
                                 self.game.width // 2, 160)
         if not self.dialogue_box.visible:
-            Utils.draw_classic_panel(screen, *self.box_rect)
+            Utils.draw_textbox(screen, *self.box_rect)
         self.game.ui_manager.draw(screen)

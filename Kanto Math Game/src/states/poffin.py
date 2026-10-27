@@ -36,7 +36,7 @@ def _button_row(game, specs, top, width=230, height=60, per_row=4):
         x = game.width // 2 - total // 2
         for i, (text, cb, color, icon) in enumerate(row):
             buttons.append(Button((x + i * (width + 14), top + (r // per_row) * (height + 10), width, height),
-                                  text, game.assets.fonts["tiny"], cb, autosize=False,
+                                  text, game.assets.fonts["caption"], cb, autosize=False,
                                   bg_color=color or (60, 90, 200), icon=icon))
     return buttons
 
@@ -148,7 +148,7 @@ class PoffinHouseState(_MenuState):
             img = pygame.transform.smoothscale(self.npc_sprite, (240, 240))
             self.game.screen.blit(img, img.get_rect(midbottom=(self.game.width // 2, self.box_rect.top - 10)))
         if not self.dialogue_box.visible:
-            Utils.draw_classic_panel(self.game.screen, *self.box_rect)
+            Utils.draw_textbox(self.game.screen, *self.box_rect)
         self.game.ui_manager.draw(self.game.screen)
 
 
@@ -315,16 +315,16 @@ class PoffinCookState(_MenuState):
             sx, sy = cx + int(120 * math.cos(ang)), cy + int(55 * math.sin(ang))
             pygame.draw.line(screen, (200, 170, 120), (sx, sy), (sx + 40, sy - 170), 10)
             pygame.draw.circle(screen, (200, 170, 120), (sx, sy), 14)
-        font = self.game.assets.fonts["tiny"]
+        font = self.game.assets.fonts["caption"]
         if self.phase == "SELECT":
             msg = f"Choose up to {MAX_BERRIES_PER_POFFIN} different berries, then COOK!"
-            Utils.draw_text_outline(screen, msg, self.game.assets.fonts["small"], WHITE, cx, 60)
+            Utils.draw_text_outline(screen, msg, self.game.assets.fonts["label"], WHITE, cx, 60)
             if self.selected:
                 text = "In the pot: " + ", ".join(f"{berry_name(b)} ({berry_label(b)})" for b in self.selected)
                 Utils.draw_text_outline(screen, text, font, GOLD, cx, 100)
         else:
             stage_no = self.stage() + 1
-            Utils.draw_text_outline(screen, f"STAGE {stage_no}/{len(COOK_STAGES)}", self.game.assets.fonts["small"],
+            Utils.draw_text_outline(screen, f"STAGE {stage_no}/{len(COOK_STAGES)}", self.game.assets.fonts["label"],
                                     WHITE, cx, 60)
             if self.phase == "STIR":
                 ratio = self.time_left() / self.limit
@@ -337,7 +337,7 @@ class PoffinCookState(_MenuState):
             score = f"Stirs {self.good}   Perfect {self.quick}   Spills/Burns {self.mistakes}"
             Utils.draw_text_outline(screen, score, font, WHITE, cx, top - 30)
         if not self.dialogue_box.visible and self.phase != "STIR":
-            Utils.draw_classic_panel(screen, *self.box_rect)
+            Utils.draw_textbox(screen, *self.box_rect)
         self.game.ui_manager.draw(screen)
 
 
@@ -410,11 +410,11 @@ class PoffinCaseState(_MenuState):
         screen = self.game.screen
         screen.fill((45, 30, 55))
         Utils.draw_text_outline(screen, "POFFIN CASE", self.game.assets.fonts["big"], GOLD, self.game.width // 2, 60)
-        font = self.game.assets.fonts["tiny"]
+        font = self.game.assets.fonts["caption"]
         legend_x = self.game.width // 2 - 380
         for i, f in enumerate(FLAVORS):
             pygame.draw.circle(screen, FLAVOR_COLOR[f], (legend_x + i * 160, 108), 9)
             screen.blit(font.render(f.title(), True, WHITE), (legend_x + 16 + i * 160, 100))
         if not self.dialogue_box.visible:
-            Utils.draw_classic_panel(screen, *self.box_rect)
+            Utils.draw_textbox(screen, *self.box_rect)
         self.game.ui_manager.draw(screen)

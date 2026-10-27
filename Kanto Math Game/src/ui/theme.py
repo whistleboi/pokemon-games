@@ -99,7 +99,16 @@ def command_button(surface, rect, label, font, color, hover=False, small=None, s
     pygame.draw.rect(surface, (255, 255, 255) if hover else (20, 20, 30), rect, 3, border_radius=16)
     from src.utils import Utils
     cy = rect.centery - (8 if sub and small else 0)
-    Utils.draw_text_outline(surface, label, font, (255, 255, 255), rect.centerx, cy, outline_color=dark, thickness=3)
+    # Light buttons (yellow, gold): a darker edge on white text, and dark text when the label is
+    # small, where white on yellow is hard to read (Jordan).
+    light = 0.299 * color[0] + 0.587 * color[1] + 0.114 * color[2] > 150
+    if light and font.get_height() < 26:
+        Utils.draw_text_outline(surface, label, font, (60, 40, 6), rect.centerx, cy,
+                                outline_color=tuple(min(255, int(c * 1.15)) for c in color), thickness=1)
+    else:
+        edge = tuple(max(0, int(c * 0.38)) for c in color) if light else dark
+        Utils.draw_text_outline(surface, label, font, (255, 255, 255), rect.centerx, cy, outline_color=edge,
+                                thickness=3)
     if sub and small:
         Utils.draw_text_outline(surface, sub, small, (255, 255, 255), rect.centerx, rect.bottom - 18,
                                 outline_color=dark, thickness=2)
@@ -210,10 +219,18 @@ def popup_panel(surface, rect, title=None, font=None):
                                 outline_color=PANEL_BORDER, thickness=2)
 
 
+GAME = None  # the running game (set by Game), for the region's PC name
+
+
 def pokemon_word(text):
     """The area data's short "PKMN" written out (Jordan): POKéMON in capitals ("CATCH WILD
-    POKéMON"), Pokémon in ordinary text."""
+    POKéMON"), Pokémon in ordinary text. "BILL'S PC" becomes the region's own PC (Lanette's PC...)."""
     text = str(text)
+    if "BILL'S PC" in text.upper() and GAME is not None:
+        import re
+        name = GAME.story_manager.pc_name()
+        text = re.sub(r"BILL'S PC", name.upper(), text)
+        text = re.sub(r"Bill's PC", name, text)
     if "PKMN" not in text:
         return text
     letters = [c for c in text.replace("PKMN", "") if c.isalpha()]
@@ -236,3 +253,47 @@ def text_field(surface, rect, text, font, placeholder="", focused=True):
         r = shadow_text(surface, placeholder, font, rect.x + 18, y, color=(150, 156, 176))
         if focused and (pygame.time.get_ticks() // 500) % 2:
             pygame.draw.rect(surface, TEXT, (rect.x + 14, y + 2, 3, font.get_height() - 6))
+
+
+# ---------------------------------------------------------------- older screens' buttons
+FONTS = {}  # the game's fonts (set by Assets), for buttons made with the old tiny fonts
+
+
+def theme_color(color):
+    """An older screen's button colour mapped onto the battle menu's palette: reds to FIGHT,
+    greens to POKEMON, blues to RUN, yellows to BAG, purples to MEGA, greys and black to BACK."""
+    r, g, b = [int(c) for c in tuple(color)[:3]]
+    hi, lo = max(r, g, b), min(r, g, b)
+    if hi - lo < 40:
+        return BACK
+    if r >= g and r >= b:
+        if g > 150 and g > b + 60:
+            return BAG if g > r * 0.62 else (232, 132, 40)
+        return (232, 132, 40) if g > 100 and b < 80 else FIGHT
+    if g >= r and g >= b:
+        return BAG if r > 180 else POKEMON
+    if r > 110 and r > g + 30:
+        return MEGA
+    return (40, 170, 200) if g > 180 else RUN
+
+
+def readable_font(font, text, rect):
+    """The largest of the redesign's fonts that fits the button (never smaller than it was)."""
+    if not FONTS:
+        return font
+    for key in ("button", "label", "caption"):
+        f = FONTS.get(key)
+        if f and f.size(str(text))[0] <= rect.w - 24 and f.get_height() <= rect.h - 6:
+            return f if f.get_height() >= font.get_height() else font
+    return font
+
+ACCENT["map"] = (46, 134, 104)
+ACCENT["fun"] = (196, 70, 150)    # Game Corner, Amie, contests, Poffins
+ACCENT["tool"] = (70, 92, 150)    # PokeNav, Unown report, Weather Dial
+
+
+def text_on(color):
+    """(text colour, outline colour) for a small label on a coloured tag: dark on light colours
+    (yellow, gold), white on the rest."""
+    light = 0.299 * color[0] + 0.587 * color[1] + 0.114 * color[2] > 150
+    return ((60, 40, 6), tuple(min(255, int(c * 1.15)) for c in color)) if light else ((255, 255, 255), shade(color, 0.5))

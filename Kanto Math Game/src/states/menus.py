@@ -612,18 +612,20 @@ class RivalSelectionState(GameState):
 
 
 def region_opening_state(game, region):
-    """A new game in a region whose starter is chosen on a route (Hoenn): the story choice,
-    then home, where the opening plays out. None for regions that start at the starter screen."""
+    """A new game in a region whose starter comes from the story (Hoenn's route, Oak in Kanto):
+    the story choice, then home, where the opening plays out. None for regions that start at the
+    starter screen."""
     story = game.story_manager
-    if not story.starter_on_route(region):
+    if not story.starter_in_overworld(region):
         return None
     from src.states.overworld import AreaTransitionState
     from src.world import hoenn
     cfg = story.get_region_start(region)
     story.game_started = True
     story.current_area_key = cfg.get("start_area")
-    text = game.assets.get_text(cfg.get("newgame_text"), player_name=game.player_name,
-                                rival_name=getattr(game, "rival_name", "???")) if cfg.get("newgame_text") else []
+    key = cfg.get("opening_text") or cfg.get("newgame_text")
+    text = game.assets.get_text(key, player_name=game.player_name,
+                                rival_name=getattr(game, "rival_name", "???")) if key else []
     arrive = lambda: AreaTransitionState(game, cfg.get("start_area"),
                                          initial_message=text if isinstance(text, list) else [text])
     if hoenn.needs_choice(story):  # Omega Ruby or Alpha Sapphire comes first
@@ -751,20 +753,14 @@ class StarterSelectionState(GameState):
     def update_answer_buttons(self):
         self.math_buttons_ready = True
         box_rect = self.dialogue_box.rect
-
+        # The battle's math layout: the question at the left of the text box, the three answers as
+        # white cards at the right.
+        right = pygame.Rect(box_rect.x + int(box_rect.w * 0.46), box_rect.y, int(box_rect.w * 0.54), box_rect.h)
+        pad, gap = 22, 14
+        btn_w = (right.w - pad * 2 - gap * 2) // 3
+        btn_h = box_rect.h - pad * 2 - 6
         for i in range(3):
-            btn_w = 120
-            btn_h = 50
-            spacing = 20
-            total_width = (btn_w * 3) + (spacing * 2)
-            start_x = box_rect.centerx - (total_width // 2)
-
-            cx = start_x + i * (btn_w + spacing) + (btn_w // 2)
-            cy = box_rect.bottom - 40
-
-            self.answer_btn_rects[i] = pygame.Rect(
-                cx - btn_w // 2, cy - btn_h // 2, btn_w, btn_h
-            )
+            self.answer_btn_rects[i] = pygame.Rect(right.x + pad + i * (btn_w + gap), right.y + pad, btn_w, btn_h)
 
     def handle_events(self, events):
         if not self.starters:
@@ -1083,48 +1079,23 @@ class StarterSelectionState(GameState):
                     f"befriend {starter_name}!"
                 )
 
-            Utils.draw_text_outline(
-                self.game.screen,
-                msg,
-                self.game.assets.fonts["s_med"],
-                GB_TEXT,
-                self.game.width // 2,
-                self.dialogue_box.rect.top + 30,
-                outline_color=GB_PANEL,
-            )
-
-            Utils.draw_text_outline(
-                self.game.screen,
-                self.problem_str,
-                self.game.assets.fonts["big"],
-                GOLD,
-                self.game.width // 2,
-                self.dialogue_box.rect.top + 80,
-            )
-
+            from src.ui import theme
+            screen, fonts, box = self.game.screen, self.game.assets.fonts, self.dialogue_box.rect
+            theme.draw_textbox(screen, box)
+            card = pygame.Rect(box.x + 16, box.y + 16, int(box.w * 0.46) - 16, box.h - 32)
+            pygame.draw.rect(screen, (236, 242, 252), card, border_radius=14)
+            pygame.draw.rect(screen, theme.TEXTBOX_ACCENT, card, 3, border_radius=14)
+            theme.shadow_text(screen, msg, fonts["label"] if fonts["label"].size(msg)[0] < card.w - 30 else fonts["caption"],
+                              card.centerx, card.y + 28, color=(96, 102, 122), align="center")
+            theme.shadow_text(screen, self.problem_str, fonts["big"], card.centerx, card.centery + 16, align="center")
+            if self.answer_btn_rects[0].w == 0:
+                self.update_answer_buttons()
+            mouse = pygame.mouse.get_pos()
             for i in range(3):
                 btn_rect = self.answer_btn_rects[i]
                 txt = str(self.options[i])
-
-                self.answer_btn_rects[i] = btn_rect
-                pygame.draw.rect(
-                    self.game.screen, WHITE, btn_rect,
-                    border_radius=10
-                )
-                pygame.draw.rect(
-                    self.game.screen, BLACK, btn_rect, 2,
-                    border_radius=10
-                )
-
-                Utils.draw_text_outline(
-                    self.game.screen,
-                    txt,
-                    self.game.assets.fonts["num"],
-                    BLACK,
-                    btn_rect.centerx,
-                    btn_rect.centery,
-                    outline_color=WHITE
-                )
+                theme.card(screen, btn_rect, hover=btn_rect.collidepoint(mouse), accent=theme.RUN, radius=14)
+                theme.shadow_text(screen, txt, fonts["num"], btn_rect.centerx, btn_rect.centery, align="center")
 
         if self.feedback_timer > 0:
             Utils.draw_text_outline(

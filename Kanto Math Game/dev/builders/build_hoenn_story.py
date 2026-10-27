@@ -128,7 +128,10 @@ for k, v in TEXT.items():
     tj.set("GAME_TEXT", k, v)
 
 # ---- Part 1: Littleroot, Route 101, Oldale, Route 103, Petalburg ----
-tj.set("LITTLEROOT_TOWN", "on_enter_event", None)  # the rival battle is on Route 103 now
+# Back from Route 101 (the game brings you), Birch's thanks play at once (Jordan); the rival
+# battle is on Route 103.
+tj.set("LITTLEROOT_TOWN", "on_enter_event", {"type": "event", "event": "hoenn_birch_lab",
+                                             "condition": ["hoenn_birch_rescued", "not:hoenn_birch_thanked"]})
 explore = [o for o in sp["LITTLEROOT_TOWN"]["explore_options"] if o.get("target") != "hoenn_neighbor"]
 explore.insert(1, {"text": "Visit Next Door", "action": "NPC", "target": "hoenn_neighbor"})
 tj.set("LITTLEROOT_TOWN", "explore_options", explore)
@@ -142,7 +145,9 @@ tj.set("HOENN_ROUTE_101", "starter_event", {
              "lines": ["The wild POOCHYENA turns to face you!"],
              "won": ["The POOCHYENA ran off into the tall grass!",
                      "Professor Birch: Whew... you saved me! I'm Birch, the Pokemon Professor.",
-                     "Professor Birch: Come see me at my lab in Littleroot Town!"]}})
+                     "Professor Birch: Let's head back to my lab in Littleroot Town!"]},
+    # After the Poochyena, straight back to Littleroot for Birch's thanks (Jordan).
+    "return_to": "LITTLEROOT_TOWN", "return_until": "hoenn_birch_thanked"})
 
 oldale = sp["OLDALE_TOWN"]
 travel = [dict(o, condition="received_pokedex_hoenn") if o["target_area"] == "HOENN_ROUTE_102" else o

@@ -101,7 +101,9 @@ for area, want in (("UNOVA_ROUTE_17", "UNOVA"), ("JOHTO_ROUTE_32", "JOHTO"), ("K
         want_pool = g.loader.area_data["JOHTO_SUPER_ROD_POOL_PERCENTAGES"]
     if not want:
         want_pool = g.loader.area_data["SUPER_ROD_POOL_PERCENTAGES"]
-    check(pool == want_pool, f"{area} fishes its own region's pool")
+    # an area with its own rod table from the games (Serebii PokeEarth, 10-26) uses that first
+    want_pool = g.loader.area_data.get(f"{area}_SUPER_ROD_PERCENTAGES") or want_pool
+    check(pool == want_pool, f"{area} fishes its own pool (the area's, else the region's)")
 
 # J-D1 / J-D2 Johto: National Park catches, headbutt buttons.
 p, btns = route_buttons("NATIONAL_PARK")

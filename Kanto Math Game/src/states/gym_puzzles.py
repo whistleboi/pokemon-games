@@ -276,7 +276,7 @@ class GymPuzzleState(GameState):
         bw, bh, gap = min(360, (w - 120) // cols - 20), 80, 20
         x0 = (w - (cols * bw + (cols - 1) * gap)) // 2
         y0 = int(h * 0.45)
-        font = self.game.assets.fonts.get("s_med") or self.game.assets.fonts["small"]
+        font = self.game.assets.fonts.get("s_med") or self.game.assets.fonts["label"]
         color = {"surge": ORANGE, "koga": PURPLE, "sabrina": BLUE, "quiz": RED, "cissy": BLUE,
                  "danny": RED, "rudy": ORANGE, "luana": GREEN}.get(self.kind, PURPLE)
         for i, (label, _) in enumerate(self.options):
@@ -309,7 +309,7 @@ class GymPuzzleState(GameState):
         screen = self.game.screen
         screen.fill((30, 30, 50))
         w, h = self.game.width, self.game.height
-        f_big = self.game.assets.fonts.get("s_med") or self.game.assets.fonts["small"]
+        f_big = self.game.assets.fonts.get("s_med") or self.game.assets.fonts["label"]
         f_small = self.game.assets.fonts.get("small") or f_big
         Utils.draw_classic_panel(screen, 40, 30, w - 80, int(h * 0.36))
         Utils.draw_multiline_text(screen, self.message, f_small, GOLD, w // 2, 75, max_width=w - 160,

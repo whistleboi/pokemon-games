@@ -246,15 +246,16 @@ def guaranteed_old_rod_and_route10_fish():
 def early_area_gates():
     from src.states.overworld import CityState, PlayState
     st = G.story_manager; st.story_flags = {}; st.inventory = {}
-    st.current_area_key = "CELADON_CITY"; c = CityState(G)
-    opt = [o for o in AREA["STORY_PROGRESSION"]["CELADON_CITY"]["travel_options"] if o["target_area"] == "KANTO_ROUTE_16"][0]
-    assert not c._check_menu_condition(opt["condition"])
-    st.story_flags["KANTO_ROUTE_11_boss_defeated"] = True
-    assert c._check_menu_condition(opt["condition"])
+    st.current_area_key = "KANTO_ROUTE_16"; p16 = PlayState(G); p16.rounds_completed = 99
+    st.inventory["BICYCLE"] = 1  # FRLG: the Route 16 Snorlax blocks Cycling Road
+    road = [o for o in AREA["STORY_PROGRESSION"]["KANTO_ROUTE_16"]["route_menu"] if o.get("target") == "KANTO_ROUTE_17"][0]
+    assert not p16._check_route_condition(road["condition"], False, road)
+    st.story_flags["KANTO_ROUTE_16_boss_defeated"] = True
+    assert p16._check_route_condition(road["condition"], False, road)
     st.current_area_key = "KANTO_ROUTE_10"; p = PlayState(G); p.rounds_completed = 99
     pp = [o for o in AREA["STORY_PROGRESSION"]["KANTO_ROUTE_10"]["route_menu"] if o.get("target") == "POWER_PLANT"][0]
     assert not p._check_route_condition(pp["condition"], False, pp)
-    st.inventory["SURF_BOARD"] = 1
+    st.inventory["HM_SURF"] = 1  # (the Surf Board was retired for HM Surf)
     assert p._check_route_condition(pp["condition"], False, pp)
 
 @test

@@ -35,9 +35,16 @@ got = levels.follow_team(g, [9, 11, 12])
 check(got == [11, 13, 14], f"{got}: ace at the team's best")
 check(levels.follow_team(g, [30, 32]) == [30, 32], "a team already above stays as it is")
 
-print("4) a canon area above the team keeps its level")
-check(levels.area_level(g, "VICTORY_ROAD") >= levels._area_levels(g).get("VICTORY_ROAD", 0),
-      f"Victory Road Lv {levels.area_level(g, 'VICTORY_ROAD')}")
+print("4) an area's own level is the floor, the team is the ceiling (Jordan, 10-26)")
+vr = levels._area_levels(g).get("VICTORY_ROAD", 0)
+check(vr > 14 and levels.area_level(g, "VICTORY_ROAD") == 14,
+      f"Victory Road (own Lv {vr}) is held to the Lv 14 lead: {levels.area_level(g, 'VICTORY_ROAD')}")
+lead.level = vr + 10
+check(levels.area_level(g, "VICTORY_ROAD") == vr + 10 - levels.POSTGAME_UNDER,
+      "a team well above it pulls it up (3 under the lead)")
+lead.level = vr + 2
+check(levels.area_level(g, "VICTORY_ROAD") == vr, "in between, the area keeps its own level")
+lead.level = 14
 
 print("5) Gyms keep their canon levels")
 check(levels.gym_team_levels("KANTO", "PEWTER_CITY", 2, "leader") == [12, 14], "Brock 12/14")

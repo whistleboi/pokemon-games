@@ -774,62 +774,18 @@
         }
       ],
       "travel_options": [
-        {
-          "text": "Treasure Beach",
-          "target_area": "TREASURE_BEACH"
-        },
-        {
-          "text": "Kindle Road",
-          "target_area": "KINDLE_ROAD"
-        },
-        {
-          "text": "Seagallop to Vermilion City",
-          "long_ride": true,
-          "target_area": "VERMILLION_CITY",
-          "message": "The Seagallop Ferry speeds back to Vermilion City."
-        },
-        {
-          "text": "Seagallop to Two Island",
-          "target_area": "TWO_ISLAND",
-          "message": "The Seagallop Ferry speeds across the waves. Next stop: Two Island!",
-          "condition": "has_item:TRI_PASS"
-        },
-        {
-          "text": "Seagallop to Three Island",
-          "target_area": "THREE_ISLAND",
-          "message": "The Seagallop Ferry speeds across the waves. Next stop: Three Island!",
-          "condition": "has_item:TRI_PASS"
-        },
-        {
-          "text": "Seagallop to Four Island",
-          "target_area": "FOUR_ISLAND",
-          "message": "The Seagallop Ferry speeds across the waves. Next stop: Four Island!",
-          "condition": "has_item:RAINBOW_PASS"
-        },
-        {
-          "text": "Seagallop to Five Island",
-          "target_area": "FIVE_ISLAND",
-          "message": "The Seagallop Ferry speeds across the waves. Next stop: Five Island!",
-          "condition": "has_item:RAINBOW_PASS"
-        },
-        {
-          "text": "Seagallop to Six Island",
-          "target_area": "SIX_ISLAND",
-          "message": "The Seagallop Ferry speeds across the waves. Next stop: Six Island!",
-          "condition": "has_item:RAINBOW_PASS"
-        },
-        {
-          "text": "Seagallop to Seven Island",
-          "target_area": "SEVEN_ISLAND",
-          "message": "The Seagallop Ferry speeds across the waves. Next stop: Seven Island!",
-          "condition": "has_item:RAINBOW_PASS"
-        },
-        {
-          "text": "Seagallop to Faraway Island",
-          "target_area": "FARAWAY_ISLAND",
-          "message": "The Seagallop Ferry speeds across the waves. Next stop: Faraway Island!",
-          "condition": "has_item:OLD_SEA_MAP"
-        }
+        {"text": "Treasure Beach", "target_area": "TREASURE_BEACH"},
+        {"text": "Kindle Road", "target_area": "KINDLE_ROAD"},
+        {"text": "Seagallop to Vermilion City", "long_ride": true, "target_area": "VERMILLION_CITY", "message": "The Seagallop Ferry speeds back to Vermilion City."},
+        {"text": "Seagallop to Two Island", "target_area": "TWO_ISLAND", "message": "The Seagallop Ferry speeds across the waves. Next stop: Two Island!", "condition": "has_item:TRI_PASS"},
+        {"text": "Seagallop to Three Island", "target_area": "THREE_ISLAND", "message": "The Seagallop Ferry speeds across the waves. Next stop: Three Island!", "condition": "has_item:TRI_PASS"},
+        {"text": "Seagallop to Four Island", "target_area": "FOUR_ISLAND", "message": "The Seagallop Ferry speeds across the waves. Next stop: Four Island!", "condition": "has_item:RAINBOW_PASS"},
+        {"text": "Seagallop to Five Island", "target_area": "FIVE_ISLAND", "message": "The Seagallop Ferry speeds across the waves. Next stop: Five Island!", "condition": "has_item:RAINBOW_PASS"},
+        {"text": "Seagallop to Six Island", "target_area": "SIX_ISLAND", "message": "The Seagallop Ferry speeds across the waves. Next stop: Six Island!", "condition": "has_item:RAINBOW_PASS"},
+        {"text": "Seagallop to Seven Island", "target_area": "SEVEN_ISLAND", "message": "The Seagallop Ferry speeds across the waves. Next stop: Seven Island!", "condition": "has_item:RAINBOW_PASS"},
+        {"text": "Seagallop to Faraway Island", "target_area": "FARAWAY_ISLAND", "message": "The Seagallop Ferry speeds across the waves. Next stop: Faraway Island!", "condition": "has_item:OLD_SEA_MAP"},
+        {"text": "Seagallop to Navel Rock", "target_area": "NAVEL_ROCK", "condition": "beat_champion", "message": "The Seagallop Ferry heads for a mysterious island: Navel Rock."},
+        {"text": "Seagallop to Birth Island", "target_area": "BIRTH_ISLAND", "condition": "beat_champion", "message": "The Seagallop Ferry heads for a mysterious island: Birth Island."}
       ],
       "next_area": "TREASURE_BEACH"
     },
@@ -1423,59 +1379,16 @@
         }
       ],
       "travel_options": [
-        {
-          "text": "Bond Bridge",
-          "target_area": "BOND_BRIDGE",
-          "condition": "beat_three_island_bikers"
-        },
-        {
-          "text": "Seagallop to Vermilion City",
-          "long_ride": true,
-          "target_area": "VERMILLION_CITY",
-          "message": "The Seagallop Ferry speeds back to Vermilion City."
-        },
-        {
-          "text": "Seagallop to One Island",
-          "target_area": "ONE_ISLAND",
-          "message": "The Seagallop Ferry speeds across the waves. Next stop: One Island!",
-          "condition": "has_item:TRI_PASS"
-        },
-        {
-          "text": "Seagallop to Two Island",
-          "target_area": "TWO_ISLAND",
-          "message": "The Seagallop Ferry speeds across the waves. Next stop: Two Island!",
-          "condition": "has_item:TRI_PASS"
-        },
-        {
-          "text": "Seagallop to Four Island",
-          "target_area": "FOUR_ISLAND",
-          "message": "The Seagallop Ferry speeds across the waves. Next stop: Four Island!",
-          "condition": "has_item:RAINBOW_PASS"
-        },
-        {
-          "text": "Seagallop to Five Island",
-          "target_area": "FIVE_ISLAND",
-          "message": "The Seagallop Ferry speeds across the waves. Next stop: Five Island!",
-          "condition": "has_item:RAINBOW_PASS"
-        },
-        {
-          "text": "Seagallop to Six Island",
-          "target_area": "SIX_ISLAND",
-          "message": "The Seagallop Ferry speeds across the waves. Next stop: Six Island!",
-          "condition": "has_item:RAINBOW_PASS"
-        },
-        {
-          "text": "Seagallop to Seven Island",
-          "target_area": "SEVEN_ISLAND",
-          "message": "The Seagallop Ferry speeds across the waves. Next stop: Seven Island!",
-          "condition": "has_item:RAINBOW_PASS"
-        },
-        {
-          "text": "Seagallop to Faraway Island",
-          "target_area": "FARAWAY_ISLAND",
-          "message": "The Seagallop Ferry speeds across the waves. Next stop: Faraway Island!",
-          "condition": "has_item:OLD_SEA_MAP"
-        }
+        {"text": "Bond Bridge", "target_area": "BOND_BRIDGE", "condition": "beat_three_island_bikers"},
+        {"text": "Three Isle Path", "target_area": "THREE_ISLE_PATH"},
+        {"text": "Seagallop to Vermilion City", "long_ride": true, "target_area": "VERMILLION_CITY", "message": "The Seagallop Ferry speeds back to Vermilion City."},
+        {"text": "Seagallop to One Island", "target_area": "ONE_ISLAND", "message": "The Seagallop Ferry speeds across the waves. Next stop: One Island!", "condition": "has_item:TRI_PASS"},
+        {"text": "Seagallop to Two Island", "target_area": "TWO_ISLAND", "message": "The Seagallop Ferry speeds across the waves. Next stop: Two Island!", "condition": "has_item:TRI_PASS"},
+        {"text": "Seagallop to Four Island", "target_area": "FOUR_ISLAND", "message": "The Seagallop Ferry speeds across the waves. Next stop: Four Island!", "condition": "has_item:RAINBOW_PASS"},
+        {"text": "Seagallop to Five Island", "target_area": "FIVE_ISLAND", "message": "The Seagallop Ferry speeds across the waves. Next stop: Five Island!", "condition": "has_item:RAINBOW_PASS"},
+        {"text": "Seagallop to Six Island", "target_area": "SIX_ISLAND", "message": "The Seagallop Ferry speeds across the waves. Next stop: Six Island!", "condition": "has_item:RAINBOW_PASS"},
+        {"text": "Seagallop to Seven Island", "target_area": "SEVEN_ISLAND", "message": "The Seagallop Ferry speeds across the waves. Next stop: Seven Island!", "condition": "has_item:RAINBOW_PASS"},
+        {"text": "Seagallop to Faraway Island", "target_area": "FARAWAY_ISLAND", "message": "The Seagallop Ferry speeds across the waves. Next stop: Faraway Island!", "condition": "has_item:OLD_SEA_MAP"}
       ],
       "next_area": "BOND_BRIDGE"
     },
@@ -1939,32 +1852,12 @@
         }
       ],
       "route_menu": [
-        {
-          "text": "CATCH WILD PKMN",
-          "action": "CATCH",
-          "condition": "has_balls",
-          "color": "BLUE"
-        },
-        {
-          "text": "BATTLE WILD PKMN",
-          "action": "BATTLE",
-          "condition": "can_battle",
-          "color": "GREEN"
-        },
-        {
-          "text": "BATTLE TRAINER",
-          "action": "TRAINER",
-          "condition": "has_trainers",
-          "color": "GREEN"
-        },
-        {
-          "text": "Five Island",
-          "action": "EXIT",
-          "target_area": "FIVE_ISLAND",
-          "condition": "can_exit",
-          "color": "RED"
-        },
-        {"text": "Memorial Pillar", "action": "EXIT", "target_area": "MEMORIAL_PILLAR", "condition": "can_exit", "color": "RED"}
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        {"text": "Five Island", "action": "EXIT", "target_area": "FIVE_ISLAND", "condition": "can_exit", "color": "RED"},
+        {"text": "Memorial Pillar", "action": "EXIT", "target_area": "MEMORIAL_PILLAR", "condition": "can_exit", "color": "RED"},
+        {"text": "ROCKET WAREHOUSE", "action": "EXIT", "target": "ROCKET_WAREHOUSE", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "FIVE_ISLAND"
     },
@@ -2113,100 +2006,12 @@
         }
       ],
       "route_menu": [
-        {
-          "text": "BATTLE TRAINER",
-          "action": "TRAINER",
-          "condition": "has_trainers",
-          "color": "GREEN"
-        },
-        {
-          "text": "UNLOCK THE DOORS",
-          "action": "EVENT",
-          "color": "GOLD",
-          "event": {
-            "puzzle": "security",
-            "lines": [
-              "The doors open, one by one. The Admin's office is ahead!"
-            ],
-            "puzzle_fail": [
-              "The door pads reset. Try the codes again!"
-            ],
-            "flag": "warehouse_doors_open"
-          },
-          "flag_condition": "not warehouse_doors_open"
-        },
-        {
-          "text": "CONFRONT THE ADMIN",
-          "action": "EVENT",
-          "color": "GOLD",
-          "event": {
-            "requires": [
-              "warehouse_doors_open"
-            ],
-            "lines": [
-              "Admin: So you're the one ruining our plans on every island.",
-              "With the Ruby and Sapphire we'd force any Pokemon to evolve! Prepare yourself!"
-            ],
-            "battle": {
-              "name": "Rocket Admin Archer",
-              "class": "ROCKET_ADMIN",
-              "sprite": "archer.png",
-              "team": [
-                229,
-                110,
-                42,
-                24,
-                112
-              ],
-              "levels": [
-                56,
-                57,
-                56,
-                57,
-                59
-              ],
-              "rewards": {
-                "balls": 15
-              },
-              "dialogue": {
-                "player_won": [
-                  "Archer: Impossible... Take your precious gems, then!"
-                ]
-              }
-            },
-            "flag": "sevii_warehouse_cleared"
-          },
-          "condition": "warehouse_doors_open",
-          "flag_condition": "not sevii_warehouse_cleared"
-        },
-        {
-          "text": "RECOVER THE GEMS",
-          "action": "EVENT",
-          "color": "GOLD",
-          "event": {
-            "requires": [
-              "sevii_warehouse_cleared"
-            ],
-            "lines": [
-              "On the Admin's desk sit two glowing gems: the Ruby and the Sapphire!",
-              "Team Rocket's Sevii hideout is shut down for good. Take them to Celio!"
-            ],
-            "gift_item": {
-              "RUBY": 1,
-              "SAPPHIRE": 1
-            },
-            "flag": "got_sevii_gems"
-          },
-          "condition": "sevii_warehouse_cleared",
-          "flag_condition": "not got_sevii_gems"
-        },
-        {
-          "text": "Five Island",
-          "action": "EXIT",
-          "target_area": "FIVE_ISLAND",
-          "condition": "can_exit",
-          "color": "RED"
-        }
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        {"text": "UNLOCK THE DOORS", "action": "EVENT", "color": "GOLD", "event": {"puzzle": "security", "lines": ["The doors open, one by one. The Admin's office is ahead!"], "puzzle_fail": ["The door pads reset. Try the codes again!"], "flag": "warehouse_doors_open"}, "flag_condition": "not warehouse_doors_open"},
+        {"text": "CONFRONT THE ADMIN", "action": "EVENT", "color": "GOLD", "event": {"requires": ["warehouse_doors_open"], "lines": ["Admin: So you're the one ruining our plans on every island.", "With the Ruby and Sapphire we'd force any Pokemon to evolve! Prepare yourself!"], "battle": {"name": "Rocket Admin Archer", "class": "ROCKET_ADMIN", "sprite": "archer.png", "team": [229, 110, 42, 24, 112], "levels": [56, 57, 56, 57, 59], "rewards": {"balls": 15}, "dialogue": {"player_won": ["Archer: Impossible... Take your precious gems, then!"]}}, "flag": "sevii_warehouse_cleared"}, "condition": "warehouse_doors_open", "flag_condition": "not sevii_warehouse_cleared"},
+        {"text": "RECOVER THE GEMS", "action": "EVENT", "color": "GOLD", "event": {"requires": ["sevii_warehouse_cleared"], "lines": ["On the Admin's desk sit two glowing gems: the Ruby and the Sapphire!", "Team Rocket's Sevii hideout is shut down for good. Take them to Celio!"], "gift_item": {"RUBY": 1, "SAPPHIRE": 1}, "flag": "got_sevii_gems"}, "condition": "sevii_warehouse_cleared", "flag_condition": "not got_sevii_gems"},
+        {"text": "Five Island", "action": "EXIT", "target_area": "FIVE_ISLAND", "condition": "can_exit", "color": "RED"},
+        {"text": "FIVE ISLE MEADOW", "action": "EXIT", "target": "FIVE_ISLE_MEADOW", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "FIVE_ISLAND"
     },
@@ -2730,32 +2535,12 @@
         }
       ],
       "route_menu": [
-        {
-          "text": "CATCH WILD PKMN",
-          "action": "CATCH",
-          "condition": "has_balls",
-          "color": "BLUE"
-        },
-        {
-          "text": "BATTLE WILD PKMN",
-          "action": "BATTLE",
-          "condition": "can_battle",
-          "color": "GREEN"
-        },
-        {
-          "text": "BATTLE TRAINER",
-          "action": "TRAINER",
-          "condition": "has_trainers",
-          "color": "GREEN"
-        },
-        {
-          "text": "Seven Island",
-          "action": "EXIT",
-          "target_area": "SEVEN_ISLAND",
-          "condition": "can_exit",
-          "color": "RED"
-        },
-        {"text": "Canyon Entrance", "action": "EXIT", "target_area": "CANYON_ENTRANCE", "condition": "can_exit", "color": "RED"}
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        {"text": "Seven Island", "action": "EXIT", "target_area": "SEVEN_ISLAND", "condition": "can_exit", "color": "RED"},
+        {"text": "Canyon Entrance", "action": "EXIT", "target_area": "CANYON_ENTRANCE", "condition": "can_exit", "color": "RED"},
+        {"text": "TANOBY RUINS", "action": "EXIT", "target": "TANOBY_RUINS", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "SEVEN_ISLAND"
     },
@@ -2770,44 +2555,11 @@
       "min_rounds": 2,
       "trainer_pool": [],
       "route_menu": [
-        {
-          "text": "CATCH WILD PKMN",
-          "action": "CATCH",
-          "condition": [
-            "has_balls",
-            "tanoby_chambers_open"
-          ],
-          "color": "BLUE"
-        },
-        {
-          "text": "BATTLE WILD PKMN",
-          "action": "BATTLE",
-          "condition": "can_battle",
-          "color": "GREEN"
-        },
-        {
-          "text": "OPEN THE CHAMBERS",
-          "action": "EVENT",
-          "color": "GOLD",
-          "event": {
-            "puzzle": "tanoby",
-            "lines": [
-              "Unown of every shape swirl out of the seven chambers!"
-            ],
-            "puzzle_fail": [
-              "The chamber doors stay sealed."
-            ],
-            "flag": "tanoby_chambers_open"
-          },
-          "flag_condition": "not tanoby_chambers_open"
-        },
-        {
-          "text": "Seven Island",
-          "action": "EXIT",
-          "target_area": "SEVEN_ISLAND",
-          "condition": "can_exit",
-          "color": "RED"
-        }
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": ["has_balls", "tanoby_chambers_open"], "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "OPEN THE CHAMBERS", "action": "EVENT", "color": "GOLD", "event": {"puzzle": "tanoby", "lines": ["Unown of every shape swirl out of the seven chambers!"], "puzzle_fail": ["The chamber doors stay sealed."], "flag": "tanoby_chambers_open"}, "flag_condition": "not tanoby_chambers_open"},
+        {"text": "Seven Island", "action": "EXIT", "target_area": "SEVEN_ISLAND", "condition": "can_exit", "color": "RED"},
+        {"text": "SEVAULT CANYON", "action": "EXIT", "target": "SEVAULT_CANYON", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "SEVEN_ISLAND"
     },
@@ -2857,8 +2609,12 @@
         "name": "Mew",
         "victory_flag": "caught_mew"
       }
-    }
-  },
+    },
+        "THREE_ISLE_PATH": {"area_type": "dungeon", "route_name": "Three Isle Path", "region": "KANTO", "subregion": "SEVII", "level": 44, "battle_type": "cave", "min_rounds": 0, "trainer_pool": [], "route_menu": [{"text": "THREE ISLAND", "action": "EXIT", "target": "THREE_ISLAND", "condition": "can_exit", "color": "RED"}, {"text": "THREE ISLE PORT", "action": "EXIT", "target": "THREE_ISLE_PORT", "condition": "can_exit", "color": "RED"}], "next_area": "THREE_ISLE_PORT"},
+        "THREE_ISLE_PORT": {"area_type": "wild_route", "route_name": "Three Isle Port", "region": "KANTO", "subregion": "SEVII", "level": 44, "battle_type": "field", "wild_pool_percentages": "THREE_ISLE_PORT_PERCENTAGES", "min_rounds": 1, "trainer_pool": [], "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "THREE ISLE PATH", "action": "EXIT", "target": "THREE_ISLE_PATH", "condition": "can_exit", "color": "RED"}], "next_area": "THREE_ISLE_PATH"},
+        "NAVEL_ROCK": {"area_type": "dungeon", "route_name": "Navel Rock", "region": "KANTO", "battle_type": "cave", "min_rounds": 0, "trainer_pool": [], "route_menu": [{"text": "SEEK LUGIA", "action": "BOSS", "color": "GOLD", "flag_condition": "not navel_rock_lugia", "boss": {"id": 249, "name": "Lugia", "victory_flag": "navel_rock_lugia", "lines": ["A powerful presence fills the air... Lugia appears!"]}, "condition": ["beat_champion"]}, {"text": "SEEK HO-OH", "action": "BOSS", "color": "GOLD", "flag_condition": "not navel_rock_ho_oh", "boss": {"id": 250, "name": "Ho-Oh", "victory_flag": "navel_rock_ho_oh", "lines": ["A powerful presence fills the air... Ho-Oh appears!"]}, "condition": ["beat_champion"]}, {"text": "SEAGALLOP TO ONE ISLAND", "action": "EXIT", "target": "ONE_ISLAND", "condition": "can_exit", "color": "RED"}], "next_area": "ONE_ISLAND", "subregion": "SEVII", "level": 60},
+        "BIRTH_ISLAND": {"area_type": "dungeon", "route_name": "Birth Island", "region": "KANTO", "battle_type": "cave", "min_rounds": 0, "trainer_pool": [], "route_menu": [{"text": "SEEK DEOXYS", "action": "BOSS", "color": "GOLD", "flag_condition": "not birth_island_deoxys", "boss": {"id": 386, "name": "Deoxys", "victory_flag": "birth_island_deoxys", "lines": ["A powerful presence fills the air... Deoxys appears!"]}, "condition": ["beat_champion"]}, {"text": "SEAGALLOP TO ONE ISLAND", "action": "EXIT", "target": "ONE_ISLAND", "condition": "can_exit", "color": "RED"}], "next_area": "ONE_ISLAND", "subregion": "SEVII", "level": 60}
+    },
   "JOURNAL_MISSIONS": [
     {
       "id": "sevii_m1",
@@ -2954,18 +2710,7 @@
     222,
     223
   ],
-  "SEVII_TREASURE_BEACH_PERCENTAGES": {
-    "72": 18,
-    "73": 6,
-    "116": 12,
-    "98": 14,
-    "90": 12,
-    "120": 10,
-    "118": 10,
-    "129": 8,
-    "222": 5,
-    "223": 5
-  },
+  "SEVII_TREASURE_BEACH_PERCENTAGES": {"21": 28, "114": 28, "22": 19, "52": 10, "53": 5, "54": 5, "79": 5},
   "SEVII_KINDLE_ROAD": [
     77,
     21,
@@ -3030,20 +2775,7 @@
     162,
     16
   ],
-  "SEVII_CAPE_BRINK_PERCENTAGES": {
-    "43": 14,
-    "44": 6,
-    "69": 14,
-    "70": 6,
-    "54": 12,
-    "55": 6,
-    "187": 10,
-    "188": 4,
-    "191": 10,
-    "161": 10,
-    "162": 4,
-    "16": 4
-  },
+  "SEVII_CAPE_BRINK_PERCENTAGES": {"43": 19, "21": 13, "44": 10, "22": 6, "52": 6, "53": 3, "54": 3, "55": 3, "69": 19, "70": 10, "79": 3, "80": 3},
   "SEVII_BOND_BRIDGE": [
     16,
     17,
@@ -3057,19 +2789,7 @@
     167,
     84
   ],
-  "SEVII_BOND_BRIDGE_PERCENTAGES": {
-    "16": 12,
-    "17": 8,
-    "29": 10,
-    "32": 10,
-    "206": 10,
-    "52": 8,
-    "48": 10,
-    "72": 10,
-    "165": 8,
-    "167": 8,
-    "84": 6
-  },
+  "SEVII_BOND_BRIDGE_PERCENTAGES": {"16": 22, "43": 15, "17": 11, "44": 7, "52": 7, "48": 4, "53": 4, "54": 4, "69": 15, "70": 7, "79": 4},
   "SEVII_BERRY_FOREST": [
     96,
     97,
@@ -3245,19 +2965,7 @@
     74,
     207
   ],
-  "SEVII_RUIN_VALLEY_PERCENTAGES": {
-    "177": 12,
-    "178": 8,
-    "194": 10,
-    "195": 6,
-    "193": 10,
-    "202": 6,
-    "203": 8,
-    "231": 10,
-    "232": 4,
-    "74": 14,
-    "207": 12
-  },
+  "SEVII_RUIN_VALLEY_PERCENTAGES": {"177": 22, "21": 17, "22": 9, "52": 9, "193": 9, "194": 9, "53": 4, "54": 4, "202": 4, "183": 9, "79": 4},
   "SEVII_SEVAULT_CANYON": [
     246,
     231,
@@ -3289,5 +2997,21 @@
   ],
   "SEVII_TANOBY_RUINS_PERCENTAGES": {
     "201": 100
-  }
+  },
+  "THREE_ISLE_PORT_PERCENTAGES": {"206": 100},
+  "RESORT_GORGEOUS_OLD_ROD_PERCENTAGES": {"129": 100},
+  "RESORT_GORGEOUS_GOOD_ROD_PERCENTAGES": {"116": 44, "129": 11, "98": 44},
+  "RESORT_GORGEOUS_SUPER_ROD_PERCENTAGES": {"116": 22, "211": 22, "130": 8, "117": 2, "54": 1, "98": 22, "223": 22, "99": 2, "79": 1},
+  "MEMORIAL_PILLAR_OLD_ROD_PERCENTAGES": {"129": 100},
+  "MEMORIAL_PILLAR_GOOD_ROD_PERCENTAGES": {"116": 44, "129": 11, "98": 44},
+  "MEMORIAL_PILLAR_SUPER_ROD_PERCENTAGES": {"116": 22, "211": 22, "130": 8, "117": 2, "54": 1, "98": 22, "223": 22, "99": 2, "79": 1},
+  "WATER_PATH_OLD_ROD_PERCENTAGES": {"129": 100},
+  "WATER_PATH_GOOD_ROD_PERCENTAGES": {"116": 44, "129": 11, "98": 44},
+  "WATER_PATH_SUPER_ROD_PERCENTAGES": {"116": 22, "211": 22, "130": 8, "117": 2, "54": 1, "98": 22, "223": 22, "99": 2, "79": 1},
+  "OUTCAST_ISLAND_OLD_ROD_PERCENTAGES": {"129": 100},
+  "OUTCAST_ISLAND_GOOD_ROD_PERCENTAGES": {"116": 44, "129": 11, "98": 44},
+  "OUTCAST_ISLAND_SUPER_ROD_PERCENTAGES": {"116": 22, "211": 22, "130": 8, "117": 2, "54": 1, "98": 22, "223": 22, "99": 2, "79": 1},
+  "GREEN_PATH_OLD_ROD_PERCENTAGES": {"129": 100},
+  "GREEN_PATH_GOOD_ROD_PERCENTAGES": {"116": 44, "129": 11, "98": 44},
+  "GREEN_PATH_SUPER_ROD_PERCENTAGES": {"116": 22, "211": 22, "130": 8, "117": 2, "54": 1, "98": 22, "223": 22, "99": 2, "79": 1}
 }

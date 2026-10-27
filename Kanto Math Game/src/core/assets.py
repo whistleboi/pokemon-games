@@ -151,6 +151,8 @@ class AssetManager:
             "dialog": self._load_font(32, bold=True),
         }
 
+        from src.ui import theme
+        theme.FONTS = self.fonts  # (old Buttons pick a readable size from these)
         self.ball_imgs = self._load_balls()
         self.ui_ball = pygame.transform.scale(
             self.ball_imgs[0], (int(width * 0.04), int(width * 0.04))

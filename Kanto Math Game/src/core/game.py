@@ -50,6 +50,8 @@ class Game:
             Utils.find_json_file(self.assets.assets_dir, "math_levels.json")
         )
         self.story_manager = StoryManager()
+        from src.ui import theme as _theme
+        _theme.GAME = self  # (the text box names the region's PC)
         self.story_manager.game = self
         self.debug_mode = False
         self.player_name = "TRAINER"

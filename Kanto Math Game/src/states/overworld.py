@@ -466,8 +466,7 @@ class PlayState(GameState):
                    bg_color=PURPLE),
         ]
 
-        if (self.game.story_manager.inventory.get("AIR_BALLOON", 0) > 0
-                or self.game.story_manager.inventory.get("HM_FLY", 0) > 0):
+        if self.game.story_manager.can_fly():
             self.hud_buttons.append(Button((btn_x, btn_y + (btn_h+spacing)*6, btn_w, btn_h), "FLY",
                                            game.assets.fonts["tiny"],
                                            self._open_fly,
@@ -727,6 +726,9 @@ class PlayState(GameState):
         if not self.game.story_manager.story_flags.get(visited_flag, False):
             self.game.story_manager.story_flags[visited_flag] = True
 
+        if self._starter_return():
+            return
+
         if self.is_resuming:
             self.is_resuming = False
             if self.is_progression_paused:
@@ -751,7 +753,7 @@ class PlayState(GameState):
             self.trigger_egg_hatch()
             return
 
-        gauntlet_areas = ["INDIGO_PLATEAU", "KANTO_ROUTE_25"]
+        gauntlet_areas = ["INDIGO_PLATEAU", "KANTO_ROUTE_24"]  # (Nugget Bridge is Route 24, FRLG)
         current_area = self.game.story_manager.current_area_key
         is_gauntlet_area = current_area in gauntlet_areas
         if is_gauntlet_area and self.rounds_completed == 0 and self.fresh_entry:
@@ -779,6 +781,31 @@ class PlayState(GameState):
             self.start_initial_round()
         else:
             self.show_progression_menu()
+
+    def _why_disabled(self, condition):
+        """A greyed route button says why it can't be used yet."""
+        story = self.game.story_manager
+        if condition == "has_balls":
+            if not story.catch_unlocked():
+                prof = story.get_region_start(story.get_current_region()).get("professor", "the professor")
+                line = f"You can't catch Pokémon yet! Get a Pokédex and Poké Balls from {prof} first."
+            else:
+                line = "You're out of Poké Balls! Buy more at a Poké Mart."
+        else:
+            line = "There are no trainers left to battle here."
+        self.show_dialogue([line], callback=self.show_progression_menu)
+
+    def _starter_return(self):
+        """After the starter battle (Hoenn's Poochyena), straight back to the professor's town,
+        where his thanks play on arrival (starter_event "return_to", until "return_until")."""
+        ev = self.area_data.get("starter_event") or {}
+        story = self.game.story_manager
+        boss_flag = (ev.get("boss") or {}).get("victory_flag")
+        if (ev.get("return_to") and boss_flag and story.story_flags.get(boss_flag)
+                and not story.story_flags.get(ev.get("return_until"))):
+            self.game.change_state(AreaTransitionState(self.game, ev["return_to"]))
+            return True
+        return False
 
     def route_starter_event(self):
         """A starter chosen on a route (REGION_START "starter_area"; Hoenn's Route 101): the
@@ -1339,7 +1366,7 @@ class PlayState(GameState):
 
             callback = self._get_route_callback(item)
             if item.get("disabled"):
-                callback = None
+                callback = (lambda c=item.get("condition"): self._why_disabled(c))
 
             label = ("> " if toward else "") + theme.pokemon_word(_fill_names(self.game, item["text"]))  # "BATTLE {rival_name}"
             font = next((self.game.assets.fonts[f] for f in ("button", "label")
@@ -1471,9 +1498,11 @@ class PlayState(GameState):
         if condition == "boss_not_defeated":
             return not self._check_route_condition("boss_defeated", trainers_left, item)
         if condition == "boss_available_with_flute":
-            return self.game.story_manager.inventory.get("POKE_FLUTE", 0) > 0 and not self.game.story_manager.story_flags.get("KANTO_ROUTE_11_boss_defeated", False)
+            # (FRLG: a Snorlax on Route 12 and another on Route 16; this area's own)
+            return (self.game.story_manager.inventory.get("POKE_FLUTE", 0) > 0
+                    and not self._check_route_condition("boss_defeated", trainers_left, item))
         if condition == "snorlax_defeated":
-            return self.game.story_manager.story_flags.get("KANTO_ROUTE_11_boss_defeated", False) or self.game.story_manager.story_flags.get("caught_snorlax", False)
+            return self.game.story_manager.snorlax_awake()
         if condition == "can_access_route_11":
             has_flute = self.game.story_manager.inventory.get("POKE_FLUTE", 0) > 0
             is_defeated = self.game.story_manager.story_flags.get("KANTO_ROUTE_11_boss_defeated", False)
@@ -1921,13 +1950,16 @@ class PlayState(GameState):
         self.show_dialogue(["Diving deep into the blue..."], callback=lambda: self.game.change_state(battle_state))
 
     def _fishing_pool(self, rod):
-        """The region's own rod pool (e.g. UNOVA_SUPER_ROD_POOL_PERCENTAGES), else its weaker rods'
-        pools, else the Kanto pools that every region used to share."""
+        """This area's own rod pool where the games have one (e.g. KANTO_ROUTE_21_SUPER_ROD_PERCENTAGES,
+        from Serebii PokeEarth), else the region's (UNOVA_SUPER_ROD_POOL_PERCENTAGES), else its weaker
+        rods' pools, else the Kanto pools that every region used to share."""
         data = self.game.loader.area_data
         region = self.game.story_manager.get_current_region()
+        area = self.game.story_manager.current_area_key
         rods = ["SUPER_ROD", "GOOD_ROD", "OLD_ROD"]
         tried = rods[rods.index(rod):]
-        for key in [f"{region}_{r}_POOL_PERCENTAGES" for r in tried] + [f"{rod}_POOL_PERCENTAGES"]:
+        for key in ([f"{area}_{r}_PERCENTAGES" for r in tried] + [f"{region}_{r}_POOL_PERCENTAGES" for r in tried]
+                    + [f"{rod}_POOL_PERCENTAGES"]):
             if data.get(key):
                 return data[key]
         return {}
@@ -3027,8 +3059,7 @@ class CityState(GameState):
                    bg_color=PURPLE),
         ]
 
-        if (self.game.story_manager.inventory.get("AIR_BALLOON", 0) > 0
-                or self.game.story_manager.inventory.get("HM_FLY", 0) > 0):
+        if self.game.story_manager.can_fly():
             self.hud_buttons.append(Button((btn_x, btn_y + (btn_h+spacing)*6, btn_w, btn_h), "FLY",
                                            game.assets.fonts["tiny"],
                                            self._open_fly,
@@ -3337,7 +3368,7 @@ class CityState(GameState):
             lo, hi = (int(x) for x in condition.split(":", 1)[1].split("-"))
             return story.caught_in_range(lo, hi) >= hi - lo + 1  # e.g. all of #1-251
         if condition == "snorlax_defeated":  # canon: Snorlax (Poke Flute) blocks Cycling Road
-            return bool(story.story_flags.get("KANTO_ROUTE_11_boss_defeated") or story.story_flags.get("caught_snorlax"))
+            return story.snorlax_awake()
 
         if condition == "has_8_kanto_badges":
             kanto_badges = {"BOULDER", "CASCADE", "THUNDER", "RAINBOW", "SOUL", "MARSH", "VOLCANO", "EARTH"}
@@ -3373,6 +3404,8 @@ class CityState(GameState):
         return True
 
     def _get_callback_for_option(self, opt_data):
+        if opt_data.get("npc"):  # a way out that someone stops you at (Oak at Route 1, FRLG)
+            return self._get_callback_for_option({"action": "NPC", "target": opt_data["npc"]})
         action = opt_data.get("action")
         if action == "HEAL":
             return lambda: self.game.change_state(PokeCenterState
@@ -3891,6 +3924,7 @@ class CityState(GameState):
             # Mirror of Elm's gift to Kanto Champions: Johto Champions get a Kanto partner from Oak.
             story.story_flags["oak_johto_champion_gift"] = True
             story.story_flags["unlocked_national_dex"] = True
+            story.story_flags["received_pokedex_kanto"] = True  # the National Dex covers Kanto
             story.enter_region("KANTO")
             msg = [
                 "Professor Oak: So you're the new Johto Champion! Elm told me all about you.",
@@ -3910,6 +3944,37 @@ class CityState(GameState):
                     self.start_npc_exit(lambda: self.game.change_state(
                         StarterSelectionState(self.game, starter_ids=[1, 4, 7], region="KANTO")))
                 callback = kanto_starter_exit
+        elif (story.get_current_region() == "KANTO" and not story.story_flags.get("received_starter_kanto")
+              and (region == "KANTO" or story.story_flags.get("moved_to_kanto"))):
+            # FireRed/LeafGreen: Oak stops you at the edge of town and takes you to his lab.
+            msg = ["Professor Oak: Hey! Wait! Don't go out there!",
+                   "Wild Pokémon live in the tall grass. You need a Pokémon of your own to stay safe.",
+                   "Come with me to my lab!",
+                   f"Professor Oak: {self.game.rival_name} is already here. There are three Pokémon on the table...",
+                   "Go on, choose one!"]
+            story.story_flags["kanto_parcel_era"] = True  # (see StoryManager._migrate_kanto_start)
+            from src.states.menus import StarterSelectionState
+
+            def oak_lab_starters():
+                self.start_npc_exit(lambda: self.game.change_state(
+                    StarterSelectionState(self.game, starter_ids=[1, 4, 7], region="KANTO")))
+            callback = oak_lab_starters
+        elif (story.get_current_region() == "KANTO" and story.story_flags.get("defeated_rival_kanto")
+              and not story.story_flags.get("received_pokedex_kanto")):
+            if story.inventory.get("OAKS_PARCEL", 0) > 0:  # Oak's Parcel: the Pokedex and Poke Balls
+                story.inventory.pop("OAKS_PARCEL", None)
+                story.balls_left = getattr(story, "balls_left", 0) + 5
+                story.story_flags["received_pokedex_kanto"] = True
+                msg = ["Professor Oak: Oh, my order from the Viridian Mart! Thank you!",
+                       "Now, I have a favour to ask. This is a Pokédex, a high-tech encyclopedia.",
+                       "It records every Pokémon you see and catch. A complete guide to every Pokémon is my dream!",
+                       f"{self.game.player_name} received a POKéDEX!",
+                       "And take these. You'll need them to catch Pokémon. You received 5 Poké Balls!",
+                       "Head north past Viridian City. Your adventure starts now!"]
+            else:
+                msg = ["Professor Oak: Your Pokémon looks happy with you!",
+                       "If you're passing through Viridian City, the Poké Mart there has a parcel for me."]
+            callback = self.end_npc_interaction
         elif story.story_flags.get("beat_champion"):
             if region == "JOHTO" and not story.story_flags.get("unlocked_national_dex"):
                 msg = [
@@ -4046,16 +4111,21 @@ class CityState(GameState):
                 team_ids = [19, 20, 41] # Standard Rocket team: Rattata, Raticate, Zubat
                 opponent_team = [Pokemon(self.game.loader.fetch_specific(tid), self.game.assets, size_mult=3.125) for tid in team_ids]
                 
-                # Create a specialized battle that moves the player into the tower on victory
+                # The tower's own levels (Grok's Johto walk: they kept their base levels, L5 / L20 / L5).
+                levels.set_team(opponent_team, levels.trainer_team_levels(self.game, "RADIO_TOWER", len(opponent_team), True))
+
+                # Winning takes you into the tower; losing is an ordinary loss (you stay outside).
                 class RadioTowerGateBattle(TrainerBattleState):
                     def exit_battle(self):
+                        if not self.player_won:
+                            return super().exit_battle()
                         from src.states.overworld import AreaTransitionState
                         self.game.change_state(AreaTransitionState(self.game, "RADIO_TOWER"))
 
                 battle_state = RadioTowerGateBattle(
                     self.game, opponent_team, trainer_sprite=self.npc_sprite,
                     trainer_class="ROCKET", trainer_name="GRUNT", 
-                    battle_type="indoor", area_name=self.area_key
+                    battle_type="indoor", area_name=self.area_key, is_boss_battle=True
                 )
                 self.game.change_state(TrainerIntroState(self.game, self.npc_sprite, msg, battle_state))
             
@@ -4155,9 +4225,6 @@ class CityState(GameState):
             msg = self.game.assets.get_text("jasmine_lighthouse_medicine")
         else:
             msg = self.game.assets.get_text("jasmine_lighthouse_intro")
-            if not flags.get("received_surf_jasmine"):
-                inv["SURF_BOARD"] = 1
-                flags["received_surf_jasmine"] = True
 
         self.npc_dialogue = ClassicDialogueBox(Utils.get_full_dialogue_rect(self.game), msg, self.game.assets.fonts["med"], callback=self.end_npc_interaction)
 
@@ -4483,45 +4550,21 @@ class CityState(GameState):
         flags = self.game.story_manager.story_flags
         inv = self.game.story_manager.inventory
 
-        has_beat_brock = self.game.story_manager.has_badge("BOULDER")
-        has_earth_badge = self.game.story_manager.has_badge("EARTH")
-        got_museum_fossil = flags.get("received_museum_fossil", False)
-        got_second_fossil = flags.get("received_museum_fossil_2", False)
-
-        if has_beat_brock:
-            if not got_museum_fossil:
-                fossil = random.choice(["HELIX_FOSSIL", "DOME_FOSSIL"])
-                flags["museum_fossil_choice"] = fossil
-                msgs.append("You defeated Brock? That's impressive!")
-                msgs.append(f"We found this {fossil.replace('_', ' ').title()} in the mountain.")
-                msgs.append("You should have it!")
-                msgs.append(f"You received the {fossil.replace('_', ' ').title()}!")
-                inv[fossil] = inv.get(fossil, 0) + 1
-                flags["received_museum_fossil"] = True
-                msgs.append("Come back once you've earned the Earth Badge. We may find another!")
-            elif has_earth_badge and not got_second_fossil:
-                first_fossil = flags.get("museum_fossil_choice", "HELIX_FOSSIL")
-                second_fossil = "DOME_FOSSIL" if first_fossil == "HELIX_FOSSIL" else "HELIX_FOSSIL"
-                msgs.append("The Earth Badge! You've become a true hero.")
-                msgs.append(f"Our team found the other fossil: the {second_fossil.replace('_', ' ').title()}!")
-                msgs.append("A Master like you should preserve it.")
-                msgs.append(f"You received the {second_fossil.replace('_', ' ').title()}!")
-                inv[second_fossil] = inv.get(second_fossil, 0) + 1
-                flags["received_museum_fossil_2"] = True
-            elif not got_second_fossil:
-                msgs.append("Welcome to the Pewter Museum of Science!")
-                msgs.append("Come back once you've earned the Earth Badge. We may find another fossil!")
-            else:
-                msgs.append("Welcome to the Pewter Museum of Science!")
-                msgs.append("Both fossils are in good hands. Thank you, Champion!")
-            if not flags.get("received_old_amber"):
-                # Canon (FRLG): a scientist at the museum's back door hands over the Old Amber.
-                msgs.append("Scientist: Psst! Out back, we have a piece of amber with something inside.")
-                msgs.append("Take it to the Pokemon Lab on Cinnabar Island. You received the Old Amber!")
+        if not self.game.story_manager.has_badge("BOULDER"):
+            msgs.append("Welcome! Please return after you have defeated Brock.")
+        else:
+            msgs.append("Welcome to the Pewter Museum of Science!")
+            msgs.append("Fossils of ancient Pokémon are often found in Mt. Moon, east of here.")
+            has_amber = flags.get("received_old_amber")
+            if not has_amber and self.game.story_manager.has_badge("CASCADE"):
+                # FRLG: a scientist behind the museum (past a Cut tree) hands over the Old Amber.
+                msgs.append("You Cut through the tree behind the museum and find a scientist at the back door.")
+                msgs.append("Scientist: This amber has something inside! Take it to the Pokémon Lab on Cinnabar Island.")
+                msgs.append("You received the Old Amber!")
                 inv["OLD_AMBER"] = inv.get("OLD_AMBER", 0) + 1
                 flags["received_old_amber"] = True
-        else:
-            msgs.append("Welcome! Please return after you have defeated Brock.")
+            elif not has_amber:
+                msgs.append("A small tree blocks the path behind the museum. Someone with Cut could get past it.")
 
         self.npc_dialogue = ClassicDialogueBox(
             Utils.get_full_dialogue_rect(self.game),
@@ -4552,6 +4595,28 @@ class CityState(GameState):
         options.sort(key=lambda o: o[1] in owned)
         return options[0] if options else (None, None)
 
+    def _miguels_fossil(self):
+        """Cinnabar's lab: the fossil Super Nerd Miguel kept in Mt. Moon, sent on for you, so every
+        Kanto fossil can be had (Jordan). Older saves had a museum fossil instead."""
+        flags = self.game.story_manager.story_flags
+        if self.area_key != "CINNABAR_ISLAND" or flags.get("received_museum_fossil_2"):
+            return []
+        if flags.get("took_dome_fossil"):
+            other = "HELIX_FOSSIL"
+        elif flags.get("took_helix_fossil"):
+            other = "DOME_FOSSIL"
+        elif flags.get("received_museum_fossil"):
+            first = flags.get("museum_fossil_choice", "HELIX_FOSSIL")
+            other = "DOME_FOSSIL" if first == "HELIX_FOSSIL" else "HELIX_FOSSIL"
+        else:
+            return []
+        inv = self.game.story_manager.inventory
+        inv[other] = inv.get(other, 0) + 1
+        flags["received_museum_fossil_2"] = True
+        name = other.replace("_", " ").title()
+        return [f"A Super Nerd from Mt. Moon sent us his {name}. He says you should have it!",
+                f"You received the {name}!"]
+
     def visit_stoneman(self):
         self.clear_hover_menu()
         self.npc_active = True
@@ -4559,9 +4624,9 @@ class CityState(GameState):
         self.action_menu.set_visibility(False)
         self.npc_sprite = self.game.assets.get_trainer_image("ruinmaniac.png")
 
-        items, target_id = self._next_fossil_revival()
-
         msgs = ["Welcome to the fossil lab!", "We can bring ancient Pokémon back to life."]
+        msgs += self._miguels_fossil()
+        items, target_id = self._next_fossil_revival()
 
         if items:
             label = " and ".join(i.replace('_', ' ').title() for i in items)
@@ -4601,10 +4666,11 @@ class CityState(GameState):
         flags = story.story_flags
         owned_ids = {p.id for p in story.player_team if p} | {p.id for p in story.pc_pokemon if p}  # PC has empty (None) slots
 
-        r25_data = self.game.loader.area_data.get("STORY_PROGRESSION", {}).get("KANTO_ROUTE_25", {})
-        r25_pool = r25_data.get("trainer_pool", [])
-        r25_defeated = story.defeated_trainers.get("KANTO_ROUTE_25", set())
-        bridge_clear = len(r25_pool) > 0 and len(r25_defeated) >= len(r25_pool)
+        # Nugget Bridge is Route 24 (FRLG); older saves that cleared the old bridge on Route 25 count too.
+        def cleared(area):
+            pool = self.game.loader.area_data.get("STORY_PROGRESSION", {}).get(area, {}).get("trainer_pool", [])
+            return len(pool) > 0 and len(story.defeated_trainers.get(area, set())) >= len(pool)
+        bridge_clear = cleared("KANTO_ROUTE_24") or flags.get("nugget_bridge_cleared_old")
 
         msgs = ["Hi! I'm Bill!", "I'm the developer of the PC Storage System."]
 
@@ -5210,6 +5276,8 @@ def _collapse_hud(state):
     """The side menus (PC, Bag, Badges, Save...) live behind one big MENU button that opens a
     grid of large tiles, instead of a column of small buttons."""
     state.menu_entries = state.hud_buttons
+    for btn in state.menu_entries:  # off screen now: the keyboard highlight must skip them
+        btn.nav_hidden = True
 
     def open_menu():
         if hasattr(state, "is_resuming"):
@@ -5469,6 +5537,37 @@ class GymLobbyState(GameState):
             callback=self.exit_gym,
             bg_color=BLUE
         )
+        # MENU, as in towns (Jordan): heal with the Bag and check the party between battles. No PC,
+        # saving or Fly inside a Gym or the League, as in the games.
+        tiny = game.assets.fonts["tiny"]
+        self.hud_buttons = [
+            Button((0, 0, 1, 1), "BAG", tiny, self._open_bag, bg_color=BLUE),
+            Button((0, 0, 1, 1), "POKEMON", tiny, self._open_party, bg_color=GREEN),
+            Button((0, 0, 1, 1), "BADGES", tiny, self._open_badges, bg_color=GOLD),
+            Button((0, 0, 1, 1), "JOURNAL", tiny, self._open_journal, bg_color=PURPLE),
+            Button((0, 0, 1, 1), "OPTIONS", tiny, self._open_options, bg_color=GRAY),
+        ]
+        _collapse_hud(self)
+
+    def _open_bag(self):
+        from src.states.systems import BagState
+        self.game.change_state(BagState(self.game, self))
+
+    def _open_party(self):
+        from src.states.systems import PokemonPartyMenuState
+        self.game.change_state(PokemonPartyMenuState(self.game, self, context="normal"))
+
+    def _open_badges(self):
+        from src.states.systems import BadgeCaseState
+        self.game.change_state(BadgeCaseState(self.game, self))
+
+    def _open_journal(self):
+        from src.states.systems import JournalState
+        self.game.change_state(JournalState(self.game, self))
+
+    def _open_options(self):
+        from src.states.menus import open_difficulty_options
+        open_difficulty_options(self.game, self)
 
     def start(self):
         self.game.transitioning = False
@@ -5476,6 +5575,8 @@ class GymLobbyState(GameState):
         self.game.ui_manager.elements.clear()
         self.game.ui_manager.add_element(self.btn_challenge)
         self.game.ui_manager.add_element(self.btn_exit)
+        for btn in self.hud_buttons:
+            self.game.ui_manager.add_element(btn)
 
     # Kanto Champion (FireRed/LeafGreen): the rival's team by the starter they took.
     FRLG_RIVAL_LINE = {1: 1, 2: 1, 3: 1, 152: 1, 4: 4, 5: 4, 6: 4, 155: 4, 7: 7, 8: 7, 9: 7, 158: 7}
@@ -5650,9 +5751,12 @@ class GymLobbyState(GameState):
         screen.fill(BLACK)
         if self.bg:
             screen.blit(self.bg, (0, 0))
-        Utils.draw_classic_panel(screen, self.bottom_rect.x, self.bottom_rect.y, self.bottom_rect.width, self.bottom_rect.height)
-        left_rect_w = int(self.bottom_rect.width * 0.55)
-        Utils.draw_multiline_text(screen, self.status_text, self.game.assets.fonts["s_med"], WHITE,
-                                self.bottom_rect.x + left_rect_w // 2, self.bottom_rect.centery,
-                                max_width=left_rect_w - 40, outline_color=BLACK)
+        theme.draw_textbox(screen, self.bottom_rect)
+        from src.ui.dialogue import wrap_text
+        f = self.game.assets.fonts["dialog"]
+        rows = wrap_text(self.status_text, f, int(self.bottom_rect.width * 0.55) - 40)
+        lh = int(f.get_linesize() * 1.2)
+        top = self.bottom_rect.centery - lh * len(rows) // 2
+        for k, row in enumerate(rows):
+            theme.shadow_text(screen, row, f, self.bottom_rect.x + 40, top + k * lh)
         self.game.ui_manager.draw(screen)

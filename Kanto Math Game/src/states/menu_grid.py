@@ -60,6 +60,14 @@ def _glyph(label, size, game):
         pygame.draw.circle(s, WHITE, (c, c), c - 4 - w)
         pygame.draw.polygon(s, (220, 60, 70), [(c, 10), (c - 7, c), (c + 7, c)])
         pygame.draw.polygon(s, (120, 120, 140), [(c, size - 10), (c - 7, c), (c + 7, c)])
+    elif label == "POKEMON":  # a Poke Ball
+        pygame.draw.circle(s, INK, (c, c), c - 4)
+        pygame.draw.circle(s, (220, 60, 60), (c, c), c - 4 - w)
+        pygame.draw.rect(s, WHITE, (c - (c - 4 - w), c, 2 * (c - 4 - w), c - 4 - w))
+        pygame.draw.circle(s, INK, (c, c), c - 4, w)
+        pygame.draw.line(s, INK, (4, c), (size - 4, c), w)
+        pygame.draw.circle(s, WHITE, (c, c), size // 7)
+        pygame.draw.circle(s, INK, (c, c), size // 7, w)
     elif label == "OPTIONS":
         for k in range(8):
             a = k * math.pi / 4
@@ -136,14 +144,15 @@ class MenuGridState(GameState):
 
     def draw(self):
         screen, fonts = self.game.screen, self.game.assets.fonts
+        from src.ui import theme
         screen.blit(self.backdrop, (0, 0))
-        pygame.draw.rect(screen, (28, 36, 72), self.panel, border_radius=22)
-        pygame.draw.rect(screen, WHITE, self.panel, 5, border_radius=22)
-        Utils.draw_text_outline(screen, "MENU", fonts["med"], GOLD, self.panel.x + 40, self.panel.y + 28, align="left")
+        theme.draw_panel(screen, self.panel, radius=18)  # the menu redesign's panel
+        Utils.draw_text_outline(screen, "MENU", fonts["button"], WHITE, self.panel.x + 40, self.panel.y + 50,
+                                align="left", outline_color=theme.PANEL_BORDER, thickness=3)
         self.btn_close.draw(screen)
         for b in self.tiles:
             b.draw(screen)
             icon = b.icon_surf
             screen.blit(icon, icon.get_rect(center=(b.rect.centerx, b.rect.y + 12 + icon.get_height() // 2)))
-            Utils.draw_text_outline(screen, b.label, fonts["small"], WHITE, b.rect.centerx, b.rect.bottom - 22,
-                                    outline_color=BLACK)
+            Utils.draw_text_outline(screen, b.label, fonts["label"], WHITE, b.rect.centerx, b.rect.bottom - 22,
+                                    outline_color=theme.shade(theme.theme_color(b.bg_color), 0.55), thickness=3)

@@ -111,4 +111,24 @@ b2 = _B(); b2.trainer_class, b2.trainer_name = "ROCKET", "Jessie and James"
 b3 = _B(); b3.trainer_class, b3.trainer_name = "GYM_LEADER", "Brock"
 check((mm.encounter_kind(b1), mm.encounter_kind(b2), mm.encounter_kind(b3)) == ("enc_female", "enc_jessie", None),
       "encounter themes by trainer")
+
+print("10-26 batch: Fly, gym MENU, keyboard, PC names, Hoenn opening, ribbons")
+from src.states import overworld as ow
+gl = ow.GymLobbyState(g, city); g.change_state(gl)
+check([b.text for b in gl.hud_buttons] == ["MENU"] and [b.text for b in gl.menu_entries][:2] == ["BAG", "POKEMON"],
+      "Gyms have the MENU (Bag, Pokemon...)")
+g.change_state(city)
+check(not any(t[2] in ("PC", "SAVE", "LOAD") for t in g.keyboard._targets()), "arrow keys skip the old hidden buttons")
+check(story.PC_NAMES["HOENN"] == "Lanette's PC" and "Galar PC" == story.PC_NAMES.get("GALAR", "Galar PC"),
+      "each region names its PC")
+from src.ui.theme import pokemon_word
+check("PC" in pokemon_word("PIKACHU was sent to BILL'S PC!"), "the text box names the region's PC")
+from src.world import hms
+check("AIR_BALLOON" not in story.FLY_ITEMS and hms.hm_for_badge("KANTO", "RAINBOW") == "HM_FLY", "Fly is HM Fly in Kanto")
+ms = {m["id"]: m for m in __import__("json").load(open("assets/hoenn_area_data.json", encoding="utf-8"))["JOURNAL_MISSIONS"]}
+check(all(k in ms for k in ("hoenn_m1", "hoenn_m1b", "hoenn_m2", "hoenn_m2b", "hoenn_m2c", "hoenn_m3")),
+      "Hoenn's opening has a mission for each step")
+from src.states import contest as _ct
+rc = _ct.RibbonCaseState(g, city); g.change_state(rc); rc.draw()
+check(True, "the ribbon case draws")
 print(f"##### menus: {fails} fails")

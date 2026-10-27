@@ -21,7 +21,7 @@ def shot(name):
 
 
 g.data.save = lambda *a, **k: None
-story.inventory.update({"TOWN_MAP": 1, "AIR_BALLOON": 1})
+story.inventory.update({"TOWN_MAP": 1, "HM_FLY": 1})
 
 print("1) MENU grid")
 story.current_area_key = "VIRIDIAN_CITY"

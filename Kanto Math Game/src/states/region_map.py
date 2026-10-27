@@ -42,8 +42,9 @@ def view_of(game, area_key):
 
 
 class RegionMapState(GameState):
-    TOP = 92
+    TOP = 84 + 10   # under the menu frame's header (src/ui/theme.py)
     PAD = 16
+    BAR_H = 78
 
     def __init__(self, game, previous_state, fly=False):
         super().__init__(game)
@@ -69,16 +70,23 @@ class RegionMapState(GameState):
         from src.world import guide
         self.goal = guide.goal_area(game)  # the active mission's town (gold marker), or None
 
+        from src.ui.panels import CommandButton
+        from src.ui import theme
         fonts = game.assets.fonts
-        self.btn_back = Button((16, 16, 120, 56), "BACK", fonts["small"], self.go_back, bg_color=RED, autosize=False)
-        self.btn_fly = Button((game.width - 236, game.height - 86, 220, 66), "FLY", fonts["small"], self.fly_now,
-                              bg_color=GREEN, autosize=False, visible=False)
-        self.btn_list = Button((game.width - 150, 16, 134, 56), "LIST", fonts["small"], self.open_list,
-                               bg_color=BLUE, autosize=False, visible=fly)
-        self.btn_prev = Button((160, 16, 56, 56), "<", fonts["small"], lambda: self.turn(-1), autosize=False,
-                               visible=len(self.views) > 1)
-        self.btn_next = Button((game.width - 230, 16, 56, 56), ">", fonts["small"], lambda: self.turn(1),
-                               autosize=False, visible=len(self.views) > 1)
+        W, H = game.width, game.height
+        self.bar_rect = pygame.Rect(16, H - 86, W - 32, self.BAR_H)
+        self.btn_back = CommandButton((16, 14, 140, 56), "BACK", fonts["button"], self.go_back, bg_color=theme.BACK,
+                                      autosize=False)
+        self.btn_fly = CommandButton((self.bar_rect.right - 18 - 200, self.bar_rect.y + 10, 200, self.bar_rect.h - 26),
+                                     "FLY", fonts["button"], self.fly_now, bg_color=theme.POKEMON, autosize=False,
+                                     visible=False)
+        self.btn_list = CommandButton((W - 16 - 130, 14, 130, 56), "LIST", fonts["button"], self.open_list,
+                                      bg_color=theme.RUN, autosize=False, visible=fly)
+        right = W - 16 - (146 if fly else 0)
+        self.btn_next = CommandButton((right - 64, 14, 64, 56), ">", fonts["button"], lambda: self.turn(1),
+                                      bg_color=theme.TAB_OFF, autosize=False, visible=len(self.views) > 1)
+        self.btn_prev = CommandButton((right - 64 - 10 - 64, 14, 64, 56), "<", fonts["button"], lambda: self.turn(-1),
+                                      bg_color=theme.TAB_OFF, autosize=False, visible=len(self.views) > 1)
         self._layout()
 
     # ---------------------------------------------------------------- layout
@@ -93,7 +101,8 @@ class RegionMapState(GameState):
         if not box or not self.world:
             return
         x0, y0, x1, y1 = box
-        area_w, area_h = self.game.width - 2 * self.PAD, self.game.height - self.TOP - self.PAD
+        area_w = self.game.width - 2 * self.PAD
+        area_h = self.game.height - self.TOP - self.BAR_H - 2 * self.PAD
         self.scale = min(area_w / (x1 - x0), area_h / (y1 - y0))
         w, h = int((x1 - x0) * self.scale), int((y1 - y0) * self.scale)
         crop = self.world.subsurface((x0, y0, x1 - x0, y1 - y0))
@@ -172,29 +181,31 @@ class RegionMapState(GameState):
 
     # ---------------------------------------------------------------- drawing
     def _label(self, screen, text, pos, color=WHITE):
-        font = self.game.assets.fonts["small"]
+        """A town's name in a small white card above it (its frame in the given colour)."""
+        from src.ui import theme
+        font = self.game.assets.fonts["label"]
         w, h = font.size(text)
-        rect = pygame.Rect(0, 0, w + 24, h + 12)
+        rect = pygame.Rect(0, 0, w + 28, h + 14)
         rect.midbottom = (pos[0], pos[1] - 18)
         rect.clamp_ip(self.map_rect)
-        pygame.draw.rect(screen, (20, 20, 40), rect, border_radius=8)
-        pygame.draw.rect(screen, color, rect, 2, border_radius=8)
-        Utils.draw_text_outline(screen, text, font, color, rect.centerx, rect.centery)
+        theme.card(screen, rect, selected=color != WHITE, accent=color, radius=10)
+        theme.shadow_text(screen, text, font, rect.centerx, rect.centery, align="center")
 
     def draw(self):
         screen = self.game.screen
         fonts = self.game.assets.fonts
-        screen.fill((24, 60, 100))
+        from src.ui import theme
         title = "FLY" if self.fly else "TOWN MAP"
         if self.view:
-            title += f"  -  {self.view.title()}"
-        Utils.draw_text_outline(screen, title, fonts["med"], GOLD, self.game.width // 2, 44)
+            title += f"  -  {self.view.upper()}"
+        theme.menu_background(screen, theme.ACCENT["map"], title, fonts["button"], title_x=176)
+        theme.draw_textbox(screen, self.bar_rect)
         if not self.map_img:
-            Utils.draw_text_outline(screen, "No map for this place yet.", fonts["small"], WHITE,
-                                    self.game.width // 2, self.game.height // 2)
+            theme.shadow_text(screen, "No map for this place yet.", fonts["s_med"], self.game.width // 2,
+                              self.game.height // 2, color=WHITE, shadow=theme.MENU_BG, align="center")
             self.game.ui_manager.draw(screen)
             return
-        pygame.draw.rect(screen, BLACK, self.map_rect.inflate(8, 8), border_radius=6)
+        theme.draw_panel(screen, self.map_rect.inflate(16, 16), radius=10)
         screen.blit(self.map_img, self.map_rect)
 
         here = self.game.story_manager.current_area_key
@@ -224,6 +235,12 @@ class RegionMapState(GameState):
             pos = dict(self.towns()).get(self.goal)
             if pos:
                 self._label(screen, "GOAL: " + self.names.get(self.goal, self.goal).upper(), pos, GOLD)
-        hint = "Tap a town you've visited, then FLY." if self.fly else "Tap a town to see its name."
-        Utils.draw_text_outline(screen, hint, fonts["tiny"], WHITE, self.PAD + 6, self.game.height - 18, align="left")
+        if self.selected:
+            hint = self.names.get(self.selected, self.selected) + (
+                "  -  tap FLY" if self.fly and self.selected in self.visited else
+                ("  -  not visited yet" if self.fly else ""))
+        else:
+            hint = "Tap a town you've visited, then FLY." if self.fly else "Tap a town to see its name."
+        f = fonts["s_med"]
+        theme.shadow_text(screen, hint, f, self.bar_rect.x + 32, self.bar_rect.centery - f.get_height() // 2 - 2)
         self.game.ui_manager.draw(screen)

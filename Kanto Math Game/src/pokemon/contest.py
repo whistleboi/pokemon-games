@@ -25,7 +25,8 @@ TYPE_CATEGORY = {
 }
 
 CATEGORY_COLOR = {
-    "COOL": (220, 60, 50), "BEAUTY": (60, 110, 230), "CUTE": (240, 120, 180),
+    # Cool a deep orange-red and Cute a bright magenta-pink, so they read apart (Jordan).
+    "COOL": (214, 72, 24), "BEAUTY": (60, 110, 230), "CUTE": (236, 110, 214),
     "SMART": (60, 170, 80), "TOUGH": (230, 190, 40),
 }
 

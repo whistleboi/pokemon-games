@@ -2263,8 +2263,23 @@ class WildBattleState(TrainerBattleState):
 
         self.anim_ctrl.impact_shake = 0
 
-        self.ball_pos = [self.game.width * 0.27, self.game.height * 0.69]
-        self.ball_target = [self.game.width * 0.73, self.game.height * 0.39]
+        # The throw (games-style): an arc from your side up over the foe, which is drawn into the
+        # ball; the ball drops to the ground, bounces, and tilts once per shake.
+        self.ball_img = pygame.transform.smoothscale(self.ball_img, (56, 56))
+        self.foe_spot = (self.game.width * 0.73, self.game.height * 0.39)
+        img = self.opponent_pokemon.image
+        if img is not None:  # the sprite's visible part (sprites have empty margins)
+            ink = img.get_bounding_rect()
+            top = self.foe_spot[1] - img.get_height() / 2 + ink.top
+            feet = self.foe_spot[1] - img.get_height() / 2 + ink.bottom
+        else:
+            top, feet = self.foe_spot[1] - 60, self.foe_spot[1] + 60
+        self.ball_start = (self.game.width * 0.18, self.game.height * 0.82)
+        self.ball_target = [self.foe_spot[0], top - 24]
+        self.ball_ground = feet - 22
+        self.ball_pos = list(self.ball_start)
+        self.catch_t = 0
+        self.ball_angle = 0
 
     def _sure_catch(self):
         """Legendaries, mythicals and boss Pokemon are a sure catch at the catch window (Jordan)."""
@@ -2305,15 +2320,41 @@ class WildBattleState(TrainerBattleState):
             return
 
         if self.phase == "CATCH_ANIMATION":
+            from src.vfx.animations import ball_arc
+            self.catch_t = getattr(self, "catch_t", 0) + 1
             if self.catch_phase == "THROWN":
-                self.ball_pos[0] += (self.ball_target[0] - self.ball_pos[0]) * 0.15
-                self.ball_pos[1] += (self.ball_target[1] - self.ball_pos[1]) * 0.15
-
-                if abs(self.ball_pos[1] - self.ball_target[1]) < 10:
+                t = min(1.0, self.catch_t / 20)
+                start = getattr(self, "ball_start", self.ball_pos)
+                self.ball_pos = list(ball_arc(start, self.ball_target, t, 160))
+                self.ball_angle = (getattr(self, "ball_angle", 0) + 32) % 360
+                if t >= 1.0:
+                    self.catch_phase, self.catch_t, self.ball_angle = "ABSORB", 0, 0
+            elif self.catch_phase == "ABSORB":  # the foe turns white and is drawn into the ball
+                if self.catch_t >= 14:
+                    self.catch_phase, self.catch_t = "DROP", 0
+            elif self.catch_phase == "DROP":  # down to the ground, one small bounce
+                t = min(1.0, self.catch_t / 16)
+                ground = getattr(self, "ball_ground", self.ball_target[1])
+                top = self.ball_target[1]
+                if t < 0.7:
+                    k = t / 0.7
+                    y = top + (ground - top) * k * k
+                else:
+                    k = (t - 0.7) / 0.3
+                    y = ground - 26 * 4 * k * (1 - k)
+                self.ball_pos = [self.ball_target[0], y]
+                if t >= 1.0:
                     self.catch_phase = "SHAKE"
                     # one wobble per shake check passed (a critical capture wobbles once)
-                    self.shake_timer = 20 + 20 * getattr(self, "_catch_result", (True, 3, False))[1]
+                    self.shake_timer = 20 + 30 * getattr(self, "_catch_result", (True, 3, False))[1]
             elif self.catch_phase == "SHAKE":
+                left = self.shake_timer - 20  # the last 20 frames: a still pause before the result
+                self.ball_angle = 0
+                if left > 0:
+                    k = (left % 30) / 30
+                    if k > 0.4:  # a tilt one way and back, then still
+                        import math as _m
+                        self.ball_angle = 22 * _m.sin((k - 0.4) / 0.6 * 2 * _m.pi) * (1 if (left // 30) % 2 else -1)
                 self.shake_timer -= 1
                 if self.shake_timer <= 0:
                     success, shakes, critical = getattr(self, "_catch_result", (True, 3, False))
@@ -2335,6 +2376,7 @@ class WildBattleState(TrainerBattleState):
 
                         self.player_won = True
                         self.catch_phase = "CAUGHT"
+                        self.catch_t = 0
                         caught_lines = self.game.assets.get_text("caught_pokemon", name=self.opponent_pokemon.name)
                         caught_lines = caught_lines if isinstance(caught_lines, list) else [caught_lines]
                         if critical:
@@ -2412,8 +2454,11 @@ class WildBattleState(TrainerBattleState):
     def draw(self):
         screen = self.game.screen
 
-        hide_opponent = (self.phase == "CATCH_ANIMATION" and self.catch_phase in ["SHAKE", "CAUGHT"]) or \
+        catching_now = self.phase == "CATCH_ANIMATION"
+        hide_opponent = (catching_now and self.catch_phase in ["ABSORB", "DROP", "SHAKE", "CAUGHT"]) or \
                         (self.phase == "OUTRO" and self.catch_phase == "CAUGHT")
+        # A knocked-out wild Pokemon stays in view while you decide to catch it (Jordan).
+        show_ko = self.phase in ("CATCH_PROMPT", "CATCH_ANIMATION", "MESSAGE") and not hide_opponent
 
         self.renderer.draw(
             screen,
@@ -2430,35 +2475,61 @@ class WildBattleState(TrainerBattleState):
             self.background,
             anim_ctrl=self.anim_ctrl,
             fainting_side="opponent" if hide_opponent else ("player" if self.phase == "PLAYER_SUMMON" else (self.fainting_side if self.phase == "FAINT_ANIM_RUNNING" else None)),
-            hide_opponent=hide_opponent
+            hide_opponent=hide_opponent,
+            show_fainted=show_ko,
         )
         self._draw_weather(screen)
 
         if (self.phase == "FAINT_ANIM_RUNNING" or self.phase == "RETRACT_ANIM") and self.faint_anim.active:
             self.faint_anim.draw(screen)
+        if self.phase == "PLAYER_SUMMON" and getattr(self, "player_summon_anim", None):
+            self.player_summon_anim.draw(screen)  # (a Pokemon sent in after a switch)
 
         self.game.ui_manager.draw(screen)
 
-        if self.phase == "CATCH_PROMPT":
-            bar_w = 200
-            bar_h = 10
-            ratio = self.catch_timer / (15 * FPS)
-            pygame.draw.rect(screen, BLACK, (self.game.width//2 - bar_w//2, self.game.height - 120, bar_w, bar_h))
-            pygame.draw.rect(screen, GOLD, (self.game.width//2 - bar_w//2, self.game.height - 120, int(bar_w * ratio), bar_h))
+        if self.phase == "CATCH_PROMPT":  # the time left to decide, under YES / NO
+            from src.ui import theme
+            ratio = max(0.0, self.catch_timer / (15 * FPS))
+            bar = pygame.Rect(self.btn_yes.rect.x, self.btn_no.rect.bottom + 10, self.btn_yes.rect.w, 8)
+            pygame.draw.rect(screen, (210, 214, 224), bar, border_radius=4)
+            pygame.draw.rect(screen, theme.BAG, (bar.x, bar.y, int(bar.w * ratio), bar.h), border_radius=4)
 
-        if self.phase == "CATCH_ANIMATION":
-            if self.catch_phase == "THROWN":
-                self.game.screen.blit(
-                    self.ball_img, (self.ball_pos[0] - 42, self.ball_pos[1] - 42)
-                )
-            elif self.catch_phase == "SHAKE":
-                shake_offset = 0
-                if self.shake_timer > 0 and self.shake_timer % 20 > 10:
-                    shake_offset = random.randint(-5, 5)
-                self.game.screen.blit(
-                    self.ball_img,
-                    (self.ball_target[0] - 42 + shake_offset, self.ball_target[1] - 42),
-                )
+        if catching_now or (self.phase == "OUTRO" and self.catch_phase == "CAUGHT"):
+            self._draw_catch(screen)
+
+    def _draw_catch(self, screen):
+        """The ball (and the foe being drawn in, then the stars of a catch)."""
+        from src.vfx.animations import white_silhouette
+        import math as _m
+        foe = self.opponent_pokemon
+        if self.catch_phase == "ABSORB" and foe.image is not None:
+            k = min(1.0, self.catch_t / 14)
+            img = white_silhouette(foe.image, min(1.0, k * 2))
+            w, h = img.get_size()
+            sc = max(0.05, 1 - k)
+            img = pygame.transform.smoothscale(img, (max(1, int(w * sc)), max(1, int(h * sc))))
+            cx = self.foe_spot[0]
+            cy = self.foe_spot[1] + (self.ball_target[1] - self.foe_spot[1]) * k
+            img.set_alpha(int(255 * (1 - k * 0.5)))
+            screen.blit(img, img.get_rect(center=(int(cx), int(cy))))
+        ball = self.ball_img
+        if getattr(self, "ball_angle", 0):
+            ball = pygame.transform.rotate(ball, self.ball_angle)
+        if self.catch_phase in ("SHAKE", "CAUGHT", "DROP"):  # a soft shadow under it
+            gy = int(getattr(self, "ball_ground", self.ball_pos[1]) + 24)
+            sh = pygame.Surface((60, 14), pygame.SRCALPHA)
+            pygame.draw.ellipse(sh, (0, 0, 0, 90), sh.get_rect())
+            screen.blit(sh, sh.get_rect(center=(int(self.ball_pos[0]), gy)))
+        screen.blit(ball, ball.get_rect(center=(int(self.ball_pos[0]), int(self.ball_pos[1]))))
+        if self.catch_phase == "CAUGHT":  # stars burst out once it's caught
+            self.catch_t = getattr(self, "catch_t", 0) + 1
+            k = min(1.0, self.catch_t / 30)
+            if k < 1.0:
+                for i in range(3):
+                    a = -_m.pi / 2 + (i - 1) * 0.7
+                    x = self.ball_pos[0] + _m.cos(a) * 70 * k
+                    y = self.ball_pos[1] + _m.sin(a) * 70 * k
+                    Utils.draw_star(screen, GOLD, (int(x), int(y)), int(12 * (1 - k)) + 3)
 
 
 # [REF-0026: Battle Intro State]
@@ -2597,7 +2668,7 @@ class TrainerIntroState(GameState):
                 screen.fill((20, 40, 80))
 
             dialogue_rect = Utils.get_full_dialogue_rect(self.game)
-            Utils.draw_classic_panel(screen, dialogue_rect.x, dialogue_rect.y, dialogue_rect.width, dialogue_rect.height)
+            Utils.draw_textbox(screen, dialogue_rect.x, dialogue_rect.y, dialogue_rect.width, dialogue_rect.height)
 
         player_pos = (self.game.width * 0.25 - self.slide_offset, self.game.height * 0.75)
         rival_pos = (self.game.width * 0.75 + self.slide_offset, self.game.height * 0.75)

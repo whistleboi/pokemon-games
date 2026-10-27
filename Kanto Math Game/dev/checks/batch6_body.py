@@ -77,7 +77,8 @@ story.story_flags.pop("beat_hoenn_champion")
 lobby = ow.GymLobbyState(g, None)
 g.change_state(lobby)
 plain = lineup(battle_of((lobby.challenge_gym(), g.current_state)[1]))
-check([l for _, l in first] == [l + 10 for _, l in plain], f"other regions: rematch +10 levels {plain} -> {first}")
+check(first[0] == (559, 70) and first[-1] == (359, 72) and len(first) == 6,
+      f"Hoenn: ORAS's own rematch teams (Sidney: Scrafty ... Absol 72) {plain} -> {first}")
 
 print("3) Silver")
 story.story_flags = {"met_mr_pokemon": True, "starter_johto": 152}
@@ -90,7 +91,7 @@ for starter, silver in ((152, 155), (155, 158), (158, 152)):
     story.current_area_key = "CHERRYGROVE_CITY"
     g.change_state(ow.CityState(g))
     got = lineup(battle_of(g.current_state))
-    check(got == [(silver, 6)], f"Cherrygrove, you chose #{starter}: Silver has {got}")
+    check(got == [(silver, 5)], f"Cherrygrove, you chose #{starter}: Silver has {got} (HGSS: Lv 5)")
 story.story_flags = {"starter_johto": 155, "defeated_rival_cherrygrove": True}
 story.badges = {"JOHTO": ["ZEPHYR", "HIVE", "PLAIN"]}
 story.current_area_key = "BURNED_TOWER"
@@ -98,12 +99,12 @@ story.player_team = [mk(7)]; story.player_team[0].level = 5  # canon levels: a t
 ps = ow.PlayState(g)
 g.change_state(ps)
 got = lineup(battle_of(g.current_state))
-check(got == [(92, 25), (41, 25), (81, 23), (159, 28)], f"Burned Tower: {got}")
+check(got == [(92, 20), (81, 18), (41, 20), (159, 22)], f"Burned Tower (HGSS order and levels): {got}")
 story.badges = {"JOHTO": ["ZEPHYR", "HIVE", "PLAIN", "FOG", "STORMBADGE", "MINERAL", "GLACIER", "RISING"]}
 story.current_area_key = "MT_SILVER_CITY"
 g.change_state(ow.CityState(g))
 got = lineup(battle_of(g.current_state))
-check(got[-1] == (160, 50) and len(got) == 6, f"Victory Road: {got}")
+check(got[-1] == (160, 40) and len(got) == 6, f"Victory Road (HGSS levels): {got}")
 
 print("4) Red")
 red = next(o for o in prog["MT_SILVER"]["route_menu"] if o["text"] == "CHALLENGE RED")

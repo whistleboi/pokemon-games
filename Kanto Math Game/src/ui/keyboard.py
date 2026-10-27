@@ -36,6 +36,8 @@ class KeyboardNav:
             if id(b) in seen or not isinstance(b, Button):
                 return
             seen.add(id(b))
+            if getattr(b, "nav_hidden", False):
+                return  # a button kept only as data (the MENU grid's old column of buttons)
             if b.visible and b.callback is not None and b.rect.w > 0:
                 out.append((id(b), pygame.Rect(b.rect), str(getattr(b, "text", "")).upper()))
 

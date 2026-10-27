@@ -2,7 +2,8 @@
 # Kanto side-area walk (areas_08_kanto.patch): the S.S. Anne docked at Vermilion
 story.badges = {"KANTO": []}
 story.inventory = {}
-story.story_flags = {"visited_PALLET_TOWN": True}
+story.story_flags = {"visited_PALLET_TOWN": True, "received_starter_kanto": True,  # past Oak's lab and Parcel
+                     "received_pokedex_kanto": True}
 story.defeated_trainers = {}
 R, S = "KANTO", "PALLET_TOWN"
 seen = report("start", S, set())

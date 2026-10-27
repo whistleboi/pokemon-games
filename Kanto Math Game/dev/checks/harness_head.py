@@ -25,6 +25,7 @@ if not hasattr(st, "load_starters"):  # Hoenn starts at home (Route 101's starte
 st.load_starters(); st.selected_idx = 2; st.complete_selection()
 story = g.story_manager
 story._migrate_hoenn_start()  # the suites start past the opening (Pokedex in hand), like older saves
+story.story_flags["received_pokedex_kanto"] = story.story_flags["received_pokedex_sinnoh"] = True  # (and past Kanto's, Oak's Parcel)
 for _r in story.RIVAL_CHOICES:  # every region's rival already picked (no rival screen in the suites)
     story.assign_region_rival(_r)["chosen"] = True
 mk = lambda pid: Pokemon(g.loader.fetch_specific(pid), g.assets, size_mult=2.5)

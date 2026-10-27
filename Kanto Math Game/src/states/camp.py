@@ -232,7 +232,7 @@ class CampState(_MenuState):
         Utils.draw_text_outline(screen, "CAMP", self.game.assets.fonts["big"], GOLD, cx, 50)
         if self.phase == "BERRIES":
             msg = f"Add up to {MAX_BERRIES} berries (or none), then COOK!"
-            Utils.draw_text_outline(screen, msg, self.game.assets.fonts["small"], WHITE, cx, 100)
+            Utils.draw_text_outline(screen, msg, self.game.assets.fonts["label"], WHITE, cx, 100)
         if self.phase == "STIR":
             ratio = self.time_left() / STIR_TIME_MS
             bar = pygame.Rect(cx - 250, 95, 500, 22)
@@ -240,8 +240,8 @@ class CampState(_MenuState):
             fill = bar.copy()
             fill.width = int(bar.width * ratio)
             pygame.draw.rect(screen, GREEN if ratio > 0.5 else GOLD if ratio > 0.25 else RED, fill, border_radius=8)
-            Utils.draw_text_outline(screen, f"STIR {self.stir + 1}/{STIRS}", self.game.assets.fonts["small"],
+            Utils.draw_text_outline(screen, f"STIR {self.stir + 1}/{STIRS}", self.game.assets.fonts["label"],
                                     WHITE, cx, 140)
         if not self.dialogue_box.visible and self.phase != "STIR":
-            Utils.draw_classic_panel(screen, *self.box_rect)
+            Utils.draw_textbox(screen, *self.box_rect)
         self.game.ui_manager.draw(screen)

@@ -2,6 +2,102 @@
 
 ## Unreleased: opponents follow your team, Hoenn's story as in Omega Ruby / Alpha Sapphire
 
+- **Kanto's story follows FireRed/LeafGreen:**
+  - **The opening:** a new Kanto game starts in Pallet Town, not at the starter screen. Heading for Route 1 brings Oak running, and he takes you to his lab to choose a partner. Route 1 stays closed until then.
+  - **Oak's Parcel:** the Viridian Mart gives you a parcel for Oak. He trades it for the Pokédex and 5 Poké Balls. Until then you can't catch, the Mart sells nothing and Viridian Forest is closed. The Journal follows each step.
+  - **Every rival battle:** Nugget Bridge (Route 24), the Pokémon Tower, Silph Co. (7F) and Route 22 before the League join the lab, early Route 22 and S.S. Anne battles. The S.S. Anne rival is now your own rival. Teams follow FRLG: your rival has the starter strong against yours, and the same partners as at the League.
+  - **The Rocket arc:** Giovanni waits at the bottom of the Rocket Hideout under the Game Corner and drops the Silph Scope. He's also the last fight in Silph Co. Jessie and James stay in the Tower, the Viridian Gym and Mt. Moon, but no longer carry the Scope.
+  - **Fossils:**
+    - In Mt. Moon, beat Super Nerd Miguel and pick the Dome or Helix Fossil.
+    - The Pokémon Lab on Cinnabar Island revives fossils, and gives you the fossil Miguel kept, so you can have both.
+    - The Old Amber is behind the Pewter Museum, past a Cut tree (Cascade Badge).
+    - The fossil revival in Mt. Moon is gone.
+  - **Real HMs:** the Surf Board and Air Balloon are gone (they were stand-ins for story gates). Kanto's badges give HM Cut (Cascade), HM Fly (Rainbow) and HM Surf (Soul), and the Surf routes check HM Surf. The Surf Board is also gone from Johto, Sinnoh and Unova, where each region's own HM Surf already opens the water. Hoenn's New Mauville no longer needs both.
+  - **Older saves:** a save that already has its Kanto partner counts the opening as done. A save that cleared the hideout without getting the Scope is given it.
+- **Kanto, Sevii, Johto and Hoenn rechecked against Serebii PokéEarth** (every area page; details in the handoff's `SEREBII_RECHECK_2026-10-26.md`):
+  - **Johto story:**
+    - Ecruteak's travel list links Route 38, not Route 36.
+    - The Radio Tower adds Executives Proton, Ariana and Archer after Petrel, who now has six Pokémon.
+    - The Rocket HQ adds Petrel and gives Ariana her HGSS team, with her name's spelling fixed.
+    - The Kimono Girls have HGSS's names, Eeveelutions and levels.
+    - Silver uses HGSS's levels and order, and HGSS's Quilava for a Chikorita player. His Victory Road team is HGSS's too: Sneasel, Golbat, Magneton, Haunter, Kadabra and his starter at 40.
+    - Post-game, Clair and Lance battle you in the Dragon's Den, with Silver at your side in the story text.
+    - Eusine can be battled in Cianwood.
+  - **Kanto:**
+    - Your rival's Route 24 starter is still unevolved, and his late Route 22 team is FRLG's.
+    - There are two Snorlax, on Route 12 and Route 16.
+    - The Nugget Bridge (with Bill's challenge and the Rocket at the end) is Route 24; Route 25 has its own trainers.
+    - Route 19 leads back to Fuchsia, Routes 5 and 6 into Saffron, and Cerulean Cave opens from Cerulean City.
+  - **Hoenn:**
+    - **Villains:** each version's admins have ORAS's teams. Tabitha pairs with Shelly and Courtney with Matt.
+    - **League and Gyms:** the Elite Four have ORAS teams and ORAS rematch teams, and the Gyms have ORAS's teams and levels, including Flannery's Numel.
+    - **Legendaries:** Latios and Latias are no longer wild Pokémon. Southern Island, Marine Cave (Omega Ruby) and Terra Cave (Alpha Sapphire) are now real places, and the six Mirage spots and their legendaries are reached by soaring. Lugia and Ho-Oh are in Sea Mauville, Heatran on the Scorched Slab, and Regigigas awakens on Route 105.
+    - **Post-game trainers:** the Delta Episode admins, Wallace and Zinnia appear, Zinnia has her Tyrantrum, and Wally battles you at the Battle Resort.
+    - **Places:** Secret Base spots, and canon links for Routes 120, 123, 124, 125, 127, 103/110 and 104/105.
+  - **New areas:**
+    - **Johto:** Bellchime Trail, Safari Zone Gate, Frontier Access and the Pokéathlon Dome.
+    - **Sevii:** Three Isle Path and Port, and Navel Rock and Birth Island after the title.
+    - **Legendaries:** Kyogre and Rayquaza at the Embedded Tower, and Moltres on Mt. Silver.
+  - **Wild Pokémon:**
+    - Canon walking pools on Kanto Routes 5-8 and 11, Cerulean Cave, Mt. Silver, the National Park, and four Sevii routes. Mr. Mime appears on Route 2.
+    - Fishing uses each area's own Old, Good and Super Rod tables from the games where the games have them.
+- **Sinnoh's story follows Brilliant Diamond/Shining Pearl.** Teams and levels come from Serebii PokéEarth's area pages.
+  - **The opening:** a new Sinnoh game starts in Twinleaf Town. Lake Verity is the only way out until you have a partner.
+    - At the lake you pick from Professor Rowan's briefcase, then fight a wild Starly.
+    - You're sent home for Barry's first battle.
+    - You can't catch Pokémon until Rowan gives you the Pokédex in Sandgem Town.
+  - **Barry's battles:** Route 203, Hearthome, Pastoria, Canalave and the Pokémon League, with BD/SP's teams for each starter. His League team now has six Pokémon. The Eterna, Veilstone and second Twinleaf battles are gone.
+  - **The lakes come after Byron:**
+    - Professor Rowan meets you at the Canalave Library, then Lake Valor explodes. Saturn battles you in Valor Cavern.
+    - Mars is at Lake Verity.
+    - After the Icicle Badge, Lake Acuity: Jupiter has already beaten Barry and taken Uxie, and doesn't battle you.
+    - The Galactic Key is in the warehouse underpass in Veilstone.
+    - The lake guardians come back to their lakes after Dialga/Palkia.
+  - **The Spear Pillar:** Mars and Jupiter battle you before Cyrus, and Cyrus has BD/SP's four Pokémon.
+  - **Platinum's Distortion World is kept as extra content:** Cyrus with his Platinum team, then Giratina in its Origin Forme and the Griseous Orb.
+  - **Smaller changes:**
+    - Cynthia gives HM Cut in Eterna instead of Hearthome.
+    - Byron's Gym no longer needs a visit to Iron Island, which is optional.
+  - **Older saves:** a save that already has its Sinnoh partner counts the opening as done.
+- **Wild Pokémon and route trainers never outclass your team:**
+  - **The floor:** each area's own level (from the games) still applies, so a late area stays strong.
+  - **The ceiling:** your best Pokémon's level. An area set above your team is held to it. This affects every region; for example, Route 36 at Lv 15 against a Lv 10 team is now held to Lv 10.
+  - **With the level cap:** in Story mode your team can't pass the cap until the next badge, so the ceiling only rises at each milestone.
+  - **Unchanged:** areas still never sit more than 3 levels under your best Pokémon. Gyms, the League, rivals and story trainers, legendaries and area bosses keep their own levels.
+- **Johto fixes from Grok's walkthrough:**
+  - **Radio Tower gate grunt:** his team now fights at the tower's level. It was Rattata L5, Raticate L20 and Zubat L5 at 7 badges. Losing to him no longer takes you into the tower.
+  - **Goldenrod Bike Shop:** it lends you a Bicycle on your first visit, as in HeartGold/SoulSilver. Petrel no longer drops a Bike Voucher after the Radio Tower.
+  - **Dept. Store labels:** Goldenrod's and Celadon's shops are now labelled "Dept. Store". They already sold Department Store stock.
+  - **Early levels:** the Azalea rival's levels are now 17/19/22, so its ace is no more than 3 above the level cap. The other Johto rivals already were. Route 36 by Violet City is now level 8 (it was 15, above Falkner's ace).
+- **Fly around gym 4 in every region.**
+  - **Canonical already:** Johto through Kalos keep their canonical Fly badges.
+  - **Kanto:** HM Fly comes with the Rainbow Badge (Erika, gym 4), where FireRed/LeafGreen's Fly is reached.
+  - **Alola:** the Ride Pager (Charizard Glide) with the Akala stamp.
+  - **Galar:** the Flying Taxi with the first badge (it runs from the start in Sword/Shield).
+  - **Paldea:** Koraidon/Miraidon learn to fly at the 4th badge, in any order.
+- **MENU inside Gyms and the League:** Bag, Pokémon, Badges, Journal and Options, so you can heal between battles. There's no PC, saving or Fly inside, as in the games.
+- **The arrow keys no longer reach invisible buttons.** The old left-hand HUD buttons kept behind the MENU tile were still selectable from the keyboard.
+- **Hoenn's opening:**
+  - **Back to the lab:** after saving Birch from the Poochyena you're taken straight back to Littleroot, where Birch thanks you and sends you to your rival on Route 103.
+  - **Missions:** the Journal follows every step (rescue, the lab, the rival, the Pokédex, visiting Dad, then the Stone Badge without needing to visit Rustboro first). Mission text can name your rival.
+  - **Catching:** tapping the greyed CATCH button before the Pokédex now explains why you can't catch yet.
+- **Each region's PC has its own name:** Bill's PC (Kanto, Johto), Lanette's (Hoenn), Bebe's (Sinnoh), Amanita's (Unova), Cassius's (Kalos) and Molayne's (Alola). Galar and Paldea name nobody, so it's "Galar PC" and "Paldea PC". Sub-regions use their parent's PC.
+- **Smoother battle animations:**
+  - **Send-out:** the ball arcs to the Pokémon's own spot and it grows out of a white flash (it used to appear elsewhere and jump into place).
+  - **Faint:** the fainted Pokémon sinks into the ground.
+  - **Catch:**
+    - the ball arcs to the foe, which turns white and is drawn in;
+    - the ball drops onto the foe's platform, bounces and tilts once per shake;
+    - stars burst out on a catch.
+  - **The knocked-out foe stays visible** through the catch window, and a Pokémon switched in during a wild battle is no longer invisible while it comes out.
+- **Contests:** RIBBONS opens a ribbon display case: your Pokémon and a velvet case with each category and rank's rosette. Cool is now a deep orange-red and Cute a magenta-pink, so they're easy to tell apart.
+- **Readable yellow buttons:** small labels on yellow and gold buttons and tags use dark text, and larger white labels get a darker edge.
+- **Every remaining screen in the new style.** Each screen was checked and converted where it still looked old:
+  - **Menus and maps:** the MENU grid, the Town Map and Fly (map between the header and a text bar with FLY), and the Fly list.
+  - **Pokémon screens:** the starter quiz (question card and white answer cards, like battles), Evolution (with full-size YES/NO), the Rare Candy picker and the Gym lobby.
+  - **Side activities:** Wally's catch, contests, the Poffin House, camping, Amie, the Weather Dial, the gym puzzles, the slot machine and Game Corner prize shop, the Unown report (a grid of cards), PokéNav (white rows with each Pokémon's sprite and an encounter-rate bar) and Infinite mode.
+  - **Text:** small 9 and 12 px text on these screens is now 16 and 20 px.
+  - **Buttons:** every old-style button anywhere now draws as the battle menu's buttons.
 - **The rest of the Journeys soundtrack, hooked up.**
   - **Screen themes, in every region:** the Pokémon Center, the starter lab and the Oak and Elm lab scenes, Mom's house, Professor Oak, the Game Corner, and evolution.
   - **Trainer encounters:** each has its "eyes meet" theme by trainer: the boys' or girls' theme, Team Rocket and the other villain teams, the rival, and Jessie & James. Gym Leaders, the Elite Four and Champions keep their battle music.

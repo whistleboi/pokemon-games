@@ -102,6 +102,12 @@ class Utils:
         return None
 
     @staticmethod
+    def draw_textbox(surface, x, y, w, h):
+        """The games' white text box (src/ui/theme.py), behind a screen's menu buttons."""
+        from src.ui import theme
+        theme.draw_textbox(surface, pygame.Rect(x, y, w, h))
+
+    @staticmethod
     def draw_classic_panel(surface, x, y, w, h, title=None):
         """The game's panel (src/ui/theme.py): slate blue with a light edge, the same everywhere."""
         from src.ui import theme

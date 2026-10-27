@@ -1,10 +1,12 @@
-"""HMs (Johto through Kalos): each Gym hands out the HM its badge unlocks in the games, and the
-story gates check for the HM (Cut trees, Surf routes, Flash caves, Whirlpool...).
+"""HMs (Kanto through Kalos): each Gym hands out the HM its badge unlocks in the games, and the
+story gates check for the HM (Cut trees, Surf routes, Flash caves, Whirlpool...). Kanto's follow
+when FRLG hands them out: Cut after Cerulean, Fly by Celadon (gym 4), Surf in Fuchsia.
 
 Alola, Galar and Paldea have no HMs; their gates use their own story steps instead."""
 
 # Region -> badge (normalised, see _norm) -> HM item key. Badges without one are left out.
 HM_BY_BADGE = {
+    "KANTO": {"CASCADE": "HM_CUT", "RAINBOW": "HM_FLY", "SOUL": "HM_SURF"},
     "JOHTO": {"ZEPHYR": "HM_FLASH", "HIVE": "HM_CUT", "PLAIN": "HM_STRENGTH", "FOG": "HM_SURF",
               "STORM": "HM_FLY", "GLACIER": "HM_WHIRLPOOL", "RISING": "HM_WATERFALL"},
     "HOENN": {"STONE": "HM_CUT", "KNUCKLE": "HM_FLASH", "DYNAMO": "HM_ROCK_SMASH", "HEAT": "HM_STRENGTH",

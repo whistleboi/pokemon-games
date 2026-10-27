@@ -112,9 +112,13 @@ for _ in range(200):
 check(any(v.get("id") == pid for v in g.data.data["pokedex"].values()), "and YES catches it")
 
 print("3.2 / 3.4 / 3.5) levels")
-story.player_team = [mk(7)]; story.player_team[0].level = 5  # canon levels: a team that hasn't outgrown them
+story.player_team = [mk(7)]; story.player_team[0].level = 15  # canon levels: within the team's reach
 check(levels.area_level(g, "UNION_CAVE") == 13 and levels.area_level(g, "SLOWPOKE_WELL") == 15, "Union Cave 13, Slowpoke Well 15")
+story.player_team[0].level = 10  # an area above the team is held to it (Jordan, 10-26)
+check(levels.area_level(g, "SLOWPOKE_WELL") == 10, "Slowpoke Well held to a Lv 10 team")
+story.player_team[0].level = 55
 check(levels.area_level(g, "KANTO_ROUTE_26") == 52, "Route 26 trains you for the League (Lv 52, patch 12)")
+story.player_team[0].level = 5
 story.current_area_key = "MAHOGANY_TOWN"
 story.level_cap_mode = "STORY"
 story.badges["JOHTO"] = ["ZEPHYR", "HIVE", "PLAIN", "FOG", "STORMBADGE"]

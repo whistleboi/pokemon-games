@@ -70,12 +70,26 @@ for idx, (region, cfg) in enumerate(game.story_manager.get_region_starts()):
         if isinstance(game.current_state, AreaTransitionState):
             step_until_changed()
         print("  opening ->", type(game.current_state).__name__, "| area:", game.story_manager.current_area_key)
-        game.story_manager.current_area_key = game.story_manager.starter_on_route(region)
-        ps = PlayState(game)
-        game.states["play"] = ps
-        game.change_state(ps)
-        print("  on the route:", ps.dialogue_box.text_lines[:2])
-        ps.dialogue_box.callback()  # the professor's call for help -> his bag of starters
+        route = game.story_manager.starter_on_route(region)
+        if route:  # Hoenn / Sinnoh: the starter is picked on a route or at a lake
+            game.story_manager.current_area_key = route
+            ps = PlayState(game)
+            game.states["play"] = ps
+            game.change_state(ps)
+            print("  on the route:", ps.dialogue_box.text_lines[:2])
+            ps.dialogue_box.callback()  # the professor's call for help -> his bag of starters
+        else:  # Kanto: Oak stops you at Route 1 and takes you to his lab (FRLG)
+            from src.states.overworld import CityState
+            town = CityState(game)
+            game.states["city"] = town
+            game.change_state(town)
+            town.visit_prof_oak()
+            print("  in town:", town.npc_dialogue.text_lines[:1])
+            town.npc_dialogue.callback()
+            for _ in range(300):
+                if hasattr(game.current_state, "load_starters"):
+                    break
+                game.current_state.update()
         st = game.current_state
     st.load_starters()
     print("  starter screen lines:", st.dialogue_box.text_lines[:2],

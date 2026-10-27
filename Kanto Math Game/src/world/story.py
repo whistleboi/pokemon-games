@@ -162,7 +162,7 @@ class StoryManager:
         if not region:
             return None
         if (self.story_flags.get(f"received_starter_{region.lower()}") or self.player_team
-                or self.starter_on_route(region)):
+                or self.starter_in_overworld(region)):
             self.story_flags.pop("pending_starter", None)
             return None
         return region
@@ -171,6 +171,12 @@ class StoryManager:
         """The route where a region's starter is chosen in the story (Hoenn: Route 101, saving
         Professor Birch from a Poochyena), or None when the professor hands it over in town."""
         return self.get_region_start(region or self.get_current_region()).get("starter_area")
+
+    def starter_in_overworld(self, region=None):
+        """True when a region's starter comes from the story, not the starter screen on arrival:
+        on a route (Hoenn) or from the professor in town (Kanto: Oak stops you at Route 1, FRLG)."""
+        cfg = self.get_region_start(region or self.get_current_region())
+        return bool(cfg.get("starter_area") or cfg.get("starter_in_town"))
 
     def catch_unlocked(self, region=None):
         """False until the region's catch flag is set (Hoenn: Birch's Pokedex, after the first
@@ -232,6 +238,8 @@ class StoryManager:
             return any(p and p.id == pid for p in self.player_team)
         if condition == "all_unown_registered":
             return self.unown_forms_caught() >= len(self.UNOWN_FORMS)
+        if condition.startswith("hoenn_version:"):  # Omega Ruby / Alpha Sapphire only (Marine / Terra Cave)
+            return self.story_flags.get("hoenn_version") == condition.split(":", 1)[1]
         return None
 
     def purify_shadow(self):
@@ -313,6 +321,7 @@ class StoryManager:
         self.balls_left = config.get("STARTING_BALLS", 5)
         self.pc_pokemon = [None] * 300
         self.current_area_key = config.get("STARTING_AREA", "PALLET_TOWN")
+        self.story_flags["nugget_bridge_moved"] = True  # (see _migrate_kanto_start)
         self.initialized = True
 
     def get_victory_outcome(self, battle_type="rival"):
@@ -630,6 +639,25 @@ class StoryManager:
         self.pc_pokemon[slot] = pokemon
         return slot
 
+    # Each region's Pokemon Storage System, by who runs it in the games (Bulbapedia); Galar and
+    # Paldea name nobody, so they use the region (Jordan). Sub-regions use their parent's.
+    PC_NAMES = {"KANTO": "Bill's PC", "JOHTO": "Bill's PC", "HOENN": "Lanette's PC", "SINNOH": "Bebe's PC",
+                "UNOVA": "Amanita's PC", "KALOS": "Cassius's PC", "ALOLA": "Molayne's PC"}
+
+    def pc_name(self):
+        try:
+            region = self.storage_region(self.get_current_region())
+        except Exception:
+            region = "KANTO"
+        return self.PC_NAMES.get(region, f"{region.title()} PC")
+
+    FLY_ITEMS = ("HM_FLY", "RIDE_PAGER", "FLYING_TAXI", "LEGEND_FLIGHT")
+
+    def can_fly(self):
+        """Fly from the menu: the HM, Alola's Ride Pager (Charizard Glide),
+        Galar's Flying Taxi or Paldea's Koraidon / Miraidon (each region's own way, around gym 4)."""
+        return any(self.inventory.get(k, 0) > 0 for k in self.FLY_ITEMS)
+
     def visited_regions(self):
         """Every region this save has been in: the starting region, any recorded visit, and
         (for older saves) any region whose badge page was unlocked on arrival."""
@@ -656,7 +684,7 @@ class StoryManager:
         self.story_flags[f"moved_to_{region.lower()}"] = True
         self.current_area_key = cfg.get("start_area", self.current_area_key)
         self.sync_rival()  # the new region's rival now, so its intro names the right one
-        if not self.story_flags.get(f"received_starter_{region.lower()}") and not self.starter_on_route(region):
+        if not self.story_flags.get(f"received_starter_{region.lower()}") and not self.starter_in_overworld(region):
             starters = lambda: StarterSelectionState(self.game, starter_ids=cfg.get("starters"), region=region)
             if self.needs_rival_choice(region):  # name the new region's rival before its starter screen
                 from src.states.menus import RivalSelectionState
@@ -783,6 +811,11 @@ class StoryManager:
 
         m_copy["text"] = m_copy.get("title", m_copy.get("text", "Unknown Mission"))
         m_copy["desc"] = m_copy.get("description", m_copy.get("desc", "No details available."))
+        game = getattr(self, "game", None)
+        for token, value in (("{rival_name}", getattr(game, "rival_name", None) or "your rival"),
+                             ("{player_name}", getattr(game, "player_name", None) or "you")):
+            m_copy["desc"] = m_copy["desc"].replace(token, str(value))
+            m_copy["text"] = m_copy["text"].replace(token, str(value))
         m_copy["details"] = m_copy["desc"]
 
         cond = mission.get("condition", {})
@@ -908,11 +941,11 @@ class StoryManager:
             else:
                 return "Head to the top of the Pokémon Tower in Lavender Town to confront the ghost."
 
-        if not self.story_flags.get("KANTO_ROUTE_11_boss_defeated"):
+        if not self.snorlax_awake():
             if self.inventory.get("POKE_FLUTE", 0) == 0:
                 return "Now that the ghost is at peace, talk to Mr. Fuji in Lavender Town. He might have a reward for you."
             else:
-                return "A Snorlax is blocking Route 11, east of Vermillion City. Use the Poké Flute to wake it up!"
+                return "Snorlax are sleeping on Route 12 (south of Lavender) and Route 16 (west of Celadon). Use the Poké Flute!"
 
         return "Your next challenge awaits! Explore the Kanto region and become a Pokémon Master!"
 
@@ -990,12 +1023,18 @@ class StoryManager:
             if not self.story_flags.get(flag) and any(self.story_flags.get(f) for f in sources):
                 self.story_flags[flag] = True
 
+    RETIRED_ITEMS = ("SURF_BOARD", "AIR_BALLOON")
+
     def sync_key_items(self):
         """Ensures players have key items unlocked by their earned badges."""
         if not hasattr(self, "inventory") or self.inventory is None:
             self.inventory = {}
         from src.world import hms
         hms.give_for_badges(self)  # HMs from badges already won
+        # The Surf Board and Air Balloon were stand-ins for HM Surf and HM Fly (Jordan, 10-26).
+        for store in [{"bag": self.inventory}] + list(getattr(self, "region_stores", {}).values()):
+            for item in self.RETIRED_ITEMS:
+                store["bag"].pop(item, None)
 
         # region_id → list of (badge_name, item) in order earned
         region_badge_items = {
@@ -1004,8 +1043,6 @@ class StoryManager:
                 ("CASCADE", "BIKE_VOUCHER"),
                 ("THUNDER", "EXP_SHARE"),
                 ("RAINBOW", "COIN_CASE"),
-                ("MARSH", "AIR_BALLOON"),
-                ("SOUL", "SURF_BOARD"),
                 ("VOLCANO", "VOLCANO_PASS"),
                 ("VOLCANO", "TRI_PASS"),  # Blaine: the Seagallop Ferry to the Sevii Islands
                 ("EARTH", "CERULEAN_CAVE_MAP"),
@@ -1062,11 +1099,13 @@ class StoryManager:
             "ALOLA": [
                 ("MELEMELE_STAMP", "ALOLA_MAP"),
                 ("AKALA_STAMP", "EXP_SHARE"),
+                ("AKALA_STAMP", "RIDE_PAGER"),  # Charizard Glide, after Akala's grand trial (Sun/Moon)
                 ("ULAUA_STAMP", "AMULET_COIN"),
                 ("PONI_STAMP", "Z_RING"),
             ],
             "GALAR": [
                 ("GRASS_BADGE", "GALAR_MAP"),
+                ("GRASS_BADGE", "FLYING_TAXI"),  # Corviknight taxis run from the start (Sword/Shield)
                 ("WATER_BADGE", "EXP_SHARE"),
                 ("FIRE_BADGE", "OLD_ROD"),
                 ("FIGHTING_BADGE", "AMULET_COIN"),
@@ -1103,6 +1142,10 @@ class StoryManager:
                     continue
                 print(f"Sync: Awarding {item} for {badge} ({region})!")
                 self.inventory[item] = 1
+        # Paldea's gyms go in any order: Koraidon / Miraidon learn to fly at the 4th badge (Jordan).
+        if ("PALDEA" in self.store_regions() and len(self.badges.get("PALDEA", [])) >= 4
+                and self.inventory.get("LEGEND_FLIGHT", 0) <= 0):
+            self.inventory["LEGEND_FLIGHT"] = 1
 
         if (self.story_flags.get("visited_RUINS_OF_ALPH") and "JOHTO" in self.store_regions()
                 and self.inventory.get("UNOWN_REPORT", 0) == 0):
@@ -1313,6 +1356,8 @@ class StoryManager:
         self.game.player_name = data.get("player_name", "TRAINER")
         self.game.rival_name = data.get("rival_name", "BLUE")
         self._migrate_hoenn_start()
+        self._migrate_kanto_start()
+        self._migrate_sinnoh_start()
 
     # The ORAS opening (Birch on Route 101, the rival on Route 103, the Pokedex) came after
     # saves that already have a Hoenn starter: those count it as done.
@@ -1325,6 +1370,40 @@ class StoryManager:
                 f[flag] = True
         if self.badges.get("HOENN"):  # past Petalburg: Wally has his Ralts (he waits at the Mauville Gym)
             f["helped_wally"] = True
+
+    def snorlax_awake(self):
+        """FRLG has two Snorlax (Route 12 and Route 16): True once both are out of the way."""
+        f = self.story_flags
+        return bool(f.get("KANTO_ROUTE_12_boss_defeated") and f.get("KANTO_ROUTE_16_boss_defeated"))
+
+    def _migrate_kanto_start(self):
+        """The FRLG opening (Oak's Parcel, then the Pokedex) and the Silph Scope from Giovanni came
+        after saves that already have a Kanto partner: those count the opening as done, and keep
+        a way to the Scope if the Rocket Hideout was cleared before it gave one."""
+        f = self.story_flags
+        if not f.get("kanto_parcel_era") and (f.get("received_starter_kanto") or f.get("unlocked_national_dex")):
+            f["received_pokedex_kanto"] = True
+        if not f.get("nugget_bridge_moved"):  # Nugget Bridge moved from Route 25 to Route 24 (10-26)
+            f["nugget_bridge_moved"] = True
+            if len(self.defeated_trainers.get("KANTO_ROUTE_25", set())) >= 6:
+                f["nugget_bridge_cleared_old"] = True
+            self.defeated_trainers.pop("KANTO_ROUTE_25", None)
+            if f.get("visited_BILLS_HOUSE"):  # already past the bridge: it stays crossed
+                self.defeated_trainers["KANTO_ROUTE_24"] = set(range(7))
+            else:
+                self.defeated_trainers.pop("KANTO_ROUTE_24", None)
+        if f.get("KANTO_ROUTE_11_boss_defeated") or f.get("caught_snorlax"):  # the old single Snorlax
+            f["KANTO_ROUTE_12_boss_defeated"] = f["KANTO_ROUTE_16_boss_defeated"] = True
+        if (f.get("game_corner_cleared") and not f.get("tower_ghost_defeated")
+                and self.inventory.get("SILPH_SCOPE", 0) <= 0 and self.get_current_region() == "KANTO"):
+            self.inventory["SILPH_SCOPE"] = 1
+
+    def _migrate_sinnoh_start(self):
+        """The BDSP opening (Lake Verity's briefcase and the Starly, then Rowan's Pokedex before any
+        catching) came after saves that already have a Sinnoh partner: those count it as done."""
+        f = self.story_flags
+        if f.get("received_starter_sinnoh") and not f.get("sinnoh_starly_driven_off"):
+            f["sinnoh_starly_driven_off"] = f["received_pokedex_sinnoh"] = True
 
     def get_gym_battle_background(self, area_id, trainer_index=0, is_leader=False):
         """

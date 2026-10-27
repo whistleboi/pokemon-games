@@ -56,11 +56,11 @@ class HoennVersionState(_MenuState):
             cx = half // 2 + i * half
             img = self.art[key]
             screen.blit(img, img.get_rect(center=(cx, 250)))
-            Utils.draw_text_outline(screen, v["title"], self.game.assets.fonts["small"], WHITE, cx, 410)
-            Utils.draw_text_outline(screen, f"{v['team']}  -  {v['legend']}", self.game.assets.fonts["tiny"],
+            Utils.draw_text_outline(screen, v["title"], self.game.assets.fonts["label"], WHITE, cx, 410)
+            Utils.draw_text_outline(screen, f"{v['team']}  -  {v['legend']}", self.game.assets.fonts["caption"],
                                     WHITE, cx, 455)
         if not self.dialogue_box.visible:
-            Utils.draw_classic_panel(screen, *self.box_rect)
+            Utils.draw_textbox(screen, *self.box_rect)
         self.game.ui_manager.draw(screen)
 
 
@@ -163,13 +163,13 @@ class WallyCatchState(_MenuState):
             screen.blit(self.wally, self.wally.get_rect(midbottom=(int(self.game.width * 0.25), top)))
         # The wild Ralts's HP bar.
         fonts = self.game.assets.fonts
-        panel = pygame.Rect(40, 40, 340, 90)
-        Utils.draw_classic_panel(screen, *panel)
-        Utils.draw_text_outline(screen, "RALTS  Lv5", fonts["small"], WHITE, panel.x + 20, panel.y + 25, align="left")
-        bar = pygame.Rect(panel.x + 20, panel.y + 55, 300, 14)
-        pygame.draw.rect(screen, (40, 40, 40), bar)
-        color = (60, 200, 80) if self.hp > 0.5 else (230, 200, 40) if self.hp > 0.2 else (220, 60, 50)
-        pygame.draw.rect(screen, color, (bar.x, bar.y, int(bar.w * self.hp), bar.h))
+        from src.ui import theme
+        panel = pygame.Rect(26, 26, 420, 96)  # the battle screen's info box
+        pygame.draw.rect(screen, theme.INFOBOX, panel, border_radius=10)
+        pygame.draw.rect(screen, theme.INFOBOX_FRAME, panel, 4, border_radius=10)
+        theme.shadow_text(screen, "RALTS", fonts["s_med"], panel.x + 22, panel.y + 12)
+        theme.shadow_text(screen, "Lv5", fonts["label"], panel.right - 22, panel.y + 16, align="right")
+        theme.hp_bar(screen, panel.x + 22, panel.y + 60, panel.w - 44, self.hp, 1.0)
         if self.ball_t is not None:
             x, y = self._ball_pos()
             angle = 0
@@ -178,5 +178,5 @@ class WallyCatchState(_MenuState):
             img = pygame.transform.rotate(self.ball, angle)
             screen.blit(img, img.get_rect(center=(int(x), int(y) + (50 if self.ball_t >= 1.0 else 0))))
         if not self.dialogue_box.visible:
-            Utils.draw_classic_panel(screen, *self.box_rect)
+            Utils.draw_textbox(screen, *self.box_rect)
         self.game.ui_manager.draw(screen)

@@ -75,37 +75,25 @@ class Button(UIElement):
         return tuple(max(0, min(255, int(c * f))) for c in color[:3])
 
     def draw(self, surface):
+        """In the battle menu's style (src/ui/theme.py) on every screen: the colour mapped onto the
+        theme's palette, the label in the largest of the new fonts that fits; a button with no
+        action is grey."""
         if not self.visible:
             return
-        # A raised look: a darker lip under the button, a light top edge, and a glow under the
-        # mouse. Buttons with no action stay flat.
+        from src.ui import theme
         r = self.rect
         live = self.callback is not None
         hover = live and r.collidepoint(pygame.mouse.get_pos())
-        color = self._shade(self.bg_color, 1.12) if hover else self.bg_color
-        if live:
-            lip = r.move(0, 4)
-            pygame.draw.rect(surface, self._shade(self.bg_color, 0.55), lip, border_radius=self.border_radius)
-            pygame.draw.rect(surface, BLACK, lip, 3, border_radius=self.border_radius)
-        pygame.draw.rect(surface, color, r, border_radius=self.border_radius)
-        if r.h > 24:
-            shine = pygame.Rect(r.x + 8, r.y + 4, r.w - 16, max(3, r.h // 8))
-            pygame.draw.rect(surface, self._shade(color, 1.25), shine, border_radius=max(2, shine.h // 2))
-        pygame.draw.rect(surface, WHITE if hover else BLACK, r, 3, border_radius=self.border_radius)
-        
+        color = theme.theme_color(self.bg_color) if live else (128, 132, 144)
+        font = theme.readable_font(self.font, self.text, r.inflate(-(self.icon.get_width() + 14) if self.icon else 0, 0))
         if self.icon:
-            icon_rect = self.icon.get_rect(midleft=(self.rect.left + 15, self.rect.centery))
+            theme.command_button(surface, r, "", font, color, hover=hover)
+            icon_rect = self.icon.get_rect(midleft=(r.left + 15, r.centery))
             surface.blit(self.icon, icon_rect)
-
-        Utils.draw_text_outline(
-            surface,
-            self.text,
-            self.font,
-            self.text_color,
-            self.rect.centerx,
-            self.rect.centery,
-            outline_color=self.outline_color,
-        )
+            Utils.draw_text_outline(surface, self.text, font, WHITE, (icon_rect.right + r.right) // 2, r.centery,
+                                    outline_color=theme.shade(color, 0.6), thickness=3)
+        else:
+            theme.command_button(surface, r, self.text, font, color, hover=hover)
 
 
 class Backdrop(UIElement):

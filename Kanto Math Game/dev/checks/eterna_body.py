@@ -68,11 +68,11 @@ story.level_cap_mode = "NONE"
 
 
 def play_eterna(team, correct=True, label=""):
-    story.current_area_key = "ETERNA_CITY"
+    story.current_area_key = "HEARTHOME_CITY"  # Barry's first city battle (BDSP; Eterna's was removed)
     story.player_team = team
-    story.story_flags.pop("defeated_rival_eterna", None)
+    story.story_flags.pop("defeated_rival_hearthome", None)
     story.story_flags["has_coal_badge"] = True
-    story.badges["SINNOH"] = ["COAL"]
+    story.badges["SINNOH"] = ["COAL", "FOREST"]
     g.change_state(CityState(g))
     intro = g.current_state
     phases = Counter(); stuck = 0; last = None; questions = 0
@@ -105,7 +105,7 @@ def play_eterna(team, correct=True, label=""):
         st.update()
         if isinstance(st, CityState) and frame > 50 and not isinstance(g.current_state, TrainerBattleState):
             break
-    return f"ok ({type(g.current_state).__name__}, {questions} questions, won={story.story_flags.get('defeated_rival_eterna')})"
+    return f"ok ({type(g.current_state).__name__}, {questions} questions, won={story.story_flags.get('defeated_rival_hearthome')})"
 
 
 for starter in (390, 387, 393):

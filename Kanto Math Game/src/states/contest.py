@@ -152,7 +152,7 @@ class ContestHallState(GameState):
             x = self.game.width // 2 - total // 2
             for i, (text, cb, color) in enumerate(row):
                 btn = Button((x + i * (width + 16), y + r * 80, width, 64), text,
-                             self.game.assets.fonts["tiny"], cb, autosize=False,
+                             self.game.assets.fonts["caption"], cb, autosize=False,
                              bg_color=color or (60, 90, 200))
                 self.menu_buttons.append(btn)
                 self.game.ui_manager.add_element(btn)
@@ -207,11 +207,9 @@ class ContestHallState(GameState):
         self.game.change_state(PokeMartState(self.game, self, stock=list(POKEBLOCKS)))
 
     def show_record(self):
-        lines = []
-        for c in CATEGORIES:
-            won = [r.title() for r in RANKS if contest_won(self.story, c, r)]
-            lines.append(f"{c.title()}: " + (", ".join(won) if won else "no ribbons yet"))
-        self._say(lines)
+        """RIBBONS: the display case of each Pokemon's contest ribbons."""
+        self._clear_menu()
+        self.game.change_state(RibbonCaseState(self.game, self))
 
     def leave(self):
         self._clear_menu()
@@ -245,7 +243,7 @@ class ContestHallState(GameState):
         Utils.draw_text_outline(self.game.screen, "CONTEST HALL", self.game.assets.fonts["big"], GOLD,
                                 self.game.width // 2, 70)
         if not self.dialogue_box.visible:
-            Utils.draw_classic_panel(self.game.screen, *self.box_rect)
+            Utils.draw_textbox(self.game.screen, *self.box_rect)
         self.game.ui_manager.draw(self.game.screen)
 
 
@@ -415,7 +413,7 @@ class ContestState(GameState):
             x = x0 + (i % cols) * (w + 20)
             y = y0 + (i // cols) * (h + gap)
             label = f"{name.replace('-', ' ')}  [{cat.title()}]"
-            btn = Button((x, y, w, h), label, self.game.assets.fonts["tiny"],
+            btn = Button((x, y, w, h), label, self.game.assets.fonts["caption"],
                          lambda i=i: self.choose_move(i), autosize=False, bg_color=CATEGORY_COLOR[cat])
             self.move_buttons.append(btn)
             self.game.ui_manager.add_element(btn)
@@ -566,23 +564,24 @@ class ContestState(GameState):
     def draw(self):
         screen = self.game.screen
         draw_stage(screen, self.game.width, self.box_rect.top, CATEGORY_COLOR[self.category])
-        font, small = self.game.assets.fonts["tiny"], self.game.assets.fonts["small"]
+        font, small = self.game.assets.fonts["caption"], self.game.assets.fonts["label"]
 
         # Contestant cards along the top.
         card_w, gap = 270, 16
         x0 = self.game.width // 2 - (4 * card_w + 3 * gap) // 2
         for i, c in enumerate(self.contestants):
             rect = pygame.Rect(x0 + i * (card_w + gap), 40, card_w, 150)
-            pygame.draw.rect(screen, (30, 20, 50), rect, border_radius=12)
-            pygame.draw.rect(screen, GOLD if c.is_player else (90, 80, 120), rect, 3, border_radius=12)
+            from src.ui import theme
+            theme.card(screen, rect, selected=c.is_player, accent=theme.BAG)  # the menu redesign's cards
             if c.icon:
-                screen.blit(c.icon, (rect.x + 6, rect.y + 26))
-            screen.blit(font.render(c.name, True, GOLD if c.is_player else WHITE), (rect.x + 12, rect.y + 8))
-            screen.blit(font.render(c.pokemon.display_name.upper(), True, WHITE), (rect.x + 108, rect.y + 44))
-            draw_heart(screen, rect.x + 108, rect.y + 78, 24)
-            screen.blit(small.render(str(c.hearts), True, (255, 120, 150)), (rect.x + 142, rect.y + 76))
+                screen.blit(c.icon, (rect.x + 6, rect.y + 30))
+            theme.shadow_text(screen, c.name, font, rect.x + 12, rect.y + 8,
+                              color=(170, 120, 20) if c.is_player else theme.TEXT)
+            theme.shadow_text(screen, c.pokemon.display_name.upper(), font, rect.x + 108, rect.y + 44)
+            draw_heart(screen, rect.x + 108, rect.y + 80, 24)
+            theme.shadow_text(screen, str(c.hearts), small, rect.x + 142, rect.y + 74, color=(214, 70, 110))
             if c.last_gain:
-                screen.blit(font.render(f"+{c.last_gain}", True, GOLD), (rect.x + 108, rect.y + 116))
+                theme.shadow_text(screen, f"+{c.last_gain}", small, rect.x + 108, rect.y + 112, color=(170, 120, 20))
 
         # Crowd meter and turn counter.
         meter_y = 210
@@ -602,7 +601,7 @@ class ContestState(GameState):
             screen.blit(img, img.get_rect(midbottom=(self.game.width // 2, self.box_rect.top - 8 + bob)))
 
         if not self.dialogue_box.visible and self.phase != "MATH":
-            Utils.draw_classic_panel(screen, *self.box_rect)
+            Utils.draw_textbox(screen, *self.box_rect)
         self.game.ui_manager.draw(screen)
 
 
@@ -632,3 +631,121 @@ def museum_lines(story):
     else:
         lines.append("Every frame is filled. Visitors come from all over Hoenn to see them!")
     return lines
+
+
+# ---------------------------------------------------------------------------
+class RibbonCaseState(GameState):
+    """The ribbon display case (Jordan): your Pokemon at the left, and for the one picked a velvet
+    case with a rosette for each contest category and rank (earned ones in colour, the rest faint)."""
+
+    def __init__(self, game, previous_state):
+        super().__init__(game)
+        from src.ui import theme
+        from src.ui.panels import CommandButton
+        self.previous_state = previous_state
+        story = game.story_manager
+        mons = [p for p in story.player_team if p] + [p for p in story.pc_pokemon if p and getattr(p, "ribbons", None)]
+        mons.sort(key=lambda p: -len(getattr(p, "ribbons", []) or []))
+        self.mons = mons[:12]
+        self.selected = 0
+        f = game.assets.fonts
+        self.btn_back = CommandButton((16, 14, 140, 56), "BACK", f["button"], self.go_back,
+                                      bg_color=theme.BACK, autosize=False)
+        top = theme.HEADER_H + 16
+        self.list_rect = pygame.Rect(24, top, 360, game.height - 16 - top)
+        self.case_rect = pygame.Rect(self.list_rect.right + 16, top, game.width - 24 - self.list_rect.right - 16,
+                                     self.list_rect.h)
+
+    def go_back(self):
+        self.game.change_state(self.previous_state)
+
+    def start(self):
+        self.game.ui_manager.elements.clear()
+        self.game.ui_manager.add_element(self.btn_back)
+
+    def row_rect(self, i):
+        r = self.list_rect
+        h = (r.h - 24 - 11 * 6) // 12
+        return pygame.Rect(r.x + 12, r.y + 12 + i * (h + 6), r.w - 24, h)
+
+    def handle_events(self, events):
+        for event in events:
+            if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+                for i in range(len(self.mons)):
+                    if self.row_rect(i).collidepoint(event.pos):
+                        self.selected = i
+            elif event.type == pygame.KEYDOWN and event.key in (pygame.K_UP, pygame.K_DOWN) and self.mons:
+                self.selected = (self.selected + (1 if event.key == pygame.K_DOWN else -1)) % len(self.mons)
+
+    def update(self):
+        pass
+
+    @staticmethod
+    def _rosette(surface, center, color, rank_i, earned):
+        """A ribbon: two tails and a pleated rosette, its middle showing the rank (1-4 stars)."""
+        import math
+        cx, cy = center
+        col = color if earned else (96, 82, 100)
+        dark = tuple(max(0, int(c * 0.6)) for c in col)
+        for dx in (-12, 12):  # the tails
+            pts = [(cx + dx // 2, cy + 6), (cx + dx, cy + 44), (cx + dx // 2 + (4 if dx < 0 else -4), cy + 36),
+                   (cx + dx // 4, cy + 44)]
+            pygame.draw.polygon(surface, dark, pts)
+        for k in range(14):  # the pleats
+            a = k * 2 * math.pi / 14
+            pygame.draw.circle(surface, col if k % 2 else dark, (int(cx + math.cos(a) * 18), int(cy + math.sin(a) * 18)), 9)
+        pygame.draw.circle(surface, (250, 246, 230) if earned else (130, 120, 136), (cx, cy), 14)
+        pygame.draw.circle(surface, dark, (cx, cy), 14, 2)
+        gold = (240, 196, 40) if earned else (110, 100, 110)
+        for s in range(rank_i + 1):  # stars for the rank
+            x = cx - rank_i * 5 + s * 10
+            pygame.draw.circle(surface, gold, (x, cy), 3)
+
+    def draw(self):
+        from src.ui import theme
+        from src.utils import Utils
+        from src.states.systems import fit_sprite
+        screen, f = self.game.screen, self.game.assets.fonts
+        accent = (170, 40, 70)
+        theme.menu_background(screen, accent, "RIBBON CASE", f["button"], title_x=176)
+        mouse = pygame.mouse.get_pos()
+
+        theme.draw_panel(screen, self.list_rect)
+        for i, p in enumerate(self.mons):
+            r = self.row_rect(i)
+            theme.card(screen, r, hover=r.collidepoint(mouse), selected=i == self.selected, accent=accent, radius=10)
+            if p.image:
+                spr = fit_sprite(p.image, r.h - 6, r.h - 6)
+                screen.blit(spr, spr.get_rect(center=(r.x + 6 + r.h // 2, r.centery)))
+            theme.shadow_text(screen, p.display_name.title(), f["label"], r.x + r.h + 14,
+                              r.centery - f["label"].get_height() // 2)
+            n = len(getattr(p, "ribbons", []) or [])
+            theme.shadow_text(screen, f"{n}", f["label"], r.right - 14, r.centery - f["label"].get_height() // 2,
+                              color=accent if n else (150, 156, 172), align="right")
+
+        case = self.case_rect
+        pygame.draw.rect(screen, (60, 20, 34), case, border_radius=16)            # the velvet
+        pygame.draw.rect(screen, (196, 150, 70), case, 6, border_radius=16)        # the gilt frame
+        if not self.mons:
+            theme.shadow_text(screen, "No Pokemon yet.", f["s_med"], case.centerx, case.centery,
+                              color=WHITE, shadow=(30, 10, 20), align="center")
+            self.game.ui_manager.draw(screen)
+            return
+        mon = self.mons[min(self.selected, len(self.mons) - 1)]
+        won = set(getattr(mon, "ribbons", []) or [])
+        Utils.draw_text_outline(screen, f"{mon.display_name.upper()}'s RIBBONS", f["button"], (250, 230, 190),
+                                case.centerx, case.y + 34, outline_color=(40, 10, 20), thickness=3)
+        left = case.x + 150
+        col_w = (case.right - 30 - left) // len(RANKS)
+        row_h = (case.bottom - 30 - (case.y + 80)) // len(CATEGORIES)
+        for j, rank in enumerate(RANKS):
+            Utils.draw_text_outline(screen, rank.title(), f["label"], (230, 210, 170), left + j * col_w + col_w // 2,
+                                    case.y + 72, outline_color=(40, 10, 20), thickness=2)
+        for i, cat in enumerate(CATEGORIES):
+            y = case.y + 92 + i * row_h + row_h // 2 - 10
+            Utils.draw_text_outline(screen, cat.title(), f["label"], CATEGORY_COLOR[cat], case.x + 30, y,
+                                    align="left", outline_color=(30, 8, 16), thickness=3)
+            for j, rank in enumerate(RANKS):
+                self._rosette(screen, (left + j * col_w + col_w // 2, y - 6), CATEGORY_COLOR[cat], j,
+                              ribbon_id(cat, rank) in won)
+        self.game.ui_manager.draw(screen)

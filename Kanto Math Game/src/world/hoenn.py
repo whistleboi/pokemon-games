@@ -15,7 +15,7 @@ import copy
 
 VERSIONS = {
     "OMEGA_RUBY": {
-        "title": "OMEGA RUBY", "team": "Team Magma", "team_short": "Magma", "leader": "Maxie",
+        "key": "OMEGA_RUBY", "title": "OMEGA RUBY", "team": "Team Magma", "team_short": "Magma", "leader": "Maxie",
         "leader_sprite": "maxie.png", "grunt_sprite": "magma_grunt.png", "grunt_class": "TEAM_MAGMA",
         "admin_a": ("Tabitha", "tabitha.png"), "admin_b": ("Courtney", "courtney.png"),
         "legend": "Groudon", "legend_id": 383, "orb": "Red Orb", "orb_item": "RED_ORB",
@@ -27,9 +27,9 @@ VERSIONS = {
         "swap": {318: 322, 319: 323},
     },
     "ALPHA_SAPPHIRE": {
-        "title": "ALPHA SAPPHIRE", "team": "Team Aqua", "team_short": "Aqua", "leader": "Archie",
+        "key": "ALPHA_SAPPHIRE", "title": "ALPHA SAPPHIRE", "team": "Team Aqua", "team_short": "Aqua", "leader": "Archie",
         "leader_sprite": "archie.png", "grunt_sprite": "aqua_grunt.png", "grunt_class": "TEAM_AQUA",
-        "admin_a": ("Matt", "matt.png"), "admin_b": ("Shelly", "shelly.png"),
+        "admin_a": ("Shelly", "shelly.png"), "admin_b": ("Matt", "matt.png"),
         "legend": "Kyogre", "legend_id": 382, "orb": "Blue Orb", "orb_item": "BLUE_ORB",
         "other_legend": "Groudon", "other_legend_id": 383, "other_orb": "Red Orb", "other_orb_item": "RED_ORB",
         "eon": "Latias", "eon_id": 380, "eon_stone": "LATIASITE", "other_eon": "Latios", "other_eon_id": 381,
@@ -101,6 +101,12 @@ def _villain(trainer, v):
             trainer["mega"] = v["leader_mega"]
     if isinstance(trainer.get("team"), list):
         trainer["team"] = [v["swap"].get(p, p) if isinstance(p, int) else p for p in trainer["team"]]
+    # ORAS gives each version's villain its own team ("team_by_version", "levels_by_version"),
+    # e.g. Tabitha's Koffing and Numel against Shelly's Grimer and Carvanha at Mt. Chimney.
+    if (trainer.get("team_by_version") or {}).get(v.get("key")):
+        trainer["team"] = list(trainer["team_by_version"][v["key"]])
+    if (trainer.get("levels_by_version") or {}).get(v.get("key")):
+        trainer["levels"] = list(trainer["levels_by_version"][v["key"]])
     return trainer
 
 

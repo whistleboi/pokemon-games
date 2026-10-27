@@ -1,5 +1,5 @@
 {
-  "REGION_START": {"KANTO": {"order": 1, "subtitle": "GEN 1 / RED / BLUE", "start_area": "PALLET_TOWN", "starters": [1, 4, 7], "starter_bg": "starter_bg.png", "dex_range": [1, 151], "dex_extra": []}},
+  "REGION_START": {"KANTO": {"order": 1, "subtitle": "GEN 1 / RED / BLUE", "start_area": "PALLET_TOWN", "starters": [1, 4, 7], "starter_bg": "starter_bg.png", "dex_range": [1, 151], "dex_extra": [], "professor": "Professor Oak", "starter_in_town": true, "opening_text": "kanto_newgame_intro", "catch_flag": "received_pokedex_kanto"}},
   "FORM_MAP": {
     "2001": { "id": 19, "form": "alolan", "name": "Alolan Rattata", "types": ["DARK", "NORMAL"] },
     "2002": { "id": 20, "form": "alolan", "name": "Alolan Raticate", "types": ["DARK", "NORMAL"] },
@@ -101,7 +101,7 @@
       "HM_CUT", "HM_DEFOG", "HM_DIVE", "HM_FLASH", "HM_FLY", "HM_ROCK_CLIMB", "HM_ROCK_SMASH", "HM_STRENGTH", "HM_SURF", "HM_WATERFALL", "HM_WHIRLPOOL",
       "TEA", "SECRET_KEY", "ROCKY_HELMET", "SILPH_SCOPE", "HELIX_FOSSIL", "DOME_FOSSIL", 
       "OLD_AMBER", "ARMOR_FOSSIL", "SKULL_FOSSIL", "ROOT_FOSSIL", "CLAW_FOSSIL", "OLD_ROD",
-      "POKE_FLUTE", "BIKE_VOUCHER", "BICYCLE", "COIN_CASE", "AIR_BALLOON", "SURF_BOARD", "SUPER_ROD", "VOLCANO_PASS", "EXP_SHARE", "CERULEAN_CAVE_MAP", "MT_SILVER_MAP", "SQUIRT_BOTTLE", "ICE_MELTER", "CLIFF_GATE_PASS", "MYSTERY_EGG", "UNOWN_REPORT", "TOWN_MAP", "GALARICA_CUFF", "GALARICA_WREATH", "SOOTHE_BELL", "RAINBOW_WING", "SILVER_WING", "TIDAL_BELL", "AMULET_COIN", "POKE_NAV", "DEVON_SCOPE", "DIVE_GEAR", "EON_TICKET", "ROCK_SMASHER", "CONTEST_PASS", "POKEBLOCK_CASE", "BERRY_POUCH", "POFFIN_CASE", "WEATHER_DIAL", "MEGA_BRACELET", "RED_ORB", "BLUE_ORB", "ABOMASITE", "ABSOLITE", "AERODACTYLITE", "AGGRONITE", "ALAKAZITE", "ALTARIANITE", "AMPHAROSITE", "AUDINITE", "BANETTITE", "BEEDRILLITE", "BLASTOISINITE", "BLAZIKENITE", "CAMERUPTITE", "CHARIZARDITE_X", "CHARIZARDITE_Y", "DIANCITE", "GALLADITE", "GARCHOMPITE", "GARDEVOIRITE", "GENGARITE", "GLALITITE", "GYARADOSITE", "HERACRONITE", "HOUNDOOMINITE", "KANGASKHANITE", "LATIASITE", "LATIOSITE", "LOPUNNITE", "LUCARIONITE", "MANECTITE", "MAWILITE", "MEDICHAMITE", "METAGROSSITE", "MEWTWONITE_X", "MEWTWONITE_Y", "PIDGEOTITE", "PINSIRITE", "SABLENITE", "SALAMENCITE", "SCEPTILITE", "SCIZORITE", "SHARPEDONITE", "SLOWBRONITE", "STEELIXITE", "SWAMPERTITE", "TYRANITARITE", "VENUSAURITE"
+      "POKE_FLUTE", "BIKE_VOUCHER", "BICYCLE", "COIN_CASE", "OAKS_PARCEL", "STORAGE_KEY", "RIDE_PAGER", "FLYING_TAXI", "LEGEND_FLIGHT", "SUPER_ROD", "VOLCANO_PASS", "EXP_SHARE", "CERULEAN_CAVE_MAP", "MT_SILVER_MAP", "SQUIRT_BOTTLE", "ICE_MELTER", "CLIFF_GATE_PASS", "MYSTERY_EGG", "UNOWN_REPORT", "TOWN_MAP", "GALARICA_CUFF", "GALARICA_WREATH", "SOOTHE_BELL", "RAINBOW_WING", "SILVER_WING", "TIDAL_BELL", "AMULET_COIN", "POKE_NAV", "DEVON_SCOPE", "DIVE_GEAR", "EON_TICKET", "ROCK_SMASHER", "CONTEST_PASS", "POKEBLOCK_CASE", "BERRY_POUCH", "POFFIN_CASE", "WEATHER_DIAL", "MEGA_BRACELET", "RED_ORB", "BLUE_ORB", "ABOMASITE", "ABSOLITE", "AERODACTYLITE", "AGGRONITE", "ALAKAZITE", "ALTARIANITE", "AMPHAROSITE", "AUDINITE", "BANETTITE", "BEEDRILLITE", "BLASTOISINITE", "BLAZIKENITE", "CAMERUPTITE", "CHARIZARDITE_X", "CHARIZARDITE_Y", "DIANCITE", "GALLADITE", "GARCHOMPITE", "GARDEVOIRITE", "GENGARITE", "GLALITITE", "GYARADOSITE", "HERACRONITE", "HOUNDOOMINITE", "KANGASKHANITE", "LATIASITE", "LATIOSITE", "LOPUNNITE", "LUCARIONITE", "MANECTITE", "MAWILITE", "MEDICHAMITE", "METAGROSSITE", "MEWTWONITE_X", "MEWTWONITE_Y", "PIDGEOTITE", "PINSIRITE", "SABLENITE", "SALAMENCITE", "SCEPTILITE", "SCIZORITE", "SHARPEDONITE", "SLOWBRONITE", "STEELIXITE", "SWAMPERTITE", "TYRANITARITE", "VENUSAURITE"
     ],
 
     "SPECIAL_EVOLUTION_TARGETS": {
@@ -110,12 +110,27 @@
 
     "JOURNAL_MISSIONS": [
       {
+        "id": "m0a", "type": "MAIN", "text": "Professor Oak", "target": "PALLET_TOWN",
+        "desc": "Today your Pokemon journey begins! Head for Route 1, north of Pallet Town. Professor Oak won't let you into the tall grass without a Pokemon.",
+        "condition": { "required_region": "KANTO", "flag_not": "received_starter_kanto" }
+      },
+      {
+        "id": "m0b", "type": "MAIN", "text": "Oak's Parcel", "target": "VIRIDIAN_CITY",
+        "desc": "Go north through Route 1 to Viridian City. The Poke Mart there has a parcel for Professor Oak.",
+        "condition": { "required_region": "KANTO", "flag": "received_starter_kanto", "flag_not": ["got_oaks_parcel", "received_pokedex_kanto"] }
+      },
+      {
+        "id": "m0c", "type": "MAIN", "text": "A Pokedex", "target": "PALLET_TOWN",
+        "desc": "Take the parcel back to Professor Oak's lab in Pallet Town. He has something for you too!",
+        "condition": { "required_region": "KANTO", "flag": "got_oaks_parcel", "flag_not": "received_pokedex_kanto" }
+      },
+      {
         "id": "m1", "type": "MAIN", "text": "Investigation at Viridian", "desc": "Check out the Viridian City Gym. People say the Gym Leader is away, but strange characters have been seen there.",
-        "condition": { "start_region": "KANTO", "flag_not": "viridian_rocket_defeated" }
+        "condition": { "start_region": "KANTO", "flag": "received_pokedex_kanto", "flag_not": "viridian_rocket_defeated" }
       },
       {
         "id": "m2", "type": "MAIN", "text": "Challenge Brock", "desc": "Head north through Route 2 and Viridian Forest to reach Pewter City. Earn your first badge from Brock, the rock-solid Gym Leader!",
-        "condition": { "start_region": "KANTO", "badges_less": 1 }
+        "condition": { "start_region": "KANTO", "flag": "received_pokedex_kanto", "badges_less": 1 }
       },
       {
         "id": "m3", "type": "MAIN", "text": "The Road to Cerulean", "desc": "With the Boulder Badge in hand, head east through Route 3 and the depths of Mt. Moon to find Cerulean City.",
@@ -178,11 +193,15 @@
         "condition": { "visited": "VIRIDIAN_CITY", "flag_not": "got_rocky_helmet" }
       },
       {
-        "id": "s_museum", "type": "SIDE", "text": "Museum Reward", "desc": "The Pewter Museum of Science rewards trainers who show promise. Visit them after defeating Brock.",
-        "condition": { "badges_min": 1, "flag_not": "received_museum_fossil" }
+        "id": "s_museum", "type": "SIDE", "text": "Old Amber", "desc": "A scientist waits by the back door of the Pewter Museum of Science. You'll need Cut (the Cascade Badge) to reach it.",
+        "condition": { "badges_min": 2, "flag_not": "received_old_amber" }
       },
       {
-        "id": "s_bill1", "type": "SIDE", "text": "Nugget Bridge", "desc": "Bill is looking for a trainer who can clear the Nugget Bridge challenge on Route 25.",
+        "id": "s_fossil", "type": "SIDE", "text": "Mt. Moon Fossils", "desc": "A Super Nerd has dug up two fossils deep inside Mt. Moon. Beat him and pick one!",
+        "condition": { "visited": "MT_MOON", "flag_not": ["took_dome_fossil", "took_helix_fossil", "received_museum_fossil"] }
+      },
+      {
+        "id": "s_bill1", "type": "SIDE", "text": "Nugget Bridge", "desc": "Bill is looking for a trainer who can clear the Nugget Bridge challenge on Route 24.",
         "condition": { "visited": "BILLS_HOUSE", "flag_not": "received_bill_eevee" }
       },
       {
@@ -202,16 +221,20 @@
         "condition": { "flag": "tower_ghost_defeated", "item_not": "POKE_FLUTE" }
       },
       {
-        "id": "s_rocket", "type": "SIDE", "text": "The Game Corner Secret", "desc": "Investigate the suspicious Team Rocket presence at the Celadon Game Corner.",
+        "id": "s_rocket", "type": "SIDE", "text": "Rocket Hideout", "desc": "Team Rocket's hideout is under the Celadon Game Corner. Their boss is said to have a Silph Scope.",
         "condition": { "visited": "CELADON_CITY", "flag_not": "game_corner_cleared" }
       },
       {
-        "id": "s_silph", "type": "SIDE", "text": "Silph Co. Takeover", "desc": "Team Rocket has seized Silph Co. in Saffron City! Fight your way up all 11 floors and drive out their leaders. The President may reward you.",
+        "id": "s_silph", "type": "SIDE", "text": "Silph Co. Takeover", "desc": "Team Rocket has seized Silph Co. in Saffron City! Fight your way up all 11 floors and drive out their boss, Giovanni. The President may reward you.",
         "condition": { "visited": "SAFFRON_CITY", "flag": "tower_ghost_defeated", "flag_not": "silph_co_cleared" }
       },
       {
-        "id": "s2", "type": "SIDE", "text": "The Sleeping Giant", "desc": "A Snorlax blocks Route 11. Use the Poké Flute to wake it up.",
-        "condition": { "visited": "KANTO_ROUTE_11", "flag_not": "KANTO_ROUTE_11_boss_defeated", "item": "POKE_FLUTE" }
+        "id": "s2", "type": "SIDE", "text": "The Sleeping Giant", "desc": "A Snorlax blocks Route 12, south of Lavender Town. Use the Poké Flute to wake it up.",
+        "condition": { "visited": "KANTO_ROUTE_12", "flag_not": "KANTO_ROUTE_12_boss_defeated", "item": "POKE_FLUTE" }
+      },
+      {
+        "id": "s2b", "type": "SIDE", "text": "Another Sleeping Giant", "desc": "A second Snorlax sleeps on Route 16, west of Celadon City, blocking Cycling Road.",
+        "condition": { "visited": "KANTO_ROUTE_16", "flag_not": "KANTO_ROUTE_16_boss_defeated", "item": "POKE_FLUTE" }
       },
       {
         "id": "s3", "type": "SIDE", "text": "The Mysterious Island", "desc": "A hidden island is said to appear in the sea near Cinnabar Island. Explore it to find rare Pokémon.",
@@ -230,7 +253,7 @@
         "condition": { "flag": "dojo_gift_1", "flag_not": "dojo_gift_2" }
       },
       {
-        "id": "s7", "type": "SIDE", "text": "Ancient Fossils", "desc": "Revive ancient Pokémon from fossils by visiting the Stone Man in cities or caves.",
+        "id": "s7", "type": "SIDE", "text": "Ancient Fossils", "desc": "Revive ancient Pokémon from fossils at the Pokemon Lab on Cinnabar Island.",
         "condition": { "item": ["HELIX_FOSSIL", "DOME_FOSSIL", "OLD_AMBER"] }
       },
       {
@@ -341,10 +364,7 @@
   },
   "AFTER_STARTER_RIVAL": {
     "next_area": "PALLET_TOWN",
-    "rewards": {
-      "balls": 5,
-      "message": "Professor Oak gave you 5 Poké Balls for your journey!"
-    }
+    "rewards": {"balls": 0, "message": "Your Pokemon is ready! Head north through Route 1 to Viridian City."}
   },
   "TRAINER_CLASS_DIALOGUE": {
     "RIVAL": {
@@ -500,82 +520,12 @@
       "wild_pool_percentages": null,
       "min_rounds": 0,
       "trainer_pool": [
-        {
-          "name": "Sailor Trevor",
-          "class": "SAILOR",
-          "sprite": "sailor.png",
-          "team": [
-            66,
-            72
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "Sailor Edmond",
-          "class": "SAILOR",
-          "sprite": "sailor.png",
-          "team": [
-            66,
-            90
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "Gentleman Thomas",
-          "class": "GENTLEMAN",
-          "sprite": "gentleman.png",
-          "team": [
-            58,
-            58
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "Gentleman Arthur",
-          "class": "GENTLEMAN",
-          "sprite": "gentleman.png",
-          "team": [
-            29,
-            29
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "Lass Ann",
-          "class": "LASS",
-          "sprite": "lass.png",
-          "team": [
-            16,
-            29
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "{rival_name}",
-          "class": "PKMN_TRAINER",
-          "sprite": "blue.png",
-          "team": [
-            17,
-            20,
-            64,
-            8
-          ],
-          "rewards": {
-            "balls": 10
-          },
-          "is_boss_battle": true,
-          "victory_flag": "ss_anne_cleared"
-        }
+        {"name": "Sailor Trevor", "class": "SAILOR", "sprite": "sailor.png", "team": [66, 72], "rewards": {"balls": 4}},
+        {"name": "Sailor Edmond", "class": "SAILOR", "sprite": "sailor.png", "team": [66, 90], "rewards": {"balls": 4}},
+        {"name": "Gentleman Thomas", "class": "GENTLEMAN", "sprite": "gentleman.png", "team": [58, 58], "rewards": {"balls": 4}},
+        {"name": "Gentleman Arthur", "class": "GENTLEMAN", "sprite": "gentleman.png", "team": [29, 29], "rewards": {"balls": 4}},
+        {"name": "Lass Ann", "class": "LASS", "sprite": "lass.png", "team": [16, 29], "rewards": {"balls": 4}},
+        {"name": "{rival_name}", "class": "RIVAL", "sprite": "{rival_character}", "team": [17, 20, 64, 8], "rewards": {"balls": 10}, "is_boss_battle": true, "victory_flag": "ss_anne_cleared", "team_choice": {"1": [17, 20, 64, 5], "4": [17, 20, 64, 8], "7": [17, 20, 64, 2]}, "levels": [19, 16, 18, 20]}
       ],
       "route_menu": [
         {
@@ -604,10 +554,11 @@
       },
       "has_gym": false,
       "travel_options": [
-        { "text": "Route 1", "target_area": "KANTO_ROUTE_1" },
-        { "text": "Viridian City", "target_area": "VIRIDIAN_CITY"},
-        { "text": "Route 21", "target_area": "KANTO_ROUTE_21", "item_condition": "SURF_BOARD"},
-        { "text": "Cinnabar Island", "target_area": "CINNABAR_ISLAND", "flag_condition": "visited_CINNABAR_ISLAND"}  
+        {"text": "Route 1", "npc": "professor_oak", "flag_condition": "not received_starter_kanto"},
+        {"text": "Route 1", "target_area": "KANTO_ROUTE_1", "flag_condition": "received_starter_kanto"},
+        {"text": "Viridian City", "target_area": "VIRIDIAN_CITY", "flag_condition": "received_starter_kanto"},
+        {"text": "Route 21", "target_area": "KANTO_ROUTE_21", "item_condition": "HM_SURF"},
+        {"text": "Cinnabar Island", "target_area": "CINNABAR_ISLAND", "flag_condition": "visited_CINNABAR_ISLAND"}
       ],
       "explore_options": [
         { "text": "Talk to Professor Oak", "action": "NPC", "target": "professor_oak" }, 
@@ -635,17 +586,18 @@
       "gym": {"trainers": [{"name": "Blackbelt Warren", "class": "BLACKBELT", "sprite": "hiker.png", "is_boss_battle": true, "team": [67, 66], "rewards": {"balls": 2}, "dialogue": {"intro": ["Kiyah!"], "player_won": ["I ran out of steam."], "player_lost": ["Karate chop!"]}}, {"name": "Cooltrainer Yuji", "class": "COOLTRAINER", "sprite": "acetrainer_m.png", "is_boss_battle": true, "team": [111, 33], "rewards": {"balls": 2}, "dialogue": {"intro": ["This is the final test before the leader!"], "player_won": ["You are ready."], "player_lost": ["Not ready yet!"]}}], "requirements": {"badges": 7, "fail_text": "The Gym is closed. The Leader is away."}, "leader": {"name": "Giovanni", "class": "GYM_LEADER", "is_boss_battle": true, "sprite": "leader_giovanni.png", "team": [111, 51, 31, 34, 111], "levels": [45, 42, 44, 45, 50], "badge_reward": "EARTH", "dialogue": {"intro": ["This is the last time you meddle with Team Rocket!"], "player_won": ["I must admit, you're quite skilled...", "The rumors are true. A powerful Pokémon is waking in Cerulean Cave... something Team Rocket left behind after the destruction at Cinnabar Island.", "This map will lead you there. Don't say I never gave you anything.", "Take the Earth Badge."], "player_lost": ["A child could never hope to defeat Team Rocket!"]}, "rewards": {"balls": 10, "RARE_CANDY": 1, "CERULEAN_CAVE_MAP": 1}, "movesets": {"111": ["TAKE-DOWN", "ROCK-BLAST", "SCARY-FACE", "EARTHQUAKE"], "51": ["SLASH", "SAND-TOMB", "MUD-SLAP", "EARTHQUAKE"], "31": ["DOUBLE-KICK", "EARTHQUAKE", "POISON-STING", "BODY-SLAM"], "34": ["DOUBLE-KICK", "EARTHQUAKE", "POISON-STING", "THRASH"]}}, "pre_battle_event": {"flag_check": "viridian_rocket_defeated", "invert_flag": true, "trainer": {"name": "Jessie and James", "class": "ROCKET", "sprite": "rocket_team.png", "is_boss_battle": true, "team": [23, 109, 52], "rewards": {"balls": 3}, "dialogue": {"intro": ["We don't know where the boss is, get out!"], "player_won": ["We're blasting off again!"], "player_lost": ["Too easy!"]}}}},
       "trainer_encounter_rate": 0,
       "travel_options": [
-        { "text": "Route 1", "target_area": "KANTO_ROUTE_1" },
-        { "text": "Viridian Forest", "target_area": "VIRIDIAN_FOREST" },
-        { "text": "Pallet Town", "target_area": "PALLET_TOWN", "flag_condition": "visited_PALLET_TOWN" },
-        { "text": "Route 22", "target_area": "KANTO_ROUTE_22" },
-        { "text": "Pewter City", "target_area": "PEWTER_CITY", "flag_condition": "visited_PEWTER_CITY" }
+        {"text": "Route 1", "target_area": "KANTO_ROUTE_1"},
+        {"text": "Viridian Forest", "target_area": "VIRIDIAN_FOREST", "flag_condition": "received_pokedex_kanto"},
+        {"text": "Pallet Town", "target_area": "PALLET_TOWN", "flag_condition": "visited_PALLET_TOWN"},
+        {"text": "Route 22", "target_area": "KANTO_ROUTE_22"},
+        {"text": "Pewter City", "target_area": "PEWTER_CITY", "flag_condition": "visited_PEWTER_CITY"}
       ],
       "explore_options": [
-        { "text": "Heal", "action": "HEAL" },
-        { "text": "Shop", "action": "SHOP" },
-        { "text": "Gym", "action": "GYM" },
-        { "text": "Wake Sleeping Man", "action": "NPC", "target": "oldman", "flag_condition": "not got_rocky_helmet" }
+        {"text": "Heal", "action": "HEAL"},
+        {"text": "Poke Mart", "action": "EVENT", "color": "GOLD", "condition": ["received_starter_kanto", "not:got_oaks_parcel", "not:received_pokedex_kanto"], "event": {"lines": ["Clerk: You're from Pallet Town? Then you know Professor Oak!", "His order just came in. Could you take this parcel to him for me?"], "gift_item": {"OAKS_PARCEL": 1}, "flag": "got_oaks_parcel"}},
+        {"text": "Shop", "action": "SHOP", "flag_condition": "received_pokedex_kanto"},
+        {"text": "Gym", "action": "GYM"},
+        {"text": "Wake Sleeping Man", "action": "NPC", "target": "oldman", "flag_condition": "not got_rocky_helmet"}
       ],
       "oldman_dialogue_key": "sleeping_man",
       "trainer_pool": [],
@@ -692,14 +644,15 @@
       "gym": {"requirements": {"flag": "visited_BILLS_HOUSE", "fail_text": "The Gym Leader, Misty, is away visiting a friend on Route 25."}, "trainers": [{"name": "Swimmer Diana", "is_boss_battle": true, "class": "SWIMMER", "sprite": "swimmer_f.png", "team": [118, 120], "rewards": {"balls": 2}, "dialogue": {"intro": ["The water is fine!"], "player_won": ["I'm all wet!"], "player_lost": ["Splish splash!"]}}, {"name": "Swimmer Luis", "is_boss_battle": true, "class": "SWIMMER", "sprite": "swimmer_m.png", "team": [116, 90], "rewards": {"balls": 2}, "dialogue": {"intro": ["Misty is going to wash you away!"], "player_won": ["You beat me..."], "player_lost": ["You can't beat Misty!"]}}], "leader": {"name": "Misty", "class": "GYM_LEADER", "is_boss_battle": true, "sprite": "misty.png", "team": [120, 121], "levels": [18, 21], "badge_reward": "CASCADE", "dialogue": {"intro": ["I hope you like water Pokémon!"], "player_won": ["You're better than I expected!", "Take this Cascade Badge."], "player_lost": ["You'll get washed away!"]}, "rewards": {"balls": 10, "RARE_CANDY": 1, "BIKE_VOUCHER": 1}, "movesets": {"120": ["TACKLE", "HARDEN", "RECOVER", "WATER-PULSE"], "121": ["RAPID-SPIN", "SWIFT", "RECOVER", "WATER-PULSE"]}}},
       "trainer_encounter_rate": 0,
       "travel_options": [
-        { "text": "Route 4", "target_area": "KANTO_ROUTE_4" },
-        { "text": "Route 5", "target_area": "KANTO_ROUTE_5" },
-        { "text": "Route 9", "target_area": "KANTO_ROUTE_9", "condition": ["has_cascade_badge", "visited_VERMILLION_CITY"] },
-        { "text": "Route 24", "target_area": "KANTO_ROUTE_24" },
-        { "text": "Mt. Moon", "target_area": "MT_MOON_CITY", "flag_condition": "visited_MT_MOON_CITY" },
-        { "text": "Bill's House", "target_area": "BILLS_HOUSE", "flag_condition": "visited_BILLS_HOUSE" },
-        { "text": "Rock Tunnel Entrance", "target_area": "ROCK_TUNNEL_CITY", "flag_condition": "visited_ROCK_TUNNEL_CITY" },
-        { "text": "Saffron City", "target_area": "SAFFRON_CITY", "flag_condition": "visited_SAFFRON_CITY" }
+        {"text": "Route 4", "target_area": "KANTO_ROUTE_4"},
+        {"text": "Route 5", "target_area": "KANTO_ROUTE_5"},
+        {"text": "Route 9", "target_area": "KANTO_ROUTE_9", "condition": ["has_cascade_badge", "visited_VERMILLION_CITY"]},
+        {"text": "Route 24", "target_area": "KANTO_ROUTE_24"},
+        {"text": "Mt. Moon", "target_area": "MT_MOON_CITY", "flag_condition": "visited_MT_MOON_CITY"},
+        {"text": "Bill's House", "target_area": "BILLS_HOUSE", "flag_condition": "visited_BILLS_HOUSE"},
+        {"text": "Rock Tunnel Entrance", "target_area": "ROCK_TUNNEL_CITY", "flag_condition": "visited_ROCK_TUNNEL_CITY"},
+        {"text": "Saffron City", "target_area": "SAFFRON_CITY", "flag_condition": "visited_SAFFRON_CITY"},
+        {"text": "Cerulean Cave", "target_area": "CERULEAN_CAVE", "condition": "beat_champion"}
       ],
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
@@ -727,10 +680,7 @@
         { "text": "Pewter City", "target_area": "PEWTER_CITY", "flag_condition": "visited_PEWTER_CITY" },
         { "text": "Cerulean City", "target_area": "CERULEAN_CITY", "flag_condition": "visited_CERULEAN_CITY" }
       ],
-      "explore_options": [
-        { "text": "Heal", "action": "HEAL" },
-        { "text": "Talk to Fossil Maniac", "action": "NPC", "target": "stoneman" }
-      ],
+      "explore_options": [{"text": "Heal", "action": "HEAL"}],
       "trainer_pool": [],
       "stoneman_dialogue_key": "mt_moon_stoneman_info",
       "on_enter_event": null
@@ -847,14 +797,14 @@
       },
       "trainer_encounter_rate": 0,
       "travel_options": [
-        { "text": "Route 8", "target_area": "KANTO_ROUTE_8" },
-        { "text": "Route 12", "target_area": "KANTO_ROUTE_12", "condition": "snorlax_defeated" },
-        { "text": "Pokemon Tower", "target_area": "KANTO_POKEMON_TOWER" },
-        { "text": "Rock Tunnel", "target_area": "ROCK_TUNNEL" },
-        { "text": "Rock Tunnel Entrance", "target_area": "ROCK_TUNNEL_CITY", "flag_condition": "visited_ROCK_TUNNEL_CITY" },
-        { "text": "Saffron City", "target_area": "SAFFRON_CITY", "flag_condition": "visited_SAFFRON_CITY" },
-        { "text": "Fuchsia City", "target_area": "FUCHSIA_CITY", "flag_condition": "visited_FUCHSIA_CITY" },
-        { "text": "Vermillion City", "target_area": "VERMILLION_CITY", "flag_condition": "visited_VERMILLION_CITY" }
+        {"text": "Route 8", "target_area": "KANTO_ROUTE_8"},
+        {"text": "Route 12", "target_area": "KANTO_ROUTE_12"},
+        {"text": "Pokemon Tower", "target_area": "KANTO_POKEMON_TOWER"},
+        {"text": "Rock Tunnel", "target_area": "ROCK_TUNNEL"},
+        {"text": "Rock Tunnel Entrance", "target_area": "ROCK_TUNNEL_CITY", "flag_condition": "visited_ROCK_TUNNEL_CITY"},
+        {"text": "Saffron City", "target_area": "SAFFRON_CITY", "flag_condition": "visited_SAFFRON_CITY"},
+        {"text": "Fuchsia City", "target_area": "FUCHSIA_CITY", "flag_condition": "visited_FUCHSIA_CITY"},
+        {"text": "Vermillion City", "target_area": "VERMILLION_CITY", "flag_condition": "visited_VERMILLION_CITY"}
       ],
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
@@ -877,19 +827,17 @@
       "gym": {"requirements": {"badge_names": ["CASCADE"], "fail_text": "A small tree blocks the Gym door. You'll need Cut, which needs the Cascade Badge."}, "trainers": [{"name": "Lass Kay", "is_boss_battle": true, "class": "LASS", "sprite": "lass.png", "team": [69, 70], "rewards": {"balls": 2}, "dialogue": {"intro": ["Flowers are beautiful, right?"], "player_won": ["Don't step on the flowers!"], "player_lost": ["Flower power!"]}}, {"name": "Beauty Bridget", "is_boss_battle": true, "class": "BEAUTY", "sprite": "beauty.png", "team": [43, 69], "rewards": {"balls": 2}, "dialogue": {"intro": ["Nature is my ally!"], "player_won": ["Pruned!"], "player_lost": ["Natural victory!"]}}], "leader": {"name": "Erika", "class": "GYM_LEADER", "is_boss_battle": true, "sprite": "erika.png", "team": [71, 114, 45], "levels": [29, 24, 29], "badge_reward": "RAINBOW", "dialogue": {"intro": ["Welcome to my Gym! Let's see if you can handle the grass!"], "player_won": ["Not bad, but you'll need more than that to get through the vines!", "Take this Rainbow Badge."], "player_lost": ["You got tangled up!"]}, "rewards": {"balls": 10, "RARE_CANDY": 1, "COIN_CASE": 1}, "movesets": {"71": ["STUN-SPORE", "ACID", "POISONPOWDER", "GIGA-DRAIN"], "114": ["POISONPOWDER", "CONSTRICT", "INGRAIN", "GIGA-DRAIN"], "45": ["SLEEP-POWDER", "ACID", "STUN-SPORE", "GIGA-DRAIN"]}}},
       "trainer_encounter_rate": 0,
       "travel_options": [
-        { "text": "Route 7", "target_area": "KANTO_ROUTE_7" },
-        { "text": "Route 16", "target_area": "KANTO_ROUTE_16", "condition": "snorlax_defeated" },
-        { "text": "Saffron City", "target_area": "SAFFRON_CITY", "flag_condition": "visited_SAFFRON_CITY" },
-        { "text": "Fuchsia City", "target_area": "FUCHSIA_CITY", "flag_condition": "visited_FUCHSIA_CITY" }
+        {"text": "Route 7", "target_area": "KANTO_ROUTE_7"},
+        {"text": "Route 16", "target_area": "KANTO_ROUTE_16"},
+        {"text": "Saffron City", "target_area": "SAFFRON_CITY", "flag_condition": "visited_SAFFRON_CITY"},
+        {"text": "Fuchsia City", "target_area": "FUCHSIA_CITY", "flag_condition": "visited_FUCHSIA_CITY"}
       ],
       "explore_options": [
-        { "text": "Heal", "action": "HEAL" },
-        { "text": "Shop", "action": "SHOP" },
-        { "text": "Gym", "action": "GYM" },
-        { "text": "Game Corner", "action": "GAMECORNER" },
-        { "text": "Celadon Mansion", "action": "EVENT", "flag_condition": "not got_tea",
-          "event": { "lines": ["An old woman in the Celadon Mansion smiles at you.", "Nothing beats thirst like some hot Tea. Here, take some!", "The guards around Saffron City look thirsty. Maybe they'd like it too?"],
-                     "gift_item": { "TEA": 1 }, "flag": "got_tea" } }
+        {"text": "Heal", "action": "HEAL"},
+        {"text": "Dept. Store", "action": "SHOP"},
+        {"text": "Gym", "action": "GYM"},
+        {"text": "Game Corner", "action": "GAMECORNER"},
+        {"text": "Celadon Mansion", "action": "EVENT", "flag_condition": "not got_tea", "event": {"lines": ["An old woman in the Celadon Mansion smiles at you.", "Nothing beats thirst like some hot Tea. Here, take some!", "The guards around Saffron City look thirsty. Maybe they'd like it too?"], "gift_item": {"TEA": 1}, "flag": "got_tea"}}
       ],
       "trainer_pool": [],
       "on_enter_event": null
@@ -905,7 +853,7 @@
         "gym": "battle_gym_saffron.png"
       },
       "has_gym": true,
-      "gym": {"requirements": {"flag": "silph_co_cleared", "fail_text": "A Team Rocket Grunt blocks the Gym door! Team Rocket has taken over Silph Co."}, "trainers": [{"name": "Channeler Amanda", "is_boss_battle": true, "class": "CHANNELER", "sprite": "channeler.png", "team": [92, 93], "rewards": {"balls": 2}, "dialogue": {"intro": ["Spirits... guide me!"], "player_won": ["The spirits have left me..."], "player_lost": ["Ghostly power!"]}}, {"name": "Psychic Preston", "is_boss_battle": true, "class": "PSYCHIC", "sprite": "supernerd.png", "team": [79, 80], "rewards": {"balls": 2}, "dialogue": {"intro": ["I see your defeat!"], "player_won": ["I didn't foresee this!"], "player_lost": ["Just as predicted!"]}}], "leader": {"name": "Sabrina", "class": "GYM_LEADER", "is_boss_battle": true, "sprite": "sabrina.png", "team": [64, 122, 49, 65], "levels": [38, 37, 38, 43], "badge_reward": "MARSH", "dialogue": {"intro": ["Welcome to my Gym! Let's see if you can handle the psychic power!"], "player_won": ["Not bad, but you'll need more than that to get through the mind games!", "Take this Marsh Badge."], "player_lost": ["You got psychically overwhelmed!"]}, "rewards": {"balls": 10, "RARE_CANDY": 1, "AIR_BALLOON": 1}, "movesets": {"64": ["PSYBEAM", "REFLECT", "FUTURE-SIGHT", "CALM-MIND"], "122": ["BARRIER", "PSYBEAM", "BATON-PASS", "CALM-MIND"], "49": ["PSYBEAM", "GUST", "LEECH-LIFE", "SUPERSONIC"], "65": ["PSYCHIC", "RECOVER", "FUTURE-SIGHT", "CALM-MIND"]}}},
+      "gym": {"requirements": {"flag": "silph_co_cleared", "fail_text": "A Team Rocket Grunt blocks the Gym door! Team Rocket has taken over Silph Co."}, "trainers": [{"name": "Channeler Amanda", "is_boss_battle": true, "class": "CHANNELER", "sprite": "channeler.png", "team": [92, 93], "rewards": {"balls": 2}, "dialogue": {"intro": ["Spirits... guide me!"], "player_won": ["The spirits have left me..."], "player_lost": ["Ghostly power!"]}}, {"name": "Psychic Preston", "is_boss_battle": true, "class": "PSYCHIC", "sprite": "supernerd.png", "team": [79, 80], "rewards": {"balls": 2}, "dialogue": {"intro": ["I see your defeat!"], "player_won": ["I didn't foresee this!"], "player_lost": ["Just as predicted!"]}}], "leader": {"name": "Sabrina", "class": "GYM_LEADER", "is_boss_battle": true, "sprite": "sabrina.png", "team": [64, 122, 49, 65], "levels": [38, 37, 38, 43], "badge_reward": "MARSH", "dialogue": {"intro": ["Welcome to my Gym! Let's see if you can handle the psychic power!"], "player_won": ["Not bad, but you'll need more than that to get through the mind games!", "Take this Marsh Badge."], "player_lost": ["You got psychically overwhelmed!"]}, "rewards": {"balls": 10, "RARE_CANDY": 1}, "movesets": {"64": ["PSYBEAM", "REFLECT", "FUTURE-SIGHT", "CALM-MIND"], "122": ["BARRIER", "PSYBEAM", "BATON-PASS", "CALM-MIND"], "49": ["PSYBEAM", "GUST", "LEECH-LIFE", "SUPERSONIC"], "65": ["PSYCHIC", "RECOVER", "FUTURE-SIGHT", "CALM-MIND"]}}},
       "trainer_encounter_rate": 0,
       "travel_options": [
         { "text": "Route 5", "target_area": "KANTO_ROUTE_5" },
@@ -948,7 +896,18 @@
         { "text": "Confront Rocket", "action": "ROCKET_GAUNTLET", "flag_condition": "not silph_co_cleared" },
         { "text": "Visit the President", "action": "NPC", "target": "silph_president", "flag_condition": "silph_co_cleared" }
       ],
-      "trainer_pool": [{"sprite": "rocket_grunt_m.png", "name": "Grunt", "class": "ROCKET", "is_boss_battle": true, "team": [20, 42], "rewards": {"balls": 3}, "dialogue": {"intro": ["1F: Hey! Silph Co. is closed to visitors. Team Rocket's orders!"], "player_won": ["Gah! The guys upstairs will stop you!"], "player_lost": ["Scram, kid!"]}}, {"sprite": "rocket_grunt_f.png", "name": "Grunt", "class": "ROCKET", "is_boss_battle": true, "team": [24, 41], "rewards": {"balls": 3}, "dialogue": {"intro": ["3F: The warp panels are ours now. You'll never find the way up!"], "player_won": ["How did you solve those warp panels?!"], "player_lost": ["Lost in the maze, huh?"]}}, {"sprite": "scientist.png", "name": "Scientist Taylor", "class": "SCIENTIST", "is_boss_battle": true, "team": [81, 100, 109], "rewards": {"balls": 3}, "dialogue": {"intro": ["4F: Team Rocket pays better than Silph ever did!"], "player_won": ["My calculations... were wrong."], "player_lost": ["Science wins again!"]}}, {"sprite": "rocket_grunt_m.png", "name": "Grunt", "class": "ROCKET", "is_boss_battle": true, "team": [66, 67], "rewards": {"balls": 3}, "dialogue": {"intro": ["5F: We've got the Card Key. Every door in this building is ours!"], "player_won": ["Ugh... take the stupid Card Key."], "player_lost": ["Get lost!"]}}, {"sprite": "scientist.png", "name": "Connor", "class": "SCIENTIST", "team": [137, 82], "rewards": {"balls": 3}, "dialogue": {"intro": ["7F: I... I had to help them! They forced me to finish the Porygon project!"], "player_won": ["Thank you for stopping me. The President is held on the top floor!"], "player_lost": ["I have no choice!"]}}, {"sprite": "proton.png", "name": "Admin Proton", "class": "ROCKET", "is_boss_battle": true, "team": [42, 89, 110], "rewards": {"balls": 8}, "dialogue": {"intro": ["8F: They call me the scariest guy in Team Rocket.", "Let's see if you can count fast enough to keep up!"], "player_won": ["Tch. Archer will deal with you."], "player_lost": ["Too slow, kid."]}}, {"sprite": "archer.png", "name": "Archer", "class": "ROCKET", "is_boss_battle": true, "team": [110, 24, 131], "rewards": {"balls": 10}, "dialogue": {"intro": ["9F: The boss is busy. I'll handle you."], "player_won": ["This changes nothing."], "player_lost": ["Typical child."]}}, {"sprite": "ariana.png", "name": "Executive Ariana", "class": "ROCKET_LEADER", "is_boss_battle": true, "team": [45, 91, 24, 53], "rewards": {"balls": 15, "RARE_CANDY": 2}, "victory_flag": "silph_co_cleared", "dialogue": {"intro": ["11F: How did you get past Archer?", "The President will sign the Master Ball over to Team Rocket, and our boss will control every Poké Ball in Kanto.", "No child is ruining that. Your journey ends here!"], "player_won": ["The prototype! You won't get away with this!", "Team Rocket, pull out! The boss will hear about this child..."], "player_lost": ["Stay out of adult business."]}, "movesets": {"45": ["STUN-SPORE", "GIGA-DRAIN", "SLUDGE-BOMB", "SLEEP-POWDER"], "24": ["SLUDGE-BOMB", "EARTHQUAKE", "IRON-TAIL", "BITE"]}}],
+      "trainer_pool": [
+        {"sprite": "rocket_grunt_m.png", "name": "Grunt", "class": "ROCKET", "is_boss_battle": true, "team": [20, 42], "rewards": {"balls": 3}, "dialogue": {"intro": ["1F: Hey! Silph Co. is closed to visitors. Team Rocket's orders!"], "player_won": ["Gah! The guys upstairs will stop you!"], "player_lost": ["Scram, kid!"]}},
+        {"sprite": "rocket_grunt_f.png", "name": "Grunt", "class": "ROCKET", "is_boss_battle": true, "team": [24, 41], "rewards": {"balls": 3}, "dialogue": {"intro": ["3F: The warp panels are ours now. You'll never find the way up!"], "player_won": ["How did you solve those warp panels?!"], "player_lost": ["Lost in the maze, huh?"]}},
+        {"sprite": "scientist.png", "name": "Scientist Taylor", "class": "SCIENTIST", "is_boss_battle": true, "team": [81, 100, 109], "rewards": {"balls": 3}, "dialogue": {"intro": ["4F: Team Rocket pays better than Silph ever did!"], "player_won": ["My calculations... were wrong."], "player_lost": ["Science wins again!"]}},
+        {"sprite": "rocket_grunt_m.png", "name": "Grunt", "class": "ROCKET", "is_boss_battle": true, "team": [66, 67], "rewards": {"balls": 3}, "dialogue": {"intro": ["5F: We've got the Card Key. Every door in this building is ours!"], "player_won": ["Ugh... take the stupid Card Key."], "player_lost": ["Get lost!"]}},
+        {"sprite": "scientist.png", "name": "Connor", "class": "SCIENTIST", "team": [137, 82], "rewards": {"balls": 3}, "dialogue": {"intro": ["7F: I... I had to help them! They forced me to finish the Porygon project!"], "player_won": ["Thank you for stopping me. The President is held on the top floor!"], "player_lost": ["I have no choice!"]}},
+        {"name": "{rival_name}", "class": "RIVAL", "sprite": "{rival_character}", "is_boss_battle": true, "team": [18, 130, 102, 65, 6], "team_choice": {"1": [18, 130, 102, 65, 6], "4": [18, 58, 102, 65, 9], "7": [18, 130, 58, 65, 3]}, "levels": [37, 38, 35, 35, 40], "rewards": {"balls": 12}, "dialogue": {"intro": ["7F: {rival_name}: Took you long enough, {player_name}!", "The Rocket boss is upstairs with the President. Let's see if you're ready for him."], "player_won": ["{rival_name}: Fine, you're ready. Go save the President.", "I'm not cleaning up after Team Rocket for you!"], "player_lost": ["{rival_name}: Not even close. Turn back while you can."]}},
+        {"sprite": "proton.png", "name": "Admin Proton", "class": "ROCKET", "is_boss_battle": true, "team": [42, 89, 110], "rewards": {"balls": 8}, "dialogue": {"intro": ["8F: They call me the scariest guy in Team Rocket.", "Let's see if you can count fast enough to keep up!"], "player_won": ["Tch. Archer will deal with you."], "player_lost": ["Too slow, kid."]}},
+        {"sprite": "archer.png", "name": "Archer", "class": "ROCKET", "is_boss_battle": true, "team": [110, 24, 131], "rewards": {"balls": 10}, "dialogue": {"intro": ["9F: The boss is busy. I'll handle you."], "player_won": ["This changes nothing."], "player_lost": ["Typical child."]}},
+        {"sprite": "ariana.png", "name": "Executive Ariana", "class": "ROCKET_LEADER", "is_boss_battle": true, "team": [45, 91, 24, 53], "rewards": {"balls": 15, "RARE_CANDY": 2}, "dialogue": {"intro": ["11F: How did you get past Archer?", "The President will sign the Master Ball over to Team Rocket, and our boss will control every Poké Ball in Kanto.", "No child is ruining that. Your journey ends here!"], "player_won": ["The prototype! You won't get away with this!", "...Go on, then. The boss is waiting in the President's office."], "player_lost": ["Stay out of adult business."]}, "movesets": {"45": ["STUN-SPORE", "GIGA-DRAIN", "SLUDGE-BOMB", "SLEEP-POWDER"], "24": ["SLUDGE-BOMB", "EARTHQUAKE", "IRON-TAIL", "BITE"]}},
+        {"sprite": "leader_giovanni.png", "name": "Giovanni", "class": "ROCKET_LEADER", "is_boss_battle": true, "team": [33, 115, 111, 31], "levels": [37, 35, 37, 41], "rewards": {"balls": 15, "RARE_CANDY": 2}, "victory_flag": "silph_co_cleared", "dialogue": {"intro": ["11F: Giovanni: So you're the child who keeps getting in Team Rocket's way.", "Silph's Master Ball was going to make us unstoppable. You'll pay for this!"], "player_won": ["Giovanni: ...Impressive. We'll leave Silph Co. to you, for now.", "But this isn't the last you'll see of Team Rocket."], "player_lost": ["Giovanni: That's what happens when you meddle with Team Rocket."]}}
+      ],
       "on_enter_event": null
     },
 
@@ -963,12 +922,12 @@
         "gym": "battle_gym_fuchsia.png"
       },
       "has_gym": true,
-      "gym": {"trainers": [{"name": "Juggler Kirk", "is_boss_battle": true, "class": "JUGGLER", "sprite": "juggler.png", "team": [96, 64], "rewards": {"balls": 2}, "dialogue": {"intro": ["Let's juggle some Poké Balls!"], "player_won": ["Dropped the ball!"], "player_lost": ["Perfect balance!"]}}, {"name": "Tamer Phil", "is_boss_battle": true, "class": "TAMER", "sprite": "tamer.png", "team": [23, 27], "rewards": {"balls": 2}, "dialogue": {"intro": ["Can you tame the beast?"], "player_won": ["I lost control!"], "player_lost": ["Wild and free!"]}}], "leader": {"name": "Koga", "class": "GYM_LEADER", "is_boss_battle": true, "sprite": "koga.png", "team": [109, 109, 89, 110], "levels": [37, 37, 39, 43], "badge_reward": "SOUL", "dialogue": {"intro": ["Welcome to my Gym! Let's see if you can handle the poison!"], "player_won": ["Not bad, but you'll need more than that to get through the smog!", "Take this Soul Badge."], "player_lost": ["You got poisoned!"]}, "rewards": {"balls": 10, "RARE_CANDY": 1, "SURF_BOARD": 1}, "movesets": {"109": ["SELF-DESTRUCT", "SLUDGE", "SMOKESCREEN", "TOXIC"], "89": ["MINIMIZE", "SLUDGE", "ACID-ARMOR", "TOXIC"], "110": ["TACKLE", "SLUDGE", "SMOKESCREEN", "TOXIC"]}}},
+      "gym": {"trainers": [{"name": "Juggler Kirk", "is_boss_battle": true, "class": "JUGGLER", "sprite": "juggler.png", "team": [96, 64], "rewards": {"balls": 2}, "dialogue": {"intro": ["Let's juggle some Poké Balls!"], "player_won": ["Dropped the ball!"], "player_lost": ["Perfect balance!"]}}, {"name": "Tamer Phil", "is_boss_battle": true, "class": "TAMER", "sprite": "tamer.png", "team": [23, 27], "rewards": {"balls": 2}, "dialogue": {"intro": ["Can you tame the beast?"], "player_won": ["I lost control!"], "player_lost": ["Wild and free!"]}}], "leader": {"name": "Koga", "class": "GYM_LEADER", "is_boss_battle": true, "sprite": "koga.png", "team": [109, 109, 89, 110], "levels": [37, 37, 39, 43], "badge_reward": "SOUL", "dialogue": {"intro": ["Welcome to my Gym! Let's see if you can handle the poison!"], "player_won": ["Not bad, but you'll need more than that to get through the smog!", "Take this Soul Badge."], "player_lost": ["You got poisoned!"]}, "rewards": {"balls": 10, "RARE_CANDY": 1}, "movesets": {"109": ["SELF-DESTRUCT", "SLUDGE", "SMOKESCREEN", "TOXIC"], "89": ["MINIMIZE", "SLUDGE", "ACID-ARMOR", "TOXIC"], "110": ["TACKLE", "SLUDGE", "SMOKESCREEN", "TOXIC"]}}},
       "trainer_encounter_rate": 0,
       "travel_options": [
         { "text": "Route 15", "target_area": "KANTO_ROUTE_15" },
         { "text": "Route 18", "target_area": "KANTO_ROUTE_18" },
-        { "text": "Route 19", "target_area": "KANTO_ROUTE_19", "item_condition": "SURF_BOARD" },
+        { "text": "Route 19", "target_area": "KANTO_ROUTE_19", "item_condition": "HM_SURF" },
         { "text": "Safari Zone", "target_area": "SAFARI_ZONE" },
         { "text": "Celadon City", "target_area": "CELADON_CITY", "flag_condition": "visited_CELADON_CITY" },
         { "text": "Lavender Town", "target_area": "LAVENDER_TOWN", "flag_condition": "visited_LAVENDER_TOWN" },
@@ -1005,15 +964,11 @@
         { "text": "Pallet Town", "target_area": "PALLET_TOWN", "flag_condition": "visited_KANTO_ROUTE_21" }
       ],
       "explore_options": [
-        { "text": "Heal", "action": "HEAL" },
-        { "text": "Shop", "action": "SHOP" },
-        { "text": "Gym", "action": "GYM" },
-        { "text": "Pokemon Mansion", "action": "EVENT", "flag_condition": "not got_secret_key",
-          "event": { "lines": ["The burned-out Pokemon Mansion. Old journals talk about a Pokemon called Mewtwo...", "Burglar: Hey! Whatever's in here is mine!"],
-                     "flag": "got_secret_key",
-                     "battle": { "name": "Burglar Simon", "class": "BURGLAR", "sprite": "burglar.png", "team": [58, 37, 59], "level": 36,
-                                 "rewards": { "balls": 3, "SECRET_KEY": 1 },
-                                 "dialogue": { "player_won": ["Burglar: Fine, fine! Take the stupid key!", "You found the SECRET KEY! It opens the Cinnabar Gym."] } } } }
+        {"text": "Heal", "action": "HEAL"},
+        {"text": "Shop", "action": "SHOP"},
+        {"text": "Gym", "action": "GYM"},
+        {"text": "Pokemon Lab", "action": "NPC", "target": "fossil_lab"},
+        {"text": "Pokemon Mansion", "action": "EVENT", "flag_condition": "not got_secret_key", "event": {"lines": ["The burned-out Pokemon Mansion. Old journals talk about a Pokemon called Mewtwo...", "Burglar: Hey! Whatever's in here is mine!"], "flag": "got_secret_key", "battle": {"name": "Burglar Simon", "class": "BURGLAR", "sprite": "burglar.png", "team": [58, 37, 59], "level": 36, "rewards": {"balls": 3, "SECRET_KEY": 1}, "dialogue": {"player_won": ["Burglar: Fine, fine! Take the stupid key!", "You found the SECRET KEY! It opens the Cinnabar Gym."]}}}}
       ],
       "trainer_pool": [],
       "on_enter_event": null
@@ -1287,12 +1242,13 @@
         }
       ],
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
-        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
-        { "text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE" },
-        { "text": "CERULEAN CITY", "action": "EXIT", "target": "CERULEAN_CITY", "condition": "can_exit", "color": "RED" },
-        { "text": "UNDERGROUND PATH", "action": "EXIT", "target": "UNDERGROUND_PATH", "condition": "can_exit", "color": "RED" }
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        {"text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE"},
+        {"text": "CERULEAN CITY", "action": "EXIT", "target": "CERULEAN_CITY", "condition": "can_exit", "color": "RED"},
+        {"text": "UNDERGROUND PATH", "action": "EXIT", "target": "UNDERGROUND_PATH", "condition": "can_exit", "color": "RED"},
+        {"text": "SAFFRON CITY", "action": "EXIT", "target": "SAFFRON_CITY", "condition": ["can_exit", "has_item:TEA"], "color": "RED"}
       ],
       "next_area": "UNDERGROUND_PATH",
       "on_enter_event": null
@@ -1328,11 +1284,12 @@
           }
       ],
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
-        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
-        { "text": "UNDERGROUND PATH", "action": "EXIT", "target": "UNDERGROUND_PATH", "condition": "can_exit", "color": "RED" },
-        { "text": "VERMILLION CITY", "action": "EXIT", "target": "VERMILLION_CITY", "condition": "can_exit", "color": "RED" }
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        {"text": "UNDERGROUND PATH", "action": "EXIT", "target": "UNDERGROUND_PATH", "condition": "can_exit", "color": "RED"},
+        {"text": "VERMILLION CITY", "action": "EXIT", "target": "VERMILLION_CITY", "condition": "can_exit", "color": "RED"},
+        {"text": "SAFFRON CITY", "action": "EXIT", "target": "SAFFRON_CITY", "condition": ["can_exit", "has_item:TEA"], "color": "RED"}
       ],
       "next_area": "VERMILLION_CITY",
       "on_enter_event": null
@@ -1451,7 +1408,7 @@
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         { "text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE" },
         { "text": "ROUTE 9", "action": "EXIT", "target": "KANTO_ROUTE_9", "condition": "can_exit", "color": "RED" },
-        { "text": "POWER PLANT", "action": "EXIT", "target": "POWER_PLANT", "condition": ["can_exit", "has_item:SURF_BOARD"], "color": "RED" },
+        { "text": "POWER PLANT", "action": "EXIT", "target": "POWER_PLANT", "condition": ["can_exit", "has_item:HM_SURF"], "color": "RED" },
         { "text": "ROCK TUNNEL", "action": "EXIT", "target": "ROCK_TUNNEL_CITY", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "ROCK_TUNNEL_CITY",
@@ -1501,11 +1458,6 @@
       "area_type": "wild_route",
       "route_name": "Route 11",
       "battle_type": "field",
-      "area_boss": {
-        "id": 143,
-        "victory_flag": "KANTO_ROUTE_11_boss_defeated",
-        "name": "Snorlax"
-      },
       "wild_pool_percentages": "KANTO_ROUTE_11_PERCENTAGES",
       "alt_forms": { "enabled": true, "weights": { "19_alolan": 0.01, "20_alolan": 0.01 } },
       "can_fish": true,
@@ -1519,15 +1471,14 @@
         { "sprite": "engineer.png", "name": "Bernie", "class": "ENGINEER", "team": [100, 81], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
-        { "text": "WAKE SNORLAX", "action": "BOSS", "condition": "boss_available_with_flute", "color": "GOLD" },
-        { "text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE" },
-        { "text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE" },
-        { "text": "VERMILLION CITY", "action": "EXIT", "target": "VERMILLION_CITY", "condition": "can_exit", "color": "RED" },
-        { "text": "ROUTE 12", "action": "EXIT", "target": "KANTO_ROUTE_12", "condition": "snorlax_defeated", "color": "RED" },
-        { "text": "DIGGLETT CAVE", "action": "EXIT", "target": "DIGGLETT_CAVE", "condition": "snorlax_defeated", "color": "RED" }
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN"},
+        {"text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE"},
+        {"text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE"},
+        {"text": "VERMILLION CITY", "action": "EXIT", "target": "VERMILLION_CITY", "condition": "can_exit", "color": "RED"},
+        {"text": "ROUTE 12", "action": "EXIT", "target": "KANTO_ROUTE_12", "condition": "can_exit", "color": "RED"},
+        {"text": "DIGGLETT CAVE", "action": "EXIT", "target": "DIGGLETT_CAVE", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "DIGGLETT_CAVE",
       "on_enter_event": null
@@ -1548,16 +1499,18 @@
         { "sprite": "birdkeeper.png", "name": "Edwin", "class": "BIRD_KEEPER", "team": [22, 17], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
-        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
-        { "text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE" },
-        { "text": "ROUTE 11", "action": "EXIT", "target": "KANTO_ROUTE_11", "condition": ["can_access_route_11", "can_exit"], "color": "RED" },
-        { "text": "LAVENDER TOWN", "action": "EXIT", "target": "LAVENDER_TOWN", "condition": "can_exit", "color": "RED" },
-        { "text": "ROUTE 13", "action": "EXIT", "target": "KANTO_ROUTE_13", "condition": "can_exit", "color": "RED" }
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        {"text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE"},
+        {"text": "WAKE SNORLAX", "action": "BOSS", "condition": "boss_available_with_flute", "color": "GOLD"},
+        {"text": "ROUTE 11", "action": "EXIT", "target": "KANTO_ROUTE_11", "condition": "can_exit", "color": "RED"},
+        {"text": "LAVENDER TOWN", "action": "EXIT", "target": "LAVENDER_TOWN", "condition": "can_exit", "color": "RED"},
+        {"text": "ROUTE 13", "action": "EXIT", "target": "KANTO_ROUTE_13", "condition": ["can_exit", "boss_defeated"], "color": "RED"}
       ],
       "next_area": "KANTO_ROUTE_13",
-      "on_enter_event": null
+      "on_enter_event": null,
+        "area_boss": {"id": 143, "victory_flag": "KANTO_ROUTE_12_boss_defeated", "name": "Snorlax"}
     },
 
 
@@ -1697,14 +1650,16 @@
         { "sprite": "birdkeeper.png", "name": "Ramiro", "class": "BIRD_KEEPER", "team": [22, 17], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
-        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
-        { "text": "CELADON CITY", "action": "EXIT", "target": "CELADON_CITY", "condition": "can_exit", "color": "RED" },
-        { "text": "ROUTE 17", "action": "EXIT", "target": "KANTO_ROUTE_17", "condition": ["can_exit", "has_item:BICYCLE"], "color": "RED" }
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        {"text": "WAKE SNORLAX", "action": "BOSS", "condition": "boss_available_with_flute", "color": "GOLD"},
+        {"text": "CELADON CITY", "action": "EXIT", "target": "CELADON_CITY", "condition": "can_exit", "color": "RED"},
+        {"text": "ROUTE 17", "action": "EXIT", "target": "KANTO_ROUTE_17", "condition": ["can_exit", "has_item:BICYCLE", "boss_defeated"], "color": "RED"}
       ],
       "next_area": "KANTO_ROUTE_17",
-      "on_enter_event": null
+      "on_enter_event": null,
+        "area_boss": {"id": 143, "victory_flag": "KANTO_ROUTE_16_boss_defeated", "name": "Snorlax"}
     },
 
     "KANTO_ROUTE_17": {
@@ -1772,11 +1727,12 @@
         { "sprite": "swimmer_f.png", "name": "Lil", "class": "SWIMMER", "team": [116, 131], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
-        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
-        { "text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE" },
-        { "text": "ROUTE 20", "action": "EXIT", "condition": "can_exit", "color": "RED" }
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        {"text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE"},
+        {"text": "ROUTE 20", "action": "EXIT", "condition": "can_exit", "color": "RED"},
+        {"text": "FUCHSIA CITY", "action": "EXIT", "target": "FUCHSIA_CITY", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "KANTO_ROUTE_20",
       "on_enter_event": null
@@ -1848,15 +1804,10 @@
         { "sprite": "birdkeeper.png", "name": "Bird Keeper Wilton", "class": "BIRD_KEEPER", "team": [21, 22], "rewards": { "balls": 3 } },
         { "sprite": "birdkeeper.png", "name": "Bird Keeper Ramiro", "class": "BIRD_KEEPER", "team": [16, 17, 16], "rewards": { "balls": 3 } }
       ],
-      "on_enter_event": {
-        "type": "trainer_battle",
-        "trainer": {
-          "name": "{rival_name}", "class": "RIVAL", "sprite": "{rival_character}",
-          "team": [10101, 10100]
-        },
-        "condition": "badges_less: 1",
-        "flag_check": "defeated_rival_route22_early"
-      },
+      "on_enter_event": [
+        {"type": "trainer_battle", "trainer": {"name": "{rival_name}", "class": "RIVAL", "sprite": "{rival_character}", "team": [10101, 10100]}, "condition": ["badges_less: 1", "received_pokedex_kanto"], "flag_check": "defeated_rival_route22_early"},
+        {"type": "trainer_battle", "trainer": {"name": "{rival_name}", "class": "RIVAL", "sprite": "{rival_character}", "is_boss_battle": true, "team": [18, 111, 102, 130, 65, 6], "team_choice": {"1": [18, 111, 102, 130, 65, 6], "4": [18, 111, 58, 102, 65, 9], "7": [18, 111, 130, 58, 65, 3]}, "levels": [47, 45, 45, 45, 47, 53], "rewards": {"balls": 15, "RARE_CANDY": 1}, "dialogue": {"intro": ["{rival_name}: So you've got all eight badges too, {player_name}.", "I'm on my way to the Pokemon League. You can be my last warm-up!"], "player_won": ["{rival_name}: ...Fine. I'll see you at the Indigo Plateau.", "Don't keep me waiting up there!"], "player_lost": ["{rival_name}: Ha! Better luck at the League, {player_name}."]}}, "condition": ["has_8_kanto_badges", "not:beat_champion"], "flag_check": "defeated_rival_route22_late"}
+      ],
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
@@ -1898,7 +1849,7 @@
 
     "KANTO_ROUTE_24": {
       "area_type": "wild_route",
-      "route_name": "Route 24",
+      "route_name": "Nugget Bridge",
       "battle_type": "field",
       "can_fish": true,
       "has_trees": true,
@@ -1908,33 +1859,31 @@
       "trainer_encounter_rate": 0.1,
       "min_rounds": 2,
       "trainer_pool": [
-        { "sprite": "bug_catcher.png", "name": "Ethan", "class": "BUG_CATCHER", "team": [10, 11, 13, 14], "rewards": { "balls": 3, "OLD_ROD": 1 },
-          "dialogue": {
-            "intro": ["Some people use bugs as bait for fishing."],
-            "player_won": ["I don't like fishing. Here, have this."],
-            "player_lost": ["Looks like the bait lured you in."] }
-      },
-        { "sprite": "camper.png", "name": "Josh", "class": "YOUNGSTER", "team": [25, 56], "rewards": { "balls": 3 } },
-        { "sprite": "rocket_grunt_m.png", "name": "Grunt", "class": "ROCKET_GRUNT", "team": [23, 41], "rewards": { "balls": 3 } }
+        {"name": "Bug Catcher Cale", "class": "BUG_CATCHER", "sprite": "bug_catcher.png", "team": [10, 13, 11, 14], "rewards": {"balls": 3}},
+        {"name": "Lass Ali", "class": "LASS", "sprite": "lass.png", "team": [16, 43, 69], "rewards": {"balls": 3}},
+        {"name": "Youngster Timmy", "class": "YOUNGSTER", "sprite": "youngster.png", "team": [27, 23], "rewards": {"balls": 3}},
+        {"name": "Lass Reli", "class": "LASS", "sprite": "lass.png", "team": [32, 29], "rewards": {"balls": 3}},
+        {"name": "Camper Ethan", "class": "CAMPER", "sprite": "camper.png", "team": [56], "rewards": {"balls": 3}},
+        {"name": "Team Rocket Grunt", "class": "ROCKET_GRUNT", "sprite": "rocket_grunt_m.png", "team": [23, 41], "rewards": {"balls": 8}, "is_boss_battle": true, "dialogue": {"intro": ["Congratulations! You beat our five contest trainers! Here's a nugget...", "...Now, how about joining Team Rocket? No? Then I'll make you!"], "player_won": ["Arrgh! You're good. You'd have made a great Rocket..."], "player_lost": ["Heh. Think about it!"]}},
+        {"name": "Camper Shane", "class": "CAMPER", "sprite": "camper.png", "team": [19, 23], "rewards": {"balls": 3}}
       ],
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
-        { "text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE" },
-        { "text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE" },
-        { "text": "CERULEAN CAVE", "action": "EXIT", "target": "CERULEAN_CAVE", "condition": "beat_champion", "color": "RED" },
-        { "text": "CERULEAN CITY", "action": "EXIT", "target": "CERULEAN_CITY", "condition": "can_exit", "color": "RED" },
-        { "text": "ROUTE 25", "action": "EXIT", "target": "KANTO_ROUTE_25", "condition": ["can_exit", "no_trainers"], "color": "RED" }
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN"},
+        {"text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE"},
+        {"text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE"},
+        {"text": "CERULEAN CITY", "action": "EXIT", "target": "CERULEAN_CITY", "condition": "can_exit", "color": "RED"},
+        {"text": "ROUTE 25", "action": "EXIT", "target": "KANTO_ROUTE_25", "condition": ["can_exit", "no_trainers"], "color": "RED"}
       ],
       "next_area": "KANTO_ROUTE_25",
-      "on_enter_event": null
+      "on_enter_event": {"type": "trainer_battle", "trainer": {"name": "{rival_name}", "class": "RIVAL", "sprite": "{rival_character}", "is_boss_battle": true, "team": [17, 63, 19, 4], "team_choice": {"1": [17, 63, 19, 4], "4": [17, 63, 19, 7], "7": [17, 63, 19, 1]}, "levels": [17, 16, 15, 18], "rewards": {"balls": 8}, "dialogue": {"intro": ["{rival_name}: Hey, {player_name}! Still dragging your feet?", "I already beat Brock and cleared Nugget Bridge. Let's see how your team's grown!"], "player_won": ["{rival_name}: Hmph. Lucky break.", "Bill lives past the bridge. Go see him... if you can get past the trainers!"], "player_lost": ["{rival_name}: Ha! You'll have to do better than that."]}}, "condition": "badges_less: 3", "flag_check": "defeated_rival_nugget_bridge"}
     },
 
 
     "KANTO_ROUTE_25": {
       "area_type": "wild_route",
-      "route_name": "Nugget Bridge",
+      "route_name": "Route 25",
       "battle_type": "field",
       "can_fish": true,
       "alt_forms": { "enabled": true, "weights": { "19_alolan": 0.01, "52_alolan": 0.01, "52_galarian": 0.01 } },
@@ -1942,12 +1891,15 @@
       "trainer_encounter_rate": 0.1,
       "min_rounds": 2,
       "trainer_pool": [
-        { "sprite": "school_kid_m.png", "name": "Dudley", "class": "SCHOOL_KID", "rewards": { "balls": 3 } },
-        { "sprite": "lass.png", "name": "Ellen", "class": "LASS", "rewards": { "balls": 3 } },
-        { "sprite": "camper.png", "name": "Lloyd",  "class": "YOUNGSTER", "team": [25, 56], "rewards": { "balls": 3 } },
-        { "sprite": "hiker.png", "name": "Franklin", "class": "HIKER", "team": [66, 111], "rewards": { "balls": 3 } },
-        { "sprite": "supernerd.png", "name": "Elliot", "class": "SUPER_NERD", "team": [81, 137], "rewards": { "balls": 3 } },
-        { "sprite": "acetrainer_f.png", "name": "Vanessa", "class": "ACE_TRAINER", "team": [2, 5, 8], "rewards": { "balls": 15, "RARE_CANDY": 1 } }
+        {"name": "Hiker Franklin", "class": "HIKER", "sprite": "hiker.png", "team": [66, 74], "rewards": {"balls": 3}},
+        {"name": "Hiker Wayne", "class": "HIKER", "sprite": "hiker.png", "team": [95], "rewards": {"balls": 3}},
+        {"name": "Youngster Joey", "class": "YOUNGSTER", "sprite": "youngster.png", "team": [19, 21], "rewards": {"balls": 3}},
+        {"name": "Youngster Dan", "class": "YOUNGSTER", "sprite": "youngster.png", "team": [79], "rewards": {"balls": 3}},
+        {"name": "Picnicker Kelsey", "class": "PICNICKER", "sprite": "picnicker.png", "team": [32, 29], "rewards": {"balls": 3}},
+        {"name": "Hiker Nob", "class": "HIKER", "sprite": "hiker.png", "team": [74, 74, 66, 74], "rewards": {"balls": 3}},
+        {"name": "Camper Flint", "class": "CAMPER", "sprite": "camper.png", "team": [19, 23], "rewards": {"balls": 3}},
+        {"name": "Youngster Chad", "class": "YOUNGSTER", "sprite": "youngster.png", "team": [23, 27], "rewards": {"balls": 3}},
+        {"name": "Lass Haley", "class": "LASS", "sprite": "lass.png", "team": [43, 16, 43], "rewards": {"balls": 3}}
       ],
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
@@ -2064,7 +2016,16 @@
             "player_won": ["It looks like we were the ones who found trouble!", "Team Rocket's blasting off again!"],
             "player_lost": ["Too easy!"] }, "team": [23, 109, 52], "rewards": { "balls": 3 } }
       ],
-      "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN"}, {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"}, {"text": "TO PEWTER", "action": "EXIT", "target": "MT_MOON_CITY", "condition": "can_exit", "color": "RED"}, {"text": "TO CERULEAN", "action": "EXIT", "target": "KANTO_ROUTE_4", "condition": "can_exit", "color": "RED"}],
+      "route_menu": [
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        {"text": "SUPER NERD", "action": "EVENT", "color": "GOLD", "flag_condition": "not mt_moon_nerd_defeated", "event": {"lines": ["Deep in Mt. Moon, a Super Nerd guards two fossils.", "Super Nerd Miguel: Hey! I found these fossils! They're both mine!"], "flag": "mt_moon_nerd_defeated", "battle": {"name": "Super Nerd Miguel", "class": "SUPER_NERD", "sprite": "supernerd.png", "team": [88, 100, 109], "levels": [11, 11, 11], "rewards": {"balls": 3}, "dialogue": {"player_won": ["Super Nerd Miguel: OK, OK! We'll each take one.", "Pick the one you want!"]}}}},
+        {"text": "TAKE DOME FOSSIL", "action": "EVENT", "color": "GOLD", "condition": ["mt_moon_nerd_defeated", "not:took_dome_fossil", "not:took_helix_fossil"], "event": {"lines": ["You picked up the Dome Fossil!", "Super Nerd Miguel: Then the Helix Fossil is mine. Revive yours at the Cinnabar Island lab!"], "gift_item": {"DOME_FOSSIL": 1}, "flag": "took_dome_fossil"}},
+        {"text": "TAKE HELIX FOSSIL", "action": "EVENT", "color": "GOLD", "condition": ["mt_moon_nerd_defeated", "not:took_dome_fossil", "not:took_helix_fossil"], "event": {"lines": ["You picked up the Helix Fossil!", "Super Nerd Miguel: Then the Dome Fossil is mine. Revive yours at the Cinnabar Island lab!"], "gift_item": {"HELIX_FOSSIL": 1}, "flag": "took_helix_fossil"}},
+        {"text": "TO PEWTER", "action": "EXIT", "target": "MT_MOON_CITY", "condition": "can_exit", "color": "RED"},
+        {"text": "TO CERULEAN", "action": "EXIT", "target": "KANTO_ROUTE_4", "condition": "can_exit", "color": "RED"}
+      ],
       "next_area": "KANTO_ROUTE_4",
       "on_enter_event": null
     },
@@ -2086,11 +2047,11 @@
         { "sprite": "acetrainer_m.png", "name": "Ace Trainer Samuel", "class": "COOLTRAINER", "team": [143, 59, 149], "rewards": { "balls": 10 } }
       ],
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
-        { "text": "CHALLENGE MEWTWO", "action": "BOSS", "condition": "boss_available", "color": "GOLD" },
-        { "text": "EXIT CAVE", "action": "EXIT", "target": "KANTO_ROUTE_24", "condition": "can_exit", "color": "RED" }
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN"},
+        {"text": "CHALLENGE MEWTWO", "action": "BOSS", "condition": "boss_available", "color": "GOLD"},
+        {"text": "CERULEAN CITY", "action": "EXIT", "target": "CERULEAN_CITY", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "KANTO_ROUTE_24",
       "on_enter_event": null
@@ -2144,15 +2105,15 @@
       "trainer_encounter_rate": 0.1,
       "min_rounds": 0,
       "trainer_pool": [
-        { "sprite": "channeler.png", "name": "Carly", "class": "CHANNELER" , "rewards": { "balls": 3 } },
-        { "sprite": "channeler.png", "name": "Laurel", "class": "CHANNELER" , "rewards": { "balls": 3 } },
-        { "sprite": "channeler.png", "name": "Paula", "class": "CHANNELER", "rewards": { "balls": 3 } },
-        { "sprite": "rocket_grunt_m.png", "name": "Grunt", "class": "ROCKET_GRUNT", "team": [41, 19, 96], "rewards": { "balls": 3 } },
-        { "sprite": "rocket_team.png", "name": "Jessie and James", "class": "ROCKET", "team": [23, 109, 52], "rewards": { "balls": 3, "SILPH_SCOPE": 1 } }
+        {"sprite": "channeler.png", "name": "Carly", "class": "CHANNELER", "rewards": {"balls": 3}},
+        {"sprite": "channeler.png", "name": "Laurel", "class": "CHANNELER", "rewards": {"balls": 3}},
+        {"sprite": "channeler.png", "name": "Paula", "class": "CHANNELER", "rewards": {"balls": 3}},
+        {"sprite": "rocket_grunt_m.png", "name": "Grunt", "class": "ROCKET_GRUNT", "team": [41, 19, 96], "rewards": {"balls": 3}},
+        {"sprite": "rocket_team.png", "name": "Jessie and James", "class": "ROCKET", "team": [23, 109, 52], "rewards": {"balls": 3}}
       ],
       "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN"}, {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"}, {"text": "CONFRONT GHOST", "action": "BOSS", "condition": "boss_available", "has_SILPH_SCOPE": true, "color": "GOLD"}, {"text": "THE BLACK FOG", "action": "BOSS", "color": "PURPLE", "flag_condition": "not black_fog_banished_kanto_pokemon_tower", "boss": {"id": 10501, "name": "Black Fog", "level": 25, "no_catch": true, "victory_flag": "black_fog_banished_kanto_pokemon_tower", "lines": ["The air turns ice-cold. A black fog pours across the floor...", "Two huge eyes open in the dark. A giant Haunter rises: the Black Fog!", "Long ago people worshipped it as a god. It feeds on dreams. Don't let it get yours!"], "won": ["The Black Fog is too proud to ever be caught.", "It Self-Destructs in a burst of black mist... and is gone.", "But a cold whisper lingers: it will rise again in another haunted place."], "rewards": {"balls": 10, "RARE_CANDY": 3}}}, {"text": "EXIT TOWER", "action": "EXIT", "target": "LAVENDER_TOWN", "condition": "can_exit", "color": "RED"}],
       "next_area": "LAVENDER_TOWN",
-      "on_enter_event": null
+      "on_enter_event": {"type": "trainer_battle", "trainer": {"name": "{rival_name}", "class": "RIVAL", "sprite": "{rival_character}", "is_boss_battle": true, "team": [17, 130, 102, 64, 5], "team_choice": {"1": [17, 130, 102, 64, 5], "4": [17, 58, 102, 64, 8], "7": [17, 130, 58, 64, 2]}, "levels": [25, 23, 22, 20, 25], "rewards": {"balls": 10}, "dialogue": {"intro": ["{rival_name}: What are you doing here, {player_name}? Your Pokemon are fine, aren't they?", "Mine are healthy. Let me show you!"], "player_won": ["{rival_name}: ...I came to pay my respects. Don't make it weird.", "The ghost upstairs can't be seen without a Silph Scope. Good luck with that."], "player_lost": ["{rival_name}: Go rest your team, {player_name}."]}}, "condition": "not:tower_ghost_defeated", "flag_check": "defeated_rival_tower"}
     },
 
 
@@ -2237,8 +2198,7 @@
       "next_area": "INDIGO_PLATEAU",
       "on_enter_event": null
     }
-
-  },
+    },
 
 
 
@@ -2267,7 +2227,7 @@
   "KANTO_ROUTE_1_PERCENTAGES": {"16":45,"19":54,"2001":1},
 
   "KANTO_ROUTE_2": [10,11,13,14,16,19,25,2001],
-  "KANTO_ROUTE_2_PERCENTAGES": {"16":30,"19":24,"10":15,"13":15,"11":5,"14":5,"25":5,"2001":1},
+  "KANTO_ROUTE_2_PERCENTAGES": { "122": 3,"16":30,"19":24,"10":15,"13":15,"11":5,"14":5,"25":5,"2001":1},
 
   "KANTO_ROUTE_3": [16,21,23,27,35,39,56,2004],
   "KANTO_ROUTE_3_PERCENTAGES": {"16":20,"21":20,"23":12,"27":12,"35":10,"39":10,"56":15,"2004":1},
@@ -2276,16 +2236,16 @@
   "KANTO_ROUTE_4_PERCENTAGES": {"19":19,"21":20,"23":20,"27":19,"39":10,"56":10,"2001":1,"2004":1},
 
   "KANTO_ROUTE_5": [16,17,19,37,39,43,52,58,63,2001,2006,2010,2019],
-  "KANTO_ROUTE_5_PERCENTAGES": {"16":13,"19":12,"37":13,"39":13,"43":12,"52":12,"58":12,"63":12,"2001":1,"2006":1,"2010":1,"2019":1},
+  "KANTO_ROUTE_5_PERCENTAGES": {"16": 32, "52": 28, "43": 20, "69": 20, "2001": 1, "2006": 1, "2010": 1, "2019": 1},
 
   "KANTO_ROUTE_6": [16,17,19,37,39,43,52,54,58,63,2001,2006,2010,2019],
-  "KANTO_ROUTE_6_PERCENTAGES": {"16":12,"19":10,"37":10,"39":11,"43":11,"52":10,"58":10,"54":9,"63":10,"17":2,"2001":1,"2006":1,"2010":1,"2019":1},
+  "KANTO_ROUTE_6_PERCENTAGES": {"16": 32, "52": 28, "43": 20, "69": 20, "2001": 1, "2006": 1, "2010": 1, "2019": 1},
 
   "KANTO_ROUTE_7": [16,19,37,39,52,56,58,63,69,122,2001,2006,2010,2026,2011],
-  "KANTO_ROUTE_7_PERCENTAGES": {"16":15,"19":15,"37":10,"39":11,"52":9,"56":11,"69":11,"58":4,"63":5,"122":4,"2001":1,"2006":1,"2010":1,"2026":1,"2011":1},
+  "KANTO_ROUTE_7_PERCENTAGES": {"52": 31, "16": 23, "43": 15, "58": 8, "69": 15, "37": 8, "2001": 1, "2006": 1, "2010": 1, "2026": 1, "2011": 1},
 
   "KANTO_ROUTE_8": [16,19,37,39,52,58,63,93,113,2001,2006,2010],
-  "KANTO_ROUTE_8_PERCENTAGES": {"16":15,"19":14,"37":13,"39":14,"52":14,"58":14,"63":10,"93":1,"113":1,"2001":1,"2006":1,"2010":1},
+  "KANTO_ROUTE_8_PERCENTAGES": {"16": 21, "52": 21, "23": 14, "58": 14, "27": 14, "37": 14, "2001": 1, "2006": 1, "2010": 1},
 
   "KANTO_ROUTE_9": [19,21,22,23,27,29,32,48,56,2001,2004],
   "KANTO_ROUTE_9_PERCENTAGES": {"19":14,"21":15,"23":10,"27":9,"29":10,"32":10,"48":10,"56":10,"22":10,"2001":1,"2004":1},
@@ -2294,7 +2254,7 @@
   "KANTO_ROUTE_10_PERCENTAGES": {"19":19,"21":20,"29":15,"30":5,"32":15,"33":5,"66":5,"98":5,"100":4,"125":5,"2001":1},
 
   "KANTO_ROUTE_11": [16,17,19,20,81,96,97,122,2001,2002,2026,2003],
-  "KANTO_ROUTE_11_PERCENTAGES": {"16":25,"17":5,"19":23,"20":4,"81":15,"96":15,"97":5,"122":4,"2001":1,"2002":1,"2026":1,"2003":1},
+  "KANTO_ROUTE_11_PERCENTAGES": {"23": 29, "21": 25, "96": 18, "27": 29, "2001": 1, "2002": 1, "2026": 1, "2003": 1},
 
   "KANTO_ROUTE_12": [16,17,43,44,69,70,83,98,99,2024],
   "KANTO_ROUTE_12_PERCENTAGES": {"69":18,"98":18,"16":17,"43":17,"17":6,"44":6,"70":6,"83":5,"99":6,"2024":1},
@@ -2368,7 +2328,7 @@
   "DIGGLETT_CAVE_PERCENTAGES": {"50":94,"51":4,"2008":1,"2009":1},
 
   "CERULEAN_CAVE": [54,55,60,61,86,87,90,91,108,111,112,132,137,148,149],
-  "CERULEAN_CAVE_PERCENTAGES": {"54":12,"60":12,"86":12,"90":12,"111":12,"108":8,"55":4,"61":4,"87":4,"91":4,"112":4,"132":4,"137":4,"148":3,"149":1},
+  "CERULEAN_CAVE_PERCENTAGES": {"47": 16, "82": 12, "42": 16, "57": 7, "132": 16, "67": 12, "101": 3, "64": 16},
 
   "SEAFOAM_ISLANDS": [7,8,79,80,86,87,90,91,98,99,124,131,134,2022,2023,2006,2007],
   "SEAFOAM_ISLANDS_PERCENTAGES": {"7":20,"8":5,"79":16,"80":5,"86":20,"87":5,"90":20,"91":5,"98":20,"99":5,"124":10,"131":10,"134":10,"2022":1,"2023":1,"2006":1,"2007":1},
@@ -2391,6 +2351,11 @@
   "GAME_TEXT": {
     "loading_starters": "Loading starters...",
     "choose_partner": "CHOOSE YOUR PARTNER!",
+    "kanto_newgame_intro": [
+      "Welcome to the world of Pokemon! You live in Pallet Town, a quiet town in the Kanto region.",
+      "Today you're finally old enough to start your own Pokemon journey.",
+      "Route 1 is just north of town. Time to head out!"
+    ],
     "chosen_starter": "You chose {name}!",
     "starter_befriend": "Answer {n} questions to befriend {name}!",
     "correct": "Correct!",
@@ -2443,5 +2408,38 @@
     "medium_win_combo": "MEDIUM WIN! 2 MATCH + POKEBALL!",
     "small_win_pokeballs": "SMALL WIN! 3 POKEBALLS!",
     "won_amount": "WON: ${amount}!"
-  }
+  },
+  "KANTO_ROUTE_10_OLD_ROD_PERCENTAGES": {"129": 100},
+  "KANTO_ROUTE_10_GOOD_ROD_PERCENTAGES": {"116": 43, "98": 43, "129": 14},
+  "KANTO_ROUTE_10_SUPER_ROD_PERCENTAGES": {"116": 45, "130": 8, "54": 1, "98": 45, "79": 1},
+  "KANTO_ROUTE_11_OLD_ROD_PERCENTAGES": {"129": 100},
+  "KANTO_ROUTE_11_GOOD_ROD_PERCENTAGES": {"116": 43, "98": 43, "129": 14},
+  "KANTO_ROUTE_11_SUPER_ROD_PERCENTAGES": {"116": 45, "130": 8, "54": 1, "98": 45, "79": 1},
+  "KANTO_ROUTE_12_OLD_ROD_PERCENTAGES": {"129": 100},
+  "KANTO_ROUTE_12_GOOD_ROD_PERCENTAGES": {"116": 43, "98": 43, "129": 14},
+  "KANTO_ROUTE_12_SUPER_ROD_PERCENTAGES": {"116": 45, "130": 8, "54": 1, "98": 45, "79": 1},
+  "KANTO_ROUTE_13_OLD_ROD_PERCENTAGES": {"129": 100},
+  "KANTO_ROUTE_13_GOOD_ROD_PERCENTAGES": {"116": 43, "98": 43, "129": 14},
+  "KANTO_ROUTE_13_SUPER_ROD_PERCENTAGES": {"116": 45, "130": 8, "54": 1, "98": 45, "79": 1},
+  "SAFARI_ZONE_OLD_ROD_PERCENTAGES": {"129": 100},
+  "SAFARI_ZONE_GOOD_ROD_PERCENTAGES": {"118": 60, "60": 20, "129": 20},
+  "SAFARI_ZONE_SUPER_ROD_PERCENTAGES": {"118": 38, "119": 38, "147": 14, "54": 4, "148": 1, "79": 4},
+  "KANTO_ROUTE_19_OLD_ROD_PERCENTAGES": {"129": 100},
+  "KANTO_ROUTE_19_GOOD_ROD_PERCENTAGES": {"116": 43, "98": 43, "129": 14},
+  "KANTO_ROUTE_19_SUPER_ROD_PERCENTAGES": {"116": 43, "130": 8, "117": 2, "54": 1, "98": 43, "99": 2, "79": 1},
+  "KANTO_ROUTE_20_OLD_ROD_PERCENTAGES": {"129": 100},
+  "KANTO_ROUTE_20_GOOD_ROD_PERCENTAGES": {"116": 43, "98": 43, "129": 14},
+  "KANTO_ROUTE_20_SUPER_ROD_PERCENTAGES": {"116": 43, "130": 8, "117": 2, "54": 1, "98": 43, "99": 2, "79": 1},
+  "KANTO_ROUTE_21_OLD_ROD_PERCENTAGES": {"129": 100},
+  "KANTO_ROUTE_21_GOOD_ROD_PERCENTAGES": {"116": 43, "98": 43, "129": 14},
+  "KANTO_ROUTE_21_SUPER_ROD_PERCENTAGES": {"116": 43, "130": 8, "117": 2, "54": 1, "98": 43, "99": 2, "79": 1},
+  "KANTO_ROUTE_23_OLD_ROD_PERCENTAGES": {"129": 100},
+  "KANTO_ROUTE_23_GOOD_ROD_PERCENTAGES": {"60": 60, "118": 20, "129": 20},
+  "KANTO_ROUTE_23_SUPER_ROD_PERCENTAGES": {"60": 38, "61": 38, "130": 14, "54": 5, "79": 5},
+  "KANTO_ROUTE_24_OLD_ROD_PERCENTAGES": {"129": 100},
+  "KANTO_ROUTE_24_GOOD_ROD_PERCENTAGES": {"116": 43, "98": 43, "129": 14},
+  "KANTO_ROUTE_24_SUPER_ROD_PERCENTAGES": {"116": 45, "130": 8, "54": 1, "98": 45, "79": 1},
+  "KANTO_ROUTE_25_OLD_ROD_PERCENTAGES": {"129": 100},
+  "KANTO_ROUTE_25_GOOD_ROD_PERCENTAGES": {"60": 60, "118": 20, "129": 20},
+  "KANTO_ROUTE_25_SUPER_ROD_PERCENTAGES": {"60": 38, "61": 38, "130": 14, "54": 5, "79": 5}
 }
