@@ -70,45 +70,45 @@
     "paldea_mom_newstart_3": ["Mom: Nemona's family owns a huge estate up the hill. She says you two are rivals now!", "Mom: Be nice to her. And beat her anyway. Ha ha!"]
   },
   "SOCARRAT_TRAIL": [26, 135, 185, 205, 214, 289, 430, 442, 470, 571, 586, 591],
-  "SOCARRAT_TRAIL_PERCENTAGES": { "26": 12, "135": 8, "185": 8, "205": 8, "214": 8, "289": 8, "430": 8, "442": 8, "470": 8, "571": 8, "586": 8, "591": 8 },
+  "SOCARRAT_TRAIL_PERCENTAGES": {"26": 5, "135": 5, "185": 5, "205": 5, "214": 5, "289": 5, "430": 5, "442": 5, "470": 5, "571": 5, "586": 5, "591": 5, "701": 5, "753": 5, "754": 5, "918": 5, "945": 5, "947": 5, "948": 5, "949": 5, "958": 5},
   "DALIZAPA_PASSAGE": [51, 82, 93, 97, 129, 136, 197, 200, 206, 215, 217, 231],
-  "DALIZAPA_PASSAGE_PERCENTAGES": { "51": 12, "82": 8, "93": 8, "97": 8, "129": 8, "136": 8, "197": 8, "200": 8, "206": 8, "215": 8, "217": 8, "231": 8 },
+  "DALIZAPA_PASSAGE_PERCENTAGES": {"51": 2, "82": 2, "93": 2, "97": 2, "129": 2, "136": 2, "197": 2, "200": 2, "206": 2, "215": 2, "217": 2, "231": 2, "232": 2, "246": 2, "281": 2, "288": 2, "297": 2, "302": 2, "308": 2, "324": 2, "326": 2, "361": 2, "371": 2, "425": 2, "426": 2, "430": 2, "437": 2, "442": 2, "444": 2, "461": 2, "475": 2, "478": 2, "585": 2, "586": 2, "610": 2, "611": 2, "613": 2, "614": 2, "627": 2, "633": 2, "668": 2, "673": 2, "735": 2, "745": 2, "749": 2, "750": 2, "757": 2, "758": 2, "820": 2, "872": 2, "879": 2, "920": 2, "933": 2, "952": 2, "955": 2, "956": 2, "958": 2, "966": 2, "967": 2, "971": 2, "972": 2, "974": 2, "996": 2},
   "SOUTH_PROVINCE_AREA_4": [25, 53, 54, 57, 59, 113, 123, 129, 180, 183, 194, 198],
-  "SOUTH_PROVINCE_AREA_4_PERCENTAGES": { "25": 12, "53": 8, "54": 8, "57": 8, "59": 8, "113": 8, "123": 8, "129": 8, "180": 8, "183": 8, "194": 8, "198": 8 },
+  "SOUTH_PROVINCE_AREA_4_PERCENTAGES": {"25": 2, "53": 2, "54": 2, "57": 2, "59": 2, "113": 2, "123": 2, "129": 2, "180": 2, "183": 2, "2058": 2, "198": 2, "200": 2, "204": 2, "206": 2, "228": 2, "229": 2, "231": 2, "232": 2, "307": 2, "326": 2, "333": 2, "339": 2, "396": 2, "397": 2, "415": 2, "417": 2, "418": 2, "425": 2, "436": 2, "447": 2, "548": 2, "549": 2, "550": 2, "585": 2, "586": 2, "627": 2, "662": 2, "665": 2, "669": 2, "670": 2, "672": 2, "701": 2, "704": 2, "734": 2, "744": 2, "758": 2, "833": 2, "848": 2, "856": 2, "885": 2, "915": 2, "917": 2, "922": 2, "932": 2, "935": 2, "938": 2, "939": 2, "942": 2, "948": 2, "955": 2, "973": 2},
   "SOUTH_PROVINCE_AREA_6": [54, 55, 97, 113, 123, 129, 134, 136, 147, 192, 200, 206],
-  "SOUTH_PROVINCE_AREA_6_PERCENTAGES": { "54": 12, "55": 8, "97": 8, "113": 8, "123": 8, "129": 8, "134": 8, "136": 8, "147": 8, "192": 8, "200": 8, "206": 8 },
+  "SOUTH_PROVINCE_AREA_6_PERCENTAGES": {"54": 2, "55": 2, "97": 2, "113": 2, "123": 2, "129": 2, "134": 2, "136": 2, "147": 2, "192": 2, "200": 2, "206": 2, "232": 2, "307": 2, "308": 2, "333": 2, "334": 2, "340": 2, "416": 2, "425": 2, "430": 2, "437": 2, "549": 2, "550": 2, "575": 2, "576": 2, "627": 2, "670": 2, "673": 2, "700": 2, "707": 2, "735": 2, "750": 2, "820": 2, "834": 2, "854": 2, "857": 2, "885": 2, "919": 2, "920": 2, "922": 2, "939": 2, "952": 2, "955": 2, "956": 2, "958": 2, "962": 2, "980": 2},
   "ALFORNADA_CAVERN": [50, 51, 181, 197, 206, 246, 247, 297, 302, 307, 308, 334],
-  "ALFORNADA_CAVERN_PERCENTAGES": { "50": 12, "51": 8, "181": 8, "197": 8, "206": 8, "246": 8, "247": 8, "297": 8, "302": 8, "307": 8, "308": 8, "334": 8 },
+  "ALFORNADA_CAVERN_PERCENTAGES": {"50": 3, "51": 3, "181": 3, "197": 3, "206": 3, "246": 3, "247": 3, "297": 3, "302": 3, "307": 3, "308": 3, "334": 3, "354": 3, "371": 3, "372": 3, "426": 3, "429": 3, "443": 3, "444": 3, "475": 3, "633": 3, "735": 3, "745": 3, "749": 3, "750": 3, "757": 3, "758": 3, "849": 3, "920": 3, "933": 3, "969": 3},
   "INLET_GROTTO": [50, 54, 228, 624, 734, 735],
-  "INLET_GROTTO_PERCENTAGES": { "50": 15, "54": 17, "228": 17, "624": 17, "734": 17, "735": 17 },
+  "INLET_GROTTO_PERCENTAGES": {"50": 17, "54": 17, "228": 17, "624": 17, "734": 17, "735": 17},
   "SOUTH_PALDEAN_SEA": [90, 91, 129, 130, 211, 278, 370, 418, 419, 603, 690, 692, 693, 846],
-  "SOUTH_PALDEAN_SEA_PERCENTAGES": { "90": 9, "91": 7, "129": 7, "130": 7, "211": 7, "278": 7, "370": 7, "418": 7, "419": 7, "603": 7, "690": 7, "692": 7, "693": 7, "846": 7 },
+  "SOUTH_PALDEAN_SEA_PERCENTAGES": {"90": 6, "91": 6, "129": 6, "130": 6, "211": 6, "278": 6, "370": 6, "418": 6, "419": 6, "603": 6, "690": 6, "692": 6, "693": 6, "846": 6, "847": 6, "940": 6, "963": 6},
   "WEST_PALDEAN_SEA": [90, 91, 129, 130, 211, 278, 279, 370, 418, 419, 456, 457, 602, 603],
-  "WEST_PALDEAN_SEA_PERCENTAGES": { "90": 9, "91": 7, "129": 7, "130": 7, "211": 7, "278": 7, "279": 7, "370": 7, "418": 7, "419": 7, "456": 7, "457": 7, "602": 7, "603": 7 },
+  "WEST_PALDEAN_SEA_PERCENTAGES": {"90": 4, "91": 4, "129": 4, "130": 4, "211": 4, "278": 4, "279": 4, "370": 4, "418": 4, "419": 4, "456": 4, "457": 4, "602": 4, "603": 4, "690": 4, "692": 4, "779": 4, "846": 4, "847": 4, "940": 4, "941": 4, "962": 4, "963": 4, "976": 4},
   "EAST_PALDEAN_SEA": [90, 91, 129, 130, 192, 211, 370, 415, 416, 418, 419, 666, 669, 670],
-  "EAST_PALDEAN_SEA_PERCENTAGES": { "90": 9, "91": 7, "129": 7, "130": 7, "192": 7, "211": 7, "370": 7, "415": 7, "416": 7, "418": 7, "419": 7, "666": 7, "669": 7, "670": 7 },
+  "EAST_PALDEAN_SEA_PERCENTAGES": {"90": 4, "91": 4, "129": 4, "130": 4, "192": 4, "211": 4, "370": 4, "415": 4, "416": 4, "418": 4, "419": 4, "666": 4, "669": 4, "670": 4, "690": 4, "692": 4, "747": 4, "748": 4, "779": 4, "846": 4, "847": 4, "929": 4, "940": 4, "941": 4, "963": 4},
   "NORTH_PALDEAN_SEA": [90, 91, 129, 130, 211, 279, 419, 457, 594, 602, 603, 690, 691, 692],
-  "NORTH_PALDEAN_SEA_PERCENTAGES": { "90": 9, "91": 7, "129": 7, "130": 7, "211": 7, "279": 7, "419": 7, "457": 7, "594": 7, "602": 7, "603": 7, "690": 7, "691": 7, "692": 7 },
+  "NORTH_PALDEAN_SEA_PERCENTAGES": {"90": 5, "91": 5, "129": 5, "130": 5, "211": 5, "279": 5, "419": 5, "457": 5, "594": 5, "602": 5, "603": 5, "690": 5, "691": 5, "692": 5, "693": 5, "712": 5, "713": 5, "847": 5, "875": 5, "941": 5, "963": 5, "976": 5},
   "GREAT_CRATER_OF_PALDEA": [445, 462],
-  "GREAT_CRATER_OF_PALDEA_PERCENTAGES": { "445": 50, "462": 50 },
+  "GREAT_CRATER_OF_PALDEA_PERCENTAGES": {"445": 50, "462": 50},
   "APPLE_HILLS": [840, 161, 162, 25, 261, 924, 1012, 23, 37, 56, 58, 69, 74, 92],
-  "APPLE_HILLS_PERCENTAGES": { "840": 9, "161": 7, "162": 7, "25": 7, "261": 7, "924": 7, "1012": 7, "23": 7, "37": 7, "56": 7, "58": 7, "69": 7, "74": 7, "92": 7 },
+  "APPLE_HILLS_PERCENTAGES": {"23": 3, "25": 3, "37": 3, "56": 3, "58": 3, "69": 3, "74": 3, "92": 3, "161": 3, "162": 3, "167": 3, "172": 3, "261": 3, "270": 3, "271": 3, "313": 3, "314": 3, "396": 3, "438": 3, "446": 3, "532": 3, "540": 3, "619": 3, "714": 3, "736": 3, "753": 3, "757": 3, "840": 3, "856": 3, "877": 3, "924": 3, "968": 3, "1012": 3},
   "MOSSFELL_CONFLUENCE": [24, 61, 1012, 193, 58, 533, 271, 23, 168, 840, 580, 339, 37, 60],
-  "MOSSFELL_CONFLUENCE_PERCENTAGES": { "24": 9, "61": 7, "1012": 7, "193": 7, "58": 7, "533": 7, "271": 7, "23": 7, "168": 7, "840": 7, "580": 7, "339": 7, "37": 7, "60": 7 },
+  "MOSSFELL_CONFLUENCE_PERCENTAGES": {"23": 2, "24": 2, "37": 2, "58": 2, "60": 2, "61": 2, "69": 2, "70": 2, "92": 2, "93": 2, "94": 2, "129": 2, "161": 2, "162": 2, "163": 2, "164": 2, "167": 2, "168": 2, "190": 2, "193": 2, "194": 2, "195": 2, "214": 2, "220": 2, "234": 2, "271": 2, "273": 2, "274": 2, "280": 2, "283": 2, "284": 2, "313": 2, "314": 2, "339": 2, "341": 2, "396": 2, "397": 2, "401": 2, "402": 2, "417": 2, "447": 2, "532": 2, "533": 2, "540": 2, "541": 2, "542": 2, "548": 2, "580": 2, "714": 2, "742": 2, "743": 2, "744": 2, "753": 2, "783": 2, "819": 2, "833": 2, "840": 2, "841": 2, "842": 2, "948": 2, "1012": 2},
   "ONI_MOUNTAIN": [74, 783, 164, 206, 35, 970, 340, 404, 398, 284, 820, 23, 25, 27],
-  "ONI_MOUNTAIN_PERCENTAGES": { "74": 9, "783": 7, "164": 7, "206": 7, "35": 7, "970": 7, "340": 7, "404": 7, "398": 7, "284": 7, "820": 7, "23": 7, "25": 7, "27": 7 },
+  "ONI_MOUNTAIN_PERCENTAGES": {"23": 1, "25": 1, "27": 1, "28": 1, "35": 1, "37": 1, "56": 1, "58": 1, "74": 1, "75": 1, "92": 1, "93": 1, "109": 1, "129": 1, "130": 1, "163": 1, "164": 1, "172": 1, "173": 1, "185": 1, "193": 1, "194": 1, "195": 1, "206": 1, "207": 1, "214": 1, "215": 1, "218": 1, "220": 1, "228": 1, "229": 1, "234": 1, "261": 1, "262": 1, "270": 1, "271": 1, "273": 1, "274": 1, "280": 1, "281": 1, "283": 1, "284": 1, "299": 1, "325": 1, "339": 1, "340": 1, "349": 1, "355": 1, "358": 1, "361": 1, "396": 1, "397": 1, "398": 1, "401": 1, "402": 1, "403": 1, "404": 1, "417": 1, "433": 1, "436": 1, "437": 1, "438": 1, "443": 1, "444": 1, "446": 1, "447": 1, "448": 1, "532": 1, "580": 1, "602": 1, "607": 1, "619": 1, "624": 1, "629": 1, "703": 1, "704": 1, "714": 1, "736": 1, "737": 1, "744": 1, "745": 1, "753": 1, "757": 1, "778": 1, "783": 1, "820": 1, "845": 1, "846": 1, "847": 1, "856": 1, "876": 1, "877": 1, "924": 1, "948": 1, "962": 1, "968": 1, "969": 1, "970": 1, "982": 1, "1012": 1},
   "CRYSTAL_POOL": [970, 23, 35, 37, 58, 75, 109, 172, 173, 193, 206, 218, 228, 229],
-  "CRYSTAL_POOL_PERCENTAGES": { "970": 9, "23": 7, "35": 7, "37": 7, "58": 7, "75": 7, "109": 7, "172": 7, "173": 7, "193": 7, "206": 7, "218": 7, "228": 7, "229": 7 },
+  "CRYSTAL_POOL_PERCENTAGES": {"23": 3, "35": 3, "37": 3, "58": 3, "75": 3, "109": 3, "172": 3, "173": 3, "193": 3, "206": 3, "218": 3, "228": 3, "229": 3, "339": 3, "349": 3, "355": 3, "358": 3, "433": 3, "436": 3, "443": 3, "444": 3, "532": 3, "607": 3, "703": 3, "709": 3, "714": 3, "744": 3, "757": 3, "846": 3, "856": 3, "969": 3, "970": 3},
   "INFERNAL_PASS": [218, 608, 228, 109, 607, 325, 75, 229, 358, 433, 35, 37, 58, 74],
-  "INFERNAL_PASS_PERCENTAGES": { "218": 9, "608": 7, "228": 7, "109": 7, "607": 7, "325": 7, "75": 7, "229": 7, "358": 7, "433": 7, "35": 7, "37": 7, "58": 7, "74": 7 },
+  "INFERNAL_PASS_PERCENTAGES": {"35": 4, "37": 4, "58": 4, "74": 4, "75": 4, "109": 4, "129": 4, "172": 4, "173": 4, "193": 4, "195": 4, "218": 4, "228": 4, "229": 4, "270": 4, "325": 4, "355": 4, "358": 4, "433": 4, "436": 4, "532": 4, "607": 4, "608": 4, "629": 4, "744": 4, "778": 4, "856": 4, "969": 4},
   "FELLHORN_GORGE": [629, 847, 581, 833, 398, 834, 447, 195, 23, 24, 37, 60, 61, 74],
-  "FELLHORN_GORGE_PERCENTAGES": { "629": 9, "847": 7, "581": 7, "833": 7, "398": 7, "834": 7, "447": 7, "195": 7, "23": 7, "24": 7, "37": 7, "60": 7, "61": 7, "74": 7 },
+  "FELLHORN_GORGE_PERCENTAGES": {"23": 2, "24": 2, "37": 2, "60": 2, "61": 2, "74": 2, "75": 2, "129": 2, "130": 2, "163": 2, "164": 2, "167": 2, "168": 2, "190": 2, "194": 2, "195": 2, "207": 2, "214": 2, "228": 2, "229": 2, "273": 2, "274": 2, "313": 2, "314": 2, "339": 2, "340": 2, "341": 2, "342": 2, "355": 2, "396": 2, "397": 2, "398": 2, "403": 2, "404": 2, "405": 2, "436": 2, "447": 2, "448": 2, "475": 2, "532": 2, "533": 2, "580": 2, "581": 2, "624": 2, "629": 2, "704": 2, "714": 2, "736": 2, "737": 2, "744": 2, "745": 2, "820": 2, "833": 2, "834": 2, "845": 2, "846": 2, "847": 2, "948": 2, "962": 2},
   "ONIS_MAW": [757, 714, 194, 24, 37, 58, 74, 129, 172, 220, 299, 438, 447, 532],
-  "ONIS_MAW_PERCENTAGES": { "757": 9, "714": 7, "194": 7, "24": 7, "37": 7, "58": 7, "74": 7, "129": 7, "172": 7, "220": 7, "299": 7, "438": 7, "447": 7, "532": 7 },
+  "ONIS_MAW_PERCENTAGES": {"24": 5, "37": 5, "58": 5, "74": 5, "129": 5, "172": 5, "194": 5, "220": 5, "299": 5, "438": 5, "447": 5, "532": 5, "714": 5, "757": 5, "846": 5, "856": 5, "877": 5, "924": 5, "968": 5},
   "CHILLING_WATERHEAD": [744, 75, 704, 703, 215, 195, 37, 74, 129, 130, 194, 206, 220, 221],
-  "CHILLING_WATERHEAD_PERCENTAGES": { "744": 9, "75": 7, "704": 7, "703": 7, "215": 7, "195": 7, "37": 7, "74": 7, "129": 7, "130": 7, "194": 7, "206": 7, "220": 7, "221": 7 },
+  "CHILLING_WATERHEAD_PERCENTAGES": {"37": 4, "74": 4, "75": 4, "129": 4, "130": 4, "194": 4, "195": 4, "206": 4, "215": 4, "220": 4, "221": 4, "228": 4, "229": 4, "325": 4, "355": 4, "361": 4, "433": 4, "436": 4, "602": 4, "619": 4, "703": 4, "704": 4, "744": 4, "778": 4, "846": 4, "847": 4, "982": 4},
   "WISTFUL_FIELDS": [193, 533, 541, 542, 281, 856, 744, 742, 743, 75, 299, 446, 619, 23],
-  "WISTFUL_FIELDS_PERCENTAGES": { "193": 9, "533": 7, "541": 7, "542": 7, "281": 7, "856": 7, "744": 7, "742": 7, "743": 7, "75": 7, "299": 7, "446": 7, "619": 7, "23": 7 },
+  "WISTFUL_FIELDS_PERCENTAGES": {"23": 2, "25": 2, "27": 2, "37": 2, "56": 2, "74": 2, "75": 2, "92": 2, "163": 2, "164": 2, "172": 2, "185": 2, "190": 2, "193": 2, "207": 2, "228": 2, "262": 2, "270": 2, "271": 2, "280": 2, "281": 2, "299": 2, "313": 2, "314": 2, "325": 2, "403": 2, "404": 2, "436": 2, "438": 2, "443": 2, "446": 2, "447": 2, "532": 2, "533": 2, "540": 2, "541": 2, "542": 2, "548": 2, "619": 2, "624": 2, "629": 2, "736": 2, "737": 2, "741": 2, "742": 2, "743": 2, "744": 2, "749": 2, "782": 2, "819": 2, "856": 2, "877": 2, "924": 2, "962": 2, "968": 2},
   "STORY_PROGRESSION": {
     "DREADED_DEN": {
       "area_type": "dungeon",
@@ -138,7 +138,8 @@
           "color": "RED"
         }
       ],
-      "next_area": "KITAKAMI_TIMELESS_WOODS"
+      "next_area": "KITAKAMI_TIMELESS_WOODS",
+        "on_enter_event": [{"type": "trainer_battle", "trainer": {"name": "Kieran", "class": "KITAKAMI_TRAINER", "sprite": "kieran.png", "is_boss_battle": true, "team": [275, 469, 1011, 476, 62, 472], "levels": [33, 37, 36, 33, 38, 37], "rewards": {"balls": 6}, "victory_flag": "defeated_kieran_dreaded_den", "dialogue": {"intro": ["Kieran: You had Ogerpon all along... and you didn't tell me. Battle me!"], "player_won": ["Kieran: ...Fine. You win."]}}, "flag_check": "defeated_kieran_dreaded_den", "condition": "KITAKAMI_boss_defeated"}]
     },
     "WISTFUL_FIELDS": {
       "area_type": "wild_route",
@@ -616,7 +617,8 @@
           "color": "RED"
         }
       ],
-      "next_area": "MOSSFELL_CONFLUENCE"
+      "next_area": "MOSSFELL_CONFLUENCE",
+        "on_enter_event": [{"type": "trainer_battle", "trainer": {"name": "Carmine", "class": "KITAKAMI_TRAINER", "sprite": "carmine.png", "is_boss_battle": true, "team": [877, 541, 262, 1012], "levels": [20, 20, 20, 20], "rewards": {"balls": 6}, "victory_flag": "defeated_carmine_oni_mountain", "dialogue": {"intro": ["Carmine: You again? Fine, round two!"], "player_won": ["Carmine: ...Fine. You win."]}}, "flag_check": "defeated_carmine_oni_mountain"}]
     },
     "MOSSFELL_CONFLUENCE": {
       "area_type": "wild_route",
@@ -789,38 +791,12 @@
         }
       ],
       "route_menu": [
-        {
-          "text": "CATCH WILD PKMN",
-          "action": "CATCH",
-          "condition": "has_balls",
-          "color": "BLUE"
-        },
-        {
-          "text": "BATTLE WILD PKMN",
-          "action": "BATTLE",
-          "condition": "can_battle",
-          "color": "GREEN"
-        },
-        {
-          "text": "BATTLE TRAINER",
-          "action": "TRAINER",
-          "condition": "has_trainers",
-          "color": "GREEN"
-        },
-        {
-          "text": "Mossui Town",
-          "action": "EXIT",
-          "target_area": "MOSSUI_TOWN",
-          "condition": "can_exit",
-          "color": "RED"
-        },
-        {
-          "text": "Reveler's Road",
-          "action": "EXIT",
-          "target_area": "KITAKAMI_REVELERS_ROAD",
-          "condition": "can_exit",
-          "color": "RED"
-        }
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        {"text": "Glitterati O'Nare", "action": "EVENT", "color": "GOLD", "flag_condition": "not defeated_onare", "event": {"lines": ["O'Nare: Billy and I came all this way for treasure! Battle us for it!"], "flag": "defeated_onare", "battle": {"name": "Glitterati O'Nare", "class": "PKMN_TRAINER", "sprite": "gentleman.png", "is_boss_battle": true, "team": [930, 53], "levels": [65, 69], "rewards": {"balls": 6}, "dialogue": {"intro": ["O'Nare: Billy and I came all this way for treasure! Battle us for it!"], "player_won": ["O'Nare: Our gold!"]}}}, "condition": "beat_paldea_champion"},
+        {"text": "Mossui Town", "action": "EXIT", "target_area": "MOSSUI_TOWN", "condition": "can_exit", "color": "RED"},
+        {"text": "Reveler's Road", "action": "EXIT", "target_area": "KITAKAMI_REVELERS_ROAD", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "MOSSUI_TOWN"
     },
@@ -862,16 +838,15 @@
         }
       ],
       "explore_options": [
-        {
-          "text": "Pok\u00e9mon Center",
-          "action": "HEAL"
-        },
-        {
-          "text": "Shop",
-          "action": "SHOP"
-        }
+        {"text": "Pokémon Center", "action": "HEAL"},
+        {"text": "Shop", "action": "SHOP"},
+        {"text": "Photographer Perrin", "action": "EVENT", "color": "GOLD", "flag_condition": "not defeated_perrin", "event": {"lines": ["Perrin: I'm hunting a legend with my camera. Show me your best shot!"], "flag": "defeated_perrin", "battle": {"name": "Photographer Perrin", "class": "PKMN_TRAINER", "sprite": "perrin.png", "is_boss_battle": true, "team": [164, 470], "levels": [68, 70], "rewards": {"balls": 6}, "dialogue": {"intro": ["Perrin: I'm hunting a legend with my camera. Show me your best shot!"], "player_won": ["Perrin: What a picture!"]}}}, "condition": "KITAKAMI_boss_defeated"}
       ],
-      "next_area": "KITAKAMI"
+      "next_area": "KITAKAMI",
+        "on_enter_event": [
+          {"type": "trainer_battle", "trainer": {"name": "Carmine", "class": "KITAKAMI_TRAINER", "sprite": "carmine.png", "is_boss_battle": true, "team": [261, 37, 1012], "levels": [12, 12, 13], "rewards": {"balls": 6}, "victory_flag": "defeated_carmine_mossui", "dialogue": {"intro": ["Carmine: So you're the transfer student everyone's talking about? Let's see what you've got!"], "player_won": ["Carmine: ...Fine. You win."]}}, "flag_check": "defeated_carmine_mossui", "condition": "beat_paldea_champion"},
+          {"type": "trainer_battle", "trainer": {"name": "Kieran", "class": "KITAKAMI_TRAINER", "sprite": "kieran.png", "is_boss_battle": true, "team": [161, 193], "levels": [12, 12], "rewards": {"balls": 6}, "victory_flag": "defeated_kieran_mossui", "dialogue": {"intro": ["Kieran: Um... would you battle me? I want to see how strong someone from Paldea is."], "player_won": ["Kieran: ...Fine. You win."]}}, "flag_check": "defeated_kieran_mossui", "condition": "defeated_carmine_mossui"}
+        ]
     },
     "GREAT_CRATER_OF_PALDEA": {
       "area_type": "wild_route",
@@ -1201,100 +1176,15 @@
       "wild_pool_percentages": "ALFORNADA_CAVERN_PERCENTAGES",
       "min_rounds": 1,
       "trainer_pool": [
-        {
-          "name": "Courier Joel",
-          "class": "PKMN_TRAINER",
-          "sprite": "acetrainer_m.png",
-          "team": [
-            750
-          ],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Dragon Tamer Tamara",
-          "class": "DRAGON_TAMER",
-          "sprite": "dragon_tamer.png",
-          "team": [
-            372,
-            705,
-            612
-          ],
-          "rewards": {
-            "balls": 5
-          }
-        },
-        {
-          "name": "Hiker Daniela",
-          "class": "HIKER",
-          "sprite": "hiker.png",
-          "team": [
-            450,
-            745
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "Student Eloisa",
-          "class": "SCHOOL_KID",
-          "sprite": "school_kid_f.png",
-          "team": [
-            857,
-            282
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "Student Yolanda",
-          "class": "SCHOOL_KID",
-          "sprite": "school_kid_m.png",
-          "team": [
-            552,
-            754
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "Youngster Adan",
-          "class": "YOUNGSTER",
-          "sprite": "youngster.png",
-          "team": [
-            49,
-            205
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "Student Alexis",
-          "class": "SCHOOL_KID",
-          "sprite": "school_kid_m.png",
-          "team": [
-            954
-          ],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Scientist Domingo",
-          "class": "SCIENTIST",
-          "sprite": "scientist.png",
-          "team": [
-            101
-          ],
-          "rewards": {
-            "balls": 3
-          }
-        }
+        {"name": "Courier Joel", "class": "PKMN_TRAINER", "sprite": "acetrainer_m.png", "team": [750], "rewards": {"balls": 3}},
+        {"name": "Dragon Tamer Tamara", "class": "DRAGON_TAMER", "sprite": "dragon_tamer.png", "team": [372, 705, 612], "rewards": {"balls": 5}},
+        {"name": "Hiker Daniela", "class": "HIKER", "sprite": "hiker.png", "team": [450, 745], "rewards": {"balls": 4}},
+        {"name": "Student Eloisa", "class": "SCHOOL_KID", "sprite": "school_kid_f.png", "team": [857, 282], "rewards": {"balls": 4}},
+        {"name": "Student Yolanda", "class": "SCHOOL_KID", "sprite": "school_kid_m.png", "team": [552, 754], "rewards": {"balls": 4}},
+        {"name": "Youngster Adan", "class": "YOUNGSTER", "sprite": "youngster.png", "team": [49, 205], "rewards": {"balls": 4}},
+        {"name": "Student Alexis", "class": "SCHOOL_KID", "sprite": "school_kid_m.png", "team": [954], "rewards": {"balls": 3}},
+        {"name": "Scientist Domingo", "class": "SCIENTIST", "sprite": "scientist.png", "team": [101], "rewards": {"balls": 3}},
+        {"name": "Backpacker Aitor", "class": "BACKPACKER", "sprite": "camper.png", "team": [405], "rewards": {"balls": 2}, "levels": [40]}
       ],
       "route_menu": [
         {
@@ -1333,98 +1223,15 @@
       "wild_pool_percentages": "SOUTH_PROVINCE_AREA_6_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
-          "name": "Backpacker Pau",
-          "class": "CAMPER",
-          "sprite": "camper.png",
-          "team": [
-            673
-          ],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Backpacker Aitor",
-          "class": "CAMPER",
-          "sprite": "camper.png",
-          "team": [
-            405
-          ],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Courier Izan",
-          "class": "PKMN_TRAINER",
-          "sprite": "acetrainer_m.png",
-          "team": [
-            966
-          ],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Black Belt Jacobo",
-          "class": "BLACKBELT",
-          "sprite": "blackbelt.png",
-          "team": [
-            766,
-            57
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "Hiker Rocio",
-          "class": "HIKER",
-          "sprite": "hiker.png",
-          "team": [
-            947
-          ],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Student Andres",
-          "class": "SCHOOL_KID",
-          "sprite": "school_kid_f.png",
-          "team": [
-            586,
-            55,
-            668
-          ],
-          "rewards": {
-            "balls": 5
-          }
-        },
-        {
-          "name": "Student Paul",
-          "class": "SCHOOL_KID",
-          "sprite": "school_kid_m.png",
-          "team": [
-            875
-          ],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Student Alan",
-          "class": "SCHOOL_KID",
-          "sprite": "school_kid_f.png",
-          "team": [
-            976,
-            614
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        }
+        {"name": "Backpacker Pau", "class": "CAMPER", "sprite": "camper.png", "team": [673], "rewards": {"balls": 3}},
+        {"name": "Backpacker Aitor", "class": "CAMPER", "sprite": "camper.png", "team": [405], "rewards": {"balls": 3}},
+        {"name": "Courier Izan", "class": "PKMN_TRAINER", "sprite": "acetrainer_m.png", "team": [966], "rewards": {"balls": 3}},
+        {"name": "Black Belt Jacobo", "class": "BLACKBELT", "sprite": "blackbelt.png", "team": [766, 57], "rewards": {"balls": 4}},
+        {"name": "Hiker Rocio", "class": "HIKER", "sprite": "hiker.png", "team": [947], "rewards": {"balls": 3}},
+        {"name": "Student Andres", "class": "SCHOOL_KID", "sprite": "school_kid_f.png", "team": [586, 55, 668], "rewards": {"balls": 5}},
+        {"name": "Student Paul", "class": "SCHOOL_KID", "sprite": "school_kid_m.png", "team": [875], "rewards": {"balls": 3}},
+        {"name": "Student Alan", "class": "SCHOOL_KID", "sprite": "school_kid_f.png", "team": [976, 614], "rewards": {"balls": 4}},
+        {"name": "Worker Eric", "class": "WORKER", "sprite": "engineer.png", "team": [26, 405, 604], "rewards": {"balls": 2}, "levels": [43, 43, 44]}
       ],
       "route_menu": [
         {
@@ -1477,97 +1284,16 @@
       "wild_pool_percentages": "SOUTH_PROVINCE_AREA_4_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
-          "name": "Backpacker Jaime",
-          "class": "CAMPER",
-          "sprite": "camper.png",
-          "team": [
-            741,
-            397,
-            199
-          ],
-          "rewards": {
-            "balls": 5
-          }
-        },
-        {
-          "name": "Black Belt Iago",
-          "class": "BLACKBELT",
-          "sprite": "blackbelt.png",
-          "team": [
-            870
-          ],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Black Belt Armando",
-          "class": "BLACKBELT",
-          "sprite": "blackbelt.png",
-          "team": [
-            453
-          ],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Poke Maniac Matias",
-          "class": "PKMN_TRAINER",
-          "sprite": "acetrainer_f.png",
-          "team": [
-            610
-          ],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Hiker Carla",
-          "class": "HIKER",
-          "sprite": "hiker.png",
-          "team": [
-            322
-          ],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Student Patricia",
-          "class": "SCHOOL_KID",
-          "sprite": "school_kid_f.png",
-          "team": [
-            819
-          ],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Student Pascal",
-          "class": "SCHOOL_KID",
-          "sprite": "school_kid_m.png",
-          "team": [
-            331
-          ],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Student Isona",
-          "class": "SCHOOL_KID",
-          "sprite": "school_kid_f.png",
-          "team": [
-            548,
-            188
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        }
+        {"name": "Backpacker Jaime", "class": "CAMPER", "sprite": "camper.png", "team": [741, 397, 199], "rewards": {"balls": 5}},
+        {"name": "Black Belt Iago", "class": "BLACKBELT", "sprite": "blackbelt.png", "team": [870], "rewards": {"balls": 3}},
+        {"name": "Black Belt Armando", "class": "BLACKBELT", "sprite": "blackbelt.png", "team": [453], "rewards": {"balls": 3}},
+        {"name": "Poke Maniac Matias", "class": "PKMN_TRAINER", "sprite": "acetrainer_f.png", "team": [610], "rewards": {"balls": 3}},
+        {"name": "Hiker Carla", "class": "HIKER", "sprite": "hiker.png", "team": [322], "rewards": {"balls": 3}},
+        {"name": "Student Patricia", "class": "SCHOOL_KID", "sprite": "school_kid_f.png", "team": [819], "rewards": {"balls": 3}},
+        {"name": "Student Pascal", "class": "SCHOOL_KID", "sprite": "school_kid_m.png", "team": [331], "rewards": {"balls": 3}},
+        {"name": "Student Isona", "class": "SCHOOL_KID", "sprite": "school_kid_f.png", "team": [548, 188], "rewards": {"balls": 4}},
+        {"name": "Student Marc", "class": "STUDENT", "sprite": "school_kid_m.png", "team": [971], "rewards": {"balls": 2}, "levels": [20]},
+        {"name": "Youngster Julen", "class": "YOUNGSTER", "sprite": "youngster.png", "team": [938, 133], "rewards": {"balls": 2}, "levels": [23, 23]}
       ],
       "route_menu": [
         {
@@ -1641,97 +1367,20 @@
       "wild_pool_percentages": "DALIZAPA_PASSAGE_PERCENTAGES",
       "min_rounds": 1,
       "trainer_pool": [
-        {
-          "name": "Hiker Mar",
-          "class": "HIKER",
-          "sprite": "hiker.png",
-          "team": [
-            750
-          ],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Artist Carolina",
-          "class": "GENTLEMAN",
-          "sprite": "gentleman.png",
-          "team": [
-            671,
-            779,
-            861
-          ],
-          "rewards": {
-            "balls": 5
-          }
-        },
-        {
-          "name": "Artist Tania",
-          "class": "GENTLEMAN",
-          "sprite": "gentleman.png",
-          "team": [
-            457,
-            478
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "Courier Andre",
-          "class": "PKMN_TRAINER",
-          "sprite": "acetrainer_f.png",
-          "team": [
-            823
-          ],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Courier Martin",
-          "class": "PKMN_TRAINER",
-          "sprite": "acetrainer_m.png",
-          "team": [
-            128
-          ],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Dragon Tamer Luisa",
-          "class": "DRAGON_TAMER",
-          "sprite": "dragon_tamer.png",
-          "team": [
-            997
-          ],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Dragon Tamer Anna",
-          "class": "DRAGON_TAMER",
-          "sprite": "dragon_tamer.png",
-          "team": [
-            148
-          ],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Black Belt Sayid",
-          "class": "BLACKBELT",
-          "sprite": "blackbelt.png",
-          "team": [
-            308
-          ],
-          "rewards": {
-            "balls": 3
-          }
-        }
+        {"name": "Hiker Mar", "class": "HIKER", "sprite": "hiker.png", "team": [750], "rewards": {"balls": 3}},
+        {"name": "Artist Carolina", "class": "GENTLEMAN", "sprite": "gentleman.png", "team": [671, 779, 861], "rewards": {"balls": 5}},
+        {"name": "Artist Tania", "class": "GENTLEMAN", "sprite": "gentleman.png", "team": [457, 478], "rewards": {"balls": 4}},
+        {"name": "Courier Andre", "class": "PKMN_TRAINER", "sprite": "acetrainer_f.png", "team": [823], "rewards": {"balls": 3}},
+        {"name": "Courier Martin", "class": "PKMN_TRAINER", "sprite": "acetrainer_m.png", "team": [128], "rewards": {"balls": 3}},
+        {"name": "Dragon Tamer Luisa", "class": "DRAGON_TAMER", "sprite": "dragon_tamer.png", "team": [997], "rewards": {"balls": 3}},
+        {"name": "Dragon Tamer Anna", "class": "DRAGON_TAMER", "sprite": "dragon_tamer.png", "team": [148], "rewards": {"balls": 3}},
+        {"name": "Black Belt Sayid", "class": "BLACKBELT", "sprite": "blackbelt.png", "team": [308], "rewards": {"balls": 3}},
+        {"name": "Black Belt Roger", "class": "BLACK_BELT", "sprite": "blackbelt.png", "team": [57], "rewards": {"balls": 2}, "levels": [35]},
+        {"name": "Hiker Helena", "class": "HIKER", "sprite": "hiker.png", "team": [423], "rewards": {"balls": 2}, "levels": [39]},
+        {"name": "Hiker Leire", "class": "HIKER", "sprite": "hiker.png", "team": [740], "rewards": {"balls": 2}, "levels": [39]},
+        {"name": "Hiker Nancy", "class": "HIKER", "sprite": "hiker.png", "team": [844], "rewards": {"balls": 2}, "levels": [37]},
+        {"name": "Musician Julia", "class": "MUSICIAN", "sprite": "guitarist.png", "team": [849], "rewards": {"balls": 2}, "levels": [37]},
+        {"name": "Student Max", "class": "STUDENT", "sprite": "school_kid_m.png", "team": [435, 945], "rewards": {"balls": 2}, "levels": [36, 36]}
       ],
       "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"}, {"text": "THE BLACK FOG", "action": "BOSS", "color": "PURPLE", "flag_condition": "not black_fog_banished_dalizapa_passage", "boss": {"id": 10501, "name": "Black Fog", "level": 45, "no_catch": true, "victory_flag": "black_fog_banished_dalizapa_passage", "lines": ["The air turns ice-cold. A black fog pours across the floor...", "Two huge eyes open in the dark. A giant Haunter rises: the Black Fog!", "Long ago people worshipped it as a god. It feeds on dreams. Don't let it get yours!"], "won": ["The Black Fog is too proud to ever be caught.", "It Self-Destructs in a burst of black mist... and is gone.", "But a cold whisper lingers: it will rise again in another haunted place."], "rewards": {"balls": 10, "RARE_CANDY": 3}}}, {"text": "Glaseado Mountain", "action": "EXIT", "target_area": "GLASEADO_MOUNTAIN", "condition": "can_exit", "color": "RED"}],
       "next_area": "GLASEADO_MOUNTAIN"
@@ -2104,72 +1753,22 @@
             {"text": "Exchange to Blueberry Academy", "target_area": "BLUEBERRY_ACADEMY", "condition": ["beat_paldea_champion", "KITAKAMI_boss_defeated"], "message": "You fly to Unova for your exchange term. Blueberry Academy floats far out at sea!"}
         ],
       "explore_options": [
-        { "text": "Heal", "action": "HEAL" },
-        { "text": "Department Store", "action": "SHOP" },
-        {
-          "text": "Enter Naranja Academy",
-          "action": "NPC",
-          "target": "professor_sada",
-          "dialogue": "paldea_professor_sada",
-          "flag_condition": "not met_professor_paldea",
-          "victory_flag": "met_professor_paldea"
-        },
-        {
-          "text": "Encounter Team Star convoy",
-          "action": "NPC",
-          "target": "team_star_grunts",
-          "dialogue": "paldea_team_star_intro",
-          "flag_condition": "not met_team_star",
-          "victory_flag": "met_team_star"
-        },
-        {
-          "text": "Talk to Arven",
-          "action": "NPC",
-          "target": "arven_intro",
-          "dialogue": "paldea_arven",
-          "flag_condition": "not met_arven",
-          "victory_flag": "met_arven"
-        },
-        {
-          "text": "Meet the mysterious girl in a hoodie",
-          "action": "NPC",
-          "target": "penny_intro",
-          "dialogue": "paldea_team_star_penny",
-          "flag_condition": "not met_penny",
-          "victory_flag": "met_penny"
-        },
-        {
-          "text": "Arven's Battle",
-          "action": "EVENT",
-          "condition": ["titan_klawf_defeated", "titan_bombirdier_defeated", "titan_orthworm_defeated", "titan_great_tusk_defeated", "titan_dondozo_defeated"],
-          "flag_condition": "not path_of_legends_complete",
-          "color": "GOLD",
-          "event": {
-            "lines": [
-              "Arven: Mabosstiff is healthy again, thanks to you.",
-              "Arven: I made every sandwich with the Herba Mystica we found together.",
-              "Arven: Now let me thank you the way trainers do. Battle me!"
-            ],
-            "flag": "path_of_legends_complete",
-            "battle": {
-              "name": "Arven",
-              "class": "PKMN_TRAINER",
-              "sprite": "arven.png",
-              "team": [820, 91, 952, 949, 934, 943],
-              "level": 60,
-              "is_boss_battle": true,
-              "rewards": { "balls": 10 },
-              "dialogue": {
-                "player_won": ["Arven: Heh. You're the real deal.", "Arven: My mom... Professor Sada is in Area Zero. When you're ready, I'll go with you."]
-              }
-            }
-          }
-        }
+        {"text": "Heal", "action": "HEAL"},
+        {"text": "Department Store", "action": "SHOP"},
+        {"text": "Enter Naranja Academy", "action": "NPC", "target": "professor_sada", "dialogue": "paldea_professor_sada", "flag_condition": "not met_professor_paldea", "victory_flag": "met_professor_paldea"},
+        {"text": "Encounter Team Star convoy", "action": "NPC", "target": "team_star_grunts", "dialogue": "paldea_team_star_intro", "flag_condition": "not met_team_star", "victory_flag": "met_team_star"},
+        {"text": "Talk to Arven", "action": "NPC", "target": "arven_intro", "dialogue": "paldea_arven", "flag_condition": "not met_arven", "victory_flag": "met_arven"},
+        {"text": "Meet the mysterious girl in a hoodie", "action": "NPC", "target": "penny_intro", "dialogue": "paldea_team_star_penny", "flag_condition": "not met_penny", "victory_flag": "met_penny"},
+        {"text": "Arven's Battle", "action": "EVENT", "condition": ["titan_klawf_defeated", "titan_bombirdier_defeated", "titan_orthworm_defeated", "titan_great_tusk_defeated", "titan_dondozo_defeated"], "flag_condition": "not path_of_legends_complete", "color": "GOLD", "event": {"lines": ["Arven: Mabosstiff is healthy again, thanks to you.", "Arven: I made every sandwich with the Herba Mystica we found together.", "Arven: Now let me thank you the way trainers do. Battle me!"], "flag": "path_of_legends_complete", "battle": {"name": "Arven", "class": "PKMN_TRAINER", "sprite": "arven.png", "team": [820, 91, 952, 949, 934, 943], "level": 60, "is_boss_battle": true, "rewards": {"balls": 10}, "dialogue": {"player_won": ["Arven: Heh. You're the real deal.", "Arven: My mom... Professor Sada is in Area Zero. When you're ready, I'll go with you."]}}}},
+        {"text": "Champion Battle: {rival_name}", "action": "EVENT", "color": "GOLD", "flag_condition": "not defeated_champion_nemona", "event": {"lines": ["{rival_name}: Now we're both Champions! Our real battle starts now!"], "flag": "defeated_champion_nemona", "battle": {"name": "Champion {rival_name}", "class": "PKMN_TRAINER", "sprite": "{rival_character}", "is_boss_battle": true, "team": [745, 706, 982, 968, 923, 908], "levels": [65, 65, 65, 65, 65, 66], "team_choice": {"912": [745, 706, 982, 968, 923, 908], "909": [745, 706, 982, 968, 923, 914], "906": [745, 706, 982, 968, 923, 911]}, "rewards": {"balls": 15}, "dialogue": {"intro": ["{rival_name}: Now we're both Champions! Our real battle starts now!"], "player_won": ["{rival_name}: That was the best battle ever! Again soon!"]}}}, "condition": "beat_paldea_champion"},
+        {"text": "Director Clavell", "action": "EVENT", "color": "GOLD", "flag_condition": "not defeated_clavell", "event": {"lines": ["Clavell: A Champion among our students! Allow your director a battle."], "flag": "defeated_clavell", "battle": {"name": "Director Clavell", "class": "PKMN_TRAINER", "sprite": "clavell.png", "is_boss_battle": true, "team": [765, 460, 855, 229, 591, 914], "levels": [60, 60, 60, 60, 60, 61], "team_choice": {"909": [765, 460, 855, 229, 591, 914], "906": [765, 460, 855, 591, 130, 911], "912": [765, 460, 855, 130, 229, 908]}, "rewards": {"balls": 12}, "dialogue": {"intro": ["Clavell: A Champion among our students! Allow your director a battle."], "player_won": ["Clavell: Splendid work!"]}}}, "condition": "beat_paldea_champion"}
       ],
       "next_area": "WEST_PROVINCE_AREA_1",
       "on_enter_event": null,
       "department_store": true
     },
+    "ZAPAPICO": {"area_type": "town", "route_name": "Zapapico", "region": "PALDEA", "description": "A mountain town of builders and miners in the east.", "has_gym": false, "travel_options": [{"text": "East Province Area 3", "target_area": "EAST_PROVINCE_AREA_3"}], "explore_options": [{"text": "Pokémon Center", "action": "HEAL"}, {"text": "Shop", "action": "SHOP"}], "next_area": "EAST_PROVINCE_AREA_3"},
+    "LOS_PLATOS": {"area_type": "town", "route_name": "Los Platos", "region": "PALDEA", "description": "A sleepy town of farms and rolling hills on the way to Artazon.", "has_gym": false, "travel_options": [{"text": "South Province Area 3", "target_area": "SOUTH_PROVINCE_AREA_3"}], "explore_options": [{"text": "Pokémon Center", "action": "HEAL"}, {"text": "Shop", "action": "SHOP"}], "next_area": "SOUTH_PROVINCE_AREA_3"},
     "CORTONDO": {
       "area_type": "town",
       "route_name": "Cortondo",
@@ -2344,13 +1943,10 @@
       "backgrounds": { "main": "naranja_academy.png" },
       "has_gym": true,
       "travel_options": [
-        { "text": "Glaseado Mountain", "target_area": "GLASEADO_MOUNTAIN" },
-        { "text": "Mesagoza", "target_area": "MESAGOZA" },
-        {
-          "text": "Area Zero",
-          "target_area": "AREA_ZERO",
-          "condition": ["beat_paldea_champion", "path_of_legends_complete", "starfall_street_complete"]
-        }
+        {"text": "Glaseado Mountain", "target_area": "GLASEADO_MOUNTAIN"},
+        {"text": "Mesagoza", "target_area": "MESAGOZA"},
+        {"text": "Area Zero", "target_area": "AREA_ZERO", "condition": ["beat_paldea_champion", "path_of_legends_complete", "starfall_street_complete"]},
+        {"text": "Academy Ace Tournament", "target_area": "ACADEMY_ACE_TOURNAMENT", "condition": "beat_paldea_champion"}
       ],
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
@@ -2388,9 +1984,10 @@
       "on_enter_event": null,
       "gym": {"trainers": [{"name": "Elite Four Rika", "class": "ELITE_FOUR", "sprite": "rika.png", "team": [340, 323, 232, 51, 980], "levels": [57, 57, 57, 57, 58], "rewards": {"balls": 15}, "is_boss_battle": true, "dialogue": {"intro": ["Rika leans back, arms crossed. 'Ground-type user, Rika. Nice to meet you — briefly. Let us get serious. I want to see what you are made of before you face the top.'"], "player_won": ["Rika: Impressive."], "player_lost": ["Rika: Better luck next time."]}, "movesets": {"340": ["MUDDY-WATER", "EARTH-POWER", "BLIZZARD", "FUTURE-SIGHT"], "323": ["EARTH-POWER", "FIRE-BLAST", "FLASH-CANNON", "YAWN"], "232": ["EARTHQUAKE", "STONE-EDGE", "IRON-HEAD", "POISON-JAB"], "51": ["EARTHQUAKE", "ROCK-SLIDE", "SUCKER-PUNCH", "SANDSTORM"], "980": ["EARTHQUAKE", "LIQUIDATION", "TOXIC", "PROTECT"]}}, {"name": "Elite Four Poppy", "class": "ELITE_FOUR", "sprite": "poppy.png", "team": [879, 462, 437, 823, 959], "levels": [58, 58, 58, 58, 59], "rewards": {"balls": 15}, "is_boss_battle": true, "dialogue": {"intro": ["Poppy bounces excitedly. 'Wow wow wow, you beat Rika! I am Poppy! I use Steel-types! I am going to try super duper hard to stop you — please do not hold back!'"], "player_won": ["Poppy: Impressive."], "player_lost": ["Poppy: Better luck next time."]}, "movesets": {"879": ["HIGH&NBSP;HORSEPOWER", "PLAY-ROUGH", "HEAVY-SLAM", "STEALTH-ROCK"], "462": ["DISCHARGE", "FLASH-CANNON", "LIGHT-SCREEN", "TRI-ATTACK"], "437": ["IRON-HEAD", "ZEN-HEADBUTT", "ROCK-BLAST", "EARTHQUAKE"], "823": ["BRAVE-BIRD", "IRON-HEAD", "BODY-PRESS", "IRON-DEFENSE"], "959": ["PLAY-ROUGH", "GIGATON&NBSP;HAMMER", "BRICK-BREAK", "STONE-EDGE"]}}, {"name": "Elite Four Larry", "class": "ELITE_FOUR", "sprite": "larry.png", "team": [357, 741, 334, 398, 973], "levels": [59, 59, 59, 59, 60], "rewards": {"balls": 15}, "is_boss_battle": true, "dialogue": {"intro": ["Larry stands with his arms folded. 'We meet again.' He sighs. 'I joined the Elite Four because the chairman made me. I eat a late lunch between challengers. Come on then.'"], "player_won": ["Larry: Impressive."], "player_lost": ["Larry: Better luck next time."]}, "movesets": {"357": ["AIR-SLASH", "SOLAR-BEAM", "DRAGON-PULSE", "SUNNY-DAY"], "741": ["REVELATION&NBSP;DANCE", "AIR-SLASH", "TEETER-DANCE", "ICY-WIND"], "334": ["MOONBLAST", "FLAMETHROWER", "ICE-BEAM", "DRAGON-PULSE"], "398": ["FACADE", "BRAVE-BIRD", "CLOSE-COMBAT", "THIEF"], "973": ["BRAVE-BIRD", "CLOSE-COMBAT", "THROAT-CHOP", "LIQUIDATION"]}}, {"name": "Elite Four Hassel", "class": "ELITE_FOUR", "sprite": "hassel.png", "team": [715, 612, 691, 841, 998], "levels": [60, 60, 60, 60, 61], "rewards": {"balls": 15}, "is_boss_battle": true, "dialogue": {"intro": ["Hassel strikes an artistic pose. 'Challenger! I am Hassel — art teacher, Dragon-type Elite Four member, and humble devotee of beauty in all forms. Allow me to paint you a picture... of defeat!'"], "player_won": ["Hassel: Impressive."], "player_lost": ["Hassel: Better luck next time."]}, "movesets": {"715": ["AIR-SLASH", "DRAGON-PULSE", "SUPER-FANG", "HYPER-VOICE"], "612": ["DRAGON-CLAW", "CRUNCH", "IRON-HEAD", "ROCK-TOMB"], "691": ["SLUDGE-BOMB", "DRAGON-PULSE", "HYDRO-PUMP", "THUNDERBOLT"], "841": ["DRAGON-RUSH", "SEED-BOMB", "AERIAL-ACE", "LEECH-SEED"], "998": ["ICICLE-CRASH", "BRICK-BREAK", "GLAIVE-RUSH"]}}, {"name": "{rival_name}", "class": "PKMN_TRAINER", "sprite": "{rival_character}", "team": [745, 706, 982, 968, 923, 914], "levels": [69, 69, 69, 69, 69, 70], "team_choice": {"906": [745, 706, 982, 968, 923, 914], "909": [745, 706, 982, 968, 923, 908], "912": [745, 706, 982, 968, 923, 911]}, "rewards": {"balls": 15}, "is_boss_battle": true, "dialogue": {"intro": ["{rival_name} is already bouncing on her heels when she sees you at the Academy. 'There you are! I have been training non-stop since our last battle. I finally feel like I can go all out. This is everything I have been building toward. Let us go!'"], "player_won": ["{rival_name}: That was the best battle of my life! You earned this."], "player_lost": ["{rival_name}: Ha! Rematch anytime — I mean it!"]}}], "leader": {"name": "Champion Geeta", "class": "CHAMPION", "sprite": "geeta.png", "team": [956, 673, 976, 713, 983, 970], "levels": [61, 61, 61, 61, 61, 62], "rematch": {"team": [956, 673, 976, 713, 983, 970], "levels": [69, 69, 69, 69, 69, 70], "movesets": {"956": ["LUMINA-CRASH", "DAZZLING-GLEAM", "QUICK-ATTACK", "REFLECT"], "673": ["HORN-LEECH", "ZEN-HEADBUTT", "PLAY-ROUGH", "BULK-UP"], "976": ["AQUA-JET", "LIQUIDATION", "PSYCHO-CUT", "ICE-FANG"], "713": ["AVALANCHE", "CRUNCH", "EARTHQUAKE", "BODY-PRESS"], "983": ["IRON-HEAD", "KOWTOW-CLEAVE", "ZEN-HEADBUTT", "STONE-EDGE"], "970": ["TERA-BLAST", "SLUDGE-WAVE", "EARTH-POWER", "DAZZLING-GLEAM"]}}, "dialogue": {"intro": ["Geeta turns from the window with an unhurried smile. 'You remind me of myself, years ago. I have never been defeated in this arena. I intend to maintain that record. Show me everything you have.'"], "player_won": ["Geeta bows her head. 'Extraordinary. A trainer who has come this far and still burns with that same hunger. You are the Champion of Paldea.' She steps aside, and the arena erupts."], "player_lost": ["Geeta: Train harder and come back!"]}, "rewards": {"balls": 10}, "is_boss_battle": true, "victory_flag": "beat_paldea_champion", "movesets": {"956": ["LUMINA-CRASH", "DAZZLING-GLEAM", "QUICK-ATTACK", "REFLECT"], "673": ["HORN-LEECH", "ZEN-HEADBUTT", "PLAY-ROUGH", "BULK-UP"], "976": ["AQUA-JET", "LIQUIDATION", "PSYCHO-CUT", "ICE-FANG"], "713": ["AVALANCHE", "CRUNCH", "EARTHQUAKE", "BODY-PRESS"], "983": ["IRON-HEAD", "KOWTOW-CLEAVE", "ZEN-HEADBUTT", "STONE-EDGE"], "970": ["TERA-BLAST", "SLUDGE-WAVE", "EARTH-POWER", "DAZZLING-GLEAM"]}}}
     },
+    "ACADEMY_ACE_TOURNAMENT": {"area_type": "dungeon", "route_name": "Academy Ace Tournament", "region": "PALDEA", "battle_type": "indoor", "min_rounds": 0, "description": "Naranja Academy's tournament for its strongest trainers: instructors, Champions and friends.", "trainer_pool": [{"name": "Instructor Dendra", "class": "ACE_TOURNAMENT", "sprite": "dendra.png", "is_boss_battle": true, "team": [870, 308, 701, 297], "levels": [65, 65, 65, 65], "rewards": {"balls": 4}}, {"name": "Nurse Miriam", "class": "ACE_TOURNAMENT", "sprite": "miriam.png", "is_boss_battle": true, "team": [97, 871, 362, 604, 748], "levels": [65, 65, 65, 65, 65], "rewards": {"balls": 4}}, {"name": "Instructor Raifort", "class": "ACE_TOURNAMENT", "sprite": "raifort.png", "is_boss_battle": true, "team": [571, 336, 326, 457, 212, 94], "levels": [65, 65, 65, 65, 65, 66], "rewards": {"balls": 4}}, {"name": "Instructor Saguaro", "class": "ACE_TOURNAMENT", "sprite": "saguaro.png", "is_boss_battle": true, "team": [417, 478, 594, 416, 706, 858], "levels": [65, 65, 65, 65, 65, 66], "rewards": {"balls": 4}}, {"name": "Instructor Salvatore", "class": "ACE_TOURNAMENT", "sprite": "salvatore.png", "is_boss_battle": true, "team": [430, 53, 770, 471, 576, 26], "levels": [65, 65, 65, 65, 65, 66], "rewards": {"balls": 4}}, {"name": "Instructor Tyme", "class": "ACE_TOURNAMENT", "sprite": "tyme.png", "is_boss_battle": true, "team": [745, 834, 874, 839, 934], "levels": [65, 65, 65, 65, 65], "rewards": {"balls": 4}}, {"name": "Instructor Jacq", "class": "ACE_TOURNAMENT", "sprite": "jacq.png", "is_boss_battle": true, "team": [59, 754, 317, 750, 80, 981], "levels": [65, 65, 65, 65, 65, 66], "rewards": {"balls": 4}}, {"name": "Elite Four Hassel", "class": "ACE_TOURNAMENT", "sprite": "hassel.png", "is_boss_battle": true, "team": [715, 612, 691, 841, 149, 998], "levels": [67, 67, 67, 67, 67, 68], "rewards": {"balls": 4}}, {"name": "Penny", "class": "ACE_TOURNAMENT", "sprite": "penny.png", "is_boss_battle": true, "team": [197, 134, 135, 136, 470, 700], "levels": [69, 69, 69, 69, 69, 70], "rewards": {"balls": 4}}, {"name": "Arven", "class": "ACE_TOURNAMENT", "sprite": "arven.png", "is_boss_battle": true, "team": [820, 91, 952, 949, 934, 943], "levels": [67, 67, 67, 67, 67, 68], "rewards": {"balls": 4}}, {"name": "Director Clavell", "class": "ACE_TOURNAMENT", "sprite": "clavell.png", "is_boss_battle": true, "team": [765, 460, 855, 591, 130, 229], "levels": [65, 65, 65, 65, 65, 66], "rewards": {"balls": 4}}, {"name": "Top Champion Geeta", "class": "ACE_TOURNAMENT", "sprite": "geeta.png", "is_boss_battle": true, "team": [956, 673, 976, 713, 983, 970], "levels": [69, 69, 69, 69, 69, 70], "rewards": {"balls": 4}}, {"name": "Champion {rival_name}", "class": "ACE_TOURNAMENT", "sprite": "{rival_character}", "is_boss_battle": true, "team": [745, 706, 982, 968, 923, 908], "team_choice": {"912": [745, 706, 982, 968, 923, 908], "909": [745, 706, 982, 968, 923, 914], "906": [745, 706, 982, 968, 923, 911]}, "levels": [71, 71, 71, 71, 71, 72], "rewards": {"balls": 15}}], "route_menu": [{"text": "ENTER THE ACADEMY ACE TOURNAMENT", "action": "GALACTIC_GAUNTLET", "color": "GOLD", "flag_condition": "not ace_tournament_cleared"}, {"text": "Naranja Academy", "action": "EXIT", "target_area": "NARANJA_ACADEMY", "condition": "can_exit", "color": "RED"}], "next_area": "NARANJA_ACADEMY"},
     "PALDEA_ROUTE_1": {
       "area_type": "wild_route",
-      "route_name": "Route 1",
+      "route_name": "Poco Path",
       "region": "PALDEA",
       "description": "A gentle coastal path winding from Cabo Poco to the grand walls of Mesagoza. Wild Lechonk and Pawmi scatter from the tall grass.",
       "battle_type": "grass",
@@ -2404,7 +2001,8 @@
         { "text": "CABO POCO", "action": "EXIT", "target_area": "CABO_POCO", "condition": "can_exit", "color": "RED" },
         {"text": "Inlet Grotto", "action": "EXIT", "target_area": "INLET_GROTTO", "condition": "can_exit", "color": "RED"}
       ],
-      "next_area": "MESAGOZA"
+      "next_area": "MESAGOZA",
+        "on_enter_event": [{"type": "trainer_battle", "trainer": {"name": "Arven", "class": "PKMN_TRAINER", "sprite": "arven.png", "is_boss_battle": true, "team": [819], "levels": [5], "rewards": {"balls": 6}, "victory_flag": "defeated_arven_poco_path", "dialogue": {"intro": ["Arven: You're a new student too? Let's see how you battle before the lighthouse."], "player_won": ["Arven: Huh. Not bad."]}}, "flag_check": "defeated_arven_poco_path", "condition": "met_nemona"}]
     },
     "SOUTH_PROVINCE_AREA_1": {
       "area_type": "wild_route",
@@ -2414,15 +2012,24 @@
       "battle_type": "grass",
       "wild_pool_percentages": "SOUTH_PROVINCE_AREA_1_PERCENTAGES",
       "min_rounds": 2,
-      "trainer_pool": [],
+      "trainer_pool": [
+        {"name": "Student Zahira", "class": "STUDENT", "sprite": "school_kid_m.png", "team": [915], "rewards": {"balls": 2}, "levels": [5]},
+        {"name": "Youngster Elian", "class": "YOUNGSTER", "sprite": "youngster.png", "team": [917], "rewards": {"balls": 2}, "levels": [5]},
+        {"name": "Janitor Ruben", "class": "JANITOR", "sprite": "engineer.png", "team": [316], "rewards": {"balls": 2}, "levels": [5]},
+        {"name": "Courier Iker", "class": "COURIER", "sprite": "biker.png", "team": [821], "rewards": {"balls": 2}, "levels": [6]},
+        {"name": "Black Belt Alejandro", "class": "BLACK_BELT", "sprite": "blackbelt.png", "team": [744, 915, 296], "rewards": {"balls": 2}, "levels": [11, 12, 12]},
+        {"name": "Hiker Lucia", "class": "HIKER", "sprite": "hiker.png", "team": [837], "rewards": {"balls": 2}, "levels": [7]}
+      ],
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "CORTONDO", "action": "EXIT", "target_area": "CORTONDO", "condition": "can_exit", "color": "RED" },
-        { "text": "MESAGOZA", "action": "EXIT", "target_area": "MESAGOZA", "condition": "can_exit", "color": "RED" },
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        {"text": "CORTONDO", "action": "EXIT", "target_area": "CORTONDO", "condition": "can_exit", "color": "RED"},
+        {"text": "MESAGOZA", "action": "EXIT", "target_area": "MESAGOZA", "condition": "can_exit", "color": "RED"},
         {"text": "South Province Area 4", "action": "EXIT", "target_area": "SOUTH_PROVINCE_AREA_4", "condition": "can_exit", "color": "RED"}
       ],
-      "next_area": "CORTONDO"
+      "next_area": "CORTONDO",
+        "on_enter_event": [{"type": "trainer_battle", "trainer": {"name": "{rival_name}", "class": "PKMN_TRAINER", "sprite": "{rival_character}", "is_boss_battle": true, "team": [906, 921], "levels": [8, 9], "team_choice": {"912": [906, 921], "909": [912, 921], "906": [909, 921]}, "rewards": {"balls": 6}, "victory_flag": "defeated_nemona_south_province_1", "dialogue": {"intro": ["{rival_name}: You've caught some new Pokemon already? Battle me!"], "player_won": ["{rival_name}: You're a natural! This is going to be so much fun!"]}}, "flag_check": "defeated_nemona_south_province_1"}]
     },
     "SOUTH_PROVINCE_AREA_2": {
       "area_type": "wild_route",
@@ -2432,12 +2039,20 @@
       "battle_type": "grass",
       "wild_pool_percentages": "SOUTH_PROVINCE_AREA_2_PERCENTAGES",
       "min_rounds": 2,
-      "trainer_pool": [],
+      "trainer_pool": [
+        {"name": "Backpacker Alex", "class": "BACKPACKER", "sprite": "camper.png", "team": [58, 302], "rewards": {"balls": 2}, "levels": [12, 12]},
+        {"name": "Office Worker David", "class": "OFFICE_WORKER", "sprite": "gentleman.png", "team": [231], "rewards": {"balls": 2}, "levels": [9]},
+        {"name": "Cook Angelines", "class": "COOK", "sprite": "veteran.png", "team": [415, 928], "rewards": {"balls": 2}, "levels": [11, 11]},
+        {"name": "Courier Angel", "class": "COURIER", "sprite": "biker.png", "team": [54, 942, 749], "rewards": {"balls": 2}, "levels": [14, 14, 14]},
+        {"name": "Poke Maniac Simon", "class": "POKE_MANIAC", "sprite": "pokemaniac.png", "team": [443], "rewards": {"balls": 2}, "levels": [12]},
+        {"name": "Student Noa", "class": "STUDENT", "sprite": "school_kid_m.png", "team": [664, 425], "rewards": {"balls": 2}, "levels": [8, 8]}
+      ],
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "ARTAZON", "action": "EXIT", "target_area": "ARTAZON", "condition": "can_exit", "color": "RED" },
-        { "text": "MESAGOZA", "action": "EXIT", "target_area": "MESAGOZA", "condition": "can_exit", "color": "RED" },
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        {"text": "ARTAZON", "action": "EXIT", "target_area": "ARTAZON", "condition": "can_exit", "color": "RED"},
+        {"text": "MESAGOZA", "action": "EXIT", "target_area": "MESAGOZA", "condition": "can_exit", "color": "RED"},
         {"text": "South Province Area 4", "action": "EXIT", "target_area": "SOUTH_PROVINCE_AREA_4", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "ARTAZON"
@@ -2450,34 +2065,23 @@
       "battle_type": "grass",
       "wild_pool_percentages": "SOUTH_PROVINCE_AREA_3_PERCENTAGES",
       "min_rounds": 2,
-      "trainer_pool": [],
+      "trainer_pool": [
+        {"name": "Artist Irene", "class": "ARTIST", "sprite": "pokefan_m.png", "team": [926], "rewards": {"balls": 2}, "levels": [14]},
+        {"name": "Backpacker Samuel", "class": "BACKPACKER", "sprite": "camper.png", "team": [396], "rewards": {"balls": 2}, "levels": [11]},
+        {"name": "Office Worker Severino", "class": "OFFICE_WORKER", "sprite": "gentleman.png", "team": [39, 672], "rewards": {"balls": 2}, "levels": [17, 17]},
+        {"name": "Office Worker Adrian", "class": "OFFICE_WORKER", "sprite": "gentleman.png", "team": [667], "rewards": {"balls": 2}, "levels": [15]},
+        {"name": "Poke Maniac Arnau", "class": "POKE_MANIAC", "sprite": "pokemaniac.png", "team": [246], "rewards": {"balls": 2}, "levels": [12]},
+        {"name": "Model Andrea", "class": "MODEL", "sprite": "beauty.png", "team": [669], "rewards": {"balls": 2}, "levels": [12]}
+      ],
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        {
-          "text": "STONY CLIFF TITAN",
-          "action": "BOSS",
-          "condition": "met_arven",
-          "flag_condition": "not titan_klawf_defeated",
-          "color": "GOLD",
-          "boss": {
-            "id": 950,
-            "name": "Klawf",
-            "level": 16,
-            "no_catch": true,
-            "victory_flag": "titan_klawf_defeated",
-            "lines": ["Arven: There it is... Klawf, the Stony Cliff Titan!", "A huge Klawf drops down from the cliffs, claws snapping!"],
-            "won": [
-              "KLAWF ran off, beaten!",
-              "Arven: You did it! And look, a Herba Mystica!",
-              "Arven: That herb should help my partner Mabosstiff... Let's find the next Titan!"
-            ],
-            "rewards": { "HERBA_MYSTICA": 1 }
-          }
-        },
-        { "text": "CORTONDO", "action": "EXIT", "target_area": "CORTONDO", "condition": "can_exit", "color": "RED" },
-        { "text": "ARTAZON", "action": "EXIT", "target_area": "ARTAZON", "condition": "can_exit", "color": "RED" },
-        { "text": "SOUTH PROVINCE AREA 5", "action": "EXIT", "target_area": "SOUTH_PROVINCE_AREA_5", "condition": "can_exit", "color": "RED" }
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        {"text": "STONY CLIFF TITAN", "action": "BOSS", "condition": "met_arven", "flag_condition": "not titan_klawf_defeated", "color": "GOLD", "boss": {"id": 950, "name": "Klawf", "level": 16, "no_catch": true, "victory_flag": "titan_klawf_defeated", "lines": ["Arven: There it is... Klawf, the Stony Cliff Titan!", "A huge Klawf drops down from the cliffs, claws snapping!"], "won": ["KLAWF ran off, beaten!", "Arven: You did it! And look, a Herba Mystica!", "Arven: That herb should help my partner Mabosstiff... Let's find the next Titan!"], "rewards": {"HERBA_MYSTICA": 1}}},
+        {"text": "CORTONDO", "action": "EXIT", "target_area": "CORTONDO", "condition": "can_exit", "color": "RED"},
+        {"text": "ARTAZON", "action": "EXIT", "target_area": "ARTAZON", "condition": "can_exit", "color": "RED"},
+        {"text": "SOUTH PROVINCE AREA 5", "action": "EXIT", "target_area": "SOUTH_PROVINCE_AREA_5", "condition": "can_exit", "color": "RED"},
+        {"text": "Los Platos", "action": "EXIT", "target_area": "LOS_PLATOS", "condition": ["can_exit"], "color": "RED"}
       ],
       "next_area": "CORTONDO"
     },
@@ -2489,12 +2093,20 @@
       "battle_type": "grass",
       "wild_pool_percentages": "SOUTH_PROVINCE_AREA_5_PERCENTAGES",
       "min_rounds": 2,
-      "trainer_pool": [],
+      "trainer_pool": [
+        {"name": "Janitor Ricard", "class": "JANITOR", "sprite": "engineer.png", "team": [88], "rewards": {"balls": 2}, "levels": [17]},
+        {"name": "Black Belt Antoni", "class": "BLACK_BELT", "sprite": "blackbelt.png", "team": [56], "rewards": {"balls": 2}, "levels": [18]},
+        {"name": "Black Belt Roman", "class": "BLACK_BELT", "sprite": "blackbelt.png", "team": [935, 214], "rewards": {"balls": 2}, "levels": [21, 21]},
+        {"name": "Poke Maniac Federico", "class": "POKE_MANIAC", "sprite": "pokemaniac.png", "team": [633], "rewards": {"balls": 2}, "levels": [18]},
+        {"name": "Poke Maniac Iban", "class": "POKE_MANIAC", "sprite": "pokemaniac.png", "team": [371], "rewards": {"balls": 2}, "levels": [19]},
+        {"name": "Model Ainhoa", "class": "MODEL", "sprite": "beauty.png", "team": [872], "rewards": {"balls": 2}, "levels": [19]}
+      ],
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "ALFORNADA", "action": "EXIT", "target_area": "ALFORNADA", "condition": "can_exit", "color": "RED" },
-        { "text": "SOUTH PROVINCE AREA 3", "action": "EXIT", "target_area": "SOUTH_PROVINCE_AREA_3", "condition": "can_exit", "color": "RED" }
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        {"text": "ALFORNADA", "action": "EXIT", "target_area": "ALFORNADA", "condition": "can_exit", "color": "RED"},
+        {"text": "SOUTH PROVINCE AREA 3", "action": "EXIT", "target_area": "SOUTH_PROVINCE_AREA_3", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "ALFORNADA"
     },
@@ -2506,38 +2118,21 @@
       "battle_type": "grass",
       "wild_pool_percentages": "EAST_PROVINCE_AREA_1_PERCENTAGES",
       "min_rounds": 2,
-      "trainer_pool": [],
+      "trainer_pool": [
+        {"name": "Office Worker Mario", "class": "OFFICE_WORKER", "sprite": "gentleman.png", "team": [198, 453, 229], "rewards": {"balls": 2}, "levels": [23, 24, 24]},
+        {"name": "Cook Eleonor", "class": "COOK", "sprite": "veteran.png", "team": [79], "rewards": {"balls": 2}, "levels": [17]},
+        {"name": "Janitor Salvador", "class": "JANITOR", "sprite": "engineer.png", "team": [747], "rewards": {"balls": 2}, "levels": [17]},
+        {"name": "Dragon Tamer Laia", "class": "DRAGON_TAMER", "sprite": "dragon_tamer.png", "team": [840], "rewards": {"balls": 2}, "levels": [20]},
+        {"name": "Student Xavier", "class": "STUDENT", "sprite": "school_kid_m.png", "team": [281, 714, 335], "rewards": {"balls": 2}, "levels": [23, 23, 23]},
+        {"name": "Student Mercedes", "class": "STUDENT", "sprite": "school_kid_m.png", "team": [953], "rewards": {"balls": 2}, "levels": [18]}
+      ],
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        {
-          "text": "TEAM STAR FIRE CREW",
-          "action": "EVENT",
-          "condition": "met_team_star",
-          "flag_condition": "not star_schedar_defeated",
-          "color": "PURPLE",
-          "event": {
-            "lines": [
-              "You storm the Schedar Squad base, Team Star's Fire crew!",
-              "Your team blasts through the grunts' Star Barrage!",
-              "Mela: So you're the one causing all this trouble. Let's ride!"
-            ],
-            "flag": "star_schedar_defeated",
-            "done": ["The Schedar Squad base is empty now. Its boss has left Team Star."],
-            "battle": {
-              "name": "Mela",
-              "class": "TEAM_STAR_BOSS",
-              "sprite": "mela.png",
-              "team": [324, 966],
-              "level": 27,
-              "is_boss_battle": true,
-              "rewards": { "balls": 5 },
-              "dialogue": { "player_won": ["Mela: Tch. Fine! A deal's a deal. Schedar Squad is through."] }
-            }
-          }
-        },
-        { "text": "LEVINCIA", "action": "EXIT", "target_area": "LEVINCIA", "condition": "can_exit", "color": "RED" },
-        { "text": "MESAGOZA", "action": "EXIT", "target_area": "MESAGOZA", "condition": "can_exit", "color": "RED" },
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        {"text": "TEAM STAR FIRE CREW", "action": "EVENT", "condition": "met_team_star", "flag_condition": "not star_schedar_defeated", "color": "PURPLE", "event": {"lines": ["You storm the Schedar Squad base, Team Star's Fire crew!", "Your team blasts through the grunts' Star Barrage!", "Mela: So you're the one causing all this trouble. Let's ride!"], "flag": "star_schedar_defeated", "done": ["The Schedar Squad base is empty now. Its boss has left Team Star."], "battle": {"name": "Mela", "class": "TEAM_STAR_BOSS", "sprite": "mela.png", "team": [324, 966], "level": 27, "is_boss_battle": true, "rewards": {"balls": 5}, "dialogue": {"player_won": ["Mela: Tch. Fine! A deal's a deal. Schedar Squad is through."]}}}},
+        {"text": "LEVINCIA", "action": "EXIT", "target_area": "LEVINCIA", "condition": "can_exit", "color": "RED"},
+        {"text": "MESAGOZA", "action": "EXIT", "target_area": "MESAGOZA", "condition": "can_exit", "color": "RED"},
         {"text": "Schedar Squad's Base", "action": "EXIT", "target_area": "SCHEDAR_SQUAD_BASE", "condition": ["can_exit", "met_team_star"], "color": "RED"}
       ],
       "next_area": "LEVINCIA"
@@ -2550,12 +2145,20 @@
       "battle_type": "grass",
       "wild_pool_percentages": "EAST_PROVINCE_AREA_2_PERCENTAGES",
       "min_rounds": 2,
-      "trainer_pool": [],
+      "trainer_pool": [
+        {"name": "Backpacker Jonathan", "class": "BACKPACKER", "sprite": "camper.png", "team": [234], "rewards": {"balls": 2}, "levels": [22]},
+        {"name": "Backpacker Arturo", "class": "BACKPACKER", "sprite": "camper.png", "team": [551], "rewards": {"balls": 2}, "levels": [21]},
+        {"name": "Office Worker Cristian", "class": "OFFICE_WORKER", "sprite": "gentleman.png", "team": [707], "rewards": {"balls": 2}, "levels": [22]},
+        {"name": "Dragon Tamer Rebeca", "class": "DRAGON_TAMER", "sprite": "dragon_tamer.png", "team": [690, 333, 704], "rewards": {"balls": 2}, "levels": [26, 26, 26]},
+        {"name": "Student Lina", "class": "STUDENT", "sprite": "school_kid_m.png", "team": [613], "rewards": {"balls": 2}, "levels": [21]},
+        {"name": "Student Anas", "class": "STUDENT", "sprite": "school_kid_m.png", "team": [920, 627], "rewards": {"balls": 2}, "levels": [26, 26]}
+      ],
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "NORTH PROVINCE AREA 1", "action": "EXIT", "target_area": "NORTH_PROVINCE_AREA_1", "condition": "can_exit", "color": "RED" },
-        { "text": "LEVINCIA", "action": "EXIT", "target_area": "LEVINCIA", "condition": "can_exit", "color": "RED" }
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        {"text": "NORTH PROVINCE AREA 1", "action": "EXIT", "target_area": "NORTH_PROVINCE_AREA_1", "condition": "can_exit", "color": "RED"},
+        {"text": "LEVINCIA", "action": "EXIT", "target_area": "LEVINCIA", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "NORTH_PROVINCE_AREA_1"
     },
@@ -2567,29 +2170,22 @@
       "battle_type": "grass",
       "wild_pool_percentages": "EAST_PROVINCE_AREA_3_PERCENTAGES",
       "min_rounds": 2,
-      "trainer_pool": [],
+      "trainer_pool": [
+        {"name": "Backpacker Lander", "class": "BACKPACKER", "sprite": "camper.png", "team": [859], "rewards": {"balls": 2}, "levels": [24]},
+        {"name": "Dragon Tamer Eva", "class": "DRAGON_TAMER", "sprite": "dragon_tamer.png", "team": [841], "rewards": {"balls": 2}, "levels": [24]},
+        {"name": "Dragon Tamer Marta", "class": "DRAGON_TAMER", "sprite": "dragon_tamer.png", "team": [842], "rewards": {"balls": 2}, "levels": [26]},
+        {"name": "Black Belt Herminio", "class": "BLACK_BELT", "sprite": "blackbelt.png", "team": [297], "rewards": {"balls": 2}, "levels": [24]},
+        {"name": "Poke Maniac Dario", "class": "POKE_MANIAC", "sprite": "pokemaniac.png", "team": [130], "rewards": {"balls": 2}, "levels": [23]},
+        {"name": "Hiker Celia", "class": "HIKER", "sprite": "hiker.png", "team": [933, 297, 136], "rewards": {"balls": 2}, "levels": [29, 29, 29]}
+      ],
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        {
-          "text": "LURKING STEEL TITAN",
-          "action": "BOSS",
-          "condition": "met_arven",
-          "flag_condition": "not titan_orthworm_defeated",
-          "color": "GOLD",
-          "boss": {
-            "id": 968,
-            "name": "Orthworm",
-            "level": 29,
-            "no_catch": true,
-            "victory_flag": "titan_orthworm_defeated",
-            "lines": ["Arven: There it is... Orthworm, the Lurking Steel Titan!", "The ground shakes. An enormous Orthworm bursts out of the earth!"],
-            "won": ["ORTHWORM ran off, beaten!", "Arven: You did it! And look, a Herba Mystica!", "Arven: Three down. Two to go!"],
-            "rewards": { "HERBA_MYSTICA": 1 }
-          }
-        },
-        { "text": "LEVINCIA", "action": "EXIT", "target_area": "LEVINCIA", "condition": "can_exit", "color": "RED" },
-        { "text": "EAST PROVINCE AREA 2", "action": "EXIT", "target_area": "EAST_PROVINCE_AREA_2", "condition": "can_exit", "color": "RED" }
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        {"text": "LURKING STEEL TITAN", "action": "BOSS", "condition": "met_arven", "flag_condition": "not titan_orthworm_defeated", "color": "GOLD", "boss": {"id": 968, "name": "Orthworm", "level": 29, "no_catch": true, "victory_flag": "titan_orthworm_defeated", "lines": ["Arven: There it is... Orthworm, the Lurking Steel Titan!", "The ground shakes. An enormous Orthworm bursts out of the earth!"], "won": ["ORTHWORM ran off, beaten!", "Arven: You did it! And look, a Herba Mystica!", "Arven: Three down. Two to go!"], "rewards": {"HERBA_MYSTICA": 1}}},
+        {"text": "LEVINCIA", "action": "EXIT", "target_area": "LEVINCIA", "condition": "can_exit", "color": "RED"},
+        {"text": "EAST PROVINCE AREA 2", "action": "EXIT", "target_area": "EAST_PROVINCE_AREA_2", "condition": "can_exit", "color": "RED"},
+        {"text": "Zapapico", "action": "EXIT", "target_area": "ZAPAPICO", "condition": ["can_exit"], "color": "RED"}
       ],
       "next_area": "LEVINCIA"
     },
@@ -2601,61 +2197,22 @@
       "battle_type": "grass",
       "wild_pool_percentages": "WEST_PROVINCE_AREA_1_PERCENTAGES",
       "min_rounds": 2,
-      "trainer_pool": [],
+      "trainer_pool": [
+        {"name": "Backpacker Asier", "class": "BACKPACKER", "sprite": "camper.png", "team": [590], "rewards": {"balls": 2}, "levels": [14]},
+        {"name": "Backpacker Mateo", "class": "BACKPACKER", "sprite": "camper.png", "team": [133], "rewards": {"balls": 2}, "levels": [15]},
+        {"name": "Backpacker Kevin", "class": "BACKPACKER", "sprite": "camper.png", "team": [203], "rewards": {"balls": 2}, "levels": [17]},
+        {"name": "Courier Ahmed", "class": "COURIER", "sprite": "biker.png", "team": [278], "rewards": {"balls": 2}, "levels": [18]},
+        {"name": "Courier Adam", "class": "COURIER", "sprite": "biker.png", "team": [878], "rewards": {"balls": 2}, "levels": [16]},
+        {"name": "Dragon Tamer Alejandra", "class": "DRAGON_TAMER", "sprite": "dragon_tamer.png", "team": [885], "rewards": {"balls": 2}, "levels": [16]}
+      ],
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        {
-          "text": "OPEN SKY TITAN",
-          "action": "BOSS",
-          "condition": "met_arven",
-          "flag_condition": "not titan_bombirdier_defeated",
-          "color": "GOLD",
-          "boss": {
-            "id": 962,
-            "name": "Bombirdier",
-            "level": 20,
-            "no_catch": true,
-            "victory_flag": "titan_bombirdier_defeated",
-            "lines": ["Arven: There it is... Bombirdier, the Open Sky Titan!", "Rocks rain down from above. A giant Bombirdier circles overhead!"],
-            "won": [
-              "BOMBIRDIER ran off, beaten!",
-              "Arven: You did it! And look, a Herba Mystica!",
-              "Arven: Mabosstiff is getting stronger every time. Thank you."
-            ],
-            "rewards": { "HERBA_MYSTICA": 1 }
-          }
-        },
-        {
-          "text": "TEAM STAR DARK CREW",
-          "action": "EVENT",
-          "condition": "met_team_star",
-          "flag_condition": "not star_segin_defeated",
-          "color": "PURPLE",
-          "event": {
-            "lines": [
-              "You storm the Segin Squad base, Team Star's Dark crew!",
-              "Your team blasts through the grunts' Star Barrage!",
-              "Giacomo: So you're the one causing all this trouble. Let's ride!"
-            ],
-            "flag": "star_segin_defeated",
-            "done": ["The Segin Squad base is empty now. Its boss has left Team Star."],
-            "battle": {
-              "name": "Giacomo",
-              "class": "TEAM_STAR_BOSS",
-              "sprite": "giacomo.png",
-              "team": [624, 966],
-              "level": 21,
-              "is_boss_battle": true,
-              "rewards": { "balls": 5 },
-              "dialogue": {
-                "player_won": ["Giacomo: That beat... was too good. I'm done. Segin Squad is disbanding."]
-              }
-            }
-          }
-        },
-        { "text": "CASCARRAFA", "action": "EXIT", "target_area": "CASCARRAFA", "condition": "can_exit", "color": "RED" },
-        { "text": "MESAGOZA", "action": "EXIT", "target_area": "MESAGOZA", "condition": "can_exit", "color": "RED" },
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        {"text": "OPEN SKY TITAN", "action": "BOSS", "condition": "met_arven", "flag_condition": "not titan_bombirdier_defeated", "color": "GOLD", "boss": {"id": 962, "name": "Bombirdier", "level": 20, "no_catch": true, "victory_flag": "titan_bombirdier_defeated", "lines": ["Arven: There it is... Bombirdier, the Open Sky Titan!", "Rocks rain down from above. A giant Bombirdier circles overhead!"], "won": ["BOMBIRDIER ran off, beaten!", "Arven: You did it! And look, a Herba Mystica!", "Arven: Mabosstiff is getting stronger every time. Thank you."], "rewards": {"HERBA_MYSTICA": 1}}},
+        {"text": "TEAM STAR DARK CREW", "action": "EVENT", "condition": "met_team_star", "flag_condition": "not star_segin_defeated", "color": "PURPLE", "event": {"lines": ["You storm the Segin Squad base, Team Star's Dark crew!", "Your team blasts through the grunts' Star Barrage!", "Giacomo: So you're the one causing all this trouble. Let's ride!"], "flag": "star_segin_defeated", "done": ["The Segin Squad base is empty now. Its boss has left Team Star."], "battle": {"name": "Giacomo", "class": "TEAM_STAR_BOSS", "sprite": "giacomo.png", "team": [624, 966], "level": 21, "is_boss_battle": true, "rewards": {"balls": 5}, "dialogue": {"player_won": ["Giacomo: That beat... was too good. I'm done. Segin Squad is disbanding."]}}}},
+        {"text": "CASCARRAFA", "action": "EXIT", "target_area": "CASCARRAFA", "condition": "can_exit", "color": "RED"},
+        {"text": "MESAGOZA", "action": "EXIT", "target_area": "MESAGOZA", "condition": "can_exit", "color": "RED"},
         {"text": "Segin Squad's Base", "action": "EXIT", "target_area": "SEGIN_SQUAD_BASE", "condition": ["can_exit", "met_team_star"], "color": "RED"},
         {"text": "South Province Area 4", "action": "EXIT", "target_area": "SOUTH_PROVINCE_AREA_4", "condition": "can_exit", "color": "RED"}
       ],
@@ -2669,13 +2226,21 @@
       "battle_type": "grass",
       "wild_pool_percentages": "WEST_PROVINCE_AREA_2_PERCENTAGES",
       "min_rounds": 2,
-      "trainer_pool": [],
+      "trainer_pool": [
+        {"name": "Courier Joaquin", "class": "COURIER", "sprite": "biker.png", "team": [627], "rewards": {"balls": 2}, "levels": [23]},
+        {"name": "Dragon Tamer Virginia", "class": "DRAGON_TAMER", "sprite": "dragon_tamer.png", "team": [444], "rewards": {"balls": 2}, "levels": [24]},
+        {"name": "Poke Maniac Mikel", "class": "POKE_MANIAC", "sprite": "pokemaniac.png", "team": [935, 442], "rewards": {"balls": 2}, "levels": [29, 29]},
+        {"name": "Hiker Fatima", "class": "HIKER", "sprite": "hiker.png", "team": [203], "rewards": {"balls": 2}, "levels": [24]},
+        {"name": "Scientist Juan", "class": "SCIENTIST", "sprite": "scientist.png", "team": [180], "rewards": {"balls": 2}, "levels": [24]},
+        {"name": "Student Yassin", "class": "STUDENT", "sprite": "school_kid_m.png", "team": [769, 284], "rewards": {"balls": 2}, "levels": [23, 23]}
+      ],
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "WEST PROVINCE AREA 3", "action": "EXIT", "target_area": "WEST_PROVINCE_AREA_3", "condition": "can_exit", "color": "RED" },
-        { "text": "CASCARRAFA", "action": "EXIT", "target_area": "CASCARRAFA", "condition": "can_exit", "color": "RED" },
-        { "text": "ASADO DESERT", "action": "EXIT", "target_area": "ASADO_DESERT", "condition": "can_exit", "color": "RED" },
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        {"text": "WEST PROVINCE AREA 3", "action": "EXIT", "target_area": "WEST_PROVINCE_AREA_3", "condition": "can_exit", "color": "RED"},
+        {"text": "CASCARRAFA", "action": "EXIT", "target_area": "CASCARRAFA", "condition": "can_exit", "color": "RED"},
+        {"text": "ASADO DESERT", "action": "EXIT", "target_area": "ASADO_DESERT", "condition": "can_exit", "color": "RED"},
         {"text": "Porto Marinada", "action": "EXIT", "target_area": "PORTO_MARINADA", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "WEST_PROVINCE_AREA_3"
@@ -2688,12 +2253,20 @@
       "battle_type": "grass",
       "wild_pool_percentages": "WEST_PROVINCE_AREA_3_PERCENTAGES",
       "min_rounds": 2,
-      "trainer_pool": [],
+      "trainer_pool": [
+        {"name": "Office Worker Daniel", "class": "OFFICE_WORKER", "sprite": "gentleman.png", "team": [215, 335], "rewards": {"balls": 2}, "levels": [32, 32]},
+        {"name": "Janitor Tomas", "class": "JANITOR", "sprite": "engineer.png", "team": [317], "rewards": {"balls": 2}, "levels": [29]},
+        {"name": "Courier Alfonso", "class": "COURIER", "sprite": "biker.png", "team": [334, 673, 834], "rewards": {"balls": 2}, "levels": [35, 35, 35]},
+        {"name": "Model Salma", "class": "MODEL", "sprite": "beauty.png", "team": [570, 426], "rewards": {"balls": 2}, "levels": [29, 29]},
+        {"name": "Hiker Estela", "class": "HIKER", "sprite": "hiker.png", "team": [340], "rewards": {"balls": 2}, "levels": [31]},
+        {"name": "Musician Sheila", "class": "MUSICIAN", "sprite": "guitarist.png", "team": [922], "rewards": {"balls": 2}, "levels": [30]}
+      ],
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "ALFORNADA", "action": "EXIT", "target_area": "ALFORNADA", "condition": "can_exit", "color": "RED" },
-        { "text": "WEST PROVINCE AREA 2", "action": "EXIT", "target_area": "WEST_PROVINCE_AREA_2", "condition": "can_exit", "color": "RED" }
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        {"text": "ALFORNADA", "action": "EXIT", "target_area": "ALFORNADA", "condition": "can_exit", "color": "RED"},
+        {"text": "WEST PROVINCE AREA 2", "action": "EXIT", "target_area": "WEST_PROVINCE_AREA_2", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "ALFORNADA"
     },
@@ -2705,38 +2278,21 @@
       "battle_type": "grass",
       "wild_pool_percentages": "NORTH_PROVINCE_AREA_1_PERCENTAGES",
       "min_rounds": 2,
-      "trainer_pool": [],
+      "trainer_pool": [
+        {"name": "Backpacker Julio", "class": "BACKPACKER", "sprite": "camper.png", "team": [136], "rewards": {"balls": 2}, "levels": [48]},
+        {"name": "Dragon Tamer Paloma", "class": "DRAGON_TAMER", "sprite": "dragon_tamer.png", "team": [715], "rewards": {"balls": 2}, "levels": [56]},
+        {"name": "Dragon Tamer Gema", "class": "DRAGON_TAMER", "sprite": "dragon_tamer.png", "team": [691], "rewards": {"balls": 2}, "levels": [56]},
+        {"name": "Dragon Tamer Diana", "class": "DRAGON_TAMER", "sprite": "dragon_tamer.png", "team": [706], "rewards": {"balls": 2}, "levels": [56]},
+        {"name": "Poke Maniac Guillermo", "class": "POKE_MANIAC", "sprite": "pokemaniac.png", "team": [247, 80, 604], "rewards": {"balls": 2}, "levels": [50, 50, 50]},
+        {"name": "Hiker Yanira", "class": "HIKER", "sprite": "hiker.png", "team": [553], "rewards": {"balls": 2}, "levels": [47]}
+      ],
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        {
-          "text": "TEAM STAR FIGHTING CREW",
-          "action": "EVENT",
-          "condition": "met_team_star",
-          "flag_condition": "not star_caph_defeated",
-          "color": "PURPLE",
-          "event": {
-            "lines": [
-              "You storm the Caph Squad base, Team Star's Fighting crew!",
-              "Your team blasts through the grunts' Star Barrage!",
-              "Eri: So you're the one causing all this trouble. Let's ride!"
-            ],
-            "flag": "star_caph_defeated",
-            "done": ["The Caph Squad base is empty now. Its boss has left Team Star."],
-            "battle": {
-              "name": "Eri",
-              "class": "TEAM_STAR_BOSS",
-              "sprite": "eri.png",
-              "team": [454, 766, 448, 979, 966],
-              "level": 56,
-              "is_boss_battle": true,
-              "rewards": { "balls": 5 },
-              "dialogue": { "player_won": ["Eri: You're strong. Truly. Caph Squad... we're finished."] }
-            }
-          }
-        },
-        { "text": "MEDALI", "action": "EXIT", "target_area": "MEDALI", "condition": "can_exit", "color": "RED" },
-        { "text": "EAST PROVINCE AREA 2", "action": "EXIT", "target_area": "EAST_PROVINCE_AREA_2", "condition": "can_exit", "color": "RED" }
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        {"text": "TEAM STAR FIGHTING CREW", "action": "EVENT", "condition": "met_team_star", "flag_condition": "not star_caph_defeated", "color": "PURPLE", "event": {"lines": ["You storm the Caph Squad base, Team Star's Fighting crew!", "Your team blasts through the grunts' Star Barrage!", "Eri: So you're the one causing all this trouble. Let's ride!"], "flag": "star_caph_defeated", "done": ["The Caph Squad base is empty now. Its boss has left Team Star."], "battle": {"name": "Eri", "class": "TEAM_STAR_BOSS", "sprite": "eri.png", "team": [454, 766, 448, 979, 966], "level": 56, "is_boss_battle": true, "rewards": {"balls": 5}, "dialogue": {"player_won": ["Eri: You're strong. Truly. Caph Squad... we're finished."]}}}},
+        {"text": "MEDALI", "action": "EXIT", "target_area": "MEDALI", "condition": "can_exit", "color": "RED"},
+        {"text": "EAST PROVINCE AREA 2", "action": "EXIT", "target_area": "EAST_PROVINCE_AREA_2", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "MEDALI"
     },
@@ -2748,13 +2304,20 @@
       "battle_type": "grass",
       "wild_pool_percentages": "NORTH_PROVINCE_AREA_2_PERCENTAGES",
       "min_rounds": 2,
-      "trainer_pool": [],
+      "trainer_pool": [
+        {"name": "Artist Blanca", "class": "ARTIST", "sprite": "pokefan_m.png", "team": [779, 671], "rewards": {"balls": 2}, "levels": [51, 51]},
+        {"name": "Cook Lola", "class": "COOK", "sprite": "veteran.png", "team": [930], "rewards": {"balls": 2}, "levels": [50]},
+        {"name": "Black Belt Fernando", "class": "BLACK_BELT", "sprite": "blackbelt.png", "team": [454, 475], "rewards": {"balls": 2}, "levels": [53, 53]},
+        {"name": "Model Alexia", "class": "MODEL", "sprite": "beauty.png", "team": [758, 873, 576, 763], "rewards": {"balls": 2}, "levels": [56, 56, 56, 56]},
+        {"name": "Student Ali", "class": "STUDENT", "sprite": "school_kid_m.png", "team": [939], "rewards": {"balls": 2}, "levels": [51]}
+      ],
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "CASSEROYA LAKE", "action": "EXIT", "target_area": "CASSEROYA_LAKE", "condition": "can_exit", "color": "RED" },
-        { "text": "MONTENEVERA", "action": "EXIT", "target_area": "MONTENEVERA", "condition": "can_exit", "color": "RED" },
-        { "text": "MEDALI", "action": "EXIT", "target_area": "MEDALI", "condition": "can_exit", "color": "RED" },
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        {"text": "CASSEROYA LAKE", "action": "EXIT", "target_area": "CASSEROYA_LAKE", "condition": "can_exit", "color": "RED"},
+        {"text": "MONTENEVERA", "action": "EXIT", "target_area": "MONTENEVERA", "condition": "can_exit", "color": "RED"},
+        {"text": "MEDALI", "action": "EXIT", "target_area": "MEDALI", "condition": "can_exit", "color": "RED"},
         {"text": "Caph Squad's Base", "action": "EXIT", "target_area": "CAPH_SQUAD_BASE", "condition": ["can_exit", "met_team_star"], "color": "RED"}
       ],
       "next_area": "MONTENEVERA",
@@ -2769,39 +2332,22 @@
       "battle_type": "grass",
       "wild_pool_percentages": "NORTH_PROVINCE_AREA_3_PERCENTAGES",
       "min_rounds": 2,
-      "trainer_pool": [],
+      "trainer_pool": [
+        {"name": "Artist Desiree", "class": "ARTIST", "sprite": "pokefan_m.png", "team": [576], "rewards": {"balls": 2}, "levels": [44]},
+        {"name": "Poke Maniac Jordi", "class": "POKE_MANIAC", "sprite": "pokemaniac.png", "team": [636, 603], "rewards": {"balls": 2}, "levels": [45, 45]},
+        {"name": "Musician Tatiana", "class": "MUSICIAN", "sprite": "guitarist.png", "team": [40, 402, 326], "rewards": {"balls": 2}, "levels": [50, 50, 50]},
+        {"name": "Office Lady Ester", "class": "OFFICE_LADY", "sprite": "beauty.png", "team": [308], "rewards": {"balls": 2}, "levels": [45]},
+        {"name": "Student Jimena", "class": "STUDENT", "sprite": "school_kid_m.png", "team": [952, 858], "rewards": {"balls": 2}, "levels": [46, 46]},
+        {"name": "Student Stefan", "class": "STUDENT", "sprite": "school_kid_m.png", "team": [861], "rewards": {"balls": 2}, "levels": [45]}
+      ],
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        {
-          "text": "TEAM STAR FAIRY CREW",
-          "action": "EVENT",
-          "condition": "met_team_star",
-          "flag_condition": "not star_ruchbah_defeated",
-          "color": "PURPLE",
-          "event": {
-            "lines": [
-              "You storm the Ruchbah Squad base, Team Star's Fairy crew!",
-              "Your team blasts through the grunts' Star Barrage!",
-              "Ortega: So you're the one causing all this trouble. Let's ride!"
-            ],
-            "flag": "star_ruchbah_defeated",
-            "done": ["The Ruchbah Squad base is empty now. Its boss has left Team Star."],
-            "battle": {
-              "name": "Ortega",
-              "class": "TEAM_STAR_BOSS",
-              "sprite": "ortega.png",
-              "team": [184, 927, 966],
-              "level": 51,
-              "is_boss_battle": true,
-              "rewards": { "balls": 5 },
-              "dialogue": { "player_won": ["Ortega: No fair! ...Okay. Ruchbah Squad is done."] }
-            }
-          }
-        },
-        { "text": "GLASEADO", "action": "EXIT", "target_area": "GLASEADO", "condition": "can_exit", "color": "RED" },
-        { "text": "MONTENEVERA", "action": "EXIT", "target_area": "MONTENEVERA", "condition": "can_exit", "color": "RED" },
-        { "text": "GLASEADO MOUNTAIN", "action": "EXIT", "target_area": "GLASEADO_MOUNTAIN", "condition": "can_exit", "color": "RED" },
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        {"text": "TEAM STAR FAIRY CREW", "action": "EVENT", "condition": "met_team_star", "flag_condition": "not star_ruchbah_defeated", "color": "PURPLE", "event": {"lines": ["You storm the Ruchbah Squad base, Team Star's Fairy crew!", "Your team blasts through the grunts' Star Barrage!", "Ortega: So you're the one causing all this trouble. Let's ride!"], "flag": "star_ruchbah_defeated", "done": ["The Ruchbah Squad base is empty now. Its boss has left Team Star."], "battle": {"name": "Ortega", "class": "TEAM_STAR_BOSS", "sprite": "ortega.png", "team": [184, 927, 966], "level": 51, "is_boss_battle": true, "rewards": {"balls": 5}, "dialogue": {"player_won": ["Ortega: No fair! ...Okay. Ruchbah Squad is done."]}}}},
+        {"text": "GLASEADO", "action": "EXIT", "target_area": "GLASEADO", "condition": "can_exit", "color": "RED"},
+        {"text": "MONTENEVERA", "action": "EXIT", "target_area": "MONTENEVERA", "condition": "can_exit", "color": "RED"},
+        {"text": "GLASEADO MOUNTAIN", "action": "EXIT", "target_area": "GLASEADO_MOUNTAIN", "condition": "can_exit", "color": "RED"},
         {"text": "Ruchbah Squad's Base", "action": "EXIT", "target_area": "RUCHBAH_SQUAD_BASE", "condition": ["can_exit", "met_team_star"], "color": "RED"}
       ],
       "next_area": "GLASEADO",
@@ -2815,61 +2361,21 @@
       "battle_type": "grass",
       "wild_pool_percentages": "ASADO_DESERT_PERCENTAGES",
       "min_rounds": 2,
-      "trainer_pool": [],
+      "trainer_pool": [
+        {"name": "Black Belt Fabio", "class": "BLACK_BELT", "sprite": "blackbelt.png", "team": [701], "rewards": {"balls": 2}, "levels": [21]},
+        {"name": "Black Belt Elias", "class": "BLACK_BELT", "sprite": "blackbelt.png", "team": [286, 214], "rewards": {"balls": 2}, "levels": [26, 27]},
+        {"name": "Poke Maniac Gregorio", "class": "POKE_MANIAC", "sprite": "pokemaniac.png", "team": [147], "rewards": {"balls": 2}, "levels": [22]},
+        {"name": "Musician Claudia", "class": "MUSICIAN", "sprite": "guitarist.png", "team": [40], "rewards": {"balls": 2}, "levels": [22]},
+        {"name": "Scientist Renardo", "class": "SCIENTIST", "sprite": "scientist.png", "team": [88], "rewards": {"balls": 2}, "levels": [23]},
+        {"name": "Student Raquel", "class": "STUDENT", "sprite": "school_kid_m.png", "team": [422, 336, 933], "rewards": {"balls": 2}, "levels": [26, 26, 26]}
+      ],
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        {
-          "text": "QUAKING EARTH TITAN",
-          "action": "BOSS",
-          "condition": "met_arven",
-          "flag_condition": "not titan_great_tusk_defeated",
-          "color": "GOLD",
-          "boss": {
-            "id": 984,
-            "name": "Great Tusk",
-            "level": 45,
-            "no_catch": true,
-            "victory_flag": "titan_great_tusk_defeated",
-            "lines": ["Arven: There it is... the Quaking Earth Titan!", "A sandstorm parts. A Great Tusk, a Pokemon from the ancient past, charges at you!"],
-            "won": [
-              "GREAT TUSK ran off, beaten!",
-              "Arven: You did it! And look, a Herba Mystica!",
-              "Arven: A Paradox Pokemon... it came from Area Zero. Just like my mom's research."
-            ],
-            "rewards": { "HERBA_MYSTICA": 1 },
-            "versions": {
-              "SCARLET": {
-                "id": 984,
-                "name": "Great Tusk",
-                "lines": [
-                  "Arven: There it is... the Quaking Earth Titan!",
-                  "A sandstorm parts. A Great Tusk, a Pokemon from the ancient past, charges at you!"
-                ],
-                "won": [
-                  "GREAT TUSK ran off, beaten!",
-                  "Arven: You did it! And look, a Herba Mystica!",
-                  "Arven: A Paradox Pokemon... it came from Area Zero. Just like my mom's research."
-                ]
-              },
-              "VIOLET": {
-                "id": 990,
-                "name": "Iron Treads",
-                "lines": [
-                  "Arven: There it is... the Quaking Earth Titan!",
-                  "A sandstorm parts. An Iron Treads, a Pokemon from the distant future, rolls straight at you!"
-                ],
-                "won": [
-                  "IRON TREADS rolled off, beaten!",
-                  "Arven: You did it! And look, a Herba Mystica!",
-                  "Arven: A Paradox Pokemon... it came from Area Zero. Just like my mom's research."
-                ]
-              }
-            }
-          }
-        },
-        { "text": "WEST PROVINCE AREA 2", "action": "EXIT", "target_area": "WEST_PROVINCE_AREA_2", "condition": "can_exit", "color": "RED" },
-        { "text": "CASCARRAFA", "action": "EXIT", "target_area": "CASCARRAFA", "condition": "can_exit", "color": "RED" }
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        {"text": "QUAKING EARTH TITAN", "action": "BOSS", "condition": "met_arven", "flag_condition": "not titan_great_tusk_defeated", "color": "GOLD", "boss": {"id": 984, "name": "Great Tusk", "level": 45, "no_catch": true, "victory_flag": "titan_great_tusk_defeated", "lines": ["Arven: There it is... the Quaking Earth Titan!", "A sandstorm parts. A Great Tusk, a Pokemon from the ancient past, charges at you!"], "won": ["GREAT TUSK ran off, beaten!", "Arven: You did it! And look, a Herba Mystica!", "Arven: A Paradox Pokemon... it came from Area Zero. Just like my mom's research."], "rewards": {"HERBA_MYSTICA": 1}, "versions": {"SCARLET": {"id": 984, "name": "Great Tusk", "lines": ["Arven: There it is... the Quaking Earth Titan!", "A sandstorm parts. A Great Tusk, a Pokemon from the ancient past, charges at you!"], "won": ["GREAT TUSK ran off, beaten!", "Arven: You did it! And look, a Herba Mystica!", "Arven: A Paradox Pokemon... it came from Area Zero. Just like my mom's research."]}, "VIOLET": {"id": 990, "name": "Iron Treads", "lines": ["Arven: There it is... the Quaking Earth Titan!", "A sandstorm parts. An Iron Treads, a Pokemon from the distant future, rolls straight at you!"], "won": ["IRON TREADS rolled off, beaten!", "Arven: You did it! And look, a Herba Mystica!", "Arven: A Paradox Pokemon... it came from Area Zero. Just like my mom's research."]}}}},
+        {"text": "WEST PROVINCE AREA 2", "action": "EXIT", "target_area": "WEST_PROVINCE_AREA_2", "condition": "can_exit", "color": "RED"},
+        {"text": "CASCARRAFA", "action": "EXIT", "target_area": "CASCARRAFA", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "WEST_PROVINCE_AREA_2",
       "weather": "SAND"
@@ -2882,38 +2388,18 @@
       "battle_type": "grass",
       "wild_pool_percentages": "TAGTREE_THICKET_PERCENTAGES",
       "min_rounds": 2,
-      "trainer_pool": [],
+      "trainer_pool": [
+        {"name": "Courier Pol", "class": "COURIER", "sprite": "biker.png", "team": [279], "rewards": {"balls": 2}, "levels": [27]},
+        {"name": "Student Unai", "class": "STUDENT", "sprite": "school_kid_m.png", "team": [189, 247, 197], "rewards": {"balls": 2}, "levels": [32, 32, 32]},
+        {"name": "Student Malak", "class": "STUDENT", "sprite": "school_kid_m.png", "team": [778], "rewards": {"balls": 2}, "levels": [26]}
+      ],
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        {
-          "text": "TEAM STAR POISON CREW",
-          "action": "EVENT",
-          "condition": "met_team_star",
-          "flag_condition": "not star_navi_defeated",
-          "color": "PURPLE",
-          "event": {
-            "lines": [
-              "You storm the Navi Squad base, Team Star's Poison crew!",
-              "Your team blasts through the grunts' Star Barrage!",
-              "Atticus: So you're the one causing all this trouble. Let's ride!"
-            ],
-            "flag": "star_navi_defeated",
-            "done": ["The Navi Squad base is empty now. Its boss has left Team Star."],
-            "battle": {
-              "name": "Atticus",
-              "class": "TEAM_STAR_BOSS",
-              "sprite": "atticus.png",
-              "team": [435, 89, 966],
-              "level": 33,
-              "is_boss_battle": true,
-              "rewards": { "balls": 5 },
-              "dialogue": { "player_won": ["Atticus: A poem for my defeat... Navi Squad lays down its sword."] }
-            }
-          }
-        },
-        { "text": "MEDALI", "action": "EXIT", "target_area": "MEDALI", "condition": "can_exit", "color": "RED" },
-        { "text": "MONTENEVERA", "action": "EXIT", "target_area": "MONTENEVERA", "condition": "can_exit", "color": "RED" },
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        {"text": "TEAM STAR POISON CREW", "action": "EVENT", "condition": "met_team_star", "flag_condition": "not star_navi_defeated", "color": "PURPLE", "event": {"lines": ["You storm the Navi Squad base, Team Star's Poison crew!", "Your team blasts through the grunts' Star Barrage!", "Atticus: So you're the one causing all this trouble. Let's ride!"], "flag": "star_navi_defeated", "done": ["The Navi Squad base is empty now. Its boss has left Team Star."], "battle": {"name": "Atticus", "class": "TEAM_STAR_BOSS", "sprite": "atticus.png", "team": [435, 89, 966], "level": 33, "is_boss_battle": true, "rewards": {"balls": 5}, "dialogue": {"player_won": ["Atticus: A poem for my defeat... Navi Squad lays down its sword."]}}}},
+        {"text": "MEDALI", "action": "EXIT", "target_area": "MEDALI", "condition": "can_exit", "color": "RED"},
+        {"text": "MONTENEVERA", "action": "EXIT", "target_area": "MONTENEVERA", "condition": "can_exit", "color": "RED"},
         {"text": "Navi Squad's Base", "action": "EXIT", "target_area": "NAVI_SQUAD_BASE", "condition": ["can_exit", "met_team_star"], "color": "RED"}
       ],
       "next_area": "MEDALI"
@@ -2926,14 +2412,22 @@
       "battle_type": "grass",
       "wild_pool_percentages": "GLASEADO_MOUNTAIN_PERCENTAGES",
       "min_rounds": 2,
-      "trainer_pool": [],
+      "trainer_pool": [
+        {"name": "Backpacker Markel", "class": "BACKPACKER", "sprite": "camper.png", "team": [943, 134, 461], "rewards": {"balls": 2}, "levels": [37, 37, 37]},
+        {"name": "Courier Xabier", "class": "COURIER", "sprite": "biker.png", "team": [398], "rewards": {"balls": 2}, "levels": [36]},
+        {"name": "Courier Edgar", "class": "COURIER", "sprite": "biker.png", "team": [225], "rewards": {"balls": 2}, "levels": [35]},
+        {"name": "Dragon Tamer Elisabet", "class": "DRAGON_TAMER", "sprite": "dragon_tamer.png", "team": [334], "rewards": {"balls": 2}, "levels": [37]},
+        {"name": "Black Belt Sebastian", "class": "BLACK_BELT", "sprite": "blackbelt.png", "team": [448], "rewards": {"balls": 2}, "levels": [36]},
+        {"name": "Black Belt Marcos", "class": "BLACK_BELT", "sprite": "blackbelt.png", "team": [923], "rewards": {"balls": 2}, "levels": [35]}
+      ],
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "CASSEROYA LAKE", "action": "EXIT", "target_area": "CASSEROYA_LAKE", "condition": "can_exit", "color": "RED" },
-        { "text": "GLASEADO", "action": "EXIT", "target_area": "GLASEADO", "condition": "can_exit", "color": "RED" },
-        { "text": "NARANJA ACADEMY", "action": "EXIT", "target_area": "NARANJA_ACADEMY", "condition": "can_exit", "color": "RED" },
-        { "text": "NORTH PROVINCE AREA 3", "action": "EXIT", "target_area": "NORTH_PROVINCE_AREA_3", "condition": "can_exit", "color": "RED" },
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        {"text": "CASSEROYA LAKE", "action": "EXIT", "target_area": "CASSEROYA_LAKE", "condition": "can_exit", "color": "RED"},
+        {"text": "GLASEADO", "action": "EXIT", "target_area": "GLASEADO", "condition": "can_exit", "color": "RED"},
+        {"text": "NARANJA ACADEMY", "action": "EXIT", "target_area": "NARANJA_ACADEMY", "condition": "can_exit", "color": "RED"},
+        {"text": "NORTH PROVINCE AREA 3", "action": "EXIT", "target_area": "NORTH_PROVINCE_AREA_3", "condition": "can_exit", "color": "RED"},
         {"text": "Dalizapa Passage", "action": "EXIT", "target_area": "DALIZAPA_PASSAGE", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "GLASEADO",
@@ -2949,13 +2443,19 @@
       "min_rounds": 3,
       "trainer_pool": [{"name": "Professor Sada", "class": "BOSS", "sprite": "sada.png", "team": [984, 985, 986, 987, 988, 1007], "rewards": {"balls": 20}, "is_boss_battle": true, "dialogue": {"intro": ["Professor Sada stands before the Paradox Machine. Her expression is terrifyingly calm. 'I knew you would come. I built it to bring more ancient Pokémon into the present. I cannot let you stop it.' She raises a Poké Ball. The crater shakes."], "player_won": ["The Paradox Machine goes dark. The rift closes. Arven kneels by his Mabosstiff, who stirs and opens his eyes. Penny pulls off her hood. {rival_name} runs over, out of breath. The four of you stand in the quiet of the crater. Champions in your own right."], "player_lost": ["The Paradox machine hums louder..."]}, "movesets": {"985": ["PLAY-ROUGH", "DRAIN-PUNCH", "ICE-PUNCH", "ZEN-HEADBUTT"], "986": ["EARTH-POWER", "GIGA-DRAIN", "PAYBACK", "SUCKER-PUNCH"], "987": ["POWER-GEM", "MYSTICAL-FIRE", "SHADOW-BALL", "THUNDERBOLT"], "988": ["LUNGE", "LEECH-LIFE", "LOW-SWEEP", "ZEN-HEADBUTT"]}}],
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "FACE PROFESSOR SADA", "action": "TRAINER", "condition": "has_trainers", "color": "PURPLE" },
-        { "text": "THE PARADOX LEGEND", "action": "BOSS", "condition": "boss_available", "color": "GOLD" },
-        { "text": "ZERO LAB", "action": "EXIT", "target_area": "ZERO_LAB", "condition": "boss_defeated", "color": "GOLD" },
-        { "text": "RUINOUS SHRINES", "action": "EXIT", "target_area": "PALDEA_RUINOUS_SHRINES", "condition": "boss_defeated", "color": "PURPLE" },
-        { "text": "NARANJA ACADEMY", "action": "EXIT", "target_area": "NARANJA_ACADEMY", "condition": "can_exit", "color": "RED" },
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "FACE PROFESSOR SADA", "action": "TRAINER", "condition": "has_trainers", "color": "PURPLE"},
+        {"text": "THE PARADOX LEGEND", "action": "BOSS", "condition": "boss_available", "color": "GOLD"},
+        {"text": "SEEK WALKING WAKE", "action": "BOSS", "color": "PURPLE", "boss": {"id": 1009, "name": "Walking Wake", "victory_flag": "paradox_walking_wake_caught"}, "condition": ["beat_paldea_champion", "not:paradox_walking_wake_caught"]},
+        {"text": "SEEK IRON LEAVES", "action": "BOSS", "color": "PURPLE", "boss": {"id": 1010, "name": "Iron Leaves", "victory_flag": "paradox_iron_leaves_caught"}, "condition": ["beat_paldea_champion", "not:paradox_iron_leaves_caught"]},
+        {"text": "SEEK GOUGING FIRE", "action": "BOSS", "color": "PURPLE", "boss": {"id": 1020, "name": "Gouging Fire", "victory_flag": "paradox_gouging_fire_caught"}, "condition": ["bb_league_champion", "not:paradox_gouging_fire_caught"]},
+        {"text": "SEEK RAGING BOLT", "action": "BOSS", "color": "PURPLE", "boss": {"id": 1021, "name": "Raging Bolt", "victory_flag": "paradox_raging_bolt_caught"}, "condition": ["bb_league_champion", "not:paradox_raging_bolt_caught"]},
+        {"text": "SEEK IRON BOULDER", "action": "BOSS", "color": "PURPLE", "boss": {"id": 1022, "name": "Iron Boulder", "victory_flag": "paradox_iron_boulder_caught"}, "condition": ["bb_league_champion", "not:paradox_iron_boulder_caught"]},
+        {"text": "SEEK IRON CROWN", "action": "BOSS", "color": "PURPLE", "boss": {"id": 1023, "name": "Iron Crown", "victory_flag": "paradox_iron_crown_caught"}, "condition": ["bb_league_champion", "not:paradox_iron_crown_caught"]},
+        {"text": "ZERO LAB", "action": "EXIT", "target_area": "ZERO_LAB", "condition": "boss_defeated", "color": "GOLD"},
+        {"text": "RUINOUS SHRINES", "action": "EXIT", "target_area": "PALDEA_RUINOUS_SHRINES", "condition": "boss_defeated", "color": "PURPLE"},
+        {"text": "NARANJA ACADEMY", "action": "EXIT", "target_area": "NARANJA_ACADEMY", "condition": "can_exit", "color": "RED"},
         {"text": "Great Crater of Paldea", "action": "EXIT", "target_area": "GREAT_CRATER_OF_PALDEA", "condition": "can_exit", "color": "RED"}
       ],
       "area_boss": { "id": 1007, "name": "Koraidon", "victory_flag": "caught_koraidon" },
@@ -3079,10 +2579,29 @@
       "battle_type": "grass",
       "backgrounds": { "main": "kitakami.png" },
       "min_rounds": 1,
-      "trainer_pool": [],
+      "trainer_pool": [
+        {"name": "Festival Boy Kazuaki", "class": "FESTIVAL_BOY", "sprite": "school_kid_m.png", "team": [74, 74], "rewards": {"balls": 2}, "levels": [10, 10]},
+        {"name": "Festival Boy Makoto", "class": "FESTIVAL_BOY", "sprite": "school_kid_m.png", "team": [60, 313], "rewards": {"balls": 2}, "levels": [11, 11]},
+        {"name": "Festival Girl Mayu", "class": "FESTIVAL_GIRL", "sprite": "school_kid_f.png", "team": [283, 433], "rewards": {"balls": 2}, "levels": [10, 12]},
+        {"name": "Ruffian Shinsaku", "class": "RUFFIAN", "sprite": "roughneck.png", "team": [194, 23], "rewards": {"balls": 2}, "levels": [12, 12]}
+      ],
       "wild_pool_percentages": "PALDEA_KITAKAMI_PERCENTAGES",
       "area_boss": { "id": 1017, "name": "Ogerpon", "victory_flag": "KITAKAMI_boss_defeated" },
-      "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "MEET CARMINE AND KIERAN", "action": "EVENT", "color": "GOLD", "event": {"lines": ["Carmine: You're the exchange student from Paldea? I'm Carmine. This is my little brother Kieran.", "Kieran: Have you heard about the Loyal Three? They saved Kitakami from an ogre!", "Kieran: ...I like the ogre better, though."], "flag": "met_kitakami_rivals"}, "flag_condition": "not met_kitakami_rivals"}, {"text": "BATTLE CARMINE", "action": "EVENT", "color": "GOLD", "event": {"requires": ["met_kitakami_rivals"], "lines": ["Carmine: Outsiders don't get to just wander around Kitakami. Battle me!"], "battle": {"name": "Carmine", "class": "KITAKAMI_TRAINER", "sprite": "lass.png", "team": [1013, 1011, 166, 291], "levels": [66, 66, 67, 68], "rewards": {"balls": 10}, "dialogue": {"player_won": ["Carmine: Hmph. Fine, you're not bad."]}}, "flag": "beat_carmine_kitakami"}, "condition": "met_kitakami_rivals", "flag_condition": "not beat_carmine_kitakami"}, {"text": "BATTLE KIERAN", "action": "EVENT", "color": "GOLD", "event": {"requires": ["KITAKAMI_REVELERS_ROAD_boss_defeated", "KITAKAMI_PARADISE_BARRENS_boss_defeated", "KITAKAMI_TIMELESS_WOODS_boss_defeated"], "fail": ["Kieran: I want to find the ogre... but first, the Loyal Three. Find all of them!"], "lines": ["Kieran: You found the Loyal Three... and you met the ogre too, didn't you?", "Kieran: I'll battle you for it!"], "battle": {"name": "Kieran", "class": "KITAKAMI_TRAINER", "sprite": "school_kid_m.png", "team": [1011, 1012, 1015, 1017], "levels": [67, 67, 68, 70], "rewards": {"balls": 10}, "dialogue": {"player_won": ["Kieran: ...I lost again. I'll get stronger. Just watch."]}}, "flag": "beat_kieran_kitakami"}, "condition": "met_kitakami_rivals", "flag_condition": "not beat_kieran_kitakami"}, {"text": "Meet the Masked Ogre", "action": "BOSS", "condition": ["boss_not_defeated", "KITAKAMI_REVELERS_ROAD_boss_defeated", "KITAKAMI_PARADISE_BARRENS_boss_defeated", "KITAKAMI_TIMELESS_WOODS_boss_defeated"], "color": "GOLD"}, {"text": "REVELER'S ROAD", "action": "EXIT", "target_area": "KITAKAMI_REVELERS_ROAD", "condition": "can_exit", "color": "RED"}, {"text": "PARADISE BARRENS", "action": "EXIT", "target_area": "KITAKAMI_PARADISE_BARRENS", "condition": "can_exit", "color": "RED"}, {"text": "TIMELESS WOODS", "action": "EXIT", "target_area": "KITAKAMI_TIMELESS_WOODS", "condition": "can_exit", "color": "RED"}, {"text": "LOYALTY PLAZA AT NIGHT", "action": "EXIT", "target_area": "KITAKAMI_LOYALTY_PLAZA", "condition": "can_exit", "color": "RED"}, {"text": "Mesagoza (Bus)", "action": "EXIT", "target_area": "MESAGOZA", "condition": "can_exit", "color": "RED"}, {"text": "Mossui Town", "action": "EXIT", "target_area": "MOSSUI_TOWN", "condition": "can_exit", "color": "RED"}],
+      "route_menu": [
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        {"text": "MEET CARMINE AND KIERAN", "action": "EVENT", "color": "GOLD", "event": {"lines": ["Carmine: You're the exchange student from Paldea? I'm Carmine. This is my little brother Kieran.", "Kieran: Have you heard about the Loyal Three? They saved Kitakami from an ogre!", "Kieran: ...I like the ogre better, though."], "flag": "met_kitakami_rivals"}, "flag_condition": "not met_kitakami_rivals"},
+        {"text": "BATTLE CARMINE", "action": "EVENT", "color": "GOLD", "event": {"requires": ["met_kitakami_rivals"], "lines": ["Carmine: Outsiders don't get to just wander around Kitakami. Battle me!"], "battle": {"name": "Carmine", "class": "KITAKAMI_TRAINER", "sprite": "carmine.png", "team": [1013, 1011, 166, 291], "levels": [66, 66, 67, 68], "rewards": {"balls": 10}, "dialogue": {"player_won": ["Carmine: Hmph. Fine, you're not bad."]}}, "flag": "beat_carmine_kitakami"}, "condition": "met_kitakami_rivals", "flag_condition": "not beat_carmine_kitakami"},
+        {"text": "BATTLE KIERAN", "action": "EVENT", "color": "GOLD", "event": {"requires": ["KITAKAMI_REVELERS_ROAD_boss_defeated", "KITAKAMI_PARADISE_BARRENS_boss_defeated", "KITAKAMI_TIMELESS_WOODS_boss_defeated"], "fail": ["Kieran: I want to find the ogre... but first, the Loyal Three. Find all of them!"], "lines": ["Kieran: You found the Loyal Three... and you met the ogre too, didn't you?", "Kieran: I'll battle you for it!"], "battle": {"name": "Kieran", "class": "KITAKAMI_TRAINER", "sprite": "kieran.png", "team": [1011, 1012, 1015, 1017], "levels": [67, 67, 68, 70], "rewards": {"balls": 10}, "dialogue": {"player_won": ["Kieran: ...I lost again. I'll get stronger. Just watch."]}}, "flag": "beat_kieran_kitakami"}, "condition": "met_kitakami_rivals", "flag_condition": "not beat_kieran_kitakami"},
+        {"text": "Meet the Masked Ogre", "action": "BOSS", "condition": ["boss_not_defeated", "KITAKAMI_REVELERS_ROAD_boss_defeated", "KITAKAMI_PARADISE_BARRENS_boss_defeated", "KITAKAMI_TIMELESS_WOODS_boss_defeated"], "color": "GOLD"},
+        {"text": "REVELER'S ROAD", "action": "EXIT", "target_area": "KITAKAMI_REVELERS_ROAD", "condition": "can_exit", "color": "RED"},
+        {"text": "PARADISE BARRENS", "action": "EXIT", "target_area": "KITAKAMI_PARADISE_BARRENS", "condition": "can_exit", "color": "RED"},
+        {"text": "TIMELESS WOODS", "action": "EXIT", "target_area": "KITAKAMI_TIMELESS_WOODS", "condition": "can_exit", "color": "RED"},
+        {"text": "LOYALTY PLAZA AT NIGHT", "action": "EXIT", "target_area": "KITAKAMI_LOYALTY_PLAZA", "condition": "can_exit", "color": "RED"},
+        {"text": "Mesagoza (Bus)", "action": "EXIT", "target_area": "MESAGOZA", "condition": "can_exit", "color": "RED"},
+        {"text": "Mossui Town", "action": "EXIT", "target_area": "MOSSUI_TOWN", "condition": "can_exit", "color": "RED"}
+      ],
       "next_area": "MESAGOZA"
     },
     "KITAKAMI_REVELERS_ROAD": {
@@ -3092,16 +2611,18 @@
       "battle_type": "grass",
       "backgrounds": { "main": "kitakami_revelers_road.png" },
       "min_rounds": 0,
-      "trainer_pool": [],
+      "trainer_pool": [
+        {"name": "Courier Tomo", "class": "COURIER", "sprite": "biker.png", "team": [931, 931, 397], "rewards": {"balls": 2}, "levels": [13, 13, 15]},
+        {"name": "Festival Boy Kensaku", "class": "FESTIVAL_BOY", "sprite": "school_kid_m.png", "team": [27], "rewards": {"balls": 2}, "levels": [15]},
+        {"name": "Festival Girl Shizune", "class": "FESTIVAL_GIRL", "sprite": "school_kid_f.png", "team": [37], "rewards": {"balls": 2}, "levels": [16]},
+        {"name": "Delinquent Rio", "class": "DELINQUENT", "sprite": "roughneck.png", "team": [220], "rewards": {"balls": 2}, "levels": [17]},
+        {"name": "Ruffian Kento", "class": "RUFFIAN", "sprite": "roughneck.png", "team": [228, 624], "rewards": {"balls": 2}, "levels": [14, 14]}
+      ],
       "area_boss": { "id": 1014, "name": "Okidogi", "victory_flag": "KITAKAMI_REVELERS_ROAD_boss_defeated" },
       "route_menu": [
-        {
-          "text": "Face Okidogi",
-          "action": "BOSS",
-          "condition": ["boss_not_defeated"],
-          "color": "GOLD"
-        },
-        { "text": "Kitakami", "action": "EXIT", "target_area": "KITAKAMI", "condition": "can_exit", "color": "RED" },
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        {"text": "Face Okidogi", "action": "BOSS", "condition": ["boss_not_defeated"], "color": "GOLD"},
+        {"text": "Kitakami", "action": "EXIT", "target_area": "KITAKAMI", "condition": "can_exit", "color": "RED"},
         {"text": "Apple Hills", "action": "EXIT", "target_area": "APPLE_HILLS", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "KITAKAMI"
@@ -3113,20 +2634,21 @@
       "battle_type": "grass",
       "backgrounds": { "main": "kitakami_paradise_barrens.png" },
       "min_rounds": 0,
-      "trainer_pool": [],
+      "trainer_pool": [
+        {"name": "Festival Boy Satoru", "class": "FESTIVAL_BOY", "sprite": "school_kid_m.png", "team": [299, 274], "rewards": {"balls": 2}, "levels": [24, 24]},
+        {"name": "Festival Girl Nanami", "class": "FESTIVAL_GIRL", "sprite": "school_kid_f.png", "team": [629], "rewards": {"balls": 2}, "levels": [25]},
+        {"name": "Black Belt Hokuto", "class": "BLACK_BELT", "sprite": "blackbelt.png", "team": [532, 533], "rewards": {"balls": 2}, "levels": [23, 25]}
+      ],
       "area_boss": { "id": 1015, "name": "Munkidori", "victory_flag": "KITAKAMI_PARADISE_BARRENS_boss_defeated" },
       "route_menu": [
-        {
-          "text": "Face Munkidori",
-          "action": "BOSS",
-          "condition": ["boss_not_defeated"],
-          "color": "GOLD"
-        },
-        { "text": "Kitakami", "action": "EXIT", "target_area": "KITAKAMI", "condition": "can_exit", "color": "RED" },
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        {"text": "Face Munkidori", "action": "BOSS", "condition": ["boss_not_defeated"], "color": "GOLD"},
+        {"text": "Kitakami", "action": "EXIT", "target_area": "KITAKAMI", "condition": "can_exit", "color": "RED"},
         {"text": "Fellhorn Gorge", "action": "EXIT", "target_area": "FELLHORN_GORGE", "condition": "can_exit", "color": "RED"},
         {"text": "Wistful Fields", "action": "EXIT", "target_area": "WISTFUL_FIELDS", "condition": "can_exit", "color": "RED"}
       ],
-      "next_area": "KITAKAMI"
+      "next_area": "KITAKAMI",
+        "on_enter_event": [{"type": "trainer_battle", "trainer": {"name": "Kieran", "class": "KITAKAMI_TRAINER", "sprite": "kieran.png", "is_boss_battle": true, "team": [193, 61, 162, 1011], "levels": [22, 22, 23, 25], "rewards": {"balls": 6}, "victory_flag": "defeated_kieran_barrens", "dialogue": {"intro": ["Kieran: I've been training. I won't lose this time."], "player_won": ["Kieran: ...Fine. You win."]}}, "flag_check": "defeated_kieran_barrens"}]
     },
     "KITAKAMI_TIMELESS_WOODS": {
       "area_type": "dungeon",
@@ -3173,7 +2695,11 @@
         },
         { "text": "Kitakami", "action": "EXIT", "target_area": "KITAKAMI", "condition": "can_exit", "color": "RED" }
       ],
-      "next_area": "KITAKAMI"
+      "next_area": "KITAKAMI",
+        "on_enter_event": [
+          {"type": "trainer_battle", "trainer": {"name": "Kieran", "class": "KITAKAMI_TRAINER", "sprite": "kieran.png", "is_boss_battle": true, "team": [193, 207, 845, 1011, 61], "levels": [26, 25, 25, 26, 28], "rewards": {"balls": 6}, "victory_flag": "defeated_kieran_plaza", "dialogue": {"intro": ["Kieran: The festival's on. Battle me, right here."], "player_won": ["Kieran: ...Fine. You win."]}}, "flag_check": "defeated_kieran_plaza"},
+          {"type": "trainer_battle", "trainer": {"name": "Carmine", "class": "KITAKAMI_TRAINER", "sprite": "carmine.png", "is_boss_battle": true, "team": [262, 877, 542, 38, 1013], "levels": [33, 33, 34, 34, 35], "rewards": {"balls": 6}, "victory_flag": "defeated_carmine_plaza", "dialogue": {"intro": ["Carmine: My turn! Don't think I'll go easy!"], "player_won": ["Carmine: ...Fine. You win."]}}, "flag_check": "defeated_carmine_plaza"}
+        ]
     },
     "CASSEROYA_LAKE": {
       "area_type": "wild_route",
@@ -3184,33 +2710,21 @@
       "wild_pool_percentages": "CASSEROYA_LAKE_PERCENTAGES",
       "min_rounds": 2,
       "level": 52,
-      "trainer_pool": [],
+      "trainer_pool": [
+        {"name": "Dragon Tamer Leticia", "class": "DRAGON_TAMER", "sprite": "dragon_tamer.png", "team": [714, 612], "rewards": {"balls": 2}, "levels": [53, 53]},
+        {"name": "Model Yaiza", "class": "MODEL", "sprite": "beauty.png", "team": [615, 91, 873], "rewards": {"balls": 2}, "levels": [53, 53, 53]},
+        {"name": "Hiker Luna", "class": "HIKER", "sprite": "hiker.png", "team": [934], "rewards": {"balls": 2}, "levels": [53]},
+        {"name": "Student Dolores", "class": "STUDENT", "sprite": "school_kid_m.png", "team": [113], "rewards": {"balls": 2}, "levels": [53]},
+        {"name": "Student Jose", "class": "STUDENT", "sprite": "school_kid_m.png", "team": [918, 430], "rewards": {"balls": 2}, "levels": [53, 53]},
+        {"name": "Student Aimar", "class": "STUDENT", "sprite": "school_kid_m.png", "team": [212, 199], "rewards": {"balls": 2}, "levels": [53, 53]}
+      ],
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        {
-          "text": "FALSE DRAGON TITAN",
-          "action": "BOSS",
-          "condition": "met_arven",
-          "flag_condition": "not titan_dondozo_defeated",
-          "color": "GOLD",
-          "boss": {
-            "id": 977,
-            "name": "Dondozo",
-            "level": 56,
-            "no_catch": true,
-            "victory_flag": "titan_dondozo_defeated",
-            "lines": ["Arven: There it is... the False Dragon Titan!", "A colossal Dondozo rises from the lake, a Tatsugiri barking orders from its mouth!"],
-            "won": [
-              "DONDOZO ran off, beaten!",
-              "Arven: You did it! And look, a Herba Mystica!",
-              "Arven: That's the last Herba Mystica! Meet me in Mesagoza. I owe you a real battle."
-            ],
-            "rewards": { "HERBA_MYSTICA": 1 }
-          }
-        },
-        { "text": "GLASEADO MOUNTAIN", "action": "EXIT", "target_area": "GLASEADO_MOUNTAIN", "condition": "can_exit", "color": "RED" },
-        { "text": "NORTH PROVINCE AREA 2", "action": "EXIT", "target_area": "NORTH_PROVINCE_AREA_2", "condition": "can_exit", "color": "RED" },
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        {"text": "FALSE DRAGON TITAN", "action": "BOSS", "condition": "met_arven", "flag_condition": "not titan_dondozo_defeated", "color": "GOLD", "boss": {"id": 977, "name": "Dondozo", "level": 56, "no_catch": true, "victory_flag": "titan_dondozo_defeated", "lines": ["Arven: There it is... the False Dragon Titan!", "A colossal Dondozo rises from the lake, a Tatsugiri barking orders from its mouth!"], "won": ["DONDOZO ran off, beaten!", "Arven: You did it! And look, a Herba Mystica!", "Arven: That's the last Herba Mystica! Meet me in Mesagoza. I owe you a real battle."], "rewards": {"HERBA_MYSTICA": 1}}},
+        {"text": "GLASEADO MOUNTAIN", "action": "EXIT", "target_area": "GLASEADO_MOUNTAIN", "condition": "can_exit", "color": "RED"},
+        {"text": "NORTH PROVINCE AREA 2", "action": "EXIT", "target_area": "NORTH_PROVINCE_AREA_2", "condition": "can_exit", "color": "RED"},
         {"text": "Socarrat Trail", "action": "EXIT", "target_area": "SOCARRAT_TRAIL", "condition": "can_exit", "color": "RED"},
         {"text": "North Paldean Sea", "action": "EXIT", "target_area": "NORTH_PALDEAN_SEA", "condition": "can_exit", "color": "RED"}
       ],
@@ -3341,60 +2855,39 @@
   "PALDEA_ROUTE_1": [915, 917, 921, 661, 924, 926],
   "PALDEA_ROUTE_1_PERCENTAGES": { "915": 25, "917": 20, "921": 20, "661": 15, "924": 10, "926": 10 },
   "SOUTH_PROVINCE_AREA_1": [915, 928, 932, 833, 931, 926],
-  "SOUTH_PROVINCE_AREA_1_PERCENTAGES": { "915": 20, "928": 20, "932": 15, "833": 15, "931": 15, "926": 15 },
+  "SOUTH_PROVINCE_AREA_1_PERCENTAGES": {"54": 1, "56": 1, "79": 1, "92": 1, "129": 1, "172": 1, "174": 1, "183": 1, "187": 1, "191": 1, "2058": 1, "198": 1, "200": 1, "206": 1, "234": 1, "278": 1, "280": 1, "283": 1, "284": 1, "287": 1, "296": 1, "298": 1, "371": 1, "396": 1, "415": 1, "417": 1, "418": 1, "425": 1, "438": 1, "440": 1, "550": 1, "585": 1, "627": 1, "661": 1, "662": 1, "664": 1, "665": 1, "667": 1, "669": 1, "670": 1, "672": 1, "704": 1, "734": 1, "741": 1, "744": 1, "749": 1, "753": 1, "761": 1, "775": 1, "819": 1, "821": 1, "822": 1, "833": 1, "840": 1, "846": 1, "856": 1, "885": 1, "915": 1, "917": 1, "921": 1, "922": 1, "926": 1, "931": 1, "938": 1, "942": 1, "944": 1, "948": 1, "955": 1, "960": 1, "973": 1},
   "SOUTH_PROVINCE_AREA_2": [928, 944, 942, 761, 957, 56, 967],
-  "SOUTH_PROVINCE_AREA_2_PERCENTAGES": { "928": 20, "944": 15, "942": 15, "761": 15, "957": 15, "56": 10, "967": 10 },
+  "SOUTH_PROVINCE_AREA_2_PERCENTAGES": {"25": 2, "39": 2, "50": 2, "51": 2, "54": 2, "96": 2, "133": 2, "172": 2, "174": 2, "179": 2, "183": 2, "187": 2, "191": 2, "2058": 2, "198": 2, "200": 2, "231": 2, "283": 2, "298": 2, "339": 2, "396": 2, "397": 2, "401": 2, "415": 2, "416": 2, "417": 2, "418": 2, "425": 2, "436": 2, "438": 2, "440": 2, "447": 2, "585": 2, "661": 2, "672": 2, "749": 2, "761": 2, "819": 2, "833": 2, "840": 2, "856": 2, "915": 2, "917": 2, "919": 2, "921": 2, "926": 2, "928": 2, "938": 2, "942": 2, "944": 2, "957": 2},
   "SOUTH_PROVINCE_AREA_3": [919, 951, 953, 669, 935, 948],
-  "SOUTH_PROVINCE_AREA_3_PERCENTAGES": { "919": 20, "951": 20, "953": 15, "669": 15, "935": 15, "948": 15 },
+  "SOUTH_PROVINCE_AREA_3_PERCENTAGES": {"58": 2, "92": 2, "96": 2, "129": 2, "188": 2, "198": 2, "200": 2, "206": 2, "234": 2, "285": 2, "287": 2, "288": 2, "296": 2, "316": 2, "325": 2, "333": 2, "335": 2, "336": 2, "371": 2, "403": 2, "404": 2, "417": 2, "425": 2, "434": 2, "436": 2, "440": 2, "550": 2, "585": 2, "610": 2, "627": 2, "628": 2, "662": 2, "667": 2, "672": 2, "704": 2, "734": 2, "735": 2, "821": 2, "822": 2, "915": 2, "916": 2, "917": 2, "919": 2, "921": 2, "922": 2, "932": 2, "935": 2, "938": 2, "948": 2, "950": 2, "957": 2},
   "SOUTH_PROVINCE_AREA_5": [956, 671, 945, 282],
-  "SOUTH_PROVINCE_AREA_5_PERCENTAGES": { "956": 25, "671": 25, "945": 25, "282": 25 },
+  "SOUTH_PROVINCE_AREA_5_PERCENTAGES": {"54": 1, "56": 1, "58": 1, "79": 1, "96": 1, "129": 1, "133": 1, "183": 1, "188": 1, "2058": 1, "198": 1, "200": 1, "206": 1, "234": 1, "246": 1, "283": 1, "284": 1, "285": 1, "287": 1, "288": 1, "296": 1, "297": 1, "298": 1, "335": 1, "336": 1, "339": 1, "398": 1, "403": 1, "404": 1, "405": 1, "417": 1, "418": 1, "422": 1, "425": 1, "434": 1, "436": 1, "440": 1, "453": 1, "550": 1, "585": 1, "610": 1, "624": 1, "661": 1, "662": 1, "663": 1, "664": 1, "667": 1, "672": 1, "704": 1, "734": 1, "735": 1, "739": 1, "749": 1, "769": 1, "821": 1, "822": 1, "833": 1, "834": 1, "846": 1, "885": 1, "915": 1, "916": 1, "917": 1, "921": 1, "922": 1, "932": 1, "933": 1, "935": 1, "938": 1, "948": 1, "950": 1, "955": 1, "960": 1, "973": 1, "980": 1},
   "EAST_PROVINCE_AREA_1": [940, 938, 963, 418],
-  "EAST_PROVINCE_AREA_1_PERCENTAGES": { "940": 30, "938": 25, "963": 25, "418": 20 },
+  "EAST_PROVINCE_AREA_1_PERCENTAGES": {"25": 2, "48": 2, "2057": 2, "2056": 2, "2055": 2, "188": 2, "198": 2, "204": 2, "206": 2, "216": 2, "296": 2, "298": 2, "316": 2, "333": 2, "353": 2, "422": 2, "585": 2, "662": 2, "667": 2, "672": 2, "734": 2, "735": 2, "741": 2, "761": 2, "762": 2, "775": 2, "821": 2, "822": 2, "840": 2, "915": 2, "916": 2, "918": 2, "922": 2, "924": 2, "931": 2, "932": 2, "935": 2, "938": 2, "940": 2, "944": 2, "948": 2, "967": 2, "976": 2},
   "EAST_PROVINCE_AREA_2": [940, 941, 963, 964, 976, 977, 978],
-  "EAST_PROVINCE_AREA_2_PERCENTAGES": { "940": 20, "941": 15, "963": 15, "964": 10, "976": 15, "977": 10, "978": 15 },
+  "EAST_PROVINCE_AREA_2_PERCENTAGES": {"54": 2, "79": 2, "81": 2, "88": 2, "92": 2, "113": 2, "2057": 2, "2056": 2, "2055": 2, "129": 2, "183": 2, "188": 2, "198": 2, "200": 2, "204": 2, "206": 2, "281": 2, "296": 2, "353": 2, "417": 2, "418": 2, "425": 2, "436": 2, "479": 2, "550": 2, "585": 2, "667": 2, "672": 2, "734": 2, "735": 2, "739": 2, "740": 2, "757": 2, "761": 2, "762": 2, "769": 2, "775": 2, "778": 2, "821": 2, "822": 2, "833": 2, "834": 2, "840": 2, "846": 2, "847": 2, "871": 2, "885": 2, "915": 2, "916": 2, "918": 2, "920": 2, "922": 2, "924": 2, "931": 2, "932": 2, "935": 2, "938": 2, "940": 2, "944": 2, "948": 2, "955": 2, "957": 2, "958": 2, "960": 2, "967": 2, "973": 2},
   "EAST_PROVINCE_AREA_3": [938, 940, 941, 878, 965, 404, 180, 939, 948, 922],
-  "EAST_PROVINCE_AREA_3_PERCENTAGES": { "938": 20, "940": 15, "941": 5, "878": 10, "965": 10, "404": 10, "180": 10, "939": 5, "948": 10, "922": 5 },
+  "EAST_PROVINCE_AREA_3_PERCENTAGES": {"50": 2, "51": 2, "52": 2, "54": 2, "58": 2, "81": 2, "92": 2, "100": 2, "129": 2, "198": 2, "206": 2, "246": 2, "296": 2, "297": 2, "302": 2, "324": 2, "339": 2, "353": 2, "371": 2, "418": 2, "550": 2, "574": 2, "624": 2, "627": 2, "672": 2, "704": 2, "734": 2, "735": 2, "757": 2, "821": 2, "822": 2, "833": 2, "834": 2, "837": 2, "838": 2, "843": 2, "846": 2, "847": 2, "854": 2, "878": 2, "885": 2, "920": 2, "924": 2, "931": 2, "932": 2, "935": 2, "938": 2, "939": 2, "946": 2, "965": 2, "968": 2, "969": 2, "973": 2, "980": 2, "941": 5, "922": 5},
   "WEST_PROVINCE_AREA_1": [2058, 980, 973, 662, 950, 962],
-  "WEST_PROVINCE_AREA_1_PERCENTAGES": { "2058": 25, "980": 20, "973": 20, "662": 15, "950": 10, "962": 10 },
+  "WEST_PROVINCE_AREA_1_PERCENTAGES": {"54": 2, "56": 2, "57": 2, "92": 2, "93": 2, "97": 2, "100": 2, "183": 2, "200": 2, "231": 2, "246": 2, "296": 2, "302": 2, "322": 2, "333": 2, "415": 2, "416": 2, "418": 2, "425": 2, "436": 2, "440": 2, "443": 2, "548": 2, "550": 2, "669": 2, "670": 2, "672": 2, "734": 2, "735": 2, "739": 2, "744": 2, "749": 2, "757": 2, "833": 2, "846": 2, "870": 2, "919": 2, "921": 2, "922": 2, "931": 2, "932": 2, "935": 2, "940": 2, "951": 2, "955": 2, "957": 2, "960": 2, "962": 2, "967": 2},
   "WEST_PROVINCE_AREA_2": [942, 943, 944, 945],
-  "WEST_PROVINCE_AREA_2_PERCENTAGES": { "942": 30, "943": 25, "944": 25, "945": 20 },
+  "WEST_PROVINCE_AREA_2_PERCENTAGES": {"54": 1, "79": 1, "80": 1, "113": 1, "2057": 1, "2056": 1, "2055": 1, "129": 1, "132": 1, "180": 1, "184": 1, "188": 1, "198": 1, "203": 1, "206": 1, "232": 1, "297": 1, "302": 1, "307": 1, "339": 1, "357": 1, "371": 1, "397": 1, "418": 1, "419": 1, "434": 1, "436": 1, "443": 1, "444": 1, "453": 1, "479": 1, "550": 1, "585": 1, "662": 1, "672": 1, "714": 1, "734": 1, "735": 1, "739": 1, "757": 1, "769": 1, "770": 1, "833": 1, "834": 1, "846": 1, "847": 1, "870": 1, "871": 1, "885": 1, "916": 1, "920": 1, "922": 1, "924": 1, "932": 1, "935": 1, "938": 1, "939": 1, "940": 1, "942": 1, "948": 1, "958": 1, "960": 1, "961": 1, "963": 1, "967": 1, "969": 1, "973": 1},
   "WEST_PROVINCE_AREA_3": [982, 981, 960, 961, 2057, 2056, 2055],
-  "WEST_PROVINCE_AREA_3_PERCENTAGES": { "982": 25, "981": 20, "960": 20, "961": 15, "2057": 10, "2056": 5, "2055": 5 },
+  "WEST_PROVINCE_AREA_3_PERCENTAGES": {"25": 1, "39": 1, "52": 1, "53": 1, "100": 1, "101": 1, "113": 1, "129": 1, "132": 1, "133": 1, "135": 1, "185": 1, "189": 1, "196": 1, "198": 1, "203": 1, "204": 1, "206": 1, "217": 1, "285": 1, "286": 1, "288": 1, "297": 1, "334": 1, "340": 1, "357": 1, "397": 1, "417": 1, "419": 1, "470": 1, "549": 1, "550": 1, "570": 1, "585": 1, "586": 1, "590": 1, "662": 1, "673": 1, "700": 1, "702": 1, "704": 1, "705": 1, "735": 1, "762": 1, "775": 1, "778": 1, "820": 1, "840": 1, "856": 1, "885": 1, "916": 1, "918": 1, "922": 1, "924": 1, "933": 1, "935": 1, "939": 1, "942": 1, "943": 1, "944": 1, "948": 1, "962": 1, "967": 1, "971": 1, "973": 1, "974": 1, "980": 1, "2056": 5, "2055": 5},
   "NORTH_PROVINCE_AREA_1": [760, 701, 750, 863, 624, 625],
-  "NORTH_PROVINCE_AREA_1_PERCENTAGES": { "760": 20, "701": 20, "750": 20, "863": 15, "624": 15, "625": 10 },
+  "NORTH_PROVINCE_AREA_1_PERCENTAGES": {"40": 1, "55": 1, "57": 1, "93": 1, "113": 1, "129": 1, "136": 1, "181": 1, "189": 1, "197": 1, "217": 1, "242": 1, "288": 1, "302": 1, "326": 1, "334": 1, "340": 1, "416": 1, "423": 1, "426": 1, "429": 1, "430": 1, "442": 1, "447": 1, "448": 1, "475": 1, "586": 1, "604": 1, "610": 1, "611": 1, "627": 1, "628": 1, "666": 1, "668": 1, "670": 1, "673": 1, "701": 1, "714": 1, "715": 1, "735": 1, "745": 1, "750": 1, "754": 1, "758": 1, "820": 1, "847": 1, "871": 1, "873": 1, "876": 1, "879": 1, "886": 1, "920": 1, "922": 1, "933": 1, "941": 1, "947": 1, "952": 1, "955": 1, "956": 1, "958": 1, "960": 1, "961": 1, "966": 1, "969": 1, "972": 1, "973": 1, "980": 1},
   "NORTH_PROVINCE_AREA_2": [971, 972, 854, 855],
-  "NORTH_PROVINCE_AREA_2_PERCENTAGES": { "971": 30, "972": 20, "854": 20, "855": 12, "906": 6, "909": 6, "912": 6 },
+  "NORTH_PROVINCE_AREA_2_PERCENTAGES": {"49": 1, "51": 1, "58": 1, "59": 1, "113": 1, "123": 1, "134": 1, "147": 1, "149": 1, "189": 1, "192": 1, "197": 1, "214": 1, "216": 1, "217": 1, "229": 1, "242": 1, "289": 1, "323": 1, "326": 1, "334": 1, "372": 1, "402": 1, "405": 1, "416": 1, "429": 1, "430": 1, "437": 1, "444": 1, "448": 1, "590": 1, "591": 1, "624": 1, "625": 1, "627": 1, "633": 1, "634": 1, "666": 1, "670": 1, "673": 1, "701": 1, "714": 1, "715": 1, "754": 1, "758": 1, "765": 1, "766": 1, "870": 1, "879": 1, "886": 1, "918": 1, "920": 1, "933": 1, "943": 1, "945": 1, "966": 1, "969": 1, "906": 6, "909": 6, "912": 6},
   "NORTH_PROVINCE_AREA_3": [974, 975, 996, 997],
-  "NORTH_PROVINCE_AREA_3_PERCENTAGES": { "974": 30, "975": 25, "996": 25, "997": 20 },
+  "NORTH_PROVINCE_AREA_3_PERCENTAGES": {"51": 3, "55": 3, "97": 3, "113": 3, "134": 3, "189": 3, "192": 3, "196": 3, "197": 3, "242": 3, "278": 3, "416": 3, "423": 3, "430": 3, "549": 3, "666": 3, "670": 3, "671": 3, "673": 3, "701": 3, "702": 3, "754": 3, "758": 3, "847": 3, "871": 3, "875": 3, "879": 3, "886": 3, "920": 3, "922": 3, "929": 3, "933": 3, "939": 3, "952": 3, "958": 3, "961": 3},
   "ASADO_DESERT": [551, 552, 553, 331, 955, 968, 965],
-  "ASADO_DESERT_PERCENTAGES": { "551": 25, "552": 20, "553": 10, "331": 10, "955": 15, "968": 10, "965": 10 },
+  "ASADO_DESERT_PERCENTAGES": {"50": 3, "51": 3, "206": 3, "231": 3, "232": 3, "246": 3, "296": 3, "331": 3, "332": 3, "449": 3, "450": 3, "551": 3, "627": 3, "628": 3, "636": 3, "672": 3, "734": 3, "735": 3, "843": 3, "844": 3, "874": 3, "920": 3, "932": 3, "935": 3, "946": 3, "951": 3, "953": 3, "955": 3, "956": 3, "957": 3, "968": 3},
   "TAGTREE_THICKET": [946, 947, 190, 424, 999],
-  "TAGTREE_THICKET_PERCENTAGES": { "946": 25, "947": 20, "190": 20, "424": 15, "999": 20 },
+  "TAGTREE_THICKET_PERCENTAGES": {"48": 3, "49": 3, "54": 3, "129": 3, "134": 3, "192": 3, "198": 3, "200": 3, "204": 3, "206": 3, "339": 3, "340": 3, "415": 3, "418": 3, "425": 3, "570": 3, "590": 3, "735": 3, "753": 3, "765": 3, "766": 3, "775": 3, "778": 3, "820": 3, "840": 3, "857": 3, "859": 3, "860": 3, "916": 3, "918": 3, "929": 3, "935": 3, "939": 3, "944": 3, "945": 3, "948": 3, "980": 3},
   "GLASEADO_MOUNTAIN": [974, 975, 614, 996, 969, 884],
-  "GLASEADO_MOUNTAIN_PERCENTAGES": { "974": 25, "975": 20, "614": 20, "996": 15, "969": 10, "884": 10 },
+  "GLASEADO_MOUNTAIN_PERCENTAGES": {"54": 1, "55": 1, "82": 1, "93": 1, "134": 1, "200": 1, "215": 1, "225": 1, "282": 1, "297": 1, "340": 1, "354": 1, "361": 1, "362": 1, "371": 1, "419": 1, "425": 1, "426": 1, "429": 1, "437": 1, "442": 1, "444": 1, "459": 1, "460": 1, "461": 1, "471": 1, "475": 1, "478": 1, "550": 1, "585": 1, "586": 1, "613": 1, "614": 1, "615": 1, "627": 1, "633": 1, "634": 1, "704": 1, "707": 1, "712": 1, "713": 1, "735": 1, "739": 1, "740": 1, "745": 1, "750": 1, "757": 1, "834": 1, "847": 1, "857": 1, "871": 1, "872": 1, "873": 1, "879": 1, "885": 1, "886": 1, "920": 1, "933": 1, "938": 1, "939": 1, "969": 1, "971": 1, "972": 1, "973": 1, "974": 1, "975": 1, "976": 1, "980": 1, "996": 1, "997": 1},
   "PALDEA_AREA_ZERO": [984, 985, 986, 987, 988, 989, 1005, 1009, 1020, 1021, 990, 991, 992, 993, 994, 995, 1006, 1010, 1022, 1023],
-  "PALDEA_AREA_ZERO_PERCENTAGES": {
-    "984": 5,
-    "985": 5,
-    "986": 5,
-    "987": 5,
-    "988": 5,
-    "989": 5,
-    "1005": 5,
-    "1009": 5,
-    "1020": 5,
-    "1021": 5,
-    "990": 5,
-    "991": 5,
-    "992": 5,
-    "993": 5,
-    "994": 5,
-    "995": 5,
-    "1006": 5,
-    "1010": 5,
-    "1022": 5,
-    "1023": 5
-  },
+  "PALDEA_AREA_ZERO_PERCENTAGES": {"26": 1, "49": 1, "51": 1, "55": 1, "97": 1, "113": 1, "134": 1, "189": 1, "196": 1, "197": 1, "198": 1, "203": 1, "206": 1, "215": 1, "231": 1, "232": 1, "284": 1, "302": 1, "307": 1, "308": 1, "322": 1, "323": 1, "333": 1, "334": 1, "418": 1, "419": 1, "430": 1, "443": 1, "444": 1, "461": 1, "624": 1, "625": 1, "628": 1, "633": 1, "634": 1, "663": 1, "670": 1, "673": 1, "701": 1, "745": 1, "757": 1, "758": 1, "823": 1, "873": 1, "878": 1, "879": 1, "885": 1, "886": 1, "920": 1, "921": 1, "922": 1, "927": 1, "932": 1, "933": 1, "934": 1, "938": 1, "939": 1, "956": 1, "965": 1, "969": 1, "970": 1, "971": 1, "972": 1, "973": 1, "981": 1, "982": 1, "984": 1, "985": 1, "986": 1, "987": 1, "988": 1, "989": 1, "990": 1, "991": 1, "992": 1, "993": 1, "994": 1, "995": 1, "1005": 1, "1006": 1, "1009": 5, "1020": 5, "1021": 5, "1010": 5, "1022": 5, "1023": 5},
   "REGION_START": {
     "PALDEA": {
       "order": 9,
@@ -3421,10 +2914,10 @@
   "PALDEA_SHRINE": [971, 972, 854, 999],
   "PALDEA_AREA_ZERO_UNDERDEPTHS_PERCENTAGES": { "969": 40, "970": 30, "968": 30 },
   "PALDEA_AREA_ZERO_UNDERDEPTHS": [969, 970, 968],
-  "PALDEA_KITAKAMI_PERCENTAGES": { "1012": 20, "840": 20, "1011": 10, "946": 15, "948": 15, "56": 10, "969": 10 },
+  "PALDEA_KITAKAMI_PERCENTAGES": {"23": 1, "25": 1, "28": 1, "56": 1, "60": 1, "69": 1, "74": 1, "161": 1, "162": 1, "167": 1, "172": 1, "193": 1, "194": 1, "218": 1, "261": 1, "262": 1, "313": 1, "314": 1, "341": 1, "358": 1, "396": 1, "446": 1, "447": 1, "540": 1, "619": 1, "736": 1, "742": 1, "753": 1, "840": 1, "924": 1, "27": 1, "37": 1, "57": 1, "58": 1, "75": 1, "129": 1, "130": 1, "163": 1, "164": 1, "168": 1, "185": 1, "190": 1, "195": 1, "207": 1, "214": 1, "228": 1, "229": 1, "234": 1, "270": 1, "271": 1, "273": 1, "274": 1, "280": 1, "281": 1, "282": 1, "283": 1, "284": 1, "299": 1, "340": 1, "355": 1, "356": 1, "397": 1, "398": 1, "403": 1, "404": 1, "405": 1, "417": 1, "436": 1, "448": 1, "475": 1, "532": 1, "580": 1, "581": 1, "603": 1, "607": 1, "624": 1, "629": 1, "708": 1, "709": 1, "714": 1, "737": 1, "738": 1, "744": 1, "745": 1, "754": 1, "778": 1, "782": 1, "783": 1, "820": 1, "833": 1, "834": 1, "845": 1, "846": 1, "856": 1, "857": 1, "859": 1, "860": 1, "876": 1, "948": 1, "949": 1, "962": 1, "968": 1, "979": 1},
   "PALDEA_KITAKAMI": [1012, 840, 1011, 946, 948, 56, 969],
   "NORTH_PROVINCE_AREA_2_DAY_PERCENTAGES": { "971": 20, "972": 14, "854": 14, "855": 34, "906": 6, "909": 6, "912": 6 },
   "NORTH_PROVINCE_AREA_2_NIGHT_PERCENTAGES": { "971": 31, "972": 22, "854": 22, "855": 7, "906": 6, "909": 6, "912": 6 },
   "CASSEROYA_LAKE": [977, 978, 976, 963, 847, 130, 419, 692],
-  "CASSEROYA_LAKE_PERCENTAGES": { "977": 10, "978": 20, "976": 15, "963": 15, "847": 10, "130": 10, "419": 10, "692": 10 }
+  "CASSEROYA_LAKE_PERCENTAGES": {"49": 2, "54": 2, "55": 2, "79": 2, "80": 2, "113": 2, "123": 2, "130": 2, "134": 2, "147": 2, "148": 2, "149": 2, "184": 2, "205": 2, "317": 2, "333": 2, "334": 2, "357": 2, "398": 2, "423": 2, "429": 2, "430": 2, "435": 2, "437": 2, "442": 2, "454": 2, "673": 2, "701": 2, "705": 2, "712": 2, "713": 2, "763": 2, "834": 2, "879": 2, "886": 2, "920": 2, "933": 2, "941": 2, "972": 2, "973": 2, "976": 2, "977": 2, "978": 2}
 }

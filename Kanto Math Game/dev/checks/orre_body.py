@@ -17,11 +17,11 @@ story.story_flags, story.inventory = {}, {}
 check("Air Transit to Orre" not in travel("LILYCOVE_CITY"), "before the Hoenn title: no flight")
 story.story_flags["beat_hoenn_champion"] = True
 check("Air Transit to Orre" in travel("LILYCOVE_CITY"), "Hoenn Champion: fly from Lilycove")
-check(len(ORRE) == 14, f"{len(ORRE)} Orre areas (8 Colosseum, Mt. Battle, 5 XD)")
+check(len(ORRE) == 15, f"{len(ORRE)} Orre areas (8 Colosseum, Mt. Battle, 5 XD, the Poké Spots)")
 bad = [(k, o.get("target_area")) for k in ORRE for o in prog[k].get("travel_options", []) + prog[k].get("route_menu", [])
        if o.get("target_area") and o["target_area"] not in prog]
 check(not bad, f"every link leads somewhere {bad}")
-check(not any(prog[k].get("wild_pool_percentages") for k in ORRE), "no wild Pokemon anywhere in Orre")
+check([k for k in ORRE if prog[k].get("wild_pool_percentages")] == ["ORRE_POKE_SPOTS"], "wild Pokemon only at the Poke Spots (XD)")
 no_traps(ORRE)
 check("ORRE" not in RegionSelectionState(g, mode="new").regions, "not a new-game region")
 story.enter_region("ORRE")
@@ -77,11 +77,11 @@ c.show_message = lambda lines, callback=None: said.append(lines)
 c.start_gym_battle()
 check(said and "Agate" in str(said[-1]), "Realgam sealed until the elder")
 story.story_flags["met_agate_elder"] = True
-story.story_flags["gym_progress_REALGAM_TOWER"] = 2
+story.story_flags["gym_progress_REALGAM_TOWER"] = 3  # Dakim, Ein and Nascour beaten
 lobby = ow.GymLobbyState(g, None)
 g.change_state(lobby)
 lobby.challenge_gym()
-check(lineup(battle_of(g.current_state))[-1] == (289, 72), "Cipher Head Evice")
+check(lineup(battle_of(g.current_state))[-1] == (199, 72), "Cipher Head Evice (his Realgam Tower team, Slowking last)")
 check("THE WISHING STAR" in menu("RELIC_FOREST") and "MEET JIRACHI" not in menu("RELIC_FOREST"), "no Jirachi yet")
 story.story_flags["cipher_defeated"] = True
 run("RELIC_FOREST", "THE WISHING STAR")

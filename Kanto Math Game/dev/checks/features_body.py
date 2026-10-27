@@ -122,7 +122,8 @@ check(g.current_state is p and p.is_resuming is False or g.current_state is p, "
 print("3) Paldea paths")
 titans = [(a, m) for a, d in prog.items() for m in d.get("route_menu", []) if d.get("region") == "PALDEA" and m.get("action") == "BOSS" and (m.get("boss") or {}).get("no_catch") and m["boss"].get("id") != 10501]
 check(len(titans) == 5, f"5 Titans: {[m['boss']['name'] for a, m in titans]}")
-stars = [(a, m) for a, d in prog.items() for m in d.get("route_menu", []) if m.get("action") == "EVENT" and "battle" in (m.get("event") or {}) and d.get("region") == "PALDEA" and not a.startswith("KITAKAMI")]
+stars = [(a, m) for a, d in prog.items() for m in d.get("route_menu", []) if m.get("action") == "EVENT" and "battle" in (m.get("event") or {}) and d.get("region") == "PALDEA" and not a.startswith("KITAKAMI")
+         and m["event"]["battle"].get("team", [None])[-1] == 966]  # the crews end with Revavroom (other Paldea battle buttons aren't Team Star)
 check(len(stars) == 5, f"5 Team Star bases: {[m['event']['battle']['name'] for a, m in stars]}")
 story.player_team = [mk(906)]
 # Hidden until Arven / Team Star are met.

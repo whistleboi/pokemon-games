@@ -2,6 +2,33 @@
 
 ## Unreleased: opponents follow your team, Hoenn's story as in Omega Ruby / Alpha Sapphire
 
+- **Orre rechecked against Serebii PokéEarth** (Colosseum and XD):
+  - **Shadow Pokémon:** all 131 from both games were already in place.
+  - **Boss teams:** Cipher's bosses use their final teams from the games: Dakim, Ein, Venus, Evice, Lovrina, Gorigan, Greevil, Miror B. and Justy.
+  - **Missing admins:**
+    - Nascour waits at Realgam Tower before Evice.
+    - Snattle, Ardos and Eldes guard Citadark Isle; Greevil comes after all three.
+    - Gonzap waits at the Snagem Hideout, off the Desert Trail.
+  - **Wild Pokémon:** the Poké Spots (Rock, Oasis and Cave) off the Desert Trail are Orre's first wild Pokémon: Sandshrew, Gligar, Trapinch, Hoppip, Phanpy, Surskit, Zubat, Aron, Wooper and a rare Munchlax.
+- **Paldea, Kitakami and the Terarium rechecked against Serebii PokéEarth** (Scarlet/Violet and its DLC):
+  - **Wild Pokémon:**
+    - Every province, Kitakami area and Terarium biome has the games' spawn list: about 30–100 species each, up from 4–14.
+    - Paldean Wooper and Tauros appear in their Paldean forms.
+  - **Paldea story:**
+    - Arven battles you on Poco Path (the old "Route 1"), and Nemona on South Province Area One.
+    - After the title, Champion Nemona and Director Clavell battle you in Mesagoza.
+    - The Academy Ace Tournament (after the title, from Naranja Academy): the instructors, Hassel, Penny, Arven, Clavell, Geeta and Nemona, back to back.
+  - **Kitakami:** Carmine battles you three times and Kieran four, as in the Teal Mask, ending in the Dreaded Den. Perrin and Billy & O'Nare battle you after the story.
+  - **Blueberry Academy:**
+    - Carmine meets you at the Central Plaza, and Lacey on arrival.
+    - Each BB Elite Four member battles you in their biome.
+    - Director Cyrano battles you after the BB League.
+  - **Legendaries:**
+    - In Area Zero: Walking Wake and Iron Leaves after the title, and Gouging Fire, Raging Bolt, Iron Boulder and Iron Crown after the BB League.
+    - Snacksworth's 25 legendaries in the Terarium after the BB League.
+  - **New towns:** Los Platos and Zapapico.
+  - **Route trainers:** up to six on every province, Kitakami area and biome. The provinces get a BATTLE TRAINER button.
+  - **Trainer art:** 16 new sprites from Pokémon Showdown: Clavell, Perrin, Cyrano, Carmine, Kieran, the BB Elite Four and the Academy instructors. Carmine, Kieran and the BB Elite Four now use their own art.
 - **S.O.S. battles (Alola):** a wild Pokémon at half HP or less may call for help instead of attacking. Help comes about a third of the time: its own species, or one from the area's S.O.S. list. The ally steps in when the first is caught or knocked out, and can call for help too. Bosses, legendaries and story battles never call.
 - **Alola, Galar and Hisui rechecked against Serebii PokéEarth** (Alola: Ultra Sun/Ultra Moon with Sun/Moon; Galar: Sword/Shield and its DLC; Hisui: Legends: Arceus):
   - **Wild Pokémon:**

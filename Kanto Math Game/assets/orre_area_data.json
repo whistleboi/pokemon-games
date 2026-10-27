@@ -1,4 +1,5 @@
 {
+  "ORRE_POKE_SPOTS_PERCENTAGES": {"27": 20, "207": 10, "328": 3, "187": 20, "231": 10, "283": 3, "41": 20, "304": 10, "194": 3, "446": 1},
   "STORY_PROGRESSION": {
     "PHENAC_CITY": {
       "area_type": "town",
@@ -115,92 +116,7 @@
         }
       ],
       "next_area": "ORRE_DESERT",
-      "gym": {
-        "trainers": [
-          {
-            "name": "Streetler Dax",
-            "class": "STREETLER",
-            "sprite": "roughneck.png",
-            "team": [
-              262,
-              302,
-              319
-            ],
-            "levels": [
-              59,
-              59,
-              60
-            ],
-            "rewards": {
-              "balls": 5
-            },
-            "dialogue": {
-              "intro": [
-                "Round one at Phenac Stadium!"
-              ]
-            }
-          },
-          {
-            "name": "Civilian Mona",
-            "class": "CIVILIAN",
-            "sprite": "pokefan_f.png",
-            "team": [
-              184,
-              315,
-              357
-            ],
-            "levels": [
-              60,
-              60,
-              61
-            ],
-            "rewards": {
-              "balls": 5
-            },
-            "dialogue": {
-              "intro": [
-                "The crowd is cheering for you!"
-              ]
-            }
-          }
-        ],
-        "leader": {
-          "name": "Pree Champion Justy",
-          "class": "STADIUM_CHAMPION",
-          "sprite": "acetrainer_m.png",
-          "is_boss_battle": true,
-          "team": [
-            184,
-            362,
-            373,
-            365
-          ],
-          "levels": [
-            62,
-            62,
-            63,
-            64
-          ],
-          "rewards": {
-            "balls": 15
-          },
-          "victory_flag": "phenac_stadium_won",
-          "dialogue": {
-            "intro": [
-              "Justy: The Phenac Stadium final! Show Orre a real battle!"
-            ],
-            "player_won": [
-              "Justy: You're the Phenac Stadium champion!"
-            ],
-            "player_lost": [
-              "Justy: The stadium is open every day. Come back!"
-            ]
-          }
-        },
-        "requirements": {
-          "badges": 0
-        }
-      }
+      "gym": {"trainers": [{"name": "Streetler Dax", "class": "STREETLER", "sprite": "roughneck.png", "team": [262, 302, 319], "levels": [59, 59, 60], "rewards": {"balls": 5}, "dialogue": {"intro": ["Round one at Phenac Stadium!"]}}, {"name": "Civilian Mona", "class": "CIVILIAN", "sprite": "pokefan_f.png", "team": [184, 315, 357], "levels": [60, 60, 61], "rewards": {"balls": 5}, "dialogue": {"intro": ["The crowd is cheering for you!"]}}], "leader": {"name": "Pree Champion Justy", "class": "STADIUM_CHAMPION", "sprite": "acetrainer_m.png", "is_boss_battle": true, "team": [27, 331, 207, 192, 184, 299], "levels": [62, 62, 63, 63, 64, 64], "rewards": {"balls": 15}, "victory_flag": "phenac_stadium_won", "dialogue": {"intro": ["Justy: The Phenac Stadium final! Show Orre a real battle!"], "player_won": ["Justy: You're the Phenac Stadium champion!"], "player_lost": ["Justy: The stadium is open every day. Come back!"]}}, "requirements": {"badges": 0}}
     },
     "ORRE_DESERT": {
       "area_type": "wild_route",
@@ -238,46 +154,13 @@
         }
       ],
       "route_menu": [
-        {
-          "text": "BATTLE TRAINER",
-          "action": "TRAINER",
-          "condition": "has_trainers",
-          "color": "GREEN"
-        },
-        {
-          "text": "RIDE THE MOTORBIKE",
-          "action": "EVENT",
-          "color": "GOLD",
-          "event": {
-            "lines": [
-              "You rev the motorbike and race across the dunes.",
-              "Sand sprays behind you. Orre has no tall grass, only desert, rock and wind."
-            ]
-          }
-        },
-        {
-          "text": "SNAG SHADOW POKEMON",
-          "action": "SNAG",
-          "color": "PURPLE",
-          "condition": [
-            "has_item:SNAG_MACHINE",
-            "shadows_left"
-          ]
-        },
-        {
-          "text": "Phenac City",
-          "action": "EXIT",
-          "target_area": "PHENAC_CITY",
-          "condition": "can_exit",
-          "color": "RED"
-        },
-        {
-          "text": "Pyrite Town",
-          "action": "EXIT",
-          "target_area": "PYRITE_TOWN",
-          "condition": "got_snag_machine",
-          "color": "RED"
-        }
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        {"text": "RIDE THE MOTORBIKE", "action": "EVENT", "color": "GOLD", "event": {"lines": ["You rev the motorbike and race across the dunes.", "Sand sprays behind you. Orre has no tall grass, only desert, rock and wind."]}},
+        {"text": "SNAG SHADOW POKEMON", "action": "SNAG", "color": "PURPLE", "condition": ["has_item:SNAG_MACHINE", "shadows_left"]},
+        {"text": "SNAGEM HIDEOUT: GONZAP", "action": "EVENT", "color": "GOLD", "flag_condition": "not beat_gonzap", "event": {"lines": ["Gonzap: You walked off with our Snag Machine. Team Snagem wants it back!"], "flag": "beat_gonzap", "battle": {"name": "Snagem Head Gonzap", "class": "SNAGEM", "sprite": "roughneck.png", "is_boss_battle": true, "team": [227, 342, 348, 68, 286, 210], "levels": [62, 62, 63, 63, 63, 64], "rewards": {"balls": 12}, "dialogue": {"intro": ["Gonzap: You walked off with our Snag Machine. Team Snagem wants it back!"], "player_won": ["Gonzap: Ha! Fine, keep it. You've earned it."]}}}},
+        {"text": "Phenac City", "action": "EXIT", "target_area": "PHENAC_CITY", "condition": "can_exit", "color": "RED"},
+        {"text": "Pyrite Town", "action": "EXIT", "target_area": "PYRITE_TOWN", "condition": "got_snag_machine", "color": "RED"},
+        {"text": "Poké Spots", "action": "EXIT", "target_area": "ORRE_POKE_SPOTS", "condition": ["can_exit"], "color": "RED"}
       ],
       "next_area": "PHENAC_CITY",
       "shadow_pool": [
@@ -343,6 +226,7 @@
         }
       ]
     },
+    "ORRE_POKE_SPOTS": {"area_type": "wild_route", "route_name": "Poké Spots", "region": "ORRE", "level": 60, "battle_type": "field", "wild_pool_percentages": "ORRE_POKE_SPOTS_PERCENTAGES", "min_rounds": 2, "trainer_pool": [], "description": "Three Poké Spots in the desert (Rock, Oasis and Cave), where wild Pokémon come for Poké Snacks. A Munchlax turns up now and then.", "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "Desert Trail", "action": "EXIT", "target_area": "ORRE_DESERT", "condition": "can_exit", "color": "RED"}], "next_area": "ORRE_DESERT"},
     "PYRITE_TOWN": {
       "area_type": "town",
       "route_name": "Pyrite Town",
@@ -395,7 +279,7 @@
         }
       ],
       "next_area": "THE_UNDER",
-      "gym": {"trainers": [{"name": "Thug Brock", "class": "THUG", "sprite": "roughneck.png", "team": [297, 302, 229], "levels": [62, 62, 63], "rewards": {"balls": 5}, "dialogue": {"intro": ["Welcome to Pyrite, punk!"]}}, {"name": "Scrapper Kit", "class": "SCRAPPER", "sprite": "blackbelt.png", "team": [237, 308, 286], "levels": [63, 63, 64], "rewards": {"balls": 5}, "dialogue": {"intro": ["Nobody leaves the Colosseum easy!"]}}], "leader": {"name": "Miror B.", "class": "CIPHER_ADMIN", "sprite": "guitarist.png", "is_boss_battle": true, "team": [272, 272, 272, 272], "levels": [64, 64, 65, 66], "rewards": {"balls": 15}, "victory_flag": "pyrite_colosseum_won", "dialogue": {"intro": ["Miror B.: Ooh, a challenger! Let's dance! My Ludicolo never miss a beat!"], "player_won": ["Miror B.: Aaah! My groove! You win this round, baby!"], "player_lost": ["Miror B.: Ha! Keep dancing and come back!"]}, "movesets": {"272": ["RAZOR-LEAF", "ICE-BEAM", "ASTONISH", "RAIN-DANCE"]}}, "requirements": {"badges": 0}}
+      "gym": {"trainers": [{"name": "Thug Brock", "class": "THUG", "sprite": "roughneck.png", "team": [297, 302, 229], "levels": [62, 62, 63], "rewards": {"balls": 5}, "dialogue": {"intro": ["Welcome to Pyrite, punk!"]}}, {"name": "Scrapper Kit", "class": "SCRAPPER", "sprite": "blackbelt.png", "team": [237, 308, 286], "levels": [63, 63, 64], "rewards": {"balls": 5}, "dialogue": {"intro": ["Nobody leaves the Colosseum easy!"]}}], "leader": {"name": "Miror B.", "class": "CIPHER_ADMIN", "sprite": "guitarist.png", "is_boss_battle": true, "team": [348, 272, 272, 55, 294], "levels": [64, 64, 65, 66, 66], "rewards": {"balls": 15}, "victory_flag": "pyrite_colosseum_won", "dialogue": {"intro": ["Miror B.: Ooh, a challenger! Let's dance! My Ludicolo never miss a beat!"], "player_won": ["Miror B.: Aaah! My groove! You win this round, baby!"], "player_lost": ["Miror B.: Ha! Keep dancing and come back!"]}}, "requirements": {"badges": 0}}
     },
     "THE_UNDER": {
       "area_type": "dungeon",
@@ -432,7 +316,12 @@
           }
         }
       ],
-      "route_menu": [{"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"}, {"text": "SNAG SHADOW POKEMON", "action": "SNAG", "color": "PURPLE", "condition": ["has_item:SNAG_MACHINE", "shadows_left"]}, {"text": "SHUT DOWN THE UNDER", "action": "EVENT", "color": "GOLD", "event": {"lines": ["Cipher Admin Venus: How dare you march into my studio!", "My Shadow Pokemon are beautiful, and you'll see how beautiful in battle!"], "battle": {"name": "Cipher Admin Venus", "class": "CIPHER_ADMIN", "sprite": "beauty.png", "team": [184, 350, 186, 36], "levels": [64, 65, 65, 66], "rewards": {"balls": 15}, "dialogue": {"player_won": ["Venus: My makeup... ruined! Fine, The Under is yours!"]}, "movesets": {"350": ["SURF", "BLIZZARD", "ATTRACT", "CONFUSE-RAY"]}}, "flag": "cleared_the_under"}, "flag_condition": "not cleared_the_under"}, {"text": "Pyrite Town", "action": "EXIT", "target_area": "PYRITE_TOWN", "condition": "can_exit", "color": "RED"}],
+      "route_menu": [
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        {"text": "SNAG SHADOW POKEMON", "action": "SNAG", "color": "PURPLE", "condition": ["has_item:SNAG_MACHINE", "shadows_left"]},
+        {"text": "SHUT DOWN THE UNDER", "action": "EVENT", "color": "GOLD", "event": {"lines": ["Cipher Admin Venus: How dare you march into my studio!", "My Shadow Pokemon are beautiful, and you'll see how beautiful in battle!"], "battle": {"name": "Cipher Admin Venus", "class": "CIPHER_ADMIN", "sprite": "beauty.png", "team": [350, 182, 26, 40, 200], "levels": [64, 64, 65, 66, 66], "rewards": {"balls": 15}, "dialogue": {"player_won": ["Venus: My makeup... ruined! Fine, The Under is yours!"]}}, "flag": "cleared_the_under"}, "flag_condition": "not cleared_the_under"},
+        {"text": "Pyrite Town", "action": "EXIT", "target_area": "PYRITE_TOWN", "condition": "can_exit", "color": "RED"}
+      ],
       "next_area": "PYRITE_TOWN",
       "shadow_pool": [
         {
@@ -1121,76 +1010,10 @@
         }
       ],
       "route_menu": [
-        {
-          "text": "CLIMB MT. BATTLE",
-          "action": "TRAINER",
-          "condition": "has_trainers",
-          "color": "GREEN"
-        },
-        {
-          "text": "MT. BATTLE MASTER",
-          "action": "EVENT",
-          "color": "GOLD",
-          "event": {
-            "lines": [
-              "Mt. Battle Master Vander: You beat all ten areas? Then face the master of the mountain!"
-            ],
-            "battle": {
-              "name": "Mt. Battle Master Vander",
-              "class": "MT_BATTLE_MASTER",
-              "sprite": "blackbelt.png",
-              "team": [
-                289,
-                248,
-                373,
-                376,
-                230,
-                242
-              ],
-              "levels": [
-                70,
-                70,
-                71,
-                71,
-                72,
-                73
-              ],
-              "rewards": {
-                "balls": 15
-              },
-              "dialogue": {
-                "player_won": [
-                  "Vander: What a climb! You're the true master of Mt. Battle!"
-                ]
-              }
-            },
-            "flag": "mt_battle_master_beaten"
-          },
-          "condition": "not:has_trainers",
-          "flag_condition": "not mt_battle_master_beaten"
-        },
-        {
-          "text": "START OVER FROM AREA 1",
-          "action": "EVENT",
-          "color": "GOLD",
-          "event": {
-            "lines": [
-              "Mt. Battle's trainers are ready for another round. Back to Area 1!"
-            ],
-            "reset_area": true,
-            "clear_flags": [
-              "mt_battle_master_beaten"
-            ]
-          },
-          "condition": "mt_battle_master_beaten"
-        },
-        {
-          "text": "Pyrite Town",
-          "action": "EXIT",
-          "target_area": "PYRITE_TOWN",
-          "condition": "can_exit",
-          "color": "RED"
-        }
+        {"text": "CLIMB MT. BATTLE", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        {"text": "MT. BATTLE MASTER", "action": "EVENT", "color": "GOLD", "event": {"lines": ["Mt. Battle Master Vander: You beat all ten areas? Then face the master of the mountain!"], "battle": {"name": "Mt. Battle Master Vander", "class": "MT_BATTLE_MASTER", "sprite": "blackbelt.png", "team": [289, 248, 373, 376, 230, 242], "levels": [70, 70, 71, 71, 72, 73], "rewards": {"balls": 15}, "dialogue": {"player_won": ["Vander: What a climb! You're the true master of Mt. Battle!"]}}, "flag": "mt_battle_master_beaten"}, "condition": "not:has_trainers", "flag_condition": "not mt_battle_master_beaten"},
+        {"text": "START OVER FROM AREA 1", "action": "EVENT", "color": "GOLD", "event": {"lines": ["Mt. Battle's trainers are ready for another round. Back to Area 1!"], "reset_area": true, "clear_flags": ["mt_battle_master_beaten"]}, "condition": "mt_battle_master_beaten"},
+        {"text": "Pyrite Town", "action": "EXIT", "target_area": "PYRITE_TOWN", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "PYRITE_TOWN"
     },
@@ -1283,57 +1106,11 @@
         }
       ],
       "route_menu": [
-        {
-          "text": "BATTLE TRAINER",
-          "action": "TRAINER",
-          "condition": "has_trainers",
-          "color": "GREEN"
-        },
-        {
-          "text": "SNAG SHADOW POKEMON",
-          "action": "SNAG",
-          "color": "PURPLE",
-          "condition": [
-            "has_item:SNAG_MACHINE",
-            "shadows_left"
-          ]
-        },
-        {
-          "text": "THE WISHING STAR",
-          "action": "EVENT",
-          "color": "GOLD",
-          "event": {
-            "requires": [
-              "cipher_defeated"
-            ],
-            "fail": [
-              "The Relic Stone glows softly. The forest feels like it's waiting for something."
-            ],
-            "lines": [
-              "Every Shadow Pokemon you saved gathers around the Relic Stone.",
-              "A shooting star falls into the forest... and a tiny Pokemon with a star on its head wakes up!",
-              "It's Jirachi, the Wish Pokemon. It looks at you, curious."
-            ],
-            "flag": "jirachi_awake"
-          },
-          "flag_condition": "not jirachi_awake"
-        },
-        {
-          "text": "MEET JIRACHI",
-          "action": "BOSS",
-          "color": "GOLD",
-          "condition": [
-            "jirachi_awake",
-            "boss_not_defeated"
-          ]
-        },
-        {
-          "text": "Agate Village",
-          "action": "EXIT",
-          "target_area": "AGATE_VILLAGE",
-          "condition": "can_exit",
-          "color": "RED"
-        }
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        {"text": "SNAG SHADOW POKEMON", "action": "SNAG", "color": "PURPLE", "condition": ["has_item:SNAG_MACHINE", "shadows_left"]},
+        {"text": "THE WISHING STAR", "action": "EVENT", "color": "GOLD", "event": {"requires": ["cipher_defeated"], "fail": ["The Relic Stone glows softly. The forest feels like it's waiting for something."], "lines": ["Every Shadow Pokemon you saved gathers around the Relic Stone.", "A shooting star falls into the forest... and a tiny Pokemon with a star on its head wakes up!", "It's Jirachi, the Wish Pokemon. It looks at you, curious."], "flag": "jirachi_awake"}, "flag_condition": "not jirachi_awake"},
+        {"text": "MEET JIRACHI", "action": "BOSS", "color": "GOLD", "condition": ["jirachi_awake", "boss_not_defeated"]},
+        {"text": "Agate Village", "action": "EXIT", "target_area": "AGATE_VILLAGE", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "AGATE_VILLAGE",
       "shadow_pool": [
@@ -1413,7 +1190,7 @@
         }
       ],
       "next_area": "CIPHER_COMMAND",
-      "gym": {"trainers": [{"name": "Cipher Admin Dakim", "class": "CIPHER_ADMIN", "sprite": "blackbelt.png", "team": [232, 340, 62, 297], "levels": [66, 66, 67, 68], "rewards": {"balls": 8}, "dialogue": {"intro": ["Dakim: Crush! I'll crush you and your Pokemon!"]}, "movesets": {"340": ["PROTECT", "EARTHQUAKE", "WATERFALL", "ICE-BEAM"]}}, {"name": "Cipher Admin Ein", "class": "CIPHER_ADMIN", "sprite": "scientist.png", "team": [376, 82, 289, 344], "levels": [67, 67, 68, 69], "rewards": {"balls": 8}, "dialogue": {"intro": ["Ein: My research made the Shadow Pokemon. You will not undo it!"]}}], "leader": {"name": "Cipher Head Evice", "class": "CIPHER_BOSS", "sprite": "gentleman.png", "is_boss_battle": true, "team": [248, 376, 373, 330, 334, 289], "levels": [70, 70, 71, 70, 70, 72], "rewards": {"balls": 25, "RARE_CANDY": 5}, "victory_flag": "cipher_defeated", "dialogue": {"intro": ["Evice: So you're the meddler. Realgam Tower is mine, and so is Orre!"], "player_won": ["Evice: Impossible... Cipher is finished.", "Rui: You did it! Every Shadow Pokemon can be saved now!"], "player_lost": ["Evice: Cipher cannot be beaten! Leave my tower!"]}, "movesets": {"248": ["SHADOW-RUSH", "THUNDER", "ROCK-SLIDE", "BLIZZARD"], "373": ["DRAGON-DANCE", "DOUBLE-EDGE", "AERIAL-ACE", "DRAGON-CLAW"], "289": ["CRUSH-CLAW", "AERIAL-ACE", "EARTHQUAKE", "BULK-UP"]}}, "requirements": {"badges": 0, "flag": "met_agate_elder", "fail_text": "Realgam Tower's doors are sealed. Talk to the elder in Agate Village first."}}
+      "gym": {"trainers": [{"name": "Cipher Admin Dakim", "class": "CIPHER_ADMIN", "sprite": "blackbelt.png", "team": [229, 330, 205, 340, 344], "levels": [66, 66, 67, 68, 68], "rewards": {"balls": 8}, "dialogue": {"intro": ["Dakim: Crush! I'll crush you and your Pokemon!"]}}, {"name": "Cipher Admin Ein", "class": "CIPHER_ADMIN", "sprite": "scientist.png", "team": [310, 121, 112, 279, 169], "levels": [67, 67, 68, 69, 69], "rewards": {"balls": 8}, "dialogue": {"intro": ["Ein: My research made the Shadow Pokemon. You will not undo it!"]}}, {"name": "Cipher Nascour", "class": "CIPHER_ADMIN", "sprite": "gentleman.png", "team": [65, 282, 178, 356, 365, 257], "levels": [67, 67, 68, 68, 69, 69], "rewards": {"balls": 10}, "dialogue": {"intro": ["Nascour: I run Cipher's operations. Evice will not be disturbed by a child!"], "player_won": ["Nascour: Impossible... Master Evice, forgive me!"]}}], "leader": {"name": "Cipher Head Evice", "class": "CIPHER_BOSS", "sprite": "gentleman.png", "is_boss_battle": true, "team": [306, 373, 68, 212, 289, 199], "levels": [70, 70, 71, 71, 72, 72], "rewards": {"balls": 25, "RARE_CANDY": 5}, "victory_flag": "cipher_defeated", "dialogue": {"intro": ["Evice: So you're the meddler. Realgam Tower is mine, and so is Orre!"], "player_won": ["Evice: Impossible... Cipher is finished.", "Rui: You did it! Every Shadow Pokemon can be saved now!"], "player_lost": ["Evice: Cipher cannot be beaten! Leave my tower!"]}}, "requirements": {"badges": 0, "flag": "met_agate_elder", "fail_text": "Realgam Tower's doors are sealed. Talk to the elder in Agate Village first."}}
     },
     "CIPHER_COMMAND": {
       "area_type": "dungeon",
@@ -1645,7 +1422,11 @@
       "battle_type": "indoor",
       "min_rounds": 0,
       "trainer_pool": [],
-      "route_menu": [{"text": "SNAG SHADOW POKEMON", "action": "SNAG", "color": "PURPLE", "condition": ["has_item:SNAG_MACHINE", "shadows_left"]}, {"text": "BATTLE CIPHER ADMIN LOVRINA", "action": "EVENT", "color": "GOLD", "event": {"lines": ["Cipher Admin Lovrina: You found my lab? My lovely Shadow Pokemon will deal with you!"], "battle": {"name": "Cipher Admin Lovrina", "class": "CIPHER_ADMIN", "sprite": "beauty.png", "team": [301, 315, 184], "levels": [65, 66, 67], "rewards": {"balls": 12}, "dialogue": {"player_won": ["Lovrina: Ugh! Fine, the ONBS building is next. Not that it'll help you!"]}, "movesets": {"301": ["SHADOW-RUSH", "SHADOW-WAVE"], "315": ["MEGA-DRAIN", "POISON-STING", "PIN-MISSILE", "LEECH-SEED"]}}, "flag": "xd_lovrina_beaten"}, "flag_condition": "not xd_lovrina_beaten"}, {"text": "Gateon Port", "action": "EXIT", "target_area": "GATEON_PORT", "condition": "can_exit", "color": "RED"}],
+      "route_menu": [
+        {"text": "SNAG SHADOW POKEMON", "action": "SNAG", "color": "PURPLE", "condition": ["has_item:SNAG_MACHINE", "shadows_left"]},
+        {"text": "BATTLE CIPHER ADMIN LOVRINA", "action": "EVENT", "color": "GOLD", "event": {"lines": ["Cipher Admin Lovrina: You found my lab? My lovely Shadow Pokemon will deal with you!"], "battle": {"name": "Cipher Admin Lovrina", "class": "CIPHER_ADMIN", "sprite": "beauty.png", "team": [282, 368, 315, 83, 334], "levels": [65, 65, 66, 67, 67], "rewards": {"balls": 12}, "dialogue": {"player_won": ["Lovrina: Ugh! Fine, the ONBS building is next. Not that it'll help you!"]}}, "flag": "xd_lovrina_beaten"}, "flag_condition": "not xd_lovrina_beaten"},
+        {"text": "Gateon Port", "action": "EXIT", "target_area": "GATEON_PORT", "condition": "can_exit", "color": "RED"}
+      ],
       "next_area": "GATEON_PORT",
       "shadow_pool": [
         {
@@ -1891,7 +1672,11 @@
       "battle_type": "indoor",
       "min_rounds": 0,
       "trainer_pool": [],
-      "route_menu": [{"text": "SNAG SHADOW POKEMON", "action": "SNAG", "color": "PURPLE", "condition": ["has_item:SNAG_MACHINE", "shadows_left"]}, {"text": "BATTLE CIPHER ADMIN GORIGAN", "action": "EVENT", "color": "GOLD", "event": {"lines": ["Cipher Admin Gorigan: Here's where Cipher keeps its keys. You'll go no further!"], "battle": {"name": "Cipher Admin Gorigan", "class": "CIPHER_ADMIN", "sprite": "blackbelt.png", "team": [57, 97, 68, 62], "levels": [69, 69, 70, 70], "rewards": {"balls": 15}, "dialogue": {"player_won": ["Gorigan: The key... to Citadark Isle. Take it, then. Greevil is waiting."]}, "movesets": {"57": ["SHADOW-STORM", "SHADOW-RUSH"], "97": ["SHADOW-DOWN", "SHADOW-STORM"]}}, "flag": "xd_gorigan_beaten"}, "flag_condition": "not xd_gorigan_beaten"}, {"text": "Gateon Port", "action": "EXIT", "target_area": "GATEON_PORT", "condition": "can_exit", "color": "RED"}],
+      "route_menu": [
+        {"text": "SNAG SHADOW POKEMON", "action": "SNAG", "color": "PURPLE", "condition": ["has_item:SNAG_MACHINE", "shadows_left"]},
+        {"text": "BATTLE CIPHER ADMIN GORIGAN", "action": "EVENT", "color": "GOLD", "event": {"lines": ["Cipher Admin Gorigan: Here's where Cipher keeps its keys. You'll go no further!"], "battle": {"name": "Cipher Admin Gorigan", "class": "CIPHER_ADMIN", "sprite": "blackbelt.png", "team": [199, 217, 306, 365, 62, 122], "levels": [69, 69, 69, 70, 70, 70], "rewards": {"balls": 15}, "dialogue": {"player_won": ["Gorigan: The key... to Citadark Isle. Take it, then. Greevil is waiting."]}}, "flag": "xd_gorigan_beaten"}, "flag_condition": "not xd_gorigan_beaten"},
+        {"text": "Gateon Port", "action": "EXIT", "target_area": "GATEON_PORT", "condition": "can_exit", "color": "RED"}
+      ],
       "next_area": "GATEON_PORT",
       "shadow_pool": [
         {
@@ -1988,7 +1773,14 @@
       "battle_type": "field",
       "min_rounds": 0,
       "trainer_pool": [],
-      "route_menu": [{"text": "SNAG SHADOW POKEMON", "action": "SNAG", "color": "PURPLE", "condition": ["has_item:SNAG_MACHINE", "shadows_left"]}, {"text": "BATTLE GRAND MASTER GREEVIL", "action": "EVENT", "color": "GOLD", "event": {"lines": ["Grand Master Greevil: So you crossed the sea to my island. Cipher will rule Orre!"], "battle": {"name": "Grand Master Greevil", "class": "CIPHER_BOSS", "sprite": "gentleman.png", "team": [112, 103, 128, 373, 376], "levels": [71, 71, 72, 72, 73], "rewards": {"balls": 25}, "dialogue": {"player_won": ["Greevil: My Shadow Pokemon... my perfect plan... Cipher is finished!"]}, "movesets": {"112": ["SHADOW-END", "SHADOW-DOWN", "SHADOW-PANIC", "SHADOW-HOLD"], "103": ["SHADOW-STORM", "SHADOW-SHED", "SHADOW-HOLD", "SHADOW-END"], "128": ["SHADOW-RUSH", "SHADOW-HOLD", "SHADOW-SHED", "SHADOW-SKY"]}}, "flag": "xd_greevil_beaten"}, "flag_condition": "not xd_greevil_beaten"}, {"text": "Gateon Port", "action": "EXIT", "target_area": "GATEON_PORT", "condition": "can_exit", "color": "RED"}],
+      "route_menu": [
+        {"text": "SNAG SHADOW POKEMON", "action": "SNAG", "color": "PURPLE", "condition": ["has_item:SNAG_MACHINE", "shadows_left"]},
+        {"text": "BATTLE CIPHER ADMIN SNATTLE", "action": "EVENT", "color": "GOLD", "flag_condition": "not xd_snattle_beaten", "event": {"lines": ["Snattle: I was Phenac's mayor once. Now I serve Cipher, and you'll go no further!"], "flag": "xd_snattle_beaten", "battle": {"name": "Cipher Admin Snattle", "class": "CIPHER_ADMIN", "sprite": "gentleman.png", "team": [375, 195, 212, 338, 351, 121], "levels": [70, 70, 71, 71, 71, 72], "rewards": {"balls": 12}, "dialogue": {"player_won": ["Snattle: ...Father, I'm sorry."]}}}},
+        {"text": "BATTLE CIPHER ADMIN ARDOS", "action": "EVENT", "color": "GOLD", "flag_condition": "not xd_ardos_beaten", "event": {"lines": ["Ardos: Greevil is our father. I will not let you reach him."], "flag": "xd_ardos_beaten", "battle": {"name": "Cipher Admin Ardos", "class": "CIPHER_ADMIN", "sprite": "gentleman.png", "team": [277, 65, 230, 214, 125, 286], "levels": [70, 70, 71, 71, 71, 72], "rewards": {"balls": 12}, "dialogue": {"player_won": ["Ardos: ...Father, I'm sorry."]}}}},
+        {"text": "BATTLE CIPHER ADMIN ELDES", "action": "EVENT", "color": "GOLD", "flag_condition": "not xd_eldes_beaten", "event": {"lines": ["Eldes: Brother Ardos has fallen? Then I will stop you myself."], "flag": "xd_eldes_beaten", "battle": {"name": "Cipher Admin Eldes", "class": "CIPHER_ADMIN", "sprite": "gentleman.png", "team": [291, 310, 373, 330, 105, 131], "levels": [70, 70, 71, 71, 71, 72], "rewards": {"balls": 12}, "dialogue": {"player_won": ["Eldes: ...Father, I'm sorry."]}}}},
+        {"text": "BATTLE GRAND MASTER GREEVIL", "action": "EVENT", "color": "GOLD", "event": {"lines": ["Grand Master Greevil: So you crossed the sea to my island. Cipher will rule Orre!"], "battle": {"name": "Grand Master Greevil", "class": "CIPHER_BOSS", "sprite": "gentleman.png", "team": [310, 277, 121, 210, 334, 142], "levels": [71, 71, 72, 72, 73, 73], "rewards": {"balls": 25}, "dialogue": {"player_won": ["Greevil: My Shadow Pokemon... my perfect plan... Cipher is finished!"]}}, "flag": "xd_greevil_beaten", "requires": ["xd_snattle_beaten", "xd_ardos_beaten", "xd_eldes_beaten"], "fail": ["Greevil's admins guard the way. Beat Snattle, Ardos and Eldes first."]}, "flag_condition": "not xd_greevil_beaten", "condition": ["xd_snattle_beaten", "xd_ardos_beaten", "xd_eldes_beaten"]},
+        {"text": "Gateon Port", "action": "EXIT", "target_area": "GATEON_PORT", "condition": "can_exit", "color": "RED"}
+      ],
       "next_area": "GATEON_PORT",
       "shadow_pool": [
         {

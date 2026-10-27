@@ -15,22 +15,7 @@
     111,
     49
   ],
-  "SAVANNA_BIOME_PERCENTAGES": {
-    "128": 9,
-    "329": 7,
-    "954": 7,
-    "126": 7,
-    "102": 7,
-    "123": 7,
-    "84": 7,
-    "103": 7,
-    "113": 7,
-    "330": 7,
-    "667": 7,
-    "668": 7,
-    "111": 7,
-    "49": 7
-  },
+  "SAVANNA_BIOME_PERCENTAGES": {"4": 2, "48": 2, "49": 2, "84": 2, "85": 2, "102": 2, "103": 2, "111": 2, "112": 2, "113": 2, "123": 2, "125": 2, "126": 2, "128": 2, "158": 2, "203": 2, "212": 2, "235": 2, "239": 2, "240": 2, "242": 2, "328": 2, "329": 2, "330": 2, "440": 2, "479": 2, "495": 2, "522": 2, "523": 2, "529": 2, "551": 2, "552": 2, "553": 2, "585": 2, "586": 2, "602": 2, "603": 2, "627": 2, "628": 2, "629": 2, "630": 2, "653": 2, "667": 2, "668": 2, "722": 2, "751": 2, "779": 2, "816": 2, "953": 2, "954": 2, "981": 2},
   "COASTAL_BIOME": [
     732,
     779,
@@ -47,22 +32,7 @@
     739,
     678
   ],
-  "COASTAL_BIOME_PERCENTAGES": {
-    "732": 9,
-    "779": 7,
-    "117": 7,
-    "89": 7,
-    "72": 7,
-    "73": 7,
-    "456": 7,
-    "457": 7,
-    "171": 7,
-    "686": 7,
-    "594": 7,
-    "662": 7,
-    "739": 7,
-    "678": 7
-  },
+  "COASTAL_BIOME_PERCENTAGES": {"1": 2, "43": 2, "44": 2, "45": 2, "48": 2, "2009": 2, "72": 2, "73": 2, "2022": 2, "2015": 2, "2016": 2, "102": 2, "2017": 2, "116": 2, "117": 2, "126": 2, "152": 2, "171": 2, "182": 2, "210": 2, "235": 2, "240": 2, "242": 2, "258": 2, "287": 2, "288": 2, "289": 2, "322": 2, "323": 2, "324": 2, "335": 2, "336": 2, "370": 2, "440": 2, "456": 2, "457": 2, "462": 2, "479": 2, "546": 2, "547": 2, "574": 2, "575": 2, "576": 2, "585": 2, "586": 2, "594": 2, "656": 2, "661": 2, "662": 2, "663": 2, "677": 2, "678": 2, "686": 2, "687": 2, "728": 2, "731": 2, "732": 2, "733": 2, "739": 2, "751": 2, "752": 2, "764": 2, "774": 2, "779": 2, "810": 2, "868": 2},
   "CANYON_BIOME": [
     82,
     237,
@@ -79,22 +49,7 @@
     235,
     212
   ],
-  "CANYON_BIOME_PERCENTAGES": {
-    "82": 9,
-    "237": 7,
-    "559": 7,
-    "236": 7,
-    "586": 7,
-    "572": 7,
-    "239": 7,
-    "125": 7,
-    "529": 7,
-    "623": 7,
-    "622": 7,
-    "854": 7,
-    "235": 7,
-    "212": 7
-  },
+  "CANYON_BIOME_PERCENTAGES": {"7": 2, "81": 2, "82": 2, "106": 2, "107": 2, "116": 2, "117": 2, "123": 2, "125": 2, "170": 2, "171": 2, "203": 2, "212": 2, "227": 2, "235": 2, "236": 2, "237": 2, "239": 2, "252": 2, "311": 2, "312": 2, "333": 2, "334": 2, "374": 2, "375": 2, "387": 2, "408": 2, "410": 2, "462": 2, "479": 2, "498": 2, "529": 2, "530": 2, "559": 2, "560": 2, "572": 2, "573": 2, "585": 2, "586": 2, "594": 2, "595": 2, "596": 2, "602": 2, "603": 2, "604": 2, "610": 2, "611": 2, "612": 2, "622": 2, "623": 2, "650": 2, "661": 2, "662": 2, "677": 2, "678": 2, "687": 2, "725": 2, "774": 2, "854": 2, "900": 2},
   "POLAR_BIOME": [
     623,
     87,
@@ -111,22 +66,7 @@
     739,
     210
   ],
-  "POLAR_BIOME_PERCENTAGES": {
-    "623": 9,
-    "87": 7,
-    "460": 7,
-    "884": 7,
-    "131": 7,
-    "579": 7,
-    "375": 7,
-    "459": 7,
-    "868": 7,
-    "209": 7,
-    "27": 7,
-    "37": 7,
-    "739": 7,
-    "210": 7
-  },
+  "POLAR_BIOME_PERCENTAGES": {"2004": 2, "2006": 2, "81": 2, "82": 2, "86": 2, "87": 2, "112": 2, "116": 2, "117": 2, "131": 2, "137": 2, "155": 2, "209": 2, "210": 2, "2044": 2, "212": 2, "235": 2, "237": 2, "239": 2, "255": 2, "311": 2, "312": 2, "322": 2, "323": 2, "374": 2, "375": 2, "390": 2, "393": 2, "456": 2, "457": 2, "459": 2, "460": 2, "479": 2, "501": 2, "529": 2, "530": 2, "572": 2, "573": 2, "577": 2, "578": 2, "579": 2, "585": 2, "586": 2, "595": 2, "596": 2, "602": 2, "603": 2, "604": 2, "610": 2, "611": 2, "613": 2, "614": 2, "622": 2, "623": 2, "650": 2, "739": 2, "740": 2, "774": 2, "813": 2, "854": 2, "868": 2, "884": 2, "900": 2},
   "TORCHLIT_LABYRINTH": [
     50,
     51,
@@ -143,22 +83,7 @@
     335,
     336
   ],
-  "TORCHLIT_LABYRINTH_PERCENTAGES": {
-    "50": 9,
-    "51": 7,
-    "79": 7,
-    "126": 7,
-    "152": 7,
-    "235": 7,
-    "240": 7,
-    "242": 7,
-    "287": 7,
-    "322": 7,
-    "323": 7,
-    "324": 7,
-    "335": 7,
-    "336": 7
-  },
+  "TORCHLIT_LABYRINTH_PERCENTAGES": {"2008": 3, "2009": 3, "2022": 3, "126": 3, "152": 3, "235": 3, "240": 3, "242": 3, "287": 3, "322": 3, "323": 3, "324": 3, "335": 3, "336": 3, "440": 3, "479": 3, "574": 3, "575": 3, "576": 3, "661": 3, "662": 3, "663": 3, "686": 3, "731": 3, "732": 3, "733": 3, "751": 3, "752": 3, "774": 3},
   "CHARGESTONE_CAVERN": [
     604,
     137,
@@ -175,22 +100,7 @@
     375,
     479
   ],
-  "CHARGESTONE_CAVERN_PERCENTAGES": {
-    "604": 9,
-    "137": 7,
-    "596": 7,
-    "239": 7,
-    "82": 7,
-    "603": 7,
-    "81": 7,
-    "125": 7,
-    "212": 7,
-    "311": 7,
-    "312": 7,
-    "374": 7,
-    "375": 7,
-    "479": 7
-  },
+  "CHARGESTONE_CAVERN_PERCENTAGES": {"81": 4, "82": 4, "125": 4, "137": 4, "212": 4, "239": 4, "311": 4, "312": 4, "374": 4, "375": 4, "479": 4, "529": 4, "530": 4, "595": 4, "596": 4, "602": 4, "603": 4, "604": 4, "622": 4, "623": 4, "739": 4, "740": 4, "774": 4},
   "STORY_PROGRESSION": {
     "CHARGESTONE_CAVERN": {
       "area_type": "dungeon",
@@ -263,120 +173,27 @@
       "wild_pool_percentages": "POLAR_BIOME_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
-          "name": "League Club Craig",
-          "class": "PKMN_TRAINER",
-          "sprite": "acetrainer_m.png",
-          "team": [
-            409,
-            411
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "League Club Winter",
-          "class": "PKMN_TRAINER",
-          "sprite": "acetrainer_f.png",
-          "team": [
-            87,
-            28
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "League Club Ray",
-          "class": "PKMN_TRAINER",
-          "sprite": "acetrainer_m.png",
-          "team": [
-            523,
-            462
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "League Club Eve",
-          "class": "PKMN_TRAINER",
-          "sprite": "acetrainer_m.png",
-          "team": [
-            578,
-            211
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "League Club Apinya",
-          "class": "PKMN_TRAINER",
-          "sprite": "acetrainer_f.png",
-          "team": [
-            774,
-            623,
-            774,
-            774
-          ],
-          "rewards": {
-            "balls": 5
-          }
-        },
-        {
-          "name": "League Club Rebeccah",
-          "class": "PKMN_TRAINER",
-          "sprite": "acetrainer_m.png",
-          "team": [
-            578,
-            375
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        }
+        {"name": "League Club Craig", "class": "PKMN_TRAINER", "sprite": "acetrainer_m.png", "team": [409, 411], "rewards": {"balls": 4}},
+        {"name": "League Club Winter", "class": "PKMN_TRAINER", "sprite": "acetrainer_f.png", "team": [87, 28], "rewards": {"balls": 4}},
+        {"name": "League Club Ray", "class": "PKMN_TRAINER", "sprite": "acetrainer_m.png", "team": [523, 462], "rewards": {"balls": 4}},
+        {"name": "League Club Eve", "class": "PKMN_TRAINER", "sprite": "acetrainer_m.png", "team": [578, 211], "rewards": {"balls": 4}},
+        {"name": "League Club Apinya", "class": "PKMN_TRAINER", "sprite": "acetrainer_f.png", "team": [774, 623, 774, 774], "rewards": {"balls": 5}},
+        {"name": "League Club Rebeccah", "class": "PKMN_TRAINER", "sprite": "acetrainer_m.png", "team": [578, 375], "rewards": {"balls": 4}},
+        {"name": "League Club Cecelia", "class": "LEAGUE_CLUB", "sprite": "school_kid_f.png", "team": [663, 630, 733], "rewards": {"balls": 2}, "levels": [75, 75, 75]},
+        {"name": "League Club Cindy", "class": "LEAGUE_CLUB", "sprite": "school_kid_f.png", "team": [884, 596, 230], "rewards": {"balls": 2}, "levels": [74, 75, 74]},
+        {"name": "League Club Rayford", "class": "LEAGUE_CLUB", "sprite": "school_kid_f.png", "team": [87], "rewards": {"balls": 2}, "levels": [75]},
+        {"name": "League Club Sam", "class": "LEAGUE_CLUB", "sprite": "school_kid_f.png", "team": [87, 171, 131], "rewards": {"balls": 2}, "levels": [75, 75, 76]},
+        {"name": "League Club Alex", "class": "LEAGUE_CLUB", "sprite": "school_kid_f.png", "team": [86, 740], "rewards": {"balls": 2}, "levels": [73, 73]},
+        {"name": "League Club Hank", "class": "LEAGUE_CLUB", "sprite": "school_kid_f.png", "team": [289, 235, 764, 242], "rewards": {"balls": 2}, "levels": [75, 75, 76, 76]}
       ],
       "route_menu": [
-        {
-          "text": "CATCH WILD PKMN",
-          "action": "CATCH",
-          "condition": "has_balls",
-          "color": "BLUE"
-        },
-        {
-          "text": "BATTLE WILD PKMN",
-          "action": "BATTLE",
-          "condition": "can_battle",
-          "color": "GREEN"
-        },
-        {
-          "text": "FISH",
-          "action": "FISH",
-          "condition": "can_fish",
-          "color": "ORANGE"
-        },
-        {
-          "text": "BATTLE TRAINER",
-          "action": "TRAINER",
-          "condition": "has_trainers",
-          "color": "GREEN"
-        },
-        {
-          "text": "Central Plaza",
-          "action": "EXIT",
-          "target_area": "TERARIUM_CENTRAL_PLAZA",
-          "condition": "can_exit",
-          "color": "RED"
-        },
-        {
-          "text": "Chargestone Cavern",
-          "action": "EXIT",
-          "target_area": "CHARGESTONE_CAVERN",
-          "condition": "can_exit",
-          "color": "RED"
-        }
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        {"text": "BB Elite Four Drayton", "action": "EVENT", "color": "GOLD", "flag_condition": "not defeated_drayton_biome", "event": {"lines": ["Drayton: You want to challenge the League? Beat me here first!"], "flag": "defeated_drayton_biome", "battle": {"name": "BB Elite Four Drayton", "class": "BB_ELITE_FOUR", "sprite": "drayton.png", "is_boss_battle": true, "team": [149, 330, 612, 254, 230, 1018], "levels": [78, 78, 79, 79, 79, 80], "rewards": {"balls": 8}, "dialogue": {"intro": ["Drayton: You want to challenge the League? Beat me here first!"], "player_won": ["Drayton: All right. See you at the League."]}}}},
+        {"text": "Central Plaza", "action": "EXIT", "target_area": "TERARIUM_CENTRAL_PLAZA", "condition": "can_exit", "color": "RED"},
+        {"text": "Chargestone Cavern", "action": "EXIT", "target_area": "CHARGESTONE_CAVERN", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "TERARIUM_CENTRAL_PLAZA"
     },
@@ -388,119 +205,26 @@
       "wild_pool_percentages": "CANYON_BIOME_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
-          "name": "League Club Ramona",
-          "class": "PKMN_TRAINER",
-          "sprite": "acetrainer_f.png",
-          "team": [
-            237,
-            106,
-            560
-          ],
-          "rewards": {
-            "balls": 5
-          }
-        },
-        {
-          "name": "League Club Chun",
-          "class": "PKMN_TRAINER",
-          "sprite": "acetrainer_m.png",
-          "team": [
-            311,
-            312
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "League Club Seori",
-          "class": "PKMN_TRAINER",
-          "sprite": "acetrainer_f.png",
-          "team": [
-            237,
-            560,
-            740
-          ],
-          "rewards": {
-            "balls": 5
-          }
-        },
-        {
-          "name": "League Club Wayne",
-          "class": "PKMN_TRAINER",
-          "sprite": "acetrainer_m.png",
-          "team": [
-            855,
-            576,
-            623
-          ],
-          "rewards": {
-            "balls": 5
-          }
-        },
-        {
-          "name": "League Club Danyo",
-          "class": "PKMN_TRAINER",
-          "sprite": "acetrainer_f.png",
-          "team": [
-            774,
-            462,
-            479,
-            623
-          ],
-          "rewards": {
-            "balls": 5
-          }
-        },
-        {
-          "name": "League Club Tsubasa",
-          "class": "PKMN_TRAINER",
-          "sprite": "acetrainer_m.png",
-          "team": [
-            227,
-            409,
-            123,
-            466
-          ],
-          "rewards": {
-            "balls": 5
-          }
-        }
+        {"name": "League Club Ramona", "class": "PKMN_TRAINER", "sprite": "acetrainer_f.png", "team": [237, 106, 560], "rewards": {"balls": 5}},
+        {"name": "League Club Chun", "class": "PKMN_TRAINER", "sprite": "acetrainer_m.png", "team": [311, 312], "rewards": {"balls": 4}},
+        {"name": "League Club Seori", "class": "PKMN_TRAINER", "sprite": "acetrainer_f.png", "team": [237, 560, 740], "rewards": {"balls": 5}},
+        {"name": "League Club Wayne", "class": "PKMN_TRAINER", "sprite": "acetrainer_m.png", "team": [855, 576, 623], "rewards": {"balls": 5}},
+        {"name": "League Club Danyo", "class": "PKMN_TRAINER", "sprite": "acetrainer_f.png", "team": [774, 462, 479, 623], "rewards": {"balls": 5}},
+        {"name": "League Club Tsubasa", "class": "PKMN_TRAINER", "sprite": "acetrainer_m.png", "team": [227, 409, 123, 466], "rewards": {"balls": 5}},
+        {"name": "League Club Yama", "class": "LEAGUE_CLUB", "sprite": "school_kid_f.png", "team": [82, 411, 884], "rewards": {"balls": 2}, "levels": [74, 75, 74]},
+        {"name": "League Club Anne", "class": "LEAGUE_CLUB", "sprite": "school_kid_f.png", "team": [106, 107], "rewards": {"balls": 2}, "levels": [75, 75]},
+        {"name": "League Club Dana", "class": "LEAGUE_CLUB", "sprite": "school_kid_f.png", "team": [573, 547, 604, 612], "rewards": {"balls": 2}, "levels": [75, 75, 76, 76]},
+        {"name": "League Club Fiona", "class": "LEAGUE_CLUB", "sprite": "school_kid_f.png", "team": [854, 868], "rewards": {"balls": 2}, "levels": [75, 75]},
+        {"name": "League Club Harry", "class": "LEAGUE_CLUB", "sprite": "school_kid_f.png", "team": [611], "rewards": {"balls": 2}, "levels": [74]},
+        {"name": "League Club John", "class": "LEAGUE_CLUB", "sprite": "school_kid_f.png", "team": [678, 576, 579], "rewards": {"balls": 2}, "levels": [75, 75, 76]}
       ],
       "route_menu": [
-        {
-          "text": "CATCH WILD PKMN",
-          "action": "CATCH",
-          "condition": "has_balls",
-          "color": "BLUE"
-        },
-        {
-          "text": "BATTLE WILD PKMN",
-          "action": "BATTLE",
-          "condition": "can_battle",
-          "color": "GREEN"
-        },
-        {
-          "text": "BATTLE TRAINER",
-          "action": "TRAINER",
-          "condition": "has_trainers",
-          "color": "GREEN"
-        },
-        {
-          "text": "Central Plaza",
-          "action": "EXIT",
-          "target_area": "TERARIUM_CENTRAL_PLAZA",
-          "condition": "can_exit",
-          "color": "RED"
-        },
-        {
-          "text": "Torchlit Labyrinth",
-          "action": "EXIT",
-          "target_area": "TORCHLIT_LABYRINTH",
-          "condition": "can_exit",
-          "color": "RED"
-        }
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        {"text": "BB Elite Four Amarys", "action": "EVENT", "color": "GOLD", "flag_condition": "not defeated_amarys_biome", "event": {"lines": ["Amarys: You want to challenge the League? Beat me here first!"], "flag": "defeated_amarys_biome", "battle": {"name": "BB Elite Four Amarys", "class": "BB_ELITE_FOUR", "sprite": "amarys.png", "is_boss_battle": true, "team": [227, 212, 579, 395, 376], "levels": [78, 78, 79, 79, 79], "rewards": {"balls": 8}, "dialogue": {"intro": ["Amarys: You want to challenge the League? Beat me here first!"], "player_won": ["Amarys: All right. See you at the League."]}}}},
+        {"text": "Central Plaza", "action": "EXIT", "target_area": "TERARIUM_CENTRAL_PLAZA", "condition": "can_exit", "color": "RED"},
+        {"text": "Torchlit Labyrinth", "action": "EXIT", "target_area": "TORCHLIT_LABYRINTH", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "TERARIUM_CENTRAL_PLAZA"
     },
@@ -513,111 +237,26 @@
       "wild_pool_percentages": "COASTAL_BIOME_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
-          "name": "League Club Tony",
-          "class": "PKMN_TRAINER",
-          "sprite": "acetrainer_m.png",
-          "team": [
-            370,
-            25
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "League Club Peter",
-          "class": "PKMN_TRAINER",
-          "sprite": "acetrainer_f.png",
-          "team": [
-            49,
-            576
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "League Club Felicia",
-          "class": "PKMN_TRAINER",
-          "sprite": "acetrainer_m.png",
-          "team": [
-            855,
-            80
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "League Club Seth",
-          "class": "PKMN_TRAINER",
-          "sprite": "acetrainer_f.png",
-          "team": [
-            774,
-            774
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "League Club Vanessa",
-          "class": "PKMN_TRAINER",
-          "sprite": "acetrainer_m.png",
-          "team": [
-            573,
-            553
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "League Club Yun Hee",
-          "class": "PKMN_TRAINER",
-          "sprite": "acetrainer_m.png",
-          "team": [
-            324,
-            288
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        }
+        {"name": "League Club Tony", "class": "PKMN_TRAINER", "sprite": "acetrainer_m.png", "team": [370, 25], "rewards": {"balls": 4}},
+        {"name": "League Club Peter", "class": "PKMN_TRAINER", "sprite": "acetrainer_f.png", "team": [49, 576], "rewards": {"balls": 4}},
+        {"name": "League Club Felicia", "class": "PKMN_TRAINER", "sprite": "acetrainer_m.png", "team": [855, 80], "rewards": {"balls": 4}},
+        {"name": "League Club Seth", "class": "PKMN_TRAINER", "sprite": "acetrainer_f.png", "team": [774, 774], "rewards": {"balls": 4}},
+        {"name": "League Club Vanessa", "class": "PKMN_TRAINER", "sprite": "acetrainer_m.png", "team": [573, 553], "rewards": {"balls": 4}},
+        {"name": "League Club Yun Hee", "class": "PKMN_TRAINER", "sprite": "acetrainer_m.png", "team": [324, 288], "rewards": {"balls": 4}},
+        {"name": "League Club Daria", "class": "LEAGUE_CLUB", "sprite": "school_kid_f.png", "team": [44, 44, 45], "rewards": {"balls": 2}, "levels": [74, 74, 74]},
+        {"name": "League Club Annie", "class": "LEAGUE_CLUB", "sprite": "school_kid_f.png", "team": [663, 733], "rewards": {"balls": 2}, "levels": [75, 75]},
+        {"name": "League Club Mikkel", "class": "LEAGUE_CLUB", "sprite": "school_kid_f.png", "team": [954, 330, 594, 324], "rewards": {"balls": 2}, "levels": [74, 75, 74, 74]},
+        {"name": "League Club Pietro", "class": "LEAGUE_CLUB", "sprite": "school_kid_f.png", "team": [336, 779], "rewards": {"balls": 2}, "levels": [75, 75]},
+        {"name": "League Club Ian", "class": "LEAGUE_CLUB", "sprite": "school_kid_f.png", "team": [171, 464, 604], "rewards": {"balls": 2}, "levels": [74, 74, 74]},
+        {"name": "League Club Lila", "class": "LEAGUE_CLUB", "sprite": "school_kid_f.png", "team": [740], "rewards": {"balls": 2}, "levels": [75]}
       ],
       "route_menu": [
-        {
-          "text": "CATCH WILD PKMN",
-          "action": "CATCH",
-          "condition": "has_balls",
-          "color": "BLUE"
-        },
-        {
-          "text": "BATTLE WILD PKMN",
-          "action": "BATTLE",
-          "condition": "can_battle",
-          "color": "GREEN"
-        },
-        {
-          "text": "FISH",
-          "action": "FISH",
-          "condition": "can_fish",
-          "color": "ORANGE"
-        },
-        {
-          "text": "BATTLE TRAINER",
-          "action": "TRAINER",
-          "condition": "has_trainers",
-          "color": "GREEN"
-        },
-        {
-          "text": "Central Plaza",
-          "action": "EXIT",
-          "target_area": "TERARIUM_CENTRAL_PLAZA",
-          "condition": "can_exit",
-          "color": "RED"
-        }
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        {"text": "BB Elite Four Lacey", "action": "EVENT", "color": "GOLD", "flag_condition": "not defeated_lacey_biome", "event": {"lines": ["Lacey: You want to challenge the League? Beat me here first!"], "flag": "defeated_lacey_biome", "battle": {"name": "BB Elite Four Lacey", "class": "BB_ELITE_FOUR", "sprite": "lacey.png", "is_boss_battle": true, "team": [547, 210, 730, 530], "levels": [78, 78, 79, 79], "rewards": {"balls": 8}, "dialogue": {"intro": ["Lacey: You want to challenge the League? Beat me here first!"], "player_won": ["Lacey: All right. See you at the League."]}}}},
+        {"text": "Central Plaza", "action": "EXIT", "target_area": "TERARIUM_CENTRAL_PLAZA", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "TERARIUM_CENTRAL_PLAZA"
     },
@@ -629,109 +268,25 @@
       "wild_pool_percentages": "SAVANNA_BIOME_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
-          "name": "League Club Carmela",
-          "class": "PKMN_TRAINER",
-          "sprite": "acetrainer_m.png",
-          "team": [
-            668,
-            668
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "League Club Julienne",
-          "class": "PKMN_TRAINER",
-          "sprite": "acetrainer_f.png",
-          "team": [
-            323,
-            604
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "League Club Roux",
-          "class": "PKMN_TRAINER",
-          "sprite": "acetrainer_m.png",
-          "team": [
-            324,
-            182,
-            45,
-            126
-          ],
-          "rewards": {
-            "balls": 5
-          }
-        },
-        {
-          "name": "League Club Imani",
-          "class": "PKMN_TRAINER",
-          "sprite": "acetrainer_m.png",
-          "team": [
-            103,
-            85
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "League Club Riley",
-          "class": "PKMN_TRAINER",
-          "sprite": "acetrainer_f.png",
-          "team": [
-            869,
-            954
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "League Club Sophie",
-          "class": "PKMN_TRAINER",
-          "sprite": "acetrainer_m.png",
-          "team": [
-            242,
-            981,
-            752,
-            954
-          ],
-          "rewards": {
-            "balls": 5
-          }
-        }
+        {"name": "League Club Carmela", "class": "PKMN_TRAINER", "sprite": "acetrainer_m.png", "team": [668, 668], "rewards": {"balls": 4}},
+        {"name": "League Club Julienne", "class": "PKMN_TRAINER", "sprite": "acetrainer_f.png", "team": [323, 604], "rewards": {"balls": 4}},
+        {"name": "League Club Roux", "class": "PKMN_TRAINER", "sprite": "acetrainer_m.png", "team": [324, 182, 45, 126], "rewards": {"balls": 5}},
+        {"name": "League Club Imani", "class": "PKMN_TRAINER", "sprite": "acetrainer_m.png", "team": [103, 85], "rewards": {"balls": 4}},
+        {"name": "League Club Riley", "class": "PKMN_TRAINER", "sprite": "acetrainer_f.png", "team": [869, 954], "rewards": {"balls": 4}},
+        {"name": "League Club Sophie", "class": "PKMN_TRAINER", "sprite": "acetrainer_m.png", "team": [242, 981, 752, 954], "rewards": {"balls": 5}},
+        {"name": "League Club Michael", "class": "LEAGUE_CLUB", "sprite": "school_kid_f.png", "team": [410, 329], "rewards": {"balls": 2}, "levels": [75, 75]},
+        {"name": "League Club Tsukasa", "class": "LEAGUE_CLUB", "sprite": "school_kid_f.png", "team": [203, 235], "rewards": {"balls": 2}, "levels": [75, 75]},
+        {"name": "League Club Armin", "class": "LEAGUE_CLUB", "sprite": "school_kid_f.png", "team": [630, 329], "rewards": {"balls": 2}, "levels": [75, 75]},
+        {"name": "League Club Yuchen", "class": "LEAGUE_CLUB", "sprite": "school_kid_f.png", "team": [522, 479, 329], "rewards": {"balls": 2}, "levels": [73, 73, 73]},
+        {"name": "League Club Sarah", "class": "LEAGUE_CLUB", "sprite": "school_kid_f.png", "team": [551, 552, 553], "rewards": {"balls": 2}, "levels": [74, 74, 75]},
+        {"name": "League Club Chloe", "class": "LEAGUE_CLUB", "sprite": "school_kid_f.png", "team": [203, 126], "rewards": {"balls": 2}, "levels": [75, 75]}
       ],
       "route_menu": [
-        {
-          "text": "CATCH WILD PKMN",
-          "action": "CATCH",
-          "condition": "has_balls",
-          "color": "BLUE"
-        },
-        {
-          "text": "BATTLE WILD PKMN",
-          "action": "BATTLE",
-          "condition": "can_battle",
-          "color": "GREEN"
-        },
-        {
-          "text": "BATTLE TRAINER",
-          "action": "TRAINER",
-          "condition": "has_trainers",
-          "color": "GREEN"
-        },
-        {
-          "text": "Central Plaza",
-          "action": "EXIT",
-          "target_area": "TERARIUM_CENTRAL_PLAZA",
-          "condition": "can_exit",
-          "color": "RED"
-        }
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        {"text": "BB Elite Four Crispin", "action": "EVENT", "color": "GOLD", "flag_condition": "not defeated_crispin_biome", "event": {"lines": ["Crispin: You want to challenge the League? Beat me here first!"], "flag": "defeated_crispin_biome", "battle": {"name": "BB Elite Four Crispin", "class": "BB_ELITE_FOUR", "sprite": "crispin.png", "is_boss_battle": true, "team": [663, 103, 323, 467, 257], "levels": [77, 77, 78, 78, 78], "rewards": {"balls": 8}, "dialogue": {"intro": ["Crispin: You want to challenge the League? Beat me here first!"], "player_won": ["Crispin: All right. See you at the League."]}}}},
+        {"text": "Central Plaza", "action": "EXIT", "target_area": "TERARIUM_CENTRAL_PLAZA", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "TERARIUM_CENTRAL_PLAZA"
     },
@@ -772,7 +327,8 @@
           "action": "SHOP"
         }
       ],
-      "next_area": "TERARIUM"
+      "next_area": "TERARIUM",
+        "on_enter_event": [{"type": "trainer_battle", "trainer": {"name": "Carmine", "class": "KITAKAMI_TRAINER", "sprite": "carmine.png", "is_boss_battle": true, "team": [262, 733, 560, 1013], "levels": [74, 74, 74, 75], "rewards": {"balls": 6}, "victory_flag": "defeated_carmine_central_plaza", "dialogue": {"intro": ["Carmine: Welcome to Blueberry! Let me show you how we battle here!"], "player_won": ["Carmine: Okay, you're still good."]}}, "flag_check": "defeated_carmine_central_plaza", "condition": "beat_paldea_champion"}]
     },
     "DYNA_TREE_HILL": {
       "area_type": "wild_route",
@@ -908,37 +464,11 @@
       "level": 70,
       "has_gym": true,
       "explore_options": [
-        {
-          "text": "Pokemon Center",
-          "action": "HEAL"
-        },
-        {
-          "text": "Poke Mart",
-          "action": "SHOP"
-        },
-        {
-          "text": "Briar's Expedition",
-          "action": "EVENT",
-          "color": "GOLD",
-          "event": {
-            "requires": [
-              "bb_league_champion"
-            ],
-            "fail": [
-              "Briar: I'm planning an expedition deep into Area Zero... but only with the BB League Champion!"
-            ],
-            "lines": [
-              "Briar: You beat Kieran and the BB Elite Four! You're coming on my expedition.",
-              "There's something sleeping in the Area Zero Underdepths. The legend of Terapagos..."
-            ],
-            "flag": "briar_expedition"
-          }
-        },
-        {
-          "text": "BB League",
-          "action": "GYM",
-          "color": "GOLD"
-        }
+        {"text": "Pokemon Center", "action": "HEAL"},
+        {"text": "Poke Mart", "action": "SHOP"},
+        {"text": "Briar's Expedition", "action": "EVENT", "color": "GOLD", "event": {"requires": ["bb_league_champion"], "fail": ["Briar: I'm planning an expedition deep into Area Zero... but only with the BB League Champion!"], "lines": ["Briar: You beat Kieran and the BB Elite Four! You're coming on my expedition.", "There's something sleeping in the Area Zero Underdepths. The legend of Terapagos..."], "flag": "briar_expedition"}},
+        {"text": "BB League", "action": "GYM", "color": "GOLD"},
+        {"text": "Director Cyrano", "action": "EVENT", "color": "GOLD", "flag_condition": "not defeated_cyrano", "event": {"lines": ["Cyrano: Our new BB League Champion! Let's have a battle, yeah?"], "flag": "defeated_cyrano", "battle": {"name": "Director Cyrano", "class": "PKMN_TRAINER", "sprite": "cyrano.png", "is_boss_battle": true, "team": [523, 630, 576, 500, 503, 497], "levels": [86, 86, 86, 87, 87, 87], "rewards": {"balls": 15}, "dialogue": {"intro": ["Cyrano: Our new BB League Champion! Let's have a battle, yeah?"], "player_won": ["Cyrano: Ha! Wonderful!"]}}}, "condition": "bb_league_champion"}
       ],
       "travel_options": [
         {
@@ -952,7 +482,8 @@
         }
       ],
       "next_area": "TERARIUM",
-      "gym": {"trainers": [{"name": "Crispin", "class": "BB_ELITE_FOUR", "sprite": "kindler.png", "team": [479, 663, 103, 323, 467, 257], "levels": [69, 69, 70, 70, 71, 72], "rewards": {"balls": 8}, "dialogue": {"intro": ["Crispin: Fire it up! Let's goooo!"]}, "movesets": {"479": ["WILL-O-WISP", "OVERHEAT", "THUNDERBOLT", "HEX"], "663": ["SUNNY-DAY", "BRAVE-BIRD", "FLARE-BLITZ", "ROOST"], "103": ["LEECH-SEED", "PSYSHOCK", "PROTECT", "SOLAR-BEAM"], "323": ["EARTH-POWER", "HEAT-WAVE", "ANCIENT-POWER", "ZEN-HEADBUTT"], "467": ["PSYCHIC", "THUNDERBOLT", "HEAT-WAVE", "SUNNY-DAY"], "257": ["STONE-EDGE", "FOCUS-BLAST", "TEMPER-FLARE", "SHADOW-CLAW"]}}, {"name": "Amarys", "class": "BB_ELITE_FOUR", "sprite": "acetrainer_f.png", "team": [227, 51, 212, 579, 395, 376], "levels": [70, 70, 71, 71, 72, 73], "rewards": {"balls": 8}, "dialogue": {"intro": ["Amarys: ...Let's get this over with."]}, "movesets": {"227": ["STEALTH-ROCK", "WHIRLWIND", "BODY-PRESS", "DUAL-WINGBEAT"], "51": ["EARTHQUAKE", "SUCKER-PUNCH", "IRON-HEAD", "STONE-EDGE"], "212": ["BULLET-PUNCH", "TRAILBLAZE", "POUNCE", "AERIAL-ACE"], "579": ["TRICK-ROOM", "PROTECT", "ENERGY-BALL", "PSYCHIC"], "395": ["ICE-BEAM", "HYDRO-PUMP", "FLASH-CANNON", "GRASS-KNOT"], "376": ["HARD-PRESS", "ICE-PUNCH", "ZEN-HEADBUTT", "BRICK-BREAK"]}}, {"name": "Lacey", "class": "BB_ELITE_FOUR", "sprite": "lass.png", "team": [547, 210, 730, 80, 869, 530], "levels": [71, 71, 72, 72, 73, 74], "rewards": {"balls": 8}, "dialogue": {"intro": ["Lacey: Battle rules! Let's play fair and have fun!"]}, "movesets": {"547": ["LIGHT-SCREEN", "TAILWIND", "ENERGY-BALL", "MOONBLAST"], "210": ["PLAY-ROUGH", "FIRE-PUNCH", "ICE-PUNCH", "STOMPING&NBSP;TANTRUM"], "730": ["HYPER-VOICE", "MOONBLAST", "ICE-BEAM", "SHADOW-BALL"], "80": ["SHELL-SIDE-ARM", "PSYCHIC", "FLAMETHROWER", "ICE-BEAM"], "869": ["DECORATE", "RECOVER", "GIGA-DRAIN", "ALLURING-VOICE"], "530": ["TERA-BLAST", "IRON-HEAD", "ROCK-TOMB", "HIGH&NBSP;HORSEPOWER"]}}, {"name": "Drayton", "class": "BB_ELITE_FOUR", "sprite": "acetrainer_m.png", "team": [149, 330, 612, 254, 230, 1018], "levels": [72, 72, 73, 73, 74, 75], "rewards": {"balls": 8}, "dialogue": {"intro": ["Drayton: Eh, let's battle, I guess."]}, "movesets": {"149": ["EXTREME-SPEED", "THUNDER-PUNCH", "ICE-SPINNER", "TAILWIND"], "330": ["EARTHQUAKE", "STONE-EDGE", "FIRE-PUNCH", "BREAKING-SWIPE"], "612": ["EARTHQUAKE", "BREAKING-SWIPE", "IRON-HEAD", "DRAGON-DANCE"], "254": ["DRAGON-CHEER", "LEAF-STORM", "X-SCISSOR", "ACROBATICS"], "230": ["RAIN-DANCE", "ICE-BEAM", "HYDRO-PUMP", "HURRICANE"], "1018": ["ELECTRO-SHOT", "{{#SWITCH:-{{#EXPR:-{{#TIME:-U", "FLASH-CANNON", "SNARL"]}}], "leader": {"name": "Kieran", "class": "BB_CHAMPION", "sprite": "school_kid_m.png", "is_boss_battle": true, "team": [149, 186, 474, 861, 727, 1019], "levels": [75, 75, 76, 76, 76, 77], "rewards": {"balls": 25, "RARE_CANDY": 5}, "victory_flag": "bb_league_champion", "dialogue": {"intro": ["Kieran: I've been waiting for this. I'm the Champion now. I won't lose to you again!"], "player_won": ["Kieran: ...You're still stronger. I get it now. Thanks for battling me."], "player_lost": ["Kieran: See? I'm the strongest now!"]}, "movesets": {"149": ["BREAKING-SWIPE", "HURRICANE", "EXTREME-SPEED", "THUNDER"], "186": ["ICE-BEAM", "HELPING-HAND", "WEATHER-BALL", "PSYCHIC"], "474": ["HYPER-BEAM", "SHADOW-BALL", "THUNDERBOLT", "ICE-BEAM"], "861": ["REFLECT", "LIGHT-SCREEN", "SPIRIT-BREAK", "SUCKER-PUNCH"], "727": ["DARKEST-LARIAT", "FLARE-BLITZ", "FAKE-OUT", "BRICK-BREAK"], "1019": ["FICKLE-BEAM", "TERA-BLAST", "EARTH-POWER", "GYRO-BALL"]}}, "requirements": {"badges": 0}}
+      "gym": {"trainers": [{"name": "Crispin", "class": "BB_ELITE_FOUR", "sprite": "crispin.png", "team": [479, 663, 103, 323, 467, 257], "levels": [69, 69, 70, 70, 71, 72], "rewards": {"balls": 8}, "dialogue": {"intro": ["Crispin: Fire it up! Let's goooo!"]}, "movesets": {"479": ["WILL-O-WISP", "OVERHEAT", "THUNDERBOLT", "HEX"], "663": ["SUNNY-DAY", "BRAVE-BIRD", "FLARE-BLITZ", "ROOST"], "103": ["LEECH-SEED", "PSYSHOCK", "PROTECT", "SOLAR-BEAM"], "323": ["EARTH-POWER", "HEAT-WAVE", "ANCIENT-POWER", "ZEN-HEADBUTT"], "467": ["PSYCHIC", "THUNDERBOLT", "HEAT-WAVE", "SUNNY-DAY"], "257": ["STONE-EDGE", "FOCUS-BLAST", "TEMPER-FLARE", "SHADOW-CLAW"]}}, {"name": "Amarys", "class": "BB_ELITE_FOUR", "sprite": "amarys.png", "team": [227, 51, 212, 579, 395, 376], "levels": [70, 70, 71, 71, 72, 73], "rewards": {"balls": 8}, "dialogue": {"intro": ["Amarys: ...Let's get this over with."]}, "movesets": {"227": ["STEALTH-ROCK", "WHIRLWIND", "BODY-PRESS", "DUAL-WINGBEAT"], "51": ["EARTHQUAKE", "SUCKER-PUNCH", "IRON-HEAD", "STONE-EDGE"], "212": ["BULLET-PUNCH", "TRAILBLAZE", "POUNCE", "AERIAL-ACE"], "579": ["TRICK-ROOM", "PROTECT", "ENERGY-BALL", "PSYCHIC"], "395": ["ICE-BEAM", "HYDRO-PUMP", "FLASH-CANNON", "GRASS-KNOT"], "376": ["HARD-PRESS", "ICE-PUNCH", "ZEN-HEADBUTT", "BRICK-BREAK"]}}, {"name": "Lacey", "class": "BB_ELITE_FOUR", "sprite": "lacey.png", "team": [547, 210, 730, 80, 869, 530], "levels": [71, 71, 72, 72, 73, 74], "rewards": {"balls": 8}, "dialogue": {"intro": ["Lacey: Battle rules! Let's play fair and have fun!"]}, "movesets": {"547": ["LIGHT-SCREEN", "TAILWIND", "ENERGY-BALL", "MOONBLAST"], "210": ["PLAY-ROUGH", "FIRE-PUNCH", "ICE-PUNCH", "STOMPING&NBSP;TANTRUM"], "730": ["HYPER-VOICE", "MOONBLAST", "ICE-BEAM", "SHADOW-BALL"], "80": ["SHELL-SIDE-ARM", "PSYCHIC", "FLAMETHROWER", "ICE-BEAM"], "869": ["DECORATE", "RECOVER", "GIGA-DRAIN", "ALLURING-VOICE"], "530": ["TERA-BLAST", "IRON-HEAD", "ROCK-TOMB", "HIGH&NBSP;HORSEPOWER"]}}, {"name": "Drayton", "class": "BB_ELITE_FOUR", "sprite": "drayton.png", "team": [149, 330, 612, 254, 230, 1018], "levels": [72, 72, 73, 73, 74, 75], "rewards": {"balls": 8}, "dialogue": {"intro": ["Drayton: Eh, let's battle, I guess."]}, "movesets": {"149": ["EXTREME-SPEED", "THUNDER-PUNCH", "ICE-SPINNER", "TAILWIND"], "330": ["EARTHQUAKE", "STONE-EDGE", "FIRE-PUNCH", "BREAKING-SWIPE"], "612": ["EARTHQUAKE", "BREAKING-SWIPE", "IRON-HEAD", "DRAGON-DANCE"], "254": ["DRAGON-CHEER", "LEAF-STORM", "X-SCISSOR", "ACROBATICS"], "230": ["RAIN-DANCE", "ICE-BEAM", "HYDRO-PUMP", "HURRICANE"], "1018": ["ELECTRO-SHOT", "{{#SWITCH:-{{#EXPR:-{{#TIME:-U", "FLASH-CANNON", "SNARL"]}}], "leader": {"name": "Kieran", "class": "BB_CHAMPION", "sprite": "kieran.png", "is_boss_battle": true, "team": [149, 186, 474, 861, 727, 1019], "levels": [75, 75, 76, 76, 76, 77], "rewards": {"balls": 25, "RARE_CANDY": 5}, "victory_flag": "bb_league_champion", "dialogue": {"intro": ["Kieran: I've been waiting for this. I'm the Champion now. I won't lose to you again!"], "player_won": ["Kieran: ...You're still stronger. I get it now. Thanks for battling me."], "player_lost": ["Kieran: See? I'm the strongest now!"]}, "movesets": {"149": ["BREAKING-SWIPE", "HURRICANE", "EXTREME-SPEED", "THUNDER"], "186": ["ICE-BEAM", "HELPING-HAND", "WEATHER-BALL", "PSYCHIC"], "474": ["HYPER-BEAM", "SHADOW-BALL", "THUNDERBOLT", "ICE-BEAM"], "861": ["REFLECT", "LIGHT-SCREEN", "SPIRIT-BREAK", "SUCKER-PUNCH"], "727": ["DARKEST-LARIAT", "FLARE-BLITZ", "FAKE-OUT", "BRICK-BREAK"], "1019": ["FICKLE-BEAM", "TERA-BLAST", "EARTH-POWER", "GYRO-BALL"]}}, "requirements": {"badges": 0}},
+        "on_enter_event": [{"type": "trainer_battle", "trainer": {"name": "Lacey", "class": "BB_STUDENT", "sprite": "lacey.png", "is_boss_battle": true, "team": [311, 312, 530], "levels": [70, 70, 72], "rewards": {"balls": 6}, "victory_flag": "defeated_lacey_first", "dialogue": {"intro": ["Lacey: A new student? Excellent! Let's have a fair battle!"], "player_won": ["Lacey: Great job! Full marks!"]}}, "flag_check": "defeated_lacey_first", "condition": "beat_paldea_champion"}]
     },
     "TERARIUM": {
       "area_type": "wild_route",
@@ -991,49 +522,37 @@
         }
       ],
       "route_menu": [
-        {
-          "text": "CATCH WILD PKMN",
-          "action": "CATCH",
-          "condition": "has_balls",
-          "color": "BLUE"
-        },
-        {
-          "text": "BATTLE WILD PKMN",
-          "action": "BATTLE",
-          "condition": "can_battle",
-          "color": "GREEN"
-        },
-        {
-          "text": "BATTLE TRAINER",
-          "action": "TRAINER",
-          "condition": "has_trainers",
-          "color": "GREEN"
-        },
-        {
-          "text": "THE FOUR BIOMES",
-          "action": "EVENT",
-          "color": "GOLD",
-          "event": {
-            "lines": [
-              "The Terarium is a giant dome under the sea with four biomes:",
-              "savanna, coastal, canyon and polar. Pokemon from all over the world live here!"
-            ]
-          }
-        },
-        {
-          "text": "Blueberry Academy",
-          "action": "EXIT",
-          "target_area": "BLUEBERRY_ACADEMY",
-          "condition": "can_exit",
-          "color": "RED"
-        },
-        {
-          "text": "Central Plaza",
-          "action": "EXIT",
-          "target_area": "TERARIUM_CENTRAL_PLAZA",
-          "condition": "can_exit",
-          "color": "RED"
-        }
+        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        {"text": "THE FOUR BIOMES", "action": "EVENT", "color": "GOLD", "event": {"lines": ["The Terarium is a giant dome under the sea with four biomes:", "savanna, coastal, canyon and polar. Pokemon from all over the world live here!"]}},
+        {"text": "SNACKSWORTH: ARTICUNO", "action": "BOSS", "color": "PURPLE", "boss": {"id": 144, "name": "Articuno", "victory_flag": "snacksworth_articuno_caught"}, "condition": ["bb_league_champion", "not:snacksworth_articuno_caught"]},
+        {"text": "SNACKSWORTH: ZAPDOS", "action": "BOSS", "color": "PURPLE", "boss": {"id": 145, "name": "Zapdos", "victory_flag": "snacksworth_zapdos_caught"}, "condition": ["bb_league_champion", "not:snacksworth_zapdos_caught"]},
+        {"text": "SNACKSWORTH: MOLTRES", "action": "BOSS", "color": "PURPLE", "boss": {"id": 146, "name": "Moltres", "victory_flag": "snacksworth_moltres_caught"}, "condition": ["bb_league_champion", "not:snacksworth_moltres_caught"]},
+        {"text": "SNACKSWORTH: RAIKOU", "action": "BOSS", "color": "PURPLE", "boss": {"id": 243, "name": "Raikou", "victory_flag": "snacksworth_raikou_caught"}, "condition": ["bb_league_champion", "not:snacksworth_raikou_caught"]},
+        {"text": "SNACKSWORTH: ENTEI", "action": "BOSS", "color": "PURPLE", "boss": {"id": 244, "name": "Entei", "victory_flag": "snacksworth_entei_caught"}, "condition": ["bb_league_champion", "not:snacksworth_entei_caught"]},
+        {"text": "SNACKSWORTH: SUICUNE", "action": "BOSS", "color": "PURPLE", "boss": {"id": 245, "name": "Suicune", "victory_flag": "snacksworth_suicune_caught"}, "condition": ["bb_league_champion", "not:snacksworth_suicune_caught"]},
+        {"text": "SNACKSWORTH: LUGIA", "action": "BOSS", "color": "PURPLE", "boss": {"id": 249, "name": "Lugia", "victory_flag": "snacksworth_lugia_caught"}, "condition": ["bb_league_champion", "not:snacksworth_lugia_caught"]},
+        {"text": "SNACKSWORTH: HO-OH", "action": "BOSS", "color": "PURPLE", "boss": {"id": 250, "name": "Ho-Oh", "victory_flag": "snacksworth_hooh_caught"}, "condition": ["bb_league_champion", "not:snacksworth_hooh_caught"]},
+        {"text": "SNACKSWORTH: LATIAS", "action": "BOSS", "color": "PURPLE", "boss": {"id": 380, "name": "Latias", "victory_flag": "snacksworth_latias_caught"}, "condition": ["bb_league_champion", "not:snacksworth_latias_caught"]},
+        {"text": "SNACKSWORTH: LATIOS", "action": "BOSS", "color": "PURPLE", "boss": {"id": 381, "name": "Latios", "victory_flag": "snacksworth_latios_caught"}, "condition": ["bb_league_champion", "not:snacksworth_latios_caught"]},
+        {"text": "SNACKSWORTH: KYOGRE", "action": "BOSS", "color": "PURPLE", "boss": {"id": 382, "name": "Kyogre", "victory_flag": "snacksworth_kyogre_caught"}, "condition": ["bb_league_champion", "not:snacksworth_kyogre_caught"]},
+        {"text": "SNACKSWORTH: GROUDON", "action": "BOSS", "color": "PURPLE", "boss": {"id": 383, "name": "Groudon", "victory_flag": "snacksworth_groudon_caught"}, "condition": ["bb_league_champion", "not:snacksworth_groudon_caught"]},
+        {"text": "SNACKSWORTH: RAYQUAZA", "action": "BOSS", "color": "PURPLE", "boss": {"id": 384, "name": "Rayquaza", "victory_flag": "snacksworth_rayquaza_caught"}, "condition": ["bb_league_champion", "not:snacksworth_rayquaza_caught"]},
+        {"text": "SNACKSWORTH: COBALION", "action": "BOSS", "color": "PURPLE", "boss": {"id": 638, "name": "Cobalion", "victory_flag": "snacksworth_cobalion_caught"}, "condition": ["bb_league_champion", "not:snacksworth_cobalion_caught"]},
+        {"text": "SNACKSWORTH: TERRAKION", "action": "BOSS", "color": "PURPLE", "boss": {"id": 639, "name": "Terrakion", "victory_flag": "snacksworth_terrakion_caught"}, "condition": ["bb_league_champion", "not:snacksworth_terrakion_caught"]},
+        {"text": "SNACKSWORTH: VIRIZION", "action": "BOSS", "color": "PURPLE", "boss": {"id": 640, "name": "Virizion", "victory_flag": "snacksworth_virizion_caught"}, "condition": ["bb_league_champion", "not:snacksworth_virizion_caught"]},
+        {"text": "SNACKSWORTH: RESHIRAM", "action": "BOSS", "color": "PURPLE", "boss": {"id": 643, "name": "Reshiram", "victory_flag": "snacksworth_reshiram_caught"}, "condition": ["bb_league_champion", "not:snacksworth_reshiram_caught"]},
+        {"text": "SNACKSWORTH: ZEKROM", "action": "BOSS", "color": "PURPLE", "boss": {"id": 644, "name": "Zekrom", "victory_flag": "snacksworth_zekrom_caught"}, "condition": ["bb_league_champion", "not:snacksworth_zekrom_caught"]},
+        {"text": "SNACKSWORTH: KYUREM", "action": "BOSS", "color": "PURPLE", "boss": {"id": 646, "name": "Kyurem", "victory_flag": "snacksworth_kyurem_caught"}, "condition": ["bb_league_champion", "not:snacksworth_kyurem_caught"]},
+        {"text": "SNACKSWORTH: SOLGALEO", "action": "BOSS", "color": "PURPLE", "boss": {"id": 791, "name": "Solgaleo", "victory_flag": "snacksworth_solgaleo_caught"}, "condition": ["bb_league_champion", "not:snacksworth_solgaleo_caught"]},
+        {"text": "SNACKSWORTH: LUNALA", "action": "BOSS", "color": "PURPLE", "boss": {"id": 792, "name": "Lunala", "victory_flag": "snacksworth_lunala_caught"}, "condition": ["bb_league_champion", "not:snacksworth_lunala_caught"]},
+        {"text": "SNACKSWORTH: NECROZMA", "action": "BOSS", "color": "PURPLE", "boss": {"id": 800, "name": "Necrozma", "victory_flag": "snacksworth_necrozma_caught"}, "condition": ["bb_league_champion", "not:snacksworth_necrozma_caught"]},
+        {"text": "SNACKSWORTH: KUBFU", "action": "BOSS", "color": "PURPLE", "boss": {"id": 891, "name": "Kubfu", "victory_flag": "snacksworth_kubfu_caught"}, "condition": ["bb_league_champion", "not:snacksworth_kubfu_caught"]},
+        {"text": "SNACKSWORTH: GLASTRIER", "action": "BOSS", "color": "PURPLE", "boss": {"id": 896, "name": "Glastrier", "victory_flag": "snacksworth_glastrier_caught"}, "condition": ["bb_league_champion", "not:snacksworth_glastrier_caught"]},
+        {"text": "SNACKSWORTH: SPECTRIER", "action": "BOSS", "color": "PURPLE", "boss": {"id": 897, "name": "Spectrier", "victory_flag": "snacksworth_spectrier_caught"}, "condition": ["bb_league_champion", "not:snacksworth_spectrier_caught"]},
+        {"text": "Blueberry Academy", "action": "EXIT", "target_area": "BLUEBERRY_ACADEMY", "condition": "can_exit", "color": "RED"},
+        {"text": "Central Plaza", "action": "EXIT", "target_area": "TERARIUM_CENTRAL_PLAZA", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "BLUEBERRY_ACADEMY"
     }

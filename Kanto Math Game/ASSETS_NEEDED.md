@@ -8,6 +8,7 @@ Art the game still uses a stand-in for. Drop a file in with the name shown, and 
 |---|---|---|---|---|
 | `celosia.png` | Team Flare Scientist Celosia (X/Y) | Kalos: Poké Ball Factory, Lysandre Labs | `scientist.png` | Not on Pokémon Showdown's trainer sprites (checked 2026-10-27). |
 | `aliana.png` | Team Flare Scientist Aliana (X/Y) | Kalos: Kalos Power Plant, Lysandre Labs | `scientist.png` | Not on Pokémon Showdown's trainer sprites (checked 2026-10-27). |
+| `onare.png` | Glitterati Billy & O'Nare (Scarlet/Violet) | Paldea: Apple Hills (Kitakami) | `gentleman.png` | Not on Pokémon Showdown's trainer sprites (checked 2026-10-27). |
 | `honey.png` | Dojo Matron Honey (Sword/Shield, Isle of Armor) | Galar: Isle of Armor (Battle Honey) | `beauty.png` | Not on Pokémon Showdown's trainer sprites (checked 2026-10-27). |
 
 ### Orre (Colosseum / XD)
@@ -26,6 +27,9 @@ Orre's named trainers all borrow a generic class sprite. Set the new file as the
 | `lovrina.png` | Cipher Admin Lovrina | Cipher Lab | `beauty.png` |
 | `mirorb.png` | Miror B. | Pyrite Town | `guitarist.png` |
 | `vander.png` | Mt. Battle Master Vander | Mt. Battle | `blackbelt.png` |
+| `nascour.png` | Cipher Nascour (Colosseum) | Realgam Tower | `gentleman.png` |
+| `snattle.png`, `ardos.png`, `eldes.png` | Cipher Admins Snattle, Ardos and Eldes (XD) | Citadark Isle | `gentleman.png` |
+| `gonzap.png` | Snagem Head Gonzap | Desert Trail (Snagem Hideout) | `roughneck.png` |
 | `cipherpeon_m.png`, `cipherpeon_f.png` | Cipher Peons (Peon Litnar, Peon Remil and the Phenac Peons) | Phenac City, The Under | `roughneck.png`, `biker.png` |
 
 Orre's other trainers (Thug Brock, Streetler Dax, Scrapper Kit, Outlaw Rusty, Rider Vex, Nomad Ilda, Medium Sora, Civilian Mona, Pree Champion Justy and the Area trainers) use class sprites that fit, so they aren't listed.
