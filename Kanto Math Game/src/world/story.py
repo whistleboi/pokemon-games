@@ -242,6 +242,14 @@ class StoryManager:
             return len(team) == 1 and team[0].id == pid
         if condition == "all_unown_registered":
             return self.unown_forms_caught() >= len(self.UNOWN_FORMS)
+        if condition == "orre_all_purified":  # Colosseum's Ho-Oh: every Shadow Pokemon snagged, and each
+            # Shadow line purified at least once (Jordan, 10-27: keeping Shadow Pokemon doesn't block it)
+            prog = self.game.loader.area_data.get("STORY_PROGRESSION", {})
+            fm = self.game.loader.area_data.get("FORM_MAP", {})
+            pool = [s for a in prog.values() if isinstance(a, dict) for s in a.get("shadow_pool") or []]
+            lines = {int((fm.get(str(s["id"])) or {}).get("id", 0)) for s in pool}
+            return bool(pool) and all(self.story_flags.get(s.get("flag")) for s in pool) and all(
+                self.story_flags.get(f"purified_line_{b}") for b in lines)
         if condition == "sinjoh_open":  # a dragon is waiting at the Sinjoh Ruins (see sinjoh_dragons_allowed)
             return self.sinjoh_dragons_received() < self.sinjoh_dragons_allowed()
         if condition.startswith("hoenn_version:"):  # Omega Ruby / Alpha Sapphire only (Marine / Terra Cave)
@@ -271,6 +279,7 @@ class StoryManager:
             m = form_map.get(str(p.id)) or {}
             if m.get("form") != "shadow":
                 return p
+            self._note_purified(p.id)
             new = self.change_species(p, int(m["id"]))
             new.friendship = max(new.friendship, 100)  # a purified heart opens up to its trainer
             names.append(new.name.upper())
@@ -280,6 +289,14 @@ class StoryManager:
         self.pc_pokemon = [purified(p) if p else p for p in self.pc_pokemon]
         return names
 
+    def _note_purified(self, form_id):
+        """The Relic Stone remembers every Shadow line it has opened (Ho-Oh's condition): the species
+        itself, and for an evolved Shadow form the original Shadow species it came from."""
+        m = self.game.loader.area_data.get("FORM_MAP", {}).get(str(form_id)) or {}
+        for b in [m.get("id")] + list(m.get("origins") or []):
+            if b:
+                self.story_flags[f"purified_line_{b}"] = True
+
     def is_shadow(self, p):
         form_map = self.game.loader.area_data.get("FORM_MAP", {})
         return bool(p) and (form_map.get(str(p.id)) or {}).get("form") == "shadow"
@@ -288,6 +305,7 @@ class StoryManager:
         """Purify the Shadow Pokemon in party slot i (the Relic Stone). Returns its new name."""
         p = self.player_team[i]
         m = self.game.loader.area_data.get("FORM_MAP", {}).get(str(p.id)) or {}
+        self._note_purified(p.id)
         new = self.change_species(p, int(m["id"]))
         new.friendship = max(new.friendship, 100)  # a purified heart opens up to its trainer
         self.player_team[i] = new

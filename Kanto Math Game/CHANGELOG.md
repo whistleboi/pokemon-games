@@ -2,6 +2,37 @@
 
 ## Unreleased: opponents follow your team, Hoenn's story as in Omega Ruby / Alpha Sapphire
 
+- **The Decolore Islands follow the anime** (Bulbapedia, episodes BW124–BW140). They stay a post-League side trip from Castelia, and smaller than the Sevii Islands:
+  - **The ferry** visits the islands in the order Ash does. Each opens once you've been to the one before.
+  - **New islands:**
+    - The Pirate Isles, with Officer Jenny's sea team.
+    - Wayfarer Island, with the Butterfree migration.
+    - Capacia Island, with Elgyem, Beheeyem and Jirachi from "Searching for a Wish!".
+    - Harvest Island, with Rodney and Morgan.
+    - Frond Island, with the pirate ghosts and the Eevee trio.
+    - Cave Island, with Clair and Druddigon.
+  - **The older islands:** Scalchop crowns its Scalchop King (Cadbury and his Dewott). Grand Spectrala's illusions are Zorua's tricks. Torom Island is Rotom's island, and Professor Oak is visiting.
+  - **No villainous team:** as in the anime, there isn't one. The invented Team Plasma chain (the Drives, the lab, Genesect) is gone. Genesect is back at Unova's P2 Laboratory and drops all four Drives.
+- **Orre is a full region**, blending Colosseum's and XD's stories (everything Gen 3 or earlier):
+  - **Starting out:** start a new game at the Outskirt Stand with Espeon or Umbreon. Orre has its own party, PC and Bag, and is reached like any region (the Hoenn plane is gone).
+  - **The badges:** four tournaments: the Pyrite Colosseum, the Under Colosseum, Phenac Stadium and the Orre Colosseum, the last ending with Pree Champion Justy.
+  - **The story between them:** Cipher's admins guard each stretch:
+    - Miror B. at Pyrite Cave opens Agate Village, and Dakim at Mt. Battle opens The Under.
+    - Ein's Shadow Pokémon Lab leads to XD's Gateon Port. Lovrina, then Exol, then Snattle lead to Phenac Stadium.
+    - Gonzap at the Snagem Hideout opens the Orre Colosseum, and Gorigan at the Cipher Key Lair opens Realgam Tower.
+  - **The League:** Realgam Tower. Miror B., Dakim, Venus, Ein and Nascour come first, then Champion Evice.
+  - **After the title:** XD's Citadark Isle (Ardos, Eldes, Snattle, Greevil and the Shadow Lugia), the Deep Colosseum, Mt. Battle's master, Jirachi and Ho-Oh.
+  - **Places:** 28 areas. New ones include the Outskirt Stand, the Pyrite Building and Pyrite Cave, Relic Cave, the Shadow Pokémon Lab, the S.S. Libra, the Prestige Precept Center, the Snagem Hideout, the Under and Orre Colosseums, Realgam Tower's dome and the Deep Colosseum.
+  - **Shadow Pokémon and trainers:** all 131 Shadow Pokémon are where the two games put them, at levels that follow the story. About 140 of the games' trainers come from Serebii's Orre pages.
+  - **Wild Pokémon:** the three Poké Spots (Rock, Oasis, Cave), as in XD. Everything else comes from snagging.
+  - **Keeping Shadow Pokémon** (not in the games):
+    - **Shadow evolution:** a Shadow Pokémon evolves into a Shadow form of its evolution, by level or stone, with the same swapped stats. That's 36 new Shadow forms up to Gen 3, from Shadow Meganium to Shadow Gardevoir, with sprites in the same purple style.
+    - **Ho-Oh** comes once every Shadow line has been purified at least once. The Relic Stone remembers, so you can keep others as Shadow.
+    - **SNAG AGAIN:** once an area's Shadow Pokémon are all snagged, Cipher stragglers bring them back. You can snag a second copy, keep one Shadow and purify the other.
+- **Orre's story, checked against Bulbapedia's Colosseum and XD walkthroughs:**
+  - Willie battles you at the Outskirt Stand, and Professor Krane gives you an Eevee at Gateon Port.
+  - Dakim attacks Mt. Battle, Ein guards his Shadow Pokémon Lab off The Under, and Snattle battles you at Phenac Stadium.
+  - Once every Shadow Pokémon has been snagged and purified, Ho-Oh appears at the Relic Stone, as in Colosseum.
 - **The Orange Islands are a full region**, rebuilt from PiaCarrot's Pokémon Orange ROM hack (see `CREDITS.md`):
   - **Starting out:** start a new game there from the title screen; it sits between Kanto and Johto. Professor Ivy on Valencia Island gives you Bulbasaur, Charmander or Squirtle, and the region has its own party, PC and Bag.
   - **Getting there later:** Kanto's Champion gets a letter from Ivy, and the S.S. Anne in Vermilion City sails there. Mom's move picker sends a Kanto player to the ship. Moving from any other region starts you on Valencia.

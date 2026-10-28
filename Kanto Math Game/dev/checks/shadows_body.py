@@ -13,7 +13,7 @@ def check(ok, msg):
     fails += 0 if ok else 1
 
 
-shadows = {k: v for k, v in FM.items() if v.get("form") == "shadow"}
+shadows = {k: v for k, v in FM.items() if v.get("form") == "shadow" and int(k) < 9601}  # 9601+: Shadow evolutions
 check(len(shadows) == 131, f"131 Shadow forms (Colosseum + XD, one per species): {len(shadows)}")
 pooled = [s for a in SP.values() for s in a.get("shadow_pool", [])]
 check(len(pooled) == len(shadows) and {str(s["id"]) for s in pooled} == set(shadows), "every Shadow form is in a snag pool")
@@ -47,10 +47,11 @@ check("SNAG SHADOW POKEMON" not in [b.text for b in p.route_buttons], "SNAG hidd
 for s_ in pool:
     story.story_flags.pop(s_["flag"], None)
 
-# XD: Gateon Port after Cipher, lairs open in order.
+# XD: Gateon Port opens after Ein's lab (Orre as a region, 10-27), lairs open in order.
+story.story_flags["orre_ein_lab"] = True
 story.current_area_key = "PHENAC_CITY"
 c = CityState(g); g.change_state(c); c.open_travel_menu()
-check("Gateon Port" in [b.text for b in c.hover_buttons], "Gateon Port opens after Cipher")
+check("Gateon Port" in [b.text for b in c.hover_buttons], "Gateon Port opens after Ein's lab")
 story.current_area_key = "GATEON_PORT"
 c = CityState(g); g.change_state(c); c.open_travel_menu()
 t = [b.text for b in c.hover_buttons]

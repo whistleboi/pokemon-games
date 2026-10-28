@@ -1,11 +1,255 @@
 {
-  "ORRE_POKE_SPOTS_PERCENTAGES": {"27": 20, "207": 10, "328": 3, "187": 20, "231": 10, "283": 3, "41": 20, "304": 10, "194": 3, "446": 1},
+  "ORRE_POKE_SPOTS_PERCENTAGES": {
+    "27": 60,
+    "207": 30,
+    "328": 10,
+    "446": 2
+  },
   "STORY_PROGRESSION": {
+    "OUTSKIRT_STAND": {
+      "area_type": "town",
+      "route_name": "Outskirt Stand",
+      "region": "ORRE",
+      "level": 5,
+      "has_gym": false,
+      "explore_options": [
+        {
+          "text": "Pokemon Center",
+          "action": "HEAL"
+        },
+        {
+          "text": "Poke Mart",
+          "action": "SHOP"
+        },
+        {
+          "text": "OUTSKIRT STAND: WILLIE",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not orre_beat_willie",
+          "event": {
+            "lines": [
+              "Willie: Hey, you look like a trainer passing through! Let's have a quick battle at the stand."
+            ],
+            "flag": "orre_beat_willie",
+            "battle": {
+              "name": "Rider Willie",
+              "class": "PKMN_TRAINER",
+              "sprite": "biker.png",
+              "is_boss_battle": true,
+              "team": [
+                263,
+                263,
+                264,
+                264
+              ],
+              "levels": [
+                6,
+                7,
+                7,
+                8
+              ],
+              "rewards": {
+                "balls": 6
+              },
+              "dialogue": {
+                "intro": [
+                  "Willie: Hey, you look like a trainer passing through! Let's have a quick battle at the stand."
+                ],
+                "player_won": [
+                  "Willie: Whoa! You're the real thing!"
+                ]
+              }
+            }
+          }
+        }
+      ],
+      "travel_options": [
+        {
+          "text": "Desert Trail",
+          "target_area": "ORRE_DESERT",
+          "condition": "received_starter_orre"
+        }
+      ],
+      "next_area": "ORRE_DESERT"
+    },
+    "ORRE_DESERT": {
+      "area_type": "wild_route",
+      "route_name": "Desert Trail",
+      "region": "ORRE",
+      "level": 7,
+      "battle_type": "desert",
+      "min_rounds": 1,
+      "trainer_pool": [
+        {
+          "name": "Togepi",
+          "class": "TRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            175
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Shady Guy",
+          "class": "SHADY",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            176,
+            348,
+            350,
+            310,
+            229,
+            130
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Espeon | Umbreon",
+          "class": "ESPEON_|",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            196,
+            197
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "SNAG SHADOW POKEMON",
+          "action": "SNAG",
+          "color": "PURPLE",
+          "condition": [
+            "has_item:SNAG_MACHINE",
+            "shadows_left"
+          ]
+        },
+        {
+          "text": "SNAG AGAIN",
+          "action": "SNAG",
+          "repeat": true,
+          "color": "PURPLE",
+          "condition": [
+            "has_item:SNAG_MACHINE",
+            "shadows_cleared"
+          ]
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "RIDE THE MOTORBIKE",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "You rev the motorbike and race across the dunes.",
+              "Sand sprays behind you. Orre has no tall grass, only desert, rock and wind."
+            ]
+          }
+        },
+        {
+          "text": "Outskirt Stand",
+          "action": "EXIT",
+          "target_area": "OUTSKIRT_STAND",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        },
+        {
+          "text": "Phenac City",
+          "action": "EXIT",
+          "target_area": "PHENAC_CITY",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        },
+        {
+          "text": "Rock Poke Spot",
+          "action": "EXIT",
+          "target_area": "ORRE_POKE_SPOTS",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        },
+        {
+          "text": "Snagem Hideout",
+          "action": "EXIT",
+          "target_area": "SNAGEM_HIDEOUT",
+          "condition": [
+            "can_exit",
+            "has_phenac_badge"
+          ],
+          "color": "RED"
+        },
+        {
+          "text": "Orre Colosseum",
+          "action": "EXIT",
+          "target_area": "ORRE_COLOSSEUM",
+          "condition": [
+            "can_exit",
+            "beat_gonzap"
+          ],
+          "color": "RED"
+        }
+      ],
+      "next_area": "OUTSKIRT_STAND",
+      "shadow_pool": [
+        {
+          "id": 9406,
+          "name": "Shadow Makuhita",
+          "flag": "snagged_shadow_makuhita",
+          "trainer": "Miror B.Peon Trudly"
+        },
+        {
+          "id": 9358,
+          "name": "Shadow Togetic",
+          "flag": "snagged_shadow_togetic",
+          "trainer": "Cipher Peon Fein"
+        },
+        {
+          "id": 9348,
+          "name": "Shadow Bayleef",
+          "flag": "snagged_shadow_bayleef",
+          "trainer": "Cipher Peon Verde"
+        },
+        {
+          "id": 9349,
+          "name": "Shadow Quilava",
+          "flag": "snagged_shadow_quilava",
+          "trainer": "Cipher Peon Rosso"
+        },
+        {
+          "id": 9350,
+          "name": "Shadow Croconaw",
+          "flag": "snagged_shadow_croconaw",
+          "trainer": "Cipher Peon Bluno"
+        },
+        {
+          "id": 9357,
+          "name": "Shadow Togepi",
+          "flag": "snagged_shadow_togepi",
+          "trainer": "Pokémon Trainer Hordel"
+        }
+      ]
+    },
     "PHENAC_CITY": {
       "area_type": "town",
       "route_name": "Phenac City",
       "region": "ORRE",
-      "level": 60,
+      "level": 8,
       "has_gym": true,
       "explore_options": [
         {
@@ -15,6 +259,11 @@
         {
           "text": "Poke Mart",
           "action": "SHOP"
+        },
+        {
+          "text": "Phenac Stadium",
+          "action": "GYM",
+          "color": "GOLD"
         },
         {
           "text": "Trouble at the Fountain",
@@ -35,9 +284,9 @@
                 296
               ],
               "levels": [
-                58,
-                58,
-                60
+                9,
+                10,
+                11
               ],
               "rewards": {
                 "balls": 10
@@ -78,9 +327,48 @@
           "flag_condition": "not got_snag_machine"
         },
         {
-          "text": "Phenac Stadium",
-          "action": "GYM",
-          "color": "GOLD"
+          "text": "PHENAC STADIUM: SNATTLE",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not orre_snattle_phenac",
+          "event": {
+            "lines": [
+              "Snattle: As the former mayor, I welcome you... to your defeat!"
+            ],
+            "flag": "orre_snattle_phenac",
+            "battle": {
+              "name": "Cipher Admin Snattle",
+              "class": "PKMN_TRAINER",
+              "sprite": "gentleman.png",
+              "is_boss_battle": true,
+              "team": [
+                171,
+                195,
+                337,
+                351,
+                375
+              ],
+              "levels": [
+                9,
+                9,
+                10,
+                11,
+                11
+              ],
+              "rewards": {
+                "balls": 6
+              },
+              "dialogue": {
+                "intro": [
+                  "Snattle: As the former mayor, I welcome you... to your defeat!"
+                ],
+                "player_won": [
+                  "Snattle: How dare you!"
+                ]
+              }
+            }
+          },
+          "condition": "xd_exol_beaten"
         }
       ],
       "travel_options": [
@@ -94,82 +382,450 @@
           "condition": "got_snag_machine"
         },
         {
-          "text": "Agate Village",
-          "target_area": "AGATE_VILLAGE",
-          "condition": "cleared_the_under"
+          "text": "Gateon Port",
+          "target_area": "GATEON_PORT",
+          "condition": "orre_ein_lab"
+        },
+        {
+          "text": "Prestige Precept Center",
+          "target_area": "PRESTIGE_PRECEPT_CENTER",
+          "condition": "xd_exol_beaten"
         },
         {
           "text": "Realgam Tower",
           "target_area": "REALGAM_TOWER",
-          "condition": "met_agate_elder"
-        },
-        {
-          "text": "Gateon Port",
-          "target_area": "GATEON_PORT",
-          "condition": "cipher_defeated"
-        },
-        {
-          "text": "Air Transit to Hoenn (Lilycove)",
-          "target_area": "LILYCOVE_CITY",
-          "message": "The plane lifts off over the desert. Next stop: Lilycove City in Hoenn.",
-          "long_ride": true
+          "condition": "xd_gorigan_beaten"
         }
       ],
       "next_area": "ORRE_DESERT",
-      "gym": {"trainers": [{"name": "Streetler Dax", "class": "STREETLER", "sprite": "roughneck.png", "team": [262, 302, 319], "levels": [59, 59, 60], "rewards": {"balls": 5}, "dialogue": {"intro": ["Round one at Phenac Stadium!"]}}, {"name": "Civilian Mona", "class": "CIVILIAN", "sprite": "pokefan_f.png", "team": [184, 315, 357], "levels": [60, 60, 61], "rewards": {"balls": 5}, "dialogue": {"intro": ["The crowd is cheering for you!"]}}], "leader": {"name": "Pree Champion Justy", "class": "STADIUM_CHAMPION", "sprite": "acetrainer_m.png", "is_boss_battle": true, "team": [27, 331, 207, 192, 184, 299], "levels": [62, 62, 63, 63, 64, 64], "rewards": {"balls": 15}, "victory_flag": "phenac_stadium_won", "dialogue": {"intro": ["Justy: The Phenac Stadium final! Show Orre a real battle!"], "player_won": ["Justy: You're the Phenac Stadium champion!"], "player_lost": ["Justy: The stadium is open every day. Come back!"]}}, "requirements": {"badges": 0}}
-    },
-    "ORRE_DESERT": {
-      "area_type": "wild_route",
-      "route_name": "Desert Trail",
-      "region": "ORRE",
-      "level": 60,
-      "battle_type": "sand",
-      "min_rounds": 0,
-      "trainer_pool": [
-        {
-          "name": "Rider Vex",
-          "class": "RIDER",
-          "sprite": "biker.png",
+      "gym": {
+        "trainers": [
+          {
+            "name": "Cooltrainer Rewn",
+            "class": "COLOSSEUM",
+            "sprite": "acetrainer_m.png",
+            "is_boss_battle": true,
+            "team": [
+              258,
+              41,
+              331,
+              270,
+              204,
+              273
+            ],
+            "levels": [
+              31,
+              31,
+              32,
+              32,
+              33,
+              33
+            ],
+            "rewards": {
+              "balls": 5
+            }
+          },
+          {
+            "name": "Cooltrainer Buna",
+            "class": "COLOSSEUM",
+            "sprite": "acetrainer_m.png",
+            "is_boss_battle": true,
+            "team": [
+              370,
+              163,
+              252
+            ],
+            "levels": [
+              31,
+              32,
+              33
+            ],
+            "rewards": {
+              "balls": 5
+            }
+          },
+          {
+            "name": "Teacher Holen",
+            "class": "COLOSSEUM",
+            "sprite": "acetrainer_m.png",
+            "is_boss_battle": true,
+            "team": [
+              366,
+              255,
+              179
+            ],
+            "levels": [
+              31,
+              32,
+              33
+            ],
+            "rewards": {
+              "balls": 5
+            }
+          }
+        ],
+        "leader": {
+          "name": "Phenac Stadium Champion Glais",
+          "class": "GYM_LEADER",
+          "sprite": "acetrainer_m.png",
+          "is_boss_battle": true,
           "team": [
-            323,
-            332,
-            344
+            120,
+            165,
+            172,
+            322
           ],
+          "levels": [
+            34,
+            35,
+            35,
+            36
+          ],
+          "badge_reward": "PHENAC",
           "rewards": {
-            "balls": 4
+            "balls": 10
+          },
+          "dialogue": {
+            "intro": [
+              "Welcome to the final round of the Phenac Stadium! The winner takes the Phenac Badge!"
+            ],
+            "player_won": [
+              "You won the Phenac Stadium! Here's the Phenac Badge!"
+            ],
+            "player_lost": [
+              "So close! Train up and enter the next tournament."
+            ]
           }
         },
+        "requirements": {
+          "badges": 2,
+          "flag": "orre_snattle_phenac",
+          "fail_text": "The tournament isn't open to you yet. Keep following Cipher's trail!"
+        }
+      }
+    },
+    "ORRE_POKE_SPOTS": {
+      "area_type": "wild_route",
+      "route_name": "Rock Poke Spot",
+      "region": "ORRE",
+      "level": 10,
+      "battle_type": "desert",
+      "wild_pool_percentages": "ORRE_POKE_SPOTS_PERCENTAGES",
+      "min_rounds": 1,
+      "trainer_pool": [],
+      "description": "Three Poké Spots in the desert (Rock, Oasis and Cave), where wild Pokémon come for Poké Snacks. A Munchlax turns up now and then.",
+      "route_menu": [
         {
-          "name": "Outlaw Rusty",
-          "class": "OUTLAW",
-          "sprite": "roughneck.png",
-          "team": [
-            229,
-            262,
-            302
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "Desert Trail",
+          "action": "EXIT",
+          "target_area": "ORRE_DESERT",
+          "condition": [
+            "can_exit"
           ],
-          "rewards": {
-            "balls": 4
+          "color": "RED"
+        }
+      ],
+      "next_area": "ORRE_DESERT"
+    },
+    "PYRITE_TOWN": {
+      "area_type": "town",
+      "route_name": "Pyrite Town",
+      "region": "ORRE",
+      "level": 12,
+      "has_gym": true,
+      "explore_options": [
+        {
+          "text": "Pokemon Center",
+          "action": "HEAL"
+        },
+        {
+          "text": "Poke Mart",
+          "action": "SHOP"
+        },
+        {
+          "text": "Pyrite Colosseum",
+          "action": "GYM",
+          "color": "GOLD"
+        },
+        {
+          "text": "Pyrite's Sheriff",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "Sheriff: Pyrite's a rough town, kid. Outlaws on every corner.",
+              "Lately Cipher's been running things from The Under, the old city below us.",
+              "Clear them out and Agate Village will want to meet you."
+            ]
           }
         }
       ],
-      "route_menu": [
-        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
-        {"text": "RIDE THE MOTORBIKE", "action": "EVENT", "color": "GOLD", "event": {"lines": ["You rev the motorbike and race across the dunes.", "Sand sprays behind you. Orre has no tall grass, only desert, rock and wind."]}},
-        {"text": "SNAG SHADOW POKEMON", "action": "SNAG", "color": "PURPLE", "condition": ["has_item:SNAG_MACHINE", "shadows_left"]},
-        {"text": "SNAGEM HIDEOUT: GONZAP", "action": "EVENT", "color": "GOLD", "flag_condition": "not beat_gonzap", "event": {"lines": ["Gonzap: You walked off with our Snag Machine. Team Snagem wants it back!"], "flag": "beat_gonzap", "battle": {"name": "Snagem Head Gonzap", "class": "SNAGEM", "sprite": "roughneck.png", "is_boss_battle": true, "team": [227, 342, 348, 68, 286, 210], "levels": [62, 62, 63, 63, 63, 64], "rewards": {"balls": 12}, "dialogue": {"intro": ["Gonzap: You walked off with our Snag Machine. Team Snagem wants it back!"], "player_won": ["Gonzap: Ha! Fine, keep it. You've earned it."]}}}},
-        {"text": "Phenac City", "action": "EXIT", "target_area": "PHENAC_CITY", "condition": "can_exit", "color": "RED"},
-        {"text": "Pyrite Town", "action": "EXIT", "target_area": "PYRITE_TOWN", "condition": "got_snag_machine", "color": "RED"},
-        {"text": "Poké Spots", "action": "EXIT", "target_area": "ORRE_POKE_SPOTS", "condition": ["can_exit"], "color": "RED"}
+      "travel_options": [
+        {
+          "text": "Phenac City",
+          "target_area": "PHENAC_CITY"
+        },
+        {
+          "text": "Pyrite Building",
+          "target_area": "PYRITE_BUILDING"
+        },
+        {
+          "text": "Oasis Poke Spot",
+          "target_area": "OASIS_POKE_SPOT"
+        },
+        {
+          "text": "Pyrite Cave",
+          "target_area": "PYRITE_CAVE",
+          "condition": "has_pyrite_badge"
+        },
+        {
+          "text": "The Under",
+          "target_area": "THE_UNDER",
+          "condition": "orre_dakim_mt_battle"
+        },
+        {
+          "text": "ONBS Building",
+          "target_area": "XD_ONBS",
+          "condition": "xd_lovrina_beaten"
+        }
       ],
       "next_area": "PHENAC_CITY",
-      "shadow_pool": [
-        {
-          "id": 9406,
-          "name": "Shadow Makuhita",
-          "flag": "snagged_shadow_makuhita",
-          "trainer": "Miror B. Peon Trudly"
+      "gym": {
+        "trainers": [
+          {
+            "name": "Hunter Argel",
+            "class": "COLOSSEUM",
+            "sprite": "acetrainer_m.png",
+            "is_boss_battle": true,
+            "team": [
+              81,
+              170,
+              246,
+              107
+            ],
+            "levels": [
+              11,
+              12,
+              12,
+              13
+            ],
+            "rewards": {
+              "balls": 5
+            }
+          },
+          {
+            "name": "Chaser Zime",
+            "class": "COLOSSEUM",
+            "sprite": "acetrainer_m.png",
+            "is_boss_battle": true,
+            "team": [
+              288,
+              256,
+              109,
+              277
+            ],
+            "levels": [
+              11,
+              12,
+              12,
+              13
+            ],
+            "rewards": {
+              "balls": 5
+            }
+          },
+          {
+            "name": "Roller Boy Arez",
+            "class": "COLOSSEUM",
+            "sprite": "acetrainer_m.png",
+            "is_boss_battle": true,
+            "team": [
+              207,
+              372,
+              279,
+              195,
+              55,
+              195
+            ],
+            "levels": [
+              11,
+              11,
+              12,
+              12,
+              13,
+              13
+            ],
+            "rewards": {
+              "balls": 5
+            }
+          }
+        ],
+        "leader": {
+          "name": "Pyrite Colosseum Champion Heral",
+          "class": "GYM_LEADER",
+          "sprite": "acetrainer_m.png",
+          "is_boss_battle": true,
+          "team": [
+            101,
+            67,
+            337,
+            181,
+            106
+          ],
+          "levels": [
+            14,
+            14,
+            15,
+            16,
+            16
+          ],
+          "badge_reward": "PYRITE",
+          "rewards": {
+            "balls": 10
+          },
+          "dialogue": {
+            "intro": [
+              "Welcome to the final round of the Pyrite Colosseum! The winner takes the Pyrite Badge!"
+            ],
+            "player_won": [
+              "You won the Pyrite Colosseum! Here's the Pyrite Badge!"
+            ],
+            "player_lost": [
+              "So close! Train up and enter the next tournament."
+            ]
+          }
         },
+        "requirements": {
+          "badges": 0,
+          "flag": "got_snag_machine",
+          "fail_text": "The tournament isn't open to you yet. Keep following Cipher's trail!"
+        }
+      }
+    },
+    "PYRITE_BUILDING": {
+      "area_type": "dungeon",
+      "route_name": "Pyrite Building",
+      "region": "ORRE",
+      "level": 13,
+      "battle_type": "indoor",
+      "min_rounds": 0,
+      "trainer_pool": [
+        {
+          "name": "Chaser Kai",
+          "class": "CHASER",
+          "sprite": "roughneck.png",
+          "team": [
+            231,
+            328
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Roller Boy Pike",
+          "class": "ROLLER_BOY",
+          "sprite": "youngster.png",
+          "team": [
+            276,
+            163
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Bandana Guy Geats",
+          "class": "BANDANA_GUY",
+          "sprite": "roughneck.png",
+          "team": [
+            339,
+            246,
+            318
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Hunter Geare",
+          "class": "HUNTER",
+          "sprite": "hiker.png",
+          "team": [
+            223,
+            81
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Bandana Guy Loba",
+          "class": "BANDANA_GUY",
+          "sprite": "roughneck.png",
+          "team": [
+            278,
+            194,
+            288
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Bodybuilder Akmen",
+          "class": "BODYBUILDER",
+          "sprite": "blackbelt.png",
+          "team": [
+            309,
+            100,
+            322
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Rider Raleen",
+          "class": "RIDER",
+          "sprite": "biker.png",
+          "team": [
+            84,
+            165,
+            333,
+            72,
+            41
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Hunter Tura",
+          "class": "HUNTER",
+          "sprite": "hiker.png",
+          "team": [
+            363,
+            361
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        }
+      ],
+      "shadow_pool": [
         {
           "id": 9382,
           "name": "Shadow Slugma",
@@ -213,136 +869,6 @@
           "trainer": "Rogue Cail"
         },
         {
-          "id": 9358,
-          "name": "Shadow Togetic",
-          "flag": "snagged_shadow_togetic",
-          "trainer": "Cipher Peon Fein"
-        },
-        {
-          "id": 9380,
-          "name": "Shadow Teddiursa",
-          "flag": "snagged_shadow_teddiursa",
-          "trainer": "Cipher Peon Naps"
-        }
-      ]
-    },
-    "ORRE_POKE_SPOTS": {"area_type": "wild_route", "route_name": "Poké Spots", "region": "ORRE", "level": 60, "battle_type": "field", "wild_pool_percentages": "ORRE_POKE_SPOTS_PERCENTAGES", "min_rounds": 2, "trainer_pool": [], "description": "Three Poké Spots in the desert (Rock, Oasis and Cave), where wild Pokémon come for Poké Snacks. A Munchlax turns up now and then.", "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "Desert Trail", "action": "EXIT", "target_area": "ORRE_DESERT", "condition": "can_exit", "color": "RED"}], "next_area": "ORRE_DESERT"},
-    "PYRITE_TOWN": {
-      "area_type": "town",
-      "route_name": "Pyrite Town",
-      "region": "ORRE",
-      "level": 63,
-      "has_gym": true,
-      "explore_options": [
-        {
-          "text": "Pokemon Center",
-          "action": "HEAL"
-        },
-        {
-          "text": "Poke Mart",
-          "action": "SHOP"
-        },
-        {
-          "text": "Pyrite's Sheriff",
-          "action": "EVENT",
-          "color": "GOLD",
-          "event": {
-            "lines": [
-              "Sheriff: Pyrite's a rough town, kid. Outlaws on every corner.",
-              "Lately Cipher's been running things from The Under, the old city below us.",
-              "Clear them out and Agate Village will want to meet you."
-            ]
-          }
-        },
-        {
-          "text": "Pyrite Colosseum",
-          "action": "GYM",
-          "color": "GOLD"
-        }
-      ],
-      "travel_options": [
-        {
-          "text": "The Under",
-          "target_area": "THE_UNDER"
-        },
-        {
-          "text": "Desert Trail",
-          "target_area": "ORRE_DESERT"
-        },
-        {
-          "text": "Mt. Battle",
-          "target_area": "MT_BATTLE"
-        },
-        {
-          "text": "Phenac City",
-          "target_area": "PHENAC_CITY"
-        }
-      ],
-      "next_area": "THE_UNDER",
-      "gym": {"trainers": [{"name": "Thug Brock", "class": "THUG", "sprite": "roughneck.png", "team": [297, 302, 229], "levels": [62, 62, 63], "rewards": {"balls": 5}, "dialogue": {"intro": ["Welcome to Pyrite, punk!"]}}, {"name": "Scrapper Kit", "class": "SCRAPPER", "sprite": "blackbelt.png", "team": [237, 308, 286], "levels": [63, 63, 64], "rewards": {"balls": 5}, "dialogue": {"intro": ["Nobody leaves the Colosseum easy!"]}}], "leader": {"name": "Miror B.", "class": "CIPHER_ADMIN", "sprite": "guitarist.png", "is_boss_battle": true, "team": [348, 272, 272, 55, 294], "levels": [64, 64, 65, 66, 66], "rewards": {"balls": 15}, "victory_flag": "pyrite_colosseum_won", "dialogue": {"intro": ["Miror B.: Ooh, a challenger! Let's dance! My Ludicolo never miss a beat!"], "player_won": ["Miror B.: Aaah! My groove! You win this round, baby!"], "player_lost": ["Miror B.: Ha! Keep dancing and come back!"]}}, "requirements": {"badges": 0}}
-    },
-    "THE_UNDER": {
-      "area_type": "dungeon",
-      "route_name": "The Under",
-      "region": "ORRE",
-      "level": 64,
-      "battle_type": "indoor",
-      "min_rounds": 0,
-      "trainer_pool": [
-        {
-          "name": "Cipher Peon Litnar",
-          "class": "CIPHER_PEON",
-          "sprite": "roughneck.png",
-          "team": [
-            262,
-            336,
-            342
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "Cipher Peon Remil",
-          "class": "CIPHER_PEON",
-          "sprite": "biker.png",
-          "team": [
-            229,
-            317,
-            302
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        }
-      ],
-      "route_menu": [
-        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
-        {"text": "SNAG SHADOW POKEMON", "action": "SNAG", "color": "PURPLE", "condition": ["has_item:SNAG_MACHINE", "shadows_left"]},
-        {"text": "SHUT DOWN THE UNDER", "action": "EVENT", "color": "GOLD", "event": {"lines": ["Cipher Admin Venus: How dare you march into my studio!", "My Shadow Pokemon are beautiful, and you'll see how beautiful in battle!"], "battle": {"name": "Cipher Admin Venus", "class": "CIPHER_ADMIN", "sprite": "beauty.png", "team": [350, 182, 26, 40, 200], "levels": [64, 64, 65, 66, 66], "rewards": {"balls": 15}, "dialogue": {"player_won": ["Venus: My makeup... ruined! Fine, The Under is yours!"]}}, "flag": "cleared_the_under"}, "flag_condition": "not cleared_the_under"},
-        {"text": "Pyrite Town", "action": "EXIT", "target_area": "PYRITE_TOWN", "condition": "can_exit", "color": "RED"}
-      ],
-      "next_area": "PYRITE_TOWN",
-      "shadow_pool": [
-        {
-          "id": 9348,
-          "name": "Shadow Bayleef",
-          "flag": "snagged_shadow_bayleef",
-          "trainer": "Cipher Peon Verde"
-        },
-        {
-          "id": 9349,
-          "name": "Shadow Quilava",
-          "flag": "snagged_shadow_quilava",
-          "trainer": "Cipher Peon Rosso"
-        },
-        {
-          "id": 9350,
-          "name": "Shadow Croconaw",
-          "flag": "snagged_shadow_croconaw",
-          "trainer": "Cipher Peon Bluno"
-        },
-        {
           "id": 9366,
           "name": "Shadow Yanma",
           "flag": "snagged_shadow_yanma",
@@ -352,13 +878,13 @@
           "id": 9386,
           "name": "Shadow Remoraid",
           "flag": "snagged_shadow_remoraid",
-          "trainer": "Miror B. Peon Reath"
+          "trainer": "Miror B.Peon Reath"
         },
         {
           "id": 9388,
           "name": "Shadow Mantine",
           "flag": "snagged_shadow_mantine",
-          "trainer": "Miror B. Peon Ferma"
+          "trainer": "Miror B.Peon Ferma"
         },
         {
           "id": 9375,
@@ -366,6 +892,203 @@
           "flag": "snagged_shadow_qwilfish",
           "trainer": "Hunter Doken"
         },
+        {
+          "id": 9407,
+          "name": "Shadow Nosepass",
+          "flag": "snagged_shadow_nosepass",
+          "trainer": "Wanderer Miror B."
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "SNAG SHADOW POKEMON",
+          "action": "SNAG",
+          "color": "PURPLE",
+          "condition": [
+            "has_item:SNAG_MACHINE",
+            "shadows_left"
+          ]
+        },
+        {
+          "text": "SNAG AGAIN",
+          "action": "SNAG",
+          "repeat": true,
+          "color": "PURPLE",
+          "condition": [
+            "has_item:SNAG_MACHINE",
+            "shadows_cleared"
+          ]
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Pyrite Town",
+          "action": "EXIT",
+          "target_area": "PYRITE_TOWN",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        }
+      ],
+      "next_area": "PYRITE_TOWN"
+    },
+    "OASIS_POKE_SPOT": {
+      "area_type": "wild_route",
+      "route_name": "Oasis Poke Spot",
+      "region": "ORRE",
+      "level": 14,
+      "battle_type": "field",
+      "min_rounds": 1,
+      "wild_pool_percentages": "ORRE_OASIS_POKE_SPOT_PERCENTAGES",
+      "trainer_pool": [],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "Pyrite Town",
+          "action": "EXIT",
+          "target_area": "PYRITE_TOWN",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        }
+      ],
+      "next_area": "PYRITE_TOWN"
+    },
+    "PYRITE_CAVE": {
+      "area_type": "dungeon",
+      "route_name": "Pyrite Cave",
+      "region": "ORRE",
+      "level": 18,
+      "battle_type": "cave",
+      "min_rounds": 0,
+      "trainer_pool": [
+        {
+          "name": "St.Performer Simes",
+          "class": "STPERFORMER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            347,
+            270
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Chaser Rehan",
+          "class": "CHASER",
+          "sprite": "roughneck.png",
+          "team": [
+            74,
+            270,
+            361,
+            287
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Bandana Guy Noxy",
+          "class": "BANDANA_GUY",
+          "sprite": "roughneck.png",
+          "team": [
+            270,
+            270,
+            270,
+            270,
+            326
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Chaser Maiz",
+          "class": "CHASER",
+          "sprite": "roughneck.png",
+          "team": [
+            109,
+            280,
+            285
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Rider Twan",
+          "class": "RIDER",
+          "sprite": "biker.png",
+          "team": [
+            307,
+            372,
+            323,
+            211
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Hunter Valen",
+          "class": "HUNTER",
+          "sprite": "hiker.png",
+          "team": [
+            270,
+            293,
+            287,
+            225,
+            178
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Roller Boy Evat",
+          "class": "ROLLER_BOY",
+          "sprite": "youngster.png",
+          "team": [
+            270,
+            271
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Rider Derid",
+          "class": "RIDER",
+          "sprite": "biker.png",
+          "team": [
+            204,
+            353,
+            109
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        }
+      ],
+      "shadow_pool": [
         {
           "id": 9411,
           "name": "Shadow Meditite",
@@ -389,52 +1112,348 @@
           "name": "Shadow Sudowoodo",
           "flag": "snagged_shadow_sudowoodo",
           "trainer": "Cipher Admin Miror B."
-        },
-        {
-          "id": 9398,
-          "name": "Shadow Suicune",
-          "flag": "snagged_shadow_suicune",
-          "trainer": "Cipher Admin Venus"
-        },
-        {
-          "id": 9373,
-          "name": "Shadow Gligar",
-          "flag": "snagged_shadow_gligar",
-          "trainer": "Hunter Frena"
-        },
-        {
-          "id": 9392,
-          "name": "Shadow Stantler",
-          "flag": "snagged_shadow_stantler",
-          "trainer": "Chaser Liaks"
-        },
-        {
-          "id": 9385,
-          "name": "Shadow Piloswine",
-          "flag": "snagged_shadow_piloswine",
-          "trainer": "Bodybuilder Lonia"
-        },
-        {
-          "id": 9379,
-          "name": "Shadow Sneasel",
-          "flag": "snagged_shadow_sneasel",
-          "trainer": "Rider Nelis"
-        },
-        {
-          "id": 9390,
-          "name": "Shadow Houndour",
-          "flag": "snagged_shadow_houndour",
-          "trainer": "Cipher Peon Resix"
         }
-      ]
+      ],
+      "route_menu": [
+        {
+          "text": "PYRITE CAVE: MIROR B.",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not orre_miror_cave",
+          "event": {
+            "lines": [
+              "Miror B.: Ah-ha! A trainer dancing into MY hideout? My Ludicolo will show you some real moves!"
+            ],
+            "flag": "orre_miror_cave",
+            "battle": {
+              "name": "Cipher Admin Miror B.",
+              "class": "CIPHER_ADMIN",
+              "sprite": "guitarist.png",
+              "is_boss_battle": true,
+              "team": [
+                185,
+                272,
+                272,
+                272
+              ],
+              "rewards": {
+                "balls": 8
+              },
+              "dialogue": {
+                "player_won": [
+                  "Miror B.: Unbelievable! Fine, go to Agate Village. See if I care!"
+                ]
+              },
+              "levels": [
+                19,
+                20,
+                20,
+                21
+              ]
+            }
+          }
+        },
+        {
+          "text": "SNAG SHADOW POKEMON",
+          "action": "SNAG",
+          "color": "PURPLE",
+          "condition": [
+            "has_item:SNAG_MACHINE",
+            "shadows_left"
+          ]
+        },
+        {
+          "text": "SNAG AGAIN",
+          "action": "SNAG",
+          "repeat": true,
+          "color": "PURPLE",
+          "condition": [
+            "has_item:SNAG_MACHINE",
+            "shadows_cleared"
+          ]
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Pyrite Town",
+          "action": "EXIT",
+          "target_area": "PYRITE_TOWN",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        },
+        {
+          "text": "Agate Village",
+          "action": "EXIT",
+          "target_area": "AGATE_VILLAGE",
+          "condition": [
+            "can_exit",
+            "orre_miror_cave"
+          ],
+          "color": "RED"
+        }
+      ],
+      "next_area": "PYRITE_TOWN"
+    },
+    "AGATE_VILLAGE": {
+      "area_type": "town",
+      "route_name": "Agate Village",
+      "region": "ORRE",
+      "level": 19,
+      "has_gym": false,
+      "explore_options": [
+        {
+          "text": "Pokemon Center",
+          "action": "HEAL"
+        },
+        {
+          "text": "Poke Mart",
+          "action": "SHOP"
+        },
+        {
+          "text": "Village Elder",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "Elder Eagun: So you're the trainer who saved Pyrite. Rui told me everything.",
+              "The Relic Stone in our forest can open a Shadow Pokemon's heart. Use it whenever you need.",
+              "Cipher's leader hides in Realgam Tower. When you're ready, end this."
+            ],
+            "flag": "met_agate_elder"
+          }
+        },
+        {
+          "text": "Purify at the Relic Stone",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "Elder Eagun: The Relic Stone can open a Shadow Pokemon's heart, if you wish it.",
+              "Some trainers keep their Shadow Pokemon as they are. Choose one to purify, or none."
+            ],
+            "purify": "choose"
+          }
+        }
+      ],
+      "travel_options": [
+        {
+          "text": "Pyrite Cave",
+          "target_area": "PYRITE_CAVE"
+        },
+        {
+          "text": "Relic Cave",
+          "target_area": "RELIC_CAVE"
+        },
+        {
+          "text": "Relic Forest",
+          "target_area": "RELIC_FOREST"
+        },
+        {
+          "text": "Cave Poke Spot",
+          "target_area": "CAVE_POKE_SPOT"
+        },
+        {
+          "text": "Mt. Battle",
+          "target_area": "MT_BATTLE"
+        }
+      ],
+      "next_area": "PYRITE_CAVE"
+    },
+    "RELIC_CAVE": {
+      "area_type": "dungeon",
+      "route_name": "Relic Cave",
+      "region": "ORRE",
+      "level": 20,
+      "battle_type": "cave",
+      "min_rounds": 0,
+      "trainer_pool": [],
+      "shadow_pool": [
+        {
+          "id": 9394,
+          "name": "Shadow Hitmontop",
+          "flag": "snagged_shadow_hitmontop",
+          "trainer": "Cipher Peon Skrub"
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "SNAG SHADOW POKEMON",
+          "action": "SNAG",
+          "color": "PURPLE",
+          "condition": [
+            "has_item:SNAG_MACHINE",
+            "shadows_left"
+          ]
+        },
+        {
+          "text": "SNAG AGAIN",
+          "action": "SNAG",
+          "repeat": true,
+          "color": "PURPLE",
+          "condition": [
+            "has_item:SNAG_MACHINE",
+            "shadows_cleared"
+          ]
+        },
+        {
+          "text": "Agate Village",
+          "action": "EXIT",
+          "target_area": "AGATE_VILLAGE",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        }
+      ],
+      "next_area": "AGATE_VILLAGE"
+    },
+    "RELIC_FOREST": {
+      "area_type": "wild_route",
+      "route_name": "Relic Forest",
+      "region": "ORRE",
+      "level": 21,
+      "battle_type": "grass",
+      "min_rounds": 1,
+      "trainer_pool": [],
+      "route_menu": [
+        {
+          "text": "THE WISHING STAR",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "requires": [
+              "beat_orre_champion"
+            ],
+            "fail": [
+              "The Relic Stone glows softly. The forest feels like it's waiting for something."
+            ],
+            "lines": [
+              "Every Shadow Pokemon you saved gathers around the Relic Stone.",
+              "A shooting star falls into the forest... and a tiny Pokemon with a star on its head wakes up!",
+              "It's Jirachi, the Wish Pokemon. It looks at you, curious."
+            ],
+            "flag": "jirachi_awake"
+          },
+          "flag_condition": "not jirachi_awake"
+        },
+        {
+          "text": "MEET JIRACHI",
+          "action": "BOSS",
+          "color": "GOLD",
+          "condition": [
+            "jirachi_awake",
+            "boss_not_defeated"
+          ]
+        },
+        {
+          "text": "HO-OH AT THE RELIC STONE",
+          "action": "BOSS",
+          "color": "PURPLE",
+          "boss": {
+            "id": 250,
+            "name": "Ho-Oh",
+            "victory_flag": "orre_ho_oh_caught",
+            "lines": [
+              "Every Shadow Pokemon in Orre has been set free. A rainbow arcs over the Relic Stone...",
+              "Ho-Oh descends, drawn by the hearts you opened!"
+            ]
+          },
+          "condition": [
+            "orre_all_purified",
+            "not:orre_ho_oh_caught"
+          ]
+        },
+        {
+          "text": "Agate Village",
+          "action": "EXIT",
+          "target_area": "AGATE_VILLAGE",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        }
+      ],
+      "next_area": "AGATE_VILLAGE",
+      "area_boss": {
+        "id": 385,
+        "name": "Jirachi",
+        "victory_flag": "orre_jirachi_caught"
+      }
+    },
+    "CAVE_POKE_SPOT": {
+      "area_type": "wild_route",
+      "route_name": "Cave Poke Spot",
+      "region": "ORRE",
+      "level": 21,
+      "battle_type": "cave",
+      "min_rounds": 1,
+      "wild_pool_percentages": "ORRE_CAVE_POKE_SPOT_PERCENTAGES",
+      "trainer_pool": [],
+      "shadow_pool": [
+        {
+          "id": 9325,
+          "name": "Shadow Voltorb",
+          "flag": "snagged_shadow_voltorb",
+          "trainer": "Wanderer Miror B."
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "SNAG SHADOW POKEMON",
+          "action": "SNAG",
+          "color": "PURPLE",
+          "condition": [
+            "has_item:SNAG_MACHINE",
+            "shadows_left"
+          ]
+        },
+        {
+          "text": "SNAG AGAIN",
+          "action": "SNAG",
+          "repeat": true,
+          "color": "PURPLE",
+          "condition": [
+            "has_item:SNAG_MACHINE",
+            "shadows_cleared"
+          ]
+        },
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "Agate Village",
+          "action": "EXIT",
+          "target_area": "AGATE_VILLAGE",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        }
+      ],
+      "next_area": "AGATE_VILLAGE"
     },
     "MT_BATTLE": {
       "area_type": "wild_route",
       "route_name": "Mt. Battle",
       "region": "ORRE",
-      "level": 64,
-      "battle_type": "field",
-      "min_rounds": 0,
+      "level": 22,
+      "battle_type": "mountain",
+      "min_rounds": 1,
       "trainer_pool": [
         {
           "name": "Area 1 Rider Kai",
@@ -1010,196 +2029,267 @@
         }
       ],
       "route_menu": [
-        {"text": "CLIMB MT. BATTLE", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
-        {"text": "MT. BATTLE MASTER", "action": "EVENT", "color": "GOLD", "event": {"lines": ["Mt. Battle Master Vander: You beat all ten areas? Then face the master of the mountain!"], "battle": {"name": "Mt. Battle Master Vander", "class": "MT_BATTLE_MASTER", "sprite": "blackbelt.png", "team": [289, 248, 373, 376, 230, 242], "levels": [70, 70, 71, 71, 72, 73], "rewards": {"balls": 15}, "dialogue": {"player_won": ["Vander: What a climb! You're the true master of Mt. Battle!"]}}, "flag": "mt_battle_master_beaten"}, "condition": "not:has_trainers", "flag_condition": "not mt_battle_master_beaten"},
-        {"text": "START OVER FROM AREA 1", "action": "EVENT", "color": "GOLD", "event": {"lines": ["Mt. Battle's trainers are ready for another round. Back to Area 1!"], "reset_area": true, "clear_flags": ["mt_battle_master_beaten"]}, "condition": "mt_battle_master_beaten"},
-        {"text": "Pyrite Town", "action": "EXIT", "target_area": "PYRITE_TOWN", "condition": "can_exit", "color": "RED"}
-      ],
-      "next_area": "PYRITE_TOWN"
-    },
-    "AGATE_VILLAGE": {
-      "area_type": "town",
-      "route_name": "Agate Village",
-      "region": "ORRE",
-      "level": 64,
-      "has_gym": false,
-      "explore_options": [
         {
-          "text": "Pokemon Center",
-          "action": "HEAL"
+          "text": "SNAG SHADOW POKEMON",
+          "action": "SNAG",
+          "color": "PURPLE",
+          "condition": [
+            "has_item:SNAG_MACHINE",
+            "shadows_left"
+          ]
         },
         {
-          "text": "Poke Mart",
-          "action": "SHOP"
+          "text": "SNAG AGAIN",
+          "action": "SNAG",
+          "repeat": true,
+          "color": "PURPLE",
+          "condition": [
+            "has_item:SNAG_MACHINE",
+            "shadows_cleared"
+          ]
         },
         {
-          "text": "Village Elder",
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "MT. BATTLE MASTER",
           "action": "EVENT",
           "color": "GOLD",
           "event": {
             "lines": [
-              "Elder Eagun: So you're the trainer who saved Pyrite. Rui told me everything.",
-              "The Relic Stone in our forest can open a Shadow Pokemon's heart. Use it whenever you need.",
-              "Cipher's leader hides in Realgam Tower. When you're ready, end this."
+              "Mt. Battle Master Vander: You beat all ten areas? Then face the master of the mountain!"
             ],
-            "flag": "met_agate_elder"
-          }
+            "battle": {
+              "name": "Mt. Battle Master Vander",
+              "class": "MT_BATTLE_MASTER",
+              "sprite": "blackbelt.png",
+              "team": [
+                289,
+                248,
+                373,
+                376,
+                230,
+                242
+              ],
+              "levels": [
+                70,
+                70,
+                71,
+                71,
+                72,
+                73
+              ],
+              "rewards": {
+                "balls": 15
+              },
+              "dialogue": {
+                "player_won": [
+                  "Vander: What a climb! You're the true master of Mt. Battle!"
+                ]
+              }
+            },
+            "flag": "mt_battle_master_beaten"
+          },
+          "condition": "beat_orre_champion",
+          "flag_condition": "not mt_battle_master_beaten"
         },
         {
-          "text": "Purify at the Relic Stone",
+          "text": "START OVER FROM AREA 1",
           "action": "EVENT",
           "color": "GOLD",
           "event": {
             "lines": [
-              "Elder Eagun: The Relic Stone can open a Shadow Pokemon's heart, if you wish it.",
-              "Some trainers keep their Shadow Pokemon as they are. Choose one to purify, or none."
+              "Mt. Battle's trainers are ready for another round. Back to Area 1!"
             ],
-            "purify": "choose"
-          }
-        }
-      ],
-      "travel_options": [
-        {
-          "text": "Relic Forest",
-          "target_area": "RELIC_FOREST"
+            "reset_area": true,
+            "clear_flags": [
+              "mt_battle_master_beaten"
+            ]
+          },
+          "condition": "mt_battle_master_beaten"
         },
         {
-          "text": "Phenac City",
-          "target_area": "PHENAC_CITY"
-        }
-      ],
-      "next_area": "RELIC_FOREST"
-    },
-    "RELIC_FOREST": {
-      "area_type": "wild_route",
-      "route_name": "Relic Forest",
-      "region": "ORRE",
-      "level": 65,
-      "battle_type": "forest",
-      "min_rounds": 0,
-      "trainer_pool": [
-        {
-          "name": "Nomad Ilda",
-          "class": "NOMAD",
-          "sprite": "picnicker.png",
-          "team": [
-            357,
-            315,
-            182
-          ],
-          "rewards": {
-            "balls": 4
+          "text": "DAKIM ATTACKS MT. BATTLE",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not orre_dakim_mt_battle",
+          "event": {
+            "lines": [
+              "Dakim: Mt. Battle belongs to Cipher now! Out of my way!"
+            ],
+            "flag": "orre_dakim_mt_battle",
+            "battle": {
+              "name": "Cipher Admin Dakim",
+              "class": "PKMN_TRAINER",
+              "sprite": "blackbelt.png",
+              "is_boss_battle": true,
+              "team": [
+                375,
+                259,
+                76,
+                323
+              ],
+              "levels": [
+                23,
+                24,
+                24,
+                25
+              ],
+              "rewards": {
+                "balls": 6
+              },
+              "dialogue": {
+                "intro": [
+                  "Dakim: Mt. Battle belongs to Cipher now! Out of my way!"
+                ],
+                "player_won": [
+                  "Dakim: Grr... You'll pay for that at Realgam!"
+                ]
+              }
+            }
           }
         },
         {
-          "name": "Medium Sora",
-          "class": "MEDIUM",
-          "sprite": "medium.png",
-          "team": [
-            354,
-            302,
-            200
+          "text": "Agate Village",
+          "action": "EXIT",
+          "target_area": "AGATE_VILLAGE",
+          "condition": [
+            "can_exit"
           ],
-          "rewards": {
-            "balls": 4
-          }
+          "color": "RED"
         }
-      ],
-      "route_menu": [
-        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
-        {"text": "SNAG SHADOW POKEMON", "action": "SNAG", "color": "PURPLE", "condition": ["has_item:SNAG_MACHINE", "shadows_left"]},
-        {"text": "THE WISHING STAR", "action": "EVENT", "color": "GOLD", "event": {"requires": ["cipher_defeated"], "fail": ["The Relic Stone glows softly. The forest feels like it's waiting for something."], "lines": ["Every Shadow Pokemon you saved gathers around the Relic Stone.", "A shooting star falls into the forest... and a tiny Pokemon with a star on its head wakes up!", "It's Jirachi, the Wish Pokemon. It looks at you, curious."], "flag": "jirachi_awake"}, "flag_condition": "not jirachi_awake"},
-        {"text": "MEET JIRACHI", "action": "BOSS", "color": "GOLD", "condition": ["jirachi_awake", "boss_not_defeated"]},
-        {"text": "Agate Village", "action": "EXIT", "target_area": "AGATE_VILLAGE", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "AGATE_VILLAGE",
       "shadow_pool": [
-        {
-          "id": 9394,
-          "name": "Shadow Hitmontop",
-          "flag": "snagged_shadow_hitmontop",
-          "trainer": "Cipher Peon Skrub"
-        },
         {
           "id": 9397,
           "name": "Shadow Entei",
           "flag": "snagged_shadow_entei",
           "trainer": "Cipher Admin Dakim"
-        },
-        {
-          "id": 9354,
-          "name": "Shadow Ledian",
-          "flag": "snagged_shadow_ledian",
-          "trainer": "Cipher Peon Kloak"
-        },
-        {
-          "id": 9357,
-          "name": "Shadow Togepi",
-          "flag": "snagged_shadow_togepi",
-          "trainer": "a Cipher trainer"
-        },
-        {
-          "id": 9360,
-          "name": "Shadow Mareep",
-          "flag": "snagged_shadow_mareep",
-          "trainer": "a Cipher trainer"
-        },
-        {
-          "id": 9376,
-          "name": "Shadow Scizor",
-          "flag": "snagged_shadow_scizor",
-          "trainer": "a Cipher trainer"
         }
-      ],
-      "area_boss": {
-        "id": 385,
-        "name": "Jirachi",
-        "victory_flag": "orre_jirachi_caught"
-      }
+      ]
     },
-    "REALGAM_TOWER": {
-      "area_type": "town",
-      "route_name": "Realgam Tower",
-      "region": "ORRE",
-      "level": 68,
-      "has_gym": true,
-      "explore_options": [
-        {
-          "text": "Pokemon Center",
-          "action": "HEAL"
-        },
-        {
-          "text": "Poke Mart",
-          "action": "SHOP"
-        },
-        {
-          "text": "Realgam Colosseum (Cipher)",
-          "action": "GYM",
-          "color": "GOLD"
-        }
-      ],
-      "travel_options": [
-        {
-          "text": "Cipher Command Center",
-          "target_area": "CIPHER_COMMAND",
-          "condition": "cipher_defeated"
-        },
-        {
-          "text": "Phenac City",
-          "target_area": "PHENAC_CITY"
-        }
-      ],
-      "next_area": "CIPHER_COMMAND",
-      "gym": {"trainers": [{"name": "Cipher Admin Dakim", "class": "CIPHER_ADMIN", "sprite": "blackbelt.png", "team": [229, 330, 205, 340, 344], "levels": [66, 66, 67, 68, 68], "rewards": {"balls": 8}, "dialogue": {"intro": ["Dakim: Crush! I'll crush you and your Pokemon!"]}}, {"name": "Cipher Admin Ein", "class": "CIPHER_ADMIN", "sprite": "scientist.png", "team": [310, 121, 112, 279, 169], "levels": [67, 67, 68, 69, 69], "rewards": {"balls": 8}, "dialogue": {"intro": ["Ein: My research made the Shadow Pokemon. You will not undo it!"]}}, {"name": "Cipher Nascour", "class": "CIPHER_ADMIN", "sprite": "gentleman.png", "team": [65, 282, 178, 356, 365, 257], "levels": [67, 67, 68, 68, 69, 69], "rewards": {"balls": 10}, "dialogue": {"intro": ["Nascour: I run Cipher's operations. Evice will not be disturbed by a child!"], "player_won": ["Nascour: Impossible... Master Evice, forgive me!"]}}], "leader": {"name": "Cipher Head Evice", "class": "CIPHER_BOSS", "sprite": "gentleman.png", "is_boss_battle": true, "team": [306, 373, 68, 212, 289, 199], "levels": [70, 70, 71, 71, 72, 72], "rewards": {"balls": 25, "RARE_CANDY": 5}, "victory_flag": "cipher_defeated", "dialogue": {"intro": ["Evice: So you're the meddler. Realgam Tower is mine, and so is Orre!"], "player_won": ["Evice: Impossible... Cipher is finished.", "Rui: You did it! Every Shadow Pokemon can be saved now!"], "player_lost": ["Evice: Cipher cannot be beaten! Leave my tower!"]}}, "requirements": {"badges": 0, "flag": "met_agate_elder", "fail_text": "Realgam Tower's doors are sealed. Talk to the elder in Agate Village first."}}
-    },
-    "CIPHER_COMMAND": {
+    "THE_UNDER": {
       "area_type": "dungeon",
-      "route_name": "Cipher Command Center",
+      "route_name": "The Under",
       "region": "ORRE",
-      "level": 70,
+      "level": 24,
       "battle_type": "indoor",
       "min_rounds": 0,
-      "trainer_pool": [],
+      "trainer_pool": [
+        {
+          "name": "Hunter Zada",
+          "class": "HUNTER",
+          "sprite": "hiker.png",
+          "team": [
+            300,
+            43,
+            39,
+            353
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Chaser Gurks",
+          "class": "CHASER",
+          "sprite": "roughneck.png",
+          "team": [
+            129,
+            349,
+            321
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Cipher Peon Kloak",
+          "class": "CIPHER_PEON",
+          "sprite": "roughneck.png",
+          "team": [
+            166,
+            167,
+            313
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Cipher Peon Dagur",
+          "class": "CIPHER_PEON",
+          "sprite": "roughneck.png",
+          "team": [
+            168,
+            44,
+            314
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Hunter Frena",
+          "class": "HUNTER",
+          "sprite": "hiker.png",
+          "team": [
+            216,
+            39,
+            285,
+            207
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Chaser Liaks",
+          "class": "CHASER",
+          "sprite": "roughneck.png",
+          "team": [
+            234,
+            44,
+            281,
+            315
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Bodybuilder Lonia",
+          "class": "BODYBUILDER",
+          "sprite": "blackbelt.png",
+          "team": [
+            221,
+            206,
+            224,
+            284
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Rider Nelis",
+          "class": "RIDER",
+          "sprite": "biker.png",
+          "team": [
+            215,
+            336,
+            222,
+            294
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        }
+      ],
       "route_menu": [
         {
           "text": "SNAG SHADOW POKEMON",
@@ -1211,26 +2301,403 @@
           ]
         },
         {
-          "text": "READ CIPHER'S FILES",
+          "text": "SNAG AGAIN",
+          "action": "SNAG",
+          "repeat": true,
+          "color": "PURPLE",
+          "condition": [
+            "has_item:SNAG_MACHINE",
+            "shadows_cleared"
+          ]
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "SHUT DOWN THE UNDER",
           "action": "EVENT",
           "color": "GOLD",
           "event": {
             "lines": [
-              "The files list the Shadow Pokemon Cipher made here.",
-              "One note says: \"A wishing star fell near Agate's Relic Stone. Investigate.\"",
-              "Another: \"Project XD: ship the new Shadow Pokemon through Gateon Port.\""
-            ]
-          }
+              "Cipher Admin Venus: How dare you march into my studio!",
+              "My Shadow Pokemon are beautiful, and you'll see how beautiful in battle!"
+            ],
+            "battle": {
+              "name": "Cipher Admin Venus",
+              "class": "CIPHER_ADMIN",
+              "sprite": "beauty.png",
+              "team": [
+                350,
+                182,
+                26,
+                40,
+                200
+              ],
+              "levels": [
+                25,
+                25,
+                26,
+                27,
+                27
+              ],
+              "rewards": {
+                "balls": 15
+              },
+              "dialogue": {
+                "player_won": [
+                  "Venus: My makeup... ruined! Fine, The Under is yours!"
+                ]
+              }
+            },
+            "flag": "cleared_the_under"
+          },
+          "flag_condition": "not cleared_the_under"
         },
         {
-          "text": "Realgam Tower",
+          "text": "Pyrite Town",
           "action": "EXIT",
-          "target_area": "REALGAM_TOWER",
-          "condition": "can_exit",
+          "target_area": "PYRITE_TOWN",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        },
+        {
+          "text": "Under Colosseum",
+          "action": "EXIT",
+          "target_area": "UNDER_COLOSSEUM",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        },
+        {
+          "text": "Shadow Pokemon Lab",
+          "action": "EXIT",
+          "target_area": "SHADOW_PKMN_LAB",
+          "condition": [
+            "can_exit",
+            "has_under_badge"
+          ],
           "color": "RED"
         }
       ],
-      "next_area": "REALGAM_TOWER",
+      "next_area": "PYRITE_TOWN",
+      "shadow_pool": [
+        {
+          "id": 9398,
+          "name": "Shadow Suicune",
+          "flag": "snagged_shadow_suicune",
+          "trainer": "Cipher Admin Venus"
+        },
+        {
+          "id": 9373,
+          "name": "Shadow Gligar",
+          "flag": "snagged_shadow_gligar",
+          "trainer": "Hunter Frena"
+        },
+        {
+          "id": 9392,
+          "name": "Shadow Stantler",
+          "flag": "snagged_shadow_stantler",
+          "trainer": "Chaser Liaks"
+        },
+        {
+          "id": 9385,
+          "name": "Shadow Piloswine",
+          "flag": "snagged_shadow_piloswine",
+          "trainer": "Bodybuilder Lonia"
+        },
+        {
+          "id": 9379,
+          "name": "Shadow Sneasel",
+          "flag": "snagged_shadow_sneasel",
+          "trainer": "Rider Nelis"
+        },
+        {
+          "id": 9354,
+          "name": "Shadow Ledian",
+          "flag": "snagged_shadow_ledian",
+          "trainer": "Cipher Peon Kloak"
+        }
+      ]
+    },
+    "UNDER_COLOSSEUM": {
+      "area_type": "town",
+      "route_name": "Under Colosseum",
+      "region": "ORRE",
+      "level": 25,
+      "has_gym": true,
+      "explore_options": [
+        {
+          "text": "Pokemon Center",
+          "action": "HEAL"
+        },
+        {
+          "text": "Poke Mart",
+          "action": "SHOP"
+        },
+        {
+          "text": "Under Colosseum",
+          "action": "GYM",
+          "color": "GOLD"
+        }
+      ],
+      "travel_options": [
+        {
+          "text": "The Under",
+          "target_area": "THE_UNDER"
+        }
+      ],
+      "next_area": "THE_UNDER",
+      "gym": {
+        "trainers": [
+          {
+            "name": "Bodybuilder Piliot",
+            "class": "COLOSSEUM",
+            "sprite": "acetrainer_m.png",
+            "is_boss_battle": true,
+            "team": [
+              229,
+              215,
+              301,
+              262
+            ],
+            "levels": [
+              21,
+              22,
+              22,
+              23
+            ],
+            "rewards": {
+              "balls": 5
+            }
+          },
+          {
+            "name": "Curmudgeon Nistil",
+            "class": "COLOSSEUM",
+            "sprite": "acetrainer_m.png",
+            "is_boss_battle": true,
+            "team": [
+              200,
+              295,
+              197,
+              202
+            ],
+            "levels": [
+              21,
+              22,
+              22,
+              23
+            ],
+            "rewards": {
+              "balls": 5
+            }
+          },
+          {
+            "name": "Cooltrainer Hileon",
+            "class": "COLOSSEUM",
+            "sprite": "acetrainer_m.png",
+            "is_boss_battle": true,
+            "team": [
+              358,
+              356,
+              73,
+              313
+            ],
+            "levels": [
+              21,
+              22,
+              22,
+              23
+            ],
+            "rewards": {
+              "balls": 5
+            }
+          }
+        ],
+        "leader": {
+          "name": "Under Colosseum Champion Carben",
+          "class": "GYM_LEADER",
+          "sprite": "acetrainer_m.png",
+          "is_boss_battle": true,
+          "team": [
+            241,
+            326,
+            256,
+            211,
+            286
+          ],
+          "levels": [
+            24,
+            24,
+            25,
+            26,
+            26
+          ],
+          "badge_reward": "UNDER",
+          "rewards": {
+            "balls": 10
+          },
+          "dialogue": {
+            "intro": [
+              "Welcome to the final round of the Under Colosseum! The winner takes the Under Badge!"
+            ],
+            "player_won": [
+              "You won the Under Colosseum! Here's the Under Badge!"
+            ],
+            "player_lost": [
+              "So close! Train up and enter the next tournament."
+            ]
+          }
+        },
+        "requirements": {
+          "badges": 1,
+          "flag": "orre_dakim_mt_battle",
+          "fail_text": "The tournament isn't open to you yet. Keep following Cipher's trail!"
+        }
+      }
+    },
+    "SHADOW_PKMN_LAB": {
+      "area_type": "dungeon",
+      "route_name": "Shadow Pokemon Lab",
+      "region": "ORRE",
+      "level": 28,
+      "battle_type": "indoor",
+      "min_rounds": 0,
+      "trainer_pool": [
+        {
+          "name": "Researcher Myron",
+          "class": "RESEARCHER",
+          "sprite": "scientist.png",
+          "team": [
+            100,
+            100,
+            97,
+            334,
+            141,
+            78
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Cipher Peon Cole",
+          "class": "CIPHER_PEON",
+          "sprite": "roughneck.png",
+          "team": [
+            190,
+            162,
+            223,
+            351,
+            335,
+            31
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Cipher Peon Lare",
+          "class": "CIPHER_PEON",
+          "sprite": "roughneck.png",
+          "team": [
+            318,
+            274,
+            228,
+            198,
+            237,
+            130
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Cipher Peon Vana",
+          "class": "CIPHER_PEON",
+          "sprite": "roughneck.png",
+          "team": [
+            205,
+            41,
+            333,
+            247,
+            53,
+            214
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Researcher Odlow",
+          "class": "RESEARCHER",
+          "sprite": "scientist.png",
+          "team": [
+            81,
+            101,
+            82,
+            230,
+            310,
+            211
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Researcher Coren",
+          "class": "RESEARCHER",
+          "sprite": "scientist.png",
+          "team": [
+            81,
+            101,
+            82,
+            243,
+            199,
+            169
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Cipher Peon Lesar",
+          "class": "CIPHER_PEON",
+          "sprite": "roughneck.png",
+          "team": [
+            168,
+            111,
+            253,
+            142,
+            128,
+            121
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Researcher Dubik",
+          "class": "RESEARCHER",
+          "sprite": "scientist.png",
+          "team": [
+            101,
+            101,
+            310,
+            85,
+            121,
+            131
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        }
+      ],
       "shadow_pool": [
         {
           "id": 9364,
@@ -1273,98 +2740,93 @@
           "name": "Shadow Raikou",
           "flag": "snagged_shadow_raikou",
           "trainer": "Cipher Admin Ein"
-        },
-        {
-          "id": 9365,
-          "name": "Shadow Sunflora",
-          "flag": "snagged_shadow_sunflora",
-          "trainer": "Cipher Peon Baila"
-        },
-        {
-          "id": 9387,
-          "name": "Shadow Delibird",
-          "flag": "snagged_shadow_delibird",
-          "trainer": "Cipher Peon Arton"
-        },
-        {
-          "id": 9378,
-          "name": "Shadow Heracross",
-          "flag": "snagged_shadow_heracross",
-          "trainer": "Cipher Peon Dioge"
-        },
-        {
-          "id": 9389,
-          "name": "Shadow Skarmory",
-          "flag": "snagged_shadow_skarmory",
-          "trainer": "Snagem Head Gonzap"
-        },
-        {
-          "id": 9395,
-          "name": "Shadow Miltank",
-          "flag": "snagged_shadow_miltank",
-          "trainer": "Bodybuilder Jomas"
-        },
-        {
-          "id": 9427,
-          "name": "Shadow Absol",
-          "flag": "snagged_shadow_absol",
-          "trainer": "Rider Delan"
-        },
-        {
-          "id": 9391,
-          "name": "Shadow Houndoom",
-          "flag": "snagged_shadow_houndoom",
-          "trainer": "Cipher Peon Nella"
-        },
-        {
-          "id": 9426,
-          "name": "Shadow Tropius",
-          "flag": "snagged_shadow_tropius",
-          "trainer": "Cipher Peon Ston"
-        },
-        {
-          "id": 9431,
-          "name": "Shadow Metagross",
-          "flag": "snagged_shadow_metagross",
-          "trainer": "Cipher Nascour"
-        },
-        {
-          "id": 9399,
-          "name": "Shadow Tyranitar",
-          "flag": "snagged_shadow_tyranitar",
-          "trainer": "Cipher Head Evice"
-        },
-        {
-          "id": 9393,
-          "name": "Shadow Smeargle",
-          "flag": "snagged_shadow_smeargle",
-          "trainer": "Team Snagem Biden"
-        },
-        {
-          "id": 9381,
-          "name": "Shadow Ursaring",
-          "flag": "snagged_shadow_ursaring",
-          "trainer": "Team Snagem Agrev"
-        },
-        {
-          "id": 9377,
-          "name": "Shadow Shuckle",
-          "flag": "snagged_shadow_shuckle",
-          "trainer": "Deep King Agnol"
-        },
-        {
-          "id": 9343,
-          "name": "Shadow Snorlax",
-          "flag": "snagged_shadow_snorlax",
-          "trainer": "Cipher Admin Ardos"
         }
-      ]
+      ],
+      "route_menu": [
+        {
+          "text": "SNAG SHADOW POKEMON",
+          "action": "SNAG",
+          "color": "PURPLE",
+          "condition": [
+            "has_item:SNAG_MACHINE",
+            "shadows_left"
+          ]
+        },
+        {
+          "text": "SNAG AGAIN",
+          "action": "SNAG",
+          "repeat": true,
+          "color": "PURPLE",
+          "condition": [
+            "has_item:SNAG_MACHINE",
+            "shadows_cleared"
+          ]
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "SHADOW POKEMON LAB: EIN",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not orre_ein_lab",
+          "event": {
+            "lines": [
+              "Ein: You found my laboratory. Then you'll become my next experiment!"
+            ],
+            "flag": "orre_ein_lab",
+            "battle": {
+              "name": "Cipher Admin Ein",
+              "class": "PKMN_TRAINER",
+              "sprite": "scientist.png",
+              "is_boss_battle": true,
+              "team": [
+                171,
+                334,
+                367,
+                42
+              ],
+              "levels": [
+                29,
+                30,
+                30,
+                31
+              ],
+              "rewards": {
+                "balls": 6
+              },
+              "dialogue": {
+                "intro": [
+                  "Ein: You found my laboratory. Then you'll become my next experiment!"
+                ],
+                "player_won": [
+                  "Ein: My research... ruined!"
+                ]
+              }
+            }
+          },
+          "condition": "has_under_badge"
+        },
+        {
+          "text": "The Under",
+          "action": "EXIT",
+          "target_area": "THE_UNDER",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        }
+      ],
+      "next_area": "THE_UNDER"
     },
     "GATEON_PORT": {
       "area_type": "town",
       "route_name": "Gateon Port",
       "region": "ORRE",
-      "level": 66,
+      "level": 30,
       "has_gym": false,
       "explore_options": [
         {
@@ -1385,61 +2847,251 @@
               "Start at their lab outside town. Then the ONBS building, the Key Lair... and Citadark Isle."
             ]
           }
+        },
+        {
+          "text": "Professor Krane's Lab",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not got_krane_eevee",
+          "event": {
+            "lines": [
+              "Professor Krane: Welcome to the Pokemon HQ Lab! We're studying how to purify Shadow Pokemon.",
+              "Cipher is turning Pokemon into fighting machines. We could use a trainer like you.",
+              "Please take this Eevee. It's a good partner, and it can become many things."
+            ],
+            "gift_pokemon": 133,
+            "flag": "got_krane_eevee"
+          }
         }
       ],
       "travel_options": [
+        {
+          "text": "Phenac City",
+          "target_area": "PHENAC_CITY"
+        },
         {
           "text": "Cipher Lab",
           "target_area": "XD_CIPHER_LAB"
         },
         {
-          "text": "ONBS Building",
-          "target_area": "XD_ONBS",
-          "condition": "xd_lovrina_beaten"
+          "text": "S.S. Libra",
+          "target_area": "SS_LIBRA"
         },
         {
           "text": "Cipher Key Lair",
           "target_area": "XD_CIPHER_KEY_LAIR",
-          "condition": "xd_exol_beaten"
+          "condition": "has_orre_badge"
         },
         {
           "text": "Citadark Isle",
           "target_area": "XD_CITADARK_ISLE",
-          "condition": "xd_gorigan_beaten"
-        },
-        {
-          "text": "Phenac City",
-          "target_area": "PHENAC_CITY"
+          "condition": "beat_orre_champion"
         }
       ],
-      "next_area": "XD_CIPHER_LAB"
+      "next_area": "PHENAC_CITY"
     },
     "XD_CIPHER_LAB": {
       "area_type": "dungeon",
       "route_name": "Cipher Lab",
       "region": "ORRE",
-      "level": 66,
+      "level": 31,
       "battle_type": "indoor",
       "min_rounds": 0,
-      "trainer_pool": [],
+      "trainer_pool": [
+        {
+          "name": "Cipher Peon Resix",
+          "class": "CIPHER_PEON",
+          "sprite": "roughneck.png",
+          "team": [
+            228,
+            218,
+            322
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Cipher Peon Blusix",
+          "class": "CIPHER_PEON",
+          "sprite": "roughneck.png",
+          "team": [
+            116,
+            118,
+            363
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Cipher Peon Browsix",
+          "class": "CIPHER_PEON",
+          "sprite": "roughneck.png",
+          "team": [
+            343,
+            163
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Cipher Peon Yellosix",
+          "class": "CIPHER_PEON",
+          "sprite": "roughneck.png",
+          "team": [
+            179,
+            309,
+            170
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Cipher Peon Purpsix",
+          "class": "CIPHER_PEON",
+          "sprite": "roughneck.png",
+          "team": [
+            109,
+            88,
+            316,
+            72
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Cipher Peon Greesix",
+          "class": "CIPHER_PEON",
+          "sprite": "roughneck.png",
+          "team": [
+            43,
+            331,
+            285,
+            270,
+            204,
+            273
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Cipher Peon Corla",
+          "class": "CIPHER_PEON",
+          "sprite": "roughneck.png",
+          "team": [
+            355,
+            300
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Cipher Peon Javion",
+          "class": "CIPHER_PEON",
+          "sprite": "roughneck.png",
+          "team": [
+            84,
+            276
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        }
+      ],
       "route_menu": [
-        {"text": "SNAG SHADOW POKEMON", "action": "SNAG", "color": "PURPLE", "condition": ["has_item:SNAG_MACHINE", "shadows_left"]},
-        {"text": "BATTLE CIPHER ADMIN LOVRINA", "action": "EVENT", "color": "GOLD", "event": {"lines": ["Cipher Admin Lovrina: You found my lab? My lovely Shadow Pokemon will deal with you!"], "battle": {"name": "Cipher Admin Lovrina", "class": "CIPHER_ADMIN", "sprite": "beauty.png", "team": [282, 368, 315, 83, 334], "levels": [65, 65, 66, 67, 67], "rewards": {"balls": 12}, "dialogue": {"player_won": ["Lovrina: Ugh! Fine, the ONBS building is next. Not that it'll help you!"]}}, "flag": "xd_lovrina_beaten"}, "flag_condition": "not xd_lovrina_beaten"},
-        {"text": "Gateon Port", "action": "EXIT", "target_area": "GATEON_PORT", "condition": "can_exit", "color": "RED"}
+        {
+          "text": "SNAG SHADOW POKEMON",
+          "action": "SNAG",
+          "color": "PURPLE",
+          "condition": [
+            "has_item:SNAG_MACHINE",
+            "shadows_left"
+          ]
+        },
+        {
+          "text": "SNAG AGAIN",
+          "action": "SNAG",
+          "repeat": true,
+          "color": "PURPLE",
+          "condition": [
+            "has_item:SNAG_MACHINE",
+            "shadows_cleared"
+          ]
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE CIPHER ADMIN LOVRINA",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "Cipher Admin Lovrina: You found my lab? My lovely Shadow Pokemon will deal with you!"
+            ],
+            "battle": {
+              "name": "Cipher Admin Lovrina",
+              "class": "CIPHER_ADMIN",
+              "sprite": "beauty.png",
+              "team": [
+                282,
+                368,
+                315,
+                83,
+                334
+              ],
+              "levels": [
+                32,
+                32,
+                33,
+                34,
+                34
+              ],
+              "rewards": {
+                "balls": 12
+              },
+              "dialogue": {
+                "player_won": [
+                  "Lovrina: Ugh! Fine, the ONBS building is next. Not that it'll help you!"
+                ]
+              }
+            },
+            "flag": "xd_lovrina_beaten"
+          },
+          "flag_condition": "not xd_lovrina_beaten"
+        },
+        {
+          "text": "Gateon Port",
+          "action": "EXIT",
+          "target_area": "GATEON_PORT",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        }
       ],
       "next_area": "GATEON_PORT",
       "shadow_pool": [
         {
-          "id": 9353,
-          "name": "Shadow Ledyba",
-          "flag": "snagged_shadow_ledyba",
-          "trainer": "Casual Guy Cyle"
+          "id": 9390,
+          "name": "Shadow Houndour",
+          "flag": "snagged_shadow_houndour",
+          "trainer": "Cipher Peon Resix"
         },
         {
-          "id": 9401,
-          "name": "Shadow Poochyena",
-          "flag": "snagged_shadow_poochyena",
-          "trainer": "Bodybuilder Kilen"
+          "id": 9360,
+          "name": "Shadow Mareep",
+          "flag": "snagged_shadow_mareep",
+          "trainer": "Cipher Peon Yellosix"
         },
         {
           "id": 9423,
@@ -1494,18 +3146,50 @@
           "name": "Shadow Delcatty",
           "flag": "snagged_shadow_delcatty",
           "trainer": "Cipher Admin Lovrina"
+        }
+      ]
+    },
+    "SS_LIBRA": {
+      "area_type": "dungeon",
+      "route_name": "S.S. Libra",
+      "region": "ORRE",
+      "level": 32,
+      "battle_type": "indoor",
+      "min_rounds": 0,
+      "trainer_pool": [
+        {
+          "name": "Cipher Peon Smarton",
+          "class": "CIPHER_PEON",
+          "sprite": "roughneck.png",
+          "team": [
+            367,
+            331,
+            216,
+            109
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        }
+      ],
+      "shadow_pool": [
+        {
+          "id": 9380,
+          "name": "Shadow Teddiursa",
+          "flag": "snagged_shadow_teddiursa",
+          "trainer": "Cipher Peon Naps"
         },
         {
-          "id": 9325,
-          "name": "Shadow Voltorb",
-          "flag": "snagged_shadow_voltorb",
-          "trainer": "Wanderer Miror B."
+          "id": 9353,
+          "name": "Shadow Ledyba",
+          "flag": "snagged_shadow_ledyba",
+          "trainer": "Casual Guy Cyle"
         },
         {
-          "id": 9407,
-          "name": "Shadow Nosepass",
-          "flag": "snagged_shadow_nosepass",
-          "trainer": "Wanderer Miror B."
+          "id": 9401,
+          "name": "Shadow Poochyena",
+          "flag": "snagged_shadow_poochyena",
+          "trainer": "Bodybuilder Kilen"
         },
         {
           "id": 9347,
@@ -1513,16 +3197,7 @@
           "flag": "snagged_shadow_dragonite",
           "trainer": "Wanderer Miror B."
         }
-      ]
-    },
-    "XD_ONBS": {
-      "area_type": "dungeon",
-      "route_name": "ONBS Building",
-      "region": "ORRE",
-      "level": 68,
-      "battle_type": "indoor",
-      "min_rounds": 0,
-      "trainer_pool": [],
+      ],
       "route_menu": [
         {
           "text": "SNAG SHADOW POKEMON",
@@ -1532,6 +3207,176 @@
             "has_item:SNAG_MACHINE",
             "shadows_left"
           ]
+        },
+        {
+          "text": "SNAG AGAIN",
+          "action": "SNAG",
+          "repeat": true,
+          "color": "PURPLE",
+          "condition": [
+            "has_item:SNAG_MACHINE",
+            "shadows_cleared"
+          ]
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Gateon Port",
+          "action": "EXIT",
+          "target_area": "GATEON_PORT",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        }
+      ],
+      "next_area": "GATEON_PORT"
+    },
+    "XD_ONBS": {
+      "area_type": "dungeon",
+      "route_name": "ONBS Building",
+      "region": "ORRE",
+      "level": 33,
+      "battle_type": "indoor",
+      "min_rounds": 0,
+      "trainer_pool": [
+        {
+          "name": "Cipher Peon Rett",
+          "class": "CIPHER_PEON",
+          "sprite": "roughneck.png",
+          "team": [
+            318,
+            339
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Cipher Peon Mocor",
+          "class": "CIPHER_PEON",
+          "sprite": "roughneck.png",
+          "team": [
+            341,
+            309,
+            88
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Cipher Peon Torkin",
+          "class": "CIPHER_PEON",
+          "sprite": "roughneck.png",
+          "team": [
+            352,
+            283,
+            296
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Cipher Peon Elox",
+          "class": "CIPHER_PEON",
+          "sprite": "roughneck.png",
+          "team": [
+            84,
+            72,
+            358
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Cipher Peon Rixor",
+          "class": "CIPHER_PEON",
+          "sprite": "roughneck.png",
+          "team": [
+            211,
+            111,
+            170,
+            109
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Cipher Peon Mesin",
+          "class": "CIPHER_PEON",
+          "sprite": "roughneck.png",
+          "team": [
+            167,
+            267,
+            269,
+            37
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Cipher Peon Dilly",
+          "class": "CIPHER_PEON",
+          "sprite": "roughneck.png",
+          "team": [
+            316,
+            179,
+            370,
+            182
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Cipher Peon Edlos",
+          "class": "CIPHER_PEON",
+          "sprite": "roughneck.png",
+          "team": [
+            162,
+            263,
+            176,
+            225
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "SNAG SHADOW POKEMON",
+          "action": "SNAG",
+          "color": "PURPLE",
+          "condition": [
+            "has_item:SNAG_MACHINE",
+            "shadows_left"
+          ]
+        },
+        {
+          "text": "SNAG AGAIN",
+          "action": "SNAG",
+          "repeat": true,
+          "color": "PURPLE",
+          "condition": [
+            "has_item:SNAG_MACHINE",
+            "shadows_cleared"
+          ]
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
         },
         {
           "text": "BATTLE CIPHER CMDR EXOL",
@@ -1551,9 +3396,9 @@
                 330
               ],
               "levels": [
-                67,
-                68,
-                69
+                34,
+                35,
+                36
               ],
               "rewards": {
                 "balls": 12
@@ -1569,14 +3414,16 @@
           "flag_condition": "not xd_exol_beaten"
         },
         {
-          "text": "Gateon Port",
+          "text": "Pyrite Town",
           "action": "EXIT",
-          "target_area": "GATEON_PORT",
-          "condition": "can_exit",
+          "target_area": "PYRITE_TOWN",
+          "condition": [
+            "can_exit"
+          ],
           "color": "RED"
         }
       ],
-      "next_area": "GATEON_PORT",
+      "next_area": "PYRITE_TOWN",
       "shadow_pool": [
         {
           "id": 9307,
@@ -1601,7 +3448,127 @@
           "name": "Shadow Mawile",
           "flag": "snagged_shadow_mawile",
           "trainer": "Cipher Cmdr Exol"
+        }
+      ]
+    },
+    "PRESTIGE_PRECEPT_CENTER": {
+      "area_type": "dungeon",
+      "route_name": "Prestige Precept Center",
+      "region": "ORRE",
+      "level": 34,
+      "battle_type": "indoor",
+      "min_rounds": 0,
+      "trainer_pool": [
+        {
+          "name": "Cipher Peon Exinn",
+          "class": "CIPHER_PEON",
+          "sprite": "roughneck.png",
+          "team": [
+            336,
+            361,
+            42,
+            262
+          ],
+          "rewards": {
+            "balls": 3
+          }
         },
+        {
+          "name": "Cipher Peon Gonrag",
+          "class": "CIPHER_PEON",
+          "sprite": "roughneck.png",
+          "team": [
+            198,
+            204,
+            168
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Cipher Peon Ertlig",
+          "class": "CIPHER_PEON",
+          "sprite": "roughneck.png",
+          "team": [
+            261,
+            81,
+            120,
+            359
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Cipher Peon Forgs",
+          "class": "CIPHER_PEON",
+          "sprite": "roughneck.png",
+          "team": [
+            355,
+            341,
+            211
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Cipher Peon Ezoor",
+          "class": "CIPHER_PEON",
+          "sprite": "roughneck.png",
+          "team": [
+            353,
+            216,
+            222
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Cipher Peon Pellim",
+          "class": "CIPHER_PEON",
+          "sprite": "roughneck.png",
+          "team": [
+            185,
+            366
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Cipher Peon Kapen",
+          "class": "CIPHER_PEON",
+          "sprite": "roughneck.png",
+          "team": [
+            313,
+            325,
+            314,
+            336,
+            320
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Cipher Peon Fenton",
+          "class": "CIPHER_PEON",
+          "sprite": "roughneck.png",
+          "team": [
+            118,
+            318,
+            109,
+            262
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        }
+      ],
+      "shadow_pool": [
         {
           "id": 9428,
           "name": "Shadow Snorunt",
@@ -1662,20 +3629,617 @@
           "flag": "snagged_shadow_lunatone",
           "trainer": "Cipher Admin Snattle"
         }
-      ]
+      ],
+      "route_menu": [
+        {
+          "text": "SNAG SHADOW POKEMON",
+          "action": "SNAG",
+          "color": "PURPLE",
+          "condition": [
+            "has_item:SNAG_MACHINE",
+            "shadows_left"
+          ]
+        },
+        {
+          "text": "SNAG AGAIN",
+          "action": "SNAG",
+          "repeat": true,
+          "color": "PURPLE",
+          "condition": [
+            "has_item:SNAG_MACHINE",
+            "shadows_cleared"
+          ]
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Phenac City",
+          "action": "EXIT",
+          "target_area": "PHENAC_CITY",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        }
+      ],
+      "next_area": "PHENAC_CITY"
+    },
+    "SNAGEM_HIDEOUT": {
+      "area_type": "dungeon",
+      "route_name": "Snagem Hideout",
+      "region": "ORRE",
+      "level": 39,
+      "battle_type": "indoor",
+      "min_rounds": 0,
+      "trainer_pool": [
+        {
+          "name": "Cipher Peon Nore",
+          "class": "CIPHER_PEON",
+          "sprite": "roughneck.png",
+          "team": [
+            267,
+            205,
+            291,
+            284
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Cipher Peon Kloak",
+          "class": "CIPHER_PEON",
+          "sprite": "roughneck.png",
+          "team": [
+            166,
+            313,
+            314,
+            367,
+            171,
+            350
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Cipher Peon Baila",
+          "class": "CIPHER_PEON",
+          "sprite": "roughneck.png",
+          "team": [
+            315,
+            45,
+            189
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Cipher Peon Arton",
+          "class": "CIPHER_PEON",
+          "sprite": "roughneck.png",
+          "team": [
+            225,
+            221,
+            362
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Cipher Peon Dioge",
+          "class": "CIPHER_PEON",
+          "sprite": "roughneck.png",
+          "team": [
+            214,
+            284,
+            205
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Team Snagem Niver",
+          "class": "TEAM_SNAGEM",
+          "sprite": "roughneck.png",
+          "team": [
+            335,
+            253,
+            288,
+            111
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Team Snagem Fuston",
+          "class": "TEAM_SNAGEM",
+          "sprite": "roughneck.png",
+          "team": [
+            42,
+            267,
+            225,
+            277
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Cipher Peon Verde",
+          "class": "CIPHER_PEON",
+          "sprite": "roughneck.png",
+          "team": [
+            153,
+            89,
+            326,
+            319
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        }
+      ],
+      "shadow_pool": [
+        {
+          "id": 9365,
+          "name": "Shadow Sunflora",
+          "flag": "snagged_shadow_sunflora",
+          "trainer": "Cipher Peon Baila"
+        },
+        {
+          "id": 9387,
+          "name": "Shadow Delibird",
+          "flag": "snagged_shadow_delibird",
+          "trainer": "Cipher Peon Arton"
+        },
+        {
+          "id": 9378,
+          "name": "Shadow Heracross",
+          "flag": "snagged_shadow_heracross",
+          "trainer": "Cipher Peon Dioge"
+        },
+        {
+          "id": 9389,
+          "name": "Shadow Skarmory",
+          "flag": "snagged_shadow_skarmory",
+          "trainer": "Snagem Head Gonzap"
+        },
+        {
+          "id": 9393,
+          "name": "Shadow Smeargle",
+          "flag": "snagged_shadow_smeargle",
+          "trainer": "Team Snagem Biden"
+        },
+        {
+          "id": 9381,
+          "name": "Shadow Ursaring",
+          "flag": "snagged_shadow_ursaring",
+          "trainer": "Team Snagem Agrev"
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "SNAG SHADOW POKEMON",
+          "action": "SNAG",
+          "color": "PURPLE",
+          "condition": [
+            "has_item:SNAG_MACHINE",
+            "shadows_left"
+          ]
+        },
+        {
+          "text": "SNAG AGAIN",
+          "action": "SNAG",
+          "repeat": true,
+          "color": "PURPLE",
+          "condition": [
+            "has_item:SNAG_MACHINE",
+            "shadows_cleared"
+          ]
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "SNAGEM HIDEOUT: GONZAP",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not beat_gonzap",
+          "event": {
+            "lines": [
+              "Gonzap: You walked off with our Snag Machine. Team Snagem wants it back!"
+            ],
+            "flag": "beat_gonzap",
+            "battle": {
+              "name": "Snagem Head Gonzap",
+              "class": "SNAGEM",
+              "sprite": "roughneck.png",
+              "is_boss_battle": true,
+              "team": [
+                227,
+                342,
+                348,
+                68,
+                286,
+                210
+              ],
+              "levels": [
+                40,
+                40,
+                41,
+                41,
+                42,
+                42
+              ],
+              "rewards": {
+                "balls": 12
+              },
+              "dialogue": {
+                "intro": [
+                  "Gonzap: You walked off with our Snag Machine. Team Snagem wants it back!"
+                ],
+                "player_won": [
+                  "Gonzap: Ha! Fine, keep it. You've earned it."
+                ]
+              }
+            }
+          }
+        },
+        {
+          "text": "Desert Trail",
+          "action": "EXIT",
+          "target_area": "ORRE_DESERT",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        }
+      ],
+      "next_area": "ORRE_DESERT"
+    },
+    "ORRE_COLOSSEUM": {
+      "area_type": "town",
+      "route_name": "Orre Colosseum",
+      "region": "ORRE",
+      "level": 43,
+      "has_gym": true,
+      "explore_options": [
+        {
+          "text": "Pokemon Center",
+          "action": "HEAL"
+        },
+        {
+          "text": "Poke Mart",
+          "action": "SHOP"
+        },
+        {
+          "text": "Orre Colosseum",
+          "action": "GYM",
+          "color": "GOLD"
+        }
+      ],
+      "travel_options": [
+        {
+          "text": "Desert Trail",
+          "target_area": "ORRE_DESERT"
+        }
+      ],
+      "next_area": "ORRE_DESERT",
+      "gym": {
+        "trainers": [
+          {
+            "name": "Cooltrainer Botan",
+            "class": "COLOSSEUM",
+            "sprite": "acetrainer_m.png",
+            "is_boss_battle": true,
+            "team": [
+              191,
+              187
+            ],
+            "levels": [
+              41,
+              43
+            ],
+            "rewards": {
+              "balls": 5
+            }
+          },
+          {
+            "name": "Cooltrainer Liqui",
+            "class": "COLOSSEUM",
+            "sprite": "acetrainer_m.png",
+            "is_boss_battle": true,
+            "team": [
+              183,
+              283,
+              175
+            ],
+            "levels": [
+              41,
+              42,
+              43
+            ],
+            "rewards": {
+              "balls": 5
+            }
+          },
+          {
+            "name": "Rich Boy Dugo",
+            "class": "COLOSSEUM",
+            "sprite": "acetrainer_m.png",
+            "is_boss_battle": true,
+            "team": [
+              328,
+              220,
+              41
+            ],
+            "levels": [
+              41,
+              42,
+              43
+            ],
+            "rewards": {
+              "balls": 5
+            }
+          }
+        ],
+        "leader": {
+          "name": "Pree Champion Justy",
+          "class": "GYM_LEADER",
+          "sprite": "acetrainer_m.png",
+          "is_boss_battle": true,
+          "team": [
+            27,
+            331,
+            207,
+            192,
+            184,
+            299
+          ],
+          "levels": [
+            44,
+            44,
+            45,
+            45,
+            46,
+            46
+          ],
+          "badge_reward": "ORRE",
+          "rewards": {
+            "balls": 10
+          },
+          "dialogue": {
+            "intro": [
+              "Welcome to the final round of the Orre Colosseum! The winner takes the Orre Badge!"
+            ],
+            "player_won": [
+              "You won the Orre Colosseum! Here's the Orre Badge!"
+            ],
+            "player_lost": [
+              "So close! Train up and enter the next tournament."
+            ]
+          }
+        },
+        "requirements": {
+          "badges": 3,
+          "flag": "beat_gonzap",
+          "fail_text": "The tournament isn't open to you yet. Keep following Cipher's trail!"
+        }
+      }
     },
     "XD_CIPHER_KEY_LAIR": {
       "area_type": "dungeon",
       "route_name": "Cipher Key Lair",
       "region": "ORRE",
-      "level": 70,
+      "level": 48,
       "battle_type": "indoor",
       "min_rounds": 0,
-      "trainer_pool": [],
+      "trainer_pool": [
+        {
+          "name": "Thug Zook",
+          "class": "THUG",
+          "sprite": "roughneck.png",
+          "team": [
+            335,
+            84,
+            318,
+            336,
+            369
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Cipher Peon Grezle",
+          "class": "CIPHER_PEON",
+          "sprite": "roughneck.png",
+          "team": [
+            312,
+            267,
+            166,
+            314
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Cipher Peon Humah",
+          "class": "CIPHER_PEON",
+          "sprite": "roughneck.png",
+          "team": [
+            336,
+            198,
+            66,
+            43
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Cipher Peon Ibsol",
+          "class": "CIPHER_PEON",
+          "sprite": "roughneck.png",
+          "team": [
+            311,
+            269,
+            178,
+            313
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Cipher Peon Kollo",
+          "class": "CIPHER_PEON",
+          "sprite": "roughneck.png",
+          "team": [
+            366,
+            224,
+            171,
+            369
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Cipher Peon Gorog",
+          "class": "CIPHER_PEON",
+          "sprite": "roughneck.png",
+          "team": [
+            90,
+            111,
+            317,
+            42,
+            319
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Cipher Peon Lok",
+          "class": "CIPHER_PEON",
+          "sprite": "roughneck.png",
+          "team": [
+            15,
+            162,
+            176,
+            17
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Cipher Peon Kleto",
+          "class": "CIPHER_PEON",
+          "sprite": "roughneck.png",
+          "team": [
+            359,
+            235,
+            232,
+            181,
+            73
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        }
+      ],
       "route_menu": [
-        {"text": "SNAG SHADOW POKEMON", "action": "SNAG", "color": "PURPLE", "condition": ["has_item:SNAG_MACHINE", "shadows_left"]},
-        {"text": "BATTLE CIPHER ADMIN GORIGAN", "action": "EVENT", "color": "GOLD", "event": {"lines": ["Cipher Admin Gorigan: Here's where Cipher keeps its keys. You'll go no further!"], "battle": {"name": "Cipher Admin Gorigan", "class": "CIPHER_ADMIN", "sprite": "blackbelt.png", "team": [199, 217, 306, 365, 62, 122], "levels": [69, 69, 69, 70, 70, 70], "rewards": {"balls": 15}, "dialogue": {"player_won": ["Gorigan: The key... to Citadark Isle. Take it, then. Greevil is waiting."]}}, "flag": "xd_gorigan_beaten"}, "flag_condition": "not xd_gorigan_beaten"},
-        {"text": "Gateon Port", "action": "EXIT", "target_area": "GATEON_PORT", "condition": "can_exit", "color": "RED"}
+        {
+          "text": "SNAG SHADOW POKEMON",
+          "action": "SNAG",
+          "color": "PURPLE",
+          "condition": [
+            "has_item:SNAG_MACHINE",
+            "shadows_left"
+          ]
+        },
+        {
+          "text": "SNAG AGAIN",
+          "action": "SNAG",
+          "repeat": true,
+          "color": "PURPLE",
+          "condition": [
+            "has_item:SNAG_MACHINE",
+            "shadows_cleared"
+          ]
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE CIPHER ADMIN GORIGAN",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "Cipher Admin Gorigan: Here's where Cipher keeps its keys. You'll go no further!"
+            ],
+            "battle": {
+              "name": "Cipher Admin Gorigan",
+              "class": "CIPHER_ADMIN",
+              "sprite": "blackbelt.png",
+              "team": [
+                199,
+                217,
+                306,
+                365,
+                62,
+                122
+              ],
+              "levels": [
+                49,
+                49,
+                50,
+                50,
+                51,
+                51
+              ],
+              "rewards": {
+                "balls": 15
+              },
+              "dialogue": {
+                "player_won": [
+                  "Gorigan: The key... to Citadark Isle. Take it, then. Greevil is waiting."
+                ]
+              }
+            },
+            "flag": "xd_gorigan_beaten"
+          },
+          "flag_condition": "not xd_gorigan_beaten",
+          "condition": "has_orre_badge"
+        },
+        {
+          "text": "Gateon Port",
+          "action": "EXIT",
+          "target_area": "GATEON_PORT",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        }
       ],
       "next_area": "GATEON_PORT",
       "shadow_pool": [
@@ -1765,24 +4329,760 @@
         }
       ]
     },
+    "REALGAM_TOWER": {
+      "area_type": "town",
+      "route_name": "Realgam Tower",
+      "region": "ORRE",
+      "level": 52,
+      "has_gym": true,
+      "explore_options": [
+        {
+          "text": "Pokemon Center",
+          "action": "HEAL"
+        },
+        {
+          "text": "Poke Mart",
+          "action": "SHOP"
+        },
+        {
+          "text": "Realgam Tower: Cipher's Colosseum",
+          "action": "GYM",
+          "color": "GOLD"
+        }
+      ],
+      "travel_options": [
+        {
+          "text": "Phenac City",
+          "target_area": "PHENAC_CITY"
+        },
+        {
+          "text": "Realgam Tower Dome",
+          "target_area": "CIPHER_COMMAND"
+        },
+        {
+          "text": "Deep Colosseum",
+          "target_area": "DEEP_COLOSSEUM",
+          "condition": "beat_orre_champion"
+        }
+      ],
+      "next_area": "PHENAC_CITY",
+      "gym": {
+        "trainers": [
+          {
+            "name": "Cipher Admin Miror B.",
+            "class": "ELITE_FOUR",
+            "sprite": "guitarist.png",
+            "is_boss_battle": true,
+            "team": [
+              348,
+              272,
+              272,
+              55,
+              294
+            ],
+            "levels": [
+              53,
+              53,
+              54,
+              55,
+              55
+            ],
+            "rewards": {
+              "balls": 10
+            }
+          },
+          {
+            "name": "Cipher Admin Dakim",
+            "class": "ELITE_FOUR",
+            "sprite": "blackbelt.png",
+            "is_boss_battle": true,
+            "team": [
+              229,
+              330,
+              205,
+              340,
+              344
+            ],
+            "levels": [
+              54,
+              54,
+              55,
+              56,
+              56
+            ],
+            "rewards": {
+              "balls": 10
+            }
+          },
+          {
+            "name": "Cipher Admin Venus",
+            "class": "ELITE_FOUR",
+            "sprite": "beauty.png",
+            "is_boss_battle": true,
+            "team": [
+              350,
+              182,
+              26,
+              40,
+              200
+            ],
+            "levels": [
+              55,
+              55,
+              56,
+              57,
+              57
+            ],
+            "rewards": {
+              "balls": 10
+            }
+          },
+          {
+            "name": "Cipher Admin Ein",
+            "class": "ELITE_FOUR",
+            "sprite": "scientist.png",
+            "is_boss_battle": true,
+            "team": [
+              310,
+              121,
+              112,
+              279,
+              169
+            ],
+            "levels": [
+              56,
+              56,
+              57,
+              58,
+              58
+            ],
+            "rewards": {
+              "balls": 10
+            }
+          },
+          {
+            "name": "Cipher Nascour",
+            "class": "ELITE_FOUR",
+            "sprite": "gentleman.png",
+            "is_boss_battle": true,
+            "team": [
+              65,
+              282,
+              178,
+              356,
+              365,
+              257
+            ],
+            "levels": [
+              57,
+              57,
+              58,
+              58,
+              59,
+              59
+            ],
+            "rewards": {
+              "balls": 10
+            }
+          }
+        ],
+        "leader": {
+          "name": "Cipher Head Evice",
+          "class": "CHAMPION",
+          "sprite": "gentleman.png",
+          "is_boss_battle": true,
+          "team": [
+            306,
+            373,
+            68,
+            212,
+            289,
+            199
+          ],
+          "levels": [
+            58,
+            58,
+            59,
+            59,
+            60,
+            60
+          ],
+          "rewards": {
+            "balls": 25,
+            "RARE_CANDY": 5
+          },
+          "victory_flag": "beat_orre_champion",
+          "dialogue": {
+            "intro": [
+              "Evice: So you're the meddler. Realgam Tower is mine, and so is Orre!"
+            ],
+            "player_won": [
+              "Evice: Impossible... Cipher is finished.",
+              "Rui: You did it! Every Shadow Pokemon can be saved now!"
+            ],
+            "player_lost": [
+              "Evice: Cipher cannot be beaten! Leave my tower!"
+            ]
+          }
+        },
+        "requirements": {
+          "badges": 4,
+          "flag": "xd_gorigan_beaten",
+          "fail_text": "Realgam Tower's doors are sealed. Win all four tournaments first!"
+        }
+      }
+    },
+    "CIPHER_COMMAND": {
+      "area_type": "dungeon",
+      "route_name": "Realgam Tower Dome",
+      "region": "ORRE",
+      "level": 54,
+      "battle_type": "indoor",
+      "min_rounds": 0,
+      "trainer_pool": [
+        {
+          "name": "Cipher Peon Bopen",
+          "class": "CIPHER_PEON",
+          "sprite": "roughneck.png",
+          "team": [
+            88,
+            269,
+            336
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Cipher Peon Baila",
+          "class": "CIPHER_PEON",
+          "sprite": "roughneck.png",
+          "team": [
+            192,
+            44,
+            189
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Cipher Peon Arton",
+          "class": "CIPHER_PEON",
+          "sprite": "roughneck.png",
+          "team": [
+            225,
+            221,
+            362
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Cipher Peon Dioge",
+          "class": "CIPHER_PEON",
+          "sprite": "roughneck.png",
+          "team": [
+            284,
+            168,
+            214
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Bandana Guy Klest",
+          "class": "BANDANA_GUY",
+          "sprite": "roughneck.png",
+          "team": [
+            274,
+            75,
+            297,
+            271
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Hunter Aline",
+          "class": "HUNTER",
+          "sprite": "hiker.png",
+          "team": [
+            303,
+            375,
+            305
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "St.Performer Luper",
+          "class": "STPERFORMER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            224,
+            211,
+            117,
+            160
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Rider Kevel",
+          "class": "RIDER",
+          "sprite": "biker.png",
+          "team": [
+            28,
+            195,
+            232
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "SNAG SHADOW POKEMON",
+          "action": "SNAG",
+          "color": "PURPLE",
+          "condition": [
+            "has_item:SNAG_MACHINE",
+            "shadows_left"
+          ]
+        },
+        {
+          "text": "SNAG AGAIN",
+          "action": "SNAG",
+          "repeat": true,
+          "color": "PURPLE",
+          "condition": [
+            "has_item:SNAG_MACHINE",
+            "shadows_cleared"
+          ]
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "READ CIPHER'S FILES",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "The files list the Shadow Pokemon Cipher made here.",
+              "One note says: \"A wishing star fell near Agate's Relic Stone. Investigate.\"",
+              "Another: \"Project XD: ship the new Shadow Pokemon through Gateon Port.\""
+            ]
+          }
+        },
+        {
+          "text": "Realgam Tower",
+          "action": "EXIT",
+          "target_area": "REALGAM_TOWER",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        }
+      ],
+      "next_area": "REALGAM_TOWER",
+      "shadow_pool": [
+        {
+          "id": 9395,
+          "name": "Shadow Miltank",
+          "flag": "snagged_shadow_miltank",
+          "trainer": "Bodybuilder Jomas"
+        },
+        {
+          "id": 9427,
+          "name": "Shadow Absol",
+          "flag": "snagged_shadow_absol",
+          "trainer": "Rider Delan"
+        },
+        {
+          "id": 9391,
+          "name": "Shadow Houndoom",
+          "flag": "snagged_shadow_houndoom",
+          "trainer": "Cipher Peon Nella"
+        },
+        {
+          "id": 9426,
+          "name": "Shadow Tropius",
+          "flag": "snagged_shadow_tropius",
+          "trainer": "Cipher Peon Ston"
+        },
+        {
+          "id": 9431,
+          "name": "Shadow Metagross",
+          "flag": "snagged_shadow_metagross",
+          "trainer": "Cipher Nascour"
+        },
+        {
+          "id": 9399,
+          "name": "Shadow Tyranitar",
+          "flag": "snagged_shadow_tyranitar",
+          "trainer": "Cipher Head Evice"
+        }
+      ]
+    },
     "XD_CITADARK_ISLE": {
       "area_type": "wild_route",
       "route_name": "Citadark Isle",
       "region": "ORRE",
-      "level": 72,
+      "level": 65,
       "battle_type": "field",
-      "min_rounds": 0,
-      "trainer_pool": [],
+      "min_rounds": 1,
+      "trainer_pool": [
+        {
+          "name": "Navigator Abson",
+          "class": "NAVIGATOR",
+          "sprite": "sailor.png",
+          "team": [
+            342,
+            279,
+            226,
+            55,
+            302
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Cipher Peon Kleef",
+          "class": "CIPHER_PEON",
+          "sprite": "roughneck.png",
+          "team": [
+            213,
+            242,
+            110
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Cipher Peon Haben",
+          "class": "CIPHER_PEON",
+          "sprite": "roughneck.png",
+          "team": [
+            284,
+            206,
+            315,
+            327
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Chaser Furgy",
+          "class": "CHASER",
+          "sprite": "roughneck.png",
+          "team": [
+            178,
+            85,
+            340,
+            20
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Sailor Golos",
+          "class": "SAILOR",
+          "sprite": "sailor.png",
+          "team": [
+            304,
+            222,
+            247
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Hunter Jetsal",
+          "class": "HUNTER",
+          "sprite": "hiker.png",
+          "team": [
+            215,
+            203,
+            42,
+            119
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Cipher Peon Bastil",
+          "class": "CIPHER_PEON",
+          "sprite": "roughneck.png",
+          "team": [
+            169,
+            336,
+            358,
+            284
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Cipher Peon Litnar",
+          "class": "CIPHER_PEON",
+          "sprite": "roughneck.png",
+          "team": [
+            101,
+            200,
+            344,
+            115,
+            354
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        }
+      ],
       "route_menu": [
-        {"text": "SNAG SHADOW POKEMON", "action": "SNAG", "color": "PURPLE", "condition": ["has_item:SNAG_MACHINE", "shadows_left"]},
-        {"text": "BATTLE CIPHER ADMIN SNATTLE", "action": "EVENT", "color": "GOLD", "flag_condition": "not xd_snattle_beaten", "event": {"lines": ["Snattle: I was Phenac's mayor once. Now I serve Cipher, and you'll go no further!"], "flag": "xd_snattle_beaten", "battle": {"name": "Cipher Admin Snattle", "class": "CIPHER_ADMIN", "sprite": "gentleman.png", "team": [375, 195, 212, 338, 351, 121], "levels": [70, 70, 71, 71, 71, 72], "rewards": {"balls": 12}, "dialogue": {"player_won": ["Snattle: ...Father, I'm sorry."]}}}},
-        {"text": "BATTLE CIPHER ADMIN ARDOS", "action": "EVENT", "color": "GOLD", "flag_condition": "not xd_ardos_beaten", "event": {"lines": ["Ardos: Greevil is our father. I will not let you reach him."], "flag": "xd_ardos_beaten", "battle": {"name": "Cipher Admin Ardos", "class": "CIPHER_ADMIN", "sprite": "gentleman.png", "team": [277, 65, 230, 214, 125, 286], "levels": [70, 70, 71, 71, 71, 72], "rewards": {"balls": 12}, "dialogue": {"player_won": ["Ardos: ...Father, I'm sorry."]}}}},
-        {"text": "BATTLE CIPHER ADMIN ELDES", "action": "EVENT", "color": "GOLD", "flag_condition": "not xd_eldes_beaten", "event": {"lines": ["Eldes: Brother Ardos has fallen? Then I will stop you myself."], "flag": "xd_eldes_beaten", "battle": {"name": "Cipher Admin Eldes", "class": "CIPHER_ADMIN", "sprite": "gentleman.png", "team": [291, 310, 373, 330, 105, 131], "levels": [70, 70, 71, 71, 71, 72], "rewards": {"balls": 12}, "dialogue": {"player_won": ["Eldes: ...Father, I'm sorry."]}}}},
-        {"text": "BATTLE GRAND MASTER GREEVIL", "action": "EVENT", "color": "GOLD", "event": {"lines": ["Grand Master Greevil: So you crossed the sea to my island. Cipher will rule Orre!"], "battle": {"name": "Grand Master Greevil", "class": "CIPHER_BOSS", "sprite": "gentleman.png", "team": [310, 277, 121, 210, 334, 142], "levels": [71, 71, 72, 72, 73, 73], "rewards": {"balls": 25}, "dialogue": {"player_won": ["Greevil: My Shadow Pokemon... my perfect plan... Cipher is finished!"]}}, "flag": "xd_greevil_beaten", "requires": ["xd_snattle_beaten", "xd_ardos_beaten", "xd_eldes_beaten"], "fail": ["Greevil's admins guard the way. Beat Snattle, Ardos and Eldes first."]}, "flag_condition": "not xd_greevil_beaten", "condition": ["xd_snattle_beaten", "xd_ardos_beaten", "xd_eldes_beaten"]},
-        {"text": "Gateon Port", "action": "EXIT", "target_area": "GATEON_PORT", "condition": "can_exit", "color": "RED"}
+        {
+          "text": "SNAG SHADOW POKEMON",
+          "action": "SNAG",
+          "color": "PURPLE",
+          "condition": [
+            "has_item:SNAG_MACHINE",
+            "shadows_left"
+          ]
+        },
+        {
+          "text": "SNAG AGAIN",
+          "action": "SNAG",
+          "repeat": true,
+          "color": "PURPLE",
+          "condition": [
+            "has_item:SNAG_MACHINE",
+            "shadows_cleared"
+          ]
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE CIPHER ADMIN SNATTLE",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not xd_snattle_beaten",
+          "event": {
+            "lines": [
+              "Snattle: I was Phenac's mayor once. Now I serve Cipher, and you'll go no further!"
+            ],
+            "flag": "xd_snattle_beaten",
+            "battle": {
+              "name": "Cipher Admin Snattle",
+              "class": "CIPHER_ADMIN",
+              "sprite": "gentleman.png",
+              "team": [
+                375,
+                195,
+                212,
+                338,
+                351,
+                121
+              ],
+              "levels": [
+                70,
+                70,
+                71,
+                71,
+                71,
+                72
+              ],
+              "rewards": {
+                "balls": 12
+              },
+              "dialogue": {
+                "player_won": [
+                  "Snattle: ...Father, I'm sorry."
+                ]
+              }
+            }
+          }
+        },
+        {
+          "text": "BATTLE CIPHER ADMIN ARDOS",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not xd_ardos_beaten",
+          "event": {
+            "lines": [
+              "Ardos: Greevil is our father. I will not let you reach him."
+            ],
+            "flag": "xd_ardos_beaten",
+            "battle": {
+              "name": "Cipher Admin Ardos",
+              "class": "CIPHER_ADMIN",
+              "sprite": "gentleman.png",
+              "team": [
+                277,
+                65,
+                230,
+                214,
+                125,
+                286
+              ],
+              "levels": [
+                70,
+                70,
+                71,
+                71,
+                71,
+                72
+              ],
+              "rewards": {
+                "balls": 12
+              },
+              "dialogue": {
+                "player_won": [
+                  "Ardos: ...Father, I'm sorry."
+                ]
+              }
+            }
+          }
+        },
+        {
+          "text": "BATTLE CIPHER ADMIN ELDES",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not xd_eldes_beaten",
+          "event": {
+            "lines": [
+              "Eldes: Brother Ardos has fallen? Then I will stop you myself."
+            ],
+            "flag": "xd_eldes_beaten",
+            "battle": {
+              "name": "Cipher Admin Eldes",
+              "class": "CIPHER_ADMIN",
+              "sprite": "gentleman.png",
+              "team": [
+                291,
+                310,
+                373,
+                330,
+                105,
+                131
+              ],
+              "levels": [
+                70,
+                70,
+                71,
+                71,
+                71,
+                72
+              ],
+              "rewards": {
+                "balls": 12
+              },
+              "dialogue": {
+                "player_won": [
+                  "Eldes: ...Father, I'm sorry."
+                ]
+              }
+            }
+          }
+        },
+        {
+          "text": "BATTLE GRAND MASTER GREEVIL",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "Grand Master Greevil: So you crossed the sea to my island. Cipher will rule Orre!"
+            ],
+            "battle": {
+              "name": "Grand Master Greevil",
+              "class": "CIPHER_BOSS",
+              "sprite": "gentleman.png",
+              "team": [
+                310,
+                277,
+                121,
+                210,
+                334,
+                142
+              ],
+              "levels": [
+                71,
+                71,
+                72,
+                72,
+                73,
+                73
+              ],
+              "rewards": {
+                "balls": 25
+              },
+              "dialogue": {
+                "player_won": [
+                  "Greevil: My Shadow Pokemon... my perfect plan... Cipher is finished!"
+                ]
+              }
+            },
+            "flag": "xd_greevil_beaten",
+            "requires": [
+              "xd_snattle_beaten",
+              "xd_ardos_beaten",
+              "xd_eldes_beaten"
+            ],
+            "fail": [
+              "Greevil's admins guard the way. Beat Snattle, Ardos and Eldes first."
+            ]
+          },
+          "flag_condition": "not xd_greevil_beaten",
+          "condition": [
+            "xd_snattle_beaten",
+            "xd_ardos_beaten",
+            "xd_eldes_beaten"
+          ]
+        },
+        {
+          "text": "Gateon Port",
+          "action": "EXIT",
+          "target_area": "GATEON_PORT",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        }
       ],
       "next_area": "GATEON_PORT",
       "shadow_pool": [
+        {
+          "id": 9376,
+          "name": "Shadow Scizor",
+          "flag": "snagged_shadow_scizor",
+          "trainer": "a Cipher trainer"
+        },
+        {
+          "id": 9343,
+          "name": "Shadow Snorlax",
+          "flag": "snagged_shadow_snorlax",
+          "trainer": "Cipher Admin Ardos"
+        },
         {
           "id": 9312,
           "name": "Shadow Golduck",
@@ -1994,6 +5294,168 @@
           "trainer": "Grand Master Greevil"
         }
       ]
+    },
+    "DEEP_COLOSSEUM": {
+      "area_type": "dungeon",
+      "route_name": "Deep Colosseum",
+      "region": "ORRE",
+      "level": 68,
+      "battle_type": "indoor",
+      "min_rounds": 0,
+      "trainer_pool": [
+        {
+          "name": "Hunter Dewig",
+          "class": "HUNTER",
+          "sprite": "hiker.png",
+          "team": [
+            335,
+            274,
+            357
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Bodybuilder Palen",
+          "class": "BODYBUILDER",
+          "sprite": "blackbelt.png",
+          "team": [
+            157,
+            288,
+            297
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Worker Toway",
+          "class": "WORKER",
+          "sprite": "engineer.png",
+          "team": [
+            228,
+            203,
+            85,
+            166
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "St.Performer Regol",
+          "class": "STPERFORMER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            101,
+            215,
+            189
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Fun Old Man Gorbel",
+          "class": "FUN_OLD_MAN",
+          "sprite": "oldman.png",
+          "team": [
+            365,
+            259,
+            225
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Bandana Guy Lobert",
+          "class": "BANDANA_GUY",
+          "sprite": "roughneck.png",
+          "team": [
+            178,
+            308,
+            184,
+            264
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Bodybuilder Varug",
+          "class": "BODYBUILDER",
+          "sprite": "blackbelt.png",
+          "team": [
+            67,
+            66,
+            217
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Rider Shatol",
+          "class": "RIDER",
+          "sprite": "biker.png",
+          "team": [
+            75,
+            232,
+            40,
+            320
+          ],
+          "rewards": {
+            "balls": 3
+          }
+        }
+      ],
+      "shadow_pool": [
+        {
+          "id": 9377,
+          "name": "Shadow Shuckle",
+          "flag": "snagged_shadow_shuckle",
+          "trainer": "Deep King Agnol"
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "SNAG SHADOW POKEMON",
+          "action": "SNAG",
+          "color": "PURPLE",
+          "condition": [
+            "has_item:SNAG_MACHINE",
+            "shadows_left"
+          ]
+        },
+        {
+          "text": "SNAG AGAIN",
+          "action": "SNAG",
+          "repeat": true,
+          "color": "PURPLE",
+          "condition": [
+            "has_item:SNAG_MACHINE",
+            "shadows_cleared"
+          ]
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Realgam Tower",
+          "action": "EXIT",
+          "target_area": "REALGAM_TOWER",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        }
+      ],
+      "next_area": "REALGAM_TOWER"
     }
   },
   "JOURNAL_MISSIONS": [
@@ -2029,7 +5491,7 @@
       "description": "Purify your Shadow Pokemon at Agate's Relic Stone, then take down Cipher at Realgam Tower.",
       "condition": {
         "flag": "met_agate_elder",
-        "flag_not": "cipher_defeated",
+        "flag_not": "beat_orre_champion",
         "required_region": "ORRE"
       },
       "reward": "Orre is saved",
@@ -2041,7 +5503,7 @@
       "title": "The Wishing Star",
       "description": "Cipher's files mention a wishing star near Agate's Relic Stone.",
       "condition": {
-        "flag": "cipher_defeated",
+        "flag": "beat_orre_champion",
         "flag_not": "orre_jirachi_caught",
         "required_region": "ORRE"
       },
@@ -2066,7 +5528,7 @@
       "title": "Gale of Darkness",
       "description": "Cipher is back under Greevil. Clear the lairs from Gateon Port and stop him on Citadark Isle.",
       "condition": {
-        "flag": "cipher_defeated",
+        "flag": "beat_orre_champion",
         "flag_not": "xd_greevil_beaten",
         "required_region": "ORRE"
       },
@@ -2077,16 +5539,163 @@
   "REGION_START": {
     "ORRE": {
       "order": 3.5,
-      "travel_only": true,
-      "storage_region": "HOENN",
-      "no_badges": true,
-      "subtitle": "COLOSSEUM / ORRE",
-      "start_area": "PHENAC_CITY",
-      "dex_range": [
-        0,
-        -1
+      "subtitle": "COLOSSEUM / XD / ORRE",
+      "start_area": "OUTSKIRT_STAND",
+      "dex_extra": [],
+      "starters": [
+        196,
+        197
       ],
-      "dex_extra": []
+      "professor": "Professor Krane",
+      "dex_list": [
+        12,
+        15,
+        17,
+        20,
+        21,
+        24,
+        27,
+        37,
+        41,
+        46,
+        49,
+        51,
+        52,
+        55,
+        57,
+        58,
+        62,
+        70,
+        78,
+        82,
+        83,
+        85,
+        86,
+        88,
+        90,
+        97,
+        100,
+        103,
+        105,
+        106,
+        107,
+        108,
+        112,
+        113,
+        114,
+        115,
+        121,
+        122,
+        123,
+        125,
+        126,
+        127,
+        128,
+        131,
+        133,
+        134,
+        135,
+        136,
+        143,
+        144,
+        145,
+        146,
+        149,
+        153,
+        156,
+        159,
+        162,
+        164,
+        165,
+        166,
+        167,
+        168,
+        175,
+        176,
+        177,
+        179,
+        180,
+        185,
+        187,
+        188,
+        190,
+        192,
+        193,
+        194,
+        195,
+        196,
+        197,
+        198,
+        200,
+        204,
+        205,
+        206,
+        207,
+        210,
+        211,
+        212,
+        213,
+        214,
+        215,
+        216,
+        217,
+        218,
+        219,
+        220,
+        221,
+        223,
+        225,
+        226,
+        227,
+        228,
+        229,
+        231,
+        234,
+        235,
+        237,
+        241,
+        243,
+        244,
+        245,
+        248,
+        249,
+        250,
+        261,
+        273,
+        277,
+        280,
+        283,
+        285,
+        296,
+        299,
+        301,
+        302,
+        303,
+        304,
+        307,
+        310,
+        315,
+        316,
+        318,
+        322,
+        328,
+        329,
+        333,
+        334,
+        335,
+        337,
+        338,
+        343,
+        354,
+        355,
+        357,
+        359,
+        361,
+        363,
+        373,
+        376,
+        385
+      ]
     }
   },
   "FORM_MAP": {
@@ -2744,6 +6353,306 @@
       "id": 149,
       "form": "shadow",
       "name": "Shadow Dragonite"
+    },
+    "9601": {
+      "id": 297,
+      "form": "shadow",
+      "name": "Shadow Hariyama",
+      "origins": [
+        296
+      ]
+    },
+    "9602": {
+      "id": 154,
+      "form": "shadow",
+      "name": "Shadow Meganium",
+      "origins": [
+        153
+      ]
+    },
+    "9603": {
+      "id": 157,
+      "form": "shadow",
+      "name": "Shadow Typhlosion",
+      "origins": [
+        156
+      ]
+    },
+    "9604": {
+      "id": 160,
+      "form": "shadow",
+      "name": "Shadow Feraligatr",
+      "origins": [
+        159
+      ]
+    },
+    "9605": {
+      "id": 181,
+      "form": "shadow",
+      "name": "Shadow Ampharos",
+      "origins": [
+        180
+      ]
+    },
+    "9606": {
+      "id": 189,
+      "form": "shadow",
+      "name": "Shadow Jumpluff",
+      "origins": [
+        188
+      ]
+    },
+    "9607": {
+      "id": 224,
+      "form": "shadow",
+      "name": "Shadow Octillery",
+      "origins": [
+        223
+      ]
+    },
+    "9608": {
+      "id": 308,
+      "form": "shadow",
+      "name": "Shadow Medicham",
+      "origins": [
+        307
+      ]
+    },
+    "9609": {
+      "id": 330,
+      "form": "shadow",
+      "name": "Shadow Flygon",
+      "origins": [
+        329
+      ]
+    },
+    "9610": {
+      "id": 262,
+      "form": "shadow",
+      "name": "Shadow Mightyena",
+      "origins": [
+        261
+      ]
+    },
+    "9611": {
+      "id": 344,
+      "form": "shadow",
+      "name": "Shadow Claydol",
+      "origins": [
+        343
+      ]
+    },
+    "9612": {
+      "id": 274,
+      "form": "shadow",
+      "name": "Shadow Nuzleaf",
+      "origins": [
+        273
+      ]
+    },
+    "9613": {
+      "id": 364,
+      "form": "shadow",
+      "name": "Shadow Sealeo",
+      "origins": [
+        363
+      ]
+    },
+    "9614": {
+      "id": 317,
+      "form": "shadow",
+      "name": "Shadow Swalot",
+      "origins": [
+        316
+      ]
+    },
+    "9615": {
+      "id": 323,
+      "form": "shadow",
+      "name": "Shadow Camerupt",
+      "origins": [
+        322
+      ]
+    },
+    "9616": {
+      "id": 319,
+      "form": "shadow",
+      "name": "Shadow Sharpedo",
+      "origins": [
+        318
+      ]
+    },
+    "9617": {
+      "id": 286,
+      "form": "shadow",
+      "name": "Shadow Breloom",
+      "origins": [
+        285
+      ]
+    },
+    "9618": {
+      "id": 101,
+      "form": "shadow",
+      "name": "Shadow Electrode",
+      "origins": [
+        100
+      ]
+    },
+    "9619": {
+      "id": 38,
+      "form": "shadow",
+      "name": "Shadow Ninetales",
+      "origins": [
+        37
+      ]
+    },
+    "9620": {
+      "id": 356,
+      "form": "shadow",
+      "name": "Shadow Dusclops",
+      "origins": [
+        355
+      ]
+    },
+    "9621": {
+      "id": 281,
+      "form": "shadow",
+      "name": "Shadow Kirlia",
+      "origins": [
+        280
+      ]
+    },
+    "9622": {
+      "id": 362,
+      "form": "shadow",
+      "name": "Shadow Glalie",
+      "origins": [
+        361
+      ]
+    },
+    "9623": {
+      "id": 178,
+      "form": "shadow",
+      "name": "Shadow Xatu",
+      "origins": [
+        177
+      ]
+    },
+    "9624": {
+      "id": 53,
+      "form": "shadow",
+      "name": "Shadow Persian",
+      "origins": [
+        52
+      ]
+    },
+    "9625": {
+      "id": 22,
+      "form": "shadow",
+      "name": "Shadow Fearow",
+      "origins": [
+        21
+      ]
+    },
+    "9626": {
+      "id": 89,
+      "form": "shadow",
+      "name": "Shadow Muk",
+      "origins": [
+        88
+      ]
+    },
+    "9627": {
+      "id": 87,
+      "form": "shadow",
+      "name": "Shadow Dewgong",
+      "origins": [
+        86
+      ]
+    },
+    "9628": {
+      "id": 47,
+      "form": "shadow",
+      "name": "Shadow Parasect",
+      "origins": [
+        46
+      ]
+    },
+    "9629": {
+      "id": 59,
+      "form": "shadow",
+      "name": "Shadow Arcanine",
+      "origins": [
+        58
+      ]
+    },
+    "9630": {
+      "id": 91,
+      "form": "shadow",
+      "name": "Shadow Cloyster",
+      "origins": [
+        90
+      ]
+    },
+    "9631": {
+      "id": 18,
+      "form": "shadow",
+      "name": "Shadow Pidgeot",
+      "origins": [
+        17
+      ]
+    },
+    "9632": {
+      "id": 71,
+      "form": "shadow",
+      "name": "Shadow Victreebel",
+      "origins": [
+        70
+      ]
+    },
+    "9633": {
+      "id": 242,
+      "form": "shadow",
+      "name": "Shadow Blissey",
+      "origins": [
+        113
+      ]
+    },
+    "9634": {
+      "id": 275,
+      "form": "shadow",
+      "name": "Shadow Shiftry",
+      "origins": [
+        273
+      ]
+    },
+    "9635": {
+      "id": 365,
+      "form": "shadow",
+      "name": "Shadow Walrein",
+      "origins": [
+        363
+      ]
+    },
+    "9636": {
+      "id": 282,
+      "form": "shadow",
+      "name": "Shadow Gardevoir",
+      "origins": [
+        280
+      ]
     }
+  },
+  "ORRE_OASIS_POKE_SPOT_PERCENTAGES": {
+    "187": 60,
+    "231": 30,
+    "283": 10,
+    "446": 2
+  },
+  "ORRE_CAVE_POKE_SPOT_PERCENTAGES": {
+    "41": 60,
+    "304": 30,
+    "194": 10,
+    "446": 2
   }
 }

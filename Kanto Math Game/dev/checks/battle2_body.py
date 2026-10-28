@@ -107,6 +107,7 @@ b = TrainerBattleState(g, team, trainer_img_name="steven.png", trainer_class="YO
 g.change_state(b)
 run(b)
 turns0 = b.weather_turns
+_r.seed(2)  # the same battle every run (a miss used to leave the first foe standing: the old flake)
 b.opponent_hp = 1
 fight(b)
 log = run(b, 1500)
@@ -116,6 +117,9 @@ for _ in range(400):
     run(b, 50)
     if b.opponent_pokemon is team[1] and b.phase == "MENU":
         break
+    if b.opponent_pokemon is team[0] and b.phase == "MENU" and not b.dialogue_box.visible:
+        b.opponent_hp = 1  # the hit missed: attack again until the first foe faints
+        fight(b)
 print(f"    weather turns: start {turns0}, now {b.weather_turns} ({b.weather}); foe now {b.opponent_pokemon.name}")
 check(b.opponent_pokemon is team[1] and (b.weather is None or b.weather_turns < turns0), "no reset on the new Pokemon")
 

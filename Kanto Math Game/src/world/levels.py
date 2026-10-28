@@ -34,6 +34,8 @@ GYM_ORDER = {
                "ALFORNADA", "GLASEADO"],
     # The Orange Islands (the anime's Orange League): post-game, after the Kanto and Johto titles.
     "ORANGE": ["MIKAN_ISLAND", "NAVEL_ISLAND", "TROVITA_ISLAND", "KUMQUAT_ISLAND"],
+    # Orre (a full region since 10-27): its four tournaments give the badges.
+    "ORRE": ["PYRITE_TOWN", "UNDER_COLOSSEUM", "PHENAC_CITY", "ORRE_COLOSSEUM"],
 }
 # Ace level of each gym, then (Elite Four first, last) and the Champion's ace.
 # Jordan: every Gym Leader, Elite Four, Champion and League rival uses the CANON levels of the base
@@ -50,6 +52,7 @@ GYM_ACE = {
     "ALOLA": [10, 16, 27, 39, 48], "GALAR": [20, 24, 27, 36, 38, 42, 46, 48],
     "PALDEA": [15, 17, 24, 30, 36, 42, 45, 48],
     "ORANGE": [18, 30, 42, 56],
+    "ORRE": [16, 26, 36, 46],
 }
 # Jordan (patch 11): Leagues well below the others are raised to the Kanto band (Champion ace 63),
 # every level shifted by the same amount so the canon spread is kept: Johto +13, Hoenn +5,
@@ -63,7 +66,7 @@ ELITE_FOUR = {"KANTO": (54, 60), "JOHTO": (55, 60), "HOENN": (54, 60), "SINNOH":
 # the first run uses the story's final battle band (Ghetsis, 52-54), raised +9 (patch 11) to 61-63.
 CHAMPION_ACE = {"KANTO": 63, "JOHTO": 63, "HOENN": 63, "SINNOH": 62, "UNOVA": 63, "KALOS": 68,
                 "ALOLA": 63, "GALAR": 65, "PALDEA": 62,
-                "ORANGE": 65}
+                "ORANGE": 65, "ORRE": 60}
 # The Orange Islands are a full region since 10-27 (Jordan), built from the Pokemon Orange ROM hack:
 # Cissy 18, Danny 30, Rudy 42, Luana 56, Drake 65. Once Drake is beaten, the Orange Gyms scale to the
 # Orange Champion's post-game band: each Gym team is lifted so its ace is Drake's rematch ace (65 + 10).
@@ -321,7 +324,7 @@ def obey_level(story):
     if cap_mode(story) != "OBEDIENCE":
         return 100
     if story.get_region_start(story.get_current_region()).get("travel_only"):
-        return 100  # post-game trips (Orre): your team already obeys you
+        return 100  # travel-only trips: your team already obeys you
     badges = len(story.badges.get(story.get_current_region(), []))
     return 100 if badges >= 8 else 20 + 10 * badges
 

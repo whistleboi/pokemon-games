@@ -1,3 +1,4 @@
+import json
 
 DECO = [k for k, a in prog.items() if a.get("subregion") == "DECOLORE"]
 
@@ -14,45 +15,44 @@ story.story_flags, story.inventory = {}, {}
 check("Ferry to the Decolore Islands" not in travel("CASTELIA_CITY"), "before the title: no ferry")
 story.story_flags["beat_unova_champion"] = True
 check("Ferry to the Decolore Islands" in travel("CASTELIA_CITY"), "Unova Champion: ferry from Castelia")
-check(len(DECO) == 11, f"{len(DECO)} Decolore areas")
+check(len(DECO) == 17 and len(DECO) <= 35, f"{len(DECO)} Decolore areas (no bigger than Sevii)")
 bad = [(k, o.get("target_area")) for k in DECO for o in prog[k].get("travel_options", []) + prog[k].get("route_menu", [])
        if o.get("target_area") and o["target_area"] not in prog]
 check(not bad, f"every link leads somewhere {bad}")
 check(not prog["DECOLORE_FERRY"].get("wild_pool_percentages"), "no wild Pokemon on the ferry")
 check(exits("DECOLORE_FERRY") == ["Honey Island", "Castelia City"], f"ferry at first: {exits('DECOLORE_FERRY')}")
 
-print("2) The Drives")
-run("HONEY_ISLAND", "The Beekeepers' Hives")
-run("HONEY_ISLAND", "Search the Scorched Hives")
-check(story.inventory.get("BURN_DRIVE") == 1 and "Scalchop Island" in exits("DECOLORE_FERRY"), "Burn Drive opens Scalchop")
-run("SCALCHOP_ISLAND", "Plasma at the Shrine")
+print("2) The islands in the order Ash visits them (Bulbapedia, BW124-BW140)")
+ORDER = ["Scalchop Island", "Grand Spectrala Island", "Torom Island", "Pirate Isles", "Wayfarer Island", "Capacia Island",
+         "Harvest Island", "Frond Island", "Cave Island", "Paladin Island"]
+KEYS = ["SCALCHOP_ISLAND", "GRAND_SPECTRALA_ISLAND", "TOROM_ISLAND", "DECOLORE_PIRATE_ISLES", "WAYFARER_ISLAND", "CAPACIA_ISLAND",
+        "HARVEST_ISLAND", "FROND_ISLAND", "CAVE_ISLAND", "PALADIN_ISLAND"]
+prev = "HONEY_ISLAND"
+for name, key in zip(ORDER, KEYS):
+    check(name not in exits("DECOLORE_FERRY"), f"{name} waits for the island before it")
+    story.story_flags[f"visited_{prev}"] = True
+    check(name in exits("DECOLORE_FERRY"), f"{name} opens")
+    prev = key
+txt = json.dumps({k: prog[k] for k in DECO})
+check("Plasma" not in txt and "Genesect" not in txt, "no villainous team in Decolore (as in the anime)")
+from src.pokemon import balance
 from src.world import levels
-check(lineup(battle_of(g.current_state))[-1] == (530, levels.postgame_cap(story, story.area_region(story.current_area_key)) + 1), f"Plasma Grunts at the shrine (post-game cap) {lineup(battle_of(g.current_state))}")
-story.story_flags["decolore_shrine_plasma"] = True
-run("SCALCHOP_ISLAND", "Search the Crates")
-check(story.inventory.get("DOUSE_DRIVE") == 1 and "Grand Spectrala Island" in exits("DECOLORE_FERRY"), "Douse Drive")
-run("GRAND_SPECTRALA_ISLAND", "The Illusion Woods", solve=False)
-check(not story.inventory.get("CHILL_DRIVE"), "lost in the illusions: try again")
-run("GRAND_SPECTRALA_ISLAND", "The Illusion Woods")
-check(story.inventory.get("CHILL_DRIVE") == 1 and "Torom Island" in exits("DECOLORE_FERRY"), "Chill Drive opens Torom")
+data = g.loader.area_data
+pools = [data[prog[k]["wild_pool_percentages"]] for k in DECO if prog[k].get("wild_pool_percentages")]
+check(all(int(p) <= 649 for pl in pools for p in pl if p.isdigit()), "wild Pokemon are Gen 5 or earlier")
 
-print("3) Torom Island and Genesect")
-st = state_for("TOROM_PEAK")
-gen = opt("TOROM_PEAK", "CHALLENGE GENESECT")
-check(not st._check_route_condition(gen["condition"], False), "no Genesect before the lab")
-run("TOROM_ISLAND", "The Plasma Laboratory")
-check(lineup(battle_of(g.current_state))[-1] == (462, levels.postgame_cap(story, story.area_region(story.current_area_key)) + 1), f"Plasma Scientist (post-game cap) {lineup(battle_of(g.current_state))}")
-story.story_flags["decolore_lab_cleared"] = True
-run("TOROM_ISLAND", "Shut Down the Lab")
-st = state_for("TOROM_PEAK")
-check(story.inventory.get("SHOCK_DRIVE") == 1 and st._check_route_condition(gen["condition"], False),
-      "all four Drives: Genesect on Torom Peak")
-story.story_flags["P2_LABORATORY_boss_defeated"] = True
-check(not st._check_route_condition(gen["condition"], False), "not twice if beaten at P2 Lab in an old save")
-check(not prog["P2_LABORATORY"].get("area_boss"), "P2 Lab's Genesect moved")
+print("3) Island stories")
+for area, text in (("SCALCHOP_ISLAND", "SCALCHOP KING: CADBURY"), ("DECOLORE_PIRATE_ISLES", "BATTLE OFFICER JENNY"),
+                   ("WAYFARER_ISLAND", "The Butterfree Migration"), ("CAPACIA_ISLAND", "SEARCHING FOR A WISH: JIRACHI"),
+                   ("HARVEST_ISLAND", "BATTLE RODNEY"), ("FROND_ISLAND", "The Deserted Island"), ("CAVE_ISLAND", "BATTLE CLAIR")):
+    a = prog[area]
+    check(any(o.get("text") == text for o in (a.get("route_menu") or []) + (a.get("explore_options") or [])), f"{area}: {text}")
+check("479" in data[prog["TOROM_PEAK"]["wild_pool_percentages"]], "Torom Peak: Rotom")
+check(prog["P2_LABORATORY"]["area_boss"]["id"] == 649 and "SHOCK_DRIVE" in prog["P2_LABORATORY"]["area_boss"]["rewards"],
+      "Genesect is back at P2 Laboratory, with the four Drives")
 
 print("4) Paladin Tournament")
-check("Paladin Island" in exits("DECOLORE_FERRY"), "Paladin Island open after the lab")
+check("Paladin Island" in exits("DECOLORE_FERRY"), "Paladin Island open after Cave Island")
 story.current_area_key = "PALADIN_ISLAND"
 lobby = ow.GymLobbyState(g, None)
 g.change_state(lobby)

@@ -3873,13 +3873,15 @@
       "route_menu": [
         {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
         {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "THE SEALED CAPSULE", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD"},
         {"text": "Route 17", "action": "EXIT", "target_area": "UNOVA_ROUTE_17", "condition": "can_exit", "color": "RED"},
         {"text": "READ THE LAB NOTES", "action": "EVENT", "color": "GOLD", "event": {"lines": ["The lab is empty. A note on the desk reads:", "\"Genesect capsules moved to Torom Island, Decolore. Drives to follow.\"", "The Decolore ferry leaves from Castelia City."]}},
         {"text": "ROUTE 18", "action": "EXIT", "target": "UNOVA_ROUTE_18", "condition": ["can_exit", "has_item:HM_SURF"], "color": "RED"},
         {"text": "PLASMA FRIGATE", "action": "EXIT", "target": "PLASMA_FRIGATE", "condition": ["can_exit", "beat_unova_champion"], "color": "RED"}
       ],
       "next_area": "UNOVA_ROUTE_17",
-      "wild_pool_percentages": "UNOVA_P2_LAB_PERCENTAGES"
+      "wild_pool_percentages": "UNOVA_P2_LAB_PERCENTAGES",
+        "area_boss": {"id": 649, "name": "Genesect", "victory_flag": "P2_LABORATORY_boss_defeated", "lines": ["Deep in the lab, a capsule cracks open. An ancient Pokemon, rebuilt by Team Plasma, steps out...", "Genesect fires up its cannon!"], "rewards": {"BURN_DRIVE": 1, "DOUSE_DRIVE": 1, "CHILL_DRIVE": 1, "SHOCK_DRIVE": 1}}
     },
         "SKYARROW_BRIDGE": {"area_type": "dungeon", "route_name": "Skyarrow Bridge", "region": "UNOVA", "battle_type": "cave", "min_rounds": 0, "trainer_pool": [], "route_menu": [{"text": "PINWHEEL FOREST", "action": "EXIT", "target": "PINWHEEL_FOREST", "condition": "can_exit", "color": "RED"}, {"text": "CASTELIA CITY", "action": "EXIT", "target": "CASTELIA_CITY", "condition": "can_exit", "color": "RED"}], "next_area": "CASTELIA_CITY"},
         "DRIFTVEIL_DRAWBRIDGE": {"area_type": "dungeon", "route_name": "Driftveil Drawbridge", "region": "UNOVA", "battle_type": "cave", "min_rounds": 0, "trainer_pool": [], "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "ROUTE 5", "action": "EXIT", "target": "UNOVA_ROUTE_5", "condition": "can_exit", "color": "RED"}, {"text": "DRIFTVEIL CITY", "action": "EXIT", "target": "DRIFTVEIL_CITY", "condition": "can_exit", "color": "RED"}], "next_area": "DRIFTVEIL_CITY", "wild_pool_percentages": "DRIFTVEIL_DRAWBRIDGE_PERCENTAGES"},

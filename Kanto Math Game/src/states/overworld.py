@@ -1512,6 +1512,8 @@ class PlayState(GameState):
             return self.game.story_manager.story_flags.get(default_flag, False)
         if condition == "shadows_left":  # Orre: a Shadow Pokemon here not yet snagged
             return self._next_shadow() is not None
+        if condition == "shadows_cleared":  # every Shadow Pokemon here snagged: Cipher's stragglers
+            return bool(self.area_data.get("shadow_pool")) and self._next_shadow() is None
 
         if condition == "boss_available":
             is_defeated = self._check_route_condition("boss_defeated", trainers_left)
@@ -1586,7 +1588,7 @@ class PlayState(GameState):
         if action == "MAX_RAID":
             return self.action_max_raid
         if action == "SNAG":
-            return self.action_snag_shadow
+            return lambda: self.action_snag_shadow(repeat=bool(item.get("repeat")))
         if action == "BERRY":
             return self.action_pick_berries
         if action == "WEATHER_DIRECTOR":
@@ -1614,8 +1616,20 @@ class PlayState(GameState):
         flags = self.game.story_manager.story_flags
         return next((s for s in self.area_data.get("shadow_pool", []) if not flags.get(s["flag"])), None)
 
-    def action_snag_shadow(self):
-        """Orre: a Cipher trainer sends out the next Shadow Pokemon; weaken it and snag it."""
+    def action_snag_shadow(self, repeat=False):
+        """Orre: a Cipher trainer sends out the next Shadow Pokemon; weaken it and snag it. With
+        repeat (SNAG AGAIN, once an area is cleared; Jordan, 10-27, not in the games), a straggler
+        brings back one of the area's Shadow Pokemon, so you can keep one Shadow and purify another."""
+        if repeat:
+            pool = self.area_data.get("shadow_pool", [])
+            if pool:
+                s = random.choice(pool)
+                self.action_challenge_boss({
+                    "id": s["id"], "name": s["name"], "no_catch": False, "victory_flag": f"resnag_{s['flag']}",
+                    "lines": [f"A Cipher straggler sends out another {s['name']}! A dark aura surrounds it...",
+                              "Weaken it, then throw a ball. The Snag Machine will catch it!"],
+                    "won": [f"The {s['name']} ran off... it will be back."], "rewards": {"balls": 3}})
+                return
         shadow = self._next_shadow()
         if not shadow:
             self.is_progression_paused = True
