@@ -107,6 +107,20 @@ def summary(save_dir, index):
     return result
 
 
+def delete(save_dir, index):
+    """Remove a slot's file and its .bak (the Load screen's DELETE). Returns True if anything went."""
+    path = slot_path(save_dir, index)
+    gone = False
+    for p in (path, path + ".bak", path + ".tmp"):
+        try:
+            os.remove(p)
+            gone = True
+        except OSError:
+            pass
+    forget(path)
+    return gone
+
+
 def forget(path=None):
     """Drop cached summaries (one path, or all)."""
     if path is None:

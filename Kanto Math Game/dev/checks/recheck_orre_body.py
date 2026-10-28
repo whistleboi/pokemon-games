@@ -74,7 +74,7 @@ def opts(area):
     return [o.get("text") for o in (a.get("route_menu") or []) + (a.get("explore_options") or [])]
 
 
-for area, text in (("OUTSKIRT_STAND", "OUTSKIRT STAND: WILLIE"), ("GATEON_PORT", "Professor Krane's Lab"),
+for area, text in (("OUTSKIRT_STAND", "CHALLENGE WILLIE"), ("GATEON_PORT", "Professor Krane's Lab"),
                    ("MT_BATTLE", "DAKIM ATTACKS MT. BATTLE"), ("SHADOW_PKMN_LAB", "SHADOW POKEMON LAB: EIN"),
                    ("PHENAC_CITY", "PHENAC STADIUM: SNATTLE"), ("RELIC_FOREST", "HO-OH AT THE RELIC STONE"),
                    ("PYRITE_CAVE", "PYRITE CAVE: MIROR B."), ("SNAGEM_HIDEOUT", "SNAGEM HIDEOUT: GONZAP")):

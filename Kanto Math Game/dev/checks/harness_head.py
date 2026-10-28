@@ -16,7 +16,7 @@ from src.states.systems import PokeMartState, BagState
 
 g = gm.Game()
 g.start_new_game(); g.player_name, g.player_character = "ASH", "red"
-rs = RegionSelectionState(g); rs.selected_idx = 2; rs.confirm_selection()
+rs = RegionSelectionState(g); rs.selected_idx = rs.regions.index("HOENN"); rs.confirm_selection()
 g.current_state.input_name = "GARY"; g.current_state.confirm_selection(); g.current_state.on_confirm()
 st = g.current_state
 if not hasattr(st, "load_starters"):  # Hoenn starts at home (Route 101's starter): pick it straight away

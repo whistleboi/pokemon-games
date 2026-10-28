@@ -799,7 +799,7 @@
             "gym": "battle_gym_blackthorn.png"
             },
         "has_gym": true,
-        "gym": {"trainers": [{"name": "Cooltrainer Mike", "class": "COOLTRAINER", "sprite": "acetrainer_m.png", "is_boss_battle": true, "team": [148, 148], "rewards": {"balls": 3}}, {"name": "Cooltrainer Lola", "class": "COOLTRAINER", "sprite": "acetrainer_f.png", "is_boss_battle": true, "team": [147, 147, 147], "rewards": {"balls": 3}}], "leader": {"name": "Clair", "class": "GYM_LEADER", "sprite": "clair.png", "team": [148, 148, 130, 230], "levels": [38, 38, 38, 41], "badge_reward": "RISING", "rewards": {"balls": 5, "MT_SILVER_MAP": 1}, "is_boss_battle": true, "dialogue": {"intro": ["Welcome to the Blackthorn City Gym! I'm Clair, the Dragon-type Gym Leader."], "player_won": ["You're a skilled trainer!"], "player_lost": ["Don't worry, you'll get it next time."]}, "movesets": {"148": ["THUNDER-WAVE", "SLAM", "AQUA-TAIL", "DRAGON-PULSE"], "130": ["BITE", "TWISTER", "DRAGON-RAGE", "DRAGON-PULSE"], "230": ["HYDRO-PUMP", "SMOKESCREEN", "HYPER-BEAM", "DRAGON-PULSE"]}}},
+        "gym": {"requirements": {"badges": 7, "fail_text": ["Clair only accepts challengers who have earned seven Johto badges."]}, "trainers": [{"name": "Cooltrainer Mike", "class": "COOLTRAINER", "sprite": "acetrainer_m.png", "is_boss_battle": true, "team": [148, 148], "rewards": {"balls": 3}}, {"name": "Cooltrainer Lola", "class": "COOLTRAINER", "sprite": "acetrainer_f.png", "is_boss_battle": true, "team": [147, 147, 147], "rewards": {"balls": 3}}], "leader": {"name": "Clair", "class": "GYM_LEADER", "sprite": "clair.png", "team": [148, 148, 130, 230], "levels": [38, 38, 38, 41], "badge_reward": "RISING", "rewards": {"balls": 5, "MT_SILVER_MAP": 1}, "is_boss_battle": true, "dialogue": {"intro": ["Welcome to the Blackthorn City Gym! I'm Clair, the Dragon-type Gym Leader."], "player_won": ["You're a skilled trainer!"], "player_lost": ["Don't worry, you'll get it next time."]}, "movesets": {"148": ["THUNDER-WAVE", "SLAM", "AQUA-TAIL", "DRAGON-PULSE"], "130": ["BITE", "TWISTER", "DRAGON-RAGE", "DRAGON-PULSE"], "230": ["HYDRO-PUMP", "SMOKESCREEN", "HYPER-BEAM", "DRAGON-PULSE"]}}},
         "travel_options": [
             { "text": "Route 45", "target_area": "JOHTO_ROUTE_45", "color": "RED"},
             { "text": "Ice Path", "target_area": "ICE_PATH", "color": "RED"},
@@ -1426,7 +1426,7 @@
               {"text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE"},
               {"text": "Dark Cave", "action": "EXIT", "target_area": "DARK_CAVE", "condition": ["can_exit", "has_item:HM_FLASH"], "color": "RED"},
               {"text": "ROUTE 29", "action": "EXIT", "target_area": "JOHTO_ROUTE_29", "condition": "can_exit", "color": "RED"},
-              {"text": "ROUTE 45", "action": "EXIT", "target": "JOHTO_ROUTE_45", "condition": "can_exit", "color": "RED"}
+              {"text": "ROUTE 45", "action": "EXIT", "target": "JOHTO_ROUTE_45", "condition": "can_exit", "flag_condition": "visited_BLACKTHORN_CITY", "color": "RED"}
             ],
             "next_area": "JOHTO_ROUTE_29" 
         },
@@ -1892,7 +1892,8 @@
     "JOURNAL_MISSIONS": [
         {
             "id": "johto_m1", "type": "MAIN", "title": "Elm's Errand", "description": "Travel to Route 30 to visit Mr. Pokemon. He has a discovery that Prof. Elm needs to see!",
-            "condition": { "required_region": "JOHTO", "visited_not": "JOHTO_ROUTE_30", "badges_less": 1, "flag_not": "elm_received_egg" },
+            "target": "MR_POKEMONS_HOUSE",
+            "condition": { "required_region": "JOHTO", "item_not": "MYSTERY_EGG", "badges_less": 1, "flag_not": "elm_received_egg" },
             "reward": "Mystery Egg"
         },
         {
@@ -1902,13 +1903,15 @@
             "reward": "Master Ball"
         },
         {
-            "id": "johto_m2", "type": "MAIN", "title": "The Mystery Egg", "description": "You've met Mr. Pokemon and Oak! Return to the Lab in New Bark Town to show Prof. Elm the Mystery Egg.",
-            "condition": { "required_region": "JOHTO", "visited": "JOHTO_ROUTE_30", "flag_not": "elm_received_egg", "badges_less": 1 },
+            "id": "johto_m2", "type": "MAIN", "title": "The Mystery Egg", "description": "You've got Mr. Pokemon's egg! Return to the Lab in New Bark Town to show Prof. Elm the Mystery Egg.",
+            "target": "NEW_BARK_TOWN",
+            "condition": { "required_region": "JOHTO", "item": "MYSTERY_EGG", "flag_not": "elm_received_egg", "badges_less": 1 },
             "reward": "10 Poke Balls"
         },
         {
             "id": "johto_m3", "type": "MAIN", "title": "Sprout Tower Challenge", "description": "The Sages of Sprout Tower in Violet City hold a secret power. Defeat Elder Li to prove your worth.",
-            "condition": { "start_region": "JOHTO", "visited": "VIOLET_CITY", "flag_not": "defeated_elder_li" },
+            "target": "VIOLET_CITY",
+            "condition": { "start_region": "JOHTO", "flag": "elm_received_egg", "flag_not": "defeated_elder_li" },
             "completed_flag": "defeated_elder_li",
             "reward": "Leaf Stone"
         },
@@ -1920,7 +1923,8 @@
         },
         {
             "id": "johto_m5", "type": "MAIN", "title": "Slowpoke Rescue", "description": "Team Rocket is cutting off Slowpoke tails in Azalea Town! Stop them at the Slowpoke Well.",
-            "condition": { "start_region": "JOHTO", "visited": "AZALEA_TOWN", "flag_not": "slowpoke_well_cleared" },
+            "target": "AZALEA_TOWN",
+            "condition": { "start_region": "JOHTO", "badges_min": 1, "flag_not": "slowpoke_well_cleared" },
             "reward": "5 Lure Balls"
         },
         {
@@ -1940,7 +1944,8 @@
         },
         {
             "id": "johto_m9", "type": "MAIN", "title": "Shadows of Ecruteak", "description": "Explore the Burned Tower in Ecruteak City. Legends say three beastly Pokemon are slumbering in the basement.",
-            "condition": { "start_region": "JOHTO", "visited": "ECRUTEAK_CITY", "flag_not": "visited_BURNED_TOWER" },
+            "target": "ECRUTEAK_CITY",
+            "condition": { "start_region": "JOHTO", "badges_min": 3, "flag_not": "visited_BURNED_TOWER" },
             "reward": "Legendary Dogs Tracking"
         },
         {
@@ -1950,7 +1955,8 @@
         },
         {
             "id": "johto_m11", "type": "MAIN", "title": "Lighthouse Rescue", "description": "The Jasmine's Ampharos is ill! Travel across the sea to Cianwood City to fetch the Secret Potion.",
-            "condition": { "start_region": "JOHTO", "visited": "OLIVINE_CITY", "badges_min": 4, "visited_not": "CIANWOOD_CITY" }
+            "target": "CIANWOOD_CITY",
+            "condition": { "start_region": "JOHTO", "badges_min": 4, "visited_not": "CIANWOOD_CITY" }
         },
         {
             "id": "johto_m12", "type": "MAIN", "title": "The Storm Badge", "description": "While in Cianwood, challenge Chuck at the Gym. His Fighting-type Pokemon will test your math stamina!",
@@ -1964,7 +1970,8 @@
         },
         {
             "id": "johto_m14", "type": "MAIN", "title": "Rage at the Lake", "description": "Something is wrong at the Lake of Rage north of Mahogany Town. Investigate the rumor of a Red Gyarados.",
-            "condition": { "start_region": "JOHTO", "visited": "MAHOGANY_TOWN", "flag_not": "rocket_hq_cleared" },
+            "target": "MAHOGANY_TOWN",
+            "condition": { "start_region": "JOHTO", "badges_min": 6, "flag_not": "rocket_hq_cleared" },
             "reward": "Rare Candy"
         },
         {

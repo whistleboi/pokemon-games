@@ -63,7 +63,7 @@ story.badges = {"ORANGE": []}
 story.player_team = [mk(6)]
 story.enter_region("ORANGE")
 for area, kind, want in (("MIKAN_ISLAND", "cissy", [(116, 15), (8, 18), (72, 13)]),
-                         ("KUMQUAT_ISLAND", "luana", [(65, 56), (105, 54), (776, 54), (357, 54)])):
+                         ("KUMQUAT_ISLAND", "luana", [(65, 56), (105, 54), (105, 54), (103, 54)])):
     story.current_area_key = area
     story.badges["ORANGE"] = ["CORAL_EYE", "SEA_RUBY", "SPIKE_SHELL"][:0 if area == "MIKAN_ISLAND" else 3]
     story.story_flags[f"gym_progress_{area}"] = len(prog[area]["gym"]["trainers"])
@@ -90,7 +90,7 @@ g.change_state(lobby)
 check(lobby.is_league, f"Pummelo is a league: {lobby.status_text}")
 lobby.challenge_gym()
 b = battle_of(g.current_state)
-check([p for p, _ in lineup(b)] == [132, 208, 94, 3, 466, 149], f"Drake, the hack's team: {lineup(b)}")
+check([p for p, _ in lineup(b)] == [132, 208, 94, 3, 125, 149], f"Drake, the hack's team (Kanto/Johto only): {lineup(b)}")
 check(prog["PUMMELO_ISLAND"]["gym"]["leader"]["levels"][-1] == 65 and levels.CHAMPION_ACE["ORANGE"] == 65, "Drake's ace Lv 65")
 rival = [e["trainer"] for k in ORANGE for e in (prog[k].get("on_enter_event") or []) if isinstance(e, dict)
          and e["trainer"].get("name") == "{rival_name}"]

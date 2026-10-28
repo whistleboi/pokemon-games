@@ -2,6 +2,15 @@
 
 ## Unreleased: opponents follow your team, Hoenn's story as in Omega Ruby / Alpha Sapphire
 
+- **Delete a save from the Load screen:** press DELETE (top right), pick a file, then answer YES. The file and its backup are removed. Each press of DELETE removes one file only, so a stray tap can't clear several.
+- **Fixes from the 10-28 playtests (new games in Kanto, Johto and the Orange Islands):**
+  - **The Orange Islands keep to Kanto, Johto and island Pokémon.** 152 Gen 3–7 Pokémon from the hack's data were swapped for Kanto or Johto ones that fit. These swaps were in the wild areas, trainers' teams, the Orange Crew's teams and the island's Pokédex list. For example, Pikipek became Spearow, Wingull became Spearow, Mareanie became Tentacool, Luana's Turtonator became Marowak, and Drake's Electivire became Electabuzz. Johto Pokémon now appear in the wild there for a new Orange game too. Every Pokémon in the Orange Pokédex can now be caught on the islands.
+  - **Johto's first errand:** the Journal asked you to bring Elm the Mystery Egg as soon as you reached Route 30, before Mr. Pokémon had given it to you. It now waits for the egg and points to his house first.
+  - **No empty Journal in Johto:** the next main mission now appears as soon as the last one is done. This covers the Sprout Tower, Azalea, Ecruteak, Cianwood and Mahogany missions.
+  - **Johto's order:** Route 46 led up to Route 45 and Blackthorn City from the very start. That way is one-way down the ledges again, as in HeartGold/SoulSilver. Clair also now waits for seven badges.
+  - **Journal "not holding an item" conditions now work.** This fixes Kanto's Bike Voucher and Poké Flute missions.
+  - **Tests:** the check suites start a Hoenn game by name again. Since the Orange Islands joined the region list, they had been starting a Johto game.
+
 - **The Decolore Islands follow the anime** (Bulbapedia, episodes BW124–BW140). They stay a post-League side trip from Castelia, and smaller than the Sevii Islands:
   - **The ferry** visits the islands in the order Ash does. Each opens once you've been to the one before.
   - **New islands:**

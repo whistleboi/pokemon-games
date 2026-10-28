@@ -8,6 +8,8 @@ S = "NEW_BARK_TOWN"
 seen = report("start", S, set())
 story.story_flags["defeated_elder_li"] = True
 seen = report("Elder Li beaten (Falkner open?)", S, seen)
+print("   FAIL" if {"JOHTO_ROUTE_45", "BLACKTHORN_CITY"} & seen else "   OK", "Route 46 -> 45 is one-way: no Blackthorn at the start")
+print("   FAIL" if gym_open("BLACKTHORN_CITY") else "   OK", "Clair waits for seven badges")
 badge(R, "ZEPHYR")
 seen = report("ZEPHYR (+Flash)", S, seen)
 clear_area("SLOWPOKE_WELL")

@@ -1148,11 +1148,14 @@ class LoadState(GameState):
         )
         cx, cy = game.width // 2, game.height // 2
         self.confirm_rect = pygame.Rect(cx - 330, cy - 150, 660, 300)
-        self.btn_yes = CommandButton((cx - 230, cy + 50, 210, 64), "YES", f["button"],
-                                     self.do_load if mode == "load" else self.do_new, bg_color=theme.POKEMON,
-                                     autosize=False)
+        self.btn_yes = CommandButton((cx - 230, cy + 50, 210, 64), "YES", f["button"], self._yes,
+                                     bg_color=theme.POKEMON, autosize=False)
         self.btn_no = CommandButton((cx + 20, cy + 50, 210, 64), "NO", f["button"], self.cancel_load,
                                     bg_color=theme.BACK, autosize=False)
+        # DELETE (Load screen only): the next file picked is deleted, after a YES / NO.
+        self.delete_mode = False
+        self.btn_delete = CommandButton((game.width - 196, 14, 180, 56), "DELETE", f["button"],
+                                        self.toggle_delete, bg_color=theme.FIGHT, autosize=False)
 
     @property
     def save_slots(self):
@@ -1171,8 +1174,33 @@ class LoadState(GameState):
     def go_back(self):
         self.game.change_state(self.previous_state)
 
+    def toggle_delete(self):
+        from src.ui import theme
+        self.delete_mode = not self.delete_mode
+        self.btn_delete.text = "CANCEL" if self.delete_mode else "DELETE"
+        self.btn_delete.bg_color = theme.BACK if self.delete_mode else theme.FIGHT
+
+    def _yes(self):
+        if self.delete_mode:
+            self.do_delete()
+        elif self.mode == "load":
+            self.do_load()
+        else:
+            self.do_new()
+
+    def do_delete(self):
+        from src.core import save_slots
+        save_slots.delete(save_slots.folder(self.game), self.selected_slot_index)
+        self.toggle_delete()  # one file per DELETE press, so a stray tap can't clear several
+        self.cancel_load()
+
     def pick(self, i):
         slot = self.slot_list.summary(i)
+        if self.delete_mode:
+            if slot is not None:  # damaged files can be deleted too
+                self.selected_slot_index = i
+                self._ask()
+            return
         if self.mode == "new":
             self.selected_slot_index = i
             if slot is None:
@@ -1223,6 +1251,8 @@ class LoadState(GameState):
         for btn in self.slot_list.buttons():
             self.game.ui_manager.add_element(btn)
         self.game.ui_manager.add_element(self.btn_back)
+        if self.mode == "load":
+            self.game.ui_manager.add_element(self.btn_delete)
 
     def handle_events(self, events):
         if self.phase != "SELECT":
@@ -1243,7 +1273,8 @@ class LoadState(GameState):
         """The menu frame: the files as cards, PREV / NEXT in the text box; YES / NO on a card."""
         from src.ui import theme
         screen, f = self.game.screen, self.game.assets.fonts
-        title = "LOAD GAME" if self.mode == "load" else "NEW GAME - PICK A FILE"
+        title = ("DELETE - PICK A FILE" if self.delete_mode else
+                 "LOAD GAME" if self.mode == "load" else "NEW GAME - PICK A FILE")
         theme.menu_background(screen, theme.ACCENT["mart"] if self.mode == "load" else theme.ACCENT["party"],
                               title, f["button"], title_x=176)
         self.slot_list.draw(screen)
@@ -1259,7 +1290,8 @@ class LoadState(GameState):
         slot = self.slot_list.summary(self.selected_slot_index) if self.selected_slot_index >= 0 else None
         head = f"No.{self.selected_slot_index + 1:03d}" + (f"  {slot['name']}" if slot else "")
         theme.shadow_text(screen, head, f["button"], q.centerx, q.y + 44, align="center")
-        for k, line in enumerate(self.confirm_lines):
+        lines = ["Delete this file?", "This can't be undone."] if self.delete_mode else self.confirm_lines
+        for k, line in enumerate(lines):
             theme.shadow_text(screen, line, f["s_med"] if k == 0 else f["label"], q.centerx, q.y + 100 + k * 38,
                               color=theme.TEXT if k == 0 else (110, 116, 136), align="center")
         self.btn_yes.draw(screen)

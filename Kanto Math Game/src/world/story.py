@@ -477,6 +477,10 @@ class StoryManager:
             items = cond["item"] if isinstance(cond["item"], list) else [cond["item"]]
             if not any(self.inventory.get(it, 0) > 0 for it in items):
                 return False
+        if "item_not" in cond:
+            items = cond["item_not"] if isinstance(cond["item_not"], list) else [cond["item_not"]]
+            if any(self.inventory.get(it, 0) > 0 for it in items):
+                return False
 
         if "has_pokemon" in cond:
             pids = cond["has_pokemon"] if isinstance(cond["has_pokemon"], list) else [cond["has_pokemon"]]
