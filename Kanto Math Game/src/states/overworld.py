@@ -215,7 +215,7 @@ def _run_story_event(state, key, check, show):
             lines += _evolve_due(game, names)
     gift = story_events.gift_for_starter(ev.get("gift_pokemon"), _region_starter_id(game))
     if gift:
-        lines.append(story_events.gift_pokemon(game, gift))
+        lines.append(story_events.gift_pokemon(game, gift, ev.get("gift_level")))
     if flag:
         story.story_flags[flag] = True
     show(lines or ["..."])
@@ -3692,8 +3692,9 @@ class CityState(GameState):
             if any(isinstance(v, dict) and v.get("id") == nown_id
                    for v in self.game.data.data.get("pokedex", {}).values()):  # keys are "id-form"
                 msg = ["Researcher: Incredible! You've documented all 28 forms of UNOWN!", "Your math skills and dedication are truly legendary.", "You've solved the greatest mystery of the Johto region!"]
-                if not self.game.story_manager.story_flags.get("visited_SINJOH_CABIN"):
-                    # The Sinjoh Ruins open for all 28 Unown plus Arceus (Sinnoh's Hall of Origin).
+                if self.game.story_manager.sinjoh_dragons_received() < 3:
+                    # The Sinjoh Ruins open for Arceus (from Sinnoh's Hall of Origin), as in HGSS; the
+                    # Unown open them again for a second and third dragon.
                     msg += ["One more thing... the carvings say the Unown gather around ARCEUS.",
                             "It's said to wait in the Hall of Origin, far away in Sinnoh.",
                             "If you ever bring ARCEUS here, the Unown may show you something amazing!"]
@@ -3717,6 +3718,10 @@ class CityState(GameState):
                     msg.append("Come back with one in your party or PC so I can show you something amazing!")
         else:
             msg = [f"Researcher: Let's see your progress...", f"You have documented {caught_count} UNOWN forms so far.", f"That means there are {remaining} forms still waiting to be discovered!", "Keep up the good work! The secret of the ruins is close."]
+            story = self.game.story_manager
+            if 0 < story.sinjoh_dragons_received() < 3:  # the Unown re-open the Sinjoh Ruins
+                step = next(n for n in story.SINJOH_UNOWN_STEPS if caught_count < n) if caught_count < 28 else 28
+                msg.append(f"The Unown want to take ARCEUS back to those ruins... at {step} forms, I think they will!")
 
         self.npc_dialogue = ClassicDialogueBox(
             Utils.get_full_dialogue_rect(self.game),

@@ -236,11 +236,29 @@ class StoryManager:
         if condition.startswith("party_has:"):
             pid = int(condition.split(":", 1)[1])
             return any(p and p.id == pid for p in self.player_team)
+        if condition.startswith("party_only:"):  # the Sinjoh Ruins' Mystri Stage: a lone Arceus
+            pid = int(condition.split(":", 1)[1])
+            team = [p for p in self.player_team if p]
+            return len(team) == 1 and team[0].id == pid
         if condition == "all_unown_registered":
             return self.unown_forms_caught() >= len(self.UNOWN_FORMS)
+        if condition == "sinjoh_open":  # a dragon is waiting at the Sinjoh Ruins (see sinjoh_dragons_allowed)
+            return self.sinjoh_dragons_received() < self.sinjoh_dragons_allowed()
         if condition.startswith("hoenn_version:"):  # Omega Ruby / Alpha Sapphire only (Marine / Terra Cave)
             return self.story_flags.get("hoenn_version") == condition.split(":", 1)[1]
         return None
+
+    # The Sinjoh Ruins (Jordan, 10-27): the first dragon is free; the Unown open the ruins again for
+    # a second (half the Unown forms) and a third (all 28).
+    SINJOH_DRAGON_FLAGS = ("sinjoh_dialga", "sinjoh_palkia", "sinjoh_giratina")
+    SINJOH_UNOWN_STEPS = (14, 28)
+
+    def sinjoh_dragons_received(self):
+        return sum(1 for f in self.SINJOH_DRAGON_FLAGS if self.story_flags.get(f))
+
+    def sinjoh_dragons_allowed(self):
+        caught = self.unown_forms_caught()
+        return 1 + sum(1 for n in self.SINJOH_UNOWN_STEPS if caught >= n)
 
     def purify_shadow(self):
         """Orre's Relic Stone: every Shadow Pokemon (a "shadow" form) in the party and PC becomes
@@ -1404,6 +1422,9 @@ class StoryManager:
         f = self.story_flags
         if f.get("received_starter_sinnoh") and not f.get("sinnoh_starly_driven_off"):
             f["sinnoh_starly_driven_off"] = f["received_pokedex_sinnoh"] = True
+        # The Sinjoh Ruins are one place now, as in HGSS (no Snowfields, Pathways or separate Mystri Stage).
+        if self.current_area_key in ("SINJOH_SNOWFIELDS", "SINJOH_PATHWAYS", "MYSTRI_STAGE"):
+            self.current_area_key = "SINJOH_CABIN"
 
     def get_gym_battle_background(self, area_id, trainer_index=0, is_leader=False):
         """

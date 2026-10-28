@@ -2,6 +2,13 @@
 
 ## Unreleased: opponents follow your team, Hoenn's story as in Omega Ruby / Alpha Sapphire
 
+- **The Sinjoh Ruins follow HeartGold/SoulSilver** (Serebii PokéEarth, Bulbapedia):
+  - **One place:** the snowfields, the Ruined Pathways, the frozen spring with Phione, the wild Pokémon, the trainers and the Cynthia battle are gone. Phione is still catchable in Hisui.
+  - **Getting in:** bring Arceus to the Ruins of Alph. You no longer need every Unown or the Sinnoh title.
+  - **The Mystri Stage:** a Hiker and Cynthia tell the ruins' story. With Arceus alone in your party, you choose Dialga, Palkia or Giratina. It joins you at Lv 1 (as in the games), or goes to the PC if your party is full. Its orb goes to the Bag.
+  - **All three dragons:** the first is free. The Unown open the ruins again for a second dragon at 14 Unown forms and the third at all 28. The Ruins of Alph researcher says how many are left.
+  - **Leaving:** the old man's Abra Teleports you home to New Bark Town. The way in from the Ruins of Alph opens only while a dragon is waiting.
+  - **Title screen:** the Sinjoh Ruins are no longer listed as one of Sinnoh's sub-regions.
 - **Orre rechecked against Serebii PokéEarth** (Colosseum and XD):
   - **Shadow Pokémon:** all 131 from both games were already in place.
   - **Boss teams:** Cipher's bosses use their final teams from the games: Dakim, Ein, Venus, Evice, Lovrina, Gorigan, Greevil, Miror B. and Justy.

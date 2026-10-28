@@ -582,7 +582,7 @@
             { "text": "Route 32", "target_area": "JOHTO_ROUTE_32", "condition": "has_zephyr_badge" },
             { "text": "Violet City", "target_area": "VIOLET_CITY", "condition": "visited_RUINS_OF_ALPH"},
             { "text": "Union Cave", "target_area": "UNION_CAVE", "condition": "has_zephyr_badge" },
-            {"text": "Follow the Unown (Sinjoh Ruins)", "target_area": "SINJOH_CABIN", "condition": {"any": ["visited_SINJOH_CABIN", ["beat_sinnoh_champion", "party_has:493", "all_unown_registered"]]}, "message": "Every Unown in the ruins swirls around Arceus... The world goes white. You're somewhere cold."}
+            {"text": "Follow the Unown (Sinjoh Ruins)", "target_area": "SINJOH_CABIN", "condition": ["party_has:493", "sinjoh_open"], "message": "The Unown on the walls seem to stare at Arceus... The world goes white. You're somewhere cold."}
         ],
         "explore_options": [
             { "text": "Enter Lab", "action": "NPC", "target": "alph_scientist" },

@@ -291,7 +291,7 @@ class RegionSelectionState(GameState):
     COLS = 3
     # The side areas each region opens up later (shown on its card).
     SUB_REGIONS = {"KANTO": ("Sevii Islands", "Orange Islands"), "HOENN": ("Orre",),
-                   "SINNOH": ("Hisui", "Sinjoh Ruins"), "UNOVA": ("Decolore Islands",),
+                   "SINNOH": ("Hisui",), "UNOVA": ("Decolore Islands",),
                    "GALAR": ("Isle of Armor", "Crown Tundra"), "PALDEA": ("Kitakami", "Blueberry Academy")}
 
     def __init__(self, game, mode="new", return_state=None):

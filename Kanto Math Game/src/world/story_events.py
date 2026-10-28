@@ -11,6 +11,7 @@ Each entry is keyed by the button's "target". Fields (all optional):
             level (the ace's level; otherwise from the area)
   gift_item {item: qty} given straight away ("balls" adds Poke Balls)
   gift_pokemon  species id, or {starter id: species id}
+  gift_level    the gift's level (default: the area's wild level)
 """
 
 GRUNT_G = {"name": "Galactic Grunt", "class": "GRUNT", "sprite": "galactic_grunt.png"}
@@ -367,14 +368,18 @@ def gift_for_starter(gift, starter_id):
     return gift
 
 
-def gift_pokemon(game, pid):
-    """Give a Pokemon to the player (party, or the PC when the party is full). Returns the message."""
+def gift_pokemon(game, pid, level=None):
+    """Give a Pokemon to the player (party, or the PC when the party is full), at the area's wild
+    level or at `level` (the Sinjoh Ruins' Lv 1 dragons). Returns the message."""
     from src.pokemon.data import Pokemon
     from src.world import levels
     story = game.story_manager
     mon = Pokemon(game.loader.fetch_specific(int(pid)), game.assets, size_mult=2.5)
     mon.caught_region = story.get_current_region()
     levels.set_wild(game, mon, story.current_area_key)
+    if level:
+        mon.level = int(level)
+        mon.current_hp = mon.get_max_hp()
     if len(story.player_team) < 6:
         story.player_team.append(mon)
         where = "joined your team"
