@@ -81,7 +81,7 @@ check(story.active_store == "HOENN" and story.player_team == [], "Hoenn: its own
 story.player_team.append(mk(255))
 story.story_flags["received_starter_hoenn"] = True
 story.current_area_key = "VALENCIA_ISLAND"
-check(story.store_key("ORANGE") == "LINKED" and story.store_key("ORRE") == "HOENN", "Orange uses Kanto's, Orre uses Hoenn's")
+check(story.store_key("ORRE") == "HOENN", "Orre uses Hoenn's storage (Orange has its own since 10-27)")
 story.current_area_key = "LITTLEROOT_TOWN"
 story.story_flags["beat_hoenn_champion"] = True
 story.badges["HOENN"] = ["x"] * 8

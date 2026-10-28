@@ -34,7 +34,8 @@ check(levels.xp_cap(story) == 100 and levels.story_level_cap(story) == levels.po
 story.level_cap_mode = "OBEDIENCE"
 check(levels.obey_level(story) == 100, "your team obeys you in Orre")
 story.current_area_key = "VALENCIA_ISLAND"
-check(levels.obey_level(story) == 100, "and in the Orange Islands")
+story.badges["ORANGE"] = []
+check(levels.obey_level(story) == 20, "the Orange Islands are a full region now (10-27): obedience follows its badges")
 story.level_cap_mode = "NONE"
 
 print("2) The Snag Machine")

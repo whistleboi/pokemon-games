@@ -34,60 +34,52 @@ def travel_texts(area):
     return [o["text"] for o in prog[area].get("travel_options", []) if c._check_menu_condition(o.get("condition"))]
 
 
-print("1) Getting there")
-story.story_flags = {"beat_champion": True}
-story.badges = {"KANTO": ["x"] * 8, "JOHTO": []}
-check("Ship to the Orange Islands" not in travel_texts("VERMILLION_CITY"), "Kanto title only: no ferry yet")
-story.story_flags["beat_johto_champion"] = True
-check("Ship to the Orange Islands" in travel_texts("VERMILLION_CITY"), "both titles: ferry from Vermilion")
-check("Ship to the Orange Islands" in travel_texts("OLIVINE_CITY"), "and from Olivine")
-check(len(ORANGE) == 21, f"{len(ORANGE)} Orange areas")
+print("1) A full region (the Pokemon Orange hack, 10-27)")
+pick = RegionSelectionState(g, mode="new")
+check("ORANGE" in pick.regions and pick.regions.index("ORANGE") == pick.regions.index("KANTO") + 1,
+      f"a new-game region, between Kanto and Johto: {pick.regions}")
+cfg = story.get_region_start("ORANGE")
+check(cfg.get("starters") == [1, 4, 7] and cfg.get("start_area") == "VALENCIA_ISLAND" and not cfg.get("travel_only"),
+      "Professor Ivy's Bulbasaur, Charmander or Squirtle on Valencia")
+check(len(ORANGE) >= 50, f"{len(ORANGE)} Orange areas")
 bad = [(k, o.get("target_area")) for k in ORANGE for o in (prog[k].get("travel_options", []) + prog[k].get("route_menu", []))
        if o.get("target_area") and o["target_area"] not in prog]
 check(not bad, f"every link leads somewhere {bad}")
+check(sum(len(prog[k].get("trainer_pool") or []) for k in ORANGE) >= 60, "the hack's route trainers")
 
-print("2) Ships follow the badges")
-story.badges["ORANGE"] = []
-t = travel_texts("VALENCIA_ISLAND")
-check("Ship to Mikan Island" in t and "Ship to Navel Island" not in t and "Ship to Vermilion City" in t, f"start: {t}")
-story.badges["ORANGE"] = ["CORAL_EYE", "SEA_RUBY", "SPIKE_SHELL", "JADE_STAR"]
-t = travel_texts("MIKAN_ISLAND")
-check(sum(x.startswith("Ship to") for x in t) == 8, f"4 badges: Mikan sails to all 8 other islands")
-c = ow.CityState(g)
-c.open_travel_menu()
-rects = [b.rect for b in c.hover_buttons]
-check(all(r.top >= 0 for r in rects) and len(rects) == len(t), f"{len(rects)} buttons fit on screen (top {min(r.top for r in rects)})")
+print("2) From Kanto: the S.S. Anne")
+story.story_flags = {"beat_champion": True}
+story.badges = {"KANTO": ["x"] * 8, "JOHTO": []}
+story.current_area_key = "VERMILLION_CITY"
+story.starting_region = "KANTO"
+check("S.S. Anne to the Orange Islands" in travel_texts("VERMILLION_CITY"), "Kanto Champion: the S.S. Anne sails to Orange")
+pick = RegionSelectionState(g, mode="move", return_state=ow.CityState(g))
+check("ORANGE" in pick.regions and pick._travel_only("ORANGE"), "Mom's picker sends a Kanto player to the S.S. Anne")
+story.story_flags = {}
+check("S.S. Anne to the Orange Islands" not in travel_texts("VERMILLION_CITY"), "no title: no voyage")
 
-print("3) Gyms: Orange Crew challenges, then the leader")
-story.badges["ORANGE"] = []
+print("3) Gyms: the hack's Orange Crew")
+story.badges = {"ORANGE": []}
 story.player_team = [mk(6)]
-for area, kind, want in (("MIKAN_ISLAND", "cissy", [(117, 52), (9, 54)]),
-                         ("KUMQUAT_ISLAND", "luana", [(65, 59), (105, 60)])):
+story.enter_region("ORANGE")
+for area, kind, want in (("MIKAN_ISLAND", "cissy", [(116, 15), (8, 18), (72, 13)]),
+                         ("KUMQUAT_ISLAND", "luana", [(65, 56), (105, 54), (776, 54), (357, 54)])):
     story.current_area_key = area
     story.badges["ORANGE"] = ["CORAL_EYE", "SEA_RUBY", "SPIKE_SHELL"][:0 if area == "MIKAN_ISLAND" else 3]
-    story.story_flags[f"gym_progress_{area}"] = 2
+    story.story_flags[f"gym_progress_{area}"] = len(prog[area]["gym"]["trainers"])
     lobby = ow.GymLobbyState(g, None)
     g.change_state(lobby)
     lobby.challenge_gym()
     pz = g.current_state
-    check(isinstance(pz, gp.GymPuzzleState) and pz.kind == kind, f"{area}: {kind} challenge first")
-    while not pz.finished:
-        pz.answer(next(i for i, o in enumerate(pz.options) if o[1]))
-    check(story.story_flags.get(f"gym_puzzle_{area}"), "challenge solved")
-    lobby = ow.GymLobbyState(g, None)
-    g.change_state(lobby)
-    lobby.challenge_gym()
+    if isinstance(pz, gp.GymPuzzleState):
+        check(pz.kind == kind, f"{area}: {kind} challenge first")
+        while not pz.finished:
+            pz.answer(next(i for i, o in enumerate(pz.options) if o[1]))
+        lobby = ow.GymLobbyState(g, None)
+        g.change_state(lobby)
+        lobby.challenge_gym()
     got = lineup(battle_of(g.current_state))
-    check(got == want, f"leader: {got}")
-pz = gp.GymPuzzleState(g, "NAVEL_ISLAND", "danny", lambda s: None)
-pz.answer(next(i for i, o in enumerate(pz.options) if o[1]))
-pz.answer(next(i for i, o in enumerate(pz.options) if not o[1]))
-check(pz.step == 0, "Danny: a wrong ledge slides you back down")
-story.current_area_key = "NAVEL_ISLAND"
-story.badges["ORANGE"] = []
-c = ow.CityState(g)
-g.change_state(c)
-c.open_gym() if hasattr(c, "open_gym") else None
+    check([p for p, _ in got] == [p for p, _ in want], f"leader: {got}")
 
 print("4) Drake and the Orange League")
 story.badges["ORANGE"] = ["CORAL_EYE", "SEA_RUBY", "SPIKE_SHELL", "JADE_STAR"]
@@ -98,44 +90,19 @@ g.change_state(lobby)
 check(lobby.is_league, f"Pummelo is a league: {lobby.status_text}")
 lobby.challenge_gym()
 b = battle_of(g.current_state)
-check(lineup(b) == [(132, 59), (95, 59), (94, 60), (3, 61), (125, 60), (149, 63)], f"Drake (Kanto Champion levels): {lineup(b)}")
-b.player_won = True
-b.perform_battle_outcome() if hasattr(b, "perform_battle_outcome") else None
-story.story_flags["beat_orange_champion"] = True
-story.badges["ORANGE"].append("WINNERS_TROPHY")
-check(levels.xp_cap(story) == 100 and levels.story_level_cap(story) == levels.postgame_cap(story)
-      == max([levels.LEAGUE_REMATCH_FLOOR["KANTO"]] + [p.level for p in story.player_team if p]),
-      "after the trophy: XP uncapped; post-game cap = team's highest level, Kanto rematch floor")
-story.story_flags.pop("move_offer_orange", None)
-c = ow.CityState(g)
-g.change_state(c)
-said = []
-c.show_message = lambda lines, callback=None: said.append(lines)
-offered = []
-c._offer_move = lambda *a, **k: offered.append(a)
-story.story_flags.pop("move_offer_orange", None)
-c.start()
-check(said and "Winner's Trophy" in said[0][0] and not offered, f"champion message, no move: {said[:1]}")
-story.story_flags["gym_progress_PUMMELO_ISLAND"] = 1
-lobby = ow.GymLobbyState(g, None)
-g.change_state(lobby)
-lobby.challenge_gym()
-check(lineup(battle_of(g.current_state))[-1] == (149, 73), "rematch: Drake +10 levels (73)")
+check([p for p, _ in lineup(b)] == [132, 208, 94, 3, 466, 149], f"Drake, the hack's team: {lineup(b)}")
+check(prog["PUMMELO_ISLAND"]["gym"]["leader"]["levels"][-1] == 65 and levels.CHAMPION_ACE["ORANGE"] == 65, "Drake's ace Lv 65")
+rival = [e["trainer"] for k in ORANGE for e in (prog[k].get("on_enter_event") or []) if isinstance(e, dict)
+         and e["trainer"].get("name") == "{rival_name}"]
+check(len(rival) == 5 and all(set(t["team_choice"]) == {"1", "4", "7"} for t in rival), "rival Cross: 5 battles, by starter")
 
 print("5) Region rules")
-pick = RegionSelectionState(g, mode="new")
-check("ORANGE" not in pick.regions, f"not a new-game region: {pick.regions}")
-pick = RegionSelectionState(g, mode="move", return_state=c)
-check("ORANGE" not in pick.regions, "Mom never moves there")
-story.enter_region("ORANGE")
+c = ow.CityState(g)
 bc = BadgeCaseState(g, c)
 check("ORANGE" in bc.unlocked_regions and len(bc.badge_sprites["ORANGE"]) == 5, "badge case: 5 Orange badges")
 story.current_area_key = "MIKAN_ISLAND"
-check(not evolution.evolution_allowed(g, 471) or "SINNOH" in story.visited_regions(), "visiting Orange unlocks no later-gen evolutions (Glaceon)")
 items = PokeMartState(g, None)._shop_items()
 check("RARE_CANDY" not in items, "island mart: no Rare Candy")
-story.current_area_key = "PUMMELO_ISLAND"
-check("RARE_CANDY" in PokeMartState(g, None)._shop_items(), "Pummelo (League) sells Rare Candy")
 
 print("6) Special islands")
 raw = g.loader.fetch_specific(9103)

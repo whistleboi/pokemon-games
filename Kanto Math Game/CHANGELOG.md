@@ -2,6 +2,15 @@
 
 ## Unreleased: opponents follow your team, Hoenn's story as in Omega Ruby / Alpha Sapphire
 
+- **The Orange Islands are a full region**, rebuilt from PiaCarrot's Pokémon Orange ROM hack (see `CREDITS.md`):
+  - **Starting out:** start a new game there from the title screen; it sits between Kanto and Johto. Professor Ivy on Valencia Island gives you Bulbasaur, Charmander or Squirtle, and the region has its own party, PC and Bag.
+  - **Getting there later:** Kanto's Champion gets a letter from Ivy, and the S.S. Anne in Vermilion City sails there. Mom's move picker sends a Kanto player to the ship. Moving from any other region starts you on Valencia.
+  - **The islands:** about 55 areas following the hack's map, from Valencia and Tangelo to Pummelo. New places include Tangelo Jungle, Mandarin Island, Kinnow, the Seven Grapefruits, Mt. Navel, Moro, Golden, Murcott, the Mandarin Desert, Trovitopolis, Cleopatra, Ascorbia, Butwal, Rind, Orange Victory Road, Tarroco and Hamlin. Routes 49 to 71 join them, and each badge opens the next stretch of sea.
+  - **Wild Pokémon and trainers:** the hack's wild tables, and 87 of its trainers.
+  - **The Orange Crew:** the hack's teams. Cissy (ace Lv 18), Danny (30), Rudy (42), Luana (56) and Drake (65) each have a post-game rematch team.
+  - **Story battles:** the rival Cross battles you five times with the starter strong against yours, and once more after the title. Tracey, Butch & Cassidy, Jessie & James and Lawrence III appear where the hack puts them.
+  - **Kept from our Orange:** Ivy's GS Ball errand, the stranded Lapras, the Pinkan reserve, the Crystal Onix and the Shamouti legend, at the new levels. Ivy's Valencia variants now live on Route 49. The invented beaches and cliffs are gone.
+  - **Trainer art:** the Orange cast and Jessie & James use the hack's Game Boy Color sprites.
 - **The Sinjoh Ruins follow HeartGold/SoulSilver** (Serebii PokéEarth, Bulbapedia):
   - **One place:** the snowfields, the Ruined Pathways, the frozen spring with Phione, the wild Pokémon, the trainers and the Cynthia battle are gone. Phione is still catchable in Hisui.
   - **Getting in:** bring Arceus to the Ruins of Alph. You no longer need every Unown or the Sinnoh title.

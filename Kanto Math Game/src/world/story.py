@@ -564,6 +564,7 @@ class StoryManager:
         "KALOS": {"options": [("SERENA", "serena"), ("CALEM", "calem")], "friend": ("SHAUNA", "shauna")},
         "ALOLA": {"options": [("HAU", "hau")], "friend": ("GLADION", "gladion")},
         "GALAR": {"options": [("HOP", "hop")]},
+        "ORANGE": {"options": [("CROSS", "cross")]},  # the Pokemon Orange hack's rival
         "PALDEA": {"options": [("NEMONA", "nemona")]},
     }
 

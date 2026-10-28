@@ -26,8 +26,8 @@ gloom = mkf(9119)
 check(evolution.item_evolution(g, gloom, "LEAF_STONE") == ("VILEPLUME_PINKAN", 45), "Pinkan Gloom + Leaf Stone")
 valencia = [k for k, v in FM.items() if v.get("form") == "valencia"]
 check(len(valencia) == 17, f"17 Valencia variants: {len(valencia)}")
-beach = g.loader.area_data["ORANGE_VALENCIA_BEACH_PERCENTAGES"]
-check(sum(beach.values()) == 100 and all(k in beach for k in valencia), "Valencia Beach has Ivy's variants")
+beach = g.loader.area_data["ORANGE_ORANGE_ROUTE_49_PERCENTAGES"]
+check(all(k in beach for k in valencia), "Route 49, off Valencia, has Ivy's variants")
 
 # Crystal Onix: stats, types, its own learnset, and the Crystal Stone.
 co = mkf(9201)

@@ -1,15 +1,9 @@
 {
   "REGION_START": {
     "ORANGE": {
-      "order": 2.5,
-      "travel_only": true,
-      "storage_region": "KANTO",
-      "subtitle": "ANIME / ORANGE ISLANDS",
+      "order": 1.5,
+      "subtitle": "POKEMON ORANGE / ORANGE ISLANDS",
       "start_area": "VALENCIA_ISLAND",
-      "dex_range": [
-        0,
-        -1
-      ],
       "dex_extra": [],
       "badge_images": [
         "orange_1",
@@ -17,6 +11,148 @@
         "orange_3",
         "orange_4",
         "orange_5"
+      ],
+      "starters": [
+        1,
+        4,
+        7
+      ],
+      "professor": "Professor Ivy",
+      "dex_list": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        19,
+        20,
+        21,
+        22,
+        23,
+        25,
+        27,
+        29,
+        32,
+        35,
+        36,
+        37,
+        39,
+        41,
+        42,
+        43,
+        44,
+        46,
+        47,
+        48,
+        49,
+        50,
+        52,
+        55,
+        56,
+        57,
+        58,
+        60,
+        63,
+        64,
+        66,
+        67,
+        68,
+        69,
+        70,
+        72,
+        73,
+        74,
+        75,
+        77,
+        79,
+        80,
+        81,
+        84,
+        86,
+        87,
+        92,
+        93,
+        95,
+        96,
+        98,
+        100,
+        101,
+        102,
+        104,
+        109,
+        111,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        124,
+        125,
+        126,
+        128,
+        131,
+        133,
+        134,
+        135,
+        136,
+        171,
+        176,
+        179,
+        180,
+        183,
+        187,
+        188,
+        191,
+        192,
+        196,
+        197,
+        211,
+        218,
+        219,
+        223,
+        226,
+        227,
+        231,
+        232,
+        236,
+        238,
+        239,
+        240,
+        278,
+        320,
+        327,
+        328,
+        357,
+        358,
+        433,
+        441,
+        457,
+        458,
+        700,
+        731,
+        732,
+        733,
+        742,
+        743,
+        744,
+        757,
+        769,
+        776
       ]
     }
   },
@@ -374,7 +510,7 @@
       "area_type": "town",
       "route_name": "Valencia Island",
       "region": "ORANGE",
-      "level": 50,
+      "level": 5,
       "has_gym": false,
       "explore_options": [
         {
@@ -391,11 +527,10 @@
           "color": "GOLD",
           "event": {
             "lines": [
-              "Professor Ivy: Welcome to Valencia Island, Champion!",
-              "I study how Pokemon here differ from Kanto's. Some are new colors, some grow bigger!",
-              "Before you go, I have a favor. I found this strange ball, and nobody can open it.",
-              "Kurt in Azalea Town knows Poke Balls better than anyone. Would you take it to Johto?",
-              "They say a Pokemon that travels through time lives in Ilex Forest..."
+              "Professor Ivy: Welcome to Valencia Island! I study how Pokemon here differ from other regions.",
+              "Some have new colors, some grow bigger. You'll see on your journey!",
+              "One favor: I found this strange ball, and nobody can open it.",
+              "If you ever go to Johto, Kurt in Azalea Town knows Poke Balls better than anyone."
             ],
             "gift_item": {
               "GS_BALL": 1
@@ -420,163 +555,194 @@
             "flag": "got_orange_lapras"
           },
           "flag_condition": "not got_orange_lapras"
-        },
-        {
-          "text": "Battle Tracey",
-          "action": "EVENT",
-          "color": "GOLD",
-          "event": {
-            "requires": [
-              "has_coral_eye_badge"
-            ],
-            "fail": [
-              "Tracey: I'm a Pokemon Watcher! Win a badge, then I'd love to sketch your team in battle."
-            ],
-            "lines": [
-              "Tracey: You won Cissy's badge! Let me watch your Pokemon up close. Battle me!"
-            ],
-            "battle": {
-              "name": "Tracey",
-              "class": "POKEMON_WATCHER",
-              "sprite": "pokefan_m.png",
-              "team": [
-                183,
-                48,
-                123
-              ],
-              "levels": [
-                58,
-                58,
-                61
-              ],
-              "rewards": {
-                "balls": 10
-              },
-              "dialogue": {
-                "player_won": [
-                  "Tracey: Amazing! I'll call this sketch Champion in Action."
-                ]
-              }
-            },
-            "flag": "defeated_tracey",
-            "done": [
-              "Tracey: My sketchbook is filling up with your Pokemon!"
-            ]
-          }
         }
       ],
       "travel_options": [
         {
-          "text": "Valencia Beach",
-          "target_area": "VALENCIA_BEACH"
-        },
-        {
-          "text": "Ship to Vermilion City",
-          "long_ride": true,
-          "target_area": "VERMILLION_CITY",
-          "message": "The ferry sails north, back to Vermilion City in Kanto."
-        },
-        {
-          "text": "Ship to Olivine City",
-          "long_ride": true,
-          "target_area": "OLIVINE_CITY",
-          "message": "The ferry sails north-west, back to Olivine City in Johto."
-        },
-        {
-          "text": "Ship to Mikan Island",
-          "target_area": "MIKAN_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... Mikan Island's lighthouse comes into view."
-        },
-        {
-          "text": "Ship to Pinkan Island",
-          "target_area": "PINKAN_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... Pink berry trees cover Pinkan Island.",
-          "condition": "has_coral_eye_badge"
-        },
-        {
-          "text": "Ship to Navel Island",
-          "target_area": "NAVEL_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... A snowy volcano rises over Navel Island.",
-          "condition": "has_coral_eye_badge"
-        },
-        {
-          "text": "Ship to Sunburst Island",
-          "target_area": "SUNBURST_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... Glass sparkles on every street of Sunburst Island.",
-          "condition": "has_sea_ruby_badge"
-        },
-        {
-          "text": "Ship to Trovita Island",
-          "target_area": "TROVITA_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... Trovita Island's beaches shine in the sun.",
-          "condition": "has_sea_ruby_badge"
-        },
-        {
-          "text": "Ship to Shamouti Island",
-          "target_area": "SHAMOUTI_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... Drums from a festival echo across Shamouti Island.",
-          "condition": "has_spike_shell_badge"
-        },
-        {
-          "text": "Ship to Kumquat Island",
-          "target_area": "KUMQUAT_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... Resort hotels line the shore of Kumquat Island.",
-          "condition": "has_spike_shell_badge"
+          "text": "Route 49",
+          "target_area": "ORANGE_ROUTE_49",
+          "condition": "received_starter_orange"
         },
         {
           "text": "Ship to Pummelo Island",
           "target_area": "PUMMELO_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... Pummelo Stadium towers over the harbor.",
+          "message": "The ship sails across the whole archipelago to Pummelo Island.",
           "condition": "has_jade_star_badge"
         }
       ],
-      "next_area": "VALENCIA_BEACH"
+      "next_area": "ORANGE_ROUTE_49"
     },
-    "VALENCIA_BEACH": {
+    "ORANGE_ROUTE_49": {
       "area_type": "wild_route",
-      "route_name": "Valencia Beach",
+      "route_name": "Route 49",
       "region": "ORANGE",
-      "level": 50,
-      "battle_type": "ocean",
-      "wild_pool_percentages": "ORANGE_VALENCIA_BEACH_PERCENTAGES",
+      "level": 6,
+      "battle_type": "grass",
       "min_rounds": 2,
+      "wild_pool_percentages": "ORANGE_ORANGE_ROUTE_49_PERCENTAGES",
+      "trainer_pool": [],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "Valencia Island",
+          "action": "EXIT",
+          "target_area": "VALENCIA_ISLAND",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        },
+        {
+          "text": "Tangelo Island",
+          "action": "EXIT",
+          "target_area": "TANGELO_ISLAND",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        }
+      ],
+      "next_area": "VALENCIA_ISLAND"
+    },
+    "TANGELO_ISLAND": {
+      "area_type": "town",
+      "route_name": "Tangelo Island",
+      "region": "ORANGE",
+      "level": 8,
+      "has_gym": false,
+      "explore_options": [
+        {
+          "text": "Pokemon Center",
+          "action": "HEAL"
+        },
+        {
+          "text": "Poke Mart",
+          "action": "SHOP"
+        }
+      ],
+      "travel_options": [
+        {
+          "text": "Route 49",
+          "target_area": "ORANGE_ROUTE_49"
+        },
+        {
+          "text": "Routes 50 and 51",
+          "target_area": "ORANGE_ROUTE_50"
+        }
+      ],
+      "next_area": "ORANGE_ROUTE_49",
+      "on_enter_event": [
+        {
+          "type": "trainer_battle",
+          "trainer": {
+            "name": "Tracey",
+            "class": "PKMN_TRAINER",
+            "sprite": "tracey.png",
+            "is_boss_battle": true,
+            "team": [
+              48,
+              183
+            ],
+            "levels": [
+              12,
+              9
+            ],
+            "rewards": {
+              "balls": 5
+            },
+            "victory_flag": "orange_tracey_tangelo",
+            "dialogue": {
+              "intro": [
+                "Tracey: Oh! A trainer! I'm sketching Pokemon here. Want to battle while I watch?"
+              ],
+              "player_won": [
+                "Tracey: Wow, nice! I'll draw that battle later."
+              ]
+            }
+          },
+          "flag_check": "orange_tracey_tangelo",
+          "condition": "received_starter_orange"
+        }
+      ]
+    },
+    "ORANGE_ROUTE_50": {
+      "area_type": "wild_route",
+      "route_name": "Routes 50 and 51",
+      "region": "ORANGE",
+      "level": 9,
+      "battle_type": "grass",
+      "min_rounds": 2,
+      "wild_pool_percentages": "ORANGE_ORANGE_ROUTE_50_PERCENTAGES",
       "trainer_pool": [
         {
-          "name": "Swimmer Coral",
-          "class": "SWIMMER",
-          "sprite": "swimmer_f.png",
+          "name": "Youngster Moe",
+          "class": "YOUNGSTER",
+          "sprite": "youngster.png",
           "team": [
-            120,
-            121
+            21,
+            23
+          ],
+          "levels": [
+            8,
+            7
           ],
           "rewards": {
-            "balls": 4
+            "balls": 2
           }
         },
         {
-          "name": "Fisherman Hal",
-          "class": "FISHERMAN",
-          "sprite": "fisherman.png",
+          "name": "Youngster Jerry",
+          "class": "YOUNGSTER",
+          "sprite": "youngster.png",
           "team": [
-            129,
-            118,
-            130
+            60,
+            16
+          ],
+          "levels": [
+            8,
+            8
           ],
           "rewards": {
-            "balls": 4
+            "balls": 2
           }
         },
         {
-          "name": "Beauty Sandy",
-          "class": "BEAUTY",
-          "sprite": "beauty.png",
+          "name": "Bug Catcher Bo",
+          "class": "BUG_CATCHER",
+          "sprite": "bug_catcher.png",
           "team": [
-            54,
-            79,
-            80
+            12
+          ],
+          "levels": [
+            10
           ],
           "rewards": {
-            "balls": 4
+            "balls": 2
+          }
+        },
+        {
+          "name": "Bug Catcher Sam",
+          "class": "BUG_CATCHER",
+          "sprite": "bug_catcher.png",
+          "team": [
+            15
+          ],
+          "levels": [
+            10
+          ],
+          "rewards": {
+            "balls": 2
           }
         }
       ],
@@ -600,20 +766,447 @@
           "color": "GREEN"
         },
         {
-          "text": "Valencia Island",
+          "text": "Battle {rival_name}",
+          "action": "EVENT",
+          "color": "GOLD",
+          "condition": "beat_orange_champion",
+          "flag_condition": "not orange_cross_final",
+          "event": {
+            "lines": [
+              "{rival_name}: You're the Orange League Champion now. One more, for real!"
+            ],
+            "flag": "orange_cross_final",
+            "battle": {
+              "name": "{rival_name}",
+              "class": "PKMN_TRAINER",
+              "sprite": "{rival_character}",
+              "is_boss_battle": true,
+              "team": [
+                9,
+                136,
+                227,
+                467,
+                802
+              ],
+              "levels": [
+                74,
+                73,
+                73,
+                72,
+                75
+              ],
+              "rewards": {
+                "balls": 5
+              },
+              "dialogue": {
+                "intro": [
+                  "{rival_name}: You're the Orange League Champion now. One more, for real!"
+                ],
+                "player_won": [
+                  "{rival_name}: Tch. Next time I'll win."
+                ]
+              },
+              "team_choice": {
+                "4": [
+                  9,
+                  136,
+                  227,
+                  467,
+                  802
+                ],
+                "7": [
+                  3,
+                  134,
+                  227,
+                  466,
+                  802
+                ],
+                "1": [
+                  6,
+                  470,
+                  227,
+                  80,
+                  802
+                ]
+              }
+            }
+          }
+        },
+        {
+          "text": "Tangelo Island",
           "action": "EXIT",
-          "target_area": "VALENCIA_ISLAND",
-          "condition": "can_exit",
+          "target_area": "TANGELO_ISLAND",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        },
+        {
+          "text": "Tangelo Jungle",
+          "action": "EXIT",
+          "target_area": "TANGELO_JUNGLE",
+          "condition": [
+            "can_exit"
+          ],
           "color": "RED"
         }
       ],
-      "next_area": "VALENCIA_ISLAND"
+      "next_area": "TANGELO_ISLAND"
+    },
+    "TANGELO_JUNGLE": {
+      "area_type": "wild_route",
+      "route_name": "Tangelo Jungle",
+      "region": "ORANGE",
+      "level": 11,
+      "battle_type": "grass",
+      "min_rounds": 2,
+      "wild_pool_percentages": "ORANGE_TANGELO_JUNGLE_PERCENTAGES",
+      "trainer_pool": [
+        {
+          "name": "Bug Catcher Mike",
+          "class": "BUG_CATCHER",
+          "sprite": "bug_catcher.png",
+          "team": [
+            10,
+            46
+          ],
+          "levels": [
+            10,
+            10
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Bug Catcher Alan",
+          "class": "BUG_CATCHER",
+          "sprite": "bug_catcher.png",
+          "team": [
+            127
+          ],
+          "levels": [
+            11
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Bug Catcher Alex",
+          "class": "BUG_CATCHER",
+          "sprite": "bug_catcher.png",
+          "team": [
+            10,
+            48,
+            13,
+            46
+          ],
+          "levels": [
+            8,
+            8,
+            8,
+            8
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Youngster Ness",
+          "class": "YOUNGSTER",
+          "sprite": "youngster.png",
+          "team": [
+            278,
+            19,
+            25
+          ],
+          "levels": [
+            9,
+            9,
+            9
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Routes 50 and 51",
+          "action": "EXIT",
+          "target_area": "ORANGE_ROUTE_50",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        },
+        {
+          "text": "Route 52",
+          "action": "EXIT",
+          "target_area": "ORANGE_ROUTE_52",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        }
+      ],
+      "next_area": "ORANGE_ROUTE_50",
+      "on_enter_event": [
+        {
+          "type": "trainer_battle",
+          "trainer": {
+            "name": "{rival_name}",
+            "class": "PKMN_TRAINER",
+            "sprite": "{rival_character}",
+            "is_boss_battle": true,
+            "team": [
+              7,
+              744,
+              133
+            ],
+            "levels": [
+              14,
+              13,
+              12
+            ],
+            "rewards": {
+              "balls": 5
+            },
+            "victory_flag": "orange_cross_jungle",
+            "dialogue": {
+              "intro": [
+                "{rival_name}: You're Ivy's new trainer? Let's see if you're worth it."
+              ],
+              "player_won": [
+                "{rival_name}: Tch. Next time I'll win."
+              ]
+            },
+            "team_choice": {
+              "4": [
+                7,
+                744,
+                133
+              ],
+              "7": [
+                1,
+                744,
+                133
+              ],
+              "1": [
+                4,
+                744,
+                133
+              ]
+            }
+          },
+          "flag_check": "orange_cross_jungle"
+        }
+      ]
+    },
+    "ORANGE_ROUTE_52": {
+      "area_type": "wild_route",
+      "route_name": "Route 52",
+      "region": "ORANGE",
+      "level": 12,
+      "battle_type": "grass",
+      "min_rounds": 2,
+      "wild_pool_percentages": "ORANGE_ORANGE_ROUTE_52_PERCENTAGES",
+      "trainer_pool": [
+        {
+          "name": "Camper Samm",
+          "class": "CAMPER",
+          "sprite": "camper.png",
+          "team": [
+            56
+          ],
+          "levels": [
+            10
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Fisher Pops",
+          "class": "FISHER",
+          "sprite": "fisherman.png",
+          "team": [
+            170,
+            72,
+            222
+          ],
+          "levels": [
+            7,
+            7,
+            7
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Fisher Doc",
+          "class": "FISHER",
+          "sprite": "fisherman.png",
+          "team": [
+            211
+          ],
+          "levels": [
+            10
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Fisher Stan",
+          "class": "FISHER",
+          "sprite": "fisherman.png",
+          "team": [
+            60,
+            223
+          ],
+          "levels": [
+            8,
+            9
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Swimmer Asia",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [
+            320,
+            54
+          ],
+          "levels": [
+            9,
+            9
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Swimmer Theo",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [
+            120
+          ],
+          "levels": [
+            10
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Youngster Ryan",
+          "class": "YOUNGSTER",
+          "sprite": "youngster.png",
+          "team": [
+            114,
+            19
+          ],
+          "levels": [
+            9,
+            9
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Swimmer Atecain",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [
+            129,
+            79,
+            129,
+            318,
+            129
+          ],
+          "levels": [
+            6,
+            6,
+            6,
+            6,
+            6
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Tangelo Jungle",
+          "action": "EXIT",
+          "target_area": "TANGELO_JUNGLE",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        },
+        {
+          "text": "Mikan Island",
+          "action": "EXIT",
+          "target_area": "MIKAN_ISLAND",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        }
+      ],
+      "next_area": "TANGELO_JUNGLE"
     },
     "MIKAN_ISLAND": {
       "area_type": "town",
       "route_name": "Mikan Island",
       "region": "ORANGE",
-      "level": 52,
+      "level": 14,
       "has_gym": true,
       "explore_options": [
         {
@@ -632,119 +1225,65 @@
       ],
       "travel_options": [
         {
-          "text": "Mikan Reef",
-          "target_area": "MIKAN_REEF"
+          "text": "Route 52",
+          "target_area": "ORANGE_ROUTE_52"
         },
         {
-          "text": "Ship to Valencia Island",
-          "target_area": "VALENCIA_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... Palm trees line the docks of Valencia Island."
-        },
-        {
-          "text": "Ship to Pinkan Island",
-          "target_area": "PINKAN_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... Pink berry trees cover Pinkan Island.",
+          "text": "Route 53",
+          "target_area": "ORANGE_ROUTE_53",
           "condition": "has_coral_eye_badge"
-        },
-        {
-          "text": "Ship to Navel Island",
-          "target_area": "NAVEL_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... A snowy volcano rises over Navel Island.",
-          "condition": "has_coral_eye_badge"
-        },
-        {
-          "text": "Ship to Sunburst Island",
-          "target_area": "SUNBURST_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... Glass sparkles on every street of Sunburst Island.",
-          "condition": "has_sea_ruby_badge"
-        },
-        {
-          "text": "Ship to Trovita Island",
-          "target_area": "TROVITA_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... Trovita Island's beaches shine in the sun.",
-          "condition": "has_sea_ruby_badge"
-        },
-        {
-          "text": "Ship to Shamouti Island",
-          "target_area": "SHAMOUTI_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... Drums from a festival echo across Shamouti Island.",
-          "condition": "has_spike_shell_badge"
-        },
-        {
-          "text": "Ship to Kumquat Island",
-          "target_area": "KUMQUAT_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... Resort hotels line the shore of Kumquat Island.",
-          "condition": "has_spike_shell_badge"
-        },
-        {
-          "text": "Ship to Pummelo Island",
-          "target_area": "PUMMELO_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... Pummelo Stadium towers over the harbor.",
-          "condition": "has_jade_star_badge"
         }
       ],
-      "next_area": "MIKAN_REEF",
+      "next_area": "ORANGE_ROUTE_52",
       "gym": {
         "trainers": [
           {
-            "name": "Swimmer Kai",
+            "name": "Swimmer Maria",
             "class": "SWIMMER",
             "sprite": "swimmer_m.png",
             "team": [
-              116,
-              90,
+              222
+            ],
+            "levels": [
+              13
+            ],
+            "rewards": {
+              "balls": 2
+            },
+            "is_boss_battle": true
+          },
+          {
+            "name": "Lass Nicole",
+            "class": "LASS",
+            "sprite": "lass.png",
+            "team": [
+              183,
               120
             ],
             "levels": [
-              48,
-              48,
-              50
+              11,
+              11
             ],
             "rewards": {
-              "balls": 5
+              "balls": 2
             },
-            "dialogue": {
-              "intro": [
-                "Cissy's Gym is all about water. Hope you can swim!"
-              ]
-            }
-          },
-          {
-            "name": "Fisherman Wade",
-            "class": "FISHERMAN",
-            "sprite": "fisherman.png",
-            "team": [
-              118,
-              119,
-              130
-            ],
-            "levels": [
-              49,
-              49,
-              51
-            ],
-            "rewards": {
-              "balls": 5
-            },
-            "dialogue": {
-              "intro": [
-                "The best catches come from Mikan's reef!"
-              ]
-            }
+            "is_boss_battle": true
           }
         ],
         "leader": {
           "name": "Cissy",
           "class": "GYM_LEADER",
-          "sprite": "swimmer_f.png",
+          "sprite": "cissy.png",
           "is_boss_battle": true,
           "team": [
-            117,
-            9
+            116,
+            8,
+            72
           ],
           "levels": [
-            52,
-            54
+            15,
+            18,
+            13
           ],
           "badge_reward": "CORAL_EYE",
           "rewards": {
@@ -760,6 +1299,24 @@
             "player_lost": [
               "Cissy: Better work on that aim. Come back any time!"
             ]
+          },
+          "rematch": {
+            "team": [
+              230,
+              9,
+              748,
+              55,
+              130,
+              171
+            ],
+            "levels": [
+              70,
+              70,
+              70,
+              70,
+              70,
+              70
+            ]
           }
         },
         "requirements": {
@@ -767,38 +1324,61 @@
         }
       }
     },
-    "MIKAN_REEF": {
+    "ORANGE_ROUTE_53": {
       "area_type": "wild_route",
-      "route_name": "Mikan Reef",
+      "route_name": "Route 53",
       "region": "ORANGE",
-      "level": 52,
-      "battle_type": "ocean",
-      "wild_pool_percentages": "ORANGE_MIKAN_REEF_PERCENTAGES",
+      "level": 16,
+      "battle_type": "water",
       "min_rounds": 2,
+      "wild_pool_percentages": "ORANGE_ORANGE_ROUTE_53_PERCENTAGES",
       "trainer_pool": [
         {
-          "name": "Swimmer Lani",
-          "class": "SWIMMER",
-          "sprite": "swimmer_f.png",
+          "name": "Fisher Nat Pagle",
+          "class": "FISHER",
+          "sprite": "fisherman.png",
           "team": [
-            222,
-            117
+            72,
+            129,
+            170
+          ],
+          "levels": [
+            14,
+            14,
+            14
           ],
           "rewards": {
-            "balls": 4
+            "balls": 2
           }
         },
         {
-          "name": "Sailor Brock",
-          "class": "SAILOR",
-          "sprite": "sailor.png",
+          "name": "Swimmer Zach",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
           "team": [
-            66,
-            67,
-            99
+            60,
+            116
+          ],
+          "levels": [
+            14,
+            14
           ],
           "rewards": {
-            "balls": 4
+            "balls": 2
+          }
+        },
+        {
+          "name": "Swimmer Mark",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [
+            90
+          ],
+          "levels": [
+            17
+          ],
+          "rewards": {
+            "balls": 2
           }
         }
       ],
@@ -825,1103 +1405,37 @@
           "text": "Mikan Island",
           "action": "EXIT",
           "target_area": "MIKAN_ISLAND",
-          "condition": "can_exit",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        },
+        {
+          "text": "Sunburst Island",
+          "action": "EXIT",
+          "target_area": "SUNBURST_ISLAND",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        },
+        {
+          "text": "Route 54",
+          "action": "EXIT",
+          "target_area": "ORANGE_ROUTE_54",
+          "condition": [
+            "can_exit"
+          ],
           "color": "RED"
         }
       ],
       "next_area": "MIKAN_ISLAND"
     },
-    "NAVEL_ISLAND": {
-      "area_type": "town",
-      "route_name": "Navel Island",
-      "region": "ORANGE",
-      "level": 55,
-      "has_gym": true,
-      "explore_options": [
-        {
-          "text": "Pokemon Center",
-          "action": "HEAL"
-        },
-        {
-          "text": "Poke Mart",
-          "action": "SHOP"
-        },
-        {
-          "text": "Navel Gym",
-          "action": "GYM",
-          "color": "GOLD"
-        }
-      ],
-      "travel_options": [
-        {
-          "text": "Navel Summit",
-          "target_area": "NAVEL_SUMMIT"
-        },
-        {
-          "text": "Ship to Valencia Island",
-          "target_area": "VALENCIA_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... Palm trees line the docks of Valencia Island."
-        },
-        {
-          "text": "Ship to Mikan Island",
-          "target_area": "MIKAN_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... Mikan Island's lighthouse comes into view."
-        },
-        {
-          "text": "Ship to Pinkan Island",
-          "target_area": "PINKAN_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... Pink berry trees cover Pinkan Island.",
-          "condition": "has_coral_eye_badge"
-        },
-        {
-          "text": "Ship to Sunburst Island",
-          "target_area": "SUNBURST_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... Glass sparkles on every street of Sunburst Island.",
-          "condition": "has_sea_ruby_badge"
-        },
-        {
-          "text": "Ship to Trovita Island",
-          "target_area": "TROVITA_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... Trovita Island's beaches shine in the sun.",
-          "condition": "has_sea_ruby_badge"
-        },
-        {
-          "text": "Ship to Shamouti Island",
-          "target_area": "SHAMOUTI_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... Drums from a festival echo across Shamouti Island.",
-          "condition": "has_spike_shell_badge"
-        },
-        {
-          "text": "Ship to Kumquat Island",
-          "target_area": "KUMQUAT_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... Resort hotels line the shore of Kumquat Island.",
-          "condition": "has_spike_shell_badge"
-        },
-        {
-          "text": "Ship to Pummelo Island",
-          "target_area": "PUMMELO_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... Pummelo Stadium towers over the harbor.",
-          "condition": "has_jade_star_badge"
-        }
-      ],
-      "next_area": "NAVEL_SUMMIT",
-      "gym": {
-        "trainers": [
-          {
-            "name": "Hiker Dale",
-            "class": "HIKER",
-            "sprite": "hiker.png",
-            "team": [
-              75,
-              95,
-              76
-            ],
-            "levels": [
-              50,
-              50,
-              52
-            ],
-            "rewards": {
-              "balls": 5
-            },
-            "dialogue": {
-              "intro": [
-                "Danny's challenge starts at the bottom of the volcano!"
-              ]
-            }
-          },
-          {
-            "name": "Skier Frost",
-            "class": "SKIER",
-            "sprite": "skier.png",
-            "team": [
-              86,
-              87,
-              124
-            ],
-            "levels": [
-              51,
-              51,
-              53
-            ],
-            "rewards": {
-              "balls": 5
-            },
-            "dialogue": {
-              "intro": [
-                "It's freezing at the top. Can your Pokemon take it?"
-              ]
-            }
-          }
-        ],
-        "leader": {
-          "name": "Danny",
-          "class": "GYM_LEADER",
-          "sprite": "boarder.png",
-          "is_boss_battle": true,
-          "team": [
-            31,
-            123,
-            101
-          ],
-          "levels": [
-            54,
-            54,
-            56
-          ],
-          "badge_reward": "SEA_RUBY",
-          "rewards": {
-            "balls": 10
-          },
-          "dialogue": {
-            "intro": [
-              "Danny: You made it up the mountain. Now for a three-on-three battle!"
-            ],
-            "player_won": [
-              "Danny: Great battle! Take the Sea Ruby Badge."
-            ],
-            "player_lost": [
-              "Danny: Not bad! Climb back up when you're ready."
-            ]
-          }
-        },
-        "requirements": {
-          "badges": 1,
-          "fail_text": "Danny only battles trainers with the Coral-Eye Badge."
-        }
-      }
-    },
-    "NAVEL_SUMMIT": {
-      "area_type": "wild_route",
-      "route_name": "Navel Summit",
-      "region": "ORANGE",
-      "level": 55,
-      "battle_type": "mountain",
-      "wild_pool_percentages": "ORANGE_NAVEL_SUMMIT_PERCENTAGES",
-      "min_rounds": 2,
-      "trainer_pool": [
-        {
-          "name": "Hiker Russ",
-          "class": "HIKER",
-          "sprite": "hiker.png",
-          "team": [
-            74,
-            75,
-            95
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "Skier Bree",
-          "class": "SKIER",
-          "sprite": "skier.png",
-          "team": [
-            220,
-            221,
-            225
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        }
-      ],
-      "route_menu": [
-        {
-          "text": "CATCH WILD PKMN",
-          "action": "CATCH",
-          "condition": "has_balls",
-          "color": "BLUE"
-        },
-        {
-          "text": "BATTLE WILD PKMN",
-          "action": "BATTLE",
-          "condition": "can_battle",
-          "color": "GREEN"
-        },
-        {
-          "text": "BATTLE TRAINER",
-          "action": "TRAINER",
-          "condition": "has_trainers",
-          "color": "GREEN"
-        },
-        {
-          "text": "Navel Island",
-          "action": "EXIT",
-          "target_area": "NAVEL_ISLAND",
-          "condition": "can_exit",
-          "color": "RED"
-        }
-      ],
-      "next_area": "NAVEL_ISLAND"
-    },
-    "TROVITA_ISLAND": {
-      "area_type": "town",
-      "route_name": "Trovita Island",
-      "region": "ORANGE",
-      "level": 58,
-      "has_gym": true,
-      "explore_options": [
-        {
-          "text": "Pokemon Center",
-          "action": "HEAL"
-        },
-        {
-          "text": "Poke Mart",
-          "action": "SHOP"
-        },
-        {
-          "text": "Trovita Gym",
-          "action": "GYM",
-          "color": "GOLD"
-        }
-      ],
-      "travel_options": [
-        {
-          "text": "Trovita Shore",
-          "target_area": "TROVITA_SHORE"
-        },
-        {
-          "text": "Ship to Valencia Island",
-          "target_area": "VALENCIA_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... Palm trees line the docks of Valencia Island."
-        },
-        {
-          "text": "Ship to Mikan Island",
-          "target_area": "MIKAN_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... Mikan Island's lighthouse comes into view."
-        },
-        {
-          "text": "Ship to Pinkan Island",
-          "target_area": "PINKAN_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... Pink berry trees cover Pinkan Island.",
-          "condition": "has_coral_eye_badge"
-        },
-        {
-          "text": "Ship to Navel Island",
-          "target_area": "NAVEL_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... A snowy volcano rises over Navel Island.",
-          "condition": "has_coral_eye_badge"
-        },
-        {
-          "text": "Ship to Sunburst Island",
-          "target_area": "SUNBURST_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... Glass sparkles on every street of Sunburst Island.",
-          "condition": "has_sea_ruby_badge"
-        },
-        {
-          "text": "Ship to Shamouti Island",
-          "target_area": "SHAMOUTI_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... Drums from a festival echo across Shamouti Island.",
-          "condition": "has_spike_shell_badge"
-        },
-        {
-          "text": "Ship to Kumquat Island",
-          "target_area": "KUMQUAT_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... Resort hotels line the shore of Kumquat Island.",
-          "condition": "has_spike_shell_badge"
-        },
-        {
-          "text": "Ship to Pummelo Island",
-          "target_area": "PUMMELO_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... Pummelo Stadium towers over the harbor.",
-          "condition": "has_jade_star_badge"
-        }
-      ],
-      "next_area": "TROVITA_SHORE",
-      "gym": {
-        "trainers": [
-          {
-            "name": "Sailor Brine",
-            "class": "SAILOR",
-            "sprite": "sailor.png",
-            "team": [
-              99,
-              73,
-              130
-            ],
-            "levels": [
-              52,
-              52,
-              54
-            ],
-            "rewards": {
-              "balls": 5
-            },
-            "dialogue": {
-              "intro": [
-                "Rudy's Gym floats on the water. Mind your footing!"
-              ]
-            }
-          },
-          {
-            "name": "Engineer Volt",
-            "class": "ENGINEER",
-            "sprite": "engineer.png",
-            "team": [
-              82,
-              101,
-              125
-            ],
-            "levels": [
-              53,
-              53,
-              55
-            ],
-            "rewards": {
-              "balls": 5
-            },
-            "dialogue": {
-              "intro": [
-                "I keep the Gym's lights on. Let's see how you handle a jolt!"
-              ]
-            }
-          }
-        ],
-        "leader": {
-          "name": "Rudy",
-          "class": "GYM_LEADER",
-          "sprite": "acetrainer_m.png",
-          "is_boss_battle": true,
-          "team": [
-            125,
-            121,
-            103
-          ],
-          "levels": [
-            56,
-            56,
-            58
-          ],
-          "badge_reward": "SPIKE_SHELL",
-          "rewards": {
-            "balls": 10
-          },
-          "dialogue": {
-            "intro": [
-              "Rudy: Welcome to Trovita! My Pokemon and I battle with style."
-            ],
-            "player_won": [
-              "Rudy: Brilliant! The Spike Shell Badge suits you."
-            ],
-            "player_lost": [
-              "Rudy: Better luck next time. The ferry will bring you back!"
-            ]
-          }
-        },
-        "requirements": {
-          "badges": 2,
-          "fail_text": "Rudy only battles trainers with two Orange Crew badges."
-        }
-      }
-    },
-    "TROVITA_SHORE": {
-      "area_type": "wild_route",
-      "route_name": "Trovita Shore",
-      "region": "ORANGE",
-      "level": 58,
-      "battle_type": "ocean",
-      "wild_pool_percentages": "ORANGE_TROVITA_SHORE_PERCENTAGES",
-      "min_rounds": 2,
-      "trainer_pool": [
-        {
-          "name": "Swimmer Marlin",
-          "class": "SWIMMER",
-          "sprite": "swimmer_m.png",
-          "team": [
-            73,
-            171
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "Beauty Pearl",
-          "class": "BEAUTY",
-          "sprite": "beauty.png",
-          "team": [
-            121,
-            124,
-            36
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        }
-      ],
-      "route_menu": [
-        {
-          "text": "CATCH WILD PKMN",
-          "action": "CATCH",
-          "condition": "has_balls",
-          "color": "BLUE"
-        },
-        {
-          "text": "BATTLE WILD PKMN",
-          "action": "BATTLE",
-          "condition": "can_battle",
-          "color": "GREEN"
-        },
-        {
-          "text": "BATTLE TRAINER",
-          "action": "TRAINER",
-          "condition": "has_trainers",
-          "color": "GREEN"
-        },
-        {
-          "text": "Trovita Island",
-          "action": "EXIT",
-          "target_area": "TROVITA_ISLAND",
-          "condition": "can_exit",
-          "color": "RED"
-        }
-      ],
-      "next_area": "TROVITA_ISLAND"
-    },
-    "KUMQUAT_ISLAND": {
-      "area_type": "town",
-      "route_name": "Kumquat Island",
-      "region": "ORANGE",
-      "level": 61,
-      "has_gym": true,
-      "explore_options": [
-        {
-          "text": "Pokemon Center",
-          "action": "HEAL"
-        },
-        {
-          "text": "Poke Mart",
-          "action": "SHOP"
-        },
-        {
-          "text": "Kumquat Gym",
-          "action": "GYM",
-          "color": "GOLD"
-        }
-      ],
-      "travel_options": [
-        {
-          "text": "Kumquat Jungle",
-          "target_area": "KUMQUAT_JUNGLE"
-        },
-        {
-          "text": "Ship to Valencia Island",
-          "target_area": "VALENCIA_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... Palm trees line the docks of Valencia Island."
-        },
-        {
-          "text": "Ship to Mikan Island",
-          "target_area": "MIKAN_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... Mikan Island's lighthouse comes into view."
-        },
-        {
-          "text": "Ship to Pinkan Island",
-          "target_area": "PINKAN_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... Pink berry trees cover Pinkan Island.",
-          "condition": "has_coral_eye_badge"
-        },
-        {
-          "text": "Ship to Navel Island",
-          "target_area": "NAVEL_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... A snowy volcano rises over Navel Island.",
-          "condition": "has_coral_eye_badge"
-        },
-        {
-          "text": "Ship to Sunburst Island",
-          "target_area": "SUNBURST_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... Glass sparkles on every street of Sunburst Island.",
-          "condition": "has_sea_ruby_badge"
-        },
-        {
-          "text": "Ship to Trovita Island",
-          "target_area": "TROVITA_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... Trovita Island's beaches shine in the sun.",
-          "condition": "has_sea_ruby_badge"
-        },
-        {
-          "text": "Ship to Shamouti Island",
-          "target_area": "SHAMOUTI_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... Drums from a festival echo across Shamouti Island.",
-          "condition": "has_spike_shell_badge"
-        },
-        {
-          "text": "Ship to Pummelo Island",
-          "target_area": "PUMMELO_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... Pummelo Stadium towers over the harbor.",
-          "condition": "has_jade_star_badge"
-        }
-      ],
-      "next_area": "KUMQUAT_JUNGLE",
-      "gym": {
-        "trainers": [
-          {
-            "name": "Beauty Lani",
-            "class": "BEAUTY",
-            "sprite": "beauty.png",
-            "team": [
-              36,
-              40,
-              210
-            ],
-            "levels": [
-              54,
-              54,
-              56
-            ],
-            "rewards": {
-              "balls": 5
-            },
-            "dialogue": {
-              "intro": [
-                "Luana's son Travis runs the hotel. I run this battle!"
-              ]
-            }
-          },
-          {
-            "name": "Gentleman Kale",
-            "class": "GENTLEMAN",
-            "sprite": "gentleman.png",
-            "team": [
-              59,
-              128,
-              241
-            ],
-            "levels": [
-              55,
-              55,
-              57
-            ],
-            "rewards": {
-              "balls": 5
-            },
-            "dialogue": {
-              "intro": [
-                "Two Pokemon at once? That's how we battle on Kumquat."
-              ]
-            }
-          }
-        ],
-        "leader": {
-          "name": "Luana",
-          "class": "GYM_LEADER",
-          "sprite": "acetrainer_f.png",
-          "is_boss_battle": true,
-          "team": [
-            65,
-            105
-          ],
-          "levels": [
-            59,
-            60
-          ],
-          "badge_reward": "JADE_STAR",
-          "rewards": {
-            "balls": 10
-          },
-          "dialogue": {
-            "intro": [
-              "Luana: Alakazam and Marowak work as one. Can your team keep up?"
-            ],
-            "player_won": [
-              "Luana: Wonderful teamwork! You've earned the Jade Star Badge.",
-              "Now you may challenge Drake at Pummelo Stadium."
-            ],
-            "player_lost": [
-              "Luana: Teamwork takes practice. Come back soon!"
-            ]
-          }
-        },
-        "requirements": {
-          "badges": 3,
-          "fail_text": "Luana only battles trainers with three Orange Crew badges."
-        }
-      }
-    },
-    "KUMQUAT_JUNGLE": {
-      "area_type": "wild_route",
-      "route_name": "Kumquat Jungle",
-      "region": "ORANGE",
-      "level": 61,
-      "battle_type": "forest",
-      "wild_pool_percentages": "ORANGE_KUMQUAT_JUNGLE_PERCENTAGES",
-      "min_rounds": 2,
-      "trainer_pool": [
-        {
-          "name": "Bug Catcher Milo",
-          "class": "BUG_CATCHER",
-          "sprite": "bug_catcher.png",
-          "team": [
-            12,
-            214,
-            127
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "Picnicker Rose",
-          "class": "PICNICKER",
-          "sprite": "picnicker.png",
-          "team": [
-            182,
-            44,
-            103
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        }
-      ],
-      "route_menu": [
-        {
-          "text": "CATCH WILD PKMN",
-          "action": "CATCH",
-          "condition": "has_balls",
-          "color": "BLUE"
-        },
-        {
-          "text": "BATTLE WILD PKMN",
-          "action": "BATTLE",
-          "condition": "can_battle",
-          "color": "GREEN"
-        },
-        {
-          "text": "BATTLE TRAINER",
-          "action": "TRAINER",
-          "condition": "has_trainers",
-          "color": "GREEN"
-        },
-        {
-          "text": "Kumquat Island",
-          "action": "EXIT",
-          "target_area": "KUMQUAT_ISLAND",
-          "condition": "can_exit",
-          "color": "RED"
-        }
-      ],
-      "next_area": "KUMQUAT_ISLAND"
-    },
-    "PUMMELO_ISLAND": {
-      "area_type": "town",
-      "route_name": "Pummelo Island",
-      "region": "ORANGE",
-      "level": 63,
-      "has_gym": true,
-      "explore_options": [
-        {
-          "text": "Pokemon Center",
-          "action": "HEAL"
-        },
-        {
-          "text": "Poke Mart",
-          "action": "SHOP"
-        },
-        {
-          "text": "Pummelo Stadium",
-          "action": "GYM",
-          "color": "GOLD"
-        }
-      ],
-      "travel_options": [
-        {
-          "text": "Pummelo Cliffs",
-          "target_area": "PUMMELO_CLIFFS"
-        },
-        {
-          "text": "Ship to Valencia Island",
-          "target_area": "VALENCIA_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... Palm trees line the docks of Valencia Island."
-        },
-        {
-          "text": "Ship to Mikan Island",
-          "target_area": "MIKAN_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... Mikan Island's lighthouse comes into view."
-        },
-        {
-          "text": "Ship to Pinkan Island",
-          "target_area": "PINKAN_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... Pink berry trees cover Pinkan Island.",
-          "condition": "has_coral_eye_badge"
-        },
-        {
-          "text": "Ship to Navel Island",
-          "target_area": "NAVEL_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... A snowy volcano rises over Navel Island.",
-          "condition": "has_coral_eye_badge"
-        },
-        {
-          "text": "Ship to Sunburst Island",
-          "target_area": "SUNBURST_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... Glass sparkles on every street of Sunburst Island.",
-          "condition": "has_sea_ruby_badge"
-        },
-        {
-          "text": "Ship to Trovita Island",
-          "target_area": "TROVITA_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... Trovita Island's beaches shine in the sun.",
-          "condition": "has_sea_ruby_badge"
-        },
-        {
-          "text": "Ship to Shamouti Island",
-          "target_area": "SHAMOUTI_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... Drums from a festival echo across Shamouti Island.",
-          "condition": "has_spike_shell_badge"
-        },
-        {
-          "text": "Ship to Kumquat Island",
-          "target_area": "KUMQUAT_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... Resort hotels line the shore of Kumquat Island.",
-          "condition": "has_spike_shell_badge"
-        }
-      ],
-      "next_area": "PUMMELO_CLIFFS",
-      "gym": {
-        "trainers": [],
-        "leader": {
-          "name": "Drake",
-          "class": "CHAMPION",
-          "sprite": "veteran.png",
-          "is_boss_battle": true,
-          "team": [
-            132,
-            95,
-            94,
-            3,
-            125,
-            149
-          ],
-          "levels": [
-            59,
-            59,
-            60,
-            61,
-            60,
-            63
-          ],
-          "badge_reward": "WINNERS_TROPHY",
-          "rewards": {
-            "balls": 30,
-            "RARE_CANDY": 5
-          },
-          "dialogue": {
-            "intro": [
-              "Drake: I'm Drake, Supreme Gym Leader of the Orange League.",
-              "Nobody has beaten my six Pokemon in a full battle. Show me what you've got!"
-            ],
-            "player_won": [
-              "Drake: Incredible... My Dragonite has finally met its match.",
-              "The Winner's Trophy is yours, Orange League Champion!"
-            ],
-            "player_lost": [
-              "Drake: A good battle, but the trophy stays here. Train and come back!"
-            ]
-          },
-          "victory_flag": "beat_orange_champion"
-        },
-        "requirements": {
-          "badges": 4,
-          "fail_text": "Only trainers with all four Orange Crew badges may challenge Drake."
-        }
-      },
-      "extra_stock": [
-        {
-          "item": "CRYSTAL_STONE",
-          "condition": "beat_orange_champion"
-        }
-      ]
-    },
-    "PUMMELO_CLIFFS": {
-      "area_type": "wild_route",
-      "route_name": "Pummelo Cliffs",
-      "region": "ORANGE",
-      "level": 63,
-      "battle_type": "mountain",
-      "wild_pool_percentages": "ORANGE_PUMMELO_CLIFFS_PERCENTAGES",
-      "min_rounds": 2,
-      "trainer_pool": [
-        {
-          "name": "Ace Trainer Sky",
-          "class": "ACE_TRAINER",
-          "sprite": "acetrainer_m.png",
-          "team": [
-            148,
-            227,
-            142
-          ],
-          "rewards": {
-            "balls": 6
-          }
-        },
-        {
-          "name": "Dragon Tamer Ryu",
-          "class": "DRAGON_TAMER",
-          "sprite": "dragon_tamer.png",
-          "team": [
-            147,
-            148,
-            130
-          ],
-          "rewards": {
-            "balls": 6
-          }
-        }
-      ],
-      "route_menu": [
-        {
-          "text": "CATCH WILD PKMN",
-          "action": "CATCH",
-          "condition": "has_balls",
-          "color": "BLUE"
-        },
-        {
-          "text": "BATTLE WILD PKMN",
-          "action": "BATTLE",
-          "condition": "can_battle",
-          "color": "GREEN"
-        },
-        {
-          "text": "BATTLE TRAINER",
-          "action": "TRAINER",
-          "condition": "has_trainers",
-          "color": "GREEN"
-        },
-        {
-          "text": "Pummelo Island",
-          "action": "EXIT",
-          "target_area": "PUMMELO_ISLAND",
-          "condition": "can_exit",
-          "color": "RED"
-        }
-      ],
-      "next_area": "PUMMELO_ISLAND"
-    },
-    "PINKAN_ISLAND": {
-      "area_type": "town",
-      "route_name": "Pinkan Island",
-      "region": "ORANGE",
-      "level": 54,
-      "has_gym": false,
-      "explore_options": [
-        {
-          "text": "Pokemon Center",
-          "action": "HEAL"
-        },
-        {
-          "text": "Poke Mart",
-          "action": "SHOP"
-        },
-        {
-          "text": "Officer Jenny",
-          "action": "EVENT",
-          "color": "GOLD",
-          "event": {
-            "lines": [
-              "Officer Jenny: Pinkan Island is a protected reserve.",
-              "The Pinkan Berries here turn the Pokemon pink! Poachers want them badly.",
-              "Team Rocket was spotted in the reserve. Please, stop them!"
-            ],
-            "flag": "met_pinkan_jenny",
-            "done": [
-              "Officer Jenny: Team Rocket is somewhere in the reserve. Be careful!"
-            ]
-          },
-          "flag_condition": "not defeated_pinkan_rocket"
-        },
-        {
-          "text": "Get the Research Permit",
-          "action": "EVENT",
-          "color": "GOLD",
-          "event": {
-            "requires": [
-              "defeated_pinkan_rocket"
-            ],
-            "lines": [
-              "Officer Jenny: You chased off Team Rocket! The reserve is safe again.",
-              "Here's a research permit. You may catch Pinkan Pokemon to study them.",
-              "Treat them kindly. They only turn pink thanks to the berries here!"
-            ],
-            "gift_item": {
-              "PINKAN_PERMIT": 1
-            },
-            "flag": "got_pinkan_permit"
-          },
-          "condition": "defeated_pinkan_rocket",
-          "flag_condition": "not got_pinkan_permit"
-        }
-      ],
-      "travel_options": [
-        {
-          "text": "Pinkan Reserve",
-          "target_area": "PINKAN_RESERVE"
-        },
-        {
-          "text": "Ship to Valencia Island",
-          "target_area": "VALENCIA_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... Palm trees line the docks of Valencia Island."
-        },
-        {
-          "text": "Ship to Mikan Island",
-          "target_area": "MIKAN_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... Mikan Island's lighthouse comes into view."
-        },
-        {
-          "text": "Ship to Navel Island",
-          "target_area": "NAVEL_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... A snowy volcano rises over Navel Island.",
-          "condition": "has_coral_eye_badge"
-        },
-        {
-          "text": "Ship to Sunburst Island",
-          "target_area": "SUNBURST_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... Glass sparkles on every street of Sunburst Island.",
-          "condition": "has_sea_ruby_badge"
-        },
-        {
-          "text": "Ship to Trovita Island",
-          "target_area": "TROVITA_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... Trovita Island's beaches shine in the sun.",
-          "condition": "has_sea_ruby_badge"
-        },
-        {
-          "text": "Ship to Shamouti Island",
-          "target_area": "SHAMOUTI_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... Drums from a festival echo across Shamouti Island.",
-          "condition": "has_spike_shell_badge"
-        },
-        {
-          "text": "Ship to Kumquat Island",
-          "target_area": "KUMQUAT_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... Resort hotels line the shore of Kumquat Island.",
-          "condition": "has_spike_shell_badge"
-        },
-        {
-          "text": "Ship to Pummelo Island",
-          "target_area": "PUMMELO_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... Pummelo Stadium towers over the harbor.",
-          "condition": "has_jade_star_badge"
-        }
-      ],
-      "next_area": "PINKAN_RESERVE"
-    },
-    "PINKAN_RESERVE": {
-      "area_type": "wild_route",
-      "route_name": "Pinkan Reserve",
-      "region": "ORANGE",
-      "level": 54,
-      "battle_type": "forest",
-      "wild_pool_percentages": "ORANGE_PINKAN_RESERVE_PERCENTAGES",
-      "min_rounds": 2,
-      "trainer_pool": [
-        {
-          "name": "Poacher Grunt",
-          "class": "ROCKET_GRUNT",
-          "sprite": "rocket_grunt_m.png",
-          "team": [
-            24,
-            110
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "Poacher Grunt",
-          "class": "ROCKET_GRUNT",
-          "sprite": "rocket_grunt_f.png",
-          "team": [
-            42,
-            89
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        }
-      ],
-      "route_menu": [
-        {
-          "text": "CATCH WILD PKMN",
-          "action": "CATCH",
-          "condition": [
-            "has_balls",
-            "has_item:PINKAN_PERMIT"
-          ],
-          "color": "BLUE"
-        },
-        {
-          "text": "BATTLE WILD PKMN",
-          "action": "BATTLE",
-          "condition": "can_battle",
-          "color": "GREEN"
-        },
-        {
-          "text": "BATTLE TRAINER",
-          "action": "TRAINER",
-          "condition": "has_trainers",
-          "color": "GREEN"
-        },
-        {
-          "text": "STOP TEAM ROCKET",
-          "action": "EVENT",
-          "color": "GOLD",
-          "event": {
-            "requires": [
-              "met_pinkan_jenny"
-            ],
-            "fail": [
-              "Strange footprints lead into the berry trees..."
-            ],
-            "lines": [
-              "Jessie and James are stuffing Pinkan Berries into sacks!",
-              "Team Rocket: Pink Pokemon will make us rich! Out of our way!"
-            ],
-            "battle": {
-              "name": "Jessie & James",
-              "class": "TEAM_ROCKET",
-              "sprite": "rocket_team.png",
-              "team": [
-                24,
-                110,
-                71,
-                52
-              ],
-              "levels": [
-                56,
-                56,
-                57,
-                58
-              ],
-              "rewards": {
-                "balls": 10
-              },
-              "dialogue": {
-                "player_won": [
-                  "Team Rocket: We're blasting off again!"
-                ]
-              }
-            },
-            "flag": "defeated_pinkan_rocket"
-          },
-          "condition": "met_pinkan_jenny",
-          "flag_condition": "not defeated_pinkan_rocket"
-        },
-        {
-          "text": "Pinkan Island",
-          "action": "EXIT",
-          "target_area": "PINKAN_ISLAND",
-          "condition": "can_exit",
-          "color": "RED"
-        }
-      ],
-      "next_area": "PINKAN_ISLAND"
-    },
     "SUNBURST_ISLAND": {
       "area_type": "town",
       "route_name": "Sunburst Island",
       "region": "ORANGE",
-      "level": 57,
+      "level": 17,
       "has_gym": false,
       "explore_options": [
         {
@@ -1975,82 +1489,25 @@
       ],
       "travel_options": [
         {
+          "text": "Route 53",
+          "target_area": "ORANGE_ROUTE_53"
+        },
+        {
           "text": "Crystal Cave",
-          "target_area": "CRYSTAL_CAVE",
-          "condition": "met_mateo"
-        },
-        {
-          "text": "Ship to Valencia Island",
-          "target_area": "VALENCIA_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... Palm trees line the docks of Valencia Island."
-        },
-        {
-          "text": "Ship to Mikan Island",
-          "target_area": "MIKAN_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... Mikan Island's lighthouse comes into view."
-        },
-        {
-          "text": "Ship to Pinkan Island",
-          "target_area": "PINKAN_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... Pink berry trees cover Pinkan Island.",
-          "condition": "has_coral_eye_badge"
-        },
-        {
-          "text": "Ship to Navel Island",
-          "target_area": "NAVEL_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... A snowy volcano rises over Navel Island.",
-          "condition": "has_coral_eye_badge"
-        },
-        {
-          "text": "Ship to Trovita Island",
-          "target_area": "TROVITA_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... Trovita Island's beaches shine in the sun.",
-          "condition": "has_sea_ruby_badge"
-        },
-        {
-          "text": "Ship to Shamouti Island",
-          "target_area": "SHAMOUTI_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... Drums from a festival echo across Shamouti Island.",
-          "condition": "has_spike_shell_badge"
-        },
-        {
-          "text": "Ship to Kumquat Island",
-          "target_area": "KUMQUAT_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... Resort hotels line the shore of Kumquat Island.",
-          "condition": "has_spike_shell_badge"
-        },
-        {
-          "text": "Ship to Pummelo Island",
-          "target_area": "PUMMELO_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... Pummelo Stadium towers over the harbor.",
-          "condition": "has_jade_star_badge"
+          "target_area": "CRYSTAL_CAVE"
         }
       ],
-      "next_area": "CRYSTAL_CAVE"
+      "next_area": "ORANGE_ROUTE_53"
     },
     "CRYSTAL_CAVE": {
       "area_type": "dungeon",
       "route_name": "Crystal Cave",
       "region": "ORANGE",
-      "level": 58,
+      "level": 18,
       "battle_type": "cave",
       "wild_pool_percentages": "ORANGE_CRYSTAL_CAVE_PERCENTAGES",
       "min_rounds": 2,
-      "trainer_pool": [
-        {
-          "name": "Hiker Flint",
-          "class": "HIKER",
-          "sprite": "hiker.png",
-          "team": [
-            95,
-            75,
-            208
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        }
-      ],
+      "trainer_pool": [],
       "route_menu": [
         {
           "text": "CATCH WILD PKMN",
@@ -2080,7 +1537,9 @@
           "text": "Sunburst Island",
           "action": "EXIT",
           "target_area": "SUNBURST_ISLAND",
-          "condition": "can_exit",
+          "condition": [
+            "can_exit"
+          ],
           "color": "RED"
         }
       ],
@@ -2090,6 +1549,3825 @@
         "name": "Crystal Onix",
         "victory_flag": "crystal_onix_defeated"
       }
+    },
+    "ORANGE_ROUTE_54": {
+      "area_type": "wild_route",
+      "route_name": "Route 54",
+      "region": "ORANGE",
+      "level": 18,
+      "battle_type": "grass",
+      "min_rounds": 2,
+      "wild_pool_percentages": "ORANGE_ORANGE_ROUTE_54_PERCENTAGES",
+      "trainer_pool": [
+        {
+          "name": "Swimmer Clyde",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [
+            747,
+            118
+          ],
+          "levels": [
+            16,
+            16
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Swimmer Matt",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [
+            170
+          ],
+          "levels": [
+            18
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Swimmer Gerald",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [
+            222,
+            7,
+            79
+          ],
+          "levels": [
+            15,
+            15,
+            16
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Swimmer Haley",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [
+            120
+          ],
+          "levels": [
+            18
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Swimmer Alison",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [
+            690,
+            118,
+            211
+          ],
+          "levels": [
+            16,
+            16,
+            16
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Route 53",
+          "action": "EXIT",
+          "target_area": "ORANGE_ROUTE_53",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        },
+        {
+          "text": "Mandarin Island North",
+          "action": "EXIT",
+          "target_area": "MANDARIN_NORTH",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        }
+      ],
+      "next_area": "ORANGE_ROUTE_53"
+    },
+    "MANDARIN_NORTH": {
+      "area_type": "town",
+      "route_name": "Mandarin Island North",
+      "region": "ORANGE",
+      "level": 19,
+      "has_gym": false,
+      "explore_options": [
+        {
+          "text": "Pokemon Center",
+          "action": "HEAL"
+        },
+        {
+          "text": "Poke Mart",
+          "action": "SHOP"
+        }
+      ],
+      "travel_options": [
+        {
+          "text": "Route 54",
+          "target_area": "ORANGE_ROUTE_54"
+        },
+        {
+          "text": "Mandarin Underground",
+          "target_area": "MANDARIN_UNDERGROUND"
+        },
+        {
+          "text": "Route 55",
+          "target_area": "ORANGE_ROUTE_55"
+        }
+      ],
+      "next_area": "ORANGE_ROUTE_54"
+    },
+    "MANDARIN_UNDERGROUND": {
+      "area_type": "dungeon",
+      "route_name": "Mandarin Underground",
+      "region": "ORANGE",
+      "level": 20,
+      "battle_type": "cave",
+      "min_rounds": 1,
+      "wild_pool_percentages": "ORANGE_MANDARIN_UNDERGROUND_PERCENTAGES",
+      "trainer_pool": [
+        {
+          "name": "Engineer Nick",
+          "class": "ENGINEER",
+          "sprite": "engineer.png",
+          "team": [
+            81,
+            100,
+            25
+          ],
+          "levels": [
+            17,
+            16,
+            15
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Engineer Henry",
+          "class": "ENGINEER",
+          "sprite": "engineer.png",
+          "team": [
+            239
+          ],
+          "levels": [
+            19
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Engineer Steve",
+          "class": "ENGINEER",
+          "sprite": "engineer.png",
+          "team": [
+            100,
+            100,
+            100,
+            100
+          ],
+          "levels": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Mandarin Island North",
+          "action": "EXIT",
+          "target_area": "MANDARIN_NORTH",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        }
+      ],
+      "next_area": "MANDARIN_NORTH",
+      "on_enter_event": [
+        {
+          "type": "trainer_battle",
+          "trainer": {
+            "name": "Team Rocket Butch",
+            "class": "ROCKET",
+            "sprite": "butch.png",
+            "is_boss_battle": true,
+            "team": [
+              90,
+              56
+            ],
+            "levels": [
+              21,
+              21
+            ],
+            "rewards": {
+              "balls": 5
+            },
+            "victory_flag": "orange_butch_underground",
+            "dialogue": {
+              "intro": [
+                "Butch: The name's BUTCH! This underground lab is Team Rocket business!"
+              ],
+              "player_won": [
+                "Butch: Gah! Retreat!"
+              ]
+            }
+          },
+          "flag_check": "orange_butch_underground"
+        },
+        {
+          "type": "trainer_battle",
+          "trainer": {
+            "name": "Team Rocket Cassidy",
+            "class": "ROCKET",
+            "sprite": "cassidy.png",
+            "is_boss_battle": true,
+            "team": [
+              72,
+              96,
+              20
+            ],
+            "levels": [
+              21,
+              20,
+              20
+            ],
+            "rewards": {
+              "balls": 5
+            },
+            "victory_flag": "orange_cassidy_underground",
+            "dialogue": {
+              "intro": [
+                "Cassidy: You beat Butch? Then I'll handle you myself!"
+              ],
+              "player_won": [
+                "Cassidy: This isn't over!"
+              ]
+            }
+          },
+          "flag_check": "orange_cassidy_underground",
+          "condition": "orange_butch_underground"
+        }
+      ]
+    },
+    "ORANGE_ROUTE_55": {
+      "area_type": "wild_route",
+      "route_name": "Route 55",
+      "region": "ORANGE",
+      "level": 20,
+      "battle_type": "water",
+      "min_rounds": 2,
+      "wild_pool_percentages": "ORANGE_ORANGE_ROUTE_55_PERCENTAGES",
+      "trainer_pool": [
+        {
+          "name": "Swimmer Stacy",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [
+            222,
+            7,
+            60
+          ],
+          "levels": [
+            21,
+            21,
+            21
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Swimmer Abe",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [
+            747,
+            320
+          ],
+          "levels": [
+            21,
+            20
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Athlete Paul",
+          "class": "ATHLETE",
+          "sprite": "triathlete_m.png",
+          "team": [
+            84,
+            108,
+            77
+          ],
+          "levels": [
+            19,
+            18,
+            18
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Mandarin Island North",
+          "action": "EXIT",
+          "target_area": "MANDARIN_NORTH",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        },
+        {
+          "text": "Pinkan Island",
+          "action": "EXIT",
+          "target_area": "PINKAN_ISLAND",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        }
+      ],
+      "next_area": "MANDARIN_NORTH"
+    },
+    "PINKAN_ISLAND": {
+      "area_type": "town",
+      "route_name": "Pinkan Island",
+      "region": "ORANGE",
+      "level": 21,
+      "has_gym": false,
+      "explore_options": [
+        {
+          "text": "Pokemon Center",
+          "action": "HEAL"
+        },
+        {
+          "text": "Poke Mart",
+          "action": "SHOP"
+        },
+        {
+          "text": "Officer Jenny",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "Officer Jenny: Pinkan Island is a protected reserve.",
+              "The Pinkan Berries here turn the Pokemon pink! Poachers want them badly.",
+              "Team Rocket was spotted in the reserve. Please, stop them!"
+            ],
+            "flag": "met_pinkan_jenny",
+            "done": [
+              "Officer Jenny: Team Rocket is somewhere in the reserve. Be careful!"
+            ]
+          },
+          "flag_condition": "not defeated_pinkan_rocket"
+        },
+        {
+          "text": "Get the Research Permit",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "requires": [
+              "defeated_pinkan_rocket"
+            ],
+            "lines": [
+              "Officer Jenny: You chased off Team Rocket! The reserve is safe again.",
+              "Here's a research permit. You may catch Pinkan Pokemon to study them.",
+              "Treat them kindly. They only turn pink thanks to the berries here!"
+            ],
+            "gift_item": {
+              "PINKAN_PERMIT": 1
+            },
+            "flag": "got_pinkan_permit"
+          },
+          "condition": "defeated_pinkan_rocket",
+          "flag_condition": "not got_pinkan_permit"
+        }
+      ],
+      "travel_options": [
+        {
+          "text": "Route 55",
+          "target_area": "ORANGE_ROUTE_55"
+        },
+        {
+          "text": "Pinkan Reserve",
+          "target_area": "PINKAN_RESERVE"
+        },
+        {
+          "text": "Route 56",
+          "target_area": "ORANGE_ROUTE_56"
+        }
+      ],
+      "next_area": "ORANGE_ROUTE_55"
+    },
+    "PINKAN_RESERVE": {
+      "area_type": "wild_route",
+      "route_name": "Pinkan Reserve",
+      "region": "ORANGE",
+      "level": 22,
+      "battle_type": "forest",
+      "wild_pool_percentages": "ORANGE_PINKAN_RESERVE_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": [
+            "has_balls",
+            "has_item:PINKAN_PERMIT"
+          ],
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "STOP TEAM ROCKET",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "requires": [
+              "met_pinkan_jenny"
+            ],
+            "fail": [
+              "Strange footprints lead into the berry trees..."
+            ],
+            "lines": [
+              "Jessie and James are stuffing Pinkan Berries into sacks!",
+              "Team Rocket: Pink Pokemon will make us rich! Out of our way!"
+            ],
+            "battle": {
+              "name": "Jessie & James",
+              "class": "TEAM_ROCKET",
+              "sprite": "jessie_james.png",
+              "team": [
+                24,
+                110,
+                71,
+                52
+              ],
+              "levels": [
+                21,
+                21,
+                22,
+                23
+              ],
+              "rewards": {
+                "balls": 10
+              },
+              "dialogue": {
+                "player_won": [
+                  "Team Rocket: We're blasting off again!"
+                ]
+              }
+            },
+            "flag": "defeated_pinkan_rocket"
+          },
+          "condition": "met_pinkan_jenny",
+          "flag_condition": "not defeated_pinkan_rocket"
+        },
+        {
+          "text": "Pinkan Island",
+          "action": "EXIT",
+          "target_area": "PINKAN_ISLAND",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        }
+      ],
+      "next_area": "PINKAN_ISLAND"
+    },
+    "ORANGE_ROUTE_56": {
+      "area_type": "wild_route",
+      "route_name": "Route 56",
+      "region": "ORANGE",
+      "level": 22,
+      "battle_type": "water",
+      "min_rounds": 2,
+      "wild_pool_percentages": "ORANGE_ORANGE_ROUTE_56_PERCENTAGES",
+      "trainer_pool": [
+        {
+          "name": "Fisher Joe",
+          "class": "FISHER",
+          "sprite": "fisherman.png",
+          "team": [
+            211,
+            456,
+            170
+          ],
+          "levels": [
+            22,
+            21,
+            22
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Athlete Jared",
+          "class": "ATHLETE",
+          "sprite": "triathlete_m.png",
+          "team": [
+            84,
+            135
+          ],
+          "levels": [
+            24,
+            24
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Swimmer Taryn",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [
+            116,
+            690
+          ],
+          "levels": [
+            24,
+            24
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Swimmer Cory",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [
+            91
+          ],
+          "levels": [
+            23
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Sightseer Mitch",
+          "class": "SIGHTSEER",
+          "sprite": "pokefan.png",
+          "team": [
+            64,
+            66
+          ],
+          "levels": [
+            24,
+            24
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Swimmer Amanda",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [
+            170,
+            120,
+            618,
+            170
+          ],
+          "levels": [
+            22,
+            22,
+            22,
+            22
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Hiker Brady",
+          "class": "HIKER",
+          "sprite": "hiker.png",
+          "team": [
+            140
+          ],
+          "levels": [
+            26
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Pinkan Island",
+          "action": "EXIT",
+          "target_area": "PINKAN_ISLAND",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        },
+        {
+          "text": "Kinnow Island",
+          "action": "EXIT",
+          "target_area": "KINNOW_ISLAND",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        }
+      ],
+      "next_area": "PINKAN_ISLAND",
+      "on_enter_event": [
+        {
+          "type": "trainer_battle",
+          "trainer": {
+            "name": "Tracey",
+            "class": "PKMN_TRAINER",
+            "sprite": "tracey.png",
+            "is_boss_battle": true,
+            "team": [
+              48,
+              183,
+              84,
+              180
+            ],
+            "levels": [
+              23,
+              24,
+              23,
+              22
+            ],
+            "rewards": {
+              "balls": 5
+            },
+            "victory_flag": "orange_tracey_route56",
+            "dialogue": {
+              "intro": [
+                "Tracey: I'm a Pokemon Watcher now! Let me test my team on you!"
+              ],
+              "player_won": [
+                "Tracey: You're getting strong!"
+              ]
+            }
+          },
+          "flag_check": "orange_tracey_route56"
+        }
+      ]
+    },
+    "KINNOW_ISLAND": {
+      "area_type": "town",
+      "route_name": "Kinnow Island",
+      "region": "ORANGE",
+      "level": 23,
+      "has_gym": false,
+      "explore_options": [
+        {
+          "text": "Pokemon Center",
+          "action": "HEAL"
+        },
+        {
+          "text": "Poke Mart",
+          "action": "SHOP"
+        }
+      ],
+      "travel_options": [
+        {
+          "text": "Route 56",
+          "target_area": "ORANGE_ROUTE_56"
+        },
+        {
+          "text": "Route 57",
+          "target_area": "ORANGE_ROUTE_57"
+        },
+        {
+          "text": "Route 57 North",
+          "target_area": "ORANGE_ROUTE_57_NORTH",
+          "condition": "has_spike_shell_badge"
+        }
+      ],
+      "next_area": "ORANGE_ROUTE_56"
+    },
+    "ORANGE_ROUTE_57": {
+      "area_type": "wild_route",
+      "route_name": "Route 57",
+      "region": "ORANGE",
+      "level": 24,
+      "battle_type": "water",
+      "min_rounds": 2,
+      "wild_pool_percentages": "ORANGE_ORANGE_ROUTE_57_PERCENTAGES",
+      "trainer_pool": [
+        {
+          "name": "Sightseer Connie",
+          "class": "SIGHTSEER",
+          "sprite": "pokefan.png",
+          "team": [
+            39,
+            327,
+            188
+          ],
+          "levels": [
+            25,
+            25,
+            24
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Bug Catcher Alia",
+          "class": "BUG_CATCHER",
+          "sprite": "bug_catcher.png",
+          "team": [
+            12,
+            48
+          ],
+          "levels": [
+            26,
+            25
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Fisher Tim",
+          "class": "FISHER",
+          "sprite": "fisherman.png",
+          "team": [
+            224
+          ],
+          "levels": [
+            28
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Kinnow Island",
+          "action": "EXIT",
+          "target_area": "KINNOW_ISLAND",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        },
+        {
+          "text": "Seven Grapefruit Islands",
+          "action": "EXIT",
+          "target_area": "SEVEN_GRAPEFRUITS",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        }
+      ],
+      "next_area": "KINNOW_ISLAND"
+    },
+    "SEVEN_GRAPEFRUITS": {
+      "area_type": "wild_route",
+      "route_name": "Seven Grapefruit Islands",
+      "region": "ORANGE",
+      "level": 25,
+      "battle_type": "grass",
+      "min_rounds": 2,
+      "wild_pool_percentages": "ORANGE_SEVEN_GRAPEFRUITS_PERCENTAGES",
+      "trainer_pool": [],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "Route 57",
+          "action": "EXIT",
+          "target_area": "ORANGE_ROUTE_57",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        },
+        {
+          "text": "Route 58",
+          "action": "EXIT",
+          "target_area": "ORANGE_ROUTE_58",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        },
+        {
+          "text": "Route 59",
+          "action": "EXIT",
+          "target_area": "ORANGE_ROUTE_59",
+          "condition": [
+            "can_exit",
+            "has_sea_ruby_badge"
+          ],
+          "color": "RED"
+        }
+      ],
+      "next_area": "ORANGE_ROUTE_57"
+    },
+    "ORANGE_ROUTE_58": {
+      "area_type": "wild_route",
+      "route_name": "Route 58",
+      "region": "ORANGE",
+      "level": 25,
+      "battle_type": "water",
+      "min_rounds": 2,
+      "wild_pool_percentages": "ORANGE_ORANGE_ROUTE_58_PERCENTAGES",
+      "trainer_pool": [
+        {
+          "name": "Cooltrainer Akira",
+          "class": "COOLTRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            124,
+            86
+          ],
+          "levels": [
+            26,
+            25
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Seven Grapefruit Islands",
+          "action": "EXIT",
+          "target_area": "SEVEN_GRAPEFRUITS",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        },
+        {
+          "text": "Navel Island",
+          "action": "EXIT",
+          "target_area": "NAVEL_ISLAND",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        }
+      ],
+      "next_area": "SEVEN_GRAPEFRUITS"
+    },
+    "NAVEL_ISLAND": {
+      "area_type": "town",
+      "route_name": "Navel Island",
+      "region": "ORANGE",
+      "level": 26,
+      "has_gym": true,
+      "explore_options": [
+        {
+          "text": "Pokemon Center",
+          "action": "HEAL"
+        },
+        {
+          "text": "Poke Mart",
+          "action": "SHOP"
+        },
+        {
+          "text": "Navel Gym",
+          "action": "GYM",
+          "color": "GOLD"
+        }
+      ],
+      "travel_options": [
+        {
+          "text": "Route 58",
+          "target_area": "ORANGE_ROUTE_58"
+        },
+        {
+          "text": "Mt. Navel",
+          "target_area": "MT_NAVEL"
+        }
+      ],
+      "next_area": "ORANGE_ROUTE_58",
+      "gym": {
+        "trainers": [
+          {
+            "name": "Hiker Dale",
+            "class": "HIKER",
+            "sprite": "hiker.png",
+            "team": [
+              75,
+              95,
+              76
+            ],
+            "levels": [
+              50,
+              50,
+              52
+            ],
+            "rewards": {
+              "balls": 5
+            },
+            "dialogue": {
+              "intro": [
+                "Danny's challenge starts at the bottom of the volcano!"
+              ]
+            },
+            "is_boss_battle": true
+          },
+          {
+            "name": "Skier Frost",
+            "class": "SKIER",
+            "sprite": "skier.png",
+            "team": [
+              86,
+              87,
+              124
+            ],
+            "levels": [
+              51,
+              51,
+              53
+            ],
+            "rewards": {
+              "balls": 5
+            },
+            "dialogue": {
+              "intro": [
+                "It's freezing at the top. Can your Pokemon take it?"
+              ]
+            },
+            "is_boss_battle": true
+          }
+        ],
+        "leader": {
+          "name": "Danny",
+          "class": "GYM_LEADER",
+          "sprite": "danny.png",
+          "is_boss_battle": true,
+          "team": [
+            31,
+            67,
+            212,
+            101
+          ],
+          "levels": [
+            28,
+            30,
+            27,
+            29
+          ],
+          "badge_reward": "SEA_RUBY",
+          "rewards": {
+            "balls": 10
+          },
+          "dialogue": {
+            "intro": [
+              "Danny: You made it up the mountain. Now for a three-on-three battle!"
+            ],
+            "player_won": [
+              "Danny: Great battle! Take the Sea Ruby Badge."
+            ],
+            "player_lost": [
+              "Danny: Not bad! Climb back up when you're ready."
+            ]
+          },
+          "rematch": {
+            "team": [
+              31,
+              68,
+              212,
+              101,
+              464,
+              38
+            ],
+            "levels": [
+              75,
+              75,
+              75,
+              75,
+              75,
+              75
+            ]
+          }
+        },
+        "requirements": {
+          "badges": 1,
+          "fail_text": "Danny only battles trainers with the Coral-Eye Badge."
+        }
+      }
+    },
+    "MT_NAVEL": {
+      "area_type": "dungeon",
+      "route_name": "Mt. Navel",
+      "region": "ORANGE",
+      "level": 27,
+      "battle_type": "mountain",
+      "min_rounds": 1,
+      "wild_pool_percentages": "ORANGE_MT_NAVEL_PERCENTAGES",
+      "trainer_pool": [],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "Navel Island",
+          "action": "EXIT",
+          "target_area": "NAVEL_ISLAND",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        }
+      ],
+      "next_area": "NAVEL_ISLAND",
+      "on_enter_event": [
+        {
+          "type": "trainer_battle",
+          "trainer": {
+            "name": "{rival_name}",
+            "class": "PKMN_TRAINER",
+            "sprite": "{rival_character}",
+            "is_boss_battle": true,
+            "team": [
+              8,
+              136
+            ],
+            "levels": [
+              27,
+              26
+            ],
+            "rewards": {
+              "balls": 5
+            },
+            "victory_flag": "orange_cross_navel",
+            "dialogue": {
+              "intro": [
+                "{rival_name}: Climbing to Danny's challenge? I'm going first."
+              ],
+              "player_won": [
+                "{rival_name}: Tch. Next time I'll win."
+              ]
+            },
+            "team_choice": {
+              "4": [
+                8,
+                136
+              ],
+              "7": [
+                2,
+                134
+              ],
+              "1": [
+                5,
+                470
+              ]
+            }
+          },
+          "flag_check": "orange_cross_navel"
+        }
+      ]
+    },
+    "ORANGE_ROUTE_59": {
+      "area_type": "wild_route",
+      "route_name": "Route 59",
+      "region": "ORANGE",
+      "level": 29,
+      "battle_type": "water",
+      "min_rounds": 2,
+      "wild_pool_percentages": "ORANGE_ORANGE_ROUTE_59_PERCENTAGES",
+      "trainer_pool": [
+        {
+          "name": "Swimmer Lloyd",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [
+            34,
+            121
+          ],
+          "levels": [
+            27,
+            27
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Seven Grapefruit Islands",
+          "action": "EXIT",
+          "target_area": "SEVEN_GRAPEFRUITS",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        },
+        {
+          "text": "Moro Island",
+          "action": "EXIT",
+          "target_area": "MORO_ISLAND",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        }
+      ],
+      "next_area": "SEVEN_GRAPEFRUITS"
+    },
+    "MORO_ISLAND": {
+      "area_type": "town",
+      "route_name": "Moro Island",
+      "region": "ORANGE",
+      "level": 30,
+      "has_gym": false,
+      "explore_options": [
+        {
+          "text": "Pokemon Center",
+          "action": "HEAL"
+        },
+        {
+          "text": "Poke Mart",
+          "action": "SHOP"
+        }
+      ],
+      "travel_options": [
+        {
+          "text": "Route 59",
+          "target_area": "ORANGE_ROUTE_59"
+        },
+        {
+          "text": "Route 60",
+          "target_area": "ORANGE_ROUTE_60"
+        }
+      ],
+      "next_area": "ORANGE_ROUTE_59"
+    },
+    "ORANGE_ROUTE_60": {
+      "area_type": "wild_route",
+      "route_name": "Route 60",
+      "region": "ORANGE",
+      "level": 31,
+      "battle_type": "water",
+      "min_rounds": 2,
+      "wild_pool_percentages": "ORANGE_ORANGE_ROUTE_60_PERCENTAGES",
+      "trainer_pool": [
+        {
+          "name": "Swimmer Terry",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [
+            121,
+            618
+          ],
+          "levels": [
+            28,
+            26
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Birdkeeper Floyd",
+          "class": "BIRDKEEPER",
+          "sprite": "bird_keeper.png",
+          "team": [
+            17,
+            732,
+            441,
+            279
+          ],
+          "levels": [
+            29,
+            28,
+            27,
+            26
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Moro Island",
+          "action": "EXIT",
+          "target_area": "MORO_ISLAND",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        },
+        {
+          "text": "Golden Island",
+          "action": "EXIT",
+          "target_area": "GOLDEN_ISLAND",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        }
+      ],
+      "next_area": "MORO_ISLAND"
+    },
+    "GOLDEN_ISLAND": {
+      "area_type": "town",
+      "route_name": "Golden Island",
+      "region": "ORANGE",
+      "level": 32,
+      "has_gym": false,
+      "explore_options": [
+        {
+          "text": "Pokemon Center",
+          "action": "HEAL"
+        },
+        {
+          "text": "Poke Mart",
+          "action": "SHOP"
+        }
+      ],
+      "travel_options": [
+        {
+          "text": "Route 60",
+          "target_area": "ORANGE_ROUTE_60"
+        },
+        {
+          "text": "Route 61",
+          "target_area": "ORANGE_ROUTE_61"
+        }
+      ],
+      "next_area": "ORANGE_ROUTE_60",
+      "on_enter_event": [
+        {
+          "type": "trainer_battle",
+          "trainer": {
+            "name": "Jessie and James",
+            "class": "ROCKET",
+            "sprite": "jessie_james.png",
+            "is_boss_battle": true,
+            "team": [
+              110,
+              24,
+              52,
+              71
+            ],
+            "levels": [
+              32,
+              32,
+              33,
+              31
+            ],
+            "rewards": {
+              "balls": 5
+            },
+            "victory_flag": "orange_rocket_golden",
+            "dialogue": {
+              "intro": [
+                "Jessie: Prepare for trouble! James: Make it double! Golden Island's treasure is ours!"
+              ],
+              "player_won": [
+                "James: We're blasting off again!"
+              ]
+            }
+          },
+          "flag_check": "orange_rocket_golden"
+        }
+      ]
+    },
+    "ORANGE_ROUTE_61": {
+      "area_type": "wild_route",
+      "route_name": "Route 61",
+      "region": "ORANGE",
+      "level": 32,
+      "battle_type": "water",
+      "min_rounds": 2,
+      "wild_pool_percentages": "ORANGE_ORANGE_ROUTE_61_PERCENTAGES",
+      "trainer_pool": [
+        {
+          "name": "Pokemaniac Sid",
+          "class": "POKEMANIAC",
+          "sprite": "pokemaniac.png",
+          "team": [
+            758,
+            89,
+            690
+          ],
+          "levels": [
+            34,
+            31,
+            28
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Golden Island",
+          "action": "EXIT",
+          "target_area": "GOLDEN_ISLAND",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        },
+        {
+          "text": "Murcott Island",
+          "action": "EXIT",
+          "target_area": "MURCOTT_ISLAND",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        },
+        {
+          "text": "Route 62",
+          "action": "EXIT",
+          "target_area": "ORANGE_ROUTE_62",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        }
+      ],
+      "next_area": "GOLDEN_ISLAND"
+    },
+    "MURCOTT_ISLAND": {
+      "area_type": "town",
+      "route_name": "Murcott Island",
+      "region": "ORANGE",
+      "level": 33,
+      "has_gym": false,
+      "explore_options": [
+        {
+          "text": "Pokemon Center",
+          "action": "HEAL"
+        },
+        {
+          "text": "Poke Mart",
+          "action": "SHOP"
+        }
+      ],
+      "travel_options": [
+        {
+          "text": "Route 61",
+          "target_area": "ORANGE_ROUTE_61"
+        }
+      ],
+      "next_area": "ORANGE_ROUTE_61",
+      "on_enter_event": [
+        {
+          "type": "trainer_battle",
+          "trainer": {
+            "name": "{rival_name}",
+            "class": "PKMN_TRAINER",
+            "sprite": "{rival_character}",
+            "is_boss_battle": true,
+            "team": [
+              9,
+              136,
+              227
+            ],
+            "levels": [
+              33,
+              33,
+              31
+            ],
+            "rewards": {
+              "balls": 5
+            },
+            "victory_flag": "orange_cross_murcott",
+            "dialogue": {
+              "intro": [
+                "{rival_name}: Two badges? I've got two too. Battle!"
+              ],
+              "player_won": [
+                "{rival_name}: Tch. Next time I'll win."
+              ]
+            },
+            "team_choice": {
+              "4": [
+                9,
+                136,
+                227
+              ],
+              "7": [
+                3,
+                134,
+                227
+              ],
+              "1": [
+                6,
+                470,
+                227
+              ]
+            }
+          },
+          "flag_check": "orange_cross_murcott"
+        }
+      ]
+    },
+    "ORANGE_ROUTE_62": {
+      "area_type": "wild_route",
+      "route_name": "Route 62",
+      "region": "ORANGE",
+      "level": 34,
+      "battle_type": "grass",
+      "min_rounds": 2,
+      "wild_pool_percentages": "ORANGE_ORANGE_ROUTE_62_PERCENTAGES",
+      "trainer_pool": [
+        {
+          "name": "Youngster Craig",
+          "class": "YOUNGSTER",
+          "sprite": "youngster.png",
+          "team": [
+            2,
+            20,
+            186
+          ],
+          "levels": [
+            29,
+            29,
+            29
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Lass Rita",
+          "class": "LASS",
+          "sprite": "lass.png",
+          "team": [
+            189,
+            116
+          ],
+          "levels": [
+            31,
+            29
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Route 61",
+          "action": "EXIT",
+          "target_area": "ORANGE_ROUTE_61",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        },
+        {
+          "text": "Mandarin Desert",
+          "action": "EXIT",
+          "target_area": "MANDARIN_DESERT",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        }
+      ],
+      "next_area": "ORANGE_ROUTE_61",
+      "on_enter_event": [
+        {
+          "type": "trainer_battle",
+          "trainer": {
+            "name": "Tracey",
+            "class": "PKMN_TRAINER",
+            "sprite": "tracey.png",
+            "is_boss_battle": true,
+            "team": [
+              49,
+              184,
+              85,
+              181,
+              123
+            ],
+            "levels": [
+              33,
+              34,
+              31,
+              30,
+              32
+            ],
+            "rewards": {
+              "balls": 5
+            },
+            "victory_flag": "orange_tracey_route62",
+            "dialogue": {
+              "intro": [
+                "Tracey: Scyther and I trained hard. Ready?"
+              ],
+              "player_won": [
+                "Tracey: You'll win the Orange League for sure!"
+              ]
+            }
+          },
+          "flag_check": "orange_tracey_route62"
+        }
+      ]
+    },
+    "MANDARIN_DESERT": {
+      "area_type": "wild_route",
+      "route_name": "Mandarin Desert",
+      "region": "ORANGE",
+      "level": 35,
+      "battle_type": "desert",
+      "min_rounds": 2,
+      "wild_pool_percentages": "ORANGE_MANDARIN_DESERT_PERCENTAGES",
+      "trainer_pool": [],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "Route 62",
+          "action": "EXIT",
+          "target_area": "ORANGE_ROUTE_62",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        },
+        {
+          "text": "Sunray Cave",
+          "action": "EXIT",
+          "target_area": "SUNRAY_CAVE",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        }
+      ],
+      "next_area": "ORANGE_ROUTE_62"
+    },
+    "SUNRAY_CAVE": {
+      "area_type": "dungeon",
+      "route_name": "Sunray Cave",
+      "region": "ORANGE",
+      "level": 36,
+      "battle_type": "cave",
+      "min_rounds": 1,
+      "wild_pool_percentages": "ORANGE_SUNRAY_CAVE_PERCENTAGES",
+      "trainer_pool": [],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "Mandarin Desert",
+          "action": "EXIT",
+          "target_area": "MANDARIN_DESERT",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        },
+        {
+          "text": "Trovitopolis",
+          "action": "EXIT",
+          "target_area": "TROVITOPOLIS",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        }
+      ],
+      "next_area": "MANDARIN_DESERT"
+    },
+    "TROVITOPOLIS": {
+      "area_type": "town",
+      "route_name": "Trovitopolis",
+      "region": "ORANGE",
+      "level": 37,
+      "has_gym": false,
+      "explore_options": [
+        {
+          "text": "Pokemon Center",
+          "action": "HEAL"
+        },
+        {
+          "text": "Poke Mart",
+          "action": "SHOP"
+        }
+      ],
+      "travel_options": [
+        {
+          "text": "Sunray Cave",
+          "target_area": "SUNRAY_CAVE"
+        },
+        {
+          "text": "Ferry to Trovita Island",
+          "target_area": "TROVITA_ISLAND",
+          "message": "The ferry crosses to Trovita Island. Rudy's Gym stands by the beach."
+        }
+      ],
+      "next_area": "SUNRAY_CAVE",
+      "on_enter_event": [
+        {
+          "type": "trainer_battle",
+          "trainer": {
+            "name": "Jessie and James",
+            "class": "ROCKET",
+            "sprite": "jessie_james.png",
+            "is_boss_battle": true,
+            "team": [
+              110,
+              71,
+              24,
+              108,
+              52
+            ],
+            "levels": [
+              38,
+              37,
+              38,
+              37,
+              35
+            ],
+            "rewards": {
+              "balls": 5
+            },
+            "victory_flag": "orange_rocket_trovitopolis",
+            "dialogue": {
+              "intro": [
+                "Jessie: The mayor's office is ours now! James: And so is the city!"
+              ],
+              "player_won": [
+                "Jessie: Not AGAIN!"
+              ]
+            }
+          },
+          "flag_check": "orange_rocket_trovitopolis"
+        }
+      ]
+    },
+    "TROVITA_ISLAND": {
+      "area_type": "town",
+      "route_name": "Trovita Island",
+      "region": "ORANGE",
+      "level": 39,
+      "has_gym": true,
+      "explore_options": [
+        {
+          "text": "Pokemon Center",
+          "action": "HEAL"
+        },
+        {
+          "text": "Poke Mart",
+          "action": "SHOP"
+        },
+        {
+          "text": "Trovita Gym",
+          "action": "GYM",
+          "color": "GOLD"
+        }
+      ],
+      "travel_options": [
+        {
+          "text": "Ferry to Trovitopolis",
+          "target_area": "TROVITOPOLIS",
+          "message": "The ship sails back to Trovitopolis."
+        }
+      ],
+      "next_area": "TROVITOPOLIS",
+      "gym": {
+        "trainers": [
+          {
+            "name": "Cooltrainer Paula",
+            "class": "COOLTRAINER",
+            "sprite": "acetrainer_m.png",
+            "team": [
+              87
+            ],
+            "levels": [
+              35
+            ],
+            "rewards": {
+              "balls": 2
+            },
+            "is_boss_battle": true
+          },
+          {
+            "name": "Cooltrainer Maya",
+            "class": "COOLTRAINER",
+            "sprite": "acetrainer_m.png",
+            "team": [
+              45,
+              117,
+              757,
+              5
+            ],
+            "levels": [
+              34,
+              34,
+              34,
+              34
+            ],
+            "rewards": {
+              "balls": 2
+            },
+            "is_boss_battle": true
+          },
+          {
+            "name": "Cooltrainer Jake",
+            "class": "COOLTRAINER",
+            "sprite": "acetrainer_m.png",
+            "team": [
+              75,
+              97
+            ],
+            "levels": [
+              34,
+              33
+            ],
+            "rewards": {
+              "balls": 2
+            },
+            "is_boss_battle": true
+          }
+        ],
+        "leader": {
+          "name": "Rudy",
+          "class": "GYM_LEADER",
+          "sprite": "rudy.png",
+          "is_boss_battle": true,
+          "team": [
+            125,
+            103,
+            121,
+            107,
+            76
+          ],
+          "levels": [
+            40,
+            42,
+            41,
+            40,
+            39
+          ],
+          "badge_reward": "SPIKE_SHELL",
+          "rewards": {
+            "balls": 10
+          },
+          "dialogue": {
+            "intro": [
+              "Rudy: Welcome to Trovita! My Pokemon and I battle with style."
+            ],
+            "player_won": [
+              "Rudy: Brilliant! The Spike Shell Badge suits you."
+            ],
+            "player_lost": [
+              "Rudy: Better luck next time. The ferry will bring you back!"
+            ]
+          },
+          "rematch": {
+            "team": [
+              466,
+              103,
+              319,
+              237,
+              76,
+              36
+            ],
+            "levels": [
+              80,
+              80,
+              80,
+              80,
+              80,
+              80
+            ]
+          }
+        },
+        "requirements": {
+          "badges": 2,
+          "fail_text": "Rudy only battles trainers with two Orange Crew badges."
+        }
+      }
+    },
+    "ORANGE_ROUTE_57_NORTH": {
+      "area_type": "wild_route",
+      "route_name": "Route 57 North",
+      "region": "ORANGE",
+      "level": 42,
+      "battle_type": "water",
+      "min_rounds": 2,
+      "wild_pool_percentages": "ORANGE_ORANGE_ROUTE_57_NORTH_PERCENTAGES",
+      "trainer_pool": [
+        {
+          "name": "Sightseer Larry",
+          "class": "SIGHTSEER",
+          "sprite": "pokefan.png",
+          "team": [
+            758,
+            182
+          ],
+          "levels": [
+            38,
+            39
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Fisher John",
+          "class": "FISHER",
+          "sprite": "fisherman.png",
+          "team": [
+            119,
+            319,
+            121
+          ],
+          "levels": [
+            36,
+            36,
+            36
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Kinnow Island",
+          "action": "EXIT",
+          "target_area": "KINNOW_ISLAND",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        },
+        {
+          "text": "Cleopatra Island",
+          "action": "EXIT",
+          "target_area": "CLEOPATRA_ISLAND",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        }
+      ],
+      "next_area": "KINNOW_ISLAND"
+    },
+    "CLEOPATRA_ISLAND": {
+      "area_type": "wild_route",
+      "route_name": "Cleopatra Island",
+      "region": "ORANGE",
+      "level": 43,
+      "battle_type": "grass",
+      "min_rounds": 2,
+      "wild_pool_percentages": "ORANGE_CLEOPATRA_ISLAND_PERCENTAGES",
+      "trainer_pool": [
+        {
+          "name": "Cooltrainer Tad",
+          "class": "COOLTRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            237,
+            62
+          ],
+          "levels": [
+            40,
+            40
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Route 57 North",
+          "action": "EXIT",
+          "target_area": "ORANGE_ROUTE_57_NORTH",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        },
+        {
+          "text": "Route 63",
+          "action": "EXIT",
+          "target_area": "ORANGE_ROUTE_63",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        }
+      ],
+      "next_area": "ORANGE_ROUTE_57_NORTH"
+    },
+    "ORANGE_ROUTE_63": {
+      "area_type": "wild_route",
+      "route_name": "Route 63",
+      "region": "ORANGE",
+      "level": 44,
+      "battle_type": "water",
+      "min_rounds": 2,
+      "wild_pool_percentages": "ORANGE_ORANGE_ROUTE_63_PERCENTAGES",
+      "trainer_pool": [
+        {
+          "name": "Fisher Roy",
+          "class": "FISHER",
+          "sprite": "fisherman.png",
+          "team": [
+            748,
+            130
+          ],
+          "levels": [
+            42,
+            37
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Fisher Guy",
+          "class": "FISHER",
+          "sprite": "fisherman.png",
+          "team": [
+            171,
+            226
+          ],
+          "levels": [
+            40,
+            40
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Cooltrainer Huey",
+          "class": "COOLTRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            132,
+            78
+          ],
+          "levels": [
+            38,
+            36
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Otaku Chris",
+          "class": "OTAKU",
+          "sprite": "youngster.png",
+          "team": [
+            137,
+            233
+          ],
+          "levels": [
+            39,
+            39
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Fisher Buddy",
+          "class": "FISHER",
+          "sprite": "fisherman.png",
+          "team": [
+            369,
+            457
+          ],
+          "levels": [
+            40,
+            42
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Otaku Ralph",
+          "class": "OTAKU",
+          "sprite": "youngster.png",
+          "team": [
+            462
+          ],
+          "levels": [
+            40
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Cooltrainer Frey",
+          "class": "COOLTRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            3,
+            36
+          ],
+          "levels": [
+            40,
+            41
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Cooltrainer Jeff",
+          "class": "COOLTRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            122,
+            102,
+            20,
+            67,
+            22,
+            73
+          ],
+          "levels": [
+            30,
+            30,
+            31,
+            31,
+            32,
+            32
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Cleopatra Island",
+          "action": "EXIT",
+          "target_area": "CLEOPATRA_ISLAND",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        },
+        {
+          "text": "Ascorbia Island",
+          "action": "EXIT",
+          "target_area": "ASCORBIA_ISLAND",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        }
+      ],
+      "next_area": "CLEOPATRA_ISLAND"
+    },
+    "ASCORBIA_ISLAND": {
+      "area_type": "town",
+      "route_name": "Ascorbia Island",
+      "region": "ORANGE",
+      "level": 45,
+      "has_gym": false,
+      "explore_options": [
+        {
+          "text": "Pokemon Center",
+          "action": "HEAL"
+        },
+        {
+          "text": "Poke Mart",
+          "action": "SHOP"
+        }
+      ],
+      "travel_options": [
+        {
+          "text": "Route 63",
+          "target_area": "ORANGE_ROUTE_63"
+        },
+        {
+          "text": "Heart Scale Cove",
+          "target_area": "HEART_SCALE_COVE"
+        },
+        {
+          "text": "Routes 64 and 65",
+          "target_area": "ORANGE_ROUTE_64"
+        }
+      ],
+      "next_area": "ORANGE_ROUTE_63"
+    },
+    "HEART_SCALE_COVE": {
+      "area_type": "wild_route",
+      "route_name": "Heart Scale Cove",
+      "region": "ORANGE",
+      "level": 45,
+      "battle_type": "water",
+      "min_rounds": 2,
+      "wild_pool_percentages": "ORANGE_HEART_SCALE_COVE_PERCENTAGES",
+      "trainer_pool": [],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "Ascorbia Island",
+          "action": "EXIT",
+          "target_area": "ASCORBIA_ISLAND",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        }
+      ],
+      "next_area": "ASCORBIA_ISLAND"
+    },
+    "ORANGE_ROUTE_64": {
+      "area_type": "wild_route",
+      "route_name": "Routes 64 and 65",
+      "region": "ORANGE",
+      "level": 46,
+      "battle_type": "water",
+      "min_rounds": 2,
+      "wild_pool_percentages": "ORANGE_ORANGE_ROUTE_64_PERCENTAGES",
+      "trainer_pool": [
+        {
+          "name": "Youngster Leni",
+          "class": "YOUNGSTER",
+          "sprite": "youngster.png",
+          "team": [
+            113,
+            446,
+            83
+          ],
+          "levels": [
+            41,
+            42,
+            43
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Ascorbia Island",
+          "action": "EXIT",
+          "target_area": "ASCORBIA_ISLAND",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        },
+        {
+          "text": "Butwal Island",
+          "action": "EXIT",
+          "target_area": "BUTWAL_ISLAND",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        }
+      ],
+      "next_area": "ASCORBIA_ISLAND"
+    },
+    "BUTWAL_ISLAND": {
+      "area_type": "wild_route",
+      "route_name": "Butwal Island",
+      "region": "ORANGE",
+      "level": 47,
+      "battle_type": "grass",
+      "min_rounds": 2,
+      "wild_pool_percentages": "ORANGE_BUTWAL_ISLAND_PERCENTAGES",
+      "trainer_pool": [
+        {
+          "name": "Cooltrainer Jack",
+          "class": "COOLTRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            53,
+            40
+          ],
+          "levels": [
+            40,
+            40
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Cooltrainer Brad",
+          "class": "COOLTRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            53,
+            102,
+            127
+          ],
+          "levels": [
+            40,
+            40,
+            40
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Routes 64 and 65",
+          "action": "EXIT",
+          "target_area": "ORANGE_ROUTE_64",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        },
+        {
+          "text": "Route 66",
+          "action": "EXIT",
+          "target_area": "ORANGE_ROUTE_66",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        }
+      ],
+      "next_area": "ORANGE_ROUTE_64",
+      "on_enter_event": [
+        {
+          "type": "trainer_battle",
+          "trainer": {
+            "name": "{rival_name}",
+            "class": "PKMN_TRAINER",
+            "sprite": "{rival_character}",
+            "is_boss_battle": true,
+            "team": [
+              9,
+              136,
+              227,
+              114
+            ],
+            "levels": [
+              44,
+              42,
+              44,
+              42
+            ],
+            "rewards": {
+              "balls": 5
+            },
+            "victory_flag": "orange_cross_butwal",
+            "dialogue": {
+              "intro": [
+                "{rival_name}: Three badges. Let's see who reaches Drake first."
+              ],
+              "player_won": [
+                "{rival_name}: Tch. Next time I'll win."
+              ]
+            },
+            "team_choice": {
+              "4": [
+                9,
+                136,
+                227,
+                114
+              ],
+              "7": [
+                3,
+                134,
+                227,
+                77
+              ],
+              "1": [
+                6,
+                470,
+                227,
+                80
+              ]
+            }
+          },
+          "flag_check": "orange_cross_butwal"
+        }
+      ]
+    },
+    "ORANGE_ROUTE_66": {
+      "area_type": "wild_route",
+      "route_name": "Route 66",
+      "region": "ORANGE",
+      "level": 48,
+      "battle_type": "water",
+      "min_rounds": 2,
+      "wild_pool_percentages": "ORANGE_ORANGE_ROUTE_66_PERCENTAGES",
+      "trainer_pool": [
+        {
+          "name": "Fisher Sho",
+          "class": "FISHER",
+          "sprite": "fisherman.png",
+          "team": [
+            224,
+            226
+          ],
+          "levels": [
+            43,
+            41
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Sightseer Lana",
+          "class": "SIGHTSEER",
+          "sprite": "pokefan.png",
+          "team": [
+            700
+          ],
+          "levels": [
+            39
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Lass Lola",
+          "class": "LASS",
+          "sprite": "lass.png",
+          "team": [
+            183,
+            184
+          ],
+          "levels": [
+            41,
+            42
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Cooltrainer David",
+          "class": "COOLTRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            42,
+            690
+          ],
+          "levels": [
+            39,
+            39
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Birdkeeper Dwight",
+          "class": "BIRDKEEPER",
+          "sprite": "bird_keeper.png",
+          "team": [
+            17,
+            733
+          ],
+          "levels": [
+            42,
+            41
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Sightseer Flora",
+          "class": "SIGHTSEER",
+          "sprite": "pokefan.png",
+          "team": [
+            147,
+            327,
+            102
+          ],
+          "levels": [
+            36,
+            36,
+            36
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Butwal Island",
+          "action": "EXIT",
+          "target_area": "BUTWAL_ISLAND",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        },
+        {
+          "text": "Kumquat Island",
+          "action": "EXIT",
+          "target_area": "KUMQUAT_ISLAND",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        }
+      ],
+      "next_area": "BUTWAL_ISLAND"
+    },
+    "KUMQUAT_ISLAND": {
+      "area_type": "town",
+      "route_name": "Kumquat Island",
+      "region": "ORANGE",
+      "level": 50,
+      "has_gym": true,
+      "explore_options": [
+        {
+          "text": "Pokemon Center",
+          "action": "HEAL"
+        },
+        {
+          "text": "Poke Mart",
+          "action": "SHOP"
+        },
+        {
+          "text": "Kumquat Gym",
+          "action": "GYM",
+          "color": "GOLD"
+        }
+      ],
+      "travel_options": [
+        {
+          "text": "Route 66",
+          "target_area": "ORANGE_ROUTE_66"
+        },
+        {
+          "text": "Route 67",
+          "target_area": "ORANGE_ROUTE_67",
+          "condition": "has_jade_star_badge"
+        }
+      ],
+      "next_area": "ORANGE_ROUTE_66",
+      "gym": {
+        "trainers": [
+          {
+            "name": "Beauty Lani",
+            "class": "BEAUTY",
+            "sprite": "beauty.png",
+            "team": [
+              36,
+              40,
+              210
+            ],
+            "levels": [
+              54,
+              54,
+              56
+            ],
+            "rewards": {
+              "balls": 5
+            },
+            "dialogue": {
+              "intro": [
+                "Luana's son Travis runs the hotel. I run this battle!"
+              ]
+            },
+            "is_boss_battle": true
+          },
+          {
+            "name": "Gentleman Kale",
+            "class": "GENTLEMAN",
+            "sprite": "gentleman.png",
+            "team": [
+              59,
+              128,
+              241
+            ],
+            "levels": [
+              55,
+              55,
+              57
+            ],
+            "rewards": {
+              "balls": 5
+            },
+            "dialogue": {
+              "intro": [
+                "Two Pokemon at once? That's how we battle on Kumquat."
+              ]
+            },
+            "is_boss_battle": true
+          }
+        ],
+        "leader": {
+          "name": "Luana",
+          "class": "GYM_LEADER",
+          "sprite": "luana.png",
+          "is_boss_battle": true,
+          "team": [
+            65,
+            105,
+            776,
+            357
+          ],
+          "levels": [
+            56,
+            54,
+            54,
+            54
+          ],
+          "badge_reward": "JADE_STAR",
+          "rewards": {
+            "balls": 10
+          },
+          "dialogue": {
+            "intro": [
+              "Luana: Alakazam and Marowak work as one. Can your team keep up?"
+            ],
+            "player_won": [
+              "Luana: Wonderful teamwork! You've earned the Jade Star Badge.",
+              "Now you may challenge Drake at Pummelo Stadium."
+            ],
+            "player_lost": [
+              "Luana: Teamwork takes practice. Come back soon!"
+            ]
+          },
+          "rematch": {
+            "team": [
+              105,
+              776,
+              65,
+              357,
+              463,
+              184
+            ],
+            "levels": [
+              80,
+              80,
+              80,
+              80,
+              80,
+              80
+            ]
+          }
+        },
+        "requirements": {
+          "badges": 3,
+          "fail_text": "Luana only battles trainers with three Orange Crew badges."
+        }
+      }
+    },
+    "ORANGE_ROUTE_67": {
+      "area_type": "wild_route",
+      "route_name": "Route 67",
+      "region": "ORANGE",
+      "level": 52,
+      "battle_type": "water",
+      "min_rounds": 2,
+      "wild_pool_percentages": "ORANGE_ORANGE_ROUTE_67_PERCENTAGES",
+      "trainer_pool": [
+        {
+          "name": "Otaku Abe",
+          "class": "OTAKU",
+          "sprite": "youngster.png",
+          "team": [
+            51,
+            82
+          ],
+          "levels": [
+            41,
+            42
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Lass Tori",
+          "class": "LASS",
+          "sprite": "lass.png",
+          "team": [
+            176,
+            175,
+            173,
+            35
+          ],
+          "levels": [
+            44,
+            44,
+            44,
+            44
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Fisher Gin",
+          "class": "FISHER",
+          "sprite": "fisherman.png",
+          "team": [
+            129,
+            130,
+            130
+          ],
+          "levels": [
+            44,
+            45,
+            44
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Cooltrainer Fabio",
+          "class": "COOLTRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            6,
+            5,
+            4
+          ],
+          "levels": [
+            42,
+            41,
+            38
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Cooltrainer Liz",
+          "class": "COOLTRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            219,
+            171,
+            103
+          ],
+          "levels": [
+            44,
+            45,
+            46
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Birdkeeper Cid",
+          "class": "BIRDKEEPER",
+          "sprite": "bird_keeper.png",
+          "team": [
+            18
+          ],
+          "levels": [
+            42
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Swimmer Lulu",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [
+            457,
+            691,
+            121
+          ],
+          "levels": [
+            44,
+            44,
+            44
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Kumquat Island",
+          "action": "EXIT",
+          "target_area": "KUMQUAT_ISLAND",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        },
+        {
+          "text": "Rind Island",
+          "action": "EXIT",
+          "target_area": "RIND_ISLAND",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        }
+      ],
+      "next_area": "KUMQUAT_ISLAND"
+    },
+    "RIND_ISLAND": {
+      "area_type": "wild_route",
+      "route_name": "Rind Island",
+      "region": "ORANGE",
+      "level": 53,
+      "battle_type": "grass",
+      "min_rounds": 2,
+      "wild_pool_percentages": "ORANGE_RIND_ISLAND_PERCENTAGES",
+      "trainer_pool": [],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "Route 67",
+          "action": "EXIT",
+          "target_area": "ORANGE_ROUTE_67",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        },
+        {
+          "text": "Routes 68 and 69",
+          "action": "EXIT",
+          "target_area": "ORANGE_ROUTE_68",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        }
+      ],
+      "next_area": "ORANGE_ROUTE_67"
+    },
+    "ORANGE_ROUTE_68": {
+      "area_type": "wild_route",
+      "route_name": "Routes 68 and 69",
+      "region": "ORANGE",
+      "level": 55,
+      "battle_type": "water",
+      "min_rounds": 2,
+      "wild_pool_percentages": "ORANGE_ORANGE_ROUTE_68_PERCENTAGES",
+      "trainer_pool": [
+        {
+          "name": "Swimmer Melly",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [
+            87,
+            119
+          ],
+          "levels": [
+            44,
+            44
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Swimmer Sally",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [
+            457,
+            618
+          ],
+          "levels": [
+            44,
+            44
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Swimmer Rue",
+          "class": "SWIMMER",
+          "sprite": "swimmer_m.png",
+          "team": [
+            9,
+            8,
+            7
+          ],
+          "levels": [
+            42,
+            41,
+            40
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Cooltrainer Mako",
+          "class": "COOLTRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            197,
+            196,
+            61,
+            117
+          ],
+          "levels": [
+            44,
+            45,
+            46,
+            45
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Rind Island",
+          "action": "EXIT",
+          "target_area": "RIND_ISLAND",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        },
+        {
+          "text": "Victory Road (Orange)",
+          "action": "EXIT",
+          "target_area": "ORANGE_VICTORY_ROAD",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        }
+      ],
+      "next_area": "RIND_ISLAND"
+    },
+    "ORANGE_VICTORY_ROAD": {
+      "area_type": "dungeon",
+      "route_name": "Victory Road (Orange)",
+      "region": "ORANGE",
+      "level": 57,
+      "battle_type": "cave",
+      "min_rounds": 1,
+      "wild_pool_percentages": "ORANGE_ORANGE_VICTORY_ROAD_PERCENTAGES",
+      "trainer_pool": [
+        {
+          "name": "Engineer Kalarie",
+          "class": "ENGINEER",
+          "sprite": "engineer.png",
+          "team": [
+            131,
+            446,
+            6
+          ],
+          "levels": [
+            44,
+            44,
+            44
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Cooltrainer Nuuk",
+          "class": "COOLTRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            176,
+            358,
+            329
+          ],
+          "levels": [
+            46,
+            46,
+            46
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Otaku Rwne",
+          "class": "OTAKU",
+          "sprite": "youngster.png",
+          "team": [
+            123,
+            117,
+            82,
+            34
+          ],
+          "levels": [
+            44,
+            44,
+            44,
+            44
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Camper Neb",
+          "class": "CAMPER",
+          "sprite": "camper.png",
+          "team": [
+            748,
+            105,
+            176
+          ],
+          "levels": [
+            44,
+            44,
+            44
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Camper Snyd",
+          "class": "CAMPER",
+          "sprite": "camper.png",
+          "team": [
+            233,
+            114,
+            59
+          ],
+          "levels": [
+            44,
+            44,
+            44
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Fisher Stephen",
+          "class": "FISHER",
+          "sprite": "fisherman.png",
+          "team": [
+            103,
+            279,
+            770,
+            123
+          ],
+          "levels": [
+            44,
+            44,
+            44,
+            44
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Catman Mayo",
+          "class": "CATMAN",
+          "sprite": "roughneck.png",
+          "team": [
+            38,
+            134,
+            329
+          ],
+          "levels": [
+            44,
+            45,
+            47
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Cooltrainer Mike",
+          "class": "COOLTRAINER",
+          "sprite": "acetrainer_m.png",
+          "team": [
+            212,
+            732,
+            319,
+            26
+          ],
+          "levels": [
+            44,
+            45,
+            46,
+            45
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Routes 68 and 69",
+          "action": "EXIT",
+          "target_area": "ORANGE_ROUTE_68",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        },
+        {
+          "text": "Pummelo Island",
+          "action": "EXIT",
+          "target_area": "PUMMELO_ISLAND",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        }
+      ],
+      "next_area": "ORANGE_ROUTE_68"
+    },
+    "PUMMELO_ISLAND": {
+      "area_type": "town",
+      "route_name": "Pummelo Island",
+      "region": "ORANGE",
+      "level": 59,
+      "has_gym": true,
+      "explore_options": [
+        {
+          "text": "Pokemon Center",
+          "action": "HEAL"
+        },
+        {
+          "text": "Poke Mart",
+          "action": "SHOP"
+        },
+        {
+          "text": "Pummelo Stadium",
+          "action": "GYM",
+          "color": "GOLD"
+        }
+      ],
+      "travel_options": [
+        {
+          "text": "Victory Road (Orange)",
+          "target_area": "ORANGE_VICTORY_ROAD"
+        },
+        {
+          "text": "Routes 70 and 71",
+          "target_area": "ORANGE_ROUTE_70",
+          "condition": "beat_orange_champion"
+        },
+        {
+          "text": "Ship to Shamouti Island",
+          "target_area": "SHAMOUTI_ISLAND",
+          "message": "The ship sails north to Shamouti Island, where a festival is starting.",
+          "condition": "beat_orange_champion"
+        },
+        {
+          "text": "Ship to Valencia Island",
+          "target_area": "VALENCIA_ISLAND",
+          "message": "The ship sails back to Valencia Island.",
+          "condition": "has_jade_star_badge"
+        }
+      ],
+      "next_area": "ORANGE_VICTORY_ROAD",
+      "gym": {
+        "trainers": [],
+        "leader": {
+          "name": "Drake",
+          "class": "CHAMPION",
+          "sprite": "drake_orange.png",
+          "is_boss_battle": true,
+          "team": [
+            132,
+            208,
+            94,
+            3,
+            466,
+            149
+          ],
+          "levels": [
+            60,
+            62,
+            62,
+            63,
+            62,
+            65
+          ],
+          "badge_reward": "WINNERS_TROPHY",
+          "rewards": {
+            "balls": 30,
+            "RARE_CANDY": 5
+          },
+          "dialogue": {
+            "intro": [
+              "Drake: I'm Drake, Supreme Gym Leader of the Orange League.",
+              "Nobody has beaten my six Pokemon in a full battle. Show me what you've got!"
+            ],
+            "player_won": [
+              "Drake: Incredible... My Dragonite has finally met its match.",
+              "The Winner's Trophy is yours, Orange League Champion!"
+            ],
+            "player_lost": [
+              "Drake: A good battle, but the trophy stays here. Train and come back!"
+            ]
+          },
+          "victory_flag": "beat_orange_champion",
+          "rematch": {
+            "team": [
+              122,
+              208,
+              474,
+              3,
+              691,
+              149
+            ],
+            "levels": [
+              95,
+              96,
+              97,
+              98,
+              99,
+              100
+            ]
+          }
+        },
+        "requirements": {
+          "badges": 4,
+          "fail_text": "Only trainers with all four Orange Crew badges may challenge Drake."
+        }
+      },
+      "extra_stock": [
+        {
+          "item": "CRYSTAL_STONE",
+          "condition": "beat_orange_champion"
+        }
+      ],
+      "on_enter_event": [
+        {
+          "type": "trainer_battle",
+          "trainer": {
+            "name": "{rival_name}",
+            "class": "PKMN_TRAINER",
+            "sprite": "{rival_character}",
+            "is_boss_battle": true,
+            "team": [
+              9,
+              136,
+              227,
+              465,
+              467
+            ],
+            "levels": [
+              59,
+              56,
+              58,
+              59,
+              55
+            ],
+            "rewards": {
+              "balls": 5
+            },
+            "victory_flag": "orange_cross_pummelo",
+            "dialogue": {
+              "intro": [
+                "{rival_name}: Before you face Drake, you face me!"
+              ],
+              "player_won": [
+                "{rival_name}: Tch. Next time I'll win."
+              ]
+            },
+            "team_choice": {
+              "4": [
+                9,
+                136,
+                227,
+                465,
+                467
+              ],
+              "7": [
+                3,
+                134,
+                227,
+                78,
+                466
+              ],
+              "1": [
+                6,
+                470,
+                227,
+                80,
+                124
+              ]
+            }
+          },
+          "flag_check": "orange_cross_pummelo",
+          "condition": "has_jade_star_badge"
+        }
+      ]
+    },
+    "ORANGE_ROUTE_70": {
+      "area_type": "wild_route",
+      "route_name": "Routes 70 and 71",
+      "region": "ORANGE",
+      "level": 62,
+      "battle_type": "water",
+      "min_rounds": 2,
+      "wild_pool_percentages": "ORANGE_ORANGE_ROUTE_70_PERCENTAGES",
+      "trainer_pool": [
+        {
+          "name": "Scuz Lackey",
+          "class": "SCUZ",
+          "sprite": "youngster.png",
+          "team": [
+            279,
+            73
+          ],
+          "levels": [
+            56,
+            56
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "Pummelo Island",
+          "action": "EXIT",
+          "target_area": "PUMMELO_ISLAND",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        },
+        {
+          "text": "Tarroco Island",
+          "action": "EXIT",
+          "target_area": "TARROCO_ISLAND",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        },
+        {
+          "text": "Hamlin Island",
+          "action": "EXIT",
+          "target_area": "HAMLIN_ISLAND",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        }
+      ],
+      "next_area": "PUMMELO_ISLAND"
+    },
+    "TARROCO_ISLAND": {
+      "area_type": "wild_route",
+      "route_name": "Tarroco Island",
+      "region": "ORANGE",
+      "level": 63,
+      "battle_type": "grass",
+      "min_rounds": 2,
+      "wild_pool_percentages": "ORANGE_TARROCO_ISLAND_PERCENTAGES",
+      "trainer_pool": [],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "Routes 70 and 71",
+          "action": "EXIT",
+          "target_area": "ORANGE_ROUTE_70",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        }
+      ],
+      "next_area": "ORANGE_ROUTE_70"
+    },
+    "HAMLIN_ISLAND": {
+      "area_type": "wild_route",
+      "route_name": "Hamlin Island",
+      "region": "ORANGE",
+      "level": 64,
+      "battle_type": "grass",
+      "min_rounds": 2,
+      "wild_pool_percentages": "ORANGE_HAMLIN_ISLAND_PERCENTAGES",
+      "trainer_pool": [],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "can_battle",
+          "color": "GREEN"
+        },
+        {
+          "text": "Routes 70 and 71",
+          "action": "EXIT",
+          "target_area": "ORANGE_ROUTE_70",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        }
+      ],
+      "next_area": "ORANGE_ROUTE_70"
     },
     "SHAMOUTI_ISLAND": {
       "area_type": "town",
@@ -2128,73 +5406,13 @@
       ],
       "travel_options": [
         {
-          "text": "Fire Island",
-          "target_area": "FIRE_ISLAND",
-          "condition": "heard_shamouti_legend"
-        },
-        {
-          "text": "Ice Island",
-          "target_area": "ICE_ISLAND",
-          "condition": "heard_shamouti_legend"
-        },
-        {
-          "text": "Lightning Island",
-          "target_area": "LIGHTNING_ISLAND",
-          "condition": "heard_shamouti_legend"
-        },
-        {
-          "text": "Shamouti Shrine",
-          "target_area": "SHAMOUTI_SHRINE",
-          "condition": "heard_shamouti_legend"
-        },
-        {
-          "text": "Ship to Valencia Island",
-          "target_area": "VALENCIA_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... Palm trees line the docks of Valencia Island."
-        },
-        {
-          "text": "Ship to Mikan Island",
-          "target_area": "MIKAN_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... Mikan Island's lighthouse comes into view."
-        },
-        {
-          "text": "Ship to Pinkan Island",
-          "target_area": "PINKAN_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... Pink berry trees cover Pinkan Island.",
-          "condition": "has_coral_eye_badge"
-        },
-        {
-          "text": "Ship to Navel Island",
-          "target_area": "NAVEL_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... A snowy volcano rises over Navel Island.",
-          "condition": "has_coral_eye_badge"
-        },
-        {
-          "text": "Ship to Sunburst Island",
-          "target_area": "SUNBURST_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... Glass sparkles on every street of Sunburst Island.",
-          "condition": "has_sea_ruby_badge"
-        },
-        {
-          "text": "Ship to Trovita Island",
-          "target_area": "TROVITA_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... Trovita Island's beaches shine in the sun.",
-          "condition": "has_sea_ruby_badge"
-        },
-        {
-          "text": "Ship to Kumquat Island",
-          "target_area": "KUMQUAT_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... Resort hotels line the shore of Kumquat Island.",
-          "condition": "has_spike_shell_badge"
-        },
-        {
           "text": "Ship to Pummelo Island",
           "target_area": "PUMMELO_ISLAND",
-          "message": "You board the ferry. The ship sails across the Orange Archipelago... Pummelo Stadium towers over the harbor.",
-          "condition": "has_jade_star_badge"
+          "message": "The ship sails back to Pummelo Island.",
+          "condition": "beat_orange_champion"
         }
       ],
-      "next_area": "FIRE_ISLAND"
+      "next_area": "PUMMELO_ISLAND"
     },
     "FIRE_ISLAND": {
       "area_type": "wild_route",
@@ -2260,16 +5478,9 @@
             "not:has_item:FIRE_TREASURE",
             "not:shamouti_song_played"
           ]
-        },
-        {
-          "text": "Shamouti Island",
-          "action": "EXIT",
-          "target_area": "SHAMOUTI_ISLAND",
-          "condition": "can_exit",
-          "color": "RED"
         }
       ],
-      "next_area": "SHAMOUTI_ISLAND"
+      "next_area": "FIRE_ISLAND"
     },
     "ICE_ISLAND": {
       "area_type": "wild_route",
@@ -2335,16 +5546,44 @@
             "not:has_item:ICE_TREASURE",
             "not:shamouti_song_played"
           ]
-        },
-        {
-          "text": "Shamouti Island",
-          "action": "EXIT",
-          "target_area": "SHAMOUTI_ISLAND",
-          "condition": "can_exit",
-          "color": "RED"
         }
       ],
-      "next_area": "SHAMOUTI_ISLAND"
+      "next_area": "ICE_ISLAND",
+      "on_enter_event": [
+        {
+          "type": "trainer_battle",
+          "trainer": {
+            "name": "Lawrence III",
+            "class": "COLLECTOR",
+            "sprite": "lawrence.png",
+            "is_boss_battle": true,
+            "team": [
+              146,
+              230,
+              330
+            ],
+            "levels": [
+              65,
+              62,
+              63
+            ],
+            "rewards": {
+              "balls": 5
+            },
+            "victory_flag": "orange_lawrence_ice",
+            "dialogue": {
+              "intro": [
+                "Lawrence III: A collector of rare Pokemon, and you're in my way. Moltres is already mine!"
+              ],
+              "player_won": [
+                "Lawrence III: My collection... no!"
+              ]
+            }
+          },
+          "flag_check": "orange_lawrence_ice",
+          "condition": "heard_shamouti_legend"
+        }
+      ]
     },
     "LIGHTNING_ISLAND": {
       "area_type": "wild_route",
@@ -2410,22 +5649,15 @@
             "not:has_item:LIGHTNING_TREASURE",
             "not:shamouti_song_played"
           ]
-        },
-        {
-          "text": "Shamouti Island",
-          "action": "EXIT",
-          "target_area": "SHAMOUTI_ISLAND",
-          "condition": "can_exit",
-          "color": "RED"
         }
       ],
-      "next_area": "SHAMOUTI_ISLAND"
+      "next_area": "LIGHTNING_ISLAND"
     },
     "SHAMOUTI_SHRINE": {
       "area_type": "wild_route",
       "route_name": "Shamouti Shrine",
       "region": "ORANGE",
-      "level": 64,
+      "level": 63,
       "battle_type": "ocean",
       "wild_pool_percentages": "ORANGE_SHAMOUTI_SHRINE_PERCENTAGES",
       "min_rounds": 2,
@@ -2473,208 +5705,15 @@
             "shamouti_song_played",
             "boss_not_defeated"
           ]
-        },
-        {
-          "text": "Shamouti Island",
-          "action": "EXIT",
-          "target_area": "SHAMOUTI_ISLAND",
-          "condition": "can_exit",
-          "color": "RED"
         }
       ],
-      "next_area": "SHAMOUTI_ISLAND",
+      "next_area": "SHAMOUTI_SHRINE",
       "area_boss": {
         "id": 249,
         "name": "Lugia",
         "victory_flag": "shamouti_lugia_defeated"
       }
     }
-  },
-  "ORANGE_VALENCIA_BEACH": [
-    98,
-    90,
-    120,
-    72,
-    54,
-    79,
-    116,
-    118,
-    131,
-    170,
-    9501,
-    9502,
-    9503,
-    9504,
-    9505,
-    9506,
-    9507,
-    9508,
-    9509,
-    9510,
-    9511,
-    9512,
-    9513,
-    9514,
-    9515,
-    9516,
-    9517
-  ],
-  "ORANGE_VALENCIA_BEACH_PERCENTAGES": {
-    "98": 7,
-    "90": 7,
-    "120": 7,
-    "72": 7,
-    "54": 6,
-    "79": 6,
-    "116": 6,
-    "118": 4,
-    "131": 2,
-    "170": 3,
-    "9501": 2,
-    "9502": 3,
-    "9503": 4,
-    "9504": 3,
-    "9505": 2,
-    "9506": 4,
-    "9507": 2,
-    "9508": 2,
-    "9509": 2,
-    "9510": 4,
-    "9511": 2,
-    "9512": 4,
-    "9513": 2,
-    "9514": 3,
-    "9515": 2,
-    "9516": 2,
-    "9517": 2
-  },
-  "ORANGE_MIKAN_REEF": [
-    116,
-    117,
-    222,
-    90,
-    118,
-    223,
-    224,
-    226,
-    129,
-    211
-  ],
-  "ORANGE_MIKAN_REEF_PERCENTAGES": {
-    "116": 15,
-    "117": 6,
-    "222": 15,
-    "90": 12,
-    "118": 12,
-    "223": 12,
-    "224": 5,
-    "226": 8,
-    "129": 10,
-    "211": 5
-  },
-  "ORANGE_NAVEL_SUMMIT": [
-    86,
-    87,
-    124,
-    220,
-    221,
-    215,
-    225,
-    75,
-    67,
-    74
-  ],
-  "ORANGE_NAVEL_SUMMIT_PERCENTAGES": {
-    "86": 12,
-    "87": 6,
-    "124": 8,
-    "220": 14,
-    "221": 6,
-    "215": 10,
-    "225": 10,
-    "75": 14,
-    "67": 12,
-    "74": 8
-  },
-  "ORANGE_TROVITA_SHORE": [
-    102,
-    55,
-    120,
-    121,
-    114,
-    128,
-    73,
-    170,
-    171,
-    99,
-    125
-  ],
-  "ORANGE_TROVITA_SHORE_PERCENTAGES": {
-    "102": 14,
-    "55": 10,
-    "120": 12,
-    "121": 5,
-    "114": 10,
-    "128": 8,
-    "73": 12,
-    "170": 10,
-    "171": 6,
-    "99": 8,
-    "125": 5
-  },
-  "ORANGE_KUMQUAT_JUNGLE": [
-    103,
-    12,
-    17,
-    44,
-    182,
-    49,
-    166,
-    168,
-    193,
-    214,
-    127,
-    102
-  ],
-  "ORANGE_KUMQUAT_JUNGLE_PERCENTAGES": {
-    "103": 10,
-    "12": 10,
-    "17": 12,
-    "44": 10,
-    "182": 5,
-    "49": 10,
-    "166": 8,
-    "168": 8,
-    "193": 8,
-    "214": 6,
-    "127": 6,
-    "102": 7
-  },
-  "ORANGE_PUMMELO_CLIFFS": [
-    147,
-    148,
-    142,
-    22,
-    85,
-    227,
-    207,
-    112,
-    95,
-    132,
-    149
-  ],
-  "ORANGE_PUMMELO_CLIFFS_PERCENTAGES": {
-    "147": 10,
-    "148": 4,
-    "142": 3,
-    "22": 14,
-    "85": 10,
-    "227": 10,
-    "207": 12,
-    "112": 8,
-    "95": 10,
-    "132": 10,
-    "149": 1
   },
   "ORANGE_PINKAN_RESERVE": [
     9101,
@@ -2763,16 +5802,12 @@
     74
   ],
   "ORANGE_CRYSTAL_CAVE_PERCENTAGES": {
-    "95": 18,
-    "75": 15,
-    "42": 15,
-    "28": 10,
-    "105": 8,
-    "246": 5,
-    "185": 8,
-    "213": 7,
-    "208": 3,
-    "74": 11
+    "74": 50,
+    "433": 30,
+    "240": 10,
+    "46": 5,
+    "41": 4,
+    "183": 1
   },
   "ORANGE_FIRE_ISLAND": [
     58,
@@ -2788,17 +5823,14 @@
     240
   ],
   "ORANGE_FIRE_ISLAND_PERCENTAGES": {
-    "58": 12,
-    "77": 12,
-    "78": 6,
-    "126": 8,
-    "218": 14,
-    "219": 6,
-    "228": 12,
-    "229": 4,
-    "37": 12,
-    "38": 4,
-    "240": 10
+    "240": 30,
+    "37": 20,
+    "218": 20,
+    "219": 10,
+    "126": 10,
+    "776": 5,
+    "136": 4,
+    "4": 1
   },
   "ORANGE_ICE_ISLAND": [
     86,
@@ -2814,17 +5846,11 @@
     90
   ],
   "ORANGE_ICE_ISLAND_PERCENTAGES": {
-    "86": 12,
-    "87": 8,
+    "238": 55,
+    "86": 30,
     "124": 10,
-    "215": 12,
-    "220": 12,
-    "221": 6,
-    "225": 12,
-    "131": 4,
-    "238": 12,
-    "91": 6,
-    "90": 6
+    "134": 4,
+    "7": 1
   },
   "ORANGE_LIGHTNING_ISLAND": [
     25,
@@ -2841,18 +5867,17 @@
     26
   ],
   "ORANGE_LIGHTNING_ISLAND_PERCENTAGES": {
+    "236": 25,
+    "100": 20,
+    "239": 18,
+    "66": 15,
     "25": 10,
-    "81": 12,
-    "82": 6,
-    "100": 12,
-    "101": 6,
-    "125": 6,
-    "179": 14,
-    "180": 8,
-    "239": 10,
-    "170": 8,
+    "125": 5,
+    "67": 2,
     "135": 2,
-    "26": 6
+    "101": 2,
+    "1": 1,
+    "68": 1
   },
   "ORANGE_SHAMOUTI_SHRINE": [
     79,
@@ -2868,16 +5893,376 @@
     117
   ],
   "ORANGE_SHAMOUTI_SHRINE_PERCENTAGES": {
-    "79": 15,
-    "80": 8,
-    "199": 4,
-    "72": 15,
-    "73": 8,
-    "120": 12,
-    "222": 12,
-    "226": 10,
+    "66": 40,
+    "236": 35,
+    "42": 20,
+    "67": 4,
+    "68": 1
+  },
+  "ORANGE_ORANGE_ROUTE_49_PERCENTAGES": {
+    "10": 13,
+    "46": 11,
+    "19": 11,
+    "69": 7,
+    "43": 6,
+    "29": 2,
+    "41": 2,
+    "32": 2,
+    "60": 1,
+    "731": 1,
+    "9501": 2,
+    "9502": 3,
+    "9503": 4,
+    "9504": 3,
+    "9505": 2,
+    "9506": 4,
+    "9507": 2,
+    "9508": 2,
+    "9509": 2,
+    "9510": 4,
+    "9511": 2,
+    "9512": 4,
+    "9513": 2,
+    "9514": 3,
+    "9515": 2,
+    "9516": 2,
+    "9517": 2
+  },
+  "ORANGE_ORANGE_ROUTE_50_PERCENTAGES": {
+    "43": 20,
+    "187": 18,
+    "278": 13,
+    "50": 13,
+    "744": 10,
+    "58": 9,
+    "74": 6,
+    "731": 3,
+    "19": 3,
+    "23": 2,
+    "21": 2
+  },
+  "ORANGE_TANGELO_JUNGLE_PERCENTAGES": {
+    "10": 30,
+    "13": 30,
+    "731": 13,
+    "43": 10,
+    "69": 7,
+    "25": 4,
+    "11": 3,
+    "14": 2,
+    "12": 1,
+    "15": 1
+  },
+  "ORANGE_ORANGE_ROUTE_52_PERCENTAGES": {
+    "16": 33,
+    "742": 20,
+    "48": 20,
+    "37": 10,
+    "21": 7,
+    "187": 6,
+    "43": 3,
+    "114": 1
+  },
+  "ORANGE_ORANGE_ROUTE_53_PERCENTAGES": {
+    "327": 30,
+    "21": 15,
+    "120": 15,
+    "16": 10,
+    "109": 10,
+    "72": 10,
+    "19": 5,
+    "23": 2,
+    "187": 2
+  },
+  "ORANGE_ORANGE_ROUTE_54_PERCENTAGES": {
+    "458": 60,
+    "72": 30,
+    "223": 10
+  },
+  "ORANGE_MANDARIN_UNDERGROUND_PERCENTAGES": {
+    "458": 60,
+    "72": 30,
+    "223": 10
+  },
+  "ORANGE_ORANGE_ROUTE_55_PERCENTAGES": {
+    "56": 15,
+    "187": 15,
+    "320": 15,
+    "19": 14,
+    "16": 11,
+    "179": 8,
+    "43": 8,
+    "278": 8,
+    "327": 4,
+    "72": 2,
+    "84": 1
+  },
+  "ORANGE_ORANGE_ROUTE_56_PERCENTAGES": {
+    "320": 36,
+    "16": 13,
+    "433": 12,
+    "19": 12,
+    "231": 10,
+    "43": 6,
+    "744": 4,
+    "72": 4,
+    "41": 3,
+    "96": 1
+  },
+  "ORANGE_ORANGE_ROUTE_57_PERCENTAGES": {
+    "731": 15,
+    "744": 15,
+    "278": 15,
+    "19": 14,
+    "732": 10,
+    "114": 9,
+    "72": 8,
+    "56": 6,
+    "27": 4,
+    "223": 3,
+    "21": 1
+  },
+  "ORANGE_SEVEN_GRAPEFRUITS_PERCENTAGES": {
+    "187": 32,
+    "180": 26,
+    "46": 14,
+    "41": 12,
+    "19": 8,
+    "179": 4,
+    "20": 2,
+    "43": 2,
+    "188": 1
+  },
+  "ORANGE_ORANGE_ROUTE_58_PERCENTAGES": {
+    "278": 60,
+    "72": 30,
+    "223": 10
+  },
+  "ORANGE_MT_NAVEL_PERCENTAGES": {
+    "37": 48,
+    "41": 23,
+    "27": 17,
+    "42": 11,
+    "124": 1
+  },
+  "ORANGE_ORANGE_ROUTE_59_PERCENTAGES": {
+    "278": 60,
+    "320": 30,
+    "72": 10
+  },
+  "ORANGE_ORANGE_ROUTE_60_PERCENTAGES": {
+    "39": 28,
+    "21": 18,
+    "320": 15,
+    "92": 9,
+    "41": 8,
+    "223": 8,
+    "43": 6,
+    "23": 5,
+    "769": 2,
+    "72": 2
+  },
+  "ORANGE_ORANGE_ROUTE_61_PERCENTAGES": {
+    "114": 28,
+    "16": 16,
+    "118": 15,
+    "731": 10,
+    "19": 9,
+    "327": 8,
+    "320": 8,
+    "72": 2,
+    "732": 2,
+    "20": 2,
+    "17": 1
+  },
+  "ORANGE_ORANGE_ROUTE_62_PERCENTAGES": {
+    "757": 30,
+    "433": 20,
+    "358": 13,
+    "74": 10,
+    "742": 10,
+    "743": 7,
+    "75": 5,
+    "128": 4,
+    "227": 1
+  },
+  "ORANGE_MANDARIN_DESERT_PERCENTAGES": {
+    "769": 30,
+    "50": 30,
+    "27": 20,
+    "81": 10,
+    "328": 9,
+    "104": 1
+  },
+  "ORANGE_SUNRAY_CAVE_PERCENTAGES": {
+    "218": 35,
+    "769": 30,
+    "81": 20,
+    "104": 10,
+    "35": 4,
+    "36": 1
+  },
+  "ORANGE_ORANGE_ROUTE_57_NORTH_PERCENTAGES": {
+    "218": 35,
+    "769": 30,
+    "81": 20,
+    "104": 10,
+    "35": 4,
+    "36": 1
+  },
+  "ORANGE_CLEOPATRA_ISLAND_PERCENTAGES": {
+    "66": 35,
+    "69": 30,
+    "63": 24,
+    "70": 10,
+    "441": 1
+  },
+  "ORANGE_ORANGE_ROUTE_63_PERCENTAGES": {
+    "226": 24,
+    "43": 14,
+    "56": 12,
+    "102": 12,
+    "72": 12,
+    "187": 10,
+    "52": 9,
+    "73": 4,
+    "188": 2,
+    "41": 1
+  },
+  "ORANGE_HEART_SCALE_COVE_PERCENTAGES": {
+    "46": 22,
+    "41": 22,
+    "42": 22,
+    "47": 15,
+    "118": 8,
+    "66": 4,
+    "236": 3,
+    "119": 2,
+    "67": 1
+  },
+  "ORANGE_ORANGE_ROUTE_64_PERCENTAGES": {
+    "17": 11,
+    "732": 11,
+    "69": 8,
+    "191": 8,
+    "192": 8,
+    "22": 8,
+    "120": 8,
+    "226": 8,
+    "70": 4,
+    "46": 4,
+    "58": 4,
+    "121": 4,
+    "73": 4,
+    "63": 3,
+    "41": 2,
+    "72": 2,
+    "47": 1,
+    "43": 1,
+    "44": 1,
+    "64": 1,
+    "77": 1
+  },
+  "ORANGE_BUTWAL_ISLAND_PERCENTAGES": {
+    "43": 23,
+    "357": 21,
+    "55": 20,
+    "57": 20,
+    "44": 11,
+    "12": 2,
+    "49": 1,
+    "70": 1,
+    "114": 1
+  },
+  "ORANGE_ORANGE_ROUTE_66_PERCENTAGES": {
+    "37": 36,
+    "98": 24,
+    "125": 13,
+    "118": 12,
+    "732": 5,
+    "119": 4,
+    "20": 4,
+    "731": 2,
+    "19": 1
+  },
+  "ORANGE_ORANGE_ROUTE_67_PERCENTAGES": {
+    "128": 30,
+    "77": 18,
+    "17": 16,
+    "226": 15,
+    "20": 10,
+    "119": 8,
+    "73": 2,
+    "125": 1
+  },
+  "ORANGE_RIND_ISLAND_PERCENTAGES": {
+    "16": 40,
+    "17": 35,
+    "79": 24,
+    "80": 1
+  },
+  "ORANGE_ORANGE_ROUTE_68_PERCENTAGES": {
+    "116": 20,
+    "231": 15,
+    "769": 10,
+    "320": 10,
+    "179": 10,
+    "180": 7,
+    "119": 5,
+    "226": 5,
+    "92": 5,
+    "117": 5,
+    "232": 2,
+    "118": 2,
+    "457": 2,
+    "98": 2,
+    "93": 1,
+    "357": 1
+  },
+  "ORANGE_ORANGE_VICTORY_ROAD_PERCENTAGES": {
+    "41": 28,
+    "42": 23,
+    "75": 15,
+    "95": 8,
+    "74": 8,
+    "327": 8,
+    "231": 4,
+    "232": 3,
+    "240": 1,
+    "111": 1,
+    "126": 1
+  },
+  "ORANGE_ORANGE_ROUTE_70_PERCENTAGES": {
+    "133": 24,
+    "733": 24,
+    "176": 16,
+    "211": 16,
     "171": 8,
-    "230": 3,
-    "117": 5
+    "35": 4,
+    "115": 3,
+    "87": 3,
+    "196": 1,
+    "700": 1,
+    "197": 1
+  },
+  "ORANGE_TARROCO_ISLAND_PERCENTAGES": {
+    "133": 33,
+    "733": 33,
+    "176": 22,
+    "35": 6,
+    "115": 4,
+    "196": 1,
+    "700": 1,
+    "197": 1
+  },
+  "ORANGE_HAMLIN_ISLAND_PERCENTAGES": {
+    "133": 33,
+    "733": 33,
+    "176": 22,
+    "35": 6,
+    "115": 4,
+    "196": 1,
+    "700": 1,
+    "197": 1
   }
 }

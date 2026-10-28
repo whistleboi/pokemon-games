@@ -3432,6 +3432,9 @@ class CityState(GameState):
         return True
 
     def _get_callback_for_option(self, opt_data):
+        if opt_data.get("move_region"):  # the S.S. Anne to the Orange Islands: a move to a new region
+            r = opt_data["move_region"]
+            return lambda: self.game.change_state(self.game.story_manager.move_to_region(r))
         if opt_data.get("npc"):  # a way out that someone stops you at (Oak at Route 1, FRLG)
             return self._get_callback_for_option({"action": "NPC", "target": opt_data["npc"]})
         action = opt_data.get("action")
@@ -4983,7 +4986,7 @@ class CityState(GameState):
                 story.inventory["SS_TICKET"] = 1
                 road = road + ["You received an S.S. TICKET!",
                                "The S.S. Aqua sails between Vermilion City and Olivine City."]
-                if story.is_region_champion("KANTO") and story.is_region_champion("JOHTO"):
+                if region == "KANTO" and "ORANGE" not in story.visited_regions():
                     road += self.ORANGE_INVITE
                 self.show_message(link_lines + road, callback=lambda: self._offer_move(region, phone=True))
             elif link_lines:
@@ -5007,9 +5010,9 @@ class CityState(GameState):
     }
     # Both titles: Professor Ivy invites the Champion of Kanto and Johto to the Orange Islands.
     ORANGE_INVITE = ["...A letter has arrived from Professor Ivy of Valencia Island!",
-                     "\"Champion of Kanto AND Johto! The Orange Crew would love to meet you.",
-                     "Beat the four Gym Leaders of the Orange Islands and challenge the Orange League!\"",
-                     "Ships to the Orange Islands leave from Vermilion City and Olivine City."]
+                     "\"Kanto's new Champion! The Orange Islands have their own League, the Orange Crew.",
+                     "If you'd like to start a new journey, I'll have a partner waiting for you.\"",
+                     "The S.S. Anne sails from Vermilion City to the Orange Islands whenever you're ready."]
     ISLAND_CHAMPION = ["Drake: The Winner's Trophy is yours. You're the Orange League Champion!",
                        "Your name will be carved into the wall of Pummelo Stadium.",
                        "The ships still sail between the islands. Come back any time for a rematch!"]

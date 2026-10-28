@@ -290,7 +290,7 @@ class RegionSelectionState(GameState):
 
     COLS = 3
     # The side areas each region opens up later (shown on its card).
-    SUB_REGIONS = {"KANTO": ("Sevii Islands", "Orange Islands"), "HOENN": ("Orre",),
+    SUB_REGIONS = {"KANTO": ("Sevii Islands",), "HOENN": ("Orre",),
                    "SINNOH": ("Hisui",), "UNOVA": ("Decolore Islands",),
                    "GALAR": ("Isle of Armor", "Crown Tundra"), "PALDEA": ("Kitakami", "Blueberry Academy")}
 
@@ -299,7 +299,7 @@ class RegionSelectionState(GameState):
         self.mode = mode
         self.return_state = return_state
         story = game.story_manager
-        # Travel-only regions (the Orange Islands) are reached by ship, never a new game or a move.
+        # Travel-only regions are reached by ship, never a new game or a move.
         starts = [(r, cfg) for r, cfg in story.get_region_starts() if not cfg.get("travel_only")]
         if mode == "move":
             starts = self.new_regions(story)
@@ -379,6 +379,9 @@ class RegionSelectionState(GameState):
         "JOHTO": ["Mom: Johto? Oh, that's right next door! No need to move house for that.",
                   "From the Pokemon League's Reception Gate, follow Route 26 and Route 27 east to New Bark Town.",
                   "Or take the S.S. Aqua from Vermilion City to Olivine City with your S.S. Ticket!"],
+        "ORANGE": ["Mom: The Orange Islands? Then you'll need a ship!",
+                   "The S.S. Anne sails from Vermilion City to Valencia Island. Board it when you're ready.",
+                   "Professor Ivy will meet you there with a new partner."],
         "KANTO": ["Mom: Kanto? That's just next door! You can travel there yourself.",
                   "From New Bark Town, take Route 27 west to the Reception Gate, then Route 22 to Viridian City.",
                   "Or take the S.S. Aqua from Olivine City to Vermilion City with your S.S. Ticket!"],
@@ -386,6 +389,8 @@ class RegionSelectionState(GameState):
 
     def _travel_only(self, region):
         here = self.game.story_manager.get_current_region()
+        if self.mode == "move" and here == "KANTO" and region == "ORANGE":
+            return True  # Kanto's Champion sails there on the S.S. Anne (Jordan, 10-27)
         return self.mode == "move" and region != here and {here, region} <= self.NEIGHBOURS
 
     def confirm_selection(self):

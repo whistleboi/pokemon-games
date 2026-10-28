@@ -49,9 +49,7 @@ GYM_ACE = {
     "UNOVA": [14, 20, 23, 27, 31, 35, 39, 43], "KALOS": [12, 25, 32, 34, 37, 42, 48, 59],
     "ALOLA": [10, 16, 27, 39, 48], "GALAR": [20, 24, 27, 36, 38, 42, 46, 48],
     "PALDEA": [15, 17, 24, 30, 36, 42, 45, 48],
-    # Orange League in line with Kanto's League (Jordan): Gyms like the Elite Four (54-60), Drake like
-    # Kanto's Champion (63); his rematch (+10) is 69-73, close to Kanto's FRLG rematch (72-75).
-    "ORANGE": [54, 56, 58, 60],
+    "ORANGE": [18, 30, 42, 56],
 }
 # Jordan (patch 11): Leagues well below the others are raised to the Kanto band (Champion ace 63),
 # every level shifted by the same amount so the canon spread is kept: Johto +13, Hoenn +5,
@@ -65,9 +63,10 @@ ELITE_FOUR = {"KANTO": (54, 60), "JOHTO": (55, 60), "HOENN": (54, 60), "SINNOH":
 # the first run uses the story's final battle band (Ghetsis, 52-54), raised +9 (patch 11) to 61-63.
 CHAMPION_ACE = {"KANTO": 63, "JOHTO": 63, "HOENN": 63, "SINNOH": 62, "UNOVA": 63, "KALOS": 68,
                 "ALOLA": 63, "GALAR": 65, "PALDEA": 62,
-                "ORANGE": 63}
-# Orange Islands post-game (Jordan, Q4): once Drake is beaten, the Orange Gyms scale to the Orange
-# Champion's post-game band: each Gym team is lifted so its ace is Drake's rematch ace (63 + 10).
+                "ORANGE": 65}
+# The Orange Islands are a full region since 10-27 (Jordan), built from the Pokemon Orange ROM hack:
+# Cissy 18, Danny 30, Rudy 42, Luana 56, Drake 65. Once Drake is beaten, the Orange Gyms scale to the
+# Orange Champion's post-game band: each Gym team is lifted so its ace is Drake's rematch ace (65 + 10).
 ORANGE_POSTGAME_ACE = CHAMPION_ACE["ORANGE"] + 10
 START_LEVEL = 3
 
@@ -322,7 +321,7 @@ def obey_level(story):
     if cap_mode(story) != "OBEDIENCE":
         return 100
     if story.get_region_start(story.get_current_region()).get("travel_only"):
-        return 100  # post-game trips (Orange Islands, Orre): your team already obeys you
+        return 100  # post-game trips (Orre): your team already obeys you
     badges = len(story.badges.get(story.get_current_region(), []))
     return 100 if badges >= 8 else 20 + 10 * badges
 
