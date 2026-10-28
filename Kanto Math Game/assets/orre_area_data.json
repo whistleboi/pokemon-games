@@ -22,7 +22,7 @@
           "action": "SHOP"
         },
         {
-          "text": "OUTSKIRT STAND: WILLIE",
+          "text": "CHALLENGE WILLIE",
           "action": "EVENT",
           "color": "GOLD",
           "flag_condition": "not orre_beat_willie",
@@ -37,16 +37,10 @@
               "sprite": "biker.png",
               "is_boss_battle": true,
               "team": [
-                263,
-                263,
-                264,
-                264
+                263
               ],
               "levels": [
-                6,
-                7,
-                7,
-                8
+                6
               ],
               "rewards": {
                 "balls": 6

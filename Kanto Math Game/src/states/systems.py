@@ -810,8 +810,10 @@ class PokeMartState(GameState):
         area_key = game.story_manager.current_area_key
         first_part = area_key.split('_')[0].lower()
         fallback_name = f"{first_part}_city_{type_suffix}.png"
+        # The town's own [area_key]_mart.png first (fight_area_mart.png, not fight_city_mart.png).
+        own_name = f"{area_key.lower()}_{type_suffix}.png"
 
-        filenames = [bg_config, fallback_name] if bg_config else [fallback_name]
+        filenames = [n for n in dict.fromkeys([bg_config, own_name, fallback_name]) if n]
         box_top = Utils.get_full_dialogue_rect(game).top
 
         for filename in filenames:
