@@ -821,6 +821,102 @@ class PlayState(GameState):
         else:
             self.show_progression_menu()
 
+    # Jordan (10-29): trying to leave a route before it's done can bring an ambush on the way out.
+    EXIT_AMBUSH_CHANCE = 0.4
+    ROUTE_DONE_CONDITIONS = ("can_exit", "no_trainers")
+
+    def _exit_block(self, item, trainers_left):
+        """None (open), "route" (only the route's own actions are left), "story" (a badge, an HM,
+        an item or a story step is missing) or "hidden" (another version's exit, or one that's gone)."""
+        fc = item.get("flag_condition")
+        flags = self.game.story_manager.story_flags
+        if fc:
+            parts = fc.split()
+            if parts[0] == "not" and len(parts) == 2:
+                if flags.get(parts[1]):
+                    return "hidden"
+        cond = item.get("condition")
+        conds = cond if isinstance(cond, list) else [cond] if cond else []
+        failing = [c for c in conds if not self._check_route_condition(c, trainers_left, item)]
+        if any(isinstance(c, str) and c.startswith("hoenn_version:") for c in failing):
+            return "hidden"
+        if fc and fc.split()[0] != "not" and not flags.get(fc.split()[0]):
+            failing.append(fc.split()[0])
+        if not failing:
+            return None
+        if all(c in self.ROUTE_DONE_CONDITIONS for c in failing):
+            return "route"
+        return "story"
+
+    def _exit_ambush(self, item):
+        """A way out that only waits on this route's own catches and battles: sometimes a trainer
+        (half the time, while any are left) or a wild Pokemon jumps out; otherwise say what's left."""
+        story = self.game.story_manager
+        area = story.current_area_key
+        pool = self.area_data.get("trainer_pool", [])
+        trainers = any(not story.is_trainer_defeated(area, i) for i in range(len(pool)))
+        wild = bool(self._get_wild_pool(self.area_data))
+        if random.random() < self.EXIT_AMBUSH_CHANCE and (trainers or wild):
+            if trainers and (not wild or random.random() < 0.5):
+                self.show_dialogue(["A trainer stops you on your way out!"], callback=self.action_search_trainer)
+            else:
+                self.show_dialogue(["A wild Pokémon jumps out as you try to leave!"], callback=self.action_battle_wild)
+            return
+        name = self.area_data.get("route_name", area.replace("_", " ").title())
+        left = max(1, self.min_rounds - self.rounds_completed)
+        if trainers and any(c == "no_trainers" for c in (item.get("condition") if isinstance(item.get("condition"), list)
+                                                        else [item.get("condition")])):
+            line = "Beat the trainers here first!"
+        else:
+            line = f"Explore a little more first: {left} more catch or battle{'s' if left > 1 else ''}."
+        self.show_dialogue([f"You can't leave {name} yet!", line], callback=self.show_progression_menu)
+
+    def _exit_locked(self, item):
+        """A way out that waits on the story: say what's needed."""
+        story = self.game.story_manager
+        lines = item.get("locked_text")
+        if not lines:
+            cond = item.get("condition")
+            conds = cond if isinstance(cond, list) else [cond] if cond else []
+            pool = self.area_data.get("trainer_pool", [])
+            left = any(not story.is_trainer_defeated(story.current_area_key, i) for i in range(len(pool)))
+            failing = [c for c in conds if not self._check_route_condition(c, left, item)
+                       and c not in self.ROUTE_DONE_CONDITIONS]
+            fc = item.get("flag_condition")
+            if fc and fc.split()[0] != "not" and not story.story_flags.get(fc.split()[0]):
+                failing.append(fc.split()[0])
+            lines = [self._need_line(c) for c in failing[:2]] or ["The way is blocked for now."]
+        lines = lines if isinstance(lines, list) else [lines]
+        self.show_dialogue(lines, callback=self.show_progression_menu)
+
+    def _need_line(self, c):
+        """What a failed exit condition asks of the player, in words."""
+        import re as _re
+        prog = self.game.loader.area_data.get("STORY_PROGRESSION", {})
+        c = str(c)
+        if c.startswith("has_item:HM_") or c.startswith("has_HM_"):
+            move = c.split("HM_", 1)[1].replace("_", " ").title()
+            return f"You need HM {move} to go this way."
+        if c.startswith("has_item:"):
+            return f"You need the {c.split(':', 1)[1].replace('_', ' ').title()} to go this way."
+        if c in ("has_8_kanto_badges", "has_8_badges"):
+            return "You need all eight badges to go this way."
+        m = _re.match(r"has_(\w+?)_?badge$", c)
+        if m:
+            name = m.group(1).replace("_", " ").title()
+            return f"You need the {name} to go this way." if name.endswith(" Z") else                 f"You need the {name} Badge to go this way."  # Alola's trials give Z-Crystals
+        if c.startswith("beat_") and c.endswith("_champion") or c == "beat_alder":
+            return "This way opens once you become the Champion."
+        if c.startswith("visited_"):
+            where = prog.get(c[8:], {}).get("route_name") or c[8:].replace("_", " ").title()
+            return f"You need to visit {where} first."
+        if c.endswith("boss_defeated"):
+            return "Something blocks the way. Deal with it first!"
+        missions = [m for m in self.game.story_manager.get_active_missions() if m.get("type") == "MAIN"]
+        if missions:
+            return f"Something still blocks the way. Your Journal says: {missions[0]['text']}."
+        return "Something still blocks the way. Keep following the story!"
+
     def _why_disabled(self, condition):
         """A greyed route button says why it can't be used yet."""
         story = self.game.story_manager
@@ -1340,6 +1436,11 @@ class PlayState(GameState):
             condition = item.get("condition")
             action = item.get("action")
             flag_condition = item.get("flag_condition")
+            if action in ("EXIT", "TRAVEL") and self.area_data.get("area_type") != "town":
+                block = self._exit_block(item, trainers_left)
+                if block != "hidden":
+                    valid_options.append(dict(item, exit_block=block) if block else item)
+                continue
             if flag_condition:
                 parts = flag_condition.split()
                 if action == "GALACTIC_GAUNTLET" and parts[0] == "not" and trainer_pool and not trainers_left:
@@ -1384,6 +1485,11 @@ class PlayState(GameState):
             callback = self._get_route_callback(item)
             if item.get("disabled"):
                 callback = (lambda c=item.get("condition"): self._why_disabled(c))
+            if item.get("exit_block") == "route":  # not done here yet: a chance of an ambush on the way out
+                callback = (lambda i=item: self._exit_ambush(i))
+            elif item.get("exit_block") == "story":  # say what has to happen first
+                callback = (lambda i=item: self._exit_locked(i))
+                bg_color = (120, 124, 144)
 
             label = ("> " if toward else "") + theme.pokemon_word(_fill_names(self.game, item["text"]))  # "BATTLE {rival_name}"
             btn = CommandButton(pygame.Rect(0, 0, 330, 60), label, self.game.assets.fonts["label"],

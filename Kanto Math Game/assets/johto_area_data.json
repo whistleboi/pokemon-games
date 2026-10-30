@@ -1426,7 +1426,7 @@
               {"text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE"},
               {"text": "Dark Cave", "action": "EXIT", "target_area": "DARK_CAVE", "condition": ["can_exit", "has_item:HM_FLASH"], "color": "RED"},
               {"text": "ROUTE 29", "action": "EXIT", "target_area": "JOHTO_ROUTE_29", "condition": "can_exit", "color": "RED"},
-              {"text": "ROUTE 45", "action": "EXIT", "target": "JOHTO_ROUTE_45", "condition": "can_exit", "flag_condition": "visited_BLACKTHORN_CITY", "color": "RED"}
+              {"text": "ROUTE 45", "action": "EXIT", "target": "JOHTO_ROUTE_45", "condition": "can_exit", "flag_condition": "visited_BLACKTHORN_CITY", "locked_text": ["The ledges only go down this way.", "Route 45 is reached from Blackthorn City."], "color": "RED"}
             ],
             "next_area": "JOHTO_ROUTE_29" 
         },

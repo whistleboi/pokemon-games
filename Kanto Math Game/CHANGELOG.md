@@ -28,6 +28,9 @@
 - **Routes use the town menu:** routes now have the same four buttons as towns: EXPLORE, PKDEX, POKéMON and TRAVEL.
   - EXPLORE opens a pop-up with the route's catching, battles, trainers, fishing and story events.
   - TRAVEL opens a pop-up with the ways out.
+- **Leaving a route early:** TRAVEL now lists every way out.
+  - **Exploring isn't done yet:** picking an exit has a 40% chance of an ambush on the way out. It's a trainer from the route or a wild Pokémon, half and half, and always a wild Pokémon once the trainers are beaten. Otherwise you're told how many more catches or battles the route needs.
+  - **Blocked by the story:** the exit is greyed out, and picking it says what's needed: an HM, a badge, an item, a place to visit, becoming Champion, or what the Journal says to do next.
 - **Hoenn fixes:**
   - **Catching before the Pokédex:** you can battle wild Pokémon before Birch gives you the Pokédex, but not catch them, as in the games. Throwing a ball from the Bag is now blocked too.
   - **Galarian Zigzagoon:** it no longer shows up in Hoenn until you've been to Galar. "Battle wild Pokémon" now picks by each Pokémon's real odds. Before, it chose evenly among an area's four rarest Pokémon, so a 1% Pokémon came up about one battle in four.
