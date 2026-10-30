@@ -868,7 +868,7 @@ class PlayState(GameState):
                                                         else [item.get("condition")])):
             line = "Beat the trainers here first!"
         else:
-            line = f"Explore a little more first: {left} more catch or battle{'s' if left > 1 else ''}."
+            line = f"Explore a little more first: {left} more {'catches or battles' if left > 1 else 'catch or battle'}."
         self.show_dialogue([f"You can't leave {name} yet!", line], callback=self.show_progression_menu)
 
     def _exit_locked(self, item):
@@ -967,8 +967,9 @@ class PlayState(GameState):
         return False
 
     def trigger_scripted_on_enter_battle(self, on_enter):
-        """Helper to handle the complex on_enter battle setup logic."""
-        self.rounds_completed += 1
+        """Helper to handle the complex on_enter battle setup logic. A story battle on arrival
+        (Bianca on Unova's Route 2) isn't one of the route's own rounds (Jordan, 10-29: leaving
+        before the route is explored brings an ambush or a reason)."""
 
         trainer_info = _cast_trainer(self.game, dict(on_enter["trainer"]))
         team_ids = trainer_info.get("team", [])
@@ -1957,6 +1958,17 @@ class PlayState(GameState):
         self.route_popup = None
         self.route_popup_rect = None
 
+    def _sync_route_menu(self):
+        """A message in the text box (the "can't leave yet" warning, a lock's reason) shows over
+        the route menu: the menu steps aside while it's up and comes back after."""
+        menu = getattr(self, "route_action_menu", None)
+        if menu is None:
+            return
+        talking = bool(self.dialogue_box.visible)
+        menu.visible = not talking
+        if talking and getattr(self, "route_popup", None):
+            self.close_route_popup()
+
     def _route_prompt(self):
         """The route menu's words in the text box, as in a town."""
         if self.rounds_completed == 0:
@@ -2654,6 +2666,7 @@ class PlayState(GameState):
 
     def update(self):
         self.boss_manager.update()
+        self._sync_route_menu()
 
         if self.boss_prompt_active:
             self.dialogue_box.update()

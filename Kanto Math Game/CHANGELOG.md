@@ -31,6 +31,8 @@
 - **Leaving a route early:** TRAVEL now lists every way out.
   - **Exploring isn't done yet:** picking an exit has a 40% chance of an ambush on the way out. It's a trainer from the route or a wild Pokémon, half and half, and always a wild Pokémon once the trainers are beaten. Otherwise you're told how many more catches or battles the route needs.
   - **Blocked by the story:** the exit is greyed out, and picking it says what's needed: an HM, a badge, an item, a place to visit, becoming Champion, or what the Journal says to do next.
+  - **Story battles on arrival don't count as exploring:** on Unova's Route 2, Bianca's battle used to count as one of the route's rounds, so the route was "done" and you could leave with no warning.
+- **Unova's wild Pokémon follow Black/White:** the pools had Black 2/White 2's post-game Pokémon mixed in, such as Liepard and Lickilicky on Route 2. They now use Black/White's walking encounters at their real rates. Pokémon Black/White has in other ways on the same route (shaking grass, surfing, fishing) stay, but rare. Areas found only in Black 2/White 2 use that game's encounters. A Pokémon Ranger on Route 18 gives you a Larvesta Egg, as in Black/White, so every Unova Pokémon can still be found in Unova.
 - **Hoenn fixes:**
   - **Catching before the Pokédex:** you can battle wild Pokémon before Birch gives you the Pokédex, but not catch them, as in the games. Throwing a ball from the Bag is now blocked too.
   - **Galarian Zigzagoon:** it no longer shows up in Hoenn until you've been to Galar. "Battle wild Pokémon" now picks by each Pokémon's real odds. Before, it chose evenly among an area's four rarest Pokémon, so a 1% Pokémon came up about one battle in four.
