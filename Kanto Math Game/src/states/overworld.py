@@ -857,6 +857,8 @@ class PlayState(GameState):
         trainers = any(not story.is_trainer_defeated(area, i) for i in range(len(pool)))
         wild = bool(self._get_wild_pool(self.area_data))
         if random.random() < self.EXIT_AMBUSH_CHANCE and (trainers or wild):
+            # Get through the ambush and you're on your way (Jordan, 10-29).
+            story.ambush_exit = {"area": area, "exit": {k: v for k, v in item.items() if k != "exit_block"}}
             if trainers and (not wild or random.random() < 0.5):
                 self.show_dialogue(["A trainer stops you on your way out!"], callback=self.action_search_trainer)
             else:
@@ -1409,7 +1411,24 @@ class PlayState(GameState):
                 self.dialogue_box.visible = False
                 return
 
+    def _leave_after_ambush(self):
+        """Back from an exit ambush with a Pokemon still standing: carry on out that way."""
+        story = self.game.story_manager
+        pending = getattr(story, "ambush_exit", None)
+        if not pending:
+            return False
+        story.ambush_exit = None
+        if pending.get("area") != story.current_area_key or not any(p and p.current_hp > 0 for p in story.player_team):
+            return False  # whited out (or somewhere else now): the way out waits
+        callback = self._get_route_callback(pending["exit"])
+        if not callback:
+            return False
+        callback()
+        return True
+
     def show_progression_menu(self):
+        if self._leave_after_ambush():
+            return
         self.is_progression_paused = True
         self.dialogue_box.visible = False
 

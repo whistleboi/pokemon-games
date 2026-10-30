@@ -85,43 +85,117 @@ check(shown and all(b.route_group == "explore" for b in shown), f"EXPLORE: {[b.t
 ps.toggle_route_popup("travel")
 shown = [b for b in ps.route_buttons if b in g.ui_manager.elements]
 check(shown and all(b.route_group == "travel" for b in shown), f"TRAVEL: {[b.text for b in shown]}")
-print("6) leaving a route early: an ambush or a reason (Jordan, 10-29)")
-import random as _rnd
-said = []
-PlayState.show_dialogue = lambda self, lines, callback=None: said.append((list(lines), callback))
-story.current_area_key = "HOENN_ROUTE_104"
-ps = PlayState(g)
-g.change_state(ps)
-ps.rounds_completed = 0
-ps.show_progression_menu()
-early = [b for b in ps.route_buttons if b.route_group == "travel"]
-check(early, f"TRAVEL still lists the ways out before the route is done: {[b.text for b in early]}")
-_rnd.seed(1)
-kinds = Counter()
-for _ in range(200):
-    said.clear()
-    ps._exit_ambush({"condition": "can_exit"})
-    line = said[-1][0][0]
-    kinds["trainer" if "trainer" in line else "wild" if "wild" in line else "blocked"] += 1
-check(55 <= kinds["blocked"] <= 145 and kinds["trainer"] and kinds["wild"],
-      f"about 40% ambush, split trainer/wild: {dict(kinds)}")
-for i in range(len(ps.area_data.get("trainer_pool", []))):
-    story.mark_trainer_defeated("HOENN_ROUTE_104", i)
-kinds = Counter()
-for _ in range(100):
-    said.clear()
-    ps._exit_ambush({"condition": "can_exit"})
-    kinds["trainer" if "trainer" in said[-1][0][0] else "other"] += 1
-check(kinds["trainer"] == 0, "no trainers left: the ambush is always wild")
-story.current_area_key = "KANTO_ROUTE_22"
-story.badges = {"KANTO": []}
-ps = PlayState(g)
-g.change_state(ps)
-ps.rounds_completed = 99
-ps.show_progression_menu()
-r23 = next((b for b in ps.route_buttons if "23" in b.text), None)
-said.clear()
-if r23:
-    r23.callback()
-check(r23 is not None and said and "eight badges" in said[-1][0][0], f"Route 23 says why: {said[-1][0] if said else None}")
+print("6) leaving a route early: an ambush or a reason (Jordan, 10-29)")
+
+import random as _rnd
+
+said = []
+
+PlayState.show_dialogue = lambda self, lines, callback=None: said.append((list(lines), callback))
+
+story.current_area_key = "HOENN_ROUTE_104"
+
+ps = PlayState(g)
+
+g.change_state(ps)
+
+ps.rounds_completed = 0
+
+ps.show_progression_menu()
+
+early = [b for b in ps.route_buttons if b.route_group == "travel"]
+
+check(early, f"TRAVEL still lists the ways out before the route is done: {[b.text for b in early]}")
+
+_rnd.seed(1)
+
+kinds = Counter()
+
+for _ in range(200):
+
+    said.clear()
+
+    ps._exit_ambush({"condition": "can_exit"})
+
+    line = said[-1][0][0]
+
+    kinds["trainer" if "trainer" in line else "wild" if "wild" in line else "blocked"] += 1
+
+check(55 <= kinds["blocked"] <= 145 and kinds["trainer"] and kinds["wild"],
+
+      f"about 40% ambush, split trainer/wild: {dict(kinds)}")
+
+for i in range(len(ps.area_data.get("trainer_pool", []))):
+
+    story.mark_trainer_defeated("HOENN_ROUTE_104", i)
+
+kinds = Counter()
+
+for _ in range(100):
+
+    said.clear()
+
+    ps._exit_ambush({"condition": "can_exit"})
+
+    kinds["trainer" if "trainer" in said[-1][0][0] else "other"] += 1
+
+check(kinds["trainer"] == 0, "no trainers left: the ambush is always wild")
+
+story.current_area_key = "KANTO_ROUTE_22"
+
+story.badges = {"KANTO": []}
+
+ps = PlayState(g)
+
+g.change_state(ps)
+
+ps.rounds_completed = 99
+
+ps.show_progression_menu()
+
+r23 = next((b for b in ps.route_buttons if "23" in b.text), None)
+
+said.clear()
+
+if r23:
+
+    r23.callback()
+
+check(r23 is not None and said and "eight badges" in said[-1][0][0], f"Route 23 says why: {said[-1][0] if said else None}")
+
+print("7) get through the exit ambush and you leave that way")
+
+from src.states.overworld import AreaTransitionState
+
+story.current_area_key = "UNOVA_ROUTE_2"
+
+story.player_team = [mk(495)]
+
+ps = PlayState(g)
+
+g.change_state(ps)
+
+exit_opt = {"text": "Striaton City", "action": "EXIT", "target_area": "STRIATON_CITY", "condition": "can_exit"}
+
+story.ambush_exit = {"area": "UNOVA_ROUTE_2", "exit": exit_opt}
+
+ps.show_progression_menu()
+
+check(isinstance(g.current_state, AreaTransitionState) and story.ambush_exit is None, "won the ambush: off to Striaton City")
+
+ps = PlayState(g)
+
+g.change_state(ps)
+
+story.player_team[0].current_hp = 0
+
+story.ambush_exit = {"area": "UNOVA_ROUTE_2", "exit": exit_opt}
+
+ps.show_progression_menu()
+
+left = isinstance(g.current_state, AreaTransitionState) and getattr(g.current_state, "next_area_key", "") == "STRIATON_CITY"
+check(not left and story.ambush_exit is None, f"lost it: not sent on to Striaton ({type(g.current_state).__name__})")
+
+story.player_team[0].current_hp = story.player_team[0].get_max_hp()
+
 print(f"\n{'ALL PASS' if not fails else str(fails) + ' FAIL(S)'}")
