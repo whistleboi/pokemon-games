@@ -17,7 +17,7 @@ run("ISLE_OF_ARMOR", "MASTER DOJO")
 run("ISLE_OF_ARMOR", "DOJO TRIAL: KLARA")
 from src.world import levels
 kl = lineup(battle_of(g.current_state))
-check(kl[0][0] == 2023 and kl[-1][1] == levels.postgame_cap(story, story.area_region(story.current_area_key)) + 1, f"Klara's Galarian Slowbro, post-game cap levels {kl}")
+check(kl == [(2023, 66), (110, 66), (869, 68)], f"Klara's Galarian Slowbro, at her own levels (canon, 10-29) {kl}")
 story.story_flags.update({"beat_klara_dojo": True, "beat_avery_dojo": True})
 run("ISLE_OF_ARMOR", "MUSTARD'S GIFT")
 check(any(p.id == 891 for p in story.player_team), "Mustard gives Kubfu")
@@ -56,10 +56,7 @@ for f in ("KITAKAMI_REVELERS_ROAD_boss_defeated", "KITAKAMI_PARADISE_BARRENS_bos
 check("Meet the Masked Ogre" in menu("KITAKAMI"), "Ogerpon after the Loyal Three")
 run("KITAKAMI", "BATTLE KIERAN")
 kb = battle_of(g.current_state)
-ace = levels.postgame_cap(story, story.area_region(story.current_area_key)) + 1
-from src.pokemon.balance import is_legendary
-check(lineup(kb) == [(pid, 70 if is_legendary(pid) else lv) for pid, lv in zip((1011, 1012, 1015, 1017), range(ace - 3, ace + 1))],
-      f"Kieran (post-game cap), legendaries Munkidori/Ogerpon at Lv 70: {lineup(kb)}")
+check(lineup(kb) == [(1011, 67), (1012, 67), (1015, 68), (1017, 70)], f"Kieran at his own levels (canon, 10-29): {lineup(kb)}")
 
 print("5) Indigo Disk")
 check("Exchange to Blueberry Academy" not in travel("MESAGOZA"), "Blueberry after Kitakami")

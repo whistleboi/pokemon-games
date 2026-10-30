@@ -55,11 +55,20 @@ def _in_kanto(game):
     return game.story_manager.get_current_region() in CLASSIC_REGIONS
 
 
+# Regions whose own games put other regions' forms in the wild (Kitakami's and the Terarium's
+# Alolan, Galarian and Hisuian Pokemon in Scarlet/Violet's DLC).
+FORMS_IN_THE_WILD = {"PALDEA"}
+
+
 def form_allowed(game, form):
-    """Kanto and Johto only show another region's forms once the player has been there."""
+    """Another region's forms only show up once the player has been there (Hoenn's hand-placed
+    Galarian Zigzagoon included, Jordan 10-29), except where the region's own game has them."""
     home = FORM_HOME.get(str(form).lower())
-    if not home or not _in_kanto(game):
+    region = game.story_manager.get_current_region()
+    if not home or region == home or region in FORMS_IN_THE_WILD:
         return True
+    if game.story_manager.story_flags.get(f"forms_complete_{str(form).lower()}"):
+        return True  # every form of that region caught: they turn up everywhere (extend_pool)
     return home in game.story_manager.visited_regions()
 
 
@@ -82,9 +91,14 @@ def species_allowed(game, pid):
 
 
 def restrict(game, pool):
-    """Drop Pokemon the player can't meet here yet (see species_allowed)."""
-    if not pool or not _in_kanto(game):
+    """Drop Pokemon the player can't meet here yet (see species_allowed). Outside Kanto, Johto and
+    Orange only other regions' forms are dropped (see form_allowed)."""
+    if not pool:
         return pool
+    if not _in_kanto(game):
+        fm = game.loader.area_data.get("FORM_MAP", {})
+        out = {k: v for k, v in pool.items() if form_allowed(game, (fm.get(str(k)) or {}).get("form"))}
+        return out or pool
     out = {k: v for k, v in pool.items() if species_allowed(game, k)}
     return out or pool
 

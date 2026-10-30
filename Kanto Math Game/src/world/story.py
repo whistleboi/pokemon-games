@@ -40,6 +40,7 @@ class StoryManager:
         self.level_cap_mode = "STORY"  # STORY, OBEDIENCE or NONE (Options)
         self.last_center = None  # area key of the last Pokemon Center used (whiteouts go there)
         self.autosave = True     # Options: save every time you travel to a new area
+        self.exp_share = True    # Options: the whole party earns XP, as in Gen 6+ (Jordan, 10-29)
         self.tracked_mission = None  # the Journal mission the route guide points to (None: the first story one)
         self.repel_routes = 0        # routes a Repel still keeps wild Pokemon away on
         self.selected_ball = None    # the ball you throw (catching.selected)
@@ -1241,6 +1242,7 @@ class StoryManager:
             "level_cap_mode": self.level_cap_mode,
             "last_center": self.last_center,
             "autosave": self.autosave,
+            "exp_share": self.exp_share,
             "tracked_mission": self.tracked_mission,
             "repel_routes": self.repel_routes, "selected_ball": self.selected_ball,
         }
@@ -1354,6 +1356,7 @@ class StoryManager:
         self.level_cap_mode = data.get("level_cap_mode", "STORY")
         self.last_center = data.get("last_center")
         self.autosave = data.get("autosave", True)
+        self.exp_share = data.get("exp_share", True)
         self.tracked_mission = data.get("tracked_mission")
         self.repel_routes = data.get("repel_routes", 0)
         self.selected_ball = data.get("selected_ball")

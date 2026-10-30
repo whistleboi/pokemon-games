@@ -10,6 +10,17 @@ from src.utils import Utils
 from src.ui.dialogue import ClassicDialogueBox
 from src.ui.widgets import Button
 from src.ui.panels import CityActionMenu, CommandButton
+
+
+class RouteActionMenu(CityActionMenu):
+    """A route's EXPLORE / PKDEX / POKeMON / TRAVEL: the town menu, with the route's words."""
+
+    def __init__(self, game, lines, **callbacks):
+        super().__init__(game, "", **callbacks)
+        self.lines = lines
+
+    def prompt_lines(self):
+        return self.lines
 from src.ui import theme
 from src.world.boss import BossManager
 from src.world import seasons
@@ -705,10 +716,7 @@ class PlayState(GameState):
 
             raw = self.game.loader.fetch_specific(roamer_id)
             pokemon = Pokemon(raw, self.game.assets, size_mult=2.0)
-            # Roamers suit the route (Lv 40 at most, as in HeartGold/SoulSilver) instead of an
-            # L50 that one-shots a badge-4 team.
-            area_key = self.game.story_manager.current_area_key
-            pokemon.level = levels.legendary_encounter_level(self.game, area_key)  # cap + 3, or 70 from the last badge on
+            pokemon.level = self.ROAMER_MAX_LEVEL  # Raikou and Entei roam at Lv 40, as in HeartGold/SoulSilver
             pokemon.current_hp = pokemon.get_max_hp()
 
             from src.states.battle import WildBattleState
@@ -744,9 +752,12 @@ class PlayState(GameState):
             self.game.ui_manager.add_element(self.btn_no)
 
         if self.is_progression_paused:
-            for btn in self.route_buttons:
-                if btn not in self.game.ui_manager.elements:
-                    self.game.ui_manager.add_element(btn)
+            menu = getattr(self, "route_action_menu", None)
+            if menu is not None and menu not in self.game.ui_manager.elements:
+                self.game.ui_manager.add_element(menu)
+            if getattr(self, "route_popup", None):
+                group, self.route_popup = self.route_popup, None
+                self.toggle_route_popup(group)
 
         pygame.event.clear()
 
@@ -1244,6 +1255,10 @@ class PlayState(GameState):
             return
 
         if self.is_progression_paused:
+            if getattr(self, "route_popup", None) and any(
+                    e.type == pygame.MOUSEBUTTONDOWN and e.button == 1 and not self.route_popup_rect.collidepoint(e.pos)
+                    for e in events):
+                self.close_route_popup()
             return
 
         for event in events:
@@ -1317,10 +1332,7 @@ class PlayState(GameState):
 
         menu_config = self.area_data.get("route_menu", default_menu)
 
-        for btn in self.route_buttons:
-            if btn in self.game.ui_manager.elements:
-                self.game.ui_manager.elements.remove(btn)
-        self.route_buttons.clear()
+        self.hide_menu_buttons()
 
         valid_options = []
         flags = self.game.story_manager.story_flags
@@ -1358,37 +1370,14 @@ class PlayState(GameState):
             if self.rounds_completed >= self.min_rounds or not trainers_left:
                 valid_options.append({"text": "EXIT ROUTE", "action": "EXIT", "color": "RED"})
 
-        btn_w, btn_h = 350, 76
-        gap_x, gap_y = 30, 24
-        cols = 3
-
-        count = len(valid_options)
-        rows = (count + cols - 1) // cols
-
-        box_top = Utils.get_full_dialogue_rect(self.game).top
-
-        total_h = rows * btn_h + (rows - 1) * gap_y
-        start_y = box_top - total_h - 30
-        center_x = self.game.width // 2
-
-        for i, item in enumerate(valid_options):
-            row = i // cols
-            col = i % cols
-
-            items_in_this_row = min(cols, count - row * cols)
-            row_width = items_in_this_row * btn_w + (items_in_this_row - 1) * gap_x
-            row_start_x = center_x - row_width // 2
-
-            x = row_start_x + col * (btn_w + gap_x)
-            y = start_y + row * (btn_h + gap_y)
-
+        for item in valid_options:
             color_map = {  # the battle menu's colours (src/ui/theme.py)
                 "BLUE": theme.RUN, "GREEN": theme.POKEMON, "RED": theme.FIGHT, "ORANGE": (232, 132, 40),
                 "GOLD": theme.BAG, "PURPLE": theme.MEGA, "GRAY": (120, 124, 144), "CYAN": (40, 170, 200)
             }
             bg_color = color_map.get(item.get("color", "BLUE"), theme.RUN)
-            toward = (item.get("action") in ("EXIT", "TRAVEL")
-                      and (item.get("target_area") or item.get("target")) == guide.cached(self.game, "hop"))
+            way_out = item.get("action") in ("EXIT", "TRAVEL")
+            toward = way_out and (item.get("target_area") or item.get("target")) == guide.cached(self.game, "hop")
             if toward:  # the way to the tracked Journal mission
                 bg_color = theme.BAG
 
@@ -1397,14 +1386,19 @@ class PlayState(GameState):
                 callback = (lambda c=item.get("condition"): self._why_disabled(c))
 
             label = ("> " if toward else "") + theme.pokemon_word(_fill_names(self.game, item["text"]))  # "BATTLE {rival_name}"
-            font = next((self.game.assets.fonts[f] for f in ("button", "label")
-                         if self.game.assets.fonts[f].size(label)[0] <= btn_w - 30), self.game.assets.fonts["tiny"])
-            btn = CommandButton(
-                pygame.Rect(x, y, btn_w, btn_h), label, font, callback, bg_color=bg_color, autosize=False
-            ).arm(500)  # a quick tap left over from the last round can't press an exit
+            btn = CommandButton(pygame.Rect(0, 0, 330, 60), label, self.game.assets.fonts["label"],
+                                self._route_pick(callback), bg_color=bg_color, autosize=False)
+            btn.route_group = "travel" if way_out else "explore"
             self.route_buttons.append(btn)
-            self.game.ui_manager.add_element(btn)
 
+        # Jordan (10-29): routes use the towns' menu: EXPLORE (catching, battles, trainers, fishing,
+        # story events) and TRAVEL (the ways out) open pop-ups, beside PKDEX and POKeMON.
+        self.route_popup = None
+        self.route_action_menu = RouteActionMenu(
+            self.game, self._route_prompt(),
+            on_explore=lambda: self.toggle_route_popup("explore"), on_pkdex=self._open_pokedex,
+            on_pkmn=self._open_party, on_travel=lambda: self.toggle_route_popup("travel"))
+        self.game.ui_manager.add_element(self.route_action_menu)
         self.input_delay = 20
 
     def _check_route_condition(self, condition, trainers_left, item=None):
@@ -1850,6 +1844,75 @@ class PlayState(GameState):
             if btn in self.game.ui_manager.elements:
                 self.game.ui_manager.elements.remove(btn)
         self.route_buttons.clear()
+        menu = getattr(self, "route_action_menu", None)
+        if menu in self.game.ui_manager.elements:
+            self.game.ui_manager.elements.remove(menu)
+        self.route_action_menu = None
+        self.route_popup = None
+        self.route_popup_rect = None
+
+    def _route_prompt(self):
+        """The route menu's words in the text box, as in a town."""
+        if self.rounds_completed == 0:
+            name = self.area_data.get("route_name", self.game.story_manager.current_area_key.replace("_", " ").title())
+            return [f"Entered {name}", self.game.assets.get_text("whats_next")]
+        return [self.game.assets.get_text("explored_area"), self.game.assets.get_text("whats_next")]
+
+    def _route_pick(self, callback):
+        """A pop-up option: close the pop-up, then act."""
+        def pick():
+            self.close_route_popup()
+            if callback:
+                callback()
+        return pick
+
+    def close_route_popup(self):
+        for btn in self.route_buttons:
+            if btn in self.game.ui_manager.elements:
+                self.game.ui_manager.elements.remove(btn)
+        self.route_popup = None
+        self.route_popup_rect = None
+
+    def toggle_route_popup(self, group):
+        """EXPLORE / TRAVEL: the route's options of that kind in a column above the commands
+        (the towns' pop-up). Tapping the same command again closes it."""
+        if self.route_popup == group:
+            self.close_route_popup()
+            return
+        self.close_route_popup()
+        btns = [b for b in self.route_buttons if getattr(b, "route_group", "") == group]
+        if not btns:
+            self.show_dialogue(["There's nothing to do here right now." if group == "explore"
+                                else "You can't leave this way yet."], callback=self.show_progression_menu)
+            return
+        font = self.game.assets.fonts["label"]
+        btn_w = max(260, max(font.size(b.text)[0] + 50 for b in btns))
+        btn_h, gap, pad = 60, 10, 18
+        panel = self.route_action_menu.right_rect
+        bottom = panel.top - 10
+        fit = max(1, (bottom - 90 - pad * 2 + gap) // (btn_h + gap))
+        cols = -(-len(btns) // fit)
+        rows = -(-len(btns) // cols)
+        w = cols * btn_w + (cols - 1) * gap + pad * 2
+        h = rows * btn_h + (rows - 1) * gap + pad * 2
+        self.route_popup_rect = pygame.Rect(panel.right - 18 - w, bottom - h, w, h)
+        for i, b in enumerate(btns):
+            col, row = divmod(i, rows)
+            b.rect = pygame.Rect(self.route_popup_rect.x + pad + col * (btn_w + gap),
+                                 self.route_popup_rect.y + pad + row * (btn_h + gap), btn_w, btn_h)
+            b.font = font if font.size(b.text)[0] <= btn_w - 24 else self.game.assets.fonts["tiny"]
+            if hasattr(b, "arm"):
+                b.arm(250)  # the tap that opened the pop-up can't press an option
+            self.game.ui_manager.add_element(b)
+        self.route_popup = group
+
+    def _open_pokedex(self):
+        from src.states.systems import PokedexState
+        self.game.change_state(PokedexState(self.game, self))
+
+    def _open_party(self):
+        from src.states.systems import PokemonPartyMenuState
+        self.game.change_state(PokemonPartyMenuState(self.game, self, context="normal"))
 
     def check_for_evolution(self, force_catch_evo=False):
         team = self.game.story_manager.player_team
@@ -2103,15 +2166,10 @@ class PlayState(GameState):
         pokemon = Pokemon(raw, self.game.assets, size_mult=2.0)
         # A Primal boss (Groudon/Kyogre in the Cave of Origin) reverts when the battle starts.
         pokemon.primal_ready = bool(boss_data.get("primal"))
-        if levels.is_legendary(pokemon.id):  # legendaries follow the cap rule, even with a data level
-            pokemon.level = levels.boss_level(self.game, self.game.story_manager.current_area_key, pokemon.id)
-        elif levels.postgame_trainers(self.game):  # post-game: area bosses follow the cap too
-            pokemon.level = levels.boss_level(self.game, self.game.story_manager.current_area_key, pokemon.id)
-        elif boss_data.get("exact_level"):  # a scripted fight (Birch's Poochyena, Lv 2)
+        if boss_data.get("level"):  # the games' level (canon since 10-29, legendaries included)
             pokemon.level = int(boss_data["level"])
         else:
-            pokemon.level = levels.follow_team(self.game, [boss_data.get("level") or levels.boss_level(
-                self.game, self.game.story_manager.current_area_key, pokemon.id)])[0]
+            pokemon.level = levels.boss_level(self.game, self.game.story_manager.current_area_key, pokemon.id)
         pokemon.current_hp = pokemon.get_max_hp()
 
         bg_file = boss_data.get("background") if (boss_data.get("background") and self.game.assets.get_background(
@@ -2238,16 +2296,9 @@ class PlayState(GameState):
             self.show_progression_menu()
             return
 
-        items = []
-        for pid, pct in wild_pool_pct.items():
-            items.append((int(pid), pct))
-
-        items.sort(key=lambda x: x[1])
-
-        candidates = items[:4]
-
-        chosen = random.choice(candidates)
-        chosen_id = chosen[0]
+        # By the pool's own odds (it used to pick evenly among the four rarest, so a 1% Galarian
+        # Zigzagoon came up more often than Hoenn's 43% Zigzagoon).
+        chosen_id = int(Utils.weighted_random_choice(wild_pool_pct))
 
         self.rounds_completed += 1
 
@@ -2869,10 +2920,8 @@ class PlayState(GameState):
                     )
                     Utils.draw_star(screen, GOLD, (width // 2 + 160 + offset_x, 25 + offset_y), 12)
 
-        if self.is_progression_paused:  # dim the route under the route menu's buttons
-            overlay = pygame.Surface((width, bar.top), pygame.SRCALPHA)
-            overlay.fill((0, 0, 0, 110 if self.route_bg else 180))
-            screen.blit(overlay, (0, 0))
+        if self.is_progression_paused and getattr(self, "route_popup_rect", None):  # the pop-up's card
+            theme.card(screen, self.route_popup_rect)
         self.game.ui_manager.draw(screen)
         unique_team_for_display = []
         seen_ids = set()
@@ -3040,7 +3089,7 @@ class PlayState(GameState):
                 msg = f"Entered {route_name}"
             else:
                 msg = self.game.assets.get_text("explored_area")
-            if not self.dialogue_box.visible:  # as in the town menu: the words in the text box
+            if not self.dialogue_box.visible and getattr(self, "route_action_menu", None) is None:
                 theme.draw_textbox(screen, bar)
                 font = self.game.assets.fonts["dialog"]
                 theme.shadow_text(screen, msg, font, bar.x + 40, bar.y + 34)

@@ -1534,7 +1534,7 @@
         { "text": "INNER CHAMBER", "action": "EXIT", "target_area": "FLARE_HQ_INNER_CHAMBER", "condition": "boss_defeated", "color": "GOLD" },
         { "text": "Geosenge Town", "action": "EXIT", "target_area": "GEOSENGE_TOWN", "condition": "can_exit", "color": "RED" }
       ],
-      "area_boss": { "id": 716, "name": "Xerneas", "victory_flag": "xerneas_encountered" }
+      "area_boss": { "id": 716, "level": 50, "name": "Xerneas", "victory_flag": "xerneas_encountered" }
     },
     "POKEBALL_FACTORY": {
       "area_type": "dungeon",
@@ -1608,7 +1608,7 @@
         { "text": "Victory Road (Kalos)", "action": "EXIT", "target_area": "VICTORY_ROAD_KALOS", "condition": "can_exit", "color": "RED" },
         {"text": "Route 20", "action": "EXIT", "target_area": "KALOS_ROUTE_20", "condition": "can_exit", "color": "RED"}
       ],
-      "area_boss": { "id": 150, "name": "Mewtwo", "victory_flag": "POKEMON_VILLAGE_boss_defeated" }
+      "area_boss": { "id": 150, "level": 70, "name": "Mewtwo", "victory_flag": "POKEMON_VILLAGE_boss_defeated" }
     },
     "TERMINUS_CAVE": {
       "area_type": "dungeon",
@@ -1634,7 +1634,7 @@
         { "text": "Encounter Zygarde", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD" },
         { "text": "Route 18", "action": "EXIT", "target_area": "KALOS_ROUTE_18", "condition": "can_exit", "color": "RED" }
       ],
-      "area_boss": { "id": 718, "name": "Zygarde", "victory_flag": "TERMINUS_CAVE_boss_defeated" }
+      "area_boss": { "id": 718, "level": 70, "name": "Zygarde", "victory_flag": "TERMINUS_CAVE_boss_defeated" }
     },
     "VICTORY_ROAD_KALOS": {
       "area_type": "dungeon",

@@ -91,7 +91,7 @@ check(lobby.is_league, f"Pummelo is a league: {lobby.status_text}")
 lobby.challenge_gym()
 b = battle_of(g.current_state)
 check([p for p, _ in lineup(b)] == [132, 208, 94, 3, 125, 149], f"Drake, the hack's team (Kanto/Johto only): {lineup(b)}")
-check(prog["PUMMELO_ISLAND"]["gym"]["leader"]["levels"][-1] == 65 and levels.CHAMPION_ACE["ORANGE"] == 65, "Drake's ace Lv 65")
+check(prog["PUMMELO_ISLAND"]["gym"]["leader"]["levels"][-1] == 50 and levels.CHAMPION_ACE["ORANGE"] == 50, "Drake's ace Lv 50 (Lance's, 10-29)")
 rival = [e["trainer"] for k in ORANGE for e in (prog[k].get("on_enter_event") or []) if isinstance(e, dict)
          and e["trainer"].get("name") == "{rival_name}"]
 check(len(rival) == 5 and all(set(t["team_choice"]) == {"1", "4", "7"} for t in rival), "rival Cross: 5 battles, by starter")

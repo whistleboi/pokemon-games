@@ -70,7 +70,8 @@ check("Rocket Warehouse" in travel("FIVE_ISLAND"), "Gideon steals it: warehouse 
 run("ROCKET_WAREHOUSE", "UNLOCK THE DOORS")
 run("ROCKET_WAREHOUSE", "CONFRONT THE ADMIN")
 from src.world import levels
-check(lineup(battle_of(g.current_state))[-1] == (112, levels.postgame_cap(story, story.area_region(story.current_area_key)) + 1), f"Admin Archer (post-game cap) {lineup(battle_of(g.current_state))}")
+_arch = lineup(battle_of(g.current_state))
+check(_arch[-1] == (112, 59), f"Admin Archer at his own levels (canon, 10-29) {_arch}")
 story.story_flags["sevii_warehouse_cleared"] = True
 run("ROCKET_WAREHOUSE", "RECOVER THE GEMS")
 run("ONE_ISLAND", "Give Celio the Gems")

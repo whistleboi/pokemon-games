@@ -135,7 +135,7 @@ r = route("HOENN_ROUTE_110")
 r.trigger_trainer_battle(specific_index=idx)
 intro = g.current_state
 battle = intro.next_state if isinstance(intro, TrainerIntroState) else intro
-check([x.level for x in battle.opponent_team] == [28, 28, 30], "a Lv 30 lead: the rival's ace is lifted to 30")
+check([x.level for x in battle.opponent_team] == [18, 18, 20], "a Lv 30 lead: the rival keeps the game's levels (canon, 10-29)")
 
 print("7) older saves skip the new opening")
 from src.world.story import StoryManager

@@ -2036,7 +2036,7 @@
       "battle_type": "cave",
       "wild_pool_percentages": "CERULEAN_CAVE_PERCENTAGES",
       "area_boss": {
-        "id": 150,
+        "id": 150, "level": 70,
         "name": "Mewtwo"
       },
       "trainer_encounter_rate": 0.1,
@@ -2127,7 +2127,7 @@
       "wild_pool_percentages": "SEAFOAM_ISLANDS_PERCENTAGES",
       "alt_forms": { "enabled": true, "weights": { "79_galarian": 0.01, "80_galarian": 0.01, "37_alolan": 0.01, "38_alolan": 0.01 } },
       "area_boss": {
-        "id": 144,
+        "id": 144, "level": 50,
         "name": "Articuno"
       },
       "trainer_encounter_rate": 0.1,

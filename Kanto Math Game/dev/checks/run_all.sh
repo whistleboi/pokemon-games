@@ -8,7 +8,7 @@ O=$C/out
 mkdir -p "$O"
 export PYTHONIOENCODING=utf-8
 HELPED="grokfix storage dlc sevii decolore sinjoh orre"
-PLAIN="menus items moveeffects rivals hoennstart kantostart sinnohstart recheck recheck_uk recheck_agh recheck_pkt recheck_orre lumiose scaling movepool blackfog blockers bugs2 shadows orangeforms answers1023 slots orange batch6 batch5 ui batch4 batch3 fixes battle2 events features loops eterna catch"
+PLAIN="canon1029 menus items moveeffects rivals hoennstart kantostart sinnohstart recheck recheck_uk recheck_agh recheck_pkt recheck_orre lumiose scaling movepool blackfog blockers bugs2 shadows orangeforms answers1023 slots orange batch6 batch5 ui batch4 batch3 fixes battle2 events features loops eterna catch"
 for t in $HELPED; do cat $C/harness_head.py $C/sub_helpers_body.py $C/${t}_body.py > $O/check_$t.py; done
 for t in $PLAIN; do cat $C/harness_head.py $C/${t}_body.py > $O/check_$t.py; done
 for t in $HELPED $PLAIN; do

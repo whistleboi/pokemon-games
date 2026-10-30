@@ -304,7 +304,7 @@
           }
         }
       ],
-      "level": 55,
+      "level": 44,
       "subregion": "SEVII",
       "route_menu": [
         {
@@ -363,7 +363,7 @@
       "wild_pool_percentages": "SEVII_ALTERING_CAVE_PERCENTAGES",
       "min_rounds": 1,
       "trainer_pool": [],
-      "level": 55,
+      "level": 23,
       "subregion": "SEVII",
       "route_menu": [
         {
@@ -647,7 +647,7 @@
           }
         }
       ],
-      "level": 55,
+      "level": 41,
       "subregion": "SEVII",
       "route_menu": [
         {
@@ -793,7 +793,7 @@
       "area_type": "wild_route",
       "route_name": "Treasure Beach",
       "region": "KANTO",
-      "level": 38,
+      "level": 33,
       "subregion": "SEVII",
       "wild_pool_percentages": "SEVII_TREASURE_BEACH_PERCENTAGES",
       "battle_type": "ocean",
@@ -874,7 +874,7 @@
       "area_type": "wild_route",
       "route_name": "Kindle Road",
       "region": "KANTO",
-      "level": 40,
+      "level": 33,
       "subregion": "SEVII",
       "wild_pool_percentages": "SEVII_KINDLE_ROAD_PERCENTAGES",
       "battle_type": "mountain",
@@ -971,7 +971,7 @@
       "area_type": "dungeon",
       "route_name": "Mt. Ember",
       "region": "KANTO",
-      "level": 43,
+      "level": 34,
       "subregion": "SEVII",
       "wild_pool_percentages": "SEVII_MT_EMBER_PERCENTAGES",
       "battle_type": "cave",
@@ -1084,7 +1084,7 @@
       ],
       "next_area": "KINDLE_ROAD",
       "area_boss": {
-        "id": 146,
+        "id": 146, "level": 50,
         "name": "Moltres",
         "victory_flag": "MT_EMBER_boss_defeated"
       }
@@ -1207,7 +1207,7 @@
       "area_type": "wild_route",
       "route_name": "Cape Brink",
       "region": "KANTO",
-      "level": 42,
+      "level": 34,
       "subregion": "SEVII",
       "wild_pool_percentages": "SEVII_CAPE_BRINK_PERCENTAGES",
       "battle_type": "grass",
@@ -1396,7 +1396,7 @@
       "area_type": "wild_route",
       "route_name": "Bond Bridge",
       "region": "KANTO",
-      "level": 44,
+      "level": 32,
       "subregion": "SEVII",
       "wild_pool_percentages": "SEVII_BOND_BRIDGE_PERCENTAGES",
       "battle_type": "grass",
@@ -1481,7 +1481,7 @@
       "area_type": "wild_route",
       "route_name": "Berry Forest",
       "region": "KANTO",
-      "level": 46,
+      "level": 34,
       "subregion": "SEVII",
       "wild_pool_percentages": "SEVII_BERRY_FOREST_PERCENTAGES",
       "battle_type": "forest",
@@ -1602,7 +1602,7 @@
       "area_type": "dungeon",
       "route_name": "Icefall Cave",
       "region": "KANTO",
-      "level": 52,
+      "level": 45,
       "subregion": "SEVII",
       "wild_pool_percentages": "SEVII_ICEFALL_CAVE_PERCENTAGES",
       "battle_type": "cave",
@@ -1818,7 +1818,7 @@
       "area_type": "wild_route",
       "route_name": "Five Isle Meadow",
       "region": "KANTO",
-      "level": 54,
+      "level": 41,
       "subregion": "SEVII",
       "wild_pool_percentages": "SEVII_FIVE_ISLE_MEADOW_PERCENTAGES",
       "battle_type": "grass",
@@ -1933,7 +1933,7 @@
       "area_type": "dungeon",
       "route_name": "Lost Cave",
       "region": "KANTO",
-      "level": 55,
+      "level": 39,
       "subregion": "SEVII",
       "wild_pool_percentages": "SEVII_LOST_CAVE_PERCENTAGES",
       "battle_type": "cave",
@@ -2108,7 +2108,7 @@
       "area_type": "wild_route",
       "route_name": "Pattern Bush",
       "region": "KANTO",
-      "level": 56,
+      "level": 9,
       "subregion": "SEVII",
       "wild_pool_percentages": "SEVII_PATTERN_BUSH_PERCENTAGES",
       "battle_type": "forest",
@@ -2175,7 +2175,7 @@
       "area_type": "wild_route",
       "route_name": "Ruin Valley",
       "region": "KANTO",
-      "level": 57,
+      "level": 41,
       "subregion": "SEVII",
       "wild_pool_percentages": "SEVII_RUIN_VALLEY_PERCENTAGES",
       "battle_type": "mountain",
@@ -2501,7 +2501,7 @@
       "area_type": "wild_route",
       "route_name": "Sevault Canyon",
       "region": "KANTO",
-      "level": 58,
+      "level": 46,
       "subregion": "SEVII",
       "wild_pool_percentages": "SEVII_SEVAULT_CANYON_PERCENTAGES",
       "battle_type": "mountain",
@@ -2612,8 +2612,8 @@
     },
         "THREE_ISLE_PATH": {"area_type": "dungeon", "route_name": "Three Isle Path", "region": "KANTO", "subregion": "SEVII", "level": 44, "battle_type": "cave", "min_rounds": 0, "trainer_pool": [], "route_menu": [{"text": "THREE ISLAND", "action": "EXIT", "target": "THREE_ISLAND", "condition": "can_exit", "color": "RED"}, {"text": "THREE ISLE PORT", "action": "EXIT", "target": "THREE_ISLE_PORT", "condition": "can_exit", "color": "RED"}], "next_area": "THREE_ISLE_PORT"},
         "THREE_ISLE_PORT": {"area_type": "wild_route", "route_name": "Three Isle Port", "region": "KANTO", "subregion": "SEVII", "level": 44, "battle_type": "field", "wild_pool_percentages": "THREE_ISLE_PORT_PERCENTAGES", "min_rounds": 1, "trainer_pool": [], "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "THREE ISLE PATH", "action": "EXIT", "target": "THREE_ISLE_PATH", "condition": "can_exit", "color": "RED"}], "next_area": "THREE_ISLE_PATH"},
-        "NAVEL_ROCK": {"area_type": "dungeon", "route_name": "Navel Rock", "region": "KANTO", "battle_type": "cave", "min_rounds": 0, "trainer_pool": [], "route_menu": [{"text": "SEEK LUGIA", "action": "BOSS", "color": "GOLD", "flag_condition": "not navel_rock_lugia", "boss": {"id": 249, "name": "Lugia", "victory_flag": "navel_rock_lugia", "lines": ["A powerful presence fills the air... Lugia appears!"]}, "condition": ["beat_champion"]}, {"text": "SEEK HO-OH", "action": "BOSS", "color": "GOLD", "flag_condition": "not navel_rock_ho_oh", "boss": {"id": 250, "name": "Ho-Oh", "victory_flag": "navel_rock_ho_oh", "lines": ["A powerful presence fills the air... Ho-Oh appears!"]}, "condition": ["beat_champion"]}, {"text": "SEAGALLOP TO ONE ISLAND", "action": "EXIT", "target": "ONE_ISLAND", "condition": "can_exit", "color": "RED"}], "next_area": "ONE_ISLAND", "subregion": "SEVII", "level": 60},
-        "BIRTH_ISLAND": {"area_type": "dungeon", "route_name": "Birth Island", "region": "KANTO", "battle_type": "cave", "min_rounds": 0, "trainer_pool": [], "route_menu": [{"text": "SEEK DEOXYS", "action": "BOSS", "color": "GOLD", "flag_condition": "not birth_island_deoxys", "boss": {"id": 386, "name": "Deoxys", "victory_flag": "birth_island_deoxys", "lines": ["A powerful presence fills the air... Deoxys appears!"]}, "condition": ["beat_champion"]}, {"text": "SEAGALLOP TO ONE ISLAND", "action": "EXIT", "target": "ONE_ISLAND", "condition": "can_exit", "color": "RED"}], "next_area": "ONE_ISLAND", "subregion": "SEVII", "level": 60}
+        "NAVEL_ROCK": {"area_type": "dungeon", "route_name": "Navel Rock", "region": "KANTO", "battle_type": "cave", "min_rounds": 0, "trainer_pool": [], "route_menu": [{"text": "SEEK LUGIA", "action": "BOSS", "color": "GOLD", "flag_condition": "not navel_rock_lugia", "boss": {"id": 249, "level": 70, "name": "Lugia", "victory_flag": "navel_rock_lugia", "lines": ["A powerful presence fills the air... Lugia appears!"]}, "condition": ["beat_champion"]}, {"text": "SEEK HO-OH", "action": "BOSS", "color": "GOLD", "flag_condition": "not navel_rock_ho_oh", "boss": {"id": 250, "level": 70, "name": "Ho-Oh", "victory_flag": "navel_rock_ho_oh", "lines": ["A powerful presence fills the air... Ho-Oh appears!"]}, "condition": ["beat_champion"]}, {"text": "SEAGALLOP TO ONE ISLAND", "action": "EXIT", "target": "ONE_ISLAND", "condition": "can_exit", "color": "RED"}], "next_area": "ONE_ISLAND", "subregion": "SEVII", "level": 60},
+        "BIRTH_ISLAND": {"area_type": "dungeon", "route_name": "Birth Island", "region": "KANTO", "battle_type": "cave", "min_rounds": 0, "trainer_pool": [], "route_menu": [{"text": "SEEK DEOXYS", "action": "BOSS", "color": "GOLD", "flag_condition": "not birth_island_deoxys", "boss": {"id": 386, "level": 30, "name": "Deoxys", "victory_flag": "birth_island_deoxys", "lines": ["A powerful presence fills the air... Deoxys appears!"]}, "condition": ["beat_champion"]}, {"text": "SEAGALLOP TO ONE ISLAND", "action": "EXIT", "target": "ONE_ISLAND", "condition": "can_exit", "color": "RED"}], "next_area": "ONE_ISLAND", "subregion": "SEVII", "level": 60}
     },
   "JOURNAL_MISSIONS": [
     {

@@ -1102,17 +1102,41 @@ class TrainerBattleState(MoveEffects, GameState):
         else:
             self.turn_actions += [self.opponent_attack, self.player_attack]
 
+    def _note_participant(self):
+        """Remember every Pokemon that has been out against the current foe (XP goes to them)."""
+        if not hasattr(self, "_xp_participants"):
+            self._xp_participants = []
+        p = getattr(self, "player_pokemon", None)
+        if p is not None and not any(p is q for q in self._xp_participants):
+            self._xp_participants.append(p)
+
+    def _xp_shares(self):
+        """[(pokemon, share)] for this KO (Jordan, 10-29). The Pokemon that battled this foe and
+        haven't fainted share it; with EXP SHARE on (Options, the default; or the Exp. Share item)
+        each of them gets it all and the rest of the party (not fainted) half, as in Gen 6+.
+        With it off, the battlers split it evenly, as in Gen 1-5."""
+        story = self.game.story_manager
+        self._note_participant()
+        team = [p for p in story.player_team if p]
+        fought = [p for p in self._xp_participants if p.current_hp > 0 and any(p is q for q in team)]
+        if not fought and self.player_pokemon is not None and self.player_pokemon.current_hp > 0:
+            fought = [self.player_pokemon]
+        if getattr(story, "exp_share", True) or story.inventory.get("EXP_SHARE", 0) > 0:
+            rest = [p for p in team if p.current_hp > 0 and not any(p is q for q in fought)]
+            return [(p, 1.0) for p in fought] + [(p, 0.5) for p in rest]
+        return [(p, 1.0 / len(fought)) for p in fought]
+
     def _award_battle_xp(self):
         """XP for the KO, as in the games: the Gen 7 formula with the foe's base XP yield and the
         level gap, 1.5x from trainers, 1.2x with strong affection, then growth.XP_BOOST for fast
-        leveling. Returns messages."""
+        leveling, shared out by _xp_shares. Returns messages."""
         foe = self.opponent_pokemon
         foe_level = self._level(foe)
         trainer = self.trainer_class != "WILD"
-        if self.game.story_manager.inventory.get("EXP_SHARE", 0) > 0:
-            earners = [p for p in self.game.story_manager.player_team if p]
-        else:
-            earners = [self.player_pokemon]
+        shares = self._xp_shares()
+        self._xp_participants = [self.player_pokemon] if self.player_pokemon is not None else []  # next foe
+        earners = [p for p, _ in shares]
+        share_of = {id(p): k for p, k in shares}
         lead = self.player_pokemon
         lead.counters["wins"] = lead.counters.get("wins", 0) + 1
         if foe.id == 625:  # Bisharp, for Kingambit
@@ -1125,8 +1149,8 @@ class TrainerBattleState(MoveEffects, GameState):
         cap = levels.xp_cap(self.game.story_manager)
         for p in earners:
             my_level = self._level(p)
-            gained = int(growth.battle_xp(base_yield, foe_level, my_level, trainer=trainer)
-                         * affection.xp_mult(p))
+            gained = max(1, int(growth.battle_xp(base_yield, foe_level, my_level, trainer=trainer)
+                                * affection.xp_mult(p) * share_of[id(p)]))
             if my_level >= cap:
                 if p is lead:
                     messages.append(f"{p.display_name.upper()} can't grow past Lv {cap} until you beat the next Gym!")
@@ -1142,6 +1166,8 @@ class TrainerBattleState(MoveEffects, GameState):
             if grew:
                 messages.append(f"{p.display_name.upper()} grew to Lv {p.level}!")
                 messages.extend(movelib.learn_new_moves(self.game, p, old_level))
+        if any(k == 0.5 for k in share_of.values()):
+            messages.insert(1 if messages else 0, "The rest of your team gained XP too!")
         return messages
 
     DISOBEY_LINES = ("{n} is loafing around!", "{n} won't obey!", "{n} turned away!",
@@ -1789,6 +1815,7 @@ class TrainerBattleState(MoveEffects, GameState):
     def update(self):
         self.anim_ctrl.update()
         self.renderer.tick()
+        self._note_participant()
 
         if self.phase == "ANSWER_FEEDBACK":
             self._tick_answer_feedback()
@@ -2278,7 +2305,7 @@ class WildBattleState(TrainerBattleState):
             self.dialogue_box.callback = self._on_catch_exit
             return
 
-        if self.game.states["play"].balls_left > 0:
+        if self.game.states["play"].balls_left > 0 and self.game.story_manager.catch_unlocked():
             self.phase = "CATCH_PROMPT"
             self.dialogue_box.reset(f"Will you catch {self.opponent_pokemon.name}?")
             self.catch_timer = 15 * FPS

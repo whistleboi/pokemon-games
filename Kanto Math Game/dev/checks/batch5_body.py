@@ -160,6 +160,7 @@ ps = ow.PlayState(g)
 g.change_state(ps)
 ps.show_progression_menu()
 exit_btn = ps.route_buttons[0]
+ps.toggle_route_popup(exit_btn.route_group)  # routes use the town menu's pop-ups (10-29)
 pressed = []
 exit_btn.callback = lambda: pressed.append(1)
 ev = pygame.event.Event(pygame.MOUSEBUTTONDOWN, button=1, pos=exit_btn.rect.center)

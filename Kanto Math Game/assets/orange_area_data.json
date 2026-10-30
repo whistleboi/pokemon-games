@@ -497,7 +497,7 @@
       "area_type": "town",
       "route_name": "Valencia Island",
       "region": "ORANGE",
-      "level": 5,
+      "level": 3,
       "has_gym": false,
       "explore_options": [
         {
@@ -563,7 +563,7 @@
       "area_type": "wild_route",
       "route_name": "Route 49",
       "region": "ORANGE",
-      "level": 6,
+      "level": 4,
       "battle_type": "grass",
       "min_rounds": 2,
       "wild_pool_percentages": "ORANGE_ORANGE_ROUTE_49_PERCENTAGES",
@@ -606,7 +606,7 @@
       "area_type": "town",
       "route_name": "Tangelo Island",
       "region": "ORANGE",
-      "level": 8,
+      "level": 6,
       "has_gym": false,
       "explore_options": [
         {
@@ -641,10 +641,7 @@
               48,
               183
             ],
-            "levels": [
-              12,
-              9
-            ],
+            "levels": [11, 7],
             "rewards": {
               "balls": 5
             },
@@ -667,7 +664,7 @@
       "area_type": "wild_route",
       "route_name": "Routes 50 and 51",
       "region": "ORANGE",
-      "level": 9,
+      "level": 7,
       "battle_type": "grass",
       "min_rounds": 2,
       "wild_pool_percentages": "ORANGE_ORANGE_ROUTE_50_PERCENTAGES",
@@ -680,10 +677,7 @@
             21,
             23
           ],
-          "levels": [
-            8,
-            7
-          ],
+          "levels": [6, 5],
           "rewards": {
             "balls": 2
           }
@@ -696,10 +690,7 @@
             60,
             16
           ],
-          "levels": [
-            8,
-            8
-          ],
+          "levels": [6, 6],
           "rewards": {
             "balls": 2
           }
@@ -711,9 +702,7 @@
           "team": [
             12
           ],
-          "levels": [
-            10
-          ],
+          "levels": [8],
           "rewards": {
             "balls": 2
           }
@@ -725,9 +714,7 @@
           "team": [
             15
           ],
-          "levels": [
-            10
-          ],
+          "levels": [8],
           "rewards": {
             "balls": 2
           }
@@ -775,13 +762,7 @@
                 126,
                 236
               ],
-              "levels": [
-                74,
-                73,
-                73,
-                72,
-                75
-              ],
+              "levels": [59, 58, 58, 57, 60],
               "rewards": {
                 "balls": 5
               },
@@ -844,7 +825,7 @@
       "area_type": "wild_route",
       "route_name": "Tangelo Jungle",
       "region": "ORANGE",
-      "level": 11,
+      "level": 9,
       "battle_type": "grass",
       "min_rounds": 2,
       "wild_pool_percentages": "ORANGE_TANGELO_JUNGLE_PERCENTAGES",
@@ -857,10 +838,7 @@
             10,
             46
           ],
-          "levels": [
-            10,
-            10
-          ],
+          "levels": [8, 8],
           "rewards": {
             "balls": 2
           }
@@ -872,9 +850,7 @@
           "team": [
             127
           ],
-          "levels": [
-            11
-          ],
+          "levels": [9],
           "rewards": {
             "balls": 2
           }
@@ -889,12 +865,7 @@
             13,
             46
           ],
-          "levels": [
-            8,
-            8,
-            8,
-            8
-          ],
+          "levels": [6, 6, 6, 6],
           "rewards": {
             "balls": 2
           }
@@ -908,11 +879,7 @@
             19,
             25
           ],
-          "levels": [
-            9,
-            9,
-            9
-          ],
+          "levels": [7, 7, 7],
           "rewards": {
             "balls": 2
           }
@@ -970,11 +937,7 @@
               58,
               133
             ],
-            "levels": [
-              14,
-              13,
-              12
-            ],
+            "levels": [13, 12, 11],
             "rewards": {
               "balls": 5
             },
@@ -1013,7 +976,7 @@
       "area_type": "wild_route",
       "route_name": "Route 52",
       "region": "ORANGE",
-      "level": 12,
+      "level": 11,
       "battle_type": "grass",
       "min_rounds": 2,
       "wild_pool_percentages": "ORANGE_ORANGE_ROUTE_52_PERCENTAGES",
@@ -1025,9 +988,7 @@
           "team": [
             56
           ],
-          "levels": [
-            10
-          ],
+          "levels": [8],
           "rewards": {
             "balls": 2
           }
@@ -1041,11 +1002,7 @@
             72,
             222
           ],
-          "levels": [
-            7,
-            7,
-            7
-          ],
+          "levels": [5, 5, 5],
           "rewards": {
             "balls": 2
           }
@@ -1057,9 +1014,7 @@
           "team": [
             211
           ],
-          "levels": [
-            10
-          ],
+          "levels": [8],
           "rewards": {
             "balls": 2
           }
@@ -1072,10 +1027,7 @@
             60,
             223
           ],
-          "levels": [
-            8,
-            9
-          ],
+          "levels": [6, 7],
           "rewards": {
             "balls": 2
           }
@@ -1088,10 +1040,7 @@
             223,
             54
           ],
-          "levels": [
-            9,
-            9
-          ],
+          "levels": [7, 7],
           "rewards": {
             "balls": 2
           }
@@ -1103,9 +1052,7 @@
           "team": [
             120
           ],
-          "levels": [
-            10
-          ],
+          "levels": [8],
           "rewards": {
             "balls": 2
           }
@@ -1118,10 +1065,7 @@
             114,
             19
           ],
-          "levels": [
-            9,
-            9
-          ],
+          "levels": [7, 7],
           "rewards": {
             "balls": 2
           }
@@ -1137,13 +1081,7 @@
             211,
             129
           ],
-          "levels": [
-            6,
-            6,
-            6,
-            6,
-            6
-          ],
+          "levels": [4, 4, 4, 4, 4],
           "rewards": {
             "balls": 2
           }
@@ -1193,7 +1131,7 @@
       "area_type": "town",
       "route_name": "Mikan Island",
       "region": "ORANGE",
-      "level": 14,
+      "level": 13,
       "has_gym": true,
       "explore_options": [
         {
@@ -1231,9 +1169,7 @@
             "team": [
               222
             ],
-            "levels": [
-              13
-            ],
+            "levels": [12],
             "rewards": {
               "balls": 2
             },
@@ -1247,10 +1183,7 @@
               183,
               120
             ],
-            "levels": [
-              11,
-              11
-            ],
+            "levels": [9, 9],
             "rewards": {
               "balls": 2
             },
@@ -1267,11 +1200,7 @@
             8,
             72
           ],
-          "levels": [
-            15,
-            18,
-            13
-          ],
+          "levels": [14, 17, 12],
           "badge_reward": "CORAL_EYE",
           "rewards": {
             "balls": 10
@@ -1296,14 +1225,7 @@
               130,
               171
             ],
-            "levels": [
-              70,
-              70,
-              70,
-              70,
-              70,
-              70
-            ]
+            "levels": [55, 55, 55, 55, 55, 55]
           }
         },
         "requirements": {
@@ -1315,7 +1237,7 @@
       "area_type": "wild_route",
       "route_name": "Route 53",
       "region": "ORANGE",
-      "level": 16,
+      "level": 15,
       "battle_type": "water",
       "min_rounds": 2,
       "wild_pool_percentages": "ORANGE_ORANGE_ROUTE_53_PERCENTAGES",
@@ -1329,11 +1251,7 @@
             129,
             170
           ],
-          "levels": [
-            14,
-            14,
-            14
-          ],
+          "levels": [13, 13, 13],
           "rewards": {
             "balls": 2
           }
@@ -1346,10 +1264,7 @@
             60,
             116
           ],
-          "levels": [
-            14,
-            14
-          ],
+          "levels": [13, 13],
           "rewards": {
             "balls": 2
           }
@@ -1361,9 +1276,7 @@
           "team": [
             90
           ],
-          "levels": [
-            17
-          ],
+          "levels": [16],
           "rewards": {
             "balls": 2
           }
@@ -1422,7 +1335,7 @@
       "area_type": "town",
       "route_name": "Sunburst Island",
       "region": "ORANGE",
-      "level": 17,
+      "level": 16,
       "has_gym": false,
       "explore_options": [
         {
@@ -1490,7 +1403,7 @@
       "area_type": "dungeon",
       "route_name": "Crystal Cave",
       "region": "ORANGE",
-      "level": 18,
+      "level": 17,
       "battle_type": "cave",
       "wild_pool_percentages": "ORANGE_CRYSTAL_CAVE_PERCENTAGES",
       "min_rounds": 2,
@@ -1541,7 +1454,7 @@
       "area_type": "wild_route",
       "route_name": "Route 54",
       "region": "ORANGE",
-      "level": 18,
+      "level": 17,
       "battle_type": "grass",
       "min_rounds": 2,
       "wild_pool_percentages": "ORANGE_ORANGE_ROUTE_54_PERCENTAGES",
@@ -1554,10 +1467,7 @@
             72,
             118
           ],
-          "levels": [
-            16,
-            16
-          ],
+          "levels": [15, 15],
           "rewards": {
             "balls": 2
           }
@@ -1569,9 +1479,7 @@
           "team": [
             170
           ],
-          "levels": [
-            18
-          ],
+          "levels": [17],
           "rewards": {
             "balls": 2
           }
@@ -1585,11 +1493,7 @@
             7,
             79
           ],
-          "levels": [
-            15,
-            15,
-            16
-          ],
+          "levels": [14, 14, 15],
           "rewards": {
             "balls": 2
           }
@@ -1601,9 +1505,7 @@
           "team": [
             120
           ],
-          "levels": [
-            18
-          ],
+          "levels": [17],
           "rewards": {
             "balls": 2
           }
@@ -1617,11 +1519,7 @@
             118,
             211
           ],
-          "levels": [
-            16,
-            16,
-            16
-          ],
+          "levels": [15, 15, 15],
           "rewards": {
             "balls": 2
           }
@@ -1671,7 +1569,7 @@
       "area_type": "town",
       "route_name": "Mandarin Island North",
       "region": "ORANGE",
-      "level": 19,
+      "level": 18,
       "has_gym": false,
       "explore_options": [
         {
@@ -1703,7 +1601,7 @@
       "area_type": "dungeon",
       "route_name": "Mandarin Underground",
       "region": "ORANGE",
-      "level": 20,
+      "level": 18,
       "battle_type": "cave",
       "min_rounds": 1,
       "wild_pool_percentages": "ORANGE_MANDARIN_UNDERGROUND_PERCENTAGES",
@@ -1717,11 +1615,7 @@
             100,
             25
           ],
-          "levels": [
-            17,
-            16,
-            15
-          ],
+          "levels": [16, 15, 14],
           "rewards": {
             "balls": 2
           }
@@ -1733,9 +1627,7 @@
           "team": [
             239
           ],
-          "levels": [
-            19
-          ],
+          "levels": [18],
           "rewards": {
             "balls": 2
           }
@@ -1750,12 +1642,7 @@
             100,
             100
           ],
-          "levels": [
-            13,
-            14,
-            15,
-            16
-          ],
+          "levels": [12, 13, 14, 15],
           "rewards": {
             "balls": 2
           }
@@ -1803,10 +1690,7 @@
               90,
               56
             ],
-            "levels": [
-              21,
-              21
-            ],
+            "levels": [19, 19],
             "rewards": {
               "balls": 5
             },
@@ -1834,11 +1718,7 @@
               96,
               20
             ],
-            "levels": [
-              21,
-              20,
-              20
-            ],
+            "levels": [19, 18, 18],
             "rewards": {
               "balls": 5
             },
@@ -1861,7 +1741,7 @@
       "area_type": "wild_route",
       "route_name": "Route 55",
       "region": "ORANGE",
-      "level": 20,
+      "level": 18,
       "battle_type": "water",
       "min_rounds": 2,
       "wild_pool_percentages": "ORANGE_ORANGE_ROUTE_55_PERCENTAGES",
@@ -1875,11 +1755,7 @@
             7,
             60
           ],
-          "levels": [
-            21,
-            21,
-            21
-          ],
+          "levels": [19, 19, 19],
           "rewards": {
             "balls": 2
           }
@@ -1892,10 +1768,7 @@
             72,
             223
           ],
-          "levels": [
-            21,
-            20
-          ],
+          "levels": [19, 18],
           "rewards": {
             "balls": 2
           }
@@ -1909,11 +1782,7 @@
             108,
             77
           ],
-          "levels": [
-            19,
-            18,
-            18
-          ],
+          "levels": [18, 17, 17],
           "rewards": {
             "balls": 2
           }
@@ -1963,7 +1832,7 @@
       "area_type": "town",
       "route_name": "Pinkan Island",
       "region": "ORANGE",
-      "level": 21,
+      "level": 19,
       "has_gym": false,
       "explore_options": [
         {
@@ -2033,7 +1902,7 @@
       "area_type": "wild_route",
       "route_name": "Pinkan Reserve",
       "region": "ORANGE",
-      "level": 22,
+      "level": 20,
       "battle_type": "forest",
       "wild_pool_percentages": "ORANGE_PINKAN_RESERVE_PERCENTAGES",
       "min_rounds": 2,
@@ -2085,12 +1954,7 @@
                 71,
                 52
               ],
-              "levels": [
-                21,
-                21,
-                22,
-                23
-              ],
+              "levels": [19, 19, 20, 20],
               "rewards": {
                 "balls": 10
               },
@@ -2121,7 +1985,7 @@
       "area_type": "wild_route",
       "route_name": "Route 56",
       "region": "ORANGE",
-      "level": 22,
+      "level": 20,
       "battle_type": "water",
       "min_rounds": 2,
       "wild_pool_percentages": "ORANGE_ORANGE_ROUTE_56_PERCENTAGES",
@@ -2135,11 +1999,7 @@
             118,
             170
           ],
-          "levels": [
-            22,
-            21,
-            22
-          ],
+          "levels": [20, 19, 20],
           "rewards": {
             "balls": 2
           }
@@ -2152,10 +2012,7 @@
             84,
             135
           ],
-          "levels": [
-            24,
-            24
-          ],
+          "levels": [21, 21],
           "rewards": {
             "balls": 2
           }
@@ -2168,10 +2025,7 @@
             116,
             116
           ],
-          "levels": [
-            24,
-            24
-          ],
+          "levels": [21, 21],
           "rewards": {
             "balls": 2
           }
@@ -2183,9 +2037,7 @@
           "team": [
             91
           ],
-          "levels": [
-            23
-          ],
+          "levels": [20],
           "rewards": {
             "balls": 2
           }
@@ -2198,10 +2050,7 @@
             64,
             66
           ],
-          "levels": [
-            24,
-            24
-          ],
+          "levels": [21, 21],
           "rewards": {
             "balls": 2
           }
@@ -2216,12 +2065,7 @@
             171,
             170
           ],
-          "levels": [
-            22,
-            22,
-            22,
-            22
-          ],
+          "levels": [20, 20, 20, 20],
           "rewards": {
             "balls": 2
           }
@@ -2233,9 +2077,7 @@
           "team": [
             140
           ],
-          "levels": [
-            26
-          ],
+          "levels": [22],
           "rewards": {
             "balls": 2
           }
@@ -2294,12 +2136,7 @@
               84,
               180
             ],
-            "levels": [
-              23,
-              24,
-              23,
-              22
-            ],
+            "levels": [20, 21, 20, 20],
             "rewards": {
               "balls": 5
             },
@@ -2321,7 +2158,7 @@
       "area_type": "town",
       "route_name": "Kinnow Island",
       "region": "ORANGE",
-      "level": 23,
+      "level": 20,
       "has_gym": false,
       "explore_options": [
         {
@@ -2354,7 +2191,7 @@
       "area_type": "wild_route",
       "route_name": "Route 57",
       "region": "ORANGE",
-      "level": 24,
+      "level": 21,
       "battle_type": "water",
       "min_rounds": 2,
       "wild_pool_percentages": "ORANGE_ORANGE_ROUTE_57_PERCENTAGES",
@@ -2368,11 +2205,7 @@
             179,
             188
           ],
-          "levels": [
-            25,
-            25,
-            24
-          ],
+          "levels": [22, 22, 21],
           "rewards": {
             "balls": 2
           }
@@ -2385,10 +2218,7 @@
             12,
             48
           ],
-          "levels": [
-            26,
-            25
-          ],
+          "levels": [22, 22],
           "rewards": {
             "balls": 2
           }
@@ -2400,9 +2230,7 @@
           "team": [
             224
           ],
-          "levels": [
-            28
-          ],
+          "levels": [24],
           "rewards": {
             "balls": 2
           }
@@ -2452,7 +2280,7 @@
       "area_type": "wild_route",
       "route_name": "Seven Grapefruit Islands",
       "region": "ORANGE",
-      "level": 25,
+      "level": 22,
       "battle_type": "grass",
       "min_rounds": 2,
       "wild_pool_percentages": "ORANGE_SEVEN_GRAPEFRUITS_PERCENTAGES",
@@ -2505,7 +2333,7 @@
       "area_type": "wild_route",
       "route_name": "Route 58",
       "region": "ORANGE",
-      "level": 25,
+      "level": 22,
       "battle_type": "water",
       "min_rounds": 2,
       "wild_pool_percentages": "ORANGE_ORANGE_ROUTE_58_PERCENTAGES",
@@ -2518,10 +2346,7 @@
             124,
             86
           ],
-          "levels": [
-            26,
-            25
-          ],
+          "levels": [22, 22],
           "rewards": {
             "balls": 2
           }
@@ -2571,7 +2396,7 @@
       "area_type": "town",
       "route_name": "Navel Island",
       "region": "ORANGE",
-      "level": 26,
+      "level": 22,
       "has_gym": true,
       "explore_options": [
         {
@@ -2610,11 +2435,7 @@
               95,
               76
             ],
-            "levels": [
-              50,
-              50,
-              52
-            ],
+            "levels": [38, 38, 39],
             "rewards": {
               "balls": 5
             },
@@ -2634,11 +2455,7 @@
               87,
               124
             ],
-            "levels": [
-              51,
-              51,
-              53
-            ],
+            "levels": [39, 39, 40],
             "rewards": {
               "balls": 5
             },
@@ -2661,12 +2478,7 @@
             212,
             101
           ],
-          "levels": [
-            28,
-            30,
-            27,
-            29
-          ],
+          "levels": [24, 25, 23, 24],
           "badge_reward": "SEA_RUBY",
           "rewards": {
             "balls": 10
@@ -2691,14 +2503,7 @@
               112,
               38
             ],
-            "levels": [
-              75,
-              75,
-              75,
-              75,
-              75,
-              75
-            ]
+            "levels": [60, 60, 60, 60, 60, 60]
           }
         },
         "requirements": {
@@ -2711,7 +2516,7 @@
       "area_type": "dungeon",
       "route_name": "Mt. Navel",
       "region": "ORANGE",
-      "level": 27,
+      "level": 23,
       "battle_type": "mountain",
       "min_rounds": 1,
       "wild_pool_percentages": "ORANGE_MT_NAVEL_PERCENTAGES",
@@ -2752,10 +2557,7 @@
               8,
               136
             ],
-            "levels": [
-              27,
-              26
-            ],
+            "levels": [23, 22],
             "rewards": {
               "balls": 5
             },
@@ -2791,7 +2593,7 @@
       "area_type": "wild_route",
       "route_name": "Route 59",
       "region": "ORANGE",
-      "level": 29,
+      "level": 24,
       "battle_type": "water",
       "min_rounds": 2,
       "wild_pool_percentages": "ORANGE_ORANGE_ROUTE_59_PERCENTAGES",
@@ -2804,10 +2606,7 @@
             34,
             121
           ],
-          "levels": [
-            27,
-            27
-          ],
+          "levels": [23, 23],
           "rewards": {
             "balls": 2
           }
@@ -2857,7 +2656,7 @@
       "area_type": "town",
       "route_name": "Moro Island",
       "region": "ORANGE",
-      "level": 30,
+      "level": 25,
       "has_gym": false,
       "explore_options": [
         {
@@ -2885,7 +2684,7 @@
       "area_type": "wild_route",
       "route_name": "Route 60",
       "region": "ORANGE",
-      "level": 31,
+      "level": 26,
       "battle_type": "water",
       "min_rounds": 2,
       "wild_pool_percentages": "ORANGE_ORANGE_ROUTE_60_PERCENTAGES",
@@ -2898,10 +2697,7 @@
             121,
             171
           ],
-          "levels": [
-            28,
-            26
-          ],
+          "levels": [24, 22],
           "rewards": {
             "balls": 2
           }
@@ -2916,12 +2712,7 @@
             83,
             226
           ],
-          "levels": [
-            29,
-            28,
-            27,
-            26
-          ],
+          "levels": [24, 24, 23, 22],
           "rewards": {
             "balls": 2
           }
@@ -2971,7 +2762,7 @@
       "area_type": "town",
       "route_name": "Golden Island",
       "region": "ORANGE",
-      "level": 32,
+      "level": 27,
       "has_gym": false,
       "explore_options": [
         {
@@ -3008,12 +2799,7 @@
               52,
               71
             ],
-            "levels": [
-              32,
-              32,
-              33,
-              31
-            ],
+            "levels": [27, 27, 28, 26],
             "rewards": {
               "balls": 5
             },
@@ -3035,7 +2821,7 @@
       "area_type": "wild_route",
       "route_name": "Route 61",
       "region": "ORANGE",
-      "level": 32,
+      "level": 27,
       "battle_type": "water",
       "min_rounds": 2,
       "wild_pool_percentages": "ORANGE_ORANGE_ROUTE_61_PERCENTAGES",
@@ -3049,11 +2835,7 @@
             89,
             116
           ],
-          "levels": [
-            34,
-            31,
-            28
-          ],
+          "levels": [28, 26, 24],
           "rewards": {
             "balls": 2
           }
@@ -3112,7 +2894,7 @@
       "area_type": "town",
       "route_name": "Murcott Island",
       "region": "ORANGE",
-      "level": 33,
+      "level": 28,
       "has_gym": false,
       "explore_options": [
         {
@@ -3144,11 +2926,7 @@
               136,
               227
             ],
-            "levels": [
-              33,
-              33,
-              31
-            ],
+            "levels": [28, 28, 26],
             "rewards": {
               "balls": 5
             },
@@ -3187,7 +2965,7 @@
       "area_type": "wild_route",
       "route_name": "Route 62",
       "region": "ORANGE",
-      "level": 34,
+      "level": 28,
       "battle_type": "grass",
       "min_rounds": 2,
       "wild_pool_percentages": "ORANGE_ORANGE_ROUTE_62_PERCENTAGES",
@@ -3201,11 +2979,7 @@
             20,
             186
           ],
-          "levels": [
-            29,
-            29,
-            29
-          ],
+          "levels": [24, 24, 24],
           "rewards": {
             "balls": 2
           }
@@ -3218,10 +2992,7 @@
             189,
             116
           ],
-          "levels": [
-            31,
-            29
-          ],
+          "levels": [26, 24],
           "rewards": {
             "balls": 2
           }
@@ -3281,13 +3052,7 @@
               181,
               123
             ],
-            "levels": [
-              33,
-              34,
-              31,
-              30,
-              32
-            ],
+            "levels": [28, 28, 26, 25, 27],
             "rewards": {
               "balls": 5
             },
@@ -3309,7 +3074,7 @@
       "area_type": "wild_route",
       "route_name": "Mandarin Desert",
       "region": "ORANGE",
-      "level": 35,
+      "level": 29,
       "battle_type": "desert",
       "min_rounds": 2,
       "wild_pool_percentages": "ORANGE_MANDARIN_DESERT_PERCENTAGES",
@@ -3352,7 +3117,7 @@
       "area_type": "dungeon",
       "route_name": "Sunray Cave",
       "region": "ORANGE",
-      "level": 36,
+      "level": 30,
       "battle_type": "cave",
       "min_rounds": 1,
       "wild_pool_percentages": "ORANGE_SUNRAY_CAVE_PERCENTAGES",
@@ -3395,7 +3160,7 @@
       "area_type": "town",
       "route_name": "Trovitopolis",
       "region": "ORANGE",
-      "level": 37,
+      "level": 31,
       "has_gym": false,
       "explore_options": [
         {
@@ -3434,13 +3199,7 @@
               108,
               52
             ],
-            "levels": [
-              38,
-              37,
-              38,
-              37,
-              35
-            ],
+            "levels": [32, 31, 32, 31, 29],
             "rewards": {
               "balls": 5
             },
@@ -3462,7 +3221,7 @@
       "area_type": "town",
       "route_name": "Trovita Island",
       "region": "ORANGE",
-      "level": 39,
+      "level": 32,
       "has_gym": true,
       "explore_options": [
         {
@@ -3496,9 +3255,7 @@
             "team": [
               87
             ],
-            "levels": [
-              35
-            ],
+            "levels": [29],
             "rewards": {
               "balls": 2
             },
@@ -3514,12 +3271,7 @@
               218,
               5
             ],
-            "levels": [
-              34,
-              34,
-              34,
-              34
-            ],
+            "levels": [28, 28, 28, 28],
             "rewards": {
               "balls": 2
             },
@@ -3533,10 +3285,7 @@
               75,
               97
             ],
-            "levels": [
-              34,
-              33
-            ],
+            "levels": [28, 28],
             "rewards": {
               "balls": 2
             },
@@ -3555,13 +3304,7 @@
             107,
             76
           ],
-          "levels": [
-            40,
-            42,
-            41,
-            40,
-            39
-          ],
+          "levels": [33, 35, 34, 33, 32],
           "badge_reward": "SPIKE_SHELL",
           "rewards": {
             "balls": 10
@@ -3586,14 +3329,7 @@
               76,
               36
             ],
-            "levels": [
-              80,
-              80,
-              80,
-              80,
-              80,
-              80
-            ]
+            "levels": [65, 65, 65, 65, 65, 65]
           }
         },
         "requirements": {
@@ -3606,7 +3342,7 @@
       "area_type": "wild_route",
       "route_name": "Route 57 North",
       "region": "ORANGE",
-      "level": 42,
+      "level": 35,
       "battle_type": "water",
       "min_rounds": 2,
       "wild_pool_percentages": "ORANGE_ORANGE_ROUTE_57_NORTH_PERCENTAGES",
@@ -3619,10 +3355,7 @@
             219,
             182
           ],
-          "levels": [
-            38,
-            39
-          ],
+          "levels": [32, 32],
           "rewards": {
             "balls": 2
           }
@@ -3636,11 +3369,7 @@
             224,
             121
           ],
-          "levels": [
-            36,
-            36,
-            36
-          ],
+          "levels": [30, 30, 30],
           "rewards": {
             "balls": 2
           }
@@ -3690,7 +3419,7 @@
       "area_type": "wild_route",
       "route_name": "Cleopatra Island",
       "region": "ORANGE",
-      "level": 43,
+      "level": 35,
       "battle_type": "grass",
       "min_rounds": 2,
       "wild_pool_percentages": "ORANGE_CLEOPATRA_ISLAND_PERCENTAGES",
@@ -3703,10 +3432,7 @@
             237,
             62
           ],
-          "levels": [
-            40,
-            40
-          ],
+          "levels": [33, 33],
           "rewards": {
             "balls": 2
           }
@@ -3756,7 +3482,7 @@
       "area_type": "wild_route",
       "route_name": "Route 63",
       "region": "ORANGE",
-      "level": 44,
+      "level": 36,
       "battle_type": "water",
       "min_rounds": 2,
       "wild_pool_percentages": "ORANGE_ORANGE_ROUTE_63_PERCENTAGES",
@@ -3769,10 +3495,7 @@
             73,
             130
           ],
-          "levels": [
-            42,
-            37
-          ],
+          "levels": [35, 31],
           "rewards": {
             "balls": 2
           }
@@ -3785,10 +3508,7 @@
             171,
             226
           ],
-          "levels": [
-            40,
-            40
-          ],
+          "levels": [33, 33],
           "rewards": {
             "balls": 2
           }
@@ -3801,10 +3521,7 @@
             132,
             78
           ],
-          "levels": [
-            38,
-            36
-          ],
+          "levels": [32, 30],
           "rewards": {
             "balls": 2
           }
@@ -3817,10 +3534,7 @@
             137,
             233
           ],
-          "levels": [
-            39,
-            39
-          ],
+          "levels": [32, 32],
           "rewards": {
             "balls": 2
           }
@@ -3833,10 +3547,7 @@
             139,
             119
           ],
-          "levels": [
-            40,
-            42
-          ],
+          "levels": [33, 35],
           "rewards": {
             "balls": 2
           }
@@ -3848,9 +3559,7 @@
           "team": [
             82
           ],
-          "levels": [
-            40
-          ],
+          "levels": [33],
           "rewards": {
             "balls": 2
           }
@@ -3863,10 +3572,7 @@
             3,
             36
           ],
-          "levels": [
-            40,
-            41
-          ],
+          "levels": [33, 34],
           "rewards": {
             "balls": 2
           }
@@ -3883,14 +3589,7 @@
             22,
             73
           ],
-          "levels": [
-            30,
-            30,
-            31,
-            31,
-            32,
-            32
-          ],
+          "levels": [25, 25, 26, 26, 27, 27],
           "rewards": {
             "balls": 2
           }
@@ -3940,7 +3639,7 @@
       "area_type": "town",
       "route_name": "Ascorbia Island",
       "region": "ORANGE",
-      "level": 45,
+      "level": 36,
       "has_gym": false,
       "explore_options": [
         {
@@ -3972,7 +3671,7 @@
       "area_type": "wild_route",
       "route_name": "Heart Scale Cove",
       "region": "ORANGE",
-      "level": 45,
+      "level": 36,
       "battle_type": "water",
       "min_rounds": 2,
       "wild_pool_percentages": "ORANGE_HEART_SCALE_COVE_PERCENTAGES",
@@ -4006,7 +3705,7 @@
       "area_type": "wild_route",
       "route_name": "Routes 64 and 65",
       "region": "ORANGE",
-      "level": 46,
+      "level": 37,
       "battle_type": "water",
       "min_rounds": 2,
       "wild_pool_percentages": "ORANGE_ORANGE_ROUTE_64_PERCENTAGES",
@@ -4020,11 +3719,7 @@
             216,
             83
           ],
-          "levels": [
-            41,
-            42,
-            43
-          ],
+          "levels": [34, 35, 35],
           "rewards": {
             "balls": 2
           }
@@ -4074,7 +3769,7 @@
       "area_type": "wild_route",
       "route_name": "Butwal Island",
       "region": "ORANGE",
-      "level": 47,
+      "level": 37,
       "battle_type": "grass",
       "min_rounds": 2,
       "wild_pool_percentages": "ORANGE_BUTWAL_ISLAND_PERCENTAGES",
@@ -4087,10 +3782,7 @@
             53,
             40
           ],
-          "levels": [
-            40,
-            40
-          ],
+          "levels": [33, 33],
           "rewards": {
             "balls": 2
           }
@@ -4104,11 +3796,7 @@
             102,
             127
           ],
-          "levels": [
-            40,
-            40,
-            40
-          ],
+          "levels": [33, 33, 33],
           "rewards": {
             "balls": 2
           }
@@ -4167,12 +3855,7 @@
               227,
               114
             ],
-            "levels": [
-              44,
-              42,
-              44,
-              42
-            ],
+            "levels": [36, 35, 36, 35],
             "rewards": {
               "balls": 5
             },
@@ -4214,7 +3897,7 @@
       "area_type": "wild_route",
       "route_name": "Route 66",
       "region": "ORANGE",
-      "level": 48,
+      "level": 38,
       "battle_type": "water",
       "min_rounds": 2,
       "wild_pool_percentages": "ORANGE_ORANGE_ROUTE_66_PERCENTAGES",
@@ -4227,10 +3910,7 @@
             224,
             226
           ],
-          "levels": [
-            43,
-            41
-          ],
+          "levels": [35, 34],
           "rewards": {
             "balls": 2
           }
@@ -4242,9 +3922,7 @@
           "team": [
             176
           ],
-          "levels": [
-            39
-          ],
+          "levels": [32],
           "rewards": {
             "balls": 2
           }
@@ -4257,10 +3935,7 @@
             183,
             184
           ],
-          "levels": [
-            41,
-            42
-          ],
+          "levels": [34, 35],
           "rewards": {
             "balls": 2
           }
@@ -4273,10 +3948,7 @@
             42,
             116
           ],
-          "levels": [
-            39,
-            39
-          ],
+          "levels": [32, 32],
           "rewards": {
             "balls": 2
           }
@@ -4289,10 +3961,7 @@
             17,
             178
           ],
-          "levels": [
-            42,
-            41
-          ],
+          "levels": [35, 34],
           "rewards": {
             "balls": 2
           }
@@ -4306,11 +3975,7 @@
             179,
             102
           ],
-          "levels": [
-            36,
-            36,
-            36
-          ],
+          "levels": [30, 30, 30],
           "rewards": {
             "balls": 2
           }
@@ -4360,7 +4025,7 @@
       "area_type": "town",
       "route_name": "Kumquat Island",
       "region": "ORANGE",
-      "level": 50,
+      "level": 38,
       "has_gym": true,
       "explore_options": [
         {
@@ -4400,11 +4065,7 @@
               40,
               210
             ],
-            "levels": [
-              54,
-              54,
-              56
-            ],
+            "levels": [40, 40, 41],
             "rewards": {
               "balls": 5
             },
@@ -4424,11 +4085,7 @@
               128,
               241
             ],
-            "levels": [
-              55,
-              55,
-              57
-            ],
+            "levels": [41, 41, 42],
             "rewards": {
               "balls": 5
             },
@@ -4451,12 +4108,7 @@
             105,
             103
           ],
-          "levels": [
-            56,
-            54,
-            54,
-            54
-          ],
+          "levels": [41, 40, 40, 40],
           "badge_reward": "JADE_STAR",
           "rewards": {
             "balls": 10
@@ -4482,14 +4134,7 @@
               108,
               184
             ],
-            "levels": [
-              80,
-              80,
-              80,
-              80,
-              80,
-              80
-            ]
+            "levels": [65, 65, 65, 65, 65, 65]
           }
         },
         "requirements": {
@@ -4502,7 +4147,7 @@
       "area_type": "wild_route",
       "route_name": "Route 67",
       "region": "ORANGE",
-      "level": 52,
+      "level": 39,
       "battle_type": "water",
       "min_rounds": 2,
       "wild_pool_percentages": "ORANGE_ORANGE_ROUTE_67_PERCENTAGES",
@@ -4515,10 +4160,7 @@
             51,
             82
           ],
-          "levels": [
-            41,
-            42
-          ],
+          "levels": [34, 35],
           "rewards": {
             "balls": 2
           }
@@ -4533,12 +4175,7 @@
             173,
             35
           ],
-          "levels": [
-            44,
-            44,
-            44,
-            44
-          ],
+          "levels": [36, 36, 36, 36],
           "rewards": {
             "balls": 2
           }
@@ -4552,11 +4189,7 @@
             130,
             130
           ],
-          "levels": [
-            44,
-            45,
-            44
-          ],
+          "levels": [36, 36, 36],
           "rewards": {
             "balls": 2
           }
@@ -4570,11 +4203,7 @@
             5,
             4
           ],
-          "levels": [
-            42,
-            41,
-            38
-          ],
+          "levels": [35, 34, 32],
           "rewards": {
             "balls": 2
           }
@@ -4588,11 +4217,7 @@
             171,
             103
           ],
-          "levels": [
-            44,
-            45,
-            46
-          ],
+          "levels": [36, 36, 37],
           "rewards": {
             "balls": 2
           }
@@ -4604,9 +4229,7 @@
           "team": [
             18
           ],
-          "levels": [
-            42
-          ],
+          "levels": [35],
           "rewards": {
             "balls": 2
           }
@@ -4620,11 +4243,7 @@
             230,
             121
           ],
-          "levels": [
-            44,
-            44,
-            44
-          ],
+          "levels": [36, 36, 36],
           "rewards": {
             "balls": 2
           }
@@ -4674,7 +4293,7 @@
       "area_type": "wild_route",
       "route_name": "Rind Island",
       "region": "ORANGE",
-      "level": 53,
+      "level": 40,
       "battle_type": "grass",
       "min_rounds": 2,
       "wild_pool_percentages": "ORANGE_RIND_ISLAND_PERCENTAGES",
@@ -4717,7 +4336,7 @@
       "area_type": "wild_route",
       "route_name": "Routes 68 and 69",
       "region": "ORANGE",
-      "level": 55,
+      "level": 41,
       "battle_type": "water",
       "min_rounds": 2,
       "wild_pool_percentages": "ORANGE_ORANGE_ROUTE_68_PERCENTAGES",
@@ -4730,10 +4349,7 @@
             87,
             119
           ],
-          "levels": [
-            44,
-            44
-          ],
+          "levels": [36, 36],
           "rewards": {
             "balls": 2
           }
@@ -4746,10 +4362,7 @@
             119,
             171
           ],
-          "levels": [
-            44,
-            44
-          ],
+          "levels": [36, 36],
           "rewards": {
             "balls": 2
           }
@@ -4763,11 +4376,7 @@
             8,
             7
           ],
-          "levels": [
-            42,
-            41,
-            40
-          ],
+          "levels": [35, 34, 33],
           "rewards": {
             "balls": 2
           }
@@ -4782,12 +4391,7 @@
             61,
             117
           ],
-          "levels": [
-            44,
-            45,
-            46,
-            45
-          ],
+          "levels": [36, 36, 37, 36],
           "rewards": {
             "balls": 2
           }
@@ -4837,7 +4441,7 @@
       "area_type": "dungeon",
       "route_name": "Victory Road (Orange)",
       "region": "ORANGE",
-      "level": 57,
+      "level": 42,
       "battle_type": "cave",
       "min_rounds": 1,
       "wild_pool_percentages": "ORANGE_ORANGE_VICTORY_ROAD_PERCENTAGES",
@@ -4851,11 +4455,7 @@
             216,
             6
           ],
-          "levels": [
-            44,
-            44,
-            44
-          ],
+          "levels": [36, 36, 36],
           "rewards": {
             "balls": 2
           }
@@ -4869,11 +4469,7 @@
             202,
             232
           ],
-          "levels": [
-            46,
-            46,
-            46
-          ],
+          "levels": [37, 37, 37],
           "rewards": {
             "balls": 2
           }
@@ -4888,12 +4484,7 @@
             82,
             34
           ],
-          "levels": [
-            44,
-            44,
-            44,
-            44
-          ],
+          "levels": [36, 36, 36, 36],
           "rewards": {
             "balls": 2
           }
@@ -4907,11 +4498,7 @@
             105,
             176
           ],
-          "levels": [
-            44,
-            44,
-            44
-          ],
+          "levels": [36, 36, 36],
           "rewards": {
             "balls": 2
           }
@@ -4925,11 +4512,7 @@
             114,
             59
           ],
-          "levels": [
-            44,
-            44,
-            44
-          ],
+          "levels": [36, 36, 36],
           "rewards": {
             "balls": 2
           }
@@ -4944,12 +4527,7 @@
             28,
             123
           ],
-          "levels": [
-            44,
-            44,
-            44,
-            44
-          ],
+          "levels": [36, 36, 36, 36],
           "rewards": {
             "balls": 2
           }
@@ -4963,11 +4541,7 @@
             134,
             232
           ],
-          "levels": [
-            44,
-            45,
-            47
-          ],
+          "levels": [36, 36, 37],
           "rewards": {
             "balls": 2
           }
@@ -4982,12 +4556,7 @@
             224,
             26
           ],
-          "levels": [
-            44,
-            45,
-            46,
-            45
-          ],
+          "levels": [36, 36, 37, 36],
           "rewards": {
             "balls": 2
           }
@@ -5037,7 +4606,7 @@
       "area_type": "town",
       "route_name": "Pummelo Island",
       "region": "ORANGE",
-      "level": 59,
+      "level": 44,
       "has_gym": true,
       "explore_options": [
         {
@@ -5093,14 +4662,7 @@
             125,
             149
           ],
-          "levels": [
-            60,
-            62,
-            62,
-            63,
-            62,
-            65
-          ],
+          "levels": [45, 47, 47, 48, 47, 50],
           "badge_reward": "WINNERS_TROPHY",
           "rewards": {
             "balls": 30,
@@ -5129,14 +4691,7 @@
               230,
               149
             ],
-            "levels": [
-              95,
-              96,
-              97,
-              98,
-              99,
-              100
-            ]
+            "levels": [80, 81, 82, 83, 84, 85]
           }
         },
         "requirements": {
@@ -5165,13 +4720,7 @@
               114,
               126
             ],
-            "levels": [
-              59,
-              56,
-              58,
-              59,
-              55
-            ],
+            "levels": [44, 41, 43, 44, 41],
             "rewards": {
               "balls": 5
             },
@@ -5217,7 +4766,7 @@
       "area_type": "wild_route",
       "route_name": "Routes 70 and 71",
       "region": "ORANGE",
-      "level": 62,
+      "level": 47,
       "battle_type": "water",
       "min_rounds": 2,
       "wild_pool_percentages": "ORANGE_ORANGE_ROUTE_70_PERCENTAGES",
@@ -5230,10 +4779,7 @@
             226,
             73
           ],
-          "levels": [
-            56,
-            56
-          ],
+          "levels": [41, 41],
           "rewards": {
             "balls": 2
           }
@@ -5292,7 +4838,7 @@
       "area_type": "wild_route",
       "route_name": "Tarroco Island",
       "region": "ORANGE",
-      "level": 63,
+      "level": 48,
       "battle_type": "grass",
       "min_rounds": 2,
       "wild_pool_percentages": "ORANGE_TARROCO_ISLAND_PERCENTAGES",
@@ -5326,7 +4872,7 @@
       "area_type": "wild_route",
       "route_name": "Hamlin Island",
       "region": "ORANGE",
-      "level": 64,
+      "level": 49,
       "battle_type": "grass",
       "min_rounds": 2,
       "wild_pool_percentages": "ORANGE_HAMLIN_ISLAND_PERCENTAGES",
@@ -5360,7 +4906,7 @@
       "area_type": "town",
       "route_name": "Shamouti Island",
       "region": "ORANGE",
-      "level": 60,
+      "level": 45,
       "has_gym": false,
       "explore_options": [
         {
@@ -5405,7 +4951,7 @@
       "area_type": "wild_route",
       "route_name": "Fire Island",
       "region": "ORANGE",
-      "level": 62,
+      "level": 47,
       "battle_type": "mountain",
       "wild_pool_percentages": "ORANGE_FIRE_ISLAND_PERCENTAGES",
       "min_rounds": 2,
@@ -5432,7 +4978,7 @@
           "boss": {
             "id": 146,
             "name": "Moltres",
-            "level": 65,
+            "level": 50,
             "no_catch": true,
             "victory_flag": "shamouti_moltres_calmed",
             "lines": [
@@ -5473,7 +5019,7 @@
       "area_type": "wild_route",
       "route_name": "Ice Island",
       "region": "ORANGE",
-      "level": 62,
+      "level": 47,
       "battle_type": "snow",
       "wild_pool_percentages": "ORANGE_ICE_ISLAND_PERCENTAGES",
       "min_rounds": 2,
@@ -5500,7 +5046,7 @@
           "boss": {
             "id": 144,
             "name": "Articuno",
-            "level": 65,
+            "level": 50,
             "no_catch": true,
             "victory_flag": "shamouti_articuno_calmed",
             "lines": [
@@ -5549,11 +5095,7 @@
               230,
               149
             ],
-            "levels": [
-              65,
-              62,
-              63
-            ],
+            "levels": [50, 47, 48],
             "rewards": {
               "balls": 5
             },
@@ -5576,7 +5118,7 @@
       "area_type": "wild_route",
       "route_name": "Lightning Island",
       "region": "ORANGE",
-      "level": 62,
+      "level": 47,
       "battle_type": "mountain",
       "wild_pool_percentages": "ORANGE_LIGHTNING_ISLAND_PERCENTAGES",
       "min_rounds": 2,
@@ -5603,7 +5145,7 @@
           "boss": {
             "id": 145,
             "name": "Zapdos",
-            "level": 65,
+            "level": 50,
             "no_catch": true,
             "victory_flag": "shamouti_zapdos_calmed",
             "lines": [
@@ -5644,7 +5186,7 @@
       "area_type": "wild_route",
       "route_name": "Shamouti Shrine",
       "region": "ORANGE",
-      "level": 63,
+      "level": 48,
       "battle_type": "ocean",
       "wild_pool_percentages": "ORANGE_SHAMOUTI_SHRINE_PERCENTAGES",
       "min_rounds": 2,

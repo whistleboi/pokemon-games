@@ -1549,6 +1549,11 @@ class BagState(GameState):
 
         from src.pokemon import catching
         if self.context == "battle" and item_key in catching.BALLS:
+            story = self.game.story_manager
+            if not story.catch_unlocked():  # battling is fine before the Pokedex, catching waits (canon)
+                prof = story.get_region_start().get("professor") or "The Professor"
+                self.game.show_dialogue(["You can't catch Pokemon yet!", f"{prof} will give you a Pokedex first."])
+                return
             battle = self.previous_state
             self.game.story_manager.selected_ball = item_key
             self.game.change_state(battle)

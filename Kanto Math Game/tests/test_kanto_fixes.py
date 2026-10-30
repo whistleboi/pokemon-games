@@ -278,8 +278,9 @@ def kanto_mart_stock():
 def late_area_levels():
     from src.world import levels
     lv = lambda a: levels.area_level(G, a)
-    assert lv("VICTORY_ROAD") >= 42 and lv("KANTO_ROUTE_23") >= 40 and lv("CERULEAN_CAVE") >= 55
-    assert 34 <= lv("SEAFOAM_ISLANDS") <= 43 and lv("POWER_PLANT") >= 30
+    # FireRed/LeafGreen's own levels (canon since 10-29, from Serebii PokéEarth)
+    assert lv("VICTORY_ROAD") >= 42 and lv("KANTO_ROUTE_23") >= 36 and lv("CERULEAN_CAVE") >= 50
+    assert 25 <= lv("SEAFOAM_ISLANDS") <= 35 and lv("POWER_PLANT") >= 22
 
 def _lobby(area, progress):
     from src.states.overworld import GymLobbyState

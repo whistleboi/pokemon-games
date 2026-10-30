@@ -204,7 +204,7 @@ BikeShopState(g, gold)
 check(story.inventory.get("BICYCLE") == 1, "the Goldenrod Bike Shop lends you a bike, no voucher needed")
 az = jprog["AZALEA_TOWN"]["on_enter_event"]["trainer"]
 check(max(az["levels"]) <= levels.gym_aces("JOHTO")[2] + 3, f"the Azalea rival's ace is at most the cap + 3 {az['levels']}")
-check(levels._area_levels(g)["JOHTO_ROUTE_36"] < levels.gym_aces("JOHTO")[0], "Route 36 (by Violet) sits below Falkner's ace")
+check(levels._area_levels(g)["JOHTO_ROUTE_36"] == 13, "Route 36 at HeartGold/SoulSilver's Lv 12-15 (canon, 10-29)")
 story.badges["JOHTO"] = []
 
 print(f"\n{'ALL PASS' if not fails else str(fails) + ' FAIL(S)'}")

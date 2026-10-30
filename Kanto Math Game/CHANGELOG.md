@@ -2,6 +2,35 @@
 
 ## Unreleased: opponents follow your team, Hoenn's story as in Omega Ruby / Alpha Sapphire
 
+- **Every region uses its own game's levels** (each region is a fresh start, so they no longer have to line up):
+  - **Which game:**
+
+    | Region | Game |
+    |---|---|
+    | Kanto | FireRed/LeafGreen |
+    | Johto | HeartGold/SoulSilver |
+    | Hoenn | Omega Ruby/Alpha Sapphire |
+    | Sinnoh | Brilliant Diamond/Shining Pearl |
+    | Unova | Black 2/White 2 (Black/White where B2W2 doesn't have it) |
+    | Kalos | X/Y |
+    | Alola | Ultra Sun/Ultra Moon (Sun/Moon where needed) |
+    | Galar | Sword/Shield |
+    | Paldea | Scarlet/Violet |
+
+  - **Wild Pokémon and route trainers:** they keep each area's own level and no longer rise with your team. About 290 areas were reset to their game's levels from Serebii PokéEarth. For example, Johto's Route 44 is now Lv 22–26 instead of 36. Unova uses Black/White's levels for areas that appear in both games, since its story follows Black/White.
+  - **Rivals, story trainers and area bosses:** they keep the games' levels instead of being raised to match your team.
+  - **Legendaries:** 68 legendaries now use their game's levels, for example Lugia 70 in HeartGold and Groudon 45 in the Cave of Origin. The rest keep the old rule.
+  - **The Leagues:** the old level boosts are gone. Lance is Lv 50 and Steven Lv 59. Sinnoh's Elite Four and Cynthia are Brilliant Diamond/Shining Pearl's (Cynthia Lv 66). Unova's Elite Four and Champion are Black 2/White 2's (56–59). Alola's are Ultra Sun/Ultra Moon's, with Hala and Kukui at Sun/Moon's levels. Marnie and Hop are back to their Champion Cup levels, and Nemona's final battle is Lv 65–66.
+  - **Gyms:** Burgh, Elesa, Clay, Skyla and Drayden use Black 2/White 2's levels. Olivia, Nanu and Hapu use Ultra Sun/Ultra Moon's.
+  - **The level cap after the last badge** is now the Champion's ace instead of a flat Lv 70.
+  - **The Orange Islands follow Johto:** Cissy, Danny, Rudy and Luana match Bugsy, Morty, Jasmine and Clair, and Drake matches Lance (Lv 50). The islands' levels scale along with them.
+- **EXP SHARE** (Options, on by default): as in the newer games, every Pokémon in your party earns XP. The ones that battled get the full amount, and the rest get half. With it off, the Pokémon that battled split the XP. Fainted Pokémon get none either way.
+- **Routes use the town menu:** routes now have the same four buttons as towns: EXPLORE, PKDEX, POKéMON and TRAVEL.
+  - EXPLORE opens a pop-up with the route's catching, battles, trainers, fishing and story events.
+  - TRAVEL opens a pop-up with the ways out.
+- **Hoenn fixes:**
+  - **Catching before the Pokédex:** you can battle wild Pokémon before Birch gives you the Pokédex, but not catch them, as in the games. Throwing a ball from the Bag is now blocked too.
+  - **Galarian Zigzagoon:** it no longer shows up in Hoenn until you've been to Galar. "Battle wild Pokémon" now picks by each Pokémon's real odds. Before, it chose evenly among an area's four rarest Pokémon, so a 1% Pokémon came up about one battle in four.
 - **Delete a save from the Load screen:** press DELETE (top right), pick a file, then answer YES. The file and its backup are removed. Each press of DELETE removes one file only, so a stray tap can't clear several.
 - **Fixes from the 10-28 playtests (new games in Kanto, Johto and the Orange Islands):**
   - **The Orange Islands keep to Kanto, Johto and island Pokémon.** 152 Gen 3–7 Pokémon from the hack's data were swapped for Kanto or Johto ones that fit. These swaps were in the wild areas, trainers' teams, the Orange Crew's teams and the island's Pokédex list. For example, Pikipek became Spearow, Wingull became Spearow, Mareanie became Tentacool, Luana's Turtonator became Marowak, and Drake's Electivire became Electabuzz. Johto Pokémon now appear in the wild there for a new Orange game too. Every Pokémon in the Orange Pokédex can now be caught on the islands.

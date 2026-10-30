@@ -1545,6 +1545,8 @@ class DifficultySelectionState(GameState):
                                      fonts["label"], self.cycle_cap, bg_color=theme.MEGA, autosize=False)
         self.btn_autosave = CommandButton((s.right - 14 - 250, s.y + 14, 250, s.h - 32), self._autosave_label(),
                                           fonts["label"], self.toggle_autosave, bg_color=theme.RUN, autosize=False)
+        self.btn_exp = CommandButton((s.right - 14 - 250 - 14 - 250, s.y + 14, 250, s.h - 32), self._exp_label(),
+                                     fonts["label"], self.toggle_exp_share, bg_color=theme.POKEMON, autosize=False)
         cx, cy = w // 2, h // 2
         self.quit_panel = pygame.Rect(cx - 260, cy - 170, 520, 340)
         self.quit_buttons = [
@@ -1555,6 +1557,13 @@ class DifficultySelectionState(GameState):
             CommandButton((cx - 200, cy + 88, 400, 62), "CANCEL", fonts["label"],
                           self.close_quit_prompt, bg_color=theme.BACK, autosize=False),
         ]
+
+    def _exp_label(self):
+        return "EXP SHARE: " + ("ON" if getattr(self.story, "exp_share", True) else "OFF")
+
+    def toggle_exp_share(self):
+        self.story.exp_share = not getattr(self.story, "exp_share", True)
+        self.btn_exp.text = self._exp_label()
 
     def _autosave_label(self):
         return "AUTOSAVE: " + ("ON" if self.story.autosave else "OFF")
@@ -1657,7 +1666,7 @@ class DifficultySelectionState(GameState):
                     return
                 if self.btn_back.handle_event(event) or self.btn_confirm.handle_event(event):
                     return  # state changed; ignore the rest of this frame
-                if self.btn_cap.handle_event(event):
+                if self.btn_cap.handle_event(event) or self.btn_exp.handle_event(event):
                     return
                 for i, rect in enumerate(self.card_rects):
                     if rect.collidepoint(event.pos):
@@ -1725,14 +1734,11 @@ class DifficultySelectionState(GameState):
             theme.shadow_text(screen, row, fonts["caption"], left.x + 16,
                               left.centery - len(rows) * 11 + k * 22)
         self.btn_cap.draw(screen)
+        # EXP SHARE (and AUTOSAVE, in a game) on the right card.
+        right = pygame.Rect(s.x + half + 14, s.y, half, s.h)
+        theme.card(screen, right)
+        self.btn_exp.draw(screen)
         if self.in_game:
-            right = pygame.Rect(s.x + half + 14, s.y, half, s.h)
-            theme.card(screen, right)
-            tip = "Saves each time you travel to a new area."
-            rows = wrap_text(tip, fonts["caption"], half - 290)[:3]
-            for k, row in enumerate(rows):
-                theme.shadow_text(screen, row, fonts["caption"], right.x + 16,
-                                  right.centery - len(rows) * 11 + k * 22)
             self.btn_autosave.draw(screen)
             self.btn_quit.draw(screen)
 
