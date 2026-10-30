@@ -1,5 +1,6 @@
 # [REF-0001: System Imports]
 import pygame
+from src.vfx.animations import MAX_HEIGHT, battle_sprite, sprite_rect
 import math
 from src.utils import Utils
 from src.config import WHITE, BLACK
@@ -104,9 +105,22 @@ class BattleRenderer:
         pygame.draw.polygon(screen, theme.INFOBOX_FRAME, pts, 4)
 
     def _name_line(self, screen, pokemon, x, y, right):
-        name_font, label = self.game.assets.fonts["s_med"], self.game.assets.fonts["label"]
-        r = theme.shadow_text(screen, pokemon.display_name.upper(), name_font, x, y)
-        theme.shadow_text(screen, f"Lv{getattr(pokemon, 'level', 5)}", label, right, y + 4, align="right")
+        fonts, label = self.game.assets.fonts, self.game.assets.fonts["label"]
+        lv = f"Lv{getattr(pokemon, 'level', 5)}"
+        room = right - label.size(lv)[0] - 14 - x
+        name = pokemon.display_name.upper()
+        # long names (SHADOW BULBASAUR) step down a size, then squeeze to fit, instead of running into the level
+        name_font = fonts["s_med"] if fonts["s_med"].size(name)[0] <= room else fonts["label"]
+        dy = (fonts["s_med"].get_height() - name_font.get_height()) // 2
+        tw, th = name_font.size(name)
+        if tw <= room:
+            r = theme.shadow_text(screen, name, name_font, x, y + dy)
+        else:
+            tmp = pygame.Surface((tw + 4, th + 4), pygame.SRCALPHA)
+            theme.shadow_text(tmp, name, name_font, 0, 0)
+            tmp = pygame.transform.smoothscale(tmp, (max(1, room), th + 4))
+            r = screen.blit(tmp, (x, y + dy))
+        theme.shadow_text(screen, lv, label, right, y + 4, align="right")
         return r
 
     # ------------------------------------------------------------------ the scene
@@ -127,35 +141,43 @@ class BattleRenderer:
         # (show_fainted: a knocked-out wild Pokemon stays in view for the catch window)
         if fainting_side != "opponent" and not hide_opponent and (opponent_pokemon.current_hp > 0 or show_fainted) \
                 and (not anim_ctrl or anim_ctrl.hit_visible("opponent")):
-            img = opponent_pokemon.image
+            img = battle_sprite(opponent_pokemon, "opponent")
             ox, oy = 0, 0
             if opponent_pokemon.id in self.game.loader.all_boss_ids:  # bosses: bigger, hovering
                 oy += math.sin(pygame.time.get_ticks() * opponent_pokemon.bob_speed + opponent_pokemon.bob_offset) \
                     * opponent_pokemon.bob_amount
-                img = pygame.transform.scale(img, (int(img.get_width() * 1.25), int(img.get_height() * 1.25)))
+                room = h * MAX_HEIGHT["opponent"] * 1.1  # a little bigger than others, still on screen
+                k = min(1.25, room / max(1, img.get_bounding_rect().height))
+                if k > 1.0:
+                    img = pygame.transform.scale(img, (int(img.get_width() * k), int(img.get_height() * k)))
             if lunge_side == "opponent":
                 ox, oy = ox - 70 * reach, oy + 30 * reach
             if anim_ctrl:
                 ox += anim_ctrl.knockback("opponent")
-            screen.blit(img, img.get_rect(center=(w * 0.73 + ox, h * 0.39 + oy)))
+            screen.blit(img, sprite_rect(self.game, img, "opponent").move(int(ox), int(oy)))
 
         # Your Pokemon.
         if fainting_side not in ("player", "player_switch") and player_pokemon.current_hp > 0 \
                 and (not anim_ctrl or anim_ctrl.hit_visible("player")):
-            img = player_pokemon.back_image or player_pokemon.image
+            img = battle_sprite(player_pokemon, "player")
             px, py = 0, 0
             if lunge_side == "player":
                 px, py = 70 * reach, -30 * reach
             if anim_ctrl:
                 px -= anim_ctrl.knockback("player")
-            screen.blit(img, img.get_rect(center=(w * 0.27 + px, h * 0.69 + py)))
+            if img is not None:
+                screen.blit(img, sprite_rect(self.game, img, "player").move(int(px), int(py)))
 
         if is_trainer_battle and trainer_img:
             screen.blit(trainer_img, trainer_img.get_rect(center=(w * 0.78 + trainer_x_offset, h * 0.26)))
 
-        # The foe's box (top left).
+        self.draw_foe_box(screen, opponent_pokemon, opp_hp, opp_max_hp)
+        self.draw_my_box(screen, player_pokemon, player_hp, player_max_hp)
+
+    def draw_foe_box(self, screen, opponent_pokemon, opp_hp, opp_max_hp, dx=0):
+        """The foe's box (top left); dx slides it (the trainer intro)."""
         bw, bh = self.FOE_BOX
-        box = pygame.Rect(self.MARGIN, self.MARGIN, bw, bh)
+        box = pygame.Rect(self.MARGIN + int(dx), self.MARGIN, bw, bh)
         self._box(screen, box, "right")
         name = self._name_line(screen, opponent_pokemon, box.x + 22, box.y + 12, box.right - 44)
         caught = any(isinstance(v, dict) and v.get("id") == opponent_pokemon.id
@@ -166,10 +188,13 @@ class BattleRenderer:
         self._hp_bar(screen, ("opp", id(opponent_pokemon)), box.x + 22 + max(tag_w, 0), box.y + 61,
                      bw - 80 - max(tag_w, 0), opp_hp, opp_max_hp)
 
-        # Your box (bottom right, above the text box).
+
+    def draw_my_box(self, screen, player_pokemon, player_hp, player_max_hp, dx=0):
+        """Your box (bottom right, above the text box); dx slides it (the trainer intro)."""
+        w = self.game.width
         bw, bh = self.MY_BOX
         text_top = Utils.get_full_dialogue_rect(self.game).top
-        box = pygame.Rect(w - self.MARGIN - bw, text_top - self.MARGIN - bh, bw, bh)
+        box = pygame.Rect(w - self.MARGIN - bw + int(dx), text_top - self.MARGIN - bh, bw, bh)
         self._box(screen, box, "left")
         self._name_line(screen, player_pokemon, box.x + 52, box.y + 12, box.right - 22)
         tag_w = self._status_tag(screen, player_pokemon, box.x + 52, box.y + 56)

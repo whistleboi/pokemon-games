@@ -10,6 +10,19 @@ from src.pokemon.contest import new_condition
 
 
 # [REF-0005: Pokemon Core Class]
+def _fit_square(img, size):
+    """A sprite in a size x size square: square sprites as before; others (fan-made art like
+    Jordan's Shadow Charizard back) keep their proportions, centred, feet on the bottom edge."""
+    w, h = img.get_size()
+    if w == h:
+        return pygame.transform.scale(img, (size, size))
+    k = size / max(w, h)
+    scaled = pygame.transform.scale(img, (max(1, int(w * k)), max(1, int(h * k))))
+    out = pygame.Surface((size, size), pygame.SRCALPHA)
+    out.blit(scaled, scaled.get_rect(midbottom=(size // 2, size)))
+    return out
+
+
 class Pokemon:
     def __init__(self, raw_data, assets, size_mult=3.5):
         self.id = raw_data["id"]
@@ -73,15 +86,13 @@ class Pokemon:
                 ).convert_alpha()
                 mult_back = (size_mult * 2 if assets.is_pc else size_mult) * 0.8
                 s_back = int(assets.width // mult_back)
-                self.back_image = pygame.transform.scale(
-                    back_img_surface, (s_back, s_back)
-                )
+                self.back_image = _fit_square(back_img_surface, s_back)
             except pygame.error:
                 pass
 
         mult = size_mult * 2 if assets.is_pc else size_mult
         s = int(assets.width // mult)
-        self.image = pygame.transform.scale(img_surface, (s, s))
+        self.image = _fit_square(img_surface, s)
 
         sb_scale = 0.05 if assets.is_pc else 0.12
         sb_size = int(assets.width * sb_scale)

@@ -19,7 +19,7 @@ orre = {k: a for k, a in prog.items() if isinstance(a, dict) and str(a.get("regi
 print("1) all 131 Shadow Pokemon, once each")
 fm = data.get("FORM_MAP", {})
 ids = [fm.get(str(s["id"]), {}).get("id", s["id"]) for a in orre.values() for s in a.get("shadow_pool") or []]
-check(len(ids) == 131 and len(set(ids)) == 131, f"{len(ids)} shadows, {len(set(ids))} species")
+check(len(ids) == 134 and len(set(ids)) == 134, f"{len(ids)} shadows (131 + 3 Kanto starters), {len(set(ids))} species")
 
 
 def find(name):

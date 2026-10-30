@@ -13,10 +13,12 @@ def check(ok, msg):
     fails += 0 if ok else 1
 
 
-shadows = {k: v for k, v in FM.items() if v.get("form") == "shadow" and int(k) < 9601}  # 9601+: Shadow evolutions
+KANTO_STARTERS = {str(i) for i in range(9432, 9441)}  # Jordan's Shadow starter lines (10-30, not in the games)
+shadows = {k: v for k, v in FM.items() if v.get("form") == "shadow" and int(k) < 9601 and k not in KANTO_STARTERS}
 check(len(shadows) == 131, f"131 Shadow forms (Colosseum + XD, one per species): {len(shadows)}")
 pooled = [s for a in SP.values() for s in a.get("shadow_pool", [])]
-check(len(pooled) == len(shadows) and {str(s["id"]) for s in pooled} == set(shadows), "every Shadow form is in a snag pool")
+check({str(s["id"]) for s in pooled} == set(shadows) | {"9432", "9435", "9438"} and len(pooled) == len(shadows) + 3,
+      "every Shadow form is in a snag pool (and the three Kanto starters, at the Shadow Pokemon Lab)")
 import os
 missing = [k for k in shadows if not os.path.exists(f"assets/sprites/pokemon/{k}.png")]
 check(not missing, f"every Shadow form has a sprite (missing {missing[:5]})")

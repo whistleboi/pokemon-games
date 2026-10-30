@@ -2734,6 +2734,27 @@
           "name": "Shadow Raikou",
           "flag": "snagged_shadow_raikou",
           "trainer": "Cipher Admin Ein"
+        },
+        {
+          "id": 9432,
+          "name": "Shadow Bulbasaur",
+          "flag": "snagged_shadow_bulbasaur",
+          "trainer": "Cipher Peon Verdan",
+          "note": "Ein's Kanto experiment (not in the games)"
+        },
+        {
+          "id": 9438,
+          "name": "Shadow Charmander",
+          "flag": "snagged_shadow_charmander",
+          "trainer": "Cipher Peon Pyrel",
+          "note": "Ein's Kanto experiment (not in the games)"
+        },
+        {
+          "id": 9435,
+          "name": "Shadow Squirtle",
+          "flag": "snagged_shadow_squirtle",
+          "trainer": "Cipher Peon Tidan",
+          "note": "Ein's Kanto experiment (not in the games)"
         }
       ],
       "route_menu": [
@@ -5907,6 +5928,69 @@
       "id": 376,
       "form": "shadow",
       "name": "Shadow Metagross"
+    },
+    "9432": {
+      "id": 1,
+      "form": "shadow",
+      "name": "Shadow Bulbasaur"
+    },
+    "9433": {
+      "id": 2,
+      "form": "shadow",
+      "name": "Shadow Ivysaur",
+      "origins": [
+        1
+      ]
+    },
+    "9434": {
+      "id": 3,
+      "form": "shadow",
+      "name": "Shadow Venusaur",
+      "origins": [
+        1
+      ]
+    },
+    "9435": {
+      "id": 7,
+      "form": "shadow",
+      "name": "Shadow Squirtle"
+    },
+    "9436": {
+      "id": 8,
+      "form": "shadow",
+      "name": "Shadow Wartortle",
+      "origins": [
+        7
+      ]
+    },
+    "9437": {
+      "id": 9,
+      "form": "shadow",
+      "name": "Shadow Blastoise",
+      "origins": [
+        7
+      ]
+    },
+    "9438": {
+      "id": 4,
+      "form": "shadow",
+      "name": "Shadow Charmander"
+    },
+    "9439": {
+      "id": 5,
+      "form": "shadow",
+      "name": "Shadow Charmeleon",
+      "origins": [
+        4
+      ]
+    },
+    "9440": {
+      "id": 6,
+      "form": "shadow",
+      "name": "Shadow Charizard",
+      "origins": [
+        4
+      ]
     },
     "9399": {
       "id": 248,

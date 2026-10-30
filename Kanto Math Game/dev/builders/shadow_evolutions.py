@@ -62,7 +62,7 @@ def main():
     for t, fid in shadow_of.items():
         if fid >= FIRST_NEW_ID:
             fm[str(fid)]["origins"] = sorted(origins[t])
-            for folder in ("assets/sprites/pokemon", "assets/sprites/pokemon/shiny"):
+            for folder in ("assets/sprites/pokemon", "assets/sprites/pokemon/shiny", "assets/sprites/pokemon/back"):
                 src, dst = f"{folder}/{t}.png", f"{folder}/{fid}.png"
                 if os.path.exists(src) and not os.path.exists(dst):
                     shade(src, dst)

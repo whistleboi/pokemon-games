@@ -67,6 +67,70 @@ class AnimationController:
 # Where each side's Pokemon stands (the battle renderer's spots), as shares of the screen.
 SPOTS = {"player": (0.27, 0.69), "opponent": (0.73, 0.39)}
 
+# Battle sprites (Jordan, 10-30, from a fan game's battle): bigger, standing on their spots. The foe's
+# feet are on its platform; your Pokemon's back stands on the text box's top edge (cut a little by it,
+# like the games), instead of sinking half behind it.
+BATTLE_SCALE = 1.6
+FOE_FEET = (0.73, 0.46)
+PLAYER_FEET_X = 0.27
+PLAYER_FEET_UNDER_BOX = 10  # px of your Pokemon hidden behind the text box
+# Big Pokemon (Snorlax, Gyarados) stop growing at these shares of the screen's height (the visible
+# part), so they stay on screen and off the foe's box.
+MAX_HEIGHT = {"opponent": 0.40, "player": 0.50}
+
+
+def battle_sprite(pokemon, side):
+    """The Pokemon's battle sprite for a side (your side: its back), BATTLE_SCALE bigger; cached."""
+    if pokemon is None:
+        return None
+    if side == "player":
+        base = getattr(pokemon, "back_image", None)
+        if base is None and getattr(pokemon, "image", None) is not None:
+            base = pygame.transform.flip(pokemon.image, True, False)  # no back sprite: its front, turned
+    else:
+        base = getattr(pokemon, "image", None)
+    if base is None:
+        return None
+    key = (id(base), side)
+    cache = getattr(pokemon, "_battle_sprite_cache", None)
+    if cache and cache[0] == key:
+        return cache[1]
+    w, h = base.get_size()
+    screen = pygame.display.get_surface()
+    room = (screen.get_height() if screen else 720) * MAX_HEIGHT[side]
+    k = min(BATTLE_SCALE, room / max(1, base.get_bounding_rect().height))
+    img = pygame.transform.scale(base, (max(1, int(w * k)), max(1, int(h * k))))
+    try:
+        pokemon._battle_sprite_cache = (key, img)
+    except AttributeError:
+        pass
+    return img
+
+
+def feet_spot(game, side):
+    """Where a side's Pokemon's feet are, in pixels."""
+    if side == "player":
+        from src.utils import Utils
+        return game.width * PLAYER_FEET_X, Utils.get_full_dialogue_rect(game).top + PLAYER_FEET_UNDER_BOX
+    return game.width * FOE_FEET[0], game.height * FOE_FEET[1]
+
+
+def sprite_rect(game, img, side):
+    """The rect a battle sprite is drawn in: its visible feet (not the image's empty bottom rows)
+    on the side's spot."""
+    fx, fy = feet_spot(game, side)
+    pad = img.get_height() - img.get_bounding_rect().bottom
+    return img.get_rect(midbottom=(int(fx), int(fy + pad)))
+
+
+def battle_spot(game, pokemon, side):
+    """Centre of a side's Pokemon as the battle draws it (for balls, flashes and effects)."""
+    img = battle_sprite(pokemon, side)
+    if img is None:
+        x, y = SPOTS[side]
+        return game.width * x, game.height * y
+    return sprite_rect(game, img, side).center
+
 
 def white_silhouette(sprite, amount):
     """The sprite washed toward white (amount 0..1), for a ball's flash."""
@@ -146,8 +210,8 @@ class PokemonSummonAnimation:
         self.pokemon = pokemon
         self.side = side
         self.use_back_sprite = use_back_sprite
-        sx, sy = SPOTS["player" if side == "player" else "opponent"]
-        self.spot = (game.width * sx, game.height * sy)
+        self.side_key = "player" if side == "player" else "opponent"
+        self.spot = battle_spot(game, pokemon, self.side_key)
         self.start = ((game.width * 0.06, game.height * 0.95) if side == "player"
                       else (game.width * 0.95, game.height * 0.12))
         self.phase = 0
@@ -162,12 +226,7 @@ class PokemonSummonAnimation:
         self.alpha = 255
 
     def _sprite(self):
-        p = self.pokemon
-        if not p:
-            return None
-        if self.side == "player" and self.use_back_sprite and getattr(p, "back_image", None):
-            return p.back_image
-        return p.image
+        return battle_sprite(self.pokemon, self.side_key)
 
     def update(self):
         self.timer += 1
@@ -201,6 +260,6 @@ class PokemonSummonAnimation:
             w, h = sprite.get_size()
             img = pygame.transform.smoothscale(white_silhouette(sprite, 1 - k), (max(1, int(w * scale)), max(1, int(h * scale))))
             # grow from the feet, so it stands where the battle draws it
-            surface.blit(img, img.get_rect(midbottom=(int(self.spot[0]), int(self.spot[1] + h / 2))))
+            surface.blit(img, img.get_rect(midbottom=sprite_rect(self.game, sprite, self.side_key).midbottom))
         else:
-            surface.blit(sprite, sprite.get_rect(center=(int(self.spot[0]), int(self.spot[1]))))
+            surface.blit(sprite, sprite_rect(self.game, sprite, self.side_key))

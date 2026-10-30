@@ -28,6 +28,20 @@
 - **Routes use the town menu:** routes now have the same four buttons as towns: EXPLORE, PKDEX, POKéMON and TRAVEL.
   - EXPLORE opens a pop-up with the route's catching, battles, trainers, fishing and story events.
   - TRAVEL opens a pop-up with the ways out.
+- **Shadow Kanto starters in Orre** (Jordan's sprites; not in the games): at the Shadow Pokémon Lab, three Cipher Peons carry Ein's Kanto experiments, a Shadow Bulbasaur, Charmander and Squirtle, to snag. They evolve as Shadows up to Venusaur, Charizard and Blastoise. Purifying any of them counts for its line toward Ho-Oh.
+- **Shadow back sprites:** the 35 Shadow evolutions now have their own purple back sprites. Jordan's fan-made Shadow Pidgeot keeps its art.
+- **Sprites keep their shape:** a sprite that isn't square, like Shadow Pidgeot's fan-made back view, is no longer stretched to a square.
+- **Long names fit on the HP boxes:** names like "SHADOW BULBASAUR" now shrink to fit instead of running into the level.
+- **Trainer battles open like the games** (based on a fan game's battle):
+  - **No more black VS screen:** you and the trainer slide in from opposite sides over the battle scene. The trainer slides onto their platform, and you appear from behind, large and partly hidden by the text box.
+  - **Party bars:** a line of Poké Balls slides in beside each side, with an empty ring for each open slot and a grey ball for each fainted Pokémon.
+  - **The text:** "You are challenged by BUG CATCHER CALE!", then the trainer's own words.
+  - **One side at a time:** "BUG CATCHER CALE sent out CATERPIE!" The trainer runs off, the ball flies, the Pokémon appears and its box slides in. Then "Go! CHARMANDER!", and the same for you. The send-out lines move on by themselves, with no tap needed.
+- **Bigger battle Pokémon that stand on their spots:** battle Pokémon are drawn 1.6× bigger.
+  - The foe stands on its platform.
+  - Your Pokémon stands on the text box's top edge instead of sinking behind it.
+  - Very big Pokémon (Snorlax, Gyarados) are capped so they stay on screen and clear of the foe's box.
+  - Fainting, switching, catching and Transform animations use the same size and spots.
 - **Leaving a route early:** TRAVEL now lists every way out.
   - **Exploring isn't done yet:** picking an exit has a 40% chance of an ambush on the way out. It's a trainer from the route or a wild Pokémon, half and half, and always a wild Pokémon once the trainers are beaten. Get through the ambush with a Pokémon still standing and you carry on out that way. Otherwise you're told how many more catches or battles the route needs.
   - **Blocked by the story:** the exit is greyed out, and picking it says what's needed: an HM, a badge, an item, a place to visit, becoming Champion, or what the Journal says to do next.

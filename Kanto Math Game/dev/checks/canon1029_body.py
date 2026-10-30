@@ -198,4 +198,43 @@ check(not left and story.ambush_exit is None, f"lost it: not sent on to Striaton
 
 story.player_team[0].current_hp = story.player_team[0].get_max_hp()
 
+print("8) the trainer battle intro, as in a fan game (Jordan, 10-30)")
+import pygame as _pg
+from src.states.battle import TrainerBattleState
+from src.vfx import animations as _an
+from src.utils import Utils as _U
+PlayState.show_dialogue = PlayState.__dict__.get("_orig_show", PlayState.show_dialogue)
+story.current_area_key = "KANTO_ROUTE_24"
+story.player_team = [mk(4), mk(25)]
+for p in story.player_team:
+    p.current_hp = p.get_max_hp()
+ps = PlayState(g)
+g.change_state(ps)
+ps.trigger_trainer_battle(specific_index=0)
+seen, texts = [], []
+for i in range(600):
+    st = g.current_state
+    ph = (type(st).__name__, getattr(st, "phase", ""))
+    if not seen or seen[-1] != ph:
+        seen.append(ph)
+    box = getattr(st, "dialogue_box", None)
+    if box is not None and box.visible and box.text_lines and box.text_lines[0] not in texts:
+        texts.append(box.text_lines[0])
+    st.draw()
+    if isinstance(st, TrainerBattleState) and st.phase == "MENU":
+        break
+    if box is not None and box.visible and getattr(box, "is_waiting_for_click", False) and ph[1] == "CHALLENGE":
+        box.advance()
+    st.update()
+order = [p for n, p in seen if n == "TrainerIntroState"]
+check(order == ["SLIDE_IN", "CHALLENGE", "FOE_OUT", "PLAYER_OUT"], f"intro steps {order}")
+check(seen[-1] == ("TrainerBattleState", "MENU"), f"then the battle menu {seen[-1]}")
+check(any(t.startswith("You are challenged by") for t in texts) and any(" sent out " in t for t in texts)
+      and any(t.startswith("Go! ") for t in texts), f"lines {texts}")
+img = _an.battle_sprite(story.player_team[0], "player")
+r = _an.sprite_rect(g, img, "player")
+feet = r.bottom - (img.get_height() - img.get_bounding_rect().bottom)
+check(feet == _U.get_full_dialogue_rect(g).top + _an.PLAYER_FEET_UNDER_BOX, f"your Pokemon stands on the text box ({feet})")
+big = _an.battle_sprite(mk(143), "opponent")
+check(big.get_bounding_rect().height <= 720 * _an.MAX_HEIGHT["opponent"] + 1, "Snorlax stays on screen")
 print(f"\n{'ALL PASS' if not fails else str(fails) + ' FAIL(S)'}")

@@ -26,7 +26,7 @@ bad = [(k, o.get("target_area")) for k in ORRE for o in prog[k].get("travel_opti
 check(not bad, f"every link leads somewhere {bad}")
 check(sorted(k for k in ORRE if prog[k].get("wild_pool_percentages")) == ["CAVE_POKE_SPOT", "OASIS_POKE_SPOT", "ORRE_POKE_SPOTS"],
       "wild Pokemon only at the three Poke Spots (XD)")
-check(sum(len(prog[k].get("shadow_pool") or []) for k in ORRE) == 131, "all 131 Shadow Pokemon")
+check(sum(len(prog[k].get("shadow_pool") or []) for k in ORRE) == 134, "all 131 Shadow Pokemon, plus Ein's Kanto starters (Jordan, 10-30)")
 no_traps(ORRE)
 check("Air Transit to Orre" not in travel("LILYCOVE_CITY"), "no plane from Hoenn: Orre is reached like any region")
 story.enter_region("ORRE")

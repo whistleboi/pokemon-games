@@ -16,7 +16,8 @@ from src.pokemon import balance
 from src.pokemon import evolution
 from src.pokemon import moves as movelib, affection
 from src.world import levels
-from src.vfx.animations import AnimationController, FaintAnimation, PokemonSummonAnimation
+from src.vfx.animations import (AnimationController, FaintAnimation, PokemonSummonAnimation, battle_sprite,
+                                battle_spot, sprite_rect)
 from src.config import WHITE, BLACK, GREEN, RED, GOLD, FPS
 
 
@@ -943,8 +944,8 @@ class TrainerBattleState(MoveEffects, GameState):
 
         self.phase = "RETRACT_ANIM"
 
-        sprite = self.old_pkmn.back_image if self.old_pkmn.back_image else self.old_pkmn.image
-        rect = sprite.get_rect(center=(self.game.width * 0.27, self.game.height * 0.69))
+        sprite = battle_sprite(self.old_pkmn, "player")
+        rect = sprite_rect(self.game, sprite, "player")
         self.faint_anim.start(sprite, rect.topleft)
         self.fainting_side = "player_switch"
 
@@ -1551,21 +1552,15 @@ class TrainerBattleState(MoveEffects, GameState):
         self.phase = "FAINT_ANIM_RUNNING"
         self.dialogue_box.callback = None
         if self.fainting_side == "opponent":
-            target_pos = (self.game.width * 0.73, self.game.height * 0.39)
-            pos = self.opponent_pokemon.image.get_rect(center=target_pos)
-            self.faint_anim.start(self.opponent_pokemon.image, pos.topleft)
+            img = battle_sprite(self.opponent_pokemon, "opponent")
+            self.faint_anim.start(img, sprite_rect(self.game, img, "opponent").topleft)
         elif self.fainting_side == "player":
             # Always run the animation (its end moves the battle on): 60 Gen 6-9 species have no
             # back sprite, and skipping it froze the battle for good (Nemona's first battle).
-            mon = self.player_pokemon
-            p_img = getattr(mon, "back_image", None)
-            if p_img is None and getattr(mon, "image", None) is not None:
-                p_img = pygame.transform.flip(mon.image, True, False)
+            p_img = battle_sprite(self.player_pokemon, "player")  # (its front, turned, without a back sprite)
             if p_img is None:
                 p_img = pygame.Surface((1, 1), pygame.SRCALPHA)
-            target_p_pos = (self.game.width * 0.27, self.game.height * 0.69)
-            player_pos = p_img.get_rect(center=target_p_pos)
-            self.faint_anim.start(p_img, player_pos.topleft)
+            self.faint_anim.start(p_img, sprite_rect(self.game, p_img, "player").topleft)
 
     # Prize money as in the games: the opponent's highest level x a rate for its class. (A flat
     # 25,000 per Elite Four win let a lost League run be farmed for 200k+.)
@@ -2072,13 +2067,13 @@ class TrainerBattleState(MoveEffects, GameState):
         progress = 1.0 - (self.transform_anim_timer / self.transform_anim_duration)
 
         if self.transforming_side == 'player':
-            source_sprite = self.player_pokemon.back_image if self.player_pokemon.back_image else self.player_pokemon.image
-            target_sprite = self.opponent_pokemon.image
-            pos_rect = source_sprite.get_rect(center=(self.game.width * 0.27, self.game.height * 0.69))
+            source_sprite = battle_sprite(self.player_pokemon, "player")
+            target_sprite = battle_sprite(self.opponent_pokemon, "opponent")
+            pos_rect = sprite_rect(self.game, source_sprite, "player")
         else:
-            source_sprite = self.opponent_pokemon.image
-            target_sprite = self.player_pokemon.back_image if self.player_pokemon.back_image else self.player_pokemon.image
-            pos_rect = source_sprite.get_rect(center=(self.game.width * 0.73, self.game.height * 0.39))
+            source_sprite = battle_sprite(self.opponent_pokemon, "opponent")
+            target_sprite = battle_sprite(self.player_pokemon, "player")
+            pos_rect = sprite_rect(self.game, source_sprite, "opponent")
 
         if progress < 0.5:
             sprite_to_pixelate = source_sprite
@@ -2379,8 +2374,8 @@ class WildBattleState(TrainerBattleState):
         # The throw (games-style): an arc from your side up over the foe, which is drawn into the
         # ball; the ball drops to the ground, bounces, and tilts once per shake.
         self.ball_img = pygame.transform.smoothscale(self.ball_img, (56, 56))
-        self.foe_spot = (self.game.width * 0.73, self.game.height * 0.39)
-        img = self.opponent_pokemon.image
+        img = battle_sprite(self.opponent_pokemon, "opponent")
+        self.foe_spot = battle_spot(self.game, self.opponent_pokemon, "opponent")
         if img is not None:  # the sprite's visible part (sprites have empty margins)
             ink = img.get_bounding_rect()
             top = self.foe_spot[1] - img.get_height() / 2 + ink.top
@@ -2622,7 +2617,7 @@ class WildBattleState(TrainerBattleState):
         foe = self.opponent_pokemon
         if self.catch_phase == "ABSORB" and foe.image is not None:
             k = min(1.0, self.catch_t / 14)
-            img = white_silhouette(foe.image, min(1.0, k * 2))
+            img = white_silhouette(battle_sprite(foe, "opponent"), min(1.0, k * 2))
             w, h = img.get_size()
             sc = max(0.05, 1 - k)
             img = pygame.transform.smoothscale(img, (max(1, int(w * sc)), max(1, int(h * sc))))
@@ -2652,234 +2647,269 @@ class WildBattleState(TrainerBattleState):
 
 # [REF-0026: Battle Intro State]
 class TrainerIntroState(GameState):
+    """A trainer battle's opening, as in the games (Jordan, 10-30, from a fan game's battle):
+    1. SLIDE_IN: over the battle scene, the foe slides in from the left onto its platform and you
+       (seen from behind) from the right;
+    2. CHALLENGE: each side's party bar slides in; "You are challenged by X!" (and the trainer's
+       own words);
+    3. FOE_OUT: "X sent out Y!": the trainer runs off to the right, the ball flies, Y appears and
+       its box slides in from the left;
+    4. PLAYER_OUT: "Go! Z!": you step off to the left, the ball flies, Z appears and your box slides
+       in from the right; then the battle's menu. Steps 3 and 4 need no tap."""
+
+    SLIDE_IN = 34      # frames (25 fps)
+    BAR_IN = 12
+    EXIT = 12
+    BOX_IN = 10
+    HOLD = 12          # a beat on each send-out line before moving on
+
     def __init__(self, game, trainer_sprite, dialogue_text, next_state):
         super().__init__(game)
         self.next_state = next_state
         self.input_delay = 20
         self.trainer_sprite = trainer_sprite
-        self.vs_alpha = 255
-        self.sprites_in_place = False
-        self.phase = "VS"
+        self.phase = "SLIDE_IN"
+        self.t = 0
         self.player_summon = None
         self.enemy_summon = None
-        self.slide_offset = 0
-        self.pokemon_slide_t = 0.0
         self.battle_bg = None
-        main_rect = Utils.get_full_dialogue_rect(game)
+        self.foe_gone = self.me_gone = 0.0      # 0..1: how far each trainer has left
+        self.foe_box_in = self.my_box_in = None  # frames since each box started sliding in
+        self.hold = 0
+        w, h = game.width, game.height
+        self.box_rect = Utils.get_full_dialogue_rect(game)
+        lines = dialogue_text if isinstance(dialogue_text, list) else [dialogue_text]
+        lines = [ln for ln in lines if ln and str(ln).strip(" .") != ""]
         self.dialogue_box = ClassicDialogueBox(
-            main_rect, dialogue_text, self.game.assets.fonts["med"],
-            callback=self.on_dialogue_finish
-        )
+            self.box_rect, [f"You are challenged by {self._foe_name()}!"] + lines,
+            self.game.assets.fonts["med"], callback=self.on_dialogue_finish)
         self.dialogue_box.visible = False
 
-        self.player_sprite = None
-        char_key = getattr(self.game, "player_character", "red")
-        img = self.game.assets.get_player_image(char_key, back=False)
-        if img:
-            h = int(self.game.height * 0.6)
-            w = int(img.get_width() * (h / img.get_height()))
-            self.player_sprite = pygame.transform.scale(img, (w, h))
+        # The foe on its platform; you from behind, cut off by the text box (as in the games).
+        self.foe_sprite = self._fit(trainer_sprite, h * 0.40)
+        char_key = getattr(game, "player_character", "red")
+        back = game.assets.get_player_image(char_key, back=True)
+        front = game.assets.get_player_image(char_key, back=False)
+        self.player_sprite = self._fit(back or front, h * 0.55)
+        self.rival_sprite = self.trainer_sprite  # (older code reads it)
 
-        self.rival_sprite = self.trainer_sprite
+        team = [p for p in game.story_manager.player_team if p]
+        self.player_party = [p.current_hp > 0 for p in team][:6]
+        foes = [p for p in getattr(next_state, "opponent_team", []) or [] if p]
+        self.foe_party = [p.current_hp > 0 for p in foes][:6]
+        self.player_team_count = len(self.player_party)
+        self.opponent_team_count = len(self.foe_party)
+        self.ball_icon = pygame.transform.smoothscale(game.assets.ball_imgs[0], (30, 30))
 
-        self.player_team_count = len(game.story_manager.player_team)
-        self.opponent_team_count = len(getattr(next_state, 'opponent_team', []))
-        self.ball_icon = pygame.transform.scale(game.assets.ball_imgs[0], (20, 20))
+    # ------------------------------------------------------------------ helpers
+    @staticmethod
+    def _fit(img, height):
+        """Scale a trainer sprite so its visible part is `height` px tall (sprites have margins)."""
+        if img is None:
+            return None
+        ink = img.get_bounding_rect()
+        k = height / max(1, ink.height)
+        return pygame.transform.scale(img, (max(1, int(img.get_width() * k)), max(1, int(img.get_height() * k))))
+
+    def _foe_name(self):
+        ns = self.next_state
+        name = getattr(ns, "trainer_name", None)
+        if not name:
+            name = getattr(ns, "trainer_class", "TRAINER")
+            if name == "RIVAL":
+                name = getattr(self.game, "rival_name", None) or getattr(self.game, "rival_character", "BLUE")
+        return str(name).upper()
+
+    @staticmethod
+    def _ease(t):
+        t = max(0.0, min(1.0, t))
+        return 1 - (1 - t) ** 3
+
+    def _foe_pos(self):
+        """Feet of the foe trainer: sliding in from the left, running off to the right."""
+        from src.vfx.animations import feet_spot
+        fx, fy = feet_spot(self.game, "opponent")
+        fx += self.game.width * 0.03
+        if self.phase == "SLIDE_IN":
+            fx = -self.game.width * 0.25 + (fx + self.game.width * 0.25) * self._ease(self.t / self.SLIDE_IN)
+        return fx + self.game.width * 0.45 * self.foe_gone, fy
+
+    def _me_pos(self):
+        """Bottom of your trainer: sliding in from the right, stepping off to the left."""
+        x = self.game.width * 0.30
+        if self.phase == "SLIDE_IN":
+            x = self.game.width * 1.25 - (self.game.width * 1.25 - x) * self._ease(self.t / self.SLIDE_IN)
+        return x - self.game.width * 0.55 * self.me_gone, self.box_rect.top + int(self.game.height * 0.16)
+
+    def _line_shown(self):
+        """The send-out line is fully typed (or a tap has finished it)."""
+        box = self.dialogue_box
+        return box.is_waiting_for_click or box.is_finished
 
     def on_dialogue_finish(self):
-        if not self.next_state.player_pokemon or not self.next_state.opponent_pokemon:
-            self.game.change_state(self.next_state)
+        ns = self.next_state
+        if not ns.player_pokemon or not ns.opponent_pokemon:
+            self.game.change_state(ns)
             return
-        self.phase = "SUMMON"
-        self.dialogue_box.visible = False
+        self._start_foe_out()
 
+    def _start_foe_out(self):
+        self.phase = "FOE_OUT"
+        self.t = 0
+        mon = self.next_state.opponent_pokemon
+        self.dialogue_box.reset([f"{self._foe_name()} sent out {mon.display_name.upper()}!"])
+        self.dialogue_box.callback = None
+        self.dialogue_box.visible = True
+
+    def _start_player_out(self):
+        self.phase = "PLAYER_OUT"
+        self.t = 0
+        self.hold = 0
+        mon = self.next_state.player_pokemon
+        self.dialogue_box.reset([f"Go! {mon.display_name.upper()}!"])
+        self.dialogue_box.callback = None
+        self.dialogue_box.visible = True
+
+    # ------------------------------------------------------------------ GameState
     def start(self):
         self.game.ui_manager.add_element(self.dialogue_box)
-        if self.next_state and hasattr(self.next_state, 'background') and self.next_state.background:
+        if self.next_state and getattr(self.next_state, "background", None):
             self.battle_bg = self.next_state.background
         else:
             battle_type = getattr(self.next_state, "battle_type", "field")
             area_name = getattr(self.next_state, "area_name", "")
             bg_raw = self.game.assets.get_random_battle_background(battle_type, area_name)
-            if bg_raw:
-                box_top = Utils.get_full_dialogue_rect(self.game).top
-                self.battle_bg = pygame.transform.scale(bg_raw, (self.game.width, box_top))
-            else:
-                self.battle_bg = None
+            self.battle_bg = (pygame.transform.scale(bg_raw, (self.game.width, self.box_rect.top))
+                              if bg_raw else None)
 
     def handle_events(self, events):
         if self.input_delay > 0:
             return
         for event in events:
-            if self.dialogue_box.visible and event.type == pygame.MOUSEBUTTONDOWN:
+            if self.phase == "CHALLENGE" and self.dialogue_box.visible and event.type == pygame.MOUSEBUTTONDOWN:
                 self.dialogue_box.handle_event(event)
 
     def update(self):
         if self.input_delay > 0:
             self.input_delay -= 1
-
+        self.t += 1
         if self.dialogue_box.visible:
             self.dialogue_box.update()
 
-        if self.phase == "VS":
-            self.vs_alpha = max(0, self.vs_alpha - 6)
-            if self.vs_alpha <= 0:
-                self.phase = "DIALOGUE"
+        if self.phase == "SLIDE_IN":
+            if self.t >= self.SLIDE_IN:
+                self.phase, self.t = "CHALLENGE", 0
                 self.dialogue_box.visible = True
 
-        elif self.phase == "DIALOGUE":
-            pass
-
-        elif self.phase == "SUMMON":
-            if not self.player_summon:
-                player_pkmn = self.next_state.player_pokemon
-                enemy_pkmn = self.next_state.opponent_pokemon
-                self.player_summon = PokemonSummonAnimation(self.game, player_pkmn, "player", use_back_sprite=False)
-                self.enemy_summon = PokemonSummonAnimation(self.game, enemy_pkmn, "opponent")
-
-                player_text = f"Go, {player_pkmn.display_name.upper()}!"
-
-                r_name = getattr(self.next_state, "trainer_name", None)
-                if not r_name:
-                    r_name = getattr(self.next_state, "trainer_class", "TRAINER")
-                    if r_name == "RIVAL":
-                        r_name = getattr(
-                            self.game,
-                            "rival_name",
-                            getattr(self.game, "rival_character", "BLUE")
-                        )
-
-                rival_name = str(r_name).upper()
-                rival_text = f"{rival_name} sent out {enemy_pkmn.display_name.upper()}!"
-                self.dialogue_box.reset([player_text, rival_text])
-                self.dialogue_box.visible = True
-                self.dialogue_box.callback = None
-
-            if self.player_summon:
-                self.player_summon.update()
+        elif self.phase == "FOE_OUT":
+            self.foe_gone = min(1.0, self.t / self.EXIT)
+            if self.foe_gone >= 1.0 and not self.enemy_summon:
+                self.enemy_summon = PokemonSummonAnimation(self.game, self.next_state.opponent_pokemon, "opponent")
             if self.enemy_summon:
                 self.enemy_summon.update()
-            if self.dialogue_box.visible:
-                self.dialogue_box.update()
+                if self.enemy_summon.finished and self.foe_box_in is None:
+                    self.foe_box_in = 0
+            if self.foe_box_in is not None:
+                self.foe_box_in += 1
+                if self.foe_box_in >= self.BOX_IN and self._line_shown():
+                    self.hold += 1
+                    if self.hold >= self.HOLD:
+                        self._start_player_out()
 
-            if self.player_summon and self.enemy_summon and self.player_summon.finished and self.enemy_summon.finished and self.dialogue_box.is_finished:
-                self.phase = "SLIDE_OUT"
-                self.dialogue_box.reset("")
-                self.dialogue_box.visible = False
+        elif self.phase == "PLAYER_OUT":
+            self.me_gone = min(1.0, self.t / self.EXIT)
+            if self.me_gone >= 0.6 and not self.player_summon:
+                self.player_summon = PokemonSummonAnimation(self.game, self.next_state.player_pokemon, "player",
+                                                            use_back_sprite=True)
+            if self.player_summon:
+                self.player_summon.update()
+                if self.player_summon.finished and self.my_box_in is None:
+                    self.my_box_in = 0
+            if self.my_box_in is not None:
+                self.my_box_in += 1
+                if self.my_box_in >= self.BOX_IN and self._line_shown():
+                    self.hold += 1
+                    if self.hold >= self.HOLD:
+                        self.dialogue_box.visible = False
+                        self.game.change_state(self.next_state)
 
-        elif self.phase == "SLIDE_OUT":
-            self.slide_offset += 25
-            max_slide = (self.game.width // 2 + 100)
-            self.pokemon_slide_t = min(1.0, self.slide_offset / max_slide)
-            if self.slide_offset >= max_slide:
-                self.game.change_state(self.next_state)
+    # ------------------------------------------------------------------ drawing
+    def _party_bar(self, screen, party, side, k):
+        """A side's party: balls along a line with an arrow (empty slots as rings), sliding in."""
+        if k <= 0:
+            return
+        w, h = self.game.width, self.game.height
+        gap, n = 44, 6
+        y = int(h * (0.24 if side == "foe" else 0.60))
+        line_w = int(w * 0.40)
+        if side == "foe":  # under the foe's box, top left; slides in from the left
+            x0 = int(-line_w + (line_w + w * 0.04) * k)
+            line = pygame.Rect(x0, y + 22, line_w, 5)
+            balls_x = [x0 + 40 + i * gap for i in range(n)]
+            arrow = [(line.right, line.centery), (line.right - 18, line.y - 7), (line.right - 18, line.bottom + 7)]
+        else:  # above your box, bottom right; slides in from the right
+            x0 = int(w - (line_w + w * 0.04) * k)
+            line = pygame.Rect(x0, y + 22, line_w, 5)
+            balls_x = [line.right - 40 - (n - 1 - i) * gap for i in range(n)]
+            arrow = [(line.x, line.centery), (line.x + 18, line.y - 7), (line.x + 18, line.bottom + 7)]
+        pygame.draw.rect(screen, (60, 70, 60), line)
+        pygame.draw.polygon(screen, (60, 70, 60), arrow)
+        order = party + [None] * (n - len(party))
+        if side == "foe":
+            order = list(reversed(order))
+        for x, ok in zip(balls_x, order):
+            c = (x + 15, y + 2)
+            if ok is None:
+                pygame.draw.circle(screen, (70, 70, 80), c, 12, 2)
+            elif ok:
+                screen.blit(self.ball_icon, self.ball_icon.get_rect(center=c))
+            else:  # fainted: a greyed ball
+                grey = self.ball_icon.copy()
+                grey.fill((90, 90, 90, 0), special_flags=pygame.BLEND_RGBA_SUB)
+                screen.blit(grey, grey.get_rect(center=c))
 
     def draw(self):
         screen = self.game.screen
-
-        if self.phase == 'VS':
-            screen.fill(BLACK)
+        w = self.game.width
+        if self.battle_bg:
+            screen.blit(self.battle_bg, (0, 0))
         else:
-            if self.battle_bg:
-                screen.blit(self.battle_bg, (0, 0))
-            else:
-                screen.fill((20, 40, 80))
+            screen.fill((20, 40, 80))
+        ns = self.next_state
 
-            dialogue_rect = Utils.get_full_dialogue_rect(self.game)
-            Utils.draw_textbox(screen, dialogue_rect.x, dialogue_rect.y, dialogue_rect.width, dialogue_rect.height)
+        # The foe: trainer, then its Pokemon once out.
+        if self.foe_sprite and self.foe_gone < 1.0:
+            fx, fy = self._foe_pos()
+            pad = self.foe_sprite.get_height() - self.foe_sprite.get_bounding_rect().bottom
+            screen.blit(self.foe_sprite, self.foe_sprite.get_rect(midbottom=(int(fx), int(fy + pad))))
+        if self.enemy_summon:
+            self.enemy_summon.draw(screen)
 
-        player_pos = (self.game.width * 0.25 - self.slide_offset, self.game.height * 0.75)
-        rival_pos = (self.game.width * 0.75 + self.slide_offset, self.game.height * 0.75)
+        # You: from behind, then your Pokemon.
+        if self.player_sprite and self.me_gone < 1.0:
+            mx, my = self._me_pos()
+            screen.blit(self.player_sprite, self.player_sprite.get_rect(midbottom=(int(mx), int(my))))
+        if self.player_summon:
+            self.player_summon.draw(screen)
 
-        if self.player_sprite:
-            screen.blit(self.player_sprite, self.player_sprite.get_rect(midbottom=player_pos))
-            if self.phase in ['VS', 'DIALOGUE']:
-                start_x = player_pos[0] - 60
-                y_pos = player_pos[1] - self.player_sprite.get_height() - 40
-                for i in range(6):
-                    bx = start_x + (i * 22)
-                    if i < self.player_team_count:
-                        screen.blit(self.ball_icon, (bx, y_pos))
-                    else:
-                        pygame.draw.circle(screen, (100, 100, 100), (bx + 10, y_pos + 10), 8)
+        # The party bars: in during the challenge, out as each side sends its Pokemon.
+        if self.phase in ("CHALLENGE", "FOE_OUT", "PLAYER_OUT"):
+            k_in = self._ease(self.t / self.BAR_IN) if self.phase == "CHALLENGE" else 1.0
+            if self.phase == "CHALLENGE" or self.foe_gone < 1.0:
+                self._party_bar(screen, self.foe_party, "foe", k_in * (1 - self.foe_gone))
+            if self.phase != "PLAYER_OUT" or self.me_gone < 1.0:
+                self._party_bar(screen, self.player_party, "me", k_in * (1 - self.me_gone))
 
-                Utils.draw_text_outline(
-                    screen,
-                    self.game.player_name.upper(),
-                    self.game.assets.fonts["s_med"],
-                    WHITE,
-                    player_pos[0],
-                    player_pos[1] - self.player_sprite.get_height() - 10)
+        # The boxes slide in as each Pokemon appears.
+        r = getattr(ns, "renderer", None)
+        if r is not None and self.foe_box_in is not None:
+            k = self._ease(self.foe_box_in / self.BOX_IN)
+            r.draw_foe_box(screen, ns.opponent_pokemon, ns.opponent_hp, ns.opp_max_hp, dx=-(1 - k) * w * 0.5)
+        if r is not None and self.my_box_in is not None:
+            k = self._ease(self.my_box_in / self.BOX_IN)
+            r.draw_my_box(screen, ns.player_pokemon, ns.player_hp, ns.player_max_hp, dx=(1 - k) * w * 0.5)
 
-        if self.rival_sprite:
-            screen.blit(self.rival_sprite, self.rival_sprite.get_rect(midbottom=rival_pos))
-            if self.phase in ['VS', 'DIALOGUE']:
-                start_x = rival_pos[0] - 60
-                y_pos = rival_pos[1] - self.rival_sprite.get_height() - 40
-                for i in range(6):
-                    bx = start_x + (i * 22)
-                    if i < self.opponent_team_count:
-                        screen.blit(self.ball_icon, (bx, y_pos))
-                    else:
-                        pygame.draw.circle(screen, (100, 100, 100), (bx + 10, y_pos + 10), 8)
-
-                opponent_name = getattr(self.next_state, "trainer_name", None)
-                if not opponent_name:
-                    opponent_name = getattr(self.next_state, "trainer_class", "TRAINER")
-
-                Utils.draw_text_outline(
-                    screen,
-                    opponent_name.upper(),
-                    self.game.assets.fonts["s_med"],
-                    WHITE,
-                    rival_pos[0],
-                    rival_pos[1] - self.rival_sprite.get_height() - 10)
-
-        if self.phase == "VS" and self.vs_alpha > 0:
-            Utils.draw_text_outline(screen, "VS", self.game.assets.fonts["big"], GOLD,
-                                    self.game.width//2, self.game.height//2, BLACK, 5)
-
-        if self.phase == "SUMMON":
-            if self.player_summon:
-                self.player_summon.draw(screen)
-            if self.enemy_summon:
-                self.enemy_summon.draw(screen)
-
-        if self.phase == "SLIDE_OUT":
-
-            t = self.pokemon_slide_t
-            w, h = self.game.width, self.game.height
-
-            start_x, start_y = w * 0.35, h * 0.55 - 20
-            end_x, end_y = w * 0.27, h * 0.69
-
-            cur_x = start_x + (end_x - start_x) * t
-            cur_y = start_y + (end_y - start_y) * t
-
-            p_pkmn = self.next_state.player_pokemon
-            if p_pkmn:
-                if t < 0.5:
-                    sprite = p_pkmn.image
-                    scale_x = max(0.0, 1.0 - (t * 2.0))
-                else:
-                    sprite = p_pkmn.back_image if p_pkmn.back_image else p_pkmn.image
-                    scale_x = max(0.0, (t - 0.5) * 2.0)
-
-                if sprite:
-                    sw, sh = sprite.get_size()
-                    scaled_w = int(sw * scale_x)
-                    if scaled_w > 0:
-                        scaled = pygame.transform.scale(sprite, (scaled_w, sh))
-                        screen.blit(scaled, scaled.get_rect(center=(cur_x, cur_y)))
-
-            o_pkmn = self.next_state.opponent_pokemon
-            if o_pkmn and o_pkmn.image:
-                start_ox, start_oy = w * 0.65, h * 0.55 - 20
-                end_ox, end_oy = w * 0.73, h * 0.39
-                cur_ox = start_ox + (end_ox - start_ox) * t
-                cur_oy = start_oy + (end_oy - start_oy) * t
-                screen.blit(o_pkmn.image, o_pkmn.image.get_rect(center=(cur_ox, cur_oy)))
-
+        theme.draw_textbox(screen, self.box_rect)
         if self.dialogue_box.visible:
             self.dialogue_box.draw(screen)
 
