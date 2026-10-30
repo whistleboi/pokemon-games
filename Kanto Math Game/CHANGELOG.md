@@ -29,7 +29,7 @@
   - EXPLORE opens a pop-up with the route's catching, battles, trainers, fishing and story events.
   - TRAVEL opens a pop-up with the ways out.
 - **Leaving a route early:** TRAVEL now lists every way out.
-  - **Exploring isn't done yet:** picking an exit has a 40% chance of an ambush on the way out. It's a trainer from the route or a wild Pokémon, half and half, and always a wild Pokémon once the trainers are beaten. Otherwise you're told how many more catches or battles the route needs.
+  - **Exploring isn't done yet:** picking an exit has a 40% chance of an ambush on the way out. It's a trainer from the route or a wild Pokémon, half and half, and always a wild Pokémon once the trainers are beaten. Get through the ambush with a Pokémon still standing and you carry on out that way. Otherwise you're told how many more catches or battles the route needs.
   - **Blocked by the story:** the exit is greyed out, and picking it says what's needed: an HM, a badge, an item, a place to visit, becoming Champion, or what the Journal says to do next.
   - **Story battles on arrival don't count as exploring:** on Unova's Route 2, Bianca's battle used to count as one of the route's rounds, so the route was "done" and you could leave with no warning.
 - **Unova's wild Pokémon follow Black/White:** the pools had Black 2/White 2's post-game Pokémon mixed in, such as Liepard and Lickilicky on Route 2. They now use Black/White's walking encounters at their real rates. Pokémon Black/White has in other ways on the same route (shaking grass, surfing, fishing) stay, but rare. Areas found only in Black 2/White 2 use that game's encounters. A Pokémon Ranger on Route 18 gives you a Larvesta Egg, as in Black/White, so every Unova Pokémon can still be found in Unova.
