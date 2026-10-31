@@ -248,7 +248,7 @@ class MusicManager:
                     else "gym" if big else "trainer")
         elif isinstance(state, GymLobbyState):
             kind = "gym_lobby"
-        elif type(state).__name__ == "PokeCenterState":
+        elif type(state).__name__ in ("PokeCenterState", "CenterInsideState"):
             kind = "center"
         elif type(state).__name__ == "EvolutionState":
             kind = "evolution"

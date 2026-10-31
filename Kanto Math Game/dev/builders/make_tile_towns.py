@@ -4,8 +4,9 @@ Jordan's notes on it. Every layout is confirmed with Jordan before it's built.
 Ground is a letter grid (autotiles get proper edges, RPG Maker style); objects are stamps from the
 tileset, and a few are made here (BUILT).
 
-Each town is saved where the game looks first for a town's background (assets/journeys/towns/<key>.png),
-1280 x 540, with the full map in dev/builders/out/ for checking.
+Superseded (Jordan, 10-30): Kalos towns now use the X/Y maps with their labels taken out
+(dev/builders/clean_kalos_maps.py). Running this would overwrite those backgrounds in
+assets/journeys/towns/<key>.png (1280 x 540); its full maps go to dev/builders/out/.
 
     python dev/builders/make_tile_towns.py [town ...]      (default: every town here)
 """

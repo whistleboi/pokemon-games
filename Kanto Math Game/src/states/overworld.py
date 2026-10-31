@@ -3236,6 +3236,39 @@ class PlayState(GameState):
 
 
 # [REF-0036: City Hub State]
+COMBINED_CENTER_REGIONS = ("UNOVA", "KALOS", "ALOLA", "GALAR", "PALDEA")
+
+
+def combined_center(game):
+    """From Unova on, the Pokemon Center and the shop are one building (Jordan, 10-30)."""
+    return game.story_manager.get_current_region() in COMBINED_CENTER_REGIONS
+
+
+def center_entrance(options):
+    """A town's EXPLORE options with its Pokemon Center and plain shop as one way in (the CENTER
+    option carries the shop along). Shops with their own stock (Lumiose's Stone Emporium) stay out here."""
+    heal = next((o for o in options if o.get("action") == "HEAL"), None)
+    if heal is None:
+        return options
+    shops = [o for o in options if o.get("action") == "SHOP" and not o.get("stock")]
+    out = []
+    for o in options:
+        if o is heal:
+            out.append(dict(heal, action="CENTER", shops=shops))
+        elif o not in shops:
+            out.append(o)
+    return out
+
+
+def center_background(game, state, type_suffix="center"):
+    """A Pokemon Center's picture: the region's own Center for all its towns (Kalos), else the town's."""
+    shared = game.assets.get_region_building(game.story_manager.get_current_region())
+    if shared:
+        state.generic_bg = True  # Nurse Joy is in the picture
+        return pygame.transform.scale(shared, (game.width, Utils.get_full_dialogue_rect(game).top))
+    return PokeCenterState._load_building_bg_town(state, game, type_suffix)
+
+
 class CityState(GameState):
     def __init__(self, game):
         super().__init__(game)
@@ -3639,6 +3672,10 @@ class CityState(GameState):
         if opt_data.get("npc"):  # a way out that someone stops you at (Oak at Route 1, FRLG)
             return self._get_callback_for_option({"action": "NPC", "target": opt_data["npc"]})
         action = opt_data.get("action")
+        if action == "CENTER":  # from Unova on: into the Pokemon Center, its shop inside
+            return lambda o=opt_data: self.game.change_state(CenterInsideState(self.game, self, o.get("shops", [])))
+        if action == "LEAVE_CENTER":
+            return self.leave_center
         if action == "HEAL":
             return lambda: self.game.change_state(PokeCenterState
                                                   (self.game, self))
@@ -4030,6 +4067,8 @@ class CityState(GameState):
 
     def open_explore_menu(self):
         options = self.area_data.get("explore_options", [])
+        if combined_center(self.game):
+            options = center_entrance(options)
         self._create_hover_menu(options, self.action_menu.buttons[0].rect)
 
     def open_travel_menu(self):
@@ -5594,6 +5633,44 @@ def white_out(game):
 
 
 # [REF-0030: City & Building Logic]
+class CenterInsideState(CityState):
+    """Inside a Pokemon Center from Unova on, where the shop is part of the Center (Jordan, 10-30):
+    the town's menu, with EXPLORE to heal or shop and TRAVEL back out to the town."""
+
+    def __init__(self, game, town, shops=()):
+        self.town = town
+        super().__init__(game)
+        name = self.area_data.get("route_name") or self.area_key.replace("_", " ").title()
+        self.area_data = dict(self.area_data)
+        self.area_data["explore_options"] = [{"text": "Heal your Pokémon", "action": "HEAL"}] + \
+            [dict(o, text="Shop") for o in shops[:1]]
+        self.area_data["travel_options"] = [{"text": f"Back to {name}", "action": "LEAVE_CENTER"}]
+        self.area_data.pop("on_enter_event", None)
+        self.action_menu.prompt_lines = lambda: ["Welcome to", "the Pokémon Center!"]
+
+    def load_area_background(self):
+        return center_background(self.game, self)
+
+    def start(self):  # no arrival events in here: just the menu
+        self.clear_hover_menu()
+        self.game.ui_manager.add_element(self.action_menu)
+        pygame.event.clear()
+        for btn in self.hud_buttons:
+            if btn not in self.game.ui_manager.elements:
+                self.game.ui_manager.add_element(btn)
+
+    def open_explore_menu(self):
+        self._create_hover_menu(self.area_data["explore_options"], self.action_menu.buttons[0].rect)
+
+    def open_travel_menu(self):
+        if len(self.action_menu.buttons) > 3:
+            self._create_hover_menu(self.area_data["travel_options"], self.action_menu.buttons[3].rect)
+
+    def leave_center(self):
+        self.clear_hover_menu()
+        self.game.change_state(self.town)
+
+
 class PokeCenterState(GameState):
     def __init__(self, game, previous_state, lines=None):
         super().__init__(game)
@@ -5622,6 +5699,9 @@ class PokeCenterState(GameState):
             self.game.music.jingle("pokemon_healed")  # (a nurse line that doesn't say it)
 
     def _load_building_bg(self, game, type_suffix):
+        return center_background(game, self, type_suffix)
+
+    def _load_building_bg_town(self, game, type_suffix):
         area_data = game.story_manager.get_current_area_data()
         json_key = "pokecenter" if type_suffix == "center" else "pokemart"
         bg_config = area_data.get("backgrounds", {}).get(json_key)

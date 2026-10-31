@@ -803,6 +803,10 @@ class PokeMartState(GameState):
         self.refresh_buttons()
 
     def _load_building_bg(self, game, type_suffix):
+        box_top = Utils.get_full_dialogue_rect(game).top
+        shared = game.assets.get_region_building(game.story_manager.get_current_region())
+        if shared:  # Kalos: the shop is part of its one Pokemon Center
+            return pygame.transform.scale(shared, (game.width, box_top))
         area_data = game.story_manager.get_current_area_data()
         json_key = "pokecenter" if type_suffix == "center" else "pokemart"
         bg_config = area_data.get("backgrounds", {}).get(json_key)

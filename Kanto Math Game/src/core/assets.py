@@ -347,6 +347,14 @@ class AssetManager:
         except Exception:
             return None
 
+    # One Pokemon Center (with its shop) for every town of a region (Jordan, 10-30), before any town's own.
+    REGION_BUILDINGS = {"KALOS": "kalos_center.png"}
+
+    def get_region_building(self, region):
+        """The region's shared Pokemon Center picture (Nurse Joy and the shop are in it), or None."""
+        name = self.REGION_BUILDINGS.get(str(region or "").upper())
+        return self.get_background(name) if name else None
+
     # Stand-in art for places that don't have their own yet (backgrounds/generic).
     GENERIC_BACKGROUNDS = {
         "center": "pokemoncenter.png", "mart": "mart1.png",

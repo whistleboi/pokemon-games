@@ -311,4 +311,34 @@ story.player_team[0].ribbons = [_rid("COOL", "NORMAL"), _rid("COOL", "SUPER"), _
 _rc = _RC(g, _ps)
 check(len(_rc.icons) == 20, "the 20 contest ribbon icons")
 _rc.draw(); _pg.image.save(g.screen, _os.path.join(S, "ribbons.png"))
+print("11) from Unova on: the Pokemon Center with its shop inside; Kalos's one Center (Jordan, 10-30)")
+from src.states import overworld as _ow
+story.current_area_key = "SANTALUNE_CITY"
+_town = _ow.CityState(g); g.change_state(_town)
+_opts = _ow.center_entrance(_town.area_data["explore_options"]) if _ow.combined_center(g) else []
+_acts = [o.get("action") for o in _opts]
+check("CENTER" in _acts and "HEAL" not in _acts and "SHOP" not in _acts, f"Santalune: one way into the Center {_acts}")
+_town._get_callback_for_option(next(o for o in _opts if o["action"] == "CENTER"))()
+_in = g.current_state
+check(isinstance(_in, _ow.CenterInsideState), f"inside the Center {type(_in).__name__}")
+check([o["action"] for o in _in.area_data["explore_options"]] == ["HEAL", "SHOP"], "EXPLORE: heal and shop")
+check(_in.background is not None and getattr(_in, "generic_bg", False), "Kalos's one Center picture (Nurse Joy in it)")
+_in.draw(); _pg.image.save(g.screen, _os.path.join(S, "center_inside.png"))
+story.player_team[0].current_hp = 1
+_in._get_callback_for_option({"action": "HEAL"})()
+check(isinstance(g.current_state, _ow.PokeCenterState) and story.player_team[0].current_hp == story.player_team[0].get_max_hp(),
+      "HEAL heals")
+check(g.current_state.nurse_sprite is None, "no second Nurse Joy over the picture")
+g.current_state.finish_heal()
+check(g.current_state is _in, "back inside after healing")
+from src.states.systems import PokeMartState as _PM
+_in._get_callback_for_option(_in.area_data["explore_options"][1])()
+check(isinstance(g.current_state, _PM), "SHOP opens the shop")
+g.change_state(_in)
+_in._get_callback_for_option(_in.area_data["travel_options"][0])()
+check(g.current_state is _town, "TRAVEL takes you back out to the town")
+story.current_area_key = "VERMILLION_CITY"
+_k = _ow.CityState(g)
+check(not _ow.combined_center(g), "Kanto keeps its Center and Mart apart")
+story.current_area_key = "SANTALUNE_CITY"
 print(f"\n{'ALL PASS' if not fails else str(fails) + ' FAIL(S)'}")

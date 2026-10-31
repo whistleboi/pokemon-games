@@ -9,7 +9,9 @@
   - **Ash** is a trainer you can pick, and he throws his Poke Ball in trainer battles.
   - **The title screen** shows five scenes that fade from one to the next.
   - **The ribbon case** shows real ribbon icons.
-- **Kalos towns built from tiles:** Vaniville Town, Aquacorde Town and Santalune City now use pictures built from tiles, each laid out like its X/Y map.
+- **Kalos towns** use their X/Y maps with the guide's labels taken out, shown whole on the town screen.
+- **One Pokemon Center for Kalos:** every Kalos town shares one Center picture, with its shop inside.
+- **Pokemon Center and shop together, from Unova on:** a town's EXPLORE has one Pokemon Center option. Inside, EXPLORE heals or shops, and TRAVEL goes back out to the town. Kanto through Sinnoh are unchanged.
 - **Every region uses its own game's levels** (each region is a fresh start, so they no longer have to line up):
   - **Which game:**
 
