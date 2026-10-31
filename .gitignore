@@ -21,3 +21,6 @@ Kanto Math Game/dev/checks/out/
 
 # downloaded reference pages (dev/builders re-fetch them)
 Kanto Math Game/dev/builders/bulbapedia_cache/
+
+# builders' check pictures (rebuilt on every run)
+Kanto Math Game/dev/builders/out/
