@@ -85,7 +85,8 @@ class TrainerBattleState(MoveEffects, GameState):
         if background_image:
             bg_raw = self.game.assets.get_background(background_image, from_overworld=False)
             if not bg_raw and self.game.assets.generic_kind(background_image) == "battle_elite":
-                bg_raw = self.game.assets.get_generic_background("battle_elite")
+                bg_raw = (self.game.assets.get_league_background(background_image)
+                          or self.game.assets.get_generic_background("battle_elite"))
 
         if not bg_raw:
             bg_raw = self.game.assets.get_random_battle_background(battle_type, area_name)
@@ -2662,6 +2663,7 @@ class TrainerIntroState(GameState):
     EXIT = 12
     BOX_IN = 10
     HOLD = 12          # a beat on each send-out line before moving on
+    THROW_STEP = 4     # frames per picture of a throw (a back sprite strip, e.g. Ash's)
 
     def __init__(self, game, trainer_sprite, dialogue_text, next_state):
         super().__init__(game)
@@ -2688,9 +2690,13 @@ class TrainerIntroState(GameState):
         # The foe on its platform; you from behind, cut off by the text box (as in the games).
         self.foe_sprite = self._fit(trainer_sprite, h * 0.40)
         char_key = getattr(game, "player_character", "red")
-        back = game.assets.get_player_image(char_key, back=True)
+        back = game.assets.get_player_image(char_key, back=True, frames=True) or []
         front = game.assets.get_player_image(char_key, back=False)
-        self.player_sprite = self._fit(back or front, h * 0.55)
+        self.player_sprite = self._fit(back[0] if back else front, h * 0.55)
+        # a back sprite drawn as a throw (several frames): played as your Pokemon goes out
+        self.throw_frames = []
+        if len(back) > 1 and self.player_sprite:
+            self.throw_frames = [pygame.transform.scale(f, self.player_sprite.get_size()) for f in back]
         self.rival_sprite = self.trainer_sprite  # (older code reads it)
 
         team = [p for p in game.story_manager.player_team if p]
@@ -2817,8 +2823,11 @@ class TrainerIntroState(GameState):
                         self._start_player_out()
 
         elif self.phase == "PLAYER_OUT":
-            self.me_gone = min(1.0, self.t / self.EXIT)
-            if self.me_gone >= 0.6 and not self.player_summon:
+            throw = len(self.throw_frames) * self.THROW_STEP
+            if self.throw_frames and self.t <= throw:
+                self.player_sprite = self.throw_frames[min(len(self.throw_frames) - 1, self.t // self.THROW_STEP)]
+            self.me_gone = min(1.0, max(0, self.t - throw) / self.EXIT)
+            if (self.me_gone >= 0.6 or (self.throw_frames and self.t >= throw - self.THROW_STEP))                     and not self.player_summon:
                 self.player_summon = PokemonSummonAnimation(self.game, self.next_state.player_pokemon, "player",
                                                             use_back_sprite=True)
             if self.player_summon:

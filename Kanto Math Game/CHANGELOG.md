@@ -2,6 +2,14 @@
 
 ## Unreleased: opponents follow your team, Hoenn's story as in Omega Ruby / Alpha Sapphire
 
+- **Graphics from Pokemon Journeys:**
+  - **Town Map and Fly** use each region's own map, with every town on its square. Paldea, which has no map, keeps the world map.
+  - **Battle intros:** a short intro plays before each battle. Wild battles get a wipe or a spinning Poke Ball (bubbles on the water). Trainers get closing wedges or a wipe. Gym Leaders, the Elite Four, Champions, rivals and bosses get a VS screen, and Team Rocket gets its R.
+  - **Battle backgrounds:** 45 new scenes join the old ones. Evening and night versions follow your clock. Elite Four and Champion rooms without their own art get a league arena, and Distortion World has its own scene.
+  - **Ash** is a trainer you can pick, and he throws his Poke Ball in trainer battles.
+  - **The title screen** shows five scenes that fade from one to the next.
+  - **The ribbon case** shows real ribbon icons.
+- **Kalos towns built from tiles:** Vaniville Town, Aquacorde Town and Santalune City now use pictures built from tiles, each laid out like its X/Y map.
 - **Every region uses its own game's levels** (each region is a fresh start, so they no longer have to line up):
   - **Which game:**
 

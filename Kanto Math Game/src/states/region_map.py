@@ -1,7 +1,8 @@
 # [REF-0080: Region map and Fly]
-"""The Town Map and Fly on the region's map (Jordan): each region is its part of the world map
-(assets/world_map 2.png); towns sit where assets/map_points.json puts them
-(dev/builders/build_map_points.py).
+"""The Town Map and Fly on the region's map (Jordan): each region's own town map from Pokemon
+Journeys (assets/region_maps/, dev/builders/build_region_maps.py), with its towns on their squares;
+a region without one (Paldea) is its part of the world map (assets/world_map 2.png), towns where
+assets/map_points.json puts them (dev/builders/build_map_points.py).
 
 - TOWN MAP: where you are (a blinking marker), the towns you've visited, and the town your
   active Journal mission points to (a gold marker, see src/world/guide.py).
@@ -18,6 +19,7 @@ from src.utils import Utils
 from src.config import WHITE, BLACK, GOLD, RED, BLUE, GREEN
 
 _DATA = {}
+_IMAGES = {}  # the region maps, loaded once
 
 
 def map_data(game):
@@ -94,29 +96,50 @@ class RegionMapState(GameState):
     def view(self):
         return self.views[self.view_idx] if self.views else None
 
+    def _region_map(self):
+        """This region's own town map: (image, {area: [x, y]}), or None (it uses the world map)."""
+        entry = map_data(self.game).get("region_maps", {}).get(self.view) if self.view else None
+        if not entry:
+            return None
+        if entry["file"] not in _IMAGES:
+            try:
+                _IMAGES[entry["file"]] = pygame.image.load(
+                    os.path.join(self.game.assets.assets_dir, entry["file"])).convert()
+            except (pygame.error, FileNotFoundError):
+                _IMAGES[entry["file"]] = None
+        img = _IMAGES[entry["file"]]
+        return (img, entry["points"]) if img else None
+
     def _layout(self):
-        """Scale this region's part of the world map to fit under the title bar."""
+        """Scale this region's map (its own, or its part of the world map) to fit under the title bar."""
         self.map_img, self.map_rect, self.scale = None, pygame.Rect(0, 0, 0, 0), 1.0
-        box = map_data(self.game)["views"].get(self.view) if self.view else None
-        if not box or not self.world:
-            return
-        x0, y0, x1, y1 = box
         area_w = self.game.width - 2 * self.PAD
         area_h = self.game.height - self.TOP - self.BAR_H - 2 * self.PAD
+        own = self._region_map()
+        if own:
+            crop, x0, y0 = own[0], 0, 0
+            x1, y1 = crop.get_size()
+        else:
+            box = map_data(self.game)["views"].get(self.view) if self.view else None
+            if not box or not self.world:
+                return
+            x0, y0, x1, y1 = box
+            crop = self.world.subsurface((x0, y0, x1 - x0, y1 - y0))
         self.scale = min(area_w / (x1 - x0), area_h / (y1 - y0))
         w, h = int((x1 - x0) * self.scale), int((y1 - y0) * self.scale)
-        crop = self.world.subsurface((x0, y0, x1 - x0, y1 - y0))
         self.map_img = pygame.transform.scale(crop, (w, h))  # crisp pixel art, like the games
         self.map_rect = self.map_img.get_rect(center=(self.game.width // 2, self.TOP + area_h // 2))
         self.origin = (x0, y0)
 
     def towns(self):
         """(area key, screen position) of every town on this map."""
-        data = map_data(self.game)
+        own = self._region_map()
+        if own:
+            points = own[1].items()
+        else:
+            points = [(k, p) for k, p in map_data(self.game)["points"].items() if view_of(self.game, k) == self.view]
         out = []
-        for key, (x, y) in data["points"].items():
-            if view_of(self.game, key) != self.view:
-                continue
+        for key, (x, y) in points:
             sx = self.map_rect.x + (x - self.origin[0]) * self.scale
             sy = self.map_rect.y + (y - self.origin[1]) * self.scale
             out.append((key, (int(sx), int(sy))))

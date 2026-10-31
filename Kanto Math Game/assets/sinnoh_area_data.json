@@ -1156,7 +1156,7 @@
       "area_type": "dungeon",
       "route_name": "Distortion World",
       "region": "SINNOH",
-      "battle_type": "indoor",
+      "battle_type": "distortion",
       "wild_pool_percentages": null,
       "min_rounds": 0,
       "trainer_pool": [{"name": "Galactic Boss Cyrus", "class": "GALACTIC_BOSS", "sprite": "cyrus.png", "team": [229, 430, 169, 130, 461], "rewards": {"balls": 10}, "is_boss_battle": true, "victory_flag": "distortion_world_cleared", "levels": [45, 47, 46, 46, 48], "dialogue": {"intro": ["Cyrus: So you followed me here. This is the Distortion World, where time and space mean nothing.", "Giratina dragged me into its world. Very well. I will make it mine, and remake everything."], "player_won": ["Cyrus: ...Even here, I lose to you.", "Cyrus: Then I will stay. This world has no spirit to get in my way."], "player_lost": ["Cyrus: Spirit is weakness. You prove it."]}}],

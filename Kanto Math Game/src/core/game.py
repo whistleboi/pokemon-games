@@ -58,6 +58,8 @@ class Game:
         self.player_character = "red"
         self.rival_character = "blue"
         self.preloaded_starter_data = []
+        # battle intros (src/vfx/transitions.py); off headless, where checks step straight into battles
+        self.battle_transitions = os.environ.get("SDL_VIDEODRIVER") != "dummy"
 
         # === ROBUST JSON LOADING ===
         data_files = {
@@ -266,6 +268,9 @@ class Game:
     FADE_FRAMES = 6  # ~0.25 s crossfade between screens
 
     def change_state(self, new_state):
+        from src.vfx import transitions
+        if transitions.wants_transition(self, new_state):  # a battle intro first (src/vfx/transitions.py)
+            new_state = transitions.BattleTransitionState(self, new_state)
         if getattr(self, "screen", None) is not None and getattr(self, "current_state", None) is not None:
             self._fade_from = self.screen.copy()
             self._fade_left = self.FADE_FRAMES

@@ -636,7 +636,10 @@ def museum_lines(story):
 # ---------------------------------------------------------------------------
 class RibbonCaseState(GameState):
     """The ribbon display case (Jordan): your Pokemon at the left, and for the one picked a velvet
-    case with a rosette for each contest category and rank (earned ones in colour, the rest faint)."""
+    case with a ribbon for each contest category and rank (earned ones in colour, the rest faint):
+    Pokemon Journeys' ribbon icons (assets/sprites/ribbons.png, 64px, 8 a row, the contest ribbons
+    first in our category and rank order), or drawn rosettes without it."""
+    ICON = 64
 
     def __init__(self, game, previous_state):
         super().__init__(game)
@@ -655,6 +658,26 @@ class RibbonCaseState(GameState):
         self.list_rect = pygame.Rect(24, top, 360, game.height - 16 - top)
         self.case_rect = pygame.Rect(self.list_rect.right + 16, top, game.width - 24 - self.list_rect.right - 16,
                                      self.list_rect.h)
+        self.icons = self._load_icons()
+
+    def _load_icons(self):
+        """{(category, rank): (earned icon, faint icon)} from the ribbon sheet, or {}."""
+        import os
+        try:
+            sheet = pygame.image.load(os.path.join(self.game.assets.assets_dir, "sprites", "ribbons.png")).convert_alpha()
+        except (pygame.error, FileNotFoundError):
+            return {}
+        size = 88
+        out = {}
+        for i, cat in enumerate(CATEGORIES):
+            for j, rank in enumerate(RANKS):
+                n = i * len(RANKS) + j
+                icon = sheet.subsurface(((n % 8) * self.ICON, (n // 8) * self.ICON, self.ICON, self.ICON))
+                icon = pygame.transform.scale(icon, (size, size))
+                faint = pygame.transform.grayscale(icon)
+                faint.set_alpha(90)
+                out[(cat, rank)] = (icon, faint)
+        return out
 
     def go_back(self):
         self.game.change_state(self.previous_state)
@@ -746,6 +769,11 @@ class RibbonCaseState(GameState):
             Utils.draw_text_outline(screen, cat.title(), f["label"], CATEGORY_COLOR[cat], case.x + 30, y,
                                     align="left", outline_color=(30, 8, 16), thickness=3)
             for j, rank in enumerate(RANKS):
-                self._rosette(screen, (left + j * col_w + col_w // 2, y - 6), CATEGORY_COLOR[cat], j,
-                              ribbon_id(cat, rank) in won)
+                earned = ribbon_id(cat, rank) in won
+                pos = (left + j * col_w + col_w // 2, y - 6)
+                if (cat, rank) in self.icons:
+                    icon = self.icons[(cat, rank)][0 if earned else 1]
+                    screen.blit(icon, icon.get_rect(center=(pos[0], pos[1] + 10)))
+                else:
+                    self._rosette(screen, pos, CATEGORY_COLOR[cat], j, earned)
         self.game.ui_manager.draw(screen)

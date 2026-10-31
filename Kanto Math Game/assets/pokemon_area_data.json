@@ -83,7 +83,7 @@
     "SHINY_ODDS": { "BASE": 0.01, "CHARM": 0.02, "DEV": 0.25 },
     "PLAYABLE_CHARACTERS": [
       "red", "ethan", "lyra", "brendan", "may", "lucas", "dawn",
-      "hilbert", "hilda", "nate", "rosa", "blue", "silver"
+      "hilbert", "hilda", "nate", "rosa", "blue", "silver", "ash"
     ],
 
     "CHALLENGER_POOL": [

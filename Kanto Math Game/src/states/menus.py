@@ -17,13 +17,16 @@ from src.pokemon.data import Pokemon
 
 # [REF-0019: Main Menu System]
 class MainMenuState(GameState):
-    """The title screen (redesign): a Journeys town or route drifting behind, the logo, a
-    Pokemon showcase that changes every few seconds, and NEW GAME / LOAD GAME / QUIT."""
+    """The title screen (redesign): Pokemon Journeys' title scenes (assets/titles) drifting behind and
+    fading one into the next, the logo, a Pokemon showcase that changes every few seconds, and
+    NEW GAME / LOAD GAME / QUIT."""
 
     # Pokemon that take turns on the title screen (one from each generation's box art and more).
     SHOWCASE = (25, 6, 9, 3, 150, 249, 250, 382, 383, 384, 483, 484, 487, 643, 644, 716, 717, 791, 792,
                 888, 889, 890, 1007, 1008, 149, 445, 448, 658, 724, 887)
     SHOW_MS = 4500
+    SCENE_MS = 9000      # each title scene, then a fade into the next
+    FADE_MS = 1500
 
     def __init__(self, game):
         super().__init__(game)
@@ -47,14 +50,38 @@ class MainMenuState(GameState):
 
         self.logo_font = game.assets._load_font(96, bold=True)
         self.sub_font = game.assets._load_font(40, bold=True)
-        self.backdrop = self._pick_backdrop()
+        self.scenes = self._load_scenes()
+        self.backdrop = self.scenes[0] if self.scenes else self._pick_backdrop()
         self.started = pygame.time.get_ticks() - 1500  # the first Pokemon is already in place
         self.order = list(self.SHOWCASE)
         random.shuffle(self.order)
         self._sprites = {}
 
+    def _fit_backdrop(self, img):
+        """A little larger than the screen, so it can drift."""
+        w, h = self.game.width, self.game.height
+        k = max((w + 160) / img.get_width(), h / img.get_height())
+        return pygame.transform.smoothscale(img, (int(img.get_width() * k), int(img.get_height() * k)))
+
+    def _load_scenes(self):
+        """Pokemon Journeys' title scenes (assets/titles/credits*.png), starting from a random one."""
+        folder = os.path.join(self.game.assets.assets_dir or "", "titles")
+        if not os.path.isdir(folder):
+            return []
+        out = []
+        for n in sorted(os.listdir(folder)):
+            if n.lower().startswith("credits") and n.lower().endswith(".png"):
+                try:
+                    out.append(self._fit_backdrop(pygame.image.load(os.path.join(folder, n)).convert()))
+                except pygame.error:
+                    pass
+        if out:
+            i = random.randrange(len(out))
+            out = out[i:] + out[:i]
+        return out
+
     def _pick_backdrop(self):
-        """A random town or route drawn from Pokemon Journeys' maps, a little larger than the
+        """(Without the title scenes) a random town or route drawn from Pokemon Journeys' maps, a little larger than the
         screen so it can drift."""
         folder = os.path.join(self.game.assets.assets_dir or "", "journeys")
         files = []
@@ -68,9 +95,7 @@ class MainMenuState(GameState):
             img = pygame.image.load(random.choice(files)).convert()
         except pygame.error:
             return None
-        w, h = self.game.width, self.game.height
-        k = max((w + 160) / img.get_width(), h / img.get_height())
-        return pygame.transform.smoothscale(img, (int(img.get_width() * k), int(img.get_height() * k)))
+        return self._fit_backdrop(img)
 
     def _sprite(self, pid):
         if pid not in self._sprites:
@@ -111,10 +136,19 @@ class MainMenuState(GameState):
 
         # The world behind: drifting slowly side to side, darker toward the menu at the left.
         screen.fill((24, 40, 72))
-        if self.backdrop:
-            span = self.backdrop.get_width() - w
+        if self.scenes:  # a scene, fading into the next near the end of its turn
+            n = len(self.scenes)
+            i, into = (t // self.SCENE_MS) % n, t % self.SCENE_MS
+            layers = [(self.scenes[i], 255)]
+            if into > self.SCENE_MS - self.FADE_MS and n > 1:
+                layers.append((self.scenes[(i + 1) % n], int(255 * (into - self.SCENE_MS + self.FADE_MS) / self.FADE_MS)))
+        else:
+            layers = [(self.backdrop, 255)] if self.backdrop else []
+        for img, alpha in layers:
+            span = img.get_width() - w
             dx = int(span * (0.5 + 0.5 * math.sin(t / 9000)))
-            screen.blit(self.backdrop, (-dx, (h - self.backdrop.get_height()) // 2))
+            img.set_alpha(alpha)
+            screen.blit(img, (-dx, (h - img.get_height()) // 2))
         shade = getattr(self, "_shade", None)
         if shade is None:
             shade = self._shade = pygame.Surface((w, h), pygame.SRCALPHA)

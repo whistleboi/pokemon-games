@@ -198,43 +198,117 @@ check(not left and story.ambush_exit is None, f"lost it: not sent on to Striaton
 
 story.player_team[0].current_hp = story.player_team[0].get_max_hp()
 
-print("8) the trainer battle intro, as in a fan game (Jordan, 10-30)")
-import pygame as _pg
-from src.states.battle import TrainerBattleState
-from src.vfx import animations as _an
-from src.utils import Utils as _U
-PlayState.show_dialogue = PlayState.__dict__.get("_orig_show", PlayState.show_dialogue)
-story.current_area_key = "KANTO_ROUTE_24"
-story.player_team = [mk(4), mk(25)]
-for p in story.player_team:
-    p.current_hp = p.get_max_hp()
-ps = PlayState(g)
-g.change_state(ps)
-ps.trigger_trainer_battle(specific_index=0)
-seen, texts = [], []
-for i in range(600):
-    st = g.current_state
-    ph = (type(st).__name__, getattr(st, "phase", ""))
-    if not seen or seen[-1] != ph:
-        seen.append(ph)
-    box = getattr(st, "dialogue_box", None)
-    if box is not None and box.visible and box.text_lines and box.text_lines[0] not in texts:
-        texts.append(box.text_lines[0])
-    st.draw()
-    if isinstance(st, TrainerBattleState) and st.phase == "MENU":
-        break
-    if box is not None and box.visible and getattr(box, "is_waiting_for_click", False) and ph[1] == "CHALLENGE":
-        box.advance()
-    st.update()
-order = [p for n, p in seen if n == "TrainerIntroState"]
-check(order == ["SLIDE_IN", "CHALLENGE", "FOE_OUT", "PLAYER_OUT"], f"intro steps {order}")
-check(seen[-1] == ("TrainerBattleState", "MENU"), f"then the battle menu {seen[-1]}")
-check(any(t.startswith("You are challenged by") for t in texts) and any(" sent out " in t for t in texts)
-      and any(t.startswith("Go! ") for t in texts), f"lines {texts}")
-img = _an.battle_sprite(story.player_team[0], "player")
-r = _an.sprite_rect(g, img, "player")
-feet = r.bottom - (img.get_height() - img.get_bounding_rect().bottom)
-check(feet == _U.get_full_dialogue_rect(g).top + _an.PLAYER_FEET_UNDER_BOX, f"your Pokemon stands on the text box ({feet})")
-big = _an.battle_sprite(mk(143), "opponent")
-check(big.get_bounding_rect().height <= 720 * _an.MAX_HEIGHT["opponent"] + 1, "Snorlax stays on screen")
+print("8) the trainer battle intro, as in a fan game (Jordan, 10-30)")
+import pygame as _pg
+from src.states.battle import TrainerBattleState
+from src.vfx import animations as _an
+from src.utils import Utils as _U
+PlayState.show_dialogue = PlayState.__dict__.get("_orig_show", PlayState.show_dialogue)
+story.current_area_key = "KANTO_ROUTE_24"
+story.player_team = [mk(4), mk(25)]
+for p in story.player_team:
+    p.current_hp = p.get_max_hp()
+ps = PlayState(g)
+g.change_state(ps)
+ps.trigger_trainer_battle(specific_index=0)
+seen, texts = [], []
+for i in range(600):
+    st = g.current_state
+    ph = (type(st).__name__, getattr(st, "phase", ""))
+    if not seen or seen[-1] != ph:
+        seen.append(ph)
+    box = getattr(st, "dialogue_box", None)
+    if box is not None and box.visible and box.text_lines and box.text_lines[0] not in texts:
+        texts.append(box.text_lines[0])
+    st.draw()
+    if isinstance(st, TrainerBattleState) and st.phase == "MENU":
+        break
+    if box is not None and box.visible and getattr(box, "is_waiting_for_click", False) and ph[1] == "CHALLENGE":
+        box.advance()
+    st.update()
+order = [p for n, p in seen if n == "TrainerIntroState"]
+check(order == ["SLIDE_IN", "CHALLENGE", "FOE_OUT", "PLAYER_OUT"], f"intro steps {order}")
+check(seen[-1] == ("TrainerBattleState", "MENU"), f"then the battle menu {seen[-1]}")
+check(any(t.startswith("You are challenged by") for t in texts) and any(" sent out " in t for t in texts)
+      and any(t.startswith("Go! ") for t in texts), f"lines {texts}")
+img = _an.battle_sprite(story.player_team[0], "player")
+r = _an.sprite_rect(g, img, "player")
+feet = r.bottom - (img.get_height() - img.get_bounding_rect().bottom)
+check(feet == _U.get_full_dialogue_rect(g).top + _an.PLAYER_FEET_UNDER_BOX, f"your Pokemon stands on the text box ({feet})")
+big = _an.battle_sprite(mk(143), "opponent")
+check(big.get_bounding_rect().height <= 720 * _an.MAX_HEIGHT["opponent"] + 1, "Snorlax stays on screen")
+print("9) Journeys region maps for the Town Map and Fly (Jordan, 10-30)")
+import os as _os
+from src.states import region_map as _rmod
+_rm = _rmod.map_data(g).get("region_maps", {})
+check(set(_rm) == set(_rmod.map_data(g)["views"]) - {"PALDEA"}, f"a map for every region but Paldea {sorted(_rm)}")
+for _v, _e in _rm.items():
+    _img = _pg.image.load(_os.path.join(g.assets.assets_dir, _e["file"]))
+    _w, _h = _img.get_size()
+    _want = {k for k in _rmod.map_data(g)["points"] if _rmod.view_of(g, k) == _v}
+    check(_want <= set(_e["points"]), f"{_v}: every Fly town placed {sorted(_want - set(_e['points']))}")
+    check(all(0 <= x < _w and 0 <= y < _h for x, y in _e["points"].values()), f"{_v}: points on the map")
+story.current_area_key = "AQUACORDE_TOWN"
+story.story_flags["visited_AQUACORDE_TOWN"] = True
+story.story_flags["visited_LUMIOSE_CITY"] = True
+_st = _rmod.RegionMapState(g, ps, fly=True)
+g.change_state(_st)
+check(_st.view == "KALOS" and _st.map_img is not None and _st.map_img.get_width() > 480 * 1.5, f"Kalos on its own map {_st.view}")
+_tw = dict(_st.towns())
+check("AQUACORDE_TOWN" in _tw and _st.map_rect.collidepoint(_tw["AQUACORDE_TOWN"]), "Aquacorde is on the map")
+check(_st._hit(_tw["LUMIOSE_CITY"]) == "LUMIOSE_CITY", "tapping Lumiose finds it")
+_st.update(); _st.draw()
+_pg.image.save(g.screen, _os.path.join(S, "fly_kalos.png"))
+print("10) Journeys graphics: battle intros, battle backgrounds, Ash's throw, title scenes, ribbons (Jordan, 10-30)")
+import datetime as _dt
+from src.vfx import transitions as _tr
+from src.states.battle import TrainerIntroState as _TIS
+story.current_area_key = "KANTO_ROUTE_24"
+_ps = PlayState(g); g.change_state(_ps); g.current_state = _ps; _ps.draw()
+check(not g.battle_transitions, "no intros headless (checks step straight into battles)")
+g.battle_transitions = True
+_ps.trigger_trainer_battle(specific_index=0)
+check(isinstance(g.current_state, _tr.BattleTransitionState), f"a trainer battle opens with an intro {type(g.current_state).__name__}")
+for _i in range(80):
+    g.current_state.draw(); g.current_state.update()
+    if isinstance(g.current_state, _TIS):
+        break
+check(isinstance(g.current_state, _TIS), "then the trainer's intro")
+_intro = g.current_state
+for _style in ("rule", "hexa", "ball", "water", "wedges", "vs", "rocket"):
+    g.current_state = _ps
+    _t = _tr.BattleTransitionState(g, _intro, _style)
+    for _i in range(_t.length):
+        _t.draw(); _t.t += 1
+check(_tr.style_for(_intro) in ("wedges", "hexa", "rule"), "a plain trainer gets a plain wipe")
+_intro.next_state.trainer_class = "GYM_LEADER"
+check(_tr.style_for(_intro) == "vs", "a gym leader gets the VS screen")
+_intro.next_state.trainer_class = "ROCKET_GRUNT"
+check(_tr.style_for(_intro) == "rocket", "Team Rocket gets their R")
+g.battle_transitions = False
+g.player_character = "ash"
+_frames = g.assets.get_player_image("ash", back=True, frames=True)
+check(len(_frames) == 5 and g.assets.get_player_image("ash", back=True).get_size() == (128, 128), "Ash's back is a 5-picture throw")
+check(len(g.assets.get_player_image("red", back=True, frames=True)) == 1, "a plain back sprite is one picture")
+_it = _TIS(g, _intro.trainer_sprite, ["Hi"], _intro.next_state)
+check(len(_it.throw_frames) == 5, "the intro plays Ash's throw")
+g.player_character = "red"
+_a = g.assets
+_files = ["battle_field1.png", "journeys/battle_field_j.png", "journeys/battle_field_j_eve.png", "journeys/battle_field_j_night.png"]
+check(_a._for_time_of_day(_files, _dt.datetime(2026, 1, 1, 12)) == _files[:2], "day: the daytime backgrounds")
+check(_a._for_time_of_day(_files, _dt.datetime(2026, 1, 1, 18)) == [_files[2]], "evening: the evening one")
+check(_a._for_time_of_day(_files, _dt.datetime(2026, 1, 1, 23)) == [_files[3]], "night: the night one")
+check(_a._for_time_of_day(["battle_cave1.png", "journeys/battle_cave_j1.png"], _dt.datetime(2026, 1, 1, 23)) == ["battle_cave1.png", "journeys/battle_cave_j1.png"], "no night version: the daytime ones")
+check(sum(1 for n in _a.battle_bg_map if "_j" in n) >= 40, "the Journeys battle backgrounds are found")
+check(_a.get_league_background("battle_elite_lorelei.png") is not None, "an Elite Four room without art gets a league arena")
+from src.states.menus import MainMenuState as _MM
+_mm = _MM(g)
+check(len(_mm.scenes) == 5, f"title scenes {len(_mm.scenes)}")
+_mm.draw(); _pg.image.save(g.screen, _os.path.join(S, "title.png"))
+from src.states.contest import RibbonCaseState as _RC
+from src.pokemon.contest import ribbon_id as _rid
+story.player_team[0].ribbons = [_rid("COOL", "NORMAL"), _rid("COOL", "SUPER"), _rid("CUTE", "NORMAL")]
+_rc = _RC(g, _ps)
+check(len(_rc.icons) == 20, "the 20 contest ribbon icons")
+_rc.draw(); _pg.image.save(g.screen, _os.path.join(S, "ribbons.png"))
 print(f"\n{'ALL PASS' if not fails else str(fails) + ' FAIL(S)'}")

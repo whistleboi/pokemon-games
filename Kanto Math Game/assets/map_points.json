@@ -787,5 +787,687 @@
    733.5,
    1143.5
   ]
+ },
+ "region_maps": {
+  "KANTO": {
+   "file": "region_maps/kanto.png",
+   "points": {
+    "PALLET_TOWN": [
+     102,
+     238
+    ],
+    "VIRIDIAN_CITY": [
+     102,
+     174
+    ],
+    "PEWTER_CITY": [
+     110,
+     57
+    ],
+    "CERULEAN_CITY": [
+     322,
+     50
+    ],
+    "VERMILLION_CITY": [
+     322,
+     192
+    ],
+    "LAVENDER_TOWN": [
+     378,
+     128
+    ],
+    "CELADON_CITY": [
+     259,
+     128
+    ],
+    "SAFFRON_CITY": [
+     322,
+     126
+    ],
+    "FUCHSIA_CITY": [
+     284,
+     258
+    ],
+    "CINNABAR_ISLAND": [
+     102,
+     296
+    ],
+    "INDIGO_PLATEAU": [
+     29,
+     42
+    ],
+    "ROCK_TUNNEL_CITY": [
+     377,
+     67
+    ],
+    "MT_MOON_CITY": [
+     194,
+     66
+    ],
+    "BILLS_HOUSE": [
+     460,
+     12
+    ],
+    "UNDERGROUND_PATH": [
+     312,
+     165
+    ],
+    "POKEMON_LEAGUE_GATE": [
+     30,
+     165
+    ],
+    "SILPH_CITY": [
+     330,
+     120
+    ]
+   }
+  },
+  "JOHTO": {
+   "file": "region_maps/johto.png",
+   "points": {
+    "NEW_BARK_TOWN": [
+     391,
+     220
+    ],
+    "CHERRYGROVE_CITY": [
+     316,
+     220
+    ],
+    "VIOLET_CITY": [
+     284,
+     128
+    ],
+    "AZALEA_TOWN": [
+     233,
+     248
+    ],
+    "GOLDENROD_CITY": [
+     192,
+     196
+    ],
+    "ECRUTEAK_CITY": [
+     224,
+     80
+    ],
+    "OLIVINE_CITY": [
+     130,
+     112
+    ],
+    "CIANWOOD_CITY": [
+     90,
+     188
+    ],
+    "MAHOGANY_TOWN": [
+     310,
+     88
+    ],
+    "BLACKTHORN_CITY": [
+     384,
+     80
+    ],
+    "RUINS_OF_ALPH": [
+     248,
+     152
+    ],
+    "ECRUTEAK_DANCE_THEATER": [
+     263,
+     75
+    ],
+    "OLIVINE_LIGHTHOUSE": [
+     182,
+     121
+    ],
+    "MR_POKEMONS_HOUSE": [
+     323,
+     131
+    ],
+    "MT_SILVER_CITY": [
+     470,
+     35
+    ],
+    "SILVER_LEAGUE_PLATEAU": [
+     470,
+     48
+    ]
+   }
+  },
+  "HOENN": {
+   "file": "region_maps/hoenn.png",
+   "points": {
+    "LITTLEROOT_TOWN": [
+     107,
+     228
+    ],
+    "OLDALE_TOWN": [
+     107,
+     195
+    ],
+    "PETALBURG_CITY": [
+     72,
+     194
+    ],
+    "RUSTBORO_CITY": [
+     50,
+     125
+    ],
+    "DEWFORD_TOWN": [
+     79,
+     272
+    ],
+    "SLATEPORT_CITY": [
+     166,
+     222
+    ],
+    "MAUVILLE_CITY": [
+     163,
+     140
+    ],
+    "VERDANTURF_TOWN": [
+     107,
+     139
+    ],
+    "FALLARBOR_TOWN": [
+     92,
+     54
+    ],
+    "LAVARIDGE_TOWN": [
+     130,
+     103
+    ],
+    "FORTREE_CITY": [
+     214,
+     54
+    ],
+    "LILYCOVE_CITY": [
+     315,
+     110
+    ],
+    "MOSSDEEP_CITY": [
+     401,
+     129
+    ],
+    "SOOTOPOLIS_CITY": [
+     355,
+     164
+    ],
+    "PACIFIDLOG_TOWN": [
+     294,
+     214
+    ],
+    "EVER_GRANDE_CITY": [
+     439,
+     181
+    ]
+   }
+  },
+  "SINNOH": {
+   "file": "region_maps/sinnoh.png",
+   "points": {
+    "TWINLEAF_TOWN": [
+     103,
+     257
+    ],
+    "SANDGEM_TOWN": [
+     122,
+     244
+    ],
+    "JUBILIFE_CITY": [
+     115,
+     215
+    ],
+    "JUBILIFE_VILLAGE": [
+     115,
+     215
+    ],
+    "CANALAVE_CITY": [
+     77,
+     203
+    ],
+    "FLOAROMA_TOWN": [
+     122,
+     175
+    ],
+    "OREBURGH_CITY": [
+     158,
+     213
+    ],
+    "ETERNA_CITY": [
+     171,
+     138
+    ],
+    "HEARTHOME_CITY": [
+     223,
+     190
+    ],
+    "SOLACEON_TOWN": [
+     256,
+     173
+    ],
+    "CELESTIC_TOWN": [
+     220,
+     134
+    ],
+    "VEILSTONE_CITY": [
+     290,
+     153
+    ],
+    "PASTORIA_CITY": [
+     258,
+     235
+    ],
+    "SUNYSHORE_CITY": [
+     357,
+     213
+    ],
+    "SINNOH_POKEMON_LEAGUE": [
+     351,
+     145
+    ],
+    "SNOWPOINT_CITY": [
+     184,
+     48
+    ],
+    "FIGHT_AREA": [
+     278,
+     104
+    ],
+    "SURVIVAL_AREA": [
+     285,
+     68
+    ],
+    "RESORT_AREA": [
+     337,
+     116
+    ],
+    "SINJOH_CABIN": [
+     221,
+     150
+    ]
+   }
+  },
+  "UNOVA": {
+   "file": "region_maps/unova.png",
+   "points": {
+    "NUVEMA_TOWN": [
+     410,
+     285
+    ],
+    "ACCUMULA_TOWN": [
+     410,
+     257
+    ],
+    "STRIATON_CITY": [
+     403,
+     224
+    ],
+    "NACRENE_CITY": [
+     361,
+     221
+    ],
+    "CASTELIA_CITY": [
+     252,
+     238
+    ],
+    "NIMBASA_CITY": [
+     334,
+     172
+    ],
+    "DRIFTVEIL_CITY": [
+     159,
+     164
+    ],
+    "MISTRALTON_CITY": [
+     95,
+     132
+    ],
+    "ICIRRUS_CITY": [
+     157,
+     87
+    ],
+    "OPELUCID_CITY": [
+     236,
+     73
+    ],
+    "UNOVA_POKEMON_LEAGUE": [
+     306,
+     26
+    ],
+    "LACUNOSA_TOWN": [
+     408,
+     59
+    ],
+    "UNDELLA_TOWN": [
+     401,
+     122
+    ],
+    "BLACK_CITY": [
+     344,
+     122
+    ],
+    "HUMILAU_CITY": [
+     448,
+     122
+    ],
+    "ASPERTIA_CITY": [
+     57,
+     235
+    ],
+    "FLOCCESY_TOWN": [
+     76,
+     202
+    ],
+    "VIRBANK_CITY": [
+     148,
+     203
+    ],
+    "LENTIMAS_TOWN": [
+     61,
+     49
+    ]
+   }
+  },
+  "KALOS": {
+   "file": "region_maps/kalos.png",
+   "points": {
+    "LUMIOSE_CITY": [
+     245,
+     139
+    ],
+    "SANTALUNE_CITY": [
+     292,
+     211
+    ],
+    "AQUACORDE_TOWN": [
+     293,
+     254
+    ],
+    "VANIVILLE_TOWN": [
+     293,
+     295
+    ],
+    "CAMPHRIER_TOWN": [
+     208,
+     232
+    ],
+    "AMBRETTE_TOWN": [
+     98,
+     232
+    ],
+    "CYLLAGE_CITY": [
+     23,
+     191
+    ],
+    "GEOSENGE_TOWN": [
+     49,
+     129
+    ],
+    "SHALOUR_CITY": [
+     152,
+     66
+    ],
+    "COUMARINE_CITY": [
+     255,
+     25
+    ],
+    "LAVERRE_CITY": [
+     349,
+     67
+    ],
+    "DENDEMILLE_TOWN": [
+     449,
+     129
+    ],
+    "ANISTAR_CITY": [
+     461,
+     165
+    ],
+    "COURIWAY_TOWN": [
+     404,
+     212
+    ],
+    "SNOWBELLE_CITY": [
+     342,
+     295
+    ],
+    "KALOS_POKEMON_LEAGUE": [
+     359,
+     160
+    ],
+    "KILOUDE_CITY": [
+     98,
+     288
+    ]
+   }
+  },
+  "ALOLA": {
+   "file": "region_maps/alola.png",
+   "points": {
+    "IKI_TOWN": [
+     170,
+     55
+    ],
+    "HAUOLI_CITY": [
+     163,
+     80
+    ],
+    "HEAHEA_CITY": [
+     253,
+     128
+    ],
+    "PANIOLA_TOWN": [
+     262,
+     94
+    ],
+    "HANO_GRAND_RESORT": [
+     295,
+     109
+    ],
+    "KONIKONI_CITY": [
+     262,
+     153
+    ],
+    "BIG_WAVE_BEACH": [
+     275,
+     141
+    ],
+    "MALIE_CITY": [
+     316,
+     186
+    ],
+    "HOKULANI_OBSERVATORY": [
+     348,
+     207
+    ],
+    "TAPU_VILLAGE": [
+     343,
+     272
+    ],
+    "ALOLA_POKEMON_LEAGUE": [
+     363,
+     245
+    ],
+    "SEAFOLK_VILLAGE": [
+     63,
+     163
+    ]
+   }
+  },
+  "GALAR": {
+   "file": "region_maps/galar.png",
+   "points": {
+    "WYNDON": [
+     203,
+     40
+    ],
+    "CIRCHESTER": [
+     233,
+     71
+    ],
+    "SPIKEMUTH": [
+     250,
+     105
+    ],
+    "BALLONLEA": [
+     178,
+     66
+    ],
+    "STOW_ON_SIDE": [
+     178,
+     88
+    ],
+    "HAMMERLOCKE": [
+     204,
+     97
+    ],
+    "TURFFIELD": [
+     179,
+     126
+    ],
+    "HULBURY": [
+     246,
+     126
+    ],
+    "MOTOSTOKE": [
+     208,
+     145
+    ],
+    "MEETUP_SPOT": [
+     210,
+     168
+    ],
+    "WEDGEHURST": [
+     229,
+     194
+    ],
+    "POSTWICK": [
+     213,
+     218
+    ]
+   }
+  },
+  "SEVII": {
+   "file": "region_maps/sevii.png",
+   "points": {
+    "ONE_ISLAND": [
+     108,
+     58
+    ],
+    "TWO_ISLAND": [
+     215,
+     45
+    ],
+    "THREE_ISLAND": [
+     318,
+     61
+    ],
+    "FOUR_ISLAND": [
+     151,
+     135
+    ],
+    "FIVE_ISLAND": [
+     343,
+     154
+    ],
+    "SIX_ISLAND": [
+     307,
+     236
+    ],
+    "SEVEN_ISLAND": [
+     129,
+     244
+    ]
+   }
+  },
+  "ORANGE": {
+   "file": "region_maps/orange.png",
+   "points": {
+    "VALENCIA_ISLAND": [
+     217,
+     64
+    ],
+    "MIKAN_ISLAND": [
+     225,
+     88
+    ],
+    "PINKAN_ISLAND": [
+     145,
+     80
+    ],
+    "SUNBURST_ISLAND": [
+     350,
+     88
+    ],
+    "NAVEL_ISLAND": [
+     123,
+     142
+    ],
+    "SHAMOUTI_ISLAND": [
+     339,
+     170
+    ],
+    "TROVITA_ISLAND": [
+     92,
+     179
+    ],
+    "KUMQUAT_ISLAND": [
+     124,
+     252
+    ],
+    "PUMMELO_ISLAND": [
+     185,
+     277
+    ]
+   }
+  },
+  "ORRE": {
+   "file": "region_maps/orre.png",
+   "points": {
+    "PHENAC_CITY": [
+     201,
+     245
+    ],
+    "PYRITE_TOWN": [
+     326,
+     231
+    ],
+    "GATEON_PORT": [
+     112,
+     214
+    ],
+    "AGATE_VILLAGE": [
+     96,
+     131
+    ],
+    "REALGAM_TOWER": [
+     374,
+     99
+    ]
+   }
+  },
+  "DECOLORE": {
+   "file": "region_maps/decolore.png",
+   "points": {
+    "HONEY_ISLAND": [
+     41,
+     38
+    ],
+    "SCALCHOP_ISLAND": [
+     223,
+     73
+    ],
+    "GRAND_SPECTRALA_ISLAND": [
+     109,
+     177
+    ],
+    "TOROM_ISLAND": [
+     309,
+     261
+    ],
+    "PALADIN_ISLAND": [
+     392,
+     219
+    ]
+   }
+  }
  }
 }

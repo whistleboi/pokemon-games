@@ -304,6 +304,7 @@ class AssetManager:
         for fname_lower, fname_actual in self.battle_bg_map.items():
             if fname_lower.startswith(prefix):
                 candidates.append(fname_actual)
+        candidates = self._for_time_of_day(candidates)
 
         if candidates:
             chosen_bg = random.choice(candidates)
@@ -314,6 +315,37 @@ class AssetManager:
                 return None
 
         return self.get_generic_background(f"battle_{battle_type_lower}")
+
+    @staticmethod
+    def time_of_day(now=None):
+        """"night" (8pm-6am), "eve" (5pm-8pm) or "" (day), from the clock."""
+        import datetime
+        hour = (now or datetime.datetime.now()).hour
+        return "night" if hour < 6 or hour >= 20 else "eve" if hour >= 17 else ""
+
+    def _for_time_of_day(self, files, now=None):
+        """Battle backgrounds for this time of day: the evening or night ones (named ..._eve.png /
+        ..._night.png, from Pokemon Journeys) when it's then and there are some, else the daytime ones."""
+        def tag(f):
+            stem = os.path.splitext(os.path.basename(f))[0].lower()
+            return next((t for t in ("eve", "night") if stem.endswith("_" + t)), "")
+        now_tag = self.time_of_day(now)
+        timed = [f for f in files if now_tag and tag(f) == now_tag]
+        return timed or [f for f in files if not tag(f)]
+
+    def get_league_background(self, name):
+        """A Pokemon Journeys league arena for an Elite Four or Champion room without its own art:
+        the same one every time for the same room."""
+        import zlib
+        kind = "champion" if "champion" in str(name).lower() else "elite"
+        files = sorted(f for n, f in self.battle_bg_map.items() if n.startswith(f"battle_{kind}_j"))
+        if not files:
+            return None
+        rel = files[zlib.crc32(str(name).lower().encode()) % len(files)]
+        try:
+            return pygame.image.load(os.path.join(self.battle_backgrounds_dir, rel)).convert()
+        except Exception:
+            return None
 
     # Stand-in art for places that don't have their own yet (backgrounds/generic).
     GENERIC_BACKGROUNDS = {
@@ -374,14 +406,20 @@ class AssetManager:
                 pass
         return None
 
-    def get_player_image(self, name, back=False):
+    def get_player_image(self, name, back=False, frames=False):
+        """A player sprite. A back sprite may be a strip of square frames side by side (a throw, as
+        in Essentials, e.g. ash_back.png): its first frame, or every frame with frames=True."""
         suffix = "_back.png" if back else ".png"
         fname = f"{name.lower()}{suffix}"
         real_name = self.player_trainer_map.get(fname)
-        if real_name:
-            path = os.path.join(self.player_trainers_dir, real_name)
-            return pygame.image.load(path).convert_alpha()
-        return None
+        if not real_name:
+            return None
+        img = pygame.image.load(os.path.join(self.player_trainers_dir, real_name)).convert_alpha()
+        w, h = img.get_size()
+        strip = [img]
+        if back and w >= 2 * h and w % h == 0:
+            strip = [img.subsurface((i * h, 0, h, h)).copy() for i in range(w // h)]
+        return strip if frames else strip[0]
 
     def get_cry(self, p_id):
         cry_fname = f"{p_id}.ogg"
