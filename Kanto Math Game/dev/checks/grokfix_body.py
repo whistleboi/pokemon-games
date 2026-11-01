@@ -96,9 +96,9 @@ try:
 finally:
     random.random = _orig
 b = g.current_state
-lv = levels.legendary_encounter_level(g, story.current_area_key)  # Jordan: cap + 3 before the last badge, then 70
+lv = ow.PlayState.ROAMER_MAX_LEVEL  # canon levels (10-29): Raikou and Entei roam at Lv 40, as in HGSS
 check(fired and isinstance(b, WildBattleState) and b.opponent_pokemon.level == lv,
-      f"roamer Lv {b.opponent_pokemon.level} = legendary rule {lv} (was 50)")
+      f"roamer Lv {b.opponent_pokemon.level} = HGSS's {lv}")
 pid = b.opponent_pokemon.id
 b.trigger_outro(True)
 check(b.phase == "CATCH_PROMPT", "beating it offers a catch")
@@ -112,10 +112,10 @@ for _ in range(200):
 check(any(v.get("id") == pid for v in g.data.data["pokedex"].values()), "and YES catches it")
 
 print("3.2 / 3.4 / 3.5) levels")
-story.player_team = [mk(7)]; story.player_team[0].level = 15  # canon levels: within the team's reach
-check(levels.area_level(g, "UNION_CAVE") == 13 and levels.area_level(g, "SLOWPOKE_WELL") == 15, "Union Cave 13, Slowpoke Well 15")
-story.player_team[0].level = 10  # an area above the team is held to it (Jordan, 10-26)
-check(levels.area_level(g, "SLOWPOKE_WELL") == 10, "Slowpoke Well held to a Lv 10 team")
+story.player_team = [mk(7)]; story.player_team[0].level = 15  # canon levels (10-29): HGSS's, whatever the team
+check(levels.area_level(g, "UNION_CAVE") == 6 and levels.area_level(g, "SLOWPOKE_WELL") == 7, "Union Cave 6, Slowpoke Well 7")
+story.player_team[0].level = 5  # no longer held to (or raised with) the team
+check(levels.area_level(g, "SLOWPOKE_WELL") == 7, "Slowpoke Well stays Lv 7 for a Lv 5 team")
 story.player_team[0].level = 55
 check(levels.area_level(g, "KANTO_ROUTE_26") == 52, "Route 26 trains you for the League (Lv 52, patch 12)")
 story.player_team[0].level = 5
@@ -230,6 +230,12 @@ if type(nxt).__name__ == "RivalSelectionState":  # the new region's rival is pic
     nxt = g.current_state
 check(g.rival_name.upper() == story.region_rivals["SINNOH"]["name"].upper(), f"Sinnoh rival named: {g.rival_name}")
 import time
+if not hasattr(nxt, "starters"):
+    # Sinnoh's partner comes at Lake Verity (BDSP), not on arrival: open Rowan's starter screen there
+    from src.states.menus import StarterSelectionState
+    story.player_team = []
+    nxt = StarterSelectionState(g, starter_ids=story.get_region_start("SINNOH")["starters"], region="SINNOH")
+    g.change_state(nxt)
 for _ in range(100):  # the starter screen loads its Pokemon (and text) in the background
     if nxt.starters:
         break
@@ -264,7 +270,7 @@ story.current_area_key = "NEW_BARK_TOWN"
 story.starting_region = "KANTO"
 story.visited_region_set = {"KANTO", "JOHTO", "HOENN"}
 pick = RegionSelectionState(g, mode="move", return_state=ow.CityState(g))
-check(not ({"KANTO", "JOHTO", "HOENN"} & set(pick.regions)) and set(pick.regions) <= {"SINNOH", "UNOVA", "KALOS", "ALOLA", "GALAR", "PALDEA"}
+check(not ({"KANTO", "JOHTO", "HOENN"} & set(pick.regions)) and set(pick.regions) <= {"SINNOH", "UNOVA", "KALOS", "ALOLA", "GALAR", "PALDEA", "ORANGE", "ORRE"}
       and pick.regions, f"picker: only unplayed regions {pick.regions}")
 story.visited_region_set = {r for r, _ in story.get_region_starts()}
 c = ow.CityState(g)

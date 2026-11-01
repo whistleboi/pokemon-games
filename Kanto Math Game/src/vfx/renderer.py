@@ -154,7 +154,9 @@ class BattleRenderer:
                 ox, oy = ox - 70 * reach, oy + 30 * reach
             if anim_ctrl:
                 ox += anim_ctrl.knockback("opponent")
-            screen.blit(img, sprite_rect(self.game, img, "opponent").move(int(ox), int(oy)))
+            rect = sprite_rect(self.game, img, "opponent").move(int(ox), int(oy))
+            screen.blit(img, rect)
+            self._shadow_fog(screen, opponent_pokemon, rect)
 
         # Your Pokemon.
         if fainting_side not in ("player", "player_switch") and player_pokemon.current_hp > 0 \
@@ -166,13 +168,22 @@ class BattleRenderer:
             if anim_ctrl:
                 px -= anim_ctrl.knockback("player")
             if img is not None:
-                screen.blit(img, sprite_rect(self.game, img, "player").move(int(px), int(py)))
+                rect = sprite_rect(self.game, img, "player").move(int(px), int(py))
+                screen.blit(img, rect)
+                self._shadow_fog(screen, player_pokemon, rect)
 
         if is_trainer_battle and trainer_img:
             screen.blit(trainer_img, trainer_img.get_rect(center=(w * 0.78 + trainer_x_offset, h * 0.26)))
 
         self.draw_foe_box(screen, opponent_pokemon, opp_hp, opp_max_hp)
         self.draw_my_box(screen, player_pokemon, player_hp, player_max_hp)
+
+    def _shadow_fog(self, screen, pokemon, rect):
+        """Orre's Shadow Pokemon roll in dark fog, as in Pokemon Orre (src/vfx/animations.py)."""
+        story = getattr(self.game, "story_manager", None)
+        if story is not None and story.is_shadow(pokemon):
+            from src.vfx.animations import draw_shadow_fog
+            draw_shadow_fog(screen, rect, pygame.time.get_ticks(), self.game.assets.assets_dir)
 
     def draw_foe_box(self, screen, opponent_pokemon, opp_hp, opp_max_hp, dx=0):
         """The foe's box (top left); dx slides it (the trainer intro)."""

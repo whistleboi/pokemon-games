@@ -9,7 +9,7 @@ screen above the text box (1280 x 540):
 - a route or cave shows the stretch of the map with the most tall grass (where the wild Pokemon
   stand on the route screen), at full size.
 
-Saved to assets/journeys/towns/<area key>.png and assets/journeys/routes/<area key>.png, which
+Saved to assets/backgrounds/<region>/towns/<area key>.png and .../routes/<area key>.png (map_path), which
 the town and route screens use before any other background. Unova and Orre are left out: Journeys
 built only a handful of their maps, and a region should look the same throughout.
 Run from the game folder:
@@ -28,7 +28,21 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import rxdata  # noqa: E402
 
 JOURNEYS = os.path.join("..", "..", "Pokemon Journeys V18")
-OUT = os.path.join("assets", "journeys")
+OUT = os.path.join("assets", "backgrounds")
+
+
+def map_path(kind, key):
+    """Where a rendered town ('towns') or route ('routes') background goes: its region's background
+    folder (its sub-region's, like Sevii, where that has one), e.g. backgrounds/orre/towns/phenac_city.png."""
+    for fname in os.listdir("assets"):
+        if fname.endswith("_area_data.json"):
+            with open(os.path.join("assets", fname), encoding="utf-8") as f:
+                area = json.load(f).get("STORY_PROGRESSION", {}).get(key)
+            if area:
+                sub = str(area.get("subregion") or "").lower()
+                region = sub if sub and os.path.isdir(os.path.join(OUT, sub)) else str(area.get("region") or "KANTO").lower()
+                return os.path.join(OUT, region, kind, f"{key.lower()}.png")
+    raise KeyError(key)
 W, H = 1280, 540  # the screen above the text box
 MIN_SCALE = 0.5   # never shrink a map below its original Game Boy pixel size
 GRASS_TAGS = {2, 10}  # Essentials v18 terrain tags: Grass, TallGrass
@@ -364,7 +378,7 @@ def main(argv):
             missing += 1
             continue
         town = data.get("area_type") == "town"
-        out = os.path.join(OUT, "towns" if town else "routes", f"{key.lower()}.png")
+        out = map_path("towns" if town else "routes", key)
         os.makedirs(os.path.dirname(out), exist_ok=True)
         img = game.town_background(mid, SIDES.get(key), FOCUS.get(key)) if town else game.route_background(mid)
         if img is None or mostly_void(img):  # mostly empty map (an indoor map, a placeholder)

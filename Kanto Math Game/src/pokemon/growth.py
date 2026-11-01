@@ -4,7 +4,8 @@ curves and the formula stay true to the games."""
 import json
 import os
 
-XP_BOOST = 3  # every XP gain is multiplied by this (the games' own numbers are 1x)
+XP_BOOST = 2  # every XP gain is multiplied by this (the games' own numbers are 1x; 3 until 11-01:
+              # with fixed area levels it outpaced the story)
 
 _data = None
 

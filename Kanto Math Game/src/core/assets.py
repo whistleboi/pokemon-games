@@ -347,12 +347,15 @@ class AssetManager:
         except Exception:
             return None
 
-    # One Pokemon Center (with its shop) for every town of a region (Jordan, 10-30), before any town's own.
-    REGION_BUILDINGS = {"KALOS": "kalos_center.png"}
+    # One Pokemon Center and one shop for every town of a region, before any town's own (Jordan): Kalos's
+    # Center has its shop inside (10-30); Orre's are Pokemon Orre's Phenac Center and Mart (11-01,
+    # dev/builders/render_orre_backgrounds.py). Nurse Joy and the clerk are in the pictures.
+    REGION_BUILDINGS = {"KALOS": {"center": "kalos_center.png", "mart": "kalos_center.png"},
+                        "ORRE": {"center": "orre_center.png", "mart": "orre_mart.png"}}
 
-    def get_region_building(self, region):
-        """The region's shared Pokemon Center picture (Nurse Joy and the shop are in it), or None."""
-        name = self.REGION_BUILDINGS.get(str(region or "").upper())
+    def get_region_building(self, region, kind="center"):
+        """The region's shared Pokemon Center ('center') or shop ('mart') picture, or None."""
+        name = self.REGION_BUILDINGS.get(str(region or "").upper(), {}).get(kind)
         return self.get_background(name) if name else None
 
     # Stand-in art for places that don't have their own yet (backgrounds/generic).
@@ -514,16 +517,34 @@ class AssetManager:
         except Exception:
             return line
 
+    MAP_KINDS = ("towns", "routes")  # rendered map backgrounds: backgrounds/<region>/towns|routes
+
+    def map_backgrounds(self):
+        """{(kind, area key): path} for every rendered town/route background, kept in its region's
+        folder (backgrounds/<region>/towns and backgrounds/<region>/routes; dev/builders/
+        render_journeys_backgrounds.py, render_orre_backgrounds.py, clean_kalos_maps.py)."""
+        if getattr(self, "_map_bg_paths", None) is None:
+            self._map_bg_paths = {}
+            root = self.backgrounds_dir
+            for region in sorted(os.listdir(root)) if root and os.path.isdir(root) else []:
+                for kind in self.MAP_KINDS:
+                    folder = os.path.join(root, region, kind)
+                    if os.path.isdir(folder):
+                        for f in os.listdir(folder):
+                            if f.lower().endswith(".png"):
+                                self._map_bg_paths[(kind, f[:-4].lower())] = os.path.join(folder, f)
+        return self._map_bg_paths
+
     def get_journeys_background(self, kind, area_key):
-        """A town ('towns') or route ('routes') background drawn from Pokemon Journeys' maps
-        (dev/builders/render_journeys_backgrounds.py): Kanto, Johto, Hoenn, Sinnoh, Sevii and the
-        Orange Islands share its look. None where there isn't one."""
+        """A town ('towns') or route ('routes') background rendered from a fan game's maps (Pokemon
+        Journeys, Pokemon Orre) or the cleaned X/Y maps, from its region's folder. None where there
+        isn't one."""
         cache = self.__dict__.setdefault("_journeys_bgs", {})
         key = (kind, str(area_key).lower())
         if key not in cache:
-            path = os.path.join(self.assets_dir, "journeys", kind, f"{key[1]}.png")
+            path = self.map_backgrounds().get(key)
             try:
-                cache[key] = pygame.image.load(path).convert() if os.path.isfile(path) else None
+                cache[key] = pygame.image.load(path).convert() if path else None
             except pygame.error:
                 cache[key] = None
         return cache[key]
@@ -537,7 +558,9 @@ class AssetManager:
                     folder = os.path.join(self.backgrounds_dir, entry)
                     if entry.lower() in ("battle", "kanto", "johto", "generic") or not os.path.isdir(folder):
                         continue
-                    for root, _, files in os.walk(folder):
+                    for root, dirs, files in os.walk(folder):
+                        if root == folder:  # its rendered maps are looked up by get_journeys_background
+                            dirs[:] = [d for d in dirs if d.lower() not in self.MAP_KINDS]
                         for f in files:
                             if f.lower().endswith(".png"):
                                 rel = os.path.relpath(os.path.join(root, f), self.backgrounds_dir)

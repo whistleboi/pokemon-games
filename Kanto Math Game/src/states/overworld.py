@@ -722,7 +722,7 @@ class PlayState(GameState):
             from src.states.battle import WildBattleState
             # The battle catches into this route (not an older one left in game.states).
             self.game.states["play"] = self
-            battle_state = WildBattleState(self.game, pokemon, area_key)
+            battle_state = WildBattleState(self.game, pokemon, self.game.story_manager.current_area_key)
             battle_state.play_state_data = {
                 "balls_left": self.balls_left, "current_streak": self.current_streak,
                 "rounds_completed": self.rounds_completed, "pending_wild_encounters": 0,
@@ -1499,6 +1499,9 @@ class PlayState(GameState):
             bg_color = color_map.get(item.get("color", "BLUE"), theme.RUN)
             way_out = item.get("action") in ("EXIT", "TRAVEL")
             toward = way_out and (item.get("target_area") or item.get("target")) == guide.cached(self.game, "hop")
+            if not way_out and not item.get("disabled") and guide.advances_goal(
+                    self.game, self.game.story_manager.current_area_key, item):
+                toward = True  # the battle or event the tracked Journal mission needs
             if toward:  # the way to the tracked Journal mission
                 bg_color = theme.BAG
 
@@ -3262,7 +3265,7 @@ def center_entrance(options):
 
 def center_background(game, state, type_suffix="center"):
     """A Pokemon Center's picture: the region's own Center for all its towns (Kalos), else the town's."""
-    shared = game.assets.get_region_building(game.story_manager.get_current_region())
+    shared = game.assets.get_region_building(game.story_manager.get_current_region(), type_suffix)
     if shared:
         state.generic_bg = True  # Nurse Joy is in the picture
         return pygame.transform.scale(shared, (game.width, Utils.get_full_dialogue_rect(game).top))
@@ -3597,7 +3600,8 @@ class CityState(GameState):
 
             callback = self._get_callback_for_option(opt_data)
             if callback:
-                toward = opt_data.get("target_area") and opt_data.get("target_area") == guide.cached(self.game, "hop")
+                toward = (opt_data.get("target_area") and opt_data.get("target_area") == guide.cached(self.game, "hop")) \
+                    or guide.advances_goal(self.game, self.area_key, opt_data)  # (the step the Journal needs)
                 btn = Button(rect, ("> " if toward else "") + _fill_names(self.game, opt_data['text']),
                              self.game.assets.fonts["tiny"], callback, autosize=False,
                              bg_color=GOLD if toward else BLUE)  # the way to the tracked mission

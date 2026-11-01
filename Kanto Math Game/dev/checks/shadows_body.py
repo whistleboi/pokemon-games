@@ -53,10 +53,11 @@ for s_ in pool:
 story.story_flags["orre_ein_lab"] = True
 story.current_area_key = "PHENAC_CITY"
 c = CityState(g); g.change_state(c); c.open_travel_menu()
-check("Gateon Port" in [b.text for b in c.hover_buttons], "Gateon Port opens after Ein's lab")
+# (the button toward the Journal's next mission starts "> ": the way to Lovrina's lab, 11-01)
+check("Gateon Port" in [b.text.lstrip("> ") for b in c.hover_buttons], "Gateon Port opens after Ein's lab")
 story.current_area_key = "GATEON_PORT"
 c = CityState(g); g.change_state(c); c.open_travel_menu()
-t = [b.text for b in c.hover_buttons]
+t = [b.text.lstrip("> ") for b in c.hover_buttons]
 check("Cipher Lab" in t and "ONBS Building" not in t, f"XD lairs gated: {t}")
 
 # Pokedex: a Shadow Pokemon is its own variant entry.

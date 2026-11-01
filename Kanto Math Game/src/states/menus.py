@@ -81,14 +81,9 @@ class MainMenuState(GameState):
         return out
 
     def _pick_backdrop(self):
-        """(Without the title scenes) a random town or route drawn from Pokemon Journeys' maps, a little larger than the
-        screen so it can drift."""
-        folder = os.path.join(self.game.assets.assets_dir or "", "journeys")
-        files = []
-        for sub in ("towns", "routes"):
-            path = os.path.join(folder, sub)
-            if os.path.isdir(path):
-                files += [os.path.join(path, n) for n in os.listdir(path) if n.endswith(".png")]
+        """(Without the title scenes) a random rendered town or route, a little larger than the screen so it
+        can drift."""
+        files = list(self.game.assets.map_backgrounds().values())
         if not files:
             return None
         try:
@@ -768,15 +763,15 @@ class StarterSelectionState(GameState):
         return [f"{prof}: Welcome to {self.region.title()}! Your Pokemon from {came.title()} are safe at home in its PC.",
                 f"{prof}: Your challenge starts over here, with a new partner. Let's pick one!"]
 
-    def _region_lines(self, cfg_key):
-        """Region text from REGION_START, with player/rival names filled in."""
+    def _region_lines(self, cfg_key, **names):
+        """Region text from REGION_START, with player/rival names (and any others given) filled in."""
         key = self.region_cfg.get(cfg_key)
         if not key:
             return []
         text = self.game.assets.get_text(
             key, player_name=self.game.player_name,
             rival_name=getattr(self.game, "rival_name", "???"),
-            friend_name=getattr(self.game, "friend_name", None) or "???")
+            friend_name=getattr(self.game, "friend_name", None) or "???", **names)
         return text if isinstance(text, list) else [text]
 
     @property
@@ -899,8 +894,15 @@ class StarterSelectionState(GameState):
             msg_text = [msg_text, pc_msg]
 
         team.insert(0, chosen_pokemon_obj)
-
         self.game.data.add_pokemon(chosen_pokemon_obj)
+        # Orre (Jordan, 11-01): the partners won't be split up; the one not chosen comes along too.
+        others = [p for i, p in enumerate(self.starters) if i != self.selected_idx]             if self.region_cfg.get("partners_join") else []
+        for i, other in enumerate(others, 1):
+            if len(team) < 6:
+                team.insert(i, other)
+            else:
+                self.game.story_manager.deposit_to_pc(other)
+            self.game.data.add_pokemon(other)
         self.game.data.save()
 
         story = self.game.story_manager
@@ -915,7 +917,8 @@ class StarterSelectionState(GameState):
             story.story_flags[f"{r}_rescue_started"] = True
         elif self.uses_town_rival:
             msg_text = (msg_text if isinstance(msg_text, list) else [msg_text])
-            msg_text += self._region_lines("starter_text")
+            msg_text += self._region_lines("starter_text", lead=chosen_pokemon_obj.name,
+                                           other=" and ".join(p.name for p in others) or "")
             story.balls_left = max(story.balls_left, 5)
         elif self.region == "JOHTO":
             rival_map = {0: 1, 1: 2, 2: 0}

@@ -67,6 +67,44 @@ def goal_area(game):
     return mission_target(game, m) if m else None
 
 
+def _event_flags(event):
+    """Every flag a story event (src/world/story_events.py, or an EVENT button's own) can set."""
+    if not isinstance(event, dict):
+        return set()
+    out = {event.get("flag"), (event.get("battle") or {}).get("victory_flag")}
+    for stage in event.get("stages") or []:
+        out |= _event_flags(stage)
+    return out - {None}
+
+
+def advances_goal(game, area_key, item):
+    """True when using this menu button is what the tracked Journal mission needs (Jordan, 11-01): a
+    trainer here whose win sets its flag, a story event or legendary that sets it, or the Gym of a
+    badge mission. The button is then shown in gold."""
+    mission = tracked_mission(game)
+    if not mission:
+        return False
+    need = mission.get("completed_flag")
+    action = item.get("action")
+    story = game.story_manager
+    area = game.loader.area_data.get("STORY_PROGRESSION", {}).get(area_key, {})
+    if action == "GYM":
+        return bool(mission.get("completed_badge") or str(need or "").startswith("badge_"))             and mission_target(game, mission) == area_key
+    if not need:
+        return False
+    if action == "TRAINER":
+        done = story.defeated_trainers.get(area_key, set())
+        return any(t.get("victory_flag") == need for i, t in enumerate(area.get("trainer_pool") or [])
+                   if i not in done)
+    if action == "BOSS":
+        boss = item.get("boss") or area.get("area_boss") or {}
+        return boss.get("victory_flag", f"{area_key}_boss_defeated") == need
+    if action in ("NPC", "EVENT"):
+        from src.world import story_events
+        return need in (_event_flags(item.get("event")) | _event_flags(story_events.get(item.get("target"))))
+    return False
+
+
 def _ok(story, cond):
     """A rough menu-condition check without a town/route screen: flags, items and badges.
     Things only a screen can judge (rounds played, balls left) count as open."""

@@ -398,6 +398,8 @@ class StoryManager:
             if self.check_requirements(m.get("condition", {}), region=m.get("region")):
                 if m.get("completed_flag") and self.story_flags.get(m["completed_flag"]):
                     continue
+                if m.get("completed_badge") and self.has_badge(m["completed_badge"]):
+                    continue
                 active.append(self._prepare_mission_for_ui(m))
 
         main_missions = [m for m in active if m["type"] == "MAIN"]
@@ -920,7 +922,9 @@ class StoryManager:
             status = "INACTIVE"
             is_completed = False
 
-            if m.get("completed_flag"):
+            if m.get("completed_badge"):  # a Gym mission: done once you hold its badge
+                is_completed = self.has_badge(m["completed_badge"])
+            elif m.get("completed_flag"):
                 is_completed = self.story_flags.get(m["completed_flag"], False)
 
             elif "visited" in cond and not m.get("completed_flag"):

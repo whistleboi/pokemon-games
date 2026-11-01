@@ -444,6 +444,8 @@ class TrainerBattleState(MoveEffects, GameState):
                 score = 40 * acc
             else:
                 score = self._status_score(name, d, attacker, defender) * acc
+            if name in self.FIRST_TURN_ONLY:  # Fake Out: a sure flinch on its first turn, useless after
+                score = score * 2 if self._first_turn(attacker) else 0
             scored.append((score, name))
         scored = [x for x in scored if x[0] > 0] or scored
         scored.sort(reverse=True)
@@ -1088,6 +1090,7 @@ class TrainerBattleState(MoveEffects, GameState):
             self.math_ui.set_visibility(False)
         self._flinched = set()
         self._acts_second = None
+        self._note_first_turns()
         if not player_was_correct and getattr(self, "_answer_mode", None) is None:
             self._answer_mode = "weak"
         mine = movelib.info(self.game, self._forced_move(self.player_pokemon)
@@ -1103,6 +1106,20 @@ class TrainerBattleState(MoveEffects, GameState):
             self.turn_actions += [self.player_attack, self.opponent_attack]
         else:
             self.turn_actions += [self.opponent_attack, self.player_attack]
+
+    FIRST_TURN_ONLY = ("FAKE-OUT", "FIRST-IMPRESSION")
+
+    def _note_first_turns(self):
+        """Which turn each side's Pokemon first gets to act: the turn after it came out (a new one
+        sent in, or one switched back in). Fake Out only works then."""
+        seen = self.__dict__.setdefault("_out_since", {})
+        for side, mon in (("player", self.player_pokemon), ("foe", self.opponent_pokemon)):
+            if mon is not None and seen.get(side, (None,))[0] is not mon:
+                seen[side] = (mon, self.turn_count)
+
+    def _first_turn(self, mon):
+        """Is this the first turn this Pokemon could act since it came out?"""
+        return any(m is mon and t == self.turn_count for m, t in self.__dict__.get("_out_since", {}).values())
 
     def _note_participant(self):
         """Remember every Pokemon that has been out against the current foe (XP goes to them)."""
@@ -1259,6 +1276,8 @@ class TrainerBattleState(MoveEffects, GameState):
             if name not in hits:
                 return 0, lines + [f"{def_label} avoided the attack!"], False
             semi_mult = hits[name]
+        if name in self.FIRST_TURN_ONLY and not self._first_turn(attacker):
+            return 0, lines + ["But it failed!"], False  # only on its first turn out
         if self.protected(attacker, defender, d):
             return 0, lines + [f"{def_label} protected itself!"], False
         acc = d.get("accuracy")

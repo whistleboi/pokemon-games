@@ -3902,166 +3902,49 @@
         "ENTRALINK": {"area_type": "town", "route_name": "Entralink", "region": "UNOVA", "has_gym": false, "trainer_encounter_rate": 0, "travel_options": [{"text": "Back to Nuvema Town", "target_area": "NUVEMA_TOWN"}], "explore_options": [{"text": "Rest in the Dream Forest", "action": "HEAL"}, {"text": "Listen to the Entree Forest", "action": "EVENT", "event": {"lines": ["Pokémon from dreams drift between the trees... then fade, smiling."]}}], "trainer_pool": [], "on_enter_event": null}
     },
   "JOURNAL_MISSIONS": [
-    {
-      "id": "unova_m1",
-      "type": "MAIN",
-      "title": "First Pokémon, First Step",
-      "description": "Professor Juniper has three starter Pokémon for you and your friends. Head to her lab in Nuvema Town and choose your partner!",
-      "condition": { "start_region": "UNOVA", "badges_less": 1, "visited_not": "ACCUMULA_TOWN" },
-      "reward": "Starter Pokémon + Pokédex"
-    },
-    {
-      "id": "unova_m2",
-      "type": "MAIN",
-      "title": "Trio Badge",
-      "description": "Challenge one of the Striaton Gym's three leaders. Visit the Dreamyard first to find a Pokémon with a type advantage!",
-      "condition": { "start_region": "UNOVA", "badges_less": 1, "visited": "STRIATON_CITY" },
-      "reward": "Trio Badge"
-    },
-    {
-      "id": "unova_m3",
-      "type": "MAIN",
-      "title": "Basic Badge",
-      "description": "Head to Nacrene City and challenge Lenora, the Normal-type Gym Leader and museum curator.",
-      "condition": { "start_region": "UNOVA", "badges_min": 1, "badges_less": 2, "visited": "NACRENE_CITY" },
-      "reward": "Basic Badge + HM Strength"
-    },
-    {
-      "id": "unova_m4",
-      "type": "MAIN",
-      "title": "Recover the Dragon Skull",
-      "description": "Team Plasma stole an ancient Dragon Skull from the Nacrene Museum. Chase them through Pinwheel Forest and get it back!",
-      "condition": { "start_region": "UNOVA", "badges_min": 2, "flag_not": "plasma_nacrene_cleared" },
-      "reward": "Path through Pinwheel Forest opened"
-    },
-    {
-      "id": "unova_m5",
-      "type": "MAIN",
-      "title": "Insect Badge",
-      "description": "Help Burgh drive Team Plasma from Castelia's sewers, then challenge the Castelia Gym.",
-      "condition": { "start_region": "UNOVA", "badges_min": 2, "badges_less": 3, "visited": "CASTELIA_CITY" },
-      "reward": "Insect Badge"
-    },
-    {
-      "id": "unova_m6",
-      "type": "MAIN",
-      "title": "Bolt Badge",
-      "description": "Nimbasa City's Gym Leader Elesa uses Electric-types. She's on the runway — earn three badges to face her!",
-      "condition": { "start_region": "UNOVA", "badges_min": 3, "badges_less": 4, "visited": "NIMBASA_CITY" },
-      "reward": "Bolt Badge + access to Driftveil"
-    },
-    {
-      "id": "unova_m7",
-      "type": "MAIN",
-      "title": "Quake Badge",
-      "description": "Help Clay root out Team Plasma from the Relic Castle under the Desert Resort, then challenge the Driftveil Gym.",
-      "condition": { "start_region": "UNOVA", "badges_min": 4, "badges_less": 5, "visited": "DRIFTVEIL_CITY" },
-      "reward": "Quake Badge"
-    },
-    {
-      "id": "unova_m8",
-      "type": "MAIN",
-      "title": "Jet Badge",
-      "description": "Pass through Chargestone Cave to Mistralton City and challenge Skyla, the Flying-type Gym Leader.",
-      "condition": { "start_region": "UNOVA", "badges_min": 5, "badges_less": 6, "visited": "MISTRALTON_CITY" },
-      "reward": "Jet Badge + HM Fly"
-    },
-    {
-      "id": "unova_m9",
-      "type": "MAIN",
-      "title": "Freeze Badge",
-      "description": "Team Plasma is climbing Dragonspiral Tower! Stop them before they awaken Zekrom — then challenge Brycen at Icirrus City Gym.",
-      "condition": { "start_region": "UNOVA", "badges_min": 6, "badges_less": 7, "visited": "ICIRRUS_CITY" },
-      "reward": "Freeze Badge"
-    },
-    {
-      "id": "unova_m10",
-      "type": "MAIN",
-      "title": "Legend Badge",
-      "description": "Travel east through Routes 9 and beyond to Opelucid City. Challenge Dragon-type master Drayden to earn the Legend Badge.",
-      "condition": { "start_region": "UNOVA", "badges_min": 7, "badges_less": 8, "visited": "OPELUCID_CITY" },
-      "reward": "Legend Badge"
-    },
-    {
-      "id": "unova_m11",
-      "type": "MAIN",
-      "title": "Conquer the Unova League",
-      "description": "With all 8 badges, head north on Route 10 to Victory Road. Face the Elite Four and Champion Alder!",
-      "condition": { "start_region": "UNOVA", "badges_min": 8, "flag_not": "beat_unova_champion" },
-      "reward": "Unova Champion Title"
-    },
-    {
-      "id": "unova_m12",
-      "type": "MAIN",
-      "title": "N's Castle",
-      "description": "After defeating Alder, N's Castle rises from the ground! Face N and his legendary Zekrom — then stop Ghetsis!",
-      "condition": { "start_region": "UNOVA", "flag": "beat_alder", "flag_not": "beat_unova_champion" },
-      "reward": "Master Ball + Unova at peace"
-    },
-    {
-      "id": "unova_s1",
-      "type": "SIDE",
-      "title": "Team Plasma — Castelia Sewers",
-      "description": "Team Plasma is hiding in Castelia's sewers. Help Burgh flush them out before you can challenge the gym.",
-      "condition": { "start_region": "UNOVA", "visited": "CASTELIA_CITY", "flag_not": "plasma_castelia_cleared" },
-      "reward": "Insect Badge access"
-    },
-    {
-      "id": "unova_s2",
-      "type": "SIDE",
-      "title": "Team Plasma — Cold Storage",
-      "description": "Zinzolin of the Seven Sages is using Driftveil's Cold Storage facility. Clear it out!",
-      "condition": { "start_region": "UNOVA", "visited": "DRIFTVEIL_CITY", "flag_not": "cold_storage_cleared" },
-      "reward": "Story progress"
-    },
-    {
-      "id": "unova_s3",
-      "type": "SIDE",
-      "title": "The Iron Will Pokémon",
-      "description": "Cobalion, the Iron Will Pokémon, is hiding in Mistralton Cave. Are you worthy of its challenge?",
-      "condition": { "start_region": "UNOVA", "visited": "MISTRALTON_CAVE", "flag_not": "MISTRALTON_CAVE_boss_defeated" },
-      "reward": "Cobalion encounter"
-    },
-    {
-      "id": "unova_s4",
-      "type": "SIDE",
-      "title": "The Swords of Justice",
-      "description": "Virizion roams Route 22, and Terrakion guards Victory Road. Seek out both legendary warriors!",
-      "condition": { "start_region": "UNOVA", "badges_min": 7 },
-      "reward": "Virizion + Terrakion encounters"
-    },
-    {
-      "id": "unova_s5",
-      "type": "SIDE",
-      "title": "The Kami Trio",
-      "description": "Tornadus and Thundurus roam Unova's wild routes in storm clouds. After calming them, Landorus appears at the Abundant Shrine.",
-      "condition": { "start_region": "UNOVA", "badges_min": 6 },
-      "reward": "Tornadus + Thundurus + Landorus encounters"
-    },
-    {
-      "id": "unova_s6",
-      "type": "SIDE",
-      "title": "Boundary Pokémon",
-      "description": "Deep in the Giant Chasm near Lacunosa Town, the boundary Pokémon Kyurem waits in the cold.",
-      "condition": { "start_region": "UNOVA", "visited": "GIANT_CHASM", "flag_not": "GIANT_CHASM_boss_defeated" },
-      "reward": "Kyurem encounter"
-    },
-    {
-      "id": "unova_s7",
-      "type": "SIDE",
-      "title": "Ancient Sun Moth",
-      "description": "Deep in Relic Castle, an ancient Fire/Bug Pokémon waits — Volcarona, said to have taken the sun's place in ancient times.",
-      "condition": { "start_region": "UNOVA", "visited": "RELIC_CASTLE", "flag_not": "RELIC_CASTLE_boss_defeated" },
-      "reward": "Volcarona encounter"
-    },
-    {
-      "id": "unova_s8",
-      "type": "SIDE",
-      "title": "N's Dragon",
-      "description": "After the events of N's Castle, Zekrom (or Reshiram) remains at Dragonspiral Tower. Go claim the legendary Dragon!",
-      "condition": { "start_region": "UNOVA", "flag": "beat_unova_champion", "flag_not": "DRAGONSPIRAL_TOWER_boss_defeated" },
-      "reward": "Zekrom/Reshiram encounter"
-    }
+    {"id": "unova_m1", "type": "MAIN", "title": "A New Partner", "description": "Professor Juniper left three Pokémon at your house in Nuvema Town. Choose your partner, then battle {rival_name}!", "condition": {"required_region": "UNOVA", "flag_not": "defeated_rival_nuvema"}, "completed_flag": "defeated_rival_nuvema", "target": "NUVEMA_TOWN", "reward": "Your first partner + Pokédex"},
+    {"id": "unova_m2", "type": "MAIN", "title": "Team Plasma's Speech", "description": "Follow Route 1 north to Accumula Town. A group called Team Plasma is giving a speech in the square. Go and listen.", "condition": {"required_region": "UNOVA", "flag": "defeated_rival_nuvema", "flag_not": "heard_n_accumula"}, "completed_flag": "heard_n_accumula", "target": "ACCUMULA_TOWN"},
+    {"id": "unova_m3", "type": "MAIN", "title": "A Stranger Named N", "description": "On Route 2 you'll meet Alder, and a strange young man named N who says he can hear Pokémon talk. He wants to battle!", "condition": {"required_region": "UNOVA", "flag": "heard_n_accumula", "flag_not": "defeated_n_route2", "region_badges_less": 1}, "completed_flag": "defeated_n_route2", "target": "UNOVA_ROUTE_2"},
+    {"id": "unova_m4", "type": "MAIN", "title": "A Gift in the Dreamyard", "description": "A researcher named Fennel is at the Dreamyard, next to Striaton City. She has a Pokémon that's strong against the Striaton Gym.", "condition": {"required_region": "UNOVA", "flag": "defeated_n_route2", "flag_not": "got_elemental_monkey", "region_badges_less": 1}, "completed_flag": "got_elemental_monkey", "target": "DREAMYARD", "reward": "Pansage, Pansear or Panpour"},
+    {"id": "unova_m5", "type": "MAIN", "title": "Trio Badge", "description": "Striaton City's Gym has three leaders: Cilan, Chili and Cress. You'll face the one whose type beats your partner's!", "condition": {"required_region": "UNOVA", "flag": "got_elemental_monkey", "region_badges_less": 1}, "completed_badge": "TRIO", "target": "STRIATON_CITY", "reward": "Trio Badge"},
+    {"id": "unova_m6", "type": "MAIN", "title": "Basic Badge", "description": "Go through Route 3 and Wellspring Cave to Nacrene City. Lenora, the museum's director, leads the Normal-type Gym.", "condition": {"required_region": "UNOVA", "region_badges_min": 1, "region_badges_less": 2}, "completed_badge": "BASIC", "target": "NACRENE_CITY", "reward": "Basic Badge"},
+    {"id": "unova_m7", "type": "MAIN", "title": "The Stolen Dragon Skull", "description": "Team Plasma is in the Nacrene Museum! They want the giant Dragon Skull. Stop them!", "condition": {"required_region": "UNOVA", "region_badges_min": 2, "flag_not": "plasma_nacrene_cleared"}, "completed_flag": "plasma_nacrene_cleared", "target": "NACRENE_CITY"},
+    {"id": "unova_m8", "type": "MAIN", "title": "Chase Through Pinwheel Forest", "description": "Team Plasma ran into Pinwheel Forest with the skull. Burgh takes one path. Catch the grunts on the other!", "condition": {"required_region": "UNOVA", "region_badges_min": 2, "flag": "plasma_nacrene_cleared", "flag_not": "plasma_pinwheel_cleared"}, "completed_flag": "plasma_pinwheel_cleared", "target": "PINWHEEL_FOREST"},
+    {"id": "unova_m9", "type": "MAIN", "title": "Castelia's Sewers", "description": "Cross Skyarrow Bridge to Castelia City, Unova's biggest city. Team Plasma is hiding in the sewers. Help Burgh clear them out!", "condition": {"required_region": "UNOVA", "flag": "plasma_pinwheel_cleared", "flag_not": "plasma_castelia_cleared"}, "completed_flag": "plasma_castelia_cleared", "target": "CASTELIA_CITY"},
+    {"id": "unova_m10", "type": "MAIN", "title": "Insect Badge", "description": "Burgh, the artist, is ready at the Castelia Gym. His Bug-types hide in a honeycomb maze.", "condition": {"required_region": "UNOVA", "region_badges_min": 2, "region_badges_less": 3, "flag": "plasma_castelia_cleared"}, "completed_badge": "INSECT", "target": "CASTELIA_CITY", "reward": "Insect Badge"},
+    {"id": "unova_m11", "type": "MAIN", "title": "The Ferris Wheel", "description": "Head up sandy Route 4 to Nimbasa City. N is at the amusement park, and he has something to tell you.", "condition": {"required_region": "UNOVA", "region_badges_min": 3, "flag_not": "met_n_nimbasa"}, "completed_flag": "met_n_nimbasa", "target": "NIMBASA_CITY"},
+    {"id": "unova_m12", "type": "MAIN", "title": "Bolt Badge", "description": "Elesa, a model, leads Nimbasa's Electric-type Gym. Ride the roller coaster to reach her!", "condition": {"required_region": "UNOVA", "region_badges_min": 3, "region_badges_less": 4, "flag": "met_n_nimbasa"}, "completed_badge": "BOLT", "target": "NIMBASA_CITY", "reward": "Bolt Badge"},
+    {"id": "unova_m13", "type": "MAIN", "title": "Quake Badge", "description": "Take Route 5 and Driftveil Drawbridge to Driftveil City. Team Plasma is hiding in the Cold Storage south of town. Then face Clay's Ground-types.", "condition": {"required_region": "UNOVA", "region_badges_min": 4, "region_badges_less": 5}, "completed_badge": "QUAKE", "target": "DRIFTVEIL_CITY", "reward": "Quake Badge"},
+    {"id": "unova_m14", "type": "MAIN", "title": "Lights in Chargestone Cave", "description": "Route 6 leads to Chargestone Cave, full of floating electric stones. N is waiting deep inside.", "condition": {"required_region": "UNOVA", "region_badges_min": 5, "flag_not": "defeated_n_chargestone"}, "completed_flag": "defeated_n_chargestone", "target": "CHARGESTONE_CAVE"},
+    {"id": "unova_m15", "type": "MAIN", "title": "Jet Badge", "description": "Mistralton City has an airport! Skyla is a pilot, and her Flying-type Gym shoots you out of cannons.", "condition": {"required_region": "UNOVA", "region_badges_min": 5, "region_badges_less": 6, "flag": "defeated_n_chargestone"}, "completed_badge": "JET", "target": "MISTRALTON_CITY", "reward": "Jet Badge"},
+    {"id": "unova_m16", "type": "MAIN", "title": "Freeze Badge", "description": "Follow Route 7 through Twist Mountain to snowy Icirrus City. Brycen, a movie star, uses Ice-types.", "condition": {"required_region": "UNOVA", "region_badges_min": 6, "region_badges_less": 7}, "completed_badge": "FREEZE", "target": "ICIRRUS_CITY", "reward": "Freeze Badge"},
+    {"id": "unova_m17", "type": "MAIN", "title": "Dragonspiral Tower", "description": "Team Plasma stormed Dragonspiral Tower, the oldest tower in Unova. N is calling a legendary dragon at the top!", "condition": {"required_region": "UNOVA", "region_badges_min": 7, "flag_not": "plasma_dragonspiral_cleared"}, "completed_flag": "plasma_dragonspiral_cleared", "target": "ICIRRUS_CITY"},
+    {"id": "unova_m18", "type": "MAIN", "title": "The Dragon Stones", "description": "Cross Tubeline Bridge and Route 9 to Opelucid City. Drayden knows about the stones that hold the legendary dragons.", "condition": {"required_region": "UNOVA", "flag": "plasma_dragonspiral_cleared", "flag_not": "heard_dragon_stones"}, "completed_flag": "heard_dragon_stones", "target": "OPELUCID_CITY"},
+    {"id": "unova_m19", "type": "MAIN", "title": "Legend Badge", "description": "Drayden's Dragon-types are the last Gym in Unova. Ice-type moves work well against dragons!", "condition": {"required_region": "UNOVA", "region_badges_min": 7, "region_badges_less": 8, "flag": "heard_dragon_stones"}, "completed_badge": "LEGEND", "target": "OPELUCID_CITY", "reward": "Legend Badge"},
+    {"id": "unova_m20", "type": "MAIN", "title": "The Unova League", "description": "With eight badges, take Route 10 and climb Victory Road. Beat the Elite Four, then the Champion, Alder!", "condition": {"required_region": "UNOVA", "region_badges_min": 8, "flag_not": "beat_alder"}, "completed_flag": "beat_alder", "target": "UNOVA_POKEMON_LEAGUE", "reward": "Unova Champion"},
+    {"id": "unova_m21", "type": "MAIN", "title": "N's Castle", "description": "N's Castle rose out of the ground behind the League! Get past the Seven Sages and battle N.", "condition": {"required_region": "UNOVA", "flag": "beat_alder", "flag_not": "defeated_n_castle"}, "completed_flag": "defeated_n_castle", "target": "NS_CASTLE"},
+    {"id": "unova_m22", "type": "MAIN", "title": "Stop Ghetsis", "description": "Ghetsis was using N all along! Stop him to save Unova.", "condition": {"required_region": "UNOVA", "flag": "defeated_n_castle", "flag_not": "beat_unova_champion"}, "completed_flag": "beat_unova_champion", "target": "NS_CASTLE", "reward": "Unova at peace"},
+    {"id": "unova_s1", "type": "SIDE", "title": "Team Plasma at Relic Castle", "description": "Team Plasma is digging in Relic Castle, out in the Desert Resort. Ask in Driftveil City and go stop them.", "condition": {"required_region": "UNOVA", "region_badges_min": 4, "flag_not": "plasma_relic_castle_cleared"}, "completed_flag": "plasma_relic_castle_cleared", "target": "DRIFTVEIL_CITY"},
+    {"id": "unova_s2", "type": "SIDE", "title": "The Iron Will Pokémon", "description": "Cobalion, one of the Swords of Justice, waits in Mistralton Cave.", "condition": {"required_region": "UNOVA", "region_badges_min": 5, "flag_not": "MISTRALTON_CAVE_boss_defeated"}, "completed_flag": "MISTRALTON_CAVE_boss_defeated", "target": "MISTRALTON_CAVE", "reward": "Cobalion"},
+    {"id": "unova_s3", "type": "SIDE", "title": "The Cavern Pokémon", "description": "Terrakion, another of the Swords of Justice, guards a hidden cave on Victory Road.", "condition": {"required_region": "UNOVA", "region_badges_min": 8, "flag_not": "VICTORY_ROAD_UNOVA_boss_defeated"}, "completed_flag": "VICTORY_ROAD_UNOVA_boss_defeated", "target": "VICTORY_ROAD_UNOVA", "reward": "Terrakion"},
+    {"id": "unova_s4", "type": "SIDE", "title": "The Grassland Pokémon", "description": "Virizion, the last of the Swords of Justice, hides on Route 22, west of Opelucid City.", "condition": {"required_region": "UNOVA", "region_badges_min": 8, "flag_not": "UNOVA_ROUTE_22_boss_defeated"}, "completed_flag": "UNOVA_ROUTE_22_boss_defeated", "target": "UNOVA_ROUTE_22", "reward": "Virizion"},
+    {"id": "unova_s5", "type": "SIDE", "title": "The Colt Pokémon", "description": "With all three Swords of Justice met, young Keldeo appears in the Moor of Icirrus.", "condition": {"required_region": "UNOVA", "flag": ["MISTRALTON_CAVE_boss_defeated", "VICTORY_ROAD_UNOVA_boss_defeated", "UNOVA_ROUTE_22_boss_defeated"], "flag_not": "MOOR_OF_ICIRRUS_boss_defeated"}, "completed_flag": "MOOR_OF_ICIRRUS_boss_defeated", "target": "MOOR_OF_ICIRRUS", "reward": "Keldeo"},
+    {"id": "unova_s6", "type": "SIDE", "title": "The Ancient Sun", "description": "Deep inside Relic Castle, Volcarona sleeps. Long ago, people said it took the sun's place.", "condition": {"required_region": "UNOVA", "visited": "RELIC_CASTLE", "flag_not": "RELIC_CASTLE_boss_defeated"}, "completed_flag": "RELIC_CASTLE_boss_defeated", "target": "RELIC_CASTLE", "reward": "Volcarona"},
+    {"id": "unova_s7", "type": "SIDE", "title": "The Other Dragon", "description": "N's legendary dragon has left. Its partner still waits at Dragonspiral Tower.", "condition": {"required_region": "UNOVA", "flag": "beat_unova_champion", "flag_not": "DRAGONSPIRAL_TOWER_boss_defeated"}, "completed_flag": "DRAGONSPIRAL_TOWER_boss_defeated", "target": "DRAGONSPIRAL_TOWER", "reward": "A legendary dragon"},
+    {"id": "unova_s8", "type": "SIDE", "title": "The Boundary Pokémon", "description": "Lacunosa Town's elder tells of a monster in the Giant Chasm. Find Kyurem in the cold.", "condition": {"required_region": "UNOVA", "flag": "beat_unova_champion", "flag_not": "GIANT_CHASM_boss_defeated"}, "completed_flag": "GIANT_CHASM_boss_defeated", "target": "GIANT_CHASM", "reward": "Kyurem"},
+    {"id": "unova_s9", "type": "SIDE", "title": "Storm and Thunder", "description": "Strange storms are blowing on Routes 7 and 8. Tornadus and Thundurus are behind them!", "condition": {"required_region": "UNOVA", "flag": "beat_unova_champion", "flag_not": ["UNOVA_ROUTE_7_boss_defeated", "UNOVA_ROUTE_8_boss_defeated"]}, "completed_flag": "UNOVA_ROUTE_8_boss_defeated", "target": "UNOVA_ROUTE_7", "reward": "Tornadus + Thundurus"},
+    {"id": "unova_s10", "type": "SIDE", "title": "The Abundant Shrine", "description": "With the storms calmed, Landorus appears at the Abundant Shrine, east of Undella Town.", "condition": {"required_region": "UNOVA", "flag": "beat_unova_champion", "flag_not": "ABUNDANT_SHRINE_boss_defeated"}, "completed_flag": "ABUNDANT_SHRINE_boss_defeated", "target": "ABUNDANT_SHRINE", "reward": "Landorus"},
+    {"id": "unova_s11", "type": "SIDE", "title": "Larvesta's Egg", "description": "A Pokémon Ranger on Route 18 has an egg that needs a good home.", "condition": {"required_region": "UNOVA", "flag": "beat_unova_champion", "flag_not": "got_unova_larvesta"}, "completed_flag": "got_unova_larvesta", "target": "UNOVA_ROUTE_18", "reward": "Larvesta"},
+    {"id": "unova_s12", "type": "SIDE", "title": "Aspertia's Gym", "description": "Cheren is now a Gym Leader in Aspertia City, in the southwest. Battle him!", "condition": {"required_region": "UNOVA", "flag": "beat_alder", "flag_not": "b2w2_cheren"}, "completed_flag": "b2w2_cheren", "target": "ASPERTIA_CITY"},
+    {"id": "unova_s13", "type": "SIDE", "title": "Virbank's Gym", "description": "Roxie plays in a band and leads Virbank City's Poison-type Gym.", "condition": {"required_region": "UNOVA", "flag": "beat_alder", "flag_not": "b2w2_roxie"}, "completed_flag": "b2w2_roxie", "target": "VIRBANK_CITY"},
+    {"id": "unova_s14", "type": "SIDE", "title": "Humilau's Gym", "description": "Marlon, a laid-back surfer, leads the Water-type Gym in Humilau City.", "condition": {"required_region": "UNOVA", "flag": "beat_alder", "flag_not": "b2w2_marlon"}, "completed_flag": "b2w2_marlon", "target": "HUMILAU_CITY"},
+    {"id": "unova_s15", "type": "SIDE", "title": "Champion Iris", "description": "Iris has become a Champion! Challenge her at the Pokémon League.", "condition": {"required_region": "UNOVA", "flag": "beat_alder", "flag_not": "b2w2_iris"}, "completed_flag": "b2w2_iris", "target": "UNOVA_POKEMON_LEAGUE"},
+    {"id": "unova_s16", "type": "SIDE", "title": "The Plasma Frigate", "description": "A new Team Plasma has a ship off Humilau City. Sneak aboard and stop it!", "condition": {"required_region": "UNOVA", "flag": "beat_alder", "flag_not": "plasma_frigate_cleared"}, "completed_flag": "plasma_frigate_cleared", "target": "PLASMA_FRIGATE"},
+    {"id": "unova_s17", "type": "SIDE", "title": "Pokémon World Tournament", "description": "Leaders and Champions from every region gather near Driftveil City. Win the tournament!", "condition": {"required_region": "UNOVA", "flag": "beat_alder", "flag_not": "pwt_cleared"}, "completed_flag": "pwt_cleared", "target": "PWT"},
+    {"id": "unova_s18", "type": "SIDE", "title": "The Golems of Clay Tunnel", "description": "Regirock, Regice and Registeel sleep in the Underground Ruins past Clay Tunnel.", "condition": {"required_region": "UNOVA", "flag": "beat_alder", "flag_not": ["ruins_regirock", "ruins_regice", "ruins_registeel"]}, "completed_flag": "ruins_registeel", "target": "UNDERGROUND_RUINS", "reward": "The three Regis"},
+    {"id": "unova_s19", "type": "SIDE", "title": "The Colossal Pokémon", "description": "With all three Regis, go deep into Twist Mountain. Regigigas is waking up!", "condition": {"required_region": "UNOVA", "flag": ["ruins_regirock", "ruins_regice", "ruins_registeel"], "flag_not": "twist_regigigas"}, "completed_flag": "twist_regigigas", "target": "TWIST_MOUNTAIN", "reward": "Regigigas"},
+    {"id": "unova_s20", "type": "SIDE", "title": "Reversal Mountain", "description": "Heatran lives in the lava deep inside Reversal Mountain, near Lentimas Town.", "condition": {"required_region": "UNOVA", "flag": "beat_alder", "flag_not": "reversal_heatran"}, "completed_flag": "reversal_heatran", "target": "REVERSAL_MOUNTAIN", "reward": "Heatran"},
+    {"id": "unova_s21", "type": "SIDE", "title": "Black Tower and White Treehollow", "description": "Climb Black Tower in Black City, or White Treehollow in the White Forest. How far can you go?", "condition": {"required_region": "UNOVA", "flag": "beat_alder", "flag_not": ["black_tower_cleared", "white_treehollow_cleared"]}, "completed_flag": "black_tower_cleared", "target": "BLACK_CITY"}
   ],
   "UNOVA_ROUTE_1": [504, 519],
   "UNOVA_ROUTE_1_PERCENTAGES": {"504": 50, "506": 50, "507": 5, "505": 5, "559": 5, "531": 5},

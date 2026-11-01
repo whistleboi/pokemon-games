@@ -141,6 +141,54 @@ def white_silhouette(sprite, amount):
     return img
 
 
+# The Shadow Pokemon fog (Jordan, 11-01): Pokemon Orre 2.1.1's "Common:Shadow" animation, its Shadow2
+# sheet (assets/sprites/vfx/shadow_fog.png: 192 px cells, 5 a row) with the same puffs at the same
+# spots. Each frame: (pattern, dx, dy) around the Pokemon, in the Essentials editor's pixels (its
+# battlers are 192 px tall); a puff grows through patterns 5-8, new ones rolling in around it.
+SHADOW_FOG = [
+    [(5, -24, 14)], [(6, -24, 14)], [(7, -24, 14), (5, 56, 30)], [(8, -24, 14), (6, 56, 30), (5, -88, -10)],
+    [(7, 56, 30), (6, -88, -10), (5, -24, 14)], [(8, 56, 30), (7, -88, -10), (6, -24, 14), (5, 32, -42)],
+    [(8, -88, -10), (7, -24, 14), (6, 32, -42), (5, -16, -74)],
+    [(8, -40, 46), (7, 32, -42), (6, -16, -74), (5, 32, 22)], [(8, 32, -42), (7, -16, -74), (6, 32, 22)],
+    [(8, -16, -74), (7, 32, 22)], [(8, 32, 22)],
+]
+SHADOW_FOG_FPS = 20       # Essentials plays an animation frame every 2 of its 40 frames a second
+SHADOW_FOG_PAUSE = 900    # ms between rolls of fog
+_FOG = {}
+
+
+def _fog_cells(assets_dir):
+    if "cells" not in _FOG:
+        try:
+            import os
+            sheet = pygame.image.load(os.path.join(assets_dir, "sprites", "vfx", "shadow_fog.png")).convert_alpha()
+            _FOG["cells"] = [sheet.subsurface(((i % 5) * 192, (i // 5) * 192, 192, 192)).copy()
+                             for i in range(15)]
+        except (pygame.error, FileNotFoundError):
+            _FOG["cells"] = None
+    return _FOG["cells"]
+
+
+def draw_shadow_fog(screen, rect, now_ms, assets_dir):
+    """The Shadow fog over a Pokemon whose sprite fills rect: rolls of puffs, then a short pause."""
+    cells = _fog_cells(assets_dir)
+    if not cells:
+        return
+    roll = len(SHADOW_FOG) * 1000 // SHADOW_FOG_FPS
+    t = now_ms % (roll + SHADOW_FOG_PAUSE)
+    if t >= roll:
+        return
+    k = rect.height / 192
+    size = max(1, int(192 * k))
+    cx, cy = rect.center
+    for pattern, dx, dy in SHADOW_FOG[t * SHADOW_FOG_FPS // 1000]:
+        key = (pattern, size)
+        img = _FOG.get(key)
+        if img is None:
+            img = _FOG[key] = pygame.transform.smoothscale(cells[pattern], (size, size))
+        screen.blit(img, img.get_rect(center=(int(cx + dx * k), int(cy + dy * k))))
+
+
 def ball_arc(start, end, t, height):
     """A thrown ball's point at t (0..1) on an arc `height` px above the straight line."""
     x = start[0] + (end[0] - start[0]) * t

@@ -3317,12 +3317,31 @@
       "reward": "Dynamo Badge"
     },
     {
+      "id": "hoenn_m7b",
+      "type": "MAIN",
+      "title": "Professor Cozmo",
+      "description": "Go north through Route 111 and Route 113 to Fallarbor Town. Professor Cozmo's wife needs help!",
+      "condition": { "required_region": "HOENN", "region_badges_min": 3, "flag_not": ["heard_cozmo", "meteor_falls_cleared"] },
+      "completed_flag": "heard_cozmo",
+      "target": "FALLARBOR_TOWN"
+    },
+    {
+      "id": "hoenn_m7c",
+      "type": "MAIN",
+      "title": "Meteor Falls",
+      "description": "{team} took Professor Cozmo to Meteor Falls, east of Fallarbor Town. Beat their admin there to save him. Mt. Chimney's Cable Car won't run until you do!",
+      "condition": { "required_region": "HOENN", "region_badges_min": 3, "flag": "heard_cozmo", "flag_not": "meteor_falls_cleared" },
+      "completed_flag": "meteor_falls_cleared",
+      "target": "HOENN_METEOR_FALLS"
+    },
+    {
       "id": "hoenn_m8",
       "type": "MAIN",
       "title": "Mt. Chimney",
-      "description": "{leader} wants the Meteorite to awaken {legend}. Stop {team} at the top of Mt. Chimney!",
-      "condition": { "required_region": "HOENN", "region_badges_min": 3, "flag_not": "mt_chimney_boss_defeated" },
-      "completed_flag": "mt_chimney_boss_defeated"
+      "description": "{team} took the Meteorite up Mt. Chimney so {leader} can awaken {legend}! Ride the Cable Car on Route 112 to the top and stop them.",
+      "condition": { "required_region": "HOENN", "region_badges_min": 3, "flag": "meteor_falls_cleared", "flag_not": "mt_chimney_boss_defeated" },
+      "completed_flag": "mt_chimney_boss_defeated",
+      "target": "HOENN_MT_CHIMNEY"
     },
     {
       "id": "hoenn_m9",

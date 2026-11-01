@@ -10,7 +10,7 @@
       "area_type": "town",
       "route_name": "Outskirt Stand",
       "region": "ORRE",
-      "level": 5,
+      "level": 14,
       "has_gym": false,
       "explore_options": [
         {
@@ -34,13 +34,13 @@
             "battle": {
               "name": "Rider Willie",
               "class": "PKMN_TRAINER",
-              "sprite": "biker.png",
+              "sprite": "orre_rider_willie.png",
               "is_boss_battle": true,
               "team": [
                 263
               ],
               "levels": [
-                6
+                14
               ],
               "rewards": {
                 "balls": 6
@@ -70,7 +70,7 @@
       "area_type": "wild_route",
       "route_name": "Desert Trail",
       "region": "ORRE",
-      "level": 7,
+      "level": 14,
       "battle_type": "desert",
       "min_rounds": 1,
       "trainer_pool": [
@@ -243,7 +243,7 @@
       "area_type": "town",
       "route_name": "Phenac City",
       "region": "ORRE",
-      "level": 8,
+      "level": 15,
       "has_gym": true,
       "explore_options": [
         {
@@ -271,16 +271,16 @@
             "battle": {
               "name": "Cipher Peons",
               "class": "CIPHER_PEON",
-              "sprite": "roughneck.png",
+              "sprite": "orre_cipher_peon.png",
               "team": [
                 261,
                 285,
                 296
               ],
               "levels": [
-                9,
-                10,
-                11
+                13,
+                14,
+                15
               ],
               "rewards": {
                 "balls": 10
@@ -343,11 +343,11 @@
                 375
               ],
               "levels": [
-                9,
-                9,
-                10,
-                11,
-                11
+                14,
+                14,
+                15,
+                16,
+                16
               ],
               "rewards": {
                 "balls": 6
@@ -397,7 +397,7 @@
           {
             "name": "Cooltrainer Rewn",
             "class": "COLOSSEUM",
-            "sprite": "acetrainer_m.png",
+            "sprite": "orre_cool_trainer_m.png",
             "is_boss_battle": true,
             "team": [
               258,
@@ -422,7 +422,7 @@
           {
             "name": "Cooltrainer Buna",
             "class": "COLOSSEUM",
-            "sprite": "acetrainer_m.png",
+            "sprite": "orre_cool_trainer_m.png",
             "is_boss_battle": true,
             "team": [
               370,
@@ -502,7 +502,7 @@
       "area_type": "wild_route",
       "route_name": "Rock Poke Spot",
       "region": "ORRE",
-      "level": 10,
+      "level": 14,
       "battle_type": "desert",
       "wild_pool_percentages": "ORRE_POKE_SPOTS_PERCENTAGES",
       "min_rounds": 1,
@@ -537,7 +537,7 @@
       "area_type": "town",
       "route_name": "Pyrite Town",
       "region": "ORRE",
-      "level": 12,
+      "level": 15,
       "has_gym": true,
       "explore_options": [
         {
@@ -601,7 +601,7 @@
           {
             "name": "Hunter Argel",
             "class": "COLOSSEUM",
-            "sprite": "acetrainer_m.png",
+            "sprite": "orre_hunter_f.png",
             "is_boss_battle": true,
             "team": [
               81,
@@ -622,7 +622,7 @@
           {
             "name": "Chaser Zime",
             "class": "COLOSSEUM",
-            "sprite": "acetrainer_m.png",
+            "sprite": "orre_chaser_m.png",
             "is_boss_battle": true,
             "team": [
               288,
@@ -643,7 +643,7 @@
           {
             "name": "Roller Boy Arez",
             "class": "COLOSSEUM",
-            "sprite": "acetrainer_m.png",
+            "sprite": "orre_roller_boy_kaib.png",
             "is_boss_battle": true,
             "team": [
               207,
@@ -712,14 +712,14 @@
       "area_type": "dungeon",
       "route_name": "Pyrite Building",
       "region": "ORRE",
-      "level": 13,
+      "level": 15,
       "battle_type": "indoor",
       "min_rounds": 0,
       "trainer_pool": [
         {
           "name": "Chaser Kai",
           "class": "CHASER",
-          "sprite": "roughneck.png",
+          "sprite": "orre_chaser_f.png",
           "team": [
             231,
             328
@@ -731,7 +731,7 @@
         {
           "name": "Roller Boy Pike",
           "class": "ROLLER_BOY",
-          "sprite": "youngster.png",
+          "sprite": "orre_roller_boy_kaib.png",
           "team": [
             276,
             163
@@ -756,7 +756,7 @@
         {
           "name": "Hunter Geare",
           "class": "HUNTER",
-          "sprite": "hiker.png",
+          "sprite": "orre_hunter_f.png",
           "team": [
             223,
             81
@@ -781,7 +781,7 @@
         {
           "name": "Bodybuilder Akmen",
           "class": "BODYBUILDER",
-          "sprite": "blackbelt.png",
+          "sprite": "orre_bodybuilder.png",
           "team": [
             309,
             100,
@@ -794,7 +794,7 @@
         {
           "name": "Rider Raleen",
           "class": "RIDER",
-          "sprite": "biker.png",
+          "sprite": "orre_rider.png",
           "team": [
             84,
             165,
@@ -809,7 +809,7 @@
         {
           "name": "Hunter Tura",
           "class": "HUNTER",
-          "sprite": "hiker.png",
+          "sprite": "orre_hunter_m.png",
           "team": [
             363,
             361
@@ -935,7 +935,7 @@
       "area_type": "wild_route",
       "route_name": "Oasis Poke Spot",
       "region": "ORRE",
-      "level": 14,
+      "level": 16,
       "battle_type": "field",
       "min_rounds": 1,
       "wild_pool_percentages": "ORRE_OASIS_POKE_SPOT_PERCENTAGES",
@@ -976,7 +976,7 @@
         {
           "name": "St.Performer Simes",
           "class": "STPERFORMER",
-          "sprite": "acetrainer_m.png",
+          "sprite": "orre_street_performer.png",
           "team": [
             347,
             270
@@ -988,7 +988,7 @@
         {
           "name": "Chaser Rehan",
           "class": "CHASER",
-          "sprite": "roughneck.png",
+          "sprite": "orre_chaser_m.png",
           "team": [
             74,
             270,
@@ -1017,7 +1017,7 @@
         {
           "name": "Chaser Maiz",
           "class": "CHASER",
-          "sprite": "roughneck.png",
+          "sprite": "orre_chaser_f.png",
           "team": [
             109,
             280,
@@ -1030,7 +1030,7 @@
         {
           "name": "Rider Twan",
           "class": "RIDER",
-          "sprite": "biker.png",
+          "sprite": "orre_rider.png",
           "team": [
             307,
             372,
@@ -1044,7 +1044,7 @@
         {
           "name": "Hunter Valen",
           "class": "HUNTER",
-          "sprite": "hiker.png",
+          "sprite": "orre_hunter_f.png",
           "team": [
             270,
             293,
@@ -1059,7 +1059,7 @@
         {
           "name": "Roller Boy Evat",
           "class": "ROLLER_BOY",
-          "sprite": "youngster.png",
+          "sprite": "orre_roller_boy_kaib.png",
           "team": [
             270,
             271
@@ -1071,7 +1071,7 @@
         {
           "name": "Rider Derid",
           "class": "RIDER",
-          "sprite": "biker.png",
+          "sprite": "orre_rider.png",
           "team": [
             204,
             353,
@@ -1122,7 +1122,7 @@
             "battle": {
               "name": "Cipher Admin Miror B.",
               "class": "CIPHER_ADMIN",
-              "sprite": "guitarist.png",
+              "sprite": "orre_trainer_miror_b.png",
               "is_boss_battle": true,
               "team": [
                 185,
@@ -1452,7 +1452,7 @@
         {
           "name": "Area 1 Rider Kai",
           "class": "RIDER",
-          "sprite": "biker.png",
+          "sprite": "orre_rider.png",
           "team": [
             231,
             263
@@ -1465,7 +1465,7 @@
         {
           "name": "Area 1 Chaser Mira",
           "class": "CHASER",
-          "sprite": "roughneck.png",
+          "sprite": "orre_chaser_f.png",
           "team": [
             203,
             128
@@ -1491,7 +1491,7 @@
         {
           "name": "Area 1 Researcher Lena",
           "class": "RESEARCHER",
-          "sprite": "scientist.png",
+          "sprite": "orre_scientist.png",
           "team": [
             220,
             258
@@ -1504,7 +1504,7 @@
         {
           "name": "Area 2 Cooltrainer Rook",
           "class": "COOLTRAINER",
-          "sprite": "acetrainer_m.png",
+          "sprite": "orre_cool_trainer_m.png",
           "team": [
             222,
             211
@@ -1517,7 +1517,7 @@
         {
           "name": "Area 2 Cooltrainer Tess",
           "class": "COOLTRAINER",
-          "sprite": "acetrainer_f.png",
+          "sprite": "orre_cool_trainer_f.png",
           "team": [
             27,
             311
@@ -1530,7 +1530,7 @@
         {
           "name": "Area 2 Bodybuilder Oren",
           "class": "BODYBUILDER",
-          "sprite": "blackbelt.png",
+          "sprite": "orre_bodybuilder2.png",
           "team": [
             190,
             60
@@ -1543,7 +1543,7 @@
         {
           "name": "Area 2 Hunter Vale",
           "class": "HUNTER",
-          "sprite": "hiker.png",
+          "sprite": "orre_hunter_f.png",
           "team": [
             225,
             234
@@ -1556,7 +1556,7 @@
         {
           "name": "Area 3 Rider Juno",
           "class": "RIDER",
-          "sprite": "biker.png",
+          "sprite": "orre_rider.png",
           "team": [
             220,
             234
@@ -1569,7 +1569,7 @@
         {
           "name": "Area 3 Chaser Pike",
           "class": "CHASER",
-          "sprite": "roughneck.png",
+          "sprite": "orre_chaser_f.png",
           "team": [
             77,
             357
@@ -1595,7 +1595,7 @@
         {
           "name": "Area 3 Researcher Bram",
           "class": "RESEARCHER",
-          "sprite": "scientist.png",
+          "sprite": "orre_scientist.png",
           "team": [
             193,
             276
@@ -1608,7 +1608,7 @@
         {
           "name": "Area 4 Cooltrainer Nell",
           "class": "COOLTRAINER",
-          "sprite": "acetrainer_m.png",
+          "sprite": "orre_cool_trainer_m.png",
           "team": [
             358,
             234,
@@ -1622,7 +1622,7 @@
         {
           "name": "Area 4 Cooltrainer Cyr",
           "class": "COOLTRAINER",
-          "sprite": "acetrainer_f.png",
+          "sprite": "orre_cool_trainer_f.png",
           "team": [
             304,
             358,
@@ -1636,7 +1636,7 @@
         {
           "name": "Area 4 Bodybuilder Ivy",
           "class": "BODYBUILDER",
-          "sprite": "blackbelt.png",
+          "sprite": "orre_bodybuilder2.png",
           "team": [
             41,
             300,
@@ -1650,7 +1650,7 @@
         {
           "name": "Area 4 Hunter Tor",
           "class": "HUNTER",
-          "sprite": "hiker.png",
+          "sprite": "orre_hunter_f.png",
           "team": [
             309,
             255,
@@ -1664,7 +1664,7 @@
         {
           "name": "Area 5 Rider Esme",
           "class": "RIDER",
-          "sprite": "biker.png",
+          "sprite": "orre_rider.png",
           "team": [
             58,
             183,
@@ -1678,7 +1678,7 @@
         {
           "name": "Area 5 Chaser Hale",
           "class": "CHASER",
-          "sprite": "roughneck.png",
+          "sprite": "orre_chaser_f.png",
           "team": [
             309,
             263,
@@ -1706,7 +1706,7 @@
         {
           "name": "Area 5 Researcher Quill",
           "class": "RESEARCHER",
-          "sprite": "scientist.png",
+          "sprite": "orre_scientist.png",
           "team": [
             193,
             41,
@@ -1720,7 +1720,7 @@
         {
           "name": "Area 6 Cooltrainer Lark",
           "class": "COOLTRAINER",
-          "sprite": "acetrainer_m.png",
+          "sprite": "orre_cool_trainer_m.png",
           "team": [
             133,
             312,
@@ -1734,7 +1734,7 @@
         {
           "name": "Area 6 Cooltrainer Moss",
           "class": "COOLTRAINER",
-          "sprite": "acetrainer_f.png",
+          "sprite": "orre_cool_trainer_f.png",
           "team": [
             331,
             207,
@@ -1748,7 +1748,7 @@
         {
           "name": "Area 6 Bodybuilder Faye",
           "class": "BODYBUILDER",
-          "sprite": "blackbelt.png",
+          "sprite": "orre_bodybuilder2.png",
           "team": [
             163,
             211,
@@ -1762,7 +1762,7 @@
         {
           "name": "Area 6 Hunter Gil",
           "class": "HUNTER",
-          "sprite": "hiker.png",
+          "sprite": "orre_hunter_m.png",
           "team": [
             95,
             349,
@@ -1776,7 +1776,7 @@
         {
           "name": "Area 7 Rider Sage",
           "class": "RIDER",
-          "sprite": "biker.png",
+          "sprite": "orre_rider.png",
           "team": [
             142,
             206,
@@ -1791,7 +1791,7 @@
         {
           "name": "Area 7 Chaser Wren",
           "class": "CHASER",
-          "sprite": "roughneck.png",
+          "sprite": "orre_chaser_f.png",
           "team": [
             125,
             328,
@@ -1821,7 +1821,7 @@
         {
           "name": "Area 7 Researcher Brin",
           "class": "RESEARCHER",
-          "sprite": "scientist.png",
+          "sprite": "orre_scientist.png",
           "team": [
             307,
             98,
@@ -1836,7 +1836,7 @@
         {
           "name": "Area 8 Cooltrainer Cole",
           "class": "COOLTRAINER",
-          "sprite": "acetrainer_m.png",
+          "sprite": "orre_cool_trainer_m.png",
           "team": [
             325,
             293,
@@ -1851,7 +1851,7 @@
         {
           "name": "Area 8 Cooltrainer Dina",
           "class": "COOLTRAINER",
-          "sprite": "acetrainer_f.png",
+          "sprite": "orre_cool_trainer_f.png",
           "team": [
             120,
             27,
@@ -1866,7 +1866,7 @@
         {
           "name": "Area 8 Bodybuilder Ezra",
           "class": "BODYBUILDER",
-          "sprite": "blackbelt.png",
+          "sprite": "orre_bodybuilder2.png",
           "team": [
             125,
             322,
@@ -1881,7 +1881,7 @@
         {
           "name": "Area 8 Hunter Fern",
           "class": "HUNTER",
-          "sprite": "hiker.png",
+          "sprite": "orre_hunter_f.png",
           "team": [
             299,
             203,
@@ -1896,7 +1896,7 @@
         {
           "name": "Area 9 Rider Gale",
           "class": "RIDER",
-          "sprite": "biker.png",
+          "sprite": "orre_rider.png",
           "team": [
             241,
             347,
@@ -1911,7 +1911,7 @@
         {
           "name": "Area 9 Chaser Holt",
           "class": "CHASER",
-          "sprite": "roughneck.png",
+          "sprite": "orre_chaser_m.png",
           "team": [
             79,
             125,
@@ -1941,7 +1941,7 @@
         {
           "name": "Area 9 Researcher Jett",
           "class": "RESEARCHER",
-          "sprite": "scientist.png",
+          "sprite": "orre_scientist.png",
           "team": [
             241,
             133,
@@ -1956,7 +1956,7 @@
         {
           "name": "Area 10 Cooltrainer Kira",
           "class": "COOLTRAINER",
-          "sprite": "acetrainer_m.png",
+          "sprite": "orre_cool_trainer_m.png",
           "team": [
             216,
             215,
@@ -1973,7 +1973,7 @@
         {
           "name": "Area 10 Cooltrainer Lyle",
           "class": "COOLTRAINER",
-          "sprite": "acetrainer_f.png",
+          "sprite": "orre_cool_trainer_f.png",
           "team": [
             311,
             355,
@@ -1990,7 +1990,7 @@
         {
           "name": "Area 10 Bodybuilder Maya",
           "class": "BODYBUILDER",
-          "sprite": "blackbelt.png",
+          "sprite": "orre_bodybuilder2.png",
           "team": [
             95,
             261,
@@ -2007,7 +2007,7 @@
         {
           "name": "Area 10 Hunter Nash",
           "class": "HUNTER",
-          "sprite": "hiker.png",
+          "sprite": "orre_hunter_f.png",
           "team": [
             223,
             21,
@@ -2177,7 +2177,7 @@
         {
           "name": "Hunter Zada",
           "class": "HUNTER",
-          "sprite": "hiker.png",
+          "sprite": "orre_hunter_m.png",
           "team": [
             300,
             43,
@@ -2191,7 +2191,7 @@
         {
           "name": "Chaser Gurks",
           "class": "CHASER",
-          "sprite": "roughneck.png",
+          "sprite": "orre_chaser_m.png",
           "team": [
             129,
             349,
@@ -2204,7 +2204,7 @@
         {
           "name": "Cipher Peon Kloak",
           "class": "CIPHER_PEON",
-          "sprite": "roughneck.png",
+          "sprite": "orre_cipher_peon.png",
           "team": [
             166,
             167,
@@ -2217,7 +2217,7 @@
         {
           "name": "Cipher Peon Dagur",
           "class": "CIPHER_PEON",
-          "sprite": "roughneck.png",
+          "sprite": "orre_cipher_peon.png",
           "team": [
             168,
             44,
@@ -2230,7 +2230,7 @@
         {
           "name": "Hunter Frena",
           "class": "HUNTER",
-          "sprite": "hiker.png",
+          "sprite": "orre_hunter_f.png",
           "team": [
             216,
             39,
@@ -2244,7 +2244,7 @@
         {
           "name": "Chaser Liaks",
           "class": "CHASER",
-          "sprite": "roughneck.png",
+          "sprite": "orre_chaser_f.png",
           "team": [
             234,
             44,
@@ -2258,7 +2258,7 @@
         {
           "name": "Bodybuilder Lonia",
           "class": "BODYBUILDER",
-          "sprite": "blackbelt.png",
+          "sprite": "orre_bodybuilder.png",
           "team": [
             221,
             206,
@@ -2272,7 +2272,7 @@
         {
           "name": "Rider Nelis",
           "class": "RIDER",
-          "sprite": "biker.png",
+          "sprite": "orre_rider.png",
           "team": [
             215,
             336,
@@ -2452,7 +2452,7 @@
           {
             "name": "Bodybuilder Piliot",
             "class": "COLOSSEUM",
-            "sprite": "acetrainer_m.png",
+            "sprite": "orre_bodybuilder2.png",
             "is_boss_battle": true,
             "team": [
               229,
@@ -2473,7 +2473,7 @@
           {
             "name": "Curmudgeon Nistil",
             "class": "COLOSSEUM",
-            "sprite": "acetrainer_m.png",
+            "sprite": "orre_fun_old_man.png",
             "is_boss_battle": true,
             "team": [
               200,
@@ -2494,7 +2494,7 @@
           {
             "name": "Cooltrainer Hileon",
             "class": "COLOSSEUM",
-            "sprite": "acetrainer_m.png",
+            "sprite": "orre_cool_trainer_m.png",
             "is_boss_battle": true,
             "team": [
               358,
@@ -2566,7 +2566,7 @@
         {
           "name": "Researcher Myron",
           "class": "RESEARCHER",
-          "sprite": "scientist.png",
+          "sprite": "orre_scientist.png",
           "team": [
             100,
             100,
@@ -2582,7 +2582,7 @@
         {
           "name": "Cipher Peon Cole",
           "class": "CIPHER_PEON",
-          "sprite": "roughneck.png",
+          "sprite": "orre_cipher_peon.png",
           "team": [
             190,
             162,
@@ -2598,7 +2598,7 @@
         {
           "name": "Cipher Peon Lare",
           "class": "CIPHER_PEON",
-          "sprite": "roughneck.png",
+          "sprite": "orre_cipher_peon.png",
           "team": [
             318,
             274,
@@ -2614,7 +2614,7 @@
         {
           "name": "Cipher Peon Vana",
           "class": "CIPHER_PEON",
-          "sprite": "roughneck.png",
+          "sprite": "orre_cipher_peon.png",
           "team": [
             205,
             41,
@@ -2630,7 +2630,7 @@
         {
           "name": "Researcher Odlow",
           "class": "RESEARCHER",
-          "sprite": "scientist.png",
+          "sprite": "orre_scientist.png",
           "team": [
             81,
             101,
@@ -2646,7 +2646,7 @@
         {
           "name": "Researcher Coren",
           "class": "RESEARCHER",
-          "sprite": "scientist.png",
+          "sprite": "orre_scientist.png",
           "team": [
             81,
             101,
@@ -2662,7 +2662,7 @@
         {
           "name": "Cipher Peon Lesar",
           "class": "CIPHER_PEON",
-          "sprite": "roughneck.png",
+          "sprite": "orre_cipher_peon.png",
           "team": [
             168,
             111,
@@ -2678,7 +2678,7 @@
         {
           "name": "Researcher Dubik",
           "class": "RESEARCHER",
-          "sprite": "scientist.png",
+          "sprite": "orre_scientist.png",
           "team": [
             101,
             101,
@@ -2916,7 +2916,7 @@
         {
           "name": "Cipher Peon Resix",
           "class": "CIPHER_PEON",
-          "sprite": "roughneck.png",
+          "sprite": "orre_cipher_red.png",
           "team": [
             228,
             218,
@@ -2929,7 +2929,7 @@
         {
           "name": "Cipher Peon Blusix",
           "class": "CIPHER_PEON",
-          "sprite": "roughneck.png",
+          "sprite": "orre_cipher_blue.png",
           "team": [
             116,
             118,
@@ -2942,7 +2942,7 @@
         {
           "name": "Cipher Peon Browsix",
           "class": "CIPHER_PEON",
-          "sprite": "roughneck.png",
+          "sprite": "orre_cipher_brown.png",
           "team": [
             343,
             163
@@ -2954,7 +2954,7 @@
         {
           "name": "Cipher Peon Yellosix",
           "class": "CIPHER_PEON",
-          "sprite": "roughneck.png",
+          "sprite": "orre_cipher_yellow.png",
           "team": [
             179,
             309,
@@ -2967,7 +2967,7 @@
         {
           "name": "Cipher Peon Purpsix",
           "class": "CIPHER_PEON",
-          "sprite": "roughneck.png",
+          "sprite": "orre_cipher_purple.png",
           "team": [
             109,
             88,
@@ -2981,7 +2981,7 @@
         {
           "name": "Cipher Peon Greesix",
           "class": "CIPHER_PEON",
-          "sprite": "roughneck.png",
+          "sprite": "orre_cipher_green.png",
           "team": [
             43,
             331,
@@ -2997,7 +2997,7 @@
         {
           "name": "Cipher Peon Corla",
           "class": "CIPHER_PEON",
-          "sprite": "roughneck.png",
+          "sprite": "orre_cipher_peon.png",
           "team": [
             355,
             300
@@ -3009,7 +3009,7 @@
         {
           "name": "Cipher Peon Javion",
           "class": "CIPHER_PEON",
-          "sprite": "roughneck.png",
+          "sprite": "orre_cipher_peon.png",
           "team": [
             84,
             276
@@ -3175,7 +3175,7 @@
         {
           "name": "Cipher Peon Smarton",
           "class": "CIPHER_PEON",
-          "sprite": "roughneck.png",
+          "sprite": "orre_cipher_peon.png",
           "team": [
             367,
             331,
@@ -3262,7 +3262,7 @@
         {
           "name": "Cipher Peon Rett",
           "class": "CIPHER_PEON",
-          "sprite": "roughneck.png",
+          "sprite": "orre_cipher_peon.png",
           "team": [
             318,
             339
@@ -3274,7 +3274,7 @@
         {
           "name": "Cipher Peon Mocor",
           "class": "CIPHER_PEON",
-          "sprite": "roughneck.png",
+          "sprite": "orre_cipher_peon.png",
           "team": [
             341,
             309,
@@ -3287,7 +3287,7 @@
         {
           "name": "Cipher Peon Torkin",
           "class": "CIPHER_PEON",
-          "sprite": "roughneck.png",
+          "sprite": "orre_cipher_peon.png",
           "team": [
             352,
             283,
@@ -3300,7 +3300,7 @@
         {
           "name": "Cipher Peon Elox",
           "class": "CIPHER_PEON",
-          "sprite": "roughneck.png",
+          "sprite": "orre_cipher_peon.png",
           "team": [
             84,
             72,
@@ -3313,7 +3313,7 @@
         {
           "name": "Cipher Peon Rixor",
           "class": "CIPHER_PEON",
-          "sprite": "roughneck.png",
+          "sprite": "orre_cipher_peon.png",
           "team": [
             211,
             111,
@@ -3327,7 +3327,7 @@
         {
           "name": "Cipher Peon Mesin",
           "class": "CIPHER_PEON",
-          "sprite": "roughneck.png",
+          "sprite": "orre_cipher_peon.png",
           "team": [
             167,
             267,
@@ -3341,7 +3341,7 @@
         {
           "name": "Cipher Peon Dilly",
           "class": "CIPHER_PEON",
-          "sprite": "roughneck.png",
+          "sprite": "orre_cipher_peon.png",
           "team": [
             316,
             179,
@@ -3355,7 +3355,7 @@
         {
           "name": "Cipher Peon Edlos",
           "class": "CIPHER_PEON",
-          "sprite": "roughneck.png",
+          "sprite": "orre_cipher_peon.png",
           "team": [
             162,
             263,
@@ -3477,7 +3477,7 @@
         {
           "name": "Cipher Peon Exinn",
           "class": "CIPHER_PEON",
-          "sprite": "roughneck.png",
+          "sprite": "orre_cipher_peon.png",
           "team": [
             336,
             361,
@@ -3491,7 +3491,7 @@
         {
           "name": "Cipher Peon Gonrag",
           "class": "CIPHER_PEON",
-          "sprite": "roughneck.png",
+          "sprite": "orre_cipher_peon.png",
           "team": [
             198,
             204,
@@ -3504,7 +3504,7 @@
         {
           "name": "Cipher Peon Ertlig",
           "class": "CIPHER_PEON",
-          "sprite": "roughneck.png",
+          "sprite": "orre_cipher_peon.png",
           "team": [
             261,
             81,
@@ -3518,7 +3518,7 @@
         {
           "name": "Cipher Peon Forgs",
           "class": "CIPHER_PEON",
-          "sprite": "roughneck.png",
+          "sprite": "orre_cipher_peon.png",
           "team": [
             355,
             341,
@@ -3531,7 +3531,7 @@
         {
           "name": "Cipher Peon Ezoor",
           "class": "CIPHER_PEON",
-          "sprite": "roughneck.png",
+          "sprite": "orre_cipher_peon.png",
           "team": [
             353,
             216,
@@ -3544,7 +3544,7 @@
         {
           "name": "Cipher Peon Pellim",
           "class": "CIPHER_PEON",
-          "sprite": "roughneck.png",
+          "sprite": "orre_cipher_peon.png",
           "team": [
             185,
             366
@@ -3556,7 +3556,7 @@
         {
           "name": "Cipher Peon Kapen",
           "class": "CIPHER_PEON",
-          "sprite": "roughneck.png",
+          "sprite": "orre_cipher_peon.png",
           "team": [
             313,
             325,
@@ -3571,7 +3571,7 @@
         {
           "name": "Cipher Peon Fenton",
           "class": "CIPHER_PEON",
-          "sprite": "roughneck.png",
+          "sprite": "orre_cipher_peon.png",
           "team": [
             118,
             318,
@@ -3694,7 +3694,7 @@
         {
           "name": "Cipher Peon Nore",
           "class": "CIPHER_PEON",
-          "sprite": "roughneck.png",
+          "sprite": "orre_cipher_peon.png",
           "team": [
             267,
             205,
@@ -3708,7 +3708,7 @@
         {
           "name": "Cipher Peon Kloak",
           "class": "CIPHER_PEON",
-          "sprite": "roughneck.png",
+          "sprite": "orre_cipher_peon.png",
           "team": [
             166,
             313,
@@ -3724,7 +3724,7 @@
         {
           "name": "Cipher Peon Baila",
           "class": "CIPHER_PEON",
-          "sprite": "roughneck.png",
+          "sprite": "orre_cipher_peon.png",
           "team": [
             315,
             45,
@@ -3737,7 +3737,7 @@
         {
           "name": "Cipher Peon Arton",
           "class": "CIPHER_PEON",
-          "sprite": "roughneck.png",
+          "sprite": "orre_cipher_peon.png",
           "team": [
             225,
             221,
@@ -3750,7 +3750,7 @@
         {
           "name": "Cipher Peon Dioge",
           "class": "CIPHER_PEON",
-          "sprite": "roughneck.png",
+          "sprite": "orre_cipher_peon.png",
           "team": [
             214,
             284,
@@ -3763,7 +3763,7 @@
         {
           "name": "Team Snagem Niver",
           "class": "TEAM_SNAGEM",
-          "sprite": "roughneck.png",
+          "sprite": "orre_snagem_grunt.png",
           "team": [
             335,
             253,
@@ -3777,7 +3777,7 @@
         {
           "name": "Team Snagem Fuston",
           "class": "TEAM_SNAGEM",
-          "sprite": "roughneck.png",
+          "sprite": "orre_snagem_grunt.png",
           "team": [
             42,
             267,
@@ -3791,7 +3791,7 @@
         {
           "name": "Cipher Peon Verde",
           "class": "CIPHER_PEON",
-          "sprite": "roughneck.png",
+          "sprite": "orre_cipher_peon.png",
           "team": [
             153,
             89,
@@ -3880,7 +3880,7 @@
             "battle": {
               "name": "Snagem Head Gonzap",
               "class": "SNAGEM",
-              "sprite": "roughneck.png",
+              "sprite": "orre_snagem_gonzap.png",
               "is_boss_battle": true,
               "team": [
                 227,
@@ -3957,7 +3957,7 @@
           {
             "name": "Cooltrainer Botan",
             "class": "COLOSSEUM",
-            "sprite": "acetrainer_m.png",
+            "sprite": "orre_cool_trainer_m.png",
             "is_boss_battle": true,
             "team": [
               191,
@@ -3974,7 +3974,7 @@
           {
             "name": "Cooltrainer Liqui",
             "class": "COLOSSEUM",
-            "sprite": "acetrainer_m.png",
+            "sprite": "orre_cool_trainer_m.png",
             "is_boss_battle": true,
             "team": [
               183,
@@ -3993,7 +3993,7 @@
           {
             "name": "Rich Boy Dugo",
             "class": "COLOSSEUM",
-            "sprite": "acetrainer_m.png",
+            "sprite": "orre_rich_boy.png",
             "is_boss_battle": true,
             "team": [
               328,
@@ -4080,7 +4080,7 @@
         {
           "name": "Cipher Peon Grezle",
           "class": "CIPHER_PEON",
-          "sprite": "roughneck.png",
+          "sprite": "orre_cipher_peon.png",
           "team": [
             312,
             267,
@@ -4094,7 +4094,7 @@
         {
           "name": "Cipher Peon Humah",
           "class": "CIPHER_PEON",
-          "sprite": "roughneck.png",
+          "sprite": "orre_cipher_peon.png",
           "team": [
             336,
             198,
@@ -4108,7 +4108,7 @@
         {
           "name": "Cipher Peon Ibsol",
           "class": "CIPHER_PEON",
-          "sprite": "roughneck.png",
+          "sprite": "orre_cipher_peon.png",
           "team": [
             311,
             269,
@@ -4122,7 +4122,7 @@
         {
           "name": "Cipher Peon Kollo",
           "class": "CIPHER_PEON",
-          "sprite": "roughneck.png",
+          "sprite": "orre_cipher_peon.png",
           "team": [
             366,
             224,
@@ -4136,7 +4136,7 @@
         {
           "name": "Cipher Peon Gorog",
           "class": "CIPHER_PEON",
-          "sprite": "roughneck.png",
+          "sprite": "orre_cipher_peon.png",
           "team": [
             90,
             111,
@@ -4151,7 +4151,7 @@
         {
           "name": "Cipher Peon Lok",
           "class": "CIPHER_PEON",
-          "sprite": "roughneck.png",
+          "sprite": "orre_cipher_peon.png",
           "team": [
             15,
             162,
@@ -4165,7 +4165,7 @@
         {
           "name": "Cipher Peon Kleto",
           "class": "CIPHER_PEON",
-          "sprite": "roughneck.png",
+          "sprite": "orre_cipher_peon.png",
           "team": [
             359,
             235,
@@ -4215,7 +4215,7 @@
             "battle": {
               "name": "Cipher Admin Gorigan",
               "class": "CIPHER_ADMIN",
-              "sprite": "blackbelt.png",
+              "sprite": "orre_cipher_gorigan.png",
               "team": [
                 199,
                 217,
@@ -4386,7 +4386,7 @@
           {
             "name": "Cipher Admin Miror B.",
             "class": "ELITE_FOUR",
-            "sprite": "guitarist.png",
+            "sprite": "orre_trainer_miror_b.png",
             "is_boss_battle": true,
             "team": [
               348,
@@ -4504,7 +4504,7 @@
         "leader": {
           "name": "Cipher Head Evice",
           "class": "CHAMPION",
-          "sprite": "gentleman.png",
+          "sprite": "orre_leader_evice.png",
           "is_boss_battle": true,
           "team": [
             306,
@@ -4558,7 +4558,7 @@
         {
           "name": "Cipher Peon Bopen",
           "class": "CIPHER_PEON",
-          "sprite": "roughneck.png",
+          "sprite": "orre_cipher_peon.png",
           "team": [
             88,
             269,
@@ -4571,7 +4571,7 @@
         {
           "name": "Cipher Peon Baila",
           "class": "CIPHER_PEON",
-          "sprite": "roughneck.png",
+          "sprite": "orre_cipher_peon.png",
           "team": [
             192,
             44,
@@ -4584,7 +4584,7 @@
         {
           "name": "Cipher Peon Arton",
           "class": "CIPHER_PEON",
-          "sprite": "roughneck.png",
+          "sprite": "orre_cipher_peon.png",
           "team": [
             225,
             221,
@@ -4597,7 +4597,7 @@
         {
           "name": "Cipher Peon Dioge",
           "class": "CIPHER_PEON",
-          "sprite": "roughneck.png",
+          "sprite": "orre_cipher_peon.png",
           "team": [
             284,
             168,
@@ -4624,7 +4624,7 @@
         {
           "name": "Hunter Aline",
           "class": "HUNTER",
-          "sprite": "hiker.png",
+          "sprite": "orre_hunter_m.png",
           "team": [
             303,
             375,
@@ -4637,7 +4637,7 @@
         {
           "name": "St.Performer Luper",
           "class": "STPERFORMER",
-          "sprite": "acetrainer_m.png",
+          "sprite": "orre_street_performer.png",
           "team": [
             224,
             211,
@@ -4651,7 +4651,7 @@
         {
           "name": "Rider Kevel",
           "class": "RIDER",
-          "sprite": "biker.png",
+          "sprite": "orre_rider.png",
           "team": [
             28,
             195,
@@ -4761,7 +4761,7 @@
         {
           "name": "Navigator Abson",
           "class": "NAVIGATOR",
-          "sprite": "sailor.png",
+          "sprite": "orre_sailor.png",
           "team": [
             342,
             279,
@@ -4776,7 +4776,7 @@
         {
           "name": "Cipher Peon Kleef",
           "class": "CIPHER_PEON",
-          "sprite": "roughneck.png",
+          "sprite": "orre_cipher_peon.png",
           "team": [
             213,
             242,
@@ -4789,7 +4789,7 @@
         {
           "name": "Cipher Peon Haben",
           "class": "CIPHER_PEON",
-          "sprite": "roughneck.png",
+          "sprite": "orre_cipher_peon.png",
           "team": [
             284,
             206,
@@ -4803,7 +4803,7 @@
         {
           "name": "Chaser Furgy",
           "class": "CHASER",
-          "sprite": "roughneck.png",
+          "sprite": "orre_chaser_m.png",
           "team": [
             178,
             85,
@@ -4817,7 +4817,7 @@
         {
           "name": "Sailor Golos",
           "class": "SAILOR",
-          "sprite": "sailor.png",
+          "sprite": "orre_sailor.png",
           "team": [
             304,
             222,
@@ -4830,7 +4830,7 @@
         {
           "name": "Hunter Jetsal",
           "class": "HUNTER",
-          "sprite": "hiker.png",
+          "sprite": "orre_hunter_m.png",
           "team": [
             215,
             203,
@@ -4844,7 +4844,7 @@
         {
           "name": "Cipher Peon Bastil",
           "class": "CIPHER_PEON",
-          "sprite": "roughneck.png",
+          "sprite": "orre_cipher_peon.png",
           "team": [
             169,
             336,
@@ -4858,7 +4858,7 @@
         {
           "name": "Cipher Peon Litnar",
           "class": "CIPHER_PEON",
-          "sprite": "roughneck.png",
+          "sprite": "orre_cipher_peon.png",
           "team": [
             101,
             200,
@@ -5321,7 +5321,7 @@
         {
           "name": "Hunter Dewig",
           "class": "HUNTER",
-          "sprite": "hiker.png",
+          "sprite": "orre_hunter_f.png",
           "team": [
             335,
             274,
@@ -5334,7 +5334,7 @@
         {
           "name": "Bodybuilder Palen",
           "class": "BODYBUILDER",
-          "sprite": "blackbelt.png",
+          "sprite": "orre_bodybuilder2.png",
           "team": [
             157,
             288,
@@ -5347,7 +5347,7 @@
         {
           "name": "Worker Toway",
           "class": "WORKER",
-          "sprite": "engineer.png",
+          "sprite": "orre_engineer.png",
           "team": [
             228,
             203,
@@ -5361,7 +5361,7 @@
         {
           "name": "St.Performer Regol",
           "class": "STPERFORMER",
-          "sprite": "acetrainer_m.png",
+          "sprite": "orre_street_performer.png",
           "team": [
             101,
             215,
@@ -5374,7 +5374,7 @@
         {
           "name": "Fun Old Man Gorbel",
           "class": "FUN_OLD_MAN",
-          "sprite": "oldman.png",
+          "sprite": "orre_fun_old_man.png",
           "team": [
             365,
             259,
@@ -5401,7 +5401,7 @@
         {
           "name": "Bodybuilder Varug",
           "class": "BODYBUILDER",
-          "sprite": "blackbelt.png",
+          "sprite": "orre_bodybuilder.png",
           "team": [
             67,
             66,
@@ -5414,7 +5414,7 @@
         {
           "name": "Rider Shatol",
           "class": "RIDER",
-          "sprite": "biker.png",
+          "sprite": "orre_rider.png",
           "team": [
             75,
             232,
@@ -5474,82 +5474,29 @@
     }
   },
   "JOURNAL_MISSIONS": [
-    {
-      "id": "orre_m1",
-      "type": "SIDE",
-      "title": "Welcome to Orre",
-      "description": "Cipher Peons are attacking Phenac City's fountain. Stop them and meet Rui.",
-      "condition": {
-        "flag_not": "got_snag_machine",
-        "required_region": "ORRE"
-      },
-      "reward": "Snag Machine",
-      "region": "ORRE"
-    },
-    {
-      "id": "orre_m2",
-      "type": "SIDE",
-      "title": "Pyrite and The Under",
-      "description": "Cipher runs Pyrite Town from The Under. Snag their Shadow Pokemon and beat Admin Venus.",
-      "condition": {
-        "flag": "got_snag_machine",
-        "flag_not": "cleared_the_under",
-        "required_region": "ORRE"
-      },
-      "reward": "The way to Agate",
-      "region": "ORRE"
-    },
-    {
-      "id": "orre_m3",
-      "type": "SIDE",
-      "title": "Realgam Tower",
-      "description": "Purify your Shadow Pokemon at Agate's Relic Stone, then take down Cipher at Realgam Tower.",
-      "condition": {
-        "flag": "met_agate_elder",
-        "flag_not": "beat_orre_champion",
-        "required_region": "ORRE"
-      },
-      "reward": "Orre is saved",
-      "region": "ORRE"
-    },
-    {
-      "id": "orre_m4",
-      "type": "SIDE",
-      "title": "The Wishing Star",
-      "description": "Cipher's files mention a wishing star near Agate's Relic Stone.",
-      "condition": {
-        "flag": "beat_orre_champion",
-        "flag_not": "orre_jirachi_caught",
-        "required_region": "ORRE"
-      },
-      "reward": "Jirachi",
-      "region": "ORRE"
-    },
-    {
-      "id": "orre_m6",
-      "type": "SIDE",
-      "title": "Mt. Battle",
-      "description": "Climb Mt. Battle near Pyrite Town: 40 trainers in 10 areas, then Mt. Battle Master Vander. Climb again any time.",
-      "condition": {
-        "flag_not": "mt_battle_master_beaten",
-        "required_region": "ORRE"
-      },
-      "reward": "Battle practice",
-      "region": "ORRE"
-    },
-    {
-      "id": "orre_m5",
-      "type": "SIDE",
-      "title": "Gale of Darkness",
-      "description": "Cipher is back under Greevil. Clear the lairs from Gateon Port and stop him on Citadark Isle.",
-      "condition": {
-        "flag": "beat_orre_champion",
-        "flag_not": "xd_greevil_beaten",
-        "required_region": "ORRE"
-      },
-      "reward": "Every Shadow Pokemon",
-      "region": "ORRE"
-    }
+    {"id": "orre_m1", "type": "MAIN", "title": "Welcome to Orre", "description": "Orre is a desert region with no wild Pokémon in the grass. Rider Willie wants a battle at Outskirt Stand. Show him your partner!", "condition": {"required_region": "ORRE", "flag_not": "orre_beat_willie"}, "region": "ORRE", "completed_flag": "orre_beat_willie", "target": "OUTSKIRT_STAND"},
+    {"id": "orre_m2", "type": "MAIN", "title": "Trouble at the Fountain", "description": "Cross the Desert Trail to Phenac City. Men in strange uniforms are scaring people at the fountain!", "condition": {"required_region": "ORRE", "flag": "orre_beat_willie", "flag_not": "phenac_cipher_beaten"}, "region": "ORRE", "completed_flag": "phenac_cipher_beaten", "target": "PHENAC_CITY"},
+    {"id": "orre_m3", "type": "MAIN", "title": "The Snag Machine", "description": "Talk to Rui in Phenac City. She can see Shadow Pokémon. With the Snag Machine you can catch them from Cipher's trainers and save them!", "condition": {"required_region": "ORRE", "flag": "phenac_cipher_beaten", "flag_not": "got_snag_machine"}, "region": "ORRE", "completed_flag": "got_snag_machine", "target": "PHENAC_CITY", "reward": "Snag Machine"},
+    {"id": "orre_m4", "type": "MAIN", "title": "Pyrite Colosseum", "description": "Pyrite Town is rough, but its Colosseum gives a badge. Snag Shadow Pokémon in the Pyrite Building, then win the tournament!", "condition": {"required_region": "ORRE", "flag": "got_snag_machine", "region_badges_less": 1}, "region": "ORRE", "completed_badge": "PYRITE", "target": "PYRITE_TOWN", "reward": "Pyrite Badge"},
+    {"id": "orre_m5", "type": "MAIN", "title": "Miror B. in Pyrite Cave", "description": "Cipher Admin Miror B. is hiding in Pyrite Cave with Shadow Pokémon. Dance your way past him!", "condition": {"required_region": "ORRE", "region_badges_min": 1, "flag_not": "orre_miror_cave"}, "region": "ORRE", "completed_flag": "orre_miror_cave", "target": "PYRITE_CAVE"},
+    {"id": "orre_m6", "type": "MAIN", "title": "The Relic Stone", "description": "Pyrite Cave leads to Agate Village. Visit the village elder. The Relic Stone there can open a Shadow Pokémon's heart.", "condition": {"required_region": "ORRE", "flag": "orre_miror_cave", "flag_not": "met_agate_elder"}, "region": "ORRE", "completed_flag": "met_agate_elder", "target": "AGATE_VILLAGE"},
+    {"id": "orre_m7", "type": "MAIN", "title": "Dakim at Mt. Battle", "description": "Cipher Admin Dakim is attacking Mt. Battle, next to Agate Village. Stop him!", "condition": {"required_region": "ORRE", "flag": "met_agate_elder", "flag_not": "orre_dakim_mt_battle"}, "region": "ORRE", "completed_flag": "orre_dakim_mt_battle", "target": "MT_BATTLE"},
+    {"id": "orre_m8", "type": "MAIN", "title": "Into The Under", "description": "Below Pyrite Town is a hidden city called The Under. Cipher runs it! Go down from Pyrite and shut it down.", "condition": {"required_region": "ORRE", "flag": "orre_dakim_mt_battle", "flag_not": "cleared_the_under"}, "region": "ORRE", "completed_flag": "cleared_the_under", "target": "THE_UNDER"},
+    {"id": "orre_m9", "type": "MAIN", "title": "Under Colosseum", "description": "The Under has its own Colosseum. Win its tournament for the second badge!", "condition": {"required_region": "ORRE", "flag": "cleared_the_under", "region_badges_min": 1, "region_badges_less": 2}, "region": "ORRE", "completed_badge": "UNDER", "target": "UNDER_COLOSSEUM", "reward": "Under Badge"},
+    {"id": "orre_m10", "type": "MAIN", "title": "Ein's Shadow Pokémon Lab", "description": "Cipher makes Shadow Pokémon in a secret lab. Find Cipher Admin Ein and stop the machines!", "condition": {"required_region": "ORRE", "region_badges_min": 2, "flag_not": "orre_ein_lab"}, "region": "ORRE", "completed_flag": "orre_ein_lab", "target": "SHADOW_PKMN_LAB"},
+    {"id": "orre_m11", "type": "MAIN", "title": "Lovrina's Cipher Lab", "description": "Ein's notes point to Gateon Port. Professor Krane's lab is there, and Cipher has a lab of its own. Beat Cipher Admin Lovrina!", "condition": {"required_region": "ORRE", "flag": "orre_ein_lab", "flag_not": "xd_lovrina_beaten"}, "region": "ORRE", "completed_flag": "xd_lovrina_beaten", "target": "XD_CIPHER_LAB"},
+    {"id": "orre_m12", "type": "MAIN", "title": "The ONBS Building", "description": "Cipher took over Orre's TV station in Pyrite Town! Battle Commander Exol and get it back.", "condition": {"required_region": "ORRE", "flag": "xd_lovrina_beaten", "flag_not": "xd_exol_beaten"}, "region": "ORRE", "completed_flag": "xd_exol_beaten", "target": "XD_ONBS"},
+    {"id": "orre_m13", "type": "MAIN", "title": "Snattle at Phenac Stadium", "description": "Phenac's old mayor, Snattle, is really a Cipher Admin! He's waiting at Phenac Stadium.", "condition": {"required_region": "ORRE", "flag": "xd_exol_beaten", "flag_not": "orre_snattle_phenac"}, "region": "ORRE", "completed_flag": "orre_snattle_phenac", "target": "PHENAC_CITY"},
+    {"id": "orre_m14", "type": "MAIN", "title": "Phenac Stadium", "description": "Now win Phenac Stadium's tournament for the third badge!", "condition": {"required_region": "ORRE", "flag": "orre_snattle_phenac", "region_badges_min": 2, "region_badges_less": 3}, "region": "ORRE", "completed_badge": "PHENAC", "target": "PHENAC_CITY", "reward": "Phenac Badge"},
+    {"id": "orre_m15", "type": "MAIN", "title": "Snagem Hideout", "description": "Team Snagem's hideout is out in the desert. Their boss, Gonzap, has Shadow Pokémon too. Take him on!", "condition": {"required_region": "ORRE", "region_badges_min": 3, "flag_not": "beat_gonzap"}, "region": "ORRE", "completed_flag": "beat_gonzap", "target": "SNAGEM_HIDEOUT"},
+    {"id": "orre_m16", "type": "MAIN", "title": "Orre Colosseum", "description": "The biggest tournament in Orre! Win it for the last badge.", "condition": {"required_region": "ORRE", "flag": "beat_gonzap", "region_badges_min": 3, "region_badges_less": 4}, "region": "ORRE", "completed_badge": "ORRE", "target": "ORRE_COLOSSEUM", "reward": "Orre Badge"},
+    {"id": "orre_m17", "type": "MAIN", "title": "Cipher Key Lair", "description": "Cipher's last base is under Gateon Port. Beat Cipher Admin Gorigan to learn where their leader is.", "condition": {"required_region": "ORRE", "region_badges_min": 4, "flag_not": "xd_gorigan_beaten"}, "region": "ORRE", "completed_flag": "xd_gorigan_beaten", "target": "XD_CIPHER_KEY_LAIR"},
+    {"id": "orre_m18", "type": "MAIN", "title": "Realgam Tower", "description": "Cipher's leader is Evice, the man who built Realgam Tower. Beat his admins and then Evice himself to save Orre!", "condition": {"required_region": "ORRE", "flag": "xd_gorigan_beaten", "flag_not": "beat_orre_champion"}, "region": "ORRE", "completed_flag": "beat_orre_champion", "target": "REALGAM_TOWER", "reward": "Orre Champion"},
+    {"id": "orre_s1", "type": "SIDE", "title": "Professor Krane's Eevee", "description": "Professor Krane works at the Pokémon HQ Lab in Gateon Port. Pay him a visit!", "condition": {"required_region": "ORRE", "visited": "GATEON_PORT", "flag_not": "got_krane_eevee"}, "region": "ORRE", "completed_flag": "got_krane_eevee", "target": "GATEON_PORT"},
+    {"id": "orre_s2", "type": "SIDE", "title": "Mt. Battle", "description": "After the title, Mt. Battle Master Vander waits at the top of Mt. Battle, near Agate Village. Climb all 10 areas to reach him!", "condition": {"required_region": "ORRE", "flag": "beat_orre_champion", "flag_not": "mt_battle_master_beaten"}, "region": "ORRE", "completed_flag": "mt_battle_master_beaten", "target": "MT_BATTLE", "reward": "Battle practice"},
+    {"id": "orre_s3", "type": "SIDE", "title": "The Wishing Star", "description": "Cipher's files mention a wishing star near Agate's Relic Stone. Look in the Relic Forest.", "condition": {"required_region": "ORRE", "flag": "beat_orre_champion", "flag_not": "orre_jirachi_caught"}, "region": "ORRE", "completed_flag": "orre_jirachi_caught", "target": "RELIC_FOREST", "reward": "Jirachi"},
+    {"id": "orre_s4", "type": "SIDE", "title": "Ho-Oh's Blessing", "description": "Purify every Shadow Pokémon at the Relic Stone. Then a rainbow Pokémon may appear in the Relic Forest.", "condition": {"required_region": "ORRE", "flag": "orre_all_purified", "flag_not": "orre_ho_oh_caught"}, "region": "ORRE", "completed_flag": "orre_ho_oh_caught", "target": "RELIC_FOREST", "reward": "Ho-Oh"},
+    {"id": "orre_s5", "type": "SIDE", "title": "Gale of Darkness", "description": "Cipher is back under Grand Master Greevil! Sail from Gateon Port to Citadark Isle and beat his three admins, then Greevil.", "condition": {"required_region": "ORRE", "flag": "beat_orre_champion", "flag_not": "xd_greevil_beaten"}, "region": "ORRE", "completed_flag": "xd_greevil_beaten", "target": "XD_CITADARK_ISLE", "reward": "Every Shadow Pokémon"}
   ],
   "REGION_START": {
     "ORRE": {
@@ -5562,6 +5509,10 @@
         197
       ],
       "professor": "Professor Krane",
+      "newgame_text": "orre_newgame_intro",
+      "intro_text": "orre_partners_intro",
+      "starter_text": "orre_partners_join",
+      "partners_join": true,
       "dex_list": [
         12,
         15,
@@ -6732,5 +6683,23 @@
     "304": 30,
     "194": 10,
     "446": 2
+  },
+  "GAME_TEXT": {
+    "orre_newgame_intro": [
+      "Far from the green regions lies Orre, a dry land of sand, rock and wind.",
+      "Hardly any wild Pokémon live in its grass. Trainers here battle in big stadiums called Colosseums.",
+      "But lately, something is wrong. Some Pokémon have had their hearts shut tight. They attack anyone, even people.",
+      "People call them Shadow Pokémon. A secret group called Cipher is making them.",
+      "Your motorbike rumbles to a stop at Outskirt Stand, an old train turned into a diner at the edge of the desert."
+    ],
+    "orre_partners_intro": [
+      "Two Pokémon hop down from the sidecar: Espeon and Umbreon.",
+      "They grew up together as Eevee, and they have never been apart.",
+      "Which one will lead the way beside you?"
+    ],
+    "orre_partners_join": [
+      "{other} doesn't want to be left behind! It bounds after {lead} and joins your team too.",
+      "With {lead} and {other} at your side, your journey through Orre begins!"
+    ]
   }
 }

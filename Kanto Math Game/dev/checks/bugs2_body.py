@@ -19,7 +19,7 @@ def route_buttons(area):
     story.current_area_key = area
     p = PlayState(g); g.change_state(p)
     p.show_progression_menu()
-    return p, [b.text for b in p.route_buttons]
+    return p, [b.text[2:] if b.text.startswith("> ") else b.text for b in p.route_buttons]  # (gold: the goal's step)
 
 
 def city_buttons(area, kind="travel_options"):
@@ -40,6 +40,7 @@ for i in range(3):
     story.defeated_trainers.get("NS_CASTLE", set()).discard(i)
 p, btns = route_buttons("NS_CASTLE")
 check(btns[:2] == ["BATTLE PLASMA SAGE", "CONFRONT N"] and "STOP GHETSIS" in btns, f"castle menu: {btns}")
+check([b.text for b in p.route_buttons if b.text.startswith("> ")] == ["> CONFRONT N"], "N is the gold step first")
 n_item = next(o for o in SP["NS_CASTLE"]["route_menu"] if o["text"] == "CONFRONT N")
 p._get_route_callback(n_item)()
 check(not isinstance(g.current_state, TrainerIntroState), "N waits until the Sages are beaten")
@@ -59,6 +60,8 @@ check(not isinstance(g.current_state, TrainerIntroState), "Ghetsis waits until N
 story.story_flags["defeated_n_castle"] = True
 p, btns = route_buttons("NS_CASTLE")
 check("CONFRONT N" not in btns and "STOP GHETSIS" in btns, f"after N: {btns}")
+_, gold = route_buttons("NS_CASTLE")
+check(any(b.text == "> STOP GHETSIS" for b in _.route_buttons), "then Ghetsis is the gold step")
 p._get_route_callback(g_item)()
 st = g.current_state
 check(isinstance(st, TrainerIntroState) and st.next_state.victory_flag == "beat_unova_champion"
@@ -88,8 +91,11 @@ check(striaton == {"495": [506, 513], "498": [506, 515], "501": [506, 511]}, "St
 from src.world import story_events
 check(story_events.get("dreamyard_monkey")["gift_pokemon"] == {"495": 515, "498": 511, "501": 513, "default": 511},
       "Fennel's monkey beats that leader")
-acc = SP["ACCUMULA_TOWN"]["on_enter_event"]["trainer"]["team_choice"]
-check(acc == {"495": [498, 504], "498": [501, 504], "501": [495, 504]}, "Accumula rival uses base starters")
+# The early rival battles (Bianca on Route 2, Cheren at Striaton, as in BW) use unevolved starters.
+_bianca = SP["UNOVA_ROUTE_2"]["on_enter_event"]["trainer"]["team_choice"]
+_cheren = SP["STRIATON_CITY"]["on_enter_event"]["trainer"]["team_choice"]
+check(_bianca == {"495": [506, 501], "498": [506, 495], "501": [506, 498]}
+      and _cheren == {"495": [498, 509], "498": [501, 509], "501": [495, 509]}, "early rivals use base starters")
 
 # U-D2 fishing by region.
 for area, want in (("UNOVA_ROUTE_17", "UNOVA"), ("JOHTO_ROUTE_32", "JOHTO"), ("KANTO_ROUTE_12", None)):

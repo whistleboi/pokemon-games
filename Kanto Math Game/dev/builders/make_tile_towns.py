@@ -6,7 +6,7 @@ tileset, and a few are made here (BUILT).
 
 Superseded (Jordan, 10-30): Kalos towns now use the X/Y maps with their labels taken out
 (dev/builders/clean_kalos_maps.py). Running this would overwrite those backgrounds in
-assets/journeys/towns/<key>.png (1280 x 540); its full maps go to dev/builders/out/.
+assets/backgrounds/kalos/towns/<key>.png (1280 x 540); its full maps go to dev/builders/out/.
 
     python dev/builders/make_tile_towns.py [town ...]      (default: every town here)
 """
@@ -281,7 +281,7 @@ def render(ground, objects, extra=None, grass=None):
 
 
 def save(img, key):
-    """The full map for checking, and the town background the game uses (assets/journeys/towns, picked
+    """The full map for checking, and the town background the game uses (assets/backgrounds/kalos/towns, picked
     first): 1280 x 540, filling the width (a little of the top and bottom trimmed)."""
     os.makedirs("dev/builders/out", exist_ok=True)
     pygame.image.save(img, f"dev/builders/out/{key}_tiles_raw.png")
@@ -289,7 +289,7 @@ def save(img, key):
     sm = pygame.transform.smoothscale(img, (1280, round(img.get_height() * k)))
     framed = pygame.Surface((1280, 540))
     framed.blit(sm, (0, (540 - sm.get_height()) // 2))
-    out = f"assets/journeys/towns/{key}.png"
+    out = f"assets/backgrounds/kalos/towns/{key}.png"
     pygame.image.save(framed, out)
     print("ok", key, img.get_size(), round(k, 3), out)
 

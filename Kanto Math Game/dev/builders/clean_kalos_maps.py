@@ -6,7 +6,7 @@ see-through.
 
 Each cleaned map is fitted whole into the town screen (1280 x 540): the full height, centred, with a
 blurred, darkened copy of itself filling the sides. Saved where the game looks first for a town's
-background (assets/journeys/towns/<key>.png); a check sheet goes to dev/builders/out/kalos_clean/.
+background (assets/backgrounds/kalos/towns/<key>.png); a check sheet goes to dev/builders/out/kalos_clean/.
 Vaniville uses Jordan's own cleaned copy (assets/backgrounds/kalos/town_map_clean.png).
 
     python dev/builders/clean_kalos_maps.py [town ...]
@@ -18,7 +18,7 @@ os.environ.setdefault("SDL_VIDEODRIVER", "dummy")
 import pygame  # noqa: E402
 
 SRC = os.path.join("assets", "backgrounds", "kalos")
-OUT = os.path.join("assets", "journeys", "towns")
+OUT = os.path.join("assets", "backgrounds", "kalos", "towns")
 CHECK = os.path.join("dev", "builders", "out", "kalos_clean")
 TOWNS = ["ambrette_town", "aquacorde_town", "camphrier_town", "coumarine_city", "couriway_town",
          "cyllage_city", "dendemille_town", "geosenge_town", "kiloude_city", "laverre_city", "lumiose_city",
