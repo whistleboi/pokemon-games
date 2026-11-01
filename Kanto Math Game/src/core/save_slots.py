@@ -58,6 +58,13 @@ def first_empty(save_dir):
     return None
 
 
+def by_recent(save_dir):
+    """Every slot number: the used ones newest save first (file or .bak), then the empty ones."""
+    used = used_slots(save_dir)
+    when = {i: max(_stamp(slot_path(save_dir, i))[0], _stamp(slot_path(save_dir, i) + ".bak")[0]) for i in used}
+    return sorted(used, key=lambda i: (-when[i], i)) + [i for i in range(SAVE_SLOTS) if i not in used]
+
+
 def _stamp(path):
     try:
         st = os.stat(path)

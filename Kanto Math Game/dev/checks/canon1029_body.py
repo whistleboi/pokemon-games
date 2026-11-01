@@ -579,4 +579,134 @@ _t = _labels("LAVARIDGE_TOWN")
 check(any(l.startswith("> ") and "Gym" in l for l in _t), f"Lavaridge: the Gym is gold for the Heat Badge {_t}")
 story.story_flags, _b19, story.current_area_key, story.defeated_trainers = _saved19
 story.badges = _b19
+print("20) Kalos's Journal: the X/Y story in order, and each step's place is open by then (Jordan, 11-01)")
+from src.world import guide as _g20, hms as _hms20
+_saved20 = (dict(story.story_flags), {r: list(b) for r, b in story.badges.items()}, story.current_area_key, dict(story.inventory))
+story.current_area_key = "VANIVILLE_TOWN"
+story.badges["KALOS"] = []
+for _k in list(story.story_flags):
+    story.story_flags.pop(_k)
+for _k in [k for k in story.inventory if k.startswith("HM_")]:
+    story.inventory.pop(_k)
+_steps = [(None, "kalos_m1"), ("defeated_rival_vaniville", "kalos_m2"), ("defeated_shauna_aquacorde", "kalos_m3"),
+          ("BUG", "kalos_m4"), ("met_sycamore", "kalos_m5"), ("visited_PARFUM_PALACE", "kalos_m6"),
+          ("glittering_cave_cleared", "kalos_m7"), ("CLIFF", "kalos_m8"), ("defeated_rival_mastery", "kalos_m9"),
+          ("RUMBLE", "kalos_m10"), ("PLANT", "kalos_m11"), ("kalos_power_plant_cleared", "kalos_m12"),
+          ("VOLTAGE", "kalos_m13"), ("FAIRY", "kalos_m14"), ("pokeball_factory_cleared", "kalos_m15"),
+          ("frost_cavern_cleared", "kalos_m16"), ("PSYCHIC", "kalos_m17"), ("lysandre_labs_cleared", "kalos_m18"),
+          ("geosenge_flare_cleared", "kalos_m19"), ("ICEBERG", "kalos_m20"), ("beat_kalos_champion", None)]
+_order, _reach, _prev = [], [], "VANIVILLE_TOWN"
+for _what, _want in _steps:
+    if _what and _what.isupper():
+        story.badges["KALOS"].append(_what)
+        _hms20.give_for_badges(story)
+    elif _what:
+        story.story_flags[_what] = True
+    _main = [m for m in story.get_active_missions() if m["type"] == "MAIN"]
+    _order.append((_main[0]["id"] if _main else None) == _want)
+    if not _order[-1]:
+        print("      after", _what, "shows", [m["id"] for m in _main], "wanted", _want)
+    if _main:
+        _goal = _g20.goal_area(g)
+        _open = _g20.path_to(g, _prev, _goal)
+        _ok20 = bool(_open) and all(b in _g20.neighbours(g, a) for a, b in zip(_open, _open[1:]))
+        _reach.append(_ok20)
+        if not _ok20:
+            print("      ", _main[0]["id"], "can't reach", _goal, "from", _prev, _open)
+        _prev = _goal
+check(all(_order), "each story step shows the next mission")
+check(all(_reach), "and the way to it is open")
+_done = {m["id"] for m in story.get_all_journal_entries() if m["status"] == "COMPLETED"}
+check({f"kalos_m{i}" for i in range(1, 21)} <= _done, "all 20 story missions marked done")
+_ms = [m for m in g.loader.area_data["JOURNAL_MISSIONS"] if m["id"].startswith("kalos_")]
+check(all(m.get("target") in g.loader.area_data["STORY_PROGRESSION"] for m in _ms), "every Kalos mission points somewhere real")
+check(all((m.get("condition") or {}).get("required_region") == "KALOS" for m in _ms), "Kalos's missions stay in Kalos")
+# the gates: Team Flare's steps can't be skipped
+story.badges["KALOS"] = ["BUG", "CLIFF", "RUMBLE", "PLANT", "VOLTAGE", "FAIRY", "PSYCHIC"]
+for _f in ("lysandre_labs_cleared", "geosenge_flare_cleared", "frost_cavern_cleared", "pokeball_factory_cleared"):
+    story.story_flags.pop(_f, None)
+check("GEOSENGE_FLARE_HQ" not in _g20.neighbours(g, "GEOSENGE_TOWN"), "Flare HQ waits on Lysandre Labs")
+check("KALOS_ROUTE_17" not in _g20.neighbours(g, "DENDEMILLE_TOWN"), "Route 17 waits on Frost Cavern")
+check("KALOS_ROUTE_15" not in _g20.neighbours(g, "LAVERRE_CITY") and "KALOS_ROUTE_16" not in _g20.neighbours(g, "LUMIOSE_CITY"),
+      "Routes 15 and 16 wait on the Poké Ball Factory")
+check("KALOS_ROUTE_18" not in _g20.neighbours(g, "ANISTAR_CITY"), "Route 18 waits on the Flare HQ")
+_reqs = lambda a: g.loader.area_data["STORY_PROGRESSION"][a]["gym"]["requirements"]
+check("glittering_cave_cleared" in _reqs("CYLLAGE_CITY").get("flags", []) and
+      "kalos_power_plant_cleared" in _reqs("LUMIOSE_CITY").get("flags", []), "Grant and Clemont wait on Team Flare")
+_km = [o for o in g.loader.area_data["STORY_PROGRESSION"]["TOWER_OF_MASTERY"]["route_menu"] if o.get("action") == "NPC"]
+check(all(o.get("victory_flag") == "got_mega_ring" for o in _km), "the Mega Ring talk marks itself done")
+story.current_area_key = "VERMILLION_CITY"
+check(not any(m["id"].startswith("kalos_") for m in story.get_active_missions()), "and Kalos's missions don't show in Kanto")
+story.story_flags, _b20, story.current_area_key, story.inventory = _saved20
+story.badges = _b20
+print("21) League Redo: after a second title, the first region's Leaders at Lv 100 with six (Jordan, 11-01)")
+from src.world import league_redo as _lr
+from src.states.overworld import GymLobbyState as _GL21, CityState as _CS21, is_league as _isl21
+from src.states.systems import BadgeCaseState as _BC21
+_saved21 = (dict(story.story_flags), {r: list(b) for r, b in story.badges.items()}, story.current_area_key,
+            story.starting_region, story.player_team)
+story.starting_region = "KANTO"
+story.story_flags = {k: v for k, v in story.story_flags.items() if not k.startswith(("redo_", "league_redo_"))}
+story.story_flags.pop("beat_johto_champion", None)
+story.story_flags["beat_champion"] = True
+_prog = g.loader.area_data["STORY_PROGRESSION"]
+_kgyms = _lr.gyms(story, "KANTO")[0]
+story.badges["KANTO"] = [b for _k, b in _kgyms]
+check(len(_kgyms) == 8, f"Kanto has 8 Gyms {[k for k, _b in _kgyms]}")
+check(_lr.redo_region(story) is None, "one title: no League Redo yet")
+story.story_flags["beat_johto_champion"] = True
+check(_lr.redo_region(story) == "KANTO", "a second title opens Kanto's")
+story.current_area_key = "VIRIDIAN_CITY"
+_city = _CS21(g); g.change_state(_city)
+_said = " ".join(str(l) for l in (getattr(_city.dialogue_box, "text_lines", None) or [])) if getattr(_city, "dialogue_box", None) else ""
+check(story.story_flags.get("league_redo_told_KANTO") and "Professor Oak" in " ".join(_lr.call_lines(story, "KANTO")),
+      "back in Kanto, Professor Oak calls")
+check(not _lr.take_call(story, "KANTO"), "only once")
+_m = next((m for m in story.get_active_missions() if m["type"] == "MAIN"), {})
+check(_m.get("id") == "league_redo_kanto" and _m.get("target") == _kgyms[0][0], f"the Journal tracks it {_m.get('id')} -> {_m.get('target')}")
+# a Gym (the last one first: any order)
+_gk, _gb = _kgyms[-1]
+story.current_area_key = _gk
+_lob = _GL21(g); g.change_state(_lob)
+check(_lob.redo and _lob.next_opponent is _lob.leader, f"{_gk}: the Leader waits, League Redo ({_lob.status_text})")
+story.player_team = [_mon(150, 100, ["PSYCHIC"])]
+_lob.challenge_gym()
+_bs = g.current_state
+_bs = getattr(_bs, "battle_state", None) or getattr(_bs, "next_state", None) or _bs
+_team = getattr(_bs, "enemy_team", None) or getattr(_bs, "opponent_team", None) or []
+check(len(_team) == 6 and all(p.level == 100 for p in _team), f"six at level 100 {[(p.name, p.level) for p in _team]}")
+check(getattr(_bs, "victory_flag", None) == _lr.badge_flag("KANTO", _gb) and not getattr(_bs, "badge_reward", None),
+      f"a win stars the badge ({getattr(_bs, 'victory_flag', None)})")
+check(not any(_lr.is_legendary(p.id) for p in _team) and all(p.id <= 151 for p in _team),
+      "no legendaries, and Kanto's own Pokemon (Gen 1)")
+g.transitioning = False
+story.story_flags[_lr.badge_flag("KANTO", _gb)] = True
+check(not _GL21(g).redo, "won again: that Gym is done")
+_bc = _BC21(g, _city); _bc.current_page_idx = _bc.unlocked_regions.index("KANTO")
+_pocket = _bc.region_maps["KANTO"][_gb]
+check(_bc._starred("KANTO", _pocket) and not any(_bc._starred("KANTO", i) for i in range(1, 9) if i != _pocket),
+      f"the Badge Case stars it (pocket {_pocket})")
+_bc.draw()
+# all eight: the League at full strength
+for _k, _b in _kgyms:
+    story.story_flags[_lr.badge_flag("KANTO", _b)] = True
+check(_lr.league_open(story, "KANTO"), "all 8 won again: the League is next")
+_lk = _lr.gyms(story, "KANTO")[1]
+story.current_area_key = _lk
+story.story_flags[f"gym_progress_{_lk}"] = 0
+_lob = _GL21(g); g.change_state(_lob)
+check(_lob.redo and "League Redo" in _lob.status_text, f"{_lk}: {_lob.status_text}")
+_lob.challenge_gym()
+_bs = g.current_state
+_bs = getattr(_bs, "battle_state", None) or getattr(_bs, "next_state", None) or _bs
+_team = getattr(_bs, "enemy_team", None) or getattr(_bs, "opponent_team", None) or []
+check(len(_team) == 6 and all(p.level == 100 for p in _team), f"the Elite Four too {[(p.name, p.level) for p in _team]}")
+g.transitioning = False
+_m = next((m for m in story.get_active_missions() if m["type"] == "MAIN"), {})
+check(_m.get("target") == _lk, f"the Journal points at the League now ({_m.get('target')})")
+story.story_flags[_lr.champion_flag("KANTO")] = True
+check(not _lr.league_open(story, "KANTO") and not _GL21(g).redo, "the Champion beaten again: back to normal rematches")
+check(not any(m["id"] == "league_redo_kanto" for m in story.get_active_missions()), "and the mission is done")
+story.story_flags, _b21, story.current_area_key, story.starting_region, story.player_team = _saved21
+story.badges = _b21
 print(f"\n{'ALL PASS' if not fails else str(fails) + ' FAIL(S)'}")

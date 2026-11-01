@@ -2789,6 +2789,20 @@ class BadgeCaseState(GameState):
                 return f"{words} Badge"
         return f"Badge {i}"
 
+    def _starred(self, region, i):
+        """Pocket i's badge won again in the League Redo (src/world/league_redo.py)."""
+        from src.world import league_redo
+        names = [n for n, k in self.region_maps.get(region, {}).items() if k == i]
+        return any(league_redo.has_badge(self.game.story_manager, region, n) for n in names)
+
+    @staticmethod
+    def _draw_star(screen, center, r):
+        import math
+        pts = [(center[0] + (r if k % 2 == 0 else r * 0.45) * math.sin(math.pi * k / 5),
+                center[1] - (r if k % 2 == 0 else r * 0.45) * math.cos(math.pi * k / 5)) for k in range(10)]
+        pygame.draw.polygon(screen, (255, 214, 64), pts)
+        pygame.draw.polygon(screen, (150, 100, 10), pts, 3)
+
     def draw(self):
         screen = self.game.screen
         f = self.game.assets.fonts
@@ -2814,6 +2828,7 @@ class BadgeCaseState(GameState):
         ch = (inner.h - gap * (rows - 1)) // rows
         mouse = pygame.mouse.get_pos()
         hovered = None
+        stars = 0
         for i in range(1, count + 1):
             c, r = (i - 1) % cols, (i - 1) // cols
             pocket = pygame.Rect(inner.x + c * (cw + gap), inner.y + r * (ch + gap), cw, ch)
@@ -2835,15 +2850,22 @@ class BadgeCaseState(GameState):
             Utils.draw_text_outline(screen, name, f["label"] if f["label"].size(name)[0] <= cw - 12 else f["caption"],
                                     WHITE if earned else (150, 154, 170), pocket.centerx, pocket.bottom - 20,
                                     outline_color=theme.shade(velvet, 0.6), thickness=2)
+            starred = earned and self._starred(region, i)
+            if starred:  # won again in the League Redo
+                self._draw_star(screen, (pocket.right - 30, pocket.y + 30), 20)
+                stars += 1
             if pocket.collidepoint(mouse):
-                hovered = (i, earned)
+                hovered = (i, earned, starred)
 
         # The bar: the badge under the pointer, else how many; the region arrows.
         if hovered:
-            i, earned = hovered
-            line = f"{self._badge_name(region, i)} - earned!" if earned else f"Badge #{i}: not yet earned."
+            i, earned, starred = hovered
+            line = (f"{self._badge_name(region, i)} - won again in the League Redo!" if starred
+                    else f"{self._badge_name(region, i)} - earned!" if earned else f"Badge #{i}: not yet earned.")
         else:
             line = f"{earned_n} of {count} {region.title()} badges."
+            if stars:
+                line += f"  League Redo: {stars} of {count}."
         theme.draw_textbox(screen, self.bar_rect)
         bf = f["s_med"]
         theme.shadow_text(screen, line, bf, self.bar_rect.x + 32, self.bar_rect.centery - bf.get_height() // 2 - 2)

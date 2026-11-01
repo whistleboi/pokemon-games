@@ -26,6 +26,7 @@ from src.world.boss import BossManager
 from src.world import seasons
 from src.world import hoenn
 from src.world import guide
+from src.world import league_redo
 from src.pokemon import catching
 from src.pokemon import balance
 from src.world import levels
@@ -1731,7 +1732,7 @@ class PlayState(GameState):
             if story_events.get(key):
                 return lambda k=key: self.story_event(k)
             if key in self.game.assets.game_text:
-                return lambda k=key: self._route_npc_text(k)
+                return lambda k=key, f=item.get("victory_flag"): self._route_npc_text(k, f)
         return lambda: print(f"Unknown action: {action}")
 
     def _next_shadow(self):
@@ -1916,10 +1917,17 @@ class PlayState(GameState):
         _run_story_event(self, key, lambda c: self._check_route_condition(c, False),
                          lambda lines: self.show_dialogue(lines, callback=self.show_progression_menu))
 
-    def _route_npc_text(self, key):
+    def _route_npc_text(self, key, flag=None):
+        """Talk to someone here; the option's victory_flag (if any) is set once they're done."""
         self.is_progression_paused = True
         self.hide_menu_buttons()
-        self.show_dialogue(_resolve_lines(self.game, key), callback=self.show_progression_menu)
+
+        def done():
+            if flag:
+                self.game.story_manager.story_flags[flag] = True
+            self.show_progression_menu()
+
+        self.show_dialogue(_resolve_lines(self.game, key), callback=done)
 
     def visit_director_radio(self):
         self.is_progression_paused = True
@@ -5208,6 +5216,10 @@ class CityState(GameState):
         story = self.game.story_manager
         region = story.get_current_region()
         story.enter_region(region)
+        call = league_redo.take_call(story, region)  # back in the first region won: the League Redo
+        if call:
+            self.show_message(call)
+            return
         offer_flag = f"move_offer_{region.lower()}"
         if story.is_region_champion(region) and not story.story_flags.get(offer_flag):
             story.story_flags[offer_flag] = True
@@ -5794,6 +5806,7 @@ class GymLobbyState(GameState):
         self.is_cleared = False
         self.region = game.story_manager.get_current_region()
         self.is_league = is_league(self.gym_data)
+        self.redo = False  # a League Redo battle (src/world/league_redo.py)
 
         if self.is_league:
             # Every region's League: the Elite Four and the Champion in a row. A loss starts it
@@ -5805,6 +5818,8 @@ class GymLobbyState(GameState):
             self.gauntlet = self.trainers + [self.leader]
             self.rematch = game.story_manager.is_region_champion(self.region)
             mode_text = "Rematch" if self.rematch else "League Challenge"
+            if league_redo.league_open(game.story_manager, self.region):  # all 8 badges won again
+                self.redo, self.rematch, mode_text = True, False, "League Redo"
 
             if self.progress < len(self.gauntlet):
                 self.next_opponent = self.gauntlet[self.progress]
@@ -5825,10 +5840,19 @@ class GymLobbyState(GameState):
             # again from its first trainer, at the Orange Champion's post-game band (no badge again).
             self.orange_rematch = (self.region == "ORANGE" and bool(self.leader)
                                    and game.story_manager.is_region_champion("ORANGE"))
-            if self.orange_rematch and self.progress > len(self.trainers):
+            badge = (self.leader or {}).get("badge_reward")
+            self.redo = bool(badge and league_redo.active_here(game.story_manager, self.region)
+                             and not league_redo.has_badge(game.story_manager, self.region, badge))
+            if self.redo:  # the Leader alone, at full strength; the badge again, with a star
+                self.next_opponent = self.leader
+                self.status_text = (f"League Redo: {_fill_names(game, self.leader.get('name', 'The Leader'))}"
+                                    " is waiting, at full strength!")
+            elif self.orange_rematch and self.progress > len(self.trainers):
                 self.progress = 0
                 game.story_manager.story_flags[self.prog_key] = 0
-            if self.progress < len(self.trainers):
+            if self.redo:
+                pass
+            elif self.progress < len(self.trainers):
                 self.next_opponent = self.trainers[self.progress]
                 self.status_text = f"Trainer {self.progress + 1}/{len(self.trainers) + 1} is up next!"
             elif self.progress == len(self.trainers) and self.leader:
@@ -5969,6 +5993,21 @@ class GymLobbyState(GameState):
             t_data["name"] = _fill_names(self.game, t_data.get("name"))
             if t_data.get("dialogue"):
                 t_data["dialogue"] = {k: _resolve_lines(self.game, v) for k, v in t_data["dialogue"].items()}
+        if self.redo:  # League Redo: six Pokemon at level 100, a starred badge instead of the badge
+            name = t_data.get("name") or "Leader"
+            t_data["team"] = league_redo.redo_team(self.game, self.region, t_data.get("team", []))
+            t_data["levels"] = [league_redo.LEVEL] * len(t_data["team"])
+            badge = None if self.is_league else t_data.get("badge_reward")
+            t_data["badge_reward"] = None
+            if badge:
+                t_data["victory_flag"] = league_redo.badge_flag(self.region, badge)
+            elif is_leader:
+                t_data["victory_flag"] = league_redo.champion_flag(self.region)
+            else:
+                t_data["victory_flag"] = None
+            t_data["dialogue"] = dict(t_data.get("dialogue") or {},
+                                      intro=league_redo.intro_lines(name, league=self.is_league),
+                                      player_won=league_redo.won_lines(name, badge))
         # Rematches after the title: the games' rematch teams where we have them (FireRed/LeafGreen
         # for Kanto, HeartGold/SoulSilver for Johto: "rematch" in the data), else 10 levels up.
         rematch_boost = 0

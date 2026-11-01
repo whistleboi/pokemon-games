@@ -38,11 +38,11 @@
       "Mom: Come back soon. And keep sending those winnings home — I'm eyeing a place in Alola next!"
     ],
     "kalos_sycamore_intro": [
-      "Professor Sycamore: Ah, {player_name}! Welcome to Lumiose City — the heart of Kalos!",
-      "I study Pokémon Evolution, and the phenomenon I'm most fascinated by is Mega Evolution.",
-      "It's a temporary transformation powered by the bond between a trainer and their Pokémon.",
-      "To unlock it, you'll need a Mega Ring — and a trainer worthy of wielding one.",
-      "I think that might be you. But first — choose one of these three Pokémon as a partner!"
+      "Professor Sycamore: Ah, {player_name}! Welcome to Lumiose City, the heart of Kalos!",
+      "I study Pokémon Evolution, and what fascinates me most is Mega Evolution.",
+      "It's a short-lived change, powered by the bond between a trainer and their Pokémon.",
+      "To use it you'll need a Mega Ring. Korrina in Shalour City knows more about that.",
+      "For now, see all of Kalos and fill your Pokédex! Oh, and I have a gift from Kanto for you, too."
     ],
     "kalos_sycamore_starters": [
       "Professor Sycamore: Chespin, Fennekin, and Froakie — each one special in its own way.",
@@ -51,9 +51,8 @@
       "Explore Kalos. Discover its secrets. And find what Mega Evolution truly means."
     ],
     "kalos_rival_vaniville": [
-      "{rival_name}: {player_name}! Professor Sycamore said to meet here first.",
-      "I've been training already — can't waste a single day.",
-      "Let's battle! Right here, right now. Show me what you've got!"
+      "{rival_name}: Wait, {player_name}! Before we go, let's see what our new partners can do.",
+      "Let's battle! Right here, right now!"
     ],
     "kalos_rival_won": ["{rival_name}: Hmph. You're already stronger than I expected.", "Fine. I'll just have to work harder. I won't lose twice."],
     "kalos_rival_lost": ["{rival_name}: Yes! My training already shows!", "Don't get discouraged — we're just getting started."],
@@ -139,13 +138,20 @@
     ],
     "kalos_newgame_intro": [
       "Morning sunlight fills your new bedroom in Vaniville Town.",
-      "Mom: Rise and shine, {player_name}! The neighbors are waiting outside.",
-      "Mom: A letter came from Professor Sycamore in Lumiose City. It has your name on it!"
+      "Mom's Fletchling flutters in and pecks at your blanket. Time to get up!",
+      "Mom: {player_name}, the neighbors are at the door! They say Professor Sycamore picked you for something."
     ],
     "kalos_newgame_professor": [
-      "Professor Sycamore (letter): Bonjour, {player_name}!",
-      "I study Mega Evolution, and I need young trainers to help me explore Kalos.",
-      "I've sent three Pokémon with this letter. Please choose your partner!"
+      "Outside, your neighbor {rival_name} is waiting with a cheerful boy named Tierno.",
+      "{rival_name}: Hi, I'm {rival_name}. Professor Sycamore chose a few of us kids to help him. You too!",
+      "Tierno opens a case. Inside are three Poké Balls and a letter from the Professor.",
+      "Professor Sycamore (letter): Bonjour! Please each take one of these Pokémon and travel all over Kalos together!",
+      "Tierno: Newcomers pick first! Go ahead, {player_name}!"
+    ],
+    "kalos_starter_picks": [
+      "{rival_name}: Then I'll take {rival_pick}. It has the edge on yours, just so you know!",
+      "Tierno: And {friend_pick} is for {friend_name}, who's waiting for us in Aquacorde Town.",
+      "Tierno: The Professor sent Pokédexes too. See you in Aquacorde!"
     ],
     "kalos_mom_newstart_1": ["Mom: Vaniville is so charming! I already love our little house.", "Mom: If you send home prize money, I'll start a flower garden out back."],
     "kalos_mom_newstart_2": ["Mom: Lumiose City has a café on every corner. Bring me a pastry someday!", "Mom: And remember to rest. Even champions need naps."],
@@ -1112,7 +1118,7 @@
       "region": "KALOS",
       "backgrounds": { "main": "lumiose_city.png", "lab": "sycamore_lab.png", "gym": "lumiose_gym.png" },
       "has_gym": true,
-      "gym": {"trainers": [], "leader": {"name": "Clemont", "class": "GYM_LEADER", "sprite": "clemont.png", "team": [587, 82, 695], "levels": [35, 35, 37], "dialogue": {"intro": ["Clemont: Science is amazing! But so is battling! The future is now, {player_name}!"], "player_won": ["Clemont: Incredible! My calculations were off! You've earned the Voltage Badge!"], "player_lost": ["Clemont: The science checks out — you need more training. Come back!"]}, "rewards": {"balls": 5}, "is_boss_battle": true, "badge_reward": "VOLTAGE", "movesets": {"587": ["VOLT-SWITCH", "QUICK-ATTACK", "AERIAL-ACE"], "82": ["THUNDERBOLT", "ELECTRIC-TERRAIN", "MIRROR-SHOT"], "695": ["THUNDERBOLT", "QUICK-ATTACK", "GRASS-KNOT"]}}, "requirements": {"badges": 4, "fail_text": "Clemont's gym requires a special pass. Earn 4 badges first — his auto-lock system is no joke."}},
+      "gym": {"trainers": [], "leader": {"name": "Clemont", "class": "GYM_LEADER", "sprite": "clemont.png", "team": [587, 82, 695], "levels": [35, 35, 37], "dialogue": {"intro": ["Clemont: Science is amazing! But so is battling! The future is now, {player_name}!"], "player_won": ["Clemont: Incredible! My calculations were off! You've earned the Voltage Badge!"], "player_lost": ["Clemont: The science checks out — you need more training. Come back!"]}, "rewards": {"balls": 5}, "is_boss_battle": true, "badge_reward": "VOLTAGE", "movesets": {"587": ["VOLT-SWITCH", "QUICK-ATTACK", "AERIAL-ACE"], "82": ["THUNDERBOLT", "ELECTRIC-TERRAIN", "MIRROR-SHOT"], "695": ["THUNDERBOLT", "QUICK-ATTACK", "GRASS-KNOT"]}}, "requirements": {"badges": 4, "flags": ["kalos_power_plant_cleared"], "fail_text": "The Lumiose Gym has no power! Earn 4 badges, and drive Team Flare out of the Power Plant on Route 13."}},
       "travel_options": [
         {"text": "Route 4 (to Santalune)", "target_area": "KALOS_ROUTE_4"},
         {"text": "Route 5 (to Camphrier)", "target_area": "KALOS_ROUTE_5"},
@@ -1126,7 +1132,7 @@
         {"text": "Magenta District", "target_area": "LUMIOSE_MAGENTA_DISTRICT"},
         {"text": "Bleu District", "target_area": "LUMIOSE_BLEU_DISTRICT"},
         {"text": "Hibernal District", "target_area": "LUMIOSE_HIBERNAL_DISTRICT"},
-        {"text": "Route 16", "target_area": "KALOS_ROUTE_16"}
+        {"text": "Route 16", "target_area": "KALOS_ROUTE_16", "condition": ["has_fairy_badge", "pokeball_factory_cleared"]}
       ],
       "explore_options": [{"text": "Pokémon Center", "action": "HEAL"}, {"text": "Pokémon-Amie", "action": "AMIE"}, {"text": "Department Store", "action": "SHOP"}, {"text": "Visit Professor Sycamore", "action": "NPC", "target": "kalos_sycamore_intro", "flag_condition": "not met_sycamore", "victory_flag": "met_sycamore"}, {"text": "Choose Starter Pokémon", "action": "NPC", "target": "kalos_sycamore_starters", "condition": "no_kalos_starter", "flag_condition": "not got_kalos_starter"}, {"text": "Sycamore's Kanto Pokemon", "action": "EVENT", "color": "GOLD", "condition": "has_bug_badge", "flag_condition": "not got_kalos_kanto_starter", "event": {"lines": ["Professor Sycamore: These Pokemon come from Kanto, far away.", "Your partner and this one should get along. Take good care of it!"], "gift_pokemon": {"650": 1, "653": 4, "656": 7, "default": 1}, "flag": "got_kalos_kanto_starter"}}, {"text": "Challenge Gym", "action": "GYM"}, {"text": "Lysandre Café", "action": "NPC", "target": "kalos_lysandre_intro", "flag_condition": "not met_lysandre", "victory_flag": "met_lysandre"}],
       "next_area": "KALOS_ROUTE_5",
@@ -1176,7 +1182,7 @@
       "region": "KALOS",
       "backgrounds": { "main": "cyllage_city.png", "gym": "cyllage_gym.png" },
       "has_gym": true,
-      "gym": {"trainers": [], "leader": {"name": "Grant", "class": "GYM_LEADER", "sprite": "grant.png", "team": [698, 696], "levels": [25, 25], "dialogue": {"intro": ["Grant: I've scaled every peak in Kalos. Can you climb to my level?"], "player_won": ["Grant: You summit the challenge! Here is the Cliff Badge, and TM Rock Tomb.", "Take this Jaw Fossil too. The fossil lab in Ambrette Town can revive it!"], "player_lost": ["Grant: The climb continues. Train harder and try again."]}, "rewards": {"balls": 5, "JAW_FOSSIL": 1}, "is_boss_battle": true, "badge_reward": "CLIFF", "movesets": {"698": ["AURORA-BEAM", "ROCK-TOMB", "THUNDER-WAVE", "TAKE-DOWN"], "696": ["ROCK-TOMB", "BITE", "STOMP"]}}, "requirements": {"badges": 1, "fail_text": "Grant is climbing. Earn the Bug Badge first."}},
+      "gym": {"trainers": [], "leader": {"name": "Grant", "class": "GYM_LEADER", "sprite": "grant.png", "team": [698, 696], "levels": [25, 25], "dialogue": {"intro": ["Grant: I've scaled every peak in Kalos. Can you climb to my level?"], "player_won": ["Grant: You summit the challenge! Here is the Cliff Badge, and TM Rock Tomb.", "Take this Jaw Fossil too. The fossil lab in Ambrette Town can revive it!"], "player_lost": ["Grant: The climb continues. Train harder and try again."]}, "rewards": {"balls": 5, "JAW_FOSSIL": 1}, "is_boss_battle": true, "badge_reward": "CLIFF", "movesets": {"698": ["AURORA-BEAM", "ROCK-TOMB", "THUNDER-WAVE", "TAKE-DOWN"], "696": ["ROCK-TOMB", "BITE", "STOMP"]}}, "requirements": {"badges": 1, "flags": ["glittering_cave_cleared"], "fail_text": "Grant's Gym is shut for now. Earn the Bug Badge, and see what Team Flare is up to in Glittering Cave off Route 9."}},
       "travel_options": [
         {"text": "Route 9 (to Ambrette)", "target_area": "KALOS_ROUTE_9"},
         {"text": "Route 10 (to Geosenge)", "target_area": "KALOS_ROUTE_10", "condition": "has_cliff_badge"},
@@ -1200,7 +1206,7 @@
       "travel_options": [
         { "text": "Route 10 (to Cyllage)", "target_area": "KALOS_ROUTE_10" },
         { "text": "Route 11 (to Reflection Cave)", "target_area": "KALOS_ROUTE_11" },
-        { "text": "Team Flare HQ (Stone)", "target_area": "GEOSENGE_FLARE_HQ" }
+        { "text": "Team Flare HQ (Stone)", "target_area": "GEOSENGE_FLARE_HQ", "condition": ["has_psychic_badge", "lysandre_labs_cleared"] }
       ],
       "explore_options": [
         {"text": "Pokémon Center", "action": "HEAL"},
@@ -1236,6 +1242,7 @@
           "text": "Visit Tower of Mastery",
           "action": "NPC",
           "target": "kalos_korrina_mega",
+          "victory_flag": "got_mega_ring",
           "condition": "has_rumble_badge",
           "flag_condition": "not got_mega_ring"
         }
@@ -1272,7 +1279,7 @@
       "travel_options": [
         { "text": "Route 14 (to Lumiose/Dendemille)", "target_area": "KALOS_ROUTE_14" },
         { "text": "Poké Ball Factory", "target_area": "POKEBALL_FACTORY" },
-        { "text": "Route 15", "target_area": "KALOS_ROUTE_15", "condition": "has_fairy_badge" }
+        { "text": "Route 15", "target_area": "KALOS_ROUTE_15", "condition": ["has_fairy_badge", "pokeball_factory_cleared"] }
       ],
       "explore_options": [
         { "text": "Pokémon Center", "action": "HEAL" },
@@ -1291,7 +1298,7 @@
       "travel_options": [
         {"text": "Route 15 / Lost Hotel (west)", "target_area": "LOST_HOTEL"},
         {"text": "Frost Cavern (north)", "target_area": "FROST_CAVERN"},
-        {"text": "Route 17 (to Anistar)", "target_area": "KALOS_ROUTE_17"},
+        {"text": "Route 17 (to Anistar)", "target_area": "KALOS_ROUTE_17", "condition": "frost_cavern_cleared"},
         {"text": "Route 16", "target_area": "KALOS_ROUTE_16"},
         {"text": "Route 15", "target_area": "KALOS_ROUTE_15"}
       ],
@@ -1482,6 +1489,7 @@
           "text": "Receive Mega Ring",
           "action": "NPC",
           "target": "kalos_korrina_mega",
+          "victory_flag": "got_mega_ring",
           "condition": "has_rumble_badge",
           "flag_condition": "not got_mega_ring",
           "color": "GOLD"
@@ -1603,7 +1611,7 @@
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "Encounter Mewtwo", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD" },
-        { "text": "Encounter AZ's Floette", "action": "NPC", "target": "kalos_az_story", "flag_condition": "not met_az", "color": "GOLD" },
+        { "text": "Encounter AZ's Floette", "action": "NPC", "target": "kalos_az_story", "flag_condition": "not met_az", "victory_flag": "met_az", "color": "GOLD" },
         { "text": "Snowbelle City", "action": "EXIT", "target_area": "SNOWBELLE_CITY", "condition": "can_exit", "color": "RED" },
         { "text": "Victory Road (Kalos)", "action": "EXIT", "target_area": "VICTORY_ROAD_KALOS", "condition": "can_exit", "color": "RED" },
         {"text": "Route 20", "action": "EXIT", "target_area": "KALOS_ROUTE_20", "condition": "can_exit", "color": "RED"}
@@ -2203,118 +2211,40 @@
         "CHAMBER_OF_EMPTINESS": {"area_type": "dungeon", "route_name": "Chamber of Emptiness", "region": "KALOS", "battle_type": "cave", "min_rounds": 0, "trainer_pool": [], "next_area": "KALOS_ROUTE_22", "route_menu": [{"text": "SIT IN THE SILENCE", "action": "EVENT", "color": "BLUE", "event": {"lines": ["An empty stone room. It is perfectly quiet.", "A sign reads: 'Clear your mind, and your Pokémon will follow.'"]}}, {"text": "ROUTE 22", "action": "EXIT", "target": "KALOS_ROUTE_22", "condition": "can_exit", "color": "RED"}]}
     },
   "JOURNAL_MISSIONS": [
-    {
-      "id": "kalos_m1",
-      "type": "MAIN",
-      "title": "Welcome to Kalos",
-      "description": "Professor Sycamore invited you to Kalos to study Mega Evolution. Visit his lab in Lumiose City and receive your starter Pokémon!",
-      "condition": { "start_region": "KALOS", "badges_less": 1 },
-      "reward": "Starter Pokémon + Pokédex"
-    },
-    {
-      "id": "kalos_m2",
-      "type": "MAIN",
-      "title": "Bug Badge",
-      "description": "Challenge Viola at Santalune City Gym — the first gym in Kalos!",
-      "condition": { "start_region": "KALOS", "badges_less": 1, "visited": "SANTALUNE_CITY" },
-      "reward": "Bug Badge"
-    },
-    {
-      "id": "kalos_m3",
-      "type": "MAIN",
-      "title": "Cliff Badge",
-      "description": "Head to Cyllage City via Ambrette Town and challenge Grant the rock climber.",
-      "condition": { "start_region": "KALOS", "badges_min": 1, "badges_less": 2 },
-      "reward": "Cliff Badge"
-    },
-    {
-      "id": "kalos_m4",
-      "type": "MAIN",
-      "title": "Rumble Badge & Mega Ring",
-      "description": "Korrina at Shalour City holds the secret of Mega Evolution. Earn the Rumble Badge to unlock this power!",
-      "condition": { "start_region": "KALOS", "badges_min": 2, "badges_less": 3 },
-      "reward": "Rumble Badge + Mega Ring"
-    },
-    {
-      "id": "kalos_m5",
-      "type": "MAIN",
-      "title": "Plant Badge",
-      "description": "Ramos tends his garden gym at Coumarine City. Earn 3 badges to challenge him.",
-      "condition": { "start_region": "KALOS", "badges_min": 3, "badges_less": 4 },
-      "reward": "Plant Badge"
-    },
-    {
-      "id": "kalos_m6",
-      "type": "MAIN",
-      "title": "Voltage Badge",
-      "description": "Return to Lumiose City with 4 badges — Clemont's auto-lock gym is now accessible!",
-      "condition": { "start_region": "KALOS", "badges_min": 4, "badges_less": 5 },
-      "reward": "Voltage Badge"
-    },
-    {
-      "id": "kalos_m7",
-      "type": "MAIN",
-      "title": "Fairy Badge",
-      "description": "Valerie's ethereal Fairy-type gym awaits in Laverre City.",
-      "condition": { "start_region": "KALOS", "badges_min": 5, "badges_less": 6 },
-      "reward": "Fairy Badge"
-    },
-    {
-      "id": "kalos_m8",
-      "type": "MAIN",
-      "title": "Psychic Badge",
-      "description": "The stars guide you to Anistar City. Earn the Psychic Badge from Olympia.",
-      "condition": { "start_region": "KALOS", "badges_min": 6, "badges_less": 7 },
-      "reward": "Psychic Badge"
-    },
-    {
-      "id": "kalos_m9",
-      "type": "MAIN",
-      "title": "Iceberg Badge",
-      "description": "Reach Snowbelle City and defeat Wulfric — the final gym stands between you and Victory Road!",
-      "condition": { "start_region": "KALOS", "badges_min": 7, "badges_less": 8 },
-      "reward": "Iceberg Badge"
-    },
-    {
-      "id": "kalos_m10",
-      "type": "MAIN",
-      "title": "Stop Team Flare",
-      "description": "Team Flare's plan to use the Ultimate Weapon threatens all life in Kalos! Infiltrate Geosenge HQ and stop Lysandre!",
-      "condition": { "start_region": "KALOS", "badges_min": 3, "flag_not": "geosenge_flare_cleared" },
-      "reward": "Kalos saved"
-    },
-    {
-      "id": "kalos_m11",
-      "type": "MAIN",
-      "title": "Conquer the Kalos League",
-      "description": "With all 8 badges, traverse Victory Road and face the Elite Four. Champion Diantha awaits at the top!",
-      "condition": { "start_region": "KALOS", "badges_min": 8, "flag_not": "beat_kalos_champion" },
-      "reward": "Kalos Champion Title"
-    },
-    {
-      "id": "kalos_s1",
-      "type": "SIDE",
-      "title": "Discover Mega Evolution",
-      "description": "Korrina at the Tower of Mastery will grant you the Mega Ring after you earn the Rumble Badge.",
-      "condition": { "start_region": "KALOS", "visited": "SHALOUR_CITY", "flag_not": "got_mega_ring" },
-      "reward": "Mega Ring"
-    },
-    {
-      "id": "kalos_s2",
-      "type": "SIDE",
-      "title": "The Order Pokémon",
-      "description": "Deep in Terminus Cave on Route 18, the legendary Zygarde monitors Kalos's ecosystem.",
-      "condition": { "start_region": "KALOS", "badges_min": 7, "flag_not": "TERMINUS_CAVE_boss_defeated" },
-      "reward": "Zygarde encounter"
-    },
-    {
-      "id": "kalos_s3",
-      "type": "SIDE",
-      "title": "Pokémon Village",
-      "description": "Lost Pokémon gather in this hidden village. Something powerful lurks here — and an ancient king's tale unfolds.",
-      "condition": { "start_region": "KALOS", "badges_min": 7 },
-      "reward": "Mewtwo + AZ encounter"
-    }
+    {"id": "kalos_m1", "type": "MAIN", "title": "New Partners", "description": "Tierno brought three Pokémon from Professor Sycamore to Vaniville Town. Now that you've picked yours, {rival_name} wants a battle!", "condition": {"required_region": "KALOS", "flag_not": "defeated_rival_vaniville"}, "completed_flag": "defeated_rival_vaniville", "target": "VANIVILLE_TOWN", "reward": "Your first partner"},
+    {"id": "kalos_m2", "type": "MAIN", "title": "Friends in Aquacorde", "description": "Take Route 1 to Aquacorde Town. {friend_name} is waiting there with the last of the Professor's Pokémon, and wants to try it out!", "condition": {"required_region": "KALOS", "flag": "defeated_rival_vaniville", "flag_not": "defeated_shauna_aquacorde", "region_badges_less": 1}, "completed_flag": "defeated_shauna_aquacorde", "target": "AQUACORDE_TOWN"},
+    {"id": "kalos_m3", "type": "MAIN", "title": "Bug Badge", "description": "Go up Route 2 and through Santalune Forest to Santalune City. Viola, a photographer, leads the Bug-type Gym.", "condition": {"required_region": "KALOS", "flag": "defeated_shauna_aquacorde", "region_badges_less": 1}, "completed_badge": "BUG", "target": "SANTALUNE_CITY", "reward": "Bug Badge"},
+    {"id": "kalos_m4", "type": "MAIN", "title": "Professor Sycamore", "description": "Follow Route 4 to Lumiose City, the biggest city in Kalos. Professor Sycamore wants to meet you at his lab.", "condition": {"required_region": "KALOS", "region_badges_min": 1, "flag_not": "met_sycamore"}, "completed_flag": "met_sycamore", "target": "LUMIOSE_CITY"},
+    {"id": "kalos_m5", "type": "MAIN", "title": "Parfum Palace", "description": "Head west on Route 5 to Camphrier Town, then visit the grand Parfum Palace at the end of Route 6. The way on to Route 7 opens after.", "condition": {"required_region": "KALOS", "flag": "met_sycamore", "flag_not": "visited_PARFUM_PALACE", "region_badges_less": 2}, "completed_flag": "visited_PARFUM_PALACE", "target": "PARFUM_PALACE"},
+    {"id": "kalos_m6", "type": "MAIN", "title": "Glittering Cave", "description": "Pass through Connecting Cave and Route 8 to Ambrette Town. People in red suits went into Glittering Cave, off Route 9. Find out what Team Flare wants!", "condition": {"required_region": "KALOS", "flag": "visited_PARFUM_PALACE", "flag_not": "glittering_cave_cleared", "region_badges_less": 2}, "completed_flag": "glittering_cave_cleared", "target": "GLITTERING_CAVE"},
+    {"id": "kalos_m7", "type": "MAIN", "title": "Cliff Badge", "description": "Grant, a rock climber, leads Cyllage City's Rock-type Gym. His battlefield is a climbing wall!", "condition": {"required_region": "KALOS", "flag": "glittering_cave_cleared", "region_badges_less": 2}, "completed_badge": "CLIFF", "target": "CYLLAGE_CITY", "reward": "Cliff Badge + Strength"},
+    {"id": "kalos_m8", "type": "MAIN", "title": "Tower of Mastery", "description": "Take Route 10 past Geosenge Town's standing stones, then Route 11 and Reflection Cave to Shalour City. {rival_name} is waiting at the Tower of Mastery.", "condition": {"required_region": "KALOS", "region_badges_min": 2, "region_badges_less": 3, "flag_not": "defeated_rival_mastery"}, "completed_flag": "defeated_rival_mastery", "target": "TOWER_OF_MASTERY"},
+    {"id": "kalos_m9", "type": "MAIN", "title": "Rumble Badge", "description": "Korrina, heir to Mega Evolution, leads the Shalour City Gym. Win, and the Mega Ring is yours!", "condition": {"required_region": "KALOS", "region_badges_min": 2, "region_badges_less": 3, "flag": "defeated_rival_mastery"}, "completed_badge": "RUMBLE", "target": "SHALOUR_CITY", "reward": "Rumble Badge + Mega Ring + Surf"},
+    {"id": "kalos_m10", "type": "MAIN", "title": "Plant Badge", "description": "Surf along Route 12 to Coumarine City. Ramos, an old gardener, leads the Grass-type Gym.", "condition": {"required_region": "KALOS", "region_badges_min": 3, "region_badges_less": 4}, "completed_badge": "PLANT", "target": "COUMARINE_CITY", "reward": "Plant Badge + Fly"},
+    {"id": "kalos_m11", "type": "MAIN", "title": "Lumiose Blackout", "description": "Lumiose City has lost all its power, and Clemont's Gym is shut. Team Flare has taken over the Power Plant on Route 13!", "condition": {"required_region": "KALOS", "region_badges_min": 4, "region_badges_less": 5, "flag_not": "kalos_power_plant_cleared"}, "completed_flag": "kalos_power_plant_cleared", "target": "KALOS_POWER_PLANT"},
+    {"id": "kalos_m12", "type": "MAIN", "title": "Voltage Badge", "description": "The lights are back on in Lumiose! Clemont, an inventor, leads the Electric-type Gym in Prism Tower.", "condition": {"required_region": "KALOS", "region_badges_min": 4, "region_badges_less": 5, "flag": "kalos_power_plant_cleared"}, "completed_badge": "VOLTAGE", "target": "LUMIOSE_CITY", "reward": "Voltage Badge"},
+    {"id": "kalos_m13", "type": "MAIN", "title": "Fairy Badge", "description": "Take Route 14's spooky swamp to Laverre City. Valerie, a fashion designer, leads the Fairy-type Gym.", "condition": {"required_region": "KALOS", "region_badges_min": 5, "region_badges_less": 6}, "completed_badge": "FAIRY", "target": "LAVERRE_CITY", "reward": "Fairy Badge + Waterfall"},
+    {"id": "kalos_m14", "type": "MAIN", "title": "Poké Ball Factory", "description": "Team Flare has broken into Laverre City's Poké Ball Factory! Drive them out before you take Route 15.", "condition": {"required_region": "KALOS", "region_badges_min": 6, "flag_not": "pokeball_factory_cleared"}, "completed_flag": "pokeball_factory_cleared", "target": "POKEBALL_FACTORY"},
+    {"id": "kalos_m15", "type": "MAIN", "title": "Frost Cavern", "description": "Go on to Dendemille Town. Team Flare is hurting the Pokémon in Frost Cavern, and Route 17 stays snowed in until they're stopped.", "condition": {"required_region": "KALOS", "region_badges_min": 6, "region_badges_less": 7, "flag": "pokeball_factory_cleared", "flag_not": "frost_cavern_cleared"}, "completed_flag": "frost_cavern_cleared", "target": "FROST_CAVERN"},
+    {"id": "kalos_m16", "type": "MAIN", "title": "Psychic Badge", "description": "Cross snowy Route 17 to Anistar City and its great sundial. Olympia leads the Psychic-type Gym.", "condition": {"required_region": "KALOS", "region_badges_min": 6, "region_badges_less": 7, "flag": "frost_cavern_cleared"}, "completed_badge": "PSYCHIC", "target": "ANISTAR_CITY", "reward": "Psychic Badge"},
+    {"id": "kalos_m17", "type": "MAIN", "title": "Lysandre's Secret", "description": "Lysandre is the boss of Team Flare, and he plans to fire the Ultimate Weapon! Fly back to Lumiose City. His Café hides the way into Lysandre Labs.", "condition": {"required_region": "KALOS", "region_badges_min": 7, "flag_not": "lysandre_labs_cleared"}, "completed_flag": "lysandre_labs_cleared", "target": "LYSANDRE_LABS"},
+    {"id": "kalos_m18", "type": "MAIN", "title": "The Ultimate Weapon", "description": "The weapon is buried under Geosenge Town! Get into Team Flare's secret base and stop Lysandre for good.", "condition": {"required_region": "KALOS", "region_badges_min": 7, "flag": "lysandre_labs_cleared", "flag_not": "geosenge_flare_cleared"}, "completed_flag": "geosenge_flare_cleared", "target": "GEOSENGE_FLARE_HQ", "reward": "Kalos saved"},
+    {"id": "kalos_m19", "type": "MAIN", "title": "Iceberg Badge", "description": "Kalos is safe! Take Route 18 through Couriway Town and Route 19 to Snowbelle City. Wulfric leads the Ice-type Gym.", "condition": {"required_region": "KALOS", "region_badges_min": 7, "region_badges_less": 8, "flag": "geosenge_flare_cleared"}, "completed_badge": "ICEBERG", "target": "SNOWBELLE_CITY", "reward": "Iceberg Badge"},
+    {"id": "kalos_m20", "type": "MAIN", "title": "The Kalos League", "description": "With all 8 badges, climb Victory Road to the Pokémon League. Beat the Elite Four, then Champion Diantha!", "condition": {"required_region": "KALOS", "region_badges_min": 8, "flag_not": "beat_kalos_champion"}, "completed_flag": "beat_kalos_champion", "target": "KALOS_POKEMON_LEAGUE", "reward": "Kalos Champion"},
+    {"id": "kalos_s1", "type": "SIDE", "title": "A Gift from Kanto", "description": "Professor Sycamore has a Pokémon from Kanto for you. Visit him in Lumiose City.", "condition": {"required_region": "KALOS", "flag": "met_sycamore", "flag_not": "got_kalos_kanto_starter"}, "completed_flag": "got_kalos_kanto_starter", "target": "LUMIOSE_CITY", "reward": "A Kanto first partner"},
+    {"id": "kalos_s2", "type": "SIDE", "title": "Old Amber", "description": "A Hiker is digging in Glittering Cave. Maybe they found a fossil?", "condition": {"required_region": "KALOS", "visited": "AMBRETTE_TOWN", "flag_not": "got_kalos_old_amber"}, "completed_flag": "got_kalos_old_amber", "target": "GLITTERING_CAVE", "reward": "Old Amber"},
+    {"id": "kalos_s3", "type": "SIDE", "title": "Korrina's Challenge", "description": "Korrina is skating around Geosenge Town, looking for the trainer Sycamore told her about.", "condition": {"required_region": "KALOS", "region_badges_min": 2, "flag_not": "korrina_geosenge"}, "completed_flag": "korrina_geosenge", "target": "GEOSENGE_TOWN"},
+    {"id": "kalos_s4", "type": "SIDE", "title": "The Mega Ring", "description": "With the Rumble Badge, go back to the Tower of Mastery. Korrina will show you Mega Evolution.", "condition": {"required_region": "KALOS", "region_badges_min": 3, "flag_not": "got_mega_ring"}, "completed_flag": "got_mega_ring", "target": "TOWER_OF_MASTERY", "reward": "Mega Ring"},
+    {"id": "kalos_s5", "type": "SIDE", "title": "Battle Château", "description": "Nobles battle at the Château on Route 7. Can you beat Duchess Malva?", "condition": {"required_region": "KALOS", "region_badges_min": 4, "flag_not": "battle_chateau_cleared"}, "completed_flag": "battle_chateau_cleared", "target": "BATTLE_CHATEAU"},
+    {"id": "kalos_s6", "type": "SIDE", "title": "The Lost Hotel", "description": "People say a black fog haunts the empty hotel on Route 15...", "condition": {"required_region": "KALOS", "flag": "pokeball_factory_cleared", "flag_not": "black_fog_banished_lost_hotel"}, "completed_flag": "black_fog_banished_lost_hotel", "target": "LOST_HOTEL"},
+    {"id": "kalos_s7", "type": "SIDE", "title": "The Order Pokémon", "description": "Deep in Terminus Cave, off Route 18, a strange Pokémon keeps watch over Kalos.", "condition": {"required_region": "KALOS", "flag": "geosenge_flare_cleared", "flag_not": "TERMINUS_CAVE_boss_defeated"}, "completed_flag": "TERMINUS_CAVE_boss_defeated", "target": "TERMINUS_CAVE", "reward": "Zygarde"},
+    {"id": "kalos_s8", "type": "SIDE", "title": "Pokémon Village", "description": "Lost Pokémon hide in a village off Route 20. Something very powerful lives there, and an old king wanders nearby.", "condition": {"required_region": "KALOS", "flag": "beat_kalos_champion", "flag_not": "POKEMON_VILLAGE_boss_defeated"}, "completed_flag": "POKEMON_VILLAGE_boss_defeated", "target": "POKEMON_VILLAGE", "reward": "Mewtwo"},
+    {"id": "kalos_s9", "type": "SIDE", "title": "The Sea Spirit's Den", "description": "Surf out from Azure Bay. Three legendary birds have been seen in the Sea Spirit's Den.", "condition": {"required_region": "KALOS", "flag": "beat_kalos_champion", "flag_not": "SEA_SPIRITS_DEN_boss_defeated"}, "completed_flag": "SEA_SPIRITS_DEN_boss_defeated", "target": "SEA_SPIRITS_DEN", "reward": "Articuno, Zapdos, Moltres"},
+    {"id": "kalos_s10", "type": "SIDE", "title": "A Jewel in Reflection Cave", "description": "Something sparkles among the mirrors of Reflection Cave...", "condition": {"required_region": "KALOS", "flag": "beat_kalos_champion", "flag_not": "REFLECTION_CAVE_boss_defeated"}, "completed_flag": "REFLECTION_CAVE_boss_defeated", "target": "REFLECTION_CAVE", "reward": "Diancie"},
+    {"id": "kalos_s11", "type": "SIDE", "title": "Rings at the Palace", "description": "A mischievous Pokémon plays with rings at Parfum Palace.", "condition": {"required_region": "KALOS", "flag": "beat_kalos_champion", "flag_not": "PARFUM_PALACE_boss_defeated"}, "completed_flag": "PARFUM_PALACE_boss_defeated", "target": "PARFUM_PALACE", "reward": "Hoopa"},
+    {"id": "kalos_s12", "type": "SIDE", "title": "Steam on Route 18", "description": "A Pokémon made of fire and water was seen in the badlands of Route 18.", "condition": {"required_region": "KALOS", "flag": "beat_kalos_champion", "flag_not": "KALOS_ROUTE_18_boss_defeated"}, "completed_flag": "KALOS_ROUTE_18_boss_defeated", "target": "KALOS_ROUTE_18", "reward": "Volcanion"},
+    {"id": "kalos_s13", "type": "SIDE", "title": "Kiloude City", "description": "Take the train from Lumiose to Kiloude City. {rival_name} wants one more battle!", "condition": {"required_region": "KALOS", "flag": "beat_kalos_champion", "flag_not": "defeated_rival_kiloude"}, "completed_flag": "defeated_rival_kiloude", "target": "KILOUDE_CITY"},
+    {"id": "kalos_s14", "type": "SIDE", "title": "The Battle Maison", "description": "Beat Battle Chatelaine Morgan at Kiloude City's Battle Maison.", "condition": {"required_region": "KALOS", "flag": "beat_kalos_champion", "flag_not": "battle_maison_kalos_cleared"}, "completed_flag": "battle_maison_kalos_cleared", "target": "BATTLE_MAISON_KALOS"}
   ],
   "KALOS_ROUTE_1": [659, 661],
   "KALOS_ROUTE_1_PERCENTAGES": { "659": 60, "661": 40 },
@@ -2380,7 +2310,7 @@
       "starters": [650, 653, 656],
       "professor": "Professor Sycamore",
       "intro_text": "kalos_newgame_professor",
-      "starter_text": "kalos_sycamore_starters",
+      "starter_text": "kalos_starter_picks",
       "newgame_text": "kalos_newgame_intro",
       "dex_range": [650, 721],
       "mom_newstart_text": ["kalos_mom_newstart_1", "kalos_mom_newstart_2", "kalos_mom_newstart_3"],

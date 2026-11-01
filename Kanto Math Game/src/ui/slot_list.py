@@ -51,7 +51,7 @@ class SlotList:
     NEXT and the page in the text box along the bottom."""
     PER_PAGE = 8
 
-    def __init__(self, game, on_pick, top=None, bottom_bar=None, selected=0):
+    def __init__(self, game, on_pick, top=None, bottom_bar=None, selected=0, recent_first=False):
         from src.ui.panels import CommandButton
         self.game = game
         self.on_pick = on_pick
@@ -65,9 +65,12 @@ class SlotList:
         self.top = top
         self.row_h = (bottom_bar - top) // self.PER_PAGE
         self.page_count = (self.count + self.PER_PAGE - 1) // self.PER_PAGE
-        self.selected = max(0, min(self.count - 1, selected))
-        self.page = self.selected // self.PER_PAGE
+        # Rows show slots in this order (Load: newest save first, Jordan 11-01); a row keeps its No.
+        self.recent_first = recent_first
         self.used = save_slots.used_slots(save_slots.folder(game))
+        self.order = self._order()
+        self.selected = max(0, min(self.count - 1, selected))
+        self.page = self.order.index(self.selected) // self.PER_PAGE
         self._down = None
         self.big = slot_font(game.assets, 24)
         self.small = slot_font(game.assets, 16)
@@ -79,8 +82,13 @@ class SlotList:
         self._sync_buttons()
 
     # ---- state
+    def _order(self):
+        return save_slots.by_recent(save_slots.folder(self.game)) if self.recent_first else list(range(self.count))
+
     def refresh(self):
         self.used = save_slots.used_slots(save_slots.folder(self.game))
+        self.order = self._order()
+        self.page = self.order.index(self.selected) // self.PER_PAGE
 
     def summary(self, i):
         if i not in self.used:
@@ -94,13 +102,18 @@ class SlotList:
         page = max(0, min(self.page_count - 1, page))
         if page != self.page:
             self.page = page
-            self.selected = page * self.PER_PAGE
+            self.selected = self.order[page * self.PER_PAGE]
         self._sync_buttons()
 
     def select(self, i):
         self.selected = max(0, min(self.count - 1, i))
-        self.page = self.selected // self.PER_PAGE
+        self.page = self.order.index(self.selected) // self.PER_PAGE
         self._sync_buttons()
+
+    def step(self, rows):
+        """Move the selection rows up or down the list as shown."""
+        pos = max(0, min(self.count - 1, self.order.index(self.selected) + rows))
+        self.select(self.order[pos])
 
     def _sync_buttons(self):
         for btn, on in ((self.btn_prev, self.page > 0), (self.btn_next, self.page < self.page_count - 1)):
@@ -111,7 +124,7 @@ class SlotList:
 
     def visible_slots(self):
         start = self.page * self.PER_PAGE
-        return range(start, min(self.count, start + self.PER_PAGE))
+        return self.order[start:start + self.PER_PAGE]
 
     def slot_at(self, pos):
         for k, i in enumerate(self.visible_slots()):
@@ -145,11 +158,11 @@ class SlotList:
                      pygame.K_PAGEUP: -self.PER_PAGE, pygame.K_PAGEDOWN: self.PER_PAGE,
                      pygame.K_LEFT: -self.PER_PAGE, pygame.K_RIGHT: self.PER_PAGE}
             if k in moves:
-                self.select(self.selected + moves[k])
+                self.step(moves[k])
             elif k == pygame.K_HOME:
-                self.select(0)
+                self.select(self.order[0])
             elif k == pygame.K_END:
-                self.select(self.count - 1)
+                self.select(self.order[-1])
             elif k in (pygame.K_RETURN, pygame.K_KP_ENTER, pygame.K_SPACE):
                 self.on_pick(self.selected)
             else:
@@ -200,6 +213,7 @@ class SlotList:
                               align="right")
         first = self.page * self.PER_PAGE + 1
         last = min(self.count, first + self.PER_PAGE - 1)
+        span = "Newest first" if self.recent_first else f"No.{first:03d}-{last:03d}"
         theme.draw_textbox(surface, self.bar_rect)
-        theme.shadow_text(surface, f"Page {self.page + 1}/{self.page_count}   No.{first:03d}-{last:03d}",
+        theme.shadow_text(surface, f"Page {self.page + 1}/{self.page_count}   {span}",
                           f["s_med"], self.bar_rect.centerx, self.bar_rect.centery - 2, align="center")

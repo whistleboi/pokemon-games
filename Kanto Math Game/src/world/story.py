@@ -419,7 +419,9 @@ class StoryManager:
     def region_missions(self):
         """Missions for the region the player is in (Hisui counts as Sinnoh)."""
         region = self.get_current_region()
-        return [m for m in self.game.loader.area_data.get("JOURNAL_MISSIONS", [])
+        from src.world import league_redo
+        redo = league_redo.mission(self)
+        return [m for m in self.game.loader.area_data.get("JOURNAL_MISSIONS", []) + ([redo] if redo else [])
                 if (m.get("region") or (m.get("condition") or {}).get("required_region") or region) == region]
 
     def check_requirements(self, cond, region=None):
@@ -857,7 +859,8 @@ class StoryManager:
         m_copy["desc"] = m_copy.get("description", m_copy.get("desc", "No details available."))
         game = getattr(self, "game", None)
         for token, value in (("{rival_name}", getattr(game, "rival_name", None) or "your rival"),
-                             ("{player_name}", getattr(game, "player_name", None) or "you")):
+                             ("{player_name}", getattr(game, "player_name", None) or "you"),
+                             ("{friend_name}", getattr(game, "friend_name", None) or "your friend")):
             m_copy["desc"] = m_copy["desc"].replace(token, str(value))
             m_copy["text"] = m_copy["text"].replace(token, str(value))
         m_copy["details"] = m_copy["desc"]

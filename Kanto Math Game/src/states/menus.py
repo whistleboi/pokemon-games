@@ -774,6 +774,16 @@ class StarterSelectionState(GameState):
             friend_name=getattr(self.game, "friend_name", None) or "???", **names)
         return text if isinstance(text, list) else [text]
 
+    def _friends_picks(self, chosen):
+        """The two starters left, as (the rival's, the friend's): the rival takes the one strong
+        against yours, as the town rival's team_choice does (X/Y: the friend gets the other)."""
+        beats = {"GRASS": "FIRE", "FIRE": "WATER", "WATER": "GRASS"}
+        left = [p for i, p in enumerate(self.starters) if i != self.selected_idx]
+        strong = beats.get(chosen.types[0] if chosen.types else "")
+        rival = next((p for p in left if strong in p.types), left[0] if left else None)
+        friend = next((p for p in left if p is not rival), None)
+        return (rival.name if rival else ""), (friend.name if friend else "")
+
     @property
     def uses_town_rival(self):
         """Hoenn onward: the rival battle fires in the starting town, not here."""
@@ -917,8 +927,10 @@ class StarterSelectionState(GameState):
             story.story_flags[f"{r}_rescue_started"] = True
         elif self.uses_town_rival:
             msg_text = (msg_text if isinstance(msg_text, list) else [msg_text])
+            rival_pick, friend_pick = self._friends_picks(chosen_pokemon_obj)
             msg_text += self._region_lines("starter_text", lead=chosen_pokemon_obj.name,
-                                           other=" and ".join(p.name for p in others) or "")
+                                           other=" and ".join(p.name for p in others) or "",
+                                           rival_pick=rival_pick, friend_pick=friend_pick)
             story.balls_left = max(story.balls_left, 5)
         elif self.region == "JOHTO":
             rival_map = {0: 1, 1: 2, 2: 0}
@@ -1168,9 +1180,9 @@ class LoadState(GameState):
             current = save_slots.first_empty(save_slots.folder(game)) or 0
         else:
             current = save_slots.slot_index(game.data.save_file) or 0
-        self.slot_list = SlotList(game, self.pick, selected=current)
-        if mode == "load" and current == 0 and save_slots.used_slots(save_slots.folder(game)):
-            self.slot_list.select(min(save_slots.used_slots(save_slots.folder(game))))
+        self.slot_list = SlotList(game, self.pick, selected=current, recent_first=mode == "load")
+        if mode == "load" and save_slots.used_slots(save_slots.folder(game)):
+            self.slot_list.select(self.slot_list.order[0])  # the newest save, at the top
 
         from src.ui.panels import CommandButton
         from src.ui import theme
