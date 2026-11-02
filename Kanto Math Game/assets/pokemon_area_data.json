@@ -729,7 +729,7 @@
 
     "VERMILLION_CITY": {
       "area_type": "town",
-      "route_name": "Vermillion City",
+      "route_name": "Vermilion City",
       "backgrounds": {
         "main": "vermillion_city.png",
         "pokecenter": "pokecenter.png",
@@ -2093,7 +2093,7 @@
 
     "KANTO_POKEMON_TOWER": {
       "area_type": "wild_route",
-      "route_name": "PKMN Tower",
+      "route_name": "Pokémon Tower",
       "battle_type": "indoor",
       "wild_pool_percentages": "KANTO_POKEMON_TOWER_PERCENTAGES",
       "area_boss": {

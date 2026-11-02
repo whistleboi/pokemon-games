@@ -586,7 +586,11 @@
         ],
         "explore_options": [
             { "text": "Enter Lab", "action": "NPC", "target": "alph_scientist" },
-            { "text": "Explore Ruins", "action": "RUINS" }
+            { "text": "Explore Ruins", "action": "RUINS" },
+            { "text": "Kabuto Chamber", "action": "TILE_PUZZLE", "panel": "kabuto", "flag_condition": "not alph_kabuto_solved" },
+            { "text": "Omanyte Chamber", "action": "TILE_PUZZLE", "panel": "omanyte", "flag_condition": "not alph_omanyte_solved" },
+            { "text": "Aerodactyl Chamber", "action": "TILE_PUZZLE", "panel": "aerodactyl", "flag_condition": "not alph_aerodactyl_solved" },
+            { "text": "Ho-Oh Chamber", "action": "TILE_PUZZLE", "panel": "hooh", "flag_condition": "not alph_hooh_solved" }
         ]
         },
 

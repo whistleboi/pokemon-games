@@ -78,6 +78,7 @@ from src.states.battle import TrainerIntroState
 story.current_area_key = "PEWTER_CITY"
 story.player_team = [mk(7)]
 story.story_flags["gym_progress_PEWTER_CITY"] = len(g.loader.area_data["STORY_PROGRESSION"]["PEWTER_CITY"]["gym"]["trainers"])
+story.story_flags["gym_challenge_done_PEWTER_CITY"] = True  # (the Gym challenge minigame: won)
 lobby = ow.GymLobbyState(g, None)
 g.change_state(lobby)
 lobby.challenge_gym()

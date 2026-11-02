@@ -3732,42 +3732,65 @@ class GameCornerState(GameState):
     def decline_infinite(self):
         self.show_main_menu()
 
-    def show_main_menu(self):
+    def show_main_menu(self, line=None):
+        # 11-01 (Jordan): the Slots and Voltorb Flip from the fan games' Essentials set, played with
+        # coins (bought here) for the Prize Counter (src/states/game_corner.py).
+        from src.states import game_corner as gc
         self.phase = "MAIN_MENU"
-        self.dialogue_box.reset("What would you like to do?")
+        self.dialogue_box.reset(line or f"You have {gc.coins(self.game.story_manager):,} coins. What would you like to do?")
         self.btn_yes.set_visibility(False)
         self.btn_no.set_visibility(False)
 
         options = [
-            ("CASH IN", self.open_shop),
-            ("PLAY AGAIN", self.start_infinite),
+            ("SLOTS", self.start_slot_machine),
+            ("VOLTORB FLIP", self.start_voltorb_flip),
+            ("BLACKJACK", self.start_blackjack),
+            ("POKEMATH", self.start_infinite),
+            ("BUY 50 COINS", self.buy_coins),
+            ("PRIZES", self.open_shop),
             ("LEAVE", self.go_back)
         ]
-        # ARCHITECT: Add Slot Machine option
-        options.insert(0, ("PLAY SLOTS", self.start_slot_machine))
 
         is_celadon = self.game.story_manager.current_area_key == "CELADON_CITY"
         if is_celadon and not self.cleared:
             options.insert(0, ("STAIRS", self.check_stairs))
 
         self.clear_menu()
-        btn_w, btn_h = 200, 60
-        start_x = self.game.width // 2 - (len(options) * (btn_w + 20)) // 2
+        btn_w, btn_h, per_row = 230, 56, 4
+        rows = (len(options) + per_row - 1) // per_row
         for i, (text, cb) in enumerate(options):
-            btn = Button(
-                (start_x + i * (btn_w + 20), self.game.height - 150,
-                    btn_w, btn_h), text, self.game.assets.fonts["tiny"],
-                cb, autosize=False)
+            r, c = divmod(i, per_row)
+            in_row = min(per_row, len(options) - r * per_row)
+            start_x = self.game.width // 2 - (in_row * (btn_w + 16) - 16) // 2
+            y = Utils.get_full_dialogue_rect(self.game).top - (rows - r) * (btn_h + 12) - 8
+            btn = Button((start_x + c * (btn_w + 16), y, btn_w, btn_h), text, self.game.assets.fonts["tiny"],
+                         cb, autosize=False)
             self.menu_buttons.append(btn)
             self.game.ui_manager.add_element(btn)
 
+    def buy_coins(self):
+        from src.states import game_corner as gc
+        self.show_main_menu(gc.buy_coins(self.game.story_manager))
+
     def start_slot_machine(self):
+        from src.states.game_corner import SlotsState
         self.clear_menu()
-        self.game.change_state(SlotMachineState(self.game, self))
+        self.game.change_state(SlotsState(self.game, self, background=self.bg))
+
+    def start_voltorb_flip(self):
+        from src.states.game_corner import VoltorbFlipState
+        self.clear_menu()
+        self.game.change_state(VoltorbFlipState(self.game, self, background=self.bg))
+
+    def start_blackjack(self):
+        from src.states.game_corner import BlackjackState
+        self.clear_menu()
+        self.game.change_state(BlackjackState(self.game, self, background=self.bg))
 
     def open_shop(self):
+        from src.states.game_corner import PrizeCounterState
         self.clear_menu()
-        self.game.change_state(GameCornerShopState(self.game, self))
+        self.game.change_state(PrizeCounterState(self.game, self, background=self.bg))
 
     def check_stairs(self):
         self.clear_menu()
@@ -3928,227 +3951,6 @@ class GameCornerState(GameState):
         self.game.screen.blit(self.bg, (0, 0))
         if self.npc_sprite:
             self.game.screen.blit(self.npc_sprite, self.npc_sprite.get_rect(center=(self.game.width//2, self.game.height*0.45)))
-        self.dialogue_box.draw(self.game.screen)
-        self.game.ui_manager.draw(self.game.screen)
-
-
-class SlotMachineState(GameState):
-    def __init__(self, game, previous_state):
-        super().__init__(game)
-        self.previous_state = previous_state
-        self.money = self.game.story_manager.money
-        self.bet = 100
-        self.max_bet = 500
-        self.reels = ["", "", ""]
-        self.spin_result_message = ""
-        self.payout = 0
-        self.is_spinning = False
-        self.spin_timer = 0
-        self.spin_duration = 90
-        self.result_display_timer = 0
-        self.result_display_duration = 120
-
-        self.symbol_pool = [
-            (25, "PIKACHU", 3), (4, "CHARMANDER", 2), (7, "SQUIRTLE", 2), (1, "BULBASAUR", 2),
-            (155, "CYNDAQUIL", 2), (158, "TOTODILE", 2), (152, "CHIKORITA", 2),
-            (19, "RATTATA", 5), (16, "PIDGEY", 5), (41, "ZUBAT", 5),
-            ("POKEBALL_SYMBOL", "POKEBALL", 10)
-        ]
-        self.symbol_images = {}
-        self._load_symbol_images()
-
-        f = game.assets.fonts
-        self.bar_rect = pygame.Rect(16, game.height - 86, game.width - 32, 78)
-        by, bh = self.bar_rect.y + 10, self.bar_rect.h - 26
-        self.btn_exit = CommandButton((16, 14, 140, 56), "EXIT", f["button"], self.go_back, bg_color=theme.BACK,
-                                      autosize=False)
-        self.btn_bet_one = CommandButton((self.bar_rect.right - 18 - 3 * 170 - 20, by, 170, bh), "BET 100", f["label"],
-                                         self.bet_one, bg_color=theme.RUN, autosize=False)
-        self.btn_bet_max = CommandButton((self.bar_rect.right - 18 - 2 * 170 - 10, by, 170, bh), "BET MAX", f["label"],
-                                         self.bet_max, bg_color=theme.RUN, autosize=False)
-        self.btn_spin = CommandButton((self.bar_rect.right - 18 - 170, by, 170, bh), "SPIN", f["button"],
-                                      self.spin_reels, bg_color=theme.POKEMON, autosize=False)
-
-    def _load_symbol_images(self):
-        for symbol_data in self.symbol_pool:
-            symbol_key = symbol_data[0]
-            if symbol_key == "POKEBALL_SYMBOL":
-                self.symbol_images[symbol_key] = pygame.transform.scale(self.game.assets.ui_ball, (100, 100))
-            else:
-                raw_data = self.game.loader.fetch_specific(symbol_key)
-                pokemon = Pokemon(raw_data, self.game.assets)
-                if pokemon.image:
-                    self.symbol_images[symbol_key] = pygame.transform.scale(pokemon.image, (100, 100))
-                else:
-                    self.symbol_images[symbol_key] = None
-
-    def go_back(self):
-        self.game.story_manager.money = self.money
-        self.game.change_state(self.previous_state)
-
-    def bet_one(self):
-        if not self.is_spinning and self.result_display_timer == 0:
-            self.bet = min(self.max_bet, self.bet + 100)
-            self.btn_bet_one.text = f"BET {self.bet}"
-
-    def bet_max(self):
-        if not self.is_spinning and self.result_display_timer == 0:
-            self.bet = self.max_bet
-            self.btn_bet_one.text = f"BET {self.bet}"
-
-    def spin_reels(self):
-        if self.is_spinning or self.result_display_timer > 0:
-            return
-        if self.money < self.bet:
-            self.spin_result_message = "Not enough money!"
-            self.payout = 0
-            self.result_display_timer = self.result_display_duration
-            return
-
-        self.money -= self.bet
-        self.is_spinning = True
-        self.spin_timer = self.spin_duration
-        self.spin_result_message = "Spinning..."
-        self.payout = 0
-
-    def calculate_payout(self):
-        s1, s2, s3 = self.reels
-        self.spin_result_message = "No win."
-        self.payout = 0
-
-        id1 = s1[0] if isinstance(s1, tuple) else s1
-        id2 = s2[0] if isinstance(s2, tuple) else s2
-        id3 = s3[0] if isinstance(s3, tuple) else s3
-
-        if id1 == id2 == id3:
-            if id1 == "POKEBALL_SYMBOL":
-                self.spin_result_message = "JACKPOT! 3 POKEBALLS!"
-                self.payout = self.bet * 10
-            elif id1 in [25, 4, 7, 155, 158, 152]: # Starters/Legendaries
-                self.spin_result_message = f"BIG WIN! 3 {s1[1].upper()}!"
-                self.payout = self.bet * 5
-            else:
-                self.spin_result_message = f"WIN! 3 {s1[1].upper()}!"
-                self.payout = self.bet * 3
-
-        elif (id1 == id2 and id3 == "POKEBALL_SYMBOL") or \
-             (id1 == id3 and id2 == "POKEBALL_SYMBOL") or \
-             (id2 == id3 and id1 == "POKEBALL_SYMBOL"):
-            self.spin_result_message = "MEDIUM WIN! 2 MATCH + POKEBALL!"
-            self.payout = self.bet * 2
-        elif id1 == "POKEBALL_SYMBOL" and id2 == "POKEBALL_SYMBOL" and id3 == "POKEBALL_SYMBOL":
-            self.spin_result_message = "SMALL WIN! 3 POKEBALLS!"
-            self.payout = self.bet * 1
-
-        self.money += self.payout
-        self.result_display_timer = self.result_display_duration
-
-    def start(self):
-        self.game.ui_manager.add_element(self.btn_exit)
-        self.game.ui_manager.add_element(self.btn_bet_one)
-        self.game.ui_manager.add_element(self.btn_bet_max)
-        self.game.ui_manager.add_element(self.btn_spin)
-
-    def handle_events(self, events):
-        pass
-
-    def update(self):
-        if self.is_spinning:
-            self.spin_timer -= 1
-            if self.spin_timer % 5 == 0:
-                weights = [s[2] for s in self.symbol_pool]
-                self.reels = random.choices(self.symbol_pool, weights=weights, k=3)
-            if self.spin_timer <= 0:
-                self.is_spinning = False
-                self.calculate_payout()
-        elif self.result_display_timer > 0:
-            self.result_display_timer -= 1
-            if self.result_display_timer <= 0:
-                self.spin_result_message = ""
-                self.payout = 0
-
-        # ARCHITECT: Use set_visibility instead of set_enabled as the core Button class 
-        # uses visibility to manage interaction state and prevent multiple spins.
-        can_interact = not self.is_spinning and self.result_display_timer == 0
-        self.btn_spin.set_visibility(can_interact)
-        self.btn_bet_one.set_visibility(can_interact)
-        self.btn_bet_max.set_visibility(can_interact)
-
-    def draw(self):
-        screen, f = self.game.screen, self.game.assets.fonts
-        accent = theme.ACCENT["fun"]
-        theme.menu_background(screen, accent, "SLOT MACHINE", f["button"], title_x=176)
-        Utils.draw_text_outline(screen, f"${self.money:,}   Bet ${self.bet}", f["button"], WHITE, self.game.width - 24,
-                                theme.HEADER_H // 2 - 4, align="right", outline_color=theme.shade(accent, 0.45),
-                                thickness=3)
-        machine = pygame.Rect(0, 0, 3 * 180 + 2 * 40 + 80, 260)
-        machine.center = (self.game.width // 2, (theme.HEADER_H + self.bar_rect.top) // 2)
-        theme.draw_panel(screen, machine)
-
-        reel_width = 180
-        reel_height = 180
-        reel_spacing = 40
-        start_x = self.game.width // 2 - (reel_width * 3 + reel_spacing * 2) // 2
-        start_y = self.game.height // 2 - reel_height // 2
-
-        for i, symbol_data in enumerate(self.reels):
-            rect = pygame.Rect(start_x + i * (reel_width + reel_spacing), start_y, reel_width, reel_height)
-            rect.centery = machine.centery
-            theme.card(self.game.screen, rect, radius=14)
-
-            if symbol_data:
-                symbol_key = symbol_data[0]
-                img = self.symbol_images.get(symbol_key)
-                if img:
-                    img_rect = img.get_rect(center=rect.center)
-                    self.game.screen.blit(img, img_rect)
-
-        theme.draw_textbox(screen, self.bar_rect)
-        line = self.spin_result_message or "Pick a bet, then SPIN!"
-        if self.payout > 0:
-            line += f"   You won ${self.payout}!"
-        bf = f["s_med"]
-        theme.shadow_text(screen, line, bf, self.bar_rect.x + 32, self.bar_rect.centery - bf.get_height() // 2 - 2)
-        self.game.ui_manager.draw(self.game.screen)
-
-
-class GameCornerShopState(GameState):
-    def __init__(self, game, previous_state):
-        super().__init__(game)
-        self.previous_state = previous_state
-        self.bg = previous_state.bg
-        self.porygon_sprite = game.assets.get_pokemon_image(137, "normal", False)
-        self.clerk_sprite = game.assets.get_trainer_image("supernerd.png")
-        self.dialogue_box = ClassicDialogueBox(Utils.get_full_dialogue_rect(game), ["PORYGON: $999,999"], game.assets.fonts["med"])
-        self.btn_buy = Button((self.game.width // 2 - 100, 450, 200, 60), "BUY", game.assets.fonts["small"], self.try_buy)
-        self.btn_back = Button((20, 20, 100, 50), "BACK", game.assets.fonts["tiny"], self.go_back, bg_color=RED)
-
-    def try_buy(self):
-        msg = ["Hah! You can't afford that!", "You're a pretty bad gamer, aren't you?"]
-        if self.game.story_manager.current_area_key == "CELADON_CITY":
-            msg.append("Hehehe... stay away from the secret stairs!")
-        self.dialogue_box.reset(msg)
-        self.dialogue_box.callback = self.go_back
-
-    def go_back(self): self.game.change_state(self.previous_state)
-
-    def start(self):
-        self.game.ui_manager.add_element(self.btn_buy)
-        self.game.ui_manager.add_element(self.btn_back)
-
-    def handle_events(self, events):
-        for event in events:
-            self.dialogue_box.handle_event(event)
-
-    def update(self): self.dialogue_box.update()
-
-    def draw(self):
-        self.game.screen.fill(BLACK)
-        self.game.screen.blit(self.bg, (0, 0))
-        if self.clerk_sprite:
-            self.game.screen.blit(self.clerk_sprite, self.clerk_sprite.get_rect(center=(self.game.width*0.3, self.game.height*0.45)))
-        if self.porygon_sprite:
-            self.game.screen.blit(self.porygon_sprite, self.porygon_sprite.get_rect(center=(self.game.width*0.7, self.game.height*0.45)))
         self.dialogue_box.draw(self.game.screen)
         self.game.ui_manager.draw(self.game.screen)
 

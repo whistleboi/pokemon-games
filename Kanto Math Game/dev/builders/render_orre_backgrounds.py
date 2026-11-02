@@ -70,6 +70,26 @@ def whole_picture(game, mid, size=(1280, 540)):
 # Orre's shared Pokemon Center and Mart (src/core/assets.py REGION_BUILDINGS): the fan game's Phenac ones
 BUILDINGS = {"orre_center.png": 22, "orre_mart.png": 43}
 
+# Places the fan game has no map for, from other pictures (Jordan's finds), shown whole the same way:
+# Pyrite Cave from a fan's GBA-style Orre maps (Reddit, "Made some GBA Orre region maps as a fun art
+# project"), kept in dev/builders/sources/orre.
+PICTURES = {"PYRITE_CAVE": os.path.join("dev", "builders", "sources", "orre", "pyrite_cave_gba.webp")}
+
+
+def render_pictures(only=()):
+    """The PICTURES places, each as a whole picture with the blurred sides (no fan game needed)."""
+    from import_swsh_maps import whole_picture as whole_image
+    with open(os.path.join("assets", "orre_area_data.json"), encoding="utf-8") as f:
+        areas = json.load(f)["STORY_PROGRESSION"]
+    for key, src in PICTURES.items():
+        if only and key not in only:
+            continue
+        img = pygame.image.load(src).convert_alpha()
+        out = map_path("towns" if areas[key].get("area_type") == "town" else "routes", key)
+        os.makedirs(os.path.dirname(out), exist_ok=True)
+        pygame.image.save(whole_image(img), out)
+        print(f"  {out}  <- {src}")
+
 
 def room_picture(game, mid):
     """An indoor map as a 1280 x 540 picture: the room (its non-black part), scaled up crisp, on black."""
@@ -85,10 +105,13 @@ def main(argv):
     args = [a for a in argv if not a.startswith("--")]
     root = args[0] if args and os.path.isdir(args[0]) else ORRE_GAME
     only = {a.upper() for a in args if not os.path.isdir(a)}
-    if not os.path.isdir(os.path.join(root, "Data")):
-        sys.exit(f"Pokemon Orre not found at {root}")
     pygame.init()
     pygame.display.set_mode((1, 1))
+    render_pictures(only)
+    if only and only <= set(PICTURES):
+        return
+    if not os.path.isdir(os.path.join(root, "Data")):
+        sys.exit(f"Pokemon Orre not found at {root}")
     game = Journeys(root)
     with open(os.path.join("assets", "orre_area_data.json"), encoding="utf-8") as f:
         areas = json.load(f)["STORY_PROGRESSION"]

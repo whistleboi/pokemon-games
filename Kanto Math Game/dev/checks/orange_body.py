@@ -67,6 +67,7 @@ for area, kind, want in (("MIKAN_ISLAND", "cissy", [(116, 15), (8, 18), (72, 13)
     story.current_area_key = area
     story.badges["ORANGE"] = ["CORAL_EYE", "SEA_RUBY", "SPIKE_SHELL"][:0 if area == "MIKAN_ISLAND" else 3]
     story.story_flags[f"gym_progress_{area}"] = len(prog[area]["gym"]["trainers"])
+    story.story_flags[f"gym_challenge_done_{area}"] = True  # (the Gym challenge minigame: won)
     lobby = ow.GymLobbyState(g, None)
     g.change_state(lobby)
     lobby.challenge_gym()

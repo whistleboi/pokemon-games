@@ -741,4 +741,172 @@ for _a in ("WILD_AREA", "WILD_AREA_NORTH", "ISLE_OF_ARMOR", "CROWN_TUNDRA"):
     _miss = [z["key"] for z in _zs if not g.assets.get_journeys_background("routes", f"{_a}_{z['key']}")]
     check(not _miss, f"{_a}: every zone has its picture {_miss}")
 story.story_flags, story.current_area_key = _saved22
+print("23) Gym challenges: a minigame in place of the trainers, the same one until it's won (Jordan, 11-01)")
+from src import minigames as _mg
+from src.minigames.base import Minigame as _MG
+from src.states.overworld import GymLobbyState as _GL23
+_saved23 = (dict(story.story_flags), {r: list(b) for r, b in story.badges.items()}, story.current_area_key,
+            story.player_team, story.balls_left)
+check(len(_mg.GAMES) >= 10, f"a stable of games {sorted(_mg.GAMES)}")
+for _k, _cls in _mg.GAMES.items():  # each one starts, plays a while, and can lose and try again
+    _m = _cls(g, lambda won: None, level=3, leader={"name": "Brock", "team": [74, 95]}, partner=25, seed=4)
+    g.change_state(_m)
+    _m.buttons[0][3]()
+    for _f in range(120):
+        if _f % 7 == 0:
+            _m.on_tap((100 + (_f * 37) % 1080, 140 + (_f * 53) % 540))
+        _m.update()
+        _m.draw()
+        if _m.phase != "PLAY":
+            break
+    _ok = _m.phase in ("PLAY", "WON", "LOST")
+    if _m.phase == "LOST":
+        _m.buttons[0][3]()
+        _ok = _m.phase == "PLAY" and _m.progress()[0] == 0
+    check(_ok, f"{_k}: plays and tries again ({_m.phase})")
+story.current_area_key = "PEWTER_CITY"
+story.badges["KANTO"] = []
+for _f in [f for f in story.story_flags if f.startswith(("gym_challenge", "gym_progress_PEWTER"))]:
+    story.story_flags.pop(_f)
+_lob = _GL23(g, None); g.change_state(_lob)
+check(_lob.challenge is not None and "Gym Challenge" in _lob.status_text, f"Pewter: {_lob.status_text}")
+_first = story.story_flags.get(_mg.picked_flag("PEWTER_CITY"))
+_lob.challenge_gym()
+check(isinstance(g.current_state, _MG) and g.current_state.key == _first, f"CHALLENGE plays it ({g.current_state.key})")
+g.current_state.buttons[0][3]()
+g.current_state.lose("test")
+g.current_state.buttons[1][3]()  # LEAVE
+_lob = g.current_state
+check(isinstance(_lob, _GL23) and _lob.challenge and _lob.challenge.key == _first, "lost: back in the lobby, the same game")
+_balls = story.balls_left
+_lob.challenge_gym()
+g.current_state.buttons[0][3]()
+g.current_state.win()
+g.current_state.buttons[0][3]()  # CONTINUE
+_lob = g.current_state
+check(story.story_flags.get(_mg.done_flag("PEWTER_CITY")) and not _lob.challenge and _lob.next_opponent is _lob.leader,
+      f"won: the Leader is next ({_lob.status_text})")
+check(story.balls_left > _balls, "and the trainers' Poke Balls come with it")
+story.badges["KANTO"] = ["BOULDER"]
+story.story_flags.pop(_mg.done_flag("PEWTER_CITY"))
+check(not _GL23(g, None).challenge, "a Gym already beaten has no challenge")
+check([_mg.pick(g, k, []).key for k in ("VERMILLION_CITY", "FUCHSIA_CITY", "SAFFRON_CITY", "CINNABAR_ISLAND")]
+      == ["surge", "koga", "sabrina", "quiz"], "Kanto's puzzle Gyms keep their own challenges, drawn as games")
+check(all(not _mg.GAMES[k].in_pool for k in ("surge", "koga", "sabrina", "quiz")) and _mg.GAMES["chase"].in_pool,
+      "and only there; the chase is in the pool")
+_titles = {}
+for _area in ("PEWTER_CITY", "RUSTBORO_CITY", "STRIATON_CITY"):
+    story.current_area_key = _area
+    _titles[_area] = (_mg.GAMES["flight"].title_for(g), _mg.GAMES["chase"].title_for(g))
+check(_titles["PEWTER_CITY"] == ("Pidgey Flight", "Magikarp Escape") and _titles["RUSTBORO_CITY"] == ("Taillow Flight", "Feebas Escape")
+      and _titles["STRIATON_CITY"][0] == "Pidove Flight", f"each region's own Pokemon {_titles}")
+story.current_area_key = "RUSTBORO_CITY"
+_tc = _mg.GAMES["typeclash"](g, lambda w: None, leader={"name": "Roxanne", "team": [74]})
+check(_tc.species == {"GRASS": 252, "FIRE": 255, "WATER": 258}, f"Type Clash in Hoenn: Treecko, Torchic, Mudkip {_tc.species}")
+check(all(_mg.GAMES[k].controls for k in _mg.GAMES), "every game shows its controls")
+_tc.handle_events([pygame.event.Event(pygame.MOUSEBUTTONDOWN, pos=(5, 5), button=1)])
+check(_tc.phase == "INTRO", "the controls card waits for GOT IT!")
+_tc.handle_events([pygame.event.Event(pygame.KEYDOWN, key=pygame.K_RETURN, mod=0, unicode="")])
+check(_tc.phase == "PLAY", "(or Enter)")
+story.story_flags, _b23, story.current_area_key, story.player_team, story.balls_left = _saved23
+story.badges = _b23
+print("24) Game Corner: coins, Slots and Voltorb Flip from the fan games' set, the Prize Counter (Jordan, 11-01)")
+import random as _r24
+from src.states import game_corner as _gc
+_saved24 = (dict(story.story_flags), story.money, story.current_area_key, list(story.player_team))
+story.current_area_key = "CELADON_CITY"
+story.story_flags.pop(_gc.COINS_FLAG, None)
+story.money = 5000
+_line = _gc.buy_coins(story)
+check(_gc.coins(story) == 50 and story.money == 4000, f"50 coins for $1,000 ({_line})")
+check(_gc.line_pay("RED7", "RED7", "RED7") == 300 and _gc.line_pay("RED7", "BLUE7", "RED7") == 90
+      and _gc.line_pay("PIKACHU", "PIKACHU", "PIKACHU") == 15 and _gc.line_pay("CHERRY", "PSYDUCK", "RED7") == 2
+      and _gc.line_pay("CHERRY", "CHERRY", "RED7") == 4 and _gc.line_pay("REPLAY", "REPLAY", "REPLAY") == "REPLAY"
+      and _gc.line_pay("PSYDUCK", "RED7", "CHERRY") == 0, "the machine's payout table")
+_sl = _gc.SlotsState(g, g.current_state, rng=_r24.Random(3))
+g.change_state(_sl)
+_sl.place_bet(3)
+check(_gc.coins(story) == 47 and _sl.bet == 3, "a 3-coin bet lights 3 lines' worth")
+_sl.spin()
+for _i in range(3):
+    _sl.update(); _sl.stop_reel(_i)
+for _f in range(60):
+    _sl.update()
+_sl.draw()
+check(not any(_sl.spinning) and _gc.coins(story) == 47 + _sl.payout, f"STOP, STOP, STOP: paid {_sl.payout}")
+story.story_flags[_gc.LEVEL_FLAG] = 1
+_vf = _gc.VoltorbFlipState(g, g.current_state, rng=_r24.Random(5))
+g.change_state(_vf)
+_rows, _cols = _vf._sums()
+check(sum(p for p, _ in _rows) == sum(sum(r) for r in _vf.board) and sum(b for _, b in _cols) == sum(r.count(0) for r in _vf.board),
+      "the hints add up (points and Voltorb per row and column)")
+_before = _gc.coins(story)
+for _rr in range(5):
+    for _cc in range(5):
+        if _vf.board[_rr][_cc] > 0:
+            _vf.flip(_cc, _rr)
+for _f in range(12):
+    _vf.update()
+check(_vf.over == "WIN" and _gc.coins(story) > _before and _vf.level == 2, f"every 2 and 3 found: level cleared ({_vf.message})")
+_vf.new_round()
+_bomb = next((c, r) for r in range(5) for c in range(5) if _vf.board[r][c] == 0)
+_vf.flip(*_bomb)
+for _f in range(12):
+    _vf.update()
+_vf.draw()
+check(_vf.over == "BOOM" and _vf.round_coins == 0 and _vf.level == 1, f"a Voltorb: the round's coins are lost ({_vf.message})")
+_gc.add_coins(story, 200)
+_pc = _gc.PrizeCounterState(g, g.current_state)
+_n = len(story.player_team) + len([p for p in story.pc_pokemon if p])
+_pc.buy(("POKEMON", 63, 180))
+check(len(story.player_team) + len([p for p in story.pc_pokemon if p]) == _n + 1, f"a prize Pokemon ({_pc.message})")
+story.story_flags, story.money, story.current_area_key, story.player_team = _saved24
+print("25) Tile puzzles (Gyms and the Ruins of Alph) and Blackjack (Jordan, 11-01)")
+import random as _r25
+from src import minigames as _mg25
+from src.minigames.tiles import TilePuzzle as _TP, AlphPuzzle as _AP, flag as _alph_flag
+from src.states import game_corner as _gc25
+_saved25 = (dict(story.story_flags), story.current_area_key)
+check("tiles" in _mg25.GAMES and _mg25.GAMES["tiles"].in_pool, "the Tile Puzzle is in the Gym rotation")
+_t = _TP(g, lambda w: None, level=5, leader={"name": "Brock", "team": [74, 95]}, seed=1)
+check(_t.title == "Onix Puzzle" and _t.n == 4, f"the Leader's ace is the picture ({_t.title}, {_t.n} x {_t.n})")
+_t3 = _TP(g, lambda w: None, level=0, leader={"name": "Falkner", "team": [16, 17]}, seed=1)
+check(_t3.n == 3 and _t3.title == "Pidgeotto Puzzle", "early Gyms: 3 x 3")
+_t.buttons[0][3]()
+for _i in range(16):
+    _t._use(next(k for k, v in _t.spots.items() if v == _i))
+    _t._use(("B", _i))
+check(_t.phase == "WON", "every piece in place: won")
+_a = _AP(g, lambda w: None, panel="hooh", seed=2)
+check(_a.title == "Ho-Oh Panel" and _a.WALL == "bg_hooh.png" and _a.n == 4, f"the Ho-Oh chamber's own panel ({_a.title})")
+story.current_area_key = "RUINS_OF_ALPH"
+story.story_flags.pop(_alph_flag("kabuto"), None)
+_alph = [o for o in g.loader.area_data["STORY_PROGRESSION"]["RUINS_OF_ALPH"]["explore_options"] if o.get("action") == "TILE_PUZZLE"]
+check([o["panel"] for o in _alph] == ["kabuto", "omanyte", "aerodactyl", "hooh"], "the Ruins of Alph's four chambers")
+from src.states.overworld import CityState as _CS25
+_city = _CS25(g)
+g.change_state(_city)
+_city.solve_alph_panel("kabuto")
+_ap = g.current_state
+check(isinstance(_ap, _AP), "a chamber opens its puzzle")
+_ap.buttons[0][3]()
+_ap.win()
+_ap.buttons[0][3]()
+check(story.story_flags.get(_alph_flag("kabuto")) and g.current_state is _city, "solved: it stays solved")
+check(_gc25.hand_total([("A", "spade"), ("K", "heart")]) == (21, True) and _gc25.blackjack([("A", "spade"), ("10", "club")])
+      and _gc25.hand_total([("A", "spade"), ("9", "heart"), ("5", "club")]) == (15, False), "Blackjack hand totals (an Ace is 1 or 11)")
+story.story_flags[_gc25.COINS_FLAG] = 100
+_bj = _gc25.BlackjackState(g, g.current_state, rng=_r25.Random(7))
+g.change_state(_bj)
+_bj.add_bet(10)
+_bj.deal()
+for _f in range(200):
+    _bj.update()
+    if _bj.phase == "PLAY":
+        _bj.stand()
+    if _bj.phase == "DONE":
+        break
+_bj.draw()
+check(_bj.phase == "DONE" and _gc25.coins(story) in (90, 100, 110, 115), f"a hand plays out and pays ({_bj.message}, {_gc25.coins(story)} coins)")
+story.story_flags, story.current_area_key = _saved25
 print(f"\n{'ALL PASS' if not fails else str(fails) + ' FAIL(S)'}")

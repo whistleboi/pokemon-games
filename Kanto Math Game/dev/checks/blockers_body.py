@@ -31,10 +31,10 @@ def route_buttons(area):
 # Sinnoh: the Galactic Key (a Bag item from Jupiter) opens the HQ.
 story.inventory.pop("GALACTIC_KEY", None)
 check("Team Galactic HQ" not in city_options("VEILSTONE_CITY", "travel_options"), "Veilstone: no HQ travel without the key")
-check("Galactic Veilstone HQ" not in city_options("VEILSTONE_CITY", "explore_options"), "Veilstone: no HQ explore without the key")
+check("Team Galactic HQ" not in city_options("VEILSTONE_CITY", "explore_options"), "Veilstone: no HQ explore without the key")
 story.inventory["GALACTIC_KEY"] = 1
 check("Team Galactic HQ" in city_options("VEILSTONE_CITY", "travel_options"), "Veilstone: HQ travel with the key")
-check("Galactic Veilstone HQ" in city_options("VEILSTONE_CITY", "explore_options"), "Veilstone: HQ explore with the key")
+check("Team Galactic HQ" in city_options("VEILSTONE_CITY", "explore_options"), "Veilstone: HQ explore with the key")  # (travel buttons: the place's name)
 
 # Unova: N at Icirrus no longer brings a Lv 70 Zekrom to a badge-6 fight.
 ev = g.loader.area_data["STORY_PROGRESSION"]["ICIRRUS_CITY"]["on_enter_event"]

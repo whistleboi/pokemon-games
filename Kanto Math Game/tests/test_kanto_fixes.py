@@ -299,31 +299,28 @@ def _solve(pz, wrong_first=False):
 
 @test
 def gym_puzzles_math():
-    from src.states.gym_puzzles import GymPuzzleState, make_step
+    # 11-01: the Gyms' text puzzles gave way to the Gym challenge minigames (src/minigames): the
+    # challenge stands in for the trainers; win it and the Leader is next.
+    from src.states.gym_puzzles import make_step
+    from src.minigames.base import Minigame
     st = G.story_manager
-    for area, kind in (("VERMILLION_CITY", "surge"), ("FUCHSIA_CITY", "koga"), ("SAFFRON_CITY", "sabrina")):
-        st.story_flags.pop(f"gym_puzzle_{area}", None)
-        n = len(AREA["STORY_PROGRESSION"][area]["gym"].get("trainers", []))
-        lb = _lobby(area, n); lb.challenge_gym()
-        pz = G.current_state
-        assert isinstance(pz, GymPuzzleState) and pz.kind == kind, (area, type(pz))
-        pz.draw()
-        _solve(pz, wrong_first=True)
-        assert st.story_flags[f"gym_puzzle_{area}"] and type(G.current_state).__name__ == "GymLobbyState"
+    for area in ("VERMILLION_CITY", "FUCHSIA_CITY", "SAFFRON_CITY", "CINNABAR_ISLAND"):
+        badge = AREA["STORY_PROGRESSION"][area]["gym"]["leader"]["badge_reward"]
+        for b in st.badges.values():
+            if badge in b: b.remove(badge)
+        st.story_flags.pop(f"gym_challenge_done_{area}", None)
+        lb = _lobby(area, 0); lb.challenge_gym()
+        mg = G.current_state
+        assert isinstance(mg, Minigame), (area, type(mg))
+        mg.draw()
+        mg.phase = "PLAY"; mg.win(); mg.buttons[0][3]()  # won: CONTINUE
+        assert st.story_flags[f"gym_challenge_done_{area}"] and type(G.current_state).__name__ == "GymLobbyState"
         G.current_state.challenge_gym()
         assert type(G.current_state).__name__ == "TrainerIntroState", type(G.current_state)
-    for _ in range(200):  # every step has exactly one right answer, and it is right
-        for kind in ("surge", "koga", "sabrina", "quiz"):
+    for _ in range(200):  # the story events' puzzles: every step has exactly one right answer
+        for kind in ("surge", "sabrina", "quiz", "braille", "security", "tanoby", "illusion", "cafe", "galette"):
             p, pic, opts = make_step(kind, 0)
             assert sum(o[1] for o in opts) == 1
-    # Blaine: right answer skips the trainer, wrong answer starts the battle
-    for k in [k for k in st.story_flags if k.startswith("gym_quiz_")]: st.story_flags.pop(k)
-    lb = _lobby("CINNABAR_ISLAND", 0); lb.challenge_gym(); _solve(G.current_state)
-    assert st.story_flags["gym_progress_CINNABAR_ISLAND"] == 1
-    lb = G.current_state; lb.challenge_gym(); qz = G.current_state
-    qz.answer([i for i, o in enumerate(qz.options) if not o[1]][0])
-    for _ in range(100): qz.update()
-    assert type(G.current_state).__name__ == "TrainerIntroState"
 
 @test
 def semi_invulnerable_fly_dig_dive():

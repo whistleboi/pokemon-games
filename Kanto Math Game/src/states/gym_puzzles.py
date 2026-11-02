@@ -1,21 +1,11 @@
-"""Kanto gym puzzles as K-3 math minigames (menu-node style, like the rest of the game).
+"""Story-event math puzzles (menu-node style), and the questions behind Kanto's Gym challenges.
 
-- Vermilion (Lt. Surge): trash cans. Each can shows an addition; the switch is in the can whose
-  sum is the target. Find two switches in a row; a wrong can on the second resets the locks.
-- Fuchsia (Koga): invisible walls. Count the footprints and take the path with the right number.
-- Saffron (Sabrina): warp tiles. Step on the tile whose answer matches; a wrong tile warps you back.
-- Cinnabar (Blaine): quiz machine before each gym trainer. Right answer = that trainer is skipped,
-  wrong answer = battle them (canon FRLG).
+make_step(kind, step) makes one screen's question. Kanto's Gym challenges (src/minigames/kanto.py:
+Lt. Surge's trash cans, Sabrina's warp tiles, Blaine's quiz machine) draw their questions from the
+"surge", "sabrina" and "quiz" kinds. (The Gyms' old menu puzzles, Koga's and the Orange Crew's
+included, gave way to the Gym challenge minigames on 11-01.)
 
-The Orange Crew's challenges come before each Orange Islands leader, as in the anime:
-- Mikan (Cissy): Water Gun target practice. Hit the can whose sum is the target.
-- Navel (Danny): climb the mountain. Pick the ledge whose answer is the target; a wrong ledge slides you down.
-- Trovita (Rudy): count the Spike Shells on the beach and pick the right pile.
-- Kumquat (Luana): a double battle, so doubles: 4 + 4, 7 + 7...
-
-Solving a puzzle sets story flag gym_puzzle_<AREA> and opens the leader.
-
-Story events can run a puzzle too ("puzzle": kind, see overworld._start_event_puzzle):
+Story events run a puzzle with GymPuzzleState ("puzzle": kind, see overworld._start_event_puzzle):
 - braille (Sevii, Dotted Hole): count the raised dots in the wall's cells.
 - security (Sevii, Rocket Warehouse): a door code is three numbers added up.
 - tanoby (Sevii, Tanoby Ruins): what comes next in the pattern (2, 4, 6, ?).
@@ -31,20 +21,7 @@ import pygame
 from src.states.base import GameState
 from src.utils import Utils
 from src.ui.widgets import Button
-from src.config import WHITE, BLACK, BLUE, GREEN, RED, ORANGE, PURPLE, GOLD
-
-PUZZLE_GYMS = {"VERMILLION_CITY": "surge", "FUCHSIA_CITY": "koga", "SAFFRON_CITY": "sabrina",
-               "MIKAN_ISLAND": "cissy", "NAVEL_ISLAND": "danny", "TROVITA_ISLAND": "rudy",
-               "KUMQUAT_ISLAND": "luana"}
-QUIZ_GYMS = {"CINNABAR_ISLAND"}
-
-
-def puzzle_flag(area_key):
-    return f"gym_puzzle_{area_key}"
-
-
-def needs_puzzle(story, area_key):
-    return area_key in PUZZLE_GYMS and not story.story_flags.get(puzzle_flag(area_key))
+from src.config import WHITE, BLACK, GREEN, PURPLE, GOLD
 
 
 def _sum_pair(total, rng):
@@ -66,45 +43,12 @@ def make_step(kind, step, rng=random):
         rng.shuffle(cans)
         which = "first" if step == 0 else "second"
         return (f"The {which} switch is in the trash can that makes {target}!", "", cans)
-    if kind == "koga":
-        target = rng.randint(2, 7)
-        counts = [target] + rng.sample([n for n in range(1, 9) if n != target], 2)
-        rng.shuffle(counts)
-        pics = "    ".join(f"Path {i + 1}: " + "o" * n for i, n in enumerate(counts))
-        return (f"Koga's walls are invisible! Take the path with {target} footprints.", pics,
-                [(f"PATH {i + 1}", n == target) for i, n in enumerate(counts)])
     if kind == "sabrina":
         target = rng.randint(2, 10)
         wrong = rng.sample([n for n in range(1, 13) if n != target], 3)
         tiles = [(f"{_diff_pair(target, rng)}", True)] + [(f"{_diff_pair(n, rng)}", False) for n in wrong]
         rng.shuffle(tiles)
         return (f"Room {step + 1}: step on the warp tile whose answer is {target}.", "", tiles)
-    if kind == "cissy":
-        target = rng.randint(6, 15)
-        wrong = rng.sample([n for n in range(4, 18) if n != target], 3)
-        cans = [(_sum_pair(target, rng), True)] + [(_sum_pair(n, rng), False) for n in wrong]
-        rng.shuffle(cans)
-        return (f"Target {step + 1}: use Water Gun on the can that makes {target}!", "", cans)
-    if kind == "danny":
-        target = rng.randint(3, 12)
-        wrong = rng.sample([n for n in range(1, 15) if n != target], 3)
-        ledges = [(_diff_pair(target, rng), True)] + [(_diff_pair(n, rng), False) for n in wrong]
-        rng.shuffle(ledges)
-        return (f"Climb {step + 1}: grab the ledge whose answer is {target}.", "", ledges)
-    if kind == "rudy":
-        target = rng.randint(3, 9)
-        counts = [target] + rng.sample([n for n in range(2, 11) if n != target], 2)
-        rng.shuffle(counts)
-        pics = "    ".join(f"Pile {i + 1}: " + "@" * n for i, n in enumerate(counts))
-        return (f"Rudy hid a Spike Shell pile with {target} shells. Which pile is it?", pics,
-                [(f"PILE {i + 1}", n == target) for i, n in enumerate(counts)])
-    if kind == "luana":
-        n = rng.randint(2, 10)
-        opts = {2 * n}
-        while len(opts) < 4:
-            opts.add(max(2, 2 * n + rng.choice([-3, -2, -1, 1, 2, 3])))
-        return (f"Double battle, double numbers! What is {n} + {n}?", "",
-                [(str(o), o == 2 * n) for o in sorted(opts)])
     if kind == "braille":
         cells = [rng.randint(1, 6) for _ in range(2)]
         target = sum(cells)
@@ -174,22 +118,11 @@ def make_step(kind, step, rng=random):
     while len(opts) < 4:
         opts.add(max(0, ans + rng.choice([-3, -2, -1, 1, 2, 3])))
     opts = sorted(opts)
-    return (f"QUIZ! What is {q}?", "Right answer: skip this trainer. Wrong answer: battle!",
-            [(str(o), o == ans) for o in opts])
+    return (f"QUIZ! What is {q}?", "", [(str(o), o == ans) for o in opts])
 
 
-STEPS = {"surge": 2, "koga": 3, "sabrina": 3, "quiz": 1,
-         "cissy": 3, "danny": 3, "rudy": 3, "luana": 3,
-         "braille": 3, "security": 3, "tanoby": 7, "illusion": 3, "carvings": 3, "cafe": 3, "galette": 3}
+STEPS = {"braille": 3, "security": 3, "tanoby": 7, "illusion": 3, "carvings": 3, "cafe": 3, "galette": 3}
 INTRO = {
-    "surge": "Lt. Surge locked his door! Two switches are hidden in the trash cans.",
-    "koga": "The Fuchsia Gym is full of invisible walls!",
-    "sabrina": "The Saffron Gym is a maze of warp tiles!",
-    "quiz": "Blaine's quiz machine buzzes to life!",
-    "cissy": "Cissy: Before we battle, show me your aim! Knock down three cans with Water Gun.",
-    "danny": "Danny: My challenge starts at the bottom of the volcano. Race me to the top!",
-    "rudy": "Rudy: My sister buried some Spike Shells on the beach. Find the right piles!",
-    "luana": "Luana: My Gym is all double battles. Let's see if you can think in doubles!",
     "braille": "Strange dots are carved into the walls of the Dotted Hole...",
     "security": "The warehouse doors are locked with number pads!",
     "tanoby": "Seven chambers, seven sealed doors, each carved with a number pattern.",
@@ -199,13 +132,6 @@ INTRO = {
     "galette": "The galette stall has a line of customers. Hand each the right tray!",
 }
 WRONG = {
-    "surge": ("Nope! Only trash in there.", "The locks reset! Start over."),
-    "koga": ("BONK! An invisible wall!", "BONK! An invisible wall!"),
-    "sabrina": ("Whoosh! You warped back to the entrance.", "Whoosh! You warped back to the entrance."),
-    "cissy": ("Splash! Missed that one.", "Splash! Missed that one."),
-    "danny": ("Whoa! The ledge crumbled.", "Whoa! You slid back down to the bottom!"),
-    "rudy": ("Just sand in that pile!", "Just sand in that pile!"),
-    "luana": ("Not quite! Count it twice.", "Not quite! Count it twice."),
     "braille": ("Nothing happens.", "Nothing happens."),
     "security": ("BZZT! Wrong code.", "BZZT! Wrong code. The alarm resets the doors!"),
     "tanoby": ("The door stays shut.", "The door stays shut."),
@@ -215,13 +141,6 @@ WRONG = {
     "galette": ("That's the wrong tray!", "Oops! Those trays got mixed up. Start again."),
 }
 DONE = {
-    "surge": "Click! Both switches are on. The door to Lt. Surge opened!",
-    "koga": "You found the way through! Koga is waiting.",
-    "sabrina": "You warped right in front of Sabrina!",
-    "cissy": "Cissy: Bullseye, three times! Now for the real battle.",
-    "danny": "Danny: You beat me to the top! Now let's battle.",
-    "rudy": "Rudy: You found every pile! You've earned your battle.",
-    "luana": "Luana: Perfect doubles! You're ready for my double battle.",
     "braille": "The wall rumbles open! A passage leads deeper underground.",
     "security": "Click! The last door slides open.",
     "tanoby": "All seven chambers are open! Unown pour out of the ruins!",
@@ -233,7 +152,7 @@ DONE = {
 
 
 class GymPuzzleState(GameState):
-    """kind: surge / koga / sabrina / quiz. on_done(solved: bool) is called when it ends."""
+    """kind: one of the story events' puzzles (braille, security...). on_done(solved: bool) when it ends."""
 
     def __init__(self, game, area_key, kind, on_done, rng=None):
         super().__init__(game)
@@ -255,21 +174,17 @@ class GymPuzzleState(GameState):
         if self.finished:
             return
         right = self.options[index][1]
-        if self.kind == "quiz":
-            self.message = "Correct! You may pass this trainer." if right else "Wrong! Get ready to battle!"
-            return self._finish(right)
         if right:
             self.step += 1
             if self.step >= STEPS[self.kind]:
                 self.message = DONE[self.kind]
-                self.game.story_manager.story_flags[puzzle_flag(self.area_key)] = True
                 return self._finish(True)
             self.message = "That's it! Keep going."
         else:
             first, later = WRONG[self.kind]
             self.message = first if self.step == 0 else later
-            if self.kind in ("surge", "sabrina", "danny", "security", "illusion"):
-                self.step = 0  # Surge's locks reset; Sabrina's warp and Danny's ledges send you back
+            if self.kind in ("security", "illusion"):
+                self.step = 0  # the alarm resets the doors; Zoroark sends you back
         self._new_step()
 
     def _finish(self, solved):
@@ -298,15 +213,13 @@ class GymPuzzleState(GameState):
         x0 = (w - (cols * bw + (cols - 1) * gap)) // 2
         y0 = int(h * 0.45)
         font = self.game.assets.fonts.get("s_med") or self.game.assets.fonts["label"]
-        color = {"surge": ORANGE, "koga": PURPLE, "sabrina": BLUE, "quiz": RED, "cissy": BLUE,
-                 "danny": RED, "rudy": ORANGE, "luana": GREEN}.get(self.kind, PURPLE)
+        color = PURPLE
         for i, (label, _) in enumerate(self.options):
             r, c = divmod(i, cols)
             self.buttons.append(Button((x0 + c * (bw + gap), y0 + r * (bh + gap), bw, bh), label, font,
                                        (lambda k=i: self.answer(k)), bg_color=color, autosize=False))
-        if self.kind != "quiz":
-            self.buttons.append(Button((w - 240, h - 110, 200, 70), "LEAVE", font, self.leave,
-                                       bg_color=GREEN, autosize=False))
+        self.buttons.append(Button((w - 240, h - 110, 200, 70), "LEAVE", font, self.leave,
+                                   bg_color=GREEN, autosize=False))
         if ui:
             for b in self.buttons:
                 ui.add_element(b)

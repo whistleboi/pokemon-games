@@ -27,6 +27,7 @@ from src.world import seasons
 from src.world import hoenn
 from src.world import guide
 from src.world import league_redo
+from src import minigames
 from src.pokemon import catching
 from src.pokemon import balance
 from src.world import levels
@@ -50,6 +51,41 @@ def _fill_names(game, text):
         caught = game.story_manager.kanto_caught_count()
         text = text.replace("{kanto_caught}", str(caught)).replace("{kanto_missing}", str(150 - caught))
     return text
+
+
+# Travel buttons, one way in every region (Jordan, 11-01): the place's name in Title Case, and for a
+# ride the ride too ("Seagallop to One Island"); no "back to", "exit", directions or capitals from
+# the data. An option's own "label" wins. Red, in towns and on routes (gold: the way to the Journal's goal).
+TRAVEL_RIDES = ("Seagallop", "S.S. Anne", "S.S. Aqua", "S.S. Tidal", "Magnet Train", "Cable Car", "Flying Taxi",
+                "Space-Time Rift", "Spatial Rift", "Ultra Wormhole", "Exchange", "Train", "Ferry", "Boat", "Ship", "Bus")
+TRAVEL_COLOR = "RED"
+
+
+def _title_words(text):
+    """'MT. SILVER' -> 'Mt. Silver', "BILL'S HOUSE" -> "Bill's House" (only text that's all capitals)."""
+    if text != text.upper():
+        return text
+    return " ".join(w[:1].upper() + w[1:].lower() if not re.fullmatch(r"(?:[A-Z]\.)+", w) else w for w in text.split())
+
+
+def travel_label(game, item):
+    """The words on a travel button (see TRAVEL_RIDES)."""
+    if item.get("label"):
+        return _fill_names(game, item["label"])
+    text = _fill_names(game, item.get("text") or "")
+    target = item.get("target_area") or item.get("target")
+    name = ((game.loader.area_data.get("STORY_PROGRESSION", {}).get(target) or {}).get("route_name")
+            if target else None)
+    ride = next((r for r in TRAVEL_RIDES if re.search(r"(?<![\w.])" + re.escape(r) + r"(?![\w])", text, re.I)), None)
+    if not name:  # no such area (or no name): the words given, tidied
+        name = re.sub(r"^(?:back to|return to|exit to|go to|to)\s+", "", text.replace("_", " "), flags=re.I)
+        if ride:
+            name = re.split(r"\bto\b", name, maxsplit=1, flags=re.I)[-1].strip() if re.search(r"\bto\b", name, re.I) else name
+        name = re.sub(r"\s*\((?:to |north|south|east|west|base|ferry|train|bus)[^)]*\)\s*$", "", name, flags=re.I)
+        name = _title_words(name.strip(" !")) or text
+    if ride and ride.lower() not in name.lower():
+        return f"{ride} to {name}"
+    return name
 
 
 def _resolve_lines(game, value):
@@ -1525,8 +1561,9 @@ class PlayState(GameState):
                 "BLUE": theme.RUN, "GREEN": theme.POKEMON, "RED": theme.FIGHT, "ORANGE": (232, 132, 40),
                 "GOLD": theme.BAG, "PURPLE": theme.MEGA, "GRAY": (120, 124, 144), "CYAN": (40, 170, 200)
             }
-            bg_color = color_map.get(item.get("color", "BLUE"), theme.RUN)
             way_out = item.get("action") in ("EXIT", "TRAVEL")
+            bg_color = color_map.get(TRAVEL_COLOR if way_out and item.get("target_area") or way_out and item.get("target")
+                                     else item.get("color", "BLUE"), theme.RUN)
             toward = way_out and (item.get("target_area") or item.get("target")) == guide.cached(self.game, "hop")
             if not way_out and not item.get("disabled") and guide.advances_goal(
                     self.game, self.game.story_manager.current_area_key, item):
@@ -1543,7 +1580,8 @@ class PlayState(GameState):
                 callback = (lambda i=item: self._exit_locked(i))
                 bg_color = (120, 124, 144)
 
-            label = ("> " if toward else "") + theme.pokemon_word(_fill_names(self.game, item["text"]))  # "BATTLE {rival_name}"
+            words = travel_label(self.game, item) if way_out and (item.get("target_area") or item.get("target"))                 else _fill_names(self.game, item["text"])  # "BATTLE {rival_name}"
+            label = ("> " if toward else "") + theme.pokemon_word(words)
             btn = CommandButton(pygame.Rect(0, 0, 330, 60), label, self.game.assets.fonts["label"],
                                 self._route_pick(callback), bg_color=bg_color, autosize=False)
             btn.route_group = "travel" if way_out or item.get("action") == "ZONE" else "explore"  # (zones: a way to go)
@@ -2956,7 +2994,9 @@ class PlayState(GameState):
         self.problem_str, self.correct_ans, self.options = self.generate_math_set(self.total_caught, num_options=3)
         self.question_timer = 30 * FPS
         name = self.p_data[idx].display_name.upper() if self.p_data[idx] else "It"
-        self.show_dialogue([f"{name} broke free! Answer again to throw another ball."])
+        # Closing the line clears the box (a finished box stays up otherwise, hiding the new answers).
+        self.show_dialogue([f"{name} broke free! Answer again to throw another ball."],
+                           callback=lambda: setattr(self.dialogue_box, "visible", False))
 
     def reset_round(self):
         retry = getattr(self, "_retry_idx", None)
@@ -3600,8 +3640,10 @@ class CityState(GameState):
 
         font = self.game.assets.fonts["tiny"]
         max_w = 220
-        for opt in valid_options:
-            w = font.size(opt['text'])[0] + 40
+        words = [travel_label(self.game, o) if o.get("action") == "TRAVEL" and o.get("target_area")
+                 else _fill_names(self.game, o['text']) for o in valid_options]
+        for w_text in words:
+            w = font.size(w_text)[0] + 40
             if w > max_w:
                 max_w = w
 
@@ -3641,9 +3683,10 @@ class CityState(GameState):
             if callback:
                 toward = (opt_data.get("target_area") and opt_data.get("target_area") == guide.cached(self.game, "hop")) \
                     or guide.advances_goal(self.game, self.area_key, opt_data)  # (the step the Journal needs)
-                btn = Button(rect, ("> " if toward else "") + _fill_names(self.game, opt_data['text']),
+                way = opt_data.get("action") == "TRAVEL" and opt_data.get("target_area")
+                btn = Button(rect, ("> " if toward else "") + words[i],
                              self.game.assets.fonts["tiny"], callback, autosize=False,
-                             bg_color=GOLD if toward else BLUE)  # the way to the tracked mission
+                             bg_color=GOLD if toward else theme.FIGHT if way else BLUE)  # (gold: the way to the tracked mission)
                 self.hover_buttons.append(btn)
                 self.game.ui_manager.add_element(btn)
 
@@ -3828,10 +3871,30 @@ class CityState(GameState):
             return self.start_rocket_gauntlet
         if action == "RUINS":
             return self.action_explore_ruins
+        if action == "TILE_PUZZLE":
+            return lambda p=opt_data.get("panel"): self.solve_alph_panel(p)
         if action == "TRAVEL":
             return lambda: self.go_to_area(opt_data.get("target_area"), opt_data.get("message"),
                                            heal=travel_heal(opt_data))
         return None
+
+    # The Ruins of Alph's chambers (HeartGold/SoulSilver): each has a stone panel to put back together.
+    ALPH_DONE = {"kabuto": "The wall slides away... Unown drift out of the chamber!",
+                 "omanyte": "The floor rumbles... the Omanyte panel glows, and Unown pour out!",
+                 "aerodactyl": "A hidden door opens behind the Aerodactyl panel. More Unown appear!",
+                 "hooh": "The Ho-Oh panel shines like a rainbow... Unown fill the chamber!"}
+
+    def solve_alph_panel(self, panel):
+        from src.minigames.tiles import AlphPuzzle, flag
+
+        def done(won):
+            self.game.change_state(self)
+            if won:
+                self.game.story_manager.story_flags[flag(panel)] = True
+                self.show_message(["You put the panel back together!", self.ALPH_DONE.get(panel, "")])
+
+        self.clear_hover_menu()
+        self.game.change_state(AlphPuzzle(self.game, done, panel=panel, background=self.load_area_background()))
 
     def visit_contest_hall(self):
         from src.states.contest import ContestHallState
@@ -5874,14 +5937,27 @@ class GymLobbyState(GameState):
             badge = (self.leader or {}).get("badge_reward")
             self.redo = bool(badge and league_redo.active_here(game.story_manager, self.region)
                              and not league_redo.has_badge(game.story_manager, self.region, badge))
+            # Gym challenge (Jordan, 11-01): in place of the trainers, a minigame (src/minigames) to
+            # win before the Leader, until the badge is earned.
+            story = game.story_manager
+            self.challenge = None
+            if (not self.redo and badge and not story.has_badge(badge)
+                    and not story.story_flags.get(minigames.done_flag(self.area_key))):
+                self.challenge = minigames.pick(game, self.area_key, self._leader_team())
+            elif not self.redo and story.story_flags.get(minigames.done_flag(self.area_key))                     and self.progress < len(self.trainers):
+                self.progress = len(self.trainers)  # the challenge stood in for the trainers
+                story.story_flags[self.prog_key] = self.progress
             if self.redo:  # the Leader alone, at full strength; the badge again, with a star
                 self.next_opponent = self.leader
                 self.status_text = (f"League Redo: {_fill_names(game, self.leader.get('name', 'The Leader'))}"
                                     " is waiting, at full strength!")
+            elif self.challenge:
+                self.status_text = (f"Gym Challenge: {self.challenge.title_for(game)}! Win it to face "
+                                    f"{_fill_names(game, self.leader.get('name', 'the Leader'))}.")
             elif self.orange_rematch and self.progress > len(self.trainers):
                 self.progress = 0
                 game.story_manager.story_flags[self.prog_key] = 0
-            if self.redo:
+            if self.redo or self.challenge:
                 pass
             elif self.progress < len(self.trainers):
                 self.next_opponent = self.trainers[self.progress]
@@ -5978,10 +6054,33 @@ class GymLobbyState(GameState):
         7: ([214, 65, 248, 103, 59, 9], [72, 73, 72, 73, 73, 75]),   # Blastoise
     }
 
+    def _leader_team(self):
+        """The Leader's team as it will be (some depend on your first partner)."""
+        leader = self.leader or {}
+        return list((leader.get("team_choice") or {}).get(str(_region_starter_id(self.game))) or leader.get("team") or [])
+
+    def _start_challenge(self):
+        """The Gym's minigame; win it and the Leader is next (its trainers' Poke Balls too)."""
+        story = self.game.story_manager
+        lead = next((p for p in story.player_team if p), None)
+
+        def done(won):
+            if won:
+                story.story_flags[minigames.done_flag(self.area_key)] = True
+                story.story_flags[self.prog_key] = len(self.trainers)
+                story.balls_left += sum((t.get("rewards") or {}).get("balls", 0) for t in self.trainers) or 3
+            self.game.change_state(GymLobbyState(self.game, None))
+
+        self.game.change_state(self.challenge(
+            self.game, done, level=len(story.badges.get(self.region, [])), background=self.bg,
+            leader=dict(self.leader or {}, name=_fill_names(self.game, (self.leader or {}).get("name"))),
+            team=self._leader_team(), partner=getattr(lead, "id", 25)))
+
     def challenge_gym(self):
-        if self.is_cleared or not self.next_opponent or self.game.transitioning:
+        if getattr(self, "challenge", None) and not self.game.transitioning:
+            self._start_challenge()
             return
-        if self._start_gym_puzzle():
+        if self.is_cleared or not self.next_opponent or self.game.transitioning:
             return
 
         self.game.transitioning = True
@@ -6103,32 +6202,6 @@ class GymLobbyState(GameState):
 
         intro_text = random.choice(t_data.get("dialogue", {}).get("intro", ["Prepare to battle!"]))
         self.game.change_state(TrainerIntroState(self.game, trainer_sprite, intro_text, battle_state))
-
-    def _start_gym_puzzle(self):
-        """Kanto gym puzzles (src/states/gym_puzzles.py): Surge/Koga/Sabrina's must be solved before
-        the leader; Blaine quizzes you before each trainer. Returns True if a puzzle took over."""
-        from src.states import gym_puzzles as gp
-        story = self.game.story_manager
-        is_leader = (self.next_opponent == self.leader)
-        if is_leader and gp.needs_puzzle(story, self.area_key):
-            def done(solved):
-                self.game.change_state(GymLobbyState(self.game, None))
-            self.game.change_state(gp.GymPuzzleState(self.game, self.area_key,
-                                                     gp.PUZZLE_GYMS[self.area_key], done))
-            return True
-        quiz_flag = f"gym_quiz_{self.area_key}_{self.progress}"
-        if self.area_key in gp.QUIZ_GYMS and not is_leader and not story.story_flags.get(quiz_flag):
-            def answered(right):
-                story.story_flags[quiz_flag] = True
-                if right:  # canon: a right answer means you skip that trainer
-                    story.story_flags[self.prog_key] = story.story_flags.get(self.prog_key, 0) + 1
-                lobby = GymLobbyState(self.game, None)
-                self.game.change_state(lobby)
-                if not right:
-                    lobby.challenge_gym()  # wrong: battle the trainer now
-            self.game.change_state(gp.GymPuzzleState(self.game, self.area_key, "quiz", answered))
-            return True
-        return False
 
     def exit_gym(self):
         from src.states.overworld import CityState

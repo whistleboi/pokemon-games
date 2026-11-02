@@ -252,7 +252,8 @@ class MusicManager:
             kind = "center"
         elif type(state).__name__ == "EvolutionState":
             kind = "evolution"
-        elif type(state).__name__ in ("GameCornerState", "SlotMachineState", "GameCornerShopState"):
+        elif type(state).__name__ in ("GameCornerState", "SlotsState",
+                                      "VoltorbFlipState", "PrizeCounterState", "BlackjackState"):
             kind = "game_corner"
         elif type(state).__name__ == "StarterSelectionState":
             kind = "lab"
