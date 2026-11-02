@@ -709,4 +709,36 @@ check(not _lr.league_open(story, "KANTO") and not _GL21(g).redo, "the Champion b
 check(not any(m["id"] == "league_redo_kanto" for m in story.get_active_missions()), "and the mission is done")
 story.story_flags, _b21, story.current_area_key, story.starting_region, story.player_team = _saved21
 story.badges = _b21
+print("22) Zones: the Wild Areas, Isle of Armor, Crown Tundra and Area Zero in parts, each its own picture (Jordan, 11-01)")
+from src.states.overworld import PlayState as _PS22
+_saved22 = (dict(story.story_flags), story.current_area_key)
+
+
+def _zone_buttons(area):
+    story.current_area_key = area
+    p = _PS22(g); g.change_state(p)
+    p.show_progression_menu()
+    return p, [b for b in p.route_buttons if b.text.replace("> ", "").startswith("TO ")]
+
+
+for _a, _n in (("WILD_AREA", 2), ("WILD_AREA_NORTH", 2), ("ISLE_OF_ARMOR", 5), ("CROWN_TUNDRA", 4), ("AREA_ZERO", 4)):
+    story.story_flags.pop(f"zone_{_a}", None)
+    _p, _btns = _zone_buttons(_a)
+    check(len(_btns) == _n - 1 and all(b.route_group == "travel" for b in _btns),
+          f"{_a}: a TO button for each other zone, under TRAVEL {[b.text for b in _btns]}")
+_p, _btns = _zone_buttons("WILD_AREA")
+check(_p._zone()["key"] == "rolling_fields" and "Rolling Fields" in " ".join(_p._route_prompt()),
+      f"the Wild Area starts in Rolling Fields ({_p._route_prompt()[0]})")
+_before = _p.route_bg.copy() if _p.route_bg else None
+_p.action_switch_zone("lake_miloch")
+check(story.story_flags.get("zone_WILD_AREA") == "lake_miloch", "TO LAKE MILOCH moves there")
+check(_p.route_bg is not None and _before is not None and _p.route_bg.get_at((640, 200)) != _before.get_at((640, 200)),
+      "and the picture changes with it")
+_p, _btns = _zone_buttons("WILD_AREA")
+check([b.text.replace("> ", "") for b in _btns] == ["TO ROLLING FIELDS"], f"and it stays there {[b.text for b in _btns]}")
+for _a in ("WILD_AREA", "WILD_AREA_NORTH", "ISLE_OF_ARMOR", "CROWN_TUNDRA"):
+    _zs = g.loader.area_data["STORY_PROGRESSION"][_a]["zones"]
+    _miss = [z["key"] for z in _zs if not g.assets.get_journeys_background("routes", f"{_a}_{z['key']}")]
+    check(not _miss, f"{_a}: every zone has its picture {_miss}")
+story.story_flags, story.current_area_key = _saved22
 print(f"\n{'ALL PASS' if not fails else str(fails) + ' FAIL(S)'}")

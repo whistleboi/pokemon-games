@@ -1729,7 +1729,7 @@
         {"text": "DESERT RUINS", "action": "BOSS", "color": "ORANGE", "condition": ["regi_trio_awakened", "not:defeated_regirock"], "boss": {"id": 377, "level": 40, "name": "Regirock", "victory_flag": "defeated_regirock"}},
         {"text": "MAUVILLE CITY", "action": "EXIT", "target_area": "MAUVILLE_CITY", "condition": "can_exit", "color": "RED"},
         {"text": "ROUTE 112", "action": "EXIT", "target_area": "HOENN_ROUTE_112", "condition": "can_exit", "color": "RED"},
-        {"text": "ROUTE 113", "action": "EXIT", "target_area": "HOENN_ROUTE_113", "condition": ["can_exit", "has_item:HM_STRENGTH"], "color": "RED"},
+        {"text": "ROUTE 113", "action": "EXIT", "target_area": "HOENN_ROUTE_113", "condition": "can_exit", "color": "RED"},
         {"text": "Mirage Tower", "action": "EXIT", "target_area": "HOENN_MIRAGE_TOWER", "condition": ["can_exit", "has_heat_badge"], "color": "RED"}
       ],
       "next_area": "HOENN_ROUTE_112",

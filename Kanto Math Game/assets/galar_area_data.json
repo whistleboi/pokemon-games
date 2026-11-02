@@ -582,12 +582,13 @@
       "area_boss": { "id": 888, "name": "Zacian", "victory_flag": "SLUMBERING_WEALD_boss_defeated" },
         "can_fish": true
     },
-    "WILD_AREA_NORTH": {"area_type": "dungeon", "route_name": "Wild Area (North)", "region": "GALAR", "battle_type": "field", "level": 26, "wild_pool_percentages": "GALAR_WILD_AREA_NORTH_PERCENTAGES", "min_rounds": 2, "description": "The northern half of the Wild Area: Bridge Field, Stony Wilderness, Dusty Bowl, Giant's Mirror, Hammerlocke Hills, Giant's Cap and the Lake of Outrage.", "route_menu": [
+    "WILD_AREA_NORTH": {"area_type": "dungeon", "route_name": "Wild Area (North)", "zones": [{"key": "bridge_field", "name": "Bridge Field"}, {"key": "hammerlocke_hills", "name": "Hammerlocke Hills"}], "region": "GALAR", "battle_type": "field", "level": 26, "wild_pool_percentages": "GALAR_WILD_AREA_NORTH_PERCENTAGES", "min_rounds": 2, "description": "The northern half of the Wild Area: Bridge Field, Stony Wilderness, Dusty Bowl, Giant's Mirror, Hammerlocke Hills, Giant's Cap and the Lake of Outrage.", "route_menu": [
       {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
       {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
       {"text": "MAX RAID BATTLE", "action": "MAX_RAID", "condition": "can_battle", "color": "PURPLE"},
       {"text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE"},
       {"text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE"},
+      {"text": "ZONE", "action": "ZONE", "color": "CYAN"},
       {"text": "Wild Area (South)", "action": "EXIT", "target_area": "WILD_AREA", "condition": "can_exit", "color": "RED"},
       {"text": "Hammerlocke", "action": "EXIT", "target_area": "HAMMERLOCKE", "condition": ["can_exit", "has_fairy_badge"], "color": "RED"}
     ], "max_raid_den": {"1": {"827": 35, "833": 35, "835": 15, "824": 10, "133-gmax": 5}, "2": {"822": 35, "836": 35, "830": 15, "854": 10, "834-gmax": 5}, "3": {"823": 35, "851": 35, "844": 15, "839": 10, "823-gmax": 5}, "4": {"887": 35, "884": 35, "858": 15, "861": 10, "884-gmax": 5}, "5": {"887": 35, "884": 35, "858": 15, "861": 10, "884-gmax": 5}}, "weather": "RANDOM",
@@ -596,6 +597,7 @@
     "WILD_AREA": {
       "area_type": "dungeon",
       "route_name": "Wild Area (South)",
+      "zones": [{"key": "rolling_fields", "name": "Rolling Fields"}, {"key": "lake_miloch", "name": "Lake Miloch"}],
       "region": "GALAR",
       "battle_type": "field",
       "wild_pool_percentages": "GALAR_WILD_AREA_PERCENTAGES",
@@ -606,6 +608,7 @@
         {"text": "MAX RAID BATTLE", "action": "MAX_RAID", "condition": "can_battle", "color": "PURPLE"},
         {"text": "SET UP CAMP", "action": "CAMP", "color": "ORANGE"},
         {"text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE"},
+        {"text": "ZONE", "action": "ZONE", "color": "CYAN"},
         {"text": "Wild Area (North)", "action": "EXIT", "target_area": "WILD_AREA_NORTH", "condition": ["can_exit", "has_fire_badge"], "color": "RED"},
         {"text": "Turffield (west)", "action": "EXIT", "target_area": "TURFFIELD", "condition": "can_exit", "color": "RED"},
         {"text": "Motostoke (east)", "action": "EXIT", "target_area": "MOTOSTOKE", "condition": "can_exit", "color": "RED"},
@@ -968,6 +971,7 @@
     "ISLE_OF_ARMOR": {
       "area_type": "dungeon",
       "route_name": "Isle of Armor",
+      "zones": [{"key": "fields_of_honor", "name": "Fields of Honor"}, {"key": "soothing_wetlands", "name": "Soothing Wetlands"}, {"key": "forest_of_focus", "name": "Forest of Focus"}, {"key": "challenge_road", "name": "Challenge Road"}, {"key": "potbottom_desert", "name": "Potbottom Desert"}],
       "region": "GALAR",
       "battle_type": "grass",
       "backgrounds": { "main": "isle_of_armor.png" },
@@ -995,6 +999,7 @@
         {"text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE"},
         {"text": "MUSTARD'S FINAL TRIAL", "action": "EVENT", "color": "GOLD", "flag_condition": "not defeated_mustard_final", "event": {"lines": ["Mustard: Time for your final trial. Show this old man everything!"], "flag": "defeated_mustard_final", "battle": {"name": "Dojo Master Mustard", "class": "DOJO_MASTER", "sprite": "mustard.png", "is_boss_battle": true, "team": [620, 405, 745, 823, 784], "levels": [73, 73, 75, 74, 75], "rewards": {"balls": 15}, "dialogue": {"intro": ["Mustard: Time for your final trial. Show this old man everything!"], "player_won": ["Mustard: Wonderful! You're a true master now!"]}}}, "condition": "mustard_gave_kubfu"},
         {"text": "Battle Honey", "action": "EVENT", "color": "GOLD", "flag_condition": "not defeated_honey", "event": {"lines": ["Honey: Mustard says you're special. Let's see, shall we?"], "flag": "defeated_honey", "battle": {"name": "Dojo Matron Honey", "class": "DOJO_MASTER", "sprite": "beauty.png", "is_boss_battle": true, "team": [242, 475, 758, 468], "levels": [60, 59, 58, 58], "rewards": {"balls": 10}, "dialogue": {"intro": ["Honey: Mustard says you're special. Let's see, shall we?"], "player_won": ["Honey: Oh my! You really are!"]}}}, "condition": "mustard_gave_kubfu"},
+        {"text": "ZONE", "action": "ZONE", "color": "CYAN"},
         {"text": "Wedgehurst Station", "action": "EXIT", "target_area": "WEDGEHURST", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "WEDGEHURST",
@@ -1003,6 +1008,7 @@
     "CROWN_TUNDRA": {
       "area_type": "dungeon",
       "route_name": "Crown Tundra",
+      "zones": [{"key": "freezington", "name": "Freezington"}, {"key": "frostpoint_field", "name": "Frostpoint Field"}, {"key": "giants_bed", "name": "Giant's Bed"}, {"key": "ballimere_lake", "name": "Ballimere Lake"}],
       "region": "GALAR",
       "battle_type": "snow",
       "backgrounds": { "main": "crown_tundra.png" },
@@ -1029,6 +1035,7 @@
         {"text": "SPLIT-DECISION RUINS", "action": "EXIT", "target_area": "SPLIT_DECISION_RUINS", "condition": "can_exit", "color": "RED"},
         {"text": "OLD CEMETERY", "action": "EXIT", "target_area": "CROWN_OLD_CEMETERY", "condition": "can_exit", "color": "RED"},
         {"text": "SNOWSLIDE SLOPE", "action": "EXIT", "target_area": "CROWN_SNOWSLIDE_SLOPE", "condition": "can_exit", "color": "RED"},
+        {"text": "ZONE", "action": "ZONE", "color": "CYAN"},
         {"text": "Wedgehurst Station", "action": "EXIT", "target_area": "WEDGEHURST", "condition": "can_exit", "color": "RED"},
         {"text": "DYNA TREE HILL", "action": "EXIT", "target_area": "DYNA_TREE_HILL", "condition": "met_peony", "color": "RED"},
         {"text": "Max Lair", "action": "EXIT", "target_area": "MAX_LAIR", "condition": ["can_exit", "defeated_peony"], "color": "RED"}

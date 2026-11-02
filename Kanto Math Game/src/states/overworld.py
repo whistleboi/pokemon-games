@@ -581,11 +581,35 @@ class PlayState(GameState):
         from src.states.systems import PokeNavState
         self.game.change_state(PokeNavState(self.game, self))
 
+    # Zones (Jordan, 11-01): a big area in parts, each with its own picture (Galar's Wild Areas, the
+    # Isle of Armor, the Crown Tundra). The area's "zones" list [{"key", "name"}]; a ZONE item in its
+    # route_menu becomes a TO <zone> button (under TRAVEL) for each other zone; the zone you're in is
+    # kept (zone_<AREA> flag). Its picture is routes/<area>_<zone key>.png, else the area's.
+    def _zones(self):
+        return self.area_data.get("zones") or []
+
+    def _zone(self):
+        zones = self._zones()
+        here = self.game.story_manager.story_flags.get(f"zone_{self.game.story_manager.current_area_key}")
+        return next((z for z in zones if z.get("key") == here), zones[0] if zones else None)
+
+    def action_switch_zone(self, key):
+        nxt = next((z for z in self._zones() if z.get("key") == key), None)
+        if not nxt:
+            return
+        self.game.story_manager.story_flags[f"zone_{self.game.story_manager.current_area_key}"] = nxt["key"]
+        self.route_bg = self._load_route_background()
+        self.is_progression_paused = True
+        self.hide_menu_buttons()
+        self.show_dialogue([f"You head over to {nxt['name']}."], callback=self.show_progression_menu)
+
     def _load_route_background(self):
         """The route's own picture (Pokemon Journeys' maps, framed on its tall grass), else its
         battle background; None leaves the old starfield."""
         key = self.game.story_manager.current_area_key
-        img = self.game.assets.get_journeys_background("routes", key)
+        zone = self._zone()
+        img = zone and self.game.assets.get_journeys_background("routes", f"{key}_{zone['key']}")
+        img = img or self.game.assets.get_journeys_background("routes", key)
         if img is None:
             name = self._get_battle_background_for_area()
             img = self.game.assets.get_background(name) if name else None
@@ -1491,6 +1515,10 @@ class PlayState(GameState):
         if not valid_options:
             if self.rounds_completed >= self.min_rounds or not trainers_left:
                 valid_options.append({"text": "EXIT ROUTE", "action": "EXIT", "color": "RED"})
+        here = self._zone()
+        valid_options = [z for item in valid_options for z in (
+            [dict(item, zone=o["key"], text=f"TO {o['name'].upper()}") for o in self._zones() if o is not here]
+            if item.get("action") == "ZONE" else [item])]  # "TO LAKE MILOCH", one per other zone
 
         for item in valid_options:
             color_map = {  # the battle menu's colours (src/ui/theme.py)
@@ -1518,7 +1546,7 @@ class PlayState(GameState):
             label = ("> " if toward else "") + theme.pokemon_word(_fill_names(self.game, item["text"]))  # "BATTLE {rival_name}"
             btn = CommandButton(pygame.Rect(0, 0, 330, 60), label, self.game.assets.fonts["label"],
                                 self._route_pick(callback), bg_color=bg_color, autosize=False)
-            btn.route_group = "travel" if way_out else "explore"
+            btn.route_group = "travel" if way_out or item.get("action") == "ZONE" else "explore"  # (zones: a way to go)
             self.route_buttons.append(btn)
 
         # Jordan (10-29): routes use the towns' menu: EXPLORE (catching, battles, trainers, fishing,
@@ -1721,6 +1749,8 @@ class PlayState(GameState):
             return lambda e=item.get("event") or {}: self.story_event(e)
         if action == "CAMP":
             return self.open_camp
+        if action == "ZONE":
+            return lambda z=item.get("zone"): self.action_switch_zone(z)
         if action == "REST":  # a long ride's cabin (the Decolore ferry): a free full heal
             return self.action_rest_in_cabin
         if action == "HOENN_EVENT":
@@ -2003,7 +2033,8 @@ class PlayState(GameState):
         """The route menu's words in the text box, as in a town."""
         if self.rounds_completed == 0:
             name = self.area_data.get("route_name", self.game.story_manager.current_area_key.replace("_", " ").title())
-            return [f"Entered {name}", self.game.assets.get_text("whats_next")]
+            zone = self._zone()
+            return [f"Entered {name}" + (f": {zone['name']}" if zone else ""), self.game.assets.get_text("whats_next")]
         return [self.game.assets.get_text("explored_area"), self.game.assets.get_text("whats_next")]
 
     def _route_pick(self, callback):

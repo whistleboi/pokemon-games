@@ -2436,6 +2436,7 @@
     "AREA_ZERO": {
       "area_type": "dungeon",
       "route_name": "Area Zero",
+      "zones": [{"key": "research_station_1", "name": "Research Station No. 1"}, {"key": "research_station_2", "name": "Research Station No. 2"}, {"key": "research_station_3", "name": "Research Station No. 3"}, {"key": "research_station_4", "name": "Research Station No. 4"}],
       "region": "PALDEA",
       "description": "The Great Crater of Paldea — a fissure where time bleeds. Paradox Pokémon from ancient eras and far futures wander its depths. Somewhere below, a machine hums at a frequency that should not exist.",
       "battle_type": "cave",
@@ -2453,6 +2454,7 @@
         {"text": "SEEK RAGING BOLT", "action": "BOSS", "color": "PURPLE", "boss": {"id": 1021, "name": "Raging Bolt", "victory_flag": "paradox_raging_bolt_caught"}, "condition": ["bb_league_champion", "not:paradox_raging_bolt_caught"]},
         {"text": "SEEK IRON BOULDER", "action": "BOSS", "color": "PURPLE", "boss": {"id": 1022, "name": "Iron Boulder", "victory_flag": "paradox_iron_boulder_caught"}, "condition": ["bb_league_champion", "not:paradox_iron_boulder_caught"]},
         {"text": "SEEK IRON CROWN", "action": "BOSS", "color": "PURPLE", "boss": {"id": 1023, "name": "Iron Crown", "victory_flag": "paradox_iron_crown_caught"}, "condition": ["bb_league_champion", "not:paradox_iron_crown_caught"]},
+        {"text": "ZONE", "action": "ZONE", "color": "CYAN"},
         {"text": "ZERO LAB", "action": "EXIT", "target_area": "ZERO_LAB", "condition": "boss_defeated", "color": "GOLD"},
         {"text": "RUINOUS SHRINES", "action": "EXIT", "target_area": "PALDEA_RUINOUS_SHRINES", "condition": "boss_defeated", "color": "PURPLE"},
         {"text": "NARANJA ACADEMY", "action": "EXIT", "target_area": "NARANJA_ACADEMY", "condition": "can_exit", "color": "RED"},
