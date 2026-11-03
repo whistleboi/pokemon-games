@@ -165,7 +165,7 @@ for form, table in (("pinkan", PINKAN), ("valencia", {sid: base for sid, base, *
     for line in PINKAN_LINES if form == "pinkan" else VALENCIA_LINES:
         for a, b in zip(line, line[1:]):
             if a in have and b in have:
-                add[f"{pname(a, form).upper()}_{form.upper()}"] = [f"{names[str(b)].upper()}_{form.upper()}"]
+                add[f"{names[str(a)].upper()}_{form.upper()}"] = [f"{names[str(b)].upper()}_{form.upper()}"]
 new_lines = "".join(f'    {json.dumps(k)}: {json.dumps(v)},\n' for k, v in add.items() if k not in evo)
 if new_lines:
     s = s.replace('    "ONIX": ["STEELIX", "ONIX_CRYSTAL"],\n', '    "ONIX": ["STEELIX", "ONIX_CRYSTAL"],\n' + new_lines, 1)
@@ -173,7 +173,7 @@ for form, table in (("pinkan", PINKAN), ("valencia", {sid: base for sid, base, *
     for (a, b), item in ITEM_STEPS.items():
         if a not in table.values() or b not in table.values():
             continue
-        key = f"{pname(a, form).upper()}_{form.upper()}"
+        key = f"{names[str(a)].upper()}_{form.upper()}"
         target = f"{names[str(b)].upper()}_{form.upper()}"
         m = re.search(r'("%s": \{)' % item, s)
         if f'"{key}"' not in s[m.end():m.end() + 2000].split("}")[0]:

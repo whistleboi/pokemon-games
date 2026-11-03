@@ -98,6 +98,7 @@ check(len(new_forms) >= 30 and all(v["id"] <= 386 for v in new_forms.values()), 
 check(all(os.path.exists(f"assets/sprites/pokemon/{k}.png") for k in new_forms), "each has a Shadow sprite")
 bay = Pokemon(g.loader.fetch_specific(9348), g.assets, size_mult=2.5)
 bay.level = 40
+bay.evo_due = True  # (it just levelled up)
 check("MEGANIUM_SHADOW" in evolution.ready_evolutions(g, bay), f"Shadow Bayleef -> Shadow Meganium {evolution.ready_evolutions(g, bay)}")
 mega = g.loader.fetch_specific(154, form="shadow")
 check("SHADOW" in mega["name"].upper() and mega["img"], f"Shadow Meganium loads with its art ({mega['name']})")

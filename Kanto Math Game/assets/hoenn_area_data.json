@@ -3000,6 +3000,9 @@
       "region": "HOENN"
     },
     "HOENN_SAFARI_ZONE": {
+      "zones": [{"key": "area_1", "name": "Area 1"}, {"key": "area_2", "name": "Area 2"}, {"key": "area_3", "name": "Area 3"}, {"key": "area_4", "name": "Area 4"}],
+      "zones_explore": true,
+      "zone_pools": {"area_1": "HOENN_SAFARI_ZONE_AREA_1_PERCENTAGES", "area_2": "HOENN_SAFARI_ZONE_AREA_2_PERCENTAGES", "area_3": "HOENN_SAFARI_ZONE_AREA_3_PERCENTAGES", "area_4": "HOENN_SAFARI_ZONE_AREA_4_PERCENTAGES"},
       "area_type": "dungeon",
       "route_name": "Safari Zone",
       "battle_type": "grass",
@@ -3009,6 +3012,7 @@
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+        { "text": "ZONE", "action": "ZONE", "color": "CYAN" },
         { "text": "LILYCOVE CITY", "action": "EXIT", "target_area": "LILYCOVE_CITY", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "LILYCOVE_CITY",
@@ -3665,8 +3669,12 @@
   "HOENN_VICTORY_ROAD_PERCENTAGES": { "42": 23, "297": 22, "304": 13, "305": 13, "294": 9, "308": 10, "374": 10 },
   "HOENN_METEOR_FALLS": [41, 294, 337, 338, 371, 372, 2033],
   "HOENN_METEOR_FALLS_PERCENTAGES": { "41": 30, "294": 20, "337": 15, "338": 15, "371": 12, "372": 7, "2033": 1 },
-  "HOENN_SAFARI_ZONE": [214, 212, 231, 232, 227, 241, 246, 247, 215, 207, 213, 216],
-  "HOENN_SAFARI_ZONE_PERCENTAGES": { "214": 14, "212": 5, "231": 14, "232": 5, "227": 10, "241": 10, "246": 5, "247": 2, "215": 9, "207": 14, "213": 6, "216": 5 },
+  "HOENN_SAFARI_ZONE": [84, 44, 54, 43, 25, 203, 241, 216, 178, 202, 231, 213, 111, 214, 227, 246, 247, 207, 232, 127, 212, 215],
+  "HOENN_SAFARI_ZONE_PERCENTAGES": {"84": 40, "44": 20, "54": 15, "43": 12, "25": 7, "203": 7, "241": 10, "216": 5, "178": 7, "202": 7, "231": 14, "213": 6, "111": 7, "214": 7, "227": 10, "246": 5, "247": 2, "207": 14, "232": 7, "127": 7, "212": 5, "215": 9},
+  "HOENN_SAFARI_ZONE_AREA_1_PERCENTAGES": {"84": 40, "44": 20, "54": 15, "43": 12, "25": 7, "203": 7, "241": 10, "216": 5},
+  "HOENN_SAFARI_ZONE_AREA_2_PERCENTAGES": {"84": 40, "44": 20, "54": 15, "43": 12, "178": 7, "202": 7, "231": 14, "213": 6},
+  "HOENN_SAFARI_ZONE_AREA_3_PERCENTAGES": {"84": 40, "44": 20, "54": 15, "43": 12, "111": 7, "214": 7, "227": 10, "246": 5, "247": 2, "207": 14},
+  "HOENN_SAFARI_ZONE_AREA_4_PERCENTAGES": {"84": 40, "44": 20, "54": 15, "43": 12, "232": 7, "127": 7, "212": 5, "215": 9},
   "HOENN_RUSTURF_TUNNEL": [293],
   "HOENN_RUSTURF_TUNNEL_PERCENTAGES": { "293": 100 },
   "HOENN_JAGGED_PASS": [66, 322, 325],

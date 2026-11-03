@@ -19,7 +19,7 @@ pinkan = {int(k): v["id"] for k, v in FM.items() if v.get("form") == "pinkan"}
 check(len(pinkan) == 36, f"36 Pinkan forms: {len(pinkan)}")
 pool = g.loader.area_data["ORANGE_PINKAN_RESERVE_PERCENTAGES"]
 check(sum(pool.values()) == 100 and "9136" not in pool, "Pinkan Reserve pool: the listed lines (no Scyther)")
-cat = mkf(9101); cat.level = 7
+cat = mkf(9101); cat.level = 7; cat.evo_due = True
 ready = evolution.ready_evolutions(g, cat)
 check(ready == ["METAPOD_PINKAN"], f"Pinkan Caterpie -> Pinkan Metapod: {ready}")
 gloom = mkf(9119)

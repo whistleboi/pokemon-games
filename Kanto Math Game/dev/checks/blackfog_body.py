@@ -26,12 +26,14 @@ for key in HAUNTS:
     st = ow.PlayState(g)
     g.change_state(st)
     opt = next((o for o in prog[key]["route_menu"] if o.get("text") == "THE BLACK FOG"), None)
-    if not opt:
+    # (the Pokemon Tower's comes as an ambush on its stairs: zone_ambush, 11-02)
+    boss = opt["boss"] if opt else (prog[key].get("zone_ambush") or {}).get("boss")
+    if not boss:
         check(False, f"{key}: no Black Fog")
         continue
-    flag = opt["boss"]["victory_flag"]
+    flag = boss["victory_flag"]
     story.story_flags.pop(flag, None)
-    st.action_challenge_boss(dict(opt["boss"], lines=None))
+    st.action_challenge_boss(dict(boss, lines=None))
     b = g.current_state
     ok = isinstance(b, WildBattleState) and b.opponent_pokemon.id == 10501 and b.no_catch
     b.trigger_outro(True)

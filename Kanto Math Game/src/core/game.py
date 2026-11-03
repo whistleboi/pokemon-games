@@ -306,7 +306,22 @@ class Game:
                 pygame.display.flip()
             except pygame.error:  # the screen can be lost for a moment while the window comes back
                 pass
-            self.clock.tick(FPS)
+            self.clock.tick(FPS * self.speed())
+
+    # Timed games keep the normal pace at 2x (their speeds are worked out per frame at FPS).
+    NORMAL_SPEED_STATES = ("SlotsState", "VoltorbFlipState", "BlackjackState", "PokeMathInfiniteState")
+
+    def speed(self):
+        """Options > SPEED: 2 runs the game at twice the frames a second (everything moves twice
+        as fast), except the minigames and the Game Corner's machines."""
+        story = getattr(self, "story_manager", None)
+        if getattr(story, "game_speed", 1) != 2:
+            return 1
+        state = getattr(self, "current_state", None)
+        from src.minigames.base import Minigame
+        if isinstance(state, Minigame) or type(state).__name__ in self.NORMAL_SPEED_STATES:
+            return 1
+        return 2
 
     def toggle_fullscreen(self):
         """F11 on a PC: fullscreen <-> a window."""

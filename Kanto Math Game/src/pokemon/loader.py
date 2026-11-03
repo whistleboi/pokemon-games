@@ -78,6 +78,24 @@ class PokemonLoader:
             return None
         return p_id
 
+    # Forms whose art is in altform/ under another name (11-02: the Pokedex's form pages showed the
+    # base Pokemon's picture for these). Own Tempo Rockruff and Burn Drive Genesect look like the
+    # base in the games too.
+    FORM_ART = {6001: "718_10.png", 6002: "718_full.png", 7001: "800_dusk.png", 7002: "800_dawn.png",
+                7004: "746.png", 8005: "892_rapid_strike.png", 8006: "898_ice.png", 8007: "898_ghost.png"}
+
+    # Regional forms keep their species' own name, as in the games (an Alolan Rattata is "RATTATA";
+    # the Pokedex shows the form beside its number). Other forms keep their label.
+    REGIONAL_FORMS = ("alolan", "galarian", "hisuian", "paldean", "pinkan", "valencia")  # all go by the plain name
+
+    @classmethod
+    def plain_name(cls, name):
+        """'Alolan Rattata' -> 'Rattata' (a regional form's prefix dropped)."""
+        for f in cls.REGIONAL_FORMS:
+            if str(name).lower().startswith(f + " "):
+                return str(name)[len(f) + 1:]
+        return name
+
     def _resolve_form_context(self, p_id, base_form, name, area_data):
         """Resolves specific form details (Mega X/Y, Alt forms) and sprite targets."""
         p_id_str = str(p_id)
@@ -96,7 +114,10 @@ class PokemonLoader:
             form = mapping.get("form", base_form)
             
             suffix = form.replace("_", " ").upper()
-            display_name = f"{suffix} {name}" if suffix not in name.upper() else name
+            if form in self.REGIONAL_FORMS:
+                display_name = self.plain_name(name)
+            else:
+                display_name = f"{suffix} {name}" if suffix not in name.upper() else name
             
             return form, display_name, target_dir, target_map, target_fname
 
@@ -169,7 +190,10 @@ class PokemonLoader:
 
                 # ARCHITECT: Prevent double-naming variants (e.g. Alolan Alolan Rattata)
                 suffix = form.replace("_", " ").upper()
-                display_name = f"{suffix} {name}" if suffix not in name.upper() else name
+                if form in self.REGIONAL_FORMS:
+                    display_name = self.plain_name(name)
+                else:
+                    display_name = f"{suffix} {name}" if suffix not in name.upper() else name
 
         return form, display_name, target_dir, target_map, target_fname
 
@@ -242,6 +266,9 @@ class PokemonLoader:
                 # A form with its own art (2001.png Alolan Rattata, 9103.png Pinkan Butterfree):
                 # use it, and its back/shiny files, instead of the base species' sprite.
                 t_dir, t_map, t_fname = self.assets.pokemon_sprites_dir, self.assets.sprite_map, f"{p_id}.png"
+            elif self.FORM_ART.get(p_id) in self.assets.alt_sprite_map:
+                # A form whose art is in altform/ under its own name (Necrozma's Dusk Mane...).
+                t_dir, t_map, t_fname = self.assets.alt_sprites_dir, self.assets.alt_sprite_map, self.FORM_ART[p_id]
 
             # --- CALCULATE STAGE ---
             if p_id in self.all_boss_ids:
@@ -296,7 +323,7 @@ class PokemonLoader:
 
             return {
                 "id": p_id,
-                "name": name,
+                "name": self.plain_name(name),
                 "display_name": display_name,
                 "img": img_bytes,
                 "back_img": back_img_bytes,
@@ -404,7 +431,9 @@ class PokemonLoader:
                 pkmn_names = self.assets.pokemon_names
                 base_name = pkmn_names.get(str(meta_id), f"POKEMON_{p_id}").upper()
 
-            if (
+            if form in self.REGIONAL_FORMS:  # a regional form goes by the plain name everywhere
+                base_name = display_name = self.plain_name(base_name)
+            elif (
                 form
                 and form != "normal"
                 and not form.startswith("mega")
@@ -445,8 +474,17 @@ class PokemonLoader:
                         p_stats[x], p_stats[y] = p_stats[y], p_stats[x]
 
             img_bytes = b""
-            # Form art first, then the base species' form art, then its normal art (forms without sprites).
-            img_surface = (self.assets.get_pokemon_image(actual_id, form, is_shiny, placeholder=False)
+            # Form art first (FORM_ART: art filed under another name), then the base species' form
+            # art, then its normal art (forms without sprites).
+            img_surface = None
+            art = self.FORM_ART.get(int(actual_id)) if str(actual_id).isdigit() else None
+            if art and not is_shiny and self.assets.alt_sprite_map.get(art):
+                try:
+                    img_surface = pygame.image.load(os.path.join(self.assets.alt_sprites_dir,
+                                                                  self.assets.alt_sprite_map[art])).convert_alpha()
+                except pygame.error:
+                    img_surface = None
+            img_surface = (img_surface or self.assets.get_pokemon_image(actual_id, form, is_shiny, placeholder=False)
                            or self.assets.get_pokemon_image(meta_id, form, is_shiny, placeholder=False)
                            or self.assets.get_pokemon_image(meta_id, "normal", is_shiny))
 

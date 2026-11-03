@@ -230,10 +230,30 @@ def evolution_options(game, poke):
                 continue
             if in_alola and "_" not in entry:
                 entry = f"{entry}_ALOLAN"
+        if not regional_step_allowed(game, poke, entry):
+            continue
         if any(o[0] == entry for o in out):
             continue
         out.append((entry, tid, rule))
     return out
+
+
+def regional_step_allowed(game, poke, entry):
+    """Regional forms and where they evolve (Jordan, 11-02):
+    - a regional form (Alolan Graveler) evolves in its own region, or in any region whose Champion
+      the player is, or anywhere once they're its own region's Champion;
+    - a Pokemon never evolves into another region's form outside that region (Graveler never
+      becomes Alolan Golem; Pikachu becomes Alolan Raichu only in Alola)."""
+    from src.world import regional_forms
+    story = game.story_manager
+    here = story.get_current_region()
+    own = str(getattr(poke, "form", "normal") or "normal").lower()
+    into = entry.rsplit("_", 1)[1].lower() if "_" in entry else "normal"
+    home = regional_forms.FORM_HOME.get(own)
+    if home:
+        return here == home or story.is_region_champion(here) or story.is_region_champion(home)
+    target_home = regional_forms.FORM_HOME.get(into)
+    return not target_home or here == target_home
 
 
 def rule_met(game, poke, rule, party=None, area_key=None):
@@ -285,11 +305,15 @@ def rule_met(game, poke, rule, party=None, area_key=None):
     return True
 
 
-def ready_evolutions(game, poke, party=None):
-    """Entry names this Pokemon can evolve into right now (without items)."""
+def ready_evolutions(game, poke, party=None, any_time=False):
+    """Entry names this Pokemon can evolve into right now (without items). Only after it has
+    levelled up (Pokemon.evo_due), as in the games, except battle feats (counters), which are
+    checked after battles; any_time skips that (purified Shadow Pokemon in Orre)."""
     if getattr(poke, "everstone", False):
         return []  # holding an Everstone: it stays as it is
-    return [entry for entry, tid, rule in evolution_options(game, poke) if rule_met(game, poke, rule, party)]
+    due = any_time or getattr(poke, "evo_due", False)
+    return [entry for entry, tid, rule in evolution_options(game, poke)
+            if (due or rule.get("counter")) and rule_met(game, poke, rule, party)]
 
 
 def item_evolution(game, poke, item):

@@ -35,6 +35,7 @@ story.current_area_key = "PEWTER_CITY"
 a, b = mk(4), mk(7)
 for p in (a, b):
     p.level = 16
+    p.evo_due = True  # (they levelled up in the battle)
     p.current_hp = p.get_max_hp()
 story.player_team = [a, b]
 bt = TrainerBattleState(g, [mk(74)], trainer_class="GYM_LEADER", trainer_name="Brock", area_name="PEWTER_CITY",
@@ -61,6 +62,7 @@ check([p.name.upper() for p in story.player_team] == ["CHARMELEON", "WARTORTLE"]
 a, b = mk(4), mk(7)
 for p in (a, b):
     p.level = 16
+    p.evo_due = True  # (they levelled up)
 story.player_team = [a, b]
 lobby = ow.GymLobbyState(g, None)
 ow.evolve_ready_party(g, lobby)
@@ -141,6 +143,7 @@ check(story.inventory["POTION"] == 999, "999 cap")
 print("5) everstone")
 c = mk(4)
 c.level = 20
+c.evo_due = True  # (it levelled up)
 story.player_team = [c]
 story.inventory["EVERSTONE"] = 1
 bag = BagState(g, city)

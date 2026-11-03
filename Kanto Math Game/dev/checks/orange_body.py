@@ -107,7 +107,7 @@ check("RARE_CANDY" not in items, "island mart: no Rare Candy")
 
 print("6) Special islands")
 raw = g.loader.fetch_specific(9103)
-check(raw["name"] == "PINKAN BUTTERFREE" and raw["img"], f"Pinkan form: {raw['name']}")
+check(raw["name"] == "BUTTERFREE" and raw["form"] == "pinkan" and raw["img"], f"Pinkan form, plain name: {raw['name']}")
 raw = g.loader.fetch_specific(9201)
 check(raw["name"] == "CRYSTAL ONIX" and raw["types"] == ["ROCK", "ICE"], f"Crystal Onix: {raw['types']}")
 story.current_area_key = "PINKAN_RESERVE"

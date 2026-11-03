@@ -273,24 +273,24 @@
         "condition": { "flag": "beat_champion", "item": "CERULEAN_CAVE_MAP", "flag_not": "CERULEAN_CAVE_boss_defeated" }
       },
       {
-        "id": "cm30", "type": "SIDE", "text": "Catch 30 Pokémon", "desc": "Capture 30 Pokémon species to earn a $50,000 bonus.",
-        "condition": { "caught_less": 30 }
+        "id": "cm30", "type": "SIDE", "text": "Catch 30 Pokémon", "desc": "Own 30 different Kanto Pokémon to earn a $50,000 bonus.",
+        "condition": {"required_region": "KANTO"}, "completed_flag": "kanto_catch_30", "kanto_species": 30
       },
       {
-        "id": "cm60", "type": "SIDE", "text": "Catch 60 Pokémon", "desc": "Capture 60 Pokémon species to earn another $50,000 bonus.",
-        "condition": { "caught_min": 30, "caught_less": 60 }
+        "id": "cm60", "type": "SIDE", "text": "Catch 60 Pokémon", "desc": "Own 60 different Kanto Pokémon to earn another $50,000 bonus.",
+        "condition": {"required_region": "KANTO", "flag": "kanto_catch_30"}, "completed_flag": "kanto_catch_60", "kanto_species": 60
       },
       {
-        "id": "cm90", "type": "SIDE", "text": "Catch 90 Pokémon", "desc": "Capture 90 Pokémon species to earn another $50,000 bonus.",
-        "condition": { "caught_min": 60, "caught_less": 90 }
+        "id": "cm90", "type": "SIDE", "text": "Catch 90 Pokémon", "desc": "Own 90 different Kanto Pokémon to earn another $50,000 bonus.",
+        "condition": {"required_region": "KANTO", "flag": "kanto_catch_60"}, "completed_flag": "kanto_catch_90", "kanto_species": 90
       },
       {
-        "id": "cm120", "type": "SIDE", "text": "Catch 120 Pokémon", "desc": "Capture 120 Pokémon species to earn another $50,000 bonus.",
-        "condition": { "caught_min": 90, "caught_less": 120 }
+        "id": "cm120", "type": "SIDE", "text": "Catch 120 Pokémon", "desc": "Own 120 different Kanto Pokémon to earn another $50,000 bonus.",
+        "condition": {"required_region": "KANTO", "flag": "kanto_catch_90"}, "completed_flag": "kanto_catch_120", "kanto_species": 120
       },
       {
-        "id": "cm150", "type": "SIDE", "text": "Catch 150 Pokémon", "desc": "Capture 150 Pokémon species to earn the final $50,000 bonus!",
-        "condition": { "caught_min": 120, "caught_less": 151 }
+        "id": "cm150", "type": "SIDE", "text": "Catch 150 Pokémon", "desc": "Own all 150 Kanto Pokémon to earn the final $50,000 bonus!",
+        "condition": {"required_region": "KANTO", "flag": "kanto_catch_120"}, "completed_flag": "kanto_catch_150", "kanto_species": 150
       }
     ]
   },
@@ -767,7 +767,7 @@
 
     "ROCK_TUNNEL_CITY": {
       "area_type": "town",
-      "route_name": "Rock Tunnel",
+      "route_name": "Rock Tunnel Entrance",
       "backgrounds": {
         "main": "rock_tunnel_city.png",
         "pokecenter": "pokecenter.png"
@@ -799,7 +799,6 @@
       "travel_options": [
         {"text": "Route 8", "target_area": "KANTO_ROUTE_8"},
         {"text": "Route 12", "target_area": "KANTO_ROUTE_12"},
-        {"text": "Pokemon Tower", "target_area": "KANTO_POKEMON_TOWER"},
         {"text": "Rock Tunnel", "target_area": "ROCK_TUNNEL"},
         {"text": "Rock Tunnel Entrance", "target_area": "ROCK_TUNNEL_CITY", "flag_condition": "visited_ROCK_TUNNEL_CITY"},
         {"text": "Saffron City", "target_area": "SAFFRON_CITY", "flag_condition": "visited_SAFFRON_CITY"},
@@ -809,7 +808,8 @@
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
         { "text": "Shop", "action": "SHOP" },
-        { "text": "Talk to Mr. Fuji", "action": "NPC", "target": "mr_fuji" }
+        { "text": "Talk to Mr. Fuji", "action": "NPC", "target": "mr_fuji" },
+        { "text": "Pokemon Tower", "action": "TRAVEL", "target_area": "KANTO_POKEMON_TOWER" }
       ],
       "on_enter_event": null
     },
@@ -1614,6 +1614,9 @@
     },
 
     "SAFARI_ZONE": {
+      "zones": [{"key": "center", "name": "Center Area"}, {"key": "east", "name": "Area 1 (East)"}, {"key": "north", "name": "Area 2 (North)"}, {"key": "west", "name": "Area 3 (West)"}],
+      "zones_explore": true,
+      "zone_pools": {"center": "SAFARI_ZONE_CENTER_PERCENTAGES", "east": "SAFARI_ZONE_EAST_PERCENTAGES", "north": "SAFARI_ZONE_NORTH_PERCENTAGES", "west": "SAFARI_ZONE_WEST_PERCENTAGES"},
       "area_type": "wild_route",
       "route_name": "Safari Zone",
       "battle_type": "grass",
@@ -1630,6 +1633,7 @@
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
         { "text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE" },
         { "text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE" },
+        { "text": "ZONE", "action": "ZONE", "color": "CYAN" },
         { "text": "EXIT SAFARI ZONE", "action": "EXIT", "target": "FUCHSIA_CITY", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "FUCHSIA_CITY",
@@ -2101,23 +2105,240 @@
         "victory_flag": "tower_ghost_defeated",
         "name": "(Ghost)"
       },
-      "alt_forms": { "enabled": true, "weights": { "105_alolan": 0.01 } },
+      "alt_forms": {
+        "enabled": true,
+        "weights": {
+          "105_alolan": 0.01
+        }
+      },
       "trainer_encounter_rate": 0.1,
       "min_rounds": 0,
       "trainer_pool": [
-        {"sprite": "channeler.png", "name": "Carly", "class": "CHANNELER", "rewards": {"balls": 3}},
-        {"sprite": "channeler.png", "name": "Laurel", "class": "CHANNELER", "rewards": {"balls": 3}},
-        {"sprite": "channeler.png", "name": "Paula", "class": "CHANNELER", "rewards": {"balls": 3}},
-        {"sprite": "rocket_grunt_m.png", "name": "Grunt", "class": "ROCKET_GRUNT", "team": [41, 19, 96], "rewards": {"balls": 3}},
-        {"sprite": "jessie_james.png", "name": "Jessie and James", "class": "ROCKET", "team": [23, 109, 52], "rewards": {"balls": 3}}
+        {
+          "sprite": "channeler.png",
+          "name": "Carly",
+          "class": "CHANNELER",
+          "rewards": {
+            "balls": 3
+          },
+          "zone": "floor_2"
+        },
+        {
+          "sprite": "channeler.png",
+          "name": "Laurel",
+          "class": "CHANNELER",
+          "rewards": {
+            "balls": 3
+          },
+          "zone": "floor_2"
+        },
+        {
+          "sprite": "channeler.png",
+          "name": "Paula",
+          "class": "CHANNELER",
+          "rewards": {
+            "balls": 3
+          },
+          "zone": "floor_3"
+        },
+        {
+          "sprite": "rocket_grunt_m.png",
+          "name": "Grunt",
+          "class": "ROCKET_GRUNT",
+          "team": [
+            41,
+            19,
+            96
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "zone": "floor_4"
+        },
+        {
+          "sprite": "jessie_james.png",
+          "name": "Jessie and James",
+          "class": "ROCKET",
+          "team": [
+            23,
+            109,
+            52
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "zone": "floor_4"
+        }
       ],
-      "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN"}, {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"}, {"text": "CONFRONT GHOST", "action": "BOSS", "condition": "boss_available", "has_SILPH_SCOPE": true, "color": "GOLD"}, {"text": "THE BLACK FOG", "action": "BOSS", "color": "PURPLE", "flag_condition": "not black_fog_banished_kanto_pokemon_tower", "boss": {"id": 10501, "name": "Black Fog", "level": 25, "no_catch": true, "victory_flag": "black_fog_banished_kanto_pokemon_tower", "lines": ["The air turns ice-cold. A black fog pours across the floor...", "Two huge eyes open in the dark. A giant Haunter rises: the Black Fog!", "Long ago people worshipped it as a god. It feeds on dreams. Don't let it get yours!"], "won": ["The Black Fog is too proud to ever be caught.", "It Self-Destructs in a burst of black mist... and is gone.", "But a cold whisper lingers: it will rise again in another haunted place."], "rewards": {"balls": 10, "RARE_CANDY": 3}}}, {"text": "EXIT TOWER", "action": "EXIT", "target": "LAVENDER_TOWN", "condition": "can_exit", "color": "RED"}],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "has_balls",
+          "color": "GREEN"
+        },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "GREEN"
+        },
+        {
+          "text": "ZONE",
+          "action": "ZONE",
+          "color": "CYAN"
+        },
+        {
+          "text": "CONFRONT GHOST",
+          "action": "BOSS",
+          "condition": "boss_available",
+          "has_SILPH_SCOPE": true,
+          "color": "GOLD",
+          "zone": "floor_4"
+        },
+        {
+          "text": "EXIT TOWER",
+          "action": "EXIT",
+          "target": "LAVENDER_TOWN",
+          "condition": "can_exit",
+          "color": "RED",
+          "zone": "floor_1"
+        }
+      ],
       "next_area": "LAVENDER_TOWN",
-      "on_enter_event": {"type": "trainer_battle", "trainer": {"name": "{rival_name}", "class": "RIVAL", "sprite": "{rival_character}", "is_boss_battle": true, "team": [17, 130, 102, 64, 5], "team_choice": {"1": [17, 130, 102, 64, 5], "4": [17, 58, 102, 64, 8], "7": [17, 130, 58, 64, 2]}, "levels": [25, 23, 22, 20, 25], "rewards": {"balls": 10}, "dialogue": {"intro": ["{rival_name}: What are you doing here, {player_name}? Your Pokemon are fine, aren't they?", "Mine are healthy. Let me show you!"], "player_won": ["{rival_name}: ...I came to pay my respects. Don't make it weird.", "The ghost upstairs can't be seen without a Silph Scope. Good luck with that."], "player_lost": ["{rival_name}: Go rest your team, {player_name}."]}}, "condition": "not:tower_ghost_defeated", "flag_check": "defeated_rival_tower"}
+      "on_enter_event": {
+        "type": "trainer_battle",
+        "trainer": {
+          "name": "{rival_name}",
+          "class": "RIVAL",
+          "sprite": "{rival_character}",
+          "is_boss_battle": true,
+          "team": [
+            17,
+            130,
+            102,
+            64,
+            5
+          ],
+          "team_choice": {
+            "1": [
+              17,
+              130,
+              102,
+              64,
+              5
+            ],
+            "4": [
+              17,
+              58,
+              102,
+              64,
+              8
+            ],
+            "7": [
+              17,
+              130,
+              58,
+              64,
+              2
+            ]
+          },
+          "levels": [
+            25,
+            23,
+            22,
+            20,
+            25
+          ],
+          "rewards": {
+            "balls": 10
+          },
+          "dialogue": {
+            "intro": [
+              "{rival_name}: What are you doing here, {player_name}? Your Pokemon are fine, aren't they?",
+              "Mine are healthy. Let me show you!"
+            ],
+            "player_won": [
+              "{rival_name}: ...I came to pay my respects. Don't make it weird.",
+              "The ghost upstairs can't be seen without a Silph Scope. Good luck with that."
+            ],
+            "player_lost": [
+              "{rival_name}: Go rest your team, {player_name}."
+            ]
+          }
+        },
+        "condition": "not:tower_ghost_defeated",
+        "flag_check": "defeated_rival_tower"
+      },
+      "zones": [
+        {
+          "key": "floor_1",
+          "name": "1F"
+        },
+        {
+          "key": "floor_2",
+          "name": "2F"
+        },
+        {
+          "key": "floor_3",
+          "name": "3F"
+        },
+        {
+          "key": "floor_4",
+          "name": "4F"
+        }
+      ],
+      "zones_linear": true,
+      "zone_moods": [
+        "You feel a haunting presence...",
+        "A chill runs down your spine...",
+        "Something cold brushes past you.",
+        "Faint crying echoes from above.",
+        "You feel like you're being watched.",
+        "A voice whispers: 'Go... away...'"
+      ],
+      "zone_ambush": {
+        "chance": 0.25,
+        "boss": {
+          "id": 10501,
+          "name": "Black Fog",
+          "level": 25,
+          "no_catch": true,
+          "victory_flag": "black_fog_banished_kanto_pokemon_tower",
+          "lines": [
+            "The air turns ice-cold. A black fog pours across the floor...",
+            "Two huge eyes open in the dark. A giant Haunter rises: the Black Fog!",
+            "Long ago people worshipped it as a god. It feeds on dreams. Don't let it get yours!"
+          ],
+          "won": [
+            "The Black Fog is too proud to ever be caught.",
+            "It Self-Destructs in a burst of black mist... and is gone.",
+            "But a cold whisper lingers: it will rise again in another haunted place."
+          ],
+          "rewards": {
+            "balls": 10,
+            "RARE_CANDY": 3
+          }
+        },
+        "lines": [
+          "Halfway up the stairs, the lights go out..."
+        ]
+      }
     },
 
 
     "SEAFOAM_ISLANDS": {
+      "zones": [{"key": "1f", "name": "1F"}, {"key": "b1f", "name": "B1F"}, {"key": "b2f", "name": "B2F"}, {"key": "b3f", "name": "B3F"}, {"key": "b4f", "name": "B4F"}],
+      "zones_linear": true,
+      "zones_descend": true,
+      "zone_moods": {"1f": "Cold sea air blows in from the entrance.", "b1f": "The floor is slick with ice.", "b2f": "Boulders sit by the frozen pools.", "b3f": "Fast currents rush through the dark water.", "b4f": "It's freezing down here. Something is watching..."},
+      "zone_pools": {"1f": "SEAFOAM_ISLANDS_1F_PERCENTAGES", "b1f": "SEAFOAM_ISLANDS_B1F_PERCENTAGES", "b2f": "SEAFOAM_ISLANDS_B2F_PERCENTAGES", "b3f": "SEAFOAM_ISLANDS_B3F_PERCENTAGES", "b4f": "SEAFOAM_ISLANDS_B4F_PERCENTAGES"},
       "area_type": "wild_route",
       "route_name": "Seafoam Islands",
       "battle_type": "cave",
@@ -2143,8 +2364,9 @@
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
-        { "text": "CHALLENGE ARTICUNO", "action": "BOSS", "condition": "boss_available", "color": "GOLD" },
-        { "text": "EXIT CAVE", "action": "EXIT", "target": "KANTO_ROUTE_20", "condition": "can_exit", "color": "RED" }
+        { "text": "CHALLENGE ARTICUNO", "action": "BOSS", "condition": "boss_available", "color": "GOLD", "zone": "b4f" },
+        { "text": "ZONE", "action": "ZONE", "color": "CYAN" },
+        { "text": "EXIT CAVE", "action": "EXIT", "target": "KANTO_ROUTE_20", "condition": "can_exit", "color": "RED", "zone": "1f" }
       ],
       "next_area": "KANTO_ROUTE_20",
       "on_enter_event": null
@@ -2309,8 +2531,12 @@
   "VIRIDIAN_FOREST": [10,11,12,13,14,15,16,25],
   "VIRIDIAN_FOREST_PERCENTAGES": {"10":20,"11":10,"12":5,"13":20,"14":10,"15":5,"16":20,"25":10},
 
-  "SAFARI_ZONE": [1,2,29,30,32,33,46,47,48,49,84,102,108,111,112,113,115,123,127,128,133,2017,2055,2056,2057,2058],
-  "SAFARI_ZONE_PERCENTAGES": {"1":9,"29":9,"32":8,"84":8,"102":7,"108":8,"111":8,"30":6,"33":6,"46":6,"48":6,"2":4,"47":2,"49":2,"112":5,"113":2,"115":2,"123":2,"127":2,"128":1,"133":1,"2017":1,"2055":1,"2056":1,"2057":1, "2058": 1},
+  "SAFARI_ZONE": [102, 111, 48, 29, 32, 30, 33, 47, 123, 127, 113, 133, 84, 46, 115, 2017, 2055, 2056, 2057, 49, 128, 108, 112, 1, 2, 2058],
+  "SAFARI_ZONE_PERCENTAGES": {"102": 20, "111": 20, "48": 15, "29": 12, "32": 12, "30": 8, "33": 8, "47": 5, "123": 2, "127": 2, "113": 4, "133": 1, "84": 20, "46": 15, "115": 4, "2017": 1, "2055": 1, "2056": 1, "2057": 1, "49": 5, "128": 4, "108": 8, "112": 5, "1": 9, "2": 4, "2058": 1},
+  "SAFARI_ZONE_CENTER_PERCENTAGES": {"102": 20, "111": 20, "48": 15, "29": 10, "32": 10, "30": 8, "33": 8, "47": 5, "123": 2, "127": 2, "113": 1, "133": 1},
+  "SAFARI_ZONE_EAST_PERCENTAGES": {"84": 20, "102": 20, "46": 15, "29": 12, "32": 12, "30": 5, "33": 5, "47": 5, "115": 4, "123": 1, "127": 1, "2017": 1, "2055": 1, "2056": 1, "2057": 1},
+  "SAFARI_ZONE_NORTH_PERCENTAGES": {"102": 20, "111": 20, "46": 15, "29": 10, "32": 10, "30": 8, "33": 8, "49": 5, "113": 4, "128": 1, "108": 8, "112": 5},
+  "SAFARI_ZONE_WEST_PERCENTAGES": {"84": 20, "102": 20, "48": 15, "29": 12, "32": 12, "30": 5, "33": 5, "49": 5, "128": 4, "115": 1, "1": 9, "2": 4, "2058": 1},
 
   "MT_MOON": [35,41,46,74,95,2012],
   "MT_MOON_PERCENTAGES": {"35":10,"41":35,"46":15,"74":29,"95":10,"2012":1},
@@ -2331,7 +2557,12 @@
   "CERULEAN_CAVE_PERCENTAGES": {"47": 16, "82": 12, "42": 16, "57": 7, "132": 16, "67": 12, "101": 3, "64": 16},
 
   "SEAFOAM_ISLANDS": [7,8,79,80,86,87,90,91,98,99,124,131,134,2022,2023,2006,2007],
-  "SEAFOAM_ISLANDS_PERCENTAGES": {"7":20,"8":5,"79":16,"80":5,"86":20,"87":5,"90":20,"91":5,"98":20,"99":5,"124":10,"131":10,"134":10,"2022":1,"2023":1,"2006":1,"2007":1},
+  "SEAFOAM_ISLANDS_PERCENTAGES": {"41": 34, "54": 28, "79": 28, "42": 15, "7": 20, "86": 50, "55": 8, "80": 8, "8": 5, "2022": 1, "134": 10, "2023": 1, "87": 10, "90": 20, "91": 5, "2006": 1, "2007": 1, "98": 20, "99": 5, "124": 10, "131": 10},
+  "SEAFOAM_ISLANDS_1F_PERCENTAGES": {"41": 34, "54": 28, "79": 28, "42": 11, "7": 20},
+  "SEAFOAM_ISLANDS_B1F_PERCENTAGES": {"41": 34, "54": 20, "79": 20, "42": 11, "86": 10, "55": 2, "80": 2, "8": 5, "2022": 1},
+  "SEAFOAM_ISLANDS_B2F_PERCENTAGES": {"54": 20, "79": 20, "86": 20, "41": 20, "42": 10, "55": 5, "80": 5, "134": 10, "2023": 1},
+  "SEAFOAM_ISLANDS_B3F_PERCENTAGES": {"86": 40, "54": 10, "79": 10, "41": 10, "42": 10, "55": 8, "80": 8, "87": 5, "90": 20, "91": 5, "2006": 1, "2007": 1},
+  "SEAFOAM_ISLANDS_B4F_PERCENTAGES": {"86": 50, "42": 15, "87": 10, "55": 8, "80": 8, "54": 5, "79": 5, "98": 20, "99": 5, "124": 10, "131": 10},
 
   "CINNABAR_VOLCANO": [4,5,37,38,58,59,77,78,88,89,126,136,2020,2021,2015,2016,2025],
   "CINNABAR_VOLCANO_PERCENTAGES": {"4":20,"5":3,"37":19,"38":2,"58":19,"59":2,"77":19,"78":4,"88":10,"89":4,"126":3,"136":3,"2020":1,"2021":1,"2015":1,"2016":1,"2025":1},

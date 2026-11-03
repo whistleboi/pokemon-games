@@ -421,12 +421,12 @@ def indigo_rematch_levels():
             b = G.current_state.next_state
             return [p.id for p in b.opponent_team], [p.level for p in b.opponent_team]
         first_e4, rem_e4 = run(False, 0), run(True, 0)
-        assert max(first_e4[1]) < 64 and rem_e4 == ([87, 91, 221, 124, 131], [64, 63, 63, 66, 66]), (first_e4, rem_e4)
+        assert max(first_e4[1]) < 64 and rem_e4 == ([87, 91, 221, 124, 131], [70, 70, 70, 70, 70]), (first_e4, rem_e4)
         first_ch, rem_ch = run(False, 4), run(True, 4)
         assert first_ch == ([18, 65, 112, 130, 59, 3], [59, 57, 59, 59, 61, 63]), first_ch
         assert rem_ch[1] == [72, 73, 72, 73, 73, 75] and rem_ch[0][-1] == 3 and 248 in rem_ch[0], rem_ch
         for i in (1, 2, 3):
-            assert min(run(True, i)[1]) >= 64
+            assert min(run(True, i)[1]) >= 70  # League rematches: Lv 70+ (Jordan, 11-02)
     finally:
         G.story_manager = old
 

@@ -27,6 +27,7 @@ from src.world import seasons
 from src.world import hoenn
 from src.world import guide
 from src.world import league_redo
+from src.world import black_fog
 from src import minigames
 from src.pokemon import catching
 from src.pokemon import balance
@@ -306,7 +307,7 @@ def _evolve_due(game, names):
     for i, p in enumerate(story.player_team):
         if not p or p.name.upper() not in names:
             continue
-        ready = evolution.ready_evolutions(game, p)
+        ready = evolution.ready_evolutions(game, p, any_time=True)
         if not ready:
             continue
         entry = story.pick_evolution_branch(ready)
@@ -409,6 +410,9 @@ class PlayState(GameState):
         hoenn.apply_version(game)
         self.area_data = game.story_manager.get_current_area_data()
         self._inject_regional_data()
+        # A banished Black Fog may gather here again (10%, once a day: src/world/black_fog.py).
+        self.fog_returned = black_fog.maybe_return(game.story_manager, game.story_manager.current_area_key,
+                                                   self.area_data)
 
         self.game.story_manager.sync_badges()
 
@@ -629,15 +633,56 @@ class PlayState(GameState):
         here = self.game.story_manager.story_flags.get(f"zone_{self.game.story_manager.current_area_key}")
         return next((z for z in zones if z.get("key") == here), zones[0] if zones else None)
 
+    def _in_zone(self, item):
+        """A menu item or trainer that belongs to one zone ("zone": key or [keys]) shows only there."""
+        want = item.get("zone") if isinstance(item, dict) else None
+        if not want:
+            return True
+        here = self._zone()
+        return bool(here) and here.get("key") in (want if isinstance(want, list) else [want])
+
+    def _zone_mood(self):
+        """A line about the place ("zone_moods": the Pokemon Tower's haunting presence, any of a list;
+        or one line per zone, {zone key: line}, the Seafoam Islands' floors), or None."""
+        moods = self.area_data.get("zone_moods") or []
+        if isinstance(moods, dict):
+            here = self._zone()
+            return moods.get(here.get("key")) if here else None
+        return random.choice(moods) if moods else None
+
+    def _zone_climbs(self, frm, to):
+        """True if going from zone frm to zone to is up the stairs: the list goes up a tower, or down
+        into a cave ("zones_descend": the Seafoam Islands, 1F to B4F)."""
+        zones = self._zones()
+        later = zones.index(to) > zones.index(frm)
+        return later != bool(self.area_data.get("zones_descend"))
+
     def action_switch_zone(self, key):
-        nxt = next((z for z in self._zones() if z.get("key") == key), None)
+        zones = self._zones()
+        here = self._zone()
+        nxt = next((z for z in zones if z.get("key") == key), None)
         if not nxt:
             return
-        self.game.story_manager.story_flags[f"zone_{self.game.story_manager.current_area_key}"] = nxt["key"]
+        story = self.game.story_manager
+        story.story_flags[f"zone_{story.current_area_key}"] = nxt["key"]
         self.route_bg = self._load_route_background()
         self.is_progression_paused = True
         self.hide_menu_buttons()
-        self.show_dialogue([f"You head over to {nxt['name']}."], callback=self.show_progression_menu)
+        if self.area_data.get("zones_linear"):  # floors: up or down the stairs
+            up = self._zone_climbs(here, nxt)
+            down = "You go down the stairs to" if self.area_data.get("zones_descend") else "You go back down to"
+            lines = [f"You climb the stairs to {nxt['name']}." if up else f"{down} {nxt['name']}."]
+        else:
+            lines = [f"You head over to {nxt['name']}."]
+        # A wandering boss can ambush you between zones (the Black Fog in the Pokemon Tower), until beaten.
+        ambush = self.area_data.get("zone_ambush") or {}
+        boss = ambush.get("boss")
+        if boss and not story.story_flags.get(boss.get("victory_flag")) and random.random() < ambush.get("chance", 0.25):
+            self.show_dialogue(lines + _resolve_lines(self.game, ambush.get("lines") or []),
+                               callback=lambda b=boss: self.action_challenge_boss(b))
+            return
+        mood = self._zone_mood()
+        self.show_dialogue(lines + ([mood] if mood else []), callback=self.show_progression_menu)
 
     def _load_route_background(self):
         """The route's own picture (Pokemon Journeys' maps, framed on its tall grass), else its
@@ -1169,7 +1214,7 @@ class PlayState(GameState):
             available = [
                 i
                 for i in range(len(trainer_pool))
-                if not self.game.story_manager.is_trainer_defeated(area_key, i)
+                if not self.game.story_manager.is_trainer_defeated(area_key, i) and self._in_zone(trainer_pool[i])
             ]
             if not available:
                 self.trigger_wild_encounter()
@@ -1291,6 +1336,11 @@ class PlayState(GameState):
 
     def _base_wild_pool(self, area_data):
         """Returns the percentage pool dict for the current area, respecting day/night splits."""
+        # A zone with its own Pokemon (the Safari Zones' areas: "zone_pools" {zone key: pool key}).
+        zone = self._zone() if area_data is self.area_data else None
+        zone_key = zone and (area_data.get("zone_pools") or {}).get(zone.get("key"))
+        if zone_key and self.game.loader.area_data.get(zone_key):
+            return self.game.loader.area_data[zone_key]
         hour = datetime.datetime.now().hour
         is_night = hour < 6 or hour >= 20
         night_key = area_data.get("night_pool_percentages")
@@ -1492,11 +1542,16 @@ class PlayState(GameState):
             return
         self.is_progression_paused = True
         self.dialogue_box.visible = False
+        # The menu means no wild encounter is on: the last round's Pokemon leave the screen (they used
+        # to stay drawn after CATCH's three rounds, untappable, even up the Pokemon Tower's stairs).
+        self.p_data = [None] * 3
+        self.selected_catch_idx = -1
+        self.catch_selection_active = False
 
         area_key = self.game.story_manager.current_area_key
         trainer_pool = self.area_data.get("trainer_pool", [])
-        trainers_left = any(
-            not self.game.story_manager.is_trainer_defeated(area_key, i)
+        trainers_left = any(  # (in a zoned place, the trainers in this zone)
+            not self.game.story_manager.is_trainer_defeated(area_key, i) and self._in_zone(trainer_pool[i])
             for i in range(len(trainer_pool))
         )
 
@@ -1507,7 +1562,7 @@ class PlayState(GameState):
             {"text": "EXIT ROUTE", "action": "EXIT", "condition": "can_exit", "color": "RED"}
         ]
 
-        menu_config = self.area_data.get("route_menu", default_menu)
+        menu_config = [i for i in self.area_data.get("route_menu", default_menu) if self._in_zone(i)]
 
         self.hide_menu_buttons()
 
@@ -1552,9 +1607,16 @@ class PlayState(GameState):
             if self.rounds_completed >= self.min_rounds or not trainers_left:
                 valid_options.append({"text": "EXIT ROUTE", "action": "EXIT", "color": "RED"})
         here = self._zone()
+        zones = self._zones()
+        if self.area_data.get("zones_linear") and here:  # floors: only the ones up and down the stairs
+            i = zones.index(here)
+            near = [(o, "UP TO" if self._zone_climbs(here, o) else "DOWN TO") for j, o in enumerate(zones)
+                    if abs(j - i) == 1]
+        else:
+            near = [(o, "TO") for o in zones if o is not here]
         valid_options = [z for item in valid_options for z in (
-            [dict(item, zone=o["key"], text=f"TO {o['name'].upper()}") for o in self._zones() if o is not here]
-            if item.get("action") == "ZONE" else [item])]  # "TO LAKE MILOCH", one per other zone
+            [dict(item, to_zone=o["key"], text=f"{word} {o['name'].upper()}") for o, word in near]
+            if item.get("action") == "ZONE" else [item])]  # "TO LAKE MILOCH", "UP TO 2F"
 
         for item in valid_options:
             color_map = {  # the battle menu's colours (src/ui/theme.py)
@@ -1584,7 +1646,11 @@ class PlayState(GameState):
             label = ("> " if toward else "") + theme.pokemon_word(words)
             btn = CommandButton(pygame.Rect(0, 0, 330, 60), label, self.game.assets.fonts["label"],
                                 self._route_pick(callback), bg_color=bg_color, autosize=False)
-            btn.route_group = "travel" if way_out or item.get("action") == "ZONE" else "explore"  # (zones: a way to go)
+            # Zones are ways to go (TRAVEL), but floors of one building are explored (EXPLORE: the tower's
+            # stairs), and so are the areas of one Safari Zone ("zones_explore").
+            zone_travel = item.get("action") == "ZONE" and not (self.area_data.get("zones_linear")
+                                                                or self.area_data.get("zones_explore"))
+            btn.route_group = "travel" if way_out or zone_travel else "explore"
             self.route_buttons.append(btn)
 
         # Jordan (10-29): routes use the towns' menu: EXPLORE (catching, battles, trainers, fishing,
@@ -1788,7 +1854,7 @@ class PlayState(GameState):
         if action == "CAMP":
             return self.open_camp
         if action == "ZONE":
-            return lambda z=item.get("zone"): self.action_switch_zone(z)
+            return lambda z=item.get("to_zone"): self.action_switch_zone(z)
         if action == "REST":  # a long ride's cabin (the Decolore ferry): a free full heal
             return self.action_rest_in_cabin
         if action == "HOENN_EVENT":
@@ -1868,7 +1934,7 @@ class PlayState(GameState):
     def _gift_pokemon(self, pid, lines):
         """Add a gift Pokemon to the party (or the PC when the party is full)."""
         story = self.game.story_manager
-        pokemon = Pokemon(self.game.loader.fetch_specific(pid), self.game.assets, size_mult=2.5)
+        pokemon = Pokemon(self.game.loader.fetch_specific(pid), self.game.assets, size_mult=2.5).max_ivs()
         pokemon.caught_region = story.get_current_region()
         if len(story.player_team) < 6:
             story.player_team.append(pokemon)
@@ -2072,7 +2138,9 @@ class PlayState(GameState):
         if self.rounds_completed == 0:
             name = self.area_data.get("route_name", self.game.story_manager.current_area_key.replace("_", " ").title())
             zone = self._zone()
-            return [f"Entered {name}" + (f": {zone['name']}" if zone else ""), self.game.assets.get_text("whats_next")]
+            mood = "A cold black fog is gathering again..." if getattr(self, "fog_returned", False) else None
+            return [f"{name}, {zone['name']}" if zone else f"Entered {name}",
+                    mood or self._zone_mood() or self.game.assets.get_text("whats_next")]
         return [self.game.assets.get_text("explored_area"), self.game.assets.get_text("whats_next")]
 
     def _route_pick(self, callback):
@@ -2158,6 +2226,7 @@ class PlayState(GameState):
             # Real evolution rules: level, friendship, time of day, moves, battle feats...
             next_entries = evolution.ready_evolutions(self.game, poke, pokemon_list)
             if not next_entries:
+                poke.evo_due = False  # checked after its level-up: it waits for the next one
                 continue
 
             if poke.id == 201:
@@ -2383,7 +2452,9 @@ class PlayState(GameState):
         pokemon = Pokemon(raw, self.game.assets, size_mult=2.0)
         # A Primal boss (Groudon/Kyogre in the Cave of Origin) reverts when the battle starts.
         pokemon.primal_ready = bool(boss_data.get("primal"))
-        if boss_data.get("level"):  # the games' level (canon since 10-29, legendaries included)
+        if pid == black_fog.BOSS_ID:  # the Black Fog: as strong as your strongest Pokemon
+            pokemon.level = black_fog.level(self.game.story_manager)
+        elif boss_data.get("level"):  # the games' level (canon since 10-29, legendaries included)
             pokemon.level = int(boss_data["level"])
         else:
             pokemon.level = levels.boss_level(self.game, self.game.story_manager.current_area_key, pokemon.id)
@@ -2942,11 +3013,7 @@ class PlayState(GameState):
         else:
             self.game.story_manager.catch_counts[pid_str] = self.game.story_manager.catch_counts.get(pid_str, 0) + 1
 
-        unique_count = len({v['id'] for v in self.game.data.data.get("pokedex", {}).values() if isinstance(v, dict) and 'id' in v})
-        if is_new_species and unique_count > 0 and unique_count % 30 == 0:
-            self.game.story_manager.money += 50000
-            msgs.append(f"Milestone: {unique_count} species caught!")
-            msgs.append("You received a $50,000 bonus!")
+        msgs += self.game.story_manager.catch_milestones()  # Kanto's catch missions (species owned)
 
         if self.boss_manager.in_boss_mode:
             self.boss_catches += 1
@@ -3122,7 +3189,7 @@ class PlayState(GameState):
                 all_caught = True
                 for pid_str in wild_pool.keys():
                     pid = int(pid_str)
-                    if pid >= 2000:
+                    if not regional_forms.counts_for_area(self.game, pid):  # (other regions' forms don't count)
                         continue
                     if pid not in caught_ids:
                         all_caught = False
@@ -4127,7 +4194,7 @@ class CityState(GameState):
             return
 
         raw = self.game.loader.fetch_specific(137)
-        porygon = Pokemon(raw, self.game.assets, size_mult=2.5)
+        porygon = Pokemon(raw, self.game.assets, size_mult=2.5).max_ivs()  # a gift: perfect IVs
         msgs = ["President: You saved Silph Co. from Team Rocket!",
                 "Team Rocket wanted our newest inventions. Instead, I want YOU to have them.",
                 "Please take our MASTER BALL. It catches any Pokémon without fail!",
@@ -4687,7 +4754,7 @@ class CityState(GameState):
 
         def give_hitmon(p_id):
             raw = self.game.loader.fetch_specific(p_id)
-            pokemon = Pokemon(raw, self.game.assets, size_mult=2.5)
+            pokemon = Pokemon(raw, self.game.assets, size_mult=2.5).max_ivs()  # a gift: perfect IVs
             if len(story.player_team) < 6:
                 story.player_team.append(pokemon)
                 msgs.append(f"You received {pokemon.name}!")
@@ -5062,7 +5129,7 @@ class CityState(GameState):
         def grant_eevee(flag_name):
             flags[flag_name] = True
             raw = self.game.loader.fetch_specific(133)
-            new_eevee = Pokemon(raw, self.game.assets, size_mult=2.5)
+            new_eevee = Pokemon(raw, self.game.assets, size_mult=2.5).max_ivs()  # a gift: perfect IVs
             if len(story.player_team) < 6:
                 story.player_team.append(new_eevee)
                 msgs.append("You received EEVEE!")
@@ -5310,6 +5377,10 @@ class CityState(GameState):
         story = self.game.story_manager
         region = story.get_current_region()
         story.enter_region(region)
+        paid = story.catch_milestones()  # a catch milestone reached by battle, evolution or a gift
+        if paid:
+            self.show_message(paid)
+            return
         call = league_redo.take_call(story, region)  # back in the first region won: the League Redo
         if call:
             self.show_message(call)
@@ -5790,7 +5861,7 @@ class PokeCenterState(GameState):
         self.bg = self._load_building_bg(game, "center")
         game.story_manager.last_center = game.story_manager.current_area_key
 
-        self.nurse_sprite = None if getattr(self, "generic_bg", False) else game.assets.get_trainer_image("nurse.png")
+        self.nurse_sprite = None  # (no nurse drawn in any Pokemon Center, Jordan 11-02)
         self.dialogue_box = ClassicDialogueBox(
             Utils.get_full_dialogue_rect(game),
             lines or ["Welcome to the Pokémon Center!", "We've restored your team to full health."],
@@ -5859,6 +5930,21 @@ class PokeCenterState(GameState):
 
 
 # [REF-0035: Gym Lobby State]
+# League rematches after the title (Jordan, 11-02): every Pokemon at least Lv 70; once your
+# strongest Pokemon is above Lv 80, the team rises with it (the ace matches yours).
+LEAGUE_REMATCH_MIN = 70
+LEAGUE_REMATCH_SCALE_FROM = 80
+
+
+def league_rematch_levels(story, team_levels):
+    lv = [max(LEAGUE_REMATCH_MIN, int(x)) for x in team_levels]
+    ace = black_fog.ace_level(story)
+    if lv and ace > LEAGUE_REMATCH_SCALE_FROM and ace > max(lv):
+        lift = ace - max(lv)
+        lv = [min(100, x + lift) for x in lv]
+    return lv
+
+
 class GymLobbyState(GameState):
     def __init__(self, game, previous_state=None):
         super().__init__(game)
@@ -6126,7 +6212,7 @@ class GymLobbyState(GameState):
         if self.redo:  # League Redo: six Pokemon at level 100, a starred badge instead of the badge
             name = t_data.get("name") or "Leader"
             t_data["team"] = league_redo.redo_team(self.game, self.region, t_data.get("team", []))
-            t_data["levels"] = [league_redo.LEVEL] * len(t_data["team"])
+            t_data["levels"] = [league_redo.redo_level(self.game.story_manager)] * len(t_data["team"])
             badge = None if self.is_league else t_data.get("badge_reward")
             t_data["badge_reward"] = None
             if badge:
@@ -6185,7 +6271,10 @@ class GymLobbyState(GameState):
             t_data["badge_reward"] = None  # the badge was won before the title
         if rematch_boost:
             team_levels = [min(100, int(lv) + rematch_boost) for lv in team_levels]
-        levels.set_team(opponent_team, team_levels, exact=bool(t_data.get("levels")))
+        exact = bool(t_data.get("levels"))
+        if self.is_league and getattr(self, "rematch", False) and not self.redo:
+            team_levels, exact = league_rematch_levels(self.game.story_manager, team_levels), True
+        levels.set_team(opponent_team, team_levels, exact=exact)
 
         bg_file = self.game.story_manager.get_gym_battle_background(
             self.area_key, trainer_index=self.progress, is_leader=is_leader

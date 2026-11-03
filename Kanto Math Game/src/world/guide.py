@@ -24,6 +24,9 @@ def _name_index(game):
             name = str(a.get("route_name") or "").strip()
             if len(name) >= 4:
                 out.append((name.lower(), k))
+                if (a.get("area_type") == "town" and name.lower().endswith((" city", " town"))
+                        and len(name) - 5 >= 4):  # "Saffron" for Saffron City (missions say it that way)
+                    out.append((name[:-5].lower(), k))
         _NAMES[key] = sorted(out, key=lambda x: -len(x[0]))
     return _NAMES[key]
 
@@ -77,6 +80,25 @@ def _event_flags(event):
     return out - {None}
 
 
+def _plain(text):
+    return str(text or "").lower().replace("é", "e").replace("{", "").replace("}", "")
+
+
+def _named_in_mission(game, mission, area_key, item):
+    """A town's building or person the mission names (Jordan, 11-02: "guide them directly to the
+    building"): a button in the mission's own area whose words are in its title or text ("Fighting
+    Dojo", "Copycat", "Bill's House"). Gyms, healing and shops go by their own rules."""
+    if item.get("action") in ("GYM", "HEAL", "SHOP", "EXIT", "ZONE", "CATCH", "BATTLE", "FISH"):
+        return False
+    label = _plain(item.get("text"))
+    for word in ("visit ", "talk to ", "go to ", "enter "):
+        label = label[len(word):] if label.startswith(word) else label
+    if len(label) < 4 or mission_target(game, mission) != area_key:
+        return False
+    text = _plain(" ".join(str(mission.get(k) or "") for k in ("title", "text", "description", "desc")))
+    return bool(re.search(r"\b" + re.escape(label) + r"\b", text))
+
+
 def advances_goal(game, area_key, item):
     """True when using this menu button is what the tracked Journal mission needs (Jordan, 11-01): a
     trainer here whose win sets its flag, a story event or legendary that sets it, or the Gym of a
@@ -90,6 +112,8 @@ def advances_goal(game, area_key, item):
     area = game.loader.area_data.get("STORY_PROGRESSION", {}).get(area_key, {})
     if action == "GYM":
         return bool(mission.get("completed_badge") or str(need or "").startswith("badge_"))             and mission_target(game, mission) == area_key
+    if _named_in_mission(game, mission, area_key, item):
+        return True  # the building or person the mission names, in its town (the Fighting Dojo)
     if not need:
         return False
     if action == "TRAINER":

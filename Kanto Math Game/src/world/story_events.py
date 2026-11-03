@@ -374,7 +374,7 @@ def gift_pokemon(game, pid, level=None):
     from src.pokemon.data import Pokemon
     from src.world import levels
     story = game.story_manager
-    mon = Pokemon(game.loader.fetch_specific(int(pid)), game.assets, size_mult=2.5)
+    mon = Pokemon(game.loader.fetch_specific(int(pid)), game.assets, size_mult=2.5).max_ivs()
     mon.caught_region = story.get_current_region()
     levels.set_wild(game, mon, story.current_area_key)
     if level:

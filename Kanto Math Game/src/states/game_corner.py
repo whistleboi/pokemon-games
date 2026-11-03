@@ -28,7 +28,8 @@ from src.config import FPS
 
 COINS_FLAG = "game_corner_coins"
 MAX_COINS = 9999
-COIN_PACK = (50, 1000)  # coins, money
+COIN_PRICE = 20  # $1,000 for 50 coins, as in the games
+COIN_PACKS = (50, 100, 500, 1000)  # the counter's choices (Jordan, 11-02)
 
 
 def coins(story):
@@ -39,16 +40,36 @@ def add_coins(story, n):
     story.story_flags[COINS_FLAG] = max(0, min(MAX_COINS, coins(story) + int(n)))
 
 
-def buy_coins(story):
-    """50 coins for $1,000. Returns the line to show."""
-    n, price = COIN_PACK
+def coin_cost(n):
+    return n * COIN_PRICE
+
+
+def buy_coins(story, n=50):
+    """n coins for $20 each. Returns the line to show."""
+    price = coin_cost(n)
     if story.money < price:
-        return f"You need ${price:,} for {n} coins."
+        return f"You need ${price:,} for {n:,} coins."
     if coins(story) + n > MAX_COINS:
-        return "Your Coin Case is full!"
+        return f"Your Coin Case can't hold {n:,} more coins! (It holds {MAX_COINS:,}.)"
     story.money -= price
     add_coins(story, n)
-    return f"You bought {n} coins! You have {coins(story):,} coins."
+    return f"You bought {n:,} coins for ${price:,}! You have {coins(story):,} coins."
+
+
+class PriceButton(CommandButton):
+    """A command button with a second line under its label (a price, what a game is)."""
+
+    def __init__(self, rect, text, sub, font, small, callback, bg_color):
+        super().__init__(rect, text, font, callback, bg_color=bg_color, autosize=False)
+        self.sub, self.small = sub, small
+
+    def draw(self, surface):
+        if not self.visible:
+            return
+        hover = self.callback is not None and self.rect.collidepoint(pygame.mouse.get_pos())
+        color = self.bg_color if self.callback is not None else (128, 132, 144)
+        theme.command_button(surface, self.rect, self.text, self.font, color, hover=hover, small=self.small,
+                             sub=self.sub)
 
 
 _pics = {}

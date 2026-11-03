@@ -43,6 +43,18 @@ def unlocked(game):
 FORM_HOME = {"alolan": "ALOLA", "galarian": "GALAR", "hisuian": "SINNOH", "paldean": "PALDEA"}
 
 
+def counts_for_area(game, pid):
+    """Whether a species in an area's pool counts toward "Area Complete!" (Jordan, 11-02): the
+    region's own Pokemon and its own regional forms (Alolan ones in Alola), never another region's
+    forms (Hoenn's Galarian Zigzagoon) or the other special forms."""
+    pid = int(pid)
+    mapping = game.loader.area_data.get("FORM_MAP", {}).get(str(pid))
+    if mapping:
+        home = FORM_HOME.get(str(mapping.get("form", "")).lower())
+        return bool(home) and home == game.story_manager.get_current_region()
+    return pid < 2000
+
+
 # Kanto and Johto stay Gen 1-2 until the player has played later regions ("Kanto stays Kanto",
 # "Johto stays Johto"), and so do the Orange Islands; the later regions keep their mixed pools.
 CLASSIC_REGIONS = ("KANTO", "JOHTO", "ORANGE")

@@ -13,3 +13,4 @@ A personal game for learning math. Pokémon and all related names, characters an
 - A fan's GBA-style Orre maps (Reddit, "Made some GBA Orre region maps as a fun art project"): Pyrite Cave's background.
 - **Sword and Shield Ultimate Plus** (a FireRed ROM hack by Pclg and Jeanstars, translated by Phantonomy; tiles by KingTapir): Galar's town and route backgrounds, from the maps on its wiki ([github.com/Ddaretrogamer/sword-and-shield-ultimate-plus-wiki](https://github.com/Ddaretrogamer/sword-and-shield-ultimate-plus-wiki)).
 - **Serebii.net** (PokéEarth) and **Bulbapedia**: the references for areas, wild Pokémon, trainers and story walkthroughs.
+- **Bulbapedia** ([bulbapedia.bulbagarden.net](https://bulbapedia.bulbagarden.net)): the town pictures without a fan-game map, and the Safari Zone area pictures (FireRed/LeafGreen, HeartGold/SoulSilver, Emerald, and Platinum's Great Marsh) with their area encounter tables.

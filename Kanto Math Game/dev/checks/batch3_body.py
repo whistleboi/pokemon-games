@@ -75,7 +75,7 @@ check(story.inventory.get("POKE_FLUTE") == 1 and any("Marowak" in l for l in cit
 
 print("6) evolve after a gym win")
 story.current_area_key = "PEWTER_CITY"
-ch = mk(4); ch.level = 16; ch.current_hp = ch.get_max_hp(); story.player_team = [ch]
+ch = mk(4); ch.level = 16; ch.evo_due = True; ch.current_hp = ch.get_max_hp(); story.player_team = [ch]
 b = TrainerBattleState(g, [mk(74)], trainer_class="GYM_LEADER", trainer_name="Brock", area_name="PEWTER_CITY", battle_type="gym", badge_reward="BOULDER")
 g.change_state(b); b.player_won = True
 b.exit_battle()
@@ -84,7 +84,7 @@ check(isinstance(st, EvolutionState) and isinstance(st.return_state, ow.GymLobby
 check("BOULDER" in story.badges.get("KANTO", []), "badge still awarded")
 print("7) evolve after a town trainer battle")
 story.current_area_key = "ETERNA_CITY"
-ch = mk(4); ch.level = 16; story.player_team = [ch]
+ch = mk(4); ch.level = 16; ch.evo_due = True; story.player_team = [ch]
 b = TrainerBattleState(g, [mk(396)], trainer_class="PKMN_TRAINER", trainer_name="Barry", area_name="ETERNA_CITY", battle_type="event")
 g.change_state(b); b.player_won = True; b.exit_battle()
 check(isinstance(g.current_state, EvolutionState) and isinstance(g.current_state.return_state, ow.CityState), type(g.current_state).__name__)

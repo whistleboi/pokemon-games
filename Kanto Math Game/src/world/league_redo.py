@@ -12,7 +12,7 @@ All of it lives in story flags (no save-file changes):
 from src.pokemon.balance import is_legendary
 from src.world.hms import _norm
 
-LEVEL = 100
+LEVEL = 80  # the least: every Pokemon at least Lv 80, and as strong as your strongest above that
 TEAM_SIZE = 6
 PROFESSORS = {"KANTO": "Professor Oak", "JOHTO": "Professor Elm"}
 # The newest Pokemon each region's game has (its own generation, or the remake's: HGSS, ORAS, BDSP),
@@ -98,8 +98,8 @@ def call_lines(story, region):
             f"{prof}: The Gym Leaders want to battle you again. They've had a long time to train,"
             " and this time they won't hold back!",
             f"{prof}: Win all {len(gyms(story, region)[0]) or 8} badges again, in any order you like."
-            f" Every Leader has a full team of six at level {LEVEL}.",
-            f"{prof}: Win them all, and the Elite Four and the Champion will face you at full strength too!"]
+            f" Every Leader has a full team of six, all at least level {LEVEL}.",
+            f"{prof}: Win them all, and the Elite Four and the Champion will face you too, at level {LEVEL} or more!"]
 
 
 def take_call(story, region=None):
@@ -110,6 +110,11 @@ def take_call(story, region=None):
         return []
     story.story_flags[flag] = True
     return call_lines(story, region)
+
+
+def redo_level(story):
+    """A League Redo Pokemon's level: at least LEVEL, or your strongest Pokemon's above that."""
+    return min(100, max(LEVEL, max((p.level for p in story.player_team if p), default=LEVEL)))
 
 
 def intro_lines(name, league=False):
@@ -219,7 +224,7 @@ def mission(story):
     won = len(found) - len(left)
     if left:
         target = left[0][0]
-        desc = (f"The {region.title()} Gym Leaders want a rematch at full strength: six Pokemon at level {LEVEL}."
+        desc = (f"The {region.title()} Gym Leaders want a rematch at full strength: six Pokemon, all at least level {LEVEL}."
                 f" Win their badges again, in any order. {won} of {len(found)} won so far.")
     else:
         target = league

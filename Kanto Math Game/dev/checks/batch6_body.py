@@ -65,7 +65,7 @@ g.change_state(lobby)
 check(lobby.progress == 0 and lobby.rematch and "Rematch" in lobby.status_text, lobby.status_text)
 lobby.challenge_gym()
 got = lineup(battle_of(g.current_state))
-check(got[0] == (437, 58), f"Will's HGSS rematch team: {got}")
+check(got[0] == (437, 70), f"Will's HGSS rematch team (rematches Lv 70+, 11-02): {got}")
 story.current_area_key = "EVER_GRANDE_CITY"
 story.badges["HOENN"] = ["x"] * 8
 story.story_flags["beat_hoenn_champion"] = True

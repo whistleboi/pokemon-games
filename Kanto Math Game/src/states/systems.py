@@ -31,6 +31,29 @@ def _draw_gmax_tag(screen, font, x, y):
     screen.blit(label, label.get_rect(center=box.center))
 
 
+SHINY_GOLD = (255, 204, 40)
+
+
+def draw_shiny_star(screen, cx, cy, r):
+    """The games' shiny mark: a gold five-point star with a dark edge (Summary, PC Box)."""
+    import math
+    pts = [(cx + (r if k % 2 == 0 else r * 0.45) * math.sin(math.pi * k / 5),
+            cy - (r if k % 2 == 0 else r * 0.45) * math.cos(math.pi * k / 5)) for k in range(10)]
+    pygame.draw.polygon(screen, SHINY_GOLD, pts)
+    pygame.draw.polygon(screen, (120, 72, 0), pts, max(1, r // 6))
+
+
+def _draw_shiny_tag(screen, font, x, y):
+    """A gold "SHINY" badge with the star, for the Summary's portrait."""
+    label = font.render("SHINY", True, (90, 54, 0))
+    box = pygame.Rect(x, y, label.get_width() + 40, label.get_height() + 8)
+    pygame.draw.rect(screen, (255, 236, 150), box, border_radius=8)
+    pygame.draw.rect(screen, (196, 140, 20), box, 2, border_radius=8)
+    draw_shiny_star(screen, box.x + 16, box.centery, 10)
+    screen.blit(label, label.get_rect(midleft=(box.x + 30, box.centery)))
+    return box
+
+
 # [REF-0060: Journal System]
 class JournalState(GameState):
     """The Journal (menu redesign, uncluttered): a list of missions at the left, the one picked
@@ -389,7 +412,7 @@ class PokemonPartyMenuState(GameState):
         team = getattr(self.game.story_manager, "player_team", [])
         if self.selected_slot_index < len(team):
             pkmn = team[self.selected_slot_index]
-            self.game.change_state(PokemonDetailState(self.game, pkmn, self))
+            self.game.change_state(PokemonDetailState(self.game, pkmn, self, roster=list(self.game.story_manager.player_team)))
         self._hide_popup()
 
     def _hide_popup(self):
@@ -414,6 +437,19 @@ class PokemonPartyMenuState(GameState):
 
     def _dismiss_dialogue(self):
         self.dialogue_box.visible = False
+
+    def _draw_use_tag(self, screen, rect, ok):
+        """A green ABLE or grey NO EFFECT tag at the card's right, under its level."""
+        f = self.game.assets.fonts["caption"]
+        text = "ABLE" if ok else "NO EFFECT"
+        color = theme.POKEMON if ok else (132, 136, 150)
+        tag = pygame.Rect(0, 0, f.size(text)[0] + 24, f.get_height() + 10)
+        tag.topright = (rect.right - 14, rect.y + 48)
+        pygame.draw.rect(screen, theme.shade(color, 0.6), tag.move(0, 3), border_radius=9)
+        pygame.draw.rect(screen, color, tag, border_radius=9)
+        pygame.draw.rect(screen, theme.shade(color, 0.55), tag, 2, border_radius=9)
+        Utils.draw_text_outline(screen, text, f, WHITE, tag.centerx, tag.centery,
+                                outline_color=theme.shade(color, 0.5), thickness=2)
 
     def _return(self):
         from src.states.overworld import PlayState
@@ -446,6 +482,12 @@ class PokemonPartyMenuState(GameState):
                 slot.selected = slot.index == self.move_swap_index
 
         self.game.ui_manager.draw(screen)
+        bag = self.previous_state
+        if self.context == "use_item" and hasattr(bag, "item_works"):  # ABLE / NO EFFECT on each card
+            for slot in self.slots:
+                if slot.pokemon is not None:
+                    ok = bag.item_works(getattr(bag, "selected_item", None), slot.pokemon)
+                    self._draw_use_tag(screen, slot.rect, ok)
         if self.popup_active:  # the menu over the cards, then its buttons on top
             team = getattr(self.game.story_manager, "player_team", [])
             name = team[self.selected_slot_index].display_name.upper() if 0 <= self.selected_slot_index < len(team) else ""
@@ -997,6 +1039,98 @@ class PCState(GameState):
         self.btn_pop_release = CommandButton((0, 0, 196, 50), "RELEASE", f["label"], self.popup_release,
                                              bg_color=theme.FIGHT, visible=False, autosize=False)
         self.popup_buttons = [self.btn_pop_move, self.btn_pop_summary, self.btn_pop_release]
+        # Search and filter (Jordan, 11-02): type a name (or a number, #25), or pick a filter (Shiny,
+        # Legendary, a type); the Box then shows every match from all the Boxes, a page at a time.
+        self.search = ""
+        self.search_active = False
+        self.filter = "ALL"
+        self.result_page = 0
+        self.search_rect = pygame.Rect(452, 16, 330, 52)
+        self.btn_filter = CommandButton((self.search_rect.right + 12, 14, 196, 56), "FILTER", f["label"],
+                                        self.toggle_filter_menu, bg_color=theme.TAB_OFF, autosize=False)
+        self.filter_open = False
+        chips = [("ALL", "ALL", theme.BACK), ("SHINY", "SHINY", theme.BAG), ("LEGENDARY", "LEGEND", theme.MEGA)]
+        from src.states.battle import TrainerBattleState
+        chips += [(t, t, TrainerBattleState.TYPE_COLORS.get(t, theme.TAB_OFF)) for t in self.TYPES]
+        cols, cw, ch, gap = 4, 150, 46, 8
+        rows = (len(chips) + cols - 1) // cols
+        self.filter_rect = pygame.Rect(0, 0, cols * cw + (cols + 1) * gap, 52 + rows * (ch + gap) + gap)
+        self.filter_rect.topright = (self.btn_filter.rect.right, self.btn_filter.rect.bottom + 8)
+        self.filter_buttons = []
+        for k, (key, label, color) in enumerate(chips):
+            r, c = divmod(k, cols)
+            rect = (self.filter_rect.x + gap + c * (cw + gap), self.filter_rect.y + 52 + r * (ch + gap), cw, ch)
+            self.filter_buttons.append(CommandButton(rect, label, f["caption"], (lambda k=key: self.set_filter(k)),
+                                                     bg_color=color, visible=False, autosize=False))
+
+    TYPES = ("NORMAL", "FIRE", "WATER", "GRASS", "ELECTRIC", "ICE", "FIGHTING", "POISON", "GROUND", "FLYING",
+             "PSYCHIC", "BUG", "ROCK", "GHOST", "DRAGON", "DARK", "STEEL", "FAIRY")
+
+    def toggle_filter_menu(self):
+        self.close_popup()
+        self.search_active = False
+        self.filter_open = not self.filter_open
+        for btn in self.filter_buttons:
+            btn.set_visibility(self.filter_open)
+
+    def set_filter(self, key):
+        self.filter = key
+        self.result_page = 0
+        self.filter_open = True
+        self.toggle_filter_menu()  # (closes it)
+        self.btn_filter.text = "FILTER" if key == "ALL" else ("LEGEND" if key == "LEGENDARY" else key)
+        self.btn_filter.bg_color = theme.TAB_OFF if key == "ALL" else theme.BAG
+
+    def _base_id(self, p):
+        if p.id >= 2000:
+            mapping = self.game.loader.area_data.get("FORM_MAP", {}).get(str(p.id))
+            if mapping:
+                return int(mapping.get("id", p.id))
+        return p.id
+
+    def _matches(self, p):
+        q = self.search.strip().lower()
+        if q:
+            if q.lstrip("#").isdigit():
+                if self._base_id(p) != int(q.lstrip("#")):
+                    return False
+            elif q not in p.display_name.lower() and q not in str(p.name).lower():
+                return False
+        if self.filter == "SHINY":
+            return bool(getattr(p, "is_shiny", False))
+        if self.filter == "LEGENDARY":
+            from src.pokemon.balance import is_legendary
+            return is_legendary(self._base_id(p))
+        if self.filter in self.TYPES:
+            return self.filter in [str(t).upper() for t in (p.types or [])]
+        return True
+
+    def filtering(self):
+        return bool(self.search.strip()) or self.filter != "ALL"
+
+    def results(self):
+        """PC indexes of the matches, in Box order."""
+        return [i for i, p in enumerate(self.pc) if p is not None and self._matches(p)]
+
+    def result_pages(self):
+        return max(1, (len(self.results()) + self.mons_per_box - 1) // self.mons_per_box)
+
+    def shown_index(self, local):
+        """The PC index in Box slot local (0-29) on show: the Box's, or the search's page."""
+        if self.filtering():
+            found = self.results()
+            k = self.result_page * self.mons_per_box + local
+            return found[k] if k < len(found) else None
+        return self.box_index * self.mons_per_box + local
+
+    def local_of(self, index):
+        for local in range(self.mons_per_box):
+            if self.shown_index(local) == index:
+                return local
+        return 0
+
+    def clear_search(self):
+        self.search, self.search_active, self.result_page = "", False, 0
 
     def _popup_mon(self):
         if not self.popup:
@@ -1008,7 +1142,7 @@ class PCState(GameState):
     def open_popup(self, where, index):
         """The menu beside the tapped Pokemon, kept on the screen."""
         self.popup = (where, index)
-        slot = self.party_slot(index) if where == "party" else self.box_slot(index - self.box_index * self.mons_per_box)
+        slot = self.party_slot(index) if where == "party" else self.box_slot(self.local_of(index))
         buttons = self.popup_buttons if where == "pc" else self.popup_buttons[:2]
         pr = self.popup_rect
         pr.h = 44 + len(buttons) * 58 + 4
@@ -1032,10 +1166,16 @@ class PCState(GameState):
             self.selected_pc_idx = i
 
     def popup_summary(self):
+        where = self.popup[0] if self.popup else None
         mon = self._popup_mon()
         self.close_popup()
         if mon is not None:
-            self.game.change_state(PokemonDetailState(self.game, mon, self))
+            if where == "party":
+                roster = list(self.party)
+            else:  # the Box (or the search's matches) on show
+                shown = (self.shown_index(k) for k in range(self.mons_per_box))
+                roster = [self.pc[i] for i in shown if i is not None and i < len(self.pc) and self.pc[i] is not None]
+            self.game.change_state(PokemonDetailState(self.game, mon, self, roster=roster))
 
     def popup_release(self):
         _, i = self.popup
@@ -1050,10 +1190,16 @@ class PCState(GameState):
         self.game.change_state(self.previous_state)
 
     def prev_box(self):
+        if self.filtering():  # the search's pages
+            self.result_page = (self.result_page - 1) % self.result_pages()
+            return
         self.box_index = (self.box_index - 1) % self.get_total_boxes()
         self.scroll_y = 0
 
     def next_box(self):
+        if self.filtering():
+            self.result_page = (self.result_page + 1) % self.result_pages()
+            return
         self.box_index = (self.box_index + 1) % self.get_total_boxes()
         self.scroll_y = 0
 
@@ -1097,7 +1243,8 @@ class PCState(GameState):
         self.game.ui_manager.add_element(self.btn_sort_id)
         self.game.ui_manager.add_element(self.btn_sort_name)
         self.game.ui_manager.add_element(self.btn_release)
-        for btn in self.popup_buttons:
+        self.game.ui_manager.add_element(self.btn_filter)
+        for btn in self.popup_buttons + self.filter_buttons:
             self.game.ui_manager.add_element(btn)
 
     def party_slot(self, i):
@@ -1117,6 +1264,28 @@ class PCState(GameState):
 
     def handle_events(self, events):
         for event in events:
+            if event.type == pygame.KEYDOWN and self.search_active:  # typing in the search box
+                if event.key in (pygame.K_RETURN, pygame.K_KP_ENTER):
+                    self.search_active = False
+                elif event.key == pygame.K_ESCAPE:
+                    self.clear_search()
+                elif event.key == pygame.K_BACKSPACE:
+                    self.search, self.result_page = self.search[:-1], 0
+                elif event.unicode and event.unicode.isprintable() and len(self.search) < 16:
+                    self.search, self.result_page = self.search + event.unicode, 0
+                continue
+            if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1 and self.filter_open:
+                self.toggle_filter_menu()  # a tap outside the filter menu closes it
+                return
+            if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+                was = self.search_active
+                self.search_active = self.search_rect.collidepoint(event.pos)
+                if self.search_active:
+                    self.close_popup()
+                    if was and self.search:  # a second tap on the box clears it
+                        self.clear_search()
+                        self.search_active = True
+                    return
             if event.type == pygame.MOUSEBUTTONDOWN and event.button in (4, 5):  # the wheel flips Boxes
                 self.close_popup()
                 self.prev_box() if event.button == 4 else self.next_box()
@@ -1134,20 +1303,20 @@ class PCState(GameState):
                     if self.party_slot(i).collidepoint(event.pos):
                         self.handle_click("party", i)
                         return
-                box_start = self.box_index * self.mons_per_box
                 for local in range(self.mons_per_box):
                     if self.box_slot(local).collidepoint(event.pos):
-                        self.handle_click("pc", box_start + local)
+                        if self.shown_index(local) is not None:
+                            self.handle_click("pc", self.shown_index(local))
                         return
 
     def _slot_at(self, pos):
         for i in range(6):
             if self.party_slot(i).collidepoint(pos):
                 return ("party", i)
-        box_start = self.box_index * self.mons_per_box
         for local in range(self.mons_per_box):
             if self.box_slot(local).collidepoint(pos):
-                return ("pc", box_start + local)
+                i = self.shown_index(local)
+                return ("pc", i) if i is not None else None
         return None
 
     def _mon_at(self, where, i):
@@ -1160,10 +1329,9 @@ class PCState(GameState):
         for i, p in enumerate(self.party[:6]):
             if self.party_slot(i).collidepoint(mouse):
                 return p
-        box_start = self.box_index * self.mons_per_box
         for local in range(self.mons_per_box):
-            i = box_start + local
-            if i < len(self.pc) and self.pc[i] is not None and self.box_slot(local).collidepoint(mouse):
+            i = self.shown_index(local)
+            if i is not None and i < len(self.pc) and self.pc[i] is not None and self.box_slot(local).collidepoint(mouse):
                 return self.pc[i]
         return None
 
@@ -1225,9 +1393,11 @@ class PCState(GameState):
         f = self.game.assets.fonts
         accent = theme.ACCENT["pc"]
         theme.menu_background(screen, accent, self.game.story_manager.pc_name().upper(), f["button"], title_x=176)
-        Utils.draw_text_outline(screen, f"{sum(1 for p in self.pc if p)} stored", f["button"], WHITE,
+        Utils.draw_text_outline(screen, f"{sum(1 for p in self.pc if p)} stored", f["label"], WHITE,
                                 self.game.width - 24, theme.HEADER_H // 2 - 4, align="right",
                                 outline_color=theme.shade(accent, 0.45), thickness=3)
+        theme.text_field(screen, self.search_rect, self.search, f["label"], "Search name or #",
+                         focused=self.search_active)
         mouse = pygame.mouse.get_pos()
 
         # The party.
@@ -1258,13 +1428,15 @@ class PCState(GameState):
         # The Box.
         theme.draw_panel(screen, self.box_rect)
         mid = (self.btn_prev_box.rect.right + self.btn_next_box.rect.left) // 2
-        Utils.draw_text_outline(screen, f"BOX {self.box_index + 1} / {self.get_total_boxes()}", f["button"], WHITE,
-                                mid, self.btn_prev_box.rect.centery)
-        box_start = self.box_index * self.mons_per_box
+        title = (f"FOUND {len(self.results())}  ({self.result_page + 1}/{self.result_pages()})" if self.filtering()
+                 else f"BOX {self.box_index + 1} / {self.get_total_boxes()}")
+        room = self.btn_next_box.rect.left - self.btn_prev_box.rect.right - 12
+        tf = f["button"] if f["button"].size(title)[0] <= room else f["label"]
+        Utils.draw_text_outline(screen, title, tf, WHITE, mid, self.btn_prev_box.rect.centery)
         for local in range(self.mons_per_box):
-            i = box_start + local
+            i = self.shown_index(local)
             rect = self.box_slot(local)
-            if i < len(self.pc) and self.pc[i] is not None:
+            if i is not None and i < len(self.pc) and self.pc[i] is not None:
                 p = self.pc[i]
                 theme.card(screen, rect, hover=rect.collidepoint(mouse), selected=self.selected_pc_idx == i,
                            accent=theme.POKEMON if self.selected_pc_idx == i else accent)
@@ -1275,6 +1447,8 @@ class PCState(GameState):
                 name = p.display_name.title()
                 nf = f["caption"] if f["caption"].size(name)[0] <= rect.w - 8 else f["tiny"]
                 theme.shadow_text(screen, name, nf, rect.centerx, rect.bottom - 12, align="center")
+                if getattr(p, "is_shiny", False):
+                    draw_shiny_star(screen, rect.right - 14, rect.y + 14, 9)
             else:
                 pygame.draw.rect(screen, theme.shade(theme.PANEL_INNER, 0.8), rect, border_radius=10)
                 pygame.draw.rect(screen, theme.PANEL_EDGE, rect, 2, border_radius=10)
@@ -1289,6 +1463,8 @@ class PCState(GameState):
             types = "/".join(t.title() for t in (show.types or []))
             line = (f"{show.display_name.upper()}   Lv{show.level}   {types}   "
                     f"HP {int(show.current_hp)}/{show.get_max_hp()}")
+        elif self.filtering() and not self.results():
+            line = "No Pokémon in the Boxes match. Tap the search box twice to clear it, or pick ALL."
         else:
             line = ("Now tap where it goes (party or Box)." if self.selected_pc_idx is not None
                     or self.selected_party_idx is not None else "Tap a Pokémon to move it or see its summary.")
@@ -1301,6 +1477,10 @@ class PCState(GameState):
         if mon is not None:
             theme.popup_panel(screen, self.popup_rect, mon.display_name.upper(), f["label"])
             for btn in self.popup_buttons:
+                btn.draw(screen)
+        if self.filter_open:
+            theme.popup_panel(screen, self.filter_rect, "SHOW ONLY", f["label"])
+            for btn in self.filter_buttons:
                 btn.draw(screen)
 
 
@@ -1714,6 +1894,34 @@ class BagState(GameState):
         else:
             self._back_to_bag(["It won't have any effect."])
 
+    def item_works(self, item, p):
+        """Would using `item` on p do something? (the party's ABLE / NO EFFECT tags, Jordan 11-02;
+        the same tests the item's own use makes, tried on a copy where it changes the Pokemon)."""
+        import copy
+        if p is None or not item:
+            return False
+        if item == "RARE_CANDY":
+            return self.candy_limit(p)[1] is None
+        if item in itemlib.MEDICINE:
+            return itemlib.medicine_effect(item, copy.copy(p))[0]
+        if item == "POTION":
+            return 0 < p.current_hp < p.get_max_hp()
+        if item == "FULL_HEAL":
+            return p.current_hp > 0 and bool(getattr(p, "status", None))
+        if item == "REVIVE":
+            return p.current_hp <= 0
+        if item == "EVERSTONE":
+            return True  # (given, or taken back)
+        if item in POKEBLOCKS:
+            from src.pokemon.contest import MAX_SHEEN, MAX_CONDITION
+            return p.sheen < MAX_SHEEN and p.condition.get(POKEBLOCKS[item], 0) < MAX_CONDITION
+        from src.pokemon import evolution
+        if evolution.item_evolution(self.game, p, item):
+            return True
+        key = p.name.upper()
+        data = self.evo_items_map.get(item, {})
+        return key in data or f"{key}_{str(p.form).upper()}" in data
+
     def candy_limit(self, pokemon):
         """(highest level Rare Candies can reach now, the cap message if it's already there)."""
         from src.world import levels
@@ -1878,7 +2086,7 @@ class BagState(GameState):
                 self.game.assets.heal_sfx.play()
             # A Feebas that has grown enough only needed Beauty: it evolves right away.
             from src.pokemon import evolution
-            if p.name.upper() == "FEEBAS" and evolution.ready_evolutions(self.game, p):
+            if p.name.upper() == "FEEBAS" and evolution.ready_evolutions(self.game, p, any_time=True):
                 milotic = self.game.name_to_id.get("MILOTIC")
                 if milotic:
                     self.game.change_state(EvolutionState(
@@ -2098,6 +2306,10 @@ class ItemCountState(GameState):
 
 
 # [REF-0038: Pokedex UI]
+# Regional forms go by their species in the Pokedex (number and name).
+REGION_FORM_NAMES = ("alolan", "galarian", "hisuian", "paldean", "pinkan", "valencia")
+
+
 class PokedexState(GameState):
     COLS, ROWS = 6, 3
     PER_PAGE = COLS * ROWS
@@ -2228,9 +2440,20 @@ class PokedexState(GameState):
         self.btn_area.set_visibility(False)
         self.btn_info.set_visibility(False)
 
+    def _species(self, pid):
+        """A regional form's species number (Alolan Meowth, #2010: 52); others are their own."""
+        pid = int(pid)
+        if pid >= 2000:
+            mapping = self.game.loader.area_data.get("FORM_MAP", {}).get(str(pid))
+            if mapping and str(mapping.get("form")) in REGION_FORM_NAMES:
+                return int(mapping.get("id", pid))
+        return pid
+
     def _caught_entry(self, pid):
-        return next((v for v in self.game.data.data.get("pokedex", {}).values()
-                     if isinstance(v, dict) and int(v.get("id", -1)) == int(pid)), None)
+        """Its Pokedex record: that exact entry, or (a National Dex species) any of its forms."""
+        dex = [v for v in self.game.data.data.get("pokedex", {}).values() if isinstance(v, dict) and "id" in v]
+        return (next((v for v in dex if int(v["id"]) == int(pid)), None)
+                or next((v for v in dex if self._species(v["id"]) == int(pid)), None))
 
     def show_selected_info(self):
         """The summary page for a caught species (cycle its forms there)."""
@@ -2238,9 +2461,10 @@ class PokedexState(GameState):
         self.hide_popup()
         if not entry:
             return
-        mon = Pokemon(self.game.loader.fetch_specific(int(entry["id"]), form=entry.get("form", "normal")),
+        mon = Pokemon(self.game.loader.fetch_specific(int(self.selected_pkmn_id), form=entry.get("form", "normal")
+                                                      if int(entry["id"]) == int(self.selected_pkmn_id) else "normal"),
                       self.game.assets, size_mult=2.5)
-        self.game.change_state(PokemonDetailState(self.game, mon, self))
+        self.game.change_state(PokemonDetailState(self.game, mon, self, dex=True))
 
     def toggle_sort(self):
         self.sort_mode = "NAME" if self.sort_mode == "NUMBER" else "NUMBER"
@@ -2277,18 +2501,21 @@ class PokedexState(GameState):
             national_dex = self.game.story_manager.story_flags.get("unlocked_national_dex", False)
 
             id_list = self.normal_dex_ids(caught_data, seen_ids)
+            national = self.dex_view in (None, "NATIONAL")
+            if national:  # one entry per species
+                id_list = list(dict.fromkeys(self._species(i) for i in id_list))
+            records = [v for v in caught_data.values() if isinstance(v, dict) and "id" in v]
+            seen_set = set(seen_ids)
 
             for p_id in id_list:
-                is_caught = False
-                caught_entry = None
-
-                for k, v in caught_data.items():
-                    if v['id'] == p_id:
-                        is_caught = True
-                        caught_entry = v
-                        break
-
-                is_seen = p_id in seen_ids
+                if national:
+                    mine = [v for v in records if self._species(v["id"]) == p_id]
+                    is_seen = p_id in seen_set or any(self._species(i) == p_id for i in seen_set if isinstance(i, int))
+                else:
+                    mine = [v for v in records if int(v["id"]) == p_id]
+                    is_seen = p_id in seen_set
+                is_caught = bool(mine)
+                species_name = self.game.assets.pokemon_names.get(str(self._species(p_id)), f"#{p_id}").upper()
 
                 entry = {
                     "id": p_id,
@@ -2300,14 +2527,12 @@ class PokedexState(GameState):
 
                 if is_caught:
                     entry["status"] = 2
-                    entry["name"] = self.game.assets.pokemon_names.get(str(p_id), f"#{p_id}").upper()
-                    entry["shiny"] = any(v.get("shiny") for v in caught_data.values()
-                                         if isinstance(v, dict) and v.get("id") == p_id)
-                    entry["gmax"] = any(v.get("gmax") for v in caught_data.values()
-                                        if isinstance(v, dict) and v.get("id") == p_id)
+                    entry["name"] = species_name
+                    entry["shiny"] = any(v.get("shiny") for v in mine)
+                    entry["gmax"] = any(v.get("gmax") for v in mine)
                 elif is_seen:
                     entry["status"] = 1
-                    entry["name"] = self.game.assets.pokemon_names.get(str(p_id), f"#{p_id}").upper()
+                    entry["name"] = species_name
 
                 if self.show_shinies_only:
                     if not entry["shiny"]:
@@ -2518,16 +2743,13 @@ class PokedexState(GameState):
                        fill=theme.TEXTBOX if status else (214, 218, 228))
 
             id_num = p_entry['id']
-            prefix = ""
-            if isinstance(id_num, int) and id_num >= 2000:
-                mapping = self.game.loader.area_data.get("FORM_MAP", {}).get(str(id_num))
-                if mapping:
-                    id_num = mapping.get("id", id_num)
-                    prefix = f"{p_entry.get('form', '')} ".title()
+            if isinstance(id_num, int):
+                id_num = self._species(id_num)  # (Alolan Meowth is No.052, like Meowth)
             display_id = "???" if p_entry['id'] == nown_id else (
-                f"{prefix}No.{id_num:03d}" if isinstance(id_num, int) else f"{prefix}#{id_num}")
+                f"No.{id_num:03d}" if isinstance(id_num, int) else f"#{id_num}")
             theme.shadow_text(screen, display_id, f["label"], rect.x + 12, rect.y + 8)
-            name = p_entry["name"].title() if p_entry["name"] != "???" else "???"
+            from src.pokemon.loader import PokemonLoader as _PL  # (older saves: "ALOLAN RATTATA")
+            name = _PL.plain_name(p_entry["name"]).title() if p_entry["name"] != "???" else "???"
             nf = f["label"] if f["label"].size(name)[0] <= rect.w - 16 else f["caption"]
             theme.shadow_text(screen, name, nf, rect.centerx, rect.bottom - 20, align="center")
 
@@ -2940,6 +3162,7 @@ class EvolutionState(GameState):
             self.pokemon.cry.play()
 
     def evolve_no(self):
+        self.pokemon.evo_due = False  # asked again at its next level-up
         # Not again this round, or declining would just bring the same question back.
         self.game.evo_declined = getattr(self.game, "evo_declined", set()) | {id(self.pokemon)}
         self._return()
@@ -3001,7 +3224,12 @@ class EvolutionState(GameState):
             self.alpha = min(255, self.alpha + 15)
             if self.timer <= 0:
                 self.phase = "END"
-                self.timer = 50
+                self.timer = 180  # (long enough to read it, over the fanfare)
+                # The congratulations fanfare (Jordan, 11-02: "no song"; it's cued by text box lines,
+                # and this screen draws its own).
+                music = getattr(self.game, "music", None)
+                if music is not None:
+                    music.jingle("congrats_evolve")
                 if self.evolved_pokemon_obj:
                     if self.context == "pc":
                         self.game.story_manager.pc_pokemon[self.team_index] = self.evolved_pokemon_obj
@@ -3165,11 +3393,18 @@ class PokemonDetailState(GameState):
     STATUS_TEXT = {"burn": "BURNED", "paralysis": "PARALYZED", "poison": "POISONED",
                    "toxic": "BADLY POISONED", "sleep": "ASLEEP", "freeze": "FROZEN"}
 
-    def __init__(self, game, pokemon, previous_state):
+    def __init__(self, game, pokemon, previous_state, roster=None, dex=False):
         super().__init__(game)
+        # Opened from the Pokedex: a species page, not a Pokemon of yours, so no level, HP or STATS
+        # tab (Jordan, 11-02); its forms still cycle.
+        self.dex = dex
         self.pokemon = pokemon
         self.own = pokemon  # the Pokemon this summary was opened for
         self.previous_state = previous_state
+        # The Pokemon either side (the party, or the Box / search on show): LEFT / RIGHT or the
+        # header's arrows page through their summaries (Jordan, 11-02).
+        roster = [m for m in (roster or []) if m is not None]
+        self.roster = roster if any(m is pokemon for m in roster) else [pokemon]
         self.tab = "INFO"
         # Every form of this species the player has obtained (regional, Pinkan, Valencia, Shadow...).
         self.forms = self._obtained_forms(pokemon)
@@ -3189,8 +3424,13 @@ class PokemonDetailState(GameState):
                                            lambda: self.cycle_form(1), bg_color=theme.MEGA, autosize=False)
         self.btn_back = CommandButton((16, 14, 140, 56), "BACK", f["button"], self.go_back, bg_color=theme.BACK,
                                       autosize=False)
+        self.btn_mon_prev = CommandButton((396, 14, 60, 56), "<", f["button"], lambda: self.show_mon(-1),
+                                          bg_color=theme.RUN, autosize=False)
+        self.btn_mon_next = CommandButton((566, 14, 60, 56), ">", f["button"], lambda: self.show_mon(1),
+                                          bg_color=theme.RUN, autosize=False)
         tab_w, gap = 150, 10
-        tabs = [("INFO", "INFO"), ("STATS", "STATS"), ("MOVES", "MOVES")]
+        tabs = [("INFO", "INFO")] + ([] if dex else [("STATS", "STATS")]) + [("MOVES", "MOVES")]
+        self.tab_order = tuple(key for key, _ in tabs)
         x0 = game.width - 24 - len(tabs) * tab_w - (len(tabs) - 1) * gap
         self.tab_buttons = {
             key: CommandButton((x0 + i * (tab_w + gap), 14, tab_w, 56), label, f["label"],
@@ -3211,6 +3451,22 @@ class PokemonDetailState(GameState):
     def show_tab(self, tab):
         self.tab = tab
         self._color_tabs()
+
+    def _roster_index(self):
+        return next((i for i, m in enumerate(self.roster) if m is self.own), 0)
+
+    def show_mon(self, step):
+        """The next (or previous) Pokemon's summary, on the same tab."""
+        if len(self.roster) < 2:
+            return
+        mon = self.roster[(self._roster_index() + step) % len(self.roster)]
+        self.pokemon = self.own = mon
+        self.forms = self._obtained_forms(mon)
+        self.form_idx = 0
+        self.sel_slot = None
+        self.pool_page = 0
+        self.move_msg = "Tap one of its moves, then a move from the pool to swap it in."
+        self.start()
 
     def _obtained_forms(self, pokemon):
         """[pokemon] + a display Pokemon for each other obtained form of its species (Pokedex data)."""
@@ -3258,15 +3514,20 @@ class PokemonDetailState(GameState):
         if len(self.forms) > 1:
             self.game.ui_manager.add_element(self.btn_form_prev)
             self.game.ui_manager.add_element(self.btn_form_next)
+        if len(self.roster) > 1:
+            self.game.ui_manager.add_element(self.btn_mon_prev)
+            self.game.ui_manager.add_element(self.btn_mon_next)
 
     TAB_ORDER = ("INFO", "STATS", "MOVES")
 
     def handle_events(self, events):
         for event in events:
-            if event.type == pygame.KEYDOWN and event.key in (pygame.K_LEFT, pygame.K_RIGHT):
-                step = -1 if event.key == pygame.K_LEFT else 1
-                i = self.TAB_ORDER.index(self.tab) if self.tab in self.TAB_ORDER else 0
-                self.show_tab(self.TAB_ORDER[(i + step) % len(self.TAB_ORDER)])
+            if event.type == pygame.KEYDOWN and event.key in (pygame.K_LEFT, pygame.K_RIGHT) and len(self.roster) > 1:
+                self.show_mon(-1 if event.key == pygame.K_LEFT else 1)  # the Pokemon either side
+            elif event.type == pygame.KEYDOWN and event.key in (pygame.K_LEFT, pygame.K_RIGHT, pygame.K_TAB):
+                step = -1 if event.key == pygame.K_LEFT or (event.mod & pygame.KMOD_SHIFT) else 1
+                i = self.tab_order.index(self.tab) if self.tab in self.tab_order else 0
+                self.show_tab(self.tab_order[(i + step) % len(self.tab_order)])
             elif event.type == pygame.KEYDOWN and event.key in (pygame.K_UP, pygame.K_DOWN):
                 self.cycle_form(-1 if event.key == pygame.K_UP else 1)
             elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1 and self.tab == "MOVES":
@@ -3383,12 +3644,20 @@ class PokemonDetailState(GameState):
         r = self.portrait
         theme.card(screen, r)
         from src.ui.hearts import draw_hearts
-        draw_hearts(screen, p, r.centerx, r.y + 24, size=18)
+        if not self.dex:  # (a Pokedex page is the species, not one of yours)
+            draw_hearts(screen, p, r.centerx, r.y + 24, size=18)
         if p.image:
             spr = fit_sprite(p.image, r.w - 60, 230)
             screen.blit(spr, spr.get_rect(center=(r.centerx, r.y + 160)))
         if getattr(p, "gmax_factor", False):
             _draw_gmax_tag(screen, f["small"], r.right - 90, r.y + 40)
+        if getattr(p, "is_shiny", False):
+            _draw_shiny_tag(screen, f["small"], r.x + 14, r.y + 40)
+        if len(self.roster) > 1:  # which of the party / Box this is
+            mid = (self.btn_mon_prev.rect.right + self.btn_mon_next.rect.left) // 2
+            Utils.draw_text_outline(screen, f"{self._roster_index() + 1}/{len(self.roster)}", f["label"], WHITE,
+                                    mid, self.btn_mon_prev.rect.centery, outline_color=theme.shade(accent, 0.45),
+                                    thickness=3)
         if len(self.forms) > 1:
             theme.shadow_text(screen, f"Form {self.form_idx + 1}/{len(self.forms)}", f["label"], r.centerx,
                               self.btn_form_prev.rect.centery, align="center")
@@ -3397,8 +3666,10 @@ class PokemonDetailState(GameState):
         theme.shadow_text(screen, name, f["s_med"] if f["s_med"].size(name)[0] <= r.w - 40 else f["label"],
                           r.x + 20, y)
         self._type_chips(r.x + 20, y + 40)
-        lv = theme.shadow_text(screen, f"Lv{p.level}", f["label"], r.right - 20, y + 42, align="right")
-        if self.pokemon is self.own:
+        if self.dex:
+            pass  # (a species page: no level or HP)
+        elif (lv := theme.shadow_text(screen, f"Lv{p.level}", f["label"], r.right - 20, y + 42, align="right")) \
+                and self.pokemon is self.own:
             theme.status_tag(screen, "faint" if p.current_hp <= 0 else getattr(p, "status", None), f["caption"],
                              lv.x - 66, y + 41)
             theme.hp_bar(screen, r.x + 20, r.bottom - 40, r.w - 40, p.current_hp, p.get_max_hp())
@@ -3436,7 +3707,7 @@ class PokemonDetailState(GameState):
         left = pygame.Rect(c.x, c.y, c.w // 2 - 8, c.h)
         right = pygame.Rect(left.right + 16, c.y, c.right - left.right - 16, c.h)
         theme.card(self.game.screen, left)
-        if p is self.own:
+        if p is self.own and not self.dex:
             rows = [("Name", p.display_name), ("Level", p.level),
                     ("XP", f"{p.xp}/{p.xp_to_next}" if p.xp_to_next else "MAX"),
                     ("HP", f"{int(p.current_hp)}/{p.get_max_hp()}"), ("Types", "/".join(t.title() for t in p.types)),
@@ -3456,7 +3727,8 @@ class PokemonDetailState(GameState):
         if season_form:
             rows.append(("Coat", season_form))
         self._rows(left, rows)
-        self._draw_condition(right)
+        if not self.dex:
+            self._draw_condition(right)
 
     def _draw_stats_and_moves(self):
         """STATS: the stats with IV bars (left card), the four moves (right)."""
@@ -3735,42 +4007,94 @@ class GameCornerState(GameState):
     def show_main_menu(self, line=None):
         # 11-01 (Jordan): the Slots and Voltorb Flip from the fan games' Essentials set, played with
         # coins (bought here) for the Prize Counter (src/states/game_corner.py).
+        # 11-02 (Jordan): a cleaner counter. Your money and coins on top, the GAMES and the COIN COUNTER
+        # (50 / 100 / 500 / 1,000 coins, each with its price) side by side, PRIZES and LEAVE below.
         from src.states import game_corner as gc
+        story = self.game.story_manager
         self.phase = "MAIN_MENU"
-        self.dialogue_box.reset(line or f"You have {gc.coins(self.game.story_manager):,} coins. What would you like to do?")
+        self.dialogue_box.reset(line or "Buy coins at the counter, then try your luck!")
         self.btn_yes.set_visibility(False)
         self.btn_no.set_visibility(False)
-
-        options = [
-            ("SLOTS", self.start_slot_machine),
-            ("VOLTORB FLIP", self.start_voltorb_flip),
-            ("BLACKJACK", self.start_blackjack),
-            ("POKEMATH", self.start_infinite),
-            ("BUY 50 COINS", self.buy_coins),
-            ("PRIZES", self.open_shop),
-            ("LEAVE", self.go_back)
-        ]
-
-        is_celadon = self.game.story_manager.current_area_key == "CELADON_CITY"
-        if is_celadon and not self.cleared:
-            options.insert(0, ("STAIRS", self.check_stairs))
-
         self.clear_menu()
-        btn_w, btn_h, per_row = 230, 56, 4
-        rows = (len(options) + per_row - 1) // per_row
-        for i, (text, cb) in enumerate(options):
-            r, c = divmod(i, per_row)
-            in_row = min(per_row, len(options) - r * per_row)
-            start_x = self.game.width // 2 - (in_row * (btn_w + 16) - 16) // 2
-            y = Utils.get_full_dialogue_rect(self.game).top - (rows - r) * (btn_h + 12) - 8
-            btn = Button((start_x + c * (btn_w + 16), y, btn_w, btn_h), text, self.game.assets.fonts["tiny"],
-                         cb, autosize=False)
-            self.menu_buttons.append(btn)
-            self.game.ui_manager.add_element(btn)
 
-    def buy_coins(self):
+        f = self.game.assets.fonts
+        w, top = self.game.width, Utils.get_full_dialogue_rect(self.game).top
+        margin, gap = 40, 20
+        self.header_rect = pygame.Rect(margin, 14, w - 2 * margin, 66)
+        bottom_y = top - 78
+        half = (w - 2 * margin - gap) // 2
+        panel_h = 58 + 2 * 72 + 20 + 52  # title, two rows of buttons, the note
+        room = bottom_y - self.header_rect.bottom
+        self.games_rect = pygame.Rect(margin, self.header_rect.bottom + (room - panel_h) // 2, half, panel_h)
+        self.counter_rect = pygame.Rect(self.games_rect.right + gap, self.games_rect.y, half, self.games_rect.h)
+
+        def grid(panel, specs):
+            bw, bh = (panel.w - 3 * 18) // 2, 72
+            y0 = panel.y + 58
+            for i, (text, sub, cb, color) in enumerate(specs):
+                r, c = divmod(i, 2)
+                rect = (panel.x + 18 + c * (bw + 18), y0 + r * (bh + 20), bw, bh)
+                self._menu_add(gc.PriceButton(rect, text, sub, f["label"], f["caption"], cb, color))
+
+        grid(self.games_rect, [
+            ("SLOTS", "Bet 1-3 coins", self.start_slot_machine, theme.FIGHT),
+            ("VOLTORB FLIP", "Flip for coins", self.start_voltorb_flip, theme.POKEMON),
+            ("BLACKJACK", "Beat Meowth to 21", self.start_blackjack, theme.MEGA),
+            ("POKEMATH", "Math for money", self.start_infinite, theme.RUN)])
+        full = gc.coins(story) >= gc.MAX_COINS
+        grid(self.counter_rect, [
+            (f"{n:,} COINS", f"${gc.coin_cost(n):,}",
+             (lambda n=n: self.buy_coins(n)) if story.money >= gc.coin_cost(n) and not full else None, theme.BAG)
+            for n in gc.COIN_PACKS])
+
+        bottom = [("PRIZES", self.open_shop, theme.BAG)]
+        if story.current_area_key == "CELADON_CITY" and not self.cleared:
+            bottom.insert(0, ("STAIRS", self.check_stairs, theme.TAB_OFF))
+        bottom.append(("LEAVE", self.go_back, theme.BACK))
+        bw = 220
+        x0 = w // 2 - (len(bottom) * (bw + gap) - gap) // 2
+        for i, (text, cb, color) in enumerate(bottom):
+            self._menu_add(CommandButton((x0 + i * (bw + gap), bottom_y, bw, 60), text, f["button"], cb,
+                                         bg_color=color, autosize=False))
+
+    def _menu_add(self, btn):
+        self.menu_buttons.append(btn)
+        self.game.ui_manager.add_element(btn)
+
+    def _draw_main_menu(self, screen):
+        """The counter's panels behind its buttons: the wallet bar, GAMES and COIN COUNTER."""
         from src.states import game_corner as gc
-        self.show_main_menu(gc.buy_coins(self.game.story_manager))
+        f, story = self.game.assets.fonts, self.game.story_manager
+        shade = pygame.Surface((self.game.width, Utils.get_full_dialogue_rect(self.game).top), pygame.SRCALPHA)
+        shade.fill((10, 10, 24, 120))
+        screen.blit(shade, (0, 0))
+        bar = self.header_rect
+        theme.draw_panel(screen, bar)
+        Utils.draw_text_outline(screen, "GAME CORNER", f["button"], WHITE, bar.x + 28 + f["button"].size("GAME CORNER")[0] // 2,
+                                bar.centery, outline_color=theme.PANEL_BORDER, thickness=2)
+        x = bar.right - 24
+        for label, value, color in (("COINS", f"{gc.coins(story):,}", theme.BAG),
+                                    ("MONEY", f"${story.money:,}", theme.POKEMON)):
+            chip = pygame.Rect(0, 0, max(200, f["label"].size(value)[0] + 120), 44)
+            chip.midright = (x, bar.centery)
+            pygame.draw.rect(screen, theme.shade(color, 0.55), chip, border_radius=12)
+            pygame.draw.rect(screen, color, chip, 3, border_radius=12)
+            Utils.draw_text_outline(screen, label, f["caption"], WHITE, chip.x + 44, chip.centery,
+                                    outline_color=theme.PANEL_BORDER, thickness=2)
+            Utils.draw_text_outline(screen, value, f["label"], WHITE, chip.right - 16 - f["label"].size(value)[0] // 2,
+                                    chip.centery, outline_color=theme.PANEL_BORDER, thickness=2)
+            x = chip.x - 16
+        for rect, title, note in ((self.games_rect, "GAMES", "Win coins to spend on prizes"),
+                                  (self.counter_rect, "COIN COUNTER", f"${gc.COIN_PRICE} per coin  |  holds {gc.MAX_COINS:,}")):
+            theme.draw_panel(screen, rect)
+            Utils.draw_text_outline(screen, title, f["label"], WHITE, rect.centerx, rect.y + 30,
+                                    outline_color=theme.PANEL_BORDER, thickness=2)
+            Utils.draw_text_outline(screen, note, f["caption"], (214, 222, 246), rect.centerx, rect.bottom - 24,
+                                    outline_color=theme.PANEL_BORDER, thickness=2)
+
+    def buy_coins(self, n=50):
+        from src.states import game_corner as gc
+        self.show_main_menu(gc.buy_coins(self.game.story_manager, n))
 
     def start_slot_machine(self):
         from src.states.game_corner import SlotsState
@@ -3870,7 +4194,7 @@ class GameCornerState(GameState):
         story = self.game.story_manager
         story.story_flags["game_corner_cleared"] = True
         self.cleared = True
-        porygon = Pokemon(self.game.loader.fetch_specific(137), self.game.assets, size_mult=2.5)
+        porygon = Pokemon(self.game.loader.fetch_specific(137), self.game.assets, size_mult=2.5).max_ivs()  # a gift
         msg = ["You drove Team Rocket out of their hideout!"]
         if story.inventory.get("SILPH_SCOPE", 0) <= 0:
             story.inventory["SILPH_SCOPE"] = 1
@@ -3949,7 +4273,9 @@ class GameCornerState(GameState):
     def draw(self):
         self.game.screen.fill(BLACK)
         self.game.screen.blit(self.bg, (0, 0))
-        if self.npc_sprite:
+        if self.phase == "MAIN_MENU" and self.menu_buttons:
+            self._draw_main_menu(self.game.screen)
+        elif self.npc_sprite:
             self.game.screen.blit(self.npc_sprite, self.npc_sprite.get_rect(center=(self.game.width//2, self.game.height*0.45)))
         self.dialogue_box.draw(self.game.screen)
         self.game.ui_manager.draw(self.game.screen)
@@ -4209,7 +4535,7 @@ class FossilRevivalState(GameState):
             self.fossil_img = pygame.transform.scale(self.fossil_img, (160, 160))
 
         raw = self.game.loader.fetch_specific(pokemon_id)
-        self.evolved_pokemon_obj = Pokemon(raw, self.game.assets, size_mult=3.0)
+        self.evolved_pokemon_obj = Pokemon(raw, self.game.assets, size_mult=3.0).max_ivs()  # a revived fossil: a gift
 
     def handle_events(self, events):
         pass

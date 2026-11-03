@@ -884,7 +884,7 @@ class StarterSelectionState(GameState):
             self.dialogue_box.handle_event(event)
 
     def complete_selection(self):
-        chosen_pokemon_obj = self.starters[self.selected_idx]
+        chosen_pokemon_obj = self.starters[self.selected_idx].max_ivs()  # the starter is a gift: perfect IVs
         if chosen_pokemon_obj.cry:
             chosen_pokemon_obj.cry.play()
 
@@ -1596,6 +1596,10 @@ class DifficultySelectionState(GameState):
                                           fonts["label"], self.toggle_autosave, bg_color=theme.RUN, autosize=False)
         self.btn_exp = CommandButton((s.right - 14 - 250 - 14 - 250, s.y + 14, 250, s.h - 32), self._exp_label(),
                                      fonts["label"], self.toggle_exp_share, bg_color=theme.POKEMON, autosize=False)
+        # SPEED 1x / 2x in the header, beside QUIT (or where QUIT goes, at a new game).
+        self.btn_speed = CommandButton((w - 16 - 140 - 14 - 190 if return_state_in_game(self) else w - 16 - 190, 14,
+                                        190, 56), self._speed_label(), fonts["label"], self.toggle_speed,
+                                       bg_color=self._speed_color(), autosize=False)
         cx, cy = w // 2, h // 2
         self.quit_panel = pygame.Rect(cx - 260, cy - 170, 520, 340)
         self.quit_buttons = [
@@ -1606,6 +1610,18 @@ class DifficultySelectionState(GameState):
             CommandButton((cx - 200, cy + 88, 400, 62), "CANCEL", fonts["label"],
                           self.close_quit_prompt, bg_color=theme.BACK, autosize=False),
         ]
+
+    def _speed_label(self):
+        return "SPEED " + ("2x" if getattr(self.story, "game_speed", 1) == 2 else "1x")
+
+    def _speed_color(self):
+        from src.ui import theme
+        return theme.BAG if getattr(self.story, "game_speed", 1) == 2 else theme.TAB_OFF
+
+    def toggle_speed(self):
+        self.story.game_speed = 1 if getattr(self.story, "game_speed", 1) == 2 else 2
+        self.btn_speed.text = self._speed_label()
+        self.btn_speed.bg_color = self._speed_color()
 
     def _exp_label(self):
         return "EXP SHARE: " + ("ON" if getattr(self.story, "exp_share", True) else "OFF")
@@ -1715,7 +1731,8 @@ class DifficultySelectionState(GameState):
                     return
                 if self.btn_back.handle_event(event) or self.btn_confirm.handle_event(event):
                     return  # state changed; ignore the rest of this frame
-                if self.btn_cap.handle_event(event) or self.btn_exp.handle_event(event):
+                if (self.btn_cap.handle_event(event) or self.btn_exp.handle_event(event)
+                        or self.btn_speed.handle_event(event)):
                     return
                 for i, rect in enumerate(self.card_rects):
                     if rect.collidepoint(event.pos):
@@ -1798,6 +1815,7 @@ class DifficultySelectionState(GameState):
         theme.shadow_text(screen, example, ef, self.bar_rect.x + 32, self.bar_rect.centery - ef.get_height() // 2 - 2)
         self.btn_confirm.draw(screen)
         self.btn_back.draw(screen)
+        self.btn_speed.draw(screen)
 
         if self.in_game and self.quit_prompt:
             shade = pygame.Surface((w, h), pygame.SRCALPHA)
@@ -1809,6 +1827,10 @@ class DifficultySelectionState(GameState):
                                     WHITE, self.quit_panel.centerx, self.quit_panel.top + 50)
             for b in self.quit_buttons:
                 b.draw(screen)
+
+
+def return_state_in_game(options):
+    return getattr(options, "in_game", False)
 
 
 def open_difficulty_options(game, return_state):

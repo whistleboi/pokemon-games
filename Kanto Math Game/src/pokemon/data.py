@@ -55,6 +55,7 @@ class Pokemon:
         self.counters = {}
         # Individual values (0-31) like the games; they make each Pokemon's stats a little different.
         self.ivs = {k: random.randint(0, 31) for k in self.IV_KEYS}
+        self.floor_ivs()
         self.status = None        # burn, paralysis, poison, sleep or freeze
         self.sleep_turns = 0
         self.moves = []           # up to four move names (filled from its learnset when needed)
@@ -63,6 +64,9 @@ class Pokemon:
         # The level it was caught at: a level evolution waits until it has levelled up once
         # (Jordan), so a Charmander caught at Lv 20 doesn't turn into Charmeleon on the spot.
         self.caught_level = None
+        # Levelled up since its evolution was last checked: evolutions happen at a level-up, as in
+        # the games (Jordan, 11-02: a Lickitung that knew Rollout evolved when a Machoke did).
+        self.evo_due = False
         # Caught as a Gigantamax raid boss: shown normally, but keeps the G-Max Factor.
         self.gmax_factor = False
         # Contest condition (raised by Pokéblocks), Sheen and ribbons won.
@@ -157,6 +161,7 @@ class Pokemon:
             self.xp -= self.xp_to_next
             self.level += 1
             gained += 1
+            self.evo_due = True
         if gained and self.current_hp > 0:  # level-ups add the HP gained, like the games
             self.current_hp = min(self.get_max_hp(), self.current_hp + self.get_max_hp() - old_max)
         if self.level >= self.MAX_LEVEL:
@@ -171,6 +176,7 @@ class Pokemon:
         for _ in range(levels):
             if self.level < self.MAX_LEVEL:
                 self.level += 1
+                self.evo_due = True
         self.xp = 0
         self.current_hp = max(1, round(share * self.get_max_hp())) if self.current_hp > 0 else 0
 
@@ -216,6 +222,27 @@ class Pokemon:
 
     IV_KEYS = ("HP", "ATTACK", "DEFENSE", "SPATK", "SPDEF", "SPEED")
     IV_ALIASES = {"SPECIAL-ATTACK": "SPATK", "SPECIAL-DEFENSE": "SPDEF"}
+
+    # Every Pokemon has at least 2 IVs at 31, a legendary at least 4, and a gift all 6 (Jordan, 11-02).
+    PERFECT_IV = 31
+    PERFECT_IVS = 2
+    PERFECT_IVS_LEGENDARY = 4
+
+    def floor_ivs(self):
+        """Raise its best IVs to 31 until it has as many perfect ones as it should (never lowers any)."""
+        from src.pokemon.balance import is_legendary
+        legend = is_legendary(self.id) or is_legendary(getattr(self, "meta_id", None))
+        need = self.PERFECT_IVS_LEGENDARY if legend else self.PERFECT_IVS
+        ivs = getattr(self, "ivs", None) or {k: 15 for k in self.IV_KEYS}
+        for key in sorted(self.IV_KEYS, key=lambda k: -ivs.get(k, 15))[:need]:
+            ivs[key] = self.PERFECT_IV
+        self.ivs = ivs
+
+    def max_ivs(self):
+        """A gift Pokemon: all six IVs at 31 (and its HP refilled to match)."""
+        self.ivs = {k: self.PERFECT_IV for k in self.IV_KEYS}
+        self.max_hp = self.current_hp = self.get_max_hp()
+        return self
 
     def iv(self, stat_name):
         key = self.IV_ALIASES.get(stat_name.upper(), stat_name.upper())

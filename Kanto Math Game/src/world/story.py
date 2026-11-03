@@ -41,6 +41,7 @@ class StoryManager:
         self.last_center = None  # area key of the last Pokemon Center used (whiteouts go there)
         self.autosave = True     # Options: save every time you travel to a new area
         self.exp_share = True    # Options: the whole party earns XP, as in Gen 6+ (Jordan, 10-29)
+        self.game_speed = 1      # Options: 2 = twice the frames a second (Jordan, 11-02)
         self.tracked_mission = None  # the Journal mission the route guide points to (None: the first story one)
         self.repel_routes = 0        # routes a Repel still keeps wild Pokemon away on
         self.selected_ball = None    # the ball you throw (catching.selected)
@@ -341,6 +342,23 @@ class StoryManager:
         """Different Kanto species caught, #1-150 (Mew waits until all of them are)."""
         dex = self.game.data.data.get("pokedex", {}) if getattr(self, "game", None) else {}
         return len({int(v.get("id", 0)) for v in dex.values() if 1 <= int(v.get("id", 0)) <= 150})
+
+    # Kanto's "Catch 30/60/90/120/150 Pokemon" missions (Jordan, 11-02): Kanto species owned (#1-150 in
+    # the Pokedex, however they were got: caught, evolved, given, traded), $50,000 each, paid once.
+    CATCH_MILESTONES = (30, 60, 90, 120, 150)
+    CATCH_BONUS = 50000
+
+    def catch_milestones(self):
+        """Pay any milestone reached and not paid yet. Returns the lines to show."""
+        lines = []
+        owned = self.kanto_caught_count()
+        for n in self.CATCH_MILESTONES:
+            flag = f"kanto_catch_{n}"
+            if owned >= n and not self.story_flags.get(flag):
+                self.story_flags[flag] = True
+                self.money += self.CATCH_BONUS
+                lines += [f"Milestone: {n} Kanto species owned!", f"You received a ${self.CATCH_BONUS:,} bonus!"]
+        return lines
 
     MAX_ITEMS = 999  # the most of one item the Bag holds, as in the games
 
@@ -866,6 +884,11 @@ class StoryManager:
         m_copy["details"] = m_copy["desc"]
 
         cond = mission.get("condition", {})
+        if mission.get("kanto_species"):  # the catch milestones: Kanto species owned so far
+            have, goal = min(self.kanto_caught_count(), mission["kanto_species"]), mission["kanto_species"]
+            m_copy["desc"] += f"\n(Progress: {have}/{goal})"
+            m_copy["details"] = m_copy["desc"]
+            m_copy["text"] += f" ({have}/{goal})"
         if "catch_id" in cond:
             target = str(cond["catch_id"])
             req = cond.get("catch_count", 1)
@@ -1250,6 +1273,7 @@ class StoryManager:
             "last_center": self.last_center,
             "autosave": self.autosave,
             "exp_share": self.exp_share,
+            "game_speed": self.game_speed,
             "tracked_mission": self.tracked_mission,
             "repel_routes": self.repel_routes, "selected_ball": self.selected_ball,
         }
@@ -1306,6 +1330,7 @@ class StoryManager:
         pokemon.counters = dict(p_data.get("counters", {}))
         if p_data.get("ivs"):
             pokemon.ivs = dict(p_data["ivs"])
+            pokemon.floor_ivs()  # older saves: at least 2 perfect IVs (4 for a legendary)
         pokemon.moves = list(p_data.get("moves", []))
         pokemon.move_pool = list(p_data.get("move_pool", []))  # old saves: rebuilt from the learnset
         pokemon.status = p_data.get("status")
@@ -1364,6 +1389,7 @@ class StoryManager:
         self.last_center = data.get("last_center")
         self.autosave = data.get("autosave", True)
         self.exp_share = data.get("exp_share", True)
+        self.game_speed = 2 if data.get("game_speed") == 2 else 1
         self.tracked_mission = data.get("tracked_mission")
         self.repel_routes = data.get("repel_routes", 0)
         self.selected_ball = data.get("selected_ball")

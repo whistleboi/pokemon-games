@@ -1824,6 +1824,9 @@
         },
 
         "JOHTO_SAFARI_ZONE": {
+            "zones": [{"key": "plains", "name": "Plains"}, {"key": "meadow", "name": "Meadow"}, {"key": "savannah", "name": "Savannah"}, {"key": "peak", "name": "Peak"}, {"key": "rocky_beach", "name": "Rocky Beach"}, {"key": "wetland", "name": "Wetland"}, {"key": "forest", "name": "Forest"}, {"key": "swamp", "name": "Swamp"}, {"key": "marshland", "name": "Marshland"}, {"key": "wasteland", "name": "Wasteland"}, {"key": "mountain", "name": "Mountain"}, {"key": "desert", "name": "Desert"}],
+            "zones_explore": true,
+            "zone_pools": {"plains": "JOHTO_SAFARI_PLAINS_PERCENTAGES", "meadow": "JOHTO_SAFARI_MEADOW_PERCENTAGES", "savannah": "JOHTO_SAFARI_SAVANNAH_PERCENTAGES", "peak": "JOHTO_SAFARI_PEAK_PERCENTAGES", "rocky_beach": "JOHTO_SAFARI_ROCKY_BEACH_PERCENTAGES", "wetland": "JOHTO_SAFARI_WETLAND_PERCENTAGES", "forest": "JOHTO_SAFARI_FOREST_PERCENTAGES", "swamp": "JOHTO_SAFARI_SWAMP_PERCENTAGES", "marshland": "JOHTO_SAFARI_MARSHLAND_PERCENTAGES", "wasteland": "JOHTO_SAFARI_WASTELAND_PERCENTAGES", "mountain": "JOHTO_SAFARI_MOUNTAIN_PERCENTAGES", "desert": "JOHTO_SAFARI_DESERT_PERCENTAGES"},
             "region": "JOHTO",
             "area_type": "wild_route",
             "route_name": "Johto Safari Zone",
@@ -1833,6 +1836,7 @@
             "route_menu": [
               {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
               {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN"},
+              { "text": "ZONE", "action": "ZONE", "color": "CYAN" },
               {"text": "EXIT SAFARI", "action": "EXIT", "target_area": "CIANWOOD_CITY", "condition": "can_exit", "color": "RED"},
               {"text": "Safari Zone Gate", "action": "EXIT", "target_area": "SAFARI_ZONE_GATE", "condition": "can_exit", "color": "RED"}
             ]
@@ -2182,7 +2186,19 @@
     "JOHTO_CLIFF_GATE_PERCENTAGES": { "74": 30, "194": 30, "41": 20, "75": 5, "195": 5, "42": 5, "66": 5, "2012": 1, "2013": 1 },
 
     "JOHTO_SAFARI_POOL": [214, 212, 231, 232, 227, 241, 246, 247, 215, 207, 213, 216, 152],
-    "JOHTO_SAFARI_PERCENTAGES": { "214": 13, "212": 5, "231": 13, "232": 5, "227": 9, "241": 9, "246": 5, "247": 2, "215": 10, "207": 13, "213": 6, "216": 5, "152": 5 },
+    "JOHTO_SAFARI_PERCENTAGES": {"63": 30, "203": 27, "19": 20, "20": 20, "234": 7, "235": 7, "241": 9, "39": 37, "187": 23, "183": 10, "191": 10, "194": 13, "188": 7, "35": 3, "152": 5, "29": 20, "32": 20, "128": 20, "30": 10, "33": 10, "41": 13, "111": 7, "42": 10, "231": 13, "232": 5, "74": 40, "81": 30, "75": 13, "82": 13, "126": 7, "202": 7, "79": 30, "98": 30, "84": 20, "80": 10, "213": 6, "21": 20, "83": 20, "161": 30, "54": 7, "55": 7, "132": 7, "195": 7, "69": 37, "16": 20, "200": 17, "122": 13, "92": 7, "93": 7, "214": 13, "212": 5, "216": 5, "46": 20, "198": 17, "96": 7, "97": 7, "109": 30, "110": 20, "23": 13, "24": 7, "43": 7, "44": 7, "88": 7, "95": 30, "66": 13, "115": 13, "22": 10, "67": 3, "247": 2, "108": 20, "246": 7, "227": 9, "215": 10, "27": 40, "28": 30, "104": 13, "105": 7, "207": 13},
+    "JOHTO_SAFARI_PLAINS_PERCENTAGES": {"63": 30, "203": 27, "19": 20, "20": 10, "234": 7, "235": 7, "241": 9},
+    "JOHTO_SAFARI_MEADOW_PERCENTAGES": {"39": 37, "187": 23, "183": 10, "191": 10, "194": 10, "188": 7, "35": 3, "152": 5},
+    "JOHTO_SAFARI_SAVANNAH_PERCENTAGES": {"29": 20, "32": 20, "128": 20, "30": 10, "33": 10, "41": 10, "111": 7, "42": 3, "231": 13, "232": 5},
+    "JOHTO_SAFARI_PEAK_PERCENTAGES": {"74": 40, "81": 20, "75": 13, "82": 13, "126": 7, "202": 7},
+    "JOHTO_SAFARI_ROCKY_BEACH_PERCENTAGES": {"79": 30, "98": 30, "84": 20, "41": 10, "80": 10, "213": 6},
+    "JOHTO_SAFARI_WETLAND_PERCENTAGES": {"21": 20, "83": 20, "161": 20, "194": 13, "54": 7, "55": 7, "132": 7, "195": 7},
+    "JOHTO_SAFARI_FOREST_PERCENTAGES": {"69": 37, "16": 20, "200": 17, "122": 13, "92": 7, "93": 7, "214": 13, "212": 5, "216": 5},
+    "JOHTO_SAFARI_SWAMP_PERCENTAGES": {"161": 30, "39": 20, "46": 20, "198": 17, "96": 7, "97": 7},
+    "JOHTO_SAFARI_MARSHLAND_PERCENTAGES": {"109": 30, "110": 20, "23": 13, "194": 10, "24": 7, "43": 7, "44": 7, "88": 7},
+    "JOHTO_SAFARI_WASTELAND_PERCENTAGES": {"81": 30, "95": 30, "66": 13, "115": 13, "22": 10, "67": 3, "247": 2},
+    "JOHTO_SAFARI_MOUNTAIN_PERCENTAGES": {"19": 20, "20": 20, "108": 20, "41": 13, "42": 10, "82": 10, "246": 7, "227": 9, "215": 10},
+    "JOHTO_SAFARI_DESERT_PERCENTAGES": {"27": 40, "28": 30, "104": 13, "22": 10, "105": 7, "207": 13},
   "JOHTO_ROUTE_47_OLD_ROD_PERCENTAGES": {"129": 95, "72": 5},
   "JOHTO_ROUTE_47_GOOD_ROD_PERCENTAGES": {"129": 60, "72": 30, "170": 7, "90": 3},
   "JOHTO_ROUTE_47_SUPER_ROD_PERCENTAGES": {"170": 60, "90": 30, "73": 7, "171": 3},

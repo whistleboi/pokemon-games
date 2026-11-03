@@ -639,7 +639,7 @@ story.current_area_key = "VERMILLION_CITY"
 check(not any(m["id"].startswith("kalos_") for m in story.get_active_missions()), "and Kalos's missions don't show in Kanto")
 story.story_flags, _b20, story.current_area_key, story.inventory = _saved20
 story.badges = _b20
-print("21) League Redo: after a second title, the first region's Leaders at Lv 100 with six (Jordan, 11-01)")
+print("21) League Redo: after a second title, the first region's Leaders with six, Lv 80+ (Jordan, 11-01/02)")
 from src.world import league_redo as _lr
 from src.states.overworld import GymLobbyState as _GL21, CityState as _CS21, is_league as _isl21
 from src.states.systems import BadgeCaseState as _BC21
@@ -819,6 +819,21 @@ story.story_flags.pop(_gc.COINS_FLAG, None)
 story.money = 5000
 _line = _gc.buy_coins(story)
 check(_gc.coins(story) == 50 and story.money == 4000, f"50 coins for $1,000 ({_line})")
+story.money = 30000
+_m = _gc.buy_coins(story, 500)
+check(_gc.coins(story) == 550 and story.money == 20000, f"500 coins for $10,000 ({_m})")
+_m = _gc.buy_coins(story, 1000)
+check(_gc.coins(story) == 1550 and story.money == 0, f"1,000 coins for $20,000 ({_m})")
+check("You need $1,000" in _gc.buy_coins(story, 50) and _gc.coins(story) == 1550, "no money: no coins")
+from src.states.systems import GameCornerState as _GCS
+story.inventory["COIN_CASE"] = 1
+story.money = 1500
+_gcs = _GCS(g, None); g.change_state(_gcs); _gcs.show_main_menu()
+_packs = {b.text: (b.sub, b.callback is not None) for b in _gcs.menu_buttons if "COINS" in b.text}
+check(_packs == {"50 COINS": ("$1,000", True), "100 COINS": ("$2,000", False), "500 COINS": ("$10,000", False),
+                 "1,000 COINS": ("$20,000", False)}, f"the counter: 50 / 100 / 500 / 1,000 with prices, too dear greyed ({_packs})")
+story.money = 4000
+story.story_flags[_gc.COINS_FLAG] = 50
 check(_gc.line_pay("RED7", "RED7", "RED7") == 300 and _gc.line_pay("RED7", "BLUE7", "RED7") == 90
       and _gc.line_pay("PIKACHU", "PIKACHU", "PIKACHU") == 15 and _gc.line_pay("CHERRY", "PSYDUCK", "RED7") == 2
       and _gc.line_pay("CHERRY", "CHERRY", "RED7") == 4 and _gc.line_pay("REPLAY", "REPLAY", "REPLAY") == "REPLAY"
@@ -909,4 +924,325 @@ for _f in range(200):
 _bj.draw()
 check(_bj.phase == "DONE" and _gc25.coins(story) in (90, 100, 110, 115), f"a hand plays out and pays ({_bj.message}, {_gc25.coins(story)} coins)")
 story.story_flags, story.current_area_key = _saved25
+print("26) The Pokemon Tower in four floors; the Black Fog ambushes on the stairs (Jordan, 11-02)")
+from src.states.overworld import PlayState as _PS26
+_saved26 = (dict(story.story_flags), story.current_area_key, {k: set(v) for k, v in story.defeated_trainers.items()},
+            dict(story.inventory))
+story.current_area_key = "KANTO_POKEMON_TOWER"
+story.inventory["SILPH_SCOPE"] = 1
+for _f in ("tower_ghost_defeated", "black_fog_banished_kanto_pokemon_tower"):
+    story.story_flags.pop(_f, None)
+story.story_flags["defeated_rival_tower"] = True  # (the rival met at the door: done)
+story.defeated_trainers.pop("KANTO_POKEMON_TOWER", None)
+
+
+def _floor(n):
+    story.story_flags["zone_KANTO_POKEMON_TOWER"] = f"floor_{n}"
+    p = _PS26(g); g.change_state(p); p.show_progression_menu()
+    return p, [b.text.replace("> ", "") for b in p.route_buttons]
+
+
+_p, _f1 = _floor(1)
+_p4, _f4 = _floor(4)
+check("UP TO 2F" in _f1 and "Lavender Town" in _f1 and not any("DOWN" in t for t in _f1), f"1F: up the stairs or out {_f1}")
+check("DOWN TO 3F" in _f4 and "Lavender Town" not in _f4 and not any("UP TO" in t for t in _f4), f"4F: the top {_f4}")
+check(not any("BLACK FOG" in t for n in (1, 2, 3, 4) for t in _floor(n)[1]), "no Black Fog option on any floor")
+check(all(g.assets.get_journeys_background("routes", f"KANTO_POKEMON_TOWER_floor_{n}") for n in range(1, 5)),
+      "each floor has its own picture")
+_pool = g.loader.area_data["STORY_PROGRESSION"]["KANTO_POKEMON_TOWER"]["trainer_pool"]
+for _i, _t in enumerate(_pool):
+    if _t.get("zone") == "floor_4":
+        story.defeated_trainers.setdefault("KANTO_POKEMON_TOWER", set()).add(_i)
+check("CONFRONT GHOST" in _floor(4)[1], "the ghost, at the top once Team Rocket is beaten")
+_tower = g.loader.area_data["STORY_PROGRESSION"]["KANTO_POKEMON_TOWER"]
+_chance = _tower["zone_ambush"]["chance"]
+_tower["zone_ambush"]["chance"] = 1.0
+_p, _ = _floor(1)
+_p.dialogue_box.visible = False  # (the arrival message, read)
+said.clear()
+_p.action_switch_zone("floor_2")
+_said = " ".join(map(str, said[-1][0])) if said else ""
+check("lights go out" in _said and said and said[-1][1] is not None, f"changing floors can bring the Black Fog ({_said[:60]})")
+story.story_flags["black_fog_banished_kanto_pokemon_tower"] = True
+_p, _ = _floor(1)
+_p.dialogue_box.visible = False  # (the arrival message, read)
+said.clear()
+_p.action_switch_zone("floor_2")
+_said = " ".join(map(str, said[-1][0])) if said else ""
+check("lights go out" not in _said and "2F" in _said, f"not once it's banished ({_said[:70]})")
+_tower["zone_ambush"]["chance"] = _chance
+story.story_flags, story.current_area_key, story.defeated_trainers, story.inventory = _saved26
+print("27) Regional forms: plain names; only the region's own forms count for Area Complete (Jordan, 11-02)")
+from src.world import regional_forms as _rf27
+from src.pokemon.loader import PokemonLoader as _PL27
+from src.states.overworld import PlayState as _PS27
+_saved27 = (dict(story.story_flags), story.current_area_key)
+check(g.loader.fetch_specific(2001)["display_name"].upper() == "RATTATA", f"Alolan Rattata is just RATTATA ({g.loader.fetch_specific(2001)['display_name']})")
+check(_PL27.plain_name("ALOLAN RATTATA") == "RATTATA" and _PL27.plain_name("Galarian Zigzagoon") == "Zigzagoon"
+      and _PL27.plain_name("Mr. Mime") == "Mr. Mime", "older saves' Pokedex names lose the prefix too")
+_fm = g.loader.area_data["FORM_MAP"]
+_alolan = next(int(k) for k, m in _fm.items() if m.get("form") == "alolan")
+_galarian = next(int(k) for k, m in _fm.items() if m.get("form") == "galarian")
+story.current_area_key = "HAUOLI_CITY"
+_in_alola = (_rf27.counts_for_area(g, _alolan), _rf27.counts_for_area(g, _galarian), _rf27.counts_for_area(g, 19))
+story.current_area_key = "HOENN_ROUTE_101"
+_in_hoenn = (_rf27.counts_for_area(g, _alolan), _rf27.counts_for_area(g, _galarian), _rf27.counts_for_area(g, 263))
+check(_in_alola == (True, False, True) and _in_hoenn == (False, False, True),
+      f"own forms count, other regions' don't (Alola {_in_alola}, Hoenn {_in_hoenn})")
+story.current_area_key = "KANTO_POKEMON_TOWER"
+story.story_flags["defeated_rival_tower"] = True
+story.story_flags["zone_KANTO_POKEMON_TOWER"] = "floor_2"
+_pt = _PS27(g); g.change_state(_pt); _pt.show_progression_menu()
+_stairs = [b for b in _pt.route_buttons if "UP TO" in b.text or "DOWN TO" in b.text]
+check(_stairs and all(b.route_group == "explore" for b in _stairs), f"the tower's stairs are under EXPLORE {[b.text for b in _stairs]}")
+story.story_flags, story.current_area_key = _saved27
+print("28) The Black Fog returns and scales; League rematches Lv 70+; the League Redo Lv 80+ (Jordan, 11-02)")
+import datetime as _dt28
+import random as _r28
+from src.world import black_fog as _bf
+from src.world import league_redo as _lr28
+from src.states import overworld as _ow28
+_saved28 = (dict(story.story_flags), story.player_team)
+_tower = g.loader.area_data["STORY_PROGRESSION"]["KANTO_POKEMON_TOWER"]
+_flag = _bf.fog_flag(_tower)
+check(_flag == "black_fog_banished_kanto_pokemon_tower", f"the tower's Black Fog is found ({_flag})")
+
+
+class _Always:
+    def random(self):
+        return 0.0
+
+
+story.story_flags[_flag] = True
+story.story_flags.pop("black_fog_back_KANTO_POKEMON_TOWER", None)
+_day = _dt28.date(2026, 11, 2)
+_back = _bf.maybe_return(story, "KANTO_POKEMON_TOWER", _tower, rng=_Always(), today=_day)
+check(_back and not story.story_flags.get(_flag), "banished, it can gather again on entry")
+story.story_flags[_flag] = True
+check(not _bf.maybe_return(story, "KANTO_POKEMON_TOWER", _tower, rng=_Always(), today=_day), "but not twice in one day")
+check(_bf.maybe_return(story, "KANTO_POKEMON_TOWER", _tower, rng=_Always(), today=_day + _dt28.timedelta(days=1)),
+      "and again the next day")
+_n = 0
+for _i in range(400):
+    story.story_flags[_flag] = True
+    _n += bool(_bf.maybe_return(story, f"T{_i}", _tower, rng=_r28.Random(_i), today=_day))
+check(20 <= _n <= 60, f"about 10% of entries ({_n} of 400)")
+story.player_team = [_mon(25, 47, ["TACKLE"]), _mon(150, 61, ["TACKLE"])]
+check(_bf.level(story) == 63, f"it's as strong as your ace: Lv {_bf.level(story)}")
+check(_ow28.league_rematch_levels(story, [55, 58, 60]) == [70, 70, 70], "rematches: everyone at least Lv 70")
+story.player_team = [_mon(150, 88, ["TACKLE"])]
+check(_ow28.league_rematch_levels(story, [72, 75, 78]) == [82, 85, 88], "and up to your ace once it's above 80")
+story.player_team = [_mon(150, 60, ["TACKLE"])]
+check(_lr28.redo_level(story) == 80, "the League Redo: at least Lv 80")
+story.player_team = [_mon(150, 93, ["TACKLE"])]
+check(_lr28.redo_level(story) == 93, "or your ace's level above that")
+check(any("at least level 80" in l for l in _lr28.call_lines(story, "KANTO")), "and the professor says so")
+story.story_flags, story.player_team = _saved28
+print("29) Kanto's catch missions count Kanto species owned, paid once each (Jordan, 11-02)")
+_saved29 = (dict(story.story_flags), story.money, dict(g.data.data.get("pokedex", {})))
+for _k in [k for k in story.story_flags if k.startswith("kanto_catch_")]:
+    story.story_flags.pop(_k)
+g.data.data["pokedex"] = {str(_i): {"id": _i} for _i in range(1, 65)}
+g.data.data["pokedex"].update({str(_i): {"id": _i} for _i in range(152, 182)})  # other regions don't count
+_m0 = story.money
+_lines = story.catch_milestones()
+check(story.story_flags.get("kanto_catch_30") and story.story_flags.get("kanto_catch_60")
+      and not story.story_flags.get("kanto_catch_90") and story.money - _m0 == 100000,
+      f"64 Kanto species: the 30 and 60 bonuses ({_lines})")
+check(story.catch_milestones() == [] and story.money - _m0 == 100000, "and only once")
+_cm = {m["id"]: m for m in g.loader.area_data["JOURNAL_MISSIONS"] if str(m.get("id", "")).startswith("cm")}
+if _cm:
+    _ui = story._prepare_mission_for_ui(_cm["cm90"])
+    check("(64/90)" in _ui["text"], f"the next one shows progress ({_ui['text']})")
+story.story_flags, story.money = _saved29[0], _saved29[1]
+g.data.data["pokedex"] = _saved29[2]
+
+print("30) IVs: at least 2 at 31, legendaries 4, gifts all 6; every form goes by its plain name (Jordan, 11-02)")
+from src.world import story_events as _se30
+_saved30 = (list(story.player_team), list(story.pc_pokemon))
+_p31 = lambda m: sum(1 for v in m.ivs.values() if v == 31)
+_wild = [Pokemon(g.loader.fetch_specific(19), g.assets) for _ in range(30)]
+_leg = [Pokemon(g.loader.fetch_specific(150), g.assets) for _ in range(30)]
+check(min(map(_p31, _wild)) >= 2, f"every Pokemon has at least 2 perfect IVs (fewest {min(map(_p31, _wild))})")
+check(min(map(_p31, _leg)) >= 4, f"a legendary at least 4 (fewest {min(map(_p31, _leg))})")
+story.player_team = story.player_team[:1]
+_se30.gift_pokemon(g, 133)
+check(_p31(story.player_team[-1]) == 6, "a gift Pokemon has all six at 31")
+_ow30 = PlayState(g); _l30 = []; _ow30._gift_pokemon(25, _l30)
+check(_p31(story.player_team[-1]) == 6, "from the town gift helper too")
+_old = {"HP": 3, "ATTACK": 9, "DEFENSE": 20, "SPATK": 1, "SPDEF": 2, "SPEED": 4}
+_m30 = Pokemon(g.loader.fetch_specific(19), g.assets); _m30.ivs = dict(_old); _m30.floor_ivs()
+check(_p31(_m30) == 2 and _m30.ivs["DEFENSE"] == 31 and _m30.ivs["ATTACK"] == 31 and _m30.ivs["HP"] == 3,
+      f"an older save's Pokemon: its two best raised ({_m30.ivs})")
+import re as _re30
+_pre = _re30.compile(r"\b(ALOLAN|GALARIAN|HISUIAN|PALDEAN|PINKAN|VALENCIA)\b", _re30.I)
+_named = [(k, g.loader.fetch_specific(int(k))) for k in g.loader.area_data["FORM_MAP"]]
+_bad30 = [(k, r["name"]) for k, r in _named if _pre.search(str(r.get("name"))) or _pre.search(str(r.get("display_name")))]
+check(not _bad30, f"no form keeps a region prefix ({len(_named)} forms; {_bad30[:3]})")
+story.player_team, story.pc_pokemon = _saved30
+
+print("31) Safari Zones in areas: own pictures, own Pokemon, area buttons under EXPLORE (Jordan, 11-02)")
+_saved31 = (dict(story.story_flags), story.current_area_key)
+for _area, _n in (("SAFARI_ZONE", 4), ("JOHTO_SAFARI_ZONE", 12), ("HOENN_SAFARI_ZONE", 4), ("GREAT_MARSH", 6)):
+    _ad = g.loader.area_data["STORY_PROGRESSION"][_area]
+    _zs = _ad.get("zones") or []
+    _pics = [z["key"] for z in _zs if g.assets.get_journeys_background("routes", f"{_area}_{z['key']}") is not None]
+    _union = set(g.loader.area_data[_ad["wild_pool_percentages"]])
+    _parts = set().union(*(g.loader.area_data[_ad["zone_pools"][z["key"]]] for z in _zs))
+    check(len(_zs) == _n and len(_pics) == _n and _union == _parts,
+          f"{_area}: {len(_zs)} areas, {len(_pics)} pictures, the whole pool is the areas' together")
+story.current_area_key = "JOHTO_SAFARI_ZONE"
+story.story_flags["zone_JOHTO_SAFARI_ZONE"] = "desert"
+_ps31 = PlayState(g); g.change_state(_ps31); _ps31.show_progression_menu()
+_pool31 = _ps31._base_wild_pool(_ps31.area_data)
+check("27" in _pool31 and "74" not in _pool31, f"the Desert has Sandshrew, not the Peak's Geodude ({sorted(_pool31)[:6]})")
+_to = [b for b in _ps31.route_buttons if b.text.startswith("TO ") or b.text.startswith("> TO ")]
+check(len(_to) == 11 and all(b.route_group == "explore" for b in _to), f"11 other areas, under EXPLORE ({len(_to)})")
+story.story_flags, story.current_area_key = _saved31
+
+print("32) PC search and filter; Summary pages through the party / Box; shiny badge (Jordan, 11-02)")
+from src.states.systems import PCState as _PC32, PokemonDetailState as _PD32
+_saved32 = (list(story.player_team), list(story.pc_pokemon))
+_mk32 = lambda pid, shiny=False: Pokemon(g.loader.fetch_specific(pid, is_shiny=shiny), g.assets, size_mult=2.5)
+story.player_team = [_mk32(25), _mk32(6), _mk32(9)]
+story.pc_pokemon = [_mk32(i, i == 37) for i in (4, 37, 58, 7, 150, 1)] + [None] * 24
+_pc = _PC32(g, None); g.change_state(_pc); _pc.start()
+_names = lambda: [story.pc_pokemon[i].display_name.upper() for i in _pc.results()]
+_pc.search = "char"
+check(_names() == ["CHARMANDER"], f"search by name ({_names()})")
+_pc.search = "#150"
+check(_names() == ["MEWTWO"], f"search by number ({_names()})")
+_pc.search = ""
+_pc.set_filter("FIRE")
+check(_names() == ["CHARMANDER", "VULPIX", "GROWLITHE"], f"filter by type ({_names()})")
+_pc.set_filter("SHINY")
+check(_names() == ["VULPIX"] and not _pc.filter_open, f"filter shinies ({_names()})")
+_pc.set_filter("LEGENDARY")
+check(_names() == ["MEWTWO"], f"filter legendaries ({_names()})")
+_pc.set_filter("FIRE")
+_pc.popup = ("pc", _pc.results()[0]); _pc.popup_summary()
+_d = g.current_state
+check(isinstance(_d, _PD32) and [m.display_name.upper() for m in _d.roster] == ["CHARMANDER", "VULPIX", "GROWLITHE"],
+      "the Summary pages through what the Box shows")
+_d.show_mon(1)
+check(_d.own.display_name.upper() == "VULPIX" and _d.own.is_shiny, "RIGHT: the next one (the shiny Vulpix)")
+_d.show_mon(-1); _d.show_mon(-1)
+check(_d.own.display_name.upper() == "GROWLITHE", "LEFT wraps round")
+_d.draw()
+_d2 = _PD32(g, story.player_team[1], None, roster=list(story.player_team))
+check(len(_d2.roster) == 3 and _d2._roster_index() == 1, "from the party menu: the party")
+story.player_team, story.pc_pokemon = _saved32
+
+print("33) Regional forms evolve at home or where you're Champion; never into another region's form (Jordan, 11-02)")
+from src.pokemon import evolution as _ev33
+_saved33 = (dict(story.story_flags), story.current_area_key)
+for _r in ("KANTO", "JOHTO", "HOENN", "SINNOH", "UNOVA", "KALOS", "ALOLA", "GALAR", "PALDEA"):
+    story.story_flags.pop(story.champion_flag(_r), None)
+_m33 = lambda pid: Pokemon(g.loader.fetch_specific(pid), g.assets)
+_ag = _m33(2013)  # Alolan Graveler
+_cord = lambda mon: _ev33.item_evolution(g, mon, "LINKING_CORD")
+_opts = lambda mon: [o[0] for o in _ev33.evolution_options(g, mon)]
+story.current_area_key = "HAUOLI_CITY"
+check(_cord(_ag) == ("GOLEM_ALOLAN", 76), f"Alolan Graveler + Linking Cord in Alola: Alolan Golem ({_cord(_ag)})")
+story.current_area_key = "VIRIDIAN_CITY"
+check(_cord(_ag) is None, "not in Kanto before you're a Champion there or in Alola")
+story.story_flags[story.champion_flag("KANTO")] = True
+check(_cord(_ag) == ("GOLEM_ALOLAN", 76), "in Kanto once you're Kanto's Champion")
+story.story_flags.pop(story.champion_flag("KANTO"))
+story.story_flags[story.champion_flag("ALOLA")] = True
+story.current_area_key = "MOTOSTOKE"
+check(_cord(_ag) == ("GOLEM_ALOLAN", 76), "anywhere once you're Alola's Champion")
+_gv = _m33(75)
+for _area in ("HAUOLI_CITY", "VIRIDIAN_CITY", "MOTOSTOKE"):
+    story.current_area_key = _area
+    check(_cord(_gv) == ("GOLEM", 76), f"Graveler never becomes Alolan Golem ({_area}: {_cord(_gv)})")
+story.current_area_key = "VIRIDIAN_CITY"
+check(_opts(_m33(25)) == ["RAICHU"], f"Pikachu outside Alola: Raichu ({_opts(_m33(25))})")
+story.current_area_key = "HAUOLI_CITY"
+check(_opts(_m33(25)) == ["RAICHU_ALOLAN"], f"in Alola: Alolan Raichu ({_opts(_m33(25))})")
+story.story_flags.pop(story.champion_flag("ALOLA"))
+_gm = _m33(2019)  # Galarian Meowth
+story.current_area_key = "VIRIDIAN_CITY"
+check("PERRSERKER" not in _opts(_gm), f"Galarian Meowth: no Perrserker in Kanto yet ({_opts(_gm)})")
+story.current_area_key = "MOTOSTOKE"
+story.enter_region("GALAR")  # (Galar Pokemon need Galar visited)
+check("PERRSERKER" in _opts(_gm), f"but in Galar ({_opts(_gm)})")
+story.current_area_key = "OBSIDIAN_FIELDLANDS"
+check("TYPHLOSION_HISUIAN" in _opts(_m33(156)), f"Quilava in Hisui: Hisuian Typhlosion ({_opts(_m33(156))})")
+story.story_flags, story.current_area_key = _saved33
+
+print("34) Evolutions wait for a level-up; Bag items show ABLE / NO EFFECT (Jordan, 11-02)")
+from src.pokemon import evolution as _ev34
+from src.states.overworld import evolve_ready_party as _erp34
+from src.states.systems import BagState as _Bag34, EvolutionState as _ES34
+_saved34 = (list(story.player_team), story.current_area_key, dict(story.inventory))
+story.current_area_key = "VIRIDIAN_CITY"
+_lick = Pokemon(g.loader.fetch_specific(108), g.assets); _lick.level = 40
+_lick.moves = ["ROLLOUT", "LICK"]; _lick.move_pool = list(_lick.moves)
+_mach = Pokemon(g.loader.fetch_specific(67), g.assets); _mach.level = 30
+story.player_team = [_mach, _lick]
+check(not _ev34.ready_evolutions(g, _lick), "Lickitung knowing Rollout doesn't evolve without a level-up")
+check(not _erp34(g, g.current_state), "so evolving the Machoke doesn't take the Lickitung along")
+_lick.gain_xp(_lick.xp_to_next)
+_r34 = _ev34.ready_evolutions(g, _lick)
+check(_r34 == ["LICKILICKY"] or "LICKILICKY" in _r34 or not _ev34.evolution_allowed(g, 463),
+      f"at its next level-up it does ({_r34})")
+_lick.evo_due = False
+_bag = _Bag34(g, g.current_state)
+_hurt = Pokemon(g.loader.fetch_specific(25), g.assets); _hurt.current_hp = 3
+_full = Pokemon(g.loader.fetch_specific(25), g.assets)
+_out = Pokemon(g.loader.fetch_specific(25), g.assets); _out.current_hp = 0
+check(_bag.item_works("POTION", _hurt) and not _bag.item_works("POTION", _full) and not _bag.item_works("POTION", _out),
+      "Potion: ABLE when hurt, NO EFFECT at full HP or fainted")
+check(_bag.item_works("REVIVE", _out) and not _bag.item_works("REVIVE", _hurt), "Revive: only the fainted")
+check(_hurt.current_hp == 3, "(trying it doesn't use it)")
+check(_bag.item_works("LINKING_CORD", _mach) and not _bag.item_works("LINKING_CORD", _lick),
+      "Linking Cord: ABLE on Machoke, NO EFFECT on Lickitung")
+check(_bag.item_works("THUNDER_STONE", _full) and not _bag.item_works("FIRE_STONE", _full), "stones: the right one")
+story.player_team, story.current_area_key = _saved34[0], _saved34[1]
+story.inventory.clear(); story.inventory.update(_saved34[2])
+
+print("35) Pokedex: regional forms by species number; the region's own form in its dex; species pages without stats (Jordan, 11-02)")
+from src.states.systems import PokedexState as _PX35, PokemonDetailState as _PD35
+_saved35 = dict(g.data.data.get("pokedex", {}))
+g.data.data["pokedex"] = {"52-normal": {"id": 52, "form": "normal", "name": "MEOWTH"},
+                          "2010-alolan": {"id": 2010, "form": "alolan", "name": "MEOWTH"},
+                          "2019-galarian": {"id": 2019, "form": "galarian", "name": "MEOWTH"}}
+_px = _PX35(g, g.current_state)
+_px.dex_view = "ALOLA"; _px.refresh_dex()
+_al = next((e for e in _px.full_dex if e["id"] == 2010), None)
+check(_al and _al["name"] == "MEOWTH" and _al["status"] == 2 and _px._species(2010) == 52,
+      f"Alola's dex: Alolan Meowth, named Meowth, No.052 ({_al})")
+_px.dex_view = "NATIONAL"; _px.refresh_dex()
+_ids = [e["id"] for e in _px.full_dex]
+check(52 in _ids and 2010 not in _ids and 2019 not in _ids, "the National Dex: each species once, the base form")
+_px.selected_pkmn_id = 52; _px.show_selected_info()
+_pg = g.current_state
+check(isinstance(_pg, _PD35) and _pg.dex and "STATS" not in _pg.tab_buttons and _pg.pokemon.id == 52
+      and {m.form for m in _pg.forms} == {"normal", "alolan", "galarian"},
+      "its page: the base form first, its forms cycle, no STATS")
+_pg.draw()
+g.data.data["pokedex"] = _saved35
+
+print("36) The Seafoam Islands by floor: 1F-B4F, Articuno at the bottom, out from 1F (Jordan, 11-02)")
+from src.states.overworld import PlayState as _PS36
+_saved36 = (dict(story.story_flags), story.current_area_key)
+story.current_area_key = "SEAFOAM_ISLANDS"
+for _z in ("1f", "b4f"):
+    story.story_flags["zone_SEAFOAM_ISLANDS"] = _z
+    _sf = _PS36(g); g.change_state(_sf); _sf.show_progression_menu()
+    _t = [b.text.replace("> ", "") for b in _sf.route_buttons]
+    _pool = _sf._base_wild_pool(_sf.area_data)
+    if _z == "1f":
+        check("UP TO B1F" not in _t and "DOWN TO B1F" in _t and any("EXIT" in x or "ROUTE 20" in x.upper() for x in _t)
+              and not any("ARTICUNO" in x for x in _t) and "7" in _pool and "87" not in _pool,
+              f"1F: down to B1F, the way out, no Articuno; Squirtle, no Dewgong ({_t})")
+    else:
+        _art = next(m for m in _sf.area_data["route_menu"] if "ARTICUNO" in m["text"])  # (after its trainers)
+        check("UP TO B3F" in _t and _sf._in_zone(_art) and not any("ROUTE 20" in x.upper() for x in _t)
+              and "87" in _pool and "131" in _pool, f"B4F: Articuno, no way out; Dewgong and Lapras ({_t})")
+_pic = g.assets.get_journeys_background("routes", "SEAFOAM_ISLANDS_b3f")
+check(_pic is not None, "each floor has its picture")
+story.story_flags, story.current_area_key = _saved36
+
 print(f"\n{'ALL PASS' if not fails else str(fails) + ' FAIL(S)'}")

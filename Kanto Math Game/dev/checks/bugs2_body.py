@@ -122,6 +122,7 @@ check(g.loader.area_data["FORM_MAP"]["2019"]["id"] == 52, "Galarian Meowth's bas
 check("COTTONEE" in g.loader.evolution_map["EVOLUTION_ITEMS"]["SUN_STONE"], "Sun Stone lists Cottonee")
 story.current_area_key = "MOTOSTOKE"; story.enter_region("GALAR")
 dip = Pokemon(g.loader.fetch_specific(1011), g.assets, size_mult=2.5)
+dip.evo_due = True  # (it just levelled up)
 check("DRAGON-CHEER" in evolution.known_moves(g, dip), "Dipplin knows Dragon Cheer")
 check(any(e.startswith("HYDRAPPLE") for e in evolution.ready_evolutions(g, dip)), "Dipplin can become Hydrapple")
 gslow = Pokemon(g.loader.fetch_specific(2022), g.assets, size_mult=2.5)

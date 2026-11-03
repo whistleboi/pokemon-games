@@ -130,7 +130,7 @@ print("Caught past its evolution level: it evolves at its next level up (Jordan)
 from src.pokemon import evolution as _evo
 ch = mk(4); ch.level = 20; ch.caught_level = 20
 check(not _evo.ready_evolutions(g, ch, [ch]), "a Charmander caught at Lv 20 doesn't evolve on the catch")
-ch.level = 21
+ch.level_up(1)  # Lv 21: a level-up, so its evolution is checked
 check(any(e.startswith("CHARMELEON") for e in _evo.ready_evolutions(g, ch, [ch])), "after one level up it evolves")
-plain = mk(4); plain.level = 16
+plain = mk(4); plain.level = 15; plain.level_up(1)
 check(any(e.startswith("CHARMELEON") for e in _evo.ready_evolutions(g, plain, [plain])), "a raised one still evolves at Lv 16")
