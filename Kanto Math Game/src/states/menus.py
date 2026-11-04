@@ -4,14 +4,11 @@ import random
 import os
 import math
 import threading
-import json
 import sys
 from src.states.base import GameState
-from src.ui.widgets import Button
 from src.ui.dialogue import ClassicDialogueBox
 from src.utils import Utils
-from src.config import (WHITE, BLACK, GOLD, GB_PANEL_DARK, GRAY, LIGHT_GRAY,
-                        GREEN, RED, GB_PANEL, GB_BORDER, GB_TEXT)
+from src.config import WHITE, BLACK, GOLD, GRAY, RED
 from src.pokemon.data import Pokemon
 
 
@@ -236,6 +233,9 @@ def _pick_screen(game, accent, title, step, sprite, name_text, placeholder, arro
 class CharacterSelectionState(GameState):
     uses_keyboard = True  # its own arrow/Enter/typing handling
 
+    def text_input_rect(self):  # the name box (a phone's keyboard opens on a tap: src/core/android.py)
+        return getattr(self, "name_rect", None)
+
     def __init__(self, game):
         super().__init__(game)
         config = game.loader.area_data.get("GAME_CONFIG", {})
@@ -307,10 +307,11 @@ class CharacterSelectionState(GameState):
 
     def draw(self):
         from src.ui import theme
-        _pick_screen(self.game, theme.ACCENT["party"], "CHOOSE YOUR TRAINER", "Step 1 of 4",
-                     self.sprites[self.selected_idx], self.input_name, "TRAINER",
-                     (self.rect_left, self.rect_right), "NEXT",
-                     "Tap < > to pick how you look, then type your name. It's TRAINER if you don't.")
+        _, self.name_rect, _ = _pick_screen(
+            self.game, theme.ACCENT["party"], "CHOOSE YOUR TRAINER", "Step 1 of 4",
+            self.sprites[self.selected_idx], self.input_name, "TRAINER",
+            (self.rect_left, self.rect_right), "NEXT",
+            "Tap < > to pick how you look, then type your name. It's TRAINER if you don't.")
 
 
 class RegionSelectionState(GameState):
@@ -522,6 +523,9 @@ class RivalSelectionState(GameState):
     (Shauna, Gladion). A new game continues to the math level; a region you move to runs on_done."""
     uses_keyboard = True  # its own arrow/Enter/typing handling
 
+    def text_input_rect(self):  # the name box (a phone's keyboard opens on a tap: src/core/android.py)
+        return getattr(self, "name_rect", None)
+
     def __init__(self, game, region=None, on_done=None):
         super().__init__(game)
         story = game.story_manager
@@ -641,8 +645,9 @@ class RivalSelectionState(GameState):
         who = "your friend" if friend else "your rival"
         hint = (f"{self.region.title()}: " + ("Tap < > to pick " + who + ", then " if arrows else "")
                 + f"type a name for {who}, or keep the one shown.")
-        _pick_screen(self.game, theme.ACCENT["journal"], title, f"{self.region.title()}  -  Step 3 of 4",
-                     sprite, self.input_name, self.default_name(), arrows, label, hint)
+        _, self.name_rect, _ = _pick_screen(
+            self.game, theme.ACCENT["journal"], title, f"{self.region.title()}  -  Step 3 of 4",
+            sprite, self.input_name, self.default_name(), arrows, label, hint)
 
 
 def region_opening_state(game, region):
@@ -1211,14 +1216,6 @@ class LoadState(GameState):
         """Summaries of every slot (None = empty). Reads only the slots that have files."""
         return [self.slot_list.summary(i) for i in range(self.slot_list.count)]
 
-    def get_slot_text(self, i):
-        slot = self.slot_list.summary(i)
-        if not slot:
-            return "EMPTY"
-        if slot.get("damaged"):
-            return "DAMAGED FILE (can't be loaded)"
-        text = f"{slot['name']} - {slot['area']}"
-        return text + " (from backup)" if slot.get("restored") else text
 
     def go_back(self):
         self.game.change_state(self.previous_state)
@@ -1351,6 +1348,9 @@ class LoadState(GameState):
 class SaveState(GameState):
     uses_keyboard = True  # its own arrow/Enter/typing handling
 
+    def text_input_rect(self):  # the save-name box (a phone's keyboard opens on a tap: src/core/android.py)
+        return getattr(self, "name_rect", None)
+
     def __init__(self, game, previous_state):
         super().__init__(game)
         self.previous_state = previous_state
@@ -1363,8 +1363,7 @@ class SaveState(GameState):
         self.selected_slot = slot or 0
         self.slot_list = None  # the paged slot picker, while choosing a different file
 
-        self.input_text = self.game.data.data.get("save_name", f"File {
-            self.selected_slot + 1}")
+        self.input_text = self.game.data.data.get("save_name", f"File {self.selected_slot + 1}")
         self.input_active = True
 
         from src.ui.panels import CommandButton

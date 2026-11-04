@@ -9,7 +9,7 @@ t = travel("VERMILLION_CITY")
 check("Seagallop to One Island" in t and "Seagallop to Four Island" not in t, "Vermilion: Seagallop to One Island")
 t = travel("ONE_ISLAND")
 check({"Seagallop to Two Island", "Seagallop to Three Island"} <= set(t) and "Seagallop to Four Island" not in t, f"One Island: {t}")
-check(len(SEVII) == 35, f"{len(SEVII)} Sevii areas")  # 24 + 7 (areas_09_sevii.patch) + 4 (Three Isle Path/Port, Navel Rock, Birth Island)
+check(len(SEVII) == 34, f"{len(SEVII)} Sevii areas")  # 24 + 7 (areas_09_sevii.patch) + 3 (Three Isle Port, Navel Rock, Birth Island; the empty Three Isle Path went 11-04)
 bad = [(k, o.get("target_area")) for k in SEVII for o in prog[k].get("travel_options", []) + prog[k].get("route_menu", [])
        if o.get("target_area") and o["target_area"] not in prog]
 check(not bad, f"every link leads somewhere {bad}")
@@ -31,8 +31,8 @@ check(lineup(battle_of(g.current_state))[0] == (109, 42), "Team Rocket on Mt. Em
 st = state_for("MT_EMBER")
 mol = opt("MT_EMBER", "CHALLENGE MOLTRES")
 check(st._check_route_condition(mol["condition"], False), "Moltres at the summit")
-story.story_flags["CINNABAR_VOLCANO_boss_defeated"] = True
-check(not st._check_route_condition(mol["condition"], False), "not if you already beat it in the volcano")
+story.story_flags["MT_EMBER_boss_defeated"] = True  # (an old volcano win becomes this when the save loads)
+check(not st._check_route_condition(mol["condition"], False), "not once it's beaten")
 check(not prog["CINNABAR_VOLCANO"].get("area_boss") and not prog["MT_MOON"].get("area_boss"), "volcano and Mt. Moon bosses moved")
 
 print("4) Two and Three Island: Lostelle, bikers, the tutor")

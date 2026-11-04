@@ -77,7 +77,20 @@ def price(item):
 
 
 def describe(item):
-    from src.pokemon import catching
+    from src.pokemon import catching, tms
+    from src.ui import theme
+    if tms.is_tm(item) and theme.GAME is not None:  # what the TM teaches
+        from src.pokemon import moves as movelib
+        move = tms.move_of(theme.GAME, item) or ""
+        d = movelib.info(theme.GAME, move)
+        power = f", power {d['power']}" if d.get("power") else ""
+        return (f"Teaches {move.replace('-', ' ').title()} ({str(d.get('type', '')).title()}{power}). "
+                f"{d.get('effect') or ''} It can be used again and again.")
+    if str(item).startswith("HM_"):
+        return "A Hidden Machine: it opens the way wherever it's needed."
+    from src.pokemon import zpower
+    if item in zpower.ITEM_TEXT:
+        return zpower.ITEM_TEXT[item]
     return info(item).get("text") or catching.BALL_TEXT.get(item, "")
 
 

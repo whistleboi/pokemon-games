@@ -21,6 +21,10 @@ for r in johto hoenn sinnoh unova kalos alola galar paldea kanto orange orre; do
   cat $C/harness_head.py $C/reach_lib.py $C/walk_$r.py > $O/check_walk_$r.py
   echo "walk $r: $(timeout 600 python $O/check_walk_$r.py $O 2>&1 | grep -ciE 'FAIL|Traceback') problems"
 done
+# Android (Pydroid 3) runs Python 3.11: the game must compile there too (Jordan, 11-04)
+if py -3.11 -c "" 2>/dev/null; then
+  echo "python 3.11 compile: $(py -3.11 -c "import compileall, sys; print('OK' if compileall.compile_dir('src', quiet=1, force=True) and compileall.compile_file('main.py', quiet=1, force=True) else 'FAIL')" 2>&1 | tail -3)"
+fi
 python tests/test_kanto_fixes.py 2>&1 | grep -E "FAIL|passed"
 timeout 300 python tests/sim_battles.py 2>&1 | tail -1
 timeout 590 python $C/smoke_regions.py "$(pwd)" 2>&1 | grep -E "^#####|Traceback"

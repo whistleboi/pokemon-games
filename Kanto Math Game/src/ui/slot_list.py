@@ -7,7 +7,7 @@ Only the rows on screen are summarised (see src.core.save_slots), so 100 slots s
 import os
 import pygame
 from src.core import save_slots
-from src.config import WHITE, GOLD, BLACK, LIGHT_GRAY, RED
+from src.config import WHITE
 from src.ui import theme
 
 ROW_BG = (28, 36, 72)

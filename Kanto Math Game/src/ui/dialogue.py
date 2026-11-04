@@ -1,8 +1,6 @@
 # [REF-0001: System Imports]
 import pygame
 from src.ui.manager import UIElement
-from src.utils import Utils
-from src.config import WHITE, GOLD, BLACK
 
 
 def wrap_text(text, font, max_width):

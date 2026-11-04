@@ -21,7 +21,7 @@ PLAY_GAIN, PLAY_QUICK_GAIN = 8, 12
 
 PET_LINES = ("{n} closed its eyes happily.", "{n} nuzzled your hand!", "{n} wiggled with joy!",
              "{n} made a happy little sound.")
-from src.ui.hearts import HEART_RED, HEART_EMPTY, draw_heart, draw_hearts  # noqa: F401 (shared)
+from src.ui.hearts import draw_heart, draw_hearts  # noqa: F401 (shared)
 
 
 class AmieState(_MenuState):

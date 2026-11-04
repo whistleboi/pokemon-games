@@ -6,7 +6,7 @@ import sys
 
 # [FIX] Import config to trigger pygame.init()
 import src.config
-from src.config import FPS, VOLUME, MUSIC_ENDED_EVENT, LOGICAL_W, LOGICAL_H
+from src.config import FPS, MUSIC_ENDED_EVENT, LOGICAL_W, LOGICAL_H
 
 # [FIX] Import necessary modules
 from src.utils import Utils
@@ -14,6 +14,7 @@ from src.core.assets import AssetManager
 from src.core.data import DataManager
 from src.core.math_engine import MathEngine
 from src.core.music import MusicManager
+from src.core.android import AndroidInput, is_android as _is_android
 from src.ui.keyboard import KeyboardNav
 from src.world.story import StoryManager
 from src.pokemon.loader import PokemonLoader
@@ -32,8 +33,7 @@ class Game:
         self.width, self.height = LOGICAL_W, LOGICAL_H
 
         # Platform Detection
-        is_android = "ANDROID_ARGUMENT" in os.environ or "ANDROID_PRIVATE" in os.environ
-        self.is_pc = (sys.platform in ["win32", "linux", "darwin"]) and not is_android
+        self.is_pc = (sys.platform in ["win32", "linux", "darwin"]) and not _is_android()
         os.environ.setdefault("SDL_RENDER_SCALE_QUALITY", "1")  # smooth scaling, not blocky
         # Fullscreen everywhere (Jordan). On a PC, F11 switches between fullscreen and a window.
         mode = pygame.SCALED | pygame.FULLSCREEN
@@ -50,6 +50,7 @@ class Game:
             Utils.find_json_file(self.assets.assets_dir, "math_levels.json")
         )
         self.story_manager = StoryManager()
+        self.android = AndroidInput(self)  # phone typing, the Back button, leaving the app (src/core/android.py)
         from src.ui import theme as _theme
         _theme.GAME = self  # (the text box names the region's PC)
         self.story_manager.game = self
@@ -200,17 +201,7 @@ class Game:
         self.ui_manager.add_element(box)
         return box
 
-    def play_music(self):
-        try:
-            pygame.mixer.music.load(self.assets.music_playlist[self.current_song_index])
-            pygame.mixer.music.set_volume(VOLUME)
-            pygame.mixer.music.play()
-            pygame.mixer.music.set_endevent(MUSIC_ENDED_EVENT)
-        except Exception:
-            pass
 
-    def add_event_handler(self, handler):
-        self.event_handlers.append(handler)
 
     def start_new_game(self):
         self.data.wipe_data()
@@ -290,7 +281,7 @@ class Game:
             if not pygame.display.get_active():
                 # Minimized: keep answering the window's events (Windows marks a window that
                 # stops reading them as "Not Responding" and offers to close it), but skip drawing.
-                for event in pygame.event.get():
+                for event in self.android.filter(pygame.event.get()):  # (it notices coming back)
                     if event.type == pygame.QUIT:
                         pygame.quit()
                         sys.exit()
@@ -359,7 +350,7 @@ class Game:
 
     def _frame(self):
         """One frame: input, update, draw (run() wraps it in the safety net)."""
-        events = pygame.event.get()
+        events = self.android.filter(pygame.event.get())  # on a phone: typing, Back, leaving the app
         # Arrow keys / Enter / Esc drive the on-screen buttons (see src/ui/keyboard.py).
         events = [e for e in events if not self.keyboard.handle(e)]
         # Capture current state to detect changes mid-loop

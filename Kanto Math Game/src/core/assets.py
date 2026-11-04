@@ -4,7 +4,6 @@ import pygame
 import random
 import base64
 import io
-import sys
 import json
 from src.utils import Utils, MultiFont
 from src.config import POKEMON_GSC_BASE64, WHITE, VOLUME, RED
@@ -168,6 +167,18 @@ class AssetManager:
         self.movesets = {}
         self.pokemon_names = self._load_pokemon_data()
 
+    def _form_id(self, base, form):
+        """Our id for a species' form ((50, "alolan") -> 2008), from every region's FORM_MAP."""
+        cache = self.__dict__.get("_form_ids")
+        if cache is None:
+            from src.ui import theme
+            game = theme.GAME
+            fm = game.loader.area_data.get("FORM_MAP", {}) if game is not None and getattr(game, "loader", None) else {}
+            cache = {(int(m.get("id", 0)), str(m.get("form", "")).lower()): int(k) for k, m in fm.items()}
+            if fm:
+                self._form_ids = cache
+        return cache.get((int(base), str(form).lower()))
+
     def get_pokemon_image(self, p_id, form, is_shiny, placeholder=True):
         """Retreives the correct sprite surface from assets based on
         metadata."""
@@ -177,6 +188,15 @@ class AssetManager:
 
         if p_id >= 2000 and fname_lower in target_map:
             form = "normal"
+        elif p_id < 2000 and form not in ("normal", "gmax", "primal") and not str(form).startswith("mega"):
+            fid = self._form_id(p_id, form)  # a regional form's art is under its own id (Alolan Diglett: 2008)
+            if fid and f"{fid}.png" in target_map:
+                p_id, form, fname_lower = fid, "normal", f"{fid}.png"
+            elif fid:  # a form whose art is in altform/ under another name (the loader's FORM_ART)
+                from src.pokemon.loader import PokemonLoader
+                art = PokemonLoader.FORM_ART.get(fid)
+                if art and art in self.alt_sprite_map:
+                    return pygame.image.load(os.path.join(self.alt_sprites_dir, self.alt_sprite_map[art])).convert_alpha()
 
         if form == "normal" and fname_lower not in target_map:
             padded_name = f"{int(p_id):03d}.png"
@@ -228,11 +248,27 @@ class AssetManager:
             if os.path.exists(path) and not os.path.isdir(path):
                 return pygame.image.load(path).convert_alpha()
 
+        if form not in ("normal", None) and p_id < 2000:  # a form with no art of its own: the species' picture
+            base = self.get_pokemon_image(p_id, "normal", is_shiny, placeholder=False)
+            if base is not None:
+                return base
         if not placeholder:
             return None
         s = pygame.Surface((100, 100), pygame.SRCALPHA)
         pygame.draw.circle(s, (100, 100, 100), (50, 50), 40)
         return s
+
+    def get_badge_image(self, badge_index, region="kanto"):
+        """Loads [region]_X.png for badges 1-8."""
+        fname = f"{region.lower()}_{badge_index}.png"
+        path = Utils.get_actual_path(self.badges_dir, fname)
+        if os.path.exists(path):
+            return pygame.image.load(path).convert_alpha()
+
+        path = Utils.get_actual_path(self.items_sprites_dir, fname)
+        if os.path.exists(path):
+            return pygame.image.load(path).convert_alpha()
+        return None
 
     def get_item_image(self, item_name):
         """Smart look-up for item sprites using various naming conventions."""
@@ -240,6 +276,13 @@ class AssetManager:
             return None
 
         base = item_name.lower()
+        if base.startswith("hm_"):  # every HM: the HM disc (Jordan, 11-03)
+            base = "hm-disc"
+        elif len(base) == 4 and base.startswith("tm") and base[2:].isdigit():  # a TM: its move type's disc
+            from src.pokemon import tms
+            from src.ui import theme
+            info = tms.info(theme.GAME, item_name) if theme.GAME is not None else {}
+            base = f"tm-{str(info.get('type', 'normal')).lower()}"
         candidates = [
             f"{base}.png",
             f"{base.replace('_', '-')}.png",
@@ -717,37 +760,4 @@ class AssetManager:
 
         return names
 
-    def get_stab_move(self, pokemon):
-        """Gets a powerful STAB (Same Type Attack Bonus) move for a Pokemon."""
-        if not pokemon or not pokemon.types:
-            return "Struggle"
 
-        target_id = getattr(pokemon, "meta_id", pokemon.id)
-        moves_data = self.movesets.get(str(target_id), {})
-        all_moves = moves_data.get("moves", [])
-
-        stab_moves = []
-        for move in all_moves:
-            move_type = move.get("type")
-            power = move.get("power", 0) or 0
-            if move_type in pokemon.types and power > 0:
-                stab_moves.append((power, move.get("name", "")))
-
-        if not stab_moves:
-            return "Tackle"
-
-        stab_moves.sort(key=lambda x: x[0], reverse=True)
-        _, move_name = random.choice(stab_moves[:3])
-        return move_name.upper()
-
-    def get_badge_image(self, badge_index, region="kanto"):
-        """Loads [region]_X.png for badges 1-8."""
-        fname = f"{region.lower()}_{badge_index}.png"
-        path = Utils.get_actual_path(self.badges_dir, fname)
-        if os.path.exists(path):
-            return pygame.image.load(path).convert_alpha()
-
-        path = Utils.get_actual_path(self.items_sprites_dir, fname)
-        if os.path.exists(path):
-            return pygame.image.load(path).convert_alpha()
-        return None

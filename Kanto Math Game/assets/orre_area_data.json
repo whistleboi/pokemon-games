@@ -1201,6 +1201,7 @@
       "level": 19,
       "has_gym": false,
       "explore_options": [
+        { "text": "Pokémon Day Care", "action": "DAYCARE" },
         {
           "text": "Pokemon Center",
           "action": "HEAL"

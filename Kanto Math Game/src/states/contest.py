@@ -674,7 +674,8 @@ class RibbonCaseState(GameState):
                 n = i * len(RANKS) + j
                 icon = sheet.subsurface(((n % 8) * self.ICON, (n // 8) * self.ICON, self.ICON, self.ICON))
                 icon = pygame.transform.scale(icon, (size, size))
-                faint = pygame.transform.grayscale(icon)
+                faint = (pygame.transform.grayscale(icon) if hasattr(pygame.transform, "grayscale")
+                         else icon.copy())  # (older pygame, as on some phones: just faded)
                 faint.set_alpha(90)
                 out[(cat, rank)] = (icon, faint)
         return out

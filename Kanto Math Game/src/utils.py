@@ -3,7 +3,7 @@ import pygame
 import random
 import os
 import math
-from src.config import GB_PANEL, GB_PANEL_DARK, GB_BORDER, GB_HIGHLIGHT, GB_TEXT, WHITE, BLACK, GOLD
+from src.config import WHITE, BLACK
 
 
 # [REF-0003: Utilities]

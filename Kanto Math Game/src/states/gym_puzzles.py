@@ -16,7 +16,6 @@ Story events run a puzzle with GymPuzzleState ("puzzle": kind, see overworld._st
 """
 import random
 
-import pygame
 
 from src.states.base import GameState
 from src.utils import Utils

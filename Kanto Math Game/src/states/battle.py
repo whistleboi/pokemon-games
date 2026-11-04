@@ -6,23 +6,24 @@ from src.utils import Utils
 from src.vfx.renderer import BattleRenderer
 from src.ui.panels import BattleActionMenu, CommandButton
 from src.ui import theme
-from src.ui.widgets import MathBattleUI, Button, MoveButton, Backdrop
+from src.ui.widgets import MathBattleUI, MoveButton, Backdrop
 from src.ui.dialogue import ClassicDialogueBox
 from src.pokemon.mechanics import TypeAdvantage
 from src.pokemon import forms
 from src.pokemon import catching
 from src.states.battle_effects import MoveEffects, usable_status
+from src.states.battle_abilities import AbilityEffects
+from src.states.battle_gimmicks import GimmickEffects, end_battle as gimmick_end_battle
 from src.pokemon import balance
-from src.pokemon import evolution
 from src.pokemon import moves as movelib, affection
 from src.world import levels
 from src.vfx.animations import (AnimationController, FaintAnimation, PokemonSummonAnimation, battle_sprite,
                                 battle_spot, sprite_rect)
-from src.config import WHITE, BLACK, GREEN, RED, GOLD, FPS
+from src.config import WHITE, BLACK, GOLD, FPS
 
 
 # [REF-0024: Trainer Battle Core]
-class TrainerBattleState(MoveEffects, GameState):
+class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, GameState):
     def __init__(
         self,
         game,
@@ -276,11 +277,14 @@ class TrainerBattleState(MoveEffects, GameState):
             if mtype and (power or name in movelib.FIXED_DAMAGE):
                 eff = chart.get_multiplier(mtype, self.opponent_pokemon.types)
                 effect = "super" if eff > 1 else "weak" if 0 < eff < 1 else "none" if eff == 0 else None
-                detail = f"Power {power}" if power else "Fixed"
+                detail = f"Pow {power}" if power else "Fixed"
             elif name in movelib.WEATHER_MOVES:
                 detail = "Weather"
             else:
                 detail = movelib.STATUS_LABEL.get(d.get("ailment"), "STATUS").title()
+            if name not in movelib.WEATHER_MOVES and d.get("target") != "user":  # its accuracy (Jordan, 11-04)
+                acc = d.get("accuracy")
+                detail += f"  Acc {acc}%" if acc else "  Sure hit"
             x = box.x + pad + (i % 2) * (bw + gap)
             y = box.y + pad + (i // 2) * (bh + gap)
             btn = MoveButton((x, y, bw, bh), name.replace("-", " "), font, small,
@@ -393,6 +397,9 @@ class TrainerBattleState(MoveEffects, GameState):
             return True
         d = movelib.info(self.game, name)
         chart = TypeAdvantage(self.game.loader.area_data.get("TYPE_CHART", {}))
+        foe = self._foe_of(defender) if hasattr(self, "_foe_of") else None
+        if foe and self.ability_immunity(foe, defender, d):
+            return False  # its ability would take it (Volt Absorb, Levitate...)
         if (d.get("power") or 0) or name in movelib.FIXED_DAMAGE:
             return chart.get_multiplier(d["type"], defender.types) != 0
         return self._status_move_works(d, defender, ignore_current=True)
@@ -494,6 +501,7 @@ class TrainerBattleState(MoveEffects, GameState):
             if mon and id(mon) not in seen:
                 seen.add(id(mon))
                 self._form_msgs.extend(self.entry_hazards(mon))
+                self._form_msgs.extend(self.ability_on_entry(mon))  # Intimidate, Drizzle...
         seen.intersection_update({id(self.player_pokemon), id(self.opponent_pokemon)})
         if self.weather_primal and self.weather_primal not in (self.player_pokemon, self.opponent_pokemon):
             self._form_msgs.append(self.WEATHER_TEXT[self.weather][2])
@@ -507,6 +515,8 @@ class TrainerBattleState(MoveEffects, GameState):
             lines = forms.apply_form(self.game.assets, mon, form)
             self.mega_used["opponent"] = True
             self._form_msgs.extend(["Foe " + lines[0]] + lines[1:] + self._start_form_weather(mon))
+        if mon and not form:
+            self._form_msgs.extend(self.foe_tera_on_entry(mon))
 
     def _start_form_weather(self, mon):
         """Primal Groudon/Kyogre and Mega Rayquaza bring extreme weather. Returns its message."""
@@ -637,6 +647,9 @@ class TrainerBattleState(MoveEffects, GameState):
                 chip = min(max(1, max_hp * counts[id(mon)] // 16), hp)
             else:
                 chip = min(max(1, max_hp // (16 if st == "burn" else 8)), hp)
+            chip, healed = self.ability_status_chip(mon, st, chip)  # Poison Heal, Magic Guard
+            if healed:
+                out.append(healed)
             if chip <= 0:
                 continue
             label = mon.display_name.upper() if side == "player" else f"Foe {mon.display_name.upper()}"
@@ -659,18 +672,18 @@ class TrainerBattleState(MoveEffects, GameState):
 
     def _count_weather_on_faint(self):
         """A knockout still ends the turn: the weather counts down so it can't outlast its
-        turns across switch-ins. Returns the 'weather stopped' line if it ran out."""
+        turns across switch-ins, and the Pokemon still standing takes its burn or poison damage
+        (Jordan, 11-03; the fainted one has no HP left to lose). Returns the lines."""
         if self._turn_end_done:
             return []
         self._turn_end_done = True
-        if not self.weather or self.weather_primal:
-            return []
-        self.weather_turns -= 1
-        if self.weather_turns > 0:
-            return []
-        line = self.WEATHER_TEXT[self.weather][2]
-        self.weather = None
-        return [line]
+        lines = []
+        if self.weather and not self.weather_primal:
+            self.weather_turns -= 1
+            if self.weather_turns <= 0:
+                lines.append(self.WEATHER_TEXT[self.weather][2])
+                self.weather = None
+        return lines + self._status_chip()  # (a KO from it faints after this one: _start_pending_faint)
 
     def _weather_end_of_turn(self):
         """Sandstorm chip, then count the weather down, then status damage. Returns messages."""
@@ -689,7 +702,7 @@ class TrainerBattleState(MoveEffects, GameState):
             # Sand chip can knock a Pokemon out; _start_pending_faint handles it.
             for side in ("player", "opponent"):
                 mon = self.player_pokemon if side == "player" else self.opponent_pokemon
-                if self.SAND_IMMUNE & set(mon.types or []):
+                if self.SAND_IMMUNE & set(mon.types or []) or self.ability_sand_proof(mon):
                     continue
                 max_hp = self.player_max_hp if side == "player" else self.opp_max_hp
                 hp = self.player_hp if side == "player" else self.opponent_hp
@@ -752,8 +765,14 @@ class TrainerBattleState(MoveEffects, GameState):
         Attack/Defense (or Sp. Atk/Sp. Def) stats at those levels, move power, weather,
         crits, the 85-100% roll, STAB and type."""
         special = category == "SPECIAL"
-        attack = attacker.stat_value("SPATK" if special else "ATTACK")
-        defense = defender.stat_value("SPDEF" if special else "DEFENSE")
+        attack = attacker.stat_value("SPATK" if special else "ATTACK") * self.ability_attack_mult(attacker, special)
+        wonder = bool(self.field().get("wonder_room"))  # Wonder Room: Defense and Sp. Def swap
+        defense = defender.stat_value("SPDEF" if special != wonder else "DEFENSE") \
+            * self.ability_defense_mult(attacker, defender, special)
+        cur = getattr(self, "_cur_move", None)
+        if cur:  # the abilities that power up the move (Technician, Blaze, Iron Fist...)
+            power = max(1, int(power * self.ability_power_mult(attacker, defender, cur[0], cur[1])
+                               * self.terrain_power_mult(attacker, defender, cur[1])))
         types = defender.types or []
         if special and self.weather == "SAND" and "ROCK" in types:
             defense = defense * 3 // 2  # sandstorm: Rock types' Sp. Def x1.5
@@ -765,6 +784,7 @@ class TrainerBattleState(MoveEffects, GameState):
         if mode == "crit":
             crit_stage = (crit_stage or 0) + 1
         crit_stage = (crit_stage or 0) + self.vol(attacker).get("focus", 0)  # Focus Energy
+        crit_stage, no_crit = self.ability_crit(attacker, defender, crit_stage)  # Super Luck, Battle Armor
         base = balance.CRIT_STAGES[max(0, min(int(crit_stage or 0), 3))]
         if attacker is self.player_pokemon:  # 5 hearts of affection: crits twice as often
             crit = random.random() < min(1.0, affection.crit_chance(attacker, base))
@@ -772,17 +792,27 @@ class TrainerBattleState(MoveEffects, GameState):
             crit = random.random() < base
         if self.vol(attacker).get("laser_focus"):
             crit = True
+        if no_crit:
+            crit = False
         # Stat stages (a critical hit ignores the attacker's drops and the defender's boosts).
-        attack = attack * self.stat_mult(attacker, "SPATK" if special else "ATTACK", crit, True)
-        defense = defense * self.stat_mult(defender, "SPDEF" if special else "DEFENSE", crit, False)
+        if not self.ability_ignores_stages(defender, attacker):  # (Unaware ignores the other's stages)
+            attack = attack * self.stat_mult(attacker, "SPATK" if special else "ATTACK", crit, True)
+        if not self.ability_ignores_stages(attacker, defender):
+            defense = defense * self.stat_mult(defender, "SPDEF" if special else "DEFENSE", crit, False)
         if mode == "weak":
             roll = random.randint(*self.WEAK_ROLL)
         elif mode == "max_roll":
             roll = 100
+        stab = self.stab_mult(attacker, move_type)  # (Terastal: the old types too, 2x on a shared one)
         dmg, self._last_was_crit = balance.damage(
             self._level(attacker), power, attack, defense,
-            stab=move_type in (attacker.types or []), effectiveness=effectiveness, weather=weather,
+            stab=stab > 1, effectiveness=effectiveness, weather=weather,
             crit=crit, crit_stage=crit_stage, roll=roll)
+        if dmg and stab > 1.5:
+            dmg = max(1, int(dmg * stab / 1.5))
+        if dmg and cur:  # Thick Fat, Multiscale, Filter, Adaptability, Tinted Lens, Sniper...
+            dmg = max(1, int(dmg * self.ability_final_mult(attacker, defender, cur[0], cur[1], effectiveness,
+                                                           self._last_was_crit, self.stab_mult(attacker, move_type) > 1)))
         foe_side = self.side(defender)
         if dmg and not self._last_was_crit and (foe_side.get("aurora_veil") or foe_side.get(
                 "light_screen" if special else "reflect")):
@@ -855,6 +885,8 @@ class TrainerBattleState(MoveEffects, GameState):
             on_run=lambda: self.handle_run(),
             on_mega=self.activate_player_form if form else None,
             mega_label="PRIMAL" if form and form["form"] == "primal" else "MEGA",
+            extra=([("Z-MOVE", self.activate_z, (230, 170, 40))] if self.z_option() else [])
+            + ([("TERA", self.activate_tera, (90, 190, 220))] if self.tera_option() else []),
         )
         self.action_menu.set_visibility(True)
 
@@ -897,7 +929,12 @@ class TrainerBattleState(MoveEffects, GameState):
 
     def handle_run(self):
         v = self.vol(self.player_pokemon)
-        if self.trainer_class == "WILD" and (v.get("no_escape") or v.get("trapped")):
+        blocked = self.run_blocked() if self.trainer_class == "WILD" else None  # Shadow Tag, Arena Trap
+        if blocked:
+            self.show_message(blocked, callback=self.return_to_menu)
+            return
+        if self.trainer_class == "WILD" and (v.get("no_escape") or v.get("trapped")) \
+                and self.ab(self.player_pokemon) != "RUNAWAY":
             self.show_message("You can't escape!", callback=self.return_to_menu)
             return
         if self.trainer_class == "WILD":
@@ -942,6 +979,9 @@ class TrainerBattleState(MoveEffects, GameState):
     def perform_switch(self, slot_index, is_forced=False):
         team = self.game.story_manager.player_team
         self.old_pkmn = self.player_pokemon
+        if self.old_pkmn and self.player_hp > 0:  # Natural Cure, Regenerator
+            self.old_pkmn.current_hp = self.player_hp
+            self.ability_on_switch_out(self.old_pkmn)
         self.new_pkmn_switch = team[slot_index]
         self.is_forced_switch = is_forced
 
@@ -1075,7 +1115,8 @@ class TrainerBattleState(MoveEffects, GameState):
         white_out(self.game)
 
     def _speed(self, mon):
-        speed = mon.stat_value("SPEED") * (0.5 if getattr(mon, "status", None) == "paralysis" else 1)
+        speed = (self.vol(mon).get("speed_stat") or mon.stat_value("SPEED")) * (0.5 if getattr(mon, "status", None) == "paralysis"
+                                           and self.ab(mon) != "QUICKFEET" else 1)
         speed *= self.speed_mult(mon)  # Speed stages, Tailwind
         return -speed if self.field().get("trick_room") else speed  # Trick Room: slower first
 
@@ -1098,7 +1139,8 @@ class TrainerBattleState(MoveEffects, GameState):
         theirs = movelib.info(self.game, self._forced_move(self.opponent_pokemon)
                               or self._ai_choose(self.opponent_pokemon, self.player_pokemon))
         self._foe_next_move = theirs["name"]
-        p_pri, o_pri = mine.get("priority", 0), theirs.get("priority", 0)
+        p_pri = mine.get("priority", 0) + self.ability_priority(self.player_pokemon, mine)  # Prankster...
+        o_pri = theirs.get("priority", 0) + self.ability_priority(self.opponent_pokemon, theirs)
         p_spd, o_spd = self._speed(self.player_pokemon), self._speed(self.opponent_pokemon)
         player_first = (p_pri > o_pri) or (p_pri == o_pri and (p_spd > o_spd or (p_spd == o_spd and random.random() < 0.5)))
         self._acts_second = id(self.opponent_pokemon if player_first else self.player_pokemon)
@@ -1199,7 +1241,9 @@ class TrainerBattleState(MoveEffects, GameState):
 
     def _can_inflict(self, ailment, target):
         return (ailment in movelib.STATUSES and not getattr(target, "status", None)
-                and not (self.IMMUNE_TO.get(ailment, set()) & set(target.types or [])))
+                and not (self.IMMUNE_TO.get(ailment, set()) & set(target.types or []))
+                and not self.ability_status_immune(target, ailment)  # Limber, Insomnia...
+                and not self.terrain_blocks_status(target, ailment))  # Misty / Electric Terrain
 
     def _status_move_works(self, d, target, ignore_current=False):
         """Can this status move inflict its ailment on target? (type of the move matters too:
@@ -1216,7 +1260,7 @@ class TrainerBattleState(MoveEffects, GameState):
             return False
         if not ignore_current and getattr(target, "status", None):
             return False
-        return True
+        return not self.ability_status_immune(target, ailment) and not self.terrain_blocks_status(target, ailment)
 
     def _inflict(self, ailment, target, label):
         target.status = ailment
@@ -1232,7 +1276,8 @@ class TrainerBattleState(MoveEffects, GameState):
             return True, [f"{label} must recharge!"]
         if id(mon) in getattr(self, "_flinched", ()):
             self._flinched.discard(id(mon))
-            return True, [f"{label} flinched and couldn't move!"]
+            steady = self.change_stages(mon, [["SPEED", 1]]) if self.ab(mon) == "STEADFAST" else []
+            return True, [f"{label} flinched and couldn't move!"] + steady
         st = getattr(mon, "status", None)
         if st == "sleep":
             if getattr(mon, "sleep_turns", 0) > 0:  # 1-3 turns it can't move, then it wakes and acts
@@ -1251,12 +1296,14 @@ class TrainerBattleState(MoveEffects, GameState):
 
     def _use_move(self, attacker, defender, name, att_label, def_label, defender_max_hp, defender_hp):
         """Run one move. Returns (damage dealt, message lines, was_effective_hit)."""
-        d = movelib.info(self.game, name)
+        d = self.ability_move_type(attacker, movelib.info(self.game, name))  # (Pixilate, Normalize...)
         blocked = self.move_blocked(attacker, name, d)  # Taunt, Disable
         if blocked:
             return 0, [blocked], False
         self.vol(attacker)["last_move"] = name
-        lines = [self.game.assets.get_text("used_move", name=att_label, move=name.replace("-", " "))]
+        d, z_lines = self.z_convert(attacker, name, d)  # the Z-MOVE button: this move's Z-Move
+        shown = d.get("_z_name") or name.replace("-", " ")
+        lines = z_lines + [self.game.assets.get_text("used_move", name=att_label, move=shown)]
         self._last_was_crit = False  # fixed-damage/charge/status turns never crit
         charging = self.__dict__.setdefault("_charging", {})
         if name in movelib.TWO_TURN and charging.get(id(attacker)) != name \
@@ -1282,11 +1329,27 @@ class TrainerBattleState(MoveEffects, GameState):
             return 0, lines + [f"{def_label} protected itself!"], False
         acc = d.get("accuracy")
         if acc and d.get("target") != "user" and d.get("category_meta") != "ohko" \
-                and random.uniform(0, 100) >= acc * self.acc_mult(attacker, defender):
+                and not self.ability_hits_always(attacker, defender) \
+                and random.uniform(0, 100) >= acc * self.acc_mult(attacker, defender) \
+                * self.ability_acc_mult(attacker, defender, d):
             return 0, lines + [f"{att_label}'s attack missed!"], False
         if (defender is self.player_pokemon and attacker is not defender and name not in movelib.WEATHER_MOVES
                 and affection.evades(defender)):
             return 0, lines + [affection.EVADE_TEXT.format(n=def_label)], False
+        if self.terrain() == "psychic" and attacker is not defender and self.grounded(defender) \
+                and d.get("priority", 0) + self.ability_priority(attacker, d) > 0 \
+                and d.get("target") not in ("user", "users-field", "entire-field"):
+            return 0, lines + [f"{def_label} is protected by the Psychic Terrain!"], False
+        if name in movelib.SELF_KO and "DAMP" in (self.ab(attacker), self.ab(defender)):
+            return 0, lines + ["A Damp ability stops it exploding!"], False
+        if name == "BEAT-UP":  # one hit from each healthy Pokemon in the party
+            team = (self.game.story_manager.player_team if attacker is self.player_pokemon
+                    else self.opponent_team) or [attacker]
+            n = max(1, sum(1 for p in team if p and p.current_hp > 0 and not getattr(p, "status", None)))
+            d = dict(d, power=5 + attacker.base_stats.get("ATTACK", 50) // 10, min_hits=n, max_hits=n)
+        absorbed = self.ability_absorb(attacker, defender, d)  # Volt Absorb, Levitate, Soundproof, Sturdy...
+        if absorbed:
+            return 0, lines + absorbed, False
         if name in movelib.WEATHER_MOVES:
             if self.weather_primal:
                 return 0, lines + ["But it failed!"], False
@@ -1321,7 +1384,7 @@ class TrainerBattleState(MoveEffects, GameState):
                 dmg = min(dmg, max(1, defender_max_hp * self.WRONG_ANSWER_CAP // 100))
                 return dmg, lines + ["The answer was off, so it wasn't a one-hit KO."], False
             return dmg, lines + ["It's a one-hit KO!"], False
-        if not (d.get("power") or 0):
+        if not (d.get("power") or 0) or name == "FLING":
             if attacker is self.player_pokemon and getattr(self, "_answer_mode", None) == "weak" \
                     and random.random() < 0.5:
                 return 0, lines + ["The answer was off, so the move didn't work!"], False
@@ -1329,7 +1392,8 @@ class TrainerBattleState(MoveEffects, GameState):
                 if self._status_move_works(d, defender) and not self.vol(defender).get("substitute") \
                         and not self.side(defender).get("safeguard"):
                     ailment = "toxic" if name == "TOXIC" else d["ailment"]
-                    return 0, lines + [self._inflict(ailment, defender, def_label)], False
+                    return 0, lines + [self._inflict(ailment, defender, def_label)] \
+                        + self.ability_synchronize(defender, ailment, attacker), False
                 return 0, lines + ["But it failed!"], False
             extra = self.status_effect(name, d, attacker, defender, att_label, def_label)
             pick = getattr(self, "_metronome", None)
@@ -1343,16 +1407,21 @@ class TrainerBattleState(MoveEffects, GameState):
             return 0, lines + ["But it failed!"], False
         chart = TypeAdvantage(self.game.loader.area_data.get("TYPE_CHART", {}))
         eff = chart.get_multiplier(d["type"], defender.types) if d.get("type") else 1.0
+        eff = self.ability_effectiveness(attacker, defender, d, eff)  # Scrappy
         if eff == 0:
             return 0, lines + [f"It doesn't affect {def_label}..."], False
+        if self.ability_wonder_guard(attacker, defender, eff):
+            return 0, lines + [f"{def_label}'s Wonder Guard!", f"It doesn't affect {def_label}..."], False
         weather_mult = self._weather_mult(d["type"], defender)
-        hits = self._hit_count(d)
+        hits = d["max_hits"] if d.get("max_hits") and self.ab(attacker) == "SKILLLINK" else self._hit_count(d)
         damage, crit_any, landed = 0, False, 0
+        self._cur_move = (name, d)  # (for the abilities in the damage formula)
         for _ in range(hits):  # multi-hit moves (Double Kick, Fury Attack...) roll each hit
             dmg = self._calculate_damage(attacker, defender, d["power"], eff, weather_mult,
                                          category=d.get("category") or "PHYSICAL", move_type=d["type"],
                                          defender_max_hp=defender_max_hp, crit_stage=d.get("crit_rate") or 0)
-            if dmg and getattr(attacker, "status", None) == "burn" and d.get("category") == "PHYSICAL":
+            if dmg and getattr(attacker, "status", None) == "burn" and d.get("category") == "PHYSICAL" \
+                    and self.ab(attacker) != "GUTS":
                 dmg = max(1, dmg // 2)  # burns halve physical attacks
             damage += dmg
             crit_any = crit_any or self._last_was_crit
@@ -1360,6 +1429,7 @@ class TrainerBattleState(MoveEffects, GameState):
             if not dmg or damage >= defender_hp:
                 break
         self._last_was_crit = crit_any
+        self._cur_move = None
         if semi_mult != 1 and damage:
             damage *= semi_mult  # Gust vs Fly, Earthquake vs Dig, Surf vs Dive: double damage
         if damage and attacker is self.player_pokemon and getattr(self, "_answer_mode", None) == "weak":
@@ -1369,6 +1439,9 @@ class TrainerBattleState(MoveEffects, GameState):
         if damage and attacker is not defender:  # a Substitute takes the hit
             damage, sub_lines = self.absorb_with_substitute(defender, damage, def_label)
             lines += sub_lines
+        if damage and attacker is not defender:  # Sturdy, Disguise
+            damage, ab_lines = self.ability_survives(attacker, defender, damage, defender_hp)
+            lines += ab_lines
         if damage >= defender_hp > 1 and self.vol(defender).get("endure"):
             damage = defender_hp - 1
             lines.append(f"{def_label} endured the hit!")
@@ -1376,6 +1449,8 @@ class TrainerBattleState(MoveEffects, GameState):
             lines.append(f"Hit {landed} times!")
         # Drain (Giga Drain +50) heals the user; negative drain is recoil (Take Down -25).
         drain = d.get("drain") or 0
+        if drain < 0 and self.ability_recoil_blocked(attacker):
+            drain = 0  # Rock Head, Magic Guard: no recoil
         if drain and damage:
             amount = max(1, min(damage, defender_hp) * abs(drain) // 100)
             self._adjust_hp(attacker, amount if drain > 0 else -amount)
@@ -1392,18 +1467,23 @@ class TrainerBattleState(MoveEffects, GameState):
                 lines.append("It's not very effective...")
         if damage and name in movelib.RECHARGE:
             self.__dict__.setdefault("_recharging", set()).add(id(attacker))
-        if damage and damage < defender_hp and (d.get("flinch") or 0) \
-                and getattr(self, "_acts_second", None) == id(defender) and random.uniform(0, 100) < d["flinch"]:
+        flinch = self.ability_flinch(attacker, defender, d.get("flinch") or 0)  # Stench, Inner Focus...
+        if damage and damage < defender_hp and flinch \
+                and getattr(self, "_acts_second", None) == id(defender) and random.uniform(0, 100) < flinch:
             self.__dict__.setdefault("_flinched", set()).add(id(defender))  # only if it hasn't moved yet
         # Added effects (Ember's burn, Body Slam's paralysis...) on a target that survives.
-        chance = d.get("ailment_chance") or 0
+        chance = self.ability_effect_chance(attacker, defender, d.get("ailment_chance") or 0)  # Serene Grace...
         if damage and damage < defender_hp and chance and self._can_inflict(d.get("ailment"), defender) \
                 and random.uniform(0, 100) < chance:
             lines.append(self._inflict(d["ailment"], defender, def_label))
+            lines += self.ability_synchronize(defender, d["ailment"], attacker)
         if getattr(defender, "status", None) == "freeze" and d["type"] == "FIRE" and damage:
             defender.status = None
             lines.append(f"{def_label} thawed out!")
         lines += self.after_hit(name, d, attacker, defender, att_label, def_label, damage, damage < defender_hp)
+        lines += self.ability_after_hit(attacker, defender, name, d, damage, damage >= defender_hp)
+        if name in movelib.SELF_KO and self._hp(attacker) > 0:  # Self-Destruct, Explosion: the user faints
+            self._adjust_hp(attacker, -self._hp(attacker))
         return damage, lines, eff > 1.0
 
     def player_attack(self):
@@ -1514,6 +1594,7 @@ class TrainerBattleState(MoveEffects, GameState):
         name = (self._forced_move(foe) or self.forced_effect_move(foe) or getattr(self, "_foe_next_move", None)
                 or self._ai_choose(foe, mon))
         self._foe_next_move = None
+        self.foe_arms_z(foe)  # (Alola's Kahunas and Captains)
         self.opponent_move = name.replace("-", " ")
         damage, messages, _ = self._use_move(foe, mon, name, label, mon.display_name.upper(),
                                              self.player_max_hp, self.player_hp)
@@ -1629,6 +1710,10 @@ class TrainerBattleState(MoveEffects, GameState):
             balls = self.rewards.get("balls", 0)
             if balls > 0:
                 msgs.append(f"You got {balls} Poké Balls!")
+            tm = self._tm_reward()
+            if tm:
+                from src.pokemon import tms
+                msgs.append(f"You received {tms.label(self.game, tm)}!")
 
             key_items = self.game.loader.area_data.get("GAME_CONFIG", {}).get("KEY_ITEMS", [])
             for item, qty in self.rewards.items():
@@ -1649,8 +1734,26 @@ class TrainerBattleState(MoveEffects, GameState):
 
             self.dialogue_box.reset(msgs)
 
+    def _tm_reward(self):
+        """The TM this win gives (picked once): every Leader, Elite Four member and Champion, and
+        route trainers often (src/pokemon/tms.py)."""
+        if "_tm_won" not in self.__dict__:
+            from src.pokemon import tms
+            story = self.game.story_manager
+            region = story.get_current_region()
+            badges = 8 if story.is_region_champion(region) else len(story.badges.get(region, []))
+            types = [t for p in (self.opponent_team or []) if p for t in (p.types or [])]
+            cls = self.trainer_class
+            if cls == "RIVAL" or getattr(self, "is_boss_battle", False) and cls not in tms.LEADER_CLASSES:
+                cls = "TRAINER"
+            self._tm_won = tms.reward(self.game, badges, cls, types) if self.player_won else None
+        return self._tm_won
+
     def exit_battle(self, lost=False):
+        if not lost and self.player_won and self._tm_reward():
+            self.game.story_manager.add_item(self._tm_reward(), 1)
         for p in self.game.story_manager.player_team:
+            gimmick_end_battle(p)  # (a Terastallized Pokemon's own types)
             forms.revert_form(p)
             if not lost and p.current_hp > 0:
                 taken = getattr(self, "_battle_damage", {}).get(id(p), 0)
@@ -2080,43 +2183,6 @@ class TrainerBattleState(MoveEffects, GameState):
         self.trainer_slide_offset = 300
         self.show_trainer = True
 
-    def _draw_transform_animation(self, surface):
-        if not self.transforming_side:
-            return
-
-        progress = 1.0 - (self.transform_anim_timer / self.transform_anim_duration)
-
-        if self.transforming_side == 'player':
-            source_sprite = battle_sprite(self.player_pokemon, "player")
-            target_sprite = battle_sprite(self.opponent_pokemon, "opponent")
-            pos_rect = sprite_rect(self.game, source_sprite, "player")
-        else:
-            source_sprite = battle_sprite(self.opponent_pokemon, "opponent")
-            target_sprite = battle_sprite(self.player_pokemon, "player")
-            pos_rect = sprite_rect(self.game, source_sprite, "opponent")
-
-        if progress < 0.5:
-            sprite_to_pixelate = source_sprite
-            pixelation_level = 1 + int(31 * (progress * 2))
-
-        else:
-            sprite_to_pixelate = target_sprite
-            pixelation_level = 1 + int(31 * (1.0 - (progress - 0.5) * 2))
-
-        if not sprite_to_pixelate:
-            return
-
-        pixelation_level = max(1, pixelation_level)
-        w, h = sprite_to_pixelate.get_size()
-
-        if w // pixelation_level <= 0 or h // pixelation_level <= 0:
-            return
-
-        temp_surf = pygame.transform.scale(sprite_to_pixelate, (w // pixelation_level, h // pixelation_level))
-        final_surf = pygame.transform.scale(temp_surf, (w, h))
-
-        surface.blit(final_surf, pos_rect)
-
 
 # [REF-0025: Wild Battle Core]
 class WildBattleState(TrainerBattleState):
@@ -2264,12 +2330,6 @@ class WildBattleState(TrainerBattleState):
             return True
         return False
 
-    def attempt_run(self):
-        self.dialogue_box.reset("Got away safely!")
-        self.phase = "OUTRO"
-        self.dialogue_box.callback = (
-            lambda: self.game.story_manager.load_last_checkpoint(self.game)
-        )
 
     def trigger_outro(self, win):
         if not win:

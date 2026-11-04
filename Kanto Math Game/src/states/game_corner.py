@@ -583,6 +583,7 @@ class VoltorbFlipState(_Machine):
 # ("POKEMON", species id, coins) or ("ITEM", item key, coins).
 PRIZES = {
     "CELADON_CITY": [("POKEMON", 63, 180), ("POKEMON", 35, 500), ("POKEMON", 147, 2800), ("POKEMON", 123, 5500),
+                     ("POKEMON", 137, 6500),  # Porygon, as in FireRed / LeafGreen
                      ("ITEM", "RARE_CANDY", 500), ("ITEM", "NUGGET", 1000), ("ITEM", "EXP_SHARE", 2000)],
     "GOLDENROD_CITY": [("POKEMON", 63, 200), ("POKEMON", 23, 700), ("POKEMON", 147, 2100),
                        ("ITEM", "EVERSTONE", 300), ("ITEM", "RARE_CANDY", 500), ("ITEM", "AMULET_COIN", 2000)],

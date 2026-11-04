@@ -35,8 +35,14 @@ def hm_for_badge(region, badge):
 def item_name(key):
     """Display name: 'HM_ROCK_SMASH' -> 'HM Rock Smash', other items 'Town Map' style."""
     key = str(key)
+    from src.pokemon import tms
+    from src.ui import theme
+    if tms.is_tm(key) and theme.GAME is not None:  # 'TM24 Snore'
+        return tms.label(theme.GAME, key)
     if key.startswith("HM_"):
         return "HM " + key[3:].replace("_", " ").title()
+    if key == "Z_RING":
+        return "Z-Ring"
     return key.replace("_", " ").title()
 
 

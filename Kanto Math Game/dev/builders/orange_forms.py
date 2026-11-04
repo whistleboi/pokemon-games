@@ -130,7 +130,6 @@ fix = 100 - sum(pct.values())
 for k in sorted(pct, key=lambda k: -pct[k])[:abs(fix)]:
     pct[k] += 1 if fix > 0 else -1
 d["ORANGE_PINKAN_RESERVE_PERCENTAGES"] = pct
-d["ORANGE_PINKAN_RESERVE"] = [int(k) for k in pct]
 # Valencia Beach: Ivy's variants make up about a third of the beach's Pokemon.
 beach = {k: v for k, v in d["ORANGE_VALENCIA_BEACH_PERCENTAGES"].items() if int(k) < 9500}
 var = {str(sid): (4 if base in (29, 32, 46, 61) else 3 if base in (30, 70, 20) else 2) for sid, base, *_ in VALENCIA}
@@ -139,7 +138,6 @@ beach = {k: max(1, round(v * scale)) for k, v in beach.items()}
 beach.update(var)
 beach[max(beach, key=beach.get)] += 100 - sum(beach.values())
 d["ORANGE_VALENCIA_BEACH_PERCENTAGES"] = beach
-d["ORANGE_VALENCIA_BEACH"] = [int(k) for k in beach]
 sp = d["STORY_PROGRESSION"]
 # Mateo's gift: the Crystal Stone too.
 for o in sp["SUNBURST_ISLAND"]["explore_options"]:

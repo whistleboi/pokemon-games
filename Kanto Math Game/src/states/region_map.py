@@ -14,9 +14,7 @@ import os
 import pygame
 
 from src.states.base import GameState
-from src.ui.widgets import Button
-from src.utils import Utils
-from src.config import WHITE, BLACK, GOLD, RED, BLUE, GREEN
+from src.config import WHITE, GOLD, RED, GREEN
 
 _DATA = {}
 _IMAGES = {}  # the region maps, loaded once

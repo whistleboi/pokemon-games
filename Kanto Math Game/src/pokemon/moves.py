@@ -145,13 +145,24 @@ def preset_moves(game, poke, names):
 
 def move_pool(game, poke):
     """Every move this Pokemon can choose from: everything it has learned (kept through evolution)
-    plus its learnset up to its level, its current moves included."""
+    plus its learnset up to its level, its current moves included, and the moves of the TMs in your
+    Bag it can learn (a TM unlocks its move for every Pokemon that can learn it: Jordan, 11-04)."""
     pool = list(getattr(poke, "move_pool", None) or [])
-    for name in learnable(game, poke) + list(ensure_moves(game, poke)):
+    for name in learnable(game, poke) + list(ensure_moves(game, poke)) + tm_moves(game, poke):
         if name not in pool:
             pool.append(name)
     poke.move_pool = pool
     return pool
+
+
+def tm_moves(game, poke):
+    """The moves of the TMs you have that this Pokemon can learn."""
+    from src.pokemon import tms
+    story = getattr(game, "story_manager", None)
+    if story is None or getattr(poke, "is_egg", False):
+        return []
+    return [tms.move_of(game, k) for k in sorted(tms.owned(story))
+            if tms.can_learn(game, poke, k) and usable(info(game, tms.move_of(game, k)))]
 
 
 def set_move(poke, slot, name):
@@ -168,15 +179,6 @@ def set_move(poke, slot, name):
     return True
 
 
-def move_value(game, poke, name):
-    """How useful a move is to keep: STAB damage, then status, then weather."""
-    d = info(game, name)
-    power = d.get("power") or 0
-    if name in FIXED_DAMAGE:
-        return 60  # about a 60-power move at the levels it is learned
-    if power:
-        return power * (1.5 if d["type"] in (poke.types or []) else 1.0) * ((d.get("accuracy") or 100) / 100)
-    return 35 if name not in WEATHER_MOVES else 30
 
 
 def learn_new_moves(game, poke, old_level):

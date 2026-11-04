@@ -3,7 +3,6 @@ import pygame
 from src.ui.manager import UIElement
 from src.ui.widgets import Button
 from src.utils import Utils
-from src.config import WHITE, BLACK, BLUE, RED, GREEN, GOLD
 from src.ui import theme
 
 
@@ -78,26 +77,41 @@ class BattleActionMenu(CommandMenu):
     """FIGHT / BAG / POKeMON / RUN (the order the battle's tests and keyboard rely on), and a
     MEGA / PRIMAL button beside them while it's available."""
 
-    def __init__(self, game, pokemon_name, on_math, on_pkdex, on_pkmn, on_run, on_mega=None, mega_label="MEGA"):
+    def __init__(self, game, pokemon_name, on_math, on_pkdex, on_pkmn, on_run, on_mega=None, mega_label="MEGA",
+                 extra=None):
+        """extra: more one-a-battle buttons beside MEGA ([(label, callback, colour)]: Z-MOVE, TERA)."""
         super().__init__(game, [("FIGHT", on_math, theme.FIGHT), ("BAG", on_pkdex, theme.BAG),
                                 ("POKéMON", on_pkmn, theme.POKEMON), ("RUN", on_run, theme.RUN)])
         self.pokemon_name = pokemon_name.upper()
         self.on_math, self.on_pkdex, self.on_run = on_math, on_pkdex, on_run
         self.mega_button = None
+        specials = ([(mega_label, on_mega, (200, 60, 40) if mega_label == "PRIMAL" else theme.MEGA)] if on_mega else [])
+        specials += list(extra or [])
+        self.special_buttons = []
+        h = self.buttons[0].rect.h
+        if len(specials) <= 1:  # one: beside the prompt, as MEGA always was
+            for label, cb, color in specials:
+                btn = CommandButton(pygame.Rect(self.left_rect.right - 200, self.rect.centery - h // 2, 180, h), label,
+                                    game.assets.fonts["button"], cb, bg_color=color, autosize=False)
+                self.special_buttons.append(btn)
+                self.buttons.append(btn)
+        else:  # two or three (MEGA, Z-MOVE, TERA): a row just above the text box
+            w, x = 170, self.rect.x + 12
+            for label, cb, color in specials:
+                btn = CommandButton(pygame.Rect(x, self.rect.top - h - 10, w, h), label, game.assets.fonts["label"], cb,
+                                    bg_color=color, autosize=False)
+                self.special_buttons.append(btn)
+                self.buttons.append(btn)
+                x += w + 12
         if on_mega:
-            h = self.buttons[0].rect.h
-            r = pygame.Rect(self.left_rect.right - 200, self.rect.centery - h // 2, 180, h)
-            color = (200, 60, 40) if mega_label == "PRIMAL" else theme.MEGA
-            self.mega_button = CommandButton(r, mega_label, game.assets.fonts["button"], on_mega, bg_color=color,
-                                             autosize=False)
-            self.buttons.append(self.mega_button)
+            self.mega_button = self.special_buttons[0]
 
     def prompt_lines(self):
         return [f"What will {self.pokemon_name} do?"]
 
     def prompt_rect(self):
-        if self.mega_button:  # room for MEGA / PRIMAL
-            return pygame.Rect(self.left_rect.x, self.left_rect.y, self.mega_button.rect.left - self.left_rect.x,
+        if len(self.special_buttons) == 1:  # room for MEGA / PRIMAL beside the prompt
+            return pygame.Rect(self.left_rect.x, self.left_rect.y, self.special_buttons[0].rect.left - self.left_rect.x,
                                self.left_rect.h)
         return self.left_rect
 
@@ -143,6 +157,15 @@ class PartySlotUI(UIElement):
         if not self.visible or not self.pokemon:
             return
         p, r, f = self.pokemon, self.rect, self.game.assets.fonts
+        if getattr(p, "is_egg", False):  # an Egg: the egg and its name, nothing else
+            theme.card(surface, r, hover=self.hovered, selected=getattr(self, "selected", False),
+                       accent=theme.ACCENT["party"])
+            from src.states.systems import fit_sprite
+            if p.image:
+                spr = fit_sprite(p.image, r.h - 20, r.h - 20)
+                surface.blit(spr, spr.get_rect(center=(r.x + 12 + (r.h - 20) // 2, r.centery)))
+            theme.shadow_text(surface, "Egg", f["s_med"], r.x + r.h + 4, r.y + 12)
+            return
         fainted = p.current_hp <= 0
         selected = getattr(self, "selected", False)
         theme.card(surface, r, hover=self.hovered, selected=selected, accent=theme.ACCENT["party"],
@@ -155,7 +178,9 @@ class PartySlotUI(UIElement):
         x = r.x + r.h + 4
         name = p.display_name.title()
         nf = f["s_med"] if f["s_med"].size(name)[0] <= r.right - x - 110 else f["label"]
-        theme.shadow_text(surface, name, nf, x, r.y + 12)
+        nr = theme.shadow_text(surface, name, nf, x, r.y + 12)
+        from src.pokemon import breeding
+        theme.draw_gender(surface, breeding.gender_of(self.game, p), nr.right + 8, r.y + 16, 18)
         lv = f"Lv{p.level}" + (" MAX" if p.level >= p.MAX_LEVEL else "")
         theme.shadow_text(surface, lv, f["label"], r.right - 16, r.y + 16, align="right")
         tag_w = theme.status_tag(surface, "faint" if fainted else getattr(p, "status", None), f["caption"],

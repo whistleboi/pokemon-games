@@ -69,7 +69,6 @@ def koffing_weezing_wild():
     for k in ("POWER_PLANT", "KANTO_ROUTE_17"):
         pct = AREA[k + "_PERCENTAGES"]
         assert "109" in pct and "110" not in pct and sum(pct.values()) == 100, k
-        assert 109 in AREA[k] and 110 not in AREA[k]
     import json as _j
     raw = _j.load(open("assets/pokemon_area_data.json"))
     assert not [k for k, v in raw.items() if k.endswith("PERCENTAGES") and isinstance(v, dict) and "110" in v]
@@ -202,7 +201,8 @@ def league_flags_only_on_win():
     G.change_state(b); b.player_won = False
     b.exit_battle(lost=True)
     assert not G.story_manager.story_flags.get("beat_elite_four")
-    src = open("src/states/overworld.py").read()
+    import glob  # (the overworld is a package since 11-04)
+    src = "".join(open(f).read() for f in glob.glob("src/states/overworld/*.py"))
     assert 'victory_flag=None if self.area_key == "INDIGO_PLATEAU"' not in src
 
 @test

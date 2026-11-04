@@ -3,7 +3,6 @@ import pygame
 import math
 from src.config import WHITE, PURPLE, AMBER, NEON_BLUE
 from src.ui.widgets import HealthBarUI
-from src.pokemon.data import Pokemon
 
 
 # [REF-0014: Boss System]
@@ -33,24 +32,6 @@ class BossManager:
         )
         self.health_bar.set_font(game.assets.fonts["med"])
 
-    def start_boss_mode(self, raw_boss_data):
-        self.in_boss_mode = True
-        self.boss_intro_played = False
-        self.boss_hp = 3
-        self.health_bar.update_hp(3)
-        self.boss_hits = 0
-        self.boss_cry_triggered = False
-        self.current_boss_type = raw_boss_data.get("boss_type", "STANDARD")
-        self.boss_intro_timer = 50
-        boss_warnings = self.game.loader.area_data.get("BOSS_WARNINGS", {})
-        warning = boss_warnings.get(
-            self.current_boss_type, "A powerful Pokémon appeared!"
-        )
-        self.game.states["play"].show_dialogue([warning])
-
-        self.boss_pokemon_data = Pokemon(
-            raw_boss_data["boss"], self.game.assets, size_mult=1.2
-        )
 
     def _get_visual_config(self):
         """Returns visual configuration based on boss type."""

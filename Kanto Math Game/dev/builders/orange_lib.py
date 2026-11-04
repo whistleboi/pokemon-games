@@ -49,7 +49,6 @@ def wild_menu(exits, trainers=True, extra=None, catch_cond="has_balls"):
 
 def wild(key, name, level, battle_type, pool, exits, trainers=(), extra=None, catch_cond="has_balls", **more):
     pk = f"ORANGE_{key}_PERCENTAGES"
-    POOLS[f"ORANGE_{key}"] = [int(i) for i in pool]
     POOLS[pk] = {str(i): w for i, w in pool.items()}
     a = {"area_type": "wild_route" if battle_type != "cave" else "dungeon", "route_name": name,
          "region": "ORANGE", "level": level, "battle_type": battle_type, "wild_pool_percentages": pk,

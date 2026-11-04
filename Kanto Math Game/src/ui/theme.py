@@ -172,13 +172,6 @@ def card(surface, rect, hover=False, selected=False, accent=None, fill=TEXTBOX, 
     pygame.draw.rect(surface, frame, rect, 5 if selected else 3, border_radius=radius)
 
 
-def info_bar(surface, rect, lines, font, color=TEXT):
-    """The battle text box with up to a few lines of details (hovered entry, hints)."""
-    draw_textbox(surface, rect)
-    lh = int(font.get_linesize() * 1.2)
-    top = rect.centery - lh * len(lines) // 2
-    for k, line in enumerate(lines):
-        shadow_text(surface, line, font, rect.x + 32, top + k * lh, color=color)
 
 
 def status_tag(surface, status, font, x, y):
@@ -297,3 +290,26 @@ def text_on(color):
     (yellow, gold), white on the rest."""
     light = 0.299 * color[0] + 0.587 * color[1] + 0.114 * color[2] > 150
     return ((60, 40, 6), tuple(min(255, int(c * 1.15)) for c in color)) if light else ((255, 255, 255), shade(color, 0.5))
+
+
+def draw_gender(surface, gender, x, y, size=18):
+    """The male / female sign (drawn, so it shows in any font): blue circle and arrow, pink circle and
+    cross. x, y is the top-left of a size x size box. Nothing for a genderless Pokemon."""
+    if gender not in ("M", "F"):
+        return 0
+    color = (64, 132, 232) if gender == "M" else (232, 84, 120)
+    w = max(2, size // 7)
+    r = size * 3 // 10
+    if gender == "M":
+        cx, cy = x + r + w, y + size - r - w
+        pygame.draw.circle(surface, color, (cx, cy), r, w)
+        tip = (x + size - w, y + w)
+        pygame.draw.line(surface, color, (cx + r * 7 // 10, cy - r * 7 // 10), tip, w)
+        pygame.draw.line(surface, color, tip, (tip[0] - size // 3, tip[1]), w)
+        pygame.draw.line(surface, color, tip, (tip[0], tip[1] + size // 3), w)
+    else:
+        cx, cy = x + size // 2, y + r + w
+        pygame.draw.circle(surface, color, (cx, cy), r, w)
+        pygame.draw.line(surface, color, (cx, cy + r), (cx, y + size - w), w)
+        pygame.draw.line(surface, color, (cx - size // 4, y + size * 3 // 4), (cx + size // 4, y + size * 3 // 4), w)
+    return size

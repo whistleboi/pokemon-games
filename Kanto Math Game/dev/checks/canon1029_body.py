@@ -1245,4 +1245,394 @@ _pic = g.assets.get_journeys_background("routes", "SEAFOAM_ISLANDS_b3f")
 check(_pic is not None, "each floor has its picture")
 story.story_flags, story.current_area_key = _saved36
 
+print("37) Norman's ORAS team: Slaking 28, Vigoroth 28, Slaking 30, each with its own moves (Jordan, 11-03)")
+from src.pokemon import forms as _fm37, moves as _mv37
+_norm = g.loader.area_data["STORY_PROGRESSION"]["PETALBURG_CITY"]["gym"]["leader"]
+check(_norm["team"] == [289, 288, 289] and _norm["levels"] == [28, 28, 30], f"the team and levels ({_norm['team']}, {_norm['levels']})")
+_t37 = [Pokemon(g.loader.fetch_specific(i), g.assets) for i in _norm["team"]]
+_fm37.mark_trainer_team(_t37, _norm)
+_sets = [_mv37.ensure_moves(g, m) for m in _t37]
+check("YAWN" in _sets[0] and "FURY-SWIPES" in _sets[1] and "SWAGGER" in _sets[2] and "CHIP-AWAY" in _sets[2]
+      and _sets[0] != _sets[2], f"each Slaking has its own moves ({_sets})")
+
+print("38) TMs (100, reusable) in Marts by badges, from Leaders and trainers; Mart tabs; HM discs (Jordan, 11-03)")
+from src.pokemon import tms as _tm
+from src.states.systems import PokeMartState as _Mart38, BagState as _Bag38
+_saved38 = (dict(story.inventory), story.current_area_key, dict(story.badges), list(story.player_team), story.money)
+_t = _tm.table(g)
+check(len(_t) == 100 and _t["TM24"]["move"] == "SNORE" and all(0 <= d["tier"] <= 8 for d in _t.values()),
+      f"Sword/Shield's TM00-TM99 ({len(_t)})")
+check(_tm.label(g, "TM05") == "TM05 Thunder Punch", f"named by their move ({_tm.label(g, 'TM05')})")
+story.current_area_key = "VIRIDIAN_CITY"
+for _k in [k for k in story.inventory if _tm.is_tm(k)]:
+    story.inventory.pop(_k)
+story.badges["KANTO"] = []
+_low = _tm.mart_stock(g, 0)
+story.badges["KANTO"] = ["B"] * 8
+_all = _tm.mart_stock(g, 8)
+check(0 < len(_low) < 20 and len(_all) == 100, f"the Mart: {len(_low)} TMs at 0 badges, all 100 at 8")
+_mart = _Mart38(g, g.current_state); _mart.phase = "SHOP"; g.change_state(_mart)
+_cats = _mart._categories()
+check(_cats[:2] == ["BALLS", "MEDICINE"] and "TMs" in _cats, f"the Mart's tabs: {_cats}")
+_mart.set_category("TMs")
+check(all(_tm.is_tm(i) for i in _mart._list()) and _mart._price("TM24") <= 3000, "the TMs tab: TMs only, cheap")
+story.money = 50000
+_mart.init_purchase("TM05"); _mart.max_qty()
+check(_mart.qty == 1, "one of each TM")
+_mart.confirm_purchase()
+check(story.inventory.get("TM05") == 1 and "TM05" not in _mart._list(), "bought: off the shelf")
+_pk38 = Pokemon(g.loader.fetch_specific(25), g.assets); _pk38.level = 20
+_ch38 = Pokemon(g.loader.fetch_specific(129), g.assets)
+story.player_team = [_pk38, _ch38]
+_bag = _Bag38(g, g.current_state)
+check(_bag.item_works("TM05", _pk38) and not _bag.item_works("TM05", _ch38),
+      "ABLE on Pikachu, NO EFFECT on Magikarp")
+_bag.selected_item = "TM05"; _bag.on_pokemon_select_tm(0)
+check("THUNDER-PUNCH" in (_pk38.move_pool or []) and story.inventory.get("TM05") == 1, "taught; the TM stays")
+check(_bag.item_works("TM05", _pk38) == ("THUNDER-PUNCH" not in _pk38.moves),
+      "then ABLE only while it isn't one of its four (the TM unlocks it for the pool: Jordan, 11-04)")
+import random as _r38
+_rew = [_tm.reward(g, 3, "GYM_LEADER", ["ROCK"], rng=_r38.Random(i)) for i in range(5)]
+check(all(_rew) and len(set(_rew)) == 1 and _tm.info(g, _rew[0])["type"] == "ROCK",
+      f"a Rock Leader gives a Rock TM ({_rew[0]} {_tm.move_of(g, _rew[0])})")
+_tr = sum(1 for i in range(200) if _tm.reward(g, 3, "YOUNGSTER", rng=_r38.Random(i)))
+check(40 < _tr < 110, f"route trainers often give one ({_tr}/200)")
+check(_tm.reward(g, 3, "WILD") is None, "wild Pokemon don't")
+_img_hm = g.assets.get_item_image("HM_WATERFALL")
+_img_tm = g.assets.get_item_image("TM05")
+check(_img_hm is not None and _img_tm is not None, "every HM shows the HM disc; TMs their type's disc")
+story.inventory.clear(); story.inventory.update(_saved38[0])
+story.current_area_key, story.player_team, story.money = _saved38[1], _saved38[3], _saved38[4]
+story.badges.clear(); story.badges.update(_saved38[2])
+
+print("39) Genders, the Day Care and Eggs (Jordan, 11-03)")
+from src.pokemon import breeding as _br
+from src.states.daycare import DaycareState as _DC
+import random as _r39
+_saved39 = (list(story.player_team), story.current_area_key, dict(story._store().get("daycare") or {}))
+story.current_area_key = "JOHTO_ROUTE_34"
+_mk = lambda pid: Pokemon(g.loader.fetch_specific(pid), g.assets)
+_rng = _r39.Random(4)
+_g = [_br.roll_gender(g, 25, _rng) for _ in range(400)]
+check(150 < _g.count("F") < 250 and _br.roll_gender(g, 132) is None and _br.roll_gender(g, 29) == "F"
+      and _br.roll_gender(g, 32) == "M", f"genders by the species' ratio (Pikachu {_g.count('F')}/400 female; Ditto none)")
+_pm, _pf = _mk(25), _mk(25)
+_pm.gender, _pf.gender = "M", "F"
+check(_br.compatible(g, _pm, _pf)[0], "a male and a female Pikachu: compatible")
+_pf.gender = "M"
+check(not _br.compatible(g, _pm, _pf)[0], "two males: not")
+_pf.gender = "F"
+check(not _br.compatible(g, _pm, _mk(144))[0] and _br.compatible(g, _mk(132), _mk(81))[0]
+      and not _br.compatible(g, _mk(132), _mk(132))[0], "a legendary never; Ditto with Magnemite yes; two Ditto no")
+check(_br.egg_species(g, _mk(26)) == 172, "Raichu's Egg: Pichu")
+_am = _mk(2010); _am.gender = "F"
+check(int(_br.egg_species(g, _am)) == 2010, "Alolan Meowth's Egg: Alolan Meowth")
+_pf.ability_slot = 2
+_hid = sum(1 for i in range(100) if _br.make_egg(g, _pm, _pf, rng=_r39.Random(i)).ability_slot == 2)
+check(40 < _hid < 80, f"a mother's hidden ability passes on about 60% of the time ({_hid}/100)")
+_egg = _br.make_egg(g, _pm, _pf)
+check(_egg.is_egg and _egg.current_hp == 0 and _egg.display_name == "Egg", "an Egg: 0 HP, named Egg")
+_egg.heal_full() if hasattr(_egg, "heal_full") else None
+check(_egg.current_hp == 0, "healing doesn't wake it")
+# the Day Care counts trips; the Egg hatches after 30 in the party
+_lead = _mk(4); _lead.ability_slot = 0
+story.player_team = [_lead]
+_dc = _br.daycare(story); _dc.update({"mons": [_pm, _pf], "steps": 0, "egg": False})
+for _ in range(_br.EGG_TRAVELS):
+    _br.on_travel(g)
+check(_dc["egg"], f"after {_br.EGG_TRAVELS} trips the Day Care has an Egg")
+_scr = _DC(g, g.current_state); g.change_state(_scr)
+_scr.collect_egg()
+check(len(story.player_team) == 2 and story.player_team[1].is_egg and not _dc["egg"], "collected into the party")
+_ready = None
+for _n in range(1, _br.HATCH_TRAVELS + 1):
+    _ready, _ = _br.on_travel(g)
+    if _ready is not None:
+        break
+check(_ready == 1 and _n == _br.HATCH_TRAVELS, f"it hatches after {_n} trips")
+story.player_team[1].egg_steps = 0
+_lead.ability_slot = 0
+g._ability_data = None if False else g.__dict__.get("_ability_data")
+_fb = _mk(126); _fb.vol = None
+_mag = _mk(219); _mag.ability_slot = 0  # Magcargo: Flame Body / Magma Armor (not its hidden Weak Armor)
+story.player_team = [_mag, story.player_team[1]]
+for _n in range(1, 31):
+    if _br.on_travel(g)[0] is not None:
+        break
+check(_n == 15, f"Flame Body / Magma Armor in the party: twice as fast ({_n} trips)")
+check(_br.hatch_hint(type("E", (), {"egg_steps": 0})()).startswith("It looks like")
+      and "soon" in _br.hatch_hint(type("E", (), {"egg_steps": 28})()), "the Summary's hints, by how close it is")
+# the party menu's tags once one is left
+_dc.update({"mons": [_pm], "steps": 0, "egg": False})
+check(_scr.party_tag(_pf) == ("COMPATIBLE", True) and _scr.party_tag(_mk(144))[1] is False,
+      "COMPATIBLE / NOT COMPATIBLE on the party cards")
+# saved and loaded
+_dc.update({"mons": [_pm, _pf], "steps": 7, "egg": False})
+story.player_team = [_lead, _br.make_egg(g, _pm, _pf)]
+story.player_team[1].egg_steps = 12
+_data = story.serialize()
+_st2 = type(story)(); _st2.game = g
+_st2.deserialize(_data, g.loader)
+_team2 = _st2.player_team
+_dc2 = _br.daycare(_st2)
+check(_team2[1].is_egg and _team2[1].egg_steps == 12 and _team2[1].current_hp == 0
+      and len(_dc2["mons"]) == 2 and _dc2["steps"] == 7 and _team2[0].gender == _lead.gender,
+      "Eggs, genders and the Day Care are saved")
+_bt = TrainerBattleState(g, [_mk(19)], trainer_class="YOUNGSTER", trainer_name="Joey", area_name="JOHTO_ROUTE_34")
+_pm.gender, _x = "M", _mk(25)
+_x.gender = "M"
+check(_bt.ailment_effect("infatuation", "ATTRACT", _pm, _x, "A", "B") == ["But it failed!"], "Attract: not on the same gender")
+story.player_team, story.current_area_key = _saved39[0], _saved39[1]
+story._store()["daycare"] = _saved39[2] or {"mons": [], "steps": 0, "egg": False}
+
+print("40) Alolan Diglett's sprite; Z-Moves and Terastal (Jordan, 11-03)")
+from src.pokemon import zpower as _zp
+from src.states.battle_gimmicks import end_battle as _endb
+_saved40 = (dict(story.inventory), story.current_area_key, dict(story.badges), list(story.player_team))
+check(g.assets.get_pokemon_image(50, "alolan", False, placeholder=False) is not None,
+      "Alolan Diglett by species and form: its own sprite (not the grey ball)")
+check(_zp.z_power(40) == 100 and _zp.z_power(90) == 175 and _zp.z_power(120) == 190 and _zp.z_power(150) == 200,
+      "Z-Move power from the move's (the games' table)")
+story.current_area_key = "HAUOLI_CITY"
+story.inventory.pop("Z_RING", None); story.badges["ALOLA"] = []
+check(not _zp.give_key_items(story), "no Z-Ring before a trial")
+story.badges["ALOLA"] = ["NORMALIUM_Z"]
+_ln = _zp.give_key_items(story)
+check(story.inventory.get("Z_RING") == 1 and "Z-RING" in _ln[0] and "NORMALIUM_Z" in _zp.crystals(story),
+      "the first trial: the Z-Ring (its prize crystal counts)")
+check("WATERIUM_Z" in _zp.mart_stock(story) and "NORMALIUM_Z" not in _zp.mart_stock(story), "Alola's Marts sell more crystals")
+_pk40 = Pokemon(g.loader.fetch_specific(25), g.assets); _pk40.level = 30
+_pk40.moves = ["THUNDERBOLT", "QUICK-ATTACK"]
+story.player_team = [_pk40]
+story.inventory["ELECTRIUM_Z"] = 1
+_bag39 = __import__("src.states.systems", fromlist=["BagState"]).BagState(g, g.current_state)
+_bag39.selected_item = "ELECTRIUM_Z"
+_pk40.held_item = None
+_nb = TrainerBattleState(g, [Pokemon(g.loader.fetch_specific(19), g.assets)], trainer_class="YOUNGSTER",
+                         trainer_name="Joey", area_name="HAUOLI_CITY")
+_nb.player_pokemon = _pk40
+check(not _nb.z_option(), "no Z-MOVE unless the Pokemon holds a Z-Crystal")
+_bag39.on_pokemon_select_crystal(0)
+check(_pk40.held_item == "ELECTRIUM_Z" and story.inventory.get("ELECTRIUM_Z") == 1,
+      "given from the Bag: it holds the Electrium Z (the Bag keeps it, as in Sun / Moon)")
+_b40 = TrainerBattleState(g, [Pokemon(g.loader.fetch_specific(19), g.assets)], trainer_class="YOUNGSTER",
+                          trainer_name="Joey", area_name="HAUOLI_CITY")
+g.change_state(_b40); _b40.phase = "MENU"
+_b40.setup_action_menu()
+_labels = [b.text for b in _b40.action_menu.special_buttons]
+check(_b40.z_option() and "Z-MOVE" in _labels, f"the Z-MOVE button shows ({_labels})")
+_b40.activate_z(); _b40.phase = "MENU"
+_dmg, _lines, _ = _b40._use_move(_pk40, _b40.opponent_pokemon, "THUNDERBOLT", "PIKACHU", "FOE", 999, 999)
+check(any("GIGAVOLT HAVOC" in l.upper() for l in _lines) and _dmg > 0 and not _b40.z_option(),
+      f"Thunderbolt becomes Gigavolt Havoc, once a battle ({_lines[2] if len(_lines) > 2 else _lines})")
+story.current_area_key = "MESAGOZA"
+story.inventory.pop("TERA_ORB", None)
+_zp.give_key_items(story)
+check(story.inventory.get("TERA_ORB") == 1, "Paldea: the Tera Orb")
+_ch = Pokemon(g.loader.fetch_specific(6), g.assets); _ch.tera_type = "FIRE"
+_b41 = TrainerBattleState(g, [Pokemon(g.loader.fetch_specific(19), g.assets)], trainer_class="YOUNGSTER",
+                          trainer_name="Joey", area_name="MESAGOZA")
+story.player_team = [_ch]; _b41.player_pokemon = _ch
+check(_b41.tera_option(), "the TERA button (in Paldea)")
+story.current_area_key = "VIRIDIAN_CITY"
+check(not _b41.tera_option(), "no Terastal outside Paldea (for now)")
+story.current_area_key = "MESAGOZA"
+_b41.terastallize(_ch)
+check(_ch.types == ["FIRE"] and _b41.stab_mult(_ch, "FIRE") == 2.0 and _b41.stab_mult(_ch, "FLYING") == 1.5
+      and not _b41.tera_option(), "Terastallized Fire: Fire moves 2x, its old Flying moves still 1.5x, once a battle")
+_endb(_ch)
+check(_ch.types == ["FIRE", "FLYING"], "after the battle: its own types again")
+story.inventory["WATER_TERA_SHARD"] = 10
+_bag40 = __import__("src.states.systems", fromlist=["BagState"]).BagState(g, g.current_state)
+_bag40.selected_item = "WATER_TERA_SHARD"
+check(_bag40.item_works("WATER_TERA_SHARD", _ch), "10 Water Tera Shards: ABLE")
+_bag40.on_pokemon_select_shards(0)
+check(_ch.tera_type == "WATER" and not story.inventory.get("WATER_TERA_SHARD"), "they change its Tera Type")
+_ace = [Pokemon(g.loader.fetch_specific(i), g.assets) for i in (590, 591)]
+_b42 = TrainerBattleState(g, _ace, trainer_class="GYM_LEADER", trainer_name="Katy", area_name="MESAGOZA")
+check(_b42.foe_tera_on_entry(_ace[0]) == [] and _b42.foe_tera_on_entry(_ace[1]) and _ace[1].types == ["GRASS"],
+      f"a Paldea Leader's last Pokemon Terastallizes into the team's type ({_ace[1].types})")
+story.inventory.clear(); story.inventory.update(_saved40[0])
+story.current_area_key, story.player_team = _saved40[1], _saved40[3]
+story.badges.clear(); story.badges.update(_saved40[2])
+
+print("41) Nugget Bridge is a story step: no way off it until every trainer is beaten; Abra on Routes 24-25 (Jordan, 11-03)")
+from src.states.overworld import PlayState as _PS41
+_saved41 = (dict(story.story_flags), story.current_area_key, {k: set(v) for k, v in story.defeated_trainers.items()})
+story.current_area_key = "KANTO_ROUTE_24"
+story.story_flags.pop("nugget_bridge_cleared", None)
+story.story_flags["defeated_rival_nugget_bridge"] = True
+story.defeated_trainers.pop("KANTO_ROUTE_24", None)
+_ps41 = _PS41(g); g.change_state(_ps41); _ps41.rounds_completed = 9; _ps41.show_progression_menu()
+_exits = [m for m in _ps41.area_data["route_menu"] if m.get("action") == "EXIT"]
+_blocks = [_ps41._exit_block(m, True) for m in _exits]
+check(_blocks == ["story", "story"], f"fresh on the bridge: both ways off it are locked ({_blocks})")
+_ps41._exit_locked(_exits[0])
+check(any("no turning back" in l for l in _ps41.npc_dialogue.text_lines if isinstance(l, str))
+      if hasattr(_ps41, "npc_dialogue") else True, "it says why")
+for _i in range(6):
+    story.mark_trainer_defeated("KANTO_ROUTE_24", _i)
+_ps41.show_progression_menu()
+check(not story.story_flags.get("nugget_bridge_cleared"), "six of seven beaten: still on the bridge")
+story.mark_trainer_defeated("KANTO_ROUTE_24", 6)
+_ps41.show_progression_menu()
+_blocks = [_ps41._exit_block(m, False) for m in _exits]
+check(story.story_flags.get("nugget_bridge_cleared") and _blocks == [None, None],
+      f"all seven: the story flag, and both ways open ({_blocks})")
+_f = story.story_flags
+_f.pop("nugget_bridge_cleared"); _f["visited_BILLS_HOUSE"] = True
+story._migrate_flags() if hasattr(story, "_migrate_flags") else None
+_d41 = story.serialize(); _st41 = type(story)(); _st41.game = g; _st41.deserialize(_d41, g.loader)
+check(_st41.story_flags.get("nugget_bridge_cleared"), "an older save already past Bill's has it done")
+_p24 = g.loader.area_data["KANTO_ROUTE_24_PERCENTAGES"]; _p25 = g.loader.area_data["KANTO_ROUTE_25_PERCENTAGES"]
+check(_p24.get("63") == 15 and _p25.get("63") == 15 and sum(_p24.values()) == 100 and sum(_p25.values()) == 100,
+      "Abra on Routes 24 and 25 at 15%, as in FireRed / LeafGreen")
+story.story_flags.clear(); story.story_flags.update(_saved41[0])
+story.current_area_key = _saved41[1]
+story.defeated_trainers.clear(); story.defeated_trainers.update(_saved41[2])
+
+print("42) Porygon at the Celadon Prize Counter; no leftover pool lists (Jordan, 11-03)")
+from src.states import game_corner as _gc42
+check(("POKEMON", 137, 6500) in _gc42.PRIZES["CELADON_CITY"], "Porygon: a Celadon Game Corner prize, as in FireRed / LeafGreen")
+import glob as _glob42, json as _json42
+_left = []
+for _f42 in _glob42.glob("assets/*_area_data.json"):
+    _d42 = _json42.load(open(_f42, encoding="utf-8"))
+    _left += [k for k, v in _d42.items() if isinstance(v, list) and (k + "_PERCENTAGES") in _d42]
+check(not _left, f"no old pool lists beside the _PERCENTAGES pools ({_left[:3]})")
+
+print("43) Moltres on Mt. Ember (the Cinnabar volcano is a wild area); the Seagallop from Cinnabar (Jordan, 11-03)")
+_ms = next(m for m in g.loader.area_data["JOURNAL_MISSIONS"] if m.get("id") == "s_moltres")
+check("Mt. Ember" in _ms["desc"] and _ms["condition"].get("flag_not") == "MT_EMBER_boss_defeated", "the Journal points to Mt. Ember")
+_em = next(m for m in g.loader.area_data["STORY_PROGRESSION"]["MT_EMBER"]["route_menu"] if m.get("action") == "BOSS")
+check(_em["condition"] == "boss_not_defeated", "Mt. Ember's Moltres: no leftover volcano condition")
+_ci = g.loader.area_data["STORY_PROGRESSION"]["CINNABAR_ISLAND"]["travel_options"]
+check(any(o.get("target_area") == "ONE_ISLAND" and o.get("condition") == "has_item:TRI_PASS" for o in _ci),
+      "Cinnabar: the Seagallop to One Island, with the Tri-Pass")
+_f43 = dict(story.story_flags)
+story.story_flags["CINNABAR_VOLCANO_boss_defeated"] = True
+story.story_flags.pop("MT_EMBER_boss_defeated", None)
+_d43 = story.serialize(); _st43 = type(story)(); _st43.game = g; _st43.deserialize(_d43, g.loader)
+check(_st43.story_flags.get("MT_EMBER_boss_defeated"), "an old save's volcano Moltres counts for Mt. Ember")
+story.story_flags.clear(); story.story_flags.update(_f43)
+
+print("44) Move buttons show accuracy; a TM in the Bag unlocks its move for every Pokemon that can learn it (Jordan, 11-04)")
+from src.pokemon import tms as _tms44, moves as _mv44
+_c44 = Pokemon(g.loader.fetch_specific(6), g.assets); _c44.level = 50
+_c44.moves = ["FLAMETHROWER", "THUNDER-WAVE", "SWORDS-DANCE"]
+_t44 = list(story.player_team); story.player_team = [_c44]
+_b44 = TrainerBattleState(g, [Pokemon(g.loader.fetch_specific(130), g.assets)], trainer_class="YOUNGSTER",
+                          trainer_name="Joey", area_name="VIRIDIAN_CITY")
+g.change_state(_b44); _b44.phase = "MENU"; _b44.open_move_menu()
+_det44 = {b.text: b.detail for b in _b44.move_buttons if hasattr(b, "detail")}
+check(_det44.get("FLAMETHROWER") == "Pow 90  Acc 100%", "Flamethrower: power and accuracy")
+check(_det44.get("THUNDER WAVE", "").endswith("Acc 90%"), "Thunder Wave: its accuracy")
+check("Acc" not in _det44.get("SWORDS DANCE", "Acc"), "Swords Dance (on itself): no accuracy")
+_inv44 = dict(story.inventory)
+_tm44 = next(k for k, d in _tms44.table(g).items() if _tms44.can_learn(g, _c44, k)
+             and d.get("move") not in _mv44.move_pool(g, _c44))
+_mv = _tms44.move_of(g, _tm44)
+story.inventory[_tm44] = 1
+check(_mv in _mv44.move_pool(g, _c44), f"{_tm44} in the Bag: {_mv} is in Charizard's move pool")
+check(_tms44.works_on(g, _c44, _tm44), "the Bag still marks it ABLE (it isn't one of its four)")
+_tms44.teach(g, _c44, _tm44)
+check(_mv in _c44.moves, "using it fills a free slot")
+_mg44 = Pokemon(g.loader.fetch_specific(129), g.assets)
+_tmx = next((k for k in _tms44.table(g) if not _tms44.can_learn(g, _mg44, k)), None)
+story.inventory[_tmx] = 1
+check(_tms44.move_of(g, _tmx) not in _mv44.move_pool(g, _mg44), "a Pokemon that can't learn it doesn't get it")
+story.inventory.clear(); story.inventory.update(_inv44); story.player_team = _t44
+
+print("45) Celio's Rainbow Pass: two regional Pokedexes count as the National Dex (Jordan, 11-04)")
+from src.states.systems import has_national_dex as _hnd
+from src.states import overworld as _ow45
+_f45, _i45 = dict(story.story_flags), dict(story.inventory)
+story.story_flags.pop("unlocked_national_dex", None); story.story_flags.pop("got_rainbow_pass", None)
+story.inventory.pop("RAINBOW_PASS", None)
+story.story_flags.update({"beat_champion": True, "received_starter_kanto": True, "received_starter_johto": True})
+story.current_area_key = "ONE_ISLAND"
+_a45 = g.loader.area_data["STORY_PROGRESSION"]["ONE_ISLAND"]
+_o45 = next(o for o in (_a45.get("route_menu") or []) + (_a45.get("explore_options") or [])
+            if o.get("text") == "Celio's Rainbow Pass")
+_cs45 = _ow45.CityState(g)
+_ow45._run_story_event(_cs45, _o45["event"], _cs45._check_menu_condition, lambda l: None)
+check(story.inventory.get("RAINBOW_PASS") == 1, "a Champion with two regional dexes gets the Rainbow Pass")
+check(_hnd(story), "and the National Dex flag is set")
+story.story_flags.clear(); story.story_flags.update(_f45); story.inventory.clear(); story.inventory.update(_i45)
+
+print("46) Sevii's buttons as in Kanto; Four Island's Contest Hall; no Three Isle Path (Jordan, 11-04)")
+_sp46 = g.loader.area_data["STORY_PROGRESSION"]
+_sev46 = [k for k, a in _sp46.items() if isinstance(a, dict) and a.get("subregion") == "SEVII"]
+_ex46 = [o for k in _sev46 for o in _sp46[k].get("explore_options") or []]
+check(not any(o.get("text") in ("Pokemon Center", "Poke Mart") for o in _ex46)
+      and sum(o.get("action") == "HEAL" and o.get("text") == "Heal" for o in _ex46) == 7, "Sevii towns: Heal and Shop")
+check(not any(o.get("condition") == "can_battle" for k in _sev46 for o in _sp46[k].get("route_menu") or []),
+      "Sevii wild battles need Poke Balls, as on Kanto's routes")
+_four = [o.get("action") for o in _sp46["FOUR_ISLAND"]["explore_options"]]
+check(_four.count("DAYCARE") == 1 and not any(o.get("target") == "day_care" for o in _sp46["FOUR_ISLAND"]["explore_options"]),
+      "Four Island: one Day Care")
+_ch46 = next(o for o in _sp46["FOUR_ISLAND"]["explore_options"] if o.get("text") == "Contest Hall")
+from src.states import overworld as _ow46
+story.current_area_key = "FOUR_ISLAND"
+_cs46 = _ow46.CityState(g); g.change_state(_cs46)
+_cs46._get_callback_for_option(_ch46)()
+check(type(g.current_state).__name__ == "ContestHallState", f"its Contest Hall opens ({type(g.current_state).__name__})")
+for _a46, _t46, _f46 in (("THREE_ISLAND", "Stop the Biker Gang", "beat_three_island_bikers"),
+                         ("FOUR_ISLAND", "Battle Lorelei", "defeated_lorelei_sevii"),
+                         ("FIVE_ISLAND", "Resort Gorgeous", "visited_resort_gorgeous")):
+    _o46 = next(o for o in _sp46[_a46]["explore_options"] if o.get("text") == _t46)
+    check(_o46.get("flag_condition") == f"not {_f46}", f"{_t46}: gone once done")
+check("THREE_ISLE_PATH" not in _sp46 and any(o.get("target_area") == "THREE_ISLE_PORT"
+                                             for o in _sp46["THREE_ISLAND"]["travel_options"])
+      and any(o.get("target_area") == "THREE_ISLAND" for o in _sp46["THREE_ISLE_PORT"]["route_menu"]),
+      "Three Island <-> Three Isle Port (the empty path is gone)")
+_d46 = story.serialize(); _d46["current_area_key"] = "THREE_ISLE_PATH"
+_st46 = type(story)(); _st46.game = g; _st46.deserialize(_d46, g.loader)
+check(_st46.current_area_key == "THREE_ISLE_PORT", "a save on the old path loads at the port")
+
+print("47) Android (Pydroid 3): the phone keyboard, the Back button, leaving the app (Jordan, 11-04)")
+import os as _os47
+import pygame as _pg47
+from src.core import android as _and47
+from src.states.menus import CharacterSelectionState as _CS47
+_os47.environ["POKEMATH_ANDROID"] = "1"
+check(_and47.is_android(), "Android mode (POKEMATH_ANDROID=1 for tests)")
+_c47 = _CS47(g); g.change_state(_c47); _c47.draw()
+_a47 = g.android
+_a47.filter([])  # (a new screen)
+_box = _c47.text_input_rect()
+check(_box is not None and not _a47.typing, "the name screen has a name box; no keyboard yet")
+_tap = _pg47.event.Event(_pg47.MOUSEBUTTONDOWN, button=1, pos=_box.center)
+_a47.filter([_tap])
+check(_a47.typing, "tapping the name box opens the keyboard")
+_ev = _a47.filter([_pg47.event.Event(_pg47.TEXTINPUT, text="ash"),
+                   _pg47.event.Event(_pg47.KEYDOWN, key=_pg47.K_k, unicode="k", mod=0, scancode=0)])
+_c47.handle_events(_ev)
+check(_c47.input_name == "ASH", f"the keyboard's letters are typed once each ({_c47.input_name!r})")
+_c47.handle_events(_a47.filter([_pg47.event.Event(_pg47.KEYDOWN, key=_pg47.K_BACKSPACE, unicode="\b", mod=0, scancode=0)]))
+check(_c47.input_name == "AS", "backspace still deletes")
+_a47.filter([_pg47.event.Event(_pg47.MOUSEBUTTONDOWN, button=1, pos=(5, 5))])
+check(not _a47.typing, "tapping elsewhere closes the keyboard")
+if _and47.BACK_KEYS:
+    _b47 = _a47.filter([_pg47.event.Event(_pg47.KEYDOWN, key=_and47.BACK_KEYS[0], unicode="", mod=0, scancode=0)])
+    check(_b47 and _b47[0].key == _pg47.K_ESCAPE, "the Back button works as Esc")
+from src.states import overworld as _ow47
+story.current_area_key = "PALLET_TOWN"
+_t47 = _ow47.CityState(g); g.change_state(_t47)
+_saved = []
+_orig = g.data.save
+g.data.save = lambda *a, **k: _saved.append(1)
+story.autosave = True
+if _and47.BACKGROUND:
+    _a47.filter([_pg47.event.Event(_and47.BACKGROUND[0])])
+    check(_a47.away and _saved, "leaving the app pauses the sound and saves (in a town, with AUTOSAVE on)")
+    _a47.filter([_pg47.event.Event(_and47.FOREGROUND[0])])
+    check(not _a47.away, "coming back plays it again")
+g.data.save = _orig
+from src.states.systems import PCState as _PC47
+check(_PC47.text_input_rect is not None, "the PC's search box takes typing too")
+del _os47.environ["POKEMATH_ANDROID"]
+check(_a47.filter([_pg47.event.Event(_pg47.TEXTINPUT, text="z")])[0].type == _pg47.TEXTINPUT,
+      "on a PC nothing changes")
+
 print(f"\n{'ALL PASS' if not fails else str(fails) + ' FAIL(S)'}")

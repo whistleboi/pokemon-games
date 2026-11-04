@@ -2,9 +2,10 @@
 from sevii_a import S, HOME
 from sublib import event, trainer, battle
 
-# ---- Four Island: Lorelei's home, the Day Care, Icefall Cave.
+# ---- Four Island: Lorelei's home, the Day Care, the Contest Hall, Icefall Cave.
 S.town("FOUR_ISLAND", "Four Island", 52, [
-    {"text": "Pokemon Day Care", "action": "NPC", "target": "day_care"},
+    {"text": "Pokémon Day Care", "action": "DAYCARE"},
+    {"text": "Contest Hall", "action": "NPC", "target": "contest_hall"},
     event("Lorelei's House", {
         "lines": ["Lorelei: This is my home island. I came back to rest after the League...",
                   "But Team Rocket is in Icefall Cave, catching Lapras to sell! Please stop them."],
@@ -17,7 +18,7 @@ S.town("FOUR_ISLAND", "Four Island", 52, [
         "battle": battle("Lorelei", "ELITE_FOUR", "loreli.png", [87, 91, 80, 124, 131], [56, 57, 56, 58, 60],
                          ["Lorelei: Still as strong as ever. Come back any time."], balls=15),
         "flag": "defeated_lorelei_sevii", "done": ["Lorelei: That was a wonderful battle."]},
-        condition="sevii_icefall_cleared"),
+        condition="sevii_icefall_cleared", flag_condition="not defeated_lorelei_sevii"),
 ], local=[("Icefall Cave", "ICEFALL_CAVE", None)], extra_travel=HOME)
 
 S.wild("ICEFALL_CAVE", "Icefall Cave", 52, "cave",

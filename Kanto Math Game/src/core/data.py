@@ -78,8 +78,6 @@ class DataManager:
     def add_shiny(self):
         self.data["total_shinies"] = self.get_total_shinies() + 1
 
-    def reset_shinies(self):
-        self.data["total_shinies"] = 0
 
     # Forms that also count as their base species in the Pokedex: Urshifu's styles are both #892
     # (kept as styles too). Shadow Pokemon are a variant with an entry of their own, like regional forms.

@@ -4,7 +4,7 @@ import random
 import io
 import math
 from dataclasses import dataclass
-from src.config import DEFAULT_BASE_STATS, VOLUME
+from src.config import VOLUME
 from src.utils import DummySound
 from src.pokemon.contest import new_condition
 
@@ -67,6 +67,18 @@ class Pokemon:
         # Levelled up since its evolution was last checked: evolutions happen at a level-up, as in
         # the games (Jordan, 11-02: a Lickitung that knew Rollout evolved when a Machoke did).
         self.evo_due = False
+        # Its ability slot: 0 / 1 its species' abilities, 2 the hidden one (src/pokemon/abilities.py).
+        from src.pokemon.abilities import roll_slot
+        self.ability_slot = roll_slot()
+        # Its gender (src/pokemon/breeding.py): "M", "F" or None; "?" until the game data is there.
+        from src.ui import theme as _theme
+        self.gender = "?"
+        own = [t for t in (self.types or [])]
+        self.tera_type = random.choice(own) if own else "NORMAL"  # (Terastal: src/pokemon/zpower.py)
+        self.held_item = None  # a Z-Crystal it holds (src/pokemon/zpower.py)
+        if _theme.GAME is not None:
+            from src.pokemon.breeding import roll_gender
+            self.gender = roll_gender(_theme.GAME, self.id)
         # Caught as a Gigantamax raid boss: shown normally, but keeps the G-Max Factor.
         self.gmax_factor = False
         # Contest condition (raised by Pokéblocks), Sheen and ribbons won.
@@ -219,6 +231,15 @@ class Pokemon:
     @staticmethod
     def legacy_hp_scale(stage):
         return (20, 20, 60, 90)[max(0, min(3, stage))]
+
+    # An Egg (the Day Care) always has 0 HP: it can't be sent into battle and healing doesn't wake it.
+    @property
+    def current_hp(self):
+        return 0 if self.__dict__.get("is_egg") else self.__dict__.get("_current_hp", 0)
+
+    @current_hp.setter
+    def current_hp(self, value):
+        self.__dict__["_current_hp"] = value
 
     IV_KEYS = ("HP", "ATTACK", "DEFENSE", "SPATK", "SPDEF", "SPEED")
     IV_ALIASES = {"SPECIAL-ATTACK": "SPATK", "SPECIAL-DEFENSE": "SPDEF"}

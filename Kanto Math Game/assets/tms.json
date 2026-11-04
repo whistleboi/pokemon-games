@@ -1,0 +1,602 @@
+{
+ "TM00": {
+  "move": "MEGA-PUNCH",
+  "type": "NORMAL",
+  "tier": 7,
+  "price": 2500
+ },
+ "TM01": {
+  "move": "MEGA-KICK",
+  "type": "NORMAL",
+  "tier": 8,
+  "price": 3000
+ },
+ "TM02": {
+  "move": "PAY-DAY",
+  "type": "NORMAL",
+  "tier": 0,
+  "price": 1000
+ },
+ "TM03": {
+  "move": "FIRE-PUNCH",
+  "type": "FIRE",
+  "tier": 6,
+  "price": 2500
+ },
+ "TM04": {
+  "move": "ICE-PUNCH",
+  "type": "ICE",
+  "tier": 7,
+  "price": 2500
+ },
+ "TM05": {
+  "move": "THUNDER-PUNCH",
+  "type": "ELECTRIC",
+  "tier": 7,
+  "price": 2500
+ },
+ "TM06": {
+  "move": "FLY",
+  "type": "FLYING",
+  "tier": 8,
+  "price": 3000
+ },
+ "TM07": {
+  "move": "PIN-MISSILE",
+  "type": "BUG",
+  "tier": 0,
+  "price": 1000
+ },
+ "TM08": {
+  "move": "HYPER-BEAM",
+  "type": "NORMAL",
+  "tier": 8,
+  "price": 3000
+ },
+ "TM09": {
+  "move": "GIGA-IMPACT",
+  "type": "NORMAL",
+  "tier": 8,
+  "price": 3000
+ },
+ "TM10": {
+  "move": "MAGICAL-LEAF",
+  "type": "GRASS",
+  "tier": 4,
+  "price": 2000
+ },
+ "TM11": {
+  "move": "SOLAR-BEAM",
+  "type": "GRASS",
+  "tier": 8,
+  "price": 3000
+ },
+ "TM12": {
+  "move": "SOLAR-BLADE",
+  "type": "GRASS",
+  "tier": 8,
+  "price": 3000
+ },
+ "TM13": {
+  "move": "FIRE-SPIN",
+  "type": "FIRE",
+  "tier": 0,
+  "price": 1000
+ },
+ "TM14": {
+  "move": "THUNDER-WAVE",
+  "type": "ELECTRIC",
+  "tier": 1,
+  "price": 1000
+ },
+ "TM15": {
+  "move": "DIG",
+  "type": "GROUND",
+  "tier": 8,
+  "price": 3000
+ },
+ "TM16": {
+  "move": "SCREECH",
+  "type": "NORMAL",
+  "tier": 1,
+  "price": 1000
+ },
+ "TM17": {
+  "move": "LIGHT-SCREEN",
+  "type": "PSYCHIC",
+  "tier": 1,
+  "price": 1000
+ },
+ "TM18": {
+  "move": "REFLECT",
+  "type": "PSYCHIC",
+  "tier": 1,
+  "price": 1000
+ },
+ "TM19": {
+  "move": "SAFEGUARD",
+  "type": "NORMAL",
+  "tier": 1,
+  "price": 1000
+ },
+ "TM20": {
+  "move": "SELF-DESTRUCT",
+  "type": "NORMAL",
+  "tier": 8,
+  "price": 3000
+ },
+ "TM21": {
+  "move": "REST",
+  "type": "PSYCHIC",
+  "tier": 1,
+  "price": 1000
+ },
+ "TM22": {
+  "move": "ROCK-SLIDE",
+  "type": "ROCK",
+  "tier": 7,
+  "price": 2500
+ },
+ "TM23": {
+  "move": "THIEF",
+  "type": "DARK",
+  "tier": 4,
+  "price": 2000
+ },
+ "TM24": {
+  "move": "SNORE",
+  "type": "NORMAL",
+  "tier": 0,
+  "price": 1000
+ },
+ "TM25": {
+  "move": "PROTECT",
+  "type": "NORMAL",
+  "tier": 1,
+  "price": 1000
+ },
+ "TM26": {
+  "move": "SCARY-FACE",
+  "type": "NORMAL",
+  "tier": 1,
+  "price": 1000
+ },
+ "TM27": {
+  "move": "ICY-WIND",
+  "type": "ICE",
+  "tier": 1,
+  "price": 1000
+ },
+ "TM28": {
+  "move": "GIGA-DRAIN",
+  "type": "GRASS",
+  "tier": 7,
+  "price": 2500
+ },
+ "TM29": {
+  "move": "CHARM",
+  "type": "FAIRY",
+  "tier": 2,
+  "price": 1500
+ },
+ "TM30": {
+  "move": "STEEL-WING",
+  "type": "STEEL",
+  "tier": 6,
+  "price": 2500
+ },
+ "TM31": {
+  "move": "ATTRACT",
+  "type": "NORMAL",
+  "tier": 2,
+  "price": 1500
+ },
+ "TM32": {
+  "move": "SANDSTORM",
+  "type": "ROCK",
+  "tier": 2,
+  "price": 1500
+ },
+ "TM33": {
+  "move": "RAIN-DANCE",
+  "type": "WATER",
+  "tier": 2,
+  "price": 1500
+ },
+ "TM34": {
+  "move": "SUNNY-DAY",
+  "type": "FIRE",
+  "tier": 2,
+  "price": 1500
+ },
+ "TM35": {
+  "move": "HAIL",
+  "type": "ICE",
+  "tier": 2,
+  "price": 1500
+ },
+ "TM36": {
+  "move": "WHIRLPOOL",
+  "type": "WATER",
+  "tier": 0,
+  "price": 1000
+ },
+ "TM37": {
+  "move": "BEAT-UP",
+  "type": "DARK",
+  "tier": 2,
+  "price": 1500
+ },
+ "TM38": {
+  "move": "WILL-O-WISP",
+  "type": "FIRE",
+  "tier": 2,
+  "price": 1500
+ },
+ "TM39": {
+  "move": "FACADE",
+  "type": "NORMAL",
+  "tier": 6,
+  "price": 2500
+ },
+ "TM40": {
+  "move": "SWIFT",
+  "type": "NORMAL",
+  "tier": 4,
+  "price": 2000
+ },
+ "TM41": {
+  "move": "HELPING-HAND",
+  "type": "NORMAL",
+  "tier": 2,
+  "price": 1500
+ },
+ "TM42": {
+  "move": "REVENGE",
+  "type": "FIGHTING",
+  "tier": 4,
+  "price": 2000
+ },
+ "TM43": {
+  "move": "BRICK-BREAK",
+  "type": "FIGHTING",
+  "tier": 7,
+  "price": 2500
+ },
+ "TM44": {
+  "move": "IMPRISON",
+  "type": "PSYCHIC",
+  "tier": 2,
+  "price": 1500
+ },
+ "TM45": {
+  "move": "DIVE",
+  "type": "WATER",
+  "tier": 8,
+  "price": 3000
+ },
+ "TM46": {
+  "move": "WEATHER-BALL",
+  "type": "NORMAL",
+  "tier": 0,
+  "price": 1000
+ },
+ "TM47": {
+  "move": "FAKE-TEARS",
+  "type": "DARK",
+  "tier": 2,
+  "price": 1500
+ },
+ "TM48": {
+  "move": "ROCK-TOMB",
+  "type": "ROCK",
+  "tier": 4,
+  "price": 2000
+ },
+ "TM49": {
+  "move": "SAND-TOMB",
+  "type": "GROUND",
+  "tier": 0,
+  "price": 1000
+ },
+ "TM50": {
+  "move": "BULLET-SEED",
+  "type": "GRASS",
+  "tier": 0,
+  "price": 1000
+ },
+ "TM51": {
+  "move": "ICICLE-SPEAR",
+  "type": "ICE",
+  "tier": 0,
+  "price": 1000
+ },
+ "TM52": {
+  "move": "BOUNCE",
+  "type": "FLYING",
+  "tier": 8,
+  "price": 3000
+ },
+ "TM53": {
+  "move": "MUD-SHOT",
+  "type": "GROUND",
+  "tier": 3,
+  "price": 1500
+ },
+ "TM54": {
+  "move": "ROCK-BLAST",
+  "type": "ROCK",
+  "tier": 0,
+  "price": 1000
+ },
+ "TM55": {
+  "move": "BRINE",
+  "type": "WATER",
+  "tier": 5,
+  "price": 2000
+ },
+ "TM56": {
+  "move": "U-TURN",
+  "type": "BUG",
+  "tier": 6,
+  "price": 2500
+ },
+ "TM57": {
+  "move": "PAYBACK",
+  "type": "DARK",
+  "tier": 1,
+  "price": 1000
+ },
+ "TM58": {
+  "move": "ASSURANCE",
+  "type": "DARK",
+  "tier": 4,
+  "price": 2000
+ },
+ "TM59": {
+  "move": "FLING",
+  "type": "DARK",
+  "tier": 3,
+  "price": 1500
+ },
+ "TM60": {
+  "move": "POWER-SWAP",
+  "type": "PSYCHIC",
+  "tier": 3,
+  "price": 1500
+ },
+ "TM61": {
+  "move": "GUARD-SWAP",
+  "type": "PSYCHIC",
+  "tier": 3,
+  "price": 1500
+ },
+ "TM62": {
+  "move": "SPEED-SWAP",
+  "type": "PSYCHIC",
+  "tier": 3,
+  "price": 1500
+ },
+ "TM63": {
+  "move": "DRAIN-PUNCH",
+  "type": "FIGHTING",
+  "tier": 7,
+  "price": 2500
+ },
+ "TM64": {
+  "move": "AVALANCHE",
+  "type": "ICE",
+  "tier": 5,
+  "price": 2000
+ },
+ "TM65": {
+  "move": "SHADOW-CLAW",
+  "type": "GHOST",
+  "tier": 6,
+  "price": 2500
+ },
+ "TM66": {
+  "move": "THUNDER-FANG",
+  "type": "ELECTRIC",
+  "tier": 5,
+  "price": 2000
+ },
+ "TM67": {
+  "move": "ICE-FANG",
+  "type": "ICE",
+  "tier": 5,
+  "price": 2000
+ },
+ "TM68": {
+  "move": "FIRE-FANG",
+  "type": "FIRE",
+  "tier": 5,
+  "price": 2000
+ },
+ "TM69": {
+  "move": "PSYCHO-CUT",
+  "type": "PSYCHIC",
+  "tier": 6,
+  "price": 2500
+ },
+ "TM70": {
+  "move": "TRICK-ROOM",
+  "type": "PSYCHIC",
+  "tier": 3,
+  "price": 1500
+ },
+ "TM71": {
+  "move": "WONDER-ROOM",
+  "type": "PSYCHIC",
+  "tier": 3,
+  "price": 1500
+ },
+ "TM72": {
+  "move": "MAGIC-ROOM",
+  "type": "PSYCHIC",
+  "tier": 3,
+  "price": 1500
+ },
+ "TM73": {
+  "move": "CROSS-POISON",
+  "type": "POISON",
+  "tier": 6,
+  "price": 2500
+ },
+ "TM74": {
+  "move": "VENOSHOCK",
+  "type": "POISON",
+  "tier": 5,
+  "price": 2000
+ },
+ "TM75": {
+  "move": "LOW-SWEEP",
+  "type": "FIGHTING",
+  "tier": 5,
+  "price": 2000
+ },
+ "TM76": {
+  "move": "ROUND",
+  "type": "NORMAL",
+  "tier": 5,
+  "price": 2000
+ },
+ "TM77": {
+  "move": "HEX",
+  "type": "GHOST",
+  "tier": 6,
+  "price": 2500
+ },
+ "TM78": {
+  "move": "ACROBATICS",
+  "type": "FLYING",
+  "tier": 3,
+  "price": 1500
+ },
+ "TM79": {
+  "move": "RETALIATE",
+  "type": "NORMAL",
+  "tier": 6,
+  "price": 2500
+ },
+ "TM80": {
+  "move": "VOLT-SWITCH",
+  "type": "ELECTRIC",
+  "tier": 6,
+  "price": 2500
+ },
+ "TM81": {
+  "move": "BULLDOZE",
+  "type": "GROUND",
+  "tier": 5,
+  "price": 2000
+ },
+ "TM82": {
+  "move": "ELECTROWEB",
+  "type": "ELECTRIC",
+  "tier": 3,
+  "price": 1500
+ },
+ "TM83": {
+  "move": "RAZOR-SHELL",
+  "type": "WATER",
+  "tier": 7,
+  "price": 2500
+ },
+ "TM84": {
+  "move": "TAIL-SLAP",
+  "type": "NORMAL",
+  "tier": 0,
+  "price": 1000
+ },
+ "TM85": {
+  "move": "SNARL",
+  "type": "DARK",
+  "tier": 3,
+  "price": 1500
+ },
+ "TM86": {
+  "move": "PHANTOM-FORCE",
+  "type": "GHOST",
+  "tier": 8,
+  "price": 3000
+ },
+ "TM87": {
+  "move": "DRAINING-KISS",
+  "type": "FAIRY",
+  "tier": 1,
+  "price": 1000
+ },
+ "TM88": {
+  "move": "GRASSY-TERRAIN",
+  "type": "GRASS",
+  "tier": 4,
+  "price": 2000
+ },
+ "TM89": {
+  "move": "MISTY-TERRAIN",
+  "type": "FAIRY",
+  "tier": 4,
+  "price": 2000
+ },
+ "TM90": {
+  "move": "ELECTRIC-TERRAIN",
+  "type": "ELECTRIC",
+  "tier": 4,
+  "price": 2000
+ },
+ "TM91": {
+  "move": "PSYCHIC-TERRAIN",
+  "type": "PSYCHIC",
+  "tier": 4,
+  "price": 2000
+ },
+ "TM92": {
+  "move": "MYSTICAL-FIRE",
+  "type": "FIRE",
+  "tier": 7,
+  "price": 2500
+ },
+ "TM93": {
+  "move": "EERIE-IMPULSE",
+  "type": "ELECTRIC",
+  "tier": 4,
+  "price": 2000
+ },
+ "TM94": {
+  "move": "FALSE-SWIPE",
+  "type": "NORMAL",
+  "tier": 0,
+  "price": 1000
+ },
+ "TM95": {
+  "move": "AIR-SLASH",
+  "type": "FLYING",
+  "tier": 7,
+  "price": 2500
+ },
+ "TM96": {
+  "move": "SMART-STRIKE",
+  "type": "STEEL",
+  "tier": 6,
+  "price": 2500
+ },
+ "TM97": {
+  "move": "BRUTAL-SWING",
+  "type": "DARK",
+  "tier": 5,
+  "price": 2000
+ },
+ "TM98": {
+  "move": "STOMPING-TANTRUM",
+  "type": "GROUND",
+  "tier": 7,
+  "price": 2500
+ },
+ "TM99": {
+  "move": "BREAKING-SWIPE",
+  "type": "DRAGON",
+  "tier": 5,
+  "price": 2000
+ }
+}

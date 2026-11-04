@@ -564,20 +564,6 @@ class StoryManager:
 
         self.game.data.data["pokedex"] = pokedex
 
-    def is_captured(self, pokemon_id, form="normal"):
-        """
-        Checks if a specific species (and specific form for Unown) has been caught.
-        Used by the UI to display the Pokeball icon in wild encounters.
-        """
-        pid_str = str(pokemon_id)
-        f_lower = form.lower()
-
-        if pid_str == "201":
-            search_key = "201_a" if f_lower == "normal" else f"201_{f_lower}"
-            return str(search_key) in self.catch_counts
-
-        dex = self.game.data.data.get("pokedex", {})  # keys are "id-form": compare the ids
-        return any(isinstance(v, dict) and str(v.get("id")) == pid_str for v in dex.values())
 
     @staticmethod
     def champion_flag(region):
@@ -781,9 +767,6 @@ class StoryManager:
         total = self.get_total_badges()
         return self.game.math.resolve_level(self.math_difficulty, "GLOBAL", total)
 
-    def get_math_label(self):
-        total = self.get_total_badges()
-        return self.game.math.describe(self.math_difficulty, "GLOBAL", total)
 
     def pick_evolution_branch(self, entries):
         """For branching evolutions, prefer a branch not yet in the Pokédex so every
@@ -857,17 +840,6 @@ class StoryManager:
 
         return "KANTO"
 
-    def mark_area_visited(self, area_key=None):
-        """
-        Sets the visited flag for the given area.
-        Call this in OverworldState's on_enter logic.
-        """
-        target = area_key if area_key else self.current_area_key
-        flag = f"visited_{target}"
-        if not self.story_flags.get(flag):
-            self.story_flags[flag] = True
-            if self.get_current_area_data().get("has_gym"):
-                self.sync_badges()
 
     def _prepare_mission_for_ui(self, mission):
         """Ensures mission data is compatible with UI rendering logic."""
@@ -905,32 +877,6 @@ class StoryManager:
 
         return m_copy
 
-    def get_unown_report_text(self):
-        """Generates a string representation of caught Unown forms for the UI."""
-        if self.inventory.get("UNOWN_REPORT", 0) == 0:
-            return "You don't have the Unown Report."
-
-        alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-        caught_forms = []
-
-        for char in alphabet:
-            key = f"201_{char.lower()}"
-            if self.catch_counts.get(key, 0) > 0:
-                caught_forms.append(char)
-            elif char == "A" and self.catch_counts.get("201_normal", 0) > 0:
-                caught_forms.append(char)
-            else:
-                caught_forms.append("_")
-
-        if self.catch_counts.get("201_exclamation", 0) > 0:
-            caught_forms.append("!")
-        if self.catch_counts.get("201_question", 0) > 0:
-            caught_forms.append("?")
-
-        formatted_list = " ".join(caught_forms)
-        total = sum(1 for c in caught_forms if c != "_")
-
-        return f"UNOWN REPORT - Total Found: {total}/28\n\n{formatted_list}"
 
     def get_all_journal_entries(self):
         """Returns all missions categorized by Active or Completed status."""
@@ -970,56 +916,8 @@ class StoryManager:
 
         return entries
 
-    def has_unread_missions(self):
-        """Checks if there are any active missions not yet in the notified list."""
-        active = self.get_active_missions()
-        for m in active:
-            if m["id"] not in self.notified_missions:
-                return True
-        return False
 
-    def cycle_badge_case(self):
-        """Cycles the active view for the badge case UI."""
-        regions = list(self.badges.keys())
-        idx = regions.index(self.active_badge_region)
-        self.active_badge_region = regions[(idx + 1) % len(regions)]
-        return self.active_badge_region
 
-    def get_current_hint(self):
-        """Provides a contextual hint to the player."""
-        if self.get_current_region() != "KANTO":
-            main = [m for m in self.get_active_missions() if m.get("type") == "MAIN"]
-            if main:
-                return main[0]["desc"]
-            return "Explore the region, earn badges, and become Champion!"
-        kanto_badges = self.badges.get("KANTO", [])
-        if "BOULDER" not in kanto_badges:
-            if self.current_area_key != "PEWTER_CITY":
-                return "Travel to Pewter City to challenge the first Gym Leader, Brock!"
-            else:
-                return "Challenge Brock at the Pewter City Gym to earn the Boulder Badge!"
-
-        if "CASCADE" not in self.badges:
-            if self.current_area_key != "CERULEAN_CITY":
-                return "Make your way through Mt. Moon to get to Cerulean City for your next badge!"
-            else:
-                return "Challenge Misty at the Cerulean Gym. Her Water-type Pokémon are tough!"
-
-        if not self.story_flags.get("tower_ghost_defeated"):
-            if self.current_area_key != "LAVENDER_TOWN":
-                return "A sad spirit haunts the Pokémon Tower in Lavender Town. Maybe you can help."
-            elif not self.story_flags.get("got_silph_scope"):
-                return "You need a Silph Scope to identify the ghost in the Pokémon Tower. Team Rocket might have one..."
-            else:
-                return "Head to the top of the Pokémon Tower in Lavender Town to confront the ghost."
-
-        if not self.snorlax_awake():
-            if self.inventory.get("POKE_FLUTE", 0) == 0:
-                return "Now that the ghost is at peace, talk to Mr. Fuji in Lavender Town. He might have a reward for you."
-            else:
-                return "Snorlax are sleeping on Route 12 (south of Lavender) and Route 16 (west of Celadon). Use the Poké Flute!"
-
-        return "Your next challenge awaits! Explore the Kanto region and become a Pokémon Master!"
 
     def load_last_checkpoint(self, game):
         if not self.checkpoint:
@@ -1252,7 +1150,10 @@ class StoryManager:
             "region_stores": {
                 k: {"team": [self._pokemon_record(p) for p in st["team"] if p],
                     "pc": [self._pokemon_record(p) if p else None for p in st["pc"]],
-                    "bag": st["bag"]}
+                    "bag": st["bag"],
+                    "daycare": {"mons": [self._pokemon_record(p) for p in st.get("daycare", {}).get("mons", [])],
+                                "steps": st.get("daycare", {}).get("steps", 0),
+                                "egg": st.get("daycare", {}).get("egg", False)}}
                 for k, st in self.region_stores.items()},
             "linked_regions": sorted(self.linked_regions),
             "active_store": self.active_store,
@@ -1280,7 +1181,8 @@ class StoryManager:
 
     @staticmethod
     def _migrate_area_keys(obj, renames={"FUSCHIA_CITY": "FUCHSIA_CITY", "KNuckle": "KNUCKLE",
-                                          "ISLE_OF_ARMOR_boss_defeated": "GLIMWOOD_TANGLE_boss_defeated"}):
+                                          "ISLE_OF_ARMOR_boss_defeated": "GLIMWOOD_TANGLE_boss_defeated",
+                                          "THREE_ISLE_PATH": "THREE_ISLE_PORT"}):  # (Jordan, 11-04)
         """Rewrite renamed area keys anywhere in an older save (keys, values, flag names)."""
         if isinstance(obj, str):
             for old, new in renames.items():
@@ -1305,6 +1207,9 @@ class StoryManager:
             "hp": p.current_hp, "hp_real": True, "stage": p.stage, "gmax": p.gmax_factor,
             "caught_region": getattr(p, "caught_region", None), "caught_level": getattr(p, "caught_level", None),
             "condition": p.condition, "sheen": p.sheen, "ribbons": p.ribbons,
+            "ability_slot": getattr(p, "ability_slot", 0), "gender": getattr(p, "gender", "?"),
+            "is_egg": bool(getattr(p, "is_egg", False)), "egg_steps": getattr(p, "egg_steps", 0),
+            "tera_type": getattr(p, "tera_type", None), "held_item": getattr(p, "held_item", None),
         }
 
     def _load_pokemon(self, p_data, loader):
@@ -1319,6 +1224,13 @@ class StoryManager:
         pokemon.gmax_factor = p_data.get("gmax", form == "gmax")
         pokemon.caught_region = p_data.get("caught_region")
         pokemon.caught_level = p_data.get("caught_level")
+        if "ability_slot" in p_data:  # (older saves: the slot rolled when it loads, then kept)
+            pokemon.ability_slot = p_data["ability_slot"]
+        if p_data.get("gender", "?") != "?":
+            pokemon.gender = p_data["gender"]
+        if p_data.get("tera_type"):
+            pokemon.tera_type = p_data["tera_type"]
+        pokemon.held_item = p_data.get("held_item")
         pokemon.condition.update(p_data.get("condition", {}))
         pokemon.sheen = p_data.get("sheen", 0)
         pokemon.ribbons = list(p_data.get("ribbons", []))
@@ -1346,6 +1258,10 @@ class StoryManager:
             old_scale_hp = Pokemon.legacy_hp_scale(pokemon.stage)
         if "hp" in p_data:
             pokemon.current_hp = self._loaded_hp(pokemon, p_data, old_scale_hp)
+        if p_data.get("is_egg"):  # an Egg from the Day Care
+            from src.pokemon import breeding
+            pokemon.current_hp = pokemon.get_max_hp()
+            breeding.make_unhatched(self.game, pokemon, int(p_data.get("egg_steps", 0)))
 
     @staticmethod
     def _loaded_hp(pokemon, p_data, old_scale_hp=None):
@@ -1413,6 +1329,10 @@ class StoryManager:
                 if r:
                     pc[i] = self._load_pokemon(r, loader)
             self.region_stores[key] = {"team": team, "pc": pc, "bag": dict(st.get("bag", {}))}
+            dc = st.get("daycare") or {}
+            self.region_stores[key]["daycare"] = {
+                "mons": [self._load_pokemon(r, loader) for r in dc.get("mons", []) if r],
+                "steps": int(dc.get("steps", 0)), "egg": bool(dc.get("egg", False))}
         # Saves from before Poke Balls moved into the Bag: the one count goes to the Bag in use,
         # every other region's Bag gets the starting few.
         current = self.active_store
@@ -1460,6 +1380,13 @@ class StoryManager:
         f = self.story_flags
         if not f.get("kanto_parcel_era") and (f.get("received_starter_kanto") or f.get("unlocked_national_dex")):
             f["received_pokedex_kanto"] = True
+        if f.get("CINNABAR_VOLCANO_boss_defeated"):  # Moltres moved from Cinnabar's volcano to Mt. Ember
+            f["MT_EMBER_boss_defeated"] = True
+        # Nugget Bridge is a story step (Jordan, 11-03): saves already over it (all seven bridge trainers
+        # beaten, the old bridge cleared, or Bill visited) have it done.
+        if not f.get("nugget_bridge_cleared") and (len(self.defeated_trainers.get("KANTO_ROUTE_24", set())) >= 7
+                                                   or f.get("nugget_bridge_cleared_old") or f.get("visited_BILLS_HOUSE")):
+            f["nugget_bridge_cleared"] = True
         if not f.get("nugget_bridge_moved"):  # Nugget Bridge moved from Route 25 to Route 24 (10-26)
             f["nugget_bridge_moved"] = True
             if len(self.defeated_trainers.get("KANTO_ROUTE_25", set())) >= 6:

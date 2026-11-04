@@ -1,17 +1,10 @@
 {
-  "CANYON_ENTRANCE": [161, 21, 22, 231, 52, 53, 54],
   "CANYON_ENTRANCE_PERCENTAGES": { "161": 30, "21": 20, "22": 15, "231": 15, "52": 10, "53": 5, "54": 5 },
-  "GREEN_PATH": [72, 73],
   "GREEN_PATH_PERCENTAGES": { "72": 95, "73": 5 },
-  "OUTCAST_ISLAND": [72, 73],
   "OUTCAST_ISLAND_PERCENTAGES": { "72": 95, "73": 5 },
-  "SEVII_ALTERING_CAVE": [41, 179, 204, 228, 216, 190, 213, 234, 235],
   "SEVII_ALTERING_CAVE_PERCENTAGES": { "41": 12, "179": 11, "204": 11, "228": 11, "216": 11, "190": 11, "213": 11, "234": 11, "235": 11 },
-  "WATER_PATH": [72, 161, 21, 22, 43, 52, 44, 53, 54, 73],
   "WATER_PATH_PERCENTAGES": { "72": 49, "161": 15, "21": 10, "22": 8, "43": 5, "52": 5, "44": 2, "53": 2, "54": 2, "73": 2 },
-  "MEMORIAL_PILLAR": [72, 187, 73],
   "MEMORIAL_PILLAR_PERCENTAGES": { "72": 65, "187": 30, "73": 5 },
-  "RESORT_GORGEOUS": [72, 187, 73],
   "RESORT_GORGEOUS_PERCENTAGES": { "72": 65, "187": 30, "73": 5 },
   "STORY_PROGRESSION": {
     "RESORT_GORGEOUS": {
@@ -106,7 +99,7 @@
         {
           "text": "BATTLE WILD PKMN",
           "action": "BATTLE",
-          "condition": "can_battle",
+          "condition": "has_balls",
           "color": "GREEN"
         },
         {
@@ -196,7 +189,7 @@
         {
           "text": "BATTLE WILD PKMN",
           "action": "BATTLE",
-          "condition": "can_battle",
+          "condition": "has_balls",
           "color": "GREEN"
         },
         {
@@ -316,7 +309,7 @@
         {
           "text": "BATTLE WILD PKMN",
           "action": "BATTLE",
-          "condition": "can_battle",
+          "condition": "has_balls",
           "color": "GREEN"
         },
         {
@@ -375,7 +368,7 @@
         {
           "text": "BATTLE WILD PKMN",
           "action": "BATTLE",
-          "condition": "can_battle",
+          "condition": "has_balls",
           "color": "GREEN"
         },
         {
@@ -470,7 +463,7 @@
         {
           "text": "BATTLE WILD PKMN",
           "action": "BATTLE",
-          "condition": "can_battle",
+          "condition": "has_balls",
           "color": "GREEN"
         },
         {
@@ -537,7 +530,7 @@
         {
           "text": "BATTLE WILD PKMN",
           "action": "BATTLE",
-          "condition": "can_battle",
+          "condition": "has_balls",
           "color": "GREEN"
         },
         {
@@ -659,7 +652,7 @@
         {
           "text": "BATTLE WILD PKMN",
           "action": "BATTLE",
-          "condition": "can_battle",
+          "condition": "has_balls",
           "color": "GREEN"
         },
         {
@@ -694,11 +687,11 @@
       "has_gym": false,
       "explore_options": [
         {
-          "text": "Pokemon Center",
+          "text": "Heal",
           "action": "HEAL"
         },
         {
-          "text": "Poke Mart",
+          "text": "Shop",
           "action": "SHOP"
         },
         {
@@ -835,7 +828,7 @@
         {
           "text": "BATTLE WILD PKMN",
           "action": "BATTLE",
-          "condition": "can_battle",
+          "condition": "has_balls",
           "color": "GREEN"
         },
         {
@@ -941,7 +934,7 @@
         {
           "text": "BATTLE WILD PKMN",
           "action": "BATTLE",
-          "condition": "can_battle",
+          "condition": "has_balls",
           "color": "GREEN"
         },
         {
@@ -1001,7 +994,7 @@
         {
           "text": "BATTLE WILD PKMN",
           "action": "BATTLE",
-          "condition": "can_battle",
+          "condition": "has_balls",
           "color": "GREEN"
         },
         {
@@ -1069,10 +1062,7 @@
           "text": "CHALLENGE MOLTRES",
           "action": "BOSS",
           "color": "GOLD",
-          "condition": [
-            "boss_not_defeated",
-            "not:CINNABAR_VOLCANO_boss_defeated"
-          ]
+          "condition": "boss_not_defeated"
         },
         {
           "text": "Kindle Road",
@@ -1098,11 +1088,11 @@
       "has_gym": false,
       "explore_options": [
         {
-          "text": "Pokemon Center",
+          "text": "Heal",
           "action": "HEAL"
         },
         {
-          "text": "Poke Mart",
+          "text": "Shop",
           "action": "SHOP"
         },
         {
@@ -1263,7 +1253,7 @@
         {
           "text": "BATTLE WILD PKMN",
           "action": "BATTLE",
-          "condition": "can_battle",
+          "condition": "has_balls",
           "color": "GREEN"
         },
         {
@@ -1331,11 +1321,11 @@
       "has_gym": false,
       "explore_options": [
         {
-          "text": "Pokemon Center",
+          "text": "Heal",
           "action": "HEAL"
         },
         {
-          "text": "Poke Mart",
+          "text": "Shop",
           "action": "SHOP"
         },
         {
@@ -1375,12 +1365,13 @@
             "done": [
               "Townsfolk: The bikers are gone! You can cross Bond Bridge now."
             ]
-          }
+          },
+          "flag_condition": "not beat_three_island_bikers"
         }
       ],
       "travel_options": [
         {"text": "Bond Bridge", "target_area": "BOND_BRIDGE", "condition": "beat_three_island_bikers"},
-        {"text": "Three Isle Path", "target_area": "THREE_ISLE_PATH"},
+        {"text": "Three Isle Port", "target_area": "THREE_ISLE_PORT"},
         {"text": "Seagallop to Vermilion City", "long_ride": true, "target_area": "VERMILLION_CITY", "message": "The Seagallop Ferry speeds back to Vermilion City."},
         {"text": "Seagallop to One Island", "target_area": "ONE_ISLAND", "message": "The Seagallop Ferry speeds across the waves. Next stop: One Island!", "condition": "has_item:TRI_PASS"},
         {"text": "Seagallop to Two Island", "target_area": "TWO_ISLAND", "message": "The Seagallop Ferry speeds across the waves. Next stop: Two Island!", "condition": "has_item:TRI_PASS"},
@@ -1451,7 +1442,7 @@
         {
           "text": "BATTLE WILD PKMN",
           "action": "BATTLE",
-          "condition": "can_battle",
+          "condition": "has_balls",
           "color": "GREEN"
         },
         {
@@ -1497,7 +1488,7 @@
         {
           "text": "BATTLE WILD PKMN",
           "action": "BATTLE",
-          "condition": "can_battle",
+          "condition": "has_balls",
           "color": "GREEN"
         },
         {
@@ -1541,7 +1532,7 @@
       "level": 52,
       "subregion": "SEVII",
       "has_gym": false,
-      "explore_options": [{"text": "Pokemon Center", "action": "HEAL"}, {"text": "Poke Mart", "action": "SHOP"}, {"text": "Pokemon Day Care", "action": "NPC", "target": "day_care"}, {"text": "Lorelei's House", "action": "EVENT", "color": "GOLD", "event": {"lines": ["Lorelei: This is my home island. I came back to rest after the League...", "But Team Rocket is in Icefall Cave, catching Lapras to sell! Please stop them."], "flag": "met_lorelei_sevii", "done": ["Lorelei: Thank you for saving the Icefall Cave Pokemon."]}, "flag_condition": "not sevii_icefall_cleared"}, {"text": "Battle Lorelei", "action": "EVENT", "color": "GOLD", "event": {"requires": ["sevii_icefall_cleared"], "lines": ["Lorelei: You saved the Lapras. Now, a battle, just for fun. Don't hold back!"], "battle": {"name": "Lorelei", "class": "ELITE_FOUR", "sprite": "loreli.png", "team": [87, 91, 80, 124, 131], "levels": [56, 57, 56, 58, 60], "rewards": {"balls": 15}, "dialogue": {"player_won": ["Lorelei: Still as strong as ever. Come back any time."]}, "movesets": {"87": ["SURF", "ICE-BEAM", "HAIL", "SAFEGUARD"], "91": ["SPIKES", "DIVE", "HAIL", "PROTECT"], "80": ["ICE-BEAM", "SURF", "AMNESIA", "YAWN"], "124": ["DOUBLE-SLAP", "ICE-PUNCH", "LOVELY-KISS", "ATTRACT"], "131": ["BODY-SLAM", "CONFUSE-RAY", "SURF", "ICE-BEAM"]}}, "flag": "defeated_lorelei_sevii", "done": ["Lorelei: That was a wonderful battle."]}, "condition": "sevii_icefall_cleared"}],
+      "explore_options": [{"text": "Heal", "action": "HEAL"}, {"text": "Shop", "action": "SHOP"}, {"text": "Pokémon Day Care", "action": "DAYCARE"}, {"text": "Contest Hall", "action": "NPC", "target": "contest_hall"}, {"text": "Lorelei's House", "action": "EVENT", "color": "GOLD", "event": {"lines": ["Lorelei: This is my home island. I came back to rest after the League...", "But Team Rocket is in Icefall Cave, catching Lapras to sell! Please stop them."], "flag": "met_lorelei_sevii", "done": ["Lorelei: Thank you for saving the Icefall Cave Pokemon."]}, "flag_condition": "not sevii_icefall_cleared"}, {"text": "Battle Lorelei", "action": "EVENT", "color": "GOLD", "event": {"requires": ["sevii_icefall_cleared"], "lines": ["Lorelei: You saved the Lapras. Now, a battle, just for fun. Don't hold back!"], "battle": {"name": "Lorelei", "class": "ELITE_FOUR", "sprite": "loreli.png", "team": [87, 91, 80, 124, 131], "levels": [56, 57, 56, 58, 60], "rewards": {"balls": 15}, "dialogue": {"player_won": ["Lorelei: Still as strong as ever. Come back any time."]}, "movesets": {"87": ["SURF", "ICE-BEAM", "HAIL", "SAFEGUARD"], "91": ["SPIKES", "DIVE", "HAIL", "PROTECT"], "80": ["ICE-BEAM", "SURF", "AMNESIA", "YAWN"], "124": ["DOUBLE-SLAP", "ICE-PUNCH", "LOVELY-KISS", "ATTRACT"], "131": ["BODY-SLAM", "CONFUSE-RAY", "SURF", "ICE-BEAM"]}}, "flag": "defeated_lorelei_sevii", "done": ["Lorelei: That was a wonderful battle."]}, "condition": "sevii_icefall_cleared", "flag_condition": "not defeated_lorelei_sevii"}],
       "travel_options": [
         {
           "text": "Icefall Cave",
@@ -1645,7 +1636,7 @@
         {
           "text": "BATTLE WILD PKMN",
           "action": "BATTLE",
-          "condition": "can_battle",
+          "condition": "has_balls",
           "color": "GREEN"
         },
         {
@@ -1718,11 +1709,11 @@
       "has_gym": false,
       "explore_options": [
         {
-          "text": "Pokemon Center",
+          "text": "Heal",
           "action": "HEAL"
         },
         {
-          "text": "Poke Mart",
+          "text": "Shop",
           "action": "SHOP"
         },
         {
@@ -1742,7 +1733,8 @@
             "done": [
               "Selphy: Do come again!"
             ]
-          }
+          },
+          "flag_condition": "not visited_resort_gorgeous"
         }
       ],
       "travel_options": [
@@ -1853,7 +1845,7 @@
       ],
       "route_menu": [
         {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
-        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN"},
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
         {"text": "Five Island", "action": "EXIT", "target_area": "FIVE_ISLAND", "condition": "can_exit", "color": "RED"},
         {"text": "Memorial Pillar", "action": "EXIT", "target_area": "MEMORIAL_PILLAR", "condition": "can_exit", "color": "RED"},
@@ -1895,7 +1887,7 @@
         {
           "text": "BATTLE WILD PKMN",
           "action": "BATTLE",
-          "condition": "can_battle",
+          "condition": "has_balls",
           "color": "GREEN"
         },
         {
@@ -1953,7 +1945,7 @@
           }
         }
       ],
-      "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"}, {"text": "SEARCH THE DARK", "action": "EVENT", "color": "GOLD", "event": {"lines": ["You feel your way through the pitch-black cave...", "Someone dropped a pouch here long ago. You found it!"], "gift_item": {"RARE_CANDY": 3}, "flag": "lost_cave_searched"}, "flag_condition": "not lost_cave_searched"}, {"text": "THE BLACK FOG", "action": "BOSS", "color": "PURPLE", "flag_condition": "not black_fog_banished_lost_cave", "boss": {"id": 10501, "name": "Black Fog", "level": 63, "no_catch": true, "victory_flag": "black_fog_banished_lost_cave", "lines": ["The air turns ice-cold. A black fog pours across the floor...", "Two huge eyes open in the dark. A giant Haunter rises: the Black Fog!", "Long ago people worshipped it as a god. It feeds on dreams. Don't let it get yours!"], "won": ["The Black Fog is too proud to ever be caught.", "It Self-Destructs in a burst of black mist... and is gone.", "But a cold whisper lingers: it will rise again in another haunted place."], "rewards": {"balls": 10, "RARE_CANDY": 3}}}, {"text": "Five Island", "action": "EXIT", "target_area": "FIVE_ISLAND", "condition": "can_exit", "color": "RED"}, {"text": "Resort Gorgeous", "action": "EXIT", "target_area": "RESORT_GORGEOUS", "condition": "can_exit", "color": "RED"}],
+      "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN"}, {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"}, {"text": "SEARCH THE DARK", "action": "EVENT", "color": "GOLD", "event": {"lines": ["You feel your way through the pitch-black cave...", "Someone dropped a pouch here long ago. You found it!"], "gift_item": {"RARE_CANDY": 3}, "flag": "lost_cave_searched"}, "flag_condition": "not lost_cave_searched"}, {"text": "THE BLACK FOG", "action": "BOSS", "color": "PURPLE", "flag_condition": "not black_fog_banished_lost_cave", "boss": {"id": 10501, "name": "Black Fog", "level": 63, "no_catch": true, "victory_flag": "black_fog_banished_lost_cave", "lines": ["The air turns ice-cold. A black fog pours across the floor...", "Two huge eyes open in the dark. A giant Haunter rises: the Black Fog!", "Long ago people worshipped it as a god. It feeds on dreams. Don't let it get yours!"], "won": ["The Black Fog is too proud to ever be caught.", "It Self-Destructs in a burst of black mist... and is gone.", "But a cold whisper lingers: it will rise again in another haunted place."], "rewards": {"balls": 10, "RARE_CANDY": 3}}}, {"text": "Five Island", "action": "EXIT", "target_area": "FIVE_ISLAND", "condition": "can_exit", "color": "RED"}, {"text": "Resort Gorgeous", "action": "EXIT", "target_area": "RESORT_GORGEOUS", "condition": "can_exit", "color": "RED"}],
       "next_area": "FIVE_ISLAND"
     },
     "ROCKET_WAREHOUSE": {
@@ -2024,11 +2016,11 @@
       "has_gym": false,
       "explore_options": [
         {
-          "text": "Pokemon Center",
+          "text": "Heal",
           "action": "HEAL"
         },
         {
-          "text": "Poke Mart",
+          "text": "Shop",
           "action": "SHOP"
         },
         {
@@ -2151,7 +2143,7 @@
         {
           "text": "BATTLE WILD PKMN",
           "action": "BATTLE",
-          "condition": "can_battle",
+          "condition": "has_balls",
           "color": "GREEN"
         },
         {
@@ -2218,7 +2210,7 @@
         {
           "text": "BATTLE WILD PKMN",
           "action": "BATTLE",
-          "condition": "can_battle",
+          "condition": "has_balls",
           "color": "GREEN"
         },
         {
@@ -2309,11 +2301,11 @@
       "has_gym": true,
       "explore_options": [
         {
-          "text": "Pokemon Center",
+          "text": "Heal",
           "action": "HEAL"
         },
         {
-          "text": "Poke Mart",
+          "text": "Shop",
           "action": "SHOP"
         },
         {
@@ -2536,7 +2528,7 @@
       ],
       "route_menu": [
         {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
-        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN"},
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
         {"text": "Seven Island", "action": "EXIT", "target_area": "SEVEN_ISLAND", "condition": "can_exit", "color": "RED"},
         {"text": "Canyon Entrance", "action": "EXIT", "target_area": "CANYON_ENTRANCE", "condition": "can_exit", "color": "RED"},
@@ -2556,7 +2548,7 @@
       "trainer_pool": [],
       "route_menu": [
         {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": ["has_balls", "tanoby_chambers_open"], "color": "BLUE"},
-        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
+        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN"},
         {"text": "OPEN THE CHAMBERS", "action": "EVENT", "color": "GOLD", "event": {"puzzle": "tanoby", "lines": ["Unown of every shape swirl out of the seven chambers!"], "puzzle_fail": ["The chamber doors stay sealed."], "flag": "tanoby_chambers_open"}, "flag_condition": "not tanoby_chambers_open"},
         {"text": "Seven Island", "action": "EXIT", "target_area": "SEVEN_ISLAND", "condition": "can_exit", "color": "RED"},
         {"text": "SEVAULT CANYON", "action": "EXIT", "target": "SEVAULT_CANYON", "condition": "can_exit", "color": "RED"}
@@ -2610,8 +2602,7 @@
         "victory_flag": "caught_mew"
       }
     },
-        "THREE_ISLE_PATH": {"area_type": "dungeon", "route_name": "Three Isle Path", "region": "KANTO", "subregion": "SEVII", "level": 44, "battle_type": "cave", "min_rounds": 0, "trainer_pool": [], "route_menu": [{"text": "THREE ISLAND", "action": "EXIT", "target": "THREE_ISLAND", "condition": "can_exit", "color": "RED"}, {"text": "THREE ISLE PORT", "action": "EXIT", "target": "THREE_ISLE_PORT", "condition": "can_exit", "color": "RED"}], "next_area": "THREE_ISLE_PORT"},
-        "THREE_ISLE_PORT": {"area_type": "wild_route", "route_name": "Three Isle Port", "region": "KANTO", "subregion": "SEVII", "level": 44, "battle_type": "field", "wild_pool_percentages": "THREE_ISLE_PORT_PERCENTAGES", "min_rounds": 1, "trainer_pool": [], "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "THREE ISLE PATH", "action": "EXIT", "target": "THREE_ISLE_PATH", "condition": "can_exit", "color": "RED"}], "next_area": "THREE_ISLE_PATH"},
+        "THREE_ISLE_PORT": {"area_type": "wild_route", "route_name": "Three Isle Port", "region": "KANTO", "subregion": "SEVII", "level": 44, "battle_type": "field", "wild_pool_percentages": "THREE_ISLE_PORT_PERCENTAGES", "min_rounds": 1, "trainer_pool": [], "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN"}, {"text": "Three Island", "action": "EXIT", "target_area": "THREE_ISLAND", "condition": "can_exit", "color": "RED"}], "next_area": "THREE_ISLAND"},
         "NAVEL_ROCK": {"area_type": "dungeon", "route_name": "Navel Rock", "region": "KANTO", "battle_type": "cave", "min_rounds": 0, "trainer_pool": [], "route_menu": [{"text": "SEEK LUGIA", "action": "BOSS", "color": "GOLD", "flag_condition": "not navel_rock_lugia", "boss": {"id": 249, "level": 70, "name": "Lugia", "victory_flag": "navel_rock_lugia", "lines": ["A powerful presence fills the air... Lugia appears!"]}, "condition": ["beat_champion"]}, {"text": "SEEK HO-OH", "action": "BOSS", "color": "GOLD", "flag_condition": "not navel_rock_ho_oh", "boss": {"id": 250, "level": 70, "name": "Ho-Oh", "victory_flag": "navel_rock_ho_oh", "lines": ["A powerful presence fills the air... Ho-Oh appears!"]}, "condition": ["beat_champion"]}, {"text": "SEAGALLOP TO ONE ISLAND", "action": "EXIT", "target": "ONE_ISLAND", "condition": "can_exit", "color": "RED"}], "next_area": "ONE_ISLAND", "subregion": "SEVII", "level": 60},
         "BIRTH_ISLAND": {"area_type": "dungeon", "route_name": "Birth Island", "region": "KANTO", "battle_type": "cave", "min_rounds": 0, "trainer_pool": [], "route_menu": [{"text": "SEEK DEOXYS", "action": "BOSS", "color": "GOLD", "flag_condition": "not birth_island_deoxys", "boss": {"id": 386, "level": 30, "name": "Deoxys", "victory_flag": "birth_island_deoxys", "lines": ["A powerful presence fills the air... Deoxys appears!"]}, "condition": ["beat_champion"]}, {"text": "SEAGALLOP TO ONE ISLAND", "action": "EXIT", "target": "ONE_ISLAND", "condition": "can_exit", "color": "RED"}], "next_area": "ONE_ISLAND", "subregion": "SEVII", "level": 60}
     },
@@ -2698,31 +2689,7 @@
       "region": "KANTO"
     }
   ],
-  "SEVII_TREASURE_BEACH": [
-    72,
-    73,
-    116,
-    98,
-    90,
-    120,
-    118,
-    129,
-    222,
-    223
-  ],
   "SEVII_TREASURE_BEACH_PERCENTAGES": {"21": 28, "114": 28, "22": 19, "52": 10, "53": 5, "54": 5, "79": 5},
-  "SEVII_KINDLE_ROAD": [
-    77,
-    21,
-    22,
-    74,
-    75,
-    66,
-    126,
-    218,
-    129,
-    54
-  ],
   "SEVII_KINDLE_ROAD_PERCENTAGES": {
     "77": 15,
     "21": 15,
@@ -2735,19 +2702,6 @@
     "129": 7,
     "54": 10
   },
-  "SEVII_MT_EMBER": [
-    74,
-    75,
-    77,
-    78,
-    126,
-    218,
-    219,
-    66,
-    67,
-    95,
-    21
-  ],
   "SEVII_MT_EMBER_PERCENTAGES": {
     "74": 14,
     "75": 12,
@@ -2761,48 +2715,8 @@
     "95": 8,
     "21": 5
   },
-  "SEVII_CAPE_BRINK": [
-    43,
-    44,
-    69,
-    70,
-    54,
-    55,
-    187,
-    188,
-    191,
-    161,
-    162,
-    16
-  ],
   "SEVII_CAPE_BRINK_PERCENTAGES": {"43": 19, "21": 13, "44": 10, "22": 6, "52": 6, "53": 3, "54": 3, "55": 3, "69": 19, "70": 10, "79": 3, "80": 3},
-  "SEVII_BOND_BRIDGE": [
-    16,
-    17,
-    29,
-    32,
-    206,
-    52,
-    48,
-    72,
-    165,
-    167,
-    84
-  ],
   "SEVII_BOND_BRIDGE_PERCENTAGES": {"16": 22, "43": 15, "17": 11, "44": 7, "52": 7, "48": 4, "53": 4, "54": 4, "69": 15, "70": 7, "79": 4},
-  "SEVII_BERRY_FOREST": [
-    96,
-    97,
-    43,
-    17,
-    54,
-    49,
-    204,
-    205,
-    206,
-    102,
-    191
-  ],
   "SEVII_BERRY_FOREST_PERCENTAGES": {
     "96": 12,
     "97": 6,
@@ -2816,20 +2730,6 @@
     "102": 10,
     "191": 7
   },
-  "SEVII_ICEFALL_CAVE": [
-    220,
-    221,
-    225,
-    215,
-    42,
-    86,
-    87,
-    124,
-    131,
-    90,
-    91,
-    238
-  ],
   "SEVII_ICEFALL_CAVE_PERCENTAGES": {
     "220": 14,
     "221": 6,
@@ -2844,20 +2744,6 @@
     "91": 3,
     "238": 5
   },
-  "SEVII_FIVE_ISLE_MEADOW": [
-    198,
-    228,
-    229,
-    161,
-    162,
-    17,
-    52,
-    53,
-    194,
-    183,
-    184,
-    203
-  ],
   "SEVII_FIVE_ISLE_MEADOW_PERCENTAGES": {
     "198": 14,
     "228": 12,
@@ -2872,20 +2758,6 @@
     "184": 5,
     "203": 4
   },
-  "SEVII_WATER_LABYRINTH": [
-    194,
-    195,
-    183,
-    184,
-    72,
-    73,
-    60,
-    61,
-    186,
-    118,
-    119,
-    170
-  ],
   "SEVII_WATER_LABYRINTH_PERCENTAGES": {
     "194": 15,
     "195": 8,
@@ -2900,18 +2772,6 @@
     "119": 5,
     "170": 5
   },
-  "SEVII_LOST_CAVE": [
-    92,
-    93,
-    94,
-    200,
-    41,
-    42,
-    198,
-    228,
-    177,
-    178
-  ],
   "SEVII_LOST_CAVE_PERCENTAGES": {
     "92": 14,
     "93": 10,
@@ -2924,20 +2784,6 @@
     "177": 8,
     "178": 4
   },
-  "SEVII_PATTERN_BUSH": [
-    214,
-    165,
-    166,
-    167,
-    168,
-    177,
-    178,
-    204,
-    193,
-    127,
-    48,
-    13
-  ],
   "SEVII_PATTERN_BUSH_PERCENTAGES": {
     "214": 10,
     "165": 8,
@@ -2952,33 +2798,7 @@
     "48": 8,
     "13": 6
   },
-  "SEVII_RUIN_VALLEY": [
-    177,
-    178,
-    194,
-    195,
-    193,
-    202,
-    203,
-    231,
-    232,
-    74,
-    207
-  ],
   "SEVII_RUIN_VALLEY_PERCENTAGES": {"177": 22, "21": 17, "22": 9, "52": 9, "193": 9, "194": 9, "53": 4, "54": 4, "202": 4, "183": 9, "79": 4},
-  "SEVII_SEVAULT_CANYON": [
-    246,
-    231,
-    232,
-    227,
-    74,
-    75,
-    104,
-    105,
-    207,
-    111,
-    66
-  ],
   "SEVII_SEVAULT_CANYON_PERCENTAGES": {
     "246": 6,
     "231": 12,
@@ -2992,9 +2812,6 @@
     "111": 10,
     "66": 6
   },
-  "SEVII_TANOBY_RUINS": [
-    201
-  ],
   "SEVII_TANOBY_RUINS_PERCENTAGES": {
     "201": 100
   },

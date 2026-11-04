@@ -8,6 +8,7 @@ S = Sub("KANTO", "SEVII", "SEVII", {
     "SIX_ISLAND": ("Six Island", RAINBOW), "SEVEN_ISLAND": ("Seven Island", RAINBOW),
     "FARAWAY_ISLAND": ("Faraway Island", "has_item:OLD_SEA_MAP"),
 }, ship_word="Seagallop", ship_line="The Seagallop Ferry speeds across the waves.")
+S.CENTER_TEXT, S.MART_TEXT, S.BATTLE_COND = "Heal", "Shop", "has_balls"  # Kanto's buttons (Jordan, 11-04)
 HOME = [{"text": "Seagallop to Vermilion City", "target_area": "VERMILLION_CITY",
          "message": "The Seagallop Ferry speeds back to Vermilion City."}]
 

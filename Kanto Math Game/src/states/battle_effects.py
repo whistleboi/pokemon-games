@@ -33,13 +33,21 @@ SCREENS = {"REFLECT": ("reflect", 5, "Reflect"), "LIGHT-SCREEN": ("light_screen"
            "MIST": ("mist", 5, "the mist"), "TAILWIND": ("tailwind", 4, "the tailwind"),
            "LUCKY-CHANT": ("lucky_chant", 5, "Lucky Chant")}
 WEATHER_HEAL = {"MOONLIGHT", "MORNING-SUN", "SYNTHESIS"}
+# Terrains (5 turns; they work on Pokemon on the ground: not Flying types or Levitate) (11-03, for the TMs).
+TERRAINS = {"ELECTRIC-TERRAIN": ("electric", "An electric current ran across the battlefield!",
+                                 "The electricity disappeared from the battlefield."),
+            "GRASSY-TERRAIN": ("grassy", "Grass grew to cover the battlefield!", "The grass disappeared from the battlefield."),
+            "MISTY-TERRAIN": ("misty", "Mist swirled around the battlefield!", "The mist disappeared from the battlefield."),
+            "PSYCHIC-TERRAIN": ("psychic", "The battlefield got weird!", "The weirdness disappeared from the battlefield.")}
+TERRAIN_TYPE = {"electric": "ELECTRIC", "grassy": "GRASS", "psychic": "PSYCHIC"}
 # Unique status moves this game runs (everything else that does nothing here isn't learned).
 UNIQUE = {"SPLASH", "CELEBRATE", "HOLD-HANDS", "TELEPORT", "FOCUS-ENERGY", "BELLY-DRUM", "ENDURE", "REST",
           "SUBSTITUTE", "PAIN-SPLIT", "METRONOME", "CURSE", "AQUA-RING", "WISH", "HEAL-BELL", "AROMATHERAPY",
-          "REFRESH", "PSYCH-UP", "TAUNT", "DISABLE", "STRENGTH-SAP", "STOCKPILE", "HAZE", "TRICK-ROOM",
+          "REFRESH", "PSYCH-UP", "TAUNT", "DISABLE", "ENCORE", "STRENGTH-SAP", "STOCKPILE", "HAZE", "TRICK-ROOM",
           "MUD-SPORT", "WATER-SPORT", "ROAR", "WHIRLWIND", "LASER-FOCUS", "JUNGLE-HEALING", "LUNAR-BLESSING",
           "TAKE-HEART", "TIDY-UP", "SHELL-SMASH", "FILLET-AWAY", "CLANGOROUS-SOUL", "NO-RETREAT",
-          "VICTORY-DANCE"} | PROTECT | CANT_ESCAPE | set(HAZARDS) | set(SCREENS) | WEATHER_HEAL
+          "VICTORY-DANCE", "POWER-SWAP", "GUARD-SWAP", "SPEED-SWAP", "WONDER-ROOM", "MAGIC-ROOM", "IMPRISON"
+          } | PROTECT | CANT_ESCAPE | set(HAZARDS) | set(SCREENS) | WEATHER_HEAL | set(TERRAINS)
 SUPPORTED_AILMENTS = {"paralysis", "sleep", "freeze", "burn", "poison", "confusion", "infatuation", "trap",
                       "leech-seed", "yawn", "perish-song", "ingrain", "disable"}
 
@@ -107,6 +115,42 @@ class MoveEffects:
             for k in [k for k in table if k not in active]:
                 table.pop(k)
 
+    # ------------------------------------------------------------------ terrains
+    def grounded(self, mon):
+        return bool(mon) and "FLYING" not in (mon.types or []) and self.ab(mon) != "LEVITATE"
+
+    def terrain(self):
+        t = self.field().get("terrain")
+        return t[0] if t else None
+
+    def set_terrain(self, kind):
+        """A terrain for 5 turns (a move, or a Surge ability). Returns its lines."""
+        if self.terrain() == kind:
+            return ["But it failed!"]
+        self.field()["terrain"] = (kind, 5)
+        return [next(t[1] for t in TERRAINS.values() if t[0] == kind)]
+
+    def terrain_power_mult(self, attacker, defender, d):
+        """Electric / Grassy / Psychic Terrain power up their type (user on the ground); Misty Terrain
+        halves Dragon moves and Grassy Terrain halves Earthquake on a grounded target."""
+        kind, t = self.terrain(), d.get("type")
+        mult = 1.0
+        if kind and TERRAIN_TYPE.get(kind) == t and self.grounded(attacker):
+            mult *= 1.3
+        if kind == "misty" and t == "DRAGON" and self.grounded(defender):
+            mult *= 0.5
+        if kind == "grassy" and d.get("name") in ("EARTHQUAKE", "BULLDOZE", "MAGNITUDE") and self.grounded(defender):
+            mult *= 0.5
+        return mult
+
+    def terrain_blocks_status(self, target, ailment):
+        """Misty Terrain stops every status (and confusion); Electric Terrain stops sleep."""
+        kind = self.terrain()
+        if not kind or not self.grounded(target):
+            return False
+        return (kind == "misty" and ailment in ("burn", "paralysis", "poison", "toxic", "sleep", "freeze", "confusion")) \
+            or (kind == "electric" and ailment == "sleep")
+
     # ------------------------------------------------------------------ stat stages
     def stat_mult(self, mon, stat, crit=False, attacking=True):
         s = self.stages(mon)[stat]
@@ -122,12 +166,19 @@ class MoveEffects:
         mult = stage_mult(self.stages(mon)["SPEED"])
         if self.side(mon).get("tailwind"):
             mult *= 2
+        a, w = self.ab(mon), self.weather_now()
+        if (a == "SWIFTSWIM" and w in ("RAIN", "HEAVY_RAIN")) or (a == "CHLOROPHYLL" and w in ("SUN", "HARSH_SUN")) \
+                or (a == "SANDRUSH" and w == "SAND") or (a == "SLUSHRUSH" and w == "SNOW"):
+            mult *= 2
+        if a == "QUICKFEET" and getattr(mon, "status", None):
+            mult *= 1.5
         return mult
 
     def change_stages(self, mon, changes, by_foe=False):
         """Apply [[STAT, n], ...] to mon. Returns the game's messages."""
-        lines = []
+        changes, lines = self.ability_stage_filter(mon, changes, by_foe)  # Clear Body, Simple, Contrary...
         label = self._label(mon)
+        dropped = False
         if by_foe and any(n < 0 for _, n in changes):
             if self.side(mon).get("mist"):
                 return [f"{label} is protected by the mist!"]
@@ -142,14 +193,18 @@ class MoveEffects:
             if new == st[stat]:
                 lines.append(f"{label}'s {name} won't go any {'higher' if n > 0 else 'lower'}!")
                 continue
+            dropped = dropped or new < st[stat]
             st[stat] = new
             lines.append(f"{label}'s {name} {(RISE if n > 0 else FALL)[min(3, abs(n))]}")
-        return lines
+        return lines + self.ability_after_drop(mon, by_foe, dropped)  # Defiant, Competitive
 
     # ------------------------------------------------------------------ before moving
     def before_move(self, mon):
         """Confusion and infatuation can stop a move. Returns (stopped, lines)."""
         v, label, lines = self.vol(mon), self._label(mon), []
+        loafing = self.ability_loafs(mon)  # Truant
+        if loafing:
+            return True, [loafing]
         if v.get("confused"):
             v["confused"] -= 1
             if v["confused"] <= 0:
@@ -168,16 +223,27 @@ class MoveEffects:
             return True, lines + [f"{label} is in love with the foe!", f"{label} is immobilized by love!"]
         return False, lines
 
+    # Moves Encore can't lock in (as in the games).
+    NO_ENCORE = {"ENCORE", "STRUGGLE", "TRANSFORM", "MIMIC", "METRONOME", "SKETCH", "SLEEP-TALK"}
+
     def forced_effect_move(self, mon):
-        """A rampage keeps going (Thrash, Outrage) whatever was picked."""
-        r = self.vol(mon).get("rampage")
-        return r[0] if r else None
+        """A rampage keeps going (Thrash, Outrage) whatever was picked, and so does an Encore (the
+        same move again, for 3 turns)."""
+        v = self.vol(mon)
+        r = v.get("rampage")
+        if r:
+            return r[0]
+        enc = v.get("encore")
+        return enc[0] if enc else None
 
     def move_blocked(self, mon, name, d):
         """Taunt and Disable stop some moves. Returns the message, or None."""
         v = self.vol(mon)
         if v.get("taunt") and not (d.get("power") or 0):
             return f"{self._label(mon)} can't use {name.replace('-', ' ')} after the taunt!"
+        foe = self._foe_of(mon)
+        if foe and self.vol(foe).get("imprison") and name in (getattr(foe, "moves", None) or []):
+            return f"{self._label(mon)} can't use its sealed {name.replace('-', ' ')}!"
         dis = v.get("disabled")
         if dis and dis[0] == name:
             return f"{self._label(mon)}'s {name.replace('-', ' ')} is disabled!"
@@ -238,6 +304,36 @@ class MoveEffects:
             my_side[key] = turns
             team = "Your team" if attacker is self.player_pokemon else "The foe's team"
             return [f"{team} is covered by {label}!" if key != "tailwind" else f"The tailwind blew from behind {team.lower()}!"]
+        if name in TERRAINS:
+            return self.set_terrain(TERRAINS[name][0])
+        if name in ("POWER-SWAP", "GUARD-SWAP"):
+            stats = ("ATTACK", "SPATK") if name == "POWER-SWAP" else ("DEFENSE", "SPDEF")
+            mine, theirs = self.stages(attacker), self.stages(defender)
+            for s in stats:
+                mine[s], theirs[s] = theirs[s], mine[s]
+            what = "changes to Attack and Sp. Atk" if name == "POWER-SWAP" else "changes to Defense and Sp. Def"
+            return [f"{att_label} switched all {what} with the target!"]
+        if name == "SPEED-SWAP":
+            a_spd, d_spd = attacker.stat_value("SPEED"), defender.stat_value("SPEED")
+            v["speed_stat"], fv["speed_stat"] = d_spd, a_spd
+            return [f"{att_label} switched Speed with the target!"]
+        if name in ("WONDER-ROOM", "MAGIC-ROOM"):
+            f, key = self.field(), name.lower().replace("-", "_")
+            if f.get(key):
+                f.pop(key)
+                return ["Wonder Room wore off!" if key == "wonder_room" else "Magic Room wore off!"]
+            f[key] = 5
+            return (["It created a bizarre area in which Defense and Sp. Def stats are swapped!"] if key == "wonder_room"
+                    else ["It created a bizarre area in which Pokemon's held items lose their effects!"])
+        if name == "IMPRISON":
+            if v.get("imprison"):
+                return fail
+            v["imprison"] = True
+            return [f"{att_label} sealed any moves its target shares with it!"]
+        if name == "FLING":
+            return [f"{att_label} has nothing to fling!"] + fail
+        if name == "HELPING-HAND":
+            return fail  # (no ally to help in a single battle)
         if name == "TRICK-ROOM":
             f = self.field()
             if f.get("trick_room"):
@@ -336,6 +432,12 @@ class MoveEffects:
                 return fail
             fv["taunt"] = 3
             return [f"{def_label} fell for the taunt!"]
+        if name == "ENCORE":
+            last = fv.get("last_move")
+            if not last or fv.get("encore") or last in self.NO_ENCORE:
+                return fail
+            fv["encore"] = (last, 3)
+            return [f"{def_label} received an encore!"]
         if name == "DISABLE":
             last = fv.get("last_move")
             if not last or fv.get("disabled"):
@@ -392,13 +494,19 @@ class MoveEffects:
         fail = [] if chance else ["But it failed!"]
         if fv.get("substitute") and not chance and attacker is not defender:
             return fail
+        if ailment == "confusion" and self.terrain_blocks_status(defender, ailment):
+            return fail or [f"{def_label} is protected by the misty terrain!"]
+        if ailment in ("confusion", "infatuation") and self.ability_status_immune(defender, ailment):
+            return fail or [f"{def_label}'s {self.ab_name(defender)} prevents it!"]
         if ailment == "confusion":
             if fv.get("confused") or self.side(defender).get("safeguard"):
                 return [] if chance else [f"{def_label} is already confused!"]
             fv["confused"] = random.randint(2, 5)
             return [f"{def_label} became confused!"]
         if ailment == "infatuation":
-            if fv.get("infatuated"):
+            from src.pokemon import breeding
+            ga, gd = breeding.gender_of(self.game, attacker), breeding.gender_of(self.game, defender)
+            if fv.get("infatuated") or ga is None or gd is None or ga == gd:
                 return fail
             fv["infatuated"] = True
             return [f"{def_label} fell in love!"]
@@ -436,6 +544,8 @@ class MoveEffects:
         meta = d.get("category_meta")
         changes = d.get("stat_changes") or []
         chance = d.get("stat_chance") or (100 if meta in ("damage-raise", "damage-lower") else 0)
+        if meta not in ("damage-raise",) and d.get("target") != "user":
+            chance = self.ability_effect_chance(attacker, defender, chance)  # Serene Grace, Sheer Force, Shield Dust
         if changes and damage and random.uniform(0, 100) < chance:
             if meta == "damage-raise" or d.get("target") == "user":
                 lines += self.change_stages(attacker, changes)
@@ -490,15 +600,16 @@ class MoveEffects:
         s, label, lines = self.side(mon), self._label(mon), []
         if not any(s.get(k) for k in HAZARDS.values()):
             return lines  # (also: the battle's HP isn't set up yet when the first Pokemon come out)
-        flying = "FLYING" in (mon.types or [])
+        flying = "FLYING" in (mon.types or []) or self.ab(mon) == "LEVITATE"
         mx = self._max_hp(mon)
-        if s.get("stealth_rock"):  # 1/8 of max HP, times Rock's effectiveness on it
+        guard = self.ab(mon) == "MAGICGUARD"  # no damage from hazards (Toxic Spikes and Sticky Web still work)
+        if s.get("stealth_rock") and not guard:  # 1/8 of max HP, times Rock's effectiveness on it
             from src.pokemon.mechanics import TypeAdvantage
             chart = TypeAdvantage(self.game.loader.area_data.get("TYPE_CHART", {}))
             dmg = max(1, int(mx * chart.get_multiplier("ROCK", mon.types) / 8))
             self._adjust_hp(mon, -dmg)
             lines.append(f"Pointed stones dug into {label}!")
-        if s.get("spikes") and not flying:  # 1/8, 1/6, 1/4 for 1-3 layers
+        if s.get("spikes") and not flying and not guard:  # 1/8, 1/6, 1/4 for 1-3 layers
             dmg = max(1, mx // {1: 8, 2: 6, 3: 4}[s["spikes"]])
             self._adjust_hp(mon, -dmg)
             lines.append(f"{label} is hurt by the spikes!")
@@ -567,6 +678,13 @@ class MoveEffects:
                     if v[key] <= 0:
                         v.pop(key)
                         lines.append(f"{label} shook off the taunt!")
+            if v.get("encore"):
+                move, turns = v["encore"]
+                if turns <= 1:
+                    v.pop("encore")
+                    lines.append(f"{label}'s encore ended!")
+                else:
+                    v["encore"] = (move, turns - 1)
             if v.get("disabled"):
                 move, turns = v["disabled"]
                 if turns <= 1:
@@ -599,6 +717,25 @@ class MoveEffects:
                         s.pop(key)
                         lines.append(f"{team} {label} wore off!" if key != "tailwind" else f"{team} tailwind petered out!")
         f = self.field()
+        terrain = f.get("terrain")
+        if terrain:
+            kind, turns = terrain
+            if kind == "grassy":
+                for mon in (self.player_pokemon, self.opponent_pokemon):
+                    if mon and self.grounded(mon) and 0 < self._hp(mon) < self._max_hp(mon):
+                        self._adjust_hp(mon, max(1, self._max_hp(mon) // 16))
+                        lines.append(f"{self._label(mon)}'s HP was restored by the grassy terrain.")
+            if turns <= 1:
+                f.pop("terrain")
+                lines.append(next(t[2] for t in TERRAINS.values() if t[0] == kind))
+            else:
+                f["terrain"] = (kind, turns - 1)
+        for key, text in (("wonder_room", "Wonder Room wore off!"), ("magic_room", "Magic Room wore off!")):
+            if f.get(key):
+                f[key] -= 1
+                if f[key] <= 0:
+                    f.pop(key)
+                    lines.append(text)
         for key, text in (("trick_room", "The twisted dimensions returned to normal!"),
                           ("mud_sport", "The effects of Mud Sport have faded."),
                           ("water_sport", "The effects of Water Sport have faded.")):
@@ -607,4 +744,4 @@ class MoveEffects:
                 if f[key] <= 0:
                     f.pop(key)
                     lines.append(text)
-        return lines
+        return lines + self.ability_end_of_turn()  # Speed Boost, Rain Dish, Shed Skin...

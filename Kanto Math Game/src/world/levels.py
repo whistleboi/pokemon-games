@@ -105,9 +105,6 @@ def area_level(game, area_key):
     return int(area["level"]) if area.get("level") else int(_area_levels(game).get(area_key, START_LEVEL + 2))
 
 
-def team_top(game):
-    story = getattr(game, "story_manager", None)
-    return max((int(p.level) for p in getattr(story, "player_team", None) or [] if p), default=0)
 
 
 def follow_team(game, team_levels):

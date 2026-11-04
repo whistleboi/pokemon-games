@@ -177,7 +177,14 @@ class MoveButton(Button):
         Utils.draw_text_outline(surface, pill_txt, self.small_font, WHITE, pill.centerx, pill.centery,
                                 outline_color=dark, thickness=1)
         if self.detail:
-            Utils.draw_text_outline(surface, self.detail, self.small_font, WHITE, pill.right + 10, pill.y + 1,
+            room = r.right - 12 - (pill.right + 10)
+            if self.effect in self.EFFECT:
+                room -= self.small_font.size(self.EFFECT[self.effect][1])[0] + 18
+            # the longest wording that fits beside the type label and the effect tag
+            short = self.detail.replace("  Acc ", " ").replace("Sure hit", "--")
+            text = next((t for t in (self.detail, short, short.replace("Pow ", ""))
+                         if self.small_font.size(t)[0] <= room), short.replace("Pow ", ""))
+            Utils.draw_text_outline(surface, text, self.small_font, WHITE, pill.right + 10, pill.y + 1,
                                     align="left", outline_color=dark, thickness=2)
         if self.effect in self.EFFECT:
             color, word = self.EFFECT[self.effect]

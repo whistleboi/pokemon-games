@@ -41,14 +41,8 @@ def forms_for(assets, species_id):
     return all_forms(assets).get(str(species_id), [])
 
 
-def mega_stones(assets):
-    """Every Mega Stone item name (orbs excluded)."""
-    return sorted({f["item"] for fs in all_forms(assets).values() for f in fs
-                   if f.get("item") and f["form"] != "primal"})
 
 
-def stone_for(assets, species_id):
-    return [f["item"] for f in forms_for(assets, species_id) if f["form"] != "primal" and f.get("item")]
 
 
 def item_label(item):
@@ -146,9 +140,6 @@ def is_dynamax(pokemon):
     return bool(getattr(pokemon, "raid_stage", None))
 
 
-def is_powered(pokemon):
-    """Mega Evolved, Primal Reverted, or a Dynamax/Gigantamax raid boss."""
-    return bool(pokemon) and (is_changed(pokemon) or is_dynamax(pokemon))
 
 
 def form_weather(pokemon):
@@ -169,5 +160,11 @@ def mark_trainer_team(team, trainer_info):
     for p in team:
         if p and str(p.id) in sets:
             p.preset_moves = list(sets[str(p.id)])
+            p.moves = []
+    # Moves by team slot ("team_moves": one list per Pokemon, in team order), for a team with the
+    # same species twice and different moves (Norman's two Slaking, ORAS).
+    for p, moves in zip(team, (trainer_info or {}).get("team_moves") or []):
+        if p and moves:
+            p.preset_moves = list(moves)
             p.moves = []
     return team

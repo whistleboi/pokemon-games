@@ -28,12 +28,15 @@ class Sub:
             out.append(opt)
         return out
 
+    CENTER_TEXT, MART_TEXT = "Pokemon Center", "Poke Mart"  # (Sevii uses Kanto's "Heal" / "Shop")
+    BATTLE_COND = "can_battle"  # (Sevii: "has_balls", as on Kanto's routes)
+
     def town(self, key, name, level, explore, local=(), gym=None, extra_travel=(), center=True, shop=True,
              ships=True, **more):
         a = self._base(key, name, level, "town")
         a["has_gym"] = bool(gym)
-        a["explore_options"] = (([{"text": "Pokemon Center", "action": "HEAL"}] if center else [])
-                                + ([{"text": "Poke Mart", "action": "SHOP"}] if shop else []) + list(explore))
+        a["explore_options"] = (([{"text": self.CENTER_TEXT, "action": "HEAL"}] if center else [])
+                                + ([{"text": self.MART_TEXT, "action": "SHOP"}] if shop else []) + list(explore))
         a["travel_options"] = ([{"text": t, "target_area": k, **({"condition": c} if c else {})} for t, k, c in local]
                                + list(extra_travel) + (self.ships(key) if ships else []))
         if local:
@@ -49,11 +52,10 @@ class Sub:
         menu = []
         if pool:
             pk = f"{self.prefix}_{key}_PERCENTAGES"
-            self.pools[f"{self.prefix}_{key}"] = [int(i) for i in pool]
             self.pools[pk] = {str(i): w for i, w in pool.items()}
             a["wild_pool_percentages"] = pk
             menu += [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": catch_cond, "color": "BLUE"},
-                     {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}]
+                     {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": self.BATTLE_COND, "color": "GREEN"}]
         if trainers:
             menu.append({"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"})
         menu += list(extra)
@@ -76,7 +78,7 @@ class Sub:
         data.update(extra or {})
         with open(path, "w", encoding="utf-8", newline="\n") as f:
             json.dump(data, f, indent=2, ensure_ascii=False)
-        print(path, "areas:", len(self.areas), "pools:", len(self.pools) // 2)
+        print(path, "areas:", len(self.areas), "pools:", len(self.pools))
 
 
 def event(text, ev, **extra):
