@@ -96,6 +96,14 @@ class PokemonLoader:
                 return str(name)[len(f) + 1:]
         return name
 
+    UNOWN_MARKS = {"exclamation": "!", "question": "?"}
+
+    @classmethod
+    def unown_name(cls, form):
+        """Unown by its shape, always with it: "A UNOWN" (the plain sprite), "B UNOWN"... "! UNOWN"."""
+        form = "a" if form in (None, "", "normal") else str(form).lower()
+        return f"{cls.UNOWN_MARKS.get(form, form.upper())} UNOWN"
+
     def _resolve_form_context(self, p_id, base_form, name, area_data):
         """Resolves specific form details (Mega X/Y, Alt forms) and sprite targets."""
         p_id_str = str(p_id)
@@ -174,11 +182,20 @@ class PokemonLoader:
                 alt_config = area_data.get("alt_forms")
                 if alt_config and alt_config.get("enabled"):
                     weights = alt_config.get("weights", {})
+                    # One draw over this species' forms, so weights adding up to 1 (the Unown
+                    # letters) always give a form; one at a time, the first letters won most.
+                    roll = random.random()
                     for k, chance in weights.items():
-                        if (k.startswith(f"{p_id_str}_") and random.random() < chance
-                                and regional_forms.form_allowed(self.game, k.split("_", 1)[1])):
-                            form = k.split("_", 1)[1]
+                        if not k.startswith(f"{p_id_str}_"):
+                            continue
+                        roll -= chance
+                        if roll < 0:
+                            if regional_forms.form_allowed(self.game, k.split("_", 1)[1]):
+                                form = k.split("_", 1)[1]
                             break
+
+            if p_id == 201 and form == "a":
+                form = "normal"  # the A is Unown's plain sprite (201.png, shiny too): one A, not two
 
             if form != "normal":
                 if p_id == 201:
@@ -194,6 +211,8 @@ class PokemonLoader:
                     display_name = self.plain_name(name)
                 else:
                     display_name = f"{suffix} {name}" if suffix not in name.upper() else name
+            if p_id == 201:  # ("N" is in "UNOWN", so the line above dropped N, O, U and W)
+                display_name = self.unown_name(form)
 
         return form, display_name, target_dir, target_map, target_fname
 
@@ -353,6 +372,8 @@ class PokemonLoader:
     def fetch_specific(self, p_id, form="normal", is_shiny=False):
         """Fetches data for a specific Pokemon ID with proper regional form support."""
         try:
+            if p_id == 201 and form == "a":
+                form = "normal"  # (older saves: the A as "a") Unown's plain sprite is the A
             # --- SMART NUMBERING & META ALIASING ---
             form_map = self.area_data.get("FORM_MAP", {})
 
@@ -443,6 +464,8 @@ class PokemonLoader:
                 display_name = f"{form_upper} {base_name}" if form_upper not in base_name.upper() else base_name
             else:
                 display_name = base_name
+            if p_id == 201:
+                display_name = self.unown_name(form)
 
             if meta_id in self.all_boss_ids or p_id in self.all_boss_ids:
                 stage = 3

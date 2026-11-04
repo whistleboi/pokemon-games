@@ -98,9 +98,16 @@ S.wild("ROCKET_WAREHOUSE", "Rocket Warehouse", 57, "indoor", {},
 
 # ---- Six Island: Pattern Bush, Ruin Valley, the Dotted Hole (Sapphire).
 S.town("SIX_ISLAND", "Six Island", 56, [
+    # Jordan (11-04): an Unown Report lies next to the notes, for a Bag that doesn't have one.
     event("Ruin Maniac's Notes", {
-        "lines": ["Ruin Maniac: There's a sealed cave in Ruin Valley called the Dotted Hole.",
-                  "Its walls are covered in raised dots. Count them right and the door opens!"]}),
+        "stages": [{"requires": ["not:has_item:UNOWN_REPORT"], "flag": "got_unown_report_sevii",
+                    "lines": ["Ruin Maniac: There's a sealed cave in Ruin Valley called the Dotted Hole.",
+                              "Its walls are covered in raised dots. Count them right and the door opens!",
+                              "Next to the notes lies an UNOWN REPORT for the Unown of Tanoby Ruins.",
+                              "It keeps track of every Unown shape you catch!"],
+                    "gift_item": {"UNOWN_REPORT": 1}}],
+        "done": ["Ruin Maniac: There's a sealed cave in Ruin Valley called the Dotted Hole.",
+                 "Its walls are covered in raised dots. Count them right and the door opens!"]}),
 ], local=[("Pattern Bush", "PATTERN_BUSH", None), ("Ruin Valley", "RUIN_VALLEY", None)], extra_travel=HOME)
 
 S.wild("PATTERN_BUSH", "Pattern Bush", 56, "forest",
@@ -178,8 +185,8 @@ S.mission("sevii_m1", "SIDE", "The Sevii Islands",
           "Blaine's Tri-Pass opens the Seagallop Ferry from Vermilion. Meet Celio on One Island.",
           {"item": "TRI_PASS", "flag_not": "met_celio"}, "Network Machine")
 S.mission("sevii_m2", "SIDE", "Team Rocket on Mt. Ember",
-          "Researchers on Mt. Ember saw Team Rocket digging for a gem. Chase them off, and look for Moltres at the summit.",
-          {"flag": "met_celio", "flag_not": "sevii_ember_rocket"}, "Moltres")
+          "Researchers on Mt. Ember saw Team Rocket digging for a gem. Chase them off!",
+          {"flag": "met_celio", "flag_not": "sevii_ember_rocket"}, "Story progress")
 S.mission("sevii_m3", "SIDE", "Lost Lostelle",
           "Lostelle never came home from Three Island. Beat the bikers on Bond Bridge and search the Berry Forest.",
           {"flag": "heard_lostelle", "flag_not": "rescued_lostelle"}, "Rare Candy")
@@ -191,4 +198,23 @@ S.mission("sevii_m5", "SIDE", "The Ruby and the Sapphire",
           {"item": "RAINBOW_PASS", "flag_not": "network_machine_fixed"}, "Old Sea Map")
 S.mission("sevii_m6", "SIDE", "The Faraway Island",
           "Celio's old sea map shows an uncharted island. A pink Pokemon lives there...",
-          {"item": "OLD_SEA_MAP", "flag_not": "caught_mew"}, "Mew")
+          {"item": "OLD_SEA_MAP", "flag_not": "caught_mew"}, "Mew", completed_flag="caught_mew")
+# Jordan (11-04): fill the Unown Report at Tanoby. It counts this Bag's team and PC, so a Johto
+# player's Unown join in once Kanto and Johto are linked (the second Champion title).
+S.mission("sevii_m7", "SIDE", "Unown of Tanoby",
+          "The seven Tanoby chambers hold Unown of every shape. Catch all 28 to fill the Unown Report!",
+          {"item": "UNOWN_REPORT", "flag": "met_celio"}, "A full Unown Report",
+          unown_forms=28, target="TANOBY_RUINS")
+# Jordan (11-04): a side mission for each of Sevii's legendaries, done once it's beaten.
+S.mission("sevii_m8", "SIDE", "The Flame of Mt. Ember",
+          "Moltres nests at the top of Mt. Ember on One Island. Climb to the summit and face it!",
+          {"flag": ["met_celio"]}, "Moltres", completed_flag="MT_EMBER_boss_defeated", target="MT_EMBER")
+S.mission("sevii_m9", "SIDE", "Lugia of Navel Rock",
+          "The Seagallop sails to Navel Rock now. Deep below the rock, a guardian of the sea is waiting.",
+          {"flag": ["met_celio", "beat_champion"]}, "Lugia", completed_flag="navel_rock_lugia", target="NAVEL_ROCK")
+S.mission("sevii_m10", "SIDE", "Ho-Oh of Navel Rock",
+          "At the very top of Navel Rock, a bird with rainbow wings is waiting.",
+          {"flag": ["met_celio", "beat_champion"]}, "Ho-Oh", completed_flag="navel_rock_ho_oh", target="NAVEL_ROCK")
+S.mission("sevii_m11", "SIDE", "The Birth Island Mystery",
+          "A Pokemon from space was seen on Birth Island. Take the Seagallop there and find it!",
+          {"flag": ["met_celio", "beat_champion"]}, "Deoxys", completed_flag="birth_island_deoxys", target="BIRTH_ISLAND")

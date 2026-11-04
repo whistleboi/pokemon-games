@@ -13,7 +13,7 @@ from src.pokemon.data import Pokemon
 from src.states.battle import TrainerBattleState, TrainerIntroState
 import random
 from src.states.systems.pokemath import PokeMathInfiniteState
-from src.ui.mon_tags import fit_sprite
+from src.ui.mon_tags import fit_sprite, draw_shiny_star
 
 
 # [REF-0061: Bike Shop State]
@@ -538,17 +538,51 @@ class FossilRevivalState(GameState):
 
 
 class UnownReportState(GameState):
+    """The Unown Report: the 28 forms with you (team and PC), and the reward for all of them
+    (Jordan, 11-04): MERGE THE UNOWN turns one Unown of each form into one Nown."""
+
+    FORMS = ["normal", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n",
+             "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "exclamation", "question"]
+    MERGE_GOLD = (214, 160, 40)
+
     def __init__(self, game, previous_state):
         super().__init__(game)
         self.previous_state = previous_state
+        self.forms = self.FORMS
         self.btn_back = CommandButton((16, 14, 140, 56), "BACK", game.assets.fonts["button"], self.go_back,
                                       bg_color=theme.BACK, autosize=False)
+        w, h = game.width, game.height
+        self.bar = pygame.Rect(24, h - 92, w - 48, 76)
+        merge_rect = pygame.Rect(self.bar.right - 330, self.bar.y + 10, 314, 56)
+        fonts = game.assets.fonts
+        merge_font = next((fonts[k] for k in ("button", "label") if fonts[k].size("MERGE THE UNOWN")[0] <= 290),
+                          fonts["caption"])
+        self.btn_merge = CommandButton(merge_rect, "MERGE THE UNOWN", merge_font, None, bg_color=self.MERGE_GOLD,
+                                       autosize=False)
+        self.confirm_rect = pygame.Rect(w // 2 - 330, h // 2 - 130, 660, 260)
+        self.btn_yes = CommandButton((self.confirm_rect.centerx - 230, self.confirm_rect.bottom - 82, 210, 60),
+                                     "MERGE", game.assets.fonts["button"], self.merge, bg_color=self.MERGE_GOLD,
+                                     autosize=False, visible=False)
+        self.btn_no = CommandButton((self.confirm_rect.centerx + 20, self.confirm_rect.bottom - 82, 210, 60),
+                                    "NOT YET", game.assets.fonts["button"], self.close_confirm, bg_color=theme.BACK,
+                                    autosize=False, visible=False)
+        self.confirming = False
+        self.refresh()
 
-        self.forms = ["normal", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
-                      "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "question", "exclamation"]
-
-        all_owned = self.game.story_manager.player_team + self.game.story_manager.pc_pokemon
-        self.caught_forms = {p.form for p in all_owned if p and p.id == 201}
+    def refresh(self):
+        """What's with you now: each form's count, and which have a shiny."""
+        story = self.game.story_manager
+        self.counts, self.shiny = {}, set()
+        for p in story.player_team + story.pc_pokemon:
+            if p and p.id == 201:
+                form = "normal" if str(p.form).lower() in ("normal", "a") else str(p.form).lower()
+                self.counts[form] = self.counts.get(form, 0) + 1
+                if p.is_shiny:
+                    self.shiny.add(form)
+        self.caught_forms = set(self.counts)
+        self.ready = len(self.caught_forms) >= len(self.forms)
+        self.btn_merge.callback = self.ask_merge if self.ready else None
+        self.btn_merge.text = "MERGE THE UNOWN" if self.ready else "MERGE (ALL 28)"
 
     def go_back(self):
         from src.states.overworld import PlayState
@@ -558,42 +592,108 @@ class UnownReportState(GameState):
 
     def start(self):
         self.game.ui_manager.elements.clear()
-        self.game.ui_manager.add_element(self.btn_back)
+        for btn in (self.btn_back, self.btn_merge, self.btn_yes, self.btn_no):
+            self.game.ui_manager.add_element(btn)
+
+    def ask_merge(self):
+        self.confirming = True
+        for btn, on in ((self.btn_yes, True), (self.btn_no, True), (self.btn_merge, False), (self.btn_back, False)):
+            btn.set_visibility(on)
+
+    def close_confirm(self):
+        self.confirming = False
+        for btn, on in ((self.btn_yes, False), (self.btn_no, False), (self.btn_merge, True), (self.btn_back, True)):
+            btn.set_visibility(on)
+
+    def merge(self):
+        """One of each form merges; the one left evolves into Nown on the evolution screen."""
+        kept = self.game.story_manager.merge_unown()
+        self.close_confirm()
+        if not kept:
+            self.refresh()
+            return
+        unown, idx, context = kept
+        from src.states.systems.evolution_scene import EvolutionState
+        evo = EvolutionState(self.game, unown, self.game.loader.get_special_id("NOWN", 3025), idx,
+                             context=context, return_state=self.previous_state)
+        evo.evolve_yes()  # (already asked here)
+        self.game.change_state(evo)
 
     def handle_events(self, events):
-        pass
+        for event in events:
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+                (self.close_confirm if self.confirming else self.go_back)()
 
     def update(self):
         pass
 
+    @staticmethod
+    def _label(form):
+        return {"normal": "A", "question": "?", "exclamation": "!"}.get(form, form.upper())
+
     def draw(self):
-        """The menu frame: one card per Unown form (28), caught ones with their sprite."""
         screen = self.game.screen
         f = self.game.assets.fonts
         accent = theme.ACCENT["tool"]
         theme.menu_background(screen, accent, "UNOWN REPORT", f["button"], title_x=176)
-        found = sum(1 for x in self.forms if x in (self.caught_forms or ()))
-        Utils.draw_text_outline(screen, f"{found} / {len(self.forms)} forms", f["button"], WHITE,
-                                self.game.width - 24, theme.HEADER_H // 2 - 4, align="right",
-                                outline_color=theme.shade(accent, 0.45), thickness=3)
-        cols, gap = 7, 12
-        top = theme.HEADER_H + 16
+        found = len(self.caught_forms)
+
+        # Progress in the header: a bar that fills as the forms come in (gold at all 28).
+        bar = pygame.Rect(self.game.width - 404, theme.HEADER_H // 2 - 18, 380, 32)
+        pygame.draw.rect(screen, theme.shade(accent, 0.45), bar, border_radius=16)
+        if found:
+            fill = bar.inflate(-6, -6)
+            fill.w = max(fill.h, int(fill.w * found / len(self.forms)))
+            pygame.draw.rect(screen, self.MERGE_GOLD if self.ready else (120, 196, 120), fill, border_radius=13)
+        Utils.draw_text_outline(screen, f"{found} / {len(self.forms)} forms", f["label"], WHITE, bar.centerx,
+                                bar.centery, outline_color=theme.shade(accent, 0.35), thickness=2)
+
+        cols, gap = 7, 10
+        top = theme.HEADER_H + 12
         cw = (self.game.width - 48 - gap * (cols - 1)) // cols
-        ch = (self.game.height - 16 - top - gap * 3) // 4
+        ch = (self.bar.y - 10 - top - gap * 3) // 4
         for i, form in enumerate(self.forms):
             col, row = i % cols, i // cols
             rect = pygame.Rect(24 + col * (cw + gap), top + row * (ch + gap), cw, ch)
-            caught = form in (self.caught_forms or ())
-            theme.card(screen, rect, fill=theme.TEXTBOX if caught else (214, 218, 228))
-            lbl = "A" if form == "normal" else ("?" if form == "question" else "!" if form == "exclamation"
-                                                 else form.upper())
-            if caught:
-                img = self.game.assets.get_pokemon_image(201, form, False)
-                if img:
-                    spr = fit_sprite(img, cw - 30, ch - 50)
-                    screen.blit(spr, spr.get_rect(center=(rect.centerx, rect.centery - 10)))
-                theme.shadow_text(screen, lbl, f["s_med"], rect.centerx, rect.bottom - 22, align="center")
-            else:
-                theme.shadow_text(screen, "?", f["big"], rect.centerx, rect.centery, color=(150, 156, 172),
-                                  align="center")
+            caught = form in self.caught_forms
+            theme.card(screen, rect, fill=theme.TEXTBOX if caught else (206, 210, 222))
+            img = self.game.assets.get_pokemon_image(201, form, form in self.shiny)
+            if img:
+                spr = fit_sprite(img, cw - 40, ch - 52).copy()
+                if not caught:  # its shape, so you know what to look for
+                    spr.fill((70, 74, 92), special_flags=pygame.BLEND_RGB_MULT)
+                    spr.set_alpha(140)
+                screen.blit(spr, spr.get_rect(center=(rect.centerx, rect.y + (ch - 30) // 2 + 4)))
+            theme.shadow_text(screen, self._label(form), f["label"], rect.centerx, rect.bottom - 26,
+                              color=theme.TEXT if caught else (120, 126, 146), align="center")
+            if form in self.shiny:
+                draw_shiny_star(screen, rect.right - 16, rect.y + 16, 9)
+            if self.counts.get(form, 0) > 1:
+                theme.shadow_text(screen, f"x{self.counts[form]}", f["caption"], rect.x + 10, rect.y + 6)
+
+        # The bottom bar: how many to go and where they live, or the reward.
+        theme.draw_textbox(screen, self.bar)
+        if self.ready:
+            tip = "All 28 forms! Merge your Unown to see what they become."
+        elif self.game.story_manager.story_flags.get("unown_merged") and not found:
+            tip = "Your Unown became NOWN! The ruins still hold more Unown."
+        else:
+            tip = f"{len(self.forms) - found} to go! Unown live in the Ruins of Alph and Tanoby Ruins."
+        room = self.bar.w - 380
+        font = next((f[k] for k in ("button", "label") if f[k].size(tip)[0] <= room), f["caption"])
+        theme.shadow_text(screen, tip, font, self.bar.x + 20, self.bar.centery - font.get_height() // 2)
+
+        if self.confirming:
+            veil = pygame.Surface((self.game.width, self.game.height), pygame.SRCALPHA)
+            veil.fill((10, 12, 24, 160))
+            screen.blit(veil, (0, 0))
+            theme.popup_panel(screen, self.confirm_rect, "MERGE THE UNOWN?", f["button"])
+            room = self.confirm_rect.w - 60
+            lines = ("One of each Unown form will join", "together as one new Pokemon.",
+                     "They won't come back. Ready?")
+            font = next((f[key] for key in ("label", "caption")  # one size, the largest that fits every line
+                         if all(f[key].size(line)[0] <= room for line in lines)), f["caption"])
+            for k, line in enumerate(lines):
+                Utils.draw_text_outline(screen, line, font, WHITE, self.confirm_rect.centerx,
+                                        self.confirm_rect.y + 72 + k * 30, outline_color=theme.MENU_BG, thickness=2)
         self.game.ui_manager.draw(screen)

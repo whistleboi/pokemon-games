@@ -326,7 +326,13 @@ EVENTS = {
         {"lines": ["Professor Cozmo: Thank you for saving me at Meteor Falls!",
                    "Professor Cozmo: They took my Meteorite up Mt. Chimney. Please stop them!",
                    "Professor Cozmo: The Cable Car on Route 112 goes to the top."],
-         "requires": ["meteor_falls_cleared"], "flag": "cozmo_thanked"}],
+         "requires": ["meteor_falls_cleared"], "flag": "cozmo_thanked"},
+        # Jordan (11-04): Hoenn's Jirachi (no place in the games: it was an event gift) wakes
+        # in Meteor Falls under the Millennium Comet, after the Delta Episode.
+        {"lines": ["Professor Cozmo: Have you seen the sky? The Millennium Comet is passing over Hoenn!",
+                   "Professor Cozmo: It comes once every thousand years. Old stories say a Pokemon wakes under it.",
+                   "Professor Cozmo: Its light shines brightest deep in Meteor Falls. Go and see!"],
+         "requires": ["delta_episode_cleared"], "flag": "millennium_comet_told"}],
         "done": ["Professor Cozmo: I'll keep studying meteorites. Come by anytime!"]},
 
     # ---------------- Kalos / Alola / Galar ----------------

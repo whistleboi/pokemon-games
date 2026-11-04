@@ -1411,7 +1411,8 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, GameState)
         if eff == 0:
             return 0, lines + [f"It doesn't affect {def_label}..."], False
         if self.ability_wonder_guard(attacker, defender, eff):
-            return 0, lines + [f"{def_label}'s Wonder Guard!", f"It doesn't affect {def_label}..."], False
+            return 0, lines + [f"{def_label}'s Wonder Guard!", f"It doesn't affect {def_label}...",
+                               "Only super-effective moves can hit it!"], False
         weather_mult = self._weather_mult(d["type"], defender)
         hits = d["max_hits"] if d.get("max_hits") and self.ab(attacker) == "SKILLLINK" else self._hit_count(d)
         damage, crit_any, landed = 0, False, 0

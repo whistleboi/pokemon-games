@@ -2028,7 +2028,20 @@
           "action": "EVENT",
           "color": "GOLD",
           "event": {
-            "lines": [
+            "stages": [
+              {
+                "requires": ["not:has_item:UNOWN_REPORT"],
+                "flag": "got_unown_report_sevii",
+                "lines": [
+                  "Ruin Maniac: There's a sealed cave in Ruin Valley called the Dotted Hole.",
+                  "Its walls are covered in raised dots. Count them right and the door opens!",
+                  "Next to the notes lies an UNOWN REPORT for the Unown of Tanoby Ruins.",
+                  "It keeps track of every Unown shape you catch!"
+                ],
+                "gift_item": {"UNOWN_REPORT": 1}
+              }
+            ],
+            "done": [
               "Ruin Maniac: There's a sealed cave in Ruin Valley called the Dotted Hole.",
               "Its walls are covered in raised dots. Count them right and the door opens!"
             ]
@@ -2543,6 +2556,11 @@
       "level": 58,
       "subregion": "SEVII",
       "wild_pool_percentages": "SEVII_TANOBY_RUINS_PERCENTAGES",
+      "alt_forms": {
+        "_note": "Half FireRed/LeafGreen chamber odds, half even, so the rare letters (O, !, ?) can be found (Jordan, 11-04)",
+        "enabled": true,
+        "weights": {"201_a": 0.0886, "201_b": 0.0193, "201_c": 0.0536, "201_d": 0.0393, "201_e": 0.0193, "201_f": 0.0272, "201_g": 0.0357, "201_h": 0.0279, "201_i": 0.0236, "201_j": 0.0322, "201_k": 0.0193, "201_l": 0.0322, "201_m": 0.0236, "201_n": 0.0607, "201_o": 0.0186, "201_p": 0.0464, "201_q": 0.0222, "201_r": 0.0279, "201_s": 0.0393, "201_t": 0.0322, "201_u": 0.0214, "201_v": 0.0536, "201_w": 0.0393, "201_x": 0.0250, "201_y": 0.0464, "201_z": 0.0886, "201_exclamation": 0.0186, "201_question": 0.0186}
+      },
       "battle_type": "cave",
       "min_rounds": 2,
       "trainer_pool": [],
@@ -2624,13 +2642,13 @@
       "id": "sevii_m2",
       "type": "SIDE",
       "title": "Team Rocket on Mt. Ember",
-      "description": "Researchers on Mt. Ember saw Team Rocket digging for a gem. Chase them off, and look for Moltres at the summit.",
+      "description": "Researchers on Mt. Ember saw Team Rocket digging for a gem. Chase them off!",
       "condition": {
         "flag": "met_celio",
         "flag_not": "sevii_ember_rocket",
         "required_region": "KANTO"
       },
-      "reward": "Moltres",
+      "reward": "Story progress",
       "region": "KANTO"
     },
     {
@@ -2686,7 +2704,79 @@
         "required_region": "KANTO"
       },
       "reward": "Mew",
-      "region": "KANTO"
+      "region": "KANTO",
+      "completed_flag": "caught_mew"
+    },
+    {
+      "id": "sevii_m7",
+      "type": "SIDE",
+      "title": "Unown of Tanoby",
+      "description": "The seven Tanoby chambers hold Unown of every shape. Catch all 28 to fill the Unown Report!",
+      "condition": {
+        "item": "UNOWN_REPORT",
+        "flag": "met_celio",
+        "required_region": "KANTO"
+      },
+      "reward": "A full Unown Report",
+      "region": "KANTO",
+      "unown_forms": 28,
+      "target": "TANOBY_RUINS"
+    },
+    {
+      "id": "sevii_m8",
+      "type": "SIDE",
+      "title": "The Flame of Mt. Ember",
+      "description": "Moltres nests at the top of Mt. Ember on One Island. Climb to the summit and face it!",
+      "condition": {
+        "flag": ["met_celio"],
+        "required_region": "KANTO"
+      },
+      "reward": "Moltres",
+      "region": "KANTO",
+      "completed_flag": "MT_EMBER_boss_defeated",
+      "target": "MT_EMBER"
+    },
+    {
+      "id": "sevii_m9",
+      "type": "SIDE",
+      "title": "Lugia of Navel Rock",
+      "description": "The Seagallop sails to Navel Rock now. Deep below the rock, a guardian of the sea is waiting.",
+      "condition": {
+        "flag": ["met_celio", "beat_champion"],
+        "required_region": "KANTO"
+      },
+      "reward": "Lugia",
+      "region": "KANTO",
+      "completed_flag": "navel_rock_lugia",
+      "target": "NAVEL_ROCK"
+    },
+    {
+      "id": "sevii_m10",
+      "type": "SIDE",
+      "title": "Ho-Oh of Navel Rock",
+      "description": "At the very top of Navel Rock, a bird with rainbow wings is waiting.",
+      "condition": {
+        "flag": ["met_celio", "beat_champion"],
+        "required_region": "KANTO"
+      },
+      "reward": "Ho-Oh",
+      "region": "KANTO",
+      "completed_flag": "navel_rock_ho_oh",
+      "target": "NAVEL_ROCK"
+    },
+    {
+      "id": "sevii_m11",
+      "type": "SIDE",
+      "title": "The Birth Island Mystery",
+      "description": "A Pokemon from space was seen on Birth Island. Take the Seagallop there and find it!",
+      "condition": {
+        "flag": ["met_celio", "beat_champion"],
+        "required_region": "KANTO"
+      },
+      "reward": "Deoxys",
+      "region": "KANTO",
+      "completed_flag": "birth_island_deoxys",
+      "target": "BIRTH_ISLAND"
     }
   ],
   "SEVII_TREASURE_BEACH_PERCENTAGES": {"21": 28, "114": 28, "22": 19, "52": 10, "53": 5, "54": 5, "79": 5},

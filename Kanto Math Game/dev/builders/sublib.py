@@ -67,10 +67,10 @@ class Sub:
         a.update(more)
         return a
 
-    def mission(self, mid, kind, title, desc, cond, reward):
+    def mission(self, mid, kind, title, desc, cond, reward, **extra):
         cond = dict(cond, required_region=self.region)
         self.missions.append({"id": mid, "type": kind, "title": title, "description": desc,
-                              "condition": cond, "reward": reward, "region": self.region})
+                              "condition": cond, "reward": reward, "region": self.region, **extra})
 
     def save(self, path, extra=None):
         data = {"STORY_PROGRESSION": self.areas, "JOURNAL_MISSIONS": self.missions}

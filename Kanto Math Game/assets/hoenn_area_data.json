@@ -2410,7 +2410,7 @@
           "name": "Cooltrainer Camden",
           "class": "COOLTRAINER",
           "sprite": "acetrainer_m.png",
-          "team": [260, 319, 381],
+          "team": [260, 319, 334],
           "rewards": { "balls": 10 },
           "is_boss_battle": true
         }
@@ -2801,6 +2801,7 @@
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
+        { "text": "THE MILLENNIUM COMET", "action": "BOSS", "color": "GOLD", "condition": ["millennium_comet_told", "not:hoenn_jirachi_met"], "boss": { "id": 385, "name": "Jirachi", "victory_flag": "hoenn_jirachi_met", "lines": ["The Millennium Comet shines through a crack in the cave roof.", "A tiny Pokemon with a star on its head floats down... Jirachi wakes!"] } },
         { "text": "FALLARBOR TOWN", "action": "EXIT", "target_area": "FALLARBOR_TOWN", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "FALLARBOR_TOWN",
@@ -3573,6 +3574,16 @@
       "condition": { "required_region": "HOENN", "flag": "cave_of_origin_cleared" },
       "reward": "Weather Dial + one of each weather rock",
       "completed_flag": "got_weather_dial"
+    },
+    {
+      "id": "hoenn_s9",
+      "type": "SIDE",
+      "title": "The Millennium Comet",
+      "description": "A comet that comes once every thousand years is passing over Hoenn. Ask Professor Cozmo in Fallarbor Town, then look in Meteor Falls.",
+      "condition": { "required_region": "HOENN", "flag": "delta_episode_cleared" },
+      "reward": "Jirachi",
+      "completed_flag": "hoenn_jirachi_met",
+      "target": "HOENN_METEOR_FALLS"
     }
   ],
   "HOENN_UNDERWATER_POOL_PERCENTAGES": { "170": 35, "171": 15, "366": 25, "369": 10, "370": 15 },

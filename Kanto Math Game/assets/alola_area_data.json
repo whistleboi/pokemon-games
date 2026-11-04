@@ -3419,7 +3419,7 @@
       "wild_pool_percentages": "ALOLA_ROUTE_16_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {"name": "Veteran Sina", "class": "ACE_TRAINER", "sprite": "acetrainer_f.png", "is_boss_battle": true, "team": [730, 745, 788], "rewards": {"balls": 5}},
+        {"name": "Veteran Sina", "class": "ACE_TRAINER", "sprite": "acetrainer_f.png", "is_boss_battle": true, "team": [730, 745, 748], "rewards": {"balls": 5}},
         {"name": "Scientist Reid", "class": "SCIENTIST", "sprite": "scientist.png", "team": [737], "rewards": {"balls": 2}, "levels": [32]},
         {"name": "Preschooler Kindra", "class": "PRESCHOOLER", "sprite": "school_kid_m.png", "team": [778], "rewards": {"balls": 2}, "levels": [34]},
         {"name": "Team Skull Grunt", "class": "TEAM_SKULL", "sprite": "skull_grunt.png", "team": [568], "rewards": {"balls": 2}, "levels": [35]}

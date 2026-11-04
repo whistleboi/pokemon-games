@@ -238,17 +238,19 @@ class PokedexState(GameState):
         elif self.current_tab == "unown":
             self.full_dex = []
             caught_data = self.game.data.data.get("pokedex", {})
-            forms = ["normal", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "question", "exclamation"]
+            forms = ["normal", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "exclamation", "question"]  # A-Z, then ! and ?
+            from src.pokemon.loader import PokemonLoader
             for f in forms:
-                key = "201" if f == "normal" else f"201_{f}"
-                is_caught = key in caught_data
-                name = f"UNOWN-{f.upper()}" if f not in ["normal", "question", "exclamation"] else ("UNOWN-A" if f == "normal" else f"UNOWN-{'?' if f == 'question' else '!'}")
+                # Caught forms are saved as "201-c"; the A as "201-normal" (older saves: "201-a")
+                keys = ["201-normal", "201-a"] if f == "normal" else [f"201-{f}"]
+                found = [caught_data[k] for k in keys if isinstance(caught_data.get(k), dict)]
+                is_caught = bool(found)
                 self.full_dex.append({
                     "id": 201,
                     "status": 2 if is_caught else 0,
-                    "shiny": caught_data.get(key, {}).get("shiny", False) if is_caught else False,
+                    "shiny": any(v.get("shiny") for v in found),
                     "form": f,
-                    "name": name if is_caught else "???"
+                    "name": PokemonLoader.unown_name(f) if is_caught else "???"
                 })
             return
         elif self.current_tab == "normal":
@@ -325,10 +327,13 @@ class PokedexState(GameState):
                     x.get("name", "ZZZ").upper() if x['status'] == 2 else get_dex_sort_id(x)
                 ))
 
+            # Nown (No. ???, only once caught) sits right after Unown (Jordan, 11-04)
             nown = next((p for p in self.full_dex if p['id'] == nown_id), None)
             if nown:
                 self.full_dex.remove(nown)
-                self.full_dex.insert(0, nown)
+                after = next((k + 1 for k, p in enumerate(self.full_dex) if self._species(p["id"]) == 201), None)
+                if after is not None:  # (a Pokedex without Unown leaves it out too)
+                    self.full_dex.insert(after, nown)
 
             return
         else:
@@ -452,6 +457,8 @@ class PokedexState(GameState):
             theme.shadow_text(screen, display_id, f["label"], rect.x + 12, rect.y + 8)
             from src.pokemon.loader import PokemonLoader as _PL  # (older saves: "ALOLAN RATTATA")
             name = _PL.plain_name(p_entry["name"]).title() if p_entry["name"] != "???" else "???"
+            if p_entry["id"] == 201 and name != "???" and p_entry.get("form", "normal") != "normal":
+                name = _PL.unown_name(p_entry["form"]).title()  # (older saves: plain "UNOWN" for N, O, U, W)
             nf = f["label"] if f["label"].size(name)[0] <= rect.w - 16 else f["caption"]
             theme.shadow_text(screen, name, nf, rect.centerx, rect.bottom - 20, align="center")
 

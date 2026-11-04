@@ -243,7 +243,7 @@ check(not b._can_inflict("paralysis", b.player_pokemon), "Limber: can't be paral
 b = fresh()
 give(b, b.opponent_pokemon, "WONDERGUARD")
 dmg, lines, _ = use(b, "TACKLE")
-check(dmg == 0 and any("Wonder Guard" in l for l in lines), "Wonder Guard: only super-effective hits")
+check(dmg == 0 and any("Wonder Guard" in l for l in lines) and any("super-effective" in l for l in lines), "Wonder Guard: only super-effective hits, and the battle says so")
 b = fresh()
 give(b, b.player_pokemon, "MOXIE")
 b.opponent_hp = 1

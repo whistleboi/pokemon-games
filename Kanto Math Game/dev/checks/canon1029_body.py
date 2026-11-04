@@ -1635,4 +1635,208 @@ del _os47.environ["POKEMATH_ANDROID"]
 check(_a47.filter([_pg47.event.Event(_pg47.TEXTINPUT, text="z")])[0].type == _pg47.TEXTINPUT,
       "on a PC nothing changes")
 
+print("48) Tanoby Unown letters, Camden and Sina without legends (Jordan, 11-04)")
+import random as _r48
+from collections import Counter as _C48
+from src.pokemon.balance import is_legendary as _leg48
+_tan = g.loader.area_data["STORY_PROGRESSION"]["TANOBY_RUINS"]
+_w48 = _tan["alt_forms"]["weights"]
+check(len(_w48) == 28 and abs(sum(_w48.values()) - 1) < 0.002, f"Tanoby lists all 28 Unown forms ({len(_w48)})")
+_r48.seed(48)
+_got = _C48(g.loader._resolve_form_context(201, "normal", "UNOWN", _tan)[0] for _ in range(3000))
+check(len(_got) >= 20 and "a" not in _got, f"Tanoby Unown come in many letters, the A as the plain form ({len(_got)} seen)")
+_alph48 = next(a for a in g.loader.area_data["STORY_PROGRESSION"].values() if isinstance(a, dict) and a.get("route_name") == "Ruins of Alph" and a.get("alt_forms"))
+check(_alph48["alt_forms"]["weights"] == _w48, "the Ruins of Alph use the same Unown odds as Tanoby")
+from src.pokemon.loader import PokemonLoader as _PL48
+check([_PL48.unown_name(f) for f in ("normal", "n", "exclamation", "question")] == ["A UNOWN", "N UNOWN", "! UNOWN", "? UNOWN"],
+      "Unown names: A UNOWN, N UNOWN, ! UNOWN, ? UNOWN")
+_n48 = g.loader.fetch_specific(201, form="n")
+_a48 = g.loader.fetch_specific(201, form="a", is_shiny=True)
+check(_n48["display_name"] == "N UNOWN" and _a48["form"] == "normal" and _a48["display_name"] == "A UNOWN",
+      f"a saved N and a saved 'a' load as {_n48['display_name']} and {_a48['display_name']} ({_a48['form']})")
+from src.states.systems import PokedexState as _PD48
+_pd48 = _PD48(g, g.current_state); _pd48.current_tab = "unown"; _pd48.refresh_dex()
+check([e["form"] for e in _pd48.full_dex][:2] == ["normal", "b"] and [e["form"] for e in _pd48.full_dex][-2:] == ["exclamation", "question"]
+      and len(_pd48.full_dex) == 28, "the Pokedex's Unown tab: A to Z, then ! and ?")
+_one = _C48(g.loader._resolve_form_context(201, "normal", "UNOWN", {"alt_forms": {"enabled": True, "weights": {"201_b": 0.5}}})[0] for _ in range(2000))
+check(800 < _one["b"] < 1200, f"a single listed form keeps its chance ({_one['b']}/2000 at 50%)")
+for _f48, _a48, _n48 in (("HOENN", "HOENN_ROUTE_127", "Cooltrainer Camden"), ("ALOLA", "ALOLA_ROUTE_16", "Veteran Sina")):
+    _t48 = next(t for t in g.loader.area_data["STORY_PROGRESSION"][_a48]["trainer_pool"] if t["name"] == _n48)
+    check(not any(_leg48(p) for p in _t48["team"]), f"{_n48} has no legendary ({_t48['team']})")
+
+print("49) Six Island: an Unown Report lies next to the Ruin Maniac's notes (Jordan, 11-04)")
+from src.states import overworld as _ow49
+story.current_area_key = "SIX_ISLAND"
+_had49 = story.inventory.pop("UNOWN_REPORT", None)
+story.story_flags.pop("got_unown_report_sevii", None)
+_t49 = _ow49.CityState(g); g.change_state(_t49)
+_m49 = next(o for o in story.get_current_area_data()["explore_options"] if o["text"] == "Ruin Maniac's Notes")
+_shown49 = []
+_show49 = lambda lines: _shown49.append(list(lines))
+from src.states.overworld.common import _run_story_event as _rse49
+_rse49(_t49, _m49["event"], _t49._check_menu_condition, _show49)
+check(story.inventory.get("UNOWN_REPORT", 0) == 1, "no Report yet: one lies next to the notes")
+check(any("UNOWN REPORT" in l.upper() for l in _shown49[-1]), "and says so")
+_shown49.clear(); _rse49(_t49, _m49["event"], _t49._check_menu_condition, _show49)
+check(story.inventory.get("UNOWN_REPORT") == 1 and not any("REPORT" in l.upper() for l in _shown49[-1]), "only once; then just his hint")
+story.story_flags.pop("got_unown_report_sevii", None)
+_shown49.clear(); _rse49(_t49, _m49["event"], _t49._check_menu_condition, _show49)
+check(story.inventory.get("UNOWN_REPORT") == 1, "a Bag that already has one (from Johto) gets no second Report")
+if _had49 is None:
+    story.inventory.pop("UNOWN_REPORT", None)
+else:
+    story.inventory["UNOWN_REPORT"] = _had49
+
+print("50) Sevii side mission: fill the Unown Report; Johto's Unown join at the link (Jordan, 11-04)")
+import copy as _cp50
+_save50 = (_cp50.copy(story.linked_regions), dict(story.region_stores), story.active_store, dict(story.story_flags),
+           story.current_area_key)
+def _unown50(form):
+    u = mk(201); u.form = form; return u
+story.current_area_key = "SIX_ISLAND"
+story.linked_regions = set()
+story.region_stores = {"KANTO": {"team": [_unown50("a"), _unown50("b")], "pc": [_unown50("normal"), None], "bag": {"UNOWN_REPORT": 1}},
+                       "JOHTO": {"team": [_unown50(f) for f in "cdefg"], "pc": [], "bag": {"UNOWN_REPORT": 1}}}
+story.use_region_store("KANTO")
+story.story_flags["met_celio"] = True
+for _f50 in ("beat_champion", "beat_johto_champion", story.champion_flag("KANTO"), story.champion_flag("JOHTO")):
+    story.story_flags.pop(_f50, None)
+_m50 = next((m for m in story.get_active_missions() if m["id"] == "sevii_m7"), None)
+check(_m50 is not None and "(2/28)" in _m50["text"], f"in Sevii with the Report: Unown of Tanoby, A and B ({_m50 and _m50['text']})")
+from src.states.systems.town_services import UnownReportState as _UR50
+check(_UR50(g, g.current_state).caught_forms == {"normal", "b"}, "the Report shows a caught 'a' on the A card")
+story.story_flags[story.champion_flag("KANTO")] = True
+story.story_flags[story.champion_flag("JOHTO")] = True
+story.link_champion_regions()
+story.use_region_store("KANTO")
+_m50 = next((m for m in story.get_active_missions() if m["id"] == "sevii_m7"), None)
+check(_m50 is not None and "(7/28)" in _m50["text"], f"Kanto and Johto titles: Johto's Unown count too ({_m50 and _m50['text']})")
+story.player_team = [_unown50(f) for f in story.UNOWN_FORMS]
+_e50 = next(e for e in story.get_all_journal_entries() if e["id"] == "sevii_m7")
+check(_e50["status"] == "COMPLETED", "all 28: the mission is done")
+story.linked_regions, story.region_stores, story.active_store, _fl50, story.current_area_key = _save50
+story.story_flags.clear(); story.story_flags.update(_fl50)
+
+print("51) Hoenn's Jirachi: the Millennium Comet over Meteor Falls (Jordan, 11-04)")
+from src.states import overworld as _ow51
+from src.states.overworld.common import _run_story_event as _rse51
+from src.world import story_events as _se51
+_fl51 = dict(story.story_flags)
+for _f in ("delta_episode_cleared", "millennium_comet_told", "hoenn_jirachi_met", "legend_rematch_hoenn_jirachi_met"):
+    story.story_flags.pop(_f, None)
+story.story_flags.update({"heard_cozmo": True, "meteor_falls_cleared": True, "cozmo_thanked": True})
+story.current_area_key = "FALLARBOR_TOWN"
+_t51 = _ow51.CityState(g); g.change_state(_t51)
+_said51 = []
+_rse51(_t51, _se51.get("professor_cozmo"), _t51._check_menu_condition, _said51.append)
+check(not story.story_flags.get("millennium_comet_told") and not any("Comet" in l for l in _said51[-1]),
+      "before the Delta Episode, Cozmo doesn't mention the comet")
+story.story_flags["delta_episode_cleared"] = True
+_rse51(_t51, _se51.get("professor_cozmo"), _t51._check_menu_condition, _said51.append)
+check(story.story_flags.get("millennium_comet_told") and any("Meteor Falls" in l for l in _said51[-1]),
+      "after it, Cozmo sends you to Meteor Falls")
+story.current_area_key = "HOENN_METEOR_FALLS"
+_p51 = _ow51.PlayState(g); g.change_state(_p51)
+_btn51 = next(o for o in story.get_current_area_data()["route_menu"] if o["text"] == "THE MILLENNIUM COMET")
+check(_btn51["boss"]["id"] == 385 and _p51._check_route_condition(_btn51["condition"], False, _btn51),
+      "Meteor Falls: THE MILLENNIUM COMET (Jirachi)")
+_j51 = next((m for m in story.get_active_missions() if m["id"] == "hoenn_s9"), None) if story.get_current_region() == "HOENN" else True
+check(_j51, "the journal's Millennium Comet mission is open")
+story.story_flags["hoenn_jirachi_met"] = True
+check(not _p51._check_route_condition(_btn51["condition"], False, _btn51), "once met, the button goes (a rematch keeps it if Jirachi got away)")
+_orre51 = g.loader.area_data["STORY_PROGRESSION"]["RELIC_FOREST"]
+check(any(o.get("text") == "MEET JIRACHI" for o in _orre51["route_menu"]), "Orre keeps its own Jirachi at the Relic Forest")
+story.story_flags.clear(); story.story_flags.update(_fl51)
+
+print("52) The Unown Report's reward: all 28 forms merge into Nown (Jordan, 11-04)")
+from src.states.systems.town_services import UnownReportState as _UR52
+_nown52 = g.loader.get_special_id("NOWN", 3025)
+_save52 = (set(story.linked_regions), dict(story.region_stores), story.active_store, dict(story.story_flags), story.current_area_key)
+story.current_area_key = "SEVEN_ISLAND"  # (Sevii: the Kanto Bag)
+def _u52(form, lv):
+    u = mk(201); u.form = form; u.level = lv; return u
+story.linked_regions = set()
+_party52 = [mk(25), _u52("b", 30)]
+_pc52 = [_u52(f, 20) for f in story.UNOWN_FORMS if f != "b"] + [_u52("c", 41), mk(1), None]
+story.region_stores = {"KANTO": {"team": _party52, "pc": _pc52, "bag": {"UNOWN_REPORT": 1}}}
+story.use_region_store("KANTO")
+story.story_flags.pop("unown_merged", None)
+_r52 = _UR52(g, g.current_state); g.change_state(_r52)
+check(_r52.ready and _r52.btn_merge.callback is not None, "all 28 with you: MERGE THE UNOWN is on")
+_r52.ask_merge()
+check(_r52.confirming and _r52.btn_yes.visible, "it asks first")
+_r52.close_confirm()
+check(sum(1 for p in story.pc_pokemon if p and p.id == 201) == 28, "NOT YET: nothing changes")
+_r52.ask_merge(); _r52.merge()
+from src.states.systems.evolution_scene import EvolutionState as _ES52
+_evo52 = g.current_state
+check(isinstance(_evo52, _ES52) and _evo52.evolution_id == _nown52 and _evo52.context == "party",
+      "MERGE: the party's Unown evolves into Nown")
+_left52 = [p for p in story.player_team + story.pc_pokemon if p and p.id == 201]
+check(len(_left52) == 2 and {(p.form, p.level) for p in _left52} == {("b", 30), ("c", 41)},
+      f"one of each form merged (the Lv 20 C, not the Lv 41 one); left: {sorted((p.form, p.level) for p in _left52)}")
+check(any(p and p.id == 1 for p in story.pc_pokemon) and story.player_team[0].id == 25, "other Pokemon stay")
+for _ in range(600):
+    if g.current_state is not _evo52:
+        break
+    _evo52.update()
+check(any(p and p.id == _nown52 for p in story.player_team), "the party now has NOWN")
+_m52 = next((e for e in story.get_all_journal_entries() if e["id"] == "sevii_m7"), None)
+_m52 = next((e for e in story.get_all_journal_entries() if e["id"] == "sevii_m7"), None)
+check(_m52 is not None and _m52["status"] == "COMPLETED", "the Unown mission stays done after the merge")
+story.region_stores = {"KANTO": {"team": [_u52(f, 10) for f in "abcdef"], "pc": [_u52(f, 15) for f in story.UNOWN_FORMS[6:]], "bag": {}}}
+story.use_region_store("KANTO")
+_k52 = story.merge_unown()
+check(_k52 and _k52[2] == "party" and len(story.player_team) == 1 and story.player_team[0].level == 15,
+      "a party of only Unown keeps one, so it's never empty")
+story.linked_regions, story.region_stores, story.active_store, _fl52, story.current_area_key = _save52
+story.story_flags.clear(); story.story_flags.update(_fl52)
+
+print("53) Pokedex: Nown (No. ???) right after Unown, only once caught (Jordan, 11-04)")
+from src.states.systems import PokedexState as _PD53
+_dex53 = g.data.data.setdefault("pokedex", {})
+_had53 = {k: v for k, v in _dex53.items() if isinstance(v, dict) and v.get("id") in (201, _nown52)}
+for _k in _had53:
+    _dex53.pop(_k)
+_dex53["201-normal"] = {"id": 201, "name": "A UNOWN", "form": "normal", "shiny": False, "gmax": False}
+def _ids53():
+    d = _PD53(g, g.current_state); d.current_tab = "normal"; d.sort_mode = "NUMBER"; d.dex_view = "NATIONAL"; d.refresh_dex()
+    return [e["id"] for e in d.full_dex]
+check(_nown52 not in _ids53(), "no Nown yet: it isn't listed")
+_dex53[f"{_nown52}-normal"] = {"id": _nown52, "name": "NOWN", "form": "normal", "shiny": False, "gmax": False}
+_i53 = _ids53()
+check(_i53.count(_nown52) == 1 and _i53[_i53.index(_nown52) - 1] == 201, f"caught: Nown comes right after Unown ({_i53.count(_nown52)}x, after {_i53[max(0, _i53.index(_nown52) - 2):_i53.index(_nown52) + 1] if _nown52 in _i53 else None}, 201 in list: {201 in _i53})")
+_dex53.pop(f"{_nown52}-normal"); _dex53.pop("201-normal")
+_dex53.update(_had53)
+
+print("54) Sevii: a side mission for every legendary there (Jordan, 11-04)")
+from src.pokemon.balance import is_legendary as _leg54
+_sp54 = g.loader.area_data["STORY_PROGRESSION"]
+_ms54 = {m["id"]: m for m in g.loader.area_data["JOURNAL_MISSIONS"] if m.get("region") == "KANTO"}
+_wins54 = {}  # victory flag -> legendary, from Sevii's boss buttons and area bosses
+for _k54, _a54 in _sp54.items():
+    if isinstance(_a54, dict) and _a54.get("subregion") == "SEVII" or _k54 in ("NAVEL_ROCK", "BIRTH_ISLAND", "FARAWAY_ISLAND"):
+        _bs54 = [o.get("boss") or {} for o in _a54.get("route_menu", [])] + [_a54.get("area_boss") or {}]
+        for _b54 in _bs54:
+            if _b54.get("id") and _leg54(_b54["id"]):
+                _wins54[_b54.get("victory_flag") or f"{_k54}_boss_defeated"] = (_b54["name"], _k54)
+_done54 = {m.get("completed_flag") for m in _ms54.values()}
+check(set(_wins54) <= _done54, f"each Sevii legendary has a mission ({sorted(n for n, _ in _wins54.values())})")
+_fl54 = dict(story.story_flags); _area54 = story.current_area_key
+story.current_area_key = "SEVEN_ISLAND"
+for _f in list(_wins54) + ["beat_champion", "met_celio"]:
+    story.story_flags.pop(_f, None)
+_act54 = {m["id"] for m in story.get_active_missions()}
+check(not ({"sevii_m8", "sevii_m9", "sevii_m10", "sevii_m11"} & _act54), "before Celio, none of them show")
+story.story_flags["met_celio"] = True
+_act54 = {m["id"] for m in story.get_active_missions()}
+check("sevii_m8" in _act54 and "sevii_m9" not in _act54, "after Celio: Moltres; Navel Rock and Birth Island wait for the title")
+story.story_flags["beat_champion"] = True
+_act54 = {m["id"] for m in story.get_active_missions()}
+check({"sevii_m8", "sevii_m9", "sevii_m10", "sevii_m11"} <= _act54, "after the Kanto title: Lugia, Ho-Oh and Deoxys too")
+story.story_flags["navel_rock_lugia"] = True
+_e54 = {e["id"]: e["status"] for e in story.get_all_journal_entries()}
+check(_e54.get("sevii_m9") == "COMPLETED" and _e54.get("sevii_m10") == "ACTIVE", "beating Lugia completes its mission only")
+story.story_flags.clear(); story.story_flags.update(_fl54); story.current_area_key = _area54
+
 print(f"\n{'ALL PASS' if not fails else str(fails) + ' FAIL(S)'}")

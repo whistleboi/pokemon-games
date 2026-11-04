@@ -231,6 +231,46 @@ class StoryManager:
         return sum(1 for f in self.UNOWN_FORMS
                    if counts.get(f"201_{f}", 0) > 0 or (f == "a" and counts.get("201_normal", 0) > 0))
 
+    def unown_forms_owned(self):
+        """The Unown forms in this Bag's team and PC (A as "a"), as the Unown Report shows them.
+        Linked regions share one PC, so a Johto player's Unown count in Sevii once linked."""
+        return {"a" if str(p.form).lower() in ("normal", "a") else str(p.form).lower()
+                for p in self.player_team + self.pc_pokemon if p and p.id == 201}
+
+    def unown_goal_met(self, goal):
+        """All the forms with you now, or merged into Nown already (the Report's reward)."""
+        return bool(self.story_flags.get("unown_merged")) or len(self.unown_forms_owned()) >= goal
+
+    def merge_unown(self):
+        """The Unown Report's reward (Jordan, 11-04): with all 28 forms here, one Unown of each
+        form merges into one, which then evolves into Nown; any extra Unown stay. The one that
+        evolves is the highest-level Unown (from the party when there is one, so the party is
+        never left empty), raised to the highest level of the 28. For the other forms, the
+        lowest-level one goes (a non-shiny first). Returns (unown, index, "party" or "pc"), or None."""
+        if len(self.unown_forms_owned()) < len(self.UNOWN_FORMS):
+            return None
+
+        def form_of(p):
+            return "a" if str(p.form).lower() in ("normal", "a") else str(p.form).lower()
+        team = [p for p in self.player_team if p and p.id == 201]
+        boxed = [p for p in self.pc_pokemon if p and p.id == 201]
+        keep = max(team or boxed, key=lambda p: p.level)
+        merged = [keep]
+        for form in self.UNOWN_FORMS:
+            if form != form_of(keep):
+                merged.append(min((p for p in team + boxed if form_of(p) == form),
+                                  key=lambda p: (bool(p.is_shiny), p.level)))
+        keep.level = max(p.level for p in merged)
+        gone = {id(p) for p in merged if p is not keep}
+        self.player_team = [p for p in self.player_team if not (p and id(p) in gone)]
+        self.pc_pokemon = [None if (p and id(p) in gone) else p for p in self.pc_pokemon]
+        self.story_flags["unown_merged"] = True  # the Report's mission stays done
+        for context, mons in (("party", self.player_team), ("pc", self.pc_pokemon)):
+            for i, p in enumerate(mons):
+                if p is keep:
+                    return keep, i, context
+        return None
+
     def special_condition(self, condition):
         """Conditions shared by town and route menus. None when the condition isn't one of these."""
         if not isinstance(condition, str):
@@ -417,6 +457,8 @@ class StoryManager:
                 if m.get("completed_flag") and self.story_flags.get(m["completed_flag"]):
                     continue
                 if m.get("completed_badge") and self.has_badge(m["completed_badge"]):
+                    continue
+                if m.get("unown_forms") and self.unown_goal_met(m["unown_forms"]):
                     continue
                 active.append(self._prepare_mission_for_ui(m))
 
@@ -861,6 +903,12 @@ class StoryManager:
             m_copy["desc"] += f"\n(Progress: {have}/{goal})"
             m_copy["details"] = m_copy["desc"]
             m_copy["text"] += f" ({have}/{goal})"
+        if mission.get("unown_forms"):  # the Unown Report's forms (Sevii's Tanoby Ruins)
+            goal = mission["unown_forms"]
+            have = goal if self.unown_goal_met(goal) else len(self.unown_forms_owned())
+            m_copy["desc"] += f"\n(Progress: {have}/{goal})"
+            m_copy["details"] = m_copy["desc"]
+            m_copy["text"] += f" ({have}/{goal})"
         if "catch_id" in cond:
             target = str(cond["catch_id"])
             req = cond.get("catch_count", 1)
@@ -896,6 +944,8 @@ class StoryManager:
 
             if m.get("completed_badge"):  # a Gym mission: done once you hold its badge
                 is_completed = self.has_badge(m["completed_badge"])
+            elif m.get("unown_forms"):  # done once the Unown Report is full
+                is_completed = self.unown_goal_met(m["unown_forms"])
             elif m.get("completed_flag"):
                 is_completed = self.story_flags.get(m["completed_flag"], False)
 

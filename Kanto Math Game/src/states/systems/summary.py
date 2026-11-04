@@ -114,6 +114,8 @@ class PokemonDetailState(GameState):
                           if isinstance(v, dict) and "id" in v), key=lambda v: (int(v["id"]) >= 2000, int(v["id"])))
         for v in entries:
             pid, form = int(v["id"]), v.get("form", "normal")
+            if pid == 201 and form == "a":
+                form = "normal"  # (older saves) the A is Unown's plain form
             if species(pid) != base or form in seen or form == "gmax" or str(form).startswith("mega"):
                 continue
             seen.add(form)
