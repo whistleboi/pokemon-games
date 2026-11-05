@@ -140,6 +140,8 @@ class AreaTransitionState(GameState):
 
         if self.timer <= 0:
             self.timer = 10**9  # only once
+            # where you came from (a route dungeon starts you at that end: src/states/overworld/dungeon.py)
+            self.game.story_manager.last_area_key = self.game.story_manager.current_area_key
             self.game.story_manager.current_area_key = self.next_area_key
             self.game.story_manager.enter_region(self.game.story_manager.get_current_region())
 

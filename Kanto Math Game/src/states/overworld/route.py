@@ -36,7 +36,18 @@ class PlayState(RouteMenu, RouteEncounters, RouteActions, RouteCatch, GameState)
     def balls_left(self, value):
         self.game.story_manager.balls_left = value
 
-    def __init__(self, game, restore_data=None):
+    def __new__(cls, game=None, restore_data=None, classic=False):
+        # A route dungeon (assets/dungeon_routes.json) is walked on a map instead: PlayState(game)
+        # hands back a DungeonState there, or the walk going on when a battle comes back to it
+        # (src/states/overworld/dungeon.py). classic=True: always this screen.
+        if cls is PlayState and game is not None and not classic:
+            from src.states.overworld.dungeon import dungeon_for
+            state = dungeon_for(game, restore_data)
+            if state is not None:
+                return state
+        return super().__new__(cls)
+
+    def __init__(self, game, restore_data=None, classic=False):
         from src.states.overworld.area_transition import _collapse_hud
         super().__init__(game)
         if hasattr(game.story_manager, "sync_rival"):

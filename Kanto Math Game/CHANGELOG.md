@@ -1,5 +1,19 @@
 # Changelog
 
+## Unreleased: route dungeons (proof of concept)
+
+- **Route 1, Route 2 and Viridian Forest are walked on a map**, Mystery Dungeon style, instead of the route menu. Your lead Pokemon walks the grid: tap a tile to walk there, or use the arrow keys. Each visit makes a new layout. Viridian Forest has two floors, with stairs between them.
+- **Wild Pokemon wander the map** and chase you once they see you. Bump into one (or let it reach you) and pick:
+  - **MATH:** one question. A right answer throws a ball at the route catch's odds, and a quick answer weakens it more, as on the catch screen. A wrong answer and it runs away.
+  - **BATTLE:** the full battle screen. You come back to the same spot on the map.
+- **Trainers stand on the map.** Bump into one, or walk into its line of sight, for a trainer battle. Beaten trainers are gone.
+- **HONEY and SWEET SCENT** draw in three wild Pokemon for the usual three-Pokemon catch. Honey is a new item that is used up; Sweet Scent works once a floor from a party Pokemon that knows it.
+- **Items lie about** each floor, from the area's loot table in `assets/dungeon_routes.json` (weights you can tune).
+- **TM spots:** Route 2 and Viridian Forest each have one. The TM inside is picked once per save among the TMs you don't have, so reloading can't change it.
+- **Signs mark the ways out:** you start beside the way you came in, and the others are in the far rooms.
+- **CLASSIC** (bottom right) goes back to the old route menu for the rest of that visit.
+- Not yet: saving keeps the area but not your place on the map (loading starts a fresh layout); story events on these routes aren't on the map yet.
+
 ## Unreleased: opponents follow your team, Hoenn's story as in Omega Ruby / Alpha Sapphire
 
 - **Graphics from Pokemon Journeys:**

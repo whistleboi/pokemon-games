@@ -1,0 +1,56 @@
+{
+  "_about": "Route dungeons (src/dungeon, src/states/overworld/dungeon.py). An area listed here is walked on a map instead of the route menu. floors: how many floors (stairs between them). style: field, forest or cave. size: [width, height] in tiles. wild: [fewest, most] wild Pokemon on a floor. loot: per_floor [fewest, most] loose items, and items {item: weight} (weights, not percents; POKE_BALLS go to the Poke Ball count). tm_spots: fixed TM spot ids (the TM in each is picked once per save, among the TMs not owned yet). Anything left out comes from DEFAULT.",
+  "DEFAULT": {
+    "floors": 1,
+    "style": "field",
+    "size": [40, 26],
+    "wild": [4, 6],
+    "loot": {
+      "per_floor": [2, 4],
+      "items": {
+        "POKE_BALLS": 30,
+        "POTION": 25,
+        "ANTIDOTE": 8,
+        "PARALYZE_HEAL": 6,
+        "REPEL": 8,
+        "GREAT_BALL": 8,
+        "HONEY": 10,
+        "ESCAPE_ROPE": 3,
+        "RARE_CANDY": 2
+      }
+    },
+    "tm_spots": []
+  },
+  "KANTO_ROUTE_1": {
+    "floors": 1,
+    "style": "field",
+    "size": [36, 24],
+    "wild": [4, 5]
+  },
+  "KANTO_ROUTE_2": {
+    "floors": 1,
+    "style": "field",
+    "size": [40, 26],
+    "wild": [4, 6],
+    "tm_spots": ["KANTO_TM_ROUTE_2"]
+  },
+  "VIRIDIAN_FOREST": {
+    "floors": 2,
+    "style": "forest",
+    "size": [44, 30],
+    "wild": [5, 7],
+    "loot": {
+      "per_floor": [3, 5],
+      "items": {
+        "POKE_BALLS": 25,
+        "POTION": 25,
+        "ANTIDOTE": 18,
+        "PARALYZE_HEAL": 10,
+        "HONEY": 12,
+        "GREAT_BALL": 6,
+        "ESCAPE_ROPE": 4
+      }
+    },
+    "tm_spots": ["KANTO_TM_VIRIDIAN_FOREST"]
+  }
+}

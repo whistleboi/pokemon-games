@@ -619,6 +619,9 @@ class BagState(GameState):
         """Repels (wild Pokemon stay away: routes can be left without battling) and Escape Rope."""
         story = self.game.story_manager
         data = itemlib.FIELD[item]
+        if "attract" in data:  # Honey: used from a route dungeon's map (its HONEY button)
+            self._back_to_bag(["Use HONEY out on a route: tap HONEY on the map to draw in wild Pokemon."])
+            return
         if "repel" in data:
             if getattr(story, "repel_routes", 0) > 0:
                 self._back_to_bag([f"A Repel is already working ({story.repel_routes} more routes)."])
