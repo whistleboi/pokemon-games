@@ -13,6 +13,13 @@ class RObj:
         return f"<{self.cls} {list(self.attrs)[:6]}>"
 
 
+class RList(list):
+    """A Ruby Array subclass's contents (Essentials' PBAnimation), with its instance variables in attrs."""
+    def __init__(self, *a):
+        super().__init__(*a)
+        self.cls, self.attrs = None, {}
+
+
 class RUser:
     def __init__(self, cls, data):
         self.cls, self.data = cls, data
@@ -70,7 +77,9 @@ class Reader:
         if t == "I":
             v = self.read()
             for _ in range(self.int()):
-                self.sym(); self.read()
+                k = self.sym(); val = self.read()
+                if isinstance(v, RList):
+                    v.attrs[k.lstrip("@")] = val
             if isinstance(v, bytes):
                 v = v.decode("utf-8", "replace")
                 # strings are already registered as bytes; replace
@@ -81,7 +90,7 @@ class Reader:
         if t == '"':
             s = self.raw(); self.objs.append(s); return s
         if t == "f":
-            s = self.raw().decode(); v = float(s) if s not in ("inf", "-inf", "nan") else float(s); self.objs.append(v); return v
+            s = self.raw().split(b"\0")[0].decode(); v = float(s); self.objs.append(v); return v  # (old Rubies add bytes after a NUL)
         if t == "l":
             sign = chr(self.byte()); n = self.int(); v = int.from_bytes(self.d[self.p:self.p + n * 2], "little"); self.p += n * 2
             v = v if sign == "+" else -v; self.objs.append(v); return v
@@ -104,6 +113,14 @@ class Reader:
             c = self.sym(); u = RUser(c, self.raw()); self.objs.append(u); return u
         if t in "cm":
             s = self.raw().decode(); self.objs.append(s); return s
+        if t == "C":  # a subclass of Array, String or Hash (Essentials' PBAnimation): its contents
+            cls = self.sym()
+            if chr(self.d[self.p]) == "[":
+                self.p += 1
+                a = RList(); a.cls = cls; self.objs.append(a)
+                for _ in range(self.int()): a.append(self.read())
+                return a
+            return self.read()
         if t == "e":
             self.sym(); return self.read()
         if t == "S":

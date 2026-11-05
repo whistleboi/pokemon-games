@@ -1874,7 +1874,7 @@
       "area_type": "town",
       "route_name": "Nacrene City",
       "region": "UNOVA",
-      "backgrounds": { "main": "nacrene_city.png", "pokecenter": "nacrene_center.png", "gym": "nacrene_gym.png" },
+      "backgrounds": { "main": "nacrene_city.png", "pokecenter": "nacrene_center.png", "gym": ["nacrene_gym.png", "nacrene_gym_leader.png"] },
       "has_gym": true,
       "gym": {"trainers": [], "leader": {"name": "Lenora", "class": "GYM_LEADER", "sprite": "lenora.png", "team": [507, 505], "levels": [18, 20], "dialogue": {"intro": ["Lenora: Welcome to my gym — and my library!", "I'm Lenora, the Nacrene Gym Leader.", "I'm a Normal-type user. Don't underestimate what Normal can do!"], "player_won": ["Lenora: You're the real deal! Congratulations on the Basic Badge!", "Take this HM Strength too — you'll need it in your travels.", "Take this Cover Fossil too. The fossil lab in Nacrene City can revive it!"], "player_lost": ["Lenora: You'll need to dig deeper than that!", "Come back when you've trained more. My library is always open."]}, "rewards": {"balls": 5, "COVER_FOSSIL": 1}, "is_boss_battle": true, "badge_reward": "BASIC", "movesets": {"507": ["TAKE-DOWN", "BITE", "RETALIATE", "LEER"], "505": ["LEER", "CRUNCH", "RETALIATE", "HYPNOSIS"]}}, "requirements": {"badges": 1, "fail_text": "Lenora is preparing for battle at the Nacrene Museum. Earn the Trio Badge first."}},
       "travel_options": [

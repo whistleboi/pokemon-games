@@ -44,31 +44,6 @@ class GymLobbyState(GameState):
         self.area_data = game.story_manager.get_current_area_data()
         self.gym_data = self.area_data.get("gym", {})
 
-        self.bg = None
-        bg_config = self.area_data.get("backgrounds", {}).get("gym")
-        if isinstance(bg_config, list) and bg_config:
-            bg_config = bg_config[0]
-
-        # ARCHITECT: Standardized fallback to [area_key]_gym.png (e.g. azalea_town_gym.png)
-        fallback_name = f"{self.area_key.lower()}_gym.png"
-
-        filenames = [bg_config, fallback_name] if bg_config else [fallback_name]
-        box_top = Utils.get_full_dialogue_rect(self.game).top
-
-        for filename in filenames:
-            img = self.game.assets.get_background(filename)
-            if img:
-                self.bg = pygame.transform.scale(img, (self.game.width, box_top))
-                break
-
-        if not self.bg:
-            img = game.assets.get_generic_background("gym")
-            if img:
-                self.bg = pygame.transform.scale(img, (self.game.width, box_top))
-        if not self.bg:
-            self.bg = pygame.Surface((game.width, int(game.height * 0.75)))
-            self.bg.fill((40, 40, 60))
-
         self.prog_key = f"gym_progress_{self.area_key}"
         self.progress = game.story_manager.story_flags.get(self.prog_key, 0)
         self.trainers = self.gym_data.get("trainers", [])
@@ -146,6 +121,8 @@ class GymLobbyState(GameState):
             else:
                 self.is_cleared = True
                 self.status_text = "You have defeated this Gym!"
+
+        self.bg = self._load_bg()
 
         self.bottom_rect = Utils.get_full_dialogue_rect(game)
         self.right_rect = pygame.Rect(
@@ -391,6 +368,35 @@ class GymLobbyState(GameState):
 
     def handle_events(self, events):
         pass
+
+    def _load_bg(self):
+        """The Gym's picture. A list of pictures is the Gym's rooms in order (a League's: one for each
+        member): the trainers share the rooms before the last, the Leader (or Champion) has the last."""
+        game = self.game
+        bg_config = self.area_data.get("backgrounds", {}).get("gym")
+        if isinstance(bg_config, list):
+            n, t = len(bg_config), len(self.trainers)
+            if not n:
+                bg_config = None
+            elif n > 1 and t and not self.redo and self.progress < t:
+                bg_config = bg_config[self.progress * (n - 1) // t]
+            else:
+                bg_config = bg_config[0] if n == 1 or getattr(self, "challenge", None) else bg_config[-1]
+
+        # ARCHITECT: Standardized fallback to [area_key]_gym.png (e.g. azalea_town_gym.png)
+        fallback_name = f"{self.area_key.lower()}_gym.png"
+        filenames = [bg_config, fallback_name] if bg_config else [fallback_name]
+        size = (game.width, Utils.get_full_dialogue_rect(game).top)
+        for filename in filenames:
+            img = game.assets.get_background(filename)
+            if img:
+                return pygame.transform.scale(img, size)
+        img = game.assets.get_generic_background("gym")
+        if img:
+            return pygame.transform.scale(img, size)
+        bg = pygame.Surface((game.width, int(game.height * 0.75)))
+        bg.fill((40, 40, 60))
+        return bg
 
     def update(self):
         pass

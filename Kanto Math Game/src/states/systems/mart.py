@@ -451,6 +451,10 @@ class PokeMartState(GameState):
             if img:
                 return pygame.transform.scale(img, (game.width, box_top))
 
+        img = game.assets.get_region_default_building(area_data, type_suffix)
+        if img:
+            return pygame.transform.scale(img, (game.width, box_top))
+
         img = game.assets.get_generic_background("mart")
         if img:
             return pygame.transform.scale(img, (game.width, box_top))

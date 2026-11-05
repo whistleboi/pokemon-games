@@ -19,6 +19,7 @@ from src.pokemon import moves as movelib, affection
 from src.world import levels
 from src.vfx.animations import (AnimationController, FaintAnimation, PokemonSummonAnimation, battle_sprite,
                                 battle_spot, sprite_rect)
+from src.vfx import move_anim as move_anims
 from src.config import WHITE, BLACK, GOLD, FPS
 
 
@@ -130,6 +131,8 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, GameState)
         self.player_won = False
         self.turn_actions = []
         self.anim_ctrl = AnimationController()
+        self.move_anim = None  # a move's animation playing (src/vfx/move_anim.py)
+        self._move_seq = None  # a move's text, animation and HP drop in turn (_show_move_text)
         self.faint_anim = FaintAnimation()
         self.fainting_side = None
         self.weather = None
@@ -1529,11 +1532,12 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, GameState)
                 self._battle_crits[id(mon)] = self._battle_crits.get(id(mon), 0) + 1
                 # Sirfetch'd: critical hits add up over every battle (Jordan), not just one.
                 mon.counters["crits"] = mon.counters.get("crits", 0) + 1
-            self.anim_ctrl.start_lunge("player")
+        lunge = "player" if not self._start_move_anim(mon, name, "player", messages) and damage else None
 
         xp_messages = self._award_battle_xp() if self.opponent_hp <= 0 else []
 
-        if self.opponent_hp <= 0 and self.try_trigger_wild_catch_prompt():
+        if self.opponent_hp <= 0 and self.catch_offer_ready():  # the catch window, once the HP bar is empty
+            self._show_move_text(messages, lunge, then=self.try_trigger_wild_catch_prompt)
             return
 
         if self.opponent_hp <= 0:
@@ -1546,8 +1550,7 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, GameState)
             self.phase = "MESSAGE"
 
         self._end_if_fled(messages)
-        self.dialogue_box.reset(messages)
-        self.dialogue_box.set_visibility(True)
+        self._show_move_text(messages, lunge)
         self.feedback_timer = 30
 
     def _end_if_fled(self, messages):
@@ -1609,7 +1612,7 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, GameState)
             # For Runerigus / Basculegion: damage taken in this battle and overall.
             self._battle_damage[id(mon)] = self._battle_damage.get(id(mon), 0) + damage
             mon.counters["damage_total"] = mon.counters.get("damage_total", 0) + damage
-            self.anim_ctrl.start_lunge("opponent")
+        lunge = "opponent" if not self._start_move_anim(foe, name, "opponent", messages) and damage else None
 
         if self.player_hp <= 0:
             self.turn_actions.clear()  # a fainted Pokemon's queued move never happens
@@ -1620,9 +1623,12 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, GameState)
             self.phase = "MESSAGE"
 
         self._end_if_fled(messages)
-        self.dialogue_box.reset(messages)
-        self.dialogue_box.set_visibility(True)
+        self._show_move_text(messages, lunge)
         self.feedback_timer = 30
+
+    def catch_offer_ready(self):
+        """True if knocking the foe out now opens the catch window (wild battles)."""
+        return False
 
     def try_trigger_wild_catch_prompt(self):
         return False
@@ -1914,6 +1920,7 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, GameState)
             self.trainer_sprite if (self.phase == "INTRO" or self.show_trainer) else None,
             self.background,
             anim_ctrl=self.anim_ctrl,
+            move_anim=self.move_anim, keep_battlers=bool(getattr(self, "_move_seq", None)),
             fainting_side="player" if is_summoning_player else (self.fainting_side if (self.phase == "FAINT_ANIM_RUNNING" or self.phase == "RETRACT_ANIM") else None),
             trainer_x_offset=self.trainer_slide_offset,
             hide_opponent=is_summoning_enemy
@@ -1931,8 +1938,92 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, GameState)
 
         self.game.ui_manager.draw(screen)
 
+    # A move that didn't go off shows no animation.
+    MOVE_FAILED = ("attack missed!", "avoided the attack", "protected itself!", "But it failed!", "It doesn't affect")
+
+    def _start_move_anim(self, user, name, side, messages):
+        """Start the move's animation (Pokemon Orre's, src/vfx/move_anim.py) if it went off and has one; its
+        text and the HP bars wait for it. False if there's none (the plain lunge is used then)."""
+        used = self.game.assets.get_text("used_move", name="", move="").strip(" !")
+        if not any(used and used in m for m in messages) or any(f in m for m in messages for f in self.MOVE_FAILED)                 or self.__dict__.get("_charging", {}).get(id(user)) == name:
+            return False
+        anim, swapped = move_anims.find(self.game.assets.assets_dir, name, side)
+        if not anim:
+            return False
+        other = "opponent" if side == "player" else "player"
+        mons = {"player": self.player_pokemon, "opponent": self.opponent_pokemon}
+        self.move_anim = move_anims.MoveAnimation(
+            self.game, anim, battle_spot(self.game, mons[side], side), battle_spot(self.game, mons[other], other),
+            Utils.get_full_dialogue_rect(self.game).top, swapped, side)
+        return True
+
+    def _used_line(self, messages):
+        """The index of the "X USED Y!" line in a move's text, or None."""
+        used = self.game.assets.get_text("used_move", name="", move="").strip(" !")
+        found = [i for i, m in enumerate(messages) if used and used in str(m)]
+        return found[-1] if found else None
+
+    def _show_move_text(self, messages, lunge=None, then=None):
+        """A move's text the games' way (Jordan, 11-04): "X USED Y!" first, then the move's animation (or the
+        attacker's lunge), then the HP bar drops, and only then the rest: how well it hit, a faint, or `then`
+        (the catch window). The text box stays up throughout. Without a "USED" line, all of it at once."""
+        callback, self.dialogue_box.callback = self.dialogue_box.callback, None
+        i = self._used_line(messages)
+        if i is None:
+            if lunge:
+                self.anim_ctrl.start_lunge(lunge)
+            self.dialogue_box.reset(messages)
+            self.dialogue_box.callback = callback
+            self.dialogue_box.set_visibility(True)
+            if then:
+                then()
+            return
+        self.dialogue_box.reset(messages[:i + 1])
+        self.dialogue_box.set_visibility(True)
+        self._move_seq = {"stage": "text", "rest": messages[i + 1:], "callback": callback, "then": then,
+                          "lunge": lunge}
+
+    def _hold_for_move_anim(self):
+        """True while a move's text, animation and HP drop play out (_show_move_text); the battle waits."""
+        seq = getattr(self, "_move_seq", None)
+        if not seq:
+            return False
+        if seq["stage"] == "text":  # "X USED Y!" typed out first
+            self.dialogue_box.update()
+            if not (self.dialogue_box.is_waiting_for_click or self.dialogue_box.is_finished):
+                return True
+            seq["stage"] = "move"
+            if self.move_anim is None and seq["lunge"]:
+                self.anim_ctrl.start_lunge(seq["lunge"])
+        if seq["stage"] == "move":  # the animation, or the lunge
+            if self.move_anim is not None:
+                self.move_anim.update()
+                if not self.move_anim.done:
+                    return True
+                self.move_anim = None
+            if self.anim_ctrl.is_lunging:
+                return True
+            seq["stage"] = "hp"
+        self.renderer.tick()  # then the HP bar drops
+        if self.renderer.hp_animating() or self.anim_ctrl.hit_timer > 0:
+            return True
+        self._move_seq = None
+        if seq["rest"]:
+            self.dialogue_box.reset(seq["rest"])
+            self.dialogue_box.callback = seq["callback"]
+            self.dialogue_box.set_visibility(True)
+            if seq["then"]:
+                self.dialogue_box.callback = seq["then"]
+        elif seq["then"]:
+            seq["then"]()
+        elif seq["callback"]:
+            seq["callback"]()
+        return True
+
     def update(self):
         self.anim_ctrl.update()
+        if self._hold_for_move_anim():
+            return
         self.renderer.tick()
         self._note_participant()
 
@@ -2298,7 +2389,7 @@ class WildBattleState(TrainerBattleState):
         self.dialogue_box.set_visibility(True)
         return True
 
-    def try_trigger_wild_catch_prompt(self):
+    def catch_offer_ready(self):
         if getattr(self, "no_catch", False):
             return False  # an uncatchable boss (Paldea titans): the win goes through trigger_outro
         if self.opponent_pokemon.id == 10500:
@@ -2307,9 +2398,11 @@ class WildBattleState(TrainerBattleState):
             return False
         if self.opponent_pokemon.id == 245 and not self.game.story_manager.story_flags.get("suicune_encountered"):
             return False
+        return catching.total_balls(self.game.story_manager) > 0
 
+    def try_trigger_wild_catch_prompt(self):
         story = self.game.story_manager
-        if catching.total_balls(story) > 0:
+        if self.catch_offer_ready():
             self.phase = "CATCH_PROMPT"
             self._catch_prompt_text()
             self.catch_timer = 15 * FPS
@@ -2503,6 +2596,9 @@ class WildBattleState(TrainerBattleState):
         self.show_message("Got away safely!", callback=self.on_flee_complete)
 
     def update(self):
+        if self._hold_for_move_anim():
+            self.anim_ctrl.update()
+            return
         if self.phase == "CATCH_PROMPT":
             self.catch_timer -= 1
             if self.catch_timer <= 0:
@@ -2668,6 +2764,7 @@ class WildBattleState(TrainerBattleState):
             self.trainer_sprite if self.phase == "INTRO" else None,
             self.background,
             anim_ctrl=self.anim_ctrl,
+            move_anim=self.move_anim, keep_battlers=bool(getattr(self, "_move_seq", None)),
             fainting_side="opponent" if hide_opponent else ("player" if self.phase == "PLAYER_SUMMON" else (self.fainting_side if self.phase == "FAINT_ANIM_RUNNING" else None)),
             hide_opponent=hide_opponent,
             show_fainted=show_ko,

@@ -1900,4 +1900,90 @@ for _ in range(_s56.DONE_FRAMES):
     _s56.update()
 check(g.current_state is _home56, "then back to the game")
 
+print("57) Building interiors from the fan games; a Gym's rooms follow your progress; move animations (Jordan, 11-04)")
+from src.states.overworld.gym_lobby import GymLobbyState as _GL57
+from src.minigames import done_flag as _df57
+_area57 = story.current_area_key
+story.current_area_key = "PETALBURG_CITY"
+_rooms57 = story.get_current_area_data()["backgrounds"]["gym"]
+_asked57 = []
+_gb57 = g.assets.get_background
+g.assets.get_background = lambda n, *a, **k: (_asked57.append(n), _gb57(n, *a, **k))[1]
+story.story_flags[_df57("PETALBURG_CITY")] = True
+story.story_flags["gym_progress_PETALBURG_CITY"] = 2
+_GL57(g)
+check(_asked57 and _asked57[0] == _rooms57[-1], "Petalburg Gym: the Leader's room once the trainers are beaten")
+_asked57.clear()
+story.current_area_key = "EVER_GRANDE_CITY"
+story.story_flags["gym_progress_EVER_GRANDE_CITY"] = 1
+_GL57(g)
+check(_asked57 and _asked57[0] == "hoenn_elite_phoebe.png", "Hoenn League: the second member's room for the second match")
+g.assets.get_background = _gb57
+for _k57 in ("gym_progress_PETALBURG_CITY", "gym_progress_EVER_GRANDE_CITY", _df57("PETALBURG_CITY")):
+    story.story_flags.pop(_k57, None)
+story.current_area_key = _area57
+check(all(g.assets.get_background(n) for n in ("kanto_center.png", "kanto_mart.png", "hoenn_center.png",
+                                               "hoenn_mart.png", "sycamore_lab.png", "cyllage_gym_leader.png")),
+      "the fan games' rooms are there")
+check(g.assets.get_region_default_building({"region": "KANTO", "subregion": "SEVII"}, "center") is not None
+      and g.assets.get_region_default_building({"region": "ALOLA"}, "center") is None,
+      "towns without their own Center: their region's (Sevii's too); none where there isn't one")
+from src.vfx import move_anim as _ma57
+_t57, _sw57 = _ma57.find(g.assets.assets_dir, "TACKLE", "player")
+_w57, _sw57b = _ma57.find(g.assets.assets_dir, "WATER-GUN", "opponent")
+check(_t57 and not _sw57 and _w57 and _sw57b, "Pokemon Orre's animations: Tackle; a foe's Water Gun uses its foe-side version")
+check(_ma57.move_key("DOUBLE-EDGE") == "DOUBLEEDGE" and _ma57.find(g.assets.assets_dir, "DOUBLE-EDGE", "player")[0],
+      "our move names find Essentials' (DOUBLE-EDGE -> DOUBLEEDGE)")
+_fp57 = _ma57.find(g.assets.assets_dir, "FOUND-POWER", "player")[0]
+check(_fp57 and len(_fp57.get("graphics", [])) == 2 and any(len(c) > 16 and c[16] == 1 for f in _fp57["frames"] for c in f[2:] if c),
+      "Found Power: Hidden Power's orbs, then a violet Hyper Beam (two sheets)")
+_b57 = battle("HOENN_ROUTE_101", 258, 263)
+for _ in range(400):
+    _b57.update()
+    if _b57.phase == "MENU":
+        break
+_b57.chosen_move = "TACKLE"
+_b57.player_attack()
+check(_b57.move_anim is not None and _b57.dialogue_box.visible and _b57.dialogue_box.text_lines == ["MUDKIP USED TACKLE!"],
+      "'MUDKIP USED TACKLE!' shows first, the box up")
+_typing57 = []
+for _ in range(60):
+    _b57.update()
+    if _b57._move_seq and _b57._move_seq["stage"] == "text":
+        _typing57.append(_b57.move_anim.frame)
+    else:
+        break
+check(_typing57 and set(_typing57) == {-1}, "the animation waits for the text to be typed out")
+check(_b57.move_anim is not None and _b57.move_anim.frame >= 0 and _b57.dialogue_box.visible,
+      "then the animation plays, the text box still up")
+for _ in range(300):
+    if _b57._move_seq is None:
+        break
+    _b57.update()
+check(_b57.move_anim is None and _b57._move_seq is None and _b57.dialogue_box.visible, "then the HP drop and the rest")
+_b57 = battle("HOENN_ROUTE_101", 258, 263)
+for _ in range(400):
+    _b57.update()
+    if _b57.phase == "MENU":
+        break
+story.balls_left = max(5, getattr(story, "balls_left", 0))
+_b57.opponent_hp = _b57.opponent_pokemon.current_hp = 1
+_b57.chosen_move = "TACKLE"
+if _b57.catch_offer_ready():
+    _b57.player_attack()
+    check(_b57.phase != "CATCH_PROMPT" and _b57.dialogue_box.visible, "a knockout: no catch window yet, the text first")
+    for _ in range(400):
+        if _b57.phase == "CATCH_PROMPT":
+            break
+        _b57.dialogue_box.is_finished = True
+        if _b57.dialogue_box.callback and _b57._move_seq is None:
+            _cb57, _b57.dialogue_box.callback = _b57.dialogue_box.callback, None
+            _cb57()
+        _b57.update()
+    check(_b57.phase == "CATCH_PROMPT" and not _b57.renderer.hp_animating(), "the catch window once the HP bar is empty")
+else:
+    check(False, "a test wild battle should offer the catch window")
+check(not _b57._start_move_anim(_b57.player_pokemon, "TACKLE", "player", ["MUDKIP USED TACKLE!", "MUDKIP's attack missed!"]),
+      "a missed move shows no animation")
+
 print(f"\n{'ALL PASS' if not fails else str(fails) + ' FAIL(S)'}")

@@ -1,6 +1,7 @@
 # [REF-0001: System Imports]
 import pygame
 from src.vfx.animations import MAX_HEIGHT, battle_sprite, sprite_rect
+from src.vfx.move_anim import tinted
 import math
 from src.utils import Utils
 from src.config import WHITE, BLACK
@@ -126,20 +127,24 @@ class BattleRenderer:
     # ------------------------------------------------------------------ the scene
     def draw(self, screen, opponent_pokemon, player_pokemon, opp_hp, player_hp, opp_max_hp, player_max_hp,
              adv_opp=1.0, adv_player=1.0, is_trainer_battle=False, trainer_img=None, background=None,
-             anim_ctrl=None, fainting_side=None, trainer_x_offset=0, hide_opponent=False, show_fainted=False):
+             anim_ctrl=None, fainting_side=None, trainer_x_offset=0, hide_opponent=False, show_fainted=False,
+             move_anim=None, keep_battlers=False):
         w, h = self.game.width, self.game.height
         screen.fill(BLACK)
         if background:
             screen.blit(background, (0, 0))
         else:
             screen.fill((95, 145, 185))
+        if move_anim:  # a move's background picture (src/vfx/move_anim.py)
+            move_anim.draw_back(screen)
 
         reach = anim_ctrl.lunge_amount() if anim_ctrl else 0.0
         lunge_side = anim_ctrl.lunge_side if anim_ctrl and anim_ctrl.is_lunging else None
 
         # The foe.
-        # (show_fainted: a knocked-out wild Pokemon stays in view for the catch window)
-        if fainting_side != "opponent" and not hide_opponent and (opponent_pokemon.current_hp > 0 or show_fainted) \
+        # (show_fainted: a knocked-out wild Pokemon stays in view for the catch window; both stay while a
+        # move's text, animation and HP drop play: the blow lands before it faints)
+        if fainting_side != "opponent" and not hide_opponent and (opponent_pokemon.current_hp > 0 or show_fainted or keep_battlers) \
                 and (not anim_ctrl or anim_ctrl.hit_visible("opponent")):
             img = battle_sprite(opponent_pokemon, "opponent")
             ox, oy = 0, 0
@@ -154,12 +159,18 @@ class BattleRenderer:
                 ox, oy = ox - 70 * reach, oy + 30 * reach
             if anim_ctrl:
                 ox += anim_ctrl.knockback("opponent")
+            shown = True
+            if move_anim:  # the move's animation moves, hides, fades or tints it
+                dx, dy, shown, opacity, tint = move_anim.battler("opponent")
+                ox, oy = ox + dx, oy + dy
+                img = tinted(img, tint, opacity)
             rect = sprite_rect(self.game, img, "opponent").move(int(ox), int(oy))
-            screen.blit(img, rect)
-            self._shadow_fog(screen, opponent_pokemon, rect)
+            if shown:
+                screen.blit(img, rect)
+                self._shadow_fog(screen, opponent_pokemon, rect)
 
         # Your Pokemon.
-        if fainting_side not in ("player", "player_switch") and player_pokemon.current_hp > 0 \
+        if fainting_side not in ("player", "player_switch") and (player_pokemon.current_hp > 0 or keep_battlers) \
                 and (not anim_ctrl or anim_ctrl.hit_visible("player")):
             img = battle_sprite(player_pokemon, "player")
             px, py = 0, 0
@@ -168,12 +179,20 @@ class BattleRenderer:
             if anim_ctrl:
                 px -= anim_ctrl.knockback("player")
             if img is not None:
+                shown = True
+                if move_anim:
+                    dx, dy, shown, opacity, tint = move_anim.battler("player")
+                    px, py = px + dx, py + dy
+                    img = tinted(img, tint, opacity)
                 rect = sprite_rect(self.game, img, "player").move(int(px), int(py))
-                screen.blit(img, rect)
-                self._shadow_fog(screen, player_pokemon, rect)
+                if shown:
+                    screen.blit(img, rect)
+                    self._shadow_fog(screen, player_pokemon, rect)
 
         if is_trainer_battle and trainer_img:
             screen.blit(trainer_img, trainer_img.get_rect(center=(w * 0.78 + trainer_x_offset, h * 0.26)))
+        if move_anim:
+            move_anim.draw(screen)
 
         self.draw_foe_box(screen, opponent_pokemon, opp_hp, opp_max_hp)
         self.draw_my_box(screen, player_pokemon, player_hp, player_max_hp)

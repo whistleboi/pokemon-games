@@ -401,6 +401,25 @@ class AssetManager:
         name = self.REGION_BUILDINGS.get(str(region or "").upper(), {}).get(kind)
         return self.get_background(name) if name else None
 
+    # A Pokemon Center and Mart for the towns of a region (or sub-region) without their own picture, before
+    # the stand-ins (11-04, dev/builders/render_interiors.py: Pokemon Journeys' rooms). No one is in them.
+    REGION_DEFAULT_BUILDINGS = {
+        "KANTO": {"center": "kanto_center.png", "mart": "kanto_mart.png"},
+        "SEVII": {"center": "kanto_center.png", "mart": "kanto_mart.png"},
+        "JOHTO": {"center": "kanto_center.png", "mart": "kanto_mart.png"},
+        "ORANGE": {"center": "kanto_center.png", "mart": "kanto_mart.png"},
+        "HOENN": {"center": "hoenn_center.png", "mart": "hoenn_mart.png"},
+    }
+
+    def get_region_default_building(self, area_data, kind="center"):
+        """The Center ('center') or Mart ('mart') picture for a town of this area's region (its sub-region's
+        first) that has none of its own, or None."""
+        for region in (area_data.get("subregion"), area_data.get("region") or "KANTO"):
+            name = self.REGION_DEFAULT_BUILDINGS.get(str(region or "").upper(), {}).get(kind)
+            if name:
+                return self.get_background(name)
+        return None
+
     # Stand-in art for places that don't have their own yet (backgrounds/generic).
     GENERIC_BACKGROUNDS = {
         "center": "pokemoncenter.png", "mart": "mart1.png",

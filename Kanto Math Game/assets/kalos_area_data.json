@@ -1091,7 +1091,7 @@
       "area_type": "town",
       "route_name": "Santalune City",
       "region": "KALOS",
-      "backgrounds": { "main": "santalune_city.png", "gym": "santalune_gym.png" },
+      "backgrounds": { "main": "santalune_city.png", "gym": ["santalune_gym.png", "santalune_gym_leader.png"] },
       "has_gym": true,
       "gym": {"trainers": [], "leader": {"name": "Viola", "class": "GYM_LEADER", "sprite": "viola.png", "team": [283, 666], "levels": [10, 12], "dialogue": {"intro": ["Viola: My lens is focused on you! A battle is just like photography — timing is everything!"], "player_won": ["Viola: Wonderful! You've earned the Bug Badge! Here, take this TM — Struggle Bug!"], "player_lost": ["Viola: The shot wasn't quite right. Come back when your timing improves!"]}, "rewards": {"balls": 5}, "is_boss_battle": true, "badge_reward": "BUG", "movesets": {"283": ["QUICK-ATTACK", "BUBBLE", "WATER-SPORT"], "666": ["HARDEN", "INFESTATION", "TACKLE"]}}, "requirements": {"badges": 0, "fail_text": "Viola is in the gym — challenge her when you're ready!"}},
       "travel_options": [
@@ -1176,7 +1176,7 @@
       "area_type": "town",
       "route_name": "Cyllage City",
       "region": "KALOS",
-      "backgrounds": { "main": "cyllage_city.png", "gym": "cyllage_gym.png" },
+      "backgrounds": { "main": "cyllage_city.png", "gym": ["cyllage_gym.png", "cyllage_gym_leader.png"] },
       "has_gym": true,
       "gym": {"trainers": [], "leader": {"name": "Grant", "class": "GYM_LEADER", "sprite": "grant.png", "team": [698, 696], "levels": [25, 25], "dialogue": {"intro": ["Grant: I've scaled every peak in Kalos. Can you climb to my level?"], "player_won": ["Grant: You summit the challenge! Here is the Cliff Badge, and TM Rock Tomb.", "Take this Jaw Fossil too. The fossil lab in Ambrette Town can revive it!"], "player_lost": ["Grant: The climb continues. Train harder and try again."]}, "rewards": {"balls": 5, "JAW_FOSSIL": 1}, "is_boss_battle": true, "badge_reward": "CLIFF", "movesets": {"698": ["AURORA-BEAM", "ROCK-TOMB", "THUNDER-WAVE", "TAKE-DOWN"], "696": ["ROCK-TOMB", "BITE", "STOMP"]}}, "requirements": {"badges": 1, "flags": ["glittering_cave_cleared"], "fail_text": "Grant's Gym is shut for now. Earn the Bug Badge, and see what Team Flare is up to in Glittering Cave off Route 9."}},
       "travel_options": [

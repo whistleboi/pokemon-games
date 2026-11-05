@@ -79,7 +79,7 @@ for _ in range(400):
     b = WildBattleState(g, foe, "KALOS_ROUTE_1"); g.change_state(b)
     b._foe_next_move = "EARTHQUAKE"
     b.opponent_attack()
-    lines = b.dialogue_box.text_lines
+    lines = b.dialogue_box.text_lines + (b._move_seq or {}).get("rest", [])  # (the rest waits for the move)
     endured += any("toughed it out" in l for l in lines)
     evaded += any("avoided the attack" in l for l in lines)
 check(40 <= endured <= 110 and 40 <= evaded <= 120, f"5 hearts: endured {endured}/400, dodged {evaded}/400")
