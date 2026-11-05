@@ -2000,7 +2000,7 @@
       "route_menu": [
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
         {"text": "UNLOCK THE DOORS", "action": "EVENT", "color": "GOLD", "event": {"puzzle": "security", "lines": ["The doors open, one by one. The Admin's office is ahead!"], "puzzle_fail": ["The door pads reset. Try the codes again!"], "flag": "warehouse_doors_open"}, "flag_condition": "not warehouse_doors_open"},
-        {"text": "CONFRONT THE ADMIN", "action": "EVENT", "color": "GOLD", "event": {"requires": ["warehouse_doors_open"], "lines": ["Admin: So you're the one ruining our plans on every island.", "With the Ruby and Sapphire we'd force any Pokemon to evolve! Prepare yourself!"], "battle": {"name": "Rocket Admin Archer", "class": "ROCKET_ADMIN", "sprite": "archer.png", "team": [229, 110, 42, 24, 112], "levels": [56, 57, 56, 57, 59], "rewards": {"balls": 15}, "dialogue": {"player_won": ["Archer: Impossible... Take your precious gems, then!"]}}, "flag": "sevii_warehouse_cleared"}, "condition": "warehouse_doors_open", "flag_condition": "not sevii_warehouse_cleared"},
+        {"text": "CONFRONT THE ADMIN", "action": "EVENT", "color": "GOLD", "event": {"requires": ["warehouse_doors_open"], "lines": ["Admin: So you're the one ruining our plans on every island.", "With the Ruby and Sapphire we'd force any Pokemon to evolve! Prepare yourself!"], "battle": {"name": "Rocket Admin Archer", "class": "ROCKET_ADMIN", "sprite": "archer.png", "team": [229, 110, 42, 24, 112], "levels": [56, 57, 56, 57, 59], "rewards": {"balls": 15}, "dialogue": {"player_won": ["Archer: Impossible... Take your precious gems, then!"]}}, "flag": "sevii_warehouse_cleared"}, "condition": ["warehouse_doors_open", "no_trainers"], "flag_condition": "not sevii_warehouse_cleared"},
         {"text": "RECOVER THE GEMS", "action": "EVENT", "color": "GOLD", "event": {"requires": ["sevii_warehouse_cleared"], "lines": ["On the Admin's desk sit two glowing gems: the Ruby and the Sapphire!", "Team Rocket's Sevii hideout is shut down for good. Take them to Celio!"], "gift_item": {"RUBY": 1, "SAPPHIRE": 1}, "flag": "got_sevii_gems"}, "condition": "sevii_warehouse_cleared", "flag_condition": "not got_sevii_gems"},
         {"text": "Five Island", "action": "EXIT", "target_area": "FIVE_ISLAND", "condition": "can_exit", "color": "RED"},
         {"text": "FIVE ISLE MEADOW", "action": "EXIT", "target": "FIVE_ISLE_MEADOW", "condition": "can_exit", "color": "RED"}
@@ -2687,11 +2687,28 @@
       "description": "Stop Team Rocket in Icefall Cave, open the Dotted Hole on Six Island, then raid the Rocket Warehouse on Five Island.",
       "condition": {
         "item": "RAINBOW_PASS",
+        "flag_not": "got_sevii_gems",
+        "required_region": "KANTO"
+      },
+      "reward": "The Ruby and the Sapphire",
+      "region": "KANTO",
+      "completed_flag": "got_sevii_gems",
+      "target": "ROCKET_WAREHOUSE"
+    },
+    {
+      "id": "sevii_m5b",
+      "type": "SIDE",
+      "title": "Back to Celio",
+      "description": "You have the Ruby and the Sapphire! Take them to Celio on One Island so he can finish the Network Machine.",
+      "condition": {
+        "flag": "got_sevii_gems",
         "flag_not": "network_machine_fixed",
         "required_region": "KANTO"
       },
       "reward": "Old Sea Map",
-      "region": "KANTO"
+      "region": "KANTO",
+      "completed_flag": "network_machine_fixed",
+      "target": "ONE_ISLAND"
     },
     {
       "id": "sevii_m6",

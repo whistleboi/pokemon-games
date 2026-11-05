@@ -120,7 +120,19 @@ def default_moves(game, poke):
     return moves[-MAX_MOVES:] or [FALLBACK]
 
 
+def fixed_moves(game, poke):
+    """A Pokemon with one set of moves and nothing else, or None. Nown (Jordan, 11-04): only
+    Found Power, even when the Unown it came from knew Hidden Power."""
+    if int(poke.id) == game.loader.get_special_id("NOWN", 3025):
+        return ["FOUND-POWER"]
+    return None
+
+
 def ensure_moves(game, poke):
+    fixed = fixed_moves(game, poke)
+    if fixed:
+        poke.moves = list(fixed)
+        return poke.moves
     if not getattr(poke, "moves", None):
         preset = getattr(poke, "preset_moves", None)
         poke.moves = preset_moves(game, poke, preset) if preset else default_moves(game, poke)
@@ -147,6 +159,10 @@ def move_pool(game, poke):
     """Every move this Pokemon can choose from: everything it has learned (kept through evolution)
     plus its learnset up to its level, its current moves included, and the moves of the TMs in your
     Bag it can learn (a TM unlocks its move for every Pokemon that can learn it: Jordan, 11-04)."""
+    fixed = fixed_moves(game, poke)
+    if fixed:
+        poke.move_pool = list(fixed)
+        return poke.move_pool
     pool = list(getattr(poke, "move_pool", None) or [])
     for name in learnable(game, poke) + list(ensure_moves(game, poke)) + tm_moves(game, poke):
         if name not in pool:

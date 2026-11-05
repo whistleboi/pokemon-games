@@ -1213,7 +1213,7 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, GameState)
             gained = max(1, int(growth.battle_xp(base_yield, foe_level, my_level, trainer=trainer)
                                 * affection.xp_mult(p) * share_of[id(p)]))
             if my_level >= cap:
-                if p is lead:
+                if p is lead and my_level < 100:  # (Lv 100 is as high as it goes: no warning)
                     messages.append(f"{p.display_name.upper()} can't grow past Lv {cap} until you beat the next Gym!")
                 continue
             old_level = p.level

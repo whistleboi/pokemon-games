@@ -298,6 +298,9 @@ class Game:
             except pygame.error:  # the screen can be lost for a moment while the window comes back
                 pass
             self.clock.tick(FPS * self.speed())
+            story = getattr(self, "story_manager", None)
+            if story is not None:  # time played (the Trainer Card on the save screen)
+                story.play_seconds = getattr(story, "play_seconds", 0) + self.clock.get_time() / 1000
 
     # Timed games keep the normal pace at 2x (their speeds are worked out per frame at FPS).
     NORMAL_SPEED_STATES = ("SlotsState", "VoltorbFlipState", "BlackjackState", "PokeMathInfiniteState")

@@ -1,4 +1,5 @@
 # [REF-0017: Story Manager]
+import random
 from src.pokemon.data import Pokemon
 
 
@@ -29,6 +30,8 @@ class StoryManager:
         self.story_flags = {}
         self.current_streak = 0
         self.money = 3000
+        self.play_seconds = 0.0  # time played, for the Trainer Card (Game.run adds to it)
+        self.trainer_id = random.randint(10000, 99999)  # the Trainer Card's ID No.
         self.catch_counts = {}
         self.inventory = {}
         self.balls_left = 5
@@ -1186,6 +1189,8 @@ class StoryManager:
             "balls_left": self.balls_left,
             "current_streak": self.current_streak,
             "money": self.money,
+            "play_seconds": int(self.play_seconds),
+            "trainer_id": self.trainer_id,
             "defeated_trainers": {
                 k: list(v) for k, v in self.defeated_trainers.items()
             },
@@ -1345,6 +1350,8 @@ class StoryManager:
         self.story_flags.pop("forced_white_out", None)  # stale flag from old saves
         self.current_streak = data.get("current_streak", 0)
         self.money = data.get("money", 3000)
+        self.play_seconds = float(data.get("play_seconds", 0))  # (older saves: from now on)
+        self.trainer_id = int(data.get("trainer_id") or self.trainer_id)  # (older saves: a new one, kept)
         self.catch_counts = data.get("catch_counts", {})
 
         self.poffins = list(data.get("poffins", []))

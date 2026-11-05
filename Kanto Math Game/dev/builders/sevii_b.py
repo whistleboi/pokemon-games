@@ -88,7 +88,8 @@ S.wild("ROCKET_WAREHOUSE", "Rocket Warehouse", 57, "indoor", {},
                                    [56, 57, 56, 57, 59], ["Archer: Impossible... Take your precious gems, then!"],
                                    balls=15),
                   "flag": "sevii_warehouse_cleared"},
-                  condition="warehouse_doors_open", flag_condition="not sevii_warehouse_cleared"),
+                  # (Jordan, 11-04: beat the Rocket trainers before the Admin)
+                  condition=["warehouse_doors_open", "no_trainers"], flag_condition="not sevii_warehouse_cleared"),
               event("RECOVER THE GEMS", {
                   "requires": ["sevii_warehouse_cleared"],
                   "lines": ["On the Admin's desk sit two glowing gems: the Ruby and the Sapphire!",
@@ -195,7 +196,13 @@ S.mission("sevii_m4", "SIDE", "The Rainbow Pass",
           {"flag": ["met_celio", "beat_champion"], "flag_not": "got_rainbow_pass"}, "Rainbow Pass")
 S.mission("sevii_m5", "SIDE", "The Ruby and the Sapphire",
           "Stop Team Rocket in Icefall Cave, open the Dotted Hole on Six Island, then raid the Rocket Warehouse on Five Island.",
-          {"item": "RAINBOW_PASS", "flag_not": "network_machine_fixed"}, "Old Sea Map")
+          {"item": "RAINBOW_PASS", "flag_not": "got_sevii_gems"}, "The Ruby and the Sapphire",
+          completed_flag="got_sevii_gems", target="ROCKET_WAREHOUSE")
+# Jordan (11-04): the journal moves on once the gems are found: take them back to Celio.
+S.mission("sevii_m5b", "SIDE", "Back to Celio",
+          "You have the Ruby and the Sapphire! Take them to Celio on One Island so he can finish the Network Machine.",
+          {"flag": "got_sevii_gems", "flag_not": "network_machine_fixed"}, "Old Sea Map",
+          completed_flag="network_machine_fixed", target="ONE_ISLAND")
 S.mission("sevii_m6", "SIDE", "The Faraway Island",
           "Celio's old sea map shows an uncharted island. A pink Pokemon lives there...",
           {"item": "OLD_SEA_MAP", "flag_not": "caught_mew"}, "Mew", completed_flag="caught_mew")

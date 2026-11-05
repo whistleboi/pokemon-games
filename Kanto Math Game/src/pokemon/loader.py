@@ -478,6 +478,9 @@ class PokemonLoader:
                 if form_key in self.assets.movesets:
                     moveset_key = form_key
 
+            if p_id >= 2000 and str(p_id) in self.assets.movesets:
+                moveset_key = str(p_id)  # a form with its own entry (Nown: its own stats and move)
+
             moveset_data = self.assets.movesets.get(moveset_key, {})
             if not moveset_data and str(meta_id) in self.assets.movesets:
                 moveset_data = self.assets.movesets[str(meta_id)]

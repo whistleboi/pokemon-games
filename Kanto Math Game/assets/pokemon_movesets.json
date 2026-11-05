@@ -69888,6 +69888,45 @@
     ],
     "evolution": null
   },
+  "3025": {
+    "name": "NOWN",
+    "types": [
+      "PSYCHIC"
+    ],
+    "stats": {
+      "HP": 70,
+      "ATTACK": 40,
+      "DEFENSE": 60,
+      "SPECIAL-ATTACK": 180,
+      "SPECIAL-DEFENSE": 90,
+      "SPEED": 140
+    },
+    "base_xp": 270,
+    "capture_rate": 3,
+    "moves": [
+      {
+        "name": "FOUND-POWER",
+        "power": 120,
+        "type": "???",
+        "accuracy": 100,
+        "category": "SPECIAL",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      }
+    ],
+    "evolution": null
+  },
   "202": {
     "name": "WOBBUFFET",
     "types": [

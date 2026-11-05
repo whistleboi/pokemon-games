@@ -1839,4 +1839,65 @@ _e54 = {e["id"]: e["status"] for e in story.get_all_journal_entries()}
 check(_e54.get("sevii_m9") == "COMPLETED" and _e54.get("sevii_m10") == "ACTIVE", "beating Lugia completes its mission only")
 story.story_flags.clear(); story.story_flags.update(_fl54); story.current_area_key = _area54
 
+print("55) Nown: a Sp. Atk glass cannon whose one move is Found Power (Jordan, 11-04)")
+from src.pokemon import moves as _mv55
+_st55 = g.loader.fetch_specific(_nown52)["stats"]
+check(_st55 == {"HP": 70, "ATTACK": 40, "DEFENSE": 60, "SPECIAL-ATTACK": 180, "SPECIAL-DEFENSE": 90, "SPEED": 140},
+      f"Nown's own stats: 70/40/60/180/90/140 ({_st55})")
+check(g.loader.fetch_specific(201)["stats"]["SPECIAL-ATTACK"] == 72, "Unown keeps its own")
+_fp55 = _mv55.info(g, "FOUND-POWER")
+check((_fp55["power"], _fp55["category"], _fp55["type"]) == (120, "SPECIAL", "???"), "Found Power: 120, special, typeless")
+_n55 = mk(_nown52); _n55.level = 50; _n55.moves = ["HIDDEN-POWER"]; _n55.move_pool = ["HIDDEN-POWER"]
+check(_mv55.ensure_moves(g, _n55) == ["FOUND-POWER"] and _mv55.move_pool(g, _n55) == ["FOUND-POWER"],
+      "its only move, even after an Unown that knew Hidden Power")
+_eff55 = []
+for _foe55 in (197, 94, 68):  # Umbreon (Dark: no Psychic move touches it), Gengar, Machamp
+    _b55 = battle("PALLET_TOWN", 25, _foe55); _b55.player_pokemon = _n55
+    _dmg55, _l55, _ = _b55._use_move(_n55, _b55.opponent_pokemon, "FOUND-POWER", "NOWN", "FOE",
+                                     _b55.opponent_pokemon.get_max_hp(), _b55.opponent_pokemon.current_hp)
+    _eff55.append(_dmg55 > 0 and not any("effective" in l.lower() or "affect" in l.lower() for l in _l55))
+check(all(_eff55), "always a normal hit: Dark, Ghost and Fighting alike")
+
+print("56) No Lv 100 XP warning; the Rocket Warehouse's trainers before the Admin; the Trainer Card (Jordan, 11-04)")
+from src.world import levels as _lv56
+_b56 = battle("PALLET_TOWN", 25, 19)
+_cap56 = _lv56.xp_cap(story)
+_b56.player_pokemon.level = 100
+_m56 = _b56._award_battle_xp()
+check(not any("can't grow" in m for m in _m56), f"Lv 100: no 'can't grow' message ({_m56})")
+if _cap56 < 100:
+    _b56 = battle("PALLET_TOWN", 25, 19); _b56.player_pokemon.level = _cap56
+    check(any("can't grow" in m for m in _b56._award_battle_xp()), f"at the cap (Lv {_cap56}) it still says so")
+_wh56 = g.loader.area_data["STORY_PROGRESSION"]["ROCKET_WAREHOUSE"]
+_adm56 = next(o for o in _wh56["route_menu"] if o["text"] == "CONFRONT THE ADMIN")
+from src.states import overworld as _ow56
+_area56 = story.current_area_key; story.current_area_key = "ROCKET_WAREHOUSE"
+_p56 = _ow56.PlayState(g); g.change_state(_p56)
+story.story_flags["warehouse_doors_open"] = True
+check(not _p56._check_route_condition(_adm56["condition"], True, _adm56), "doors open, Rockets left: no Admin yet")
+check(_p56._check_route_condition(_adm56["condition"], False, _adm56), "every Rocket beaten: CONFRONT THE ADMIN")
+story.story_flags.pop("warehouse_doors_open", None); story.current_area_key = _area56
+from src.ui.trainer_card import facts_live as _fl56, facts_from_save as _fs56
+story.play_seconds = 2 * 3600 + 5 * 60 + 9
+_live56 = _fl56(g)
+g.update_save_data()
+_saved56 = _fs56(g, g.data.data)
+check(_live56["seconds"] == 7509 and _saved56["seconds"] == 7509 and _saved56["trainer_id"] == story.trainer_id,
+      "play time and ID No. are saved and read back for the card")
+check(_saved56["name"] == _live56["name"] and _saved56["money"] == _live56["money"] and len(_saved56["party"]) == len(_live56["party"]),
+      "the load screen's card matches the game's")
+from src.states.menus import SaveState as _SS56
+_home56 = g.current_state
+_s56 = _SS56(g, _home56); g.change_state(_s56)
+_wrote56 = []
+_s56.save_to_slot = lambda *a, **k: _wrote56.append(a)
+_s56.confirm_save()
+check(_s56.phase == "SAVING" and not _wrote56, "YES: 'Saving...' first")
+for _ in range(_s56.SAVING_FRAMES):
+    _s56.update()
+check(_s56.phase == "DONE" and len(_wrote56) == 1, "then the file is written and it says so")
+for _ in range(_s56.DONE_FRAMES):
+    _s56.update()
+check(g.current_state is _home56, "then back to the game")
+
 print(f"\n{'ALL PASS' if not fails else str(fails) + ' FAIL(S)'}")

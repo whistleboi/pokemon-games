@@ -109,7 +109,7 @@ for k in SEVII:
     except Exception as e:
         check(False, f"{k}: {type(e).__name__} {e}")
 missions = [m for m in g.loader.area_data["JOURNAL_MISSIONS"] if m["id"].startswith("sevii")]
-check(len(missions) == 11 and all(m["region"] == "KANTO" for m in missions), "11 Sevii journal entries (the Unown of Tanoby and the legendaries too)")
+check(len(missions) == 12 and all(m["region"] == "KANTO" for m in missions), "12 Sevii journal entries (Back to Celio, the Unown of Tanoby and the legendaries too)")
 # areas_09_sevii.patch: the seven added Sevii areas, linked both ways and opening cleanly
 NEW7 = ["CANYON_ENTRANCE", "GREEN_PATH", "OUTCAST_ISLAND", "SEVII_ALTERING_CAVE", "WATER_PATH", "MEMORIAL_PILLAR", "RESORT_GORGEOUS"]
 def _tg(k): return {o.get("target_area") for o in prog[k].get("travel_options", []) + prog[k].get("route_menu", []) if o.get("target_area")}

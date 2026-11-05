@@ -64,6 +64,7 @@ ALIASES = {
     "MT_PYRE": "MT. PYRE EXTERIOR", "SHOAL_CAVE": "SHOAL CAVE NC", "ROUTE_211": "Route 211 West",
     "MT_CORONET": "Mt Coronet Wilds", "FUEGO_IRONWORKS": "Fuego Ironworks EXT",
     "MEMORIAL_PILLAR": "MEMORIAL PILLAR NC", "SIX_ISLAND": "SIX ISLANDS", "MT_EMBER": "MT EMBER",
+    "MANDARIN_NORTH": "Manderin Island North", "ORANGE_ROUTE_50": "Route 50",  # (Journeys' spelling; our Routes 50 and 51)
 }
 # Our "towns" that are really a cave or a building (Journeys has them only as indoor maps).
 SKIP = {"MT_MOON_CITY", "MT_SILVER_CITY", "ROCK_TUNNEL_CITY", "SILPH_CITY", "OLIVINE_LIGHTHOUSE",

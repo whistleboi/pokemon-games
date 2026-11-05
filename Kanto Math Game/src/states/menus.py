@@ -1206,6 +1206,13 @@ class LoadState(GameState):
                                      bg_color=theme.POKEMON, autosize=False)
         self.btn_no = CommandButton((cx + 20, cy + 50, 210, 64), "NO", f["button"], self.cancel_load,
                                     bg_color=theme.BACK, autosize=False)
+        # Loading: the file's Trainer Card over the list, "Load this file?" and YES / NO under it.
+        self.card = None
+        self.card_rect = pygame.Rect(cx - 382, 24, 764, 448)
+        self.card_box = pygame.Rect(28, 488, game.width - 56, game.height - 504)
+        self.small_yes_no = (self.btn_yes.rect.copy(), self.btn_no.rect.copy())
+        b = self.card_box
+        self.card_yes_no = (pygame.Rect(b.right - 262, b.y + 22, 230, 68), pygame.Rect(b.right - 262, b.y + 106, 230, 68))
         # DELETE (Load screen only): the next file picked is deleted, after a YES / NO.
         self.delete_mode = False
         self.btn_delete = CommandButton((game.width - 196, 14, 180, 56), "DELETE", f["button"],
@@ -1258,6 +1265,8 @@ class LoadState(GameState):
 
     def _ask(self):
         self.phase = "CONFIRM"
+        use_card = self.card is not None and not self.delete_mode
+        self.btn_yes.rect, self.btn_no.rect = (r.copy() for r in (self.card_yes_no if use_card else self.small_yes_no))
         self.game.ui_manager.elements.clear()
         self.game.ui_manager.add_element(self.btn_yes)
         self.game.ui_manager.add_element(self.btn_no)
@@ -1266,7 +1275,18 @@ class LoadState(GameState):
         slot = self.slot_list.summary(i)
         if slot and not slot.get("damaged"):
             self.selected_slot_index = i
+            self.card = self._card_for(slot)
             self._ask()
+
+    def _card_for(self, slot):
+        """The file's Trainer Card, read from the file (None if it can't be read)."""
+        from src.core.data import DataManager
+        from src.ui.trainer_card import TrainerCard, facts_from_save
+        try:
+            data, _ = DataManager.read_json(slot["file"])
+            return TrainerCard(self.game, facts_from_save(self.game, data)) if data else None
+        except Exception:
+            return None
 
     def do_load(self):
         slot_data = self.slot_list.summary(self.selected_slot_index)
@@ -1289,6 +1309,7 @@ class LoadState(GameState):
 
     def cancel_load(self):
         self.phase = "SELECT"
+        self.card = None
         self.start()
 
     def start(self):
@@ -1331,6 +1352,9 @@ class LoadState(GameState):
         dim = pygame.Surface(screen.get_size(), pygame.SRCALPHA)
         dim.fill((0, 0, 0, 150))
         screen.blit(dim, (0, 0))
+        if self.card is not None and not self.delete_mode:
+            self._draw_card_confirm(screen, f, theme)
+            return
         q = self.confirm_rect
         theme.card(screen, q, selected=True, accent=theme.RUN, radius=16)
         slot = self.slot_list.summary(self.selected_slot_index) if self.selected_slot_index >= 0 else None
@@ -1343,20 +1367,43 @@ class LoadState(GameState):
         self.btn_yes.draw(screen)
         self.btn_no.draw(screen)
 
+    def _draw_card_confirm(self, screen, f, theme):
+        """Loading: the file's Trainer Card, then "Load <name>?", when it was saved, and its party."""
+        self.card.draw(screen, self.card_rect)
+        b = self.card_box
+        theme.draw_textbox(screen, b)
+        slot = self.slot_list.summary(self.selected_slot_index) or {}
+        room = b.w - 330
+        head = f"Load {slot.get('name', 'this file')}?"
+        theme.shadow_text(screen, head, f["s_med"] if f["s_med"].size(head)[0] <= room else f["label"],
+                          b.x + 34, b.y + 26)
+        sub = f"Saved {slot['saved']} in {self.card.facts['place']}." if slot.get("saved") else self.card.facts["place"]
+        theme.shadow_text(screen, sub, f["label"] if f["label"].size(sub)[0] <= room else f["caption"],
+                          b.x + 34, b.y + 78, color=(110, 116, 140))
+        self.card.draw_party(screen, b.x + 30, b.y + 116, min(room, 6 * 66))
+        self.btn_yes.draw(screen)
+        self.btn_no.draw(screen)
+
 
 # [REF-0037: Save Game State]
 class SaveState(GameState):
+    """Saving (Jordan, 11-04: in the style of the fourth-generation games). Over the darkened
+    screen: your Trainer Card (ID, name, money, Pokedex, play time, the region's badges), the
+    save file (where, which file, its name, your party) and "Would you like to save your
+    adventure?" with YES / NO, then "Saving..." and "<name> saved the game."."""
     uses_keyboard = True  # its own arrow/Enter/typing handling
 
+    SAVING_FRAMES = 50  # "Saving..." stays up this long before the file is written
+    DONE_FRAMES = 90    # then "<name> saved the game." (a tap goes back sooner)
+
     def text_input_rect(self):  # the save-name box (a phone's keyboard opens on a tap: src/core/android.py)
-        return getattr(self, "name_rect", None)
+        return getattr(self, "name_rect", None) if self.phase == "ASK" else None
 
     def __init__(self, game, previous_state):
         super().__init__(game)
         self.previous_state = previous_state
 
         from src.core import save_slots
-        from src.ui.slot_list import slot_font
         slot = save_slots.slot_index(self.game.data.save_file)
         if slot is None:  # not playing from a numbered file yet: offer the first free one
             slot = save_slots.first_empty(save_slots.folder(game))
@@ -1365,33 +1412,45 @@ class SaveState(GameState):
 
         self.input_text = self.game.data.data.get("save_name", f"File {self.selected_slot + 1}")
         self.input_active = True
+        self.phase, self.timer = "ASK", 0
+
+        # The screen behind (the town or route), darkened.
+        self.backdrop = game.screen.copy()
+        veil = pygame.Surface(self.backdrop.get_size(), pygame.SRCALPHA)
+        veil.fill((8, 10, 24, 150))
+        self.backdrop.blit(veil, (0, 0))
 
         from src.ui.panels import CommandButton
         from src.ui import theme
         f = game.assets.fonts
-        cx = game.width // 2
-        # The menu frame: a card with the file and the name box, SAVE / CANCEL under it.
-        self.card_rect = pygame.Rect(cx - 380, theme.HEADER_H + 60, 760, 400)
-        c = self.card_rect
-        self.name_rect = pygame.Rect(c.x + 40, c.y + 200, c.w - 80, 64)
-        self.btn_cancel_input = CommandButton((cx - 230, c.bottom - 86, 210, 64), "CANCEL", f["button"],
-                                              self.cancel_input, bg_color=theme.BACK, autosize=False)
-        self.btn_save = CommandButton((cx + 20, c.bottom - 86, 210, 64), "SAVE", f["button"],
-                                      lambda: self.save_to_slot(self.selected_slot, self.input_text),
-                                      bg_color=theme.POKEMON, autosize=False)
-        self.btn_slot = CommandButton((c.x + 40, c.y + 80, c.w - 80, 60), self.slot_label(), f["label"],
+        w, h = game.width, game.height
+        self.card_rect = pygame.Rect(28, 24, 764, 448)
+        self.side_rect = pygame.Rect(812, 24, w - 840, 448)
+        self.box_rect = pygame.Rect(28, 488, w - 56, h - 504)
+        s = self.side_rect
+        self.name_rect = pygame.Rect(s.x + 20, s.y + 252, s.w - 40, 52)
+        self.btn_slot = CommandButton((s.x + 20, s.y + 150, s.w - 40, 48), "CHANGE FILE", f["label"],
                                       self.open_slots, bg_color=theme.RUN, autosize=False)
+        b = self.box_rect
+        self.btn_save = CommandButton((b.right - 262, b.y + 22, 230, 68), "YES", f["button"], self.confirm_save,
+                                      bg_color=theme.POKEMON, autosize=False)
+        self.btn_cancel_input = CommandButton((b.right - 262, b.y + 106, 230, 68), "NO", f["button"],
+                                              self.cancel_input, bg_color=theme.BACK, autosize=False)
         self.btn_slots_back = CommandButton((16, 14, 140, 56), "BACK", f["button"], self.close_slots,
                                             bg_color=theme.BACK, autosize=False)
+        from src.ui.trainer_card import TrainerCard, facts_live
+        self.card = TrainerCard(game, facts_live(game))
 
+    # ------------------------------------------------------------- files
     def slot_label(self):
+        """The file this save goes to: "File No.003: New file" or the file it replaces."""
         from src.core import save_slots
-        from src.ui.slot_list import slot_font, fit
+        from src.ui.slot_list import fit
         info = save_slots.summary(save_slots.folder(self.game), self.selected_slot)
-        what = "EMPTY" if info is None else ("DAMAGED" if info.get("damaged") else "REPLACES " + info["name"])
-        head = f"No.{self.selected_slot + 1:03d} "
+        what = "New file" if info is None else ("Damaged" if info.get("damaged") else "replaces " + info["name"])
+        head = f"File No.{self.selected_slot + 1:03d}: "
         font = self.game.assets.fonts["label"]
-        return head + fit(font, what, 640 - font.size(head + " - CHANGE")[0]) + " - CHANGE"
+        return head + fit(font, what, self.side_rect.w - 44 - font.size(head)[0])
 
     def open_slots(self):
         from src.ui.slot_list import SlotList
@@ -1410,7 +1469,6 @@ class SaveState(GameState):
     def close_slots(self):
         self.slot_list = None
         self.input_active = True
-        self.btn_slot.text = self.slot_label()
         self.game.ui_manager.elements.clear()
         self.start()
 
@@ -1420,7 +1478,17 @@ class SaveState(GameState):
     def go_back(self):
         self.game.change_state(self.previous_state)
 
-    def save_to_slot(self, slot_index, save_name):
+    # ------------------------------------------------------------- saving
+    def confirm_save(self):
+        """YES: "Saving..." for a moment, then the file is written."""
+        if self.phase != "ASK":
+            return
+        self.phase, self.timer = "SAVING", self.SAVING_FRAMES
+        self.input_active = False
+        for btn in (self.btn_save, self.btn_cancel_input, self.btn_slot):
+            btn.set_visibility(False)
+
+    def save_to_slot(self, slot_index, save_name, back=True):
         self.game.update_save_data()
         self.game.data.data["save_name"] = save_name
         self.game.data.data["save_area"] = (
@@ -1432,12 +1500,13 @@ class SaveState(GameState):
         self.game.data.save_file = save_slots.slot_path(save_slots.folder(self.game), slot_index)
         self.game.data.save()
         self.game.data.save_file = original_save_file
-        self.go_back()
+        if back:
+            self.go_back()
 
     def start(self):
-        self.game.ui_manager.add_element(self.btn_slot)
-        self.game.ui_manager.add_element(self.btn_cancel_input)
-        self.game.ui_manager.add_element(self.btn_save)
+        for btn in (self.btn_slot, self.btn_cancel_input, self.btn_save):
+            self.game.ui_manager.add_element(btn)
+            btn.set_visibility(self.phase == "ASK")
 
     def handle_events(self, events):
         if self.slot_list is not None:
@@ -1449,40 +1518,86 @@ class SaveState(GameState):
                 if self.slot_list is None:
                     return
             return
+        if self.phase == "DONE":
+            if any(e.type in (pygame.MOUSEBUTTONDOWN, pygame.KEYDOWN) for e in events):
+                self.go_back()
+            return
         if not self.input_active:
             return
         for event in events:
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RETURN:
-                    self.save_to_slot(self.selected_slot, self.input_text)
+                    self.confirm_save()
                 elif event.key == pygame.K_BACKSPACE:
                     self.input_text = self.input_text[:-1]
                 elif event.key == pygame.K_ESCAPE:
                     self.cancel_input()
-                elif len(self.input_text) < 20:
+                elif len(self.input_text) < 20 and event.unicode.isprintable():
                     self.input_text += event.unicode
 
     def update(self):
-        pass
+        if self.phase == "SAVING":
+            self.timer -= 1
+            if self.timer <= 0:
+                self.save_to_slot(self.selected_slot, self.input_text, back=False)
+                self.phase, self.timer = "DONE", self.DONE_FRAMES
+        elif self.phase == "DONE":
+            self.timer -= 1
+            if self.timer <= 0:
+                self.go_back()
 
+    # ------------------------------------------------------------- drawing
     def draw(self):
         from src.ui import theme
         screen, f = self.game.screen, self.game.assets.fonts
-        accent = theme.ACCENT["party"]
         if self.slot_list is not None:
-            theme.menu_background(screen, accent, "SAVE GAME - PICK A FILE", f["button"], title_x=176)
+            theme.menu_background(screen, theme.ACCENT["party"], "SAVE GAME - PICK A FILE", f["button"], title_x=176)
             self.slot_list.draw(screen)
             self.game.ui_manager.draw(screen)
             return
-        theme.menu_background(screen, accent, "SAVE GAME", f["button"], title_x=24)
-        c = self.card_rect
-        theme.card(screen, c, radius=16)
-        theme.shadow_text(screen, "File", f["label"], c.x + 40, c.y + 44, color=(110, 116, 136))
-        theme.shadow_text(screen, "Save name", f["label"], c.x + 40, self.name_rect.y - 34, color=(110, 116, 136))
-        theme.text_field(screen, self.name_rect, self.input_text, f["s_med"], focused=self.input_active)
+        screen.blit(self.backdrop, (0, 0))
+        self.card.draw(screen, self.card_rect)
+        self._draw_side(screen, f, theme)
+        self._draw_box(screen, f, theme)
         self.game.ui_manager.draw(screen)
-        theme.shadow_text(screen, "Type a name, then SAVE (or press Enter).", f["label"], c.centerx, c.bottom + 24,
-                          color=(220, 226, 244), shadow=theme.MENU_BG, align="center")
+
+    def _draw_side(self, screen, f, theme):
+        s = self.side_rect
+        theme.draw_panel(screen, s, radius=18)
+        Utils.draw_text_outline(screen, "SAVE FILE", f["button"], WHITE, s.centerx, s.y + 34,
+                                outline_color=theme.PANEL_BORDER, thickness=3)
+        place = self.card.facts["place"]
+        pf = f["s_med"] if f["s_med"].size(place)[0] <= s.w - 40 else f["label"]
+        Utils.draw_text_outline(screen, place, pf, (255, 226, 120), s.centerx, s.y + 88,
+                                outline_color=theme.PANEL_BORDER, thickness=2)
+        Utils.draw_text_outline(screen, self.slot_label(), f["label"], WHITE, s.x + 22, s.y + 112, align="left",
+                                outline_color=theme.PANEL_BORDER, thickness=2)
+        Utils.draw_text_outline(screen, "Save name", f["label"], (200, 208, 230), s.x + 22, self.name_rect.y - 30,
+                                align="left", outline_color=theme.PANEL_BORDER, thickness=2)
+        theme.text_field(screen, self.name_rect, self.input_text, f["label"],
+                         focused=self.input_active and self.phase == "ASK")
+        # The party, as in the games' save box.
+        Utils.draw_text_outline(screen, "Party", f["label"], (200, 208, 230), s.x + 22, s.y + 324, align="left",
+                                outline_color=theme.PANEL_BORDER, thickness=2)
+        self.card.draw_party(screen, s.x + 20, s.y + 356, s.w - 40)
+
+    def _draw_box(self, screen, f, theme):
+        b = self.box_rect
+        theme.draw_textbox(screen, b)
+        name = getattr(self.game, "player_name", "TRAINER")
+        if self.phase == "ASK":
+            lines = ["Would you like to save your adventure?",
+                     "Type a save name on the right, or change the file."]
+        elif self.phase == "SAVING":
+            dots = "." * (1 + (self.SAVING_FRAMES - self.timer) // 12 % 3)
+            lines = [f"Saving{dots}", "Please don't close the game."]
+        else:
+            lines = [f"{name} saved the game."]
+        room = b.w - (330 if self.phase == "ASK" else 80)
+        for k, line in enumerate(lines):
+            font = f["s_med"] if (k == 0 and f["s_med"].size(line)[0] <= room) else f["label"]
+            theme.shadow_text(screen, line, font, b.x + 34, b.y + 34 + k * 58,
+                              color=theme.TEXT if k == 0 else (110, 116, 140))
 
 
 # [REF-0028: Loading State]
