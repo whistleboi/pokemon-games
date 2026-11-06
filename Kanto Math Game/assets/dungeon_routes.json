@@ -343,8 +343,8 @@
     "floors": 1,
     "style": "field",
     "size": [
-      40,
-      26
+      36,
+      24
     ],
     "wild": [
       5,
@@ -353,7 +353,8 @@
     "ponds": 2,
     "tm_spots": [
       "KANTO_TM_SAFARI_ZONE"
-    ]
+    ],
+    "zones_per_floor": 4
   },
   "KANTO_ROUTE_16": {
     "floors": 1,
@@ -1742,5 +1743,21 @@
       ],
       "items": {}
     }
+  },
+  "HOENN_SAFARI_ZONE": {
+    "zones_per_floor": 4,
+    "size": [
+      36,
+      24
+    ],
+    "ponds": 2
+  },
+  "GREAT_MARSH": {
+    "zones_per_floor": 3,
+    "size": [
+      36,
+      24
+    ],
+    "ponds": 3
   }
 }

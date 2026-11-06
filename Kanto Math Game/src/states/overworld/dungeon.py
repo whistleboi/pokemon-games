@@ -28,11 +28,11 @@ How the route's actions map onto the walk:
 - Trainers and figures are drawn with Pokemon Journeys' overworld sprites (assets/dungeon/characters,
   which is whose in assets/dungeon_sprites.json); a Pokemon without one, with its party icon.
 - You walk as your trainer (Jordan, 11-05), your lead Pokemon following a step behind.
-- An area of many zones can put several side by side on one wide floor (recipe "zones_per_floor": the
-  Johto Safari Zone, three areas a floor): a gate line marks each border, and crossing it puts you in
+- An area of many zones can put several side by side on one wide floor (recipe "zones_per_floor", up to 4:
+  the Safari Zones; Johto's and the Great Marsh three areas a floor, Kanto's and Hoenn's all four on one): a gate line marks each border, and crossing it puts you in
   that area (its wild Pokemon, its name on the bar).
-- The Bug-Catching Contest (Jordan, 11-05; Gold/Silver/Crystal and HeartGold/SoulSilver: National Park,
-  Tuesdays, Thursdays and Saturdays, once a day): an area with "bug_contest" is the contest's own map.
+- The Bug-Catching Contest (Jordan, 11-05; Gold/Silver/Crystal and HeartGold/SoulSilver: National Park;
+  any day, once a day): an area with "bug_contest" is the contest's own map.
   Bugs roam it; you have 20 Sport Balls and CONTEST_TURNS turns, catch with MATH only, and keep only your
   best catch. When time's up (or you leave by the gate) the judges score it against the others'.
 - Buildings are fixed (the same floors every visit, made from the area's own seed) and have no fog: the
@@ -89,7 +89,8 @@ DECOR_C = {"slot": ((200, 60, 70), (250, 230, 120)), "counter": ((150, 100, 60),
 FACING_ROW = {(0, 1): 0, (-1, 0): 1, (1, 0): 2, (0, -1): 3}  # a sheet's rows: down, left, right, up
 
 # The Bug-Catching Contest: its balls and turns, prizes for 1st, 2nd, 3rd (and the rest), how a catch scores
-CONTEST_BALLS, CONTEST_TURNS, CONTEST_DAYS = 20, 150, (1, 3, 5)  # (Tuesday, Thursday, Saturday)
+CONTEST_BALLS, CONTEST_TURNS = 20, 150
+CONTEST_DAYS = tuple(range(7))  # any day, once a day (Jordan, 11-05; the games: Tuesday, Thursday, Saturday)
 CONTEST_PRIZES = ["SUN_STONE", "EVERSTONE", "RARE_CANDY"]
 CONTEST_RARE = {123: 100, 127: 100, 12: 70, 15: 70, 49: 70, 402: 60, 11: 30, 14: 30, 47: 40}
 CONTEST_RIVALS = ["Bug Catcher Don", "Bug Catcher Ed", "Cooltrainer Nick", "Pokefan Beverly", "Youngster Samuel"]
@@ -116,8 +117,8 @@ def contest_entry(state):
     show = getattr(state, "show_dialogue", None)
     back = getattr(state, "show_progression_menu", None)
     if today.weekday() not in CONTEST_DAYS:
-        show(["Officer: The Bug-Catching Contest is held on Tuesdays, Thursdays and Saturdays.",
-              "Come back then with your best Pokemon!"], callback=back)
+        show(["Officer: There's no Bug-Catching Contest today.",
+              "Come back another day with your best Pokemon!"], callback=back)
         return
     if story.story_flags.get("bug_contest_day") == today.isoformat():
         show(["Officer: You've already entered today's contest. Come back next time!"], callback=back)

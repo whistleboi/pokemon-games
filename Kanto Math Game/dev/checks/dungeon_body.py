@@ -493,7 +493,7 @@ _js._descend()
 check(_js._floor_name(1) == " / ".join(_js._zone_name(i) for i in (3, 4, 5)), "the next floor: the next three areas")
 
 # the Bug-Catching Contest (Jordan, 11-05): National Park, its own map
-_dg.CONTEST_DAYS = tuple(range(7))  # (any day, for the check)
+check(_dg.CONTEST_DAYS == tuple(range(7)), "the contest is open any day (once a day)")
 story.story_flags.pop("bug_contest_day", None)
 _np = kanto("NATIONAL_PARK", came="JOHTO_ROUTE_35")
 _off = [m for m in _np.run.floor.movers if m.kind == "figure" and m.payload.get("action") == "BUG_CONTEST"]
@@ -539,7 +539,10 @@ check(story.current_area_key == "NATIONAL_PARK", "...and you're back in National
 _np2 = kanto("NATIONAL_PARK", came="JOHTO_ROUTE_35")
 _dg.contest_entry(_np2)
 check(any("already" in l for l in _np2.dialogue_box.text_lines), "once a day")
-_dg.CONTEST_DAYS = (1, 3, 5)
+for _k, _n, _w in (("SAFARI_ZONE", 1, 4), ("HOENN_SAFARI_ZONE", 1, 4), ("GREAT_MARSH", 2, 3)):
+    _sz = kanto(_k, came=next((i.get("target") or i.get("target_area") for i in _prog[_k].get("route_menu", []) if i.get("action") in ("EXIT", "TRAVEL")), None))
+    check(_sz.run.n_floors == _n and _sz.run.floor.w == _w * 36, f"{_k}: like Johto's, {_n} floor(s) of {_w} areas side by side")
+    _sz.draw()
 
 # free movement (Jordan, 11-05): no "two route actions" before a way out; only the story locks one
 _r3 = kanto("KANTO_ROUTE_3", came="PEWTER_CITY")
