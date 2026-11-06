@@ -71,8 +71,8 @@ check(d.pokemon is bf, "cycles back to your own Pokemon")
 dex = PokedexState(g, None); g.change_state(dex)
 dex.selected_pkmn_id = 9501
 dex.show_selected_info()
-check(type(g.current_state).__name__ == "PokemonDetailState" and g.current_state.pokemon.form == "valencia",
-      "Pokedex INFO opens the summary")
+check(type(g.current_state).__name__ == "DexEntryState" and g.current_state.pid == 9501,
+      "the Pokedex opens its entry (Journeys' INFO / AREA / FORMS)")
 
 evolved = Pokemon(g.loader.fetch_specific(95, form="crystal"), g.assets, size_mult=2.5); evolved.level = 60
 check("HEAD-SMASH" in evolved.moves or "HEAD-SMASH" in evolution.known_moves(g, evolved), "an evolved Crystal Onix uses its own learnset")

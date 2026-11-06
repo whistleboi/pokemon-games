@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased: the Pokédex in Pokémon Journeys' look
+
+- **The list:** the Pokémon you're on at the left (its picture, Seen and Owned), your dex down the right with caught and seen marks and a scroll bar. Tap a row to pick it, again for its page.
+- **Dexes:** the arrows by the dex's name go through your dexes in generation order (the Orange Islands after Johto, Orre after Hoenn); tap the name for a list to choose from. The Orange Islands and Orre have dexes now: what lives there, once you've been.
+- Pokémon pictures at three times their size, each pixel square (small Pokémon look small, big ones big).
+- **Each Pokémon's page** has three tabs: **INFO** (its kind, types, height, weight, footprint, and where it lives), **AREA** (dots on its region's map) and **FORMS** (front and back, and every form you've found: Megas, Gigantamax, regional forms, Unown's letters, its shiny look). The arrows on the tab bar turn the pages; PREV and NEXT (or up and down) go to the next Pokémon.
+- **SEARCH** by order, name, type, height, weight, colour and shape.
+- The MEGA, GMAX, ALT, BOSS and UNOWN tabs are gone (their Pokémon are on the FORMS pages); a small star by the counts shows only your shinies.
+
 ## Unreleased: every route is a dungeon map
 
 - **Every route, cave and building is walked on a map**, Mystery Dungeon style, in every region: the map replaces the route menu. You walk as your trainer, with your lead Pokemon following a step behind. Tap a tile to walk there, or use the arrow keys. Each visit makes a new layout.

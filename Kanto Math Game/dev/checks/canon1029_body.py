@@ -1218,9 +1218,9 @@ _ids = [e["id"] for e in _px.full_dex]
 check(52 in _ids and 2010 not in _ids and 2019 not in _ids, "the National Dex: each species once, the base form")
 _px.selected_pkmn_id = 52; _px.show_selected_info()
 _pg = g.current_state
-check(isinstance(_pg, _PD35) and _pg.dex and "STATS" not in _pg.tab_buttons and _pg.pokemon.id == 52
-      and {m.form for m in _pg.forms} == {"normal", "alolan", "galarian"},
-      "its page: the base form first, its forms cycle, no STATS")
+check(type(_pg).__name__ == "DexEntryState" and _pg.pid == 52 and _pg.forms[0][1] == "normal"
+      and {f[1] for f in _pg.forms} >= {"normal", "alolan", "galarian"},
+      "its entry: the base form first, its forms on the FORMS page")
 _pg.draw()
 g.data.data["pokedex"] = _saved35
 
@@ -1657,7 +1657,7 @@ check(_n48["display_name"] == "N UNOWN" and _a48["form"] == "normal" and _a48["d
 from src.states.systems import PokedexState as _PD48
 _pd48 = _PD48(g, g.current_state); _pd48.current_tab = "unown"; _pd48.refresh_dex()
 check([e["form"] for e in _pd48.full_dex][:2] == ["normal", "b"] and [e["form"] for e in _pd48.full_dex][-2:] == ["exclamation", "question"]
-      and len(_pd48.full_dex) == 28, "the Pokedex's Unown tab: A to Z, then ! and ?")
+      and len(_pd48.full_dex) == 28, "Unown's letters (its FORMS page now): A to Z, then ! and ?")
 _one = _C48(g.loader._resolve_form_context(201, "normal", "UNOWN", {"alt_forms": {"enabled": True, "weights": {"201_b": 0.5}}})[0] for _ in range(2000))
 check(800 < _one["b"] < 1200, f"a single listed form keeps its chance ({_one['b']}/2000 at 50%)")
 for _f48, _a48, _n48 in (("HOENN", "HOENN_ROUTE_127", "Cooltrainer Camden"), ("ALOLA", "ALOLA_ROUTE_16", "Veteran Sina")):

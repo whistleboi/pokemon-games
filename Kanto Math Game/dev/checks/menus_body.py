@@ -40,9 +40,61 @@ for cls in (PokedexState, JournalState, BagState):
     st = cls(g, city); g.change_state(st); st.update(); st.draw()
     check(True, f"{cls.__name__} draws")
 dx = PokedexState(g, city); g.change_state(dx); dx.draw()
-check(len(dx.dex_btns) >= 1 and dx.PER_PAGE == 18, "Pokedex: 18 entries a page")
-tap(dx, dx.btn_next.center)
-check(dx.page == 1, "the > arrow turns the page")
+from src.states.systems.pokedex import DexEntryState as _DE, DexSearchState as _DS, ROWS_SHOWN as _RS
+check(len(dx.full_dex) >= 1 and _RS == 10 and dx.frame.k > 1, "Pokedex (Journeys' look): a list of 10 rows, scaled up")
+check(not hasattr(dx, "tab_buttons"), "no MEGA / GMAX / ALT / BOSS / UNOWN tabs any more")
+_seen = next((k for k, e in enumerate(dx.full_dex) if e.get("status", 0) > 0), None)
+if _seen is not None:
+    _e = _DE(g, dx, _seen)
+    for _pg in (1, 2, 3):
+        _e.page = _pg
+        _e.draw()
+    check(_e.forms and _e.forms[0][3], "an entry: INFO, AREA and FORMS draw; FORMS lists its looks")
+_s = _DS(g, dx)
+_s.s["type1"] = 2  # Flying
+_s.begin()
+check(all("FLYING" in [t.upper() for t in (g.assets.movesets.get(str(e["id"])) or {}).get("types", [])]
+          or "FLYING" in [t.upper() for t in (g.assets.movesets.get(str(dx._species(e["id"]))) or {}).get("types", [])]
+          for e in dx.full_dex), "SEARCH: Flying types only")
+dx.go_back()
+check(dx.search is None, "BACK from search results: the whole dex again")
+dx.toggle_shiny_filter()
+check(all(e.get("shiny") for e in dx.full_dex), "the shiny star: your shinies only")
+dx.toggle_shiny_filter()
+dx.draw()
+from src.states.systems.pokedex import GEN_ORDER as _GO, gen_rank as _gr
+_story = g.story_manager
+_old_vis = set(_story.visited_region_set)
+_story.visited_region_set |= {"ORANGE", "ORRE"}
+_views = dx.dex_views()
+check([v for v in _views if v != "NATIONAL"] == sorted([v for v in _views if v != "NATIONAL"], key=_gr)
+      and "ORANGE" in _views and "ORRE" in _views, "the dexes in generation order (Orange after Johto, Orre after Hoenn)")
+_v0 = dx.dex_view
+tap(dx, dx.title_hits[">"].center)
+check(dx.dex_view == _views[(_views.index(_v0) + 1) % len(_views)], "the title's right arrow: the next dex")
+tap(dx, dx.title_hits["<"].center)
+check(dx.dex_view == _v0, "its left arrow: back again")
+tap(dx, dx.title_hits["name"].center)
+check(dx.picking is not None, "the dex's name: the list of dexes")
+dx.draw()
+_pick = dict(dx._pick_rects())
+tap(dx, _pick["ORANGE"].center)
+check(dx.dex_view == "ORANGE" and dx.picking is None and dx.full_dex, "pick the Orange Islands: what lives there")
+dx.set_dex_view(_v0)
+_story.visited_region_set = _old_vis
+if _seen is not None:
+    _e = _DE(g, dx, _seen)
+    _e.page = 1
+    tap(_e, _e.frame.r(312, 4, 30, 26).center)
+    check(_e.page == 2, "an entry's right arrow: the next page")
+    tap(_e, _e.frame.r(14, 4, 30, 26).center)
+    tap(_e, _e.frame.r(14, 4, 30, 26).center)
+    check(_e.page == 3, "its left arrow: back, round to FORMS")
+if len(dx.full_dex) > 10:
+    tap(dx, dx.frame.r(468, 346, 40, 30).center)
+    check(dx.top == 10, "the scroll bar's down arrow: the next 10")
+tap(dx, dx._row_rect(dx.top + 1).center)
+check(dx.index == dx.top + 1, "tapping a row picks it")
 
 print("Party menu: the tap menu closes when tapping away, moves to another Pokemon")
 from src.states.systems import PokemonPartyMenuState
