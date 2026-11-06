@@ -159,8 +159,12 @@ check(evolution.item_evolution(g, por, "UPGRADE") is None, "Porygon2 locked in a
 story.visited_region_set.add("JOHTO")
 check(evolution.item_evolution(g, por, "UPGRADE") is not None, "Up-Grade works once Johto is visited")
 story.current_area_key = "SILPH_CITY"; story.story_flags["silph_co_cleared"] = True
-c = CityState(g); c.visit_silph_employee()
-check(not story.inventory.get("UPGRADE") and "Veilstone" in " ".join(c.npc_dialogue.text_lines),
+from src.states import overworld as _ow
+_said = []
+_c = _ow.PlayState(g)
+_emp = next(o for o in prog["SILPH_CITY"]["route_menu"] if o["text"] == "TALK TO EMPLOYEE")
+_ow._run_story_event(_c, _emp["event"], lambda x: _c._check_route_condition(x, False), _said.append)
+check(not story.inventory.get("UPGRADE") and "Veilstone" in " ".join(_said[-1]),
       "Silph employee points to Veilstone (no Kanto Up-Grade)")
 story.current_area_key = "VEILSTONE_CITY"
 check("UPGRADE" in PokeMartState(g, None)._shop_items(), "Veilstone Department Store sells the Up-Grade")
@@ -197,8 +201,11 @@ for area, need in (("VERMILLION_CITY", "Cut"), ("SAFFRON_CITY", "Rocket"), ("CIN
     check(type(g.current_state).__name__ == "CityState" and ci.npc_active, f"{area} gym closed ({need})")
 story.current_area_key = "CINNABAR_ISLAND"; ci = CityState(g)
 mansion = next(o for o in prog["CINNABAR_ISLAND"]["explore_options"] if o["text"] == "Pokemon Mansion")
+check(mansion.get("target_area") == "POKEMON_MANSION", "Cinnabar: the Pokemon Mansion is a place to go in (11-05)")
 story.player_team = [mk(9)]
-ci._get_callback_for_option(mansion)()
+story.current_area_key = "POKEMON_MANSION"
+_pm = PlayState(g)
+_pm._get_route_callback(next(o for o in prog["POKEMON_MANSION"]["route_menu"] if o["text"] == "BURGLAR SIMON"))()
 bt = g.current_state.next_state
 check(bt.opponent_team[-1].level == 36, "Mansion burglar battle")
 bt.player_won = True; bt.exit_battle()

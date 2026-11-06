@@ -47,7 +47,7 @@ FIELD = {
     "MAX_REPEL": {"repel": 5, "price": 900, "text": "Keeps wild Pokemon away for the next 5 routes."},
     "ESCAPE_ROPE": {"escape": True, "price": 1000, "text": "Leads out of a cave or building, to the last Pokemon Center."},
     # Route dungeons (src/states/overworld/dungeon.py): HONEY on the map draws three wild Pokemon to catch.
-    "HONEY": {"attract": True, "price": 300, "text": "Sweet honey. On a route's map, tap HONEY to draw in three wild Pokemon."},
+    "HONEY": {"attract": True, "price": 300, "text": "Sweet honey. Use it out on a route to draw in three wild Pokemon."},
 }
 BALL_PRICES = {"POKE_BALLS": 1000, "GREAT_BALL": 600, "ULTRA_BALL": 800, "PREMIER_BALL": 20, "NET_BALL": 1000,
                "DIVE_BALL": 1000, "NEST_BALL": 1000, "REPEAT_BALL": 1000, "TIMER_BALL": 1000, "QUICK_BALL": 1000,

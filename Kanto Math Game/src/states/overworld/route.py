@@ -37,9 +37,9 @@ class PlayState(RouteMenu, RouteEncounters, RouteActions, RouteCatch, GameState)
         self.game.story_manager.balls_left = value
 
     def __new__(cls, game=None, restore_data=None, classic=False):
-        # A route dungeon (assets/dungeon_routes.json) is walked on a map instead: PlayState(game)
-        # hands back a DungeonState there, or the walk going on when a battle comes back to it
-        # (src/states/overworld/dungeon.py). classic=True: always this screen.
+        # Every route is walked on a map (Jordan, 11-05): PlayState(game) hands back a DungeonState,
+        # or the walk going on when a battle comes back to it (src/states/overworld/dungeon.py).
+        # classic=True: this route menu (what the map uses underneath; the headless check suites).
         if cls is PlayState and game is not None and not classic:
             from src.states.overworld.dungeon import dungeon_for
             state = dungeon_for(game, restore_data)

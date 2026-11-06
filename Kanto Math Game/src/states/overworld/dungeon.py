@@ -1,17 +1,36 @@
-"""Route dungeons (Jordan, 11-05): a route walked on a map, Mystery Dungeon style, instead of the route menu.
+"""Route dungeons (Jordan, 11-05): every route, cave and building is walked on a map, Mystery Dungeon style
+(the route menu underneath only supplies its actions: battles, catches, events).
 
-Which areas: assets/dungeon_routes.json (Route 1, Route 2 and Viridian Forest to start). The rules
-(floors, turns, wild Pokemon that chase you, loot, TM spots) are src/dungeon/core.py; this is the screen.
+Which areas: every one that isn't a town, in every region (Jordan, 11-05: the map replaces the route
+menu). Each gets a recipe: its own in assets/dungeon_routes.json (Kanto's), else one made from the area
+(recipe_for: its battle type picks the look, a fishing spot gets ponds). The rules (floors, turns, wild
+Pokemon that chase you, loot, TM spots) are src/dungeon/core.py; this is the screen.
 
 How the route's actions map onto the walk:
 - CATCH WILD PKMN -> bump into a wild Pokemon and pick MATH: one question, a right answer throws a ball
-  at the route catch's odds (a wrong one and it runs away). Or HONEY / SWEET SCENT draws three wild
-  Pokemon for the usual three-Pokemon catch (the route's own catch screen, then back to the map).
+  at the route catch's odds (a wrong one and it runs away). Or HONEY (used from the Bag) or SWEET SCENT
+  (the H key) draws three wild Pokemon for the usual three-Pokemon catch (the route's own catch screen,
+  then back to the map).
+- The buttons (Jordan, 11-05): POKeMON (your party), POKeDEX, and WAIT (a turn standing still: the wild
+  Pokemon come to you).
 - BATTLE WILD PKMN -> bump into a wild Pokemon and pick BATTLE (the full battle screen).
 - BATTLE TRAINER -> bump into a trainer, or walk into one's line of sight.
 - Items lie about (the area's loot table), and TM spots hold a TM picked once per save.
 - The ways out are signs on the map: where you came in, and the rest in the far rooms (stairs first
   when the area has more than one floor).
+- The route's other buttons (a boss, a story event, someone to talk to, the Day Care) are figures on the
+  map: walk into one for the same thing its button does. Each shows while its button would, on its zone's
+  floor, else the last floor; but a boss doesn't wait for the area's trainers to be beaten (Jordan, 11-05:
+  finding it is the task).
+- FISH: beside water (a pond, or anywhere at sea); HEADBUTT: beside a tree. A button turns up there.
+- An area in zones (the Pokemon Tower's floors, the Seafoam Islands, the Safari Zone's areas) has a floor
+  for each zone, with stairs (or gates) between; its trainers, ways out and figures are on their zone's.
+- Trainers and figures are drawn with Pokemon Journeys' overworld sprites (assets/dungeon/characters,
+  which is whose in assets/dungeon_sprites.json); a Pokemon without one, with its party icon.
+- You walk as your trainer (Jordan, 11-05), your lead Pokemon following a step behind.
+- Buildings are fixed (the same floors every visit, made from the area's own seed) and have no fog: the
+  whole floor shows. The Celadon Game Corner is drawn (assets/dungeon_routes.json "layout"): talk to the
+  clerk across the counter to pick a game, buy coins or trade for prizes; play the slots at a machine.
 
 DungeonState is a PlayState, so battles, the catch screen, evolutions and the side menus all work as
 on a route. PlayState(game) itself hands back a DungeonState for a dungeon area (see PlayState.__new__),
@@ -44,9 +63,37 @@ COLORS = {  # floor, tall grass, wall (trees or rock), wall top
     "field": ((150, 206, 108), (82, 164, 78), (44, 104, 58), (62, 132, 70)),
     "forest": ((118, 160, 92), (64, 132, 66), (24, 72, 44), (38, 94, 54)),
     "cave": ((160, 140, 116), (140, 122, 100), (72, 60, 54), (96, 82, 72)),
+    "building": ((206, 196, 170), (176, 160, 132), (64, 66, 84), (104, 108, 128)),  # (grass: a rug)
+    "sea": ((84, 146, 214), (60, 118, 190), (112, 104, 96), (150, 140, 126)),     # you surf the floor
+    "snow": ((232, 238, 246), (196, 214, 232), (84, 110, 126), (210, 226, 238)),   # snowy firs
+    "desert": ((226, 204, 150), (204, 180, 120), (164, 120, 80), (196, 152, 104)),  # sand, rock
 }
+# An area without its own recipe: its look from its battle type.
+STYLE_OF = {"grass": "field", "field": "field", "outdoor": "field", "cave": "cave", "mountain": "cave",
+            "indoor": "building", "distortion": "building", "ocean": "sea", "water": "sea", "forest": "forest",
+            "snow": "snow", "desert": "desert", "sand": "desert"}
+WATER_C = ((70, 130, 206), (150, 196, 240))  # a pond, its ripples
+TREE_STYLES = ("field", "forest", "snow")  # where HEADBUTT works (a wall is a tree)
+# The route's buttons that are figures on the map (walk into one: its button's action).
+FIGURE_ACTIONS = ("BOSS", "EVENT", "NPC", "HOENN_EVENT", "DAYCARE", "BERRY", "CAMP", "REST", "WEATHER_DIRECTOR",
+                  "SNAG", "MAX_RAID", "DIVE", "GAME_CORNER")
+DECOR_C = {"slot": ((200, 60, 70), (250, 230, 120)), "counter": ((150, 100, 60), (204, 156, 100))}
+FACING_ROW = {(0, 1): 0, (-1, 0): 1, (1, 0): 2, (0, -1): 3}  # a sheet's rows: down, left, right, up
 
 _recipes = {}
+_sprite_map = {}
+
+
+def sprite_map(game):
+    """Which overworld sheet is whose (assets/dungeon_sprites.json)."""
+    if "all" not in _sprite_map:
+        path = os.path.join(game.assets.assets_dir or "", "dungeon_sprites.json")
+        try:
+            with open(path, encoding="utf-8-sig") as f:
+                _sprite_map["all"] = json.load(f)
+        except (OSError, ValueError):
+            _sprite_map["all"] = {}
+    return _sprite_map["all"]
 
 
 # ---------------------------------------------------------------- which areas, and their recipes
@@ -62,32 +109,53 @@ def recipes(game):
 
 
 def recipe_for(game, area_key):
+    """DEFAULT, then the area's own recipe; an area without one gets its look from its battle type
+    (a cave, a building, the sea...), ponds where you can fish, a smaller map for a small place."""
     all_ = recipes(game)
     recipe = dict(all_.get("DEFAULT", {}))
-    recipe.update(all_.get(area_key, {}))
+    if area_key in all_:
+        recipe.update(all_[area_key])
+        return _building(recipe, area_key)
+    area = game.loader.area_data.get("STORY_PROGRESSION", {}).get(area_key, {})
+    style = STYLE_OF.get(str(area.get("battle_type") or "").lower(), "field")
+    name = str(area.get("route_name") or area_key).lower()
+    if style == "field" and ("forest" in name or "woods" in name or "jungle" in name):
+        style = "forest"
+    recipe["style"] = style
+    if style == "building":
+        recipe["size"] = [36, 24]
+    if area.get("can_fish") and style != "sea":
+        recipe["ponds"] = 2
+    if not area.get("wild_pool_percentages") and not area.get("zone_pools"):
+        recipe["wild"] = [0, 0]  # (a story place: trainers and figures only)
+    return _building(recipe, area_key)
+
+
+def _building(recipe, area_key):
+    """A building is fixed (the same floors every visit, from its own seed) and has no fog (Jordan, 11-05)."""
+    if recipe.get("style") == "building" or recipe.get("layout"):
+        recipe.setdefault("fixed", True)
+        recipe.setdefault("fog", False)
+        recipe.setdefault("seed", area_key)
     return recipe
 
 
 def enabled(game, area_key):
-    all_ = recipes(game)
-    if area_key not in all_ or area_key.startswith("_") or area_key == "DEFAULT":
+    """Every area but a town is a map (an area's recipe can say "enabled": false)."""
+    if not area_key or area_key.startswith("_") or area_key == "DEFAULT":
         return False
-    if all_[area_key].get("enabled") is False:
+    if (recipes(game).get(area_key) or {}).get("enabled") is False:
         return False
     if not getattr(game, "dungeon_routes", os.environ.get("SDL_VIDEODRIVER") != "dummy"):
         return False
-    if getattr(game, "classic_route", None) == area_key:  # CLASSIC VIEW for this visit
-        return False
-    area = game.loader.area_data.get("STORY_PROGRESSION", {}).get(area_key, {})
-    return area.get("area_type") != "town"
+    area = game.loader.area_data.get("STORY_PROGRESSION", {}).get(area_key)
+    return bool(area) and area.get("area_type") != "town"
 
 
 def dungeon_for(game, restore_data=None):
     """What PlayState(game, restore_data) should be here: the walk going on (back from a battle), a
     new DungeonState (still to be set up), or None for the old route screen."""
     key = game.story_manager.current_area_key
-    if getattr(game, "classic_route", None) not in (None, key):
-        game.classic_route = None  # CLASSIC VIEW lasts until you leave that area
     if not enabled(game, key):
         return None
     cur = getattr(game, "dungeon_state", None)
@@ -125,18 +193,47 @@ class DungeonState(PlayState):
             entrance = next((e for e in exits if e != nxt), exits[0] if exits else None)
         forwards = [e for e in exits if e != entrance] or ([nxt] if nxt else [])
 
+        # an area in zones: a floor each (the Pokemon Tower's, the Seafoam Islands', the Safari Zone's)
+        self.zones = [z.get("key") for z in self._zones()]
+        recipe = dict(self.recipe)
+        if self.zones:
+            recipe["floors"] = len(self.zones)
+        self.recipe = recipe
+        n = max(1, int(recipe.get("floors", 1)))
+        exits_by_floor, start = None, 0
+        if self.zones:
+            by = {}
+            for target, item in self.exit_items.items():
+                at = self._floor_of(item, n - 1 if target != entrance else 0)
+                ent, fwd = by.setdefault(at, [None, []])
+                if target == entrance:
+                    by[at][0] = target
+                    start = at
+                else:
+                    fwd.append(target)
+            exits_by_floor = {k: (v[0], v[1]) for k, v in by.items()}
+            story.story_flags[f"zone_{self.area_key}"] = self.zones[start]
+
         pool = self.area_data.get("trainer_pool", [])
         trainers = [(i, t) for i, t in enumerate(pool) if not story.is_trainer_defeated(self.area_key, i)]
         spots = [s for s in self.recipe.get("tm_spots", []) if not story.story_flags.get(f"dungeon_tm_{s}")]
         loot = self.recipe.get("loot") or {}
+        self.placed = []  # the route's buttons standing on the map as figures
+        figures = [(self._floor_of(item, n - 1), item) for item in self._figure_items()]
+        self.placed = [item for _f, item in figures]
         self.run = core.Run(self.recipe, random.Random(), entrance=entrance, forwards=forwards,
                             make_wild=self._make_wild, trainers=trainers,
-                            loot_for=lambda rng: core.roll_loot(rng, loot), tm_spots=spots)
+                            loot_for=lambda rng: core.roll_loot(rng, loot), tm_spots=spots, figures=figures,
+                            floor_of=lambda t: self._floor_of(t, None), exits_by_floor=exits_by_floor,
+                            start_floor=start)
 
         self.mode = "MAP"          # MAP, CHOICE, MATH, THROW, SPOTTED, CATCH (the route's catch screen)
         self.facing = (0, 1)
         self.anim = 0              # frames left of the step animation
         self.anim_from = self.run.player
+        self.partner = self.run.player       # where your lead Pokemon walks (a step behind you)
+        self.partner_from = self.run.player
+        self.steps = 0                       # (which foot: the walking frames)
         self.walk_goal = None      # a tapped tile you're walking to
         self.encounter = None      # the wild Pokemon or trainer you met
         self.choice = 0            # MATH (0) or BATTLE (1) on the choice cards
@@ -156,6 +253,164 @@ class DungeonState(PlayState):
     @property
     def uses_keyboard(self):
         return getattr(self, "mode", "MAP") != "CATCH"
+
+    # ---------------------------------------------------------------- zones, figures
+    def _floor_of(self, item, default):
+        """The floor a trainer, way out or figure is on: its zone's, else default."""
+        zone = item.get("zone") if isinstance(item, dict) else None
+        if isinstance(zone, list):
+            zone = zone[0] if zone else None
+        if zone and zone in getattr(self, "zones", []):
+            return self.zones.index(zone)
+        return default
+
+    def _set_zone(self, index):
+        """The zone of floor index is the one you're in (its wild Pokemon, its picture in battle)."""
+        if self.zones:
+            self.game.story_manager.story_flags[f"zone_{self.area_key}"] = self.zones[index]
+
+    def _figure_items(self):
+        """The route's buttons that stand on the map now (as the route menu would show them)."""
+        story = self.game.story_manager
+        pool = self.area_data.get("trainer_pool", [])
+        flags = story.story_flags
+        out = []
+        for item in self.area_data.get("route_menu", []):
+            if item.get("action") not in FIGURE_ACTIONS:
+                continue
+            fc = item.get("flag_condition")
+            if fc:
+                parts = fc.split()
+                if parts[0] == "not" and len(parts) == 2:
+                    if flags.get(parts[1]):
+                        continue
+                elif not flags.get(parts[0]):
+                    continue
+            # (its zone's trainers, else the area's.) A boss (a legendary) doesn't wait for them here
+            # (Jordan, 11-05): finding it on the map is the task.
+            zone = self._floor_of(item, None)
+            left = item.get("action") != "BOSS" and any(
+                not story.is_trainer_defeated(self.area_key, i)
+                and (zone is None or self._floor_of(t, None) in (None, zone)) for i, t in enumerate(pool))
+            rematch = item.get("action") == "BOSS" and flags.get(f"legend_rematch_{self._boss_flag_for(item)}")
+            if rematch or self._check_route_condition(item.get("condition"), left, item):
+                out.append(item)
+        return out + self._arrival_figures()
+
+    def _arrival_figures(self):
+        """A story battle that a route starts when you arrive (the rival on Route 22, on Nugget Bridge, in
+        the Pokemon Tower) stands on the map instead, while it would start: walk into it."""
+        events = self.area_data.get("on_enter_event")
+        out = []
+        for ev in (events if isinstance(events, list) else [events] if events else []):
+            if not isinstance(ev, dict) or ev.get("type") != "trainer_battle":
+                continue
+            if ev.get("flag_check") and self.game.story_manager.story_flags.get(ev["flag_check"]):
+                continue
+            if ev.get("condition") and not self._check_route_condition(ev["condition"], False):
+                continue
+            key = id(ev)
+            self._arrivals = getattr(self, "_arrivals", {})
+            out.append(self._arrivals.setdefault(key, {"action": "ARRIVAL", "event": ev, "zone": ev.get("zone"),
+                                                       "text": (ev.get("trainer") or {}).get("name", "")}))
+        return out
+
+    def _sync_figures(self):
+        """After a battle or an event: figures whose time has come turn up, and finished ones leave."""
+        if not hasattr(self, "run"):
+            return
+        story = self.game.story_manager
+        pool = self.area_data.get("trainer_pool", [])
+        self._mark_route_progress(any(not story.is_trainer_defeated(self.area_key, i) for i in range(len(pool))))
+        now = self._figure_items()
+        for item in [i for i in self.placed if not any(i is j for j in now)]:
+            self.run.drop_figure(item)
+        for item in [i for i in now if not any(i is j for j in self.placed)]:
+            self.run.add_figure(self._floor_of(item, self.run.n_floors - 1), item)
+        self.placed = now
+
+    def _use_figure(self, mover):
+        self.walk_goal = None
+        item = mover.payload
+        if item.get("action") == "GAME_CORNER":
+            self.talk_to_clerk()
+            return
+        if item.get("action") == "ARRIVAL":  # the rival waiting on the route
+            self.trigger_scripted_on_enter_battle(item["event"])
+            return
+        callback = self._get_route_callback(item)
+        callback()
+
+    # ---------------------------------------------------------------- fishing and Headbutt
+    def _menu_item(self, action):
+        """The route's button for an action, if it would show (FISH needs a rod, HEADBUTT the helmet)."""
+        for item in self.area_data.get("route_menu", []):
+            if item.get("action") == action and self._check_route_condition(item.get("condition"), False, item):
+                return item
+        return None
+
+    def _beside(self, kind):
+        """The tile next to you of a kind ("water": a pond, or the sea; "tree"), or None. The way you face first."""
+        f = self.run.floor
+        px, py = self.run.player
+        order = [self.facing] + [d for d in core.DIRS if d != self.facing]
+        for dx, dy in order:
+            t = f.tile(px + dx, py + dy)
+            if kind == "water" and (t == core.WATER or (f.style == "sea" and f.walkable(px + dx, py + dy))):
+                return px + dx, py + dy
+            if kind == "tree" and t == core.WALL and f.style in TREE_STYLES and f.inside(px + dx, py + dy) \
+                    and (px + dx, py + dy) not in f.decor:
+                return px + dx, py + dy
+            if kind.startswith("decor:") and f.decor.get((px + dx, py + dy)) == kind[6:]:
+                return px + dx, py + dy
+        return None
+
+    def _act_here(self):
+        """FISH or HEADBUTT, if you're beside water or a tree and can; TALK at the Game Corner's counter,
+        PLAY SLOTS at a machine: (label, action), else None."""
+        if self._beside("decor:counter") and self._clerk():
+            return "TALK", self.talk_to_clerk
+        if self._beside("decor:slot"):
+            return "PLAY SLOTS", self.play_slots
+        if self._beside("water") and self._menu_item("FISH"):
+            return "FISH", self.fish_here
+        if self._beside("tree") and self._menu_item("HEADBUTT"):
+            return "HEADBUTT", self.headbutt_here
+        return None
+
+    # ---------------------------------------------------------------- the Game Corner
+    def _clerk(self):
+        """The Game Corner clerk (behind the counter): its figure's button, or None."""
+        return next((m.payload for m in self.run.floor.movers
+                     if m.kind == "figure" and m.payload.get("action") == "GAME_CORNER"), None)
+
+    def talk_to_clerk(self):
+        """Across the counter: the Game Corner's own menu (the games, coins, prizes); LEAVE comes back here."""
+        if self._ready() and self._clerk():
+            from src.states.systems import GameCornerState
+            self.walk_goal = None
+            self.game.change_state(GameCornerState(self.game, self))
+
+    def play_slots(self):
+        if not self._ready():
+            return
+        if self.game.story_manager.inventory.get("COIN_CASE", 0) <= 0:
+            self.say(["The machine needs coins. You'll want a COIN CASE to hold them."])
+            return
+        from src.states.game_corner import SlotsState
+        self.walk_goal = None
+        self.game.change_state(SlotsState(self.game, self, background=self.game.assets.get_background(
+            "celadon_game_corner.png")))
+
+    def fish_here(self):
+        if self._ready() and self._beside("water") and self._menu_item("FISH"):
+            self.walk_goal = None
+            self.action_fish()  # the route's own: a bite, a battle, then back to the map
+
+    def headbutt_here(self):
+        if self._ready() and self._beside("tree") and self._menu_item("HEADBUTT"):
+            self.walk_goal = None
+            self.action_headbutt()
 
     # ---------------------------------------------------------------- wild Pokemon
     def _make_wild(self, rng):
@@ -198,6 +453,7 @@ class DungeonState(PlayState):
         self.encounter = None
         self.mode = "MAP"
         self.walk_goal = None
+        self._sync_figures()
 
     def show_progression_menu(self):
         """The route's catch screen (or a battle) is done: back to the map."""
@@ -209,18 +465,11 @@ class DungeonState(PlayState):
         self.btn_flee.set_visibility(False)
         self.dialogue_box.visible = False
         self.mode = "MAP"
+        self._sync_figures()
 
     def _leave(self, target):
         self.game.dungeon_state = None
         self.action_exit_route(target)
-
-    def _classic(self):
-        """CLASSIC VIEW: the old route menu for the rest of this visit."""
-        self.game.classic_route = self.area_key
-        self.game.dungeon_state = None
-        state = PlayState(self.game)
-        self.game.states["play"] = state
-        self.game.change_state(state)
 
     # ---------------------------------------------------------------- talking
     def say(self, lines, then=None):
@@ -246,6 +495,8 @@ class DungeonState(PlayState):
         events = self.run.step(dx, dy)
         if self.run.player != before:
             self.anim_from, self.anim = before, STEP_FRAMES
+            self.partner_from, self.partner = self.partner, before  # it steps where you were
+            self.steps += 1
         self._handle(events)
 
     def wait_turn(self):
@@ -268,7 +519,14 @@ class DungeonState(PlayState):
                 return
             elif kind == "stairs":
                 self.walk_goal = None
-                self.say(["You found the stairs!", "You went on to the next floor."], then=self._descend)
+                self.say([self._stairs_line(self.run.index + 1)], then=self._descend)
+                return
+            elif kind == "stairs_up":
+                self.walk_goal = None
+                self.say([self._stairs_line(self.run.index - 1)], then=self._ascend)
+                return
+            elif kind == "bump" and ev[1].kind == "figure":
+                self._use_figure(ev[1])
                 return
             elif kind in ("bump", "ambush") and ev[1].kind == "wild":
                 self._meet_wild(ev[1])
@@ -282,10 +540,38 @@ class DungeonState(PlayState):
                                   for m in self.run.floor.movers):
             self.walk_goal = None
 
+    def _floor_name(self, index):
+        """A floor's name: its zone's ("Area 1 (East)", "B2F"), else 1F, 2F..."""
+        if self.zones:
+            zone = next((z for z in self._zones() if z.get("key") == self.zones[index]), {})
+            return zone.get("name") or f"{index + 1}F"
+        return f"B{index}F" if index and self._descending() else f"{index + 1}F"
+
+    def _descending(self):
+        """True where the floors go down (a cave: 1F, B1F... the Seafoam Islands), not up (a tower)."""
+        return bool(self.area_data.get("zones_descend") or self.recipe.get("descend"))
+
+    def _stairs_line(self, index):
+        name = self._floor_name(index)
+        if self.zones and not self.area_data.get("zones_linear"):  # the Safari Zone's areas
+            return f"You headed over to {name}."
+        deeper = index > self.run.index
+        if self._descending():
+            return f"You went {'down' if deeper else 'back up'} the stairs to {name}."
+        return f"You went {'up' if deeper else 'back down'} the stairs to {name}."
+
     def _descend(self):
+        self._set_zone(self.run.index + 1)
         self.run.descend()
         self.anim = 0
-        self.anim_from = self.run.player
+        self.anim_from = self.partner = self.partner_from = self.run.player
+        self.banner = 120
+
+    def _ascend(self):
+        self._set_zone(self.run.index - 1)
+        self.run.ascend()
+        self.anim = 0
+        self.anim_from = self.partner = self.partner_from = self.run.player
         self.banner = 120
 
     def _try_exit(self, target):
@@ -467,10 +753,15 @@ class DungeonState(PlayState):
             return "HONEY"
         return None
 
-    def use_scent(self):
+    def use_scent(self, source=None):
+        """Draw in three wild Pokemon: Sweet Scent (a party Pokemon's, once a floor) or Honey (source "HONEY":
+        used from the Bag)."""
         if not self._ready():
             return
-        source = self._scent_source()
+        if source == "HONEY" and not (self._can_catch() and self._get_wild_pool(self.area_data)
+                                      and self.game.story_manager.inventory.get("HONEY", 0) > 0):
+            source = None
+        source = source or self._scent_source()
         story = self.game.story_manager
         if source is None:
             if not self._can_catch():
@@ -496,17 +787,21 @@ class DungeonState(PlayState):
 
     # ---------------------------------------------------------------- input
     def _buttons(self):
-        """The map's own buttons (bottom right): (rect, label, colour, action, enabled)."""
+        """The map's own buttons (bottom right): (rect, label, colour, action, enabled, small text)."""
         w, h = self.game.width, self.game.height
-        source = self._scent_source()
-        label = "HONEY" if source == "HONEY" else "SWEET SCENT"
-        honey = self.game.story_manager.inventory.get("HONEY", 0)
-        sub = f"x{honey}" if source == "HONEY" else ("once a floor" if source else "")
-        return [
-            (pygame.Rect(w - 280, h - 162, 260, 70), label, theme.BAG, self.use_scent, source is not None, sub),
-            (pygame.Rect(w - 280, h - 80, 104, 58), "WAIT", theme.RUN, self.wait_turn, True, None),
-            (pygame.Rect(w - 164, h - 80, 144, 58), "CLASSIC", theme.BACK, self._classic, True, None),
+        buttons = [
+            (pygame.Rect(w - 280, h - 162, 126, 70), theme.pokemon_word("POKEMON"), theme.POKEMON,
+             self._open_party, True, None),
+            (pygame.Rect(w - 146, h - 162, 126, 70), theme.pokemon_word("POKEDEX"), theme.BAG,
+             self._open_pokedex, True, None),
+            (pygame.Rect(w - 280, h - 80, 260, 58), "WAIT", theme.RUN, self.wait_turn, True, "a turn standing still"),
         ]
+        act = self._act_here() if hasattr(self, "run") else None
+        if act:  # beside water or a tree
+            sub = {"FISH": "the water here", "HEADBUTT": "this tree", "TALK": "the clerk",
+                   "PLAY SLOTS": "this machine"}.get(act[0])
+            buttons.append((pygame.Rect(w - 280, h - 244, 260, 70), act[0], (232, 132, 40), act[1], True, sub))
+        return buttons
 
     def _choice_rects(self):
         w, h = self.game.width, self.game.height
@@ -558,8 +853,16 @@ class DungeonState(PlayState):
                 self.step(*self.KEYS[e.key])
             elif e.key in (pygame.K_PERIOD, pygame.K_z):
                 self.wait_turn()
+            elif e.key in (pygame.K_SPACE, pygame.K_RETURN, pygame.K_KP_ENTER, pygame.K_f):
+                act = self._act_here()
+                if act:
+                    act[1]()
             elif e.key == pygame.K_h:
                 self.use_scent()
+            elif e.key == pygame.K_p:
+                self._open_party()
+            elif e.key == pygame.K_x:
+                self._open_pokedex()
             elif e.key in (pygame.K_ESCAPE, pygame.K_m) and self.hud_buttons:
                 self.hud_buttons[0].callback()  # MENU
         elif e.type == pygame.MOUSEBUTTONDOWN and e.button == 1:
@@ -571,6 +874,12 @@ class DungeonState(PlayState):
                 return
             tx, ty = self._tile_at(e.pos)
             px, py = self.run.player
+            if abs(tx - px) + abs(ty - py) == 1 and not self.run.floor.walkable(tx, ty):
+                self.facing = (tx - px, ty - py)  # a tap on the water or a tree beside you: fish or Headbutt
+                act = self._act_here()
+                if act and (tx, ty) == self._beside("water" if act[0] == "FISH" else "tree"):
+                    act[1]()
+                    return
             if (tx, ty) == (px, py):
                 self.wait_turn()
             elif abs(tx - px) + abs(ty - py) == 1:
@@ -656,6 +965,33 @@ class DungeonState(PlayState):
             for x in range(f.w):
                 r = pygame.Rect(x * TILE, y * TILE, TILE, TILE)
                 t = f.tiles[y][x]
+                if t == core.WATER:
+                    pygame.draw.rect(surf, floor_c, r)
+                    pygame.draw.rect(surf, WATER_C[0], r.inflate(-2, -2), border_radius=8)
+                    for i in range(2):
+                        yy = r.y + 16 + i * 20
+                        pygame.draw.arc(surf, WATER_C[1], (r.x + 8 + i * 10, yy, 22, 10), 0.3, 2.8, 2)
+                    continue
+                if (x, y) in f.decor:  # a slot machine, the counter
+                    body, top = DECOR_C.get(f.decor[(x, y)], ((120, 120, 140), (180, 180, 200)))
+                    pygame.draw.rect(surf, floor_c, r)
+                    if f.decor[(x, y)] == "slot":
+                        pygame.draw.rect(surf, body, r.inflate(-10, -4), border_radius=8)
+                        pygame.draw.rect(surf, (30, 30, 40), (r.x + 12, r.y + 10, TILE - 24, 18), border_radius=4)
+                        for i in range(3):
+                            pygame.draw.circle(surf, top, (r.x + 17 + i * 11, r.y + 19), 4)
+                        pygame.draw.rect(surf, top, (r.x + 10, r.bottom - 16, TILE - 20, 6), border_radius=3)
+                    else:
+                        pygame.draw.rect(surf, body, r)
+                        pygame.draw.rect(surf, top, (r.x, r.y, TILE, 18))
+                    continue
+                if t == core.WALL and f.style == "building":  # a wall, not a tree
+                    near = any(f.walkable(x + dx, y + dy) for dx, dy in core.DIRS)
+                    pygame.draw.rect(surf, top_c if near else wall_c, r)
+                    if near:
+                        pygame.draw.rect(surf, theme.shade(top_c, 1.2), (r.x, r.y, TILE, 8))
+                        pygame.draw.line(surf, theme.shade(wall_c, 0.8), (r.x, r.bottom - 1), (r.right, r.bottom - 1), 2)
+                    continue
                 if t == core.WALL:
                     near = any(f.walkable(x + dx, y + dy) for dx, dy in core.DIRS)
                     if near or rng.random() < 0.5:  # a tree (or a boulder in a cave)
@@ -671,6 +1007,11 @@ class DungeonState(PlayState):
                         bx = r.x + 8 + i * 11
                         by = r.y + 14 + (i % 2) * 18
                         pygame.draw.polygon(surf, dark, [(bx, by + 14), (bx + 5, by), (bx + 10, by + 14)])
+                elif f.style == "sea" and rng.random() < 0.12:  # waves
+                    pygame.draw.arc(surf, (190, 220, 250), (r.x + rng.randint(4, 24), r.y + rng.randint(8, 34), 24, 10),
+                                    0.3, 2.8, 2)
+                elif f.style == "building" and (x + y) % 2 == 0:  # floor tiles
+                    pygame.draw.rect(surf, theme.shade(floor_c, 0.95), r)
                 elif f.style == "field" and rng.random() < 0.06:  # a few flowers
                     c = rng.choice([(240, 240, 240), (250, 210, 80), (240, 120, 140)])
                     pygame.draw.circle(surf, c, (r.x + rng.randint(10, TILE - 10), r.y + rng.randint(10, TILE - 10)), 4)
@@ -688,8 +1029,57 @@ class DungeonState(PlayState):
         from src.minigames.base import icon
         return icon(self.game, pokemon.id, size, flip=flip)
 
-    def _trainer_img(self, info):
+    def _sheet_frame(self, sheet, facing=(0, 1), col=None, frame=0, height=None):
+        """One cell of a Pokemon Journeys overworld sheet (4 x 4): a person's walking frame (col None: the
+        columns are steps), or a Pokemon's (col: whose column), the row by the way it faces."""
+        height = height or TILE + 22
+
+        def make():
+            img = pygame.image.load(os.path.join(self.game.assets.assets_dir, "dungeon", "characters", sheet)).convert_alpha()
+            cw, ch = img.get_width() // 4, img.get_height() // 4
+            cell = img.subsurface(((frame if col is None else col) * cw, FACING_ROW.get(facing, 0) * ch, cw, ch))
+            box = cell.get_bounding_rect()
+            cell = cell.subsurface(box) if box.w and box.h else cell
+            k = max(1, round(height / max(1, cell.get_height())))  # whole steps: crisp pixels
+            return pygame.transform.scale(cell, (max(1, int(cell.get_width() * k)), max(1, int(cell.get_height() * k))))
+        return self._sprite(("sheet", sheet, facing, col, frame, height), make)
+
+    def _player_img(self):
+        """You on the map: your trainer's Journeys overworld sprite (yours, else a boy's or a girl's),
+        facing the way you go, its feet moving while you step."""
+        players = sprite_map(self.game).get("players") or {}
+        char = str(getattr(self.game, "player_character", "") or "red").lower()
+        sheet = players.get(char) or players.get("female" if char in players.get("girls", []) else "male")
+        if not sheet:
+            return None
+        frame = (1 + 2 * (self.steps % 2)) if self.anim > STEP_FRAMES // 2 else 0
+        return self._sheet_frame(sheet, self.facing, frame=frame)
+
+    def _figure_img(self, item):
+        """A story figure's look: its own sheet ("AREA:TEXT" in dungeon_sprites.json), a boss's Pokemon
+        (its overworld sprite, else its party icon), or a townsperson."""
+        sm = sprite_map(self.game)
+        spec = (sm.get("figures") or {}).get(f"{self.area_key}:{item.get('text')}") or {}
+        if spec.get("item"):
+            return self._item_img(spec["item"], 40) or self._sheet_frame("Object ball.png", col=0, height=36)
+        if item.get("action") == "ARRIVAL":
+            return self._trainer_img(item["event"].get("trainer") or {})
+        pid = spec.get("pokemon")
+        if pid is None and item.get("action") == "BOSS":
+            pid = (item.get("boss") or self.area_data.get("area_boss") or {}).get("id")
+        if pid is not None:
+            ow = (sm.get("pokemon") or {}).get(str(pid))
+            if ow:
+                return self._sheet_frame(ow[0], (0, 1), col=ow[1], height=TILE + 26)
+            from src.minigames.base import icon
+            return icon(self.game, int(pid), TILE + 10)
+        return self._sheet_frame(spec.get("sheet") or sm.get("townsperson") or "NPC 17.png")
+
+    def _trainer_img(self, info, facing=(0, 1)):
         name = info.get("sprite") or "rival.png"
+        sheet = (sprite_map(self.game).get("trainers") or {}).get(name)
+        if sheet:  # its Pokemon Journeys overworld sprite, looking the way it faces
+            return self._sheet_frame(sheet, facing)
 
         def make():
             img = _trainer_sprite(self.game, name)
@@ -747,11 +1137,12 @@ class DungeonState(PlayState):
             if (x, y) not in f.seen:
                 continue
             r = at(x, y)
-            if target == core.STAIRS:
+            if target in (core.STAIRS, core.STAIRS_UP):
                 pygame.draw.rect(screen, (60, 52, 44), r.inflate(-6, -6), border_radius=6)
                 for i in range(4):
                     pygame.draw.line(screen, (196, 180, 150), (r.x + 10, r.y + 12 + i * 9), (r.right - 10, r.y + 12 + i * 9), 3)
-                label = "STAIRS"
+                to = self.run.index + (1 if target == core.STAIRS else -1)
+                label = self._floor_name(to) if self.zones else ("UP" if target == core.STAIRS_UP else "STAIRS")
             else:
                 pygame.draw.rect(screen, (150, 104, 60), (r.centerx - 4, r.y + 20, 8, TILE - 22))
                 pygame.draw.rect(screen, (214, 172, 104), (r.x + 4, r.y + 4, TILE - 8, 24), border_radius=5)
@@ -784,8 +1175,16 @@ class DungeonState(PlayState):
                     pygame.draw.circle(screen, (255, 230, 90), (r.right - 8, r.y + 8), 5)
                 if m.alert:
                     theme.shadow_text(screen, "!", fonts["label"], r.right - 6, r.y - 18, color=(220, 60, 50))
+            elif m.kind == "figure":
+                img = self._figure_img(m.payload)
+                if img:
+                    screen.blit(img, img.get_rect(midbottom=(r.centerx, r.bottom - 2)))
+                else:
+                    pygame.draw.circle(screen, (200, 170, 60), r.center, TILE // 3)
+                theme.shadow_text(screen, "!", fonts["label"], r.right - 4, r.y - 20, color=(250, 210, 60))
+                continue
             else:
-                img = self._trainer_img(m.payload[1])
+                img = self._trainer_img(m.payload[1], m.facing)
                 if img:
                     screen.blit(img, img.get_rect(midbottom=(r.centerx, r.bottom)))
                 else:
@@ -795,13 +1194,25 @@ class DungeonState(PlayState):
                 tip = (r.centerx + fx * (TILE // 2 + 6), r.centery + fy * (TILE // 2 + 6))
                 pygame.draw.circle(screen, (255, 255, 255), tip, 5)
                 pygame.draw.circle(screen, (40, 40, 60), tip, 5, 2)
-        # you: your lead Pokemon
+        # you, your trainer, with your lead Pokemon a step behind
+        k = 1 - self.anim / STEP_FRAMES if self.anim > 0 else 1
         lead = self.lead()
         pr = pygame.Rect(0, 0, TILE, TILE)
         pr.center = (W // 2, H // 2)
-        if lead:
+        me = self._player_img()
+        drawn = []  # (bottom, image, rect): the lower one in front
+        if lead and self.partner != self.run.player and me is not None:
+            (fx, fy), (tx, ty) = self.partner_from, self.partner
+            r = pygame.Rect(int(ox + (fx + (tx - fx) * k) * TILE), int(oy + (fy + (ty - fy) * k) * TILE), TILE, TILE)
+            img = self._icon(lead, TILE, flip=(self.run.player[0] > tx))
+            drawn.append((r.bottom, img, img.get_rect(midbottom=(r.centerx, r.bottom - 2))))
+        if me is not None:
+            drawn.append((pr.bottom, me, me.get_rect(midbottom=(pr.centerx, pr.bottom))))
+        elif lead:  # (no trainer sprite: your lead Pokemon walks for you)
             img = self._icon(lead, TILE + 8, flip=(self.facing[0] > 0))
-            screen.blit(img, img.get_rect(center=(pr.centerx, pr.centery - 4)))
+            drawn.append((pr.bottom, img, img.get_rect(center=(pr.centerx, pr.centery - 4))))
+        for _b, img, rect in sorted(drawn, key=lambda t: t[0]):
+            screen.blit(img, rect)
         # the fog: unseen tiles are dark, seen ones you can't see right now are dimmed
         fog = pygame.Surface((TILE, TILE), pygame.SRCALPHA)
         fog.fill((10, 14, 24, 150))
@@ -841,7 +1252,7 @@ class DungeonState(PlayState):
         bar = pygame.Rect(210, 12, W - 420, 64)
         theme.draw_textbox(screen, bar)
         name = self.area_data.get("route_name", self.area_key.replace("_", " ").title())
-        floor_txt = f"  {self.run.index + 1}F" if self.run.n_floors > 1 else ""
+        floor_txt = f"  {self._floor_name(self.run.index)}" if self.run.n_floors > 1 else ""
         theme.shadow_text(screen, theme.pokemon_word(name) + floor_txt, fonts["button"], bar.x + 20,
                           bar.centery - fonts["button"].get_height() // 2)
         ball = catching.selected(story)
@@ -870,9 +1281,9 @@ class DungeonState(PlayState):
             if (x, y) in f.seen:
                 screen.fill((90, 220, 120), (mm.x + 4 + x * s, mm.y + 4 + y * s, s, s))
         for m in f.movers:
-            if self.run.visible(m.x, m.y):
-                screen.fill((230, 80, 70) if m.kind == "wild" else (170, 110, 230),
-                            (mm.x + 4 + m.x * s, mm.y + 4 + m.y * s, s, s))
+            if self.run.visible(m.x, m.y) or (m.kind == "figure" and (m.x, m.y) in f.seen):
+                color = {"wild": (230, 80, 70), "figure": (250, 210, 60)}.get(m.kind, (170, 110, 230))
+                screen.fill(color, (mm.x + 4 + m.x * s, mm.y + 4 + m.y * s, s, s))
         px, py = self.run.player
         pygame.draw.circle(screen, (255, 255, 255), (mm.x + 4 + px * s + 2, mm.y + 4 + py * s + 2), 3)
         # the buttons
@@ -890,7 +1301,7 @@ class DungeonState(PlayState):
             screen.blit(t, t.get_rect(center=r.center))
         if self.banner > 0 and self.mode == "MAP":
             word = theme.pokemon_word(self.area_data.get("route_name", "")) + \
-                (f"  {self.run.index + 1}F" if self.run.n_floors > 1 else "")
+                (f"  {self._floor_name(self.run.index)}" if self.run.n_floors > 1 else "")
             t = fonts["big"].render(word, True, (255, 255, 255))
             r = t.get_rect(center=(W // 2, int(H * 0.3))).inflate(60, 24)
             panel = pygame.Surface(r.size, pygame.SRCALPHA)

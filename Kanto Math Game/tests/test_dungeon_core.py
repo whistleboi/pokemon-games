@@ -31,7 +31,7 @@ def every_floor_can_be_crossed():
             reach = core.distances(f, f.start)
             for t in list(f.exits) + list(f.items) + list(f.tm_spots) + [(m.x, m.y) for m in f.movers]:
                 assert t in reach, (seed, i, t)
-            want = (["BACK"] if i == 0 else []) + (["A", "B"] if i == run.n_floors - 1 else [core.STAIRS])
+            want = (["BACK"] if i == 0 else [core.STAIRS_UP]) + (["A", "B"] if i == run.n_floors - 1 else [core.STAIRS])
             assert sorted(f.exits.values()) == sorted(want), (seed, i, f.exits)
             if i < run.n_floors - 1:
                 run.descend()
@@ -121,6 +121,75 @@ def walking_to_a_tapped_tile():
             break
     assert run.player == goal
 
+
+
+@test
+def ponds_never_cut_a_way():
+    """Ponds (for fishing) and every style, building and sea too: everything still reachable."""
+    water = 0
+    for seed in range(200):
+        style = ("field", "forest", "cave", "building", "sea")[seed % 5]
+        run = core.Run({"floors": 1, "style": style, "size": [40, 26], "wild": [3, 5], "ponds": 3},
+                       random.Random(seed), entrance="BACK", forwards=["A"], make_wild=lambda r: "wild",
+                       figures=[(0, "boss")])
+        f = run.floor
+        reach = core.distances(f, f.start)
+        water += sum(row.count(core.WATER) for row in f.tiles)
+        for t in list(f.exits) + [(m.x, m.y) for m in f.movers]:
+            assert t in reach, (seed, style, t)
+        assert all(not f.walkable(x, y) for y in range(f.h) for x in range(f.w) if f.tiles[y][x] == core.WATER)
+    assert water > 300, water  # (small corner ponds: somewhere to fish)
+
+
+@test
+def stairs_go_both_ways():
+    """Down the stairs and back up: the same floor as you left it, beside its stairs."""
+    run = make_run(5, floors=3)
+    first = run.floor
+    run.player = (0, 0)
+    run.descend()
+    assert run.index == 1 and core.STAIRS_UP in run.floor.exits.values()
+    up = next(t for t, v in run.floor.exits.items() if v == core.STAIRS_UP)
+    assert run.floor.room_at(*up) is run.floor.room_at(*run.player)  # in the room you arrive in
+    run.ascend()
+    assert run.index == 0 and run.floor is first
+    down = next(t for t, v in first.exits.items() if v == core.STAIRS)
+    assert abs(run.player[0] - down[0]) + abs(run.player[1] - down[1]) == 1
+    run.descend()
+    run.descend()
+    assert run.index == 2 and len(run.floors) == 3
+
+
+@test
+def figures_stand_still_and_can_be_bumped():
+    run = core.Run({"floors": 2, "size": [40, 26], "wild": [0, 0]}, random.Random(3), entrance="BACK",
+                   forwards=["A"], figures=[(1, "zapdos"), (0, "nerd")])
+    figs = [m for m in run.floor.movers if m.kind == "figure"]
+    assert [m.payload for m in figs] == ["nerd"]
+    spot = (figs[0].x, figs[0].y)
+    for _ in range(30):
+        run.wait()
+    assert (figs[0].x, figs[0].y) == spot
+    run.descend()
+    assert [m.payload for m in run.floor.movers if m.kind == "figure"] == ["zapdos"]
+    run.drop_figure("zapdos")
+    assert not [m for m in run.floor.movers if m.kind == "figure"]
+    run.add_figure(1, "ghost")
+    assert [m.payload for m in run.floor.movers if m.kind == "figure"] == ["ghost"]
+
+
+@test
+def ways_out_and_trainers_on_their_floors():
+    """A building: its ways out on given floors, a trainer on its own floor."""
+    run = core.Run({"floors": 3, "size": [40, 26], "wild": [0, 0]}, random.Random(9),
+                   exits_by_floor={0: ("TOWN", []), 2: (None, ["ROOF"])},
+                   trainers=[(0, {"floor": 2}), (1, {})], floor_of=lambda t: t.get("floor"), start_floor=0)
+    assert sorted(run.floor.exits.values()) == sorted(["TOWN", core.STAIRS])
+    run.descend()
+    assert sorted(run.floor.exits.values()) == sorted([core.STAIRS_UP, core.STAIRS])
+    run.descend()
+    assert sorted(run.floor.exits.values()) == sorted([core.STAIRS_UP, "ROOF"])
+    assert any(m.kind == "trainer" and m.payload[0] == 0 for m in run.floor.movers)
 
 if __name__ == "__main__":
     fails = 0

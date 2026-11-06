@@ -191,6 +191,8 @@ def _run_story_event(state, key, check, show):
         from src.states.systems import has_national_dex
         has_national_dex(story)
     if not all(check(c) for c in ev.get("requires", [])):
+        if ev.get("fail_flag"):  # hearing the "not yet" can start a task (Devon's stolen parts: the journal)
+            story.story_flags[ev["fail_flag"]] = True
         show(_resolve_lines(game, ev.get("fail") or ["You can't do that yet."]))
         return
     lines = _resolve_lines(game, ev.get("lines") or [])
@@ -224,6 +226,9 @@ def _run_story_event(state, key, check, show):
         lines.append(f"{getattr(game, 'player_name', 'You')} received the {forms.item_label(item).upper()}!")
     for item, qty in (ev.get("take_item") or {}).items():
         story.inventory[item] = max(0, story.inventory.get(item, 0) - qty)
+    if ev.get("heal"):  # a nurse in a building (Silph Co.): like a Pokemon Center
+        from src.states.overworld.area_transition import heal_team
+        heal_team(game)
     if ev.get("reset_area"):  # Mt. Battle: start the mountain over (its trainers can be fought again)
         story.defeated_trainers.pop(story.current_area_key, None)
         for f in ev.get("clear_flags", []):

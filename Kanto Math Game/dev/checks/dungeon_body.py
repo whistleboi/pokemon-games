@@ -169,8 +169,12 @@ p.step(*d)
 check(story.inventory.get("POTION", 0) == had + 1, "walking over an item picks it up")
 frames(p, 10)  # (the step's walk animation)
 story.inventory["HONEY"] = 1
-check(p._scent_source() == "HONEY", "HONEY in the Bag: the HONEY button works")
-p.use_scent()
+check(p._scent_source() == "HONEY" and not any(b[1] in ("HONEY", "SWEET SCENT") for b in p._buttons())
+      and {"WAIT"} <= {b[1] for b in p._buttons()} and len(p._buttons()) >= 3, "HONEY in the Bag; the map's buttons: POKeMON, POKeDEX, WAIT")
+from src.states.systems import BagState as _Bag
+_bag = _Bag(g, p)
+_bag._use_field_item("HONEY")  # used from the Bag: back to the map, and it draws them in
+check(g.current_state is p, "HONEY from the Bag: back on the map")
 talk(p)
 frames(p, 3)
 check(p.mode == "CATCH" and sum(x is not None for x in p.p_data) == 3,
@@ -250,10 +254,208 @@ for mode in ("MAP", "CHOICE", "MATH", "THROW", "SPOTTED"):
     check(ok, f"draws in {mode}")
 p.mode = "MAP"
 
-# CLASSIC VIEW
-p._classic()
-check(type(g.current_state) is PlayState, "CLASSIC: the old route menu for this visit")
-check(type(PlayState(g, restore_data={"x": 1})) is PlayState, "CLASSIC lasts through battles on that visit")
+# the map replaces the route menu everywhere (Jordan, 11-05): no CLASSIC button
+check(not any(b[1] == "CLASSIC" for b in p._buttons()), "no CLASSIC button: the map is the way")
 story.current_area_key = "KANTO_ROUTE_1"
-check(isinstance(PlayState(g), DungeonState), "...and ends once you're somewhere else")
+check(isinstance(PlayState(g), DungeonState) and type(PlayState(g, classic=True)) is PlayState,
+      "PlayState(game) is the map; classic=True is the route menu underneath")
+
+# ---- every Kanto area (Jordan, 11-05): routes, caves, the sea, the Safari Zone, the buildings
+from src.states.overworld import dungeon as _dg
+_prog = g.loader.area_data["STORY_PROGRESSION"]
+_kanto = [k for k in _dg.recipes(g) if k in _prog and _prog[k].get("area_type") != "town"
+          and k not in ("DEFAULT",) and not k.startswith("_")]
+_bad = []
+for _a in _kanto:
+    try:
+        _p = kanto(_a, came=next(iter([i.get("target") or i.get("target_area") for i in _prog[_a].get("route_menu", [])
+                                       if i.get("action") in ("EXIT", "TRAVEL")] or [None])))
+        if not isinstance(_p, DungeonState):
+            _bad.append((_a, "not a map"))
+            continue
+        for _i in range(_p.run.n_floors):
+            _f = _p.run.floor
+            _reach = core.distances(_f, _p.run.player)
+            _things = list(_f.exits) + list(_f.items) + list(_f.tm_spots) + ([] if _dg.recipe_for(g, _a).get("layout") else [(m.x, m.y) for m in _f.movers])
+            if any(t not in _reach for t in _things):
+                _bad.append((_a, _i, "something out of reach"))
+            _p.draw()
+            if _i < _p.run.n_floors - 1:
+                _p._descend()
+        for _i in range(_p.run.n_floors - 1):
+            _p._ascend()
+        if _p.run.index != 0:
+            _bad.append((_a, "stairs back up"))
+    except Exception as _e:
+        import traceback
+        traceback.print_exc()
+        _bad.append((_a, repr(_e)))
+check(not _bad, f"all {len(_kanto)} Kanto areas: a map, every floor crossable and drawn, stairs both ways {_bad[:4]}")
+check({"MT_MOON", "ROCK_TUNNEL", "SEAFOAM_ISLANDS", "KANTO_POKEMON_TOWER", "POWER_PLANT", "KANTO_ROUTE_20",
+       "SAFARI_ZONE", "KANTO_SS_ANNE", "CERULEAN_CAVE", "VICTORY_ROAD"} <= set(_kanto), "caves, the sea, the buildings too")
+
+# every region's areas (the map replaces the route menu everywhere): each opens and draws, every way out,
+# figure and item on its first floor can be reached
+_all = [k for k, a in _prog.items() if isinstance(a, dict) and a.get("area_type") != "town"]
+_bad = []
+for _a in _all:
+    try:
+        story.badges.setdefault(str(_prog[_a].get("region") or "KANTO").upper(), [])
+        _p = kanto(_a, came=None)
+        if not isinstance(_p, DungeonState):
+            _bad.append((_a, "not a map"))
+            continue
+        _f = _p.run.floor
+        _reach = core.distances(_f, _p.run.player)
+        _drawn = bool(_dg.recipe_for(g, _a).get("layout"))  # (a drawn place's clerk stands behind its counter)
+        if any(t not in _reach for t in list(_f.exits) + ([] if _drawn else [(m.x, m.y) for m in _f.movers])):
+            _bad.append((_a, "out of reach"))
+        _p.draw()
+    except Exception as _e:
+        _bad.append((_a, repr(_e)[:80]))
+check(not _bad, f"every region: all {len(_all)} areas that aren't towns are maps {_bad[:5]}")
+_styles = {_dg.recipe_for(g, k).get("style") for k in _all}
+check({"field", "forest", "cave", "building", "sea", "snow", "desert"} <= _styles, f"their looks from their battle types {sorted(_styles)}")
+
+# zones: a floor each, the zone you're on is the one whose Pokemon you meet
+_p = kanto("SEAFOAM_ISLANDS", came="KANTO_ROUTE_20")
+check(_p.run.n_floors == 5 and story.story_flags.get("zone_SEAFOAM_ISLANDS") == "1f", "Seafoam: 1F to B4F, you start on 1F")
+_p._descend()
+check(story.story_flags.get("zone_SEAFOAM_ISLANDS") == "b1f" and _p._floor_name(1) == "B1F", "down the stairs: B1F's Pokemon")
+_tower = kanto("KANTO_POKEMON_TOWER", came="LAVENDER_TOWN")
+check(_tower.run.n_floors == 4 and "LAVENDER_TOWN" in _tower.run.floor.exits.values(), "the Pokemon Tower: four floors, the way out on 1F")
+
+# figures: a legendary doesn't wait for the trainers; story people; the rival on arrival
+for _k in ("POWER_PLANT_boss_defeated",):
+    story.story_flags.pop(_k, None)
+_pp = kanto("POWER_PLANT", came="KANTO_ROUTE_10")
+_pp_trainers = [i for i in range(len(_prog["POWER_PLANT"].get("trainer_pool", []))) if not story.is_trainer_defeated("POWER_PLANT", i)]
+_zap = [m for f in _pp.run.floors for m in f.movers if m.kind == "figure" and m.payload.get("action") == "BOSS"]
+check(_zap and _pp_trainers, "Power Plant: Zapdos is on the map before its trainers are beaten")
+check(_pp._figure_img(_zap[0].payload) is not None, "...drawn with its Journeys overworld sprite")
+story.story_flags.pop("mt_moon_nerd_defeated", None)
+_mm = kanto("MT_MOON", came="PEWTER_CITY")
+_last = _mm.run.n_floors - 1
+while _mm.run.index < _last:
+    _mm._descend()
+_nerd = [m for m in _mm.run.floor.movers if m.kind == "figure" and m.payload.get("text") == "SUPER NERD"]
+check(_nerd, "Mt. Moon: the Super Nerd stands on the last floor")
+_called = []
+_mm._get_route_callback = lambda item: (lambda: _called.append(item.get("text")))
+_nm, _d = beside(_mm, "figure") if _nerd else (None, None)
+if _nm:
+    _mm.mode, _mm.anim = "MAP", 0
+    _mm.dialogue_box.visible = False
+    _mm.step(*_d)
+check(_called and _called[0] in ("SUPER NERD", "TAKE DOME FOSSIL", "TAKE HELIX FOSSIL"), "walking into a figure does its button's action")
+story.story_flags["received_pokedex_kanto"] = True
+_badges = story.badges.get("KANTO", [])
+story.badges["KANTO"] = []
+for _ev in (_prog["KANTO_ROUTE_22"].get("on_enter_event") or []):
+    story.story_flags.pop(_ev.get("flag_check") or "", None)
+_r22 = kanto("KANTO_ROUTE_22", came="VIRIDIAN_CITY")
+check(any(m.kind == "figure" and m.payload.get("action") == "ARRIVAL" for f in _r22.run.floors for m in f.movers),
+      "Route 22: the rival waits on the map")
+story.badges["KANTO"] = _badges
+
+# fishing beside a pond, Headbutt beside a tree
+story.inventory["OLD_ROD"] = 1
+_fish = kanto("KANTO_ROUTE_12", came="LAVENDER_TOWN")
+_f = _fish.run.floor
+_pond = next(((x, y) for y in range(_f.h) for x in range(_f.w) if _f.tiles[y][x] == core.WATER
+              and any(_f.walkable(x + dx, y + dy) and not _f.occupied(x + dx, y + dy) for dx, dy in core.DIRS)), None)
+check(_pond is not None, "Route 12 (fishing): ponds on the map")
+if _pond:
+    _spot = next((_pond[0] + dx, _pond[1] + dy) for dx, dy in core.DIRS
+                 if _f.walkable(_pond[0] + dx, _pond[1] + dy) and not _f.occupied(_pond[0] + dx, _pond[1] + dy))
+    _fish.run.player = _spot
+    _act = _fish._act_here()
+    check(_act and _act[0] == "FISH" and any(b[1] == "FISH" for b in _fish._buttons()), "beside the water: a FISH button")
+    _fish.mode, _fish.anim = "MAP", 0
+    _fish.dialogue_box.visible = False
+    _fish.fish_here()
+    check(isinstance(g.current_state, WildBattleState) or _fish.dialogue_box.visible, "FISH: a bite (the route's own fishing)")
+_sea = kanto("KANTO_ROUTE_20", came="FUCHSIA_CITY")
+check(_sea.run.floor.style == "sea" and _sea._beside("water") is not None, "at sea: you can fish anywhere")
+
+# the buildings (Jordan, 11-05): Silph Co., the Rocket Hideout, the Pokemon Mansion
+for _k in ("silph_co_cleared", "hideout_giovanni_defeated", "game_corner_cleared", "got_secret_key"):
+    story.story_flags.pop(_k, None)
+story.defeated_trainers.pop("SILPH_CITY", None)
+_sil = kanto("SILPH_CITY", came="SAFFRON_CITY")
+check(_sil.run.n_floors == 5 and _sil._floor_name(4) == "5F" and "SAFFRON_CITY" in _sil.run.floor.exits.values(),
+      "Silph Co.: 1F (the way out) up to 5F")
+check(any(m.kind == "figure" and m.payload.get("text") == "NURSE" for m in _sil.run.floor.movers), "a nurse on 1F")
+while _sil.run.index < 4:
+    _sil._descend()
+check(any(m.kind == "trainer" and m.payload[1].get("name") == "Giovanni" for m in _sil.run.floor.movers),
+      "Giovanni waits on 5F")
+_hid = kanto("ROCKET_HIDEOUT", came="CELADON_CITY")
+while _hid.run.index < 3:
+    _hid._descend()
+check(_hid._floor_name(3) == "B4F" and any(m.kind == "figure" and m.payload.get("text") == "GIOVANNI"
+                                          for m in _hid.run.floor.movers), "the Rocket Hideout: Giovanni on B4F")
+story.story_flags["hideout_giovanni_defeated"] = True
+_hid._sync_figures()
+check(any(m.payload.get("text") == "SILPH SCOPE" for m in _hid.run.floor.movers if m.kind == "figure")
+      and not any(m.payload.get("text") == "GIOVANNI" for m in _hid.run.floor.movers if m.kind == "figure"),
+      "...beaten: the Silph Scope lies there")
+story.story_flags.pop("hideout_giovanni_defeated", None)
+from src.states.systems.town_services import GameCornerState as _GC
+story.current_area_key = "CELADON_CITY"
+_gc = _GC(g, None)
+_gc.start_rocket_gauntlet()
+check(type(g.current_state).__name__ == "AreaTransitionState" and g.current_state.next_area_key == "ROCKET_HIDEOUT",
+      "the Game Corner's stairs lead down into the hideout")
+_man = kanto("POKEMON_MANSION", came="CINNABAR_ISLAND")
+while _man.run.index < _man.run.n_floors - 1:
+    _man._descend()
+check(any(m.kind == "figure" and m.payload.get("text") == "BURGLAR SIMON" for m in _man.run.floor.movers)
+      and any(m.kind == "wild" for f in _man.run.floors for m in f.movers), "the Pokemon Mansion: wild Pokemon, the Burglar with the Secret Key")
+check(any(o.get("target_area") == "POKEMON_MANSION" for o in _prog["CINNABAR_ISLAND"]["explore_options"]),
+      "Cinnabar's Pokemon Mansion button leads in")
+
+# buildings are fixed and have no fog; the Game Corner is drawn (Jordan, 11-05)
+_a1 = kanto("SILPH_CITY", came="SAFFRON_CITY")
+_t1 = [row[:] for row in _a1.run.floor.tiles]
+_a2 = kanto("SILPH_CITY", came="SAFFRON_CITY")
+check(_a2.run.floor.tiles == _t1, "Silph Co.: the same floor on every visit")
+check(len(_a2.run.floor.seen) == _a2.run.floor.w * _a2.run.floor.h and _a2.run.visible(1, 1), "...and no fog: the whole floor shows")
+_r1 = kanto("KANTO_ROUTE_1", came="PALLET_TOWN")
+check(_r1.run.fog and len(_r1.run.floor.seen) < _r1.run.floor.w * _r1.run.floor.h, "a route keeps its fog")
+story.inventory["COIN_CASE"] = 1
+_gc = kanto("CELADON_GAME_CORNER", came="CELADON_CITY")
+_f = _gc.run.floor
+check(_f.decor and sum(1 for v in _f.decor.values() if v == "slot") >= 12 and "ROCKET_HIDEOUT" in _f.exits.values()
+      and "CELADON_CITY" in _f.exits.values(), "the Game Corner: drawn, slot machines, the door and the poster")
+_clerk = [m for m in _f.movers if m.kind == "figure" and m.payload.get("text") == "CLERK"]
+check(_clerk and _f.tile(_clerk[0].x, _clerk[0].y + 1) == core.WALL and _f.decor.get((_clerk[0].x, _clerk[0].y + 1)) == "counter",
+      "the clerk stands behind the counter")
+_counter = next(t for t, v in _f.decor.items() if v == "counter" and _f.walkable(t[0], t[1] + 1))
+_gc.run.player = (_counter[0], _counter[1] + 1)
+_gc.mode, _gc.anim = "MAP", 0
+_gc.dialogue_box.visible = False
+check(_gc._act_here() and _gc._act_here()[0] == "TALK", "at the counter: TALK")
+_gc._act_here()[1]()
+from src.states.systems import GameCornerState as _GCS
+check(isinstance(g.current_state, _GCS) and g.current_state.previous_state is _gc, "the clerk: the Game Corner's games, coins and prizes")
+g.current_state.go_back()
+check(g.current_state is _gc, "LEAVE: back on the Game Corner's floor")
+_slot = next(t for t, v in _f.decor.items() if v == "slot" and any(_f.walkable(t[0] + dx, t[1] + dy) for dx, dy in core.DIRS))
+_gc.run.player = next((_slot[0] + dx, _slot[1] + dy) for dx, dy in core.DIRS if _f.walkable(_slot[0] + dx, _slot[1] + dy))
+check(_gc._act_here() and _gc._act_here()[0] == "PLAY SLOTS", "at a machine: PLAY SLOTS")
+_gc.draw()
+
+# free movement (Jordan, 11-05): no "two route actions" before a way out; only the story locks one
+_r3 = kanto("KANTO_ROUTE_3", came="PEWTER_CITY")
+check(_r3.rounds_completed == 0 and _r3._exit_block(_r3.exit_items["MT_MOON_CITY"], True) == "route", "Route 3, nothing done yet")
+_r3._try_exit("MT_MOON_CITY")
+check(type(g.current_state).__name__ == "AreaTransitionState", "...and you can walk straight on to Mt. Moon")
+_kb = story.badges.get("KANTO", [])
+story.badges["KANTO"] = []
+_r22b = kanto("KANTO_ROUTE_22", came="VIRIDIAN_CITY")
+_r22b._try_exit("KANTO_ROUTE_23")
+check(g.current_state is _r22b and _r22b.dialogue_box.visible, "a story lock still holds (Route 23 needs the eight badges)")
+story.badges["KANTO"] = _kb
+
 print(f"##### {fails} failures")

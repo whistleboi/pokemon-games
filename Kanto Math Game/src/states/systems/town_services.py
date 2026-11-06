@@ -276,9 +276,17 @@ class GameCornerState(GameState):
         self.btn_no.set_visibility(True)
 
     def start_rocket_gauntlet(self):
+        """Down the stairs: the Rocket Hideout, B1F to B4F (Jordan, 11-05: an area of its own, walked on a
+        map in dungeon mode). Grunts beaten in the old gauntlet stay beaten."""
+        from src.states.overworld.area_transition import AreaTransitionState
         self.btn_yes.set_visibility(False)
         self.btn_no.set_visibility(False)
-        self.next_rocket_battle()
+        story = self.game.story_manager
+        for i in range(min(4, int(self.rocket_progress or 0))):
+            story.mark_trainer_defeated("ROCKET_HIDEOUT", i)
+        if self.rocket_progress >= 5:
+            story.story_flags["hideout_giovanni_defeated"] = True
+        self.game.change_state(AreaTransitionState(self.game, "ROCKET_HIDEOUT"))
 
     # The Rocket Hideout's boss on B4F (FireRed/LeafGreen): Giovanni, who drops the Silph Scope.
     HIDEOUT_GIOVANNI = ([95, 111, 115], [25, 24, 29])

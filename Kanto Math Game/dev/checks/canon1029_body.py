@@ -1986,4 +1986,31 @@ else:
 check(not _b57._start_move_anim(_b57.player_pokemon, "TACKLE", "player", ["MUDKIP USED TACKLE!", "MUDKIP's attack missed!"]),
       "a missed move shows no animation")
 
+print("58) Hoenn: the Devon Parts journal entry starts when Devon Corp tells you they were stolen (Jordan, 11-05)")
+from src.states import overworld as _ow58
+_m58 = next(m for m in story.region_missions() if m["id"] == "hoenn_m4")
+_live58 = lambda: (story.check_requirements(_m58["condition"], region=_m58.get("region"))
+                   and not story.story_flags.get(_m58["completed_flag"]))
+_area58 = story.current_area_key
+_keep58 = {k: story.story_flags.get(k) for k in ("heard_devon_parts_stolen", "rusturf_rescued", "met_mr_stone")}
+for _k58 in _keep58:
+    story.story_flags.pop(_k58, None)
+story.story_flags["badge_stone_earned"] = True
+check(not _live58(), "the Stone Badge alone doesn't add it")
+story.current_area_key = "RUSTBORO_CITY"
+_c58 = _ow58.CityState(g)
+_said58 = []
+_ow58._run_story_event(_c58, "devon_president", _c58._check_menu_condition, _said58.append)
+check(_live58() and any("stole" in l for l in _said58[-1]), "talking to Devon Corp: the parts were stolen, and the entry is in the journal")
+story.story_flags["rusturf_rescued"] = True
+check(_live58(), "it stays until the parts are back at Devon")
+_ow58._run_story_event(_c58, "devon_president", _c58._check_menu_condition, _said58.append)
+check(story.story_flags.get("met_mr_stone") and not _live58(), "returned to Mr. Stone: done")
+for _k58, _v58 in _keep58.items():
+    if _v58 is None:
+        story.story_flags.pop(_k58, None)
+    else:
+        story.story_flags[_k58] = _v58
+story.current_area_key = _area58
+
 print(f"\n{'ALL PASS' if not fails else str(fails) + ' FAIL(S)'}")

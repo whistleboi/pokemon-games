@@ -3277,10 +3277,11 @@
     {
       "id": "hoenn_m4",
       "type": "MAIN",
-      "title": "Devon Goods",
-      "description": "{team} stole the Devon Goods! Get them back in Rusturf Tunnel.",
-      "condition": { "required_region": "HOENN", "flag": "badge_stone_earned", "flag_not": "rusturf_rescued" },
-      "completed_flag": "rusturf_rescued"
+      "title": "Devon Parts",
+      "description": "A {team} grunt stole the Devon Parts! Get them back in Rusturf Tunnel on Route 116, then return them to Mr. Stone in Rustboro.",
+      "condition": { "required_region": "HOENN", "flag": "heard_devon_parts_stolen", "flag_not": "met_mr_stone" },
+      "completed_flag": "met_mr_stone",
+      "target": "HOENN_RUSTURF_TUNNEL"
     },
     {
       "id": "hoenn_m5",

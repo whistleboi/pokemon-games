@@ -1,12 +1,21 @@
 {
-  "_about": "Route dungeons (src/dungeon, src/states/overworld/dungeon.py). An area listed here is walked on a map instead of the route menu. floors: how many floors (stairs between them). style: field, forest or cave. size: [width, height] in tiles. wild: [fewest, most] wild Pokemon on a floor. loot: per_floor [fewest, most] loose items, and items {item: weight} (weights, not percents; POKE_BALLS go to the Poke Ball count). tm_spots: fixed TM spot ids (the TM in each is picked once per save, among the TMs not owned yet). Anything left out comes from DEFAULT.",
+  "_about": "Route dungeons (src/dungeon, src/states/overworld/dungeon.py). An area listed here is walked on a map instead of the route menu. floors: how many floors (stairs between them). style: field, forest or cave. size: [width, height] in tiles. wild: [fewest, most] wild Pokemon on a floor. loot: per_floor [fewest, most] loose items, and items {item: weight} (weights, not percents; POKE_BALLS go to the Poke Ball count). tm_spots: fixed TM spot ids (the TM in each is picked once per save, among the TMs not owned yet). Anything left out comes from DEFAULT. style also building (walls and floor tiles) or sea (you surf the floor). ponds: how many rooms on a floor get a pond (fishing). descend: the floors go down (1F, B1F...). An area in zones (the Pokemon Tower, the Seafoam Islands, the Safari Zone) gets a floor for each zone instead of floors.",
   "DEFAULT": {
     "floors": 1,
     "style": "field",
-    "size": [40, 26],
-    "wild": [4, 6],
+    "size": [
+      40,
+      26
+    ],
+    "wild": [
+      4,
+      6
+    ],
     "loot": {
-      "per_floor": [2, 4],
+      "per_floor": [
+        2,
+        4
+      ],
       "items": {
         "POKE_BALLS": 30,
         "POTION": 25,
@@ -21,26 +30,65 @@
     },
     "tm_spots": []
   },
+  "KANTO_SS_ANNE": {
+    "floors": 2,
+    "style": "building",
+    "size": [
+      40,
+      26
+    ],
+    "wild": [
+      3,
+      5
+    ],
+    "loot": {
+      "per_floor": [
+        2,
+        3
+      ],
+      "items": {
+        "POKE_BALLS": 15,
+        "POTION": 15,
+        "SUPER_POTION": 12,
+        "FULL_HEAL": 8,
+        "GREAT_BALL": 10,
+        "ULTRA_BALL": 4,
+        "REVIVE": 5,
+        "RARE_CANDY": 3
+      }
+    },
+    "tm_spots": [
+      "KANTO_TM_SS_ANNE"
+    ]
+  },
   "KANTO_ROUTE_1": {
     "floors": 1,
     "style": "field",
-    "size": [36, 24],
-    "wild": [4, 5]
-  },
-  "KANTO_ROUTE_2": {
-    "floors": 1,
-    "style": "field",
-    "size": [40, 26],
-    "wild": [4, 6],
-    "tm_spots": ["KANTO_TM_ROUTE_2"]
+    "size": [
+      36,
+      24
+    ],
+    "wild": [
+      4,
+      5
+    ]
   },
   "VIRIDIAN_FOREST": {
     "floors": 2,
     "style": "forest",
-    "size": [44, 30],
-    "wild": [5, 7],
+    "size": [
+      44,
+      30
+    ],
+    "wild": [
+      5,
+      7
+    ],
     "loot": {
-      "per_floor": [3, 5],
+      "per_floor": [
+        3,
+        5
+      ],
       "items": {
         "POKE_BALLS": 25,
         "POTION": 25,
@@ -51,6 +99,790 @@
         "ESCAPE_ROPE": 4
       }
     },
-    "tm_spots": ["KANTO_TM_VIRIDIAN_FOREST"]
+    "tm_spots": [
+      "KANTO_TM_VIRIDIAN_FOREST"
+    ]
+  },
+  "KANTO_ROUTE_2": {
+    "floors": 1,
+    "style": "field",
+    "size": [
+      40,
+      26
+    ],
+    "wild": [
+      4,
+      6
+    ],
+    "tm_spots": [
+      "KANTO_TM_ROUTE_2"
+    ]
+  },
+  "KANTO_ROUTE_3": {
+    "floors": 1,
+    "style": "field",
+    "size": [
+      40,
+      26
+    ],
+    "wild": [
+      4,
+      6
+    ]
+  },
+  "KANTO_ROUTE_4": {
+    "floors": 1,
+    "style": "field",
+    "size": [
+      40,
+      26
+    ],
+    "wild": [
+      4,
+      6
+    ]
+  },
+  "KANTO_ROUTE_5": {
+    "floors": 1,
+    "style": "field",
+    "size": [
+      40,
+      26
+    ],
+    "wild": [
+      4,
+      6
+    ]
+  },
+  "KANTO_ROUTE_6": {
+    "floors": 1,
+    "style": "field",
+    "size": [
+      40,
+      26
+    ],
+    "wild": [
+      4,
+      6
+    ]
+  },
+  "KANTO_ROUTE_7": {
+    "floors": 1,
+    "style": "field",
+    "size": [
+      40,
+      26
+    ],
+    "wild": [
+      4,
+      6
+    ]
+  },
+  "KANTO_ROUTE_8": {
+    "floors": 1,
+    "style": "field",
+    "size": [
+      40,
+      26
+    ],
+    "wild": [
+      4,
+      6
+    ]
+  },
+  "KANTO_ROUTE_9": {
+    "floors": 1,
+    "style": "field",
+    "size": [
+      40,
+      26
+    ],
+    "wild": [
+      4,
+      6
+    ],
+    "ponds": 2
+  },
+  "KANTO_ROUTE_10": {
+    "floors": 1,
+    "style": "field",
+    "size": [
+      40,
+      26
+    ],
+    "wild": [
+      4,
+      6
+    ],
+    "ponds": 2
+  },
+  "POWER_PLANT": {
+    "floors": 1,
+    "style": "building",
+    "size": [
+      40,
+      26
+    ],
+    "wild": [
+      3,
+      5
+    ],
+    "loot": {
+      "per_floor": [
+        2,
+        3
+      ],
+      "items": {
+        "POKE_BALLS": 15,
+        "POTION": 15,
+        "SUPER_POTION": 12,
+        "FULL_HEAL": 8,
+        "GREAT_BALL": 10,
+        "ULTRA_BALL": 4,
+        "REVIVE": 5,
+        "RARE_CANDY": 3
+      }
+    },
+    "tm_spots": [
+      "KANTO_TM_POWER_PLANT"
+    ]
+  },
+  "KANTO_ROUTE_11": {
+    "floors": 1,
+    "style": "field",
+    "size": [
+      40,
+      26
+    ],
+    "wild": [
+      4,
+      6
+    ],
+    "ponds": 2
+  },
+  "KANTO_ROUTE_12": {
+    "floors": 1,
+    "style": "field",
+    "size": [
+      40,
+      26
+    ],
+    "wild": [
+      4,
+      6
+    ],
+    "ponds": 2
+  },
+  "DIGGLETT_CAVE": {
+    "floors": 1,
+    "style": "cave",
+    "size": [
+      44,
+      30
+    ],
+    "wild": [
+      4,
+      6
+    ],
+    "loot": {
+      "per_floor": [
+        2,
+        4
+      ],
+      "items": {
+        "POKE_BALLS": 20,
+        "POTION": 18,
+        "SUPER_POTION": 10,
+        "ESCAPE_ROPE": 12,
+        "REPEL": 12,
+        "GREAT_BALL": 10,
+        "ANTIDOTE": 6,
+        "AWAKENING": 6,
+        "RARE_CANDY": 3
+      }
+    }
+  },
+  "KANTO_ROUTE_13": {
+    "floors": 1,
+    "style": "field",
+    "size": [
+      40,
+      26
+    ],
+    "wild": [
+      4,
+      6
+    ],
+    "ponds": 2
+  },
+  "KANTO_ROUTE_14": {
+    "floors": 1,
+    "style": "field",
+    "size": [
+      40,
+      26
+    ],
+    "wild": [
+      4,
+      6
+    ]
+  },
+  "KANTO_ROUTE_15": {
+    "floors": 1,
+    "style": "field",
+    "size": [
+      40,
+      26
+    ],
+    "wild": [
+      4,
+      6
+    ]
+  },
+  "SAFARI_ZONE": {
+    "floors": 1,
+    "style": "field",
+    "size": [
+      40,
+      26
+    ],
+    "wild": [
+      5,
+      7
+    ],
+    "ponds": 2,
+    "tm_spots": [
+      "KANTO_TM_SAFARI_ZONE"
+    ]
+  },
+  "KANTO_ROUTE_16": {
+    "floors": 1,
+    "style": "field",
+    "size": [
+      40,
+      26
+    ],
+    "wild": [
+      4,
+      6
+    ]
+  },
+  "KANTO_ROUTE_17": {
+    "floors": 1,
+    "style": "field",
+    "size": [
+      40,
+      26
+    ],
+    "wild": [
+      4,
+      6
+    ]
+  },
+  "KANTO_ROUTE_18": {
+    "floors": 1,
+    "style": "field",
+    "size": [
+      40,
+      26
+    ],
+    "wild": [
+      4,
+      6
+    ]
+  },
+  "KANTO_ROUTE_19": {
+    "floors": 1,
+    "style": "sea",
+    "size": [
+      44,
+      28
+    ],
+    "wild": [
+      4,
+      6
+    ]
+  },
+  "KANTO_ROUTE_20": {
+    "floors": 1,
+    "style": "sea",
+    "size": [
+      44,
+      28
+    ],
+    "wild": [
+      4,
+      6
+    ]
+  },
+  "KANTO_ROUTE_21": {
+    "floors": 1,
+    "style": "sea",
+    "size": [
+      44,
+      28
+    ],
+    "wild": [
+      4,
+      6
+    ]
+  },
+  "KANTO_ROUTE_22": {
+    "floors": 1,
+    "style": "field",
+    "size": [
+      40,
+      26
+    ],
+    "wild": [
+      4,
+      6
+    ]
+  },
+  "KANTO_ROUTE_23": {
+    "floors": 1,
+    "style": "field",
+    "size": [
+      40,
+      26
+    ],
+    "wild": [
+      4,
+      6
+    ],
+    "ponds": 2
+  },
+  "KANTO_ROUTE_24": {
+    "floors": 1,
+    "style": "field",
+    "size": [
+      40,
+      26
+    ],
+    "wild": [
+      4,
+      6
+    ],
+    "ponds": 2
+  },
+  "KANTO_ROUTE_25": {
+    "floors": 1,
+    "style": "field",
+    "size": [
+      40,
+      26
+    ],
+    "wild": [
+      4,
+      6
+    ],
+    "ponds": 2
+  },
+  "KANTO_ROUTE_26": {
+    "floors": 1,
+    "style": "field",
+    "size": [
+      40,
+      26
+    ],
+    "wild": [
+      4,
+      6
+    ],
+    "ponds": 2
+  },
+  "KANTO_ROUTE_28": {
+    "floors": 1,
+    "style": "field",
+    "size": [
+      40,
+      26
+    ],
+    "wild": [
+      4,
+      6
+    ],
+    "ponds": 2
+  },
+  "KANTO_ROUTE_27": {
+    "floors": 1,
+    "style": "field",
+    "size": [
+      40,
+      26
+    ],
+    "wild": [
+      4,
+      6
+    ],
+    "ponds": 2
+  },
+  "MT_MOON": {
+    "floors": 3,
+    "style": "cave",
+    "size": [
+      44,
+      30
+    ],
+    "wild": [
+      4,
+      6
+    ],
+    "loot": {
+      "per_floor": [
+        2,
+        4
+      ],
+      "items": {
+        "POKE_BALLS": 20,
+        "POTION": 18,
+        "SUPER_POTION": 10,
+        "ESCAPE_ROPE": 12,
+        "REPEL": 12,
+        "GREAT_BALL": 10,
+        "ANTIDOTE": 6,
+        "AWAKENING": 6,
+        "RARE_CANDY": 3
+      }
+    },
+    "descend": true,
+    "tm_spots": [
+      "KANTO_TM_MT_MOON"
+    ]
+  },
+  "CERULEAN_CAVE": {
+    "floors": 3,
+    "style": "cave",
+    "size": [
+      44,
+      30
+    ],
+    "wild": [
+      4,
+      6
+    ],
+    "loot": {
+      "per_floor": [
+        2,
+        4
+      ],
+      "items": {
+        "POKE_BALLS": 20,
+        "POTION": 18,
+        "SUPER_POTION": 10,
+        "ESCAPE_ROPE": 12,
+        "REPEL": 12,
+        "GREAT_BALL": 10,
+        "ANTIDOTE": 6,
+        "AWAKENING": 6,
+        "RARE_CANDY": 3
+      }
+    },
+    "descend": true,
+    "tm_spots": [
+      "KANTO_TM_CERULEAN_CAVE"
+    ]
+  },
+  "ROCK_TUNNEL": {
+    "floors": 2,
+    "style": "cave",
+    "size": [
+      44,
+      30
+    ],
+    "wild": [
+      4,
+      6
+    ],
+    "loot": {
+      "per_floor": [
+        2,
+        4
+      ],
+      "items": {
+        "POKE_BALLS": 20,
+        "POTION": 18,
+        "SUPER_POTION": 10,
+        "ESCAPE_ROPE": 12,
+        "REPEL": 12,
+        "GREAT_BALL": 10,
+        "ANTIDOTE": 6,
+        "AWAKENING": 6,
+        "RARE_CANDY": 3
+      }
+    },
+    "descend": true,
+    "tm_spots": [
+      "KANTO_TM_ROCK_TUNNEL"
+    ]
+  },
+  "KANTO_POKEMON_TOWER": {
+    "floors": 4,
+    "style": "building",
+    "size": [
+      40,
+      26
+    ],
+    "wild": [
+      3,
+      5
+    ],
+    "loot": {
+      "per_floor": [
+        2,
+        3
+      ],
+      "items": {
+        "POKE_BALLS": 15,
+        "POTION": 15,
+        "SUPER_POTION": 12,
+        "FULL_HEAL": 8,
+        "GREAT_BALL": 10,
+        "ULTRA_BALL": 4,
+        "REVIVE": 5,
+        "RARE_CANDY": 3
+      }
+    },
+    "tm_spots": [
+      "KANTO_TM_POKEMON_TOWER"
+    ]
+  },
+  "SEAFOAM_ISLANDS": {
+    "floors": 5,
+    "style": "cave",
+    "size": [
+      44,
+      30
+    ],
+    "wild": [
+      4,
+      6
+    ],
+    "loot": {
+      "per_floor": [
+        2,
+        4
+      ],
+      "items": {
+        "POKE_BALLS": 20,
+        "POTION": 18,
+        "SUPER_POTION": 10,
+        "ESCAPE_ROPE": 12,
+        "REPEL": 12,
+        "GREAT_BALL": 10,
+        "ANTIDOTE": 6,
+        "AWAKENING": 6,
+        "RARE_CANDY": 3
+      }
+    },
+    "descend": true,
+    "tm_spots": [
+      "KANTO_TM_SEAFOAM"
+    ]
+  },
+  "CINNABAR_VOLCANO": {
+    "floors": 2,
+    "style": "cave",
+    "size": [
+      44,
+      30
+    ],
+    "wild": [
+      4,
+      6
+    ],
+    "loot": {
+      "per_floor": [
+        2,
+        4
+      ],
+      "items": {
+        "POKE_BALLS": 20,
+        "POTION": 18,
+        "SUPER_POTION": 10,
+        "ESCAPE_ROPE": 12,
+        "REPEL": 12,
+        "GREAT_BALL": 10,
+        "ANTIDOTE": 6,
+        "AWAKENING": 6,
+        "RARE_CANDY": 3
+      }
+    }
+  },
+  "VICTORY_ROAD": {
+    "floors": 3,
+    "style": "cave",
+    "size": [
+      44,
+      30
+    ],
+    "wild": [
+      4,
+      6
+    ],
+    "loot": {
+      "per_floor": [
+        2,
+        4
+      ],
+      "items": {
+        "POKE_BALLS": 20,
+        "POTION": 18,
+        "SUPER_POTION": 10,
+        "ESCAPE_ROPE": 12,
+        "REPEL": 12,
+        "GREAT_BALL": 10,
+        "ANTIDOTE": 6,
+        "AWAKENING": 6,
+        "RARE_CANDY": 3
+      }
+    },
+    "tm_spots": [
+      "KANTO_TM_VICTORY_ROAD"
+    ]
+  },
+  "SILPH_CITY": {
+    "floors": 5,
+    "style": "building",
+    "size": [
+      40,
+      26
+    ],
+    "wild": [
+      0,
+      0
+    ],
+    "loot": {
+      "per_floor": [
+        2,
+        3
+      ],
+      "items": {
+        "POKE_BALLS": 15,
+        "POTION": 15,
+        "SUPER_POTION": 12,
+        "FULL_HEAL": 8,
+        "GREAT_BALL": 10,
+        "ULTRA_BALL": 4,
+        "REVIVE": 5,
+        "RARE_CANDY": 3
+      }
+    },
+    "tm_spots": [
+      "KANTO_TM_SILPH_CO"
+    ]
+  },
+  "ROCKET_HIDEOUT": {
+    "floors": 4,
+    "style": "building",
+    "size": [
+      38,
+      24
+    ],
+    "wild": [
+      0,
+      0
+    ],
+    "loot": {
+      "per_floor": [
+        2,
+        3
+      ],
+      "items": {
+        "POKE_BALLS": 15,
+        "POTION": 15,
+        "SUPER_POTION": 12,
+        "FULL_HEAL": 8,
+        "GREAT_BALL": 10,
+        "ULTRA_BALL": 4,
+        "REVIVE": 5,
+        "RARE_CANDY": 3
+      }
+    },
+    "tm_spots": [
+      "KANTO_TM_ROCKET_HIDEOUT"
+    ]
+  },
+  "POKEMON_MANSION": {
+    "floors": 3,
+    "style": "building",
+    "size": [
+      40,
+      26
+    ],
+    "wild": [
+      4,
+      6
+    ],
+    "loot": {
+      "per_floor": [
+        2,
+        3
+      ],
+      "items": {
+        "POKE_BALLS": 15,
+        "POTION": 15,
+        "SUPER_POTION": 12,
+        "FULL_HEAL": 8,
+        "GREAT_BALL": 10,
+        "ULTRA_BALL": 4,
+        "REVIVE": 5,
+        "RARE_CANDY": 3
+      }
+    },
+    "tm_spots": [
+      "KANTO_TM_POKEMON_MANSION"
+    ]
+  },
+  "CELADON_GAME_CORNER": {
+    "style": "building",
+    "wild": [
+      0,
+      0
+    ],
+    "loot": {
+      "per_floor": [
+        0,
+        0
+      ],
+      "items": {}
+    },
+    "floors": 1,
+    "legend": {
+      "c": {
+        "decor": "counter"
+      },
+      "s": {
+        "decor": "slot"
+      },
+      "K": {
+        "figure": "CLERK"
+      },
+      "E": {
+        "exit": "CELADON_CITY"
+      },
+      "R": {
+        "exit": "ROCKET_HIDEOUT"
+      }
+    },
+    "layout": [
+      {
+        "map": [
+          "########################",
+          "#..K.......#...........#",
+          "#cccccccccc#.ss.ss.ss..#",
+          "#..........#.ss.ss.ss..#",
+          "#..........#...........#",
+          "#......................#",
+          "#..........#.ss.ss.ss..#",
+          "#..........#.ss.ss.ss..#",
+          "#..........#...........R",
+          "#.ss.ss.ss.............#",
+          "#.ss.ss.ss.............#",
+          "#..........@...........#",
+          "###########EE###########"
+        ]
+      }
+    ]
   }
 }

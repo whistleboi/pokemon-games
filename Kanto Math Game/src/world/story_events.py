@@ -303,6 +303,7 @@ EVENTS = {
                                   "Please deliver this letter to my son Steven in Dewford, and these parts to Captain Stern.",
                                   "Mr. Briney's boat can take you. Take this PokeNav Plus, too."],
                         "requires": ["rusturf_rescued"], "fail": ["hoenn_devon_parts_stolen"],
+                        "fail_flag": "heard_devon_parts_stolen",  # the journal's "Devon Parts" from here (Jordan, 11-05)
                         "gift_item": {"POKE_NAV": 1, "LETTER": 1, "DEVON_PARTS": 1}, "flag": "met_mr_stone",
                         "done": ["Mr. Stone: Steven is in Granite Cave, in Dewford. Thank you again!"]},
     "slateport_market": {"lines": ["The Slateport Market is busy. Merchants call out their best deals.",

@@ -231,10 +231,7 @@ class RouteMenu:
             not self.game.story_manager.is_trainer_defeated(area_key, i) and self._in_zone(trainer_pool[i])
             for i in range(len(trainer_pool))
         )
-        # Nugget Bridge (Jordan, 11-03): a story step; both ways off the bridge wait until every trainer
-        # on it is beaten (one at a time: rest and use items in between).
-        if area_key == "KANTO_ROUTE_24" and not trainers_left:
-            self.game.story_manager.story_flags["nugget_bridge_cleared"] = True
+        self._mark_route_progress(trainers_left)
 
         default_menu = [
             {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
@@ -260,8 +257,6 @@ class RouteMenu:
                 continue
             if flag_condition:
                 parts = flag_condition.split()
-                if action == "GALACTIC_GAUNTLET" and parts[0] == "not" and trainer_pool and not trainers_left:
-                    flags[parts[1]] = True
                 if parts[0] == "not" and len(parts) == 2:
                     if flags.get(parts[1]):
                         continue
@@ -343,6 +338,26 @@ class RouteMenu:
             on_pkmn=self._open_party, on_travel=lambda: self.toggle_route_popup("travel"))
         self.game.ui_manager.add_element(self.route_action_menu)
         self.input_delay = 20
+
+    def _mark_route_progress(self, trainers_left):
+        """Story steps that are done once every trainer here is beaten (the route menu and the dungeon map).
+        Every trainer in the area, not only this zone's (Silph Co.'s floors)."""
+        story = self.game.story_manager
+        pool = self.area_data.get("trainer_pool", [])
+        if trainers_left or any(not story.is_trainer_defeated(story.current_area_key, i) for i in range(len(pool))):
+            return
+        # Nugget Bridge (Jordan, 11-03): a story step; both ways off the bridge wait until every trainer
+        # on it is beaten (one at a time: rest and use items in between).
+        if story.current_area_key == "KANTO_ROUTE_24":
+            story.story_flags["nugget_bridge_cleared"] = True
+        if self.area_data.get("cleared_flag") and self.area_data.get("trainer_pool"):  # (Silph Co.)
+            story.story_flags[self.area_data["cleared_flag"]] = True
+        # A gauntlet (the S.S. Anne's cabins): its "not <flag>" is set once its trainers are all beaten.
+        if self.area_data.get("trainer_pool"):
+            for item in self.area_data.get("route_menu", []):
+                parts = str(item.get("flag_condition") or "").split()
+                if item.get("action") == "GALACTIC_GAUNTLET" and len(parts) == 2 and parts[0] == "not":
+                    story.story_flags[parts[1]] = True
 
     def _check_route_condition(self, condition, trainers_left, item=None):
         if not condition:
@@ -501,6 +516,9 @@ class RouteMenu:
 
     def _get_route_callback(self, item):
         action = item.get("action")
+        if action == "GAME_CORNER":  # the Game Corner's clerk: its games, coins and prizes
+            from src.states.systems import GameCornerState
+            return lambda: self.game.change_state(GameCornerState(self.game, self))
         if action == "DAYCARE":
             from src.states.daycare import DaycareState
             return lambda: self.game.change_state(DaycareState(self.game, self))

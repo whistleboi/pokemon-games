@@ -297,6 +297,8 @@ class StoryManager:
                 self.story_flags.get(f"purified_line_{b}") for b in lines)
         if condition == "sinjoh_open":  # a dragon is waiting at the Sinjoh Ruins (see sinjoh_dragons_allowed)
             return self.sinjoh_dragons_received() < self.sinjoh_dragons_allowed()
+        if condition.startswith("visited_region:"):  # (Silph Co.'s employee, once you've been to Johto)
+            return condition.split(":", 1)[1].upper() in self.visited_regions()
         if condition.startswith("hoenn_version:"):  # Omega Ruby / Alpha Sapphire only (Marine / Terra Cave)
             return self.story_flags.get("hoenn_version") == condition.split(":", 1)[1]
         return None

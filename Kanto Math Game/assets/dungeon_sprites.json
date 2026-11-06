@@ -1,0 +1,135 @@
+{
+  "_about": "Which Pokemon Journeys overworld sheet (assets/dungeon/characters, dev/builders/import_dungeon_sprites.py) is whose on the dungeon map. trainers: by battle sprite (Journeys' trchar### numbers follow its PBS trainertypes.txt); pokemon: species -> [sheet, column] (the Pokemon sheets: a column a Pokemon, a row a way it faces); figures: a route button by \"AREA:TEXT\" -> {sheet} or {item} or {pokemon}; townsperson: anyone else. A trainer or Pokemon left out keeps its battle sprite or party icon. players: your trainer by character (girls: who walks as the girl's sheet; anyone else as the boy's).",
+  "trainers": {
+    "youngster.png": "trchar038.png",
+    "lass.png": "trchar021.png",
+    "birdkeeper.png": "trchar006.png",
+    "bird_keeper.png": "trchar006.png",
+    "acetrainer_m.png": "trchar010.png",
+    "acetrainer_f.png": "trchar011.png",
+    "bug_catcher.png": "trchar008.png",
+    "rocker.png": "trchar023.png",
+    "camper.png": "trchar018.png",
+    "hiker.png": "trchar017.png",
+    "biker.png": "trchar005.png",
+    "rocket_grunt_m.png": "trchar024.png",
+    "rocket_grunt_f.png": "trchar025.png",
+    "swimmer_m.png": "trchar035.png",
+    "swimmer_f.png": "trchar036.png",
+    "scientist.png": "trchar033.png",
+    "supernerd.png": "trchar034.png",
+    "picnicker.png": "trchar019.png",
+    "picknicker.png": "trchar019.png",
+    "gentleman.png": "trchar016.png",
+    "beauty.png": "trchar004.png",
+    "fisherman.png": "trchar014.png",
+    "cueball.png": "trchar012.png",
+    "channeler.png": "trchar009.png",
+    "sailor.png": "trchar032.png",
+    "gambler.png": "trchar015.png",
+    "pokemaniac.png": "trchar022.png",
+    "engineer.png": "trchar013.png",
+    "juggler.png": "trchar020.png",
+    "blackbelt.png": "trchar007.png",
+    "jessie_james.png": "trchar026.png",
+    "proton.png": "trchar027.png",
+    "archer.png": "trchar030.png",
+    "ariana.png": "trchar029.png",
+    "leader_giovanni.png": "trchar031.png"
+  },
+  "pokemon": {
+    "25": [
+      "Pokemon 01.png",
+      0
+    ],
+    "131": [
+      "Pokemon 11.png",
+      1
+    ],
+    "143": [
+      "Pokemon 11.png",
+      0
+    ],
+    "144": [
+      "Pokemon 08.png",
+      0
+    ],
+    "145": [
+      "Pokemon 08.png",
+      1
+    ],
+    "146": [
+      "Pokemon 08.png",
+      2
+    ],
+    "150": [
+      "Pokemon 09.png",
+      0
+    ],
+    "151": [
+      "Pokemon 09.png",
+      1
+    ],
+    "250": [
+      "Pokemon 11.png",
+      3
+    ]
+  },
+  "figures": {
+    "POWER_PLANT:TALK TO THE MANAGER": {
+      "sheet": "NPC 15.png"
+    },
+    "POWER_PLANT:RETURN THE MACHINE PART": {
+      "sheet": "NPC 15.png"
+    },
+    "MT_MOON:SUPER NERD": {
+      "sheet": "trchar034.png"
+    },
+    "MT_MOON:TAKE DOME FOSSIL": {
+      "item": "DOME_FOSSIL"
+    },
+    "MT_MOON:TAKE HELIX FOSSIL": {
+      "item": "HELIX_FOSSIL"
+    },
+    "KANTO_ROUTE_5:POKéMON DAY CARE": {
+      "sheet": "NPC 11.png"
+    },
+    "SILPH_CITY:NURSE": {
+      "sheet": "NPC 16.png"
+    },
+    "SILPH_CITY:TALK TO EMPLOYEE": {
+      "sheet": "trchar033.png"
+    },
+    "SILPH_CITY:VISIT THE PRESIDENT": {
+      "sheet": "trchar016.png"
+    },
+    "ROCKET_HIDEOUT:GIOVANNI": {
+      "sheet": "trchar031.png"
+    },
+    "ROCKET_HIDEOUT:SILPH SCOPE": {
+      "item": "SILPH_SCOPE"
+    },
+    "POKEMON_MANSION:BURGLAR SIMON": {
+      "sheet": "trchar012.png"
+    },
+    "CELADON_GAME_CORNER:CLERK": {
+      "sheet": "NPC 19.png"
+    }
+  },
+  "townsperson": "NPC 17.png",
+  "players": {
+    "red": "trchar000_1.png",
+    "ash": "trchar000.png",
+    "blue": "trchar002.png",
+    "male": "trchar000_1.png",
+    "female": "trchar001.png",
+    "girls": [
+      "lyra",
+      "may",
+      "dawn",
+      "hilda",
+      "rosa",
+      "leaf"
+    ]
+  }
+}

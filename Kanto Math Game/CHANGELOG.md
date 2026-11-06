@@ -1,18 +1,22 @@
 # Changelog
 
-## Unreleased: route dungeons (proof of concept)
+## Unreleased: every route is a dungeon map
 
-- **Route 1, Route 2 and Viridian Forest are walked on a map**, Mystery Dungeon style, instead of the route menu. Your lead Pokemon walks the grid: tap a tile to walk there, or use the arrow keys. Each visit makes a new layout. Viridian Forest has two floors, with stairs between them.
+- **Every route, cave and building is walked on a map**, Mystery Dungeon style, in every region: the map replaces the route menu. You walk as your trainer, with your lead Pokemon following a step behind. Tap a tile to walk there, or use the arrow keys. Each visit makes a new layout.
+- **How each place looks:** Kanto's areas have their own recipes in `assets/dungeon_routes.json` (fields, forests, caves going down floor by floor, buildings, the open sea). Everywhere else the look comes from the area's battle type, with snow and desert looks too.
 - **Wild Pokemon wander the map** and chase you once they see you. Bump into one (or let it reach you) and pick:
   - **MATH:** one question. A right answer throws a ball at the route catch's odds, and a quick answer weakens it more, as on the catch screen. A wrong answer and it runs away.
   - **BATTLE:** the full battle screen. You come back to the same spot on the map.
 - **Trainers stand on the map.** Bump into one, or walk into its line of sight, for a trainer battle. Beaten trainers are gone.
-- **HONEY and SWEET SCENT** draw in three wild Pokemon for the usual three-Pokemon catch. Honey is a new item that is used up; Sweet Scent works once a floor from a party Pokemon that knows it.
-- **Items lie about** each floor, from the area's loot table in `assets/dungeon_routes.json` (weights you can tune).
-- **TM spots:** Route 2 and Viridian Forest each have one. The TM inside is picked once per save among the TMs you don't have, so reloading can't change it.
-- **Signs mark the ways out:** you start beside the way you came in, and the others are in the far rooms.
-- **CLASSIC** (bottom right) goes back to the old route menu for the rest of that visit.
-- Not yet: saving keeps the area but not your place on the map (loading starts a fresh layout); story events on these routes aren't on the map yet.
+- **Story people and Pokemon stand on the map too:** Zapdos, Articuno, Mewtwo, the Snorlax, the Tower's ghost, Mt. Moon's Super Nerd and fossils, the Power Plant's manager, the Day Care, a rival waiting on a route. Walk into one for what its button did. Legendaries don't wait for an area's trainers to be beaten: finding them is the task.
+- **Floors and stairs** go both ways, and a floor stays as you left it. An area in zones has a floor for each: the Pokemon Tower's floors, the Seafoam Islands down to B4F, the Safari Zone's areas.
+- **FISH** beside a pond (fishing routes have ponds) or anywhere at sea, and **HEADBUTT** beside a tree: a button turns up there.
+- **Free roaming:** no route actions are needed before you leave; only the story locks a way out (Tea, Surf, the Snorlax, eight badges, Nugget Bridge's trainers).
+- **Buildings are places to explore**, the same every visit and with no fog (the whole floor shows): Silph Co. (1F to 5F: a nurse, the employee, Giovanni, then the President), the Celadon Game Corner (drawn by hand: talk to the clerk across the counter to pick a game, buy coins or trade for prizes, or play the slots at a machine; the poster hides the stairs down), the Rocket Hideout below it (B1F to B4F: Giovanni and the Silph Scope), the Pokemon Mansion (wild Pokemon and the Burglar with the Secret Key) and the S.S. Anne.
+- **Buttons:** POKeMON (your party), POKeDEX, and WAIT (a turn standing still: the wild Pokemon come to you). HONEY is used from the Bag; SWEET SCENT is the H key (once a floor).
+- **Items lie about** each floor, from the area's loot table (weights you can tune), and **TM spots** hold a TM picked once per save among the TMs you don't have.
+- Characters, legendaries and objects are Pokemon Journeys' overworld sprites (`assets/dungeon/characters`; which is whose: `assets/dungeon_sprites.json`).
+- Not yet: saving keeps the area but not your place on the map (loading starts a fresh layout).
 
 ## Unreleased: opponents follow your team, Hoenn's story as in Omega Ruby / Alpha Sapphire
 

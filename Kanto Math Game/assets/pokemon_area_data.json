@@ -880,33 +880,786 @@
     },
 
     "SILPH_CITY": {
-      "area_type": "town",
+      "area_type": "wild_route",
       "route_name": "Silph Co.",
+      "region": "KANTO",
+      "battle_type": "indoor",
+      "level": 34,
       "backgrounds": {
         "main": "silph_city.png"
       },
-      "has_gym": false,
+      "zones": [
+        {
+          "key": "1f",
+          "name": "1F"
+        },
+        {
+          "key": "2f",
+          "name": "2F"
+        },
+        {
+          "key": "3f",
+          "name": "3F"
+        },
+        {
+          "key": "4f",
+          "name": "4F"
+        },
+        {
+          "key": "5f",
+          "name": "5F"
+        }
+      ],
+      "zones_linear": true,
       "trainer_encounter_rate": 0,
-      "travel_options": [
-        { "text": "Exit to Saffron", "target_area": "SAFFRON_CITY", "flag_condition": "visited_SAFFRON_CITY" }
-      ],
-      "explore_options": [
-        { "text": "Heal", "action": "HEAL" },
-        { "text": "Talk to Employee", "action": "NPC", "target": "silph_employee" },
-        { "text": "Confront Rocket", "action": "ROCKET_GAUNTLET", "flag_condition": "not silph_co_cleared" },
-        { "text": "Visit the President", "action": "NPC", "target": "silph_president", "flag_condition": "silph_co_cleared" }
-      ],
+      "min_rounds": 0,
+      "cleared_flag": "silph_co_cleared",
       "trainer_pool": [
-        {"sprite": "rocket_grunt_m.png", "name": "Grunt", "class": "ROCKET", "is_boss_battle": true, "team": [20, 42], "rewards": {"balls": 3}, "dialogue": {"intro": ["1F: Hey! Silph Co. is closed to visitors. Team Rocket's orders!"], "player_won": ["Gah! The guys upstairs will stop you!"], "player_lost": ["Scram, kid!"]}},
-        {"sprite": "rocket_grunt_f.png", "name": "Grunt", "class": "ROCKET", "is_boss_battle": true, "team": [24, 41], "rewards": {"balls": 3}, "dialogue": {"intro": ["3F: The warp panels are ours now. You'll never find the way up!"], "player_won": ["How did you solve those warp panels?!"], "player_lost": ["Lost in the maze, huh?"]}},
-        {"sprite": "scientist.png", "name": "Scientist Taylor", "class": "SCIENTIST", "is_boss_battle": true, "team": [81, 100, 109], "rewards": {"balls": 3}, "dialogue": {"intro": ["4F: Team Rocket pays better than Silph ever did!"], "player_won": ["My calculations... were wrong."], "player_lost": ["Science wins again!"]}},
-        {"sprite": "rocket_grunt_m.png", "name": "Grunt", "class": "ROCKET", "is_boss_battle": true, "team": [66, 67], "rewards": {"balls": 3}, "dialogue": {"intro": ["5F: We've got the Card Key. Every door in this building is ours!"], "player_won": ["Ugh... take the stupid Card Key."], "player_lost": ["Get lost!"]}},
-        {"sprite": "scientist.png", "name": "Connor", "class": "SCIENTIST", "team": [137, 82], "rewards": {"balls": 3}, "dialogue": {"intro": ["7F: I... I had to help them! They forced me to finish the Porygon project!"], "player_won": ["Thank you for stopping me. The President is held on the top floor!"], "player_lost": ["I have no choice!"]}},
-        {"name": "{rival_name}", "class": "RIVAL", "sprite": "{rival_character}", "is_boss_battle": true, "team": [18, 130, 102, 65, 6], "team_choice": {"1": [18, 130, 102, 65, 6], "4": [18, 58, 102, 65, 9], "7": [18, 130, 58, 65, 3]}, "levels": [37, 38, 35, 35, 40], "rewards": {"balls": 12}, "dialogue": {"intro": ["7F: {rival_name}: Took you long enough, {player_name}!", "The Rocket boss is upstairs with the President. Let's see if you're ready for him."], "player_won": ["{rival_name}: Fine, you're ready. Go save the President.", "I'm not cleaning up after Team Rocket for you!"], "player_lost": ["{rival_name}: Not even close. Turn back while you can."]}},
-        {"sprite": "proton.png", "name": "Admin Proton", "class": "ROCKET", "is_boss_battle": true, "team": [42, 89, 110], "rewards": {"balls": 8}, "dialogue": {"intro": ["8F: They call me the scariest guy in Team Rocket.", "Let's see if you can count fast enough to keep up!"], "player_won": ["Tch. Archer will deal with you."], "player_lost": ["Too slow, kid."]}},
-        {"sprite": "archer.png", "name": "Archer", "class": "ROCKET", "is_boss_battle": true, "team": [110, 24, 131], "rewards": {"balls": 10}, "dialogue": {"intro": ["9F: The boss is busy. I'll handle you."], "player_won": ["This changes nothing."], "player_lost": ["Typical child."]}},
-        {"sprite": "ariana.png", "name": "Executive Ariana", "class": "ROCKET_LEADER", "is_boss_battle": true, "team": [45, 91, 24, 53], "rewards": {"balls": 15, "RARE_CANDY": 2}, "dialogue": {"intro": ["11F: How did you get past Archer?", "The President will sign the Master Ball over to Team Rocket, and our boss will control every Poké Ball in Kanto.", "No child is ruining that. Your journey ends here!"], "player_won": ["The prototype! You won't get away with this!", "...Go on, then. The boss is waiting in the President's office."], "player_lost": ["Stay out of adult business."]}, "movesets": {"45": ["STUN-SPORE", "GIGA-DRAIN", "SLUDGE-BOMB", "SLEEP-POWDER"], "24": ["SLUDGE-BOMB", "EARTHQUAKE", "IRON-TAIL", "BITE"]}},
-        {"sprite": "leader_giovanni.png", "name": "Giovanni", "class": "ROCKET_LEADER", "is_boss_battle": true, "team": [33, 115, 111, 31], "levels": [37, 35, 37, 41], "rewards": {"balls": 15, "RARE_CANDY": 2}, "victory_flag": "silph_co_cleared", "dialogue": {"intro": ["11F: Giovanni: So you're the child who keeps getting in Team Rocket's way.", "Silph's Master Ball was going to make us unstoppable. You'll pay for this!"], "player_won": ["Giovanni: ...Impressive. We'll leave Silph Co. to you, for now.", "But this isn't the last you'll see of Team Rocket."], "player_lost": ["Giovanni: That's what happens when you meddle with Team Rocket."]}}
+        {
+          "sprite": "rocket_grunt_m.png",
+          "name": "Grunt",
+          "class": "ROCKET",
+          "is_boss_battle": true,
+          "team": [
+            20,
+            42
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "dialogue": {
+            "intro": [
+              "1F: Hey! Silph Co. is closed to visitors. Team Rocket's orders!"
+            ],
+            "player_won": [
+              "Gah! The guys upstairs will stop you!"
+            ],
+            "player_lost": [
+              "Scram, kid!"
+            ]
+          },
+          "zone": "1f"
+        },
+        {
+          "sprite": "rocket_grunt_f.png",
+          "name": "Grunt",
+          "class": "ROCKET",
+          "is_boss_battle": true,
+          "team": [
+            24,
+            41
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "dialogue": {
+            "intro": [
+              "3F: The warp panels are ours now. You'll never find the way up!"
+            ],
+            "player_won": [
+              "How did you solve those warp panels?!"
+            ],
+            "player_lost": [
+              "Lost in the maze, huh?"
+            ]
+          },
+          "zone": "1f"
+        },
+        {
+          "sprite": "scientist.png",
+          "name": "Scientist Taylor",
+          "class": "SCIENTIST",
+          "is_boss_battle": true,
+          "team": [
+            81,
+            100,
+            109
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "dialogue": {
+            "intro": [
+              "4F: Team Rocket pays better than Silph ever did!"
+            ],
+            "player_won": [
+              "My calculations... were wrong."
+            ],
+            "player_lost": [
+              "Science wins again!"
+            ]
+          },
+          "zone": "2f"
+        },
+        {
+          "sprite": "rocket_grunt_m.png",
+          "name": "Grunt",
+          "class": "ROCKET",
+          "is_boss_battle": true,
+          "team": [
+            66,
+            67
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "dialogue": {
+            "intro": [
+              "5F: We've got the Card Key. Every door in this building is ours!"
+            ],
+            "player_won": [
+              "Ugh... take the stupid Card Key."
+            ],
+            "player_lost": [
+              "Get lost!"
+            ]
+          },
+          "zone": "2f"
+        },
+        {
+          "sprite": "scientist.png",
+          "name": "Connor",
+          "class": "SCIENTIST",
+          "team": [
+            137,
+            82
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "dialogue": {
+            "intro": [
+              "7F: I... I had to help them! They forced me to finish the Porygon project!"
+            ],
+            "player_won": [
+              "Thank you for stopping me. The President is held on the top floor!"
+            ],
+            "player_lost": [
+              "I have no choice!"
+            ]
+          },
+          "zone": "3f"
+        },
+        {
+          "name": "{rival_name}",
+          "class": "RIVAL",
+          "sprite": "{rival_character}",
+          "is_boss_battle": true,
+          "team": [
+            18,
+            130,
+            102,
+            65,
+            6
+          ],
+          "team_choice": {
+            "1": [
+              18,
+              130,
+              102,
+              65,
+              6
+            ],
+            "4": [
+              18,
+              58,
+              102,
+              65,
+              9
+            ],
+            "7": [
+              18,
+              130,
+              58,
+              65,
+              3
+            ]
+          },
+          "levels": [
+            37,
+            38,
+            35,
+            35,
+            40
+          ],
+          "rewards": {
+            "balls": 12
+          },
+          "dialogue": {
+            "intro": [
+              "7F: {rival_name}: Took you long enough, {player_name}!",
+              "The Rocket boss is upstairs with the President. Let's see if you're ready for him."
+            ],
+            "player_won": [
+              "{rival_name}: Fine, you're ready. Go save the President.",
+              "I'm not cleaning up after Team Rocket for you!"
+            ],
+            "player_lost": [
+              "{rival_name}: Not even close. Turn back while you can."
+            ]
+          },
+          "zone": "3f"
+        },
+        {
+          "sprite": "proton.png",
+          "name": "Admin Proton",
+          "class": "ROCKET",
+          "is_boss_battle": true,
+          "team": [
+            42,
+            89,
+            110
+          ],
+          "rewards": {
+            "balls": 8
+          },
+          "dialogue": {
+            "intro": [
+              "8F: They call me the scariest guy in Team Rocket.",
+              "Let's see if you can count fast enough to keep up!"
+            ],
+            "player_won": [
+              "Tch. Archer will deal with you."
+            ],
+            "player_lost": [
+              "Too slow, kid."
+            ]
+          },
+          "zone": "4f"
+        },
+        {
+          "sprite": "archer.png",
+          "name": "Archer",
+          "class": "ROCKET",
+          "is_boss_battle": true,
+          "team": [
+            110,
+            24,
+            131
+          ],
+          "rewards": {
+            "balls": 10
+          },
+          "dialogue": {
+            "intro": [
+              "9F: The boss is busy. I'll handle you."
+            ],
+            "player_won": [
+              "This changes nothing."
+            ],
+            "player_lost": [
+              "Typical child."
+            ]
+          },
+          "zone": "4f"
+        },
+        {
+          "sprite": "ariana.png",
+          "name": "Executive Ariana",
+          "class": "ROCKET_LEADER",
+          "is_boss_battle": true,
+          "team": [
+            45,
+            91,
+            24,
+            53
+          ],
+          "rewards": {
+            "balls": 15,
+            "RARE_CANDY": 2
+          },
+          "dialogue": {
+            "intro": [
+              "11F: How did you get past Archer?",
+              "The President will sign the Master Ball over to Team Rocket, and our boss will control every Poké Ball in Kanto.",
+              "No child is ruining that. Your journey ends here!"
+            ],
+            "player_won": [
+              "The prototype! You won't get away with this!",
+              "...Go on, then. The boss is waiting in the President's office."
+            ],
+            "player_lost": [
+              "Stay out of adult business."
+            ]
+          },
+          "movesets": {
+            "45": [
+              "STUN-SPORE",
+              "GIGA-DRAIN",
+              "SLUDGE-BOMB",
+              "SLEEP-POWDER"
+            ],
+            "24": [
+              "SLUDGE-BOMB",
+              "EARTHQUAKE",
+              "IRON-TAIL",
+              "BITE"
+            ]
+          },
+          "zone": "5f"
+        },
+        {
+          "sprite": "leader_giovanni.png",
+          "name": "Giovanni",
+          "class": "ROCKET_LEADER",
+          "is_boss_battle": true,
+          "team": [
+            33,
+            115,
+            111,
+            31
+          ],
+          "levels": [
+            37,
+            35,
+            37,
+            41
+          ],
+          "rewards": {
+            "balls": 15,
+            "RARE_CANDY": 2
+          },
+          "victory_flag": "silph_co_cleared",
+          "dialogue": {
+            "intro": [
+              "11F: Giovanni: So you're the child who keeps getting in Team Rocket's way.",
+              "Silph's Master Ball was going to make us unstoppable. You'll pay for this!"
+            ],
+            "player_won": [
+              "Giovanni: ...Impressive. We'll leave Silph Co. to you, for now.",
+              "But this isn't the last you'll see of Team Rocket."
+            ],
+            "player_lost": [
+              "Giovanni: That's what happens when you meddle with Team Rocket."
+            ]
+          },
+          "zone": "5f"
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "LOOK FOR TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "BLUE"
+        },
+        {
+          "text": "ZONE",
+          "action": "ZONE",
+          "color": "CYAN"
+        },
+        {
+          "text": "NURSE",
+          "action": "EVENT",
+          "zone": "1f",
+          "color": "GREEN",
+          "event": {
+            "lines": [
+              "Nurse: Team Rocket can't stop us from looking after trainers!",
+              "Your Pokemon are all healed."
+            ],
+            "heal": true
+          }
+        },
+        {
+          "text": "TALK TO EMPLOYEE",
+          "action": "EVENT",
+          "zone": "2f",
+          "color": "GOLD",
+          "event": {
+            "stages": [
+              {
+                "lines": [
+                  "Employee: You saved us! Silph's UP-GRADE, a part that makes Porygon even better, is made in Sinnoh now.",
+                  "You can buy one at the Veilstone Department Store there."
+                ],
+                "requires": [
+                  "silph_co_cleared",
+                  "visited_region:JOHTO"
+                ]
+              },
+              {
+                "lines": [
+                  "Employee: You saved us! Team Rocket is gone.",
+                  "But I fear they already took what they needed for their 'Ultimate' project."
+                ],
+                "requires": [
+                  "silph_co_cleared"
+                ]
+              },
+              {
+                "lines": [
+                  "Employee: They're everywhere... the black suits... the red 'R'...",
+                  "Please stop them! Their boss is up on 5F, in the President's office."
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "text": "VISIT THE PRESIDENT",
+          "action": "EVENT",
+          "zone": "5f",
+          "flag_condition": "silph_co_cleared",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "President: You saved Silph Co. from Team Rocket!",
+              "Please take our MASTER BALL. It catches any Pokemon without fail!",
+              "And this is PORYGON, the world's first digital Pokemon, built right here at Silph!"
+            ],
+            "gift_item": {
+              "MASTER_BALL": 1
+            },
+            "gift_pokemon": 137,
+            "flag": "received_silph_reward",
+            "done": [
+              "President: Silph Co. is back in business, thanks to you!",
+              "Take good care of that Porygon."
+            ]
+          }
+        },
+        {
+          "text": "EXIT TO SAFFRON",
+          "action": "EXIT",
+          "target": "SAFFRON_CITY",
+          "zone": "1f",
+          "color": "RED"
+        }
+      ],
+      "on_enter_event": null
+    },
+    "CELADON_GAME_CORNER": {
+      "area_type": "wild_route",
+      "route_name": "Celadon Game Corner",
+      "region": "KANTO",
+      "battle_type": "indoor",
+      "level": 20,
+      "backgrounds": {
+        "main": "celadon_game_corner.png"
+      },
+      "trainer_encounter_rate": 0,
+      "min_rounds": 0,
+      "trainer_pool": [],
+      "route_menu": [
+        {
+          "text": "CLERK",
+          "action": "GAME_CORNER",
+          "color": "GOLD"
+        },
+        {
+          "text": "THE POSTER",
+          "action": "EXIT",
+          "target": "ROCKET_HIDEOUT",
+          "color": "PURPLE"
+        },
+        {
+          "text": "BACK TO CELADON",
+          "action": "EXIT",
+          "target": "CELADON_CITY",
+          "color": "RED"
+        }
+      ],
+      "on_enter_event": null
+    },
+    "ROCKET_HIDEOUT": {
+      "area_type": "wild_route",
+      "route_name": "Rocket Hideout",
+      "region": "KANTO",
+      "battle_type": "indoor",
+      "level": 22,
+      "backgrounds": {
+        "main": "celadon_game_corner.png"
+      },
+      "zones": [
+        {
+          "key": "b1f",
+          "name": "B1F"
+        },
+        {
+          "key": "b2f",
+          "name": "B2F"
+        },
+        {
+          "key": "b3f",
+          "name": "B3F"
+        },
+        {
+          "key": "b4f",
+          "name": "B4F"
+        }
+      ],
+      "zones_linear": true,
+      "zones_descend": true,
+      "trainer_encounter_rate": 0,
+      "min_rounds": 0,
+      "trainer_pool": [
+        {
+          "name": "Grunt",
+          "class": "ROCKET",
+          "sprite": "rocket_grunt_m.png",
+          "team": [
+            19,
+            109
+          ],
+          "zone": "b1f",
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Grunt",
+          "class": "ROCKET",
+          "sprite": "rocket_grunt_f.png",
+          "team": [
+            41,
+            52
+          ],
+          "zone": "b1f",
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Grunt",
+          "class": "ROCKET",
+          "sprite": "rocket_grunt_m.png",
+          "team": [
+            23,
+            88
+          ],
+          "zone": "b2f",
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Grunt",
+          "class": "ROCKET",
+          "sprite": "rocket_grunt_f.png",
+          "team": [
+            96,
+            20
+          ],
+          "zone": "b3f",
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Grunt",
+          "class": "ROCKET",
+          "sprite": "rocket_grunt_m.png",
+          "team": [
+            24,
+            41,
+            42
+          ],
+          "zone": "b3f",
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Grunt",
+          "class": "ROCKET",
+          "sprite": "rocket_grunt_m.png",
+          "team": [
+            109,
+            110
+          ],
+          "zone": "b4f",
+          "rewards": {
+            "balls": 2
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "LOOK FOR TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "BLUE"
+        },
+        {
+          "text": "ZONE",
+          "action": "ZONE",
+          "color": "CYAN"
+        },
+        {
+          "text": "GIOVANNI",
+          "action": "EVENT",
+          "zone": "b4f",
+          "color": "PURPLE",
+          "condition": [
+            "not:hideout_giovanni_defeated",
+            "not:game_corner_cleared"
+          ],
+          "event": {
+            "lines": [
+              "Giovanni: So, you've made it all the way down here.",
+              "I am Giovanni, the leader of Team Rocket. You'll regret getting in my way!"
+            ],
+            "flag": "hideout_giovanni_defeated",
+            "battle": {
+              "name": "Giovanni",
+              "class": "ROCKET_LEADER",
+              "sprite": "leader_giovanni.png",
+              "team": [
+                95,
+                111,
+                115
+              ],
+              "levels": [
+                25,
+                24,
+                29
+              ],
+              "is_boss_battle": true,
+              "rewards": {
+                "balls": 10
+              },
+              "dialogue": {
+                "player_won": [
+                  "Giovanni: ...What! This can't be!",
+                  "I'll leave the hideout. But Team Rocket isn't finished."
+                ],
+                "player_lost": [
+                  "Giovanni: Leave Team Rocket's business to the adults."
+                ]
+              }
+            }
+          }
+        },
+        {
+          "text": "SILPH SCOPE",
+          "action": "EVENT",
+          "zone": "b4f",
+          "color": "GOLD",
+          "condition": [
+            "hideout_giovanni_defeated",
+            "not:game_corner_cleared"
+          ],
+          "event": {
+            "lines": [
+              "Giovanni dropped the SILPH SCOPE! Now you can see ghosts for what they are.",
+              "In the chaos, you found a PORYGON!"
+            ],
+            "gift_item": {
+              "SILPH_SCOPE": 1
+            },
+            "gift_pokemon": 137,
+            "flag": "game_corner_cleared"
+          }
+        },
+        {
+          "text": "BACK TO THE GAME CORNER",
+          "action": "EXIT",
+          "target": "CELADON_CITY",
+          "zone": "b1f",
+          "color": "RED"
+        }
+      ],
+      "on_enter_event": null
+    },
+    "POKEMON_MANSION": {
+      "area_type": "wild_route",
+      "route_name": "Pokemon Mansion",
+      "region": "KANTO",
+      "battle_type": "indoor",
+      "level": 34,
+      "backgrounds": {
+        "main": "cinnabar_city.png"
+      },
+      "wild_pool_percentages": "POKEMON_MANSION_PERCENTAGES",
+      "trainer_encounter_rate": 0,
+      "min_rounds": 0,
+      "trainer_pool": [
+        {
+          "name": "Scientist Ted",
+          "class": "SCIENTIST",
+          "sprite": "scientist.png",
+          "team": [
+            100,
+            81,
+            101
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        },
+        {
+          "name": "Burglar Lewis",
+          "class": "BURGLAR",
+          "sprite": "burglar.png",
+          "team": [
+            126,
+            58
+          ],
+          "rewards": {
+            "balls": 2
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "CATCH WILD PKMN",
+          "action": "CATCH",
+          "condition": "has_balls",
+          "color": "BLUE"
+        },
+        {
+          "text": "BATTLE WILD PKMN",
+          "action": "BATTLE",
+          "condition": "has_balls",
+          "color": "GREEN"
+        },
+        {
+          "text": "LOOK FOR TRAINER",
+          "action": "TRAINER",
+          "condition": "has_trainers",
+          "color": "BLUE"
+        },
+        {
+          "text": "BURGLAR SIMON",
+          "action": "EVENT",
+          "flag_condition": "not got_secret_key",
+          "event": {
+            "lines": [
+              "A Burglar is going through an old journal about a Pokemon called Mewtwo...",
+              "Burglar: Hey! Whatever's in here is mine!"
+            ],
+            "flag": "got_secret_key",
+            "battle": {
+              "name": "Burglar Simon",
+              "class": "BURGLAR",
+              "sprite": "burglar.png",
+              "team": [
+                58,
+                37,
+                59
+              ],
+              "level": 36,
+              "rewards": {
+                "balls": 3,
+                "SECRET_KEY": 1
+              },
+              "dialogue": {
+                "player_won": [
+                  "Burglar: Fine, fine! Take the stupid key!",
+                  "You found the SECRET KEY! It opens the Cinnabar Gym."
+                ]
+              }
+            }
+          },
+          "color": "PURPLE"
+        },
+        {
+          "text": "BACK TO CINNABAR",
+          "action": "EXIT",
+          "target": "CINNABAR_ISLAND",
+          "color": "RED"
+        }
       ],
       "on_enter_event": null
     },
@@ -969,7 +1722,7 @@
         {"text": "Shop", "action": "SHOP"},
         {"text": "Gym", "action": "GYM"},
         {"text": "Pokemon Lab", "action": "NPC", "target": "fossil_lab"},
-        {"text": "Pokemon Mansion", "action": "EVENT", "flag_condition": "not got_secret_key", "event": {"lines": ["The burned-out Pokemon Mansion. Old journals talk about a Pokemon called Mewtwo...", "Burglar: Hey! Whatever's in here is mine!"], "flag": "got_secret_key", "battle": {"name": "Burglar Simon", "class": "BURGLAR", "sprite": "burglar.png", "team": [58, 37, 59], "level": 36, "rewards": {"balls": 3, "SECRET_KEY": 1}, "dialogue": {"player_won": ["Burglar: Fine, fine! Take the stupid key!", "You found the SECRET KEY! It opens the Cinnabar Gym."]}}}}
+        {"text": "Pokemon Mansion", "action": "TRAVEL", "target_area": "POKEMON_MANSION"}
       ],
       "trainer_pool": [],
       "on_enter_event": null
@@ -2534,6 +3287,7 @@
   "GMAX": [],
   "MYTHICAL": [151, 251],
   "STANDARD_BOSS": [143, 144, 145, 146, 150, 243, 244, 245, 249, 250],
+  "POKEMON_MANSION_PERCENTAGES": {"20": 14, "88": 14, "89": 5, "109": 19, "77": 10, "78": 4, "58": 8, "37": 8, "126": 6, "132": 12},
   "TEAM_ROCKET_POOL": [19, 20, 23, 24, 41, 42, 52, 58, 88, 89, 96, 97, 109, 110],
   "GAME_TEXT": {
     "loading_starters": "Loading starters...",

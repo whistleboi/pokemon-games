@@ -16,7 +16,7 @@ A Pygame Pokémon game where battles are won by answering math problems. Nine re
 - `src/pokemon`: species, moves, abilities, TMs, breeding, evolution.
 - `src/world`: story flags and saves (`story.py`), levels, HMs.
 - `src/ui`: buttons, panels, dialogue, theme.
-- `src/dungeon` + `src/states/overworld/dungeon.py`: route dungeons (areas in `assets/dungeon_routes.json` are walked on a map). `PlayState(game)` hands back a `DungeonState` there (`PlayState.__new__`); `PlayState(game, classic=True)` is always the old route screen. Headless, dungeons stay off unless `game.dungeon_routes = True` (see `dev/checks/dungeon_body.py`).
+- `src/dungeon` + `src/states/overworld/dungeon.py`: every area that isn't a town is walked on a map (recipes in `assets/dungeon_routes.json`, else made from the area). `PlayState(game)` hands back a `DungeonState` (`PlayState.__new__`); `PlayState(game, classic=True)` is the route menu underneath (its actions: battles, events). Headless, the maps stay off unless `game.dungeon_routes = True` (see `dev/checks/dungeon_body.py`), so the other suites play the route menu.
 - `assets/*_area_data.json`: each region's areas, buttons, trainers and wild Pokémon (`pokemon_area_data.json` is Kanto).
 - `dev/builders`: scripts that made the data. Some are out of date (Sevii's), so check before re-running one.
 - `dev/checks`: the check suite. `dev/tools`: one-off tools. `dev/reference`: reference pictures the game doesn't load.
