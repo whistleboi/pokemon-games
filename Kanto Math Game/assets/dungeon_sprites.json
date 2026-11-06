@@ -114,6 +114,9 @@
     },
     "CELADON_GAME_CORNER:CLERK": {
       "sheet": "NPC 19.png"
+    },
+    "NATIONAL_PARK:BUG-CATCHING CONTEST": {
+      "sheet": "NPC 01.png"
     }
   },
   "townsperson": "NPC 17.png",

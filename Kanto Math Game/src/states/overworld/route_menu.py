@@ -516,6 +516,9 @@ class RouteMenu:
 
     def _get_route_callback(self, item):
         action = item.get("action")
+        if action == "BUG_CONTEST":  # National Park's officer: the Bug-Catching Contest (src/states/overworld/dungeon.py)
+            from src.states.overworld.dungeon import contest_entry
+            return lambda: contest_entry(self)
         if action == "GAME_CORNER":  # the Game Corner's clerk: its games, coins and prizes
             from src.states.systems import GameCornerState
             return lambda: self.game.change_state(GameCornerState(self.game, self))

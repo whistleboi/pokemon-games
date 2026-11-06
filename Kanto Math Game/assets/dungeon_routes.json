@@ -1,5 +1,5 @@
 {
-  "_about": "Route dungeons (src/dungeon, src/states/overworld/dungeon.py). An area listed here is walked on a map instead of the route menu. floors: how many floors (stairs between them). style: field, forest or cave. size: [width, height] in tiles. wild: [fewest, most] wild Pokemon on a floor. loot: per_floor [fewest, most] loose items, and items {item: weight} (weights, not percents; POKE_BALLS go to the Poke Ball count). tm_spots: fixed TM spot ids (the TM in each is picked once per save, among the TMs not owned yet). Anything left out comes from DEFAULT. style also building (walls and floor tiles) or sea (you surf the floor). ponds: how many rooms on a floor get a pond (fishing). descend: the floors go down (1F, B1F...). An area in zones (the Pokemon Tower, the Seafoam Islands, the Safari Zone) gets a floor for each zone instead of floors.",
+  "_about": "Route dungeons (src/dungeon, src/states/overworld/dungeon.py). An area listed here is walked on a map instead of the route menu. floors: how many floors (stairs between them). style: field, forest or cave. size: [width, height] in tiles. wild: [fewest, most] wild Pokemon on a floor. loot: per_floor [fewest, most] loose items, and items {item: weight} (weights, not percents; POKE_BALLS go to the Poke Ball count). tm_spots: fixed TM spot ids (the TM in each is picked once per save, among the TMs not owned yet). Anything left out comes from DEFAULT. style also building (walls and floor tiles) or sea (you surf the floor). ponds: how many rooms on a floor get a pond (fishing). descend: the floors go down (1F, B1F...). An area in zones (the Pokemon Tower, the Seafoam Islands, the Safari Zone) gets a floor for each zone instead of floors. figure_floors: {figure text: floor} puts a figure on that floor. zones_per_floor: several zones side by side on one floor that many times as wide (the Johto Safari Zone).",
   "DEFAULT": {
     "floors": 1,
     "style": "field",
@@ -884,5 +884,863 @@
         ]
       }
     ]
+  },
+  "KINDLE_ROAD": {
+    "floors": 1,
+    "size": [
+      40,
+      26
+    ],
+    "wild": [
+      4,
+      6
+    ],
+    "style": "field",
+    "ponds": 2
+  },
+  "TREASURE_BEACH": {
+    "floors": 1,
+    "size": [
+      34,
+      22
+    ],
+    "wild": [
+      4,
+      6
+    ],
+    "style": "desert",
+    "ponds": 2
+  },
+  "MT_EMBER": {
+    "floors": 3,
+    "size": [
+      40,
+      26
+    ],
+    "wild": [
+      4,
+      6
+    ],
+    "style": "cave",
+    "loot": {
+      "per_floor": [
+        2,
+        4
+      ],
+      "items": {
+        "POKE_BALLS": 20,
+        "POTION": 18,
+        "SUPER_POTION": 10,
+        "ESCAPE_ROPE": 12,
+        "REPEL": 12,
+        "GREAT_BALL": 10,
+        "ANTIDOTE": 6,
+        "AWAKENING": 6,
+        "RARE_CANDY": 3
+      }
+    },
+    "figure_floors": {
+      "TALK TO THE RESEARCHERS": 0,
+      "CHASE OFF TEAM ROCKET": 0
+    }
+  },
+  "CAPE_BRINK": {
+    "floors": 1,
+    "size": [
+      40,
+      26
+    ],
+    "wild": [
+      4,
+      6
+    ],
+    "style": "field",
+    "ponds": 2
+  },
+  "BOND_BRIDGE": {
+    "floors": 1,
+    "size": [
+      40,
+      26
+    ],
+    "wild": [
+      4,
+      6
+    ],
+    "style": "field",
+    "ponds": 2
+  },
+  "BERRY_FOREST": {
+    "floors": 2,
+    "size": [
+      40,
+      26
+    ],
+    "wild": [
+      4,
+      6
+    ],
+    "style": "forest"
+  },
+  "ICEFALL_CAVE": {
+    "floors": 3,
+    "size": [
+      40,
+      26
+    ],
+    "wild": [
+      4,
+      6
+    ],
+    "style": "cave",
+    "descend": true,
+    "ponds": 1,
+    "loot": {
+      "per_floor": [
+        2,
+        4
+      ],
+      "items": {
+        "POKE_BALLS": 20,
+        "POTION": 18,
+        "SUPER_POTION": 10,
+        "ESCAPE_ROPE": 12,
+        "REPEL": 12,
+        "GREAT_BALL": 10,
+        "ANTIDOTE": 6,
+        "AWAKENING": 6,
+        "RARE_CANDY": 3
+      }
+    }
+  },
+  "LOST_CAVE": {
+    "floors": 3,
+    "size": [
+      40,
+      26
+    ],
+    "wild": [
+      4,
+      6
+    ],
+    "style": "cave",
+    "descend": true,
+    "loot": {
+      "per_floor": [
+        2,
+        4
+      ],
+      "items": {
+        "POKE_BALLS": 20,
+        "POTION": 18,
+        "SUPER_POTION": 10,
+        "ESCAPE_ROPE": 12,
+        "REPEL": 12,
+        "GREAT_BALL": 10,
+        "ANTIDOTE": 6,
+        "AWAKENING": 6,
+        "RARE_CANDY": 3
+      }
+    }
+  },
+  "RUIN_VALLEY": {
+    "floors": 1,
+    "size": [
+      40,
+      26
+    ],
+    "wild": [
+      4,
+      6
+    ],
+    "style": "mountain"
+  },
+  "SEVAULT_CANYON": {
+    "floors": 1,
+    "size": [
+      40,
+      26
+    ],
+    "wild": [
+      4,
+      6
+    ],
+    "style": "mountain"
+  },
+  "CANYON_ENTRANCE": {
+    "floors": 1,
+    "size": [
+      40,
+      26
+    ],
+    "wild": [
+      4,
+      6
+    ],
+    "style": "mountain"
+  },
+  "DOTTED_HOLE": {
+    "floors": 2,
+    "size": [
+      34,
+      22
+    ],
+    "wild": [
+      0,
+      0
+    ],
+    "style": "cave",
+    "descend": true
+  },
+  "TANOBY_RUINS": {
+    "floors": 1,
+    "size": [
+      40,
+      26
+    ],
+    "wild": [
+      4,
+      6
+    ],
+    "style": "sea"
+  },
+  "NAVEL_ROCK": {
+    "floors": 2,
+    "size": [
+      32,
+      22
+    ],
+    "wild": [
+      0,
+      0
+    ],
+    "style": "cave",
+    "figure_floors": {
+      "SEEK LUGIA": 0,
+      "SEEK HO-OH": 1
+    }
+  },
+  "BIRTH_ISLAND": {
+    "floors": 1,
+    "size": [
+      28,
+      18
+    ],
+    "wild": [
+      0,
+      0
+    ],
+    "style": "field"
+  },
+  "FARAWAY_ISLAND": {
+    "floors": 1,
+    "size": [
+      32,
+      22
+    ],
+    "wild": [
+      0,
+      0
+    ],
+    "style": "forest"
+  },
+  "SEVII_ALTERING_CAVE": {
+    "floors": 1,
+    "size": [
+      40,
+      26
+    ],
+    "wild": [
+      4,
+      6
+    ],
+    "style": "cave",
+    "loot": {
+      "per_floor": [
+        2,
+        4
+      ],
+      "items": {
+        "POKE_BALLS": 20,
+        "POTION": 18,
+        "SUPER_POTION": 10,
+        "ESCAPE_ROPE": 12,
+        "REPEL": 12,
+        "GREAT_BALL": 10,
+        "ANTIDOTE": 6,
+        "AWAKENING": 6,
+        "RARE_CANDY": 3
+      }
+    }
+  },
+  "ROCKET_WAREHOUSE": {
+    "floors": 1,
+    "size": [
+      40,
+      26
+    ],
+    "wild": [
+      0,
+      0
+    ],
+    "style": "building",
+    "loot": {
+      "per_floor": [
+        2,
+        3
+      ],
+      "items": {
+        "POKE_BALLS": 15,
+        "POTION": 15,
+        "SUPER_POTION": 12,
+        "FULL_HEAL": 8,
+        "GREAT_BALL": 10,
+        "ULTRA_BALL": 4,
+        "REVIVE": 5,
+        "RARE_CANDY": 3
+      }
+    }
+  },
+  "HAINA_DESERT": {
+    "style": "desert"
+  },
+  "ULTRA_DESERT": {
+    "style": "desert"
+  },
+  "ULTRA_FOREST": {
+    "style": "forest"
+  },
+  "ULTRA_JUNGLE": {
+    "style": "forest"
+  },
+  "ULTRA_DEEP_SEA": {
+    "style": "sea"
+  },
+  "ULTRA_PLANT": {
+    "style": "building"
+  },
+  "WELA_VOLCANO_PARK": {
+    "style": "mountain"
+  },
+  "MALIE_GARDEN": {
+    "style": "field",
+    "ponds": 2
+  },
+  "SPLIT_DECISION_RUINS": {
+    "style": "snow"
+  },
+  "HOENN_TRACKLESS_FOREST": {
+    "style": "forest"
+  },
+  "HOENN_MIRAGE_TOWER": {
+    "style": "building",
+    "floors": 4
+  },
+  "LAKE_OF_RAGE": {
+    "style": "field",
+    "ponds": 4
+  },
+  "LAKE_VERITY": {
+    "style": "field",
+    "ponds": 3
+  },
+  "LAKE_VALOR": {
+    "style": "field",
+    "ponds": 3
+  },
+  "LAKE_ACUITY": {
+    "style": "snow",
+    "ponds": 3
+  },
+  "HALL_OF_ORIGIN": {
+    "style": "building"
+  },
+  "DESERT_RESORT": {
+    "style": "desert"
+  },
+  "RELIC_CASTLE": {
+    "style": "desert",
+    "floors": 3,
+    "descend": true
+  },
+  "PLEDGE_GROVE": {
+    "style": "forest"
+  },
+  "MARINE_TUBE": {
+    "style": "building"
+  },
+  "DRAGONSPIRAL_SUMMIT": {
+    "style": "mountain"
+  },
+  "ASADO_DESERT": {
+    "style": "desert"
+  },
+  "TAGTREE_THICKET": {
+    "style": "forest"
+  },
+  "GLASEADO_MOUNTAIN": {
+    "style": "snow"
+  },
+  "RADIO_TOWER": {
+    "floors": 4
+  },
+  "TOHJO_FALLS": {
+    "floors": 1
+  },
+  "HOENN_GRANITE_CAVE": {
+    "floors": 3,
+    "descend": true
+  },
+  "HOENN_METEOR_FALLS": {
+    "floors": 2,
+    "descend": true
+  },
+  "HOENN_MT_PYRE": {
+    "floors": 3
+  },
+  "HOENN_SEAFLOOR_CAVERN": {
+    "floors": 3,
+    "descend": true
+  },
+  "HOENN_CAVE_OF_ORIGIN": {
+    "floors": 3,
+    "descend": true,
+    "figure_floors": {
+      "TALK TO {leader}": 0
+    }
+  },
+  "HOENN_SKY_PILLAR": {
+    "floors": 4
+  },
+  "HOENN_SHOAL_CAVE": {
+    "floors": 2,
+    "descend": true
+  },
+  "HOENN_MAGMA_HIDEOUT": {
+    "floors": 2,
+    "descend": true,
+    "style": "cave"
+  },
+  "HOENN_TEAM_HIDEOUT": {
+    "floors": 2,
+    "descend": true
+  },
+  "HOENN_ABANDONED_SHIP": {
+    "floors": 2,
+    "descend": true
+  },
+  "HOENN_RUSTURF_TUNNEL": {
+    "floors": 1
+  },
+  "HOENN_FIERY_PATH": {
+    "floors": 1
+  },
+  "HOENN_JAGGED_PASS": {
+    "floors": 1
+  },
+  "MT_CORONET_BASE": {
+    "floors": 3
+  },
+  "WAYWARD_CAVE": {
+    "floors": 2,
+    "descend": true
+  },
+  "IRON_ISLAND": {
+    "floors": 3,
+    "descend": true
+  },
+  "TEAM_GALACTIC_HQ": {
+    "floors": 3
+  },
+  "STARK_MOUNTAIN": {
+    "floors": 2
+  },
+  "OLD_CHATEAU": {
+    "floors": 2
+  },
+  "TURNBACK_CAVE": {
+    "floors": 3,
+    "descend": true
+  },
+  "OREBURGH_MINE": {
+    "floors": 2,
+    "descend": true
+  },
+  "SNOWPOINT_TEMPLE": {
+    "floors": 3,
+    "descend": true
+  },
+  "SOLACEON_RUINS": {
+    "floors": 2,
+    "descend": true
+  },
+  "SPEAR_PILLAR": {
+    "floors": 1
+  },
+  "SENDOFF_SPRING": {
+    "floors": 1
+  },
+  "CHARGESTONE_CAVE": {
+    "floors": 3,
+    "descend": true
+  },
+  "TWIST_MOUNTAIN": {
+    "floors": 3,
+    "descend": true
+  },
+  "DRAGONSPIRAL_TOWER": {
+    "floors": 4
+  },
+  "GIANT_CHASM": {
+    "floors": 2,
+    "descend": true
+  },
+  "REVERSAL_MOUNTAIN": {
+    "floors": 2
+  },
+  "SEASIDE_CAVE": {
+    "floors": 2,
+    "descend": true
+  },
+  "STRANGE_HOUSE": {
+    "floors": 2
+  },
+  "CASTELIA_SEWERS": {
+    "floors": 2,
+    "descend": true
+  },
+  "PLASMA_FRIGATE": {
+    "floors": 2,
+    "descend": true
+  },
+  "NS_CASTLE": {
+    "floors": 3
+  },
+  "WELLSPRING_CAVE": {
+    "floors": 2,
+    "descend": true
+  },
+  "MISTRALTON_CAVE": {
+    "floors": 2,
+    "descend": true
+  },
+  "COLD_STORAGE": {
+    "floors": 1
+  },
+  "ABYSSAL_RUINS": {
+    "floors": 3,
+    "descend": true
+  },
+  "GLITTERING_CAVE": {
+    "floors": 2,
+    "descend": true
+  },
+  "REFLECTION_CAVE": {
+    "floors": 3,
+    "descend": true
+  },
+  "FROST_CAVERN": {
+    "floors": 3
+  },
+  "TERMINUS_CAVE": {
+    "floors": 3,
+    "descend": true
+  },
+  "LOST_HOTEL": {
+    "floors": 2
+  },
+  "GEOSENGE_FLARE_HQ": {
+    "floors": 3,
+    "descend": true
+  },
+  "POKEBALL_FACTORY": {
+    "floors": 2
+  },
+  "SEA_SPIRITS_DEN": {
+    "floors": 1
+  },
+  "CONNECTING_CAVE": {
+    "floors": 1
+  },
+  "TEN_CARAT_HILL": {
+    "floors": 2,
+    "descend": true
+  },
+  "MOUNT_LANAKILA": {
+    "floors": 3,
+    "style": "snow"
+  },
+  "VAST_PONI_CANYON": {
+    "floors": 3
+  },
+  "AETHER_PARADISE": {
+    "floors": 3
+  },
+  "THRIFTY_MEGAMART": {
+    "floors": 2
+  },
+  "PO_TOWN": {
+    "floors": 2
+  },
+  "MEGALO_TOWER": {
+    "floors": 3
+  },
+  "ROCKET_CASTLE": {
+    "floors": 3
+  },
+  "ROSE_TOWER": {
+    "floors": 3,
+    "style": "building"
+  },
+  "ZERO_LAB": {
+    "floors": 2,
+    "descend": true
+  },
+  "AREA_ZERO_UNDERDEPTHS": {
+    "floors": 2,
+    "descend": true
+  },
+  "XD_CIPHER_LAB": {
+    "floors": 2
+  },
+  "XD_CITADARK_ISLE": {
+    "floors": 3
+  },
+  "PYRITE_BUILDING": {
+    "floors": 2
+  },
+  "SHADOW_PKMN_LAB": {
+    "floors": 2
+  },
+  "SNAGEM_HIDEOUT": {
+    "floors": 2
+  },
+  "XD_CIPHER_KEY_LAIR": {
+    "floors": 2,
+    "descend": true
+  },
+  "THE_UNDER": {
+    "floors": 2,
+    "descend": true
+  },
+  "SS_LIBRA": {
+    "floors": 2
+  },
+  "HOENN_VICTORY_ROAD": {
+    "floors": 3
+  },
+  "VICTORY_ROAD_SINNOH": {
+    "floors": 3
+  },
+  "VICTORY_ROAD_UNOVA": {
+    "floors": 3
+  },
+  "UNION_CAVE": {
+    "style": "cave",
+    "floors": 2,
+    "descend": true
+  },
+  "DARK_CAVE": {
+    "style": "cave",
+    "floors": 2
+  },
+  "SLOWPOKE_WELL": {
+    "style": "cave",
+    "floors": 2,
+    "descend": true,
+    "ponds": 1
+  },
+  "SPROUT_TOWER": {
+    "style": "building",
+    "floors": 3
+  },
+  "BURNED_TOWER": {
+    "style": "building",
+    "floors": 2,
+    "descend": true
+  },
+  "BELL_TOWER": {
+    "style": "building",
+    "floors": 4,
+    "figure_floors": {
+      "TALK TO SAGE LI": 0
+    }
+  },
+  "MT_MORTAR": {
+    "style": "cave",
+    "floors": 3
+  },
+  "ICE_PATH": {
+    "style": "cave",
+    "floors": 3,
+    "descend": true
+  },
+  "WHIRL_ISLANDS": {
+    "style": "cave",
+    "floors": 3,
+    "descend": true,
+    "ponds": 1
+  },
+  "ROCKET_HQ": {
+    "style": "building",
+    "floors": 3,
+    "descend": true
+  },
+  "DRAGONS_DEN": {
+    "style": "cave",
+    "floors": 2,
+    "descend": true,
+    "ponds": 2
+  },
+  "MT_SILVER": {
+    "style": "cave",
+    "floors": 2,
+    "figure_floors": {
+      "SEEK MOLTRES": 0
+    }
+  },
+  "JOHTO_SAFARI_ZONE": {
+    "zones_per_floor": 3,
+    "size": [
+      36,
+      24
+    ],
+    "style": "field",
+    "ponds": 3
+  },
+  "ALOLA_ROUTE_7": {
+    "style": "desert",
+    "ponds": 2
+  },
+  "ALOLA_ROUTE_8": {
+    "style": "field",
+    "ponds": 2
+  },
+  "ALOLA_ROUTE_14": {
+    "style": "desert",
+    "ponds": 2
+  },
+  "ALOLA_ROUTE_15": {
+    "style": "field",
+    "ponds": 2
+  },
+  "GALAR_ROUTE_9": {
+    "style": "snow",
+    "ponds": 2
+  },
+  "GALAR_ROUTE_10": {
+    "style": "snow"
+  },
+  "HOENN_ROUTE_119": {
+    "style": "forest",
+    "ponds": 2
+  },
+  "JOHTO_ROUTE_45": {
+    "style": "mountain"
+  },
+  "JOHTO_ROUTE_46": {
+    "style": "mountain"
+  },
+  "KALOS_ROUTE_8": {
+    "style": "field",
+    "ponds": 2
+  },
+  "KALOS_ROUTE_9": {
+    "style": "mountain"
+  },
+  "KALOS_ROUTE_13": {
+    "style": "desert"
+  },
+  "KALOS_ROUTE_14": {
+    "style": "field",
+    "ponds": 3
+  },
+  "KALOS_ROUTE_17": {
+    "style": "snow"
+  },
+  "SINNOH_ROUTE_213": {
+    "style": "desert",
+    "ponds": 2
+  },
+  "SINNOH_ROUTE_216": {
+    "style": "snow"
+  },
+  "SINNOH_ROUTE_217": {
+    "style": "snow"
+  },
+  "SINNOH_ROUTE_218": {
+    "style": "sea"
+  },
+  "SINNOH_ROUTE_223": {
+    "style": "sea"
+  },
+  "UNOVA_ROUTE_4": {
+    "style": "desert"
+  },
+  "UNOVA_ROUTE_13": {
+    "style": "field",
+    "ponds": 2
+  },
+  "UNOVA_ROUTE_17": {
+    "style": "sea"
+  },
+  "UNOVA_ROUTE_21": {
+    "style": "sea"
+  },
+  "KALOS_ROUTE_18": {
+    "style": "mountain"
+  },
+  "ROYAL_AVENUE": {
+    "style": "field"
+  },
+  "ALTAR_SUNNE_MOONE": {
+    "style": "mountain"
+  },
+  "HOENN_BATTLE_FRONTIER": {
+    "style": "field"
+  },
+  "JOHTO_BATTLE_FRONTIER": {
+    "style": "field"
+  },
+  "LUMIOSE_HIBERNAL_DISTRICT": {
+    "style": "field"
+  },
+  "XD_ONBS": {
+    "floors": 2
+  },
+  "ETERNA_GALACTIC_BUILDING": {
+    "floors": 3
+  },
+  "LOST_TOWER": {
+    "floors": 3
+  },
+  "SINNOH_BATTLE_FRONTIER": {
+    "style": "field"
+  },
+  "VALLEY_WINDWORKS": {
+    "style": "field",
+    "ponds": 2
+  },
+  "CELESTIAL_TOWER": {
+    "floors": 4
+  },
+  "BUG_CONTEST": {
+    "floors": 1,
+    "style": "field",
+    "size": [
+      40,
+      26
+    ],
+    "wild": [
+      8,
+      10
+    ],
+    "loot": {
+      "per_floor": [
+        0,
+        0
+      ],
+      "items": {}
+    }
   }
 }

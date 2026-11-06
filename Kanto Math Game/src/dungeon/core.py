@@ -16,7 +16,11 @@ own ("seed"), and its trainers stand in the same spots. A drawn place (recipe "l
 isn't made at all: each floor is drawn in text ('#' wall, '.' floor, ',' grass, '~' water, '@' the start;
 "legend" says what its other letters are: {"exit": area}, {"figure": a figure's text}, {"decor": name}, a
 wall with something on it, a slot machine). "fog": false shows the whole floor (no fog of war).
+
+An open place (recipe "open": a Safari Zone, a Wild Area) has no stairs: the way to the next area is an
+opening in the floor's east edge, and the way back one in its west edge (you come in beside it).
 """
+import inspect
 import random
 from collections import deque
 
@@ -283,6 +287,17 @@ def drawn_floor(recipe, index, entrance=None, figures=()):
     return floor
 
 
+def _edge_gate(floor, side):
+    """An opening in the floor's east or west edge, a path to it from the nearest room: its tile."""
+    room = (max if side == "east" else min)(floor.rooms, key=lambda r: r.center[0])
+    cx, cy = room.center
+    xs = range(cx, floor.w) if side == "east" else range(cx, -1, -1)
+    for x in xs:
+        if floor.tiles[cy][x] == WALL or floor.tiles[cy][x] == WATER:
+            floor.tiles[cy][x] = FLOOR
+    return (floor.w - 1, cy) if side == "east" else (0, cy)
+
+
 def build_floor(rng, recipe, index, entrance=None, forwards=(), last=True, figures=(), here=None):
     """One floor of an area. entrance: the area you came from (its exit is beside you). forwards: the
     other ways out (in the rooms farthest from you); a floor before the last has STAIRS there too, and
@@ -304,7 +319,12 @@ def build_floor(rng, recipe, index, entrance=None, forwards=(), last=True, figur
         entrance, forwards = here
     elif index:
         entrance = None
-    beside = [STAIRS_UP] if index > 0 else []
+    open_ = bool(recipe.get("open"))
+    if open_ and index > 0:  # the way back: an opening in the west edge (you come in beside it)
+        gate = _edge_gate(floor, "west")
+        floor.exits[gate] = STAIRS_UP
+        floor.start = (gate[0] + 1, gate[1])
+    beside = [STAIRS_UP] if index > 0 and not open_ else []
     if entrance:
         beside.append(entrance)
     for target in beside:
@@ -313,7 +333,9 @@ def build_floor(rng, recipe, index, entrance=None, forwards=(), last=True, figur
     # the rooms farthest from the start hold the way on, then the figures
     rooms = sorted((r for r in floor.rooms if r is not start_room),
                    key=lambda r: -dist.get(r.center, 0)) or [start_room]
-    targets = ([] if not last and here is None else list(forwards)) + ([] if last else [STAIRS])
+    targets = ([] if not last and here is None else list(forwards)) + ([] if last or open_ else [STAIRS])
+    if open_ and not last:  # the way on: an opening in the east edge
+        floor.exits[_edge_gate(floor, "east")] = STAIRS
     for i, target in enumerate(targets):
         spot = _free_tile(floor, rng, rooms[i % len(rooms)])
         if spot:
@@ -373,6 +395,10 @@ class Run:
         self.n_floors = max(1, int(recipe.get("floors", 1)))
         self.entrance, self.forwards = entrance, list(forwards)
         self.make_wild = make_wild or (lambda rng: None)
+        try:  # make_wild(rng, spot): it's told where the Pokemon will stand (which area of a wide floor)
+            self._wild_at = len(inspect.signature(self.make_wild).parameters) >= 2
+        except (TypeError, ValueError):
+            self._wild_at = False
         self.loot_for = loot_for or (lambda rng: [])
         self.trainers = list(trainers)
         self.tm_spots = list(tm_spots)
@@ -441,12 +467,12 @@ class Run:
         self.reveal()
 
     def _spawn_wild(self, floor, avoid_room=None, far=False):
-        payload = self.make_wild(self.rng)
-        if payload is None:
-            return None
         spot = _free_tile(floor, self.rng, avoid=avoid_room.tiles() if avoid_room else (), prefer_grass=True,
                           far_from=self.player if far else floor.start, min_dist=10 if far else 5)
         if spot is None:
+            return None
+        payload = self.make_wild(self.rng, spot) if self._wild_at else self.make_wild(self.rng)
+        if payload is None:
             return None
         m = Mover("wild", spot[0], spot[1], payload)
         floor.movers.append(m)

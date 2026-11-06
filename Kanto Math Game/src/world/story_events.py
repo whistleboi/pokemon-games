@@ -224,8 +224,6 @@ EVENTS = {
                                                "Giovanni vanished into the mist of the falls."]}}},
     "dragon_elder": {"lines": ["dragon_elder_pass"], "requires": ["has_rising_badge"],
                      "fail": ["dragon_elder_intro"]},
-    "bug_catching_contest": {"lines": ["Officer: The Bug-Catching Contest is held in the National Park!",
-                                       "It runs on Tuesdays, Thursdays and Saturdays. Bring your best Bug Pokemon!"]},
 
     # ---------------- Hoenn (Omega Ruby / Alpha Sapphire) ----------------
     # The opening (dev/builders/build_hoenn_story.py): Birch isn't at his lab until he's been saved

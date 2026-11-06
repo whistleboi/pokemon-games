@@ -191,6 +191,27 @@ def ways_out_and_trainers_on_their_floors():
     assert sorted(run.floor.exits.values()) == sorted([core.STAIRS_UP, "ROOF"])
     assert any(m.kind == "trainer" and m.payload[0] == 0 for m in run.floor.movers)
 
+
+@test
+def open_places_join_at_their_edges():
+    """A Safari Zone or Wild Area: no stairs; the next area is through the east edge, the last through the west."""
+    for seed in range(60):
+        run = core.Run({"floors": 3, "size": [40, 26], "wild": [0, 0], "open": True}, random.Random(seed),
+                       entrance="TOWN", forwards=["ROUTE"])
+        for i in range(3):
+            f = run.floor
+            reach = core.distances(f, run.player)
+            for t, target in f.exits.items():
+                assert t in reach, (seed, i, target)
+                if target == core.STAIRS:
+                    assert t[0] == f.w - 1, (seed, i, t)
+                if target == core.STAIRS_UP:
+                    assert t[0] == 0, (seed, i, t)
+            if i < 2:
+                run.descend()
+                up = next(t for t, v in run.floor.exits.items() if v == core.STAIRS_UP)
+                assert abs(run.player[0] - up[0]) + abs(run.player[1] - up[1]) <= 1, (seed, run.player, up)
+
 if __name__ == "__main__":
     fails = 0
     for t in TESTS:

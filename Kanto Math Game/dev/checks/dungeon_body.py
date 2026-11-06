@@ -290,7 +290,7 @@ for _a in _kanto:
         import traceback
         traceback.print_exc()
         _bad.append((_a, repr(_e)))
-check(not _bad, f"all {len(_kanto)} Kanto areas: a map, every floor crossable and drawn, stairs both ways {_bad[:4]}")
+check(not _bad, f"all {len(_kanto)} areas with their own recipe: a map, every floor crossable and drawn, stairs both ways {_bad[:4]}")
 check({"MT_MOON", "ROCK_TUNNEL", "SEAFOAM_ISLANDS", "KANTO_POKEMON_TOWER", "POWER_PLANT", "KANTO_ROUTE_20",
        "SAFARI_ZONE", "KANTO_SS_ANNE", "CERULEAN_CAVE", "VICTORY_ROAD"} <= set(_kanto), "caves, the sea, the buildings too")
 
@@ -445,6 +445,101 @@ _slot = next(t for t, v in _f.decor.items() if v == "slot" and any(_f.walkable(t
 _gc.run.player = next((_slot[0] + dx, _slot[1] + dy) for dx, dy in core.DIRS if _f.walkable(_slot[0] + dx, _slot[1] + dy))
 check(_gc._act_here() and _gc._act_here()[0] == "PLAY SLOTS", "at a machine: PLAY SLOTS")
 _gc.draw()
+
+# Sevii (Jordan, 11-05: each region's maps checked against its games)
+_sty = {k: _dg.recipe_for(g, k).get("style") for k in ("KINDLE_ROAD", "RUIN_VALLEY", "TANOBY_RUINS", "TREASURE_BEACH",
+                                                       "DOTTED_HOLE", "LOST_CAVE", "BIRTH_ISLAND")}
+check(_sty == {"KINDLE_ROAD": "field", "RUIN_VALLEY": "mountain", "TANOBY_RUINS": "sea", "TREASURE_BEACH": "desert",
+               "DOTTED_HOLE": "cave", "LOST_CAVE": "cave", "BIRTH_ISLAND": "field"}, f"Sevii's places look like the games' {_sty}")
+story.story_flags["beat_champion"] = True
+for _k in ("navel_rock_lugia", "navel_rock_ho_oh"):
+    story.story_flags.pop(_k, None)
+_nr = kanto("NAVEL_ROCK", came="ONE_ISLAND")
+_where = {m.payload.get("text"): i for i, f in enumerate(_nr.run.floors) for m in f.movers if m.kind == "figure"}
+while _nr.run.index < _nr.run.n_floors - 1:
+    _nr._descend()
+_where.update({m.payload.get("text"): _nr.run.index for m in _nr.run.floor.movers if m.kind == "figure"})
+check(_nr.run.n_floors == 2 and _where.get("SEEK LUGIA") == 0 and _where.get("SEEK HO-OH") == 1,
+      f"Navel Rock: Lugia below, Ho-Oh at the top {_where}")
+_me = kanto("MT_EMBER", came="KINDLE_ROAD")
+check(_me.run.n_floors == 3, "Mt. Ember: the base, Ruby Path, the summit")
+
+# every region (Jordan, 11-05: each region's maps checked against its games)
+_want = {"HAINA_DESERT": "desert", "DESERT_RESORT": "desert", "ASADO_DESERT": "desert", "GLASEADO_MOUNTAIN": "snow",
+         "HOENN_TRACKLESS_FOREST": "forest", "PLEDGE_GROVE": "forest", "SPROUT_TOWER": "building", "MOUNT_LANAKILA": "snow"}
+_got = {k: _dg.recipe_for(g, k).get("style") for k in _want}
+check(_got == _want, f"each region's places look like its game's {[(k, v) for k, v in _got.items() if _want[k] != v]}")
+_fl = {k: _dg.recipe_for(g, k).get("floors") for k in ("UNION_CAVE", "BELL_TOWER", "HOENN_SKY_PILLAR", "MT_CORONET_BASE", "CHARGESTONE_CAVE", "REFLECTION_CAVE")}
+check(all((v or 1) > 1 for v in _fl.values()), f"the big dungeons have their floors {_fl}")
+_bt = kanto("BELL_TOWER", came="ECRUTEAK_CITY")
+check(_bt._figure_floor({"text": "TALK TO SAGE LI", "action": "NPC"}, 4) == 0 and _bt._figure_floor({"text": "CHALLENGE HO-OH", "action": "BOSS"}, 4) == 3,
+      "Bell Tower: the sage at the entrance, Ho-Oh at the top")
+
+# the Johto Safari Zone: three areas side by side on each of 4 wide floors (Jordan, 11-05)
+_jz = _prog["JOHTO_SAFARI_ZONE"]
+_js = kanto("JOHTO_SAFARI_ZONE", came=next((i.get("target") or i.get("target_area") for i in _jz.get("route_menu", []) if i.get("action") in ("EXIT", "TRAVEL")), None))
+_keys = [z["key"] for z in _jz["zones"]]
+check(_js.run.n_floors == 4 and _js.run.floor.w == 3 * 36, f"12 areas on 4 floors, each 3x as wide ({_js.run.n_floors}, {_js.run.floor.w})")
+_flag = "zone_JOHTO_SAFARI_ZONE"
+_seen57 = []
+for _x in (5, 50, 100):
+    _js.run.player = (_x, _js.run.player[1])
+    _js._note_area()
+    _seen57.append(story.story_flags.get(_flag))
+check(_seen57 == _keys[:3], f"crossing the gate lines: each part is its area {_seen57}")
+check(_js.toast.startswith("You entered"), "...and it says which area you entered")
+_js.draw()
+_js._descend()
+check(_js._floor_name(1) == " / ".join(_js._zone_name(i) for i in (3, 4, 5)), "the next floor: the next three areas")
+
+# the Bug-Catching Contest (Jordan, 11-05): National Park, its own map
+_dg.CONTEST_DAYS = tuple(range(7))  # (any day, for the check)
+story.story_flags.pop("bug_contest_day", None)
+_np = kanto("NATIONAL_PARK", came="JOHTO_ROUTE_35")
+_off = [m for m in _np.run.floor.movers if m.kind == "figure" and m.payload.get("action") == "BUG_CONTEST"]
+check(_off, "National Park: the contest officer stands on the map")
+_dg.contest_entry(_np)
+talk(_np)
+for _ in range(400):
+    g.current_state.update()
+    if isinstance(g.current_state, DungeonState):
+        break
+_bc = g.current_state
+check(isinstance(_bc, DungeonState) and _bc.area_key == "BUG_CONTEST" and _bc.contest and _bc.contest["balls"] == 20,
+      "the officer: the contest's map, 20 Sport Balls")
+_bugs = {int(k) for k in g.loader.area_data["JOHTO_BUG_CONTEST_PERCENTAGES"]}
+_wild = [m for m in _bc.run.floor.movers if m.kind == "wild"]
+check(_wild and all(m.payload.id in _bugs or str(m.payload.id).startswith(tuple(str(b) for b in _bugs)) for m in _wild),
+      f"only Bug Pokemon roam it ({sorted({m.payload.id for m in _wild})})")
+_bc.draw()
+_m = _wild[0]
+_bc._meet_wild(_m)
+_bc._pick(1)
+check(_bc.mode == "CHOICE", "no BATTLE in the contest (MATH only)")
+_bc._start_math()
+_bc._answer(_bc.options.index(_bc.correct_ans))
+check(_bc.contest["balls"] == 19, "a throw uses a Sport Ball (not your own)")
+_bc.throw_result = "caught"
+_bc._resolve_throw()
+talk(_bc)
+check(_bc.contest["best"] is _m.payload, "the catch is your contest Pokemon")
+_team = len(story.player_team) + len([x for x in story.pc_pokemon if x])
+_bc.mode, _bc.anim = "MAP", 0
+_bc.contest["turns"] = 0
+_bc._contest_check()
+_lines = list(_bc.dialogue_box.text_lines)
+check(any("scored" in l for l in _lines) and any("yours to keep" in l for l in _lines), f"time's up: the judging {_lines[:3]}")
+check(len(story.player_team) + len([x for x in story.pc_pokemon if x]) == _team + 1, "you keep your bug")
+talk(_bc)
+for _ in range(400):
+    g.current_state.update()
+    if isinstance(g.current_state, DungeonState) and g.current_state is not _bc:
+        break
+check(story.current_area_key == "NATIONAL_PARK", "...and you're back in National Park")
+_np2 = kanto("NATIONAL_PARK", came="JOHTO_ROUTE_35")
+_dg.contest_entry(_np2)
+check(any("already" in l for l in _np2.dialogue_box.text_lines), "once a day")
+_dg.CONTEST_DAYS = (1, 3, 5)
 
 # free movement (Jordan, 11-05): no "two route actions" before a way out; only the story locks one
 _r3 = kanto("KANTO_ROUTE_3", came="PEWTER_CITY")

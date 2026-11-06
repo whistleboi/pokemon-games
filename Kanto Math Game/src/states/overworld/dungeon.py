@@ -28,6 +28,13 @@ How the route's actions map onto the walk:
 - Trainers and figures are drawn with Pokemon Journeys' overworld sprites (assets/dungeon/characters,
   which is whose in assets/dungeon_sprites.json); a Pokemon without one, with its party icon.
 - You walk as your trainer (Jordan, 11-05), your lead Pokemon following a step behind.
+- An area of many zones can put several side by side on one wide floor (recipe "zones_per_floor": the
+  Johto Safari Zone, three areas a floor): a gate line marks each border, and crossing it puts you in
+  that area (its wild Pokemon, its name on the bar).
+- The Bug-Catching Contest (Jordan, 11-05; Gold/Silver/Crystal and HeartGold/SoulSilver: National Park,
+  Tuesdays, Thursdays and Saturdays, once a day): an area with "bug_contest" is the contest's own map.
+  Bugs roam it; you have 20 Sport Balls and CONTEST_TURNS turns, catch with MATH only, and keep only your
+  best catch. When time's up (or you leave by the gate) the judges score it against the others'.
 - Buildings are fixed (the same floors every visit, made from the area's own seed) and have no fog: the
   whole floor shows. The Celadon Game Corner is drawn (assets/dungeon_routes.json "layout"): talk to the
   clerk across the counter to pick a game, buy coins or trade for prizes; play the slots at a machine.
@@ -67,6 +74,7 @@ COLORS = {  # floor, tall grass, wall (trees or rock), wall top
     "sea": ((84, 146, 214), (60, 118, 190), (112, 104, 96), (150, 140, 126)),     # you surf the floor
     "snow": ((232, 238, 246), (196, 214, 232), (84, 110, 126), (210, 226, 238)),   # snowy firs
     "desert": ((226, 204, 150), (204, 180, 120), (164, 120, 80), (196, 152, 104)),  # sand, rock
+    "mountain": ((176, 168, 120), (120, 150, 84), (118, 96, 76), (150, 126, 100)),  # outdoor rock, a canyon
 }
 # An area without its own recipe: its look from its battle type.
 STYLE_OF = {"grass": "field", "field": "field", "outdoor": "field", "cave": "cave", "mountain": "cave",
@@ -76,12 +84,52 @@ WATER_C = ((70, 130, 206), (150, 196, 240))  # a pond, its ripples
 TREE_STYLES = ("field", "forest", "snow")  # where HEADBUTT works (a wall is a tree)
 # The route's buttons that are figures on the map (walk into one: its button's action).
 FIGURE_ACTIONS = ("BOSS", "EVENT", "NPC", "HOENN_EVENT", "DAYCARE", "BERRY", "CAMP", "REST", "WEATHER_DIRECTOR",
-                  "SNAG", "MAX_RAID", "DIVE", "GAME_CORNER")
+                  "SNAG", "MAX_RAID", "DIVE", "GAME_CORNER", "BUG_CONTEST")
 DECOR_C = {"slot": ((200, 60, 70), (250, 230, 120)), "counter": ((150, 100, 60), (204, 156, 100))}
 FACING_ROW = {(0, 1): 0, (-1, 0): 1, (1, 0): 2, (0, -1): 3}  # a sheet's rows: down, left, right, up
 
+# The Bug-Catching Contest: its balls and turns, prizes for 1st, 2nd, 3rd (and the rest), how a catch scores
+CONTEST_BALLS, CONTEST_TURNS, CONTEST_DAYS = 20, 150, (1, 3, 5)  # (Tuesday, Thursday, Saturday)
+CONTEST_PRIZES = ["SUN_STONE", "EVERSTONE", "RARE_CANDY"]
+CONTEST_RARE = {123: 100, 127: 100, 12: 70, 15: 70, 49: 70, 402: 60, 11: 30, 14: 30, 47: 40}
+CONTEST_RIVALS = ["Bug Catcher Don", "Bug Catcher Ed", "Cooltrainer Nick", "Pokefan Beverly", "Youngster Samuel"]
+
 _recipes = {}
 _sprite_map = {}
+
+
+def contest_score(p, rng=None):
+    """A contest catch's score (the games': level, its stats, how rare it is, a little luck)."""
+    import random as _r
+    ivs = getattr(p, "ivs", None) or {}
+    iv = sum(ivs.values()) if isinstance(ivs, dict) else sum(ivs or [])
+    return int(CONTEST_RARE.get(p.id, 10) + p.level * 4 + iv // 4 + (rng or _r).randint(0, 20))
+
+
+def contest_entry(state):
+    """The officer at National Park's gate: the contest's map, on its days, once a day."""
+    import datetime
+    from src.states.overworld.area_transition import AreaTransitionState
+    game = state.game
+    story = game.story_manager
+    today = datetime.date.today()
+    show = getattr(state, "show_dialogue", None)
+    back = getattr(state, "show_progression_menu", None)
+    if today.weekday() not in CONTEST_DAYS:
+        show(["Officer: The Bug-Catching Contest is held on Tuesdays, Thursdays and Saturdays.",
+              "Come back then with your best Pokemon!"], callback=back)
+        return
+    if story.story_flags.get("bug_contest_day") == today.isoformat():
+        show(["Officer: You've already entered today's contest. Come back next time!"], callback=back)
+        return
+    if not any(p and p.current_hp > 0 for p in story.player_team):
+        show(["Officer: Your Pokemon need rest first. Come back after a visit to a Pokemon Center!"], callback=back)
+        return
+    story.story_flags["bug_contest_day"] = today.isoformat()
+    show(["Officer: Welcome to the Bug-Catching Contest!",
+          f"Here are {CONTEST_BALLS} SPORT BALLS. Catch the best Bug Pokemon you can before time runs out.",
+          "You can keep only one: the best one you catch. Good luck!"],
+         callback=lambda: game.change_state(AreaTransitionState(game, "BUG_CONTEST")))
 
 
 def sprite_map(game):
@@ -119,6 +167,8 @@ def recipe_for(game, area_key):
     area = game.loader.area_data.get("STORY_PROGRESSION", {}).get(area_key, {})
     style = STYLE_OF.get(str(area.get("battle_type") or "").lower(), "field")
     name = str(area.get("route_name") or area_key).lower()
+    if style == "cave" and str(area.get("battle_type")).lower() == "mountain" and "route" in name:
+        style = "mountain"  # (a mountain route is out in the open: rocks and grass, not a cave)
     if style == "field" and ("forest" in name or "woods" in name or "jungle" in name):
         style = "forest"
     recipe["style"] = style
@@ -196,8 +246,14 @@ class DungeonState(PlayState):
         # an area in zones: a floor each (the Pokemon Tower's, the Seafoam Islands', the Safari Zone's)
         self.zones = [z.get("key") for z in self._zones()]
         recipe = dict(self.recipe)
+        self.per_floor = max(1, int(recipe.get("zones_per_floor", 1) or 1))
+        if self.zones and not self.area_data.get("zones_linear"):
+            recipe["open"] = True  # (an open place: no stairs, openings in the edges between its areas)
         if self.zones:
-            recipe["floors"] = len(self.zones)
+            recipe["floors"] = -(-len(self.zones) // self.per_floor)
+            if self.per_floor > 1:  # a wide floor: the areas side by side
+                w, h = recipe.get("size", (40, 26))
+                recipe["size"] = [w * self.per_floor, h]
         self.recipe = recipe
         n = max(1, int(recipe.get("floors", 1)))
         exits_by_floor, start = None, 0
@@ -212,14 +268,14 @@ class DungeonState(PlayState):
                 else:
                     fwd.append(target)
             exits_by_floor = {k: (v[0], v[1]) for k, v in by.items()}
-            story.story_flags[f"zone_{self.area_key}"] = self.zones[start]
+            story.story_flags[f"zone_{self.area_key}"] = self.zones[start * self.per_floor]
 
         pool = self.area_data.get("trainer_pool", [])
         trainers = [(i, t) for i, t in enumerate(pool) if not story.is_trainer_defeated(self.area_key, i)]
         spots = [s for s in self.recipe.get("tm_spots", []) if not story.story_flags.get(f"dungeon_tm_{s}")]
         loot = self.recipe.get("loot") or {}
         self.placed = []  # the route's buttons standing on the map as figures
-        figures = [(self._floor_of(item, n - 1), item) for item in self._figure_items()]
+        figures = [(self._figure_floor(item, n), item) for item in self._figure_items()]
         self.placed = [item for _f, item in figures]
         self.run = core.Run(self.recipe, random.Random(), entrance=entrance, forwards=forwards,
                             make_wild=self._make_wild, trainers=trainers,
@@ -245,6 +301,9 @@ class DungeonState(PlayState):
         self.toast, self.toast_timer = "", 0
         self.scent_floor = -1      # the floor Sweet Scent was used on (once a floor)
         self.banner = 150          # the area's name, when you arrive
+        # the Bug-Catching Contest: its Sport Balls, the turns left, your best catch (only one is kept)
+        self.contest = ({"balls": CONTEST_BALLS, "turns": CONTEST_TURNS, "best": None, "score": 0}
+                        if self.area_data.get("bug_contest") else None)
         self._floor_surf = None
         self._floor_index = -1
         self._sprites = {}
@@ -256,18 +315,51 @@ class DungeonState(PlayState):
 
     # ---------------------------------------------------------------- zones, figures
     def _floor_of(self, item, default):
-        """The floor a trainer, way out or figure is on: its zone's, else default."""
+        """The floor a trainer, way out or figure is on: its zone's, or the recipe's "figure_floors"
+        {text: floor} (Navel Rock: Lugia below, Ho-Oh on top), else default."""
+        on = (self.recipe.get("figure_floors") or {}).get(item.get("text")) if isinstance(item, dict) else None
+        if on is not None:
+            return int(on)
         zone = item.get("zone") if isinstance(item, dict) else None
         if isinstance(zone, list):
             zone = zone[0] if zone else None
         if zone and zone in getattr(self, "zones", []):
-            return self.zones.index(zone)
+            return self.zones.index(zone) // getattr(self, "per_floor", 1)
         return default
 
-    def _set_zone(self, index):
-        """The zone of floor index is the one you're in (its wild Pokemon, its picture in battle)."""
+    def _figure_floor(self, item, n):
+        """A figure's floor: its zone's (or figure_floors'); else, in an area of zones, a person or place on
+        the first (the hub: the Isle of Armor's Master Dojo) and a legendary on the last; else the last."""
+        default = 0 if self.zones and item.get("action") != "BOSS" else n - 1
+        return self._floor_of(item, default)
+
+    def _set_zone(self, index, x=None):
+        """The zone you're in (its wild Pokemon, its picture in battle): floor index's, or on a wide floor
+        the one whose part of it x is in."""
         if self.zones:
-            self.game.story_manager.story_flags[f"zone_{self.area_key}"] = self.zones[index]
+            self.game.story_manager.story_flags[f"zone_{self.area_key}"] = self.zones[self._zone_index(index, x)]
+
+    def _zone_index(self, index, x=None):
+        """Which zone floor index (at column x, on a wide floor) is."""
+        per = getattr(self, "per_floor", 1)
+        part = 0
+        if per > 1 and x is not None and hasattr(self, "run"):
+            w = self.run.floors[index].w if index < len(self.run.floors) else self.recipe["size"][0]
+            part = min(per - 1, max(0, x * per // max(1, w)))
+        return min(len(self.zones) - 1, index * per + part)
+
+    def _zone_name(self, i):
+        return next((z.get("name") for z in self._zones() if z.get("key") == self.zones[i]), self.zones[i])
+
+    def _note_area(self):
+        """On a wide floor: crossing a gate line puts you in the next area (say so)."""
+        if getattr(self, "per_floor", 1) <= 1 or not self.zones:
+            return
+        story = self.game.story_manager
+        i = self._zone_index(self.run.index, self.run.player[0])
+        if story.story_flags.get(f"zone_{self.area_key}") != self.zones[i]:
+            self._set_zone(self.run.index, self.run.player[0])
+            self.flash(f"You entered {self._zone_name(i)}!", 120)
 
     def _figure_items(self):
         """The route's buttons that stand on the map now (as the route menu would show them)."""
@@ -326,7 +418,7 @@ class DungeonState(PlayState):
         for item in [i for i in self.placed if not any(i is j for j in now)]:
             self.run.drop_figure(item)
         for item in [i for i in now if not any(i is j for j in self.placed)]:
-            self.run.add_figure(self._floor_of(item, self.run.n_floors - 1), item)
+            self.run.add_figure(self._figure_floor(item, self.run.n_floors), item)
         self.placed = now
 
     def _use_figure(self, mover):
@@ -334,6 +426,9 @@ class DungeonState(PlayState):
         item = mover.payload
         if item.get("action") == "GAME_CORNER":
             self.talk_to_clerk()
+            return
+        if item.get("action") == "BUG_CONTEST":  # the officer at National Park's gate
+            contest_entry(self)
             return
         if item.get("action") == "ARRIVAL":  # the rival waiting on the route
             self.trigger_scripted_on_enter_battle(item["event"])
@@ -413,7 +508,21 @@ class DungeonState(PlayState):
             self.action_headbutt()
 
     # ---------------------------------------------------------------- wild Pokemon
-    def _make_wild(self, rng):
+    def _make_wild(self, rng, spot=None):
+        """A wild Pokemon for the area (on a wide floor: for the part of it where it will stand)."""
+        story = self.game.story_manager
+        flag = f"zone_{self.area_key}"
+        keep = story.story_flags.get(flag)
+        if spot is not None and getattr(self, "per_floor", 1) > 1 and self.zones:
+            index = self.run.index if hasattr(self, "run") else 0  # (the first floor, while the walk is made)
+            story.story_flags[flag] = self.zones[self._zone_index(index, spot[0])]
+        try:
+            return self._wild_for_pool(rng)
+        finally:
+            if keep is not None:
+                story.story_flags[flag] = keep
+
+    def _wild_for_pool(self, rng):
         pool = self._get_wild_pool(self.area_data)
         if not pool:
             return None
@@ -497,10 +606,13 @@ class DungeonState(PlayState):
             self.anim_from, self.anim = before, STEP_FRAMES
             self.partner_from, self.partner = self.partner, before  # it steps where you were
             self.steps += 1
+            self._note_area()
+            self._contest_tick()
         self._handle(events)
 
     def wait_turn(self):
         if self._ready():
+            self._contest_tick()
             self._handle(self.run.wait())
 
     def _handle(self, events):
@@ -541,10 +653,11 @@ class DungeonState(PlayState):
             self.walk_goal = None
 
     def _floor_name(self, index):
-        """A floor's name: its zone's ("Area 1 (East)", "B2F"), else 1F, 2F..."""
+        """A floor's name: its zone's ("Area 1 (East)", "B2F"; on a wide floor, its areas'), else 1F, 2F..."""
         if self.zones:
-            zone = next((z for z in self._zones() if z.get("key") == self.zones[index]), {})
-            return zone.get("name") or f"{index + 1}F"
+            per = getattr(self, "per_floor", 1)
+            names = [self._zone_name(i) for i in range(index * per, min(len(self.zones), (index + 1) * per))]
+            return " / ".join(names) if names else f"{index + 1}F"
         return f"B{index}F" if index and self._descending() else f"{index + 1}F"
 
     def _descending(self):
@@ -575,6 +688,10 @@ class DungeonState(PlayState):
         self.banner = 120
 
     def _try_exit(self, target):
+        if self.contest:  # leaving by the gate ends the contest: the judging first
+            self._step_back()
+            self._contest_end()
+            return
         item = self.exit_items.get(target)
         story = self.game.story_manager
         pool = self.area_data.get("trainer_pool", [])
@@ -622,6 +739,8 @@ class DungeonState(PlayState):
 
     # ---------------------------------------------------------------- meeting a wild Pokemon
     def _can_catch(self):
+        if self.contest:
+            return self.contest["balls"] > 0
         story = self.game.story_manager
         return catching.total_balls(story) > 0 and story.catch_unlocked()
 
@@ -645,6 +764,8 @@ class DungeonState(PlayState):
                     self.flash("You're out of Poke Balls!")
                 return
             self._start_math()
+        elif self.contest:
+            self.flash("In the contest, you catch with MATH!")
         else:
             self._battle_wild(self.encounter)
 
@@ -658,8 +779,12 @@ class DungeonState(PlayState):
             return
         story = self.game.story_manager
         p = self.encounter.payload
-        ball = catching.selected(story)
-        catching.use(story, ball)
+        if self.contest:  # a Sport Ball (the contest's own)
+            ball = "SPORT_BALL"
+            self.contest["balls"] -= 1
+        else:
+            ball = catching.selected(story)
+            catching.use(story, ball)
         self._thrown_ball = ball
         right = self.options[idx] == self.correct_ans
         shiny_pass = bool(p.is_shiny) and not right  # a shiny is caught even on a wrong answer (as on the route)
@@ -681,6 +806,12 @@ class DungeonState(PlayState):
         name = p.display_name.upper()
         self.run.remove(mover)
         self.encounter = None
+        if self.throw_result == "caught" and self.contest:
+            if p.cry:
+                p.cry.play()
+            self.mode = "MAP"
+            self._contest_keep(p)
+            return
         if self.throw_result == "caught":
             if p.cry:
                 p.cry.play()
@@ -753,10 +884,77 @@ class DungeonState(PlayState):
             return "HONEY"
         return None
 
+    # ---------------------------------------------------------------- the Bug-Catching Contest
+    def _contest_keep(self, p):
+        """A contest catch: kept if it scores higher than the one you have (the other is let go)."""
+        c = self.contest
+        self.game.data.mark_seen(p.id)
+        score = contest_score(p)
+        name = p.display_name.upper()
+        if c["best"] is None or score > c["score"]:
+            old = c["best"]
+            c["best"], c["score"] = p, score
+            lines = [f"Gotcha! {name} was caught!"]
+            if old is not None:
+                lines.append(f"You kept {name} and let {old.display_name.upper()} go.")
+        else:
+            lines = [f"Gotcha! {name} was caught!",
+                     f"Your {c['best'].display_name.upper()} is better. {name} was let go."]
+        self.say(lines, then=self._contest_check)
+
+    def _contest_tick(self):
+        """A turn of the contest gone (a step, or WAIT)."""
+        if self.contest and self.contest["turns"] > 0:
+            self.contest["turns"] -= 1
+
+    def _contest_check(self):
+        """Time's up, or no Sport Balls left: the judging."""
+        c = self.contest
+        if c and (c["turns"] <= 0 or c["balls"] <= 0) and self._ready():
+            self._contest_end()
+
+    def _contest_end(self, then_leave=True):
+        """The judges score your best catch against the other contestants'; prizes; you keep your bug."""
+        c, self.contest = self.contest, None
+        story = self.game.story_manager
+        lines = ["Time's up! The Bug-Catching Contest is over." if c["turns"] <= 0 or c["balls"] <= 0
+                 else "You left the contest early. Let's see how you did!"]
+        if c["best"] is None:
+            lines.append("You didn't catch any Bug Pokemon this time. Better luck next contest!")
+        else:
+            rng = random.Random()
+            board = sorted([(rng.randint(70, 190), n) for n in CONTEST_RIVALS] + [(c["score"], None)], reverse=True)
+            place = next(i for i, (_s, n) in enumerate(board) if n is None)
+            best = c["best"].display_name.upper()
+            lines.append(f"Your {best} scored {c['score']} points!")
+            if place < 3:
+                prize = CONTEST_PRIZES[place]
+                lines.append(["You won 1st place!", "You took 2nd place!", "You took 3rd place!"][place])
+                lines.append(f"You received the {forms.item_label(prize).upper()}!")
+                story.add_item(prize)
+                if place == 0:
+                    story.story_flags["won_bug_contest"] = True
+            else:
+                winner = board[0][1]
+                lines.append(f"{winner} won with {board[0][0]} points. You came in {place + 1}th.")
+                lines.append("Here's a POTION for taking part!")
+                story.add_item("POTION")
+            self.p_data = [None, c["best"], None]  # you keep your bug (the route's own catch: party or PC)
+            self.was_shiny_override = False
+            self.complete_catch(1)
+            catching.after_catch(self.game, c["best"], "SPORT_BALL")
+            self.p_data = [None] * 3
+            lines.append(f"{best} is yours to keep!")
+        self.say(lines, then=(lambda: self._leave(self.exit_items and next(iter(self.exit_items)) or "NATIONAL_PARK"))
+                 if then_leave else None)
+
     def use_scent(self, source=None):
         """Draw in three wild Pokemon: Sweet Scent (a party Pokemon's, once a floor) or Honey (source "HONEY":
         used from the Bag)."""
         if not self._ready():
+            return
+        if self.contest:
+            self.flash("Not during the contest!")
             return
         if source == "HONEY" and not (self._can_catch() and self._get_wild_pool(self.area_data)
                                       and self.game.story_manager.inventory.get("HONEY", 0) > 0):
@@ -931,6 +1129,7 @@ class DungeonState(PlayState):
         if self.anim > 0:
             self.anim -= 1
         if self.mode == "MAP":
+            self._contest_check()
             if self.walk_goal and self._ready():
                 if self.run.player == self.walk_goal:
                     self.walk_goal = None
@@ -1137,7 +1336,20 @@ class DungeonState(PlayState):
             if (x, y) not in f.seen:
                 continue
             r = at(x, y)
-            if target in (core.STAIRS, core.STAIRS_UP):
+            if target in (core.STAIRS, core.STAIRS_UP) and self.run.recipe.get("open"):
+                # an opening in the edge: a signpost with an arrow, the next area's name
+                to = self.run.index + (1 if target == core.STAIRS else -1)
+                pygame.draw.rect(screen, (150, 104, 60), (r.centerx - 4, r.y + 22, 8, TILE - 24))
+                pygame.draw.rect(screen, (214, 172, 104), (r.x + 4, r.y + 6, TILE - 8, 22), border_radius=5)
+                tip = r.right - 10 if target == core.STAIRS else r.x + 10
+                tail = r.x + 12 if target == core.STAIRS else r.right - 12
+                pygame.draw.line(screen, (110, 72, 40), (tail, r.y + 17), (tip, r.y + 17), 3)
+                d = -1 if target == core.STAIRS else 1
+                pygame.draw.polygon(screen, (110, 72, 40), [(tip, r.y + 17), (tip + 7 * d, r.y + 11), (tip + 7 * d, r.y + 23)])
+                name = self._floor_name(to) if self.per_floor == 1 else self._zone_name(self._zone_index(
+                    to, 0 if target == core.STAIRS else 10 ** 6))
+                label = (name + "  >") if target == core.STAIRS else ("<  " + name)
+            elif target in (core.STAIRS, core.STAIRS_UP):
                 pygame.draw.rect(screen, (60, 52, 44), r.inflate(-6, -6), border_radius=6)
                 for i in range(4):
                     pygame.draw.line(screen, (196, 180, 150), (r.x + 10, r.y + 12 + i * 9), (r.right - 10, r.y + 12 + i * 9), 3)
@@ -1152,6 +1364,24 @@ class DungeonState(PlayState):
             pill = tag.get_rect(midbottom=(r.centerx, r.y - 2)).inflate(12, 6)
             pygame.draw.rect(screen, (30, 36, 58), pill, border_radius=8)
             screen.blit(tag, tag.get_rect(center=pill.center))
+        if getattr(self, "per_floor", 1) > 1 and self.zones:  # gate lines between a wide floor's areas
+            per = self.per_floor
+            for part in range(1, per):
+                gx = part * f.w // per
+                if self._zone_index(self.run.index, gx) == self._zone_index(self.run.index, gx - 1):
+                    continue
+                for gy in range(y0, y1):
+                    if f.walkable(gx, gy) and (gx, gy) in f.seen:
+                        r = at(gx, gy)
+                        pygame.draw.line(screen, (250, 220, 90), (r.x + 2, r.y), (r.x + 2, r.bottom), 5)
+                        pygame.draw.line(screen, (120, 80, 30), (r.x + 6, r.y), (r.x + 6, r.bottom), 2)
+                top = next((gy for gy in range(f.h) if f.walkable(gx, gy)), None)
+                if top is not None:
+                    name = self._zone_name(self._zone_index(self.run.index, gx))
+                    tag = fonts["caption"].render(theme.pokemon_word(name.upper()) + " >", True, (255, 255, 255))
+                    pill = tag.get_rect(midbottom=(at(gx, top).centerx, at(gx, top).y - 2)).inflate(12, 6)
+                    pygame.draw.rect(screen, (30, 36, 58), pill, border_radius=8)
+                    screen.blit(tag, tag.get_rect(center=pill.center))
         for (x, y), key in f.items.items():
             if (x, y) in f.seen:
                 img = self._item_img(key) or self._ball_img()
@@ -1253,13 +1483,28 @@ class DungeonState(PlayState):
         theme.draw_textbox(screen, bar)
         name = self.area_data.get("route_name", self.area_key.replace("_", " ").title())
         floor_txt = f"  {self._floor_name(self.run.index)}" if self.run.n_floors > 1 else ""
-        theme.shadow_text(screen, theme.pokemon_word(name) + floor_txt, fonts["button"], bar.x + 20,
-                          bar.centery - fonts["button"].get_height() // 2)
-        ball = catching.selected(story)
+        if getattr(self, "per_floor", 1) > 1 and self.zones:  # (a wide floor: the area you're in)
+            floor_txt = "  " + self._zone_name(self._zone_index(self.run.index, self.run.player[0]))
+        title = theme.pokemon_word(name) + floor_txt
+        room = bar.right - 380 - bar.x - 36  # (up to the ball count)
+        font = fonts["button"] if fonts["button"].size(title)[0] <= room else fonts["label"]
+        while font.size(title)[0] > room and len(title) > 4:  # a long name: shortened
+            title = title[:-2].rstrip() + "."
+        theme.shadow_text(screen, title, font, bar.x + 20, bar.centery - font.get_height() // 2)
+        ball = "SPORT_BALL" if self.contest else catching.selected(story)
         bimg = self._item_img(ball, 30) or self._ball_img(30)
         bx = bar.right - 380
         screen.blit(bimg, (bx, bar.centery - 15))
-        theme.shadow_text(screen, f"x{catching.owned(story, ball)}", fonts["label"], bx + 36, bar.centery - 12)
+        count = self.contest["balls"] if self.contest else catching.owned(story, ball)
+        theme.shadow_text(screen, f"x{count}", fonts["label"], bx + 36, bar.centery - 12)
+        if self.contest:  # the time left, and your best catch so far
+            c = self.contest
+            info = f"TIME {c['turns']}" + (f"   BEST: {c['best'].display_name.upper()} ({c['score']})" if c["best"] else "")
+            t = fonts["label"].render(info, True, (255, 255, 255))
+            pill = t.get_rect(midtop=(bar.centerx, bar.bottom + 8)).inflate(24, 10)
+            pygame.draw.rect(screen, (30, 36, 58), pill, border_radius=10)
+            pygame.draw.rect(screen, theme.POKEMON if c["turns"] > 30 else theme.FIGHT, pill, 2, border_radius=10)
+            screen.blit(t, t.get_rect(center=pill.center))
         lead = self.lead()
         if lead:
             theme.shadow_text(screen, f"{lead.display_name.upper()} Lv{lead.level}", fonts["caption"], bar.right - 250, bar.y + 10)
