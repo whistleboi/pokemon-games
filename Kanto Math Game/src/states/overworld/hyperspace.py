@@ -93,7 +93,7 @@ class HyperspaceState(DungeonState):
         super().update()
         if self.dialogue_box.visible:
             return
-        if self.mode in ("MAP", "RT", "RTQ", "SPOTTED"):
+        if self.mode in ("MAP", "RT", "SPOTTED"):
             self.clock -= 1
             if self.clock <= 0:
                 return self._collapse()
@@ -108,7 +108,7 @@ class HyperspaceState(DungeonState):
         secs = max(0, self.clock // FPS)
         text = f"TIME {secs // 60}:{secs % 60:02d}   LEFT {len(self._enemies())}"
         t = fonts["label"].render(text, True, (255, 255, 255))
-        pill = t.get_rect(topleft=(24, 128)).inflate(26, 10)  # (under MENU: clear of the messages)
+        pill = t.get_rect(topleft=(24, self._minimap_rect().bottom + 14)).inflate(26, 10)  # (under the mini-map)
         hurry = secs <= 30 and (pygame.time.get_ticks() // 300) % 2
         pygame.draw.rect(screen, (150, 30, 40) if hurry else (40, 24, 70), pill, border_radius=10)
         pygame.draw.rect(screen, (200, 120, 255), pill, 2, border_radius=10)

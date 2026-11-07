@@ -388,6 +388,9 @@ class Game:
             if remaining and self.current_state is frame_start_state:
                 self.current_state.handle_events(remaining)
         self.current_state.update()
+        if getattr(self, "rt_mega", None):  # a real-time Mega's minute, and its Key Stone's cooldown
+            from src.pokemon import mega_clock
+            mega_clock.tick(self)
         if hasattr(self, "music"):
             self.music.update()  # a fanfare that ended lets the music carry on
         self.current_state.draw()

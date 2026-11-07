@@ -20,6 +20,13 @@ from src.states.overworld.common import (
 )
 
 
+
+def _story_badges(game):
+    """How far the region's story is: its badges (8 once you're its Champion)."""
+    story = game.story_manager
+    region = story.get_current_region()
+    return 8 if story.is_region_champion(region) else len(story.badges.get(region, []))
+
 class RouteEncounters:
     """Part of PlayState (route.py): its battles."""
 
@@ -226,7 +233,7 @@ class RouteEncounters:
             self.initial_round_active = False
             self.show_progression_menu()
 
-    def trigger_trainer_battle(self, specific_index=None):
+    def trigger_trainer_battle(self, specific_index=None):  # (route trainers; prizes: items.route_rewards)
         trainer_pool = self.area_data.get("trainer_pool", [])
         if not trainer_pool:
             self.trigger_wild_encounter()
@@ -257,6 +264,10 @@ class RouteEncounters:
                                for k, v in custom_dialogue.items()}
         rewards = trainer_info.get("rewards")
         victory_flag = trainer_info.get("victory_flag")
+        if not (trainer_info.get("is_boss_battle") or trainer_info.get("villain") == "leader"
+                or trainer_class in ("ROCKET_LEADER", "RIVAL")):  # a route trainer: healing items, not balls
+            from src.pokemon import items as _items
+            rewards = _items.route_rewards(_story_badges(self.game), rewards)
 
         area_key = self.game.story_manager.current_area_key
         battle_type = self.area_data.get("battle_type", "field")

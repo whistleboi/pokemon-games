@@ -105,6 +105,26 @@ def standard_stock(badges):
     return out
 
 
+# Route trainers' prizes (Jordan, 11-06): healing items in place of Poke Balls, more and stronger as the
+# region's story goes on (by its badges: Potions, then Super Potions and Revives, then Hyper Potions).
+# Max Revives are never prizes: they're found lying on the walked maps, late on (dungeon.MAX_REVIVE_BADGES).
+TRAINER_PRIZES = [(0, {"POTION": 2}), (2, {"POTION": 1, "SUPER_POTION": 1}),
+                  (4, {"SUPER_POTION": 2, "REVIVE": 1}), (6, {"HYPER_POTION": 2, "REVIVE": 1})]
+
+
+def trainer_prize(badges):
+    return dict(next(prize for need, prize in reversed(TRAINER_PRIZES) if badges >= need))
+
+
+def route_rewards(badges, rewards):
+    """A route trainer's rewards: its own (a story item) without the Poke Balls, and the healing prize."""
+    out = {k: v for k, v in (rewards or {}).items() if k != "balls"}
+    for k, v in trainer_prize(badges).items():
+        out[k] = out.get(k, 0) + v
+    out["balls"] = 0  # (a battle gives 3 when it isn't said)
+    return out
+
+
 def medicine_effect(item, pokemon):
     """Use a medicine on a Pokemon (outside or inside battle). Returns (used, lines). The caller
     takes the item from the Bag when used."""

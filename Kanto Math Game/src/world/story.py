@@ -1301,8 +1301,10 @@ class StoryManager:
 
     @staticmethod
     def _pokemon_record(p):
+        # (a Mega / Primal form lasts a battle, or a real-time minute: it's saved as the form it goes back to)
+        form = (getattr(p, "_form_state", None) or {}).get("form", p.form)
         return {
-            "id": p.id, "form": p.form, "shiny": p.is_shiny,
+            "id": p.id, "form": form, "shiny": p.is_shiny,
             "level": p.level, "xp": p.xp, "friendship": p.friendship, "counters": dict(p.counters),
             "affection": getattr(p, "affection", 0), "everstone": bool(getattr(p, "everstone", False)),
             "ivs": dict(getattr(p, "ivs", {})), "moves": list(getattr(p, "moves", [])),
@@ -1316,8 +1318,12 @@ class StoryManager:
             "tera_type": getattr(p, "tera_type", None), "held_item": getattr(p, "held_item", None),
         }
 
+    TEMPORARY_FORMS = ("mega", "mega_x", "mega_y", "primal")
+
     def _load_pokemon(self, p_data, loader):
         form = p_data.get("form", "normal")
+        if form in self.TEMPORARY_FORMS:  # (an older save made mid-battle, Mega Evolved: it's back to normal)
+            form = "normal"
         raw = loader.fetch_specific(p_data["id"], form="normal" if form == "gmax" else form,
                                     is_shiny=p_data.get("shiny", False))
         pokemon = Pokemon(raw, loader.game.assets, size_mult=2.5)

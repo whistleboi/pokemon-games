@@ -778,9 +778,14 @@ class DungeonState(RealTime, PlayState):
     # ---- items
     HONEY_PACK = "HONEY_x3"   # Jordan (11-06): Honey matters; three of it on every floor with wild Pokemon
 
+    MAX_REVIVE_BADGES = 6  # (late in a region's story a Max Revive can lie on a floor; trainers never give one)
+
     def _floor_loot(self, loot):
         def roll(rng):  # (asked as each floor is made)
             items = core.roll_loot(rng, loot)
+            from src.states.overworld.route_encounters import _story_badges
+            if _story_badges(self.game) >= self.MAX_REVIVE_BADGES and rng.random() < 0.2:
+                items.append("MAX_REVIVE")
             wild = bool(self._get_wild_pool(self.area_data)) and not getattr(self, "contest", None)
             return items + [self.HONEY_PACK] if wild else items
         return roll
@@ -1018,7 +1023,8 @@ class DungeonState(RealTime, PlayState):
             lines.append("You didn't catch any Bug Pokemon this time. Better luck next contest!")
         else:
             rng = random.Random()
-            board = sorted([(rng.randint(70, 190), n) for n in CONTEST_RIVALS] + [(c["score"], None)], reverse=True)
+            board = sorted([(rng.randint(70, 190), n) for n in CONTEST_RIVALS] + [(c["score"], None)],
+                       key=lambda t: t[0], reverse=True)  # (a tie: by score alone)
             place = next(i for i, (_s, n) in enumerate(board) if n is None)
             best = c["best"].display_name.upper()
             lines.append(f"Your {best} scored {c['score']} points!")
@@ -1057,7 +1063,9 @@ class DungeonState(RealTime, PlayState):
         source = source or self._scent_source()
         story = self.game.story_manager
         if source is None:
-            if not self._can_catch():
+            if not self._get_wild_pool(self.area_data):  # (a building, a lab: Sweet Scent and Honey do nothing)
+                self.flash("No wild Pokemon live here, so nothing comes to the sweet smell.")
+            elif not self._can_catch():
                 self.flash("You need Poke Balls to catch here.")
             else:
                 self.flash("No HONEY, and no Pokemon that knows SWEET SCENT.")
@@ -1083,14 +1091,17 @@ class DungeonState(RealTime, PlayState):
         """The map's own buttons (bottom right): (rect, label, colour, action, enabled, small text)."""
         w, h = self.game.width, self.game.height
         buttons = [
-            (pygame.Rect(w - 280, h - 162, 126, 70), theme.pokemon_word("POKEMON"), theme.POKEMON,
-             self._open_party, True, None),
+            (self._qp_button_rect(), theme.pokemon_word("POKEMON"), theme.POKEMON,
+             self._qp_toggle, True, None),  # (its list opens above it: src/states/overworld/realtime.py)
             (pygame.Rect(w - 146, h - 162, 126, 70), theme.pokemon_word("POKEDEX"), theme.BAG,
              self._open_pokedex, True, None),
             (pygame.Rect(w - 280, h - 80, 126, 58), "HONEY", (226, 170, 40), self.use_scent,
              bool(self._scent_source()) if hasattr(self, "run") else False, self._honey_note()),
             (pygame.Rect(w - 146, h - 80, 126, 58), "WAIT", theme.RUN, self.wait_turn, True, "a turn"),
         ]
+        mega = self._map_mega_button() if hasattr(self, "run") and not self.contest else None
+        if mega:  # (as in Legends: Z-A: Mega Evolve the Pokemon following you, right here)
+            buttons.append(mega)
         act = self._act_here() if hasattr(self, "run") else None
         if act:  # beside water or a tree
             sub = {"FISH": "the water here", "HEADBUTT": "this tree", "TALK": "the clerk",
@@ -1101,6 +1112,8 @@ class DungeonState(RealTime, PlayState):
     def _honey_note(self):
         """The HONEY button's small line: how much you have (or Sweet Scent's turn)."""
         n = self.game.story_manager.inventory.get("HONEY", 0)
+        if hasattr(self, "run") and not self._get_wild_pool(self.area_data):
+            return "no wild here"
         if hasattr(self, "run") and self._scent_source() == "SWEET SCENT":
             return "Sweet Scent"
         return f"x{n}" if n else "none"
@@ -1135,6 +1148,7 @@ class DungeonState(RealTime, PlayState):
     def handle_events(self, events):
         if self.mode == "CATCH":
             return super().handle_events(events)
+        events = [e for e in events if not self._qp_event(e)]  # (the POKEMON button and its list first)
         if self.mode in self.RT_MODES:
             return self._rt_events(events)
         for e in events:
@@ -1231,6 +1245,8 @@ class DungeonState(RealTime, PlayState):
                 self.dialogue_box.update()
             if self.toast_timer > 0:
                 self.toast_timer -= 1
+            if self.anim > 0:  # (you can walk during it)
+                self.anim -= 1
             self._rt_update()
             return
         if self.dialogue_box.visible:
@@ -1628,8 +1644,12 @@ class DungeonState(RealTime, PlayState):
             if not self.run.visible(m.x, m.y):
                 continue
             r = at(m.x, m.y)
+            fight = self.rt is not None and m is self.rt["mover"] and self.rt["wild"]
+            if fight:  # (a real-time battle's wild one: mid-step, looking the way it looks)
+                r = self._rt_foe_rect()
             if m.kind == "wild":
-                img = self._icon(m.payload, TILE, flip=(m.x < self.run.player[0]), facing=getattr(m, "facing", None))
+                img = self._icon(m.payload, TILE, flip=(m.x < self.run.player[0]),
+                                 facing=self.rt["face"] if fight else getattr(m, "facing", None))
                 screen.blit(img, img.get_rect(midbottom=(r.centerx, r.bottom + 4)))
                 if m.payload.is_shiny:
                     pygame.draw.circle(screen, (255, 230, 90), (r.right - 8, r.y + 8), 5)
@@ -1671,8 +1691,10 @@ class DungeonState(RealTime, PlayState):
         drawn = []  # (bottom, image, rect): the lower one in front
         if lead and self.partner != self.run.player and me is not None:
             (fx, fy), (tx, ty) = self.partner_from, self.partner
-            r = pygame.Rect(int(ox + (fx + (tx - fx) * k) * TILE), int(oy + (fy + (ty - fy) * k) * TILE), TILE, TILE)
-            way = (self.run.player[0] - tx, self.run.player[1] - ty)
+            pk = self._rt_partner_k() if self.rt else k  # (in a real-time battle it walks at its own pace)
+            r = pygame.Rect(int(ox + (fx + (tx - fx) * pk) * TILE), int(oy + (fy + (ty - fy) * pk) * TILE), TILE, TILE)
+            look = self.rt["spot"] if self.rt else self.run.player  # (in a fight it looks at the foe)
+            way = (look[0] - tx, look[1] - ty)
             way = (max(-1, min(1, way[0])), 0) if way[0] else (0, max(-1, min(1, way[1])) or 1)
             img = self._icon(lead, TILE, flip=(self.run.player[0] > tx), facing=way)
             drawn.append((r.bottom, img, img.get_rect(midbottom=(r.centerx, r.bottom - 2))))
@@ -1698,6 +1720,7 @@ class DungeonState(RealTime, PlayState):
             self._draw_guide(screen, at)
         self._draw_hud(screen)
         self._rt_draw(screen)
+        self._draw_qparty(screen)
         if self.mode in ("CHOICE", "MATH", "THROW"):
             self._draw_encounter(screen)
         elif self.mode == "SPOTTED" and self.encounter:
@@ -1879,7 +1902,7 @@ class DungeonState(RealTime, PlayState):
     def _minimap_rect(self):
         f = self.run.floor
         s = 4
-        return pygame.Rect(self.game.width - f.w * s - 24, 92, f.w * s + 8, f.h * s + 8)
+        return pygame.Rect(20, 128, f.w * s + 8, f.h * s + 8)  # (under MENU, Jordan 11-06)
 
     def _draw_hud(self, screen):
         W, H = self.game.width, self.game.height
@@ -1912,9 +1935,15 @@ class DungeonState(RealTime, PlayState):
             pygame.draw.rect(screen, theme.POKEMON if c["turns"] > 30 else theme.FIGHT, pill, 2, border_radius=10)
             screen.blit(t, t.get_rect(center=pill.center))
         lead = self.lead()
-        if lead:
-            theme.shadow_text(screen, f"{lead.display_name.upper()} Lv{lead.level}", fonts["caption"], bar.right - 250, bar.y + 10)
-            theme.hp_bar(screen, bar.right - 250, bar.y + 36, 220, lead.current_hp, lead.get_max_hp())
+        if lead:  # (right-aligned: a long name, MEGA VENUSAUR, stays in the bar)
+            text = f"{lead.display_name.upper()} Lv{lead.level}"
+            font = fonts["caption"]
+            room = bar.right - 20 - (bx + 100)
+            if font.size(text)[0] > room:
+                font = fonts["small"]
+            t = font.render(text, True, (255, 255, 255))
+            theme.shadow_text(screen, text, font, bar.right - 20 - t.get_width(), bar.y + 10)
+            theme.hp_bar(screen, bar.right - 240, bar.y + 36, 220, lead.current_hp, lead.get_max_hp())
         # the mini-map
         f = self.run.floor
         mm = self._minimap_rect()

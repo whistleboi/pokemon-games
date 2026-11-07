@@ -1129,7 +1129,7 @@
       "travel_options": [
         {"text": "Route 4 (to Santalune)", "target_area": "KALOS_ROUTE_4"},
         {"text": "Route 5 (to Camphrier)", "target_area": "KALOS_ROUTE_5"},
-        {"text": "Route 13 (to Laverre)", "target_area": "KALOS_ROUTE_13", "condition": "has_plant_badge"}, {"text": "Hyperspace Lumiose", "target_area": "HYPERSPACE_LUMIOSE", "condition": "has_voltage_badge", "color": "GOLD"},
+        {"text": "Route 13 (to Laverre)", "target_area": "KALOS_ROUTE_13", "condition": "has_plant_badge"}, {"text": "Hyperspace Lumiose", "target_area": "HYPERSPACE_LUMIOSE", "condition": "caught_range:720-720", "color": "GOLD"},
         {"text": "Route 14 (south)", "target_area": "KALOS_ROUTE_14", "condition": "has_voltage_badge"},
         {"text": "Route 22", "target_area": "KALOS_ROUTE_22"},
         {"text": "Kiloude City", "target_area": "KILOUDE_CITY", "condition": "beat_kalos_champion"},

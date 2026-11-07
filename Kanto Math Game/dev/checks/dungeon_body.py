@@ -605,7 +605,7 @@ check(type(_h).__name__ == "HyperspaceState" and _h.run.fog is False and _h.run.
 check(_h._stairs_blocked(), "the stairs wait until the floor is clear")
 _w = next(m for m in _h.run.floor.movers if m.kind == "wild")
 _h._meet_wild(_w)
-_h._rt_answer(_h.rt_q[2].index(_h.rt_q[1]))
+check(_h.mode == "RT", "a wild one: straight into the real-time battle (no math question first)")
 _w.payload.current_hp = 1
 _lead = story.player_team[0]
 _xp0 = (_lead.level, _lead.xp)
@@ -628,8 +628,7 @@ check(_h.mode == "MAP" and _w not in _h.run.floor.movers and (_lead.level, _lead
 _w2 = next((m for m in _h.run.floor.movers if m.kind == "wild"), None)
 if _w2:
     _h._meet_wild(_w2)
-    check(_h.mode == "RTQ", "a wild one: straight into the real-time battle (no catch-or-battle question)")
-    _h._rt_answer(_h.rt_q[2].index(_h.rt_q[1]))
+    check(_h.mode == "RT", "a wild one: straight into the real-time battle (no catch-or-battle question)")
     _w2.payload.current_hp = 1
     for _k in range(300):
         if _h.mode != "RT":
@@ -651,6 +650,10 @@ _p = kanto("KANTO_ROUTE_3", came="PEWTER_CITY")
 story.player_team[0].level = 8
 _t = next((m for f in _p.run.floors for m in f.movers if m.kind == "trainer"), None)
 _money = story.money
+from src.pokemon import items as _it
+from src.states.overworld.route_encounters import _story_badges
+_prize = _it.trainer_prize(_story_badges(g))
+_inv0, _bl = {k: story.inventory.get(k, 0) for k in _prize}, story.balls_left
 _p._battle_trainer(_t)
 check(_p.dialogue_box.visible, "a trainer: its intro lines first, in the map's text box (no intro screen)")
 for _k in range(3000):
@@ -661,9 +664,7 @@ for _k in range(3000):
         if _cb:
             _cb()
         continue
-    if getattr(_st, "mode", "") == "RTQ":
-        _st._rt_answer(_st.rt_q[2].index(_st.rt_q[1]))
-    elif getattr(_st, "mode", "") == "RT":
+    if getattr(_st, "mode", "") == "RT":
         for _f in _st.rt["foes"]:
             _f.current_hp = min(_f.current_hp, 1)
         _st._rt_use(_k % 4)
@@ -672,6 +673,165 @@ for _k in range(3000):
     _st.update()
 check(story.is_trainer_defeated("KANTO_ROUTE_3", _t.payload[0]) and story.money > _money,
       "...a real-time win: the trainer beaten, its prize money paid (the battle's own rewards)")
+check(all(story.inventory.get(k, 0) == _inv0[k] + n for k, n in _prize.items()) and story.balls_left == _bl,
+      f"...a route trainer's prize: healing items ({_prize}), no Poke Balls")
+check(_it.route_rewards(1, {"balls": 3}) == {"POTION": 2, "balls": 0}
+      and _it.route_rewards(3, None) == {"POTION": 1, "SUPER_POTION": 1, "balls": 0}
+      and _it.route_rewards(5, {"balls": 2, "TM_X": 1}) == {"TM_X": 1, "SUPER_POTION": 2, "REVIVE": 1, "balls": 0}
+      and _it.route_rewards(8, {}) == {"HYPER_POTION": 2, "REVIVE": 1, "balls": 0}
+      and not any("MAX_REVIVE" in _it.route_rewards(b, {}) for b in range(9)),
+      "prizes grow with the badges: Potions, Super Potions and Revives, Hyper Potions (never a Max Revive)")
+
+# walking during a real-time battle (Jordan, 11-06): your Pokemon follows loosely, the foe follows it
+_p = kanto("KANTO_ROUTE_1")
+story.player_team[0].level = 30
+_rt_w, _ = beside(_p, "wild")
+_rt_w.payload.level = 3
+_rt_w.payload.current_hp = _rt_w.payload.get_max_hp() * 50  # (it lasts while we walk)
+_p._meet_wild(_rt_w)
+check(_p.mode == "RT", "bump a wild one: the real-time battle, no math question")
+_p.rt["foe_cd"] = 10 ** 6  # (it doesn't strike back while we walk)
+_start = _p.run.player
+_f = _p.run.floor
+_blk = _p._rt_blocked() - {_p.partner}
+_way = next(((dx, dy) for dx, dy in ((-1, 0), (0, 1), (0, -1), (1, 0))
+             if _f.walkable(_start[0] + dx, _start[1] + dy) and (_start[0] + dx, _start[1] + dy) not in _blk), None)
+check(_way is not None, "(room to step)")
+if _way:
+    _key = {(-1, 0): pygame.K_LEFT, (1, 0): pygame.K_RIGHT, (0, -1): pygame.K_UP, (0, 1): pygame.K_DOWN}[_way]
+    _p.handle_events([pygame.event.Event(pygame.KEYDOWN, key=_key)])
+    check(_p.run.player == (_start[0] + _way[0], _start[1] + _way[1]), "an arrow key: a step, the battle going on")
+    frames(_p, 8)
+    _spot0 = _p.rt["spot"]
+    _goal = next(((x, y) for x in range(_f.w) for y in range(_f.h) if 6 <= _p._dist((x, y), _spot0) <= 7
+                  and _f.walkable(x, y) and (x, y) not in _p._rt_blocked()
+                  and 0 < len(core.path(_f, _p.run.player, (x, y), _p._rt_blocked() - {_p.run.player})) <= 8), None)
+    _p.handle_events([pygame.event.Event(pygame.MOUSEBUTTONDOWN, button=1, pos=_p._tile_rect(*_goal).center)])
+    frames(_p, 60)
+    check(_p.run.player == _goal, "a tap on the map: you walk there, the battle going on")
+    frames(_p, 75)
+    check(_p._dist(_p.partner, _p.run.player) <= _p.FOLLOW + 1, "...your Pokemon follows you, a few tiles back")
+    check(_p.rt["spot"] != _spot0 and _p._dist(_p.rt["spot"], _p.partner) <= _p.CLOSE + 1
+          and (_rt_w.x, _rt_w.y) == _p.rt["spot"], "...and the wild one follows your Pokemon (the fight moves)")
+    # out of reach: no move
+    _p.rt["spot"] = _p.rt["f_from"] = (_rt_w.x, _rt_w.y)
+    _hp0 = _rt_w.payload.current_hp
+    _real = (_rt_w.x, _rt_w.y)
+    _far = next(((x, y) for x in range(_f.w) for y in range(_f.h) if _f.walkable(x, y) and not _f.occupied(x, y)
+                 and _p._dist((x, y), _real) > _p.REACH), None)
+    if _far:
+        _keep = _p.partner
+        _p.partner = _far
+        _p.rt["busy"] = 0
+        _p._rt_use(0)
+        check(_p.rt["shot"] is None and _p.rt["cd"][0] == 0, "too far away: the move doesn't go (no recharge used)")
+        _p.partner = _keep
+    # from behind: more damage
+    _fx, _fy = _p.rt["spot"]
+    _p.rt["face"] = (1, 0)
+    _p.partner = (_fx - 1, _fy)
+    check(_p._angle() == "back", "your Pokemon behind the foe (it looks the other way): a hit from behind")
+    _p.partner = (_fx + 1, _fy)
+    check(_p._angle() == "front", "...in front of it: a plain hit")
+    _p.mode, _p.rt = "MAP", None
+
+# a real-time Mega (Jordan, 11-06): a minute, between fights too, then the Key Stone rests 30 seconds
+from src.pokemon import mega_clock, forms as _forms
+from src.states.systems import PokemonPartyMenuState
+_p = kanto("KANTO_ROUTE_1")
+story.player_team = [mk(3)]
+story.player_team[0].level = 40
+story.inventory["MEGA_BRACELET"] = story.inventory["VENUSAURITE"] = 1
+_v = story.player_team[0]
+_img0 = _v.image
+_rt_w, _ = beside(_p, "wild")
+_rt_w.payload.level = 3
+_p._meet_wild(_rt_w)
+check(_p._rt_mega_option() is not None, "real time: MEGA is there (Key Stone and Venusaurite)")
+_p.handle_events([pygame.event.Event(pygame.KEYDOWN, key=pygame.K_m)])
+check(_v.form == "mega" and "MEGA" in _v.display_name.upper() and mega_clock.active(g), "...M: it Mega Evolves")
+_party = PokemonPartyMenuState(g, _p, context="normal")
+g.change_state(_party)
+_party.update(); _party.draw()
+check(_v.image is not _img0 and _v.display_name.upper().startswith("MEGA"),
+      "the party menu shows the Mega (its picture and name)")
+g.change_state(_p)
+_rt_w.payload.current_hp = 1
+for _k in range(400):
+    if _p.dialogue_box.visible:
+        _cb = _p.dialogue_box.callback
+        _p.dialogue_box.visible = False
+        if _cb:
+            _cb()
+        continue
+    if _p.mode == "RTCATCH":
+        _p._rt_catch(False)
+        continue
+    if _p.mode != "RT":
+        break
+    _p._rt_use(_k % 4)
+    _p.update()
+    mega_clock.tick(g)
+check(_v.form == "mega" and mega_clock.active(g), "the fight won: still a Mega on the map (its minute goes on)")
+for _k in range(mega_clock.SECONDS * 25):
+    mega_clock.tick(g)
+check(_v.form == "normal" and mega_clock.cooling(g), "a minute on: back to normal, the Key Stone resting")
+_p2 = g.current_state
+check(story._pokemon_record(_v)["form"] == "normal", "(saved as its normal form)")
+for _k in range(mega_clock.COOLDOWN * 25 + 2):
+    mega_clock.tick(g)
+check(not mega_clock.cooling(g), "30 seconds on: MEGA is ready again")
+# on the map too (Legends: Z-A): the MEGA button whenever the Pokemon following you can Mega Evolve
+g.rt_mega = None
+_p = g.current_state if isinstance(g.current_state, DungeonState) else _p
+_mb = _p._map_mega_button()
+check(_mb is not None and _mb[4] and _mb in _p._buttons(), "on the map: MEGA (the Venusaur following you can)")
+_p.handle_events([pygame.event.Event(pygame.MOUSEBUTTONDOWN, button=1, pos=_mb[0].center)])
+check(_v.form == "mega" and mega_clock.active(g), "...tapped: it Mega Evolves right there")
+_mb = _p._map_mega_button()
+check(_mb is not None and not _mb[4] and "left" in _mb[5], f"...the button counts its minute down ({_mb and _mb[5]})")
+g.rt_mega = None
+_forms.revert_form(_v)
+story.player_team = [mk(25), _v]
+check(_p._map_mega_button() is None, "a Pokemon with no Mega Stone following you: no MEGA button")
+# switching in a real-time fight
+story.player_team[0].level = 30
+_rt_w, _ = beside(_p, "wild")
+_rt_w.payload.current_hp = _rt_w.payload.get_max_hp() * 20
+_p._meet_wild(_rt_w)
+_p.rt["foe_cd"] = 10 ** 6
+_p.handle_events([pygame.event.Event(pygame.MOUSEBUTTONDOWN, button=1, pos=_p._qp_button_rect().center)])
+check(_p.qp_open, "POKEMON: your party in a list above it")
+_p.handle_events([pygame.event.Event(pygame.MOUSEBUTTONDOWN, button=1, pos=_p._qp_rects()[1].center)])
+check(_p._me() is _v and story.player_team[0] is _v and not _p.qp_open and _p.rt["busy"] > 0,
+      "...Venusaur picked: it's out (it leads, a moment's pause)")
+_v.current_hp = 0
+_p.handle_events([pygame.event.Event(pygame.KEYDOWN, key=pygame.K_TAB)])
+_p.handle_events([pygame.event.Event(pygame.KEYDOWN, key=pygame.K_1)])
+check(_p._me() is not _v and _p._me() is story.player_team[1], "a fainted one can't come out (the next one fights)")
+_v.current_hp = _v.get_max_hp()
+_p.mode, _p.rt = "MAP", None
+# the list on the map: tap one to have it follow you; right-click (or its potion) heals it, strongest first
+_p.qp_open = True
+_pk = story.player_team[1]
+_p.handle_events([pygame.event.Event(pygame.MOUSEBUTTONDOWN, button=1, pos=_p._qp_rects()[1].center)])
+check(story.player_team[0] is _pk and _p.lead() is _pk and not _p.qp_open, "on the map: tap one, it follows you")
+story.inventory.update({"POTION": 3, "HYPER_POTION": 1})
+_pk.current_hp = 5
+_p.qp_open = True
+_p.handle_events([pygame.event.Event(pygame.MOUSEBUTTONDOWN, button=3, pos=_p._qp_rects()[0].center)])
+check(story.inventory.get("HYPER_POTION", 0) == 0 and story.inventory.get("POTION") == 3 and _pk.current_hp > 5,
+      "right-click: healed with the strongest potion (the Hyper Potion)")
+_pk.current_hp = 5
+_p.handle_events([pygame.event.Event(pygame.MOUSEBUTTONDOWN, button=1, pos=_p._qp_heal_rect(_p._qp_rects()[0]).center)])
+check(story.inventory.get("POTION") == 2 and _pk.current_hp > 5, "...or tap its potion (now a Potion)")
+_v.current_hp = 0
+story.inventory["REVIVE"] = 1
+_p._quick_heal(1)
+check(_v.current_hp > 0 and not story.inventory.get("REVIVE"), "a fainted one: a Revive")
+_p.qp_open = False
+story.inventory.pop("VENUSAURITE", None); story.inventory.pop("MEGA_BRACELET", None)
+
 story.battle_style = "TRADITIONAL"
 
 print(f"##### {fails} failures")
