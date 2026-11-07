@@ -834,4 +834,71 @@ story.inventory.pop("VENUSAURITE", None); story.inventory.pop("MEGA_BRACELET", N
 
 story.battle_style = "TRADITIONAL"
 
+# RUN in a real-time fight (Jordan, 11-06): it opened the hidden battle's Bag, and closing it started that battle
+story.battle_style = "REALTIME"
+_p = kanto("KANTO_ROUTE_1")
+_rt_w, _ = beside(_p, "wild")
+_rt_w.payload.current_hp = _rt_w.payload.get_max_hp() * 20
+_p._meet_wild(_rt_w)
+_run = _p._rt_rects()[1]
+_ev = [pygame.event.Event(pygame.MOUSEBUTTONDOWN, button=1, pos=_run.center)]
+_left = g.ui_manager.unconsumed(_ev, lambda: g.current_state is not _p)  # (as Game.run hands a tap out)
+if _left and g.current_state is _p:
+    _p.handle_events(_left)
+check(g.current_state is _p and _p.mode == "MAP" and _p.rt is None, "real time: RUN runs (no Bag, no battle screen)")
+story.battle_style = "TRADITIONAL"
+
+# walkable towns (Jordan, 11-06): the town on its Pokemon Journeys map, walked like a route
+from src.states.overworld import CityState as _CS
+from src.states.overworld.walk_town import WalkTownState as _WTS
+g.walk_towns = True
+g.walk_town_pos = None
+story.story_flags["received_starter_kanto"] = True
+story.story_flags["move_offer_kanto"] = True  # (the suites' save is Kanto's Champion: no move offer here)
+story.current_area_key, story.last_area_key = "PALLET_TOWN", "KANTO_ROUTE_1"
+_wt = _CS(g); g.change_state(_wt)
+
+
+def _tap_through(st, n=400):
+    """Tap through whatever the town says first (a call, a milestone), as a player would."""
+    for _ in range(n):
+        if not st.npc_active:
+            return
+        st.handle_events([pygame.event.Event(pygame.MOUSEBUTTONDOWN, button=1, pos=(640, 600))])
+        frames(st)
+
+
+_tap_through(_wt)
+check(isinstance(_wt, _WTS) and _wt.player[1] <= 2, f"Pallet Town: walked, in from Route 1 at the top ({_wt.player})")
+_lab = next(t for t, k in _wt.doors.items() if k == "lab")
+_wt.walk_goal = _lab
+for _k in range(300):
+    frames(_wt)
+    if _wt.hover_menu_active:
+        break
+check(_wt.hover_menu_active and any("Oak" in b.text for b in _wt.hover_buttons), "walk into the Lab: Oak's options")
+_wt.clear_hover_menu()
+_n = min(t for t, v in _wt.exits.items() if v == "KANTO_ROUTE_1")
+_wt.player = _wt.anim_from = (_n[0], _n[1] + 1)
+_wt.anim = 0
+_wt.step(0, -1)
+check(type(g.current_state).__name__ == "AreaTransitionState", "walk off the top: on to Route 1")
+g.walk_town_pos = None
+story.current_area_key, story.last_area_key = "VIRIDIAN_CITY", "KANTO_ROUTE_1"
+_wt = _CS(g); g.change_state(_wt)
+_tap_through(_wt)
+check(_wt.player[1] >= _wt.h - 3 and set(_wt.doors.values()) >= {"center", "mart", "gym"},
+      "Viridian City: in from Route 1 at the bottom; its Center, Mart and Gym have doors")
+_wt.walk_goal = next(t for t, k in _wt.doors.items() if k == "center")
+for _k in range(600):
+    frames(_wt)
+    if g.current_state is not _wt:
+        break
+_pc = g.current_state
+check(type(_pc).__name__ == "PokeCenterState" and _pc.previous_state is _wt, "walk into the Pokemon Center: inside")
+_spot = _wt.player
+g.change_state(_wt)
+check(_wt.player == _spot and _wt.action_menu not in g.ui_manager.elements, "...out again: where you were, no menu bar")
+g.walk_towns = False
+
 print(f"##### {fails} failures")

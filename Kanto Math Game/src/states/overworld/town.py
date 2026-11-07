@@ -25,6 +25,14 @@ from src.states.overworld.town_story import TownStory
 
 # [REF-0036: City Hub State]
 class CityState(TownMenu, TownStory, KantoTown, JohtoTown, GameState):
+    def __new__(cls, game, *args, **kwargs):
+        """A town with a walkable map (walk_town.py, Jordan 11-06) is walked; the others are this menu."""
+        if cls is CityState:
+            from src.states.overworld import walk_town
+            if walk_town.available(game, game.story_manager.current_area_key):
+                return object.__new__(walk_town.WalkTownState)
+        return object.__new__(cls)
+
     def __init__(self, game):
         from src.states.overworld.area_transition import _collapse_hud
         super().__init__(game)

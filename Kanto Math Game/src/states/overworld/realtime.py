@@ -75,17 +75,34 @@ class RealTime:
         orig = self.game.change_state
         self.game.change_state = lambda state, *a, **k: caught.append(state)
         try:
-            fn()
+            with self._ui_kept():
+                fn()
         finally:
             self.game.change_state = orig
         return caught[-1] if caught else None
+
+    def _ui_kept(self):
+        """While the hidden battle is made: the buttons it adds (its FIGHT / BAG / POKEMON / RUN) don't stay
+        on the map's screen (Jordan, 11-06: RUN opened its Bag, and closing the Bag started it)."""
+        import contextlib
+        ui = self.game.ui_manager
+
+        @contextlib.contextmanager
+        def kept():
+            before = list(ui.elements)
+            try:
+                yield
+            finally:
+                ui.elements[:] = [e for e in ui.elements if e in before]
+        return kept()
 
     def _rt_wild(self, mover):
         from src.states.battle import WildBattleState
         self.walk_goal = None
         self.rounds_completed += 1
-        battle = WildBattleState(self.game, mover.payload, self.area_key,
-                                 background_image=self._get_battle_background_for_area())
+        with self._ui_kept():
+            battle = WildBattleState(self.game, mover.payload, self.area_key,
+                                     background_image=self._get_battle_background_for_area())
         battle.play_state_data = self._play_data()
         self._rt_start(mover, battle, wild=True)
 
@@ -677,7 +694,8 @@ class RealTime:
             lines += won if isinstance(won, list) else ([won] if won else [f"You beat {b.trainer_name}!"])
             try:
                 b.phase = "VICTORY_TEXT"
-                b.advance_victory_sequence()  # (it lists the rewards in its text box)
+                with self._ui_kept():
+                    b.advance_victory_sequence()  # (it lists the rewards in its text box)
                 lines += list(b.dialogue_box.text_lines or [])
             except Exception as e:
                 print("Real-time rewards text failed:", e)
