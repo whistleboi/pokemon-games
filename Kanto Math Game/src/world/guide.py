@@ -106,9 +106,11 @@ def advances_goal(game, area_key, item):
     mission = tracked_mission(game)
     if not mission:
         return False
-    need = mission.get("completed_flag")
-    action = item.get("action")
     story = game.story_manager
+    flags = story.mission_flags(mission)
+    left = [f for f in flags if not story.story_flags.get(f)]  # (a list: the ones not done yet)
+    need = left[0] if len(left) == 1 else (set(left) or None)
+    action = item.get("action")
     area = game.loader.area_data.get("STORY_PROGRESSION", {}).get(area_key, {})
     if action == "GYM":
         return bool(mission.get("completed_badge") or str(need or "").startswith("badge_"))             and mission_target(game, mission) == area_key
@@ -118,15 +120,21 @@ def advances_goal(game, area_key, item):
         return False
     if action == "TRAINER":
         done = story.defeated_trainers.get(area_key, set())
-        return any(t.get("victory_flag") == need for i, t in enumerate(area.get("trainer_pool") or [])
+        return any(_needs(need, t.get("victory_flag")) for i, t in enumerate(area.get("trainer_pool") or [])
                    if i not in done)
     if action == "BOSS":
         boss = item.get("boss") or area.get("area_boss") or {}
-        return boss.get("victory_flag", f"{area_key}_boss_defeated") == need
+        return _needs(need, boss.get("victory_flag", f"{area_key}_boss_defeated"))
     if action in ("NPC", "EVENT"):
         from src.world import story_events
-        return need in (_event_flags(item.get("event")) | _event_flags(story_events.get(item.get("target"))))
+        got = _event_flags(item.get("event")) | _event_flags(story_events.get(item.get("target")))
+        return bool(got & need) if isinstance(need, set) else need in got
     return False
+
+
+def _needs(need, flag):
+    """Is flag what the mission needs (need: a flag, or the set of a mission's flags not done yet)?"""
+    return flag in need if isinstance(need, set) else flag == need
 
 
 def _ok(story, cond):

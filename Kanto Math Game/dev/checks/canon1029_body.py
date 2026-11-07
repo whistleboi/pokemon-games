@@ -748,6 +748,37 @@ from src.states.overworld import GymLobbyState as _GL23
 _saved23 = (dict(story.story_flags), {r: list(b) for r, b in story.badges.items()}, story.current_area_key,
             story.player_team, story.balls_left)
 check(len(_mg.GAMES) >= 10, f"a stable of games {sorted(_mg.GAMES)}")
+# Greater than / less than (Jordan, 11-06): "8 ? 4" (<, = or >), "8 > ?" (one number makes it true), and
+# sums on both sides at the higher levels; always right, always the buttons asked for.
+import re as _re1106
+_val = lambda t: eval(t.replace("x", "*").replace("÷", "/"))
+_bad, _seen1106 = 0, {"compare": set(), "fill": 0, "eq": 0}
+for _lvl in range(1, 9):
+    for _i in range(600):
+        _n = 3 if _i % 2 else 4
+        _p, _a, _o = g.math.generate(_lvl, _n)
+        if _o == ["<", "=", ">"]:
+            _l, _r = _p.split(" ? ")
+            _want = "<" if _val(_l) < _val(_r) else ">" if _val(_l) > _val(_r) else "="
+            _bad += _want != _a
+            _seen1106["eq"] += _a == "="
+            _seen1106["compare"].add((_lvl, "+" in _l or "-" in _l or "x" in _l, "+" in _r or "-" in _r or "x" in _r))
+        elif _re1106.search(r"[<>]", _p):
+            _true = [x for x in _o if _val(_p.replace("?", str(x)))]
+            _bad += _true != [_a] or len(_o) != 3 or not (_o[0] < _o[1] < _o[2])  # lower, the same, higher
+            _seen1106["fill"] += 1
+        else:
+            _bad += len(_o) != _n
+check(_bad == 0 and _seen1106["fill"] and _seen1106["eq"], f"comparisons: always right ({_bad} wrong), = sometimes, 8 > ? too (lower, 8, higher)")
+check((1, False, False) in _seen1106["compare"] and (8, True, True) in _seen1106["compare"]
+      and not any(l and r for lv, l, r in _seen1106["compare"] if lv == 1), "plain numbers at first, a sum on each side later")
+from src.minigames.kanto import KogaWalls as _KW
+_kw = _KW(g, lambda w: None, level=2, seed=5)
+_n1106 = next(c for c, (_t, ok) in zip(_kw.counts, _kw.options) if ok)
+_sum = _re1106.search(r"with (.+) footprints", _kw.prompt).group(1)
+check(_re1106.search(r"\d+ [-+x] \d+", _sum) and _val(_sum) == _n1106, f"Koga's paths: a sum to work out ({_kw.prompt})")
+
+import src.minigames.base as _MGB
 for _k, _cls in _mg.GAMES.items():  # each one starts, plays a while, and can lose and try again
     _m = _cls(g, lambda won: None, level=3, leader={"name": "Brock", "team": [74, 95]}, partner=25, seed=4)
     g.change_state(_m)
@@ -764,6 +795,14 @@ for _k, _cls in _mg.GAMES.items():  # each one starts, plays a while, and can lo
         _m.buttons[0][3]()
         _ok = _m.phase == "PLAY" and _m.progress()[0] == 0
     check(_ok, f"{_k}: plays and tries again ({_m.phase})")
+    if _k in _MGB.SCENES:  # its pixel-art scene: drawn, alive (it changes from frame to frame)
+        _shot = g.screen.copy()
+        for _f in range(30):
+            _m.update()
+        _m.draw()
+        check(_m.backdrop is not None and g.screen.get_at((g.width // 2, g.height - 4)) != (0, 0, 0)
+              and pygame.image.tostring(_shot, "RGB") != pygame.image.tostring(g.screen, "RGB"),
+              f"{_k}: its scene ({_MGB.SCENES[_k]}) behind it, alive")
 story.current_area_key = "PEWTER_CITY"
 story.badges["KANTO"] = []
 for _f in [f for f in story.story_flags if f.startswith(("gym_challenge", "gym_progress_PEWTER"))]:
@@ -790,6 +829,21 @@ check(story.balls_left > _balls, "and the trainers' Poke Balls come with it")
 story.badges["KANTO"] = ["BOULDER"]
 story.story_flags.pop(_mg.done_flag("PEWTER_CITY"))
 check(not _GL23(g, None).challenge, "a Gym already beaten has no challenge")
+from src.states.game_corner import GymGamesState as _GGS, coins as _coins1106
+story.story_flags[_mg.done_flag("PEWTER_CITY")] = True
+story.story_flags[_mg.picked_flag("PEWTER_CITY")] = "flight"
+_ggs = _GGS(g, g.current_state)
+check(("flight", "PEWTER_CITY") in _mg.beaten(g) and any("FLIGHT" in b.text for b in _ggs.buttons),
+      "the Game Corner's GYM GAMES: a game won at a Gym is there to play again")
+_c0 = _coins1106(story)
+_ggs.play("flight", "PEWTER_CITY")
+_m = g.current_state
+_m.buttons[0][3]()
+_m.win()
+_m.buttons[0][3]()
+check(isinstance(g.current_state, _GGS) and _coins1106(story) == _c0 + 50, "won again: 50 coins, back to the list")
+story.story_flags.pop(_mg.done_flag("PEWTER_CITY"))
+
 check([_mg.pick(g, k, []).key for k in ("VERMILLION_CITY", "FUCHSIA_CITY", "SAFFRON_CITY", "CINNABAR_ISLAND")]
       == ["surge", "koga", "sabrina", "quiz"], "Kanto's puzzle Gyms keep their own challenges, drawn as games")
 check(all(not _mg.GAMES[k].in_pool for k in ("surge", "koga", "sabrina", "quiz")) and _mg.GAMES["chase"].in_pool,

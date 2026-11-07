@@ -111,6 +111,11 @@ class MathEngine:
         fmt = _weighted_pick(level.get("formats", {"solve": 1}))
         sym = self.symbols[op]
 
+        if fmt == "compare":  # 8 ? 4: pick <, = or > (always in that order)
+            problem, ans = self._compare(level)
+            return problem, ans, ["<", "=", ">"]
+        if fmt == "compare_fill":  # 8 > ?: lower, the same or higher (in that order)
+            return self._compare_fill(level, num_options)
         if fmt == "missing":
             if random.random() < 0.5:
                 problem, ans = f"? {sym} {b} = {c}", a
@@ -126,6 +131,112 @@ class MathEngine:
             options = self._number_options(ans, num_options, op, (a, b, c))
 
         random.shuffle(options)
+        return problem, ans, options
+
+    # ------------------------------------------------------------------
+    # Greater than, less than (Jordan, 11-06): "8 ? 4" (pick <, = or >), "8 > ?" (pick the number),
+    # and as the levels go up each side becomes a sum itself: "4 + 1 ? 7 - 1".
+    #   level["compare"]["sides"]: "numbers" (8 ? 4), "mixed" (sometimes a sum on one side),
+    #   "one" (a sum on one side), "both" (a sum on each side)
+    # ------------------------------------------------------------------
+    def _top_number(self, level):
+        """The biggest number the level works with."""
+        tops = [level.get("add", {}).get("max_sum", 0), level.get("sub", {}).get("max_start", 0)]
+        for op in ("mul", "div"):
+            p = level.get(op)
+            if p:
+                tops.append(max(p.get("tables", [10])) * p.get("max_factor", 10))
+        return max(10, max(tops))
+
+    def _sides(self, level):
+        """(left is a sum, right is a sum) for this level's comparisons."""
+        kind = (level.get("compare") or {}).get("sides", "numbers")
+        if kind == "mixed":
+            kind = random.choice(("numbers", "numbers", "one"))
+        if kind == "one":
+            return (True, False) if random.random() < 0.5 else (False, True)
+        return (kind == "both", kind == "both")
+
+    def _expression(self, level):
+        """(text, value): one of the level's own sums ("4 + 3", 7)."""
+        op = _weighted_pick(level["ops"])
+        a, b, c = self._make_fact(op, level)
+        return f"{a} {self.symbols[op]} {b}", c
+
+    def _expression_for(self, value, level):
+        """A sum of the level's kind that comes to value ("9 - 2" for 7), else the number."""
+        ops = [op for op in level["ops"] if level["ops"][op] > 0]
+        random.shuffle(ops)
+        sym = self.symbols
+        for op in ops:
+            p = level.get(op, {})
+            if op == "add" and value >= 2:
+                a = random.randint(1, value - 1)
+                return f"{a} {sym['add']} {value - a}"
+            if op == "sub":
+                b = random.randint(1, max(1, min(p.get("max_start", 20) - value, value + 5, 20)))
+                return f"{value + b} {sym['sub']} {b}"
+            if op == "mul" and value >= 4:
+                fits = [t for t in p.get("tables", [2, 5, 10]) if value % t == 0 and 2 <= value // t <= p.get("max_factor", 10)]
+                if fits:
+                    t = random.choice(fits)
+                    return f"{t} {sym['mul']} {value // t}" if random.random() < 0.5 else f"{value // t} {sym['mul']} {t}"
+            if op == "div" and 1 <= value <= p.get("max_factor", 10):  # (as hard as the level's own divisions)
+                t = random.choice(p.get("tables", [2, 5, 10]))
+                return f"{value * t} {sym['div']} {t}"
+        return str(value)
+
+    def _side(self, level, is_sum):
+        if is_sum:
+            return self._expression(level)
+        top = self._top_number(level)
+        v = random.randint(1, top) if top <= 20 else random.randint(top // 10, top)
+        return str(v), v
+
+    def _gap(self, level, value):
+        """How far apart the two sides are: close (it makes you think), now and then further."""
+        spread = max(3, min(10, self._top_number(level) // 10))
+        d = random.randint(1, spread) if random.random() < 0.8 else random.randint(spread, spread * 3)
+        return d
+
+    @staticmethod
+    def _wrap(text):
+        """A sum in a comparison goes in brackets: (5 + 8) ? 13 (Jordan, 11-06: easier to read)."""
+        return f"({text})" if " " in text else text
+
+    def _compare(self, level):
+        left_sum, right_sum = self._sides(level)
+        lt, lv = self._side(level, left_sum)
+        if random.random() < 0.25:  # "=" is the answer now and then
+            rv = lv
+        else:
+            d = self._gap(level, lv)
+            rv = lv + d if (random.random() < 0.5 or lv - d < 0) else lv - d
+        rt = self._expression_for(rv, level) if right_sum else str(rv)
+        for _ in range(6):  # (never the very same sum on both sides)
+            if rt != lt or not right_sum:
+                break
+            rt = self._expression_for(rv, level)
+        if random.random() < 0.5:  # the sum on either side
+            lt, rt, lv, rv = rt, lt, rv, lv
+        ans = "<" if lv < rv else ">" if lv > rv else "="
+        return f"{self._wrap(lt)} ? {self._wrap(rt)}", ans
+
+    def _compare_fill(self, level, num_options):
+        """'8 > ?' (or '? < 8'): three numbers, one lower than 8, 8 itself and one higher (Jordan, 11-06:
+        so you have to think it through); one of them makes it true."""
+        left_sum, right_sum = self._sides(level)
+        text, v = self._side(level, left_sum or right_sum)
+        rel = random.choice(("<", ">"))
+        unknown_first = random.random() < 0.4  # "? > 8" as well as "8 > ?"
+        spread = max(3, min(10, self._top_number(level) // 10))
+        low = v - random.randint(1, max(1, min(spread, v)))
+        high = v + random.randint(1, spread)
+        # with "8 > ?" the answer is lower than 8; with "? > 8" higher
+        smaller = (rel == ">") != unknown_first
+        ans = low if smaller else high
+        options = [low, v, high]
+        problem = f"? {rel} {self._wrap(text)}" if unknown_first else f"{self._wrap(text)} {rel} ?"
         return problem, ans, options
 
     def _make_fact(self, op, level):

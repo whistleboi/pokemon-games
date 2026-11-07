@@ -383,6 +383,23 @@ class StoryManager:
                 break
         return lines
 
+    def region_caught_count(self, region):
+        """Different species of a region's own Pokedex owned (the Hoenn Pokedex's catch missions)."""
+        from src.states.systems.pokedex import region_dex
+        dex = self.game.data.data.get("pokedex", {}) if getattr(self, "game", None) else {}
+        want = set(region_dex(self.get_region_start(region)))
+        return len({int(v.get("id", 0)) for v in dex.values() if isinstance(v, dict) and int(v.get("id", 0)) in want})
+
+    @staticmethod
+    def mission_flags(mission):
+        """A mission's completed flag(s): one flag, or a list that must all be set (a place's legends)."""
+        f = mission.get("completed_flag")
+        return [] if not f else list(f) if isinstance(f, (list, tuple)) else [f]
+
+    def mission_flag_done(self, mission):
+        flags = self.mission_flags(mission)
+        return bool(flags) and all(self.story_flags.get(f) for f in flags)
+
     def kanto_caught_count(self):
         """Different Kanto species caught, #1-150 (Mew waits until all of them are)."""
         dex = self.game.data.data.get("pokedex", {}) if getattr(self, "game", None) else {}
@@ -403,6 +420,19 @@ class StoryManager:
                 self.story_flags[flag] = True
                 self.money += self.CATCH_BONUS
                 lines += [f"Milestone: {n} Kanto species owned!", f"You received a ${self.CATCH_BONUS:,} bonus!"]
+        # other regions' Pokedex missions ("region_species": n of "dex_region"'s Pokedex: Hoenn's)
+        missions = (self.game.loader.area_data.get("JOURNAL_MISSIONS", []) if getattr(self, "game", None) else [])
+        counts = {}
+        for m in missions:
+            n, region, flag = m.get("region_species"), m.get("dex_region"), m.get("completed_flag")
+            if not (n and region and flag) or self.story_flags.get(flag):
+                continue
+            if region not in counts:
+                counts[region] = self.region_caught_count(region)
+            if counts[region] >= n:
+                self.story_flags[flag] = True
+                self.money += self.CATCH_BONUS
+                lines += [f"Milestone: {n} {region.title()} Pokemon owned!", f"You received a ${self.CATCH_BONUS:,} bonus!"]
         return lines
 
     MAX_ITEMS = 999  # the most of one item the Bag holds, as in the games
@@ -459,7 +489,7 @@ class StoryManager:
 
         for m in all_missions:
             if self.check_requirements(m.get("condition", {}), region=m.get("region")):
-                if m.get("completed_flag") and self.story_flags.get(m["completed_flag"]):
+                if self.mission_flag_done(m):
                     continue
                 if m.get("completed_badge") and self.has_badge(m["completed_badge"]):
                     continue
@@ -908,6 +938,18 @@ class StoryManager:
             m_copy["desc"] += f"\n(Progress: {have}/{goal})"
             m_copy["details"] = m_copy["desc"]
             m_copy["text"] += f" ({have}/{goal})"
+        if mission.get("region_species"):  # a region's Pokedex mission: its species owned so far
+            goal = mission["region_species"]
+            have = min(self.region_caught_count(mission.get("dex_region") or self.get_current_region()), goal)
+            m_copy["desc"] += f"\n(Progress: {have}/{goal})"
+            m_copy["details"] = m_copy["desc"]
+            m_copy["text"] += f" ({have}/{goal})"
+        flags = self.mission_flags(mission)
+        if len(flags) > 1:  # a place's legends: how many found
+            have = sum(1 for f in flags if self.story_flags.get(f))
+            m_copy["desc"] += f"\n(Progress: {have}/{len(flags)})"
+            m_copy["details"] = m_copy["desc"]
+            m_copy["text"] += f" ({have}/{len(flags)})"
         if mission.get("unown_forms"):  # the Unown Report's forms (Sevii's Tanoby Ruins)
             goal = mission["unown_forms"]
             have = goal if self.unown_goal_met(goal) else len(self.unown_forms_owned())
@@ -952,7 +994,7 @@ class StoryManager:
             elif m.get("unown_forms"):  # done once the Unown Report is full
                 is_completed = self.unown_goal_met(m["unown_forms"])
             elif m.get("completed_flag"):
-                is_completed = self.story_flags.get(m["completed_flag"], False)
+                is_completed = self.mission_flag_done(m)
 
             elif "visited" in cond and not m.get("completed_flag"):
                 has_visited = self.story_flags.get(f"visited_{cond['visited']}", False)
@@ -1056,6 +1098,9 @@ class StoryManager:
             self.inventory = {}
         from src.world import hms
         hms.give_for_badges(self)  # HMs from badges already won
+        for item, qty in list(self.inventory.items()):  # an HM is never used up: one of each
+            if str(item).startswith("HM_") and qty > 1:
+                self.inventory[item] = 1
         # The Surf Board and Air Balloon were stand-ins for HM Surf and HM Fly (Jordan, 10-26).
         for store in [{"bag": self.inventory}] + list(getattr(self, "region_stores", {}).values()):
             for item in self.RETIRED_ITEMS:
@@ -1077,14 +1122,14 @@ class StoryManager:
                 ("HIVE", "OLD_ROD"),
                 ("PLAIN", "SQUIRT_BOTTLE"),
                 ("FOG", "SUPER_ROD"),
-                ("STORMBADGE", "AMULET_COIN"),
-                ("GLACIER", "ROCK_SMASHER"),
+                ("FOG", "AMULET_COIN"),      # (Morty's; Chuck gives the Rock Smasher, Pryce the Ice Melter)
+                ("STORMBADGE", "ROCK_SMASHER"),
+                ("GLACIER", "ICE_MELTER"),
                 ("RISING", "MT_SILVER_MAP"),
             ],
             "HOENN": [
                 ("STONE_BADGE", "HOENN_MAP"),
                 ("KNUCKLE_BADGE", "OLD_ROD"),
-                ("DYNAMO_BADGE", "EXP_SHARE"),
                 ("HEAT_BADGE", "GO_GOGGLES"),
                 ("BALANCE_BADGE", "AMULET_COIN"),
                 ("FEATHER_BADGE", "ACRO_BIKE"),

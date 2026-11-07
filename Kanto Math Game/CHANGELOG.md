@@ -1,5 +1,51 @@
 # Changelog
 
+## Unreleased: Hyperspace Lumiose, story gates on the map, Pokémon that walk
+
+- **Hyperspace Lumiose** (Kalos, after Clemont's Voltage Badge): a hub off Lumiose City with a **Donut Shop**. Pick 3 berries and answer a math question to bake a donut: its taste picks the zone (sweet Verdant Rift, spicy Ember Rift, sour Tidal Rift, dry Frost Rift, bitter Voltage Core), and its stars (star berries, found in Hyperspace) open the deeper ones. Recipes: three of one taste is a Perfect donut (+1 star), three different a Rainbow donut (+30 seconds a floor).
+  - Each zone: three big open floors (no fog, nothing in the way), trainers and wild Pokémon of its theme, and a 180-second clock a floor. Beat everyone on a floor and the way down opens.
+  - Battles happen right on the map, in real time: one math question (right: you strike first and harder), then tap your moves as they come off cooldown, with small HP bars over the two Pokémon.
+  - Clearing a zone wins one of Legends: Z-A's new Mega Stones (26 in all, a few in each zone) and star berries for the next zone.
+- **Legends: Z-A's Mega Evolutions** (Mega Clefable to Mega Falinks): their stats and types are in the game. Until pixel sprites are found they show their species' own picture.
+- **Story gates on the map:** a way out that needs an HM has what's in the way standing on it (a tree for Cut, a cracked rock for Rock Smash, a boulder for Strength, water, a waterfall or whirlpool, a dark cave for Flash, the cycling gate). Your Pokémon uses the HM the first time through. Snorlax sleeps across its route's way out (wake it with the Poké Flute).
+- **Pokémon walk on the maps:** your partner and the wild Pokémon are overworld sprites (Gen 1–8 from Everlasting X, Gen 9 and the Paldean forms from the Paldea Overworlds sheets), stepping and facing their way, shiny ones too, as big next to your trainer as in the games.
+- **Mega Meganium** has its own back sprite.
+- **One of each key item per region:** Hoenn's HM Rock Smash, Strength and Fly come only from their story gifts (Wally's uncle, the rival on Route 112 and Route 119), not again from badges; Norman no longer gives HM Cut, Roxanne no longer gives the PokéNav, the Rusturf Tunnel grunt no longer gives an Exp. Share. Johto's badge items match what its Leaders give, and Pryce no longer gives Kanto's Volcano Pass. HMs always count one.
+
+## Unreleased: Honey on every floor, a way to go on the map, Hoenn's journal filled in
+
+- **Honey:** 3 Honey lie somewhere on every floor of every map with wild Pokémon, and the HONEY button is back (next to WAIT, with how much you have). Tap it to draw in wild Pokémon.
+- **The way to go:** on the map, a gold marker shows where the Journal's mission leads: the way out toward its next stop, the person or boss here it needs, or the stairs toward the floor with that way out. An arrow at the edge of the screen points to it when it's off screen, and it blinks on the mini-map. The Journal's GOAL and NEXT lines stay.
+- **Hoenn's Journal:** every story step has a mission now (Petalburg Woods, Steven's letter, Captain Stern, the rival on Route 110, Wally at Mauville), and every side event has one too (Rydel's bike, the Regi trio, Mirage spots, the legends after the League, and more). There are Pokédex missions like Kanto's: catch 30, 60, 90, 120 and all 143 of the Hoenn Pokédex, $50,000 each. The cave missions that never showed up (Rusturf Tunnel, Abandoned Ship, Shoal Cave) work now.
+- **Ambushes on arrival:** a trainer waiting in a town says so in the text box first, then the battle starts.
+- **Comparisons:** `8 > ?` gives three numbers (one lower, 8 itself, one higher), and sums in a comparison are in brackets: `(5 + 8) ? 13`.
+- **Contests:** your Pokémon's appeal plays its move's animation, the battle's own, seen from the front like a foe's.
+
+## Unreleased: greater than and less than; Gym games in the Game Corner
+
+- **Greater than, less than** in every kind of math question (battles, catching, the Game Corner, contests and the rest), about one question in four:
+  - `8 ? 4`: pick <, = or >. Sometimes = is the answer.
+  - `8 > ?`: pick the one number that makes it true (or `? < 8`).
+  - The levels build up: plain numbers at Poké Ball, a sum on one side at Great and Ultra Ball, then a sum on each side (`4 + 1 ? 7 - 1`), with times and divide from Timer Ball on.
+  - The symbols are drawn big and bold, and the voice reads them out ("Is 4 plus 1 less than, equal to, or more than 7 minus 1?").
+- **Koga's Invisible Walls:** the right path is a sum to work out ("Take the path with 4 - 1 footprints"), harder with each badge.
+- **GYM GAMES** in the Game Corner: every Gym challenge you've won is there to play again; win one for 50 coins.
+- **Voltorb Field** is easier: a smaller field that grows with your badges (5 x 4 at the first Gyms, up to 7 x 5), fewer hidden Pokémon, and each row and column shows how many hide in it, like Voltorb Flip. There's always a row or column with 0 to start from.
+
+## Unreleased: pixel-art scenes behind the Gym games
+
+- The Gym games that showed a dark screen now play in front of a moving pixel-art scene (drawn in code, `src/minigames/scenes.py`):
+  - Berry Catch: a meadow of berry trees, with grass swaying and leaves falling.
+  - Dash: plains, mountains and woods scrolling past as fast as you run.
+  - Flight: open sky with floating islands, clouds and far-off flocks.
+  - Koga's walls: a dojo with paper screens and flickering lanterns.
+  - Pokémon Match: a night forest with fireflies.
+  - Gym Pong: a stadium crowd; Type Clash: an arena at night.
+  - Rhythm Tiles: a stage with sweeping spotlights and a crowd bobbing to the beat.
+  - Voltorb Field and Surge's cans: a power plant with blinking lights and sparking coils.
+  - Blaine's quiz: a volcano cave with lava falls and rising embers.
+  - Sabrina's warps: psychic space with nebulae and pulsing rings.
+
 ## Unreleased: the Pokédex in Pokémon Journeys' look
 
 - **The list:** the Pokémon you're on at the left (its picture, Seen and Owned), your dex down the right with caught and seen marks and a scroll bar. Tap a row to pick it, again for its page.

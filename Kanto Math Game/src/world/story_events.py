@@ -304,6 +304,12 @@ EVENTS = {
                         "fail_flag": "heard_devon_parts_stolen",  # the journal's "Devon Parts" from here (Jordan, 11-05)
                         "gift_item": {"POKE_NAV": 1, "LETTER": 1, "DEVON_PARTS": 1}, "flag": "met_mr_stone",
                         "done": ["Mr. Stone: Steven is in Granite Cave, in Dewford. Thank you again!"]},
+    "hyperspace_guide": {"lines": [
+        "Researcher: Hyperspace is a strange place under Lumiose City, full of wild energy.",
+        "Bake a donut at the Donut Shop and take a bite: its taste takes you to one of the zones.",
+        "Each floor has a clock. Beat every trainer and wild Pokemon there before it runs out!",
+        "Battles in Hyperspace happen right where you stand, fast. Answer the math, then pick your moves!",
+        "Clear a zone to win a Mega Stone, and keep the star berries you find: they open the deeper zones."]},
     "slateport_market": {"lines": ["The Slateport Market is busy. Merchants call out their best deals.",
                                    "Use the Shop to buy what you need."]},
     "captain_stern": {"lines": ["Captain Stern: Those are the Devon Parts? Wonderful!",

@@ -287,6 +287,9 @@ class TownMenu:
 
         if action == "EVENT":
             return lambda e=opt_data.get("event") or {}: self.story_event(e)
+        if action == "DONUT":  # Hyperspace Lumiose's Donut Shop (Jordan, 11-06)
+            from src.states.donut import DonutShopState
+            return lambda: (self.clear_hover_menu(), self.game.change_state(DonutShopState(self.game, self)))
         if action == "AMIE":
             from src.states.amie import AmieState
             return lambda: (self.clear_hover_menu(), self.game.change_state(AmieState(self.game, self)))

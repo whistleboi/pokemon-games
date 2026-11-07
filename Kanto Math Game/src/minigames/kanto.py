@@ -191,11 +191,26 @@ class KogaWalls(_Choice):
         counts = [n] + self.rng.sample([k for k in range(1, 9) if k != n], 2)
         self.rng.shuffle(counts)
         self.counts = counts
-        self.prompt = f"Take the path with {n} footprints."
+        self.prompt = f"Take the path with {self._sum_for(n)} footprints."
         self.options = [(f"Path {i + 1}", c == n) for i, c in enumerate(counts)]
         self.picked = None
         self.note = ""
         self.walk = 0.0
+
+    def _sum_for(self, n):
+        """The count as a sum to work out (Jordan, 11-06: "4 - 1 footprints"), harder with each badge:
+        adding and taking away, bigger numbers to take away later, times at the last Gyms."""
+        rng = self.rng
+        kinds = ["add", "sub"] + (["mul"] if self.level >= 4 and n in (4, 6) else [])
+        kind = rng.choice(kinds)
+        if kind == "mul":
+            a = rng.choice([k for k in (2, 3) if n % k == 0])
+            return f"{a} x {n // a}"
+        if kind == "add":
+            a = rng.randint(1, n - 1)
+            return f"{a} + {n - a}"
+        b = rng.randint(1, 3 + 2 * self.level)
+        return f"{n + b} - {b}"
 
     def good_line(self):
         return "You found the way!"

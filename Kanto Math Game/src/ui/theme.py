@@ -84,6 +84,58 @@ def shadow_text(surface, text, font, x, y, color=TEXT, shadow=TEXT_SHADOW, align
     return pygame.Rect(x, y, w, h)
 
 
+SYMBOLS = ("<", "=", ">")
+
+
+def answer_text(surface, text, font, x, y, color=TEXT, shadow=TEXT_SHADOW):
+    """An answer centred at (x, y): <, = and > drawn big and bold (the number font's are tiny),
+    anything else as shadow_text."""
+    text = str(text)
+    if text not in SYMBOLS:
+        return shadow_text(surface, text, font, x, y, color=color, shadow=shadow, align="center")
+    s = max(10, int(font.get_height() * 0.42))  # half its size
+    _symbol(surface, text, x, y, s, color, shadow)
+    return pygame.Rect(x - s, y - s, 2 * s, 2 * s)
+
+
+def _symbol(surface, text, x, y, s, color, shadow):
+    """<, = or > as bold strokes, centred at (x, y), s its half-height."""
+    w = max(4, s // 2)
+    if text == "=":
+        lines = [((x - s, y - s // 2), (x + s, y - s // 2)), ((x - s, y + s // 2), (x + s, y + s // 2))]
+    else:
+        d = -1 if text == "<" else 1
+        k = s * 0.7
+        lines = [((x - d * k, y - s), (x + d * k, y)), ((x + d * k, y), (x - d * k, y + s))]
+    for off, col in ((max(2, w // 3), shadow), (0, color)):
+        for p0, p1 in lines:
+            p0, p1 = (p0[0] + off, p0[1] + off), (p1[0] + off, p1[1] + off)
+            pygame.draw.line(surface, col, p0, p1, w)
+            for pt in (p0, p1):
+                pygame.draw.circle(surface, col, (int(pt[0]), int(pt[1])), w // 2)
+
+
+def math_text(surface, text, font, x, y, color=TEXT, shadow=TEXT_SHADOW):
+    """A question centred at (x, y), its < and > drawn bold (the number font's are tiny)."""
+    text = str(text)
+    if "<" not in text and ">" not in text:
+        return shadow_text(surface, text, font, x, y, color=color, shadow=shadow, align="center")
+    import re as _re
+    parts = [t for t in _re.split(r"\s*([<>])\s*", text) if t != ""]
+    ink = font.render("8", False, (0, 0, 0)).get_bounding_rect().h or font.get_height() // 2
+    s = max(6, int(ink * 0.5))  # as tall as the digits
+    gap = max(font.size(" ")[0], s)
+    widths = [(2 * s + 2 * gap) if t in "<>" else font.size(t)[0] for t in parts]
+    left = x - sum(widths) // 2
+    for t, w in zip(parts, widths):
+        if t in ("<", ">"):
+            _symbol(surface, t, left + w // 2, y, s, color, shadow)
+        else:
+            shadow_text(surface, t, font, left, y - font.get_height() // 2, color=color, shadow=shadow)
+        left += w
+    return pygame.Rect(x - sum(widths) // 2, y - font.get_height() // 2, sum(widths), font.get_height())
+
+
 def command_button(surface, rect, label, font, color, hover=False, small=None, sub=None):
     """A battle command (FIGHT / BAG / POKEMON / RUN): a rounded colour block with a darker lip."""
     rect = pygame.Rect(rect)

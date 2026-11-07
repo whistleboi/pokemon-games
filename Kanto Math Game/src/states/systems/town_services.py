@@ -160,7 +160,9 @@ class GameCornerState(GameState):
         # 11-02 (Jordan): a cleaner counter. Your money and coins on top, the GAMES and the COIN COUNTER
         # (50 / 100 / 500 / 1,000 coins, each with its price) side by side, PRIZES and LEAVE below.
         from src.states import game_corner as gc
+        from src import minigames
         story = self.game.story_manager
+        won = minigames.beaten(self.game)
         self.phase = "MAIN_MENU"
         self.dialogue_box.reset(line or "Buy coins at the counter, then try your luck!")
         self.btn_yes.set_visibility(False)
@@ -173,9 +175,9 @@ class GameCornerState(GameState):
         self.header_rect = pygame.Rect(margin, 14, w - 2 * margin, 66)
         bottom_y = top - 78
         half = (w - 2 * margin - gap) // 2
-        panel_h = 58 + 2 * 72 + 20 + 52  # title, two rows of buttons, the note
+        panel_h = 58 + 3 * 72 + 2 * 20 + 52  # title, three rows of buttons (GYM GAMES the last), the note
         room = bottom_y - self.header_rect.bottom
-        self.games_rect = pygame.Rect(margin, self.header_rect.bottom + (room - panel_h) // 2, half, panel_h)
+        self.games_rect = pygame.Rect(margin, self.header_rect.bottom + max(0, (room - panel_h) // 2), half, panel_h)
         self.counter_rect = pygame.Rect(self.games_rect.right + gap, self.games_rect.y, half, self.games_rect.h)
 
         def grid(panel, specs):
@@ -184,13 +186,18 @@ class GameCornerState(GameState):
             for i, (text, sub, cb, color) in enumerate(specs):
                 r, c = divmod(i, 2)
                 rect = (panel.x + 18 + c * (bw + 18), y0 + r * (bh + 20), bw, bh)
+                if i == len(specs) - 1 and len(specs) % 2:  # an odd one out: the whole row
+                    rect = (panel.x + 18, y0 + r * (bh + 20), 2 * bw + 18, bh)
                 self._menu_add(gc.PriceButton(rect, text, sub, f["label"], f["caption"], cb, color))
 
         grid(self.games_rect, [
             ("SLOTS", "Bet 1-3 coins", self.start_slot_machine, theme.FIGHT),
             ("VOLTORB FLIP", "Flip for coins", self.start_voltorb_flip, theme.POKEMON),
             ("BLACKJACK", "Beat Meowth to 21", self.start_blackjack, theme.MEGA),
-            ("POKEMATH", "Math for money", self.start_infinite, theme.RUN)])
+            ("POKEMATH", "Math for money", self.start_infinite, theme.RUN),
+            # the Gym games you've won (Jordan, 11-06), to play again for coins
+            ("GYM GAMES", f"{len(won)} won so far" if won else "Win a Gym's challenge first",
+             self.open_gym_games if won else None, theme.POKEMON)])
         full = gc.coins(story) >= gc.MAX_COINS
         grid(self.counter_rect, [
             (f"{n:,} COINS", f"${gc.coin_cost(n):,}",
@@ -245,6 +252,11 @@ class GameCornerState(GameState):
     def buy_coins(self, n=50):
         from src.states import game_corner as gc
         self.show_main_menu(gc.buy_coins(self.game.story_manager, n))
+
+    def open_gym_games(self):
+        from src.states.game_corner import GymGamesState
+        self.clear_menu()
+        self.game.change_state(GymGamesState(self.game, self))
 
     def start_slot_machine(self):
         from src.states.game_corner import SlotsState

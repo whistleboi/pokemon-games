@@ -510,7 +510,13 @@ class TownStory:
         )
         intro_text = _resolve_lines(
             self.game, dlg.get("intro") or t_info.get("intro", "I'm gonna be the world's greatest trainer!"))
-        self.game.change_state(TrainerIntroState(self.game, sprite, intro_text, battle_state))
+        # Jordan (11-06): an ambush on arrival says so first, here in town, before the battle screen.
+        name = _fill_names(self.game, t_info.get("name")) or "A trainer"
+        where = self.area_data.get("route_name") or self.area_key.replace("_", " ").title()
+        before = _resolve_lines(self.game, on_enter.get("arrival_lines") or [
+            f"As you arrive in {where}, someone calls out to you...", f"It's {name}! {name} wants to battle!"])
+        self.show_message(before, callback=lambda: self.game.change_state(
+            TrainerIntroState(self.game, sprite, intro_text, battle_state)))
         return True
 
     ROAD_OPEN = {

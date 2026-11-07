@@ -58,3 +58,19 @@ def pick(game, area_key, team, rng=random):
         key = rng.choices(keys, weights=[3 if k in suits else 1 for k in keys])[0]
         flags[picked_flag(area_key)] = key
     return GAMES[key]
+
+
+def beaten(game):
+    """[(key, Gym's area)]: each Gym game won so far (once each, the first Gym it was won at), for the
+    Game Corner's GYM GAMES (Jordan, 11-06)."""
+    flags = game.story_manager.story_flags
+    out, seen = [], set()
+    for flag, on in list(flags.items()):
+        if not on or not flag.startswith("gym_challenge_done_"):
+            continue
+        area = flag[len("gym_challenge_done_"):]
+        key = GYM_GAMES.get(area) or flags.get(picked_flag(area))
+        if key in GAMES and key not in seen:
+            seen.add(key)
+            out.append((key, area))
+    return out

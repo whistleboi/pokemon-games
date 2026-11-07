@@ -941,7 +941,7 @@
       "region": "HOENN",
       "backgrounds": { "main": "petalburg_city.png", "pokecenter": "petalburg_center.png", "pokemart": "petalburg_mart.png", "gym": ["petalburg_gym.png", "petalburg_gym_2.png", "petalburg_gym_leader.png"] },
       "has_gym": true,
-      "gym": {"requirements": {"badges": 4, "fail_text": ["Dad: So you want to battle me? Earn four badges first.", "Then we'll see how strong you've become!"]}, "trainers": [{"name": "Youngster Tommy", "class": "YOUNGSTER", "sprite": "youngster.png", "team": [16, 19], "rewards": {"balls": 2}}, {"name": "Lass Gina", "class": "LASS", "sprite": "lass.png", "team": [29, 32], "rewards": {"balls": 2}}], "leader": {"name": "Norman", "class": "GYM_LEADER", "sprite": "norman.png", "team": [289, 288, 289], "levels": [28, 28, 30], "badge_reward": "BALANCE", "rewards": {"balls": 5, "HM_CUT": 1}, "dialogue": {"intro": ["Dad: So you really did earn four badges, {player_name}. I'm proud of you. But in this Gym I'm not your father, I'm its Leader, and I won't go easy on you!"], "player_won": ["Dad: ...I lost to my own child. You've grown so strong, {player_name}. I couldn't be prouder.", "Dad: Take the Balance Badge. You earned it!"], "player_lost": ["Dad: Don't hang your head, {player_name}. Train hard and come back. Your dad will be right here waiting."]}, "victory_flag": "badge_balance_earned", "team_moves": [["RETALIATE", "YAWN", "FEINT-ATTACK", "ENCORE"], ["ENCORE", "FEINT-ATTACK", "RETALIATE", "FURY-SWIPES"], ["RETALIATE", "FEINT-ATTACK", "SWAGGER", "CHIP-AWAY"]]}},
+      "gym": {"requirements": {"badges": 4, "fail_text": ["Dad: So you want to battle me? Earn four badges first.", "Then we'll see how strong you've become!"]}, "trainers": [{"name": "Youngster Tommy", "class": "YOUNGSTER", "sprite": "youngster.png", "team": [16, 19], "rewards": {"balls": 2}}, {"name": "Lass Gina", "class": "LASS", "sprite": "lass.png", "team": [29, 32], "rewards": {"balls": 2}}], "leader": {"name": "Norman", "class": "GYM_LEADER", "sprite": "norman.png", "team": [289, 288, 289], "levels": [28, 28, 30], "badge_reward": "BALANCE", "rewards": {"balls": 5}, "dialogue": {"intro": ["Dad: So you really did earn four badges, {player_name}. I'm proud of you. But in this Gym I'm not your father, I'm its Leader, and I won't go easy on you!"], "player_won": ["Dad: ...I lost to my own child. You've grown so strong, {player_name}. I couldn't be prouder.", "Dad: Take the Balance Badge. You earned it!"], "player_lost": ["Dad: Don't hang your head, {player_name}. Train hard and come back. Your dad will be right here waiting."]}, "victory_flag": "badge_balance_earned", "team_moves": [["RETALIATE", "YAWN", "FEINT-ATTACK", "ENCORE"], ["ENCORE", "FEINT-ATTACK", "RETALIATE", "FURY-SWIPES"], ["RETALIATE", "FEINT-ATTACK", "SWAGGER", "CHIP-AWAY"]]}},
       "travel_options": [
         { "text": "Route 102", "target_area": "HOENN_ROUTE_102" },
         { "text": "Route 104", "target_area": "HOENN_ROUTE_104" },
@@ -964,7 +964,7 @@
       "region": "HOENN",
       "backgrounds": { "main": "rustboro_city.png", "pokecenter": "rustboro_center.png", "pokemart": "rustboro_mart.png", "gym": "rustboro_gym.png" },
       "has_gym": true,
-      "gym": {"trainers": [{"name": "Youngster Josh", "class": "YOUNGSTER", "sprite": "youngster.png", "team": [74], "rewards": {"balls": 2}}, {"name": "Hiker Marc", "class": "HIKER", "sprite": "hiker.png", "team": [74, 299], "rewards": {"balls": 2}}], "leader": {"name": "Roxanne", "class": "GYM_LEADER", "sprite": "roxanne.png", "team": [74, 299], "levels": [12, 14], "badge_reward": "STONE", "rewards": {"balls": 5, "POKE_NAV": 1}, "dialogue": {"intro": ["Roxanne: Welcome to the Rustboro City Gym! I'm Roxanne, the Rock-type Gym Leader."], "player_won": ["Your strategy was flawless!"], "player_lost": ["Don't worry, you'll get it next time."]}, "victory_flag": "badge_stone_earned", "movesets": {"74": ["TACKLE", "DEFENSE-CURL", "ROCK-THROW", "ROCK-TOMB"], "299": ["BLOCK", "HARDEN", "TACKLE", "ROCK-TOMB"]}}},
+      "gym": {"trainers": [{"name": "Youngster Josh", "class": "YOUNGSTER", "sprite": "youngster.png", "team": [74], "rewards": {"balls": 2}}, {"name": "Hiker Marc", "class": "HIKER", "sprite": "hiker.png", "team": [74, 299], "rewards": {"balls": 2}}], "leader": {"name": "Roxanne", "class": "GYM_LEADER", "sprite": "roxanne.png", "team": [74, 299], "levels": [12, 14], "badge_reward": "STONE", "rewards": {"balls": 5}, "dialogue": {"intro": ["Roxanne: Welcome to the Rustboro City Gym! I'm Roxanne, the Rock-type Gym Leader."], "player_won": ["Your strategy was flawless!"], "player_lost": ["Don't worry, you'll get it next time."]}, "victory_flag": "badge_stone_earned", "movesets": {"74": ["TACKLE", "DEFENSE-CURL", "ROCK-THROW", "ROCK-TOMB"], "299": ["BLOCK", "HARDEN", "TACKLE", "ROCK-TOMB"]}}},
       "travel_options": [
         { "text": "Route 104", "target_area": "HOENN_ROUTE_104" },
         { "text": "Route 115", "target_area": "HOENN_ROUTE_115" },
@@ -2746,7 +2746,7 @@
       "battle_type": "cave",
       "wild_pool_percentages": "HOENN_RUSTURF_TUNNEL_PERCENTAGES",
       "min_rounds": 2,
-      "trainer_pool": [{"name": "Team Magma Grunt", "class": "ROCKET", "sprite": "magma_grunt.png", "team": [261, 322], "rewards": {"balls": 3, "EXP_SHARE": 1}, "is_boss_battle": true, "victory_flag": "rusturf_rescued", "dialogue": {"player_won": "hoenn_rusturf_won"}, "villain": "grunt"}],
+      "trainer_pool": [{"name": "Team Magma Grunt", "class": "ROCKET", "sprite": "magma_grunt.png", "team": [261, 322], "rewards": {"balls": 3}, "is_boss_battle": true, "victory_flag": "rusturf_rescued", "dialogue": {"player_won": "hoenn_rusturf_won"}, "villain": "grunt"}],
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
@@ -3006,7 +3006,7 @@
       "next_area": "LILYCOVE_CITY",
       "region": "HOENN"
     },
-    "HOENN_SHOAL_CAVE": {
+    "HOENN_SHOAL_CAVE": { "cleared_flag": "shoal_cave_cleared",
       "area_type": "dungeon",
       "route_name": "Shoal Cave",
       "battle_type": "cave",
@@ -3274,6 +3274,7 @@
     {"id": "hoenn_m2b", "type": "MAIN", "title": "A Pokédex", "description": "Head back to Birch's lab in Littleroot Town. He has something for you after that battle!", "condition": {"required_region": "HOENN", "flag": "hoenn_rival_103", "flag_not": "received_pokedex_hoenn"}, "completed_flag": "received_pokedex_hoenn", "target": "LITTLEROOT_TOWN", "reward": "Pokédex + 10 Poké Balls"},
     {"id": "hoenn_m2c", "type": "MAIN", "title": "Visit Dad", "description": "Your dad, Norman, is the Gym Leader of Petalburg City, west past Route 102. Go and see him!", "condition": {"required_region": "HOENN", "flag": "received_pokedex_hoenn", "flag_not": "helped_wally"}, "completed_flag": "helped_wally", "target": "PETALBURG_CITY"},
     {"id": "hoenn_m3", "type": "MAIN", "title": "Stone Badge", "description": "Head through Petalburg Woods to Rustboro City and defeat Roxanne at the Gym.", "condition": {"required_region": "HOENN", "region_badges_less": 1, "flag": "helped_wally"}, "completed_flag": "badge_stone_earned", "target": "RUSTBORO_CITY", "reward": "Stone Badge"},
+    {"id": "hoenn_m2d", "type": "MAIN", "title": "Trouble in the Woods", "description": "A {team} grunt is bothering a researcher in Petalburg Woods, on the way to Rustboro City. Stop them!", "condition": {"required_region": "HOENN", "flag": "helped_wally", "region_badges_less": 1, "flag_not": "woods_boss_defeated"}, "completed_flag": "woods_boss_defeated", "target": "HOENN_PETALBURG_WOODS", "reward": "Exp. Share"},
     {
       "id": "hoenn_m4",
       "type": "MAIN",
@@ -3292,6 +3293,7 @@
       "completed_flag": "badge_knuckle_earned",
       "reward": "Knuckle Badge"
     },
+    {"id": "hoenn_m4b", "type": "MAIN", "title": "A Letter for Steven", "description": "Mr. Stone's son Steven is deep in Granite Cave, by Dewford Town. Take him the letter. Mr. Briney's boat can take you there.", "condition": {"required_region": "HOENN", "flag": "met_mr_stone", "flag_not": "met_steven"}, "completed_flag": "met_steven", "target": "HOENN_GRANITE_CAVE"},
     {
       "id": "hoenn_m6",
       "type": "MAIN",
@@ -3309,6 +3311,9 @@
       "completed_flag": "badge_dynamo_earned",
       "reward": "Dynamo Badge"
     },
+    {"id": "hoenn_m6b", "type": "MAIN", "title": "Captain Stern's Parts", "description": "You saved the Oceanic Museum! Now give the Devon Parts to Captain Stern in Slateport City.", "condition": {"required_region": "HOENN", "flag": "oceanic_museum_cleared", "flag_not": "delivered_devon_parts"}, "completed_flag": "delivered_devon_parts", "target": "SLATEPORT_CITY"},
+    {"id": "hoenn_m7a", "type": "MAIN", "title": "Rival on Route 110", "description": "{rival_name} is waiting on Route 110, north of Slateport City. Show how much you've grown!", "condition": {"required_region": "HOENN", "flag": "delivered_devon_parts", "region_badges_min": 2, "region_badges_less": 3, "flag_not": "defeated_rival_110"}, "completed_flag": "defeated_rival_110", "target": "HOENN_ROUTE_110"},
+    {"id": "hoenn_m7w", "type": "MAIN", "title": "Wally's Challenge", "description": "Wally is at the door of the Mauville Gym. He wants to battle you before he takes on Wattson!", "condition": {"required_region": "HOENN", "flag": "defeated_rival_110", "region_badges_min": 2, "region_badges_less": 3, "flag_not": "defeated_wally_mauville"}, "completed_flag": "defeated_wally_mauville", "target": "MAUVILLE_CITY", "reward": "HM Rock Smash"},
     {
       "id": "hoenn_m7b",
       "type": "MAIN",
@@ -3510,37 +3515,20 @@
       "type": "SIDE",
       "title": "Rusturf Tunnel Rescue",
       "description": "Help Mr. Briney rescue the kidnapped Wingull in Rusturf Tunnel and clear the path.",
-      "condition": { "required_region": "HOENN", "visited": "RUSTURF_TUNNEL", "flag_not": "rusturf_rescued" },
+      "condition": { "required_region": "HOENN", "visited": "HOENN_RUSTURF_TUNNEL", "flag_not": "rusturf_rescued" },
       "completed_flag": "rusturf_rescued",
       "reward": "HM Surf"
-    },
-    {
-      "id": "hoenn_s2",
-      "type": "SIDE",
-      "title": "Steven's Gifts",
-      "description": "Meet Steven Stone multiple times and receive the Steel Wing and other rare items.",
-      "condition": { "required_region": "HOENN", "visited": "GRANITE_CAVE", "flag_not": "met_steven_multiple" },
-      "completed_flag": "met_steven_multiple",
-      "reward": "Steel Wing + Rare items"
     },
     {
       "id": "hoenn_s3",
       "type": "SIDE",
       "title": "Abandoned Ship Mystery",
       "description": "Explore the haunted Abandoned Ship on Route 108 and find the Scanner.",
-      "condition": { "required_region": "HOENN", "visited": "ABANDONED_SHIP", "flag_not": "abandoned_ship_cleared" },
+      "condition": { "required_region": "HOENN", "visited": "HOENN_ABANDONED_SHIP", "flag_not": "abandoned_ship_cleared" },
       "completed_flag": "abandoned_ship_cleared",
       "reward": "DeepSeaScale/Tooth"
     },
-    {
-      "id": "hoenn_s4",
-      "type": "SIDE",
-      "title": "Shoal Cave Treasures",
-      "description": "Collect Shoal Salt and Shoal Shells in Shoal Cave for the old man in Pacifidlog Town.",
-      "condition": { "required_region": "HOENN", "visited": "SHOAL_CAVE", "flag_not": "shoal_cave_collected" },
-      "completed_flag": "shoal_cave_collected",
-      "reward": "Slowpoke Tail / Shell Bell"
-    },
+    {"id": "hoenn_s4", "type": "SIDE", "title": "Shoal Cave", "description": "Beat every trainer in Shoal Cave, between Pacifidlog Town and Route 125.", "condition": {"required_region": "HOENN", "visited": "HOENN_SHOAL_CAVE", "flag_not": "shoal_cave_cleared"}, "completed_flag": "shoal_cave_cleared", "target": "HOENN_SHOAL_CAVE"},
     {
       "id": "hoenn_s5",
       "type": "SIDE",
@@ -3585,7 +3573,43 @@
       "reward": "Jirachi",
       "completed_flag": "hoenn_jirachi_met",
       "target": "HOENN_METEOR_FALLS"
-    }
+    },
+    {"id": "hoenn_s10", "type": "SIDE", "title": "Meet the Neighbors", "description": "Say hello to the family next door in Littleroot Town.", "condition": {"required_region": "HOENN", "visited": "LITTLEROOT_TOWN"}, "completed_flag": "hoenn_met_neighbor", "target": "LITTLEROOT_TOWN"},
+    {"id": "hoenn_s11", "type": "SIDE", "title": "Free Sample", "description": "The Poké Mart in Oldale Town is giving away free Potions!", "condition": {"required_region": "HOENN", "visited": "OLDALE_TOWN"}, "completed_flag": "oldale_free_potions", "target": "OLDALE_TOWN", "reward": "10 Potions"},
+    {"id": "hoenn_s12", "type": "SIDE", "title": "Rydel's Cycles", "description": "Rydel gives a bike to new riders at his shop in Mauville City.", "condition": {"required_region": "HOENN", "visited": "MAUVILLE_CITY"}, "completed_flag": "got_bike_hoenn", "target": "MAUVILLE_CITY", "reward": "Bicycle"},
+    {"id": "hoenn_s13", "type": "SIDE", "title": "The Rival's Gift", "description": "{rival_name} has something for you on Route 112, by the Fiery Path.", "condition": {"required_region": "HOENN", "visited": "HOENN_ROUTE_112"}, "completed_flag": "got_strength_hoenn", "target": "HOENN_ROUTE_112", "reward": "HM Strength"},
+    {"id": "hoenn_s14", "type": "SIDE", "title": "Cozmo's Thanks", "description": "Professor Cozmo is safe! Visit him in Fallarbor Town.", "condition": {"required_region": "HOENN", "flag": "meteor_falls_cleared"}, "completed_flag": "cozmo_thanked", "target": "FALLARBOR_TOWN"},
+    {"id": "hoenn_s15", "type": "SIDE", "title": "A Pokémon of the Weather", "description": "The Weather Institute's scientists want to thank you.", "condition": {"required_region": "HOENN", "flag": "weather_institute_cleared"}, "completed_flag": "got_castform", "target": "HOENN_WEATHER_INSTITUTE", "reward": "Castform"},
+    {"id": "hoenn_s16", "type": "SIDE", "title": "Regirock", "description": "The Desert Ruins on Route 111 have opened. Something old waits inside.", "condition": {"required_region": "HOENN", "flag": "regi_trio_awakened"}, "completed_flag": "defeated_regirock", "target": "HOENN_ROUTE_111", "reward": "Regirock"},
+    {"id": "hoenn_s17", "type": "SIDE", "title": "Regice", "description": "The Island Cave on Route 105 has opened. It's freezing inside.", "condition": {"required_region": "HOENN", "flag": "regi_trio_awakened"}, "completed_flag": "defeated_regice", "target": "HOENN_ROUTE_105", "reward": "Regice"},
+    {"id": "hoenn_s18", "type": "SIDE", "title": "Registeel", "description": "The Ancient Tomb on Route 120 has opened. Something made of steel waits there.", "condition": {"required_region": "HOENN", "flag": "regi_trio_awakened"}, "completed_flag": "defeated_registeel", "target": "HOENN_ROUTE_120", "reward": "Registeel"},
+    {"id": "hoenn_s19", "type": "SIDE", "title": "Regigigas", "description": "All three Regi have answered. Their leader stirs in the Island Cave on Route 105.", "condition": {"required_region": "HOENN", "flag": ["defeated_regirock", "defeated_regice", "defeated_registeel"]}, "completed_flag": "island_cave_regigigas", "target": "HOENN_ROUTE_105", "reward": "Regigigas"},
+    {"id": "hoenn_s20", "type": "SIDE", "title": "The Invisible Pokémon", "description": "Something invisible blocks Route 120. The Devon Scope can show it.", "condition": {"required_region": "HOENN", "item": "DEVON_SCOPE"}, "completed_flag": "route120_kecleon", "target": "HOENN_ROUTE_120", "reward": "Kecleon"},
+    {"id": "hoenn_s21", "type": "SIDE", "title": "New Mauville", "description": "Wattson needs help with the power plant at New Mauville.", "condition": {"required_region": "HOENN", "visited": "HOENN_NEW_MAUVILLE"}, "completed_flag": "new_mauville_cleared", "target": "HOENN_NEW_MAUVILLE"},
+    {"id": "hoenn_s22", "type": "SIDE", "title": "Mt. Pyre's Summit", "description": "Beat the trainers on Mt. Pyre, all the way to the summit.", "condition": {"required_region": "HOENN", "visited": "HOENN_MT_PYRE"}, "completed_flag": "mt_pyre_cleared", "target": "HOENN_MT_PYRE"},
+    {"id": "hoenn_s23", "type": "SIDE", "title": "The Black Fog", "description": "A strange fog hangs over Mt. Pyre. Find what's inside it.", "condition": {"required_region": "HOENN", "visited": "HOENN_MT_PYRE"}, "completed_flag": "black_fog_banished_hoenn_mt_pyre", "target": "HOENN_MT_PYRE"},
+    {"id": "hoenn_s24", "type": "SIDE", "title": "The Other Hideout", "description": "The other team has a hideout too. Clear it out.", "condition": {"required_region": "HOENN", "visited": "HOENN_MAGMA_HIDEOUT"}, "completed_flag": "magma_hideout_cleared", "target": "HOENN_MAGMA_HIDEOUT"},
+    {"id": "hoenn_s25", "type": "SIDE", "title": "The S.S. Tidal", "description": "Battle the trainers in the cabins of the S.S. Tidal.", "condition": {"required_region": "HOENN", "visited": "HOENN_SS_TIDAL"}, "completed_flag": "ss_tidal_cleared", "target": "HOENN_SS_TIDAL"},
+    {"id": "hoenn_s26", "type": "SIDE", "title": "Southern Island", "description": "A Pokémon of legend rests on Southern Island.", "condition": {"required_region": "HOENN", "visited": "HOENN_SOUTHERN_ISLAND"}, "completed_flag": "southern_island_eon_caught", "target": "HOENN_SOUTHERN_ISLAND"},
+    {"id": "hoenn_s27", "type": "SIDE", "title": "The Battle Resort", "description": "Someone you know is waiting at the Battle Resort.", "condition": {"required_region": "HOENN", "visited": "HOENN_BATTLE_RESORT"}, "completed_flag": "battle_resort_wally", "target": "HOENN_BATTLE_RESORT"},
+    {"id": "hoenn_s28", "type": "SIDE", "title": "The Battle Frontier", "description": "Take on the Frontier Brains, up to Pyramid King Brandon.", "condition": {"required_region": "HOENN", "visited": "HOENN_BATTLE_FRONTIER"}, "completed_flag": "hoenn_battle_frontier_cleared", "target": "HOENN_BATTLE_FRONTIER"},
+    {"id": "hoenn_s29", "type": "SIDE", "title": "Sea Mauville", "description": "Two Pokémon of legend have been seen at Sea Mauville.", "condition": {"required_region": "HOENN", "flag": "beat_hoenn_champion"}, "completed_flag": ["sea_mauville_lugia", "sea_mauville_ho_oh"], "target": "HOENN_SEA_MAUVILLE", "reward": "Lugia and Ho-Oh"},
+    {"id": "hoenn_s30", "type": "SIDE", "title": "Soaring in the Sky", "description": "Fly high over Hoenn. Six Pokémon of legend are up there.", "condition": {"required_region": "HOENN", "flag": "beat_hoenn_champion"}, "completed_flag": ["soaring_dialga", "soaring_palkia", "soaring_giratina", "soaring_tornadus", "soaring_thundurus", "soaring_landorus"], "target": "HOENN_SOARING_IN_THE_SKY"},
+    {"id": "hoenn_s31", "type": "SIDE", "title": "The Scorched Slab", "description": "Deep in the Scorched Slab, something burns hot.", "condition": {"required_region": "HOENN", "flag": "beat_hoenn_champion"}, "completed_flag": "scorched_slab_heatran", "target": "HOENN_SCORCHED_SLAB", "reward": "Heatran"},
+    {"id": "hoenn_s32", "type": "SIDE", "title": "Crescent Isle", "description": "A Pokémon of good dreams lives on this Mirage spot.", "condition": {"required_region": "HOENN", "visited": "HOENN_CRESCENT_ISLE"}, "completed_flag": "mirage_cresselia", "target": "HOENN_CRESCENT_ISLE", "reward": "Cresselia"},
+    {"id": "hoenn_s33", "type": "SIDE", "title": "The Fabled Cave", "description": "Two dragons of legend wait in this Mirage cave.", "condition": {"required_region": "HOENN", "visited": "HOENN_FABLED_CAVE"}, "completed_flag": ["mirage_reshiram", "mirage_zekrom"], "target": "HOENN_FABLED_CAVE", "reward": "Reshiram and Zekrom"},
+    {"id": "hoenn_s34", "type": "SIDE", "title": "The Gnarled Den", "description": "An icy dragon sleeps in this Mirage den.", "condition": {"required_region": "HOENN", "visited": "HOENN_GNARLED_DEN"}, "completed_flag": "mirage_kyurem", "target": "HOENN_GNARLED_DEN", "reward": "Kyurem"},
+    {"id": "hoenn_s35", "type": "SIDE", "title": "The Nameless Cavern", "description": "Three Pokémon of the lakes are hiding in this Mirage cavern.", "condition": {"required_region": "HOENN", "visited": "HOENN_NAMELESS_CAVERN"}, "completed_flag": ["mirage_uxie", "mirage_mesprit", "mirage_azelf"], "target": "HOENN_NAMELESS_CAVERN"},
+    {"id": "hoenn_s36", "type": "SIDE", "title": "The Pathless Plain", "description": "Three Pokémon of justice roam this Mirage plain.", "condition": {"required_region": "HOENN", "visited": "HOENN_PATHLESS_PLAIN"}, "completed_flag": ["mirage_cobalion", "mirage_terrakion", "mirage_virizion"], "target": "HOENN_PATHLESS_PLAIN"},
+    {"id": "hoenn_s37", "type": "SIDE", "title": "The Trackless Forest", "description": "Three legendary beasts run through this Mirage forest.", "condition": {"required_region": "HOENN", "visited": "HOENN_TRACKLESS_FOREST"}, "completed_flag": ["mirage_raikou", "mirage_entei", "mirage_suicune"], "target": "HOENN_TRACKLESS_FOREST"},
+    {"id": "hoenn_s38", "type": "SIDE", "title": "The Admins' Questions", "description": "Courtney and Matt want to battle you in Petalburg City and Mossdeep City.", "condition": {"required_region": "HOENN", "flag": "beat_hoenn_champion"}, "completed_flag": ["delta_courtney_petalburg", "delta_matt_petalburg", "delta_courtney_mossdeep", "delta_matt_mossdeep"], "target": "PETALBURG_CITY"},
+    {"id": "hoenn_s39", "type": "SIDE", "title": "Wallace on Route 131", "description": "Wallace has something to tell you on Route 131.", "condition": {"required_region": "HOENN", "flag": "beat_hoenn_champion"}, "completed_flag": "delta_wallace_131", "target": "HOENN_ROUTE_131"},
+    {"id": "hoenn_s40", "type": "SIDE", "title": "Zinnia in Granite Cave", "description": "Zinnia is waiting deep in Granite Cave.", "condition": {"required_region": "HOENN", "flag": "beat_hoenn_champion"}, "completed_flag": "delta_zinnia_granite", "target": "HOENN_GRANITE_CAVE"},
+    {"id": "hoenn_dex30", "type": "SIDE", "title": "Catch 30 Pokémon", "description": "Own 30 different Pokémon from the Hoenn Pokédex to earn a $50,000 bonus.", "condition": {"required_region": "HOENN"}, "completed_flag": "hoenn_catch_30", "region_species": 30, "dex_region": "HOENN"},
+    {"id": "hoenn_dex60", "type": "SIDE", "title": "Catch 60 Pokémon", "description": "Own 60 different Pokémon from the Hoenn Pokédex to earn a $50,000 bonus.", "condition": {"required_region": "HOENN", "flag": "hoenn_catch_30"}, "completed_flag": "hoenn_catch_60", "region_species": 60, "dex_region": "HOENN"},
+    {"id": "hoenn_dex90", "type": "SIDE", "title": "Catch 90 Pokémon", "description": "Own 90 different Pokémon from the Hoenn Pokédex to earn a $50,000 bonus.", "condition": {"required_region": "HOENN", "flag": "hoenn_catch_60"}, "completed_flag": "hoenn_catch_90", "region_species": 90, "dex_region": "HOENN"},
+    {"id": "hoenn_dex120", "type": "SIDE", "title": "Catch 120 Pokémon", "description": "Own 120 different Pokémon from the Hoenn Pokédex to earn a $50,000 bonus.", "condition": {"required_region": "HOENN", "flag": "hoenn_catch_90"}, "completed_flag": "hoenn_catch_120", "region_species": 120, "dex_region": "HOENN"},
+    {"id": "hoenn_dex143", "type": "SIDE", "title": "Catch 143 Pokémon", "description": "Own every Pokémon in the Hoenn Pokédex to earn the final $50,000 bonus!", "condition": {"required_region": "HOENN", "flag": "hoenn_catch_120"}, "completed_flag": "hoenn_catch_143", "region_species": 143, "dex_region": "HOENN"}
   ],
   "HOENN_UNDERWATER_POOL_PERCENTAGES": { "170": 35, "171": 15, "366": 25, "369": 10, "370": 15 },
   "HOENN_ROUTE_101_PERCENTAGES": { "261": 44, "263": 43, "265": 12, "2032": 1 },

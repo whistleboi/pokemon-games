@@ -18,6 +18,12 @@ prog = g.loader.area_data["STORY_PROGRESSION"]
 
 
 def battle_of(st):
+    # an ambush in town says so first (Jordan, 11-06): its line in the text box, then the battle
+    box = getattr(st, "npc_dialogue", None)
+    if not isinstance(st, TrainerIntroState) and box is not None and getattr(box, "callback", None)             and any("wants to battle" in str(t) or "calls out" in str(t) for t in getattr(box, "text_lines", [])):
+        cb, box.callback = box.callback, None
+        cb()
+        st = g.current_state
     return st.next_state if isinstance(st, TrainerIntroState) else st
 
 

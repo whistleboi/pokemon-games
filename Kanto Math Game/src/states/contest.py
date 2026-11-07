@@ -441,9 +441,36 @@ class ContestState(GameState):
         quick = pygame.time.get_ticks() - self.asked_at <= QUICK_ANSWER_MS
         self.math_ui.set_visibility(False)
         lines = self._player_appeal(correct, quick)
+        rest = lines[1:]
         for rival in self.contestants[1:]:
-            lines.extend(self._rival_appeal(rival))
-        self.say(lines, self.next_turn)
+            rest.extend(self._rival_appeal(rival))
+        if correct and self._start_move_anim(self.chosen[0], lambda: self.say(rest, self.next_turn)):
+            self.say(lines[:1], self._play_move_anim)  # "X appealed with Y!", then the move, then the rest
+        else:
+            self.say(lines[:1] + rest, self.next_turn)
+
+    # -- the move's animation (Jordan, 11-06): the battle's own (src/vfx/move_anim.py). We see the Pokemon
+    # from the front, as a foe is seen in battle, so it plays the foe's version, aimed out at the crowd.
+    def _stage_spot(self):
+        """The centre of your Pokemon on stage (as draw() puts it)."""
+        return self.game.width // 2, self.box_rect.top - 8 - 110
+
+    def _start_move_anim(self, move, then):
+        from src.vfx import move_anim as move_anims
+        anim, swapped = move_anims.find(self.game.assets.assets_dir, move, "opponent")
+        if not anim:
+            return False
+        ux, uy = self._stage_spot()
+        target = (ux - int(self.game.width * 0.28), self.box_rect.top - 40)  # (down in front: the crowd)
+        self._anim_next = move_anims.MoveAnimation(self.game, anim, (ux, uy), target, self.box_rect.top,
+                                                   swapped, "opponent")
+        self._anim_then = then
+        return True
+
+    def _play_move_anim(self):
+        self.phase = "ANIM"
+        self.move_anim, self._anim_next = self._anim_next, None
+        self.dialogue_box.set_visibility(False)
 
     # -- scoring --------------------------------------------------------
     def _appeal(self, contestant, move, good, quick=False):
@@ -560,10 +587,23 @@ class ContestState(GameState):
 
     def update(self):
         self.dialogue_box.update()
+        anim = getattr(self, "move_anim", None)
+        if anim is not None:
+            anim.update()
+            if anim.done:
+                self.move_anim = None
+                self.phase = "APPEAL"
+                self.dialogue_box.set_visibility(True)
+                then, self._anim_then = self._anim_then, None
+                if then:
+                    then()
 
     def draw(self):
         screen = self.game.screen
         draw_stage(screen, self.game.width, self.box_rect.top, CATEGORY_COLOR[self.category])
+        anim = getattr(self, "move_anim", None)
+        if anim is not None:
+            anim.draw_back(screen)
         font, small = self.game.assets.fonts["caption"], self.game.assets.fonts["label"]
 
         # Contestant cards along the top.
@@ -598,7 +638,16 @@ class ContestState(GameState):
         if mon.image:
             img = pygame.transform.smoothscale(mon.image, (220, 220))
             bob = int(6 * math.sin(pygame.time.get_ticks() / 300))
-            screen.blit(img, img.get_rect(midbottom=(self.game.width // 2, self.box_rect.top - 8 + bob)))
+            dx, dy, shown = 0, 0, True
+            if anim is not None:  # the move moves, hides, fades or tints it (it's the "foe" here)
+                from src.vfx.move_anim import tinted
+                dx, dy, shown, opacity, tint = anim.battler("opponent")
+                img = tinted(img, tint, opacity)
+            if shown:
+                screen.blit(img, img.get_rect(midbottom=(self.game.width // 2 + int(dx),
+                                                         self.box_rect.top - 8 + bob + int(dy))))
+        if anim is not None:
+            anim.draw(screen)
 
         if not self.dialogue_box.visible and self.phase != "MATH":
             Utils.draw_textbox(screen, *self.box_rect)

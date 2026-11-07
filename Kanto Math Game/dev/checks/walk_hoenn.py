@@ -21,6 +21,10 @@ for b, extra in [("STONE", {}), ("KNUCKLE", {}), ("DYNAMO", {}), ("HEAT", {}), (
     story.story_flags.update({f: True for f in BEATS.get(b, [])})
     if "got_strength_hoenn" in BEATS.get(b, []):
         story.inventory["HM_STRENGTH"] = 1  # the rival's gift on Route 112
+    if "defeated_wally_mauville" in BEATS.get(b, []):
+        story.inventory["HM_ROCK_SMASH"] = 1  # Wally's uncle, in Mauville (not the Dynamo Badge: 11-06)
+    if "hoenn_rival_119" in BEATS.get(b, []):
+        story.inventory["HM_FLY"] = 1  # the rival on Route 119 (not the Feather Badge: 11-06)
     seen = report(f"{b} badge", S, seen)
 story.story_flags["beat_hoenn_champion"] = True
 seen = report("champion", S, seen)

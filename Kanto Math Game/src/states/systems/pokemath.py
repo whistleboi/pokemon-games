@@ -99,12 +99,12 @@ class PokeMathInfiniteState(GameState):
             card = pygame.Rect(0, 0, max(360, qf.size(self.problem_str)[0] + 120), 100)
             card.center = (self.game.width // 2, 100)
             theme.draw_textbox(screen, card)
-            theme.shadow_text(screen, self.problem_str, qf, card.centerx, card.centery, align="center")
+            theme.math_text(screen, self.problem_str, qf, card.centerx, card.centery)
             mouse = pygame.mouse.get_pos()
             for i in range(3):
                 txt = str(self.options[i])
                 rect = self.get_btn_rect(i)
                 theme.card(screen, rect, hover=rect.collidepoint(mouse), accent=theme.RUN)
-                theme.shadow_text(screen, txt, f["num"], rect.centerx, rect.centery, align="center")
+                theme.answer_text(screen, txt, f["num"], rect.centerx, rect.centery)
         if self.ball_active:
             screen.blit(self.ball_img, (self.ball_pos[0]-42, self.ball_pos[1]-42))

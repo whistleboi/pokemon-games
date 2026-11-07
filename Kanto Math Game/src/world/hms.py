@@ -9,8 +9,10 @@ HM_BY_BADGE = {
     "KANTO": {"CASCADE": "HM_CUT", "RAINBOW": "HM_FLY", "SOUL": "HM_SURF"},
     "JOHTO": {"ZEPHYR": "HM_FLASH", "HIVE": "HM_CUT", "PLAIN": "HM_STRENGTH", "FOG": "HM_SURF",
               "STORM": "HM_FLY", "GLACIER": "HM_WHIRLPOOL", "RISING": "HM_WATERFALL"},
-    "HOENN": {"STONE": "HM_CUT", "KNUCKLE": "HM_FLASH", "DYNAMO": "HM_ROCK_SMASH", "HEAT": "HM_STRENGTH",
-              "BALANCE": "HM_SURF", "FEATHER": "HM_FLY", "MIND": "HM_DIVE", "RAIN": "HM_WATERFALL"},
+    # (Hoenn's Rock Smash, Strength and Fly are story gifts before their badges: Wally's uncle in Mauville,
+    # the rival on Route 112 and on Route 119; Jordan, 11-06: one source for each key item in a region)
+    "HOENN": {"STONE": "HM_CUT", "KNUCKLE": "HM_FLASH", "BALANCE": "HM_SURF", "MIND": "HM_DIVE",
+              "RAIN": "HM_WATERFALL"},
     "SINNOH": {"COAL": "HM_ROCK_SMASH", "FOREST": "HM_CUT", "COBBLE": "HM_FLY", "FEN": "HM_DEFOG",
                "RELIC": "HM_SURF", "MINE": "HM_STRENGTH", "ICICLE": "HM_ROCK_CLIMB", "BEACON": "HM_WATERFALL"},
     "UNOVA": {"TRIO": "HM_CUT", "BASIC": "HM_STRENGTH", "BOLT": "HM_SURF", "QUAKE": "HM_FLY",

@@ -216,8 +216,9 @@ class PokemonMatch(Minigame):
 class VoltorbField(Minigame):
     key = "voltorb"
     title = "Voltorb Field"
-    how = "Uncover the tiles. A number tells how many hidden Pokemon are next to it. Uncover every safe tile!"
-    controls = (("Tap a tile", "Uncover it"), ("First tap", "Always safe"))
+    how = ("Uncover every safe tile! The number at the end of each row and under each column says how many "
+           "Pokemon hide in it. A row or column with 0 is all safe. Numbers on tiles count the Pokemon next to them.")
+    controls = (("Tap a tile", "Uncover it"), ("Start", "Where a row or column shows 0"))
     accent = (216, 176, 32)
 
     @classmethod
@@ -230,32 +231,52 @@ class VoltorbField(Minigame):
     def goal_text(self):
         return "Uncover every safe tile"
 
+    # Jordan (11-06): a smaller field that grows with the badges, and each row's and column's count of
+    # hidden Pokemon at its end (as in the Game Corner's Voltorb Flip), so it's not all guesswork.
+    SIZES = ((5, 4), (5, 4), (6, 4), (6, 4), (6, 5), (6, 5), (7, 5), (7, 5))
+
     def setup(self):
-        self.cols, self.rows = 9, 6
+        self.cols, self.rows = self.SIZES[self.level]
         self.hazard = local(self.game, HAZARDS)[0]
-        self.mines = 7 + self.level // 2
+        self.mines = 3 + self.level // 2
         self.safe = self.cols * self.rows - self.mines
-        self.board = None  # placed on the first tap (it's always safe)
+        self.board = self._place()
         self.shown = set()
         self.boom = None
 
     def _cell(self):
-        return min((self.W - 80) // self.cols, (self.area.h - 50) // self.rows)
+        # (one more column and row than the field: the counts)
+        return min((self.W - 80) // (self.cols + 1), (self.area.h - 50) // (self.rows + 1), 150)
+
+    def _origin(self):
+        s = self._cell()
+        return (self.W - (self.cols + 1) * s) // 2, self.area.top + (self.area.h - (self.rows + 1) * s) // 2
 
     def _rect(self, c, r):
         s = self._cell()
-        x0 = (self.W - self.cols * s) // 2
-        y0 = self.area.top + (self.area.h - self.rows * s) // 2
+        x0, y0 = self._origin()
         return pygame.Rect(x0 + c * s + 3, y0 + r * s + 3, s - 6, s - 6)
 
     def _near(self, c, r):
         return [(c + dc, r + dr) for dc in (-1, 0, 1) for dr in (-1, 0, 1)
                 if (dc or dr) and 0 <= c + dc < self.cols and 0 <= r + dr < self.rows]
 
-    def _place(self, c, r):
-        keep_clear = {(c, r), *self._near(c, r)}
-        spots = [(x, y) for x in range(self.cols) for y in range(self.rows) if (x, y) not in keep_clear]
-        self.board = set(self.rng.sample(spots, self.mines))
+    def _place(self):
+        """Where the Pokemon hide: at least one row or column with none, so there's a safe place to start."""
+        spots = [(x, y) for x in range(self.cols) for y in range(self.rows)]
+        board = set()
+        for _ in range(300):
+            board = set(self.rng.sample(spots, self.mines))
+            if any(not self.row_count(y, board) for y in range(self.rows)) or \
+                    any(not self.col_count(x, board) for x in range(self.cols)):
+                break
+        return board
+
+    def row_count(self, r, board=None):
+        return sum(1 for x in range(self.cols) if (x, r) in (self.board if board is None else board))
+
+    def col_count(self, c, board=None):
+        return sum(1 for y in range(self.rows) if (c, y) in (self.board if board is None else board))
 
     def _count(self, c, r):
         return sum(1 for n in self._near(c, r) if n in self.board)
@@ -274,8 +295,6 @@ class VoltorbField(Minigame):
         for c in range(self.cols):
             for r in range(self.rows):
                 if self._rect(c, r).collidepoint(pos):
-                    if self.board is None:
-                        self._place(c, r)
                     if (c, r) in self.board:
                         self.boom = (c, r)
                         self.lose(f"A {species_name(self.game, self.hazard)} jumped out!")
@@ -287,8 +306,26 @@ class VoltorbField(Minigame):
 
     COLORS = {1: (52, 96, 200), 2: (40, 140, 60), 3: (200, 60, 50), 4: (110, 50, 160)}
 
+    def _clue(self, screen, rect, n, done):
+        """A row's or column's count: its Pokemon's icon and how many hide there (dim once it's cleared)."""
+        pygame.draw.rect(screen, (40, 44, 64) if not done else (70, 74, 88), rect, border_radius=10)
+        pygame.draw.rect(screen, (230, 190, 60) if not done else (120, 124, 136), rect, 3, border_radius=10)
+        img = icon(self.game, self.hazard, rect.h // 2)
+        if done:
+            img = img.copy()
+            img.set_alpha(110)
+        screen.blit(img, img.get_rect(center=(rect.x + rect.w * 0.32, rect.centery)))
+        theme.shadow_text(screen, str(n), self.game.assets.fonts["button"], int(rect.x + rect.w * 0.7), rect.centery,
+                          color=(255, 255, 255) if not done else (170, 174, 186), shadow=(20, 20, 30), align="center")
+
     def render(self, screen):
         f = self.game.assets.fonts["button"]
+        for r in range(self.rows):  # each row's count at its end, each column's underneath
+            done = all((x, r) in self.shown or (x, r) in self.board for x in range(self.cols))
+            self._clue(screen, self._rect(self.cols, r), self.row_count(r), done)
+        for c in range(self.cols):
+            done = all((c, y) in self.shown or (c, y) in self.board for y in range(self.rows))
+            self._clue(screen, self._rect(c, self.rows), self.col_count(c), done)
         for c in range(self.cols):
             for r in range(self.rows):
                 rect = self._rect(c, r)
@@ -299,7 +336,7 @@ class VoltorbField(Minigame):
                     if n:
                         theme.shadow_text(screen, str(n), f, rect.centerx, rect.centery,
                                           color=self.COLORS.get(n, (40, 40, 40)), align="center")
-                elif self.phase == "LOST" and self.board and (c, r) in self.board:
+                elif self.phase == "LOST" and (c, r) in self.board:
                     pygame.draw.rect(screen, (240, 200, 120) if (c, r) == self.boom else (200, 200, 210), rect,
                                      border_radius=8)
                     img = icon(self.game, self.hazard, rect.w)

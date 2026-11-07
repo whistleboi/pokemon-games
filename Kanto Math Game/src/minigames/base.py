@@ -21,6 +21,11 @@ from src.ui.dialogue import wrap_text
 from src.config import FPS
 
 HUD_H = 96
+# Each game's pixel-art backdrop (src/minigames/scenes.py), for the ones played over their background
+# (Jordan, 11-06: those were a dark screen). The others fill their own play area.
+SCENES = {"catch": "meadow", "dash": "plains", "flight": "sky", "koga": "dojo", "match": "night",
+          "pong": "stadium", "quiz": "volcano", "rhythm": "stage", "sabrina": "cosmos", "surge": "power",
+          "typeclash": "arena", "voltorb": "power"}
 _icons = {}
 _items = {}
 
@@ -139,7 +144,13 @@ class Minigame(GameState):
         self.W, self.H = game.width, game.height
         self.area = pygame.Rect(0, HUD_H, self.W, self.H - HUD_H)
         self.bg = None
-        if background is not None:
+        self.backdrop = None        # its pixel-art scene, alive (SCENES)
+        self.anim = 0               # frames shown (the scene moves on the cards too)
+        self.scene_scroll = 0.0     # how far a runner has run: its scenery scrolls past
+        if SCENES.get(self.key):
+            from src.minigames.scenes import Scene
+            self.backdrop = Scene(SCENES[self.key], self.W, self.H, seed=self.key)
+        elif background is not None:
             self.bg = pygame.transform.smoothscale(background, (self.W, self.H))
             shade = pygame.Surface((self.W, self.H), pygame.SRCALPHA)
             shade.fill((10, 14, 30, 150))
@@ -261,14 +272,26 @@ class Minigame(GameState):
                     self.buttons[0][3]()
                     return
 
+    def scene_speed(self):
+        """How fast its scenery scrolls (screen pixels a frame): a runner's own speed."""
+        if self.key == "dash":
+            return self._speed()
+        if self.key == "flight":
+            return getattr(self, "speed", 0)
+        return 0
+
     def update(self):
+        self.anim += 1
         if self.phase == "PLAY":
             self.frames += 1
+            self.scene_scroll += self.scene_speed()
             self.step()
 
     def draw(self):
         screen = self.game.screen
-        if self.bg:
+        if self.backdrop:
+            self.backdrop.draw(screen, self.anim, self.scene_scroll)
+        elif self.bg:
             screen.blit(self.bg, (0, 0))
         else:
             screen.fill(theme.MENU_BG)

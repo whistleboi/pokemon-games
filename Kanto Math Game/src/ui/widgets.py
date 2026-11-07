@@ -225,6 +225,13 @@ class MathAnswerGrid(UIElement):
         pad, gap = 20, 14
         bw = (self.rect.width - pad * 2 - gap) // 2
         bh = (self.rect.height - pad * 2 - gap - 4) // 2
+        if len(self.options) == 3:  # three answers (<, = and >): one row, the full height
+            bw3 = (self.rect.width - pad * 2 - gap * 2) // 3
+            for i, option in enumerate(self.options):
+                self.button_rects.append(pygame.Rect(self.rect.x + pad + i * (bw3 + gap), self.rect.y + pad, bw3,
+                                                     self.rect.height - pad * 2 - 4))
+                self.button_texts.append(str(option))
+            return
         for i, option in enumerate(self.options[:4]):
             r = pygame.Rect(self.rect.x + pad + (i % 2) * (bw + gap), self.rect.y + pad + (i // 2) * (bh + gap), bw, bh)
             self.button_rects.append(r)
@@ -259,7 +266,10 @@ class MathAnswerGrid(UIElement):
             font = self.font
             if font.size(text)[0] > r.w - 24:
                 font = self.small_font
-            if fill:
+            if text in theme.SYMBOLS:  # <, = and >: drawn big (the number font's are tiny)
+                theme.answer_text(surface, text, font, r.centerx, r.centery, color=WHITE if fill else theme.TEXT,
+                                  shadow=fill or theme.TEXT_SHADOW)
+            elif fill:
                 Utils.draw_text_outline(surface, text, font, WHITE, r.centerx, r.centery, outline_color=fill, thickness=2)
             else:
                 theme.shadow_text(surface, text, font, r.centerx, r.centery, align="center")
@@ -323,7 +333,7 @@ class MathBattleUI(UIElement):
         font = self.game.assets.fonts["big"]
         if font.size(self.problem_str)[0] > card.width - 90:
             font = self.game.assets.fonts["num"]
-        theme.shadow_text(surface, self.problem_str, font, card.centerx - 20, card.centery, align="center")
+        theme.math_text(surface, self.problem_str, font, card.centerx - 20, card.centery)
         self.answer_grid.draw(surface)
         from src.core import speech
         if speech.available():

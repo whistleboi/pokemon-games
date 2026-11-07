@@ -984,5 +984,548 @@
    },
    "sprite": "15_mega.png"
   }
+ ],
+ "36": [
+  {
+   "form": "mega",
+   "name": "MEGA CLEFABLE",
+   "item": "CLEFABLITE",
+   "types": [
+    "FAIRY",
+    "FLYING"
+   ],
+   "stats": {
+    "HP": 95,
+    "ATTACK": 80,
+    "DEFENSE": 93,
+    "SPECIAL-ATTACK": 135,
+    "SPECIAL-DEFENSE": 110,
+    "SPEED": 70
+   },
+   "sprite": "36_mega.png",
+   "source": "Legends: Z-A"
+  }
+ ],
+ "71": [
+  {
+   "form": "mega",
+   "name": "MEGA VICTREEBEL",
+   "item": "VICTREEBELITE",
+   "types": [
+    "GRASS",
+    "POISON"
+   ],
+   "stats": {
+    "HP": 80,
+    "ATTACK": 125,
+    "DEFENSE": 85,
+    "SPECIAL-ATTACK": 135,
+    "SPECIAL-DEFENSE": 95,
+    "SPEED": 70
+   },
+   "sprite": "71_mega.png",
+   "source": "Legends: Z-A"
+  }
+ ],
+ "121": [
+  {
+   "form": "mega",
+   "name": "MEGA STARMIE",
+   "item": "STARMINITE",
+   "types": [
+    "WATER",
+    "PSYCHIC"
+   ],
+   "stats": {
+    "HP": 60,
+    "ATTACK": 100,
+    "DEFENSE": 105,
+    "SPECIAL-ATTACK": 130,
+    "SPECIAL-DEFENSE": 105,
+    "SPEED": 120
+   },
+   "sprite": "121_mega.png",
+   "source": "Legends: Z-A"
+  }
+ ],
+ "149": [
+  {
+   "form": "mega",
+   "name": "MEGA DRAGONITE",
+   "item": "DRAGONINITE",
+   "types": [
+    "DRAGON",
+    "FLYING"
+   ],
+   "stats": {
+    "HP": 91,
+    "ATTACK": 124,
+    "DEFENSE": 115,
+    "SPECIAL-ATTACK": 145,
+    "SPECIAL-DEFENSE": 125,
+    "SPEED": 100
+   },
+   "sprite": "149_mega.png",
+   "source": "Legends: Z-A"
+  }
+ ],
+ "154": [
+  {
+   "form": "mega",
+   "name": "MEGA MEGANIUM",
+   "item": "MEGANIUMITE",
+   "types": [
+    "GRASS",
+    "FAIRY"
+   ],
+   "stats": {
+    "HP": 80,
+    "ATTACK": 92,
+    "DEFENSE": 115,
+    "SPECIAL-ATTACK": 143,
+    "SPECIAL-DEFENSE": 115,
+    "SPEED": 80
+   },
+   "sprite": "154_mega.png",
+   "source": "Legends: Z-A"
+  }
+ ],
+ "160": [
+  {
+   "form": "mega",
+   "name": "MEGA FERALIGATR",
+   "item": "FERALIGITE",
+   "types": [
+    "WATER",
+    "DRAGON"
+   ],
+   "stats": {
+    "HP": 85,
+    "ATTACK": 160,
+    "DEFENSE": 125,
+    "SPECIAL-ATTACK": 89,
+    "SPECIAL-DEFENSE": 93,
+    "SPEED": 78
+   },
+   "sprite": "160_mega.png",
+   "source": "Legends: Z-A"
+  }
+ ],
+ "227": [
+  {
+   "form": "mega",
+   "name": "MEGA SKARMORY",
+   "item": "SKARMORITE",
+   "types": [
+    "STEEL",
+    "FLYING"
+   ],
+   "stats": {
+    "HP": 65,
+    "ATTACK": 140,
+    "DEFENSE": 110,
+    "SPECIAL-ATTACK": 40,
+    "SPECIAL-DEFENSE": 100,
+    "SPEED": 110
+   },
+   "sprite": "227_mega.png",
+   "source": "Legends: Z-A"
+  }
+ ],
+ "478": [
+  {
+   "form": "mega",
+   "name": "MEGA FROSLASS",
+   "item": "FROSLASSITE",
+   "types": [
+    "ICE",
+    "GHOST"
+   ],
+   "stats": {
+    "HP": 70,
+    "ATTACK": 80,
+    "DEFENSE": 70,
+    "SPECIAL-ATTACK": 140,
+    "SPECIAL-DEFENSE": 100,
+    "SPEED": 120
+   },
+   "sprite": "478_mega.png",
+   "source": "Legends: Z-A"
+  }
+ ],
+ "500": [
+  {
+   "form": "mega",
+   "name": "MEGA EMBOAR",
+   "item": "EMBOARITE",
+   "types": [
+    "FIRE",
+    "FIGHTING"
+   ],
+   "stats": {
+    "HP": 110,
+    "ATTACK": 148,
+    "DEFENSE": 75,
+    "SPECIAL-ATTACK": 110,
+    "SPECIAL-DEFENSE": 110,
+    "SPEED": 75
+   },
+   "sprite": "500_mega.png",
+   "source": "Legends: Z-A"
+  }
+ ],
+ "530": [
+  {
+   "form": "mega",
+   "name": "MEGA EXCADRILL",
+   "item": "EXCADRITE",
+   "types": [
+    "GROUND",
+    "STEEL"
+   ],
+   "stats": {
+    "HP": 110,
+    "ATTACK": 165,
+    "DEFENSE": 100,
+    "SPECIAL-ATTACK": 65,
+    "SPECIAL-DEFENSE": 65,
+    "SPEED": 103
+   },
+   "sprite": "530_mega.png",
+   "source": "Legends: Z-A"
+  }
+ ],
+ "545": [
+  {
+   "form": "mega",
+   "name": "MEGA SCOLIPEDE",
+   "item": "SCOLIPITE",
+   "types": [
+    "BUG",
+    "POISON"
+   ],
+   "stats": {
+    "HP": 60,
+    "ATTACK": 140,
+    "DEFENSE": 149,
+    "SPECIAL-ATTACK": 75,
+    "SPECIAL-DEFENSE": 99,
+    "SPEED": 62
+   },
+   "sprite": "545_mega.png",
+   "source": "Legends: Z-A"
+  }
+ ],
+ "560": [
+  {
+   "form": "mega",
+   "name": "MEGA SCRAFTY",
+   "item": "SCRAFTINITE",
+   "types": [
+    "DARK",
+    "FIGHTING"
+   ],
+   "stats": {
+    "HP": 65,
+    "ATTACK": 130,
+    "DEFENSE": 135,
+    "SPECIAL-ATTACK": 55,
+    "SPECIAL-DEFENSE": 135,
+    "SPEED": 68
+   },
+   "sprite": "560_mega.png",
+   "source": "Legends: Z-A"
+  }
+ ],
+ "604": [
+  {
+   "form": "mega",
+   "name": "MEGA EELEKTROSS",
+   "item": "EELEKTROSSITE",
+   "types": [
+    "ELECTRIC"
+   ],
+   "stats": {
+    "HP": 85,
+    "ATTACK": 145,
+    "DEFENSE": 80,
+    "SPECIAL-ATTACK": 135,
+    "SPECIAL-DEFENSE": 90,
+    "SPEED": 80
+   },
+   "sprite": "604_mega.png",
+   "source": "Legends: Z-A"
+  }
+ ],
+ "609": [
+  {
+   "form": "mega",
+   "name": "MEGA CHANDELURE",
+   "item": "CHANDELURITE",
+   "types": [
+    "GHOST",
+    "FIRE"
+   ],
+   "stats": {
+    "HP": 60,
+    "ATTACK": 75,
+    "DEFENSE": 110,
+    "SPECIAL-ATTACK": 175,
+    "SPECIAL-DEFENSE": 110,
+    "SPEED": 90
+   },
+   "sprite": "609_mega.png",
+   "source": "Legends: Z-A"
+  }
+ ],
+ "652": [
+  {
+   "form": "mega",
+   "name": "MEGA CHESNAUGHT",
+   "item": "CHESNAUGHTITE",
+   "types": [
+    "GRASS",
+    "FIGHTING"
+   ],
+   "stats": {
+    "HP": 88,
+    "ATTACK": 137,
+    "DEFENSE": 172,
+    "SPECIAL-ATTACK": 74,
+    "SPECIAL-DEFENSE": 115,
+    "SPEED": 44
+   },
+   "sprite": "652_mega.png",
+   "source": "Legends: Z-A"
+  }
+ ],
+ "655": [
+  {
+   "form": "mega",
+   "name": "MEGA DELPHOX",
+   "item": "DELPHOXITE",
+   "types": [
+    "FIRE",
+    "PSYCHIC"
+   ],
+   "stats": {
+    "HP": 75,
+    "ATTACK": 69,
+    "DEFENSE": 72,
+    "SPECIAL-ATTACK": 159,
+    "SPECIAL-DEFENSE": 125,
+    "SPEED": 134
+   },
+   "sprite": "655_mega.png",
+   "source": "Legends: Z-A"
+  }
+ ],
+ "658": [
+  {
+   "form": "mega",
+   "name": "MEGA GRENINJA",
+   "item": "GRENINJITE",
+   "types": [
+    "WATER",
+    "DARK"
+   ],
+   "stats": {
+    "HP": 72,
+    "ATTACK": 125,
+    "DEFENSE": 77,
+    "SPECIAL-ATTACK": 133,
+    "SPECIAL-DEFENSE": 81,
+    "SPEED": 142
+   },
+   "sprite": "658_mega.png",
+   "source": "Legends: Z-A"
+  }
+ ],
+ "668": [
+  {
+   "form": "mega",
+   "name": "MEGA PYROAR",
+   "item": "PYROARITE",
+   "types": [
+    "FIRE",
+    "NORMAL"
+   ],
+   "stats": {
+    "HP": 86,
+    "ATTACK": 88,
+    "DEFENSE": 92,
+    "SPECIAL-ATTACK": 129,
+    "SPECIAL-DEFENSE": 86,
+    "SPEED": 126
+   },
+   "sprite": "668_mega.png",
+   "source": "Legends: Z-A"
+  }
+ ],
+ "670": [
+  {
+   "form": "mega",
+   "name": "MEGA FLOETTE",
+   "item": "FLOETTITE",
+   "types": [
+    "FAIRY"
+   ],
+   "stats": {
+    "HP": 74,
+    "ATTACK": 85,
+    "DEFENSE": 87,
+    "SPECIAL-ATTACK": 155,
+    "SPECIAL-DEFENSE": 148,
+    "SPEED": 102
+   },
+   "sprite": "670_mega.png",
+   "source": "Legends: Z-A"
+  }
+ ],
+ "687": [
+  {
+   "form": "mega",
+   "name": "MEGA MALAMAR",
+   "item": "MALAMARITE",
+   "types": [
+    "DARK",
+    "PSYCHIC"
+   ],
+   "stats": {
+    "HP": 86,
+    "ATTACK": 102,
+    "DEFENSE": 88,
+    "SPECIAL-ATTACK": 98,
+    "SPECIAL-DEFENSE": 120,
+    "SPEED": 88
+   },
+   "sprite": "687_mega.png",
+   "source": "Legends: Z-A"
+  }
+ ],
+ "689": [
+  {
+   "form": "mega",
+   "name": "MEGA BARBARACLE",
+   "item": "BARBARACITE",
+   "types": [
+    "ROCK",
+    "FIGHTING"
+   ],
+   "stats": {
+    "HP": 72,
+    "ATTACK": 140,
+    "DEFENSE": 130,
+    "SPECIAL-ATTACK": 64,
+    "SPECIAL-DEFENSE": 106,
+    "SPEED": 88
+   },
+   "sprite": "689_mega.png",
+   "source": "Legends: Z-A"
+  }
+ ],
+ "691": [
+  {
+   "form": "mega",
+   "name": "MEGA DRAGALGE",
+   "item": "DRAGALGITE",
+   "types": [
+    "POISON",
+    "DRAGON"
+   ],
+   "stats": {
+    "HP": 65,
+    "ATTACK": 85,
+    "DEFENSE": 105,
+    "SPECIAL-ATTACK": 132,
+    "SPECIAL-DEFENSE": 163,
+    "SPEED": 44
+   },
+   "sprite": "691_mega.png",
+   "source": "Legends: Z-A"
+  }
+ ],
+ "701": [
+  {
+   "form": "mega",
+   "name": "MEGA HAWLUCHA",
+   "item": "HAWLUCHANITE",
+   "types": [
+    "FIGHTING",
+    "FLYING"
+   ],
+   "stats": {
+    "HP": 78,
+    "ATTACK": 137,
+    "DEFENSE": 100,
+    "SPECIAL-ATTACK": 74,
+    "SPECIAL-DEFENSE": 93,
+    "SPEED": 118
+   },
+   "sprite": "701_mega.png",
+   "source": "Legends: Z-A"
+  }
+ ],
+ "718": [
+  {
+   "form": "mega",
+   "name": "MEGA ZYGARDE",
+   "item": "ZYGARDITE",
+   "types": [
+    "DRAGON",
+    "GROUND"
+   ],
+   "stats": {
+    "HP": 216,
+    "ATTACK": 70,
+    "DEFENSE": 91,
+    "SPECIAL-ATTACK": 216,
+    "SPECIAL-DEFENSE": 85,
+    "SPEED": 100
+   },
+   "sprite": "718_mega.png",
+   "source": "Legends: Z-A"
+  }
+ ],
+ "780": [
+  {
+   "form": "mega",
+   "name": "MEGA DRAMPA",
+   "item": "DRAMPANITE",
+   "types": [
+    "NORMAL",
+    "DRAGON"
+   ],
+   "stats": {
+    "HP": 78,
+    "ATTACK": 85,
+    "DEFENSE": 110,
+    "SPECIAL-ATTACK": 160,
+    "SPECIAL-DEFENSE": 116,
+    "SPEED": 36
+   },
+   "sprite": "780_mega.png",
+   "source": "Legends: Z-A"
+  }
+ ],
+ "870": [
+  {
+   "form": "mega",
+   "name": "MEGA FALINKS",
+   "item": "FALINKSITE",
+   "types": [
+    "FIGHTING"
+   ],
+   "stats": {
+    "HP": 65,
+    "ATTACK": 135,
+    "DEFENSE": 135,
+    "SPECIAL-ATTACK": 70,
+    "SPECIAL-DEFENSE": 65,
+    "SPEED": 100
+   },
+   "sprite": "870_mega.png",
+   "source": "Legends: Z-A"
+  }
  ]
 }

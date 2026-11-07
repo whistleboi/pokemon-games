@@ -65,7 +65,13 @@ def available():
 
 
 def math_words(problem):
-    """'7 + 3 = ?' -> '7 plus 3 equals what?'"""
+    """'7 + 3 = ?' -> '7 plus 3 equals what?'; '8 ? 4' -> 'Is 8 less than, equal to, or more than 4?'"""
+    toks = str(problem).split()
+    if "?" in toks and toks[-1] != "?" and toks[0] != "?" and not set(toks) & {"=", "<", ">"}:
+        k = toks.index("?")
+        left = " ".join(NUMBER_WORDS.get(t, t).strip() for t in toks[:k])
+        right = " ".join(NUMBER_WORDS.get(t, t).strip() for t in toks[k + 1:])
+        return f"Is {left} less than, equal to, or more than {right}?"
     out = [NUMBER_WORDS.get(tok, tok).strip() for tok in str(problem).split()]
     text = " ".join(t for t in out if t)
     return text + ("?" if text.endswith("what") else "")

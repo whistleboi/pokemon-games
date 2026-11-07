@@ -1146,7 +1146,7 @@ class StarterSelectionState(GameState):
             pygame.draw.rect(screen, theme.TEXTBOX_ACCENT, card, 3, border_radius=14)
             theme.shadow_text(screen, msg, fonts["label"] if fonts["label"].size(msg)[0] < card.w - 30 else fonts["caption"],
                               card.centerx, card.y + 28, color=(96, 102, 122), align="center")
-            theme.shadow_text(screen, self.problem_str, fonts["big"], card.centerx, card.centery + 16, align="center")
+            theme.math_text(screen, self.problem_str, fonts["big"], card.centerx, card.centery + 16)
             if self.answer_btn_rects[0].w == 0:
                 self.update_answer_buttons()
             mouse = pygame.mouse.get_pos()
@@ -1154,7 +1154,7 @@ class StarterSelectionState(GameState):
                 btn_rect = self.answer_btn_rects[i]
                 txt = str(self.options[i])
                 theme.card(screen, btn_rect, hover=btn_rect.collidepoint(mouse), accent=theme.RUN, radius=14)
-                theme.shadow_text(screen, txt, fonts["num"], btn_rect.centerx, btn_rect.centery, align="center")
+                theme.answer_text(screen, txt, fonts["num"], btn_rect.centerx, btn_rect.centery)
 
         if self.feedback_timer > 0:
             Utils.draw_text_outline(

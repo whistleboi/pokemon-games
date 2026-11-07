@@ -123,6 +123,29 @@ def _corridor(floor, a, b, width, rng):
                     _carve(floor, x + (k if sx == ex else 0), y + (k if sy == ey else 0))
 
 
+def arena(rng, w=56, h=34, style="field"):
+    """One big open floor with nothing in the way of the view (Hyperspace Lumiose, Jordan 11-06): walls only
+    round the edge, patches of tall grass, a few lone pillars. Its "rooms" are its four quarters (no walls
+    between them), so the start and the way on still go far apart."""
+    floor = Floor(w, h, style)
+    for y in range(1, h - 1):
+        for x in range(1, w - 1):
+            floor.tiles[y][x] = FLOOR
+    for _ in range(max(3, w * h // 220)):  # tall grass patches
+        cx, cy, rx, ry = rng.randint(3, w - 4), rng.randint(3, h - 4), rng.randint(2, 4), rng.randint(1, 3)
+        for y in range(cy - ry, cy + ry + 1):
+            for x in range(cx - rx, cx + rx + 1):
+                if 1 <= x < w - 1 and 1 <= y < h - 1 and ((x - cx) / (rx + .5)) ** 2 + ((y - cy) / (ry + .5)) ** 2 <= 1:
+                    floor.tiles[y][x] = GRASS
+    for _ in range(max(2, w * h // 400)):  # lone pillars (one tile: they never cut a way off)
+        x, y = rng.randint(3, w - 4), rng.randint(3, h - 4)
+        if all(floor.tiles[y + dy][x + dx] != WALL for dx in (-1, 0, 1) for dy in (-1, 0, 1)):
+            floor.tiles[y][x] = WALL
+    hw, hh = (w - 2) // 2, (h - 2) // 2
+    floor.rooms = [Room(1 + i * hw, 1 + j * hh, hw, hh) for j in range(2) for i in range(2)]
+    return floor
+
+
 def generate(rng, w=44, h=30, style="field", ponds=0):
     """A floor: rooms in a grid of cells, joined by paths (every room reachable). ponds: how many rooms get
     a pond (kept off the room's middle row and column, where the paths cross, so it never cuts a way)."""
@@ -307,8 +330,8 @@ def build_floor(rng, recipe, index, entrance=None, forwards=(), last=True, figur
     w, h = recipe.get("size", (44, 30))
     style = recipe.get("style", "field")
     ponds = int(recipe.get("ponds", 0) or 0)
-    floor = generate(rng, w, h, style, ponds)
-    for _ in range(20):  # at least two rooms: a start and somewhere to head for
+    floor = arena(rng, w, h, style) if recipe.get("arena") else generate(rng, w, h, style, ponds)
+    for _ in range(20 if not recipe.get("arena") else 0):  # at least two rooms: a start and somewhere to head for
         if len(floor.rooms) >= 2:
             break
         floor = generate(rng, w, h, style, ponds)
@@ -604,7 +627,7 @@ class Run:
                     m.x, m.y = nx, ny
             if m.alert and abs(m.x - px) + abs(m.y - py) == 1 and not any(e[0] == "ambush" for e in events):
                 events.append(("ambush", m))
-        if self.turn % self.RESPAWN_TURNS == 0:
+        if self.recipe.get("respawn", True) and self.turn % self.RESPAWN_TURNS == 0:  # (Hyperspace: none)
             lo = (self.recipe.get("wild") or [4, 6])[0]
             if sum(1 for m in f.movers if m.kind == "wild") < lo:
                 self._spawn_wild(f, far=True)

@@ -860,7 +860,7 @@ class PlayState(RouteMenu, RouteEncounters, RouteActions, RouteCatch, GameState)
                 pygame.draw.rect(screen, theme.TEXTBOX_FRAME, btn_rect.move(0, 5), border_radius=14)
                 pygame.draw.rect(screen, (236, 244, 255) if hover else WHITE, btn_rect, border_radius=14)
                 pygame.draw.rect(screen, theme.TEXTBOX_FRAME, btn_rect, 4, border_radius=14)
-                theme.shadow_text(screen, txt, font, btn_rect.centerx, btn_rect.centery, align="center")
+                theme.answer_text(screen, txt, font, btn_rect.centerx, btn_rect.centery)
 
         if self.game.debug_mode:
             for r in self.answer_btn_rects:
@@ -874,7 +874,7 @@ class PlayState(RouteMenu, RouteEncounters, RouteActions, RouteCatch, GameState)
             card = pygame.Rect(0, 0, max(360, tw + 120), 100)
             card.center = (width // 2, 92)
             theme.draw_textbox(screen, card)
-            theme.shadow_text(screen, self.problem_str, qfont, card.centerx, card.centery - 4, align="center")
+            theme.math_text(screen, self.problem_str, qfont, card.centerx, card.centery - 4)
             from src.core import speech
             if speech.available():
                 self.speak_rect = pygame.Rect(card.right + 12, card.centery - 26, 52, 52)

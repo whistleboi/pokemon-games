@@ -169,8 +169,12 @@ p.step(*d)
 check(story.inventory.get("POTION", 0) == had + 1, "walking over an item picks it up")
 frames(p, 10)  # (the step's walk animation)
 story.inventory["HONEY"] = 1
-check(p._scent_source() == "HONEY" and not any(b[1] in ("HONEY", "SWEET SCENT") for b in p._buttons())
-      and {"WAIT"} <= {b[1] for b in p._buttons()} and len(p._buttons()) >= 3, "HONEY in the Bag; the map's buttons: POKeMON, POKeDEX, WAIT")
+check(p._scent_source() == "HONEY" and {"HONEY", "WAIT"} <= {b[1] for b in p._buttons()}
+      and next(b for b in p._buttons() if b[1] == "HONEY")[4] and len(p._buttons()) >= 4,
+      "HONEY in the Bag; the map's buttons: POKeMON, POKeDEX, HONEY (Jordan, 11-06: back), WAIT")
+check(p.HONEY_PACK in [k for f in p.run.floors for k in f.items.values()] or
+      any(p.HONEY_PACK in str(v) for f in p.run.floors for v in f.items.values()) or not p._get_wild_pool(p.area_data),
+      "3 HONEY lying on the floor (where wild Pokemon live)")
 from src.states.systems import BagState as _Bag
 _bag = _Bag(g, p)
 _bag._use_field_item("HONEY")  # used from the Bag: back to the map, and it draws them in
@@ -555,5 +559,62 @@ _r22b = kanto("KANTO_ROUTE_22", came="VIRIDIAN_CITY")
 _r22b._try_exit("KANTO_ROUTE_23")
 check(g.current_state is _r22b and _r22b.dialogue_box.visible, "a story lock still holds (Route 23 needs the eight badges)")
 story.badges["KANTO"] = _kb
+
+# Story gates on the map (Jordan, 11-06): what's in the way stands on the locked way out
+_inv = dict(story.inventory)
+story.inventory.pop("POKE_FLUTE", None)
+_r12 = kanto("KANTO_ROUTE_12", came="LAVENDER_TOWN")
+check(_r12._gate("KANTO_ROUTE_13") == ("boss", None, False) and not any(
+    m.kind == "figure" and m.payload.get("action") == "BOSS" for f in _r12.run.floors for m in f.movers),
+      "Route 12: Snorlax asleep across the way to Route 13 (not somewhere else on the map)")
+_r12._try_exit("KANTO_ROUTE_13")
+check(_r12.dialogue_box.visible and "asleep" in " ".join(_r12.dialogue_box.text_lines), "walking into it: it's sound asleep")
+frames(_r12, 2)
+story.player_team = [mk(4)]
+story.current_area_key = "HOENN_RUSTURF_TUNNEL"
+story.inventory.pop("HM_ROCK_SMASH", None)
+_rt = PlayState(g); g.change_state(_rt)
+check(_rt._gate("VERDANTURF_TOWN")[:3] == ("rock", "ROCK SMASH", False), "Rusturf Tunnel: a cracked rock before Verdanturf")
+_rt.draw()
+story.inventory["HM_ROCK_SMASH"] = 1
+check(_rt._gate("VERDANTURF_TOWN")[2], "...gone once you have HM Rock Smash")
+story.inventory.clear(); story.inventory.update(_inv)
+
+# Overworld Pokemon (Everlasting X's following Pokemon): your partner and the wild ones walk on the map
+_p = kanto("KANTO_ROUTE_1")
+_img = _p._follower_img(story.player_team[0], (0, 1))
+check(_img is not None and _img.get_height() >= 40, "the partner's overworld sprite, at the trainer's scale")
+
+# Hyperspace Lumiose (Jordan, 11-06): a donut opens a zone; big open floors, a clock, real-time battles
+from src.world import donuts as _dn
+_d = _dn.bake(["PECHA_BERRY"] * 3)
+check(_d["recipe"] == "perfect" and _d["stars"] == 1 and _dn.zone_for(g, _d) == "HYPERSPACE_VERDANT",
+      "a Perfect Sweet donut (1 star) opens the Verdant Rift")
+_r = _dn.bake(["CHERI_BERRY", "PECHA_BERRY", "ASPEAR_BERRY"])
+check(_r["recipe"] == "rainbow" and _r["bonus_seconds"] == 30, "a Rainbow donut: 30 more seconds a floor")
+check(_dn.zone_for(g, _dn.bake(["CHESTO_BERRY"] * 3)) is None and
+      _dn.zone_for(g, _dn.bake(["CHESTO_BERRY", "NANAB_BERRY", "CHESTO_BERRY"], burnt=False) | {"stars": 2}) == "HYPERSPACE_FROST",
+      "the Frost Rift needs 2 stars (star berries)")
+story.player_team = [mk(4)]
+story.player_team[0].level = 45
+story.story_flags[_dn.FLAG] = _d
+story.current_area_key = "HYPERSPACE_VERDANT"
+_h = PlayState(g); g.change_state(_h)
+check(type(_h).__name__ == "HyperspaceState" and _h.run.fog is False and _h.run.floor.w >= 40
+      and _h._enemies() and story.story_flags.get(_dn.FLAG) is None, "into the Verdant Rift: big, open, the donut eaten")
+check(_h._stairs_blocked(), "the stairs wait until the floor is clear")
+_w = next(m for m in _h.run.floor.movers if m.kind == "wild")
+_h._meet_wild(_w)
+_h._rt_answer(_h.rt_q[2].index(_h.rt_q[1]))
+_w.payload.current_hp = 1
+for _k in range(200):
+    if _h.mode != "RT":
+        break
+    _h._rt_use(_k % 4)
+    _h.update()
+check(_h.mode == "MAP" and _w not in _h.run.floor.movers, "a real-time battle on the map: won, the wild one gone")
+_h.clock = 1
+_h.update()
+check(_h.dialogue_box.visible, "the clock runs out: back to the hub")
 
 print(f"##### {fails} failures")

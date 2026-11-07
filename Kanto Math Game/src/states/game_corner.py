@@ -14,6 +14,7 @@ won at the Slots and Voltorb Flip, spent at the Prize Counter.
   level; a Voltorb loses the round's coins. Memo marks; levels 1-8.
 - PrizeCounterState: each Game Corner's prizes (Pokemon and items) for coins.
 - BlackjackState: Blackjack for coins against Meowth (our own code; the classic card game).
+- GymGamesState: the Gym games you've won (src/minigames), to play again for coins (Jordan, 11-06).
 """
 import os
 import random
@@ -990,4 +991,95 @@ class BlackjackState(GameState):
         theme.shadow_text(screen, self.message, f["dialog"], box.centerx, box.centery, align="center")
         Utils.draw_text_outline(screen, f"{coins(self.story):,} coins   Bet: {self.bet}", f["button"],
                                 (255, 255, 255), self.game.width - 24, 40, align="right")
+        self.game.ui_manager.draw(screen)
+
+
+# ------------------------------------------------------------------------------------------ Gym games
+GYM_GAME_COINS = 50  # a Gym game won again here
+
+
+class GymGamesState(GameState):
+    """GYM GAMES: each Gym challenge you've won, a button each (like the counter's games); win one
+    again for coins. BACK: the counter."""
+
+    def __init__(self, game, corner, message=None):
+        super().__init__(game)
+        from src import minigames
+        self.corner = corner
+        self.bg = getattr(corner, "bg", None)
+        self.games = minigames.beaten(game)
+        self.message = message or (f"Win a game again for {GYM_GAME_COINS} coins!" if self.games
+                                   else "Win a Gym's challenge, and you can play it here!")
+        f = game.assets.fonts
+        prog = game.loader.area_data.get("STORY_PROGRESSION", {})
+        cols = 3
+        margin, gap, bh = 60, 20, 84
+        bw = (game.width - 2 * margin - (cols - 1) * gap) // cols
+        top = 190
+        colors = (theme.FIGHT, theme.POKEMON, theme.MEGA, theme.RUN, theme.BAG)
+        self.buttons = []
+        for i, (key, area) in enumerate(self.games):
+            cls = minigames.GAMES[key]
+            r, c = divmod(i, cols)
+            rect = (margin + c * (bw + gap), top + r * (bh + gap), bw, bh)
+            where = (prog.get(area) or {}).get("route_name") or area.replace("_", " ").title()
+            name = cls.title_for(game).upper()
+            font = f["label"] if f["label"].size(name)[0] <= bw - 30 else f["small"]
+            self.buttons.append(PriceButton(rect, name, f"{where} Gym", font, f["caption"],
+                                            lambda k=key, a=area: self.play(k, a), colors[i % len(colors)]))
+        self.btn_back = CommandButton((game.width // 2 - 110, game.height - 92, 220, 62), "BACK", f["button"],
+                                      self.go_back, bg_color=theme.BACK, autosize=False)
+
+    def start(self):
+        for b in self.buttons + [self.btn_back]:
+            if b not in self.game.ui_manager.elements:
+                self.game.ui_manager.add_element(b)
+
+    def go_back(self):
+        self.game.change_state(self.corner)
+
+    def play(self, key, area):
+        """The game as its Gym has it (its Leader's team), as hard as your badges in the region now."""
+        from src import minigames
+        game, story = self.game, self.game.story_manager
+        gym = (game.loader.area_data.get("STORY_PROGRESSION", {}).get(area) or {}).get("gym") or {}
+        leader = dict(gym.get("leader") or {})
+        lead = next((p for p in story.player_team if p), None)
+        region = story.get_current_region()
+
+        def done(won):
+            line = None
+            if won:
+                add_coins(story, GYM_GAME_COINS)
+                line = f"You won {GYM_GAME_COINS} coins! You have {coins(story):,} now."
+            game.change_state(GymGamesState(game, self.corner, line))
+
+        mg = minigames.GAMES[key](game, done, level=len(story.badges.get(region, [])), background=self.bg,
+                                  leader=leader, team=leader.get("team"), partner=getattr(lead, "id", 25))
+        mg.win_line = f"You did it! {GYM_GAME_COINS} coins are yours."
+        game.change_state(mg)
+
+    def handle_events(self, events):
+        for e in events:
+            if e.type == pygame.KEYDOWN and e.key in (pygame.K_ESCAPE, pygame.K_BACKSPACE):
+                self.go_back()
+
+    def update(self):
+        pass
+
+    def draw(self):
+        screen, f = self.game.screen, self.game.assets.fonts
+        if self.bg:
+            screen.blit(pygame.transform.scale(self.bg, (self.game.width, self.game.height)), (0, 0))
+        else:
+            screen.fill(theme.MENU_BG)
+        shade = pygame.Surface((self.game.width, self.game.height), pygame.SRCALPHA)
+        shade.fill((10, 14, 30, 150))
+        screen.blit(shade, (0, 0))
+        head = pygame.Rect(40, 20, self.game.width - 80, 140)
+        theme.draw_panel(screen, head)
+        Utils.draw_text_outline(screen, "GYM GAMES", f["button"], (255, 255, 255), head.centerx, head.y + 44,
+                                outline_color=theme.PANEL_BORDER, thickness=3)
+        Utils.draw_text_outline(screen, self.message, f["label"], (214, 222, 246), head.centerx, head.y + 104,
+                                outline_color=theme.PANEL_BORDER, thickness=2)
         self.game.ui_manager.draw(screen)
