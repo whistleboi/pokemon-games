@@ -152,7 +152,7 @@ class RouteActions:
             flags["got_starter_mega_stone"] = True
         elif event == "stone_shop":
             from src.states.systems import PokeMartState
-            self.game.change_state(PokeMartState(self.game, self, stock=list(hoenn.HOENN_MEGA_STONES)))
+            self.game.change_state(PokeMartState(self.game, self, stock=hoenn.shop_stones(self.game)))
             return
         self.show_dialogue(lines or ["..."], callback=self.show_progression_menu)
 

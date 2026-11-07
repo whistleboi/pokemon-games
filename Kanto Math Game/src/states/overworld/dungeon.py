@@ -57,6 +57,7 @@ from src.pokemon import balance, catching, forms, tms
 from src.pokemon.data import Pokemon
 from src.states.overworld.common import _trainer_sprite, travel_label
 from src.states.overworld.route import PlayState
+from src.states.overworld.realtime import RealTime
 from src.ui import theme
 from src.utils import Utils
 from src.world import levels
@@ -225,7 +226,7 @@ def dungeon_for(game, restore_data=None):
 
 
 # ---------------------------------------------------------------- the screen
-class DungeonState(PlayState):
+class DungeonState(RealTime, PlayState):
 
     def __init__(self, game, restore_data=None, classic=False):
         if getattr(self, "_dungeon_ready", False):  # the walk going on, back from a battle
@@ -827,6 +828,13 @@ class DungeonState(PlayState):
         return catching.total_balls(story) > 0 and story.catch_unlocked()
 
     def _meet_wild(self, mover):
+        if self._rt_on():  # real-time battles: straight into it; a catch window once it's down (Jordan, 11-06)
+            self.walk_goal = None
+            self.game.data.mark_seen(mover.payload.id)
+            if mover.payload.cry:
+                mover.payload.cry.play()
+            self._rt_wild(mover)
+            return
         self.walk_goal = None
         self.encounter = mover
         self.choice = 0 if self._can_catch() else 1
@@ -848,6 +856,8 @@ class DungeonState(PlayState):
             self._start_math()
         elif self.contest:
             self.flash("In the contest, you catch with MATH!")
+        elif self._rt_on():  # Options > BATTLES: REAL-TIME (src/states/overworld/realtime.py)
+            self._rt_wild(self.encounter)
         else:
             self._battle_wild(self.encounter)
 
@@ -945,6 +955,9 @@ class DungeonState(PlayState):
             self._battle_trainer(mover)
 
     def _battle_trainer(self, mover):
+        if self._rt_on():
+            self._rt_trainer(mover)
+            return
         self.pending = ("trainer", mover)
         self.mode = "MAP"
         self.rounds_completed += 1
@@ -1122,6 +1135,8 @@ class DungeonState(PlayState):
     def handle_events(self, events):
         if self.mode == "CATCH":
             return super().handle_events(events)
+        if self.mode in self.RT_MODES:
+            return self._rt_events(events)
         for e in events:
             if self.dialogue_box.visible:  # a tap anywhere (or Enter) moves the text on
                 if (e.type == pygame.MOUSEBUTTONDOWN and e.button == 1) or \
@@ -1211,6 +1226,13 @@ class DungeonState(PlayState):
     def update(self):
         if self.mode == "CATCH":
             return super().update()
+        if self.mode in self.RT_MODES:  # a real-time battle on the map
+            if self.dialogue_box.visible:
+                self.dialogue_box.update()
+            if self.toast_timer > 0:
+                self.toast_timer -= 1
+            self._rt_update()
+            return
         if self.dialogue_box.visible:
             self.dialogue_box.update()
         if self.toast_timer > 0:
@@ -1377,6 +1399,8 @@ class DungeonState(PlayState):
             img, cw, ch, box = data
             box = box or pygame.Rect(0, 0, cw, ch)
             cell = img.subsurface((frame * cw + box.x, row * ch + box.y, box.w, box.h))
+            if form_key == "gmax":  # Gigantamax: jumbo, over 2 x 2 tiles (Jordan, 11-06)
+                return self._jumbo(cell)
             k = self._trainer_scale()
             return pygame.transform.scale(cell, (cell.get_width() * k, cell.get_height() * k))
         return self._sprite(("follower", int(pokemon.id), form_key, shiny, row, frame), make)
@@ -1416,6 +1440,10 @@ class DungeonState(PlayState):
             return self._item_img(spec["item"], 40) or self._sheet_frame("Object ball.png", col=0, height=36)
         if item.get("action") == "ARRIVAL":
             return self._trainer_img(item["event"].get("trainer") or {})
+        if item.get("action") == "MAX_RAID":  # the den's next raid Pokemon, jumbo (Jordan, 11-06)
+            img = self._raid_img()
+            if img is not None:
+                return img
         pid = spec.get("pokemon")
         if pid is None and item.get("action") == "BOSS":
             pid = (item.get("boss") or self.area_data.get("area_boss") or {}).get("id")
@@ -1426,6 +1454,50 @@ class DungeonState(PlayState):
             from src.minigames.base import icon
             return icon(self.game, int(pid), TILE + 10)
         return self._sheet_frame(spec.get("sheet") or sm.get("townsperson") or "NPC 17.png")
+
+    JUMBO = TILE * 2 + 34  # a jumbo Pokemon's height on the map (2 x 2 tiles, standing a little over)
+
+    def _raid_img(self):
+        rolled = self.roll_raid()
+        if not rolled:
+            return None
+        star, pick = rolled
+        gmax = pick.endswith("-gmax")
+        pid = int(pick.split("-")[0])
+
+        class _Look:  # (just what the walking sheet needs)
+            def __init__(self):
+                self.id, self.form, self.is_shiny = pid, "gmax" if gmax else "normal", False
+        img = self._follower_img(_Look(), (0, 1))
+        if img is None:
+            from src.minigames.base import icon
+            img = icon(self.game, pid, TILE * 2)
+        return self._jumbo(img)
+
+    def _jumbo(self, img):
+        """A sprite grown (or shrunk) to the jumbo height, its pixels kept square where they can be."""
+        def make():  # (a whole number of times, so its pixels stay square; at least 2 tiles tall)
+            k = max(1, round(self.JUMBO / max(1, img.get_height())))
+            return pygame.transform.scale(img, (img.get_width() * k, img.get_height() * k))
+        return self._sprite(("jumbo", id(img)), make)  # (the frames it's made from are kept: their ids hold)
+
+    def _fit_jumbo(self, m):
+        """A Max Raid den's figure takes up 2 x 2 tiles: moved, once, to where all four are free."""
+        if getattr(m, "size", 1) > 1 or not isinstance(m.payload, dict) or m.payload.get("action") != "MAX_RAID":
+            return
+        f = self.run.floor
+        px, py = self.run.player
+
+        def fits(x, y):
+            tiles = [(x + i, y + j) for i in range(2) for j in range(2)]
+            return all(f.walkable(*t) and t not in f.exits and (t == (m.x, m.y) or not f.occupied(*t))
+                       and t != (px, py) for t in tiles)
+        spots = sorted(((x, y) for x in range(1, f.w - 2) for y in range(1, f.h - 2)),
+                       key=lambda t: abs(t[0] - m.x) + abs(t[1] - m.y))
+        spot = next((t for t in spots[:400] if fits(*t)), None)
+        if spot:
+            m.x, m.y = spot
+            m.size = 2
 
     def _trainer_img(self, info, facing=(0, 1)):
         name = info.get("sprite") or "rival.png"
@@ -1564,7 +1636,15 @@ class DungeonState(PlayState):
                 if m.alert:
                     theme.shadow_text(screen, "!", fonts["label"], r.right - 6, r.y - 18, color=(220, 60, 50))
             elif m.kind == "figure":
+                self._fit_jumbo(m)
                 img = self._figure_img(m.payload)
+                if img and getattr(m, "size", 1) > 1:  # a Max Raid's Pokemon: jumbo, over its 2 x 2 tiles
+                    bob = int(3 * math.sin(pygame.time.get_ticks() / 400))
+                    glow = pygame.Rect(r.x, r.y, TILE * 2, TILE * 2).inflate(-6, -30).move(0, 22)
+                    pygame.draw.ellipse(screen, (200, 60, 120), glow, 4)
+                    screen.blit(img, img.get_rect(midbottom=(r.right, r.bottom + TILE - 4 + bob)))
+                    theme.shadow_text(screen, "!", fonts["label"], r.right + TILE - 6, r.y - 30, color=(250, 90, 160))
+                    continue
                 if img:
                     screen.blit(img, img.get_rect(midbottom=(r.centerx, r.bottom - 2)))
                 else:
@@ -1617,6 +1697,7 @@ class DungeonState(PlayState):
         if self.mode == "MAP":
             self._draw_guide(screen, at)
         self._draw_hud(screen)
+        self._rt_draw(screen)
         if self.mode in ("CHOICE", "MATH", "THROW"):
             self._draw_encounter(screen)
         elif self.mode == "SPOTTED" and self.encounter:

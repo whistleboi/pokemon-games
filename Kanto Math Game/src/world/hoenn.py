@@ -46,11 +46,18 @@ TOKENS = ("team", "team_short", "leader", "legend", "other_legend", "orb", "othe
 # The Hoenn starter each Mega Stone belongs to (Steven's gift on Route 120).
 STARTER_STONES = {252: "SCEPTILITE", 255: "BLAZIKENITE", 258: "SWAMPERTITE"}
 STARTER_LINES = {252: (252, 253, 254), 255: (255, 256, 257), 258: (258, 259, 260)}
-# Sold by the stone collector on Route 114 once the Primal crisis is over.
-HOENN_MEGA_STONES = ["SCEPTILITE", "BLAZIKENITE", "SWAMPERTITE", "GARDEVOIRITE", "GALLADITE", "SABLENITE",
-                     "MAWILITE", "AGGRONITE", "MEDICHAMITE", "MANECTITE", "SHARPEDONITE", "CAMERUPTITE",
-                     "ALTARIANITE", "BANETTITE", "ABSOLITE", "GLALITITE", "SALAMENCITE", "METAGROSSITE",
-                     "LATIASITE", "LATIOSITE", "AUDINITE", "LOPUNNITE"]
+# Sold by the stone collector on Route 114 once the Primal crisis is over (before the League): only the stones
+# found nowhere else in Hoenn (Jordan, 11-06: one place for each). The others lie where Omega Ruby / Alpha
+# Sapphire put them (dev/builders/place_hoenn_mega_stones.py); your own starter's comes from Steven.
+HOENN_MEGA_STONES = ["SCEPTILITE", "BLAZIKENITE", "SWAMPERTITE", "GENGARITE", "AUDINITE", "GARCHOMPITE",
+                     "LUCARIONITE", "DIANCITE"]
+# (Hoenn keeps to Omega Ruby / Alpha Sapphire's stones: Legends: Z-A's are only in Lumiose, Jordan 11-06)
+
+
+def shop_stones(game):
+    """The collector's stones: all but your own starter's (Steven gives you that one)."""
+    own = starter_stone(game)
+    return [s for s in HOENN_MEGA_STONES if s != own]
 
 _PRISTINE = {}
 

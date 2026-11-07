@@ -1151,6 +1151,8 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, GameState)
             self.turn_actions += [self.player_attack, self.opponent_attack]
         else:
             self.turn_actions += [self.opponent_attack, self.player_attack]
+        if getattr(self, "raid_allies", None):  # a Max Raid's teammates, after the two of you
+            self.turn_actions.append(self.raid_allies_attack)
 
     FIRST_TURN_ONLY = ("FAKE-OUT", "FIRST-IMPRESSION")
 
@@ -1580,6 +1582,41 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, GameState)
             return ["Your speedy answer helped land that critical hit!"]
         return []
 
+    RAID_ALLY_POWER = 0.6   # (teammates help; your Pokemon still does most of it)
+    RAID_ALLY_SHARE = 0.15  # ...together at most this much of the boss's HP a turn
+
+    def raid_allies_attack(self):
+        """Each Max Raid teammate's Pokemon uses its strongest damaging move on the boss (Jordan, 11-06)."""
+        if self.player_hp <= 0 or self.opponent_hp <= 0:
+            return
+        foe = self.opponent_pokemon
+        chart = TypeAdvantage(self.game.loader.area_data.get("TYPE_CHART", {}))
+        lines = []
+        room = max(1, int(self.opp_max_hp * self.RAID_ALLY_SHARE))  # (what they can still do this turn)
+        for name, _sprite, mon in getattr(self, "raid_allies", []):
+            if self.opponent_hp <= 0:
+                break
+            infos = [movelib.info(self.game, m) for m in (mon.moves or [])]
+            infos = [i for i in infos if (i.get("power") or 0) > 0] or [movelib.info(self.game, "TACKLE")]
+            move = max(infos, key=lambda i: (i.get("power") or 0) * chart.get_multiplier(i.get("type"), foe.types or []))
+            special = str(move.get("category") or "").upper() == "SPECIAL"
+            eff = chart.get_multiplier(move.get("type"), foe.types or [])
+            dmg, _c = balance.damage(mon.level, move.get("power") or 40,
+                                     mon.stat_value("SPATK" if special else "ATTACK"),
+                                     foe.stat_value("SPDEF" if special else "DEFENSE"),
+                                     stab=move.get("type") in (mon.types or []), effectiveness=eff)
+            dmg = min(room, max(1, int(dmg * self.RAID_ALLY_POWER))) if eff else 0
+            room -= dmg
+            self.opponent_hp = max(0, self.opponent_hp - dmg)
+            foe.current_hp = self.opponent_hp
+            lines.append(f"{name}'s {mon.display_name.upper()} used {str(move.get('name', 'TACKLE')).replace('-', ' ')}!")
+            if eff > 1:
+                lines.append("It's super effective!")
+        if lines:
+            self.dialogue_box.reset(lines)
+            self.dialogue_box.set_visibility(True)
+            self.feedback_timer = 30
+
     def opponent_attack(self):
         if self.player_hp <= 0 or self.opponent_hp <= 0:
             return
@@ -1935,8 +1972,25 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, GameState)
 
         if self.phase == "PLAYER_SUMMON" and self.player_summon_anim:
             self.player_summon_anim.draw(screen)
+        if getattr(self, "raid_allies", None):
+            self._draw_raid_allies(screen)
 
         self.game.ui_manager.draw(screen)
+
+    def _draw_raid_allies(self, screen):
+        """The Max Raid teammates, small, down the left: each trainer's name and Pokemon."""
+        from src.ui import theme
+        from src.minigames.base import icon
+        fonts = self.game.assets.fonts
+        for k, (name, _sprite, mon) in enumerate(self.raid_allies):
+            r = pygame.Rect(16, 150 + k * 62, 300, 56)
+            pygame.draw.rect(screen, (30, 36, 58), r, border_radius=10)
+            pygame.draw.rect(screen, (200, 60, 120), r, 2, border_radius=10)
+            img = icon(self.game, mon.id, 48)
+            screen.blit(img, img.get_rect(center=(r.x + 30, r.centery)))
+            theme.shadow_text(screen, name, fonts["caption"], r.x + 60, r.y + 6, color=(255, 255, 255), shadow=(10, 10, 20))
+            theme.shadow_text(screen, f"{mon.display_name.upper().split('-')[0]} Lv{mon.level}", fonts["caption"], r.x + 60, r.y + 28,
+                              color=(255, 200, 230), shadow=(10, 10, 20))
 
     # A move that didn't go off shows no animation.
     MOVE_FAILED = ("attack missed!", "avoided the attack", "protected itself!", "But it failed!", "It doesn't affect")
@@ -2770,6 +2824,8 @@ class WildBattleState(TrainerBattleState):
             show_fainted=show_ko,
         )
         self._draw_weather(screen)
+        if getattr(self, "raid_allies", None):  # (a Max Raid's teammates)
+            self._draw_raid_allies(screen)
 
         if (self.phase == "FAINT_ANIM_RUNNING" or self.phase == "RETRACT_ANIM") and self.faint_anim.active:
             self.faint_anim.draw(screen)

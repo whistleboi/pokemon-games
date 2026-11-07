@@ -45,6 +45,7 @@ class StoryManager:
         self.autosave = True     # Options: save every time you travel to a new area
         self.exp_share = True    # Options: the whole party earns XP, as in Gen 6+ (Jordan, 10-29)
         self.game_speed = 1      # Options: 2 = twice the frames a second (Jordan, 11-02)
+        self.battle_style = "TRADITIONAL"  # Options: or "REALTIME" (Jordan, 11-06: Legends Z-A style on the maps)
         self.tracked_mission = None  # the Journal mission the route guide points to (None: the first story one)
         self.repel_routes = 0        # routes a Repel still keeps wild Pokemon away on
         self.selected_ball = None    # the ball you throw (catching.selected)
@@ -1277,6 +1278,7 @@ class StoryManager:
             "autosave": self.autosave,
             "exp_share": self.exp_share,
             "game_speed": self.game_speed,
+            "battle_style": self.battle_style,
             "tracked_mission": self.tracked_mission,
             "repel_routes": self.repel_routes, "selected_ball": self.selected_ball,
         }
@@ -1410,6 +1412,7 @@ class StoryManager:
         self.autosave = data.get("autosave", True)
         self.exp_share = data.get("exp_share", True)
         self.game_speed = 2 if data.get("game_speed") == 2 else 1
+        self.battle_style = "REALTIME" if data.get("battle_style") == "REALTIME" else "TRADITIONAL"
         self.tracked_mission = data.get("tracked_mission")
         self.repel_routes = data.get("repel_routes", 0)
         self.selected_ball = data.get("selected_ball")

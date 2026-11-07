@@ -594,22 +594,72 @@ class RouteEncounters:
         odds = rows[-1][1]
         return random.choices(range(1, 6), weights=odds)[0]
 
-    def action_max_raid(self):
-        """Max Raid Battle: a Dynamax (or rare Gigantamax) boss drawn from this den's star-rank table."""
+    # Raid teammates (Jordan, 11-06): three trainers of random classes, each with one fully evolved,
+    # non-legendary Pokemon from the region's own Pokedex, at the raid's level.
+    RAID_TRAINERS = (("Hiker", "hiker.png"), ("Ace Trainer", "acetrainer_m.png"), ("Ace Trainer", "acetrainer_f.png"),
+                     ("Lass", "lass.png"), ("Youngster", "youngster.png"), ("Veteran", "veteran.png"),
+                     ("Swimmer", "swimmer_f.png"), ("Scientist", "scientist.png"), ("Psychic", "psychic.png"),
+                     ("Backpacker", "hiker.png"), ("Ranger", "ranger_m.png"), ("Skier", "skier.png"))
+    RAID_NAMES = ("Ava", "Ben", "Cleo", "Dev", "Esme", "Finn", "Gus", "Hana", "Ivo", "Jade", "Kai", "Lia", "Milo",
+                  "Nell", "Otto", "Pia", "Quin", "Rae", "Sol", "Tess", "Uma", "Vic", "Wren", "Zed")
+
+    def raid_allies(self, level):
+        """[(trainer's name, Pokemon)] for a Max Raid: three teammates."""
+        from src.states.systems.pokedex import region_dex
+        from src.pokemon import balance
+        story = self.game.story_manager
+        region = story.get_current_region()
+        evo = self.game.loader.evolution_map or {}
+        names = self.game.assets.pokemon_names or {}
+
+        def fully_evolved(pid):
+            n = str(names.get(str(pid), "")).upper()
+            return n and n not in evo and n.split("-")[0] not in evo
+        pool = [p for p in region_dex(story.get_region_start(region))
+                if p <= 1025 and not balance.is_legendary(p) and fully_evolved(p)]
+        pool = pool or [p for p in range(1, 152) if not balance.is_legendary(p) and fully_evolved(p)]
+        out = []
+        for (cls, sprite), name, pid in zip(random.sample(self.RAID_TRAINERS, 3), random.sample(self.RAID_NAMES, 3),
+                                            random.sample(pool, min(3, len(pool)))):
+            try:
+                mon = Pokemon(self.game.loader.fetch_specific(pid), self.game.assets, size_mult=3.125)
+            except Exception:
+                continue
+            mon.level = max(5, level - random.randint(0, 3))
+            mon.current_hp = mon.get_max_hp()
+            from src.pokemon import moves as movelib
+            movelib.ensure_moves(self.game, mon)
+            out.append((f"{cls} {name}", sprite, mon))
+        return out
+
+    def roll_raid(self):
+        """(star, pick) for this den's next raid ("94-gmax", "130"), or None: rolled once and kept until it's
+        fought, so the walked map can show the den's Pokemon before you go in (Jordan, 11-06)."""
+        if getattr(self, "_raid_next", None):
+            return self._raid_next
         den = self.area_data.get("max_raid_den", {})
         star = self._roll_raid_star()
         while star > 1 and not den.get(str(star)):
             star -= 1
         table = den.get(str(star))
         if not table:
+            return None
+        self._raid_next = (star, random.choices(list(table), weights=list(table.values()))[0])
+        return self._raid_next
+
+    def action_max_raid(self):
+        """Max Raid Battle: a Dynamax (or rare Gigantamax) boss drawn from this den's star-rank table."""
+        rolled = self.roll_raid()
+        if not rolled:
             self.show_progression_menu()
             return
+        star, pick = rolled
+        self._raid_next = None  # (the next one rolls fresh)
 
         self.is_progression_paused = True
         self.hide_menu_buttons()
         self.rounds_completed += 1
 
-        pick = random.choices(list(table), weights=list(table.values()))[0]
         gmax = pick.endswith("-gmax")
         pid = int(pick.split("-")[0])
         raw = self.game.loader.fetch_specific(pid, form="gmax" if gmax else "normal")
@@ -639,8 +689,13 @@ class RouteEncounters:
                 "pending_wild_encounters": 0,
                 "initial_round_active": False
             }
+            battle_state.raid_allies = allies  # (they attack the boss after you each turn)
             self.game.change_state(battle_state)
 
+        allies = self.raid_allies(pokemon.level)
+        if allies:
+            intro = intro + ["Three trainers joined you: " + ", ".join(
+                f"{n} with {m.display_name.upper()}" for n, _s, m in allies) + "!"]
         self.show_dialogue(intro, callback=start_battle)
 
     def action_flee(self):

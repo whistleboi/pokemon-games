@@ -1714,6 +1714,9 @@ class DifficultySelectionState(GameState):
         self.btn_speed = CommandButton((w - 16 - 140 - 14 - 190 if return_state_in_game(self) else w - 16 - 190, 14,
                                         190, 56), self._speed_label(), fonts["label"], self.toggle_speed,
                                        bg_color=self._speed_color(), autosize=False)
+        # BATTLES: TRADITIONAL / REAL-TIME (Jordan, 11-06), beside SPEED
+        self.btn_battles = CommandButton((self.btn_speed.rect.x - 14 - 290, 14, 290, 56), self._battles_label(),
+                                         fonts["label"], self.toggle_battles, bg_color=self._battles_color(), autosize=False)
         cx, cy = w // 2, h // 2
         self.quit_panel = pygame.Rect(cx - 260, cy - 170, 520, 340)
         self.quit_buttons = [
@@ -1736,6 +1739,19 @@ class DifficultySelectionState(GameState):
         self.story.game_speed = 1 if getattr(self.story, "game_speed", 1) == 2 else 2
         self.btn_speed.text = self._speed_label()
         self.btn_speed.bg_color = self._speed_color()
+
+    def _battles_label(self):
+        return "BATTLES: " + ("REAL-TIME" if getattr(self.story, "battle_style", "") == "REALTIME" else "CLASSIC")
+
+    def _battles_color(self):
+        from src.ui import theme
+        return theme.MEGA if getattr(self.story, "battle_style", "") == "REALTIME" else theme.TAB_OFF
+
+    def toggle_battles(self):
+        """Traditional battles, or real-time ones right on the map (Legends: Z-A's way), on every walked route."""
+        self.story.battle_style = "TRADITIONAL" if getattr(self.story, "battle_style", "") == "REALTIME" else "REALTIME"
+        self.btn_battles.text = self._battles_label()
+        self.btn_battles.bg_color = self._battles_color()
 
     def _exp_label(self):
         return "EXP SHARE: " + ("ON" if getattr(self.story, "exp_share", True) else "OFF")
@@ -1846,7 +1862,7 @@ class DifficultySelectionState(GameState):
                 if self.btn_back.handle_event(event) or self.btn_confirm.handle_event(event):
                     return  # state changed; ignore the rest of this frame
                 if (self.btn_cap.handle_event(event) or self.btn_exp.handle_event(event)
-                        or self.btn_speed.handle_event(event)):
+                        or self.btn_speed.handle_event(event) or self.btn_battles.handle_event(event)):
                     return
                 for i, rect in enumerate(self.card_rects):
                     if rect.collidepoint(event.pos):
@@ -1930,6 +1946,7 @@ class DifficultySelectionState(GameState):
         self.btn_confirm.draw(screen)
         self.btn_back.draw(screen)
         self.btn_speed.draw(screen)
+        self.btn_battles.draw(screen)
 
         if self.in_game and self.quit_prompt:
             shade = pygame.Surface((w, h), pygame.SRCALPHA)

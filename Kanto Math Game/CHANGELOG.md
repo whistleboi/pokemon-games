@@ -1,5 +1,20 @@
 # Changelog
 
+## Unreleased: real-time or traditional battles, raid teammates, every Mega Stone in its place
+
+- **Options > BATTLES: CLASSIC / REAL-TIME.** Real-time battles happen right on every walked route (Legends: Z-A style): a trainer's intro lines in the text box, then straight into the fight. The XP and rewards are the traditional battle's own, one for one (Exp. Share, the level cap, prize money, items, TMs, story steps). Hyperspace is always real-time; Max Raids are always traditional.
+  - A wild Pokémon: straight into the real-time battle (no catch-or-battle question); once it's knocked out, a catch window like Legends: Z-A's: THROW A BALL (the catch's math question) or LET IT GO.
+- **Max Raids and the Max Lair:** three trainers team up with you, each with a fully evolved, non-legendary Pokémon from the region's Pokédex; they attack the boss after you each turn.
+- **Hoenn's Mega Stones** lie where Omega Ruby / Alpha Sapphire put them (Scizorite in Petalburg Woods, Charizardite X in the Fiery Path, Pidgeotite from Mr. Stone...), all before the League; the ones ORAS gives later (Galladite, Metagrossite, Mewtwonite Y, Sharpedonite, Cameruptite) are at the same places from the start. The Route 114 stone collector sells the rest (the other starters', Gengarite, Audinite, Garchompite, Lucarionite, Diancite). Hoenn keeps to ORAS's stones; Legends: Z-A's are in Lumiose. Mt. Pyre gives one orb and the other comes back after the Cave of Origin.
+- **Kalos's Mega Stones** are where X / Y put them (Frost Cavern, Glittering Cave, Cyllage, Laverre, Victory Road...), and the stones X / Y doesn't have are where Legends: Z-A puts them in Lumiose (its districts, the Quasartico Inc. and Vernal Avenue shops, the Battle Club). Hyperspace zones give Rare Candy and star berries now.
+- **Overworld sprites** for every Mega and Primal form, Gigantamax, and the Teal Mask / Indigo Disk Pokémon.
+
+## Unreleased: jumbo raids, thrown-out Pokémon, quick real-time animations
+
+- **Max Raid dens** on the map show the den's next Pokémon (its Gigantamax look when it's a Gigantamax one), jumbo, over 2 x 2 tiles: walk into any of them for that raid. Gigantamax Pokémon on the map are jumbo too.
+- **Real-time trainer battles:** the trainer throws out its Pokémon onto the tile in front of it (a Poké Ball arcs over), and that's who you fight; the next one is thrown out when it faints.
+- **Real-time attacks** play a quick, simple animation (an orb of the move's type's colour, or a lunge for a physical move, and a small flash where it lands), with a pause after every attack before the next. Each move recharges on its own like Legends: Z-A (stronger moves take longer), shown by a dark cover draining off its button and the seconds left.
+
 ## Unreleased: Hyperspace Lumiose, story gates on the map, Pokémon that walk
 
 - **Hyperspace Lumiose** (Kalos, after Clemont's Voltage Badge): a hub off Lumiose City with a **Donut Shop**. Pick 3 berries and answer a math question to bake a donut: its taste picks the zone (sweet Verdant Rift, spicy Ember Rift, sour Tidal Rift, dry Frost Rift, bitter Voltage Core), and its stars (star berries, found in Hyperspace) open the deeper ones. Recipes: three of one taste is a Perfect donut (+1 star), three different a Rainbow donut (+30 seconds a floor).

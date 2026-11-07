@@ -86,8 +86,9 @@ class Floor:
         return None
 
     def mover_at(self, x, y):
-        for m in self.movers:
-            if (m.x, m.y) == (x, y):
+        for m in self.movers:  # (a jumbo one, size 2: a Max Raid's Pokemon, takes up 2 x 2 tiles)
+            k = getattr(m, "size", 1)
+            if m.x <= x < m.x + k and m.y <= y < m.y + k:
                 return m
         return None
 

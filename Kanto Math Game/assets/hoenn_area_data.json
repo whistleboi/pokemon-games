@@ -676,7 +676,7 @@
           "victory_flag": "ss_tidal_cleared"
         }
       ],
-      "route_menu": [
+      "route_menu": [{"text": "BLASTOISINITE", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_blastoisinite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the BLASTOISINITE!"], "gift_item": {"BLASTOISINITE": 1}, "flag": "got_blastoisinite"}}, 
         {
           "text": "BATTLE THROUGH THE CABINS",
           "action": "GALACTIC_GAUNTLET",
@@ -719,7 +719,7 @@
       "wild_pool_percentages": "HOENN_SCORCHED_SLAB_PERCENTAGES",
       "min_rounds": 1,
       "trainer_pool": [],
-      "route_menu": [
+      "route_menu": [{"text": "CHARIZARDITE Y", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_charizardite_y", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the CHARIZARDITE Y!"], "gift_item": {"CHARIZARDITE_Y": 1}, "flag": "got_charizardite_y"}}, 
         {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
         {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
         {"text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE"},
@@ -785,7 +785,7 @@
           }
         }
       ],
-      "route_menu": [
+      "route_menu": [{"text": "BEEDRILLITE", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_beedrillite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the BEEDRILLITE!"], "gift_item": {"BEEDRILLITE": 1}, "flag": "got_beedrillite"}}, 
         {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
         {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
         {"text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE"},
@@ -871,7 +871,7 @@
         {"name": "Team Magma Grunt", "class": "TEAM_MAGMA", "sprite": "magma_grunt.png", "team": [262], "rewards": {"balls": 3}},
         {"name": "Magma Admin Courtney", "class": "PKMN_TRAINER", "sprite": "courtney.png", "team": [323], "rewards": {"balls": 5}, "levels": [39], "victory_flag": "magma_hideout_cleared", "is_boss_battle": true}
       ],
-      "route_menu": [
+      "route_menu": [{"text": "CAMERUPTITE", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_cameruptite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the CAMERUPTITE!"], "gift_item": {"CAMERUPTITE": 1}, "flag": "got_cameruptite"}}, 
         {
           "text": "CATCH WILD PKMN",
           "action": "CATCH",
@@ -907,7 +907,7 @@
       "backgrounds": { "main": "littleroot_town.png", "lab": "birch_lab.png", "mom": "littleroot_mom.png" },
       "has_gym": false,
       "travel_options": [{"text": "Route 101", "target_area": "HOENN_ROUTE_101"}],
-      "explore_options": [
+      "explore_options": [{"text": "Mom", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_latiasite", "event": {"lines": ["Mom: A stone came in the mail for you. Two of them, in fact!", "You found the LATIASITE!"], "gift_item": {"LATIASITE": 1}, "flag": "got_latiasite"}}, {"text": "Mom's Second Stone", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_latiosite", "event": {"lines": ["Mom: And here's the other one!", "You found the LATIOSITE!"], "gift_item": {"LATIOSITE": 1}, "flag": "got_latiosite"}}, {"text": "A Glinting Stone: Mewtwonite X", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_mewtwonite_x", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the MEWTWONITE X!"], "gift_item": {"MEWTWONITE_X": 1}, "flag": "got_mewtwonite_x"}}, 
         {"text": "Visit Mom", "action": "NPC", "target": "mom"},
         {"text": "Visit Next Door", "action": "NPC", "target": "hoenn_neighbor"},
         {"text": "Visit Birch's Lab", "action": "NPC", "target": "hoenn_birch_lab"}
@@ -971,7 +971,7 @@
         { "text": "Route 116", "target_area": "HOENN_ROUTE_116" },
         { "text": "Rusturf Tunnel", "target_area": "HOENN_RUSTURF_TUNNEL" }
       ],
-      "explore_options": [
+      "explore_options": [{"text": "Mr. Stone", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_pidgeotite", "event": {"lines": ["Mr. Stone: An intriguing stone! Here, a special Mega Stone in return.", "You found the PIDGEOTITE!"], "gift_item": {"PIDGEOTITE": 1}, "flag": "got_pidgeotite"}}, 
         { "text": "Heal", "action": "HEAL" },
         { "text": "Shop", "action": "SHOP" },
         { "text": "Gym", "action": "GYM" },
@@ -1018,7 +1018,7 @@
         {"text": "S.S. Tidal", "target_area": "HOENN_SS_TIDAL", "condition": "has_balance_badge"},
         {"text": "Southern Island", "target_area": "HOENN_SOUTHERN_ISLAND", "item_condition": "EON_TICKET", "message": "The ship sails south across the sea to Southern Island."}
       ],
-      "explore_options": [
+      "explore_options": [{"text": "Market Stall", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_alakazite", "event": {"lines": ["Merchant: This odd stone has been on my stall for ages. It's yours!", "You found the ALAKAZITE!"], "gift_item": {"ALAKAZITE": 1}, "flag": "got_alakazite"}}, 
         { "text": "Heal", "action": "HEAL" },
         { "text": "Shop", "action": "SHOP" },
         { "text": "Contest Hall", "action": "NPC", "target": "contest_hall" },
@@ -1053,7 +1053,7 @@
         {"text": "Route 117", "target_area": "HOENN_ROUTE_117"},
         {"text": "Route 118", "target_area": "HOENN_ROUTE_118"}
       ],
-      "explore_options": [
+      "explore_options": [{"text": "Man in a Suit", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_lopunnite", "event": {"lines": ["Man in a suit: A Mega Stone for a Trainer with style. Take it!", "You found the LOPUNNITE!"], "gift_item": {"LOPUNNITE": 1}, "flag": "got_lopunnite"}}, 
         { "text": "Heal", "action": "HEAL" },
         { "text": "Shop", "action": "SHOP" },
         { "text": "Gym", "action": "GYM" },
@@ -1073,7 +1073,7 @@
         { "text": "Route 117", "target_area": "HOENN_ROUTE_117" },
         { "text": "Rusturf Tunnel", "target_area": "HOENN_RUSTURF_TUNNEL" }
       ],
-      "explore_options": [
+      "explore_options": [{"text": "Wanda", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_gardevoirite", "event": {"lines": ["Wanda: You helped us so much. Please take this stone!", "You found the GARDEVOIRITE!"], "gift_item": {"GARDEVOIRITE": 1}, "flag": "got_gardevoirite"}}, {"text": "A Glinting Stone: Mawilite", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_mawilite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the MAWILITE!"], "gift_item": {"MAWILITE": 1}, "flag": "got_mawilite"}}, 
         { "text": "Heal", "action": "HEAL" },
         { "text": "Contest Hall", "action": "NPC", "target": "contest_hall" },
         { "text": "Talk to Wally", "action": "NPC", "target": "wally_house" }
@@ -1092,7 +1092,7 @@
         { "text": "Route 114", "target_area": "HOENN_ROUTE_114" },
         { "text": "Meteor Falls", "target_area": "HOENN_METEOR_FALLS" }
       ],
-      "explore_options": [
+      "explore_options": [{"text": "Professor Cozmo", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_galladite", "event": {"lines": ["Professor Cozmo: A strange stone, not a meteorite at all. You should have it.", "You found the GALLADITE!"], "gift_item": {"GALLADITE": 1}, "flag": "got_galladite"}}, 
         { "text": "Heal", "action": "HEAL" },
         { "text": "Talk to Cozmo", "action": "NPC", "target": "professor_cozmo" },
         { "text": "Contest Hall", "action": "NPC", "target": "contest_hall" }
@@ -1112,7 +1112,7 @@
         { "text": "Jagged Pass", "target_area": "HOENN_JAGGED_PASS" },
         { "text": "Mt. Chimney", "target_area": "HOENN_MT_CHIMNEY" }
       ],
-      "explore_options": [
+      "explore_options": [{"text": "A Glinting Stone: Houndoominite", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_houndoominite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the HOUNDOOMINITE!"], "gift_item": {"HOUNDOOMINITE": 1}, "flag": "got_houndoominite"}}, 
         { "text": "Heal", "action": "HEAL" },
         { "text": "Shop", "action": "SHOP" },
         { "text": "Gym", "action": "GYM" },
@@ -1154,7 +1154,7 @@
         { "text": "Route 122", "target_area": "HOENN_ROUTE_122" },
             {"text": "S.S. Tidal", "target_area": "HOENN_SS_TIDAL", "condition": "has_balance_badge"}
         ],
-      "explore_options": [
+      "explore_options": [{"text": "The Collector", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_altarianite", "event": {"lines": ["Collector: A lovely Altaria! Take this, it suits a Pokemon like that.", "You found the ALTARIANITE!"], "gift_item": {"ALTARIANITE": 1}, "flag": "got_altarianite"}}, 
         {"text": "Heal", "action": "HEAL"},
         {"text": "Department Store", "action": "SHOP"},
         {"text": "Contest Hall", "action": "NPC", "target": "contest_hall"},
@@ -1179,7 +1179,7 @@
         {"text": "Soaring in the Sky", "target_area": "HOENN_SOARING_IN_THE_SKY", "condition": "beat_hoenn_champion"},
         {"text": "Route 127", "target_area": "HOENN_ROUTE_127", "condition": "has_item:HM_SURF"}
       ],
-      "explore_options": [
+      "explore_options": [{"text": "Steven's House", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_metagrossite", "event": {"lines": ["Steven left a stone on his table, with a note: \"For you, my friend.\"", "You found the METAGROSSITE!"], "gift_item": {"METAGROSSITE": 1}, "flag": "got_metagrossite"}}, 
         {"text": "Heal", "action": "HEAL"},
         {"text": "Shop", "action": "SHOP"},
         {"text": "Gym", "action": "GYM"},
@@ -1201,7 +1201,7 @@
         { "text": "Cave of Origin", "target_area": "HOENN_CAVE_OF_ORIGIN" },
         { "text": "Sky Pillar", "target_area": "HOENN_SKY_PILLAR", "condition": "beat_hoenn_champion" }
       ],
-      "explore_options": [
+      "explore_options": [{"text": "A Glinting Stone: Sablenite", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_sablenite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the SABLENITE!"], "gift_item": {"SABLENITE": 1}, "flag": "got_sablenite"}}, 
         { "text": "Heal", "action": "HEAL" },
         { "text": "Shop", "action": "SHOP" },
         { "text": "Gym", "action": "GYM" }
@@ -1221,7 +1221,7 @@
         { "text": "Shoal Cave", "target_area": "HOENN_SHOAL_CAVE" },
         { "text": "Sky Pillar", "target_area": "HOENN_SKY_PILLAR", "condition": "beat_hoenn_champion" }
       ],
-      "explore_options": [{"text": "Heal", "action": "HEAL"}],
+      "explore_options": [{"text": "A Glinting Stone: Kangaskhanite", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_kangaskhanite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the KANGASKHANITE!"], "gift_item": {"KANGASKHANITE": 1}, "flag": "got_kangaskhanite"}}, {"text": "Heal", "action": "HEAL"}],
       "next_area": "HOENN_ROUTE_131",
       "on_enter_event": null
     },
@@ -1242,7 +1242,7 @@
         { "text": "Route 129", "target_area": "HOENN_ROUTE_129" },
         {"text": "Battle Resort", "target_area": "HOENN_BATTLE_RESORT", "condition": "beat_hoenn_champion"}
       ],
-      "explore_options": [{"text": "Heal", "action": "HEAL"}, {"text": "CHALLENGE LEAGUE", "action": "GYM"}],
+      "explore_options": [{"text": "A Glinting Stone: Mewtwonite Y", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_mewtwonite_y", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the MEWTWONITE Y!"], "gift_item": {"MEWTWONITE_Y": 1}, "flag": "got_mewtwonite_y"}}, {"text": "Heal", "action": "HEAL"}, {"text": "CHALLENGE LEAGUE", "action": "GYM"}],
       "next_area": "HOENN_VICTORY_ROAD",
       "on_enter_event": null
     },
@@ -1659,7 +1659,7 @@
         {"name": "Triathlete Dylan", "class": "TRIATHLETE", "sprite": "triathlete_m.png", "team": [118], "rewards": {"balls": 3}},
         {"name": "{rival_name}", "class": "RIVAL", "sprite": "{rival_character}", "is_boss_battle": true, "team": [320, 285, 256], "rewards": {"balls": 10}, "victory_flag": "defeated_rival_110", "dialogue": {"intro": ["{rival_name}: {player_name}! Let's see how much you've grown!"], "player_won": ["{rival_name}: You beat me again! Mauville City is just up ahead."], "player_lost": ["{rival_name}: Ha! Better luck next time!"]}, "movesets": {"320": ["WATER-GUN", "ROLLOUT", "WHIRLPOOL", "ASTONISH"], "285": ["STUN-SPORE", "LEECH-SEED", "MEGA-DRAIN", "HEADBUTT"], "256": ["SAND-ATTACK", "PECK", "DOUBLE-KICK", "FLAME-CHARGE"], "218": ["EMBER", "ROCK-THROW", "HARDEN", "INCINERATE"], "259": ["MUD-SLAP", "FORESIGHT", "MUD-BOMB", "BIDE"], "253": ["QUICK-ATTACK", "MEGA-DRAIN", "FURY-CUTTER", "PURSUIT"]}, "team_choice": {"252": [320, 285, 256], "255": [285, 218, 259], "258": [218, 320, 253]}, "levels": [18, 18, 20]}
       ],
-      "route_menu": [
+      "route_menu": [{"text": "MANECTITE", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_manectite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the MANECTITE!"], "gift_item": {"MANECTITE": 1}, "flag": "got_manectite"}}, 
         {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
         {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"},
@@ -2068,7 +2068,7 @@
           "rewards": { "balls": 3 }
         }
       ],
-      "route_menu": [
+      "route_menu": [{"text": "VENUSAURITE", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_venusaurite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the VENUSAURITE!"], "gift_item": {"VENUSAURITE": 1}, "flag": "got_venusaurite"}}, 
         {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
         {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"},
@@ -2252,7 +2252,7 @@
           "rewards": { "balls": 5 }
         }
       ],
-      "route_menu": [
+      "route_menu": [{"text": "GYARADOSITE", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_gyaradosite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the GYARADOSITE!"], "gift_item": {"GYARADOSITE": 1}, "flag": "got_gyaradosite"}}, {"text": "ABOMASITE", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_abomasite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the ABOMASITE!"], "gift_item": {"ABOMASITE": 1}, "flag": "got_abomasite"}}, 
         {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
         {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
@@ -2291,7 +2291,7 @@
           "rewards": { "balls": 3 }
         }
       ],
-      "route_menu": [
+      "route_menu": [{"text": "PINSIRITE", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_pinsirite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the PINSIRITE!"], "gift_item": {"PINSIRITE": 1}, "flag": "got_pinsirite"}}, 
         {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
         {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
@@ -2415,7 +2415,7 @@
           "is_boss_battle": true
         }
       ],
-      "route_menu": [
+      "route_menu": [{"text": "HERACRONITE", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_heracronite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the HERACRONITE!"], "gift_item": {"HERACRONITE": 1}, "flag": "got_heracronite"}}, 
         {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
         {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
@@ -2731,7 +2731,7 @@
         {"name": "Bug Catcher James", "class": "BUG_CATCHER", "sprite": "bug_catcher.png", "team": [265, 267], "rewards": {"balls": 2}},
         {"name": "Team Aqua Grunt", "class": "ROCKET", "sprite": "aqua_grunt.png", "team": [261], "rewards": {"balls": 5, "EXP_SHARE": 1}, "is_boss_battle": true, "victory_flag": "woods_boss_defeated", "villain": "grunt", "levels": [9], "dialogue": {"player_won": "hoenn_woods_won"}}
       ],
-      "route_menu": [
+      "route_menu": [{"text": "SCIZORITE", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_scizorite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the SCIZORITE!"], "gift_item": {"SCIZORITE": 1}, "flag": "got_scizorite"}}, 
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
@@ -2747,7 +2747,7 @@
       "wild_pool_percentages": "HOENN_RUSTURF_TUNNEL_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [{"name": "Team Magma Grunt", "class": "ROCKET", "sprite": "magma_grunt.png", "team": [261, 322], "rewards": {"balls": 3}, "is_boss_battle": true, "victory_flag": "rusturf_rescued", "dialogue": {"player_won": "hoenn_rusturf_won"}, "villain": "grunt"}],
-      "route_menu": [
+      "route_menu": [{"text": "AGGRONITE", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_aggronite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the AGGRONITE!"], "gift_item": {"AGGRONITE": 1}, "flag": "got_aggronite"}}, 
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
@@ -2774,7 +2774,7 @@
         {"name": "Picknicker Martha", "class": "PICNIKER", "sprite": "picknicker.png", "team": [304], "rewards": {"balls": 3}},
         {"name": "Hiker Lucas", "class": "HIKER", "sprite": "hiker.png", "team": [74, 299], "rewards": {"balls": 3}}
       ],
-      "route_menu": [
+      "route_menu": [{"text": "STEELIXITE", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_steelixite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the STEELIXITE!"], "gift_item": {"STEELIXITE": 1}, "flag": "got_steelixite"}}, 
         {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
         {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
@@ -2797,7 +2797,7 @@
         {"name": "Admin Tabitha", "class": "ROCKET", "sprite": "magma_grunt.png", "team": [262, 322], "rewards": {"balls": 10, "METEORITE": 1}, "is_boss_battle": true, "victory_flag": "meteor_falls_cleared", "villain": "admin_a", "team_by_version": {"OMEGA_RUBY": [262, 322], "ALPHA_SAPPHIRE": [262, 318]}, "levels": [23, 23]},
         {"name": "Old Couple John & Jay", "class": "COOLTRAINER", "sprite": "oldman.png", "team": [308, 282], "rewards": {"balls": 10}}
       ],
-      "route_menu": [
+      "route_menu": [{"text": "AERODACTYLITE", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_aerodactylite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the AERODACTYLITE!"], "gift_item": {"AERODACTYLITE": 1}, "flag": "got_aerodactylite"}}, {"text": "AN OLD WOMAN", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_salamencite", "event": {"lines": ["An old woman: My granddaughter loves this stone. I think you should have it.", "You found the SALAMENCITE!"], "gift_item": {"SALAMENCITE": 1}, "flag": "got_salamencite"}}, 
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
@@ -2837,7 +2837,7 @@
           "rewards": { "balls": 3 }
         }
       ],
-      "route_menu": [
+      "route_menu": [{"text": "TYRANITARITE", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_tyranitarite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the TYRANITARITE!"], "gift_item": {"TYRANITARITE": 1}, "flag": "got_tyranitarite"}}, 
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
@@ -2878,7 +2878,7 @@
           "villain": "grunt"
         }
       ],
-      "route_menu": [
+      "route_menu": [{"text": "CHARIZARDITE X", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_charizardite_x", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the CHARIZARDITE X!"], "gift_item": {"CHARIZARDITE_X": 1}, "flag": "got_charizardite_x"}}, 
         {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
         {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
@@ -2916,7 +2916,7 @@
       "wild_pool_percentages": "HOENN_NEW_MAUVILLE_PERCENTAGES",
       "min_rounds": 3,
       "trainer_pool": [{"name": "Team Magma Grunt", "class": "TEAM_MAGMA", "sprite": "magma_grunt.png", "team": [100, 100, 101], "rewards": {"balls": 3}}, {"name": "Team Aqua Grunt", "class": "TEAM_AQUA", "sprite": "aqua_grunt.png", "team": [81, 81, 82], "rewards": {"balls": 3}}, {"name": "Wattson", "class": "BOSS", "sprite": "wattson.png", "team": [309, 310, 311], "rewards": {"balls": 15, "THUNDER_STONE": 1}, "is_boss_battle": true, "victory_flag": "new_mauville_cleared", "movesets": {"309": ["SHOCK-WAVE", "LEER", "QUICK-ATTACK", "HOWL"], "310": ["QUICK-ATTACK", "THUNDER-WAVE", "SHOCK-WAVE", "HOWL"]}}],
-      "route_menu": [
+      "route_menu": [{"text": "AMPHAROSITE", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_ampharosite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the AMPHAROSITE!"], "gift_item": {"AMPHAROSITE": 1}, "flag": "got_ampharosite"}}, 
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
@@ -2997,7 +2997,7 @@
       "wild_pool_percentages": "HOENN_SAFARI_ZONE_PERCENTAGES",
       "min_rounds": 3,
       "trainer_pool": [],
-      "route_menu": [
+      "route_menu": [{"text": "ABSOLITE", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_absolite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the ABSOLITE!"], "gift_item": {"ABSOLITE": 1}, "flag": "got_absolite"}}, 
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "ZONE", "action": "ZONE", "color": "CYAN" },
@@ -3035,7 +3035,7 @@
           "rewards": { "balls": 3, "SHOAL_SALT": 1 }
         }
       ],
-      "route_menu": [
+      "route_menu": [{"text": "GLALITITE", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_glalitite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the GLALITITE!"], "gift_item": {"GLALITITE": 1}, "flag": "got_glalitite"}}, {"text": "SLOWBRONITE", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_slowbronite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the SLOWBRONITE!"], "gift_item": {"SLOWBRONITE": 1}, "flag": "got_slowbronite"}}, 
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
@@ -3137,9 +3137,9 @@
       "trainer_pool": [
         {"name": "Hex Maniac Leah", "class": "PSYCHIC", "sprite": "channeler.png", "team": [353, 355], "rewards": {"balls": 3}},
         {"name": "Team Magma Grunt", "class": "ROCKET", "sprite": "magma_grunt.png", "team": [262, 323], "rewards": {"balls": 3}, "villain": "grunt"},
-        {"name": "Admin Courtney", "class": "BOSS", "sprite": "magma_grunt.png", "team": [323], "rewards": {"balls": 15, "RED_ORB": 1}, "is_boss_battle": true, "victory_flag": "mt_pyre_cleared", "villain": "admin_b", "dialogue": {"intro": ["{team} is taking the {orb}! You can't stop us!"], "player_won": ["Too late! The {orb} is already on its way to {leader}!"]}, "movesets": {"323": ["EARTHQUAKE", "ROCK-SLIDE", "AMNESIA", "TAKE-DOWN"], "262": ["TAKE-DOWN", "SCARY-FACE", "ROAR", "SWAGGER"]}, "team_by_version": {"OMEGA_RUBY": [323], "ALPHA_SAPPHIRE": [319]}, "levels": [38]}
+        {"name": "Admin Courtney", "class": "BOSS", "sprite": "magma_grunt.png", "team": [323], "rewards": {"balls": 15}, "is_boss_battle": true, "victory_flag": "mt_pyre_cleared", "villain": "admin_b", "dialogue": {"intro": ["{team} is taking the {orb}! You can't stop us!"], "player_won": ["Too late! The {orb} is already on its way to {leader}!"]}, "movesets": {"323": ["EARTHQUAKE", "ROCK-SLIDE", "AMNESIA", "TAKE-DOWN"], "262": ["TAKE-DOWN", "SCARY-FACE", "ROAR", "SWAGGER"]}, "team_by_version": {"OMEGA_RUBY": [323], "ALPHA_SAPPHIRE": [319]}, "levels": [38]}
       ],
-      "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "STOP {team}", "action": "TRAINER", "condition": "has_trainers", "color": "PURPLE"}, {"text": "TALK TO THE ELDERS", "action": "HOENN_EVENT", "event": "elders", "condition": ["mt_pyre_cleared", "not:got_mt_pyre_orb"], "color": "GOLD"}, {"text": "THE BLACK FOG", "action": "BOSS", "color": "PURPLE", "flag_condition": "not black_fog_banished_hoenn_mt_pyre", "boss": {"id": 10501, "name": "Black Fog", "level": 35, "no_catch": true, "victory_flag": "black_fog_banished_hoenn_mt_pyre", "lines": ["The air turns ice-cold. A black fog pours across the floor...", "Two huge eyes open in the dark. A giant Haunter rises: the Black Fog!", "Long ago people worshipped it as a god. It feeds on dreams. Don't let it get yours!"], "won": ["The Black Fog is too proud to ever be caught.", "It Self-Destructs in a burst of black mist... and is gone.", "But a cold whisper lingers: it will rise again in another haunted place."], "rewards": {"balls": 10, "RARE_CANDY": 3}}}, {"text": "ROUTE 122", "action": "EXIT", "target_area": "HOENN_ROUTE_122", "condition": "can_exit", "color": "RED"}],
+      "route_menu": [{"text": "MEDICHAMITE", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_medichamite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the MEDICHAMITE!"], "gift_item": {"MEDICHAMITE": 1}, "flag": "got_medichamite"}}, {"text": "BANETTITE", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_banettite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the BANETTITE!"], "gift_item": {"BANETTITE": 1}, "flag": "got_banettite"}}, {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "STOP {team}", "action": "TRAINER", "condition": "has_trainers", "color": "PURPLE"}, {"text": "TALK TO THE ELDERS", "action": "HOENN_EVENT", "event": "elders", "condition": ["mt_pyre_cleared", "not:got_mt_pyre_orb"], "color": "GOLD"}, {"text": "THE BLACK FOG", "action": "BOSS", "color": "PURPLE", "flag_condition": "not black_fog_banished_hoenn_mt_pyre", "boss": {"id": 10501, "name": "Black Fog", "level": 35, "no_catch": true, "victory_flag": "black_fog_banished_hoenn_mt_pyre", "lines": ["The air turns ice-cold. A black fog pours across the floor...", "Two huge eyes open in the dark. A giant Haunter rises: the Black Fog!", "Long ago people worshipped it as a god. It feeds on dreams. Don't let it get yours!"], "won": ["The Black Fog is too proud to ever be caught.", "It Self-Destructs in a burst of black mist... and is gone.", "But a cold whisper lingers: it will rise again in another haunted place."], "rewards": {"balls": 10, "RARE_CANDY": 3}}}, {"text": "ROUTE 122", "action": "EXIT", "target_area": "HOENN_ROUTE_122", "condition": "can_exit", "color": "RED"}],
       "next_area": "HOENN_ROUTE_122",
       "region": "HOENN"
     },
@@ -3248,7 +3248,7 @@
         {"name": "Team Aqua Grunt", "class": "ROCKET", "sprite": "aqua_grunt.png", "team": [41, 319], "rewards": {"balls": 3}, "dialogue": {"intro": ["Grunt: The submarine already left! You're too late!"], "player_won": ["Grunt: Maybe not too late..."], "player_lost": ["Grunt: Told you!"]}, "villain": "grunt"},
         {"name": "Aqua Admin Matt", "class": "ROCKET_LEADER", "sprite": "aqua_grunt.png", "team": [323], "rewards": {"balls": 10, "MASTER_BALL": 1}, "is_boss_battle": true, "victory_flag": "aqua_hideout_cleared", "dialogue": {"intro": ["Matt: Hoohahah! The boss is already on his way to the Seafloor Cavern!", "Matt: You'll have to get past me first!"], "player_won": ["Matt: Hoo! You're strong! Fine, take this... the boss won't miss it.", "You found a MASTER BALL in Team Aqua's storage room!"], "player_lost": ["Matt: Hoohahah! Off you go!"]}, "villain": "admin_b", "team_by_version": {"OMEGA_RUBY": [323], "ALPHA_SAPPHIRE": [319]}, "levels": [39]}
       ],
-      "route_menu": [
+      "route_menu": [{"text": "SHARPEDONITE", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_sharpedonite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the SHARPEDONITE!"], "gift_item": {"SHARPEDONITE": 1}, "flag": "got_sharpedonite"}}, 
         { "text": "RAID THE HIDEOUT", "action": "TRAINER", "condition": "has_trainers", "color": "PURPLE" },
         { "text": "LILYCOVE CITY", "action": "EXIT", "target_area": "LILYCOVE_CITY", "condition": "can_exit", "color": "RED" }
       ],

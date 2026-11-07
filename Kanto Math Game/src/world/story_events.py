@@ -309,7 +309,7 @@ EVENTS = {
         "Bake a donut at the Donut Shop and take a bite: its taste takes you to one of the zones.",
         "Each floor has a clock. Beat every trainer and wild Pokemon there before it runs out!",
         "Battles in Hyperspace happen right where you stand, fast. Answer the math, then pick your moves!",
-        "Clear a zone to win a Mega Stone, and keep the star berries you find: they open the deeper zones."]},
+        "Clear a zone for Rare Candy, and keep the star berries you find: they open the deeper zones."]},
     "slateport_market": {"lines": ["The Slateport Market is busy. Merchants call out their best deals.",
                                    "Use the Shop to buy what you need."]},
     "captain_stern": {"lines": ["Captain Stern: Those are the Devon Parts? Wonderful!",

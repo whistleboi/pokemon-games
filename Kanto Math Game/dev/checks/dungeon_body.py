@@ -596,7 +596,7 @@ check(_dn.zone_for(g, _dn.bake(["CHESTO_BERRY"] * 3)) is None and
       _dn.zone_for(g, _dn.bake(["CHESTO_BERRY", "NANAB_BERRY", "CHESTO_BERRY"], burnt=False) | {"stars": 2}) == "HYPERSPACE_FROST",
       "the Frost Rift needs 2 stars (star berries)")
 story.player_team = [mk(4)]
-story.player_team[0].level = 45
+story.player_team[0].level = 10  # (under the level cap: the win's XP shows)
 story.story_flags[_dn.FLAG] = _d
 story.current_area_key = "HYPERSPACE_VERDANT"
 _h = PlayState(g); g.change_state(_h)
@@ -607,14 +607,71 @@ _w = next(m for m in _h.run.floor.movers if m.kind == "wild")
 _h._meet_wild(_w)
 _h._rt_answer(_h.rt_q[2].index(_h.rt_q[1]))
 _w.payload.current_hp = 1
-for _k in range(200):
+_lead = story.player_team[0]
+_xp0 = (_lead.level, _lead.xp)
+for _k in range(400):
+    if _h.dialogue_box.visible:  # (the win's lines, then the battle's own exit)
+        _cb = _h.dialogue_box.callback
+        _h.dialogue_box.visible = False
+        if _cb:
+            _cb()
+        continue
+    if _h.mode == "RTCATCH":  # (the catch window: let it go)
+        _h._rt_catch(False)
+        continue
     if _h.mode != "RT":
         break
     _h._rt_use(_k % 4)
     _h.update()
-check(_h.mode == "MAP" and _w not in _h.run.floor.movers, "a real-time battle on the map: won, the wild one gone")
+check(_h.mode == "MAP" and _w not in _h.run.floor.movers and (_lead.level, _lead.xp) != _xp0,
+      "a real-time battle on the map: won, the wild one gone, the battle's own XP")
+_w2 = next((m for m in _h.run.floor.movers if m.kind == "wild"), None)
+if _w2:
+    _h._meet_wild(_w2)
+    check(_h.mode == "RTQ", "a wild one: straight into the real-time battle (no catch-or-battle question)")
+    _h._rt_answer(_h.rt_q[2].index(_h.rt_q[1]))
+    _w2.payload.current_hp = 1
+    for _k in range(300):
+        if _h.mode != "RT":
+            break
+        _h._rt_use(_k % 4)
+        _h.update()
+    check(_h.mode == "RTCATCH", "...knocked out: the catch window (like Legends: Z-A)")
+    _h._rt_catch(True)
+    check(_h.mode == "MATH" and _w2.payload.current_hp > 0, "THROW A BALL: the catch's math question")
+    _h.mode, _h.encounter = "MAP", None  # (back on the map for the clock's check)
+_h = g.current_state if type(g.current_state).__name__ == "HyperspaceState" else _h
 _h.clock = 1
 _h.update()
 check(_h.dialogue_box.visible, "the clock runs out: back to the hub")
+
+# Options > BATTLES: REAL-TIME (Jordan, 11-06): every walked route; the traditional battle's XP and rewards
+story.battle_style = "REALTIME"
+_p = kanto("KANTO_ROUTE_3", came="PEWTER_CITY")
+story.player_team[0].level = 8
+_t = next((m for f in _p.run.floors for m in f.movers if m.kind == "trainer"), None)
+_money = story.money
+_p._battle_trainer(_t)
+check(_p.dialogue_box.visible, "a trainer: its intro lines first, in the map's text box (no intro screen)")
+for _k in range(3000):
+    _st = g.current_state
+    if _st.dialogue_box.visible:
+        _cb = _st.dialogue_box.callback
+        _st.dialogue_box.visible = False
+        if _cb:
+            _cb()
+        continue
+    if getattr(_st, "mode", "") == "RTQ":
+        _st._rt_answer(_st.rt_q[2].index(_st.rt_q[1]))
+    elif getattr(_st, "mode", "") == "RT":
+        for _f in _st.rt["foes"]:
+            _f.current_hp = min(_f.current_hp, 1)
+        _st._rt_use(_k % 4)
+    else:
+        break
+    _st.update()
+check(story.is_trainer_defeated("KANTO_ROUTE_3", _t.payload[0]) and story.money > _money,
+      "...a real-time win: the trainer beaten, its prize money paid (the battle's own rewards)")
+story.battle_style = "TRADITIONAL"
 
 print(f"##### {fails} failures")
