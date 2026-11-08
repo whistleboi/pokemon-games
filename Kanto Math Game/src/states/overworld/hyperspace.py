@@ -4,8 +4,8 @@ view, trainers and wild Pokemon of its theme. Each floor has a clock (180 second
 beat everyone on it before time runs out, then the way down opens. The last floor's clear wins Rare Candy and
 star berries (the Mega Stones are where Legends: Z-A puts them, in Lumiose: dev/builders/place_kalos_mega_stones.py).
 
-Battles here are always real-time (src/states/overworld/realtime.py: the traditional battle's XP and
-rewards, fought on the map). Run out of Pokemon, or of time, and you're back at the Hyperspace hub."""
+Battles here are the usual turn-based ones (the clock waits while you battle). Run out of Pokemon, or of
+time, and you're back at the Hyperspace hub."""
 import pygame
 
 from src.config import FPS
@@ -30,9 +30,6 @@ class HyperspaceState(DungeonState):
         self._reset_clock()
         self.banner = 150
 
-    def _rt_on(self):
-        return True  # (always real-time here)
-
     # ---------------------------------------------------------------- the clock and the floors
     def _reset_clock(self):
         self.clock = (int(self.hs.get("seconds", 180)) + self.bonus) * FPS
@@ -53,7 +50,7 @@ class HyperspaceState(DungeonState):
         self._reset_clock()
 
     def _collapse(self):
-        self.rt, self.mode = None, "MAP"
+        self.mode = "MAP"
         self.say(["The Hyperspace zone is fading away...", "You were pulled back to the Hyperspace hub!"],
                  then=lambda: self._leave(HUB))
 
@@ -80,20 +77,12 @@ class HyperspaceState(DungeonState):
             lines.append(f"You found 2 {berry.replace('_', ' ')} too! Star berries make stronger donuts.")
         self.say(lines, then=lambda: self._leave(HUB))
 
-    # ---------------------------------------------------------------- meeting someone: straight into real time
-    def _meet_wild(self, mover):
-        self.walk_goal = None
-        self.game.data.mark_seen(mover.payload.id)
-        if mover.payload.cry:
-            mover.payload.cry.play()
-        self._rt_wild(mover)
-
     # ---------------------------------------------------------------- the loop
     def update(self):
         super().update()
         if self.dialogue_box.visible:
             return
-        if self.mode in ("MAP", "RT", "SPOTTED"):
+        if self.mode in ("MAP", "SPOTTED"):
             self.clock -= 1
             if self.clock <= 0:
                 return self._collapse()

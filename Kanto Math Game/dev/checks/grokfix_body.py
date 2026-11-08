@@ -112,12 +112,14 @@ for _ in range(200):
 check(any(v.get("id") == pid for v in g.data.data["pokedex"].values()), "and YES catches it")
 
 print("3.2 / 3.4 / 3.5) levels")
-story.player_team = [mk(7)]; story.player_team[0].level = 15  # canon levels (10-29): HGSS's, whatever the team
-check(levels.area_level(g, "UNION_CAVE") == 6 and levels.area_level(g, "SLOWPOKE_WELL") == 7, "Union Cave 6, Slowpoke Well 7")
-story.player_team[0].level = 5  # no longer held to (or raised with) the team
+story.player_team = [mk(7)]; story.player_team[0].level = 15  # canon levels (10-29): HGSS's
+check(levels.canon_area_level(g, "UNION_CAVE") == 6 and levels.canon_area_level(g, "SLOWPOKE_WELL") == 7, "Union Cave 6, Slowpoke Well 7")
+story.player_team[0].level = 5  # (a team below an area: it stays at its own level)
 check(levels.area_level(g, "SLOWPOKE_WELL") == 7, "Slowpoke Well stays Lv 7 for a Lv 5 team")
+story.player_team[0].level = 15  # (a team above: the area keeps up, Jordan 11-07)
+check(levels.area_level(g, "SLOWPOKE_WELL") == 15, "...and keeps up with a Lv 15 team")
 story.player_team[0].level = 55
-check(levels.area_level(g, "KANTO_ROUTE_26") == 52, "Route 26 trains you for the League (Lv 52, patch 12)")
+check(levels.canon_area_level(g, "KANTO_ROUTE_26") == 52, "Route 26 trains you for the League (Lv 52, patch 12)")
 story.player_team[0].level = 5
 story.current_area_key = "MAHOGANY_TOWN"
 story.level_cap_mode = "STORY"

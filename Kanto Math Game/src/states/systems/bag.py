@@ -120,7 +120,7 @@ class BagState(GameState):
         from src.pokemon import tms, zpower
         return (key in itemlib.MEDICINE or key in itemlib.FIELD or key in self.USABLE_KEYS
                 or key == "EVERSTONE" or key in self.evo_keys or key in POKEBLOCKS or tms.is_tm(key)
-                or bool(zpower.shard_type(key)) or key in zpower.CRYSTAL_TYPE)
+                or bool(zpower.shard_type(key)) or key in zpower.CRYSTAL_TYPE or key in itemlib.HELD_BOOSTS)
 
     def open_pocket(self, i):
         self.current_page = i
@@ -251,6 +251,10 @@ class BagState(GameState):
             return
 
         from src.pokemon import tms, zpower
+        if item_key in itemlib.HELD_BOOSTS:  # Mystic Water: give it to a Pokemon to hold (or take it back)
+            self.game.change_state(PokemonPartyMenuState(
+                self.game, previous_state=self, context="use_item", on_select=self.on_pokemon_select_hold))
+            return
         if item_key in zpower.CRYSTAL_TYPE:  # a Z-Crystal: give it to a Pokemon to hold (or take it back)
             self.game.change_state(PokemonPartyMenuState(
                 self.game, previous_state=self, context="use_item", on_select=self.on_pokemon_select_crystal))
@@ -404,6 +408,29 @@ class BagState(GameState):
         else:
             self._back_to_bag(["It won't have any effect."])
 
+    def on_pokemon_select_hold(self, slot_index):
+        """A held item (Mystic Water): the Pokemon holds it (the Bag keeps it); again takes it back."""
+        from src.world import hms
+        party = self.game.story_manager.player_team
+        if slot_index >= len(party):
+            return
+        p, item = party[slot_index], self.selected_item
+        name = hms.item_name(item)
+        if getattr(p, "held_item", None) == item:
+            p.held_item = None
+            self._back_to_bag([f"You took the {name} back from {p.display_name}."])
+            return
+        old = getattr(p, "held_item", None)
+        for other in party:  # (one of them: it moves to this Pokemon)
+            if other is not p and getattr(other, "held_item", None) == item:
+                other.held_item = None
+        p.held_item = item
+        lines = [f"{p.display_name} is now holding the {name}."]
+        if old:
+            lines.append(f"(It let go of the {hms.item_name(old)}.)")
+        lines.append(f"Its {itemlib.HELD_BOOSTS[item].title()}-type moves hit harder now.")
+        self._back_to_bag(lines)
+
     def on_pokemon_select_crystal(self, slot_index):
         """A Z-Crystal: the Pokemon holds it (the Bag keeps it, as in Sun / Moon); again takes it back."""
         from src.world import hms
@@ -464,7 +491,7 @@ class BagState(GameState):
         from src.pokemon import tms, zpower
         if tms.is_tm(item):
             return tms.works_on(self.game, p, item)
-        if item in zpower.CRYSTAL_TYPE:
+        if item in zpower.CRYSTAL_TYPE or item in itemlib.HELD_BOOSTS:
             return True  # (give it, or take it back)
         if zpower.shard_type(item):
             return (zpower.tera_type(p) != zpower.shard_type(item)

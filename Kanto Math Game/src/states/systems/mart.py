@@ -42,16 +42,7 @@ class PokeMartState(GameState):
 
         self.bg = self._load_building_bg(game, "mart")
 
-        area_key = game.story_manager.current_area_key
-        flag = f"visited_mart_{area_key}"
-
-        if stock is None and not game.story_manager.story_flags.get(flag, False):
-            msg = ["Welcome to the Poké Mart!", "We are currently stocking shelves.", "Here, take these 10 Poké Balls!"]
-            game.story_manager.balls_left += 10
-            game.story_manager.story_flags[flag] = True
-            self.dialogue_box.reset(msg)
-            self.dialogue_box.callback = self.on_welcome_dialogue_end
-            self.phase = "DIALOGUE"
+        # (no more free Poke Balls on a Mart's first visit: Jordan, 11-07, an old feature)
 
         self._build_ui()
 

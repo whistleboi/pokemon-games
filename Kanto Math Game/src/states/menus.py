@@ -1741,15 +1741,15 @@ class DifficultySelectionState(GameState):
         self.btn_speed.bg_color = self._speed_color()
 
     def _battles_label(self):
-        return "BATTLES: " + ("REAL-TIME" if getattr(self.story, "battle_style", "") == "REALTIME" else "CLASSIC")
+        return "BATTLE STYLE: " + ("OVERWORLD" if getattr(self.story, "battle_style", "") == "OVERWORLD" else "CLASSIC")
 
     def _battles_color(self):
         from src.ui import theme
-        return theme.MEGA if getattr(self.story, "battle_style", "") == "REALTIME" else theme.TAB_OFF
+        return theme.MEGA if getattr(self.story, "battle_style", "") == "OVERWORLD" else theme.TAB_OFF
 
     def toggle_battles(self):
-        """Traditional battles, or real-time ones right on the map (Legends: Z-A's way), on every walked route."""
-        self.story.battle_style = "TRADITIONAL" if getattr(self.story, "battle_style", "") == "REALTIME" else "REALTIME"
+        """Trainer battles on the classic battle screen, or drawn right on the map (the same turns and math)."""
+        self.story.battle_style = "TRADITIONAL" if getattr(self.story, "battle_style", "") == "OVERWORLD" else "OVERWORLD"
         self.btn_battles.text = self._battles_label()
         self.btn_battles.bg_color = self._battles_color()
 

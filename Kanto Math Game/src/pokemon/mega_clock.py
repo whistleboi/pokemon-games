@@ -1,7 +1,8 @@
-"""Mega Evolution in real-time battles (Jordan, 11-06): Options > BATTLES: REAL-TIME. The MEGA button in a
-fight on the map Mega Evolves your lead for SECONDS (it stays a Mega between fights, on the map and in the
-party menu), then it goes back and the Key Stone needs COOLDOWN seconds before the next one. The clock runs
-on every screen (Game.run ticks it). Traditional battles keep their own rule: once a battle.
+"""Mega Evolution on the map (Jordan, 11-06/07, as in Legends: Z-A): the map's MEGA button Mega Evolves the
+Pokemon following you for SECONDS of walking (it stays a Mega in the party menu, and goes into battles that
+way, classic or overworld: that's the battle's one Mega), then it goes back and the Key Stone needs COOLDOWN
+seconds before the next one. The clock runs on every screen but battles (Game.run ticks it). A Mega made in
+a battle (its own MEGA button) still lasts that battle.
 
 game.rt_mega = {"mon": the Pokemon, "form": its form, "left": frames as a Mega, "cool": frames to wait}"""
 from src.config import FPS
@@ -46,6 +47,9 @@ def tick(game):
     m = getattr(game, "rt_mega", None)
     if not m:
         return
+    from src.states.battle import TrainerBattleState
+    if isinstance(getattr(game, "current_state", None), TrainerBattleState):
+        return  # (the minute waits while you battle)
     if m.get("left", 0) > 0:
         if not forms.is_changed(m["mon"]):  # (a traditional battle's end put it back)
             return _end(game, say=False)

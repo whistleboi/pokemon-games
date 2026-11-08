@@ -288,6 +288,8 @@ class AbilityEffects:
             mult *= 1.3
         if a in TYPE_BOOST and TYPE_BOOST[a][0] == t:
             mult *= TYPE_BOOST[a][1]
+        from src.pokemon.items import held_boost
+        mult *= held_boost(attacker, t)  # (a held Mystic Water: Water moves)
         if self.vol(attacker).get("flash_fire") and t == "FIRE":
             mult *= 1.5
         status = getattr(attacker, "status", None)

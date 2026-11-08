@@ -469,11 +469,14 @@ class FossilRevivalState(GameState):
 
         raw = self.game.loader.fetch_specific(pokemon_id)
         self.evolved_pokemon_obj = Pokemon(raw, self.game.assets, size_mult=3.0).max_ivs()  # a revived fossil: a gift
+        from src.ui.scene_backdrop import SceneBackdrop
+        self.backdrop = SceneBackdrop((game.width, game.height))  # (one of a few, at random)
 
     def handle_events(self, events):
         pass
 
     def update(self):
+        self.backdrop.update()
         self.timer -= 1
         if self.phase == "START" and self.timer <= 0:
             self.phase = "GROW"
@@ -533,8 +536,10 @@ class FossilRevivalState(GameState):
 
     def draw(self):
         screen = self.game.screen
-        screen.fill(BLACK)
         cx, cy = self.game.width // 2, self.game.height // 2
+        from src.ui.scene_backdrop import text_band
+        self.backdrop.draw(screen, (cx, cy))
+        text_band(screen, self.game.height * 0.85, 90)
 
         if self.phase in ["START", "GROW"]:
             if self.fossil_img:

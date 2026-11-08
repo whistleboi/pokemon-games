@@ -22,7 +22,10 @@ class KantoTown:
             self.npc_sprite = self.game.assets.get_trainer_image("oldman.png")
 
         msgs = []
-        if self.game.story_manager.story_flags.get("tower_ghost_defeated"):
+        flags = self.game.story_manager.story_flags
+        if flags.get("tower_ghost_defeated") and not flags.get("fuji_rescued"):
+            msgs.append("Mr. Fuji isn't home... Someone says he went up the Pokemon Tower and never came back down.")
+        elif flags.get("tower_ghost_defeated"):
             if self.game.story_manager.inventory.get("POKE_FLUTE", 0) > 0:
                 msgs.append(self.game.assets.get_text("fuji_already_helped", default="Thank you again for your help at the tower."))
             else:
@@ -368,6 +371,11 @@ class KantoTown:
         bridge_clear = cleared("KANTO_ROUTE_24") or flags.get("nugget_bridge_cleared_old") or flags.get("nugget_bridge_cleared")
 
         msgs = ["Hi! I'm Bill!", "I'm the developer of the PC Storage System."]
+        if not flags.get("got_ss_ticket_bill"):  # (as in the games: a ticket for the S.S. Anne, Jordan 11-07)
+            flags["got_ss_ticket_bill"] = True
+            story.inventory["SS_TICKET"] = 1
+            msgs += ["Thanks for coming all this way! Here's something for you.",
+                     "You received an S.S. TICKET! The S.S. Anne is docked in Vermilion City."]
 
         def grant_eevee(flag_name):
             flags[flag_name] = True

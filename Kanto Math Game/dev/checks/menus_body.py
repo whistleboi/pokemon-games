@@ -176,7 +176,7 @@ check(story.PC_NAMES["HOENN"] == "Lanette's PC" and "Galar PC" == story.PC_NAMES
 from src.ui.theme import pokemon_word
 check("PC" in pokemon_word("PIKACHU was sent to BILL'S PC!"), "the text box names the region's PC")
 from src.world import hms
-check("AIR_BALLOON" not in story.FLY_ITEMS and hms.hm_for_badge("KANTO", "RAINBOW") == "HM_FLY", "Fly is HM Fly in Kanto")
+check("AIR_BALLOON" not in story.FLY_ITEMS and hms.hm_for_badge("KANTO", "RAINBOW") is None, "Fly is HM Fly in Kanto (from the Route 16 house, not a badge)")
 ms = {m["id"]: m for m in __import__("json").load(open("assets/hoenn_area_data.json", encoding="utf-8"))["JOURNAL_MISSIONS"]}
 check(all(k in ms for k in ("hoenn_m1", "hoenn_m1b", "hoenn_m2", "hoenn_m2b", "hoenn_m2c", "hoenn_m3")),
       "Hoenn's opening has a mission for each step")

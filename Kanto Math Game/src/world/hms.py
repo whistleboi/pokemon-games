@@ -6,7 +6,7 @@ Alola, Galar and Paldea have no HMs; their gates use their own story steps inste
 
 # Region -> badge (normalised, see _norm) -> HM item key. Badges without one are left out.
 HM_BY_BADGE = {
-    "KANTO": {"CASCADE": "HM_CUT", "RAINBOW": "HM_FLY", "SOUL": "HM_SURF"},
+    "KANTO": {"SOUL": "HM_SURF"},  # (Cut: the S.S. Anne's captain; Fly: Route 16's house; Strength: the Warden. 11-07)
     "JOHTO": {"ZEPHYR": "HM_FLASH", "HIVE": "HM_CUT", "PLAIN": "HM_STRENGTH", "FOG": "HM_SURF",
               "STORM": "HM_FLY", "GLACIER": "HM_WHIRLPOOL", "RISING": "HM_WATERFALL"},
     # (Hoenn's Rock Smash, Strength and Fly are story gifts before their badges: Wally's uncle in Mauville,

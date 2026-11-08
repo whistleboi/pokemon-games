@@ -70,6 +70,11 @@ for n in syncs:
     except TypeError: pass
 check(story.inventory.get("POKE_FLUTE", 0) == 0, f"no flute before Fuji (ran {syncs})")
 story.current_area_key = "LAVENDER_TOWN"
+story.story_flags.pop("fuji_rescued", None)
+city = ow.CityState(g); g.change_state(city); city.visit_mr_fuji()
+check(not story.inventory.get("POKE_FLUTE") and any("Tower" in l for l in city.npc_dialogue.text_lines),
+      "Fuji's not home till you rescue him from the tower's top (as in the games)")
+story.story_flags["fuji_rescued"] = True
 city = ow.CityState(g); g.change_state(city); city.visit_mr_fuji()
 check(story.inventory.get("POKE_FLUTE") == 1 and any("Marowak" in l for l in city.npc_dialogue.text_lines), "Fuji tells his story and gives the flute")
 

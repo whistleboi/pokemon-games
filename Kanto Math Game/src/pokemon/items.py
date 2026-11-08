@@ -68,8 +68,20 @@ DEPARTMENT = ["X_ATTACK", "X_DEFENSE", "X_SP_ATK", "X_SP_DEF", "X_SPEED", "X_ACC
               "FRESH_WATER", "SODA_POP", "LEMONADE"]
 
 
+# Held items that power up one type's moves (Jordan, 11-06: Cherrygrove's fisherman's Mystic Water)
+HELD_BOOSTS = {"MYSTIC_WATER": "WATER"}
+HELD_BOOST = 1.2
+HELD = {"MYSTIC_WATER": {"price": 1000, "text": "Give it to a Pokemon to hold: its Water-type moves hit harder."}}
+
+
+def held_boost(pokemon, move_type):
+    """How much a held item powers up a move of this type (1.0: not at all)."""
+    t = HELD_BOOSTS.get(getattr(pokemon, "held_item", None))
+    return HELD_BOOST if t and t == str(move_type).upper() else 1.0
+
+
 def info(item):
-    return MEDICINE.get(item) or BATTLE.get(item) or FIELD.get(item) or {}
+    return MEDICINE.get(item) or BATTLE.get(item) or FIELD.get(item) or HELD.get(item) or {}
 
 
 def price(item):

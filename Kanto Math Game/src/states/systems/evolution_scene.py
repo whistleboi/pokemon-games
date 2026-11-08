@@ -6,7 +6,7 @@ from src.ui.widgets import Button
 from src.ui.panels import CommandButton
 from src.ui import theme
 from src.utils import Utils
-from src.config import WHITE, BLACK, GREEN
+from src.config import WHITE, GREEN
 from src.pokemon.data import Pokemon
 
 
@@ -41,6 +41,8 @@ class EvolutionState(GameState):
             self.phase = "START"
             self.timer = 60
 
+        from src.ui.scene_backdrop import SceneBackdrop
+        self.backdrop = SceneBackdrop((game.width, game.height), hatching=self.is_hatching)  # (one of a few, at random)
         box = Utils.get_full_dialogue_rect(game)
         btn_w, btn_h = 180, 64  # (the battle's YES / NO)
         self.btn_yes = CommandButton((box.right - 2 * btn_w - 46, box.centery - btn_h // 2, btn_w, btn_h), "YES",
@@ -99,6 +101,7 @@ class EvolutionState(GameState):
         pass
 
     def update(self):
+        self.backdrop.update()
         if self.phase == "DECISION":
             return
 
@@ -228,8 +231,11 @@ class EvolutionState(GameState):
             self.game.change_state(self.game.states["play"])
 
     def draw(self):
-        self.game.screen.fill(BLACK)
+        from src.ui.scene_backdrop import text_band
         center_x, center_y = self.game.width // 2, self.game.height // 2
+        self.backdrop.draw(self.game.screen, (center_x, center_y))
+        if self.phase != "DECISION":
+            text_band(self.game.screen, self.game.height * 0.8, 100)
 
         if self.phase == "DECISION":
             img = self.pokemon.image

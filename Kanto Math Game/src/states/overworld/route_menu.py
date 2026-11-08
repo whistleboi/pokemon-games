@@ -469,8 +469,8 @@ class RouteMenu:
 
         if condition == "boss_available":
             is_defeated = self._check_route_condition("boss_defeated", trainers_left)
-            if is_defeated or trainers_left:
-                return False
+            if is_defeated or (trainers_left and not (item or {}).get("before_trainers")):
+                return False  # ("before_trainers": the tower's ghost, below the Rockets that come after it)
 
             if item and item.get("has_SILPH_SCOPE"):
                 if self.game.story_manager.inventory.get("SILPH_SCOPE", 0) <= 0:
@@ -560,6 +560,9 @@ class RouteMenu:
             return self.open_camp
         if action == "ZONE":
             return lambda z=item.get("to_zone"): self.action_switch_zone(z)
+        if action == "CENTER":  # a Pokemon Center on a walked route (Mt. Moon's, on Route 3)
+            from src.states.overworld.pokecenter import PokeCenterState
+            return lambda: self.game.change_state(PokeCenterState(self.game, self))
         if action == "REST":  # a long ride's cabin (the Decolore ferry): a free full heal
             return self.action_rest_in_cabin
         if action == "HOENN_EVENT":

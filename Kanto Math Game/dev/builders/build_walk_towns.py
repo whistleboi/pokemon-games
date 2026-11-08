@@ -48,6 +48,14 @@ KINDS = [("center", ("pokecenter", "poke center", "pokemon center")), ("mart", (
          ("tower", ("pokemon tower",)), ("mansion", ("mansion",)), ("silph", ("silph",))]
 
 
+# Routes walked on their real map (Jordan, 11-06: "could the real Route 1 map be placed in?"): each side's
+# area. They go to assets/walk_routes.json as a route map recipe (src/states/overworld/dungeon.py).
+ROUTE_EDGES = {
+    "KANTO_ROUTE_1": {"south": "PALLET_TOWN", "north": "VIRIDIAN_CITY"},
+}
+EXIT_CHARS = {"north": "N", "south": "S", "east": "E", "west": "W"}
+
+
 def door_kind(name):
     n = name.lower()
     return next((k for k, words in KINDS if any(w in n for w in words)), "house")
@@ -160,6 +168,43 @@ def main(argv):
                          "edges": edges}
             print(f"  {key}: Map{mid:03d} {xs}x{ys}, doors {[(door_kind(n), x, y) for x, y, n, _d in doors]}")
             print(f"      edges: {[(s_, t, len(openings(rows, s_))) for s_, t in edges.items()]}")
+    with open(out_path, "w", encoding="utf-8", newline="\n") as f:
+        json.dump(data, f, ensure_ascii=False, indent=1)
+        f.write("\n")
+    routes(game, only)
+
+
+def routes(game, only):
+    """The routes in ROUTE_EDGES: their map (tall grass ","), the ways out (a letter a side) and picture."""
+    out_path = os.path.join("assets", "walk_routes.json")
+    data = json.load(open(out_path, encoding="utf-8")) if os.path.exists(out_path) else {}
+    os.makedirs(os.path.join("assets", "walk_routes"), exist_ok=True)
+    for fname, regions in REGIONS.items():
+        found = game.maps_in(regions)
+        prog = json.load(open(os.path.join("assets", fname), encoding="utf-8"))["STORY_PROGRESSION"]
+        for key, edges in ROUTE_EDGES.items():
+            if key not in prog or (only and key not in only):
+                continue
+            mid = match(key, prog[key], found)
+            if mid is None:
+                print(f"  {key}: no Journeys map")
+                continue
+            img, xs, ys = game.render(mid, people=False)
+            grass = game.last_map["grass"]
+            rows, doors = walk_grid(game, mid)
+            grid = [[("," if c == "." and grass[y][x] else c) for x, c in enumerate(r)] for y, r in enumerate(rows)]
+            for x, y, _n, _d in doors:  # (an edge warp is a way out; another door isn't walked into here)
+                side = "north" if y == 0 else "south" if y == ys - 1 else "west" if x == 0 else "east" if x == xs - 1 else None
+                grid[y][x] = EXIT_CHARS[side] if side in edges else "#"
+            for side in edges:
+                flat = ["".join(r).replace(",", ".") for r in grid]
+                for (x, y) in openings(flat, side):
+                    grid[y][x] = EXIT_CHARS[side]
+            pygame.image.save(img, os.path.join("assets", "walk_routes", f"{key}.png"))
+            data[key] = {"map": mid, "w": xs, "h": ys, "rows": ["".join(r) for r in grid],
+                         "legend": {EXIT_CHARS[s_]: {"exit": t} for s_, t in edges.items()}}
+            n = {s_: sum(r.count(EXIT_CHARS[s_]) for r in data[key]["rows"]) for s_ in edges}
+            print(f"  route {key}: Map{mid:03d} {xs}x{ys}, grass {sum(r.count(',') for r in data[key]['rows'])}, exits {n}")
     with open(out_path, "w", encoding="utf-8", newline="\n") as f:
         json.dump(data, f, ensure_ascii=False, indent=1)
         f.write("\n")

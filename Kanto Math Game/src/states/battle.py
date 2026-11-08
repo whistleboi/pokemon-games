@@ -92,6 +92,20 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, GameState)
 
         if not bg_raw:
             bg_raw = self.game.assets.get_random_battle_background(battle_type, area_name)
+        here = getattr(self.game, "current_state", None)
+        if not bg_raw and hasattr(here, "_get_battle_background_for_area"):
+            # (a story battle with no type of its own, the rival after Nugget Bridge: the area's own picture,
+            # else one for how the place looks)
+            name = here._get_battle_background_for_area()
+            bg_raw = self.game.assets.get_background(name, from_overworld=False) if name else None
+            if not bg_raw:
+                floor = getattr(getattr(here, "run", None), "floor", None)
+                style = getattr(floor, "style", "") or "field"
+                look = {"sea": "ocean", "building": "indoor", "desert": "sand"}.get(style, style)
+                bg_raw = (self.game.assets.get_random_battle_background(look, area_name)
+                          or self.game.assets.get_random_battle_background("field", area_name))
+        if hasattr(here, "_play_data"):  # (from a walked map: back to the same walk after, not its entrance;
+            self.play_state_data = here._play_data()  # a battle that knows better sets its own)
 
         if bg_raw:
             box_top = Utils.get_full_dialogue_rect(self.game).top
@@ -141,6 +155,9 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, GameState)
         self._turn_end_done = True
         # Mega Evolution / Primal Reversion (one per side per battle) and their extreme weather.
         self.mega_used = {"player": False, "opponent": False}
+        from src.pokemon import mega_clock
+        if mega_clock.active(game):  # (Mega Evolved on the map: it comes in a Mega; that's this battle's one)
+            self.mega_used["player"] = True
         self.chosen_move = None
         self.move_buttons = []
         # Per-battle feats for special evolutions (Sirfetch'd crits, Runerigus damage).
@@ -1796,9 +1813,12 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, GameState)
     def exit_battle(self, lost=False):
         if not lost and self.player_won and self._tm_reward():
             self.game.story_manager.add_item(self._tm_reward(), 1)
+        from src.pokemon import mega_clock
+        kept = mega_clock.state(self.game).get("mon") if mega_clock.active(self.game) else None
         for p in self.game.story_manager.player_team:
             gimmick_end_battle(p)  # (a Terastallized Pokemon's own types)
-            forms.revert_form(p)
+            if p is not kept:  # (a Mega from the map stays one for the rest of its minute)
+                forms.revert_form(p)
             if not lost and p.current_hp > 0:
                 taken = getattr(self, "_battle_damage", {}).get(id(p), 0)
                 p.counters["damage_battle"] = max(p.counters.get("damage_battle", 0), taken)
@@ -1912,6 +1932,8 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, GameState)
         for p in self.game.story_manager.player_team:
             if hasattr(p, "revert_transform"):
                 p.revert_transform()
+        if kept is not None and not forms.is_changed(kept):  # (a Mega from the map: still one, for its minute)
+            forms.apply_form(self.game.assets, kept, mega_clock.state(self.game).get("form"))
 
         area_info = self.game.loader.area_data.get("STORY_PROGRESSION", {}).get(area_key, {})
 
@@ -1938,6 +1960,12 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, GameState)
 
     def draw(self):
         screen = self.game.screen
+        if getattr(self, "overworld", None) is not None:  # Options > BATTLE STYLE: OVERWORLD (on the map)
+            self.overworld.draw(screen, self)
+            if getattr(self, "raid_allies", None):
+                self._draw_raid_allies(screen)
+            self.game.ui_manager.draw(screen)
+            return
 
         is_summoning_enemy = (self.phase == "ENEMY_SUMMON" and self.enemy_summon_anim is not None)
         is_summoning_player = (self.phase == "PLAYER_SUMMON")

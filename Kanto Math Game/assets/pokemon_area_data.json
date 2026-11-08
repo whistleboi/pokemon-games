@@ -156,6 +156,8 @@
         "id": "m8", "type": "MAIN", "text": "Spirit of Lavender", "desc": "A restless spirit haunts the Pokémon Tower. You'll need a Silph Scope to see it. Team Rocket in Celadon might have one...",
         "condition": { "visited": "LAVENDER_TOWN", "flag_not": "tower_ghost_defeated" }
       },
+      {"id": "k_power", "type": "SIDE", "text": "Lights Out in Lavender", "target": "POWER_PLANT", "desc": "Lavender's Radio Tower has no power! Surf along the channel on Route 10 to the Power Plant and help the manager fix the generator.", "condition": {"visited": "LAVENDER_TOWN", "flag_not": "power_plant_fixed"}},
+      {"id": "k_teeth", "type": "SIDE", "text": "The Warden's Teeth", "target": "SAFARI_ZONE", "desc": "The Safari Zone's Warden lost his Gold Teeth and can't talk! Find them in the Safari Zone's west area and take them back to him in Fuchsia City.", "condition": {"flag": "heard_warden_teeth", "flag_not": "got_hm_strength_kanto"}},
       {
         "id": "m9", "type": "MAIN", "text": "The Rainbow Badge", "desc": "Travel west through Route 8 and Route 7 to reach Celadon City. Challenge Erika for the Rainbow Badge!",
         "condition": { "visited": "CELADON_CITY", "badges_less": 4 }
@@ -201,16 +203,16 @@
         "condition": { "visited": "MT_MOON", "flag_not": ["took_dome_fossil", "took_helix_fossil", "received_museum_fossil"] }
       },
       {
-        "id": "s_bill1", "type": "SIDE", "text": "Nugget Bridge", "desc": "Bill is looking for a trainer who can clear the Nugget Bridge challenge on Route 24.",
-        "condition": { "visited": "BILLS_HOUSE", "flag_not": "received_bill_eevee" }
+        "id": "s_bill1", "type": "SIDE", "text": "Nugget Bridge", "desc": "Bill is looking for a trainer who can clear the Nugget Bridge challenge on Route 24. Beat all its trainers, then visit him.",
+        "condition": { "visited": "BILLS_HOUSE" }, "completed_flag": "received_bill_eevee"
       },
       {
-        "id": "s_bill2", "type": "SIDE", "text": "Bill's Research: Snorlax", "desc": "Bill wants to see a real Snorlax. He's heard rumors of one blocking paths near Lavender Town.",
-        "condition": { "flag": "received_bill_eevee", "has_pokemon": 143, "flag_not": "received_bill_eevee_snorlax" }
+        "id": "s_bill2", "type": "SIDE", "text": "Bill's Research: Snorlax", "desc": "Bill wants to see a real Snorlax. He's heard rumors of one blocking paths near Lavender Town. Catch one and show him!",
+        "condition": { "flag": "received_bill_eevee" }, "completed_flag": "received_bill_eevee_snorlax", "target": "BILLS_HOUSE"
       },
       {
         "id": "s_bill3", "type": "SIDE", "text": "Bill's Research: Lickitung", "desc": "Bill is fascinated by long tongues. Bring him a Lickitung, rumored to live in the Safari Zone.",
-        "condition": { "flag": "received_bill_eevee_snorlax", "has_pokemon": 108, "flag_not": "received_bill_eevee_lickitung" }
+        "condition": { "flag": "received_bill_eevee_snorlax" }, "completed_flag": "received_bill_eevee_lickitung", "target": "BILLS_HOUSE"
       },
       {
         "id": "s_bike", "type": "SIDE", "text": "New Wheels", "desc": "You have a Bike Voucher! Visit the Bike Shop in Cerulean City to claim your miracle cycle.",
@@ -525,9 +527,10 @@
         {"name": "Gentleman Thomas", "class": "GENTLEMAN", "sprite": "gentleman.png", "team": [58, 58], "rewards": {"balls": 4}},
         {"name": "Gentleman Arthur", "class": "GENTLEMAN", "sprite": "gentleman.png", "team": [29, 29], "rewards": {"balls": 4}},
         {"name": "Lass Ann", "class": "LASS", "sprite": "lass.png", "team": [16, 29], "rewards": {"balls": 4}},
+        {"name": "Fisherman Barny", "class": "FISHERMAN", "sprite": "fisherman.png", "team": [72, 120], "rewards": {"balls": 4}},
         {"name": "{rival_name}", "class": "RIVAL", "sprite": "{rival_character}", "team": [17, 20, 64, 8], "rewards": {"balls": 10}, "is_boss_battle": true, "victory_flag": "ss_anne_cleared", "team_choice": {"1": [17, 20, 64, 5], "4": [17, 20, 64, 8], "7": [17, 20, 64, 2]}, "levels": [19, 16, 18, 20]}
       ],
-      "route_menu": [
+      "route_menu": [{"text": "CABIN 1", "action": "CABIN", "door": "cabin0", "trainer": 0}, {"text": "CABIN 2", "action": "CABIN", "door": "cabin1", "trainer": 1}, {"text": "CABIN 3", "action": "CABIN", "door": "cabin2", "trainer": 2}, {"text": "CABIN 4", "action": "CABIN", "door": "cabin3", "trainer": 3}, {"text": "CABIN 5", "action": "CABIN", "door": "cabin4", "trainer": 4}, {"text": "CABIN 6", "action": "CABIN", "door": "cabin5", "trainer": 5}, {"text": "CAPTAIN", "action": "EVENT", "door": "captain", "event": {"lines": ["The captain is slumped over his desk, looking very green...", "Captain: Ooh... seasick... Could you rub my back? ...Rub, rub, rub...", "Captain: Whew! I feel much better! Thank you, young trainer.", "Take this HM as thanks. Cut chops down small trees in your way!"], "gift_item": {"HM_CUT": 1}, "flag": "got_hm_cut_kanto", "done": ["Captain: Feeling shipshape now! Use Cut on the little trees around Kanto."]}}, 
         {
           "text": "BATTLE THROUGH THE CABINS",
           "action": "GALACTIC_GAUNTLET",
@@ -560,7 +563,7 @@
         {"text": "Route 21", "target_area": "KANTO_ROUTE_21", "item_condition": "HM_SURF"},
         {"text": "Cinnabar Island", "target_area": "CINNABAR_ISLAND", "flag_condition": "visited_CINNABAR_ISLAND"}
       ],
-      "explore_options": [
+      "explore_options": [{"text": "Daisy", "action": "EVENT", "door": "rival", "event": {"lines": ["Daisy: Hi there! My little brother is off training again.", "Whenever your Pokemon look tired, a short rest makes all the difference. Good luck out there!"]}}, 
         { "text": "Talk to Professor Oak", "action": "NPC", "target": "professor_oak" }, 
         { "text": "Talk to Mom", "action": "NPC", "target": "mom" },
             {"text": "Show Oak your Pokedex", "action": "EVENT", "color": "GOLD", "event": {"requires": ["caught_range:1-251"], "fail": ["Professor Oak: Catch every Pokemon from Kanto and Johto, all 251 of them,", "and come show me your Pokedex. I'll have something special for you!"], "lines": ["Professor Oak: All 251 Pokemon of Kanto and Johto... You did it!", "You're a true Pokemon Master of research. Please, take this.", "It's the Shiny Charm! Shiny Pokemon will appear more often now."], "gift_item": {"SHINY_CHARM": 1}, "flag": "got_shiny_charm", "done": ["Professor Oak: Shiny Pokemon are such a treat to see. Keep up the great work!"]}, "flag_condition": "not got_shiny_charm"}
@@ -592,7 +595,7 @@
         {"text": "Route 22", "target_area": "KANTO_ROUTE_22"},
         {"text": "Pewter City", "target_area": "PEWTER_CITY", "flag_condition": "visited_PEWTER_CITY"}
       ],
-      "explore_options": [
+      "explore_options": [{"text": "Lesson: Types", "action": "EVENT", "door": "school", "event": {"lines": ["Teacher: Every move has a type, and types beat each other like rock, paper, scissors.", "Water beats Fire, Fire beats Grass, Grass beats Water. Pick the move your foe is weak to!"]}}, {"text": "Lesson: Real-Time Battles", "action": "EVENT", "door": "school", "event": {"lines": ["Teacher: In real-time battles, tap a move and it recharges, the strong ones slower.", "You can walk while you fight! Your Pokemon follows you, and the foe follows it.", "Hit a foe from the side or from behind for extra damage. Moves reach 4 tiles."]}}, {"text": "Lesson: Catching", "action": "EVENT", "door": "school", "event": {"lines": ["Teacher: Knock out a wild Pokemon and you get a moment to throw a ball.", "Answer the math question to throw. A quick answer makes it easier to catch!"]}}, {"text": "Lesson: Mega Evolution", "action": "EVENT", "door": "school", "event": {"lines": ["Teacher: With a Key Stone and the right Mega Stone, your Pokemon can Mega Evolve.", "In real-time battles a Mega lasts a minute, then the Key Stone needs a short rest."]}}, {"text": "Lesson: Your Team", "action": "EVENT", "door": "school", "event": {"lines": ["Teacher: Tap POKEMON to see your team. Tap one to send it out or have it follow you.", "Right-click one, or tap its potion, to heal it with your best potion. Easy!"]}}, {"text": "Old Man's House", "action": "EVENT", "door": "oldman", "flag_condition": "got_rocky_helmet", "event": {"lines": ["Old man: Thanks for waking me, youngster! I needed that nap.", "That Rocky Helmet hurts any Pokemon that bumps into yours. Use it well!"]}}, 
         {"text": "Heal", "action": "HEAL"},
         {"text": "Poke Mart", "action": "EVENT", "color": "GOLD", "condition": ["received_starter_kanto", "not:got_oaks_parcel", "not:received_pokedex_kanto"], "event": {"lines": ["Clerk: You're from Pallet Town? Then you know Professor Oak!", "His order just came in. Could you take this parcel to him for me?"], "gift_item": {"OAKS_PARCEL": 1}, "flag": "got_oaks_parcel"}},
         {"text": "Shop", "action": "SHOP", "flag_condition": "received_pokedex_kanto"},
@@ -626,7 +629,7 @@
         { "text": "Heal", "action": "HEAL" },
         { "text": "Shop", "action": "SHOP" },
         { "text": "Gym", "action": "GYM" },
-        { "text": "Visit Museum", "action": "NPC", "target": "museum" }
+        { "text": "Visit Museum", "action": "NPC", "target": "museum", "door": "museum" }
       ],
       "on_enter_event": null
     },
@@ -658,8 +661,8 @@
         { "text": "Heal", "action": "HEAL" },
         { "text": "Shop", "action": "SHOP" },
         { "text": "Gym", "action": "GYM" },
-        { "text": "Bike Shop", "action": "BIKESHOP" },
-            {"text": "Search the Gym's Pool", "action": "EVENT", "color": "GOLD", "event": {"requires": ["heard_machine_part"], "lines": ["You search the bottom of the Cerulean Gym's pool...", "There's something shiny wedged between the tiles!"], "gift_item": {"MACHINE_PART": 1}, "flag": "got_machine_part"}, "flag_condition": "not got_machine_part", "condition": "heard_machine_part"}
+        { "text": "Bike Shop", "action": "BIKESHOP", "door": "bike" },
+            {"text": "Search the Gym's Pool", "action": "EVENT", "door": "gym", "color": "GOLD", "event": {"requires": ["heard_machine_part"], "lines": ["You search the bottom of the Cerulean Gym's pool...", "There's something shiny wedged between the tiles!"], "gift_item": {"MACHINE_PART": 1}, "flag": "got_machine_part"}, "flag_condition": "not got_machine_part", "condition": "heard_machine_part"}
         ],
       "trainer_pool": [],
       "on_enter_event": null
@@ -698,8 +701,7 @@
         { "text": "CERULEAN CITY", "target_area": "CERULEAN_CITY" }
       ],
       "explore_options": [
-        { "text": "Talk to Bill", "action": "NPC", "target": "bill" },
-        { "text": "Talk to Fossil Maniac", "action": "NPC", "target": "stoneman" }
+        { "text": "Talk to Bill", "action": "NPC", "target": "bill" }
       ],
       "trainer_pool": [],
       "on_enter_event": null
@@ -746,20 +748,20 @@
         { "text": "Fuchsia City", "target_area": "FUCHSIA_CITY", "flag_condition": "visited_FUCHSIA_CITY" },
         { "text": "Saffron City", "target_area": "SAFFRON_CITY", "flag_condition": "visited_SAFFRON_CITY" },
         { "text": "Lavender Town", "target_area": "LAVENDER_TOWN", "flag_condition": "visited_LAVENDER_TOWN" },
-            {"text": "S.S. Aqua to Olivine", "long_ride": true, "target_area": "OLIVINE_CITY", "condition": "has_item:SS_TICKET", "message": "You board the S.S. Aqua. The ship sails west across the sea to Johto..."},
-            {"text": "S.S. Anne to the Orange Islands", "move_region": "ORANGE", "condition": ["beat_champion", "not:moved_to_orange"], "message": "The S.S. Anne sails south for days over warm seas... Land ho! It's Valencia Island!"},
-            {"text": "Seagallop to One Island", "long_ride": true, "target_area": "ONE_ISLAND", "condition": "has_item:TRI_PASS", "message": "The Seagallop Ferry speeds south to the Sevii Islands. Next stop: One Island!"},
-            {"text": "Seagallop to Four Island", "long_ride": true, "target_area": "FOUR_ISLAND", "condition": "has_item:RAINBOW_PASS", "message": "The Seagallop Ferry speeds far to the south. Next stop: Four Island!"},
-            {"text": "S.S. Aqua", "target_area": "JOHTO_SS_AQUA", "condition": "has_item:SS_TICKET"},
-            {"text": "S.S. Anne", "target_area": "KANTO_SS_ANNE", "condition": "has_item:SS_TICKET"}
+            {"text": "S.S. Aqua to Olivine", "door": "harbor", "long_ride": true, "target_area": "OLIVINE_CITY", "condition": ["has_item:SS_TICKET", "beat_champion"], "message": "You board the S.S. Aqua. The ship sails west across the sea to Johto..."},
+            {"text": "S.S. Anne to the Orange Islands", "door": "harbor", "move_region": "ORANGE", "condition": ["beat_champion", "not:moved_to_orange"], "message": "The S.S. Anne sails south for days over warm seas... Land ho! It's Valencia Island!"},
+            {"text": "Seagallop to One Island", "door": "harbor", "long_ride": true, "target_area": "ONE_ISLAND", "condition": "has_item:TRI_PASS", "message": "The Seagallop Ferry speeds south to the Sevii Islands. Next stop: One Island!"},
+            {"text": "Seagallop to Four Island", "door": "harbor", "long_ride": true, "target_area": "FOUR_ISLAND", "condition": "has_item:RAINBOW_PASS", "message": "The Seagallop Ferry speeds far to the south. Next stop: Four Island!"},
+            {"text": "S.S. Aqua", "door": "harbor", "target_area": "JOHTO_SS_AQUA", "condition": ["has_item:SS_TICKET", "beat_champion"]},
+            {"text": "S.S. Anne", "door": "harbor", "target_area": "KANTO_SS_ANNE", "condition": "has_item:SS_TICKET"}
         ],
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
         { "text": "Shop", "action": "SHOP" },
         { "text": "Gym", "action": "GYM" },
-        { "text": "Fishing Guru", "action": "NPC", "target": "fishing_guru", "flag_condition": "not got_old_rod_guru" },
-            {"text": "Pokemon Fan Club", "action": "EVENT", "color": "GOLD", "event": {"requires": ["power_plant_fixed"], "fail": ["Chairman: Did you know Pikachu can learn Surf? ...Well, I'm busy with my Rapidash right now."], "lines": ["Chairman: Oh, it's you! You fixed the Power Plant!", "A girl from Saffron left this doll here... It's a Clefairy doll.", "If you're heading to Saffron City, could you return it? Her name is Copycat."], "gift_item": {"LOST_ITEM": 1}, "flag": "got_lost_item"}, "flag_condition": "not got_lost_item"},
-            {"text": "Orange Islands Ferry", "action": "EVENT", "color": "GOLD", "condition": {"any": ["not:beat_champion", "not:beat_johto_champion"]}, "event": {"lines": ["Sailor: This ferry sails south to the Orange Islands.", "It only takes the Champion of both Kanto and Johto. Come back when you've won both!"]}}
+        { "text": "Fishing Guru", "action": "NPC", "door": "guru", "target": "fishing_guru", "flag_condition": "not got_old_rod_guru" },
+            {"text": "Pokemon Fan Club", "action": "EVENT", "door": "fanclub", "color": "GOLD", "event": {"requires": ["power_plant_fixed"], "fail": ["Chairman: Did you know Pikachu can learn Surf? ...Well, I'm busy with my Rapidash right now."], "lines": ["Chairman: Oh, it's you! You fixed the Power Plant!", "A girl from Saffron left this doll here... It's a Clefairy doll.", "If you're heading to Saffron City, could you return it? Her name is Copycat."], "gift_item": {"LOST_ITEM": 1}, "flag": "got_lost_item"}, "flag_condition": "not got_lost_item"},
+            {"text": "Orange Islands Ferry", "action": "EVENT", "door": "harbor", "color": "GOLD", "condition": {"any": ["not:beat_champion", "not:beat_johto_champion"]}, "event": {"lines": ["Sailor: This ferry sails south to the Orange Islands.", "It only takes the Champion of both Kanto and Johto. Come back when you've won both!"]}}
         ],
       "trainer_pool": [],
       "on_enter_event": null
@@ -796,7 +798,7 @@
         "pokemart": "pokemart.png"
       },
       "trainer_encounter_rate": 0,
-      "travel_options": [
+      "travel_options": [{"text": "Route 10", "target_area": "KANTO_ROUTE_10_SOUTH"}, 
         {"text": "Route 8", "target_area": "KANTO_ROUTE_8"},
         {"text": "Route 12", "target_area": "KANTO_ROUTE_12"},
         {"text": "Rock Tunnel", "target_area": "ROCK_TUNNEL"},
@@ -805,11 +807,11 @@
         {"text": "Fuchsia City", "target_area": "FUCHSIA_CITY", "flag_condition": "visited_FUCHSIA_CITY"},
         {"text": "Vermillion City", "target_area": "VERMILLION_CITY", "flag_condition": "visited_VERMILLION_CITY"}
       ],
-      "explore_options": [
+      "explore_options": [{"text": "Radio Tower", "action": "EVENT", "door": "radio", "condition": "power_plant_fixed", "event": {"lines": ["Director: Welcome to the Lavender Radio Tower! We're back on the air, thanks to you!", "Our first show: Math Quiz Hour! Here's a prize for our hero."], "gift_item": {"RARE_CANDY": 2}, "flag": "lavender_radio_visited", "done": ["Director: Tune in to Math Quiz Hour! Every answer counts!"]}}, 
         { "text": "Heal", "action": "HEAL" },
         { "text": "Shop", "action": "SHOP" },
-        { "text": "Talk to Mr. Fuji", "action": "NPC", "target": "mr_fuji" },
-        { "text": "Pokemon Tower", "action": "TRAVEL", "target_area": "KANTO_POKEMON_TOWER" }
+        { "text": "Talk to Mr. Fuji", "action": "NPC", "door": "fuji", "target": "mr_fuji" },
+        { "text": "Pokemon Tower", "action": "TRAVEL", "door": "ptower", "target_area": "KANTO_POKEMON_TOWER" }
       ],
       "on_enter_event": null
     },
@@ -834,7 +836,7 @@
       ],
       "explore_options": [
         {"text": "Heal", "action": "HEAL"},
-        {"text": "Dept. Store", "action": "SHOP"},
+        {"text": "Dept. Store", "action": "SHOP", "door": "dept"},
         {"text": "Gym", "action": "GYM"},
         {"text": "Game Corner", "action": "GAMECORNER"},
         {"text": "Celadon Mansion", "action": "EVENT", "flag_condition": "not got_tea", "event": {"lines": ["An old woman in the Celadon Mansion smiles at you.", "Nothing beats thirst like some hot Tea. Here, take some!", "The guards around Saffron City look thirsty. Maybe they'd like it too?"], "gift_item": {"TEA": 1}, "flag": "got_tea"}}
@@ -865,15 +867,15 @@
         { "text": "Vermillion City", "target_area": "VERMILLION_CITY", "flag_condition": "visited_VERMILLION_CITY" },
         { "text": "Lavender Town", "target_area": "LAVENDER_TOWN", "flag_condition": "visited_LAVENDER_TOWN" },
         { "text": "Silph Co.", "target_area": "SILPH_CITY", "flag_condition": "tower_ghost_defeated" },
-            {"text": "Magnet Train to Goldenrod", "long_ride": true, "target_area": "GOLDENROD_CITY", "condition": ["has_item:PASS", "power_plant_fixed"], "message": "You board the Magnet Train. It races underground toward Goldenrod City in Johto!"}
+            {"text": "Magnet Train to Goldenrod", "door": "station", "long_ride": true, "target_area": "GOLDENROD_CITY", "condition": ["has_item:PASS", "power_plant_fixed"], "message": "You board the Magnet Train. It races underground toward Goldenrod City in Johto!"}
         ],
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
         { "text": "Shop", "action": "SHOP" },
         { "text": "Gym", "action": "GYM" },
         { "text": "Confront Team Rocket", "action": "TRAVEL", "target_area": "SILPH_CITY", "flag_condition": "not silph_co_cleared", "condition": "tower_ghost_defeated" },
-        { "text": "Fighting Dojo", "action": "NPC", "target": "dojo" },
-            {"text": "Visit Copycat", "action": "EVENT", "color": "GOLD", "event": {"requires": ["has_item:LOST_ITEM"], "fail": ["Copycat: ...Copycat copies everyone! But I lost my Clefairy doll...", "...Have you seen it?"], "lines": ["Copycat: My Clefairy doll! You found it!", "Thank you! Thank you! Here, I don't need my Magnet Train Pass anymore.", "It lets you ride the Magnet Train between Saffron and Goldenrod as much as you like!"], "take_item": {"LOST_ITEM": 1}, "gift_item": {"PASS": 1}, "flag": "got_magnet_pass"}, "flag_condition": "not got_magnet_pass"}
+        { "text": "Fighting Dojo", "action": "NPC", "target": "dojo", "door": "dojo" },
+            {"text": "Visit Copycat", "action": "EVENT", "door": "copycat", "color": "GOLD", "event": {"requires": ["has_item:LOST_ITEM"], "fail": ["Copycat: ...Copycat copies everyone! But I lost my Clefairy doll...", "...Have you seen it?"], "lines": ["Copycat: My Clefairy doll! You found it!", "Thank you! Thank you! Here, I don't need my Magnet Train Pass anymore.", "It lets you ride the Magnet Train between Saffron and Goldenrod as much as you like!"], "take_item": {"LOST_ITEM": 1}, "gift_item": {"PASS": 1}, "flag": "got_magnet_pass"}, "flag_condition": "not got_magnet_pass"}
         ],
       "trainer_pool": [],
       "on_enter_event": null
@@ -1687,7 +1689,7 @@
         { "text": "Vermillion City", "target_area": "VERMILLION_CITY", "flag_condition": "visited_VERMILLION_CITY" },
         { "text": "Cinnabar Island", "target_area": "CINNABAR_ISLAND", "flag_condition": "visited_CINNABAR_ISLAND" }        
       ],
-      "explore_options": [
+      "explore_options": [{"text": "Warden", "action": "EVENT", "door": "warden", "condition": ["not:has_item:GOLD_TEETH", "not:got_hm_strength_kanto"], "event": {"lines": ["Warden: Hif fuff hefifoo! Ahf hoo hoo...", "(He's lost his teeth! He keeps pointing at the Safari Zone.)"], "flag": "heard_warden_teeth", "done": ["Warden: Hif fuff hefifoo! (He points at the Safari Zone again.)"]}}, {"text": "Return the Gold Teeth", "action": "EVENT", "door": "warden", "condition": "has_item:GOLD_TEETH", "flag_condition": "not got_hm_strength_kanto", "event": {"lines": ["Warden: My teeth! You found my Gold Teeth! Thank you, thank you!", "I can talk again! Here, take this HM. Strength pushes big boulders out of your way!"], "take_item": {"GOLD_TEETH": 1}, "gift_item": {"HM_STRENGTH": 1}, "flag": "got_hm_strength_kanto"}}, {"text": "Fishing Guru's Brother", "action": "EVENT", "door": "brother", "event": {"lines": ["Fisherman: My big brother is the Fishing Guru in Vermilion. I love to fish too!", "Fishing is all about patience, like counting to a hundred. Take this Good Rod!"], "gift_item": {"GOOD_ROD": 1}, "flag": "got_good_rod_kanto", "done": ["Fisherman: The Good Rod pulls up bigger Pokemon than the Old Rod. Try it in the Safari Zone!"]}}, 
         { "text": "Heal", "action": "HEAL" },
         { "text": "Shop", "action": "SHOP" },
         { "text": "Gym", "action": "GYM" }
@@ -1710,10 +1712,10 @@
       "gym": {"requirements": {"flag": "got_secret_key", "fail_text": "The Gym door is locked. The key must be somewhere in the old Pokemon Mansion..."}, "trainers": [{"name": "Super Nerd Erik", "is_boss_battle": true, "class": "SUPER_NERD", "sprite": "supernerd.png", "team": [37, 37], "rewards": {"balls": 2}, "dialogue": {"intro": ["I solved the puzzle!"], "player_won": ["My calculations were wrong!"], "player_lost": ["Q.E.D.!"]}}, {"name": "Burglar Quinn", "class": "BURGLAR", "sprite": "firebreather.png", "is_boss_battle": true, "team": [58, 77], "rewards": {"balls": 2}, "dialogue": {"intro": ["I'm hot stuff!"], "player_won": ["Burned out!"], "player_lost": ["Too hot to handle!"]}}], "leader": {"name": "Blaine", "class": "GYM_LEADER", "is_boss_battle": true, "sprite": "blaine.png", "team": [58, 77, 78, 59], "levels": [42, 40, 42, 47], "badge_reward": "VOLCANO", "dialogue": {"intro": ["Welcome to my Gym! Let's see if you can handle the fire!"], "player_won": ["Not bad, but you'll need more than that to get through the heat!", "Take this Volcano Badge.", "Here, take this Tri-Pass too. The Seagallop Ferry goes to the Sevii Islands, from here or from Vermilion.", "They say a legendary bird of fire nests at the top of Mt. Ember on One Island!"], "player_lost": ["You got burned!"]}, "rewards": {"balls": 10, "RARE_CANDY": 1, "VOLCANO_PASS": 1, "TRI_PASS": 1}, "movesets": {"58": ["BITE", "ROAR", "TAKE-DOWN", "FIRE-BLAST"], "77": ["STOMP", "BOUNCE", "FIRE-SPIN", "FIRE-BLAST"], "78": ["STOMP", "BOUNCE", "FIRE-SPIN", "FIRE-BLAST"], "59": ["BITE", "ROAR", "TAKE-DOWN", "FIRE-BLAST"]}}},
       "trainer_encounter_rate": 0,
       "travel_options": [
-        { "text": "Route 20", "target_area": "KANTO_ROUTE_20" },
-        { "text": "Route 21", "target_area": "KANTO_ROUTE_21" },
+        { "text": "Route 20", "target_area": "KANTO_ROUTE_20", "item_condition": "HM_SURF" },
+        { "text": "Route 21", "target_area": "KANTO_ROUTE_21", "item_condition": "HM_SURF" },
         { "text": "Enter Volcano", "target_area": "CINNABAR_VOLCANO", "item_condition": "VOLCANO_PASS" },
-        { "text": "Seagallop to One Island", "long_ride": true, "target_area": "ONE_ISLAND", "condition": "has_item:TRI_PASS", "message": "Bill waves you aboard the Seagallop Ferry. Next stop: One Island!" },
+        { "text": "Seagallop to One Island", "door": "harbor", "long_ride": true, "target_area": "ONE_ISLAND", "condition": "has_item:TRI_PASS", "message": "Bill waves you aboard the Seagallop Ferry. Next stop: One Island!" },
         { "text": "Fuchsia City", "target_area": "FUCHSIA_CITY", "flag_condition": "visited_FUCHSIA_CITY"},
         { "text": "Pallet Town", "target_area": "PALLET_TOWN", "flag_condition": "visited_KANTO_ROUTE_21" }
       ],
@@ -1721,8 +1723,8 @@
         {"text": "Heal", "action": "HEAL"},
         {"text": "Shop", "action": "SHOP"},
         {"text": "Gym", "action": "GYM"},
-        {"text": "Pokemon Lab", "action": "NPC", "target": "fossil_lab"},
-        {"text": "Pokemon Mansion", "action": "TRAVEL", "target_area": "POKEMON_MANSION"}
+        {"text": "Pokemon Lab", "action": "NPC", "target": "fossil_lab", "door": "fossil"},
+        {"text": "Pokemon Mansion", "action": "TRAVEL", "target_area": "POKEMON_MANSION", "door": "mansion"}
       ],
       "trainer_pool": [],
       "on_enter_event": null
@@ -1762,12 +1764,12 @@
       "trainer_encounter_rate": 0,
       "travel_options": [
         { "text": "Route 23", "target_area": "KANTO_ROUTE_23" },
-        { "text": "To Johto!", "target_area": "JOHTO_ROUTE_29", "flag_condition": "beat_elite_four" }
+        { "text": "To Johto!", "door": "johto", "target_area": "JOHTO_ROUTE_29", "flag_condition": "beat_elite_four" }
       ],
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
         { "text": "Shop", "action": "SHOP" },
-        { "text": "ELITE_FOUR", "action": "GYM" }
+        { "text": "ELITE_FOUR", "action": "GYM", "door": "league" }
       ],
       "trainer_pool": [],
       "on_enter_event": null
@@ -1789,13 +1791,8 @@
           "19_alolan": 0.01
         }
       },
-      "trainer_pool": [
-        { "sprite": "youngster.png", "name": "Joey", "class": "YOUNGSTER", "team": [19], "rewards": { "balls": 3 },
-          "dialogue": { "intro": ["I'm a veteran compared to you!"], "player_won": ["You must have cheated!"], "player_lost": ["Top percentage!"] } },
-        { "sprite": "lass.png", "name": "Janice", "class": "LASS", "team": [16], "rewards": { "balls": 3 },
-          "dialogue": { "intro": ["Let's have a quick battle!"], "player_won": ["You're pretty good!"], "player_lost": ["Hehe, I win!"] } }
-      ],
-      "route_menu": [
+      "trainer_pool": [],
+      "route_menu": [{"text": "POKE MART CLERK", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_route1_potion", "event": {"lines": ["Clerk: Hi! I work at the Poke Mart in Viridian City.", "Here's a free sample: a Potion! It heals your Pokemon. Come shop with us!"], "gift_item": {"POTION": 1}, "flag": "got_route1_potion"}}, 
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
@@ -1849,7 +1846,7 @@
         "team": [13, 15, 25],
         "rewards": { "balls": 3 }
         }
-      ],
+      , {"sprite": "bug_catcher.png", "name": "Doug", "class": "BUG_CATCHER", "team": [13, 14, 13], "dialogue": {"intro": ["Hey! You have Pokemon! Come on, let's battle 'em!"], "player_won": ["No! Caterpie can't cut it!"], "player_lost": ["My bugs are the best!"]}, "rewards": {"balls": 3}}, {"sprite": "bug_catcher.png", "name": "Anthony", "class": "BUG_CATCHER", "team": [10, 10], "dialogue": {"intro": ["I went to the Pokemon Center... and now I'm ready to battle!"], "player_won": ["Ow! Out of Pokemon!"], "player_lost": ["Bugs are tough, huh?"]}, "rewards": {"balls": 3}}],
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
@@ -1876,7 +1873,7 @@
         { "sprite": "lass.png", "name": "Patty", "class": "LASS", "team": [16, 19], "rewards": { "balls": 3 } },
         { "sprite": "school_kid_m.png", "name": "Billy", "class": "SCHOOL_KID", "team": [25], "rewards": { "balls": 3 } }
       ],
-      "route_menu": [
+      "route_menu": [{"text": "DIGLETT'S CAVE", "action": "EXIT", "target": "DIGGLETT_CAVE", "condition": ["can_exit", "has_item:HM_CUT"], "color": "RED"}, {"text": "OAK'S AIDE", "action": "EVENT", "door": "aide", "color": "GOLD", "event": {"lines": ["Aide: Oh, you're the trainer Professor Oak told me about!", "Caves can be pitch black inside. This HM will light the way. Take it!"], "gift_item": {"HM_FLASH": 1}, "flag": "got_hm_flash_kanto", "done": ["Aide: Flash lights up dark caves, so you can see where you're going. Good luck!"]}}, 
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
@@ -1922,13 +1919,13 @@
             "rewards": { "balls": 3 }
           }
       ],
-      "route_menu": [
+      "route_menu": [{"text": "POKEMON CENTER", "action": "CENTER", "door": "center"}, 
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         { "text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE" },
         { "text": "PEWTER CITY", "action": "EXIT", "target": "PEWTER_CITY", "condition": "can_exit", "color": "RED" },
-        { "text": "MT. MOON", "action": "EXIT", "target": "MT_MOON_CITY", "condition": "can_exit", "color": "RED" }
+        { "text": "MT. MOON", "action": "EXIT", "target": "MT_MOON", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "MT_MOON_CITY",
       "on_enter_event": null
@@ -1995,15 +1992,15 @@
           "rewards": { "balls": 3 }
         }
       ],
-      "route_menu": [
+      "route_menu": [{"text": "GUARD", "action": "EVENT", "event": {"lines": ["Guard: I'm so thirsty... I can't let anyone through to Saffron City.", "If only someone would bring me something to drink!"]}}, 
         {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
         {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN"},
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
         {"text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE"},
-        { "text": "POKéMON DAY CARE", "action": "DAYCARE", "color": "ORANGE" },
+        { "text": "POKéMON DAY CARE", "action": "DAYCARE", "door": "daycare", "color": "ORANGE" },
         {"text": "CERULEAN CITY", "action": "EXIT", "target": "CERULEAN_CITY", "condition": "can_exit", "color": "RED"},
-        {"text": "UNDERGROUND PATH", "action": "EXIT", "target": "UNDERGROUND_PATH", "condition": "can_exit", "color": "RED"},
-        {"text": "SAFFRON CITY", "action": "EXIT", "target": "SAFFRON_CITY", "condition": ["can_exit", "has_item:TEA"], "color": "RED"}
+        {"text": "UNDERGROUND PATH", "action": "EXIT", "target": "UNDERGROUND_PATH", "condition": ["can_exit", "visited_LAVENDER_TOWN"], "color": "RED"},
+        {"text": "SAFFRON CITY", "action": "EXIT", "target": "SAFFRON_CITY", "condition": ["can_exit", "has_item:TEA"], "locked_text": ["Guard: I'm so thirsty... I can't let anyone through to Saffron City.", "If only someone would bring me something to drink!"], "color": "RED"}
       ],
       "next_area": "UNDERGROUND_PATH",
       "on_enter_event": null
@@ -2038,13 +2035,13 @@
             "rewards": { "balls": 3 }
           }
       ],
-      "route_menu": [
+      "route_menu": [{"text": "GUARD", "action": "EVENT", "event": {"lines": ["Guard: I'm so thirsty... I can't let anyone through to Saffron City.", "If only someone would bring me something to drink!"]}}, 
         {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
         {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN"},
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
-        {"text": "UNDERGROUND PATH", "action": "EXIT", "target": "UNDERGROUND_PATH", "condition": "can_exit", "color": "RED"},
+        {"text": "UNDERGROUND PATH", "action": "EXIT", "target": "UNDERGROUND_PATH", "condition": ["can_exit", "visited_LAVENDER_TOWN"], "color": "RED"},
         {"text": "VERMILLION CITY", "action": "EXIT", "target": "VERMILLION_CITY", "condition": "can_exit", "color": "RED"},
-        {"text": "SAFFRON CITY", "action": "EXIT", "target": "SAFFRON_CITY", "condition": ["can_exit", "has_item:TEA"], "color": "RED"}
+        {"text": "SAFFRON CITY", "action": "EXIT", "target": "SAFFRON_CITY", "condition": ["can_exit", "has_item:TEA"], "locked_text": ["Guard: I'm so thirsty... I can't let anyone through to Saffron City.", "If only someone would bring me something to drink!"], "color": "RED"}
       ],
       "next_area": "VERMILLION_CITY",
       "on_enter_event": null
@@ -2157,18 +2154,19 @@
         { "sprite": "hiker.png", "name": "Clark", "class": "HIKER", "team": [66, 74], "rewards": { "balls": 3 } },
         { "sprite": "picnicker.png", "name": "Heidi", "class": "PICNIKER", "team": [29, 32], "rewards": { "balls": 3 } }
       ],
-      "route_menu": [
+      "route_menu": [{"text": "POKEMON CENTER", "action": "CENTER", "door": "center"}, 
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         { "text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE" },
         { "text": "ROUTE 9", "action": "EXIT", "target": "KANTO_ROUTE_9", "condition": "can_exit", "color": "RED" },
         { "text": "POWER PLANT", "action": "EXIT", "target": "POWER_PLANT", "condition": ["can_exit", "has_item:HM_SURF"], "color": "RED" },
-        { "text": "ROCK TUNNEL", "action": "EXIT", "target": "ROCK_TUNNEL_CITY", "condition": "can_exit", "color": "RED" }
+        { "text": "ROCK TUNNEL", "action": "EXIT", "target": "ROCK_TUNNEL", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "ROCK_TUNNEL_CITY",
       "on_enter_event": null
     },
+    "KANTO_ROUTE_10_SOUTH": {"area_type": "wild_route", "route_name": "Route 10", "region": "KANTO", "battle_type": "grass", "wild_pool_percentages": "KANTO_ROUTE_10_PERCENTAGES", "level": 15, "min_rounds": 0, "trainer_pool": [], "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN"}, {"text": "ROCK TUNNEL", "action": "EXIT", "target": "ROCK_TUNNEL", "condition": "can_exit", "color": "RED"}, {"text": "LAVENDER TOWN", "action": "EXIT", "target": "LAVENDER_TOWN", "condition": "can_exit", "color": "RED"}], "next_area": "LAVENDER_TOWN"},
 
     "POWER_PLANT": {
       "area_type": "wild_route",
@@ -2201,8 +2199,8 @@
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         { "text": "CHALLENGE ZAPDOS", "action": "BOSS", "condition": "boss_available", "color": "GOLD" },
         { "text": "EXIT TO ROUTE 10", "action": "EXIT", "target": "KANTO_ROUTE_10", "condition": "can_exit", "color": "RED" },
-            {"text": "TALK TO THE MANAGER", "action": "EVENT", "color": "GOLD", "event": {"requires": ["visited_GOLDENROD_CITY", "visited_SAFFRON_CITY"], "fail": ["Manager: The Power Plant feeds the Magnet Train between Saffron and Goldenrod.", "...If only somebody who'd been to both cities could help us."], "lines": ["Manager: Disaster! Someone stole the generator's Machine Part!", "Without it, the Magnet Train between Saffron and Goldenrod can't run.", "A suspicious man in black was seen near the Cerulean Gym...", "Please, find our Machine Part!"], "flag": "heard_machine_part", "done": ["Manager: Any sign of our Machine Part? Try the Cerulean Gym!"]}, "flag_condition": "not heard_machine_part"},
-            {"text": "RETURN THE MACHINE PART", "action": "EVENT", "color": "GOLD", "event": {"requires": ["has_item:MACHINE_PART"], "lines": ["Manager: You found it! That's our Machine Part!", "With this, the generator will run again. The Magnet Train is back in service!", "Here, take these as thanks."], "take_item": {"MACHINE_PART": 1}, "gift_item": {"balls": 20}, "flag": "power_plant_fixed"}, "condition": "has_item:MACHINE_PART", "flag_condition": "not power_plant_fixed"}
+            {"text": "TALK TO THE MANAGER", "action": "EVENT", "color": "GOLD", "event": {"requires": ["visited_LAVENDER_TOWN"], "fail": ["Manager: The Power Plant feeds the Magnet Train between Saffron and Goldenrod.", "...If only somebody who'd been to both cities could help us."], "lines": ["Manager: Disaster! Someone stole the generator's Machine Part!", "Without it, Lavender's Radio Tower is dark, and the Magnet Train can't run!", "A suspicious man in black was seen near the Cerulean Gym...", "Please, find our Machine Part!"], "flag": "heard_machine_part", "done": ["Manager: Any sign of our Machine Part? Try the Cerulean Gym!"]}, "flag_condition": "not heard_machine_part"},
+            {"text": "RETURN THE MACHINE PART", "action": "EVENT", "color": "GOLD", "event": {"requires": ["has_item:MACHINE_PART"], "lines": ["Manager: You found it! That's our Machine Part!", "With this, the generator will run again. Lavender's Radio Tower is back on the air!", "Here, take these as thanks."], "take_item": {"MACHINE_PART": 1}, "gift_item": {"balls": 20}, "flag": "power_plant_fixed"}, "condition": "has_item:MACHINE_PART", "flag_condition": "not power_plant_fixed"}
         ],
       "next_area": "KANTO_ROUTE_10",
       "on_enter_event": null
@@ -2383,7 +2381,7 @@
       "trainer_encounter_rate": 0,
       "min_rounds": 0,
       "trainer_pool": [],
-      "route_menu": [
+      "route_menu": [{"text": "GOLD TEETH", "action": "EVENT", "zone": "west", "flag_condition": "not got_gold_teeth", "event": {"lines": ["Something shiny is lying in the grass...", "You found the Warden's GOLD TEETH! Better take them back to him in Fuchsia City."], "gift_item": {"GOLD_TEETH": 1}, "flag": "got_gold_teeth"}}, 
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
         { "text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE" },
@@ -2408,7 +2406,7 @@
         { "sprite": "biker.png", "name": "Charles", "class": "BIKER", "team": [109, 110], "rewards": { "balls": 3 } },
         { "sprite": "birdkeeper.png", "name": "Ramiro", "class": "BIRD_KEEPER", "team": [22, 17], "rewards": { "balls": 3 } }
       ],
-      "route_menu": [
+      "route_menu": [{"text": "A QUIET HOUSE", "action": "EVENT", "door": "flyhouse", "event": {"lines": ["Girl: Oh! You found my secret hideaway. Not many people come by here.", "Here, take this HM. Fly takes you to any town you've been to, in a flash!"], "gift_item": {"HM_FLY": 1}, "flag": "got_hm_fly_kanto", "done": ["Girl: Have fun flying around Kanto! Visit any town you've seen before."]}}, 
         {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
         {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN"},
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
@@ -2465,7 +2463,7 @@
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         { "text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE" },
         { "text": "ROUTE 17", "action": "EXIT", "target": "KANTO_ROUTE_17", "condition": ["can_exit", "has_item:BICYCLE"], "color": "RED" },
-        { "text": "FUCHSIA CITY", "action": "EXIT", "condition": "can_exit", "color": "RED" }
+        { "text": "FUCHSIA CITY", "action": "EXIT", "target": "FUCHSIA_CITY", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "FUCHSIA_CITY",
       "on_enter_event": null
@@ -2490,7 +2488,7 @@
         {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN"},
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
         {"text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE"},
-        {"text": "ROUTE 20", "action": "EXIT", "condition": "can_exit", "color": "RED"},
+        {"text": "ROUTE 20", "action": "EXIT", "target": "KANTO_ROUTE_20", "condition": "can_exit", "color": "RED"},
         {"text": "FUCHSIA CITY", "action": "EXIT", "target": "FUCHSIA_CITY", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "KANTO_ROUTE_20",
@@ -2599,6 +2597,14 @@
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         { "text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE" },
         { "text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE" },
+        { "text": "BOULDER BADGE GUARD", "action": "EVENT", "event": {"lines": ["Guard: Let me see... the BOULDER BADGE! Good. You may pass."]} },
+        { "text": "CASCADE BADGE GUARD", "action": "EVENT", "event": {"lines": ["Guard: Let me see... the CASCADE BADGE! Good. You may pass."]} },
+        { "text": "THUNDER BADGE GUARD", "action": "EVENT", "event": {"lines": ["Guard: Let me see... the THUNDER BADGE! Good. You may pass."]} },
+        { "text": "RAINBOW BADGE GUARD", "action": "EVENT", "event": {"lines": ["Guard: Let me see... the RAINBOW BADGE! Good. You may pass."]} },
+        { "text": "SOUL BADGE GUARD", "action": "EVENT", "event": {"lines": ["Guard: Let me see... the SOUL BADGE! Good. You may pass."]} },
+        { "text": "MARSH BADGE GUARD", "action": "EVENT", "event": {"lines": ["Guard: Let me see... the MARSH BADGE! Good. You may pass."]} },
+        { "text": "VOLCANO BADGE GUARD", "action": "EVENT", "event": {"lines": ["Guard: Let me see... the VOLCANO BADGE! Good. You may pass."]} },
+        { "text": "EARTH BADGE GUARD", "action": "EVENT", "event": {"lines": ["Guard: Let me see... the EARTH BADGE! Good. You may pass."]} },
         { "text": "ROUTE 22", "action": "EXIT", "target": "KANTO_ROUTE_22", "condition": "can_exit", "color": "RED" },
         { "text": "VICTORY ROAD", "action": "EXIT", "target": "VICTORY_ROAD", "condition": ["can_exit", "has_8_kanto_badges"], "color": "RED" }
       ],
@@ -2665,7 +2671,7 @@
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         { "text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE" },
-        { "text": "BILL'S HOUSE", "action": "EXIT", "condition": "can_exit", "color": "RED" }
+        { "text": "BILL'S HOUSE", "action": "EXIT", "target": "BILLS_HOUSE", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "BILLS_HOUSE",
       "on_enter_event": null
@@ -2782,7 +2788,7 @@
         {"text": "SUPER NERD", "action": "EVENT", "color": "GOLD", "flag_condition": "not mt_moon_nerd_defeated", "event": {"lines": ["Deep in Mt. Moon, a Super Nerd guards two fossils.", "Super Nerd Miguel: Hey! I found these fossils! They're both mine!"], "flag": "mt_moon_nerd_defeated", "battle": {"name": "Super Nerd Miguel", "class": "SUPER_NERD", "sprite": "supernerd.png", "team": [88, 100, 109], "levels": [11, 11, 11], "rewards": {"balls": 3}, "dialogue": {"player_won": ["Super Nerd Miguel: OK, OK! We'll each take one.", "Pick the one you want!"]}}}},
         {"text": "TAKE DOME FOSSIL", "action": "EVENT", "color": "GOLD", "condition": ["mt_moon_nerd_defeated", "not:took_dome_fossil", "not:took_helix_fossil"], "event": {"lines": ["You picked up the Dome Fossil!", "Super Nerd Miguel: Then the Helix Fossil is mine. Revive yours at the Cinnabar Island lab!"], "gift_item": {"DOME_FOSSIL": 1}, "flag": "took_dome_fossil"}},
         {"text": "TAKE HELIX FOSSIL", "action": "EVENT", "color": "GOLD", "condition": ["mt_moon_nerd_defeated", "not:took_dome_fossil", "not:took_helix_fossil"], "event": {"lines": ["You picked up the Helix Fossil!", "Super Nerd Miguel: Then the Dome Fossil is mine. Revive yours at the Cinnabar Island lab!"], "gift_item": {"HELIX_FOSSIL": 1}, "flag": "took_helix_fossil"}},
-        {"text": "TO PEWTER", "action": "EXIT", "target": "MT_MOON_CITY", "condition": "can_exit", "color": "RED"},
+        {"text": "TO PEWTER", "action": "EXIT", "target": "KANTO_ROUTE_3", "condition": "can_exit", "color": "RED"},
         {"text": "TO CERULEAN", "action": "EXIT", "target": "KANTO_ROUTE_4", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "KANTO_ROUTE_4",
@@ -2842,8 +2848,8 @@
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
-        { "text": "TO CERULEAN", "action": "EXIT", "target": "ROCK_TUNNEL_CITY", "condition": "can_exit", "color": "RED" },
-        { "text": "TO LAVENDAR", "action": "EXIT", "target": "LAVENDER_TOWN", "condition": "can_exit", "color": "RED" }
+        { "text": "TO CERULEAN", "action": "EXIT", "target": "KANTO_ROUTE_10", "condition": "can_exit", "color": "RED" },
+        { "text": "TO LAVENDAR", "action": "EXIT", "target": "KANTO_ROUTE_10_SOUTH", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "LAVENDER_TOWN",
       "on_enter_event": null
@@ -2925,7 +2931,7 @@
           "zone": "floor_4"
         }
       ],
-      "route_menu": [
+      "route_menu": [{"text": "GHOST", "action": "EVENT", "zone": "floor_3", "condition": ["not:has_item:SILPH_SCOPE", "not:tower_ghost_defeated"], "event": {"lines": ["A ghost blocks the stairs! You can't make out what it is...", "Get out... Go away...", "You'll need a Silph Scope to see it."]}}, {"text": "MR. FUJI", "action": "EVENT", "zone": "floor_4", "condition": "tower_ghost_defeated", "flag_condition": "not fuji_rescued", "event": {"lines": ["Mr. Fuji: You came all this way to rescue me? Thank you, young trainer.", "Team Rocket wanted the Pokemon here... but you've sent them running.", "Please, come and see me at my house in Lavender Town."], "flag": "fuji_rescued"}}, 
         {
           "text": "CATCH WILD PKMN",
           "action": "CATCH",
@@ -2950,12 +2956,12 @@
           "color": "CYAN"
         },
         {
-          "text": "CONFRONT GHOST",
+          "text": "CONFRONT GHOST", "before_trainers": true,
           "action": "BOSS",
           "condition": "boss_available",
           "has_SILPH_SCOPE": true,
           "color": "GOLD",
-          "zone": "floor_4"
+          "zone": "floor_3"
         },
         {
           "text": "EXIT TOWER",

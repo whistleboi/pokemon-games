@@ -23,8 +23,36 @@ DIRS = ((0, 1), (0, -1), (1, 0), (-1, 0))
 KEYS = {pygame.K_UP: (0, -1), pygame.K_w: (0, -1), pygame.K_DOWN: (0, 1), pygame.K_s: (0, 1),
         pygame.K_LEFT: (-1, 0), pygame.K_a: (-1, 0), pygame.K_RIGHT: (1, 0), pygame.K_d: (1, 0)}
 LABELS = {"center": "POKEMON CENTER", "mart": "POKE MART", "gym": "GYM", "lab": "LAB", "home": "HOME",
-          "game corner": "GAME CORNER", "tower": "POKEMON TOWER", "mansion": "MANSION", "silph": "SILPH CO."}
+          "school": "TRAINER SCHOOL", "rival": "RIVAL'S HOUSE", "museum": "MUSEUM", "bike": "BIKE SHOP",
+          "harbor": "HARBOR", "fanclub": "FAN CLUB", "radio": "RADIO TOWER", "ptower": "POKEMON TOWER",
+          "fuji": "MR. FUJI'S HOUSE", "dept": "DEPT. STORE", "mansion": "CELADON MANSION", "hotel": "CELADON HOTEL",
+          "game corner": "GAME CORNER", "tower": "POKEMON TOWER", "mansion": "MANSION", "silph": "SILPH CO.",
+          "warden": "WARDEN'S HOUSE", "brother": "FISHING HOUSE", "safari": "SAFARI ZONE",
+          "fossil": "POKEMON LAB", "copycat": "COPYCAT'S HOUSE", "dojo": "FIGHTING DOJO", "station": "MAGNET TRAIN",
+          "league": "ELITE FOUR", "johto": "TO JOHTO"}
 _DATA = {}
+
+
+def held_way(keys_map):
+    """The way a held arrow key (or WASD) points, or None (Jordan, 11-07: hold to keep walking)."""
+    try:
+        pressed = pygame.key.get_pressed()
+    except pygame.error:
+        return None
+    for key, way in keys_map.items():
+        if pressed[key]:
+            return way
+    return None
+
+
+def held_pointer():
+    """Where a held tap (the mouse button, a finger) is, or None."""
+    try:
+        if pygame.mouse.get_pressed()[0]:
+            return pygame.mouse.get_pos()
+    except pygame.error:
+        pass
+    return None
 
 
 def data(game):
@@ -38,14 +66,31 @@ def data(game):
     return _DATA["all"]
 
 
+def custom(game):
+    """Our own maps (assets/town_maps.json, dev/builders/build_town_maps.py): towns and routes."""
+    if "all" not in _CUSTOM:
+        path = os.path.join(game.assets.assets_dir or "assets", "town_maps.json")
+        try:
+            with open(path, encoding="utf-8") as f:
+                _CUSTOM["all"] = json.load(f)
+        except (OSError, ValueError):
+            _CUSTOM["all"] = {}
+    return _CUSTOM["all"]
+
+
+_CUSTOM = {}
+
+
 def available(game, key):
     if not getattr(game, "walk_towns", os.environ.get("SDL_VIDEODRIVER") != "dummy"):
         return False
-    return bool(key) and key in data(game)
+    return bool(key) and (key in custom(game) or key in data(game))
 
 
 def option_kind(opt):
     """Which building a town option is in (None: someone standing outside)."""
+    if opt.get("door"):  # (said in the town's data: which house it's in)
+        return opt["door"]
     a = str(opt.get("action") or "").upper()
     t = str(opt.get("text") or "").lower()
     if a in ("HEAL", "CENTER") or "pokemon center" in t:
@@ -85,16 +130,61 @@ class WalkTownState(CityState):
 
     def __init__(self, game):
         super().__init__(game)
-        self.walk = data(game)[self.area_key]
-        self.rows = self.walk["rows"]
-        self.w, self.h = self.walk["w"], self.walk["h"]
         self._sprites = {}
         self.facing, self.anim, self.steps = (0, 1), 0, 0
         self.walk_goal = None
         self.toast, self.toast_timer, self.banner = "", 0, 120
-        self.map_img = self._map_image()
-        self._place_things()
+        self.signs, self.water_exits, self.locked = {}, set(), {}
+        mine = custom(game).get(self.area_key)
+        self.own_map = bool(mine)
+        if mine:  # our own map (the way forward: Jordan, 11-06)
+            self._from_art(mine)
+        else:  # a Pokemon Journeys town picture (the Kanto pilot)
+            self.walk = data(game)[self.area_key]
+            self.rows = self.walk["rows"]
+            self.w, self.h = self.walk["w"], self.walk["h"]
+            self.map_img = self._map_image()
+            self._place_things()
         self._arrive()
+
+    def _from_art(self, m):
+        from src.dungeon import art
+        grid = m["art"]
+        self.h, self.w = len(grid), len(grid[0])
+        kinds = m.get("buildings", {})
+        doors = art.doors(grid)
+        self.doors, self.exits, self.people = {}, {}, {}
+        for (x, y), letter in doors.items():  # (a building's door can be a way out: {"Q": "DIGGLETT_CAVE"})
+            target = m.get("exits", {}).get(letter) or (m.get("exits", {}).get("D") if kinds.get(letter) == "gate" else None)
+            if target:
+                self.exits[(x, y)] = target
+            else:
+                self.doors[(x, y)] = kinds.get(letter, "house")
+        self.rows = ["".join("D" if (x, y) in doors else ("." if c in art.OPEN else "#") for x, c in enumerate(row))
+                     for y, row in enumerate(grid)]
+        self.locked = dict(m.get("locked", {}))  # (a shut door's own words: the Radio Tower with no power)
+        names = list(m.get("people", []))
+        options = {o.get("text"): o for o in self.area_data.get("explore_options", [])}
+        for y, row in enumerate(grid):
+            for x, c in enumerate(row):
+                if c in art.EXIT_CHARS and c in m.get("exits", {}):
+                    self.exits[(x, y)] = m["exits"][c]
+                    if c in "wu":
+                        self.water_exits.add((x, y))
+                elif c == "N" and names:
+                    who = names.pop(0)  # (a town option by its text, or an option of its own: Oak at the gap)
+                    opt = who if isinstance(who, dict) else options.get(who)
+                    if opt:
+                        self.people[(x, y)] = opt
+        for spot, lines in zip(art.signs(grid), m.get("signs", [])):
+            self.signs[spot] = lines
+        for (x, y) in self.exits:  # (a way out is walked onto)
+            self.rows[y] = self.rows[y][:x] + "." + self.rows[y][x + 1:]
+        cache = self.game.__dict__.setdefault("_walk_town_imgs", {})
+        if self.area_key not in cache:
+            cache.clear()
+            cache[self.area_key] = art.surface(grid, kinds, TILE, m.get("roofs"), m.get("theme"))
+        self.map_img = cache[self.area_key]
 
     # ---------------------------------------------------------------- the map
     def _map_image(self):
@@ -180,7 +270,7 @@ class WalkTownState(CityState):
         if was and was[0] == self.area_key and self._open(was[1]):
             self.player, self.facing = tuple(was[1]), tuple(was[2])
         else:
-            came = story.last_area_key
+            came = getattr(story, "last_area_key", None)  # (a loaded save hasn't come from anywhere)
             edge = [t for t, target in self.exits.items() if target == came]
             if edge:
                 t = edge[len(edge) // 2]
@@ -230,6 +320,9 @@ class WalkTownState(CityState):
             return
         self.facing = (dx, dy)
         to = (self.player[0] + dx, self.player[1] + dy)
+        if to in self.signs:
+            self.walk_goal = None
+            return self._read(to)
         if to in self._people():
             self.walk_goal = None
             return self._talk(to)
@@ -252,7 +345,8 @@ class WalkTownState(CityState):
         """The steps to goal (a door or a person: up to it), or []."""
         start = self.player
         target = set()
-        people = self._people()
+        people = dict(self._people())
+        people.update({s: None for s in self.signs})  # (walk up to a sign to read it)
         if goal in self.doors or goal in people:
             target = {(goal[0] + dx, goal[1] + dy) for dx, dy in DIRS}
         elif self._open(goal):
@@ -275,7 +369,12 @@ class WalkTownState(CityState):
 
     # ---------------------------------------------------------------- doors, people, ways out
     def _door_options(self, kind):
-        return [o for o in self._options() if option_kind(o) == kind]
+        """What's through a door: the town's options of that kind; a harbour's, its boats (the travel options
+        marked "door": "harbor", each shown only when you can take it)."""
+        opts = [o for o in self._options() if option_kind(o) == kind]
+        opts += [dict(o, action="TRAVEL") for o in self.area_data.get("travel_options", [])
+                 if o.get("door") == kind and self._shown(o)]
+        return opts
 
     def _enter(self, door):
         kind = self.doors[door]
@@ -285,14 +384,23 @@ class WalkTownState(CityState):
                 return self.flash("Nobody seems to be home.")
         opts = self._door_options(kind)
         if not opts:
-            return self.flash("The door is locked." if kind == "house" else
-                              f"{LABELS.get(kind, 'It').title()}: nothing to do here right now.")
+            if kind in self.locked:
+                return self.flash(self.locked[kind])
+            if kind == "house":
+                return self.flash("The door is locked.")
+            if kind in LABELS:
+                return self.flash(f"{LABELS[kind].title()}: nothing to do here right now.")
+            return self.flash("Nobody seems to be home.")
         if len(opts) == 1:
             cb = self._get_callback_for_option(opts[0])
             if cb:
                 cb()
             return
         self._create_hover_menu(opts, None)  # (a building with several things inside: pick one)
+
+    def _read(self, spot):
+        from src.states.overworld.common import _fill_names
+        self.show_message([_fill_names(self.game, line) for line in self.signs[spot]])
 
     def _talk(self, spot):
         opt = self.people[spot]
@@ -309,7 +417,9 @@ class WalkTownState(CityState):
     def _leave(self, target):
         opt = self._travel_option(target)
         if opt is None or not self._shown(opt):
-            self.flash("You can't go that way yet.")
+            here = self.player
+            self.flash("The water's deep here. You'll need Surf to cross it!" if here in self.water_exits
+                       else "You can't go that way yet.")
             return self._step_back()
         cb = self._get_callback_for_option(dict(opt, action="TRAVEL"))
         if not cb:
@@ -325,9 +435,11 @@ class WalkTownState(CityState):
     # ---------------------------------------------------------------- input
     def _buttons(self):
         w, h = self.game.width, self.game.height
-        return [(pygame.Rect(w - 280, h - 162, 126, 70), theme.pokemon_word("POKEMON"), theme.POKEMON, self._open_party),
-                (pygame.Rect(w - 146, h - 162, 126, 70), theme.pokemon_word("POKEDEX"), theme.BAG, self._open_pokedex),
-                (pygame.Rect(w - 280, h - 80, 260, 58), "TRAVEL", theme.FIGHT, self._open_travel)]
+        out = [(pygame.Rect(w - 280, h - 162, 126, 70), theme.pokemon_word("POKEMON"), theme.POKEMON, self._open_party),
+               (pygame.Rect(w - 146, h - 162, 126, 70), theme.pokemon_word("POKEDEX"), theme.BAG, self._open_pokedex)]
+        if not self.own_map:  # (our own maps: you walk wherever you go; Fly is in MENU. Jordan, 11-07)
+            out.append((pygame.Rect(w - 280, h - 80, 260, 58), "TRAVEL", theme.FIGHT, self._open_travel))
+        return out
 
     def _open_travel(self):
         options = self.area_data.get("travel_options", [])
@@ -369,13 +481,15 @@ class WalkTownState(CityState):
                     self.step(*KEYS[e.key])
                 elif e.key in (pygame.K_SPACE, pygame.K_RETURN, pygame.K_KP_ENTER, pygame.K_f):
                     t = self._facing_tile()
-                    if t in self._people():
+                    if t in self.signs:
+                        self._read(t)
+                    elif t in self._people():
                         self._talk(t)
                     elif t in self.doors:
                         self._enter(t)
                 elif e.key == pygame.K_p:
                     self._open_party()
-                elif e.key == pygame.K_t:
+                elif e.key == pygame.K_t and not self.own_map:
                     self._open_travel()
                 elif e.key in (pygame.K_ESCAPE, pygame.K_m) and self.hud_buttons:
                     self.hud_buttons[0].callback()  # MENU
@@ -392,8 +506,11 @@ class WalkTownState(CityState):
                 if abs(goal[0] - self.player[0]) + abs(goal[1] - self.player[1]) == 1:
                     self.walk_goal = None
                     self.step(goal[0] - self.player[0], goal[1] - self.player[1])
-                elif goal in self.doors or goal in self._people() or self._open(goal):
+                elif goal in self.doors or goal in self._people() or goal in self.signs or self._open(goal):
                     self.walk_goal = goal
+                self._map_press = True  # (held: it keeps walking toward the finger)
+            elif e.type == pygame.MOUSEBUTTONUP and e.button == 1:
+                self._map_press = False
 
     def update(self):
         if self.npc_active:
@@ -405,13 +522,25 @@ class WalkTownState(CityState):
         if self.anim > 0:
             self.anim -= 1
             return
+        if not self._busy():  # held down: keep walking (a key), or keep heading for the finger
+            way = held_way(KEYS)
+            if way:
+                self.walk_goal = None
+                return self.step(*way)
+            at = held_pointer() if getattr(self, "_map_press", False) else None
+            if at is None:
+                self._map_press = False
+            else:
+                goal = self._tile_at(at)
+                if goal != self.player and (self._open(goal) or goal in self.doors or goal in self._people()):
+                    self.walk_goal = goal
         if self.walk_goal and not self._busy():
             path = self._path(self.walk_goal)
             if not path:
                 self.walk_goal = None
                 return
             nxt = path[0]
-            if nxt == self.walk_goal and (nxt in self.doors or nxt in self._people()):
+            if nxt == self.walk_goal and (nxt in self.doors or nxt in self._people() or nxt in self.signs):
                 self.walk_goal = None
             self.step(nxt[0] - self.player[0], nxt[1] - self.player[1])
             if self.player == self.walk_goal:
@@ -461,11 +590,21 @@ class WalkTownState(CityState):
             drawn.append((pr.bottom, me, me.get_rect(midbottom=(pr.centerx, pr.bottom))))
         for _b, img, rect in sorted(drawn, key=lambda t: t[0]):
             screen.blit(img, rect)
-        # the buildings' names over their doors, and who the people are
+        # the buildings' names over their doors, who the people are, where the ways out go
         for spot, kind in self.doors.items():
             if kind == "house" or (kind == "home" and spot != min(t for t, k2 in self.doors.items() if k2 == "home")):
                 continue
-            self._pill(screen, LABELS.get(kind, kind.upper()), at(spot).centerx, at(spot).y - 6, fonts)
+            label = LABELS.get(kind) or next((o.get("text", "") for o in self.area_data.get("explore_options", [])
+                                              if o.get("door") == kind), kind).upper()
+            self._pill(screen, label, at(spot).centerx, at(spot).y - 6, fonts)
+        ways = {}
+        for spot, target in self.exits.items():
+            ways.setdefault(target, []).append(spot)
+        for target, tiles in ways.items():
+            tiles.sort()
+            t = tiles[len(tiles) // 2]
+            name = (self.game.loader.area_data.get("STORY_PROGRESSION", {}).get(target) or {}).get("route_name") or target
+            self._pill(screen, str(name).upper(), at(t).centerx, at(t).centery + 10, fonts)
         from src.states.overworld.common import _fill_names
         for spot, opt in people.items():
             self._pill(screen, _fill_names(self.game, opt.get("text", "")).upper()[:28], at(spot).centerx,
@@ -480,8 +619,12 @@ class WalkTownState(CityState):
 
     @staticmethod
     def _pill(screen, text, cx, bottom, fonts):
+        W, H = screen.get_size()
+        if not (-60 <= cx <= W + 60 and -40 <= bottom <= H + 60):
+            return  # (off screen: no tag piling up at the edge)
         tag = fonts["caption"].render(theme.pokemon_word(text), True, (255, 255, 255))
         pill = tag.get_rect(midbottom=(cx, bottom)).inflate(12, 6)
+        pill.clamp_ip(screen.get_rect().inflate(-8, -8))  # (one at the very edge stays on screen)
         pygame.draw.rect(screen, (30, 36, 58), pill, border_radius=8)
         screen.blit(tag, tag.get_rect(center=pill.center))
 

@@ -512,7 +512,7 @@
             { "text": "Route 30", "target_area": "JOHTO_ROUTE_30" }
 
         ],
-        "explore_options": [
+        "explore_options": [{"text": "Guide Gent", "action": "EVENT", "door": "gent", "event": {"lines": ["Guide Gent: Welcome to Cherrygrove! Let me show you around.", "The Pokemon Center heals your team for free, any time.", "The Mart sells Poke Balls and Potions. Stock up before a long trip!", "Route 30 is north, up the sand road past the Mart. Mr. Pokemon lives that way."]}}, {"text": "Fisherman", "action": "EVENT", "door": "fisher", "flag_condition": "not got_mystic_water", "event": {"lines": ["Fisherman: This water comes from a spring that never runs dry.", "A Water-type Pokemon that holds it hits harder. Here, it's yours!"], "gift_item": {"MYSTIC_WATER": 1}, "flag": "got_mystic_water"}}, {"text": "Fisherman", "action": "EVENT", "door": "fisher", "flag_condition": "got_mystic_water", "event": {"lines": ["Fisherman: Give that Mystic Water to a Water-type to hold. It makes a big splash!"]}}, 
             { "text": "Heal", "action": "HEAL" },
             { "text": "Shop", "action": "SHOP" },
             { "text": "Wake Sleeping Man", "action": "NPC", "target": "oldman", "flag_condition": "not got_rocky_helmet" }

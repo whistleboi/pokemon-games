@@ -166,10 +166,14 @@ check(story.inventory.get("OLD_AMBER") == 1, "with the Cascade Badge: the Old Am
 print("6) HM Surf and HM Fly, no Surf Board or Air Balloon")
 story.inventory.update({"SURF_BOARD": 1, "AIR_BALLOON": 1})
 story.inventory.pop("HM_FLY", None)
+story.inventory.pop("HM_CUT", None)
 story.badges["KANTO"] = ["BOULDER", "CASCADE", "THUNDER", "RAINBOW", "SOUL"]
 story.sync_key_items()
 inv = story.inventory
-check(inv.get("HM_CUT") and inv.get("HM_FLY") and inv.get("HM_SURF") and story.can_fly(), "Kanto's badges give HM Cut, Fly and Surf")
+check(inv.get("HM_SURF") and not inv.get("HM_FLY") and not inv.get("HM_CUT"),
+      "Kanto's badges give HM Surf (Cut: the S.S. Anne's captain; Fly: the Route 16 house, Jordan 11-07)")
+inv["HM_FLY"] = 1
+check(story.can_fly(), "with HM Fly: you can fly")
 check("SURF_BOARD" not in inv and "AIR_BALLOON" not in inv, "the old stand-ins are gone")
 gates = [o for a in ("PALLET_TOWN", "FUCHSIA_CITY") for o in prog[a]["travel_options"] if o.get("item_condition")]
 check(gates and all(o["item_condition"] == "HM_SURF" for o in gates), "Surf routes check HM Surf")

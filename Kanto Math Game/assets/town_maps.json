@@ -1,0 +1,4889 @@
+{
+ "PALLET_TOWN": {
+  "art": [
+   "TTkkkkkkkkkk^^kkkkkkkkTT",
+   "TTTTTTTTTTTT\"\"TTTTTTTTTT",
+   "TTTTTTTTTTTT\"\"TTTTTTTTTT",
+   "TTTTTTTTTTTT\"\"TTTTTTTTTT",
+   "TTTTTTTTTTTT..TTTTTTTTTT",
+   "TTTTTTTTTTTTN.TTTTTTTTTT",
+   "TT.dddddddddddddddddd.TT",
+   "TTddddddddddddddddddd.TT",
+   "TTdddPPPPPddddRRRRRdd.TT",
+   "TTd..PPPPP.d..RRRRR.d.TT",
+   "TTd..PPPPP.d..RRRRR.d.TT",
+   "TTd.!PDPPP.d.!RDRRR.d.TT",
+   "TTddd.d...dddd.d...dd.TT",
+   "TTddddddddddddddddddd.TT",
+   "TTdddddddddddLLLLLLLd.TT",
+   "TTdddkkkk!dd.LLLLLLLd.TT",
+   "TTdd.ffff..d.LLLLLLLd.TT",
+   "TTdd.ffff..d.LLLDLLLd.TT",
+   "TTdd.!.....dd...d...d.TT",
+   "TTddddddddddddddddddd.TT",
+   "TTdddddddddddkkk!kk.d.TT",
+   "TTdddddwwwwdddddddddd.TT",
+   "TT.....~~~~dddddddddd.TT",
+   "TTTTTT.~~~~.......TTTTTT",
+   "TTTTTTk~~~~kkkkkkkTTTTTT",
+   "TTTTTTT~~~~TTTTTTTTTTTTT"
+  ],
+  "exits": {
+   "^": "KANTO_ROUTE_1",
+   "w": "KANTO_ROUTE_21"
+  },
+  "buildings": {
+   "P": "home",
+   "R": "rival",
+   "L": "lab"
+  },
+  "roofs": {
+   "P": [
+    214,
+    72,
+    64
+   ]
+  },
+  "people": [
+   {
+    "text": "Professor Oak",
+    "action": "NPC",
+    "target": "professor_oak",
+    "door": "outside",
+    "flag_condition": "not received_starter_kanto"
+   }
+  ],
+  "signs": [
+   [
+    "Your house. Mom says: don't forget to come home and rest!"
+   ],
+   [
+    "Your rival's house. Daisy is usually home."
+   ],
+   [
+    "PALLET TOWN",
+    "Every big journey starts with one small step... and one math problem!"
+   ],
+   [
+    "Practice makes perfect! Two Pidgey plus two Pidgey make four. Keep counting!"
+   ],
+   [
+    "OAK POKEMON RESEARCH LAB",
+    "Great trainers check their answers twice!"
+   ]
+  ]
+ },
+ "KANTO_ROUTE_1": {
+  "art": [
+   "TTTTTTTTTT^^^^TTTTTTTTTT",
+   "TTTTTTTTTT====TTTTTTTTTT",
+   "TT..N.....====........TT",
+   "TT......TT============TT",
+   "TT......TT============TT",
+   "TT#####.TT######..====TT",
+   "TT......TT\"\"\"\"\"\"\"\"\"\"\"\"TT",
+   "TT.f....TT\"\"\"\"\"\"\"\"\"\"\"\"TT",
+   "TT....f.TT\"\"\"\"\"\"\"\"\"\"\"\"TT",
+   "TT..f...TT\"\"\"\"\"\"\"\"\"\"\"\"TT",
+   "TT######TT\"\"\"\"\"\"\"\"\"\"\"\"TT",
+   "TT......TT...=========TT",
+   "TT.f.........=========TT",
+   "TT....f......===\"\"\"\"\"\"TT",
+   "TTTT......TTTTTT\"\"\"\"\"\"TT",
+   "TTTT######TTTTTT\"\"\"\"\"\"TT",
+   "TTTT......TTTTTT\"\"\"\"\"\"TT",
+   "TT...........===\"\"\"\"\"\"TT",
+   "TT...===========......TT",
+   "TT...===========......TT",
+   "TT##.####..###########TT",
+   "TT...=================TT",
+   "TT...=================TT",
+   "TT..f.............====TT",
+   "TTTTTTTTTTTT\"\"\"\"\"\"====TT",
+   "TTTTTTTTTTTT\"\"\"\"\"\"====TT",
+   "TTTTTTTTTTTT\"\"\"\"\"\"====TT",
+   "TT..........\"\"\"\"\"\"====TT",
+   "TT..f.......\"\"\"\"\"\"====TT",
+   "TT====================TT",
+   "TT====================TT",
+   "TT##...!###====#######TT",
+   "TT..\"\"\"\"\"\"\"====..\"\"\"\"\"TT",
+   "TT..\"\"\"\"\"\"\"====..\"\"\"\"\"TT",
+   "TT\"\"\"\"\"\"\"f.=\"\"=\"\"\"\"\"f.TT",
+   "TT\"\"\"\"\"\"\".f.\"\".\"\"\"\"\".fTT",
+   "TTkkkkkkkkkk\"\"kkkkkkkkTT",
+   "TTTTTTTTTTTT\"\"TTTTTTTTTT",
+   "TTTTTTTTTTTT\"\"TTTTTTTTTT",
+   "TTTTTTTTTTTTvvTTTTTTTTTT"
+  ],
+  "exits": {
+   "^": "VIRIDIAN_CITY",
+   "v": "PALLET_TOWN"
+  },
+  "buildings": {},
+  "people": [
+   "POKE MART CLERK"
+  ],
+  "signs": [
+   [
+    "ROUTE 1: PALLET TOWN - VIRIDIAN CITY",
+    "Wild Pokemon hide in the tall grass. Answer fast to catch them!"
+   ]
+  ]
+ },
+ "VIRIDIAN_CITY": {
+  "art": [
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT^^TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT====TTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "ccccccccccccccccTTTTTTTTTTTTTTT=NN=TTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "ccccccccccccccccTTTTTTTTTTTTTTT====TTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "ccccccccccccccccTTTTTTTTTTTkTT.====TTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "ccccccccccccccccTTTTTTTTTTTkTT.====TTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "ccccccccccccccccTTTTTTTTTTTkTT.=aa=TTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "ccccccccccccccccTTTTTTTTTTTkTT.=aa=TTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "ccccccccccccccccTTTTTTTTTTTkTT.=aa!TTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "ccccccccccccccccTTTTTTTTTTTkTT.=aa=TTTOOOOlTTTTTTTTTTTTlTTTTTTTT",
+   "cccccccccccccccckkkkkkkkkkkk...=aa=...OOOO..............TTTTTTTT",
+   "cccccccccccccccc.kkkkkkkkkTk..l=aa=l..ODOO....GGGGGG....TTTTTTTT",
+   "cccccccccccccccc.kTTTTTTTTTk...=aa=...........GGGGGG....TTTTTTTT",
+   "cccccccccccccccc.kTTTTTTTTTk...=aa=..........!GGGGGG....TTTTTTTT",
+   "cccccccccccccccc.kTTTTTTTTTkTT.=aa=TT.........GGDGGG....TTTTTTTT",
+   "cccccccccccccccc.kTTTTTTTTTkTT.=aa=TT.HHHHTTTTT.........TTTTTTTT",
+   "cccccccccccccccc.kTTTTTTTTTkTT.=aa=TT.HHHHTTTTT.........TTTTTTTT",
+   "cccccccccccccccc.kTTTTTTTTTk..l=aa=l..HHDH##############TTTTTTTT",
+   "cccccccccccccccc.kTTTTTTTTTk...=aa=.................l...TTTTTTTT",
+   "cccccccccccccccc.kTTTTTTTTTkTT.=aa=TT.SSSSSSS........fffTTTTTTTT",
+   "cccccccccccccccc.kTTTTTTTTTkTT.=aa=TT.SSSSSSSMMMM....TTTTTTTTTTT",
+   "cccccccccccccccc.kTTTTTTTTTkTT.=aa=TT.SSSSSSSMMMM....TTTTTTTTTTT",
+   "cccccccccccccccc.kTTTTTTTTTkTT.=aa=TT.SSSSSSSMMMM....TTTTTTTTTTT",
+   "cccccccccccccccc.kTTTTTTTTTkTT.=aa=TT.SSSDSSSMDMM....TTTTTTTTTTT",
+   "cccccccccccccccc.kkkkkkkkkkl...=aa========!==========TTTTTTTTTTT",
+   "cccccccccccc===l==============!=aaaaaaaaaaaaaaaaaaaalTTTTTTTTTTT",
+   "cc==========aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa=TTTTTTTTTTT",
+   "cc==========aaaaaaaaaaaaaaaaaaaaaa=CCCCC===ffffff=aa=TTTTTTTTTTT",
+   "cc========cc====TTTTTTTT===l====aa=CCCCC===ffffff=aa=TTTTTTTTTTT",
+   "cc===cccccccccccTTTTTTTT~~~~~...aa=CCDCC===ffffff=aa=TTTTTTTTTTT",
+   "cc===ccccccccccc........~~~~~...aa================aa=TTTTTTTTTTT",
+   "<====ccccccccccc......~~~~~~~...aaaaaaaaaaaaaaaaaaaa=TTTTTTTTTTT",
+   "<====ccccccccccc######~~~~~~~...aaaaaaaaaaaaaaaaaaaa=TTTTTTTTTTT",
+   "<====cccccccccTTTTTTTTTT...........##################TTTTTTTTTTT",
+   "ccccccccccccccTTTTTTTTTT................................TTTTTTTT",
+   "ccccccccccccccTTTTTTTTTTTTTTTTTTTTTTTTTT...TTTTTTTTTTTTTTTTTTTTT",
+   "ccccccccccccccTTTTTTTTTTTTTTTTTTTTTTTTTl...lTTTTTTTTTTTTTTTTTTTT",
+   "ccccccccccccccTTTTTTTTTTTTTTTTTTTTTTTTTT...TTTTTTTTTTTTTTccccccc",
+   "ccccccccccccccTTTTTTTTTTTTTTTTTTTTTTTTTT...TTTTTTTTTTTTTTcTTTTTT",
+   "ccccccccccccccTTTTTTTTTTTTTTTTTTTTTTTTTT...TTTTTTTTTTTTTTcTTTTTT",
+   "ccccccccccccccTTTTTTTTTTTTTTTTTTTTTTTTTTvvvTTTTTTTTTTTTTTcTTTTTT",
+   "ccccccccccccccTTTTTTTTTTTTTTTTTTTTTTTTTTBBBBTTTTTTTTTTTTTcTTTTTT",
+   "ccccccccccccccTTTTTTTTTTTTTTTTTTTTTTTTTTBBBBTTTTTTTTTTTTTcTTTTTT",
+   "ccccccccccccccTTTTTTTTTTTTTTTTTTTTTTTTTTBBBBTTTTTTTTTTTTTcTTTTTT",
+   "ccccccccccccccTTTTTTTTTTTTTTTTTTTTTTTTTTBBBBTTTTTTTTTTTTTcTTTTTT"
+  ],
+  "exits": {
+   "^": "VIRIDIAN_FOREST",
+   "<": "KANTO_ROUTE_22",
+   "v": "KANTO_ROUTE_1"
+  },
+  "buildings": {
+   "H": "house",
+   "G": "gym",
+   "O": "oldman",
+   "S": "school",
+   "M": "mart",
+   "C": "center",
+   "B": "gate"
+  },
+  "roofs": {
+   "G": [
+    196,
+    120,
+    70
+   ],
+   "H": [
+    84,
+    150,
+    90
+   ],
+   "O": [
+    84,
+    150,
+    90
+   ],
+   "S": [
+    84,
+    150,
+    90
+   ],
+   "B": [
+    70,
+    168,
+    170
+   ]
+  },
+  "people": [
+   "Wake Sleeping Man",
+   "Wake Sleeping Man"
+  ],
+  "signs": [
+   [
+    "VIRIDIAN CITY",
+    "The Eternally Green Paradise. Keep growing, one problem at a time!"
+   ],
+   [
+    "VIRIDIAN GYM",
+    "The Gym Leader is away... or so they say."
+   ],
+   [
+    "TRAINER SCHOOL",
+    "Learn the basics here. Practice makes perfect!"
+   ],
+   [
+    "ROUTE 22 is to the west.",
+    "The road to the Pokemon League! Keep practicing, Champion-to-be!"
+   ]
+  ]
+ },
+ "KANTO_ROUTE_22": {
+  "art": [
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "ccccccccccccGGGGGGGGGccccccccccccccccccccccccccccccccccc",
+   "ccccccccccccGGGGGGGGGccccccccccccccccccccccccccccccccccc",
+   "ccccccccccccGGGGGGGGGccccccccccccccccccccccccccccccccccc",
+   "ccccccccccccGGGGGGGGGccccccccccccccccccccccccccccccccccc",
+   "ccccccccccccGGGGGGGGGccccccccccccccccccccccccccccccccccc",
+   "ccccccccccccGGGGGGGGGccccccccccccccccccccccccccccccccccc",
+   "ccccccccccccGGGGGGGGGccccccccccccccccccccccccccccccccccc",
+   "ccccccccccccGGGGGGGGGccccccccccccccccccccccccccccccccccc",
+   "ccccccccccccGGGGGGGGGccccccccccccccccccccccccccccccccccc",
+   "ccccccccccccGGGGGGGGGccccccccccccccccccccc........cccccc",
+   "ccccccccccccGGGGGGGGGccccccccccccccccccccccccc.ccccccccc",
+   "cccccccccckkGGGGDGGGGkkk========================..cccccc",
+   "cccccccccckTTTT===TTTTk=========================..cccccc",
+   "cccccccccckTTTT===TTTTk=========================TT......",
+   "cccccccccck===========k.............cccccc......TT.====>",
+   "cccccccccck===========k######.cccccccccccccc..ccTT.====>",
+   "cccccccccck#######..##k\"\"\"\"\"\"\"c~~~~ccccccc\"\"\"\"\"\"TT.====>",
+   "cccccccccck...........k\"\"\"\"\"\"\"c~~~~ccccccc\"\"\"\"\"\"TT.===cc",
+   "cccccccccck...........k\"\"\"\"\"\"\"cccccccccccc\"\"\"\"\"\"TT.===cc",
+   "cccccccccckkk..!kkkkkkk\"\"\"\"\"\"\"......cccccc\"\"\"\"\"\"TT.===cc",
+   "cccccccccccc...........\"\"\"\"\"\"\"......cccccc\"\"\"\"\"\"TT.===cc",
+   "cccccccccccc........................cccccc............cc",
+   "cccccccccccc###################################..#####cc",
+   "cccccccccccc\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"cc",
+   "cccccccccccc\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"cc",
+   "cccccccccccc\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"cc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+  ],
+  "exits": {
+   ">": "VIRIDIAN_CITY",
+   "G": "KANTO_ROUTE_23"
+  },
+  "buildings": {
+   "G": "gate"
+  },
+  "roofs": {
+   "G": [
+    150,
+    190,
+    140
+   ]
+  },
+  "signs": [
+   [
+    "POKEMON LEAGUE - FRONT GATE",
+    "Only trainers with all 8 badges may pass. Keep at it!"
+   ]
+  ]
+ },
+ "VIRIDIAN_FOREST": {
+  "art": [
+   "TTTTTGGGGGGGGGGG.TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTGGGGGGGGGGG\"TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTGGGGGGGGGGG\"TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTGGGGGGGGGGG\"TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTGGGGGGGGGGG\".T..T.TT..T.TTT.T..T..T..T..T..T..T..T.TTTTTTTT",
+   "TTTTTGGGGGGGGGGG.......X.....TTT.............X..........TTTTTTTT",
+   "TTTTTGGGGGGGGGGG.T=========T.TTT........................TTTTTTTT",
+   "TTTTTGGGGGGGGGGG.===========.TTT........................TTTTTTTT",
+   "TTTTTGGGGGGGGGGG.===========.TTT.....TTTTTTTTTTTTTTT....TTTTTTTT",
+   "TTTTTGGGGGDGGGGG.===.....===.TTT.....TTTTTTTTTTTTTTT....TTTTTTTT",
+   "TTTTTTTT#===#TTT.T=T.....T=T.TTT.....TTTTTTTTTTTTTTT....TTTTTTTT",
+   "TTTTTTTT#===#TTT.....TTT.....TTT.....TTTTTTTTTTTTTTT....TTTTTTTT",
+   "TTTTTTTT...!\"TTT\"\"\"\"\"TTT\"\"\"\"\"TTT\"\"\"\"\"TTTTTTTTTTTTTTT....TTTTTTTT",
+   "TTTTTTTT\"\"\"\"\"TTT\"\"\"\"\"TTT\"\"\"\"\"TTT\"\"\"\"\"TTTTTTTTTTTTTTT....TTTTTTTT",
+   "TTTTTTTT\"\"\"\"\"TTT\"\"\"\"\"TTT\"\"\"\"\"TTT\"\"\"\"\"\"T\"\"T\".T..T..T.....TTTTTTTT",
+   "TTTTTTTT\"\"\"\"\"TTT\"\"\"\"\"TTT\"\"\"\"\"TTT\"\"\"\"\"\"\"\"\"\"\".............TTTTTTTT",
+   "TTTTTTTT\"\"\"\"\"TTT\"\"\"\"\"TTT\"\"\"\"\"TTT\"\"\"\"\"\"\"\"\"\"\"..T=T........TTTTTTTT",
+   "TTTTTTTT\"\"\"\"\"TTT\"\"\"\"\"TTT\"\"\"\"\"TTT\"\"\"\"\"\"\"\"\"\"\"..===........TTTTTTTT",
+   "TTTTTTTT\"\"\"\"\"TTT\"\"\"\"\"TTT\"\"\"\"\"TTT\"\"\"\"\"\"\"\"\"\"\"..===..TTTTTTTTTTTTTT",
+   "TTTTTTTT\"\"\"\"\"TTT\"\"\"\"\"TTT\"\"\"\"\"TTT\"\"\"\"\"\"\"T\"\"...===..TTTTTTTTTTTTTT",
+   "TTTTTTTT\"\"\"\"\"TTT\"\"\"\"\"TTT\"\"\"\"\"TTT\"\"\"\"\"\"TTTTTT.===..TTTTTTTTTTTTTT",
+   "TTTTTTTT\"\"\"\"\"TTT\"\"\"\"\"TTT\"\"\"\"\"TTT...\"\"\"TTTTTT.===..TTTTTTTTTTTTTT",
+   "TTTTTTTT\"\"\"\"\"TTT\"\"\"\"\"TTT.....\"T\"......TTTTTT.===..TTTTTTTTTTTTTT",
+   "TTTTTTTT\"\"\"\"\"TTT\"\"\"\"\"TTT..T=========T.TTTTTT.===..TTTTTTTTTTTTTT",
+   "TTTTTTTT\"\"\"\"\"TTT\"\"\"\"\"TTTTT===========.TTTTTT.===..TT..T.TTTTTTTT",
+   "TTTTTTTT\"\"\"\"\"TTT\"\"\"\"\"\"TTTTT=========T.TTTTTT.===..X.....TTTTTTTT",
+   "TTTTTTTT\"\"\"\"\".T.\"\"\"\"\"\"\"TTTTTTTTTTTTTTTTTTTTT.===!.......TTTTTTTT",
+   "TTTTTTTT\"\"\"\"\"...\"\"\"\"\"\"\"TTTTTTTTTTTTTTTTTTTTT.====T......TTTTTTTT",
+   "TTTTTTTT...............TTTTTTTTTTTTTTTTTTTTT.T===T......TTTTTTTT",
+   "TTTTTTTT.T=T..!...T=T..TTTTTTTTTTTTTTTTTTTTT\"\"\"\"........TTTTTTTT",
+   "TTTTTTTT.============...T..T.TTTTTTTTTTTTTTT\"\"\"\"\"TTT....TTTTTTTT",
+   "TTTTTTTT.============........TTTTTTTTTTTTTTT\"\"\"\"\"TTT....TTTTTTTT",
+   "TTTTTTTT.T==========T........TTTTTTTTTTTTTTT\"\"\"\"\"TTT....TTTTTTTT",
+   "TTTTTTTT.....................TTTTTTTTTTTTTTT\"\"\"\"\"TTT....TTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTT......TTTTTTTTTTTTTTT\"\"\"\"\"TTT....TTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTT......TTTTTTTTTTTTTTT\"\"\"\"\"TTT....TTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT\"\"\"\"\"TTT....TTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT\"\"\"\"\"TTT....TTTTTTTT",
+   "TTTTTTTT\"T\"\"T\"\"T\"\"T\"\"T\"TTTTTTTTTTTTTTTTTTTTT\"\"\"\"\"TTT....TTTTTTTT",
+   "TTTTTTTT\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"TTTTTTTTTTTTTTTTTTTTT\"\"\"\"\"TTT....TTTTTTTT",
+   "TTTTTTTT\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"TTTTTTTTTTTTTTTTTTTTT\"\"\"\"\"TTT....TTTTTTTT",
+   "TTTTTTTT\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"TTTTTTTTTTTTTTTTTTTTT\"\"\"\"\"TTT....TTTTTTTT",
+   "TTTTTTTT\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"T\"\"T\"\"T\"\"T\"\"T\"TTTTTT\"\"\"\"\".T.....TTTTTTTT",
+   "TTTTTTTT\"T\"\"T\"\"T\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\".\"\"\"\"TTTTTT\"\"\"\"........TTTTTTTT",
+   "TTTTTTTTTTTTTTTTT\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"...\"\"TTTTTT\"\"\"...X.....TTTTTTTT",
+   "TTTTTTTTTTTTTTTTT\"\"\"\"\"\"T\"\"T\"\"T\"\"\"...\"\"TTTTTT\"\"\".........TTTTTTTT",
+   "TTTTTTTTTTTTTTTTT..\"\"\"TTTTTTTTT\"\"...\"\"TTTTTT\"\"\"...TTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTT..\"\"\"TTTTTTTTT\"\"...\"\"TTTTTT\"\"\"...TTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTT..\"\"\"TTTTTTTTT\"\"...\"\"TTTTTT\"\"\"...TTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTT..\"\"\"TTTTTTTTT\"\"...\"\"TTTTTT\"\"\"...TTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTT..\"\"\"TTTTTTTTT\"\"...\"\"TTTTTT\"\"\"...TTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTT..\"\"\"TTTTTTTTT\"\"...\"\"TTTTTT\"\"\"...TTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTT..\"\"\"TTTTTTTTT\"\"...\"\"TTTTTT\"\"\"...TTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTT..\"\"\"TTTTTTTTT\"\"...\"\"TTTTTT\"\"\"...TTTTTTTTTTTTTT",
+   "TTTTTTTT\"T\"\"T\"\"T\"..\"\"\"\"T\"\"T\"\"T\"\"\"...\"\".T..T.\"\"\"...\"T\"\"T\"TTTTTTTT",
+   "TTTTTTTT\"\"\"\"\"\"\"\"\"..\"\"\"\"\"\"\"\"\"\"\"\"\"\"TTT\"\"......\"\"\"...\"\"\"\"\"\"TTTTTTTT",
+   "TTTTTTTT\"\"\"\"\"\"\"\"\"..\"\"\"\"\"\"\"\"\"\"\"\"\"\"TTT\"\"\"\"\"\"\"\"\"\"\"...\"\"\"\"\"\"TTTTTTTT",
+   "TTTTTTTT\"\"\"\"\"\"\"\"\"...\"\"\"\"\"\"\"\"\"\"\"\"..T..\"\"\"\"\"\"\"\"\"...\"\"\"\"\"\"\"TTTTTTTT",
+   "TTTTTTTT\"\"\"\"\"\"\"\"\"....\"\"\"\"\"\"\"\"\"\".......\"\"\"\"\"\"\"....\"\"\"\"\"\"\"TTTTTTTT",
+   "TTTTTTTT\"\"\"\"\"\"\"\"....T==========T............!....\"\"\"\"\"\"\"TTTTTTTT",
+   "TTTTTTTT\"\"\"\"\"\"\"\"....============X...!...........\"\"\"\"\"\"\"\"TTTTTTTT",
+   "TTTTTTTT\"T\"\"T\"\"T....T==========T.\"T\"............T\"\"T\"\"T\"TTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT.vvv..TTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTBBBBBBBBBBBTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTBBBBBBBBBBBTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTBBBBBBBBBBBTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTBBBBBBBBBBBTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTBBBBBBBBBBBTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTBBBBBBBBBBBTTTTTTTTTTTTTTTTTTTTTTTT"
+  ],
+  "exits": {
+   "G": "KANTO_ROUTE_2",
+   "v": "VIRIDIAN_CITY"
+  },
+  "buildings": {
+   "G": "gate",
+   "B": "gate"
+  },
+  "trainer_spots": [
+   "Rick",
+   "Ember",
+   "Benjamin",
+   "Doug",
+   "Anthony"
+  ],
+  "signs": [
+   [
+    "VIRIDIAN FOREST",
+    "Pewter City is just through the gate. You made it!"
+   ],
+   [
+    "TRAINER TIPS",
+    "Bug Pokemon fill this forest, and they're weak to Fire. Plan your moves!"
+   ],
+   [
+    "TRAINER TIPS",
+    "Can't find the way out? Every forest has one. Keep exploring!"
+   ],
+   [
+    "TRAINER TIPS",
+    "Tall grass hides wild Pokemon. Quick, right answers make catching easier!"
+   ],
+   [
+    "VIRIDIAN FOREST",
+    "Bug Catchers love a battle here. Keep your math sharp!"
+   ]
+  ]
+ },
+ "KANTO_ROUTE_2": {
+  "art": [
+   "TTTTTTTTT.^^^TTTTTTTTTTTTT",
+   "TTT.......===..........TTT",
+   "TTT\"\"\"\"\"\"\"===##########TTT",
+   "TTT\"\"\"\"\"\"\"===#.........TTT",
+   "TTT\"\"\"\"\"\"\"===#.........TTT",
+   "TTT\"\"\"\"\"\"\"===#.........TTT",
+   "TTT\"\"\"\"\"\"\"===#QQQQQQQQ.TTT",
+   "TTT\"\"\"\"\"\"\"===#QQQQQQQQ.TTT",
+   "TTT\"\"\"\"\"\"\"===#QQQQQQQQ.TTT",
+   "TTT..========#QQQQQQQQ.TTT",
+   "TTT..========#QQQQQQQQ.TTT",
+   "TTT..========#QQQQDQQQ.TTT",
+   "TTT..====....#.!dddddd.TTT",
+   "TTT##vvvv###.#.ddddddddTTT",
+   "TTTGGGGGGGG#...ddddddddTTT",
+   "TTTGGGGGGGG....ddddddddTTT",
+   "TTTGGGGGGGGTTTT.dddddd.TTT",
+   "TTTGGGGGGGGTTTT\"\"\".....TTT",
+   "TTTGGGGGGGGTTTT\"\"\"\"\"...TTT",
+   "TTTGGGGGGGGTTTT\"\"\"\"\"...TTT",
+   "TTTTTTTTTTTTTTTAAAAA...TTT",
+   "TTTTTTTTTTTTTTTAAAAAdddTTT",
+   "TTTTTTTTTTTTTTTAAADAdddTTT",
+   "TTTTTTTTTTTTTTT..ddddddTTT",
+   "TTTTTTTTTTTTTTTTTddddddTTT",
+   "TTTTTTTTTTTTTTTTTddddddTTT",
+   "TTTTTTTTTTTTTTTTT##.###TTT",
+   "TTTTTTTTTTTTTTTTT\"\".\"\"\"TTT",
+   "TTTTTTTTTTTTTTTTT\"\".\"\"\"TTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTT"
+  ],
+  "exits": {
+   "^": "PEWTER_CITY",
+   "v": "VIRIDIAN_FOREST",
+   "Q": "DIGGLETT_CAVE"
+  },
+  "buildings": {
+   "Q": "cave",
+   "A": "aide",
+   "G": "gate"
+  },
+  "signs": [
+   [
+    "DIGGLETT'S CAVE",
+    "A long tunnel dug by Diglett. It comes out near Vermilion City!"
+   ]
+  ]
+ },
+ "PEWTER_CITY": {
+  "art": [
+   "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccUUUUUUUUUUUccccccccccccccccccccccccccccc",
+   "cccTTTTTTTTTTTTTTUUUUUUUUUUUWWWWTTTTTTTTTTTTTTTTTTccccccc",
+   "cccTTTTTTTTTTTTTTUUUUUUUUUUUWWWWTTTTTTTTTTTTTTTTTTccccccc",
+   "cccTTTTTT........UUUUUUUUUUUWWWW..........TTTTTTTTccccccc",
+   "cccTTTTTT.TTTTTT.UUUUUUUUUUUWWWW......f...TTTTTTTTccccccc",
+   "ccc.......TTTTTT.UUUUUUUUUUU......................ccccccc",
+   "cccfTTTTTTTTTTTT.UUUUUDUUUUU..TTTTTTTTTT...#f.....ccccccc",
+   "ccc.TTTTTTTTTTTT.....ppp......TTTTTTTTTT####......ccccccc",
+   "ccc.TTTTTTTTTTTTTTTT.ppp.TTTTTTTTTTTTTTT..........ccccccc",
+   "ccc.TTTT############=====#########TTTTTTff........ccccccc",
+   "ccc.TTTT#pppppppppppaaaaa!ppppppp#................ccccccc",
+   "ccc.TTTT#lpaaaaaaaaaaaaaaaaaaaaap########HHHHH===lccccccc",
+   "ccc.TTTT#ppaaaaaaaaaaaaaaaaaaaaapppppppppHHHHHpaapccccccc",
+   "ccc.TTTT#ppaapp#TTGGGGGGGTT#ppaapTTTTTTTTHHHHHpaapccccccc",
+   "cccfTTTT#ppaajp#TTGGGGGGGTT#ppaapTTTTTTTTHHHHHpaapccccccc",
+   "ccc.TTTT#ppaajp#TTGGGGGGGTT#ppaap........HDHHHpaapccccccc",
+   "ccc.TTTT#lpaapp#TTGGGGGGGTT#lpaapppppppppppppppaapccccccc",
+   "ccc.....#ppaajp#TTGGGGGGGTT#ppaaaaaaaaaaaaaaaaaaapccccccc",
+   "cccccccccppaajp#TTGGGDGGGTT#ppaaaaaaaaaaaaaaaaaaapccccccc",
+   "cccccccccppaapp#...........#ppaapMMMMpp#..f..#paapccccccc",
+   "ccccccccclpaajp#####===#####lpaapMMMMpTTf....#paapccccccc",
+   "cccccccccppaajppppp!ppppppTTppaapMMMMpTT.....#paapccccccc",
+   "ccccccccc.paaaaaaaaaaaaappTTppaapMMDMpTT##==##paapccccccc",
+   "ccccccccc.paaaaaaaaaaaaappTTppaapppppppppp==pppaapccccccc",
+   "ccccccccc.TTTTTTTTTTTTTTTTTTppaaaaaaaaaaaaaaaaaaapccccccc",
+   "cccccccccrTTTTTTTTTTTTTTTTTTlpaaaaaaaaaaaaaaaaaaapccccccc",
+   "ccccccccc#......#pppCCCCCpppppaapppppppppppppppaaal.....>",
+   "ccccccccc#..f....pppCCCCCpppppaajpjpjpjpjpjpjppaaa...===>",
+   "ccccccccc#f.....#pppCCCCCpppppaa#kkkkk!kkkkkk#paaa..N===>",
+   "ccccccccc########pppCCCCCpppppaa#kffff..ffffk#paaa......>",
+   "ccccccccc.JJJJppppppCCDCCppplpaa#kffff..ffffk#paapl.....>",
+   "ccccccccc.JJJJppppppppppppppppaa#kffff..ffffk#paapccccccc",
+   "ccccccccc.JJJJTTTTppaaaaaaaaaaaa#kffff..ffffk#paapccccccc",
+   "ccccccccc.JDJJTTTTppaappppppppaa#kkkkk..kkkkk#paapccccccc",
+   "ccccccccc.ppppTTTTp!aappppppppaa######==######paapccccccc",
+   "ccccccccc.aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaapaapccccccc",
+   "ccccccccc.aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaalccccccc",
+   "TTTTTTTTTTTT........TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTccccccc",
+   "TTTTTTTTTTTT........TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTccccccc",
+   "TTTTTTTTTTTTkk....kkTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTccccccc",
+   "TTTTTTTTTTTTTk.==.kTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTccccccc",
+   "TTTTTTTTTTTTTk.==.kTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTccccccc",
+   "TTTTTTTTTTTTTk.==.kTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTccccccc",
+   "TTTTTTTTTTTTTk.==.kTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTccccccc",
+   "TTTTTTTTTTTTTkvvvvkTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTccccccc"
+  ],
+  "exits": {
+   "v": "KANTO_ROUTE_2",
+   ">": "KANTO_ROUTE_3"
+  },
+  "buildings": {
+   "U": "museum",
+   "W": "museum",
+   "G": "gym",
+   "H": "house",
+   "M": "mart",
+   "C": "center",
+   "J": "house"
+  },
+  "roofs": {
+   "G": [
+    170,
+    120,
+    80
+   ]
+  },
+  "people": [
+   {
+    "text": "Boy",
+    "action": "EVENT",
+    "door": "outside",
+    "condition": "not:has_boulder_badge",
+    "event": {
+     "lines": [
+      "Boy: Hold it! You want to go east? Beat Brock at the Gym first!",
+      "He's tough, but you can do it. Try Water or Grass moves!"
+     ]
+    }
+   }
+  ],
+  "signs": [
+   [
+    "PEWTER MUSEUM OF SCIENCE",
+    "Fossils, meteorites and more. Science is just math with rocks!"
+   ],
+   [
+    "PEWTER CITY GYM",
+    "Leader: Brock, the rock-solid Pokemon Trainer!"
+   ],
+   [
+    "Pewter's flower garden. Count the petals... then count them again!"
+   ],
+   [
+    "PEWTER CITY",
+    "A stone gray city. Solid work builds solid trainers!"
+   ]
+  ]
+ },
+ "KANTO_ROUTE_3": {
+  "art": [
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccCCCCQQQQccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccCCCCQQQQccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccCCDCQQDQccccc",
+   "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc========ccccc",
+   "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc========ccccc",
+   "ccccccccccccc======================cccccccccccccccccccccccccccccccccc========ccccc",
+   "ccccccccccc==============X===========cccccccccccccccccccccccccccccccc.....cccccccc",
+   "ccccccccccc======.......=============cccccc================cccccccccc.....cccccccc",
+   "ccccccccccc..X......ccc.......cc..===ccccc===================cccccccc.....cccccccc",
+   "ccccccccccc###..####ccc.######cc###..ccccc====...........====cccccccc.....cccccccc",
+   "ccccccc.............ccc.......cc.....ccccc####..ccccccc#####.cccccccc###..cccccccc",
+   "<...................ccc.......cc................ccccccc......cccccccc.....cccccccc",
+   "<.................X.ccc.......ccc...............ccccccc......cccccc.......\"\"\"\"cccc",
+   "<........ccc........ccc.......ccc\"\"\"\"\"\"X........ccccccc................##!\"\"\"\"\"\"cc",
+   "..cccccccccc####..##ccc#######ccc\"\"\"\"\"\"\"\"\"\"\"\"\"\"cccccccc.................\"\"\"\"\"\"\"\"cc",
+   "cccccccccccc\"\"\"\"\"\"\"\"ccc\"\"\"\"\"\"\"ccc\"\"\"\"\"\"\"\"\"\"\"\"\"\"cccccccc.................\"\"\"\"\"\"\"\"cc",
+   "cccccccccccc\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"cccccc\"\"\"\"\"\"\"\"\"\"\"\"ccccccccf.f.............\"\"\"\"\"\"\"\"\"cc",
+   "cccccccccccccc\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"cccccc\"\"\"\"\"\"\"\"\"\"\"\"cccccccccc.f............\"\"\"\"\"\"\"\"\"cc",
+   "ccccccccccccccccccccccccccccccccccccccc\"\"\"\"\"\"\"\"ccccccccccf.f.f.........\"\"\"\"\"\"ccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+  ],
+  "exits": {
+   "<": "PEWTER_CITY",
+   "Q": "MT_MOON"
+  },
+  "buildings": {
+   "C": "center",
+   "Q": "cave"
+  },
+  "trainer_spots": [
+   "Calivin",
+   "Janice",
+   "Sammy",
+   "Otis"
+  ],
+  "signs": [
+   [
+    "ROUTE 3",
+    "Mt. Moon is just north. Rest at the Pokemon Center before you go in!"
+   ]
+  ]
+ },
+ "MT_MOON": {
+  "theme": "cave",
+  "descend": true,
+  "buildings": {},
+  "figure_floors": {
+   "SUPER NERD": 2,
+   "TAKE DOME FOSSIL": 2,
+   "TAKE HELIX FOSSIL": 2,
+   "Grunt": 2,
+   "Jessie and James": 2
+  },
+  "floors": [
+   {
+    "art": [
+     "cccccccccccccccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccccccccccccccc",
+     "ccssssssss.rrcccccccsssssssssssssssssssssssssscc",
+     "ccssssss....rccccccssssssssssss......ssssssssscc",
+     "ccssss.......cccccssssssssss.............ssssscc",
+     "ccsss........ccccr.ssssssss...............sssscc",
+     "ccsss+.......cccc...ssss...................ssscc",
+     "ccss........scccr........................r..sscc",
+     "ccss........sccc........................rrrrsscc",
+     "ccss........sccc.........................rr.sscc",
+     "ccss.......ssccc....ccccccccccccccc.........sscc",
+     "ccs........ssccc....ccccccccccccccc..........scc",
+     "ccs........ssccc....ccccccccccccccc..........scc",
+     "ccs........ssccc....cccrr.....rrrr..ss.......scc",
+     "ccs........ssccc...+cccr............ss.ccc...scc",
+     "ccs........ssccc....cccr...........sss.ccc...scc",
+     "ccs........ssccc....ccc........+..ssss.ccc....cc",
+     "cc.........sssss....ccc....ccc..ssssss.ccc....cc",
+     "cc..........sss.....ccc....ccc.sssssss.ccc....cc",
+     "ccccccccccc.........ccc....ccc.sssssss.ccc....cc",
+     "ccccccccccc.........ccc....ccc.sssssss.ccc....cc",
+     "ccccccccccc.........ccc....ccc.sssssss.ccc....cc",
+     "cc....rrccccccccccccccc....ccc.sssssss.ccc....cc",
+     "cc.....rccccccccccccccc....ccc..ssssss.ccc....cc",
+     "cc......ccccccccccccccc....ccc..sssss..ccc....cc",
+     "cc......ccc................ccc...ssss..ccc....cc",
+     "cc......ccc........!.......ccc.........ccc....cc",
+     "cc......ccc................ccc.........ccc....cc",
+     "cc.........................ccc.........ccc....cc",
+     "cc..................cccccccccc...ccc...ccc...scc",
+     "cc..................cccccccccc...ccc...ccc...scc",
+     "cc............rr....cccccccccc...ccc...ccc...scc",
+     "cc...........cccc...ccccr........ccc.........scc",
+     "cc...........cccc...ccccrr.......ccc........sscc",
+     "cc...........cccc...ccccrr.......ccc........sscc",
+     "cc...........cccc...ccccr..................ssscc",
+     "cc...........cccc...cccc..................sssscc",
+     "cc...........cccc...cccc..............sssssssscc",
+     "ccccccccccccccccccvccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccccccccccccccc"
+    ],
+    "exits": {
+     "v": "KANTO_ROUTE_3"
+    },
+    "signs": [
+     [
+      "TEAM ROCKET is lurking deep in Mt. Moon. Stay sharp, and keep your math sharper!"
+     ]
+    ]
+   },
+   {
+    "art": [
+     "ccccccccccccccccccccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccrr........rcccccccccrrrrr.....rc",
+     "c.-...cccccccccr.........rcccccccccrr........rc",
+     "c.....ccccccccc.........-.cccccccccr..+.......c",
+     "c.....ccccccccc.+.........ccccccccc...........c",
+     "c.....cccccccccccccccccccccccccccccccccccccvccc",
+     "c.....ccccccccccccccccccccccccccccccccccccccccc",
+     "c.....ccccccccccccccccccccccccccccccccccccccccc",
+     "c....rccccccccccccccccccccccccccccccccccccccccc",
+     "c.....ccccccccccccccccccccccccccccccccccccccccc",
+     "c...r.ccccccccccccccccccccccccccccccccccccccccc",
+     "c....rccccccccccccccccccccccccccccccccccccccccc",
+     "c.....ccccccccccccccccccccccccccccccccccccccccc",
+     "c.....ccccccccccccccccccccccccccccccccccccccccc",
+     "c.....ccccccccccccccccccccccccccccccccccccccccc",
+     "c......................cccccccccccccccccccccccc",
+     "c......................cccccccccccccccccccccccc",
+     "c....................+.cccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccccccc..-.ccc",
+     "cccccccccccccccccccccccccccccccccccccccc....ccc",
+     "cccccccccccccccccccccccccccccccccccccccc....ccc",
+     "cccccccccccccccccccccccccccccccccccccccc....ccc",
+     "cccccccccccccccccccccccccccccccccccccccc....ccc",
+     "cccccccccccccccccccccccccccccccccccccccc....ccc",
+     "cccccccccccccccccccccccccccccccccccccccc....ccc",
+     "cccccccccccccccccccccccccccccccccccccccc....ccc",
+     "cccccccccccccccccccccccccccccccccccccccc....ccc",
+     "cccccccccccccccccccccccccccccccccccccccc....ccc",
+     "ccccccccccccccccccccccccccccccccccccccccr...ccc",
+     "ccccccccccccccccccccccccccccccccccccccccr...ccc",
+     "ccccccccccccccccccccccccccccccccccccccccr...ccc",
+     "cccccccccccccccccccccccrr...........rrrr....ccc",
+     "cccccccccccccccccccccccr....................ccc",
+     "ccccccccccccccccccccccc.+...................ccc",
+     "ccccccccccccccccccccccccccccccccccccccccccccccc"
+    ],
+    "exits": {
+     "v": "KANTO_ROUTE_4"
+    },
+    "parts": true
+   },
+   {
+    "art": [
+     "ccccccccccccccccccccccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccccccccccccccccccccccc",
+     "ccc.................ccccccccccccccccccccccccccccc",
+     "ccc.................ccccccccccccccccccccccccccccc",
+     "ccc.................ccc....cccccc....cccccccccccc",
+     "ccc.................ccc....c....c....c....ccccccc",
+     "ccc==cccccccc..cccccccc....c....cc==cc....ccccccc",
+     "cc..................ccc....c..........N...ccccccc",
+     "cc...r..c...........ccc....c..............ccccccc",
+     "cc...-r.c...........ccc....c..rr.....NN...ccccccc",
+     "cc......c...........ccc....c..r-.......r..ccccccc",
+     "cc.....rccccc==ccc..ccc....c..............ccccccc",
+     "ccccccccr........c..ccc....c..............ccccccc",
+     "cccccccc.........c..ccc............cc...........c",
+     "cccccccc.........cccccc............cc..........cc",
+     "cccccccc............rcc............cc..........cc",
+     "cccccccccccc...cccccccc............cc..........cc",
+     "cccccccccccc...cccccccc......cc==ccccc==cc.....cc",
+     "cccccccccccc...cccccccc......c...........c.....cc",
+     "cccccccccccc...cccccccc..r...c...........c.....cc",
+     "cccccccc.............cc..-.r.c...........c.....cc",
+     "c~~~~~cc.............cc...r..c...........c.....cc",
+     "~~~~~~~c.....cccccccccccccccccccccccccccccc....cc",
+     "~~~~~~~c.....cccccccccccccccccccccccccccccc....cc",
+     "~~~~~~~c.....cccccccccccccccccccccccccccccc....cc",
+     "~~~~~~~c.....ccccccccccccccc....ccccccccccc....cc",
+     "~~~~~~~c.....cc............c....c..cc..........cc",
+     "~~~~~~~c.....ccr...........cc==cc..cc..........cc",
+     "~~~~~~~c.....cc....................cc.....ccccccc",
+     "~~~~~~~c.....cc..r.................cc.....cc~~~cc",
+     "~~~~~~~c.....cc.r-.................cc.....c~~~~~c",
+     "~~~~~~~c.....ccrr..................cc.....c~~~~~c",
+     "~~~~~~~c.....cccccccccccccccccccccccc.....c~~~~~c",
+     "~~~~~~~c.....cccccccccccccccccccccccc.....c~~~~~c",
+     "~~~~~~~c.....cccccccccccccccccccccccc.....c~~~~~c",
+     "~~~~~~~c.....cccccccccccccccccccccccc.....c~~~~~c",
+     "~~~~~~~c..................................c~~~~~c",
+     "~~~~~~~c..................................c~~~~~c",
+     "~~~~~~~cccccccccccccccccccccccccccccccccccc~~~~~c"
+    ],
+    "exits": {},
+    "parts": true,
+    "people": [
+     "SUPER NERD",
+     "TAKE DOME FOSSIL",
+     "TAKE HELIX FOSSIL"
+    ]
+   }
+  ]
+ },
+ "KANTO_ROUTE_4": {
+  "art": [
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "ccccccccccccccccc\"\"#......#\"ccccccccc.#.....#ccccccccccccccc....=======ccccccccccc",
+   "cccccQQQccccccccc\"\"#......#\"\"#.f.f.#..#.\"\"\".#f.f................=================>",
+   "cccccQQQccccccccc\"\"#......#\"\"#f.f.f#..#.\"\"\".#.f.fX..............=================>",
+   "cccccQDQccccccc\"\"\"\"###..###\"\"#.....#..#.\"\"\".#.########################kkkkkkkkkkkk",
+   "ccccc=========...............#.\"\"\".#..#...............................kk~~~~~~~~~~",
+   "ccccc==!======...............#..\"..#..##..############################kk~~~~~~~~~~",
+   "cccc.........................#.....#..................................kk~~~~~~~~~~",
+   "cccc###########...############.===.###......................TTTT######kkkkkkkkkkkk",
+   "cccc\"\"\"\"\"\"\"\"\"\".................===...######..TTTT.##########TTTT..===============>",
+   "cccc\"\"\"\"\"\"\"\"\"\"..........====================.TTTT\"\"\"\"\"\"\"\"\"\"\"TTTT..===============>",
+   "ccccccccccccccc.........====X===============.TTTT\"\"\"\"\"\"\"\"\"\"\"\"\"TT..===============>",
+   "cccccccccccccccccccTTTT.====================.TTTT\"\"\"\"\"\"\"\"\"\"\"\"\"TT..===.kkkkkkkkkkkk",
+   "ccccccccccccccccccc\"\"\"\"......................TTTT\"\"\"\"\"\"\"\"\"\"\"\"\"TT##===#kTTTTTTTTTTT",
+   "ccccccccccccccccccccccc##..#########..#####TTTTTT\"\"\"\"\"\"\"\"\"\"\"\"\"TT..===.kTTTTTTTTTTT",
+   "ccccccccccccccccccccccc.f.f................TTTTTT\"\"\"\"\"\"\"\"\"\"\"\".\"\"..===.kTTTTTTTTTTT",
+   "cccccccccccccccccccccccf.f.f.f............XTT\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"..........kTTTTTTTTTTT",
+   "cccccccccccccccccccccccccccccc.............\"\"ccccccccccccccc.........ccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+  ],
+  "exits": {
+   "Q": "MT_MOON",
+   ">": "CERULEAN_CITY"
+  },
+  "buildings": {
+   "Q": "cave"
+  },
+  "trainer_spots": [
+   "Hope",
+   "Crissy",
+   "Hank"
+  ],
+  "signs": [
+   [
+    "ROUTE 4",
+    "Mt. Moon - Cerulean City. You made it through the mountain!"
+   ]
+  ]
+ },
+ "CERULEAN_CITY": {
+  "art": [
+   "cccccccccccccccccccccccccccccccccccoooooi^^^^i~~Tk^^^^^r^^cccccc",
+   "cccccccccccccccccccccccccccccccccccoooooi====i~~Tk.====...cccccc",
+   "cccccccccccccccccccccccccccccccccccoooooi====i~~Tk.====...cccccc",
+   "cccccccccccccccccccccccccccccccccccooooci====iTTTT....=TTTcccccc",
+   "cccccccccccccccccccccccccccccccccccooooc......TTTT....TTTTcccccc",
+   "ccccccccccccccccccoooooooooooooooooooooc......TTTT....TTTTcccccc",
+   "ccccccccccccccccccoooooooooooooooooooooc..aa..TTTT....TTTTcccccc",
+   "ccccccccccoooooooooooooooooooooooooooooc.!aaal.....###TTTTcccccc",
+   "ccccccQQccooooooooooooc...f.f..........c..aaa..T.T....TTTTcccccc",
+   "ccccccDQccooooccooooooc.f...#.f....f...c..aaa.TTTT....TTTTcccccc",
+   "cccf..==..oooocc..f.........=..........=..aaa.TTTT....TTTTcccccc",
+   "cccf..==..oooocc..f.HHHHIIII=.....f....=..aaa.TTTT....TTTTcccccc",
+   "ccc.......oooocc....HHHHIIII#..........c..aaal........TTTTcccccc",
+   "oooooooooooooocckkkkHHHHIIIIkkkkkkkkkkkkk.aaa.........TTTTcccccc",
+   "oooooooooooooocckfffHHHHIIII..aaaaaaaaaaaaaaa.TTTTTTTTTTTTcccccc",
+   "oooooooooooooocckfffHDHHIDII..aaaaaaaaaaaaaaa.TTTTTTTTTTTTcccccc",
+   "kkkkkkkkkkkkkkkkk.............aaa.....TT.aaaa..KKKKTTTTTTTcccccc",
+   "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa..JJJJT..aaal.KKKKTTTTTTTcccccc",
+   "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa..JJJJT..aaa..KKKKTTTTTTTcccccc",
+   ".....l.aaaalTTTTTTl....lTTTTlaaaa..JJJJT..aaa..KDKKTTTTTTTcccccc",
+   "kkkkkkk.aaa...................aaa.!JDJJT..aaaT....TTTTTTTTcccccc",
+   "TTTTTTk.aaa...................aaa.....TT..aaaT....TTTTTTTTcccccc",
+   "TTTTTTk.aaa.yy..yy............aaa.....TT..aaaT....TTTTTTTTcccccc",
+   "TTTTTTk.aaa........LLLLCCCCCC.aaaaaaaaTT..aaaT.....T.T.T.Tcccccc",
+   "TTTTTTk.aaa........LLLLCCCCCC.aGGGGGGGTT..aaaT............cccccc",
+   "TTTTTTk.aaa....~...LLLLCCCCCC..GGGGGGGTT..aaal....kkkkkkkkkkkkkk",
+   "TTTTTTk.aaa........LLLLCCCCCC..GGGGGGGTT..aaaaaaaaaaaaaaaaa....>",
+   "TTTTTTk.aaal......lLDLLCCDCCC..GGGGGGGTT..aaaaaaaaaaaaaaaaa....>",
+   "TTTTTTk.aaa....................GGGGGGGTT..aaaaaaaaaaaaaaaaa....>",
+   "TTTTTTk.aaaaaaaaaaaaaaaaaaaaaa.GGGGDGG...####l....kkkkkkkkkkkk..",
+   "TTTTTTk.aaaaaaaaaaaaaaaaaaaaaa.......!....aa.T....TTTTTTTTcccck.",
+   "TTTTTTk.aaa........aaa...!.aaaaaaaaaaaaaaaaaaT....TTTTTTTTcccck.",
+   "TTTTTTk.aaa........aaa.....aaaaaaaaaaaaaaaaaaT....TTTTTTTTcccck.",
+   "TTTTTTk.aaa.BBBBB..aaa.MMMMMOOOO..........aaaT....TTTTTTTTcccck.",
+   "TTTTTTk.aaa.BBBBB..aaa.MMMMMOOOO.fffffff..aaaT....TTTTTTTTcccck.",
+   "TTTTTTk.aaa.BBBBB..aaa.MMMMMOOOO.fffffff..aaaT....TTTTTTTTcccck.",
+   "TTTTTTk.aaa!BBDBB..aaa.MMDMMODOO.fffffff..aaaT....TTTTTTTTcccck.",
+   "TTTTTTk.aaa........aaa...........fffffff..aaal....TTTTTTTTcccck.",
+   "TTTTTTk.aaa.......aaaa...................aaaa.....TTTTTTTTcccck.",
+   "TTTTTTk.aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.....TTTTTTTTcccccc",
+   "TTTTTTk.aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa......TTTTTTTTcccccc",
+   "TTTTTTkTTTTTl......lTTTTTTTTTTTT.lTTTTTTTTTTTl....TTTTTTTTcccccc",
+   "TTTTTTk...........................................TTTTTTTTcccccc",
+   "TTTTTTk...........................................TTTTTTTTcccccc",
+   "TTTTTTk....TT......TT.....kkkkkkkkkkkkkkkkkkkkkkkkTTTTTTTTcccccc",
+   "TTTTTTk....TT......TT.....kTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTcccccc",
+   "TTTTTTk....TT......TT.....kTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTcccccc",
+   "TTTTTTk....TT......TT.....kTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTcccccc",
+   "TTTTTTk....TT#####.TTT....kTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTcccccc",
+   "TTTTTT.#.##TT\"\"\"\"\"\"TT###.#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTcccccc",
+   "TTTTTT..===TT\"\"\"\"\"\"TTT===.TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTcccccc",
+   "TTTTTT..vvvTTvvvvvvTTTvvv.TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTcccccc"
+  ],
+  "exits": {
+   "^": "KANTO_ROUTE_24",
+   "<": "KANTO_ROUTE_4",
+   ">": "KANTO_ROUTE_9",
+   "v": "KANTO_ROUTE_5",
+   "Q": "CERULEAN_CAVE"
+  },
+  "buildings": {
+   "Q": "cave",
+   "H": "house",
+   "I": "house",
+   "J": "house",
+   "K": "house",
+   "L": "house",
+   "O": "house",
+   "C": "center",
+   "G": "gym",
+   "M": "mart",
+   "B": "bike"
+  },
+  "roofs": {
+   "G": [
+    176,
+    120,
+    76
+   ],
+   "B": [
+    232,
+    196,
+    70
+   ]
+  },
+  "signs": [
+   [
+    "NUGGET BRIDGE is just north. Five trainers in a row: are you up for it?"
+   ],
+   [
+    "A quiet house beside the Gym."
+   ],
+   [
+    "CERULEAN CITY GYM",
+    "Leader: Misty, the Tomboyish Mermaid!"
+   ],
+   [
+    "CERULEAN CITY",
+    "A mysterious, blue aura surrounds it. So does a lot of good math!"
+   ],
+   [
+    "BIKE SHOP",
+    "Bikes for the speedy trainer!"
+   ]
+  ]
+ },
+ "KANTO_ROUTE_24": {
+  "art": [
+   "cccccccccccccccccccccc",
+   "cccccccccccccccccccccc",
+   "cc==========c===c.....",
+   "cc==========c===c.....",
+   "cc==========c===c.....",
+   "cc=====#####c===#.####",
+   "c====================>",
+   "c====================>",
+   "c====================>",
+   "cf.f....===TTTTTTTTTTT",
+   "c.f.....===T..........",
+   "cf......===T...ccccccc",
+   "c.f.X...===T...ccccccc",
+   "cf......===T...ccccccc",
+   "c.......===T...ccccccc",
+   "c...~~~i===T...ccccccc",
+   "c...~~~i===....ccccccc",
+   "c...~~~i=X=i...ccccccc",
+   "c\"\"\"~~~i===i...ccccccc",
+   "c\"\"\"~~~i===i...ccccccc",
+   "c\"\"\"~~~i===i...ccccccc",
+   "c\"\"\"~~~i===i...ccccccc",
+   "c\"\"\"~~~iX==i...ccccccc",
+   "c\"\"\"~~~i===i...ccccccc",
+   "c\"\"\"~~~i===i...ccccccc",
+   "c\"\"\"~~~i==Xi...kcccccc",
+   "c\"\"\"~~~i===i...k~~~~~~",
+   "c\"\"\"~~~i===i...k~~~~~~",
+   "c\"\"\"~~~iX==i...k~~~~~~",
+   "c\"\"\"~~~i===i...k~~~~~~",
+   "c\"\"\"~~~i===i...k~~~~~~",
+   "cc~~~~~i==Xi...k~~~~~~",
+   "cc~~~~~i===i...k~~~~~~",
+   "cc~~~~~i===i...k~~~~~~",
+   "cc~~~~~iX==i...k~~~~~~",
+   "cc~~~~~i===i...k~~~~~~",
+   "cc~~~~~i===i!..k~~~~~~",
+   "cc~~~~~i===i...k~~~~~~",
+   "cc~~~~~ivvvivvvk~~~~~~"
+  ],
+  "exits": {
+   "v": "CERULEAN_CITY",
+   ">": "KANTO_ROUTE_25"
+  },
+  "buildings": {},
+  "trainer_spots": [
+   "Camper Shane",
+   "Team Rocket Grunt",
+   "Camper Ethan",
+   "Lass Reli",
+   "Youngster Timmy",
+   "Lass Ali",
+   "Bug Catcher Cale"
+  ],
+  "signs": [
+   [
+    "NUGGET BRIDGE",
+    "Five trainers in a row! Beat them all for a prize. Count them as you go!"
+   ]
+  ]
+ },
+ "KANTO_ROUTE_25": {
+  "art": [
+   "cccccccccccccccccccccccccccccccccccccccccccccccccBBBBBccccccccc",
+   "...............T...T.....T.....T...f.f.f.fkTTTTTTBBBBBTTTTTTTT~",
+   ".\"\"\"\"\"\"\"\"......T.X.T....XT.....T..........kTTTTTTBBBBBTTTTTTTT~",
+   ".\"\"\"\"\"\"\"\"...X............TTT.T...X........kkkkkk!BBDBBkkkkkkkk~",
+   "................T.T.T....T...T....T..f.f..........===........k~",
+   "##########TT..TT....T.TT.T..X.....T.f.f........=========.....k~",
+   "<============...T...T....T.....TT...X..........=========.....k~",
+   "<============T..TT..T.X........T.......X.....................k~",
+   "<============T......T.T.......XT.f.f.f.....ffffff=====ffffff.k~",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTkkkffffff=====ffffff.k~",
+   "...........................................ffffff.....ffffff.k~",
+   "cccccccccccccccccccccccccccccccccccccccc.....................k~",
+   "ccccccccccccccccccccccccccccccccccccccccckkkkkkkkkkkkkkkkkkkkk~",
+   "cccccccccccccccccccccccccccccccccccccccc~~~~~~~~~~~~~~~~~~~~~~~"
+  ],
+  "exits": {
+   "<": "KANTO_ROUTE_24",
+   "B": "BILLS_HOUSE"
+  },
+  "buildings": {
+   "B": "bill"
+  },
+  "trainer_spots": [
+   "Hiker Franklin",
+   "Hiker Wayne",
+   "Youngster Joey",
+   "Youngster Dan",
+   "Picnicker Kelsey",
+   "Hiker Nob",
+   "Camper Flint",
+   "Youngster Chad",
+   "Lass Haley"
+  ],
+  "signs": [
+   [
+    "SEA COTTAGE",
+    "Bill lives here. He's a Pokemon maniac, and a computer whiz!"
+   ]
+  ]
+ },
+ "BILLS_HOUSE": {
+  "theme": "ship",
+  "art": [
+   "ccccccccccccccc",
+   "cmmmmmmmmmmmmcc",
+   "mmmmmccccmmmmcm",
+   "mmmmmmmmmmmm.mm",
+   "..............m",
+   "....mm........m",
+   "...Nmm........m",
+   "m.............m",
+   "m..............",
+   "mzz.........zz.",
+   "cccccccvccccccc"
+  ],
+  "exits": {
+   "v": "KANTO_ROUTE_25"
+  },
+  "buildings": {},
+  "people": [
+   "Talk to Bill"
+  ],
+  "signs": []
+ },
+ "KANTO_ROUTE_5": {
+  "art": [
+   "TTk^^^^k^^^^^^^^k^^^^kTT",
+   "TTk====k........k====kTT",
+   "TTk====k........k====kTT",
+   "TTk====k........k====kTT",
+   "TTk====k.#######k====kTT",
+   "TTk====k\"\"\"\"\"\"\"\"k====kTT",
+   "TTk====k\"\"\"\"\"\"\"\"k====kTT",
+   "TTk====k........k====kTT",
+   "TTk====k........k====kTT",
+   "TTk====k.#######k====kTT",
+   "TTk====k\"\"\"\"\"\"\"\"k====kTT",
+   "TTk====k\"\"\"\"\"\"\"\"k====kTT",
+   "TTk====k........k====kTT",
+   "TTk====k........k====kTT",
+   "TTk====k.#######k====kTT",
+   "TTk====k\"\"\"\"\"\"\"\"k====kTT",
+   "TTk====k\"\"\"\"\"\"\"\"k====kTT",
+   "TTk====k........k====kTT",
+   "TTk====k........k====kTT",
+   "TTk====k.#######k====kTT",
+   "TTk====k........k====kTT",
+   "TTk====k.YYYYY..k====kTT",
+   "TTk====k.YYYYY..k====kTT",
+   "TTk====k.YYYYY..k====kTT",
+   "TTk====k.YYYYY..k====kTT",
+   "TTk====k.YYDYY..k====kTT",
+   "TTk====k........k====kTT",
+   "TTk....#.########....kTT",
+   "TTk...............UUUUTT",
+   "TTk........====...UUUUTT",
+   "TTk........====...UUUUTT",
+   "TTk........===N...UDUUTT",
+   "TTk.........vv......!.TT",
+   "TTk.......GGGGGG......TT",
+   "TTkkkkkkkkGGGGGGkkkkkkTT",
+   "TTTTTTTTTTGGGGGGTTTTTTTT",
+   "TTTTTTTTTTGGGGGGTTTTTTTT",
+   "TTTTTTTTTTGGGGGGTTTTTTTT",
+   "TTTTTTTTTTGGGGGGTTTTTTTT",
+   "TTTTTTTTTTGGGGGGTTTTTTTT"
+  ],
+  "exits": {
+   "^": "CERULEAN_CITY",
+   "U": "UNDERGROUND_PATH",
+   "v": "SAFFRON_CITY"
+  },
+  "buildings": {
+   "Y": "daycare",
+   "U": "tunnel",
+   "G": "gate"
+  },
+  "people": [
+   "GUARD"
+  ],
+  "signs": [
+   [
+    "UNDERGROUND PATH",
+    "Cerulean City - Vermilion City, under Saffron. Down the stairs here!"
+   ]
+  ]
+ },
+ "UNDERGROUND_PATH": {
+  "art": [
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "c....^^ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "c....^^ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "c......ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "c!.....ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "c......ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "c......ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "c......ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "c......ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "c......ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "c......ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "c......ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "c......ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "c......ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "c......ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "c......ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "c......ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "c......ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "c......ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "c......ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "c......ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "c......ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "c......ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "c......ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "c......ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "c......ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "c......ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "c......ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "c......ccc<<..........................................................................>>cc",
+   "c...N..ccc<<..........................................................................>>cc",
+   "c......ccc<<..........................................................................>>cc",
+   "c......ccc...!..........................................................................cc",
+   "c......ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "c......ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "c......ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "c......ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "c......ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "c......ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "c......ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "c......ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "c......ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "c......ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "c......ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "c......ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "c......ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "c......ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "c......ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "c......ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "c......ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "c......ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "c......ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "c......ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "c......ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "c......ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "c......ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "c......ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "c......ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "c......ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cvv....ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cvv....ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "c......ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+  ],
+  "theme": "tunnel",
+  "exits": {
+   "^": "KANTO_ROUTE_5",
+   "v": "KANTO_ROUTE_6",
+   "<": "KANTO_ROUTE_7",
+   ">": "KANTO_ROUTE_8"
+  },
+  "buildings": {},
+  "parts": true,
+  "people": [
+   "Talk to Fossil Maniac"
+  ],
+  "signs": [
+   [
+    "UNDERGROUND PATH",
+    "North: Route 5. South: Route 6. No need to count the steps... but you can!"
+   ],
+   [
+    "UNDERGROUND PATH",
+    "West: Route 7. East: Route 8. A tunnel under Saffron City."
+   ]
+  ]
+ },
+ "KANTO_ROUTE_6": {
+  "art": [
+   "TTTTTTTTTTGGGGGGTTTTTTTT",
+   "TTTTTTTTTTGGGGGGTTTTTTTT",
+   "TTTTTTTTTTGGGGGGTTTTTTTT",
+   "TTTTTTTTTTGGGGGGTTTTTTTT",
+   "TTkkkkkkkkGGGGGGkkkkkkTT",
+   "TT........kk^^kk......TT",
+   "TT.......k.N===.k.....TT",
+   "TT###.####.====.###.##TT",
+   "TT.........====.......TT",
+   "TT.....X..............TT",
+   "TT................UUUUTT",
+   "TT#######.########UUUUTT",
+   "TT================UUUUTT",
+   "TT================UDUUTT",
+   "TT=!==================TT",
+   "TT\"\"\"\"===\"\"\"\"\"\"=======TT",
+   "TT\"\"\"\"===\"\"\"\"\"\"\"\"\"\"\"\"\"TT",
+   "TT\"\"\"\"===\"\"\"\"\"\"\"\"\"\"\"\"\"TT",
+   "TT\"\"\"\"===\"\"\"\"\"\"\"\"\"\"\"\"\"TT",
+   "TT\"\"\"\"==============\"\"TT",
+   "TT\"\"\"\"==============\"\"TT",
+   "TT\"\"\"\"==============\"\"TT",
+   "TT\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"===\"\"TT",
+   "TT~~~~~~~~~~~~~\"\"===\"\"TT",
+   "TT~~~~~~~~~~~~~\"\"=X=\"\"TT",
+   "TT~~~~~~~~~~~~~\"\"===\"\"TT",
+   "TT~~~~~~~~~~~~~\"\"===\"\"TT",
+   "TT........==========\"\"TT",
+   "TT..X.....==========\"\"TT",
+   "TT........==========\"\"TT",
+   "TTkkkkk...===\"\"\"\"kkkkkTT",
+   "TTTTTTk...===\"\"\"\"kTTTTTT",
+   "TTTTTTk...===\"\"\"\"kTTTTTT",
+   "TTTTTTk...===\"\"\"\"kTTTTTT",
+   "TTTTTTkkkk===kkkkkTTTTTT",
+   "TTTTTTTTTk===kTTTTTTTTTT",
+   "TTTTTTTTTk===kTTTTTTTTTT",
+   "TTTTTTTTTk===kTTTTTTTTTT",
+   "TTTTTTTTTk===kTTTTTTTTTT",
+   "TTTTTTTTTk===kTTTTTTTTTT",
+   "TTTTTTTTTkvvvkTTTTTTTTTT"
+  ],
+  "exits": {
+   "^": "SAFFRON_CITY",
+   "U": "UNDERGROUND_PATH",
+   "v": "VERMILLION_CITY"
+  },
+  "buildings": {
+   "U": "tunnel",
+   "G": "gate"
+  },
+  "people": [
+   "GUARD"
+  ],
+  "trainer_spots": [
+   "Keigo",
+   "Ricky",
+   "Edward"
+  ],
+  "signs": [
+   [
+    "ROUTE 6",
+    "South: Vermilion City, the Port of Exquisite Sunsets!"
+   ]
+  ]
+ },
+ "VERMILLION_CITY": {
+  "art": [
+   "TTTTTTTTTTTTTTTTTTTTTTTT^^^TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTT===TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTkkkkkkkkkkkkkkk===TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "cccccccccccccccccccccccc===ccccccTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "oooooooooaAAAACCCCCBBBBkaaakEEEEpTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "oooooooooaAAAACCCCCBBBBkaaakEEEEpTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "oooooooooaAAAACCCCCBBBBkaaakEEEEp..............TTTTTTTTTTTTTTTTTT",
+   "oooooooooaADAACCCCCBDBBkaaakEDEEp.kkkkkkkkkkkkkTTTTTTTTTTTTTTTTTT",
+   "ooooooooqappppCCDCCpppppaaapppppp.k.........rrkTTTTTTTTTTTTTTTTTT",
+   "ooooooooqaaaaaaaaaaaaaaaaaaaaaaap.k.......rr.rkTTTTTTTTTTTTTTTTTT",
+   "oooooooooaaaaaaaaaaaaaaaaaaaaaaap.k...........kTTTTTTTTTTTTTTTTTT",
+   "ooooooqoqaaaaaaaaaaaaaa!aaaaaaaap.k...r.....r.kTTTTTTTTTTTTTTTTTT",
+   "ooooooooolppppppppppppaaaaaa............r...rrkTTTTTTTTTTTTTT....",
+   "ooooooqoooooooooooooopaaaaaa......k....N......kTTkkkkkkkkkkkk...>",
+   "ooooooqoooooooooooooopaaaaaa......k...........kTTkaaaaaaaaaaa...>",
+   "ooooooooooooooooooooopooaaaa......krr......rr.kTTkaaaaaaaaaaa...>",
+   "ooooqoqooppFFFFppppIIIIlaaalMMMMM.k...rr.rrrrrkTTkaaakkkkkkkk....",
+   "ooooqooooppFFFFppppIIIIpaaapMMMMM.kkkkkkkkkkkkkTTkaaaTTTTTTTTTTTT",
+   "oooooooooppFFFFppppIIIIpaaapMMMMM#################===TTTTTTTTTTTT",
+   "ooooqooooppFDFF!pppIDIIpaaapMMDMMpppppppppppppppppaaaTTTTTTTTTTTT",
+   "oooooqooopppppppppppppppaaappppppppppppplpp!ppppppaaaTTTTTTTTTTTT",
+   "oooooooooaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaTTTTTTTTTTTT",
+   "oooooqooolaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaTTTTTTT.....",
+   "oooooooooapVVVVVVVaaapppppppWWWWkooooooooooeeeoooooooTTTTTTT.f...",
+   "oooooqoooapVVVVVVVaaapppppppWWWWkooooooooooeeeoooooooTTTTTTT...f.",
+   "ooooooqooapVVVVVVVaaapppppppWWWWkooooooooooeeeoooooooTTTTTTT.....",
+   "oooooooooapVVVVVVVaaappppaaaWDWWkoooqqqqooo===oooooooTTTTTTTT==TT",
+   "oooooqoook.VVVDVVV!kkooooaaaaaapkoooqqqqooo===ooooooo.TTTTTTT..TT",
+   "ooooooqook.........kkooooaaaaaapkooooooooooeeeooooooo.TTTTTTT..TT",
+   "oooooooook.........kkooooaaaaaapkoooqqqqoooeeeloooooo.TTTTTTT..TT",
+   "ooooooqookkkkssskkkkkooooccccccckoooqqqqoooeeeooooooo.TTTTTTT..TT",
+   "ooooqoqooccccccccccccooooooooooooooooooooooeeeooooooo.TTTTTTT..TT",
+   "oooooooooooooooooooooooooooooooooosssssssooeeeooooooo..........TT",
+   "ooooqooooooooooooooooooooooooooooosssssssooeeeloooooo.........TTT",
+   "oooooqoooooooooooooooooooooooooooosssssssooeeeooooooo.TTTTTTTTTTT",
+   "ooooooooooooooooooooooooooeleeeeeleeeeeleeeeeeooooooo.TTTTTTTTTTT",
+   "oooooqooooooooooooooqqqqooeeeeeeeeeeeeeeeeeeeeooooooo.TTTTTTTTTTT",
+   "oooooqooooooooooooooqqqqooeeeeeeeeeeeeeeeeeeeeooooooo.TTTTTTTTTTT",
+   "ooooooooooooooooooooooooooeeeeeeeeeeeeeeeeeeeeloooooo.TTTTTTTTTTT",
+   "ooooooqoooooooooooooqqqqoooeeeosssssssooooooooooooooo.TTTTTTTTTTT",
+   "ooooooqoooooooooooooqqqqoooeeeosssssssooooooooooooooooq........TT",
+   "oooooooooooooooooooooooooooeeelsssssssoooooooooooooooooooooooooTT",
+   "oooooqooooooooooooooqqqqoooeeeoeeeeeeeoooooooooooooooqoooooooooTT",
+   "oooooqoqooooooooooooqqqqooPPDPPPPooooooooooooooooooooooooooooooTT",
+   "oooooooooqoqooooooooooooooPPPPPPPooooooooooooooooooooqoooooooooTT",
+   "oooooooooooooooooooqoqoqooPPPPPPPoqoqoooooooqoqoqoqoqooooooooooTT",
+   "oooooooooooqoqoqoqooooooooPPPPPPPoooooqoqoqooooooooooooooooooooTT",
+   "ooooooooooooooooooooooooooPPPPPPPooooooooooooooooooooooooooooooTT",
+   "ooooooooooooooooooooooooooPPPPPPPooooooooooooooooooooooooooooooTT",
+   "ooooooooooooooooooooooooooPPPPPPPooooooooooooooooooooooooooooooTT",
+   "ooooooooooooooooooooooooooPPPPPPPooooooooooooooooooooooooooooooTT"
+  ],
+  "exits": {
+   "^": "KANTO_ROUTE_6",
+   ">": "KANTO_ROUTE_11"
+  },
+  "buildings": {
+   "A": "house",
+   "C": "center",
+   "B": "house",
+   "E": "house",
+   "M": "mart",
+   "F": "fanclub",
+   "I": "house",
+   "V": "gym",
+   "W": "guru",
+   "P": "harbor"
+  },
+  "roofs": {
+   "V": [
+    176,
+    120,
+    76
+   ]
+  },
+  "people": [
+   {
+    "text": "Machop",
+    "action": "EVENT",
+    "door": "outside",
+    "event": {
+     "lines": [
+      "Machop: Maaa-chop! (It's stomping the ground flat for a new building.)"
+     ]
+    }
+   }
+  ],
+  "signs": [
+   [
+    "VERMILION CITY",
+    "The Port of Exquisite Sunsets. Every problem has an answer, like every port has a ship!"
+   ],
+   [
+    "POKEMON FAN CLUB",
+    "All Pokemon fans welcome! Come in and share a story."
+   ],
+   [
+    "VERMILION HARBOR",
+    "Ships to far-off places. Show your ticket at the door!"
+   ],
+   [
+    "VERMILION CITY GYM",
+    "Leader: Lt. Surge, the Lightning American!"
+   ]
+  ]
+ },
+ "KANTO_SS_ANNE": {
+  "theme": "ship",
+  "buildings": {
+   "A": "cabin0",
+   "B": "cabin1",
+   "C": "cabin2",
+   "E": "cabin3",
+   "F": "cabin4",
+   "G": "cabin5",
+   "K": "captain",
+   "L": "captain"
+  },
+  "cabin_trainers": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5
+  ],
+  "floors": [
+   {
+    "art": [
+     "cccccccccccccccccccccccccccccccccccc",
+     "cc....cccccccccccccccccccccccc....cc",
+     "cc....cccccccccccccccccccccccc..++cc",
+     "cc....cccccccccccccccccccccccc....cc",
+     "cc....cccccccccccccccccccccccc....cc",
+     "cc....cccccccccccccccccccccccc....cc",
+     "cc....cccccccccccccccccccccccc....cc",
+     "cc....ccccccccccccccccccccccc.....cc",
+     "cc....ccccccccccccccccccccccc.....cc",
+     "cc....AAAcBBBcCCCcEEEcFFFcGGGc....cc",
+     "cc....ADAcBDBcCDCcEDEcFDFcGDGc....cc",
+     "cc................................cc",
+     "ccvv......!.......................cc",
+     "cc................................cc",
+     "cc................................cc",
+     "cccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccc"
+    ],
+    "exits": {
+     "v": "VERMILLION_CITY"
+    },
+    "signs": [
+     [
+      "S.S. ANNE",
+      "Welcome aboard! The captain's cabin is up on the top deck."
+     ]
+    ]
+   },
+   {
+    "art": [
+     "cccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccc.+.cccccccccccc",
+     "ccccccccccccccccccc...cccccccccccc",
+     "ccccccccccccccccccc...cccccccccccc",
+     "ccccccccccccccccccc...cccccccccccc",
+     "ccccccccccccccccccc...cccccccccccc",
+     "ccccccccccccccccccc...cccccccccccc",
+     "ccccccccccccccccccc...cccccccccccc",
+     "c...............................cc",
+     "c.....................X.........cc",
+     "c...............................cc",
+     "c....cccccccccccccccccccccc.....cc",
+     "c....cccccccccccccccccccccc.....cc",
+     "c....cccccccccccccccccccccc.....cc",
+     "c....cccccccccccccccccccccc.....cc",
+     "c....cccccccccccccccccccccc.....cc",
+     "c....cccccccccccccccccccccc.....cc",
+     "c....cccccccccccccccccccccc.....cc",
+     "c....cccccccccccccccccccccc.....cc",
+     "c....cccccccccccccccccccccc--...cc",
+     "c....cccccccccccccccccccccc.....cc",
+     "cccccccccccccccccccccccccccccccccc"
+    ],
+    "exits": {},
+    "trainer_spots": [
+     "{rival_name}"
+    ]
+   },
+   {
+    "art": [
+     "~~~~~~~~~~~~~~~~~~~~~~~~",
+     "~~~~~~~~~~~~~~~~~~~~~~~~",
+     "~~~~~~~~~~~~~~~~~~~~~~~~",
+     "~~~~~~~~~~~~~~~~~~~~~~~~",
+     "~~~~~~~~~~~~~~~~~~~~~~~~",
+     "~~~~~~~~~..-..mmKKKKKKKK",
+     "~~~~~~~..y.....mKKKKKKKK",
+     "~~~~~...my..m...KKKKKKKK",
+     "~~~.............KKKKKKKK",
+     "~...............DKKKKKKK",
+     "~~~.............LLLLLLLL",
+     "~~~~~....y......LLLLLLLL",
+     "~~~~~~~..ym....mLLLLLLLL",
+     "~~~~~~~~~.....mmcccccccc",
+     "~~~~~~~~~~~~~~~~~~~~~~~~"
+    ],
+    "exits": {}
+   }
+  ]
+ },
+ "KANTO_ROUTE_11": {
+  "art": [
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTT...==================\"\"\"\"===============\"\"\".....TTTTTTTTTTTT",
+   "TTTTQQQQQQTT...=====X============\"\"\"\"===============\"\"\".....TTTTTTTTTTTT",
+   "TTTTQQQQQQTT...==================\"\"\"\"===============\"\"\".....TTTTTTTTTTTT",
+   "TTTTQQQQQQTT...===\"\"\"\"\"\"\"\"\"\"\"\"===\"\"\"\"===\"\"\"\"\"\"\"\"\"===\"\"\"...r.TTTTTTTTTTTT",
+   "TTTTQQQQQQTT...===\"\"\"\"\"\"\"\"\"\"\"\"===\"\"\"\"===\"\"\"\"\"\"\"\"\"\"\"\"\"\"\".....TTTTTTTTTTTT",
+   "kkk!QQDQQQTT...===\"\"\"\"===========\"\"\"\"===========\"\"\"\"\"\"\"kkkGGGGGGGTTTTTTT",
+   "<.........========\"\"\"\"===========\"\"\"\"===========\"\"\"\"\"\"\"...GGGGGGG......>",
+   "<.........========\"\"\"\"===========\"\"\"\"===X=======\"\"\"\"====.=GGGGGGG======>",
+   "<.........===============\"\"\"\"\"===\"\"\"\"===\"\"\"\"\"===\"\"\"\"====.=GDGGGGG======>",
+   "..~~~~~~~~~~~..==========\"\"\"\"\"==========\"\"\"\"\"===\"\"\"\"====.==============>",
+   "~~~~~~~~~~~~~..==========\"\"\"\"\"==========\"\"\"\"\"===\"\"\"\"===.kkkkkkkkkkkkkkkk",
+   "qq~~~~~~~~~~~..\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"==========\"\"\"\"\"===\"\"\"\"===.............TTTT",
+   "~~TTTTTTTTTTkk.\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"===========\"\"\"\"===.....TTTTTTTTTTTT",
+   "~~TTTTTTTTTT...\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"===========\"\"\"\"===.....TTTTTTTTTTTT",
+   "~~TTTTTTTTTTTT.====\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"===========\"\"\"\"X==.....TTTTTTTTTTTT",
+   "~~TTTTTTTTTTTT.=========================\"\"\"\"\"==========.....TTTTTTTTTTTT",
+   "~~TTTTTTTTTTTT.=========================\"\"\"\"\"==========.....TTTTTTTTTTTT",
+   "~~TTTTTTTTTTTT.=========================\"\"\"\"\"==========.....TTTTTTTTTTTT",
+   "~~TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "~~TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT"
+  ],
+  "exits": {
+   "<": "VERMILLION_CITY",
+   "Q": "DIGGLETT_CAVE",
+   "G": "KANTO_ROUTE_12",
+   ">": "KANTO_ROUTE_12"
+  },
+  "buildings": {
+   "Q": "cave",
+   "G": "gate"
+  },
+  "trainer_spots": [
+   "Hugo",
+   "Dave",
+   "Bernie"
+  ],
+  "signs": [
+   [
+    "DIGLETT'S CAVE",
+    "A long tunnel dug by Diglett. It comes out on Route 2!"
+   ]
+  ]
+ },
+ "DIGGLETT_CAVE": {
+  "art": [
+   "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "c.<cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "c..cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "c..cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "c..cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "c.....ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "c......cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "c.......ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "c.......ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "ccccc......cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccc......ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccc......ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccc....ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "ccccccccc...ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccc..ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccc..ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccc..........ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccc............ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccc............ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccc..c.c............cccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccc............ccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "ccccccccccccccccccc...........ccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "ccccccccccccccccccccccc.c.......ccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "ccccccccccccccccccccccccccc.........ccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccc..........ccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccc.........cccccccccccccccccccccccccccccccccccccccccccc",
+   "ccccccccccccccccccccccccccccccc.......ccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccc.......cccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccc.....cccccccccccccccccccccccccccccccccccccccccccc",
+   "ccccccccccccccccccccccccccccccccccc....cccccccccccccccccccccccccccccccccccccccccccc",
+   "ccccccccccccccccccccccccccccccccccc....cccccccccccccccccccccccccccccccccccccccccccc",
+   "ccccccccccccccccccccccccccccccccccc....cccccccccccccccccccccccccccccccccccccccccccc",
+   "ccccccccccccccccccccccccccccccccccc....cccccccccccccccccccccccccccccccccccccccccccc",
+   "ccccccccccccccccccccccccccccccccccc......cccccccccccccccccccccccccccccccccccccccccc",
+   "ccccccccccccccccccccccccccccccccccc......cccccccccccccccccccccccccccccccccccccccccc",
+   "ccccccccccccccccccccccccccccccccccc..........cccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccc............ccccccccccccccccccccccccccccccccccc",
+   "ccccccccccccccccccccccccccccccccccccc...........ccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccc..........ccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccc...........c.cccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccc..........ccccccccccccccccccccccccccccc",
+   "ccccccccccccccccccccccccccccccccccccccccccccc..........cccccccccccccccccccccccccccc",
+   "ccccccccccccccccccccccccccccccccccccccccccccc..........cccccccccccccccccccccccccccc",
+   "ccccccccccccccccccccccccccccccccccccccccccccccc........cccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccc.c......ccccccccccccccccccccccccccc",
+   "ccccccccccccccccccccccccccccccccccccccccccccccccccc.....ccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccc.......cccccccccccccccccccccccc",
+   "ccccccccccccccccccccccccccccccccccccccccccccccccccccc......cccccccccccccccccccccccc",
+   "ccccccccccccccccccccccccccccccccccccccccccccccccccccc..............cccccccccccccccc",
+   "ccccccccccccccccccccccccccccccccccccccccccccccccccccc..............cccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccc.c............ccccccccccccccc",
+   "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc............cccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc.cc.......ccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc......ccccccccccc",
+   "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc......cccccccccc",
+   "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc......cccccccccc",
+   "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc......cccccccccc",
+   "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc......cccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc.....cccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc.....cccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc.....cccccccccc",
+   "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc....cccccccccc",
+   "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc....cccccccccc",
+   "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc....cccccccccc",
+   "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc......cccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc.......cccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc........ccccc",
+   "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc........cccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc.......cccc",
+   "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc......>c",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc......c",
+   "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+  ],
+  "theme": "cave",
+  "exits": {
+   "<": "KANTO_ROUTE_2",
+   ">": "KANTO_ROUTE_11"
+  },
+  "buildings": {}
+ },
+ "KANTO_ROUTE_9": {
+  "art": [
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "TTTTTTk\"\"\"\"\"\"\"\"\"\"\"............cccccc\"\"\"\"\"\"cccccc...........======ccccccc",
+   "TTTTTTk\"\"\"\"\"\"\"\"\"\"\"............cccccc\"\"\"\"\"\"cccccc...........======ccccccc",
+   "TTTTTTk\"\"\"X\"\"\"\"\"\"\"ccccc.......cccccc......cccccc..........ccccc==ccccccc",
+   "TTTTTTk\"\"\"\"\"\"\"\"\"\"\"ccccc#####..cccccc##..##cccccc##..######ccccc==ccccccc",
+   "TTTTTTk\"\"\"\"\"\"\"\"\"\"\"ccccc=======cccccc======cccccc==========ccccc==ccccccc",
+   "<.................ccccc=======cccccc======================ccccc==ccccccc",
+   "kkkkkkk#########..ccccc======!ccccccccccc=================ccccc==ccccccc",
+   "<......========cccccccc=============ccccc====ccccc===cccccccccc==ccccccc",
+   "<......========cccccccc=============ccccc====ccccc===ccccc=============>",
+   "kkkkkcccccc====cccccccc###########==ccccc====ccccc===ccccc=============>",
+   "TTTTTcccccc.###cccccccc===========..ccccc####ccccc##.ccccc===ccccc===ccc",
+   "TTTTTcccccc====cccccccc===========..ccccc....ccccc...ccccc.##ccccc.##ccc",
+   "TTTTTcccccc===================X==....................ccccc===ccccc===ccc",
+   "TTTTTcccccc===============cccccc=....................ccccc...ccccc===ccc",
+   "TTTTTcccccc#########==####cccccc##..#################ccccc###ccccc###ccc",
+   "TTTTTcccccc===============cccccc.......................X.............ccc",
+   "TTTTTcccccc===============cccccc.....................................ccc",
+   "TTcccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "TTcccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+  ],
+  "exits": {
+   "<": "CERULEAN_CITY",
+   ">": "KANTO_ROUTE_10"
+  },
+  "buildings": {},
+  "trainer_spots": [
+   "Jeremy",
+   "Conner",
+   "Chris"
+  ],
+  "signs": [
+   [
+    "ROUTE 9",
+    "East to Rock Tunnel. Bring Flash, or you'll be counting steps in the dark!"
+   ]
+  ]
+ },
+ "KANTO_ROUTE_10": {
+  "art": [
+   "ccccccccccccccccccccccc",
+   "ccooooooooooooooooooooc",
+   "ccooooooooooooooooooooc",
+   "ccooooooooooooooooooooc",
+   "cc.................oooc",
+   "cckk..kkkkkkkkkkkkkoooc",
+   "cc....\"\"\"\"\"\"\"\"\"\"\".koooc",
+   "cc....\"\"\"\"\"\"\"\"\"\"\".koooc",
+   "cc....\"\"X\"\"\"\"\"\"\"\".koooc",
+   "<.....\"\"\"\"\"\"\"\"\"\"\".koooc",
+   "<.....\"\"\"\"\"\"\"\"\"\"\".koooc",
+   "cc................koooc",
+   "cc#############..kkoooc",
+   "cc...X............koooc",
+   "cc................koooc",
+   "ccccccccccc.......koooc",
+   "ccccccccccc.......koooc",
+   "cccccccccccCCCCC..koooc",
+   "cccccccQQQcCCCCC..koooc",
+   "cccccccQDQcCCCCC..koooc",
+   "cc.......TTCCDCC..koooc",
+   "cc..kkk!kTT=====..koooc",
+   "cc........T=====..koooc",
+   "cc........T=====..koooc",
+   "cc........T.......koooc",
+   "cc........T.......koooc",
+   "cc........T...X...koooc",
+   "cc........T.......koooc",
+   "cc................koooc",
+   "cc................koooc",
+   "cckkkkkkkkkkkkkkkkkoooc",
+   "ccccccccccccccccc..oooc",
+   "ccccccccccccccccc..oooc",
+   "ccccccccccccccccc..oooc",
+   "ccccccccccccccccc..oooc",
+   "cccPPPPPPPPPccccc..oooc",
+   "c.mPPPPPPPPPmcccc..oooc",
+   "c.mPPPPPPPPPmcccc..oooc",
+   "c.mPPPPPPPPPmcccc..oooc",
+   "c.mPPPPPPPPPmcccc..oooc",
+   "c..PPPPPPPPPmcccc..oooc",
+   "c.#PPPPDPPPP.ccc...oooc",
+   "c............ccc...oooc",
+   "cc....!......ccc...oooc",
+   "cc.................oooc",
+   "cc.................oooc",
+   "cc................~oooc",
+   "ccooooooooooooooooooooc",
+   "ccooooooooooooooooooooc",
+   "ccooooooooooooooooooooc",
+   "ccccccccccccccccccccccc"
+  ],
+  "exits": {
+   "<": "KANTO_ROUTE_9",
+   "Q": "ROCK_TUNNEL",
+   "P": "POWER_PLANT"
+  },
+  "buildings": {
+   "C": "center",
+   "Q": "cave",
+   "P": "plant"
+  },
+  "trainer_spots": [
+   "Mark",
+   "Clark",
+   "Heidi"
+  ],
+  "signs": [
+   [
+    "ROCK TUNNEL",
+    "A dark cave! Flash lights the way. Rest at the Pokemon Center first."
+   ],
+   [
+    "POWER PLANT",
+    "Kanto's power, made right here. Something's wrong with the generator..."
+   ]
+  ]
+ },
+ "KANTO_ROUTE_10_SOUTH": {
+  "art": [
+   "ccccccccccccccccccccccc",
+   "ccccccccccccccccccccccc",
+   "ccccccccccccccccccccccc",
+   "cccccccQQQccccccc=....c",
+   "cccccccQDQccccccc=....c",
+   "ccc===============....c",
+   "ccc============!==....c",
+   "ccc==============.....c",
+   "ccc=========ccccc.....c",
+   "cc==========ccccc#.###c",
+   "cc===cccccccccccc.....c",
+   "cc===cccccccccccc.....c",
+   "cc###cccccccccccc.....c",
+   "cc===cccccccccccc####.c",
+   "cc===cccccccccccc.....c",
+   "cc=..\"\"...............c",
+   "cc.\"\"\"\"\"\".............c",
+   "cc.\"\"\"\"\"\".............c",
+   "ccccccccccc...........c",
+   "ccccccccccc...........c",
+   "ccccccccccc.....LLLLL.c",
+   "ccccccccccc...ccLLLLLcc",
+   "ccccccccccc...ccLLLLLcc",
+   "ccccccccccc...ccLLLLLcc",
+   "ccccccccccc...ccLLLLLcc",
+   "ccccccccccc..cccLLLLLcc",
+   "cccccccccccvvcccLLLLLcc"
+  ],
+  "exits": {
+   "Q": "ROCK_TUNNEL",
+   "v": "LAVENDER_TOWN"
+  },
+  "buildings": {
+   "Q": "cave",
+   "L": "house"
+  },
+  "signs": [
+   [
+    "ROUTE 10",
+    "Lavender Town is just south. You made it through the dark!"
+   ]
+  ]
+ },
+ "ROCK_TUNNEL": {
+  "theme": "cave",
+  "dark": true,
+  "buildings": {},
+  "floor_names": [
+   "1F",
+   "B1F"
+  ],
+  "floors": [
+   {
+    "art": [
+     "cccccccccccccccccccccccccccccccccccccccccccccccc",
+     "ccc...rrccccccccc^ccccccccccccccccccccccccrr..cc",
+     "ccc.+..rcccccccc.....ccccccccccccccccccccc...+cc",
+     "ccc.....cccccccc..!..ccccccccccccccccccccc....cc",
+     "ccc.....cccccccc.......................ccc....cc",
+     "ccc.....cccccccc.......................ccc....cc",
+     "c...........rccc.......................ccc....cc",
+     "c...........rccc.......................ccc....cc",
+     "c...........rccc.......................ccc....cc",
+     "c...........rccccccccccc....cccccccccccccc....cc",
+     "c.....ccc...rccccccccccc....cccccccccccccc....cc",
+     "c.....ccc....ccccccccccc....cccccccccccccc....cc",
+     "c.....ccc....cccrr...ccc......................cc",
+     "c.....cccr...ccc....+ccc......................cc",
+     "c....rccc....ccc.....cccrr...................rcc",
+     "c.....cccr...ccc.....cccrr.r..............rrrrcc",
+     "c....rccc............ccccccccccccccccccccccccccc",
+     "c.....ccc............ccccccccccccccccccccccccccc",
+     "c.....ccc............ccccccccccccccccccccccccccc",
+     "c....rccc................cccrr...r..cccrr...rrcc",
+     "c.....ccc................cccr.......cccr......cc",
+     "c........................ccc........ccc......+cc",
+     "c........................ccc........ccc.......cc",
+     "c.......................rccc........ccc.......cc",
+     "c..................rrrrrrccc........ccc.......cc",
+     "cccccccccccccccccccccccccccc........ccc.......cc",
+     "cccccccccccccccccccccccccccc........ccc.......cc",
+     "cccccccccccccccccccccccccccc........ccc......rcc",
+     "c...................................ccc.......cc",
+     "c...................................ccc.......cc",
+     "c...................................ccc.......cc",
+     "c...................................ccc.....r.cc",
+     "cccccccccccc...........cccccccc............rrrcc",
+     "cccccccccccc...........cccccccc............rr.cc",
+     "cccccccccccc.......r...ccccccccrr.............cc",
+     "cccccccccccc...........ccccccccrrrr...........cc",
+     "cccccccccccc.r...!..r..ccccccccccccccccccccccccc",
+     "cccccccccccc...r.....r.ccccccccccccccccccccccccc",
+     "ccccccccccccrrccccvcccrccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccccccccccccccc"
+    ],
+    "exits": {
+     "^": "KANTO_ROUTE_10",
+     "v": "KANTO_ROUTE_10_SOUTH"
+    },
+    "parts": true,
+    "ladders": [
+     1,
+     3,
+     2,
+     0
+    ],
+    "signs": [
+     [
+      "ROCK TUNNEL",
+      "It's pitch black in here! Flash would light it up."
+     ],
+     [
+      "Daylight ahead! Lavender Town is south on Route 10."
+     ]
+    ]
+   },
+   {
+    "art": [
+     "cccccccccccccccccccccccccccccccccccccccccccccccc",
+     "crr..ccc....cccr.....rr.r..rcccrrr.......r.rrrcc",
+     "c.c..ccc....cccrr.....r....rcccr.c..........rrcc",
+     "c.-..ccc....cccr............ccc..-...........rcc",
+     "c....ccc....ccc.............ccc..............rcc",
+     "c....ccc....ccc.............ccc........r.....rcc",
+     "c....cccr...ccc.....ccc.....ccc.....cccccc....cc",
+     "c....ccc...rccc.....ccc.....ccc....rcccccc....cc",
+     "c....ccc...rccc.....ccccccccccc....rccccccr...cc",
+     "c....ccc....ccc.....ccccccccccc....rccccccr...cc",
+     "c....ccc...rccc.....ccccccccccc.....ccccccr...cc",
+     "c...........ccc............cccc.......rrrr....cc",
+     "c...........ccc............-cccr..............cc",
+     "c...........ccc.............cccrr.............cc",
+     "c...........ccc.............cccrr.............cc",
+     "c...........ccc.............cccrrrrr..........cc",
+     "c....ccc............cccccccccccccccccc........cc",
+     "c....ccc............cccccccccccccccccc........cc",
+     "c....ccc............cccccccccccccccccc.......rcc",
+     "c....ccc............ccc.......................cc",
+     "c....ccc....ccc.....ccc.....................rrcc",
+     "c....ccc....ccc.....ccc...................r.rrcc",
+     "c....cccr...ccc.....ccc.......cccccccccccccccccc",
+     "cr...cccrr..ccc.....ccc.......cccccccccccccccccc",
+     "crrrrccc....ccc.....ccc.......cccccccccccccccccc",
+     "cccccccc....ccccccccccc.......cccrr.....r.rrrrcc",
+     "cccccccc....ccccccccccc.......cccr...r......rrcc",
+     "cccccccc....ccccccccccc.......ccc.....c.....rrcc",
+     "c...........cccrr.............ccc.....-......rcc",
+     "c...........cccrr.............ccc............rcc",
+     "c...........ccc...............ccc.............cc",
+     "c.........rrccc...............ccc.............cc",
+     "ccccccccccccccc....rccccccccccccc............rcc",
+     "ccccccccccccccc...rrccccccccccccc.............cc",
+     "ccccccccccccccc...rrccccccccccccc.............cc",
+     "c......rr.r.........r....rrrr..rr...........r.cc",
+     "c.............................................cc",
+     "c.............................................cc",
+     "c..............................rr.............cc",
+     "cccccccccccccccccccccccccccccccccccccccccccccccc"
+    ],
+    "exits": {},
+    "parts": true
+   }
+  ]
+ },
+ "LAVENDER_TOWN": {
+  "art": [
+   "cccc.........^^^^..........cc",
+   "cPPPPPPP.........RRRRRRR...cc",
+   "cPPPPPPPccccc....RRRRRRRccccc",
+   "cPPPPPPPccccc....RRRRRRRccccc",
+   "cPPPPPPPccccc....RRRRRRRccccc",
+   "cPPPPPPPccccc....RRRRRRRccccc",
+   "cPPPPPPPccccc....RRRRRRRccccc",
+   "cPPPPPPPccccc.###RRRRRRRccccc",
+   "cPPPPPPPccccaaaaaRRRRRRRccccc",
+   "cPPPPPPPccccaaaaaRRRRRRRccccc",
+   "cPPPPPPPccccaaaaaRRRRRRRccccc",
+   "cPPPPPPPCCCCCaaaaRRRRRRRccccc",
+   "cPPPPPPPCCCCCaaaaRRRRRRRccccc",
+   "cPPPPPPPCCCCCaaaaRRRRRRRccccc",
+   "cPPPDPPPCCCCCaaaaRRRDRRRccccc",
+   "caaaaaaaCCDCC!aaaaaaaaaaacccc",
+   "aaaaaa!aaaaaaaaaaaaaa!aaaaaac",
+   "<aaaaaaaaaaaaaaaaaaaaaaaaaaac",
+   "<aaaaaaaaAAAAaaaaaaaaaaaaaaac",
+   "<aaaaaaaaAAAAaaaaaaaaaaaaaaac",
+   "<aaaaaaaaAAAAaaaaaaaMMMMMaaac",
+   "caaaaaaa!ADAAaaaaa..MMMMM...c",
+   "caaaaaaaaaaaaaaaakffMMMMMffkc",
+   "caaaBBBBFFFFFaaaaaffMMMMMffkc",
+   "caaaBBBBFFFFFaaaa!ffMMDMMffkc",
+   "caaaBBBBFFFFFaaaaa.........kc",
+   "caaaBDBBFFDFFaaaaa..........c",
+   "caaaaaaaaaaaaaaaaa..........c",
+   "caaaaaaaaaaaaaaaafffffffffffc",
+   "caaaaaaaaaaaaaaaafffffffffffc",
+   "ccccccccccccc.....ffffffffffc",
+   "cccccccccccccvvvvvccccccccccc"
+  ],
+  "exits": {
+   "^": "KANTO_ROUTE_10_SOUTH",
+   "<": "KANTO_ROUTE_8",
+   "v": "KANTO_ROUTE_12"
+  },
+  "buildings": {
+   "R": "radio",
+   "P": "ptower",
+   "A": "house",
+   "B": "house",
+   "F": "fuji",
+   "M": "mart",
+   "C": "center"
+  },
+  "locked": {
+   "radio": "The Radio Tower is dark. The power's out!"
+  },
+  "roofs": {
+   "R": [
+    60,
+    110,
+    80
+   ],
+   "P": [
+    150,
+    170,
+    150
+   ],
+   "A": [
+    140,
+    90,
+    170
+   ],
+   "B": [
+    140,
+    90,
+    170
+   ],
+   "F": [
+    214,
+    170,
+    60
+   ]
+  },
+  "signs": [
+   [
+    "LAVENDER TOWN",
+    "The Noble Purple Town. Even quiet places hold big answers!"
+   ],
+   [
+    "POKEMON TOWER",
+    "A resting place for Pokemon. Please be respectful."
+   ],
+   [
+    "LAVENDER RADIO TOWER",
+    "Off the air! The power's out..."
+   ],
+   [
+    "A quiet purple house. Lavender's homes are all this color."
+   ],
+   [
+    "Lavender's garden. Count the petals, then count them again!"
+   ]
+  ]
+ },
+ "KANTO_POKEMON_TOWER": {
+  "theme": "tower",
+  "fog": true,
+  "buildings": {},
+  "floors": [
+   {
+    "art": [
+     "ccccccccccccccccccc",
+     "ccccccccccccccccccc",
+     "cccccccc....ccccccc",
+     "cccccc........ccccc",
+     "cccc............ccc",
+     "ccc..............cc",
+     "cc................c",
+     "c.................c",
+     "c................cc",
+     ".................+c",
+     ".................cc",
+     ".............mmmmmm",
+     ".............mmmmmm",
+     "c............mccccc",
+     "c...!........mccccc",
+     "cc...........mccccc",
+     "cccc.........mccccc",
+     "ccccccc.....ccccccc",
+     "cccccccc.v.cccccccc",
+     "ccccccccccccccccccc"
+    ],
+    "exits": {
+     "v": "LAVENDER_TOWN"
+    },
+    "signs": [
+     [
+      "POKEMON TOWER",
+      "Here rest the Pokemon who have passed on. Please be quiet."
+     ]
+    ]
+   },
+   {
+    "art": [
+     "ccccccccccccccccccc",
+     "ccccccccccccccccccc",
+     "cccccccc....ccccccc",
+     "cccccrr.......ccccc",
+     "cccrrrr.........ccc",
+     "ccc..............cc",
+     "cc..rrrrrrrrrrrrr.c",
+     "c...r.............c",
+     "c...r..........r.rr",
+     "cc..r...rrr...r..rc",
+     "c-..r...rrr...r..+c",
+     "cc..r.........r..cc",
+     "c...r.........r..rr",
+     "c...r...rrrrrrr.rrc",
+     "c.................c",
+     "ccrrr..........rrcc",
+     "ccccr..........cccc",
+     "cccccccrrrrrccccccc"
+    ],
+    "exits": {}
+   },
+   {
+    "art": [
+     "ccccccccccccccccccc",
+     "ccccccccccccccccccc",
+     "cccccccc....ccccccc",
+     "cccccc........ccccc",
+     "ccccrrrrr..rrrrrccc",
+     "ccc.rr.......rrr.cc",
+     "cc................c",
+     "c.....rrrrr.......c",
+     "c..rrr.......rrr.cc",
+     "cc.rrr...c...rrr.cc",
+     "c-.rrr.......rrrNN+",
+     "cc.r.......rr....cc",
+     "...r....rrr........",
+     "c..rr..........rrrc",
+     "c..rr.........r...c",
+     "cc..rrrr...rrr...cc",
+     "cccc...........cccc",
+     "ccccccc.....ccccccc"
+    ],
+    "exits": {},
+    "people": [
+     "GHOST",
+     "CONFRONT GHOST"
+    ]
+   },
+   {
+    "art": [
+     "ccccccccccccccccccc",
+     "ccccccccccccccccccc",
+     "cccccccrrrrrccccccc",
+     "ccccccrc.N.crrccccc",
+     "ccccrrrc...crrrrccc",
+     "cccrrrr.....rrrrrcc",
+     "ccrrrrr..X..rrrrrrc",
+     "crrrrrr.....rrrrrrc",
+     "crrrrrr.....rrrrrrr",
+     "rrrrrrr.....rrrrrrr",
+     "rrrrrrr.....rrrrrrr",
+     "rrrrrrr.....rrrrrrr",
+     "rrrrrrrr..Xrrrrrrrr",
+     "crrrrrrr...rrrrrrrc",
+     "crrrrrrr...rrrrrrrc",
+     "ccrrrrrcc...rrrrrcc",
+     "ccccrrrc-...rrrcccc",
+     "ccccccccc...ccccccc"
+    ],
+    "exits": {},
+    "people": [
+     "MR. FUJI"
+    ],
+    "trainer_spots": [
+     "Jessie and James",
+     "Grunt"
+    ]
+   }
+  ]
+ },
+ "ROCKET_HIDEOUT": {
+  "theme": "ship",
+  "descend": true,
+  "buildings": {},
+  "floor_names": [
+   "B1F",
+   "B2F",
+   "B3F",
+   "B4F"
+  ],
+  "figure_floors": {
+   "GIOVANNI": 3,
+   "SILPH SCOPE": 3
+  },
+  "floors": [
+   {
+    "art": [
+     "cccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccc",
+     "cccccccccc^c......+ccccccccc",
+     "cccccccccc.c.......ccccccccc",
+     "cccccccccc..........cccccccc",
+     "cccccccccc..........cccccccc",
+     "cccccccccc..........cccccccc",
+     "cccccccccc..........cccccccc",
+     "c..........................c",
+     "c..........................c",
+     "ccc..mmmmm.......mmmmm...ccc",
+     "ccc..mmmmm.......mmmmm...ccc",
+     "ccc..mmmmmm......mmmmm...ccc",
+     "c......mmmm.....mmm........c",
+     "c......mmmm......mm.mmmmmm.c",
+     "c..mmm..mmm.....mmm.mmmmmm.c",
+     "cc.ccc..mmm......mm.cccccccc",
+     "cc.ccc..mmm.....mmm........c",
+     "cccccccccccccccccccc..cccccc",
+     "cccccccccccccccccccc..cccccc",
+     "cccccccccccccccccccc..cccccc",
+     "cccccccccccccccccccc..cccccc",
+     "cccc..c.........cccc..cccccc",
+     "c...............cccc..cccccc",
+     "c...ccccccc...........cccccc",
+     "c..ccccccc........cc..cccccc",
+     "c...cccccc........cc.......c",
+     "c............ccccccc.......c",
+     "c............ccccccccccccccc",
+     "c..cccccccc..ccccccccccccccc",
+     "c...ccccccc.....cccccccccccc",
+     "c...cccccc......cccccccccccc",
+     "c.................cccccccccc",
+     "c.................cccccccccc"
+    ],
+    "exits": {
+     "^": "CELADON_CITY"
+    }
+   },
+   {
+    "art": [
+     "ccccccccccccccccccccccc",
+     "ccccccccccccccccccccccc",
+     "ccccccccccccccccccccccc",
+     "ccc.cc.............-ccc",
+     "c...................ccc",
+     "ccccccccccc..mmmmmm..cc",
+     "ccccccccccc..mmmmmm..cc",
+     "ccccccccccc..mmmmmm..cc",
+     "c............mmmm....cc",
+     "ccccc..mmmmm.mm......cc",
+     "c............mm..cccccc",
+     "cc.m.mmm..mmmmm..cccccc",
+     "c.........mmmmm..cccccc",
+     "c.mm.m.m..mm.mm..ccc.cc",
+     "c.mm.m.......mm......cc",
+     "c..........cccccccccccc",
+     "c.mm....mm.cccccccccccc",
+     "c.......mm...cccccccccc",
+     "c.......mm...cccccccccc",
+     "cccc.mm.mm...+c..cccccc",
+     "c....m..mm....c..cccccc",
+     "c.......mm.......cccccc",
+     "c.....mmmm.......cccccc",
+     "cccc..mmmm.......cccccc",
+     "cccc..mmmm.......cccccc",
+     "cccc..mmmm.......cccccc",
+     "c.c..............cccccc",
+     "c................cccccc"
+    ],
+    "exits": {}
+   },
+   {
+    "art": [
+     "ccccccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccccccc",
+     "c.....c.........cccc...+cccc..-cc",
+     "c.mmm.c.m.m.m.m..ccc....cccc...cc",
+     "c.............cccccc.....ccc....c",
+     "ccc..mmmmm.m...............c....c",
+     "c.c........m....................c",
+     "c.c.mm.m.m.m...mmm..............c",
+     "c....m.m.m.m...m................c",
+     "cccc........mmmm.cccccccccccccccc",
+     "c...........mm...cccccccccccccccc",
+     "c.mm.mmm.........cccccccccccccccc",
+     "c....mmmmm.......cccc....cccccccc",
+     "c.mmm...m........ccc.....cccccccc",
+     "c.............mm.ccc.......cccccc",
+     "c.mm.m.m.m.....m...........cccccc",
+     "c.m....m.mmmmm.m...........cccccc",
+     "c..m.m.m.......m..mm............c",
+     "c..m.m.m.......m..mm............c",
+     "c..m.m.m...mmmmm.cccccccccccccccc",
+     "c......mmm.......cccccccccccccccc",
+     "c...ccccccccccccccccccccccccccccc"
+    ],
+    "exits": {}
+   },
+   {
+    "art": [
+     "ccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccc",
+     "ccc..cccccccccccccc.cc.cc",
+     "cc.....ccccccccc.......cc",
+     "cccccc.cccccccccccc.cc.cc",
+     "ccccc.........ccc.....ccc",
+     "c.............ccc.mmmm.cc",
+     "c......mm.....ccc.mmm..cc",
+     "ccccccccc..............cc",
+     "ccccccccc.....cc.......cc",
+     "ccccccccc.....cc.......cc",
+     "ccc..cccc.....ccc..cccccc",
+     "c......cc.....ccc..cccccc",
+     "c.mmmm.cc.....ccc..cccccc",
+     "c.mmmmm.....-ccc.....cccc",
+     "c..mmm.......ccc.....cccc",
+     "c...........cccc.......cc",
+     "cccccccccccccccc.......cc",
+     "cccccccccccccccc..ccccccc",
+     "cccccccccccccccc..ccccccc",
+     "ccc.cccc..........ccccccc",
+     "c.................ccccccc",
+     "c....ccccccc......ccccccc",
+     "c...ccccccc.......ccccccc",
+     "c....cccccc.mm.........cc",
+     "c......................cc"
+    ],
+    "exits": {}
+   }
+  ]
+ },
+ "SILPH_CITY": {
+  "theme": "ship",
+  "buildings": {},
+  "floor_names": [
+   "1F",
+   "2F",
+   "3F",
+   "4F",
+   "5F"
+  ],
+  "floors": [
+   {
+    "art": [
+     "cccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccccccc+cc",
+     "ccccccccccccccccccccccccccccccc...cc",
+     "ccccccccccccccccccccccccccccccc.cccc",
+     "c....cc.............................",
+     "c....ccN............................",
+     "c.....c.......................mm...m",
+     "c.ccccc......mmm....mmm.......mm.m..",
+     "c...........mmmmm..mmmmm......mm.m..",
+     "c..........cccccccccccccc..........m",
+     "c.........cccccccccccccccc....mm....",
+     "ccc..mm...cccccccccccccccc....mm.m..",
+     "ccc..mm....cccccccccccccc.....mm.m.m",
+     "c...........ccccc..ccccc............",
+     "ccc..mm......ccc....ccc.......mm....",
+     "ccc..mm.......................mm.m.m",
+     "c.............................mm.m..",
+     "c...................................",
+     "c..................................m",
+     "c......................m..m..m..m...",
+     "cccccccccvcccccccccccccccccccccccccc"
+    ],
+    "exits": {
+     "v": "SAFFRON_CITY"
+    },
+    "people": [
+     "NURSE"
+    ]
+   },
+   {
+    "art": [
+     "cccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccc+c....-ccc",
+     "cccccccccccccccccccccccccc.c...c.ccc",
+     "cccccccccccccccccccccccccc.....ccccc",
+     "c.........Nccc......................",
+     "c.m........ccc.m....................",
+     "ccccc..cccccccccccccccccccccc..mmmmm",
+     "cccccc.ccccccccccccccccccccccc.mmmmm",
+     "cccccc.ccccccccccccccccccccccc.mmmmm",
+     "cccccc.ccccccccccccccccccccccc.mmmmm",
+     "c...................................",
+     "c.........................cccccccccc",
+     "c.........................cccccccccc",
+     "ccccc..ccccccc............cccccccccc",
+     "cccccc.cccccccc.mmm..mmm..cc......cc",
+     "cccccc.cccccccc.mmmm.mmmm.cc........",
+     "cccccc.cccccccc.....................",
+     "c..........cccc.mmm..mmm..mm.mmmm..m",
+     "c.mmmm.m...cccc.mmmm.mmmm.mm.mmm.m.m",
+     "c.mmm......cccc...........mm.mmm...m",
+     "c..........cccc...........mm.......m"
+    ],
+    "exits": {},
+    "people": [
+     "TALK TO EMPLOYEE"
+    ]
+   },
+   {
+    "art": [
+     "cccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccc-c...+cccc",
+     "cccccccccccccccccccccccccc......cccc",
+     "c................................c..",
+     "c...m...............................",
+     "cccccccccccccccccccccc....cccccccccc",
+     "ccccccccccccccccccccccc...cccccccccc",
+     "ccccccccccccccccccccccc...cccccccccc",
+     "ccccccccccccccccccccccc...cccccccccc",
+     "c....ccc.ccc...ccc..ccc...ccc.......",
+     "c....ccc.ccc...ccc..ccc...ccc...mmm.",
+     "c...cccc......cccc.............mmmm.",
+     "c.m......ccc........ccc...cc.m..mmm.",
+     "ccccccccccccccccccccccc...cccccccccc",
+     "ccccccccccccccccccccccc...cccccccccc",
+     "ccccccccccccccccccccccc...cccccccccc",
+     "ccccccccccccccccccccccc...cccccccccc",
+     "c...................................",
+     "c..m............................m...",
+     "c..................................."
+    ],
+    "exits": {}
+   },
+   {
+    "art": [
+     "cccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccc+c...-cccc",
+     "cccccccccccccccccccccccccc......cccc",
+     "ccccc....cc..cccc..ccc..............",
+     "cccccccc.cc..cccc..ccc..............",
+     "cccccccc.cc.cccccc.ccc..............",
+     "cccccccc.cc........ccc..mmmmm..mmmmm",
+     "cccccccc.cc.m......ccc..mmmmmm.mmmmm",
+     "cccccccc.ccccc..cccccc..mmmmmm.mmmmm",
+     "ccc.cccc.cccccc.cccccc..mmmmmm.mmmmm",
+     "ccc..ccc.cccccc.cccccc..mmm.........",
+     "cc...cc..cccccc.cccccc..mmm..mmm....",
+     "c........cc.......cccc..mmm.mmmmm..m",
+     "ccc..ccccccccc..cccccc..mmm..mmm....",
+     "cccc.cccccccccc.cccccc..mmm.........",
+     "cccc.cccccccccc.cccccc..mmm..mmm...m",
+     "cccc.cccccccccc.cccccc..mmm.mmmmm...",
+     "........................mmm..mmm....",
+     "..m.....................mmm........m",
+     "........................mmm........."
+    ],
+    "exits": {}
+   },
+   {
+    "art": [
+     "cccccccccccccccccccc",
+     "cccccccccccccccccccc",
+     "cccccccccccccccccccc",
+     "cccccccc-...cccccccc",
+     "cccccccc....cccccccc",
+     "ccc.cccc.cccccccc..c",
+     "ccc..ccc.ccccccccc.c",
+     "ccc..ccc.ccccccccc.c",
+     "ccc..ccc.ccccccccc.c",
+     "ccc..ccc..ccc......c",
+     "ccc..ccc.......ccc.c",
+     "ccc..ccc.mmmmm.ccc.c",
+     "ccc..ccc.mmmmm.ccc.c",
+     "ccc..ccc.mmmmm.ccc.c",
+     "ccc..ccc.N.....ccc.c",
+     "ccc..ccc.ccccccccc.c",
+     "ccc..ccc.ccccccccc.c",
+     "ccc..ccc.ccccccccc.c",
+     "ccc..ccc.ccccccccc.c",
+     "ccc............ccc.c",
+     "cccccccccccccccccccc"
+    ],
+    "exits": {},
+    "people": [
+     "VISIT THE PRESIDENT"
+    ]
+   }
+  ]
+ },
+ "KANTO_ROUTE_8": {
+  "art": [
+   "TTTTcccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "TTTTccccccccUUUUcccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "TTTTccccccccUUUUf========k..............................TTTTTTTTTTTTcccc",
+   "TTTTccccccccUUUU.========k..............................TTTTTTTTTTTTcccc",
+   "TTTTccccccccUDUUf========k..=========================...TTTTTTTTTTTTcccc",
+   "TTTTcccc.f.f.======.#####k..=========================...TTTTTTTTTTTTcccc",
+   "TTTTccccf....======k=====k..============X============...TTTTTTf.f.f.cccc",
+   "TGGGGGGkkk...======k=====k..===...................===...TTTTTT.f.f.fcccc",
+   "TGGGGGG...!..======k=====k..===...kkkkkkkkkkkkk...===...TTTTTT......cccc",
+   "TGGGGGG=========...k.####k..===..kkf\"\".\"\".\"\"..kk..===...TTTTTT...======>",
+   "TGGGGGG=N=======...k=====k..===..kf..\"\"\"\"\".\"\"f.k..==X...TTTTTT...======>",
+   "TGGGGGD=========...k=====...===..k.f\"\".\".\"\".\".fk..===...TTTTTT...======>",
+   "kkkkkkkk.....===...k=====...===..k..\"\"\"\"\"\"\"\"\"\"....===...TTTTTT...===kkkk",
+   "TTTTcccccccc.===...kkkkkkk..===..kf\".\".\".\".\"\"\".k..===...TTTTTT...===cccc",
+   "TTTTcccccccc.===............===..k.\"\"\"\"\"\"\"\".\".fk..===............===cccc",
+   "TTTTcccccccc.===............===.....\".\".\"\".\".\".k..===............===cccc",
+   "TTTTcccccccc.=========X========..k.\".\"\"\".\"\"\"\"\".k..==================cccc",
+   "TTTTcccccccc.==================..kf.f.\".\"\"f.\".fk..==================cccc",
+   "TTTTcccccccc.==================..k.f.f.\".f.f.f.k..==================cccc",
+   "TTTTcccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+  ],
+  "exits": {
+   ">": "LAVENDER_TOWN",
+   "G": "SAFFRON_CITY",
+   "U": "UNDERGROUND_PATH"
+  },
+  "buildings": {
+   "U": "tunnel",
+   "G": "gate"
+  },
+  "people": [
+   "GUARD"
+  ],
+  "trainer_spots": [
+   "Richie",
+   "Aidan",
+   "Julia"
+  ],
+  "signs": [
+   [
+    "ROUTE 8",
+    "West: the Underground Path goes under Saffron to Route 7 and Celadon City."
+   ]
+  ]
+ },
+ "KANTO_ROUTE_7": {
+  "art": [
+   "TTTTTTTTTTTTTTTTTTTTTTTT",
+   "<.........#\"\"\"\"\"\"\"\"kTTTT",
+   "<.........#\"\"\"\"\"\"\"\"kTTTT",
+   "<....X....#\"\"\"\"\"\"\"\"kTTTT",
+   "<.........#\"\"\"\"\"\"f.kTTTT",
+   "TTTT......#\"\"\"\"\"\".fkTTTT",
+   "TTTT......#fXf.GGGGGGGTT",
+   "TTTT##..###.f..GGGGGGGTT",
+   "TTTT...........GGGGGGGTT",
+   "TTTT..........NGGGGGGGTT",
+   "TTTT...........DGGGGGGTT",
+   "TTTT..UUUU.........kkkkk",
+   "TTTT##UUUU.........kTTTT",
+   "TTTT..UUUU......X..kTTTT",
+   "TTTT.!UDUU.........kTTTT",
+   "TTTT...............kTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTT"
+  ],
+  "exits": {
+   "<": "CELADON_CITY",
+   "G": "SAFFRON_CITY",
+   "U": "UNDERGROUND_PATH"
+  },
+  "buildings": {
+   "U": "tunnel",
+   "G": "gate"
+  },
+  "people": [
+   "GUARD"
+  ],
+  "trainer_spots": [
+   "Alpesh",
+   "Kelly",
+   "Nancy"
+  ],
+  "signs": [
+   [
+    "UNDERGROUND PATH",
+    "Celadon City - Lavender Town, under Saffron. Down the stairs here!"
+   ]
+  ]
+ },
+ "CELADON_CITY": {
+  "art": [
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTT.......................................T..TTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT.TTTTTTT..TTTTTTTTT..TTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT.TTTTTTT..TTTTTTTTT..TTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTSSSSSSTTTTYYYYYJJJJJTTTTT..TTTTTTTTT..TTTTTTTTTTT",
+   "TTTTTTTTTTT....SSSSSS....YYYYYJJJJJ..............TT..TTTTTTTTTTT",
+   "TTTTTTTTTTT.HHHSSSSSSpIIIYYYYYJJJJJpKKKpLLLCCCCC.TT..TTTTTTTTTTT",
+   "TTTTTTTTTTT.HHHSSSSSSpIIIYYYYYJJJJJpKKKpLLLCCCCC.TT..TTTTTTTTTTT",
+   "TTTTTTTTTTT.HHHSSSSSSpIIIYYYYYJJJJJpKKKpLLLCCCCC.TT..TTTTTTTTTTT",
+   "TTTTTTTTTTT.HDHSSSDSSpIDIYYDYYJJJDJ!KDKpLDLCCDCC..............TT",
+   "TTTTTTTTTTT.ppppppp!pppppppppppppppppppppppppppp..l...........TT",
+   "TTTTTTTTTTT.eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee....T",
+   "TTTTTTTTTTT.eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee..=.>",
+   "TTTTTTTTTTT.eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee..=.>",
+   "TTTTTTTTTTT.eeeeeeeeeeee.kBBBBQQQQQQQ.....UUU.VVVTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTT.ee......!..e.kBBBBQQQQQQQPPPP.UUU.VVVTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTT.ee.........e.kBBBBQQQQQQQPPPP.UUU.VVVTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTT.ee...~~~...e.kBBBBQQQQQQQPPPP.UUU.VVVTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTT.eel..~~~fl.e.kBDBBQQQDQQQPDPP.UDU.VDVTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTT.ee.........e.k....k..................TTTTTTTTTTTTTTT",
+   "TTTTTTTTTTT.ee.........e......kkkk!kkkkk..k!kkkkkTT..TTTTTTTTTTT",
+   "TTTTTTTTTTT.ee.........e.k~~~~keeeeeeeeeeeeeeeeeeTT..TTTTTTTTTTT",
+   "............ee.........e.k~~~~keeeeAAARRRRWWW.EEETT..TTTTTTTTTTT",
+   "<...........eeeeeeeeeeeeeeeeeeeee..AAARRRRWWW.EEETT..TTTTTTTTTTT",
+   "<..eeeeeeeeeeeeeeeeeeeeeeeeeeeeee..AAARRRRWWW.EEETT..TTTTTTTTTTT",
+   "<..eeeeeeeeeeeeeeeeeeeeeeeeeeeeee..AAARRRRWWW.EEETT..TTTTTTTTTTT",
+   "TTTTTTTTTTTTMMMZZZZZZOOOOk~~~~kee..ADARDRRWDW.EDETT..TTTTTTTTTTT",
+   "TTTTTTTTTTTTMMMZZZZZZOOOOk~~~~kee................Tl..TTTTTTTTTTT",
+   "TTTTTTTTTTTTMMMZZZZZZOOOOk~~~~keeeeeeeeeeeeeeeeeeTT..TTTTTTTTTTT",
+   "TTTTTTTTTTTTMMMZZZDZZOODOk~~~~keeeeeeeeeeeeeeeeeeTl..TTTTTTTTTTT",
+   "TTTTTTTTTTTTMDMppppppppppTTTTTTTTTTTTTTTT.TTTTTTTTT..TTTTTTTTTTT",
+   "TTTTTTTTTTTTpppppppp!ppppTTTTTTTTTTTTTTTT.TTTTTTTTT..TTTTTTTTTTT",
+   "TTTTTTTTTTTT#######pp####TTTTTTTTTTTTTTTT.TTTTTTTTT..TTTTTTTTTTT",
+   "TTTTTTTTTTTT.........................................TTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT"
+  ],
+  "exits": {
+   ">": "KANTO_ROUTE_7",
+   "<": "KANTO_ROUTE_16"
+  },
+  "buildings": {
+   "S": "dept",
+   "H": "house",
+   "Y": "mansion",
+   "I": "house",
+   "J": "house",
+   "C": "center",
+   "K": "house",
+   "Q": "game corner",
+   "P": "game corner",
+   "L": "house",
+   "M": "house",
+   "Z": "gym",
+   "O": "house",
+   "R": "hotel",
+   "U": "house",
+   "V": "house",
+   "A": "house",
+   "B": "house",
+   "W": "house",
+   "E": "house"
+  },
+  "roofs": {
+   "S": [
+    80,
+    150,
+    220
+   ],
+   "Y": [
+    214,
+    204,
+    180
+   ],
+   "Q": [
+    120,
+    70,
+    170
+   ],
+   "P": [
+    120,
+    70,
+    170
+   ],
+   "Z": [
+    176,
+    120,
+    76
+   ],
+   "R": [
+    232,
+    130,
+    60
+   ]
+  },
+  "locked": {
+   "hotel": "Celadon Hotel: Sorry, we're all booked up tonight!"
+  },
+  "signs": [
+   [
+    "CELADON CONDOMINIUMS",
+    "Quiet homes, right in the city."
+   ],
+   [
+    "CELADON DEPT. STORE",
+    "Everything a trainer needs, on every floor!"
+   ],
+   [
+    "CELADON CITY",
+    "The City of Rainbow Dreams. Dream big, and count every step!"
+   ],
+   [
+    "GAME CORNER",
+    "The playground for grown-ups... and math whizzes!"
+   ],
+   [
+    "CELADON HOTEL",
+    "Just past the pond. Route 16 is west, Cycling Road that way too!"
+   ],
+   [
+    "CELADON CITY GYM",
+    "Leader: Erika, the Nature-Loving Princess!"
+   ]
+  ]
+ },
+ "KANTO_ROUTE_12": {
+  "art": [
+   "ccccccccccc^^cccccccccccccc",
+   "cccccccq~~~==~~~~qq~~~~~~~~",
+   "ccccccc~~~~==~~~~qq~~~~~~~~",
+   "ccccccc~~~~==~~~qq~~~~~~~~~",
+   "ccccccc~~~~==~~~qq~~~~~~~~~",
+   "ccccccc~~~~==~~~~qqqq~~~~~~",
+   "ccccccc=========~qqqqqq~~~~",
+   "ccccccc=========~~~~~qq~~~~",
+   "ccccccc==~~~~===~~~~~qq~~~~",
+   "ccccccc==~~~~====!==~qq~~~~",
+   "ccccccc==~~~~=======~qq~~~~",
+   "ccccccc==~~~~===~~~~~qq~~~~",
+   "ccccccc==~~~GG=JJ~~~~qq~~~~",
+   "ccccccc==~qqGG=JJqq~~qq~~~~",
+   "ccccccc~~~qqGG=JJqq~qq~~~~~",
+   "cccccccqqqq~GG=JJ~qqqq~~~~~",
+   "cccccccqqqq~GG=JJ~qqqq~~~~~",
+   "cccccccq~~~~GG=JJ~~~qq~~~~~",
+   "ccccccccc~~~~===~~~~~qq~~~~",
+   "ccccccccc~~~~===~~~~~qq~~~~",
+   "ccccccccc~~~~=X=~~~~~qq~~~~",
+   "ccccccccc~~~~===~~~~~qq~~~~",
+   "ccccccccc===========~~qq~~~",
+   "ccccccccc===========~~qq~~~",
+   "ccccccccc~~~~~~~~~==~qq~~~~",
+   "ccccccccq~~~~~~~~~==~qq~~~~",
+   "cccccccc~~~~~~~~~~==~qq~~~~",
+   "cccccccc==~~~=======~qq~~~~",
+   "cccccccc==~~~=======~qq~~~~",
+   "cccccccc==~~~==~~~~~~qq~~~~",
+   "cccccccc==~~~==~~~~~~~qq~~~",
+   "cccccccc==~~~==~~~TT~~qq~~~",
+   "cccccccc=======~~~TT~~qq~~~",
+   "cccccccc=======~~~TT~~qq~~~",
+   "cccccccc==~~~~~~~~TT~qq~~~~",
+   "cccccccc==~~~~~~~~TT~qq~~~~",
+   "cccccccc==~~~~~~~~~~~~qq~~~",
+   "cccccccc==~~~~~~~~~~~~qq~~~",
+   "TTTTTTTT=============~qq~~~",
+   "TTTTTTTT=============~qq~~~",
+   "TTTTTTTT==~~==~~~~~~~~qq~~~",
+   "TTTTTTTT==~~==~~~~~~~~qq~~~",
+   "TTTTTTTT==~~==~~~~~~~qq~~~~",
+   "TTTTTTTT~~~~======~~~qq~~~~",
+   "TTTTTTTT~~~~======~~~qq~~~~",
+   "TTTTTTTT~~~~~~~~====~qq~~~~",
+   "TTTTTTTT~~~~~~~~==X=~qq~~~~",
+   "TTTTTTTT~~~~~~~~==~~~qq~~~~",
+   "TTTTTTTT~~~~~~~~==~~qq~~~~~",
+   "TTTTTTTT======~~==~~qq~~~~~",
+   "TTTTTTTT======~~==~~~qq~~~~",
+   "TTTTTTTT==~~==~~....~qq~~~~",
+   "TTTTTTTT==~~==~~.\"\".~~qq~~~",
+   "TTTTTTTT==~~==~~.\"\".~~qq~~~",
+   "TTTTTTTT==~~====.\"\".~~qq~~~",
+   "TTTTTTTT==~~====....~~qq~~~",
+   "TTTTTTTT==~~~~~~~~~~~qq~~~~",
+   "TTTTTTTT==~~~~~~~~~~~qq~~~~",
+   "TTTTTTTT==~~~~~~~~~~~qq~~~~",
+   "TTTTTTTT============~qq~~~~",
+   "TTTTTTTT============~qq~~~~",
+   "TTTTTTTT~~~~~~==~~~~~qq~~~~",
+   "TTTTTTTT~~~~~~==~~~~~~qq~~~",
+   "TTTTTTTT~~~~~~==~~~~~~qq~~~",
+   "kkkkkkkkq~~~~~==~~~~qq~~~~~",
+   "<......kkkkkkk=!~~~~qq~~~~~",
+   "<\"\"\"\"\"\".......==~~~qq~~~~~~",
+   "<......kkkkkkk==~~~qq~~~~~~",
+   "kkkkkkkTq~~~~~==~~~qq~~~~~~",
+   "TTTTTTTT~~~~~~==~~~qq~~~~~~",
+   "TTTTTTTT~~~~~~==~~~~qq~~~~~",
+   "TTTTTTTT~~~~~~=X~~~~qq~~~~~",
+   "TTTTTTTT~~~~~~==~~~~~qq~~~~",
+   "TTTTTTTT~~~~~~==~~~~~qq~~~~",
+   "TTTTTTTT~~~~~~==~~~~~~qq~~~",
+   "TTTTTTTT~~~~~~======~~qq~~~",
+   "TTTTTTTT~~~~~~======~~qq~~~",
+   "TTTTTTTT~~~~~~~~~~==~~qq~~~",
+   "TTTTTTTT~~~~~~~~~~==~qq~~~~",
+   "TTTTTTTT~~~~~~~~~~==~qq~~~~",
+   "TTTTTTTT==\"HHHHH....~qq~~~~",
+   "TTTTTTTT==\"HHHHHf.f.~qq~~~~",
+   "TTTTTTTT==\"HHHDH.f..~~qq~~~",
+   "TTTTTTTT==..........~~qq~~~",
+   "TTTTTTTT==..........~~qq~~~",
+   "TTTTTTTT==~~~~~~~~~~~~qq~~~",
+   "TTTTTTTT==~~~~~~~~~~~qq~~~~",
+   "TTTTTTTT==~~~~~~~~~~~qq~~~~",
+   "TTTTTTTT==========~~qq~~~~~",
+   "TTTTTTTT==========~~qq~~~~~",
+   "TTTTTTTT~~~~~~==~~~~qq~~~~~",
+   "TTTTTTTT~~~~~~==~~~~qq~~~~~",
+   "TTTTTTTT~~~~~~==~~~qq~~~~~~",
+   "TTTTTTTTq~~~~~==~~~qq~~~~~~",
+   "TTTTTTTTTTTT~~==~~~~qq~~~~~",
+   "TTTTTTTT\"\"\"T~~==~~~~qq~~~~~",
+   "TTTTTTTT\"\"\".====~~~~qq~~~~~",
+   "TTTTTTTT\"\"T.====~~~~qq~~~~~",
+   "TTTTTTTTTT..~~======~~qq~~~",
+   "TTTTTTTT....~~======~~qq~~~",
+   "TTTTTTTT========~~~~~~qq~~~",
+   "TTTTTTTT========~~~~~~qq~~~",
+   "TTTTTTTT~~~~~~======~~qq~~~",
+   "TTTTTTTT~~~~~~======~~qq~~~",
+   "TTTTTTTT~~~~~~~~~~==~~qq~~~",
+   "TTTTTTTTq~~~~~~~~~==~~qq~~~",
+   "TTTTTTTTkkkkkk======~~qq~~~",
+   "TTTTTTTT......======~~qq~~~",
+   "TTTTTTTT....kk~~==~~~~qq~~~",
+   "TTTTTTTT\"\"\"\"TT~~==~~~~qq~~~",
+   "TTTTTTTT\"\"\"\"TT~~==~~~qq~~~~",
+   "TTTTTTTT\"\"\"\"TT~~==~~~qq~~~~",
+   "TTTTTTTT\"\"\"\"TT====~~~qq~~~~",
+   "TTTTTTTT\"\"\"\"TT====~~~qq~~~~",
+   "TTTTTTTT\"\"\"\"TT==~~~~qq~~~~~",
+   "TTTTTTTTTTTTTTvv~~~~qq~~~~~"
+  ],
+  "exits": {
+   "^": "LAVENDER_TOWN",
+   "<": "KANTO_ROUTE_11",
+   "v": "KANTO_ROUTE_13"
+  },
+  "buildings": {
+   "G": "gate",
+   "J": "gate",
+   "H": "house"
+  },
+  "trainer_spots": [
+   "Ernest",
+   "Grace",
+   "Edwin"
+  ],
+  "signs": [
+   [
+    "ROUTE 12",
+    "North: Lavender Town. The lane to Route 11 is further south."
+   ],
+   [
+    "A huge Pokemon is sleeping on the road! A gentle tune might wake it..."
+   ]
+  ]
+ },
+ "KANTO_ROUTE_13": {
+  "art": [
+   "<...f.f.f.f.......ddd............fk..............\"\"\"\"\"\"\"\"\"\"\"TT^^~~~qq~~~~~~~",
+   "kkkkkkkkkkkkkkkk..ddd.kkkkkkkkk.f.k..!kkkkkk.....\"\"\"\"\"\"\"\"\"\"\"TT==~~~qq~~~~~~~",
+   "<...........X.d.......k.....................TTTT.\"\"\"\"\"\"\"\"\"\"\"TT==~~~qq~~~~~~~",
+   "kkkkkkkkkkkkkdddkkkkkkk..kkkkkkkkkkkkkkkkk..TTTT.\"\"\"\"\"\"\"\"\"\"\"TT==~~~~qq~~~~~~",
+   "<f..f.........d.k.f...........X.....k.......TTTTTTTTTTTTTTTTTT==~~~~qq~~~~~~",
+   "kkkkkk..kkkkkkkkkf.kkkkkkkkkkkkkk...k..kkk..TTTTTTTTTTTTTTTTTT==~~~~qq~~~~~~",
+   "<.......k..................d..k.........X.....==================~~~~qq~~~~~~",
+   "kkkkkkkkk..kkkkkkkkkkkkkkkddd.k..kkkkkkkkkkk..==================~~~qq~~~~~~~",
+   "k.....................k....dd.................~~~~~~~~~~~~~~~~~~~~~qq~~~~~~~",
+   "k.kkkkkk..kkkkkkkkkkk!k.kkkkkkkkkkkkkkkkkkkkkk~~~~~~~~~~~~~~~~~~~~~qq~~~~~~~",
+   "TTTTTTTTTTTTTTTTTTTTTTTTq~~~~~~~~~~~~~~~~~qq~~~~~~~~~~~~~~~~~~qq~~~qq~~~~~~~",
+   "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~qq~~~~~~qqqq~~~~~~qqqqqqqq~~~~~~~~",
+   "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~qqqqqqqqqqqq~~qqqq~~qqqq~~~~~~~~",
+   "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~qqqqqq~~~~qqqqqq~~~~~~~~~~~~~~~~",
+   "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~qq~~~~~~~~~~~~~~~~~~"
+  ],
+  "exits": {
+   "^": "KANTO_ROUTE_12",
+   "<": "KANTO_ROUTE_14"
+  },
+  "buildings": {},
+  "trainer_spots": [
+   "Sebastian",
+   "Alma",
+   "Jared"
+  ],
+  "signs": [
+   [
+    "ROUTE 13",
+    "Trainers, watch your step... and your sums!"
+   ],
+   [
+    "Look to the left: there's always another way through the fences."
+   ]
+  ]
+ },
+ "KANTO_ROUTE_14": {
+  "art": [
+   "TTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTk....f.f.f.......>",
+   "TTTTTT...kkkkkkkkkkkkkkk",
+   "TTTTTT..X..............>",
+   "TTTTTT.kkkkkkkkkkk..kkkk",
+   "TTTTTT.................>",
+   "TTTTTT.kk..kkkkkkkkkkkkk",
+   "TTTTTT.................>",
+   "TTTTTT.kkkkkkk...!kkkkkk",
+   "TTTTTT..f.f...===......>",
+   "TTTTTT.f.f....===kkkkkkk",
+   "TTTTTT..f.....===.TTTTTT",
+   "TTTTTT........===.TTTTTT",
+   "TTTTTT.TTTTTT.===.TTTTTT",
+   "TTTTTT.TTTTTT.===.TTTTTT",
+   "TTTTTT.\"\"\"\"\"TT===.TTTTTT",
+   "TTTTTT.\"\"\"\"\"TT=X=.TTTTTT",
+   "TTTTTT.\"\"\"\"\"TT===.TTTTTT",
+   "TTTTTT.\"\"\"\"\"TT===.TTTTTT",
+   "TTTTTT.\"\"\"\"\"TT===..~~~~~",
+   "TTTTTT.\"\"\"\"\"TT===.~~~~~~",
+   "TTTTTT......TT===.~~~~~~",
+   "TTTTTT..####TT===.~~~~~~",
+   "TTTTTT...===TT===.~~~~~~",
+   "TTTTTT...===TT===.~~~~~~",
+   "TTTTTT...===TT===..~~~~~",
+   "TTTTTT...===TT===.....~~",
+   "TTTTTT...===TT===kkkkk~~",
+   "TTTTTT...===TT===.....~~",
+   "TTTTTT...===TT===.....~~",
+   "TTTTTT...===TT===.....~~",
+   "TTTTTT...=X=..===.....~~",
+   "TTTTTT...===TT===.....~~",
+   "TTTTTT...===TT===.....~~",
+   "TTTTTT...===TT===.....~~",
+   "TTTTTT...===TT===.....~~",
+   "TTTTTT...===TT===..f..~~",
+   "TTTTTT...===TT===.f...~~",
+   "TTTTTT...===TT===..f..~~",
+   "TTTTTT...===TT===.f...~~",
+   "TTTTTTk..===TT===..f..~~",
+   "TT==========TT===.f...~~",
+   "TT==========..===..f..~~",
+   "..==========..===.....~~",
+   ".#............===.....~~",
+   "##..f.f.f.f...===.....~~",
+   ".....f.f.f....===.....~~",
+   "..............===.....~~",
+   "<================.....~~",
+   "<================.....~~",
+   "<================.....~~",
+   "kkkkkkkkkkkkkkkkkkkkkk~~",
+   "TTTTTTTTTTTTTTTTTTTTTT~~",
+   "TTTTTTTTTTTTTTTTTTTTTT~~"
+  ],
+  "exits": {
+   ">": "KANTO_ROUTE_13",
+   "<": "KANTO_ROUTE_15"
+  },
+  "buildings": {},
+  "trainer_spots": [
+   "Mitch",
+   "Malik",
+   "Carter"
+  ],
+  "signs": [
+   [
+    "ROUTE 14",
+    "South to Route 15, then west to Fuchsia City."
+   ]
+  ]
+ },
+ "KANTO_ROUTE_15": {
+  "art": [
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTk====================================================>",
+   "TTTTTTTTTTTTTTTTTT.===========X=============================X==========>",
+   "TTTTTT.............====================================================>",
+   "TTTTTTkkkkkkYYYYYYk.....................................................",
+   "TTTTTT......YYYYYY.###########.#########################################",
+   "<===========YYYYYY====\"\"\"\"\"\"f.f.f.\"\"\"\"\"\".........f.f.\"\"\"\"f.f.\"\"\"\"\"\"\"f.f.",
+   "<=====================\"\"\"\"\"\".f.f.f\"\"\"\"\"\"...!......f.f\"\"\"\".f.f\"\"\"\"\"\"\".f.f",
+   "<===========VVVVVV=====================================================>",
+   "kkkkkkkkkkkkkkkkkkk==========================X=========================>",
+   "TTTTTTTTTTTTTTTTTTT====================================================>",
+   "TTTTTTTTTTTTTTTTTTkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT"
+  ],
+  "exits": {
+   ">": "KANTO_ROUTE_14",
+   "<": "FUCHSIA_CITY"
+  },
+  "buildings": {
+   "Y": "gate",
+   "V": "gate"
+  },
+  "signs": [
+   [
+    "ROUTE 15",
+    "West: Fuchsia City, home of the Safari Zone!"
+   ]
+  ],
+  "trainer_spots": [
+   "Hideo",
+   "Koji",
+   "Luke"
+  ]
+ },
+ "KANTO_ROUTE_16": {
+  "art": [
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTFFFFFTTTTTTTGGGGGGTTTTTTTTTTTTTTTTTT",
+   "TTTTTT\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"TTTTTTTTTkkkkkkFFFFFkkkkkkkGGGGGGkkkkkkkkkkkkkkkTTT",
+   "TTTTTT===============TTTTTTTTT======FFFDF=======GGGGGG======\"\"\"\"\"\"\"\"\"TTT",
+   "TTTTTT======X========TTTTTTTTT==================GGGGGG======\"\"\"\"\"\"\"\"\"TTT",
+   "TTTTTT===============TTTTTTTTT==================GGGGGG======\"\"\"\"\"\"\"\"\"TTT",
+   "........f.....................==============....GGGGGG.f.============TTT",
+   "................f...........f..................f======..f=====X======TTT",
+   "cccccccccccccccccccccccccccc.kkkkkkkkkkkkkkk.kkkHHHHHHkkk============TTT",
+   "cccccccccccccccccccccccccccck...................HHHHHH..kkkk!kkkkkkk.TTT",
+   "cccccccccccccccccccccccccccck.===\"\"\"\"===========HHHHHH===TTT.f....f....>",
+   "~~~~~~~~~~~~~~~~~~~~~~~~~ccck.===\"\"\"\"===========HHHHHH===..............>",
+   "~~~~~~~~~~~~~~~~~~~~~~~~~ccck.===\"X\"\"===========HHHHHH===TTT.f....f....>",
+   "~~~~~~~~~~~~~~~~~~~~~~~~~ccck.===\"\"\"\"=====kkkkkkkkkkkkkkkkkkkkkkkkkkkkkk",
+   "~~~~~~~~~~~~~~~~~~~~~~~~~ccck.===\"\"\"\"=====kTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "~~~~~~~~~~~~~~~~~~~~~~~~~ccck.===!========kTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "~~~~~~~~~~~~~~~~~~~~~~~~~ccck.============kTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "~~~~~~~~~~~~~~~~~~~~~~~~~ccck.vvvvvvvvvvvvkTTTTTTTTTTTTTTTTTTTTTTTTTTTTT"
+  ],
+  "exits": {
+   ">": "CELADON_CITY",
+   "v": "KANTO_ROUTE_17"
+  },
+  "buildings": {
+   "G": "gate",
+   "H": "gate",
+   "F": "flyhouse"
+  },
+  "signs": [
+   [
+    "CYCLING ROAD",
+    "Bicycles only! It's a long, fast ride down to Route 18."
+   ],
+   [
+    "ROUTE 16",
+    "East: Celadon City. West: a quiet house, for those who look."
+   ]
+  ],
+  "trainer_spots": [
+   "Wilton",
+   "Charles",
+   "Ramiro"
+  ]
+ },
+ "KANTO_ROUTE_17": {
+  "art": [
+   "~~~ccc..^^^....^^^...TTTTTTTTTTTTc",
+   "~~~ccc..===....===...TTTTTTTTTTTTc",
+   "~~~ccc..===....===....cccccccccccc",
+   "~~~ccc..===....===....cccccccccccc",
+   "~~~ccc..===....===....cccccccccccc",
+   "~~~ccc..aaa....aaa....cccccccccq~~",
+   "~~~cccaaaaaaaaaaaaa...ccccccccc~~~",
+   "~~~cccaaaaaaaaaaaaa...ccccccccc~~~",
+   "~~~cccaaaaaaaaaaaaa.........ccc~~~",
+   "~~~cccaaaaaaaaaaaaa.kkkkkkkkccc~~~",
+   "~~~cccaaaaaaaaaaaaa.........ccc~~~",
+   "~~~ccaaaaaaaaaaaaaaaccccccccccc~~~",
+   "~~~ccaaaaaaaaaaaaaaaccccccccccc~~~",
+   "~~~ccaaaaaaaaaaaaaaaccccccccccc~~~",
+   "~~~~~aaaaaaaaaaaaaaa~~~~~~~~~~~~~~",
+   "~~~~~aaaaaa~a~~aaaaa~~~~~~~~~~~~~~",
+   "~~~~~aaaaaa~~~~aaaaa~~~~~~~~~~~~~~",
+   "~~~~~aaaaaa~~~~aaaaa~~~~~~~~~~~~~~",
+   "~~~~~~aaaaa~~~~aaaa~~~~~~~~~~~~~~~",
+   "~~~~~~aaaaa~~~~aaaa~~~~~~~~~~~~~~~",
+   "~~~~~~aaaaa~~~~aaaa~~~~~~~~~~~~~~~",
+   "~~~~~~aaaaa~~~~aaaa~~~~~~~~~~~~~~~",
+   "~~~~~~aaaaa~~~~aaaaaaaaaaaaa~~~~~~",
+   "~~~~~aaaaaaa~~~aaaaaaaaaaaaa~~~~~~",
+   "~~~~~aaaaaaa~~~aaaaaaaaaaaaa~~~~~~",
+   "~~~~~aaaaaaa~~~aaaaaaaaaaaaaa~~~~~",
+   "~~~~~~aaaaa~~~~aaaaaaaaaaaaaa~~~~~",
+   "~~~~~~aaaaa~~~~aaaaaaaaaaaaaa~~~~~",
+   "~~~~~~aaaaa~~~~aaa~~a~aaaaaa~~~~~~",
+   "~~~~~~aaaaa~~~~aaa~~~~aaaaaa~~~~~~",
+   "~~~~~~aaXaa~~~~aaa~~~~aaaaaa~~~~~~",
+   "~~~~~~aaaaa~~~~aaa~~~~aaaaaa~~~~~~",
+   "~~~~~~aaaaa~~~~aaa~~~~aaaaaa~~~~~~",
+   "~~~~~aaaaaaa~~aaaaa~~aaaaaaaa~~~~~",
+   "~~~~~aaaaaaa~~aaaaa~~aaaaaaaa~~~~~",
+   "~~~~~aaaaaaa~~aaaaa~~aaaaaaaa~~~~~",
+   "~~~~~~aaaaa~~~~aaa~~~~aaaaaa~~~~~~",
+   "~~~~~~aaaaa~~~~aaa~~~~aaaaaa~~~~~~",
+   "~~~~~~aaaaa~~~~aaa~~~~aaaaaa~~~~~~",
+   "~~~~~~aaaaa~~~~aaa~~~~aaaaaa~~~~~~",
+   "~~~~~~aaaaa~~~~aaa~~~~aaaaaa~~~~~~",
+   "~~~~~aaaaaaa~~aaaaa~~aaaaaaaa~~~~~",
+   "~~~~~aaaaaaa~~aaaaa~~aaaaaaaa~~~~~",
+   "~~~~~aaaaaaa~~aaaaa~~aaaaaaaa~~~~~",
+   "~~~~~~aaaaa~~~~aaa~~~~aaaaaa~~~~~~",
+   "~~~~~~aaaaa~~~~aaa~~~~aaaaaa~~~~~~",
+   "~~~~~~aaaaa~~~~aaa~~~~aaaaaa~~~~~~",
+   "~~~~~~aaaaa~~~~aaa~~~~aaaaaa~~~~~~",
+   "~~~~~~aaaaa~~~~aaa~~~~aaaaaa~~~~~~",
+   "~~~~~~aaaaa~~~~aaa~~~~aaaaaa~~~~~~",
+   "~~~~~aaaaaaa~~aaaaa~~aaaaaaaa~~~~~",
+   "~~~~~aaaaaaa~~aaaaa~~aaaaaaaa~~~~~",
+   "~~~~~aaaaaaa~~aaaaa~~aaaaaaaa~~~~~",
+   "~~~~~~aaaaa~~~~aaa~~~~aaaaaa~~~~~~",
+   "~~~~~~aaaaa~~~~aaa~~~~aaaaaa~~~~~~",
+   "~~~~~~aaaaa~~~~aaa~~~~aaaaaa~~~~~~",
+   "~~~~~~aaaaa~~~~aaa~~~~aaaaaa~~~~~~",
+   "~~~~~~aaaaa~~~~aaa~~~~aaaaaa~~~~~~",
+   "~~~~~~aaaaa~~~~aaa~~~~aaaaaa~~~~~~",
+   "~~~~~~aaaaa~~~~aaa~~~~aaaaaa~~~~~~",
+   "~~~~~~aaaaa~~~~aaX~~~~aaaaaa~~~~~~",
+   "~~~~~~aaaaa~~~~aaa~~~~aaaaaa~~~~~~",
+   "~~~~~~aaaaa~~~~aaa~~~~aaaaaa~~~~~~",
+   "~~~~~~aaaaa~~~~aaa~~~~aaaaaa~~~~~~",
+   "~~~~~~aaaaa~~~~aaa~~~~aaaaaa~~~~~~",
+   "~~~~~~aaaaa~~~~aaa~~~~aaaaaa~~~~~~",
+   "~~~~~~aaaaa~~~~aaa~~~~aaaaaa~~~~~~",
+   "~~~~~~aaaaa~~~~aaa~~~~aaaaaa~~~~~~",
+   "~~~~~~aaaaa~~~~aaa~~~~aaaaaa~~~~~~",
+   "~~~~~~aaaaa~~~~aaa~~~~aaaaaa~~~~~~",
+   "~~~~~~aaaaa~~~~aaa~~~~aaaaaa~~~~~~",
+   "~~~~~~aaaaa~~~~aaa~~~~aaaaaa~~~~~~",
+   "~~~~~~aaaaa~~~~aaa~~~~aaaaaa~~~~~~",
+   "~~~~~~aaaaa~~~~aaa~~~~aaaaaa~~~~~~",
+   "~~~~~~aaaaa~~~~aaa~~~~aaaaaa~~~~~~",
+   "~~~~~~aaaaa~~~~aaa~~~~aaaaaa~~~~~~",
+   "~~~~~~aaaaa~~~~aaa~~~~aaaaaa~~~~~~",
+   "~~~~~aaaaaaa~~aaaaa~~~aaaaaa~~~~~~",
+   "~~~~~aaaaaaa~~aaaaa~~~aaaaaa~~~~~~",
+   "~~~~~aaaaaaa~~aaaaa~~~aaaaaa~~~~~~",
+   "~~~~~~aaaaa~~~~aaa~~~~aaaaaa~~~~~~",
+   "~~~~~~aaaaa~~~~aaa~~~~aaaaaa~~~~~~",
+   "~~~~~~aaaaa~~~~aaa~~~~aaaaaa~~~~~~",
+   "~~~~~~aaaaa~~~~aaa~~~~aaaaaa~~~~~~",
+   "~~~~~~aaaaa~~~~aaa~~~~aaaaaa~~~~~~",
+   "~~~~~~aaaaa~~~~aaa~~~~aaaaaa~~~~~~",
+   "~~~~~~aaaaa~~~~aaa~~~~aaaaaa~~~~~~",
+   "~~~~~~aaaaa~~~~aaa~~~~aaaaaa~~~~~~",
+   "~~~~~~aaaaa~~~aaaaa~~aaaaaaaa~~~~~",
+   "~~~~~aaaaaaa~~aaaaa~~aaaaaaaa~~~~~",
+   "~~~~~aaaaaaa~~aaaaa~~aaaXaaaa~~~~~",
+   "~~~~~aaaaaaa~~~aaa~~~~aaaaaa~~~~~~",
+   "~~~~~~aaaaa~~~~aaa~~~~aaaaaa~~~~~~",
+   "~~~~~~aaaaa~~~~aaa~~~~aaaaaa~~~~~~",
+   "~~~~~~aaaaaaaaaaaa~~~~aaaaaa~~~~~~",
+   "~~~~~~aaaaaaaaaaaaa~~aaaaaaaa~~~~~",
+   "~~~~~~aaaaaaaaaaaaa~~aaaaaaaa~~~~~",
+   "~~~~~~aaaaaaaaaaaaa~~aaaaaaaa~~~~~",
+   "~~~~~~aaaaaaaaaaaa~~~~aaaaaa~~~~~~",
+   "~~~~~~aaaaaaaaaaaa~~~~aaaaaa~~~~~~",
+   "~~~~~~aaaaaaa~~a~~~~~~aaaaaa~~~~~~",
+   "~~~~~~aaaaaaa~~~~~~~~~aaaaaa~~~~~~",
+   "~~~~~~aaaaaaa~~~~~~~~~aaaaaa~~~~~~",
+   "~~~~~aaaaaaaaa~~~~~~~aaaaaaaa~~~~~",
+   "~~~~~aaaaaaaaa~~~~~~~aaaaaaaa~~~~~",
+   "~~~~~aaaaaaaaa~~~~~~~aaaaaaaa~~~~~",
+   "~~~~~~aaaaaaa~~~~~~~~~aaaaaa~~~~~~",
+   "~~~~~~aaaaaaa~~~~~~~~~aaaaaa~~~~~~",
+   "~~~~~~aaaaaaa~~~~~~~~~aaaaaa~~~~~~",
+   "~~~~~~aaaaaaa~~~~~~~~~aaaaaa~~~~~~",
+   "~~~~~~aaaaaaa~~~~~~~~~aaaaaa~~~~~~",
+   "~~~~~~aaaaaaa~~~~~~~~~aaaaaa~~~~~~",
+   "~~~~~aaaaaaaaa~~~~~~~aaaaaaaa~~~~~",
+   "~~~~~aaaaaaaaa~~~~~~~aaaaaaaa~~~~~",
+   "~~~~~aaaaaaaaa~~~~~~~aaaaaaaa~~~~~",
+   "~~~~~~aaaaaaa~~~~~~~~~aaaaaa~~~~~~",
+   "~~~~~~aaaaaaa~~~~~~~~~aaaaaa~~~~~~",
+   "~~~~~~aaaaaaa~~~~~~~~~aaaaaa~~~~~~",
+   "~~~~~aaaaaaaaa~~~~~~~aaaaaaaa~~~~~",
+   "~~~~~aaaaaaaaa~~~~~~~aaaaaaaa~~~~~",
+   "~~~~~aaaaaaaaa~~~~~~~aaaaaaaa~~~~~",
+   "~~~~~aaaaaaaaa~~~~~~~aaaaaaaa~~~~~",
+   "~~~cccaaaaaaacccccccccaaaaaaccc~~~",
+   "~~~cccccaaacccccccccccccaaccccc~~~",
+   "~~~ccck.......\"\"\".\"\"\"......kccc~~~",
+   "~~~ccc.......\"\"\"\"#\"\"\"\"......ccc~~~",
+   "~~~ccc.......q~~~~~~~q......ccc~~~",
+   "~~~ccc.......~~~~~~~~~......ccc~~~",
+   "~~~ccc.......~~~~~~~~~......ccc~~~",
+   "~~~ccc.......~~~~~~~~~......ccc~~~",
+   "~~~ccc.......~~~~~~~~~......ccc~~~",
+   "~~~ccc.......~~~~~~~~~......ccc~~~",
+   "~~~ccc.......q~~~~~~~q......ccc~~~",
+   "~~~ccc........\"\"\"\"\"\"\".......ccc~~~",
+   "~~~ccc........\"\"\"\"\"\"\".......ccc~~~",
+   "~~~ccc........\"\"\"\"\"\"\".......ccc~~~",
+   "~~~ccc........\"\"\"\"\"\"\".......ccc~~~",
+   "~~~ccckkkkkkk...kkk...kkkkkkccc~~~",
+   "~~~ccccccccc.===...===.cccccccc~~~",
+   "~~~ccccccccc.===.\".===.cccccccc~~~",
+   "~~~ccccccccc.===.\".===.cccccccc~~~",
+   "~~~~~~~~qccck===.\".===kccc~~~~~~~~",
+   "~~~~~~~~qcccc===ccc===cccc~~~~~~~~",
+   "~~~~~~~~qcc..===.\".===..cc~~~~~~~~",
+   "~~~~~~~~qcccc===ccc===cccc~~~~~~~~",
+   "~~~~~~~~qcccc===ccc===ccccqq~~~~~~",
+   "~~~~~~~qq~~~k===.\".===k~~~qq~~~~~~",
+   "~~~~~~~qq~~~.===.\".===.~~~qq~~~~~~",
+   "~~~~~~qq~~~~.===.\".===.~~~qq~~~~~~",
+   "~~~~~~qq~~~~.===.\".===.~~qq~~~~~~~",
+   "~~~~~~qq~~~~.===.\".===.~~qq~~~~~~~",
+   "~~~~~~qq~~~~.===.\".===.~~~qq~~~~~~",
+   "~~~~~~~qq~~~.===.\".===.~qqqq~~~~~~",
+   "~~~~~~~qq~~~.===.\".===.~qq~~~~~~~~",
+   "~~~~~~~qq~~~.===.\".===.~~qq~~~~~~~",
+   "~~~~~~~qq~~~.===.\".===.~~qq~~~~~~~",
+   "~~~~~~~~qq~~.===...===.~~qq~~~~~~~",
+   "~~~~~~~~qq~~.===!..===.~~qq~~~~~~~",
+   "~~~~~~~~~qq~.####.####.~qq~~~~~~~~",
+   "~~~~~~~~~qq~vvvvvvvvvvv~qq~~~~~~~~"
+  ],
+  "exits": {
+   "^": "KANTO_ROUTE_16",
+   "v": "KANTO_ROUTE_18"
+  },
+  "buildings": {},
+  "signs": [
+   [
+    "CYCLING ROAD",
+    "Keep your speed steady, like counting by fives: 5, 10, 15, 20!"
+   ]
+  ],
+  "trainer_spots": [
+   "Nikolas",
+   "Zeek",
+   "Jaxon"
+  ]
+ },
+ "KANTO_ROUTE_18": {
+  "art": [
+   "~~~~~~~~~qqk^^^^^^^^^kqq~~~~~~~~~~~~kTTTTTTTTTTTTTTTTTTTTTT",
+   "~~~~~~~~~qqk.f.....f.kqqqq~~~~~~~~~~kTTTTTTTTTTTTTTTTTTTTTT",
+   "~~~~~~~qq~~kf.......fk~~qq~~~~~~~~~~kTTTTTTTTTTTTTTTTTTTTTT",
+   "~~~~~~~qq~~k.f.....f.k~~~~qqqq~~qqqqkTTTTTTTTTTTTTTTTTTTTTT",
+   "~~~~~~qq~~~kf.......fk~~~~qqqqqqqqqqkTTTTTTTTTTTTTTTTTTTTTT",
+   "~~~~~~qq~~~k.f.....f.k~~~~~~~~qq~~~~kTTTTTTTTTTTTTTTTTTTTTT",
+   "~~~~~qq~~~~kf.......fkq~~~~~~~~~~~~qkTTTTTTTTTGGGGGGTTTTTkT",
+   "~~~~~qq~~~~k.=======................kkkkkkkkk.GGGGGG...!.kk",
+   "~~~~~~qq~~~k===X==============================GGGGGG======>",
+   "~~~~~~qq~~~k=======================X======================>",
+   "~~~~~~qq~~~k==================================HHHHHH======>",
+   "~~~~~~qq~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~q##########..kkkkk",
+   "~~~~~~qq~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~qq~#...........TTTTT",
+   "~~~~~~qq~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~qq~#.\"\"\"\"\"\"....TTTTT",
+   "~~~~~~~~qq~~~~~qqqq~~~~~~~~~~~~~~~~~~~~~~~#.\"\"\"\"\"\".#TTTTTTT",
+   "~~~~~~~~qqqq~~~qqqq~~~~~~~~~qqqq~~qqqq~~qq#.\"\"\"X\"\".#TTTTTTT",
+   "~~~~~~~~~~qqqqqq~~~~~~qqqqqqqqqqqqqqqqqqqq#.\"\"\"\"\"\".#TTTTTTT",
+   "~~~~~~~~~~~~qqqqqqqqqqqqqqqq~~~~qq~~~~qq~~#........#TTTTTTT",
+   "~~~~~~~~~~~~~~~~qqqqqq~~~~~~~~~~~~~~~~~qq~##########q~~~~qT"
+  ],
+  "exits": {
+   "^": "KANTO_ROUTE_17",
+   ">": "FUCHSIA_CITY"
+  },
+  "buildings": {
+   "G": "gate",
+   "H": "gate"
+  },
+  "signs": [
+   [
+    "ROUTE 18",
+    "East: Fuchsia City. North: Cycling Road (bike riders only)."
+   ]
+  ],
+  "trainer_spots": [
+   "Luke",
+   "Dana",
+   "Arnie"
+  ]
+ },
+ "FUCHSIA_CITY": {
+  "art": [
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTZZZZZZTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTZZZZZZTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTZZZZZZTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTZZZZZZTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTZZZZZZTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTZZZZZZTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTZZDZZZTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTl.......................................lTTTTTTTTT",
+   "TTTTTTTTTT.TTTTTTTT.TTTTTTT.!aaa..TTTTTT..TTTTTTT..TTTTTTTTT",
+   "TTTTTTTTTT.TkkkkkkT.TfffffT..aaa..TffffT..TfffffT..TTTTTTTTT",
+   "TTTTTTTTTT.T~~~~~~T.TfffffT..aaa..TffffT..TfffffT..TTTTTTTTT",
+   "TTTTTTTTTT.T~~~~~~T.TfffffT..aaa..TffffT..TfffffT..TTTTTTTTT",
+   "TTTTTTTTTT.T~~~~~~T.Tkk.kkT..aaa..Tk.kkT..Tkk.kkT..TTTTTTTTT",
+   "TTTTTTTTTT.MMMMM..........l..aaa.l....TTTTTTT......TTTTTTTTT",
+   "TTTTTTTTTT.MMMMM.............aaa......TfffffT......TTTTTTTTT",
+   "TTTTTTTTTT.MMMMM.aaaaaaaaaaaaaaa......TfffffT......TTTTTTTTT",
+   "TTTTTTTTTT.MMDMM.aaaaaaaaaaaaaaa...................TTTTTTTTT",
+   "TTTTTTTTTT.aaaaaaa.TTTTTTTT..aaa.TTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTT........TTTTTTTTk.aaa.TTTTTTTTTTTTTTTTTTTTTTTYYYY",
+   "TTTTTTTTTTTTTTTTTTT........l.aaa...................TTTTTYYYY",
+   "TTTTTTTTTTTkkkkkkkT..T.....kTaaalkkkkklkkkkklkkkkklkkkkkYYYY",
+   "TTTTTTTTTTT~~~~~~~T........kTaaaaaaaaaaaaaaaaaaaaaaaaaaa===>",
+   "TTTTTTTTTTT~~~~~~~T........kTaaaaaaaaaaaaaaaaaaaaaaaaaaa===>",
+   "Tkkklkkkkkkkkkkkkkkkkkk!kk.kTaaa......................TTVVVV",
+   "<aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaakkkkkkkkkkkkkkkkk.....TTTTTT",
+   "<aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaak.....~~~~~~~~~.k.....TTTTTT",
+   "TTTT..................................~~~~~~~~~.k.aa..TTTTTT",
+   "TTTT.cccccccccccccccccccccccc.TTk...BBBBBPPPP~~.k.aa..TTTTTT",
+   "TTTT.cccccccccccccccccccccccc.TTk...BBBBBPPPP.....aa..TTTTTT",
+   "TTTT.cccccccccccccccccccccccc.TTk...BBBBBPPPP.....aa..TTTTTT",
+   "TTTT.ccGGGGGGGccccccccCCCCCcc.TTkkkkBBBBBPPPPkkk..aa..TTTTTT",
+   "TTTT.ccGGGGGGGWWWWHHHHCCCCCcc.TT...!BDBBBPDPP.....aa..TTTTTT",
+   "TTTT.#.GGGGGGGWWWWHHHHCCCCC.#.TT..................aa..TTTTTT",
+   "TTTT.#.GGGGGGGWWWWHHHHCCCCC.#.TT...aaaaaaaaaaaaaaaaa..TTTTTT",
+   "TTTT.#.GGGDGGGWDWWHDHHCCDCC.#.TT...aaaaaaaaaaaaaaaaa..TTTTTT",
+   "TTTT.#.a!aaaaaaaaaaaaaaaaaa.#.TTkkkk...kkkkkkkkk......TTTTTT",
+   "TTTT.#.aaaaaaaaaaaaaaaaaaaa.#.TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTT.#....aaaTTT.aaaaa.######.TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTl.###.....TTT.aaaaa......l.TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTT............TT===TTTTT....TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTccccccccccccTTvvvTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT"
+  ],
+  "exits": {
+   "Z": "SAFARI_ZONE",
+   "<": "KANTO_ROUTE_18",
+   ">": "KANTO_ROUTE_15",
+   "v": "KANTO_ROUTE_19"
+  },
+  "buildings": {
+   "Z": "safari",
+   "M": "mart",
+   "G": "gym",
+   "W": "warden",
+   "H": "house",
+   "C": "center",
+   "B": "brother",
+   "P": "brother",
+   "Y": "gate",
+   "V": "gate"
+  },
+  "roofs": {
+   "Z": [
+    232,
+    130,
+    50
+   ],
+   "G": [
+    176,
+    120,
+    76
+   ],
+   "W": [
+    200,
+    60,
+    50
+   ],
+   "H": [
+    226,
+    140,
+    160
+   ],
+   "B": [
+    226,
+    214,
+    170
+   ],
+   "P": [
+    226,
+    140,
+    160
+   ]
+  },
+  "signs": [
+   [
+    "SAFARI ZONE",
+    "Catch rare Pokemon in the wild! Gardens out front, adventure inside."
+   ],
+   [
+    "FUCHSIA CITY",
+    "Behold! It's passion pink! Keep your sums just as bright."
+   ],
+   [
+    "Behind this house is a pond. The Fishing Guru's brother lives here!"
+   ],
+   [
+    "FUCHSIA CITY GYM",
+    "Leader: Koga, the Poisonous Ninja Master!"
+   ]
+  ]
+ },
+ "SAFARI_ZONE": {
+  "art": [
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT............................\"\"\"\"\"......TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT..\"\"..\"\"...................\"\"\"\"\"\"AAAAA.TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT.\"\"\"\"\"\"\"\"................\"\"\"\"\"\"\".AAAAA.TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT.\"\"\"\"\"\"\"\".TTTTTTTTTTTTTTT\"\"\"\"\"\"..ADAAA.TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT..\"\"\"\"\"\"..TTT.======TTT..\"\"\"\"\"\"....!===TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT..\"\"\"\"\"\"..TTT.======TTT==.\"\"\"\"\".....===TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT.\"\"\"\"\"\"\"q~~q...===========\"\"\"\"\"\"..=====TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT.\"\"\"\"\"\"\"~~~~\"\"\"....========\"\"\"\"\"\".=====TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT\"..\"\"~~~~\"\"\".TTT========.\"\"\"\"\"\"=====TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT=====~~~~\"\"\"\"TTTTTTTTTTTTTTT\"\"\"====.TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT=====~~~~\"\"\"\"TTT=====......c=======cTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT.======.q~~q\"\"\".T=========....c=======cTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT====q~~q..\"\"\"\"\"\"T=========....c=======cTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT====~~~~\"\"\"\"\"\"\".T=========....cc==cc==cTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT====~~~~\"\"\"\"\"\"..T=======.....======c==cTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT====~~~~.\"\".....T======.....=======c==cTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT===.~~~~......c=========c==========c==cTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT===.q~~q......c=========c==========c==cTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT===..T...\"\"\"\".c=========c========..c==cTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT===..T.\"\"\"\"\"\"\"c====cc==ccc============cTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT==...T\"\"\"\"\"\"\"\"c====c\"\"\"\"\"c============cTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT.....T\"\"q~~q\"\"c====c\"\"\"\"\"c============cTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT....#T\"\"~~~~\"\"c==ccc\"\"\"\"\"ccc==cccccccccTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT.....#\"\"~~~~\"....T\"\"\"\"\"\"\"#.===========.TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT.....#.\"~~~~.....T.\"\"\"\"\"\"..===========.TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT.....#.\"q~~q.....T.\"\"\"\"\"\"\"\"..=========.################TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT.....#........!..T...\"\"\"\"\"\"\"..======...===============#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT.....#...........#..#\"\"\"\"\"\"\"...........===============#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT.....#...........#.....\"\"\".............#############==#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#==#TTTTTT#==#TTTTTT#==#TTTTTTTTTTTTTTTTTTTTTTTTTTT#==#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#==#TTTTTT#==#TTTTTT#==#TTTTTTTTTTTTTTTTTTTTTTTT\"\"T#==#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#==#TTTTTT#==#TTTTTT#==#TTTTTTTTTTTTTTTTTTTTTTTT\"\"T#==#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#==#TTTTTT#==#TTTTTT#==#TTTTTTTTTTTTTTTTTTTTTTTT\"\"T#==#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#==#TTTTTT#==#TTTTTT#==#TTTTTTTTTTTTTTTTTTTTTTTT\"\"T#==#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#==#TTTTTT#==#TTTTTT#==#TTTTTTTTTTTTTTTTTTTTTTTT\"\"T#==#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#===#TTT####==#TTTTTT#==#TTTTTTTTTTTTTTTTTTTTTTTT\"\"T#==#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#===#TT#======#TTTTTT#==#TTT\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"T#==#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#==#TTT#======TTTTTTT#==#TTT\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"T#==#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#==#TTT#==####TTTTTTT#==#TTT\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"T#==#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#==#TTT#==#TTTTTTTTTT#==#TTT\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"T#==#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#==#TTT#==#TTTTTTTTTT#==#TTT\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"T#==#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTEEEEEETTTTTTTTTTTTT#==#TTT#==#TTTTTTTTTT#==#TTT\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"T#==#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTEEEEEETTTTTTTTTTTTT#==#TTT#==#TTTTTTTTTT#==#TTT\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"T#==#TTTTTTTTTTTTTTTTTTTTTTTTT...........\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"...\"\"\"\"\".TTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTEEEEEETTTTTTTTTTTTT#==#TTT#==#TTTTTTTTTT#==##########..........####\"\"\"T#==#TTTTTTTTTTTTTTTTTTTTTTTTT.........==\"\"\"\"\"\"\"\"\"\"\"\"\"\"....\"\"\"\"\"\"\"TTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTEEEEEETTTTTTTTTTTTT....TTT....TTTTTTTTTT#=========================#\"\"\"T#==##########################TTTTTTTT#====\"\"\"\"\"\"\"\"\"......\"\"\"\"\"\"\"\"TTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTEEDEEETTT.........====.TTT....TTTTTTTTTT#=========================#\"\"\"T#============================........=====c===========c\"\"\"\"\"\"\"\"\"\"TTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTT.......TT.........=====TTT....TTTTTTTTTT########################==#TTTT#============================........=====c===========c\"\"\"\"\"\"\"\"\"\"TTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTT====TTTT........#.====TTT....TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#==#TTTT################################TTTTTTTTTTc===========c.\"\"\".....\"TTTTTTTTTTTTTTT",
+   "TTTTTTTTTTT..=======...............==TTT#...TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#==#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT..........cc==ccccc==cc\"\"\"\"BBBBB\"TTTTTTTTTTTTTTT",
+   "TTTTTTTTTTT..=======.................TTT....TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#==#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT...\"....\"...............\"\".BBBBB.TTTTTTTTTTTTTTT",
+   "TTTTTTTTTTT..========.c=======c......TTT==..TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#==#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT..\"\"....\"\"..............===BDBBB.TTTTTTTTTTTTTTT",
+   "TTTTTTTTTTT.....=====.c=======c===...TTT====TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#==#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT.\"\"\".\"\".\"\"\"...q~~~~~~~~q=======!.TTTTTTTTTTTTTTT",
+   "TTTTTTTTTTT.....=====.c=======c====..TTT====TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#==#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT\"...\"\"\"\"......~~~~~~~~~~=======..TTTTTTTTTTTTTTT",
+   "TTTTTTTTTTT...........TTTTcc==c======TTT====TTTTTTTTTTTTTTTTTT.............T....................TTTTTTTTTTTTTTTTTTTTT\"..\"\"\"\"\"\".....q~~~~~~~c=========cTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTq~~~~~~~~~qTTTTTc==c======TTT====TTTTTTTTTTTTTTTTTT.....\"\"\"\"....T........\"\"\"\"\"....===TTTTTTTTTTTTTTTTTTTTT\"..\"\"\"\"\"\".....\"\"\"\"\"\"~~c=========cTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTT~~~~~~~~~~~TTTTTc==c======TTT===.TTTTTTTTTTTTTTTTTT...\"\"\"\"\"\"\"\"..T.....\"\"\"\"\"\"\"\"\"\".====TTTTTTTTTTTTTTTTTTTTT\"...\"\"\"\"......\"\"\"\"\"\"~~ccc==c==cccTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTT~~~~~~~~~~~TTTTTc==c=====.TTT==..TTTTTTTTTTTTTTTTTT..\"\"\"\"\"\"\"\"\"..T....\"\"\"\"\"\"\"\"\"\"\"\"====TTTTTTTTTTTTTTTTTTTTT.\"\"\".\"\".\"\"\"...q~~~~~~~~qc==c=====TTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTq~~~~~~~~~q====Tc==c=====.TTT....TTTTTTTTTTTTTTTTTT..\"\"\"\"\"\"\"\"\"..T...\"\"\"\"\"\"\"\"\"\"\"\"\"====TTTTTTTTTTTTTTTTTTTTT..\"\"....\"\".==.q~~~~~~~~qc==c=====TTTTTTTTTTTTTTT",
+   "TTTTTTTTTTT.N.........=====c========cTTT....TTTTTTTTTTTTTTTTTT..\"\"\"\"\"\"\"\"...T...\"\"\"\"\"\"\"\"\"\"\"\"=====TTTTTTTTTTTTTTTTTTTTTTTTTTT..\"====...........c==c=====TTTTTTTTTTTTTTT",
+   "TTTTTTTTTTT............====c========cTTT....TTTTTTTTTTTTTTTTTT...\"\"\"\"\".....T....\"\"\"\"...\"\"\".=====TTTTTTTTTTTTTTTTTTTTTTTTTTT...====c=============c..===TTTTTTTTTTTTTTT",
+   "TTTTTTTTTTT................c========c==.....TTTTTTTTTTTTTTTTTT...\"\"\"..\"q~~~~~~~~~~~~~~q....=====TTTTTTTTTTTTTTTTTTTTTTTTTTT..=====c=============c\"\"\"==TTTTTTTTTTTTTTT",
+   "TTTTTTTTTTT....c==============ccc==cc==.....TTTTTTTTTTTTTTTTTT....\"..\"\"~~~~~~~~~~~~~~~~###########################TTTTTTTTTTT=====cccc==ccccc==cc\"\"\"\".TTTTTTTTTTTTTTT",
+   "TTTTTTTTTTT..\"\"c==============c========.....TTTTTTTTTTTTTTTTTT.......\"\"~~~~TTTTTTTT~~~~.........==================..======..T====........T\"\"\"\"\"\"\"\"\"\"\".TTTTTTTTTTTTTTT",
+   "TTTTTTTTTTT.\"\"\"c==============c========.....##################.====.\"\"\"~~~~TTTTTTTT~~~~.........==================..=======!TTTTTTTTTTTTTT\"\"\"\"\"\"\"\"\"\"\".TTTTTTTTTTTTTTT",
+   "TTTTTTTTTTT.\"\"\"ccccccc==ccccccc#======.!....==================.=====\"\"\"~~~~~~~~~~~~~~~~\"\".......##################....=====...........\"\"\"\"\"\"\"\"\"\"\"\"\"...TTTTTTTTTTTTTTT",
+   "TTTTTTTTTTT.\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"#====.......==================..====.\"\"q~~~~~~~~~~~~~~q\"\"\"\".....TTTTTTTTTTTTTTTTTT.....................\"\"\"\"\"\"\"\"\"\"\"....TTTTTTTTTTTTTTT",
+   "TTTTTTTTTTT...\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"#====.......##################..=====..............TT...\"\"\"\"\"...TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTT....\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"..#...........TTTTTTTTTTTTTTTTTT..=====..TTTTTTTTTTTTTT.k.\"\"\"\"\"\"\".TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTT......\"\"\"\"\"....\"\"\"...#...........TTTTTTTTTTTTTTTTTTTTTTTTTTT....===..........\"\"\"\"\"\"\".TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT.............=====.........\"\"\"\"...TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT.....\"\"\"\"\"\"\"\"=====.HHHHH..\"\"\"\"\"\"\".TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT....\"\"\"\"\"\"\"\"\"\"====.HHHHH..\"\"\"\"\"\"..TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT....\"\"\"\"\"\"\"\"\"\"====.HDHHH.\"\"\"\"\"....TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT.....\"\"\"\"\"\"\"\"........!...\"\"\"\".....TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT.....\"\"\"\"\"\"\"\"\"\"\"!.......\"\"\"\"......TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT.......\"\"\"\"\"\"\".........\"\"\"\".......TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT...............====...............TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#========#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#========#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#========#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#========#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#========#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#========#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#vvvvvvvv#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT"
+  ],
+  "exits": {
+   "v": "FUCHSIA_CITY"
+  },
+  "buildings": {
+   "A": "house",
+   "B": "house",
+   "E": "house",
+   "H": "house"
+  },
+  "zone_rects": [
+   [
+    53,
+    50,
+    44,
+    40
+   ],
+   [
+    97,
+    35,
+    68,
+    45
+   ],
+   [
+    25,
+    0,
+    60,
+    42
+   ],
+   [
+    0,
+    42,
+    53,
+    40
+   ]
+  ],
+  "people": [
+   "GOLD TEETH"
+  ],
+  "locked": {
+   "house": "A rest house. Nobody's resting right now."
+  },
+  "signs": [
+   [
+    "NORTH AREA",
+    "Rest here if your feet are tired!"
+   ],
+   [
+    "This way: the North Area's far side."
+   ],
+   [
+    "EAST AREA",
+    "Watch for the steps up the plateaus."
+   ],
+   [
+    "WEST AREA",
+    "Someone dropped something around here..."
+   ],
+   [
+    "The path bends on. Keep counting your steps!"
+   ],
+   [
+    "CENTER AREA",
+    "A rest house. Catch your breath."
+   ],
+   [
+    "SAFARI ZONE",
+    "Four areas: Center, East, North and West. Each has its own Pokemon!"
+   ]
+  ]
+ },
+ "KANTO_ROUTE_19": {
+  "art": [
+   "ccccccc.######c^^cccccccTTTTTTTTTTTT",
+   "ccccccc=======c==cccccccTTTTTTTTTTTT",
+   "ccccccc.######c==cccccccTTTTTTTTTTTT",
+   "ccccccc=======c==cccccccq~~~~~~~~~~~",
+   "ccccccc.######c==ccccccc~~~~~~~~~~~~",
+   "ccccccc==========ccccccc~~~~~~~~~~~~",
+   "~~~~~qqo========oqq~~~~~~~~~~~~~~~~~",
+   "~~~~~qqo========oqq~~~~~~~~~~~~~~~~~",
+   "~~~~~qqo========oqq~~~~~~~~~~~~~~~~~",
+   "~~~~~qqoo=======oqq~~~~~~~~~~~~~~~~~",
+   "~~~~~qqooo=====!oqq~~~~~~~~~~~~~~~~~",
+   "~~~~~qqooooooooooqqqq~~~~~~~~~~~~~~~",
+   "~~~~qqoooooooooooooqq~~~~~~~~~~~~~~~",
+   "~~~~qqoooooooooooooqq~~~~~~~~~~~~~~~",
+   "~~~qqooooooooooooooqq~~~~~~~~~~~~~~~",
+   "~~~qqqqoooooooooooqqqq~~~~~~~~~~~~~~",
+   "~~~~~qqoooooooooooqqqq~~~~~~~~~~~~~~",
+   "~~~qqooooooooooooooooqq~~~~~~~~~~~~~",
+   "~~~qqooooooooooooooooqq~~~~~~~~~~~~~",
+   "~qqooooooooooooooooooqq~~~~~~~~~~~~~",
+   "~qqoqqooooooXooooooooqq~~~~~~~~~~~~~",
+   "~qqoqqooooooooooooooooqq~~~~~~~~~~~~",
+   "~qqoooooooooooooooooooqq~~~~~~~~~~~~",
+   "qqoooooooooooooooooqqoqq~~~~~~~~~~~~",
+   "qqooooooooooooooqqoqqoqq~~~~~~~~~~~~",
+   "~qqoooooooooooooqqooooqq~~~~~~~~~~~~",
+   "~qqoooooooooooooooooooqq~~~~~~~~~~~~",
+   "qqoooooooooooooooooooqq~~~~~~~~~~~~~",
+   "qqoooooooooooooooooooqq~~~~~~~~~~~~~",
+   "~qqoooooqqooooooooooooqq~~~~~~~~~~~~",
+   "~qqoooooqqooooooooooooqq~~~~~~~~~~~~",
+   "~qqooooooooooooooooooqq~~~~~~~~~~~~~",
+   "~qqoooooooooooooooqqoqq~~~~~~~~~~~~~",
+   "qqoooqqoooooooooooqqqq~~~~~~~~~~~~~~",
+   "qqoooqqoooooooooooooqq~~~~~~~~~~~~~~",
+   "qqooooooooooooXooqqqq~~~~~~~~~~~~~~~",
+   "qqoooooooooooooooqqqq~~~~~~~~~~~~~~~",
+   "qqoqqoooooooooooooooqq~~~~~~~~~~~~~~",
+   "qqoqqoooooooooooooooqq~~~~~~~~~~~~~~",
+   "ooooooooooooooooooooooqq~~~~~~~~~~~~",
+   "woooooooXoooooooooooooqq~~~~~~~~~~~~",
+   "wooooooooooooooooooooqq~~~~~~~~~~~~~",
+   "wooooooooooooooooooooqq~~~~~~~~~~~~~",
+   "wooooooooooooooooooooqq~~~~~~~~~~~~~",
+   "wooooooooooooooooooooqq~~~~~~~~~~~~~",
+   "wooooooooooooooooooooqq~~~~~~~~~~~~~",
+   "wooooooooooooooooooooqq~~~~~~~~~~~~~",
+   "woooooooooooooooooooqq~~~~~~~~~~~~~~",
+   "woooooooooooooooooqqqq~~~~~~~~~~~~~~",
+   "ooooooooooooooooooqqoqq~~~~~~~~~~~~~",
+   "oooqqooooooooooooooooqq~~~~~~~~~~~~~",
+   "oooqqooooooooqqooooqq~~~~~~~~~~~~~~~",
+   "ooooooooqqoooqqooqqqq~~~~~~~~~~~~~~~",
+   "ooooooooqqoooooooqq~~~~~~~~~~~~~~~~~",
+   "ooqqqqqq~~qqqqooqq~~~~~~~~~~~~~~~~~~",
+   "qqqqqqqqqqqqqqqqqq~~~~~~~~~~~~~~~~~~",
+   "qq~~~~~~qq~~~~qq~~~~~~~~~~~~~~~~~~~~",
+   "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+  ],
+  "exits": {
+   "^": "FUCHSIA_CITY",
+   "w": "KANTO_ROUTE_20"
+  },
+  "buildings": {},
+  "signs": [
+   [
+    "ROUTE 19",
+    "Sea route to Seafoam Islands and Cinnabar Island. Surf safely!"
+   ]
+  ],
+  "trainer_spots": [
+   "Jerome",
+   "Ronald",
+   "Lil"
+  ]
+ },
+ "KANTO_ROUTE_20": {
+  "art": [
+   "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
+   "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
+   "ooooooooooooooooooooooqqooooooooooooooooooqqqqooooooooooooocccooqqooooqqqqoooooooooooooooooooooooooooooooooooooooooooooo",
+   "ooooooooooooqqooooqqqqqqqqooooooqqooooooqqqqqqqqqqoooooooocccccoqqqqqqqqqqqqqqooooooooooooooooooqqooooooooooooooooqqqqqq",
+   "ooooooooooqqqqqqqqqqqqooqqqqqqqqqqqqqqqqqqooooqqqqqqoooooccccccc~~qqqqooooqqqqqqqqooqqooooooqqqqqqqqooooqqqqooooqqqqqqqq",
+   "uqqoooooooqqooqqqqooooooooqqqqqqooqqqqqqooooqqooooqqqqocccccccccccoq========q~qqqqqqqqqqqqqqqqqq~~qqqqqqqqqqqqqqqqooooow",
+   "uqqooooooqqoooooooqqooooooooooooooooooooooooqqooqqooqqoccccccccccc===========qooooqqooqqqqqqooooqqooqqqqooooqqqqoooqqoow",
+   "uooqqqqqqqqoqqooooqqoo===oooooooooqqooooooooooooqqoqqqqccccccccccc============ooooooooooooooooooqqoooooooooooooooooqqoow",
+   "uooqqqqqqoooqqooooooo======oooooooqqoooooooooooooooqqqqccccccccccc====ccccc===ooooooooooooooooooooooooooooooooooooooooow",
+   "uoooooooooooooooooooo======ooooooooooooo=====oooooqqooo=cccQQQccc====ccccccc==ooooooooooooooooooooooooooooooooooooooooow",
+   "uoooooooooooooooooooo=====oooooooooooooo=====ooooooooqq==ccQDQccc===ccccccccc=ooooooooooooooooooooooooooooooooooooooooow",
+   "uoooooooooooooooooooooooooooooXooooooooo=====oooooXqoqq============cccccccccccoooooooooooooooooXooooooooooooooooooooooow",
+   "uooooooooooooooooooooooooooooooooooooooooo===oooooqqoooq===========cccccccccccqqooooooooooooooooooooooooooooooooooooooow",
+   "uooooooooooooooooooooooooooooooooooooooooooooooooooqqooo=======qooqcccccccccccqqooqqooooooooooooooooooooooooooooooooooow",
+   "uoooooooooooooooooooooooooooooo==ooooooooooooooooooqqooooooooooooqqcccccccccccoqqoqqooqqooooooooooooooooooooooooooooooow",
+   "uooooooooooooooo===oooooooooooo==ooooooooooooooooooooqqooooooooqqqqccccPPPcccqoqqoooooqqooooooooooooooooooooooooooooooow",
+   "uoqqooooooooqqoo===ooooooooooooooooooooooooooooooooooqqqqqqqqqqqqooq!ccPDPccqoooqqooqqooooooooooooooooooooooooooooooooow",
+   "ooqqooooooooqqooooooooooooooooooooooooooooooooqqoooooooqqqqqqqqooooo=======qooooqqqqqqooqqoooooooqqooooooooooooqqooooooo",
+   "ooooooqqqqooooooooooooooooqqooooooooqqooooooooqqooooooooooooooooooooooq====oooooqqqq~~qqqqoooooooqqoooqqqqoooooqqooooooo",
+   "ooooqqqqqqqqooqqqqqqooooqqqqqqooooqqqqqqooqqqq~~qqooooooooooooooooooooooooooooqqqq~~~~qqooooqqqqooooqqqqqqqqqqooooqqqqoo",
+   "qqqqqq~~~~qqqqqqqqqqqqqqqq~~qqqqqqqq~~qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq~~~~~~~~qqqqqqqqqqqqqq~~~~qqqqqqqqqqqqqq",
+   "qqqq~~~~~~~~qq~~~~~~qqqq~~~~~~qqqq~~~~~~qq~~~~qq~~qqqqqqqqqqqqqqqqqqqqqqqqqqqq~~~~~~~~~~qqqq~~~~qqqq~~~~~~~~~~qqqq~~~~qq",
+   "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+   "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+  ],
+  "exits": {
+   "w": "KANTO_ROUTE_19",
+   "u": "CINNABAR_ISLAND",
+   "Q": "SEAFOAM_ISLANDS",
+   "P": "SEAFOAM_ISLANDS"
+  },
+  "buildings": {
+   "Q": "cave",
+   "P": "cave"
+  },
+  "signs": [
+   [
+    "SEAFOAM ISLANDS",
+    "Two islands, one icy cave. Something cold lives deep inside..."
+   ]
+  ],
+  "trainer_spots": [
+   "Richard",
+   "Alice",
+   "Connie"
+  ]
+ },
+ "KANTO_ROUTE_21": {
+  "art": [
+   "TTTTTTTTTTTkwwwwkkkkkkkTTTTTTTTTTT",
+   "TTTTTTTTTTT.oooo.......TTTTTTTTTTT",
+   "TTTTTTTTTTT.oooo.......TTTTTTTTTTT",
+   "TTTTTTTTTTT.oooo..!....TTTTTTTTTTT",
+   "TTTTTTTTTTT.oooo.......TTTTTTTTTTT",
+   "TTTTTTTTTTT.oooo\"\"\"\"\"\".TTTTTTTTTTT",
+   "TTTTTTTTTTT.oooo\"\"\"\"\"\".TTTTTTTTTTT",
+   "TTTTTTTTTTT.oooo\"\"\"\"\"\".TTTTTTTTTTT",
+   "TTTTTTTTTTT.oooo\"\"\"\"\"\".TTTTTTTTTTT",
+   "TTTTTTTTTTT.oooo\"\"\"\"\"\".TTTTTTTTTTT",
+   "TTTTTTTTTTT.oooo\"\"\"\"\"\"kkkkkkkkkkkk",
+   "TTTTTTTTTTT.ooooooooooqq~~~~~~~~~~",
+   "TTTTTTTTTTT.ooooooooooqq~~~~~~~~~~",
+   "TTTTTTTTTTT.oooooooooqq~~~~~~~~~~~",
+   "kkkkkkkkkkkkoooooooooqq~~~~~~~~~~~",
+   "~~~~~~~~~~qqooooooooooqq~~~~~~~~~~",
+   "~~~~~~~~~~qqqqooooooooqq~~~~~~~~~~",
+   "~~~~~~~~qq~~qqooooooooooqq~~~~~~~~",
+   "~~~~~~~~qq~qqoooooooooooqq~~~~~~~~",
+   "~~~~~~~~~~~qqooooooooooooqq~~~~~~~",
+   "~~~~~~~~qqqqooooooooooqqoqq~~~~~~~",
+   "~~~~~~~~qqqqooooooooooqqooqq~~~~~~",
+   "~~~~~~~qqoooooooooooooooooqq~~~~~~",
+   "~~~~~~~qqoqqoooooooooooooooqq~~~~~",
+   "~~~~~~qqooqqooooooooo===oooqq~~~~~",
+   "~~~~~~qqoooooooooooo====oooqq~~~~~",
+   "~~~~~qqooooooooooooo===ooooqq~~~~~",
+   "~~~~~qqoooooooooooooooooooqq~~~~~~",
+   "~~~~~qqoooo===ooooooooooooqq~~~~~~",
+   "~~~~~qqooo======oooooooooooqq~~~~~",
+   "~~~~~~qqoo=====Xoooooooooooqq~~~~~",
+   "~~~~~~qqoo======ooooooooooqq~~~~~~",
+   "~~~~~~qqooooo==oooooooooooqq~~~~~~",
+   "~~~~~~qqoooooooooooooooooqq~~~~~~~",
+   "~~~~~qqooqqooooooooooooooqq~~~~~~~",
+   "~~~~~qqooqqooooooooooooooooqq~~~~~",
+   "~~~~~~qqoooooqqooooooooooqqqq~~~~~",
+   "~~~~~~qqoooooqqooooooooooqq~~~~~~~",
+   "~~~~~~~qqoooooooooooooooooqq~~~~~~",
+   "~~~~~~~qqooqqoooooooooooooqq~~~~~~",
+   "~~~~~~~qqooqqoooooooo==oooqq~~~~~~",
+   "~~~~~~~qqooooooooooo====ooqq~~~~~~",
+   "~~~~~~qqoooooooooooo====ooqq~~~~~~",
+   "~~~~~~qqoooooooooooo===oooqq~~~~~~",
+   "~~~~~~~~qqoooooooooooooooooqq~~~~~",
+   "~~~~~~~~qqoooooooooooooooooqq~~~~~",
+   "~~~~~~qqooooooooooooooooooqq~~~~~~",
+   "~~~~~~qqooooooooooooooooooqq~~~~~~",
+   "~~~~~qqooooooooooooooooooooqq~~~~~",
+   "~~~~~qqooooooooooooooooooooqq~~~~~",
+   "~~~~~qqooqqooooooooooooqqooqq~~~~~",
+   "~~~~~qqooqqooooooooooooqqooqq~~~~~",
+   "~~~~~~qqooooooooooooooooooqq~~~~~~",
+   "~~~~~~qqqqooooooooooooooooqq~~~~~~",
+   "~~~~~~~~qqooqqoooooooooooqq~~~~~~~",
+   "~~~~~~~qqoooqqoooooooooooqq~~~~~~~",
+   "~~~~~~~qqooooooooooooooooqq~~~~~~~",
+   "~~~~~~~qqooo==oooooooooooqq~~~~~~~",
+   "~~~~~~~qqooo====ooooooooooqq~~~~~~",
+   "~~~~~~~~~qqoo===ooooooooooqq~~~~~~",
+   "~~~~~~~qqqqoooXoooooooooqqqq~~~~~~",
+   "~~~~~~~qqoooooooooooooooqqqq~~~~~~",
+   "~~~~~~qqooooooooooooooooooqq~~~~~~",
+   "~~~~~~qqoqqooooooooo====ooqq~~~~~~",
+   "~~~~~~qqoqqoooooooo=====ooqq~~~~~~",
+   "~~~~~~qqooooooooooo=====ooqq~~~~~~",
+   "~~~~~~~qqooooooooooo===oooqq~~~~~~",
+   "~~~~~~~qqoooooooooooooooooqq~~~~~~",
+   "~~~~~~~qqooooooooooooooooqq~~~~~~~",
+   "~~~~~~~qqooooooooooooooooqq~~~~~~~",
+   "~~~~~~qqoooooooooooooooooqq~~~~~~~",
+   "~~~~~~qqoo=====ooooooooooqq~~~~~~~",
+   "~~~~~~qqoo======ooooooooooqq~~~~~~",
+   "~~~~~~qqooo=====ooooooooooqq~~~~~~",
+   "~~~~~~~qqooo====ooooooooqq~qq~~~~~",
+   "~~~~~qqqqoooooooooooooooqq~qq~~~~~",
+   "~~~~~qqqqoooooooooooooooooqq~~~~~~",
+   "~~~~~~~qqoooooooooooooooooqq~~~~~~",
+   "~~~~~~qqooooooooooooooooooqq~~~~~~",
+   "~~~~~~qqooooooooooooooooooqq~~~~~~",
+   "~~~~~qqooooooooooXoooooooooqq~~~~~",
+   "~~~~~qqoooooooooooooooooqqoqq~~~~~",
+   "~~~~~~qqoqqoooooooooooooqqqq~~~~~~",
+   "~~~~~~qqoqqqqoooooooooooooqq~~~~~~",
+   "~~~~~~qqoooqqoooooooooooooqq~~~~~~",
+   "~~~~~~qqoooooooooooooooqqoqq~~~~~~",
+   "~~~~~~qqooooo====ooooooqqoqq~~~~~~",
+   "~~~~~~qqooo======ooooqqoooqq~~~~~~",
+   "~~~~~~qqooo====ooooooqqooqq~~~~~~~",
+   "~~~~~~qqoooooooooooooooqqqq~~~~~~~",
+   "~~~~~~~qqooooooooooooooqq~~~~~~~~~",
+   "~~~~~~~qqoooooooooooooqq~~~~~~~~~~",
+   "~~~~~~~qqoqqooooooooooqq~~~~~~~~~~",
+   "~~~~~~~qqoqqoooooooooqq~~~~~~~~~~~",
+   "~~~~~~qqoooqqooooooooqq~~~~~~~~~~~",
+   "~~~~~~qqqqoqqooooooooqq~~~~~~~~~~~",
+   "~~~~~~qqqqooooo=====oqq~~~~~~~~~~~",
+   "~~~~~~qqooooooo======oqq~~~~~~~~~~",
+   "~~~~~qqoooooooo======oqq~~~~~~~~~~",
+   "~~~~~qqooouuuuuoo====oqq~~~~~~~~~~"
+  ],
+  "exits": {
+   "w": "PALLET_TOWN",
+   "u": "CINNABAR_ISLAND"
+  },
+  "buildings": {},
+  "signs": [
+   [
+    "ROUTE 21",
+    "North: Pallet Town. South: Cinnabar Island. It's a long swim!"
+   ]
+  ],
+  "trainer_spots": [
+   "Tucker",
+   "Lola",
+   "Irene"
+  ]
+ },
+ "SEAFOAM_ISLANDS": {
+  "theme": "ice",
+  "descend": true,
+  "buildings": {},
+  "floors": [
+   {
+    "art": [
+     "cccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccc.....c",
+     "cccc.!.....................ccc.+...c",
+     "cccc....s..................c.c.....c",
+     "cccc...sss+........cc........c.....c",
+     "cccc.cssss....ccccccccccc==ccc.....c",
+     "cccc.csssss...c......c..c...c.c....c",
+     "cccc..sssss...c.........cc......s..c",
+     "ccccc.ssss...cc.....s...cc.sssssss.c",
+     "ccccc..sss....c....sss..ccsssssss..c",
+     "cccc....s.....c....sss..cc.sssss...c",
+     "cccc.......c..c...ssss..cc..sss....c",
+     "cccccccc==ccccc..ssssss.cccccbcccccc",
+     "ccc.............ssssss..cc.........c",
+     "ccc...........sssssss...cc.........c",
+     "ccc...........ssssss....cc.........c",
+     "ccc............sss......cc.........c",
+     "ccc.....................cc..+......c",
+     "ccccc...ccccccccccccccccccccccc...cc",
+     "ccccc<<<ccccccccccccccccccccccc>>>cc",
+     "cccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccc"
+    ],
+    "exits": {
+     "<": "KANTO_ROUTE_20",
+     ">": "KANTO_ROUTE_20"
+    },
+    "parts": true,
+    "signs": [
+     [
+      "Boulders block the way down. Strength, and a sharp mind, can move them!"
+     ]
+    ]
+   },
+   {
+    "art": [
+     "cccccccccccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccc..........ccccccccccccccc",
+     "ccccccc....+......c..........c.....c...ccccc",
+     "ccccccc...........c..........c.....-...ccccc",
+     "ccccccc..cccccccccc.....cc==cc.........ccccc",
+     "ccccccc..c.....-ccc.....c.....c........ccccc",
+     "ccccccc..c.......cc.....c.....c........ccccc",
+     "ccccccc..c....ccccc.....c..c..c.c......ccccc",
+     "ccccccc..c....ccccc..+..c.....c........ccccc",
+     "ccccccc..c....cc........c.....c........ccccc",
+     "ccccccc..cc==ccc........c.....cccccccccccccc",
+     "ccccccc........c........cccccc.........ccccc",
+     "ccccccc........c.............c.........ccccc",
+     "ccccccc........c.............c......+..ccccc",
+     "ccccccc........c.............c.........ccccc",
+     "ccccccc........cc==ccccccccccc.........ccccc",
+     "ccccccc..............c........c........ccccc",
+     "ccccccc..............c........c.c......ccccc",
+     "ccccccc..............c.......+c.-......ccccc",
+     "cccccccccccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccccccccccc"
+    ],
+    "exits": {},
+    "parts": true
+   },
+   {
+    "art": [
+     "cccccccccccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccccccccccc",
+     "ccccccc....c...................ccccccccccccc",
+     "ccccccc....-...................c....+.cccccc",
+     "ccccccc........................c......cccccc",
+     "ccccccc..........cccccccc......c......cccccc",
+     "ccccccc........ssc...c..c......cccc==ccccccc",
+     "ccccccc....ssssssc...cc.c...cccc.......ccccc",
+     "ccccccc..ssssssssc...-..c....cc........ccccc",
+     "cccccccccccccccccc......cccccccc.......ccccc",
+     "cccccccc.......................c.......ccccc",
+     "cccccccc.......................c.......ccccc",
+     "cccccccc.......................ccccccccccccc",
+     "cccccccccccc==cccccccccc.......cc...-.cccccc",
+     "ccccccc.........sssssssc.......cc.....cccccc",
+     "ccccccc............ssssccc==ccccc.....cccccc",
+     "ccccccc....+.........ssss.......c..+..cccccc",
+     "ccccccc......................c..c.....cccccc",
+     "ccccccc................cc....-..cccccccccccc",
+     "ccccccccccccccccccccccccc.cccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccccccccccc"
+    ],
+    "exits": {},
+    "parts": true,
+    "ladders": [
+     0,
+     2,
+     1
+    ]
+   },
+   {
+    "art": [
+     "cccccccccccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccccccccccc",
+     "ccccccc.........ccccccccccccc.....-c.ccccccc",
+     "ccccccc.........cccoooooooocc...+....ccccccc",
+     "ccccccc.........ccooooooooooc........ccccccc",
+     "ccccccc.........ccccccccccoocccccccccccccccc",
+     "ccccccc.....c==ccc.......coocccccccccccccccc",
+     "ccccccc.....c..+.c.......cooc........ccccccc",
+     "ccccccc.....c....c...cc==cooc........ccccccc",
+     "ccccccc.....cccccc...ccooooocc==c....ccccccc",
+     "ccccccc.c............cooooooooocc....ccccccc",
+     "ccccccc.cc....cccc...cooooooooooc....ccccccc",
+     "ccccccc.......c..c....ccccccooccc....ccccccc",
+     "ccccccccccccccc..c.........cooc...c..ccccccc",
+     "cccccc........c..c.........cooc...-..ccccccc",
+     "cccccc....c......cccccccccccoocccccccccccccc",
+     "cccccc...-c.c...c........cccoocccccccccccccc",
+     "cccccc....c..............cccoocccccccccccccc",
+     "ccccccccccccccccccccccccccccoocccccccccccccc",
+     "ccccccccccccccccccccccccccccoocccccccccccccc",
+     "ccccccccccccccccccccccccccccoocccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccccccccccc"
+    ],
+    "exits": {},
+    "parts": true
+   },
+   {
+    "art": [
+     "cccccccccccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccooooooccccccccccccccccccccccccc",
+     "cccccoocccccooooooooc..........!cccccccccccc",
+     "cccccoocccccooooooooc............ccccccccccc",
+     "cccccoocc==cooooooooc............-cccccccccc",
+     "cccccoooooooooccccccc...ccccc==ccccccccccccc",
+     "cccccoooooooocc.cc......ccoooooooooccccccccc",
+     "cccccooooooooc...-......cooooooooooocccccccc",
+     "cccccooooooooc.........ccooooooooooocccccccc",
+     "cccccoooooooocc......ccccooooooooooocccccccc",
+     "cccccoooooooocc==ccc.ccooooooooooooocccccccc",
+     "cccccooooooooooooocc.coooooooooooooccccccccc",
+     "cccccooooooooooooooc.coooooooooooooccccccccc",
+     "cccccooooooooooooooc.coooooooooooooccccccccc",
+     "cccccooooooooooooooc.coooooooooooooccccccccc",
+     "ccccccccccccoooccccc.cccoooooooooooccccccccc",
+     "ccccccccccccoooc.......cccoooooooooccccccccc",
+     "ccccccccccccoooc.!.......coocccccccccccccccc",
+     "ccccccccccccoooc....N....coocccccccccccccccc",
+     "ccccccccccccooocc.......ccoocccccccccccccccc",
+     "ccccccccccccooocccccccccccoocccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccccccccccc"
+    ],
+    "exits": {},
+    "parts": true,
+    "people": [
+     "CHALLENGE ARTICUNO"
+    ],
+    "signs": [
+     [
+      "The water runs fast here. Surf with care!"
+     ],
+     [
+      "Something very cold is close by..."
+     ]
+    ]
+   }
+  ]
+ },
+ "CINNABAR_ISLAND": {
+  "art": [
+   "q~~~~YYYYYYYwwVVVGGGGGG~",
+   "~~~~~YYYYYYYssVDVGGGGGG~",
+   "q~~~~YYYYYYY.....GGGGGG~",
+   "~~~~~YYYYYYY!....GGGGGG~",
+   "~~q~~YYYDYYY.....GGGDGG~",
+   "~~~~~sssssss.sssssss..!q",
+   "~~q~~LLLLLLL.sssssss...u",
+   "~~~~~LLLLLLL...........u",
+   "q~~~~LLLLLLLCCCCCMMMMssu",
+   "~~~~~LLLDLLLCCCCCMMMMssu",
+   "q~~~~ss..!..CCCCCMMMMssu",
+   "~~~~~sssssssCCDCCMMDMssu",
+   "~~q~~~~~ssss.........ssu",
+   "~~~~~~~~ssssssHDHHsssss~",
+   "~~q~~~~~ssssssHHHHsssss~",
+   "~~~~~~~~~~~~~~~~~~~~~~~~",
+   "~~~q~~~~~~~~~~~~~~~~~~~~",
+   "~~~~~q~q~~~~~~~q~q~q~~~~",
+   "~~~~~~~~~q~q~q~~~~~~~q~q",
+   "~~~~~~~~~~~~~~~~~~~~~~~~"
+  ],
+  "exits": {
+   "w": "KANTO_ROUTE_21",
+   "u": "KANTO_ROUTE_20",
+   "V": "CINNABAR_VOLCANO"
+  },
+  "buildings": {
+   "Y": "mansion",
+   "V": "cave",
+   "G": "gym",
+   "L": "fossil",
+   "C": "center",
+   "M": "mart",
+   "H": "harbor"
+  },
+  "roofs": {
+   "Y": [
+    150,
+    92,
+    70
+   ],
+   "G": [
+    214,
+    176,
+    70
+   ],
+   "L": [
+    226,
+    220,
+    196
+   ]
+  },
+  "signs": [
+   [
+    "POKEMON MANSION",
+    "An old mansion. Nobody has lived here for years..."
+   ],
+   [
+    "CINNABAR ISLAND GYM",
+    "Leader: Blaine, the Hotheaded Quiz Master!"
+   ],
+   [
+    "POKEMON LAB",
+    "Fossils brought back to life here!"
+   ]
+  ]
+ },
+ "SAFFRON_CITY": {
+  "art": [
+   "TTTTTTTTTTTTTTTTTTTTTTTTAAAAAATTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTAAAAAATTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTAAAAAATTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTAAAAAATTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTAAAAAATTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTAAAAAATTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTAAAAAATTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTSSSSSSSSSTTTTTAADAAATTTTTTTTTTTTTTOOOOOOOGGGGGGGTTTTTTTTTTT",
+   "TTTTTTTTiiSSSSSSSSSiiiiippppppiiiiiiiiiiiiiiOOOOOOOGGGGGGGiiiiTTTTTTT",
+   "TTTTTTTTipSSSSSSSSSΑΑΑΑΑppppppΒΒΒΒΒΓΓΓΓΓppppOOOOOOOGGGGGGGpppiTTTTTTT",
+   "TTTTTTTTipSSSSSSSSSΑΑΑΑΑpaaaapΒΒΒΒΒΓΓΓΓΓppppOOOOOOOGGGGGGGpppiTTTTTTT",
+   "TTTTTTTTipSSSSSSSSSΑΑΑΑΑpaaaapΒΒΒΒΒΓΓΓΓΓpplpOOODOOOGGGDGGGplpiTTTTTTT",
+   "TTTTTTTTipSSSSSSSSSΑΑΑΑΑpaaaapΒΒΒΒΒΓΓΓΓΓpppppppppppppppppppppiTTTTTTT",
+   "TTTTTTTTipSSSSSSSSSΑΑΑΑΑpaaaapΒΒΒΒΒΓΓΓΓΓpppppppppppppppppppppiTTTTTTT",
+   "TTTTTTTTipSSSSSSDSSΑΑDΑΑpaaaapΒΒDΒΒΓΓDΓΓiiiiiiiii!iiippp!iiiiiTTTTTTT",
+   "TTTTTTTTippppppppppppppppaaaappppppppppppppppppppppppppppppppiTTTTTTT",
+   "TTTTTTTTihpppppppp!pppphpaaaappppppppppppppppppppppppppppppppiTTTTTTT",
+   "TTTTTTTTilaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaapiTTTTTTT",
+   "TTTTTTTTiaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaiTTTTTTT",
+   "TTTTTTTTipaaaaΔΔΔΔΕΕΕΕHHHHΖΖΖΖYYYYYYYYYYΗΗΗMMMMpΘΘΘΘΙΙΙΙpaaaaiTTTTTTT",
+   "TTTTTTTTipaaaaΔΔΔΔΕΕΕΕHHHHΖΖΖΖYYYYYYYYYYΗΗΗMMMMpΘΘΘΘΙΙΙΙpaaaaiTTTTTTT",
+   "TTTTTTTTipaaaaΔΔΔΔΕΕΕΕHHHHΖΖΖΖYYYYYYYYYYΗΗΗMMMMpΘΘΘΘΙΙΙΙpaaaaiTTTTTTT",
+   "TTTTTTTTipaaaaΔΔDΔΕΕDΕHHDHΖΖDΖYYYYYYYYYYΗDΗMMDMpΘΘDΘΙΙDΙpaaaaiTTTTTTT",
+   "TTTTTTTTipaaaahpppppppppppppppYYYYYYYYYYppppppppppppppphpaaaaiTTTTTTT",
+   "TTTTTTTTipaaaaaaaaaaaaaaaaaappYYYYYYYYYYppaaaaaaaaaaaaaaaaaaaiTTTTTTT",
+   "TTTTTTTTipaaaaaaaaaaaaaaaaaappYYYYYYYYYYppaaaaaaaaaaaaaaaaaaaiTTTTTTT",
+   "TTTTTTTTilaaaalaaaaaaaaaaalappYYYYYYYYYYppalaaaaaaaaaaalaaaaaiTTTTTTT",
+   "TTTTTTTTipaaaappppppppppppppppYYYYYYYYYYpppppppppppppppppaaaaiTTTTTTT",
+   "TTTTTTTTipaaaaΚΚΚΚΚΛΛΛΛΛΜΜΜΜΜpYYYYYYYYYYpΝΝΝΝΝΞΞΞΞΞΟΟΟΟΟpaaaaiTTTTTTT",
+   "TTTTTTTTipaaaaΚΚΚΚΚΛΛΛΛΛΜΜΜΜΜpYYYYYYYYYYpΝΝΝΝΝΞΞΞΞΞΟΟΟΟΟpaaaaiTTTTTTT",
+   "TTTTTTTTipaaaaΚΚΚΚΚΛΛΛΛΛΜΜΜΜΜpYYYYYDYYYYpΝΝΝΝΝΞΞΞΞΞΟΟΟΟΟpaaaaiTTTTTTT",
+   "TTTTTTTTipaaaaΚΚΚΚΚΛΛΛΛΛΜΜΜΜΜppppppppppppΝΝΝΝΝΞΞΞΞΞΟΟΟΟΟpaaaaiTTTTTTT",
+   "TTTTTTTTipaaaaΚΚΚΚΚΛΛΛΛΛΜΜΜΜΜppppppppppppΝΝΝΝΝΞΞΞΞΞΟΟΟΟΟpaaaaiTTTTTTT",
+   "TTTTTTTTipaaaaΚΚDΚΚΛΛDΛΛΜΜDΜΜpaaaaaaaaaapΝΝDΝΝΞΞDΞΞΟΟDΟΟpaaaaiTTTTTTT",
+   "TTTTTTTTipaaaapppppppphpppppppaa!aaaaaaappppppppphpppppppaaaaiTTTTTTT",
+   "EEEEEETTipaaaappppppppppppppppaaaaaaaaaapppppppppppppppppaaaaiTTFFFFF",
+   "EEEEEE..ilaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaai..FFFFF",
+   "EEEEEE..ppaaaaΠΠΠΠCCCCCΡΡΡΡΣΣΣΣΤΤΤΤΥΥΥΥΦΦΦΦpppppppppΨΨΨΨpaaaap..FFFFF",
+   "EEEEEE<.paaaaaΠΠΠΠCCCCCΡΡΡΡΣΣΣΣΤΤΤΤΥΥΥΥΦΦΦΦpppppΧΧΧΧΨΨΨΨaaaaap.>FFFFF",
+   "EEEEEE<.paaaaaΠΠΠΠCCCCCΡΡΡΡΣΣΣΣΤΤΤΤΥΥΥΥΦΦΦΦpplppΧΧΧΧΨΨΨΨaaaaap.>FFFFF",
+   "EEEEEE<.paaaaaΠΠDΠCCDCCΡΡDΡΣΣDΣΤΤDΤΥΥDΥΦΦDΦpppp!ΧΧDΧΨΨDΨaaaaap.>FFFFF",
+   "TTTTT...ppaaaahppppppppppppppphppppppppphppiiiipppppppphpaaaap..TTTTT",
+   "TTTTTTTTipaaaapppppppppppppppppppppppppppppppppppppppppppaaaaiTTTTTTT",
+   "TTTTTTTTipaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaiTTTTTTT",
+   "TTTTTTTTipppΩΩΩΩББББГГГГpaaaapДДДДЖЖЖЖЗЗЗЗИИИИЛЛЛЛППППФФФФpppiTTTTTTT",
+   "TTTTTTTTipppΩΩΩΩББББГГГГpaaaapДДДДЖЖЖЖЗЗЗЗИИИИЛЛЛЛППППФФФФpppiTTTTTTT",
+   "TTTTTTTTilppΩΩΩΩББББГГГГpaaaapДДДДЖЖЖЖЗЗЗЗИИИИЛЛЛЛППППФФФФppliTTTTTTT",
+   "TTTTTTTTipppΩΩΩΩББББГГГГpaaaapДДДДЖЖЖЖЗЗЗЗИИИИЛЛЛЛППППФФФФpppiTTTTTTT",
+   "TTTTTTTTiiiiiiiiiiiiiiiiiavvaiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTBBBBBTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTBBBBBTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTBBBBBTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTBBBBBTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT"
+  ],
+  "exits": {
+   "A": "KANTO_ROUTE_5",
+   "v": "KANTO_ROUTE_6",
+   "<": "KANTO_ROUTE_7",
+   ">": "KANTO_ROUTE_8",
+   "Y": "SILPH_CITY"
+  },
+  "buildings": {
+   "A": "gate",
+   "B": "gate",
+   "E": "gate",
+   "F": "gate",
+   "S": "station",
+   "O": "dojo",
+   "G": "gym",
+   "H": "copycat",
+   "Y": "silph",
+   "M": "mart",
+   "C": "center",
+   "Α": "house",
+   "Β": "house",
+   "Γ": "house",
+   "Δ": "house",
+   "Ε": "house",
+   "Ζ": "house",
+   "Η": "house",
+   "Θ": "house",
+   "Ι": "house",
+   "Κ": "house",
+   "Λ": "house",
+   "Μ": "house",
+   "Ν": "house",
+   "Ξ": "house",
+   "Ο": "house",
+   "Π": "house",
+   "Ρ": "house",
+   "Σ": "house",
+   "Τ": "house",
+   "Υ": "house",
+   "Φ": "house",
+   "Χ": "house",
+   "Ψ": "house",
+   "Ω": "house",
+   "Б": "house",
+   "Г": "house",
+   "Д": "house",
+   "Ж": "house",
+   "З": "house",
+   "И": "house",
+   "Л": "house",
+   "П": "house",
+   "Ф": "house"
+  },
+  "roofs": {
+   "S": [
+    170,
+    200,
+    210
+   ],
+   "O": [
+    176,
+    120,
+    76
+   ],
+   "G": [
+    150,
+    90,
+    190
+   ],
+   "H": [
+    190,
+    120,
+    200
+   ],
+   "Y": [
+    120,
+    170,
+    210
+   ],
+   "Α": [
+    214,
+    204,
+    120
+   ],
+   "Β": [
+    214,
+    204,
+    120
+   ],
+   "Γ": [
+    214,
+    204,
+    120
+   ],
+   "Δ": [
+    96,
+    170,
+    96
+   ],
+   "Ε": [
+    96,
+    170,
+    96
+   ],
+   "Ζ": [
+    96,
+    170,
+    96
+   ],
+   "Η": [
+    96,
+    170,
+    96
+   ],
+   "Θ": [
+    96,
+    170,
+    96
+   ],
+   "Ι": [
+    96,
+    170,
+    96
+   ],
+   "Κ": [
+    214,
+    204,
+    120
+   ],
+   "Λ": [
+    214,
+    204,
+    120
+   ],
+   "Μ": [
+    214,
+    204,
+    120
+   ],
+   "Ν": [
+    214,
+    204,
+    120
+   ],
+   "Ξ": [
+    214,
+    204,
+    120
+   ],
+   "Ο": [
+    214,
+    204,
+    120
+   ],
+   "Π": [
+    96,
+    170,
+    96
+   ],
+   "Ρ": [
+    96,
+    170,
+    96
+   ],
+   "Σ": [
+    96,
+    170,
+    96
+   ],
+   "Τ": [
+    96,
+    170,
+    96
+   ],
+   "Υ": [
+    96,
+    170,
+    96
+   ],
+   "Φ": [
+    96,
+    170,
+    96
+   ],
+   "Χ": [
+    176,
+    120,
+    76
+   ],
+   "Ψ": [
+    96,
+    170,
+    96
+   ],
+   "Ω": [
+    96,
+    170,
+    96
+   ],
+   "Б": [
+    96,
+    170,
+    96
+   ],
+   "Г": [
+    96,
+    170,
+    96
+   ],
+   "Д": [
+    96,
+    170,
+    96
+   ],
+   "Ж": [
+    96,
+    170,
+    96
+   ],
+   "З": [
+    96,
+    170,
+    96
+   ],
+   "И": [
+    96,
+    170,
+    96
+   ],
+   "Л": [
+    96,
+    170,
+    96
+   ],
+   "П": [
+    96,
+    170,
+    96
+   ],
+   "Ф": [
+    96,
+    170,
+    96
+   ]
+  },
+  "signs": [
+   [
+    "FIGHTING DOJO",
+    "Masters of fighting moves train here. Think fast, hit hard!"
+   ],
+   [
+    "SAFFRON CITY GYM",
+    "Leader: Sabrina, the Master of Psychic Pokemon!"
+   ],
+   [
+    "MAGNET TRAIN STATION",
+    "The fastest way to Goldenrod City in Johto!"
+   ],
+   [
+    "SILPH CO.",
+    "Home of the Silph Scope, Poke Balls... and many good ideas!"
+   ],
+   [
+    "SAFFRON CITY",
+    "Shining, golden land of commerce. Where every number counts!"
+   ]
+  ]
+ },
+ "POWER_PLANT": {
+  "theme": "tunnel",
+  "art": [
+   "ccccccccccccccccccccc",
+   "ccccccccccccccccccccc",
+   "cm.mm.mm.mm........mc",
+   "c................N..c",
+   "cm..................c",
+   "cm..iiiiiiii..iiii..c",
+   "cm..immmmmmiNNimmi..c",
+   "cm..immmmmmmmmmmmi..c",
+   "cm..immmmmmmmmmmmi..c",
+   "cm..immmmmmmmmmmmi..c",
+   "cm..iiiiiiiiiiiiii..c",
+   "cm..................c",
+   "c...................c",
+   "iiiiiiiiiiiii..iiiiii",
+   "ccccccccccc!c..cccccc",
+   "cmmmm..............mc",
+   "c...................c",
+   "ccccccvvccccccccccccc"
+  ],
+  "exits": {
+   "v": "KANTO_ROUTE_10"
+  },
+  "buildings": {},
+  "people": [
+   "CHALLENGE ZAPDOS",
+   "TALK TO THE MANAGER",
+   "RETURN THE MACHINE PART"
+  ],
+  "signs": [
+   [
+    "POWER PLANT",
+    "Danger! High voltage! Electric Pokemon have moved in."
+   ]
+  ]
+ },
+ "KANTO_ROUTE_23": {
+  "art": [
+   "TTTTTTTcccccccr^^^rccccccccTTTTTTT",
+   "TTTTTTTTTTTcccr===rccccTTTTTTTTTTT",
+   "TTTTTTTTTTTjejee!eeeeejTTTTTTTTTTT",
+   "TTTTTTTTTTTjejjeejejeejTTTTTTTTTTT",
+   "TTTTTTTTTTTejejeejejejjTTTTTTTTTTT",
+   "TTTTTTTggggjeeejeejeejjggggTTTTTTT",
+   "TTTTTTTggggjeeejeejeeejggggTTTTTTT",
+   "TTTTTTTggggeejejejeeeeeggggTTTTTTT",
+   "TTTTTTTggggeejejejeeejeggggTTTTTTT",
+   "TTTTTTTggggjeejejejeejeggggTTTTTTT",
+   "TTTTTTTggggjeejejejeejeggggTTTTTTT",
+   "TTTTTTTggggejeejeejeeeeggggTTTTTTT",
+   "TTTTTTTggggjjjejeejejeeggggTTTTTTT",
+   "TTTTTTTggggjejejeejejeeggggTTTTTTT",
+   "TTTTTTTggggjejejeejejejggggTTTTTTT",
+   "TTTTTTTggggjejeeeeeejejggggTTTTTTT",
+   "TTTTTTTr..reeeeeeeeeeeer..rTTTTTTT",
+   "TTTTTTT...eeeeeeeeeeeeee...TTTTTTT",
+   "TTTTTTT.................N..TTTTTTT",
+   "TTTTTTT....................TTTTTTT",
+   "TTTTTTT.ccccccccccccccc....TTTTTTT",
+   "TTTTTTT.ccccccccccccccc....TTTTTTT",
+   "TTTTTTT.ccccccccccccccc....TTTTTTT",
+   "TTTTTTT.ccccccccccccccc....TTTTTTT",
+   "TTTTTTT.cccccccccccccccccc.TTTTTTT",
+   "TTTTTTT.cccccccccccccccccc.TTTTTTT",
+   "TTTTTTT.cccccccccccccccccc.TTTTTTT",
+   "TTTTTTT.cccccccccccccccccc.TTTTTTT",
+   "TTTTTTT.cccccccccccccccccc.TTTTTTT",
+   "TTTTTTT.reeerrcccc..ccc....TTTTTTT",
+   "TTTTTTT.eeeee.cccc..ccc....TTTTTTT",
+   "TTTTTTT.!eeee.cccc..ccc....TTTTTTT",
+   "TTTTTTT.eeeee.cccc.........TTTTTTT",
+   "TTTTTTTreeeee.cccccccccccc.TTTTTTT",
+   "TTTTTTT.eeeeercccccccccccc.TTTTTTT",
+   "TTTTTTT.reeer.cccccccccccc.TTTTTTT",
+   "TTTTTTT.eeeee.cccccccccccc.TTTTTTT",
+   "TTTTTTT.eeeee.cccccccccccc.TTTTTTT",
+   "TTTTTTT.eeeee.cccccccccccc.TTTTTTT",
+   "TTTTTTT.eeeeercccccccccccc.TTTTTTT",
+   "TTTTTTTrreeer.cccccccccccc.TTTTTTT",
+   "TTTTTTT.eeeee....\"\"\"\"\".....TTTTTTT",
+   "TTTTTTT.eeeee...r\"\"\"\"\".....TTTTTTT",
+   "TTTTTTT.....N...r..........TTTTTTT",
+   "TTTTTTTggggggg...r...eeeeeeTTTTTTT",
+   "TTTTTTTggggggg..rrrr.eeeeeeTTTTTTT",
+   "TTTTTTTggggggg.......eeeeeeTTTTTTT",
+   "TTTTTTTgggggggeeeeee.eeeeeeTTTTTTT",
+   "TTTTTTTgggggggeeeeee.......TTTTTTT",
+   "TTTTTTTgggggggeeeeee..f....TTTTTTT",
+   "TTTTTTTgggggggeeeeee.......TTTTTTT",
+   "TTTTTTTgggggggeeeeee....N..TTTTTTT",
+   "TTTTTTTr..r..r......gggggggTTTTTTT",
+   "TTTTTTT.............gggggggTTTTTTT",
+   "TTTTTTTgggggggggeeeegggggggTTTTTTT",
+   "TTTTTTTgggggggggeeeegggggggTTTTTTT",
+   "TTTTTTTgggggggggeeeegggggggTTTTTTT",
+   "TTTTTTTgggggggggeeeegggggggTTTTTTT",
+   "TTTTTTTgggggggggeeeegggggggTTTTTTT",
+   "TTTTTTTgggggggggeeeegggggggTTTTTTT",
+   "TTTTTTTgggggggggeeeegggggggTTTTTTT",
+   "TTTTTTTgggggggggeeeegggrgggTTTTTTT",
+   "TTTTTTTgggggg\"\"\"\"\"......gggTTTTTTT",
+   "TTTTTTTgggggg\"\"\"N\"......gggTTTTTTT",
+   "TTTTTTTgggggg\"\"\"\"r......gggTTTTTTT",
+   "TTTTTTTgggggg.....\"\"\"\"\"\"gggTTTTTTT",
+   "TTTTTTTggggggr....r\"\"\"\"\"gggTTTTTTT",
+   "TTTTTTTgggggg.....\"\"\"\"\"\"gggTTTTTTT",
+   "TTTTTTTggggggr...r......gggTTTTTTT",
+   "TTTTTTTgggggg........r..gggTTTTTTT",
+   "TTTTTTTggggggr\"\"\".r.....gggTTTTTTT",
+   "TTTTTTTgggggg\"\"\"\"....r..gggTTTTTTT",
+   "TTTTTTTggggggr\"\"\".......gggTTTTTTT",
+   "TTTTTTTgggggg...........gggTTTTTTT",
+   "TTTTTTTggggggr..........r.rTTTTTTT",
+   "TTTTTTTgggggg.r........\"\"\"\"TTTTTTT",
+   "TTTTTTTgggggg..........\"\"\"\"TTTTTTT",
+   "TTTTTTTggggggsssssssss.\"\"\"\"TTTTTTT",
+   "TTTTTTTggggggooooooooggggggTTTTTTT",
+   "TTTTTTTggggggooooooooggggggTTTTTTT",
+   "TTTTTTTggggggooooooooggggggTTTTTTT",
+   "TTTTTTTggggggooooooooggggggTTTTTTT",
+   "TTTTTTTggggggooooooooggggggTTTTTTT",
+   "TTTTTTTsoooooooooooooooooosTTTTTTT",
+   "TTTTTTTsoooooooooooooooooosTTTTTTT",
+   "TTTTTTTsoooooooooooooooooosTTTTTTT",
+   "TTTTTTTsoooooooooooooooooosTTTTTTT",
+   "TTTTTTTsoooooooooooooooooosTTTTTTT",
+   "TTTTTTTsoooooooooooooooooosTTTTTTT",
+   "TTTTTTTgggggoooogggggggggggTTTTTTT",
+   "TTTTTTTgggggoooogggggggggggTTTTTTT",
+   "TTTTTTTgggggoooogggggggggggTTTTTTT",
+   "TTTTTTTgggggoooogggggggggggTTTTTTT",
+   "TTTTTTTgggoroooooooooooggggTTTTTTT",
+   "TTTTTTTgggoNoooooooooooggggTTTTTTT",
+   "TTTTTTTgggoooooooooooooggggTTTTTTT",
+   "TTTTTTTgggoooooooooooooggggTTTTTTT",
+   "TTTTTTTgggoooooooooooooggggTTTTTTT",
+   "TTTTTTTgggoooosssssooooggggTTTTTTT",
+   "TTTTTTTgggoooosssssooooggggTTTTTTT",
+   "TTTTTTTgggoooosssssooooggggTTTTTTT",
+   "TTTTTTTgggoooosssssooooggggTTTTTTT",
+   "TTTTTTTgggoooosssssooooggggTTTTTTT",
+   "TTTTTTTgggoooooooooooooggggTTTTTTT",
+   "TTTTTTTsoooooooooooooooggggTTTTTTT",
+   "TTTTTTTsoooooooooooooooggggTTTTTTT",
+   "TTTTTTTsoooooooooooooooggggTTTTTTT",
+   "TTTTTTTsoooooooooooooooggggTTTTTTT",
+   "TTTTTTTggggggggggooooggggggTTTTTTT",
+   "TTTTTTTggggggggggooooggggggTTTTTTT",
+   "TTTTTTTggggggggggooooggggggTTTTTTT",
+   "TTTTTTTggggggggggooooggggggTTTTTTT",
+   "TTTTTTTsoooooooooroooooggggTTTTTTT",
+   "TTTTTTTsooooooooooNooooggggTTTTTTT",
+   "TTTTTTTsoooooooooooooooggggTTTTTTT",
+   "TTTTTTTsoooooooooooooooggggTTTTTTT",
+   "TTTTTTTsoooooooooooooooggggTTTTTTT",
+   "TTTTTTTsoooooooooooooooggggTTTTTTT",
+   "TTTTTTTggggggggggeeegggggggTTTTTTT",
+   "TTTTTTTggggggggggeeegggggggTTTTTTT",
+   "TTTTTTTggggggggggeeegggggggTTTTTTT",
+   "TTTTTTTggggggggggeeegggggggTTTTTTT",
+   "TTTTTTT.........r...r......TTTTTTT",
+   "TTTTTTT..eeeeeeeeeeeeeeeeeeTTTTTTT",
+   "TTTTTTT..eeeeeeeeeeeeeeeeeeTTTTTTT",
+   "TTTTTTT..eeeeeeeeeeeeeeeeeeTTTTTTT",
+   "TTTTTTT...ggggeeeggggggggggTTTTTTT",
+   "TTTTTTT...ggggeeeggggggggggTTTTTTT",
+   "TTTTTTT...ggggeeeggggggggggTTTTTTT",
+   "TTTTTTT...ggggeeeggggggggggTTTTTTT",
+   "TTTTTTT...ggggeeeggggggggggTTTTTTT",
+   "TTTTTTT......reeer.........TTTTTTT",
+   "TTTTTTT..f....N.......f...fTTTTTTT",
+   "TTTTTTT...f................TTTTTTT",
+   "TTTTTTT..f...............f.TTTTTTT",
+   "TTTTTTTgggg....ggggggggggggTTTTTTT",
+   "TTTTTTTgggg....ggggggggggggTTTTTTT",
+   "TTTTTTTgggg....ggggggggggggTTTTTTT",
+   "TTTTTTTgggg....ggggggggggggTTTTTTT",
+   "TTTTTTTr..reeeer..........rTTTTTTT",
+   "TTTTTTTTT..eeee..........TTTTTTTTT",
+   "TTTTTTTTT......eeeeeeeeeeTTTTTTTTT",
+   "TTTTTTTTT......eeeeeeeeeeTTTTTTTTT",
+   "TTTTTTTTT......eNeeeeeeeeTTTTTTTTT",
+   "TTTTTTTTT..gggggg....ggggTTTTTTTTT",
+   "TTTTTTTTT..gggggg....ggggTTTTTTTTT",
+   "TTTTTTTTT..gggggg....ggggTTTTTTTTT",
+   "TTTTTTTTT..gggggg....ggggTTTTTTTTT",
+   "TTTTTTTTT..r....r....r..rTTTTTTTTT",
+   "TTTTTTTTT..eeeeeeeeeee...TTTTTTTTT",
+   "TTTTTTTTf..eeee!eeeeeef..TTTTTTTTT",
+   "TTTTTTTTT..eeeeeeeeeee.f.TTTTTTTTT",
+   "TTTTTTTTT..eeeeeeeeeee..fTTTTTTTTT",
+   "TTTTTTTcc....vv....ccccccccTTTTTTT",
+   "TTTTTTTccBBBBBBBBBBccccccccTTTTTTT",
+   "TTTTTTTccBBBBBBBBBBccccccccTTTTTTT",
+   "TTTTTTTccBBBBBBBBBBccccccccTTTTTTT",
+   "TTTTTTTccBBBBBBBBBBccccccccTTTTTTT",
+   "TTTTTTTccBBBBBBBBBBccccccccTTTTTTT",
+   "TTTTTTTccBBBBBBBBBBccccccccTTTTTTT"
+  ],
+  "exits": {
+   "v": "KANTO_ROUTE_22",
+   "^": "VICTORY_ROAD"
+  },
+  "buildings": {
+   "B": "gate"
+  },
+  "people": [
+   "EARTH BADGE GUARD",
+   "VOLCANO BADGE GUARD",
+   "MARSH BADGE GUARD",
+   "SOUL BADGE GUARD",
+   "RAINBOW BADGE GUARD",
+   "THUNDER BADGE GUARD",
+   "CASCADE BADGE GUARD",
+   "BOULDER BADGE GUARD"
+  ],
+  "signs": [
+   [
+    "VICTORY ROAD",
+    "The last test before the Pokemon League."
+   ],
+   [
+    "ROUTE 23",
+    "The path beside the hill is quieter. Mind the rocks!"
+   ],
+   [
+    "ROUTE 23",
+    "Victory Road is ahead. Only trainers with all eight badges may pass!"
+   ]
+  ]
+ },
+ "VICTORY_ROAD": {
+  "theme": "cave",
+  "descend": true,
+  "floor_names": [
+   "1F",
+   "2F",
+   "3F"
+  ],
+  "buildings": {},
+  "floors": [
+   {
+    "art": [
+     "ccccccccccccccccccccccccc",
+     "cccc+ccccccccc.cc..cccccc",
+     "cccc..cccccccc.ccc..ccccc",
+     "cccc..cccccc.........cccc",
+     "cccc...ccccccc..c.....ccc",
+     "ccc...ccccccccccccccc..cc",
+     "ccc...c.............c..cc",
+     "ccc...c.............c..cc",
+     "cccc..c.............c..cc",
+     "cccc..cccc.ccc..ccc.c..cc",
+     "ccccc........c..cc.....cc",
+     "cccc..cccccc.c..ccc...ccc",
+     "cccc.cc....ccc..ccccccccc",
+     "cccc..c....ccc..ccccccccc",
+     "cccc..c....ccc..cc...cccc",
+     "ccc...c.........c....cccc",
+     "cc...cc.ccccccccc.c..cccc",
+     "cc..cc..ccc.........ccccc",
+     "ccc.....cc...cc.....ccccc",
+     "cccc.........cc..cccccccc",
+     "cccccccc.....cccccccccccc",
+     "cccccccccccvccccccccccccc"
+    ],
+    "exits": {
+     "v": "KANTO_ROUTE_23"
+    }
+   },
+   {
+    "art": [
+     "ccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccc.sssssssssssssssssccccccccccc",
+     "ccccc................ccc.....sssssssssssssccccccccccc",
+     "cccc-..................c.......ssssssssss.ccccccccccc",
+     "cccc...................c............ssss.+ccccccccccc",
+     "cccc...................c..................ccccccccccc",
+     "ccccccccc.ccccc...r....c.....cccccccc.....ccccccccccc",
+     "ccc.......c...c...cc...c............c.....ccccccccccc",
+     "cc............c........c...........cc.cccccc....ccccc",
+     "cc.c..........c........c............c...c........cccc",
+     "cc......ccccccccccccccccc...........c.............ccc",
+     "ccc.....c...............cs..........c.............ccc",
+     "ccc....scc.cccccc.......csss........c......ccccc...cc",
+     "ccc...ssss....c.ccccc...cssss.......ccccccccccccc.>cc",
+     "ccc...ssss....c.ssssc...csssssss...........cccccccccc",
+     "cccc...sss....c..sssc...ccccccccccc........cccccccccc",
+     "cccc..........c..sssc............cccccccc...ccccccccc",
+     "ccc...........c...ssc...................c..sccccccccc",
+     "ccc.c.....ccccc.....cccc.ccccccc.cccccccc.ssccccccccc",
+     "cccb...ccccccccb..........................ssccccccccc",
+     "cccccccccccccccccc.....................sssssccccccccc",
+     "ccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+    ],
+    "exits": {
+     ">": "INDIGO_PLATEAU"
+    }
+   },
+   {
+    "art": [
+     "ccccccccccccccccccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccccccccccccccccccc",
+     "ccccc-.ccccc............cc...............cccc",
+     "ccccc...cc...............................cccc",
+     "ccccc........cccccccccccccccc.........c..cccc",
+     "cccc...c.c...c..............c......cccc..cccc",
+     "cccc.....c...c..............c......cccc..cccc",
+     "cccc...bcc...c...cccccccc.ccc......ccc...cccc",
+     "ccc...cccc...c...c.................cccccccccc",
+     "cccccccccccc.c...c................-c.....cccc",
+     "ccc........ccc...c........ccc......c.-...cccc",
+     "ccc........ccc...c.........c.......c.....cccc",
+     "ccccc.ccc..ccc...c.............ccccc.....cccc",
+     "cccc....c........c.............c.....c...cccc",
+     "cccc....cccccccccc.............c...c.....cccc",
+     "cccc..............c.cccccccccccc...c.....cccc",
+     "cccc..............c................c.....cccc",
+     "cccc..............ccc..............c...-.cccc",
+     "ccccc.............ccc.............rc.....cccc",
+     "ccccc..............................c.....cccc",
+     "ccccccccccccccccccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccccccccccccccccccc"
+    ],
+    "exits": {}
+   }
+  ]
+ },
+ "INDIGO_PLATEAU": {
+  "theme": "ship",
+  "art": [
+   "cccccccccEEEccccccccc",
+   "cccccccccEEEccccccccc",
+   "cccccccccEDEccccccccc",
+   ".z..z..z.===.z..z..z.",
+   "iiiiiiiii===iiiiiiiii",
+   "........i===i........",
+   "...m...zi===izm..m...",
+   "........i===i........",
+   "yyymy...i===i...ymyyy",
+   "yyyyy...i===i...yyyyy",
+   ".........===.........",
+   "..iiiiiii===iiiiiiiii",
+   "...mmmmmi===immmmmmm.",
+   "........i===i........",
+   "cc.mmNmmi===immNmmm..",
+   "cc.......===.........",
+   "cc.......===......JJJ",
+   "cc.......===......JJJ",
+   ".........===......JDJ",
+   ".........===.........",
+   "ccccccccc=vvccccccccc"
+  ],
+  "exits": {
+   "v": "KANTO_ROUTE_23"
+  },
+  "buildings": {
+   "E": "league",
+   "J": "johto"
+  },
+  "roofs": {
+   "E": [
+    200,
+    60,
+    60
+   ],
+   "J": [
+    200,
+    200,
+    210
+   ]
+  },
+  "people": [
+   "Heal",
+   "Shop"
+  ],
+  "locked": {
+   "johto": "The ride to Johto is for Champions only. Beat the Elite Four first!"
+  },
+  "signs": []
+ },
+ "CERULEAN_CAVE": {
+  "theme": "cave",
+  "descend": true,
+  "floor_names": [
+   "2F",
+   "1F",
+   "B1F"
+  ],
+  "buildings": {},
+  "floors": [
+   {
+    "art": [
+     "cccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccrrrrrrrcccccccc",
+     "c....cccc..rr.....r............ccccc",
+     "crrr......+r..rrr.r.rrrrrrrrr.+ccccc",
+     "c..rrrr.rrrr.rr.r.r.........rrrccccc",
+     "c.+...r.........rrrrrrrrrrr....ccccc",
+     "crrr.rrrrrrrrrrrr.........rrrr.ccccc",
+     "c.r...............rrrrrrr....r.ccccc",
+     "r.rrrrrrrrrrrrrrrrr..rr+rrr.rr.ccccc",
+     "r.r....r............+r...r...r.rcccc",
+     "r.r.rr.r.rrrrr.rrrrrrr.rrrrr.r.rcccc",
+     "r.r..r.r.....r.......r.....r.r.rcccc",
+     "r.r..r.rrrrr.rrrrrrr.rrrrr.r.r.rcccc",
+     "r.r.+r.r.....r.....r.....r.r.r.rcccc",
+     "r.rrrr.r.rrrrr.rrr.r.r.r.r.r.r.rcccc",
+     "c.r....r.........r.r.r.r.r.r.r.ccccc",
+     "c.r.rrrr.rrrrrrrrr.r.r.r.rrr.r.ccccc",
+     "c.r....r.....r.....r.r.r.....r.ccccc",
+     "c.rrrrrrrrrrrr.rrrrr.r.rrrrrrr.ccccc",
+     "c..............r.....r.........ccccc",
+     "ccccrrrrrrccccccccccccrrrrrrrccccccc",
+     "cccccccccccccccccccccccccccccccccccc"
+    ],
+    "exits": {},
+    "parts": true
+   },
+   {
+    "art": [
+     "cccccccccccccccccccccccccccccccccccccc",
+     "ccccccc...rr.ccccccccroooooooooc..rr..",
+     "ccccccc...-..cccccccrroooooooooc..-...",
+     "crrcccc..rr..coooooooooooooooooc......",
+     "cr-cccc..rr..cooooooooooo...ooocc.cccc",
+     "cr.c.........cooooooooooc...cooooooooo",
+     "c..c....cc...coooo..........cooooooooo",
+     "c+.c....cc...coooc..........cooooooooo",
+     "c..c....cc...coooc.................ooo",
+     "crbc....cc.crroooc...cccccc...r....coo",
+     "cc......cooorroooc...cc.rccc..-....coo",
+     "cc......cooorrooocc.ccc.-.cc.......coo",
+     "cc......coooooooor....c...cc...cccccoo",
+     "cc......coooooooor..r.cc.ccc...crr....",
+     "cc..rr..coooooooor.........c...c......",
+     "cc..r-..coooo....cr......rrc...c.....c",
+     "cc......c...c....crrr...rrrc...c...rrc",
+     "cc......c...c..................c...ccc",
+     "ccccc.ccc...cc.c...............c...ccc",
+     "ccccc..........c...............c...ccc",
+     "ccccc..........c...............c...ccc",
+     "ccccc..........ccccccccccccccccc...ccc",
+     "cccccccccccccccccccccccccccccccccvcccc"
+    ],
+    "exits": {
+     "v": "CERULEAN_CITY"
+    }
+   },
+   {
+    "art": [
+     "cccccccccccccccccccccccccccccccccccccccc",
+     "cc..............cr.....ccccccccccrr....c",
+     "cc..............c........ccccccc.......c",
+     "cc..............c..cccc.....ccccccc....c",
+     "cc......ccccc.ccc..cccc.....ccccccc....c",
+     "cc......c..........cccccccc.ccccccc.r..c",
+     "cc..r-..cr........rcccccccc............c",
+     "cc..rr..crr......rrcccccccc............c",
+     "cc......cooooorc................c...cccc",
+     "cccccccccooooorc................c...cccc",
+     "cooocccccccccccc................c...cccc",
+     "cooocccccccccccccc.ccccccc.rcc..c...cccc",
+     "coooc.r.r.ccccccrr.......c.rcc..c...cccc",
+     "coooc.....cccccccr.......c...N..c...cccc",
+     "coooc.....cccccccr.......c......c...cccc",
+     "coooccc.cccooooc......c..c.ccr..c...cccc",
+     "cooooooooooooooc......c..c.ccr..c...cccc",
+     "cooooooooooooooc......c..c......c...cccc",
+     "cooooooooooooooc......c..c......c...cccc",
+     "cccccoooooooooocc.cc.cc..cccc.ccc...cccc",
+     "ccccccoooooooooooor.......ccc.......cccc",
+     "ccccccoooooooooooorr.....cccc.......cccc",
+     "cccccccccccccccccccccccccccccccccccccccc"
+    ],
+    "exits": {},
+    "people": [
+     "CHALLENGE MEWTWO"
+    ]
+   }
+  ]
+ },
+ "NEW_BARK_TOWN": {
+  "art": [
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTT~~~",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTT~~~~",
+   "TT..LLLLLLLL..T..PPPPP..TTT~~~",
+   "TT..LLLLLLLL.....PPPPP...TT~~~",
+   "TT..LLLLLLLL..T..PPPPP....T~~~",
+   "TT..LLLDLLLL.....PPDPP.....~~~",
+   "<......=............=......s~~",
+   "<..N...=============.......s~~",
+   "<......=..................ss~~",
+   "T......=..HHHHH....EEEEE...s~~",
+   "T......=..HHHHH....EEEEE..ss~~",
+   "T......=..HHDHH....EEDEE..s~~~",
+   "T..ff..=====..=======.....s~~~",
+   "T........ff..........ff...s~~~",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTT~~~"
+  ],
+  "exits": {
+   "<": "JOHTO_ROUTE_29"
+  },
+  "buildings": {
+   "L": "lab",
+   "P": "home",
+   "H": "house",
+   "E": "house"
+  },
+  "people": [
+   "Talk to Nice Lady"
+  ]
+ },
+ "JOHTO_ROUTE_29": {
+  "art": [
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTGGGGGTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTGGGGGTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTGGDGGTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "T#####..ff.....T.....ff.......ff.....TT..........TT.......TT",
+   "<..ss.#...\"\"\"\"..T.#####..##.........\"\"\"\"\"\"\"......\"\"\"\"\".....>",
+   "<..ss.#...\"\"\"\".......\"\"\"\"...........\"\"\"\"\"\"\"....##\"\"\"\"\".....>",
+   "<.....#...\"\"\"\".......\"\"\"\"....T.......\"\"\"\"\"\"\"......\"\"\"\"\"....>",
+   "<..TT.....\"\"\"\"..............................TT.......\"\"\"\"\".>",
+   "T........#####..ss........\"\"\"\"\"......ss.......#####........T",
+   "T..\"\"\"\"\"\".........ss......\"\"\"\"\"......ss.............ss.....T",
+   "T..\"\"\"\"\"\".....T...........\"\"\"\"\".........T...........ss.....T",
+   "TT.\"\"\"\"\"\".......##########........\"\"\"\"\"\"\"\"....T............T",
+   "TT.......................T........\"\"\"\"\"\"\"\".................T",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT"
+  ],
+  "exits": {
+   "<": "CHERRYGROVE_CITY",
+   ">": "NEW_BARK_TOWN",
+   "D": "JOHTO_ROUTE_46"
+  },
+  "buildings": {
+   "G": "gate"
+  }
+ },
+ "CHERRYGROVE_CITY": {
+  "art": [
+   "TTTTTTTTTTTTTT^^^TTTTTTTTTTTTTTTTTTT",
+   "~~~~~~TTTTTTTT===TTTTT~~~TTTTTTTTTTT",
+   "~~~~~ss.......===.MMMM.TTT.CCCCC.TTT",
+   "~~~~~ss.......===.MMMM.....CCCCC..TT",
+   "~~~~ss........===.MMDM.....CCDCC..fT",
+   "~~~~ss........=====================>",
+   "~~~~ss........=.......=............>",
+   "~~~~ss..AAAA..=..BBBB.=...HHHH....TT",
+   "~~~~ss..AAAA..=..BBBB.=...HHHH...fTT",
+   "~~~~ss..AADA..=..BBDB.=...HHDH...fTT",
+   "~~~~~ss.......=.......===========..T",
+   "~~~~~ss...N........................T",
+   "~~~~~~sss....rrrrrrrrrrrTTTTTTTTTTTT",
+   "~~~~~~~~ssTTTTTTTTTTTTTTTTTTTTTTTTTT"
+  ],
+  "exits": {
+   "^": "JOHTO_ROUTE_30",
+   ">": "JOHTO_ROUTE_29"
+  },
+  "buildings": {
+   "M": "mart",
+   "C": "center",
+   "A": "gent",
+   "B": "fisher",
+   "H": "house"
+  },
+  "people": [
+   "Wake Sleeping Man"
+  ]
+ }
+}

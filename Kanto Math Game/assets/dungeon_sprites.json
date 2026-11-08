@@ -76,6 +76,8 @@
     ]
   },
   "figures": {
+    "SAFARI_ZONE:GOLD TEETH": {"item": "GOLD_TEETH"},
+    "VERMILLION_CITY:Machop": {"pokemon": 66},
     "FROST_CAVERN:ABOMASITE": {"item": "ABOMASITE"},
     "FROST_CAVERN:SCIZORITE": {"item": "SCIZORITE"},
     "REFLECTION_CAVE:ALAKAZITE": {"item": "ALAKAZITE"},

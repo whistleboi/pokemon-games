@@ -24,7 +24,7 @@ import inspect
 import random
 from collections import deque
 
-WALL, FLOOR, GRASS, WATER = 0, 1, 2, 3
+WALL, FLOOR, GRASS, WATER, SURF = 0, 1, 2, 3, 4  # (SURF: open sea, crossed with HM Surf)
 DIRS = ((0, -1), (1, 0), (0, 1), (-1, 0))
 STAIRS = "STAIRS"
 STAIRS_UP = "STAIRS_UP"
@@ -288,7 +288,8 @@ def drawn_floor(recipe, index, entrance=None, figures=()):
     for y, row in enumerate(rows):
         for x, c in enumerate(row.ljust(w, "#")):
             what = legend.get(c) or {}
-            floor.tiles[y][x] = {"#": WALL, ",": GRASS, "~": WATER}.get(c, WALL if what.get("decor") else FLOOR)
+            floor.tiles[y][x] = {"#": WALL, ",": GRASS, "~": WATER, "o": SURF}.get(
+                c, WALL if what.get("decor") else SURF if what.get("surf") else FLOOR)
             if c == "@":
                 floor.start = (x, y)
             if what.get("exit"):
@@ -303,8 +304,16 @@ def drawn_floor(recipe, index, entrance=None, figures=()):
         if door:
             floor.start = next(((door[0] + dx, door[1] + dy) for dx, dy in DIRS if floor.walkable(door[0] + dx, door[1] + dy)
                                 and (door[0] + dx, door[1] + dy) not in exits), floor.start)
+    if floor.start == (1, 1) and not floor.walkable(1, 1):  # (no "@": a real map's middle, on open ground)
+        cx, cy = w // 2, h // 2
+        floor.start = min(((x, y) for y in range(h) for x in range(w)
+                           if floor.walkable(x, y) and (x, y) not in exits),
+                          key=lambda t: abs(t[0] - cx) + abs(t[1] - cy), default=(1, 1))
     for payload in figures:
         spot = floor.spots.get(payload.get("text") if isinstance(payload, dict) else payload)
+        if spot is None and (recipe.get("image") or recipe.get("art")):  # (the route's people: on open ground)
+            name = payload.get("text") if isinstance(payload, dict) else str(payload)
+            spot = _free_tile(floor, random.Random(f"{recipe.get('seed')}:{name}"), far_from=floor.start, min_dist=4)
         if spot:
             floor.movers.append(Mover("figure", spot[0], spot[1], payload))
     floor.seen = set()
@@ -441,12 +450,24 @@ class Run:
     def floor(self):
         return self.floors[self.index]
 
-    def enter_floor(self, index, arrive=None):
-        """Go to a floor: one made before is as you left it (arrive: beside its STAIRS or STAIRS_UP)."""
+    @staticmethod
+    def _ladder(floor, kind, nth=0):
+        """The nth STAIRS (or STAIRS_UP) tile of a floor in reading order (else the first): ladders pair up
+        between floors in order (Jordan, 11-07: Cerulean Cave's 1F ladders each lead to their own part of 2F)."""
+        tiles = sorted((t for t, target in floor.exits.items() if target == kind), key=lambda t: (t[1], t[0]))
+        return (tiles[nth] if nth < len(tiles) else tiles[0]) if tiles else None
+
+    def _nth_here(self, kind):
+        """Which of this floor's STAIRS (or STAIRS_UP) you're standing on, in reading order (0 if none)."""
+        tiles = sorted((t for t, target in self.floor.exits.items() if target == kind), key=lambda t: (t[1], t[0]))
+        return tiles.index(self.player) if self.player in tiles else 0
+
+    def enter_floor(self, index, arrive=None, nth=0):
+        """Go to a floor: one made before is as you left it (arrive: beside its STAIRS or STAIRS_UP, the nth)."""
         if index < len(self.floors):
             self.index = index
             floor = self.floors[index]
-            spot = next((t for t, target in floor.exits.items() if target == arrive), None)
+            spot = self._ladder(floor, arrive, nth) if arrive else None
             self.player = self._beside(floor, spot) if spot else floor.start
             self.reveal()
             return
@@ -457,13 +478,17 @@ class Run:
         figures = [p for i, p in self.figures if i == index]
         # a fixed place: its floors (and where its trainers stand) from its own seed, the same every visit
         fixed = random.Random(f"{self.recipe.get('seed', '')}:{index}") if self.recipe.get("fixed") else None
-        if self.recipe.get("layout"):
-            floor = drawn_floor(self.recipe, index, self.entrance if index == 0 else None, figures)
+        if self.recipe.get("layout"):  # (the way you came in may be on any of its floors: Mt. Moon's last)
+            floor = drawn_floor(self.recipe, index, self.entrance, figures)
         else:
             floor = build_floor(fixed or self.rng, self.recipe, index, self.entrance, self.forwards, last, figures, here)
         self.floors.append(floor)
         self.index = index
         self.player = floor.start
+        if arrive and self.recipe.get("layout"):  # (down a ladder: beside the one back up, the nth)
+            spot = self._ladder(floor, arrive, nth)
+            if spot:
+                self.player = floor.start = self._beside(floor, spot)
         start_room = floor.room_at(*floor.start)
         # trainers on their floor (each keeps its index in the area's trainer list), else spread over them
         spread = [t for t in self.trainers if self.floor_of(t[1]) is None]
@@ -471,15 +496,20 @@ class Run:
             [t for i, t in enumerate(spread) if i % self.n_floors == index]
         place = fixed or self.rng
         for idx, payload in mine:
-            spot = _free_tile(floor, place, avoid=start_room.tiles() if start_room and not self.recipe.get("layout") else (),
-                              far_from=floor.start, min_dist=8 if not self.recipe.get("layout") else 3)
-            if spot:
+            own = floor.spots.get(f"trainer:{(payload or {}).get('name')}") if isinstance(payload, dict) else None
+            spot = own or _free_tile(floor, place, avoid=start_room.tiles() if start_room and not self.recipe.get("layout") else (),
+                                     far_from=floor.start, min_dist=8 if not self.recipe.get("layout") else 3)
+            if spot and own:  # (its own spot: it looks across the way, a bridge's other lane: the Nugget Bridge)
+                facing = next((d for d in ((1, 0), (-1, 0)) if floor.walkable(spot[0] + d[0], spot[1] + d[1])
+                               and not floor.walkable(spot[0] - d[0], spot[1] - d[1])), (0, 1))
+            elif spot:
                 facing = place.choice([d for d in DIRS if floor.walkable(spot[0] + d[0], spot[1] + d[1])]
                                       or [(0, 1)])
+            if spot:
                 floor.movers.append(Mover("trainer", spot[0], spot[1], (idx, payload), facing))
         lo, hi = (self.recipe.get("wild") or [4, 6])[:2]
-        for _ in range(self.rng.randint(lo, hi)):
-            self._spawn_wild(floor, start_room)
+        for _ in range(self.rng.randint(lo, hi)):  # (a drawn map is one room: away from you is enough)
+            self._spawn_wild(floor, None if self.recipe.get("layout") else start_room)
         for item in self.loot_for(self.rng):
             spot = _free_tile(floor, self.rng)
             if spot and item:
@@ -570,13 +600,23 @@ class Run:
                 return t
         return floor.start
 
+    def _ladders(self, index):
+        """A floor's own ladder order, if its map gives one ("ladders": its STAIRS in reading order, each the
+        number of the next floor's STAIRS_UP it leads to: Rock Tunnel's, whose ladders don't pair in order)."""
+        floors = (self.recipe.get("art") or {}).get("floors") or []
+        return floors[index].get("ladders") if 0 <= index < len(floors) else None
+
     def descend(self):
-        """On to the next floor (STAIRS)."""
-        self.enter_floor(self.index + 1, arrive=STAIRS_UP)
+        """On to the next floor (STAIRS): beside its matching STAIRS_UP (the same place in reading order)."""
+        nth, order = self._nth_here(STAIRS), self._ladders(self.index)
+        self.enter_floor(self.index + 1, arrive=STAIRS_UP, nth=order[nth] if order and nth < len(order) else nth)
 
     def ascend(self):
-        """Back to the floor before (STAIRS_UP)."""
-        self.enter_floor(max(0, self.index - 1), arrive=STAIRS)
+        """Back to the floor before (STAIRS_UP): beside its matching STAIRS."""
+        nth, order = self._nth_here(STAIRS_UP), self._ladders(self.index - 1)
+        if order and nth in order:
+            nth = order.index(nth)
+        self.enter_floor(max(0, self.index - 1), arrive=STAIRS, nth=nth)
 
     def add_figure(self, index, payload):
         """A story figure that turns up later (a boss once its story step is done), on its floor."""

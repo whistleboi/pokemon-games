@@ -20,10 +20,13 @@ print("1) canon levels: each region's own game")
 check(levels.CHAMPION_ACE["JOHTO"] == 50 and levels.CHAMPION_ACE["SINNOH"] == 66, "Lance 50 (HGSS), Cynthia 66 (BDSP)")
 check(levels.GYM_ACE["ORANGE"] == [levels.GYM_ACE["JOHTO"][i] for i in (1, 3, 5, 7)], "Orange Gyms = Johto Gyms 2/4/6/8")
 check(prog["PUMMELO_ISLAND"]["gym"]["leader"]["levels"][-1] == levels.CHAMPION_ACE["JOHTO"], "Drake's ace = Lance's")
-check(levels.area_level(g, "JOHTO_ROUTE_44") == 23, f"Route 44 at HGSS's 22-26: {levels.area_level(g, 'JOHTO_ROUTE_44')}")
-story.player_team = [mk(6)]
-story.player_team[0].level = 80
-check(levels.area_level(g, "JOHTO_ROUTE_29") == 3, "a Lv 80 team doesn't raise Route 29")
+check(levels.canon_area_level(g, "JOHTO_ROUTE_44") == 23, f"Route 44 at HGSS's 22-26: {levels.canon_area_level(g, 'JOHTO_ROUTE_44')}")
+story.player_team = [mk(6), mk(9), mk(3)]
+for _p, _l in zip(story.player_team, (40, 30, 5)):
+    _p.level = _l
+check(levels.area_level(g, "JOHTO_ROUTE_29") == 35, "areas keep up with the team: its average, the lowest left out (Jordan, 11-07)")
+story.player_team[0].level = story.player_team[1].level = 2
+check(levels.area_level(g, "JOHTO_ROUTE_44") == 23, "...never below the area's own level")
 
 print("2) XP: every battler that hasn't fainted; EXP SHARE gives the rest half")
 story.current_area_key = "HOENN_ROUTE_101"
@@ -447,8 +450,8 @@ from src.world import levels as _lv
 _orre = [k for k, a in g.loader.area_data["STORY_PROGRESSION"].items() if (a or {}).get("region") == "ORRE"]
 _missing = [k for k in _orre if k not in _lv._area_levels(g) and not g.loader.area_data["STORY_PROGRESSION"][k].get("level")]
 check(not _missing, f"every Orre area has its own level {_missing}")
-check(_lv.area_level(g, "ORRE_DESERT") >= 14 and _lv.area_level(g, "PYRITE_CAVE") < _lv.area_level(g, "THE_UNDER")
-      < _lv.area_level(g, "SNAGEM_HIDEOUT") < _lv.area_level(g, "REALGAM_TOWER"), "they rise through the story")
+check(_lv.canon_area_level(g, "ORRE_DESERT") >= 14 and _lv.canon_area_level(g, "PYRITE_CAVE") < _lv.canon_area_level(g, "THE_UNDER")
+      < _lv.canon_area_level(g, "SNAGEM_HIDEOUT") < _lv.canon_area_level(g, "REALGAM_TOWER"), "they rise through the story")
 _willie = json.dumps(g.loader.area_data["STORY_PROGRESSION"]["OUTSKIRT_STAND"]).replace(" ", "")
 check('"levels":[14]' in _willie, "Willie's first battle is near the starters' level")
 print("15) Orre's Journal: the Colosseum + XD story in order (Jordan, 11-01)")
@@ -1007,7 +1010,8 @@ _pool = g.loader.area_data["STORY_PROGRESSION"]["KANTO_POKEMON_TOWER"]["trainer_
 for _i, _t in enumerate(_pool):
     if _t.get("zone") == "floor_4":
         story.defeated_trainers.setdefault("KANTO_POKEMON_TOWER", set()).add(_i)
-check("CONFRONT GHOST" in _floor(4)[1], "the ghost, at the top once Team Rocket is beaten")
+check("CONFRONT GHOST" in _floor(3)[1] and "CONFRONT GHOST" not in _floor(4)[1],
+      "the ghost on the stairs at 3F, before Team Rocket's floor (Jordan, 11-07: as in the games)")
 _tower = g.loader.area_data["STORY_PROGRESSION"]["KANTO_POKEMON_TOWER"]
 _chance = _tower["zone_ambush"]["chance"]
 _tower["zone_ambush"]["chance"] = 1.0
@@ -2010,11 +2014,15 @@ for _ in range(60):
 check(_typing57 and set(_typing57) == {-1}, "the animation waits for the text to be typed out")
 check(_b57.move_anim is not None and _b57.move_anim.frame >= 0 and _b57.dialogue_box.visible,
       "then the animation plays, the text box still up")
+_rest57 = list(_b57._move_seq["rest"]) if _b57._move_seq else []
 for _ in range(300):
     if _b57._move_seq is None:
         break
     _b57.update()
-check(_b57.move_anim is None and _b57._move_seq is None and _b57.dialogue_box.visible, "then the HP drop and the rest")
+check(_b57.move_anim is None and _b57._move_seq is None
+      and (_b57.opponent_hp < _b57.opp_max_hp or any("miss" in str(l).lower() for l in _rest57))
+      and (not _rest57 or (_b57.dialogue_box.visible and _b57.dialogue_box.text_lines == _rest57)),
+      f"then the HP drop and the rest (its text after: {_rest57 or 'none for a plain hit'})")
 _b57 = battle("HOENN_ROUTE_101", 258, 263)
 for _ in range(400):
     _b57.update()

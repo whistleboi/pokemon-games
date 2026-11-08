@@ -38,7 +38,8 @@ vr = levels._area_levels(g).get("VICTORY_ROAD", 0)
 check(vr > 14 and levels.area_level(g, "VICTORY_ROAD") == vr,
       f"Victory Road stays Lv {vr} for a Lv 14 lead: {levels.area_level(g, 'VICTORY_ROAD')}")
 lead.level = vr + 10
-check(levels.area_level(g, "VICTORY_ROAD") == vr, "and for a team well above it")
+check(levels.area_level(g, "VICTORY_ROAD") == max(vr, levels.team_level(g)),
+      "a team well above it: the area comes up to the team (its average, the lowest left out; Jordan 11-07)")
 lead.level = 14
 
 print("5) Gyms keep their canon levels; the cap after the last badge is the Champion's ace")

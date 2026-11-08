@@ -6,8 +6,9 @@ Levels for everything the player fights.
   The rest of a leader's team sits a few levels below the ace.
 - Elite Four and Champion: per-region ladders.
 - Wild Pokemon and route trainers: the area's level from assets/area_levels.json (the games'
-  encounter levels; an area's own `"level"` key overrides it). Fixed, like the games: they don't
-  rise or fall with the player's team (Jordan, 10-29).
+  encounter levels; an area's own `"level"` key overrides it), and from 11-07 (Jordan) they keep up
+  with the player: never below that, but up to the team's average level, the lowest one left out
+  (a new catch doesn't pull the routes down). Gyms, the League and story trainers keep their own.
 - Legendaries use fixed levels; Max Raid bosses take their level from the star rank.
 """
 import random
@@ -97,12 +98,27 @@ def gym_aces(region):
     return GYM_ACE.get(region, [12, 18, 24, 30, 36, 42, 46, 50])
 
 
-def area_level(game, area_key):
-    """The level an area's wild Pokemon and route trainers are built around: the area's own
-    level (its "level" key, else area_levels.json), canon to its region's game (Jordan, 10-29).
-    It doesn't follow the player's team, before or after the title."""
+def canon_area_level(game, area_key):
+    """The area's own level (its "level" key, else area_levels.json), canon to its region's game."""
     area = game.loader.area_data.get("STORY_PROGRESSION", {}).get(area_key, {})
     return int(area["level"]) if area.get("level") else int(_area_levels(game).get(area_key, START_LEVEL + 2))
+
+
+def team_level(game):
+    """The player's team's average level, its lowest-levelled Pokemon left out (Eggs don't count);
+    0 without a team."""
+    story = getattr(game, "story_manager", None)
+    levels = sorted(int(p.level) for p in (getattr(story, "player_team", None) or [])
+                    if p and not getattr(p, "is_egg", False))
+    if len(levels) > 1:
+        levels = levels[1:]
+    return sum(levels) // len(levels) if levels else 0
+
+
+def area_level(game, area_key):
+    """The level an area's wild Pokemon and route trainers are built around: its canon level, or the
+    player's team level (team_level) once the team is ahead of it (Jordan, 11-07: keep up with me)."""
+    return max(canon_area_level(game, area_key), team_level(game))
 
 
 
