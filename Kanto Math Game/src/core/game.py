@@ -388,12 +388,18 @@ class Game:
             if remaining and self.current_state is frame_start_state:
                 self.current_state.handle_events(remaining)
         self.current_state.update()
+        if getattr(self, "coop_host", None) and not getattr(self.current_state, "coop_ticks", False):
+            from src.coop import world as coop_world
+            coop_world.tick(self)
         if getattr(self, "rt_mega", None):  # a real-time Mega's minute, and its Key Stone's cooldown
             from src.pokemon import mega_clock
             mega_clock.tick(self)
         if hasattr(self, "music"):
             self.music.update()  # a fanfare that ended lets the music carry on
         self.current_state.draw()
+        if getattr(self, "coop_host", None):
+            from src.coop import world as coop_world
+            coop_world.draw(self)
         self.keyboard.draw(self.screen)
         if getattr(self, "_fade_left", 0) > 0 and self._fade_from is not None:
             self._fade_from.set_alpha(int(255 * self._fade_left / self.FADE_FRAMES))

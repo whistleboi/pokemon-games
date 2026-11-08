@@ -1,3 +1,7 @@
+#Pydroid run pygame
+# (That line, and importing pygame right here, are how Pydroid 3 knows to open this as a graphical app. Without them
+# it runs the game in its text terminal, where SDL can't start: "did you include SDL_main.h".)
+import pygame  # noqa: F401
 import sys
 import os
 from src.core import android

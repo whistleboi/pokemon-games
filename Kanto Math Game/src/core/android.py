@@ -80,6 +80,8 @@ class AndroidInput:
             self.state = self.game.current_state
             if self.typing:
                 self._stop_typing()
+        elif self.typing and self._box() is None:  # (the box has gone: "connecting...")
+            self._stop_typing()
         out = []
         for e in events:
             if e.type == pygame.MOUSEBUTTONDOWN and getattr(e, "button", 1) == 1:
@@ -103,7 +105,7 @@ class AndroidInput:
             elif e.type in FOREGROUND:
                 self._come_back()
             else:
-                if e.type == pygame.KEYDOWN and e.key in (pygame.K_RETURN, pygame.K_KP_ENTER) and self.typing:
+                if e.type == pygame.KEYDOWN and e.key in (pygame.K_RETURN, pygame.K_KP_ENTER) and self.typing                         and not getattr(self.game.current_state, "keep_keyboard", False):
                     self._stop_typing()
                 out.append(e)
         return out

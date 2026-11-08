@@ -27,5 +27,6 @@ if py -3.11 -c "" 2>/dev/null; then
 fi
 python tests/test_kanto_fixes.py 2>&1 | grep -E "FAIL|passed"
 python tests/test_dungeon_core.py 2>&1 | grep -E "FAIL|passed"
+python tests/test_coop_net.py 2>&1 | grep -E "FAIL|passed"
 timeout 300 python tests/sim_battles.py 2>&1 | tail -1
 timeout 590 python $C/smoke_regions.py "$(pwd)" 2>&1 | grep -E "^#####|Traceback"

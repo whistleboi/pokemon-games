@@ -29,7 +29,10 @@ LIGHT_GRAY = (200, 200, 200)
 # [REF-0061: Pygame Initialization with Optimized Audio Settings]
 pygame.mixer.pre_init(44100, -16, 2, 4096)
 pygame.init()
-pygame.mixer.init()
+try:
+    pygame.mixer.init()
+except pygame.error:  # (no sound device: the game carries on, silent)
+    pass
 
 # [REF-0062: Global Constants for Game Configuration]
 FPS = 25

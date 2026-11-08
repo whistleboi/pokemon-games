@@ -38,6 +38,8 @@ class MainMenuState(GameState):
                                       bg_color=theme.RUN, autosize=False)
         self.btn_quit = CommandButton((x, top + 2 * (h + gap), w, h), "QUIT", f["button"], self.quit_game,
                                       bg_color=theme.BACK, autosize=False)
+        self.btn_join = CommandButton((x + w + 18, top + 2 * (h + gap), 300, h), "JOIN SESSION", f["label"], self.join_session,
+                                      bg_color=theme.MEGA, autosize=False)
 
         from src.core import save_slots
         has_saves = bool(os.path.exists(game.data.save_file) and game.data.data.get("story")) \
@@ -110,8 +112,13 @@ class MainMenuState(GameState):
         pygame.quit()
         sys.exit()
 
+    def join_session(self):
+        from src.states.coop_lobby import CoopState
+        self.game.change_state(CoopState(self.game, self, "join"))
+
     def handle_events(self, events):
         for event in events:
+            self.btn_join.handle_event(event)
             self.btn_new.handle_event(event)
             self.btn_load.handle_event(event)
             self.btn_quit.handle_event(event)
@@ -177,7 +184,7 @@ class MainMenuState(GameState):
         Utils.draw_text_outline(screen, "ADVENTURES", self.sub_font, WHITE, lx + 6, ly + 118, align="left",
                                 outline_color=(36, 70, 160), thickness=5)
 
-        for btn in (self.btn_new, self.btn_load, self.btn_quit):
+        for btn in (self.btn_new, self.btn_load, self.btn_quit, self.btn_join):
             btn.draw(screen)
         hint = "Learn math, catch them all!"
         theme.shadow_text(screen, hint, self.game.assets.fonts["label"], 72, h - 40, color=(220, 226, 244),
@@ -1717,6 +1724,8 @@ class DifficultySelectionState(GameState):
         # BATTLES: TRADITIONAL / REAL-TIME (Jordan, 11-06), beside SPEED
         self.btn_battles = CommandButton((self.btn_speed.rect.x - 14 - 290, 14, 290, 56), self._battles_label(),
                                          fonts["label"], self.toggle_battles, bg_color=self._battles_color(), autosize=False)
+        self.btn_coop = CommandButton((self.btn_battles.rect.x - 14 - 170, 14, 170, 56), "CO-OP", fonts["label"],
+                                      self.open_coop, bg_color=theme.MEGA, autosize=False)
         cx, cy = w // 2, h // 2
         self.quit_panel = pygame.Rect(cx - 260, cy - 170, 520, 340)
         self.quit_buttons = [
@@ -1856,6 +1865,8 @@ class DifficultySelectionState(GameState):
             return
         for event in events:
             if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+                if self.in_game and self.btn_coop.handle_event(event):
+                    continue
                 if self.in_game and (self.btn_quit.handle_event(event)
                                      or self.btn_autosave.handle_event(event)):
                     return
@@ -1947,6 +1958,8 @@ class DifficultySelectionState(GameState):
         self.btn_back.draw(screen)
         self.btn_speed.draw(screen)
         self.btn_battles.draw(screen)
+        if self.in_game:
+            self.btn_coop.draw(screen)
 
         if self.in_game and self.quit_prompt:
             shade = pygame.Surface((w, h), pygame.SRCALPHA)
@@ -1958,6 +1971,14 @@ class DifficultySelectionState(GameState):
                                     WHITE, self.quit_panel.centerx, self.quit_panel.top + 50)
             for b in self.quit_buttons:
                 b.draw(screen)
+
+
+def _open_coop(self):
+    from src.states.coop_lobby import CoopState
+    self.game.change_state(CoopState(self.game, self, "host"))
+
+
+DifficultySelectionState.open_coop = _open_coop
 
 
 def return_state_in_game(options):
