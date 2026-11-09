@@ -3,12 +3,14 @@ is fighting. The fight itself runs on the guest's device; the host hands out the
 checks what comes back, and is the only one who saves. A lent Pokemon waits in the PC (locked), so a crash can't lose it."""
 import types
 
-from src.coop import travel, world
+from src.coop import raid, travel, world
 
 MAX_BORROW = 6
 LEVEL_JUMP = 10     # the most levels one fight can believably add
 REACH = 2           # tiles: how near a guest must be to start a fight
 TOAST_FRAMES = 200
+REVIVES = ("REVIVE", "MAX_REVIVE")
+TETHER = 4          # tiles: how far someone who's fainted out can be from a friend who can fight
 START_BALLS = 10    # the Poke Balls a guest starts with (those aren't merged)
 
 
@@ -222,6 +224,7 @@ def recover(game, host):
 def release(game, host, pid):
     """A guest has gone for good: wild Pokemon back on the map, borrowed Pokemon home."""
     st = _state(host)
+    raid.drop(game, host, pid)
     for eid in [e for e, f in st["fights"].items() if f["pid"] == pid]:
         f = st["fights"].pop(eid)
         f["floor"].movers.append(f["mover"])
@@ -240,15 +243,16 @@ def close_out(game, host):
 
 # ------------------------------------------------------------------ fights
 def _fighting(st, pid):
-    return any(f["pid"] == pid for f in st["fights"].values())
+    return pid in st.get("raiders", ()) or any(f["pid"] == pid for f in st["fights"].values())
 
 
 def _refuse(host, pid, why):
     host.send(pid, {"t": "event", "fight_no": why})
 
 
-def start_fight(game, host, pid, uid):
-    st, story = _state(host), game.story_manager
+def _claim(game, host, pid, uid, kind):
+    """The wild Pokemon or trainer a guest walked up to, off the map (nobody else can meet it), or None if they can't."""
+    st = _state(host)
     ds = getattr(game, "dungeon_state", None)
     at = host.guests[pid].get("at")
     if not any(_healthy(e["mon"]) for e in st["lent"].get(pid, [])):
@@ -258,7 +262,7 @@ def start_fight(game, host, pid, uid):
     if ds is None or not hasattr(ds, "run") or not at or at[0] != ds.area_key or at[1] != ds.run.index:
         return _refuse(host, pid, "It's too far away.")
     floor = ds.run.floor
-    mover = next((m for m in floor.movers if m.kind == "wild" and id(m) == uid), None)
+    mover = next((m for m in floor.movers if m.kind == kind and id(m) == uid), None)
     if mover is None:
         return _refuse(host, pid, "It's gone.")
     pending = getattr(ds, "pending", None) or (None, None)
@@ -266,10 +270,87 @@ def start_fight(game, host, pid, uid):
         return _refuse(host, pid, "Someone else is fighting that one.")
     if abs(mover.x - at[2]) + abs(mover.y - at[3]) > REACH:
         return _refuse(host, pid, "It's too far away.")
-    floor.movers.remove(mover)  # (off the map till the fight ends: nobody else can meet it)
-    game.data.mark_seen(mover.payload.id)
+    return ds, floor, mover
+
+
+def _next_eid(st):
     eid = max(list(st["fights"]) + [st.get("last", 0)]) + 1
     st["last"] = eid
+    return eid
+
+
+def start_trainer(game, host, pid, uid):
+    """The host's game makes the trainer's team (as for a fight of its own, without showing it); the guest fights it."""
+    from src.states.battle import TrainerBattleState, TrainerIntroState
+    st, story = _state(host), game.story_manager
+    got = _claim(game, host, pid, uid, "trainer")
+    if got is None:
+        return
+    ds, floor, mover = got
+    index = mover.payload[0]
+    if story.is_trainer_defeated(ds.area_key, index):
+        return _refuse(host, pid, "That trainer has been beaten.")
+    ui, before = game.ui_manager, list(game.ui_manager.elements)
+    keep = getattr(ds, "play_state_data", None)
+    state = ds._capture_state(lambda: ds.trigger_trainer_battle(specific_index=index))
+    ui.elements, ds.play_state_data = before, keep
+    battle = state.next_state if isinstance(state, TrainerIntroState) else state
+    if not isinstance(battle, TrainerBattleState):
+        return _refuse(host, pid, "Not right now.")
+    lines = list(state.dialogue_box.text_lines or [])[1:] if isinstance(state, TrainerIntroState) else []
+    floor.movers.remove(mover)
+    eid = _next_eid(st)
+    st["fights"][eid] = {"pid": pid, "floor": floor, "mover": mover, "kind": "trainer", "battle": battle,
+                         "area": ds.area_key, "index": index}
+    host.send(pid, {"t": "event", "trainer_fight": {
+        "eid": eid, "team": [story._pokemon_record(p) for p in battle.opponent_team], "class": battle.trainer_class,
+        "name": battle.trainer_name, "dialogue": battle.custom_dialogue, "rewards": battle.rewards,
+        "boss": bool(battle.is_boss_battle), "sprite": mover.payload[1].get("sprite"), "lines": [str(x) for x in lines],
+        "area": ds.area_key, "battle_type": battle.battle_type, "bg": ds._get_battle_background_for_area(),
+        "x": mover.x, "y": mover.y, "f": list(mover.facing), "on_map": bool(ds._ow_on())}})
+
+
+def _trainer_won(game, host, pid, fight):
+    """All progress is the host's. Prize money and ordinary prizes wait with the guest until they leave; things the
+    journey needs now (key items, TMs, gift Pokemon) go straight to the host."""
+    st, story, battle = _state(host), game.story_manager, fight["battle"]
+    story.mark_trainer_defeated(fight["area"], fight["index"])
+    if battle.victory_flag:
+        story.story_flags[battle.victory_flag] = True
+    led = _ledger(game, st, pid)
+    led["money"] += int(battle._calc_money_reward())
+    candy = int(battle._calc_candy_reward())
+    if candy > 0:
+        led["items"]["RARE_CANDY"] = led["items"].get("RARE_CANDY", 0) + candy
+    tm = battle._tm_reward()
+    if tm:
+        story.add_item(tm, 1)
+    key_items = game.loader.area_data.get("GAME_CONFIG", {}).get("KEY_ITEMS", [])
+    for item, qty in battle.rewards.items():
+        if item == "balls":
+            led["balls"] += int(qty)
+        elif item.startswith("POKEMON_"):
+            from src.world import story_events
+            story_events.gift_pokemon(game, int(item[8:]))
+        elif item in key_items:
+            story.add_item(item if story.inventory.get(item, 0) <= 0 else "RARE_CANDY", qty if story.inventory.get(item, 0) <= 0 else 2)
+        else:
+            led["items"][item] = led["items"].get(item, 0) + int(qty)
+    _journal(game, st)
+    game.update_save_data()
+    game.data.save()
+    toast(game, f"{host.guests[pid]['name']} beat {battle.trainer_name or 'a trainer'}!")
+
+
+def start_fight(game, host, pid, uid):
+    st, story = _state(host), game.story_manager
+    got = _claim(game, host, pid, uid, "wild")
+    if got is None:
+        return
+    ds, floor, mover = got
+    floor.movers.remove(mover)
+    game.data.mark_seen(mover.payload.id)
+    eid = _next_eid(st)
     st["fights"][eid] = {"pid": pid, "floor": floor, "mover": mover}
     host.send(pid, {"t": "event", "fight": {"eid": eid, "rec": story._pokemon_record(mover.payload), "area": ds.area_key,
                                             "bg": ds._get_battle_background_for_area(),
@@ -338,6 +419,15 @@ def end_fight(game, host, pid, msg):
             apply_ledger(game, host, pid, msg["ledger"])
         name = host.guests[pid]["name"]
         mover, outcome = fight["mover"], msg.get("outcome")
+        if fight.get("kind") == "trainer":
+            if outcome == "beaten":
+                _trainer_won(game, host, pid, fight)
+            else:
+                fight["floor"].movers.append(mover)
+            host.send(pid, {"t": "event", "fight_done": eid})
+            _send_ledger(game, host, pid)
+            check_wipe(game, host)
+            return
         mon = str(mover.payload.display_name).upper()
         if outcome == "caught":
             lines = _keep_catch(game, mover.payload, msg.get("ball"))
@@ -348,6 +438,115 @@ def end_fight(game, host, pid, msg):
             fight["floor"].movers.append(mover)
     host.send(pid, {"t": "event", "fight_done": eid})
     _send_ledger(game, host, pid)
+    check_wipe(game, host)
+
+
+# ------------------------------------------------------------------ fainting: "active" is having a Pokemon that can fight
+def host_active(game):
+    return any(_healthy(p) for p in game.story_manager.player_team)
+
+
+def _guest_active(host, pid):
+    return any(_healthy(e["mon"]) for e in _state(host)["lent"].get(pid, []))
+
+
+def _someone_else_active(host):
+    return any(g["cid"] is not None and _guest_active(host, pid) for pid, g in host.guests.items())
+
+
+def host_down(game):
+    """The host's whole team has fainted. True: a friend's still going, so the host stays and can revive. False: a wipe."""
+    host = getattr(game, "coop_host", None)
+    if host is None or not _someone_else_active(host):
+        return False
+    game.coop_host_down = True
+    return True
+
+
+def down_list(game, host):
+    """Who has fainted out and could be revived: who 0 is the host."""
+    st, out = _state(host), []
+    if getattr(game, "coop_host_down", False):
+        out.append({"who": 0, "name": str(getattr(game, "player_name", "") or "Host")})
+    for pid, g in host.guests.items():
+        if g["cid"] is not None and st["lent"].get(pid) and not _guest_active(host, pid) and not _fighting(st, pid):
+            out.append({"who": pid, "name": g["name"]})
+    return out
+
+
+def revive_item(items):
+    return next((k for k in REVIVES if items.get(k, 0) > 0), None)
+
+
+def _use_up(items, item):
+    items[item] -= 1
+    if items[item] <= 0:
+        del items[item]
+
+
+def host_can_help(game, host):
+    """The first friend the host could revive with a Revive from the host's own Bag, or None."""
+    if getattr(game, "coop_vote", None) or not host_active(game) or not revive_item(game.story_manager.inventory):
+        return None
+    return next((d for d in down_list(game, host) if d["who"] != 0), None)
+
+
+def revive(game, host, rescuer, who):
+    """An active player spends one of their own Revives on someone who's fainted out (rescuer / who 0: the host)."""
+    from src.pokemon import items as itemlib
+    st, story = _state(host), game.story_manager
+    if rescuer == who or who not in [d["who"] for d in down_list(game, host)]:
+        return
+    if not (host_active(game) if rescuer == 0 else _guest_active(host, rescuer) and not _fighting(st, rescuer)):
+        return
+    bag = story.inventory if rescuer == 0 else _ledger(game, st, rescuer)["items"]
+    item = revive_item(bag)
+    team = story.player_team if who == 0 else [e["mon"] for e in st["lent"].get(who, [])]
+    p = next((m for m in team if m.current_hp <= 0 and not getattr(m, "is_egg", False)), None)
+    if item is None or p is None or not itemlib.medicine_effect(item, p)[0]:
+        return
+    _use_up(bag, item)
+    if rescuer != 0:
+        _journal(game, st)
+        _send_ledger(game, host, rescuer)
+    helper = str(getattr(game, "player_name", "") or "Host") if rescuer == 0 else host.guests[rescuer]["name"]
+    if who == 0:
+        game.coop_host_down = False
+        toast(game, f"{helper} revived your {p.display_name.upper()}!")
+    else:
+        host.send(who, {"t": "event", "revived": {"uid": p.coop_uid, "hp": p.current_hp, "by": helper}})
+
+
+def host_tethered(game, t):
+    """The host has fainted out: only near a friend who can still fight."""
+    host = getattr(game, "coop_host", None)
+    me = world.where(game)
+    if host is None or not getattr(game, "coop_host_down", False) or me is None:
+        return False
+    near = [g["at"] for pid, g in host.guests.items() if g.get("at") and tuple(g["at"][:2]) == me[:2] and _guest_active(host, pid)]
+    return bool(near) and all(abs(a[2] - t[0]) + abs(a[3] - t[1]) > TETHER for a in near)
+
+
+def wipe_guests(game):
+    """Everyone's out: back to the last Pokemon Center together, teams healed."""
+    host = getattr(game, "coop_host", None)
+    if host is None:
+        return
+    for pid, entries in _state(host)["lent"].items():
+        for entry in entries:
+            entry["mon"].heal_full()
+        host.send(pid, {"t": "event", "wipe": True})
+
+
+def check_wipe(game, host):
+    """No one has an active Pokemon: the shared wipe. (Not in the middle of the host's own battle: its end decides.)"""
+    if not host.guests or host_active(game) or _someone_else_active(host) or world.where(game) is None:
+        return
+    from src.states.overworld import white_out
+    game.coop_host_down = False
+    game.coop_vote = None
+    wipe_guests(game)
+    white_out(game)
 
 
 # ------------------------------------------------------------------ from the game loop
@@ -371,6 +570,18 @@ def handle(game, host, pid, msg):
         _state(host)["later"].append(lambda: lend(game, host, pid, msg["borrow"]) if pid in host.guests else None)
     elif "watch" in msg:  # (the guest's fight, for the host to watch)
         host.guests[pid]["watch"] = msg["watch"] if isinstance(msg["watch"], dict) else None
+        world.relay_watch(host, pid)
+    elif "raid_join" in msg:
+        raid.join(game, host, pid)
+    elif "raid_leave" in msg:
+        raid.drop(game, host, pid)
+        host.send(pid, {"t": "event", "raid_over": True, "won": False})
+    elif "raid_turn" in msg:
+        raid.submit(game, host, pid, msg["raid_turn"])
+    elif "revive" in msg:
+        revive(game, host, pid, msg["revive"])
+    elif "trainer" in msg:
+        start_trainer(game, host, pid, msg["trainer"])
     elif "fight" in msg:
         start_fight(game, host, pid, msg["fight"])
     elif "fight_end" in msg and isinstance(msg["fight_end"], dict):
@@ -379,9 +590,16 @@ def handle(game, host, pid, msg):
 
 def tick(game, host):
     st = _state(host)
+    if getattr(game, "coop_raid_battle", None) is not None and world.where(game) is not None:
+        raid.finish(game, host)  # (back on the map: the raid is over)
     if not st.get("recovered"):
         st["recovered"] = True
         recover(game, host)
+    if getattr(game, "coop_host_down", False):
+        if host_active(game):  # (healed some other way: a Center, the Bag)
+            game.coop_host_down = False
+        else:
+            check_wipe(game, host)
     if st["later"] and world.where(game) is not None:
         for job in st["later"]:
             job()

@@ -432,14 +432,17 @@ class OverworldView:
             self.shots.append(["me" if side == "player" else "foe", TYPE_COLOR.get(kind, (255, 255, 255)), 0])
         self.anim_seen = now
 
+    def _draw_map(self, screen):
+        self.play._focus = self.focus
+        self.play.draw_backdrop(screen)
+
     def draw(self, screen, battle):
         from src.states.overworld.dungeon import TILE
         play = self.play
-        play._focus = self.focus
-        play.draw_backdrop(screen)
+        self._draw_map(screen)
         self._watch(battle)
         fonts = play.game.assets.fonts
-        fr, mr = play._tile_rect(*self.spot), play._tile_rect(*self.mine)
+        fr, mr = self.catch_points()[::-1]  # (on the same camera as the map behind them)
         foe, me = battle.opponent_pokemon, battle.player_pokemon
         summoning_foe = battle.phase == "ENEMY_SUMMON"
         fainting = battle.fainting_side if battle.phase in ("FAINT_ANIM_RUNNING", "RETRACT_ANIM") else None

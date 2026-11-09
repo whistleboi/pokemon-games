@@ -320,6 +320,10 @@ class WalkTownState(CityState):
             return
         self.facing = (dx, dy)
         to = (self.player[0] + dx, self.player[1] + dy)
+        from src.coop import roster
+        if roster.host_tethered(self.game, to):
+            self.walk_goal = None
+            return self.flash("Your team fainted: stay close to a friend.")
         if to in self.signs:
             self.walk_goal = None
             return self._read(to)

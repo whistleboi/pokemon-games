@@ -60,7 +60,7 @@ def _dungeon_scene(game, st, out):
                                   "form": str(getattr(p, "form", "normal") or "normal"), "shiny": bool(p.is_shiny),
                                   "alert": bool(m.alert), "f": list(getattr(m, "facing", (0, 1)) or (0, 1))})
         elif m.kind == "trainer":
-            out["movers"].append({"k": "t", "x": m.x, "y": m.y, "sprite": m.payload[1].get("sprite"), "f": list(m.facing)})
+            out["movers"].append({"k": "t", "x": m.x, "y": m.y, "uid": id(m), "sprite": m.payload[1].get("sprite"), "f": list(m.facing)})
         elif m.kind == "figure":
             out["movers"].append({"k": "f", "x": m.x, "y": m.y, "look": _look(m.payload)})
     out["items"] = [[x, y, str(key)] for (x, y), key in f.items.items()]
@@ -104,6 +104,14 @@ def scene(game):
     return out
 
 
+def relay_watch(host, pid):
+    """A guest's fight, for the other guests to watch too."""
+    g = host.guests[pid]
+    for other in list(host.guests):
+        if other != pid:
+            host.send(other, {"t": "state", "watch": g.get("watch"), "who": g["name"]})
+
+
 def _publish_battle(game, host):
     """The host's own fight, for guests to watch."""
     from src.states.battle import TrainerBattleState
@@ -126,6 +134,9 @@ def tick(game):
             roster.release(game, host, ev[1])
         elif ev[0] == "left" and ev[1] in host.guests:
             host.guests[ev[1]]["watch"] = None
+            relay_watch(host, ev[1])
+            from src.coop import raid
+            raid.drop(game, host, ev[1])
         elif ev[0] == "intent" and ev[1] in host.guests and "at" not in ev[2]:
             roster.handle(game, host, ev[1], ev[2])
         elif ev[0] == "intent":
@@ -139,8 +150,14 @@ def tick(game):
     if game.coop_frame % SEND_EVERY:
         return
     me = where(game)
+    view = getattr(game.current_state, "overworld", None)
+    if view is not None:  # (fighting on the map: stepped back behind its Pokemon, and guests should see that)
+        game.coop_last = (view.play.area_key, view.play.run.index, view.play.run.player[0], view.play.run.player[1], tuple(view.play.facing))
     info = {"t": "state", "host": {"name": str(getattr(game, "player_name", "") or "Host"),
-                                   "char": str(getattr(game, "player_character", "") or "red"), "busy": me is None}}
+                                   "char": str(getattr(game, "player_character", "") or "red"), "busy": me is None,
+                                   "active": roster.host_active(game), "down": roster.down_list(game, host),
+                                   "others": [{"pid": p, "name": g["name"], "char": g.get("char"), "at": g["at"]}
+                                              for p, g in host.guests.items() if g.get("at") and g["cid"] is not None]}}
     if me:
         game.coop_last = me
     last = getattr(game, "coop_last", None)
@@ -198,6 +215,14 @@ def draw_person(game, char, name, sx, sy, facing=(0, 1)):
     screen.blit(tag, tag.get_rect(center=pill.center))
 
 
+def draw_guests(game, ox, oy, area, floor):
+    """The guests standing on this map, for the host's screen."""
+    for g in game.coop_host.guests.values():
+        at = g.get("at")
+        if at and g["cid"] is not None and at[0] == area and at[1] == floor:
+            draw_person(game, g.get("char"), g["name"], ox + at[2] * TILE, oy + at[3] * TILE, (at[4], at[5]))
+
+
 def _watchable(game):
     """(the guest who's fighting) if the host, on the map, could watch them now."""
     host = getattr(game, "coop_host", None)
@@ -206,14 +231,41 @@ def _watchable(game):
     return next((p for p, g in host.guests.items() if g.get("watch")), None)
 
 
+def _revive_rect(game):
+    return pygame.Rect(game.width // 2 - 150, 246, 300, 52)
+
+
+def _draw_host_help(game, host, me):
+    """Fainted out: where you stand. A friend fainted out: a button, if you've a Revive to give."""
+    from src.coop import roster
+    screen, font = game.screen, game.assets.fonts["label"]
+    if getattr(game, "coop_host_down", False) and me:
+        tag = font.render("Your team fainted! Stay close to a friend.", True, (255, 255, 255))
+        pill = tag.get_rect(midtop=(game.width // 2, 246)).inflate(24, 12)
+        pygame.draw.rect(screen, (150, 60, 60), pill, border_radius=10)
+        screen.blit(tag, tag.get_rect(center=pill.center))
+    target = roster.host_can_help(game, host) if me else None
+    if target:
+        r = _revive_rect(game)
+        pygame.draw.rect(screen, (60, 150, 90), r, border_radius=10)
+        word = font.render(f"REVIVE {target['name']}"[:22], True, (255, 255, 255))
+        screen.blit(word, word.get_rect(center=r.center))
+
+
 def _watch_rect(game):
     return pygame.Rect(game.width // 2 - 150, 186, 300, 52)
 
 
 def handle_events(game, events):
-    """The host's vote and WATCH buttons come before the map's own taps."""
-    from src.coop import travel
+    """The host's vote, REVIVE and WATCH buttons come before the map's own taps."""
+    from src.coop import roster, travel
     events = travel.handle_events(game, events)
+    target = roster.host_can_help(game, game.coop_host) if where(game) is not None else None
+    if target:
+        for e in events:
+            if e.type == pygame.MOUSEBUTTONDOWN and e.button == 1 and _revive_rect(game).collidepoint(e.pos):
+                roster.revive(game, game.coop_host, 0, target["who"])
+                return [x for x in events if x is not e]
     pid = _watchable(game)
     if pid is None:
         return events
@@ -238,10 +290,7 @@ def draw(game):
     if me and callable(camera):
         cx, cy = camera()
         ox, oy = int(game.width / 2 - cx), int(game.height / 2 - cy)
-        for g in host.guests.values():
-            at = g.get("at")
-            if at and g["cid"] is not None and at[0] == me[0] and at[1] == me[1]:
-                draw_person(game, g.get("char"), g["name"], ox + at[2] * TILE, oy + at[3] * TILE, (at[4], at[5]))
+        draw_guests(game, ox, oy, me[0], me[1])
     pid = _watchable(game)
     if pid is not None:
         r = _watch_rect(game)
@@ -250,6 +299,7 @@ def draw(game):
         game.screen.blit(tag, tag.get_rect(center=r.center))
     from src.coop import travel
     travel.draw(game)
+    _draw_host_help(game, host, me)
     note = getattr(game, "coop_toast", None)
     if note:
         game.coop_toast = (note[0], note[1] - 1) if note[1] > 1 else None

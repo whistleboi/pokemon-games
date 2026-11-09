@@ -81,3 +81,24 @@ class CoopBorrowState(GameState):
             self.btn_prev.draw(screen)
             self.btn_next.draw(screen)
             theme.shadow_text(screen, f"{self.page + 1}/{self.pages()}", self.font, 400, self.game.height - 60, color=(255, 255, 255), shadow=(16, 20, 36))
+
+
+class CoopTakeBackState(CoopBorrowState):
+    """The host, taking back Pokemon a guest is holding: the ones left picked stay with the guest."""
+
+    def __init__(self, game, back, pid, rows):
+        super().__init__(game, None, rows)
+        self.back, self.pid = back, pid
+
+    def done(self):
+        from src.coop import roster
+        host = self.game.coop_host
+        if self.chosen and sorted(self.chosen) != sorted(r["uid"] for r in self.rows):
+            roster.exchange(self.game, host, self.pid, list(self.chosen))
+        elif not self.chosen:
+            roster.toast(self.game, "They need at least one Pokemon.")
+            return
+        self.game.change_state(self.back)
+
+    def update(self):
+        pass

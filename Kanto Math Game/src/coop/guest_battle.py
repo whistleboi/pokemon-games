@@ -1,17 +1,14 @@
-"""A guest's wild battle (Jordan, 11-08): the game's own battle, math every turn, on the guest's device with borrowed
-Pokemon. It only differs at the end: instead of changing a save or the story, it tells the host how it went."""
+"""A guest's battles (Jordan, 11-08): the game's own, math every turn, on the guest's device with borrowed Pokemon. They only
+differ at the end: instead of changing a save or the story, they tell the host how it went. Prizes and progress are the host's
+to give."""
 from src.pokemon import forms
-from src.states.battle import WildBattleState
+from src.states.battle import TrainerBattleState, WildBattleState
 from src.states.battle_gimmicks import end_battle as gimmick_end_battle
 from src.states.coop_watch import snapshot
 
 
-class GuestWildBattle(WildBattleState):
+class _GuestFight:
     _sent = None
-
-    def __init__(self, game, pokemon, area, background, map_state, eid):
-        self.map_state, self.eid, self.reported = map_state, eid, False
-        super().__init__(game, pokemon, area, background_image=background)
 
     def _try_sos_call(self):  # (one wild Pokemon was handed out: no one else joins)
         return False
@@ -55,3 +52,15 @@ class GuestWildBattle(WildBattleState):
                 if feed != self._sent:
                     self._sent = feed
                     self.map_state.link.send_intent({"watch": feed})
+
+
+class GuestWildBattle(_GuestFight, WildBattleState):
+    def __init__(self, game, pokemon, area, background, map_state, eid):
+        self.map_state, self.eid, self.reported = map_state, eid, False
+        super().__init__(game, pokemon, area, background_image=background)
+
+
+class GuestTrainerBattle(_GuestFight, TrainerBattleState):
+    def __init__(self, game, team, map_state, eid, **details):
+        self.map_state, self.eid, self.reported = map_state, eid, False
+        super().__init__(game, team, **details)

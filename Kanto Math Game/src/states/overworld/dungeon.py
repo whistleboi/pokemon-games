@@ -771,6 +771,11 @@ class DungeonState(OverworldBattles, PlayState):
     def step(self, dx, dy):
         if not self._ready():
             return
+        from src.coop import roster
+        if roster.host_tethered(self.game, (self.run.player[0] + dx, self.run.player[1] + dy)):
+            self.walk_goal = None
+            self.flash("Your team fainted: stay close to a friend.")
+            return
         self.facing = (dx, dy)
         self._clear_boulders()  # (one already pushed aside isn't in the way)
         before = self.run.player
@@ -794,6 +799,8 @@ class DungeonState(OverworldBattles, PlayState):
             self._handle(self.run.wait())
 
     def _handle(self, events):
+        if getattr(self.game, "coop_host_down", False):  # (nothing to fight with: nothing starts a fight)
+            events = [ev for ev in events if ev[0] not in ("ambush", "spotted") and not (ev[0] == "bump" and ev[1].kind in ("wild", "trainer"))]
         for ev in events:
             kind = ev[0]
             if kind == "blocked":

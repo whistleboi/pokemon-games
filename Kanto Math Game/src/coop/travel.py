@@ -10,7 +10,8 @@ def _connected(host):
 
 
 def _fighting(host, pid):
-    return any(f["pid"] == pid for f in host.__dict__.get("roster", {}).get("fights", {}).values())
+    st = host.__dict__.get("roster", {})
+    return pid in st.get("raiders", ()) or any(f["pid"] == pid for f in st.get("fights", {}).values())
 
 
 def area_name(game, key):

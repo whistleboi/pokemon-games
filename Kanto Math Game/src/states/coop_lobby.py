@@ -52,6 +52,10 @@ class CoopState(GameState):
         self.btn_reveal = CommandButton((960, 202, 170, 54), "REVEAL", f["label"], self.toggle_reveal, bg_color=theme.RUN, autosize=False)
         self.btn_close = CommandButton((w - 340, 620, 300, 66), "CLOSE SESSION" if mode == "host" else "LEAVE",
                                        f["label"], self.end, bg_color=theme.FIGHT, autosize=False)
+        self.players = 2
+        self.btn_seats = CommandButton((960, 130, 240, 54), "PLAYERS: 2", f["label"], self.more_players, bg_color=theme.RUN, autosize=False)
+        self.char_index = 0
+        self.btn_char = CommandButton((960, 274, 240, 54), "LOOK: RED", f["label"], self.next_char, bg_color=theme.RUN, autosize=False)
         self.btn_allow = CommandButton((640, 330, 170, 60), "ALLOW", f["label"], lambda: self.answer(True), bg_color=theme.POKEMON, autosize=False)
         self.btn_deny = CommandButton((830, 330, 170, 60), "DENY", f["label"], lambda: self.answer(False), bg_color=theme.FIGHT, autosize=False)
 
@@ -72,6 +76,33 @@ class CoopState(GameState):
     def go_back(self):
         self.game.change_state(self.back)  # (a host's session stays open; a guest's link too, till LEAVE)
 
+    CHARS = ("red", "ash", "blue", "female")
+
+    @property
+    def char(self):
+        return self.CHARS[self.char_index]
+
+    def next_char(self):
+        self.char_index = (self.char_index + 1) % len(self.CHARS)
+        self.btn_char.text = "LOOK: " + self.char.upper().replace("FEMALE", "LEAF")
+
+    def more_players(self):
+        self.players = 2 + (self.players - 1) % 3
+        self.btn_seats.text = f"PLAYERS: {self.players}"
+
+    def _take_back_rect(self, row):
+        return pygame.Rect(860, 422 + row * 44, 220, 40)
+
+    def _held(self, pid):
+        from src.coop import roster
+        return [r for r in roster.rows(self.game, self.game.coop_host, pid) if r["mine"]]
+
+    def take_back(self, pid):
+        rows = self._held(pid)
+        if rows:
+            from src.states.coop_borrow import CoopTakeBackState
+            self.game.change_state(CoopTakeBackState(self.game, self, pid, rows))
+
     def toggle_reveal(self):
         self.reveal = not self.reveal
 
@@ -90,7 +121,7 @@ class CoopState(GameState):
             self.message = "That session name is already in use nearby."
             return
         try:
-            self.game.coop_host = sess.HostSession(name, self.value("password"), seats=1)
+            self.game.coop_host = sess.HostSession(name, self.value("password"), seats=self.players - 1)
             self.message = ""
         except OSError:
             self.message = "Couldn't open the session on this network."
@@ -141,6 +172,10 @@ class CoopState(GameState):
                 self._form_event(e)
             elif self.mode == "host" and host:
                 self.btn_close.handle_event(e)
+                if e.type == pygame.MOUSEBUTTONDOWN and e.button == 1:
+                    for row, pid in enumerate(host.guests):
+                        if self._take_back_rect(row).collidepoint(e.pos):
+                            return self.take_back(pid)
                 if host.waiting():
                     self.btn_allow.handle_event(e)
                     self.btn_deny.handle_event(e)
@@ -149,6 +184,10 @@ class CoopState(GameState):
 
     def _form_event(self, e):
         self.btn_go.handle_event(e)
+        if self.mode == "join":
+            self.btn_char.handle_event(e)
+        else:
+            self.btn_seats.handle_event(e)
         if self.mode == "host" or len(self.fields) > 1:
             self.btn_reveal.handle_event(e)
         if e.type == pygame.MOUSEBUTTONDOWN and e.button == 1:
@@ -232,6 +271,10 @@ class CoopState(GameState):
             pygame.draw.rect(screen, theme.RUN, strip, 4, border_radius=8)
             theme.shadow_text(screen, f"{f['label']}: {shown}_", self.text, strip.x + 14, strip.y + 13)
         self.btn_go.draw(screen)
+        if self.mode == "join":
+            self.btn_char.draw(screen)
+        else:
+            self.btn_seats.draw(screen)
         self.btn_reveal.text = "HIDE" if self.reveal else "REVEAL"
         self.btn_reveal.draw(screen)
 
@@ -258,6 +301,11 @@ class CoopState(GameState):
             self._say(f"{g['name']}: {state}", 90, y)
             y += 44
         self.btn_close.draw(self.game.screen)
+        for row, pid in enumerate(host.guests):
+            if self._held(pid):
+                r = self._take_back_rect(row)
+                pygame.draw.rect(self.game.screen, theme.RUN, r, border_radius=8)
+                self._say("TAKE BACK", r.x + 34, r.y + 8, self.small)
 
     def _draw_guest(self):
         if self.busy or not self.link:

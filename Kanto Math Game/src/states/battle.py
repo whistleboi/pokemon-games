@@ -1130,8 +1130,12 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, GameState)
     def perform_battle_black_out(self):
         """Back to the last Pokemon Center (or home) with a healed team."""
         from src.states.overworld import white_out, reset_league_after_loss
+        from src.coop import roster
+        if self.battle_type != "gym" and roster.host_down(self.game):  # (co-op: a friend's still going; revive on the map)
+            return self.on_flee_complete()
         if self.battle_type == "gym":
             reset_league_after_loss(self.game)  # a League run starts over after a loss
+        roster.wipe_guests(self.game)
         white_out(self.game)
 
     def _speed(self, mon):
@@ -1170,6 +1174,8 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, GameState)
             self.turn_actions += [self.opponent_attack, self.player_attack]
         if getattr(self, "raid_allies", None):  # a Max Raid's teammates, after the two of you
             self.turn_actions.append(self.raid_allies_attack)
+            from src.coop import raid as coop_raid
+            coop_raid.on_turn(self)  # (co-op: friends' answers first)
 
     FIRST_TURN_ONLY = ("FAKE-OUT", "FIRST-IMPRESSION")
 
@@ -1610,9 +1616,14 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, GameState)
         chart = TypeAdvantage(self.game.loader.area_data.get("TYPE_CHART", {}))
         lines = []
         room = max(1, int(self.opp_max_hp * self.RAID_ALLY_SHARE))  # (what they can still do this turn)
-        for name, _sprite, mon in getattr(self, "raid_allies", []):
+        from src.coop import raid as coop_raid
+        for name, _sprite, mon in list(getattr(self, "raid_allies", [])):
             if self.opponent_hp <= 0:
                 break
+            plan = coop_raid.plan_for(self, mon)
+            if plan is not None:  # (a friend: their own move and answer)
+                lines += coop_raid.human_attack(self, name, mon, plan) if plan else []
+                continue
             infos = [movelib.info(self.game, m) for m in (mon.moves or [])]
             infos = [i for i in infos if (i.get("power") or 0) > 0] or [movelib.info(self.game, "TACKLE")]
             move = max(infos, key=lambda i: (i.get("power") or 0) * chart.get_multiplier(i.get("type"), foe.types or []))
@@ -1629,6 +1640,8 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, GameState)
             lines.append(f"{name}'s {mon.display_name.upper()} used {str(move.get('name', 'TACKLE')).replace('-', ' ')}!")
             if eff > 1:
                 lines.append("It's super effective!")
+        lines += coop_raid.boss_strikes(self)
+        coop_raid.next_turn(self)
         if lines:
             self.dialogue_box.reset(lines)
             self.dialogue_box.set_visibility(True)
@@ -2034,6 +2047,7 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, GameState)
             return False
         other = "opponent" if side == "player" else "player"
         mons = {"player": self.player_pokemon, "opponent": self.opponent_pokemon}
+        self.move_anim_name, self.move_anim_side = name, side  # (co-op: those watching play it too)
         self.move_anim = move_anims.MoveAnimation(
             self.game, anim, battle_spot(self.game, mons[side], side), battle_spot(self.game, mons[other], other),
             Utils.get_full_dialogue_rect(self.game).top, swapped, side)
