@@ -713,6 +713,7 @@ class DungeonState(OverworldBattles, PlayState):
         a beaten trainer too."""
         kind, mover = self.pending or (None, None)
         self.pending = None
+        self._ow_foe = None
         if mover is not None:
             if kind == "wild":
                 self.run.remove(mover)
@@ -1096,6 +1097,9 @@ class DungeonState(OverworldBattles, PlayState):
         battle = WildBattleState(self.game, mover.payload, self.area_key,
                                  background_image=self._get_battle_background_for_area())
         battle.play_state_data = self._play_data()
+        if self._ow_on():  # Options > BATTLE STYLE: OVERWORLD: fought here on the map
+            from src.states.overworld.overworld_battle import OverworldView
+            battle.overworld = OverworldView(self, mover)
         pygame.event.clear()
         self.game.change_state(battle)
 
@@ -1857,6 +1861,7 @@ class DungeonState(OverworldBattles, PlayState):
         return next((p for p in team if p and p.current_hp > 0), team[0] if team else None)
 
     _backdrop = False
+    _ow_foe = None  # (the wild Pokemon an OVERWORLD-style battle is drawing itself)
 
     def draw_backdrop(self, screen):
         """Just the map (its tiles, the people on it, you): behind an OVERWORLD-style battle."""
@@ -1982,7 +1987,7 @@ class DungeonState(OverworldBattles, PlayState):
                 screen.blit(img, img.get_rect(midbottom=(r.centerx, r.bottom - 2)))
         # wild Pokemon and trainers you can see
         for m in f.movers:
-            if not self.run.visible(m.x, m.y):
+            if not self.run.visible(m.x, m.y) or m is self._ow_foe:
                 continue
             r = at(m.x, m.y)
             if m.kind == "wild":

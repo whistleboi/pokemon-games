@@ -51,6 +51,8 @@ class DataManager:
     def save(self):
         """Safe save: build the whole text first, write it to a temp file, keep the previous
         save as .bak, then swap the new file in. A crash mid-save can't destroy the save."""
+        if getattr(self, "read_only", False):  # (a co-op guest: only the host saves)
+            return
         text = json.dumps(self.data, default=self._json_default)
         tmp = self.save_file + ".tmp"
         with open(tmp, "w", encoding="utf-8") as f:

@@ -310,13 +310,14 @@ class OverworldBattles:
 
 
 class OverworldView:
-    """How a trainer battle looks in the OVERWORLD style: the map behind it, the two Pokemon on their
-    tiles. The battle itself (its turns, math questions, buttons, text) is the classic one."""
+    """How a battle looks in the OVERWORLD style: the map behind it, the two Pokemon on their tiles. The
+    battle itself (its turns, math questions, buttons, text) is the classic one. A wild Pokemon fights from
+    where it stands; a trainer sends its Pokemon out in front of it."""
     SHOT = int(FPS * 0.4)
 
     def __init__(self, play, mover):
         self.play = play
-        self.spot, self.mine = self._line_up(play, mover)
+        self.spot, self.mine = self._line_up_wild(play, mover) if mover.kind == "wild" else self._line_up(play, mover)
         play.partner = play.partner_from = self.mine
         from src.states.overworld.dungeon import TILE
         a, b = (mover.x, mover.y), play.run.player
@@ -350,6 +351,39 @@ class OverworldView:
         spot = play._throw_spot(mover)
         play._partner_beside(spot)
         return spot, play.partner
+
+    @staticmethod
+    def _line_up_wild(play, mover):
+        """The wild Pokemon where it stands, (a gap,) yours, then you, in a line; else yours beside it."""
+        play._ow_foe = mover  # (the battle draws it now, with its HP)
+        f = play.run.floor
+        tx, ty = mover.x, mover.y
+        px, py = play.run.player
+        ways = [(1 if px > tx else -1, 0)] if px != tx else []
+        ways += [(0, 1 if py > ty else -1)] if py != ty else []
+        if abs(py - ty) > abs(px - tx):
+            ways.reverse()
+        ways += [w for w in ((0, 1), (0, -1), (1, 0), (-1, 0)) if w not in ways]
+        busy = {(m.x, m.y) for m in f.movers if m is not mover}
+        for gap in (1, 0):
+            for dx, dy in ways:
+                line = [(tx + dx * k, ty + dy * k) for k in range(1, 3 + gap)]
+                if all(f.walkable(*t) and (t not in busy or t == (px, py)) for t in line):
+                    play.anim, play.anim_from = 0, line[-1]
+                    play.run.player = line[-1]
+                    mover.facing, play.facing = (dx, dy), (-dx, -dy)
+                    return (tx, ty), line[-2]
+        play._partner_beside((tx, ty))
+        return (tx, ty), play.partner
+
+    def catch_points(self):
+        """Where a thrown ball starts and lands, on the screen: (your Pokemon's tile, the foe's tile)."""
+        play = self.play
+        play._focus, play._backdrop = self.focus, True
+        try:
+            return play._tile_rect(*self.mine), play._tile_rect(*self.spot)
+        finally:
+            play._backdrop = False
 
     def _face(self, a, b):
         dx, dy = b[0] - a[0], b[1] - a[1]
@@ -409,7 +443,9 @@ class OverworldView:
         foe, me = battle.opponent_pokemon, battle.player_pokemon
         summoning_foe = battle.phase == "ENEMY_SUMMON"
         fainting = battle.fainting_side if battle.phase in ("FAINT_ANIM_RUNNING", "RETRACT_ANIM") else None
-        if foe is not None and not summoning_foe and not (fainting == "opponent" or foe.current_hp <= 0 and battle.opponent_hp <= 0):
+        kept = getattr(battle, "_ow_ko", False)  # (a knocked-out wild Pokemon stays while you decide to catch it)
+        if foe is not None and not summoning_foe and not getattr(battle, "_ow_hide", False) \
+                and (kept or not (fainting == "opponent" or foe.current_hp <= 0 and battle.opponent_hp <= 0)):
             img = play._icon(foe, TILE + 8, facing=self._face(self.spot, self.mine))
             if img is not None:
                 screen.blit(img, img.get_rect(midbottom=(fr.centerx, fr.bottom + 4)))

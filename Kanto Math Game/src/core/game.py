@@ -382,6 +382,9 @@ class Game:
         # button on the new screen), and each tap is routed on its own.
         if pygame.time.get_ticks() - getattr(self, "state_changed_at", -10**6) < 150:
             events = [e for e in events if e.type not in (pygame.MOUSEBUTTONDOWN, pygame.MOUSEBUTTONUP)]
+        if getattr(self, "coop_host", None):  # (the host's WATCH button)
+            from src.coop import world as coop_world
+            events = coop_world.handle_events(self, events)
         if self.current_state is frame_start_state:
             remaining = self.ui_manager.unconsumed(
                 events, lambda: self.current_state is not frame_start_state)

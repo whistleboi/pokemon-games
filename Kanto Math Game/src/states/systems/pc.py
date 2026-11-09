@@ -166,6 +166,10 @@ class PCState(GameState):
 
     def open_popup(self, where, index):
         """The menu beside the tapped Pokemon, kept on the screen."""
+        if where == "pc" and getattr(self.pc[index], "coop_lent", None) is not None:
+            from src.coop import roster
+            roster.toast(self.game, "A friend is borrowing that one.")
+            return
         self.popup = (where, index)
         slot = self.party_slot(index) if where == "party" else self.box_slot(self.local_of(index))
         buttons = self.popup_buttons if where == "pc" else self.popup_buttons[:2]
@@ -361,6 +365,10 @@ class PCState(GameState):
         return None
 
     def handle_click(self, source, index):
+        if source == "pc" and index < len(self.pc) and getattr(self.pc[index], "coop_lent", None) is not None:
+            from src.coop import roster
+            roster.toast(self.game, "A friend is borrowing that one.")
+            return
         if source == "party":
             if index >= len(self.party):
                 if self.selected_pc_idx is not None and self.pc[self.selected_pc_idx] is not None:

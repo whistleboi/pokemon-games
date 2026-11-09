@@ -2641,6 +2641,12 @@ class WildBattleState(TrainerBattleState):
         self.ball_start = (self.game.width * 0.18, self.game.height * 0.82)
         self.ball_target = [self.foe_spot[0], top - 24]
         self.ball_ground = feet - 22
+        if getattr(self, "overworld", None) is not None:  # (thrown across the map, from your Pokemon to the foe's tile)
+            mine, foe_tile = self.overworld.catch_points()
+            self.foe_spot = foe_tile.center
+            self.ball_start = mine.center
+            self.ball_target = [foe_tile.centerx, foe_tile.top - 24]
+            self.ball_ground = foe_tile.bottom - 22
         self.ball_pos = list(self.ball_start)
         self.catch_t = 0
         self.ball_angle = 0
@@ -2832,6 +2838,13 @@ class WildBattleState(TrainerBattleState):
         # A knocked-out wild Pokemon stays in view while you decide to catch it (Jordan).
         show_ko = self.phase in ("CATCH_PROMPT", "CATCH_ANIMATION", "MESSAGE") and not hide_opponent
 
+        if getattr(self, "overworld", None) is not None:  # Options > BATTLE STYLE: OVERWORLD (on the map)
+            self._ow_hide, self._ow_ko = hide_opponent, show_ko
+            self.overworld.draw(screen, self)
+            self.game.ui_manager.draw(screen)
+            self._draw_catch_extras(screen, catching_now)
+            return
+
         self.renderer.draw(
             screen,
             self.opponent_pokemon,
@@ -2861,7 +2874,9 @@ class WildBattleState(TrainerBattleState):
             self.player_summon_anim.draw(screen)  # (a Pokemon sent in after a switch)
 
         self.game.ui_manager.draw(screen)
+        self._draw_catch_extras(screen, catching_now)
 
+    def _draw_catch_extras(self, screen, catching_now):
         if self.phase == "CATCH_PROMPT":  # the time left to decide, under YES / NO
             from src.ui import theme
             ratio = max(0.0, self.catch_timer / (15 * FPS))
@@ -2877,7 +2892,7 @@ class WildBattleState(TrainerBattleState):
         from src.vfx.animations import white_silhouette
         import math as _m
         foe = self.opponent_pokemon
-        if self.catch_phase == "ABSORB" and foe.image is not None:
+        if self.catch_phase == "ABSORB" and foe.image is not None and getattr(self, "overworld", None) is None:
             k = min(1.0, self.catch_t / 14)
             img = white_silhouette(battle_sprite(foe, "opponent"), min(1.0, k * 2))
             w, h = img.get_size()
