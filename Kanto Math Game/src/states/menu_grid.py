@@ -41,6 +41,20 @@ def _glyph(label, size, game):
                 c + 8 + math.sin(a) * (size // 5 if i % 2 == 0 else size // 11))
                for i, a in enumerate([-math.pi / 2 + k * math.pi / 5 for k in range(10)])]
         pygame.draw.polygon(s, WHITE, pts)
+    elif label == "POKEDEX":
+        box((10, 6, size - 20, size - 12), fill=(214, 62, 58))
+        box((18, 14, size - 36, size // 2 - 10), fill=(190, 230, 250), radius=3)
+        pygame.draw.circle(s, WHITE, (c, size - 18), 6)
+    elif label == "STATS":
+        for k, top in enumerate((size // 2, size // 3, 12)):
+            box((12 + k * (size - 24) // 3, top, (size - 24) // 3 - 4, size - 10 - top), fill=WHITE, radius=2)
+    elif label == "CO-OP":
+        for x, col in ((c - 10, WHITE), (c + 10, (255, 214, 110))):
+            pygame.draw.circle(s, col, (x, c - 8), 9)
+            box((x - 11, c + 3, 22, 16), fill=col, radius=6)
+    elif label == "QUIT":
+        box((12, 8, size // 2 - 4, size - 16), fill=(120, 80, 50), radius=3)
+        pygame.draw.polygon(s, WHITE, [(c + 2, c - 5), (size - 20, c - 5), (size - 20, c - 13), (size - 7, c), (size - 20, c + 13), (size - 20, c + 5), (c + 2, c + 5)])
     elif label == "SAVE":
         box((8, 8, size - 16, size - 16), fill=(70, 120, 220))
         box((16, 10, size - 32, 16), fill=WHITE, radius=2)

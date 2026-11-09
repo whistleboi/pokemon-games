@@ -324,6 +324,9 @@ class WalkTownState(CityState):
         if roster.host_tethered(self.game, to):
             self.walk_goal = None
             return self.flash("Your team fainted: stay close to a friend.")
+        if roster.world.occupied(self.game, to):
+            self.walk_goal = None  # (a friend or their Pokemon is standing there)
+            return
         if to in self.signs:
             self.walk_goal = None
             return self._read(to)
@@ -508,6 +511,9 @@ class WalkTownState(CityState):
                     hit[3]()
                     return
                 goal = self._tile_at(e.pos)
+                if self._minimap_rect().collidepoint(e.pos):
+                    continue
+                self.tap_mark = [goal, bool(self._open(goal)) or goal in self.doors or goal in self.signs or goal in self._people(), 12]
                 if goal == self.player:
                     continue
                 if abs(goal[0] - self.player[0]) + abs(goal[1] - self.player[1]) == 1:
@@ -571,6 +577,11 @@ class WalkTownState(CityState):
         def at(t):
             return pygame.Rect(ox + t[0] * TILE, oy + t[1] * TILE, TILE, TILE)
 
+        if self.walk_goal:
+            theme.tap_marker(screen, at(self.walk_goal))
+        if self.tap_mark and self.tap_mark[2] > 0 and self.tap_mark[0] != self.walk_goal:
+            theme.tap_marker(screen, at(self.tap_mark[0]), self.tap_mark[1])
+            self.tap_mark[2] -= 1
         drawn = []
         people = self._people()
         for spot, opt in people.items():
@@ -635,7 +646,31 @@ class WalkTownState(CityState):
         pygame.draw.rect(screen, (30, 36, 58), pill, border_radius=8)
         screen.blit(tag, tag.get_rect(center=pill.center))
 
+    tap_mark = None
+
+    def _minimap_rect(self):
+        return pygame.Rect(20, 128, self.w * 4 + 8, self.h * 4 + 8)
+
+    def _draw_minimap(self, screen):
+        mm, s = self._minimap_rect(), 4
+        if getattr(self, "_mini", None) is None:
+            self._mini = pygame.Surface(mm.size, pygame.SRCALPHA)
+            self._mini.fill((10, 14, 24, 170))
+            for y, row in enumerate(self.rows):
+                for x, c in enumerate(row):
+                    if c == ".":
+                        self._mini.fill((150, 190, 230), (4 + x * s, 4 + y * s, s, s))
+            for x, y in self.exits:
+                self._mini.fill((250, 200, 60), (3 + x * s, 3 + y * s, s + 2, s + 2))
+            for x, y in self.doors:
+                self._mini.fill((240, 120, 90), (3 + x * s, 3 + y * s, s + 2, s + 2))
+        screen.blit(self._mini, mm.topleft)
+        for (x, y) in self._people():
+            screen.fill((250, 210, 60), (mm.x + 4 + x * s, mm.y + 4 + y * s, s, s))
+        pygame.draw.circle(screen, (255, 255, 255), (mm.x + 6 + self.player[0] * s, mm.y + 6 + self.player[1] * s), 3)
+
     def _draw_hud(self, screen, fonts):
+        self._draw_minimap(screen)
         W, H = self.game.width, self.game.height
         name = theme.pokemon_word(self.area_data.get("route_name") or self.area_key.replace("_", " ").title())
         if self.banner > 0:

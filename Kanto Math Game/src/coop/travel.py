@@ -1,8 +1,11 @@
 """Co-op travel votes (Jordan, 11-08): either player can suggest going somewhere, and if it's agreed on, everyone goes. The
 host can go anyway after a guest says no. Runs on the host; a guest's own panel is in src/states/coop_world.py."""
+import time
+
 import pygame
 
 PANEL_Y = 240
+NO_ANSWER_SECONDS = 15  # after this long with no answer, the host may go anyway (a friend's device can stop answering)
 
 
 def _connected(host):
@@ -35,7 +38,7 @@ def passing(game, go):
 def _begin(game, host, label, go, step_back, by, need):
     game.coop_vote_id = getattr(game, "coop_vote_id", 0) + 1
     vote = {"id": game.coop_vote_id, "label": str(label), "go": go, "step_back": step_back, "by": by, "need": set(need),
-            "yes": set(), "no": set(), "host_says": None if by is not None else True}
+            "yes": set(), "no": set(), "host_says": None if by is not None else True, "at": time.monotonic()}
     game.coop_vote = vote
     who = host.guests[by]["name"] if by is not None else str(getattr(game, "player_name", "") or "Host")
     for pid in need:
@@ -154,7 +157,8 @@ def _can_override(game, vote):
     """After a no, or while the only ones left to answer are in a fight (they answer when it's over)."""
     host = game.coop_host
     waiting = vote["need"] - vote["yes"] - vote["no"]
-    return bool(vote["no"]) or (bool(waiting) and all(_fighting(host, p) for p in waiting))
+    return bool(vote["no"]) or (bool(waiting) and (all(_fighting(host, p) for p in waiting)
+                                                    or time.monotonic() - vote["at"] >= NO_ANSWER_SECONDS))
 
 
 def _lines_and_buttons(game):

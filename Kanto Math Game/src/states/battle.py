@@ -328,6 +328,7 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, GameState)
         self._move_backdrop = None
 
     def close_move_menu(self):
+        self.form_armed = None
         self._clear_move_buttons()
         self.return_to_menu()
 
@@ -528,13 +529,10 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, GameState)
             self.weather, self.weather_primal, self.weather_turns = None, None, 0
         if self.starter_battle:
             return
-        # Foes transform as they come out; the player uses the MEGA / PRIMAL button.
+        # A foe that can change does so at the start of the next turn (_apply_transforms), as the player's does.
         mon = self.opponent_pokemon
         form = forms.opponent_form(self.game.assets, mon, self.mega_used["opponent"]) if mon else None
-        if form:
-            lines = forms.apply_form(self.game.assets, mon, form)
-            self.mega_used["opponent"] = True
-            self._form_msgs.extend(["Foe " + lines[0]] + lines[1:] + self._start_form_weather(mon))
+        self._foe_form = form
         if mon and not form:
             self._form_msgs.extend(self.foe_tera_on_entry(mon))
 
@@ -556,17 +554,36 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, GameState)
                                  self.game.story_manager.inventory, used)
 
     def activate_player_form(self):
-        """MEGA / PRIMAL button: transform now (doesn't use the turn), once per battle."""
+        """MEGA / PRIMAL button: then pick a move and answer as usual. The change comes first when the turn plays
+        out (Jordan, 11-08); it isn't a turn of its own. BACK from the moves takes it back."""
         form = self.player_form_option()
         if not form or self.phase != "MENU":
             return
-        mon = self.player_pokemon
-        lines = forms.apply_form(self.game.assets, mon, form)
-        self.mega_used["player"] = True
-        lines += self._start_form_weather(mon)
-        self._ready_attacks()
-        self.setup_action_menu()
-        self.show_message(lines, callback=self.return_to_menu)
+        self.form_armed = form
+        self.open_move_menu()
+
+    form_armed = None
+    _foe_form = None
+
+    def _apply_transforms(self):
+        """Before anyone moves: whoever's changing form changes, the faster first (a tie is a coin flip)."""
+        queue = []
+        if self.form_armed:
+            queue.append(("player", self.player_pokemon, self.form_armed))
+        if self._foe_form:
+            queue.append(("opponent", self.opponent_pokemon, self._foe_form))
+        self.form_armed, self._foe_form = None, None
+        random.shuffle(queue)
+        queue.sort(key=lambda q: -self._speed(q[1]))
+        for side, mon, form in queue:
+            lines = forms.apply_form(self.game.assets, mon, form)
+            self.mega_used[side] = True
+            lines = lines if side == "player" else ["Foe " + lines[0]] + lines[1:]
+            self._form_msgs.extend(lines + self._start_form_weather(mon))
+            if side == "player":
+                self._ready_attacks()
+                self.setup_action_menu()
+                self.action_menu.set_visibility(False)
 
     def setup_battle_matchup(self, reset_opponent_hp=True):
         self._check_forms()
@@ -869,6 +886,7 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, GameState)
         if self.phase == "ANSWER_FEEDBACK":
             return
         correct = self.options[index] == self.correct_ans
+        self.game.story_manager.note_answer(self.problem_str, correct, pygame.time.get_ticks() - getattr(self, "_question_at", 0) < self.QUICK_MS)
         right_index = self.options.index(self.correct_ans) if self.correct_ans in self.options else index
         elapsed = pygame.time.get_ticks() - getattr(self, "_question_at", 0)
         # A wrong answer weakens the move; a right one in under 2 s may earn a bonus.
@@ -967,7 +985,25 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, GameState)
                 callback=self.return_to_menu
             )
 
+    _xp_owed = False
+
+    def _xp_then(self, then):
+        """The win's XP, shown last, then on to `then`."""
+        if not self._xp_owed:
+            return then()
+        self._xp_owed = False
+        lines = self._award_battle_xp()
+        if not lines:
+            return then()
+        self.show_message(lines, callback=then)
+
+    def _settle_xp(self):
+        if self._xp_owed:  # (leaving some other way: it's still earned)
+            self._xp_owed = False
+            self._award_battle_xp()
+
     def on_flee_complete(self):
+        self._settle_xp()
         pygame.event.clear()
 
         from src.states.overworld import PlayState
@@ -1153,6 +1189,7 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, GameState)
         self._turn_end_done = False
         if self.math_ui:
             self.math_ui.set_visibility(False)
+        self._apply_transforms()
         self._flinched = set()
         self._acts_second = None
         self._note_first_turns()
@@ -1559,11 +1596,11 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, GameState)
                 mon.counters["crits"] = mon.counters.get("crits", 0) + 1
         lunge = "player" if not self._start_move_anim(mon, name, "player", messages) and damage else None
 
-        xp_messages = self._award_battle_xp() if self.opponent_hp <= 0 else []
-
         if self.opponent_hp <= 0 and self.catch_offer_ready():  # the catch window, once the HP bar is empty
+            self._xp_owed = True  # (paid at the very end: caught, or let go)
             self._show_move_text(messages, lunge, then=self.try_trigger_wild_catch_prompt)
             return
+        xp_messages = self._award_battle_xp() if self.opponent_hp <= 0 else []
 
         if self.opponent_hp <= 0:
             self.turn_actions.clear()  # a fainted Pokemon's queued move never happens
@@ -1703,6 +1740,11 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, GameState)
     def _start_pending_faint(self):
         """A Pokemon knocked out by recoil, burn, poison or sandstorm (not by an attack, which
         starts its own faint) faints now. Returns True if a faint started."""
+        if self.opponent_hp <= 0 and self.opponent_pokemon and self.player_hp > 0 and self.catch_offer_ready():
+            self.turn_actions.clear()  # (straight to the catch window: it stays in view, the XP comes last)
+            self._xp_owed = True
+            self.try_trigger_wild_catch_prompt()
+            return True
         if self.opponent_hp <= 0 and self.opponent_pokemon:
             msgs = [f"Foe {self.opponent_pokemon.display_name.upper()} fainted!"]
             if self.player_hp > 0:
@@ -2047,6 +2089,9 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, GameState)
             return False
         other = "opponent" if side == "player" else "player"
         mons = {"player": self.player_pokemon, "opponent": self.opponent_pokemon}
+        from src.core import settings
+        if not settings.get(self.game.story_manager, "move_anims"):
+            return False
         self.move_anim_name, self.move_anim_side = name, side  # (co-op: those watching play it too)
         self.move_anim = move_anims.MoveAnimation(
             self.game, anim, battle_spot(self.game, mons[side], side), battle_spot(self.game, mons[other], other),
@@ -2116,7 +2161,33 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, GameState)
             seq["callback"]()
         return True
 
+    AUTO_TEXT_FRAMES = 45  # (about 2 seconds) a line that's fully shown moves on by itself (Jordan, 11-08); a tap is still quicker
+    NO_AUTO_TEXT = ("SWITCH_PROMPT", "CATCH_PROMPT", "MENU", "BATTLE", "MOVE_SELECT")
+    _auto_key, _auto_wait = None, 0
+
+    def _auto_text(self):
+        from src.core import settings
+        box, wait = self.dialogue_box, settings.get(self.game.story_manager, "auto_text")
+        if not wait or not box.visible or self.phase in self.NO_AUTO_TEXT:
+            self._auto_key = None
+            return
+        key = (id(box.text_lines), box.current_line, box.page, box.is_finished, self.phase)
+        if key != self._auto_key:
+            self._auto_key, self._auto_wait = key, 0
+            return
+        ends_on_tap = box.is_finished and self.phase in ("OUTRO", "VICTORY_TEXT", "REWARD_TEXT")
+        if not ends_on_tap and (box.is_finished or not box.is_waiting_for_click):
+            return
+        self._auto_wait += 1
+        if self._auto_wait >= {1: 22, 2: self.AUTO_TEXT_FRAMES, 3: 70}[wait]:
+            self._auto_wait = 0
+            if ends_on_tap:
+                self.handle_events([pygame.event.Event(pygame.MOUSEBUTTONDOWN, button=1, pos=box.rect.center)])
+            else:
+                box.advance()
+
     def update(self):
+        self._auto_text()
         self.anim_ctrl.update()
         if self._hold_for_move_anim():
             return
@@ -2459,6 +2530,8 @@ class WildBattleState(TrainerBattleState):
 
     def _sos_continue(self):
         """The waiting S.O.S. ally steps in. Returns False if there's none (or nobody left to fight it)."""
+        if self.sos_ally is not None:
+            self._settle_xp()  # (the one just beaten, before the next steps in)
         ally, self.sos_ally = self.sos_ally, None
         if ally is None or not any(p.current_hp > 0 for p in self.game.story_manager.player_team):
             return False
@@ -2501,7 +2574,7 @@ class WildBattleState(TrainerBattleState):
         if self.catch_offer_ready():
             self.phase = "CATCH_PROMPT"
             self._catch_prompt_text()
-            self.catch_timer = 15 * FPS
+            self.catch_timer = self.game.story_manager.timer_frames(15)
 
             # Which ball to throw (only when you have more than one kind).
             if not hasattr(self, "btn_ball"):
@@ -2573,7 +2646,7 @@ class WildBattleState(TrainerBattleState):
         if self.game.states["play"].balls_left > 0 and self.game.story_manager.catch_unlocked():
             self.phase = "CATCH_PROMPT"
             self.dialogue_box.reset(f"Will you catch {self.opponent_pokemon.name}?")
-            self.catch_timer = 15 * FPS
+            self.catch_timer = self.game.story_manager.timer_frames(15)
 
             self._place_yes_no()
 
@@ -2607,7 +2680,7 @@ class WildBattleState(TrainerBattleState):
         story = self.game.story_manager
         catching.cycle(story)
         self._catch_prompt_text()
-        self.catch_timer = 15 * FPS
+        self.catch_timer = self.game.story_manager.timer_frames(15)
 
     # The games' lines when a Pokemon breaks free, by how many times the ball shook.
     BREAK_FREE = ("Oh no! The Pokemon broke free!", "Aww! It appeared to be caught!",
@@ -2695,7 +2768,7 @@ class WildBattleState(TrainerBattleState):
         if self.opponent_hp <= 0 and self.sos_ally is not None:
             self._sos_continue()
             return
-        self.show_message("Got away safely!", callback=self.on_flee_complete)
+        self.show_message("Got away safely!", callback=lambda: self._xp_then(self.on_flee_complete))
 
     def update(self):
         if self._hold_for_move_anim():
@@ -2784,7 +2857,7 @@ class WildBattleState(TrainerBattleState):
                             self.opponent_pokemon.revert_transform()
 
                         self.phase = "OUTRO"
-                        self.dialogue_box.callback = self._on_catch_exit
+                        self.dialogue_box.callback = lambda: self._xp_then(self._on_catch_exit)
                     else:
                         self.resolve_turn(True)
             return
@@ -2819,6 +2892,7 @@ class WildBattleState(TrainerBattleState):
             self.show_message(lines + ["You're out of Poke Balls!"], callback=self.catch_no)
 
     def _on_catch_exit(self):
+        self._settle_xp()
         if self._sos_continue():
             return
         from src.states.overworld import PlayState
@@ -2850,7 +2924,8 @@ class WildBattleState(TrainerBattleState):
         hide_opponent = (catching_now and self.catch_phase in ["ABSORB", "DROP", "SHAKE", "CAUGHT"]) or \
                         (self.phase == "OUTRO" and self.catch_phase == "CAUGHT")
         # A knocked-out wild Pokemon stays in view while you decide to catch it (Jordan).
-        show_ko = self.phase in ("CATCH_PROMPT", "CATCH_ANIMATION", "MESSAGE") and not hide_opponent
+        # (and while the blow lands and its HP bar empties: it doesn't vanish and come back)
+        show_ko = (self.phase in ("CATCH_PROMPT", "CATCH_ANIMATION", "MESSAGE") or bool(getattr(self, "_move_seq", None)) or self._xp_owed) and not hide_opponent
 
         if getattr(self, "overworld", None) is not None:  # Options > BATTLE STYLE: OVERWORLD (on the map)
             self._ow_hide, self._ow_ko = hide_opponent, show_ko
@@ -2893,7 +2968,7 @@ class WildBattleState(TrainerBattleState):
     def _draw_catch_extras(self, screen, catching_now):
         if self.phase == "CATCH_PROMPT":  # the time left to decide, under YES / NO
             from src.ui import theme
-            ratio = max(0.0, self.catch_timer / (15 * FPS))
+            ratio = max(0.0, min(1.0, self.catch_timer / self.game.story_manager.timer_frames(15)))
             bar = pygame.Rect(self.btn_yes.rect.x, self.btn_no.rect.bottom + 10, self.btn_yes.rect.w, 8)
             pygame.draw.rect(screen, (210, 214, 224), bar, border_radius=4)
             pygame.draw.rect(screen, theme.BAG, (bar.x, bar.y, int(bar.w * ratio), bar.h), border_radius=4)

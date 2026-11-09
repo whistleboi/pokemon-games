@@ -37,6 +37,15 @@ except pygame.error:  # (no sound device: the game carries on, silent)
 # [REF-0062: Global Constants for Game Configuration]
 FPS = 25
 VOLUME = 0.1
+AUDIO_LEVELS = {"music": 5, "sfx": 5}  # Options: 0-10 (5: VOLUME as it always was)
+
+
+def music_volume():
+    return VOLUME * AUDIO_LEVELS["music"] / 5
+
+
+def sfx_volume():
+    return VOLUME * AUDIO_LEVELS["sfx"] / 5
 
 # Colors
 WHITE = (255, 255, 255)

@@ -79,7 +79,8 @@ class FlyState(GameState):
         from src.coop import travel
         if travel.held(self.game, travel.area_name(self.game, key), lambda: self.fly_to(key)):
             return
-        self.game.change_state(AreaTransitionState(self.game, key))
+        from src.states.systems.fly_scene import FlyScene
+        self.game.change_state(FlyScene(self.game, lambda: self.game.change_state(AreaTransitionState(self.game, key))))
 
     def start(self):
         for btn in (self.btn_back, self.btn_up, self.btn_down):

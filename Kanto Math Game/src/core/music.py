@@ -20,7 +20,7 @@ import random
 
 import pygame
 
-from src.config import VOLUME
+from src.config import VOLUME, music_volume
 
 # kind -> file-name keywords, best first
 KINDS = {
@@ -73,7 +73,7 @@ THEMES = {"center": "pokemon_center", "lab": "oak_lab", "oak": "professor_oak", 
 JINGLE_CUES = (
     (re.compile(r"received the .*badge", re.I), "earn_gym_badge"),
     (re.compile(r"grew to lv", re.I), "level_up"),
-    (re.compile(r"evolved into", re.I), "congrats_evolve"),
+    (re.compile(r"(?<!mega )evolved into", re.I), "congrats_evolve"),  # (Mega Evolution isn't an evolution: no fanfare)
     (re.compile(r"you caught .*!|was caught!", re.I), "pokemon_caught"),
     (re.compile(r"restored your team|team is (fully )?healed|back to full health", re.I), "pokemon_healed"),
     (re.compile(r"received the ", re.I), "key_item"),
@@ -163,7 +163,7 @@ class MusicManager:
             path = os.path.join(self.game.assets.sounds_dir, random.choice(choices))
         try:
             pygame.mixer.music.load(path)
-            pygame.mixer.music.set_volume(VOLUME)
+            pygame.mixer.music.set_volume(music_volume())
             pygame.mixer.music.play(0 if kind == "victory" else -1)
             pygame.mixer.music.set_endevent(self._end_event())
             self.kind = kind
@@ -193,7 +193,7 @@ class MusicManager:
         if self.jingle_channel and self.jingle_channel.get_busy():
             self.jingle_channel.stop()
         pygame.mixer.music.pause()
-        sound.set_volume(VOLUME)
+        sound.set_volume(music_volume())
         self.jingle_channel = sound.play()
 
     def update(self):
@@ -267,6 +267,8 @@ class MusicManager:
             kind = "town"
         elif isinstance(state, PlayState):
             kind = "route"
+        elif type(state).__name__ == "CoopWorldState":  # (a co-op guest, back on the map)
+            kind = "town" if state.game.loader.area_data.get("STORY_PROGRESSION", {}).get(state.area_key, {}).get("area_type") == "town" else "route"
         else:
             return
         self.play(kind)

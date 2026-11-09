@@ -18,6 +18,7 @@ crash.log
 
 # generated test scripts and screenshots
 Kanto Math Game/dev/checks/out/
+Kanto Math Game/dev/map_audit/
 
 # downloaded reference pages (dev/builders re-fetch them)
 Kanto Math Game/dev/builders/bulbapedia_cache/

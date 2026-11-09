@@ -416,7 +416,9 @@ class Run:
 
     SIGHT = 6           # how far a wild Pokemon notices you
     TRAINER_SIGHT = 4   # how far a trainer looks ahead
-    RESPAWN_TURNS = 30  # a new wild Pokemon wanders in this often while the floor is quiet
+    RESPAWN_TURNS = 12  # a new wild Pokemon wanders in this often, up to the floor's usual number
+    RESPAWN_FAR = 14    # tiles: never near you (or a friend, in co-op: "others")
+    others = ()
 
     def __init__(self, recipe, rng=None, entrance=None, forwards=(), make_wild=None, trainers=(),
                  loot_for=None, tm_spots=(), figures=(), floor_of=None, exits_by_floor=None, start_floor=0):
@@ -522,7 +524,7 @@ class Run:
 
     def _spawn_wild(self, floor, avoid_room=None, far=False):
         spot = _free_tile(floor, self.rng, avoid=avoid_room.tiles() if avoid_room else (), prefer_grass=True,
-                          far_from=self.player if far else floor.start, min_dist=10 if far else 5)
+                          far_from=self.player if far else floor.start, min_dist=self.RESPAWN_FAR if far else 5)
         if spot is None:
             return None
         payload = self.make_wild(self.rng, spot) if self._wild_at else self.make_wild(self.rng)
@@ -533,8 +535,16 @@ class Run:
         return m
 
     # ---- what you can see
+    explore = False    # (a first visit: the map clears as you walk it; set by the map screen)
+    EXPLORE_RADIUS = 7
+
     def reveal(self, radius=2):
         f, (px, py) = self.floor, self.player
+        if self.explore:
+            r = self.EXPLORE_RADIUS
+            f.seen.update((x, y) for y in range(py - r, py + r + 1) for x in range(px - r, px + r + 1)
+                          if f.inside(x, y) and (x - px) ** 2 + (y - py) ** 2 <= r * r + 1)
+            return
         if not self.fog:  # the whole floor, at once
             if len(f.seen) < f.w * f.h:
                 f.seen = {(x, y) for y in range(f.h) for x in range(f.w)}
@@ -550,8 +560,16 @@ class Run:
                     if f.inside(x, y):
                         f.seen.add((x, y))
 
+    def reveal_at(self, px, py):
+        """A friend's view clears the fog too."""
+        f, r = self.floor, self.EXPLORE_RADIUS
+        f.seen.update((x, y) for y in range(py - r, py + r + 1) for x in range(px - r, px + r + 1)
+                      if f.inside(x, y) and (x - px) ** 2 + (y - py) ** 2 <= r * r + 1)
+
     def visible(self, x, y):
         """Can you see this tile right now (same room, or close by; anywhere, without fog)?"""
+        if self.explore:
+            return (x, y) in self.floor.seen
         if not self.fog:
             return True
         px, py = self.player
@@ -669,9 +687,12 @@ class Run:
             if m.alert and abs(m.x - px) + abs(m.y - py) == 1 and not any(e[0] == "ambush" for e in events):
                 events.append(("ambush", m))
         if self.recipe.get("respawn", True) and self.turn % self.RESPAWN_TURNS == 0:  # (Hyperspace: none)
-            lo = (self.recipe.get("wild") or [4, 6])[0]
-            if sum(1 for m in f.movers if m.kind == "wild") < lo:
+            most = (self.recipe.get("wild") or [4, 6])[-1]
+            if sum(1 for m in f.movers if m.kind == "wild") < most:
+                count = len(f.movers)
                 self._spawn_wild(f, far=True)
+                if len(f.movers) > count and any(abs(f.movers[-1].x - x) + abs(f.movers[-1].y - y) < self.RESPAWN_FAR for x, y in self.others):
+                    f.movers.pop()
         return events
 
     def _sees(self, trainer):

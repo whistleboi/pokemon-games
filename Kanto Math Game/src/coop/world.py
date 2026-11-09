@@ -1,7 +1,10 @@
 """Co-op on the map (Jordan, 11-08): the host's side, run once a frame from the game loop. Tells guests where the host
 is, hears where they are, and draws them on the host's map. The guest's own screen is src/states/coop_world.py."""
+import base64
 import json
 import os
+import types
+import zlib
 
 import pygame
 
@@ -41,6 +44,19 @@ def _named(game, lines):
     return [str(_fill_names(game, line)) for line in lines]
 
 
+def encode_seen(floor):
+    bits = bytearray((floor.w * floor.h + 7) // 8)
+    for x, y in floor.seen:
+        i = y * floor.w + x
+        bits[i // 8] |= 1 << (i % 8)
+    return base64.b64encode(zlib.compress(bytes(bits))).decode("ascii")
+
+
+def decode_seen(text, w, h):
+    bits = zlib.decompress(base64.b64decode(text))
+    return {(i % w, i // w) for i in range(w * h) if bits[i // 8] >> (i % 8) & 1}
+
+
 def exit_label(st, target):
     """Where a way out on a walked map goes, in words."""
     from src.dungeon import core
@@ -57,13 +73,15 @@ def _dungeon_scene(game, st, out):
         if m.kind == "wild":
             p = m.payload
             out["movers"].append({"k": "w", "x": m.x, "y": m.y, "uid": id(m), "id": int(p.id), "meta": int(getattr(p, "meta_id", p.id) or p.id),
-                                  "form": str(getattr(p, "form", "normal") or "normal"), "shiny": bool(p.is_shiny),
+                                  "form": str(getattr(p, "form", "normal") or "normal"), "shiny": bool(p.is_shiny), "gender": getattr(p, "gender", None),
                                   "alert": bool(m.alert), "f": list(getattr(m, "facing", (0, 1)) or (0, 1))})
         elif m.kind == "trainer":
             out["movers"].append({"k": "t", "x": m.x, "y": m.y, "uid": id(m), "sprite": m.payload[1].get("sprite"), "f": list(m.facing)})
         elif m.kind == "figure":
             out["movers"].append({"k": "f", "x": m.x, "y": m.y, "look": _look(m.payload)})
     out["items"] = [[x, y, str(key)] for (x, y), key in f.items.items()]
+    if st.run.explore:  # (the host's first visit: the guest gets the same fog)
+        out["fog"] = encode_seen(f)
     out["exits"] = [[x, y, exit_label(st, target)] for (x, y), target in f.exits.items()]
     out["tms"] = [[x, y] for (x, y) in f.tm_spots]
     m = st.run.recipe.get("art") or {}
@@ -89,6 +107,7 @@ def _town_scene(game, st, out):
         out["movers"].append({"k": "f", "x": x, "y": y, "look": _look(opt), "town": True,
                               "label": _named(game, [opt.get("text", "")])[0].upper()[:28]})
     out["signs"] = [[x, y, _named(game, lines)] for (x, y), lines in st.signs.items()]
+    out["town"] = True
     from src.coop import travel
     out["exits"] = [[x, y, travel.area_name(game, target)] for (x, y), target in st.exits.items()]
 
@@ -102,6 +121,39 @@ def scene(game):
     out = {"area": me[0], "floor": me[1], "movers": [], "items": [], "tms": [], "boulders": [], "gates": [], "signs": []}
     (_dungeon_scene if getattr(st, "run", None) is not None else _town_scene)(game, st, out)
     return out
+
+
+def _partner(game):
+    """The tile the host's lead Pokemon is on."""
+    view = getattr(game.current_state, "overworld", None)
+    st = view.play if view is not None else game.current_state
+    p = getattr(st, "partner", None)
+    return list(p) if isinstance(p, tuple) else None
+
+
+def people_tiles(game):
+    """The tiles guests and their Pokemon stand on, where the host is."""
+    host, out = getattr(game, "coop_host", None), set()
+    me = where(game) if host is not None else None
+    if me is None:
+        return out
+    for g in host.guests.values():
+        at = g.get("at")
+        if at and g["cid"] is not None and at[0] == me[0] and at[1] == me[1]:
+            out.add((at[2], at[3]))
+            if g.get("p"):
+                out.add(tuple(g["p"]))
+    return out
+
+
+def occupied(game, t):
+    return t in people_tiles(game)
+
+
+def _mission(game):
+    from src.world import guide
+    m = guide.tracked_mission(game)
+    return {k: m.get(k) for k in ("text", "title", "desc", "description", "type")} if m else None
 
 
 def relay_watch(host, pid):
@@ -144,19 +196,30 @@ def tick(game):
             if isinstance(at, list) and len(at) == 6 and ev[1] in host.guests:
                 host.guests[ev[1]]["at"] = at
                 host.guests[ev[1]]["char"] = str(ev[2].get("char") or "")
+                host.guests[ev[1]]["lead"], host.guests[ev[1]]["p"] = ev[2].get("lead"), ev[2].get("p")
     roster.tick(game, host)
     travel.tick(game, host)
     game.coop_frame = getattr(game, "coop_frame", 0) + 1
     if game.coop_frame % SEND_EVERY:
         return
     me = where(game)
+    run = getattr(game.current_state, "run", None)
+    if run is not None:  # (wild Pokemon don't appear next to a friend)
+        run.others = [(g["at"][2], g["at"][3]) for g in host.guests.values() if g.get("at") and g["at"][0] == getattr(game.current_state, "area_key", None)]
+        if run.explore:
+            for g in host.guests.values():
+                if g.get("at") and g["at"][0] == getattr(game.current_state, "area_key", None) and g["at"][1] == run.index:
+                    run.reveal_at(g["at"][2], g["at"][3])
+    if game.coop_frame % 30 < SEND_EVERY:
+        game.coop_quest = _mission(game)
     view = getattr(game.current_state, "overworld", None)
     if view is not None:  # (fighting on the map: stepped back behind its Pokemon, and guests should see that)
         game.coop_last = (view.play.area_key, view.play.run.index, view.play.run.player[0], view.play.run.player[1], tuple(view.play.facing))
     info = {"t": "state", "host": {"name": str(getattr(game, "player_name", "") or "Host"),
                                    "char": str(getattr(game, "player_character", "") or "red"), "busy": me is None,
-                                   "active": roster.host_active(game), "down": roster.down_list(game, host),
-                                   "others": [{"pid": p, "name": g["name"], "char": g.get("char"), "at": g["at"]}
+                                   "active": roster.host_active(game), "down": roster.down_list(game, host), "mission": getattr(game, "coop_quest", None),
+                                   "lead": lead_of(game.story_manager.player_team), "p": _partner(game),
+                                   "others": [{"pid": p, "name": g["name"], "char": g.get("char"), "at": g["at"], "lead": g.get("lead"), "p": g.get("p")}
                                               for p, g in host.guests.items() if g.get("at") and g["cid"] is not None]}}
     if me:
         game.coop_last = me
@@ -181,17 +244,62 @@ def sheet_for(game, char):
     return players.get(char) or players.get("female" if char in players.get("girls", []) else "male")
 
 
-def person_img(game, char, facing, height=TILE + 22):
-    """A player's overworld sprite, facing their way."""
+GLIDE_STEP = 1 / 8     # tiles a frame: someone else walking, between the updates that say where they are
+
+
+def glide(game, key, x, y):
+    """Where to draw someone else (key) heading for tile (x, y): (x, y, still walking)."""
+    at = game.__dict__.setdefault("_coop_glide", {})
+    p = at.get(key)
+    if p is None or abs(p[0] - x) + abs(p[1] - y) > 3:
+        at[key] = [float(x), float(y)]
+        return float(x), float(y), False
+    moving = False
+    for i, target in enumerate((x, y)):
+        gap = target - p[i]
+        if gap:
+            moving = True
+            p[i] = target if abs(gap) <= GLIDE_STEP else p[i] + (GLIDE_STEP if gap > 0 else -GLIDE_STEP)
+    return p[0], p[1], moving
+
+
+def walk_frame(moving):
+    return (pygame.time.get_ticks() // 160) % 4 if moving else 0
+
+
+def _base_id(state, pid):
+    """A form's species number (2001, Alolan Rattata: 19): its sheets are found by either."""
+    if int(pid) < 2000:
+        return pid
+    entry = state.game.loader.area_data.get("FORM_MAP", {}).get(str(pid)) or {}
+    return entry.get("id", pid)
+
+
+def draw_follower(game, state, lead, x, y, facing, ox, oy):
+    """Someone's lead Pokemon, walking behind them. lead: [id, form, shiny]."""
+    mon = types.SimpleNamespace(id=lead[0], meta_id=_base_id(state, lead[0]), form=lead[1], is_shiny=lead[2], gender=lead[3] if len(lead) > 3 else None)
+    img = state._icon(mon, TILE, facing=tuple(facing))
+    if img is not None:
+        r = pygame.Rect(int(ox + x * TILE), int(oy + y * TILE), TILE, TILE)
+        game.screen.blit(img, img.get_rect(midbottom=(r.centerx, r.bottom - 2)))
+
+
+def lead_of(team):
+    p = next((m for m in team if m and m.current_hp > 0 and not getattr(m, "is_egg", False)), None)
+    return [int(p.id), str(p.form), bool(p.is_shiny), getattr(p, "gender", None)] if p is not None else None
+
+
+def person_img(game, char, facing, height=TILE + 22, frame=0):
+    """A player's overworld sprite, facing their way (frame: a step of its walk)."""
     cache = game.__dict__.setdefault("_coop_imgs", {})
-    key = (char, tuple(facing), height)
+    key = (char, tuple(facing), height, frame)
     if key not in cache:
         img = None
         try:
             sheet = sheet_for(game, char)
             big = pygame.image.load(os.path.join(game.assets.assets_dir, "dungeon", "characters", sheet)).convert_alpha()
             cw, ch = big.get_width() // 4, big.get_height() // 4
-            cell = big.subsurface((0, FACING_ROW.get(tuple(facing), 0) * ch, cw, ch))
+            cell = big.subsurface((frame * cw, FACING_ROW.get(tuple(facing), 0) * ch, cw, ch))
             cell = cell.subsurface(cell.get_bounding_rect())
             k = max(1, round(height / max(1, cell.get_height())))
             img = pygame.transform.scale(cell, (cell.get_width() * k, cell.get_height() * k))
@@ -201,10 +309,10 @@ def person_img(game, char, facing, height=TILE + 22):
     return cache[key]
 
 
-def draw_person(game, char, name, sx, sy, facing=(0, 1)):
+def draw_person(game, char, name, sx, sy, facing=(0, 1), frame=0):
     """A player at the tile whose top-left is (sx, sy) on screen, with their name above."""
     screen = game.screen
-    img = person_img(game, char, facing)
+    img = person_img(game, char, facing, frame=frame)
     if img is not None:
         screen.blit(img, img.get_rect(midbottom=(sx + TILE // 2, sy + TILE - 4)))
     else:
@@ -220,7 +328,22 @@ def draw_guests(game, ox, oy, area, floor):
     for g in game.coop_host.guests.values():
         at = g.get("at")
         if at and g["cid"] is not None and at[0] == area and at[1] == floor:
-            draw_person(game, g.get("char"), g["name"], ox + at[2] * TILE, oy + at[3] * TILE, (at[4], at[5]))
+            if g.get("lead") and g.get("p") and list(g["p"]) != [at[2], at[3]]:
+                fx, fy, _m = glide(game, ("pet", g["name"]), g["p"][0], g["p"][1])
+                draw_follower(game, game.current_state if hasattr(game.current_state, "_icon") else game.current_state.back, g["lead"], fx, fy, (at[4], at[5]), ox, oy)
+            x, y, moving = glide(game, ("guest", g["name"]), at[2], at[3])
+            draw_person(game, g.get("char"), g["name"], int(ox + x * TILE), int(oy + y * TILE), (at[4], at[5]), walk_frame(moving))
+
+
+FRIEND_DOT = (255, 170, 70)
+
+
+def draw_friends_on_minimap(game, rect, area, floor):
+    """Guests on the host's mini-map."""
+    for g in game.coop_host.guests.values():
+        at = g.get("at")
+        if at and g["cid"] is not None and at[0] == area and at[1] == floor:
+            pygame.draw.circle(game.screen, FRIEND_DOT, (rect.x + 6 + at[2] * 4, rect.y + 6 + at[3] * 4), 3)
 
 
 def _watchable(game):
@@ -229,6 +352,15 @@ def _watchable(game):
     if host is None or where(game) is None or getattr(game.current_state, "mode", "MAP") != "MAP":
         return None
     return next((p for p, g in host.guests.items() if g.get("watch")), None)
+
+
+def _pc_friends(game):
+    host = getattr(game, "coop_host", None)
+    return list(host.guests) if host is not None and type(game.current_state).__name__ == "PCState" else []
+
+
+def _pc_friend_rect(row):
+    return pygame.Rect(170 + row * 206, 14, 196, 56)
 
 
 def _revive_rect(game):
@@ -260,6 +392,12 @@ def handle_events(game, events):
     """The host's vote, REVIVE and WATCH buttons come before the map's own taps."""
     from src.coop import roster, travel
     events = travel.handle_events(game, events)
+    for row, pid in enumerate(_pc_friends(game)):  # (at the PC: a friend's team)
+        for e in events:
+            if e.type == pygame.MOUSEBUTTONDOWN and e.button == 1 and _pc_friend_rect(row).collidepoint(e.pos):
+                from src.states.coop_borrow import CoopTakeBackState
+                game.change_state(CoopTakeBackState(game, game.current_state, pid, roster.rows(game, game.coop_host, pid)))
+                return [x for x in events if x is not e]
     target = roster.host_can_help(game, game.coop_host) if where(game) is not None else None
     if target:
         for e in events:
@@ -287,6 +425,9 @@ def draw(game):
     st = game.current_state
     me = where(game)
     camera = getattr(st, "_camera", None)
+    minimap = getattr(st, "_minimap_rect", None)
+    if me and callable(minimap) and getattr(st, "mode", "MAP") != "CATCH":
+        draw_friends_on_minimap(game, minimap(), me[0], me[1])
     if me and callable(camera):
         cx, cy = camera()
         ox, oy = int(game.width / 2 - cx), int(game.height / 2 - cy)
@@ -299,6 +440,11 @@ def draw(game):
         game.screen.blit(tag, tag.get_rect(center=r.center))
     from src.coop import travel
     travel.draw(game)
+    for row, pid in enumerate(_pc_friends(game)):
+        r = _pc_friend_rect(row)
+        pygame.draw.rect(game.screen, (60, 110, 190), r, border_radius=10)
+        tag = game.assets.fonts["label"].render(f"{host.guests[pid]['name']}'s team"[:14], True, (255, 255, 255))
+        game.screen.blit(tag, tag.get_rect(center=r.center))
     _draw_host_help(game, host, me)
     note = getattr(game, "coop_toast", None)
     if note:

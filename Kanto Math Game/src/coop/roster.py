@@ -142,6 +142,49 @@ def _send_ledger(game, host, pid):
     host.send(pid, {"t": "event", "ledger_now": _ledger(game, st, pid)})
 
 
+def sync_data(game):
+    """What a guest's menus show: the host's journey (the host's Pokedex, Badges, Journal)."""
+    story, data = game.story_manager, game.data.data
+    return {"badges": story.badges, "active_badge_region": story.active_badge_region, "story_flags": story.story_flags,
+            "catch_counts": story.catch_counts, "defeated": {k: sorted(v) for k, v in story.defeated_trainers.items()},
+            "notified_missions": story.notified_missions, "pokedex": data.get("pokedex", {}), "seen": data.get("seen_pokemon", [])}
+
+
+HONEY_DRAWS = 3
+
+
+def honey(game, host, pid):
+    """A guest spreads Honey: wild Pokemon come out near them."""
+    from src.dungeon import core
+    import random
+    st, ds, at = _state(host), getattr(game, "dungeon_state", None), host.guests[pid].get("at")
+    led = _ledger(game, st, pid)
+
+    def note(text):
+        host.send(pid, {"t": "event", "fight_no": text})
+    if led["items"].get("HONEY", 0) <= 0:
+        return note("You don't have any Honey.")
+    if ds is None or not hasattr(ds, "run") or not at or at[0] != ds.area_key or at[1] != ds.run.index or not ds._get_wild_pool(ds.area_data):
+        return note("No wild Pokemon around here.")
+    floor, rng, made = ds.run.floor, random.Random(), 0
+    near = [(at[2] + dx, at[3] + dy) for dx in range(-4, 5) for dy in range(-4, 5) if 2 <= abs(dx) + abs(dy) <= 4]
+    rng.shuffle(near)
+    for t in near:
+        if made >= HONEY_DRAWS:
+            break
+        if floor.walkable(*t) and not floor.occupied(*t) and t != tuple(ds.run.player) and t not in world.people_tiles(game):
+            mon = ds._make_wild(rng, t)
+            if mon is not None:
+                floor.movers.append(core.Mover("wild", t[0], t[1], mon))
+                made += 1
+    if not made:
+        return note("Nothing came out.")
+    _use_up(led["items"], "HONEY")
+    _journal(game, st)
+    _send_ledger(game, host, pid)
+    note("Wild Pokemon were drawn in!")
+
+
 def _sell_price(game, item):
     from src.states.systems.mart import PokeMartState
     mart = types.SimpleNamespace(game=game, BASE_PRICES=PokeMartState.BASE_PRICES, WEATHER_ROCKS=PokeMartState.WEATHER_ROCKS)
@@ -288,7 +331,7 @@ def start_trainer(game, host, pid, uid):
         return
     ds, floor, mover = got
     index = mover.payload[0]
-    if story.is_trainer_defeated(ds.area_key, index):
+    if not story.trainer_on_map(ds.area_key, index, ds.area_data.get("trainer_pool", [{}])[index]):
         return _refuse(host, pid, "That trainer has been beaten.")
     ui, before = game.ui_manager, list(game.ui_manager.elements)
     keep = getattr(ds, "play_state_data", None)
@@ -571,6 +614,10 @@ def handle(game, host, pid, msg):
     elif "watch" in msg:  # (the guest's fight, for the host to watch)
         host.guests[pid]["watch"] = msg["watch"] if isinstance(msg["watch"], dict) else None
         world.relay_watch(host, pid)
+    elif "sync" in msg:
+        host.send(pid, {"t": "event", "sync": sync_data(game)})
+    elif "honey" in msg:
+        honey(game, host, pid)
     elif "raid_join" in msg:
         raid.join(game, host, pid)
     elif "raid_leave" in msg:

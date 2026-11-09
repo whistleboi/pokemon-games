@@ -721,8 +721,8 @@ _ww, _ = beside(_p, "wild")
 _p._meet_wild(_ww)
 check(_p.mode == "CHOICE", "OVERWORLD: a wild one is still the catch-or-battle choice")
 _p._pick(1)
-check(isinstance(g.current_state, WildBattleState) and getattr(g.current_state, "overworld", None) is None,
-      "...and its battle is the classic one (the style is for trainers)")
+check(isinstance(g.current_state, WildBattleState) and getattr(g.current_state, "overworld", None) is not None,
+      "...and its battle is on the map too")
 story.battle_style = "TRADITIONAL"
 
 # Mega Evolution on the map (Legends: Z-A): a minute of walking, into battles that way, then the Key Stone rests

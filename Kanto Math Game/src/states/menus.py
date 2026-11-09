@@ -2008,6 +2008,5 @@ def open_difficulty_options(game, return_state):
         game.update_save_data()
         back()
 
-    game.change_state(DifficultySelectionState(
-        game, on_confirm=confirm, on_back=back, title="OPTIONS",
-        return_state=return_state))
+    from src.states.systems.options import OptionsState
+    game.change_state(OptionsState(game, return_state, confirm))

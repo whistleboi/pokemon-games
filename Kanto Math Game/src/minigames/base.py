@@ -23,7 +23,7 @@ from src.config import FPS
 HUD_H = 96
 # Each game's pixel-art backdrop (src/minigames/scenes.py), for the ones played over their background
 # (Jordan, 11-06: those were a dark screen). The others fill their own play area.
-SCENES = {"catch": "meadow", "dash": "plains", "flight": "sky", "koga": "dojo", "match": "night",
+SCENES = {"catch": "meadow", "dash": "plains", "koga": "dojo", "match": "night",
           "pong": "stadium", "quiz": "volcano", "rhythm": "stage", "sabrina": "cosmos", "surge": "power",
           "typeclash": "arena", "voltorb": "power"}
 _icons = {}
@@ -276,8 +276,6 @@ class Minigame(GameState):
         """How fast its scenery scrolls (screen pixels a frame): a runner's own speed."""
         if self.key == "dash":
             return self._speed()
-        if self.key == "flight":
-            return getattr(self, "speed", 0)
         return 0
 
     def update(self):

@@ -334,14 +334,12 @@ class OverworldView:
         f = play.run.floor
         tx, ty = mover.x, mover.y
         px, py = play.run.player
-        ways = [(1 if px > tx else -1, 0)] if px != tx else []
-        ways += [(0, 1 if py > ty else -1)] if py != ty else []
-        if abs(py - ty) > abs(px - tx):
-            ways.reverse()
-        ways += [w for w in ((0, 1), (0, -1), (1, 0), (-1, 0)) if w not in ways]
-        busy = {(m.x, m.y) for m in f.movers if m is not mover}
-        for gap in (1, 0):  # (a tile between the two Pokemon, if there's room)
-            for dx, dy in ways:
+        side = 1 if px >= tx else -1
+        ways = [(side, 0), (-side, 0), (0, 1 if py >= ty else -1), (0, -1 if py >= ty else 1)]  # (left to right if there's room: all in view)
+        from src.coop import world
+        busy = {(m.x, m.y) for m in f.movers if m is not mover} | world.people_tiles(play.game)
+        for dx, dy in ways:
+            for gap in (1, 0):  # (a tile between the two Pokemon, if there's room)
                 line = [(tx + dx * k, ty + dy * k) for k in range(1, 4 + gap)]
                 if all(f.walkable(*t) and (t not in busy or t == (px, py)) for t in line):
                     play.anim, play.anim_from = 0, line[-1]
@@ -359,14 +357,12 @@ class OverworldView:
         f = play.run.floor
         tx, ty = mover.x, mover.y
         px, py = play.run.player
-        ways = [(1 if px > tx else -1, 0)] if px != tx else []
-        ways += [(0, 1 if py > ty else -1)] if py != ty else []
-        if abs(py - ty) > abs(px - tx):
-            ways.reverse()
-        ways += [w for w in ((0, 1), (0, -1), (1, 0), (-1, 0)) if w not in ways]
-        busy = {(m.x, m.y) for m in f.movers if m is not mover}
-        for gap in (1, 0):
-            for dx, dy in ways:
+        side = 1 if px >= tx else -1
+        ways = [(side, 0), (-side, 0), (0, 1 if py >= ty else -1), (0, -1 if py >= ty else 1)]  # (left to right if there's room: all in view)
+        from src.coop import world
+        busy = {(m.x, m.y) for m in f.movers if m is not mover} | world.people_tiles(play.game)
+        for dx, dy in ways:
+            for gap in (1, 0):
                 line = [(tx + dx * k, ty + dy * k) for k in range(1, 3 + gap)]
                 if all(f.walkable(*t) and (t not in busy or t == (px, py)) for t in line):
                     play.anim, play.anim_from = 0, line[-1]

@@ -17,6 +17,7 @@ class CoopBorrowState(GameState):
         super().__init__(game)
         self.map_state, self.rows, self.swapping = map_state, rows, swapping
         self.page, self.chosen = 0, [r["uid"] for r in rows if r.get("mine")]
+        self.heading = "Borrow up to"
         f = game.assets.fonts
         self.font, self.small = f["label"], f["caption"]
         W, H = game.width, game.height
@@ -63,7 +64,7 @@ class CoopBorrowState(GameState):
     def draw(self):
         screen = self.game.screen
         screen.fill((28, 36, 62))
-        title = f"Borrow up to {MAX} Pokemon: {len(self.chosen)} picked"
+        title = f"{self.heading} {MAX} Pokemon: {len(self.chosen)} picked"
         theme.shadow_text(screen, title, self.font, self.game.width // 2, 22, color=(255, 255, 255), shadow=(16, 20, 36), align="center")
         for r, row in self.cards():
             picked = row["uid"] in self.chosen
@@ -88,12 +89,12 @@ class CoopTakeBackState(CoopBorrowState):
 
     def __init__(self, game, back, pid, rows):
         super().__init__(game, None, rows)
-        self.back, self.pid = back, pid
+        self.back, self.pid, self.heading = back, pid, "Their team, up to"
 
     def done(self):
         from src.coop import roster
         host = self.game.coop_host
-        if self.chosen and sorted(self.chosen) != sorted(r["uid"] for r in self.rows):
+        if self.chosen and sorted(self.chosen) != sorted(r["uid"] for r in self.rows if r.get("mine")):
             roster.exchange(self.game, host, self.pid, list(self.chosen))
         elif not self.chosen:
             roster.toast(self.game, "They need at least one Pokemon.")

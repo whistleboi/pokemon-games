@@ -65,6 +65,7 @@ from src.world import levels
 TILE = 56
 STEP_FRAMES = 6          # frames a step takes (the walk animation)
 MATH_SECONDS = 30
+TAP_FRAMES = 12     # how long a tapped tile stays lit, when it isn't where you're walking to
 QUICK_SECONDS = 5        # a right answer this fast weakens it to 1 HP (as on the route catch screen)
 
 COLORS = {  # floor, tall grass, wall (trees or rock), wall top
@@ -421,7 +422,7 @@ class DungeonState(OverworldBattles, PlayState):
 
         pool = self.area_data.get("trainer_pool", [])
         cabins = set((self.recipe.get("art") or {}).get("cabin_trainers", []))  # (behind their doors: the S.S. Anne)
-        trainers = [(i, t) for i, t in enumerate(pool) if not story.is_trainer_defeated(self.area_key, i) and i not in cabins]
+        trainers = [(i, t) for i, t in enumerate(pool) if story.trainer_on_map(self.area_key, i, t) and i not in cabins]
         spots = [s for s in self.recipe.get("tm_spots", []) if not story.story_flags.get(f"dungeon_tm_{s}")]
         loot = self.recipe.get("loot") or {}
         self.placed = []  # the route's buttons standing on the map as figures
@@ -433,6 +434,10 @@ class DungeonState(OverworldBattles, PlayState):
                             floor_of=lambda t: self._floor_of(t, None), exits_by_floor=exits_by_floor,
                             start_floor=start)
 
+        if not self.run.fog and not story.story_flags.get(f"visited_{self.area_key}"):  # (dark places keep their own darkness)
+            self.run.explore = True
+            self.run.floor.seen = set()
+            self.run.reveal()
         self.mode = "MAP"          # MAP, CHOICE, MATH, THROW, SPOTTED, CATCH (the route's catch screen)
         self.facing = (0, 1)
         self.anim = 0              # frames left of the step animation
@@ -719,7 +724,7 @@ class DungeonState(OverworldBattles, PlayState):
                 self.run.remove(mover)
             elif kind == "trainer":
                 idx = mover.payload[0]
-                if self.game.story_manager.is_trainer_defeated(self.area_key, idx):
+                if self.game.story_manager.beaten_today(self.area_key, idx):
                     self.run.remove(mover)
                 else:  # lost (or ran out of Pokemon): it looks away, so you can get past
                     mover.facing = (-mover.facing[0], -mover.facing[1])
@@ -775,6 +780,9 @@ class DungeonState(OverworldBattles, PlayState):
         if roster.host_tethered(self.game, (self.run.player[0] + dx, self.run.player[1] + dy)):
             self.walk_goal = None
             self.flash("Your team fainted: stay close to a friend.")
+            return
+        if roster.world.occupied(self.game, (self.run.player[0] + dx, self.run.player[1] + dy)):
+            self.walk_goal, self.facing = None, (dx, dy)  # (a friend or their Pokemon is standing there)
             return
         self.facing = (dx, dy)
         self._clear_boulders()  # (one already pushed aside isn't in the way)
@@ -1045,7 +1053,7 @@ class DungeonState(OverworldBattles, PlayState):
     def _start_math(self):
         self.mode = "MATH"
         self.problem_str, self.correct_ans, self.options = self.generate_math_set(self.total_caught, num_options=3)
-        self.math_timer = MATH_SECONDS * FPS
+        self.math_timer = self.math_full = self.game.story_manager.timer_frames(MATH_SECONDS)
 
     def _answer(self, idx):
         if self.mode != "MATH" or idx >= len(self.options):
@@ -1060,10 +1068,11 @@ class DungeonState(OverworldBattles, PlayState):
             catching.use(story, ball)
         self._thrown_ball = ball
         right = self.options[idx] == self.correct_ans
+        story.note_answer(self.problem_str, right, (self.math_full - self.math_timer) < QUICK_SECONDS * FPS)
         shiny_pass = bool(p.is_shiny) and not right  # a shiny is caught even on a wrong answer (as on the route)
         self.was_shiny_override = shiny_pass
         if right or shiny_pass:
-            quick = (MATH_SECONDS * FPS - self.math_timer) < QUICK_SECONDS * FPS
+            quick = (self.math_full - self.math_timer) < QUICK_SECONDS * FPS
             max_hp = p.get_max_hp()
             roll = catching.window_throw(self.game, p, ball, guaranteed=balance.is_legendary(p.id) or shiny_pass,
                                          hp=1 if quick else max(1, max_hp // 4), max_hp=max_hp,
@@ -1258,6 +1267,7 @@ class DungeonState(OverworldBattles, PlayState):
         self.walk_goal = None
 
         def begin():
+            self.route_bg = self._map_backdrop()  # (this very map behind the Pokemon the Honey drew in)
             self.mode = "CATCH"
             self.is_progression_paused = False
             self.pending_wild_encounters = 0
@@ -1384,6 +1394,7 @@ class DungeonState(OverworldBattles, PlayState):
                 self.game.change_state(JournalState(self.game, self))
                 return
             tx, ty = self._tile_at(e.pos)
+            self.tap_mark = [(tx, ty), self.run.floor.walkable(tx, ty), TAP_FRAMES]
             px, py = self.run.player
             if abs(tx - px) + abs(ty - py) == 1 and not self.run.floor.walkable(tx, ty):
                 self.facing = (tx - px, ty - py)  # a tap on the water or a tree beside you: fish or Headbutt
@@ -1576,6 +1587,17 @@ class DungeonState(OverworldBattles, PlayState):
                 self._battle_trainer(self.encounter)
 
     # ---------------------------------------------------------------- drawing
+    tap_mark = None
+    math_full = MATH_SECONDS * FPS
+
+    def _draw_tap_marks(self, screen, at):
+        """Where you tapped: your destination stays lit till you get there."""
+        if self.walk_goal:
+            theme.tap_marker(screen, at(*self.walk_goal))
+        if self.tap_mark and self.tap_mark[2] > 0 and self.tap_mark[0] != self.walk_goal:
+            theme.tap_marker(screen, at(*self.tap_mark[0]), self.tap_mark[1])
+            self.tap_mark[2] -= 1
+
     def _render_floor(self):
         f = self.run.floor
         if self.run.recipe.get("art"):  # one of our own maps, in its own art
@@ -1655,6 +1677,20 @@ class DungeonState(OverworldBattles, PlayState):
                     pygame.draw.circle(surf, c, (r.x + rng.randint(10, TILE - 10), r.y + rng.randint(10, TILE - 10)), 4)
         self._floor_surf, self._floor_index = surf, self.run.index
 
+    def _map_backdrop(self):
+        """The map around you, sized for the part of the screen above the text box."""
+        if self._floor_index != self.run.index or self._floor_surf is None:
+            self._render_floor()
+        W, top = self.game.width, Utils.get_full_dialogue_rect(self.game).top
+        mw, mh = self._floor_surf.get_size()
+        cx, cy = self.run.player[0] * TILE + TILE / 2, self.run.player[1] * TILE + TILE / 2
+        cx = mw / 2 if mw <= W else min(max(cx, W / 2), mw - W / 2)
+        cy = mh / 2 if mh <= top else min(max(cy, top / 2), mh - top / 2)
+        out = pygame.Surface((W, top))
+        out.fill((10, 14, 24))
+        out.blit(self._floor_surf, (int(W / 2 - cx), int(top / 2 - cy)))
+        return out
+
     def _sprite(self, key, make):
         if key not in self._sprites:
             try:
@@ -1694,11 +1730,15 @@ class DungeonState(OverworldBattles, PlayState):
         frame = (pygame.time.get_ticks() // 160) % 4  # (stepping, as following Pokemon do)
         row = FACING_ROW.get(tuple(facing), 0)
 
+        female = getattr(pokemon, "gender", None) == "F" and str(getattr(pokemon, "form", "normal") or "normal").lower() == "normal"
+
         def sheet():
             base = os.path.join(self.game.assets.assets_dir, "dungeon", "followers")
             ids = list(dict.fromkeys([int(pokemon.id), pid]))  # (a form's own sheet first: Paldean Tauros)
             form = str(getattr(pokemon, "form", "normal") or "normal").lower()
             names = ([f"{pid}_{form}"] if form != "normal" else []) + [str(i) for i in ids]  # (71_mega, 1017_water_mask)
+            if female:  # (Pikachu's heart tail: its own sheet, for the species that have one)
+                names.insert(0, f"{pid}_female")
             paths = [os.path.join(base, "shiny", f"{n}.png") for n in names] if shiny else []
             for path in paths + [os.path.join(base, f"{n}.png") for n in names]:
                 if os.path.isfile(path):
@@ -1713,7 +1753,7 @@ class DungeonState(OverworldBattles, PlayState):
                     return img, cw, ch, box
             return None
         form_key = str(getattr(pokemon, "form", "normal") or "normal").lower()
-        data = self._sprite(("follower_sheet", int(pokemon.id), form_key, shiny), sheet)
+        data = self._sprite(("follower_sheet", int(pokemon.id), form_key, shiny, female), sheet)
         if not data:
             return None
 
@@ -1725,7 +1765,7 @@ class DungeonState(OverworldBattles, PlayState):
                 return self._jumbo(cell)
             k = self._trainer_scale()
             return pygame.transform.scale(cell, (cell.get_width() * k, cell.get_height() * k))
-        return self._sprite(("follower", int(pokemon.id), form_key, shiny, row, frame), make)
+        return self._sprite(("follower", int(pokemon.id), form_key, shiny, row, frame, female), make)
 
     def _sheet_frame(self, sheet, facing=(0, 1), col=None, frame=0, height=None):
         """One cell of a Pokemon Journeys overworld sheet (4 x 4): a person's walking frame (col None: the
@@ -1906,6 +1946,8 @@ class DungeonState(OverworldBattles, PlayState):
 
         def at(x, y):
             return pygame.Rect(ox + x * TILE, oy + y * TILE, TILE, TILE)
+
+        self._draw_tap_marks(screen, at)
 
         # things lying about (in tiles you've seen)
         real = self.run.recipe.get("image") or self.run.recipe.get("art")
@@ -2096,6 +2138,12 @@ class DungeonState(OverworldBattles, PlayState):
         for pill, tag in signs:  # where the ways out go
             pygame.draw.rect(screen, (30, 36, 58), pill, border_radius=8)
             screen.blit(tag, tag.get_rect(center=pill.center))
+        if self.run.explore:  # (a first visit: what you haven't seen yet)
+            seen = f.seen
+            for gy in range(y0, y1):
+                for gx in range(x0, x1):
+                    if (gx, gy) not in seen:
+                        screen.fill((10, 14, 24), at(gx, gy))
         if self._backdrop:  # (only the map: an OVERWORLD-style battle is drawn over it)
             return
         if self.mode == "MAP":
@@ -2481,7 +2529,7 @@ class DungeonState(OverworldBattles, PlayState):
             for i, rect in enumerate(self._answer_rects()):
                 theme.card(screen, rect, hover=rect.collidepoint(mouse), accent=theme.RUN)
                 theme.answer_text(screen, self.options[i], fonts["num"], rect.centerx, rect.centery)
-            k = max(0.0, self.math_timer / (MATH_SECONDS * FPS))
+            k = max(0.0, self.math_timer / self.math_full)
             track = pygame.Rect(W // 2 - 300, int(H * 0.66) + 126, 600, 14)
             pygame.draw.rect(screen, (60, 64, 80), track, border_radius=7)
             pygame.draw.rect(screen, theme.POKEMON if k > 0.33 else theme.FIGHT,

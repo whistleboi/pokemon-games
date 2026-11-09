@@ -210,6 +210,8 @@ class Game:
 
         config = self.loader.area_data.get("GAME_CONFIG", {})
         self.story_manager.initialize_new_game(config)
+        from src.core import settings
+        settings.apply(self)
         
         self.change_state(CharacterSelectionState(self))
 
@@ -242,6 +244,8 @@ class Game:
         self.story_manager = StoryManager()
         self.story_manager.game = self
         self.story_manager.deserialize(story_data, self.loader)
+        from src.core import settings
+        settings.apply(self)
         prog = self.loader.area_data.get("STORY_PROGRESSION", {})
         if self.story_manager.current_area_key not in prog:  # unknown area: back to the region's start
             self.story_manager.current_area_key = self.story_manager.get_region_start().get("start_area", "PALLET_TOWN")

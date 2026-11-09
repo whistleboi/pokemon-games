@@ -836,7 +836,7 @@ from src.states.game_corner import GymGamesState as _GGS, coins as _coins1106
 story.story_flags[_mg.done_flag("PEWTER_CITY")] = True
 story.story_flags[_mg.picked_flag("PEWTER_CITY")] = "flight"
 _ggs = _GGS(g, g.current_state)
-check(("flight", "PEWTER_CITY") in _mg.beaten(g) and any("FLIGHT" in b.text for b in _ggs.buttons),
+check(("flight", "PEWTER_CITY") in _mg.beaten(g) and any("PIKAFLY" in b.text.upper() for b in _ggs.buttons),
       "the Game Corner's GYM GAMES: a game won at a Gym is there to play again")
 _c0 = _coins1106(story)
 _ggs.play("flight", "PEWTER_CITY")
@@ -855,8 +855,8 @@ _titles = {}
 for _area in ("PEWTER_CITY", "RUSTBORO_CITY", "STRIATON_CITY"):
     story.current_area_key = _area
     _titles[_area] = (_mg.GAMES["flight"].title_for(g), _mg.GAMES["chase"].title_for(g))
-check(_titles["PEWTER_CITY"] == ("Pidgey Flight", "Magikarp Escape") and _titles["RUSTBORO_CITY"] == ("Taillow Flight", "Feebas Escape")
-      and _titles["STRIATON_CITY"][0] == "Pidove Flight", f"each region's own Pokemon {_titles}")
+check(_titles["PEWTER_CITY"] == ("Pikafly", "Magikarp Escape") and _titles["RUSTBORO_CITY"] == ("Pikafly", "Feebas Escape")
+      and _titles["STRIATON_CITY"][1] != _titles["PEWTER_CITY"][1], f"each region's own Pokemon {_titles}")
 story.current_area_key = "RUSTBORO_CITY"
 _tc = _mg.GAMES["typeclash"](g, lambda w: None, leader={"name": "Roxanne", "team": [74]})
 check(_tc.species == {"GRASS": 252, "FIRE": 255, "WATER": 258}, f"Type Clash in Hoenn: Treecko, Torchic, Mudkip {_tc.species}")

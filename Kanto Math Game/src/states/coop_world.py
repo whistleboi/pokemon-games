@@ -13,7 +13,10 @@ from src.coop import session as sess
 from src.coop import world
 from src.dungeon import art
 from src.states.base import GameState
+from src.pokemon import items as itemlib
+from src.states.systems.bag import BagState
 from src.states.systems.mart import PokeMartState
+from src.states.systems.party_menu import PokemonPartyMenuState
 from src.states.overworld import dungeon as dn
 from src.states.overworld import overworld_battle as owb
 from src.states.overworld.walk_town import custom
@@ -27,9 +30,24 @@ STEP = 8
 KEYS = {pygame.K_UP: (0, -1), pygame.K_DOWN: (0, 1), pygame.K_LEFT: (-1, 0), pygame.K_RIGHT: (1, 0),
         pygame.K_w: (0, -1), pygame.K_s: (0, 1), pygame.K_a: (-1, 0), pygame.K_d: (1, 0)}
 RECONNECT_FOR = sess.GRACE_SECONDS
+TAP_GUARD = 800     # ms: a fight that opens from a tap ignores taps this long, so a second tap can't press POKEMON
 TETHER = 4          # tiles: how far a fainted guest can be from the host
 BALLS = 10          # a guest's Poke Balls (their own shopping comes with the guest's money)
 BLOCKED = set("ob")  # (water and boulders: not on foot; Surf and Strength are the host's journey for now)
+
+
+class _GuestBag(BagState):
+    """The Bag on the map: a guest's own medicine. (Nothing that would change the host's journey.)"""
+
+    def use_item(self, item_key):
+        if item_key in itemlib.MEDICINE:
+            super().use_item(item_key)
+        else:
+            self.no_use(item_key)
+
+    def update(self):
+        if self.previous_state.pump():
+            super().update()
 
 
 class _GuestMart(PokeMartState):
@@ -49,8 +67,16 @@ class _GuestMart(PokeMartState):
 
 
 class _Floor:
-    """The little of a floor that a battle on the map asks about."""
+    """The little of a floor that a battle on the map and the mini-map ask about."""
     movers = ()
+
+    @property
+    def w(self):
+        return len(self.world_state.grid[0]) if self.world_state.grid else 0
+
+    @property
+    def h(self):
+        return len(self.world_state.grid) if self.world_state.grid else 0
 
     def __init__(self, world_state):
         self.world_state = world_state
@@ -65,6 +91,10 @@ class _Floor:
 class _Run:
     def __init__(self, world_state):
         self.world_state, self.floor = world_state, _Floor(world_state)
+
+    @property
+    def index(self):
+        return self.world_state.floor
 
     @property
     def player(self):
@@ -83,6 +113,13 @@ class CoopWorldState(GameState):
     _tile_rect = owb.OverworldBattles._tile_rect
     _partner_beside = owb.OverworldBattles._partner_beside
     _throw_spot = owb.OverworldBattles._throw_spot
+    _journal_rect = dn.DungeonState._journal_rect
+    _minimap_rect = dn.DungeonState._minimap_rect
+    _draw_journal = dn.DungeonState._draw_journal
+    contest = None
+
+    def _journal_mission(self):  # (the host's journey)
+        return self.host.get("mission")
     # (the map's own drawing, so everything looks as it does on the host's screen)
     HONEY_PACK = dn.DungeonState.HONEY_PACK
     JUMBO = dn.DungeonState.JUMBO
@@ -114,6 +151,7 @@ class CoopWorldState(GameState):
         self.roster, self.picked, self.team_ready, self.asking = None, False, False, False
         self.outbox, self.note, self.note_time = None, "", 0
         self.link.send_intent({"roster_ask": True})
+        self.link.send_intent({"sync": True})
         self.run, self.fighting = _Run(self), False
         self.feeds, self.doors, self.swapping = {}, {}, False
         self.exits, self.vote, self.asked, self.before_exit = {}, None, False, None
@@ -125,6 +163,7 @@ class CoopWorldState(GameState):
         self.area, self.floor, self.grid, self.surf = None, 0, None, None
         self.player, self.facing, self.anim, self.anim_from = (0, 0), (0, 1), 0, (0, 0)
         self.partner = self.partner_from = self.player
+        self.mine_prev = self.player
         self.host = {}
         self.path = []
         self.char = lobby.char
@@ -132,6 +171,13 @@ class CoopWorldState(GameState):
         self._busy_retry = False
         self.btn_leave = CommandButton((game.width - 176, 14, 160, 56), "LEAVE", game.assets.fonts["label"], self.leave,
                                        bg_color=theme.FIGHT, autosize=False)
+        W, H = game.width, game.height
+        cap = game.assets.fonts["caption"]
+        self.btn_party = CommandButton((W - 280, H - 162, 126, 70), "POKEMON", cap, self.open_party, bg_color=theme.POKEMON, autosize=False)
+        self.btn_dex = CommandButton((W - 146, H - 162, 126, 70), "POKEDEX", cap, lambda: self._open_screen("PokedexState"), bg_color=theme.BAG, autosize=False)
+        self.btn_honey = CommandButton((W - 280, H - 80, 126, 58), "HONEY", cap, self.use_honey, bg_color=(226, 170, 40), autosize=False)
+        self.btn_bag = CommandButton((W - 146, H - 80, 126, 58), "BAG", cap, self.open_bag, bg_color=theme.RUN, autosize=False)
+        self.btn_menu = CommandButton((20, 56, 170, 60), "MENU", game.assets.fonts["button"], self.open_menu, bg_color=theme.RUN, autosize=False)
         self.btn_raid = CommandButton((game.width - 586, 14, 220, 56), "JOIN RAID", game.assets.fonts["label"], self.join_raid,
                                       bg_color=(200, 60, 120), autosize=False)
         self.btn_watch = CommandButton((game.width - 356, 14, 170, 56), "WATCH", game.assets.fonts["label"], self.watch,
@@ -183,6 +229,68 @@ class CoopWorldState(GameState):
         """A fight going on that could be watched (the first, if there are several)."""
         return next(iter(self.feeds.values()), None)
 
+    def _open_screen(self, name):
+        import src.states.systems as screens
+        self.after_menu = True
+        self.link.send_intent({"sync": True})
+        self.game.change_state(getattr(screens, name)(self.game, self))
+
+    def open_party(self):
+        self.after_menu = True
+        self.game.change_state(PokemonPartyMenuState(self.game, self))
+
+    def open_pc(self):
+        """The PC: the host's Pokemon, to borrow and swap freely (nothing can be released from here)."""
+        self.swapping = True
+        self.link.send_intent({"roster_ask": True})
+
+    def _open_map(self):
+        from src.states.region_map import RegionMapState
+        self.after_menu = True
+        self.game.change_state(RegionMapState(self.game, self))
+
+    def _open_options(self):
+        from src.states.menus import open_difficulty_options
+        self.after_menu = True
+        open_difficulty_options(self.game, self)
+
+    def open_menu(self):
+        """Every menu but SAVE, LOAD and FLY (saving is the host's, and the group travels by vote)."""
+        from src.states.systems.home_menu import HomeMenuState
+        self.link.send_intent({"sync": True})
+        entries = [("POKEMON", self.open_party, theme.POKEMON), ("BAG", self.open_bag, theme.BAG), ("POKEDEX", lambda: self._open_screen("PokedexState"), theme.FIGHT),
+                   ("MAP", self._open_map, theme.RUN), ("JOURNAL", lambda: self._open_screen("JournalState"), theme.RUN),
+                   ("BADGES", lambda: self._open_screen("BadgeCaseState"), theme.BAG), ("PC", self.open_pc, theme.POKEMON), ("OPTIONS", self._open_options, theme.BACK)]
+        self.game.change_state(HomeMenuState(self.game, self, entries, mission=self._journal_mission))
+
+    def use_honey(self):
+        if self.game.story_manager.inventory.get("HONEY", 0) > 0:
+            self.link.send_intent({"honey": True})
+        else:
+            self.say_note("You don't have any Honey.")
+
+    def _apply_sync(self, got):
+        story, data = self.game.story_manager, self.game.data.data
+        story.badges, story.active_badge_region, story.catch_counts = got["badges"], got["active_badge_region"], got["catch_counts"]
+        story.story_flags, story.notified_missions = got["story_flags"], got["notified_missions"]
+        story.defeated_trainers = {k: set(v) for k, v in got["defeated"].items()}
+        data["pokedex"], data["seen_pokemon"] = got["pokedex"], got["seen"]
+
+    def open_bag(self):
+        self.after_menu = True
+        self.game.change_state(_GuestBag(self.game, self))
+
+    after_menu = False
+
+    def start(self):
+        if self.after_menu:  # (back from the Pokemon or the Bag: what changed goes to the host)
+            self.after_menu = False
+            team = self.game.story_manager.player_team
+            if team:
+                self.link.send_intent({"team": self._team_records()})
+                self.down = not self._healthy_team()
+            self.send_ledger()
+
     def _raid_open(self):
         raid = (self.feeds.get("") or {}).get("raid")
         return bool(raid and raid["open"]) and not self.fighting and not self.down and self._healthy_team()
@@ -226,7 +334,22 @@ class CoopWorldState(GameState):
     def _open(self, t):
         x, y = t
         return bool(self.grid) and 0 <= y < len(self.grid) and 0 <= x < len(self.grid[0]) \
-            and art.walkable(self.grid, x, y) and self.grid[y][x] not in BLOCKED and t not in self.solid
+            and art.walkable(self.grid, x, y) and self.grid[y][x] not in BLOCKED and t not in self.solid and t not in self._people_tiles()
+
+    def _people_tiles(self):
+        """Where the other players and their Pokemon stand: nobody walks onto them."""
+        h, out = self.host, set()
+        if h.get("area") == self.area and h.get("floor") == self.floor:
+            out.add((h["x"], h["y"]))
+            if h.get("p"):
+                out.add(tuple(h["p"]))
+        for o in h.get("others", []):
+            at = o["at"]
+            if o["pid"] != self.link.pid and at[0] == self.area and at[1] == self.floor:
+                out.add((at[2], at[3]))
+                if o.get("p"):
+                    out.add(tuple(o["p"]))
+        return out
 
     def _arrive(self, x, y):
         """Beside the host, on open ground."""
@@ -234,14 +357,14 @@ class CoopWorldState(GameState):
         while todo:
             t = todo.popleft()
             if self._open(t) and t != (x, y):
-                self.player = self.anim_from = t
+                self.player = self.anim_from = self.partner = self.partner_from = t
                 return
             for d in KEYS.values():
                 n = (t[0] + d[0], t[1] + d[1])
                 if n not in seen and len(seen) < 400:
                     seen.add(n)
                     todo.append(n)
-        self.player = self.anim_from = (x, y)
+        self.player = self.anim_from = self.partner = self.partner_from = (x, y)
 
     def _on_host(self, info):
         self.host = info
@@ -271,10 +394,11 @@ class CoopWorldState(GameState):
         self.wilds = {(m["x"], m["y"]): m for m in scene["movers"] if m["k"] == "w"}
         self.trainers = {(m["x"], m["y"]): m for m in scene["movers"] if m["k"] == "t"}
         self.exits = {(x, y): label for x, y, label in scene.get("exits", [])}
+        self.fog = world.decode_seen(scene["fog"], len(self.grid[0]), len(self.grid)) if scene.get("fog") and self.grid else None
 
     def _report(self):
         p = [self.area, self.floor, self.player[0], self.player[1], self.facing[0], self.facing[1]]
-        self.link.send_intent({"at": p, "char": self.char})
+        self.link.send_intent({"at": p, "char": self.char, "lead": world.lead_of(self.game.story_manager.player_team), "p": list(self.partner)})
 
     # ------------------------------------------------------------------ walking
     def _tethered(self, t):
@@ -291,6 +415,7 @@ class CoopWorldState(GameState):
             self.path = []
             return False
         if self._open(t):
+            self.partner_from, self.partner = self.partner, self.player
             self.anim_from, self.player, self.anim = self.player, t, STEP
             self._report()
             if t in self.exits:  # (a way out: suggest it)
@@ -557,6 +682,8 @@ class CoopWorldState(GameState):
         else:
             game.states["play"] = play
         game.data.read_only = False
+        from src.core import settings
+        settings.apply(game)  # (this device's own Options again)
         self.lobby.link, self.lobby.entered, self.lobby.message = None, False, message
         game.change_state(self.lobby)
 
@@ -572,6 +699,10 @@ class CoopWorldState(GameState):
                 return
             if self._raid_open() and self.btn_raid.handle_event(e):
                 return
+            if any(b.handle_event(e) for b in (self.btn_menu, self.btn_party, self.btn_dex, self.btn_honey, self.btn_bag)):
+                return
+            if self.scene and self.grid and e.type == pygame.MOUSEBUTTONDOWN and self._minimap_rect().collidepoint(e.pos):
+                return
             if self.vote:
                 if self.btn_yes.handle_event(e) or self.btn_no.handle_event(e):
                     return
@@ -582,6 +713,7 @@ class CoopWorldState(GameState):
                     if self.after_reading:
                         go, self.after_reading = self.after_reading, None
                         go()
+                        self.game.state_changed_at = pygame.time.get_ticks() + TAP_GUARD  # (the next tap is meant for the words)
                         return
                 continue
             if self._can_help() and self.btn_revive.handle_event(e):
@@ -591,11 +723,13 @@ class CoopWorldState(GameState):
             elif e.type == pygame.MOUSEBUTTONDOWN and e.button == 1 and self.grid:
                 ox, oy = self._origin()
                 t = ((e.pos[0] - ox) // TILE, (e.pos[1] - oy) // TILE)
+                self.tap_mark = [t, self._open(t) or t in self.signs or t in self.wilds or t in self.trainers or t in self.doors, 12]
                 self.want = None
                 if t in self.signs or t in self.wilds or t in self.trainers or t in self.doors:
                     self._tap_sign(t)
                 else:
                     self.path = self._route(t)
+                    self.goal = t if self.path else None
 
     def _try_reconnect(self):
         if self._busy_retry:
@@ -654,7 +788,14 @@ class CoopWorldState(GameState):
         return True
 
     def _on_event(self, msg):
-        if "raid_joined" in msg:
+        if "fly" in msg:
+            if self.game.current_state is self and not self.fighting:  # (the host's Fly: seen here too)
+                from src.states.systems.fly_scene import FlyScene
+                info = msg["fly"]
+                self.game.change_state(FlyScene(self.game, lambda: self.game.change_state(self), info.get("style"), info.get("riders"), pump=self.pump))
+        elif "sync" in msg:
+            self._apply_sync(msg["sync"])
+        elif "raid_joined" in msg:
             from src.states.coop_raid import CoopRaidState
             self.fighting, self.path, self.want = True, [], None
             self.game.change_state(CoopRaidState(self.game, self, lambda: self.feeds.get(""), self.host.get("name", "The host"), self.pump, self.link.pid))
@@ -700,9 +841,8 @@ class CoopWorldState(GameState):
             self.roster = msg["roster"]
             if self.swapping:
                 self.swapping = False
-                if len(self.roster) > sum(1 for r in self.roster if r.get("mine")):  # (something to swap for)
-                    from src.states.coop_borrow import CoopBorrowState
-                    self.game.change_state(CoopBorrowState(self.game, self, self.roster, swapping=True))
+                from src.states.coop_borrow import CoopBorrowState
+                self.game.change_state(CoopBorrowState(self.game, self, self.roster, swapping=True))
         elif "lent" in msg:
             self._got_team(msg)
         elif "fight" in msg:
@@ -748,9 +888,31 @@ class CoopWorldState(GameState):
     def _rect(self, ox, oy, x, y):
         return pygame.Rect(ox + x * TILE, oy + y * TILE, TILE, TILE)
 
+    tap_mark, goal, fog = None, None, None
+
+    def _draw_fog(self, screen, ox, oy):
+        """The host's first visit here: what nobody has seen yet."""
+        W, H = self.game.width, self.game.height
+        for y in range(max(0, -oy // TILE - 1), min(len(self.grid), (H - oy) // TILE + 2)):
+            for x in range(max(0, -ox // TILE - 1), min(len(self.grid[0]), (W - ox) // TILE + 2)):
+                if (x, y) not in self.fog:
+                    screen.fill((10, 14, 24), (ox + x * TILE, oy + y * TILE, TILE, TILE))
+
+    def _draw_tap_marks(self, ox, oy):
+        screen = self.game.screen
+        if self.goal and not self.path:
+            self.goal = None
+        if self.goal:
+            theme.tap_marker(screen, self._rect(ox, oy, *self.goal))
+        if self.tap_mark and self.tap_mark[2] > 0 and self.tap_mark[0] != self.goal:
+            theme.tap_marker(screen, self._rect(ox, oy, *self.tap_mark[0]), self.tap_mark[1])
+            self.tap_mark[2] -= 1
+
     def _draw_things(self, ox, oy):
         """Items and gates now; those who stand on the map come back to be drawn in order with the players."""
         screen, sc, out = self.game.screen, self.scene, []
+        if not self._backdrop:
+            self._draw_tap_marks(ox, oy)
         if not sc:
             return out
         bob = int(3 * math.sin(pygame.time.get_ticks() / 180))
@@ -782,7 +944,7 @@ class CoopWorldState(GameState):
     def _draw_mover(self, screen, m, r):
         label = self.game.assets.fonts["label"]
         if m["k"] == "w":
-            mon = types.SimpleNamespace(id=m["id"], meta_id=m["meta"], form=m["form"], is_shiny=m["shiny"])
+            mon = types.SimpleNamespace(id=m["id"], meta_id=m["meta"], form=m["form"], is_shiny=m["shiny"], gender=m.get("gender"))
             img = self._icon(mon, TILE, flip=m["x"] < self.player[0], facing=tuple(m["f"]))
             if img is not None:
                 screen.blit(img, img.get_rect(midbottom=(r.centerx, r.bottom + 4)))
@@ -802,6 +964,40 @@ class CoopWorldState(GameState):
                 self._pill(screen, m.get("label", ""), r.centerx, r.y - 34)
             else:
                 theme.shadow_text(screen, "!", label, r.right - 4, r.y - 20, color=(250, 210, 60))
+
+    def _draw_minimap(self, screen):
+        mm, s = self._minimap_rect(), 4
+        seen = self.fog
+        key = (self.area, self.floor, len(seen) if seen is not None else -1)
+        if getattr(self, "_mini_key", None) != key:
+            self._mini_key = key
+            self._mini = pygame.Surface(mm.size, pygame.SRCALPHA)
+            self._mini.fill((10, 14, 24, 170))
+            for y, row in enumerate(self.grid):
+                for x, _c in enumerate(row):
+                    if art.walkable(self.grid, x, y) and (seen is None or (x, y) in seen):
+                        self._mini.fill((150, 190, 230), (4 + x * s, 4 + y * s, s, s))
+        screen.blit(self._mini, mm.topleft)
+        for t in self.exits:
+            if seen is not None and t not in seen:
+                continue
+            screen.fill((250, 200, 60), (mm.x + 3 + t[0] * s, mm.y + 3 + t[1] * s, s + 2, s + 2))
+        for i in self.scene.get("items", []):
+            if seen is not None and (i[0], i[1]) not in seen:
+                continue
+            screen.fill((90, 220, 120), (mm.x + 4 + i[0] * s, mm.y + 4 + i[1] * s, s, s))
+        for m in self.scene["movers"]:
+            if seen is not None and (m["x"], m["y"]) not in seen:
+                continue
+            screen.fill({"w": (230, 80, 70), "f": (250, 210, 60)}.get(m["k"], (170, 110, 230)), (mm.x + 4 + m["x"] * s, mm.y + 4 + m["y"] * s, s, s))
+        h = self.host
+        if h.get("area") == self.area and h.get("floor") == self.floor:
+            pygame.draw.circle(screen, (255, 170, 70), (mm.x + 6 + h["x"] * s, mm.y + 6 + h["y"] * s), 3)
+        for o in h.get("others", []):
+            at = o["at"]
+            if o["pid"] != self.link.pid and at[0] == self.area and at[1] == self.floor:
+                pygame.draw.circle(screen, (255, 170, 70), (mm.x + 6 + at[2] * s, mm.y + 6 + at[3] * s), 3)
+        pygame.draw.circle(screen, (255, 255, 255), (mm.x + 6 + self.player[0] * s, mm.y + 6 + self.player[1] * s), 3)
 
     def _draw_reading(self, screen):
         font = self.game.assets.fonts["label"]
@@ -835,20 +1031,38 @@ class CoopWorldState(GameState):
             for o in self.host.get("others", []):  # (the other guests)
                 at = o["at"]
                 if o["pid"] != self.link.pid and at[0] == self.area and at[1] == self.floor:
-                    who = (o.get("char"), o["name"], ox + at[2] * TILE, oy + at[3] * TILE, (at[4], at[5]))
+                    if o.get("lead") and o.get("p") and list(o["p"]) != [at[2], at[3]]:
+                        fx, fy, _m = world.glide(self.game, ("pet", o["name"]), o["p"][0], o["p"][1])
+                        pet = (self.game, self, o["lead"], fx, fy, (at[4], at[5]), ox, oy)
+                        people.append((o["p"][1], lambda w=pet: world.draw_follower(*w)))
+                    gx, gy, moving = world.glide(self.game, ("guest", o["name"]), at[2], at[3])
+                    who = (o.get("char"), o["name"], int(ox + gx * TILE), int(oy + gy * TILE), (at[4], at[5]), world.walk_frame(moving))
                     people.append((at[3], lambda w=who: world.draw_person(self.game, *w)))
             if h.get("area") == self.area and h.get("floor") == self.floor:
-                who = (h.get("char"), h.get("name", "Host"), ox + h["x"] * TILE, oy + h["y"] * TILE, tuple(h.get("f") or (0, 1)))
+                if h.get("lead") and h.get("p") and list(h["p"]) != [h["x"], h["y"]]:
+                    fx, fy, _m = world.glide(self.game, ("pet", "host"), h["p"][0], h["p"][1])
+                    pet = (self.game, self, h["lead"], fx, fy, tuple(h.get("f") or (0, 1)), ox, oy)
+                    people.append((h["p"][1], lambda w=pet: world.draw_follower(*w)))
+                hx, hy, moving = world.glide(self.game, ("host", 0), h["x"], h["y"])
+                who = (h.get("char"), h.get("name", "Host"), int(ox + hx * TILE), int(oy + hy * TILE), tuple(h.get("f") or (0, 1)), world.walk_frame(moving))
                 people.append((h["y"], lambda w=who: world.draw_person(self.game, *w)))
             px, py = self.player
             if self.anim > 0:
                 k = 1 - self.anim / STEP
                 fx, fy = self.anim_from
                 px, py = fx + (px - fx) * k, fy + (py - fy) * k
-            me = (self.char, self.link.name, int(ox + px * TILE), int(oy + py * TILE), self.facing)
+            mine = world.lead_of(self.game.story_manager.player_team)
+            if mine and self.partner != self.player and not self._backdrop:  # (your lead, a step behind)
+                k = 1 - self.anim / STEP if self.anim > 0 else 1
+                (ax, ay), (bx, by) = self.partner_from, self.partner
+                pet = (self.game, self, mine, ax + (bx - ax) * k, ay + (by - ay) * k, self.facing, ox, oy)
+                people.append((by, lambda w=pet: world.draw_follower(*w)))
+            me = (self.char, self.link.name, int(ox + px * TILE), int(oy + py * TILE), self.facing, world.walk_frame(self.anim > 0))
             people.append((py, lambda w=me: world.draw_person(self.game, *w)))
             for _y, paint in sorted(people, key=lambda p: p[0]):
                 paint()
+            if self.fog is not None:
+                self._draw_fog(screen, ox, oy)
         else:
             theme.shadow_text(screen, "Waiting for the host to reach a map...", font, self.game.width // 2, 340,
                               color=(255, 255, 255), shadow=(16, 20, 36), align="center")
@@ -856,6 +1070,13 @@ class CoopWorldState(GameState):
             return
         theme.shadow_text(screen, f"${self.game.story_manager.money:,}", font, 20, 22, color=(255, 255, 255), shadow=(16, 20, 36))
         self.btn_leave.draw(screen)
+        honey = self.game.story_manager.inventory.get("HONEY", 0)
+        self.btn_honey.text = f"HONEY x{honey}" if honey else "HONEY"
+        for b in (self.btn_menu, self.btn_party, self.btn_dex, self.btn_honey, self.btn_bag):
+            b.draw(screen)
+        self._draw_journal(screen)
+        if self.scene and self.grid:
+            self._draw_minimap(screen)
         if self.feed and not self.fighting:
             self.btn_watch.draw(screen)
         if self._raid_open():

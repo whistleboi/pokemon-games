@@ -57,6 +57,7 @@ class RouteCatch:
                     not self.boss_manager.in_boss_mode and pi and pi.is_shiny
                 )
                 is_correct_answer = self.options[i] == self.correct_ans
+                story.note_answer(self.problem_str, is_correct_answer, (story.timer_frames(30) - self.question_timer) < 5 * FPS)
 
                 self.was_shiny_override = is_shiny_catch and not is_correct_answer
 
@@ -64,7 +65,7 @@ class RouteCatch:
                 if (is_correct_answer or is_shiny_catch) and not self.boss_manager.in_boss_mode:
                     # The games' catch formula: a right answer has weakened it to a quarter of its
                     # HP, a quick one (under 5 s) all the way to 1 HP.
-                    quick = (30 * FPS - self.question_timer) < 5 * FPS
+                    quick = (self.game.story_manager.timer_frames(30) - self.question_timer) < 5 * FPS
                     max_hp = pi.get_max_hp()
                     terrain = self.area_data.get("battle_type", "")
                     self._catch_roll = catching.window_throw(
@@ -276,13 +277,13 @@ class RouteCatch:
                     self.problem_str, self.correct_ans, self.options = (
                         self.generate_math_set(self.total_caught)
                     )
-                    self.question_timer = 30 * FPS
+                    self.question_timer = self.game.story_manager.timer_frames(30)
 
             else:
                 self.problem_str, self.correct_ans, self.options = (
                     self.generate_math_set(self.total_caught)
                 )
-                self.question_timer = 30 * FPS
+                self.question_timer = self.game.story_manager.timer_frames(30)
 
         elif not self.flee_active:
             roll = getattr(self, "_catch_roll", None)
@@ -384,7 +385,7 @@ class RouteCatch:
         self.catch_selection_active = False
         self.selected_catch_idx = idx
         self.problem_str, self.correct_ans, self.options = self.generate_math_set(self.total_caught, num_options=3)
-        self.question_timer = 30 * FPS
+        self.question_timer = self.game.story_manager.timer_frames(30)
         name = self.p_data[idx].display_name.upper() if self.p_data[idx] else "It"
         # Closing the line clears the box (a finished box stays up otherwise, hiding the new answers).
         self.show_dialogue([f"{name} broke free! Answer again to throw another ball."],

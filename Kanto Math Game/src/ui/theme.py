@@ -190,6 +190,18 @@ def shade(color, k):
     return tuple(max(0, min(255, int(c * k))) for c in color)
 
 
+def tap_marker(surface, rect, good=True):
+    """The tile you tapped: a pulsing outline on your destination, red if you can't go there."""
+    pulse = (pygame.time.get_ticks() // 8) % 100
+    k = abs(pulse - 50) / 50
+    color = (255, 226, 90) if good else (232, 70, 60)
+    r = pygame.Rect(rect).inflate(-4 - int(6 * k), -4 - int(6 * k))
+    fill = pygame.Surface(r.size, pygame.SRCALPHA)
+    fill.fill((*color, 70))
+    surface.blit(fill, r.topleft)
+    pygame.draw.rect(surface, color, r, 4, border_radius=8)
+
+
 def menu_background(surface, accent, title=None, font=None, title_x=180):
     """Fill the screen with the menu frame: background, header band in `accent`, the title."""
     w, h = surface.get_size()

@@ -79,13 +79,13 @@ story.current_area_key = "VIRIDIAN_CITY"
 city = CityState(g); g.change_state(city)
 open_difficulty_options(g, city)
 op = g.current_state
-check(isinstance(op, DifficultySelectionState) and op.in_game, "in-game Options has QUIT/AUTOSAVE")
+from src.states.systems.options import OptionsState
+check(isinstance(op, OptionsState), "in-game Options opens its tabs")
 was = story.autosave
-op.toggle_autosave()
-check(story.autosave != was and op.btn_autosave.text.endswith("OFF" if was else "ON"), op.btn_autosave.text)
-op.open_quit_prompt(); op.draw()
-check(op.quit_prompt, "quit prompt opens and draws")
-op.close_quit_prompt(); check(not op.quit_prompt, "cancel closes it")
+op.tab = op.tabs.index("GAMEPLAY")
+op._step(next(r for r in op.rows() if r[0] == "Autosave"), 1)
+check(story.autosave != was, "autosave changes from its row")
+op.draw()
 newgame = DifficultySelectionState(g, lambda: None, lambda: None)
 newgame.draw()
 check(not newgame.in_game, "new-game difficulty screen has no quit button")

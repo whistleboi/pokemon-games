@@ -6,7 +6,7 @@ import base64
 import io
 import json
 from src.utils import Utils, MultiFont
-from src.config import POKEMON_GSC_BASE64, WHITE, VOLUME, RED
+from src.config import POKEMON_GSC_BASE64, WHITE, VOLUME, RED, sfx_volume
 
 
 class AssetManager:
@@ -739,7 +739,7 @@ class AssetManager:
                 s = pygame.mixer.Sound(
                     os.path.join(self.sounds_dir, self.sound_map[name])
                 )
-                s.set_volume(VOLUME)
+                s.set_volume(sfx_volume())
                 return s
             except Exception:
                 pass

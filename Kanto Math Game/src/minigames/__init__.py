@@ -7,14 +7,15 @@ Gym's type) and kept, so TRY AGAIN, or coming back later, is the same game until
 """
 import random
 
-from src.minigames.arcade import PidgeyFlight, PonytaDash, BerryCatch, RouteCrossing
+from src.minigames.arcade import PonytaDash, BerryCatch, RouteCrossing
+from src.minigames.pikafly import PikaFly
 from src.minigames.board import EkansTrail, PokemonMatch, VoltorbField, TypeClash
 from src.minigames.timing import RhythmTiles, GymPong
 from src.minigames.chase import FishEscape
 from src.minigames.kanto import SurgeCans, KogaWalls, SabrinaWarps, BlaineQuiz
 from src.minigames.tiles import TilePuzzle
 
-GAMES = {g.key: g for g in (PidgeyFlight, PonytaDash, BerryCatch, RouteCrossing, EkansTrail, PokemonMatch,
+GAMES = {g.key: g for g in (PikaFly, PonytaDash, BerryCatch, RouteCrossing, EkansTrail, PokemonMatch,
                             VoltorbField, TypeClash, RhythmTiles, GymPong, FishEscape, TilePuzzle,
                             SurgeCans, KogaWalls, SabrinaWarps, BlaineQuiz)}
 # Gyms with their own challenge (Kanto's canon puzzles, drawn as games): always that one.

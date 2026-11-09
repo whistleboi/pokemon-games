@@ -4,7 +4,7 @@ import random
 import io
 import math
 from dataclasses import dataclass
-from src.config import VOLUME
+from src.config import VOLUME, sfx_volume
 from src.utils import DummySound
 from src.pokemon.contest import new_condition
 
@@ -122,7 +122,7 @@ class Pokemon:
                 if self.raw_cry_bytes
                 else DummySound()
             )
-            self.cry.set_volume(VOLUME)
+            self.cry.set_volume(sfx_volume())
         except pygame.error:
             self.cry = DummySound()
 

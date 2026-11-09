@@ -434,7 +434,7 @@ class RouteEncounters:
         self.selected_catch_idx = -1
         self.show_dialogue(["Choose a Pokémon to catch!"])
 
-        self.question_timer = 30 * FPS
+        self.question_timer = self.game.story_manager.timer_frames(30)
         self.problem_str, self.correct_ans, self.options = self.generate_math_set(
             self.total_caught, num_options=3
         )

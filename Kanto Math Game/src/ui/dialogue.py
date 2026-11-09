@@ -3,6 +3,9 @@ import pygame
 from src.ui.manager import UIElement
 
 
+TEXT_SPEED = 3  # letters a frame (Options)
+
+
 def wrap_text(text, font, max_width):
     """Split text into lines that fit max_width (long words get a line of their own)."""
     lines = []
@@ -97,7 +100,7 @@ class ClassicDialogueBox(UIElement):
                 if speech.available():
                     speech.say_line(self.text_lines[self.current_line], auto=True)
         if self.current_line < len(self.text_lines):
-            self.visible_chars += self.speed
+            self.visible_chars += TEXT_SPEED
             if self.visible_chars >= self._page_length():
                 self._line_done()
 

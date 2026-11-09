@@ -548,7 +548,7 @@ class PlayState(RouteMenu, RouteEncounters, RouteActions, RouteCatch, GameState)
             if hitbox.collidepoint(pos):
                 self.selected_catch_idx = i
                 self.catch_selection_active = False
-                self.question_timer = 30 * FPS
+                self.question_timer = self.game.story_manager.timer_frames(30)
                 self.dialogue_box.visible = False
                 return
 
@@ -881,7 +881,7 @@ class PlayState(RouteMenu, RouteEncounters, RouteActions, RouteCatch, GameState)
                 speech.draw_speaker(screen, self.speak_rect)
 
             if self.question_timer > 0:
-                ratio = max(0, min(1, self.question_timer / (30 * FPS)))
+                ratio = max(0, min(1, self.question_timer / self.game.story_manager.timer_frames(30)))
                 track = pygame.Rect(card.x + 24, card.bottom - 20, card.w - 48, 8)
                 pygame.draw.rect(screen, (210, 214, 224), track, border_radius=4)
                 color = theme.HP_GREEN if ratio > 0.5 else theme.HP_YELLOW if ratio > 0.2 else theme.HP_RED

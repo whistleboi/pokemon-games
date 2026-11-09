@@ -33,8 +33,8 @@ def facts_from_save(game, data):
     story = data.get("story") or {}
     key = story.get("current_area_key") or ""
     area = game.loader.area_data.get("STORY_PROGRESSION", {}).get(key, {}) or {}
-    region = str(area.get("region") or story.get("active_badge_region") or story.get("starting_region")
-                 or "KANTO").upper()
+    # (where the save IS: Kanto's areas name no region, and the last region a badge was won in may be another: a League Redo)
+    region = str(area.get("region") or ("KANTO" if area else story.get("active_badge_region") or story.get("starting_region") or "KANTO")).upper()
     store = (story.get("region_stores") or {}).get(story.get("active_store") or "", {})
     team = store.get("team") or story.get("player_team") or []
     return {

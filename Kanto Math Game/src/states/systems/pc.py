@@ -480,6 +480,8 @@ class PCState(GameState):
                 name = p.display_name.title()
                 nf = f["caption"] if f["caption"].size(name)[0] <= rect.w - 8 else f["tiny"]
                 theme.shadow_text(screen, name, nf, rect.centerx, rect.bottom - 12, align="center")
+                if getattr(p, "coop_lent", None) is not None:  # (a friend has it: co-op)
+                    theme.shadow_text(screen, "LENT", f["tiny"], rect.x + 8, rect.y + 6, color=(255, 214, 110))
                 if getattr(p, "is_shiny", False) and not getattr(p, "is_egg", False):
                     draw_shiny_star(screen, rect.right - 14, rect.y + 14, 9)
             else:

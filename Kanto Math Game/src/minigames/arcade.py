@@ -1,6 +1,5 @@
 """Gym challenge minigames: the action ones (Jordan, 11-01). Each plays by taps alone.
 
-- PidgeyFlight: tap to flap through the gaps between rock pillars.
 - PonytaDash: tap to jump the rocks and logs on the track; keep running.
 - BerryCatch: slide the basket to catch falling berries; a falling Voltorb costs a heart.
 - RouteCrossing: hop across the lanes where wild Pokemon stampede (like Crossy Road).
@@ -17,97 +16,11 @@ ROCK_DARK = (78, 60, 44)
 ROCK_LIGHT = (164, 136, 104)
 BERRIES = ("cheri-berry", "pecha-berry", "razz-berry", "aspear-berry", "chesto-berry", "bluk-berry")
 # Each game's Pokemon, the region's own where it has one (base.local): the first native one wins.
-FLYERS = (16, 163, 276, 396, 519, 661, 731, 821, 940)       # Pidgey, Hoothoot, Taillow, Starly, Pidove...
 RUNNERS = (77, 234, 309, 403, 522, 672, 749, 835, 921)      # Ponyta, Stantler, Electrike, Shinx, Blitzle...
 CATCHERS = (113, 241, 357, 440, 531, 659, 734, 819, 928)    # Chansey, Miltank, Tropius, Happiny, Audino...
 HAZARDS = (100, 204, 590, 771, 837)                         # Voltorb, Pineco, Foongus, Pyukumuku, Rolycoly
 STAMPEDE = (128, 85, 78, 111, 232, 234, 241, 323, 400, 522, 523, 626, 586, 672, 673, 749, 750, 831, 832,
             915, 916)                                       # Tauros, Dodrio, Rapidash... Wooloo, Lechonk
-
-
-def _rock_block(screen, rect):
-    """A pillar of stacked stone: the Gym's obstacles."""
-    if rect.h <= 0:
-        return
-    pygame.draw.rect(screen, ROCK_DARK, rect.inflate(8, 0))
-    pygame.draw.rect(screen, ROCK, rect)
-    for y in range(rect.y + 6, rect.bottom, 34):  # the stones' seams
-        pygame.draw.line(screen, ROCK_DARK, (rect.x, y), (rect.right, y), 3)
-        off = 18 if (y // 34) % 2 else 46
-        pygame.draw.line(screen, ROCK_DARK, (rect.x + off, y), (rect.x + off, min(rect.bottom, y + 34)), 3)
-    pygame.draw.line(screen, ROCK_LIGHT, (rect.x + 6, rect.y), (rect.x + 6, rect.bottom), 4)
-
-
-class PidgeyFlight(Minigame):
-    key = "flight"
-    title = "Pidgey Flight"
-    how = "Flap to stay in the air. Fly through the gaps between the rocks!"
-    controls = (("Tap", "Flap"), ("Space / Up / W", "Flap"))
-    accent = (196, 150, 84)
-
-    @classmethod
-    def title_for(cls, game):
-        return f"{species_name(game, local(game, FLYERS)[0])} Flight"
-
-    def target(self):
-        return 6 + self.level
-
-    def goal_text(self):
-        return f"Fly through {self.target()} gaps"
-
-    def setup(self):
-        self.x = self.W * 0.24
-        self.y = self.area.centery
-        self.vy = 0.0
-        self.species = local(self.game, FLYERS)[0]
-        self.gap = max(200, 280 - self.level * 10)
-        self.speed = (240 + self.level * 14) / FPS
-        self.pillars = []
-        self.next_x = self.W + 80
-
-    def _flap(self):
-        self.vy = -560 / FPS
-
-    def on_tap(self, pos):
-        self._flap()
-
-    def on_key(self, key):
-        if key in (pygame.K_SPACE, pygame.K_UP, pygame.K_w):
-            self._flap()
-
-    def step(self):
-        self.vy += 1500 / FPS / FPS
-        self.y += self.vy
-        if self.next_x - self.speed <= self.W + 80 or not self.pillars:
-            lo, hi = self.area.top + self.gap // 2 + 40, self.area.bottom - self.gap // 2 - 40
-            self.pillars.append([self.next_x, self.rng.randint(lo, hi), False])
-            self.next_x += 400
-        self.next_x -= self.speed
-        for p in self.pillars:
-            p[0] -= self.speed
-            if not p[2] and p[0] + 90 < self.x:
-                p[2] = True
-                self.score += 1
-                self.check_goal()
-        self.pillars = [p for p in self.pillars if p[0] > -120]
-        me = pygame.Rect(0, 0, 54, 44)
-        me.center = (self.x, self.y)
-        if me.top < self.area.top or me.bottom > self.area.bottom:
-            self.lose(f"{species_name(self.game, self.species)} flew too far and had to land!")
-        for x, gy, _ in self.pillars:
-            top = pygame.Rect(x, self.area.top, 90, gy - self.gap // 2 - self.area.top)
-            bottom = pygame.Rect(x, gy + self.gap // 2, 90, self.area.bottom - gy - self.gap // 2)
-            if me.colliderect(top) or me.colliderect(bottom):
-                self.lose(f"{species_name(self.game, self.species)} bumped into a rock!")
-
-    def render(self, screen):
-        for x, gy, _ in self.pillars:
-            _rock_block(screen, pygame.Rect(x, self.area.top, 90, gy - self.gap // 2 - self.area.top))
-            _rock_block(screen, pygame.Rect(x, gy + self.gap // 2, 90, self.area.bottom - gy - self.gap // 2))
-        img = icon(self.game, self.species, 104, flip=True)
-        tilt = max(-30, min(40, -self.vy * FPS / 18))
-        img = pygame.transform.rotate(img, tilt)
-        screen.blit(img, img.get_rect(center=(self.x, self.y)))
 
 
 class PonytaDash(Minigame):

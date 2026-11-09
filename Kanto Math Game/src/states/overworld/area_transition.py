@@ -193,8 +193,8 @@ def _collapse_hud(state):
     def open_menu():
         if hasattr(state, "is_resuming"):
             state.is_resuming = True  # a route comes back to the same encounter
-        from src.states.menu_grid import MenuGridState
-        state.game.change_state(MenuGridState(state.game, state, state.menu_entries))
+        from src.states.systems.home_menu import HomeMenuState, entries_for
+        state.game.change_state(HomeMenuState(state.game, state, entries_for(state)))
 
     state.hud_buttons = [CommandButton((20, 56, 170, 60), "MENU", state.game.assets.fonts["button"], open_menu,
                                        bg_color=theme.RUN, autosize=False)]

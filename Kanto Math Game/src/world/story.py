@@ -40,6 +40,8 @@ class StoryManager:
         self.initialized = False
         # "AUTO" follows the story; a number locks a level from math_levels.json
         self.math_difficulty = "AUTO"
+        self.prefs = {}          # Options (src/core/settings.py)
+        self.math_stats = self._blank_math_stats()
         self.level_cap_mode = "STORY"  # STORY, OBEDIENCE or NONE (Options)
         self.last_center = None  # area key of the last Pokemon Center used (whiteouts go there)
         self.autosave = True     # Options: save every time you travel to a new area
@@ -840,6 +842,31 @@ class StoryManager:
         """Total badges earned across all regions."""
         return sum(len(b) for b in self.badges.values())
 
+    @staticmethod
+    def _blank_math_stats():
+        return {"right": 0, "wrong": 0, "streak": 0, "best": 0, "quick": 0, "ops": {}, "levels": {}}
+
+    def timer_frames(self, seconds):
+        """How long a timed question lasts (Options): off, as it is, or 50% more."""
+        from src.config import FPS
+        from src.core import settings
+        mode = settings.get(self, "math_timer")
+        return 10 ** 8 if mode == "OFF" else int(seconds * FPS * (1.5 if mode == "LONG" else 1))
+
+    def note_answer(self, problem, right, quick=False):
+        """Every question answered, for Math Stats."""
+        s = self.math_stats
+        s["right" if right else "wrong"] += 1
+        s["streak"] = s["streak"] + 1 if right else 0
+        s["best"] = max(s["best"], s["streak"])
+        s["quick"] += 1 if right and quick else 0
+        text = str(problem)
+        kinds = [k for k, sign in (("add", " + "), ("sub", " - "), ("mul", " x "), ("div", " ÷ ")) if sign in text]
+        slot = 0 if right else 1
+        for k in kinds:
+            s["ops"].setdefault(k, [0, 0])[slot] += 1
+        s["levels"].setdefault(str(self.get_math_level()), [0, 0])[slot] += 1
+
     def get_math_level(self):
         """Difficulty scales with total badges across all regions."""
         total = self.get_total_badges()
@@ -1041,6 +1068,27 @@ class StoryManager:
         if area not in self.defeated_trainers:
             self.defeated_trainers[area] = set()
         self.defeated_trainers[area].add(index)
+        self.story_flags.setdefault("trainers_beaten_on", {}).setdefault(area, {})[str(index)] = self._today()
+
+    @staticmethod
+    def _today():
+        import datetime
+        return datetime.date.today().isoformat()
+
+    NOT_ROUTE_TRAINERS = ("ROCKET", "RIVAL", "GYM_LEADER", "ELITE", "CHAMPION", "BOSS", "COMMANDER", "AETHER", "FLARE", "GALACTIC", "PLASMA",
+                          "SKULL", "AQUA", "MAGMA", "SNAGEM", "CIPHER", "TEAM_", "MACRO", "FRONTIER", "SCUZ", "HISUI", "WILD")
+
+    def beaten_today(self, area, index):
+        return self.story_flags.get("trainers_beaten_on", {}).get(area, {}).get(str(index)) == self._today()
+
+    def trainer_on_map(self, area, index, info):
+        """Is this trainer out on the map? Beaten ones stay beaten; an ordinary route trainer is back the next day (real
+        time; Jordan, 11-08). Enemy teams, rivals, gyms and story battles never come back."""
+        if not self.is_trainer_defeated(area, index):
+            return True
+        cls = str(info.get("class", "")).upper()
+        special = info.get("is_boss_battle") or info.get("victory_flag") or info.get("villain") or any(w in cls for w in self.NOT_ROUTE_TRAINERS)
+        return not special and not self.beaten_today(area, index)
 
     def sync_badges(self):
         """
@@ -1274,6 +1322,8 @@ class StoryManager:
             "rival_true_name": getattr(self.game, "rival_true_name", "BLUE"),
             "math_difficulty": self.math_difficulty,
             "level_cap_mode": self.level_cap_mode,
+            "prefs": self.prefs,
+            "math_stats": self.math_stats,
             "last_center": self.last_center,
             "autosave": self.autosave,
             "exp_share": self.exp_share,
@@ -1414,6 +1464,8 @@ class StoryManager:
         # Older saves have no setting -> AUTO (follows region + badges)
         self.math_difficulty = data.get("math_difficulty", "AUTO")
         self.level_cap_mode = data.get("level_cap_mode", "STORY")
+        self.prefs = dict(data.get("prefs", {}))
+        self.math_stats = dict(self._blank_math_stats(), **data.get("math_stats", {}))
         self.last_center = data.get("last_center")
         self.autosave = data.get("autosave", True)
         self.exp_share = data.get("exp_share", True)
