@@ -175,7 +175,11 @@ class RegionMapState(GameState):
             self.go_back()
             return
         from src.states.overworld import AreaTransitionState
-        self.game.change_state(AreaTransitionState(self.game, self.selected))
+        from src.coop import travel
+        key = self.selected
+        if travel.held(self.game, travel.area_name(self.game, key), lambda: self.game.change_state(AreaTransitionState(self.game, key))):
+            return
+        self.game.change_state(AreaTransitionState(self.game, key))
 
     def start(self):
         for btn in (self.btn_back, self.btn_fly, self.btn_list, self.btn_prev, self.btn_next):

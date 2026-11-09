@@ -669,10 +669,15 @@ class BagState(GameState):
         if not inside:
             self._back_to_bag(["You can only use an Escape Rope in caves and buildings."])
             return
-        self._take(item)
         dest, _ = story.whiteout_destination()
         from src.states.overworld import AreaTransitionState
-        self.game.change_state(AreaTransitionState(self.game, dest, initial_message="You used the ESCAPE ROPE!"))
+        from src.coop import travel
+
+        def rope():
+            self._take(item)
+            self.game.change_state(AreaTransitionState(self.game, dest, initial_message="You used the ESCAPE ROPE!"))
+        if not travel.held(self.game, travel.area_name(self.game, dest), rope):
+            rope()
 
     def on_pokemon_select_pokeblock(self, slot_index):
         party = self.game.story_manager.player_team

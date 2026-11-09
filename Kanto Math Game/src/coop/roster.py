@@ -1,16 +1,19 @@
 """Co-op's Pokemon and fights, on the host (Jordan, 11-08): what a guest may borrow (up to 6), and the wild Pokemon a guest
 is fighting. The fight itself runs on the guest's device; the host hands out the Pokemon, holds it off the map meanwhile,
 checks what comes back, and is the only one who saves. A lent Pokemon waits in the PC (locked), so a crash can't lose it."""
-from src.coop import world
+import types
+
+from src.coop import travel, world
 
 MAX_BORROW = 6
 LEVEL_JUMP = 10     # the most levels one fight can believably add
 REACH = 2           # tiles: how near a guest must be to start a fight
 TOAST_FRAMES = 200
+START_BALLS = 10    # the Poke Balls a guest starts with (those aren't merged)
 
 
 def _state(host):
-    return host.__dict__.setdefault("roster", {"lent": {}, "fights": {}, "uids": 0, "later": []})
+    return host.__dict__.setdefault("roster", {"lent": {}, "fights": {}, "uids": 0, "later": [], "ledgers": {}})
 
 
 def toast(game, text):
@@ -39,15 +42,17 @@ def _spare_party(story):
     return [p for p in story.player_team if p is not keep and _free(p)]
 
 
-def rows(game, host):
-    """What can be borrowed now, for the guest's picking screen."""
+def rows(game, host, pid=None):
+    """What can be borrowed now, for the guest's picking screen; first what this guest already holds."""
     story = game.story_manager
     out = []
-    for group, party in ((_spare_party(story), True), ([p for p in story.pc_pokemon if _free(p)], False)):
+    held = [e["mon"] for e in _state(host)["lent"].get(pid, [])]
+    for group, party, mine in ((held, False, True), (_spare_party(story), True, False),
+                               ([p for p in story.pc_pokemon if _free(p)], False, False)):
         for p in group:
             out.append({"uid": _uid(host, p), "id": int(p.id), "form": str(p.form), "shiny": bool(p.is_shiny),
                         "name": str(p.display_name), "level": int(p.level), "hp": int(p.current_hp),
-                        "max": int(p.get_max_hp()), "party": party})
+                        "max": int(p.get_max_hp()), "party": party, "mine": mine})
     return out
 
 
@@ -67,7 +72,7 @@ def _settings(story):
             "story_flags": story.story_flags, "level_cap_mode": getattr(story, "level_cap_mode", "STORY")}
 
 
-def lend(game, host, pid, uids):
+def lend(game, host, pid, uids, replace=False):
     st, story = _state(host), game.story_manager
     mine = st["lent"].setdefault(pid, [])
     party, pc = _spare_party(story), [p for p in story.pc_pokemon if _free(p)]
@@ -84,17 +89,134 @@ def lend(game, host, pid, uids):
         p.coop_lent = pid
         mine.append({"mon": p, "party": from_party})
         out.append({"uid": uid, "rec": story._pokemon_record(p)})
-    host.send(pid, {"t": "event", "lent": out, "settings": _settings(story)})
+    if replace:  # (a swap at the PC: the whole team again)
+        out = [{"uid": e["mon"].coop_uid, "rec": story._pokemon_record(e["mon"])} for e in mine]
+    host.send(pid, {"t": "event", "lent": out, "settings": _settings(story), "replace": replace})
+
+
+def _return_one(game, entry):
+    story = game.story_manager
+    p = entry["mon"]
+    p.coop_lent = None
+    if entry["party"] and len(story.player_team) < 6 and p in story.pc_pokemon:
+        story.pc_pokemon[story.pc_pokemon.index(p)] = None
+        story.player_team.append(p)
 
 
 def _give_back(game, host, pid):
-    st, story = _state(host), game.story_manager
-    for entry in st["lent"].pop(pid, []):
-        p = entry["mon"]
-        p.coop_lent = None
-        if entry["party"] and len(story.player_team) < 6 and p in story.pc_pokemon:
-            story.pc_pokemon[story.pc_pokemon.index(p)] = None
-            story.player_team.append(p)
+    for entry in _state(host)["lent"].pop(pid, []):
+        _return_one(game, entry)
+
+
+def exchange(game, host, pid, uids):
+    """A swap at the PC, as one step: what's no longer wanted goes home, then the new ones are lent."""
+    st = _state(host)
+    if not isinstance(uids, list) or not uids or len(uids) > MAX_BORROW or _fighting(st, pid):
+        return
+    mine = st["lent"].setdefault(pid, [])
+    for entry in list(mine):
+        if entry["mon"].coop_uid not in uids:
+            mine.remove(entry)
+            _return_one(game, entry)
+    held = {e["mon"].coop_uid for e in mine}
+    lend(game, host, pid, [u for u in uids if u not in held], replace=True)
+
+
+# ------------------------------------------------------------------ a guest's money and items
+def _journal(game, st):
+    """In the host's save too, so a crash can't lose what a guest is owed."""
+    game.story_manager.story_flags["coop_ledgers"] = {str(pid): led for pid, led in st["ledgers"].items()}
+
+
+def _ledger(game, st, pid):
+    if pid not in st["ledgers"]:
+        st["ledgers"][pid] = {"money": 0, "items": {}, "balls": START_BALLS}
+        _journal(game, st)
+    return st["ledgers"][pid]
+
+
+def _send_ledger(game, host, pid):
+    st = _state(host)
+    host.send(pid, {"t": "event", "ledger_now": _ledger(game, st, pid)})
+
+
+def _sell_price(game, item):
+    from src.states.systems.mart import PokeMartState
+    mart = types.SimpleNamespace(game=game, BASE_PRICES=PokeMartState.BASE_PRICES, WEATHER_ROCKS=PokeMartState.WEATHER_ROCKS)
+    return PokeMartState._price(mart, item) // 2
+
+
+def pick_up(game, host, pid, tile):
+    """An item a guest walked onto: theirs, and gone from the map."""
+    from src.pokemon import catching
+    from src.states.overworld.dungeon import DungeonState
+    ds, st, at = getattr(game, "dungeon_state", None), _state(host), host.guests[pid].get("at")
+    if ds is None or not hasattr(ds, "run") or not at or at[0] != ds.area_key or at[1] != ds.run.index or not isinstance(tile, list):
+        return
+    t = tuple(tile)
+    if len(t) != 2 or abs(t[0] - at[2]) + abs(t[1] - at[3]) > 1 or t not in ds.run.floor.items:
+        return
+    key, led = ds.run.floor.items.pop(t), _ledger(game, st, pid)
+    if key == catching.POKE:
+        led["balls"] += 1
+    elif key == DungeonState.HONEY_PACK:
+        led["items"]["HONEY"] = led["items"].get("HONEY", 0) + 3
+    else:
+        led["items"][key] = led["items"].get(key, 0) + 1
+    _journal(game, st)
+    host.send(pid, {"t": "event", "found": str(key)})
+    _send_ledger(game, host, pid)
+
+
+def apply_ledger(game, host, pid, got):
+    """The guest's Bag after shopping or a fight. Money only comes from what's sold, at the Mart's price, and
+    nothing is gained for free."""
+    st = _state(host)
+    led = _ledger(game, st, pid)
+    try:
+        money, balls = int(got["money"]), int(got["balls"])
+        items = {str(k): int(v) for k, v in got["items"].items() if int(v) > 0 and k != "POKE_BALLS"}  # (the Bag's copy of "balls")
+    except (KeyError, TypeError, ValueError, AttributeError):
+        return
+    gained = balls > led["balls"] or any(v > led["items"].get(k, 0) for k, v in items.items())
+    most = led["money"] + sum((q - items.get(k, 0)) * _sell_price(game, k) for k, q in led["items"].items() if q > items.get(k, 0))
+    bad = money < 0 or money > most or balls < 0 or max(items.values(), default=0) > 999
+    if not bad and (money < most or not gained):
+        led.update(money=money, balls=balls, items=items)
+        _journal(game, st)
+
+
+def _merge(game, led):
+    """A guest's money and items, into the host's."""
+    story = game.story_manager
+    story.money += int(led["money"])
+    for key, qty in led["items"].items():
+        story.add_item(key, int(qty))
+    story.balls_left += max(0, int(led["balls"]) - START_BALLS)
+
+
+def _merge_out(game, host, pid):
+    """On leaving, exactly once: the entry goes as it's merged."""
+    st = _state(host)
+    led = st["ledgers"].pop(pid, None)
+    if led is None:
+        return
+    _merge(game, led)
+    _journal(game, st)
+    game.update_save_data()
+    game.data.save()
+    if led["money"] or led["items"]:
+        toast(game, f"Added from your friend: ${led['money']:,} and {sum(led['items'].values())} items.")
+
+
+def recover(game, host):
+    """What a crashed session still owed: merged when the next one opens."""
+    old = game.story_manager.story_flags.pop("coop_ledgers", None) or {}
+    for led in old.values():
+        _merge(game, led)
+    if old:
+        game.update_save_data()
+        game.data.save()
 
 
 def release(game, host, pid):
@@ -103,7 +225,17 @@ def release(game, host, pid):
     for eid in [e for e, f in st["fights"].items() if f["pid"] == pid]:
         f = st["fights"].pop(eid)
         f["floor"].movers.append(f["mover"])
-    st["later"].append(lambda: _give_back(game, host, pid))
+    st["later"].append(lambda: (_give_back(game, host, pid), _merge_out(game, host, pid)))
+
+
+def close_out(game, host):
+    """The session is closing: everyone's Pokemon, money and items come home now."""
+    st = _state(host)
+    for pid in set(st["lent"]) | set(st["ledgers"]) | {f["pid"] for f in st["fights"].values()}:
+        release(game, host, pid)
+    for job in st["later"]:
+        job()
+    st["later"] = []
 
 
 # ------------------------------------------------------------------ fights
@@ -202,6 +334,8 @@ def end_fight(game, host, pid, msg):
     if fight is not None and fight["pid"] == pid:  # (each fight counts once: a repeat just gets its answer again)
         del st["fights"][eid]
         _apply_team(game, host, pid, msg.get("team"))
+        if isinstance(msg.get("ledger"), dict):
+            apply_ledger(game, host, pid, msg["ledger"])
         name = host.guests[pid]["name"]
         mover, outcome = fight["mover"], msg.get("outcome")
         mon = str(mover.payload.display_name).upper()
@@ -213,12 +347,26 @@ def end_fight(game, host, pid, msg):
         else:
             fight["floor"].movers.append(mover)
     host.send(pid, {"t": "event", "fight_done": eid})
+    _send_ledger(game, host, pid)
 
 
 # ------------------------------------------------------------------ from the game loop
 def handle(game, host, pid, msg):
     if msg.get("roster_ask"):
-        host.send(pid, {"t": "event", "roster": rows(game, host)})
+        host.send(pid, {"t": "event", "roster": rows(game, host, pid)})
+    elif "propose" in msg:
+        travel.propose(game, host, pid, msg["propose"])
+    elif "vote_answer" in msg:
+        travel.answer(game, host, pid, msg)
+    elif "pick" in msg:
+        pick_up(game, host, pid, msg["pick"])
+    elif "team" in msg:  # (healed at a Center)
+        _apply_team(game, host, pid, msg["team"])
+    elif "exchange" in msg:
+        _state(host)["later"].append(lambda: exchange(game, host, pid, msg["exchange"]) if pid in host.guests else None)
+    elif "ledger" in msg and isinstance(msg["ledger"], dict):
+        apply_ledger(game, host, pid, msg["ledger"])
+        _send_ledger(game, host, pid)
     elif "borrow" in msg:  # (not in the middle of the host's own battle: its party can't change then)
         _state(host)["later"].append(lambda: lend(game, host, pid, msg["borrow"]) if pid in host.guests else None)
     elif "watch" in msg:  # (the guest's fight, for the host to watch)
@@ -231,6 +379,9 @@ def handle(game, host, pid, msg):
 
 def tick(game, host):
     st = _state(host)
+    if not st.get("recovered"):
+        st["recovered"] = True
+        recover(game, host)
     if st["later"] and world.where(game) is not None:
         for job in st["later"]:
             job()

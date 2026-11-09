@@ -76,6 +76,9 @@ class FlyState(GameState):
 
     def fly_to(self, key):
         from src.states.overworld import AreaTransitionState
+        from src.coop import travel
+        if travel.held(self.game, travel.area_name(self.game, key), lambda: self.fly_to(key)):
+            return
         self.game.change_state(AreaTransitionState(self.game, key))
 
     def start(self):

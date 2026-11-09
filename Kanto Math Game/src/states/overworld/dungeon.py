@@ -742,7 +742,8 @@ class DungeonState(OverworldBattles, PlayState):
 
     def _leave(self, target):
         self.game.dungeon_state = None
-        self.action_exit_route(target)
+        from src.coop import travel
+        travel.passing(self.game, lambda: self.action_exit_route(target))
 
     # ---------------------------------------------------------------- talking
     def say(self, lines, then=None):
@@ -812,10 +813,16 @@ class DungeonState(OverworldBattles, PlayState):
                 if self._stairs_blocked():  # (Hyperspace: not until the floor is clear)
                     self._step_back()
                     return
+                from src.coop import travel
+                if travel.held(self.game, self._floor_name(self.run.index + 1), lambda: self._handle([ev]), self._step_back):
+                    return
                 self.say([self._stairs_line(self.run.index + 1)], then=self._descend)
                 return
             elif kind == "stairs_up":
                 self.walk_goal = None
+                from src.coop import travel
+                if travel.held(self.game, self._floor_name(self.run.index - 1), lambda: self._handle([ev]), self._step_back):
+                    return
                 self.say([self._stairs_line(self.run.index - 1)], then=self._ascend)
                 return
             elif kind == "bump" and ev[1].kind == "figure":
@@ -927,6 +934,9 @@ class DungeonState(OverworldBattles, PlayState):
                 return
             self._exit_locked(item)  # says what's needed (then show_progression_menu: the map)
             return
+        from src.coop import travel
+        if travel.held(self.game, self._area_name(target), lambda: self._try_exit(target), self._step_back):
+            return  # (co-op: the others have a say)
         flag = f"gate_used_{self.area_key}_{target}"
         story = self.game.story_manager
         if gate and gate[1] and gate[2] and not story.story_flags.get(flag):  # the HM, the first time through

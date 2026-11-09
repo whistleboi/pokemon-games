@@ -670,4 +670,7 @@ class RouteMenu:
             next_area_key = self.game.story_manager.current_area_key
 
         if next_area_key:
+            from src.coop import travel
+            if travel.held(self.game, travel.area_name(self.game, next_area_key), lambda: self.action_exit_route(target_area)):
+                return
             self.game.change_state(AreaTransitionState(self.game, next_area_key))

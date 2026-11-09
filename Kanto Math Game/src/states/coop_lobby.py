@@ -119,6 +119,9 @@ class CoopState(GameState):
     def end(self):
         host = getattr(self.game, "coop_host", None)
         if self.mode == "host" and host:
+            from src.coop import roster
+            roster.close_out(self.game, host)
+            self.game.coop_vote = None
             host.close()
             self.game.coop_host = None
         elif self.link:

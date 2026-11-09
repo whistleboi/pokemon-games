@@ -322,6 +322,9 @@ class TownMenu:
         """Travel; a ship or train ride shows its own message on the way. heal: see travel_heal."""
         from src.states.overworld.area_transition import AreaTransitionState
         if area_key:
+            from src.coop import travel
+            if travel.held(self.game, travel.area_name(self.game, area_key), lambda: self.go_to_area(area_key, message, heal)):
+                return
             self.game.change_state(AreaTransitionState(self.game, area_key, initial_message=message,
                                                        heal=heal))
 

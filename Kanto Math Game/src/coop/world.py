@@ -41,6 +41,16 @@ def _named(game, lines):
     return [str(_fill_names(game, line)) for line in lines]
 
 
+def exit_label(st, target):
+    """Where a way out on a walked map goes, in words."""
+    from src.dungeon import core
+    if target == core.STAIRS:
+        return st._floor_name(st.run.index + 1)
+    if target == core.STAIRS_UP:
+        return st._floor_name(st.run.index - 1)
+    return str(st._area_name(target))
+
+
 def _dungeon_scene(game, st, out):
     f = st.run.floor
     for m in f.movers:
@@ -54,6 +64,7 @@ def _dungeon_scene(game, st, out):
         elif m.kind == "figure":
             out["movers"].append({"k": "f", "x": m.x, "y": m.y, "look": _look(m.payload)})
     out["items"] = [[x, y, str(key)] for (x, y), key in f.items.items()]
+    out["exits"] = [[x, y, exit_label(st, target)] for (x, y), target in f.exits.items()]
     out["tms"] = [[x, y] for (x, y) in f.tm_spots]
     m = st.run.recipe.get("art") or {}
     lines = m["floors"][st.run.index].get("signs", []) if m.get("floors") else m.get("signs", [])
@@ -78,6 +89,8 @@ def _town_scene(game, st, out):
         out["movers"].append({"k": "f", "x": x, "y": y, "look": _look(opt), "town": True,
                               "label": _named(game, [opt.get("text", "")])[0].upper()[:28]})
     out["signs"] = [[x, y, _named(game, lines)] for (x, y), lines in st.signs.items()]
+    from src.coop import travel
+    out["exits"] = [[x, y, travel.area_name(game, target)] for (x, y), target in st.exits.items()]
 
 
 def scene(game):
@@ -107,7 +120,7 @@ def tick(game):
     host = getattr(game, "coop_host", None)
     if host is None:
         return
-    from src.coop import roster
+    from src.coop import roster, travel
     for ev in host.poll():
         if ev[0] == "gone":
             roster.release(game, host, ev[1])
@@ -121,6 +134,7 @@ def tick(game):
                 host.guests[ev[1]]["at"] = at
                 host.guests[ev[1]]["char"] = str(ev[2].get("char") or "")
     roster.tick(game, host)
+    travel.tick(game, host)
     game.coop_frame = getattr(game, "coop_frame", 0) + 1
     if game.coop_frame % SEND_EVERY:
         return
@@ -197,7 +211,9 @@ def _watch_rect(game):
 
 
 def handle_events(game, events):
-    """The host's WATCH button comes before the map's own taps."""
+    """The host's vote and WATCH buttons come before the map's own taps."""
+    from src.coop import travel
+    events = travel.handle_events(game, events)
     pid = _watchable(game)
     if pid is None:
         return events
@@ -232,6 +248,8 @@ def draw(game):
         pygame.draw.rect(game.screen, (50, 90, 170), r, border_radius=10)
         tag = game.assets.fonts["label"].render(f"WATCH {host.guests[pid]['name']}"[:22], True, (255, 255, 255))
         game.screen.blit(tag, tag.get_rect(center=r.center))
+    from src.coop import travel
+    travel.draw(game)
     note = getattr(game, "coop_toast", None)
     if note:
         game.coop_toast = (note[0], note[1] - 1) if note[1] > 1 else None

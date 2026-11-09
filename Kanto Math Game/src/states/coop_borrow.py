@@ -13,10 +13,10 @@ MAX = 6
 class CoopBorrowState(GameState):
     uses_keyboard = True
 
-    def __init__(self, game, map_state, rows):
+    def __init__(self, game, map_state, rows, swapping=False):
         super().__init__(game)
-        self.map_state, self.rows = map_state, rows
-        self.page, self.chosen = 0, []
+        self.map_state, self.rows, self.swapping = map_state, rows, swapping
+        self.page, self.chosen = 0, [r["uid"] for r in rows if r.get("mine")]
         f = game.assets.fonts
         self.font, self.small = f["label"], f["caption"]
         W, H = game.width, game.height
@@ -31,7 +31,10 @@ class CoopBorrowState(GameState):
         self.page = (self.page + by) % self.pages()
 
     def done(self):
-        self.map_state.borrow(self.chosen)
+        if self.swapping:
+            self.map_state.swap(self.chosen)
+        else:
+            self.map_state.borrow(self.chosen)
         self.game.change_state(self.map_state)
 
     def cards(self):

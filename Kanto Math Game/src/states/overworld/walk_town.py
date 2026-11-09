@@ -424,6 +424,9 @@ class WalkTownState(CityState):
         cb = self._get_callback_for_option(dict(opt, action="TRAVEL"))
         if not cb:
             return self._step_back()
+        from src.coop import travel
+        if travel.held(self.game, travel.area_name(self.game, target), lambda: self._leave(target), self._step_back):
+            return  # (co-op: the others have a say)
         self.game.walk_town_pos = None  # (next time: in by the way you come)
         cb()
 
