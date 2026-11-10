@@ -473,7 +473,7 @@
         "explore_options": [
             { "text": "Visit Mom", "action": "NPC", "target": "mom" },
             { "text": "Visit Elm's Lab", "action": "NPC", "target": "professor_elm" },
-            { "text": "Talk to Nice Lady", "action": "NPC", "target": "rival_mom_johto" } 
+            { "text": "Talk to Nice Lady", "action": "NPC", "target": "silver_mom", "door": "rival" } 
         ],
         "next_area": "JOHTO_ROUTE_29",
         "prof_elm_dialogue": "profile_elm",
@@ -545,7 +545,7 @@
             { "text": "Heal", "action": "HEAL" },
             { "text": "Shop", "action": "SHOP" },
             { "text": "Gym", "action": "GYM" },
-            { "text": "Sprout Tower", "action": "TRAVEL", "target_area": "SPROUT_TOWER" }
+            { "text": "Sprout Tower", "action": "TRAVEL", "target_area": "SPROUT_TOWER", "door": "sprout" }
         ]
         },
 
@@ -578,15 +578,15 @@
             { "text": "Route 32", "target_area": "JOHTO_ROUTE_32", "condition": "has_zephyr_badge" },
             { "text": "Violet City", "target_area": "VIOLET_CITY", "condition": "visited_RUINS_OF_ALPH"},
             { "text": "Union Cave", "target_area": "UNION_CAVE", "condition": "has_zephyr_badge" },
-            {"text": "Follow the Unown (Sinjoh Ruins)", "target_area": "SINJOH_CABIN", "condition": ["party_has:493", "sinjoh_open"], "message": "The Unown on the walls seem to stare at Arceus... The world goes white. You're somewhere cold."}
+            {"text": "Follow the Unown (Sinjoh Ruins)", "door": "ruins", "target_area": "SINJOH_CABIN", "condition": ["party_has:493", "sinjoh_open"], "message": "The Unown on the walls seem to stare at Arceus... The world goes white. You're somewhere cold."}
         ],
         "explore_options": [
             { "text": "Enter Lab", "action": "NPC", "target": "alph_scientist" },
-            { "text": "Explore Ruins", "action": "RUINS" },
-            { "text": "Kabuto Chamber", "action": "TILE_PUZZLE", "panel": "kabuto", "flag_condition": "not alph_kabuto_solved" },
-            { "text": "Omanyte Chamber", "action": "TILE_PUZZLE", "panel": "omanyte", "flag_condition": "not alph_omanyte_solved" },
-            { "text": "Aerodactyl Chamber", "action": "TILE_PUZZLE", "panel": "aerodactyl", "flag_condition": "not alph_aerodactyl_solved" },
-            { "text": "Ho-Oh Chamber", "action": "TILE_PUZZLE", "panel": "hooh", "flag_condition": "not alph_hooh_solved" }
+            { "text": "Explore Ruins", "action": "RUINS", "door": "ruins" },
+            { "text": "Kabuto Chamber", "action": "TILE_PUZZLE", "panel": "kabuto", "door": "kabuto", "flag_condition": "not alph_kabuto_solved" },
+            { "text": "Omanyte Chamber", "action": "TILE_PUZZLE", "panel": "omanyte", "door": "omanyte", "flag_condition": "not alph_omanyte_solved" },
+            { "text": "Aerodactyl Chamber", "action": "TILE_PUZZLE", "panel": "aerodactyl", "door": "aerodactyl", "flag_condition": "not alph_aerodactyl_solved" },
+            { "text": "Ho-Oh Chamber", "action": "TILE_PUZZLE", "panel": "hooh", "door": "hooh", "flag_condition": "not alph_hooh_solved" }
         ]
         },
 
@@ -612,7 +612,7 @@
             { "text": "Heal", "action": "HEAL" },
             { "text": "Shop", "action": "SHOP" },
             { "text": "Gym", "action": "GYM" },
-            { "text": "Visit Kurt", "action": "NPC", "target": "kurt" }
+            { "text": "Visit Kurt", "action": "NPC", "target": "kurt", "door": "kurt" }
         ],
         "on_enter_event": {"type": "trainer_battle", "trainer": {"name": "{rival_name}", "class": "RIVAL", "sprite": "silver.png", "team": [92, 41, 156], "team_choice": {"152": [92, 41, 156], "155": [92, 41, 159], "158": [92, 41, 153]}, "levels": [14, 16, 18], "rewards": {"balls": 5}, "movesets": {"92": ["LICK", "SPITE", "MEAN-LOOK", "CURSE"], "41": ["LEECH-LIFE", "SUPERSONIC", "ASTONISH", "BITE"], "156": ["LEER", "SMOKESCREEN", "EMBER", "QUICK-ATTACK"], "159": ["WATER-GUN", "RAGE", "BITE", "SCARY-FACE"], "153": ["POISONPOWDER", "REFLECT", "SYNTHESIS", "RAZOR-LEAF"]}}, "condition": "has_hive_badge", "flag_check": "defeated_rival_azalea"}
         },
@@ -633,18 +633,18 @@
             { "text": "Route 34", "target_area": "JOHTO_ROUTE_34" },
             { "text": "Route 35", "target_area": "JOHTO_ROUTE_35" },
             { "text": "Underground", "target_area": "GOLDENROD_UNDERGROUND" },
-            {"text": "Magnet Train to Saffron", "long_ride": true, "target_area": "SAFFRON_CITY", "condition": ["has_item:PASS", "power_plant_fixed"], "message": "You board the Magnet Train. It races underground toward Saffron City in Kanto!"}
+            {"text": "Magnet Train to Saffron", "door": "station", "long_ride": true, "target_area": "SAFFRON_CITY", "condition": ["has_item:PASS", "power_plant_fixed"], "message": "You board the Magnet Train. It races underground toward Saffron City in Kanto!"}
         ],
         "explore_options": [
           {"text": "Heal", "action": "HEAL"},
-          {"text": "Dept. Store", "action": "SHOP"},
-          {"text": "Bike Shop", "action": "BIKESHOP"},
+          {"text": "Dept. Store", "door": "dept", "action": "SHOP"},
+          {"text": "Bike Shop", "door": "bike", "action": "BIKESHOP"},
           {"text": "Gym", "action": "GYM"},
           {"text": "Game Corner", "action": "GAMECORNER"},
-          {"text": "Radio Tower", "action": "TRAVEL", "target_area": "RADIO_TOWER", "flag_condition": "radio_tower_cleared"},
-          {"text": "Radio Tower", "action": "NPC", "target": "radio_tower_grunt", "flag_condition": "not radio_tower_cleared"},
-          {"text": "Talk to Bill", "action": "NPC", "target": "bill_johto", "condition": "met_bill_johto"},
-          {"text": "Flower Shop", "action": "NPC", "target": "flower_shop"},
+          {"text": "Radio Tower", "door": "radio", "action": "TRAVEL", "target_area": "RADIO_TOWER", "flag_condition": "radio_tower_cleared"},
+          {"text": "Radio Tower", "door": "radio", "action": "NPC", "target": "radio_tower_grunt", "flag_condition": "not radio_tower_cleared"},
+          {"text": "Talk to Bill", "door": "bill", "action": "NPC", "target": "bill_johto", "condition": "met_bill_johto"},
+          {"text": "Flower Shop", "door": "flower", "action": "NPC", "target": "flower_shop"},
           {"text": "Coin Case Man", "action": "EVENT", "color": "GOLD", "condition": "not:has_item:COIN_CASE", "event": {"lines": ["Man: Hey, kid! I found this in the Underground, but I never play the slots.", "Take it! A Coin Case lets you play at the Game Corner."], "gift_item": {"COIN_CASE": 1}, "flag": "got_johto_coin_case"}}
         ]
         },
@@ -728,9 +728,9 @@
           {"text": "Gym", "action": "GYM"},
           {"text": "Route 38", "action": "TRAVEL", "target_area": "JOHTO_ROUTE_38"},
           {"text": "Talk to Bill", "action": "NPC", "target": "bill_johto", "flag_condition": "not met_bill_johto"},
-          {"text": "Dance Theater", "action": "TRAVEL", "target_area": "ECRUTEAK_DANCE_THEATER"},
-          {"text": "Burned Tower", "action": "TRAVEL", "target_area": "BURNED_TOWER"},
-          {"text": "Bellchime Trail", "action": "TRAVEL", "target_area": "BELLCHIME_TRAIL"}
+          {"text": "Dance Theater", "action": "TRAVEL", "target_area": "ECRUTEAK_DANCE_THEATER", "door": "theater"},
+          {"text": "Burned Tower", "action": "TRAVEL", "target_area": "BURNED_TOWER", "door": "burned"},
+          {"text": "Bellchime Trail", "action": "TRAVEL", "target_area": "BELLCHIME_TRAIL", "door": "bellchime"}
         ]
         },
 
@@ -749,16 +749,16 @@
         "travel_options": [
             { "text": "Route 39", "target_area": "JOHTO_ROUTE_39" },
             { "text": "Route 40", "target_area": "JOHTO_ROUTE_40", "condition": "has_item:HM_SURF" },
-            { "text": "Lighthouse", "target_area": "OLIVINE_LIGHTHOUSE" },
-            {"text": "S.S. Aqua to Vermilion", "long_ride": true, "target_area": "VERMILLION_CITY", "condition": "has_item:SS_TICKET", "message": "You board the S.S. Aqua. The ship sails east across the sea to Kanto..."},
-            {"text": "Ship to the Orange Islands", "long_ride": true, "target_area": "VALENCIA_ISLAND", "condition": ["beat_champion", "beat_johto_champion"], "message": "The ferry sails south for days over warm seas... Land ho! It's Valencia Island!"},
-            {"text": "S.S. Aqua", "target_area": "JOHTO_SS_AQUA", "condition": "has_item:SS_TICKET"}
+            { "text": "Lighthouse", "target_area": "OLIVINE_LIGHTHOUSE_FLOORS" },
+            {"text": "S.S. Aqua to Vermilion", "door": "harbor", "long_ride": true, "target_area": "VERMILLION_CITY", "condition": "has_item:SS_TICKET", "message": "You board the S.S. Aqua. The ship sails east across the sea to Kanto..."},
+            {"text": "Ship to the Orange Islands", "door": "harbor", "long_ride": true, "target_area": "VALENCIA_ISLAND", "condition": ["beat_champion", "beat_johto_champion"], "message": "The ferry sails south for days over warm seas... Land ho! It's Valencia Island!"},
+            {"text": "S.S. Aqua", "door": "harbor", "target_area": "JOHTO_SS_AQUA", "condition": "has_item:SS_TICKET"}
         ],
         "explore_options": [
             { "text": "Heal", "action": "HEAL" },
             { "text": "Shop", "action": "SHOP" },
             { "text": "Gym", "action": "GYM" },
-            {"text": "Orange Islands Ferry", "action": "EVENT", "color": "GOLD", "condition": {"any": ["not:beat_champion", "not:beat_johto_champion"]}, "event": {"lines": ["Sailor: This ferry sails south to the Orange Islands.", "It only takes the Champion of both Kanto and Johto. Come back when you've won both!"]}}
+            {"text": "Orange Islands Ferry", "door": "harbor", "action": "EVENT", "color": "GOLD", "condition": {"any": ["not:beat_champion", "not:beat_johto_champion"]}, "event": {"lines": ["Sailor: This ferry sails south to the Orange Islands.", "It only takes the Champion of both Kanto and Johto. Come back when you've won both!"]}}
         ]
         },
 
@@ -779,9 +779,9 @@
         ],
         "explore_options": [
           {"text": "Heal", "action": "HEAL"},
-          {"text": "Shop", "action": "SHOP"},
+          {"text": "Shop", "door": "pharmacy", "action": "SHOP"},
           {"text": "Gym", "action": "GYM"},
-          {"text": "Pharmacy", "action": "NPC", "target": "pharmacist"},
+          {"text": "Pharmacy", "door": "pharmacy", "action": "NPC", "target": "pharmacist"},
           {"text": "Talk to Euskine", "action": "NPC", "target": "euskine"},
           {"text": "Cliff Edge Gate", "action": "TRAVEL", "target_area": "CLIFF_EDGE_GATE", "condition": "has_ROCK_SMASHER"},
           {"text": "Battle Eusine", "action": "EVENT", "color": "GOLD", "flag_condition": "not defeated_eusine", "event": {"lines": ["Eusine: I'm Eusine. I've been chasing Suicune for years.", "You've seen it too? Then show me what kind of trainer you are!"], "flag": "defeated_eusine", "battle": {"name": "Mystery Man Eusine", "class": "MYSTERY_MAN", "sprite": "eusine.png", "team": [96, 93, 101], "levels": [25, 25, 27], "is_boss_battle": true, "rewards": {"balls": 10}, "dialogue": {"player_won": ["Eusine: ...I see why Suicune keeps appearing near you."]}}}}
@@ -804,11 +804,11 @@
             { "text": "Route 42", "target_area": "JOHTO_ROUTE_42" },
             { "text": "Route 43", "target_area": "JOHTO_ROUTE_43" },
             { "text": "Route 44", "target_area": "JOHTO_ROUTE_44", "flag_condition": "radio_tower_cleared" },
-            { "text": "Rocket HQ", "target_area": "ROCKET_HQ", "flag_condition": "defeated_red_gyarados" }
+            { "text": "Rocket HQ", "target_area": "ROCKET_HQ", "flag_condition": "defeated_red_gyarados", "door": "souvenir" }
         ],
         "explore_options": [
             { "text": "Heal", "action": "HEAL" },
-            { "text": "Shop", "action": "SHOP" },
+            { "text": "Shop", "action": "SHOP", "door": "souvenir" },
             { "text": "Gym", "action": "GYM" },
             { "text": "Talk to Lance", "action": "NPC", "target": "lance_mahogany" } ]
         },
@@ -828,7 +828,7 @@
         "travel_options": [
             { "text": "Route 45", "target_area": "JOHTO_ROUTE_45", "color": "RED"},
             { "text": "Ice Path", "target_area": "ICE_PATH", "color": "RED"},
-            { "text": "Dragon's Den", "target_area": "DRAGONS_DEN", "color": "RED"}
+            { "text": "Dragon's Den", "target_area": "DRAGONS_DEN", "color": "RED", "item_condition": "HM_SURF" }
         ],
         "explore_options": [
             { "text": "Heal", "action": "HEAL" },
@@ -847,7 +847,7 @@
         "travel_options": [
             { "text": "Reception Gate", "target_area": "POKEMON_LEAGUE_GATE", "color": "RED"},
             { "text": "Johto League Plateau", "target_area": "SILVER_LEAGUE_PLATEAU", "condition": "has_8_johto_badges", "color": "RED"},
-            { "text": "Mt. Silver", "target_area": "MT_SILVER", "condition": ["beat_johto_champion", "has_8_johto_badges"], "color": "RED"}
+            { "text": "Mt. Silver", "target_area": "MT_SILVER", "condition": ["beat_johto_champion", "has_8_johto_badges"], "color": "RED"}, {"text": "Mountainside", "target_area": "MT_SILVER_LOWER", "condition": ["beat_johto_champion", "has_8_johto_badges"], "item_condition": "HM_ROCK_CLIMB", "color": "RED"}
         ],
         "explore_options": [
             { "text": "Heal",
@@ -869,13 +869,16 @@
         ]
         },
 
+        "OLIVINE_LIGHTHOUSE_FLOORS": {"area_type": "dungeon", "region": "JOHTO", "route_name": "Glitter Lighthouse", "trainer_pool": [], "route_menu": [{"text": "Olivine City", "action": "EXIT", "target_area": "OLIVINE_CITY", "condition": "can_exit", "color": "RED"}, {"text": "Beacon Room", "action": "EXIT", "target_area": "OLIVINE_LIGHTHOUSE", "condition": "can_exit", "color": "RED"}, {"text": "Balcony", "action": "EXIT", "target_area": "OLIVINE_LIGHTHOUSE_BALCONY", "condition": "can_exit", "color": "RED"}]},
+        "OLIVINE_LIGHTHOUSE_BALCONY": {"area_type": "dungeon", "region": "JOHTO", "route_name": "Glitter Lighthouse", "trainer_pool": [], "route_menu": [{"text": "Back Inside", "action": "EXIT", "target_area": "OLIVINE_LIGHTHOUSE_FLOORS", "condition": "can_exit", "color": "RED"}]},
         "OLIVINE_LIGHTHOUSE": {
             "area_type": "town",
             "region": "JOHTO",
             "route_name": "Glitter Lighthouse",
             "backgrounds": { "main": "lighthouse_top.png" },
             "travel_options": [
-                { "text": "Olivine City", "target_area": "OLIVINE_CITY" }
+                { "text": "Olivine City", "target_area": "OLIVINE_CITY", "flag_condition": "ampharos_cured" },
+                { "text": "Stairs Down", "target_area": "OLIVINE_LIGHTHOUSE_FLOORS" }
             ],
             "explore_options": [
                 { "text": "Talk to Jasmine", "action": "NPC", "target": "lighthouse_jasmine" },
@@ -1024,7 +1027,7 @@
                 { "name": "Camper Roland", "class": "CAMPER", "sprite": "camper.png", "team": [27], "rewards": { "balls": 2 } },
                 { "name": "Fisherman Henry", "class": "FISHERMAN", "sprite": "fisherman.png", "team": [60, 60], "rewards": { "balls": 2 } }
             ],
-            "route_menu": [
+            "route_menu": [{"text": "POKEMON CENTER", "action": "CENTER", "door": "center"}, 
                 {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
                 {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
                 {"text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE" },
@@ -1087,7 +1090,7 @@
                 {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
                 {"text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE" },
                 {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
-                { "text": "POKéMON DAY CARE", "action": "DAYCARE", "color": "ORANGE" },
+                { "text": "POKéMON DAY CARE", "action": "DAYCARE", "door": "daycare", "color": "ORANGE" },
                 {"text": "Ilex Forest","action": "EXIT", "target_area": "ILEX_FOREST", "condition": "can_exit", "color": "RED"},
                 {"text": "Goldenrod City","action": "EXIT", "target_area": "GOLDENROD_CITY", "condition": "can_exit", "color": "RED"}
                 ],
@@ -1215,6 +1218,24 @@
             "next_area": "JOHTO_ROUTE_39" 
         },
         
+        "MOOMOO_BARN": {
+            "area_type": "town",
+            "region": "JOHTO",
+            "route_name": "Moomoo Farm Barn",
+            "travel_options": [
+                { "text": "Route 39", "target_area": "JOHTO_ROUTE_39" }
+            ],
+            "explore_options": []
+        },
+        "MOOMOO_HOUSE": {
+            "area_type": "town",
+            "region": "JOHTO",
+            "route_name": "Moomoo Farm",
+            "travel_options": [
+                { "text": "Route 39", "target_area": "JOHTO_ROUTE_39" }
+            ],
+            "explore_options": []
+        },
         "JOHTO_ROUTE_39": {
             "region": "JOHTO",
             "area_type": "wild_route",
@@ -1238,7 +1259,9 @@
                 {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
                 { "text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE" },
                 {"text": "Route 38", "action": "EXIT", "target_area": "JOHTO_ROUTE_38", "condition": "can_exit", "color": "RED"},
-                {"text": "Olivine City", "action": "EXIT", "target_area": "OLIVINE_CITY", "condition": "can_exit", "color": "RED"}
+                {"text": "Olivine City", "action": "EXIT", "target_area": "OLIVINE_CITY", "condition": "can_exit", "color": "RED"},
+                {"text": "Moomoo Barn", "action": "EXIT", "target_area": "MOOMOO_BARN", "condition": "can_exit", "color": "RED"},
+                {"text": "Moomoo House", "action": "EXIT", "target_area": "MOOMOO_HOUSE", "condition": "can_exit", "color": "RED"}
                 ],
             "next_area": "OLIVINE_CITY" 
         },
@@ -1338,7 +1361,17 @@
                 { "name": "Picnicker Tiffany", "class": "PICNIKER", "sprite": "lass.png", "team": [35], "rewards": { "balls": 2 } },
                 { "name": "Camper Spencer", "class": "YOUNGSTER", "sprite": "camper.png", "team": [27, 28, 21], "rewards": { "balls": 2 } },
                 { "name": "Pokemaniac Brent", "class": "POKEMANIAC", "sprite": "supernerd.png", "team": [80, 80], "rewards": { "balls": 2 } },
-                { "name": "Pokemaniac Ron", "class": "POKEMANIAC", "sprite": "supernerd.png", "team": [147], "rewards": { "balls": 2 } }
+                { "name": "Pokemaniac Ron", "class": "POKEMANIAC", "sprite": "supernerd.png", "team": [147], "rewards": { "balls": 2 } },
+                { "name": "Rocket Grunt Kip", "class": "ROCKET", "sprite": "rocket_grunt_m.png", "team": [109, 20], "rewards": { "balls": 2 }, "gone_flag": "rocket_hq_cleared",
+                    "dialogue": {
+                        "intro": ["Hold it, kid! Lena, watch this!", "One more win and you'll see I'm Executive material!"],
+                        "player_won": ["N-not in front of Lena...!"],
+                        "player_lost": ["Did you see that, Lena? Did you?"] } },
+                { "name": "Rocket Grunt Lena", "class": "ROCKET", "sprite": "rocket_grunt_f.png", "team": [24, 41], "rewards": { "balls": 2 }, "gone_flag": "rocket_hq_cleared",
+                    "dialogue": {
+                        "intro": ["Kip has been showing off all day.", "Step aside. I'll show you how it's really done!"],
+                        "player_won": ["Fine. At least I lost with style. Unlike Kip."],
+                        "player_lost": ["See, Kip? That's how a real Rocket battles."] } }
             ],
             "route_menu": [
                 {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
@@ -1425,7 +1458,8 @@
                 {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
                 {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
                 {"text": "Blackthorn City", "action": "EXIT", "target_area": "BLACKTHORN_CITY", "condition": "can_exit", "color": "RED"},
-                {"text": "Route 46", "action": "EXIT", "target_area": "JOHTO_ROUTE_46", "condition": "can_exit", "color": "RED"}
+                {"text": "Route 46", "action": "EXIT", "target_area": "JOHTO_ROUTE_46", "condition": "can_exit", "color": "RED"},
+                {"text": "Dark Cave", "action": "EXIT", "target_area": "DARK_CAVE", "condition": ["can_exit", "has_item:HM_FLASH"], "color": "RED"}
                 ],
             "next_area": "JOHTO_ROUTE_46" 
         },
@@ -1864,6 +1898,18 @@
             ]
         },
 
+        "DRAGON_SHRINE": {
+            "area_type": "town",
+            "region": "JOHTO",
+            "route_name": "Dragon Shrine",
+            "travel_options": [
+                { "text": "Dragon's Den", "target_area": "DRAGONS_DEN" }
+            ],
+            "explore_options": [
+                { "text": "Talk to the Elder", "action": "NPC", "target": "dragon_elder" }
+            ]
+        },
+
         "DRAGONS_DEN": {
             "region": "JOHTO",
             "area_type": "dungeon",
@@ -1884,35 +1930,19 @@
               {"text": "BATTLE CLAIR", "action": "EVENT", "color": "GOLD", "flag_condition": "not dragons_den_clair", "condition": ["beat_johto_champion"], "event": {"lines": ["{rival_name} is training in the Dragon's Den. 'Clair and Lance want a double battle... I'm with you!'", "Clair: Two of you? Fine. Show me your dragon spirit!"], "flag": "dragons_den_clair", "battle": {"name": "Leader Clair", "class": "GYM_LEADER", "sprite": "clair.png", "team": [148, 230, 149], "levels": [52, 56, 60], "is_boss_battle": true, "rewards": {"balls": 15}, "dialogue": {"player_won": ["Clair: ...Not bad, you two.", "Lance steps forward: 'My turn.'"]}}}},
               {"text": "BATTLE LANCE", "action": "EVENT", "color": "GOLD", "flag_condition": "not dragons_den_lance", "condition": ["dragons_den_clair"], "event": {"lines": ["Lance: You and {rival_name} make quite a team. Let's see it against a Champion!"], "flag": "dragons_den_lance", "battle": {"name": "Champion Lance", "class": "CHAMPION", "sprite": "lance.png", "team": [130, 6, 149], "levels": [68, 68, 75], "is_boss_battle": true, "rewards": {"balls": 15}, "dialogue": {"player_won": ["Lance: Excellent! {rival_name}, you've grown. And you, Champion, even more."]}}}},
               {"text": "BLACKTHORN CITY", "action": "EXIT", "target_area": "BLACKTHORN_CITY", "condition": "can_exit", "color": "RED"},
-              {"text": "Dragon Shrine", "action": "NPC", "target": "dragon_elder"}
+              {"text": "Dragon Shrine", "action": "EXIT", "target_area": "DRAGON_SHRINE", "condition": "can_exit", "color": "RED"}
             ],
             "next_area": "BLACKTHORN_CITY"
         },
         
-        "MT_SILVER": {
-            "region": "JOHTO",
-            "area_type": "dungeon",
-            "battle_type": "mountain",
-            "wild_pool_percentages": "JOHTO_MT_SILVER_PERCENTAGES",
-            "day_pool_percentages": "JOHTO_MT_SILVER_DAY_PERCENTAGES",
-            "night_pool_percentages": "JOHTO_MT_SILVER_NIGHT_PERCENTAGES",
-            "min_rounds": 5,
-            "trainer_pool": [
-                { "name": "Ace Trainer Gaven", "class": "COOLTRAINER", "sprite": "acetrainer_m.png", "team": [160, 212, 130], "rewards": { "balls": 5 } },
-                { "name": "Ace Trainer Kevin", "class": "COOLTRAINER", "sprite": "acetrainer_m.png", "team": [6, 121, 143], "rewards": { "balls": 5 } },
-                { "name": "Ace Trainer Irene", "class": "COOLTRAINER", "sprite": "acetrainer_f.png", "team": [3, 131, 242], "rewards": { "balls": 5 } },
-                { "name": "Ace Trainer Reena", "class": "COOLTRAINER", "sprite": "acetrainer_f.png", "team": [9, 196, 232], "rewards": { "balls": 5 } }
-            ],
-            "route_menu": [
-              {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
-              {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
-              {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
-              {"text": "CHALLENGE RED", "action": "EVENT", "color": "GOLD", "flag_condition": "not defeated_red", "event": {"lines": ["At the summit, a silent Trainer stands in the snow.", "...", "......", "Red wants to battle!"], "flag": "defeated_red", "done": ["The summit is quiet. Red has gone.", "...But you get the feeling you'll meet again."], "battle": {"name": "Red", "class": "PKMN_TRAINER", "sprite": "red.png", "team": [25, 131, 143, 3, 6, 9], "levels": [88, 80, 82, 84, 84, 84], "is_boss_battle": true, "rewards": {"balls": 30, "MASTER_BALL": 1}, "dialogue": {"player_won": ["......", "..."], "player_lost": ["......"]}}}},
-              {"text": "SEEK MOLTRES", "action": "BOSS", "color": "GOLD", "flag_condition": "not mt_silver_moltres_defeated", "boss": {"id": 146, "level": 50, "name": "Moltres", "victory_flag": "mt_silver_moltres_defeated", "lines": ["Heat shimmers off the rocks... Moltres blazes down!"]}, "condition": ["beat_johto_champion"]},
-              {"text": "ROUTE 28", "action": "EXIT", "target_area": "KANTO_ROUTE_28", "condition": "can_exit", "color": "RED"}
-            ],
-            "next_area": "MT_SILVER_CITY"
-        },
+        "MT_SILVER_EXPERT": {"region": "JOHTO", "area_type": "dungeon", "battle_type": "mountain", "wild_pool_percentages": "JOHTO_MT_SILVER_PERCENTAGES", "day_pool_percentages": "JOHTO_MT_SILVER_DAY_PERCENTAGES", "night_pool_percentages": "JOHTO_MT_SILVER_NIGHT_PERCENTAGES", "min_rounds": 5, "route_name": "Mt. Silver", "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "1F", "action": "EXIT", "target_area": "MT_SILVER", "condition": "can_exit", "color": "RED"}]},
+        "MT_SILVER_MOLTRES": {"region": "JOHTO", "area_type": "dungeon", "battle_type": "mountain", "wild_pool_percentages": "JOHTO_MT_SILVER_PERCENTAGES", "day_pool_percentages": "JOHTO_MT_SILVER_DAY_PERCENTAGES", "night_pool_percentages": "JOHTO_MT_SILVER_NIGHT_PERCENTAGES", "min_rounds": 5, "route_name": "Mt. Silver", "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "SEEK MOLTRES", "action": "BOSS", "color": "GOLD", "flag_condition": "not mt_silver_moltres_defeated", "boss": {"id": 146, "level": 50, "name": "Moltres", "victory_flag": "mt_silver_moltres_defeated", "lines": ["Heat shimmers off the rocks... Moltres blazes down!"]}, "condition": ["beat_johto_champion"]}, {"text": "1F", "action": "EXIT", "target_area": "MT_SILVER", "condition": "can_exit", "color": "RED"}]},
+        "MT_SILVER_LOWER": {"region": "JOHTO", "area_type": "dungeon", "battle_type": "mountain", "wild_pool_percentages": "JOHTO_MT_SILVER_PERCENTAGES", "day_pool_percentages": "JOHTO_MT_SILVER_DAY_PERCENTAGES", "night_pool_percentages": "JOHTO_MT_SILVER_NIGHT_PERCENTAGES", "min_rounds": 5, "route_name": "Mt. Silver Mountainside", "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "Mt. Silver Cave", "action": "EXIT", "target_area": "MT_SILVER", "condition": "can_exit", "color": "RED"}, {"text": "Pokemon Center", "action": "EXIT", "target_area": "MT_SILVER_CITY", "condition": "can_exit", "color": "RED"}]},
+        "MT_SILVER_2F": {"region": "JOHTO", "area_type": "dungeon", "battle_type": "mountain", "wild_pool_percentages": "JOHTO_MT_SILVER_PERCENTAGES", "day_pool_percentages": "JOHTO_MT_SILVER_DAY_PERCENTAGES", "night_pool_percentages": "JOHTO_MT_SILVER_NIGHT_PERCENTAGES", "min_rounds": 5, "route_name": "Mt. Silver 2F", "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "1F", "action": "EXIT", "target_area": "MT_SILVER", "condition": "can_exit", "color": "RED"}, {"text": "Upper Mountainside", "action": "EXIT", "target_area": "MT_SILVER_UPPER", "condition": "can_exit", "color": "RED"}]},
+        "MT_SILVER_UPPER": {"region": "JOHTO", "area_type": "dungeon", "battle_type": "mountain", "wild_pool_percentages": "JOHTO_MT_SILVER_PERCENTAGES", "day_pool_percentages": "JOHTO_MT_SILVER_DAY_PERCENTAGES", "night_pool_percentages": "JOHTO_MT_SILVER_NIGHT_PERCENTAGES", "min_rounds": 5, "route_name": "Mt. Silver Mountainside", "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "2F", "action": "EXIT", "target_area": "MT_SILVER_2F", "condition": "can_exit", "color": "RED"}, {"text": "3F", "action": "EXIT", "target_area": "MT_SILVER_3F", "condition": ["can_exit", "has_item:HM_ROCK_CLIMB"], "color": "RED"}]},
+        "MT_SILVER_3F": {"region": "JOHTO", "area_type": "dungeon", "battle_type": "mountain", "wild_pool_percentages": "JOHTO_MT_SILVER_PERCENTAGES", "day_pool_percentages": "JOHTO_MT_SILVER_DAY_PERCENTAGES", "night_pool_percentages": "JOHTO_MT_SILVER_NIGHT_PERCENTAGES", "min_rounds": 5, "route_name": "Mt. Silver 3F", "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "Upper Mountainside", "action": "EXIT", "target_area": "MT_SILVER_UPPER", "condition": "can_exit", "color": "RED"}, {"text": "Summit", "action": "EXIT", "target_area": "MT_SILVER_SUMMIT", "condition": "can_exit", "color": "RED"}]},
+        "MT_SILVER_SUMMIT": {"region": "JOHTO", "area_type": "dungeon", "battle_type": "mountain", "wild_pool_percentages": "JOHTO_MT_SILVER_PERCENTAGES", "day_pool_percentages": "JOHTO_MT_SILVER_DAY_PERCENTAGES", "night_pool_percentages": "JOHTO_MT_SILVER_NIGHT_PERCENTAGES", "min_rounds": 5, "route_name": "Mt. Silver Summit", "route_menu": [{"text": "CHALLENGE RED", "action": "EVENT", "color": "GOLD", "flag_condition": "not defeated_red", "event": {"lines": ["At the summit, a silent Trainer stands in the snow.", "...", "......", "Red wants to battle!"], "flag": "defeated_red", "done": ["The summit is quiet. Red has gone.", "...But you get the feeling you'll meet again."], "battle": {"name": "Red", "class": "PKMN_TRAINER", "sprite": "red.png", "team": [25, 131, 143, 3, 6, 9], "levels": [88, 80, 82, 84, 84, 84], "is_boss_battle": true, "rewards": {"balls": 30, "MASTER_BALL": 1}, "dialogue": {"player_won": ["......", "..."], "player_lost": ["......"]}}}}, {"text": "3F", "action": "EXIT", "target_area": "MT_SILVER_3F", "condition": "can_exit", "color": "RED"}]},
+        "MT_SILVER": {"region": "JOHTO", "area_type": "dungeon", "battle_type": "mountain", "wild_pool_percentages": "JOHTO_MT_SILVER_PERCENTAGES", "day_pool_percentages": "JOHTO_MT_SILVER_DAY_PERCENTAGES", "night_pool_percentages": "JOHTO_MT_SILVER_NIGHT_PERCENTAGES", "min_rounds": 5, "trainer_pool": [{"name": "Ace Trainer Gaven", "class": "COOLTRAINER", "sprite": "acetrainer_m.png", "team": [160, 212, 130], "rewards": {"balls": 5}}, {"name": "Ace Trainer Kevin", "class": "COOLTRAINER", "sprite": "acetrainer_m.png", "team": [6, 121, 143], "rewards": {"balls": 5}}, {"name": "Ace Trainer Irene", "class": "COOLTRAINER", "sprite": "acetrainer_f.png", "team": [3, 131, 242], "rewards": {"balls": 5}}, {"name": "Ace Trainer Reena", "class": "COOLTRAINER", "sprite": "acetrainer_f.png", "team": [9, 196, 232], "rewards": {"balls": 5}}], "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"}, {"text": "Pokemon Center", "action": "EXIT", "target_area": "MT_SILVER_CITY", "condition": "can_exit", "color": "RED"}, {"text": "2F", "action": "EXIT", "target_area": "MT_SILVER_2F", "condition": "can_exit", "color": "RED"}, {"text": "Moltres's chamber", "action": "EXIT", "target_area": "MT_SILVER_MOLTRES", "condition": "can_exit", "color": "RED"}, {"text": "A side chamber", "action": "EXIT", "target_area": "MT_SILVER_EXPERT", "condition": "can_exit", "color": "RED"}, {"text": "Mountainside", "action": "EXIT", "target_area": "MT_SILVER_LOWER", "condition": "can_exit", "color": "RED"}], "next_area": "MT_SILVER_CITY"},
         "BELLCHIME_TRAIL": {"area_type": "dungeon", "route_name": "Bellchime Trail", "region": "JOHTO", "battle_type": "field", "min_rounds": 0, "trainer_pool": [], "route_menu": [{"text": "LISTEN TO THE BELL", "action": "EVENT", "color": "BLUE", "event": {"lines": ["Autumn leaves drift along the trail. Somewhere above, a bell rings softly..."]}}, {"text": "ECRUTEAK CITY", "action": "EXIT", "target": "ECRUTEAK_CITY", "condition": "can_exit", "color": "RED"}, {"text": "BELL TOWER", "action": "EXIT", "target": "BELL_TOWER", "condition": "can_exit", "color": "RED"}], "next_area": "BELL_TOWER"},
         "SAFARI_ZONE_GATE": {"area_type": "dungeon", "route_name": "Safari Zone Gate", "region": "JOHTO", "battle_type": "field", "min_rounds": 0, "trainer_pool": [], "route_menu": [{"text": "ROUTE 48", "action": "EXIT", "target": "JOHTO_ROUTE_48", "condition": "can_exit", "color": "RED"}, {"text": "SAFARI ZONE", "action": "EXIT", "target": "JOHTO_SAFARI_ZONE", "condition": "can_exit", "color": "RED"}], "next_area": "JOHTO_SAFARI_ZONE"},
         "FRONTIER_ACCESS": {"area_type": "dungeon", "route_name": "Frontier Access", "region": "JOHTO", "battle_type": "field", "min_rounds": 0, "trainer_pool": [], "route_menu": [{"text": "ROUTE 40", "action": "EXIT", "target": "JOHTO_ROUTE_40", "condition": "can_exit", "color": "RED"}, {"text": "BATTLE FRONTIER", "action": "EXIT", "target": "JOHTO_BATTLE_FRONTIER", "condition": ["can_exit", "beat_johto_champion"], "color": "RED"}], "next_area": "JOHTO_BATTLE_FRONTIER"},

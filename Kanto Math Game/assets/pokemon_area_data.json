@@ -1739,9 +1739,9 @@
       "trainer_encounter_rate": 0,
       "travel_options": [
         { "text": "Route 22", "target_area": "KANTO_ROUTE_22", "condition": {"any": ["visited_VIRIDIAN_CITY", "beat_johto_champion"]} },
-        { "text": "Victory Road", "target_area": "VICTORY_ROAD", "condition": "has_8_kanto_badges"},
+        { "text": "Victory Road", "target_area": "VICTORY_ROAD", "condition": "has_8_kanto_badges", "door": "leaguegate" },
         { "text": "Route 26", "target_area": "KANTO_ROUTE_26", "condition": {"any": ["beat_elite_four", "has_8_johto_badges"]} },
-        { "text": "Johto League", "target_area": "MT_SILVER_CITY", "condition": "has_8_johto_badges" },
+        { "text": "Johto League", "target_area": "MT_SILVER_CITY", "condition": "has_8_johto_badges", "door": "leaguegate" },
         { "text": "Route 28", "target_area": "KANTO_ROUTE_28", "condition": ["beat_johto_champion", "has_8_johto_badges"] }
       ],
       "explore_options": [],
@@ -2720,7 +2720,7 @@
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
         { "text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE" },
-        { "text": "MT. SILVER", "action": "EXIT", "target": "MT_SILVER", "condition": ["can_exit"],  "color": "RED" },
+        { "text": "MT. SILVER", "action": "EXIT", "target": "MT_SILVER_CITY", "condition": ["can_exit"],  "color": "RED" },
         { "text": "RECEPTION GATE", "action": "EXIT", "target": "POKEMON_LEAGUE_GATE", "condition": ["can_exit"],  "color": "RED" }
       ],
       "next_area": "MT_SILVER",
@@ -2743,7 +2743,8 @@
         { "sprite": "acetrainer_f.png", "name": "Ace Trainer Reena", "class": "COOLTRAINER", "team": [121, 134], "rewards": { "balls": 5 } },
         { "sprite": "acetrainer_f.png", "name": "Ace Trainer Megan", "class": "COOLTRAINER", "team": [180, 184], "rewards": { "balls": 5 } },
         { "sprite": "acetrainer_m.png", "name": "Ace Trainer Blake", "class": "COOLTRAINER", "team": [141], "rewards": { "balls": 5 } },
-        { "sprite": "acetrainer_m.png", "name": "Ace Trainer Brian", "class": "COOLTRAINER", "team": [130], "rewards": { "balls": 5 } }
+        { "sprite": "acetrainer_m.png", "name": "Ace Trainer Brian", "class": "COOLTRAINER", "team": [130], "rewards": { "balls": 5 } },
+        { "sprite": "swimmer_m.png", "name": "Swimmer Glenn", "class": "SWIMMER", "team": [73, 121], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
@@ -2752,7 +2753,8 @@
         { "text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE" },
         { "text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE" },
         { "text": "TOHJO FALLS", "action": "EXIT", "target": "TOHJO_FALLS", "condition": ["can_exit"],  "color": "RED" },
-        { "text": "NEW BARK TOWN", "action": "EXIT", "target": "NEW_BARK_TOWN", "condition": ["can_exit"],  "color": "RED" }
+        { "text": "NEW BARK TOWN", "action": "EXIT", "target": "NEW_BARK_TOWN", "condition": ["can_exit"],  "color": "RED" },
+        { "text": "ROUTE 26", "action": "EXIT", "target": "KANTO_ROUTE_26", "condition": ["can_exit"], "color": "RED" }
       ],
       "next_area": "NEW_BARK_TOWN",
       "on_enter_event": null,

@@ -21,7 +21,12 @@ HM_BY_BADGE = {
               "FAIRY": "HM_WATERFALL"},
 }
 
-ALL_HMS = sorted({hm for table in HM_BY_BADGE.values() for hm in table.values()})
+# A badge that hands out a second HM (not canon). Johto's Rising Badge also gives Rock Climb, so a Johto
+# player can climb Mt. Silver (Jordan, 11-09).
+EXTRA_HMS = {"JOHTO": {"RISING": ["HM_ROCK_CLIMB"]}}
+
+ALL_HMS = sorted({hm for table in HM_BY_BADGE.values() for hm in table.values()}
+                 | {hm for table in EXTRA_HMS.values() for hms in table.values() for hm in hms})
 
 
 def _norm(badge):
@@ -32,6 +37,12 @@ def _norm(badge):
 
 def hm_for_badge(region, badge):
     return HM_BY_BADGE.get(str(region).upper(), {}).get(_norm(badge))
+
+
+def hms_for_badge(region, badge):
+    """Every HM a badge hands out (its own, then any extra: the Rising Badge's Rock Climb)."""
+    main = hm_for_badge(region, badge)
+    return ([main] if main else []) + list(EXTRA_HMS.get(str(region).upper(), {}).get(_norm(badge), []))
 
 
 def item_name(key):
@@ -57,8 +68,8 @@ def give_for_badges(story):
         if mine is not None and region not in mine:
             continue  # another region's HMs stay in that region's Bag
         for badge in earned or []:
-            hm = hm_for_badge(region, badge)
-            if hm and story.inventory.get(hm, 0) <= 0:
-                story.inventory[hm] = 1
-                added.append(hm)
+            for hm in hms_for_badge(region, badge):
+                if story.inventory.get(hm, 0) <= 0:
+                    story.inventory[hm] = 1
+                    added.append(hm)
     return added

@@ -1062,7 +1062,13 @@ class StoryManager:
             game.change_state(state_class(game, **kwargs))
 
     def is_trainer_defeated(self, area, index):
-        return index in self.defeated_trainers.get(area, set())
+        if index in self.defeated_trainers.get(area, set()):
+            return True
+        try:  # ("gone_flag": gone once that story flag is set: Route 43's Rocket Grunts, after the hideout)
+            gone = self.game.loader.area_data["STORY_PROGRESSION"][area]["trainer_pool"][index].get("gone_flag")
+        except (AttributeError, KeyError, IndexError, TypeError):
+            return False
+        return bool(gone and self.story_flags.get(gone))
 
     def mark_trainer_defeated(self, area, index):
         if area not in self.defeated_trainers:

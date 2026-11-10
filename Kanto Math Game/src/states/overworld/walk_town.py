@@ -29,7 +29,10 @@ LABELS = {"center": "POKEMON CENTER", "mart": "POKE MART", "gym": "GYM", "lab": 
           "game corner": "GAME CORNER", "tower": "POKEMON TOWER", "mansion": "MANSION", "silph": "SILPH CO.",
           "warden": "WARDEN'S HOUSE", "brother": "FISHING HOUSE", "safari": "SAFARI ZONE",
           "fossil": "POKEMON LAB", "copycat": "COPYCAT'S HOUSE", "dojo": "FIGHTING DOJO", "station": "MAGNET TRAIN",
-          "league": "ELITE FOUR", "johto": "TO JOHTO"}
+          "league": "ELITE FOUR", "johto": "TO JOHTO", "sprout": "SPROUT TOWER", "kurt": "KURT'S HOUSE", "ruins": "THE RUINS", "kabuto": "KABUTO CHAMBER", "omanyte": "OMANYTE CHAMBER",
+          "aerodactyl": "AERODACTYL CHAMBER", "hooh": "HO-OH CHAMBER",
+          "flower": "FLOWER SHOP", "bill": "BILL'S HOUSE",
+          "burned": "BURNED TOWER", "bellchime": "BELLCHIME TRAIL", "theater": "DANCE THEATER", "pharmacy": "PHARMACY", "souvenir": "SOUVENIR SHOP", "leaguegate": "VICTORY ROAD"}
 _DATA = {}
 
 
@@ -185,6 +188,7 @@ class WalkTownState(CityState):
             cache.clear()
             cache[self.area_key] = art.surface(grid, kinds, TILE, m.get("roofs"), m.get("theme"))
         self.map_img = cache[self.area_key]
+        self.overheads = [(o, *art.overhead(o, TILE)) for o in m.get("overheads", [])]
 
     # ---------------------------------------------------------------- the map
     def _map_image(self):
@@ -425,8 +429,8 @@ class WalkTownState(CityState):
         opt = self._travel_option(target)
         if opt is None or not self._shown(opt):
             here = self.player
-            self.flash("The water's deep here. You'll need Surf to cross it!" if here in self.water_exits
-                       else "You can't go that way yet.")
+            self.flash(self.locked.get(target) or ("The water's deep here. You'll need Surf to cross it!"
+                       if here in self.water_exits else "You can't go that way yet."))
             return self._step_back()
         cb = self._get_callback_for_option(dict(opt, action="TRAVEL"))
         if not cb:
@@ -608,6 +612,8 @@ class WalkTownState(CityState):
             drawn.append((pr.bottom, me, me.get_rect(midbottom=(pr.centerx, pr.bottom))))
         for _b, img, rect in sorted(drawn, key=lambda t: t[0]):
             screen.blit(img, rect)
+        for _o, img, (bx, by) in getattr(self, "overheads", []):  # (solid, over you: you walk under it, out of view)
+            screen.blit(img, (ox + bx, oy + by))
         # the buildings' names over their doors, who the people are, where the ways out go
         for spot, kind in self.doors.items():
             if kind == "house" or (kind == "home" and spot != min(t for t, k2 in self.doors.items() if k2 == "home")):

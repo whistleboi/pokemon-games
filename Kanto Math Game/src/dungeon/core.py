@@ -24,6 +24,7 @@ import inspect
 import random
 from collections import deque
 
+ENTRANCE_INDEX = 0  # which of several ways in from the same place you came by (Route 41's four Whirl Islands caves)
 WALL, FLOOR, GRASS, WATER, SURF = 0, 1, 2, 3, 4  # (SURF: open sea, crossed with HM Surf)
 DIRS = ((0, -1), (1, 0), (0, 1), (-1, 0))
 STAIRS = "STAIRS"
@@ -69,6 +70,7 @@ class Floor:
         self.seen = set()    # tiles the player has seen (the mini-map and the fog)
         self.decor = {}      # (x, y) -> what stands on that wall tile (a drawn place's slot machines)
         self.spots = {}      # figure text -> (x, y): where a drawn place's figures stand
+        self.ice = set()     # sheet ice: step on it and you slide till something stops you (the Ice Path)
 
     def inside(self, x, y):
         return 0 <= x < self.w and 0 <= y < self.h
@@ -292,6 +294,8 @@ def drawn_floor(recipe, index, entrance=None, figures=()):
                 c, WALL if what.get("decor") else SURF if what.get("surf") else FLOOR)
             if c == "@":
                 floor.start = (x, y)
+            if c == "%":
+                floor.ice.add((x, y))
             if what.get("exit"):
                 exits[(x, y)] = what["exit"]
             if what.get("decor"):
@@ -300,7 +304,10 @@ def drawn_floor(recipe, index, entrance=None, figures=()):
                 floor.spots[what["figure"]] = (x, y)
     floor.exits.update(exits)
     if entrance:  # you come in beside the way you came
-        door = next((t for t, target in exits.items() if target == entrance), None)
+        doors = [t for t, target in exits.items() if target == entrance]  # (several the same way: the matching one)
+        global ENTRANCE_INDEX
+        door = doors[min(ENTRANCE_INDEX, len(doors) - 1)] if doors else None
+        ENTRANCE_INDEX = 0
         if door:
             floor.start = next(((door[0] + dx, door[1] + dy) for dx, dy in DIRS if floor.walkable(door[0] + dx, door[1] + dy)
                                 and (door[0] + dx, door[1] + dy) not in exits), floor.start)
@@ -512,8 +519,9 @@ class Run:
         lo, hi = (self.recipe.get("wild") or [4, 6])[:2]
         for _ in range(self.rng.randint(lo, hi)):  # (a drawn map is one room: away from you is enough)
             self._spawn_wild(floor, None if self.recipe.get("layout") else start_room)
+        reach = distances(floor, floor.start)  # (loot lands where you can walk to it from here: never out on the water)
         for item in self.loot_for(self.rng):
-            spot = _free_tile(floor, self.rng)
+            spot = next((s for s in (_free_tile(floor, self.rng) for _ in range(24)) if s in reach), None)
             if spot and item:
                 floor.items[spot] = item
         for spot_id in [s for i, s in enumerate(self.tm_spots) if i % self.n_floors == index]:

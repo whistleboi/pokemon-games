@@ -1809,9 +1809,9 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, GameState)
                 badge_name = self.badge_reward.replace("_", " ").title()
                 msgs.append(f"You received the {badge_name} Badge!")
                 from src.world import hms
-                hm = hms.hm_for_badge(self.game.story_manager.get_current_region(), self.badge_reward)
-                if hm and self.game.story_manager.inventory.get(hm, 0) <= 0:
-                    msgs.append(f"You received {hms.item_name(hm)}! It opens new paths on your journey.")
+                for hm in hms.hms_for_badge(self.game.story_manager.get_current_region(), self.badge_reward):
+                    if self.game.story_manager.inventory.get(hm, 0) <= 0:
+                        msgs.append(f"You received {hms.item_name(hm)}! It opens new paths on your journey.")
 
             money_reward = self._calc_money_reward()
             if self.game.story_manager.inventory.get("AMULET_COIN", 0) > 0:

@@ -273,7 +273,7 @@ from src.states.overworld import dungeon as _dg
 
 def _reach_of(f, start):
     """Where you can get to from start, a boulder counting as pushed aside (Strength and the slide puzzle)."""
-    held = {t: f.tiles[t[1]][t[0]] for t, v in f.decor.items() if str(v).startswith("boulder:")}
+    held = {t: f.tiles[t[1]][t[0]] for t, v in f.decor.items() if str(v).startswith(("boulder:", "whirl:"))}
     for (x, y) in held:
         f.tiles[y][x] = core.FLOOR
     try:
@@ -300,12 +300,12 @@ for _a in _kanto:
         for _i in range(_p.run.n_floors):
             _f = _p.run.floor
             _reach = _reach_of(_f, _p.run.player)
-            if _i < len(_art_floors) and _art_floors[_i].get("parts"):  # (in parts: each from its own ladder)
-                for _t in [t for t, v in _f.exits.items() if v in (core.STAIRS, core.STAIRS_UP)]:
+            if (_i < len(_art_floors) and _art_floors[_i].get("parts")) or (_dg.recipe_for(g, _a).get("art") or {}).get("parts"):  # (in parts: each from its own ladder)
+                for _t in list(_f.exits):
                     _reach = {**_reach, **_reach_of(_f, _t)}
             _things = list(_f.exits) + list(_f.items) + list(_f.tm_spots) + ([] if _dg.recipe_for(g, _a).get("layout") else [(m.x, m.y) for m in _f.movers])
             if any(t not in _reach for t in _things):
-                _bad.append((_a, _i, "something out of reach"))
+                _bad.append((_a, _i, "something out of reach", [(t, _f.exits.get(t), _f.items.get(t)) for t in _things if t not in _reach][:6]))
             _p.draw()
             if _i < _p.run.n_floors - 1:
                 _p._descend()
@@ -335,8 +335,8 @@ for _a in _all:
         _f = _p.run.floor
         _reach = _reach_of(_f, _p.run.player)
         _af = ((_dg.recipe_for(g, _a).get("art") or {}).get("floors") or [])
-        if _af and _af[_p.run.index].get("parts"):  # (in parts, Rock Tunnel's 1F: each from its own ladder)
-            for _t in [t for t, v in _f.exits.items() if v in (core.STAIRS, core.STAIRS_UP)]:
+        if (_af and _af[_p.run.index].get("parts")) or (_dg.recipe_for(g, _a).get("art") or {}).get("parts"):  # (in parts, Rock Tunnel's 1F: each from its own ladder; Route 42: each from its own way out)
+            for _t in list(_f.exits):
                 _reach = {**_reach, **_reach_of(_f, _t)}
         _drawn = bool(_dg.recipe_for(g, _a).get("layout"))  # (a drawn place's clerk stands behind its counter)
         if any(t not in _reach for t in list(_f.exits) + ([] if _drawn else [(m.x, m.y) for m in _f.movers])):
@@ -452,7 +452,7 @@ _t1 = [row[:] for row in _a1.run.floor.tiles]
 _a2 = kanto("SILPH_CITY", came="SAFFRON_CITY")
 check(_a2.run.floor.tiles == _t1, "Silph Co.: the same floor on every visit")
 check(len(_a2.run.floor.seen) == _a2.run.floor.w * _a2.run.floor.h and _a2.run.visible(1, 1), "...and no fog: the whole floor shows")
-_r1 = kanto("JOHTO_ROUTE_30", came="CHERRYGROVE_CITY")  # (a made-up route map: our own ones are open)
+_r1 = kanto("JOHTO_ROUTE_48", came="JOHTO_ROUTE_47")  # (a made-up route map: our own ones are open)
 check(_r1.run.fog and len(_r1.run.floor.seen) < _r1.run.floor.w * _r1.run.floor.h, "a route keeps its fog")
 story.inventory["COIN_CASE"] = 1
 _gc = kanto("CELADON_GAME_CORNER", came="CELADON_CITY")
@@ -497,7 +497,7 @@ check(_me.run.n_floors == 3, "Mt. Ember: the base, Ruby Path, the summit")
 
 # every region (Jordan, 11-05: each region's maps checked against its games)
 _want = {"HAINA_DESERT": "desert", "DESERT_RESORT": "desert", "ASADO_DESERT": "desert", "GLASEADO_MOUNTAIN": "snow",
-         "HOENN_TRACKLESS_FOREST": "forest", "PLEDGE_GROVE": "forest", "SPROUT_TOWER": "building", "MOUNT_LANAKILA": "snow"}
+         "HOENN_TRACKLESS_FOREST": "forest", "PLEDGE_GROVE": "forest", "SPROUT_TOWER": "field", "MOUNT_LANAKILA": "snow"}  # (Sprout Tower: our own exact floors now)
 _got = {k: _dg.recipe_for(g, k).get("style") for k in _want}
 check(_got == _want, f"each region's places look like its game's {[(k, v) for k, v in _got.items() if _want[k] != v]}")
 _fl = {k: _dg.recipe_for(g, k).get("floors") for k in ("UNION_CAVE", "BELL_TOWER", "HOENN_SKY_PILLAR", "MT_CORONET_BASE", "CHARGESTONE_CAVE", "REFLECTION_CAVE")}
@@ -886,9 +886,29 @@ story.story_flags["received_starter_johto"] = True
 story.story_flags["move_offer_johto"] = True
 story.current_area_key, story.last_area_key = "NEW_BARK_TOWN", None
 _nb = _CS(g); g.change_state(_nb); _tap_through(_nb)
-check(isinstance(_nb, _WTS) and {"lab", "home"} <= set(_nb.doors.values())
-      and [o["text"] for o in _nb._people().values()] == ["Talk to Nice Lady"],
-      "New Bark Town: our map, Elm's Lab and your house have doors, the Nice Lady outside")
+check(isinstance(_nb, _WTS) and {"lab", "home", "rival"} <= set(_nb.doors.values()) and not _nb._people()
+      and (_nb.w, _nb.h) == (32, 26) and len(_nb.signs) == 4,
+      "New Bark Town: exact map, doors for Elm's Lab, your house and Silver's mom's, four signs, nobody outside")
+_nb._enter(next(t for t, k in _nb.doors.items() if k == "rival"))
+check(_nb.npc_active and _nb.current_npc == "silver_mom", "Silver's mom's door: the Nice Lady inside")
+_tap_through(_nb)
+_nb._enter(next(t for t, k in _nb.doors.items() if k == "house"))
+check(_nb.toast == "The door is locked.", "Elm's house: locked")
+_nb.player = _nb.anim_from = (29, 13)
+_nb.anim = 0
+_held = _nb._check_menu_condition
+_nb._check_menu_condition = lambda c: False if c == "has_8_johto_badges" else _held(c)
+_nb.step(1, 0)
+check(_nb.player == (29, 13) and "8 Johto badges" in _nb.toast and type(g.current_state).__name__ != "AreaTransitionState",
+      "the east bay without 8 badges: turned back, told why")
+_nb._check_menu_condition = lambda c: True if c == "has_8_johto_badges" else _held(c)
+_nb.anim = 0
+_nb.step(1, 0)
+check(type(g.current_state).__name__ == "AreaTransitionState", "the east bay with 8 badges: on to Route 27")
+_nb._check_menu_condition = _held
+g.change_state(_nb)
+_nb.player = _nb.anim_from = (20, 11)
+_nb.anim = 0
 _nb.walk_goal = next(t for t, k in _nb.doors.items() if k == "lab")
 for _k in range(400):
     frames(_nb)
@@ -907,6 +927,8 @@ check(_r29.run.recipe.get("art") and not _r29.run.fog
       and sorted(set(_f.exits.values())) == ["CHERRYGROVE_CITY", "JOHTO_ROUTE_46", "NEW_BARK_TOWN"]
       and _r29.run.player[0] >= _f.w - 3, "Route 29: our map, open, in from New Bark (east); Cherrygrove, Route 46's gate")
 _wl = [m for m in _f.movers if m.kind == "wild"]
+check((_f.w, _f.h) == (60, 30) and sum(t == "JOHTO_ROUTE_46" for t in _f.exits.values()) == 1
+      and (27, 7) in _f.exits and _f.walkable(27, 8), "Route 29: exact size, the gatehouse door with open ground in front")
 check(_wl and any(_f.tiles[m.y][m.x] == core.GRASS for m in _wl)
       and sum(m.kind == "trainer" for m in _f.movers) == sum(
           not story.is_trainer_defeated("JOHTO_ROUTE_29", i) for i in range(len(_r29.area_data.get("trainer_pool", [])))),
@@ -938,6 +960,351 @@ except Exception as _e:
 story.last_area_key = _had
 
 
+# Johto's exact maps, Cherrygrove through Azalea (Jordan, 11-09)
+g.walk_town_pos = None
+story.current_area_key, story.last_area_key = "VIOLET_CITY", "JOHTO_ROUTE_31"
+_vi = _CS(g); g.change_state(_vi); _tap_through(_vi)
+check(isinstance(_vi, _WTS) and (_vi.w, _vi.h) == (64, 57) and {"sprout", "gym", "mart", "center"} <= set(_vi.doors.values())
+      and set(_vi.exits.values()) == {"JOHTO_ROUTE_31", "JOHTO_ROUTE_32", "JOHTO_ROUTE_36"} and _vi.player[0] >= _vi.w - 12,
+      "Violet City: exact map, in from Route 31 (east); Tower, Gym, Mart, Center doors and its three ways out")
+_vi._enter(next(t for t, k in _vi.doors.items() if k == "sprout"))
+check(type(g.current_state).__name__ == "AreaTransitionState", "Sprout Tower's door: in you go")
+g.walk_town_pos = None
+story.current_area_key, story.last_area_key = "AZALEA_TOWN", "JOHTO_ROUTE_33"
+_az = _CS(g); g.change_state(_az); _tap_through(_az)
+check(isinstance(_az, _WTS) and (_az.w, _az.h) == (60, 32) and {"kurt", "gym", "mart", "center"} <= set(_az.doors.values())
+      and "SLOWPOKE_WELL" in _az.exits.values() and "JOHTO_ROUTE_33" in _az.exits.values() and "ILEX_FOREST" in _az.exits.values(),
+      "Azalea Town: exact map; Kurt's, the Gym, Mart and Center doors; the Well, Ilex and Route 33")
+_az._enter(next(t for t, k in _az.doors.items() if k == "kurt"))
+check(_az.npc_active and _az.current_npc == "kurt", "Kurt's door: Kurt")
+_tap_through(_az)
+_had_flash = story.inventory.pop("HM_FLASH", None)
+_r31 = kanto("JOHTO_ROUTE_31", came="JOHTO_ROUTE_30")
+_f31 = _r31.run.floor
+check((_f31.w, _f31.h) == (68, 50) and (34, 36) in _f31.exits and _f31.exits[(34, 36)] == "DARK_CAVE", "Route 31: the Dark Cave mouth is in the cliff's foot")
+check(not _r31._try_exit("DARK_CAVE") and type(g.current_state).__name__ != "AreaTransitionState", "...and it stays shut without Flash")
+if _had_flash:
+    story.inventory["HM_FLASH"] = _had_flash
+_r30 = kanto("JOHTO_ROUTE_30", came="CHERRYGROVE_CITY")
+check((_r30.run.floor.w, _r30.run.floor.h) == (68, 53) and "MR_POKEMONS_HOUSE" in _r30.run.floor.exits.values()
+      and "JOHTO_ROUTE_31" in _r30.run.floor.exits.values(), "Route 30: exact map; Mr. Pokemon's door and the way north")
+_r32 = kanto("JOHTO_ROUTE_32", came="VIOLET_CITY")
+check((_r32.run.floor.w, _r32.run.floor.h) == (34, 95) and {"VIOLET_CITY", "RUINS_OF_ALPH", "UNION_CAVE"} <= set(_r32.run.floor.exits.values())
+      and any(o.get("door") == "center" for o in _r32.area_data["route_menu"]), "Route 32: exact map, its ways out, a working Center door")
+_r33 = kanto("JOHTO_ROUTE_33", came="AZALEA_TOWN")
+check({"AZALEA_TOWN", "UNION_CAVE"} == set(_r33.run.floor.exits.values()), "Route 33: Azalea and Union Cave")
+g.walk_town_pos = None
+story.current_area_key, story.last_area_key = "RUINS_OF_ALPH", "JOHTO_ROUTE_32"
+_ra = _CS(g); g.change_state(_ra); _tap_through(_ra)
+check(isinstance(_ra, _WTS) and (_ra.w, _ra.h) == (39, 52) and {"kabuto", "hooh", "omanyte", "aerodactyl", "ruins", "lab"} <= set(_ra.doors.values())
+      and {"JOHTO_ROUTE_32", "JOHTO_ROUTE_36", "UNION_CAVE"} <= set(_ra.exits.values()), "Ruins of Alph: exact map; four chambers, the ruins, the lab, its ways out")
+for _k in ("kabuto", "hooh", "omanyte", "aerodactyl"):
+    check(len(_ra._door_options(_k)) == 1, f"...the {_k} door opens its puzzle")
+_r_un = kanto("UNION_CAVE", came="JOHTO_ROUTE_32")
+_un_names = [m.payload[1].get("name") if isinstance(m.payload, tuple) else None for m in _r_un.run.floor.movers if m.kind == "trainer"]
+check(_r_un.run.n_floors == 4 and _r_un.run.index == 1 and "JOHTO_ROUTE_33" in _r_un.run.floor.exits.values() and len(_un_names) == 6,
+      f"Union Cave: four levels; in from Route 32 on 1F; its six trainers there {_r_un.run.n_floors, _r_un.run.index, sorted(set(map(str, _r_un.run.floor.exits.values()))), [(m.kind, str(m.payload)[:50]) for m in _r_un.run.floor.movers if m.kind != 'wild'][:8]}")
+_ilx = kanto("ILEX_FOREST", came="AZALEA_TOWN")
+check((_ilx.run.floor.w, _ilx.run.floor.h) == (53, 61) and {"AZALEA_TOWN", "JOHTO_ROUTE_34"} == set(_ilx.run.floor.exits.values())
+      and _ilx.run.player[1] >= 55, f"Ilex Forest: exact to the HGSS picture, in from Azalea at the south gate {_ilx.run.player}, Route 34 north")
+_r34 = kanto("JOHTO_ROUTE_34", came="ILEX_FOREST")
+check((_r34.run.floor.w, _r34.run.floor.h) == (78, 57) and {"ILEX_FOREST", "GOLDENROD_CITY"} == set(_r34.run.floor.exits.values())
+      and "door:daycare" in map(str, _r34.run.floor.decor.values()) and any(o.get("door") == "daycare" for o in _r34.area_data["route_menu"]),
+      "Route 34: exact map, Goldenrod and Ilex, the Day Care's door")
+g.walk_town_pos = None
+story.current_area_key, story.last_area_key = "GOLDENROD_CITY", "JOHTO_ROUTE_34"
+_gd = _CS(g); g.change_state(_gd); _tap_through(_gd)
+check(isinstance(_gd, _WTS) and (_gd.w, _gd.h) == (81, 54) and _gd.player[1] >= 48
+      and {"radio", "gym", "center", "dept", "bike", "flower", "station", "game corner"} <= set(_gd.doors.values())
+      and {"JOHTO_ROUTE_34", "JOHTO_ROUTE_35", "GOLDENROD_UNDERGROUND"} == set(_gd.exits.values()),
+      "Goldenrod City: exact map, in from Route 34 (south); every shop's door, both Underground stairs, the gate north")
+_gd.player = _gd.anim_from = (56, 19); _gd.anim = 0
+for _k in range(5):
+    _gd.step(0, 1)
+    _gd.anim = 0
+check(_gd.player == (56, 24) and _gd.overheads, "...you walk under the Magnet Train line")
+_gd.draw()
+for _k in ("radio", "dept", "bike", "flower", "center", "game corner"):
+    check(_gd._door_options(_k), f"...the {_k} door has something behind it")
+_r35 = kanto("JOHTO_ROUTE_35", came="GOLDENROD_CITY")
+check((_r35.run.floor.w, _r35.run.floor.h) == (118, 28) and {"JOHTO_ROUTE_36", "GOLDENROD_CITY", "NATIONAL_PARK"} == set(_r35.run.floor.exits.values())
+      and core.distances(_r35.run.floor, _r35.run.player).get((117, 18)) is not None, "Route 35: exact map, and on foot from Goldenrod to National Park's way")
+_np = kanto("NATIONAL_PARK", came="JOHTO_ROUTE_36")
+check((_np.run.floor.w, _np.run.floor.h) == (65, 57) and {"JOHTO_ROUTE_35", "JOHTO_ROUTE_36", "POKEATHLON_DOME"} == set(_np.run.floor.exits.values())
+      and _np.run.player[0] >= 45, "National Park: exact map, in from Route 36 (east gate), the Dome and Route 35")
+_r36 = kanto("JOHTO_ROUTE_36", came="VIOLET_CITY")
+check((_r36.run.floor.w, _r36.run.floor.h) == (78, 25) and {"VIOLET_CITY", "RUINS_OF_ALPH", "JOHTO_ROUTE_35", "JOHTO_ROUTE_37", "NATIONAL_PARK"} == set(_r36.run.floor.exits.values())
+      and _r36.run.player[0] >= 70, "Route 36: exact map, in from Violet (east gate), all five ways out")
+_r37 = kanto("JOHTO_ROUTE_37", came="JOHTO_ROUTE_36")
+check({"JOHTO_ROUTE_36", "ECRUTEAK_CITY"} == set(_r37.run.floor.exits.values()), "Route 37: Route 36 and Ecruteak")
+g.walk_town_pos = None
+story.current_area_key, story.last_area_key = "ECRUTEAK_CITY", "JOHTO_ROUTE_37"
+_ec = _CS(g); g.change_state(_ec); _tap_through(_ec)
+check(isinstance(_ec, _WTS) and (_ec.w, _ec.h) == (65, 50) and {"burned", "bellchime", "theater", "gym", "mart", "center"} <= set(_ec.doors.values())
+      and {"JOHTO_ROUTE_37", "JOHTO_ROUTE_38", "JOHTO_ROUTE_42"} == set(_ec.exits.values()) and _ec.player[1] >= 45,
+      "Ecruteak City: exact map, in from Route 37 (south); its towers, theater, Gym and shops; three ways out")
+for _k in ("burned", "bellchime", "theater"):
+    check(_ec._door_options(_k), f"...the {_k} door leads somewhere")
+_ec.draw()
+_bt = kanto("BURNED_TOWER", came="ECRUTEAK_CITY")
+check(_bt.run.n_floors == 2 and "ECRUTEAK_CITY" in _bt.run.floor.exits.values() and core.STAIRS in _bt.run.floor.exits.values(),
+      "Burned Tower: exact 1F, the way out, the ladder down to the basement")
+_r38 = kanto("JOHTO_ROUTE_38", came="ECRUTEAK_CITY")
+check((_r38.run.floor.w, _r38.run.floor.h) == (31, 40) and {"ECRUTEAK_CITY", "JOHTO_ROUTE_39"} == set(_r38.run.floor.exits.values()), "Route 38: exact map, Ecruteak and Route 39")
+_r39 = kanto("JOHTO_ROUTE_39", came="JOHTO_ROUTE_38")
+check((_r39.run.floor.w, _r39.run.floor.h) == (39, 56) and {"JOHTO_ROUTE_38", "OLIVINE_CITY", "MOOMOO_BARN", "MOOMOO_HOUSE"} == set(_r39.run.floor.exits.values()), "Route 39: exact to the HGSS picture with Moomoo Farm; Route 38, Olivine, the barn and house doors")
+_bct = kanto("BELLCHIME_TRAIL", came="ECRUTEAK_CITY")
+check((_bct.run.floor.w, _bct.run.floor.h) == (40, 20) and {"ECRUTEAK_CITY", "BELL_TOWER"} == set(_bct.run.floor.exits.values()), "Bellchime Trail: Jordan's map, Ecruteak and the Bell Tower door")
+g.walk_town_pos = None
+story.current_area_key, story.last_area_key = "OLIVINE_CITY", "JOHTO_ROUTE_39"
+_ol = _CS(g); g.change_state(_ol); _tap_through(_ol)
+check(isinstance(_ol, _WTS) and (_ol.w, _ol.h) == (66, 55) and {"gym", "center", "mart", "harbor"} <= set(_ol.doors.values())
+      and {"JOHTO_ROUTE_39", "JOHTO_ROUTE_40", "OLIVINE_LIGHTHOUSE_FLOORS"} == set(_ol.exits.values()) and _ol.player[1] <= 3,
+      "Olivine City: exact map, in from Route 39 (north); its doors, the Lighthouse, the beach west")
+_ol.player = _ol.anim_from = (25, 43); _ol.anim = 0
+check((25, 44) in _ol.doors and _ol.doors[(25, 44)] == "harbor", "...the harbor terminal's door faces the pier")
+_ol.draw()
+_lh = kanto("OLIVINE_LIGHTHOUSE_FLOORS", came="OLIVINE_CITY")
+check(_lh.run.n_floors == 5 and _lh.run.index == 0 and "OLIVINE_CITY" in _lh.run.floor.exits.values(), "Glitter Lighthouse: five floors, in on 1F")
+_bal = kanto("OLIVINE_LIGHTHOUSE_BALCONY", came="OLIVINE_LIGHTHOUSE_FLOORS")
+check((_bal.run.floor.w, _bal.run.floor.h) == (10, 7) and set(_bal.run.floor.exits.values()) == {"OLIVINE_LIGHTHOUSE_FLOORS"}, "...the balcony: the tower's door back in")
+_back = kanto("OLIVINE_LIGHTHOUSE_FLOORS", came="OLIVINE_LIGHTHOUSE_BALCONY")
+_f3 = _back.run.floor
+check(_back.run.index == 2 and core.distances(_f3, _back.run.player).get((4, 7)) is not None, "...and in on 3F's southwest rooms, by their ladder")
+_back.run.floor
+g.walk_town_pos = None
+story.current_area_key, story.last_area_key = "OLIVINE_LIGHTHOUSE", "OLIVINE_LIGHTHOUSE_FLOORS"
+_top = _CS(g); g.change_state(_top); _tap_through(_top)
+check(isinstance(_top, _WTS) and sorted(o["text"] for o in _top._people().values()) == ["Check Amphy", "Talk to Jasmine"]
+      and {"OLIVINE_CITY", "OLIVINE_LIGHTHOUSE_FLOORS"} == set(_top.exits.values()), "...the beacon room: Jasmine, Amphy, the stairs, the elevator")
+_lift = next(t for t, v in _top.exits.items() if v == "OLIVINE_CITY")
+story.story_flags.pop("ampharos_cured", None)
+_top.player = _top.anim_from = (_lift[0], _lift[1] + 1); _top.anim = 0
+_top.step(0, -1)
+check("locked" in _top.toast and type(g.current_state).__name__ != "AreaTransitionState", "...the elevator is locked until Amphy has its medicine")
+story.story_flags["ampharos_cured"] = True
+_top.anim = 0
+_top.player = _top.anim_from = (_lift[0], _lift[1] + 1)
+_top.step(0, -1)
+check(type(g.current_state).__name__ == "AreaTransitionState", "...and opens after")
+story.story_flags.pop("ampharos_cured", None)
+_r40 = kanto("JOHTO_ROUTE_40", came="OLIVINE_CITY")
+check((_r40.run.floor.w, _r40.run.floor.h) == (50, 50) and {"OLIVINE_CITY", "JOHTO_ROUTE_41", "FRONTIER_ACCESS"} == set(_r40.run.floor.exits.values()), "Route 40: exact map, Olivine, the Frontier's gateway, the sea to Route 41")
+_r41 = kanto("JOHTO_ROUTE_41", came="JOHTO_ROUTE_40")
+check((_r41.run.floor.w, _r41.run.floor.h) == (50, 64) and {"JOHTO_ROUTE_40", "CIANWOOD_CITY", "WHIRL_ISLANDS"} == set(_r41.run.floor.exits.values())
+      and sum(v == "WHIRL_ISLANDS" for v in _r41.run.floor.exits.values()) == 4, "Route 41: exact map, Route 40, Cianwood, all four Whirl Island caves")
+_r40 = kanto("JOHTO_ROUTE_40", came="OLIVINE_CITY")
+check((_r40.run.floor.w, _r40.run.floor.h) == (50, 50) and {"OLIVINE_CITY", "JOHTO_ROUTE_41", "FRONTIER_ACCESS"} == set(_r40.run.floor.exits.values()), "Route 40: exact map, Olivine, the Frontier's gateway, the sea to Route 41")
+_r41 = kanto("JOHTO_ROUTE_41", came="JOHTO_ROUTE_40")
+check((_r41.run.floor.w, _r41.run.floor.h) == (50, 64) and {"JOHTO_ROUTE_40", "CIANWOOD_CITY", "WHIRL_ISLANDS"} == set(_r41.run.floor.exits.values())
+      and sum(v == "WHIRL_ISLANDS" for v in _r41.run.floor.exits.values()) == 4, "Route 41: exact map, Route 40, Cianwood, all four Whirl Island caves")
+_r40 = kanto("JOHTO_ROUTE_40", came="OLIVINE_CITY")
+check((_r40.run.floor.w, _r40.run.floor.h) == (50, 50) and {"OLIVINE_CITY", "JOHTO_ROUTE_41", "FRONTIER_ACCESS"} == set(_r40.run.floor.exits.values()), "Route 40: exact map, Olivine, the Frontier's gateway, the sea to Route 41")
+_r41 = kanto("JOHTO_ROUTE_41", came="JOHTO_ROUTE_40")
+check((_r41.run.floor.w, _r41.run.floor.h) == (50, 64) and {"JOHTO_ROUTE_40", "CIANWOOD_CITY", "WHIRL_ISLANDS"} == set(_r41.run.floor.exits.values())
+      and sum(v == "WHIRL_ISLANDS" for v in _r41.run.floor.exits.values()) == 4, "Route 41: exact map, Route 40, Cianwood, all four Whirl Island caves")
+g.walk_town_pos = None
+story.current_area_key, story.last_area_key = "CIANWOOD_CITY", "JOHTO_ROUTE_41"
+_cw = _CS(g); g.change_state(_cw); _tap_through(_cw)
+check(isinstance(_cw, _WTS) and (_cw.w, _cw.h) == (35, 42) and {"gym", "center", "pharmacy"} <= set(_cw.doors.values())
+      and {"JOHTO_ROUTE_41", "CLIFF_EDGE_GATE"} == set(_cw.exits.values()) and len(_cw._door_options("pharmacy")) == 2,
+      "Cianwood City: exact map; the Gym, Center, Pharmacy (medicine and shop), the sea and the cliff gate")
+_w41 = kanto("JOHTO_ROUTE_41", came="JOHTO_ROUTE_40")
+_wf = _w41.run.floor
+def _sea_reach(f, start):
+    seen, todo = {start}, [start]
+    while todo:
+        x, y = todo.pop()
+        for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+            n = (x + dx, y + dy)
+            if 0 <= n[0] < f.w and 0 <= n[1] < f.h and n not in seen and f.tiles[n[1]][n[0]] in (core.FLOOR, core.GRASS, core.SURF):
+                seen.add(n); todo.append(n)
+    return seen
+_caves = [t for t, v in _wf.exits.items() if v == "WHIRL_ISLANDS"]
+_open = _sea_reach(_wf, (23, 1))
+check(_caves and not any(c in _open for c in _caves), "Route 41: all four islands are sealed; no cave without getting past a whirlpool")
+for _key in [k for k in story.story_flags if k.startswith("boulder_JOHTO_ROUTE_41")]:
+    story.story_flags.pop(_key)
+_had_wp = story.inventory.pop("HM_WHIRLPOOL", None)
+_w41.run.player = (25, 8); _w41.facing = (-1, 0)
+_w41._read_sign()
+check(str(_wf.decor.get((24, 8), "")).startswith("whirl:"), "...a whirlpool won't budge without Whirlpool")
+story.inventory["HM_WHIRLPOOL"] = 1
+_w41.run.player = (25, 8); _w41.facing = (-1, 0)
+_w41._read_sign()
+_w41._render_floor()
+check((23, 9) not in _wf.decor and any(c in _sea_reach(_wf, (23, 1)) for c in _caves), "...and with it the whirlpool clears and that island opens")
+for _key in [k for k in story.story_flags if k.startswith("boulder_JOHTO_ROUTE_41")]:
+    story.story_flags.pop(_key)
+story.inventory.pop("HM_WHIRLPOOL", None)
+if _had_wp:
+    story.inventory["HM_WHIRLPOOL"] = _had_wp
+_r40 = kanto("JOHTO_ROUTE_40", came="OLIVINE_CITY")
+check((_r40.run.floor.w, _r40.run.floor.h) == (50, 50) and {"OLIVINE_CITY", "JOHTO_ROUTE_41", "FRONTIER_ACCESS"} == set(_r40.run.floor.exits.values()), "Route 40: exact map, Olivine, the Frontier's gateway, the sea to Route 41")
+_r41 = kanto("JOHTO_ROUTE_41", came="JOHTO_ROUTE_40")
+check((_r41.run.floor.w, _r41.run.floor.h) == (50, 64) and {"JOHTO_ROUTE_40", "CIANWOOD_CITY", "WHIRL_ISLANDS"} == set(_r41.run.floor.exits.values())
+      and sum(v == "WHIRL_ISLANDS" for v in _r41.run.floor.exits.values()) == 4, "Route 41: exact map, Route 40, Cianwood, all four Whirl Island caves")
+_r40 = kanto("JOHTO_ROUTE_40", came="OLIVINE_CITY")
+check((_r40.run.floor.w, _r40.run.floor.h) == (50, 50) and {"OLIVINE_CITY", "JOHTO_ROUTE_41", "FRONTIER_ACCESS"} == set(_r40.run.floor.exits.values()), "Route 40: exact map, Olivine, the Frontier's gateway, the sea to Route 41")
+_r41 = kanto("JOHTO_ROUTE_41", came="JOHTO_ROUTE_40")
+check((_r41.run.floor.w, _r41.run.floor.h) == (50, 64) and {"JOHTO_ROUTE_40", "CIANWOOD_CITY", "WHIRL_ISLANDS"} == set(_r41.run.floor.exits.values())
+      and sum(v == "WHIRL_ISLANDS" for v in _r41.run.floor.exits.values()) == 4, "Route 41: exact map, Route 40, Cianwood, all four Whirl Island caves")
+from src.dungeon import core as _c
+_rooms = {}
+for _i, _name in enumerate(("NW", "NE", "SW", "SE")):
+    _c.ENTRANCE_INDEX = _i
+    _wi = kanto("WHIRL_ISLANDS", came="JOHTO_ROUTE_41")
+    _rooms[_name] = _wi.run.player
+_c.ENTRANCE_INDEX = 0
+check(_wi.run.n_floors == 4 and _rooms["NW"][1] <= 12 and _rooms["SE"][0] >= 60 and _rooms["NE"][0] < 12 and 29 <= _rooms["SW"][0] < 60,
+      f"Whirl Islands: four levels; each cave mouth leads to its own island's room {_rooms}")
+_r42 = kanto("JOHTO_ROUTE_42", came="ECRUTEAK_CITY")
+check((_r42.run.floor.w, _r42.run.floor.h) == (60, 78) and {"ECRUTEAK_CITY", "MAHOGANY_TOWN", "MT_MORTAR"} == set(_r42.run.floor.exits.values())
+      and sum(v == "MT_MORTAR" for v in _r42.run.floor.exits.values()) == 4, "Route 42: exact map; Ecruteak, Mahogany, four ways into Mt. Mortar")
+_r43 = kanto("JOHTO_ROUTE_43", came="MAHOGANY_TOWN")
+check((_r43.run.floor.w, _r43.run.floor.h) == (20, 54) and {"MAHOGANY_TOWN", "LAKE_OF_RAGE"} == set(_r43.run.floor.exits.values()) and _r43.run.player[1] >= 48,
+      f"Route 43: exact map; in from Mahogany's gate (south) at {_r43.run.player}; north to the Lake of Rage")
+story.story_flags.pop("rocket_hq_cleared", None)
+story.defeated_trainers.pop("JOHTO_ROUTE_43", None)
+_r43 = kanto("JOHTO_ROUTE_43", came="MAHOGANY_TOWN")
+_gr = {(m.x, m.y) for f in _r43.run.floors for m in f.movers if m.kind == "trainer"}
+story.story_flags["rocket_hq_cleared"] = True
+_r43b = kanto("JOHTO_ROUTE_43", came="MAHOGANY_TOWN")
+_gr2 = {(m.x, m.y) for f in _r43b.run.floors for m in f.movers if m.kind == "trainer"}
+story.story_flags.pop("rocket_hq_cleared", None)
+check({(18, 21), (19, 23)} <= _gr and not ({(18, 21), (19, 23)} & _gr2) and len(_gr2) == len(_gr) - 2,
+      f"Route 43: two Rocket Grunts lie in wait on the east path, gone once the hideout is cleared {sorted(_gr)} -> {sorted(_gr2)}")
+_r44 = kanto("JOHTO_ROUTE_44", came="MAHOGANY_TOWN")
+check((_r44.run.floor.w, _r44.run.floor.h) == (60, 18) and {"MAHOGANY_TOWN", "ICE_PATH"} == set(_r44.run.floor.exits.values()) and _r44.run.player[0] <= 2,
+      f"Route 44: exact map; in from Mahogany (west) at {_r44.run.player}; the Ice Path's mouth east")
+_hq = kanto("ROCKET_HQ", came="MAHOGANY_TOWN")
+_hqr = _hq.recipe
+check(_hq.run.n_floors == 3 and "MAHOGANY_TOWN" in _hq.run.floor.exits.values() and _hq.run.player[0] >= 44 and _hq.run.player[1] <= 6
+      and (_hqr.get("art") or {}).get("figure_floors", {}).get("Executive Petrel") == 2,
+      f"Rocket Hideout: exact B1F-B3F; in from the shop's stairs (NE) at {_hq.run.player}; Petrel waits on B3F, Ariana on B2F")
+_ip = kanto("ICE_PATH", came="JOHTO_ROUTE_44")
+check(_ip.run.n_floors == 4 and _ip.run.player[1] >= 43 and len(_ip.run.floor.ice) > 100 and {"JOHTO_ROUTE_44", "BLACKTHORN_CITY"} <= set(_ip.run.floor.exits.values()),
+      f"Ice Path: exact 1F-B3F; in from Route 44 (south) at {_ip.run.player}; sheet ice on 1F")
+_ip.run.floor.movers = []
+_ip.run.player, _ip.mode, _ip.anim, _ip.walk_goal = (13, 36), "MAP", 0, None
+_ip.dialogue_box.visible = False
+_ip.step(0, -1)
+for _ in range(400):
+    _ip.update()
+    if not _ip.sliding and _ip.anim == 0:
+        break
+_up = _ip.run.player
+_ip.step(1, 0)
+for _ in range(400):
+    _ip.update()
+    if not _ip.sliding and _ip.anim == 0:
+        break
+check(_up == (13, 31) and _ip.run.player == (21, 31) and not _ip.sliding,
+      f"Ice Path: step onto the ice and you slide till something stops you (up to {_up}, then right to {_ip.run.player})")
+for _bx, _by in ((19, 11), (11, 11), (14, 12), (26, 11)):
+    story.story_flags[f"boulder_ICE_PATH_1_{_bx}_{_by}"] = True
+while _ip.run.index < 2:  # (floors are made in order)
+    _ip.run.enter_floor(_ip.run.index + 1)
+_ip._clear_boulders()
+_fallen = sorted(t for t, w in _ip.run.floor.decor.items() if str(w).startswith("fallen:"))
+for _bx, _by in ((19, 11), (11, 11), (14, 12), (26, 11)):
+    story.story_flags.pop(f"boulder_ICE_PATH_1_{_bx}_{_by}", None)
+check(_fallen == [(10, 18), (11, 12), (18, 10), (19, 19)] and all(not _ip.run.floor.walkable(*t) for t in _fallen),
+      f"Ice Path: B1F's four boulders, pushed into their holes, land on B2F's ice as stops {_fallen}")
+_ip.run.player = (15, 15)
+_ip.run.descend()
+_b3 = (_ip.run.index, _ip.run.player)
+_ip.run.player = (24, 8)
+_ip.run.ascend()
+check(_b3[0] == 3 and _b3[1][0] <= 6 and _ip.run.index == 2 and _ip.run.player[0] >= 47,
+      f"Ice Path: B2F's middle ladder down to B3F's west {_b3}; B3F's east ladder up to B2F's east {_ip.run.player}")
+_dd = kanto("DRAGONS_DEN", came="BLACKTHORN_CITY")
+_dd_in = (_dd.run.index, _dd.run.player)
+_dd2 = kanto("DRAGONS_DEN", came="DRAGON_SHRINE")
+check(_dd.run.n_floors == 2 and _dd_in[0] == 0 and _dd_in[1][1] >= 8 and _dd2.run.index == 1 and abs(_dd2.run.player[0] - 29) <= 1 and _dd2.run.player[1] >= 41
+      and "DRAGON_SHRINE" in _dd2.run.floor.exits.values(),
+      f"Dragon's Den: exact 1F and B1F; in from Blackthorn at {_dd_in}; back out of the shrine at its door on B1F {_dd2.run.player}")
+_r45 = kanto("JOHTO_ROUTE_45", came="BLACKTHORN_CITY")
+check((_r45.run.floor.w, _r45.run.floor.h) == (32, 125) and {"BLACKTHORN_CITY", "DARK_CAVE", "JOHTO_ROUTE_46"} == set(_r45.run.floor.exits.values()) and _r45.run.player[1] <= 2,
+      f"Route 45: exact map; in from Blackthorn (north) at {_r45.run.player}; the Dark Cave's mouth, west to Route 46")
+_r46 = kanto("JOHTO_ROUTE_46", came="JOHTO_ROUTE_29")
+check((_r46.run.floor.w, _r46.run.floor.h) == (38, 50) and {"DARK_CAVE", "JOHTO_ROUTE_45", "JOHTO_ROUTE_29"} == set(_r46.run.floor.exits.values()) and _r46.run.player[1] >= 44,
+      f"Route 46: exact map; in from Route 29's gate (south) at {_r46.run.player}; the Dark Cave's mouth, east to Route 45")
+_r27 = kanto("KANTO_ROUTE_27", came="NEW_BARK_TOWN")
+check((_r27.run.floor.w, _r27.run.floor.h) == (126, 20) and {"NEW_BARK_TOWN", "TOHJO_FALLS", "KANTO_ROUTE_26"} == set(_r27.run.floor.exits.values()) and _r27.run.player[0] <= 2,
+      f"Route 27: exact map; in from New Bark by Surf (west) at {_r27.run.player}; Tohjo Falls' two mouths, east to Route 26")
+_sw = [(m.x, m.y) for f in _r27.run.floors for m in f.movers if m.kind == "trainer" and "Swimmer Glenn" in str(m.payload)]
+check(_sw == [(102, 10)] or (102, 10) in {(m.x, m.y) for f in _r27.run.floors for m in f.movers if m.kind == "trainer"},
+      f"Route 27: the swimmer out in the channel by the long bridge {_sw}")
+_r26 = kanto("KANTO_ROUTE_26", came="KANTO_ROUTE_27")
+check((_r26.run.floor.w, _r26.run.floor.h) == (31, 126) and {"POKEMON_LEAGUE_GATE", "KANTO_ROUTE_27"} == set(_r26.run.floor.exits.values()) and _r26.run.player[1] >= 110,
+      f"Route 26: exact map; in from Route 27 over the long bridge at {_r26.run.player}; the Reception Gate north")
+_rt = kanto("RADIO_TOWER", came="GOLDENROD_CITY")
+_rt.run.player = (13, 3)
+_rt_in = _rt.run.player
+check(_rt.run.n_floors == 6 and "GOLDENROD_CITY" in _rt.run.floor.exits.values(), "the Radio Tower: exact 1F-5F and the Observation Deck; in from Goldenrod on 1F")
+_ms = kanto("MT_SILVER", came="MT_SILVER_CITY")
+check((_ms.run.floor.w, _ms.run.floor.h) == (64, 57) and _ms.run.player[1] >= 50 and {"MT_SILVER_CITY", "MT_SILVER_2F", "MT_SILVER_MOLTRES", "MT_SILVER_EXPERT", "MT_SILVER_LOWER"} == set(_ms.run.floor.exits.values()),
+      f"Mt. Silver 1F: exact; in from the Pokemon Center at its foot {_ms.run.player}; 2F, Moltres's and the Expert Belt's chambers, three ways onto the mountainside")
+_ms2 = kanto("MT_SILVER_2F", came="MT_SILVER")
+check(abs(_ms2.run.player[0] - 22) <= 1 and 22 <= _ms2.run.player[1] <= 26, f"Mt. Silver 2F: in from 1F on the crater's floor {_ms2.run.player}")
+from src.dungeon import core as _c
+_c.ENTRANCE_INDEX = 4
+_msu = kanto("MT_SILVER_UPPER", came="MT_SILVER_2F")
+_c.ENTRANCE_INDEX = 1
+_msl = kanto("MT_SILVER_LOWER", came="MT_SILVER")
+_c.ENTRANCE_INDEX = 0
+check(abs(_msu.run.player[0] - 18) <= 1 and 40 <= _msu.run.player[1] <= 41 and abs(_msl.run.player[0] - 18) <= 1 and abs(_msl.run.player[1] - 24) <= 1,
+      f"Mt. Silver: each mouth leads to its own (2F's fifth onto the mountainside's low mouth {_msu.run.player}; 1F's middle opening to the Lower Mountainside's middle level {_msl.run.player})")
+_champ = story.story_flags.get("beat_johto_champion")
+story.story_flags["beat_johto_champion"] = True
+_mo = kanto("MT_SILVER_MOLTRES", came="MT_SILVER")
+_su = kanto("MT_SILVER_SUMMIT", came="MT_SILVER_3F")
+story.story_flags["beat_johto_champion"] = _champ
+_figs = ([(m.x, m.y, str(m.payload.get("text"))) for m in _mo.run.floor.movers if m.kind == "figure"], [(m.x, m.y, str(m.payload.get("text"))) for m in _su.run.floor.movers if m.kind == "figure"])
+check([(m.x, m.y) for m in _mo.run.floor.movers if m.kind == "figure" and m.payload.get("action") == "BOSS"] == [(12, 14)]
+      and [(m.x, m.y) for m in _su.run.floor.movers if m.kind == "figure" and "RED" in str(m.payload.get("text"))] == [(20, 2)],
+      f"Mt. Silver: Moltres in the pit of its chamber; Red at the summit {_figs}")
+_had = story.inventory.pop("HM_ROCK_CLIMB", 0)
+_m3 = kanto("MT_SILVER_3F", came="MT_SILVER_UPPER")
+_walls = sum(1 for w in _m3.run.floor.decor.values() if str(w).startswith("climb:"))
+story.inventory["HM_ROCK_CLIMB"] = 1
+_m3._clear_boulders()
+_left = sum(1 for w in _m3.run.floor.decor.values() if str(w).startswith("climb:"))
+story.inventory.pop("HM_ROCK_CLIMB", None)
+if _had:
+    story.inventory["HM_ROCK_CLIMB"] = _had
+check(_walls == 15 and _left == 0 and _m3.run.floor.walkable(15, 10), f"Mt. Silver 3F: the towering cliff waits for Rock Climb ({_walls} footholds), then it's climbable")
+story.story_flags.pop("defeated_red_gyarados", None)
+_lor = kanto("LAKE_OF_RAGE", came="JOHTO_ROUTE_43")
+_gy = [m for f in _lor.run.floors for m in f.movers if m.kind == "figure" and m.payload.get("action") == "BOSS"]
+check((_lor.run.floor.w, _lor.run.floor.h) == (80, 40) and set(_lor.run.floor.exits.values()) == {"JOHTO_ROUTE_43"} and _lor.run.player[1] >= 36
+      and _gy and (_gy[0].x, _gy[0].y) == (40, 20), f"Lake of Rage: exact map; in from Route 43 (south); the Red Gyarados out on the lake {[(m.x, m.y) for m in _gy]}")
+g.walk_town_pos = None
+story.current_area_key, story.last_area_key = "MAHOGANY_TOWN", "JOHTO_ROUTE_42"
+_mh = _CS(g); g.change_state(_mh); _tap_through(_mh)
+check(isinstance(_mh, _WTS) and (_mh.w, _mh.h) == (37, 27) and {"gym", "center", "souvenir"} <= set(_mh.doors.values()) and _mh.player[0] <= 2
+      and {"JOHTO_ROUTE_42", "JOHTO_ROUTE_43", "JOHTO_ROUTE_44"} == set(_mh.exits.values()),
+      "Mahogany Town: exact map, in from Route 42 (west); the Gym and Center; Routes 43 and 44, the shop over the hideout")
+g.walk_town_pos = None
+story.current_area_key, story.last_area_key = "BLACKTHORN_CITY", "ICE_PATH"
+_bt = _CS(g); g.change_state(_bt); _tap_through(_bt)
+check(isinstance(_bt, _WTS) and (_bt.w, _bt.h) == (56, 50) and {"gym", "center", "mart"} <= set(_bt.doors.values()) and _bt.player[0] >= 48
+      and {"JOHTO_ROUTE_45", "ICE_PATH", "DRAGONS_DEN"} == set(_bt.exits.values()),
+      f"Blackthorn City: exact map, in from the Ice Path (east) at {_bt.player}; the Gym on the lake, Surf to Dragon's Den, the bridge to Route 45")
+g.walk_town_pos = None
+story.current_area_key, story.last_area_key = "DRAGON_SHRINE", "DRAGONS_DEN"
+_ds = _CS(g); g.change_state(_ds); _tap_through(_ds)
+check(isinstance(_ds, _WTS) and set(_ds.exits.values()) == {"DRAGONS_DEN"} and _ds.player[1] >= 13,
+      f"the Dragon Shrine: inside, in at its door {_ds.player}; the Elder's test")
+g.walk_town_pos = None
+story.current_area_key, story.last_area_key = "POKEMON_LEAGUE_GATE", "KANTO_ROUTE_26"
+_lg = _CS(g); g.change_state(_lg); _tap_through(_lg)
+check(isinstance(_lg, _WTS) and {"KANTO_ROUTE_22", "KANTO_ROUTE_28", "KANTO_ROUTE_26"} == set(_lg.exits.values()) and "leaguegate" in _lg.doors.values() and _lg.player[1] >= 17,
+      f"the Reception Gate: exact; in from Route 26 (south) at {_lg.player}; Route 22 west, Route 28 east, the great door north")
+g.walk_town_pos = None
+
+
 class _Held:  # (an arrow key held down)
     def __init__(self, key):
         self.key = key
@@ -955,7 +1322,8 @@ try:  # hold to keep walking (Jordan, 11-07), in a town and on a route map
         _ld.update()
     _town_ok = _ld.player[0] <= _x0 - 3
     _r29 = kanto("JOHTO_ROUTE_29", came="NEW_BARK_TOWN")
-    _r29.run.floor.movers = [m for m in _r29.run.floor.movers if m.kind != "wild"]  # (none in the way)
+    _r29.run.floor.movers = []  # (none in the way)
+    _r29.run.player = (58, 13)  # (the open row: the arrival row has a tree two steps west, as the original does)
     _rx = _r29.run.player[0]
     for _k in range(40):
         _r29.update()

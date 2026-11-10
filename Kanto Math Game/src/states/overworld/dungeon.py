@@ -200,7 +200,10 @@ def art_recipe(m):
         for i, p in enumerate(parts):  # (each floor's own legend, under its own keys)
             out["layout"][i] = {"map": p["layout"][0]["map"], "legend": p["legend"]}
         out["floors"] = len(parts)
-        out["exit_floors"] = {t: i for i, f in enumerate(m["floors"]) for t in f.get("exits", {}).values()}
+        out["exit_floors"] = {}
+        for i, f in enumerate(m["floors"]):  # (a target on two floors: you come back on the lower-numbered one)
+            for t in f.get("exits", {}).values():
+                out["exit_floors"].setdefault(t, i)
         out["art"] = m
         out["descend"] = bool(m.get("descend"))
         return out
@@ -242,6 +245,20 @@ def art_recipe(m):
                 out.append(",")
             elif c == "o":  # open sea: Surf across it
                 out.append("o")
+            elif c == "x":  # a whirlpool: in the way until cleared with Whirlpool (whirl:<x>,<y>)
+                ch = chr(0x2900 + len(legend))
+                legend[ch] = {"decor": f"whirl:{x},{y}"}
+                out.append(ch)
+            elif c in "$/":  # a waterfall / a rock wall: in the way till you have Waterfall / Rock Climb
+                ch = chr(0x2B00 + len(legend))
+                legend[ch] = {"decor": f"{'falls' if c == '$' else 'climb'}:{x},{y}"}
+                out.append(ch)
+            elif c == "%":  # sheet ice: you slide across it
+                out.append("%")
+            elif c == "&":  # a hole in the floor: a boulder pushed in drops through (hole:<x>,<y>)
+                ch = chr(0x2A00 + len(legend))
+                legend[ch] = {"decor": f"hole:{x},{y}"}
+                out.append(ch)
             elif c == "b":  # a boulder: Strength, then the slide puzzle (boulder:<x>,<y>)
                 ch = chr(0x2800 + len(legend))
                 legend[ch] = {"decor": f"boulder:{x},{y}"}
@@ -253,7 +270,7 @@ def art_recipe(m):
             elif c == "T":
                 out.append("#")  # (a tree: Headbutt works on it)
             else:
-                out.append({"#": "F", "k": "F", "i": "F", "r": "R", "q": "R", "l": "R", "h": "R", "m": "R", "g": "R", "j": "R", "y": "R", "z": "R"}.get(c, "B"))
+                out.append({"#": "F", "k": "F", "i": "F", "r": "R", "q": "R", "l": "R", "h": "R", "m": "R", "g": "R", "j": "R", "y": "R", "z": "R", "x": "R"}.get(c, "B"))
         rows.append("".join(out))
     legend.update({c: {"exit": t} for c, t in exits.items() if not c.isupper()})
     for c in "wu":  # (a way out across the sea: you surf onto it)
@@ -773,8 +790,12 @@ class DungeonState(OverworldBattles, PlayState):
         f = self.run.floor
         return f.tile(*(t or self.run.player)) == core.SURF
 
+    sliding = None  # (on sheet ice: the way you're sliding, till something stops you)
+
     def step(self, dx, dy):
         if not self._ready():
+            return
+        if self.sliding and (dx, dy) != self.sliding:  # (no turning on the ice)
             return
         from src.coop import roster
         if roster.host_tethered(self.game, (self.run.player[0] + dx, self.run.player[1] + dy)):
@@ -793,6 +814,10 @@ class DungeonState(OverworldBattles, PlayState):
             self.flash("The sea is deep. You need Surf to cross it!", 100)
             return
         events = self.run.step(dx, dy)
+        on_ice = self.run.player != before and self.run.player in getattr(self.run.floor, "ice", ())
+        self.sliding = (dx, dy) if on_ice and not any(ev[0] in ("exit", "stairs", "stairs_up") for ev in events) else None
+        if self.sliding:
+            self.walk_goal = None
         if self.run.player != before:
             self.anim_from, self.anim = before, STEP_FRAMES
             self.partner_from, self.partner = self.partner, before  # it steps where you were
@@ -927,6 +952,8 @@ class DungeonState(OverworldBattles, PlayState):
         return next((i for i in self.area_data.get("route_menu", []) if i.get("action") == "BOSS"), None)
 
     def _try_exit(self, target):
+        same = [t for t, v in self.run.floor.exits.items() if v == target]
+        core.ENTRANCE_INDEX = same.index(tuple(self.run.player)) if tuple(self.run.player) in same else 0
         if self.contest:  # leaving by the gate ends the contest: the judging first
             self._step_back()
             self._contest_end()
@@ -1458,14 +1485,53 @@ class DungeonState(OverworldBattles, PlayState):
     def _boulder_flag(self, t):
         return f"boulder_{self.area_key}_{self.run.index}_{t[0]}_{t[1]}"
 
+    def _drops(self, index):
+        """A floor's boulders that drop through its holes: [[boulder], [hole], [where it lands below]]."""
+        floors = (self.run.recipe.get("art") or {}).get("floors") or []
+        return floors[index].get("drops", []) if 0 <= index < len(floors) else []
+
     def _clear_boulders(self):
         """Boulders pushed aside stay out of the way (a story flag each)."""
         f = self.run.floor
         flags = self.game.story_manager.story_flags
+        for b, _hole, land in self._drops(self.run.index - 1):  # (dropped from above: a rock on the ice here)
+            t = tuple(land)
+            if t not in f.decor and flags.get(f"boulder_{self.area_key}_{self.run.index - 1}_{b[0]}_{b[1]}"):
+                f.decor[t] = f"fallen:{t[0]},{t[1]}"
+                f.tiles[t[1]][t[0]] = core.WALL
         for t, what in list(f.decor.items()):
             if str(what).startswith("boulder:") and flags.get(self._boulder_flag(t)):
                 del f.decor[t]
                 f.tiles[t[1]][t[0]] = core.FLOOR
+            elif str(what).startswith("falls:") and self.game.story_manager.inventory.get("HM_WATERFALL", 0) > 0:
+                del f.decor[t]
+                f.tiles[t[1]][t[0]] = core.SURF  # (you climb it: water you Surf up)
+            elif str(what).startswith("climb:") and self.game.story_manager.inventory.get("HM_ROCK_CLIMB", 0) > 0:
+                del f.decor[t]
+                f.tiles[t[1]][t[0]] = core.FLOOR  # (you scale it)
+            elif str(what).startswith("whirl:") and flags.get(self._boulder_flag(t)):
+                del f.decor[t]
+                f.tiles[t[1]][t[0]] = core.SURF  # (open water now)
+                self._floor_surf = None
+
+    def _whirlpool(self, t):
+        """Walked into a whirlpool (Jordan, 11-09): it bars the way until you clear it with Whirlpool."""
+        story = self.game.story_manager
+        if story.inventory.get("HM_WHIRLPOOL", 0) <= 0:
+            self.say(["A fierce whirlpool blocks the way!", "A Pokemon that knows Whirlpool could calm it."])
+            return
+        f = self.run.floor
+        todo, seen = [t], {t}
+        while todo:  # (the whole whirlpool, however many tiles it spreads over)
+            x, y = todo.pop()
+            story.story_flags[self._boulder_flag((x, y))] = True
+            for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+                n = (x + dx, y + dy)
+                if n not in seen and str(f.decor.get(n, "")).startswith("whirl:"):
+                    seen.add(n)
+                    todo.append(n)
+        self._clear_boulders()
+        self.say(["Your Pokemon used Whirlpool!", "The water calmed. The way is clear!"])
 
     def _boulder(self, t):
         """Walked into a boulder (Jordan, 11-07): with Strength, push it aside by solving the slide puzzle."""
@@ -1481,7 +1547,10 @@ class DungeonState(OverworldBattles, PlayState):
             if solved:
                 story.story_flags[self._boulder_flag(t)] = True
                 self._clear_boulders()
-                self.say(["Your Pokemon used Strength!", "The boulder slid out of the way!"])
+                if any(tuple(b) == tuple(t) for b, _h, _l in self._drops(self.run.index)):
+                    self.say(["Your Pokemon used Strength!", "The boulder dropped through the hole!", "It landed on the floor below."])
+                else:
+                    self.say(["Your Pokemon used Strength!", "The boulder slid out of the way!"])
             else:
                 self.say(["The boulder didn't budge. Try again any time!"])
 
@@ -1498,8 +1567,23 @@ class DungeonState(OverworldBattles, PlayState):
         m = self.run.recipe.get("art") or {}
         if m.get("floors"):  # (a map of floors: this floor's signs)
             m = dict(m, signs=m["floors"][self.run.index].get("signs", []))
+        if what.startswith("whirl:"):  # a whirlpool in the way: Whirlpool clears it
+            self._whirlpool(t)
+            return True
         if what.startswith("boulder:"):  # a boulder in the way: Strength, then the slide puzzle
             self._boulder(t)
+            return True
+        if what.startswith("falls:"):
+            self.say(["A wall of rushing water!", "A Pokemon that knows Waterfall could climb it."])
+            return True
+        if what.startswith("climb:"):
+            self.say(["A steep rock wall, with footholds.", "A Pokemon that knows Rock Climb could scale it."])
+            return True
+        if what.startswith("hole:"):
+            self.say(["There's a hole in the floor.", "A boulder pushed in would drop to the floor below."])
+            return True
+        if what.startswith("fallen:"):
+            self.say(["A boulder that fell from above.", "It's frozen fast in the ice."])
             return True
         if what.startswith("door:"):  # a house on the route (Oak's aide's): its route option, by its "door"
             opt = next((o for o in self.area_data.get("route_menu", []) if o.get("door") == what[5:]
@@ -1563,7 +1647,9 @@ class DungeonState(OverworldBattles, PlayState):
         if self.mode == "MAP":
             self._contest_check()
             self._follow_hold()
-            if self.walk_goal and self._ready():
+            if self.sliding and self._ready():  # (still sliding on the ice)
+                self.step(*self.sliding)
+            elif self.walk_goal and self._ready():
                 if self.run.player == self.walk_goal:
                     self.walk_goal = None
                 else:
@@ -1604,6 +1690,9 @@ class DungeonState(OverworldBattles, PlayState):
             from src.dungeon import art as _art
             m = self.run.recipe["art"]
             grid = m["floors"][self.run.index]["art"] if m.get("floors") else m["art"]
+            flags = self.game.story_manager.story_flags
+            if any(c == "x" for row in grid for c in row):  # (a whirlpool cleared is open sea)
+                grid = ["".join("o" if c == "x" and flags.get(self._boulder_flag((i, j))) else c for i, c in enumerate(row)) for j, row in enumerate(grid)]
             self._floor_surf = _art.surface(grid, m.get("buildings", {}), TILE, m.get("roofs"), m.get("theme"))
             self._floor_index = self.run.index
             return
@@ -2040,7 +2129,7 @@ class DungeonState(OverworldBattles, PlayState):
                 pygame.draw.ellipse(screen, (255, 236, 140), glow, 3)
                 screen.blit(img, img.get_rect(center=(glow.centerx, glow.centery + bob)))
         for (x, y), what in f.decor.items():  # boulders (Strength and the slide puzzle push them aside)
-            if str(what).startswith("boulder:") and (x, y) in f.seen and x0 <= x < x1 and y0 <= y < y1:
+            if str(what).startswith(("boulder:", "fallen:")) and (x, y) in f.seen and x0 <= x < x1 and y0 <= y < y1:
                 r = at(x, y)
                 img = self._sheet_frame("Object boulder.png", col=0, height=TILE - 4)
                 screen.blit(img, img.get_rect(midbottom=(r.centerx, r.bottom - 2)))
