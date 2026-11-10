@@ -909,7 +909,7 @@
       "travel_options": [{"text": "Route 101", "target_area": "HOENN_ROUTE_101"}],
       "explore_options": [{"text": "Mom", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_latiasite", "event": {"lines": ["Mom: A stone came in the mail for you. Two of them, in fact!", "You found the LATIASITE!"], "gift_item": {"LATIASITE": 1}, "flag": "got_latiasite"}}, {"text": "Mom's Second Stone", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_latiosite", "event": {"lines": ["Mom: And here's the other one!", "You found the LATIOSITE!"], "gift_item": {"LATIOSITE": 1}, "flag": "got_latiosite"}}, {"text": "A Glinting Stone: Mewtwonite X", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_mewtwonite_x", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the MEWTWONITE X!"], "gift_item": {"MEWTWONITE_X": 1}, "flag": "got_mewtwonite_x"}}, 
         {"text": "Visit Mom", "action": "NPC", "target": "mom"},
-        {"text": "Visit Next Door", "action": "NPC", "target": "hoenn_neighbor"},
+        {"text": "Visit Next Door", "action": "NPC", "target": "hoenn_neighbor", "door": "rival"},
         {"text": "Visit Birch's Lab", "action": "NPC", "target": "hoenn_birch_lab"}
       ],
       "next_area": "HOENN_ROUTE_101",

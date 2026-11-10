@@ -1027,8 +1027,9 @@ _gd.draw()
 for _k in ("radio", "dept", "bike", "flower", "center", "game corner"):
     check(_gd._door_options(_k), f"...the {_k} door has something behind it")
 _r35 = kanto("JOHTO_ROUTE_35", came="GOLDENROD_CITY")
-check((_r35.run.floor.w, _r35.run.floor.h) == (118, 28) and {"JOHTO_ROUTE_36", "GOLDENROD_CITY", "NATIONAL_PARK"} == set(_r35.run.floor.exits.values())
-      and core.distances(_r35.run.floor, _r35.run.player).get((117, 18)) is not None, "Route 35: exact map, and on foot from Goldenrod to National Park's way")
+check((_r35.run.floor.w, _r35.run.floor.h) == (36, 51) and {"JOHTO_ROUTE_36", "GOLDENROD_CITY", "NATIONAL_PARK"} == set(_r35.run.floor.exits.values())
+      and _r35.run.player[1] >= 43 and core.distances(_r35.run.floor, _r35.run.player).get((28, 1)) is not None,
+      f"Route 35: exact to the HGSS picture, in from Goldenrod (south) at {_r35.run.player}; on foot to the National Park's way; the gatehouse north to Route 36")
 _np = kanto("NATIONAL_PARK", came="JOHTO_ROUTE_36")
 check((_np.run.floor.w, _np.run.floor.h) == (65, 57) and {"JOHTO_ROUTE_35", "JOHTO_ROUTE_36", "POKEATHLON_DOME"} == set(_np.run.floor.exits.values())
       and _np.run.player[0] >= 45, "National Park: exact map, in from Route 36 (east gate), the Dome and Route 35")
@@ -1275,6 +1276,9 @@ story.inventory.pop("HM_ROCK_CLIMB", None)
 if _had:
     story.inventory["HM_ROCK_CLIMB"] = _had
 check(_walls == 15 and _left == 0 and _m3.run.floor.walkable(15, 10), f"Mt. Silver 3F: the towering cliff waits for Rock Climb ({_walls} footholds), then it's climbable")
+_h101 = kanto("HOENN_ROUTE_101", came="LITTLEROOT_TOWN")
+check((_h101.run.floor.w, _h101.run.floor.h) == (20, 24) and {"LITTLEROOT_TOWN", "OLDALE_TOWN"} == set(_h101.run.floor.exits.values()) and _h101.run.player[1] >= 21,
+      f"Hoenn Route 101: laid out from the ORAS map; in from Littleroot (south) at {_h101.run.player}; Oldale north")
 story.story_flags.pop("defeated_red_gyarados", None)
 _lor = kanto("LAKE_OF_RAGE", came="JOHTO_ROUTE_43")
 _gy = [m for f in _lor.run.floors for m in f.movers if m.kind == "figure" and m.payload.get("action") == "BOSS"]
@@ -1302,6 +1306,23 @@ story.current_area_key, story.last_area_key = "POKEMON_LEAGUE_GATE", "KANTO_ROUT
 _lg = _CS(g); g.change_state(_lg); _tap_through(_lg)
 check(isinstance(_lg, _WTS) and {"KANTO_ROUTE_22", "KANTO_ROUTE_28", "KANTO_ROUTE_26"} == set(_lg.exits.values()) and "leaguegate" in _lg.doors.values() and _lg.player[1] >= 17,
       f"the Reception Gate: exact; in from Route 26 (south) at {_lg.player}; Route 22 west, Route 28 east, the great door north")
+g.walk_town_pos = None
+story.current_area_key, story.last_area_key = "POKEATHLON_DOME", "NATIONAL_PARK"
+_pd = _CS(g); g.change_state(_pd); _tap_through(_pd)
+check(isinstance(_pd, _WTS) and set(_pd.exits.values()) == {"NATIONAL_PARK"} and "dome" in _pd.doors.values() and len(_pd._door_options("dome")) == 1 and "CONSTRUCTION" in str(_pd._door_options("dome")[0]) and _pd.player[1] >= 40,
+      f"the Pokeathlon Dome: its plaza, in from the National Park's north gatehouse {_pd.player}; the Dome's door says it's under construction")
+g.walk_town_pos = None
+story.current_area_key, story.last_area_key = "LITTLEROOT_TOWN", "HOENN_ROUTE_101"
+_lt = _CS(g); g.change_state(_lt); _tap_through(_lt)
+check(isinstance(_lt, _WTS) and (_lt.w, _lt.h) == (26, 21) and {"home", "rival", "lab"} <= set(_lt.doors.values()) and set(_lt.exits.values()) == {"HOENN_ROUTE_101"}
+      and _lt.player[1] <= 2 and _lt._door_options("rival") and _lt._door_options("lab") and _lt._door_options("home"),
+      f"Littleroot Town: laid out from the ORAS map; in from Route 101 (north) at {_lt.player}; your house, Birch's house and the Lab each have their own door")
+g.walk_town_pos = None
+story.current_area_key, story.last_area_key = "OLDALE_TOWN", "HOENN_ROUTE_101"
+_ot = _CS(g); g.change_state(_ot); _tap_through(_ot)
+check(isinstance(_ot, _WTS) and (_ot.w, _ot.h) == (22, 17) and {"center", "mart"} <= set(_ot.doors.values()) and _ot.player[1] >= 14
+      and {"HOENN_ROUTE_101", "HOENN_ROUTE_102", "HOENN_ROUTE_103"} == set(_ot.exits.values()),
+      f"Oldale Town: laid out from the ORAS map; in from Route 101 (south) at {_ot.player}; the Center and Mart; Routes 102 and 103")
 g.walk_town_pos = None
 
 

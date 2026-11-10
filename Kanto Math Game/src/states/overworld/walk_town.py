@@ -32,7 +32,7 @@ LABELS = {"center": "POKEMON CENTER", "mart": "POKE MART", "gym": "GYM", "lab": 
           "league": "ELITE FOUR", "johto": "TO JOHTO", "sprout": "SPROUT TOWER", "kurt": "KURT'S HOUSE", "ruins": "THE RUINS", "kabuto": "KABUTO CHAMBER", "omanyte": "OMANYTE CHAMBER",
           "aerodactyl": "AERODACTYL CHAMBER", "hooh": "HO-OH CHAMBER",
           "flower": "FLOWER SHOP", "bill": "BILL'S HOUSE",
-          "burned": "BURNED TOWER", "bellchime": "BELLCHIME TRAIL", "theater": "DANCE THEATER", "pharmacy": "PHARMACY", "souvenir": "SOUVENIR SHOP", "leaguegate": "VICTORY ROAD"}
+          "burned": "BURNED TOWER", "bellchime": "BELLCHIME TRAIL", "theater": "DANCE THEATER", "pharmacy": "PHARMACY", "souvenir": "SOUVENIR SHOP", "leaguegate": "VICTORY ROAD", "dome": "POKEATHLON DOME"}
 _DATA = {}
 
 
