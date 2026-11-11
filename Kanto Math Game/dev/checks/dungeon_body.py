@@ -1422,6 +1422,24 @@ _near112 = lambda who: any(abs(t[0] - n[0]) + abs(t[1] - n[1]) == 1 for n in _se
 check((_f112.w, _f112.h) == (40, 60) and _h112.run.player[0] >= 37 and _h112.run.player[1] > 45 and _near112("LAVARIDGE_TOWN") and _near112("HOENN_JAGGED_PASS") and _near112("HOENN_FIERY_PATH")
       and (39, 8) not in _seen112 and (38, 9) not in _seen112 and "door:cablecar" in _f112.decor.values() and sum(1 for v in _f112.exits.values() if v == "HOENN_FIERY_PATH") == 2,
       f"Hoenn Route 112: read from the Emerald map; in from Route 111 (east) at {_h112.run.player}; you can walk to Lavaridge, the Jagged Pass and the Fiery Path, but not to the north meadow; the Cable Car's door")
+_fpa, _fpb = {}, {}
+for _i in range(2):
+    _c.ENTRANCE_INDEX = _i
+    _fpa[_i] = kanto("HOENN_FIERY_PATH", came="HOENN_ROUTE_112").run.player
+    _c.ENTRANCE_INDEX = _i
+    _fpb[_i] = kanto("HOENN_ROUTE_112", came="HOENN_FIERY_PATH").run.player
+_c.ENTRANCE_INDEX = 0
+_hfp = kanto("HOENN_FIERY_PATH", came="HOENN_ROUTE_112")
+check((_hfp.run.floor.w, _hfp.run.floor.h) == (40, 42) and {"HOENN_ROUTE_112", "HOENN_MT_CHIMNEY"} == set(_hfp.run.floor.exits.values())
+      and _fpa[0][1] < 10 and _fpa[1][1] > 36 and _fpb[0][1] < 14 and _fpb[1][1] > 34,
+      f"The Fiery Path: laid out from the ORAS map; Route 112's two mouths each lead to their own (cave side {_fpa}; route side {_fpb})")
+_h113 = kanto("HOENN_ROUTE_113", came="HOENN_ROUTE_111")
+check((_h113.run.floor.w, _h113.run.floor.h) == (100, 20) and _h113.run.player[0] >= 97 and {"HOENN_ROUTE_111", "FALLARBOR_TOWN"} == set(_h113.run.floor.exits.values()),
+      f"Hoenn Route 113: read from the Emerald map; in from Route 111 (east) at {_h113.run.player}; Fallarbor west")
+_h114 = kanto("HOENN_ROUTE_114", came="FALLARBOR_TOWN")
+check((_h114.run.floor.w, _h114.run.floor.h) == (40, 80) and _h114.run.player[0] >= 37 and {"FALLARBOR_TOWN", "HOENN_METEOR_FALLS"} == set(_h114.run.floor.exits.values())
+      and "door:fossil" in _h114.run.floor.decor.values(),
+      f"Hoenn Route 114: read from the Emerald map; in from Fallarbor (east) at {_h114.run.player}; Meteor Falls at the canyon's end; the Fossil Maniac's door")
 story.story_flags.pop("defeated_red_gyarados", None)
 _lor = kanto("LAKE_OF_RAGE", came="JOHTO_ROUTE_43")
 _gy = [m for f in _lor.run.floors for m in f.movers if m.kind == "figure" and m.payload.get("action") == "BOSS"]
@@ -1517,6 +1535,12 @@ _vt = _CS(g); g.change_state(_vt); _tap_through(_vt)
 check(isinstance(_vt, _WTS) and (_vt.w, _vt.h) == (35, 22) and {"center", "contest", "wally"} <= set(_vt.doors.values()) and _vt.player[0] >= 31
       and {"HOENN_ROUTE_117", "HOENN_RUSTURF_TUNNEL"} == set(_vt.exits.values()) and _vt._door_options("wally") and _vt._door_options("contest"),
       f"Verdanturf Town: laid out from the ORAS map; in from Route 117 (east) at {_vt.player}; the Contest Hall, the Center, Wally's uncle's house; Rusturf Tunnel north")
+g.walk_town_pos = None
+story.current_area_key, story.last_area_key = "FALLARBOR_TOWN", "HOENN_ROUTE_113"
+_fb = _CS(g); g.change_state(_fb); _tap_through(_fb)
+check(isinstance(_fb, _WTS) and (_fb.w, _fb.h) == (28, 18) and {"center", "contest", "cozmo", "mart"} <= set(_fb.doors.values()) and _fb.player[0] >= 25
+      and {"HOENN_ROUTE_113", "HOENN_ROUTE_114"} == set(_fb.exits.values()) and _fb._door_options("cozmo") and _fb._door_options("contest"),
+      f"Fallarbor Town: laid out from the ORAS map; in from Route 113 (east) at {_fb.player}; the Contest Hall, the Center, Professor Cozmo's house")
 g.walk_town_pos = None
 
 

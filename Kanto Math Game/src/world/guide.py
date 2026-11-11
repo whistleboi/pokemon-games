@@ -219,6 +219,27 @@ def cached(game, what):
     return hit[1]
 
 
+def map_hop(game, targets):
+    """Of the ways out a walked map has (their area keys), the one to take toward the goal: the
+    next hop if it's one of them, else the one with the shortest trip from there (a town's menu can
+    jump further than its map: Pallet's TRAVEL goes to Viridian, its map only to Route 1)."""
+    targets = set(t for t in targets if t)
+    hop = cached(game, "hop")
+    if not hop or hop in targets:
+        return hop
+    goal = goal_area(game)
+    here = game.story_manager.current_area_key
+    key = ("map_hop", here, goal, frozenset(targets))
+    if key not in _CACHE:
+        best = None
+        for t in sorted(targets):
+            path = [t] if t == goal else path_to(game, t, goal)
+            if path and here not in path and (best is None or len(path) < best[0]):
+                best = (len(path), t)
+        _CACHE[key] = best and best[1]
+    return _CACHE[key]
+
+
 def hud_lines(game):
     """'GOAL: Rustboro City' and 'NEXT: Route 104' for the town / route HUD (empty if none)."""
     goal = goal_area(game)

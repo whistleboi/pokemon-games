@@ -1090,13 +1090,12 @@
       "has_gym": false,
       "travel_options": [
         { "text": "Route 113", "target_area": "HOENN_ROUTE_113" },
-        { "text": "Route 114", "target_area": "HOENN_ROUTE_114" },
-        { "text": "Meteor Falls", "target_area": "HOENN_METEOR_FALLS" }
+        { "text": "Route 114", "target_area": "HOENN_ROUTE_114" }
       ],
-      "explore_options": [{"text": "Professor Cozmo", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_galladite", "event": {"lines": ["Professor Cozmo: A strange stone, not a meteorite at all. You should have it.", "You found the GALLADITE!"], "gift_item": {"GALLADITE": 1}, "flag": "got_galladite"}}, 
+      "explore_options": [{"text": "Professor Cozmo", "door": "cozmo", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_galladite", "event": {"lines": ["Professor Cozmo: A strange stone, not a meteorite at all. You should have it.", "You found the GALLADITE!"], "gift_item": {"GALLADITE": 1}, "flag": "got_galladite"}}, 
         { "text": "Heal", "action": "HEAL" },
-        { "text": "Talk to Cozmo", "action": "NPC", "target": "professor_cozmo" },
-        { "text": "Contest Hall", "action": "NPC", "target": "contest_hall" }
+        { "text": "Talk to Cozmo", "door": "cozmo", "action": "NPC", "target": "professor_cozmo" },
+        { "text": "Contest Hall", "door": "contest", "action": "NPC", "target": "contest_hall" }
       ],
       "next_area": "HOENN_METEOR_FALLS",
       "on_enter_event": null
@@ -1857,7 +1856,8 @@
         {"text": "STONE COLLECTOR", "action": "HOENN_EVENT", "event": "stone_shop", "condition": "cave_of_origin_cleared", "color": "PURPLE"},
         {"text": "TERRA CAVE", "action": "EXIT", "target": "HOENN_TERRA_CAVE", "condition": ["can_exit", "delta_episode_cleared", "hoenn_version:ALPHA_SAPPHIRE"], "color": "RED"},
         {"text": "FALLARBOR TOWN", "action": "EXIT", "target_area": "FALLARBOR_TOWN", "condition": "can_exit", "color": "RED"},
-        {"text": "Desert Underpass", "action": "EXIT", "target_area": "HOENN_DESERT_UNDERPASS", "condition": ["can_exit", "beat_hoenn_champion"], "color": "RED"}
+        {"text": "METEOR FALLS", "action": "EXIT", "target_area": "HOENN_METEOR_FALLS", "condition": "can_exit", "color": "RED"},
+        {"text": "Desert Underpass", "door": "fossil", "action": "EXIT", "target_area": "HOENN_DESERT_UNDERPASS", "condition": ["can_exit", "beat_hoenn_champion"], "color": "RED"}
       ],
       "next_area": "FALLARBOR_TOWN",
       "region": "HOENN"
@@ -2804,9 +2804,9 @@
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         { "text": "THE MILLENNIUM COMET", "action": "BOSS", "color": "GOLD", "condition": ["millennium_comet_told", "not:hoenn_jirachi_met"], "boss": { "id": 385, "name": "Jirachi", "victory_flag": "hoenn_jirachi_met", "lines": ["The Millennium Comet shines through a crack in the cave roof.", "A tiny Pokemon with a star on its head floats down... Jirachi wakes!"] } },
-        { "text": "FALLARBOR TOWN", "action": "EXIT", "target_area": "FALLARBOR_TOWN", "condition": "can_exit", "color": "RED" }
+        { "text": "ROUTE 114", "action": "EXIT", "target_area": "HOENN_ROUTE_114", "condition": "can_exit", "color": "RED" }
       ],
-      "next_area": "FALLARBOR_TOWN",
+      "next_area": "HOENN_ROUTE_114",
       "region": "HOENN"
     },
     "HOENN_JAGGED_PASS": {

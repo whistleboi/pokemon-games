@@ -13265,5 +13265,312 @@
     "West: Lavaridge Town."
    ]
   ]
+ },
+ "HOENN_FIERY_PATH": {
+  "art": [
+   "cccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccrcccccccccccccccccccccccccc",
+   "ccccccccc.....ccccccccccc..........rcccc",
+   "ccccccccc.....ccccccccccc...........cccc",
+   "ccccccccc..cccccccccccccc...........cccc",
+   "ccccccccc..ccccccccccccrc...........cccc",
+   "ccccccccc..cccccccccccccc....cccccvccccc",
+   "cccrccccc..cccccccccccccc....ccccccccccc",
+   "ccc........cccccccccccccc....ccccccccccc",
+   "ccc........cccccccccccccc....ccccccccccc",
+   "ccc......cccccccccccccccc....ccccccccccc",
+   "ccc......cccccccccccccccc....ccccccccccc",
+   "ccc...ccccccccccccccccccc..X.ccccccccccc",
+   "ccc...............b.ccccc....ccccccccccc",
+   "ccc.......X.........ccccc....ccccccccccc",
+   "ccc...cccccccccc.......cc....ccccccccccc",
+   "ccc...cccccccccc...r...cc....ccccccccccc",
+   "ccc...cccccccccc.......b.....ccccccccccc",
+   "ccc...cccccccccc............rccccccccccc",
+   "ccc...ccccccccccccncccccc....ccccccccccc",
+   "cc........ccccccccccccccc....ccccccccccc",
+   "cc........ccccccccccccccc....ccccccccccc",
+   "cc........ccccccccccccccc....ccccccrcccc",
+   "cc........ccccccccccccccc....ccccccccccc",
+   "cccccc....ccccccccccccccc...........cccc",
+   "cccccc....ccccccccccccccc...........cccc",
+   "cccccc..X.ccccccccccccccc...........cccc",
+   "cccccc....ccccccccccccccccccc.......cccc",
+   "cccccc....cr..cccccccccccccccccc....cccc",
+   "cccccc....c...cccccccccccccccccc....cccc",
+   "cccccc........ccccccccccccccccrc....cccc",
+   "cccccc........cccccccccccccccccc...rcccc",
+   "ccccccrcccc...cccccccccccccccccc....cccc",
+   "ccccccc.......cccccccccccccccccc....cccc",
+   "ccccccc.......cccccccccccccccccc....cccc",
+   "ccccccc.......cccccccccccccccccc....cccc",
+   "ccccccc.......cccccccccccccccccc....cccc",
+   "cccccccccccccccccccccccccccccccc....cccc",
+   "ccccccccccccccccccccccccccccccccccvccccc",
+   "cccccccccccccccccccccccccccccccccccccccc"
+  ],
+  "theme": "cave",
+  "exits": {
+   "v": "HOENN_ROUTE_112",
+   "n": "HOENN_MT_CHIMNEY"
+  },
+  "trainer_spots": [
+   "Kindler Bernie",
+   "Battle Girl Cyndy",
+   "Team Magma Grunt"
+  ]
+ },
+ "HOENN_ROUTE_113": {
+  "art": [
+   "ccccccccccccccccTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#ccccccccccc",
+   "ccccccccccccccccTTT#TTTTTTT#TTTTTTTTTTTTT#T#T#T#T#T#TeTTT#TTTTTTT#T#TTTTTTTTTTT#TTTTT#T#cccccccccccc",
+   "ccccccccccccccccTTTTTTTTTTTTTTTTWWWWTTTTTTe\"\"\"\"\"\"\"\"eeee#e\"\"T#T#T#eee#eeeeT##ee#\"eTTT#T#ccccccccccccc",
+   "ccccccccccccccccTTT#T#T#TeeTTTT#WWWWT#T#T#\"\"\"\"\"\"\"\"\"\"eee#eeeeee\"\"\"eeeeeeeeeeeeeeeeeeee#cccccccccccccc",
+   "ccccccccccccccccTTTT#####eeT#T#TWWWWee\"\"\"\"\"\"\"\"\"\"#cc#eee#ee!e\"\"\"\"\"\"ee#e\"TTTT###e\"##ee#ccccccccccccccc",
+   "ccccccccccccccccTTT#eeeeeeeeeee!WDWWe\"\"\"\"\"\"\"\"\"\"\"cccc\"e\"#eeee\"\"\"\"\"\"ee#eeT#T#eeeXe#eee\"ccccccccccccccc",
+   "eeeeeeeeeeeeeee#TTTTeeee\"eeeeeeeeeee\"\"\"\"\"\"\"\"\"eeecccceee#\"\"\"\"\"\"\"\"\"#c##TTTTTTeeeee#\"ee\"!\"eeecccccccccc",
+   "eeeffffeffffeee#TTT#ee\"\"\"\"#eeeeeeee\"\"\"\"\"\"\"\"eeeeecccceee#\"\"\"\"\"\"\"\"\"ccc#TTTTT######c\"\"\"\"eeee...ccccccc.",
+   "eeeffffeffffeee#eT#e\"\"\"\"\"\"c###eeeee\"\"ee#ccc#eeXecccc###c\"\"\"\"\"\"eeeccc#\"T#T#\"\"\"\"\"\"\"\"\"\"\"eee..........=>",
+   "<eeeeeeeeeee!eeeee#\"\"\"\"\"\"\"\"\"\"#Xeeeeeee#cccccc#eeeeee\"\"\"\"\"\"\"\"\"\"eeeccc#ee\"\"\"\"\"\"\"\"\"\"\"\"\"eee...........=>",
+   "<eeeeeeeeeeeeeeeeeee\"\"\"\"\"\"\"\"\"c#####eeecccccccceeeeee\"\"\"\"\"\"\"###eee###cee\"\"\"\"\"\"\"\"\"\"\"\"\"ee..............",
+   "eeeffffeffffeeeeeeeeee\"\"\"\"\"\"\"\"\"\"\"eeeeecccccccceeeeeeee\"\"\"\"\"#eeXeeeeeeee\"\"\"\"\"\"\"\"\"\"\"ee\"e....#ccccccccc",
+   "eeeffffeffffeeeeeeeeee\"\"\"\"\"\"\"\"\"\"\"eeeeecccccccc###eeeeee\"\"\"\"#e\"\"eeeeeeeeee\"\"\"\"#cccccccccccccccccccccc",
+   "eeeeeeeeeeeeeeeeTeeeee\"\"\"\"\"\"\"\"\"\"\"eeeeeeeeeccccccc\"ee\"#cc####eTTTTTTTTTTTTTT\"\"ccccccccccccccccccccccc",
+   "TTTTTTTTTTTTTTeeTTTTTTTTTT\"\"\"\"\"\"eeeeTTTT\"ecccccTTTTT\"cccccc#TT#TTTTT#TTT#T##cccccccccccccccccccccccc",
+   "TTTTTcTTTcTTTTTeTTTTTTTTT##ccccccc#\"TTTTT\"eccccTT#TTTcccc##cTTTTTTTTTTTTTTTccccccccccccccccccccccccc",
+   "cTTTTTTTTTTTTTTTTT#TTT#TTTcccccccccc#T#TTTTTTTTTTTTT#ccccc#TTTTTTTTTTTTTTT#ccccccccccccccccccccccccc",
+   "TTTTTTTTTTTTTTTTTTTTTTTTT#cccccccccccTTTTTTTTTTTTTTTTccccccTTTTTTTTTTTTTTTTccccccccccccccccccccccccc",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTcccccccccccTTTTTTTTTTTTTTT#ccccccTTTTTTTTTTTTTTT#ccccccccccccccccccccccccc",
+   "TTTTTTTTTTTTTTTTTTTTTTTTT#cccccccccccTTTTTTTTTTTTTTTTccccccTTTTTTTTTTTTTTTTccccccccccccccccccccccccc"
+  ],
+  "exits": {
+   "<": "FALLARBOR_TOWN",
+   ">": "HOENN_ROUTE_111"
+  },
+  "buildings": {
+   "W": "house"
+  },
+  "roofs": {
+   "W": [
+    160,
+    160,
+    128
+   ]
+  },
+  "trainer_spots": [
+   "Ninja Boy Takashi",
+   "Parasol Lady Madeline",
+   "Youngster Neal",
+   "Ninja Boy Lung"
+  ],
+  "signs": [
+   [
+    "ROUTE 113",
+    "West: Fallarbor Town."
+   ],
+   [
+    "GLASS WORKSHOP",
+    "Turning volcanic ash into glass items."
+   ],
+   [
+    "Trainer Tips",
+    "Ash piles up in the grass here."
+   ],
+   [
+    "ROUTE 113",
+    "East: Route 111."
+   ]
+  ]
+ },
+ "FALLARBOR_TOWN": {
+  "art": [
+   "cccccccccccccccccccccccccccc",
+   "ccccAAAccccccccccccccccccccc",
+   "Tf=fAAA=fQQQQQQ===CCCC=====c",
+   "#===AAA==QQQQQQ===CCCC=====T",
+   "#===ADA!=QQQQQQ===CCDC=====T",
+   "#========QQQDQQ============T",
+   "#=========!================T",
+   "<==========================>",
+   "#=========KKKK=!====MMMM===T",
+   "#=========KKKK======MMMM...T",
+   "#====rr===KKKK======MMMM.f.T",
+   "#.f.....==KKDK======MDMM...T",
+   "T.......=f......========...T",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTT"
+  ],
+  "exits": {
+   "<": "HOENN_ROUTE_114",
+   ">": "HOENN_ROUTE_113"
+  },
+  "buildings": {
+   "A": "house",
+   "Q": "contest",
+   "C": "center",
+   "K": "cozmo",
+   "M": "mart"
+  },
+  "roofs": {
+   "A": [
+    226,
+    140,
+    40
+   ],
+   "K": [
+    226,
+    140,
+    40
+   ],
+   "C": [
+    236,
+    104,
+    60
+   ],
+   "M": [
+    64,
+    120,
+    220
+   ]
+  },
+  "signs": [
+   [
+    "MOVE REMINDER'S HOUSE"
+   ],
+   [
+    "CONTEST HALL"
+   ],
+   [
+    "FALLARBOR TOWN",
+    "A farm community with small gardens."
+   ]
+  ]
+ },
+ "HOENN_ROUTE_114": {
+  "art": [
+   "TTTTTTTTTTTTTTTTTcccccTTTccccccccccccccc",
+   "TTTTTTTTTTTTTTTTccccccTTcccccccccccccccc",
+   "TTTTTcccccccccccccccccccccccFFFFcccccccc",
+   "TTTTccccccccccccccccccccccccFFFFTTTTTTTT",
+   "TTTTcccccTTTTcccccccccccccccFFFFT=T=T=T=",
+   "TTTTccccTTTTTTTTTTTcccccccccFDFFffffffff",
+   "TTTTcccTTTTTooooooTccccc========fTTffTTf",
+   "ccccccccTTTTooTcccccccc========!ffTfffTf",
+   "ccccccccTTooTcccccccccc==oo=====ffffffff",
+   "cccccccccTooTcccccccccc==oo============>",
+   "ccccccccc$$$$cccccc====================>",
+   "ccccccccc$$$$ccccTT=============ffffffff",
+   "cccTTTTcc$$$$ccccT==============fTffffTf",
+   "cccTTTTTTooooTTT================fTTffTTf",
+   "cccTTTTTTToo=TTTT=o=========T=====ffffff",
+   "cccTTTTTTooo=T=T==o=====ooo=TTT======TT=",
+   "TTTTTTTToooo============ooo==T==TT==TTTT",
+   "oTTooTTTToooo====TT=====ooo==TT=TTTTTTTT",
+   "oTTTTTTTToooooo=TTTT====ooo==T==TTTTTTTT",
+   "TTTTTTTTToooooo=TTT==========TT=TTTTTTTT",
+   "TTTTTTTTToooooo==T=========c=TTTTTTTTTTT",
+   "cTTTTTTTTooooooo===eeee=======TTTTTTTTTT",
+   "e=TTTTTXoooooooooooeeeeoooooooTTTTTTTTTT",
+   "ee=T=T==oooooooooooeeeeoooooooTTTTTTTTTT",
+   "eeeeee==oooooooooooeeeeoooooooTTTTTTTTTT",
+   "ceeeee==ooTTTToooooeeeeoooooooTTTTTTTTTo",
+   "ceeeee==ooTTTToooooeeeeoooooooTTTTTTTTee",
+   "eeceee==ooTTTToooooeeeeoooooooooooeeeeee",
+   "eeceeec=oocTTcoooooeeeeooooooooooceeecee",
+   "eeeceec=oooooooooooeeeeooooooooooceeecee",
+   "eeeceec=oooooooooooeeeeooooooooooceeecee",
+   "eeeceec.oooooooooooeeeeooooooooooceceeee",
+   "eeeceec.oooooooooooeeeeooooooooooceceece",
+   "eeeceec........ooooeeee..LLLLL...ceceece",
+   "eeeeeceeee...............LLLLL\"\".ceceece",
+   "eeeceeeeeec..............LLLLL\"\"\"cececee",
+   "ceecceeeeec.e............LLDLL.\"\"cececee",
+   "eeceeeeceec.ec..........c......\"\"cececee",
+   "eeceeeecceecec...........!.......cececee",
+   "eeceeeecccecec.......\"cc.........cececee",
+   "eeceeeecccecec..X...\"\"\"..........cececee",
+   "ecceeeecccecec.......\"\"cc........cececee",
+   "cceeeeecccecec.c..\"\"\"\"\"\"\"........cececee",
+   "ceeeeeccccecec....\"\"\"\"\"\".........cececee",
+   "ceeccccccceceee...\"\"\"\"\"..........cececee",
+   "cecccccccceceeee..\"\"\"\"...........cececee",
+   "cecccccccccceeeec.\"\".............cececee",
+   "eccccceeccceeeeec............c..eeeeecee",
+   "ecccceecceeeeeeec............eeeceeeeeee",
+   "eccccceceeeeeceec\"\"\"........cceeeceeeeee",
+   "eccccceeeeeeec\"\"\"\"\"\"cc.....ccceeceeeeeee",
+   "eccccceeeeeeec\"\"\"\"\"\"\"\".....cccccceeeeeee",
+   "ecccccecceeeec\"\"\"\"\"\"\"\"\"....cceecceeeeeee",
+   "ecccccccceeeeeee.\"\"\"\"\"\".eeeeceecceeeeeee",
+   "eccceceeeceeeeeec\"\"\"\"\"\"cceeeeeeccceeeece",
+   "ecceeeeceeeceeeeee.\"\"\"\"cceXeeeeccceeeece",
+   "eceeeeccceeeeceeeec\"\"\"\"cceeeeeecccceeece",
+   "eeeeeccceeececeeeec.\".\"cceeceeecccceecee",
+   "eeeeecccceeccceeeeeeeeeeeeeceeeeecceecee",
+   "eeeeecccceeccceeeeeeeeeeeeeceeeeecceecee",
+   "eeeccccccecccceeeXeeeeeeeeeceeeeecceecee",
+   "eeccccccccccceeeeeeeeceeeeceeeeeccceecee",
+   "eeccccccccccceceeeeeccceeeeceeeeccceecee",
+   "eecccccc^cceccceeeeeeeeecccceeeeccceecee",
+   "eeccccc!eeeeceeeeeeeeeeecccceeecccceceee",
+   "eeccccceeeecceeeeeeeeeeeeeceeeeccceeceee",
+   "eeccccceeeecceeeeeceeceeeecceeeccceeceee",
+   "eecccccceeecceeccceeeceeeecceeeccceeceee",
+   "eecccccceeecceeecceecceeeecceeecceeeceee",
+   "eecceeceeeeeceecccceceeceecceeecceeceeee",
+   "eecececceeeeeeeccccccecceeeceeecceeceeee",
+   "eecececceeeeeeeccceeeecceecceeecceeceeee",
+   "eececeeeceeeeeecccceeccceeeeeeeccceeeeee",
+   "eeceeececceeeeeceeceeccceeeeeeceeceeeeee",
+   "eeeececeeeeeeeeeceeeeceeceeeecceceeeeeee",
+   "eeeececeeeeeeceeeececcceeeeeeeeeceeeeeee",
+   "eeeeeceeeeeeeeeceeeeccceeeeeeeeeceeeeeee",
+   "eeeeeeceeeeeceeeeeeeeceeceeeeeceeeeeeeee",
+   "eeeeeeeeeeeeeeeeeeeeeeeceeeceeceeeeeeeee",
+   "eeeeeeeeeeeeeeeeeeeeeeeeceeeeeeeeeeeeeee"
+  ],
+  "exits": {
+   ">": "FALLARBOR_TOWN",
+   "^": "HOENN_METEOR_FALLS"
+  },
+  "buildings": {
+   "F": "fossil",
+   "L": "house"
+  },
+  "roofs": {
+   "F": [
+    240,
+    192,
+    80
+   ],
+   "L": [
+    192,
+    64,
+    80
+   ]
+  },
+  "trainer_spots": [
+   "Fisherman Kai",
+   "Picnicker Angelina",
+   "Pokemaniac Steve",
+   "Hiker Lucas"
+  ],
+  "signs": [
+   [
+    "FOSSIL MANIAC'S HOUSE"
+   ],
+   [
+    "LANETTE'S HOUSE"
+   ],
+   [
+    "METEOR FALLS",
+    "Rustboro City: through here."
+   ]
+  ]
  }
 }

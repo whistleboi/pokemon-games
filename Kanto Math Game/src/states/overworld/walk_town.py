@@ -3,8 +3,8 @@ maps but wide open (no fog, no narrow halls). The town screen underneath is the 
 people, its events, the Center, the Mart, the Gym), only reached by walking:
 - walk into a building's door: what's inside (the Pokemon Center, the Mart, the Gym, Oak's Lab, your home);
 - the town's other people stand about (a tap, or walk into them, to talk);
-- walk off the map's edge: the route that side (as TRAVEL would take you, its conditions and all);
-- TRAVEL (bottom right) still has every other way (the far towns, the boats).
+- walk off the map's edge: the route that side (its conditions and all);
+- no TRAVEL button (Jordan, 11-10: you walk now): boats are a harbour's door, Fly is in MENU.
 The maps come from dev/builders/build_walk_towns.py (assets/walk_towns.json and assets/walk_towns/).
 CityState(game) is this when the town has a map (its __new__); headless, only with game.walk_towns = True."""
 import json
@@ -22,7 +22,7 @@ TILE, STEP = dn.TILE, dn.STEP_FRAMES
 DIRS = ((0, 1), (0, -1), (1, 0), (-1, 0))
 KEYS = {pygame.K_UP: (0, -1), pygame.K_w: (0, -1), pygame.K_DOWN: (0, 1), pygame.K_s: (0, 1),
         pygame.K_LEFT: (-1, 0), pygame.K_a: (-1, 0), pygame.K_RIGHT: (1, 0), pygame.K_d: (1, 0)}
-LABELS = {"wally": "WALLY'S UNCLE'S HOUSE", "contest": "CONTEST HALL", "shipyard": "STERN'S SHIPYARD", "market": "SLATEPORT MARKET", "devon": "DEVON CORP.", "center": "POKEMON CENTER", "mart": "POKE MART", "gym": "GYM", "lab": "LAB", "home": "HOME",
+LABELS = {"cozmo": "PROF. COZMO'S HOUSE", "wally": "WALLY'S UNCLE'S HOUSE", "contest": "CONTEST HALL", "shipyard": "STERN'S SHIPYARD", "market": "SLATEPORT MARKET", "devon": "DEVON CORP.", "center": "POKEMON CENTER", "mart": "POKE MART", "gym": "GYM", "lab": "LAB", "home": "HOME",
           "school": "TRAINER SCHOOL", "rival": "RIVAL'S HOUSE", "museum": "MUSEUM", "bike": "BIKE SHOP",
           "harbor": "HARBOR", "fanclub": "FAN CLUB", "radio": "RADIO TOWER", "ptower": "POKEMON TOWER",
           "fuji": "MR. FUJI'S HOUSE", "dept": "DEPT. STORE", "mansion": "CELADON MANSION", "hotel": "CELADON HOTEL",
@@ -130,6 +130,11 @@ class WalkTownState(CityState):
     _figure_img = dn.DungeonState._figure_img
     _trainer_img = dn.DungeonState._trainer_img
     _item_img = dn.DungeonState._item_img
+    # (the Journal's mission under MENU, and the gold marker toward it: as on the route maps, Jordan 11-10)
+    _journal_mission = dn.DungeonState._journal_mission
+    _journal_rect = dn.DungeonState._journal_rect
+    _draw_journal = dn.DungeonState._draw_journal
+    _exit_label = dn.DungeonState._exit_label
 
     def __init__(self, game):
         super().__init__(game)
@@ -456,17 +461,8 @@ class WalkTownState(CityState):
     # ---------------------------------------------------------------- input
     def _buttons(self):
         w, h = self.game.width, self.game.height
-        out = [(pygame.Rect(w - 280, h - 162, 126, 70), theme.pokemon_word("POKEMON"), theme.POKEMON, self._open_party),
-               (pygame.Rect(w - 146, h - 162, 126, 70), theme.pokemon_word("POKEDEX"), theme.BAG, self._open_pokedex)]
-        if not self.own_map:  # (our own maps: you walk wherever you go; Fly is in MENU. Jordan, 11-07)
-            out.append((pygame.Rect(w - 280, h - 80, 260, 58), "TRAVEL", theme.FIGHT, self._open_travel))
-        return out
-
-    def _open_travel(self):
-        options = self.area_data.get("travel_options", [])
-        for opt in options:
-            opt["action"] = "TRAVEL"
-        self._create_hover_menu(options, None)
+        return [(pygame.Rect(w - 280, h - 162, 126, 70), theme.pokemon_word("POKEMON"), theme.POKEMON, self._open_party),
+                (pygame.Rect(w - 146, h - 162, 126, 70), theme.pokemon_word("POKEDEX"), theme.BAG, self._open_pokedex)]
 
     def _camera(self):
         px, py = self.player
@@ -510,13 +506,16 @@ class WalkTownState(CityState):
                         self._enter(t)
                 elif e.key == pygame.K_p:
                     self._open_party()
-                elif e.key == pygame.K_t and not self.own_map:
-                    self._open_travel()
                 elif e.key in (pygame.K_ESCAPE, pygame.K_m) and self.hud_buttons:
                     self.hud_buttons[0].callback()  # MENU
             elif e.type == pygame.MOUSEBUTTONDOWN and e.button == 1:
                 if any(b.rect.collidepoint(e.pos) for b in self.hud_buttons):
                     continue
+                jr = self._journal_rect()
+                if jr is not None and jr.collidepoint(e.pos):  # (a tap on the mission: the Journal)
+                    from src.states.systems.journal import JournalState
+                    self.game.change_state(JournalState(self.game, self))
+                    return
                 hit = next((b for b in self._buttons() if b[0].collidepoint(e.pos)), None)
                 if hit:
                     hit[3]()
@@ -640,6 +639,8 @@ class WalkTownState(CityState):
         for spot, opt in people.items():
             self._pill(screen, _fill_names(self.game, opt.get("text", "")).upper()[:28], at(spot).centerx,
                        at(spot).y - 34, fonts)
+        if not self._busy():
+            self._draw_guide(screen, at)
         self._draw_hud(screen, fonts)
         if self.hover_menu_active and self.hover_bg_rect:
             pygame.draw.rect(screen, (255, 255, 255), self.hover_bg_rect, border_radius=12)
@@ -662,7 +663,47 @@ class WalkTownState(CityState):
     tap_mark = None
 
     def _minimap_rect(self):
-        return pygame.Rect(20, 128, self.w * 4 + 8, self.h * 4 + 8)
+        jr = self._journal_rect()
+        return pygame.Rect(20, jr.bottom + 10 if jr else 128, self.w * 4 + 8, self.h * 4 + 8)
+
+    # ---------------------------------------------------------------- the way to go
+    def _guide_spot(self):
+        """(tile, label) for the Journal's tracked mission: a door or person here that does what it needs,
+        else the nearest way out toward its next stop. None when there's nowhere to point."""
+        from src.world import guide
+        key = (self.player, pygame.time.get_ticks() // 1000)
+        if getattr(self, "_guide_key", None) == key:
+            return self._guide_hit
+        self._guide_key, self._guide_hit = key, None
+        if not guide.tracked_mission(self.game):
+            return None
+        px, py = self.player
+        near = lambda t: abs(t[0] - px) + abs(t[1] - py)
+        for spot, opt in sorted(self._people().items(), key=lambda kv: near(kv[0])):
+            if guide.advances_goal(self.game, self.area_key, opt):
+                self._guide_hit = (spot, "Here")
+                return self._guide_hit
+        for spot, kind in sorted(self.doors.items(), key=lambda kv: near(kv[0])):
+            if any(guide.advances_goal(self.game, self.area_key, o) for o in self._door_options(kind)):
+                self._guide_hit = (spot, "Here")
+                return self._guide_hit
+        hop = guide.map_hop(self.game, self.exits.values())
+        if not hop or hop == self.area_key:
+            return None
+        spot = min((t for t, target in self.exits.items() if target == hop), key=near, default=None)
+        if spot:
+            self._guide_hit = (spot, self._exit_label(hop))
+        return self._guide_hit
+
+    def _guide_lift(self, t):
+        if t in self._people():
+            return 70  # (over the person's name)
+        if t in self.doors or t in self.exits:
+            return 44  # (over the building's name; a way out's name sits low on its tile)
+        return None
+
+    def _draw_guide(self, screen, at):
+        dn.DungeonState._draw_guide(self, screen, lambda x, y: at((x, y)))
 
     def _draw_minimap(self, screen):
         mm, s = self._minimap_rect(), 4
@@ -683,6 +724,7 @@ class WalkTownState(CityState):
         pygame.draw.circle(screen, (255, 255, 255), (mm.x + 6 + self.player[0] * s, mm.y + 6 + self.player[1] * s), 3)
 
     def _draw_hud(self, screen, fonts):
+        self._draw_journal(screen)
         self._draw_minimap(screen)
         W, H = self.game.width, self.game.height
         name = theme.pokemon_word(self.area_data.get("route_name") or self.area_key.replace("_", " ").title())

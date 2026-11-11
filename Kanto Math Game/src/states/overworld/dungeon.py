@@ -2328,7 +2328,11 @@ class DungeonState(OverworldBattles, PlayState):
         hop = guide.cached(self.game, "hop")
         if not hop or hop == self.area_key:
             return None
-        spot = next((t for t, target in f.exits.items() if target == hop), None)
+        if self.run.n_floors == 1:  # (one floor: the map's own way out with the shortest trip, if the next stop isn't one)
+            hop = guide.map_hop(self.game, f.exits.values()) or hop
+        px, py = self.run.player
+        spot = min((t for t, target in f.exits.items() if target == hop),
+                   key=lambda t: abs(t[0] - px) + abs(t[1] - py), default=None)  # (the nearest of them)
         if spot:
             self._guide_hit = (spot, self._exit_label(hop))
             return self._guide_hit
@@ -2431,8 +2435,9 @@ class DungeonState(OverworldBattles, PlayState):
             pulse = 4 + int(3 * (1 + math.sin(t / 160)))
             pygame.draw.rect(screen, gold, r.inflate(pulse, pulse), 4, border_radius=10)
             bob = int(6 * math.sin(t / 180))
-            is_exit = (gx, gy) in self.run.floor.exits  # (its sign names it already: the arrow goes above)
-            tip = (r.centerx, r.top - (44 if is_exit else 10) + bob)
+            lift = self._guide_lift((gx, gy))  # (a tile already named: the arrow goes above its name)
+            is_exit = lift is not None
+            tip = (r.centerx, r.top - (lift if is_exit else 10) + bob)
             pts = [tip, (tip[0] - 14, tip[1] - 20), (tip[0] + 14, tip[1] - 20)]
             pygame.draw.polygon(screen, dark, [(x + 2, y + 2) for x, y in pts])
             pygame.draw.polygon(screen, gold, pts)
@@ -2466,6 +2471,10 @@ class DungeonState(OverworldBattles, PlayState):
         pygame.draw.rect(screen, gold, pill, 2, border_radius=8)
         screen.blit(tag, tag.get_rect(center=pill.center))
 
+    def _guide_lift(self, t):
+        """How far above a tile the guide's arrow sits when the tile has its own name (None: it doesn't)."""
+        return 44 if t in self.run.floor.exits else None
+
     def _journal_mission(self):
         """The Journal's tracked mission (looked up once a second), or None."""
         from src.world import guide
@@ -2476,7 +2485,7 @@ class DungeonState(OverworldBattles, PlayState):
 
     def _journal_rect(self):
         """The Journal's tracked mission, kept on screen under MENU (Jordan, 11-07), or None."""
-        if self.contest or not self._journal_mission():
+        if getattr(self, "contest", None) or not self._journal_mission():
             return None
         return pygame.Rect(20, 126, 380, 84)
 
