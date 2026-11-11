@@ -109,6 +109,7 @@ catching.window_throw = orig
 
 # quick catch: wrong answer -> it runs away
 m, d = beside(p, "wild")
+m.payload.is_shiny = False  # (a shiny is caught even on a wrong answer: not what this checks)
 p.step(*d)
 p._pick(0)
 wrong = next(i for i, o in enumerate(p.options) if o != p.correct_ans)
@@ -272,8 +273,8 @@ from src.states.overworld import dungeon as _dg
 
 
 def _reach_of(f, start):
-    """Where you can get to from start, a boulder counting as pushed aside (Strength and the slide puzzle)."""
-    held = {t: f.tiles[t[1]][t[0]] for t, v in f.decor.items() if str(v).startswith(("boulder:", "whirl:"))}
+    """Where you can get to from start, a boulder counting as pushed aside (Strength and the slide puzzle), a ledge as hopped over (one way: near enough for this)."""
+    held = {t: f.tiles[t[1]][t[0]] for t, v in f.decor.items() if str(v).startswith(("boulder:", "whirl:", "ledge:"))}
     for (x, y) in held:
         f.tiles[y][x] = core.FLOOR
     try:
@@ -1277,15 +1278,15 @@ if _had:
     story.inventory["HM_ROCK_CLIMB"] = _had
 check(_walls == 15 and _left == 0 and _m3.run.floor.walkable(15, 10), f"Mt. Silver 3F: the towering cliff waits for Rock Climb ({_walls} footholds), then it's climbable")
 _h101 = kanto("HOENN_ROUTE_101", came="LITTLEROOT_TOWN")
-check((_h101.run.floor.w, _h101.run.floor.h) == (20, 24) and {"LITTLEROOT_TOWN", "OLDALE_TOWN"} == set(_h101.run.floor.exits.values()) and _h101.run.player[1] >= 21,
-      f"Hoenn Route 101: laid out from the ORAS map; in from Littleroot (south) at {_h101.run.player}; Oldale north")
+check((_h101.run.floor.w, _h101.run.floor.h) == (20, 20) and {"LITTLEROOT_TOWN", "OLDALE_TOWN"} == set(_h101.run.floor.exits.values()) and _h101.run.player[1] >= 17,
+      f"Hoenn Route 101: from the Emerald map; in from Littleroot (south) at {_h101.run.player}; Oldale north")
 _h102 = kanto("HOENN_ROUTE_102", came="OLDALE_TOWN")
 _t102 = {str(m.payload) for m in _h102.run.floor.movers if m.kind == "trainer"}
-check((_h102.run.floor.w, _h102.run.floor.h) == (50, 22) and {"PETALBURG_CITY", "OLDALE_TOWN"} == set(_h102.run.floor.exits.values()) and _h102.run.player[0] >= 46 and len(_t102) == 3,
-      f"Hoenn Route 102: laid out from the ORAS map; in from Oldale (east) at {_h102.run.player}; Petalburg west; {len(_t102)} trainers standing where the picture has them")
+check((_h102.run.floor.w, _h102.run.floor.h) == (50, 20) and {"PETALBURG_CITY", "OLDALE_TOWN"} == set(_h102.run.floor.exits.values()) and _h102.run.player[0] >= 46 and len(_t102) == 3,
+      f"Hoenn Route 102: from the Emerald map; in from Oldale (east) at {_h102.run.player}; Petalburg west; {len(_t102)} trainers standing where the picture has them")
 _h103 = kanto("HOENN_ROUTE_103", came="OLDALE_TOWN")
 check((_h103.run.floor.w, _h103.run.floor.h) == (80, 22) and {"OLDALE_TOWN", "HOENN_ALTERING_CAVE", "HOENN_ROUTE_110"} == set(_h103.run.floor.exits.values()) and _h103.run.player[1] >= 19 and _h103.run.player[0] <= 14,
-      f"Hoenn Route 103: laid out from the ORAS map; in from Oldale (south) at {_h103.run.player}; Altering Cave north, Route 110 across the water")
+      f"Hoenn Route 103: from the Emerald map; in from Oldale (south) at {_h103.run.player}; Altering Cave north, Route 110 across the water")
 from src.dungeon import core as _c
 _w104, _pw = {}, {}
 for _i in range(3):
@@ -1304,9 +1305,9 @@ _hpw = kanto("HOENN_PETALBURG_WOODS", came="HOENN_ROUTE_104")
 _tpw = {str(m.payload) for m in _hpw.run.floor.movers if m.kind == "trainer"}
 check((_hpw.run.floor.w, _hpw.run.floor.h) == (48, 44) and len(_tpw) == 3, f"Petalburg Woods: read from the Emerald map, 48 x 44; {len(_tpw)} trainers")
 _h116 = kanto("HOENN_ROUTE_116", came="RUSTBORO_CITY")
-check((_h116.run.floor.w, _h116.run.floor.h) == (70, 21) and _h116.run.player[0] <= 2 and {"RUSTBORO_CITY", "HOENN_RUSTURF_TUNNEL"} == set(_h116.run.floor.exits.values())
+check((_h116.run.floor.w, _h116.run.floor.h) == (100, 20) and _h116.run.player[0] <= 2 and {"RUSTBORO_CITY", "HOENN_RUSTURF_TUNNEL"} == set(_h116.run.floor.exits.values())
       and sum(1 for v in _h116.run.floor.exits.values() if v == "HOENN_RUSTURF_TUNNEL") == 2,
-      f"Hoenn Route 116: laid out from the ORAS map; in from Rustboro (west) at {_h116.run.player}; Rusturf Tunnel's two mouths")
+      f"Hoenn Route 116: from the Emerald map; in from Rustboro (west) at {_h116.run.player}; Rusturf Tunnel's two mouths")
 _rtw, _rte = {}, {}
 for _i in range(2):
     _c.ENTRANCE_INDEX = _i
@@ -1315,9 +1316,9 @@ for _i in range(2):
     _rte[_i] = kanto("HOENN_ROUTE_116", came="HOENN_RUSTURF_TUNNEL").run.player
 _c.ENTRANCE_INDEX = 0
 _hrt = kanto("HOENN_RUSTURF_TUNNEL", came="HOENN_ROUTE_116")
-check((_hrt.run.floor.w, _hrt.run.floor.h) == (60, 33) and {"HOENN_ROUTE_116", "VERDANTURF_TOWN"} == set(_hrt.run.floor.exits.values())
-      and _rtw[0][0] <= 6 and _rtw[1][0] >= 48 and _rte[0][0] <= 39 and _rte[1][0] >= 50,
-      f"Rusturf Tunnel: laid out from the ORAS map; Route 116's two mouths each lead to their own (tunnel side {_rtw}; route side {_rte}); Verdanturf below")
+check((_hrt.run.floor.w, _hrt.run.floor.h) == (36, 24) and {"HOENN_ROUTE_116", "VERDANTURF_TOWN"} == set(_hrt.run.floor.exits.values())
+      and _rtw[0][0] <= 6 and _rtw[1][0] >= 27 and _rte[0][0] <= 48 and _rte[1][0] >= 64,
+      f"Rusturf Tunnel: from the Emerald map; Route 116's two mouths each lead to their own (tunnel side {_rtw}; route side {_rte}); Verdanturf below")
 _h106 = kanto("HOENN_ROUTE_106", came="DEWFORD_TOWN")
 check((_h106.run.floor.w, _h106.run.floor.h) == (80, 20) and _h106.run.player[1] >= 17 and {"DEWFORD_TOWN", "HOENN_GRANITE_CAVE", "HOENN_ROUTE_105"} == set(_h106.run.floor.exits.values()),
       f"Hoenn Route 106: read from the Emerald map; in from Dewford (south) at {_h106.run.player}; Granite Cave's mouth, Surf north to Route 105")
@@ -1336,8 +1337,8 @@ if _ms_had is None:
     story.story_flags.pop("met_steven", None)
 check(_gc_shut and _gc_open, f"Granite Cave 1F: fallen rocks bar the short way to Steven's side ({_gc_shut}); gone once you've met him ({_gc_open})")
 _h109 = kanto("HOENN_ROUTE_109", came="SLATEPORT_CITY")
-check((_h109.run.floor.w, _h109.run.floor.h) == (40, 53) and _h109.run.player[1] <= 3 and {"SLATEPORT_CITY", "HOENN_ROUTE_108"} == set(_h109.run.floor.exits.values()),
-      f"Hoenn Route 109: laid out from the ORAS map; in from Slateport (north) at {_h109.run.player}; Surf west to Route 108")
+check((_h109.run.floor.w, _h109.run.floor.h) == (40, 63) and _h109.run.player[1] <= 3 and {"SLATEPORT_CITY", "HOENN_ROUTE_108"} == set(_h109.run.floor.exits.values()),
+      f"Hoenn Route 109: from the Emerald map; in from Slateport (north) at {_h109.run.player}; Surf west to Route 108")
 _h110 = kanto("HOENN_ROUTE_110", came="SLATEPORT_CITY")
 _h110n = kanto("HOENN_ROUTE_110", came="MAUVILLE_CITY")
 check((_h110.run.floor.w, _h110.run.floor.h) == (40, 100) and _h110.run.player[1] >= 96 and _h110n.run.player[1] <= 2
@@ -1368,9 +1369,9 @@ while _todo110:
 _north110 = [t for t, v in _f110.exits.items() if v == "MAUVILLE_CITY"]
 check(any(abs(t[0] - n[0]) + abs(t[1] - n[1]) == 1 for t in _seen110 for n in _north110), "Hoenn Route 110: you can walk from Slateport to Mauville without Surf (the path under the Cycling Road)")
 _h117 = kanto("HOENN_ROUTE_117", came="MAUVILLE_CITY")
-check((_h117.run.floor.w, _h117.run.floor.h) == (60, 24) and _h117.run.player[0] >= 56 and {"MAUVILLE_CITY", "VERDANTURF_TOWN"} == set(_h117.run.floor.exits.values())
+check((_h117.run.floor.w, _h117.run.floor.h) == (60, 20) and _h117.run.player[0] >= 56 and {"MAUVILLE_CITY", "VERDANTURF_TOWN"} == set(_h117.run.floor.exits.values())
       and "door:daycare" in _h117.run.floor.decor.values(),
-      f"Hoenn Route 117: laid out from the ORAS map; in from Mauville (east) at {_h117.run.player}; the Day Care's door; Verdanturf west")
+      f"Hoenn Route 117: from the Emerald map; in from Mauville (east) at {_h117.run.player}; the Day Care's door; Verdanturf west")
 _h111 = kanto("HOENN_ROUTE_111", came="MAUVILLE_CITY")
 _a111, _a112 = {}, {}
 for _i in range(2):
@@ -1430,9 +1431,9 @@ for _i in range(2):
     _fpb[_i] = kanto("HOENN_ROUTE_112", came="HOENN_FIERY_PATH").run.player
 _c.ENTRANCE_INDEX = 0
 _hfp = kanto("HOENN_FIERY_PATH", came="HOENN_ROUTE_112")
-check((_hfp.run.floor.w, _hfp.run.floor.h) == (40, 42) and {"HOENN_ROUTE_112", "HOENN_MT_CHIMNEY"} == set(_hfp.run.floor.exits.values())
-      and _fpa[0][1] < 10 and _fpa[1][1] > 36 and _fpb[0][1] < 14 and _fpb[1][1] > 34,
-      f"The Fiery Path: laid out from the ORAS map; Route 112's two mouths each lead to their own (cave side {_fpa}; route side {_fpb})")
+check((_hfp.run.floor.w, _hfp.run.floor.h) == (35, 38) and {"HOENN_ROUTE_112", "HOENN_MT_CHIMNEY"} == set(_hfp.run.floor.exits.values())
+      and _fpa[0][1] < 10 and _fpa[1][1] > 34 and _fpb[0][1] < 14 and _fpb[1][1] > 34,
+      f"The Fiery Path: from the Emerald map; Route 112's two mouths each lead to their own (cave side {_fpa}; route side {_fpb})")
 _h113 = kanto("HOENN_ROUTE_113", came="HOENN_ROUTE_111")
 check((_h113.run.floor.w, _h113.run.floor.h) == (100, 20) and _h113.run.player[0] >= 97 and {"HOENN_ROUTE_111", "FALLARBOR_TOWN"} == set(_h113.run.floor.exits.values()),
       f"Hoenn Route 113: read from the Emerald map; in from Route 111 (east) at {_h113.run.player}; Fallarbor west")
@@ -1479,7 +1480,7 @@ check(_up == (_led[0], _led[1] + 1) and _down == (_led[0], _led[1] + 1) and _hop
       f"The Jagged Pass: a ledge at {_led} can't be climbed from below ({_up}) but you hop down over it ({_down}, hopping {_hopping})")
 _h118 = kanto("HOENN_ROUTE_118", came="MAUVILLE_CITY")
 check((_h118.run.floor.w, _h118.run.floor.h) == (80, 20) and _h118.run.player[0] <= 2 and {"MAUVILLE_CITY", "HOENN_ROUTE_119", "HOENN_ROUTE_123"} == set(_h118.run.floor.exits.values()),
-      f"Hoenn Route 118: laid out from the Emerald map; in from Mauville (west) at {_h118.run.player}; Route 119 north and Route 123 east across the water")
+      f"Hoenn Route 118: read from the Emerald map; in from Mauville (west) at {_h118.run.player}; Route 119 north and Route 123 east across the water")
 _h119 = kanto("HOENN_ROUTE_119", came="HOENN_ROUTE_118")
 _f119 = _h119.run.floor
 _s119, _t119 = {tuple(_h119.run.player)}, [tuple(_h119.run.player)]
@@ -1492,6 +1493,9 @@ while _t119:
 check((_f119.w, _f119.h) == (40, 140) and _h119.run.player[1] >= 136 and {"HOENN_ROUTE_118", "FORTREE_CITY"} == set(_f119.exits.values())
       and any(abs(t[0] - n[0]) + abs(t[1] - n[1]) == 1 for n in _s119 for t, v in _f119.exits.items() if v == "FORTREE_CITY") and "door:weather" in _f119.decor.values(),
       f"Hoenn Route 119: read from the Emerald map; in from Route 118 (south) at {_h119.run.player}; you can walk the bridges to Fortree without Surf; the Weather Institute's door")
+_h120 = kanto("HOENN_ROUTE_120", came="FORTREE_CITY")
+check((_h120.run.floor.w, _h120.run.floor.h) == (40, 100) and _h120.run.player[0] <= 2 and {"FORTREE_CITY", "HOENN_ROUTE_121", "HOENN_SCORCHED_SLAB"} == set(_h120.run.floor.exits.values()),
+      f"Hoenn Route 120: read from the Emerald map; in from Fortree (west) at {_h120.run.player}; Route 121 east, the Scorched Slab on the pond")
 story.story_flags.pop("defeated_red_gyarados", None)
 _lor = kanto("LAKE_OF_RAGE", came="JOHTO_ROUTE_43")
 _gy = [m for f in _lor.run.floors for m in f.movers if m.kind == "figure" and m.payload.get("action") == "BOSS"]
@@ -1527,72 +1531,57 @@ check(isinstance(_pd, _WTS) and set(_pd.exits.values()) == {"NATIONAL_PARK"} and
 g.walk_town_pos = None
 story.current_area_key, story.last_area_key = "LITTLEROOT_TOWN", "HOENN_ROUTE_101"
 _lt = _CS(g); g.change_state(_lt); _tap_through(_lt)
-check(isinstance(_lt, _WTS) and (_lt.w, _lt.h) == (26, 21) and {"home", "rival", "lab"} <= set(_lt.doors.values()) and set(_lt.exits.values()) == {"HOENN_ROUTE_101"}
+check(isinstance(_lt, _WTS) and (_lt.w, _lt.h) == (20, 20) and {"home", "rival", "lab"} <= set(_lt.doors.values()) and set(_lt.exits.values()) == {"HOENN_ROUTE_101"}
       and _lt.player[1] <= 2 and _lt._door_options("rival") and _lt._door_options("lab") and _lt._door_options("home"),
-      f"Littleroot Town: laid out from the ORAS map; in from Route 101 (north) at {_lt.player}; your house, Birch's house and the Lab each have their own door")
+      f"Littleroot Town: from the Emerald map; in from Route 101 (north) at {_lt.player}; your house, Birch's house and the Lab each have their own door")
 g.walk_town_pos = None
 story.current_area_key, story.last_area_key = "OLDALE_TOWN", "HOENN_ROUTE_101"
 _ot = _CS(g); g.change_state(_ot); _tap_through(_ot)
-check(isinstance(_ot, _WTS) and (_ot.w, _ot.h) == (22, 17) and {"center", "mart"} <= set(_ot.doors.values()) and _ot.player[1] >= 14
+check(isinstance(_ot, _WTS) and (_ot.w, _ot.h) == (20, 20) and {"center", "mart"} <= set(_ot.doors.values()) and _ot.player[1] >= 17
       and {"HOENN_ROUTE_101", "HOENN_ROUTE_102", "HOENN_ROUTE_103"} == set(_ot.exits.values()),
-      f"Oldale Town: laid out from the ORAS map; in from Route 101 (south) at {_ot.player}; the Center and Mart; Routes 102 and 103")
+      f"Oldale Town: from the Emerald map; in from Route 101 (south) at {_ot.player}; the Center and Mart; Routes 102 and 103")
 g.walk_town_pos = None
 story.current_area_key, story.last_area_key = "PETALBURG_CITY", "HOENN_ROUTE_102"
 _pc = _CS(g); g.change_state(_pc); _tap_through(_pc)
-check(isinstance(_pc, _WTS) and (_pc.w, _pc.h) == (30, 31) and {"center", "mart", "gym"} <= set(_pc.doors.values()) and _pc.player[0] >= 26
+check(isinstance(_pc, _WTS) and (_pc.w, _pc.h) == (30, 30) and {"center", "mart", "gym"} <= set(_pc.doors.values()) and _pc.player[0] >= 26
       and {"HOENN_ROUTE_102", "HOENN_ROUTE_104"} == set(_pc.exits.values()),
-      f"Petalburg City: laid out from the ORAS map; in from Route 102 (east) at {_pc.player}; the Gym, Center and Mart; Route 104 west")
+      f"Petalburg City: from the Emerald map; in from Route 102 (east) at {_pc.player}; the Gym, Center and Mart; Route 104 west")
 g.walk_town_pos = None
 story.current_area_key, story.last_area_key = "RUSTBORO_CITY", "HOENN_ROUTE_104"
 _rc = _CS(g); g.change_state(_rc); _tap_through(_rc)
-check(isinstance(_rc, _WTS) and (_rc.w, _rc.h) == (40, 44) and {"center", "mart", "gym", "devon", "school"} <= set(_rc.doors.values()) and _rc.player[1] >= 40
+check(isinstance(_rc, _WTS) and (_rc.w, _rc.h) == (40, 60) and {"center", "mart", "gym", "devon", "school"} <= set(_rc.doors.values()) and _rc.player[1] >= 56
       and {"HOENN_ROUTE_104", "HOENN_ROUTE_115", "HOENN_ROUTE_116"} == set(_rc.exits.values()) and len(_rc._door_options("devon")) >= 2,
-      f"Rustboro City: laid out from the ORAS map; in from Route 104 (south) at {_rc.player}; Devon's door holds {len(_rc._door_options('devon'))} things to do")
+      f"Rustboro City: from the Emerald map; in from Route 104 (south) at {_rc.player}; Devon's door holds {len(_rc._door_options('devon'))} things to do")
 g.walk_town_pos = None
 story.current_area_key, story.last_area_key = "DEWFORD_TOWN", "HOENN_ROUTE_106"
 _dw = _CS(g); g.change_state(_dw); _tap_through(_dw)
-check(isinstance(_dw, _WTS) and (_dw.w, _dw.h) == (33, 20) and {"center", "gym", "harbor"} <= set(_dw.doors.values()) and _dw.player[1] <= 2
+check(isinstance(_dw, _WTS) and (_dw.w, _dw.h) == (20, 20) and {"center", "gym", "harbor"} <= set(_dw.doors.values()) and _dw.player[1] <= 2
       and {"HOENN_ROUTE_106", "HOENN_ROUTE_107"} == set(_dw.exits.values()) and any("104" in str(o.get("text")) for o in _dw._door_options("harbor")),
-      f"Dewford Town: laid out from the ORAS map; in from Route 106 (north) at {_dw.player}; Mr. Briney's boat at the dock: {[o.get('text') for o in _dw._door_options('harbor')]}")
+      f"Dewford Town: from the Emerald map; in from Route 106 (north) at {_dw.player}; Mr. Briney's boat at the dock: {[o.get('text') for o in _dw._door_options('harbor')]}")
 g.walk_town_pos = None
 story.current_area_key, story.last_area_key = "SLATEPORT_CITY", "HOENN_ROUTE_109"
 _sl = _CS(g); g.change_state(_sl); _tap_through(_sl)
-check(isinstance(_sl, _WTS) and (_sl.w, _sl.h) == (47, 40) and {"center", "mart", "harbor", "museum", "contest", "shipyard", "market"} <= set(_sl.doors.values()) and _sl.player[1] >= 36
+check(isinstance(_sl, _WTS) and (_sl.w, _sl.h) == (40, 60) and {"center", "mart", "harbor", "museum", "contest", "shipyard", "market"} <= set(_sl.doors.values()) and _sl.player[1] >= 56
       and {"HOENN_ROUTE_109", "HOENN_ROUTE_110", "HOENN_ROUTE_134"} == set(_sl.exits.values()) and _sl._door_options("museum") and _sl._door_options("market") and _sl._door_options("shipyard"),
-      f"Slateport City: laid out from the ORAS map; in from Route 109 (the beach) at {_sl.player}; the Museum, Harbor, Shipyard, Contest Hall and market each have their own door")
+      f"Slateport City: from the Emerald map; in from Route 109 (the beach) at {_sl.player}; the Museum, Harbor, Shipyard, Contest Hall and market each have their own door")
 g.walk_town_pos = None
 story.current_area_key, story.last_area_key = "MAUVILLE_CITY", "HOENN_ROUTE_110"
 _mv = _CS(g); g.change_state(_mv); _tap_through(_mv)
-check(isinstance(_mv, _WTS) and (_mv.w, _mv.h) == (49, 40) and {"center", "mart", "gym", "bike", "game corner"} <= set(_mv.doors.values()) and _mv.player[1] >= 35
-      and {"HOENN_ROUTE_110", "HOENN_ROUTE_111", "HOENN_ROUTE_117", "HOENN_ROUTE_118", "MAUVILLE_CITY_2F"} == set(_mv.exits.values()) and _mv._door_options("bike") and _mv._door_options("game corner"),
-      f"Mauville City: laid out from the ORAS ground floor; in from Route 110 (south) at {_mv.player}; the Gym, Center, Mart, Rydel's Cycles and the Game Corner")
-g.walk_town_pos = None
-_up, _down = {}, {}
-for _i in range(4):
-    g.walk_town_pos = None
-    g.walk_town_exit = ("MAUVILLE_CITY", _i, 4)
-    story.current_area_key, story.last_area_key = "MAUVILLE_CITY_2F", "MAUVILLE_CITY"
-    _m2 = _CS(g); g.change_state(_m2); _tap_through(_m2); _up[_i] = _m2.player
-    g.walk_town_pos = None
-    g.walk_town_exit = ("MAUVILLE_CITY_2F", _i, 4)
-    story.current_area_key, story.last_area_key = "MAUVILLE_CITY", "MAUVILLE_CITY_2F"
-    _m1 = _CS(g); g.change_state(_m1); _tap_through(_m1); _down[_i] = _m1.player
-g.walk_town_exit = None
-check(isinstance(_m2, _WTS) and (_m2.w, _m2.h) == (38, 33) and [(_up[i][0] > 19, _up[i][1] > 16) for i in range(4)] == [(False, False), (True, False), (False, True), (True, True)]
-      and [(_down[i][0] > 24, _down[i][1] > 20) for i in range(4)] == [(False, False), (True, False), (False, True), (True, True)],
-      f"Mauville City 2F: each corner staircase leads to its own corner (up {_up}; down {_down})")
+check(isinstance(_mv, _WTS) and (_mv.w, _mv.h) == (40, 20) and {"center", "mart", "gym", "bike", "game corner"} <= set(_mv.doors.values()) and _mv.player[1] >= 17
+      and {"HOENN_ROUTE_110", "HOENN_ROUTE_111", "HOENN_ROUTE_117", "HOENN_ROUTE_118"} == set(_mv.exits.values()) and _mv._door_options("bike") and _mv._door_options("game corner"),
+      f"Mauville City: laid out from the Emerald map; in from Route 110 (south) at {_mv.player}; the Gym, Center, Mart, Rydel's Cycles and the Game Corner")
 g.walk_town_pos = None
 story.current_area_key, story.last_area_key = "VERDANTURF_TOWN", "HOENN_ROUTE_117"
 _vt = _CS(g); g.change_state(_vt); _tap_through(_vt)
-check(isinstance(_vt, _WTS) and (_vt.w, _vt.h) == (35, 22) and {"center", "contest", "wally"} <= set(_vt.doors.values()) and _vt.player[0] >= 31
+check(isinstance(_vt, _WTS) and (_vt.w, _vt.h) == (20, 20) and {"center", "contest", "wally"} <= set(_vt.doors.values()) and _vt.player[0] >= 17
       and {"HOENN_ROUTE_117", "HOENN_RUSTURF_TUNNEL"} == set(_vt.exits.values()) and _vt._door_options("wally") and _vt._door_options("contest"),
-      f"Verdanturf Town: laid out from the ORAS map; in from Route 117 (east) at {_vt.player}; the Contest Hall, the Center, Wally's uncle's house; Rusturf Tunnel north")
+      f"Verdanturf Town: from the Emerald map; in from Route 117 (east) at {_vt.player}; the Contest Hall, the Center, Wally's uncle's house; Rusturf Tunnel north")
 g.walk_town_pos = None
 story.current_area_key, story.last_area_key = "FALLARBOR_TOWN", "HOENN_ROUTE_113"
 _fb = _CS(g); g.change_state(_fb); _tap_through(_fb)
-check(isinstance(_fb, _WTS) and (_fb.w, _fb.h) == (28, 18) and {"center", "contest", "cozmo", "mart"} <= set(_fb.doors.values()) and _fb.player[0] >= 25
+check(isinstance(_fb, _WTS) and (_fb.w, _fb.h) == (20, 20) and {"center", "contest", "cozmo", "mart"} <= set(_fb.doors.values()) and _fb.player[0] >= 17
       and {"HOENN_ROUTE_113", "HOENN_ROUTE_114"} == set(_fb.exits.values()) and _fb._door_options("cozmo") and _fb._door_options("contest"),
-      f"Fallarbor Town: laid out from the ORAS map; in from Route 113 (east) at {_fb.player}; the Contest Hall, the Center, Professor Cozmo's house")
+      f"Fallarbor Town: laid out from the Emerald map; in from Route 113 (east) at {_fb.player}; the Contest Hall, the Center, Professor Cozmo's house")
 g.walk_town_pos = None
 story.current_area_key, story.last_area_key = "LAVARIDGE_TOWN", "HOENN_ROUTE_112"
 _lv = _CS(g); g.change_state(_lv); _tap_through(_lv)

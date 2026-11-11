@@ -10536,27 +10536,26 @@
  },
  "LITTLEROOT_TOWN": {
   "art": [
-   "TTTTTTTTTTTT^^TTTTTTTTTTTT",
-   "TTTTTTTTTTTlddlTTTTTTTTTTT",
-   "TTTTTTTTTTTTddTTTTTTTTTTTT",
-   "TTTT........dd........TTTT",
-   "TTTT.PPPPPffdd.RRRRR..TTTT",
-   "TTTT.PPPPP..dd.RRRRR..TTTT",
-   "TTTT.PPPPP..dd.RRRRR..TTTT",
-   "TTTT.PPPPP..dd.RRRRR..TTTT",
-   "TTTT.PPDPP!.dd!RRDRRf.TTTT",
-   "TTTT.f..ddddddddddddf.TTTT",
-   "TTTT.f..dddddddddddd..TTTT",
-   "TTTT...LLLLL..dd......TTTT",
-   "TTTT...LLLLL..dd.!.f..TTTT",
-   "TTTT...LLLLL..dd......TTTT",
-   "TTTT...LLLLL..dd...N..TTTT",
-   "TTTT...LLDLL!.dd.ff..fTTTT",
-   "TTTT..fffddddddd......TTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTT"
+   "TTTTTTTTTT^^TTTTTTTT",
+   "TTTTTTTTTT..TTTTTTTT",
+   "TT................TT",
+   "TT................TT",
+   "TTPPPPP......RRRRRTT",
+   "TTPPPPP......RRRRRTT",
+   "TTPPPPP......RRRRRTT",
+   "TTPPPPP......RRRRRTT",
+   "TTPPPDP!....!RDRRRTT",
+   "TT.................T",
+   "T..T............T.T.",
+   "....................",
+   "...LLLLLLL..........",
+   "...LLLLLLL.....!....",
+   "...LLLLLLL..........",
+   "...LLLLLLL..........",
+   "...LLLLDLL........TT",
+   "...TTT!...........TT",
+   "TT.TTT..........TTTT",
+   "TT..............TTTT"
   ],
   "exits": {
    "^": "HOENN_ROUTE_101"
@@ -10568,30 +10567,27 @@
   },
   "roofs": {
    "P": [
-    184,
-    134,
-    40
+    152,
+    104,
+    112
    ],
    "R": [
-    184,
-    134,
-    40
+    152,
+    104,
+    112
    ],
    "L": [
-    208,
-    158,
-    36
+    128,
+    128,
+    136
    ]
   },
-  "people": [
-   "A Glinting Stone: Mewtwonite X"
-  ],
   "signs": [
    [
-    "Your house."
+    "YOUR HOUSE"
    ],
    [
-    "Prof. Birch's house."
+    "PROF. BIRCH'S HOUSE"
    ],
    [
     "LITTLEROOT TOWN",
@@ -10604,30 +10600,26 @@
  },
  "HOENN_ROUTE_101": {
   "art": [
-   "TTTTTTTT^^^TTTTTTTTT",
-   "TTTTTTTT...TTTTTTTTT",
-   "TTTTTTTT...TTTTTTTTT",
-   "TTTTTTTT...TTTTTTTTT",
-   "TTTT.\"\".......T..TTT",
-   "TTTT.\"\"..d.....T.TTT",
-   "TTT\"\"\"\"\".d.\"\"\"...TTT",
-   "TTT\"\"\"\"\".d.\"\"\"...TTT",
-   "TTT\"\"\"\"\".f.\"\"\"...TTT",
-   "TTTT.\"\"....f.....TTT",
-   "TTTT.\"\".__..T.dddTTT",
-   "TTTT.___..TT..dddTTT",
-   "TTTTT...ffTT..dddTTT",
-   "TTTTT.!.....f.dddTTT",
-   "TTTTTT.ddd..\"\"dddTTT",
-   "TTTT...ddd.\"\"\"\".fTTT",
-   "TTTT\"\".ddd.\"\"\"\"..TTT",
-   "TTT\"\"\"\"f__..\"\".TTTTT",
-   "TTT\"\"\"\".....\"\".TTTTT",
-   "TTTT\"\"\"........TTTTT",
-   "TTTT\"\"\"....TTTTTTTTT",
-   "TTTT\"\"\"....TTTTTTTTT",
-   "TTTTTTTT...TTTTTTTTT",
-   "TTTTTTTTvvvTTTTTTTTT"
+   "TTTTTTTT^^^^TTTTTTTT",
+   "TTTTTTTT....TTTTTTTT",
+   "TT\"\"\"........\"\"\"TTTT",
+   "TT\"\"\"\"......\"\"\"\"TTTT",
+   "\"\"\"\"\"\"......\"\"\"\"\"\"TT",
+   "\"\"\"\"\".......\"\"\"\"\"\"TT",
+   "TT\"\"..#____TT\"\"\"\"...",
+   "TT____c....TTTT.....",
+   "TT.........TTTT.....",
+   "TTTT.!.....TT\"\".....",
+   "TTTT.......\"\"\"\"\"....",
+   "TTTT.......\"\"\"\"\"\"...",
+   "TTTT.......\"\"\"\"\"\"...",
+   "TT\"\"....____\"\"\"\"\"...",
+   "\"\"\"\"\".......TT\"\"..TT",
+   "\"\"\"\"\"\"......TT\"\"..TT",
+   "TT\"\"\"\"......TTTTTTTT",
+   "TT\"\"\".......TTTTTTTT",
+   "TTTTTTTTTT..TTTTTTTT",
+   "TTTTTTTTTTvvTTTTTTTT"
   ],
   "exits": {
    "^": "OLDALE_TOWN",
@@ -10642,50 +10634,63 @@
  },
  "OLDALE_TOWN": {
   "art": [
-   "TTTTTTTTTT^^TTTTTTTTTT",
-   "TTTTTTTTTTddTTTTTTTTTT",
-   "TT......ffdd.MMM...TTT",
-   "TT....AAA.dd.MMM...TTT",
-   "TT.fffAAA.dd.MMM...TTT",
-   "TT..f.ADA.dd.MDM.f.TTT",
-   "TT........dddddddd.TTT",
-   "<dNdddddddzzzdddNd.TTT",
-   "<dddddddddd!.....ffTTT",
-   "TT.ff.CCCCddf.BBB..TTT",
-   "TT....CCCCdd..BBB..TTT",
-   "TT....CDCCdd..BDB..TTT",
-   "TT........dd.f.....TTT",
-   "TT.....ff.dd..ff...TTT",
-   "TT........dd.......TTT",
-   "TTTTTTTTTTddTTTTTTTTTT",
-   "TTTTTTTTTTvvTTTTTTTTTT"
+   "TTTTTTTT^^^^TTTTTTTT",
+   "TTTTTTTT....TTTTTTTT",
+   "TTTT............TTTT",
+   "TTTT............TTTT",
+   "TTTTAAAA.....MMMM.TT",
+   "TTTTAAAA.....MMMM.TT",
+   "TTTTAAAA.....MDMM.TT",
+   "TTTTADAA..........TT",
+   "TTT........T...N....",
+   "TT.......T.!........",
+   "<.N.......T.........",
+   "<...................",
+   "TT................TT",
+   "TT...CCCC.....BBBBTT",
+   "TT...CCCC.....BBBBTT",
+   "TT...CCCC.....BBBBTT",
+   "TTTT.CDCC.....BDBBTT",
+   "TTTT..............TT",
+   "TTTT............TTTT",
+   "TTTT....vvvv....TTTT"
   ],
   "exits": {
    "^": "HOENN_ROUTE_103",
-   "v": "HOENN_ROUTE_101",
-   "<": "HOENN_ROUTE_102"
+   "<": "HOENN_ROUTE_102",
+   "v": "HOENN_ROUTE_101"
   },
   "buildings": {
    "A": "house",
-   "B": "house",
    "M": "mart",
-   "C": "center"
+   "C": "center",
+   "B": "house"
   },
   "roofs": {
    "A": [
-    180,
-    86,
-    40
+    152,
+    104,
+    112
+   ],
+   "M": [
+    72,
+    112,
+    168
+   ],
+   "C": [
+    200,
+    64,
+    80
    ],
    "B": [
-    180,
-    86,
-    40
+    152,
+    104,
+    112
    ]
   },
   "people": [
-   "Path to Route 102",
-   "Poke Mart Clerk"
+   "Poke Mart Clerk",
+   "Path to Route 102"
   ],
   "signs": [
    [
@@ -10698,26 +10703,24 @@
   "art": [
    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTT\"\"......!...ff.TTTTTTTTTT.\"\"\"\"~~~TTTTTTT",
-   "TTTTTTTTTT\"\"XdddddddX.........ff....\"\"\"\"~~~~~~TTTT",
-   "TTTT\"\"\"\"\"\"\"\".dddddddd.............#.\"\"\"\"~~~~~~TTTT",
-   "TTTT\"\"\"\"\"\"\"\"ddd..__..______.......#.....~~~~~~TTTT",
-   "<.............TTT....\"\"\"\"..TTTTT..#.....~~~~~~TTTT",
-   "<.........dd.fTTT.\"\"\"\"\"\"\"..TTTTTff.......!.......T",
-   "TTTTTTTTT.dd.TTTT\"\"\"\"\".....TTTTT...............dd>",
-   "TTTTTTTTT....TTTT\"\"\"\"\".....TTTTTTTTT...dddddd..dd>",
-   "TTTTTTTT\"\"\"..TTTT\"\"........TTTT\"\"TTT.dddddd...TTTT",
-   "TTTTTTTT\"\"__.TTTT\"\"...TT......\"\"\".TT.dddddd...TTTT",
-   "TTTTTTTT\"\"\"..TTTTTT...TTTT....\"\"\"X...ddddd..TTTTTT",
-   "TTTTTTTT\"\"\"..TTTTTT..\"\".TT.........dddd.TTTTTTTTTT",
-   "TTTTTTTT\"\"\"TTTTTTTT.\"\"\"\"\"\"\"\".ddd........TTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTT.....\"\"\"\".dd..TTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT"
+   "TTTTTTTT\"\"\"......!..TT..TT..TTTTTTTT\"\"\"\"c~~cTTTTTT",
+   "TTTTTTTT\"\"\".............##...TTTTTTT\"\"\"\"~~~~TTTTTT",
+   "TT\"\"\"\"\"\"\"\"\".X....................T#.\"\"\"\"~~~~~cTTTT",
+   "TT\"\"\"\"\"\"\"\"...................X..TT#..\"\"\"~~~~~~TTTT",
+   "<..\"\"\"\"\"\"\"....TT__..______....TTTT#...\"\"~~~~~~TTTT",
+   "<...\"\"\"\"......TT....\"\"\"\"\".TTTTTTTT#...........TTTT",
+   "<...........TTTT..\"\"\"\"\"\"\".TTTTTTTTc.............TT",
+   "<...........TTTT.\"\"\"\"\"\"\"..TTTTTTTT......!.......TT",
+   "TTTTTTTT....TTTT\"\"\"\"\"\"....TTTTTTTTTT.............>",
+   "TTTTTTTT....TTTT\"\"\"\"......TTTTTTTTTT.............>",
+   "TTTTTT\"\"....TTTT\"\"\".......TTTT\"\"TTTT.....X......TT",
+   "TTTTTT\"\"___.TTTT\"\"...TT.....\"\"\"\"TTTT............TT",
+   "TTTTTT\"\"\"...TTTTTT...TTTT...\"\"\"\"\"...........TTTTTT",
+   "TTTTTT\"\"\"..TTTTTTT..\"\"\"TT....\"\"\"............TTTTTT",
+   "TTTTTT\"\"\"\"TTTTTTTT.\"\"\"\"\"\"\"..............TTTTTTTTTT",
+   "TTTTTT\"\"\"\"TTTTTTTT.\"\"\"\"\"\"\"\".............TTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTT\"\"\"\"....TTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTT\"\"\"\"....TTTTTTTTTTTTTTTTTT"
   ],
   "exits": {
    "<": "PETALBURG_CITY",
@@ -10741,72 +10744,77 @@
  },
  "HOENN_ROUTE_103": {
   "art": [
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTToooooooooooooTccccccccccccccccccccccccccccccccccccccc",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTToooooooooooooTccccccccccccccccccccccccccccccccccccccc",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTToooooooooooooTccccccccccccccccccccccccccccccccccccccc",
-   "TTTTTTTTTTTTT^TTTTTTTTTTTTToooooooooooooTTTccccccccccccccccccccccccccccccccccccc",
-   "TTTTTTTTTTTTT.TTTTTTTTTTTTToooooooooooooooTccccccccccccccccccccccccccccccccccccc",
-   "TTTTTTT......\"\"\"\"..TTTTTTTToooooooooooooooTccccccccccccccccccccccccccccccccccccc",
-   "TTTTTTT...ddd\"\"\"\"..TTTTTToooooooooooooooooTcccc.....TTT.f..............TTT...TTT",
-   "TTTTTTT...dddd.\"\"\"\"TTTTTToooooooooooooooooTcccc.....TTT................TTT...TTT",
-   "TTTTT\"\"\"...____\"\"\"\"TTTTTTqoooooooqooqqoqqqTTTTT.....TTT....T.T.f.f..T..TTT...TTT",
-   "TTTTT\"\"\"\"\".....____..TTTToqqqoqqqoqoooqooooooo.............T.T..TTTTT...........",
-   "TTTTT\"\"\"\"\".............TTooooqoooooooooooooooo..........T....T..TTTTT.....=====>",
-   "TTTTT\"\"\"\"\".....dddd....ooooooooooooooooooooooo.......T.TTTTTTTTTTT.X..=========>",
-   "TTTTT\"\"\"\"......ddddX...ooooooooooooooooooooooo..=====..............=======......",
-   "TTTTTTT................ooooooooooooooooooooooo....======================........",
-   "TTTTTTT.........\"\"\"....ooooooooooooooooooooooo.....X..==============............",
-   "TTTTTTT_________\"\"\"....ooooooooooooooooooooooo.TTTTTTT...T.T.T.T.T.T.....TTTTTTT",
-   "TTTTTTT........\"\"\"\"..TTTTqooooooooooooooooooooTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTT.........\"\"\"TTTTTToqqoooqqoqooooqqoTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTT............TTTTTToooqoqoooqqoqqooqTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTT.ddTTTTTTTTTTTTToooooooooooooooTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTT.ddTTTTTTTTTTTTToooooooooooooooTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTT.vvTTTTTTTTTTTTToooooooooooooooTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT"
+   "TTTTTTTTTTTTTTTTTTTTTTTTTToooooooooooocccccccccccccccccccccccccccccccccccccccccc",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTToooooooooooocccccccccccccccccccccccccccccccccccccccccc",
+   "TTTT......\"\"\"\"\"\"TTTTTTTTTToqqooooooooooocccccccccccccccccccccccccccccccccccccccc",
+   "TTTT.......\"\"\"\"\"TTTTTTTTTToooooooooooooocccccccccccccccccccccccccccccccccccccccc",
+   "TT\"\".........\"\"\"\"\"TTTTTToooooooooqqoooooocccccccccccccccccccccTTTTccccTTTTTTTTTT",
+   "TT\"\"\"\"_______#\"\"\"\"TTTTTTooooqqoooooooooooccccccccccccccTT..n..TTTTTcc.TTTTTTTTTT",
+   "TT\"\"\"\"\"\"\"....c____##TTTTooooooqqoooooqqoocccccccccTTTTTTT.....TTTTTT..TTTTTTTTTT",
+   "TT\"\"\"\"\"\"\"...........TTTTooqqoooooooooooooooo......TTTTTTT......TTTTT.....TTTT.T.",
+   "TT\"\"\"\"\"\"\".............ooooooooooooooooooooooooooo...TTTTTT...T.TTTT...TT.TTTT.T.",
+   "TT\"\"\"\"\"\"\"..!..........ooooooooooooooooooooooooooo....TTTTTT.TTTTTTT..TTT.T...==>",
+   "TTTT\"\"\"\"X.........X...ooooooooooooooooooooooooooo.====.TTTT.TTTTTTTTTT.T...====>",
+   "TTTT\"\"\"\"......\"\"\"\"....ooooooooooooooooooooooooooo.========....TTTTTTT....======>",
+   "TTTT__________\"\"\"\"\"....#ooooooooooooooooooooooooo...=========================..T",
+   "TTTT.......\"\"\"\"\"\"\"\".....oooooooooooooooooooooTTTo..TTT.T===================..TTT",
+   "TTTT.......\"\"\"\"\"\"\"TTTTTTooooooooooooooqqoooooTTTTTTTTTTTTT.T.T.T.T.T.T.T.TT.TTTT",
+   "TTTT........\"\"\"\"\"\"TTTTTT..ooqqoooooooooooqqooTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTT......TTTTTTTTTTTTTTooooqqoooooooooooooTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTT......TTTTTTTTTTTTTToooooooooooooooooooTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTT..X.TTTTTTTTTTTTTToqqoooooooooooooooTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTT....TTTTTTTTTTTTTTooooooooooooooooooTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTT....TTTTTTTTTTTTTTooooooooooooooooooTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTvvvvTTTTTTTTTTTTTTooooooooooooooooooTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT"
   ],
   "exits": {
    "v": "OLDALE_TOWN",
-   "^": "HOENN_ALTERING_CAVE",
-   ">": "HOENN_ROUTE_110"
+   ">": "HOENN_ROUTE_110",
+   "n": "HOENN_ALTERING_CAVE"
   },
   "trainer_spots": [
    "Youngster Timmy",
    "Fisherman Andrew",
    "Lass Natalie"
+  ],
+  "signs": [
+   [
+    "ROUTE 103",
+    "South: Oldale Town."
+   ]
   ]
  },
  "PETALBURG_CITY": {
   "art": [
    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTAAAAATTTTTTT~~~~~~~TTTTTT",
-   "TTTTTAAAAATTTTTTT~~~~~~~TTTTTT",
-   "TTTTTAAAAATGGGGGT~~~~~~~TTTTTT",
-   "TTTTTAADAA#GGGGG#~~~~~~~TTTTTT",
-   "TTTT.fddff#GGGGG#~~~~~~~TTTTTT",
-   "TTTT..dd..#GGDGG#~~~~~~MMMTTTT",
-   "TTTTf.dd!##..dd..~~~~~~MMMTTTT",
-   "TTTTf.dd.....dN....N...MMMTTTT",
-   "TTTT..dd.....dd........MDMTTTT",
-   "<dddddddddddddd..CCCC..dd...TT",
-   "<dddddddddddddd..CCCC..dd.f.TT",
-   "TT~~~~~......dd..CCCC.fdd...TT",
-   "TT~~~~~..BBBBdd.!CCDC..dd...TT",
-   "TT~~~~~..BBBBdddddddddddddddd>",
-   "TT~~~~~..BBBBdddddddddddddddd>",
-   "TT~~~~~..BDBBdd..HHHH..#.TTTTT",
-   "TT~~~~~...ff.dd..HHHHyy#.TTTTT",
-   "TT~~~~~T.Nff.ddffHHHH..#.TTTTT",
-   "TT~~~~~T.....ddddHHDH..#.TTTTT",
-   "TT~~~~~~~~~~.ddddddd...TTTTTTT",
-   "TT~~~~~~~~~~......f....TTTTTTT",
-   "TT~~~~~~~~~~TTTTTTTTTTTTTTTTTT",
-   "TT~~~~~~~~~~TTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTAAAAATTTTTTTTTTTTc~~cTTTT",
+   "TTTTTAAAAATTTTTTTTTc~~~~~~TTTT",
+   "TTTTTAAAAATTGGGGGGT~~~~~~~TTTT",
+   "TTTTTAADAATTGGGGGGT~~~~~~~TTTT",
+   "TTTTTT==TTTTGGGGGGT~~~~~~~TTTT",
+   "TTTTTT==TTTTGGGGGGT~~~~~~~TTTT",
+   "TTTT..==..TTGGGDGGT~~~~~~~TTTT",
+   "TTTT..==!TTT..===.T#....MMMMTT",
+   "TT....==......==N.......MMMMTT",
+   "TT....==......===.......MMMMTT",
+   "<================.......MDMMTT",
+   "<================..CCCC..==.TT",
+   "TTc~~~cTT......==..CCCC..==.TT",
+   "TT~~~~~TT......==..CCCC..==.TT",
+   "TT~~~~~TTBBBB..==!.CDCC..==...",
+   "TT~~~~~TTBBBB..==============>",
+   "TT~~~~~TTBBBB..==============>",
+   "TT~~~~~TTBDBB..==......N......",
+   "TT~~~~~........==.........TTTT",
+   "TT~~~~~........==.THHHHTTTTTTT",
+   "TT~~~~~......N.==.THHHHTTTTTTT",
+   "TT~~~~~~~~~c...==.THHHHTTTTTTT",
+   "TT~~~~~~~~~~TTT==T.HDHHTTTTTTT",
+   "TT~~~~~~~~~~TT.=======.TTTTTTT",
+   "TT~~~~~~~~~~TTT=======...TTTTT",
+   "TT~~~~~~~~~~TT............TTTT",
+   "TT#TTTTTTTT#TTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT"
   ],
   "exits": {
@@ -10815,42 +10823,42 @@
   },
   "buildings": {
    "A": "house",
-   "B": "house",
-   "H": "house",
    "G": "gym",
    "M": "mart",
-   "C": "center"
+   "C": "center",
+   "B": "house",
+   "H": "house"
   },
   "roofs": {
    "A": [
-    196,
-    64,
-    52
-   ],
-   "B": [
-    196,
-    64,
-    52
-   ],
-   "H": [
-    196,
-    64,
-    52
+    216,
+    104,
+    96
    ],
    "G": [
-    244,
+    208,
     176,
-    44
-   ],
-   "C": [
-    236,
-    104,
-    60
+    104
    ],
    "M": [
-    64,
-    120,
-    220
+    112,
+    184,
+    240
+   ],
+   "C": [
+    248,
+    184,
+    128
+   ],
+   "B": [
+    216,
+    104,
+    96
+   ],
+   "H": [
+    216,
+    104,
+    96
    ]
   },
   "people": [
@@ -11071,50 +11079,66 @@
  },
  "RUSTBORO_CITY": {
   "art": [
-   "~~~~~~~~~~TTTTTTTTTTT.^^.TTTTTTTTTTTTTTT",
-   "~~~~~~~~~~TTTTTTTTTTT.==.TTTTTTTTTTTTTTT",
-   "TWWWWWWWWWWTTTTTTTTTT.==.TTTTTTTTTTTTTTT",
-   "TWWWWWWWWWWTVVVVVVVVT.==.TTTTTTTTTTTTTTT",
-   "TWWWWWWWWWWTVVVVVVVVTeaaeTTTTTTTTTTTTTTT",
-   "TWWWWWWWWWWTVVVVVVVVTeaaeTTTTTTTTTTTTTTT",
-   "TWWWWWWWWWWTVVVVVVVVTeaaeTTTTTTTTTTTTTTT",
-   "...........TVVVVVVVVTeaae#############TT",
-   "...........TVVVVVVVVTeaaeeeeee!eeeeeeee>",
-   "~~~~~~~~...TVVVVVVVVTeaaeaaaaaaaaaaaaaa>",
-   "~~~~~~~~...eVVVDVVVVeeaaeeeeeeeeeeeeeee>",
-   "~~~~~~~~...eeaaaaeeeeeaae#############TT",
-   "~~~~~~~~...eejaaajeeeeaaeGGGGGeAAAATTTTT",
-   "~~~~~~~~...eeaaaaeeeeeaaeGGGGGeAAAATTTTT",
-   "~~~~~~~~...eelaaaleeelaalGGGGGeAAAATTTTT",
-   "~~~~~~~~...eeaaaaeee!eaaeGGDGGeAADATTTTT",
-   "~~~~~~~~...aaaaaaaaaaaaaaaaaaaaaaaaTTTTT",
-   "~~~~~~~~...aaaaaaaaaaaaaaaaaaaaaaaaTTTTT",
-   "~~~~~~~~...eBBBBBBBeeeaae##########TTTTT",
-   "~~~~~~~~...lBBBBBBBeelaal.......TTTTTTTT",
-   "~~~~~~~~TT.eBBBBBBBeeeaae.......TTTTTTTT",
-   "~~~~~~~~TT.eBBBDBBBeeeaaeSSSSSeEEEETTTTT",
-   "~~~~~~~~TT.eeeeeeeeeeeaaeSSSSSeEEEETTTTT",
-   "~~~~~~~~TT.KKKeeCCCCCeaaeSSSSSeEEEETTTTT",
-   "~~~~~~~~TT.KKKeeCCCCCeaaeSSDSSeEEDETTTTT",
-   "~~~~~~~~TT.KKKeeCCCCCeaale!eeeeeeeeTTTTT",
-   "~~~~~~~~TT.KDKeeCCDCCeaaeeeeeeeeeeeTTTTT",
-   "TTTTTTTTTTTeeeeeeeeeeeaaeee.~~.eeeeTTTTT",
-   "TTTTTTTTTTTeeeeeeeeeeeaaeee.~~.eeeeTTTTT",
-   "TTTTTTTTTTTeeeeeeMMMMeaaeHHHHIIIIeeTTTTT",
-   "TTTTTTTTTTeeeeeeeMMMMeaaeHHHHIIIIeeTTTTT",
-   "TTTTTTTTTTFFFFeeeMMMMeaaeHHHHIIIIeeTTTTT",
-   "TTTTTTTTTTFFFFeeeMMMMlaalHHHHIIIIeeTTTTT",
-   "TTTTTTTTTTFFFFeeeMDMMeaaeHDHHIIDIeeTTTTT",
-   "TTTTTTTTTTFDFFeeeaaaaaaaaaaaaaaaaaeTTTTT",
-   "TTTTTTTTTTeeeeeeeaaaaaaaaaaaaaaaaaeTTTTT",
-   "TTTTTTTTTTeeeeeeeaae!eaaeeeeeTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTeeaaeeTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTelaaleTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTeeaaeeTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTeeaaeeTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTeeaaeeTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTeeaaeeTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTvvTTTTTTTTTTTTTTTTTTTTT"
+   "oooooooooocTTTTTTTT.^^^.TTTTTTTTTTTTTTTT",
+   "oooooooooocTTTTTTTT.....TTTTTTTTTTTTTTTT",
+   "oooooooooocTTTTTTTT.....TTTTTTTTTTTTTTTT",
+   "oooooooooocTTTTTTTT.....TTTTTTTTTTTTTTTT",
+   "oooooooooocTTTTTTTT.....TTTTTTTTTTTTTTTT",
+   "ooooooo....TTTTTTTT.......TTTTTTTTTTTTTT",
+   "oooooo.......TTTTTT.......TTTTTTTTTTTTTT",
+   "oooooc.VVVVVVVVVVTTeeeeeeeeeeTTTTTTTT.TT",
+   "oooooc.VVVVVVVVVVeeeeeeeeeeeeeaeeeeee...",
+   "oooooceVVVVVVVVVVeeeaaaaaaaaaaaaaaaaaaa>",
+   "oooooceVVVVVVVVVVeeeaaaaaaaaaaaaaaaaaaa>",
+   "oooooceVVVVVVVVVVeeeaaeeeeeeeeeeeeeee...",
+   "oooooceVVVVVVVVVVeeeaaeeeeeeeeeeeeeee...",
+   "oooooceVVVVVVVVVVeeeaaeeeeeeeeeeeeeeeTT.",
+   "oooooceVVVVVVVVVVeeeaaeeeeeeeeeeeeeeeTT.",
+   "oooooceVVVVVDVVVVeeeaaeeGGGGGGeAAAAAe.TT",
+   "oooooceeeeeeeeeeeeeeaaeeGGGGGGeAAAAAe.TT",
+   "oooooceeeeeeeeeeeeeeaaeeGGGGGGeAAAAAeTTT",
+   "ooooo.eeeeeeeeeeeeeeaaeeGGGGGGeAAAAAeTTT",
+   "ooooc.eeeeeeeeeeeeeeaaeeGGGDGGeAADAAe.TT",
+   "ooooc.eeeeeeeeeee!eeaaeeeeeeeeeeeeeee.TT",
+   "ooooc.eeeeeeeeeeeeaaaaaaaaaaaaaaaaaeeTTT",
+   "ooooc.eeeeeeeeeeeeaaaaaaaaaaaaaaaaaeeTTT",
+   "oooo..eeeeeeeeeeeeeeaaeeeeeeeeeeeeeee.TT",
+   "oooc..eeeeeeeeeeeeeeaaeeeeeeEEEEEeeee.TT",
+   "oooc..eeeBBBBBBBBBeeaaeeeeeeEEEEEeeeeTTT",
+   "ooocTTeeeBBBBBBBBBeeaaee....EEEEEeeeeTTT",
+   "ooo.TTeeeBBBBBBBBBeeaaee.TTTEEEEETTee.TT",
+   "ooc.TTeeeBBBBBBBBBeeaaee.TTTEEDEETTee.TT",
+   "ooc.TTeeeBBBBBBBBBeeaaee..TT.....TTeeTTT",
+   "oo..TTeeeBBBBDBBBBeeaaeeSSSSSSS...eeeTTT",
+   "oc..TTeeeeeeeeeeeeeeaaeeSSSSSSS..eeee.TT",
+   "ocTTTTeeeeeeeeeeeeeeaaeeSSSSSSSeeeeee.TT",
+   "ocTTTTeeeeeeeeeeeeeeaaeeSSSSSSSeeeeeeTTT",
+   "..TTTTeKKKKKeeeeeeeeaaeeSSSDSSSeeeeeeTTT",
+   "..TTTTeKKKKKeeeCCCCeaaeee!eeeeeeeeeee.TT",
+   "TTTTTTeKKKKKeeeCCCCeaaeeeeeeeeeeeeeee.TT",
+   "TTTTTTeKKKKKeeeCCCCeaaeeeeeeeeeeeeeeeTTT",
+   "TTTTTTeKKDKKaeeCDCCeaaeeeee~~~eeeeeeeTTT",
+   "TTTTTTeeeeeeeeeeeeeeaaeeeee~~~eIIIIee.TT",
+   "TT....eeaaaaaaaaaaaaaaeeeee~~~eIIIIee.TT",
+   "TTeeeeeeaaaaaaaaaaaaaaeeeeeeeeeIIIIeeTTT",
+   "TTeeeeeeeeeeeeeMMMMeaaeeHHHHHHeIIIIeeTTT",
+   "TTeFFFFFFFeeeeeMMMMeaaeeHHHHHHeIIIIee.TT",
+   "TTeFFFFFFFeeeeeMMMMeaaeeHHHHHHeIIIIee.TT",
+   "TTeFFFFFFFeeeeeMDMMeaaeeHHHHHHeIIIIeeTTT",
+   "TTeFFFFFFFeeeeeeeeeeaaeeHHDHHHeIIDIeeTTT",
+   "TTeFFFFFFFeeeeeaaaaaaaaaaaaaaeeeeeeee.TT",
+   "TTeFFFFFFFeeeeeaaaaaaaaaaaaaaeeeeeeee.TT",
+   "TTeFFFFFFFeeeeeaaee!eeeeeeeeeeeeeeeeeTTT",
+   "TTeFFFFFFFeeeeeaaeeeeeeeeeeeeeeeeeeeeTTT",
+   "TTeFFDFFFFeeeeeaaeeeeeeeeeeeeeee.....TTT",
+   "TTeeeeeeeeeeeeeaaeeeeeeeeeeeeeee.TTTTTTT",
+   "TTeeeeeeeeeeeeeaaeeeeeeeeeeeeeee.TTTTTTT",
+   "TTeeeeeeeeeeeeeaaeeeeeeeeeeeeeee.TTTTTTT",
+   "TT.........eeeeaaeeee............TTTTTTT",
+   "TTTTTTTTTT.eeeeaaeeee.TTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTT.....aa.....TTTTTTTTTTTTTTTTTT",
+   "TTTTTT............................TTTTTT",
+   "TTTTTT.........vv.................TTTTTT"
   ],
   "exits": {
    "^": "HOENN_ROUTE_115",
@@ -11122,92 +11146,82 @@
    "v": "HOENN_ROUTE_104"
   },
   "buildings": {
-   "W": "works",
    "V": "devon",
    "G": "gym",
-   "C": "center",
-   "M": "mart",
+   "A": "house",
+   "E": "house",
+   "B": "house",
    "S": "school",
    "K": "house",
-   "A": "house",
-   "B": "house",
-   "E": "house",
-   "F": "house",
+   "C": "center",
+   "M": "mart",
    "H": "house",
-   "I": "house"
+   "I": "house",
+   "F": "house"
   },
   "roofs": {
-   "K": [
-    184,
-    178,
-    152
-   ],
-   "A": [
-    184,
-    178,
-    152
-   ],
-   "B": [
-    184,
-    178,
-    152
-   ],
-   "E": [
-    184,
-    178,
-    152
-   ],
-   "F": [
-    184,
-    178,
-    152
-   ],
-   "H": [
-    184,
-    178,
-    152
-   ],
-   "I": [
-    184,
-    178,
-    152
-   ],
-   "W": [
-    140,
-    156,
-    136
-   ],
    "V": [
-    204,
-    184,
-    156
+    213,
+    213,
+    189
    ],
    "G": [
-    226,
-    150,
-    20
+    213,
+    180,
+    106
+   ],
+   "A": [
+    131,
+    131,
+    139
+   ],
+   "E": [
+    131,
+    131,
+    139
+   ],
+   "B": [
+    213,
+    213,
+    189
    ],
    "S": [
-    184,
-    178,
-    152
+    213,
+    213,
+    189
+   ],
+   "K": [
+    213,
+    213,
+    189
    ],
    "C": [
-    236,
-    104,
-    60
+    205,
+    65,
+    82
    ],
    "M": [
-    64,
-    120,
-    220
+    115,
+    189,
+    246
+   ],
+   "H": [
+    213,
+    213,
+    189
+   ],
+   "I": [
+    172,
+    180,
+    189
+   ],
+   "F": [
+    172,
+    180,
+    189
    ]
   },
   "signs": [
-   [
-    "ROUTE 116",
-    "East: Rusturf Tunnel."
-   ],
    [
     "DEVON CORPORATION",
     "For all your living needs, we make it all."
@@ -11224,41 +11238,40 @@
  },
  "HOENN_ROUTE_116": {
   "art": [
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTccccccccccccccccccccccccccccccccccccc",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTccccccccccccccccccccccccccccccccccccc",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTccccccccccccccccccccccccccccccccccccc",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTccccccccccccccccccccccccccccccccccccc",
-   "TTTTTTTTTTTT....f............TTTTccccccccccccccccccccccccccccccccccccc",
-   "TTTTTTTTTTTT............f....TTTTccccccccccccccccccccccccccccccccccccc",
-   "TTTTTTTTTTTT.#...f...T.TTTT..RRRRccccccccccccccccccccccc======cccccccc",
-   "TTTTTTTTTTTT.#...T.T.T....Tf.RRRRccccccccccccccccccccccc======cccccccc",
-   "TTTTTTTTTTT\"\"#___T.T.T....T..RDRRcccc^cccccccccccccccccc========r=cccc",
-   "<e......X\"\"\"\"\"\"..T.T.T....T.....!.......=======cccccccc======r====cccc",
-   "<e.ddd...\"\"\"\"\"\"...f...kk................=======cccccccc====r======cccc",
-   "<e.ddd!..\"\"\"\"\"\"..#............dd........==cc===cccc^cccccc=ccccccccccc",
-   "TT.ddd......kk..X#___________.dd........dd.c===ccc...............ccccc",
-   "TT...............\"\"\"\"\"\"\"\"\"\"\"\"...........dd.c===ccc...............ccccc",
-   "TTTTT.\"\"\"\"\"......\"\"\"\"\"\"\"\"\"\"\"\"X..........dd.c===ccc...............ccccc",
-   "TTTTT.\"\"\"\"X......\"\"\"\"\"\"\"\"\"\"\"\"..............c===cccTTTTTTTTcccccccccccc",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTcccccccTTTTTTTTcccccccccccc",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTcccccccccccc",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTcccccccccccc",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTcccccccccccc",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTcccccccccccc"
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT.ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT.ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "TTTTTTTTTTTTTT..#.TTTT.TTTTTTTTTTTTTTTTTTccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "TTTTTTTTTTTTT...#.#.TT.TTTTTTTTTTTTTTTTTTccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "TTTTTT..........#T...TTTT.TT.T.TTTTTTTTTTccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "TTTTTT......\"...#TT.T.TTT.TT.T.TT.TTRRRRRccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "TT.......\".\".\"..#.TTT....T...T.TT..TRRRRR.cccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "TT......\".\"\"\"\"\"\"cc#T##...TTT.T....TTRRRRR.cccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   ".....X..TT\"\"\"\"\"\"\"\"...#TT.TTTTT.TTTTTRRDRR..ccccnccccc=cccccccccccccccccccccccccccccccccccccccccccccc",
+   "<.....TTTT\"\"\"\"\"\"\"....cTT.T..T..TTTT..===!.......!.cccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "<....!TTTTTT\"\"\"\"\"\"...#.T.TT.T!.T..T..===..........cccccccccccccccncccccccccccccccccccccccccccccccccc",
+   "<.....TTTTTT\"\"\"\"\".X..#....T....T..T................c=ccccccccccc....cccc=ccccccccccccccccccccccccccc",
+   ".....\"TTTTTTTTTT!....c____#____#__#_........X.........cccccccccc................cccccccccccccccccccc",
+   "....\".\"\"TTTTTTTT........\"\"\"\"\"\"\"\"\"..\"..................cccccccccc................cccccccccccccccccccc",
+   "TT...\"\"\"\"TTT\"\"TT.......\".\"\"\"..\"\"\"\"\".\".....TTTTTTTT....ccccccccccTTTTTTTT.....#cccccccccccccccccccccc",
+   "TT..\".\"\"\"\"\"\"\"\"TT........\"\"\"\".\"\"\"\"\"\"\"......TTTTTTTT....ccccccccccTTTTTTTT#ccccccccccccccccccccccccccc",
+   "TTTT.\"\"\"\"\"\"\"\"..........\"\"\"\"\"\"\"\"\"X.\".\"...TTTTTTTTTTTT....ccccccTTTTTTTTTTcccccccccccccccccccccccccccc",
+   "TTTT\"\"\"\"\"\"\"\".\"........\".\"..\"\"\"\"..\"\"\"....TTTTTTTTTTTT....ccccccTTTTTTTTTTcccccccccccccccccccccccccccc",
+   "TTTTTTTTTTTT\".\"........\"\"\".\"TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTcccccccccccccccccccccccccccc",
+   "TTTTTTTTTTTT.........\"\"\"\"\"\"\"TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTcccccccccccccccccccccccccccc"
   ],
-  "parts": true,
   "exits": {
    "<": "RUSTBORO_CITY",
-   "^": "HOENN_RUSTURF_TUNNEL"
+   "n": "HOENN_RUSTURF_TUNNEL"
   },
+  "parts": true,
   "buildings": {
    "R": "house"
   },
   "roofs": {
    "R": [
-    222,
-    140,
-    50
+    200,
+    72,
+    72
    ]
   },
   "trainer_spots": [
@@ -11273,45 +11286,48 @@
     "West: Rustboro City."
    ],
    [
+    "Trainer Tips",
+    "Berries grow again where you plant them."
+   ],
+   [
+    "ROUTE 116",
+    "East: Rusturf Tunnel."
+   ],
+   [
     "TUNNELER'S REST HOUSE"
+   ],
+   [
+    "RUSTURF TUNNEL",
+    "Linking Rustboro and Verdanturf."
    ]
   ]
  },
  "HOENN_RUSTURF_TUNNEL": {
   "art": [
-   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-   "ccc........r.ccccccccccccccccccccccccccccccccccccccccccccccc",
-   "ccc..........cccccccccccccccccccccccccccccccccc......ccccccc",
-   "ccc..........ccccccccccccccccccccccccccccccccccr.....ccccccc",
-   "ccccccccc..cccccccccccccccccccccccccccccccccccc......ccccccc",
-   "ccc.r....................r....................c...r..ccccccc",
-   "ccc.............X.......................................cccc",
-   "ccc.............................r.......................cccc",
-   "cccc..cccccccccccccccccccccccccccccccccccccccc..........cccc",
-   "ccc.........cccccccccccccccccccccccccccccccccc............cc",
-   "ccc.........cccccccccccccccccccccccccccccccccc............cc",
-   "ccc.........cccccccccccccccccccccccccccccccccc............cc",
-   "ccc.......r.cccccccccccccccccccccccccccccccccc............cc",
-   "ccc.........ccccccccccccccccccccccccccccccccccccc..ccccccccc",
-   "ccc.........ccccccccccccccccccccccccccccccccccc........ccccc",
-   "cccccvccccccccccccccccccccccccccccccccccccccccc........ccccc",
-   "ccccccccccccccccccccccccccccccccccc..r.................ccccc",
-   "ccccccccccccccccccccccccccccccccccc....................ccccc",
-   "cccccccccccccccccccccccccccccc.........................ccccc",
-   "cccccccccccccccccccccccccccccc.........................ccccc",
-   "cccccccccccccccccccccccccccccc......................r..ccccc",
-   "cccccccccccccccccccccccccccccc......r.ccccccccccccvccccccccc",
-   "cccccccccccccccccccccccccccccc........cccccccccccccccccccccc",
-   "ccccccccccccccccccccccccccc........ccccccccccccccccccccccccc",
-   "ccccccccccccccccccccccccccc........ccccccccccccccccccccccccc",
-   "ccccccccccccccccccccccccccc........ccccccccccccccccccccccccc",
-   "ccccccccccccccccccccccccccc........ccccccccccccccccccccccccc",
-   "ccccccccccccccccccccccccccccccnccccccccccccccccccccccccccccc",
-   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+   "cccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccc",
+   "ccc.........X.....................cc",
+   "cccr..............................cc",
+   "ccc.....cccccccccccccccccccc......cc",
+   "ccc.....cccccccccccccccccccc......cc",
+   "ccc.....cccccccccccccccccccc......cc",
+   "ccc.....cccccccccccccccccccc......cc",
+   "ccc.....ccccccccccccccccccccc.cccccc",
+   "ccccvccccccccccccccccc............cc",
+   "cccccccccccccccccccccc...........rcc",
+   "ccccccccccccccccc.................cc",
+   "ccccccccccccccccc.....r...r.......cc",
+   "ccccccccccccccccc.................cc",
+   "ccccccccccccccccc...r.............cc",
+   "ccccccccccccccccc.....cccccccvcccccc",
+   "ccccccccccccccccc.....cccccccccccccc",
+   "ccccccccccccccccc.....cccccccccccccc",
+   "ccccccccccccccccc.....cccccccccccccc",
+   "ccccccccccccccccccnccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccc"
   ],
   "theme": "cave",
   "exits": {
@@ -11324,26 +11340,26 @@
  },
  "DEWFORD_TOWN": {
   "art": [
-   "TTTTTTTTTT^^TTTT~~~~~cccccccccccc",
-   "TTTT=HHHH===AAA=~~~~~cccccccccccc",
-   "TTTT=HHHH===AAA=~~~~~~~~~~~~~~~~~",
-   "TTTT=HDHH===ADA=~~~~~~~~~~~~~~~~~",
-   "TTTT===!========~~~~~~JJJJ~~~~~~~",
-   "TTTT============~~~~~~JJDJ~~~~~~~",
-   "TTTT=CCCC=======eeeeeeeee~~~~~~~~",
-   "TTTT=CCCC===!===eeeeeeeee~~~~~~~~",
-   "TTTT=CCCC=======~~~~~~~~~~~~~~~~~",
-   "TTTT=CDCC=======~~~~~~~~~~~~~~~~~",
-   "TTTT=======GGGGG~~~~~~~~~~~~~~~~~",
-   "TTTT=======GGGGG~~~~~~BBBB~~~~~ww",
-   "TTTT=======GGGGG======BBBB=======",
-   "TTTT=======GGGGG======BDBB=======",
-   "TTTT=======GGDGG=================",
-   "TTTTT==========!=================",
-   "TTTTTTTT====================TTTTT",
-   "TTTTTTTTTT======TTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTT===TTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT"
+   "THHHHH^^^^^oocTTTTTT",
+   "THHHHH=====oocTTTTTT",
+   "THHHHH=====oocTTTTTT",
+   "THHDHH=====oocTTTTTT",
+   "T=!======TToocTTTTTT",
+   "T======AAAAoocTTTTTT",
+   "=======AAAAooccccTTT",
+   "=CCCC==AAAAoJJoocccc",
+   "=CCCC==ADAAoDJoooooo",
+   "=CCCC======eeeooooow",
+   "=CDCC=====!=ooo====w",
+   "================BBBB",
+   "================BBBB",
+   "=====GGGGGG=====BBBB",
+   "T====GGGGGG=====BDBB",
+   "T====GGGGGG=======cT",
+   "T====GGGGGG!=======T",
+   "TT===GGGDGG=====TTTT",
+   "TTT==========cTTTTTc",
+   "TTTTTTTTTTTTTTTTTTTT"
   ],
   "exits": {
    "^": "HOENN_ROUTE_106",
@@ -11352,36 +11368,36 @@
   "buildings": {
    "H": "house",
    "A": "house",
-   "B": "house",
    "C": "center",
    "G": "gym",
+   "B": "house",
    "J": "harbor"
   },
   "roofs": {
    "H": [
-    24,
-    104,
-    172
+    72,
+    112,
+    168
    ],
    "A": [
-    24,
-    104,
-    172
-   ],
-   "B": [
-    24,
-    104,
-    172
-   ],
-   "G": [
-    250,
-    204,
-    80
+    72,
+    112,
+    168
    ],
    "C": [
-    236,
-    104,
-    60
+    200,
+    64,
+    80
+   ],
+   "G": [
+    208,
+    176,
+    104
+   ],
+   "B": [
+    72,
+    112,
+    168
    ],
    "J": [
     240,
@@ -11582,59 +11598,69 @@
  },
  "HOENN_ROUTE_109": {
   "art": [
-   "cccccccccccccccc^^cccccccccccccccc^^cccc",
-   "cccccccccccccccc==cccccccccccccccc==cccc",
-   "ooo===================================oo",
-   "ooo===================================oo",
-   "ooooooo===============================oo",
-   "ooooooo===HHHH========================qq",
-   "ooooooo===HHHH========================qq",
-   "oooqqoo===HDHH======X========X========qq",
-   "oooqqoooo=====!=======================qq",
-   "ooooooooo===========================oooo",
-   "oooqqqooo==========X================ooqq",
-   "oooqqqooo===========================ooqq",
-   "ooooooooooo=======================ooooqq",
-   "ooooooooooo=======================oooooo",
-   "oooqqoooooo=======================oooooo",
-   "oooqqoooooooo===================oooooooo",
-   "oooqqoooooooo===================ooooooqq",
-   "ooooooooooooo===================ooooooqq",
-   "oqqqqooooooooooo==============oooooooooo",
-   "oqqqqooooooooooo==============ooooooqqqo",
-   "oqqqqooooooooooo==============ooooooqqqo",
-   "oqqqqooooooooooo======ee=====oooooooqqqo",
-   "oqqqqoooooooooooooooooeeo====ooooooooooo",
-   "oqqqqoooooooooooooooooeeoooooooooooooooo",
-   "ooooooooooooooooooooooeeoooooooooooooooo",
-   "ooooooooooooooooooooooeeoooooooooooooooo",
-   "ooooooooooooooooooooooeeoooooo====ooooqq",
-   "oooqqqooooooooooooooooeeoooooo====ooooqq",
-   "oooqqqooooooooooooooooeeoooooo====ooooqq",
-   "oooqqqoooooooooooooooooooooooo====ooooqq",
-   "ooooooooooooooooooooooooooooooooooooooqq",
-   "ooooooo====ooooooooooooooooooooooooooooo",
-   "oqqoooo====ooooooooooooooooooooooooooooo",
-   "oqqoooo=X==ooooooooooooooooooooooooooooo",
-   "ooooooo====oooooooooooooooooooooooooqqoo",
-   "ooooooo====oooooooooooooooooooooooooqqoo",
-   "ooooooooooooooooooooooooooooooooooooqqoo",
-   "qqqooooooooooooooooooooooooooooooooooooo",
-   "qqqooooooooooooooooooooooooooooooooooooo",
-   "qqqoooooooooooooooooooooooo=====oooooooo",
-   "ooooooooooooooooooooooooooo=====oooooqqq",
-   "ooooooooooooooooooooooooooo=====oooooqqq",
-   "oooooooooooo====ooooooooooo=====oooooqqq",
-   "oooooooooooo====ooooooooooo=====oooooooo",
-   "wooooooooooo====oooooooooooooooooooooooo",
-   "wooooooooooo====oooooooooooooooooooooooo",
-   "wooooooooooo====oooooooooooooqqqooqqqqoo",
-   "wooooooooooo====oooooooooooooqqqooqqqqoo",
-   "ooooooooooooooooooooooooooooooooooqqqqoo",
-   "oooooooqqooooooooooqqqqqqooooooooooooooo",
-   "oooooooqqoqqqooooooqqqqqqooooooooooooooo",
-   "oqqqooooooqqqooooooqqqqqqooooooooooooooo",
-   "oqqqooooooqqqooooooooooooooooooooooooooo"
+   "oooooooo======^^^^^^^^==============oooo",
+   "oooooooo============================oooo",
+   "oooooooo==HHHHH=====================oooo",
+   "oqqoooooo=HHHHH======================ooo",
+   "ooooooooo=HHDHH===============X=======cc",
+   "oooooooooo=====!====X=================co",
+   "oooooooooo=========================ooocc",
+   "ooqqoooooo========================oooooo",
+   "oooooooooo========================oooqqo",
+   "oqqooooooo========================oooooo",
+   "oooooooooo===================c====oooooo",
+   "ooooooooo========================ooooooo",
+   "ooooooooo========================ooooooo",
+   "oooooooooo====X==================ooooqqo",
+   "ooccoooooo=======================ooooooo",
+   "ooccqooooo======================ooooooqc",
+   "oooooooooo======================oooooooo",
+   "ooooqqoooo=====================ooooooooo",
+   "ooooooooooo===================oooooooooo",
+   "oooooooooooo============X=====oooooooooo",
+   "ooooooooooooo================ooooooooooo",
+   "oooqqoooooooooo=============oooooooooqco",
+   "oooooooooooooooo===========oooooooooooco",
+   "ooooooooooooooooo=========oooooooooooccc",
+   "ooooooqqoooooooooo======oooooooooooocccc",
+   "ooooooooooooooooooooooooooooooooooooccco",
+   "ooooocqoooooooooooooooooooooooooooooccco",
+   "ooooocooooooooooooooooooooooooooooqqoooo",
+   "oooocccoooooooooooooooooooo==ooooooooooo",
+   "ooocccccqooooooooooooooooo=====oooooqqoo",
+   "oooccccoooooooooooooooooo========ooooooo",
+   "ooocccooooooooooooooooooo========ooooooo",
+   "ooooooooooooooooooooooooo========ooooooo",
+   "ooqqooooooooooooooooooooo========ooooooo",
+   "ooooooooqqoooooooooooooooo=====ooooooooo",
+   "oooooooqoooooooooooooooooooooooooooooooo",
+   "ooooooqcqooooooooooooooooooooooooooooooo",
+   "ooooooooooooooooooooooooooooooooooqqoooo",
+   "oooooooooooooooooooooooooooooooooooooooo",
+   "oooqqooooooooooooooooooooooooooooqqooooo",
+   "oooooooo==oooooooooooooooooooooooooooooo",
+   "ooqqooo===oooooooooooooooooooooqqooqqooo",
+   "cqooooo===oooooooooooooooooo=ooooooooooo",
+   "ooooooo===oooooooooooooooo===ooooooooooo",
+   "woqqoooooooooooooooooooooo====oooooooooo",
+   "woooooooooooooooooooooooo=====oooqqooooo",
+   "woooooooooooooooooooooooo=====oooooooooo",
+   "woooooooooooooooooooooooo=====ooooqqoooo",
+   "oooooooooooooooooooooooooooooooooooooooo",
+   "oooooooooooooooooooooooooooooooooooooooo",
+   "oooooooooooooooooooooooooooooooooooooooo",
+   "oooooooooooooooo=====oooooooooooooqqoooo",
+   "oooooooooooooooo=====ooooooooooooooooooo",
+   "oooooooooooooooo=====ooooooooooooooooooo",
+   "oooooooooooooooo=====oooooooooooooqooooo",
+   "ooooqqoooooooooo======ooooooooooocccoooo",
+   "ooooooooqoooooo========oooooooooccccoooo",
+   "oooooqccccooooo========ooooooooocccooooo",
+   "ooooooocccooooooo======oooqqoooooooooooo",
+   "ooooooooooooooooooo===ooooooqqoooooooooo",
+   "oooooooooooooooooooooooooooooooooooooooo",
+   "oooooooooooqqooooooooooooooooooooooooooo",
+   "oooooooooooooooooccccooooooooooooooooooo"
   ],
   "exits": {
    "^": "SLATEPORT_CITY",
@@ -11645,9 +11671,9 @@
   },
   "roofs": {
    "H": [
-    60,
-    130,
-    130
+    72,
+    136,
+    136
    ]
   },
   "trainer_spots": [
@@ -11665,46 +11691,66 @@
  },
  "SLATEPORT_CITY": {
   "art": [
-   "~~~TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT~~~~~~~~~~~",
-   "~~~TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT~~~~~~~~~~~",
-   "~~~TTTTTTTTTTTTTTT^^^TTTT...........~~~~~~~~~~~",
-   "~~~TTTTTTTTTTTTTTTeeeTTTTPPPPPPPPP..~~~~~~~~~~~",
-   "~~~.......QQQQQQ..eee....PPPPPPPPP..~~~~~~~~~~~",
-   "~~~.......QQQQQQ..eee.f..PPPPPPPPP..~~~~~~~~~~~",
-   "~~~.......QQQQQQ..eee..f.PPPPPPPPP..~~~~~~~~~~~",
-   "~~~...RRRRQQDQQQ..eee....PPPPDPPPP..~~~~~~~~~~~",
-   "~~~...RRRR.eee....eee...eeeeeeeeee..~~~~~~~~~~~",
-   "~~~...RRDR.eeeeeeeeeeeeeeeeeeeeeeew.~~~~~~~~~~~",
-   "~~~........eee....eeeeeeeeeeeeeeeew.~~~~~~~~~~~",
-   "~~~........eeeCCCCeeeMMM............~~~~~~~~~~~",
-   "~~~........eeeCCCCeeeMMM.~~~~~OOOOO.~~~~~~~~~~~",
-   "~~~..FFFF..eeeCDCCeeeMDM.~~~~~OOOOO.~~~~~~~~~~~",
-   "~~~..FFFF..eee..f.eee....~~~~~OOOOO.~~~~~~~~~~~",
-   "~~~..FDFF..eee...!eeeeeeeeeeeeOODOO.~~~~~~~~~~~",
-   "~~~..eeeeeeeeeeeeeeeeeeeeeeeeeeeee..~~~~~~~~~~~",
-   "~~~..eeeeeeeeeeeeeeeeeeeeeeeeeeeef..~~~~~~~~~~~",
-   "~~~..eeeeeeeeeeeeeeee!..............~~~~~~~~~~~",
-   "~~~..eeeeeeeeeeeeeeee..........~~~~~~~~~~~~~~~~",
-   "~~~..eeeee!eeeeeeeeee...f.YYYYY~~~~~~~~~~~~~~~~",
-   "~~~..eeeeeeeeeeeeeeee.....YYYYY~~~~~~~~~~~~~~~~",
-   "~~~..eeeeeeeeeeeeeeee.f...YYYYY~~~~~~~~~~~~~~~~",
-   "~~~..GGGeeeeeKKKeeeee.....YDYYY~~~~~~~~~~~~~~~~",
-   "~~~..GGGeeeeeKKKeeeee..........~~~~~~~~~~~~~~~~",
-   "~~~..GGGeeeeeKDKeeeeeAAABBB....~~~~~~~~~~~~~~~~",
-   "~~~..eeeeeeeeeeeeeeeeAAABBB..f.~~~~~....cc....~",
-   "~~~..HHHeeeeeIIIeeeeeADABDB.f..~~~~~....cc....~",
-   "~~~..HHHeeeeeIIIeeeee..........~~~~~....jj....~",
-   "~~~..eeeeeeeeeeeeeeee..........~~~~~..eeeeee..~",
-   "~~~..JJJJeeeeLLLLeeee.~~~~~~~~~~~~~~..eeeeee..~",
-   "~~~..JJJJeeeeLLLLeeee.~~~~~~~~~~~~~~..eeeeee..~",
-   "~~~..eeeeeeeeeeeeeeee.~~~~~~~~~~~~~~..eeeeee..~",
-   "~~~.eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee..~",
-   "~~~.eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee..~",
-   "~~~.eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee....~",
-   "~=============================================~",
-   "~=============================================~",
-   "~=============================================~",
-   "~ccccccccccccccccccvvccccccccccccccccccvvccccc~"
+   "TTTTTTTTTTTTTTTT.^^^TTTTTTTTTTTTTTTToooo",
+   "TTTTTTTTTTTTTTTT....TTTTTTTTTTTTTTTToooo",
+   "TTTTTTTTTTTTTTTT.....TTTTTTTTTTTTTTToooo",
+   "TTTTTTTTTTTTTTT.......TTTTTTTTTTTTTToooo",
+   "oTTTTTTTTTTTTTT.......TTTTTTTTTTTTTToooo",
+   "oTTTTTTTTTTTTTT.......TTTTTTTTTTTTTToooo",
+   "oTTTTTTTTTTTTT.........TTTTTTTTTTTTToooo",
+   "oTTTTTTTTTTTT...........TPPPPPPPTTTToooo",
+   "oTT.....QQQQQ..a.....a...PPPPPPPTTTToooo",
+   "oTT.....QQQQQ............PPPPPPPoooooooo",
+   "ooT....TQQQQQT...eee.....PPPPPPPoooooooo",
+   "ooT....TQQQQQT...eee.....PPPPPPPoooooooo",
+   "ooT....TQQDQQT...eee....!PPPDPPP.ooooooo",
+   "ooo....!e...eeeeeeeeeeeeeeeeee........oo",
+   "ooo.....e...eeeeeeeeeeeeeeeeee........oo",
+   "ooo.....e...eeeeeeeeeeeeeeeeee........oo",
+   "ooo.RRRR.eee......CCCC................oo",
+   "ooo.RRRR.eee......CCCC..........oooooooo",
+   "oo..RRRR.eee......CCCC...ooooooooooooooo",
+   "oo..RDRR!eee......CDCC.ooooooooooooooooo",
+   "oo...eeeeeeeeeeeeeee...oooooooooooooooow",
+   "o..a.eeeeeeeeeeeeeee...oooooooooooooooow",
+   "o.FFFFF..eee....!eee...oooaaOOOOOOaaoooo",
+   "o.FFFFF..eeeMMMM.eee...ooaeeOOOOOOeeaooo",
+   "o.FFFFF..eeeMMMM.eee...ooae.OOOOOO.eaooo",
+   "o.FFFFF..eeeMMMM.eee...ooa.TOOOOOOT.aooo",
+   "o.FFDFF.aeeeMDMM.eeeeeaaae!TOOOOOOT.aooo",
+   "o..eeeeeeeeeeeeeeeeeeeeeee..OODOOO..aooo",
+   "o..eeeeeeeeeeeeeeeeeeeeeeee........eaooo",
+   "o........eee.....eeeeeaaaeeeeeeeeeeeaooo",
+   "o.........ee.....eee...ooaaaaaaaaaaaaooo",
+   "o.T.T.T.......T..eee...ooooooooooooooooo",
+   "o..............T.eee...oYYYYYYYYoooooooo",
+   "o.ee.eeeeeeee....eee....YYYYYYYYeeeeeeeo",
+   "o.eeeeeeeeeeee.T.eee..a.YYYYYYYYeaeeeaeo",
+   "o.eeeeeeeeeeee...eee....YYYYYYYYoooooooo",
+   "o.eeeeeeeeaeee.T.eee....YYYYYYYYoooooooo",
+   "o.eeeeeeeeeeee...eee....YYYYYYYYoooooooo",
+   "o.eeeeeeeeeeee.T.eee...!YYDYYYYYaooooooo",
+   "o.eeeeeeeeeeee...eeeeeeeeeeeeeeeeaaaaaao",
+   "o.eeeeeeeeeeee.T.eeeeeeeeeeeeeeeeeeeeeao",
+   "o.GGGGeeeeKKKK...eeeAAAABBBBBBeeeeeeeeao",
+   "o.GGGGeeeeKKKK.T.eeeAAAABBBBBBeeeaaaaaao",
+   "o.GGGGeeeeKDKK...eeeAAAABBBBBBeeaooooooo",
+   "o.eeeeeeeeeee..T.eeeADAABDBBBBeeaooooooo",
+   "o.HHHHeeeeIIII...eeeeeeeeeeeeeeeaooooooo",
+   "o.HHHHeeeeIIII.T.eeeeeeeeeeeeeeeaooooooo",
+   "o.HHHHeeeeIIII...eeeaaaaaaaaaaaaaooooooo",
+   "o..eeeeeeeeee..T.eeeaooooooooooooooooooo",
+   "o.JJJJeeeeLLLL...eeeaooooooooooooooooooo",
+   "o.JJJJeeeeLLLL.T.eeeaoooooooaaaaaaaaaaoo",
+   "o.JJJJeeeeLLLL!eeeeeaaaaaaaaeeeeeeeeeaoo",
+   "o.eeeeeeeeeeeeeeeeeeeeeeeeeeeee.jj.eeaoo",
+   "o.eeeeeeeeeeeeeeeeeeeeeeeeeeeee....eeaoo",
+   "o.eeeeeeeeeeeee..eee.aaaaaaaaee....eea#o",
+   "o.eeeeeeeeeeeee..eee.#=====#aeeeeeeeea#o",
+   "oaaaaaaaee.......eee.#=====#aaaaeeaaaa#o",
+   "ooo====_aaaaaaaaaeee.#========#aeea#===o",
+   "ooooooo========_aaaaa#========#aaaa#oooo",
+   "oooooooo=========vvv============vv==oooo"
   ],
   "exits": {
    "^": "HOENN_ROUTE_110",
@@ -11713,10 +11759,10 @@
   },
   "buildings": {
    "Q": "contest",
-   "R": "house",
    "P": "harbor",
-   "F": "fanclub",
+   "R": "house",
    "C": "center",
+   "F": "fanclub",
    "M": "mart",
    "O": "museum",
    "Y": "shipyard",
@@ -11730,91 +11776,98 @@
    "L": "stall"
   },
   "roofs": {
-   "Q": [
-    224,
-    96,
-    48
+   "P": [
+    248,
+    184,
+    128
    ],
    "R": [
-    110,
-    90,
-    170
-   ],
-   "P": [
-    224,
+    128,
     104,
+    168
+   ],
+   "C": [
+    200,
+    64,
     80
    ],
    "F": [
-    236,
-    180,
-    60
-   ],
-   "O": [
-    80,
-    70,
-    150
-   ],
-   "Y": [
-    140,
-    134,
-    132
-   ],
-   "A": [
-    110,
-    112,
-    188
-   ],
-   "B": [
-    110,
-    112,
-    188
-   ],
-   "K": [
-    70,
-    120,
-    200
-   ],
-   "G": [
-    104,
-    180,
-    112
-   ],
-   "H": [
-    104,
-    180,
-    112
-   ],
-   "I": [
-    104,
-    180,
-    112
-   ],
-   "J": [
-    228,
-    60,
-    110
-   ],
-   "L": [
-    236,
-    112,
-    16
-   ],
-   "C": [
-    236,
-    104,
-    60
+    152,
+    192,
+    88
    ],
    "M": [
-    64,
-    120,
-    220
+    112,
+    184,
+    240
+   ],
+   "O": [
+    144,
+    208,
+    192
+   ],
+   "Y": [
+    160,
+    152,
+    160
+   ],
+   "A": [
+    128,
+    104,
+    168
+   ],
+   "B": [
+    128,
+    104,
+    168
+   ],
+   "K": [
+    90,
+    130,
+    210
+   ],
+   "G": [
+    90,
+    130,
+    210
+   ],
+   "H": [
+    90,
+    130,
+    210
+   ],
+   "I": [
+    90,
+    130,
+    210
+   ],
+   "J": [
+    90,
+    130,
+    210
+   ],
+   "L": [
+    90,
+    130,
+    210
    ]
   },
   "signs": [
    [
+    "CONTEST HALL"
+   ],
+   [
+    "SLATEPORT HARBOR"
+   ],
+   [
+    "NAME RATER'S HOUSE"
+   ],
+   [
     "SLATEPORT CITY",
     "The port where people and Pokemon cross paths."
+   ],
+   [
+    "OCEANIC MUSEUM"
    ],
    [
     "STERN'S SHIPYARD",
@@ -12620,87 +12673,83 @@
  },
  "MAUVILLE_CITY": {
   "art": [
-   "ccccccccccccccccccccccccccccccccccccccccccccccccc",
-   "ccccccccccccccccccccccccccccccccccccccccccccccccc",
-   "cccccccccccccccccccccc^^^cccccccccccccccccccccccc",
-   "cccccccccccccccccccccc...cccccccccccccccccccccccc",
-   "cccccccccccccccccccccc...cccccccccccccccccccccccc",
-   "ccccccccccccccccccGGGc...cCCCCccccccccccccccccccc",
-   "ccccccccccccccccccGGGc...cCCCCccccccccccccccccccc",
-   "cccccccccnccccccccGDGc...cCDCCcccccccnccccccccccc",
-   "ccccccccc...z........z...z........z...ccccccccccc",
-   "ccccccccc.............................ccccccccccc",
-   "ccccccccc.....yy...............yy.....ccccccccccc",
-   "ccccccccc...cccccccccc...cccccccccc...ccccccccccc",
-   "ccccccccc...ccccccccc!...cccccccccc...ccccccccccc",
-   "ccccccccc...cccccccccc...cccccccccc...ccccccccccc",
-   "ccccccccc...cccccccccc...cccccccccc.N.ccccccccccc",
-   "ccccccccc...ccccccccccccccccccccccc...ccccccccccc",
-   "cccccBBBB...ccccccccccccccccccccccc...cMMMccccccc",
-   "cccccBBBB...ccccccccccccccccccccccc...cMMMccccccc",
-   "cccccBBDB...ccccccccccccccccccccccc...cMDMccccccc",
-   "cc<.........zcccccccccccccccccccccc...........>cc",
-   "cc<.........ccccccccccccccccccccccc...........>cc",
-   "cc<.........ccccccccccccccccccccccz...........>cc",
-   "ccccccccc...ccccccccccccccccccccccc...ccccccccccc",
-   "ccccccccc...cccccccccc...cccccccccc...ccccccccccc",
-   "ccccccccc...cccccccccc...cccccccccc...ccccccccccc",
-   "ccccccccc...cccccccccc...cccccccccc...ccccccccccc",
-   "ccccccccc...cccccccccc...!ccccccccc...ccccccccccc",
-   "ccccccccc...cKKKKKcccc...cccccccccc...ccccccccccc",
-   "ccccccccc...cKKKKKcccc...cccccccccc...ccccccccccc",
-   "ccccccccc...cKKDKKcccc...cccccccccc...ccccccccccc",
-   "ccccccccc...................yyy.......ccccccccccc",
-   "ccccccccc.............................ccccccccccc",
-   "ccccccccc...z........z...z........z...ccccccccccc",
-   "cccccccccncccccccccccc...ccccccccccccnccccccccccc",
-   "cccccccccccccccccccccc...cccccccccccccccccccccccc",
-   "cccccccccccccccccccccc...cccccccccccccccccccccccc",
-   "cccccccccccccccccccccc...cccccccccccccccccccccccc",
-   "cccccccccccccccccccccc...cccccccccccccccccccccccc",
-   "ccccccccccccccccccccccvvvcccccccccccccccccccccccc",
-   "ccccccccccccccccccccccccccccccccccccccccccccccccc"
+   "#.f.f.f..f.....^^^..#.TTTTTTTTTTTTTTTTTT",
+   "#....GGGGGG....eee..#.TTTTTTTTTTTTTTTTTT",
+   "#f.f.GGGGGGf...eee..#CCCC.########BBBBB.",
+   "#.f..GGGGGG....eee..#CCCC.kkkkkkkkBBBBB.",
+   "#####GGGGGG##..eee..#CCCC.kkkkkkkkBBBBB.",
+   ".....GGGDGG....eee...CDCC.........BDBBB.",
+   ".......eee.!...eee....e..........!.ee...",
+   ".......eee.....eee.!..e............ee...",
+   "<eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee>",
+   "<eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee>",
+   ".....KKKKKKKee.eee........N.ee..........",
+   ".....KKKKKKKee#eeeAAAAMMMM..ee.EEEEEFFFF",
+   ".....KKKKKKKee#eeeAAAAMMMM..eefEEEEEFFFF",
+   ".....KKKDKKKee#eeeAAAAMMMM..eefEEEEEFFFF",
+   "#######.....ee#eeeADAAMDMM..ee.EDEEEFFFF",
+   "TTTTTT.....!eeeeeeeeeeeeeeeeeeeeee..FDFF",
+   "TTTTTT......eeeeeeeeeeeeeeeeeeeeee......",
+   "TTTTTTTTTTTT...eee........TTTTTTTT......",
+   "TTTTTTT########eee.#######TTTTTTTTTT~~~~",
+   "TTTTTTTTTTTT...vvv........TTTTTTTTTT~~~~"
   ],
-  "theme": "ship",
   "exits": {
    "^": "HOENN_ROUTE_111",
    "v": "HOENN_ROUTE_110",
    "<": "HOENN_ROUTE_117",
-   ">": "HOENN_ROUTE_118",
-   "n": "MAUVILLE_CITY_2F"
+   ">": "HOENN_ROUTE_118"
   },
   "buildings": {
    "G": "gym",
    "C": "center",
    "M": "mart",
    "B": "bike",
-   "K": "game corner"
+   "K": "game corner",
+   "A": "house",
+   "E": "house",
+   "F": "house"
   },
   "roofs": {
    "G": [
-    244,
+    208,
     176,
-    44
+    104
    ],
    "C": [
-    236,
-    104,
-    60
+    224,
+    96,
+    88
    ],
    "M": [
-    64,
+    72,
     120,
-    220
+    190
    ],
    "B": [
-    150,
-    90,
-    170
+    216,
+    136,
+    216
    ],
    "K": [
-    220,
-    70,
-    110
+    216,
+    136,
+    216
+   ],
+   "A": [
+    216,
+    136,
+    216
+   ],
+   "E": [
+    216,
+    136,
+    216
+   ],
+   "F": [
+    150,
+    150,
+    158
    ]
   },
   "people": [
@@ -12708,87 +12757,42 @@
   ],
   "signs": [
    [
+    "MAUVILLE CITY POKEMON GYM",
+    "Leader: Wattson"
+   ],
+   [
     "MAUVILLE CITY",
     "The bright and shiny city of fun!"
    ],
    [
-    "MAUVILLE CITY",
-    "South: Route 110."
-   ]
-  ]
- },
- "MAUVILLE_CITY_2F": {
-  "art": [
-   "cccccccccccccccccccccccccccccccccccccc",
-   "ccccnccccccccccccccccccccccccccccncccc",
-   "ccc....cccccccccccccccccccccccc....ccc",
-   "ccc....cccccccccccccccccccccccc....ccc",
-   "ccc....ccccccc!cccccccccccccccc....ccc",
-   "cccc......z......yyyy......z......cccc",
-   "cccc..............................cccc",
-   "cccc..............................cccc",
-   "cccc....cccccccccccccccccccccc....cccc",
-   "cccc....cccccccccccccccccccccc....cccc",
-   "cccc....cccccccccccccccccccccc....cccc",
-   "cccc....cccccccccccccccccccccc....cccc",
-   "cccc....cccccccccccccccccccccc....cccc",
-   "cccc....cccccccccccccccccccccc....cccc",
-   "cccc....cccccccccccccccccccccc....cccc",
-   "cccc....cccccccccccccccccccccc....cccc",
-   "ccccz...cccccccccccccccccccccc...zcccc",
-   "cccc....cccccccccccccccccccccc....cccc",
-   "cccc....cccccccccccccccccccccc....cccc",
-   "cccc....cccccccccccccccccccccc....cccc",
-   "cccc....cccccccccccccccccccccc....cccc",
-   "cccc....cccccccccccccccccccccc....cccc",
-   "cccc....cccccccccccccccccccccc....cccc",
-   "cccc....cccccccccccccccccccccc....cccc",
-   "cccc....cccccccccccccccccccccc....cccc",
-   "cccc..............................cccc",
-   "cccc..............................cccc",
-   "cccc......z......yyyy......z......cccc",
-   "ccc....cccccccccccccccccccccccc....ccc",
-   "ccc....cccccccccccccccccccccccc....ccc",
-   "ccc....cccccccccccccccccccccccc....ccc",
-   "ccccnccccccccccccccccccccccccccccncccc",
-   "cccccccccccccccccccccccccccccccccccccc"
-  ],
-  "theme": "ship",
-  "exits": {
-   "n": "MAUVILLE_CITY"
-  },
-  "signs": [
+    "RYDEL'S CYCLES"
+   ],
    [
-    "MAUVILLE HILLS",
-    "Homes above the city."
+    "MAUVILLE GAME CORNER"
    ]
   ]
  },
  "HOENN_ROUTE_117": {
   "art": [
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTcccccccTTTTT~~~~~TTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTcccccccTTTTT~~~~~TTTTTTTTTT",
-   "TTTTTTT.\"\"\"\"\"\"TTTTTTTTTTTTTTTTT#TcccccccTTTTT~~~~~TTTTTTTTTT",
-   "TTTTTTT.\"\"\"\"\"\".......~~~~~~~~~~#TcccccccTTTTT~~~~~TTTYYYYTTT",
-   "TTTTTTT.\"\"\"\"\"\".......~~~~~~~~~~#TcccccccTTTTTTTTTTTTTYYYYTTT",
-   "TTTTTTT#######.......~~~~~~~~~~#TTTTTTTTTTTTTTTTTTTTTYYYYTTT",
-   "TTTTTTT#fffff#.............~~~~######################YDYYTTT",
-   "TTTTTTT#fffff#.............~~~~...==X=============.......TTT",
-   "TTTTTTT#fffff#.............~~~~.===================X........",
-   "##########.###.............~~~~.===.............===.........",
-   "<.........................!.....===..TTTTTTTTT..===.!..eeee>",
-   "<......============================.............=======eeee>",
-   "<......============================.............=======eeee>",
-   ".....................X..........===...#######...===.........",
-   "#####..........\"\"\"\"~~~~~~~~\"\"\"\"\"\"==.....f..f.X..===.........",
-   "TTTTT####.####.\"\"\"\"~~~~~~~~\"\"\"\"\"\"==================TTTTTTTTT",
-   "TTTTT#fffffff#.\"\"\"\"~~~~~~~~\"\"\"\"\"\"..================TTTTTTTTT",
-   "TTTTT#fffffff#.\"\"\"\"~~~~~~~~\"\"\"\"\"\"..................TTTTTTTTT",
-   "TTTTT#fffffff#.\"\"\"\"~~~~~~~~\"\"\"\"\"\"..................TTTTTTTTT",
-   "TTTTT#########.\"\"\"\"~~~~~~~~\"\"\"\"\"\"..................TTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTccTTTT\"..~~~~T.\"\"T........",
+   "TTTTTTTT.TTTTTTTTT....c~~~~~cTT.#cccc#T..T\"~~~~T.\"\"\"\".......",
+   "TTTTTTTT\"\"\"\"TT\".......~~~~~~~cT.ccccccT.\"\".~~~~\"..YYYY..T...",
+   "TTTTTTT....TTT........~~~~~~~~c.cccccc.\"\"T~~~\"T..TYYYY..T...",
+   "TTTTTTT.TTTTTT.......T~~~~~~~~~.cccc..\".\"T~~~...TTYDYY......",
+   "TTTTTTT.TTTTTT............~~~~~..................!=.==......",
+   ".TTTTT..TTTTTT..!........T~~~~~.T..........................>",
+   "<......!......!.=======.....~~~T...====X=...======.........>",
+   "<...............=======..........=========..========..X....>",
+   "<.......==========..........==========.TTTTTTTT========.....",
+   "<.......==X=======..c~cT..X.=========..TTTTTTTT..======.....",
+   "........==========..~~~cT.....======..TTTTTTTTTT..===.......",
+   "....................~~~~~c......====..TTTTTTTTTT.!==......TT",
+   ".....T.............\"~~~~~~.T.....====.TT.TTT.TT..===...TTTTT",
+   ".TT.TTTT.TTTTTT...\"\"~~~~~~~c.\"\"\".====.TT.###.TT..===.TTTTTTT",
+   "TTTTTTTT.TTTTTTT.\"\"\"~~~~~~~~\"\"\"\"\".====..........===..TTTTTTT",
+   "TTTTTTTT.TTTTTTTT\"\"\"~~~~~~~~\"\"\"\"\"\"=================.TTTTTTTT",
+   "TTTTTTTT=......=TTTT~TTTTTT~TT\"\"\"\"\"===============.TTTTTTTTT",
+   "TTTTTTTTTT.TTTTTTTTTTTTTTTTTTTTT\"\"\"..TTTTTTTTTTT..TTTTTTTTTT",
    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT"
   ],
   "exits": {
@@ -12800,9 +12804,9 @@
   },
   "roofs": {
    "Y": [
-    216,
-    64,
-    44
+    200,
+    72,
+    72
    ]
   },
   "trainer_spots": [
@@ -12819,33 +12823,41 @@
    [
     "ROUTE 117",
     "West: Verdanturf Town."
+   ],
+   [
+    "Trainer Tips"
+   ],
+   [
+    "Trainer Tips"
+   ],
+   [
+    "ROUTE 117",
+    "East: Mauville City."
    ]
   ]
  },
  "VERDANTURF_TOWN": {
   "art": [
-   "cccccccccccccccccMMMMMCCCCCTTTTTTTT",
-   "cccccccccccccc^^cMMMMMCCCCCTTTTTTTT",
-   "ccccccQQQQQQQ!...MMMMMCCCCCTTTTTTTT",
-   "TTTT..QQQQQQQ....MMDMMCCDCC.......T",
-   "TTTT..QQQQQQQ.....................T",
-   "TTTT..QQQQQQQf.............f......T",
-   "TTTT..QQQQQQQ......ddddddd........T",
-   "TTTT..QQQDQQQ.ddd..ddd!ddd.########",
-   "TTTT...!......ddd..ddddddd........>",
-   "TTTT.........Nddd..ddddddd........>",
-   "TTTAAAAA..f.BBBBB..N....EEEE......>",
-   "TTTAAAAA####BBBBB...dd..EEEE######T",
-   "TTTAAAAA....BBBBB...dd..EEEETTTTTTT",
-   "TTTADAAA...!BBDBB...dd..EDEETTTTTTT",
-   "TTT.....ddd.................TTTTTTT",
-   "TTT.....ddd.....f...........TTTTTTT",
-   "TTT..............f......ff..TTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT"
+   "cccccccccccMMMMCCCCc",
+   "cccccccc^ccMMMMCCCCc",
+   "ccccccc....MMMMCCCCT",
+   "TQQQQcc!...MMDMCDCCT",
+   "TQQQQc.............T",
+   "TQQQQ...............",
+   "TQQQQ..T......!.....",
+   "TQQDQ.......N.......",
+   "T!.................>",
+   "......N............>",
+   "....................",
+   "AAAA....BBBBB.......",
+   "AAAA====BBBBB...EEEE",
+   "AAAAT.TTBBBBB...EEEE",
+   "ADAA.TT!BBDBB...EEEE",
+   "................EDEE",
+   "....................",
+   "TT....TTTTT.T......T",
+   "TTTT..TTTTTTT.....TT",
+   "TTTTTTTTTTTTTTTTTTTT"
   ],
   "exits": {
    "^": "HOENN_RUSTURF_TUNNEL",
@@ -12860,40 +12872,35 @@
    "E": "house"
   },
   "roofs": {
-   "Q": [
-    226,
-    190,
-    150
-   ],
-   "A": [
-    40,
-    104,
-    76
-   ],
-   "B": [
-    40,
-    104,
-    76
-   ],
-   "E": [
-    40,
-    104,
-    76
+   "M": [
+    112,
+    184,
+    240
    ],
    "C": [
-    236,
-    104,
-    60
-   ],
-   "M": [
+    200,
     64,
-    120,
-    220
+    80
+   ],
+   "A": [
+    56,
+    152,
+    88
+   ],
+   "B": [
+    56,
+    152,
+    88
+   ],
+   "E": [
+    56,
+    152,
+    88
    ]
   },
   "people": [
-   "Wanda",
-   "A Glinting Stone: Mawilite"
+   "A Glinting Stone: Mawilite",
+   "Wanda"
   ],
   "signs": [
    [
@@ -12901,11 +12908,11 @@
     "Linking Rustboro and Verdanturf."
    ],
    [
-    "CONTEST HALL"
-   ],
-   [
     "VERDANTURF TOWN",
     "The windswept highlands with the sweet fragrance of grass."
+   ],
+   [
+    "CONTEST HALL"
    ],
    [
     "WALLY'S UNCLE'S HOUSE"
@@ -13268,48 +13275,44 @@
  },
  "HOENN_FIERY_PATH": {
   "art": [
-   "cccccccccccccccccccccccccccccccccccccccc",
-   "cccccccccccccccccccccccccccccccccccccccc",
-   "cccccccccccccccccccccccccccccccccccccccc",
-   "cccccccccccccrcccccccccccccccccccccccccc",
-   "ccccccccc.....ccccccccccc..........rcccc",
-   "ccccccccc.....ccccccccccc...........cccc",
-   "ccccccccc..cccccccccccccc...........cccc",
-   "ccccccccc..ccccccccccccrc...........cccc",
-   "ccccccccc..cccccccccccccc....cccccvccccc",
-   "cccrccccc..cccccccccccccc....ccccccccccc",
-   "ccc........cccccccccccccc....ccccccccccc",
-   "ccc........cccccccccccccc....ccccccccccc",
-   "ccc......cccccccccccccccc....ccccccccccc",
-   "ccc......cccccccccccccccc....ccccccccccc",
-   "ccc...ccccccccccccccccccc..X.ccccccccccc",
-   "ccc...............b.ccccc....ccccccccccc",
-   "ccc.......X.........ccccc....ccccccccccc",
-   "ccc...cccccccccc.......cc....ccccccccccc",
-   "ccc...cccccccccc...r...cc....ccccccccccc",
-   "ccc...cccccccccc.......b.....ccccccccccc",
-   "ccc...cccccccccc............rccccccccccc",
-   "ccc...ccccccccccccncccccc....ccccccccccc",
-   "cc........ccccccccccccccc....ccccccccccc",
-   "cc........ccccccccccccccc....ccccccccccc",
-   "cc........ccccccccccccccc....ccccccrcccc",
-   "cc........ccccccccccccccc....ccccccccccc",
-   "cccccc....ccccccccccccccc...........cccc",
-   "cccccc....ccccccccccccccc...........cccc",
-   "cccccc..X.ccccccccccccccc...........cccc",
-   "cccccc....ccccccccccccccccccc.......cccc",
-   "cccccc....cr..cccccccccccccccccc....cccc",
-   "cccccc....c...cccccccccccccccccc....cccc",
-   "cccccc........ccccccccccccccccrc....cccc",
-   "cccccc........cccccccccccccccccc...rcccc",
-   "ccccccrcccc...cccccccccccccccccc....cccc",
-   "ccccccc.......cccccccccccccccccc....cccc",
-   "ccccccc.......cccccccccccccccccc....cccc",
-   "ccccccc.......cccccccccccccccccc....cccc",
-   "ccccccc.......cccccccccccccccccc....cccc",
-   "cccccccccccccccccccccccccccccccc....cccc",
-   "ccccccccccccccccccccccccccccccccccvccccc",
-   "cccccccccccccccccccccccccccccccccccccccc"
+   "ccccccccccccccccccccccccccccccccccc",
+   "ccccccccccccccccccccccccccccccccccc",
+   "ccc..........ccccc...........cccccc",
+   "ccc..........ccccc...........cccccc",
+   "ccc..........ccccc...........cccccc",
+   "ccc..........ccccc....ccccvcccccccc",
+   "ccc...cccccccccccc....ccccccccccccc",
+   "ccc...cccccccccccc....ccccccccccccc",
+   "ccc...cccncccccccc....ccccccccccccc",
+   "ccc...c....ccccccc..r.ccccccccccccc",
+   "ccc........ccccccc....ccccccccccccc",
+   "ccc...c....ccccccc....ccccccccccccc",
+   "ccc...c...rccccccc..X.ccccccccccccc",
+   "ccc...cccccccccccc....ccccccccccccc",
+   "ccc...................ccccccccccccc",
+   "ccc.........X.........ccccccccccccc",
+   "ccc...................ccccccccccccc",
+   "ccc...cccccccccccc....ccccccccccccc",
+   "ccc...cccccccccccc..........ccccccc",
+   "ccc...cccccccccccc...........cccccc",
+   "ccc...cccccccccccc...........cccccc",
+   "c...r....ccccccccccccccc.....cccccc",
+   "c........ccccccccccccccc.....cccccc",
+   "c........ccccccccccccccc.....cccccc",
+   "c..........ccccccccccccc.....cccccc",
+   "cccccccc...ccccccccccccc.....cccccc",
+   "cccccccc...ccccccccccccc.....cccccc",
+   "cccccccc...ccccccccccccc.....cccccc",
+   "cccccccc...ccccccccccccc..X..cccccc",
+   "cccccccc...ccccccccccccc.....cccccc",
+   "ccc.........cccccccccccc.....cccccc",
+   "ccc.r.....r.cccccccccccc.....cccccc",
+   "ccc.........cccccccccccc.....cccccc",
+   "ccc.........cccccccccccc.....cccccc",
+   "ccc.........cccccccccccc.....cccccc",
+   "ccc.........cccccccccccc.....cccccc",
+   "cccccccccccccccccccccccc.....cccccc",
+   "ccccccccccccccccccccccccccvcccccccc"
   ],
   "theme": "cave",
   "exits": {
@@ -13386,24 +13389,26 @@
  },
  "FALLARBOR_TOWN": {
   "art": [
-   "cccccccccccccccccccccccccccc",
-   "ccccAAAccccccccccccccccccccc",
-   "Tf=fAAA=fQQQQQQ===CCCC=====c",
-   "#===AAA==QQQQQQ===CCCC=====T",
-   "#===ADA!=QQQQQQ===CCDC=====T",
-   "#========QQQDQQ============T",
-   "#=========!================T",
-   "<==========================>",
-   "#=========KKKK=!====MMMM===T",
-   "#=========KKKK======MMMM...T",
-   "#====rr===KKKK======MMMM.f.T",
-   "#.f.....==KKDK======MDMM...T",
-   "T.......=f......========...T",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTT"
+   "cccccccccccccccccccc",
+   "cccccccccccccccccccc",
+   "cccccccccccccccccccc",
+   "AAAAeeQQQQQeeccccccc",
+   "AAAAeeQQQQQeeCCCCccc",
+   "AAAAeeQQQQQeeCCCCccc",
+   "AADAerQQQQQreCCCCeee",
+   "eee!eeQQDQQeeCDCCeee",
+   "eeeeee!==eeeee=eeeee",
+   "<==================>",
+   "<==================>",
+   "eeeeeeeeee!==eeeeeee",
+   "eeeeeeeeeee==eMMMMee",
+   "eeeeeeeeeee==eMMMMee",
+   "eeeeeKKKKee==eMMMMTT",
+   "erreeKKKKee==eMDMMTT",
+   "eeeeeKKKKee=====eTTT",
+   "TTTTTKKDKee=====eTTT",
+   "TTTTTeeeeeeeeTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTT"
   ],
   "exits": {
    "<": "HOENN_ROUTE_114",
@@ -13418,24 +13423,24 @@
   },
   "roofs": {
    "A": [
-    226,
-    140,
+    224,
+    152,
     40
    ],
    "K": [
-    226,
-    140,
+    224,
+    152,
     40
    ],
    "C": [
-    236,
-    104,
-    60
+    224,
+    96,
+    88
    ],
    "M": [
-    64,
+    72,
     120,
-    220
+    190
    ]
   },
   "signs": [
@@ -13958,26 +13963,26 @@
  },
  "HOENN_ROUTE_118": {
   "art": [
-   "TTTTTTcccccccTTTTTTTToooooo===TTTTTTTTTcccccccccccccccccc^^^Tccccccccccccccccccc",
-   "TTTTTTcccccccTTTTTTTToooooo===TTTTTTTTTcccccccccccccccccc===Tccccccccccccccccccc",
-   "TTTTTTcccccccTTTTTTTToooooo===TTTTTTTTTcccccccccccccccccc===Tccccccccccccccccccc",
-   "TTTTTTcccccccTTTTTTTToooooo=ccTTTTTTTTTcccccccccccccccccc===Tccccccccccccccccccc",
-   "TTTTTTcccccccTTTTTTTToooooo=ccTTTTTTTTTcccccccccccccccccc===Tccccccccccccccccccc",
-   "......ccccccc....cccToooooo=ccTTTTTTTTTccccccccc\"\"\"\"\"\"\"\"\"===.\"\"\"\"\"cccccccccccccc",
-   "<.....ccccccc!...cccToooooo===.........ccccccccc\"\"\"\"\"\"\"\"\"===.\"\"\"\"\"cccccccccccccc",
-   "<................ccc=oooooo===................................................TT",
-   "<................====oooooo===........._________________!....________________.TT",
-   "<...f.f.f....=====ooooooooo===========..........\"\"\"\"\"\"\"\"\"......\"\"\"\"\"\"\"\"\"\"\"....TT",
-   ".....f.f.....=====oooooooooooo========......X...\"\"\"\"\"\"\"\"\"......\"\"\"\"\"\"\"\"\"\"\".....>",
-   ".TTTf........==X==oooooooooooo=======r..........\"\"\"\"\"\"\"\"\"......\"\"\"\"\"\"\"\"\"\"\".....>",
-   ".TTTT.TTT....=====oooooooooooo=====X==..........\"\"\"\"\"\"\"\"\"......\"\"\"\"\"\"\"\"\"\"\".....>",
-   ".TTTT.TTT.=======ooooooooooooo========______==ccc=TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTT..TTT.=======oooooooooooooooo=============ccc=TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTT......=======oooooooooooooooo=================TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
-   "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
-   "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
-   "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
+   "TTTTT#ccccccccTTTTTT#=ooooo==#TTTTTTTTTcccccccccccccccccT^^^Tccccccccccccccccccc",
+   "TTTTT#ccccccccTTTTTT#=ooooo==#TTTTTTTTTcccccccccccccccccT===Tccccccccccccccccccc",
+   "TTTTT#ccccccccTTTTT#c=ooooo==c##TTTTTTTcccccccccccccccccT===Tccccccccccccccccccc",
+   "TTTTT#ccccccccTTTTT#=oooooo=#c##TTTTTTTcccccccccTTTTTTTcT===Tccccccccccccccccccc",
+   "TTTTT#ccccccccTT###cooooooo=ccc#TTT...TcccccccTTTTTTTTT\".===Tccccccccccccccccccc",
+   "TTT...ccccccccT#c#c#=oooooo=cccc#T.....cccccccTTTTT\"\"\"\"\".===.\"\"\"\".ccccccccccccTT",
+   "T.....ccccccc!#ccccc=ooooooo===c#Tc....ccccccc.....\"\"\"\"\"....\"\"\"\"\"\"ccccccccccccTT",
+   "<.............===cccooooooooc===c##_................\"\"\"\"....\"\"\"\"\"\"...ccccccc.TTT",
+   "<............====c=ooooooooo========..._________________!..._________c######_TTT",
+   "<...f#f.f....=====oooooooooo=========...........\"\"\"\"\"\".........\"\"\"\"\"\"\"\"\"\"\"....TT",
+   "<..f.#.f.....=====oooooooooooo=======.......X...\"\"\"\"\"\"\"\".........\"\"\"\"\"\"\"\"......>",
+   ".TTTT#f.f#..===X==ooooooooooooo=====c#c..........\"\"\"\"\"\"\"\"........\"\"\"\"\"\"\"\"......>",
+   "TTTTT#.TT#.======oooooooooooooo====X=c#____...#c#.TT\"\"\"\"\"...TTTT..\"\"\"\"\"\"....TTTT",
+   "TTTTT#TTT#======oooooooooooooooo==============ccc#TTTT\"\"\"TTTTTTTT..\"\"\"\"\"TTTTTTTT",
+   "TTTT#cTT#c======ooooooooooooooooo============cccc#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTT####c=c===oooooooooooooooooooooooo==========c#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTooooo==ooooooooooooooooooooooooooooooooooo===#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTToooooooooooooooooooooooooooooooooooooooooooooc#######TTTTTTTTTTTTTTTTTTTTTTT",
+   "ooooooooooooooooooooooooooooooooooooooooooooooooooooooo=c#TTTTTTTTTTTTTTTTTTTTTT",
+   "oooooooooooooooooooooooooooooooooooooooooooooooooooooooo=#TTTTTTTTTTTTTTTTTTTTTT"
   ],
   "exits": {
    "<": "MAUVILLE_CITY",
@@ -13985,8 +13990,8 @@
    ">": "HOENN_ROUTE_123"
   },
   "trainer_spots": [
-   "Fisherman Barny",
    "Bird Keeper Perry",
+   "Fisherman Barny",
    "Guitarist Dalton"
   ],
   "signs": [
@@ -14340,6 +14345,131 @@
    [
     "FORTREE CITY POKEMON GYM",
     "Leader: Winona"
+   ]
+  ]
+ },
+ "HOENN_ROUTE_120": {
+  "art": [
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTT.TTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTT.........TTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTT........!.....TTTTTTT",
+   "TTTT..TTTTTTTTTT..==============....TTTT",
+   "<.............==================......TT",
+   "<.....================\"\"\"\"\"\"\"\"==.......T",
+   "<.....============...\"\"\"\"\"\"\"\"\"\"=\"\"\"\"...T",
+   "....TTT............T\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"...",
+   ".TTTTTTT...........T\"\"\"\"\"\"\"\"\"\"X\"\"\"\"\"\"\".T",
+   "TTTTTTTTcccccccccccT\"\"\"\"\"TTT\"\"\"\"\"\"\"\"\"\"TT",
+   "TTTTTTTTcccccccccccc=cccc...\"\"\"\"\"\"\"\"\"\"TT",
+   "TTTTTTTTcccooooocccc=ccccccc\"\"\"\"\"\"\"\"\"TTT",
+   "TTTTTTTTccooooooo.....cccccc\"\"\"\"\"\"\"\".TTT",
+   "TTTTTTTTccoooooooooooooooccc.\"\"\"....TTTT",
+   "TTTTT...eeeeeeeeeNeeeeeeeeee......TTTTTT",
+   "TTTT....eeeeeeeeeeeeeeeeeeee.....TTTTTTT",
+   "TTTT....ccoooooooooooooooocc.TTTTTTTTTTT",
+   "TTT.....ccooooooooooooooooccTTTTTTTTTTTT",
+   "TTT.....ccooooooooooooooooccTTTTTTTTTTTT",
+   "TTT.....TTooooooooocooooooccTTTTTTTTTTTT",
+   "TTT.....TT#ooooooocTcoooooccTTTTTTTTTTTT",
+   "TT......TTTcooooocccccoo.TTTTTTTTTTTTTTT",
+   "TT......TTTcoTTToccnccocTTTTTTTTTTTTTTTT",
+   "T.......TTTTTTTTTTToooocTTTTTTT...TTTTTT",
+   "T........TTTTTTTTTTTTTTTTTTTTTT...###TTT",
+   "..........TTTTTTTTTTTTTTTTTTTTTT.....TTT",
+   "............TTTTTTTTTTTTTTTTTTTT....TTTT",
+   "T.............TTTTT....TTTTTTTTTTT..TTTT",
+   "T.......................T.....TTTTT.TTTT",
+   "TT...X.......TT................TTTT.TTTT",
+   "TTTTT........TT.....T..o..TT....TTT.TTTT",
+   "TTTTTTT......TT....TTToooTTT.....TT.TTTT",
+   "TTTTTTTT...........TTToooTTT........TTTT",
+   "TTTTTTTTTT....TT...T..oooTT.........TTTT",
+   "TTTTTTTTTTTTT.TTT......oo..........TTTTT",
+   "TTTTTTTTTTTTT\"TTT......oo..........TTTTT",
+   "TTTTTTTTTTTTT\"\"\"TT.................TTTTT",
+   "TTTTTTTTTTTT#\"\"\"\"TT................TTTTT",
+   "TTTTTTTTTTTTTT#\"\"\"TTTTT............TTTTT",
+   "TTTTTTTTTTTTTTc#\"\"TTTTTT.\"\"\".\"\"\"\"\"\"\"\"TTT",
+   "TTTTTTTTTTTTTTcc\"\"TTTTTTT\"\"\".\"\"\"\"\"\"\"\"TTT",
+   "TTTTTTT#TTTTTTT##\"\"TTTTT\"\"\"\".\"\"\"\"\"\"\"\"TTT",
+   "TTTTTTTcTTTT##TTc#\"\"\"\"\"\"\"\"\"\".\"\"\"\"\".\"\"\"TT",
+   "TTTTTTTTTT#TTcTTcc\"\"\"\"\"\"\"\"\"\".\"\"\"\"\".\"\"\"TT",
+   "TTTTTTTTTTcTTcTTcc\"\"\"\"\"\"\"X\"\".\"\"\"\"\".\"\"\"TT",
+   "TTTTTTTTTTcTTT##cc\".\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"TT",
+   "TTTTTTTTT...TT#ccc\".\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"TT",
+   "TTTTTT......TTcccc\".\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"T",
+   "TTT..........Tcccc\".\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\".\"\"T",
+   "TT.##.....##..cccc\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\".\"\"T",
+   "T..cc.....cc..cccc\".\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\".\"\"T",
+   "T.....#e#.....cccc\"\"\"\"\"\"\"\"\"\"\"\".\"\"\"\"\"\"\"\"\"",
+   "T....#cec#....cccc\"\"\"\"\"\"\"\"\"\"\"\".\"\"\"\"\"\"\"\"\"",
+   ".##..ccccc..##cccc\"\"\"\"\"\"\"\"\"\"\"\".\"\"\"\"\"\"TTT",
+   ".cc..ccccc..cccccc\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\".\"\"\"",
+   ".......N......cccc\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\".\"\"\"",
+   "..............ccccTT\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\".\"\"\"",
+   "...##.....##..ccccTTT...\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"",
+   "...cc.....cc..ccccTTT#__\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"",
+   "..............ccccTTT#..\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"",
+   "..............ccccT..#..........TT#____T",
+   "T.............cccc...#XcccccccccTTT....T",
+   "T.............cccc.._cTceeeeeeecTTTT...T",
+   "TTT...........cccc...TTceeeeeeecTTTT...T",
+   "TTTT..T...cc=ccccc...TTcc.....cccTTT...T",
+   "TTTTTTTT..cc=ccccc...TTc.......ccTTT...T",
+   "TTTTTTTTT.cc....cc.....eeeeeeeeee......T",
+   "TTTTTTTTTTcc.\"\"\"cc.....eeeeeeeeee.....TT",
+   "TTTTTTTTTTcc\"\"\"\"ccT....cooooooooc....TTT",
+   "TTTTTTTTcccc\"\"\"\"ccTT...cooooooooc...TTTT",
+   "cccccccccccc\"\"\"\"ccTT...coooooooocTTTTTTT",
+   "TTTTTTTTTc.\"\"\"\"cccTT...coooooooocTTTTTTT",
+   "TTTTTTTTTT.\"\"\"\"cccT....coooooooocTTTTTTT",
+   "TTTTTTTTTT.\"\"\"\"cc......coooooooocTTTTTTT",
+   "TTTTTTTTT...\"\"\"cc......coooooooocTTTTTTT",
+   "TTTTTTTT....\"\"ccc....c=coooooooocTTTTTTT",
+   "TTTT........\"\"ccc....c..#oooooo.........",
+   "TTT...........cc.....c...oooooc#...TTTTT",
+   "TT............cc.....c.......ccc.TTTTTTT",
+   "coooooooc.....cc.....c.......ccc.TTTTTTT",
+   "oooooooooTT...cc....\"c..TT..Tccc.TTTTTTT",
+   "oooooooooTT...cc...\"\"...\"\"\"TTTcccTTTTTTT",
+   "oooooooooTT...cc...\"\"\"\"\"\"\"\"\"TTcccTTTTTTT",
+   "oooooooooTT...cc.==\"\"\"\"\"\"\"\"\"TTTccccccccc",
+   "oooooooooTT...cc.==\"\"\"\"\"\"\"\"\"TTTcTTTTTTTc",
+   "oooooooooTcc=ccc.===\"\"\"\"\"\"\"\"\"\"\"\"TTTTTTT.",
+   "TT..oooooTcc=ccc.===.\"\"\"\"\"\"\"\"\"\"\"TT......",
+   "TTT.......cc.....====T.\"\"\"\"\"\"\"\"\".T..T.=.",
+   "TTTT......cc......==================...>",
+   "TTTTTTcccccc.......====================>",
+   "TTTTTTcccccc..............T..TTTT======>",
+   "TTTTTTccTccc....TT.......TTTTTTTT.....T.",
+   "TTTTTTccT###.TTTTTTT...TTTTTTTTcccccc...",
+   "TTccccccTTTTTTTTTTTTT..TTTTTTTcccooccccc",
+   "cccccTTcTTTTTTTTTTTTTcccccccccccoooooooc",
+   "TTccTTTTTTTTTTTccccccccooooooooooooooooo",
+   "TTTTTTTTTTTTTccccooooooooooooooooooooooo",
+   "TTTTTTTTTTTccccooooooooooooooooooooooooo",
+   "TTTTTTTTTTcccooooooooooooooooooooooooooT"
+  ],
+  "exits": {
+   "<": "FORTREE_CITY",
+   ">": "HOENN_ROUTE_121",
+   "n": "HOENN_SCORCHED_SLAB"
+  },
+  "people": [
+   "INVISIBLE POKEMON",
+   "ANCIENT TOMB"
+  ],
+  "trainer_spots": [
+   "Bird Keeper Robert",
+   "Parasol Lady Angelica",
+   "Cooltrainer Jennifer",
+   "Team Magma Grunt"
+  ],
+  "signs": [
+   [
+    "ROUTE 120",
+    "West: Fortree City."
    ]
   ]
  }

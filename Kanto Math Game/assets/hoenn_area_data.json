@@ -1039,7 +1039,6 @@
         "flag_check": "slateport_grunt_defeated"
       }
     },
-    "MAUVILLE_CITY_2F": {"area_type": "town", "route_name": "Mauville Hills", "region": "HOENN", "has_gym": false, "trainer_encounter_rate": 0, "travel_options": [{"text": "Mauville City 1F", "target_area": "MAUVILLE_CITY"}], "explore_options": []},
     "MAUVILLE_CITY": {
       "area_type": "town",
       "route_name": "Mauville City",
@@ -1051,8 +1050,7 @@
         {"text": "Route 110", "target_area": "HOENN_ROUTE_110"},
         {"text": "Route 111", "target_area": "HOENN_ROUTE_111", "condition": "has_item:HM_ROCK_SMASH"},
         {"text": "Route 117", "target_area": "HOENN_ROUTE_117"},
-        {"text": "Route 118", "target_area": "HOENN_ROUTE_118"},
-        {"text": "Mauville Hills 2F", "target_area": "MAUVILLE_CITY_2F"}
+        {"text": "Route 118", "target_area": "HOENN_ROUTE_118"}
       ],
       "explore_options": [{"text": "Man in a Suit", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_lopunnite", "event": {"lines": ["Man in a suit: A Mega Stone for a Trainer with style. Take it!", "You found the LOPUNNITE!"], "gift_item": {"LOPUNNITE": 1}, "flag": "got_lopunnite"}}, 
         { "text": "Heal", "action": "HEAL" },
