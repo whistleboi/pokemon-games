@@ -1011,18 +1011,18 @@
       "travel_options": [
         {"text": "Route 109", "target_area": "HOENN_ROUTE_109"},
         {"text": "Route 110", "target_area": "HOENN_ROUTE_110", "condition": "oceanic_museum_cleared"},
-        {"text": "Oceanic Museum", "target_area": "HOENN_OCEANIC_MUSEUM"},
+        {"text": "Oceanic Museum", "door": "museum", "target_area": "HOENN_OCEANIC_MUSEUM"},
         {"text": "Route 134", "target_area": "HOENN_ROUTE_134", "condition": "has_item:HM_SURF"},
-        {"text": "Boat to Dewford", "target_area": "DEWFORD_TOWN", "condition": "has_knuckle_badge"},
-        {"text": "S.S. Tidal", "target_area": "HOENN_SS_TIDAL", "condition": "has_balance_badge"},
-        {"text": "Southern Island", "target_area": "HOENN_SOUTHERN_ISLAND", "item_condition": "EON_TICKET", "message": "The ship sails south across the sea to Southern Island."}
+        {"text": "Boat to Dewford", "door": "harbor", "target_area": "DEWFORD_TOWN", "condition": "has_knuckle_badge"},
+        {"text": "S.S. Tidal", "door": "harbor", "target_area": "HOENN_SS_TIDAL", "condition": "has_balance_badge"},
+        {"text": "Southern Island", "door": "harbor", "target_area": "HOENN_SOUTHERN_ISLAND", "item_condition": "EON_TICKET", "message": "The ship sails south across the sea to Southern Island."}
       ],
-      "explore_options": [{"text": "Market Stall", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_alakazite", "event": {"lines": ["Merchant: This odd stone has been on my stall for ages. It's yours!", "You found the ALAKAZITE!"], "gift_item": {"ALAKAZITE": 1}, "flag": "got_alakazite"}}, 
+      "explore_options": [{"text": "Market Stall", "door": "market", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_alakazite", "event": {"lines": ["Merchant: This odd stone has been on my stall for ages. It's yours!", "You found the ALAKAZITE!"], "gift_item": {"ALAKAZITE": 1}, "flag": "got_alakazite"}}, 
         { "text": "Heal", "action": "HEAL" },
         { "text": "Shop", "action": "SHOP" },
-        { "text": "Contest Hall", "action": "NPC", "target": "contest_hall" },
-        { "text": "Market", "action": "NPC", "target": "slateport_market" },
-        { "text": "Talk to Stern", "action": "NPC", "target": "captain_stern" }
+        { "text": "Contest Hall", "door": "contest", "action": "NPC", "target": "contest_hall" },
+        { "text": "Market", "door": "market", "action": "NPC", "target": "slateport_market" },
+        { "text": "Talk to Stern", "door": "shipyard", "action": "NPC", "target": "captain_stern" }
       ],
       "next_area": "HOENN_ROUTE_110",
       "on_enter_event": {
@@ -1039,6 +1039,7 @@
         "flag_check": "slateport_grunt_defeated"
       }
     },
+    "MAUVILLE_CITY_2F": {"area_type": "town", "route_name": "Mauville Hills", "region": "HOENN", "has_gym": false, "trainer_encounter_rate": 0, "travel_options": [{"text": "Mauville City 1F", "target_area": "MAUVILLE_CITY"}], "explore_options": []},
     "MAUVILLE_CITY": {
       "area_type": "town",
       "route_name": "Mauville City",
@@ -1050,13 +1051,14 @@
         {"text": "Route 110", "target_area": "HOENN_ROUTE_110"},
         {"text": "Route 111", "target_area": "HOENN_ROUTE_111", "condition": "has_item:HM_ROCK_SMASH"},
         {"text": "Route 117", "target_area": "HOENN_ROUTE_117"},
-        {"text": "Route 118", "target_area": "HOENN_ROUTE_118"}
+        {"text": "Route 118", "target_area": "HOENN_ROUTE_118"},
+        {"text": "Mauville Hills 2F", "target_area": "MAUVILLE_CITY_2F"}
       ],
       "explore_options": [{"text": "Man in a Suit", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_lopunnite", "event": {"lines": ["Man in a suit: A Mega Stone for a Trainer with style. Take it!", "You found the LOPUNNITE!"], "gift_item": {"LOPUNNITE": 1}, "flag": "got_lopunnite"}}, 
         { "text": "Heal", "action": "HEAL" },
         { "text": "Shop", "action": "SHOP" },
         { "text": "Gym", "action": "GYM" },
-        { "text": "Bike Shop", "action": "NPC", "target": "bike_shop" },
+        { "text": "Bike Shop", "door": "bike", "action": "NPC", "target": "bike_shop" },
         { "text": "Game Corner", "action": "GAMECORNER" }
       ],
       "next_area": "HOENN_ROUTE_111",

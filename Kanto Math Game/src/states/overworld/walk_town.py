@@ -22,7 +22,7 @@ TILE, STEP = dn.TILE, dn.STEP_FRAMES
 DIRS = ((0, 1), (0, -1), (1, 0), (-1, 0))
 KEYS = {pygame.K_UP: (0, -1), pygame.K_w: (0, -1), pygame.K_DOWN: (0, 1), pygame.K_s: (0, 1),
         pygame.K_LEFT: (-1, 0), pygame.K_a: (-1, 0), pygame.K_RIGHT: (1, 0), pygame.K_d: (1, 0)}
-LABELS = {"devon": "DEVON CORP.", "center": "POKEMON CENTER", "mart": "POKE MART", "gym": "GYM", "lab": "LAB", "home": "HOME",
+LABELS = {"contest": "CONTEST HALL", "shipyard": "STERN'S SHIPYARD", "market": "SLATEPORT MARKET", "devon": "DEVON CORP.", "center": "POKEMON CENTER", "mart": "POKE MART", "gym": "GYM", "lab": "LAB", "home": "HOME",
           "school": "TRAINER SCHOOL", "rival": "RIVAL'S HOUSE", "museum": "MUSEUM", "bike": "BIKE SHOP",
           "harbor": "HARBOR", "fanclub": "FAN CLUB", "radio": "RADIO TOWER", "ptower": "POKEMON TOWER",
           "fuji": "MR. FUJI'S HOUSE", "dept": "DEPT. STORE", "mansion": "CELADON MANSION", "hotel": "CELADON HOTEL",
@@ -278,6 +278,10 @@ class WalkTownState(CityState):
             edge = [t for t, target in self.exits.items() if target == came]
             if edge:
                 t = edge[len(edge) // 2]
+                used = getattr(self.game, "walk_town_exit", None)  # (several ways between two places: in by the matching one: Mauville's four staircases)
+                if used and used[0] == came and used[2] == len(edge):
+                    t = edge[used[1]]
+                self.game.walk_town_exit = None
                 inward = next(((t[0] + dx, t[1] + dy) for dx, dy in DIRS if self._open((t[0] + dx, t[1] + dy))
                                and (t[0] + dx, t[1] + dy) not in self.exits), t)
                 self.player = inward
@@ -439,6 +443,9 @@ class WalkTownState(CityState):
         if travel.held(self.game, travel.area_name(self.game, target), lambda: self._leave(target), self._step_back):
             return  # (co-op: the others have a say)
         self.game.walk_town_pos = None  # (next time: in by the way you come)
+        same = [t for t, v in self.exits.items() if v == target]
+        at = tuple(self.player)
+        self.game.walk_town_exit = (self.area_key, same.index(at), len(same)) if at in same else None
         cb()
 
     def _step_back(self):

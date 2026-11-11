@@ -10568,19 +10568,19 @@
   },
   "roofs": {
    "P": [
-    196,
-    150,
-    60
+    184,
+    134,
+    40
    ],
    "R": [
-    196,
-    150,
-    60
+    184,
+    134,
+    40
    ],
    "L": [
-    214,
-    190,
-    60
+    208,
+    158,
+    36
    ]
   },
   "people": [
@@ -10673,14 +10673,14 @@
   },
   "roofs": {
    "A": [
-    176,
-    96,
-    56
+    180,
+    86,
+    40
    ],
    "B": [
-    176,
-    96,
-    56
+    180,
+    86,
+    40
    ]
   },
   "people": [
@@ -11033,14 +11033,14 @@
   },
   "roofs": {
    "S": [
-    232,
-    96,
-    80
+    236,
+    120,
+    100
    ],
    "B": [
-    150,
-    120,
-    80
+    184,
+    158,
+    108
    ]
   },
   "trainer_spots": [
@@ -11138,59 +11138,59 @@
   },
   "roofs": {
    "K": [
-    198,
-    182,
-    150
+    184,
+    178,
+    152
    ],
    "A": [
-    198,
-    182,
-    150
+    184,
+    178,
+    152
    ],
    "B": [
-    198,
-    182,
-    150
+    184,
+    178,
+    152
    ],
    "E": [
-    198,
-    182,
-    150
+    184,
+    178,
+    152
    ],
    "F": [
-    198,
-    182,
-    150
+    184,
+    178,
+    152
    ],
    "H": [
-    198,
-    182,
-    150
+    184,
+    178,
+    152
    ],
    "I": [
-    198,
-    182,
-    150
+    184,
+    178,
+    152
    ],
    "W": [
-    176,
-    164,
-    140
+    140,
+    156,
+    136
    ],
    "V": [
-    176,
-    164,
-    140
+    204,
+    184,
+    156
    ],
    "G": [
-    244,
-    176,
-    44
+    226,
+    150,
+    20
    ],
    "S": [
+    184,
     178,
-    150,
-    108
+    152
    ],
    "C": [
     236,
@@ -11359,24 +11359,24 @@
   },
   "roofs": {
    "H": [
-    56,
-    120,
-    196
+    24,
+    104,
+    172
    ],
    "A": [
-    56,
-    120,
-    196
+    24,
+    104,
+    172
    ],
    "B": [
-    56,
-    120,
-    196
+    24,
+    104,
+    172
    ],
    "G": [
-    244,
-    176,
-    44
+    250,
+    204,
+    80
    ],
    "C": [
     236,
@@ -11578,6 +11578,1190 @@
     "parts": true,
     "exits": {}
    }
+  ]
+ },
+ "HOENN_ROUTE_109": {
+  "art": [
+   "cccccccccccccccc^^cccccccccccccccc^^cccc",
+   "cccccccccccccccc==cccccccccccccccc==cccc",
+   "ooo===================================oo",
+   "ooo===================================oo",
+   "ooooooo===============================oo",
+   "ooooooo===HHHH========================qq",
+   "ooooooo===HHHH========================qq",
+   "oooqqoo===HDHH======X========X========qq",
+   "oooqqoooo=====!=======================qq",
+   "ooooooooo===========================oooo",
+   "oooqqqooo==========X================ooqq",
+   "oooqqqooo===========================ooqq",
+   "ooooooooooo=======================ooooqq",
+   "ooooooooooo=======================oooooo",
+   "oooqqoooooo=======================oooooo",
+   "oooqqoooooooo===================oooooooo",
+   "oooqqoooooooo===================ooooooqq",
+   "ooooooooooooo===================ooooooqq",
+   "oqqqqooooooooooo==============oooooooooo",
+   "oqqqqooooooooooo==============ooooooqqqo",
+   "oqqqqooooooooooo==============ooooooqqqo",
+   "oqqqqooooooooooo======ee=====oooooooqqqo",
+   "oqqqqoooooooooooooooooeeo====ooooooooooo",
+   "oqqqqoooooooooooooooooeeoooooooooooooooo",
+   "ooooooooooooooooooooooeeoooooooooooooooo",
+   "ooooooooooooooooooooooeeoooooooooooooooo",
+   "ooooooooooooooooooooooeeoooooo====ooooqq",
+   "oooqqqooooooooooooooooeeoooooo====ooooqq",
+   "oooqqqooooooooooooooooeeoooooo====ooooqq",
+   "oooqqqoooooooooooooooooooooooo====ooooqq",
+   "ooooooooooooooooooooooooooooooooooooooqq",
+   "ooooooo====ooooooooooooooooooooooooooooo",
+   "oqqoooo====ooooooooooooooooooooooooooooo",
+   "oqqoooo=X==ooooooooooooooooooooooooooooo",
+   "ooooooo====oooooooooooooooooooooooooqqoo",
+   "ooooooo====oooooooooooooooooooooooooqqoo",
+   "ooooooooooooooooooooooooooooooooooooqqoo",
+   "qqqooooooooooooooooooooooooooooooooooooo",
+   "qqqooooooooooooooooooooooooooooooooooooo",
+   "qqqoooooooooooooooooooooooo=====oooooooo",
+   "ooooooooooooooooooooooooooo=====oooooqqq",
+   "ooooooooooooooooooooooooooo=====oooooqqq",
+   "oooooooooooo====ooooooooooo=====oooooqqq",
+   "oooooooooooo====ooooooooooo=====oooooooo",
+   "wooooooooooo====oooooooooooooooooooooooo",
+   "wooooooooooo====oooooooooooooooooooooooo",
+   "wooooooooooo====oooooooooooooqqqooqqqqoo",
+   "wooooooooooo====oooooooooooooqqqooqqqqoo",
+   "ooooooooooooooooooooooooooooooooooqqqqoo",
+   "oooooooqqooooooooooqqqqqqooooooooooooooo",
+   "oooooooqqoqqqooooooqqqqqqooooooooooooooo",
+   "oqqqooooooqqqooooooqqqqqqooooooooooooooo",
+   "oqqqooooooqqqooooooooooooooooooooooooooo"
+  ],
+  "exits": {
+   "^": "SLATEPORT_CITY",
+   "w": "HOENN_ROUTE_108"
+  },
+  "buildings": {
+   "H": "house"
+  },
+  "roofs": {
+   "H": [
+    60,
+    130,
+    130
+   ]
+  },
+  "trainer_spots": [
+   "Tuber Ricky",
+   "Tuber Lola",
+   "Sailor Huey",
+   "Swimmer Grace"
+  ],
+  "signs": [
+   [
+    "SEASHORE HOUSE",
+    "May hot battles rage on hot sands!"
+   ]
+  ]
+ },
+ "SLATEPORT_CITY": {
+  "art": [
+   "~~~TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT~~~~~~~~~~~",
+   "~~~TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT~~~~~~~~~~~",
+   "~~~TTTTTTTTTTTTTTT^^^TTTT...........~~~~~~~~~~~",
+   "~~~TTTTTTTTTTTTTTTeeeTTTTPPPPPPPPP..~~~~~~~~~~~",
+   "~~~.......QQQQQQ..eee....PPPPPPPPP..~~~~~~~~~~~",
+   "~~~.......QQQQQQ..eee.f..PPPPPPPPP..~~~~~~~~~~~",
+   "~~~.......QQQQQQ..eee..f.PPPPPPPPP..~~~~~~~~~~~",
+   "~~~...RRRRQQDQQQ..eee....PPPPDPPPP..~~~~~~~~~~~",
+   "~~~...RRRR.eee....eee...eeeeeeeeee..~~~~~~~~~~~",
+   "~~~...RRDR.eeeeeeeeeeeeeeeeeeeeeeew.~~~~~~~~~~~",
+   "~~~........eee....eeeeeeeeeeeeeeeew.~~~~~~~~~~~",
+   "~~~........eeeCCCCeeeMMM............~~~~~~~~~~~",
+   "~~~........eeeCCCCeeeMMM.~~~~~OOOOO.~~~~~~~~~~~",
+   "~~~..FFFF..eeeCDCCeeeMDM.~~~~~OOOOO.~~~~~~~~~~~",
+   "~~~..FFFF..eee..f.eee....~~~~~OOOOO.~~~~~~~~~~~",
+   "~~~..FDFF..eee...!eeeeeeeeeeeeOODOO.~~~~~~~~~~~",
+   "~~~..eeeeeeeeeeeeeeeeeeeeeeeeeeeee..~~~~~~~~~~~",
+   "~~~..eeeeeeeeeeeeeeeeeeeeeeeeeeeef..~~~~~~~~~~~",
+   "~~~..eeeeeeeeeeeeeeee!..............~~~~~~~~~~~",
+   "~~~..eeeeeeeeeeeeeeee..........~~~~~~~~~~~~~~~~",
+   "~~~..eeeee!eeeeeeeeee...f.YYYYY~~~~~~~~~~~~~~~~",
+   "~~~..eeeeeeeeeeeeeeee.....YYYYY~~~~~~~~~~~~~~~~",
+   "~~~..eeeeeeeeeeeeeeee.f...YYYYY~~~~~~~~~~~~~~~~",
+   "~~~..GGGeeeeeKKKeeeee.....YDYYY~~~~~~~~~~~~~~~~",
+   "~~~..GGGeeeeeKKKeeeee..........~~~~~~~~~~~~~~~~",
+   "~~~..GGGeeeeeKDKeeeeeAAABBB....~~~~~~~~~~~~~~~~",
+   "~~~..eeeeeeeeeeeeeeeeAAABBB..f.~~~~~....cc....~",
+   "~~~..HHHeeeeeIIIeeeeeADABDB.f..~~~~~....cc....~",
+   "~~~..HHHeeeeeIIIeeeee..........~~~~~....jj....~",
+   "~~~..eeeeeeeeeeeeeeee..........~~~~~..eeeeee..~",
+   "~~~..JJJJeeeeLLLLeeee.~~~~~~~~~~~~~~..eeeeee..~",
+   "~~~..JJJJeeeeLLLLeeee.~~~~~~~~~~~~~~..eeeeee..~",
+   "~~~..eeeeeeeeeeeeeeee.~~~~~~~~~~~~~~..eeeeee..~",
+   "~~~.eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee..~",
+   "~~~.eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee..~",
+   "~~~.eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee....~",
+   "~=============================================~",
+   "~=============================================~",
+   "~=============================================~",
+   "~ccccccccccccccccccvvccccccccccccccccccvvccccc~"
+  ],
+  "exits": {
+   "^": "HOENN_ROUTE_110",
+   "v": "HOENN_ROUTE_109",
+   "w": "HOENN_ROUTE_134"
+  },
+  "buildings": {
+   "Q": "contest",
+   "R": "house",
+   "P": "harbor",
+   "F": "fanclub",
+   "C": "center",
+   "M": "mart",
+   "O": "museum",
+   "Y": "shipyard",
+   "A": "house",
+   "B": "house",
+   "K": "market",
+   "G": "stall",
+   "H": "stall",
+   "I": "stall",
+   "J": "stall",
+   "L": "stall"
+  },
+  "roofs": {
+   "Q": [
+    224,
+    96,
+    48
+   ],
+   "R": [
+    110,
+    90,
+    170
+   ],
+   "P": [
+    224,
+    104,
+    80
+   ],
+   "F": [
+    236,
+    180,
+    60
+   ],
+   "O": [
+    80,
+    70,
+    150
+   ],
+   "Y": [
+    140,
+    134,
+    132
+   ],
+   "A": [
+    110,
+    112,
+    188
+   ],
+   "B": [
+    110,
+    112,
+    188
+   ],
+   "K": [
+    70,
+    120,
+    200
+   ],
+   "G": [
+    104,
+    180,
+    112
+   ],
+   "H": [
+    104,
+    180,
+    112
+   ],
+   "I": [
+    104,
+    180,
+    112
+   ],
+   "J": [
+    228,
+    60,
+    110
+   ],
+   "L": [
+    236,
+    112,
+    16
+   ],
+   "C": [
+    236,
+    104,
+    60
+   ],
+   "M": [
+    64,
+    120,
+    220
+   ]
+  },
+  "signs": [
+   [
+    "SLATEPORT CITY",
+    "The port where people and Pokemon cross paths."
+   ],
+   [
+    "STERN'S SHIPYARD",
+    "Wanted: a sailor!"
+   ],
+   [
+    "SLATEPORT MARKET",
+    "Unique items found nowhere else!"
+   ]
+  ]
+ },
+ "HOENN_ROUTE_110": {
+  "buildings": {
+   "A": "gate",
+   "B": "gate",
+   "K": "trick"
+  },
+  "roofs": {
+   "A": [
+    200,
+    200,
+    204
+   ],
+   "B": [
+    200,
+    200,
+    204
+   ],
+   "K": [
+    213,
+    139,
+    222
+   ]
+  },
+  "floor_names": [
+   "Route 110",
+   "Seaside Cycling Road"
+  ],
+  "floors": [
+   {
+    "art": [
+     "TTTTTTTTTTT#^^^^^^^#TTTTTTTTTTTTTTTToooo",
+     "TTTTTTTTTT##.......#TTTTTTTTTTTTTTTToooo",
+     "TTTTTTTTTT#.......#.TTTTTTTTTTTTTTTToooo",
+     "TTTTTTTTTT#.......#.TTTTTTTTTTTTTTTTTooo",
+     "TTTTTTTTTT#......#.....TTTTTTTTTTTTTTooo",
+     "oTTTTTTTT##...==.#................TTTooo",
+     "oTTTTTTTT#...===.#................TTTooo",
+     "oTTTTTTTT#...===.#................TTTooo",
+     "oTTTTTTTT#..====.#......o.........TTTooo",
+     "oTTTTTTTT#..====.#....ooooo.....oooTTooo",
+     "oTTT.fff...====..#.ooooooooo.....ooTTooo",
+     "oTTT.......====..#oooooooooo......TTTooo",
+     "oTTT.......===AAAAAA..oooooo..T.TTTTTooo",
+     "oTTT.....=====AAAAAA...ooooo..T.TTTTTTTo",
+     "oTTT...=======AAAAAA....#.....T###TTTTTo",
+     "oTTT..========AAAAAA....T........TTTTTTo",
+     "oTTT.====....!AAAAAA...TTT...TT..TTTTTTo",
+     "oTT!.===........+#....TTTT...TTTTTTTTTTo",
+     "oTT.....TT.T...TT#....TTTT...TTTTTTcccoo",
+     "oTT.....TT.T...TT######TT.....TTTTTcccoo",
+     "oo#...#oooooooooooooooooooooooooocccccoo",
+     "oo#...#oooooooooooooooooooooooooocccccoo",
+     "oo#..\"#oooooooooooooooooooooooooocccc..o",
+     "oo#...#oooooooooooooooooooooooooocc....o",
+     "oo#\"..#oooooooo.TTooooooooooooooo..nTT.o",
+     "oo#..\"#oooooooo!TTooooooooooooooo...TTTo",
+     "oo#...#oooooooo...ooooooooooooooo...TTTo",
+     "oo#\".\"#oooooooooooooooooooooooooo..TTTTo",
+     "oo#.\".#oooooooooooooooooooooooooo.TTTToo",
+     "oo#\".\"#oooooooooooooooooooooooooooTTTToo",
+     "oo#.X.#oooooooooooooooooooooooooooTTTToo",
+     "oo#\".\"#ooooooooooooooooooooooooooooooooo",
+     "oo#...#ooooooooooooooooooooooooooooooooo",
+     "oo#\".\"#ooooooooooooooooooooooooooooooooo",
+     "oo#\"\"\"#ooooooooooooooooooooooooooooooooo",
+     "oo#\".\"#ooooooooooooooooooooooooooooooooo",
+     "oo#\"\"\"#ooooooooooooooooooooooooooooooooo",
+     "oo#\"\".#ooooooooooooooooooooooooooooooooo",
+     "oo#\"\"........oo#######################oo",
+     "oo#\"\"............\"\".\".\"..\"\".\".\"\"\"!\".\"#oo",
+     "oo#\"\"\"\"\"\"..........\"..\"\"\"\".\".\".\"\"\"\"\"\"#oo",
+     "oo#\"\"\"\"\"\"\"......\".\"..\"\"\".\"\"\"\"\"\"\"\"\"\"\"\"#oo",
+     "oo########.....################\"\"\"\"\"\"#oo",
+     "ooooooooooooooooooooooooooooooo#\"\"\"....o",
+     "ooooooooooooooooooooooooooooooo#.\"\"\"..oo",
+     "ooooooooooooooooooooooooooooooo#\".....oo",
+     "ooooooooooooooooooooooooo...ooo#\"\"\"\".#oo",
+     "ooooooooooooooooooooooooo...ooo#\"\".\".#oo",
+     "oooooooooooooooooooooooooo..ooo#\".\".\"#oo",
+     "ooooooooooooooooooooooooooooooo#.\"\"\"\"#oo",
+     "ooooooooooooooooooooooooooooooo#..\"..#oo",
+     "oooooooooooooooooooooooooooooooo#\".\"#ooo",
+     "oooooooooooooooooooooooooooooooo#\"\".#ooo",
+     "oooooooooooooooooooooooooooooooo#\".\"#ooo",
+     "oooooooooooooooooooooooooooooooo#.\".#ooo",
+     "oooooooooooooooooooooooooooooooo#\"X\"#ooo",
+     "oooooooooooooooooooooooooooooooo#...#ooo",
+     "oooooooooooooooooooooooooooooooo#...#ooo",
+     "oooooooooooooooooooooooooooooooo#\"\".#ooo",
+     "ccccoooooooooooooooooooooooooooo#\".\"#ooo",
+     "ccccoooooKKKKKoooooooooooooooooo#...#ooo",
+     "ccccccoooKKKKKoooooooooooooooooo#\".\"#ooo",
+     "cccccc.TTKKKKKoooooooooooooooooo#.\"....o",
+     "c......TTKKKKKoooooooooooooooooo#\".\"..oo",
+     "TTTTTTTTTKKKKKooooooooooooooo...\"\"\"...oo",
+     "TTTTTTTTTKKKKKoooooooooooooooo.#\"\"\".\".#o",
+     "TTTTTTTT.KKDKKoooooooooooooooo..\".\"\"\"\"#o",
+     "....TTT.!....#oooooooooooooooo.\"\"\"\"\"\".#o",
+     "<.............#ooooo######..##\"\"\"\"\"\"\"\"#o",
+     "<==========............\"\".\"\"\"\".\".\".\"\"\"#o",
+     "<===========............X\".\".\"\"\"\"\"\"\".!#o",
+     "TTTTTT..====..........\"...\".\"\"...\"\"\"..#o",
+     "TTTTTTTT===.###.....###########....####o",
+     "TTTTTTTT===.oooooooooooooooooooooooooooo",
+     "TTTTTTTT===.oooooooooooooooooooooooooooo",
+     "TTTTTTTT===.oooooooooooooooooooooooooooo",
+     "TTTTTTTT===#oooooooooooooooooooooooooooo",
+     "TTTTTTTT===#oooooooooooooooooooooooooooo",
+     "TTTTTTTT===#oooooooooooooooooooooooooooo",
+     "TTTTTTT!===#oooooooooooooooooooooooooooo",
+     "TTTTTTT.===#oooooooooooooooooooooooooooo",
+     "TTTTTTT.===#oooooooooooooooooooooooooooo",
+     "TTTTTTT.===#oooooooooooooooooooooooooooo",
+     "TTTTTTT.===#oooooooooooooooooooooooooooo",
+     "TTTTTTT.===#oooBBBBBBooooooooooooooooooo",
+     "TTTTTTT.===####BBBBBBooooooooooooooooToo",
+     "TTTTTTTT===....BBBBBB..oooooooooooo..Too",
+     "TTTTTTTT===....BBBBBB................Too",
+     "TTTTTTTT===...!BBBBBB................Too",
+     "TTTTTTTT===......+#..................Too",
+     "TTTTTTTT===......##.................TToo",
+     "TTTTTTTT========..#............#....TToo",
+     "TTTTTTTT==========#...............#TTToo",
+     "TTTTTTTTT\"\"\"\"=====#...##........!..TTToo",
+     "TTTTTTTTT\"\"\"\"\"..==..!..#..........TTTToo",
+     "TTTTTTTTTT\"\"\"\"\".==.....#.........TTTTToo",
+     "TTTTTTTTTTT\"\"\"\".===....###TTTTTTTTTTTToo",
+     "TTTTTTTTTTTTT\"\".===....TTTTTTTTTTTTTTToo",
+     "TTTTTTTTTTTTTTT..==..TTTTTTTTTTTTTTToooo",
+     "TTTTTTTTTTTTTTTvvvvvTTTTTTTTTTTTTTTToooo"
+    ],
+    "parts": true,
+    "exits": {
+     "^": "MAUVILLE_CITY",
+     "v": "SLATEPORT_CITY",
+     "<": "HOENN_ROUTE_103",
+     "n": "HOENN_NEW_MAUVILLE"
+    },
+    "trainer_spots": [
+     "Biker Edwin",
+     "Triathlete Alyssa",
+     "Triathlete Dylan"
+    ],
+    "overheads": [
+     {
+      "kind": "road",
+      "rect": [
+       7,
+       5,
+       30,
+       89
+      ],
+      "runs": [
+       [
+        5,
+        19,
+        32
+       ],
+       [
+        6,
+        19,
+        32
+       ],
+       [
+        7,
+        18,
+        33
+       ],
+       [
+        8,
+        18,
+        33
+       ],
+       [
+        9,
+        18,
+        33
+       ],
+       [
+        10,
+        18,
+        33
+       ],
+       [
+        11,
+        20,
+        23
+       ],
+       [
+        11,
+        25,
+        29
+       ],
+       [
+        12,
+        20,
+        23
+       ],
+       [
+        12,
+        25,
+        29
+       ],
+       [
+        13,
+        20,
+        23
+       ],
+       [
+        13,
+        25,
+        29
+       ],
+       [
+        14,
+        20,
+        20
+       ],
+       [
+        14,
+        23,
+        23
+       ],
+       [
+        14,
+        25,
+        29
+       ],
+       [
+        15,
+        25,
+        29
+       ],
+       [
+        16,
+        26,
+        28
+       ],
+       [
+        17,
+        26,
+        28
+       ],
+       [
+        18,
+        26,
+        28
+       ],
+       [
+        19,
+        25,
+        29
+       ],
+       [
+        20,
+        25,
+        29
+       ],
+       [
+        21,
+        25,
+        29
+       ],
+       [
+        22,
+        26,
+        28
+       ],
+       [
+        23,
+        26,
+        28
+       ],
+       [
+        24,
+        26,
+        28
+       ],
+       [
+        25,
+        26,
+        28
+       ],
+       [
+        26,
+        26,
+        28
+       ],
+       [
+        27,
+        26,
+        28
+       ],
+       [
+        28,
+        26,
+        28
+       ],
+       [
+        29,
+        9,
+        30
+       ],
+       [
+        30,
+        8,
+        31
+       ],
+       [
+        31,
+        8,
+        31
+       ],
+       [
+        32,
+        8,
+        30
+       ],
+       [
+        33,
+        11,
+        13
+       ],
+       [
+        34,
+        11,
+        13
+       ],
+       [
+        35,
+        11,
+        13
+       ],
+       [
+        36,
+        11,
+        13
+       ],
+       [
+        37,
+        11,
+        13
+       ],
+       [
+        38,
+        11,
+        14
+       ],
+       [
+        39,
+        11,
+        14
+       ],
+       [
+        40,
+        10,
+        14
+       ],
+       [
+        41,
+        10,
+        14
+       ],
+       [
+        42,
+        10,
+        14
+       ],
+       [
+        43,
+        10,
+        14
+       ],
+       [
+        44,
+        10,
+        14
+       ],
+       [
+        45,
+        11,
+        13
+       ],
+       [
+        46,
+        11,
+        13
+       ],
+       [
+        47,
+        11,
+        13
+       ],
+       [
+        48,
+        11,
+        13
+       ],
+       [
+        49,
+        11,
+        13
+       ],
+       [
+        50,
+        8,
+        20
+       ],
+       [
+        51,
+        8,
+        20
+       ],
+       [
+        52,
+        8,
+        20
+       ],
+       [
+        53,
+        7,
+        21
+       ],
+       [
+        54,
+        7,
+        21
+       ],
+       [
+        55,
+        7,
+        21
+       ],
+       [
+        56,
+        8,
+        20
+       ],
+       [
+        57,
+        8,
+        20
+       ],
+       [
+        58,
+        8,
+        20
+       ],
+       [
+        59,
+        15,
+        19
+       ],
+       [
+        60,
+        16,
+        18
+       ],
+       [
+        61,
+        16,
+        18
+       ],
+       [
+        62,
+        16,
+        18
+       ],
+       [
+        63,
+        15,
+        19
+       ],
+       [
+        64,
+        15,
+        19
+       ],
+       [
+        65,
+        15,
+        19
+       ],
+       [
+        66,
+        16,
+        18
+       ],
+       [
+        67,
+        16,
+        18
+       ],
+       [
+        68,
+        15,
+        19
+       ],
+       [
+        69,
+        15,
+        19
+       ],
+       [
+        70,
+        15,
+        19
+       ],
+       [
+        71,
+        15,
+        19
+       ],
+       [
+        72,
+        15,
+        19
+       ],
+       [
+        73,
+        15,
+        19
+       ],
+       [
+        74,
+        16,
+        18
+       ],
+       [
+        75,
+        16,
+        18
+       ],
+       [
+        76,
+        14,
+        29
+       ],
+       [
+        77,
+        13,
+        30
+       ],
+       [
+        78,
+        13,
+        30
+       ],
+       [
+        79,
+        13,
+        30
+       ],
+       [
+        80,
+        27,
+        29
+       ],
+       [
+        81,
+        27,
+        29
+       ],
+       [
+        82,
+        27,
+        29
+       ],
+       [
+        83,
+        27,
+        29
+       ],
+       [
+        83,
+        35,
+        35
+       ],
+       [
+        84,
+        22,
+        35
+       ],
+       [
+        85,
+        21,
+        36
+       ],
+       [
+        86,
+        21,
+        36
+       ],
+       [
+        87,
+        21,
+        36
+       ],
+       [
+        88,
+        21,
+        36
+       ],
+       [
+        89,
+        27,
+        30
+       ],
+       [
+        90,
+        27,
+        30
+       ],
+       [
+        91,
+        27,
+        30
+       ],
+       [
+        92,
+        31,
+        33
+       ],
+       [
+        93,
+        19,
+        21
+       ]
+      ]
+     }
+    ],
+    "barred": [
+     {
+      "item": "BICYCLE",
+      "tiles": [
+       [
+        15,
+        17
+       ],
+       [
+        16,
+        89
+       ]
+      ]
+     }
+    ],
+    "signs": [
+     [
+      "SEASIDE CYCLING ROAD"
+     ],
+     [
+      "ROUTE 110",
+      "North: Mauville City."
+     ],
+     [
+      "ROUTE 110",
+      "West: Route 103."
+     ],
+     [
+      "TRICK HOUSE",
+      "Under construction."
+     ],
+     [
+      "SEASIDE CYCLING ROAD"
+     ],
+     [
+      "ROUTE 110",
+      "South: Slateport City."
+     ],
+     [
+      "Trainer Tips",
+      "Hold the B Button to run."
+     ],
+     [
+      "Trainer Tips"
+     ],
+     [
+      "Trainer Tips"
+     ],
+     [
+      "Trainer Tips"
+     ]
+    ]
+   },
+   {
+    "art": [
+     "TTTTTTTTTTT#.......#TTTTTTTTTTTTTTTToooo",
+     "TTTTTTTTTT##.......#TTTTTTTTTTTTTTTToooo",
+     "TTTTTTTTTT#.......#.TTTTTTTTTTTTTTTToooo",
+     "TTTTTTTTTT#.......#.TTTTTTTTTTTTTTTTTooo",
+     "TTTTTTTTTT#......#.....TTTTTTTTTTTTTTooo",
+     "oTTTTTTTT##...==.#.iiiiiiiiiiiiii.TTTooo",
+     "oTTTTTTTT#...===.#ieeeeeeeeeeeeeeiTTTooo",
+     "oTTTTTTTT#...===.#ieeeeeeeeeeeeeeiTTTooo",
+     "oTTTTTTTT#..====.#ieeeeeeeeeeeeeeiTTTooo",
+     "oTTTTTTTT#..====.#ieeeeeeeeeeeeeeioTTooo",
+     "oTTT.fff...====..#iieeeeieeeeeiiiioTTooo",
+     "oTTT.......====..#ooieeioieeei....TTTooo",
+     "oTTT.......===AAAAAAi-eioieeeiT.TTTTTooo",
+     "oTTT.....=====AAAAAAieeioieeeiT.TTTTTTTo",
+     "oTTT...=======AAAAAAiiii#ieeeiT###TTTTTo",
+     "oTTT..========AAAAAA....Tieeei...TTTTTTo",
+     "oTTT.====....#AAAAAA...TTTeeeTT..TTTTTTo",
+     "oTT#.===.........#....TTTTeeeTTTTTTTTTTo",
+     "oTT.....TT.T...TT#....TTTTeeeTTTTTTcccoo",
+     "oTT.....TT.T...TT######TTieeeiTTTTTcccoo",
+     "oo#...#ooooooooooooooooooieeeiooocccccoo",
+     "oo#...#ooooooooooooooooooieeeiooocccccoo",
+     "oo#..\"#ooooooooooooooooooieeeiooocccc..o",
+     "oo#...#ooooooooooooooooooieeeiooocc....o",
+     "oo#\"..#oooooooo.TToooooooieeeiooo...TT.o",
+     "oo#..\"#oooooooo#TToooooooieeeiooo...TTTo",
+     "oo#...#oooooooo...oooooooieeeiooo...TTTo",
+     "oo#\".\"#ooooooooooooooooooieeeiooo..TTTTo",
+     "oo#.\".#ooooooooooooooooooieeeiioo.TTTToo",
+     "oo#\".\"#ooiiiiiiiiiiiiiiiieeeeeeiooTTTToo",
+     "oo#...#oieeeeeeeeeeeeeeeeeeeeeeiooTTTToo",
+     "oo#\".\"#oieeeeeeeeeeeeeeeeeeeeeeioooooooo",
+     "oo#...#oiieeeeeiiiiiiiiiiiiiiiiooooooooo",
+     "oo#\".\"#oooieeeiooooooooooooooooooooooooo",
+     "oo#\"\"\"#oooieeeiooooooooooooooooooooooooo",
+     "oo#\".\"#oooieeeiooooooooooooooooooooooooo",
+     "oo#\"\"\"#oooieeeiooooooooooooooooooooooooo",
+     "oo#\"\".#oooieeeiooooooooooooooooooooooooo",
+     "oo#\"\".....ieeei#######################oo",
+     "oo#\"\".....ieeei..\"\".\".\"..\"\".\".\"\"\"#\".\"#oo",
+     "oo#\"\"\"\"\"\".ieeei....\"..\"\"\"\".\".\".\"\"\"\"\"\"#oo",
+     "oo#\"\"\"\"\"\"\"ieeei.\".\"..\"\"\".\"\"\"\"\"\"\"\"\"\"\"\"#oo",
+     "oo########ieeei################\"\"\"\"\"\"#oo",
+     "ooooooooooieeeioooooooooooooooo#\"\"\"....o",
+     "ooooooooooieeeioooooooooooooooo#.\"\"\"..oo",
+     "ooooooooooieeeioooooooooooooooo#\".....oo",
+     "ooooooooooieeeioooooooooo...ooo#\"\"\"\".#oo",
+     "ooooooooooieeeioooooooooo...ooo#\"\".\".#oo",
+     "ooooooooooieeeiooooooooooo..ooo#\".\".\"#oo",
+     "ooooooooooieeeioooooioooooooooo#.\"\"\"\"#oo",
+     "ooooooooiieeeeeiiiiieiooooooooo#..\"..#oo",
+     "oooooooieeeeeeeeeeeeeioooooooooo#\".\"#ooo",
+     "oooooooieeeeeeeeeeeeeioooooooooo#\"\".#ooo",
+     "oooooooieeeeeeeeeeeeeioooooooooo#\".\"#ooo",
+     "oooooooieeeeeeeeeeeeeioooooooooo#.\".#ooo",
+     "oooooooieeeeeeeeeeeeeioooooooooo#\".\"#ooo",
+     "oooooooieeeeeeeeeeeeeioooooooooo#...#ooo",
+     "oooooooieeeeeeeeeeeeeioooooooooo#...#ooo",
+     "ooooooooiiiiiiieeeeeiooooooooooo#\"\".#ooo",
+     "ccccoooooooooooieeeioooooooooooo#\".\"#ooo",
+     "ccccoooooKKKKKoieeeioooooooooooo#...#ooo",
+     "ccccccoooKKKKKoieeeioooooooooooo#\".\"#ooo",
+     "cccccc.TTKKKKKoieeeioooooooooooo#.\"....o",
+     "c......TTKKKKKoieeeioooooooooooo#\".\"..oo",
+     "TTTTTTTTTKKKKKoieeeiooooooooo...\"\"\"...oo",
+     "TTTTTTTTTKKKKKoieeeioooooooooo.#\"\"\".\".#o",
+     "TTTTTTTT.KKKKKoieeeioooooooooo..\".\"\"\"\"#o",
+     "....TTT.#....#oieeeioooooooooo.\"\"\"\"\"\".#o",
+     "..............#ieeei######..##\"\"\"\"\"\"\"\"#o",
+     ".==========....ieeei...\"\".\"\"\"\".\".\".\"\"\"#o",
+     ".===========...ieeei.....\".\".\"\"\"\"\"\"\".##o",
+     "TTTTTT..====...ieeei..\"...\".\"\"...\"\"\"..#o",
+     "TTTTTTTT===.###ieeei###########....####o",
+     "TTTTTTTT===.oooieeeioooooooooooooooooooo",
+     "TTTTTTTT===.oooieeeioooooooooooooooooooo",
+     "TTTTTTTT===.oooieeeioooooooooioooooooooo",
+     "TTTTTTTT===#ooieeeeeiiiiiiiiieiooooooooo",
+     "TTTTTTTT===#oieeeeeeeeeeeeeeeeiooooooooo",
+     "TTTTTTTT===#oieeeeeeeeeeeeeeeeiooooooooo",
+     "TTTTTTT#===#oiiiiiiiiiiiiieeeeiooooooooo",
+     "TTTTTTT.===#ooooooooooooooieeeiooooooooo",
+     "TTTTTTT.===#ooooooooooooooieeeiooooooooo",
+     "TTTTTTT.===#ooooooooooooooieeeiooooioooo",
+     "TTTTTTT.===#ooooooooooiiiiieeeiiiiieiooo",
+     "TTTTTTT.===#oooBBBBBBieeeeeeeeeeeeeeiooo",
+     "TTTTTTT.===####BBBBBBieeeeeeeeeeeeeeiToo",
+     "TTTTTTTT===....BBBBBBieeeeeeeeeeeeeeiToo",
+     "TTTTTTTT===....BBBBBBieeeeeeeeeeeeeeiToo",
+     "TTTTTTTT===...#BBBBBBiiiiiieeeeiiiiiiToo",
+     "TTTTTTTT===.......#........ieei......Too",
+     "TTTTTTTT===.......#........ieei.....TToo",
+     "TTTTTTTT========..#........i-ei#....TToo",
+     "TTTTTTTT==========#.........ii.iii#TTToo",
+     "TTTTTTTTT\"\"\"\"=====#iii##........#..TTToo",
+     "TTTTTTTTT\"\"\"\"\"..==..#..#..........TTTToo",
+     "TTTTTTTTTT\"\"\"\"\".==.....#.........TTTTToo",
+     "TTTTTTTTTTT\"\"\"\".===....###TTTTTTTTTTTToo",
+     "TTTTTTTTTTTTT\"\".===....TTTTTTTTTTTTTTToo",
+     "TTTTTTTTTTTTTTT..==..TTTTTTTTTTTTTTToooo",
+     "TTTTTTTTTTTTTTT.....TTTTTTTTTTTTTTTToooo"
+    ],
+    "parts": true,
+    "exits": {}
+   }
+  ]
+ },
+ "MAUVILLE_CITY": {
+  "art": [
+   "ccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "ccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccc^^^cccccccccccccccccccccccc",
+   "cccccccccccccccccccccc...cccccccccccccccccccccccc",
+   "cccccccccccccccccccccc...cccccccccccccccccccccccc",
+   "ccccccccccccccccccGGGc...cCCCCccccccccccccccccccc",
+   "ccccccccccccccccccGGGc...cCCCCccccccccccccccccccc",
+   "cccccccccnccccccccGDGc...cCDCCcccccccnccccccccccc",
+   "ccccccccc...z........z...z........z...ccccccccccc",
+   "ccccccccc.............................ccccccccccc",
+   "ccccccccc.....yy...............yy.....ccccccccccc",
+   "ccccccccc...cccccccccc...cccccccccc...ccccccccccc",
+   "ccccccccc...ccccccccc!...cccccccccc...ccccccccccc",
+   "ccccccccc...cccccccccc...cccccccccc...ccccccccccc",
+   "ccccccccc...cccccccccc...cccccccccc.N.ccccccccccc",
+   "ccccccccc...ccccccccccccccccccccccc...ccccccccccc",
+   "cccccBBBB...ccccccccccccccccccccccc...cMMMccccccc",
+   "cccccBBBB...ccccccccccccccccccccccc...cMMMccccccc",
+   "cccccBBDB...ccccccccccccccccccccccc...cMDMccccccc",
+   "cc<.........zcccccccccccccccccccccc...........>cc",
+   "cc<.........ccccccccccccccccccccccc...........>cc",
+   "cc<.........ccccccccccccccccccccccz...........>cc",
+   "ccccccccc...ccccccccccccccccccccccc...ccccccccccc",
+   "ccccccccc...cccccccccc...cccccccccc...ccccccccccc",
+   "ccccccccc...cccccccccc...cccccccccc...ccccccccccc",
+   "ccccccccc...cccccccccc...cccccccccc...ccccccccccc",
+   "ccccccccc...cccccccccc...!ccccccccc...ccccccccccc",
+   "ccccccccc...cKKKKKcccc...cccccccccc...ccccccccccc",
+   "ccccccccc...cKKKKKcccc...cccccccccc...ccccccccccc",
+   "ccccccccc...cKKDKKcccc...cccccccccc...ccccccccccc",
+   "ccccccccc...................yyy.......ccccccccccc",
+   "ccccccccc.............................ccccccccccc",
+   "ccccccccc...z........z...z........z...ccccccccccc",
+   "cccccccccncccccccccccc...ccccccccccccnccccccccccc",
+   "cccccccccccccccccccccc...cccccccccccccccccccccccc",
+   "cccccccccccccccccccccc...cccccccccccccccccccccccc",
+   "cccccccccccccccccccccc...cccccccccccccccccccccccc",
+   "cccccccccccccccccccccc...cccccccccccccccccccccccc",
+   "ccccccccccccccccccccccvvvcccccccccccccccccccccccc",
+   "ccccccccccccccccccccccccccccccccccccccccccccccccc"
+  ],
+  "theme": "ship",
+  "exits": {
+   "^": "HOENN_ROUTE_111",
+   "v": "HOENN_ROUTE_110",
+   "<": "HOENN_ROUTE_117",
+   ">": "HOENN_ROUTE_118",
+   "n": "MAUVILLE_CITY_2F"
+  },
+  "buildings": {
+   "G": "gym",
+   "C": "center",
+   "M": "mart",
+   "B": "bike",
+   "K": "game corner"
+  },
+  "roofs": {
+   "G": [
+    244,
+    176,
+    44
+   ],
+   "C": [
+    236,
+    104,
+    60
+   ],
+   "M": [
+    64,
+    120,
+    220
+   ],
+   "B": [
+    150,
+    90,
+    170
+   ],
+   "K": [
+    220,
+    70,
+    110
+   ]
+  },
+  "people": [
+   "Man in a Suit"
+  ],
+  "signs": [
+   [
+    "MAUVILLE CITY",
+    "The bright and shiny city of fun!"
+   ],
+   [
+    "MAUVILLE CITY",
+    "South: Route 110."
+   ]
+  ]
+ },
+ "MAUVILLE_CITY_2F": {
+  "art": [
+   "cccccccccccccccccccccccccccccccccccccc",
+   "ccccnccccccccccccccccccccccccccccncccc",
+   "ccc....cccccccccccccccccccccccc....ccc",
+   "ccc....cccccccccccccccccccccccc....ccc",
+   "ccc....ccccccc!cccccccccccccccc....ccc",
+   "cccc......z......yyyy......z......cccc",
+   "cccc..............................cccc",
+   "cccc..............................cccc",
+   "cccc....cccccccccccccccccccccc....cccc",
+   "cccc....cccccccccccccccccccccc....cccc",
+   "cccc....cccccccccccccccccccccc....cccc",
+   "cccc....cccccccccccccccccccccc....cccc",
+   "cccc....cccccccccccccccccccccc....cccc",
+   "cccc....cccccccccccccccccccccc....cccc",
+   "cccc....cccccccccccccccccccccc....cccc",
+   "cccc....cccccccccccccccccccccc....cccc",
+   "ccccz...cccccccccccccccccccccc...zcccc",
+   "cccc....cccccccccccccccccccccc....cccc",
+   "cccc....cccccccccccccccccccccc....cccc",
+   "cccc....cccccccccccccccccccccc....cccc",
+   "cccc....cccccccccccccccccccccc....cccc",
+   "cccc....cccccccccccccccccccccc....cccc",
+   "cccc....cccccccccccccccccccccc....cccc",
+   "cccc....cccccccccccccccccccccc....cccc",
+   "cccc....cccccccccccccccccccccc....cccc",
+   "cccc..............................cccc",
+   "cccc..............................cccc",
+   "cccc......z......yyyy......z......cccc",
+   "ccc....cccccccccccccccccccccccc....ccc",
+   "ccc....cccccccccccccccccccccccc....ccc",
+   "ccc....cccccccccccccccccccccccc....ccc",
+   "ccccnccccccccccccccccccccccccccccncccc",
+   "cccccccccccccccccccccccccccccccccccccc"
+  ],
+  "theme": "ship",
+  "exits": {
+   "n": "MAUVILLE_CITY"
+  },
+  "signs": [
+   [
+    "MAUVILLE HILLS",
+    "Homes above the city."
+   ]
   ]
  }
 }

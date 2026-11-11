@@ -1335,6 +1335,38 @@ _gc_open = _hgc.run.floor.walkable(12, 12) and (12, 12) not in _hgc.run.floor.de
 if _ms_had is None:
     story.story_flags.pop("met_steven", None)
 check(_gc_shut and _gc_open, f"Granite Cave 1F: fallen rocks bar the short way to Steven's side ({_gc_shut}); gone once you've met him ({_gc_open})")
+_h109 = kanto("HOENN_ROUTE_109", came="SLATEPORT_CITY")
+check((_h109.run.floor.w, _h109.run.floor.h) == (40, 53) and _h109.run.player[1] <= 3 and {"SLATEPORT_CITY", "HOENN_ROUTE_108"} == set(_h109.run.floor.exits.values()),
+      f"Hoenn Route 109: laid out from the ORAS map; in from Slateport (north) at {_h109.run.player}; Surf west to Route 108")
+_h110 = kanto("HOENN_ROUTE_110", came="SLATEPORT_CITY")
+_h110n = kanto("HOENN_ROUTE_110", came="MAUVILLE_CITY")
+check((_h110.run.floor.w, _h110.run.floor.h) == (40, 100) and _h110.run.player[1] >= 96 and _h110n.run.player[1] <= 2
+      and {"SLATEPORT_CITY", "MAUVILLE_CITY", "HOENN_ROUTE_103", "HOENN_NEW_MAUVILLE"} <= set(_h110.run.floor.exits.values()),
+      f"Hoenn Route 110: read from the Emerald map; in from Slateport (south) at {_h110.run.player}, from Mauville (north) at {_h110n.run.player}")
+_bk_had = story.inventory.pop("BICYCLE", None)
+_h110._clear_boulders()  # (as every step does)
+_bar110 = [str(_h110.run.floor.decor.get(t, "")) for t in ((15, 17), (16, 89))]
+story.inventory["BICYCLE"] = 1
+_h110._clear_boulders()
+_open110 = [_h110.run.floor.walkable(*t) for t in ((15, 17), (16, 89))]
+if _bk_had is None:
+    story.inventory.pop("BICYCLE", None)
+else:
+    story.inventory["BICYCLE"] = _bk_had
+_h110._clear_boulders()
+check(_h110.run.n_floors == 2 and all(b.startswith("barrier:") for b in _bar110) and all(_open110) and len(_h110._overheads()) == 1
+      and sum(1 for v in _h110.run.floor.exits.values() if v == core.STAIRS) == 2,
+      f"Hoenn Route 110: the Seaside Cycling Road is its own layer overhead; its two gates are barred without a Bicycle {_bar110} and open with one {_open110}")
+_f110 = _h110.run.floor
+_seen110, _todo110 = {tuple(_h110.run.player)}, [tuple(_h110.run.player)]
+while _todo110:
+    _x, _y = _todo110.pop()
+    for _dx, _dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+        _n = (_x + _dx, _y + _dy)
+        if _n not in _seen110 and 0 <= _n[0] < _f110.w and 0 <= _n[1] < _f110.h and _f110.tiles[_n[1]][_n[0]] in (core.FLOOR, core.GRASS):
+            _seen110.add(_n); _todo110.append(_n)
+_north110 = [t for t, v in _f110.exits.items() if v == "MAUVILLE_CITY"]
+check(any(abs(t[0] - n[0]) + abs(t[1] - n[1]) == 1 for t in _seen110 for n in _north110), "Hoenn Route 110: you can walk from Slateport to Mauville without Surf (the path under the Cycling Road)")
 story.story_flags.pop("defeated_red_gyarados", None)
 _lor = kanto("LAKE_OF_RAGE", came="JOHTO_ROUTE_43")
 _gy = [m for f in _lor.run.floors for m in f.movers if m.kind == "figure" and m.payload.get("action") == "BOSS"]
@@ -1397,6 +1429,33 @@ _dw = _CS(g); g.change_state(_dw); _tap_through(_dw)
 check(isinstance(_dw, _WTS) and (_dw.w, _dw.h) == (33, 20) and {"center", "gym", "harbor"} <= set(_dw.doors.values()) and _dw.player[1] <= 2
       and {"HOENN_ROUTE_106", "HOENN_ROUTE_107"} == set(_dw.exits.values()) and any("104" in str(o.get("text")) for o in _dw._door_options("harbor")),
       f"Dewford Town: laid out from the ORAS map; in from Route 106 (north) at {_dw.player}; Mr. Briney's boat at the dock: {[o.get('text') for o in _dw._door_options('harbor')]}")
+g.walk_town_pos = None
+story.current_area_key, story.last_area_key = "SLATEPORT_CITY", "HOENN_ROUTE_109"
+_sl = _CS(g); g.change_state(_sl); _tap_through(_sl)
+check(isinstance(_sl, _WTS) and (_sl.w, _sl.h) == (47, 40) and {"center", "mart", "harbor", "museum", "contest", "shipyard", "market"} <= set(_sl.doors.values()) and _sl.player[1] >= 36
+      and {"HOENN_ROUTE_109", "HOENN_ROUTE_110", "HOENN_ROUTE_134"} == set(_sl.exits.values()) and _sl._door_options("museum") and _sl._door_options("market") and _sl._door_options("shipyard"),
+      f"Slateport City: laid out from the ORAS map; in from Route 109 (the beach) at {_sl.player}; the Museum, Harbor, Shipyard, Contest Hall and market each have their own door")
+g.walk_town_pos = None
+story.current_area_key, story.last_area_key = "MAUVILLE_CITY", "HOENN_ROUTE_110"
+_mv = _CS(g); g.change_state(_mv); _tap_through(_mv)
+check(isinstance(_mv, _WTS) and (_mv.w, _mv.h) == (49, 40) and {"center", "mart", "gym", "bike", "game corner"} <= set(_mv.doors.values()) and _mv.player[1] >= 35
+      and {"HOENN_ROUTE_110", "HOENN_ROUTE_111", "HOENN_ROUTE_117", "HOENN_ROUTE_118", "MAUVILLE_CITY_2F"} == set(_mv.exits.values()) and _mv._door_options("bike") and _mv._door_options("game corner"),
+      f"Mauville City: laid out from the ORAS ground floor; in from Route 110 (south) at {_mv.player}; the Gym, Center, Mart, Rydel's Cycles and the Game Corner")
+g.walk_town_pos = None
+_up, _down = {}, {}
+for _i in range(4):
+    g.walk_town_pos = None
+    g.walk_town_exit = ("MAUVILLE_CITY", _i, 4)
+    story.current_area_key, story.last_area_key = "MAUVILLE_CITY_2F", "MAUVILLE_CITY"
+    _m2 = _CS(g); g.change_state(_m2); _tap_through(_m2); _up[_i] = _m2.player
+    g.walk_town_pos = None
+    g.walk_town_exit = ("MAUVILLE_CITY_2F", _i, 4)
+    story.current_area_key, story.last_area_key = "MAUVILLE_CITY", "MAUVILLE_CITY_2F"
+    _m1 = _CS(g); g.change_state(_m1); _tap_through(_m1); _down[_i] = _m1.player
+g.walk_town_exit = None
+check(isinstance(_m2, _WTS) and (_m2.w, _m2.h) == (38, 33) and [(_up[i][0] > 19, _up[i][1] > 16) for i in range(4)] == [(False, False), (True, False), (False, True), (True, True)]
+      and [(_down[i][0] > 24, _down[i][1] > 20) for i in range(4)] == [(False, False), (True, False), (False, True), (True, True)],
+      f"Mauville City 2F: each corner staircase leads to its own corner (up {_up}; down {_down})")
 g.walk_town_pos = None
 
 

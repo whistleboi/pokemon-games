@@ -1485,6 +1485,16 @@ class DungeonState(OverworldBattles, PlayState):
     def _boulder_flag(self, t):
         return f"boulder_{self.area_key}_{self.run.index}_{t[0]}_{t[1]}"
 
+    def _overheads(self):
+        """This floor's overhead parts, drawn once: [(image, (x px, y px))] (Route 110: the Cycling Road above the path)."""
+        key = (self.area_key, self.run.index)
+        if getattr(self, "_over_key", None) != key:
+            from src.dungeon import art as _art
+            m = self.run.recipe.get("art") or {}
+            here = m["floors"][self.run.index] if m.get("floors") else m
+            self._over_key, self._over = key, [_art.overhead(o, TILE) for o in here.get("overheads", []) or []]
+        return self._over
+
     def _drops(self, index):
         """A floor's boulders that drop through its holes: [[boulder], [hole], [where it lands below]]."""
         floors = (self.run.recipe.get("art") or {}).get("floors") or []
@@ -1503,12 +1513,14 @@ class DungeonState(OverworldBattles, PlayState):
         here = floors[self.run.index] if 0 <= self.run.index < len(floors) else (self.run.recipe.get("art") or {})
         for bar in here.get("barred", []):  # (a rockslide in the way until a story flag: Granite Cave's short way back, once you've met Steven)
             for t in map(tuple, bar.get("tiles", [])):
-                if flags.get(bar.get("flag")):
-                    if str(f.decor.get(t, "")).startswith("rubble:"):
+                kind = "barrier" if bar.get("item") else "rubble"  # (or till you carry something: the Cycling Road's gates and the Bicycle)
+                met = self.game.story_manager.inventory.get(bar["item"], 0) > 0 if bar.get("item") else flags.get(bar.get("flag"))
+                if met:
+                    if str(f.decor.get(t, "")).startswith(kind + ":"):
                         del f.decor[t]
                         f.tiles[t[1]][t[0]] = core.FLOOR
                 elif t not in f.decor:
-                    f.decor[t] = f"rubble:{t[0]},{t[1]}"
+                    f.decor[t] = f"{kind}:{t[0]},{t[1]}"
                     f.tiles[t[1]][t[0]] = core.WALL
         for t, what in list(f.decor.items()):
             if str(what).startswith("boulder:") and flags.get(self._boulder_flag(t)):
@@ -1592,6 +1604,9 @@ class DungeonState(OverworldBattles, PlayState):
             return True
         if what.startswith("hole:"):
             self.say(["There's a hole in the floor.", "A boulder pushed in would drop to the floor below."])
+            return True
+        if what.startswith("barrier:"):
+            self.say(["The Cycling Road is for bicycles only.", "Come back with a Bicycle."])
             return True
         if what.startswith("rubble:"):
             self.say(["Fallen rocks block the way.", "Maybe there's another way around."])
@@ -2147,6 +2162,12 @@ class DungeonState(OverworldBattles, PlayState):
                 r = at(x, y)
                 img = self._sheet_frame("Object boulder.png", col=0, height=TILE - 4)
                 screen.blit(img, img.get_rect(midbottom=(r.centerx, r.bottom - 2)))
+            elif str(what).startswith("barrier:") and (x, y) in f.seen and x0 <= x < x1 and y0 <= y < y1:  # (the cycling gate's striped bar)
+                r = at(x, y)
+                pygame.draw.rect(screen, (90, 90, 100), (r.x + 4, r.centery - 2, 6, r.h // 2))
+                pygame.draw.rect(screen, (90, 90, 100), (r.right - 10, r.centery - 2, 6, r.h // 2))
+                for k4 in range(4):
+                    pygame.draw.rect(screen, (220, 50, 50) if k4 % 2 else (245, 245, 245), (r.x + 4 + k4 * (r.w - 8) // 4, r.centery - 8, (r.w - 8) // 4, 10))
         # wild Pokemon and trainers you can see
         for m in f.movers:
             if not self.run.visible(m.x, m.y) or m is self._ow_foe:
@@ -2227,6 +2248,8 @@ class DungeonState(OverworldBattles, PlayState):
             drawn.append((pr.bottom, img, img.get_rect(center=(pr.centerx, pr.centery - 4))))
         for _b, img, rect in sorted(drawn, key=lambda t: t[0]):
             screen.blit(img, rect)
+        for img, (bx, by) in self._overheads():  # (what passes over your head: you walk under it, out of view)
+            screen.blit(img, (ox + bx, oy + by))
         # the fog: unseen tiles are dark, seen ones you can't see right now are dimmed
         fog = pygame.Surface((TILE, TILE), pygame.SRCALPHA)
         fog.fill((10, 14, 24, 150))

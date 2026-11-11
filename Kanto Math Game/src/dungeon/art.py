@@ -418,6 +418,23 @@ def overhead(o, tile):
     """What passes over your head: (image, (x px, y px)). o: {"kind": "rail", "rect": [x, y, w, h]} in tiles; you walk
     underneath it (Goldenrod's Magnet Train line over the main road). The image takes in the shadow it casts below."""
     x, y, w, h = o["rect"]
+    if o.get("kind") == "road":  # a raised road, any shape: "runs" [[row, first x, last x], ...] (Route 110's Cycling Road)
+        tiles = {(i, r[0]) for r in o["runs"] for i in range(r[1], r[2] + 1)}
+        surf = pygame.Surface((w * tile, h * tile + tile // 2), pygame.SRCALPHA)
+        for i, j in tiles:  # (the shadow it casts)
+            if (i, j + 1) not in tiles:
+                pygame.draw.rect(surf, (20, 20, 34, 90), ((i - x) * tile, (j - y + 1) * tile, tile, tile // 2))
+        rail, post = max(3, tile // 9), (98, 110, 150)
+        for i, j in tiles:
+            r = pygame.Rect((i - x) * tile, (j - y) * tile, tile, tile)
+            pygame.draw.rect(surf, (222, 230, 238), r)
+            pygame.draw.line(surf, (200, 212, 232), (r.x, r.centery), (r.right, r.centery), 1)
+            for (dx, dy), edge in (((0, -1), (r.x, r.y, tile, rail)), ((0, 1), (r.x, r.bottom - rail, tile, rail)),
+                                   ((-1, 0), (r.x, r.y, rail, tile)), ((1, 0), (r.right - rail, r.y, rail, tile))):
+                if (i + dx, j + dy) not in tiles:
+                    pygame.draw.rect(surf, (156, 180, 222), edge)
+                    pygame.draw.rect(surf, post, (edge[0], edge[1], min(edge[2], rail * 2), min(edge[3], rail * 2)))
+        return surf, (x * tile, y * tile)
     if o.get("kind") == "torii":  # a red wooden gate over the road (Ecruteak's)
         surf = pygame.Surface((w * tile, h * tile), pygame.SRCALPHA)
         roof = pygame.Rect(0, 0, w * tile, tile)
