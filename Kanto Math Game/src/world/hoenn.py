@@ -91,6 +91,7 @@ def _villain(trainer, v):
     role = trainer.get("villain")
     if not role or not v:
         return trainer
+    trainer.setdefault("spot_name", trainer.get("name"))  # (its own spot on a walking map is under the name the data gives it)
     if role == "grunt":
         trainer["name"] = f"{v['team']} Grunt"
         trainer["sprite"] = v["grunt_sprite"]

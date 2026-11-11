@@ -458,6 +458,7 @@ class WalkTownState(CityState):
         at = tuple(self.player)
         self.game.walk_town_exit = (self.area_key, same.index(at), len(same)) if at in same else None
         dn.core.ENTRANCE_INDEX = same.index(at) if at in same and len(same) > 1 else 0  # (the same, into a route or cave)
+        dn.core.ENTRANCE_COUNT = len(same) if at in same else 0
         cb()
 
     def _step_back(self):

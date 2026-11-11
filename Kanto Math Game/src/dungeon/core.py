@@ -25,6 +25,7 @@ import random
 from collections import deque
 
 CURRENT_FLOOR = 0  # the floor being made or walked right now (a floor's own wild pool: the seabed's)
+ENTRANCE_COUNT = 0  # how many tiles the way out you left by had (0: unknown): a wide edge maps place for place
 ENTRANCE_INDEX = 0  # which of several ways in from the same place you came by (Route 41's four Whirl Islands caves)
 WALL, FLOOR, GRASS, WATER, SURF = 0, 1, 2, 3, 4  # (SURF: open sea, crossed with HM Surf)
 DIRS = ((0, -1), (1, 0), (0, 1), (-1, 0))
@@ -243,6 +244,20 @@ def distances(floor, start):
     return dist
 
 
+def on_foot(floor, start):
+    """The tiles you can walk to from start without Surf (from out on the sea: the sea too)."""
+    wet = floor.tile(*start) in (SURF, WATER)
+    seen, q = {start}, deque([start])
+    while q:
+        x, y = q.popleft()
+        for dx, dy in DIRS:
+            n = (x + dx, y + dy)
+            if n not in seen and floor.walkable(*n) and (wet or floor.tile(*n) not in (SURF, WATER)):
+                seen.add(n)
+                q.append(n)
+    return seen
+
+
 def path(floor, start, goal, blocked=()):
     """The steps from start to goal (start left out), or [] if there's no way. blocked: tiles to go
     around (the goal itself may be one: you walk up to it and bump it)."""
@@ -315,16 +330,31 @@ def drawn_floor(recipe, index, entrance=None, figures=()):
     floor.exits.update(exits)
     if entrance:  # you come in beside the way you came
         doors = [t for t, target in exits.items() if target == entrance]  # (several the same way: the matching one)
-        global ENTRANCE_INDEX
-        door = doors[min(ENTRANCE_INDEX, len(doors) - 1)] if doors else None
-        if door and not any(floor.walkable(door[0] + dx, door[1] + dy) and (door[0] + dx, door[1] + dy) not in exits for dx, dy in DIRS):
-            # (that tile of the way in is boxed in by rocks: the nearest one you can step off: a sea route's edge)
-            free = [d for d in doors if any(floor.walkable(d[0] + dx, d[1] + dy) and (d[0] + dx, d[1] + dy) not in exits for dx, dy in DIRS)]
-            door = min(free, key=lambda d: abs(d[0] - door[0]) + abs(d[1] - door[1]), default=door)
-        ENTRANCE_INDEX = 0
+        global ENTRANCE_INDEX, ENTRANCE_COUNT
+        at = ENTRANCE_INDEX
+        if ENTRANCE_COUNT > 2 and len(doors) > 2 and ENTRANCE_COUNT != len(doors):
+            # (two long edges of different lengths, rocks taken out of each: the same way along, not the same count in)
+            at = round(ENTRANCE_INDEX * (len(doors) - 1) / (ENTRANCE_COUNT - 1))
+        door = doors[min(at, len(doors) - 1)] if doors else None
+        ENTRANCE_INDEX = ENTRANCE_COUNT = 0
+
+        def inward(d):  # (a way in on the map's edge: the tile straight in from it, if you can stand there)
+            step = (1, 0) if d[0] == 0 else (-1, 0) if d[0] == w - 1 else (0, 1) if d[1] == 0 else (0, -1) if d[1] == h - 1 else None
+            t = (d[0] + step[0], d[1] + step[1]) if step else None
+            return t if t and floor.walkable(*t) and t not in exits else None
+
+        def beside(d):
+            return next(((d[0] + dx, d[1] + dy) for dx, dy in DIRS if floor.walkable(d[0] + dx, d[1] + dy)
+                         and (d[0] + dx, d[1] + dy) not in exits), None)
         if door:
-            floor.start = next(((door[0] + dx, door[1] + dy) for dx, dy in DIRS if floor.walkable(door[0] + dx, door[1] + dy)
-                                and (door[0] + dx, door[1] + dy) not in exits), floor.start)
+            on_edge = door[0] in (0, w - 1) or door[1] in (0, h - 1)
+            if on_edge and len(doors) > 1 and not inward(door):
+                # (that tile of the edge has rock straight in from it: come in by the nearest tile that's open,
+                # never sideways into a pocket walled off by the edge itself: Route 124 from Lilycove)
+                door = min((d for d in doors if inward(d)), key=lambda d: abs(d[0] - door[0]) + abs(d[1] - door[1]), default=door)
+            if not (inward(door) or beside(door)):
+                door = min((d for d in doors if beside(d)), key=lambda d: abs(d[0] - door[0]) + abs(d[1] - door[1]), default=door)
+            floor.start = inward(door) or beside(door) or floor.start
     if floor.start == (1, 1) and not floor.walkable(1, 1):  # (no "@": a real map's middle, on open ground)
         cx, cy = w // 2, h // 2
         floor.start = min(((x, y) for y in range(h) for x in range(w)
@@ -522,9 +552,15 @@ class Run:
             [t for i, t in enumerate(spread) if i % self.n_floors == index]
         place = fixed or self.rng
         for idx, payload in mine:
-            own = floor.spots.get(f"trainer:{(payload or {}).get('name')}") if isinstance(payload, dict) else None
-            spot = own or _free_tile(floor, place, avoid=start_room.tiles() if start_room and not self.recipe.get("layout") else (),
-                                     far_from=floor.start, min_dist=8 if not self.recipe.get("layout") else 3)
+            own = (floor.spots.get(f"trainer:{payload.get('name')}") or floor.spots.get(f"trainer:{payload.get('spot_name')}"))                 if isinstance(payload, dict) else None  # (spot_name: a villain renamed for the version keeps its spot)
+            spot = own
+            if not own:  # (anywhere, but somewhere you can walk to from the way in: never across water you can't cross yet)
+                afoot = on_foot(floor, floor.start) if self.recipe.get("layout") else None
+                for _try in range(24 if afoot else 1):
+                    spot = _free_tile(floor, place, avoid=start_room.tiles() if start_room and not self.recipe.get("layout") else (),
+                                      far_from=floor.start, min_dist=8 if not self.recipe.get("layout") else 3)
+                    if not afoot or spot in afoot:
+                        break
             if spot and own:  # (its own spot: it looks across the way, a bridge's other lane: the Nugget Bridge)
                 facing = next((d for d in ((1, 0), (-1, 0)) if floor.walkable(spot[0] + d[0], spot[1] + d[1])
                                and not floor.walkable(spot[0] - d[0], spot[1] - d[1])), (0, 1))

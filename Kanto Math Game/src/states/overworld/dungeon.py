@@ -619,7 +619,12 @@ class DungeonState(OverworldBattles, PlayState):
                 not story.is_trainer_defeated(self.area_key, i)
                 and (zone is None or self._floor_of(t, None) in (None, zone)) for i, t in enumerate(pool))
             rematch = item.get("action") == "BOSS" and flags.get(f"legend_rematch_{self._boss_flag_for(item)}")
-            if rematch or self._check_route_condition(item.get("condition"), left, item):
+            cond = item.get("condition")
+            if isinstance(cond, list):  # (on the map there are no rounds to play first: it's there when the story says so,
+                cond = [c for c in cond if c != "can_exit"]  # not after two wild battles: the Cave of Origin's Primal)
+            elif cond == "can_exit":
+                cond = None
+            if rematch or self._check_route_condition(cond, left, item):
                 out.append(item)
         return out + self._arrival_figures()
 
@@ -1066,6 +1071,7 @@ class DungeonState(OverworldBattles, PlayState):
     def _try_exit(self, target):
         same = [t for t, v in self.run.floor.exits.items() if v == target]
         core.ENTRANCE_INDEX = same.index(tuple(self.run.player)) if tuple(self.run.player) in same else 0
+        core.ENTRANCE_COUNT = len(same)  # (how many tiles that way out has here: the far side takes the matching place along its own)
         if len(same) > 1:  # (out to a town with as many ways back: in by the matching one, Victory Road's two mouths at Ever Grande)
             self.game.walk_town_exit = (self.area_key, core.ENTRANCE_INDEX, len(same))
         if self.contest:  # leaving by the gate ends the contest: the judging first
