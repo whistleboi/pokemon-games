@@ -22,8 +22,8 @@ TILE, STEP = dn.TILE, dn.STEP_FRAMES
 DIRS = ((0, 1), (0, -1), (1, 0), (-1, 0))
 KEYS = {pygame.K_UP: (0, -1), pygame.K_w: (0, -1), pygame.K_DOWN: (0, 1), pygame.K_s: (0, 1),
         pygame.K_LEFT: (-1, 0), pygame.K_a: (-1, 0), pygame.K_RIGHT: (1, 0), pygame.K_d: (1, 0)}
-LABELS = {"cozmo": "PROF. COZMO'S HOUSE", "wally": "WALLY'S UNCLE'S HOUSE", "contest": "CONTEST HALL", "shipyard": "STERN'S SHIPYARD", "market": "SLATEPORT MARKET", "devon": "DEVON CORP.", "center": "POKEMON CENTER", "mart": "POKE MART", "gym": "GYM", "lab": "LAB", "home": "HOME",
-          "school": "TRAINER SCHOOL", "rival": "RIVAL'S HOUSE", "museum": "MUSEUM", "bike": "BIKE SHOP",
+LABELS = {"steven": "STEVEN'S HOUSE", "space": "SPACE CENTER", "cozmo": "PROF. COZMO'S HOUSE", "wally": "WALLY'S UNCLE'S HOUSE", "contest": "CONTEST HALL", "shipyard": "STERN'S SHIPYARD", "market": "SLATEPORT MARKET", "devon": "DEVON CORP.", "center": "POKEMON CENTER", "mart": "POKE MART", "gym": "GYM", "lab": "LAB", "home": "HOME",
+          "school": "TRAINER SCHOOL", "rival": "RIVAL'S HOUSE", "assistant": "ASSISTANT'S HOUSE", "museum": "MUSEUM", "bike": "BIKE SHOP",
           "harbor": "HARBOR", "fanclub": "FAN CLUB", "radio": "RADIO TOWER", "ptower": "POKEMON TOWER",
           "fuji": "MR. FUJI'S HOUSE", "dept": "DEPT. STORE", "mansion": "CELADON MANSION", "hotel": "CELADON HOTEL",
           "game corner": "GAME CORNER", "tower": "POKEMON TOWER", "mansion": "MANSION", "silph": "SILPH CO.",
@@ -168,7 +168,7 @@ class WalkTownState(CityState):
                 self.exits[(x, y)] = target
             else:
                 self.doors[(x, y)] = kinds.get(letter, "house")
-        self.rows = ["".join("D" if (x, y) in doors else ("." if c in art.OPEN and (not m.get("walk_on") or c in m["walk_on"]) else "#") for x, c in enumerate(row))
+        self.rows = ["".join("D" if (x, y) in doors else "$" if c == "$" else ("." if c in art.OPEN and (not m.get("walk_on") or c in m["walk_on"]) else "#") for x, c in enumerate(row))
                      for y, row in enumerate(grid)]
         self.locked = dict(m.get("locked", {}))  # (a shut door's own words: the Radio Tower with no power)
         names = list(m.get("people", []))
@@ -177,7 +177,7 @@ class WalkTownState(CityState):
             for x, c in enumerate(row):
                 if c in art.EXIT_CHARS and c in m.get("exits", {}):
                     self.exits[(x, y)] = m["exits"][c]
-                    if c in "wu":
+                    if c in "wu" or art.at_sea(grid, x, y):
                         self.water_exits.add((x, y))
                 elif c == "N" and names:
                     who = names.pop(0)  # (a town option by its text, or an option of its own: Oak at the gap)
@@ -306,7 +306,10 @@ class WalkTownState(CityState):
 
     def _open(self, t):
         x, y = t
-        return 0 <= x < self.w and 0 <= y < self.h and (self.rows[y][x] == "." or tuple(t) in self.exits)             and tuple(t) not in self._people()
+        return 0 <= x < self.w and 0 <= y < self.h and (self.rows[y][x] == "." or tuple(t) in self.exits or (self.rows[y][x] == "$" and self._has_waterfall()))             and tuple(t) not in self._people()
+
+    def _has_waterfall(self):
+        return self.game.story_manager.inventory.get("HM_WATERFALL", 0) > 0
 
     def _nearest_open(self, t):
         best = min(((x, y) for y in range(self.h) for x in range(self.w) if self._open((x, y)) and (x, y) not in self.exits),
@@ -349,6 +352,9 @@ class WalkTownState(CityState):
         if to in self.doors:
             self.walk_goal = None
             return self._enter(to)
+        if 0 <= to[0] < self.w and 0 <= to[1] < self.h and self.rows[to[1]][to[0]] == "$" and not self._has_waterfall():
+            self.walk_goal = None  # (a waterfall in town: Ever Grande's, below the League)
+            return self.flash("The water pours down too hard. WATERFALL could climb it!", 110)
         if not self._open(to):
             self.walk_goal = None
             return
@@ -451,6 +457,7 @@ class WalkTownState(CityState):
         same = [t for t, v in self.exits.items() if v == target]
         at = tuple(self.player)
         self.game.walk_town_exit = (self.area_key, same.index(at), len(same)) if at in same else None
+        dn.core.ENTRANCE_INDEX = same.index(at) if at in same and len(same) > 1 else 0  # (the same, into a route or cave)
         cb()
 
     def _step_back(self):

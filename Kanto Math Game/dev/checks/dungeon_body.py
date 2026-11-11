@@ -1342,7 +1342,7 @@ check((_h109.run.floor.w, _h109.run.floor.h) == (40, 63) and _h109.run.player[1]
 _h110 = kanto("HOENN_ROUTE_110", came="SLATEPORT_CITY")
 _h110n = kanto("HOENN_ROUTE_110", came="MAUVILLE_CITY")
 check((_h110.run.floor.w, _h110.run.floor.h) == (40, 100) and _h110.run.player[1] >= 96 and _h110n.run.player[1] <= 2
-      and {"SLATEPORT_CITY", "MAUVILLE_CITY", "HOENN_ROUTE_103", "HOENN_NEW_MAUVILLE"} <= set(_h110.run.floor.exits.values()),
+      and {"SLATEPORT_CITY", "MAUVILLE_CITY", "HOENN_ROUTE_103"} <= set(_h110.run.floor.exits.values()) and "HOENN_NEW_MAUVILLE" not in _h110.run.floor.exits.values(),
       f"Hoenn Route 110: read from the Emerald map; in from Slateport (south) at {_h110.run.player}, from Mauville (north) at {_h110n.run.player}")
 _bk_had = story.inventory.pop("BICYCLE", None)
 _h110._clear_boulders()  # (as every step does)
@@ -1500,6 +1500,171 @@ _h121 = kanto("HOENN_ROUTE_121", came="HOENN_ROUTE_120")
 check((_h121.run.floor.w, _h121.run.floor.h) == (80, 20) and _h121.run.player[0] <= 2 and {"HOENN_ROUTE_120", "LILYCOVE_CITY", "HOENN_ROUTE_122"} == set(_h121.run.floor.exits.values())
       and "door:safari" in _h121.run.floor.decor.values(),
       f"Hoenn Route 121: read from the Emerald map; in from Route 120 (west) at {_h121.run.player}; Lilycove east, the pier to Route 122, the Safari Zone's door")
+_h122 = kanto("HOENN_ROUTE_122", came="HOENN_ROUTE_121")
+_h122s = kanto("HOENN_ROUTE_122", came="HOENN_ROUTE_123")
+check((_h122.run.floor.w, _h122.run.floor.h) == (40, 40) and _h122.run.player[1] <= 1 and _h122s.run.player[1] >= 37
+      and {"HOENN_ROUTE_121", "HOENN_MT_PYRE", "HOENN_ROUTE_123"} == set(_h122.run.floor.exits.values())
+      and _h122s.run.floor.tiles[_h122s.run.player[1]][_h122s.run.player[0]] != core.SURF,
+      f"Hoenn Route 122: read from the Emerald map; in across the sea from Route 121 (north) at {_h122.run.player}, on the strip of land from Route 123 (south) at {_h122s.run.player}; Mt. Pyre's door")
+_pyre = kanto("HOENN_MT_PYRE", came="HOENN_ROUTE_122")
+_pyre_who = [(m.payload.get("text") if isinstance(m.payload, dict) else m.payload[1].get("name")) for m in _pyre.run.floor.movers if m.kind in ("figure", "trainer")]
+check(_pyre.run.n_floors == 2 and _pyre.run.index == 0 and (_pyre.run.floor.w, _pyre.run.floor.h) == (38, 51) and abs(_pyre.run.player[0] - 10) <= 1 and 41 <= _pyre.run.player[1] <= 44
+      and "HOENN_ROUTE_122" in _pyre.run.floor.exits.values() and "Hex Maniac Leah" in _pyre_who and "THE BLACK FOG" in _pyre_who
+      and "Admin Courtney" not in _pyre_who and "TALK TO THE ELDERS" not in _pyre_who,
+      f"Mt. Pyre: the mountainside and the summit from the Emerald maps; in from Route 122 at its door {_pyre.run.player}; on the mountainside {_pyre_who}, Courtney and the elders up on the summit")
+_h123 = kanto("HOENN_ROUTE_123", came="HOENN_ROUTE_122")
+_h123w = kanto("HOENN_ROUTE_123", came="HOENN_ROUTE_118")
+_hops123 = [v for v in _h123.run.floor.decor.values() if str(v).startswith("ledge:")]
+check((_h123.run.floor.w, _h123.run.floor.h) == (140, 20) and _h123.run.player[1] <= 1 and 119 <= _h123.run.player[0] <= 121 and _h123w.run.player[0] <= 1
+      and {"HOENN_ROUTE_118", "HOENN_ROUTE_122"} == set(_h123.run.floor.exits.values()) and "ledge:-1,0" in _hops123 and "ledge:0,1" in _hops123,
+      f"Hoenn Route 123: read from the Emerald map; in from Route 122 (north) at {_h123.run.player}, from Route 118 (west) at {_h123w.run.player}; ledges hopped south and west ({len(_hops123)})")
+_h124 = kanto("HOENN_ROUTE_124", came="LILYCOVE_CITY")
+_sea124 = [_h124.run.floor.tiles[y][x] == core.SURF for (x, y) in _h124.run.floor.exits]
+check((_h124.run.floor.w, _h124.run.floor.h) == (80, 80) and _h124.run.player[0] <= 1 and {"LILYCOVE_CITY", "MOSSDEEP_CITY", "HOENN_ROUTE_126"} == set(_h124.run.floor.exits.values())
+      and _sea124 and all(_sea124),
+      f"Hoenn Route 124: read from the Emerald map; in from Lilycove (west) at {_h124.run.player}; Mossdeep east and Route 126 south, every way out across the water ({len(_sea124)} tiles)")
+for _k, _came, _size, _outs in (("HOENN_ROUTE_125", "MOSSDEEP_CITY", (80, 40), {"MOSSDEEP_CITY", "HOENN_SHOAL_CAVE"}),
+                               ("HOENN_ROUTE_126", "HOENN_ROUTE_124", (80, 80), {"HOENN_ROUTE_124", "HOENN_ROUTE_127"}),
+                               ("HOENN_ROUTE_127", "MOSSDEEP_CITY", (80, 80), {"MOSSDEEP_CITY", "HOENN_ROUTE_126", "HOENN_ROUTE_128"}),
+                               ("HOENN_ROUTE_128", "HOENN_ROUTE_127", (120, 40), {"HOENN_ROUTE_127", "HOENN_ROUTE_129", "EVER_GRANDE_CITY"}),
+                               ("HOENN_ROUTE_107", "DEWFORD_TOWN", (60, 20), {"DEWFORD_TOWN", "HOENN_ROUTE_108"}),
+                               ("HOENN_ROUTE_108", "HOENN_ROUTE_107", (80, 20), {"HOENN_ROUTE_107", "HOENN_ROUTE_109", "HOENN_ABANDONED_SHIP"}),
+                               ("HOENN_ROUTE_129", "HOENN_ROUTE_128", (80, 40), {"HOENN_ROUTE_128", "HOENN_ROUTE_130"}),
+                               ("HOENN_ROUTE_130", "HOENN_ROUTE_129", (80, 40), {"HOENN_ROUTE_129", "HOENN_ROUTE_131"}),
+                               ("HOENN_ROUTE_131", "HOENN_ROUTE_130", (60, 40), {"HOENN_ROUTE_130", "PACIFIDLOG_TOWN"}),
+                               ("HOENN_ROUTE_132", "PACIFIDLOG_TOWN", (80, 40), {"PACIFIDLOG_TOWN", "HOENN_ROUTE_133"}),
+                               ("HOENN_ROUTE_133", "HOENN_ROUTE_132", (80, 40), {"HOENN_ROUTE_132", "HOENN_ROUTE_134"}),
+                               ("HOENN_ROUTE_134", "HOENN_ROUTE_133", (80, 40), {"HOENN_ROUTE_133", "SLATEPORT_CITY"}),
+                               ("HOENN_ROUTE_105", "HOENN_ROUTE_104", (40, 80), {"HOENN_ROUTE_104", "HOENN_ROUTE_106"})):
+    _sr = kanto(_k, came=_came)
+    _f = _sr.run.floor
+    _at = [t for t, v in _f.exits.items() if v == _came]
+    _swim = [m for m in _f.movers if m.kind == "trainer"]
+    check((_f.w, _f.h) == _size and set(_f.exits.values()) == _outs and _at and min(abs(t[0] - _sr.run.player[0]) + abs(t[1] - _sr.run.player[1]) for t in _at) <= 2
+          and all(_f.tiles[y][x] == core.SURF for (x, y), v in _f.exits.items() if v == _came) and len(_swim) == 3,
+          f"{_k}: the sea route from the Emerald map, {_size}; in from {_came} at {_sr.run.player}, beside its own way out across the water; ways out {sorted(set(_f.exits.values()))}; {len(_swim)} trainers")
+# New Mauville lives in Mauville City now (Jordan, 11-11): a door in town, a small generator room with its content
+_nm = kanto("HOENN_NEW_MAUVILLE", came="MAUVILLE_CITY")
+_nm_who = {(m.payload[1] or {}).get("name") for m in _nm.run.floor.movers if m.kind == "trainer"} | {m.payload.get("text") for m in _nm.run.floor.movers if m.kind == "figure"}
+check(set(_nm.run.floor.exits.values()) == {"MAUVILLE_CITY"} and _nm.run.player[1] >= 8 and {"Wattson", "Team Magma Grunt", "Team Aqua Grunt"} <= _nm_who,
+      f"New Mauville: a room under Mauville City; in from town at {_nm.run.player}; inside {sorted(str(w) for w in _nm_who)}")
+story.current_area_key, story.last_area_key = "MAUVILLE_CITY", "HOENN_NEW_MAUVILLE"
+g.walk_town_pos = None
+_mv = _CS(g); g.change_state(_mv); _tap_through(_mv)
+_mv_door = [t for t, v in _mv.exits.items() if v == "HOENN_NEW_MAUVILLE"]
+check(len(_mv_door) == 1 and abs(_mv_door[0][0] - _mv.player[0]) + abs(_mv_door[0][1] - _mv.player[1]) <= 2,
+      f"Mauville City: New Mauville's door at {_mv_door}; out of it you stand beside it at {_mv.player}")
+g.walk_town_pos = None
+# the sea currents (Routes 132-134): they carry you their own way till something stops you
+_cu = kanto("HOENN_ROUTE_132", came="PACIFIDLOG_TOWN")
+_cf = _cu.run.floor
+_cf.movers = []
+_ways = set(_cf.current.values())
+_c0 = next(t for t in sorted(_cf.current) if _cf.current[t] == (-1, 0) and _cf.current.get((t[0] - 1, t[1])) == (-1, 0) and _cf.current.get((t[0] - 2, t[1])) == (-1, 0)
+           and _cf.tile(t[0] + 1, t[1]) == core.SURF and (t[0] + 1, t[1]) not in _cf.current and (t[0] + 1, t[1]) not in _cf.exits)
+_cu.run.player, _cu.mode, _cu.anim, _cu.walk_goal = (_c0[0] + 1, _c0[1]), "MAP", 0, None
+_cu.dialogue_box.visible = False
+_cu.step(-1, 0)
+_swept = bool(_cu.sliding)
+for _ in range(900):
+    _cu.update()
+    if (not _cu.sliding and _cu.anim == 0) or _cu.run.player in _cf.exits:
+        break
+_cend = _cu.run.player
+check(len(_cf.current) > 900 and (-1, 0) in _ways and len(_ways) >= 2 and _swept and _cend[0] <= _c0[0] - 2 and all(_cf.tiles[y][x] == core.SURF for x, y in _cf.current),
+      f"Hoenn Route 132: {len(_cf.current)} current tiles ({sorted(_ways)}); stepping onto one at {_c0} you're carried on to {_cend} without a key pressed")
+# Dive (Routes 124, 126, 127, 128): the dark deep water, the seabed floor under it, back up where there's open sea above
+_had_dive = story.inventory.pop("HM_DIVE", None)
+_dv = kanto("HOENN_ROUTE_126", came="HOENN_ROUTE_124")
+_df = _dv.run.floor
+_df.movers = []
+_deep = sorted(_df.deep)
+_dspot = _deep[len(_deep) // 2]
+_dv.run.player, _dv.mode, _dv.anim, _dv.walk_goal = _dspot, "MAP", 0, None
+_dv.dialogue_box.visible = False
+_dact = _dv._act_here()
+_dv.dive_here()
+_no_dive = _dv.run.index
+_dv.dialogue_box.visible = False
+_dv.mode = "MAP"
+story.inventory["HM_DIVE"] = 1
+_dv.dive_here()
+_down = (_dv.run.index, _dv.run.player)
+_bed = _dv.run.floor
+_bed_wild = {int(m.payload.id) for m in _bed.movers if m.kind == "wild" and hasattr(m.payload, "id")}
+_bed.movers = []
+_uact = _dv._act_here()
+_bed_out = set(_bed.exits.values())
+_dv.anim = 0
+_dv.surface_here()
+_upagain = (_dv.run.index, _dv.run.player)
+check(_dv.run.n_floors == 2 and len(_deep) > 500 and _dact and _dact[0] == "DIVE" and _no_dive == 0 and _down == (1, _dspot) and _uact and _uact[0] == "SURFACE"
+      and _bed_out == {"SOOTOPOLIS_CITY"} and _upagain == (0, _dspot) and _bed_wild <= {170, 171, 366, 369, 370},
+      f"Hoenn Route 126: Dive on the deep water ({len(_deep)} tiles): not without the HM; with it down to the seabed at the same spot {_dspot}, its own wild Pokemon {sorted(_bed_wild)}, the way into Sootopolis down there; SURFACE brings you back up")
+_from_soot = kanto("HOENN_ROUTE_126", came="SOOTOPOLIS_CITY")
+_from_cav = kanto("HOENN_ROUTE_128", came="HOENN_SEAFLOOR_CAVERN")
+_m126 = [t for t, v in _from_soot.run.floor.exits.items() if v == "SOOTOPOLIS_CITY"]
+_m128 = [t for t, v in _from_cav.run.floor.exits.items() if v == "HOENN_SEAFLOOR_CAVERN"]
+check(_from_soot.run.index == 1 and _m126 and abs(_m126[0][0] - _from_soot.run.player[0]) + abs(_m126[0][1] - _from_soot.run.player[1]) <= 2
+      and _from_cav.run.index == 1 and _m128 and abs(_m128[0][0] - _from_cav.run.player[0]) + abs(_m128[0][1] - _from_cav.run.player[1]) <= 2,
+      f"Dive: out of Sootopolis you're on Route 126's seabed by its mouth {_from_soot.run.player}; out of the Seafloor Cavern on Route 128's seabed {_from_cav.run.player}")
+_sc = kanto("HOENN_ROUTE_134", came="HOENN_SEALED_CHAMBER")
+check(_sc.run.index == 1 and "HOENN_SEALED_CHAMBER" in _sc.run.floor.exits.values() and len(_sc.run.made(0).deep) >= 2 and all(_sc.run.floor.walkable(*t) for t in _sc.run.made(0).deep),
+      f"Hoenn Route 134: its dive spot ({len(_sc.run.made(0).deep)} tiles) leads down to the Sealed Chamber's mouth; out of the chamber you're on the seabed at {_sc.run.player}")
+for _k in ("HOENN_ROUTE_124", "HOENN_ROUTE_127", "HOENN_ROUTE_128"):
+    _dk = kanto(_k, came="HOENN_ROUTE_127" if _k == "HOENN_ROUTE_128" else "MOSSDEEP_CITY")
+    _below = _dk.run.made(1)
+    _fits = [t for t in _dk.run.floor.deep if _below.walkable(*t)]
+    check(_dk.run.n_floors == 2 and len(_dk.run.floor.deep) > 50 and len(_fits) >= 0.9 * len(_dk.run.floor.deep) and _dk.run.index == 0,
+          f"{_k}: two floors, the sea and its seabed; {len(_fits)} of its {len(_dk.run.floor.deep)} deep-water tiles have seabed to dive to")
+story.inventory.pop("HM_DIVE", None)
+if _had_dive:
+    story.inventory["HM_DIVE"] = _had_dive
+_vr = kanto("HOENN_VICTORY_ROAD", came="EVER_GRANDE_CITY")
+# its log bridges have two levels: over one along its length, under it across its width, never from one to the other
+_vf = _vr.run.floor
+_vf.movers = []
+_br = _vf.bridge
+_bt = next(t for t in sorted(_br) if _br[t] == (1, 0) and _vf.walkable(t[0], t[1] - 1) and (t[0], t[1] - 1) not in _br and (t[0] - 1, t[1]) in _br)
+_vr.run.player, _vr.run.deck = (_bt[0], _bt[1] - 1), True
+_vr.run.step(0, 1)
+_under = (_vr.run.player == _bt, _vr.run.deck)
+while (_vr.run.player[0] - 1, _vr.run.player[1]) in _br:
+    _vr.run.step(-1, 0)
+_bend = _vr.run.player
+_vr.run.step(-1, 0)
+_no_climb = _vr.run.player == _bend and _vf.walkable(_bend[0] - 1, _bend[1])
+_vr.run.player, _vr.run.deck = (_bend[0] - 1, _bend[1]), True
+_vr.run.step(1, 0)
+_on_deck = (_vr.run.player == _bend, _vr.run.deck)
+while _vr.run.player != _bt:
+    _vr.run.step(1, 0)
+_vr.run.step(0, -1)
+_no_drop = _vr.run.player == _bt
+check(len(_br) >= 60 and _under == (True, False) and _no_climb and _on_deck == (True, True) and _no_drop,
+      f"Victory Road 1F: {len(_br)} log-bridge tiles; stepping under one at {_bt} you can't climb onto its end at {_bend}, and crossing on its deck you can't step off its side")
+_vr = kanto("HOENN_VICTORY_ROAD", came="EVER_GRANDE_CITY")
+_vr_out = sorted(t for t, v in _vr.run.floor.exits.items() if v == "EVER_GRANDE_CITY")
+check(_vr.run.n_floors == 3 and (_vr.run.floor.w, _vr.run.floor.h) == (46, 45) and len(_vr_out) == 2 and {(39, 6), (15, 41)} == set(_vr_out),
+      f"Victory Road: three floors from the Emerald maps; in at {_vr.run.player}; two mouths back to Ever Grande {_vr_out} (the top one pairs with the League side)")
+core.ENTRANCE_INDEX = 1  # (as leaving Ever Grande by its lower mouth sets it)
+_vr_low = kanto("HOENN_VICTORY_ROAD", came="EVER_GRANDE_CITY")
+_eg_at = []
+for _i in (0, 1):  # (as leaving Victory Road by its top, then its bottom mouth sets it)
+    g.walk_town_exit = ("HOENN_VICTORY_ROAD", _i, 2)
+    g.walk_town_pos = None
+    story.current_area_key, story.last_area_key = "EVER_GRANDE_CITY", "HOENN_VICTORY_ROAD"
+    _eg2 = _CS(g); g.change_state(_eg2); _tap_through(_eg2)
+    _eg_at.append(tuple(_eg2.player))
+g.walk_town_pos = None
+check(_vr_low.run.player[1] >= 39 and _eg_at[0][1] <= 29 and _eg_at[1][1] >= 40,
+      f"Ever Grande and Victory Road: in by the lower mouth you start at the cave's foot {tuple(_vr_low.run.player)}; out by its top mouth you stand on the League side {_eg_at[0]}, by its bottom one back below {_eg_at[1]}")
+for _k, _came, _n, _size in (("HOENN_SEAFLOOR_CAVERN", "HOENN_ROUTE_128", 2, (20, 20)), ("HOENN_CAVE_OF_ORIGIN", "SOOTOPOLIS_CITY", 2, (19, 26))):
+    _cv = kanto(_k, came=_came)
+    _at = [t for t, v in _cv.run.floor.exits.items() if v == _came]
+    check(_cv.run.n_floors == _n and _cv.run.index == 0 and (_cv.run.floor.w, _cv.run.floor.h) == _size and _at
+          and min(abs(t[0] - _cv.run.player[0]) + abs(t[1] - _cv.run.player[1]) for t in _at) <= 2,
+          f"{_k}: {_n} floors from the Emerald maps; in from {_came} at {_cv.run.player} on the entrance floor {_size}")
 story.story_flags.pop("defeated_red_gyarados", None)
 _lor = kanto("LAKE_OF_RAGE", came="JOHTO_ROUTE_43")
 _gy = [m for f in _lor.run.floors for m in f.movers if m.kind == "figure" and m.payload.get("action") == "BOSS"]
@@ -1572,7 +1737,7 @@ g.walk_town_pos = None
 story.current_area_key, story.last_area_key = "MAUVILLE_CITY", "HOENN_ROUTE_110"
 _mv = _CS(g); g.change_state(_mv); _tap_through(_mv)
 check(isinstance(_mv, _WTS) and (_mv.w, _mv.h) == (40, 20) and {"center", "mart", "gym", "bike", "game corner"} <= set(_mv.doors.values()) and _mv.player[1] >= 17
-      and {"HOENN_ROUTE_110", "HOENN_ROUTE_111", "HOENN_ROUTE_117", "HOENN_ROUTE_118"} == set(_mv.exits.values()) and _mv._door_options("bike") and _mv._door_options("game corner"),
+      and {"HOENN_ROUTE_110", "HOENN_ROUTE_111", "HOENN_ROUTE_117", "HOENN_ROUTE_118", "HOENN_NEW_MAUVILLE"} == set(_mv.exits.values()) and _mv._door_options("bike") and _mv._door_options("game corner"),
       f"Mauville City: laid out from the Emerald map; in from Route 110 (south) at {_mv.player}; the Gym, Center, Mart, Rydel's Cycles and the Game Corner")
 g.walk_town_pos = None
 story.current_area_key, story.last_area_key = "VERDANTURF_TOWN", "HOENN_ROUTE_117"
@@ -1616,6 +1781,37 @@ _lc = _CS(g); g.change_state(_lc); _tap_through(_lc)
 check(isinstance(_lc, _WTS) and (_lc.w, _lc.h) == (80, 40) and {"center", "mart", "contest", "museum", "harbor"} <= set(_lc.doors.values()) and _lc.player[0] <= 2
       and {"HOENN_ROUTE_121", "HOENN_ROUTE_124"} == set(_lc.exits.values()) and _lc._door_options("museum") and _lc._door_options("mart") and _lc._door_options("contest"),
       f"Lilycove City: from the Emerald map; in from Route 121 (west) at {_lc.player}; the Museum, the Department Store, the Contest Hall and the Harbor each have their own door")
+g.walk_town_pos = None
+for _k, _came, _size, _doors, _outs in (("MOSSDEEP_CITY", "HOENN_ROUTE_124", (80, 40), {"gym", "center", "mart", "steven"}, {"HOENN_ROUTE_124", "HOENN_ROUTE_125", "HOENN_ROUTE_127", "HOENN_SPACE_CENTER"}),
+                                        ("PACIFIDLOG_TOWN", "HOENN_ROUTE_131", (20, 40), {"center"}, {"HOENN_ROUTE_131", "HOENN_ROUTE_132"}),
+                                        ("SOOTOPOLIS_CITY", "HOENN_ROUTE_126", (60, 60), {"gym", "center", "mart"}, {"HOENN_ROUTE_126", "HOENN_CAVE_OF_ORIGIN"}),
+                                        ("EVER_GRANDE_CITY", "HOENN_ROUTE_128", (40, 80), {"league", "center"}, {"HOENN_ROUTE_128", "HOENN_VICTORY_ROAD"})):
+    g.walk_town_pos = None
+    story.current_area_key, story.last_area_key = _k, _came
+    _tw = _CS(g); g.change_state(_tw); _tap_through(_tw)
+    _own = [t for t, v in _tw.exits.items() if v == _came]
+    check(isinstance(_tw, _WTS) and (_tw.w, _tw.h) == _size and _doors <= set(_tw.doors.values()) and set(_tw.exits.values()) == _outs
+          and _own and min(abs(t[0] - _tw.player[0]) + abs(t[1] - _tw.player[1]) for t in _own) <= 2 and all(_tw._door_options(d) for d in _doors),
+          f"{_k}: from the Emerald map, {_size}; in from {_came} at {_tw.player}, beside its own way out; doors {sorted(_doors)} each open something; ways out {sorted(set(_tw.exits.values()))}")
+# Ever Grande's waterfall (a town's own waterfall tile): in the way until you have Waterfall
+g.walk_town_pos = None
+_had_wf = story.inventory.pop("HM_WATERFALL", None)
+story.current_area_key, story.last_area_key = "EVER_GRANDE_CITY", "HOENN_ROUTE_128"
+_tw = _CS(g); g.change_state(_tw); _tap_through(_tw)
+_falls = [(x, y) for y in range(_tw.h) for x in range(_tw.w) if _tw.rows[y][x] == "$"]
+_foot = next((x, y + 1) for x, y in sorted(_falls, key=lambda t: -t[1]) if _tw._open((x, y + 1)))
+_tw.player, _tw.anim = _foot, 0
+_tw.step(0, -1)
+_held_back = (_tw.player == _foot, "WATERFALL" in str(_tw.toast).upper())
+story.inventory["HM_WATERFALL"] = 1
+_tw.anim = 0
+_tw.step(0, -1)
+_climbed = _tw.player
+check(len(_falls) >= 100 and _held_back == (True, True) and _climbed == (_foot[0], _foot[1] - 1),
+      f"Ever Grande City: its waterfall ({len(_falls)} tiles) turns you back at {_foot} without Waterfall, and with it you climb on to {_climbed}")
+story.inventory.pop("HM_WATERFALL", None)
+if _had_wf:
+    story.inventory["HM_WATERFALL"] = _had_wf
 g.walk_town_pos = None
 
 

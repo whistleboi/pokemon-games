@@ -18,7 +18,7 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 # One file a region (dev/builders/town_maps/<region>.py), in story order.
-REGIONS = ["kanto", "johto", "hoenn"]
+REGIONS = ["kanto", "johto", "hoenn", "sinnoh"]
 
 
 def all_maps():
@@ -37,7 +37,7 @@ def check(key, m):
     w = len(art[0])
     bad = [(i, len(r)) for i, r in enumerate(art) if len(r) != w]
     assert not bad, f"{key}: rows not {w} wide: {bad}"
-    for ch in set("".join(art)) - set("Tr~#.=s\"f<>^vNDw!lkc+-Xoqbuapihmgjeyzdtx%&$/n*_(),"):
+    for ch in set("".join(art)) - set("Tr~#.=s\"f<>^vNDw!lkc+-Xoqbuapihmgjeyzdtx%&$/n*_(),@[]{}:|;"):
         cells = [(x, y) for y, r in enumerate(art) for x, c in enumerate(r) if c == ch or
                  (c == "D" and any(0 <= y - 1 and art[y - 1][x] == ch for _ in [0]))]
         xs = [x for x, _y in cells]
@@ -50,18 +50,21 @@ def check(key, m):
     assert sum(r.count("X") for r in art) == len(m.get("trainer_spots", [])), f"{key}: X count vs trainer_spots"
 
 
-OPEN = set('.=s"f<>^vNw+-Xobuapedx%$/n,')  # (o: the sea you Surf; b: a boulder, pushed aside with Strength)
+OPEN = set('.=s"f<>^vNw+-Xobuapedx%$/n,[]{}:|;')  # (o: the sea you Surf; b: a boulder, pushed aside with Strength)
 
 
 def reachable(key, m):
     """Every way out, door, sign and person can be got to from the first way out (nothing walled off)."""
+    if m.get("dive") is not None or m.get("surface") is not None:  # (a sea and its seabed: Dive joins them anywhere, pools ringed by rocks and all)
+        return
     art = m["art"]
     h, w = len(art), len(art[0])
     cells = lambda ch: [(x, y) for y in range(h) for x in range(w) if art[y][x] in ch]
     exits = [t for t in cells("".join(c for c in m.get("exits", {}) if not c.isupper()) + "+-")]
-    if not exits:  # (every way out a building's door: Ilex Forest's two gates) start from those doors
-        lead = {c for c in m.get("exits", {}) if c.isupper()}
-        exits = [(x, y) for x, y in cells("D") if any(art[y + b][x + a] in lead for a, b in ((1, 0), (-1, 0), (0, 1), (0, -1)) if 0 <= y + b < h and 0 <= x + a < w)]
+    lead = {c for c in m.get("exits", {}) if c.isupper()}
+    lead_doors = [(x, y) for x, y in cells("D") if any(art[y + b][x + a] in lead for a, b in ((1, 0), (-1, 0), (0, 1), (0, -1)) if 0 <= y + b < h and 0 <= x + a < w)]
+    if not exits or m.get("parts"):  # (every way out a building's door: Ilex Forest's two gates; or a map in parts, one reached only by a cave mouth: Ever Grande's League side) start from those doors too
+        exits = exits + lead_doors
     assert exits, f"{key}: no way out"
     starts = exits if m.get("parts") else exits[:1]  # (a floor in separate parts, each reached by its own ladder)
     seen, todo = set(starts), list(starts)
@@ -69,7 +72,7 @@ def reachable(key, m):
         x, y = todo.pop()
         for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
             n = (x + dx, y + dy)
-            if 0 <= n[0] < w and 0 <= n[1] < h and n not in seen and (art[n[1]][n[0]] in OPEN or art[n[1]][n[0]] in "_()"):  # (a ledge: crossed one way, near enough here)
+            if 0 <= n[0] < w and 0 <= n[1] < h and n not in seen and (art[n[1]][n[0]] in OPEN or art[n[1]][n[0]] in "_()$"):  # (a ledge: crossed one way, near enough here; a waterfall: climbed with Waterfall)
                 seen.add(n)
                 todo.append(n)
     near = lambda t: any((t[0] + dx, t[1] + dy) in seen for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)))

@@ -24,6 +24,7 @@ import inspect
 import random
 from collections import deque
 
+CURRENT_FLOOR = 0  # the floor being made or walked right now (a floor's own wild pool: the seabed's)
 ENTRANCE_INDEX = 0  # which of several ways in from the same place you came by (Route 41's four Whirl Islands caves)
 WALL, FLOOR, GRASS, WATER, SURF = 0, 1, 2, 3, 4  # (SURF: open sea, crossed with HM Surf)
 DIRS = ((0, -1), (1, 0), (0, 1), (-1, 0))
@@ -71,6 +72,9 @@ class Floor:
         self.decor = {}      # (x, y) -> what stands on that wall tile (a drawn place's slot machines)
         self.spots = {}      # figure text -> (x, y): where a drawn place's figures stand
         self.ice = set()     # sheet ice: step on it and you slide till something stops you (the Ice Path)
+        self.current = {}    # (x, y) -> (dx, dy): a sea current carries you that way (Routes 132-134)
+        self.deep = set()    # deep sea: Dive here to the seabed floor
+        self.bridge = {}     # (x, y) -> (dx, dy): a log bridge and the line it runs along (Victory Road)
 
     def inside(self, x, y):
         return 0 <= x < self.w and 0 <= y < self.h
@@ -296,6 +300,12 @@ def drawn_floor(recipe, index, entrance=None, figures=()):
                 floor.start = (x, y)
             if c == "%":
                 floor.ice.add((x, y))
+            if what.get("current"):
+                floor.current[(x, y)] = tuple(what["current"])
+            if what.get("deep"):
+                floor.deep.add((x, y))
+            if what.get("bridge"):
+                floor.bridge[(x, y)] = tuple(what["bridge"])
             if what.get("exit"):
                 exits[(x, y)] = what["exit"]
             if what.get("decor"):
@@ -307,6 +317,10 @@ def drawn_floor(recipe, index, entrance=None, figures=()):
         doors = [t for t, target in exits.items() if target == entrance]  # (several the same way: the matching one)
         global ENTRANCE_INDEX
         door = doors[min(ENTRANCE_INDEX, len(doors) - 1)] if doors else None
+        if door and not any(floor.walkable(door[0] + dx, door[1] + dy) and (door[0] + dx, door[1] + dy) not in exits for dx, dy in DIRS):
+            # (that tile of the way in is boxed in by rocks: the nearest one you can step off: a sea route's edge)
+            free = [d for d in doors if any(floor.walkable(d[0] + dx, d[1] + dy) and (d[0] + dx, d[1] + dy) not in exits for dx, dy in DIRS)]
+            door = min(free, key=lambda d: abs(d[0] - door[0]) + abs(d[1] - door[1]), default=door)
         ENTRANCE_INDEX = 0
         if door:
             floor.start = next(((door[0] + dx, door[1] + dy) for dx, dy in DIRS if floor.walkable(door[0] + dx, door[1] + dy)
@@ -473,6 +487,9 @@ class Run:
 
     def enter_floor(self, index, arrive=None, nth=0):
         """Go to a floor: one made before is as you left it (arrive: beside its STAIRS or STAIRS_UP, the nth)."""
+        global CURRENT_FLOOR
+        CURRENT_FLOOR = index
+        self.deck = True
         if index < len(self.floors):
             self.index = index
             floor = self.floors[index]
@@ -586,6 +603,33 @@ class Run:
             return True
         return abs(x - px) <= 2 and abs(y - py) <= 2
 
+    deck = True  # on a log bridge: up on its deck (True), or passing underneath it (False)
+
+    def made(self, index):
+        """A floor, made if it wasn't yet, without going there (what lies under a Dive spot)."""
+        global CURRENT_FLOOR
+        at = (self.index, self.player, CURRENT_FLOOR, self.deck)
+        while len(self.floors) <= index:
+            self.enter_floor(len(self.floors))
+        self.index, self.player, CURRENT_FLOOR, self.deck = at
+        return self.floors[index]
+
+    def jump_floor(self, index, spot):
+        """Straight to a tile of another floor (Dive, and back up to the surface)."""
+        global CURRENT_FLOOR
+        self.made(index)
+        self.index, self.player, CURRENT_FLOOR, self.deck = index, spot, index, True
+        self.reveal()
+
+    def _bridge_bars(self, here, to, dx, dy):
+        """A log bridge has two levels: its deck, crossed along its length, and the floor under it, crossed
+        along its width. You're on the one you stepped onto it by, and can't swap in the middle."""
+        b = self.floor.bridge
+        if here in b and to not in b:
+            along = (abs(dx), abs(dy)) == b[here]
+            return along != self.deck
+        return False
+
     # ---- a turn
     def step(self, dx, dy):
         """You try to step (dx, dy). Returns a list of events, in order:
@@ -593,11 +637,15 @@ class Run:
         ("stairs",), ("stairs_up",), ("ambush", mover) (a wild Pokemon reached you), ("spotted", trainer)."""
         f = self.floor
         x, y = self.player[0] + dx, self.player[1] + dy
-        if not f.walkable(x, y):
+        if not f.walkable(x, y) or self._bridge_bars(self.player, (x, y), dx, dy):
             return [("blocked",)]
         m = f.mover_at(x, y)
         if m is not None:
             return [("bump", m)]
+        if (x, y) in f.bridge and self.player not in f.bridge:
+            self.deck = (abs(dx), abs(dy)) == f.bridge[(x, y)]
+        elif (x, y) not in f.bridge:
+            self.deck = True
         self.player = (x, y)
         self.turn += 1
         self.reveal()

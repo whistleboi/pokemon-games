@@ -199,6 +199,9 @@ def art_recipe(m):
         out["legend"] = {}
         for i, p in enumerate(parts):  # (each floor's own legend, under its own keys)
             out["layout"][i] = {"map": p["layout"][0]["map"], "legend": p["legend"]}
+            for k in ("dive", "surface", "pool"):  # (Dive: the seabed floor under this one, the surface over it, its own wild Pokemon)
+                if m["floors"][i].get(k) is not None:
+                    out["layout"][i][k] = m["floors"][i][k]
         out["floors"] = len(parts)
         out["exit_floors"] = {}
         for i, f in enumerate(m["floors"]):  # (a target on two floors: you come back on the lower-numbered one)
@@ -245,6 +248,17 @@ def art_recipe(m):
                 out.append(",")
             elif c == "o":  # open sea: Surf across it
                 out.append("o")
+            elif c in _art.CURRENTS:  # a current: sea that carries you its way
+                ch = chr(0x2C00 + "[]{}".index(c))
+                legend[ch] = {"surf": True, "current": list(_art.CURRENTS[c])}
+                out.append(ch)
+            elif c == ":":  # deep sea: Surf, and Dive
+                legend["\u2c10"] = {"surf": True, "deep": True}
+                out.append("\u2c10")
+            elif c in _art.BRIDGES:  # a log bridge: over it along its length, under it across its width
+                ch = chr(0x2C20 + "|;".index(c))
+                legend[ch] = {"bridge": [abs(v) for v in _art.BRIDGES[c]]}
+                out.append(ch)
             elif c == "x":  # a whirlpool: in the way until cleared with Whirlpool (whirl:<x>,<y>)
                 ch = chr(0x2900 + len(legend))
                 legend[ch] = {"decor": f"whirl:{x},{y}"}
@@ -274,11 +288,15 @@ def art_recipe(m):
             elif c == "T":
                 out.append("#")  # (a tree: Headbutt works on it)
             else:
-                out.append({"#": "F", "k": "F", "i": "F", "r": "R", "q": "R", "l": "R", "h": "R", "m": "R", "g": "R", "j": "R", "y": "R", "z": "R", "x": "R"}.get(c, "B"))
+                out.append({"#": "F", "k": "F", "i": "F", "r": "R", "q": "R", "l": "R", "h": "R", "m": "R", "g": "R", "j": "R", "y": "R", "z": "R", "x": "R", "@": "R"}.get(c, "B"))
         rows.append("".join(out))
     legend.update({c: {"exit": t} for c, t in exits.items() if not c.isupper()})
     for c in "wu":  # (a way out across the sea: you surf onto it)
         if c in exits:
+            legend[c] = {"exit": exits[c], "surf": True}
+    for c in "<>^v":  # (one of the other ways out, where every tile of it lies out on the water: Route 124's four sides)
+        spots = [(x, y) for y, row in enumerate(grid) for x, ch in enumerate(row) if ch == c]
+        if c in exits and spots and all(_art.at_sea(grid, x, y) for x, y in spots):
             legend[c] = {"exit": exits[c], "surf": True}
     legend.update({"+": {"exit": "STAIRS"}, "-": {"exit": "STAIRS_UP"}})
     legend.update({"F": {"decor": "fence"}, "R": {"decor": "rock"}, "B": {"decor": "building"}})
@@ -681,6 +699,11 @@ class DungeonState(OverworldBattles, PlayState):
         PLAY SLOTS at a machine: (label, action), else None."""
         if self._beside("decor:counter") and self._clerk():
             return "TALK", self.talk_to_clerk
+        plan = self._plan()
+        if plan.get("dive") is not None and self.run.player in getattr(self.run.floor, "deep", ()):
+            return "DIVE", self.dive_here
+        if plan.get("surface") is not None:
+            return "SURFACE", self.surface_here
         if self._beside("decor:slot"):
             return "PLAY SLOTS", self.play_slots
         if self._beside("water") and self._menu_item("FISH"):
@@ -688,6 +711,45 @@ class DungeonState(OverworldBattles, PlayState):
         if self._beside("tree") and self._menu_item("HEADBUTT"):
             return "HEADBUTT", self.headbutt_here
         return None
+
+    # ---------------------------------------------------------------- Dive (Hoenn's deep sea)
+    def _plan(self):
+        """This floor's own plan (a drawn map's: its Dive floor, its surface, its wild pool), else {}."""
+        layout = self.run.recipe.get("layout") if hasattr(self, "run") else None
+        return layout[self.run.index] if layout and self.run.index < len(layout) else {}
+
+    def dive_here(self):
+        """On deep, dark sea: Dive to the seabed floor, the same spot below."""
+        if not self._ready():
+            return
+        if self.game.story_manager.inventory.get("HM_DIVE", 0) <= 0:
+            self.say(["The sea is deep and dark here.", "A Pokemon could DIVE down to the seabed."])
+            return
+        to, spot = self._plan()["dive"], self.run.player
+        below = self.run.made(to)
+        if not below.walkable(*spot) or below.mover_at(*spot):
+            self.flash("There's rock right under you here.", 100)
+            return
+        self.walk_goal = self.sliding = None
+        self.run.jump_floor(to, spot)
+        self.partner = self.partner_from = spot
+        self._floor_surf = None
+        self.flash("You dived down to the seabed!", 110)
+
+    def surface_here(self):
+        """On the seabed: back up to the sea right above you (only where there's open water overhead)."""
+        if not self._ready():
+            return
+        to, spot = self._plan()["surface"], self.run.player
+        above = self.run.made(to)
+        if above.tile(*spot) != core.SURF or above.mover_at(*spot) or spot in above.exits:
+            self.flash("There's no open water above you here.", 100)
+            return
+        self.walk_goal = self.sliding = None
+        self.run.jump_floor(to, spot)
+        self.partner = self.partner_from = spot
+        self._floor_surf = None
+        self.flash("You came up to the surface!", 110)
 
     # ---------------------------------------------------------------- the Game Corner
     def _clerk(self):
@@ -739,7 +801,12 @@ class DungeonState(OverworldBattles, PlayState):
                 story.story_flags[flag] = keep
 
     def _wild_for_pool(self, rng):
-        pool = self._get_wild_pool(self.area_data)
+        area = self.area_data
+        layout = self.recipe.get("layout") if isinstance(getattr(self, "recipe", None), dict) else None
+        own = layout[core.CURRENT_FLOOR].get("pool") if layout and core.CURRENT_FLOOR < len(layout) else None
+        if own:  # (this floor's own Pokemon: the seabed's)
+            area = {k: v for k, v in dict(area, wild_pool_percentages=own).items() if k != "zone_pools"}
+        pool = self._get_wild_pool(area)
         if not pool:
             return None
         pid = int(Utils.weighted_random_choice(pool))
@@ -855,8 +922,12 @@ class DungeonState(OverworldBattles, PlayState):
         if hopped and self.run.player == to:  # (couldn't land after all)
             self.run.player = before
         self.hop = hopped and self.run.player != before
+        leaving = any(ev[0] in ("exit", "stairs", "stairs_up") for ev in events)
         on_ice = self.run.player != before and self.run.player in getattr(self.run.floor, "ice", ())
-        self.sliding = (dx, dy) if on_ice and not any(ev[0] in ("exit", "stairs", "stairs_up") for ev in events) else None
+        self.sliding = (dx, dy) if on_ice and not leaving else None
+        swept = getattr(self.run.floor, "current", {}).get(self.run.player) if self.run.player != before and not leaving else None
+        if swept and (self.run.player[0] + swept[0], self.run.player[1] + swept[1]) != before:
+            self.sliding = swept  # (a sea current: it carries you its own way, whichever way you came onto it; never straight back and forth)
         if self.sliding:
             self.walk_goal = None
         if self.run.player != before:
@@ -995,6 +1066,8 @@ class DungeonState(OverworldBattles, PlayState):
     def _try_exit(self, target):
         same = [t for t, v in self.run.floor.exits.items() if v == target]
         core.ENTRANCE_INDEX = same.index(tuple(self.run.player)) if tuple(self.run.player) in same else 0
+        if len(same) > 1:  # (out to a town with as many ways back: in by the matching one, Victory Road's two mouths at Ever Grande)
+            self.game.walk_town_exit = (self.area_key, core.ENTRANCE_INDEX, len(same))
         if self.contest:  # leaving by the gate ends the contest: the judging first
             self._step_back()
             self._contest_end()
@@ -1361,7 +1434,8 @@ class DungeonState(OverworldBattles, PlayState):
             buttons.append(mega)
         act = self._act_here() if hasattr(self, "run") else None
         if act:  # beside water or a tree
-            sub = {"FISH": "the water here", "HEADBUTT": "this tree", "TALK": "the clerk",
+            sub = {"DIVE": "the deep sea here", "SURFACE": "up to the sea above",
+                   "FISH": "the water here", "HEADBUTT": "this tree", "TALK": "the clerk",
                    "PLAY SLOTS": "this machine"}.get(act[0])
             buttons.append((pygame.Rect(w - 280, h - 244, 260, 70), act[0], (232, 132, 40), act[1], True, sub))
         return buttons
@@ -1765,7 +1839,8 @@ class DungeonState(OverworldBattles, PlayState):
             flags = self.game.story_manager.story_flags
             if any(c == "x" for row in grid for c in row):  # (a whirlpool cleared is open sea)
                 grid = ["".join("o" if c == "x" and flags.get(self._boulder_flag((i, j))) else c for i, c in enumerate(row)) for j, row in enumerate(grid)]
-            self._floor_surf = _art.surface(grid, m.get("buildings", {}), TILE, m.get("roofs"), m.get("theme"))
+            own = m["floors"][self.run.index].get("theme") if m.get("floors") else None  # (a floor's own look: the seabed under a sea route)
+            self._floor_surf = _art.surface(grid, m.get("buildings", {}), TILE, m.get("roofs"), own or m.get("theme"))
             self._floor_index = self.run.index
             return
         if self.run.recipe.get("image"):  # a real map: its own picture, a tile for a tile
@@ -2314,6 +2389,12 @@ class DungeonState(OverworldBattles, PlayState):
             drawn.append((pr.bottom, img, img.get_rect(center=(pr.centerx, pr.centery - 4))))
         for _b, img, rect in sorted(drawn, key=lambda t: t[0]):
             screen.blit(img, rect)
+        spans = getattr(self.run.floor, "bridge", None)
+        if spans and not self.run.deck and self.run.recipe.get("art"):  # (passing under a log bridge: it goes over your head)
+            from src.dungeon import art as _art
+            for t in {self.run.player, self.anim_from if self.anim > 0 else self.run.player}:
+                if t in spans:
+                    _art.bridge(screen, at(*t), "|" if spans[t] == (0, 1) else ";")
         for img, (bx, by) in self._overheads():  # (what passes over your head: you walk under it, out of view)
             screen.blit(img, (ox + bx, oy + by))
         # the fog: unseen tiles are dark, seen ones you can't see right now are dimmed

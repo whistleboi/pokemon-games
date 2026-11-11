@@ -1050,7 +1050,8 @@
         {"text": "Route 110", "target_area": "HOENN_ROUTE_110"},
         {"text": "Route 111", "target_area": "HOENN_ROUTE_111", "condition": "has_item:HM_ROCK_SMASH"},
         {"text": "Route 117", "target_area": "HOENN_ROUTE_117"},
-        {"text": "Route 118", "target_area": "HOENN_ROUTE_118"}
+        {"text": "Route 118", "target_area": "HOENN_ROUTE_118"},
+        {"text": "New Mauville", "target_area": "HOENN_NEW_MAUVILLE"}
       ],
       "explore_options": [{"text": "Man in a Suit", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_lopunnite", "event": {"lines": ["Man in a suit: A Mega Stone for a Trainer with style. Take it!", "You found the LOPUNNITE!"], "gift_item": {"LOPUNNITE": 1}, "flag": "got_lopunnite"}}, 
         { "text": "Heal", "action": "HEAL" },
@@ -1179,7 +1180,7 @@
         {"text": "Soaring in the Sky", "target_area": "HOENN_SOARING_IN_THE_SKY", "condition": "beat_hoenn_champion"},
         {"text": "Route 127", "target_area": "HOENN_ROUTE_127", "condition": "has_item:HM_SURF"}
       ],
-      "explore_options": [{"text": "Steven's House", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_metagrossite", "event": {"lines": ["Steven left a stone on his table, with a note: \"For you, my friend.\"", "You found the METAGROSSITE!"], "gift_item": {"METAGROSSITE": 1}, "flag": "got_metagrossite"}}, 
+      "explore_options": [{"text": "Steven's House", "door": "steven", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_metagrossite", "event": {"lines": ["Steven left a stone on his table, with a note: \"For you, my friend.\"", "You found the METAGROSSITE!"], "gift_item": {"METAGROSSITE": 1}, "flag": "got_metagrossite"}}, 
         {"text": "Heal", "action": "HEAL"},
         {"text": "Shop", "action": "SHOP"},
         {"text": "Gym", "action": "GYM"},
@@ -1242,7 +1243,7 @@
         { "text": "Route 129", "target_area": "HOENN_ROUTE_129" },
         {"text": "Battle Resort", "target_area": "HOENN_BATTLE_RESORT", "condition": "beat_hoenn_champion"}
       ],
-      "explore_options": [{"text": "A Glinting Stone: Mewtwonite Y", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_mewtwonite_y", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the MEWTWONITE Y!"], "gift_item": {"MEWTWONITE_Y": 1}, "flag": "got_mewtwonite_y"}}, {"text": "Heal", "action": "HEAL"}, {"text": "CHALLENGE LEAGUE", "action": "GYM"}],
+      "explore_options": [{"text": "A Glinting Stone: Mewtwonite Y", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_mewtwonite_y", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the MEWTWONITE Y!"], "gift_item": {"MEWTWONITE_Y": 1}, "flag": "got_mewtwonite_y"}}, {"text": "Heal", "action": "HEAL"}, {"text": "CHALLENGE LEAGUE", "door": "league", "action": "GYM"}],
       "next_area": "HOENN_VICTORY_ROAD",
       "on_enter_event": null
     },
@@ -1664,7 +1665,6 @@
         {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
         {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"},
-        {"text": "NEW MAUVILLE", "action": "EXIT", "target_area": "HOENN_NEW_MAUVILLE", "condition": ["can_exit", "has_item:HM_SURF"], "color": "RED"},
         {"text": "SLATEPORT CITY", "action": "EXIT", "target_area": "SLATEPORT_CITY", "condition": "can_exit", "color": "RED"},
         {"text": "MAUVILLE CITY", "action": "EXIT", "target_area": "MAUVILLE_CITY", "condition": "can_exit", "color": "RED"},
         {"text": "ROUTE 103", "action": "EXIT", "target": "HOENN_ROUTE_103", "condition": ["can_exit", "has_item:HM_SURF"], "color": "RED"}
@@ -2030,7 +2030,7 @@
         {"text": "MEET STEVEN", "action": "HOENN_EVENT", "event": "southern_island", "condition": ["has_balance_badge", "not:got_mega_bracelet"], "color": "GOLD"},
         {"text": "MAUVILLE CITY", "action": "EXIT", "target_area": "MAUVILLE_CITY", "condition": "can_exit", "color": "RED"},
         {"text": "ROUTE 119", "action": "EXIT", "target_area": "HOENN_ROUTE_119", "condition": ["can_exit", "has_item:HM_SURF"], "color": "RED"},
-        {"text": "ROUTE 123", "action": "EXIT", "target_area": "HOENN_ROUTE_123", "condition": ["can_exit", "has_item:HM_SURF"], "color": "RED"}
+        {"text": "ROUTE 123", "action": "EXIT", "target_area": "HOENN_ROUTE_123", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "HOENN_ROUTE_119",
       "region": "HOENN"
@@ -2260,7 +2260,7 @@
         {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
         {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
-        {"text": "ROUTE 122", "action": "EXIT", "target_area": "HOENN_ROUTE_122", "condition": ["can_exit", "has_item:HM_SURF"], "color": "RED"},
+        {"text": "ROUTE 122", "action": "EXIT", "target_area": "HOENN_ROUTE_122", "condition": "can_exit", "color": "RED"},
         {"text": "ROUTE 118", "action": "EXIT", "target": "HOENN_ROUTE_118", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "HOENN_ROUTE_122",
@@ -2926,9 +2926,9 @@
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
-        { "text": "HOENN_ROUTE_110", "action": "EXIT", "target_area": "HOENN_ROUTE_110", "condition": "can_exit", "color": "RED" }
+        { "text": "MAUVILLE CITY", "action": "EXIT", "target_area": "MAUVILLE_CITY", "condition": "can_exit", "color": "RED" }
       ],
-      "next_area": "HOENN_ROUTE_110",
+      "next_area": "MAUVILLE_CITY",
       "region": "HOENN"
     },
     "HOENN_WEATHER_INSTITUTE": {
