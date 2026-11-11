@@ -1496,6 +1496,10 @@ check((_f119.w, _f119.h) == (40, 140) and _h119.run.player[1] >= 136 and {"HOENN
 _h120 = kanto("HOENN_ROUTE_120", came="FORTREE_CITY")
 check((_h120.run.floor.w, _h120.run.floor.h) == (40, 100) and _h120.run.player[0] <= 2 and {"FORTREE_CITY", "HOENN_ROUTE_121", "HOENN_SCORCHED_SLAB"} == set(_h120.run.floor.exits.values()),
       f"Hoenn Route 120: read from the Emerald map; in from Fortree (west) at {_h120.run.player}; Route 121 east, the Scorched Slab on the pond")
+_h121 = kanto("HOENN_ROUTE_121", came="HOENN_ROUTE_120")
+check((_h121.run.floor.w, _h121.run.floor.h) == (80, 20) and _h121.run.player[0] <= 2 and {"HOENN_ROUTE_120", "LILYCOVE_CITY", "HOENN_ROUTE_122"} == set(_h121.run.floor.exits.values())
+      and "door:safari" in _h121.run.floor.decor.values(),
+      f"Hoenn Route 121: read from the Emerald map; in from Route 120 (west) at {_h121.run.player}; Lilycove east, the pier to Route 122, the Safari Zone's door")
 story.story_flags.pop("defeated_red_gyarados", None)
 _lor = kanto("LAKE_OF_RAGE", came="JOHTO_ROUTE_43")
 _gy = [m for f in _lor.run.floors for m in f.movers if m.kind == "figure" and m.payload.get("action") == "BOSS"]
@@ -1606,6 +1610,12 @@ check(isinstance(_ft, _WTS) and (_ft.w, _ft.h) == (40, 20) and {"center", "mart"
       and {"HOENN_ROUTE_119", "HOENN_ROUTE_120", "FORTREE_CITY_UPPER"} == set(_ft.exits.values()) and len(_ft.overheads) == 4
       and [_fup[i] for i in range(5)] == [(10, 5), (25, 5), (32, 5), (12, 15), (37, 15)] and [_fdn[i] for i in range(5)] == [(10, 7), (25, 7), (32, 7), (12, 17), (37, 17)] and _planks,
       f"Fortree City: read from the Emerald map; in from Route 119 (west) at {_ft.player}; each of the five ladders leads to its own (up {_fup}; down {_fdn}); up top you walk only the planks ({_planks})")
+g.walk_town_pos = None
+story.current_area_key, story.last_area_key = "LILYCOVE_CITY", "HOENN_ROUTE_121"
+_lc = _CS(g); g.change_state(_lc); _tap_through(_lc)
+check(isinstance(_lc, _WTS) and (_lc.w, _lc.h) == (80, 40) and {"center", "mart", "contest", "museum", "harbor"} <= set(_lc.doors.values()) and _lc.player[0] <= 2
+      and {"HOENN_ROUTE_121", "HOENN_ROUTE_124"} == set(_lc.exits.values()) and _lc._door_options("museum") and _lc._door_options("mart") and _lc._door_options("contest"),
+      f"Lilycove City: from the Emerald map; in from Route 121 (west) at {_lc.player}; the Museum, the Department Store, the Contest Hall and the Harbor each have their own door")
 g.walk_town_pos = None
 
 
