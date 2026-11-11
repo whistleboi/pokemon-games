@@ -1781,12 +1781,13 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, GameState)
 
     # Prize money as in the games: the opponent's highest level x a rate for its class. (A flat
     # 25,000 per Elite Four win let a lost League run be farmed for 200k+.)
-    PRIZE_RATE = {"CHAMPION": 200, "ELITE_FOUR": 100, "GYM_LEADER": 100}
+    # (Jordan, 11-10: rewards were far too high: $1,000 and 3 Poke Balls for every win, wild ones too.)
+    PRIZE_RATE = {"CHAMPION": 200, "ELITE_FOUR": 100, "GYM_LEADER": 100, "ROCKET_LEADER": 100,
+                  "COMMANDER": 60, "RIVAL": 40, "WILD": 10}
+    PRIZE_RATE_TRAINER = 20  # (any other trainer: a Youngster at Lv12 pays $240)
 
     def _calc_money_reward(self):
-        rate = self.PRIZE_RATE.get(self.trainer_class)
-        if rate is None:
-            return 1000
+        rate = self.PRIZE_RATE.get(self.trainer_class, self.PRIZE_RATE_TRAINER)
         top = max((p.level for p in self.opponent_team if p), default=10)
         return rate * top
 
@@ -1816,7 +1817,8 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, GameState)
             money_reward = self._calc_money_reward()
             if self.game.story_manager.inventory.get("AMULET_COIN", 0) > 0:
                 money_reward *= 2
-            msgs.append(f"You got ${money_reward:,} for winning!")
+            if money_reward > 0:
+                msgs.append(f"You got ${money_reward:,} for winning!")
 
             candy = self._calc_candy_reward()
             if candy > 0:
@@ -2456,6 +2458,7 @@ class WildBattleState(TrainerBattleState):
             background_image=background_image,
             is_boss_battle=is_boss_battle
         )
+        self.rewards = {"balls": 0}  # (a wild win gives no Poke Balls: Jordan, 11-10)
         if self.phase != "DITTO_TRANSFORM":  # a wild Ditto transforms first (was a soft-lock)
             self.phase = "MENU"
         self.catch_phase = "DECISION"

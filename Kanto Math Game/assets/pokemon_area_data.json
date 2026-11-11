@@ -154,7 +154,8 @@
       },
       {
         "id": "m8", "type": "MAIN", "text": "Spirit of Lavender", "desc": "A restless spirit haunts the Pokémon Tower. You'll need a Silph Scope to see it. Team Rocket in Celadon might have one...",
-        "condition": { "visited": "LAVENDER_TOWN", "flag_not": "tower_ghost_defeated" }
+        "condition": { "visited": "LAVENDER_TOWN", "item_not": "POKE_FLUTE" },
+        "targets": [["ROCKET_HIDEOUT", "has_item:SILPH_SCOPE"]], "target": "KANTO_POKEMON_TOWER"
       },
       {"id": "k_power", "type": "SIDE", "text": "Lights Out in Lavender", "target": "POWER_PLANT", "desc": "Lavender's Radio Tower has no power! Surf along the channel on Route 10 to the Power Plant and help the manager fix the generator.", "condition": {"visited": "LAVENDER_TOWN", "flag_not": "power_plant_fixed"}},
       {"id": "k_teeth", "type": "SIDE", "text": "The Warden's Teeth", "target": "SAFARI_ZONE", "desc": "The Safari Zone's Warden lost his Gold Teeth and can't talk! Find them in the Safari Zone's west area and take them back to him in Fuchsia City.", "condition": {"flag": "heard_warden_teeth", "flag_not": "got_hm_strength_kanto"}},
@@ -164,7 +165,7 @@
       },
       {
         "id": "m10", "type": "MAIN", "text": "Journey to Fuchsia", "desc": "Travel south to Fuchsia City. Take the long way through Route 12-15 or the fast way via Cycling Road (Route 16-18)!",
-        "condition": { "badges_min": 4, "visited_not": "FUCHSIA_CITY" }
+        "condition": { "badges_min": 4, "visited_not": "FUCHSIA_CITY", "item": "POKE_FLUTE" }
       },
       {
         "id": "m11", "type": "MAIN", "text": "The Soul Badge", "desc": "Challenge Koga at the Fuchsia City Gym. His poison and traps are legendary!",
@@ -275,23 +276,23 @@
         "condition": { "flag": "beat_champion", "item": "CERULEAN_CAVE_MAP", "flag_not": "CERULEAN_CAVE_boss_defeated" }
       },
       {
-        "id": "cm30", "type": "SIDE", "text": "Catch 30 Pokémon", "desc": "Own 30 different Kanto Pokémon to earn a $50,000 bonus.",
+        "id": "cm30", "type": "SIDE", "text": "Catch 30 Pokémon", "desc": "Own 30 different Kanto Pokémon to earn a $5,000 bonus.",
         "condition": {"required_region": "KANTO"}, "completed_flag": "kanto_catch_30", "kanto_species": 30
       },
       {
-        "id": "cm60", "type": "SIDE", "text": "Catch 60 Pokémon", "desc": "Own 60 different Kanto Pokémon to earn another $50,000 bonus.",
+        "id": "cm60", "type": "SIDE", "text": "Catch 60 Pokémon", "desc": "Own 60 different Kanto Pokémon to earn another $5,000 bonus.",
         "condition": {"required_region": "KANTO", "flag": "kanto_catch_30"}, "completed_flag": "kanto_catch_60", "kanto_species": 60
       },
       {
-        "id": "cm90", "type": "SIDE", "text": "Catch 90 Pokémon", "desc": "Own 90 different Kanto Pokémon to earn another $50,000 bonus.",
+        "id": "cm90", "type": "SIDE", "text": "Catch 90 Pokémon", "desc": "Own 90 different Kanto Pokémon to earn another $5,000 bonus.",
         "condition": {"required_region": "KANTO", "flag": "kanto_catch_60"}, "completed_flag": "kanto_catch_90", "kanto_species": 90
       },
       {
-        "id": "cm120", "type": "SIDE", "text": "Catch 120 Pokémon", "desc": "Own 120 different Kanto Pokémon to earn another $50,000 bonus.",
+        "id": "cm120", "type": "SIDE", "text": "Catch 120 Pokémon", "desc": "Own 120 different Kanto Pokémon to earn another $5,000 bonus.",
         "condition": {"required_region": "KANTO", "flag": "kanto_catch_90"}, "completed_flag": "kanto_catch_120", "kanto_species": 120
       },
       {
-        "id": "cm150", "type": "SIDE", "text": "Catch 150 Pokémon", "desc": "Own all 150 Kanto Pokémon to earn the final $50,000 bonus!",
+        "id": "cm150", "type": "SIDE", "text": "Catch 150 Pokémon", "desc": "Own all 150 Kanto Pokémon to earn the final $5,000 bonus!",
         "condition": {"required_region": "KANTO", "flag": "kanto_catch_120"}, "completed_flag": "kanto_catch_150", "kanto_species": 150
       }
     ]
@@ -2960,7 +2961,7 @@
         {
           "text": "CONFRONT GHOST", "before_trainers": true,
           "action": "BOSS",
-          "condition": "boss_available",
+          "condition": ["boss_available", "has_item:SILPH_SCOPE"],
           "has_SILPH_SCOPE": true,
           "color": "GOLD",
           "zone": "floor_3"

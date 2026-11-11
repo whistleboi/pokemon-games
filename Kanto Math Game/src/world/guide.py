@@ -32,11 +32,15 @@ def _name_index(game):
 
 
 def mission_target(game, mission):
-    """The area a mission is about: its "target", else the longest place name in its text (an
-    area of the current region wins over a same-named one elsewhere)."""
+    """The area a mission is about: the first of its "targets" ([area, done-when condition]) not done
+    yet (the Silph Scope's hideout before the Tower), else its "target", else the longest place name in
+    its text (an area of the current region wins over a same-named one elsewhere)."""
+    story = game.story_manager
+    for area, done in mission.get("targets") or []:
+        if not _ok(story, done):
+            return area
     if mission.get("target"):
         return mission["target"]
-    story = game.story_manager
     text = " ".join(str(mission.get(k) or "") for k in ("title", "text", "description", "desc")).lower()
     region = story.get_current_region()
     hits = [(name, k) for name, k in _name_index(game) if re.search(r"\b" + re.escape(name) + r"\b", text)]
@@ -160,19 +164,38 @@ def _ok(story, cond):
     return bool(story.story_flags.get(c, False))
 
 
+def _flag_ok(story, fc):
+    """An option's "flag_condition" ("flag" or "not flag"), as the town screens read it."""
+    parts = str(fc or "").split()
+    if len(parts) == 2 and parts[0] == "not":
+        return not story.story_flags.get(parts[1])
+    return not parts or bool(story.story_flags.get(parts[0]))
+
+
+def leads_to(game, area_key, opt):
+    """The area a town or route button takes you to, or None: a way out, or a building that is an area
+    of its own (Celadon's Game Corner, with the Rocket Hideout under it)."""
+    if opt.get("action") in ("TRAVEL", "EXIT") or (opt.get("target_area") and not opt.get("action")):
+        return opt.get("target_area") or opt.get("target")
+    if opt.get("action") == "GAMECORNER":
+        key = area_key.replace("_CITY", "").replace("_TOWN", "") + "_GAME_CORNER"
+        return key if key in game.loader.area_data.get("STORY_PROGRESSION", {}) else None
+    return None
+
+
 def neighbours(game, area_key, open_only=True):
     """Areas you can go to from area_key (town travel / explore travel / route exits)."""
     story = game.story_manager
     area = game.loader.area_data.get("STORY_PROGRESSION", {}).get(area_key, {})
     out = []
     for opt in (area.get("travel_options") or []):
-        if opt.get("target_area") and (not open_only or _ok(story, opt.get("condition"))):
+        if opt.get("target_area") and (not open_only or (_ok(story, opt.get("condition"))
+                                                         and _flag_ok(story, opt.get("flag_condition")))):
             out.append(opt["target_area"])
     for opt in (area.get("explore_options") or []) + (area.get("route_menu") or []):
-        if opt.get("action") in ("TRAVEL", "EXIT"):
-            target = opt.get("target_area") or opt.get("target")
-            if target and (not open_only or _ok(story, opt.get("condition"))):
-                out.append(target)
+        target = leads_to(game, area_key, opt)
+        if target and (not open_only or (_ok(story, opt.get("condition")) and _flag_ok(story, opt.get("flag_condition")))):
+            out.append(target)
     return out
 
 

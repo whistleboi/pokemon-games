@@ -76,6 +76,7 @@
     ]
   },
   "figures": {
+    "KANTO_POKEMON_TOWER:GHOST": {"draw": "ghost"},
     "SAFARI_ZONE:GOLD TEETH": {"item": "GOLD_TEETH"},
     "VERMILLION_CITY:Machop": {"pokemon": 66},
     "FROST_CAVERN:ABOMASITE": {"item": "ABOMASITE"},

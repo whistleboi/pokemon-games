@@ -409,9 +409,9 @@ class StoryManager:
         return len({int(v.get("id", 0)) for v in dex.values() if 1 <= int(v.get("id", 0)) <= 150})
 
     # Kanto's "Catch 30/60/90/120/150 Pokemon" missions (Jordan, 11-02): Kanto species owned (#1-150 in
-    # the Pokedex, however they were got: caught, evolved, given, traded), $50,000 each, paid once.
+    # the Pokedex, however they were got: caught, evolved, given, traded), $5,000 each, paid once.
     CATCH_MILESTONES = (30, 60, 90, 120, 150)
-    CATCH_BONUS = 50000
+    CATCH_BONUS = 5000  # (was $50,000: far too much. Jordan, 11-10)
 
     def catch_milestones(self):
         """Pay any milestone reached and not paid yet. Returns the lines to show."""
