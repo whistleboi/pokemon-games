@@ -263,6 +263,10 @@ def art_recipe(m):
                 ch = chr(0x2800 + len(legend))
                 legend[ch] = {"decor": f"boulder:{x},{y}"}
                 out.append(ch)
+            elif c in _art.LEDGES:  # a ledge: in the way, but you hop over it its one way (ledge:<dx>,<dy>)
+                ch = chr(0x2800 + len(legend))
+                legend[ch] = {"decor": "ledge:%d,%d" % _art.LEDGES[c]}
+                out.append(ch)
             elif c in _art.OPEN:
                 out.append(".")
             elif c == "~":
@@ -378,6 +382,33 @@ def dungeon_for(game, restore_data=None):
 
 
 # ---------------------------------------------------------------- the screen
+def ghost_figure():
+    """A pale, see-through spirit with hollow eyes and a wavy hem (Jordan, 11-10: the Pokemon Tower's
+    mysterious ghost, drawn in our own style: not any one Pokemon)."""
+    w, h = TILE + 8, TILE + 26
+    img = pygame.Surface((w, h), pygame.SRCALPHA)
+    body = pygame.Surface((w, h), pygame.SRCALPHA)
+    cx, top, hem = w // 2, 6, h - 10
+    rad = w // 2 - 6
+    pygame.draw.circle(body, (236, 232, 255, 200), (cx, top + rad), rad)
+    pygame.draw.rect(body, (236, 232, 255, 200), (cx - rad, top + rad, 2 * rad, hem - top - rad))
+    wave = 4  # (a hem of four scallops)
+    step = 2 * rad / wave
+    for k in range(wave):
+        pygame.draw.circle(body, (236, 232, 255, 200), (int(cx - rad + step * (k + 0.5)), hem), int(step / 2))
+    for k in range(wave - 1):  # (the gaps between them)
+        pygame.draw.circle(body, (0, 0, 0, 0), (int(cx - rad + step * (k + 1)), hem + int(step / 2)), int(step / 2))
+    glow = pygame.Surface((w, h), pygame.SRCALPHA)  # (a soft purple haze around it)
+    pygame.draw.ellipse(glow, (150, 110, 220, 60), (2, top - 2, w - 4, hem - top + 10))
+    img.blit(glow, (0, 0))
+    img.blit(body, (0, 0))
+    eye_y = top + rad - 2
+    for dx in (-rad // 2, rad // 2 - 2):
+        pygame.draw.ellipse(img, (40, 20, 70, 230), (cx + dx - 4, eye_y - 7, 10, 15))
+    pygame.draw.ellipse(img, (40, 20, 70, 200), (cx - 5, eye_y + 12, 10, 8))  # (a small, dark mouth)
+    return img
+
+
 class DungeonState(OverworldBattles, PlayState):
 
     def __init__(self, game, restore_data=None, classic=False):
@@ -790,6 +821,7 @@ class DungeonState(OverworldBattles, PlayState):
         f = self.run.floor
         return f.tile(*(t or self.run.player)) == core.SURF
 
+    hop = False  # (mid-hop over a ledge: you arc through the air)
     sliding = None  # (on sheet ice: the way you're sliding, till something stops you)
 
     def step(self, dx, dy):
@@ -813,7 +845,16 @@ class DungeonState(OverworldBattles, PlayState):
             self.walk_goal = None  # (the open sea: Surf it, Routes 19-21)
             self.flash("The sea is deep. You need Surf to cross it!", 100)
             return
+        hopped = False
+        if str(self.run.floor.decor.get(to, "")) == f"ledge:{dx},{dy}":  # (a ledge, from its high side: hop over it)
+            over = (to[0] + dx, to[1] + dy)
+            if self.run.floor.walkable(*over) and self.run.floor.mover_at(*over) is None:
+                self.run.player = to
+                hopped = True
         events = self.run.step(dx, dy)
+        if hopped and self.run.player == to:  # (couldn't land after all)
+            self.run.player = before
+        self.hop = hopped and self.run.player != before
         on_ice = self.run.player != before and self.run.player in getattr(self.run.floor, "ice", ())
         self.sliding = (dx, dy) if on_ice and not any(ev[0] in ("exit", "stairs", "stairs_up") for ev in events) else None
         if self.sliding:
@@ -1812,7 +1853,8 @@ class DungeonState(OverworldBattles, PlayState):
         return out
 
     def _sprite(self, key, make):
-        if key not in self._sprites:
+        sprites = self.__dict__.setdefault("_sprites", {})
+        if key not in sprites:
             try:
                 self._sprites[key] = make()
             except (pygame.error, OSError, ValueError, TypeError):
@@ -1937,6 +1979,8 @@ class DungeonState(OverworldBattles, PlayState):
         spec = (sm.get("figures") or {}).get(f"{self.area_key}:{item.get('text')}") or {}
         if spec.get("item"):
             return self._item_img(spec["item"], 40) or self._sheet_frame("Object ball.png", col=0, height=36)
+        if spec.get("draw") == "ghost":  # (the Tower's unknown spirit: nobody can tell what it is yet)
+            return self._sprite("ghost_figure", ghost_figure)
         if item.get("action") == "ARRIVAL":
             return self._trainer_img(item["event"].get("trainer") or {})
         if item.get("action") == "MAX_RAID":  # the den's next raid Pokemon, jumbo (Jordan, 11-06)
@@ -2166,6 +2210,12 @@ class DungeonState(OverworldBattles, PlayState):
                 screen.blit(img, img.get_rect(midbottom=(r.centerx, r.bottom - 2)))
             elif str(what).startswith("barrier:") and (x, y) in f.seen and x0 <= x < x1 and y0 <= y < y1:  # (the cycling gate's striped bar)
                 r = at(x, y)
+                if getattr(self, "_bars", {}).get((x, y), {}).get("look") == "hidden":  # (a door you can't see: plain rock, like the wall around it)
+                    if getattr(self, "_rock_tile", None) is None:
+                        from src.dungeon import art as _art
+                        self._rock_tile = _art.surface(["ccc", "ccc", "ccc"], {}, TILE, None, None).subsurface((TILE, TILE, TILE, TILE)).copy()
+                    screen.blit(self._rock_tile, r)
+                    continue
                 if getattr(self, "_bars", {}).get((x, y), {}).get("look") == "storm":  # (a sandstorm in the way: Route 111's desert)
                     tt = pygame.time.get_ticks() / 140
                     veil = pygame.Surface((r.w, r.h), pygame.SRCALPHA)
@@ -2238,6 +2288,10 @@ class DungeonState(OverworldBattles, PlayState):
         pr = pygame.Rect(0, 0, TILE, TILE)
         (fx0, fy0), (tx0, ty0) = (self.anim_from if self.anim > 0 else self.run.player), self.run.player
         pr.topleft = (int(ox + (fx0 + (tx0 - fx0) * k) * TILE), int(oy + (fy0 + (ty0 - fy0) * k) * TILE))  # (you, mid-step)
+        if self.hop and self.anim > 0:  # (over a ledge: up and down again)
+            pr.y -= int(math.sin(math.pi * k) * TILE * 0.55)
+        elif self.hop:
+            self.hop = False
         me = self._player_img()
         drawn = []  # (bottom, image, rect): the lower one in front
         surfing = self._on_surf() or (self.anim > 0 and self._on_surf(self.anim_from))

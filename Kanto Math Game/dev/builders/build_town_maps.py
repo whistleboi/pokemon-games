@@ -37,7 +37,7 @@ def check(key, m):
     w = len(art[0])
     bad = [(i, len(r)) for i, r in enumerate(art) if len(r) != w]
     assert not bad, f"{key}: rows not {w} wide: {bad}"
-    for ch in set("".join(art)) - set("Tr~#.=s\"f<>^vNDw!lkc+-Xoqbuapihmgjeyzdtx%&$/n"):
+    for ch in set("".join(art)) - set("Tr~#.=s\"f<>^vNDw!lkc+-Xoqbuapihmgjeyzdtx%&$/n*_(),"):
         cells = [(x, y) for y, r in enumerate(art) for x, c in enumerate(r) if c == ch or
                  (c == "D" and any(0 <= y - 1 and art[y - 1][x] == ch for _ in [0]))]
         xs = [x for x, _y in cells]
@@ -50,7 +50,7 @@ def check(key, m):
     assert sum(r.count("X") for r in art) == len(m.get("trainer_spots", [])), f"{key}: X count vs trainer_spots"
 
 
-OPEN = set('.=s"f<>^vNw+-Xobuapedx%$/n')  # (o: the sea you Surf; b: a boulder, pushed aside with Strength)
+OPEN = set('.=s"f<>^vNw+-Xobuapedx%$/n,')  # (o: the sea you Surf; b: a boulder, pushed aside with Strength)
 
 
 def reachable(key, m):
@@ -69,7 +69,7 @@ def reachable(key, m):
         x, y = todo.pop()
         for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
             n = (x + dx, y + dy)
-            if 0 <= n[0] < w and 0 <= n[1] < h and n not in seen and art[n[1]][n[0]] in OPEN:
+            if 0 <= n[0] < w and 0 <= n[1] < h and n not in seen and (art[n[1]][n[0]] in OPEN or art[n[1]][n[0]] in "_()"):  # (a ledge: crossed one way, near enough here)
                 seen.add(n)
                 todo.append(n)
     near = lambda t: any((t[0] + dx, t[1] + dy) in seen for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)))

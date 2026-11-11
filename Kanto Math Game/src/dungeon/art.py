@@ -19,16 +19,20 @@ can walk. The town screen (src/states/overworld/walk_town.py) and the route maps
   b a boulder: Strength and the slide puzzle push it aside (route maps: Seafoam)
   % sheet ice: you slide across it till something stops you   & a hole in the floor (the Ice Path)
   $ a waterfall (Waterfall climbs it)   / a rock wall with footholds (Rock Climb scales it)  (Mt. Silver)
+  * lava (in the way: Mt. Chimney's crater)
+  , a plank walkway (open ground: Fortree's bridges, on its upper layer)
+  _ ( ) a ledge you hop over one way only: down (south), west, east (the Jagged Pass)
 A map's "theme" "cave" (or a turbine's t: in the way) draws the ground as a cave floor and c as its rock walls; "ice" the same, icy."""
 import random
 
 import pygame
 
-BLOCK = set("Tr~#!lkcqihmgjyztx&$/")
+BLOCK = set("Tr~#!lkcqihmgjyztx&$/*_()")
+LEDGES = {"_": (0, 1), "(": (-1, 0), ")": (1, 0)}  # a ledge, and the one way you hop over it
 CLIFF = (200, 160, 116)
 CLIFF_DARK = (150, 112, 78)
 CLIFF_LIGHT = (222, 188, 146)
-OPEN = set('.=s"f<>^vNw+-Xouaped%n')
+OPEN = set('.=s"f<>^vNw+-Xouaped%n,')
 EXIT_CHARS = set("<>^vwu+-n")  # (n: a fifth way out, a cave mouth: Mt. Silver 1F's)
 CAVE_FLOOR = (150, 132, 112)
 CAVE_FLOOR_DARK = (128, 112, 94)
@@ -201,9 +205,68 @@ def surface(art, kinds, tile, roofs=None, theme=None):
     return surf
 
 
-def _ground(surf, art, x, y, tile, rng):
-    c = art[y][x]
+def _ledge(surf, art, x, y, r, way):
+    """A ledge's lip over its ground: a drop on the side you land, a round stone at each end of the run."""
+    lip, dark, tile = (168, 124, 88), (104, 74, 58), r.w
+    if way == (0, 1):
+        band = pygame.Rect(r.x, r.centery - 2, tile, tile // 3)
+    elif way == (1, 0):
+        band = pygame.Rect(r.centerx - 2, r.y, tile // 3, tile)
+    else:
+        band = pygame.Rect(r.centerx - tile // 3 + 2, r.y, tile // 3, tile)
+    pygame.draw.rect(surf, dark, band.move(way[0] * 3, way[1] * 4))  # (its shadow, on the low side)
+    pygame.draw.rect(surf, lip, band)
+    if way[1]:
+        pygame.draw.line(surf, (214, 176, 132), band.topleft, band.topright, 2)
+        ends = ((-1, 0, band.x + 7), (1, 0, band.right - 7))
+        for dx, _dy, cx in ends:
+            if cell(art, x + dx, y) != art[y][x]:
+                pygame.draw.circle(surf, dark, (cx, band.centery + 2), 9)
+                pygame.draw.circle(surf, (190, 150, 112), (cx, band.centery), 8)
+                pygame.draw.circle(surf, (226, 196, 160), (cx - 2, band.centery - 3), 3)
+    else:
+        pygame.draw.line(surf, (214, 176, 132), band.topleft, band.bottomleft, 2)
+        for dy, cy in ((-1, band.y + 7), (1, band.bottom - 7)):
+            if cell(art, x, y + dy) != art[y][x]:
+                pygame.draw.circle(surf, dark, (band.centerx, cy + 2), 9)
+                pygame.draw.circle(surf, (190, 150, 112), (band.centerx, cy), 8)
+                pygame.draw.circle(surf, (226, 196, 160), (band.centerx - 2, cy - 3), 3)
+
+
+def _ground(surf, art, x, y, tile, rng, as_c=None):
+    c = as_c or art[y][x]
     r = pygame.Rect(x * tile, y * tile, tile, tile)
+    if as_c is None and c in LEDGES:  # (drawn on the ground you hop from)
+        way = LEDGES[c]
+        behind = cell(art, x - way[0], y - way[1])
+        _ground(surf, art, x, y, tile, rng, as_c=behind if behind in '.=e"ds' else ".")
+        _ledge(surf, art, x, y, r, way)
+        return
+    if c == ",":  # a plank walkway up among the trees: boards, a rope rail along each open side (Fortree's bridges)
+        pygame.draw.rect(surf, (176, 124, 72), r)
+        for sx in range(r.x, r.right, max(6, tile // 5)):
+            pygame.draw.line(surf, (124, 84, 50), (sx, r.y), (sx, r.bottom), 2)
+        for dy, ry in ((-1, r.y), (1, r.bottom - 4)):
+            if cell(art, x, y + dy) not in ",n":
+                pygame.draw.rect(surf, (224, 204, 150), (r.x, ry, tile, 4))
+                pygame.draw.rect(surf, (112, 76, 46), (r.x, ry - 3 if dy < 0 else ry, 4, 7))
+        return
+    if c == "*":  # lava: a slow molten glow, bright veins, a dark crust at its banks (Mt. Chimney's crater)
+        pygame.draw.rect(surf, (214, 62, 18), r)
+        for _ in range(3):  # brighter currents
+            ax, ay = r.x + rng.randint(0, tile - 18), r.y + rng.randint(2, tile - 8)
+            pygame.draw.ellipse(surf, (244, 120, 28), (ax, ay, rng.randint(14, 26), rng.randint(5, 9)))
+        for _ in range(2):  # white-hot threads
+            ax, ay = r.x + rng.randint(4, tile - 16), r.y + rng.randint(6, tile - 8)
+            pygame.draw.arc(surf, (255, 214, 96), (ax, ay, 14, 8), 3.3, 6.0, 2)
+        if rng.random() < 0.45:  # a bubble about to burst
+            bx, by = r.x + rng.randint(8, tile - 8), r.y + rng.randint(8, tile - 8)
+            pygame.draw.circle(surf, (255, 170, 60), (bx, by), 4)
+            pygame.draw.circle(surf, (150, 30, 10), (bx, by), 4, 1)
+        for (dx, dy), edge in (((0, -1), (r.x, r.y, tile, 5)), ((0, 1), (r.x, r.bottom - 4, tile, 4)), ((-1, 0), (r.x, r.y, 4, tile)), ((1, 0), (r.right - 4, r.y, 4, tile))):
+            if cell(art, x + dx, y + dy) != "*":  # the cooled crust where it meets the rock
+                pygame.draw.rect(surf, (92, 28, 20), edge)
+        return
     if c in "~wuoqx":
         pygame.draw.rect(surf, SEA, r)
         for _ in range(2):
@@ -435,6 +498,18 @@ def overhead(o, tile):
                     pygame.draw.rect(surf, (156, 180, 222), edge)
                     pygame.draw.rect(surf, post, (edge[0], edge[1], min(edge[2], rail * 2), min(edge[3], rail * 2)))
         return surf, (x * tile, y * tile)
+    if o.get("kind") == "rope":  # a rope bridge between tree houses, level with their decks (Fortree's): planks, a rope rail either side
+        surf = pygame.Surface((w * tile, h * tile + tile // 3), pygame.SRCALPHA)
+        deck = pygame.Rect(0, tile // 4, w * tile, h * tile - tile // 2)
+        pygame.draw.rect(surf, (20, 30, 24, 80), deck.move(0, tile // 3))
+        pygame.draw.rect(surf, (176, 124, 72), deck)
+        for sx in range(0, deck.w, max(6, tile // 5)):
+            pygame.draw.line(surf, (124, 84, 50), (sx, deck.y), (sx, deck.bottom), 2)
+        for ry in (deck.y, deck.bottom - 3):
+            pygame.draw.rect(surf, (224, 204, 150), (0, ry, deck.w, 3))
+        for sx in range(0, deck.w + 1, tile):
+            pygame.draw.rect(surf, (112, 76, 46), (min(sx, deck.w - 4), deck.y - 5, 4, deck.h + 8))
+        return surf, (x * tile, y * tile)
     if o.get("kind") == "torii":  # a red wooden gate over the road (Ecruteak's)
         surf = pygame.Surface((w * tile, h * tile), pygame.SRCALPHA)
         roof = pygame.Rect(0, 0, w * tile, tile)
@@ -600,6 +675,46 @@ def _fence(surf, art, x, y, r, ch="#", wood=None, dark=None):
     pygame.draw.rect(surf, wood, (r.centerx - 3, r.y + 12, 6, 30), border_radius=2)
 
 
+def _treehouse(surf, art, rect, tile, gym=False):
+    """A Fortree tree house: a plank cabin on stilts with a ladder, under the tree's wide crown (the Gym: a hollow stump, a feather over its door)."""
+    box = pygame.Rect(rect.x * tile, rect.y * tile, rect.w * tile, rect.h * tile)
+    pygame.draw.ellipse(surf, (40, 90, 56), (box.x, box.bottom - 12, box.w, 18))  # its shadow
+    cabin_h = int(tile * 1.5)
+    cabin = pygame.Rect(box.x + tile // 4, box.bottom - cabin_h - tile // 3, box.w - tile // 2, cabin_h)
+    for sx in (cabin.x + 4, cabin.right - 10):  # stilts
+        pygame.draw.rect(surf, (104, 70, 44), (sx, cabin.bottom - 4, 6, tile // 3 + 4))
+    wood, dark = ((168, 112, 64), (112, 72, 44)) if not gym else ((150, 104, 70), (96, 64, 44))
+    pygame.draw.rect(surf, wood, cabin, border_radius=4)
+    for yy in range(cabin.y + 8, cabin.bottom - 2, 9):
+        pygame.draw.line(surf, dark, (cabin.x + 3, yy), (cabin.right - 3, yy), 2)
+    pygame.draw.rect(surf, dark, cabin, 2, border_radius=4)
+    pygame.draw.rect(surf, (196, 150, 96), (cabin.x - 4, cabin.bottom - 6, cabin.w + 8, 6))  # the deck
+    for (dx, dy), _k in doors_in(art, rect):
+        d = pygame.Rect(dx * tile + tile // 2 - 11, cabin.bottom - 34, 22, 30)
+        pygame.draw.rect(surf, (60, 40, 30), d, border_radius=8)
+        lx = d.centerx
+        for off in ((-8, 8) if gym else ()):  # (the Gym's own steps down to the ground)
+            pygame.draw.line(surf, (128, 88, 52), (lx + off, cabin.bottom - 4), (lx + off, box.bottom), 3)
+        for yy in (range(cabin.bottom, box.bottom, 7) if gym else ()):
+            pygame.draw.line(surf, (196, 150, 96), (lx - 8, yy), (lx + 8, yy), 2)
+        if gym:  # a feather over the door
+            pygame.draw.ellipse(surf, (250, 250, 250), (d.centerx - 5, d.y - 16, 10, 16))
+            pygame.draw.line(surf, (120, 160, 220), (d.centerx, d.y - 16), (d.centerx, d.y), 2)
+    if not gym and cell(art, rect.x + 1, rect.bottom) == "n":  # its ladder, where the map has one at its foot
+        lx = box.x + tile * 3 // 2
+        for off in (-8, 8):
+            pygame.draw.line(surf, (128, 88, 52), (lx + off, cabin.bottom - 4), (lx + off, box.bottom + tile * 3 // 4), 3)
+        for yy in range(cabin.bottom, box.bottom + tile * 3 // 4, 7):
+            pygame.draw.line(surf, (196, 150, 96), (lx - 8, yy), (lx + 8, yy), 2)
+    crown = pygame.Rect(box.x - tile // 4, box.y, box.w + tile // 2, box.h - cabin_h - tile // 6)  # the crown over it all
+    pygame.draw.ellipse(surf, (34, 104, 58), crown.inflate(0, 10).move(0, 6))
+    pygame.draw.ellipse(surf, (52, 136, 72), crown)
+    for k in range(5):
+        cx = crown.x + (k + 0.5) * crown.w / 5
+        pygame.draw.circle(surf, (78, 164, 88), (int(cx), crown.y + crown.h // 3 + (k % 2) * 6), max(8, crown.h // 4))
+    pygame.draw.ellipse(surf, (28, 84, 48), crown, 3)
+
+
 def _contest_hall(surf, art, rect, tile):
     """A Hoenn Contest Hall as it stands outside (Ruby, Sapphire and Emerald): a wide pale-blue roof with cut corners
     and rows of studs, a red front hung with white pennants, blue double doors under a ribbon."""
@@ -661,6 +776,8 @@ def _building(surf, art, rect, kind, tile, roof_colour=None):
         return
     if kind == "contest":
         return _contest_hall(surf, art, rect, tile)
+    if kind == "treehouse" or roof_colour == "tree":  # (a roof of "tree": any building in a tree, Fortree's Gym)
+        return _treehouse(surf, art, rect, tile, kind != "treehouse")
     roof, shade, wall = ROOFS.get(kind, ROOFS["house"])
     if roof_colour:
         roof, shade = tuple(roof_colour), theme_shade(roof_colour, 0.74)

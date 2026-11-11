@@ -168,7 +168,7 @@ class WalkTownState(CityState):
                 self.exits[(x, y)] = target
             else:
                 self.doors[(x, y)] = kinds.get(letter, "house")
-        self.rows = ["".join("D" if (x, y) in doors else ("." if c in art.OPEN else "#") for x, c in enumerate(row))
+        self.rows = ["".join("D" if (x, y) in doors else ("." if c in art.OPEN and (not m.get("walk_on") or c in m["walk_on"]) else "#") for x, c in enumerate(row))
                      for y, row in enumerate(grid)]
         self.locked = dict(m.get("locked", {}))  # (a shut door's own words: the Radio Tower with no power)
         names = list(m.get("people", []))
@@ -687,9 +687,18 @@ class WalkTownState(CityState):
             if any(guide.advances_goal(self.game, self.area_key, o) for o in self._door_options(kind)):
                 self._guide_hit = (spot, "Here")
                 return self._guide_hit
-        hop = guide.map_hop(self.game, self.exits.values())
+        inside = {}  # (a building that is an area of its own: Celadon's Game Corner)
+        for spot, kind in self.doors.items():
+            for o in self._door_options(kind):
+                to = guide.leads_to(self.game, self.area_key, o)
+                if to:
+                    inside.setdefault(to, spot)
+        hop = guide.map_hop(self.game, list(self.exits.values()) + list(inside))
         if not hop or hop == self.area_key:
             return None
+        if hop in inside and hop not in self.exits.values():
+            self._guide_hit = (inside[hop], "Here")
+            return self._guide_hit
         spot = min((t for t, target in self.exits.items() if target == hop), key=near, default=None)
         if spot:
             self._guide_hit = (spot, self._exit_label(hop))

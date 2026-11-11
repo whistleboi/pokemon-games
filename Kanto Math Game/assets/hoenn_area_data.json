@@ -1116,11 +1116,12 @@
         { "text": "Heal", "action": "HEAL" },
         { "text": "Shop", "action": "SHOP" },
         { "text": "Gym", "action": "GYM" },
-        { "text": "Hot Springs", "action": "HEAL" }
+        { "text": "Hot Springs", "door": "center", "action": "HEAL" }
       ],
       "next_area": "HOENN_JAGGED_PASS",
       "on_enter_event": null
     },
+    "FORTREE_CITY_UPPER": {"area_type": "town", "route_name": "Fortree Treetops", "region": "HOENN", "has_gym": false, "trainer_encounter_rate": 0, "travel_options": [{"text": "Down to the ground", "target_area": "FORTREE_CITY"}], "explore_options": []},
     "FORTREE_CITY": {
       "area_type": "town",
       "route_name": "Fortree City",
@@ -1129,6 +1130,7 @@
       "has_gym": true,
       "gym": {"trainers": [{"name": "Bird Keeper Jared", "class": "BIRD_KEEPER", "sprite": "bird_keeper.png", "team": [333], "rewards": {"balls": 2}}], "leader": {"name": "Winona", "class": "GYM_LEADER", "sprite": "winona.png", "team": [277, 279, 227, 334], "levels": [33, 33, 33, 35], "badge_reward": "FEATHER", "rewards": {"balls": 5, "RARE_CANDY": 3}, "dialogue": {"intro": ["Winona: Welcome to the Fortree City Gym! I'm Winona, the Flying-type Gym Leader."], "player_won": ["You soared above me!"], "player_lost": ["Don't worry, you'll get it next time."]}, "victory_flag": "badge_feather_earned", "movesets": {"277": ["QUICK-ATTACK", "AERIAL-ACE", "DOUBLE-TEAM", "ENDEAVOR"], "279": ["WATER-GUN", "SUPERSONIC", "PROTECT", "AERIAL-ACE"], "227": ["SAND-ATTACK", "FURY-ATTACK", "STEEL-WING", "AERIAL-ACE"], "334": ["EARTHQUAKE", "DRAGONBREATH", "DRAGON-DANCE", "AERIAL-ACE"]}}, "requirements": {"badges": 5, "fail_text": ["Something invisible is blocking the Gym door!", "Winona needs 5 Hoenn badges, and you'll need a way to see what's in the way.", "Steven was heading east to Route 120..."], "flags": ["got_starter_mega_stone"]}},
       "travel_options": [
+        {"text": "Up to the treetops", "target_area": "FORTREE_CITY_UPPER"},
         {"text": "Route 119", "target_area": "HOENN_ROUTE_119"},
         {"text": "Route 120", "target_area": "HOENN_ROUTE_120"}
       ],
@@ -1895,6 +1897,7 @@
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
+        {"text": "METEOR FALLS", "action": "EXIT", "target_area": "HOENN_METEOR_FALLS", "condition": "can_exit", "color": "RED"},
         { "text": "RUSTBORO CITY", "action": "EXIT", "target_area": "RUSTBORO_CITY", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "RUSTBORO_CITY",
@@ -2076,7 +2079,7 @@
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"},
         {"text": "ROUTE 118", "action": "EXIT", "target_area": "HOENN_ROUTE_118", "condition": "can_exit", "color": "RED"},
         {"text": "FORTREE CITY", "action": "EXIT", "target_area": "FORTREE_CITY", "condition": ["can_exit", "hoenn_rival_119"], "color": "RED"},
-        {"text": "WEATHER INSTITUTE", "action": "TRAVEL", "target_area": "HOENN_WEATHER_INSTITUTE", "condition": "can_exit", "color": "GREEN"}
+        {"text": "WEATHER INSTITUTE", "door": "weather", "action": "TRAVEL", "target_area": "HOENN_WEATHER_INSTITUTE", "condition": "can_exit", "color": "GREEN"}
       ],
       "next_area": "FORTREE_CITY",
       "region": "HOENN",
@@ -2804,7 +2807,8 @@
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         { "text": "THE MILLENNIUM COMET", "action": "BOSS", "color": "GOLD", "condition": ["millennium_comet_told", "not:hoenn_jirachi_met"], "boss": { "id": 385, "name": "Jirachi", "victory_flag": "hoenn_jirachi_met", "lines": ["The Millennium Comet shines through a crack in the cave roof.", "A tiny Pokemon with a star on its head floats down... Jirachi wakes!"] } },
-        { "text": "ROUTE 114", "action": "EXIT", "target_area": "HOENN_ROUTE_114", "condition": "can_exit", "color": "RED" }
+        { "text": "ROUTE 114", "action": "EXIT", "target_area": "HOENN_ROUTE_114", "condition": "can_exit", "color": "RED" },
+        { "text": "ROUTE 115", "action": "EXIT", "target_area": "HOENN_ROUTE_115", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "HOENN_ROUTE_114",
       "region": "HOENN"
@@ -2906,9 +2910,10 @@
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "CONFRONT LEADERS", "action": "TRAINER", "condition": "has_trainers", "color": "PURPLE" },
-        { "text": "LAVARIDGE TOWN", "action": "EXIT", "target_area": "LAVARIDGE_TOWN", "condition": "can_exit", "color": "RED" }
+        { "text": "JAGGED PASS", "action": "EXIT", "target_area": "HOENN_JAGGED_PASS", "condition": "can_exit", "color": "RED" },
+        { "text": "CABLE CAR", "door": "cablecar", "action": "EXIT", "target_area": "HOENN_ROUTE_112", "condition": "can_exit", "color": "RED" }
       ],
-      "next_area": "LAVARIDGE_TOWN",
+      "next_area": "HOENN_JAGGED_PASS",
       "region": "HOENN"
     },
     "HOENN_NEW_MAUVILLE": {
@@ -3607,11 +3612,11 @@
     {"id": "hoenn_s38", "type": "SIDE", "title": "The Admins' Questions", "description": "Courtney and Matt want to battle you in Petalburg City and Mossdeep City.", "condition": {"required_region": "HOENN", "flag": "beat_hoenn_champion"}, "completed_flag": ["delta_courtney_petalburg", "delta_matt_petalburg", "delta_courtney_mossdeep", "delta_matt_mossdeep"], "target": "PETALBURG_CITY"},
     {"id": "hoenn_s39", "type": "SIDE", "title": "Wallace on Route 131", "description": "Wallace has something to tell you on Route 131.", "condition": {"required_region": "HOENN", "flag": "beat_hoenn_champion"}, "completed_flag": "delta_wallace_131", "target": "HOENN_ROUTE_131"},
     {"id": "hoenn_s40", "type": "SIDE", "title": "Zinnia in Granite Cave", "description": "Zinnia is waiting deep in Granite Cave.", "condition": {"required_region": "HOENN", "flag": "beat_hoenn_champion"}, "completed_flag": "delta_zinnia_granite", "target": "HOENN_GRANITE_CAVE"},
-    {"id": "hoenn_dex30", "type": "SIDE", "title": "Catch 30 Pokémon", "description": "Own 30 different Pokémon from the Hoenn Pokédex to earn a $50,000 bonus.", "condition": {"required_region": "HOENN"}, "completed_flag": "hoenn_catch_30", "region_species": 30, "dex_region": "HOENN"},
-    {"id": "hoenn_dex60", "type": "SIDE", "title": "Catch 60 Pokémon", "description": "Own 60 different Pokémon from the Hoenn Pokédex to earn a $50,000 bonus.", "condition": {"required_region": "HOENN", "flag": "hoenn_catch_30"}, "completed_flag": "hoenn_catch_60", "region_species": 60, "dex_region": "HOENN"},
-    {"id": "hoenn_dex90", "type": "SIDE", "title": "Catch 90 Pokémon", "description": "Own 90 different Pokémon from the Hoenn Pokédex to earn a $50,000 bonus.", "condition": {"required_region": "HOENN", "flag": "hoenn_catch_60"}, "completed_flag": "hoenn_catch_90", "region_species": 90, "dex_region": "HOENN"},
-    {"id": "hoenn_dex120", "type": "SIDE", "title": "Catch 120 Pokémon", "description": "Own 120 different Pokémon from the Hoenn Pokédex to earn a $50,000 bonus.", "condition": {"required_region": "HOENN", "flag": "hoenn_catch_90"}, "completed_flag": "hoenn_catch_120", "region_species": 120, "dex_region": "HOENN"},
-    {"id": "hoenn_dex143", "type": "SIDE", "title": "Catch 143 Pokémon", "description": "Own every Pokémon in the Hoenn Pokédex to earn the final $50,000 bonus!", "condition": {"required_region": "HOENN", "flag": "hoenn_catch_120"}, "completed_flag": "hoenn_catch_143", "region_species": 143, "dex_region": "HOENN"}
+    {"id": "hoenn_dex30", "type": "SIDE", "title": "Catch 30 Pokémon", "description": "Own 30 different Pokémon from the Hoenn Pokédex to earn a $5,000 bonus.", "condition": {"required_region": "HOENN"}, "completed_flag": "hoenn_catch_30", "region_species": 30, "dex_region": "HOENN"},
+    {"id": "hoenn_dex60", "type": "SIDE", "title": "Catch 60 Pokémon", "description": "Own 60 different Pokémon from the Hoenn Pokédex to earn a $5,000 bonus.", "condition": {"required_region": "HOENN", "flag": "hoenn_catch_30"}, "completed_flag": "hoenn_catch_60", "region_species": 60, "dex_region": "HOENN"},
+    {"id": "hoenn_dex90", "type": "SIDE", "title": "Catch 90 Pokémon", "description": "Own 90 different Pokémon from the Hoenn Pokédex to earn a $5,000 bonus.", "condition": {"required_region": "HOENN", "flag": "hoenn_catch_60"}, "completed_flag": "hoenn_catch_90", "region_species": 90, "dex_region": "HOENN"},
+    {"id": "hoenn_dex120", "type": "SIDE", "title": "Catch 120 Pokémon", "description": "Own 120 different Pokémon from the Hoenn Pokédex to earn a $5,000 bonus.", "condition": {"required_region": "HOENN", "flag": "hoenn_catch_90"}, "completed_flag": "hoenn_catch_120", "region_species": 120, "dex_region": "HOENN"},
+    {"id": "hoenn_dex143", "type": "SIDE", "title": "Catch 143 Pokémon", "description": "Own every Pokémon in the Hoenn Pokédex to earn the final $5,000 bonus!", "condition": {"required_region": "HOENN", "flag": "hoenn_catch_120"}, "completed_flag": "hoenn_catch_143", "region_species": 143, "dex_region": "HOENN"}
   ],
   "HOENN_UNDERWATER_POOL_PERCENTAGES": { "170": 35, "171": 15, "366": 25, "369": 10, "370": 15 },
   "HOENN_ROUTE_101_PERCENTAGES": { "261": 44, "263": 43, "265": 12, "2032": 1 },

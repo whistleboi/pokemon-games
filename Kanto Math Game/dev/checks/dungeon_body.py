@@ -1419,9 +1419,9 @@ while _todo112:
         if _n not in _seen112 and 0 <= _n[0] < _f112.w and 0 <= _n[1] < _f112.h and _f112.tiles[_n[1]][_n[0]] in (core.FLOOR, core.GRASS):
             _seen112.add(_n); _todo112.append(_n)
 _near112 = lambda who: any(abs(t[0] - n[0]) + abs(t[1] - n[1]) == 1 for n in _seen112 for t, v in _f112.exits.items() if v == who)
-check((_f112.w, _f112.h) == (40, 60) and _h112.run.player[0] >= 37 and _h112.run.player[1] > 45 and _near112("LAVARIDGE_TOWN") and _near112("HOENN_JAGGED_PASS") and _near112("HOENN_FIERY_PATH")
+check((_f112.w, _f112.h) == (40, 60) and _h112.run.player[0] >= 37 and _h112.run.player[1] > 45 and not _near112("LAVARIDGE_TOWN") and not _near112("HOENN_JAGGED_PASS") and _near112("HOENN_FIERY_PATH") and "ledge:1,0" in _f112.decor.values()
       and (39, 8) not in _seen112 and (38, 9) not in _seen112 and "door:cablecar" in _f112.decor.values() and sum(1 for v in _f112.exits.values() if v == "HOENN_FIERY_PATH") == 2,
-      f"Hoenn Route 112: read from the Emerald map; in from Route 111 (east) at {_h112.run.player}; you can walk to Lavaridge, the Jagged Pass and the Fiery Path, but not to the north meadow; the Cable Car's door")
+      f"Hoenn Route 112: read from the Emerald map; in from Route 111 (east) at {_h112.run.player}; you can walk to the Fiery Path, but not to the north meadow, nor west past the ledges to Lavaridge and the Jagged Pass (they hop east only); the Cable Car's door")
 _fpa, _fpb = {}, {}
 for _i in range(2):
     _c.ENTRANCE_INDEX = _i
@@ -1440,6 +1440,58 @@ _h114 = kanto("HOENN_ROUTE_114", came="FALLARBOR_TOWN")
 check((_h114.run.floor.w, _h114.run.floor.h) == (40, 80) and _h114.run.player[0] >= 37 and {"FALLARBOR_TOWN", "HOENN_METEOR_FALLS"} == set(_h114.run.floor.exits.values())
       and "door:fossil" in _h114.run.floor.decor.values(),
       f"Hoenn Route 114: read from the Emerald map; in from Fallarbor (east) at {_h114.run.player}; Meteor Falls at the canyon's end; the Fossil Maniac's door")
+_hmf = kanto("HOENN_METEOR_FALLS", came="HOENN_ROUTE_114")
+_hmf2 = kanto("HOENN_METEOR_FALLS", came="HOENN_ROUTE_115")
+check((_hmf.run.floor.w, _hmf.run.floor.h) == (30, 42) and _hmf.run.player[0] >= 25 and _hmf2.run.player[1] >= 38 and {"HOENN_ROUTE_114", "HOENN_ROUTE_115"} == set(_hmf.run.floor.exits.values()),
+      f"Meteor Falls: read from the Emerald map; in from Route 114 at {_hmf.run.player}, from Route 115 at {_hmf2.run.player}")
+_h115 = kanto("HOENN_ROUTE_115", came="RUSTBORO_CITY")
+check((_h115.run.floor.w, _h115.run.floor.h) == (40, 80) and _h115.run.player[1] >= 76 and {"RUSTBORO_CITY", "HOENN_METEOR_FALLS"} == set(_h115.run.floor.exits.values()),
+      f"Hoenn Route 115: read from the Emerald map; in from Rustboro (south) at {_h115.run.player}; Meteor Falls up the canyon")
+_hmc = kanto("HOENN_MT_CHIMNEY", came="HOENN_JAGGED_PASS")
+check((_hmc.run.floor.w, _hmc.run.floor.h) == (40, 47) and _hmc.run.player[1] >= 39 and "HOENN_JAGGED_PASS" in _hmc.run.floor.exits.values() and "door:cablecar" in _hmc.run.floor.decor.values(),
+      f"Mt. Chimney: read from the Emerald map; in from the Jagged Pass (south) at {_hmc.run.player}; the Cable Car's door")
+_hjp = kanto("HOENN_JAGGED_PASS", came="HOENN_ROUTE_112")
+_hjp2 = kanto("HOENN_JAGGED_PASS", came="HOENN_MT_CHIMNEY")
+check((_hjp.run.floor.w, _hjp.run.floor.h) == (30, 46) and _hjp.run.player[1] >= 43 and _hjp2.run.player[1] <= 2
+      and {"HOENN_ROUTE_112", "HOENN_MT_CHIMNEY", "HOENN_MAGMA_HIDEOUT"} == set(_hjp.run.floor.exits.values()),
+      f"The Jagged Pass: read from the Emerald map; in from Route 112 (the foot) at {_hjp.run.player}, from Mt. Chimney (the top) at {_hjp2.run.player}")
+_me_had = story.inventory.pop("MAGMA_EMBLEM", None)
+_hjp._clear_boulders()  # (as every step does)
+_hid = str(_hjp.run.floor.decor.get((16, 18), "")).startswith("barrier:") and not _hjp.run.floor.walkable(16, 18)
+story.inventory["MAGMA_EMBLEM"] = 1
+_hjp._clear_boulders()
+_shown = (16, 18) not in _hjp.run.floor.decor and _hjp.run.floor.exits.get((16, 18)) == "HOENN_MAGMA_HIDEOUT"
+if _me_had is None:
+    story.inventory.pop("MAGMA_EMBLEM", None)
+from src.dungeon import art as _lava_art
+check(_hid and _shown and "*" in _lava_art.BLOCK, f"The Jagged Pass: the Magma Hideout's door is plain rock without the Magma Emblem ({_hid}) and opens with it ({_shown}); lava is its own tile, in the way")
+_hjp = kanto("HOENN_JAGGED_PASS", came="HOENN_ROUTE_112")
+_fj = _hjp.run.floor
+_led = next((t for t, w in sorted(_fj.decor.items()) if w == "ledge:0,1" and _fj.walkable(t[0], t[1] - 1) and _fj.walkable(t[0], t[1] + 1)
+             and _fj.mover_at(t[0], t[1] - 1) is None and _fj.mover_at(t[0], t[1] + 1) is None), None)
+_hjp.run.player = (_led[0], _led[1] + 1); _hjp.anim = 0; _hjp.sliding = None
+_hjp.step(0, -1)
+_up = tuple(_hjp.run.player)
+_hjp.run.player = (_led[0], _led[1] - 1); _hjp.anim = 0
+_hjp.step(0, 1)
+_down, _hopping = tuple(_hjp.run.player), _hjp.hop
+check(_up == (_led[0], _led[1] + 1) and _down == (_led[0], _led[1] + 1) and _hopping,
+      f"The Jagged Pass: a ledge at {_led} can't be climbed from below ({_up}) but you hop down over it ({_down}, hopping {_hopping})")
+_h118 = kanto("HOENN_ROUTE_118", came="MAUVILLE_CITY")
+check((_h118.run.floor.w, _h118.run.floor.h) == (80, 20) and _h118.run.player[0] <= 2 and {"MAUVILLE_CITY", "HOENN_ROUTE_119", "HOENN_ROUTE_123"} == set(_h118.run.floor.exits.values()),
+      f"Hoenn Route 118: laid out from the Emerald map; in from Mauville (west) at {_h118.run.player}; Route 119 north and Route 123 east across the water")
+_h119 = kanto("HOENN_ROUTE_119", came="HOENN_ROUTE_118")
+_f119 = _h119.run.floor
+_s119, _t119 = {tuple(_h119.run.player)}, [tuple(_h119.run.player)]
+while _t119:
+    _x, _y = _t119.pop()
+    for _dx, _dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+        _n = (_x + _dx, _y + _dy)
+        if _n not in _s119 and 0 <= _n[0] < _f119.w and 0 <= _n[1] < _f119.h and _f119.tiles[_n[1]][_n[0]] in (core.FLOOR, core.GRASS):
+            _s119.add(_n); _t119.append(_n)
+check((_f119.w, _f119.h) == (40, 140) and _h119.run.player[1] >= 136 and {"HOENN_ROUTE_118", "FORTREE_CITY"} == set(_f119.exits.values())
+      and any(abs(t[0] - n[0]) + abs(t[1] - n[1]) == 1 for n in _s119 for t, v in _f119.exits.items() if v == "FORTREE_CITY") and "door:weather" in _f119.decor.values(),
+      f"Hoenn Route 119: read from the Emerald map; in from Route 118 (south) at {_h119.run.player}; you can walk the bridges to Fortree without Surf; the Weather Institute's door")
 story.story_flags.pop("defeated_red_gyarados", None)
 _lor = kanto("LAKE_OF_RAGE", came="JOHTO_ROUTE_43")
 _gy = [m for f in _lor.run.floors for m in f.movers if m.kind == "figure" and m.payload.get("action") == "BOSS"]
@@ -1541,6 +1593,30 @@ _fb = _CS(g); g.change_state(_fb); _tap_through(_fb)
 check(isinstance(_fb, _WTS) and (_fb.w, _fb.h) == (28, 18) and {"center", "contest", "cozmo", "mart"} <= set(_fb.doors.values()) and _fb.player[0] >= 25
       and {"HOENN_ROUTE_113", "HOENN_ROUTE_114"} == set(_fb.exits.values()) and _fb._door_options("cozmo") and _fb._door_options("contest"),
       f"Fallarbor Town: laid out from the ORAS map; in from Route 113 (east) at {_fb.player}; the Contest Hall, the Center, Professor Cozmo's house")
+g.walk_town_pos = None
+story.current_area_key, story.last_area_key = "LAVARIDGE_TOWN", "HOENN_ROUTE_112"
+_lv = _CS(g); g.change_state(_lv); _tap_through(_lv)
+check(isinstance(_lv, _WTS) and (_lv.w, _lv.h) == (20, 20) and {"center", "mart", "gym"} <= set(_lv.doors.values()) and _lv.player[0] >= 17 and {"Heal", "Hot Springs"} <= {o.get("text") for o in _lv._door_options("center")} and set(_lv.exits.values()) == {"HOENN_ROUTE_112"},
+      f"Lavaridge Town: laid out from the Emerald map; in from Route 112 (east) at {_lv.player}; the Center's door offers Heal and the Hot Springs; the Gym and Mart")
+g.walk_town_pos = None
+story.current_area_key, story.last_area_key = "FORTREE_CITY", "HOENN_ROUTE_119"
+_ft = _CS(g); g.change_state(_ft); _tap_through(_ft)
+_fup, _fdn = {}, {}
+for _i in range(5):
+    g.walk_town_pos = None
+    g.walk_town_exit = ("FORTREE_CITY", _i, 5)
+    story.current_area_key, story.last_area_key = "FORTREE_CITY_UPPER", "FORTREE_CITY"
+    _f2 = _CS(g); g.change_state(_f2); _tap_through(_f2); _fup[_i] = _f2.player
+    g.walk_town_pos = None
+    g.walk_town_exit = ("FORTREE_CITY_UPPER", _i, 5)
+    story.current_area_key, story.last_area_key = "FORTREE_CITY", "FORTREE_CITY_UPPER"
+    _f1 = _CS(g); g.change_state(_f1); _tap_through(_f1); _fdn[_i] = _f1.player
+g.walk_town_exit = None
+_planks = all(_f2._open(t) == (_f2.rows[t[1]][t[0]] == ".") for t in ((12, 4), (20, 14))) and _f2._open((20, 4)) and _f2._open((25, 14)) and not _f2._open((3, 8)) and not _f2._open((22, 12))
+check(isinstance(_ft, _WTS) and (_ft.w, _ft.h) == (40, 20) and {"center", "mart", "gym"} <= set(_ft.doors.values()) and _ft.player[0] <= 2
+      and {"HOENN_ROUTE_119", "HOENN_ROUTE_120", "FORTREE_CITY_UPPER"} == set(_ft.exits.values()) and len(_ft.overheads) == 4
+      and [_fup[i] for i in range(5)] == [(10, 5), (25, 5), (32, 5), (12, 15), (37, 15)] and [_fdn[i] for i in range(5)] == [(10, 7), (25, 7), (32, 7), (12, 17), (37, 17)] and _planks,
+      f"Fortree City: read from the Emerald map; in from Route 119 (west) at {_ft.player}; each of the five ladders leads to its own (up {_fup}; down {_fdn}); up top you walk only the planks ({_planks})")
 g.walk_town_pos = None
 
 

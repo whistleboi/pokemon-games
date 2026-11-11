@@ -116,6 +116,8 @@ class RouteActions:
                       f"Old woman: Please, take the {v['other_orb']}. Keep it safe from them.",
                       f"Someday the two orbs must be reunited."]
             self._give_item(v["other_orb_item"], lines)
+            lines.append("Old man: And this emblem fell from one of their uniforms. It may open a way they keep hidden.")
+            self._give_item("MAGMA_EMBLEM", lines)
             flags["got_mt_pyre_orb"] = True
         elif event == "awakening":
             lines += [f"{v['leader']} held up the {v['orb']}. It began to shine...",
