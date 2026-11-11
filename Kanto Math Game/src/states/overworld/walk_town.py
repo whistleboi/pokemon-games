@@ -22,7 +22,7 @@ TILE, STEP = dn.TILE, dn.STEP_FRAMES
 DIRS = ((0, 1), (0, -1), (1, 0), (-1, 0))
 KEYS = {pygame.K_UP: (0, -1), pygame.K_w: (0, -1), pygame.K_DOWN: (0, 1), pygame.K_s: (0, 1),
         pygame.K_LEFT: (-1, 0), pygame.K_a: (-1, 0), pygame.K_RIGHT: (1, 0), pygame.K_d: (1, 0)}
-LABELS = {"center": "POKEMON CENTER", "mart": "POKE MART", "gym": "GYM", "lab": "LAB", "home": "HOME",
+LABELS = {"devon": "DEVON CORP.", "center": "POKEMON CENTER", "mart": "POKE MART", "gym": "GYM", "lab": "LAB", "home": "HOME",
           "school": "TRAINER SCHOOL", "rival": "RIVAL'S HOUSE", "museum": "MUSEUM", "bike": "BIKE SHOP",
           "harbor": "HARBOR", "fanclub": "FAN CLUB", "radio": "RADIO TOWER", "ptower": "POKEMON TOWER",
           "fuji": "MR. FUJI'S HOUSE", "dept": "DEPT. STORE", "mansion": "CELADON MANSION", "hotel": "CELADON HOTEL",

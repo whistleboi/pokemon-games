@@ -1499,6 +1499,17 @@ class DungeonState(OverworldBattles, PlayState):
             if t not in f.decor and flags.get(f"boulder_{self.area_key}_{self.run.index - 1}_{b[0]}_{b[1]}"):
                 f.decor[t] = f"fallen:{t[0]},{t[1]}"
                 f.tiles[t[1]][t[0]] = core.WALL
+        floors = (self.run.recipe.get("art") or {}).get("floors") or []
+        here = floors[self.run.index] if 0 <= self.run.index < len(floors) else (self.run.recipe.get("art") or {})
+        for bar in here.get("barred", []):  # (a rockslide in the way until a story flag: Granite Cave's short way back, once you've met Steven)
+            for t in map(tuple, bar.get("tiles", [])):
+                if flags.get(bar.get("flag")):
+                    if str(f.decor.get(t, "")).startswith("rubble:"):
+                        del f.decor[t]
+                        f.tiles[t[1]][t[0]] = core.FLOOR
+                elif t not in f.decor:
+                    f.decor[t] = f"rubble:{t[0]},{t[1]}"
+                    f.tiles[t[1]][t[0]] = core.WALL
         for t, what in list(f.decor.items()):
             if str(what).startswith("boulder:") and flags.get(self._boulder_flag(t)):
                 del f.decor[t]
@@ -1581,6 +1592,9 @@ class DungeonState(OverworldBattles, PlayState):
             return True
         if what.startswith("hole:"):
             self.say(["There's a hole in the floor.", "A boulder pushed in would drop to the floor below."])
+            return True
+        if what.startswith("rubble:"):
+            self.say(["Fallen rocks block the way.", "Maybe there's another way around."])
             return True
         if what.startswith("fallen:"):
             self.say(["A boulder that fell from above.", "It's frozen fast in the ice."])
@@ -2129,7 +2143,7 @@ class DungeonState(OverworldBattles, PlayState):
                 pygame.draw.ellipse(screen, (255, 236, 140), glow, 3)
                 screen.blit(img, img.get_rect(center=(glow.centerx, glow.centery + bob)))
         for (x, y), what in f.decor.items():  # boulders (Strength and the slide puzzle push them aside)
-            if str(what).startswith(("boulder:", "fallen:")) and (x, y) in f.seen and x0 <= x < x1 and y0 <= y < y1:
+            if str(what).startswith(("boulder:", "fallen:", "rubble:")) and (x, y) in f.seen and x0 <= x < x1 and y0 <= y < y1:
                 r = at(x, y)
                 img = self._sheet_frame("Object boulder.png", col=0, height=TILE - 4)
                 screen.blit(img, img.get_rect(midbottom=(r.centerx, r.bottom - 2)))

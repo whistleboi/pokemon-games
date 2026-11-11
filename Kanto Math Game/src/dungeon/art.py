@@ -646,6 +646,12 @@ def _building(surf, art, rect, kind, tile, roof_colour=None):
         for i in range(0, s.w, 10):
             pygame.draw.rect(surf, (72, 122, 214), (s.x + i, s.y + 4, 5, 10))
         pygame.draw.rect(surf, (40, 60, 110), s, 2, border_radius=4)
+    elif kind == "gym":  # a gold badge plaque
+        cx, cy = box.centerx, top.centery
+        pygame.draw.circle(surf, (250, 250, 250), (cx, cy), 13)
+        pygame.draw.circle(surf, (236, 190, 60), (cx, cy), 9)
+        pygame.draw.circle(surf, (120, 84, 20), (cx, cy), 13, 2)
+        pygame.draw.polygon(surf, (250, 250, 250), [(cx, cy - 6), (cx + 5, cy + 4), (cx - 5, cy + 4)])
 
 
 def _cave(surf, art, rect, tile):

@@ -971,12 +971,12 @@
         { "text": "Route 116", "target_area": "HOENN_ROUTE_116" },
         { "text": "Rusturf Tunnel", "target_area": "HOENN_RUSTURF_TUNNEL" }
       ],
-      "explore_options": [{"text": "Mr. Stone", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_pidgeotite", "event": {"lines": ["Mr. Stone: An intriguing stone! Here, a special Mega Stone in return.", "You found the PIDGEOTITE!"], "gift_item": {"PIDGEOTITE": 1}, "flag": "got_pidgeotite"}}, 
+      "explore_options": [{"text": "Mr. Stone", "door": "devon", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_pidgeotite", "event": {"lines": ["Mr. Stone: An intriguing stone! Here, a special Mega Stone in return.", "You found the PIDGEOTITE!"], "gift_item": {"PIDGEOTITE": 1}, "flag": "got_pidgeotite"}}, 
         { "text": "Heal", "action": "HEAL" },
         { "text": "Shop", "action": "SHOP" },
         { "text": "Gym", "action": "GYM" },
-        { "text": "Devon Corp", "action": "NPC", "target": "devon_president" },
-        { "text": "Devon Fossil Lab", "action": "NPC", "target": "fossil_lab" }
+        { "text": "Devon Corp", "door": "devon", "action": "NPC", "target": "devon_president" },
+        { "text": "Devon Fossil Lab", "door": "devon", "action": "NPC", "target": "fossil_lab" }
       ],
       "next_area": "HOENN_ROUTE_116",
       "on_enter_event": null
@@ -991,9 +991,8 @@
       "travel_options": [
         {"text": "Route 106", "target_area": "HOENN_ROUTE_106"},
         {"text": "Route 107", "target_area": "HOENN_ROUTE_107", "condition": "has_item:HM_SURF"},
-        {"text": "Granite Cave", "target_area": "HOENN_GRANITE_CAVE"},
-        {"text": "Boat to Slateport", "target_area": "SLATEPORT_CITY", "condition": ["has_knuckle_badge", "met_steven"]},
-        {"text": "Boat to Route 104", "target_area": "HOENN_ROUTE_104"}
+        {"text": "Boat to Slateport", "door": "harbor", "target_area": "SLATEPORT_CITY", "condition": ["has_knuckle_badge", "met_steven"]},
+        {"text": "Boat to Route 104", "door": "harbor", "target_area": "HOENN_ROUTE_104"}
       ],
       "explore_options": [
         { "text": "Heal", "action": "HEAL" },
@@ -1510,6 +1509,7 @@
           "condition": ["can_exit", "has_item:HM_SURF"],
           "color": "RED"
         },
+        { "text": "GRANITE CAVE", "action": "EXIT", "target_area": "HOENN_GRANITE_CAVE", "condition": "can_exit", "color": "RED" },
         { "text": "DEWFORD TOWN", "action": "EXIT", "target_area": "DEWFORD_TOWN", "condition": "can_exit", "color": "RED" }
       ],
       "next_area": "DEWFORD_TOWN",
@@ -2780,9 +2780,9 @@
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
         {"text": "TALK TO STEVEN", "action": "NPC", "target": "granite_steven", "condition": "not:met_steven", "color": "GOLD"},
         {"text": "BATTLE ZINNIA", "action": "EVENT", "color": "GOLD", "flag_condition": "not delta_zinnia_granite", "condition": ["beat_hoenn_champion"], "event": {"lines": ["Zinnia: So you're the one everyone talks about. Show me!"], "flag": "delta_zinnia_granite", "battle": {"name": "Pokémon Trainer Zinnia", "class": "PKMN_TRAINER", "sprite": "zinnia.png", "team": [697, 334, 373], "levels": [55, 55, 57], "is_boss_battle": true, "rewards": {"balls": 10}, "dialogue": {"player_won": ["Pokémon Trainer Zinnia: Well fought!"]}}}},
-        {"text": "DEWFORD TOWN", "action": "EXIT", "target_area": "DEWFORD_TOWN", "condition": "can_exit", "color": "RED"}
+        {"text": "ROUTE 106", "action": "EXIT", "target_area": "HOENN_ROUTE_106", "condition": "can_exit", "color": "RED"}
       ],
-      "next_area": "DEWFORD_TOWN",
+      "next_area": "HOENN_ROUTE_106",
       "region": "HOENN"
     },
     "HOENN_METEOR_FALLS": {
