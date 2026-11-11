@@ -691,11 +691,11 @@
           "action": "HEAL"
         },
         {
-          "text": "Shop",
+          "text": "Shop", "door": "center",
           "action": "SHOP"
         },
         {
-          "text": "Celio's Network Machine",
+          "text": "Celio's Network Machine", "door": "center",
           "action": "EVENT",
           "color": "GOLD",
           "event": {
@@ -714,7 +714,7 @@
           "flag_condition": "not network_machine_fixed"
         },
         {
-          "text": "Celio's Rainbow Pass",
+          "text": "Celio's Rainbow Pass", "door": "center",
           "action": "EVENT",
           "color": "GOLD",
           "event": {
@@ -739,7 +739,7 @@
           "flag_condition": "not got_rainbow_pass"
         },
         {
-          "text": "Give Celio the Gems",
+          "text": "Give Celio the Gems", "door": "center",
           "action": "EVENT",
           "color": "GOLD",
           "event": {
@@ -767,18 +767,18 @@
         }
       ],
       "travel_options": [
-        {"text": "Treasure Beach", "target_area": "TREASURE_BEACH"},
+        {"text": "Treasure Beach", "condition": "has_item:HM_SURF", "target_area": "TREASURE_BEACH"},
         {"text": "Kindle Road", "target_area": "KINDLE_ROAD"},
-        {"text": "Seagallop to Vermilion City", "long_ride": true, "target_area": "VERMILLION_CITY", "message": "The Seagallop Ferry speeds back to Vermilion City."},
-        {"text": "Seagallop to Two Island", "target_area": "TWO_ISLAND", "message": "The Seagallop Ferry speeds across the waves. Next stop: Two Island!", "condition": "has_item:TRI_PASS"},
-        {"text": "Seagallop to Three Island", "target_area": "THREE_ISLAND", "message": "The Seagallop Ferry speeds across the waves. Next stop: Three Island!", "condition": "has_item:TRI_PASS"},
-        {"text": "Seagallop to Four Island", "target_area": "FOUR_ISLAND", "message": "The Seagallop Ferry speeds across the waves. Next stop: Four Island!", "condition": "has_item:RAINBOW_PASS"},
-        {"text": "Seagallop to Five Island", "target_area": "FIVE_ISLAND", "message": "The Seagallop Ferry speeds across the waves. Next stop: Five Island!", "condition": "has_item:RAINBOW_PASS"},
-        {"text": "Seagallop to Six Island", "target_area": "SIX_ISLAND", "message": "The Seagallop Ferry speeds across the waves. Next stop: Six Island!", "condition": "has_item:RAINBOW_PASS"},
-        {"text": "Seagallop to Seven Island", "target_area": "SEVEN_ISLAND", "message": "The Seagallop Ferry speeds across the waves. Next stop: Seven Island!", "condition": "has_item:RAINBOW_PASS"},
-        {"text": "Seagallop to Faraway Island", "target_area": "FARAWAY_ISLAND", "message": "The Seagallop Ferry speeds across the waves. Next stop: Faraway Island!", "condition": "has_item:OLD_SEA_MAP"},
-        {"text": "Seagallop to Navel Rock", "target_area": "NAVEL_ROCK", "condition": "beat_champion", "message": "The Seagallop Ferry heads for a mysterious island: Navel Rock."},
-        {"text": "Seagallop to Birth Island", "target_area": "BIRTH_ISLAND", "condition": "beat_champion", "message": "The Seagallop Ferry heads for a mysterious island: Birth Island."}
+        {"text": "Seagallop to Vermilion City", "door": "harbor", "long_ride": true, "target_area": "VERMILLION_CITY", "message": "The Seagallop Ferry speeds back to Vermilion City."},
+        {"text": "Seagallop to Two Island", "door": "harbor", "target_area": "TWO_ISLAND", "message": "The Seagallop Ferry speeds across the waves. Next stop: Two Island!", "condition": "has_item:TRI_PASS"},
+        {"text": "Seagallop to Three Island", "door": "harbor", "target_area": "THREE_ISLAND", "message": "The Seagallop Ferry speeds across the waves. Next stop: Three Island!", "condition": "has_item:TRI_PASS"},
+        {"text": "Seagallop to Four Island", "door": "harbor", "target_area": "FOUR_ISLAND", "message": "The Seagallop Ferry speeds across the waves. Next stop: Four Island!", "condition": "has_item:RAINBOW_PASS"},
+        {"text": "Seagallop to Five Island", "door": "harbor", "target_area": "FIVE_ISLAND", "message": "The Seagallop Ferry speeds across the waves. Next stop: Five Island!", "condition": "has_item:RAINBOW_PASS"},
+        {"text": "Seagallop to Six Island", "door": "harbor", "target_area": "SIX_ISLAND", "message": "The Seagallop Ferry speeds across the waves. Next stop: Six Island!", "condition": "has_item:RAINBOW_PASS"},
+        {"text": "Seagallop to Seven Island", "door": "harbor", "target_area": "SEVEN_ISLAND", "message": "The Seagallop Ferry speeds across the waves. Next stop: Seven Island!", "condition": "has_item:RAINBOW_PASS"},
+        {"text": "Seagallop to Faraway Island", "door": "harbor", "target_area": "FARAWAY_ISLAND", "message": "The Seagallop Ferry speeds across the waves. Next stop: Faraway Island!", "condition": "has_item:OLD_SEA_MAP"},
+        {"text": "Seagallop to Navel Rock", "door": "harbor", "target_area": "NAVEL_ROCK", "condition": "beat_champion", "message": "The Seagallop Ferry heads for a mysterious island: Navel Rock."},
+        {"text": "Seagallop to Birth Island", "door": "harbor", "target_area": "BIRTH_ISLAND", "condition": "beat_champion", "message": "The Seagallop Ferry heads for a mysterious island: Birth Island."}
       ],
       "next_area": "TREASURE_BEACH"
     },

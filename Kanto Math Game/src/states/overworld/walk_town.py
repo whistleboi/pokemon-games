@@ -159,6 +159,7 @@ class WalkTownState(CityState):
         from src.dungeon import art
         grid = m["art"]
         self.h, self.w = len(grid), len(grid[0])
+        self.grid = grid  # (kept for its ledges: hopped over one way, as on the routes)
         kinds = m.get("buildings", {})
         doors = art.doors(grid)
         self.doors, self.exits, self.people = {}, {}, {}
@@ -352,6 +353,13 @@ class WalkTownState(CityState):
         if to in self.doors:
             self.walk_goal = None
             return self._enter(to)
+        grid = getattr(self, "grid", None)
+        if grid and 0 <= to[0] < self.w and 0 <= to[1] < self.h:
+            from src.dungeon import art as _art
+            if _art.LEDGES.get(grid[to[1]][to[0]]) == (dx, dy):  # (a ledge, from its high side: hop over it)
+                over = (to[0] + dx, to[1] + dy)
+                if self._open(over) and over not in self.doors and over not in self.signs:
+                    to = over
         if 0 <= to[0] < self.w and 0 <= to[1] < self.h and self.rows[to[1]][to[0]] == "$" and not self._has_waterfall():
             self.walk_goal = None  # (a waterfall in town: Ever Grande's, below the League)
             return self.flash("The water pours down too hard. WATERFALL could climb it!", 110)

@@ -18,7 +18,7 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 # One file a region (dev/builders/town_maps/<region>.py), in story order.
-REGIONS = ["kanto", "johto", "hoenn", "sinnoh"]
+REGIONS = ["kanto", "johto", "hoenn", "sinnoh", "sevii"]
 
 
 def all_maps():

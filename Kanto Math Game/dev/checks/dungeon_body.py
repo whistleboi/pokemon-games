@@ -481,7 +481,7 @@ _gc.draw()
 # Sevii (Jordan, 11-05: each region's maps checked against its games)
 _sty = {k: _dg.recipe_for(g, k).get("style") for k in ("KINDLE_ROAD", "RUIN_VALLEY", "TANOBY_RUINS", "TREASURE_BEACH",
                                                        "DOTTED_HOLE", "LOST_CAVE", "BIRTH_ISLAND")}
-check(_sty == {"KINDLE_ROAD": "field", "RUIN_VALLEY": "mountain", "TANOBY_RUINS": "sea", "TREASURE_BEACH": "desert",
+check(_sty == {"KINDLE_ROAD": "field", "RUIN_VALLEY": "mountain", "TANOBY_RUINS": "sea", "TREASURE_BEACH": "field",  # (Treasure Beach: our own drawn map now, 11-11)
                "DOTTED_HOLE": "cave", "LOST_CAVE": "cave", "BIRTH_ISLAND": "field"}, f"Sevii's places look like the games' {_sty}")
 story.story_flags["beat_champion"] = True
 for _k in ("navel_rock_lugia", "navel_rock_ho_oh"):
