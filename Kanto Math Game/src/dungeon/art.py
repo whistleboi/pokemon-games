@@ -600,6 +600,48 @@ def _fence(surf, art, x, y, r, ch="#", wood=None, dark=None):
     pygame.draw.rect(surf, wood, (r.centerx - 3, r.y + 12, 6, 30), border_radius=2)
 
 
+def _contest_hall(surf, art, rect, tile):
+    """A Hoenn Contest Hall as it stands outside (Ruby, Sapphire and Emerald): a wide pale-blue roof with cut corners
+    and rows of studs, a red front hung with white pennants, blue double doors under a ribbon."""
+    box = pygame.Rect(rect.x * tile, rect.y * tile, rect.w * tile, rect.h * tile)
+    wall_h = int(tile * 1.35)
+    walls = pygame.Rect(box.x + tile // 5, box.bottom - wall_h, box.w - tile * 2 // 5, wall_h)
+    pygame.draw.ellipse(surf, (60, 110, 70), (box.x, box.bottom - 10, box.w, 16))  # its shadow
+    pygame.draw.rect(surf, (216, 80, 72), walls)
+    for k in (0.42, 0.62, 0.82):
+        pygame.draw.line(surf, (176, 56, 56), (walls.x, walls.y + int(walls.h * k)), (walls.right, walls.y + int(walls.h * k)), 2)
+    pygame.draw.rect(surf, (120, 40, 44), walls, 2)
+    top = pygame.Rect(box.x, box.y + 2, box.w, box.h - wall_h + 4)
+    c = tile // 3  # (the cut corners)
+    shape = [(top.x + c, top.y), (top.right - c, top.y), (top.right, top.y + c), (top.right, top.bottom - c),
+             (top.right - c // 2, top.bottom), (top.x + c // 2, top.bottom), (top.x, top.bottom - c), (top.x, top.y + c)]
+    pygame.draw.polygon(surf, (176, 192, 224), shape)
+    pygame.draw.polygon(surf, (104, 120, 160), shape, 3)
+    pygame.draw.rect(surf, (136, 152, 192), (top.x + 3, top.bottom - tile // 4, top.w - 6, tile // 4 - 2))
+    step = max(8, tile // 3)
+    for yy in range(top.y + step, top.bottom - tile // 4 - 2, step):
+        for xx in range(top.x + step, top.right - step // 2, step):
+            pygame.draw.circle(surf, (120, 136, 176), (xx, yy), 2)
+            pygame.draw.circle(surf, (224, 232, 248), (xx - 1, yy - 1), 1)
+    door_xs = [x for (x, y), _k in doors_in(art, rect)]
+    for tx in range(rect.x, rect.right):  # the pennants along the front
+        if tx in door_xs:
+            continue
+        for k in range(2):
+            px = tx * tile + tile // 4 + k * tile // 2
+            pygame.draw.polygon(surf, (248, 248, 248), [(px - 5, walls.y + 5), (px + 5, walls.y + 5), (px, walls.y + 14)])
+    for (dx, dy), _k in doors_in(art, rect):
+        d = pygame.Rect(dx * tile + tile // 2 - 15, box.bottom - 36, 30, 34)
+        pygame.draw.rect(surf, (88, 160, 224), d, border_radius=3)
+        pygame.draw.rect(surf, (40, 72, 136), d, 2, border_radius=3)
+        pygame.draw.line(surf, (40, 72, 136), (d.centerx, d.y), (d.centerx, d.bottom), 2)
+        pygame.draw.circle(surf, (248, 248, 248), (d.centerx, d.y + 12), 6)          # the ribbon on the doors
+        pygame.draw.circle(surf, (232, 80, 120), (d.centerx, d.y + 12), 3)
+        pygame.draw.polygon(surf, (248, 248, 248), [(d.centerx - 4, d.y + 16), (d.centerx - 7, d.y + 25), (d.centerx - 1, d.y + 20)])
+        pygame.draw.polygon(surf, (248, 248, 248), [(d.centerx + 4, d.y + 16), (d.centerx + 7, d.y + 25), (d.centerx + 1, d.y + 20)])
+        pygame.draw.rect(surf, (190, 70, 60), (d.x - 4, d.bottom - 2, d.w + 8, 4))  # the mat
+
+
 def _building(surf, art, rect, kind, tile, roof_colour=None):
     if kind == "timber":
         return _timber(surf, rect, tile)
@@ -617,6 +659,8 @@ def _building(surf, art, rect, kind, tile, roof_colour=None):
             pygame.draw.rect(surf, (60, 40, 26), d, 2, border_radius=4)
             pygame.draw.circle(surf, (230, 200, 90), (d.right - 7, d.centery), 2)
         return
+    if kind == "contest":
+        return _contest_hall(surf, art, rect, tile)
     roof, shade, wall = ROOFS.get(kind, ROOFS["house"])
     if roof_colour:
         roof, shade = tuple(roof_colour), theme_shade(roof_colour, 0.74)

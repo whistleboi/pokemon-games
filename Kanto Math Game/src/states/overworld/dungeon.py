@@ -1511,6 +1511,7 @@ class DungeonState(OverworldBattles, PlayState):
                 f.tiles[t[1]][t[0]] = core.WALL
         floors = (self.run.recipe.get("art") or {}).get("floors") or []
         here = floors[self.run.index] if 0 <= self.run.index < len(floors) else (self.run.recipe.get("art") or {})
+        self._bars = {tuple(t): bar for bar in here.get("barred", []) for t in bar.get("tiles", [])}
         for bar in here.get("barred", []):  # (a rockslide in the way until a story flag: Granite Cave's short way back, once you've met Steven)
             for t in map(tuple, bar.get("tiles", [])):
                 kind = "barrier" if bar.get("item") else "rubble"  # (or till you carry something: the Cycling Road's gates and the Bicycle)
@@ -1606,7 +1607,8 @@ class DungeonState(OverworldBattles, PlayState):
             self.say(["There's a hole in the floor.", "A boulder pushed in would drop to the floor below."])
             return True
         if what.startswith("barrier:"):
-            self.say(["The Cycling Road is for bicycles only.", "Come back with a Bicycle."])
+            bar = getattr(self, "_bars", {}).get(tuple(t), {})
+            self.say(bar.get("lines") or ["The Cycling Road is for bicycles only.", "Come back with a Bicycle."])
             return True
         if what.startswith("rubble:"):
             self.say(["Fallen rocks block the way.", "Maybe there's another way around."])
@@ -2164,6 +2166,16 @@ class DungeonState(OverworldBattles, PlayState):
                 screen.blit(img, img.get_rect(midbottom=(r.centerx, r.bottom - 2)))
             elif str(what).startswith("barrier:") and (x, y) in f.seen and x0 <= x < x1 and y0 <= y < y1:  # (the cycling gate's striped bar)
                 r = at(x, y)
+                if getattr(self, "_bars", {}).get((x, y), {}).get("look") == "storm":  # (a sandstorm in the way: Route 111's desert)
+                    tt = pygame.time.get_ticks() / 140
+                    veil = pygame.Surface((r.w, r.h), pygame.SRCALPHA)
+                    veil.fill((214, 190, 120, 150))
+                    for k4 in range(4):
+                        yy = int((k4 * r.h / 4 + tt * 3 + x * 7) % r.h)
+                        xx = int((tt * 9 + k4 * 13 + y * 5) % r.w)
+                        pygame.draw.line(veil, (246, 232, 180, 220), (xx, yy), (min(r.w, xx + r.w // 2), max(0, yy - 4)), 2)
+                    screen.blit(veil, r)
+                    continue
                 pygame.draw.rect(screen, (90, 90, 100), (r.x + 4, r.centery - 2, 6, r.h // 2))
                 pygame.draw.rect(screen, (90, 90, 100), (r.right - 10, r.centery - 2, 6, r.h // 2))
                 for k4 in range(4):

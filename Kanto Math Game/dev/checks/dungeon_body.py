@@ -1367,6 +1367,61 @@ while _todo110:
             _seen110.add(_n); _todo110.append(_n)
 _north110 = [t for t, v in _f110.exits.items() if v == "MAUVILLE_CITY"]
 check(any(abs(t[0] - n[0]) + abs(t[1] - n[1]) == 1 for t in _seen110 for n in _north110), "Hoenn Route 110: you can walk from Slateport to Mauville without Surf (the path under the Cycling Road)")
+_h117 = kanto("HOENN_ROUTE_117", came="MAUVILLE_CITY")
+check((_h117.run.floor.w, _h117.run.floor.h) == (60, 24) and _h117.run.player[0] >= 56 and {"MAUVILLE_CITY", "VERDANTURF_TOWN"} == set(_h117.run.floor.exits.values())
+      and "door:daycare" in _h117.run.floor.decor.values(),
+      f"Hoenn Route 117: laid out from the ORAS map; in from Mauville (east) at {_h117.run.player}; the Day Care's door; Verdanturf west")
+_h111 = kanto("HOENN_ROUTE_111", came="MAUVILLE_CITY")
+_a111, _a112 = {}, {}
+for _i in range(2):
+    _c.ENTRANCE_INDEX = _i
+    _a111[_i] = kanto("HOENN_ROUTE_111", came="HOENN_ROUTE_112").run.player
+    _c.ENTRANCE_INDEX = _i
+    _a112[_i] = kanto("HOENN_ROUTE_112", came="HOENN_ROUTE_111").run.player
+_c.ENTRANCE_INDEX = 0
+check((_h111.run.floor.w, _h111.run.floor.h) == (40, 140) and _h111.run.player[1] >= 136
+      and {"MAUVILLE_CITY", "HOENN_ROUTE_112", "HOENN_ROUTE_113", "HOENN_MIRAGE_TOWER"} == set(_h111.run.floor.exits.values())
+      and any(m.kind == "figure" and "DESERT" in str(m.payload.get("text")) for m in _h111.run.floor.movers) is not None,
+      f"Hoenn Route 111: read from the Emerald map, desert and all; in from Mauville (south) at {_h111.run.player}")
+check(_a111[0][1] < 40 and _a111[1][1] > 60 and _a112[0][1] < 15 and _a112[1][1] > 45,
+      f"Hoenn Routes 111 and 112: the meadow and the junction each lead to their own (Route 111 side {_a111}; Route 112 side {_a112})")
+def _reach111(p):
+    f = p.run.floor
+    seen, todo = {tuple(p.run.player)}, [tuple(p.run.player)]
+    while todo:
+        x, y = todo.pop()
+        for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+            n = (x + dx, y + dy)
+            if n not in seen and 0 <= n[0] < f.w and 0 <= n[1] < f.h and f.tiles[n[1]][n[0]] in (core.FLOOR, core.GRASS):
+                seen.add(n); todo.append(n)
+    return seen
+_gg_had = story.inventory.pop("GO_GOGGLES", None)
+_h111 = kanto("HOENN_ROUTE_111", came="MAUVILLE_CITY")
+_h111._clear_boulders()  # (as every step does)
+_dry = _reach111(_h111)
+story.inventory["GO_GOGGLES"] = 1
+_h111._clear_boulders()
+_wet = _reach111(_h111)
+if _gg_had is None:
+    story.inventory.pop("GO_GOGGLES", None)
+check((20, 50) not in _dry and (1, 9) not in _dry and (1, 69) in _dry and (20, 50) in _wet and (1, 9) in _wet
+      and str(_h111.run.floor.decor.get((10, 62), "")) == "",
+      f"Hoenn Route 111: a sandstorm bars the desert without the Go-Goggles (the junction to Route 112 stays open); with them you can cross to Route 113")
+_c.ENTRANCE_INDEX = 1
+_h112 = kanto("HOENN_ROUTE_112", came="HOENN_ROUTE_111")
+_c.ENTRANCE_INDEX = 0
+_f112 = _h112.run.floor
+_seen112, _todo112 = {tuple(_h112.run.player)}, [tuple(_h112.run.player)]
+while _todo112:
+    _x, _y = _todo112.pop()
+    for _dx, _dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+        _n = (_x + _dx, _y + _dy)
+        if _n not in _seen112 and 0 <= _n[0] < _f112.w and 0 <= _n[1] < _f112.h and _f112.tiles[_n[1]][_n[0]] in (core.FLOOR, core.GRASS):
+            _seen112.add(_n); _todo112.append(_n)
+_near112 = lambda who: any(abs(t[0] - n[0]) + abs(t[1] - n[1]) == 1 for n in _seen112 for t, v in _f112.exits.items() if v == who)
+check((_f112.w, _f112.h) == (40, 60) and _h112.run.player[0] >= 37 and _h112.run.player[1] > 45 and _near112("LAVARIDGE_TOWN") and _near112("HOENN_JAGGED_PASS") and _near112("HOENN_FIERY_PATH")
+      and (39, 8) not in _seen112 and (38, 9) not in _seen112 and "door:cablecar" in _f112.decor.values() and sum(1 for v in _f112.exits.values() if v == "HOENN_FIERY_PATH") == 2,
+      f"Hoenn Route 112: read from the Emerald map; in from Route 111 (east) at {_h112.run.player}; you can walk to Lavaridge, the Jagged Pass and the Fiery Path, but not to the north meadow; the Cable Car's door")
 story.story_flags.pop("defeated_red_gyarados", None)
 _lor = kanto("LAKE_OF_RAGE", came="JOHTO_ROUTE_43")
 _gy = [m for f in _lor.run.floors for m in f.movers if m.kind == "figure" and m.payload.get("action") == "BOSS"]
@@ -1456,6 +1511,12 @@ g.walk_town_exit = None
 check(isinstance(_m2, _WTS) and (_m2.w, _m2.h) == (38, 33) and [(_up[i][0] > 19, _up[i][1] > 16) for i in range(4)] == [(False, False), (True, False), (False, True), (True, True)]
       and [(_down[i][0] > 24, _down[i][1] > 20) for i in range(4)] == [(False, False), (True, False), (False, True), (True, True)],
       f"Mauville City 2F: each corner staircase leads to its own corner (up {_up}; down {_down})")
+g.walk_town_pos = None
+story.current_area_key, story.last_area_key = "VERDANTURF_TOWN", "HOENN_ROUTE_117"
+_vt = _CS(g); g.change_state(_vt); _tap_through(_vt)
+check(isinstance(_vt, _WTS) and (_vt.w, _vt.h) == (35, 22) and {"center", "contest", "wally"} <= set(_vt.doors.values()) and _vt.player[0] >= 31
+      and {"HOENN_ROUTE_117", "HOENN_RUSTURF_TUNNEL"} == set(_vt.exits.values()) and _vt._door_options("wally") and _vt._door_options("contest"),
+      f"Verdanturf Town: laid out from the ORAS map; in from Route 117 (east) at {_vt.player}; the Contest Hall, the Center, Wally's uncle's house; Rusturf Tunnel north")
 g.walk_town_pos = None
 
 

@@ -1076,8 +1076,8 @@
       ],
       "explore_options": [{"text": "Wanda", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_gardevoirite", "event": {"lines": ["Wanda: You helped us so much. Please take this stone!", "You found the GARDEVOIRITE!"], "gift_item": {"GARDEVOIRITE": 1}, "flag": "got_gardevoirite"}}, {"text": "A Glinting Stone: Mawilite", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_mawilite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the MAWILITE!"], "gift_item": {"MAWILITE": 1}, "flag": "got_mawilite"}}, 
         { "text": "Heal", "action": "HEAL" },
-        { "text": "Contest Hall", "action": "NPC", "target": "contest_hall" },
-        { "text": "Talk to Wally", "action": "NPC", "target": "wally_house" }
+        { "text": "Contest Hall", "door": "contest", "action": "NPC", "target": "contest_hall" },
+        { "text": "Talk to Wally", "door": "wally", "action": "NPC", "target": "wally_house" }
       ],
       "next_area": "HOENN_ROUTE_117",
       "on_enter_event": null
@@ -1758,7 +1758,7 @@
         {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"},
         {"text": "TALK TO YOUR RIVAL", "action": "NPC", "target": "rival_route112", "condition": "not:got_strength_hoenn", "color": "GOLD"},
-        {"text": "CABLE CAR", "action": "EXIT", "target_area": "HOENN_MT_CHIMNEY", "condition": ["can_exit", "meteor_falls_cleared"], "color": "RED"},
+        {"text": "CABLE CAR", "door": "cablecar", "action": "EXIT", "target_area": "HOENN_MT_CHIMNEY", "condition": ["can_exit", "meteor_falls_cleared"], "color": "RED"},
         {"text": "ROUTE 111", "action": "EXIT", "target_area": "HOENN_ROUTE_111", "condition": "can_exit", "color": "RED"},
         {"text": "LAVARIDGE TOWN", "action": "EXIT", "target_area": "LAVARIDGE_TOWN", "condition": ["can_exit", "mt_chimney_boss_defeated"], "color": "RED"},
         {"text": "JAGGED PASS", "action": "TRAVEL", "target_area": "HOENN_JAGGED_PASS", "condition": ["can_exit", "mt_chimney_boss_defeated"], "color": "GREEN"},
@@ -1986,7 +1986,7 @@
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
-        { "text": "POKéMON DAY CARE", "action": "DAYCARE", "color": "ORANGE" },
+        { "text": "POKéMON DAY CARE", "door": "daycare", "action": "DAYCARE", "color": "ORANGE" },
         { "text": "MAUVILLE CITY", "action": "EXIT", "target_area": "MAUVILLE_CITY", "condition": "can_exit", "color": "RED" },
         { "text": "VERDANTURF TOWN", "action": "EXIT", "target_area": "VERDANTURF_TOWN", "condition": "can_exit", "color": "RED" }
       ],
