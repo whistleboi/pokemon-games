@@ -60,6 +60,7 @@
       "travel_options": [
         {
           "text": "Desert Trail",
+          "door": "cycle",
           "target_area": "ORRE_DESERT",
           "condition": "received_starter_orre"
         }
@@ -373,22 +374,26 @@
         {
           "text": "Pyrite Town",
           "target_area": "PYRITE_TOWN",
-          "condition": "got_snag_machine"
+          "condition": "got_snag_machine",
+          "door": "cycle"
         },
         {
           "text": "Gateon Port",
           "target_area": "GATEON_PORT",
-          "condition": "orre_ein_lab"
+          "condition": "orre_ein_lab",
+          "door": "cycle"
         },
         {
           "text": "Prestige Precept Center",
           "target_area": "PRESTIGE_PRECEPT_CENTER",
-          "condition": "xd_exol_beaten"
+          "condition": "xd_exol_beaten",
+          "door": "pregym"
         },
         {
           "text": "Realgam Tower",
           "target_area": "REALGAM_TOWER",
-          "condition": "xd_gorigan_beaten"
+          "condition": "xd_gorigan_beaten",
+          "door": "cycle"
         }
       ],
       "next_area": "ORRE_DESERT",
@@ -569,6 +574,7 @@
       "travel_options": [
         {
           "text": "Phenac City",
+          "door": "cycle",
           "target_area": "PHENAC_CITY"
         },
         {
@@ -577,20 +583,24 @@
         },
         {
           "text": "Oasis Poke Spot",
+          "door": "cycle",
           "target_area": "OASIS_POKE_SPOT"
         },
         {
           "text": "Pyrite Cave",
+          "door": "cycle",
           "target_area": "PYRITE_CAVE",
           "condition": "has_pyrite_badge"
         },
         {
           "text": "The Under",
+          "door": "cycle",
           "target_area": "THE_UNDER",
           "condition": "orre_dakim_mt_battle"
         },
         {
           "text": "ONBS Building",
+          "door": "cycle",
           "target_area": "XD_ONBS",
           "condition": "xd_lovrina_beaten"
         }
@@ -1224,6 +1234,7 @@
           }
         },
         {
+          "door": "relic",
           "text": "Purify at the Relic Stone",
           "action": "EVENT",
           "color": "GOLD",
@@ -1239,22 +1250,27 @@
       "travel_options": [
         {
           "text": "Pyrite Cave",
+          "door": "cycle",
           "target_area": "PYRITE_CAVE"
         },
         {
           "text": "Relic Cave",
+          "door": "relic",
           "target_area": "RELIC_CAVE"
         },
         {
           "text": "Relic Forest",
+          "door": "cycle",
           "target_area": "RELIC_FOREST"
         },
         {
           "text": "Cave Poke Spot",
+          "door": "cycle",
           "target_area": "CAVE_POKE_SPOT"
         },
         {
           "text": "Mt. Battle",
+          "door": "cycle",
           "target_area": "MT_BATTLE"
         }
       ],
@@ -2155,6 +2171,20 @@
             "can_exit"
           ],
           "color": "RED"
+        },
+        {
+          "text": "F-DISK",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not orre_f_disk",
+          "event": {
+            "lines": [
+              "Dakim dropped something as he fled: a disk marked F.",
+              "You took the F-Disk."
+            ],
+            "flag": "orre_f_disk"
+          },
+          "condition": "orre_dakim_mt_battle"
         }
       ],
       "next_area": "AGATE_VILLAGE",
@@ -2378,6 +2408,32 @@
             "has_under_badge"
           ],
           "color": "RED"
+        },
+        {
+          "text": "U-DISK",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not orre_u_disk",
+          "event": {
+            "lines": [
+              "A disk marked U lies by the old subway door.",
+              "You took the U-Disk."
+            ],
+            "flag": "orre_u_disk"
+          }
+        },
+        {
+          "text": "MAINGATE KEY",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not orre_maingate_key",
+          "event": {
+            "lines": [
+              "Something glints by the broken door: the Maingate Key.",
+              "You took it."
+            ],
+            "flag": "orre_maingate_key"
+          }
         }
       ],
       "next_area": "PYRITE_TOWN",
@@ -2834,6 +2890,68 @@
             "can_exit"
           ],
           "color": "RED"
+        },
+        {
+          "text": "CARD KEY",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not orre_card_key",
+          "event": {
+            "lines": [
+              "A fleeing researcher dropped a Card Key.",
+              "You took it."
+            ],
+            "flag": "orre_card_key"
+          }
+        },
+        {
+          "text": "DOWN ST. KEY",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not orre_down_st_key",
+          "event": {
+            "lines": [
+              "On the table: the Down St. Key.",
+              "You took it."
+            ],
+            "flag": "orre_down_st_key"
+          }
+        },
+        {
+          "text": "DNA SAMPLE (1)",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not orre_dna_1",
+          "event": {
+            "lines": [
+              "A DNA sample in a sealed case. The analyzer will want it."
+            ],
+            "flag": "orre_dna_1"
+          }
+        },
+        {
+          "text": "DNA SAMPLE (2)",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not orre_dna_2",
+          "event": {
+            "lines": [
+              "A second DNA sample in a sealed case."
+            ],
+            "flag": "orre_dna_2"
+          }
+        },
+        {
+          "text": "DNA SAMPLE (3)",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not orre_dna_3",
+          "event": {
+            "lines": [
+              "The third DNA sample. Now the analyzer's door should open."
+            ],
+            "flag": "orre_dna_3"
+          }
         }
       ],
       "next_area": "THE_UNDER"
@@ -2865,6 +2983,7 @@
           }
         },
         {
+          "door": "cycle",
           "text": "Professor Krane's Lab",
           "action": "EVENT",
           "color": "GOLD",
@@ -2883,28 +3002,188 @@
       "travel_options": [
         {
           "text": "Phenac City",
+          "door": "cycle",
           "target_area": "PHENAC_CITY"
         },
         {
           "text": "Cipher Lab",
+          "door": "cycle",
           "target_area": "XD_CIPHER_LAB"
         },
         {
           "text": "S.S. Libra",
+          "door": "cycle",
           "target_area": "SS_LIBRA"
         },
         {
           "text": "Cipher Key Lair",
+          "door": "cycle",
           "target_area": "XD_CIPHER_KEY_LAIR",
           "condition": "has_orre_badge"
         },
         {
           "text": "Citadark Isle",
+          "door": "harbor",
           "target_area": "XD_CITADARK_ISLE",
           "condition": "beat_orre_champion"
+        },
+        {
+          "text": "Pokemon HQ Lab",
+          "door": "cycle",
+          "target_area": "POKEMON_HQ_LAB"
+        },
+        {
+          "text": "Kaminko's House",
+          "door": "cycle",
+          "target_area": "KAMINKO_HOUSE"
         }
       ],
       "next_area": "PHENAC_CITY"
+    },
+    "POKEMON_HQ_LAB": {
+      "area_type": "town",
+      "route_name": "Pokemon HQ Lab",
+      "region": "ORRE",
+      "level": 30,
+      "has_gym": false,
+      "explore_options": [
+        {
+          "text": "Pokemon Center",
+          "action": "HEAL"
+        },
+        {
+          "text": "Professor Krane",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not got_krane_eevee",
+          "event": {
+            "lines": [
+              "Professor Krane: Welcome to the Pokemon HQ Lab! We're studying how to purify Shadow Pokemon.",
+              "Cipher is turning Pokemon into fighting machines. We could use a trainer like you.",
+              "Please take this Eevee. It's a good partner, and it can become many things."
+            ],
+            "gift_pokemon": 133,
+            "flag": "got_krane_eevee"
+          }
+        },
+        {
+          "text": "Purify Chamber",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "Lily: The Purify Chamber is ready. Place a Shadow Pokemon inside and the others' warmth will open its heart.",
+              "Choose one to purify, or none."
+            ],
+            "purify": "choose"
+          }
+        },
+        {
+          "text": "Lab Assistant",
+          "action": "EVENT",
+          "event": {
+            "lines": [
+              "Lab Assistant: Downstairs is our battle hall. We test new machines there, holograms and all."
+            ]
+          }
+        }
+      ],
+      "travel_options": [
+        {
+          "text": "Gateon Port",
+          "door": "cycle",
+          "target_area": "GATEON_PORT"
+        },
+        {
+          "text": "Phenac City",
+          "door": "cycle",
+          "target_area": "PHENAC_CITY"
+        }
+      ],
+      "next_area": "GATEON_PORT"
+    },
+    "KAMINKO_HOUSE": {
+      "area_type": "dungeon",
+      "route_name": "Kaminko's House",
+      "region": "ORRE",
+      "level": 30,
+      "battle_type": "indoor",
+      "min_rounds": 0,
+      "trainer_pool": [],
+      "shadow_pool": [],
+      "route_menu": [
+        {
+          "text": "KAMINKO'S HOUSE: CHOBIN",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not kaminko_chobin",
+          "event": {
+            "lines": [
+              "Chobin: Halt, burglar! Nobody sneaks into Dr. Kaminko's manor while I'm on guard!"
+            ],
+            "battle": {
+              "name": "Kaminko Aide Chobin",
+              "class": "RESEARCHER",
+              "sprite": "orre_scientist.png",
+              "team": [
+                191,
+                130
+              ],
+              "levels": [
+                29,
+                30
+              ],
+              "rewards": {
+                "balls": 3
+              },
+              "dialogue": {
+                "player_won": [
+                  "Chobin: Oh! You're just a kid. Sorry about that. Come on in!"
+                ]
+              }
+            },
+            "flag": "kaminko_chobin"
+          }
+        },
+        {
+          "text": "Dr. Kaminko",
+          "action": "EVENT",
+          "event": {
+            "lines": [
+              "Dr. Kaminko: A visitor! Behold my Robo Groudon. It doesn't move yet... but it will!",
+              "Downstairs my crane carries you between the platforms. Step on the hook that matches the colour."
+            ]
+          }
+        },
+        {
+          "text": "Jovi",
+          "action": "EVENT",
+          "event": {
+            "lines": [
+              "Jovi: This storeroom is my secret base! Don't tell Chobin, okay?"
+            ]
+          }
+        },
+        {
+          "text": "The Robo Kyogre",
+          "action": "EVENT",
+          "event": {
+            "lines": [
+              "A giant mechanical Kyogre, half finished. Loose wires hang from its fins."
+            ]
+          }
+        },
+        {
+          "text": "Gateon Port",
+          "action": "EXIT",
+          "target_area": "GATEON_PORT",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
+        }
+      ],
+      "next_area": "GATEON_PORT"
     },
     "XD_CIPHER_LAB": {
       "area_type": "dungeon",
@@ -3093,6 +3372,19 @@
             "can_exit"
           ],
           "color": "RED"
+        },
+        {
+          "text": "ID CARD",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not xd_id_card",
+          "event": {
+            "lines": [
+              "On the table: a Cipher ID Card.",
+              "You took it. The locked lift will take it."
+            ],
+            "flag": "xd_id_card"
+          }
         }
       ],
       "next_area": "GATEON_PORT",
@@ -3248,6 +3540,24 @@
             "can_exit"
           ],
           "color": "RED"
+        },
+        {
+          "text": "REST IN THE BED",
+          "action": "REST",
+          "color": "BLUE"
+        },
+        {
+          "text": "BONSLY",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not xd_bonsly_found",
+          "event": {
+            "lines": [
+              "Something small is hiding behind the crates... a Bonsly! It must be the girl's lost Pokemon.",
+              "It hops into your arms. Take it back to her at ONBS."
+            ],
+            "flag": "xd_bonsly_found"
+          }
         }
       ],
       "next_area": "GATEON_PORT"
@@ -3437,6 +3747,20 @@
             "can_exit"
           ],
           "color": "RED"
+        },
+        {
+          "text": "BONSLY'S GIRL",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not xd_bonsly_home",
+          "event": {
+            "lines": [
+              "You hand Bonsly back to the girl. She hugs it tight.",
+              "Her grandfather thanks you for finding it."
+            ],
+            "flag": "xd_bonsly_home"
+          },
+          "condition": "xd_bonsly_found"
         }
       ],
       "next_area": "PYRITE_TOWN",
@@ -3949,6 +4273,7 @@
       "travel_options": [
         {
           "text": "Desert Trail",
+          "door": "cycle",
           "target_area": "ORRE_DESERT"
         }
       ],
@@ -4369,14 +4694,17 @@
       "travel_options": [
         {
           "text": "Phenac City",
+          "door": "cycle",
           "target_area": "PHENAC_CITY"
         },
         {
           "text": "Realgam Tower Dome",
+          "door": "realgam",
           "target_area": "CIPHER_COMMAND"
         },
         {
           "text": "Deep Colosseum",
+          "door": "realgam",
           "target_area": "DEEP_COLOSSEUM",
           "condition": "beat_orre_champion"
         }

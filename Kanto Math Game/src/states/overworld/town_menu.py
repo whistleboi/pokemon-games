@@ -304,7 +304,7 @@ class TownMenu:
             return lambda p=opt_data.get("panel"): self.solve_alph_panel(p)
         if action == "TRAVEL":
             return lambda: self.go_to_area(opt_data.get("target_area"), opt_data.get("message"),
-                                           heal=travel_heal(opt_data))
+                                           heal=travel_heal(opt_data), ride=opt_data.get("door") == "cycle")
         return None
 
     def open_explore_menu(self):
@@ -321,15 +321,16 @@ class TownMenu:
         if len(self.action_menu.buttons) > 3:
             self._create_hover_menu(options, self.action_menu.buttons[3].rect)
 
-    def go_to_area(self, area_key, message=None, heal=None):
-        """Travel; a ship or train ride shows its own message on the way. heal: see travel_heal."""
+    def go_to_area(self, area_key, message=None, heal=None, ride=False):
+        """Travel; a ship or train ride shows its own message on the way. heal: see travel_heal. ride: off on Orre's
+        motorbike (a travel option with "door": "cycle"): the ride across the desert plays on the way."""
         from src.states.overworld.area_transition import AreaTransitionState
         if area_key:
             from src.coop import travel
-            if travel.held(self.game, travel.area_name(self.game, area_key), lambda: self.go_to_area(area_key, message, heal)):
+            if travel.held(self.game, travel.area_name(self.game, area_key), lambda: self.go_to_area(area_key, message, heal, ride)):
                 return
             self.game.change_state(AreaTransitionState(self.game, area_key, initial_message=message,
-                                                       heal=heal))
+                                                       heal=heal, ride=ride))
 
     def clear_hover_menu(self):
         for btn in self.hover_buttons:

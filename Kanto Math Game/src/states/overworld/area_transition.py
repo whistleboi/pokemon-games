@@ -39,13 +39,31 @@ def heal_team(game):
         game.assets.heal_sfx.play()
 
 
+RIDE_FRAMES = 150  # Orre's motorbike ride: about two and a half seconds
+
+
+def _ride_pictures():
+    """The ride's pictures, from the Orre fan game (assets/tiles/orre): the strip of desert and the motorbike with Rui
+    in its sidecar (the sheet's top row: four helmet colours side by side; the first is used). None if they are missing."""
+    base = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))), "assets", "tiles", "orre")
+    try:
+        return (pygame.image.load(os.path.join(base, "ride_desert.png")).convert(),
+                pygame.image.load(os.path.join(base, "ride_bike.png")).convert_alpha())
+    except Exception:
+        return None
+
+
 # [REF-0042: Area Transition Logic]
 class AreaTransitionState(GameState):
-    def __init__(self, game, next_area_key, initial_message=None, heal=None):
+    def __init__(self, game, next_area_key, initial_message=None, heal=None, ride=False):
         from src.states.overworld.route import PlayState
         super().__init__(game)
         self.next_area_key = next_area_key
         self.timer = 75
+        self.ride = _ride_pictures() if ride else None  # (Orre's motorbike: across the desert on the way, as the fan game does)
+        self.ride_t = 0
+        if self.ride:
+            self.timer = RIDE_FRAMES
         self.wait_for_dialogue = bool(initial_message)
         self.bg = None
 
@@ -172,8 +190,29 @@ class AreaTransitionState(GameState):
             elif news:
                 self.game.show_dialogue(news)
 
+    def _draw_ride(self):
+        """The motorbike crossing the desert: the ground scrolls past and the bike rides through, bouncing a little."""
+        desert, bike = self.ride
+        self.ride_t += 1
+        top = self.dialogue_box.rect.top
+        k = top / desert.get_height()
+        if not hasattr(self, "_ride_ground"):
+            self._ride_ground = pygame.transform.scale(desert, (int(desert.get_width() * k), top))
+        g = self._ride_ground
+        span = max(1, g.get_width() - self.game.width)
+        off = int(span * min(1.0, self.ride_t / RIDE_FRAMES))
+        self.game.screen.blit(g, (-off, 0))
+        fw = bike.get_width() // 4
+        frame = bike.subsurface((0, 0, fw, bike.get_height()))
+        big = pygame.transform.scale(frame, (int(fw * k * 1.5), int(bike.get_height() * k * 1.5)))
+        x = int(-big.get_width() + (self.game.width + big.get_width() * 2) * min(1.0, self.ride_t / RIDE_FRAMES))
+        y = top // 2 - big.get_height() // 2 + (2 if (self.ride_t // 4) % 2 else 0)
+        self.game.screen.blit(big, (x, y))
+
     def draw(self):
-        if self.bg:
+        if self.ride:
+            self._draw_ride()
+        elif self.bg:
             self.game.screen.blit(self.bg, (0, 0))
         else:
             self.game.screen.fill(BLACK)
