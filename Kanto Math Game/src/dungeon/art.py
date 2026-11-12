@@ -1013,6 +1013,15 @@ def fitting(surf, o, tile, ox=0, oy=0):
 def overhead(o, tile):
     """What passes over your head: (image, (x px, y px)). o: {"kind": "rail", "rect": [x, y, w, h]} in tiles; you walk
     underneath it (Goldenrod's Magnet Train line over the main road). The image takes in the shadow it casts below."""
+    if o.get("kind") == "picture":  # the real game's own top layer over this map (roof tops, treetops you walk behind): {"kind": "picture", "f": file under assets/tiles, "at": [x, y] the map's top-left tile in it, "size": [w, h] tiles}; see-through where nothing is
+        key = ("top", o["f"])
+        if key not in _PT:
+            base = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "assets", "tiles")
+            _PT[key] = pygame.image.load(os.path.join(base, o["f"]))
+        w, h = o["size"]
+        part = pygame.Surface((w * 16, h * 16), pygame.SRCALPHA)
+        part.blit(_PT[key], (-o["at"][0] * 16, -o["at"][1] * 16))
+        return (part if tile == 16 else pygame.transform.scale(part, (w * tile, h * tile))), (0, 0)
     x, y, w, h = o["rect"]
     if o.get("kind") in ("case_top", "case", "window", "emblem", "goods"):  # a room's fitting you walk behind (a prize case's top shelf)
         surf = pygame.Surface((round(w * tile), round(h * tile)), pygame.SRCALPHA)
