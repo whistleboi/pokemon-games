@@ -3708,3 +3708,8 @@ MAPS = {
         ],
     },
 }
+
+# Laid out from FireRed's own map data (frlg.py, written by kanto_handoff/frlg_map_tools): these replace the entries above of the same name.
+from .frlg import KANTO as _FRLG  # noqa: E402
+
+MAPS.update(_FRLG)

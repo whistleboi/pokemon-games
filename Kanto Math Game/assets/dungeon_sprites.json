@@ -78,6 +78,19 @@
   "figures": {
     "KANTO_POKEMON_TOWER:GHOST": {"draw": "ghost"},
     "SAFARI_ZONE:GOLD TEETH": {"item": "GOLD_TEETH"},
+    "SAFARI_ZONE:SAFARI RANGER": {"sheet": "NPC 20.png"},
+    "SAFARI_ZONE:RESTING SCIENTIST": {"sheet": "NPC 15.png"},
+    "SAFARI_ZONE:TIRED HIKER": {"sheet": "NPC 06.png"},
+    "SAFARI_ZONE:BIRD FAN": {"sheet": "NPC 05.png"},
+    "SAFARI_ZONE:ROCK FAN": {"sheet": "NPC 13.png"},
+    "SAFARI_ZONE:NAP TAKER": {"sheet": "NPC 18.png"},
+    "SAFARI_ZONE:LOST BOY": {"sheet": "NPC 02.png"},
+    "SAFARI_ZONE:FISHING FAN": {"sheet": "NPC 07.png"},
+    "SAFARI_ZONE:PICNIC GIRL": {"sheet": "NPC 08.png"},
+    "SAFARI_ZONE:OLD CAMPER": {"sheet": "NPC 10.png"},
+    "SAFARI_ZONE:TEETH HUNTER": {"sheet": "NPC 21.png"},
+    "SAFARI_ZONE:LUCKY CATCHER": {"sheet": "NPC 28.png"},
+    "SAFARI_ZONE:SECRET HOUSE MAN": {"sheet": "NPC 24.png"},
     "VERMILLION_CITY:Machop": {"pokemon": 66},
     "FROST_CAVERN:ABOMASITE": {"item": "ABOMASITE"},
     "FROST_CAVERN:SCIZORITE": {"item": "SCIZORITE"},
@@ -153,6 +166,9 @@
     },
     "POKEMON_MANSION:BURGLAR SIMON": {
       "sheet": "trchar012.png"
+    },
+    "CELADON_GAME_CORNER:ROCKET GRUNT": {
+      "sheet": "trchar024.png"
     },
     "CELADON_GAME_CORNER:CLERK": {
       "sheet": "NPC 19.png"
