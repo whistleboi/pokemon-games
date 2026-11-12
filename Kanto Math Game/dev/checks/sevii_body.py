@@ -80,7 +80,7 @@ check(story.story_flags.get("network_machine_fixed") and story.inventory.get("OL
 check("Seagallop to Faraway Island" in travel("ONE_ISLAND"), "ferry to Faraway Island")
 
 print("6) Seven Island and Mew")
-run("TANOBY_RUINS", "OPEN THE CHAMBERS")
+run("SEVAULT_CANYON", "OPEN THE CHAMBERS")  # (the Tanoby Key cave is in Sevault Canyon, as in FireRed: the option moved there with the maps, 11-11)
 story.balls_left = 10  # (Poke Balls are in the Bag in use now)
 st = state_for("TANOBY_RUINS")
 check(st._check_route_condition(opt("TANOBY_RUINS", "CATCH WILD PKMN")["condition"], False), "Tanoby chambers: Unown")

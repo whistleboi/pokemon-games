@@ -206,6 +206,10 @@ class WalkTownState(CityState):
                 elif c == "N" and names:
                     who = names.pop(0)  # (a town option by its text, or an option of its own: Oak at the gap)
                     opt = who if isinstance(who, dict) else None if isinstance(who, list) else options.get(who)
+                    if isinstance(who, str) and who.startswith("door:"):  # (whoever runs a building from inside it: everything its door would offer; a harbour's sailor and the boats)
+                        kind = who[5:]
+                        opt = {"any": [o for o in self.area_data.get("explore_options", []) if option_kind(o) == kind]
+                               + [dict(o, action="TRAVEL") for o in self.area_data.get("travel_options", []) if o.get("door") == kind]}
                     if isinstance(who, list):  # (someone with several things to say or do, by the story: the first of these options showing now)
                         opt = {"any": [w if isinstance(w, dict) else options[w] for w in who if isinstance(w, dict) or w in options]}
                     if opt:
@@ -622,9 +626,9 @@ class WalkTownState(CityState):
 
     # ---------------------------------------------------------------- input
     def _buttons(self):
-        w, h = self.game.width, self.game.height
-        return [(pygame.Rect(w - 280, h - 162, 126, 70), theme.pokemon_word("POKEMON"), theme.POKEMON, self._open_party),
-                (pygame.Rect(w - 146, h - 162, 126, 70), theme.pokemon_word("POKEDEX"), theme.BAG, self._open_pokedex)]
+        side = dn.side_buttons(self.game)  # (stacked in the right band, beside the map)
+        return [(side[3], theme.pokemon_word("POKEMON"), theme.POKEMON, self._open_party),
+                (side[2], theme.pokemon_word("POKEDEX"), theme.BAG, self._open_pokedex)]
 
     def _camera(self):
         px, py = self.player
@@ -633,15 +637,19 @@ class WalkTownState(CityState):
             fx, fy = self.anim_from
             px, py = fx + (px - fx) * k, fy + (py - fy) * k
         cx, cy = px * TILE + TILE / 2, py * TILE + TILE / 2
-        W, H = self.game.width, self.game.height
-        mw, mh = self.w * TILE, self.h * TILE  # (the map stays on screen: no black past its edges)
+        W, H = self._view().size
+        mw, mh = self.w * TILE, self.h * TILE  # (the map fills its frame: no black past its edges)
         cx = mw / 2 if mw <= W else min(max(cx, W / 2), mw - W / 2)
         cy = mh / 2 if mh <= H else min(max(cy, H / 2), mh - H / 2)
         return cx, cy
 
+    def _view(self):
+        return dn.map_view(self.game)  # (the map's frame: src/states/overworld/dungeon.py)
+
     def _origin(self):
         cx, cy = self._camera()
-        return int(self.game.width / 2 - cx), int(self.game.height / 2 - cy)
+        v = self._view()
+        return int(v.centerx - cx), int(v.centery - cy)
 
     def _tile_at(self, pos):
         ox, oy = self._origin()
@@ -683,8 +691,8 @@ class WalkTownState(CityState):
                     hit[3]()
                     return
                 goal = self._tile_at(e.pos)
-                if self._minimap_rect().collidepoint(e.pos):
-                    continue
+                if self._minimap_rect().collidepoint(e.pos) or not self._view().collidepoint(e.pos):
+                    continue  # (the black round the map: nothing there)
                 self.tap_mark = [goal, bool(self._open(goal)) or goal in self.doors or goal in self.signs or goal in self._people(), 12]
                 if goal == self.player:
                     continue
@@ -715,7 +723,7 @@ class WalkTownState(CityState):
             at = held_pointer() if getattr(self, "_map_press", False) else None
             if at is None:
                 self._map_press = False
-            else:
+            elif self._view().collidepoint(at):
                 goal = self._tile_at(at)
                 if goal != self.player and (self._open(goal) or goal in self.doors or goal in self._people()):
                     self.walk_goal = goal
@@ -742,7 +750,10 @@ class WalkTownState(CityState):
         screen = self.game.screen
         W, H = self.game.width, self.game.height
         fonts = self.game.assets.fonts
-        screen.fill((10, 14, 24))
+        view = self._view()
+        screen.fill(dn.FRAME_BLACK)
+        screen.fill((10, 14, 24), view)
+        screen.set_clip(view)  # (the map stays in its frame)
         ox, oy = self._origin()
         screen.blit(self.map_img, (ox, oy))
 
@@ -810,6 +821,8 @@ class WalkTownState(CityState):
                        at(spot).y - 34, fonts, taken)
         if not self._busy():
             self._draw_guide(screen, at)
+        screen.set_clip(None)
+        dn.draw_frame(screen, view)
         self._draw_hud(screen, fonts)
         if self.hover_menu_active and self.hover_bg_rect:
             pygame.draw.rect(screen, (255, 255, 255), self.hover_bg_rect, border_radius=12)
@@ -820,12 +833,12 @@ class WalkTownState(CityState):
 
     @staticmethod
     def _pill(screen, text, cx, bottom, fonts, taken=None):
-        W, H = screen.get_size()
-        if not (-60 <= cx <= W + 60 and -40 <= bottom <= H + 60):
+        box = screen.get_clip()  # (the map's frame, while the map is drawn)
+        if not (box.x - 60 <= cx <= box.right + 60 and box.y - 40 <= bottom <= box.bottom + 60):
             return  # (off screen: no tag piling up at the edge)
         tag = fonts["caption"].render(theme.pokemon_word(text), True, (255, 255, 255))
         pill = tag.get_rect(midbottom=(cx, bottom)).inflate(12, 6)
-        pill.clamp_ip(screen.get_rect().inflate(-8, -8))  # (one at the very edge stays on screen)
+        pill.clamp_ip(box.inflate(-8, -8))  # (one at the very edge stays in the frame)
         if taken is not None:
             if pill.collidelist(taken) >= 0:
                 return
@@ -835,9 +848,15 @@ class WalkTownState(CityState):
 
     tap_mark = None
 
+    def _mini_scale(self):
+        jr = self._journal_rect()
+        top = jr.bottom + 10 if jr else 128
+        return dn.mini_scale(self.w, self.h, dn.FRAME_LEFT - 32, self.game.height - 24 - top)
+
     def _minimap_rect(self):
         jr = self._journal_rect()
-        return pygame.Rect(20, jr.bottom + 10 if jr else 128, self.w * 4 + 8, self.h * 4 + 8)
+        s = self._mini_scale()
+        return pygame.Rect(16, jr.bottom + 10 if jr else 128, self.w * s + 8, self.h * s + 8)
 
     # ---------------------------------------------------------------- the way to go
     def _guide_spot(self):
@@ -888,8 +907,8 @@ class WalkTownState(CityState):
         dn.DungeonState._draw_guide(self, screen, lambda x, y: at((x, y)))
 
     def _draw_minimap(self, screen):
-        mm, s = self._minimap_rect(), 4
-        if getattr(self, "_mini", None) is None:
+        mm, s = self._minimap_rect(), self._mini_scale()
+        if getattr(self, "_mini", None) is None or self._mini.get_size() != mm.size:
             self._mini = pygame.Surface(mm.size, pygame.SRCALPHA)
             self._mini.fill((10, 14, 24, 170))
             for y, row in enumerate(self.rows):
@@ -903,7 +922,7 @@ class WalkTownState(CityState):
         screen.blit(self._mini, mm.topleft)
         for (x, y) in self._people():
             screen.fill((250, 210, 60), (mm.x + 4 + x * s, mm.y + 4 + y * s, s, s))
-        pygame.draw.circle(screen, (255, 255, 255), (mm.x + 6 + self.player[0] * s, mm.y + 6 + self.player[1] * s), 3)
+        pygame.draw.circle(screen, (255, 255, 255), (mm.x + 4 + self.player[0] * s + s // 2, mm.y + 4 + self.player[1] * s + s // 2), 3)
 
     def _draw_hud(self, screen, fonts):
         self._draw_journal(screen)
@@ -912,7 +931,7 @@ class WalkTownState(CityState):
         name = theme.pokemon_word(self.area_data.get("route_name") or self.area_key.replace("_", " ").title())
         if self.banner > 0:
             t = fonts["big"].render(name, True, (255, 255, 255))
-            r = t.get_rect(center=(W // 2, int(H * 0.3))).inflate(60, 24)
+            r = t.get_rect(center=(dn.map_view(self.game).centerx, int(H * 0.3))).inflate(60, 24)
             panel = pygame.Surface(r.size, pygame.SRCALPHA)
             panel.fill((10, 14, 24, min(200, self.banner * 4)))
             screen.blit(panel, r.topleft)
@@ -924,7 +943,7 @@ class WalkTownState(CityState):
                 theme.command_button(screen, rect, label, fonts["caption"], color, hover=rect.collidepoint(mouse))
         if self.toast_timer > 0:
             t = fonts["label"].render(self.toast, True, (255, 255, 255))
-            r = t.get_rect(midtop=(W // 2, 92)).inflate(28, 14)
+            r = t.get_rect(midtop=(dn.map_view(self.game).centerx, 100)).inflate(28, 14)
             pygame.draw.rect(screen, (30, 36, 58), r, border_radius=12)
             pygame.draw.rect(screen, theme.BAG, r, 2, border_radius=12)
             screen.blit(t, t.get_rect(center=r.center))

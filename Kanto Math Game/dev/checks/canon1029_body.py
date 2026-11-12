@@ -1637,8 +1637,8 @@ _cs46._get_callback_for_option(_ch46)()
 check(type(g.current_state).__name__ == "ContestHallState", f"its Contest Hall opens ({type(g.current_state).__name__})")
 for _a46, _t46, _f46 in (("THREE_ISLAND", "Stop the Biker Gang", "beat_three_island_bikers"),
                          ("FOUR_ISLAND", "Battle Lorelei", "defeated_lorelei_sevii"),
-                         ("FIVE_ISLAND", "Resort Gorgeous", "visited_resort_gorgeous")):
-    _o46 = next(o for o in _sp46[_a46]["explore_options"] if o.get("text") == _t46)
+                         ("RESORT_GORGEOUS", "SELPHY'S VILLA", "visited_resort_gorgeous")):  # (Selphy's event is at her villa's door on Resort Gorgeous now, with the maps, 11-11)
+    _o46 = next(o for o in _sp46[_a46].get("explore_options", []) + _sp46[_a46].get("route_menu", []) if o.get("text") == _t46)
     check(_o46.get("flag_condition") == f"not {_f46}", f"{_t46}: gone once done")
 check("THREE_ISLE_PATH" not in _sp46 and any(o.get("target_area") == "THREE_ISLE_PORT"
                                              for o in _sp46["THREE_ISLAND"]["travel_options"])

@@ -197,6 +197,9 @@ class TownMenu:
             from src.states.systems import GameCornerState
             return lambda: self.game.change_state(GameCornerState
                                                   (self.game, self))
+        if action == "PRIZES":  # the Prize Corner next door to the Game Corner: coins for prizes
+            from src.states.game_corner import PrizeCounterState
+            return lambda: self.game.change_state(PrizeCounterState(self.game, self))
         if action == "BIKESHOP":
             from src.states.systems import BikeShopState
             return lambda: self.game.change_state(BikeShopState

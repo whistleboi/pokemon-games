@@ -84,8 +84,7 @@ class OverworldBattles:
     # ---------------------------------------------------------------- where everyone stands
     def _tile_rect(self, x, y):
         from src.states.overworld.dungeon import TILE
-        cx, cy = self._camera()
-        ox, oy = int(self.game.width / 2 - cx), int(self.game.height / 2 - cy)
+        ox, oy = self._origin()
         return pygame.Rect(ox + x * TILE, oy + y * TILE, TILE, TILE)
 
     def _throw_spot(self, mover):
@@ -147,23 +146,24 @@ class OverworldBattles:
     REVIVES = ("MAX_REVIVE", "REVIVE")
 
     def _qp_button_rect(self):
-        W, H = self.game.width, self.game.height
-        return pygame.Rect(W - 280, H - 162, 126, 70)
+        from src.states.overworld.dungeon import side_buttons
+        return side_buttons(self.game)[3]  # (in the right band, beside the map)
 
     def _qp_rects(self):
         """A card a row, above the POKEMON button (the first at the top)."""
         b = self._qp_button_rect()
         n = len(self.game.story_manager.player_team)
         w, h, gap = 300, 56, 6
-        x = self.game.width - 20 - w
-        y0 = b.y - 10 - n * h - (n - 1) * gap
+        x = b.x - 10 - w  # (beside the right band, its bottom by the screen's)
+        y0 = min(b.y, self.game.height - 12 - n * h - (n - 1) * gap)
         return [pygame.Rect(x, y0 + k * (h + gap), w, h) for k in range(n)]
 
     def _qp_party_rect(self):
         """The list's top line: the full party screen."""
         rects = self._qp_rects()
         top = rects[0].y if rects else self._qp_button_rect().y
-        return pygame.Rect(self.game.width - 320, top - 44, 300, 36)
+        x = rects[0].x if rects else self._qp_button_rect().x - 310
+        return pygame.Rect(x, top - 44, 300, 36)
 
     @staticmethod
     def _qp_heal_rect(r):

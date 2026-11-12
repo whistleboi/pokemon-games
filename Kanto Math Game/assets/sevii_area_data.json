@@ -16,76 +16,13 @@
       "wild_pool_percentages": "RESORT_GORGEOUS_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
-          "name": "Painter Rayna",
-          "class": "PKMN_TRAINER",
-          "sprite": "acetrainer_m.png",
-          "team": [
-            235
-          ],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Lady Jacki",
-          "class": "BEAUTY",
-          "sprite": "beauty.png",
-          "team": [
-            187,
-            188
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "Youngster Destin",
-          "class": "YOUNGSTER",
-          "sprite": "youngster.png",
-          "team": [
-            20,
-            17
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "Painter Celina",
-          "class": "PKMN_TRAINER",
-          "sprite": "acetrainer_f.png",
-          "team": [
-            235
-          ],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Lady Gillian",
-          "class": "BEAUTY",
-          "sprite": "beauty.png",
-          "team": [
-            179,
-            179,
-            180
-          ],
-          "rewards": {
-            "balls": 5
-          }
-        },
-        {
-          "name": "Painter Daisy",
-          "class": "PKMN_TRAINER",
-          "sprite": "acetrainer_f.png",
-          "team": [
-            235
-          ],
-          "rewards": {
-            "balls": 3
-          }
-        }
+        { "sprite": "youngster.png", "name": "Destin", "class": "YOUNGSTER", "team": [20, 17], "levels": [48, 48], "rewards": { "balls": 3 } },
+        { "sprite": "swimmer_m.png", "name": "Toby", "class": "SWIMMER", "team": [61, 72, 73], "levels": [48, 48, 48], "rewards": { "balls": 3 } },
+        { "sprite": "beauty.png", "name": "Gillian", "class": "LADY", "team": [179, 179, 180], "levels": [47, 48, 49], "rewards": { "balls": 3 } },
+        { "sprite": "beauty.png", "name": "Jacki", "class": "LADY", "team": [187, 188], "levels": [48, 50], "rewards": { "balls": 3 } },
+        { "sprite": "lass.png", "name": "Rayna", "class": "PAINTER", "team": [235], "levels": [50], "rewards": { "balls": 3 } },
+        { "sprite": "lass.png", "name": "Daisy", "class": "PAINTER", "team": [235], "levels": [50], "rewards": { "balls": 3 } },
+        { "sprite": "lass.png", "name": "Celina", "class": "PAINTER", "team": [235], "levels": [50], "rewards": { "balls": 3 } }
       ],
       "level": 55,
       "subregion": "SEVII",
@@ -115,6 +52,27 @@
           "color": "GREEN"
         },
         {
+          "text": "SELPHY'S VILLA",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "Selphy: Welcome to my villa! Oh, a real Champion!",
+              "Please, take a little something from our resort shop."
+            ],
+            "gift_item": {
+              "balls": 10,
+              "RARE_CANDY": 2
+            },
+            "flag": "visited_resort_gorgeous",
+            "done": [
+              "Selphy: Do come again!"
+            ]
+          },
+          "flag_condition": "not visited_resort_gorgeous",
+          "door": "villa"
+        },
+        {
           "text": "Water Labyrinth",
           "action": "EXIT",
           "target_area": "WATER_LABYRINTH",
@@ -140,42 +98,9 @@
       "wild_pool_percentages": "MEMORIAL_PILLAR_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
-          "name": "Bird Keeper Milo",
-          "class": "BIRD_KEEPER",
-          "sprite": "bird_keeper.png",
-          "team": [
-            16,
-            17
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "Bird Keeper Chaz",
-          "class": "BIRD_KEEPER",
-          "sprite": "bird_keeper.png",
-          "team": [
-            21,
-            22
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "Bird Keeper Harold",
-          "class": "BIRD_KEEPER",
-          "sprite": "bird_keeper.png",
-          "team": [
-            163,
-            164
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        }
+        { "sprite": "birdkeeper.png", "name": "Milo", "class": "BIRD_KEEPER", "team": [16, 17], "levels": [47, 49], "rewards": { "balls": 3 } },
+        { "sprite": "birdkeeper.png", "name": "Chaz", "class": "BIRD_KEEPER", "team": [21, 22], "levels": [47, 49], "rewards": { "balls": 3 } },
+        { "sprite": "birdkeeper.png", "name": "Harold", "class": "BIRD_KEEPER", "team": [163, 164], "levels": [47, 49], "rewards": { "balls": 3 } }
       ],
       "level": 55,
       "subregion": "SEVII",
@@ -223,79 +148,12 @@
       "wild_pool_percentages": "WATER_PATH_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
-          "name": "Hiker Earl",
-          "class": "HIKER",
-          "sprite": "hiker.png",
-          "team": [
-            95,
-            67
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "Juggler Edward",
-          "class": "JUGGLER",
-          "sprite": "juggler.png",
-          "team": [
-            100,
-            100,
-            101,
-            122
-          ],
-          "rewards": {
-            "balls": 5
-          }
-        },
-        {
-          "name": "Swimmer F Denise",
-          "class": "SWIMMER",
-          "sprite": "swimmer_f.png",
-          "team": [
-            170,
-            171
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "Swimmer M Samir",
-          "class": "SWIMMER",
-          "sprite": "swimmer_f.png",
-          "team": [
-            130
-          ],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Twins Miu & Mia",
-          "class": "TWINS",
-          "sprite": "twins.png",
-          "team": [
-            25,
-            25
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "Aroma Lady Rose",
-          "class": "BEAUTY",
-          "sprite": "rose.png",
-          "team": [
-            191,
-            192
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        }
+        { "sprite": "beauty.png", "name": "Rose", "class": "AROMA_LADY", "team": [191, 192], "levels": [49, 49], "rewards": { "balls": 3 } },
+        { "sprite": "lass.png", "name": "Miu & Mia", "class": "TWINS", "team": [25, 25], "levels": [50, 50], "rewards": { "balls": 3 } },
+        { "sprite": "swimmer_m.png", "name": "Samir", "class": "SWIMMER", "team": [130], "levels": [50], "rewards": { "balls": 3 } },
+        { "sprite": "swimmer_f.png", "name": "Denise", "class": "SWIMMER", "team": [170, 171], "levels": [49, 49], "rewards": { "balls": 3 } },
+        { "sprite": "juggler.png", "name": "Edward", "class": "JUGGLER", "team": [100, 100, 101, 122], "levels": [46, 46, 47, 48], "rewards": { "balls": 3 } },
+        { "sprite": "hiker.png", "name": "Earl", "class": "HIKER", "team": [95, 67], "levels": [49, 49], "rewards": { "balls": 3 } }
       ],
       "level": 44,
       "subregion": "SEVII",
@@ -390,66 +248,11 @@
       "wild_pool_percentages": "OUTCAST_ISLAND_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
-          "name": "Swimmer F Nicole",
-          "class": "SWIMMER",
-          "sprite": "swimmer_f.png",
-          "team": [
-            183
-          ],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Sis And Bro Ava & Geb",
-          "class": "PKMN_TRAINER",
-          "sprite": "acetrainer_f.png",
-          "team": [
-            61,
-            121
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "Swimmer M Mymo",
-          "class": "SWIMMER",
-          "sprite": "swimmer_m.png",
-          "team": [
-            99,
-            8
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "Team Rocket Grunt",
-          "class": "ROCKET_GRUNT",
-          "sprite": "rocket_grunt_f.png",
-          "team": [
-            89,
-            42,
-            20
-          ],
-          "rewards": {
-            "balls": 5
-          }
-        },
-        {
-          "name": "Fisherman Tylor",
-          "class": "FISHERMAN",
-          "sprite": "fisherman.png",
-          "team": [
-            211,
-            211
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        }
+        { "sprite": "fisherman.png", "name": "Tylor", "class": "FISHERMAN", "team": [211, 211], "levels": [49, 49], "rewards": { "balls": 3 } },
+        { "sprite": "rocket_grunt_m.png", "name": "Grunt", "class": "ROCKET_GRUNT", "team": [89, 42, 20], "levels": [48, 48, 48], "rewards": { "balls": 3 } },
+        { "sprite": "swimmer_m.png", "name": "Mymo", "class": "SWIMMER", "team": [99, 8], "levels": [49, 49], "rewards": { "balls": 3 } },
+        { "sprite": "swimmer_f.png", "name": "Ava & Geb", "class": "SIS_AND_BRO", "team": [61, 121], "levels": [50, 50], "rewards": { "balls": 3 } },
+        { "sprite": "swimmer_f.png", "name": "Nicole", "class": "SWIMMER", "team": [183], "levels": [50], "rewards": { "balls": 3 } }
       ],
       "level": 55,
       "subregion": "SEVII",
@@ -504,19 +307,7 @@
       "wild_pool_percentages": "GREEN_PATH_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
-          "name": "Psychic Jaclyn",
-          "class": "PSYCHIC",
-          "sprite": "psychic.png",
-          "team": [
-            177,
-            80,
-            64
-          ],
-          "rewards": {
-            "balls": 5
-          }
-        }
+        { "sprite": "psychic_m.png", "name": "Jaclyn", "class": "PSYCHIC", "team": [177, 80, 64], "levels": [48, 48, 49], "rewards": { "balls": 3 } }
       ],
       "level": 55,
       "subregion": "SEVII",
@@ -577,68 +368,11 @@
       "wild_pool_percentages": "CANYON_ENTRANCE_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {
-          "name": "Aroma Lady Miah",
-          "class": "BEAUTY",
-          "sprite": "beauty.png",
-          "team": [
-            182,
-            182
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "Juggler Mason",
-          "class": "JUGGLER",
-          "sprite": "juggler.png",
-          "team": [
-            100,
-            204,
-            100,
-            204
-          ],
-          "rewards": {
-            "balls": 5
-          }
-        },
-        {
-          "name": "Pkmn Ranger Nicolas",
-          "class": "POKEMON_RANGER",
-          "sprite": "ranger_m.png",
-          "team": [
-            70,
-            71
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "Pkmn Ranger Madeline",
-          "class": "POKEMON_RANGER",
-          "sprite": "ranger_m.png",
-          "team": [
-            44,
-            45
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "Young Couple Eve & Jon",
-          "class": "TWINS",
-          "sprite": "twins.png",
-          "team": [
-            55,
-            54
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        }
+        { "sprite": "beauty.png", "name": "Miah", "class": "AROMA_LADY", "team": [182, 182], "levels": [50, 50], "rewards": { "balls": 3 } },
+        { "sprite": "juggler.png", "name": "Mason", "class": "JUGGLER", "team": [100, 204, 100, 204], "levels": [47, 47, 47, 47], "rewards": { "balls": 3 } },
+        { "sprite": "ranger_m.png", "name": "Madeline", "class": "POKEMON_RANGER", "team": [44, 45], "levels": [51, 51], "rewards": { "balls": 3 } },
+        { "sprite": "ranger_m.png", "name": "Nicolas", "class": "POKEMON_RANGER", "team": [70, 71], "levels": [51, 51], "rewards": { "balls": 3 } },
+        { "sprite": "lass.png", "name": "Eve & Jon", "class": "YOUNG_COUPLE", "team": [55, 54], "levels": [50, 50], "rewards": { "balls": 3 } }
       ],
       "level": 41,
       "subregion": "SEVII",
@@ -792,31 +526,7 @@
       "battle_type": "ocean",
       "min_rounds": 2,
       "trainer_pool": [
-        {
-          "name": "Swimmer Mara",
-          "class": "SWIMMER",
-          "sprite": "swimmer_f.png",
-          "team": [
-            120,
-            116
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "Fisherman Ned",
-          "class": "FISHERMAN",
-          "sprite": "fisherman.png",
-          "team": [
-            129,
-            118,
-            223
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        }
+        { "sprite": "swimmer_f.png", "name": "Amara", "class": "SWIMMER", "team": [86, 86, 87], "levels": [36, 36, 36], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
         {
@@ -873,56 +583,18 @@
       "battle_type": "mountain",
       "min_rounds": 2,
       "trainer_pool": [
-        {
-          "name": "Hiker Bert",
-          "class": "HIKER",
-          "sprite": "hiker.png",
-          "team": [
-            74,
-            75,
-            95
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "Biker Rex",
-          "class": "BIKER",
-          "sprite": "biker.png",
-          "team": [
-            109,
-            88
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "Ruin Maniac Ezra",
-          "class": "RUIN_MANIAC",
-          "sprite": "ruinmaniac.png",
-          "team": [
-            27,
-            104
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "Super Nerd Blaze",
-          "class": "SUPER_NERD",
-          "sprite": "supernerd.png",
-          "team": [
-            58,
-            37,
-            126
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        }
+        { "sprite": "fisherman.png", "name": "Tommy", "class": "FISHERMAN", "team": [118, 118, 119, 119, 119], "levels": [33, 33, 35, 35, 35], "rewards": { "balls": 3 } },
+        { "sprite": "swimmer_f.png", "name": "Maria", "class": "SWIMMER", "team": [117, 117], "levels": [37, 37], "rewards": { "balls": 3 } },
+        { "sprite": "swimmer_m.png", "name": "Finn", "class": "SWIMMER", "team": [121], "levels": [38], "rewards": { "balls": 3 } },
+        { "sprite": "battle_girl.png", "name": "Sharon", "class": "CRUSH_GIRL", "team": [56, 57], "levels": [37, 37], "rewards": { "balls": 3 } },
+        { "sprite": "blackbelt.png", "name": "Hugh", "class": "BLACKBELT", "team": [66, 67], "levels": [37, 37], "rewards": { "balls": 3 } },
+        { "sprite": "blackbelt.png", "name": "Shea", "class": "BLACKBELT", "team": [66, 67], "levels": [38, 38], "rewards": { "balls": 3 } },
+        { "sprite": "battle_girl.png", "name": "Mik & Kia", "class": "CRUSH_KIN", "team": [67, 57], "levels": [39, 39], "rewards": { "balls": 3 } },
+        { "sprite": "swimmer_m.png", "name": "Garrett", "class": "SWIMMER", "team": [90, 91, 8], "levels": [35, 35, 38], "rewards": { "balls": 3 } },
+        { "sprite": "camper.png", "name": "Bryce", "class": "CAMPER", "team": [33, 20, 28], "levels": [36, 36, 36], "rewards": { "balls": 3 } },
+        { "sprite": "battle_girl.png", "name": "Tanya", "class": "CRUSH_GIRL", "team": [106, 107], "levels": [38, 38], "rewards": { "balls": 3 } },
+        { "sprite": "picnicker.png", "name": "Claire", "class": "PICNICKER", "team": [52, 52, 25, 35], "levels": [35, 35, 35, 35], "rewards": { "balls": 3 } },
+        { "sprite": "swimmer_f.png", "name": "Abigail", "class": "SWIMMER", "team": [54, 54, 55], "levels": [35, 36, 37], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
         {
@@ -942,6 +614,26 @@
           "action": "TRAINER",
           "condition": "has_trainers",
           "color": "GREEN"
+        },
+        {
+          "text": "EMBER SPA",
+          "action": "EVENT",
+          "door": "spa",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "Steam rises off the hot spring inside the mountain.",
+              "Old Man: This water came up when I smashed a rock here. You try it too!",
+              "You got HM ROCK SMASH! Cracked rocks won't stop you now."
+            ],
+            "gift_item": {
+              "HM_ROCK_SMASH": 1
+            },
+            "flag": "got_rock_smash_sevii",
+            "done": [
+              "The warm water feels wonderful."
+            ]
+          }
         },
         {
           "text": "One Island",
@@ -970,19 +662,9 @@
       "battle_type": "cave",
       "min_rounds": 2,
       "trainer_pool": [
-        {
-          "name": "Hiker Gus",
-          "class": "HIKER",
-          "sprite": "hiker.png",
-          "team": [
-            75,
-            95,
-            76
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        }
+        { "sprite": "ranger_m.png", "name": "Logan", "class": "POKEMON_RANGER", "team": [102, 103], "levels": [37, 40], "rewards": { "balls": 3 } },
+        { "sprite": "battle_girl.png", "name": "Jocelyn", "class": "CRUSH_GIRL", "team": [107, 107], "levels": [38, 38], "rewards": { "balls": 3 } },
+        { "sprite": "ranger_m.png", "name": "Beth", "class": "POKEMON_RANGER", "team": [69, 44, 44], "levels": [38, 38, 38], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
         {
@@ -1097,10 +779,12 @@
         },
         {
           "text": "Joyful Game Corner",
+          "door": "gamecorner",
           "action": "GAMECORNER"
         },
         {
           "text": "Lostelle's Dad",
+          "door": "gamecorner",
           "action": "EVENT",
           "color": "GOLD",
           "event": {
@@ -1117,6 +801,7 @@
         },
         {
           "text": "Lostelle's Thanks",
+          "door": "gamecorner",
           "action": "EVENT",
           "color": "GOLD",
           "event": {
@@ -1144,48 +829,56 @@
         },
         {
           "text": "Seagallop to Vermilion City",
+          "door": "harbor",
           "long_ride": true,
           "target_area": "VERMILLION_CITY",
           "message": "The Seagallop Ferry speeds back to Vermilion City."
         },
         {
           "text": "Seagallop to One Island",
+          "door": "harbor",
           "target_area": "ONE_ISLAND",
           "message": "The Seagallop Ferry speeds across the waves. Next stop: One Island!",
           "condition": "has_item:TRI_PASS"
         },
         {
           "text": "Seagallop to Three Island",
+          "door": "harbor",
           "target_area": "THREE_ISLAND",
           "message": "The Seagallop Ferry speeds across the waves. Next stop: Three Island!",
           "condition": "has_item:TRI_PASS"
         },
         {
           "text": "Seagallop to Four Island",
+          "door": "harbor",
           "target_area": "FOUR_ISLAND",
           "message": "The Seagallop Ferry speeds across the waves. Next stop: Four Island!",
           "condition": "has_item:RAINBOW_PASS"
         },
         {
           "text": "Seagallop to Five Island",
+          "door": "harbor",
           "target_area": "FIVE_ISLAND",
           "message": "The Seagallop Ferry speeds across the waves. Next stop: Five Island!",
           "condition": "has_item:RAINBOW_PASS"
         },
         {
           "text": "Seagallop to Six Island",
+          "door": "harbor",
           "target_area": "SIX_ISLAND",
           "message": "The Seagallop Ferry speeds across the waves. Next stop: Six Island!",
           "condition": "has_item:RAINBOW_PASS"
         },
         {
           "text": "Seagallop to Seven Island",
+          "door": "harbor",
           "target_area": "SEVEN_ISLAND",
           "message": "The Seagallop Ferry speeds across the waves. Next stop: Seven Island!",
           "condition": "has_item:RAINBOW_PASS"
         },
         {
           "text": "Seagallop to Faraway Island",
+          "door": "harbor",
           "target_area": "FARAWAY_ISLAND",
           "message": "The Seagallop Ferry speeds across the waves. Next stop: Faraway Island!",
           "condition": "has_item:OLD_SEA_MAP"
@@ -1203,45 +896,7 @@
       "battle_type": "grass",
       "min_rounds": 2,
       "trainer_pool": [
-        {
-          "name": "Lass Tia",
-          "class": "LASS",
-          "sprite": "lass.png",
-          "team": [
-            35,
-            39,
-            187
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "Youngster Joey",
-          "class": "YOUNGSTER",
-          "sprite": "youngster.png",
-          "team": [
-            19,
-            20,
-            161
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "School Kid Ana",
-          "class": "SCHOOL_KID",
-          "sprite": "school_kid_f.png",
-          "team": [
-            43,
-            69,
-            191
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        }
+
       ],
       "route_menu": [
         {
@@ -1264,6 +919,7 @@
         },
         {
           "text": "VISIT THE MOVE TUTOR",
+          "door": "tutor",
           "action": "EVENT",
           "color": "GOLD",
           "event": {
@@ -1372,14 +1028,14 @@
       "travel_options": [
         {"text": "Bond Bridge", "target_area": "BOND_BRIDGE", "condition": "beat_three_island_bikers"},
         {"text": "Three Isle Port", "target_area": "THREE_ISLE_PORT"},
-        {"text": "Seagallop to Vermilion City", "long_ride": true, "target_area": "VERMILLION_CITY", "message": "The Seagallop Ferry speeds back to Vermilion City."},
-        {"text": "Seagallop to One Island", "target_area": "ONE_ISLAND", "message": "The Seagallop Ferry speeds across the waves. Next stop: One Island!", "condition": "has_item:TRI_PASS"},
-        {"text": "Seagallop to Two Island", "target_area": "TWO_ISLAND", "message": "The Seagallop Ferry speeds across the waves. Next stop: Two Island!", "condition": "has_item:TRI_PASS"},
-        {"text": "Seagallop to Four Island", "target_area": "FOUR_ISLAND", "message": "The Seagallop Ferry speeds across the waves. Next stop: Four Island!", "condition": "has_item:RAINBOW_PASS"},
-        {"text": "Seagallop to Five Island", "target_area": "FIVE_ISLAND", "message": "The Seagallop Ferry speeds across the waves. Next stop: Five Island!", "condition": "has_item:RAINBOW_PASS"},
-        {"text": "Seagallop to Six Island", "target_area": "SIX_ISLAND", "message": "The Seagallop Ferry speeds across the waves. Next stop: Six Island!", "condition": "has_item:RAINBOW_PASS"},
-        {"text": "Seagallop to Seven Island", "target_area": "SEVEN_ISLAND", "message": "The Seagallop Ferry speeds across the waves. Next stop: Seven Island!", "condition": "has_item:RAINBOW_PASS"},
-        {"text": "Seagallop to Faraway Island", "target_area": "FARAWAY_ISLAND", "message": "The Seagallop Ferry speeds across the waves. Next stop: Faraway Island!", "condition": "has_item:OLD_SEA_MAP"}
+        {"text": "Seagallop to Vermilion City", "door": "harbor", "long_ride": true, "target_area": "VERMILLION_CITY", "message": "The Seagallop Ferry speeds back to Vermilion City."},
+        {"text": "Seagallop to One Island", "door": "harbor", "target_area": "ONE_ISLAND", "message": "The Seagallop Ferry speeds across the waves. Next stop: One Island!", "condition": "has_item:TRI_PASS"},
+        {"text": "Seagallop to Two Island", "door": "harbor", "target_area": "TWO_ISLAND", "message": "The Seagallop Ferry speeds across the waves. Next stop: Two Island!", "condition": "has_item:TRI_PASS"},
+        {"text": "Seagallop to Four Island", "door": "harbor", "target_area": "FOUR_ISLAND", "message": "The Seagallop Ferry speeds across the waves. Next stop: Four Island!", "condition": "has_item:RAINBOW_PASS"},
+        {"text": "Seagallop to Five Island", "door": "harbor", "target_area": "FIVE_ISLAND", "message": "The Seagallop Ferry speeds across the waves. Next stop: Five Island!", "condition": "has_item:RAINBOW_PASS"},
+        {"text": "Seagallop to Six Island", "door": "harbor", "target_area": "SIX_ISLAND", "message": "The Seagallop Ferry speeds across the waves. Next stop: Six Island!", "condition": "has_item:RAINBOW_PASS"},
+        {"text": "Seagallop to Seven Island", "door": "harbor", "target_area": "SEVEN_ISLAND", "message": "The Seagallop Ferry speeds across the waves. Next stop: Seven Island!", "condition": "has_item:RAINBOW_PASS"},
+        {"text": "Seagallop to Faraway Island", "door": "harbor", "target_area": "FARAWAY_ISLAND", "message": "The Seagallop Ferry speeds across the waves. Next stop: Faraway Island!", "condition": "has_item:OLD_SEA_MAP"}
       ],
       "next_area": "BOND_BRIDGE"
     },
@@ -1393,44 +1049,12 @@
       "battle_type": "grass",
       "min_rounds": 2,
       "trainer_pool": [
-        {
-          "name": "Biker Dan",
-          "class": "BIKER",
-          "sprite": "biker.png",
-          "team": [
-            88,
-            109
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "Cue Ball Ike",
-          "class": "CUE_BALL",
-          "sprite": "cueball.png",
-          "team": [
-            56,
-            66,
-            57
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "Bug Catcher Sam",
-          "class": "BUG_CATCHER",
-          "sprite": "bug_catcher.png",
-          "team": [
-            48,
-            165,
-            167
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        }
+        { "sprite": "swimmer_f.png", "name": "Tisha", "class": "SWIMMER", "team": [99], "levels": [38], "rewards": { "balls": 3 } },
+        { "sprite": "lass.png", "name": "Joy & Meg", "class": "TWINS", "team": [35, 35], "levels": [37, 37], "rewards": { "balls": 3 } },
+        { "sprite": "beauty.png", "name": "Nikki", "class": "AROMA_LADY", "team": [69, 70], "levels": [37, 37], "rewards": { "balls": 3 } },
+        { "sprite": "beauty.png", "name": "Violet", "class": "AROMA_LADY", "team": [1, 2, 2], "levels": [36, 36, 36], "rewards": { "balls": 3 } },
+        { "sprite": "school_kid_f.png", "name": "Alexis", "class": "TUBER", "team": [120, 120, 98, 98], "levels": [34, 34, 34, 34], "rewards": { "balls": 3 } },
+        { "sprite": "school_kid_f.png", "name": "Amira", "class": "TUBER", "team": [60, 61, 60], "levels": [34, 35, 34], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
         {
@@ -1532,7 +1156,7 @@
       "level": 52,
       "subregion": "SEVII",
       "has_gym": false,
-      "explore_options": [{"text": "Heal", "action": "HEAL"}, {"text": "Shop", "action": "SHOP"}, {"text": "Pokémon Day Care", "action": "DAYCARE"}, {"text": "Contest Hall", "action": "NPC", "target": "contest_hall"}, {"text": "Lorelei's House", "action": "EVENT", "color": "GOLD", "event": {"lines": ["Lorelei: This is my home island. I came back to rest after the League...", "But Team Rocket is in Icefall Cave, catching Lapras to sell! Please stop them."], "flag": "met_lorelei_sevii", "done": ["Lorelei: Thank you for saving the Icefall Cave Pokemon."]}, "flag_condition": "not sevii_icefall_cleared"}, {"text": "Battle Lorelei", "action": "EVENT", "color": "GOLD", "event": {"requires": ["sevii_icefall_cleared"], "lines": ["Lorelei: You saved the Lapras. Now, a battle, just for fun. Don't hold back!"], "battle": {"name": "Lorelei", "class": "ELITE_FOUR", "sprite": "loreli.png", "team": [87, 91, 80, 124, 131], "levels": [56, 57, 56, 58, 60], "rewards": {"balls": 15}, "dialogue": {"player_won": ["Lorelei: Still as strong as ever. Come back any time."]}, "movesets": {"87": ["SURF", "ICE-BEAM", "HAIL", "SAFEGUARD"], "91": ["SPIKES", "DIVE", "HAIL", "PROTECT"], "80": ["ICE-BEAM", "SURF", "AMNESIA", "YAWN"], "124": ["DOUBLE-SLAP", "ICE-PUNCH", "LOVELY-KISS", "ATTRACT"], "131": ["BODY-SLAM", "CONFUSE-RAY", "SURF", "ICE-BEAM"]}}, "flag": "defeated_lorelei_sevii", "done": ["Lorelei: That was a wonderful battle."]}, "condition": "sevii_icefall_cleared", "flag_condition": "not defeated_lorelei_sevii"}],
+      "explore_options": [{"text": "Heal", "action": "HEAL"}, {"text": "Shop", "action": "SHOP"}, {"text": "Pokémon Day Care", "door": "daycare", "action": "DAYCARE"}, {"text": "Contest Hall", "door": "hall", "action": "NPC", "target": "contest_hall"}, {"text": "Lorelei's House", "door": "lorelei", "action": "EVENT", "color": "GOLD", "event": {"lines": ["Lorelei: This is my home island. I came back to rest after the League...", "But Team Rocket is in Icefall Cave, catching Lapras to sell! Please stop them."], "flag": "met_lorelei_sevii", "done": ["Lorelei: Thank you for saving the Icefall Cave Pokemon."]}, "flag_condition": "not sevii_icefall_cleared"}, {"text": "Battle Lorelei", "door": "lorelei", "action": "EVENT", "color": "GOLD", "event": {"requires": ["sevii_icefall_cleared"], "lines": ["Lorelei: You saved the Lapras. Now, a battle, just for fun. Don't hold back!"], "battle": {"name": "Lorelei", "class": "ELITE_FOUR", "sprite": "loreli.png", "team": [87, 91, 80, 124, 131], "levels": [56, 57, 56, 58, 60], "rewards": {"balls": 15}, "dialogue": {"player_won": ["Lorelei: Still as strong as ever. Come back any time."]}, "movesets": {"87": ["SURF", "ICE-BEAM", "HAIL", "SAFEGUARD"], "91": ["SPIKES", "DIVE", "HAIL", "PROTECT"], "80": ["ICE-BEAM", "SURF", "AMNESIA", "YAWN"], "124": ["DOUBLE-SLAP", "ICE-PUNCH", "LOVELY-KISS", "ATTRACT"], "131": ["BODY-SLAM", "CONFUSE-RAY", "SURF", "ICE-BEAM"]}}, "flag": "defeated_lorelei_sevii", "done": ["Lorelei: That was a wonderful battle."]}, "condition": "sevii_icefall_cleared", "flag_condition": "not defeated_lorelei_sevii"}],
       "travel_options": [
         {
           "text": "Icefall Cave",
@@ -1540,48 +1164,56 @@
         },
         {
           "text": "Seagallop to Vermilion City",
+          "door": "harbor",
           "long_ride": true,
           "target_area": "VERMILLION_CITY",
           "message": "The Seagallop Ferry speeds back to Vermilion City."
         },
         {
           "text": "Seagallop to One Island",
+          "door": "harbor",
           "target_area": "ONE_ISLAND",
           "message": "The Seagallop Ferry speeds across the waves. Next stop: One Island!",
           "condition": "has_item:TRI_PASS"
         },
         {
           "text": "Seagallop to Two Island",
+          "door": "harbor",
           "target_area": "TWO_ISLAND",
           "message": "The Seagallop Ferry speeds across the waves. Next stop: Two Island!",
           "condition": "has_item:TRI_PASS"
         },
         {
           "text": "Seagallop to Three Island",
+          "door": "harbor",
           "target_area": "THREE_ISLAND",
           "message": "The Seagallop Ferry speeds across the waves. Next stop: Three Island!",
           "condition": "has_item:TRI_PASS"
         },
         {
           "text": "Seagallop to Five Island",
+          "door": "harbor",
           "target_area": "FIVE_ISLAND",
           "message": "The Seagallop Ferry speeds across the waves. Next stop: Five Island!",
           "condition": "has_item:RAINBOW_PASS"
         },
         {
           "text": "Seagallop to Six Island",
+          "door": "harbor",
           "target_area": "SIX_ISLAND",
           "message": "The Seagallop Ferry speeds across the waves. Next stop: Six Island!",
           "condition": "has_item:RAINBOW_PASS"
         },
         {
           "text": "Seagallop to Seven Island",
+          "door": "harbor",
           "target_area": "SEVEN_ISLAND",
           "message": "The Seagallop Ferry speeds across the waves. Next stop: Seven Island!",
           "condition": "has_item:RAINBOW_PASS"
         },
         {
           "text": "Seagallop to Faraway Island",
+          "door": "harbor",
           "target_area": "FARAWAY_ISLAND",
           "message": "The Seagallop Ferry speeds across the waves. Next stop: Faraway Island!",
           "condition": "has_item:OLD_SEA_MAP"
@@ -1599,32 +1231,7 @@
       "battle_type": "cave",
       "min_rounds": 2,
       "trainer_pool": [
-        {
-          "name": "Ace Trainer Nia",
-          "class": "ACE_TRAINER",
-          "sprite": "acetrainer_f.png",
-          "team": [
-            87,
-            221,
-            124
-          ],
-          "rewards": {
-            "balls": 6
-          }
-        },
-        {
-          "name": "Fisherman Lou",
-          "class": "FISHERMAN",
-          "sprite": "fisherman.png",
-          "team": [
-            130,
-            119,
-            91
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        }
+
       ],
       "route_menu": [
         {
@@ -1691,6 +1298,22 @@
           "flag_condition": "not sevii_icefall_cleared"
         },
         {
+          "text": "TAKE THE HM",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not got_waterfall_sevii",
+          "event": {
+            "lines": [
+              "Something is lying on the ice...",
+              "You found HM WATERFALL! Now you can climb the falls."
+            ],
+            "gift_item": {
+              "HM_WATERFALL": 1
+            },
+            "flag": "got_waterfall_sevii"
+          }
+        },
+        {
           "text": "Four Island",
           "action": "EXIT",
           "target_area": "FOUR_ISLAND",
@@ -1715,26 +1338,6 @@
         {
           "text": "Shop",
           "action": "SHOP"
-        },
-        {
-          "text": "Resort Gorgeous",
-          "action": "EVENT",
-          "color": "GOLD",
-          "event": {
-            "lines": [
-              "Selphy: Welcome to my villa! Oh, a real Champion!",
-              "Please, take a little something from our resort shop."
-            ],
-            "gift_item": {
-              "balls": 10,
-              "RARE_CANDY": 2
-            },
-            "flag": "visited_resort_gorgeous",
-            "done": [
-              "Selphy: Do come again!"
-            ]
-          },
-          "flag_condition": "not visited_resort_gorgeous"
         }
       ],
       "travel_options": [
@@ -1757,48 +1360,56 @@
         },
         {
           "text": "Seagallop to Vermilion City",
+          "door": "harbor",
           "long_ride": true,
           "target_area": "VERMILLION_CITY",
           "message": "The Seagallop Ferry speeds back to Vermilion City."
         },
         {
           "text": "Seagallop to One Island",
+          "door": "harbor",
           "target_area": "ONE_ISLAND",
           "message": "The Seagallop Ferry speeds across the waves. Next stop: One Island!",
           "condition": "has_item:TRI_PASS"
         },
         {
           "text": "Seagallop to Two Island",
+          "door": "harbor",
           "target_area": "TWO_ISLAND",
           "message": "The Seagallop Ferry speeds across the waves. Next stop: Two Island!",
           "condition": "has_item:TRI_PASS"
         },
         {
           "text": "Seagallop to Three Island",
+          "door": "harbor",
           "target_area": "THREE_ISLAND",
           "message": "The Seagallop Ferry speeds across the waves. Next stop: Three Island!",
           "condition": "has_item:TRI_PASS"
         },
         {
           "text": "Seagallop to Four Island",
+          "door": "harbor",
           "target_area": "FOUR_ISLAND",
           "message": "The Seagallop Ferry speeds across the waves. Next stop: Four Island!",
           "condition": "has_item:RAINBOW_PASS"
         },
         {
           "text": "Seagallop to Six Island",
+          "door": "harbor",
           "target_area": "SIX_ISLAND",
           "message": "The Seagallop Ferry speeds across the waves. Next stop: Six Island!",
           "condition": "has_item:RAINBOW_PASS"
         },
         {
           "text": "Seagallop to Seven Island",
+          "door": "harbor",
           "target_area": "SEVEN_ISLAND",
           "message": "The Seagallop Ferry speeds across the waves. Next stop: Seven Island!",
           "condition": "has_item:RAINBOW_PASS"
         },
         {
           "text": "Seagallop to Faraway Island",
+          "door": "harbor",
           "target_area": "FARAWAY_ISLAND",
           "message": "The Seagallop Ferry speeds across the waves. Next stop: Faraway Island!",
           "condition": "has_item:OLD_SEA_MAP"
@@ -1816,32 +1427,9 @@
       "battle_type": "grass",
       "min_rounds": 2,
       "trainer_pool": [
-        {
-          "name": "Rich Boy Theo",
-          "class": "RICH_BOY",
-          "sprite": "richboy.png",
-          "team": [
-            52,
-            53,
-            203
-          ],
-          "rewards": {
-            "balls": 8
-          }
-        },
-        {
-          "name": "Rocket Grunt",
-          "class": "ROCKET_GRUNT",
-          "sprite": "rocket_grunt_m.png",
-          "team": [
-            198,
-            228,
-            229
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        }
+        { "sprite": "rocket_grunt_m.png", "name": "Grunt", "class": "ROCKET_GRUNT", "team": [19, 88, 89], "levels": [48, 48, 48], "rewards": { "balls": 3 } },
+        { "sprite": "rocket_grunt_m.png", "name": "Grunt", "class": "ROCKET_GRUNT", "team": [23, 44, 44], "levels": [48, 48, 48], "rewards": { "balls": 3 } },
+        { "sprite": "rocket_grunt_m.png", "name": "Grunt", "class": "ROCKET_GRUNT", "team": [109, 110], "levels": [49, 49], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
         {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
@@ -1849,7 +1437,7 @@
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
         {"text": "Five Island", "action": "EXIT", "target_area": "FIVE_ISLAND", "condition": "can_exit", "color": "RED"},
         {"text": "Memorial Pillar", "action": "EXIT", "target_area": "MEMORIAL_PILLAR", "condition": "can_exit", "color": "RED"},
-        {"text": "ROCKET WAREHOUSE", "action": "EXIT", "target": "ROCKET_WAREHOUSE", "condition": "can_exit", "color": "RED"}
+        {"text": "ROCKET WAREHOUSE", "action": "EXIT", "target": "ROCKET_WAREHOUSE", "condition": ["can_exit", "sapphire_stolen"], "color": "RED"}
       ],
       "next_area": "FIVE_ISLAND"
     },
@@ -1863,19 +1451,7 @@
       "battle_type": "ocean",
       "min_rounds": 2,
       "trainer_pool": [
-        {
-          "name": "Swimmer Gil",
-          "class": "SWIMMER",
-          "sprite": "swimmer_m.png",
-          "team": [
-            61,
-            184,
-            73
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        }
+        { "sprite": "pokefan_f.png", "name": "Alize", "class": "POKEMON_BREEDER", "team": [25, 35, 183], "levels": [48, 48, 48], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
         {
@@ -1931,19 +1507,8 @@
       "battle_type": "cave",
       "min_rounds": 2,
       "trainer_pool": [
-        {
-          "name": "Channeler Ivy",
-          "class": "CHANNELER",
-          "sprite": "channeler.png",
-          "team": [
-            93,
-            200,
-            94
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        }
+        { "sprite": "ruinmaniac.png", "name": "Lawson", "class": "RUIN_MANIAC", "team": [95, 75, 105], "levels": [47, 48, 49], "rewards": { "balls": 3 } },
+        { "sprite": "psychic_m.png", "name": "Laura", "class": "PSYCHIC", "team": [177, 177, 178], "levels": [48, 48, 49], "rewards": { "balls": 3 } }
       ],
       "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN"}, {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"}, {"text": "SEARCH THE DARK", "action": "EVENT", "color": "GOLD", "event": {"lines": ["You feel your way through the pitch-black cave...", "Someone dropped a pouch here long ago. You found it!"], "gift_item": {"RARE_CANDY": 3}, "flag": "lost_cave_searched"}, "flag_condition": "not lost_cave_searched"}, {"text": "THE BLACK FOG", "action": "BOSS", "color": "PURPLE", "flag_condition": "not black_fog_banished_lost_cave", "boss": {"id": 10501, "name": "Black Fog", "level": 63, "no_catch": true, "victory_flag": "black_fog_banished_lost_cave", "lines": ["The air turns ice-cold. A black fog pours across the floor...", "Two huge eyes open in the dark. A giant Haunter rises: the Black Fog!", "Long ago people worshipped it as a god. It feeds on dreams. Don't let it get yours!"], "won": ["The Black Fog is too proud to ever be caught.", "It Self-Destructs in a burst of black mist... and is gone.", "But a cold whisper lingers: it will rise again in another haunted place."], "rewards": {"balls": 10, "RARE_CANDY": 3}}}, {"text": "Five Island", "action": "EXIT", "target_area": "FIVE_ISLAND", "condition": "can_exit", "color": "RED"}, {"text": "Resort Gorgeous", "action": "EXIT", "target_area": "RESORT_GORGEOUS", "condition": "can_exit", "color": "RED"}],
       "next_area": "FIVE_ISLAND"
@@ -1957,45 +1522,10 @@
       "battle_type": "indoor",
       "min_rounds": 0,
       "trainer_pool": [
-        {
-          "name": "Rocket Grunt",
-          "class": "ROCKET_GRUNT",
-          "sprite": "rocket_grunt_m.png",
-          "team": [
-            110,
-            42,
-            24
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "Rocket Grunt",
-          "class": "ROCKET_GRUNT",
-          "sprite": "rocket_grunt_f.png",
-          "team": [
-            89,
-            20,
-            53
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "Scientist Gideon",
-          "class": "SCIENTIST",
-          "sprite": "scientist.png",
-          "team": [
-            82,
-            101,
-            137
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        }
+        { "sprite": "scientist.png", "name": "Gideon", "class": "SCIENTIST", "team": [100, 101, 81, 82, 137], "levels": [46, 46, 46, 46, 46], "rewards": { "balls": 3 } },
+        { "sprite": "rocket_grunt_m.png", "name": "Grunt", "class": "ROCKET_GRUNT", "team": [228, 228], "levels": [49, 49], "rewards": { "balls": 3 } },
+        { "sprite": "rocket_grunt_m.png", "name": "Grunt", "class": "ROCKET_GRUNT", "team": [66, 66, 67], "levels": [48, 48, 48], "rewards": { "balls": 3 } },
+        { "sprite": "rocket_grunt_m.png", "name": "Grunt", "class": "ROCKET_GRUNT", "team": [97, 97], "levels": [49, 49], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
@@ -2025,6 +1555,7 @@
         },
         {
           "text": "Ruin Maniac's Notes",
+          "door": "notes",
           "action": "EVENT",
           "color": "GOLD",
           "event": {
@@ -2059,48 +1590,56 @@
         },
         {
           "text": "Seagallop to Vermilion City",
+          "door": "harbor",
           "long_ride": true,
           "target_area": "VERMILLION_CITY",
           "message": "The Seagallop Ferry speeds back to Vermilion City."
         },
         {
           "text": "Seagallop to One Island",
+          "door": "harbor",
           "target_area": "ONE_ISLAND",
           "message": "The Seagallop Ferry speeds across the waves. Next stop: One Island!",
           "condition": "has_item:TRI_PASS"
         },
         {
           "text": "Seagallop to Two Island",
+          "door": "harbor",
           "target_area": "TWO_ISLAND",
           "message": "The Seagallop Ferry speeds across the waves. Next stop: Two Island!",
           "condition": "has_item:TRI_PASS"
         },
         {
           "text": "Seagallop to Three Island",
+          "door": "harbor",
           "target_area": "THREE_ISLAND",
           "message": "The Seagallop Ferry speeds across the waves. Next stop: Three Island!",
           "condition": "has_item:TRI_PASS"
         },
         {
           "text": "Seagallop to Four Island",
+          "door": "harbor",
           "target_area": "FOUR_ISLAND",
           "message": "The Seagallop Ferry speeds across the waves. Next stop: Four Island!",
           "condition": "has_item:RAINBOW_PASS"
         },
         {
           "text": "Seagallop to Five Island",
+          "door": "harbor",
           "target_area": "FIVE_ISLAND",
           "message": "The Seagallop Ferry speeds across the waves. Next stop: Five Island!",
           "condition": "has_item:RAINBOW_PASS"
         },
         {
           "text": "Seagallop to Seven Island",
+          "door": "harbor",
           "target_area": "SEVEN_ISLAND",
           "message": "The Seagallop Ferry speeds across the waves. Next stop: Seven Island!",
           "condition": "has_item:RAINBOW_PASS"
         },
         {
           "text": "Seagallop to Faraway Island",
+          "door": "harbor",
           "target_area": "FARAWAY_ISLAND",
           "message": "The Seagallop Ferry speeds across the waves. Next stop: Faraway Island!",
           "condition": "has_item:OLD_SEA_MAP"
@@ -2119,32 +1658,18 @@
       "battle_type": "forest",
       "min_rounds": 2,
       "trainer_pool": [
-        {
-          "name": "Bug Catcher Ray",
-          "class": "BUG_CATCHER",
-          "sprite": "bug_catcher.png",
-          "team": [
-            214,
-            166,
-            168
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "Psychic Mira",
-          "class": "PSYCHIC",
-          "sprite": "psychic.png",
-          "team": [
-            178,
-            64,
-            196
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        }
+        { "sprite": "pokefan_f.png", "name": "Allison", "class": "POKEMON_BREEDER", "team": [35, 35, 36], "levels": [48, 48, 48], "rewards": { "balls": 3 } },
+        { "sprite": "youngster.png", "name": "Nash", "class": "YOUNGSTER", "team": [70, 70, 71], "levels": [47, 47, 49], "rewards": { "balls": 3 } },
+        { "sprite": "lass.png", "name": "Joana", "class": "LASS", "team": [209], "levels": [49], "rewards": { "balls": 3 } },
+        { "sprite": "bug_catcher.png", "name": "Garret", "class": "BUG_CATCHER", "team": [214], "levels": [49], "rewards": { "balls": 3 } },
+        { "sprite": "camper.png", "name": "Riley", "class": "CAMPER", "team": [127, 214], "levels": [49, 50], "rewards": { "balls": 3 } },
+        { "sprite": "bug_catcher.png", "name": "Jonah", "class": "BUG_CATCHER", "team": [193, 15, 193, 15], "levels": [45, 45, 46, 47], "rewards": { "balls": 3 } },
+        { "sprite": "pokefan_f.png", "name": "Bethany", "class": "POKEMON_BREEDER", "team": [113], "levels": [50], "rewards": { "balls": 3 } },
+        { "sprite": "ruinmaniac.png", "name": "Layton", "class": "RUIN_MANIAC", "team": [28, 95, 28], "levels": [48, 48, 48], "rewards": { "balls": 3 } },
+        { "sprite": "youngster.png", "name": "Cordell", "class": "YOUNGSTER", "team": [83, 83], "levels": [48, 48], "rewards": { "balls": 3 } },
+        { "sprite": "lass.png", "name": "Dalia", "class": "LASS", "team": [187, 187, 188, 188], "levels": [46, 47, 47, 48], "rewards": { "balls": 3 } },
+        { "sprite": "bug_catcher.png", "name": "Vance", "class": "BUG_CATCHER", "team": [48, 49], "levels": [48, 48], "rewards": { "balls": 3 } },
+        { "sprite": "picnicker.png", "name": "Marcy", "class": "PICNICKER", "team": [46, 46, 47], "levels": [48, 48, 49], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
         {
@@ -2186,32 +1711,11 @@
       "battle_type": "mountain",
       "min_rounds": 2,
       "trainer_pool": [
-        {
-          "name": "Ruin Maniac Hal",
-          "class": "RUIN_MANIAC",
-          "sprite": "ruinmaniac.png",
-          "team": [
-            232,
-            76,
-            112
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "Psychic Dex",
-          "class": "PSYCHIC",
-          "sprite": "psychic_m.png",
-          "team": [
-            202,
-            203,
-            97
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        }
+        { "sprite": "hiker.png", "name": "Daryl", "class": "HIKER", "team": [185], "levels": [50], "rewards": { "balls": 3 } },
+        { "sprite": "ruinmaniac.png", "name": "Stanly", "class": "RUIN_MANIAC", "team": [75, 95, 75], "levels": [48, 48, 48], "rewards": { "balls": 3 } },
+        { "sprite": "ruinmaniac.png", "name": "Foster", "class": "RUIN_MANIAC", "team": [76], "levels": [50], "rewards": { "balls": 3 } },
+        { "sprite": "ruinmaniac.png", "name": "Larry", "class": "RUIN_MANIAC", "team": [67, 67], "levels": [49, 49], "rewards": { "balls": 3 } },
+        { "sprite": "pokemaniac.png", "name": "Hector", "class": "POKEMANIAC", "team": [111, 115], "levels": [49, 49], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
         {
@@ -2338,48 +1842,56 @@
         },
         {
           "text": "Seagallop to Vermilion City",
+          "door": "harbor",
           "long_ride": true,
           "target_area": "VERMILLION_CITY",
           "message": "The Seagallop Ferry speeds back to Vermilion City."
         },
         {
           "text": "Seagallop to One Island",
+          "door": "harbor",
           "target_area": "ONE_ISLAND",
           "message": "The Seagallop Ferry speeds across the waves. Next stop: One Island!",
           "condition": "has_item:TRI_PASS"
         },
         {
           "text": "Seagallop to Two Island",
+          "door": "harbor",
           "target_area": "TWO_ISLAND",
           "message": "The Seagallop Ferry speeds across the waves. Next stop: Two Island!",
           "condition": "has_item:TRI_PASS"
         },
         {
           "text": "Seagallop to Three Island",
+          "door": "harbor",
           "target_area": "THREE_ISLAND",
           "message": "The Seagallop Ferry speeds across the waves. Next stop: Three Island!",
           "condition": "has_item:TRI_PASS"
         },
         {
           "text": "Seagallop to Four Island",
+          "door": "harbor",
           "target_area": "FOUR_ISLAND",
           "message": "The Seagallop Ferry speeds across the waves. Next stop: Four Island!",
           "condition": "has_item:RAINBOW_PASS"
         },
         {
           "text": "Seagallop to Five Island",
+          "door": "harbor",
           "target_area": "FIVE_ISLAND",
           "message": "The Seagallop Ferry speeds across the waves. Next stop: Five Island!",
           "condition": "has_item:RAINBOW_PASS"
         },
         {
           "text": "Seagallop to Six Island",
+          "door": "harbor",
           "target_area": "SIX_ISLAND",
           "message": "The Seagallop Ferry speeds across the waves. Next stop: Six Island!",
           "condition": "has_item:RAINBOW_PASS"
         },
         {
           "text": "Seagallop to Faraway Island",
+          "door": "harbor",
           "target_area": "FARAWAY_ISLAND",
           "message": "The Seagallop Ferry speeds across the waves. Next stop: Faraway Island!",
           "condition": "has_item:OLD_SEA_MAP"
@@ -2512,37 +2024,35 @@
       "battle_type": "mountain",
       "min_rounds": 2,
       "trainer_pool": [
-        {
-          "name": "Black Belt Ken",
-          "class": "BLACK_BELT",
-          "sprite": "blackbelt.png",
-          "team": [
-            107,
-            106,
-            237
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "Ace Trainer Gale",
-          "class": "ACE_TRAINER",
-          "sprite": "acetrainer_m.png",
-          "team": [
-            227,
-            232,
-            247
-          ],
-          "rewards": {
-            "balls": 6
-          }
-        }
+        { "sprite": "acetrainer_m.png", "name": "Lex & Nya", "class": "COOL_COUPLE", "team": [241, 128], "levels": [52, 52], "rewards": { "balls": 3 } },
+        { "sprite": "ranger_m.png", "name": "Jackson", "class": "POKEMON_RANGER", "team": [114, 102, 103], "levels": [49, 49, 49], "rewards": { "balls": 3 } },
+        { "sprite": "ranger_m.png", "name": "Katelyn", "class": "POKEMON_RANGER", "team": [113], "levels": [52], "rewards": { "balls": 3 } },
+        { "sprite": "blackbelt.png", "name": "Evan", "class": "TAMER", "team": [28, 108, 217], "levels": [48, 48, 49], "rewards": { "balls": 3 } },
+        { "sprite": "battle_girl.png", "name": "Cyndy", "class": "CRUSH_GIRL", "team": [57, 237, 67], "levels": [48, 48, 48], "rewards": { "balls": 3 } },
+        { "sprite": "acetrainer_m.png", "name": "Leroy", "class": "COOLTRAINER", "team": [112, 80, 115, 67, 217], "levels": [47, 48, 47, 48, 50], "rewards": { "balls": 3 } },
+        { "sprite": "acetrainer_f.png", "name": "Michelle", "class": "COOLTRAINER", "team": [53, 87, 38, 78, 203], "levels": [47, 47, 48, 48, 50], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
         {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
         {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN"},
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
+        {
+          "text": "OPEN THE CHAMBERS",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "puzzle": "tanoby",
+            "lines": [
+              "Unown of every shape swirl out of the seven chambers!"
+            ],
+            "puzzle_fail": [
+              "The chamber doors stay sealed."
+            ],
+            "flag": "tanoby_chambers_open"
+          },
+          "flag_condition": "not tanoby_chambers_open",
+          "door": "key"
+        },
         {"text": "Seven Island", "action": "EXIT", "target_area": "SEVEN_ISLAND", "condition": "can_exit", "color": "RED"},
         {"text": "Canyon Entrance", "action": "EXIT", "target_area": "CANYON_ENTRANCE", "condition": "can_exit", "color": "RED"},
         {"text": "TANOBY RUINS", "action": "EXIT", "target": "TANOBY_RUINS", "condition": "can_exit", "color": "RED"}
@@ -2563,11 +2073,15 @@
       },
       "battle_type": "cave",
       "min_rounds": 2,
-      "trainer_pool": [],
+      "trainer_pool": [
+        { "sprite": "gentleman.png", "name": "Clifford", "class": "GENTLEMAN", "team": [105, 55], "levels": [49, 49], "rewards": { "balls": 3 } },
+        { "sprite": "ruinmaniac.png", "name": "Brandon", "class": "RUIN_MANIAC", "team": [95], "levels": [50], "rewards": { "balls": 3 } },
+        { "sprite": "lass.png", "name": "Edna", "class": "PAINTER", "team": [235], "levels": [50], "rewards": { "balls": 3 } },
+        { "sprite": "ruinmaniac.png", "name": "Benjamin", "class": "RUIN_MANIAC", "team": [74, 75, 75], "levels": [48, 48, 48], "rewards": { "balls": 3 } }
+      ],
       "route_menu": [
         {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": ["has_balls", "tanoby_chambers_open"], "color": "BLUE"},
         {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN"},
-        {"text": "OPEN THE CHAMBERS", "action": "EVENT", "color": "GOLD", "event": {"puzzle": "tanoby", "lines": ["Unown of every shape swirl out of the seven chambers!"], "puzzle_fail": ["The chamber doors stay sealed."], "flag": "tanoby_chambers_open"}, "flag_condition": "not tanoby_chambers_open"},
         {"text": "Seven Island", "action": "EXIT", "target_area": "SEVEN_ISLAND", "condition": "can_exit", "color": "RED"},
         {"text": "SEVAULT CANYON", "action": "EXIT", "target": "SEVAULT_CANYON", "condition": "can_exit", "color": "RED"}
       ],

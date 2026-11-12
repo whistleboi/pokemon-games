@@ -573,10 +573,13 @@ class Run:
             if spot:
                 floor.movers.append(Mover("trainer", spot[0], spot[1], (idx, payload), facing))
         lo, hi = (self.recipe.get("wild") or [4, 6])[:2]
+        indoors = self._indoors(index)  # (a room on a route map: nothing wild, nothing lying about. The Safari Zone's rest houses)
+        if indoors:
+            lo = hi = 0
         for _ in range(self.rng.randint(lo, hi)):  # (a drawn map is one room: away from you is enough)
             self._spawn_wild(floor, None if self.recipe.get("layout") else start_room)
         reach = distances(floor, floor.start)  # (loot lands where you can walk to it from here: never out on the water)
-        for item in self.loot_for(self.rng):
+        for item in ([] if indoors else self.loot_for(self.rng)):
             spot = next((s for s in (_free_tile(floor, self.rng) for _ in range(24)) if s in reach), None)
             if spot and item:
                 floor.items[spot] = item
@@ -585,6 +588,11 @@ class Run:
             if spot:
                 floor.tm_spots[spot] = spot_id
         self.reveal()
+
+    def _indoors(self, index):
+        """A drawn floor marked "indoors": a room (a house on a route, the Safari Zone's rest houses)."""
+        lay = self.recipe.get("layout") or []
+        return bool(index < len(lay) and isinstance(lay[index], dict) and lay[index].get("indoors"))
 
     def _spawn_wild(self, floor, avoid_room=None, far=False):
         spot = _free_tile(floor, self.rng, avoid=avoid_room.tiles() if avoid_room else (), prefer_grass=True,
@@ -791,7 +799,7 @@ class Run:
                     m.x, m.y = nx, ny
             if m.alert and abs(m.x - px) + abs(m.y - py) == 1 and not any(e[0] == "ambush" for e in events):
                 events.append(("ambush", m))
-        if self.recipe.get("respawn", True) and self.turn % self.RESPAWN_TURNS == 0:  # (Hyperspace: none)
+        if self.recipe.get("respawn", True) and self.turn % self.RESPAWN_TURNS == 0 and not self._indoors(self.index):  # (Hyperspace: none)
             most = (self.recipe.get("wild") or [4, 6])[-1]
             if sum(1 for m in f.movers if m.kind == "wild") < most:
                 count = len(f.movers)

@@ -63,6 +63,39 @@ from src.utils import Utils
 from src.world import levels
 
 TILE = 56
+
+# The walked map sits in a frame (Jordan, 11-12): black all round it, MENU, the Journal and the mini-map
+# in the left band, the buttons stacked in the right one, so nothing covers the map and a way out on
+# its edge is never at the very edge of the screen.
+FRAME_LEFT, FRAME_TOP, FRAME_RIGHT, FRAME_BOTTOM = 300, 88, 160, 12
+FRAME_BLACK = (0, 0, 0)
+SIDE_W = 140  # (the right band's buttons)
+
+
+def map_view(game):
+    """The part of the screen the walked map is drawn in."""
+    W, H = game.width, game.height
+    return pygame.Rect(FRAME_LEFT, FRAME_TOP, W - FRAME_LEFT - FRAME_RIGHT, H - FRAME_TOP - FRAME_BOTTOM)
+
+
+def draw_frame(screen, view):
+    """The thin line round the map's frame."""
+    pygame.draw.rect(screen, (70, 82, 120), view.inflate(6, 6), 3, border_radius=6)
+
+
+def side_buttons(game):
+    """The right band's button spots, bottom up: (x, y, w, h) for WAIT, HONEY, POKEDEX, POKEMON, then a tall
+    one for what's beside you (Fish, Headbutt...)."""
+    W, H = game.width, game.height
+    x = W - FRAME_RIGHT + (FRAME_RIGHT - SIDE_W) // 2
+    return [pygame.Rect(x, H - 72, SIDE_W, 60), pygame.Rect(x, H - 140, SIDE_W, 60),
+            pygame.Rect(x, H - 224, SIDE_W, 74), pygame.Rect(x, H - 308, SIDE_W, 74),
+            pygame.Rect(x, H - 404, SIDE_W, 86)]
+
+
+def mini_scale(w, h, room_w, room_h):
+    """The mini-map's pixels a tile: 4, smaller for a big map so it fits the left band."""
+    return max(1, min(4, (room_w - 8) // max(1, w), (room_h - 8) // max(1, h)))
 STEP_FRAMES = 6          # frames a step takes (the walk animation)
 MATH_SECONDS = 30
 TAP_FRAMES = 12     # how long a tapped tile stays lit, when it isn't where you're walking to
@@ -188,6 +221,60 @@ def recipes(game):
     return _recipes["all"]
 
 
+def with_rooms(m):
+    """A route map with buildings you walk into (Jordan, 11-12: "buildings on routes"), in the towns' own words: "rooms"
+    {name: a map of its own (theme "room", its mats' "exits" {"v": "OUT:x,y"}, "people": route options by their text)}
+    and "inside" {"x,y" of a door: room name} on the map (or on a floor of it). Each room becomes a floor of the area
+    after its own, joined to its door: in at the door you stand on the room's mat, out by the mat you stand below the
+    door. No wild Pokemon indoors. The map itself is not changed."""
+    rooms = m.get("rooms") or {}
+    if not rooms:
+        return m
+    floors = [dict(f) for f in m["floors"]] if m.get("floors") else [
+        {k: m[k] for k in ("art", "exits", "signs", "people", "trainer_spots", "links", "overheads", "parts", "boss_spot", "inside", "stops") if k in m}]
+    n0 = len(floors)
+    names = list(m.get("floor_names") or [""] * n0)
+    where, doors = {}, {}
+    for i, f in enumerate(floors):
+        for d, name in (f.get("inside") or (m.get("inside") if n0 == 1 else None) or {}).items():
+            if name in rooms:
+                doors.setdefault(name, []).append((i, d))
+    for name, room in rooms.items():
+        if name not in doors:
+            continue
+        j = len(floors)
+        where[name] = j
+        art = [list(r) for r in room["art"]]
+        links, mats = {}, {}
+        for ch, target in (room.get("exits") or {}).items():
+            if not str(target).startswith("OUT:"):
+                continue
+            x, y = (int(v) for v in str(target)[4:].split(","))
+            back = next((i for i, d in doors[name] if d == f"{x},{y}"), doors[name][0][0])
+            for ry, row in enumerate(art):
+                for rx, c in enumerate(row):
+                    if c == ch:
+                        row[rx] = "1"
+                        links[f"{rx},{ry}"] = [back, x, y + 1]
+                        mats.setdefault(f"{x},{y}", (rx, ry))
+        own = {k: v for k, v in room.items() if k not in ("art", "exits", "links")}
+        floors.append(dict(own, art=["".join(r) for r in art], exits={}, links=links, parts=True, indoors=True,
+                           pool="NO_WILD_INDOORS_PERCENTAGES", buildings=room.get("buildings") or {}))
+        names.append(str(room.get("title") or name).title())
+        for i, d in doors[name]:  # (the door outside: onto the room's mat for it)
+            mat = mats.get(d) or next(iter(mats.values()), None)
+            if mat:
+                floors[i] = dict(floors[i], links=dict(floors[i].get("links") or {}, **{d: [j, mat[0], mat[1]]}))
+    on = dict(m.get("figure_floors") or {})
+    for i, f in enumerate(floors):  # (everyone stays on the floor their spot is on: a figure with no floor named would be put on the last, a room)
+        for t in list(f.get("people") or []) + list(f.get("trainer_spots") or []):
+            if isinstance(t, str):
+                on.setdefault(t, i)
+    out = {k: v for k, v in m.items() if k not in ("art", "exits", "signs", "people", "trainer_spots", "links", "overheads", "parts", "boss_spot", "inside", "stops", "rooms")}
+    out.update(floors=floors, floor_names=names, figure_floors=on, room_floors=where, outdoor_floors=n0)
+    return out
+
+
 def art_recipe(m):
     """A route map recipe from one of our own maps (src/dungeon/art.py): its ground, its ways out (a letter
     each), what stands in the way (trees, fences, rocks, buildings, the sea), drawn in its own art. A map of
@@ -200,7 +287,7 @@ def art_recipe(m):
         out["legend"] = {}
         for i, p in enumerate(parts):  # (each floor's own legend, under its own keys)
             out["layout"][i] = {"map": p["layout"][0]["map"], "legend": p["legend"]}
-            for k in ("dive", "surface", "pool", "exit_order"):  # (Dive: the seabed floor under this one, the surface over it, its own wild Pokemon)
+            for k in ("dive", "surface", "pool", "exit_order", "indoors"):  # (Dive: the seabed floor under this one, the surface over it, its own wild Pokemon)
                 if m["floors"][i].get(k) is not None:
                     out["layout"][i][k] = m["floors"][i][k]
         out["floors"] = len(parts)
@@ -208,6 +295,10 @@ def art_recipe(m):
         for i, f in enumerate(m["floors"]):  # (a target on two floors: you come back on the lower-numbered one)
             for t in f.get("exits", {}).values():
                 out["exit_floors"].setdefault(t, i)
+        out["exit_floors_all"] = {}  # (the same place reached from several floors: each of them, in floor order: Victory Road's two mouths on Route 23)
+        for i, f in enumerate(m["floors"]):
+            for t in dict.fromkeys(f.get("exits", {}).values()):
+                out["exit_floors_all"].setdefault(t, []).append(i)
         out["art"] = m
         out["descend"] = bool(m.get("descend"))
         return out
@@ -361,6 +452,13 @@ def recipe_for(game, area_key):
     area = game.loader.area_data.get("STORY_PROGRESSION", {}).get(area_key, {})
     if mine and area.get("area_type") != "town":  # our own map (Jordan, 11-06: the Johto pilot's Route 29)
         recipe.update(all_.get(area_key) or {})
+        if mine.get("rooms"):  # (buildings you walk into: each room a floor of its own; everyone else stays outside)
+            mine = with_rooms(mine)
+            _on = mine["figure_floors"]
+            for _o in list(area.get("route_menu") or []) + list(area.get("trainer_pool") or []):
+                _t = _o.get("text") or _o.get("name")
+                if _t and _t not in _on:
+                    _on[_t] = 0 if mine["outdoor_floors"] == 1 else _on.get(_t, 0)
         recipe.update(art_recipe(mine), seed=area_key)
         recipe.pop("zones", None)
         if recipe.get("dark") or mine.get("dark"):  # (a dark cave: its fog stays, till Flash lights it)
@@ -497,6 +595,7 @@ class DungeonState(OverworldBattles, PlayState):
             recipe["open"] = True  # (an open place: no stairs, openings in the edges between its areas)
         if self.zones:
             recipe["floors"] = -(-len(self.zones) // self.per_floor)
+            recipe["floors"] += sum(1 for f in recipe.get("layout") or [] if isinstance(f, dict) and f.get("indoors"))  # (and its rooms: the Safari Zone's rest houses)
             if self.per_floor > 1:  # a wide floor: the areas side by side
                 w, h = recipe.get("size", (40, 26))
                 recipe["size"] = [w * self.per_floor, h]
@@ -505,6 +604,10 @@ class DungeonState(OverworldBattles, PlayState):
         exits_by_floor, start = None, 0
         if recipe.get("exit_floors") and entrance in recipe["exit_floors"]:  # (our map of floors: in by its floor)
             start = recipe["exit_floors"][entrance]
+            _all = (recipe.get("exit_floors_all") or {}).get(entrance) or []
+            if len(_all) > 1 and core.ENTRANCE_COUNT == len(_all):  # (in by the matching way: the far side has as many ways here as we have floors with one)
+                start = _all[min(core.ENTRANCE_INDEX, len(_all) - 1)]
+                core.ENTRANCE_INDEX = core.ENTRANCE_COUNT = 0
         if self.zones:
             by = {}
             for target, item in self.exit_items.items():
@@ -601,6 +704,10 @@ class DungeonState(OverworldBattles, PlayState):
         """Which zone floor index (at column x, on a wide floor) is. One of our own maps can lay its zones out
         any way ("zone_rects": [x, y, w, h] a zone, in the zones' order: the Safari Zone's four areas)."""
         rects = ((getattr(self, "recipe", None) or {}).get("art") or {}).get("zone_rects")
+        lay = (getattr(self, "recipe", None) or {}).get("layout") or []
+        if self.zones and index < len(lay) and isinstance(lay[index], dict) and lay[index].get("indoors"):  # (in a room: still the zone you came in from)
+            now = self.game.story_manager.story_flags.get(f"zone_{self.area_key}")
+            return self.zones.index(now) if now in self.zones else 0
         if rects and x is not None:
             yy = y if y is not None else (self.run.player[1] if hasattr(self, "run") else 0)
             for i, (rx, ry, rw, rh) in enumerate(rects):
@@ -635,9 +742,11 @@ class DungeonState(OverworldBattles, PlayState):
         flags = story.story_flags
         out = []
         boss_in_way = any((self._gate(t) or ("",))[0] == "boss" for t in getattr(self, "exit_items", {})) or bool(self._boss_spot())
+        _art_map = (getattr(self, "recipe", None) or {}).get("art") or {}
+        indoors = {t for f in (_art_map.get("floors") or []) if f.get("indoors") for t in (f.get("people") or []) if isinstance(t, str)}
         for item in self.area_data.get("route_menu", []):
-            if item.get("action") not in FIGURE_ACTIONS or item.get("door"):
-                continue  # (a house's option is through its door, not someone standing about)
+            if item.get("action") not in FIGURE_ACTIONS or (item.get("door") and item.get("text") not in indoors):
+                continue  # (a house's option is through its door, not someone standing about; unless its room is built: then they stand in it)
             if boss_in_way and item.get("action") == "BOSS":
                 continue  # (it sleeps across the way out: see _gate)
             fc = item.get("flag_condition")
@@ -1134,7 +1243,7 @@ class DungeonState(OverworldBattles, PlayState):
             elif kind == "warp":  # a passage to another floor (a map's "links")
                 self.walk_goal = None
                 _i, _x, _y = (int(v) for v in ev[1].split(":")[1:4])
-                if _i == self.run.index:  # (a warp panel: across the same floor)
+                if _i == self.run.index or self._indoors(_i) or self._indoors(self.run.index):  # (a warp panel: across the same floor; a house's door or mat: straight in or out)
                     self._warp(_i, _x, _y)
                 else:
                     self.say([f"You went through to {self._floor_name(_i)}."], then=lambda: self._warp(_i, _x, _y))
@@ -1161,8 +1270,16 @@ class DungeonState(OverworldBattles, PlayState):
                                   for m in self.run.floor.movers):
             self.walk_goal = None
 
+    def _indoors(self, index):
+        """A floor of our own map marked "indoors": a room (no wild Pokemon; the zone you came in from)."""
+        lay = (getattr(self, "recipe", None) or {}).get("layout") or []
+        return bool(0 <= index < len(lay) and isinstance(lay[index], dict) and lay[index].get("indoors"))
+
     def _floor_name(self, index):
         """A floor's name: its zone's ("Area 1 (East)", "B2F"; on a wide floor, its areas'), else 1F, 2F..."""
+        own = ((self.recipe.get("art") or {}).get("floor_names") or []) if hasattr(self, "recipe") else []
+        if self._indoors(index) and index < len(own):  # (a room on the map: the Safari Zone's rest houses)
+            return own[index]
         if self.zones:
             per = getattr(self, "per_floor", 1)
             names = [self._zone_name(i) for i in range(index * per, min(len(self.zones), (index + 1) * per))]
@@ -1197,7 +1314,10 @@ class DungeonState(OverworldBattles, PlayState):
         self.banner = 120
 
     def _warp(self, index, x, y):
-        self._set_zone(index)
+        if self.zones and self._indoors(self.run.index) and not self._indoors(index):  # (out of a house: the area its door is in, said nothing)
+            self.game.story_manager.story_flags[f"zone_{self.area_key}"] = self.zones[self._zone_index(index, x, y)]
+        else:
+            self._set_zone(index)
         self.run.warp(index, x, y)
         self.anim = 0
         self.anim_from = self.partner = self.partner_from = self.run.player
@@ -1264,6 +1384,9 @@ class DungeonState(OverworldBattles, PlayState):
         core.ENTRANCE_COUNT = len(same)  # (how many tiles that way out has here: the far side takes the matching place along its own)
         if len(same) > 1:  # (out to a town with as many ways back: in by the matching one, Victory Road's two mouths at Ever Grande)
             self.game.walk_town_exit = (self.area_key, core.ENTRANCE_INDEX, len(same))
+        _all = (self.recipe.get("exit_floors_all") or {}).get(target) or []
+        if len(_all) > 1 and self.run.index in _all:  # (the same place from several floors: out by this floor's own way there)
+            core.ENTRANCE_INDEX, core.ENTRANCE_COUNT = _all.index(self.run.index), len(_all)
         if self.contest:  # leaving by the gate ends the contest: the judging first
             self._step_back()
             self._contest_end()
@@ -1616,14 +1739,15 @@ class DungeonState(OverworldBattles, PlayState):
     def _buttons(self):
         """The map's own buttons (bottom right): (rect, label, colour, action, enabled, small text)."""
         w, h = self.game.width, self.game.height
+        side = side_buttons(self.game)  # (stacked in the right band, beside the map)
         buttons = [
             (self._qp_button_rect(), theme.pokemon_word("POKEMON"), theme.POKEMON,
-             self._qp_toggle, True, None),  # (its list opens above it: src/states/overworld/overworld_battle.py)
-            (pygame.Rect(w - 146, h - 162, 126, 70), theme.pokemon_word("POKEDEX"), theme.BAG,
+             self._qp_toggle, True, None),  # (its list opens beside it: src/states/overworld/overworld_battle.py)
+            (side[2], theme.pokemon_word("POKEDEX"), theme.BAG,
              self._open_pokedex, True, None),
-            (pygame.Rect(w - 280, h - 80, 126, 58), "HONEY", (226, 170, 40), self.use_scent,
+            (side[1], "HONEY", (226, 170, 40), self.use_scent,
              bool(self._scent_source()) if hasattr(self, "run") else False, self._honey_note()),
-            (pygame.Rect(w - 146, h - 80, 126, 58), "BRAKE" if self._downhill() and not self.braking else "WAIT", theme.RUN, self.wait_turn, True,
+            (side[0], "BRAKE" if self._downhill() and not self.braking else "WAIT", theme.RUN, self.wait_turn, True,
              "hold still" if self._downhill() and not self.braking else "a turn"),
         ]
         mega = self._map_mega_button() if hasattr(self, "run") and not self.contest else None
@@ -1634,7 +1758,7 @@ class DungeonState(OverworldBattles, PlayState):
             sub = {"DIVE": "the deep sea here", "SURFACE": "up to the sea above",
                    "FISH": "the water here", "HEADBUTT": "this tree", "TALK": "the clerk",
                    "PLAY SLOTS": "this machine"}.get(act[0])
-            buttons.append((pygame.Rect(w - 280, h - 244, 260, 70), act[0], (232, 132, 40), act[1], True, sub))
+            buttons.append((side[4], act[0], (232, 132, 40), act[1], True, sub))
         return buttons
 
     def _honey_note(self):
@@ -1668,15 +1792,25 @@ class DungeonState(OverworldBattles, PlayState):
         if focus:  # (an OVERWORLD-style battle: the fight, a bit above the middle, clear of the battle's text box)
             cx, cy = focus[0], focus[1] + self.game.height * 0.14
         if hasattr(self, "run") and (self.run.recipe.get("image") or self.run.recipe.get("art")):  # (no black past it)
-            W, H = self.game.width, self.game.height
+            W, H = self._view().size
             mw, mh = self.run.floor.w * TILE, self.run.floor.h * TILE
             cx = mw / 2 if mw <= W else min(max(cx, W / 2), mw - W / 2)
             cy = mh / 2 if mh <= H else min(max(cy, H / 2), mh - H / 2)
         return cx, cy
 
-    def _tile_at(self, pos):
+    def _view(self):
+        """Where the map is drawn: the frame (the whole screen under an OVERWORLD-style battle)."""
+        if self._backdrop:
+            return self.game.screen.get_rect()
+        return map_view(self.game)
+
+    def _origin(self):
         cx, cy = self._camera()
-        ox, oy = self.game.width / 2 - cx, self.game.height / 2 - cy
+        v = self._view()
+        return int(v.centerx - cx), int(v.centery - cy)
+
+    def _tile_at(self, pos):
+        ox, oy = self._origin()
         return int((pos[0] - ox) // TILE), int((pos[1] - oy) // TILE)
 
     KEYS = {pygame.K_UP: (0, -1), pygame.K_w: (0, -1), pygame.K_DOWN: (0, 1), pygame.K_s: (0, 1),
@@ -1732,6 +1866,8 @@ class DungeonState(OverworldBattles, PlayState):
                 from src.states.systems.journal import JournalState
                 self.game.change_state(JournalState(self.game, self))
                 return
+            if not self._view().collidepoint(e.pos):  # (the black round the map: nothing there)
+                return
             tx, ty = self._tile_at(e.pos)
             self.tap_mark = [(tx, ty), self.run.floor.walkable(tx, ty), TAP_FRAMES]
             px, py = self.run.player
@@ -1770,6 +1906,8 @@ class DungeonState(OverworldBattles, PlayState):
         at = held_pointer() if getattr(self, "_map_press", False) else None
         if at is None:
             self._map_press = False
+            return
+        if not self._view().collidepoint(at):
             return
         goal = self._tile_at(at)
         if goal != self.run.player and self.run.floor.walkable(*goal) and goal in self.run.floor.seen:
@@ -1840,6 +1978,14 @@ class DungeonState(OverworldBattles, PlayState):
                 f.tiles[t[1]][t[0]] = core.WALL
         floors = (self.run.recipe.get("art") or {}).get("floors") or []
         here = floors[self.run.index] if 0 <= self.run.index < len(floors) else (self.run.recipe.get("art") or {})
+        for i, bx, by, x, y in here.get("fallen", []):  # (a boulder pushed down from any floor above lands here: Seafoam's, down through its holes)
+            if (x, y) not in f.decor and flags.get(f"boulder_{self.area_key}_{i}_{bx}_{by}"):
+                f.decor[(x, y)] = f"fallen:{x},{y}"
+                f.tiles[y][x] = core.WALL
+                f.current.pop((x, y), None)
+        calm = here.get("calm")  # (the floor's current stops once these boulders have been pushed down: [[floor, x, y], ...])
+        if calm and f.current and all(flags.get(f"boulder_{self.area_key}_{i}_{bx}_{by}") for i, bx, by in calm):
+            f.current.clear()
         self._bars = {tuple(t): bar for bar in here.get("barred", []) for t in bar.get("tiles", [])}
         for bar in here.get("barred", []):  # (a rockslide in the way until a story flag: Granite Cave's short way back, once you've met Steven)
             for t in map(tuple, bar.get("tiles", [])):
@@ -2461,14 +2607,16 @@ class DungeonState(OverworldBattles, PlayState):
         screen = self.game.screen
         W, H = self.game.width, self.game.height
         f = self.run.floor
-        screen.fill((10, 14, 24))  # (the fog's colour: the unknown edge of the map)
+        view = self._view()
+        screen.fill(FRAME_BLACK)
+        screen.fill((10, 14, 24), view)  # (the fog's colour: the unknown edge of the map)
+        screen.set_clip(view)  # (the map stays in its frame)
         if self._floor_index != self.run.index or self._floor_surf is None:
             self._render_floor()
-        cx, cy = self._camera()
-        ox, oy = int(W / 2 - cx), int(H / 2 - cy)
+        ox, oy = self._origin()
         screen.blit(self._floor_surf, (ox, oy))
-        x0, y0 = max(0, -ox // TILE - 1), max(0, -oy // TILE - 1)
-        x1, y1 = min(f.w, (W - ox) // TILE + 2), min(f.h, (H - oy) // TILE + 2)
+        x0, y0 = max(0, (view.x - ox) // TILE - 1), max(0, (view.y - oy) // TILE - 1)
+        x1, y1 = min(f.w, (view.right - ox) // TILE + 2), min(f.h, (view.bottom - oy) // TILE + 2)
         fonts = self.game.assets.fonts
 
         def at(x, y):
@@ -2493,9 +2641,9 @@ class DungeonState(OverworldBattles, PlayState):
                         if target in (core.STAIRS, core.STAIRS_UP) else self._area_name(target))
                 tag = fonts["caption"].render(theme.pokemon_word(str(name).upper()), True, (255, 255, 255))
                 pill = tag.get_rect(center=r.center).inflate(12, 6)  # (on the road itself, out of your way)
-                if not screen.get_rect().inflate(120, 120).colliderect(pill):
+                if not view.inflate(120, 120).colliderect(pill):
                     continue  # (off screen: no sign piling up at the edge)
-                pill.clamp_ip(screen.get_rect().inflate(-8, -8))
+                pill.clamp_ip(view.inflate(-8, -8))
                 signs.append((pill, tag))
         for (x, y), target in f.exits.items():
             if (x, y) not in f.seen:
@@ -2722,9 +2870,12 @@ class DungeonState(OverworldBattles, PlayState):
                     if (gx, gy) not in seen:
                         screen.fill((10, 14, 24), at(gx, gy))
         if self._backdrop:  # (only the map: an OVERWORLD-style battle is drawn over it)
+            screen.set_clip(None)
             return
         if self.mode == "MAP":
             self._draw_guide(screen, at)
+        screen.set_clip(None)
+        draw_frame(screen, view)
         self._draw_hud(screen)
         self._draw_qparty(screen)
         if self.mode in ("CHOICE", "MATH", "THROW"):
@@ -2864,12 +3015,12 @@ class DungeonState(OverworldBattles, PlayState):
         if not hit:
             return
         (gx, gy), label = hit
-        W, H = self.game.width, self.game.height
+        v = self._view()
         fonts = self.game.assets.fonts
         t = pygame.time.get_ticks()
         r = at(gx, gy)
         gold, dark = (255, 214, 64), (60, 40, 10)
-        on_screen = r.right > 0 and r.left < W and r.bottom > 90 and r.top < H - 20
+        on_screen = r.right > v.x and r.left < v.right and r.bottom > v.y + 2 and r.top < v.bottom - 20
         if on_screen:
             pulse = 4 + int(3 * (1 + math.sin(t / 160)))
             pygame.draw.rect(screen, gold, r.inflate(pulse, pulse), 4, border_radius=10)
@@ -2889,11 +3040,11 @@ class DungeonState(OverworldBattles, PlayState):
             screen.blit(tag, tag.get_rect(center=pill.center))
             return
         # off screen: an arrow on the edge, toward it
-        cx, cy = W / 2, H / 2
+        cx, cy = v.center
         dx, dy = r.centerx - cx, r.centery - cy
         n = math.hypot(dx, dy) or 1
         ux, uy = dx / n, dy / n
-        room_x, room_y = W / 2 - 70, H / 2 - 110
+        room_x, room_y = v.w / 2 - 50, v.h / 2 - 50
         k = min(room_x / abs(ux) if ux else 1e9, room_y / abs(uy) if uy else 1e9)
         ax, ay = cx + ux * k, cy + uy * k + 10
         size = 26 + 4 * math.sin(t / 160)
@@ -2905,7 +3056,7 @@ class DungeonState(OverworldBattles, PlayState):
         pygame.draw.polygon(screen, (255, 255, 255), pts, 2)
         tag = fonts["caption"].render(label, True, (255, 255, 255))
         pill = tag.get_rect(center=(ax - ux * (size + 30), ay - uy * (size + 22))).inflate(14, 6)
-        pill.clamp_ip(pygame.Rect(8, 90, W - 16, H - 100))
+        pill.clamp_ip(v.inflate(-8, -8))
         pygame.draw.rect(screen, (30, 36, 58), pill, border_radius=8)
         pygame.draw.rect(screen, gold, pill, 2, border_radius=8)
         screen.blit(tag, tag.get_rect(center=pill.center))
@@ -2926,14 +3077,24 @@ class DungeonState(OverworldBattles, PlayState):
         """The Journal's tracked mission, kept on screen under MENU (Jordan, 11-07), or None."""
         if getattr(self, "contest", None) or not self._journal_mission():
             return None
-        return pygame.Rect(20, 126, 380, 84)
+        return pygame.Rect(16, 126, FRAME_LEFT - 32, 106)  # (in the left band, beside the map)
+
+    def _mini_room(self):
+        """The left band's space for the mini-map: (top, width, height), under the Journal, above MEGA."""
+        jr = self._journal_rect()
+        top = jr.bottom + 10 if jr else 128  # (under MENU, and the Journal's mission)
+        return top, FRAME_LEFT - 32, self.game.height - 196 - top
+
+    def _mini_scale(self):
+        f = self.run.floor
+        _top, rw, rh = self._mini_room()
+        return mini_scale(f.w, f.h, rw, rh)
 
     def _minimap_rect(self):
         f = self.run.floor
-        s = 4
-        jr = self._journal_rect()
-        top = jr.bottom + 10 if jr else 128  # (under MENU, and the Journal's mission)
-        return pygame.Rect(20, top, f.w * s + 8, f.h * s + 8)
+        s = self._mini_scale()
+        top = self._mini_room()[0]
+        return pygame.Rect(16, top, f.w * s + 8, f.h * s + 8)
 
     def _draw_journal(self, screen):
         r = self._journal_rect()
@@ -2960,15 +3121,15 @@ class DungeonState(OverworldBattles, PlayState):
                 continue
             lines.append(line)
             line = w
-            if len(lines) == 2:
+            if len(lines) == 3:
                 break
-        if line and len(lines) < 2:
+        if line and len(lines) < 3:
             lines.append(line)
-        elif len(lines) == 2 and len(" ".join(lines).split()) < len(words):
-            last = lines[1]
+        elif len(lines) == 3 and len(" ".join(lines).split()) < len(words):
+            last = lines[2]
             while small.size(last + "...")[0] > r.w - 24 and len(last) > 3:
                 last = last[:-1]
-            lines[1] = last.rstrip() + "..."
+            lines[2] = last.rstrip() + "..."
         for k, text in enumerate(lines):
             screen.blit(small.render(text, True, (235, 235, 245)), (r.x + 12, r.y + 34 + k * 22))
 
@@ -2976,7 +3137,8 @@ class DungeonState(OverworldBattles, PlayState):
         W, H = self.game.width, self.game.height
         fonts = self.game.assets.fonts
         story = self.game.story_manager
-        bar = pygame.Rect(210, 12, W - 420, 64)
+        view = map_view(self.game)
+        bar = pygame.Rect(view.x, 12, view.w, 64)  # (over the map's frame)
         theme.draw_textbox(screen, bar)
         name = self.area_data.get("route_name", self.area_key.replace("_", " ").title())
         floor_txt = f"  {self._floor_name(self.run.index)}" if self.run.n_floors > 1 else ""
@@ -3019,7 +3181,7 @@ class DungeonState(OverworldBattles, PlayState):
         panel = pygame.Surface(mm.size, pygame.SRCALPHA)
         panel.fill((10, 14, 24, 170))
         screen.blit(panel, mm.topleft)
-        s = 4
+        s = self._mini_scale()
         for (x, y) in f.seen:
             if f.walkable(x, y):
                 screen.fill((150, 190, 230), (mm.x + 4 + x * s, mm.y + 4 + y * s, s, s))
@@ -3038,17 +3200,20 @@ class DungeonState(OverworldBattles, PlayState):
             gx, gy = hit[0]
             pygame.draw.rect(screen, (255, 214, 64), (mm.x + 2 + gx * s, mm.y + 2 + gy * s, s + 4, s + 4))
         px, py = self.run.player
-        pygame.draw.circle(screen, (255, 255, 255), (mm.x + 4 + px * s + 2, mm.y + 4 + py * s + 2), 3)
+        pygame.draw.circle(screen, (255, 255, 255), (mm.x + 4 + px * s + s // 2, mm.y + 4 + py * s + s // 2), 3)
         # the buttons
         if self.mode == "MAP" and not self.dialogue_box.visible:
             mouse = pygame.mouse.get_pos()
             for rect, label, color, _a, ok, sub in self._buttons():
-                theme.command_button(screen, rect, label, fonts["caption"], color if ok else theme.BACK,
+                font = fonts["caption"] if fonts["caption"].size(label)[0] <= rect.w - 14 else fonts["label"]
+                if font.size(label)[0] > rect.w - 14:  # (a long word in the narrow band: PLAY SLOTS)
+                    font = fonts["small"]
+                theme.command_button(screen, rect, label, font, color if ok else theme.BACK,
                                      hover=rect.collidepoint(mouse), small=fonts["small"], sub=sub or None)
         # a found item, and the area's name on arrival
         if self.toast_timer > 0:
             t = fonts["label"].render(self.toast, True, (255, 255, 255))
-            r = t.get_rect(midtop=(W // 2, 92)).inflate(28, 14)
+            r = t.get_rect(midtop=(map_view(self.game).centerx, 100)).inflate(28, 14)
             pygame.draw.rect(screen, (30, 36, 58), r, border_radius=12)
             pygame.draw.rect(screen, theme.BAG, r, 2, border_radius=12)
             screen.blit(t, t.get_rect(center=r.center))
@@ -3056,7 +3221,7 @@ class DungeonState(OverworldBattles, PlayState):
             word = theme.pokemon_word(self.area_data.get("route_name", "")) + \
                 (f"  {self._floor_name(self.run.index)}" if self.run.n_floors > 1 else "")
             t = fonts["big"].render(word, True, (255, 255, 255))
-            r = t.get_rect(center=(W // 2, int(H * 0.3))).inflate(60, 24)
+            r = t.get_rect(center=(map_view(self.game).centerx, int(H * 0.3))).inflate(60, 24)
             panel = pygame.Surface(r.size, pygame.SRCALPHA)
             panel.fill((10, 14, 24, min(200, self.banner * 4)))
             screen.blit(panel, r.topleft)

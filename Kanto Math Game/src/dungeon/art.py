@@ -55,6 +55,7 @@ ROOM_STAIRS = {}  # a room's staircase, tile by tile (the map's roofs "_stairs" 
 ROOM_STOPS = set()  # a room's stop tiles ("_stops" ["x,y", ...]): where a spin tile's slide ends, a small steel stud
 WET_TREES = set()  # trees standing in water (the map's roofs "_wet" [[x0, x1, y], ...]: the Lake of Rage's flooded wood): the lake carries on under them
 LOOK = {}  # a floor's own colours, from its source (the map's or floor's roofs "_look" {"floor", "top", "wall"}): a cave's, tower's or building's
+ROOM_RUG = None  # a room's rug colour ("_rug" [r, g, b]; else green)
 ROOM_GLASS = set()  # a room's invisible walls ("_glass" ["x,y", ...]: Fuchsia Gym's): in the way, drawn as the floor with a faint glint
 ROOM_KINDS = {}  # what each piece of furniture is (the map's roofs "_kinds" {"x,y": "crate" | "bed" | "table" | ...}): drawn as that, in its _things colour
 ROOM_THINGS = {}  # a room's furniture colours, tile by tile (the map's roofs "_things" {"x,y": colour}: its m tiles, coloured after the original)
@@ -216,8 +217,9 @@ def surface(art, kinds, tile, roofs=None, theme=None):
     ROOM_THINGS = (roofs or {}).get("_things") or {}
     global LOOK, ROOM_KINDS
     ROOM_KINDS = (roofs or {}).get("_kinds") or {}
-    global ROOM_GLASS
+    global ROOM_GLASS, ROOM_RUG
     ROOM_GLASS = set((roofs or {}).get("_glass") or [])
+    ROOM_RUG = (roofs or {}).get("_rug")
     LOOK = {k: tuple(v) for k, v in ((roofs or {}).get("_look") or {}).items()}
     global WET_TREES
     WET_TREES = {(x, y) for x0, x1, y in (roofs or {}).get("_wet") or () for x in range(x0, x1 + 1)}
@@ -368,6 +370,10 @@ def surface(art, kinds, tile, roofs=None, theme=None):
                 _sign(surf, r)
             elif c == "l":
                 _lamp(surf, r)
+            elif c == "1" and _THEME == "room" and (roofs or {}).get("_mat"):  # a room on a route map: its door mat (the way back outside)
+                mat = r.inflate(-8, -12)
+                pygame.draw.rect(surf, (200, 66, 56), mat, border_radius=4)
+                pygame.draw.rect(surf, (244, 196, 180), mat, 3, border_radius=4)
             elif c == "1" and _THEME in ("tunnel", "room"):  # in a building: a warp panel (Team Galactic's, Saffron Gym's): a glowing pad
                 pad = r.inflate(-6, -6)
                 pygame.draw.rect(surf, (40, 60, 90), pad, border_radius=6)
@@ -632,10 +638,12 @@ def _ground(surf, art, x, y, tile, rng, as_c=None):
             return
         pygame.draw.rect(surf, floor, r)
         pygame.draw.rect(surf, tuple(max(0, v - 18) for v in floor), r, 1)
-        if c == "=":  # a rug
-            pygame.draw.rect(surf, (112, 176, 110), r)
+        def rug(i, j):  # (someone standing on a rug: it carries on under them)
+            return cell(art, i, j) == "=" or (cell(art, i, j) in "NX" and sum(cell(art, i + a, j + b) == "=" for a, b in ((0, -1), (0, 1), (-1, 0), (1, 0))) >= 2)
+        if rug(x, y):  # a rug
+            pygame.draw.rect(surf, tuple(ROOM_RUG or (112, 176, 110)), r)
             for (dx, dy), edge in (((0, -1), (r.x, r.y, tile, 5)), ((0, 1), (r.x, r.bottom - 5, tile, 5)), ((-1, 0), (r.x, r.y, 5, tile)), ((1, 0), (r.right - 5, r.y, 5, tile))):
-                if cell(art, x + dx, y + dy) != "=":
+                if not rug(x + dx, y + dy):
                     pygame.draw.rect(surf, (236, 236, 224), edge)
         elif c == "e":  # a flight of stairs
             pygame.draw.rect(surf, (196, 170, 96), r)
@@ -902,6 +910,26 @@ def fitting(surf, o, tile, ox=0, oy=0):
         slot.center = (r.centerx, r.y + r.h * 2 // 5)
         pygame.draw.rect(surf, (200, 192, 120), slot.inflate(u * 2, u * 2), border_radius=u * 2)
         pygame.draw.rect(surf, (252, 244, 152), slot, border_radius=u)
+    elif kind == "stool":  # a round cushioned stool you can walk over (FireRed's rest houses)
+        cx, cy, q = r.centerx, r.centery + u, r.w * 5 // 16
+        pygame.draw.ellipse(surf, (150, 140, 70), (cx - q, cy - q * 2 // 3 + u * 3, q * 2, q * 4 // 3))
+        pygame.draw.ellipse(surf, (240, 232, 128), (cx - q, cy - q * 2 // 3, q * 2, q * 4 // 3))
+        pygame.draw.ellipse(surf, (252, 248, 190), (cx - q * 2 // 3, cy - q // 2, q, q // 2))
+        pygame.draw.ellipse(surf, (120, 110, 60), (cx - q, cy - q * 2 // 3, q * 2, q * 4 // 3), 2)
+    elif kind == "goods":  # a shelf of goods hung on the wall, its foot over the floor below (you walk under it)
+        pygame.draw.rect(surf, white, r, border_radius=u * 2)
+        inner = r.inflate(-u * 4, -u * 5)
+        pygame.draw.rect(surf, shade, inner)
+        tints = ((224, 84, 72), (84, 132, 216), (240, 200, 88), (96, 176, 112), (236, 140, 72))
+        rows, gap = 2, max(2, u * 2)
+        bh = (inner.h - gap * (rows + 1)) // rows
+        bw = max(4, (inner.w - gap) // 6 - gap)
+        for j in range(rows):
+            by = inner.y + gap + j * (bh + gap)
+            pygame.draw.rect(surf, (236, 240, 246), (inner.x, by + bh, inner.w, gap))
+            for i in range(6):
+                pygame.draw.rect(surf, tints[(i + j * 2 + int(o["rect"][0])) % len(tints)], (inner.x + gap + i * (bw + gap), by, bw, bh))
+        pygame.draw.rect(surf, line, r, u, border_radius=u * 2)
     elif kind == "pad":  # a Gym Leader's pad on the floor (Koga's): a gold frame round an orange square
         pygame.draw.rect(surf, (150, 130, 96), r.inflate(-u * 2, -u * 2), border_radius=u * 3)
         pygame.draw.rect(surf, (236, 204, 110), r.inflate(-u * 4, -u * 4), border_radius=u * 3)
@@ -923,7 +951,7 @@ def overhead(o, tile):
     """What passes over your head: (image, (x px, y px)). o: {"kind": "rail", "rect": [x, y, w, h]} in tiles; you walk
     underneath it (Goldenrod's Magnet Train line over the main road). The image takes in the shadow it casts below."""
     x, y, w, h = o["rect"]
-    if o.get("kind") in ("case_top", "case", "window", "emblem"):  # a room's fitting you walk behind (a prize case's top shelf)
+    if o.get("kind") in ("case_top", "case", "window", "emblem", "goods"):  # a room's fitting you walk behind (a prize case's top shelf)
         surf = pygame.Surface((round(w * tile), round(h * tile)), pygame.SRCALPHA)
         fitting(surf, dict(o, rect=[0, 0, w, h]), tile)
         return surf, (round(x * tile), round(y * tile))
@@ -932,6 +960,12 @@ def overhead(o, tile):
         surf = pygame.Surface((w * tile, tile), pygame.SRCALPHA)
         for i in range(w):
             r = pygame.Rect(i * tile, 0, tile, tile)
+            if o.get("of") == "arch":  # a stone gate's beam over the way through (Route 23's badge gates)
+                beam = pygame.Rect(r.x, r.y + tile // 6, tile, tile * 2 // 3)
+                pygame.draw.rect(surf, (214, 216, 224), beam)
+                pygame.draw.rect(surf, (244, 246, 250), (beam.x, beam.y, tile, max(3, tile // 10)))
+                pygame.draw.rect(surf, (150, 154, 170), (beam.x, beam.bottom - max(3, tile // 10), tile, max(3, tile // 10)))
+                continue
             if o.get("of") == "post":  # a guard rail's post leaning over the lane beside it (the Cycling Road): steel, a red cap
                 pw = max(4, tile // 9)
                 px = r.x if o.get("side") == "left" else r.right - pw
