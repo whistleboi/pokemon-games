@@ -341,7 +341,10 @@ class WalkTownState(CityState):
                 self.player = inward
                 self.facing = (inward[0] - t[0], inward[1] - t[1]) if inward != t else (0, 1)
             else:
-                own = sorted((t for t, k in self.doors.items() if came and k.upper().replace(" ", "_") in came), key=lambda t: -t[1])
+                via = next((o.get("door") for o in self.area_data.get("travel_options", []) if o.get("door")
+                            and (o.get("target_area") or o.get("target")) == came), None)  # (back from a place you reach through a door here: at that door: the Reception Gate's great door)
+                own = [t for t, k in self.doors.items() if came and (k == via or k.upper().replace(" ", "_") in came)]
+                own = sorted(own, key=lambda t: (self.doors[t] != via, -t[1]))
                 door = (own[0] if own else None) or next((t for t, k in self.doors.items() if k == "center"), None) or \
                     next((t for t, k in self.doors.items() if k == "home"), None)  # (out of a building that's an area of its own, the Game Corner: at its own door)
                 spot = (door[0], door[1] + 1) if door else (self.w // 2, self.h // 2)
