@@ -76,83 +76,237 @@
     ]
   },
   "figures": {
-    "KANTO_POKEMON_TOWER:GHOST": {"draw": "ghost"},
-    "SAFARI_ZONE:GOLD TEETH": {"item": "GOLD_TEETH"},
-    "KANTO_ROUTE_5:GUARD": {"sheet": "NPC 01.png"},
-    "KANTO_ROUTE_6:GUARD": {"sheet": "NPC 01.png"},
-    "KANTO_ROUTE_7:GUARD": {"sheet": "NPC 01.png"},
-    "KANTO_ROUTE_8:GUARD": {"sheet": "NPC 01.png"},
-    "KANTO_ROUTE_22:GATE GUARD": {"sheet": "NPC 01.png"},
-    "KANTO_ROUTE_11:GATE GUARD": {"sheet": "NPC 01.png"},
-    "KANTO_ROUTE_12:GATE GUARD": {"sheet": "NPC 01.png"},
-    "KANTO_ROUTE_15:GATE GUARD": {"sheet": "NPC 01.png"},
-    "KANTO_ROUTE_16:GATE GUARD": {"sheet": "NPC 01.png"},
-    "KANTO_ROUTE_18:GATE GUARD": {"sheet": "NPC 01.png"},
-    "KANTO_ROUTE_2:FOREST GUIDE": {"sheet": "NPC 20.png"},
-    "KANTO_ROUTE_2:BUG FAN": {"sheet": "NPC 02.png"},
-    "KANTO_ROUTE_2:RESTING GIRL": {"sheet": "NPC 08.png"},
-    "KANTO_ROUTE_2:GATE LADY": {"sheet": "NPC 14.png"},
-    "KANTO_ROUTE_2:YOUNG TRAINER": {"sheet": "NPC 05.png"},
-    "KANTO_ROUTE_2:GATE VISITOR": {"sheet": "NPC 21.png"},
-    "KANTO_ROUTE_2:TRADER": {"sheet": "NPC 24.png"},
-    "KANTO_ROUTE_2:TRADER'S FRIEND": {"sheet": "NPC 28.png"},
-    "KANTO_ROUTE_2:OAK'S AIDE": {"sheet": "NPC 15.png"},
-    "KANTO_ROUTE_12:FISHING GURU": {"sheet": "NPC 10.png"},
-    "KANTO_ROUTE_16:CYCLIST": {"sheet": "NPC 25.png"},
-    "KANTO_ROUTE_16:A QUIET HOUSE": {"sheet": "NPC 23.png"},
-    "SAFARI_ZONE:SAFARI RANGER": {"sheet": "NPC 20.png"},
-    "SAFARI_ZONE:RESTING SCIENTIST": {"sheet": "NPC 15.png"},
-    "SAFARI_ZONE:TIRED HIKER": {"sheet": "NPC 06.png"},
-    "SAFARI_ZONE:BIRD FAN": {"sheet": "NPC 05.png"},
-    "SAFARI_ZONE:ROCK FAN": {"sheet": "NPC 13.png"},
-    "SAFARI_ZONE:NAP TAKER": {"sheet": "NPC 18.png"},
-    "SAFARI_ZONE:LOST BOY": {"sheet": "NPC 02.png"},
-    "SAFARI_ZONE:FISHING FAN": {"sheet": "NPC 07.png"},
-    "SAFARI_ZONE:PICNIC GIRL": {"sheet": "NPC 08.png"},
-    "SAFARI_ZONE:OLD CAMPER": {"sheet": "NPC 10.png"},
-    "SAFARI_ZONE:TEETH HUNTER": {"sheet": "NPC 21.png"},
-    "SAFARI_ZONE:LUCKY CATCHER": {"sheet": "NPC 28.png"},
-    "SAFARI_ZONE:SECRET HOUSE MAN": {"sheet": "NPC 24.png"},
-    "VERMILLION_CITY:Machop": {"pokemon": 66},
-    "FROST_CAVERN:ABOMASITE": {"item": "ABOMASITE"},
-    "FROST_CAVERN:SCIZORITE": {"item": "SCIZORITE"},
-    "REFLECTION_CAVE:ALAKAZITE": {"item": "ALAKAZITE"},
-    "AZURE_BAY:AN OLD MAN": {"sheet": "NPC 11.png"},
-    "CHAMBER_OF_EMPTINESS:BANETTITE": {"item": "BANETTITE"},
-    "VICTORY_ROAD_KALOS:GARCHOMPITE": {"item": "GARCHOMPITE"},
-    "SANTALUNE_FOREST:HERACRONITE": {"item": "HERACRONITE"},
-    "SANTALUNE_FOREST:PINSIRITE": {"item": "PINSIRITE"},
-    "KALOS_ROUTE_16:HOUNDOOMINITE": {"item": "HOUNDOOMINITE"},
-    "KALOS_ROUTE_16:MANECTITE": {"item": "MANECTITE"},
-    "GLITTERING_CAVE:KANGASKHANITE": {"item": "KANGASKHANITE"},
-    "TOWER_OF_MASTERY:KORRINA": {"sheet": "NPC 11.png"},
-    "KALOS_ROUTE_7:MAWILITE": {"item": "MAWILITE"},
-    "POKEMON_VILLAGE:MEWTWONITE X": {"item": "MEWTWONITE_X"},
-    "POKEMON_VILLAGE:MEWTWONITE Y": {"item": "MEWTWONITE_Y"},
-    "HOENN_SEA_MAUVILLE:BEEDRILLITE": {"item": "BEEDRILLITE"},
-    "HOENN_GRANITE_CAVE:STEELIXITE": {"item": "STEELIXITE"},
-    "HOENN_SHOAL_CAVE:GLALITITE": {"item": "GLALITITE"},
-    "HOENN_SHOAL_CAVE:SLOWBRONITE": {"item": "SLOWBRONITE"},
-    "HOENN_METEOR_FALLS:AERODACTYLITE": {"item": "AERODACTYLITE"},
-    "HOENN_FIERY_PATH:CHARIZARDITE X": {"item": "CHARIZARDITE_X"},
-    "HOENN_SCORCHED_SLAB:CHARIZARDITE Y": {"item": "CHARIZARDITE_Y"},
-    "HOENN_ROUTE_119:VENUSAURITE": {"item": "VENUSAURITE"},
-    "HOENN_SS_TIDAL:BLASTOISINITE": {"item": "BLASTOISINITE"},
-    "HOENN_ROUTE_124:PINSIRITE": {"item": "PINSIRITE"},
-    "HOENN_ROUTE_123:GYARADOSITE": {"item": "GYARADOSITE"},
-    "HOENN_ROUTE_123:ABOMASITE": {"item": "ABOMASITE"},
-    "HOENN_NEW_MAUVILLE:AMPHAROSITE": {"item": "AMPHAROSITE"},
-    "HOENN_PETALBURG_WOODS:SCIZORITE": {"item": "SCIZORITE"},
-    "HOENN_ROUTE_127:HERACRONITE": {"item": "HERACRONITE"},
-    "HOENN_JAGGED_PASS:TYRANITARITE": {"item": "TYRANITARITE"},
-    "HOENN_RUSTURF_TUNNEL:AGGRONITE": {"item": "AGGRONITE"},
-    "HOENN_MT_PYRE:MEDICHAMITE": {"item": "MEDICHAMITE"},
-    "HOENN_MT_PYRE:BANETTITE": {"item": "BANETTITE"},
-    "HOENN_ROUTE_110:MANECTITE": {"item": "MANECTITE"},
-    "HOENN_SAFARI_ZONE:ABSOLITE": {"item": "ABSOLITE"},
-    "HOENN_TEAM_HIDEOUT:SHARPEDONITE": {"item": "SHARPEDONITE"},
-    "HOENN_MAGMA_HIDEOUT:CAMERUPTITE": {"item": "CAMERUPTITE"},
-    "HOENN_METEOR_FALLS:AN OLD WOMAN": {"sheet": "NPC 11.png"},
+    "KANTO_POKEMON_TOWER:GHOST": {
+      "draw": "ghost"
+    },
+    "SAFARI_ZONE:GOLD TEETH": {
+      "item": "GOLD_TEETH"
+    },
+    "KANTO_ROUTE_5:GUARD": {
+      "sheet": "NPC 01.png"
+    },
+    "KANTO_ROUTE_6:GUARD": {
+      "sheet": "NPC 01.png"
+    },
+    "KANTO_ROUTE_7:GUARD": {
+      "sheet": "NPC 01.png"
+    },
+    "KANTO_ROUTE_8:GUARD": {
+      "sheet": "NPC 01.png"
+    },
+    "KANTO_ROUTE_22:GATE GUARD": {
+      "sheet": "NPC 01.png"
+    },
+    "KANTO_ROUTE_11:GATE GUARD": {
+      "sheet": "NPC 01.png"
+    },
+    "KANTO_ROUTE_12:GATE GUARD": {
+      "sheet": "NPC 01.png"
+    },
+    "KANTO_ROUTE_15:GATE GUARD": {
+      "sheet": "NPC 01.png"
+    },
+    "KANTO_ROUTE_16:GATE GUARD": {
+      "sheet": "NPC 01.png"
+    },
+    "KANTO_ROUTE_18:GATE GUARD": {
+      "sheet": "NPC 01.png"
+    },
+    "KANTO_ROUTE_2:FOREST GUIDE": {
+      "sheet": "NPC 20.png"
+    },
+    "KANTO_ROUTE_2:BUG FAN": {
+      "sheet": "NPC 02.png"
+    },
+    "KANTO_ROUTE_2:RESTING GIRL": {
+      "sheet": "NPC 08.png"
+    },
+    "KANTO_ROUTE_2:GATE LADY": {
+      "sheet": "NPC 14.png"
+    },
+    "KANTO_ROUTE_2:YOUNG TRAINER": {
+      "sheet": "NPC 05.png"
+    },
+    "KANTO_ROUTE_2:GATE VISITOR": {
+      "sheet": "NPC 21.png"
+    },
+    "KANTO_ROUTE_2:TRADER": {
+      "sheet": "NPC 24.png"
+    },
+    "KANTO_ROUTE_2:TRADER'S FRIEND": {
+      "sheet": "NPC 28.png"
+    },
+    "KANTO_ROUTE_2:OAK'S AIDE": {
+      "sheet": "NPC 15.png"
+    },
+    "KANTO_ROUTE_12:FISHING GURU": {
+      "sheet": "NPC 10.png"
+    },
+    "KANTO_ROUTE_16:CYCLIST": {
+      "sheet": "NPC 25.png"
+    },
+    "KANTO_ROUTE_16:A QUIET HOUSE": {
+      "sheet": "NPC 23.png"
+    },
+    "SAFARI_ZONE:SAFARI RANGER": {
+      "sheet": "NPC 20.png"
+    },
+    "SAFARI_ZONE:RESTING SCIENTIST": {
+      "sheet": "NPC 15.png"
+    },
+    "SAFARI_ZONE:TIRED HIKER": {
+      "sheet": "NPC 06.png"
+    },
+    "SAFARI_ZONE:BIRD FAN": {
+      "sheet": "NPC 05.png"
+    },
+    "SAFARI_ZONE:ROCK FAN": {
+      "sheet": "NPC 13.png"
+    },
+    "SAFARI_ZONE:NAP TAKER": {
+      "sheet": "NPC 18.png"
+    },
+    "SAFARI_ZONE:LOST BOY": {
+      "sheet": "NPC 02.png"
+    },
+    "SAFARI_ZONE:FISHING FAN": {
+      "sheet": "NPC 07.png"
+    },
+    "SAFARI_ZONE:PICNIC GIRL": {
+      "sheet": "NPC 08.png"
+    },
+    "SAFARI_ZONE:OLD CAMPER": {
+      "sheet": "NPC 10.png"
+    },
+    "SAFARI_ZONE:TEETH HUNTER": {
+      "sheet": "NPC 21.png"
+    },
+    "SAFARI_ZONE:LUCKY CATCHER": {
+      "sheet": "NPC 28.png"
+    },
+    "SAFARI_ZONE:SECRET HOUSE MAN": {
+      "sheet": "NPC 24.png"
+    },
+    "VERMILLION_CITY:Machop": {
+      "pokemon": 66
+    },
+    "FROST_CAVERN:ABOMASITE": {
+      "item": "ABOMASITE"
+    },
+    "FROST_CAVERN:SCIZORITE": {
+      "item": "SCIZORITE"
+    },
+    "REFLECTION_CAVE:ALAKAZITE": {
+      "item": "ALAKAZITE"
+    },
+    "AZURE_BAY:AN OLD MAN": {
+      "sheet": "NPC 11.png"
+    },
+    "CHAMBER_OF_EMPTINESS:BANETTITE": {
+      "item": "BANETTITE"
+    },
+    "VICTORY_ROAD_KALOS:GARCHOMPITE": {
+      "item": "GARCHOMPITE"
+    },
+    "SANTALUNE_FOREST:HERACRONITE": {
+      "item": "HERACRONITE"
+    },
+    "SANTALUNE_FOREST:PINSIRITE": {
+      "item": "PINSIRITE"
+    },
+    "KALOS_ROUTE_16:HOUNDOOMINITE": {
+      "item": "HOUNDOOMINITE"
+    },
+    "KALOS_ROUTE_16:MANECTITE": {
+      "item": "MANECTITE"
+    },
+    "GLITTERING_CAVE:KANGASKHANITE": {
+      "item": "KANGASKHANITE"
+    },
+    "TOWER_OF_MASTERY:KORRINA": {
+      "sheet": "NPC 11.png"
+    },
+    "KALOS_ROUTE_7:MAWILITE": {
+      "item": "MAWILITE"
+    },
+    "POKEMON_VILLAGE:MEWTWONITE X": {
+      "item": "MEWTWONITE_X"
+    },
+    "POKEMON_VILLAGE:MEWTWONITE Y": {
+      "item": "MEWTWONITE_Y"
+    },
+    "HOENN_SEA_MAUVILLE:BEEDRILLITE": {
+      "item": "BEEDRILLITE"
+    },
+    "HOENN_GRANITE_CAVE:STEELIXITE": {
+      "item": "STEELIXITE"
+    },
+    "HOENN_SHOAL_CAVE:GLALITITE": {
+      "item": "GLALITITE"
+    },
+    "HOENN_SHOAL_CAVE:SLOWBRONITE": {
+      "item": "SLOWBRONITE"
+    },
+    "HOENN_METEOR_FALLS:AERODACTYLITE": {
+      "item": "AERODACTYLITE"
+    },
+    "HOENN_FIERY_PATH:CHARIZARDITE X": {
+      "item": "CHARIZARDITE_X"
+    },
+    "HOENN_SCORCHED_SLAB:CHARIZARDITE Y": {
+      "item": "CHARIZARDITE_Y"
+    },
+    "HOENN_ROUTE_119:VENUSAURITE": {
+      "item": "VENUSAURITE"
+    },
+    "HOENN_SS_TIDAL:BLASTOISINITE": {
+      "item": "BLASTOISINITE"
+    },
+    "HOENN_ROUTE_124:PINSIRITE": {
+      "item": "PINSIRITE"
+    },
+    "HOENN_ROUTE_123:GYARADOSITE": {
+      "item": "GYARADOSITE"
+    },
+    "HOENN_ROUTE_123:ABOMASITE": {
+      "item": "ABOMASITE"
+    },
+    "HOENN_NEW_MAUVILLE:AMPHAROSITE": {
+      "item": "AMPHAROSITE"
+    },
+    "HOENN_PETALBURG_WOODS:SCIZORITE": {
+      "item": "SCIZORITE"
+    },
+    "HOENN_ROUTE_127:HERACRONITE": {
+      "item": "HERACRONITE"
+    },
+    "HOENN_JAGGED_PASS:TYRANITARITE": {
+      "item": "TYRANITARITE"
+    },
+    "HOENN_RUSTURF_TUNNEL:AGGRONITE": {
+      "item": "AGGRONITE"
+    },
+    "HOENN_MT_PYRE:MEDICHAMITE": {
+      "item": "MEDICHAMITE"
+    },
+    "HOENN_MT_PYRE:BANETTITE": {
+      "item": "BANETTITE"
+    },
+    "HOENN_ROUTE_110:MANECTITE": {
+      "item": "MANECTITE"
+    },
+    "HOENN_SAFARI_ZONE:ABSOLITE": {
+      "item": "ABSOLITE"
+    },
+    "HOENN_TEAM_HIDEOUT:SHARPEDONITE": {
+      "item": "SHARPEDONITE"
+    },
+    "HOENN_MAGMA_HIDEOUT:CAMERUPTITE": {
+      "item": "CAMERUPTITE"
+    },
+    "HOENN_METEOR_FALLS:AN OLD WOMAN": {
+      "sheet": "NPC 11.png"
+    },
     "POWER_PLANT:TALK TO THE MANAGER": {
       "sheet": "NPC 15.png"
     },
@@ -197,6 +351,171 @@
     },
     "NATIONAL_PARK:BUG-CATCHING CONTEST": {
       "sheet": "NPC 01.png"
+    },
+    "TWINLEAF_TOWN:Visit {rival_name}'s House": {
+      "sheet": "pt_middlewoman1.png"
+    },
+    "TWINLEAF_TOWN:Visit Mom": {
+      "sheet": "pt_mama.png"
+    },
+    "SANDGEM_TOWN:Shop": {
+      "sheet": "pt_shopw1.png"
+    },
+    "SANDGEM_TOWN:Heal": {
+      "sheet": "pt_pcwoman1.png"
+    },
+    "SANDGEM_TOWN:Visit Professor Rowan": {
+      "sheet": "pt_doctor.png"
+    },
+    "SANDGEM_TOWN:Talk to Dawn/Lucas": {
+      "sheet": "pt_babygirl1.png"
+    },
+    "JUBILIFE_CITY:GTS Building": {
+      "sheet": "pt_woman1.png"
+    },
+    "JUBILIFE_CITY:Pokétch Company": {
+      "sheet": "pt_middleman2.png"
+    },
+    "JUBILIFE_CITY:Shop": {
+      "sheet": "pt_shopw1.png"
+    },
+    "OREBURGH_CITY:Gym": {
+      "sheet": "pt_leader1.png"
+    },
+    "OREBURGH_CITY:Heal": {
+      "sheet": "pt_pcwoman1.png"
+    },
+    "OREBURGH_CITY:Shop": {
+      "sheet": "pt_shopw1.png"
+    },
+    "OREBURGH_CITY:Mining Museum": {
+      "sheet": "pt_boy1.png"
+    },
+    "FLOAROMA_TOWN:Shop": {
+      "sheet": "pt_shopw1.png"
+    },
+    "FLOAROMA_TOWN:Flower Shop": {
+      "sheet": "pt_woman2.png"
+    },
+    "ETERNA_CITY:Shop": {
+      "sheet": "pt_shopw1.png"
+    },
+    "ETERNA_CITY:Bike Shop": {
+      "sheet": "pt_middleman1.png"
+    },
+    "ETERNA_CITY:Gym": {
+      "sheet": "pt_leader2.png"
+    },
+    "HEARTHOME_CITY:Amity Square": {
+      "sheet": "pt_woman6.png"
+    },
+    "HEARTHOME_CITY:Contest Hall": {
+      "sheet": "pt_pcwoman1.png"
+    },
+    "HEARTHOME_CITY:Gym": {
+      "sheet": "pt_leader5.png"
+    },
+    "HEARTHOME_CITY:Poffin House": {
+      "sheet": "pt_idol.png"
+    },
+    "HEARTHOME_CITY:Shop": {
+      "sheet": "pt_shopw1.png"
+    },
+    "SOLACEON_TOWN:Pokémon Day Care": {
+      "sheet": "pt_oldwoman1.png"
+    },
+    "SOLACEON_TOWN:Day Care Center": {
+      "sheet": "pt_sunglasses.png"
+    },
+    "VEILSTONE_CITY:Game Corner": {
+      "sheet": "pt_workman.png"
+    },
+    "VEILSTONE_CITY:Department Store": {
+      "sheet": "pt_shopw1.png"
+    },
+    "VEILSTONE_CITY:Gym": {
+      "sheet": "pt_leader3.png"
+    },
+    "PASTORIA_CITY:Gym": {
+      "sheet": "pt_leader4.png"
+    },
+    "PASTORIA_CITY:Shop": {
+      "sheet": "pt_shopw1.png"
+    },
+    "CELESTIC_TOWN:Talk to Elder": {
+      "sheet": "pt_oldwoman1.png"
+    },
+    "CANALAVE_CITY:Gym": {
+      "sheet": "pt_leader6.png"
+    },
+    "CANALAVE_CITY:Heal": {
+      "sheet": "pt_pcwoman1.png"
+    },
+    "CANALAVE_CITY:Shop": {
+      "sheet": "pt_shopw1.png"
+    },
+    "CANALAVE_CITY:Canalave Library": {
+      "sheet": "pt_bigfour4.png"
+    },
+    "SNOWPOINT_CITY:Shop": {
+      "sheet": "pt_shopw1.png"
+    },
+    "SNOWPOINT_CITY:Heal": {
+      "sheet": "pt_pcwoman1.png"
+    },
+    "SNOWPOINT_CITY:Gym": {
+      "sheet": "pt_leader7.png"
+    },
+    "SUNYSHORE_CITY:Shop": {
+      "sheet": "pt_shopw1.png"
+    },
+    "SUNYSHORE_CITY:Gym": {
+      "sheet": "pt_leader8.png"
+    },
+    "SINNOH_POKEMON_LEAGUE:Heal": {
+      "sheet": "pt_pcwoman1.png"
+    },
+    "SINNOH_POKEMON_LEAGUE:Shop": {
+      "sheet": "pt_middleman1.png"
+    },
+    "FIGHT_AREA:Pokémon Center": {
+      "sheet": "pt_pcwoman1.png"
+    },
+    "FIGHT_AREA:Shop": {
+      "sheet": "pt_shopw1.png"
+    },
+    "SURVIVAL_AREA:Pokémon Center": {
+      "sheet": "pt_pcwoman1.png"
+    },
+    "SURVIVAL_AREA:Shop": {
+      "sheet": "pt_shopw1.png"
+    },
+    "JUBILIFE_CITY:Heal": {
+      "sheet": "pt_pcwoman1.png"
+    },
+    "FLOAROMA_TOWN:Heal": {
+      "sheet": "pt_pcwoman1.png"
+    },
+    "ETERNA_CITY:Heal": {
+      "sheet": "pt_pcwoman1.png"
+    },
+    "HEARTHOME_CITY:Heal": {
+      "sheet": "pt_pcwoman1.png"
+    },
+    "SOLACEON_TOWN:Heal": {
+      "sheet": "pt_pcwoman1.png"
+    },
+    "VEILSTONE_CITY:Heal": {
+      "sheet": "pt_pcwoman1.png"
+    },
+    "PASTORIA_CITY:Heal": {
+      "sheet": "pt_pcwoman1.png"
+    },
+    "CELESTIC_TOWN:Heal": {
+      "sheet": "pt_pcwoman1.png"
+    },
+    "SUNYSHORE_CITY:Heal": {
+      "sheet": "pt_pcwoman1.png"
     }
   },
   "townsperson": "NPC 17.png",
@@ -214,5 +533,46 @@
       "rosa",
       "leaf"
     ]
+  },
+  "trainers_SINNOH": {
+    "youngster.png": "pt_boy2.png",
+    "lass.png": "pt_girl2.png",
+    "acetrainer_m.png": "pt_man3.png",
+    "acetrainer_f.png": "pt_woman3.png",
+    "galactic_grunt.png": "pt_gingam.png",
+    "swimmer_m.png": "pt_swimmerm.png",
+    "swimmer_f.png": "pt_swimmerw.png",
+    "scientist.png": "pt_assistantm.png",
+    "hiker.png": "pt_mount.png",
+    "ranger_m.png": "pt_explore.png",
+    "psychic.png": "pt_mystery.png",
+    "psychic_m.png": "pt_mystery.png",
+    "blackbelt.png": "pt_fighter.png",
+    "dragon_tamer.png": "pt_man5.png",
+    "fisherman.png": "pt_fishing.png",
+    "picnicker.png": "pt_picnicgirl.png",
+    "camper.png": "pt_campboy.png",
+    "engineer.png": "pt_workman.png",
+    "bird_keeper.png": "pt_boy3.png",
+    "pokefan_f.png": "pt_middlewoman1.png",
+    "twins.png": "pt_babygirl1.png",
+    "pokemaniac.png": "pt_bigman.png",
+    "bug_catcher.png": "pt_boy1.png",
+    "supernerd.png": "pt_sunglasses.png",
+    "sailor.png": "pt_seaman.png",
+    "roughneck.png": "pt_badman.png",
+    "veteran.png": "pt_gorggeousm.png",
+    "school_kid_m.png": "pt_boy4.png",
+    "beauty.png": "pt_lady.png",
+    "gentleman.png": "pt_gentleman.png",
+    "cyrus.png": "pt_gingaboss.png",
+    "mars.png": "pt_gkanbu1.png",
+    "jupiter.png": "pt_gkanbu2.png",
+    "saturn.png": "pt_gkanbu3.png",
+    "charon.png": "pt_gkanbu4.png",
+    "sage.png": "pt_oldman1.png",
+    "sage2.png": "pt_oldman2.png",
+    "master.png": "pt_bigfour4.png",
+    "rival.png": "pt_rivel.png"
   }
 }

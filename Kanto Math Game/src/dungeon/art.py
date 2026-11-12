@@ -36,6 +36,7 @@ A map's "theme" "distortion" draws the Distortion World: red rock slabs in a blu
 A map's "theme" "seabed" draws a floor under the sea: dark blue sand, rock walls, seaweed for its tall grass.
 A way out (< > ^ v) with the sea on every side is surfed onto, like w and u (Route 124's sides).
 A map's "theme" "cave" (or a turbine's t: in the way) draws the ground as a cave floor and c as its rock walls; "ice" the same, icy."""
+import os
 import random
 
 import pygame
@@ -57,6 +58,12 @@ WET_TREES = set()  # trees standing in water (the map's roofs "_wet" [[x0, x1, y
 LOOK = {}  # a floor's own colours, from its source (the map's or floor's roofs "_look" {"floor", "top", "wall"}): a cave's, tower's or building's
 ROOM_RUG = None  # a room's rug colour ("_rug" [r, g, b]; else green)
 ROOM_GLASS = set()  # a room's invisible walls ("_glass" ["x,y", ...]: Fuchsia Gym's): in the way, drawn as the floor with a faint glint
+OBJECTS = []  # the things standing on this map, each one whole (the map's roofs "_objects" [{"k": kind, "r": [x, y, w, h] its tiles}]): drawn from the tile sheet (assets/tiles)
+_PT = {}  # the real games' own models as sprites (assets/tiles/<set>/<name>.png, index.json: each one's origin), by "set:name"
+_ATLAS = None
+SHEET_OUT = None  # draw the outdoors from the tile sheet too (atlas.json "_outdoors"): grass, paths, trees, signs, rocks, houses
+_SWAPPED = False  # (a snow or marsh map is being drawn: its ground is not the sheet's green)
+_SCALED = {}
 ROOM_KINDS = {}  # what each piece of furniture is (the map's roofs "_kinds" {"x,y": "crate" | "bed" | "table" | ...}): drawn as that, in its _things colour
 ROOM_THINGS = {}  # a room's furniture colours, tile by tile (the map's roofs "_things" {"x,y": colour}: its m tiles, coloured after the original)
 BRIDGE_LOOKS = {None: ((168, 124, 140), (112, 78, 96), (204, 164, 176), (96, 64, 80)),
@@ -203,9 +210,12 @@ def surface(art, kinds, tile, roofs=None, theme=None):
         _SNOW = _SWAPS[theme]
         old = {k: globals()[k] for k in _SNOW}
         globals().update(_SNOW)
+        global _SWAPPED
+        _SWAPPED = True
         try:
             return surface(art, kinds, tile, roofs, None)
         finally:
+            _SWAPPED = False
             globals().update(old)
     global _THEME, BRIDGE_LOOK
     _THEME = theme
@@ -215,7 +225,10 @@ def surface(art, kinds, tile, roofs=None, theme=None):
     global ROOM_STOPS
     ROOM_STOPS = set((roofs or {}).get("_stops") or [])
     ROOM_THINGS = (roofs or {}).get("_things") or {}
-    global LOOK, ROOM_KINDS
+    global LOOK, ROOM_KINDS, OBJECTS
+    OBJECTS = [o for o in ((roofs or {}).get("_objects") or []) if _sprite(o.get("k")) is not None]
+    covered = {(o["r"][0] + a, o["r"][1] + b) for o in OBJECTS if "r" in o for a in range(o["r"][2]) for b in range(o["r"][3])}
+    models = bool((roofs or {}).get("_models")) and bool(OBJECTS)  # (this map's buildings and furniture are the real game's own models: nothing of ours drawn for them)
     ROOM_KINDS = (roofs or {}).get("_kinds") or {}
     global ROOM_GLASS, ROOM_RUG
     ROOM_GLASS = set((roofs or {}).get("_glass") or [])
@@ -227,18 +240,21 @@ def surface(art, kinds, tile, roofs=None, theme=None):
     BRIDGE_LOOK = (roofs or {}).get("_bridge")  # (the map's own bridges: "wood" planks, "steel" (a cycling road), "solar" panels; else the log bridge)
     h, w = len(art), len(art[0])
     surf = pygame.Surface((w * tile, h * tile))
+    pic = _picture((roofs or {}).get("_picture"), w, h, tile)  # (the real game's own picture of this map's ground, laid under everything)
     rng = random.Random(f"{w}x{h}:{''.join(art[0])}")
     # the ground first, everywhere (under the trees and buildings too)
-    for y in range(h):
+    if pic:
+        surf.blit(pic, (0, 0))
+    for y in range(h if not pic else 0):
         for x in range(w):
             _ground(surf, art, x, y, tile, rng)
     snow = {tuple(t) for t in (roofs or {}).get("_snow", [])}  # (patches of snow lying on a green map's lawn, where the source has them: Sinnoh)
     for x, y in sorted(snow):
-        if 0 <= y < h and 0 <= x < w and art[y][x] == ".":
+        if not pic and 0 <= y < h and 0 <= x < w and art[y][x] == ".":
             _snow_patch(surf, pygame.Rect(x * tile, y * tile, tile, tile), [(x + dx, y + dy) in snow for dx, dy in ((0, -1), (1, 0), (0, 1), (-1, 0))])
     wet = {tuple(t) for t in (roofs or {}).get("_puddles", [])}  # (puddles on the lawn you walk through: Sinnoh's rainy routes)
     for x, y in sorted(wet):
-        if 0 <= y < h and 0 <= x < w and art[y][x] == ".":
+        if not pic and 0 <= y < h and 0 <= x < w and art[y][x] == ".":
             _snow_patch(surf, pygame.Rect(x * tile, y * tile, tile, tile), [(x + dx, y + dy) in wet for dx, dy in ((0, -1), (1, 0), (0, 1), (-1, 0))],
                         (150, 196, 236), (176, 216, 246))
     for y in range(h):
@@ -253,6 +269,21 @@ def surface(art, kinds, tile, roofs=None, theme=None):
                     pygame.draw.rect(surf, (150, 40, 36), mat.move(0, 2), border_radius=5)
                     pygame.draw.rect(surf, (226, 70, 58), mat, border_radius=5)
                     pygame.draw.rect(surf, (246, 130, 110), mat.inflate(-10, -10), 2, border_radius=4)
+                continue
+            if pic and c not in "02b!&x":  # (on the game's own picture only what is not in it is drawn: a cracked rock, a small tree, a boulder, a sign)
+                continue
+            if pic and c in "02b":  # (those three as the game's own, where it has them)
+                own = _ow(spec_folder(roofs), {"0": "breakrock", "2": "tree", "b": "rock"}[c], tile)
+                if own:
+                    surf.blit(own, (r.centerx - own.get_width() // 2, r.bottom - own.get_height()))
+                    continue
+            if models and (c in "mzyjkl" or (c == "c" and f"{x},{y}" in ROOM_THINGS)):
+                if c == "c":
+                    pygame.draw.rect(surf, LOOK.get("floor") or tuple(ROOM_LOOK[0] or (176, 176, 168)), r)
+                continue
+            if (x, y) in covered and c in "mzyjc":  # under a thing drawn whole from the tile sheet: just its floor
+                if c == "c":
+                    pygame.draw.rect(surf, LOOK.get("floor") or tuple(ROOM_LOOK[0] or (176, 176, 168)), r)
                 continue
             if c == "c" and f"{x},{y}" in ROOM_THINGS:  # something standing in a room that the map holds as wall (a long table, a bed): its floor, then the thing in its own colour
                 col = tuple(ROOM_THINGS[f"{x},{y}"])
@@ -415,10 +446,22 @@ def surface(art, kinds, tile, roofs=None, theme=None):
                 pygame.draw.circle(surf, (120, 126, 140), c0, tile // 5)
                 pygame.draw.circle(surf, (214, 218, 226), c0, tile // 9)
     for k, rect in sorted(buildings(art).items(), key=lambda kv: kv[1].bottom):
-        _building(surf, art, rect, kinds.get(k, "house"), tile, (roofs or {}).get(k))
+        if not models:
+            _building(surf, art, rect, kinds.get(k, "house"), tile, (roofs or {}).get(k))
+    for o in sorted(OBJECTS, key=lambda o: o["at"][1] if "at" in o else o["r"][1] + o["r"][3]):  # the things from the tile sheets, back to front
+        if "at" in o:  # one of the real game's models, where the game stands it
+            pic, ox, oy = _model(o["k"])
+            key = (o["k"], tile)
+            if key not in _SCALED:
+                _SCALED[key] = pic if tile == 32 else pygame.transform.scale(pic, (max(1, pic.get_width() * tile // 32), max(1, pic.get_height() * tile // 32)))
+            surf.blit(_SCALED[key], (int(o["at"][0] * tile - ox * tile / 32), int(o["at"][1] * tile - oy * tile / 32)))
+        else:
+            _object(surf, o["k"], pygame.Rect(o["r"][0] * tile, o["r"][1] * tile, o["r"][2] * tile, o["r"][3] * tile), tile)
     big = [tuple(t) for t in (roofs or {}).get("_big_trees", []) if all(0 <= t[1] + b < h and 0 <= t[0] + a < w and art[t[1] + b][t[0] + a] == "T" for a in (0, 1) for b in (0, 1))]  # (a map's big trees: two tiles by two, as the source has them: Sinnoh)
     under = {(bx + a, by + b) for bx, by in big for a in (0, 1) for b in (0, 1)}
     order = [(y, x, 1) for y in range(h) for x in range(w) if art[y][x] == "T" and (x, y) not in under] + [(by + 1, bx, 2) for bx, by in big]
+    if pic:  # (its trees are in the picture)
+        order = []
     for y, x, size in sorted(order):  # trees last, top to bottom: a lower one stands in front
         if size == 2:
             _big_tree(surf, pygame.Rect(x * tile, (y - 1) * tile, tile * 2, tile * 2))
@@ -804,13 +847,21 @@ def _ground(surf, art, x, y, tile, rng, as_c=None):
         base = PATH if "=" in near and (c != "!" or near.count("=") >= 3) else BEACH if near.count("s") >= 2 or (
             "s" in near and "." not in near and '"' not in near) else GROUND if c != "!" or "." in near else base
     pygame.draw.rect(surf, base, r)
-    if base == PATH:  # a soft edge where the path meets the grass
+    sheet = _out(("grass", "grass2", "grass3")[(x * 7 + y * 13) % 3] if base == GROUND else "sand", tile, tile) if base in (GROUND, PATH) else None
+    if sheet:  # (the ground off the tile sheet)
+        surf.blit(sheet, r)
+        top = _out("tall", tile, tile) if c == '"' else _out("flower", tile, tile) if c == "f" else None
+        if top:
+            surf.blit(top, r)
+        if c in '"f' and top:
+            return
+    if base == PATH and not sheet:  # a soft edge where the path meets the grass
         for dx, dy in ((0, -1), (0, 1), (-1, 0), (1, 0)):
             if cell(art, x + dx, y + dy) in '.f"N':
                 edge = {(0, -1): (r.x, r.y, tile, 3), (0, 1): (r.x, r.bottom - 3, tile, 3),
                         (-1, 0): (r.x, r.y, 3, tile), (1, 0): (r.right - 3, r.y, 3, tile)}[(dx, dy)]
                 pygame.draw.rect(surf, PATH_EDGE, edge)
-    elif base == GROUND and rng.random() < 0.18 and c in ".N":  # a few tufts
+    elif base == GROUND and not sheet and rng.random() < 0.18 and c in ".N":  # a few tufts
         tx, ty = r.x + rng.randint(8, tile - 14), r.y + rng.randint(10, tile - 10)
         for i in range(3):
             pygame.draw.line(surf, GROUND_DARK, (tx + i * 3, ty), (tx + i * 3 - 1, ty - 5), 2)
@@ -1082,12 +1133,146 @@ def draw_overheads(surf, m, tile):
 
 
 def _tree(surf, r, rng):
+    pic = _out("tree", r.w + r.w // 6)
+    if pic:
+        surf.blit(pic, (r.centerx - pic.get_width() // 2, r.bottom - pic.get_height() + r.h // 10))
+        return
     cx, cy = r.centerx, r.centery
     pygame.draw.ellipse(surf, LEAF_DARK, (r.x + 6, r.bottom - 14, r.w - 12, 12))  # its shadow
     pygame.draw.rect(surf, TRUNK, (cx - 5, cy + 4, 10, r.h // 2 - 6))
     pygame.draw.circle(surf, LEAF_DARK, (cx, cy - 2), r.w // 2 - 1)
     pygame.draw.circle(surf, LEAF, (cx - 2, cy - 6), r.w // 2 - 6)
     pygame.draw.circle(surf, LEAF_LIGHT, (cx - 9, cy - 13), r.w // 6)
+
+
+def spec_folder(roofs):
+    """Which real game's art a map lies on: the folder of its ground picture ("pt_ground/T01.png" -> "pt")."""
+    f = ((roofs or {}).get("_picture") or {}).get("f") or ""
+    return f.split("_ground")[0] if "_ground" in f else None
+
+
+def _ow(folder, name, tile):
+    """One of a real game's own map things (a boulder, a cracked rock, a small tree: assets/tiles/<folder>/ow_<name>.png), at the map's scale, or None."""
+    key = ("ow", folder, name, tile)
+    if key not in _PT:
+        _PT[key] = None
+        try:
+            base = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "assets", "tiles", folder)
+            img = pygame.image.load(os.path.join(base, f"ow_{name}.png"))
+            _PT[key] = pygame.transform.scale(img, (img.get_width() * tile // 16, img.get_height() * tile // 16))
+        except Exception:
+            _PT[key] = None
+    return _PT[key]
+
+
+def _picture(spec, w, h, tile):
+    """A map's ground as the real game draws it: the part of a zone's picture this map covers (spec {"f": file under assets/tiles,
+    "at": [x, y] the map's top-left tile in it}; 16 px a tile there), at the map's scale. None if there is none."""
+    if not spec:
+        return None
+    try:
+        key = ("pic", spec["f"])
+        if key not in _PT:
+            base = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "assets", "tiles")
+            _PT[key] = pygame.image.load(os.path.join(base, spec["f"]))
+        img = _PT[key]
+        part = pygame.Surface((w * 16, h * 16))
+        part.fill((16, 16, 24))
+        part.blit(img, (-spec["at"][0] * 16, -spec["at"][1] * 16))
+        return part if tile == 16 else pygame.transform.scale(part, (w * tile, h * tile))
+    except Exception:
+        return None
+
+
+def _model(key):
+    """(picture, origin x, origin y) of one of a real game's models ("pt:0_23": assets/tiles/pt/0_23.png), or None."""
+    if key not in _PT:
+        _PT[key] = None
+        try:
+            import json as _json
+            folder, name = key.split(":", 1)
+            base = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "assets", "tiles", folder)
+            if ("index", folder) not in _PT:
+                _PT[("index", folder)] = _json.load(open(os.path.join(base, "index.json")))
+            meta = _PT[("index", folder)].get(name)
+            if meta and not meta.get("none"):
+                _PT[key] = (pygame.image.load(os.path.join(base, name + ".png")), meta["ox"], meta["oy"])
+        except Exception:
+            _PT[key] = None
+    return _PT[key]
+
+
+def _sprite(kind):
+    """A kind of thing's picture off the tile sheet (assets/tiles/atlas.json: where each is), or None."""
+    global _ATLAS
+    if isinstance(kind, str) and ":" in kind:
+        got = _model(kind)
+        return got[0] if got else None
+    if _ATLAS is None:
+        _ATLAS = {}
+        try:
+            import json as _json
+            base = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "assets", "tiles")
+            spec = _json.load(open(os.path.join(base, "atlas.json")))
+            sheets = {k: pygame.image.load(os.path.join(base, v)) for k, v in spec["_sheets"].items()}
+            global SHEET_OUT
+            if SHEET_OUT is None:
+                SHEET_OUT = bool(spec.get("_outdoors"))
+            _ATLAS = {k: sheets[v[0]].subsurface(v[1:]).copy() for k, v in spec.items() if not k.startswith("_")}
+        except Exception:
+            _ATLAS = {}
+    return _ATLAS.get(kind)
+
+
+def _out(kind, w, h=None):
+    """An outdoor sprite at w px wide (h: its height; else in proportion), or None when the outdoors is hand-drawn here."""
+    img = _sprite(kind)
+    if img is None or not SHEET_OUT or _SWAPPED or _THEME is not None:
+        return None
+    key = (kind, w, h)
+    if key not in _SCALED:
+        _SCALED[key] = pygame.transform.scale(img, (w, h or int(img.get_height() * w / img.get_width())))
+    return _SCALED[key]
+
+
+def _house_sprite(surf, art, rect, tile, kind):
+    """A house off the tile sheet over its tiles: the part left of its door, its door, the part right, each fitted to this building."""
+    img = _sprite(kind)
+    box = pygame.Rect(rect.x * tile, rect.y * tile, rect.w * tile, rect.h * tile)
+    ds = sorted(d for d, _k in doors_in(art, rect))
+    dx = ds[0][0] if ds else rect.x + rect.w // 2
+    iw, ih = img.get_size()
+    parts = ((0, 64, box.x, (dx - rect.x) * tile), (64, 32, dx * tile, tile), (96, iw - 96, (dx + 1) * tile, box.right - (dx + 1) * tile))
+    for sx, sw, tx, tw in parts:
+        if tw > 0:
+            surf.blit(pygame.transform.scale(img.subsurface((sx, 0, sw, ih)), (tw, box.h)), (tx, box.y))
+
+
+def _object(surf, kind, foot, tile):
+    """One thing drawn whole over its tiles (foot): its picture at the map's scale, standing on the bottom of its tiles and
+    rising over the tile behind. A thing wider than its picture (a long counter, a row of shelves) repeats its middle."""
+    img = _sprite(kind)
+    k = tile / 32.0
+    n = max(1, round(img.get_width() / 32))  # the picture's own width in tiles
+    wide = foot.w // tile
+    if wide <= n:
+        w = foot.w if img.get_width() >= 28 else int(img.get_width() * k)
+        pic = pygame.transform.scale(img, (w, int(img.get_height() * w / img.get_width())))
+    else:  # its ends, and its middle repeated between them
+        iw, ih = img.get_size()
+        end = min(16, iw // 3)
+        strip = pygame.Surface((wide * 32, ih), pygame.SRCALPHA)
+        mid = img.subsurface((end, 0, iw - 2 * end, ih))
+        x = end
+        while x < wide * 32 - end:
+            strip.blit(mid, (x, 0)); x += mid.get_width()
+        strip.blit(img.subsurface((0, 0, end, ih)), (0, 0))
+        strip.fill((0, 0, 0, 0), (wide * 32 - end, 0, end, ih))
+        strip.blit(img.subsurface((iw - end, 0, end, ih)), (wide * 32 - end, 0))
+        pic = pygame.transform.scale(strip, (foot.w, int(ih * k)))
+    if pic.get_height() < foot.h:  # (deeper than its picture: a bed lying over two tiles)
+        pic = pygame.transform.scale(pic, (pic.get_width(), foot.h))
+    surf.blit(pic, (foot.centerx - pic.get_width() // 2, foot.bottom - pic.get_height()))
 
 
 def _furniture(surf, r, kind, col, same):
@@ -1217,6 +1402,10 @@ def _snow_patch(surf, r, joined, shade=(206, 222, 240), top=(246, 250, 255)):
 
 def _big_tree(surf, r):
     """A big tree, two tiles by two: a broad round crown in three lights over a short trunk."""
+    pic = _out("bigtree", r.w + r.w // 8)
+    if pic:
+        surf.blit(pic, (r.centerx - pic.get_width() // 2, r.bottom - pic.get_height()))
+        return
     cx = r.centerx
     pygame.draw.ellipse(surf, LEAF_DARK, (r.x + 8, r.bottom - 18, r.w - 16, 16))  # its shadow
     pygame.draw.rect(surf, TRUNK, (cx - 7, r.centery + 10, 14, r.h // 2 - 14))
@@ -1227,6 +1416,10 @@ def _big_tree(surf, r):
 
 
 def _rock(surf, r):
+    pic = _out("rock", r.w - r.w // 8)
+    if pic:
+        surf.blit(pic, (r.centerx - pic.get_width() // 2, r.bottom - pic.get_height() - 2))
+        return
     body = r.inflate(-8, -10).move(0, 2)
     pygame.draw.ellipse(surf, ROCK_DARK, body)
     pygame.draw.ellipse(surf, ROCK, body.inflate(-6, -8).move(-2, -3))
@@ -1261,6 +1454,10 @@ def _ladder(surf, r, down):
 
 
 def _sign(surf, r):
+    pic = _out("sign", r.w - r.w // 8)
+    if pic:
+        surf.blit(pic, (r.centerx - pic.get_width() // 2, r.bottom - pic.get_height() - 2))
+        return
     pygame.draw.rect(surf, SIGN_DARK, (r.centerx - 3, r.y + 26, 6, 24))
     board = pygame.Rect(r.x + 8, r.y + 8, r.w - 16, 24)
     pygame.draw.rect(surf, SIGN_DARK, board.inflate(4, 4), border_radius=4)
@@ -1535,6 +1732,12 @@ def _building(surf, art, rect, kind, tile, roof_colour=None):
         return _contest_hall(surf, art, rect, tile)
     if kind == "treehouse" or roof_colour == "tree":  # (a roof of "tree": any building in a tree, Fortree's Gym)
         return _treehouse(surf, art, rect, tile, kind != "treehouse")
+    if kind in ("house", "home", "rival", "assistant", "elder") and _out("house", tile):  # a plain house off the tile sheet, in the roof nearest its own
+        rc = roof_colour.get("roof") if isinstance(roof_colour, dict) else roof_colour
+        pick = "house"
+        if rc and not isinstance(rc, str):
+            pick = "house_blue" if rc[2] > rc[1] and rc[2] > rc[0] else "house_orange" if rc[0] > rc[1] + 20 else "house"
+        return _house_sprite(surf, art, rect, tile, pick)
     look = roof_colour if isinstance(roof_colour, dict) else {}  # (a roof given as {"roof", "wall", "design"}: the building's own walls and shape too: Sinnoh)
     if look:
         roof_colour = look.get("roof")

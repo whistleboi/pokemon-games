@@ -2564,7 +2564,8 @@ class DungeonState(OverworldBattles, PlayState):
 
     def _trainer_img(self, info, facing=(0, 1)):
         name = info.get("sprite") or "rival.png"
-        sheet = (sprite_map(self.game).get("trainers") or {}).get(name)
+        sm = sprite_map(self.game)
+        sheet = (sm.get("trainers_" + str(self.area_data.get("region") or "")) or {}).get(name) or (sm.get("trainers") or {}).get(name)  # (the class as this region's own game draws it, where we have that: "trainers_SINNOH")
         if sheet:  # its Pokemon Journeys overworld sprite, looking the way it faces
             return self._sheet_frame(sheet, facing)
 

@@ -10,6 +10,10 @@ Each map is a grid of characters (ART below); src/dungeon/art.py draws it and sa
 BUILDINGS: a building letter's kind (center, mart, lab, home: yours, house: locked, gate, or a town option's
 "door" name). Writes assets/town_maps.json.
     python dev/builders/build_town_maps.py
+    python dev/builders/build_town_maps.py --only=sinnoh        (one region alone, or several: --only=kanto,sevii)
+--only checks and rebuilds just those regions' maps and keeps every other region's as it was last written, so a map
+someone else is in the middle of changing can't stop your build. A map deleted from a region's file stays in the JSON
+until a full build.
 """
 import json
 import os
@@ -22,11 +26,24 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspa
 REGIONS = ["kanto", "johto", "hoenn", "sinnoh", "sevii"]
 
 
+ONLY = next((a.split("=", 1)[1].split(",") for a in sys.argv[1:] if a.startswith("--only=")), None)
+CHECKED = None  # (with --only: the keys of the maps being rebuilt; the rest are kept as last written)
+
+
 def all_maps():
     import importlib
+    global CHECKED
     out = {}
-    for region in REGIONS:
-        out.update(importlib.import_module(f"town_maps.{region}").MAPS)
+    if ONLY:
+        assert all(r in REGIONS for r in ONLY), f"--only: one of {REGIONS}"
+        with open(os.path.join("assets", "town_maps.json"), encoding="utf-8") as f:
+            out = json.load(f)
+        CHECKED = set()
+    for region in ONLY or REGIONS:
+        maps = importlib.import_module(f"town_maps.{region}").MAPS
+        out.update(maps)
+        if ONLY:
+            CHECKED |= set(maps)
     return out
 
 
@@ -120,6 +137,8 @@ def preview(key, m):
 
 def main():
     for key, m in MAPS.items():
+        if CHECKED is not None and key not in CHECKED:
+            continue
         parts = [(f"{key}_{i + 1}", dict(m, floors=None, **f)) for i, f in enumerate(m["floors"])] if m.get("floors")             else [(key, m)]
         parts += [(f"{key}__{r}", room) for r, room in (m.get("rooms") or {}).items()]  # (the rooms inside a town's buildings: each a map of its own)
         for d, r in (m.get("inside") or {}).items():
