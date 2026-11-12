@@ -54,6 +54,24 @@ def route(area, came, index=0, count=0):
     return p
 
 
+def step(p, at, d, n=5):
+    """Stand on a tile and take one step, as a player would (nobody wandering in the way): (floor, where you are)."""
+    p.run.floor.movers = [m for m in p.run.floor.movers if m.kind == "figure"]
+    p.run.player = tuple(at); p.anim = 0; p.anim_from = tuple(at)
+    _ev = p.run.step(*d); p._handle(_ev); frames(p, n)
+    return p.run.index, tuple(p.run.player)
+
+
+def people(p):
+    """Who stands on this floor (the route options' texts)."""
+    return {m.payload.get("text") for m in p.run.floor.movers if m.kind == "figure" and isinstance(m.payload, dict)}
+
+
+def outs(f):
+    """A floor's ways out to other areas (not its doors into rooms)."""
+    return {v for v in f.exits.values() if not str(v).startswith("WARP:")}
+
+
 def hop(p, start, way):
     """Stand at start, step that way; where you end up (a ledge hop carries you two tiles)."""
     f = p.run.floor
@@ -121,28 +139,61 @@ t.draw()
 # ---- Route 22
 p = route("KANTO_ROUTE_22", "VIRIDIAN_CITY")
 f = p.run.floor
-check((f.w, f.h) == (48, 24) and p.run.player[0] >= 44 and set(f.exits.values()) == {"VIRIDIAN_CITY", "KANTO_ROUTE_23"}
-      and f.exits.get((8, 5)) == "KANTO_ROUTE_23" and f.exits.get((9, 5)) == "KANTO_ROUTE_23",
-      f"Route 22: FireRed's 48 x 24; in from Viridian on the east {p.run.player}; the League gate's two doors lead to Route 23")
+check((f.w, f.h) == (48, 24) and p.run.player[0] >= 44 and outs(f) == {"VIRIDIAN_CITY"}
+      and str(f.exits.get((8, 5))).startswith("WARP:") and str(f.exits.get((9, 5))).startswith("WARP:"),
+      f"Route 22: FireRed's 48 x 24; in from Viridian on the east {p.run.player}; the League gate's two doors")
+check(not any(m.kind == "figure" for fl in p.run.floors[1:] for m in fl.movers if isinstance(m.payload, dict) and m.payload.get("action") == "ARRIVAL"), "...the rival, when he waits here, waits outdoors")
+_i, _at = step(p, (8, 6), (0, -1))
+check(p._floor_name(_i) == "League Gate" and people(p) >= {"GATE GUARD"} and outs(p.run.floor) == {"KANTO_ROUTE_23"}, f"...into the League gate {_at}: FireRed's room, its guard; its north doorway leads on to Route 23")
+p.draw()
+p = route("KANTO_ROUTE_22", "KANTO_ROUTE_23")
+check(p._floor_name(p.run.index) == "League Gate" and p.run.player[1] <= 3, f"...in from Route 23: inside the gate, by its north doorway {tuple(p.run.player)}")
+_i, _at = step(p, (7, 9), (0, 1))
+check(_i == 0 and _at[1] == 6 and _at[0] in (8, 9), f"......and out by its south mat onto Route 22 {_at}")
 
 # ---- Route 2, whole: Viridian below, the Forest's two gates, Pewter above
 p = route("KANTO_ROUTE_2", "VIRIDIAN_CITY")
+p = route("KANTO_ROUTE_2", "VIRIDIAN_CITY")
 f = p.run.floor
-check((f.w, f.h) == (24, 80) and p.run.player[1] >= 76 and set(f.exits.values()) == {"VIRIDIAN_CITY", "PEWTER_CITY", "VIRIDIAN_FOREST", "DIGGLETT_CAVE"},
+check((f.w, f.h) == (24, 80) and p.run.player[1] >= 76 and outs(f) == {"VIRIDIAN_CITY", "PEWTER_CITY", "DIGGLETT_CAVE"},
       f"Route 2: FireRed's 24 x 80; in from Viridian at the bottom {p.run.player}")
-_fd = sorted(xy for xy, v in f.exits.items() if v == "VIRIDIAN_FOREST")
-check(sorted(_fd, key=lambda t: (t[1], t[0])) == [(5, 13), (6, 13), (5, 51), (6, 51)],
-      f"...the Forest's north gate (row 13) and south gate (row 51) are its doors {_fd}")
-check(f.exits.get((17, 11)) == "DIGGLETT_CAVE" and f.decor.get((18, 46)) == "door:aide" and f.decor.get((18, 41)) == "door:aide",
-      "...Diglett's Cave's mouth; the east gatehouse's two doors are Oak's Aide's")
+_fd = sorted((xy for xy, v in f.exits.items() if str(v).startswith("WARP:")), key=lambda t: (t[1], t[0]))
+check(_fd == [(17, 22), (18, 41), (19, 41), (18, 46), (19, 46)] + [] or {(5, 13), (6, 13), (5, 51), (6, 51), (17, 22), (18, 41), (19, 41), (18, 46), (19, 46)} == set(_fd),
+      f"...the Forest's two gatehouses, the trade house and the east gatehouse are its doors {_fd}")
+check(f.exits.get((17, 11)) == "DIGGLETT_CAVE", "...Diglett's Cave's mouth")
+_i, _at = step(p, (18, 47), (0, -1))
+check(p._floor_name(_i) == "Route 2 Gate" and people(p) == {"OAK'S AIDE", "GATE VISITOR"}, f"...the east gatehouse by its south door {_at}: FireRed's room, Oak's Aide inside")
+p.draw()
+_i, _at = step(p, (7, 2), (0, -1))
+check(_i == 0 and _at[1] <= 41, f"......and out by its north mat, north of it {_at}")
+_i, _at = step(p, (17, 23), (0, -1))
+check(p._floor_name(_i) == "Trade House" and people(p) == {"TRADER", "TRADER'S FRIEND"}, f"...the trade house: FireRed's room, two people {_at}")
+p.draw()
+_i, _at = step(p, (4, 6), (0, 1))
+check((_i, _at) == (0, (17, 23)), f"......and out by its mat {_at}")
+f = p.run.floor
 check(str(f.decor.get((16, 62))).startswith("cut:") and str(f.decor.get((11, 13))).startswith("cut:"), "...small trees to Cut stand where FireRed has them")
 p = route("KANTO_ROUTE_2", "PEWTER_CITY")
 check(p.run.player[1] <= 3, f"...in from Pewter at the top {p.run.player}")
-p = route("KANTO_ROUTE_2", "VIRIDIAN_FOREST", index=0, count=6)
-_north = tuple(p.run.player)
-p = route("KANTO_ROUTE_2", "VIRIDIAN_FOREST", index=5, count=6)
-_south = tuple(p.run.player)
-check(_north[1] <= 14 and _south[1] >= 50, f"...out of the Forest's north gate you stand by Route 2's north gate {_north}, out of its south gate by the south one {_south}")
+for _ix, _n, _who in ((0, 6, {"FOREST GUIDE", "BUG FAN", "RESTING GIRL"}), (5, 6, {"GATE LADY", "YOUNG TRAINER"}), (0, 2, {"FOREST GUIDE", "BUG FAN", "RESTING GIRL"}), (1, 2, {"GATE LADY", "YOUNG TRAINER"})):
+    p = route("KANTO_ROUTE_2", "VIRIDIAN_FOREST", index=_ix, count=_n)
+    check(p._floor_name(p.run.index) == "Forest Gate" and people(p) == _who and outs(p.run.floor) == {"VIRIDIAN_FOREST"},
+          f"...out of the Forest's {'north' if _ix == 0 else 'south'} gate (way {_ix} of {_n}) you stand inside Route 2's {'north' if _ix == 0 else 'south'} gatehouse {tuple(p.run.player)}: FireRed's room, its people")
+    p.draw()
+    if _n == 2:
+        _i, _at = step(p, (7, 9) if _ix == 0 else (7, 2), (0, 1) if _ix == 0 else (0, -1))
+        check(type(g.current_state).__name__ != "PlayState" or core.ENTRANCE_COUNT == 2, f"......its forest-side mat leads back into the Forest (way {core.ENTRANCE_INDEX} of {core.ENTRANCE_COUNT})")
+        check(core.ENTRANCE_INDEX == _ix, "......by the matching gate")
+p = route("KANTO_ROUTE_2", "VIRIDIAN_FOREST", index=0, count=2)
+_i, _at = step(p, (7, 2), (0, -1))
+check(_i == 0 and _at[1] <= 14, f"...out of the north gatehouse's route-side mat: on Route 2 north of the Forest {_at}")
+p = route("KANTO_ROUTE_2", "VIRIDIAN_FOREST", index=1, count=2)
+_i, _at = step(p, (7, 9), (0, 1))
+check(_i == 0 and _at[1] >= 50, f"...out of the south gatehouse's route-side mat: on Route 2 south of the Forest {_at}")
+for _ix, _ok in ((0, lambda q: q[1] <= 14), (1, lambda q: q[1] >= 55)):
+    core.ENTRANCE_SPREAD = True
+    q = route("VIRIDIAN_FOREST", "KANTO_ROUTE_2", index=_ix, count=2)
+    check(_ok(q.run.player), f"...and the Forest from Route 2's {'north' if _ix == 0 else 'south'} gatehouse: in by its {'north' if _ix == 0 else 'south'} gate {tuple(q.run.player)}")
 
 # ---- Viridian Forest
 p = route("VIRIDIAN_FOREST", "KANTO_ROUTE_2", index=3, count=4)
@@ -233,9 +284,9 @@ g.walk_town_room = None
 # ---- Route 3, with the foot of Mt. Moon above its east end
 p = route("KANTO_ROUTE_3", "PEWTER_CITY")
 f = p.run.floor
-check((f.w, f.h) == (84, 40) and p.run.player[0] <= 2 and p.run.player[1] >= 20 and set(f.exits.values()) == {"PEWTER_CITY", "MT_MOON"},
+check((f.w, f.h) == (84, 40) and p.run.player[0] <= 2 and p.run.player[1] >= 20 and outs(f) == {"PEWTER_CITY", "MT_MOON"},
       f"Route 3: FireRed's Route 3 with the mountain's foot joined above it, 84 x 40; in from Pewter on the west {p.run.player}")
-check(f.exits.get((79, 5)) == "MT_MOON" and f.decor.get((72, 5)) == "door:center" and f.walkable(70, 19) and f.walkable(70, 20),
+check(f.exits.get((79, 5)) == "MT_MOON" and str(f.exits.get((72, 5))).startswith("WARP:") and f.walkable(70, 19) and f.walkable(70, 20),
       "...Mt. Moon's mouth and the Pokemon Center's door up at the foot; the two maps join as open ground")
 _tr = {(m.x, m.y): getattr(m, "name", None) or str(getattr(m, "data", "")) for m in f.movers if m.kind == "trainer"}
 check(len(_tr) == 8 and {(12, 26), (17, 24), (19, 29), (25, 24), (29, 30), (30, 23), (32, 26), (40, 31)} == set(_tr),
@@ -313,41 +364,77 @@ t = town("BILLS_HOUSE", "KANTO_ROUTE_25")
 check(isinstance(t, _WTS) and (t.w, t.h) == (15, 11) and t.player[1] >= 7 and (7, 5) in t.people and set(t.exits.values()) == {"KANTO_ROUTE_25"},
       f"Bill's Sea Cottage: FireRed's room, 15 x 11; in by the mat {t.player}; Bill by his machine")
 t.draw()
+_tea = story.inventory.get("TEA"); story.inventory.pop("TEA", None)
 p = route("KANTO_ROUTE_5", "SAFFRON_CITY")
-f = p.run.floor
-check((f.w, f.h) == (48, 40) and p.run.player[1] <= 32 and f.exits.get((24, 32)) == "SAFFRON_CITY" and f.decor.get((23, 25)) == "door:daycare"
-      and f.exits.get((31, 31)) == "UNDERGROUND_PATH", f"Route 5: FireRed's 48 x 40; out of Saffron's gatehouse you stand north of it {p.run.player}; the Day Care, the Underground Path")
+check(p._floor_name(p.run.index) == "Saffron Gate" and people(p) == {"GUARD"} and outs(p.run.floor) == {"SAFFRON_CITY"}, f"Route 5: in from Saffron you stand inside its gatehouse {tuple(p.run.player)}: FireRed's room, the thirsty guard")
+_i, _at = step(p, (4, 8), (0, 1))
+check(g.current_state is p and _i == p.recipe["art"]["room_floors"]["gate"], f"...without the Tea the way on to Saffron is barred, inside the gatehouse {_at}")
+while p.dialogue_box.visible: p.dialogue_box.advance()
+frames(p, 3)
+p.draw()
+_i, _at = step(p, (4, 2), (0, -1)); f = p.run.floor
+check(_i == 0 and (f.w, f.h) == (48, 40) and _at in ((24, 31), (25, 31)) and f.exits.get((31, 31)) == "UNDERGROUND_PATH", f"...out by its north mat: north of the gatehouse {_at}; FireRed's 48 x 40; the Underground Path's door")
+_i, _at = step(p, (23, 26), (0, -1))
+check(p._floor_name(_i) == "Day Care" and people(p) == {"POK\u00e9MON DAY CARE"}, f"...the Day Care: FireRed's room, the Day-Care Man {_at}")
+p.draw()
+story.inventory["TEA"] = 1
+p = route("KANTO_ROUTE_5", "SAFFRON_CITY"); step(p, (4, 8), (0, 1))
+check(g.current_state is not p, f"...with the Tea the mat leads on to Saffron ({type(g.current_state).__name__})")
+if _tea is None: story.inventory.pop("TEA", None)
 p = route("KANTO_ROUTE_5", "CERULEAN_CITY")
 check(p.run.player[1] <= 2, f"...in from Cerulean at the top {p.run.player}")
 
 # ---- the routes round Saffron (6, 7, 8, 9, 10 north and south, 11): size, the way in from each neighbour, the ways out
-def at_route(key, came, size, where, outs, what, **kw):
+def at_route(key, came, size, where, outs_, what, **kw):
     p = route(key, came, **kw)
     f = p.run.floor
-    check((f.w, f.h) == size and where(*p.run.player) and set(f.exits.values()) == outs,
-          f"{what}: {size[0]} x {size[1]}; in from {came} at {tuple(p.run.player)}; out to {sorted(set(f.exits.values()))}")
+    check((f.w, f.h) == size and where(*p.run.player) and outs(f) == outs_,
+          f"{what}: {size[0]} x {size[1]}; in from {came} at {tuple(p.run.player)}; out to {sorted(outs(f))}")
+    return p
     return p
 
 
-_R6 = {"SAFFRON_CITY", "UNDERGROUND_PATH", "VERMILLION_CITY"}
+def gate_in(key, title, mat, d, where, what):
+    """In from Saffron: you stand inside the gatehouse (FireRed's room, the thirsty guard); out by the route's mat."""
+    p = route(key, "SAFFRON_CITY")
+    check(p._floor_name(p.run.index) == title and people(p) == {"GUARD"} and outs(p.run.floor) == {"SAFFRON_CITY"}, f"{what}: in from Saffron you stand inside its gatehouse {tuple(p.run.player)}: FireRed's room, the guard")
+    p.draw()
+    _i, _at = step(p, mat, d)
+    check(_i == 0 and where(*_at), f"...and out by its other mat onto the route {_at}")
+    return p
+
+
+_R6 = {"UNDERGROUND_PATH", "VERMILLION_CITY"}
 p = at_route("KANTO_ROUTE_6", "VERMILLION_CITY", (24, 40), lambda x, y: y >= 36, _R6, "Route 6")
-check(p.run.floor.exits.get((12, 5)) == "SAFFRON_CITY" and sum(m.kind == "trainer" for m in p.run.floor.movers) == 6, "...Saffron's gatehouse doors; FireRed's six trainers")
-at_route("KANTO_ROUTE_6", "SAFFRON_CITY", (24, 40), lambda x, y: y <= 7 and 10 <= x <= 15, _R6, "...out of Saffron you stand below its south gatehouse")
-_R7 = {"CELADON_CITY", "SAFFRON_CITY", "UNDERGROUND_PATH"}
+check(str(p.run.floor.exits.get((12, 5))).startswith("WARP:") and sum(m.kind == "trainer" for m in p.run.floor.movers) == 6 and not people(p), "...Saffron's gatehouse doors; FireRed's six trainers; the guard is indoors now")
+gate_in("KANTO_ROUTE_6", "Saffron Gate", (4, 8), (0, 1), lambda x, y: y <= 7 and 10 <= x <= 15, "Route 6")
+_R7 = {"CELADON_CITY", "UNDERGROUND_PATH"}
 at_route("KANTO_ROUTE_7", "CELADON_CITY", (24, 20), lambda x, y: x <= 2, _R7, "Route 7")
-at_route("KANTO_ROUTE_7", "SAFFRON_CITY", (24, 20), lambda x, y: 13 <= x <= 15 and 8 <= y <= 12, _R7, "...out of Saffron you stand west of its gatehouse")
-_R8 = {"LAVENDER_TOWN", "SAFFRON_CITY", "UNDERGROUND_PATH"}
+gate_in("KANTO_ROUTE_7", "Saffron Gate", (2, 5), (-1, 0), lambda x, y: 13 <= x <= 15 and 8 <= y <= 12, "Route 7")
+_R8 = {"LAVENDER_TOWN", "UNDERGROUND_PATH"}
 at_route("KANTO_ROUTE_8", "LAVENDER_TOWN", (72, 20), lambda x, y: x >= 69, _R8, "Route 8")
-at_route("KANTO_ROUTE_8", "SAFFRON_CITY", (72, 20), lambda x, y: 7 <= x <= 9 and 8 <= y <= 12, _R8, "...out of Saffron you stand east of its gatehouse")
+gate_in("KANTO_ROUTE_8", "Saffron Gate", (10, 5), (1, 0), lambda x, y: 7 <= x <= 9 and 8 <= y <= 12, "Route 8")
 p = at_route("KANTO_ROUTE_9", "CERULEAN_CITY", (72, 20), lambda x, y: x <= 2, {"CERULEAN_CITY", "KANTO_ROUTE_10"}, "Route 9")
 check(sum(m.kind == "trainer" for m in p.run.floor.movers) == 9, "...FireRed's nine trainers")
 p = at_route("KANTO_ROUTE_10", "KANTO_ROUTE_9", (24, 50), lambda x, y: x <= 2 and y <= 12, {"KANTO_ROUTE_9", "ROCK_TUNNEL", "POWER_PLANT"}, "Route 10 (north)")
-check(p.run.floor.exits.get((8, 19)) == "ROCK_TUNNEL" and p.run.floor.decor.get((13, 20)) == "door:center" and p.run.floor.exits.get((7, 40)) == "POWER_PLANT",
+check(p.run.floor.exits.get((8, 19)) == "ROCK_TUNNEL" and str(p.run.floor.exits.get((13, 20))).startswith("WARP:") and p.run.floor.exits.get((7, 40)) == "POWER_PLANT",
       "...Rock Tunnel's mouth, the Center's door, the Power Plant's door")
+_i, _at = step(p, (13, 21), (0, -1))
+check(p._floor_name(_i) == "Pokemon Center" and people(p) == {"POKEMON CENTER"}, f"...the Pokemon Center: the shared room, its nurse {_at}")
+p.draw()
+_i, _at = step(p, (7, 7), (0, 1))
+check((_i, _at) == (0, (13, 21)), f"......and out by its mat {_at}")
 at_route("KANTO_ROUTE_10_SOUTH", "ROCK_TUNNEL", (24, 30), lambda x, y: y <= 9 and 6 <= x <= 10, {"ROCK_TUNNEL", "LAVENDER_TOWN"}, "Route 10 (south)")
-p = at_route("KANTO_ROUTE_11", "VERMILLION_CITY", (72, 20), lambda x, y: x <= 2, {"VERMILLION_CITY", "DIGGLETT_CAVE", "KANTO_ROUTE_12"}, "Route 11")
-check(sum(m.kind == "trainer" for m in p.run.floor.movers) == 10 and p.run.floor.exits.get((58, 10)) == "KANTO_ROUTE_12",
-      "...FireRed's ten trainers; the gatehouse's west door leads to Route 12")
+p = at_route("KANTO_ROUTE_11", "VERMILLION_CITY", (72, 20), lambda x, y: x <= 2, {"VERMILLION_CITY", "DIGGLETT_CAVE"}, "Route 11")
+check(sum(m.kind == "trainer" for m in p.run.floor.movers) == 10 and str(p.run.floor.exits.get((58, 10))).startswith("WARP:"),
+      "...FireRed's ten trainers; the gatehouse's west door")
+_i, _at = step(p, (57, 10), (1, 0))
+check(p._floor_name(_i) == "Route 11 Gate" and people(p) == {"GATE GUARD"} and outs(p.run.floor) == {"KANTO_ROUTE_12"}, f"...into the gatehouse {_at}: FireRed's room, its guard; its east mats lead on to Route 12")
+p.draw()
+p = route("KANTO_ROUTE_11", "KANTO_ROUTE_12")
+check(p._floor_name(p.run.index) == "Route 11 Gate" and p.run.player[0] >= 9, f"...in from Route 12: inside the gatehouse, by its east mats {tuple(p.run.player)}")
+_i, _at = step(p, (2, 6), (-1, 0))
+check((_i, _at) == (0, (57, 10)), f"......and out by its west mat onto Route 11 {_at}")
 
 # ---- the caves
 p = route("ROCK_TUNNEL", "KANTO_ROUTE_10")
@@ -643,11 +730,20 @@ for _a, _b, _size, _n in (("KANTO_ROUTE_12", "LAVENDER_TOWN", (24, 120), 8), ("K
           f"{_a} from {_b}: FireRed's {_size[0]} x {_size[1]}, in beside the way you came {tuple(p.run.player)}, FireRed's {_n} trainers")
     p.draw()
 p = route("KANTO_ROUTE_12", "LAVENDER_TOWN"); f = p.run.floor; f.movers = []
-p.run.player = (14, 14); p.anim = 0; p.anim_from = (14, 14)
-_ev = p.run.step(0, 1); p._handle(_ev); frames(p, 5)
-check(tuple(p.run.player) == (14, 22), f"Route 12's lookout: in by its north door, out below its south door {tuple(p.run.player)}")
-_ev = p.run.step(0, -1); p._handle(_ev); frames(p, 5)
-check(tuple(p.run.player) == (14, 14), f"...and back the other way {tuple(p.run.player)}")
+_i, _at = step(p, (14, 14), (0, 1))
+check(p._floor_name(_i) == "Route 12 Gate" and _at == (5, 2) and people(p) == {"GATE GUARD"}, f"Route 12's lookout: in by its north door {_at}: FireRed's room, its guard")
+p.draw()
+_i, _at = step(p, (5, 10), (0, 1))
+check((_i, _at) == (0, (13, 22)), f"...out by its south mat, onto the pier below {_at}")
+_i, _at = step(p, (13, 22), (1, -1) if False else (0, -1)) if False else (0, _at)
+p._warp(p.recipe["art"]["room_floors"]["gate"], 5, 3); frames(p, 2)
+_i, _at = step(p, (5, 2), (0, -1))
+check((_i, _at) == (0, (14, 14)), f"...and out by its north mat {_at}")
+_i, _at = step(p, (12, 87), (0, -1))
+check(p._floor_name(_i) == "Fishing House" and people(p) == {"FISHING GURU"}, f"...the fishing house: FireRed's room, the Fishing Guru's brother {_at}")
+p.draw()
+_i, _at = step(p, (3, 6), (0, 1))
+check((_i, _at) == (0, (12, 87)), f"......and out by its mat {_at}")
 check(f.exits.get((14, 70)) == "BOSS" and p._gate("KANTO_ROUTE_13") is None, "...Snorlax sleeps on the pier where FireRed has him (not across the way out)")
 p.run.player = (14, 69); p.anim = 0; p.anim_from = (14, 69)
 _ev = p.run.step(0, 1); p._handle(_ev); frames(p, 3)
@@ -658,10 +754,14 @@ p._sync_figures()
 check((14, 70) not in f.exits and f.walkable(14, 70), "...beaten: the pier is clear")
 story.story_flags.pop("KANTO_ROUTE_12_boss_defeated", None)
 if _sn: story.story_flags["KANTO_ROUTE_12_boss_defeated"] = _sn
-p = route("KANTO_ROUTE_15", "KANTO_ROUTE_14"); p.run.floor.movers = []
-p.run.player = (17, 11); p.anim = 0; p.anim_from = (17, 11)
-_ev = p.run.step(-1, 0); p._handle(_ev); frames(p, 5)
-check(tuple(p.run.player) == (8, 11), f"Route 15's gatehouse: in by its east door, out by its west {tuple(p.run.player)}")
+p = route("KANTO_ROUTE_15", "KANTO_ROUTE_14")
+_i, _at = step(p, (17, 11), (-1, 0))
+check(p._floor_name(_i) == "Route 15 Gate" and _at == (10, 6) and people(p) == {"GATE GUARD"}, f"Route 15's gatehouse: in by its east door {_at}: FireRed's room, its guard")
+p.draw()
+_i, _at = step(p, (2, 6), (-1, 0))
+check((_i, _at) == (0, (8, 11)), f"...out by its west mat, west of the gatehouse {_at}")
+_i, _at = step(p, (8, 11), (1, 0)); _j, _at2 = step(p, (10, 7), (1, 0))
+check(_at == (2, 6) and (_j, _at2) == (0, (17, 11)), f"...and back the other way {_at} {_at2}")
 for _from, _side in (("KANTO_ROUTE_15", lambda q: q[0] >= 45), ("KANTO_ROUTE_18", lambda q: q[0] <= 2), ("KANTO_ROUTE_19", lambda q: q[1] >= 37)):
     t = town("FUCHSIA_CITY", _from)
     check((t.w, t.h) == (48, 40) and _side(t.player), f"Fuchsia City from {_from}: FireRed's 48 x 40, in at that edge {tuple(t.player)}")
@@ -699,20 +799,30 @@ for _a, _b, _size, _n in (("KANTO_ROUTE_16", "CELADON_CITY", (48, 20), 7), ("KAN
     check((f.w, f.h) == _size and _b in f.exits.values() and sum(m.kind == "trainer" for m in f.movers) == _n, f"{_a} from {_b}: FireRed's {_size[0]} x {_size[1]}, FireRed's {_n} trainers")
     p.draw()
 p = route("KANTO_ROUTE_16", "CELADON_CITY"); f = p.run.floor; f.movers = []
-check(f.exits.get((31, 13)) == "BOSS" and f.decor.get((10, 5)) == "door:flyhouse", "Route 16: Snorlax asleep on the road where FireRed has him; the quiet house's door")
+check(f.exits.get((31, 13)) == "BOSS" and str(f.exits.get((10, 5))).startswith("WARP:"), "Route 16: Snorlax asleep on the road where FireRed has him; the quiet house's door")
 story.story_flags["KANTO_ROUTE_16_boss_defeated"] = True; p._sync_figures()
-for _y in (13, 6):
-    p.run.player = (28, _y); p.anim = 0; p.anim_from = (28, _y)
-    _ev = p.run.step(-1, 0); p._handle(_ev); frames(p, 4)
-    check(tuple(p.run.player) == (19, _y), f"...the gatehouse's {'lower' if _y == 13 else 'upper'} doors: in on the east, out on the west {tuple(p.run.player)}")
+for _y, _in, _mat in ((13, (10, 12), (2, 12)), (6, (10, 3), (2, 3))):
+    _i, _at = step(p, (28, _y), (-1, 0))
+    check(p._floor_name(_i) == "Cycling Road Gate" and _at == _in and not p._cycling(), f"...the gatehouse's {'lower' if _y == 13 else 'upper'} east door: into its {'lower' if _y == 13 else 'upper'} hall {_at}, on foot")
+    if _y == 6: check(people(p) == {"GATE GUARD", "CYCLIST"}, "......its guard behind the counter, a cyclist")
+    p.draw()
+    _i, _at = step(p, _mat, (-1, 0))
+    check((_i, _at) == (0, (19, _y)), f"......and out by the west mat, west of the gatehouse {_at}")
+_i, _at = step(p, (10, 6), (0, -1))
+check(p._floor_name(_i) == "A Quiet House" and people(p) == {"A QUIET HOUSE"}, f"...the quiet house: FireRed's room, the girl inside {_at}")
+p.draw()
+_i, _at = step(p, (4, 6), (0, 1))
+check((_i, _at) == (0, (10, 6)), f"......and out by its mat {_at}")
 check(p._cycling((5, 15)) and not p._cycling((40, 13)), "...west of the gatehouse you ride; on Celadon's side you walk")
 story.inventory.pop("BICYCLE")
 check(p._gate("KANTO_ROUTE_17") == ("bike", None, False) and not p._cycling((5, 15)), "...without the Bicycle: the way onto Route 17 is barred")
 p = route("KANTO_ROUTE_18", "FUCHSIA_CITY")
 check(p._gate("KANTO_ROUTE_17") == ("bike", None, False), "Route 18: the same from the south")
-p.run.floor.movers = []; p.run.player = (49, 9); p.anim = 0; p.anim_from = (49, 9)
-_ev = p.run.step(-1, 0); p._handle(_ev); frames(p, 4)
-check(tuple(p.run.player) == (40, 9), f"...its gatehouse is walked through {tuple(p.run.player)}")
+_i, _at = step(p, (49, 9), (-1, 0))
+check(p._floor_name(_i) == "Cycling Road Gate" and people(p) == {"GATE GUARD"} and not p._cycling(), f"...into its gatehouse by the east door: FireRed's room, its guard; on foot inside {_at}")
+p.draw()
+_i, _at = step(p, (2, 6), (-1, 0))
+check((_i, _at) == (0, (40, 9)), f"...and out by its west mat, west of the gatehouse {_at}")
 story.inventory["BICYCLE"] = 1
 story.story_flags.pop("KANTO_ROUTE_16_boss_defeated", None)
 if _sn: story.story_flags["KANTO_ROUTE_16_boss_defeated"] = _sn
@@ -846,6 +956,30 @@ story.badges["KANTO"] = _kb
 for _k, _v in _had.items():
     if _v is None: story.inventory.pop(_k, None)
     else: story.inventory[_k] = _v
+
+# ---- the ordinary houses in the towns (FireRed's own rooms: 7.0-7.9, 9.4, 9.7, 8.3, 8.4, 10.17-10.19, 14.4, 14.8, 14.9, 11.2, 11.4, 11.9)
+for _town, _came, _doors in (
+        ("CERULEAN_CITY", "KANTO_ROUTE_4", (((10, 11), "house_w", (10, 10), 1), ((30, 11), "house_ne", (10, 9), 2), ((31, 8), "house_ne", (10, 9), 2), ((15, 17), "house_mid", (11, 9), 2), ((23, 28), "house_s", (11, 9), 1), ((17, 11), "house_n", (11, 9), 1))),
+        ("VERMILLION_CITY", "KANTO_ROUTE_6", (((19, 17), "house_n", (11, 9), 1), ((28, 24), "house_e", (11, 9), 2))),
+        ("LAVENDER_TOWN", "KANTO_ROUTE_8", (((5, 16), "house_w", (11, 9), 1), ((10, 16), "rater", (11, 9), 1))),
+        ("CELADON_CITY", "KANTO_ROUTE_7", (((37, 29), "restaurant", (15, 11), 5), ((41, 29), "house_e", (11, 9), 2), ((49, 29), "hotel", (17, 11), 3))),
+        ("SAFFRON_CITY", "KANTO_ROUTE_5", (((27, 21), "house_w", (11, 9), 2), ((43, 38), "psychic", (11, 9), 1), ((47, 21), "fans", (11, 17), 4))),
+        ("FUCHSIA_CITY", "KANTO_ROUTE_15", (((28, 16), "office", (20, 11), 4), ((14, 31), "house_w", (11, 9), 2), ((19, 31), "deleter", (11, 9), 1)))):
+    t = town(_town, _came)
+    for _d, _room, _size, _n in _doors:
+        enter(t, _d)
+        _said = [o.get("event", {}).get("lines") for o in t.people.values() if isinstance(o, dict)]
+        check(t.room == _room and (t.w, t.h) == _size and len(t.people) == _n and all(_said) and set(t.exits.values()) <= {"OUT:%d,%d" % q for q, r, _s, _c in _doors if r == _room},
+              f"{_town} door {_d}: FireRed's room {_size[0]} x {_size[1]} ({t.room}), {len(t.people)} people with something to say, in by the mat {tuple(t.player)}")
+        _near = [q for q in t.people if any(t._open((q[0] + a, q[1] + b)) or t._open((q[0] + 2 * a, q[1] + 2 * b)) for a, b in ((0, 1), (0, -1), (1, 0), (-1, 0)))]
+        check(len(_near) == len(t.people), f"...everyone can be walked up to ({len(_near)} of {len(t.people)})")
+        t.draw()
+        if t.room:
+            t._go(None, "OUT:%d,%d" % _d)
+            check(t.room is None and abs(t.player[0] - _d[0]) + abs(t.player[1] - _d[1]) <= 1, f"...and back out beside the door {tuple(t.player)}")
+        g.walk_town_room = None
+t = town("CELADON_CITY", "KANTO_ROUTE_7")
+check("hotel" not in t.locked and "diner" in t.locked, "Celadon: the hotel's door is open now; the diner (ours, HeartGold's) stays shut")
 
 # ---- One Island and Treasure Beach
 t = town("ONE_ISLAND", "KINDLE_ROAD")

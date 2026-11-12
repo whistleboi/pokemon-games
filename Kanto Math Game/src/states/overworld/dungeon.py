@@ -124,7 +124,7 @@ STYLE_OF = {"grass": "field", "field": "field", "outdoor": "field", "cave": "cav
 WATER_C = ((70, 130, 206), (150, 196, 240))  # a pond, its ripples
 TREE_STYLES = ("field", "forest", "snow")  # where HEADBUTT works (a wall is a tree)
 # The route's buttons that are figures on the map (walk into one: its button's action).
-FIGURE_ACTIONS = ("BOSS", "EVENT", "NPC", "HOENN_EVENT", "DAYCARE", "BERRY", "CAMP", "REST", "WEATHER_DIRECTOR",
+FIGURE_ACTIONS = ("BOSS", "EVENT", "NPC", "HOENN_EVENT", "DAYCARE", "BERRY", "CAMP", "REST", "WEATHER_DIRECTOR", "CENTER",
                   "SNAG", "MAX_RAID", "DIVE", "GAME_CORNER", "BUG_CONTEST")
 DECOR_C = {"slot": ((200, 60, 70), (250, 230, 120)), "counter": ((150, 100, 60), (204, 156, 100)),
            "poster": ((60, 60, 80), (236, 226, 200))}
@@ -246,8 +246,12 @@ def with_rooms(m):
         where[name] = j
         art = [list(r) for r in room["art"]]
         links, mats = {}, {}
+        land, enter, keep = room.get("land") or {}, room.get("enter") or {}, {}
+        # (Kanto's gatehouses: a mat that is a real way out to the next area stays one; "land" {door: where you stand
+        # outside it}, "enter" {door: where you stand inside}: a door in a building's side or back, or two tiles wide)
         for ch, target in (room.get("exits") or {}).items():
             if not str(target).startswith("OUT:"):
+                keep[ch] = target
                 continue
             x, y = (int(v) for v in str(target)[4:].split(","))
             back = next((i for i, d in doors[name] if d == f"{x},{y}"), doors[name][0][0])
@@ -255,14 +259,14 @@ def with_rooms(m):
                 for rx, c in enumerate(row):
                     if c == ch:
                         row[rx] = "1"
-                        links[f"{rx},{ry}"] = [back, x, y + 1]
+                        links[f"{rx},{ry}"] = [back, land[f"{x},{y}"][0], land[f"{x},{y}"][1] + 1] if f"{x},{y}" in land else [back, x, y + 1]
                         mats.setdefault(f"{x},{y}", (rx, ry))
-        own = {k: v for k, v in room.items() if k not in ("art", "exits", "links")}
-        floors.append(dict(own, art=["".join(r) for r in art], exits={}, links=links, parts=True, indoors=True,
+        own = {k: v for k, v in room.items() if k not in ("art", "exits", "links", "land", "enter")}
+        floors.append(dict(own, art=["".join(r) for r in art], exits=keep, links=links, boss_spot=None, parts=True, indoors=True,
                            pool="NO_WILD_INDOORS_PERCENTAGES", buildings=room.get("buildings") or {}))
         names.append(str(room.get("title") or name).title())
         for i, d in doors[name]:  # (the door outside: onto the room's mat for it)
-            mat = mats.get(d) or next(iter(mats.values()), None)
+            mat = (enter[d][0], enter[d][1] + 1) if d in enter else mats.get(d) or next(iter(mats.values()), None)
             if mat:
                 floors[i] = dict(floors[i], links=dict(floors[i].get("links") or {}, **{d: [j, mat[0], mat[1]]}))
     on = dict(m.get("figure_floors") or {})
@@ -270,7 +274,7 @@ def with_rooms(m):
         for t in list(f.get("people") or []) + list(f.get("trainer_spots") or []):
             if isinstance(t, str):
                 on.setdefault(t, i)
-    out = {k: v for k, v in m.items() if k not in ("art", "exits", "signs", "people", "trainer_spots", "links", "overheads", "parts", "boss_spot", "inside", "stops", "rooms")}
+    out = {k: v for k, v in m.items() if k not in ("art", "exits", "signs", "people", "trainer_spots", "links", "overheads", "parts", "inside", "stops", "rooms")}  # (boss_spot stays: the map's own)
     out.update(floors=floors, floor_names=names, figure_floors=on, room_floors=where, outdoor_floors=n0)
     return out
 
@@ -605,8 +609,8 @@ class DungeonState(OverworldBattles, PlayState):
         if recipe.get("exit_floors") and entrance in recipe["exit_floors"]:  # (our map of floors: in by its floor)
             start = recipe["exit_floors"][entrance]
             _all = (recipe.get("exit_floors_all") or {}).get(entrance) or []
-            if len(_all) > 1 and core.ENTRANCE_COUNT == len(_all):  # (in by the matching way: the far side has as many ways here as we have floors with one)
-                start = _all[min(core.ENTRANCE_INDEX, len(_all) - 1)]
+            if len(_all) > 1 and core.ENTRANCE_COUNT >= len(_all):  # (in by the matching way: the far side has as many ways here as we have floors with one, or doors several tiles wide: Viridian Forest's gates)
+                start = _all[min(core.ENTRANCE_INDEX * len(_all) // core.ENTRANCE_COUNT, len(_all) - 1)]
                 core.ENTRANCE_INDEX = core.ENTRANCE_COUNT = 0
         if self.zones:
             by = {}
@@ -691,6 +695,7 @@ class DungeonState(OverworldBattles, PlayState):
     def _figure_floor(self, item, n):
         """A figure's floor: its zone's (or figure_floors'); else, in an area of zones, a person or place on
         the first (the hub: the Isle of Armor's Master Dojo) and a legendary on the last; else the last."""
+        n = min(n, int((self.recipe.get("art") or {}).get("outdoor_floors") or n))  # (never into a building's room: the rival on Route 22)
         default = 0 if self.zones and item.get("action") != "BOSS" else n - 1
         return self._floor_of(item, default)
 
@@ -1090,7 +1095,12 @@ class DungeonState(OverworldBattles, PlayState):
 
     def _here_art(self):
         m = self.run.recipe.get("art") or {}
-        return m["floors"][self.run.index] if m.get("floors") else m
+        if not m.get("floors"):
+            return m
+        f = m["floors"][self.run.index]
+        if f.get("indoors") or not m.get("room_floors"):
+            return f
+        return dict({k: m[k] for k in ("cycling", "downhill") if k in m}, **f)  # (a route with rooms: its own rules are the map's, outdoors only. The Cycling Road's gatehouses)
 
     def _downhill(self, t=None):
         """Is this tile on a slope that pulls you south (the map's "downhill": [first row, last row]; the Cycling Road)?"""
@@ -1387,6 +1397,7 @@ class DungeonState(OverworldBattles, PlayState):
         _all = (self.recipe.get("exit_floors_all") or {}).get(target) or []
         if len(_all) > 1 and self.run.index in _all:  # (the same place from several floors: out by this floor's own way there)
             core.ENTRANCE_INDEX, core.ENTRANCE_COUNT = _all.index(self.run.index), len(_all)
+            core.ENTRANCE_SPREAD = True
         if self.contest:  # leaving by the gate ends the contest: the judging first
             self._step_back()
             self._contest_end()

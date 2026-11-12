@@ -313,6 +313,8 @@ def surface(art, kinds, tile, roofs=None, theme=None):
                 _railing(surf, art, x, y, r)
             elif c == "g":  # a stone gate wall: gray blocks, a pillar every few tiles
                 _gate_wall(surf, art, x, y, r)
+            elif c == "j" and [x, y] in ((roofs or {}).get("_statues") or ()):  # a stone statue on its plinth (the Pokemon League's)
+                _statue(surf, r)
             elif c == "j":  # a white stone post: a round stump
                 pygame.draw.ellipse(surf, (140, 140, 150), (r.x + 8, r.bottom - 16, r.w - 16, 12))
                 body = pygame.Rect(r.x + 10, r.y + 12, r.w - 20, r.h - 20)
@@ -910,6 +912,16 @@ def fitting(surf, o, tile, ox=0, oy=0):
         slot.center = (r.centerx, r.y + r.h * 2 // 5)
         pygame.draw.rect(surf, (200, 192, 120), slot.inflate(u * 2, u * 2), border_radius=u * 2)
         pygame.draw.rect(surf, (252, 244, 152), slot, border_radius=u)
+    elif kind == "pane":  # a window in a room's back wall (or, with a "colour", a framed picture: the town map on a house's wall)
+        pygame.draw.rect(surf, white, r, border_radius=u)
+        glass = r.inflate(-u * 4, -u * 4)
+        pygame.draw.rect(surf, tuple(o.get("colour") or (150, 204, 240)), glass)
+        if not o.get("colour"):
+            pygame.draw.line(surf, (226, 242, 252), (glass.x + u * 2, glass.bottom - u * 2), (glass.x + glass.w // 2, glass.y + u), u * 2)
+            pygame.draw.line(surf, white, (glass.centerx, glass.y), (glass.centerx, glass.bottom), u)
+        else:
+            pygame.draw.rect(surf, tuple(min(255, v + 50) for v in o["colour"]), (glass.x + glass.w // 5, glass.y + glass.h // 4, glass.w // 3, glass.h // 3))
+        pygame.draw.rect(surf, line, r, u, border_radius=u)
     elif kind == "stool":  # a round cushioned stool you can walk over (FireRed's rest houses)
         cx, cy, q = r.centerx, r.centery + u, r.w * 5 // 16
         pygame.draw.ellipse(surf, (150, 140, 70), (cx - q, cy - q * 2 // 3 + u * 3, q * 2, q * 4 // 3))
@@ -1322,6 +1334,27 @@ def _ruin(surf, art, x, y, r, c):
             blk = pygame.Rect(r.x + int(fx * t), r.y + int(fy * t), int(fw * t), int(fh * t))
             pygame.draw.rect(surf, RUIN_LIGHT if k == 2 else RUIN, blk, border_radius=3)
             pygame.draw.rect(surf, RUIN_DARK, blk, 1, border_radius=3)
+
+
+def _statue(surf, r):
+    """A gray stone statue of a Pokemon on a plinth with a plaque (the Pokemon League's forecourt, Route 23's gates)."""
+    u = max(1, r.w // 28)
+    stone, light, dark = (168, 170, 184), (214, 216, 226), (96, 98, 116)
+    pygame.draw.ellipse(surf, (120, 124, 136), (r.x + u * 2, r.bottom - u * 6, r.w - u * 4, u * 5))
+    base = pygame.Rect(r.x + u * 4, r.centery + u * 2, r.w - u * 8, r.h // 2 - u * 4)
+    pygame.draw.rect(surf, stone, base, border_radius=u * 2)
+    pygame.draw.rect(surf, dark, base, max(1, u), border_radius=u * 2)
+    pygame.draw.rect(surf, light, base.inflate(-u * 8, -u * 6))
+    pygame.draw.rect(surf, dark, base.inflate(-u * 8, -u * 6), 1)
+    body = pygame.Rect(r.centerx - u * 6, r.y + u * 5, u * 12, r.h // 2 - u * 2)
+    pygame.draw.ellipse(surf, stone, body)
+    pygame.draw.ellipse(surf, dark, body, max(1, u))
+    for sx in (-1, 1):  # its two horns
+        tip = (r.centerx + sx * u * 6, r.y)
+        pygame.draw.polygon(surf, light, [(r.centerx + sx * u * 2, body.y + u * 3), tip, (r.centerx + sx * u * 6, body.y + u * 5)])
+        pygame.draw.polygon(surf, dark, [(r.centerx + sx * u * 2, body.y + u * 3), tip, (r.centerx + sx * u * 6, body.y + u * 5)], 1)
+        pygame.draw.circle(surf, dark, (r.centerx + sx * u * 3, body.y + u * 6), max(1, u))
+    pygame.draw.ellipse(surf, light, (body.x + u * 3, body.y + u * 2, u * 4, u * 3))
 
 
 def _gate_wall(surf, art, x, y, r):

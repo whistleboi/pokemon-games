@@ -83,6 +83,12 @@ def reachable(key, m):
             if far and (far[1], far[2]) not in seen:  # (a gatehouse walked through: in by this door, out by its other one)
                 seen.add((far[1], far[2]))
                 todo.append((far[1], far[2]))
+            room = (m.get("inside") or {}).get(f"{n[0]},{n[1]}") if 0 <= n[0] < w and 0 <= n[1] < h and art[n[1]][n[0]] == "D" else None
+            for d, r in ((m.get("inside") or {}).items() if room else ()):  # (a building with a room and several doors: in by one, out by any other. Kanto's gatehouses)
+                t = tuple(int(v) for v in d.split(","))
+                if r == room and t not in seen:
+                    seen.add(t)
+                    todo.append(t)
             if 0 <= n[0] < w and 0 <= n[1] < h and n not in seen and (art[n[1]][n[0]] in OPEN or art[n[1]][n[0]] in "_()$027"):  # (a ledge: crossed one way, near enough here; a waterfall: climbed with Waterfall)
                 seen.add(n)
                 todo.append(n)

@@ -26,6 +26,7 @@ from collections import deque
 
 CURRENT_FLOOR = 0  # the floor being made or walked right now (a floor's own wild pool: the seabed's)
 ENTRANCE_COUNT = 0  # how many tiles the way out you left by had (0: unknown): a wide edge maps place for place
+ENTRANCE_SPREAD = False  # the count is of buildings, not door tiles (out of one of Route 2's two gatehouses into Viridian Forest, whose gates are three tiles wide): the same way along
 ENTRANCE_INDEX = 0  # which of several ways in from the same place you came by (Route 41's four Whirl Islands caves)
 WALL, FLOOR, GRASS, WATER, SURF = 0, 1, 2, 3, 4  # (SURF: open sea, crossed with HM Surf)
 DIRS = ((0, -1), (1, 0), (0, 1), (-1, 0))
@@ -335,7 +336,9 @@ def drawn_floor(recipe, index, entrance=None, figures=()):
         doors = [t for t, target in exits.items() if target == entrance]  # (several the same way: the matching one)
         global ENTRANCE_INDEX, ENTRANCE_COUNT
         at = ENTRANCE_INDEX
-        if ENTRANCE_COUNT > 2 and len(doors) > 2 and ENTRANCE_COUNT != len(doors):
+        global ENTRANCE_SPREAD
+        spread, ENTRANCE_SPREAD = ENTRANCE_SPREAD, False
+        if (ENTRANCE_COUNT > 2 and len(doors) > 2 and ENTRANCE_COUNT != len(doors)) or (spread and ENTRANCE_COUNT > 1 and len(doors) > ENTRANCE_COUNT):
             # (two long edges of different lengths, rocks taken out of each: the same way along, not the same count in)
             at = round(ENTRANCE_INDEX * (len(doors) - 1) / (ENTRANCE_COUNT - 1))
         door = doors[min(at, len(doors) - 1)] if doors else None

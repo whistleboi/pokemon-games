@@ -1774,7 +1774,7 @@
         { "sprite": "lass.png", "name": "Patty", "class": "LASS", "team": [16, 19], "rewards": { "balls": 3 } },
         { "sprite": "school_kid_m.png", "name": "Billy", "class": "SCHOOL_KID", "team": [25], "rewards": { "balls": 3 } }
       ],
-      "route_menu": [{"text": "DIGLETT'S CAVE", "action": "EXIT", "target": "DIGGLETT_CAVE", "condition": ["can_exit", "has_item:HM_CUT"], "color": "RED"}, {"text": "OAK'S AIDE", "action": "EVENT", "door": "aide", "color": "GOLD", "event": {"lines": ["Aide: Oh, you're the trainer Professor Oak told me about!", "Caves can be pitch black inside. This HM will light the way. Take it!"], "gift_item": {"HM_FLASH": 1}, "flag": "got_hm_flash_kanto", "done": ["Aide: Flash lights up dark caves, so you can see where you're going. Good luck!"]}}, 
+      "route_menu": [{"text": "FOREST GUIDE", "action": "EVENT", "event": {"lines": ["Guide: Viridian Forest is a natural maze. Take your time in there!"]}}, {"text": "BUG FAN", "action": "EVENT", "event": {"lines": ["Boy: The forest is full of Bug Pokemon. Watch out for Weedle's sting!"]}}, {"text": "RESTING GIRL", "action": "EVENT", "event": {"lines": ["Girl: I made it through the forest! My feet hurt."]}}, {"text": "GATE LADY", "action": "EVENT", "event": {"lines": ["Lady: Pewter City is past the forest. Its Gym Leader uses Rock Pokemon."]}}, {"text": "YOUNG TRAINER", "action": "EVENT", "event": {"lines": ["Boy: Got Antidotes? You'll want some in the forest."]}}, {"text": "GATE VISITOR", "action": "EVENT", "event": {"lines": ["Man: Cut down the small tree outside and you can reach Diglett's Cave."]}}, {"text": "TRADER", "action": "EVENT", "event": {"lines": ["Man: I love trading Pokemon. A traded Pokemon grows fast!"]}}, {"text": "TRADER'S FRIEND", "action": "EVENT", "event": {"lines": ["Woman: He talks about trades all day long."]}}, {"text": "DIGLETT'S CAVE", "action": "EXIT", "target": "DIGGLETT_CAVE", "condition": ["can_exit", "has_item:HM_CUT"], "color": "RED"}, {"text": "OAK'S AIDE", "action": "EVENT", "door": "aide", "color": "GOLD", "event": {"lines": ["Aide: Oh, you're the trainer Professor Oak told me about!", "Caves can be pitch black inside. This HM will light the way. Take it!"], "gift_item": {"HM_FLASH": 1}, "flag": "got_hm_flash_kanto", "done": ["Aide: Flash lights up dark caves, so you can see where you're going. Good luck!"]}}, 
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
@@ -1934,7 +1934,7 @@
             "rewards": { "balls": 3 }
           }
       ],
-      "route_menu": [
+      "route_menu": [{"text": "GUARD", "action": "EVENT", "event": {"lines": ["Guard: I'm so thirsty... I can't let anyone through to Saffron City.", "If only someone would bring me something to drink!"]}}, 
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
@@ -1970,7 +1970,7 @@
         { "sprite": "biker.png", "name": "Ricardo", "class": "BIKER", "team": [109, 109, 88], "levels": [22, 22, 23], "rewards": { "balls": 3 } },
         { "sprite": "biker.png", "name": "Jaren", "class": "BIKER", "team": [88, 88], "levels": [24, 24], "rewards": { "balls": 3 } }
       ],
-      "route_menu": [
+      "route_menu": [{"text": "GUARD", "action": "EVENT", "event": {"lines": ["Guard: I'm so thirsty... I can't let anyone through to Saffron City.", "If only someone would bring me something to drink!"]}}, 
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
@@ -2108,7 +2108,7 @@
         { "sprite": "gambler.png", "name": "Hugo", "class": "GAMBLER", "team": [60, 116], "levels": [18, 18], "rewards": { "balls": 3 } },
         { "sprite": "engineer.png", "name": "Bernie", "class": "ENGINEER", "team": [81, 81, 82], "levels": [18, 18, 18], "rewards": { "balls": 3 } }
       ],
-      "route_menu": [
+      "route_menu": [{"text": "GATE GUARD", "action": "EVENT", "event": {"lines": ["Guard: Route 12 is ahead. I hear a huge Pokemon sleeps on its pier."]}}, 
         {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
         {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN"},
@@ -2141,7 +2141,7 @@
         { "sprite": "camper.png", "name": "Justin", "class": "CAMPER", "team": [32, 33], "levels": [29, 29], "rewards": { "balls": 3 } },
         { "sprite": "fisherman.png", "name": "Andrew", "class": "FISHERMAN", "team": [129, 129], "levels": [24, 24], "rewards": { "balls": 3 } }
       ],
-      "route_menu": [
+      "route_menu": [{"text": "GATE GUARD", "action": "EVENT", "event": {"lines": ["Guard: Lavender Town is north. The pier runs a long way south."]}}, {"text": "FISHING GURU", "action": "EVENT", "event": {"lines": ["Man: I'm the Fishing Guru's brother. The sea off this pier is full of fish!"]}}, 
         {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
         {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN"},
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
@@ -2268,7 +2268,7 @@
         { "sprite": "biker.png", "name": "Ernest", "class": "BIKER", "team": [109, 109, 110, 109, 88], "levels": [25, 25, 25, 25, 25], "rewards": { "balls": 3 } },
         { "sprite": "birdkeeper.png", "name": "Chester", "class": "BIRD_KEEPER", "team": [85, 84, 84], "levels": [28, 28, 28], "rewards": { "balls": 3 } }
       ],
-      "route_menu": [
+      "route_menu": [{"text": "GATE GUARD", "action": "EVENT", "event": {"lines": ["Guard: Fuchsia City is west. Don't miss the Safari Zone!"]}}, 
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
@@ -2336,7 +2336,7 @@
         { "sprite": "biker.png", "name": "Hideo", "class": "BIKER", "team": [110], "levels": [33], "rewards": { "balls": 3 } },
         { "sprite": "cueball.png", "name": "Koji", "class": "CUE_BALL", "team": [66, 56, 66], "levels": [28, 28, 28], "rewards": { "balls": 3 } }
       ],
-      "route_menu": [{"text": "A QUIET HOUSE", "action": "EVENT", "door": "flyhouse", "event": {"lines": ["Girl: Oh! You found my secret hideaway. Not many people come by here.", "Here, take this HM. Fly takes you to any town you've been to, in a flash!"], "gift_item": {"HM_FLY": 1}, "flag": "got_hm_fly_kanto", "done": ["Girl: Have fun flying around Kanto! Visit any town you've seen before."]}}, 
+      "route_menu": [{"text": "GATE GUARD", "action": "EVENT", "event": {"lines": ["Guard: The Cycling Road is downhill all the way. Bicycles only!"]}}, {"text": "CYCLIST", "action": "EVENT", "event": {"lines": ["Cyclist: No Bicycle? The Bike Shop is in Cerulean City."]}}, {"text": "A QUIET HOUSE", "action": "EVENT", "door": "flyhouse", "event": {"lines": ["Girl: Oh! You found my secret hideaway. Not many people come by here.", "Here, take this HM. Fly takes you to any town you've been to, in a flash!"], "gift_item": {"HM_FLY": 1}, "flag": "got_hm_fly_kanto", "done": ["Girl: Have fun flying around Kanto! Visit any town you've seen before."]}}, 
         {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
         {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN"},
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
@@ -2394,7 +2394,7 @@
         { "sprite": "birdkeeper.png", "name": "Jacob", "class": "BIRD_KEEPER", "team": [21, 21, 22, 21], "levels": [26, 26, 26, 26], "rewards": { "balls": 3 } },
         { "sprite": "birdkeeper.png", "name": "Ramiro", "class": "BIRD_KEEPER", "team": [85], "levels": [34], "rewards": { "balls": 3 } }
       ],
-      "route_menu": [
+      "route_menu": [{"text": "GATE GUARD", "action": "EVENT", "event": {"lines": ["Guard: Riding up the Cycling Road is hard work. Take it slow!"]}}, 
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
@@ -2523,7 +2523,7 @@
         {"type": "trainer_battle", "trainer": {"name": "{rival_name}", "class": "RIVAL", "sprite": "{rival_character}", "team": [10101, 10100]}, "condition": ["badges_less: 1", "received_pokedex_kanto"], "flag_check": "defeated_rival_route22_early"},
         {"type": "trainer_battle", "trainer": {"name": "{rival_name}", "class": "RIVAL", "sprite": "{rival_character}", "is_boss_battle": true, "team": [18, 111, 102, 130, 65, 6], "team_choice": {"1": [18, 111, 102, 130, 65, 6], "4": [18, 111, 58, 102, 65, 9], "7": [18, 111, 130, 58, 65, 3]}, "levels": [47, 45, 45, 45, 47, 53], "rewards": {"balls": 15, "RARE_CANDY": 1}, "dialogue": {"intro": ["{rival_name}: So you've got all eight badges too, {player_name}.", "I'm on my way to the Pokemon League. You can be my last warm-up!"], "player_won": ["{rival_name}: ...Fine. I'll see you at the Indigo Plateau.", "Don't keep me waiting up there!"], "player_lost": ["{rival_name}: Ha! Better luck at the League, {player_name}."]}}, "condition": ["has_8_kanto_badges", "not:beat_champion"], "flag_check": "defeated_rival_route22_late"}
       ],
-      "route_menu": [
+      "route_menu": [{"text": "GATE GUARD", "action": "EVENT", "event": {"lines": ["Guard: Only trainers with all eight Kanto badges may go on to the Pokemon League."]}}, 
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
