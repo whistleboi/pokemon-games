@@ -228,7 +228,7 @@ t.draw()
 check(tstep(t, (7, 5), (0, -1)) == (7, 4), "...walk up to the counter")
 t.step(0, -1)
 _pc = g.current_state
-check(type(_pc).__name__ == "PokeCenterState" and _pc.previous_state is t, f"...talk to the nurse across her counter: the Center's own screen ({type(_pc).__name__})")
+check(_pc is t and t.npc_active and bool(t.npc_dialogue), f"...talk to the nurse across her counter: she heals you from the map, no screen of the Center's own ({type(_pc).__name__})")
 g.change_state(t)
 t.npc_active = False
 t2 = town("PEWTER_CITY", "KANTO_ROUTE_2")

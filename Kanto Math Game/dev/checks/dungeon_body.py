@@ -877,7 +877,8 @@ check(_wt.room == "center" and g.current_state is _wt, f"walk into the Pokemon C
 _wt.player = _wt.anim_from = (7, 4); _wt.anim = 0; _wt.walk_goal = None
 _wt.step(0, -1)
 _pc = g.current_state
-check(type(_pc).__name__ == "PokeCenterState" and _pc.previous_state is _wt, "...talk to the nurse across her counter: the Center's screen")
+check(_pc is _wt and _wt.npc_active and bool(_wt.npc_dialogue), "...talk to the nurse across her counter: she heals you from the map, no screen of the Center's own")
+_wt.end_npc_interaction()
 _spot = _wt.player
 g.change_state(_wt)
 check(_wt.player == _spot and _wt.room == "center" and _wt.action_menu not in g.ui_manager.elements, "...out of it again: where you were, no menu bar")

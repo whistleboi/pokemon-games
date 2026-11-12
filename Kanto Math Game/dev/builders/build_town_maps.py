@@ -23,7 +23,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))  # (the game folder: src.dungeon.art, for whose door is whose)
 
 # One file a region (dev/builders/town_maps/<region>.py), in story order.
-REGIONS = ["kanto", "johto", "hoenn", "sinnoh", "sevii"]
+REGIONS = ["kanto", "johto", "hoenn", "sinnoh", "sevii", "orre"]
 
 
 ONLY = next((a.split("=", 1)[1].split(",") for a in sys.argv[1:] if a.startswith("--only=")), None)
@@ -55,7 +55,7 @@ def check(key, m):
     w = len(art[0])
     bad = [(i, len(r)) for i, r in enumerate(art) if len(r) != w]
     assert not bad, f"{key}: rows not {w} wide: {bad}"
-    for ch in set("".join(art)) - set("Tr~#.=s\"f<>^vNDw!lkc+-Xoqbuapihmgjeyzdtx%&$/n*_(),@[]{}:|;0123456789"):
+    for ch in set("".join(art)) - set("Tr~#.=s\"f<>^vNDw!lkc+-Xoqbuapihmgjeyzdtx%&$/n*_(),@[]{}:|;0123456789?"):  # (? a crate: Orre's S.S. Libra)
         from src.dungeon import art as _a
         cells = [(x, y) for y, r in enumerate(art) for x, c in enumerate(r) if c == ch or
                  (c == "D" and (_a.door_owner(art, x, y) == ch or (_a.door_owner(art, x, y) is None and 0 <= y - 1 and art[y - 1][x] == ch)))]
@@ -84,6 +84,9 @@ def reachable(key, m):
     lead_doors = [(x, y) for x, y in cells("D") if any(art[y + b][x + a] in lead for a, b in ((1, 0), (-1, 0), (0, 1), (0, -1)) if 0 <= y + b < h and 0 <= x + a < w)]
     if not exits or m.get("parts"):  # (every way out a building's door: Ilex Forest's two gates; or a map in parts, one reached only by a cave mouth: Ever Grande's League side) start from those doors too
         exits = exits + lead_doors
+    if not exits:  # (the only way out a parked motorbike, kind "cycle": Orre's towns, left by riding)
+        bikes = {k for k, v in m.get("buildings", {}).items() if v == "cycle"}
+        exits = [(x, y) for x, y in cells("D") if any(art[y + b][x + a] in bikes for a, b in ((1, 0), (-1, 0), (0, 1), (0, -1)) if 0 <= y + b < h and 0 <= x + a < w)]
     assert exits, f"{key}: no way out"
     starts = exits if m.get("parts") else exits[:1]  # (a floor in separate parts, each reached by its own ladder)
     starts = starts + [(x, y - 1) for x, y in map(tuple, m.get("back_doors", []))]  # (a yard reached only through a house's back door: Fuchsia's pond)
@@ -106,7 +109,7 @@ def reachable(key, m):
                 if r == room and t not in seen:
                     seen.add(t)
                     todo.append(t)
-            if 0 <= n[0] < w and 0 <= n[1] < h and n not in seen and (art[n[1]][n[0]] in OPEN or art[n[1]][n[0]] in "_()$027"):  # (a ledge: crossed one way, near enough here; a waterfall: climbed with Waterfall)
+            if 0 <= n[0] < w and 0 <= n[1] < h and n not in seen and (art[n[1]][n[0]] in OPEN or art[n[1]][n[0]] in "_()$027?"):  # (a ledge: crossed one way, near enough here; a waterfall: climbed with Waterfall; a crate: pushed aside)
                 seen.add(n)
                 todo.append(n)
     near = lambda t: any((t[0] + dx, t[1] + dy) in seen for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)))
@@ -114,7 +117,10 @@ def reachable(key, m):
     # (in a room, someone behind a counter is talked to across it)
     over = lambda t: m.get("theme") == "room" and any(0 <= t[1] + dy < h and 0 <= t[0] + dx < w and art[t[1] + dy][t[0] + dx] == "m"
                                                       and (t[0] + 2 * dx, t[1] + 2 * dy) in seen for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)))
-    cut += [(what, t) for what, ch in (("door", "D"), ("sign", "!"), ("person", "N")) for t in cells(ch) if not near(t) and not (ch == "N" and over(t))]
+    at = lambda x, y: art[y][x] if 0 <= y < h and 0 <= x < w else "c"
+    over2 = lambda t: m.get("theme") == "room" and any(at(t[0] + dx, t[1] + dy) == "m" and at(t[0] + 2 * dx, t[1] + 2 * dy) == "m" and (t[0] + 3 * dx, t[1] + 3 * dy) in seen
+                                                       for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)))  # (a counter two tiles deep)
+    cut += [(what, t) for what, ch in (("door", "D"), ("sign", "!"), ("person", "N")) for t in cells(ch) if not near(t) and not (ch == "N" and (over(t) or over2(t)))]
     assert not cut, f"{key}: out of reach {cut[:6]}"
 
 

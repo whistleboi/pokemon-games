@@ -23,7 +23,7 @@ DIRS = ((0, 1), (0, -1), (1, 0), (-1, 0))
 KEYS = {pygame.K_UP: (0, -1), pygame.K_w: (0, -1), pygame.K_DOWN: (0, 1), pygame.K_s: (0, 1),
         pygame.K_LEFT: (-1, 0), pygame.K_a: (-1, 0), pygame.K_RIGHT: (1, 0), pygame.K_d: (1, 0)}
 LABELS = {"steven": "STEVEN'S HOUSE", "space": "SPACE CENTER", "cozmo": "PROF. COZMO'S HOUSE", "wally": "WALLY'S UNCLE'S HOUSE", "contest": "CONTEST HALL", "shipyard": "STERN'S SHIPYARD", "market": "SLATEPORT MARKET", "devon": "DEVON CORP.", "center": "POKEMON CENTER", "mart": "POKE MART", "gym": "GYM", "lab": "LAB", "home": "HOME",
-          "school": "TRAINER SCHOOL", "rival": "RIVAL'S HOUSE", "assistant": "ASSISTANT'S HOUSE", "poketch": "POKETCH CO.", "gts": "GLOBAL TERMINAL", "tv": "JUBILIFE TV", "condo": "CONDOMINIUMS", "flower": "FLOWER SHOP", "library": "CANALAVE LIBRARY", "poffin": "POFFIN HOUSE", "ruins": "CELESTIC RUINS", "elder": "ELDER'S HOUSE", "lighthouse": "VISTA LIGHTHOUSE", "amity": "AMITY SQUARE", "museum": "MUSEUM", "bike": "BIKE SHOP",
+          "school": "TRAINER SCHOOL", "rival": "RIVAL'S HOUSE", "assistant": "ASSISTANT'S HOUSE", "poketch": "POKETCH CO.", "gts": "GLOBAL TERMINAL", "tv": "JUBILIFE TV", "condo": "CONDOMINIUMS", "flower": "FLOWER SHOP", "library": "CANALAVE LIBRARY", "poffin": "POFFIN HOUSE", "ruins": "CELESTIC RUINS", "elder": "ELDER'S HOUSE", "lighthouse": "VISTA LIGHTHOUSE", "amity": "AMITY SQUARE", "museum": "MUSEUM", "bike": "BIKE SHOP", "mayor": "MAYOR'S HOUSE", "cycle": "YOUR BIKE", "realgam": "REALGAM TOWER",
           "harbor": "HARBOR", "fanclub": "FAN CLUB", "radio": "RADIO TOWER", "ptower": "POKEMON TOWER",
           "fuji": "MR. FUJI'S HOUSE", "dept": "DEPT. STORE", "mansion": "CELADON MANSION", "hotel": "CELADON HOTEL",
           "game corner": "GAME CORNER", "prize corner": "PRIZE CORNER", "tower": "POKEMON TOWER", "mansion": "MANSION", "silph": "SILPH CO.",
@@ -450,6 +450,10 @@ class WalkTownState(CityState):
             if across in self._people():
                 self.walk_goal = None
                 return self._talk(across)
+            far = (to[0] + 2 * dx, to[1] + 2 * dy)  # (a counter two tiles deep: the nurse stands clear of its top)
+            if 0 <= across[1] < self.h and 0 <= across[0] < self.w and self.grid[across[1]][across[0]] == "m" and far in self._people():
+                self.walk_goal = None
+                return self._talk(far)
         if to in self.doors:
             self.walk_goal = None
             return self._enter(to)
@@ -580,6 +584,22 @@ class WalkTownState(CityState):
         from src.states.overworld.common import _fill_names
         self.show_message([_fill_names(self.game, line) for line in self.signs[spot]])
 
+    def _get_callback_for_option(self, opt_data):
+        """As the town's, but on the walked map nothing opens a scene of its own (Jordan, 11-12: those are the old map
+        style's): the nurse heals your team where you stand and says so from the map."""
+        if str(opt_data.get("action") or "").upper() == "HEAL":
+            return self._heal_here
+        return super()._get_callback_for_option(opt_data)
+
+    def _heal_here(self):
+        story = self.game.story_manager
+        story.last_center = story.current_area_key
+        for p in story.player_team:
+            p.heal_full()
+        if hasattr(self.game, "music"):
+            self.game.music.jingle("pokemon_healed")
+        self.show_message(["Welcome to the Pokémon Center!", "We've restored your team to full health."])
+
     def _talk(self, spot):
         opt = self.people[spot]
         if not self._shown(opt):
@@ -630,7 +650,8 @@ class WalkTownState(CityState):
     # ---------------------------------------------------------------- input
     def _buttons(self):
         side = dn.side_buttons(self.game)  # (stacked in the right band, beside the map)
-        return [(side[3], theme.pokemon_word("POKEMON"), theme.POKEMON, self._open_party),
+        return [(side[3].move(0, -70).inflate(0, -14).move(0, 7), "BAG", (198, 132, 60), self._open_bag),  # (Jordan, 11-12: the Bag one press away on the map, with the others)
+                (side[3], theme.pokemon_word("POKEMON"), theme.POKEMON, self._open_party),
                 (side[2], theme.pokemon_word("POKEDEX"), theme.BAG, self._open_pokedex)]
 
     def _camera(self):
@@ -748,8 +769,7 @@ class WalkTownState(CityState):
         return next((p for p in team if p and p.current_hp > 0), team[0] if team else None)
 
     def draw(self):
-        if self.npc_active and getattr(self, "npc_bg", None):
-            return super().draw()  # (someone's own scene: the town screen draws it)
+        # (Jordan, 11-12: no separate scene for someone you talk to: no other background, no picture sliding in. They speak from the map)
         screen = self.game.screen
         W, H = self.game.width, self.game.height
         fonts = self.game.assets.fonts

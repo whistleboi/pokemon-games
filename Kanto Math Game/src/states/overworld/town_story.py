@@ -495,6 +495,7 @@ class TownStory:
         from src.states.battle import TrainerBattleState, TrainerIntroState
         sprite = _trainer_sprite(self.game, t_info.get("sprite", "rival.png"))
         dlg = t_info.get("dialogue") or {}
+        _shown = list(self.game.ui_manager.elements)  # (making the battle puts its menus on screen at once; it isn't on yet: the town's own stay till it starts)
         battle_state = TrainerBattleState(
             self.game,
             opponent_team,
@@ -508,6 +509,7 @@ class TownStory:
             victory_flag=v_flag or t_info.get("victory_flag"),
             starter_battle=starter_battle,
         )
+        self.game.ui_manager.elements[:] = _shown
         intro_text = _resolve_lines(
             self.game, dlg.get("intro") or t_info.get("intro", "I'm gonna be the world's greatest trainer!"))
         # Jordan (11-06): an ambush on arrival says so first, here in town, before the battle screen.

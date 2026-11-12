@@ -166,8 +166,7 @@
 },
 "10_311": {
 "name": "l_lake",
-"ox": 513,
-"oy": 502
+"none": true
 },
 "10_450": {
 "name": "pc_01",
@@ -316,8 +315,7 @@
 },
 "13_584": {
 "name": "d16_o01",
-"ox": 113,
-"oy": 129
+"none": true
 },
 "13_585": {
 "name": "d16_o02",
@@ -496,13 +494,11 @@
 },
 "16_139": {
 "name": "chair03",
-"ox": 17,
-"oy": 20
+"none": true
 },
 "16_140": {
 "name": "chair04",
-"ox": 17,
-"oy": 20
+"none": true
 },
 "16_149": {
 "name": "shelf04",
@@ -511,8 +507,7 @@
 },
 "16_150": {
 "name": "book01",
-"ox": 17,
-"oy": 20
+"none": true
 },
 "16_155": {
 "name": "stair_u02",
@@ -521,8 +516,7 @@
 },
 "16_157": {
 "name": "d_mat04",
-"ox": 15,
-"oy": 25
+"none": true
 },
 "16_163": {
 "name": "table01_1",
@@ -541,13 +535,11 @@
 },
 "16_180": {
 "name": "chair_l01",
-"ox": 17,
-"oy": 18
+"none": true
 },
 "16_181": {
 "name": "chair_l02",
-"ox": 17,
-"oy": 18
+"none": true
 },
 "16_184": {
 "name": "shelf07",
@@ -576,8 +568,7 @@
 },
 "16_282": {
 "name": "flower_jpn01",
-"ox": 17,
-"oy": 20
+"none": true
 },
 "16_283": {
 "name": "poster_jpn01",
@@ -586,8 +577,7 @@
 },
 "16_284": {
 "name": "chair_jpn01",
-"ox": 17,
-"oy": 20
+"none": true
 },
 "16_285": {
 "name": "flower_jpn02",
@@ -596,8 +586,7 @@
 },
 "16_78": {
 "name": "d_mat01",
-"ox": 29,
-"oy": 9
+"none": true
 },
 "16_79": {
 "name": "window01",
@@ -631,8 +620,7 @@
 },
 "16_88": {
 "name": "cushion01",
-"ox": 17,
-"oy": 20
+"none": true
 },
 "16_89": {
 "name": "shelf03",
@@ -641,8 +629,7 @@
 },
 "16_92": {
 "name": "chair01",
-"ox": 17,
-"oy": 20
+"none": true
 },
 "16_94": {
 "name": "box01",
@@ -656,13 +643,11 @@
 },
 "17_117": {
 "name": "chair_pc01",
-"ox": 17,
-"oy": 18
+"none": true
 },
 "17_118": {
 "name": "chair_pc02",
-"ox": 17,
-"oy": 18
+"none": true
 },
 "17_119": {
 "name": "pc01",
@@ -696,8 +681,7 @@
 },
 "17_157": {
 "name": "d_mat04",
-"ox": 15,
-"oy": 25
+"none": true
 },
 "17_176": {
 "name": "flower_pc01",
@@ -711,8 +695,7 @@
 },
 "17_78": {
 "name": "d_mat01",
-"ox": 29,
-"oy": 9
+"none": true
 },
 "17_85": {
 "name": "plant01",
@@ -761,8 +744,7 @@
 },
 "18_157": {
 "name": "d_mat04",
-"ox": 15,
-"oy": 25
+"none": true
 },
 "18_159": {
 "name": "counter_fs04",
@@ -796,8 +778,7 @@
 },
 "18_178": {
 "name": "sheet_fs01",
-"ox": 17,
-"oy": 18
+"none": true
 },
 "18_179": {
 "name": "shelf_fs06",
@@ -811,8 +792,7 @@
 },
 "18_249": {
 "name": "sheet_fs02",
-"ox": 17,
-"oy": 18
+"none": true
 },
 "18_254": {
 "name": "cycle_bike01",
@@ -856,8 +836,7 @@
 },
 "18_437": {
 "name": "sheet_flow01",
-"ox": 23,
-"oy": 33
+"none": true
 },
 "18_75": {
 "name": "ele_door1",
@@ -866,8 +845,7 @@
 },
 "18_78": {
 "name": "d_mat01",
-"ox": 29,
-"oy": 9
+"none": true
 },
 "18_79": {
 "name": "window01",
@@ -891,8 +869,7 @@
 },
 "18_92": {
 "name": "chair01",
-"ox": 17,
-"oy": 20
+"none": true
 },
 "18_94": {
 "name": "box01",
@@ -906,23 +883,19 @@
 },
 "19_239": {
 "name": "r04_b1",
-"ox": 17,
-"oy": 18
+"none": true
 },
 "19_240": {
 "name": "r04_b2",
-"ox": 17,
-"oy": 18
+"none": true
 },
 "19_241": {
 "name": "r04_b3",
-"ox": 17,
-"oy": 18
+"none": true
 },
 "19_78": {
 "name": "d_mat01",
-"ox": 29,
-"oy": 9
+"none": true
 },
 "20_152": {
 "name": "object01",
@@ -931,8 +904,7 @@
 },
 "20_78": {
 "name": "d_mat01",
-"ox": 29,
-"oy": 9
+"none": true
 },
 "21_152": {
 "name": "object01",
@@ -941,8 +913,7 @@
 },
 "21_78": {
 "name": "d_mat01",
-"ox": 29,
-"oy": 9
+"none": true
 },
 "22_152": {
 "name": "object01",
@@ -951,8 +922,7 @@
 },
 "22_78": {
 "name": "d_mat01",
-"ox": 29,
-"oy": 9
+"none": true
 },
 "23_152": {
 "name": "object01",
@@ -971,8 +941,7 @@
 },
 "23_78": {
 "name": "d_mat01",
-"ox": 29,
-"oy": 9
+"none": true
 },
 "24_152": {
 "name": "object01",
@@ -981,8 +950,7 @@
 },
 "24_78": {
 "name": "d_mat01",
-"ox": 29,
-"oy": 9
+"none": true
 },
 "25_152": {
 "name": "object01",
@@ -991,8 +959,7 @@
 },
 "25_78": {
 "name": "d_mat01",
-"ox": 29,
-"oy": 9
+"none": true
 },
 "26_152": {
 "name": "object01",
@@ -1001,13 +968,11 @@
 },
 "26_465": {
 "name": "gym_switch01",
-"ox": 17,
-"oy": 17
+"none": true
 },
 "26_78": {
 "name": "d_mat01",
-"ox": 29,
-"oy": 9
+"none": true
 },
 "26_98": {
 "name": "gym8_spk_s",
@@ -1041,18 +1006,15 @@
 },
 "27_138": {
 "name": "chair02",
-"ox": 17,
-"oy": 20
+"none": true
 },
 "27_140": {
 "name": "chair04",
-"ox": 17,
-"oy": 20
+"none": true
 },
 "27_150": {
 "name": "book01",
-"ox": 17,
-"oy": 20
+"none": true
 },
 "27_151": {
 "name": "poster01",
@@ -1071,8 +1033,7 @@
 },
 "27_157": {
 "name": "d_mat04",
-"ox": 15,
-"oy": 25
+"none": true
 },
 "27_158": {
 "name": "machine_l03",
@@ -1171,8 +1132,7 @@
 },
 "27_78": {
 "name": "d_mat01",
-"ox": 29,
-"oy": 9
+"none": true
 },
 "27_79": {
 "name": "window01",
@@ -1191,8 +1151,7 @@
 },
 "27_92": {
 "name": "chair01",
-"ox": 17,
-"oy": 20
+"none": true
 },
 "27_94": {
 "name": "box01",
@@ -1231,13 +1190,11 @@
 },
 "28_428": {
 "name": "sheet_pc01",
-"ox": 17,
-"oy": 18
+"none": true
 },
 "28_78": {
 "name": "d_mat01",
-"ox": 29,
-"oy": 9
+"none": true
 },
 "28_85": {
 "name": "plant01",
@@ -1246,13 +1203,11 @@
 },
 "28_92": {
 "name": "chair01",
-"ox": 17,
-"oy": 20
+"none": true
 },
 "33_138": {
 "name": "chair02",
-"ox": 17,
-"oy": 20
+"none": true
 },
 "33_182": {
 "name": "shelf05",
@@ -1271,8 +1226,7 @@
 },
 "33_78": {
 "name": "d_mat01",
-"ox": 29,
-"oy": 9
+"none": true
 },
 "33_83": {
 "name": "sink01",
@@ -1296,8 +1250,7 @@
 },
 "33_92": {
 "name": "chair01",
-"ox": 17,
-"oy": 20
+"none": true
 },
 "33_96": {
 "name": "window02",
@@ -1331,8 +1284,7 @@
 },
 "36_428": {
 "name": "sheet_pc01",
-"ox": 17,
-"oy": 18
+"none": true
 },
 "36_456": {
 "name": "door_wi01",
@@ -1351,18 +1303,15 @@
 },
 "36_553": {
 "name": "lchair01",
-"ox": 17,
-"oy": 82
+"none": true
 },
 "36_78": {
 "name": "d_mat01",
-"ox": 29,
-"oy": 9
+"none": true
 },
 "36_92": {
 "name": "chair01",
-"ox": 17,
-"oy": 20
+"none": true
 },
 "38_261": {
 "name": "gym05_o4",
@@ -1381,8 +1330,7 @@
 },
 "38_78": {
 "name": "d_mat01",
-"ox": 29,
-"oy": 9
+"none": true
 },
 "3_26": {
 "name": "treeeff",
@@ -1681,8 +1629,7 @@
 },
 "54_157": {
 "name": "d_mat04",
-"ox": 15,
-"oy": 25
+"none": true
 },
 "54_158": {
 "name": "machine_l03",
@@ -1706,8 +1653,7 @@
 },
 "54_428": {
 "name": "sheet_pc01",
-"ox": 17,
-"oy": 18
+"none": true
 },
 "54_485": {
 "name": "card_key01",
@@ -1736,8 +1682,7 @@
 },
 "54_78": {
 "name": "d_mat01",
-"ox": 29,
-"oy": 9
+"none": true
 },
 "54_82": {
 "name": "tv01",
@@ -1841,13 +1786,11 @@
 },
 "58_311": {
 "name": "l_lake",
-"ox": 513,
-"oy": 502
+"none": true
 },
 "58_74": {
 "name": "l_lake_l4",
-"ox": 321,
-"oy": 246
+"none": true
 },
 "59_448": {
 "name": "c06_s01",
@@ -1981,8 +1924,7 @@
 },
 "62_103": {
 "name": "d_mat02",
-"ox": 17,
-"oy": 29
+"none": true
 },
 "62_106": {
 "name": "bed_h01",
@@ -1996,13 +1938,11 @@
 },
 "62_139": {
 "name": "chair03",
-"ox": 17,
-"oy": 20
+"none": true
 },
 "62_140": {
 "name": "chair04",
-"ox": 17,
-"oy": 20
+"none": true
 },
 "62_149": {
 "name": "shelf04",
@@ -2011,13 +1951,11 @@
 },
 "62_150": {
 "name": "book01",
-"ox": 17,
-"oy": 20
+"none": true
 },
 "62_157": {
 "name": "d_mat04",
-"ox": 15,
-"oy": 25
+"none": true
 },
 "62_163": {
 "name": "table01_1",
@@ -2071,8 +2009,7 @@
 },
 "62_78": {
 "name": "d_mat01",
-"ox": 29,
-"oy": 9
+"none": true
 },
 "62_81": {
 "name": "shelf02",
@@ -2136,8 +2073,7 @@
 },
 "63_78": {
 "name": "d_mat01",
-"ox": 29,
-"oy": 9
+"none": true
 },
 "64_158": {
 "name": "machine_l03",
@@ -2166,8 +2102,7 @@
 },
 "64_78": {
 "name": "d_mat01",
-"ox": 29,
-"oy": 9
+"none": true
 },
 "66_309": {
 "name": "wfall7_4dun",

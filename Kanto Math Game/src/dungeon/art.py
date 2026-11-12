@@ -272,6 +272,8 @@ def surface(art, kinds, tile, roofs=None, theme=None):
                 continue
             if pic and c not in "02b!&x":  # (on the game's own picture only what is not in it is drawn: a cracked rock, a small tree, a boulder, a sign)
                 continue
+            if pic and c == "!" and (roofs or {}).get("_signs_in_picture"):  # (the picture already shows its signs: Orre's fan-game maps)
+                continue
             if pic and c in "02b":  # (those three as the game's own, where it has them)
                 own = _ow(spec_folder(roofs), {"0": "breakrock", "2": "tree", "b": "rock"}[c], tile)
                 if own:
@@ -446,7 +448,7 @@ def surface(art, kinds, tile, roofs=None, theme=None):
                 pygame.draw.circle(surf, (120, 126, 140), c0, tile // 5)
                 pygame.draw.circle(surf, (214, 218, 226), c0, tile // 9)
     for k, rect in sorted(buildings(art).items(), key=lambda kv: kv[1].bottom):
-        if not models:
+        if not models and not (pic and (roofs or {}).get("_buildings_in_picture")):  # (the picture already shows its buildings: Orre's fan-game maps)
             _building(surf, art, rect, kinds.get(k, "house"), tile, (roofs or {}).get(k))
     for o in sorted(OBJECTS, key=lambda o: o["at"][1] if "at" in o else o["r"][1] + o["r"][3]):  # the things from the tile sheets, back to front
         if "at" in o:  # one of the real game's models, where the game stands it

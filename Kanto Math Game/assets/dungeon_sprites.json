@@ -516,6 +516,393 @@
     },
     "SUNYSHORE_CITY:Heal": {
       "sheet": "pt_pcwoman1.png"
+    },
+    "PHENAC_CITY:Meet Rui": {
+      "sheet": "orre_partner_rui.png"
+    },
+    "PHENAC_CITY:A boy with his Poliwrath": {
+      "sheet": "orre_npc_27.png"
+    },
+    "PHENAC_CITY:Poliwrath": {
+      "sheet": "orre_pokemon_01.png"
+    },
+    "PHENAC_CITY:Old woman": {
+      "sheet": "orre_npc_11.png"
+    },
+    "PHENAC_CITY:A mother": {
+      "sheet": "orre_npc_04.png"
+    },
+    "PHENAC_CITY:Old man": {
+      "sheet": "orre_npc_10.png"
+    },
+    "PHENAC_CITY:Bird Keeper": {
+      "sheet": "orre_trainer_birdkeeper.png"
+    },
+    "PHENAC_CITY:Pidgey": {
+      "sheet": "orre_pokemon_02.png"
+    },
+    "PHENAC_CITY:A girl by the stadium": {
+      "sheet": "orre_trainer_twins.png"
+    },
+    "PHENAC_CITY:Jigglypuff": {
+      "sheet": "orre_pokemon_03.png"
+    },
+    "PHENAC_CITY:Shopper": {
+      "sheet": "orre_npc_07.png"
+    },
+    "PHENAC_CITY:Runner": {
+      "sheet": "orre_trainer_athlete_2.png"
+    },
+    "PHENAC_CITY:A boy in glasses": {
+      "sheet": "orre_npc_02.png"
+    },
+    "PHENAC_CITY:Traveller": {
+      "sheet": "orre_npc_03.png"
+    },
+    "PHENAC_CITY:Collector": {
+      "sheet": "orre_npc_02.png"
+    },
+    "PHENAC_CITY:Girl": {
+      "sheet": "orre_trainer_twins.png"
+    },
+    "PHENAC_CITY:Trainer": {
+      "sheet": "orre_trainer_pokemontrainer_leaf.png"
+    },
+    "PHENAC_CITY:PHENAC STADIUM: SNATTLE": {
+      "sheet": "orre_npc_hoenn_03.png"
+    },
+    "PHENAC_CITY:Phenac Stadium": {
+      "sheet": "orre_npc_hoenn_03.png"
+    },
+    "PHENAC_CITY:Trouble at the Fountain": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "PHENAC_CITY:Pokemon Center": {
+      "sheet": "orre_npc_16.png"
+    },
+    "PHENAC_CITY:Poke Mart": {
+      "sheet": "orre_npc_15.png"
+    },
+    "OUTSKIRT_STAND:CHALLENGE WILLIE": {
+      "sheet": "orre_trainer_rider_willie.png"
+    },
+    "OUTSKIRT_STAND:Pokemon Center": {
+      "sheet": "orre_healing_balls_3.png"
+    },
+    "OUTSKIRT_STAND:Poke Mart": {
+      "sheet": "orre_npc_ernest.png"
+    },
+    "OUTSKIRT_STAND:Scientist": {
+      "sheet": "orre_trainer_scientist.png"
+    },
+    "OUTSKIRT_STAND:Diner": {
+      "sheet": "orre_trainer_lady.png"
+    },
+    "PYRITE_TOWN:Local": {
+      "sheet": "orre_npc_05.png"
+    },
+    "PYRITE_TOWN:Shopper": {
+      "sheet": "orre_npc_03.png"
+    },
+    "PYRITE_TOWN:Pokemon Center": {
+      "sheet": "orre_healing_balls_3.png"
+    },
+    "PYRITE_TOWN:Pyrite Colosseum": {
+      "sheet": "orre_npc_08.png"
+    },
+    "PYRITE_TOWN:Poke Mart": {
+      "sheet": "orre_npc_19.png"
+    },
+    "PYRITE_TOWN:Pyrite's Sheriff": {
+      "sheet": "orre_npc_01.png"
+    },
+    "PYRITE_TOWN:Old man": {
+      "sheet": "orre_npc_18.png"
+    },
+    "PYRITE_TOWN:Old woman": {
+      "sheet": "orre_npc_11.png"
+    },
+    "PYRITE_TOWN:Boy": {
+      "sheet": "orre_npc_02.png"
+    },
+    "PYRITE_TOWN:Fortune teller": {
+      "sheet": "orre_npc_fortune_lady.png"
+    },
+    "PYRITE_TOWN:Hotel clerk": {
+      "sheet": "orre_npc_pyrite_hotel.png"
+    },
+    "AGATE_VILLAGE:Old man": {
+      "sheet": "orre_npc_10.png"
+    },
+    "AGATE_VILLAGE:Kid": {
+      "sheet": "orre_npc_02.png"
+    },
+    "AGATE_VILLAGE:Slowpoke": {
+      "sheet": "orre_pokemon_05.png"
+    },
+    "AGATE_VILLAGE:Pokemon Center": {
+      "sheet": "orre_npc_16.png"
+    },
+    "AGATE_VILLAGE:Poke Mart": {
+      "sheet": "orre_npc_19.png"
+    },
+    "AGATE_VILLAGE:Pokémon Day Care": {
+      "sheet": "orre_npc_matron.png"
+    },
+    "AGATE_VILLAGE:Village Elder": {
+      "sheet": "orre_npc_eagun2.png"
+    },
+    "AGATE_VILLAGE:Girl": {
+      "sheet": "orre_trainer_lass.png"
+    },
+    "AGATE_VILLAGE:Woman": {
+      "sheet": "orre_trainer_street_performer.png"
+    },
+    "AGATE_VILLAGE:Man": {
+      "sheet": "orre_npc_07.png"
+    },
+    "AGATE_VILLAGE:Wobbuffet": {
+      "sheet": "orre_pokemon_17.png"
+    },
+    "GATEON_PORT:The Cipher Rumor": {
+      "sheet": "orre_trainer_sailor.png"
+    },
+    "GATEON_PORT:Woman": {
+      "sheet": "orre_npc_04.png"
+    },
+    "GATEON_PORT:Pokemon Center": {
+      "sheet": "orre_npc_16.png"
+    },
+    "GATEON_PORT:Poke Mart": {
+      "sheet": "orre_npc_19.png"
+    },
+    "REALGAM_TOWER:Visitor": {
+      "sheet": "orre_npc_24.png"
+    },
+    "REALGAM_TOWER:Woman": {
+      "sheet": "orre_npc_08.png"
+    },
+    "REALGAM_TOWER:Cubone": {
+      "sheet": "orre_pokemon_06.png"
+    },
+    "REALGAM_TOWER:Pokemon Center": {
+      "sheet": "orre_npc_16.png"
+    },
+    "REALGAM_TOWER:Poke Mart": {
+      "sheet": "orre_npc_15.png"
+    },
+    "REALGAM_TOWER:Realgam Tower: Cipher's Colosseum": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "ORRE_COLOSSEUM:Pokemon Center": {
+      "sheet": "orre_healing_balls_3.png"
+    },
+    "ORRE_COLOSSEUM:Poke Mart": {
+      "sheet": "orre_healing_balls_3.png"
+    },
+    "ORRE_COLOSSEUM:Orre Colosseum": {
+      "sheet": "orre_npc_18.png"
+    },
+    "GATEON_PORT:Citadark Isle": {
+      "sheet": "orre_trainer_sailor.png"
+    },
+    "POKEMON_HQ_LAB:Professor Krane": {
+      "sheet": "orre_trainer_scientist.png"
+    },
+    "POKEMON_HQ_LAB:Pokemon Center": {
+      "sheet": "orre_trainer_scientist.png"
+    },
+    "POKEMON_HQ_LAB:Lab Assistant": {
+      "sheet": "orre_trainer_scientist.png"
+    },
+    "POKEMON_HQ_LAB:Purify Chamber": {
+      "sheet": "orre_trainer_scientist.png"
+    },
+    "PRESTIGE_PRECEPT_CENTER:SNAG SHADOW POKEMON": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "PRESTIGE_PRECEPT_CENTER:SNAG AGAIN": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "PYRITE_CAVE:SNAG SHADOW POKEMON": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "PYRITE_CAVE:SNAG AGAIN": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "PYRITE_CAVE:PYRITE CAVE: MIROR B.": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "CAVE_POKE_SPOT:SNAG SHADOW POKEMON": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "CAVE_POKE_SPOT:SNAG AGAIN": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "RELIC_CAVE:SNAG SHADOW POKEMON": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "RELIC_CAVE:SNAG AGAIN": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "PYRITE_BUILDING:SNAG SHADOW POKEMON": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "PYRITE_BUILDING:SNAG AGAIN": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "SNAGEM_HIDEOUT:SNAG SHADOW POKEMON": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "SNAGEM_HIDEOUT:SNAG AGAIN": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "SNAGEM_HIDEOUT:SNAGEM HIDEOUT: GONZAP": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "XD_CIPHER_KEY_LAIR:SNAG SHADOW POKEMON": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "XD_CIPHER_KEY_LAIR:SNAG AGAIN": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "XD_CIPHER_KEY_LAIR:BATTLE CIPHER ADMIN GORIGAN": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "XD_CITADARK_ISLE:SNAG SHADOW POKEMON": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "XD_CITADARK_ISLE:SNAG AGAIN": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "XD_CITADARK_ISLE:BATTLE GRAND MASTER GREEVIL": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "XD_CITADARK_ISLE:BATTLE CIPHER ADMIN SNATTLE": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "XD_CITADARK_ISLE:BATTLE CIPHER ADMIN ARDOS": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "XD_CITADARK_ISLE:BATTLE CIPHER ADMIN ELDES": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "MT_BATTLE:START OVER FROM AREA 1": {
+      "sheet": "orre_npc_15.png"
+    },
+    "MT_BATTLE:DAKIM ATTACKS MT. BATTLE": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "MT_BATTLE:SNAG SHADOW POKEMON": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "MT_BATTLE:SNAG AGAIN": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "THE_UNDER:SNAG SHADOW POKEMON": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "THE_UNDER:SNAG AGAIN": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "THE_UNDER:SHUT DOWN THE UNDER": {
+      "sheet": "orre_trainer_cipher_venus.png"
+    },
+    "SHADOW_PKMN_LAB:SNAG SHADOW POKEMON": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "SHADOW_PKMN_LAB:SNAG AGAIN": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "SHADOW_PKMN_LAB:SHADOW POKEMON LAB: EIN": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "XD_CIPHER_LAB:SNAG SHADOW POKEMON": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "XD_CIPHER_LAB:SNAG AGAIN": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "XD_CIPHER_LAB:BATTLE CIPHER ADMIN LOVRINA": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "XD_ONBS:SNAG SHADOW POKEMON": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "XD_ONBS:SNAG AGAIN": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "XD_ONBS:BATTLE CIPHER CMDR EXOL": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "SS_LIBRA:SNAG SHADOW POKEMON": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "SS_LIBRA:SNAG AGAIN": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "KAMINKO_HOUSE:KAMINKO'S HOUSE: CHOBIN": {
+      "sheet": "orre_trainer_scientist.png"
+    },
+    "KAMINKO_HOUSE:Dr. Kaminko": {
+      "sheet": "orre_npc_10.png"
+    },
+    "KAMINKO_HOUSE:Jovi": {
+      "sheet": "orre_npc_02.png"
+    },
+    "UNDER_COLOSSEUM:Pokemon Center": {
+      "sheet": "orre_npc_16.png"
+    },
+    "UNDER_COLOSSEUM:Poke Mart": {
+      "sheet": "orre_npc_19.png"
+    },
+    "UNDER_COLOSSEUM:Under Colosseum": {
+      "sheet": "orre_npc_08.png"
+    },
+    "CIPHER_COMMAND:READ CIPHER'S FILES": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "CIPHER_COMMAND:SNAG SHADOW POKEMON": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "CIPHER_COMMAND:SNAG AGAIN": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "DEEP_COLOSSEUM:SNAG SHADOW POKEMON": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "DEEP_COLOSSEUM:SNAG AGAIN": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "MT_BATTLE:F-DISK": {
+      "sheet": "orre_object_ball.png"
+    },
+    "THE_UNDER:U-DISK": {
+      "sheet": "orre_object_ball.png"
+    },
+    "THE_UNDER:MAINGATE KEY": {
+      "sheet": "orre_object_ball.png"
+    },
+    "SHADOW_PKMN_LAB:CARD KEY": {
+      "sheet": "orre_object_ball.png"
+    },
+    "SHADOW_PKMN_LAB:DNA SAMPLE (1)": {
+      "sheet": "orre_object_ball.png"
+    },
+    "SHADOW_PKMN_LAB:DOWN ST. KEY": {
+      "sheet": "orre_object_ball.png"
+    },
+    "SHADOW_PKMN_LAB:DNA SAMPLE (2)": {
+      "sheet": "orre_object_ball.png"
+    },
+    "SHADOW_PKMN_LAB:DNA SAMPLE (3)": {
+      "sheet": "orre_object_ball.png"
+    },
+    "XD_CIPHER_LAB:ID CARD": {
+      "sheet": "orre_object_ball.png"
+    },
+    "XD_ONBS:BONSLY'S GIRL": {
+      "sheet": "orre_npc_04.png"
     }
   },
   "townsperson": "NPC 17.png",
@@ -574,5 +961,33 @@
     "sage2.png": "pt_oldman2.png",
     "master.png": "pt_bigfour4.png",
     "rival.png": "pt_rivel.png"
+  },
+  "trainers_ORRE": {
+    "acetrainer_m.png": "orre_trainer_ace_trainer.png",
+    "beauty.png": "orre_trainer_beauty.png",
+    "orre_bodybuilder.png": "orre_trainer_bodybuilder.png",
+    "orre_bodybuilder2.png": "orre_trainer_bodybuilder.png",
+    "orre_chaser_f.png": "orre_trainer_chaser_f.png",
+    "orre_chaser_m.png": "orre_trainer_chaser_m.png",
+    "orre_cipher_peon.png": "orre_trainer_cipher_grunt.png",
+    "orre_cipher_blue.png": "orre_trainer_cipher_blusix.png",
+    "orre_cipher_brown.png": "orre_trainer_cipher_browsix.png",
+    "orre_cipher_green.png": "orre_trainer_cipher_greesix.png",
+    "orre_cipher_purple.png": "orre_trainer_cipher_pursix.png",
+    "orre_cipher_red.png": "orre_trainer_cipher_redsix.png",
+    "orre_cipher_yellow.png": "orre_trainer_cipher_yellosix.png",
+    "orre_cool_trainer_f.png": "orre_trainer_cooltrainer_f.png",
+    "orre_cool_trainer_m.png": "orre_trainer_cooltrainer_m.png",
+    "orre_engineer.png": "orre_trainer_engineer.png",
+    "orre_fun_old_man.png": "orre_trainer_fun_old_man.png",
+    "orre_hunter_f.png": "orre_trainer_pokemonranger_f.png",
+    "orre_hunter_m.png": "orre_trainer_hunter_m.png",
+    "orre_rider.png": "orre_trainer_rider.png",
+    "orre_roller_boy_kaib.png": "orre_trainer_youngster.png",
+    "orre_sailor.png": "orre_trainer_sailor.png",
+    "orre_scientist.png": "orre_trainer_scientist.png",
+    "orre_snagem_grunt.png": "orre_trainer_burglar.png",
+    "orre_street_performer.png": "orre_trainer_street_performer.png",
+    "roughneck.png": "orre_trainer_biker.png"
   }
 }

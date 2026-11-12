@@ -2882,7 +2882,7 @@
         {"text": "Verity Lakefront", "action": "EXIT", "target_area": "VERITY_LAKEFRONT", "condition": "can_exit", "color": "RED"}
       ],
       "area_boss": { "id": 481, "name": "Mesprit", "victory_flag": "LAKE_VERITY_boss_defeated" },
-        "starter_event": {"lines": ["{rival_name}: Did you see the red Gyarados on TV? There must be a Pokémon like that in our lake too!", "At Lake Verity you find Professor Rowan and his assistant. They leave in a hurry, forgetting a briefcase.", "Suddenly, wild STARLY swoop down from the trees!", "{rival_name}: The briefcase! There are Poké Balls inside... pick one, quick!"], "boss": {"id": 396, "name": "Starly", "level": 2, "exact_level": true, "no_catch": true, "victory_flag": "sinnoh_starly_driven_off", "lines": ["The wild STARLY dives at you!"], "won": ["The STARLY flew off!", "Professor Rowan comes back for his briefcase: 'You used my Pokémon?... Hm.'", "Professor Rowan: 'Come and see me at my lab in Sandgem Town.'", "{rival_name}: Phew! Let's head home first. I want a battle!"]}, "return_to": "TWINLEAF_TOWN", "return_until": "defeated_rival_sinnoh_starter"}
+        "starter_event": {"walk_up": {"look": "sheet:pt_doctor.png", "with": "sheet:pt_heroine.png", "flag": "sinnoh_rowan_walked_up", "lines": ["Professor Rowan walks over and picks up his briefcase.", "Professor Rowan: ...Hm."]}, "lines": ["{rival_name}: Did you see the red Gyarados on TV? There must be a Pokémon like that in our lake too!", "At Lake Verity you find Professor Rowan and his assistant. They leave in a hurry, forgetting a briefcase.", "Suddenly, wild STARLY swoop down from the trees!", "{rival_name}: The briefcase! There are Poké Balls inside... pick one, quick!"], "boss": {"id": 396, "name": "Starly", "level": 2, "exact_level": true, "no_catch": true, "victory_flag": "sinnoh_starly_driven_off", "lines": ["The wild STARLY dives at you!"], "won": ["The STARLY flew off!", "Professor Rowan comes back for his briefcase: 'You used my Pokémon?... Hm.'", "Professor Rowan: 'Come and see me at my lab in Sandgem Town.'", "{rival_name}: Phew! Let's head home first. I want a battle!"]}, "return_to": "TWINLEAF_TOWN", "return_until": "defeated_rival_sinnoh_starter"}
     },
     "LAKE_VALOR": {
       "area_type": "dungeon",
@@ -4338,314 +4338,658 @@
       "id": "sinnoh_m1",
       "type": "MAIN",
       "title": "A Fateful Encounter",
-      "description": "Follow {rival_name} to Lake Verity, west of Route 201. Professor Rowan's briefcase holds your first Pokémon!",
+      "description": "Follow {rival_name} to Lake Verity: west along Route 201, past the Lakefront. Professor Rowan is there.",
       "condition": {
-        "start_region": "SINNOH",
+        "required_region": "SINNOH",
         "flag_not": "received_starter_sinnoh"
       },
-      "reward": "Starter Pokémon + Pokédex",
-      "target": "LAKE_VERITY"
+      "target": "LAKE_VERITY",
+      "reward": "Your first Pokémon"
+    },
+    {
+      "id": "sinnoh_m1b",
+      "type": "MAIN",
+      "title": "Home to Twinleaf",
+      "description": "You drove off the Starly! Head home to Twinleaf Town. {rival_name} is itching for a first battle.",
+      "condition": {
+        "required_region": "SINNOH",
+        "flag": "received_starter_sinnoh",
+        "flag_not": "defeated_rival_sinnoh_starter"
+      },
+      "target": "TWINLEAF_TOWN",
+      "reward": "5 Poké Balls"
+    },
+    {
+      "id": "sinnoh_m1c",
+      "type": "MAIN",
+      "title": "The Professor's Lab",
+      "description": "Take Route 201 east to Sandgem Town and visit Professor Rowan in his lab.",
+      "condition": {
+        "required_region": "SINNOH",
+        "flag": "defeated_rival_sinnoh_starter",
+        "flag_not": "received_pokedex_sinnoh"
+      },
+      "target": "SANDGEM_TOWN",
+      "completed_flag": "received_pokedex_sinnoh",
+      "reward": "Pokédex"
+    },
+    {
+      "id": "sinnoh_m1d",
+      "type": "MAIN",
+      "title": "North to Jubilife",
+      "description": "The Professor's assistant, next door in Sandgem, has Poké Balls for you. Then follow Route 202 north to Jubilife City.",
+      "condition": {
+        "required_region": "SINNOH",
+        "flag": "received_pokedex_sinnoh",
+        "visited_not": "JUBILIFE_CITY",
+        "badges_less": 1
+      },
+      "target": "JUBILIFE_CITY"
+    },
+    {
+      "id": "sinnoh_m1e",
+      "type": "MAIN",
+      "title": "East to Oreburgh",
+      "description": "Pick up a Pokétch in Jubilife, then go east on Route 203 and through Oreburgh Gate. {rival_name} is waiting on the way.",
+      "condition": {
+        "required_region": "SINNOH",
+        "visited": "JUBILIFE_CITY",
+        "visited_not": "OREBURGH_CITY",
+        "badges_less": 1
+      },
+      "target": "OREBURGH_CITY"
     },
     {
       "id": "sinnoh_m2",
       "type": "MAIN",
-      "title": "Coal Badge",
-      "description": "Challenge Roark at the Oreburgh City Gym. He's in the Oreburgh Mine — find him first!",
+      "title": "Find Roark",
+      "description": "Oreburgh's Gym Leader is down in the Oreburgh Mine, south of the city. Go and find him.",
       "condition": {
-        "start_region": "SINNOH",
-        "badges_less": 1,
-        "visited": "OREBURGH_CITY"
+        "required_region": "SINNOH",
+        "visited": "OREBURGH_CITY",
+        "flag_not": "met_roark",
+        "badges_less": 1
       },
-      "reward": "Coal Badge + Adventure Map"
+      "target": "OREBURGH_MINE"
+    },
+    {
+      "id": "sinnoh_m2b",
+      "type": "MAIN",
+      "title": "Coal Badge",
+      "description": "Roark is back at the Oreburgh City Gym. Rock types: Water and Grass moves hit hard.",
+      "condition": {
+        "required_region": "SINNOH",
+        "flag": "met_roark",
+        "badges_less": 1
+      },
+      "target": "OREBURGH_CITY",
+      "reward": "Coal Badge"
     },
     {
       "id": "sinnoh_m3",
       "type": "MAIN",
-      "title": "North to Floaroma",
-      "description": "Head north through Route 204 to Floaroma Town. Something is wrong at the Valley Windworks...",
+      "title": "Trouble in Jubilife",
+      "description": "Team Galactic is bothering Professor Rowan back in Jubilife City. Go and help!",
       "condition": {
-        "start_region": "SINNOH",
+        "required_region": "SINNOH",
         "badges_min": 1,
+        "badges_less": 2,
+        "flag_not": "galactic_jubilife_cleared"
+      },
+      "target": "JUBILIFE_CITY",
+      "completed_flag": "galactic_jubilife_cleared"
+    },
+    {
+      "id": "sinnoh_m3b",
+      "type": "MAIN",
+      "title": "North to Floaroma",
+      "description": "Head north from Jubilife on Route 204, through the Ravaged Path, to Floaroma Town.",
+      "condition": {
+        "required_region": "SINNOH",
+        "badges_min": 1,
+        "badges_less": 2,
+        "flag": "galactic_jubilife_cleared",
         "visited_not": "FLOAROMA_TOWN"
       },
-      "reward": "Clear Team Galactic from the Windworks"
+      "target": "FLOAROMA_TOWN"
+    },
+    {
+      "id": "sinnoh_m3c",
+      "type": "MAIN",
+      "title": "The Valley Windworks",
+      "description": "Team Galactic has taken the Valley Windworks, east of Floaroma. Chase the grunts out of Floaroma Meadow for the Works Key first.",
+      "condition": {
+        "required_region": "SINNOH",
+        "badges_min": 1,
+        "badges_less": 2,
+        "visited": "FLOAROMA_TOWN",
+        "flag_not": "windworks_cleared"
+      },
+      "target": "VALLEY_WINDWORKS",
+      "completed_flag": "windworks_cleared"
     },
     {
       "id": "sinnoh_m4",
       "type": "MAIN",
-      "title": "Forest Badge",
-      "description": "Defeat Gardenia at the Eterna City Gym — but first, drive Team Galactic out of the Galactic Building!",
+      "title": "Through Eterna Forest",
+      "description": "Go north on Route 205 and through Eterna Forest to Eterna City.",
       "condition": {
-        "start_region": "SINNOH",
+        "required_region": "SINNOH",
+        "badges_min": 1,
+        "badges_less": 2,
+        "flag": "windworks_cleared",
+        "visited_not": "ETERNA_CITY"
+      },
+      "target": "ETERNA_CITY"
+    },
+    {
+      "id": "sinnoh_m4b",
+      "type": "MAIN",
+      "title": "Forest Badge",
+      "description": "Challenge Gardenia at the Eterna City Gym. Grass types: Fire and Flying moves hit hard.",
+      "condition": {
+        "required_region": "SINNOH",
         "badges_min": 1,
         "badges_less": 2,
         "visited": "ETERNA_CITY"
       },
-      "reward": "Forest Badge + Explorer Kit + Bicycle"
+      "target": "ETERNA_CITY",
+      "reward": "Forest Badge"
+    },
+    {
+      "id": "sinnoh_m4c",
+      "type": "MAIN",
+      "title": "The Galactic Eterna Building",
+      "description": "Meet Cynthia in Eterna for Cut, then storm Team Galactic's building at the north end of the city.",
+      "condition": {
+        "required_region": "SINNOH",
+        "badges_min": 2,
+        "badges_less": 3,
+        "flag_not": "galactic_eterna_cleared"
+      },
+      "target": "ETERNA_GALACTIC_BUILDING",
+      "completed_flag": "galactic_eterna_cleared"
     },
     {
       "id": "sinnoh_m5",
       "type": "MAIN",
-      "title": "Cobble Badge",
-      "description": "Head southeast to Veilstone City and defeat Maylene at the Fighting-type Gym.",
+      "title": "Cycling Road",
+      "description": "Collect your Bicycle at the Bike Shop, ride Cycling Road (Route 206) south, then east through Mt. Coronet to Hearthome City.",
       "condition": {
-        "start_region": "SINNOH",
+        "required_region": "SINNOH",
+        "badges_min": 2,
+        "badges_less": 3,
+        "flag": "galactic_eterna_cleared",
+        "visited_not": "HEARTHOME_CITY"
+      },
+      "target": "HEARTHOME_CITY"
+    },
+    {
+      "id": "sinnoh_m5b",
+      "type": "MAIN",
+      "title": "On to Veilstone",
+      "description": "The Hearthome Gym Leader is away. Travel east: Route 209, Solaceon Town, Routes 210 and 215, to Veilstone City.",
+      "condition": {
+        "required_region": "SINNOH",
+        "badges_min": 2,
+        "badges_less": 3,
+        "visited": "HEARTHOME_CITY",
+        "visited_not": "VEILSTONE_CITY"
+      },
+      "target": "VEILSTONE_CITY"
+    },
+    {
+      "id": "sinnoh_m5c",
+      "type": "MAIN",
+      "title": "Cobble Badge",
+      "description": "Challenge Maylene at the Veilstone City Gym. Fighting types: Flying and Psychic moves hit hard.",
+      "condition": {
+        "required_region": "SINNOH",
         "badges_min": 2,
         "badges_less": 3,
         "visited": "VEILSTONE_CITY"
       },
+      "target": "VEILSTONE_CITY",
       "reward": "Cobble Badge"
     },
     {
       "id": "sinnoh_m6",
       "type": "MAIN",
-      "title": "Fen Badge",
-      "description": "Head south to Pastoria City. Defeat Crasher Wake at the Water-type Gym.",
+      "title": "The Galactic Warehouse",
+      "description": "A Galactic Grunt in Veilstone is up to something. Talk to him, take the Storage Key and raid the Warehouse.",
       "condition": {
-        "start_region": "SINNOH",
+        "required_region": "SINNOH",
+        "badges_min": 3,
+        "badges_less": 4,
+        "flag_not": "galactic_warehouse_cleared"
+      },
+      "target": "VEILSTONE_CITY",
+      "completed_flag": "galactic_warehouse_cleared"
+    },
+    {
+      "id": "sinnoh_m6b",
+      "type": "MAIN",
+      "title": "South to Pastoria",
+      "description": "Head south from Veilstone on Route 214, past Lake Valor, then west on Route 213 to Pastoria City.",
+      "condition": {
+        "required_region": "SINNOH",
+        "badges_min": 3,
+        "badges_less": 4,
+        "flag": "galactic_warehouse_cleared",
+        "visited_not": "PASTORIA_CITY"
+      },
+      "target": "PASTORIA_CITY"
+    },
+    {
+      "id": "sinnoh_m6c",
+      "type": "MAIN",
+      "title": "Fen Badge",
+      "description": "Challenge Crasher Wake at the Pastoria City Gym. Water types: Grass and Electric moves hit hard.",
+      "condition": {
+        "required_region": "SINNOH",
         "badges_min": 3,
         "badges_less": 4,
         "visited": "PASTORIA_CITY"
       },
+      "target": "PASTORIA_CITY",
       "reward": "Fen Badge"
-    },
-    {
-      "id": "sinnoh_m7",
-      "type": "MAIN",
-      "title": "The Old Charm",
-      "description": "Cynthia asked you to deliver an Old Charm to the elder at Celestic Town. Team Galactic is nearby — be ready.",
-      "condition": {
-        "start_region": "SINNOH",
-        "badges_min": 4,
-        "flag_not": "delivered_old_charm"
-      },
-      "reward": "Surf + story progress"
     },
     {
       "id": "sinnoh_m8",
       "type": "MAIN",
       "title": "Relic Badge",
-      "description": "Return to Hearthome City. With four badges, Fantina is finally at the Gym!",
+      "description": "Fantina is back at the Hearthome City Gym. Ghost types: Ghost and Dark moves hit hard.",
       "condition": {
-        "start_region": "SINNOH",
+        "required_region": "SINNOH",
         "badges_min": 4,
         "badges_less": 5,
-        "visited": "HEARTHOME_CITY"
+        "flag": "delivered_old_charm"
       },
+      "target": "HEARTHOME_CITY",
       "reward": "Relic Badge"
     },
     {
       "id": "sinnoh_m9",
       "type": "MAIN",
-      "title": "Mine Badge",
-      "description": "Surf to Canalave City and defeat Byron at the Steel-type Gym. Riley's Iron Island trip is optional.",
+      "title": "West to Canalave",
+      "description": "Surf west from Jubilife along Route 218 to Canalave City.",
       "condition": {
-        "start_region": "SINNOH",
+        "required_region": "SINNOH",
+        "badges_min": 5,
+        "badges_less": 6,
+        "visited_not": "CANALAVE_CITY"
+      },
+      "target": "CANALAVE_CITY"
+    },
+    {
+      "id": "sinnoh_m9b",
+      "type": "MAIN",
+      "title": "Mine Badge",
+      "description": "Challenge Byron at the Canalave City Gym. Steel types: Fire, Fighting and Ground moves hit hard. Riley on Iron Island can help you train.",
+      "condition": {
+        "required_region": "SINNOH",
         "badges_min": 5,
         "badges_less": 6,
         "visited": "CANALAVE_CITY"
       },
-      "reward": "Mine Badge + Riolu Egg"
+      "target": "CANALAVE_CITY",
+      "reward": "Mine Badge"
+    },
+    {
+      "id": "sinnoh_m7",
+      "type": "MAIN",
+      "title": "The Old Charm",
+      "description": "Cynthia has an Old Charm for her grandmother. Carry it north, through Solaceon and the fog of Route 210, to Celestic Town.",
+      "condition": {
+        "required_region": "SINNOH",
+        "badges_min": 4,
+        "flag_not": "delivered_old_charm"
+      },
+      "target": "CELESTIC_TOWN",
+      "completed_flag": "delivered_old_charm"
     },
     {
       "id": "sinnoh_m10",
       "type": "MAIN",
       "title": "The Canalave Library",
-      "description": "Professor Rowan is waiting at the Canalave Library. Team Galactic is up to something at the lakes...",
+      "description": "Professor Rowan wants to meet at the Canalave Library.",
       "condition": {
-        "start_region": "SINNOH",
+        "required_region": "SINNOH",
         "badges_min": 6,
         "flag_not": "canalave_library_meeting"
       },
-      "reward": "Story progress",
-      "target": "CANALAVE_CITY"
+      "target": "CANALAVE_CITY",
+      "completed_flag": "canalave_library_meeting"
     },
     {
       "id": "sinnoh_m10b",
       "type": "MAIN",
       "title": "Explosion at Lake Valor",
-      "description": "An explosion shook Lake Valor! Head there through Route 213 and see what Team Galactic has done.",
+      "description": "A blast shook Lake Valor! Fly to Pastoria or Veilstone and hurry to the lake. Saturn is there.",
       "condition": {
-        "start_region": "SINNOH",
+        "required_region": "SINNOH",
         "flag": "canalave_library_meeting",
         "flag_not": "galactic_lake_valor_cleared"
       },
       "target": "LAKE_VALOR",
-      "reward": "Story progress"
+      "completed_flag": "galactic_lake_valor_cleared"
     },
     {
       "id": "sinnoh_m10c",
       "type": "MAIN",
       "title": "Mars at Lake Verity",
-      "description": "Team Galactic is at Lake Verity, near Twinleaf Town. Stop Commander Mars!",
+      "description": "Team Galactic is at Lake Verity too, near Twinleaf. Stop Commander Mars.",
       "condition": {
-        "start_region": "SINNOH",
+        "required_region": "SINNOH",
         "flag": "galactic_lake_valor_cleared",
         "flag_not": "galactic_lake_verity_cleared"
       },
       "target": "LAKE_VERITY",
-      "reward": "Story progress"
+      "completed_flag": "galactic_lake_verity_cleared"
+    },
+    {
+      "id": "sinnoh_m12",
+      "type": "MAIN",
+      "title": "North to Snowpoint",
+      "description": "Lake Acuity is in the far north. Cross Mt. Coronet from Route 211 to Route 216, then push through the snow of Route 217 to Snowpoint City.",
+      "condition": {
+        "required_region": "SINNOH",
+        "badges_min": 6,
+        "badges_less": 7,
+        "flag": "galactic_lake_verity_cleared",
+        "visited_not": "SNOWPOINT_CITY"
+      },
+      "target": "SNOWPOINT_CITY"
+    },
+    {
+      "id": "sinnoh_m12b",
+      "type": "MAIN",
+      "title": "Icicle Badge",
+      "description": "Challenge Candice at the Snowpoint City Gym. Ice types: Fire, Fighting and Rock moves hit hard.",
+      "condition": {
+        "required_region": "SINNOH",
+        "badges_min": 6,
+        "badges_less": 7,
+        "flag": "galactic_lake_verity_cleared",
+        "visited": "SNOWPOINT_CITY"
+      },
+      "target": "SNOWPOINT_CITY",
+      "reward": "Icicle Badge"
     },
     {
       "id": "sinnoh_m10d",
       "type": "MAIN",
       "title": "Lake Acuity",
-      "description": "With the Icicle Badge, head north of Snowpoint City to Lake Acuity. {rival_name} went ahead to protect it...",
+      "description": "With the Icicle Badge the way to Lake Acuity is open, west of Snowpoint. Jupiter is waiting.",
       "condition": {
-        "start_region": "SINNOH",
+        "required_region": "SINNOH",
         "badges_min": 7,
+        "flag": "galactic_lake_verity_cleared",
         "flag_not": "galactic_lake_acuity_cleared"
       },
       "target": "LAKE_ACUITY",
-      "reward": "Story progress"
+      "completed_flag": "galactic_lake_acuity_cleared"
     },
     {
       "id": "sinnoh_m11",
       "type": "MAIN",
       "title": "Raid Team Galactic HQ",
-      "description": "Get the Galactic Key from the underpass by the Galactic Warehouse in Veilstone City, then storm Team Galactic HQ.",
+      "description": "Team Galactic took all three lake Pokémon to Veilstone. Find the Galactic Key in the Warehouse Underpass and break into their HQ.",
       "condition": {
-        "start_region": "SINNOH",
+        "required_region": "SINNOH",
         "flag": "galactic_lake_acuity_cleared",
         "flag_not": "galactic_hq_cleared"
       },
-      "reward": "Master Ball + story progress",
-      "target": "VEILSTONE_CITY"
-    },
-    {
-      "id": "sinnoh_m12",
-      "type": "MAIN",
-      "title": "Icicle Badge",
-      "description": "Journey north through Routes 216-217 to Snowpoint City. Defeat Candice at the Ice-type Gym.",
-      "condition": {
-        "start_region": "SINNOH",
-        "badges_min": 6,
-        "badges_less": 7,
-        "visited": "SNOWPOINT_CITY",
-        "flag": "galactic_lake_verity_cleared"
-      },
-      "reward": "Icicle Badge"
+      "target": "VEILSTONE_CITY",
+      "completed_flag": "galactic_hq_cleared"
     },
     {
       "id": "sinnoh_m13",
       "type": "MAIN",
-      "title": "Spear Pillar Showdown",
-      "description": "Climb Mt. Coronet to Spear Pillar. Stop Cyrus before he awakens Dialga and Palkia!",
+      "title": "Spear Pillar",
+      "description": "Cyrus is climbing Mt. Coronet. Use Rock Climb to reach the Spear Pillar at the summit, beat Mars and Jupiter, then face him.",
       "condition": {
-        "start_region": "SINNOH",
-        "badges_min": 7,
+        "required_region": "SINNOH",
+        "flag": "galactic_hq_cleared",
         "flag_not": "spear_pillar_resolved"
       },
-      "reward": "Dialga/Palkia encounter"
+      "target": "SPEAR_PILLAR",
+      "completed_flag": "spear_pillar_resolved"
     },
     {
       "id": "sinnoh_m14",
       "type": "MAIN",
-      "title": "Beacon Badge",
-      "description": "Surf east to Sunyshore City. Volkner has been waiting for a trainer who excites him — after your Spear Pillar victory, you're that trainer.",
+      "title": "East to Sunyshore",
+      "description": "Peace at last. Take Route 222 east from Lake Valor to Sunyshore City.",
       "condition": {
-        "start_region": "SINNOH",
+        "required_region": "SINNOH",
         "badges_min": 7,
         "badges_less": 8,
-        "flag": "spear_pillar_resolved"
+        "flag": "spear_pillar_resolved",
+        "visited_not": "SUNYSHORE_CITY"
       },
+      "target": "SUNYSHORE_CITY"
+    },
+    {
+      "id": "sinnoh_m14b",
+      "type": "MAIN",
+      "title": "Beacon Badge",
+      "description": "Challenge Volkner at the Sunyshore City Gym. Electric types: Ground moves hit hard.",
+      "condition": {
+        "required_region": "SINNOH",
+        "badges_min": 7,
+        "badges_less": 8,
+        "flag": "spear_pillar_resolved",
+        "visited": "SUNYSHORE_CITY"
+      },
+      "target": "SUNYSHORE_CITY",
       "reward": "Beacon Badge"
     },
     {
       "id": "sinnoh_m15",
       "type": "MAIN",
-      "title": "Conquer the Sinnoh League",
-      "description": "With 8 badges, surf north from Sunyshore on Route 223. Face the Elite Four and Champion Cynthia!",
+      "title": "Victory Road",
+      "description": "Surf north from Sunyshore on Route 223, climb the waterfall and cross Victory Road to the Pokémon League.",
       "condition": {
-        "start_region": "SINNOH",
+        "required_region": "SINNOH",
         "badges_min": 8,
+        "visited_not": "SINNOH_POKEMON_LEAGUE",
         "flag_not": "beat_sinnoh_champion"
       },
-      "reward": "Sinnoh Champion Title"
+      "target": "SINNOH_POKEMON_LEAGUE"
     },
     {
-      "id": "sinnoh_s1",
-      "type": "SIDE",
-      "title": "Galactic at the Windworks",
-      "description": "Commander Mars is using the Valley Windworks near Floaroma to power Team Galactic's machines. Stop her!",
+      "id": "sinnoh_m15b",
+      "type": "MAIN",
+      "title": "The Sinnoh League",
+      "description": "{rival_name} wants one last battle. Then the Elite Four, and Champion Cynthia.",
       "condition": {
-        "start_region": "SINNOH",
-        "visited": "FLOAROMA_TOWN",
-        "flag_not": "windworks_cleared"
+        "required_region": "SINNOH",
+        "badges_min": 8,
+        "visited": "SINNOH_POKEMON_LEAGUE",
+        "flag_not": "beat_sinnoh_champion"
       },
-      "reward": "Access to Route 205 north"
+      "target": "SINNOH_POKEMON_LEAGUE",
+      "completed_flag": "beat_sinnoh_champion",
+      "reward": "Sinnoh Champion"
     },
     {
-      "id": "sinnoh_s2",
+      "id": "sinnoh_dex30",
       "type": "SIDE",
-      "title": "Galactic Eterna Building",
-      "description": "Team Galactic has set up an illegal operation in the Galactic Building in Eterna City. Clear them out!",
+      "title": "Catch 30 Pokémon",
+      "description": "Own 30 different Pokémon from the Sinnoh Pokédex to earn a $5,000 bonus.",
       "condition": {
-        "start_region": "SINNOH",
-        "visited": "ETERNA_CITY",
-        "flag_not": "galactic_eterna_cleared"
+        "required_region": "SINNOH",
+        "flag": "received_pokedex_sinnoh"
       },
-      "reward": "Bicycle from Rad Rickshaw"
+      "completed_flag": "sinnoh_catch_30",
+      "region_species": 30,
+      "dex_region": "SINNOH"
+    },
+    {
+      "id": "sinnoh_dex60",
+      "type": "SIDE",
+      "title": "Catch 60 Pokémon",
+      "description": "Own 60 different Pokémon from the Sinnoh Pokédex to earn a $5,000 bonus.",
+      "condition": {
+        "required_region": "SINNOH",
+        "flag": "sinnoh_catch_30"
+      },
+      "completed_flag": "sinnoh_catch_60",
+      "region_species": 60,
+      "dex_region": "SINNOH"
+    },
+    {
+      "id": "sinnoh_dex90",
+      "type": "SIDE",
+      "title": "Catch 90 Pokémon",
+      "description": "Own 90 different Pokémon from the Sinnoh Pokédex to earn a $5,000 bonus.",
+      "condition": {
+        "required_region": "SINNOH",
+        "flag": "sinnoh_catch_60"
+      },
+      "completed_flag": "sinnoh_catch_90",
+      "region_species": 90,
+      "dex_region": "SINNOH"
+    },
+    {
+      "id": "sinnoh_dex_all",
+      "type": "SIDE",
+      "title": "Complete the Sinnoh Pokédex",
+      "description": "Own all 108 Pokémon in the Sinnoh Pokédex to earn a $5,000 bonus. Professor Rowan will be proud.",
+      "condition": {
+        "required_region": "SINNOH",
+        "flag": "sinnoh_catch_90"
+      },
+      "completed_flag": "sinnoh_catch_all",
+      "region_species": 108,
+      "dex_region": "SINNOH"
+    },
+    {
+      "id": "sinnoh_s0",
+      "type": "SIDE",
+      "title": "Poké Balls from the Assistant",
+      "description": "The Professor's assistant lives next to the lab in Sandgem Town and has Poké Balls to spare.",
+      "condition": {
+        "required_region": "SINNOH",
+        "flag": "received_pokedex_sinnoh",
+        "flag_not": "rowan_assistant_balls"
+      },
+      "target": "SANDGEM_TOWN",
+      "completed_flag": "rowan_assistant_balls",
+      "reward": "5 Poké Balls"
+    },
+    {
+      "id": "sinnoh_s0b",
+      "type": "SIDE",
+      "title": "The Pokétch",
+      "description": "The Pokétch Company in Jubilife City is giving away its new watch.",
+      "condition": {
+        "required_region": "SINNOH",
+        "visited": "JUBILIFE_CITY",
+        "flag_not": "got_poketch"
+      },
+      "target": "JUBILIFE_CITY",
+      "completed_flag": "got_poketch",
+      "reward": "Pokétch"
+    },
+    {
+      "id": "sinnoh_s0c",
+      "type": "SIDE",
+      "title": "The Man in the Trench Coat",
+      "description": "A strange man is hiding behind a lamp post in Jubilife City.",
+      "condition": {
+        "required_region": "SINNOH",
+        "visited": "JUBILIFE_CITY",
+        "flag_not": "met_looker"
+      },
+      "target": "JUBILIFE_CITY",
+      "completed_flag": "met_looker"
+    },
+    {
+      "id": "sinnoh_s1b",
+      "type": "SIDE",
+      "title": "Cynthia's Gift",
+      "description": "Cynthia is in Eterna City, by the statue. She has something for a new Forest Badge holder.",
+      "condition": {
+        "required_region": "SINNOH",
+        "badges_min": 2,
+        "flag_not": "received_hm_cut"
+      },
+      "target": "ETERNA_CITY",
+      "completed_flag": "received_hm_cut",
+      "reward": "HM Cut"
     },
     {
       "id": "sinnoh_s3",
       "type": "SIDE",
       "title": "Riley's Request",
-      "description": "A trainer named Riley on Iron Island needs your help driving out Team Galactic. Partner up and clear the cave!",
+      "description": "Riley is training on Iron Island, by boat from Canalave City. Team up with him against Team Galactic.",
       "condition": {
-        "start_region": "SINNOH",
-        "visited": "IRON_ISLAND",
+        "required_region": "SINNOH",
+        "visited": "CANALAVE_CITY",
         "flag_not": "riley_iron_island_cleared"
       },
-      "reward": "Riolu Egg"
-    },
-    {
-      "id": "sinnoh_s4",
-      "type": "SIDE",
-      "title": "Lake Legends",
-      "description": "The three lakes hold legendary Pokémon — Uxie at Lake Acuity, Mesprit at Lake Verity, Azelf at Lake Valor.",
-      "condition": {
-        "start_region": "SINNOH",
-        "badges_min": 7,
-        "flag": "spear_pillar_resolved"
-      },
-      "reward": "Legendary Lake Trio encounters"
-    },
-    {
-      "id": "sinnoh_s5",
-      "type": "SIDE",
-      "title": "Ruler of Time",
-      "description": "At the Spear Pillar, Dialga — the ruler of time — remains. Face the temporal Pokémon!",
-      "condition": {
-        "start_region": "SINNOH",
-        "visited": "SPEAR_PILLAR",
-        "flag_not": "SPEAR_PILLAR_boss_defeated"
-      },
-      "reward": "Dialga encounter"
-    },
-    {
-      "id": "sinnoh_s6",
-      "type": "SIDE",
-      "title": "Regigigas Awakening",
-      "description": "The Snowpoint Temple holds a sleeping giant — Regigigas, the Colossal Pokémon. It stirs for the worthy.",
-      "condition": {
-        "start_region": "SINNOH",
-        "visited": "SNOWPOINT_TEMPLE",
-        "flag_not": "SNOWPOINT_TEMPLE_boss_defeated"
-      },
-      "reward": "Regigigas encounter"
+      "target": "IRON_ISLAND",
+      "completed_flag": "riley_iron_island_cleared"
     },
     {
       "id": "sinnoh_s7",
       "type": "SIDE",
       "title": "The Haunted Chateau",
-      "description": "The Old Chateau in Eterna Forest is filled with ghostly Pokémon — and a mysterious appliance Pokémon hidden within.",
+      "description": "Something flickers in the Old Chateau, deep in Eterna Forest.",
       "condition": {
-        "start_region": "SINNOH",
+        "required_region": "SINNOH",
         "visited": "ETERNA_FOREST",
         "flag_not": "OLD_CHATEAU_boss_defeated"
       },
-      "reward": "Rotom encounter"
+      "target": "OLD_CHATEAU",
+      "completed_flag": "OLD_CHATEAU_boss_defeated",
+      "reward": "Rotom"
+    },
+    {
+      "id": "sinnoh_s4",
+      "type": "SIDE",
+      "title": "The Lake Guardians",
+      "description": "Mesprit, Azelf and Uxie have gone home to their caverns at Lakes Verity, Valor and Acuity.",
+      "condition": {
+        "required_region": "SINNOH",
+        "flag": "spear_pillar_resolved"
+      },
+      "completed_flag": [
+        "LAKE_VERITY_boss_defeated",
+        "LAKE_VALOR_boss_defeated",
+        "LAKE_ACUITY_boss_defeated"
+      ],
+      "reward": "Mesprit, Azelf and Uxie"
+    },
+    {
+      "id": "sinnoh_s5",
+      "type": "SIDE",
+      "title": "Ruler of Time",
+      "description": "Dialga still waits at the Spear Pillar.",
+      "condition": {
+        "required_region": "SINNOH",
+        "flag": "spear_pillar_resolved",
+        "flag_not": "SPEAR_PILLAR_boss_defeated"
+      },
+      "target": "SPEAR_PILLAR",
+      "completed_flag": "SPEAR_PILLAR_boss_defeated",
+      "reward": "Dialga"
+    },
+    {
+      "id": "sinnoh_s5b",
+      "type": "SIDE",
+      "title": "Ruler of Space",
+      "description": "Beyond the Spear Pillar, a rift in space has opened. Palkia is inside.",
+      "condition": {
+        "required_region": "SINNOH",
+        "flag": "SPEAR_PILLAR_boss_defeated",
+        "flag_not": "SPEAR_PILLAR_RIFT_boss_defeated"
+      },
+      "target": "SPEAR_PILLAR_RIFT",
+      "completed_flag": "SPEAR_PILLAR_RIFT_boss_defeated",
+      "reward": "Palkia"
     },
     {
       "id": "sinnoh_s8",
@@ -4653,11 +4997,55 @@
       "title": "Distortion World Rift",
       "description": "At the Spear Pillar a rift opened, and Giratina dragged Cyrus into the Distortion World. Follow them!",
       "condition": {
-        "start_region": "SINNOH",
+        "required_region": "SINNOH",
         "flag": "spear_pillar_resolved",
         "flag_not": "distortion_world_cleared"
       },
+      "target": "DISTORTION_WORLD",
+      "completed_flag": "distortion_world_cleared",
       "reward": "Cyrus, Giratina and the Griseous Orb"
+    },
+    {
+      "id": "sinnoh_s6",
+      "type": "SIDE",
+      "title": "Regigigas Awakening",
+      "description": "As Champion you may enter Snowpoint Temple. Something huge sleeps at the bottom.",
+      "condition": {
+        "required_region": "SINNOH",
+        "flag": "beat_sinnoh_champion",
+        "flag_not": "SNOWPOINT_TEMPLE_boss_defeated"
+      },
+      "target": "SNOWPOINT_TEMPLE",
+      "completed_flag": "SNOWPOINT_TEMPLE_boss_defeated",
+      "reward": "Regigigas"
+    },
+    {
+      "id": "sinnoh_s10",
+      "type": "SIDE",
+      "title": "The Battle Zone",
+      "description": "A boat from Snowpoint City sails to the Fight Area. Stark Mountain rises beyond it.",
+      "condition": {
+        "required_region": "SINNOH",
+        "flag": "beat_sinnoh_champion",
+        "flag_not": "STARK_MOUNTAIN_boss_defeated"
+      },
+      "target": "STARK_MOUNTAIN",
+      "completed_flag": "STARK_MOUNTAIN_boss_defeated",
+      "reward": "Heatran"
+    },
+    {
+      "id": "sinnoh_s11",
+      "type": "SIDE",
+      "title": "Moonlit Islands",
+      "description": "Boats from Canalave now reach Fullmoon Island. Cresselia is said to rest there.",
+      "condition": {
+        "required_region": "SINNOH",
+        "flag": "beat_sinnoh_champion",
+        "flag_not": "FULLMOON_ISLAND_boss_defeated"
+      },
+      "target": "FULLMOON_ISLAND",
+      "completed_flag": "FULLMOON_ISLAND_boss_defeated",
+      "reward": "Cresselia"
     },
     {
       "id": "sinnoh_s9",
@@ -4665,9 +5053,9 @@
       "title": "Master Poffin Chef",
       "description": "Cook a Mild Poffin (level 50+) at the Poffin House in Hearthome City. Strong rare berries and perfect stirs are the secret.",
       "condition": {
-        "start_region": "SINNOH",
         "visited": "HEARTHOME_CITY",
-        "flag_not": "made_mild_poffin"
+        "flag_not": "made_mild_poffin",
+        "required_region": "SINNOH"
       },
       "completed_flag": "made_mild_poffin",
       "reward": "Contest-ready Poffins"

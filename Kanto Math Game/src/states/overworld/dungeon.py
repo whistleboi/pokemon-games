@@ -85,12 +85,12 @@ def draw_frame(screen, view):
 
 def side_buttons(game):
     """The right band's button spots, bottom up: (x, y, w, h) for WAIT, HONEY, POKEDEX, POKEMON, then a tall
-    one for what's beside you (Fish, Headbutt...)."""
+    one for what's beside you (Fish, Headbutt...), then BAG at the top (Jordan, 11-12: the Bag one press away on the map)."""
     W, H = game.width, game.height
     x = W - FRAME_RIGHT + (FRAME_RIGHT - SIDE_W) // 2
     return [pygame.Rect(x, H - 72, SIDE_W, 60), pygame.Rect(x, H - 140, SIDE_W, 60),
             pygame.Rect(x, H - 224, SIDE_W, 74), pygame.Rect(x, H - 308, SIDE_W, 74),
-            pygame.Rect(x, H - 404, SIDE_W, 86)]
+            pygame.Rect(x, H - 404, SIDE_W, 86), pygame.Rect(x, H - 474, SIDE_W, 60)]
 
 
 def mini_scale(w, h, room_w, room_h):
@@ -397,6 +397,10 @@ def art_recipe(m):
             elif c == "0":  # a cracked rock: in the way till you have Rock Smash (crack:<x>,<y>)
                 ch = chr(0x2800 + len(legend))
                 legend[ch] = {"decor": f"crack:{x},{y}"}
+                out.append(ch)
+            elif c == "?":  # a crate: the slide puzzle pushes it aside, no Strength needed (Orre's S.S. Libra: crate:<x>,<y>)
+                ch = chr(0x2800 + len(legend))
+                legend[ch] = {"decor": f"crate:{x},{y}"}
                 out.append(ch)
             elif c == "b":  # a boulder: Strength, then the slide puzzle (boulder:<x>,<y>)
                 ch = chr(0x2800 + len(legend))
@@ -1034,6 +1038,8 @@ class DungeonState(OverworldBattles, PlayState):
         # professor's bag, then the wild Pokemon to drive off, then home (the old route screen's own event, here too)
         if (self.area_data.get("starter_event") and self.game.story_manager.starter_on_route(self.game.story_manager.get_current_region()) == self.area_key
                 and self.mode == "MAP"):
+            if self._starter_walk_up():
+                return
             if self._starter_return():
                 return
             self.route_starter_event()
@@ -1746,6 +1752,78 @@ class DungeonState(OverworldBattles, PlayState):
             self.trigger_wild_encounter()  # the route's three-Pokemon catch, then show_progression_menu
         self.say([first, "Wild Pokemon were drawn in!"], then=begin)
 
+    def _starter_walk_up(self):
+        """After the starter battle, whoever the scene stood far off walks up to you, says their piece, and then you head home
+        (starter_event "walk_up": {"look": the look of their blocker on this floor, "flag": set once done, "lines"}; Lake Verity's
+        Professor Rowan). True while it plays."""
+        ev = self.area_data.get("starter_event") or {}
+        spec, story = ev.get("walk_up"), self.game.story_manager
+        boss_flag = (ev.get("boss") or {}).get("victory_flag")
+        if not spec or not story.story_flags.get(boss_flag) or story.story_flags.get(spec["flag"]) or not hasattr(self, "run"):
+            return False
+        f = self.run.floor
+        if not hasattr(self, "_bars"):  # (the map hasn't been drawn yet: its blockers straight from the map)
+            m = self.run.recipe.get("art") or {}
+            here = m["floors"][self.run.index] if m.get("floors") else m
+            self._bars = {tuple(t): bar for bar in here.get("barred", []) for t in bar.get("tiles", [])}
+        start = next((t for t, bar in self._bars.items() if bar.get("look") == spec["look"]), None)
+        story.story_flags[spec["flag"]] = True
+        if start is None or not str(spec["look"]).startswith("sheet:"):
+            return False
+        for t, bar in list(self._bars.items()):  # (they leave their spots: nobody is standing there any more)
+            if (bar.get("until") or {}).get("flag_condition") == spec["flag"] and str(f.decor.get(t, "")).startswith("barrier:"):
+                del f.decor[t]
+                f.tiles[t[1]][t[0]] = core.FLOOR
+        goal = tuple(self.run.player)
+        prev, todo = {start: None}, [start]
+        while todo:  # the shortest way over open ground to beside you
+            cur = todo.pop(0)
+            if abs(cur[0] - goal[0]) + abs(cur[1] - goal[1]) == 1:
+                break
+            for dx, dy in ((0, 1), (1, 0), (-1, 0), (0, -1)):
+                n = (cur[0] + dx, cur[1] + dy)
+                if n not in prev and 0 <= n[0] < f.w and 0 <= n[1] < f.h and f.walkable(*n) and n != goal:
+                    prev[n] = cur
+                    todo.append(n)
+        else:
+            cur = start
+        path = []
+        while cur is not None:
+            path.append(cur)
+            cur = prev[cur]
+        self._walker = {"sheet": spec["look"][6:], "path": path[::-1], "i": 0.0, "lines": list(spec.get("lines") or []),
+                        "with": str(spec.get("with") or "")[6:] or None}  # ("with": someone who comes along two steps behind, and leaves with them)
+        self.walk_goal = None
+        return True
+
+    def _walker_step(self):
+        w = self._walker
+        last = float(len(w["path"]) - 1)
+        if w.get("leaving"):  # (said their piece: they walk off the way they came, out of sight, and then you head home)
+            w["i"] -= 0.14
+            if w["i"] <= max(0.0, last - 9):
+                self._walker = None
+                self._starter_return()
+            return
+        if w.get("spoke"):  # (saying their piece: wait for it)
+            return
+        w["i"] += 0.14
+        if w["i"] >= last:
+            w["i"] = last
+            if not w.get("spoke"):
+                w["spoke"] = True
+
+                def off():
+                    w["leaving"] = True
+                if w["lines"]:
+                    self.say(w["lines"], then=off)
+                else:
+                    off()
+
+    def _bag_from_map(self):
+        self.is_resuming = True  # (back from the Bag you are where you were)
+        self._open_bag()
+
     # ---------------------------------------------------------------- input
     def _buttons(self):
         """The map's own buttons (bottom right): (rect, label, colour, action, enabled, small text)."""
@@ -1756,6 +1834,7 @@ class DungeonState(OverworldBattles, PlayState):
              self._qp_toggle, True, None),  # (its list opens beside it: src/states/overworld/overworld_battle.py)
             (side[2], theme.pokemon_word("POKEDEX"), theme.BAG,
              self._open_pokedex, True, None),
+            (side[5], "BAG", (198, 132, 60), self._bag_from_map, True, None),
             (side[1], "HONEY", (226, 170, 40), self.use_scent,
              bool(self._scent_source()) if hasattr(self, "run") else False, self._honey_note()),
             (side[0], "BRAKE" if self._downhill() and not self.braking else "WAIT", theme.RUN, self.wait_turn, True,
@@ -1830,6 +1909,8 @@ class DungeonState(OverworldBattles, PlayState):
     def handle_events(self, events):
         if self.mode == "CATCH":
             return super().handle_events(events)
+        if getattr(self, "_walker", None) and (not self._walker.get("spoke") or self._walker.get("leaving")):  # (someone is walking up to you, or off again: wait for them)
+            return
         events = [e for e in events if not self._qp_event(e)]  # (the POKEMON button and its list first)
         for e in events:
             if e.type == pygame.MOUSEBUTTONUP and e.button == 1:
@@ -2011,7 +2092,7 @@ class DungeonState(OverworldBattles, PlayState):
                     f.decor[t] = f"{kind}:{t[0]},{t[1]}"
                     f.tiles[t[1]][t[0]] = core.WALL
         for t, what in list(f.decor.items()):
-            if str(what).startswith("boulder:") and flags.get(self._boulder_flag(t)):
+            if str(what).startswith(("boulder:", "crate:")) and flags.get(self._boulder_flag(t)):
                 del f.decor[t]
                 f.tiles[t[1]][t[0]] = core.FLOOR
             elif str(what).startswith("falls:") and self.game.story_manager.inventory.get("HM_WATERFALL", 0) > 0:
@@ -2053,9 +2134,40 @@ class DungeonState(OverworldBattles, PlayState):
         self._clear_boulders()
         self.say(["Your Pokemon used Whirlpool!", "The water calmed. The way is clear!"])
 
-    def _boulder(self, t):
-        """Walked into a boulder (Jordan, 11-07): with Strength, push it aside by solving the slide puzzle."""
+    def _crate_img(self):
+        """A crate as the region's own art draws it (assets/tiles/<folder>/ow_crate.png: Orre's, from the fan game's sheet),
+        else a plain wooden box."""
+        if getattr(self, "_crate", None) is None:
+            from src.dungeon import art as _art
+            m = (self.run.recipe.get("art") or {})
+            fl = (m.get("floors") or [m])[self.run.index] if m.get("floors") else m
+            own = _art._ow(_art.spec_folder(fl.get("roofs") or m.get("roofs")), "crate", TILE)
+            if own is None:
+                own = pygame.Surface((TILE, TILE), pygame.SRCALPHA)
+                pygame.draw.rect(own, (150, 104, 56), own.get_rect().inflate(-4, -4), border_radius=3)
+                pygame.draw.rect(own, (90, 60, 30), own.get_rect().inflate(-4, -4), 3, border_radius=3)
+            self._crate = own
+        return self._crate
+
+    def _boulder(self, t, crate=False):
+        """Walked into a boulder (Jordan, 11-07): with Strength, push it aside by solving the slide puzzle. A crate
+        (crate=True: Orre's S.S. Libra, Jordan 11-12) takes the puzzle alone, no Strength."""
         story = self.game.story_manager
+        if crate:
+            from src.states.slide_puzzle import SlidePuzzleState
+
+            def shoved(solved):
+                self.is_resuming = True
+                self.game.change_state(self)
+                if solved:
+                    story.story_flags[self._boulder_flag(t)] = True
+                    self._clear_boulders()
+                    self.say(["You shoved the crate out of the way!"])
+                else:
+                    self.say(["The crate didn't budge. Try again any time!"])
+            self.say(["A heavy crate is in the way.", "Push it? Slide the numbers into order!"],
+                     then=lambda: self.game.change_state(SlidePuzzleState(self.game, shoved)))
+            return
         if story.inventory.get("HM_STRENGTH", 0) <= 0:
             self.say(["A huge boulder is in the way.", "A Pokemon that knows Strength could push it!"])
             return
@@ -2092,6 +2204,9 @@ class DungeonState(OverworldBattles, PlayState):
             return True
         if what.startswith("boulder:"):  # a boulder in the way: Strength, then the slide puzzle
             self._boulder(t)
+            return True
+        if what.startswith("crate:"):  # a crate in the way: the slide puzzle alone (Jordan, 11-12: the S.S. Libra's crates, no HM)
+            self._boulder(t, crate=True)
             return True
         if what.startswith("cut:"):
             self.say(["A small tree is in the way.", "A Pokemon that knows Cut could cut it down."])
@@ -2180,6 +2295,9 @@ class DungeonState(OverworldBattles, PlayState):
             self.banner -= 1
         if self.anim > 0:
             self.anim -= 1
+        if getattr(self, "_walker", None):
+            self._walker_step()
+            return
         if self.mode == "MAP":
             self._contest_check()
             self._follow_hold()
@@ -2729,6 +2847,11 @@ class DungeonState(OverworldBattles, PlayState):
                 pygame.draw.ellipse(screen, (255, 236, 140), glow, 3)
                 screen.blit(img, img.get_rect(center=(glow.centerx, glow.centery + bob)))
         for (x, y), what in f.decor.items():  # boulders (Strength and the slide puzzle push them aside)
+            if str(what).startswith("crate:") and (x, y) in f.seen and x0 <= x < x1 and y0 <= y < y1:  # (a crate: the map's own crate picture)
+                r = at(x, y)
+                img = self._crate_img()
+                screen.blit(img, img.get_rect(midbottom=(r.centerx, r.bottom)))
+                continue
             if str(what).startswith(("boulder:", "fallen:", "rubble:")) and (x, y) in f.seen and x0 <= x < x1 and y0 <= y < y1:
                 r = at(x, y)
                 img = self._sheet_frame("Object boulder.png", col=0, height=TILE - 4)
@@ -2740,6 +2863,20 @@ class DungeonState(OverworldBattles, PlayState):
                         from src.dungeon import art as _art
                         self._rock_tile = _art.surface(["ccc", "ccc", "ccc"], {}, TILE, None, None).subsurface((TILE, TILE, TILE, TILE)).copy()
                     screen.blit(self._rock_tile, r)
+                    continue
+                _look = str(getattr(self, "_bars", {}).get((x, y), {}).get("look") or "")
+                if _look.startswith(("sheet:", "ow:", "mon:")):  # (someone or something standing there: "sheet:<walking sheet>", "ow:<folder>:<thing>" of a real game's own, "mon:<species number>": a scene's people, a briefcase, a wild Pokemon)
+                    from src.dungeon import art as _art
+                    if _look.startswith("mon:"):
+                        from src.minigames.base import icon
+                        img = icon(self.game, int(_look[4:]), TILE + 6)
+                    elif _look.startswith("sheet:"):
+                        img = self._sheet_frame(_look[6:])
+                    else:
+                        _fold, _name = _look[3:].split(":", 1)
+                        img = _art._ow(_fold, _name, TILE)
+                    if img:
+                        screen.blit(img, img.get_rect(midbottom=(r.centerx, r.bottom - 2)))
                     continue
                 if getattr(self, "_bars", {}).get((x, y), {}).get("look") in ("psyduck", "grunt", "guard", "person"):  # (someone standing in the way)
                     from src.dungeon import art as _art
@@ -2851,6 +2988,32 @@ class DungeonState(OverworldBattles, PlayState):
         elif lead:  # (no trainer sprite: your lead Pokemon walks for you)
             img = self._icon(lead, TILE + 8, flip=(self.facing[0] > 0), facing=self.facing)
             drawn.append((pr.bottom, img, img.get_rect(center=(pr.centerx, pr.centery - 4))))
+        wk = getattr(self, "_walker", None)
+        if wk:  # (someone walking up to you: between two tiles of their path)
+            i = min(int(wk["i"]), len(wk["path"]) - 1)
+            a, b = wk["path"][i], wk["path"][min(i + 1, len(wk["path"]) - 1)]
+            fr = wk["i"] - i
+            ra, rb = at(*a), at(*b)
+            wx, wy = ra.centerx + (rb.centerx - ra.centerx) * fr, ra.bottom + (rb.bottom - ra.bottom) * fr
+            way = (b[0] - a[0], b[1] - a[1]) if a != b else (self.run.player[0] - a[0], self.run.player[1] - a[1])
+            way = (max(-1, min(1, way[0])), 0) if way[0] else (0, max(-1, min(1, way[1])) or 1)
+            if wk.get("leaving"):
+                way = (-way[0], -way[1])
+            wimg = self._sheet_frame(wk["sheet"], way, frame=int(wk["i"] * 2) % 4 if a != b and (wk["i"] < len(wk["path"]) - 1 or wk.get("leaving")) else 0)
+            drawn.append((wy, wimg, wimg.get_rect(midbottom=(int(wx), int(wy) - 2))))
+            if wk.get("with"):  # (their companion: the same way, two steps behind going, two ahead leaving)
+                j = max(0.0, wk["i"] - 2.0)
+                i2 = min(int(j), len(wk["path"]) - 1)
+                a2, b2 = wk["path"][i2], wk["path"][min(i2 + 1, len(wk["path"]) - 1)]
+                f2 = j - i2
+                ra2, rb2 = at(*a2), at(*b2)
+                x2, y2 = ra2.centerx + (rb2.centerx - ra2.centerx) * f2, ra2.bottom + (rb2.bottom - ra2.bottom) * f2
+                way2 = (b2[0] - a2[0], b2[1] - a2[1]) if a2 != b2 else way
+                way2 = (max(-1, min(1, way2[0])), 0) if way2[0] else (0, max(-1, min(1, way2[1])) or 1)
+                if wk.get("leaving"):
+                    way2 = (-way2[0], -way2[1])
+                img2 = self._sheet_frame(wk["with"], way2, frame=int(j * 2) % 4 if (wk["i"] < len(wk["path"]) - 1 or wk.get("leaving")) and j > 0 else 0)
+                drawn.append((y2, img2, img2.get_rect(midbottom=(int(x2), int(y2) - 2))))
         for _b, img, rect in sorted(drawn, key=lambda t: t[0]):
             screen.blit(img, rect)
         spans = getattr(self.run.floor, "bridge", None)
