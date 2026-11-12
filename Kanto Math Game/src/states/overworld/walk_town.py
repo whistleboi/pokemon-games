@@ -23,10 +23,10 @@ DIRS = ((0, 1), (0, -1), (1, 0), (-1, 0))
 KEYS = {pygame.K_UP: (0, -1), pygame.K_w: (0, -1), pygame.K_DOWN: (0, 1), pygame.K_s: (0, 1),
         pygame.K_LEFT: (-1, 0), pygame.K_a: (-1, 0), pygame.K_RIGHT: (1, 0), pygame.K_d: (1, 0)}
 LABELS = {"steven": "STEVEN'S HOUSE", "space": "SPACE CENTER", "cozmo": "PROF. COZMO'S HOUSE", "wally": "WALLY'S UNCLE'S HOUSE", "contest": "CONTEST HALL", "shipyard": "STERN'S SHIPYARD", "market": "SLATEPORT MARKET", "devon": "DEVON CORP.", "center": "POKEMON CENTER", "mart": "POKE MART", "gym": "GYM", "lab": "LAB", "home": "HOME",
-          "school": "TRAINER SCHOOL", "rival": "RIVAL'S HOUSE", "assistant": "ASSISTANT'S HOUSE", "museum": "MUSEUM", "bike": "BIKE SHOP",
+          "school": "TRAINER SCHOOL", "rival": "RIVAL'S HOUSE", "assistant": "ASSISTANT'S HOUSE", "poketch": "POKETCH CO.", "gts": "GLOBAL TERMINAL", "tv": "JUBILIFE TV", "condo": "CONDOMINIUMS", "flower": "FLOWER SHOP", "library": "CANALAVE LIBRARY", "poffin": "POFFIN HOUSE", "ruins": "CELESTIC RUINS", "elder": "ELDER'S HOUSE", "lighthouse": "VISTA LIGHTHOUSE", "amity": "AMITY SQUARE", "museum": "MUSEUM", "bike": "BIKE SHOP",
           "harbor": "HARBOR", "fanclub": "FAN CLUB", "radio": "RADIO TOWER", "ptower": "POKEMON TOWER",
           "fuji": "MR. FUJI'S HOUSE", "dept": "DEPT. STORE", "mansion": "CELADON MANSION", "hotel": "CELADON HOTEL",
-          "game corner": "GAME CORNER", "tower": "POKEMON TOWER", "mansion": "MANSION", "silph": "SILPH CO.",
+          "game corner": "GAME CORNER", "prize corner": "PRIZE CORNER", "tower": "POKEMON TOWER", "mansion": "MANSION", "silph": "SILPH CO.",
           "warden": "WARDEN'S HOUSE", "brother": "FISHING HOUSE", "safari": "SAFARI ZONE",
           "fossil": "POKEMON LAB", "copycat": "COPYCAT'S HOUSE", "dojo": "FIGHTING DOJO", "station": "MAGNET TRAIN",
           "league": "ELITE FOUR", "johto": "TO JOHTO", "sprout": "SPROUT TOWER", "kurt": "KURT'S HOUSE", "ruins": "THE RUINS", "kabuto": "KABUTO CHAMBER", "omanyte": "OMANYTE CHAMBER",
@@ -145,8 +145,17 @@ class WalkTownState(CityState):
         self.signs, self.water_exits, self.locked = {}, set(), {}
         mine = custom(game).get(self.area_key)
         self.own_map = bool(mine)
+        self.town_map, self.room = mine, None
         if mine:  # our own map (the way forward: Jordan, 11-06)
-            self._from_art(mine)
+            # (back from a screen or a battle begun inside one of its buildings: inside it again)
+            was, room = getattr(game, "walk_town_pos", None), getattr(game, "walk_town_room", None)
+            if was and room and was[0] == room[0] == self.area_key and room[1] in (mine.get("rooms") or {}):
+                self.room = room[1]
+            elif not (was and was[0] == self.area_key):  # (a place made of rooms, come into from outside: the room whose way out leads back there)
+                came = getattr(game.story_manager, "last_area_key", None)
+                if came and came not in (mine.get("exits") or {}).values():
+                    self.room = next((n for n, r in (mine.get("rooms") or {}).items() if came in (r.get("exits") or {}).values()), None)
+            self._from_art(mine["rooms"][self.room] if self.room else mine)
         else:  # a Pokemon Journeys town picture (the Kanto pilot)
             self.walk = data(game)[self.area_key]
             self.rows = self.walk["rows"]
@@ -158,6 +167,11 @@ class WalkTownState(CityState):
     def _from_art(self, m):
         from src.dungeon import art
         grid = m["art"]
+        # what stands in the way till you have the move for it, as on the routes: small trees (Cut), cracked rocks (Rock Smash), muddy slopes (the Bicycle)
+        _inv = self.game.story_manager.inventory
+        self._cleared = "".join(c for c, item in (("2", "HM_CUT"), ("0", "HM_ROCK_SMASH"), ("7", "BICYCLE")) if _inv.get(item, 0) > 0)
+        for _c in self._cleared:
+            grid = [row.replace(_c, ".") for row in grid]
         self.h, self.w = len(grid), len(grid[0])
         self.grid = grid  # (kept for its ledges: hopped over one way, as on the routes)
         kinds = m.get("buildings", {})
@@ -169,9 +183,18 @@ class WalkTownState(CityState):
                 self.exits[(x, y)] = target
             else:
                 self.doors[(x, y)] = kinds.get(letter, "house")
-        self.rows = ["".join("D" if (x, y) in doors else "$" if c == "$" else ("." if c in art.OPEN and (not m.get("walk_on") or c in m["walk_on"]) else "#") for x, c in enumerate(row))
+        deep = art.SEA_CHARS if m.get("surf") else ""  # (a map with "surf": its sea is crossed with Surf, as on the routes; else a town's sea is walked like its ground, as before)
+        self.rows = ["".join("D" if (x, y) in doors else "$" if c == "$" else "o" if c in deep else "2" if c == "2" else ("." if c in art.OPEN and (not m.get("walk_on") or c in m["walk_on"]) else "#") for x, c in enumerate(row))
                      for y, row in enumerate(grid)]
         self.locked = dict(m.get("locked", {}))  # (a shut door's own words: the Radio Tower with no power)
+        # a warp pad (tile 1 with the map's "links" {"x,y": [floor, x, y]}, as on the routes): step on it and you stand on its far pad
+        self.links = {tuple(int(v) for v in k.split(",")): (to[1], to[2]) for k, to in (m.get("links") or {}).items()}
+        self.stops = {tuple(t) for t in m.get("stops", [])}  # (where a spin tile's slide ends: Viridian Gym's stop tiles)
+        # someone standing in the way till the story moves on (the map's "barred", as on the routes: Snowpoint Temple's guard)
+        self.barred = {tuple(t): bar for bar in m.get("barred", []) if not self._bar_met(bar) for t in bar.get("tiles", [])}
+        # a bridge in town has two levels, like a route's: its deck, crossed along its length, and the street under it, crossed along its width
+        self.bridge = {(x, y): art.BRIDGES[c] for y, row in enumerate(grid) for x, c in enumerate(row) if c in art.BRIDGES}
+        self.deck = True
         names = list(m.get("people", []))
         options = {o.get("text"): o for o in self.area_data.get("explore_options", [])}
         for y, row in enumerate(grid):
@@ -182,7 +205,9 @@ class WalkTownState(CityState):
                         self.water_exits.add((x, y))
                 elif c == "N" and names:
                     who = names.pop(0)  # (a town option by its text, or an option of its own: Oak at the gap)
-                    opt = who if isinstance(who, dict) else options.get(who)
+                    opt = who if isinstance(who, dict) else None if isinstance(who, list) else options.get(who)
+                    if isinstance(who, list):  # (someone with several things to say or do, by the story: the first of these options showing now)
+                        opt = {"any": [w if isinstance(w, dict) else options[w] for w in who if isinstance(w, dict) or w in options]}
                     if opt:
                         self.people[(x, y)] = opt
         for spot, lines in zip(art.signs(grid), m.get("signs", [])):
@@ -190,10 +215,13 @@ class WalkTownState(CityState):
         for (x, y) in self.exits:  # (a way out is walked onto)
             self.rows[y] = self.rows[y][:x] + "." + self.rows[y][x + 1:]
         cache = self.game.__dict__.setdefault("_walk_town_imgs", {})
-        if self.area_key not in cache:
+        _ck = self.area_key + ("|" + self._cleared if self._cleared else "")  # (redrawn once a tree is cut or a rock broken)
+        if getattr(self, "room", None):
+            _ck += "|room:" + self.room  # (a room inside one of its buildings: its own picture)
+        if _ck not in cache:
             cache.clear()
-            cache[self.area_key] = art.surface(grid, kinds, TILE, m.get("roofs"), m.get("theme"))
-        self.map_img = cache[self.area_key]
+            cache[_ck] = art.surface(grid, kinds, TILE, m.get("roofs"), m.get("theme"))
+        self.map_img = cache[_ck]
         self.overheads = [(o, *art.overhead(o, TILE)) for o in m.get("overheads", [])]
 
     # ---------------------------------------------------------------- the map
@@ -214,7 +242,22 @@ class WalkTownState(CityState):
             options = center_entrance(options)
         return [o for o in options if self._shown(o)]
 
+    def _bar_met(self, bar):
+        story = self.game.story_manager
+        if bar.get("item"):
+            return story.inventory.get(bar["item"], 0) > 0
+        if bar.get("until"):
+            u = bar["until"]
+            if u.get("area_cleared"):
+                pool = (self.game.loader.area_data.get("STORY_PROGRESSION", {}).get(u["area_cleared"]) or {}).get("trainer_pool") or []
+                if len(story.defeated_trainers.get(u["area_cleared"], set())) < len(pool):
+                    return False
+            return self._shown(u)
+        return bool(story.story_flags.get(bar.get("flag")))
+
     def _shown(self, opt):
+        if "any" in opt:
+            return any(self._shown(o) for o in opt["any"])
         story = self.game.story_manager
         fc = opt.get("flag_condition")
         if fc:
@@ -283,7 +326,8 @@ class WalkTownState(CityState):
             came = getattr(story, "last_area_key", None)  # (a loaded save hasn't come from anywhere)
             edge = [t for t, target in self.exits.items() if target == came]
             if edge:
-                t = edge[len(edge) // 2]
+                land = [t for t in edge if t not in self.water_exits]  # (a place entered by land and by sea: by land, unless you came in at a matching tile)
+                t = (land or edge)[len(land or edge) // 2]
                 used = getattr(self.game, "walk_town_exit", None)  # (several ways between two places: in by the matching one: Mauville's four staircases)
                 if used and used[0] == came and used[2] == len(edge):
                     t = edge[used[1]]
@@ -293,8 +337,9 @@ class WalkTownState(CityState):
                 self.player = inward
                 self.facing = (inward[0] - t[0], inward[1] - t[1]) if inward != t else (0, 1)
             else:
-                door = next((t for t, k in self.doors.items() if k == "center"), None) or \
-                    next((t for t, k in self.doors.items() if k == "home"), None)
+                own = sorted((t for t, k in self.doors.items() if came and k.upper().replace(" ", "_") in came), key=lambda t: -t[1])
+                door = (own[0] if own else None) or next((t for t, k in self.doors.items() if k == "center"), None) or \
+                    next((t for t, k in self.doors.items() if k == "home"), None)  # (out of a building that's an area of its own, the Game Corner: at its own door)
                 spot = (door[0], door[1] + 1) if door else (self.w // 2, self.h // 2)
                 self.player = spot if self._open(spot) else self._nearest_open(spot)
                 self.facing = (0, 1)
@@ -303,11 +348,15 @@ class WalkTownState(CityState):
 
     def _people(self):
         """The people standing about now (each option's conditions met)."""
-        return {spot: opt for spot, opt in self.people.items() if self._shown(opt)}
+        return {spot: (next(o for o in opt["any"] if self._shown(o)) if "any" in opt else opt) for spot, opt in self.people.items() if self._shown(opt)}
 
     def _open(self, t):
         x, y = t
-        return 0 <= x < self.w and 0 <= y < self.h and (self.rows[y][x] == "." or tuple(t) in self.exits or (self.rows[y][x] == "$" and self._has_waterfall()))             and tuple(t) not in self._people()
+        return 0 <= x < self.w and 0 <= y < self.h and (self.rows[y][x] == "." or tuple(t) in self.exits or (self.rows[y][x] == "$" and self._has_waterfall())
+                                                       or (self.rows[y][x] == "o" and self._has("HM_SURF")) or (self.rows[y][x] == "2" and self._has("HM_CUT")))             and tuple(t) not in self._people() and tuple(t) not in getattr(self, "barred", {})
+
+    def _has(self, item):
+        return self.game.story_manager.inventory.get(item, 0) > 0
 
     def _has_waterfall(self):
         return self.game.story_manager.inventory.get("HM_WATERFALL", 0) > 0
@@ -319,6 +368,42 @@ class WalkTownState(CityState):
 
     def _remember(self):
         self.game.walk_town_pos = (self.area_key, self.player, self.facing)
+        self.game.walk_town_room = (self.area_key, self.room) if getattr(self, "room", None) else None
+
+    # ---------------------------------------------------------------- rooms (Jordan, 11-11: the insides of a town's buildings, walked)
+    # A town map's "rooms" {name: a map of its own (art, people, signs, theme "room")} and "inside" {"x,y" of a door: room name}.
+    # A room's ways out lead "OUT:x,y" (back outside, below that door) or "ROOM:name" (stairs to another room). The town's
+    # options are the same inside: the people standing in a room are its options (the nurse: Heal; the clerk: Shop).
+    def _room_for(self, door):
+        if getattr(self, "room", None) or not getattr(self, "town_map", None):
+            return None
+        return (self.town_map.get("inside") or {}).get("%d,%d" % tuple(door))
+
+    def _go(self, room, came):
+        """Into a room (or back out to the town: room None), arriving by the way out there that leads back to came."""
+        self.room = room
+        self.signs, self.water_exits = {}, set()
+        self._mini = None
+        self.walk_goal = None
+        self._from_art(self.town_map["rooms"][room] if room else self.town_map)
+        if room is None and came.startswith("OUT:"):  # back outside: below the door you went in by
+            x, y = (int(v) for v in came.split(":", 1)[1].split(","))
+            spot = (x, y + 1)
+            back = not self._open(spot) and self._open((x, y - 1))  # (a back door, on the far side of its building: out above it: Fuchsia's fishing house)
+            if back:
+                spot = (x, y - 1)
+            self.player = spot if self._open(spot) else self._nearest_open(spot)
+            self.facing = (0, -1) if back else (0, 1)
+        else:
+            mats = [t for t, target in self.exits.items() if target == came]
+            t = mats[len(mats) // 2] if mats else self._nearest_open((self.w // 2, self.h - 2))
+            inward = next(((t[0] + dx, t[1] + dy) for dx, dy in ((0, -1), (0, 1), (-1, 0), (1, 0))
+                           if self._open((t[0] + dx, t[1] + dy)) and (t[0] + dx, t[1] + dy) not in self.exits), t)
+            self.player = inward
+            self.facing = (inward[0] - t[0], inward[1] - t[1]) if inward != t else (0, -1)
+        self.anim = 0
+        self.anim_from = self.partner = self.partner_from = self.player
+        self._remember()
 
     def start(self):
         super().start()
@@ -344,12 +429,20 @@ class WalkTownState(CityState):
         if roster.world.occupied(self.game, to):
             self.walk_goal = None  # (a friend or their Pokemon is standing there)
             return
+        if tuple(to) in getattr(self, "barred", {}):
+            self.walk_goal = None
+            return self.flash((self.barred[tuple(to)].get("lines") or ["Someone is standing in the way."])[0], 130)
         if to in self.signs:
             self.walk_goal = None
             return self._read(to)
         if to in self._people():
             self.walk_goal = None
             return self._talk(to)
+        if getattr(self, "room", None) and 0 <= to[0] < self.w and 0 <= to[1] < self.h and self.grid[to[1]][to[0]] == "m":
+            across = (to[0] + dx, to[1] + dy)  # (someone behind a counter: talk across it, as in the original)
+            if across in self._people():
+                self.walk_goal = None
+                return self._talk(across)
         if to in self.doors:
             self.walk_goal = None
             return self._enter(to)
@@ -360,13 +453,31 @@ class WalkTownState(CityState):
                 over = (to[0] + dx, to[1] + dy)
                 if self._open(over) and over not in self.doors and over not in self.signs:
                     to = over
+        if grid and 0 <= to[0] < self.w and 0 <= to[1] < self.h and grid[to[1]][to[0]] in "207":
+            self.walk_goal = None
+            return self.flash({"2": "A small tree is in the way. CUT could cut it down!", "0": "A cracked rock is in the way. ROCK SMASH could break it!",
+                               "7": "A steep, muddy slope. A BICYCLE could ride up it!"}[grid[to[1]][to[0]]], 110)
         if 0 <= to[0] < self.w and 0 <= to[1] < self.h and self.rows[to[1]][to[0]] == "$" and not self._has_waterfall():
             self.walk_goal = None  # (a waterfall in town: Ever Grande's, below the League)
             return self.flash("The water pours down too hard. WATERFALL could climb it!", 110)
         if not self._open(to):
             self.walk_goal = None
+            if 0 <= to[0] < self.w and 0 <= to[1] < self.h and self.rows[to[1]][to[0]] in "o2" and to not in self._people():
+                self.flash("The water's deep here. You'll need Surf to cross it!" if self.rows[to[1]][to[0]] == "o" else "A small tree is in the way. CUT could clear it!", 110)
             return
+        spans = getattr(self, "bridge", None)
+        if spans:
+            here = tuple(self.player)
+            if here in spans and tuple(to) not in spans and ((abs(dx), abs(dy)) == spans[here]) != self.deck:
+                self.walk_goal = None  # (off a bridge only the way you came onto it: along its deck, or out from under it)
+                return
+            if tuple(to) in spans and here not in spans:
+                self.deck = (abs(dx), abs(dy)) == spans[tuple(to)]
+            elif tuple(to) not in spans:
+                self.deck = True
         self.anim_from, self.anim = self.player, STEP
+        if grid and 0 <= to[1] < len(grid) and 0 <= to[0] < len(grid[to[1]]) and grid[to[1]][to[0]] in "89":
+            self.anim = STEP * 2  # (deep snow, marsh mud: each step takes twice as long)
         self.partner_from, self.partner = self.partner, self.player
         self.player = to
         self.steps += 1
@@ -374,6 +485,29 @@ class WalkTownState(CityState):
         if to in self.exits:
             self.walk_goal = None
             self._leave(self.exits[to])
+        elif to in getattr(self, "links", {}):  # a warp pad: on to its far pad (no stepping back through by itself)
+            self.walk_goal = None
+            self.player = self.partner = self.partner_from = self.anim_from = self.links[to]
+            self.anim = 0
+            self._remember()
+        elif grid and grid[to[1]][to[0]] in "3456":  # a spin tile: it carries you its way till something stops you, or a stop tile does
+            self.walk_goal = None
+            way = {"3": (-1, 0), "4": (1, 0), "5": (0, -1), "6": (0, 1)}
+            d, cur = way[grid[to[1]][to[0]]], to
+            for _ in range(self.w * self.h):
+                nxt = (cur[0] + d[0], cur[1] + d[1])
+                if not self._open(nxt) or nxt in self.doors or nxt in self.signs:
+                    break
+                cur = nxt
+                if grid[cur[1]][cur[0]] in way:
+                    d = way[grid[cur[1]][cur[0]]]
+                elif cur in self.stops or cur in self.exits or cur in self.links:
+                    break
+            self.player = cur
+            self.facing = d
+            self._remember()
+            if cur in self.exits:
+                self._leave(self.exits[cur])
 
     def _path(self, goal):
         """The steps to goal (a door or a person: up to it), or []."""
@@ -412,6 +546,9 @@ class WalkTownState(CityState):
 
     def _enter(self, door):
         kind = self.doors[door]
+        inside = self._room_for(door)
+        if inside:  # (a building with its inside built: walk in)
+            return self._go(inside, "OUT:%d,%d" % tuple(door))
         if kind == "home":  # (the first home is yours; the others aren't open)
             first = min((t for t, k in self.doors.items() if k == "home"), default=None)
             if door != first:
@@ -440,6 +577,11 @@ class WalkTownState(CityState):
         opt = self.people[spot]
         if not self._shown(opt):
             return self.flash("They don't have anything to say right now.")
+        if "any" in opt:
+            now = [o for o in opt["any"] if self._shown(o)]
+            if len(now) > 1:  # (several things to do with them right now: pick one, as at a door)
+                return self._create_hover_menu(now, None)
+            opt = now[0]
         cb = self._get_callback_for_option(opt)
         if cb:
             cb()
@@ -449,6 +591,10 @@ class WalkTownState(CityState):
                      if (o.get("target_area") or o.get("target")) == target), None)
 
     def _leave(self, target):
+        if str(target).startswith("OUT:"):  # (out of a room, back to the town)
+            return self._go(None, target)
+        if str(target).startswith("ROOM:"):  # (stairs to another room of the building; "ROOM:MAIN" is the place's own first map)
+            return self._go(None if target[5:] == "MAIN" else target[5:], "ROOM:" + (self.room or "MAIN"))
         opt = self._travel_option(target)
         if opt is None or not self._shown(opt):
             here = self.player
@@ -634,6 +780,10 @@ class WalkTownState(CityState):
             drawn.append((pr.bottom, me, me.get_rect(midbottom=(pr.centerx, pr.bottom))))
         for _b, img, rect in sorted(drawn, key=lambda t: t[0]):
             screen.blit(img, rect)
+        for _t, _bar in getattr(self, "barred", {}).items():
+            art.blocker(screen, at(_t), _bar.get("look") or "person")
+        if getattr(self, "bridge", None) and not self.deck and tuple(self.player) in self.bridge:  # (passing under a bridge: it goes over your head)
+            art.bridge(screen, at(tuple(self.player)), "|" if self.bridge[tuple(self.player)] == (0, 1) else ";")
         for _o, img, (bx, by) in getattr(self, "overheads", []):  # (solid, over you: you walk under it, out of view)
             screen.blit(img, (ox + bx, oy + by))
         # the buildings' names over their doors, who the people are, where the ways out go
@@ -650,11 +800,14 @@ class WalkTownState(CityState):
             tiles.sort()
             t = tiles[len(tiles) // 2]
             name = (self.game.loader.area_data.get("STORY_PROGRESSION", {}).get(target) or {}).get("route_name") or target
+            if str(target).startswith(("OUT:", "ROOM:")):  # (a room's mat or stairs: no place of their own to name)
+                name = "EXIT" if str(target).startswith("OUT:") else "STAIRS"
             self._pill(screen, str(name).upper(), at(t).centerx, at(t).centery + 10, fonts)
         from src.states.overworld.common import _fill_names
-        for spot, opt in people.items():
+        taken = []  # (name tags that would sit on top of one another: the one with something to do is shown: a row of clerks)
+        for spot, opt in sorted(people.items(), key=lambda kv: (kv[1].get("action") == "EVENT" and not (kv[1].get("event") or {}).get("battle"), kv[0])):
             self._pill(screen, _fill_names(self.game, opt.get("text", "")).upper()[:28], at(spot).centerx,
-                       at(spot).y - 34, fonts)
+                       at(spot).y - 34, fonts, taken)
         if not self._busy():
             self._draw_guide(screen, at)
         self._draw_hud(screen, fonts)
@@ -666,13 +819,17 @@ class WalkTownState(CityState):
         self.game.ui_manager.draw(screen)
 
     @staticmethod
-    def _pill(screen, text, cx, bottom, fonts):
+    def _pill(screen, text, cx, bottom, fonts, taken=None):
         W, H = screen.get_size()
         if not (-60 <= cx <= W + 60 and -40 <= bottom <= H + 60):
             return  # (off screen: no tag piling up at the edge)
         tag = fonts["caption"].render(theme.pokemon_word(text), True, (255, 255, 255))
         pill = tag.get_rect(midbottom=(cx, bottom)).inflate(12, 6)
         pill.clamp_ip(screen.get_rect().inflate(-8, -8))  # (one at the very edge stays on screen)
+        if taken is not None:
+            if pill.collidelist(taken) >= 0:
+                return
+            taken.append(pill)
         pygame.draw.rect(screen, (30, 36, 58), pill, border_radius=8)
         screen.blit(tag, tag.get_rect(center=pill.center))
 

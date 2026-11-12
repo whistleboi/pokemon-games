@@ -327,6 +327,9 @@ def drawn_floor(recipe, index, entrance=None, figures=()):
                 floor.decor[(x, y)] = what["decor"]
             if what.get("figure"):
                 floor.spots[what["figure"]] = (x, y)
+    for t in map(tuple, plan.get("exit_order") or ()):  # (several mouths to one place that pair up out of reading order: these come last, in this order: Mt. Mortar's four)
+        if t in exits:
+            exits[t] = exits.pop(t)
     floor.exits.update(exits)
     if entrance:  # you come in beside the way you came
         doors = [t for t, target in exits.items() if target == entrance]  # (several the same way: the matching one)
@@ -693,7 +696,7 @@ class Run:
         if (x, y) in f.exits:
             target = f.exits[(x, y)]
             events.append(("stairs",) if target == STAIRS else ("stairs_up",) if target == STAIRS_UP
-                          else ("exit", target))
+                          else ("warp", target) if str(target).startswith("WARP:") else ("exit", target))
             return events  # nothing else moves while you leave
         events += self.others_act()
         return events
@@ -709,6 +712,16 @@ class Run:
             if floor.walkable(*t) and not floor.occupied(*t):
                 return t
         return floor.start
+
+    def warp(self, index, x, y):
+        """Through a passage to any floor (a map's "links": Mt. Coronet's branching rooms): beside its far end."""
+        index = max(0, min(self.n_floors - 1, index))
+        while len(self.floors) <= index:  # (floors are made in order: the ones on the way too)
+            self.enter_floor(len(self.floors))
+        self.enter_floor(index)
+        floor = self.floors[index]
+        self.player = self._beside(floor, (x, y))
+        self.reveal()
 
     def _ladders(self, index):
         """A floor's own ladder order, if its map gives one ("ladders": its STAIRS in reading order, each the

@@ -16,6 +16,7 @@ import os
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))  # (the game folder: src.dungeon.art, for whose door is whose)
 
 # One file a region (dev/builders/town_maps/<region>.py), in story order.
 REGIONS = ["kanto", "johto", "hoenn", "sinnoh", "sevii"]
@@ -37,9 +38,10 @@ def check(key, m):
     w = len(art[0])
     bad = [(i, len(r)) for i, r in enumerate(art) if len(r) != w]
     assert not bad, f"{key}: rows not {w} wide: {bad}"
-    for ch in set("".join(art)) - set("Tr~#.=s\"f<>^vNDw!lkc+-Xoqbuapihmgjeyzdtx%&$/n*_(),@[]{}:|;"):
+    for ch in set("".join(art)) - set("Tr~#.=s\"f<>^vNDw!lkc+-Xoqbuapihmgjeyzdtx%&$/n*_(),@[]{}:|;0123456789"):
+        from src.dungeon import art as _a
         cells = [(x, y) for y, r in enumerate(art) for x, c in enumerate(r) if c == ch or
-                 (c == "D" and any(0 <= y - 1 and art[y - 1][x] == ch for _ in [0]))]
+                 (c == "D" and (_a.door_owner(art, x, y) == ch or (_a.door_owner(art, x, y) is None and 0 <= y - 1 and art[y - 1][x] == ch)))]
         xs = [x for x, _y in cells]
         ys = [y for _x, y in cells]
         box = [(x, y) for y in range(min(ys), max(ys) + 1) for x in range(min(xs), max(xs) + 1)]
@@ -50,7 +52,7 @@ def check(key, m):
     assert sum(r.count("X") for r in art) == len(m.get("trainer_spots", [])), f"{key}: X count vs trainer_spots"
 
 
-OPEN = set('.=s"f<>^vNw+-Xobuapedx%$/n,[]{}:|;')  # (o: the sea you Surf; b: a boulder, pushed aside with Strength)
+OPEN = set('.=s"f<>^vNw+-Xobuapedx%$/n,[]{}:|;1345689')  # (o: the sea you Surf; b: a boulder, pushed aside with Strength)
 
 
 def reachable(key, m):
@@ -60,24 +62,36 @@ def reachable(key, m):
     art = m["art"]
     h, w = len(art), len(art[0])
     cells = lambda ch: [(x, y) for y in range(h) for x in range(w) if art[y][x] in ch]
-    exits = [t for t in cells("".join(c for c in m.get("exits", {}) if not c.isupper()) + "+-")]
+    exits = [t for t in cells("".join(c for c in m.get("exits", {}) if not c.isupper()) + "+-1")]
     lead = {c for c in m.get("exits", {}) if c.isupper()}
     lead_doors = [(x, y) for x, y in cells("D") if any(art[y + b][x + a] in lead for a, b in ((1, 0), (-1, 0), (0, 1), (0, -1)) if 0 <= y + b < h and 0 <= x + a < w)]
     if not exits or m.get("parts"):  # (every way out a building's door: Ilex Forest's two gates; or a map in parts, one reached only by a cave mouth: Ever Grande's League side) start from those doors too
         exits = exits + lead_doors
     assert exits, f"{key}: no way out"
     starts = exits if m.get("parts") else exits[:1]  # (a floor in separate parts, each reached by its own ladder)
+    starts = starts + [(x, y - 1) for x, y in map(tuple, m.get("back_doors", []))]  # (a yard reached only through a house's back door: Fuchsia's pond)
     seen, todo = set(starts), list(starts)
     while todo:
         x, y = todo.pop()
+        pad = (m.get("links") or {}).get(f"{x},{y}")  # (a warp pad on this same map: on to its far pad)
+        if pad and (pad[1], pad[2]) not in seen and not m.get("floors"):
+            seen.add((pad[1], pad[2]))
+            todo.append((pad[1], pad[2]))
         for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
             n = (x + dx, y + dy)
-            if 0 <= n[0] < w and 0 <= n[1] < h and n not in seen and (art[n[1]][n[0]] in OPEN or art[n[1]][n[0]] in "_()$"):  # (a ledge: crossed one way, near enough here; a waterfall: climbed with Waterfall)
+            far = (m.get("links") or {}).get(f"{n[0]},{n[1]}") if 0 <= n[0] < w and 0 <= n[1] < h and art[n[1]][n[0]] == "D" and not m.get("floors") else None
+            if far and (far[1], far[2]) not in seen:  # (a gatehouse walked through: in by this door, out by its other one)
+                seen.add((far[1], far[2]))
+                todo.append((far[1], far[2]))
+            if 0 <= n[0] < w and 0 <= n[1] < h and n not in seen and (art[n[1]][n[0]] in OPEN or art[n[1]][n[0]] in "_()$027"):  # (a ledge: crossed one way, near enough here; a waterfall: climbed with Waterfall)
                 seen.add(n)
                 todo.append(n)
     near = lambda t: any((t[0] + dx, t[1] + dy) in seen for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)))
     cut = [("exit", t) for t in exits if t not in seen and not near(t)]
-    cut += [(what, t) for what, ch in (("door", "D"), ("sign", "!"), ("person", "N")) for t in cells(ch) if not near(t)]
+    # (in a room, someone behind a counter is talked to across it)
+    over = lambda t: m.get("theme") == "room" and any(0 <= t[1] + dy < h and 0 <= t[0] + dx < w and art[t[1] + dy][t[0] + dx] == "m"
+                                                      and (t[0] + 2 * dx, t[1] + 2 * dy) in seen for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)))
+    cut += [(what, t) for what, ch in (("door", "D"), ("sign", "!"), ("person", "N")) for t in cells(ch) if not near(t) and not (ch == "N" and over(t))]
     assert not cut, f"{key}: out of reach {cut[:6]}"
 
 
@@ -101,6 +115,10 @@ def preview(key, m):
 def main():
     for key, m in MAPS.items():
         parts = [(f"{key}_{i + 1}", dict(m, floors=None, **f)) for i, f in enumerate(m["floors"])] if m.get("floors")             else [(key, m)]
+        parts += [(f"{key}__{r}", room) for r, room in (m.get("rooms") or {}).items()]  # (the rooms inside a town's buildings: each a map of its own)
+        for d, r in (m.get("inside") or {}).items():
+            x, y = (int(v) for v in d.split(","))
+            assert m["art"][y][x] == "D" and r in m["rooms"], f"{key}: inside {d} -> {r}: no door there, or no such room"
         for name, part in parts:  # (a map of floors: each floor its own)
             check(name, part)
             reachable(name, part)

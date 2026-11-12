@@ -864,6 +864,12 @@
       "K": {
         "figure": "CLERK"
       },
+      "G": {
+        "figure": "ROCKET GRUNT"
+      },
+      "P": {
+        "decor": "poster"
+      },
       "E": {
         "exit": "CELADON_CITY"
       },
@@ -871,24 +877,33 @@
         "exit": "ROCKET_HIDEOUT"
       }
     },
+    "gate": {
+      "flag": "game_corner_poster",
+      "tile": [15, 2],
+      "target": "ROCKET_HIDEOUT",
+      "open_if": ["game_corner_cleared", "visited_ROCKET_HIDEOUT"],
+      "switch": "poster",
+      "lines": ["There's a switch behind the poster!", "You push it. Stairs open in the corner!"],
+      "done": ["A Game Corner poster. The switch behind it is pushed in."]
+    },
     "layout": [
       {
         "map": [
-          "###########R########",
-          "#.....K............#",
-          "#.ccccccccc........#",
-          "#.ccccccccc....cccc#",
-          "#..............cccc#",
-          "#s....ss....ss....s#",
-          "#s....ss....ss....s#",
-          "#s....ss....ss....s#",
-          "#s....ss....ss....s#",
-          "#s....ss....ss....s#",
-          "#s....ss....ss....s#",
-          "#..................#",
-          "#..................#",
-          "#.........@........#",
-          "##########EE########"
+          "##################",
+          "###########P######",
+          "##..K....c.G...R##",
+          ".ccccccccc....cccc",
+          "..............cccc",
+          "..................",
+          "s....ss....ss....s",
+          "s....ss....ss....s",
+          "s....ss....ss....s",
+          "s....ss....ss....s",
+          "s....ss....ss....s",
+          "..................",
+          "..........@.......",
+          "#........EEE.....#",
+          "##################"
         ]
       }
     ]
@@ -1760,7 +1775,7 @@
     "ponds": 2
   },
   "GREAT_MARSH": {
-    "zones_per_floor": 3,
+    "zones_per_floor": 6,
     "size": [
       36,
       24
