@@ -73,6 +73,30 @@
   "gift": true,
   "from": "ORAS TM23: Professor Cozmo, Fallarbor Town"
  },
+ "TM101": {
+  "move": "SWORDS-DANCE",
+  "type": "NORMAL",
+  "tier": 8,
+  "price": 3000,
+  "gift": true,
+  "from": "ORAS TM75: the dancing Black Belt, Lavaridge Town"
+ },
+ "TM102": {
+  "move": "FLAME-CHARGE",
+  "type": "FIRE",
+  "tier": 8,
+  "price": 3000,
+  "gift": true,
+  "from": "ORAS TM43: lying on the Jagged Pass (across the round stones)"
+ },
+ "TM103": {
+  "move": "ROCK-POLISH",
+  "type": "ROCK",
+  "tier": 8,
+  "price": 3000,
+  "gift": true,
+  "from": "ORAS TM69: lying on the Jagged Pass's west hill"
+ },
  "TM11": {
   "move": "SOLAR-BEAM",
   "type": "GRASS",

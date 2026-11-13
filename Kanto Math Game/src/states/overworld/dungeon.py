@@ -418,9 +418,9 @@ def art_recipe(m):
                 ch = chr(0x2A00 + len(legend))
                 legend[ch] = {"decor": f"hole:{x},{y}"}
                 out.append(ch)
-            elif c in "27":  # a small tree (Cut) or a steep muddy slope (the Bicycle): in the way till you have it (cut:<x>,<y>, slope:<x>,<y>)
+            elif c in "27'":  # a small tree (Cut), a steep muddy slope or round stones (the Bicycle): in the way till you have it (cut:, slope:, stones:<x>,<y>)
                 ch = chr(0x2800 + len(legend))
-                legend[ch] = {"decor": f"{'cut' if c == '2' else 'slope'}:{x},{y}"}
+                legend[ch] = {"decor": f"{ {'2': 'cut', '7': 'slope'}.get(c, 'stones')}:{x},{y}"}
                 out.append(ch)
             elif c in "89":  # deep snow, marsh mud: ground you wade through (the walking is slowed, not the rules)
                 out.append(".")
@@ -1439,7 +1439,7 @@ class DungeonState(OverworldBattles, PlayState):
         events = self.run.step(dx, dy)
         if hopped and self.run.player == to:  # (couldn't land after all)
             self.run.player = before
-        self.hop = hopped and self.run.player != before
+        self.hop = (hopped or tuple(self.run.player) in getattr(self, "_stones", ()) or tuple(before) in getattr(self, "_stones", ()))             and self.run.player != before  # (a ledge; onto, along and off the round stones, hopping on the Bicycle)
         leaving = any(ev[0] in ("exit", "stairs", "stairs_up") for ev in events)
         on_ice = self.run.player != before and self.run.player in getattr(self.run.floor, "ice", ())
         self.sliding = (dx, dy) if on_ice and not leaving else None
@@ -2359,6 +2359,10 @@ class DungeonState(OverworldBattles, PlayState):
             elif str(what).startswith("slope:") and self.game.story_manager.inventory.get("BICYCLE", 0) > 0:
                 del f.decor[t]
                 f.tiles[t[1]][t[0]] = core.FLOOR  # (you ride up it)
+            elif str(what).startswith("stones:") and self.game.story_manager.inventory.get("BICYCLE", 0) > 0:
+                del f.decor[t]
+                f.tiles[t[1]][t[0]] = core.FLOOR  # (you hop across them on the Bicycle: the Jagged Pass's round stones)
+                self.__dict__.setdefault("_stones", set()).add(t)
             elif str(what).startswith("crack:") and self.game.story_manager.inventory.get("HM_ROCK_SMASH", 0) > 0:
                 del f.decor[t]
                 f.tiles[t[1]][t[0]] = core.FLOOR  # (your Pokemon breaks it)
@@ -2468,6 +2472,9 @@ class DungeonState(OverworldBattles, PlayState):
             return True
         if what.startswith("slope:"):
             self.say(["A steep, muddy slope.", "You could ride up it on a Bicycle."])
+            return True
+        if what.startswith("stones:"):
+            self.say(["Round stones, in a row.", "On a Bicycle, you could hop across them!"])
             return True
         if what.startswith("crack:"):
             self.say(["A cracked rock is in the way.", "A Pokemon that knows Rock Smash could break it."])
@@ -2916,9 +2923,26 @@ class DungeonState(OverworldBattles, PlayState):
             return s
         return self._sprite(key, make)
 
+    def _on_stones(self, t=None):
+        """Are you on the Jagged Pass's round stones (on the Bicycle: you ride onto them, a wheelie, a hop a stone)?"""
+        return tuple(t if t is not None else self.run.player) in getattr(self, "_stones", ())
+
+    def _acro_sheet(self):
+        """Emerald's Acro Bike wheelie and hop for Brendan and May (em_acro_<you>.png), else None (the drawn bike)."""
+        char = str(getattr(self.game, "player_character", "") or "").lower()
+        if char not in ("brendan", "may"):
+            return None
+        name = f"em_acro_{char}.png"
+        return name if os.path.exists(os.path.join(self.game.assets.assets_dir, "dungeon", "characters", name)) else None
+
     def _player_img(self):
         """You on the map: your trainer's Journeys overworld sprite (yours, else a boy's or a girl's),
-        facing the way you go, its feet moving while you step."""
+        facing the way you go, its feet moving while you step. On the round stones: your wheelie (still) and hop."""
+        on = getattr(self, "_on_stones", None) if hasattr(self, "run") else None   # (towns borrow this: no stones there)
+        acro = self._acro_sheet() if on and (on() or (self.anim > 0 and on(self.anim_from))) else None
+        if acro:
+            k = 1 - self.anim / STEP_FRAMES if self.anim > 0 else 0
+            return self._sheet_frame(acro, self.facing, frame=(0 if self.anim == 0 else 1 if k < 0.5 else 3))
         players = sprite_map(self.game).get("players") or {}
         char = str(getattr(self.game, "player_character", "") or "red").lower()
         sheet = players.get(char) or players.get("female" if char in players.get("girls", []) else "male")
@@ -3299,10 +3323,13 @@ class DungeonState(OverworldBattles, PlayState):
         pr = pygame.Rect(0, 0, TILE, TILE)
         (fx0, fy0), (tx0, ty0) = (self.anim_from if self.anim > 0 else self.run.player), self.run.player
         pr.topleft = (int(ox + (fx0 + (tx0 - fx0) * k) * TILE), int(oy + (fy0 + (ty0 - fy0) * k) * TILE))  # (you, mid-step)
-        if self.hop and self.anim > 0:  # (over a ledge: up and down again)
-            pr.y -= int(math.sin(math.pi * k) * TILE * 0.55)
+        stones = self._on_stones() or (self.anim > 0 and self._on_stones(self.anim_from))
+        if self.hop and self.anim > 0:  # (over a ledge: up and down again; from stone to stone on the Bicycle, a smaller hop)
+            pr.y -= int(math.sin(math.pi * k) * TILE * (0.3 if stones else 0.55))
         elif self.hop:
             self.hop = False
+        if stones and self.anim == 0:  # (on a stone, balanced on the back wheel: a little bounce)
+            pr.y -= int(abs(math.sin(pygame.time.get_ticks() / 140)) * 5)
         me = self._player_img()
         drawn = []  # (bottom, image, rect): the lower one in front
         surfing = self._on_surf() or (self.anim > 0 and self._on_surf(self.anim_from))
@@ -3318,7 +3345,9 @@ class DungeonState(OverworldBattles, PlayState):
             drawn.append((r.bottom, img, img.get_rect(midbottom=(r.centerx, r.bottom - 2))))
         if me is not None and surfing:  # on the sea: you ride your Pokemon (a hop on and off)
             drawn += self._surf_draw(me, pr, at, k)
-        elif me is not None and (self._cycling() or (self.anim > 0 and self._cycling(self.anim_from))):  # riding the Bicycle
+        elif me is not None and stones and self._acro_sheet():  # (on the round stones: your own wheelie, Emerald's Acro Bike frames)
+            drawn.append((pr.bottom, me, me.get_rect(midbottom=(pr.centerx, pr.bottom))))
+        elif me is not None and (stones or self._cycling() or (self.anim > 0 and self._cycling(self.anim_from))):  # riding the Bicycle
             bike = self._bike_img()
             drawn.append((pr.bottom - 1, bike, bike.get_rect(midbottom=(pr.centerx, pr.bottom + (2 if self.facing[0] else 8)))))
             drawn.append((pr.bottom, me, me.get_rect(midbottom=(pr.centerx, pr.bottom - 8))))

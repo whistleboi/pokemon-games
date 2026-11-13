@@ -12,6 +12,8 @@ Each entry is keyed by the button's "target". Fields (all optional):
   gift_item {item: qty} given straight away ("balls" adds Poke Balls)
   gift_pokemon  species id, or {starter id: species id}
   gift_level    the gift's level (default: the area's wild level)
+  gift_egg  a species: its Egg joins your party (requires room: "party_room")
+  place     [x, y]: in town, you stand there after (Lavaridge's hot springs, out behind the Center)
   travel    an area: after the lines you're taken there (Fallarbor's rival, back to Mauville with you)
 """
 

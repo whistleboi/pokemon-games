@@ -248,11 +248,26 @@ def _run_story_event(state, key, check, show):
                   or ["None of your Pokemon need purifying right now."])
         if names:
             lines += _evolve_due(game, names)
+    if ev.get("gift_egg"):  # an Egg to hatch on your travels (Lavaridge's old woman: Wynaut, as in the games)
+        from src.pokemon import breeding
+        from src.pokemon.data import Pokemon
+        egg = Pokemon(game.loader.fetch_specific(int(ev["gift_egg"])), game.assets, size_mult=2.5)
+        egg.level, egg.xp = 1, 0
+        egg.caught_region = story.get_current_region()
+        egg.moves, egg.move_pool = [], []
+        breeding.make_unhatched(game, egg)
+        story.player_team.append(egg)
+        lines.append(f"{game.player_name} received an Egg!")
     gift = story_events.gift_for_starter(ev.get("gift_pokemon"), _region_starter_id(game))
     if gift:
         lines.append(story_events.gift_pokemon(game, gift, ev.get("gift_level")))
     if flag:
         story.story_flags[flag] = True
+    if ev.get("place") and hasattr(state, "player") and not hasattr(state, "run"):  # (in town: you stand there after: Lavaridge's hot springs)
+        state.player = tuple(ev["place"])
+        state.anim = 0
+        if hasattr(state, "_remember"):
+            state._remember()
     if ev.get("travel"):  # (and off you go: Fallarbor's rival takes you back to Mauville)
         from src.states.overworld import AreaTransitionState
         game.change_state(AreaTransitionState(game, ev["travel"], initial_message=lines or None))

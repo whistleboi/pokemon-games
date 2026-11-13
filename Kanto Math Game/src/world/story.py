@@ -288,6 +288,8 @@ class StoryManager:
             pid = int(condition.split(":", 1)[1])
             team = [p for p in self.player_team if p]
             return len(team) == 1 and team[0].id == pid
+        if condition == "party_room":  # (room in the party for a gift: Lavaridge's Egg)
+            return len([p for p in self.player_team if p]) < 6
         if condition == "all_unown_registered":
             return self.unown_forms_caught() >= len(self.UNOWN_FORMS)
         if condition == "orre_all_purified":  # Colosseum's Ho-Oh: every Shadow Pokemon snagged, and each

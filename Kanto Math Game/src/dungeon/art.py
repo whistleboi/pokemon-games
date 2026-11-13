@@ -25,6 +25,7 @@ can walk. The town screen (src/states/overworld/walk_town.py) and the route maps
   @ a gravestone out in the open (in the way: Mt. Pyre)
   0 a cracked rock: in the way till you have Rock Smash (Ravaged Path, Oreburgh Gate)
   2 a small tree: in the way till you have Cut   7 a steep muddy slope: in the way till you have the Bicycle
+  ' round stones: in the way on foot; on the Bicycle you hop across them (the Jagged Pass)
   3 4 5 6 a spin tile: the floor carries you west, east, north, south till something stops you (Fuego Ironworks)
   8 deep snow   9 marsh mud   (open ground you wade through: each step takes twice as long)
   1 a passage to any other floor, or across this one (a map's "links" {"x,y": [floor, x, y]}: Mt. Coronet)
@@ -41,7 +42,7 @@ import random
 
 import pygame
 
-BLOCK = set("Tr~#!lkcqihmgjyztx&$/*_()@027")
+BLOCK = set("Tr~#!lkcqihmgjyztx&$/*_()@027'")
 LEDGES = {"_": (0, 1), "(": (-1, 0), ")": (1, 0)}  # a ledge, and the one way you hop over it
 CLIFF = (200, 160, 116)
 CLIFF_DARK = (150, 112, 78)
@@ -317,6 +318,11 @@ def surface(art, kinds, tile, roofs=None, theme=None):
                 pygame.draw.circle(surf, LEAF_DARK, (cx, cy - 1), r.w // 3)
                 pygame.draw.circle(surf, LEAF_LIGHT, (cx - 2, cy - 4), r.w // 5)
                 pygame.draw.line(surf, LEAF_DARK, (cx - 6, cy - 1), (cx + 6, cy - 1), 2)
+            elif c == "'":  # round stones in a row (the Bicycle hops them): three grey stepping stones
+                for k in range(3):
+                    sx = r.x + 6 + k * (r.w - 12) // 2
+                    pygame.draw.circle(surf, (118, 110, 104), (sx, r.centery + 2), r.w // 7)
+                    pygame.draw.circle(surf, (170, 162, 150), (sx - 1, r.centery), r.w // 9)
             elif c == "7":  # a steep muddy slope (the Bicycle rides up it): brown ruts running down it
                 pygame.draw.rect(surf, (150, 112, 78), r)
                 for i in range(r.x + 4, r.right - 2, 7):

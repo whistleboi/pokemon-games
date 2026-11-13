@@ -69596,7 +69596,7 @@
    "oooooccccoooooooooooooooooooo==ccccccccc",
    "oooooooccooooooooooooooooooooccccccccccc",
    "ooooooccoooooooooooooooooooccccccccccccc",
-   "uuuuuuccouuuuuuuuuuuuuuuuuoccuuccccccccc"
+   "......ccouuuuuuuuuuuuuuuuuocc..ccccccccc"
   ],
   "exits": {
    "^": "RUSTBORO_CITY",
@@ -69761,30 +69761,6 @@
     19,
     59
    ],
-   "0,79": [
-    0,
-    0
-   ],
-   "1,79": [
-    1,
-    0
-   ],
-   "2,79": [
-    2,
-    0
-   ],
-   "3,79": [
-    3,
-    0
-   ],
-   "4,79": [
-    4,
-    0
-   ],
-   "5,79": [
-    5,
-    0
-   ],
    "9,79": [
     9,
     0
@@ -69851,14 +69827,6 @@
    ],
    "25,79": [
     25,
-    0
-   ],
-   "29,79": [
-    29,
-    0
-   ],
-   "30,79": [
-    30,
     0
    ],
    "39,62": [
@@ -74371,7 +74339,35 @@
     "action": "EVENT",
     "event": {
      "lines": [
-      "We're out looking for tough Trainers to interview. Keep it up and we'll find you!"
+      "Gabby: It's you! Let's see how strong you've gotten. Ty, roll the camera!"
+     ],
+     "flag": "gabby_ty_111",
+     "battle": {
+      "name": "Interviewers Gabby & Ty",
+      "class": "PKMN_TRAINER",
+      "sprite": "interviewers.png",
+      "team": [
+       81,
+       293
+      ],
+      "levels": [
+       20,
+       20
+      ],
+      "rewards": {
+       "balls": 2
+      },
+      "dialogue": {
+       "player_won": [
+        "Gabby: What a battle! Ty, did you get all that?",
+        "Ty: Yep, every bit of it!",
+        "Gabby: Now, a few words for our viewers... You were great out there!"
+       ]
+      }
+     },
+     "done": [
+      "Gabby: That interview's going to be on the news! Keep it up!",
+      "Ty: Got me some prime footage today."
      ]
     }
    },
@@ -74380,7 +74376,35 @@
     "action": "EVENT",
     "event": {
      "lines": [
-      "Got me some prime footage today!"
+      "Gabby: It's you! Let's see how strong you've gotten. Ty, roll the camera!"
+     ],
+     "flag": "gabby_ty_111",
+     "battle": {
+      "name": "Interviewers Gabby & Ty",
+      "class": "PKMN_TRAINER",
+      "sprite": "interviewers.png",
+      "team": [
+       81,
+       293
+      ],
+      "levels": [
+       20,
+       20
+      ],
+      "rewards": {
+       "balls": 2
+      },
+      "dialogue": {
+       "player_won": [
+        "Gabby: What a battle! Ty, did you get all that?",
+        "Ty: Yep, every bit of it!",
+        "Gabby: Now, a few words for our viewers... You were great out there!"
+       ]
+      }
+     },
+     "done": [
+      "Gabby: That interview's going to be on the news! Keep it up!",
+      "Ty: Got me some prime footage today."
      ]
     }
    },
@@ -76963,57 +76987,94 @@
  },
  "HOENN_JAGGED_PASS": {
   "art": [
-   "ccccTTTTTTTT^^^^TTTTTTTTcTTcTT",
-   "TTcceeeeeeeeeeeeeeeeeeeecccccc",
-   "ccccccTTTTTTeeeeTTTTeeccccccTT",
-   "cccccceeeeeeeeeeeeeeeccccTTccc",
-   "TTTTccccccccceeccccccccccccccc",
-   "ccccccTTTTccceecccTTTTTTccTTcc",
-   "ccccccccccccceeccceeeeeeeccccc",
-   "ccccccTTTTeeceeceeeeTTTTecTTcc",
-   "cTTTTceeeeeeeeeeeeeeXeeecceecc",
-   "ccccccTT_e_______c____TTceeccc",
-   "ccccccee\"\"eeeeeeeceeeeeeeecccc",
-   "cccTTccc\"\"_______ceecccccccccc",
-   "cccccTTc\"\"\"\"eeeeeeeecccccccccc",
-   "TTccccccccccceecccccccccccTTcc",
-   "ccccccccccccceeccccccccccccccc",
-   "cccccccccceeeeeeeecccccccccccc",
-   "ccTTcccccc___e_eeccccccccccccc",
-   "cccccccccceeeeecccccccccTTcccc",
-   "cccccTTeec___eecnccccccccccccc",
-   "ccccceeeeeeeeeeeeeeeeeeccccccc",
-   "ccccceTTeeeeXeeeeeeeeeeceecccc",
-   "ccccceeeeeeeeeeeeeeeceec_ecccc",
-   "ccccccc___eeeeeeeeeeceeeeecccc",
-   "ccccccccccc_ec_____ccee_cccccc",
-   "cccccccccccccccccccceeeecccccc",
-   "cTTccccccccccccccccceeTTcccccc",
-   "cccccccccccccccccccceeeecccccc",
-   "cccccccccccccccccccc_e__ccTTcc",
-   "cccccccccccccccccccceeeeeeeecc",
-   "ccccccceeeeeeeeeeeeeeeceeeTTcc",
-   "ccccccce_e_______TT___ceTTcccc",
-   "ccccTTceeeeeeeeeeee\"\"ecccccccc",
-   "TTccccc__e_____TT\"\"\"\"\"\"ccccccc",
-   "TTccccceeeeeeeeee______ccccccc",
-   "TTccccceeeXeeeeeeeeeeeecTTTTTT",
-   "TTccccccceeeeeeeeeeeecccTTTTTT",
-   "TTTTTTTTccccceeeecccccTTTTTTTT",
-   "TTTTTTTTccccc_ee_cccccTTTTTTTT",
-   "TTTTTTTTTTTT.....!TTTTTTTTTTTT",
-   "TTTTTTTTTTTT......TTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTeeTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTT..TTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTT..TTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTT..TTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTT..TTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTvvTTTTTTTTTTTTTT"
+   "cccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccc",
+   "ccccccccccccc^^ccccccccccccccc",
+   "ccccccccccccc..ccccccccccccccc",
+   "cccccccccc..c..c....cccccccccc",
+   "cccccccccc........'Xcccccccccc",
+   "ccccccccccc______c'ccccccccccc",
+   "ccccccccN\"(......)...'cccccccc",
+   "cccccccc\"\"c______c..c'cccccccc",
+   "cccccccc\"\"\"\"........c..ccccccc",
+   "ccccccccccccc..cccccc.Nccccccc",
+   "ccccccccc__________cc.cccccccc",
+   "cccccccc(c........c)\"\"\"ccccccc",
+   "ccccccccc______ccc_c\"\"'ccccccc",
+   "cccccccccc.....c.c\"\"\"\"'ccccccc",
+   "ccccccc..cccc..cnccccc'ccccccc",
+   "ccccccc.........N......ccccccc",
+   "cccccccc....X..........ccccccc",
+   "cccccccc............c..ccccccc",
+   "ccccccc___c.........c..ccccccc",
+   "cccccccc\"\"c_cc_____cc..ccccccc",
+   "cccccccc\"\"\"\"cc.....)....cccccc",
+   "cccccccc\"\"\"\"cc.....)..cccccccc",
+   "cccccccc____cc_____c..cccccccc",
+   "cccccccc....cc.....c_'_ccccccc",
+   "ccccccccc__________c.'cccccccc",
+   "ccccccc.(............'cccccccc",
+   "ccccccc.c'_______cc__'cccccccc",
+   "ccccccc..'.......cc\"\".cccccccc",
+   "ccccccc__'_____cc\"\"\"\"\"\"ccccccc",
+   "ccccccc........cc______ccccccc",
+   "ccccccc...X............ccccccc",
+   "ccccccccc............ccccccccc",
+   "ccccccccccccc....ccccccccccccc",
+   "cccccccccccccc..cccccccccccccc",
+   "cccccccccccc......cccccccccccc",
+   "cccccccccccc......cccccccccccc",
+   "ccccccccccccccvvcccccccccccccc",
+   "cccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccc"
   ],
   "exits": {
-   "^": "HOENN_MT_CHIMNEY",
    "v": "HOENN_ROUTE_112",
+   "^": "HOENN_MT_CHIMNEY",
    "n": "HOENN_MAGMA_HIDEOUT"
+  },
+  "buildings": {},
+  "roofs": {
+   "_picture": {
+    "f": "em_ground/24_13.png",
+    "at": [
+     0,
+     0
+    ]
+   },
+   "_signs_in_picture": true,
+   "_buildings_in_picture": true
+  },
+  "people": [
+   "TM103 ROCK POLISH",
+   "TM102 FLAME CHARGE",
+   {
+    "text": "Lookout grunt",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "W-what are you doing here? This is none of your business! Go wherever you like!"
+     ]
+    },
+    "_look": "@grunt"
+   }
+  ],
+  "trainer_spots": [
+   "Hiker Eric",
+   "Team Magma Grunt",
+   "Picnicker Diana"
+  ],
+  "moves": {
+   "16,19": {
+    "m": "face",
+    "d": "u"
+   }
   },
   "barred": [
    {
@@ -77031,72 +77092,159 @@
     ]
    }
   ],
-  "trainer_spots": [
-   "Hiker Eric",
-   "Team Magma Grunt",
-   "Picnicker Diana"
-  ],
-  "signs": [
-   [
-    "JAGGED PASS",
-    "A steep path up Mt. Chimney."
-   ]
+  "overheads": [
+   {
+    "kind": "picture",
+    "f": "em_top/24_13.png",
+    "at": [
+     0,
+     0
+    ],
+    "size": [
+     30,
+     46
+    ]
+   }
   ]
  },
  "LAVARIDGE_TOWN": {
   "art": [
    "cccccccccccccccccccc",
-   "cccccccccccccccccccc",
-   "ccrrrrrr......MMMMTT",
-   "ccr~~~~rCCCC..MMMMTT",
-   "ccr~~~~rCCCCffMMMMTT",
-   "ccr~~~~rCCCCTTMDMMTT",
-   "ccrrrrrrCDCCff.==.TT",
-   "cc=================>",
-   "cc=r=r=============>",
-   "cc=========..!......",
-   "cc=========.........",
-   "ccGGGGGG............",
-   "ccGGGGGG...KKKKKKKK.",
-   "ccGGGGGG...KKKKKKKKT",
-   "ccGGGGGG...KKKKKKKKT",
-   "ccGGGDGG!..KDKKKDKKT",
-   "cc............!...TT",
-   "ccc...............TT",
-   "ccc...............TT",
-   "cccTTTTTTTTTTTTTTTTT"
+   "cccccN....cccccccccc",
+   "cccccc.cc1cccccccccc",
+   "ccc....ccccccccccccc",
+   "ccc.NN.ccccccccCcccc",
+   "ccc....ccEcccccDcccc",
+   "cccccccccDcccc....cc",
+   "cc==N==.N.......N..>",
+   "cc=.=N.......!.....>",
+   "cc=.=..............>",
+   "cc.................>",
+   "cc.................>",
+   "cccccccc...........>",
+   "cccccccc..Ncccccccc>",
+   "cccccBcc...cAcccFccc",
+   "cc..cDc!...cDcccDccc",
+   "cc............!....c",
+   "ccc...............cc",
+   "cccc..............cc",
+   "cccccccccccccccccccc"
   ],
   "exits": {
    ">": "HOENN_ROUTE_112"
   },
   "buildings": {
-   "C": "center",
-   "M": "mart",
-   "G": "gym",
-   "K": "house"
+   "A": "herb",
+   "B": "gym",
+   "C": "mart",
+   "E": "center",
+   "F": "house"
   },
   "roofs": {
-   "K": [
-    200,
-    72,
-    72
-   ],
-   "G": [
-    208,
-    176,
-    104
-   ],
-   "C": [
-    224,
-    96,
-    88
-   ],
-   "M": [
-    72,
-    120,
-    190
-   ]
+   "_picture": {
+    "f": "em_ground/0_12.png",
+    "at": [
+     0,
+     0
+    ]
+   },
+   "_signs_in_picture": true,
+   "_buildings_in_picture": true
   },
+  "people": [
+   {
+    "text": "Spring keeper",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "We draw all the hot water we need, and the springs never run dry. Isn't that magical?"
+     ]
+    }
+   },
+   {
+    "text": "Bather",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "The hot springs are good for aching muscles, they say. And tired Pokémon too!"
+     ]
+    }
+   },
+   {
+    "text": "Relaxed bather",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Ahh... This is the life."
+     ]
+    }
+   },
+   {
+    "text": "Egg lady",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Egg lady: I have an Egg here. Please take it with you on your travels!"
+     ],
+     "requires": [
+      "party_room"
+     ],
+     "fail": [
+      "Egg lady: Oh, your party is full. Make room, and you can have my Egg!"
+     ],
+     "gift_egg": 360,
+     "flag": "got_lavaridge_egg",
+     "done": [
+      "Egg lady: Take good care of that Egg. Lots of walking helps it hatch!"
+     ]
+    }
+   },
+   {
+    "text": "Hot springs lady",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Oh, you like hot springs, do you? That's unusual for someone so young."
+     ]
+    }
+   },
+   {
+    "text": "Dancing Black Belt",
+    "action": "EVENT",
+    "_look": "em_44.png",
+    "event": {
+     "lines": [
+      "Black Belt: Hwah! Hoo! Do you understand the language of karate and dance?",
+      "Black Belt: You don't? Then take this, and feel the Swords Dance!"
+     ],
+     "gift_item": {
+      "TM101": 1
+     },
+     "flag": "got_tm_swords_dance",
+     "done": [
+      "Black Belt: Dance and karate are one! Hwah!"
+     ]
+    }
+   },
+   {
+    "text": "Sand bather",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Buried in this warm sand... so heavenly... Ouch! A Pokémon nipped me!"
+     ]
+    }
+   },
+   {
+    "text": "Flannery fan",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "I bathe in the hot springs every day. I want to be a strong, beautiful Gym Leader like Flannery!"
+     ]
+    }
+   }
+  ],
   "signs": [
    [
     "LAVARIDGE TOWN",
@@ -77110,40 +77258,240 @@
     "HERB SHOP",
     "Bitter taste, better cure!"
    ]
+  ],
+  "links": {
+   "9,2": [
+    0,
+    9,
+    7
+   ]
+  },
+  "edge_to": {
+   "19,7": [
+    0,
+    47
+   ],
+   "19,8": [
+    0,
+    48
+   ],
+   "19,9": [
+    0,
+    49
+   ],
+   "19,10": [
+    0,
+    50
+   ],
+   "19,11": [
+    0,
+    51
+   ],
+   "19,12": [
+    0,
+    52
+   ],
+   "19,13": [
+    0,
+    53
+   ]
+  },
+  "moves": {
+   "8,7": {
+    "m": "face",
+    "d": "d"
+   },
+   "5,1": {
+    "m": "face",
+    "d": "d"
+   },
+   "5,8": {
+    "m": "face",
+    "d": "d"
+   },
+   "10,13": {
+    "m": "wander",
+    "d": "ud",
+    "r": [
+     0,
+     2
+    ]
+   },
+   "4,4": {
+    "m": "look",
+    "d": "dr"
+   },
+   "5,4": {
+    "m": "look",
+    "d": "dl"
+   },
+   "4,7": {
+    "m": "face",
+    "d": "d"
+   }
+  },
+  "back_doors": [
+   [
+    9,
+    2
+   ]
+  ],
+  "overheads": [
+   {
+    "kind": "picture",
+    "f": "em_top/0_12.png",
+    "at": [
+     0,
+     0
+    ],
+    "size": [
+     20,
+     20
+    ]
+   }
   ]
  },
  "HOENN_ROUTE_118": {
   "art": [
-   "TTTTT)ccccccccTTTTTT)=ooooo==(TTTTTTTTTcccccccccccccccccT^^^Tccccccccccccccccccc",
-   "TTTTT)ccccccccTTTTTT)=ooooo==(TTTTTTTTTcccccccccccccccccT===Tccccccccccccccccccc",
-   "TTTTT)ccccccccTTTTT#c=ooooo==c_#TTTTTTTcccccccccccccccccT===Tccccccccccccccccccc",
-   "TTTTT)ccccccccTTTTT)=oooooo=#c#(TTTTTTTcccccccccTTTTTTTcT===Tccccccccccccccccccc",
-   "TTTTT#ccccccccTT#__cooooooo=ccc(TTT...TcccccccTTTTTTTTT\".===Tccccccccccccccccccc",
-   "TTT...ccccccccT#c#c#=oooooo=cccc#T.....cccccccTTTTT\"\"\"\"\".===.\"\"\"\".ccccccccccccTT",
-   "T.....ccccccc!_ccccc=ooooooo===c(Tc....ccccccc.....\"\"\"\"\"....\"\"\"\"\"\"ccccccccccccTT",
-   "<.............===cccooooooooc===c___................\"\"\"\"....\"\"\"\"\"\"...ccccccc.TTT",
-   "<............====c=ooooooooo========..._________________!..._________c_______TTT",
-   "<...f)f.f....=====oooooooooo=========...........\"\"\"\"\"\".........\"\"\"\"\"\"\"\"\"\"\"....TT",
-   "<..f.).f.....=====oooooooooooo=======.......X...\"\"\"\"\"\"\"\".........\"\"\"\"\"\"\"\"......>",
-   ".TTTT)f.f)..===X==ooooooooooooo=====c#c..........\"\"\"\"\"\"\"\"........\"\"\"\"\"\"\"\"......>",
-   "TTTTT).TT).======oooooooooooooo====X=c_____...#c#.TT\"\"\"\"\"...TTTT..\"\"\"\"\"\"....TTTT",
-   "TTTTT)TTT)======oooooooooooooooo==============ccc(TTTT\"\"\"TTTTTTTT..\"\"\"\"\"TTTTTTTT",
-   "TTTT_cTT#c======ooooooooooooooooo============cccc(TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTT____c=c===oooooooooooooooooooooooo==========c(TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTooooo==ooooooooooooooooooooooooooooooooooo===(TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTToooooooooooooooooooooooooooooooooooooooooooooc______#TTTTTTTTTTTTTTTTTTTTTTT",
-   "ooooooooooooooooooooooooooooooooooooooooooooooooooooooo=c#TTTTTTTTTTTTTTTTTTTTTT",
-   "oooooooooooooooooooooooooooooooooooooooooooooooooooooooo=(TTTTTTTTTTTTTTTTTTTTTT"
+   "ccccc)cccccccccccccc)cccccccc(ccccccccccccccccccccccccccc^^^cccccccccccccccccccc",
+   "ccccc)cccccccccccccc)cccccccc(ccccccccccccccccccccccccccc...cccccccccccccccccccc",
+   "ccccc)cccccccccccccccccccccccc_cccccccccccccccccccccccccc...cccccccccccccccccccc",
+   "ccccc)ccccccccccccc)ccccccccccc(ccccccccccccccccccccccccc...cccccccccccccccccccc",
+   "ccccc)ccccccccccc__cccccccccccc(ccccccccccccccccccccccc\"....cccccccccccccccccccc",
+   "ccc...ccccccccccccccccccoocccccccccccc.cccccccccccc\"\"\"\"\".....\"\"\"\".cccccccccccccc",
+   "c.....ccccccc!_cccccccoooooo===c(cc....ccccccc.....\"\"\"\"\"....\"\"\"\"\"\"cccccccccccccc",
+   "<..............==cccooooooooc===c__c........N.......\"\"\"\"....\"\"\"\"\"\"....cccccc..cc",
+   "<.............===cooooooooooN====NN(c.2_________________!..._________________ccc",
+   "<....).......=====oooooooooo=======(cc..........\"\"\"\"\"\".........\"\"\"\"\"\"\"\"\"\"\"....cc",
+   "<....)......N=====ooooooooooooo====ccc......X...\"\"\"\"\"\"\"\".........\"\"\"\"\"\"\"\"......>",
+   "<....)...)..=====Xooooooooooooo=====ccc..........\"\"\"\"\"\"\"\"........\"\"\"\"\"\"\"\"......>",
+   ".cccc)...)..====ooooooooooooooo====X=c_____...ccc.\"\"\"\"\"\"\".........\"\"\"\"\"\".......>",
+   "ccccc).cc).=====oooooooooooooooc==============ccc(cc\"\"\"\"\"...cccc...\"\"\"\"\"....cccc",
+   "cccc_ccccc==c===oooooooooooooooooo===========cccc(cccc\"\"\"cccccccc...\"\"\"\"cccccccc",
+   "cccc____ccc==oooooooooooooooooooooooooo=========c(cccccccccccccccccccccccccccccc",
+   "cccc~ccccccooooooooooccoooccoooooooooooooooooocco(cccccccccccccccccccccccccccccc",
+   "cccc~ccccccccooooooccccoccccccooccooccooooccccccoc______cccccccccccccccccccccccc",
+   "~~~~~cccccccccccccccccccccccccccccccccccccccccoooooooooocccccccccccccccccccccccc",
+   "ccccccccccccccccccccccccccccccccccccccccccooooooooooooooo(cccccccccccccccccccccc"
   ],
   "exits": {
-   "<": "MAUVILLE_CITY",
    "^": "HOENN_ROUTE_119",
+   "<": "MAUVILLE_CITY",
    ">": "HOENN_ROUTE_123"
   },
-  "trainer_spots": [
-   "Bird Keeper Perry",
-   "Fisherman Barny",
-   "Guitarist Dalton"
+  "buildings": {},
+  "roofs": {
+   "_picture": {
+    "f": "em_ground/0_33.png",
+    "at": [
+     0,
+     0
+    ]
+   },
+   "_signs_in_picture": true,
+   "_buildings_in_picture": true
+  },
+  "people": [
+   "MEET STEVEN",
+   {
+    "text": "Good Rod fisherman",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Fisherman: A Good Rod is really good! You agree? Then take this one!"
+     ],
+     "gift_item": {
+      "GOOD_ROD": 1
+     },
+     "flag": "got_good_rod_hoenn",
+     "done": [
+      "Fisherman: Try catching all sorts of Pokémon with your Good Rod."
+     ]
+    }
+   },
+   {
+    "text": "Gabby",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Gabby: It's you! Let's see how strong you've gotten. Ty, roll the camera!"
+     ],
+     "flag": "gabby_ty_118",
+     "battle": {
+      "name": "Interviewers Gabby & Ty",
+      "class": "PKMN_TRAINER",
+      "sprite": "interviewers.png",
+      "team": [
+       82,
+       294
+      ],
+      "levels": [
+       29,
+       29
+      ],
+      "rewards": {
+       "balls": 2
+      },
+      "dialogue": {
+       "player_won": [
+        "Gabby: What a battle! Ty, did you get all that?",
+        "Ty: Yep, every bit of it!",
+        "Gabby: Now, a few words for our viewers... Still on top, I see!"
+       ]
+      }
+     },
+     "done": [
+      "Gabby: That interview's going to be on the news! Keep it up!",
+      "Ty: Got me some prime footage today."
+     ]
+    }
+   },
+   {
+    "text": "Ty",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Gabby: It's you! Let's see how strong you've gotten. Ty, roll the camera!"
+     ],
+     "flag": "gabby_ty_118",
+     "battle": {
+      "name": "Interviewers Gabby & Ty",
+      "class": "PKMN_TRAINER",
+      "sprite": "interviewers.png",
+      "team": [
+       82,
+       294
+      ],
+      "levels": [
+       29,
+       29
+      ],
+      "rewards": {
+       "balls": 2
+      },
+      "dialogue": {
+       "player_won": [
+        "Gabby: What a battle! Ty, did you get all that?",
+        "Ty: Yep, every bit of it!",
+        "Gabby: Now, a few words for our viewers... Still on top, I see!"
+       ]
+      }
+     },
+     "done": [
+      "Gabby: That interview's going to be on the news! Keep it up!",
+      "Ty: Got me some prime footage today."
+     ]
+    }
+   },
+   {
+    "text": "Surf tip",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Even without a boat you can cross rivers and the sea, if your Pokémon knows Surf."
+     ]
+    }
+   }
   ],
   "signs": [
    [
@@ -77154,6 +77502,138 @@
     "ROUTE 118",
     "North: Route 119."
    ]
+  ],
+  "trainer_spots": [
+   "Bird Keeper Perry",
+   "Fisherman Barny",
+   "Guitarist Dalton"
+  ],
+  "edge_to": {
+   "57,0": [
+    17,
+    139
+   ],
+   "58,0": [
+    18,
+    139
+   ],
+   "59,0": [
+    19,
+    139
+   ],
+   "0,7": [
+    39,
+    7
+   ],
+   "0,8": [
+    39,
+    8
+   ],
+   "0,9": [
+    39,
+    9
+   ],
+   "0,10": [
+    39,
+    10
+   ],
+   "0,11": [
+    39,
+    11
+   ],
+   "79,10": [
+    0,
+    10
+   ],
+   "79,11": [
+    0,
+    11
+   ],
+   "79,12": [
+    0,
+    12
+   ]
+  },
+  "moves": {
+   "12,10": {
+    "m": "wander",
+    "d": "udlr",
+    "r": [
+     1,
+     1
+    ]
+   },
+   "33,8": {
+    "m": "face",
+    "d": "d"
+   },
+   "34,8": {
+    "m": "face",
+    "d": "d"
+   },
+   "28,8": {
+    "m": "face",
+    "d": "l"
+   },
+   "44,7": {
+    "m": "face",
+    "d": "d"
+   },
+   "17,11": {
+    "m": "look",
+    "d": "ul",
+    "s": 3
+   }
+  },
+  "scenes": [
+   {
+    "who": "MEET STEVEN",
+    "trigger": {
+     "zone": [
+      36,
+      5,
+      50,
+      12
+     ]
+    },
+    "condition": [
+     "has_balance_badge",
+     "not:got_mega_bracelet"
+    ],
+    "approach": true,
+    "then": "talk"
+   }
+  ],
+  "berry_soil": [
+   [
+    35,
+    5,
+    "SITRUS_BERRY"
+   ],
+   [
+    36,
+    5,
+    "CHERI_BERRY"
+   ],
+   [
+    37,
+    5,
+    "SITRUS_BERRY"
+   ]
+  ],
+  "overheads": [
+   {
+    "kind": "picture",
+    "f": "em_top/0_33.png",
+    "at": [
+     0,
+     0
+    ],
+    "size": [
+     80,
+     20
+    ]
+   }
   ]
  },
  "FORTREE_CITY": {
@@ -79360,95 +79840,263 @@
  },
  "HOENN_ROUTE_105": {
   "art": [
-   "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^cTTTTTTTT",
-   "oooooooqqoooooooooooooooooqqooocTTTTTTTT",
-   "ooooooooooooooooooooooooooooooocTTTTTTTT",
-   "oooooooqqooooooooooooooooooqqoocTTTTTTTT",
-   "oooooqqoooooooooooooooooooooooocccTTTTTT",
-   "ooooooooooooqqooooooooooooqqooooocTTTTTT",
-   "oooooqqoooooooooooooooooooooooooocccTTTT",
-   "ooooooooooooooooooooooooooooqqooooocTTTT",
-   "ooooooqqooooooqqoooooooooooooooccooccccc",
-   "oooooooooooooooooooooooooooooocccooooooo",
-   "oooooqqqqooooooooooooooooooooocccooooooo",
-   "oooooooooqqooqqooooooooooooqqocccooooooo",
-   "ooooqqoooooqqooqqoooXooooooooocccooooooo",
-   "oooooooooooooooooooooooooooooocccooooooo",
-   "ooqqooooooooooooqqooooooooqqoccccooooooo",
-   "ooooooooooooooooooooooooooooocccoooooooo",
-   "qqoooqqoooooqqoqqoooooooooooocccoccooooo",
-   "ooooooooocoooooooqqooooooooooccccccooooo",
-   "oqqooooocccooooooooooooooooooccocccooooo",
-   "ooooooocccccooooqqoooooooooooccooooooooo",
-   "qqoqqooccoccooqqooqqoooooooooccooooooooo",
-   "ooooooo=====oooooooooooooooqqooooooooooo",
-   "qqooooo=====oooooqqooooooooooooqqooooooo",
-   "oooooooooooooooooooooooooooooooooccooooo",
-   "oqqooqqoooooqqoooqqooooooooooqqocccooooo",
-   "oooooooooooooooooooooooooooooooocccooooo",
-   "qqooooooooooooooqqoooooooooooooocccooooo",
-   "oooooooooooooooooooooooooooooooocccooooo",
-   "oqqooooooooooooqqooooooooooooqqccccooooo",
-   "oooooooooooooooooooooooooooooooccccooooo",
-   "ooqqooooooooooqqoooooooooooooooccccooooo",
-   "ooooooooooooooooqqoooooooooooooccccccooo",
-   "oooqqooooooooqqooooooooooooooooccccooooo",
-   "oooooooooooqqooooooooooooooqqoocccccoooo",
-   "ooqqooooooooooooooooooooooooooocccccoooo",
-   "ooooooooooqqoooooqqoooooooooooocccccoooo",
-   "oooqqoooooooooooooooooooooooooocccccoooo",
-   "oooooooooooqqoooooooooooooooooccccccoooo",
-   "ooqqooooooooooooooooooooooooooccccccoooo",
-   "ooooooooooqqoooooooooooooooocccccccooooo",
-   "oqqoooooooooooqqooqqooXooooooocccccooooo",
-   "ooooooooooqqoooooooooooooooooocccccooooo",
-   "ooqqooooooooqqTToooooooooooooooccccooooo",
-   "ooooooooooooooTToooooooooooooooccccooooo",
-   "oqqooooooooqqoTTooooooooooooooocccoooooo",
-   "ooooooooooooooTT==ooooooooooooocccoqqooo",
-   "ooqqoooooooo==TT==ooooooooooocccccoooooo",
-   "oooooqqooooo==TT==oooooooooooooccooooooo",
-   "oqqooooooooo=TTTT=oooooooooooooccooooooo",
-   "oooooooooooo=TTTT=oooooooooooooccooooooo",
-   "oooqqoooooo==TTTT=oooooooooooooooooooooo",
-   "ooooTTooooo==TTTT=ooooooooooooooqqoooooo",
-   "oqqoTTooooo==TTT==ooooooooooooooooqqoooo",
-   "ooooTTooooo==TT===ooooooooooooqqoooooooo",
-   "oqqo=T==oooo==T===ooooooooooooooccqqoooo",
-   "oooo=TT=oooo==T===ooooooooooooocccoooooo",
-   "qqoo=TT=oooo======oooooooooooooooooooooo",
-   "oooo=TT=ooooo=====oooooooooooqqoooqqooqq",
-   "oqqo=TT=ooooo====ooooooooooooooooooooooo",
-   "oooo=T=oooooo====oooooooooooooooccoooooo",
-   "qqooooooooooo===oooooooooooooooocooooooo",
-   "oooooooooooooo==ooooooooooooocccccoooooo",
-   "oqqooooooooooooooqqoooooooooooocccoooooo",
-   "oooqqoooooqqooooooooooooooooooccccoooooo",
-   "ooooooqqooooqqooqqooooooooooooccccoooooo",
-   "ooooqqooqqooooqqooooooooooooooccccoooooo",
-   "ooooooooooooqqooooooooooXoooooccccoooooo",
-   "ooooooqqooooooo=ooooooooooooooccccoooooo",
-   "oooooooooooqqoo=ooooooooooooooccccoooooo",
-   "oooooooooqqooooooooooooooooooocccooooooo",
-   "oooooooooooooooooooooooooooooocccooooooo",
-   "ooooooTTqqoo==ooooooooooooooooccoooooooo",
-   "ooooooTToooo==ooooooooooooooooccoooooooo",
-   "ooooooTT==oo==ooooooooooooooooccoooooooo",
-   "ooooooTTT=ooooooooooooooooooooooqqoooooo",
-   "ooooooTTT=oooooooooooooooooooooooooooooo",
-   "ooooooTTT=oooooooooooooooooooooqqooooooo",
-   "oooooo=T=ooooooooooooooooooooqqooooooooo",
-   "ooooooo==ooooooooooooooooooooooooooooooo",
-   "vvvvvvvqqvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv"
+   "ccccccccc^^^^^^^^^^^^^^^^^cccccccccccccc",
+   "cccccccccooooooooooooooooocccccccccccccc",
+   "cccccccccooooooooooooooooooccccccccccccc",
+   "cccccccccooooooooooooooooooccccccccccccc",
+   "cccccccoooooccoooooooooooocccccccccccccc",
+   "cccccccoooooccoooooooooooocccccccccccccc",
+   "cccccccooooooooooooooooooooocccccccccccc",
+   "ccccccccooooooccooooooooooooccc~~ccccccc",
+   "ccccccccooooooccoooooooooooooo~ccccccccc",
+   "cccccccccooooooooooooooooooooocccccccccc",
+   "cccccccccccooccooooooooooooccocccccccccc",
+   "ccccccoooccccccccooooooooooccocccccccccc",
+   "ccccccoooooccooccoooXooooooooocccccccccc",
+   "ccccooooooooooooccoooooooocco~cccccccccc",
+   "ccccooooooooooooccooooooooccoccccccccccc",
+   "ccoooccoooooccoccoooooooooooocccc~~ccccc",
+   "ccoooccoooooccoccccooooooooooccc~ccccccc",
+   "cccooooo~c~ooooooccooooooooooccccccccccc",
+   "cccoooo~ccc~ooooccoooooooooooccccccccccc",
+   "ccoccoocccccooccccccoooooooooccccccccccc",
+   "ccoccoocccccooccooccoooooooccccccccccccc",
+   "ccooooo==NN=oooooccooooooooccooccccccccc",
+   "ccoooooo===ooooooccoooooooooooocc~~ccccc",
+   "cccooccoooooccoooccoooooooooocco~ccccccc",
+   "cccooccoooooccoooccooooooooooccocccccccc",
+   "ccooooooooooooooccoooooooooooooocccccccc",
+   "ccooooooooooooooccoooooooooooooocccccccc",
+   "cccooooooooooooccoooooooooooocc~cccccccc",
+   "cccooooooooooooccooooooooooooccccccccccc",
+   "ccccooooooooooccoooooooooooooooccccccccc",
+   "ccccooooooooooccccoooooooooooooccccccccc",
+   "cccccooooooooccoccoooooooooooooccccccccc",
+   "cccccooooooccccooooooooooooccoocccc~cccc",
+   "ccccoooooooccooooooooooooooccooccccccccc",
+   "ccccooooooccoooooccooooooooooooccccccccc",
+   "cccccoooooccoooooccooooooooooooccccccccc",
+   "cccccooooooccooooooooooooooooo~ccccccccc",
+   "ccccoooooooccooooooooooooooooocccccccccc",
+   "ccccooooooccoooooooooooooooocccccccccccc",
+   "cccoooooooccooccooccoooooooocccccccccccc",
+   "cccoooooooccooccooccooXooooooocccccccccc",
+   "ccccooooooccccoooooooooooooooocccccccccc",
+   "ccccoooooooocc..oooooooooooooooccccccccc",
+   "cccooooooooccoccoooooooooooooooccccccccc",
+   "cccooooooooccoccoooooooooooooooccccccccc",
+   "ccccoooooooooocc==oooooooooooccccccccccc",
+   "ccccoccooooo===c==oooooooooooccccccccccc",
+   "cccooccooooo==cc==oooooooooooooccccccccc",
+   "cccooooooooo==cc==oooooooooooooccccccccc",
+   "cccccooooooo=cccc=oooooooooooooccccccccc",
+   "cccccoooooo==cccc=oooooooooooooocccccccc",
+   "ccco..ooooo==cccc=oooooooooooooocccccccc",
+   "cccoccooooo==ccc==oooooooooooocccccccccc",
+   "cccoccoooooo=cc===oooooooooooocc~~cccccc",
+   "ccco=c==oooo==c===ooooooooooooo~cccccccc",
+   "ccoo=c==oooo==c===oooooooooooooccccccccc",
+   "ccoo==c=ooooo=====oooooooooooccooocccccc",
+   "ccco=cc=ooooo====ooooooooooooccooocccccc",
+   "ccco=ccoooooo====ooooooooooooooocccccccc",
+   "ccoooc=oooooo===oooooooooooooooocccccccc",
+   "ccoooooooooooo==ooooooooooooocc~c~cccccc",
+   "cccooooooooooo==occooooooooooccccccccccc",
+   "cccccoooooccoooooccooooooooooo~ccccccccc",
+   "cccccoccooccccooccoooooooooooocccccccccc",
+   "ccccccccccccccccccoooooooooooocccccccccc",
+   "ccccccccccccccccoooooooooooooocccccccccc",
+   "ccccccccccccccooooooooooXooooocccccccccc",
+   "cccccccccccccoo=oooooooooooooocccccccccc",
+   "cccccccccccccoo=oooooooooooooocccccccccc",
+   "cccccccccccooooooooooooooooooocccccccccc",
+   "ccccccccccoooooooooooooooooooocccccccccc",
+   "ccccccccccoo==oooooooooooooooocccccccccc",
+   "ccccccccoooo==oooooooooooooooocccccccccc",
+   "cccccccc==ooo=oooooooooooooooocccccccccc",
+   "cccccccc==oooooooooooooooooooooocccccccc",
+   "ccccccccc=oooooooooooooooooooooccccccccc",
+   "cccccccccooooooooooooooooooooccccccccccc",
+   "cccccccc=ooooooooooooooooooooccccccccccc",
+   "cccccccccoooccoooooooooooooooccccccccccc",
+   "cccccccccovvccvvvvvvvvvvvvvvvccccccccccc"
   ],
   "exits": {
    "^": "HOENN_ROUTE_104",
    "v": "HOENN_ROUTE_106"
   },
+  "buildings": {},
+  "roofs": {
+   "_picture": {
+    "f": "em_ground/0_20.png",
+    "at": [
+     0,
+     0
+    ]
+   },
+   "_signs_in_picture": true,
+   "_buildings_in_picture": true
+  },
+  "people": [
+   "ISLAND CAVE",
+   "AWAKEN REGIGIGAS"
+  ],
   "trainer_spots": [
    "Swimmer Luis",
    "Swimmer Dominik",
    "Swimmer Beverly"
+  ],
+  "edge_to": {
+   "9,0": [
+    9,
+    79
+   ],
+   "10,0": [
+    10,
+    79
+   ],
+   "11,0": [
+    11,
+    79
+   ],
+   "12,0": [
+    12,
+    79
+   ],
+   "13,0": [
+    13,
+    79
+   ],
+   "14,0": [
+    14,
+    79
+   ],
+   "15,0": [
+    15,
+    79
+   ],
+   "16,0": [
+    16,
+    79
+   ],
+   "17,0": [
+    17,
+    79
+   ],
+   "18,0": [
+    18,
+    79
+   ],
+   "19,0": [
+    19,
+    79
+   ],
+   "20,0": [
+    20,
+    79
+   ],
+   "21,0": [
+    21,
+    79
+   ],
+   "22,0": [
+    22,
+    79
+   ],
+   "23,0": [
+    23,
+    79
+   ],
+   "24,0": [
+    24,
+    79
+   ],
+   "25,0": [
+    25,
+    79
+   ],
+   "10,79": [
+    10,
+    0
+   ],
+   "11,79": [
+    11,
+    0
+   ],
+   "14,79": [
+    14,
+    0
+   ],
+   "15,79": [
+    15,
+    0
+   ],
+   "16,79": [
+    16,
+    0
+   ],
+   "17,79": [
+    17,
+    0
+   ],
+   "18,79": [
+    18,
+    0
+   ],
+   "19,79": [
+    19,
+    0
+   ],
+   "20,79": [
+    20,
+    0
+   ],
+   "21,79": [
+    21,
+    0
+   ],
+   "22,79": [
+    22,
+    0
+   ],
+   "23,79": [
+    23,
+    0
+   ],
+   "24,79": [
+    24,
+    0
+   ],
+   "25,79": [
+    25,
+    0
+   ],
+   "26,79": [
+    26,
+    0
+   ],
+   "27,79": [
+    27,
+    0
+   ],
+   "28,79": [
+    28,
+    0
+   ]
+  },
+  "overheads": [
+   {
+    "kind": "picture",
+    "f": "em_top/0_20.png",
+    "at": [
+     0,
+     0
+    ],
+    "size": [
+     40,
+     80
+    ]
+   }
   ]
  },
  "PACIFIDLOG_TOWN": {

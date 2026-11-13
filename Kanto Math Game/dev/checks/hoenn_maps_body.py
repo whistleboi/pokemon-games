@@ -79,9 +79,10 @@ for key in BUILT:
         check(not _bad and all(f["art"][int(k.split(",")[1])][int(k.split(",")[0])] == "1" for f in m["floors"] for k in (f.get("links") or {})),
               f"{key}: {len(m['floors'])} floors joined by Emerald's own ladders and passages {_bad[:3]}")
     elif not m.get("parts"):
-        walk = set('.="NX!ow$[]{}%_()D<>^vnwu20b:|;,')
+        walk = set(".=\"NX!ow$[]{}%_()D<>^vnwu20b:|;,'")   # (' round stones: crossed on the Bicycle)
         starts = [(x, y) for y, r in enumerate(grid) for x, c in enumerate(r) if c in "<>^vnwu"]
-        seen, todo = {starts[0]} if starts else set(), deque(starts[:1])
+        _back = [(x, y - 1) for x, y in map(tuple, m.get("back_doors", []))]   # (a yard reached by a back door: Lavaridge's hot springs)
+        seen, todo = set(starts[:1] + _back), deque(starts[:1] + _back)
         while todo:
             x, y = todo.popleft()
             for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
@@ -686,6 +687,91 @@ check(type(g.current_state).__name__ == "PokeMartState" and getattr(g.current_st
 g.change_state(st)
 if _t100 is None:
     story.inventory.pop("TM100", None)
+
+# ---- batch 8: Jagged Pass, Lavaridge Town, Route 118, Route 105 (ORAS, parts 9-10)
+for _k in ("got_tm_swords_dance", "got_lavaridge_egg", "got_charcoal", "got_good_rod_hoenn"):
+    story.story_flags.pop(_k, None)
+_inv8 = dict(story.inventory)
+_team8 = list(story.player_team)
+st = open_map("LAVARIDGE_TOWN", "HOENN_ROUTE_112")
+st.scenes.entered = True
+
+
+def _talk8(st, at, face):
+    st.player, st.facing, st.anim = at, face, 0
+    st.handle_events([pygame.event.Event(pygame.KEYDOWN, key=pygame.K_RETURN, mod=0, unicode="", scancode=0)])
+    return _play(st)
+
+
+_talk8(st, (16, 8), (0, -1))
+check(story.inventory.get("TM101", 0) > 0, "Lavaridge: the dancing Black Belt gives TM101 Swords Dance (ORAS's TM75)")
+story.player_team = _team8[:5]
+_n8 = len(story.player_team)
+_talk8(st, (4, 8), (0, -1))
+check(len(story.player_team) == _n8 + 1 and getattr(story.player_team[-1], "is_egg", False), "Lavaridge: the old woman by the sand baths gives you an Egg (with room in your party)")
+story.player_team = _team8
+_herb, _ctr = st._door_options("herb"), st._door_options("center")
+check({"Herb Shop", "Old man's Charcoal"} <= {o.get("text") for o in _herb} and {"Moomoo Milk", "Hot Springs"} <= {o.get("text") for o in _ctr},
+      f"Lavaridge: the Herb Shop (herbs, the old man's Charcoal); the Center's Moomoo Milk and hot springs")
+st._get_callback_for_option(next(o for o in _ctr if o.get("text") == "Hot Springs"))(); tap(st)
+_at_springs = st.player
+st.player, st.anim = (9, 1), 0
+st.step(0, 1); frames(20)
+check(_at_springs == (9, 1) and st.player == (9, 7), f"Lavaridge: the hot springs out back of the Center, and its back door out front again ({_at_springs}, {st.player})")
+st = open_map("HOENN_ROUTE_118", "MAUVILLE_CITY")
+_fish = next(m for m in st.run.floor.movers if m.kind == "figure" and isinstance(m.payload, dict) and m.payload.get("text") == "Good Rod fisherman")
+st._use_figure(_fish); tap(st)
+check(story.inventory.get("GOOD_ROD", 0) > 0, "Route 118: the fisherman on the east bank gives the Good Rod")
+check("MEET STEVEN" in _tm["HOENN_ROUTE_118"].get("people", []) and any(s.get("who") == "MEET STEVEN" for s in _tm["HOENN_ROUTE_118"].get("scenes", [])),
+      "Route 118: Steven stands where Emerald has him and walks up to take you to Southern Island")
+check({"ISLAND CAVE", "AWAKEN REGIGIGAS"} <= set(_tm["HOENN_ROUTE_105"].get("people", [])), "Route 105: Island Cave's legends at its door")
+_jp = _tm["HOENN_JAGGED_PASS"]
+check(any(b.get("item") == "MAGMA_EMBLEM" for b in _jp.get("barred", [])) and "HOENN_MAGMA_HIDEOUT" in _jp["exits"].values(),
+      "Jagged Pass: the Magma Hideout's hidden door is plain rock until the Magma Emblem")
+story.inventory.clear(); story.inventory.update(_inv8)
+
+# Gabby and Ty's battles (Routes 111 and 118: the pair as one trainer, Emerald's Interviewer picture); the Jagged Pass's
+# round stones (in the way on foot, hopped on the Bicycle) and its TMs (TM102 Flame Charge, TM103 Rock Polish)
+for _k in ("gabby_ty_111", "gabby_ty_118", "got_tm102_jagged"):
+    story.story_flags.pop(_k, None)
+_rep8 = getattr(story, "repel_routes", 0)
+story.repel_routes = 9
+for _key, _came, _flag in (("HOENN_ROUTE_111", "MAUVILLE_CITY", "gabby_ty_111"), ("HOENN_ROUTE_118", "MAUVILLE_CITY", "gabby_ty_118")):
+    st = open_map(_key, _came)
+    _gb = next(m for m in st.run.floor.movers if m.kind == "figure" and isinstance(m.payload, dict) and m.payload.get("text") == "Gabby")
+    st._use_figure(_gb)
+    frames(5)
+    _b = (_gb.payload.get("event") or {}).get("battle") or {}
+    check("Trainer" in type(g.current_state).__name__ and _b.get("sprite") == "interviewers.png" and len(_b.get("team", [])) == 2,
+          f"{_key}: Gabby and Ty challenge you ({_b.get('team')} Lv. {_b.get('levels')}), then interview you")
+_bk8 = story.inventory.pop("BICYCLE", None)
+st = open_map("HOENN_JAGGED_PASS", "HOENN_MT_CHIMNEY")
+st.run.player, st.anim = (21, 9), 0
+st.dialogue_box.visible = False
+st.step(0, 1)
+_foot = (tuple(st.run.player), " ".join(st.dialogue_box.text_lines))
+story.inventory["BICYCLE"] = 1
+st = open_map("HOENN_JAGGED_PASS", "HOENN_MT_CHIMNEY")
+st.run.player, st.anim = (21, 9), 0
+st.dialogue_box.visible = False
+st.step(0, 1)
+_hop = st.hop
+frames(20); st.anim = 0
+st.step(0, 1); frames(20)
+_pc8 = g.player_character
+g.player_character = "may"
+st.run.player, st.anim = (21, 10), 0
+_wheelie = st._on_stones() and st._acro_sheet() == "em_acro_may.png" and st._player_img() is not None
+g.player_character = _pc8
+check(_foot[0] == (21, 9) and "Bicycle" in _foot[1] and _hop and _wheelie,
+      f"Jagged Pass: round stones stop you on foot ({_foot}); on the Bicycle you ride onto them, a wheelie on each and a hop between (Emerald's Acro Bike frames)")
+_tmf = next(m for m in st.run.floor.movers if m.kind == "figure" and isinstance(m.payload, dict) and m.payload.get("text") == "TM102 FLAME CHARGE")
+st._use_figure(_tmf); tap(st)
+check(story.inventory.get("TM102", 0) > 0 and "TM103 ROCK POLISH" in _tm["HOENN_JAGGED_PASS"].get("people", []),
+      "Jagged Pass: TM102 Flame Charge across the stones, TM103 Rock Polish on the west hill (story-gift TMs)")
+if _bk8 is None:
+    story.inventory.pop("BICYCLE", None)
+story.repel_routes = _rep8
 
 # ---- Berries (11-12): soft soil from Emerald's own Berry trees; pick, plant, water, grow on the clock
 from src.world import berries as _berries

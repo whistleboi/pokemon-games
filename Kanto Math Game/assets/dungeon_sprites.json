@@ -1305,6 +1305,54 @@
     },
     "FALLARBOR_TOWN:I'll walk, thanks": {
       "sheet": "@rival"
+    },
+    "HOENN_JAGGED_PASS:TM103 ROCK POLISH": {
+      "item": "TM103"
+    },
+    "HOENN_JAGGED_PASS:TM102 FLAME CHARGE": {
+      "item": "TM102"
+    },
+    "HOENN_JAGGED_PASS:Lookout grunt": {
+      "sheet": "@grunt"
+    },
+    "LAVARIDGE_TOWN:Spring keeper": {
+      "sheet": "em_21.png"
+    },
+    "LAVARIDGE_TOWN:Bather": {
+      "sheet": "em_139.png"
+    },
+    "LAVARIDGE_TOWN:Relaxed bather": {
+      "sheet": "em_139.png"
+    },
+    "LAVARIDGE_TOWN:Egg lady": {
+      "sheet": "em_22.png"
+    },
+    "LAVARIDGE_TOWN:Hot springs lady": {
+      "sheet": "em_22.png"
+    },
+    "LAVARIDGE_TOWN:Dancing Black Belt": {
+      "sheet": "em_44.png"
+    },
+    "LAVARIDGE_TOWN:Sand bather": {
+      "sheet": "em_29.png"
+    },
+    "LAVARIDGE_TOWN:Flannery fan": {
+      "sheet": "em_6.png"
+    },
+    "HOENN_ROUTE_118:MEET STEVEN": {
+      "sheet": "em_134.png"
+    },
+    "HOENN_ROUTE_118:Good Rod fisherman": {
+      "sheet": "em_50.png"
+    },
+    "HOENN_ROUTE_118:Gabby": {
+      "sheet": "em_68.png"
+    },
+    "HOENN_ROUTE_118:Ty": {
+      "sheet": "em_110.png"
+    },
+    "HOENN_ROUTE_118:Surf tip": {
+      "sheet": "em_10.png"
     }
   },
   "townsperson": "NPC 17.png",

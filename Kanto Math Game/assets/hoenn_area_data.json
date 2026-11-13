@@ -1113,11 +1113,14 @@
         { "text": "Jagged Pass", "target_area": "HOENN_JAGGED_PASS" },
         { "text": "Mt. Chimney", "target_area": "HOENN_MT_CHIMNEY" }
       ],
-      "explore_options": [{"text": "A Glinting Stone: Houndoominite", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_houndoominite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the HOUNDOOMINITE!"], "gift_item": {"HOUNDOOMINITE": 1}, "flag": "got_houndoominite"}}, 
+      "explore_options": [
+        {"text": "Herb Shop", "door": "herb", "action": "SHOP", "stock": ["ENERGY_POWDER", "ENERGY_ROOT", "HEAL_POWDER", "REVIVAL_HERB"]},
+        {"text": "Old man's Charcoal", "door": "herb", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_charcoal", "event": {"lines": ["Old man: You're a Trainer, eh? Take this Charcoal. Give it to a Pokémon, and its Fire moves burn hotter!"], "gift_item": {"CHARCOAL": 1}, "flag": "got_charcoal"}},
+        {"text": "Moomoo Milk", "door": "center", "action": "SHOP", "stock": ["MOOMOO_MILK"]},{"text": "A Glinting Stone: Houndoominite", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_houndoominite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the HOUNDOOMINITE!"], "gift_item": {"HOUNDOOMINITE": 1}, "flag": "got_houndoominite"}}, 
         { "text": "Heal", "action": "HEAL" },
         { "text": "Shop", "action": "SHOP" },
         { "text": "Gym", "action": "GYM" },
-        { "text": "Hot Springs", "door": "center", "action": "HEAL" }
+        {"text": "Hot Springs", "door": "center", "action": "EVENT", "event": {"lines": ["You went out back to the hot springs. Ahh... Your Pokémon are fully refreshed!"], "heal": true, "place": [9, 1]}}
       ],
       "next_area": "HOENN_JAGGED_PASS",
       "on_enter_event": null
@@ -2849,7 +2852,9 @@
           "rewards": { "balls": 3 }
         }
       ],
-      "route_menu": [{"text": "TYRANITARITE", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_tyranitarite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the TYRANITARITE!"], "gift_item": {"TYRANITARITE": 1}, "flag": "got_tyranitarite"}}, 
+      "route_menu": [
+        {"text": "TM102 FLAME CHARGE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm102_jagged", "event": {"lines": ["There's a TM lying among the rocks!"], "gift_item": {"TM102": 1}, "flag": "got_tm102_jagged"}},
+        {"text": "TM103 ROCK POLISH", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm103_jagged", "event": {"lines": ["There's a TM lying in the grass!"], "gift_item": {"TM103": 1}, "flag": "got_tm103_jagged"}},{"text": "TYRANITARITE", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_tyranitarite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the TYRANITARITE!"], "gift_item": {"TYRANITARITE": 1}, "flag": "got_tyranitarite"}}, 
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },

@@ -27,6 +27,11 @@ MEDICINE = {
     "BURN_HEAL": {"cure": ["burn"], "price": 200, "text": "Heals a burn."},
     "ICE_HEAL": {"cure": ["freeze"], "price": 200, "text": "Thaws out a frozen Pokemon."},
     "FULL_HEAL": {"cure": "all", "price": 400, "text": "Cures any status condition."},
+    # Lavaridge's Herb Shop (ORAS): cheaper than the Mart's, and very bitter
+    "ENERGY_POWDER": {"heal": 50, "price": 500, "text": "A very bitter powder. Restores 50 HP."},
+    "ENERGY_ROOT": {"heal": 200, "price": 1200, "text": "A very bitter root. Restores 200 HP."},
+    "HEAL_POWDER": {"cure": "all", "price": 300, "text": "A very bitter powder. Cures any status condition."},
+    "REVIVAL_HERB": {"revive": 1.0, "price": 2800, "text": "A very bitter herb. Revives a fainted Pokemon with all its HP."},
     "LAVA_COOKIE": {"cure": "all", "price": 200, "text": "Mt. Chimney's own treat, baked with volcanic ash. Cures any status condition."},
     "REVIVE": {"revive": 0.5, "price": 2000, "text": "Revives a fainted Pokemon with half its HP."},
     "MAX_REVIVE": {"revive": 1.0, "price": 4000, "text": "Revives a fainted Pokemon with all its HP."},
@@ -86,9 +91,10 @@ DEPARTMENT = ["X_ATTACK", "X_DEFENSE", "X_SP_ATK", "X_SP_DEF", "X_SPEED", "X_ACC
 
 
 # Held items that power up one type's moves (Jordan, 11-06: Cherrygrove's fisherman's Mystic Water)
-HELD_BOOSTS = {"MYSTIC_WATER": "WATER"}
+HELD_BOOSTS = {"MYSTIC_WATER": "WATER", "CHARCOAL": "FIRE"}  # (Charcoal: Lavaridge's Herb Shop, 11-12)
 HELD_BOOST = 1.2
-HELD = {"MYSTIC_WATER": {"price": 1000, "text": "Give it to a Pokemon to hold: its Water-type moves hit harder."}}
+HELD = {"MYSTIC_WATER": {"price": 1000, "text": "Give it to a Pokemon to hold: its Water-type moves hit harder."},
+        "CHARCOAL": {"price": 1000, "text": "Give it to a Pokemon to hold: its Fire-type moves hit harder."}}
 
 
 def held_boost(pokemon, move_type):

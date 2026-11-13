@@ -27,7 +27,10 @@ MACHINE = 4
 PRICES = [1000, 1000, 1500, 1500, 2000, 2000, 2500, 2500, 3000]  # by tier: cheap (Jordan)
 # Story gifts whose move isn't one of Sword/Shield's 100 (Jordan, 11-12): numbered on from TM100, only ever given
 # ("gift": never sold or won). Professor Cozmo's thanks after Meteor Falls (ORAS: TM23 Smack Down).
-GIFT_TMS = {"TM100": ("SMACK-DOWN", "ORAS TM23: Professor Cozmo, Fallarbor Town")}
+GIFT_TMS = {"TM100": ("SMACK-DOWN", "ORAS TM23: Professor Cozmo, Fallarbor Town"),
+            "TM101": ("SWORDS-DANCE", "ORAS TM75: the dancing Black Belt, Lavaridge Town"),
+            "TM102": ("FLAME-CHARGE", "ORAS TM43: lying on the Jagged Pass (across the round stones)"),
+            "TM103": ("ROCK-POLISH", "ORAS TM69: lying on the Jagged Pass's west hill")}
 
 
 def rows(name):
