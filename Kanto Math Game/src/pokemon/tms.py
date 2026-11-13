@@ -103,7 +103,8 @@ def owned(story):
 def mart_stock(game, badges):
     """The TMs the Mart sells with this many badges (the ones you don't have yet)."""
     have = owned(game.story_manager)
-    return [k for k, d in table(game).items() if d.get("tier", 8) <= badges and k not in have and not d.get("gift")]
+    return [k for k, d in table(game).items() if d.get("tier", 8) <= badges and k not in have and not d.get("gift")
+            and not d.get("shop_only")]   # (shop_only: sold only where a shop lists it, Lilycove's TM Corner)
 
 
 def reward(game, badges, trainer_class, team_types=(), rng=random):
@@ -116,9 +117,9 @@ def reward(game, badges, trainer_class, team_types=(), rng=random):
         return None
     have = owned(game.story_manager)
     cap = min(8, badges + (2 if leader else 1))
-    pool = [k for k, d in table(game).items() if k not in have and d.get("tier", 8) <= cap and not d.get("gift")]
+    pool = [k for k, d in table(game).items() if k not in have and d.get("tier", 8) <= cap and not d.get("gift") and not d.get("shop_only")]
     if not pool:
-        pool = [k for k, d in table(game).items() if k not in have and not d.get("gift")]  # (story gifts are only given)
+        pool = [k for k, d in table(game).items() if k not in have and not d.get("gift") and not d.get("shop_only")]  # (story gifts are only given)
     if not pool:
         return None
     if leader:

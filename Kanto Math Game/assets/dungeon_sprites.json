@@ -2163,6 +2163,33 @@
     },
     "HOENN_SHOAL_CAVE:NEVER-MELT ICE": {
       "item": "NEVER_MELT_ICE"
+    },
+    "HOENN_SEAFLOOR_CAVERN:Lookout grunt": {
+      "sheet": "@grunt"
+    },
+    "HOENN_SEAFLOOR_CAVERN:TM107 SCALD": {
+      "item": "TM107"
+    },
+    "HOENN_SEAFLOOR_CAVERN:TM106 EARTHQUAKE": {
+      "item": "TM106"
+    },
+    "HOENN_SEAFLOOR_CAVERN:Grunt": {
+      "sheet": "@grunt"
+    },
+    "HOENN_SEAFLOOR_CAVERN:Grunt ": {
+      "sheet": "@grunt_f"
+    },
+    "LILYCOVE_CITY:Vitamin clerk": {
+      "sheet": "em_24.png"
+    },
+    "HOENN_SHOAL_CAVE:TM108 FROST BREATH": {
+      "item": "TM108"
+    },
+    "HOENN_SAFARI_ZONE:CALCIUM": {
+      "item": "CALCIUM"
+    },
+    "HOENN_SAFARI_ZONE:BIG PEARL": {
+      "item": "BIG_PEARL"
     }
   },
   "townsperson": "NPC 17.png",

@@ -113,11 +113,59 @@
   "gift": true,
   "from": "ORAS TM30: lying on Mt. Pyre's top floor"
  },
+ "TM106": {
+  "move": "EARTHQUAKE",
+  "type": "GROUND",
+  "tier": 8,
+  "price": 3000,
+  "gift": true,
+  "from": "ORAS TM26 / Emerald TM26: lying in the Seafloor Cavern"
+ },
+ "TM107": {
+  "move": "SCALD",
+  "type": "WATER",
+  "tier": 8,
+  "price": 3000,
+  "gift": true,
+  "from": "ORAS TM55: on the island in the Seafloor Cavern's current room"
+ },
+ "TM108": {
+  "move": "FROST-BREATH",
+  "type": "ICE",
+  "tier": 8,
+  "price": 3000,
+  "gift": true,
+  "from": "ORAS TM79: in Shoal Cave, by the sandy slope"
+ },
+ "TM109": {
+  "move": "FIRE-BLAST",
+  "type": "FIRE",
+  "tier": 8,
+  "price": 5500,
+  "shop_only": true,
+  "from": "Lilycove Department Store 4F"
+ },
  "TM11": {
   "move": "SOLAR-BEAM",
   "type": "GRASS",
   "tier": 8,
   "price": 3000
+ },
+ "TM110": {
+  "move": "THUNDER",
+  "type": "ELECTRIC",
+  "tier": 8,
+  "price": 5500,
+  "shop_only": true,
+  "from": "Lilycove Department Store 4F"
+ },
+ "TM111": {
+  "move": "BLIZZARD",
+  "type": "ICE",
+  "tier": 8,
+  "price": 5500,
+  "shop_only": true,
+  "from": "Lilycove Department Store 4F"
  },
  "TM12": {
   "move": "SOLAR-BLADE",

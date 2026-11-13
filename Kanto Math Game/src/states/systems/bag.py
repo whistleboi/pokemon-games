@@ -270,6 +270,11 @@ class BagState(GameState):
                 self.game, previous_state=self, context="use_item", on_select=self.on_pokemon_select_tm))
             return
 
+        if item_key in itemlib.VITAMINS:  # (Protein, Calcium...: a stat a little higher, for good)
+            self.game.change_state(PokemonPartyMenuState(
+                self.game, previous_state=self, context="use_item", on_select=lambda i, k=item_key: self.on_pokemon_select_vitamin(i, k)))
+            return
+
         if item_key == "RARE_CANDY":
             self.game.change_state(PokemonPartyMenuState(
                 self.game,
@@ -517,6 +522,8 @@ class BagState(GameState):
         if zpower.shard_type(item):
             return (zpower.tera_type(p) != zpower.shard_type(item)
                     and self.game.story_manager.inventory.get(item, 0) >= zpower.SHARDS_TO_CHANGE)
+        if item in itemlib.VITAMINS:
+            return itemlib.use_vitamin(copy.deepcopy(p), item)[0]
         if item == "RARE_CANDY":
             return self.candy_limit(p)[1] is None
         if item in itemlib.MEDICINE:
@@ -538,6 +545,20 @@ class BagState(GameState):
         key = p.name.upper()
         data = self.evo_items_map.get(item, {})
         return key in data or f"{key}_{str(p.form).upper()}" in data
+
+    def on_pokemon_select_vitamin(self, slot_index, item):
+        """A vitamin on the chosen Pokemon (used up only if it works)."""
+        party = self.game.story_manager.player_team
+        if slot_index >= len(party) or party[slot_index] is None:
+            return
+        story = self.game.story_manager
+        ok, line = itemlib.use_vitamin(party[slot_index], item)
+        if ok:
+            story.inventory[item] = story.inventory.get(item, 0) - 1
+            if story.inventory[item] <= 0:
+                story.inventory.pop(item, None)
+        self.game.change_state(self)
+        self.game.show_dialogue([line])
 
     def candy_limit(self, pokemon):
         """(highest level Rare Candies can reach now, the cap message if it's already there)."""

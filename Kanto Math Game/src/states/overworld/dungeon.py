@@ -2418,7 +2418,7 @@ class DungeonState(OverworldBattles, PlayState):
                     if str(f.decor.get(t, "")).startswith(kind + ":"):
                         del f.decor[t]
                         f.tiles[t[1]][t[0]] = core.FLOOR
-                elif t not in f.decor:
+                elif t not in f.decor or (f.decor[t] == "building" and bar.get("look")):  # (or on the picture's own solid ground: the legend asleep in its pool)
                     f.decor[t] = f"{kind}:{t[0]},{t[1]}"
                     f.tiles[t[1]][t[0]] = core.WALL
         for t, what in list(f.decor.items()):

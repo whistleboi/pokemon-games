@@ -172,7 +172,7 @@ class PokeMartState(GameState):
         evo_items = set(self.game.loader.evolution_map.get("EVOLUTION_ITEMS", {}).keys())
         shop_kinds = (set(self.BASE_PRICES) | evo_items | set(self.WEATHER_ROCKS.values())
                       | set(POKEBLOCKS) | set(itemlib.MEDICINE) | set(itemlib.BATTLE) | set(itemlib.FIELD)
-                      | set(itemlib.BALL_PRICES)) - {"POKE_BALLS", "PREMIER_BALL"}
+                      | set(itemlib.BALL_PRICES) | set(itemlib.VITAMINS) | set(itemlib.VALUABLES) | set(itemlib.HELD)) - {"POKE_BALLS", "PREMIER_BALL"}
         return [k for k, q in sorted(story.inventory.items())
                 if q > 0 and k not in key_items and k not in self.NEVER_SOLD
                 and (k in shop_kinds or k.endswith("_BERRY"))]

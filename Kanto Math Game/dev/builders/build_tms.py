@@ -32,7 +32,14 @@ GIFT_TMS = {"TM100": ("SMACK-DOWN", "ORAS TM23: Professor Cozmo, Fallarbor Town"
             "TM102": ("FLAME-CHARGE", "ORAS TM43: lying on the Jagged Pass (across the round stones)"),
             "TM103": ("ROCK-POLISH", "ORAS TM69: lying on the Jagged Pass's west hill"),
             "TM104": ("HIDDEN-POWER", "ORAS TM10: Fortree City's old woman and her coin game"),
-            "TM105": ("SHADOW-BALL", "ORAS TM30: lying on Mt. Pyre's top floor")}
+            "TM105": ("SHADOW-BALL", "ORAS TM30: lying on Mt. Pyre's top floor"),
+            "TM106": ("EARTHQUAKE", "ORAS TM26 / Emerald TM26: lying in the Seafloor Cavern"),
+            "TM107": ("SCALD", "ORAS TM55: on the island in the Seafloor Cavern's current room"),
+            "TM108": ("FROST-BREATH", "ORAS TM79: in Shoal Cave, by the sandy slope")}
+# Sold only by the shop that lists them (Jordan, 11-13: match the games): Lilycove Department Store's TM Corner
+# (Emerald and ORAS: Fire Blast, Thunder, Blizzard), never on an ordinary Mart's shelf.
+SHOP_TMS = {"TM109": ("FIRE-BLAST", "Lilycove Department Store 4F"), "TM110": ("THUNDER", "Lilycove Department Store 4F"),
+            "TM111": ("BLIZZARD", "Lilycove Department Store 4F")}
 
 
 def rows(name):
@@ -68,6 +75,10 @@ def main():
     for key, (move, where) in GIFT_TMS.items():
         out[key] = {"move": move, "type": moves.get(move, {}).get("type", "NORMAL"), "tier": 8, "price": 3000,
                     "gift": True, "from": where}
+        tms[key] = move
+    for key, (move, where) in SHOP_TMS.items():
+        out[key] = {"move": move, "type": moves.get(move, {}).get("type", "NORMAL"), "tier": 8, "price": 5500,
+                    "shop_only": True, "from": where}
         tms[key] = move
     out = dict(sorted(out.items()))
 

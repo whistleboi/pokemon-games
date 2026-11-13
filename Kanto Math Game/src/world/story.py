@@ -1387,7 +1387,7 @@ class StoryManager:
             "status": getattr(p, "status", None), "sleep_turns": getattr(p, "sleep_turns", 0),
             "hp": p.current_hp, "hp_real": True, "stage": p.stage, "gmax": p.gmax_factor,
             "caught_region": getattr(p, "caught_region", None), "caught_level": getattr(p, "caught_level", None),
-            "condition": p.condition, "sheen": p.sheen, "ribbons": p.ribbons,
+            "condition": p.condition, "sheen": p.sheen, "ribbons": p.ribbons, "evs": dict(getattr(p, "evs", None) or {}),
             "ability_slot": getattr(p, "ability_slot", 0), "gender": getattr(p, "gender", "?"),
             "is_egg": bool(getattr(p, "is_egg", False)), "egg_steps": getattr(p, "egg_steps", 0),
             "tera_type": getattr(p, "tera_type", None), "held_item": getattr(p, "held_item", None),
@@ -1419,6 +1419,7 @@ class StoryManager:
         pokemon.condition.update(p_data.get("condition", {}))
         pokemon.sheen = p_data.get("sheen", 0)
         pokemon.ribbons = list(p_data.get("ribbons", []))
+        pokemon.evs = dict(p_data.get("evs") or {})
         if "stage" in p_data:
             pokemon.stage = p_data["stage"]
         pokemon.friendship = p_data.get("friendship", 0)

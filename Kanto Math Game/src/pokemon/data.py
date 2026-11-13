@@ -269,10 +269,15 @@ class Pokemon:
         key = self.IV_ALIASES.get(stat_name.upper(), stat_name.upper())
         return getattr(self, "ivs", {}).get(key, 15)
 
+    def ev(self, stat_name):
+        """Effort points in a stat (from vitamins: items.VITAMINS), 0 if none."""
+        key = self.IV_ALIASES.get(stat_name.upper(), stat_name.upper())
+        return int((getattr(self, "evs", None) or {}).get(key, 0))
+
     def stat_value(self, stat_name, level=None):
-        """The actual stat at a level, as in the games: floor((2 x Base + IV) x Lv / 100) + 5."""
+        """The actual stat at a level, as in the games: floor((2 x Base + IV + EV/4) x Lv / 100) + 5."""
         lv = self.level if level is None else level
-        return int((2 * self.get_stat(stat_name) + self.iv(stat_name)) * lv / 100) + 5
+        return int((2 * self.get_stat(stat_name) + self.iv(stat_name) + self.ev(stat_name) // 4) * lv / 100) + 5
 
     def cure_status(self):
         """Clear burn/paralysis/poison/sleep/freeze (Pokemon Center, whiteout, Full Heal)."""
@@ -288,7 +293,7 @@ class Pokemon:
     def get_max_hp(self, level=None, **_legacy):
         """Real HP: floor((2 x Base + IV) x Lv / 100) + Lv + 10."""
         lv = self.level if level is None else level
-        return int((2 * self.get_stat("HP") + self.iv("HP")) * lv / 100) + int(lv) + 10
+        return int((2 * self.get_stat("HP") + self.iv("HP") + self.ev("HP") // 4) * lv / 100) + int(lv) + 10
 
     def get_stat(self, stat_name):
         """Gets a base stat value."""

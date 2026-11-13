@@ -1090,10 +1090,28 @@ check(type(_cs).__name__ == "PokeMartState" and "GREAT_BALL" in (_cs.stock or []
       f"Lilycove: 2F's clerk across the counter sells his own shelf (Poke Balls, medicine) ({type(_cs).__name__})")
 g.change_state(st)
 _shelves = {o.get("text"): o.get("stock") for r in _tm2["LILYCOVE_CITY"]["rooms"].values() for o in r.get("people", []) if isinstance(o, dict) and o.get("stock")}
-check(_shelves.get("Attack TM clerk") == ["TM08", "TM03", "TM05", "TM04"] and "X_ATTACK" in _shelves.get("Battle clerk", [])
+check(_shelves.get("Attack TM clerk") == ["TM109", "TM110", "TM111", "TM08"] and "X_ATTACK" in _shelves.get("Battle clerk", [])
+      and "CALCIUM" in _shelves.get("Vitamin clerk", [])
       and "LEMONADE" in _shelves.get("Rooftop stand", []) and "RED_POKEBLOCK" in _shelves.get("Contest clerk", []),
       f"Lilycove: each counter of the store sells its own kind of thing (2F travel and Trainer goods, 3F X items, 4F TMs, 5F Pokeblocks, rooftop drinks)")
-check("Department Store" in _tm2["LILYCOVE_CITY"]["rooms"]["dept_3"]["people"], "Lilycove: 3F keeps the store's old shelf (its evolution stones)")
+check("Department Store" in _tm2["LILYCOVE_CITY"]["rooms"]["dept_5"]["people"], "Lilycove: 5F keeps the store's old shelf (its evolution stones)")
+# vitamins: effort points, a stat a little higher for good (10 a vitamin, 100 a stat from vitamins)
+from src.pokemon import items as _it
+_vp = Pokemon(g.loader.fetch_specific(258), g.assets); _vp.level = 50
+_a0 = _vp.stat_value("ATTACK")
+_r = [_it.use_vitamin(_vp, "PROTEIN")[0] for _ in range(11)]
+check(_r[:10] == [True] * 10 and not _r[10] and _vp.ev("ATTACK") == 100 and _vp.stat_value("ATTACK") - _a0 in (12, 13),
+      f"Vitamins: each adds effort to its stat, ten at most; a Lv 50 Pokemon's Attack up 12 or 13 ({_a0} -> {_vp.stat_value('ATTACK')})")
+from src.states.systems.mart import PokeMartState as _PM
+_m = _PM.__new__(_PM); _m.game = g
+story.inventory.update({"BIG_PEARL": 1, "NUGGET": 1})
+check({"BIG_PEARL", "NUGGET"} <= set(_m._sellable()) and _m._price("NUGGET") // 2 == 5000,
+      "Valuables (Nugget, Big Pearl...) sell at any Mart for half their price")
+_tmd = json.load(open("assets/tms.json", encoding="utf-8"))
+from src.pokemon import tms as _tmsm
+check(all(_tmd[k].get("shop_only") for k in ("TM109", "TM110", "TM111")) and not set(_tmsm.mart_stock(g, 8)) & {"TM109", "TM110", "TM111"}
+      and _tmd["TM108"]["move"] == "FROST-BREATH",
+      "TMs: Fire Blast, Thunder, Blizzard sold only at Lilycove's TM Corner; Frost Breath found in Shoal Cave")
 st._go("dept", "ROOM:dept_2"); frames(2)
 _loto = next(o for o in st.people.values() if isinstance(o, dict) and o.get("text") == "Loto clerk")
 _before = sum(story.inventory.get(k, 0) for k in ("MOOMOO_MILK", "RARE_CANDY", "MASTER_BALL"))
@@ -1431,6 +1449,64 @@ _run_story_event(st, _salt["event"], lambda c: True, lambda l, **k: None); tap(s
 check(_one == 2 and story.inventory.get("SHOAL_SALT") == 2, "Shoal Cave: Shoal Salt to pick up again each day")
 story.inventory.clear(); story.inventory.update(_inv14)
 story.story_flags.clear(); story.story_flags.update(_saved14)
+
+# ---- batch 15: Routes 127 and 128 (Dive), the Seafloor Cavern
+_saved15, _inv15 = dict(story.story_flags), dict(story.inventory)
+_tm15 = json.load(open("assets/town_maps.json", encoding="utf-8"))
+_r128 = _tm15["HOENN_ROUTE_128"]["floors"]
+check(_r128[0].get("dive") == 1 and "HOENN_SEAFLOOR_CAVERN" in _r128[1]["exits"].values()
+      and any(":" in r for r in _r128[0]["art"]) and any(":" in r for r in _tm15["HOENN_ROUTE_127"]["floors"][0]["art"]),
+      "Routes 127 and 128: deep sea to Dive in; on Route 128's seabed, the way into the Seafloor Cavern")
+_sf = _tm15["HOENN_SEAFLOOR_CAVERN"]["floors"]
+_ok15 = set(".=\"NX1w$o[]{}b0")   # (o: water, Surf; [ ] { }: currents; b, 0: boulders and rocks, Strength and Rock Smash)
+_todo = [(0, x, y) for y, r in enumerate(_sf[0]["art"]) for x, c in enumerate(r) if c in _sf[0].get("exits", {})]
+_seen = set(_todo)
+while _todo:
+    _f, _x, _y = _todo.pop()
+    _ln = (_sf[_f].get("links") or {}).get(f"{_x},{_y}")
+    _nxt = ([(_ln[0], _ln[1], _ln[2])] if _ln else []) + [(_f, _x + dx, _y + dy) for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1))]
+    for _n in _nxt:
+        _a = _sf[_n[0]]["art"]
+        if _n not in _seen and 0 <= _n[2] < len(_a) and 0 <= _n[1] < len(_a[0]) and _a[_n[2]][_n[1]] in _ok15:
+            _seen.add(_n); _todo.append(_n)
+_floors15 = sorted({f for f, _x, _y in _seen})
+check(len(_sf) == 10 and _floors15 == list(range(10)),
+      f"Seafloor Cavern: Emerald's ten rooms, from the way in down to the deepest (boulders, rocks, currents) ({_floors15})")
+check(len(_tm15["HOENN_SEAFLOOR_CAVERN"]["figure_floors"]) and all(n in _tm15["HOENN_SEAFLOOR_CAVERN"]["figure_floors"] for n in ("Team Grunt (room 1)", "Aqua Leader Archie"))
+      and _tm15["HOENN_SEAFLOOR_CAVERN"]["figure_floors"]["Aqua Leader Archie"] == 9,
+      "Seafloor Cavern: the team's Grunts in its rooms, the leader in the deepest")
+for _k in ("seafloor_cavern_cleared", "seafloor_awakening_seen", "route128_leaders_met"):
+    story.story_flags.pop(_k, None)
+story.inventory.update({"HM_SURF": 1, "HM_STRENGTH": 1, "HM_ROCK_SMASH": 1, "HM_DIVE": 1})
+st = open_map("HOENN_SEAFLOOR_CAVERN", "HOENN_ROUTE_128")
+for _i in range(1, 10):
+    st.run.enter_floor(_i)
+frames(2)
+_sleep = st.run.floor.decor.get((17, 38), "")
+story.story_flags["seafloor_cavern_cleared"] = True
+st = open_map("HOENN_SEAFLOOR_CAVERN", "HOENN_ROUTE_128")
+for _i in range(1, 10):
+    st.run.enter_floor(_i)
+frames(2)
+_calm(st)
+st.run.player, st.anim = (10, 43), 0
+st.step(1, 0)
+said = _play(st, 2000)
+check(str(_sleep).startswith("barrier:") and {b.get("look") for b in _sf[9].get("barred", [])} == {"sheet:em_206.png", "sheet:em_205.png"}
+      and os.path.exists(os.path.join("assets", "dungeon", "characters", "em_206.png")) and story.story_flags.get("seafloor_awakening_seen") and any("awoke" in x for x in said),
+      f"Seafloor Cavern: the legend sleeps in the deepest room (Emerald's greyed sleeping sprite); after the leader's battle it awakens and bursts out ({said[:1]})")
+st = open_map("HOENN_ROUTE_128", "HOENN_ROUTE_127")
+_calm(st)
+_y128 = 22
+st.run.player, st.anim = (30, 23), 0
+st.step(1, 0)
+said = _play(st, 3000)
+check(story.story_flags.get("route128_leaders_met") and any("Sootopolis" in x for x in said),
+      f"Route 128: back on the surface, the two leaders and Steven send you on to Sootopolis ({said[-1:]})")
+check(all(k in json.load(open("assets/tms.json", encoding="utf-8")) for k in ("TM106", "TM107")),
+      "Seafloor Cavern: TM Earthquake and TM Scald to find (new TMs)")
+story.inventory.clear(); story.inventory.update(_inv15)
+story.story_flags.clear(); story.story_flags.update(_saved15)
 
 story.story_flags.clear(); story.story_flags.update(_saved)
 print(f"##### {len(fails)} failures")

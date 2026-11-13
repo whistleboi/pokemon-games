@@ -112,8 +112,41 @@ def held_boost(pokemon, move_type):
     return HELD_BOOST if t and t == str(move_type).upper() else 1.0
 
 
+# Vitamins (the games, Gen 3 on: Lilycove's 3F): each adds 10 effort points to one stat, up to 100 from vitamins
+# (and 510 in all). A stat gains a point for every 4 effort points at Lv 100 (data.Pokemon.stat_value).
+VITAMIN_EV, VITAMIN_CAP, EV_TOTAL = 10, 100, 510
+VITAMINS = {"HP_UP": {"stat": "HP", "price": 9800, "text": "Raises a Pokemon's HP a little, for good."},
+            "PROTEIN": {"stat": "ATTACK", "price": 9800, "text": "Raises a Pokemon's Attack a little, for good."},
+            "IRON": {"stat": "DEFENSE", "price": 9800, "text": "Raises a Pokemon's Defense a little, for good."},
+            "CALCIUM": {"stat": "SPATK", "price": 9800, "text": "Raises a Pokemon's Sp. Atk a little, for good."},
+            "ZINC": {"stat": "SPDEF", "price": 9800, "text": "Raises a Pokemon's Sp. Def a little, for good."},
+            "CARBOS": {"stat": "SPEED", "price": 9800, "text": "Raises a Pokemon's Speed a little, for good."}}
+# Valuables: only to sell (half their price), as in the games
+VALUABLES = {"NUGGET": {"price": 10000, "text": "A nugget of pure gold. Sell it for a good price."},
+             "BIG_PEARL": {"price": 7500, "text": "A big, shining pearl. Sell it for a good price."},
+             "PEARL": {"price": 1400, "text": "A small, pretty pearl. Sell it for a little money."},
+             "STARDUST": {"price": 2000, "text": "Lovely red sand. Sell it for a little money."},
+             "STAR_PIECE": {"price": 9800, "text": "A shard of a pretty gem. Sell it for a good price."}}
+
+
+def use_vitamin(pokemon, item):
+    """(raised, line): add the vitamin's effort points to its stat, if it can take more."""
+    stat = VITAMINS[item]["stat"]
+    evs = pokemon.__dict__.setdefault("evs", {})
+    have, total = evs.get(stat, 0), sum(evs.values())
+    if have >= VITAMIN_CAP or total >= EV_TOTAL:
+        return False, "It won't have any effect."
+    gain = min(VITAMIN_EV, VITAMIN_CAP - have, EV_TOTAL - total)
+    before = pokemon.get_max_hp()
+    evs[stat] = have + gain
+    if stat == "HP":
+        pokemon.current_hp = min(pokemon.get_max_hp(), pokemon.current_hp + pokemon.get_max_hp() - before)
+    label = {"HP": "HP", "ATTACK": "Attack", "DEFENSE": "Defense", "SPATK": "Sp. Atk", "SPDEF": "Sp. Def", "SPEED": "Speed"}[stat]
+    return True, f"{pokemon.display_name}'s {label} rose!"
+
+
 def info(item):
-    return MEDICINE.get(item) or BATTLE.get(item) or FIELD.get(item) or HELD.get(item) or {}
+    return MEDICINE.get(item) or BATTLE.get(item) or FIELD.get(item) or HELD.get(item) or VITAMINS.get(item) or VALUABLES.get(item) or {}
 
 
 def price(item):
