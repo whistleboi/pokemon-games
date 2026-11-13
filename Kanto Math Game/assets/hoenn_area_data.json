@@ -571,6 +571,7 @@
         },
         {
           "text": "READ THE BRAILLE",
+          "not_on_map": true,
           "action": "EVENT",
           "color": "GOLD",
           "flag_condition": "not regi_trio_awakened",
@@ -2665,6 +2666,8 @@
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
+        {"text": "RARE CANDY", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_rare_candy_132", "event": {"lines": ["A Rare Candy, washed up on a rock!"], "gift_item": {"RARE_CANDY": 1}, "flag": "got_rare_candy_132"}},
+        {"text": "PROTEIN", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_protein_132", "event": {"lines": ["Someone left a Protein out here!"], "gift_item": {"PROTEIN": 1}, "flag": "got_protein_132"}},
         { "text": "PACIFIDLOG TOWN", "action": "EXIT", "target_area": "PACIFIDLOG_TOWN", "condition": "can_exit", "color": "RED" },
         { "text": "ROUTE 133", "action": "EXIT", "target_area": "HOENN_ROUTE_133", "condition": "can_exit", "color": "RED" }
       ],
@@ -2704,6 +2707,9 @@
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
+        {"text": "BIG PEARL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_big_pearl_133", "event": {"lines": ["A Big Pearl is wedged between the rocks!"], "gift_item": {"BIG_PEARL": 1}, "flag": "got_big_pearl_133"}},
+        {"text": "STAR PIECE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_star_piece_133", "event": {"lines": ["A Star Piece glints on the rocks!"], "gift_item": {"STAR_PIECE": 1}, "flag": "got_star_piece_133"}},
+        {"text": "MAX REVIVE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_max_revive_133", "event": {"lines": ["There's a Max Revive tucked in the rocks!"], "gift_item": {"MAX_REVIVE": 1}, "flag": "got_max_revive_133"}},
         { "text": "ROUTE 132", "action": "EXIT", "target_area": "HOENN_ROUTE_132", "condition": "can_exit", "color": "RED" },
         { "text": "ROUTE 134", "action": "EXIT", "target_area": "HOENN_ROUTE_134", "condition": "can_exit", "color": "RED" }
       ],
@@ -2743,9 +2749,11 @@
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
+        {"text": "CARBOS", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_carbos_134", "event": {"lines": ["Someone left a Carbos out here!"], "gift_item": {"CARBOS": 1}, "flag": "got_carbos_134"}},
+        {"text": "STAR PIECE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_star_piece_134", "event": {"lines": ["A Star Piece glints on the rocks!"], "gift_item": {"STAR_PIECE": 1}, "flag": "got_star_piece_134"}},
         { "text": "ROUTE 133", "action": "EXIT", "target_area": "HOENN_ROUTE_133", "condition": "can_exit", "color": "RED" },
         { "text": "SLATEPORT CITY", "action": "EXIT", "target_area": "SLATEPORT_CITY", "condition": "can_exit", "color": "RED" },
-        {"text": "Sealed Chamber", "action": "EXIT", "target_area": "HOENN_SEALED_CHAMBER", "condition": ["can_exit", "beat_hoenn_champion", "has_item:HM_SURF"], "color": "RED"}
+        {"text": "Sealed Chamber", "action": "EXIT", "target_area": "HOENN_SEALED_CHAMBER", "condition": ["can_exit", "beat_hoenn_champion", "has_item:HM_DIVE"], "color": "RED"}
       ],
       "next_area": "SLATEPORT_CITY",
       "region": "HOENN"

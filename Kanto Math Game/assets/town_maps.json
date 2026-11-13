@@ -90052,226 +90052,938 @@
  },
  "HOENN_ROUTE_132": {
   "art": [
-   "ooooooooooooooooccoooooooooooooooooooooooooooooooooooooooooooooccooooccccccccccc",
-   "ooqqoooqqqqooqqccccccooooooooooooooooqqqqooooooqqooqqocoooooqqccccoooccccccccccc",
-   "qqooocoooooqqooccccooqqooooooqqooqqoo[[ooqqooqqooqqoocccqqooooccccoooccccccccccc",
-   "<ooocccooooooqqooo[[[[[qqqqqqooqqooqq[[[[ooqqoooooooocccooqqoooooooooocccccccccc",
-   "<[oocccooooooooo[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[qqooo[[[[[[[[[[[[[ooqqoooccccccccc",
-   "<[[[ooooqqoooooooo[[[[[[[[[[[[[[[[[[[[[[[[[[oooooooo[[[[[[[[[[[[[[oooooooocccccc",
-   "<[[[[oooooooooooo[[[[[[[[oo{{{{{[[[[[[[[[[[[qqooooooo[[[[[[[[[[[[[[qqooqqooooccc",
-   "<[[ooooooooooooqq[[[[[[[[qq[oo{{{{[[[[[[[[[[ooooooooo{{{[[[[[[[[[[[ooqqoooooooo>",
-   "<[[[ooooooooccc[[[[[[[[[[[[[qqoo{{{{[[[[[[[[qqoooooqqoo{{{[[[[[[[[oooooooqqoooo>",
-   "<[[[[ooooqooooo[[[[[[[[[[[[[[[qq[oo{{[[[[[[ooooooooooqqooo[[[[[ooooooooocoooooo>",
-   "<[[[[ccccoooooo[[[[[[[[[[[[[[[[[[qq{{{oooooqqooqqqqqqooo[[[[[oooooooooocccooqqo>",
-   "<[[[oooooooooooo[[[[[{{{[[[[[[[[[[[[oooooqqoooooooo[[[[[[[[[[[[[[oooooocccooooo>",
-   "<[[ooooooooooooo[[[[[oo{{{[[[[X[[[[[qqooooooooooooooo[[[[[[[[[[[[[[ooooooooocco>",
-   "<[[oocccccccoooo[[[[[qq[[{{{[[[[[[[ooooooooooooooooooo[[[[[[[[[[[[[[ooooocccccc>",
-   "<[[occccccccccco[[[[[[[[[oo{{[[[[[[qqoooooooooooooooqq{{{{[[[[[[[[[[[[ooooooccc>",
-   "<[[occcoooooccco[[[[oo[[[qq[{{[[[[[[ooooooooooooooqq[oooo{{{X[[[[[[[[[[oooooooo>",
-   "<[[ooooooooooooo[[[[qqoo[[[[[{{[[[[[qqoooooooooooo[[[qqqq[oooo[[[[[[[oooooooooo>",
-   "<[[[oooooooooooo[[[[[[qq[[[[oo{{[[[[[[ooooooooooqq[[[oo[[[qqqqoooo[[ooooooooooo>",
-   "<[[[[ooooooooooo[}}}}[[[[[[[qq[[{{[[[[[[oooooo[[[[[[[qq[[[[[[[qqqq[oooooooooooo>",
-   "<[[[[[[[[[[[[[[[[[[[[[}}}}[[[[[[[[{{[[[[[[[[[[[{{{{{{[[[[[[[[[[[[[ooooooooooooo>",
+   "ccccccccccccccc~cc~ccccccccccccccccccccccccccccccccccccccccccc~cc~cccccccccccccc",
+   "ccccccccccccccccccccccccccccccccccccccccccccccccccccc~c~cccccccccccccccccccccccc",
+   "ccoo~c~ooooccccccccoocccccccccccccccc[[ooccccccooccoocccccccoocccccccccccccccccc",
+   "<ooocccooooooccooo[[[[[ccccccooccoocc[[[[ooccoccooooocccooccoooooocccccccccccccc",
+   "<[oocccoccoooooo[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[ccooo[[[[[[[[[[[[[oocccccccccccccc",
+   "<[[[ooooccoooooooo[[[[[[[[[[[[[[[[[[[[[[[[[[ccoooooo[[[[[[[[[[[[[[occccccocccccc",
+   "<[[[[oooooooooocc[[[[[[[[cc{{{{{[[[[[[[[[[[[ccooooooo[[[[[[[[[[[[[[ccccccooooccc",
+   "<[[oooooooocccccc[[[[[[[[cc[cc{{{{[[[[[[[[[[ccooooocc{{{[[[[[[[[[[[ooccooccooooo",
+   "<[[[ooooocccccc[[[[[[[[[[[[[cccc{{{{[[[[[[[[ccooooocccc{{{[[[[[[[[oooooooccoooo>",
+   "<[[[[cccccc[..[[[[[[[[[[[[[[[[cc[cc{{[[[[[[ccoocccccccc}}}[[[[[oooooooo~c~oocco>",
+   "<[[[[cccc[....[[[[[[[[[[[[[[[[[[[cc{{{oooccccoocccccc}}}[[[[[Xooooooooocccoocco>",
+   "<[[[[.....N....[[[[[[{{{[[[[[[[[[[[[ccoooccoooooooo[[[[[[[[[[[[[[oooooocccooooo>",
+   "<[[[...........[[[[[[cc{{{[[[[[[[[[[ccooooooooooooooo[[[[[[[[[[[[[[oooooocc~cc~o",
+   "<[[[.ccccccc...[[[[[[cc[[{{{[[[[[[[ccoooXooooooooooocc[[[[[[[[[[[[[[ooooocccccco",
+   "<[[[ccccccccccc[[[[[[[[[[cc{{[[[[[[ccooooooooooooocccc{{{{[[[[[[[[[[[[ooooooccco",
+   "<[[[ccc.....ccc[[[[[cc[[[cc[{{[[[[[[ccoooooooooooocc[cccc{{{[[[[[[[[[[[oooooooo>",
+   "<[[[[..........[[[[[cccc[[[[[{{[[[[[ccoooooooooocc[[[cccc[cccc[[[[[[[oooooooooo>",
+   "<[[[[[..ooo....[[[[[[[cc[[[[cc{{[[[[[[oooooooooocc[[[cc[[[cccccccc[[ooooooooooo>",
+   "<[[[[[[[ooo[[[[[[{{{{[[[[[[[cc[[{{[[[[[[oooooo[[[[[[[cc[[[[[[[cccc[oooooooooooo>",
+   "<[[[[[[[[[[[[[[[[[[[[[{{{{[[[[[[[[{{[[[[[[[[[[[{{{{{{[[[[[[[[[[[[[ooooooooooooo>",
    "<[[[[[[[[[[[[[[[[[[[[[[[[[[{{{{[[[[[[[[[[[[[[[[[[[[{{{{{{[[[[[[[[[[[[oooooooooo>",
-   "<[[[[[[[[[[[[[[[[[ooooo[[[[[[[[{{[[[[[[[[[[[[[[[[[[[[[{{{{{{[[[[[[[[ooooooooooo>",
-   "<ooo[[[oo}}}}}[[[[ooooo[[[[[[oooooo[[[[[[[[[ooooooooooooooooo[oo[[[oooooooooooo>",
-   "<qqqoo[qq}}}}[[[[[[ooo[[[[[[[oooooo[[[[[[[[ooo====occoccoooqq[qq[[ooooooooooooo>",
-   "<:::qqooo}}}[[[[[[ooooooooooooooooo[[[[[[[ooo==cc==ccoccoooo[[[[[[[oooooooooooo>",
-   "<:::::qq}}}}[[[[[[ooooooooooooooooo[[[[[[oooo==cc==ccoooooo[[[[[ooooooooooooooo>",
-   "<:::::oo}}}[[[[[[[ooooooooooooooooo[[[[[ooooo====ccooo[oo[[[[[[[[[[oooooooooooo>",
-   "<:::::qq}}}[[[[[[[ooooooooooooooooo[[[[[occo====occo[oo[[[[[[[[[[[[[ooooooooooo>",
-   "<::::ooo}}[[[[[[[[ooooooooooooooooooo[[[occ=cc==oooo[[[[[[[[[[[[[[[[[ooooccoooo>",
-   "<::::qq}}[[[[[[[[[ooooooooooooooooooo[[[ooo=cc==oooo[{{[[[[[[[[[[[[oooooccccooo>",
-   "<:::ooo}[[[[[[[[[[[[ooooooooooooooooo[[[[ooo=cc=oooooo[{{[[[[[[[[[ooooooccccooo>",
-   "<:ooqq}[[[[[[[[[[[[[ooooooooooooooooo[[[[[oo=cc==ooccoo{{{[[[[[[ooooooqqooooqqo>",
-   "<oqqoo}[[[[[[[[[[[[[ooooooooooooooooo[[[[[ooo=====occoooo{{{[[[[[ooooooooooooooc",
-   "<qo[[[[[[[[[[[[[[[[[ooooooooooooooooo[X[[[ooocc======occooo{{[[[[[oooooooooocccc",
-   "<[[[[[[[[[[[[[[[[[[[oooooo[[[[[[[[[[[[[[[[[oocco=====occooo[[[[[ooooooooqqoccccc",
-   "<[[[[[[[[[[[[[[[[[[[oooooo[[[oo[[[[[[[[[[[[[ooooooooooooooo[[[[[qqooqqoooocccccc",
-   "<ooooooooooooo[[[[oooooooooooqq[[[[oooooooooooooooooooooooooooooooqqooccoccccccc",
-   "<qooooooooooqqooooqqooqqoooqqooooooqqoqqooqqooqqooqqocoooqqqqoqqqqoooooccccccccc",
-   "<oooqqooccccooqqqqooqqooqqooooqqqqooooooqqooqqooqqoocccqqooooooooooooocccccccccc",
-   "<oqqooqqooooooooooooooooooqqooooooqqoqqooooooooooooocccooooooqqooooocccccccccccc"
+   "<[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[{{[[[[[[[[[[[[[[[[[[[[[{{{{{{[[[[[[[[ooooooooooo>",
+   "cccc[[[cc{{{{{[[[[[[[[[[[[[[[[....[[[[[[[[[[[.............[cc[cc[[[oooooooooooo>",
+   "cccccc[cc{{{{[[[[[[[[[[[[[[[[[....[[[[[[[[[[.......cc.cc..[cc[cc[[ooooooooooooo>",
+   "<ooocccc]{{{[[[[[[[...............[[[[[[[[[...=cc=.cc.cc[[[}[[[[[[[oooooooooooo>",
+   "<ooooocc{{{{[[[[[[[...............[[[[[[[[....=cc..cc[[[[}}[[[[[ooooooooooooooo>",
+   "<ooooocc{{{[[[[[[[[....ooooooooo..[[[[[[[.....==.cc[[[[}}[[[[[[[[[[oooooooooooo>",
+   "<ooooocc{{{[[[[[[[[.N..ooooooooo..[[[[[[[cc..==..cc[[}}[[[[[[[[[[[[[ooooooooooo>",
+   "<oooocc]{{[[[[[[[[[....ooooooooo....[[[[[cc.cc=....[[[[[[[[[[[[[[[[[[ooo~cc~ooo>",
+   "<oooocc{{[[[[[[[[[[[[..oooooooooo...[[[[[[..cc=....[[{{[[[[[[[[[[[[oooooccccoooo",
+   "<ooocc]{[[[[[[[[[[[[[...ooooooooo...[[[[[[[..cc......[[{{[[[[[[[[[ooooccccccccoo",
+   "<occcc{[[[[[[[[[[[[[[...............[[[[[[[..cc=...cc.[{{{[[[[[[ooooooccoooocco>",
+   "cccc]]{[[[[[[[[[[[[[[..............X[[[[[[[.....=..cc...[{{{[[[[[ooooooooooooo~c",
+   "cc}[[[[[[[[[[[[[[[[[[....[[[[[[[[[[[[[[[[[[[.cc.==....cc..[{{[[[[[oooooocco~cccc",
+   "<[[[[[[[[[[[[[[[[[[[[....[[[[[[[[[[[[[[[[[[[[cc.......cc..[[[[[[ccooccoocc~ccccc",
+   "<[[[[[[[[[[[[[[[[[[[[[[[[[[[[cc[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[ccccccccc~cccccc",
+   "ccoooooooooocc[[[[ccooccooocccc[[[[ccoccooccooccooccoooooccccocccccccccc~ccccccc",
+   "ccooccooccccccccccccccccccocccccccoccocccccccccccccc~c~ccccccocccccccc~ccccccccc",
+   "<occccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc~cccccccccc",
+   "<occccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc~cccccccccccc"
   ],
   "exits": {
-   ">": "PACIFIDLOG_TOWN",
-   "<": "HOENN_ROUTE_133"
+   "<": "HOENN_ROUTE_133",
+   ">": "PACIFIDLOG_TOWN"
   },
+  "buildings": {},
+  "roofs": {
+   "_picture": {
+    "f": "em_ground/0_47.png",
+    "at": [
+     0,
+     0
+    ]
+   },
+   "_signs_in_picture": true,
+   "_buildings_in_picture": true
+  },
+  "people": [
+   "RARE CANDY",
+   "PROTEIN"
+  ],
   "trainer_spots": [
-   "Swimmer Dana",
    "Swimmer Gilbert",
+   "Swimmer Dana",
    "Swimmer Koji"
+  ],
+  "edge_to": {
+   "0,3": [
+    79,
+    3
+   ],
+   "0,4": [
+    79,
+    4
+   ],
+   "0,5": [
+    79,
+    5
+   ],
+   "0,6": [
+    79,
+    6
+   ],
+   "0,7": [
+    79,
+    7
+   ],
+   "0,8": [
+    79,
+    8
+   ],
+   "0,9": [
+    79,
+    9
+   ],
+   "0,10": [
+    79,
+    10
+   ],
+   "0,11": [
+    79,
+    11
+   ],
+   "0,12": [
+    79,
+    12
+   ],
+   "0,13": [
+    79,
+    13
+   ],
+   "0,14": [
+    79,
+    14
+   ],
+   "0,15": [
+    79,
+    15
+   ],
+   "0,16": [
+    79,
+    16
+   ],
+   "0,17": [
+    79,
+    17
+   ],
+   "0,18": [
+    79,
+    18
+   ],
+   "0,19": [
+    79,
+    19
+   ],
+   "0,20": [
+    79,
+    20
+   ],
+   "0,21": [
+    79,
+    21
+   ],
+   "0,24": [
+    79,
+    24
+   ],
+   "0,25": [
+    79,
+    25
+   ],
+   "0,26": [
+    79,
+    26
+   ],
+   "0,27": [
+    79,
+    27
+   ],
+   "0,28": [
+    79,
+    28
+   ],
+   "0,29": [
+    79,
+    29
+   ],
+   "0,30": [
+    79,
+    30
+   ],
+   "0,31": [
+    79,
+    31
+   ],
+   "0,34": [
+    79,
+    34
+   ],
+   "0,35": [
+    79,
+    35
+   ],
+   "0,38": [
+    79,
+    38
+   ],
+   "0,39": [
+    79,
+    39
+   ],
+   "79,8": [
+    0,
+    8
+   ],
+   "79,9": [
+    0,
+    9
+   ],
+   "79,10": [
+    0,
+    10
+   ],
+   "79,11": [
+    0,
+    11
+   ],
+   "79,15": [
+    0,
+    15
+   ],
+   "79,16": [
+    0,
+    16
+   ],
+   "79,17": [
+    0,
+    17
+   ],
+   "79,18": [
+    0,
+    18
+   ],
+   "79,19": [
+    0,
+    19
+   ],
+   "79,20": [
+    0,
+    20
+   ],
+   "79,21": [
+    0,
+    21
+   ],
+   "79,22": [
+    0,
+    22
+   ],
+   "79,23": [
+    0,
+    23
+   ],
+   "79,24": [
+    0,
+    24
+   ],
+   "79,25": [
+    0,
+    25
+   ],
+   "79,26": [
+    0,
+    26
+   ],
+   "79,27": [
+    0,
+    27
+   ],
+   "79,28": [
+    0,
+    28
+   ],
+   "79,31": [
+    0,
+    31
+   ]
+  },
+  "moves": {
+   "10,11": {
+    "m": "look",
+    "d": "udlr"
+   },
+   "20,27": {
+    "m": "look",
+    "d": "udlr"
+   }
+  },
+  "parts": true,
+  "overheads": [
+   {
+    "kind": "picture",
+    "f": "em_top/0_47.png",
+    "at": [
+     0,
+     0
+    ],
+    "size": [
+     80,
+     40
+    ]
+   }
   ]
  },
  "HOENN_ROUTE_133": {
   "art": [
-   "<oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo>",
-   "<oooccccqqooooqqooooooqqooooqqqqooooqqqqqqqqoooqqooqqooqqqqqqooooqqqqqqqqqqoooq>",
-   "<qooooooooooqqooqqqqqq[[qqqqooooooqqoooooooooqqooqqooqq[[ooooqqqq[[[[[oooooqqoo>",
-   "<oqqooooooqqoooooooo[[[[[oooooooqq[ooooooooqqooooooo[[[[[[[ooo[[[[[[[[[[[ooooqq>",
-   "<[oooooooooooooo[[[[[[[[[[[[[[[[[[[[ooooo[[[[[ooooo[[[[[[[[[[[[[[[[[[[[[[[[[[[[>",
-   "<[[[ooooooooooooooo[[[[ooooo[[[[{{{[qqoo[[[ooooo[[[[[[[[[[[[[[[[[oooooooooooooo>",
-   "<[[[[oooooooqqoooqqooooooooo[[[[oo{{[[[[[[[[[[[[[[[ooooo[[[[[[[[[oooooooooooooo>",
-   "<[[[[[qoooooooooooooccccccoo[[[[qq[ooooo[[[[[[[[[[[ooooo{[[[[[[[[oooooooooooooo>",
-   "<[[ooooooooocccccccccccccco[[[[[[oooo[[[[[[[[[[[[[[[ooo{{{{{{{{[[[[[ooooooooooo>",
-   "<[[occcoooooccccccccccccooo[[[[oooo[[[[[[[[[[[[[[[ooooo[[[[[{{{{{{[[[[[oooooooo>",
-   "<[ooccccoocccccccccccoooooo[[ooo[[[[[[[[[[[[[[[[[[oooooooo[[[[[{{{{{{{[[[oooooo>",
-   "<[occccccccccccoooooooooo[[ooo[[[[[[[[[[[[[{{{{[[[ooooooooooo[[[[[{{{{{{{[[[[[[>",
-   "<oocccccccccooooooooooo[[ooo[[[occcccccccccco{{{{[[ooooooooooooo[[[[[{{{{{{[[[[>",
-   "<oocccccccccoooooooo[[ooooo[occcccccccccccccccco{{[[ooooooooooooooo[[[[[{{{{{[[>",
-   "<ooccccooooooo[[[[[ooooo[[[occccccccccccccccccccco{[[ooooooooooooooooo[[[[[[[[[>",
-   "<ooooooooooooo[[ooooo[[[occcccccc==========ccccccc{{[[oooooooooooooooo[[[[[[[[[>",
-   "<ooooooooo[[[[[[[[[[[[occccccc=================ccco[[[[ooooooooooooooo[{{{[[[[[>",
-   "<[[oooooo[[[[[[[[[[[[[cccc=====oooooo==ooooo===cccco[[[[[[[[[[[[[[[[[[[oo{{{[[[>",
-   "<[[[[[[[[[[[[[[[[[[[[[ccoooooooooooooooooooooooooccc[[[[[[[[[[[[[[[[[[[qq[{{{[[>",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "ccccooooooccccoocccccc[[ccccooooccccoooooooccccooccoocc[[oooocccc[[[[[ooooocccco",
+   "<occooooooccoooooooo[[[[[ooooooocc[ooooooooccooooooo[[[[[[[ooo[[[[[[[[[[[oooocco",
+   "<[oooooooooooooo[[[[[[[[[[[[[[[[[[[[cc}}}[[[[[ooooo[[[[[[[[[[[[[[[[[[[[[[[[[[[[>",
+   "<[[[ooooccooccooocc[[[[[...[[[[[{{{[cc}}[[[ooooo[[[[[[[[[[[[[[[[[[............[>",
+   "<[[[[occccooccooocc[.......[[[[[cc{{[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[............[>",
+   "<[[[[[cco...........cccccc[[[[[[cc[}}}}}[[[[[[[[[[[{{{{{{[[[[[[[[[[[[.........[>",
+   "<[[[........cccccccccccccc[[[[[[[}}}}[[[[[[[[[[[[[[[[[[{{{{{{{{[[[[[[[[[......[>",
+   "<[[[ccc.....cccccccccccc..[[[[[}}}}[[[[[[[[[[[[[[[[...[[[[[[{{{{{{[[[[[[[[....[>",
+   "<[[.ccccN.ccccccccccc...[[[[[}}}[[[[[[[[[[[[[[[[[[[......[[[[[[{{{{{{{[[[[[[[[[>",
+   "<[[cccccccccccc.......[[[[[}}}[[[[[[[[[[[[[{{{{[[[[[........[[[[[[{{{{{{{[[[[[[>",
+   "<[.ccccccccc.......[[[[[[}}}[[[ccccccccccccc~{{{{[[[[N.........[[[[[[{{{{{{[[[[>",
+   "<[.ccccccccc.[[[[[[[[[}}}}}[ccccccccccccccccccc~{{[[[[............[[[[[[{{{{{[[>",
+   "<[.cccc......[[[[[[}}}}}[[[cccccccccccccccccccccc~{[[[[..............[[[[[[[[[[>",
+   "<[.......[[[[[[[}}}}}[[[ccccccccc====X=====ccccccc{{[[[[.............[[[[[[[[[[>",
+   "<[[[....[[[[[[[[[[[[[[cccccccc=......==.....===ccc~[[[[[[[[[[[[[[[[[[[[{{{[[[[[>",
+   "<[[[[[[[[[[[[[[[[[[[[[cccc......oooo....ooo....cccc~[[[[[[[[[[[[[[[[[[[cc{{{[[[>",
+   "<[[[[[[[[[[[[[[[[[[[[[ccoooooooooooooooooooooooooccc[[[[[[[[[[[[[[[[[[[cc[{{{[[>",
    "<[[[[[[[[[[[[[[[[[[[[[[oooooooooooooooooooooooooo[[[[[[[[[[[[[[[[[[[[[[[[[[{{{{>",
    "<[[[[[[[[[[[[[[[[[[[[[ooooooooooooooooooooooooo[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[>",
    "<[[[[[[[[[[[[[[[[[[[[[[[ooooooXoooooooooooooo[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[>",
-   "<[[[[[[[[[[[[[[[[[[[[[[ooooooooooooooooooooocccccccccco[[[oo[[oo[[[[[oo[[[[[ooo>",
-   "<[[[[[[[[[[[[[[[[[[[oo[qqooqqooooqqoooooccccccoooooccccoooqq[[qq[ooooqqoo[ooqqq>",
-   "<[[[[[[[[[[[[[[[[oo[qq[[[qqooqqqqoooooocccccccccocccccccqq[[[[[[[qqqqooqq[qq:::>",
-   "<[[[[[[[[[[[[[[ooqqooo[[[oooooooooooocccccooqoooooooqoooo[[[X[ooooooooooooo::::>",
-   "<o[[[[[[[[[[[ooqqoooo[[[[[[[oooooocccccccooooqoooqoooooooo[[oooooooooooooqq::::>",
-   "<o[[[[[[[[[ooqqoooo[[[[[[[[[[[ooocccccoooooccooooooqccoooo[ooooooooooooqq::::::>",
-   "<o[[[[[[[[[qqoooo[[[[[[[[[[[[[[[cccccooqoooccoooooooccccoo[[ooooooooooooo::::::>",
-   "<o[[[[[[[[[[ooo[[[[[[[[[[[[[[[[[[[[[oooooccoooooooooccccoo[[[ooooooooooqq::::::>",
-   "<o[[[[[[[[[[X[[[[[[[[[[[[[[[[[[[[[[[oooooccoqoooooooooccoo[[[[[oooooo{[[oo:::::>",
-   "<o[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[oooccooooooooooooooo[[[[[[[oooo{[[qqoo:::>",
-   "<o[[[[[[[[[[{{{[[[[[[[[[[[[[[[[[[[[[[[oooooooooo[[[oooooo[[[[[[[[[[qq{{{[[qqooo>",
-   "<o[[[[[[[[[[oo{{{{[[[[[[[[[[[[[[[[[[[[[ooooooo[[[[[[[[[[[[[[[[[[[[[[[[{{{{[[qqq>",
-   "<[[[[[[[[[[[qqoo{{{{{[[[[[[[[[[[[[[[[[[[ooooo[[[[[[[[[[[[[[[[[[[[[[[[ooo{{{{[[[>",
-   "<[[[[[[[[[[[[[qqoooo{{{[[[[[[[[[[ooooooo[[[[[[[[[[[[[[[[[[[[[[[[oo[[ooqqoo{{{{[>",
-   "<o[[[[[[[[[[ooooqqqq[[[[[[oo[[[[ooooooooooo[[[[[[[[[[oooooooooooqqooooooooooooo>",
-   "qq[[[[[[ooooqqoooooo[[[[[[qqooooqqoooooqqqqoo[[[[oooooooqqooqqqqooooooooooooqqq>",
-   "ooooooooqqqqooooooqqooooooooqqqqoooooooooooqqooooooqqqqoooqqooooqqooqqooooqqooo>",
-   "ooqqqqqqooooooooooooccccqqqqoooooqqqqqqqqooooqqccccooooqqoooooooooqqooqqqqooooo>"
+   "<[[[[[[[[[[[[[[[[[[[[[[ccooccooooccooooooooccccccccccc~[[[cc[[cc[[[[[cc[[[[[cccc",
+   "<[[[[[[[[[[[[[[[[[[[cc[ccccccccccccoooocccccccccccccccc~cccc[[cc[cccccccc[cccccc",
+   "<[[[[[[[[[[[[[[[[cc[cc[[[ccooccccooooocccccccccccccccccccc[[[[[[[ccccoocc[ccooo>",
+   "<[[[[[[[[[[[[[[cccc}}}[[[ooooooooooocccccc..c..ccc..c...[[[[[[oooooooooooccoooo>",
+   "<[[[[[[[[[[[[cccc}}}}[[[[[[[ooooocccccccc....c..cc.......[[[Xooooooooooccccoooo>",
+   "<[[[[[[[[[[cccc}}}}[[[[[[[[[[[oocccccc.....cc......ccc...[[ooooooooooooccoooooo>",
+   "<[[[[[[[[[[cc}}}}[[[[[[[[[[[[[[[ccccc..c...cc...N...cccc.[[[oooooooooooccoooooo>",
+   "<[[[[[[[[[[[}}}[[[[[[[[[[[[[[[[[[[[[[....cc.........cccc.[[[[ooooooooooccoooooo>",
+   "<[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[..cc.c.........cc.[[[[[[oooooo{[[ccooooo>",
+   "<[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[..cc....[[[[[....[[[[[[[[[oocc{[[ccccooo>",
+   "<[[[[[[[[[[[{{{[[[[[[[[[[[[[[[[[[[[[[[[[.....[[[[[[[[[[[[[[[[[[[[[[cc{{{[[cccccc",
+   "<[[[[[[[[[[[cc{{{{[[[[[[[[[[[[[[[[[[[[[[[...[[[[[[[[[[[[[[[[[[[[[[[[[[{{{{[[cccc",
+   "<[[[[[[[[[[[cccc{{{{{[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[occ{{{{[[[>",
+   "<[[[[[[[[[[[[[cccccc{{{[[[[[[[[[[ooooooo[[[[[[[[[[[[[[[[[[[[[[[[cc[[ooccoo{{{{[>",
+   "cc[[[[[[[[[[cccccccc[[[[[[cc[[[[ccooooocccc[[[[[[[[[[oooccooccccccoooooooooocccc",
+   "cc[[[[[[cccccccccccc[[[[[[ccccccccooooocccccc[[[[ooccccoccccccccccooccoooocccccc",
+   "<occccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccooo>",
+   "<occccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccooooo>"
   ],
   "exits": {
-   ">": "HOENN_ROUTE_132",
-   "<": "HOENN_ROUTE_134"
+   "<": "HOENN_ROUTE_134",
+   ">": "HOENN_ROUTE_132"
   },
+  "buildings": {},
+  "roofs": {
+   "_picture": {
+    "f": "em_ground/0_48.png",
+    "at": [
+     0,
+     0
+    ]
+   },
+   "_signs_in_picture": true,
+   "_buildings_in_picture": true
+  },
+  "people": [
+   "STAR PIECE",
+   "BIG PEARL",
+   "MAX REVIVE"
+  ],
   "trainer_spots": [
+   "Swimmer Warren",
    "Swimmer Mollie",
-   "Swimmer Beck",
-   "Swimmer Warren"
+   "Swimmer Beck"
+  ],
+  "edge_to": {
+   "0,3": [
+    79,
+    3
+   ],
+   "0,4": [
+    79,
+    4
+   ],
+   "0,5": [
+    79,
+    5
+   ],
+   "0,6": [
+    79,
+    6
+   ],
+   "0,7": [
+    79,
+    7
+   ],
+   "0,8": [
+    79,
+    8
+   ],
+   "0,9": [
+    79,
+    9
+   ],
+   "0,10": [
+    79,
+    10
+   ],
+   "0,11": [
+    79,
+    11
+   ],
+   "0,12": [
+    79,
+    12
+   ],
+   "0,13": [
+    79,
+    13
+   ],
+   "0,14": [
+    79,
+    14
+   ],
+   "0,15": [
+    79,
+    15
+   ],
+   "0,16": [
+    79,
+    16
+   ],
+   "0,17": [
+    79,
+    17
+   ],
+   "0,18": [
+    79,
+    18
+   ],
+   "0,19": [
+    79,
+    19
+   ],
+   "0,20": [
+    79,
+    20
+   ],
+   "0,21": [
+    79,
+    21
+   ],
+   "0,22": [
+    79,
+    22
+   ],
+   "0,23": [
+    79,
+    23
+   ],
+   "0,24": [
+    79,
+    24
+   ],
+   "0,25": [
+    79,
+    25
+   ],
+   "0,26": [
+    79,
+    26
+   ],
+   "0,27": [
+    79,
+    27
+   ],
+   "0,28": [
+    79,
+    28
+   ],
+   "0,29": [
+    79,
+    29
+   ],
+   "0,30": [
+    79,
+    30
+   ],
+   "0,31": [
+    79,
+    31
+   ],
+   "0,32": [
+    79,
+    32
+   ],
+   "0,33": [
+    79,
+    33
+   ],
+   "0,34": [
+    79,
+    34
+   ],
+   "0,35": [
+    79,
+    35
+   ],
+   "0,38": [
+    79,
+    38
+   ],
+   "0,39": [
+    79,
+    39
+   ],
+   "79,4": [
+    0,
+    4
+   ],
+   "79,5": [
+    0,
+    5
+   ],
+   "79,6": [
+    0,
+    6
+   ],
+   "79,7": [
+    0,
+    7
+   ],
+   "79,8": [
+    0,
+    8
+   ],
+   "79,9": [
+    0,
+    9
+   ],
+   "79,10": [
+    0,
+    10
+   ],
+   "79,11": [
+    0,
+    11
+   ],
+   "79,12": [
+    0,
+    12
+   ],
+   "79,13": [
+    0,
+    13
+   ],
+   "79,14": [
+    0,
+    14
+   ],
+   "79,15": [
+    0,
+    15
+   ],
+   "79,16": [
+    0,
+    16
+   ],
+   "79,17": [
+    0,
+    17
+   ],
+   "79,18": [
+    0,
+    18
+   ],
+   "79,19": [
+    0,
+    19
+   ],
+   "79,20": [
+    0,
+    20
+   ],
+   "79,21": [
+    0,
+    21
+   ],
+   "79,24": [
+    0,
+    24
+   ],
+   "79,25": [
+    0,
+    25
+   ],
+   "79,26": [
+    0,
+    26
+   ],
+   "79,27": [
+    0,
+    27
+   ],
+   "79,28": [
+    0,
+    28
+   ],
+   "79,29": [
+    0,
+    29
+   ],
+   "79,30": [
+    0,
+    30
+   ],
+   "79,31": [
+    0,
+    31
+   ],
+   "79,34": [
+    0,
+    34
+   ],
+   "79,35": [
+    0,
+    35
+   ],
+   "79,38": [
+    0,
+    38
+   ],
+   "79,39": [
+    0,
+    39
+   ]
+  },
+  "moves": {
+   "53,12": {
+    "m": "look",
+    "d": "udlr"
+   },
+   "8,10": {
+    "m": "look",
+    "d": "udlr"
+   },
+   "48,28": {
+    "m": "look",
+    "d": "udlr"
+   }
+  },
+  "parts": true,
+  "overheads": [
+   {
+    "kind": "picture",
+    "f": "em_top/0_48.png",
+    "at": [
+     0,
+     0
+    ],
+    "size": [
+     80,
+     40
+    ]
+   }
   ]
  },
  "HOENN_ROUTE_134": {
-  "floor_names": [
-   "Route 134",
-   "The seabed"
-  ],
-  "figure_floors": {
-   "Sailor Kelvin": 0,
-   "Swimmer Jack": 0,
-   "Swimmer Laurel": 0
-  },
   "floors": [
    {
     "art": [
-     "<oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo>",
-     "<ooooooooooooooooooocooqqooooqqooooooqqqqoooooooccccooqqoooqqqqqqqqooqqoooooooq>",
-     "<oooooooooqqooqqqqocccoooooqqooqqooqqooooqqooqqoooooqqoooqqooooooooqq[[qqooqqoo>",
-     "<oooooqqocooqqooooocccccoqqooo[[[qq[[[[ooooqqooqqooooooqqooooccccooooooooqqooqq>",
-     "<qqoocoocccooooooqqoooooo[[oooo[[[[[[[[[[ooooooooooooooooo[ooccccccccccoo[ooooo>",
-     "<ooocccocccooooooooo[[[[[[[ooooo[[[[[[[[[[ooooooooooooooo[[[oooooccccccoooooo[[>",
-     "<qoccccooooooooooo[[[[[[[[[oooooo[[[[[[[[[[oooooooooooooooo[[[[oooooooooooo[[[[>",
-     "<oocccooooooooooooooo[oooo[ooooooo{{[[[[[[[[ooooooooooooooooo[[[[[[[[[[[[[[[[[[>",
-     "<ooooooooooooooooooo[[oooo[ooooooo[{{{[[[[[[[[oooooooooooooo[[[[[[oooooo[[[[[[[>",
-     "<ooooooooooooooooo[[[[oooooocccooo[oo{{{[[[[[[[[[oooooooo[[[[[[oooocccco[[[[[[[>",
-     "<ooooooooooooooo[[[[[[ooooooccccoo[qq[oo{[[[[[[[[[[ooo[[[[[[[[ooccccccco[[[[[[[>",
-     "<ooooooooooooo[[[[[[[ooooooocccco[[[[[qq{{[[[[[[[oooo[[[[[[[oooccccccooo[[[[[[[>",
-     "<oooooooooooooooo[[[oooooooooccoooooooooo[[[[[[[ooooo[[[[[[oocccccoooo[[[[[[[[[>",
-     "<ooooooooooooooooo[[oooccoo[occooooooooooooo[[[[Xooo[[[[[[[occcccooooo[[[[[[[[[>",
-     "<ooooooooooooooo[[[ooooccoo[ooooccccccoooooooooooooooooooooocccoooooo[[[[[[[[[[>",
-     "<oooooooooooooo[[[[oooooooo[[oooccccccoccooo======o=====occoccooooooo[[[[[[[[[[>",
-     "<qoooooooooooo[[[[[oooccooo[[[ooooooooocccc==============ccccooooooo[[[[[[[[[[[>",
-     "<oqqoccooooooooo[[[oooccooo[[[[[[[[[[[ooocco======oo====oooccoooooo[[[[[[[[[[[[>",
-     "<oooccccco[[[[[[[[[[[oooooo{{{{[[[[[[[[[ooooooooooooooooooooooooo[[[[oooo[[[[[[>",
-     "<oooccccccoo[[[[[[[[[[[[[[[[[{{{{[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[oooo[[[[[[[[>",
-     "<oooocccccoooo[[[[[[[[[[[[[[[[[[{{{[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[oooo[[[[[[[[[[>",
-     "<oooooooooooooo[[[[[ooooo[[[[[[[[[{{{[[[[[[[[[[[[[[[[[[[[[[[[[[oooo[[[[[[[[[[[[>",
-     "<ooooooooqqo[[[[[[[[oooooooooo[[[[oX{{{[ooooo[[oooo[[[[[[[oooo[[[[[[[[[[[[[[[[[>",
-     "<ooooooooocooo[[[[[[[oooooooooo[[[qqoo{[oooooooqqqqoooooo[qqqq[[[[[[[[[[[[[[[[[>",
-     "<oooooooocccooo[[[[[[ooooooooooo[[[[qqoooooooqqooooooooqq[[[X[[[[[[[[[[[[[[[[[[>",
-     "<oooooooococoooo[[[[[ooooooooooo[[[oooqqoooooooooooooqq[oo[[oo[[[[[[[[[[[[[[[[[>",
-     "<oooooooooooocoooo[[[ooooccooooo[[[qqoooqqoooqqooooooo[[qq[[qq[[[[[[[[[[[[[[ooo>",
-     "<oooooooooccccco[[[[[ooooccooooo[[[[ooooooooooooqqoooo[[[[[[[[[[[[[[[[[[[[[oooo>",
-     "<oooooooooooccccooo[[oooooooooo[[[[ooooooqqoqqooooooooooooo[[[[[[oo[[[[[[[ooooo>",
-     "<oooooooooooocccoo[[[ooooooooo[[[[[qqooooooooooooqqooqqqqo[oooo{[qq[[[[[[[ooooo>",
-     "<oooooooooooooooo[[[[ooooooooo[[[[[[[qqooqqooooqqooooo[[[[oooooo{[[[[[[[[[ooooo>",
-     "<ooooooooooooqqoooo[[[ooooooo[[[[[[[[[oooooqqqqoooooqq[[[[oo::oo[[[[[[[[[[ooooo>",
-     "<oooooooooooooooooooo[[ooooo[[oo[[[[[[qq[[ooooooooqq[[[[[[oo::oo[[[[[[[[[[ooooo>",
-     "<oooooooooooooqqooooooo[[[[[ooqq[[[[[[[[[[[[ooooqq[[[[[[[[ooooooo[[[[[[[[[ooooo>",
-     "<oooooooooooooooqqqqooooooooqqo[[[[[[[[[[[[[qq[[[[[[[[[oo{[ooooo[oo[[[[[[[ooooo>",
-     "<oooooooooooooooooooqqqqqqoooooooo[[[[[[[oo[[[[[[[[[[[[qq{{[[[[[[qq[[[[[[[ooooo>",
-     "<ooooooooooooooooooooooooooocoooqqoo[[[ooqqooooooooooo[[[[[[[[[[[[[[[oooooooooo>",
-     "<oooooooooooooooooooooooocccccccoooooooqqooqqooqqoooqqoo[[[[oo[[[[[[[qqooqqoooq>",
-     "<oooooooooooooooooooooooooocccoooqqooqqooooooqqoooqqooqqooooqqoooooooooqqoooqqo>",
-     "<ooooooooooooooooooooooooooooooooooqqoooooooooooqqooooooqqqqooqqqqqqqqooooqqooo>"
+     ".ooooooooooooooooooooooccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+     ".oooooooooccoocccco~c~occccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+     ".oooooccooccccccccocccccoccccooccccccooooccccccccoooccocccc[......[cc[[cccccccco",
+     "occooocc~c~occooocccccccoccooo[[[cc[[[[ooooccooccooooooccooo.cccc.......[ccoocco",
+     "occo~c~occcooooooccoooooo[[[..[[[[[[[[[[[ooooooooooooooooo[[[cccccccccc.[[}}}}}>",
+     "cco~cccocccooooooooo[[[[[[[[...[[[[[[[[[[[ooooooooooooooo[[[[[[[.cccccc[[}}}}[[>",
+     "ccoccccooooooooooo[[[[[[[[[[....[[[[[[[[[[[oooooooooooooooo[[[[[[[[[[[[[}}}[[[[>",
+     "<oocccooooooooooooooo[[..[[[.....[{{[[[[[[[[ooooooooooooooooo[[[[[[[[[[[[[[[[[[>",
+     "<ooooooooooooooooooo[[[..[[[.....[[{{{[[[[[[[[oooooooooooooo[[[[[[[....[[[[[[[[>",
+     "<ooooooooooooooooo[[[[[...[[ccc..[[cc{{{[[[[[[[[[oooooooo[[[[[[[...cccc[[[[[[[[>",
+     "<ooooooooooooooo[[[[[[[...[[cccc[[[cc[cc{[[[[[[[[[[ooo[[[[[[[[[.ccccccc[[[[[[[[>",
+     "<ooooooooooooo[[[[[[[[....[[cccc[[[[[[cc{{[[[[[[[[[[[[[[[[[[[..cccccc[[[[[[[[[[>",
+     "<oooooooooooooooo[[[[.....[[[cc.........[[[[[[[[[[[[[[[[[[[[.ccccc...[[[[[[[[[[>",
+     "<ooooooooooooooooo[[[..cc.[[[cc............[[[[[[[[[[[[[[[[[ccccc...[[[[[[[[[[[>",
+     "<ooooooooooooooo[[[[...cc.[[[[..cccccc..........X...........ccc.....[[[[[[[[[[[>",
+     "ccooooooooooooo[[[[[......[[[[[.cccccc.cc................cc.cc.....[[[[[[[[[[[[>",
+     "ccccoooooooooo[[[[[[..cc..[[[[[[[[[[[[[cccc.============.cccc.....[[[[[[[[[[[[[>",
+     ".occ~cc~oooooooo[[[[[[cc..[[[[[[[[[[[[[[[cc.......N........cc...[[[[[[[[[[[[[[[>",
+     ".oooccccc~[[[[[[[[[[[[[[[[[{{{{[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[}}}}[[[[[[>",
+     ".oooccccccoo[[[[[[[[[[[[[[[[[{{{{[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[}}}}[[[[[[[[>",
+     ".oooocccccoooo[[[[[[[[[[[[[[[[[[{{{[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[}}}}[[[[[[[[[[>",
+     ".ooooooooccoooo[[[[[[[[[[[[[[[[[[[{{{[[[[[[[[[[[[[[[[[[[[[[[[[[}}}}[[[[[[[[[[[[>",
+     ".oooooooocco[[[[[[[[[[[[.....[[[[[cc{{{[[...[[[cccc[[[[[[[cccc[[[[[[[[[[[[[[[[[>",
+     ".oooooooo~c~oo[[[[[[[[[.......[[[[cccc{[[...[ccccccoooocc[cccc[[[[[[[[[[[[[[[[[>",
+     ".oooooooocccooo[[[[[[[[........[[[[[ccccoooooccoooooocccc[[[[[[[[[[[[[[[[[[[[[[>",
+     ".oooooooocccoooo[[[[[[.........[[[[ccXccccoooccoooooocc[cc[[cc[[[[[[[[[[[[[[[[[>",
+     ".ooooooooocc~c~ooo[[[[...cc....[[[[ccoooccoooccoccoooo[[cc[[cc[[[[[[[[[[[[[[[..>",
+     ".oooooooooccccc~[[[[[[N..cc...[[[[[[oooooccoccooccoooo[[[[[[[[[[[[[[[[[[[[[[...>",
+     ".oooooooooooccccooo[[[.......[[[[[[ccooooccoccoooccoocccc}}[[[[[[cc[[[[[[[[....>",
+     ".oooooooooooocccoo[[[[.......[[[[[[ccccooccooooccccoocccc}[oXoo{[cc[[[[[[[[....>",
+     ".ooooooooooooccoo[[[[[[.....[[[[[[[[[ccooccccccccooocc[[[[oovvoo{[[[[[[[[[[....>",
+     ".ooooooooooooccoooo[[[[[...[[[[[[[[[[[ccoooccccooocccc[[[[ovvvvo[[[[[[[[[[[....>",
+     ".oooooooooooooccooooo[[[[[[[[[cc[[[[[[cc[[oooooocccc[[[[[[ovvvvo[[[[[[[[[[[....>",
+     ".oooooooooooooccccccooo[[[[[cccc[[[[[[[[[[[[ccoocc[[[[[[[[oovvoo}[[[[[[[[[[....>",
+     ".oooooooooooooooccccccccccoocco[[[[[[[[[[[[[cc[[[[[[[[[cc{[oooo}[cc[[[[[[[[....>",
+     ".oooooooooooooooooooccccccoooooocc[[[[[[[cc[[[[[[[[[[[[cc{{[[[[[[cc[[[[[[[[[[[[>",
+     ".oooooooooooooooooooooooocc~c~ccccoo[[[ccccccooccooocc[[[[[[[[[[[[[[[ccooccooocc",
+     ".oooooooooooooooooooooooocccccccoccooccccccccccccocccccc[[[[cc[[[[[[[ccccccocccc",
+     ".oooooooooooooooooooooooooocccoooccccccccccccccccccccccccccccccccccccccccccccco>",
+     ".oooooooooooooooooooooooooooooooooocccccccccccccccccccccccccccccccccccccccccooo>"
     ],
     "exits": {
+     "<": "SLATEPORT_CITY",
      ">": "HOENN_ROUTE_133",
-     "<": "SLATEPORT_CITY"
+     "v": "HOENN_SEALED_CHAMBER"
     },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/0_49.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "CARBOS",
+     "STAR PIECE"
+    ],
     "trainer_spots": [
      "Sailor Kelvin",
      "Swimmer Jack",
      "Swimmer Laurel"
     ],
-    "dive": 1
-   },
-   {
-    "art": [
-     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccnccccccccccccccccccc",
-     "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc....ccccccccccccccccc",
-     "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc....ccccccccccccccccc",
-     "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc....ccccccccccccccccc",
-     "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc....ccccccccccccccccc",
-     "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc....ccccccccccccccccc",
-     "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc....ccccccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
-    ],
-    "exits": {
-     "n": "HOENN_SEALED_CHAMBER"
+    "edge_to": {
+     "0,7": [
+      39,
+      7
+     ],
+     "0,8": [
+      39,
+      8
+     ],
+     "0,9": [
+      39,
+      9
+     ],
+     "0,10": [
+      39,
+      10
+     ],
+     "0,11": [
+      39,
+      11
+     ],
+     "0,12": [
+      39,
+      12
+     ],
+     "0,13": [
+      39,
+      13
+     ],
+     "0,14": [
+      39,
+      14
+     ],
+     "79,4": [
+      0,
+      4
+     ],
+     "79,5": [
+      0,
+      5
+     ],
+     "79,6": [
+      0,
+      6
+     ],
+     "79,7": [
+      0,
+      7
+     ],
+     "79,8": [
+      0,
+      8
+     ],
+     "79,9": [
+      0,
+      9
+     ],
+     "79,10": [
+      0,
+      10
+     ],
+     "79,11": [
+      0,
+      11
+     ],
+     "79,12": [
+      0,
+      12
+     ],
+     "79,13": [
+      0,
+      13
+     ],
+     "79,14": [
+      0,
+      14
+     ],
+     "79,15": [
+      0,
+      15
+     ],
+     "79,16": [
+      0,
+      16
+     ],
+     "79,17": [
+      0,
+      17
+     ],
+     "79,18": [
+      0,
+      18
+     ],
+     "79,19": [
+      0,
+      19
+     ],
+     "79,20": [
+      0,
+      20
+     ],
+     "79,21": [
+      0,
+      21
+     ],
+     "79,22": [
+      0,
+      22
+     ],
+     "79,23": [
+      0,
+      23
+     ],
+     "79,24": [
+      0,
+      24
+     ],
+     "79,25": [
+      0,
+      25
+     ],
+     "79,26": [
+      0,
+      26
+     ],
+     "79,27": [
+      0,
+      27
+     ],
+     "79,28": [
+      0,
+      28
+     ],
+     "79,29": [
+      0,
+      29
+     ],
+     "79,30": [
+      0,
+      30
+     ],
+     "79,31": [
+      0,
+      31
+     ],
+     "79,32": [
+      0,
+      32
+     ],
+     "79,33": [
+      0,
+      33
+     ],
+     "79,34": [
+      0,
+      34
+     ],
+     "79,35": [
+      0,
+      35
+     ],
+     "79,38": [
+      0,
+      38
+     ],
+     "79,39": [
+      0,
+      39
+     ]
     },
-    "theme": "seabed",
-    "surface": 0,
-    "pool": "HOENN_UNDERWATER_POOL_PERCENTAGES"
+    "moves": {
+     "50,17": {
+      "m": "look",
+      "d": "udlr"
+     },
+     "22,27": {
+      "m": "look",
+      "d": "udlr"
+     }
+    },
+    "dive": 1,
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/0_49.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       80,
+       40
+      ]
+     }
+    ]
    }
-  ]
+  ],
+  "floor_names": [
+   "Route 134"
+  ],
+  "figure_floors": {
+   "Sailor Kelvin": 0,
+   "Swimmer Jack": 0,
+   "Swimmer Laurel": 0
+  }
  },
  "HOENN_ROUTE_105": {
   "art": [
@@ -90549,7 +91261,7 @@
    "<ooooooooooooooooocc",
    ".cFc.ooooooooooooooo",
    ".cDc.ooooooooo.cBc.o",
-   "<....ooccccooo.cDc.>",
+   ".....ooccccooo.cDc.>",
    "<...No.cAccNoo.....>",
    "<oo.oo.cDcc.oooo.oo>",
    "<oo.oo.!.N..oooo.oo>",
@@ -90656,10 +91368,6 @@
    "0,10": [
     79,
     10
-   ],
-   "0,13": [
-    79,
-    13
    ],
    "0,14": [
     79,
@@ -96678,6 +97386,191 @@
    "Magma Admin Tabitha": 1,
    "Magma Leader Maxie": 1
   }
+ },
+ "HOENN_SEALED_CHAMBER": {
+  "floors": [
+   {
+    "art": [
+     "ccccccccccccccccccccc",
+     "ccccccccccccccccccccc",
+     "cccccccccc1cccccccccc",
+     "ccc...............ccc",
+     "ccc...............ccc",
+     "cccccccc.ccccc.cccccc",
+     "cccccccc.ccccc.cccccc",
+     "ccc...............ccc",
+     "cccccccc.ccccc.cccccc",
+     "cccccccc.ccccc.cccccc",
+     "ccc...............ccc",
+     "cccccccc.ccccc....ccc",
+     "cccccccc.ccccc....ccc",
+     "ccc...............ccc",
+     "cccccccc.ccccc....ccc",
+     "cccccccc.ccccc....ccc",
+     "ccc...............ccc",
+     "ccc.....ooooo.....ccc",
+     "ccc.....ovvvo.....ccc",
+     "ccc.....ovvvo.....ccc",
+     "ccccccccccccccccccccc",
+     "ccccccccccccccccccccc",
+     "ccccccccccccccccccccc"
+    ],
+    "exits": {
+     "v": "HOENN_ROUTE_134"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/24_71.png",
+      "at": [
+       0,
+       0
+      ],
+      "until": {
+       "flag": "sealed_chamber_dug",
+       "f": "em_ground/24_71_closed.png"
+      }
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "links": {
+     "10,2": [
+      1,
+      10,
+      19
+     ]
+    },
+    "barred": [
+     {
+      "tiles": [
+       [
+        10,
+        2
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "sealed_chamber_dug"
+      },
+      "lines": [
+       "Braille is carved into the wall. It reads: \"Dig here.\""
+      ],
+      "open_with": {
+       "condition": [
+        "party_move:DIG"
+       ],
+       "flag": "sealed_chamber_dug",
+       "lines": [
+        "Braille is carved into the wall. It reads: \"Dig here.\"",
+        "Your Pokémon used Dig! A way through the wall opened up!"
+       ]
+      }
+     }
+    ],
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/24_71.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       21,
+       23
+      ],
+      "until": {
+       "flag": "sealed_chamber_dug",
+       "f": "em_top/24_71_closed.png"
+      }
+     }
+    ]
+   },
+   {
+    "art": [
+     "ccccccccccccccccccccc",
+     "ccccccccccccccccccccc",
+     "ccccccccccccccccccccc",
+     "cccc....ccccc....cccc",
+     "cccc....ccccc....cccc",
+     "ccc...............ccc",
+     "ccc..ccc.....ccc..ccc",
+     "ccc..ccc.....ccc..ccc",
+     "ccc..ccc.....ccc..ccc",
+     "ccc...............ccc",
+     "ccc...............ccc",
+     "cccccc.........cccccc",
+     "cccccc.........cccccc",
+     "cccccc.........cccccc",
+     "ccc...............ccc",
+     "ccc...............ccc",
+     "ccc..ccc.....ccc..ccc",
+     "ccc..ccc.....ccc..ccc",
+     "cccc.ccc.....ccc.cccc",
+     "cccc......1......cccc",
+     "ccccccccccccccccccccc",
+     "ccccccccccccccccccccc",
+     "ccccccccccccccccccccc"
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/24_72.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "links": {
+     "10,19": [
+      0,
+      10,
+      2
+     ]
+    },
+    "barred": [
+     {
+      "tiles": [
+       [
+        10,
+        4
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "regi_trio_awakened"
+      },
+      "lines": [
+       "Braille is carved into the wall. It reads:",
+       "\"First comes Wailord. Last comes Relicanth.\""
+      ],
+      "open_with": {
+       "condition": [
+        "party_first:321",
+        "party_last:369"
+       ],
+       "flag": "regi_trio_awakened",
+       "lines": [
+        "Braille is carved into the wall. It reads:",
+        "\"In this cave we have lived. We owe all to the Pokémon.\"",
+        "There's a rumble far away... Something stirred in the Desert Ruins, the Island Cave and the Ancient Tomb!"
+       ]
+      }
+     }
+    ],
+    "parts": true
+   }
+  ],
+  "floor_names": [
+   "Outer room",
+   "Inner room"
+  ]
  },
  "TWINLEAF_TOWN": {
   "art": [

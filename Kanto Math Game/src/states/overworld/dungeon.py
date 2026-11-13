@@ -2583,6 +2583,14 @@ class DungeonState(OverworldBattles, PlayState):
             if bar.get("boss"):  # (it battles you: the Kecleon the Devon Scope shows, a wild Pokemon in the way)
                 self.action_challenge_boss(dict(bar["boss"]))
                 return True
+            ow = bar.get("open_with")   # (it gives way once you meet its condition: the Sealed Chamber's walls, Dig, Wailord and Relicanth)
+            if ow and all(self._check_route_condition(c, False, ow) for c in (ow.get("condition") or [])):
+                self.game.story_manager.story_flags[ow["flag"]] = True
+                self._clear_boulders()   # (the bars again: this one's "until" is met now)
+                self._floor_surf = None
+                self._over_key = None   # (its picture may change too: a picture "until" the flag)
+                self.say(ow.get("lines") or ["Something gave way!"])
+                return True
             self.say(bar.get("lines") or ["The Cycling Road is for bicycles only.", "Come back with a Bicycle."])
             return True
         if what.startswith("rubble:"):

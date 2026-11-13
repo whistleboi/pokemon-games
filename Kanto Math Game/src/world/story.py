@@ -302,6 +302,13 @@ class StoryManager:
             return any(p and t in [str(x).upper() for x in (getattr(p, "types", None) or [])] for p in self.player_team)
         if condition.startswith("has_ribbon:"):  # (a Pokemon of yours, with you or in the PC, has won it: Lilycove Museum's portraits)
             return self.ribbon_holder(condition.split(":", 1)[1]) is not None
+        if condition.startswith("party_move:"):  # (a Pokemon with you knows it: Dig, at the Sealed Chamber's wall)
+            mv = condition.split(":", 1)[1].upper()
+            return any(p and mv in [str(m).upper() for m in (getattr(p, "moves", None) or [])] for p in self.player_team)
+        if condition.startswith(("party_first:", "party_last:")):  # (the Sealed Chamber's braille: Wailord first, Relicanth last)
+            team = [p for p in self.player_team if p and not getattr(p, "is_egg", False)]
+            want = int(condition.split(":", 1)[1])
+            return bool(team) and int((team[0] if condition.startswith("party_first:") else team[-1]).id) == want
         if condition == "party_room":  # (room in the party for a gift: Lavaridge's Egg)
             return len([p for p in self.player_team if p]) < 6
         if condition == "all_unown_registered":

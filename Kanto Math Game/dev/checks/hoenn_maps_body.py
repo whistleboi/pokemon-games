@@ -1613,5 +1613,71 @@ check("HOENN_SKY_PILLAR" in _r131["exits"].values() and any(o.get("target_area")
 story.inventory.clear(); story.inventory.update(_inv17)
 story.story_flags.clear(); story.story_flags.update(_saved17)
 
+# ---- batch 18: Routes 132-134 (currents), the Sealed Chamber (Dig, Wailord and Relicanth)
+_saved18, _inv18, _team18 = dict(story.story_flags), dict(story.inventory), list(story.player_team)
+_tm18 = json.load(open("assets/town_maps.json", encoding="utf-8"))
+_sp18 = g.loader.area_data["STORY_PROGRESSION"]
+story.inventory.update({"HM_SURF": 1, "HM_DIVE": 1})
+st = open_map("HOENN_ROUTE_133", "HOENN_ROUTE_132")
+_calm(st)
+_a133 = _tm18["HOENN_ROUTE_133"]["art"]
+_cur = next((x, y) for y, r in enumerate(_a133) for x in range(len(r) - 4, 8, -1) if r[x - 6:x + 1] == "[" * 7)
+st.run.player, st.anim = _cur, 0
+st.step(-1, 0)
+_play(st, 600)
+check(st.run.player[0] <= _cur[0] - 3 and st.run.player[1] == _cur[1],
+      f"Route 133: the current sweeps you west, toward Slateport ({_cur} -> {st.run.player})")
+_r134 = _tm18["HOENN_ROUTE_134"]["floors"][0]
+_dive134 = next(o for o in _sp18["HOENN_ROUTE_134"]["route_menu"] if o.get("target_area") == "HOENN_SEALED_CHAMBER")
+_vv = [k for k, t in _r134["exits"].items() if t == "HOENN_SEALED_CHAMBER"]
+check(_vv and sum(r.count(_vv[0]) for r in _r134["art"]) >= 6 and "has_item:HM_DIVE" in _dive134["condition"],
+      "Route 134: Dive in its deep water into the Sealed Chamber (with Dive, once you're Champion)")
+_found18 = {k: {o["text"] for o in _sp18[k]["route_menu"] if o.get("found")} for k in ("HOENN_ROUTE_132", "HOENN_ROUTE_133", "HOENN_ROUTE_134")}
+check(_found18["HOENN_ROUTE_132"] == {"RARE CANDY", "PROTEIN"} and _found18["HOENN_ROUTE_133"] == {"BIG PEARL", "STAR PIECE", "MAX REVIVE"}
+      and _found18["HOENN_ROUTE_134"] == {"CARBOS", "STAR PIECE"}, f"Routes 132-134: Emerald's items to find ({_found18})")
+for _k in ("sealed_chamber_dug", "regi_trio_awakened"):
+    story.story_flags.pop(_k, None)
+story.story_flags["beat_hoenn_champion"] = True
+_sc = _tm18["HOENN_SEALED_CHAMBER"]["floors"]
+from src.dungeon import art as _art18
+_closed = _art18._version_file(_sc[0]["roofs"]["_picture"])
+_sand = Pokemon(g.loader.fetch_specific(27), g.assets); _sand.moves = ["SCRATCH"]
+story.player_team = [_sand]
+st = open_map("HOENN_SEALED_CHAMBER", "HOENN_ROUTE_134")
+_calm(st)
+st.run.player, st.anim = (10, 3), 0
+st.step(0, -1)
+said = _play(st, 600)
+_shut = str(st.run.floor.decor.get((10, 2), "")).startswith("barrier:") and not story.story_flags.get("sealed_chamber_dug")
+_sand.moves = ["SCRATCH", "DIG"]
+st.run.player, st.anim = (10, 3), 0
+st.step(0, -1)
+said2 = _play(st, 600)
+check(_shut and _closed == "em_ground/24_71_closed.png" and story.story_flags.get("sealed_chamber_dug") and not str(st.run.floor.decor.get((10, 2), "")).startswith("barrier:")
+      and _art18._version_file(_sc[0]["roofs"]["_picture"]) == "em_ground/24_71.png" and any("Dig" in x for x in said2),
+      f"Sealed Chamber: the braille wall says Dig here; a Pokemon that knows Dig opens it ({said[:1]} / {said2[-1:]})")
+_calm(st)
+st.run.player, st.anim = (10, 3), 0
+st.step(0, -1)
+_play(st, 600)
+check(st.run.index == 1 and _sc[1]["links"].get("10,19", [None])[0] == 0,
+      f"Sealed Chamber: through the dug wall to the inner room, and back (floor {st.run.index}, {st.run.player})")
+_calm(st)
+_wail, _reli = Pokemon(g.loader.fetch_specific(321), g.assets), Pokemon(g.loader.fetch_specific(369), g.assets)
+story.player_team = [_reli, _sand, _wail]
+st.run.player, st.anim = (10, 5), 0
+st.step(0, -1)
+_play(st, 600)
+_still = not story.story_flags.get("regi_trio_awakened")
+story.player_team = [_wail, _sand, _reli]
+st.run.player, st.anim = (10, 5), 0
+st.step(0, -1)
+said = _play(st, 800)
+check(_still and story.story_flags.get("regi_trio_awakened") and any("Desert Ruins" in x for x in said),
+      f"Sealed Chamber: Wailord first and Relicanth last, and the braille wakes the three Regis ({said[-1:]})")
+story.player_team = _team18
+story.inventory.clear(); story.inventory.update(_inv18)
+story.story_flags.clear(); story.story_flags.update(_saved18)
+
 story.story_flags.clear(); story.story_flags.update(_saved)
 print(f"##### {len(fails)} failures")
