@@ -30,7 +30,9 @@ PRICES = [1000, 1000, 1500, 1500, 2000, 2000, 2500, 2500, 3000]  # by tier: chea
 GIFT_TMS = {"TM100": ("SMACK-DOWN", "ORAS TM23: Professor Cozmo, Fallarbor Town"),
             "TM101": ("SWORDS-DANCE", "ORAS TM75: the dancing Black Belt, Lavaridge Town"),
             "TM102": ("FLAME-CHARGE", "ORAS TM43: lying on the Jagged Pass (across the round stones)"),
-            "TM103": ("ROCK-POLISH", "ORAS TM69: lying on the Jagged Pass's west hill")}
+            "TM103": ("ROCK-POLISH", "ORAS TM69: lying on the Jagged Pass's west hill"),
+            "TM104": ("HIDDEN-POWER", "ORAS TM10: Fortree City's old woman and her coin game"),
+            "TM105": ("SHADOW-BALL", "ORAS TM30: lying on Mt. Pyre's top floor")}
 
 
 def rows(name):

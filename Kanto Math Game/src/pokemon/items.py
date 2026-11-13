@@ -91,10 +91,15 @@ DEPARTMENT = ["X_ATTACK", "X_DEFENSE", "X_SP_ATK", "X_SP_DEF", "X_SPEED", "X_ACC
 
 
 # Held items that power up one type's moves (Jordan, 11-06: Cherrygrove's fisherman's Mystic Water)
-HELD_BOOSTS = {"MYSTIC_WATER": "WATER", "CHARCOAL": "FIRE"}  # (Charcoal: Lavaridge's Herb Shop, 11-12)
+HELD_BOOSTS = {"MYSTIC_WATER": "WATER", "CHARCOAL": "FIRE", "SEA_INCENSE": "WATER"}  # (Charcoal: Lavaridge's Herb Shop; Sea Incense: Mt. Pyre, 11-12)
+FEWER_WILD = {"CLEANSE_TAG"}
+DEFENCE_HELD = {"EVIOLITE"}  # (held by a Pokemon that can still evolve: its defences up by half. Route 123, 11-12)  # (held by your lead: fewer wild Pokemon on a map. Mt. Pyre's old woman, 11-12)
 HELD_BOOST = 1.2
 HELD = {"MYSTIC_WATER": {"price": 1000, "text": "Give it to a Pokemon to hold: its Water-type moves hit harder."},
-        "CHARCOAL": {"price": 1000, "text": "Give it to a Pokemon to hold: its Fire-type moves hit harder."}}
+        "CHARCOAL": {"price": 1000, "text": "Give it to a Pokemon to hold: its Fire-type moves hit harder."},
+        "SEA_INCENSE": {"price": 1000, "text": "Give it to a Pokemon to hold: its Water-type moves hit harder."},
+        "CLEANSE_TAG": {"price": 1000, "text": "Give it to your lead Pokemon to hold: fewer wild Pokemon come near."},
+        "EVIOLITE": {"price": 3000, "text": "Give it to a Pokemon that can still evolve: it takes less damage."}}
 
 
 def held_boost(pokemon, move_type):

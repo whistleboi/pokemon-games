@@ -288,6 +288,9 @@ class StoryManager:
             pid = int(condition.split(":", 1)[1])
             team = [p for p in self.player_team if p]
             return len(team) == 1 and team[0].id == pid
+        if condition.startswith("party_type:"):  # (a Pokemon of that type with you: Route 123's Grass lover)
+            t = condition.split(":", 1)[1].upper()
+            return any(p and t in [str(x).upper() for x in (getattr(p, "types", None) or [])] for p in self.player_team)
         if condition == "party_room":  # (room in the party for a gift: Lavaridge's Egg)
             return len([p for p in self.player_team if p]) < 6
         if condition == "all_unown_registered":

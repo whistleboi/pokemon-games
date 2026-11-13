@@ -319,6 +319,10 @@ class AbilityEffects:
             mult *= 2
         if not special and fa == "MARVELSCALE" and getattr(defender, "status", None):
             mult *= 1.5
+        if getattr(defender, "held_item", None) == "EVIOLITE":  # (held by one that can still evolve: both defences up)
+            from src.pokemon.evolution import _descendants
+            if _descendants(self.game, getattr(defender, "id", 0)):
+                mult *= 1.5
         return mult
 
     def ability_final_mult(self, attacker, defender, name, d, eff, crit, stab):

@@ -90,6 +90,7 @@ def reachable(key, m):
     assert exits, f"{key}: no way out"
     starts = exits if m.get("parts") else exits[:1]  # (a floor in separate parts, each reached by its own ladder)
     starts = starts + [(x, y - 1) for x, y in map(tuple, m.get("back_doors", []))]  # (a yard reached only through a house's back door: Fuchsia's pond)
+    starts = starts + [tuple(t) for t in m.get("landings", [])]  # (a spot reached only by falling through a hole above: Mt. Pyre)
     seen, todo = set(starts), list(starts)
     while todo:
         x, y = todo.pop()

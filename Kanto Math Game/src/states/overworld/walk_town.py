@@ -590,6 +590,13 @@ class WalkTownState(CityState):
             return
         if tuple(to) in getattr(self, "barred", {}):
             self.walk_goal = None
+            bar = self.barred[tuple(to)]
+            if bar.get("on_bump"):  # (walking into it moves the story: Fortree's Kecleon, seen with the Devon Scope, runs off)
+                ob = bar["on_bump"]
+                if ob.get("flag"):
+                    self.npc_flag(ob["flag"])
+                from src.states.overworld.common import _fill_names
+                return self.show_message([_fill_names(self.game, x) for x in ob.get("lines") or ["..."]])
             return self.flash((self.barred[tuple(to)].get("lines") or ["Someone is standing in the way."])[0], 130)
         if to in self.signs:
             self.walk_goal = None
@@ -1006,6 +1013,8 @@ class WalkTownState(CityState):
             theme.shadow_text(screen, "!", fonts["label"], ex, ey, color=(230, 60, 50))
         for _t, _bar in getattr(self, "barred", {}).items():
             _look = str(_bar.get("look") or "person")
+            if _look == "unseen":  # (something invisible in the way: Fortree's Kecleon, till the Devon Scope)
+                continue
             _img = self._stand_in_img(_look, _bar) if _look.startswith(("sheet:", "ow:", "mon:")) else None
             if _img is not None:  # (a real game's own sprite: a boat at the pier, someone in the way)
                 screen.blit(_img, _img.get_rect(midbottom=(at(_t).centerx, at(_t).bottom - 2)))

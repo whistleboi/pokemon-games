@@ -304,6 +304,8 @@ for _a in _kanto:
             if (_i < len(_art_floors) and _art_floors[_i].get("parts")) or (_dg.recipe_for(g, _a).get("art") or {}).get("parts"):  # (in parts: each from its own ladder)
                 for _t in list(_f.exits):
                     _reach = {**_reach, **_reach_of(_f, _t)}
+            for _t in (_art_floors[_i].get("landings") or [] if _i < len(_art_floors) else []):  # (where you land, falling through a hole above: Mt. Pyre)
+                _reach = {**_reach, **_reach_of(_f, tuple(_t))}
             _things = list(_f.exits) + list(_f.items) + list(_f.tm_spots) + ([] if _dg.recipe_for(g, _a).get("layout") else [(m.x, m.y) for m in _f.movers])
             if any(t not in _reach for t in _things):
                 _bad.append((_a, _i, "something out of reach", [(t, _f.exits.get(t), _f.items.get(t)) for t in _things if t not in _reach][:6]))

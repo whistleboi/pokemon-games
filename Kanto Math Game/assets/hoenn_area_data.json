@@ -1125,7 +1125,12 @@
       "next_area": "HOENN_JAGGED_PASS",
       "on_enter_event": null
     },
-    "FORTREE_CITY_UPPER": {"area_type": "town", "route_name": "Fortree Treetops", "region": "HOENN", "has_gym": false, "trainer_encounter_rate": 0, "travel_options": [{"text": "Down to the ground", "target_area": "FORTREE_CITY"}], "explore_options": []},
+    "FORTREE_CITY_UPPER": {"area_type": "town", "route_name": "Fortree Treetops", "region": "HOENN", "has_gym": false, "trainer_encounter_rate": 0, "travel_options": [{"text": "Down to the ground", "target_area": "FORTREE_CITY"}], "explore_options": [
+        {"text": "The coin game", "door": "hiddenpower", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_tm104_hidden_power", "event": {"lines": ["Old woman: You've won three in a row! Here, a TM: Hidden Power. Its type depends on who uses it."], "puzzle": "coins", "puzzle_fail": ["Old woman: Ohoho! Not this time. Try again!"], "gift_item": {"TM104": 1}, "flag": "got_tm104_hidden_power"}},
+        {"text": "Old woman", "door": "hiddenpower", "action": "EVENT", "color": "BLUE", "event": {"lines": ["Old woman: Hidden Power's type is different for every Pokémon. It's a little mystery, isn't it?"]}},
+        {"text": "Little girl", "door": "spinda", "action": "EVENT", "color": "GOLD", "flag_condition": "not fortree_skitty_trade", "event": {"requires": ["party_has:327"], "fail": ["Little girl: I really want a Spinda! You can find them on Route 113. I'd trade my Skitty for one!"], "lines": ["Little girl: A Spinda! Will you trade it for my Skitty? Yay, thank you!"], "trade": {"want": 327, "give": 300, "item": "MAGOST_BERRY"}, "flag": "fortree_skitty_trade"}},
+        {"text": "Wingull's trainer", "door": "wingull", "action": "EVENT", "color": "BLUE", "event": {"lines": ["Breeder: My Wingull carries letters all the way to Mossdeep and back. It's off on an errand now!"]}},
+        {"text": "Aarune", "door": "guild", "action": "EVENT", "color": "GOLD", "event": {"lines": ["Aarune: Welcome to the Secret Base Guild! I've set up here. Fancy a battle?"], "battle": {"name": "Secret Base Expert Aarune", "class": "PKMN_TRAINER", "sprite": "ranger_m.png", "team": [330], "levels": [23], "rewards": {"balls": 3}, "dialogue": {"player_won": ["Aarune: Hah! You're the real deal. One day I'll show you the perfect Super-Secret Base!"]}}, "flag": "beat_aarune_fortree", "done": ["Aarune: Come back once the Guild's all set up!"]}}]},
     "FORTREE_CITY": {
       "area_type": "town",
       "route_name": "Fortree City",
@@ -2081,7 +2086,8 @@
           "rewards": { "balls": 3 }
         }
       ],
-      "route_menu": [{"text": "VENUSAURITE", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_venusaurite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the VENUSAURITE!"], "gift_item": {"VENUSAURITE": 1}, "flag": "got_venusaurite"}}, 
+      "route_menu": [
+        {"text": "REST STOP", "door": "reststop", "action": "REST", "color": "GREEN"},{"text": "VENUSAURITE", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_venusaurite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the VENUSAURITE!"], "gift_item": {"VENUSAURITE": 1}, "flag": "got_venusaurite"}}, 
         {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
         {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"},
@@ -2092,7 +2098,7 @@
       "next_area": "FORTREE_CITY",
       "region": "HOENN",
       "weather": "RAIN",
-        "on_enter_event": {"type": "trainer_battle", "condition": "weather_institute_cleared", "flag_check": "hoenn_rival_119", "trainer": {"name": "{rival_name}", "class": "RIVAL", "sprite": "{rival_character}", "is_boss_battle": true, "team": [320, 285, 256], "team_choice": {"252": [320, 285, 256], "255": [285, 218, 259], "258": [218, 320, 253]}, "levels": [31, 31, 33], "movesets": {"320": ["WATER-PULSE", "MIST", "BRINE", "REST"], "285": ["POISON-POWDER", "WORRY-SEED", "GIGA-DRAIN", "GROWTH"], "256": ["DOUBLE-KICK", "FLAME-CHARGE", "QUICK-ATTACK", "BULK-UP"], "218": ["CLEAR-SMOG", "ANCIENT-POWER", "FLAME-BURST", "ROCK-SLIDE"], "259": ["BIDE", "MUD-BOMB", "ROCK-SLIDE", "PROTECT"], "253": ["PURSUIT", "LEAF-BLADE", "AGILITY", "SLAM"]}, "rewards": {"balls": 10, "HM_FLY": 1}, "dialogue": {"intro": ["{rival_name}: You chased {team} out of the Weather Institute? Amazing!", "{rival_name}: Then show me how strong you've gotten!"], "player_won": ["{rival_name}: Wow... Here, take this HM. Fly will take you anywhere!", "{rival_name}: Fortree City is just ahead. Good luck with Winona!"], "player_lost": ["{rival_name}: Got you this time! Heal up and keep going."]}}}
+        "on_enter_event": null
     },
     "HOENN_ROUTE_120": {
       "area_type": "wild_route",
@@ -2137,7 +2143,6 @@
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
         {"text": "TALK TO STEVEN", "action": "HOENN_EVENT", "event": "starter_stone", "condition": ["got_mega_bracelet", "weather_institute_cleared", "not:got_starter_mega_stone"], "color": "GOLD"},
         {"text": "ANCIENT TOMB", "action": "BOSS", "color": "GRAY", "condition": ["regi_trio_awakened", "not:defeated_registeel"], "boss": {"id": 379, "name": "Registeel", "victory_flag": "defeated_registeel"}},
-        {"text": "INVISIBLE POKEMON", "action": "BOSS", "color": "PURPLE", "condition": ["has_item:DEVON_SCOPE", "not:route120_kecleon"], "boss": {"id": 352, "name": "Kecleon", "victory_flag": "route120_kecleon", "lines": ["The Devon Scope reveals something on the bridge...", "It's a Kecleon! It was hiding in plain sight!"]}},
         {"text": "ROUTE 121", "action": "EXIT", "target_area": "HOENN_ROUTE_121", "condition": "can_exit", "color": "RED"},
         {"text": "Scorched Slab", "action": "EXIT", "target_area": "HOENN_SCORCHED_SLAB", "condition": ["can_exit", "has_item:HM_SURF"], "color": "RED"},
         {"text": "FORTREE CITY", "action": "EXIT", "target": "FORTREE_CITY", "condition": "can_exit", "color": "RED"}
@@ -2266,7 +2271,12 @@
           "rewards": { "balls": 5 }
         }
       ],
-      "route_menu": [{"text": "GYARADOSITE", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_gyaradosite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the GYARADOSITE!"], "gift_item": {"GYARADOSITE": 1}, "flag": "got_gyaradosite"}}, {"text": "ABOMASITE", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_abomasite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the ABOMASITE!"], "gift_item": {"ABOMASITE": 1}, "flag": "got_abomasite"}}, 
+      "route_menu": [
+        {"text": "GYARADOSITE", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_gyaradosite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the GYARADOSITE!"], "gift_item": {"GYARADOSITE": 1}, "flag": "got_gyaradosite"}},
+        {"text": "ABOMASITE", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_abomasite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the ABOMASITE!"], "gift_item": {"ABOMASITE": 1}, "flag": "got_abomasite"}},
+        {"text": "Berry Master", "door": "berrymaster", "action": "EVENT", "color": "GREEN", "event": {"lines": ["Berry Master: I'm the Berry Master! Here, take some of my Berries. Grow them with care!"], "daily_gift": {"key": "berry_master_123", "items": ["POMEG_BERRY", "KELPSY_BERRY", "QUALOT_BERRY", "HONDEW_BERRY", "GREPA_BERRY", "TAMATO_BERRY", "CORNN_BERRY", "MAGOST_BERRY", "RABUTA_BERRY", "NOMEL_BERRY"], "count": 2, "wait": ["Berry Master: I've already given you Berries today. Come back tomorrow!"]}}},
+        {"text": "Berry Master's wife", "door": "berrymaster", "action": "EVENT", "color": "GREEN", "event": {"lines": ["Wife: My husband and his Berries! Have one from me too, dear."], "daily_gift": {"key": "berry_master_wife_123", "items": ["CHERI_BERRY", "CHESTO_BERRY", "PECHA_BERRY", "RAWST_BERRY", "ASPEAR_BERRY", "LEPPA_BERRY", "ORAN_BERRY", "PERSIM_BERRY", "LUM_BERRY", "SITRUS_BERRY"], "wait": ["Wife: That's all for today. Come and see us again!"]}}},
+        {"text": "Magikarp fan", "action": "EVENT", "color": "BLUE", "_look": "em_9.png", "flag_condition": "not got_eviolite_123", "event": {"lines": ["Fisherman: Do you like Magikarp? You do? Then you'll like this! It's for Pokémon that haven't evolved yet."], "gift_item": {"EVIOLITE": 1}, "flag": "got_eviolite_123"}},
         {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
         {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
@@ -2947,16 +2957,14 @@
       "area_type": "dungeon",
       "route_name": "Weather Institute",
       "battle_type": "indoor",
-      "wild_pool_percentages": "HOENN_WEATHER_INSTITUTE_PERCENTAGES",
+      
       "min_rounds": 2,
       "trainer_pool": [
-        {"name": "Team Grunt", "class": "ROCKET", "sprite": "aqua_grunt.png", "team": [318, 318, 262], "rewards": {"balls": 3}, "villain": "grunt"},
-        {"name": "Team Grunt", "class": "ROCKET", "sprite": "magma_grunt.png", "team": [322, 322, 262], "rewards": {"balls": 3}, "villain": "grunt"},
+        {"name": "Team Grunt (lobby)", "class": "ROCKET", "sprite": "aqua_grunt.png", "team": [318, 318, 262], "rewards": {"balls": 3}, "villain": "grunt"},
+        {"name": "Team Grunt (upstairs)", "class": "ROCKET", "sprite": "magma_grunt.png", "team": [322, 322, 262], "rewards": {"balls": 3}, "villain": "grunt"},
         {"name": "Admin Tabitha", "class": "ROCKET", "sprite": "magma_grunt.png", "team": [323], "rewards": {"balls": 10, "MYSTERY_EGG": 1}, "is_boss_battle": true, "victory_flag": "weather_institute_cleared", "villain": "admin_a", "team_by_version": {"OMEGA_RUBY": [323], "ALPHA_SAPPHIRE": [319]}, "levels": [32]}
       ],
       "route_menu": [
-        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
-        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
         {"text": "WEATHER DIRECTOR", "action": "WEATHER_DIRECTOR", "condition": "cave_of_origin_cleared", "color": "PURPLE"},
         {"text": "TALK TO THE SCIENTISTS", "action": "NPC", "target": "weather_scientists", "condition": ["weather_institute_cleared", "not:got_castform"], "color": "GOLD"},
@@ -3155,9 +3163,11 @@
       "trainer_pool": [
         {"name": "Hex Maniac Leah", "class": "PSYCHIC", "sprite": "channeler.png", "team": [353, 355], "rewards": {"balls": 3}},
         {"name": "Team Magma Grunt", "class": "ROCKET", "sprite": "magma_grunt.png", "team": [262, 323], "rewards": {"balls": 3}, "villain": "grunt"},
+        {"name": "Team Grunt (summit path)", "class": "ROCKET", "sprite": "magma_grunt.png", "team": [261, 41, 322], "rewards": {"balls": 3}, "villain": "grunt"},
+        {"name": "Team Grunt (summit stairs)", "class": "ROCKET", "sprite": "magma_grunt.png", "team": [262, 42], "rewards": {"balls": 3}, "villain": "grunt"},
         {"name": "Admin Courtney", "class": "BOSS", "sprite": "magma_grunt.png", "team": [323], "rewards": {"balls": 15}, "is_boss_battle": true, "victory_flag": "mt_pyre_cleared", "villain": "admin_b", "dialogue": {"intro": ["{team} is taking the {orb}! You can't stop us!"], "player_won": ["Too late! The {orb} is already on its way to {leader}!"]}, "movesets": {"323": ["EARTHQUAKE", "ROCK-SLIDE", "AMNESIA", "TAKE-DOWN"], "262": ["TAKE-DOWN", "SCARY-FACE", "ROAR", "SWAGGER"]}, "team_by_version": {"OMEGA_RUBY": [323], "ALPHA_SAPPHIRE": [319]}, "levels": [38]}
       ],
-      "route_menu": [{"text": "MEDICHAMITE", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_medichamite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the MEDICHAMITE!"], "gift_item": {"MEDICHAMITE": 1}, "flag": "got_medichamite"}}, {"text": "BANETTITE", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_banettite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the BANETTITE!"], "gift_item": {"BANETTITE": 1}, "flag": "got_banettite"}}, {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "STOP {team}", "action": "TRAINER", "condition": "has_trainers", "color": "PURPLE"}, {"text": "TALK TO THE ELDERS", "action": "HOENN_EVENT", "event": "elders", "condition": ["mt_pyre_cleared", "not:got_mt_pyre_orb"], "color": "GOLD"}, {"text": "THE BLACK FOG", "action": "BOSS", "color": "PURPLE", "flag_condition": "not black_fog_banished_hoenn_mt_pyre", "boss": {"id": 10501, "name": "Black Fog", "level": 35, "no_catch": true, "victory_flag": "black_fog_banished_hoenn_mt_pyre", "lines": ["The air turns ice-cold. A black fog pours across the floor...", "Two huge eyes open in the dark. A giant Haunter rises: the Black Fog!", "Long ago people worshipped it as a god. It feeds on dreams. Don't let it get yours!"], "won": ["The Black Fog is too proud to ever be caught.", "It Self-Destructs in a burst of black mist... and is gone.", "But a cold whisper lingers: it will rise again in another haunted place."], "rewards": {"balls": 10, "RARE_CANDY": 3}}}, {"text": "ROUTE 122", "action": "EXIT", "target_area": "HOENN_ROUTE_122", "condition": "can_exit", "color": "RED"}],
+      "route_menu": [{"text": "MEDICHAMITE", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_medichamite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the MEDICHAMITE!"], "gift_item": {"MEDICHAMITE": 1}, "flag": "got_medichamite"}}, {"text": "BANETTITE", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_banettite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the BANETTITE!"], "gift_item": {"BANETTITE": 1}, "flag": "got_banettite"}}, {"text": "TM105 SHADOW BALL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm105_pyre", "event": {"lines": ["There's a TM lying before the memorial!"], "gift_item": {"TM105": 1}, "flag": "got_tm105_pyre"}}, {"text": "TM38 WILL-O-WISP", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm38_pyre", "event": {"lines": ["There's a TM lying on the mountainside!"], "gift_item": {"TM38": 1}, "flag": "got_tm38_pyre"}}, {"text": "SEA INCENSE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_sea_incense_pyre", "event": {"lines": ["Some incense was left by a grave. It smells of the sea!"], "gift_item": {"SEA_INCENSE": 1}, "flag": "got_sea_incense_pyre"}}, {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "STOP {team}", "action": "TRAINER", "condition": "has_trainers", "color": "PURPLE"}, {"text": "TALK TO THE ELDERS", "action": "HOENN_EVENT", "event": "elders", "condition": ["mt_pyre_cleared", "not:got_mt_pyre_orb"], "color": "GOLD"}, {"text": "THE BLACK FOG", "action": "BOSS", "color": "PURPLE", "flag_condition": "not black_fog_banished_hoenn_mt_pyre", "boss": {"id": 10501, "name": "Black Fog", "level": 35, "no_catch": true, "victory_flag": "black_fog_banished_hoenn_mt_pyre", "lines": ["The air turns ice-cold. A black fog pours across the floor...", "Two huge eyes open in the dark. A giant Haunter rises: the Black Fog!", "Long ago people worshipped it as a god. It feeds on dreams. Don't let it get yours!"], "won": ["The Black Fog is too proud to ever be caught.", "It Self-Destructs in a burst of black mist... and is gone.", "But a cold whisper lingers: it will rise again in another haunted place."], "rewards": {"balls": 10, "RARE_CANDY": 3}}}, {"text": "ROUTE 122", "action": "EXIT", "target_area": "HOENN_ROUTE_122", "condition": "can_exit", "color": "RED"}],
       "next_area": "HOENN_ROUTE_122",
       "region": "HOENN"
     },

@@ -13,6 +13,7 @@ Story events run a puzzle with GymPuzzleState ("puzzle": kind, see overworld._st
 - carvings (Sinjoh Ruins, the frozen spring): which carving shows the bigger number?
 - cafe (Lumiose, Rouge District): a cafe job. Find the order whose two prices add up to the bill.
 - galette (Lumiose, Magenta District): count the galettes on each tray and hand over the right one.
+- coins (Fortree City, the Hidden Power old woman): which hand holds the coin? The one whose sum makes her number.
 """
 import random
 
@@ -57,6 +58,13 @@ def make_step(kind, step, rng=random):
             opts.add(max(2, target + rng.choice([-3, -2, -1, 1, 2, 3])))
         return ("Count the raised dots (o) in both cells. How many in all?", pics,
                 [(str(o), o == target) for o in sorted(opts)])
+    if kind == "coins":  # (ORAS: guess which hand, three times running; here, work it out)
+        target = rng.randint(6, 14)
+        other = rng.choice([n for n in range(4, 17) if n != target])
+        hands = [("Left hand: " + _sum_pair(target, rng), True), ("Right hand: " + _sum_pair(other, rng), False)]
+        if rng.random() < 0.5:
+            hands = [("Left hand: " + _sum_pair(other, rng), False), ("Right hand: " + _sum_pair(target, rng), True)]
+        return (f"Round {step + 1}: the coin is in the hand that makes {target}. Which hand?", "", hands)
     if kind == "security":
         nums = [rng.randint(1, 9) for _ in range(3)]
         code = sum(nums)
@@ -120,8 +128,9 @@ def make_step(kind, step, rng=random):
     return (f"QUIZ! What is {q}?", "", [(str(o), o == ans) for o in opts])
 
 
-STEPS = {"braille": 3, "security": 3, "tanoby": 7, "illusion": 3, "carvings": 3, "cafe": 3, "galette": 3}
+STEPS = {"coins": 3, "braille": 3, "security": 3, "tanoby": 7, "illusion": 3, "carvings": 3, "cafe": 3, "galette": 3}
 INTRO = {
+    "coins": "The old woman holds out two closed hands. \"Which one has the coin? Get it right three times!\"",
     "braille": "Strange dots are carved into the walls of the Dotted Hole...",
     "security": "The warehouse doors are locked with number pads!",
     "tanoby": "Seven chambers, seven sealed doors, each carved with a number pattern.",
@@ -131,6 +140,7 @@ INTRO = {
     "galette": "The galette stall has a line of customers. Hand each the right tray!",
 }
 WRONG = {
+    "coins": ("Empty! Not that hand.", "Empty! Let's start over from the first round."),
     "braille": ("Nothing happens.", "Nothing happens."),
     "security": ("BZZT! Wrong code.", "BZZT! Wrong code. The alarm resets the doors!"),
     "tanoby": ("The door stays shut.", "The door stays shut."),
@@ -140,6 +150,7 @@ WRONG = {
     "galette": ("That's the wrong tray!", "Oops! Those trays got mixed up. Start again."),
 }
 DONE = {
+    "coins": "Three in a row! The old woman laughs with delight.",
     "braille": "The wall rumbles open! A passage leads deeper underground.",
     "security": "Click! The last door slides open.",
     "tanoby": "All seven chambers are open! Unown pour out of the ruins!",

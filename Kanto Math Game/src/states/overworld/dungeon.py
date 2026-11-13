@@ -54,6 +54,7 @@ import pygame
 from src.config import FPS
 from src.dungeon import core
 from src.pokemon import balance, catching, forms, tms
+from src.pokemon import items as itemlib
 from src.pokemon.data import Pokemon
 from src.states.overworld.common import _trainer_sprite, travel_label
 from src.states.overworld.route import PlayState
@@ -383,7 +384,7 @@ def art_recipe(m):
                 to = (m.get("links") or {}).get(f"{x},{y}")
                 if to:
                     ch = chr(0x2D00 + len(legend))
-                    legend[ch] = {"exit": "WARP:%d:%d:%d" % tuple(to)}
+                    legend[ch] = {"exit": "WARP:%d:%d:%d" % tuple(to[:3]) + (":fall" if "fall" in to[3:] else "")}  # (fall: a hole, Mt. Pyre's)
                     out.append(ch)
                 else:
                     out.append(".")
@@ -674,7 +675,11 @@ class DungeonState(OverworldBattles, PlayState):
         self.placed = []  # the route's buttons standing on the map as figures
         figures = [(self._figure_floor(item, n), item) for item in self._figure_items()]
         self.placed = [item for _f, item in figures]
-        self.run = core.Run(self.recipe, random.Random(), entrance=entrance, forwards=forwards,
+        recipe = self.recipe
+        lead = next((p for p in story.player_team if getattr(p, "current_hp", 1) > 0), None)
+        if getattr(lead, "held_item", None) in itemlib.FEWER_WILD:  # (a Cleanse Tag on your lead: fewer wild Pokemon about)
+            recipe = dict(recipe, wild=[max(1, w * 2 // 3) for w in (recipe.get("wild") or [4, 6])])
+        self.run = core.Run(recipe, random.Random(), entrance=entrance, forwards=forwards,
                             make_wild=self._make_wild, trainers=trainers,
                             loot_for=self._floor_loot(loot), tm_spots=spots, figures=figures,
                             floor_of=lambda t: self._floor_of(t, None), exits_by_floor=exits_by_floor,
@@ -960,6 +965,18 @@ class DungeonState(OverworldBattles, PlayState):
             return False
         return not any(o is not mover and (t == (o.x, o.y) or (getattr(o, "motion", None) is not None and t == o.motion.frm and o.motion.moving()))
                        for o in f.movers)
+
+    def _copy_step(self, dx, dy):
+        """You stepped: anyone who copies your steps takes theirs (Route 119's Mimic Circle; a "copy" person, npc.py)."""
+        f = self.run.floor
+        for m in list(f.movers):
+            mo = self._motion(m)
+            if mo is None or mo.kind != "copy" or mo.hold:
+                continue
+            free = (lambda t, m=m, mo=mo: self._npc_free(t, m) and (not mo.grass or f.tile(*t) == core.GRASS or t == mo.home))  # (their own spot too)
+            if mo.copy(dx, dy, free):
+                m.x, m.y = mo.pos
+                m.facing = mo.facing
 
     def _npc_tick(self):
         f = self.run.floor
@@ -1461,6 +1478,7 @@ class DungeonState(OverworldBattles, PlayState):
                 self.anim = STEP_FRAMES * 2
             self.partner_from, self.partner = self.partner, before  # it steps where you were
             self.steps += 1
+            self._copy_step(dx, dy)
             self._note_area()
             self._contest_tick()
         self._handle(events)
@@ -1505,7 +1523,9 @@ class DungeonState(OverworldBattles, PlayState):
             elif kind == "warp":  # a passage to another floor (a map's "links")
                 self.walk_goal = None
                 _i, _x, _y = (int(v) for v in ev[1].split(":")[1:4])
-                if _i == self.run.index or self._indoors(_i) or self._indoors(self.run.index):  # (a warp panel: across the same floor; a house's door or mat: straight in or out)
+                if ev[1].endswith(":fall"):  # (a hole in the floor: down you go, onto the spot below)
+                    self.say(["Whoa! You fell through a hole in the floor!"], then=lambda: self._warp(_i, _x, _y))
+                elif _i == self.run.index or self._indoors(_i) or self._indoors(self.run.index):  # (a warp panel: across the same floor; a house's door or mat: straight in or out)
                     self._warp(_i, _x, _y)
                 else:
                     self.say([f"You went through to {self._floor_name(_i)}."], then=lambda: self._warp(_i, _x, _y))
@@ -2328,17 +2348,22 @@ class DungeonState(OverworldBattles, PlayState):
         calm = here.get("calm")  # (the floor's current stops once these boulders have been pushed down: [[floor, x, y], ...])
         if calm and f.current and all(flags.get(f"boulder_{self.area_key}_{i}_{bx}_{by}") for i, bx, by in calm):
             f.current.clear()
-        self._bars = {tuple(t): bar for bar in here.get("barred", []) for t in bar.get("tiles", [])}
+        def _met(bar):
+            if bar.get("when") and not self.npc_shown(bar["when"]):
+                return True  # (not here yet: as good as gone)
+            return self.game.story_manager.inventory.get(bar["item"], 0) > 0 if bar.get("item") else \
+                self._until_met(bar["until"]) if bar.get("until") else bool(flags.get(bar.get("flag")))
+        _order = sorted(here.get("barred", []), key=lambda b: not _met(b))  # (gone ones first: two on a tile, the one there now wins)
+        self._bars = {tuple(t): bar for bar in _order for t in bar.get("tiles", [])}
         self._soil = {(int(x), int(y)): b for x, y, b in here.get("berry_soil", [])}  # (soft soil: src/world/berries.py)
         for t in self._soil:
             if str(f.decor.get(t, "building")) in ("building", "") :  # (soil drawn into the map's picture: the patch stands there)
                 f.decor[t] = f"soil:{t[0]},{t[1]}"
                 f.tiles[t[1]][t[0]] = core.WALL
-        for bar in here.get("barred", []):  # (a rockslide in the way until a story flag: Granite Cave's short way back, once you've met Steven)
+        for bar in _order:  # (a rockslide in the way until a story flag: Granite Cave's short way back, once you've met Steven)
             for t in map(tuple, bar.get("tiles", [])):
                 kind = "barrier" if bar.get("item") or bar.get("look") else "rubble"  # (or till you carry something: the Cycling Road's gates and the Bicycle)
-                met = self.game.story_manager.inventory.get(bar["item"], 0) > 0 if bar.get("item") else \
-                    self._until_met(bar["until"]) if bar.get("until") else flags.get(bar.get("flag"))  # (until: someone in the way till a badge, flag or item: Route 210's Psyduck)
+                met = _met(bar)  # (until: someone in the way till a badge, flag or item: Route 210's Psyduck)
                 if met:
                     if str(f.decor.get(t, "")).startswith(kind + ":"):
                         del f.decor[t]
@@ -2490,6 +2515,9 @@ class DungeonState(OverworldBattles, PlayState):
             return True
         if what.startswith("barrier:"):
             bar = getattr(self, "_bars", {}).get(tuple(t), {})
+            if bar.get("boss"):  # (it battles you: the Kecleon the Devon Scope shows, a wild Pokemon in the way)
+                self.action_challenge_boss(dict(bar["boss"]))
+                return True
             self.say(bar.get("lines") or ["The Cycling Road is for bicycles only.", "Come back with a Bicycle."])
             return True
         if what.startswith("rubble:"):
@@ -3225,6 +3253,8 @@ class DungeonState(OverworldBattles, PlayState):
                     screen.blit(self._rock_tile, r)
                     continue
                 _look = str(getattr(self, "_bars", {}).get((x, y), {}).get("look") or "")
+                if _look == "unseen":  # (something invisible in the way: Route 120's Kecleon, till the Devon Scope)
+                    continue
                 if _look.startswith(("sheet:", "ow:", "mon:")):  # (someone or something standing there: "sheet:<walking sheet>", "ow:<folder>:<thing>" of a real game's own, "mon:<species number>": a scene's people, a briefcase, a wild Pokemon)
                     img = self._stand_in_img(_look, self._bars.get((x, y), {}))
                     if img:
@@ -3392,7 +3422,8 @@ class DungeonState(OverworldBattles, PlayState):
         for _b, img, rect in sorted(drawn, key=lambda t: t[0]):
             screen.blit(img, rect)
         spans = getattr(self.run.floor, "bridge", None)
-        if spans and not self.run.deck and self.run.recipe.get("art"):  # (passing under a log bridge: it goes over your head)
+        _pic = ((self.run.recipe.get("art") or {}).get("roofs") or {}).get("_picture")  # (a map drawn from its game's picture: its own top layer goes over you)
+        if spans and not self.run.deck and self.run.recipe.get("art") and not _pic:  # (passing under a log bridge: it goes over your head)
             from src.dungeon import art as _art
             for t in {self.run.player, self.anim_from if self.anim > 0 else self.run.player}:
                 if t in spans:

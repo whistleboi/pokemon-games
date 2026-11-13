@@ -263,6 +263,39 @@ def _run_story_event(state, key, check, show):
         lines.append(story_events.gift_pokemon(game, gift, ev.get("gift_level")))
     if flag:
         story.story_flags[flag] = True
+    if ev.get("trade"):  # an in-game trade (Fortree's girl: a Spinda for her Skitty): your first one they want, for theirs
+        tr = ev["trade"]   # {"want": species, "give": species, "item": what it holds}
+        from src.pokemon.data import Pokemon
+        mine = next((i for i, p in enumerate(story.player_team) if p and p.id == int(tr["want"]) and not getattr(p, "is_egg", False)), None)
+        if mine is None:
+            show(_resolve_lines(game, ev.get("fail") or ["You don't have the Pokemon they want."]))
+            return
+        old = story.player_team[mine]
+        new = Pokemon(game.loader.fetch_specific(int(tr["give"])), game.assets, size_mult=2.5)
+        new.level = old.level
+        new.current_hp = new.get_max_hp()
+        new.caught_region = story.get_current_region()
+        if tr.get("item"):
+            new.held_item = tr["item"]
+        story.player_team[mine] = new
+        game.data.mark_seen(new.id)
+        game.data.add_pokemon(new)
+        lines.append(f"{old.display_name} was traded for {new.display_name}!")
+    if ev.get("daily_gift"):  # one a day (Jordan, 11-12: the Weather Institute's receptionist and her weather rocks):
+        dg = ev["daily_gift"]  # {"key": its record, "items": [...], "order": true (in turn) or random, "wait": lines}
+        import datetime as _dt
+        import random as _rnd
+        today = _dt.date.today().isoformat()
+        rec = dict(story.story_flags.get(dg["key"]) or {"day": "", "n": 0})
+        if rec["day"] == today:
+            show(_resolve_lines(game, dg.get("wait") or ["Come back tomorrow!"]))
+            return
+        items = dg["items"]
+        item = items[rec["n"] % len(items)] if dg.get("order") else _rnd.choice(items)
+        story.inventory[item] = story.inventory.get(item, 0) + dg.get("count", 1)   # (count: two at once, the Berry Master's)
+        story.story_flags[dg["key"]] = {"day": today, "n": rec["n"] + 1}
+        from src.pokemon import forms as _forms
+        lines.append(f"{game.player_name} received the {_forms.item_label(item).upper()}!")
     if ev.get("place") and hasattr(state, "player") and not hasattr(state, "run"):  # (in town: you stand there after: Lavaridge's hot springs)
         state.player = tuple(ev["place"])
         state.anim = 0

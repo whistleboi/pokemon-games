@@ -122,7 +122,7 @@ class BagState(GameState):
         from src.pokemon import tms, zpower
         return (key in itemlib.MEDICINE or key in itemlib.FIELD or key in self.USABLE_KEYS
                 or key == "EVERSTONE" or key in self.evo_keys or key in POKEBLOCKS or tms.is_tm(key)
-                or bool(zpower.shard_type(key)) or key in zpower.CRYSTAL_TYPE or key in itemlib.HELD_BOOSTS)
+                or bool(zpower.shard_type(key)) or key in zpower.CRYSTAL_TYPE or key in itemlib.HELD)
 
     def open_pocket(self, i):
         self.current_page = i
@@ -253,7 +253,7 @@ class BagState(GameState):
             return
 
         from src.pokemon import tms, zpower
-        if item_key in itemlib.HELD_BOOSTS:  # Mystic Water: give it to a Pokemon to hold (or take it back)
+        if item_key in itemlib.HELD:  # Mystic Water: give it to a Pokemon to hold (or take it back)
             self.game.change_state(PokemonPartyMenuState(
                 self.game, previous_state=self, context="use_item", on_select=self.on_pokemon_select_hold))
             return
@@ -444,7 +444,12 @@ class BagState(GameState):
         lines = [f"{p.display_name} is now holding the {name}."]
         if old:
             lines.append(f"(It let go of the {hms.item_name(old)}.)")
-        lines.append(f"Its {itemlib.HELD_BOOSTS[item].title()}-type moves hit harder now.")
+        if item in itemlib.HELD_BOOSTS:
+            lines.append(f"Its {itemlib.HELD_BOOSTS[item].title()}-type moves hit harder now.")
+        elif item in itemlib.FEWER_WILD:
+            lines.append("Leading your team, it keeps wild Pokemon away.")
+        elif item in itemlib.DEFENCE_HELD:
+            lines.append("If it can still evolve, it takes less damage now.")
         self._back_to_bag(lines)
 
     def on_pokemon_select_crystal(self, slot_index):
@@ -507,7 +512,7 @@ class BagState(GameState):
         from src.pokemon import tms, zpower
         if tms.is_tm(item):
             return tms.works_on(self.game, p, item)
-        if item in zpower.CRYSTAL_TYPE or item in itemlib.HELD_BOOSTS:
+        if item in zpower.CRYSTAL_TYPE or item in itemlib.HELD:
             return True  # (give it, or take it back)
         if zpower.shard_type(item):
             return (zpower.tera_type(p) != zpower.shard_type(item)

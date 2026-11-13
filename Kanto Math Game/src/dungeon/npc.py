@@ -7,6 +7,8 @@ How someone moves: a map's "moves" {"x,y" of their spot (an N or X tile): spec}.
           "look"    turns now and then to one of "d" (letters u d l r)
           "wander"  takes a step now and then, in "d", no further than "r" [x, y] tiles from their spot
           "march"   walks on the spot, looking "d" (a jogger, a guard pacing)
+          "copy"    copies your steps: each step you take, they take one ("v": "same", "opposite", "ccw" turned left,
+                    "cw" turned right; "g": only onto tall grass): Route 119's Mimic Circle, Emerald's copy-the-player
     "s":  how far a trainer sees (tiles), else the game's usual
 The Hoenn maps take these from Emerald's own people (kanto_handoff/hoenn_rom_tools/hgen.py, MOVES).
 
@@ -45,6 +47,8 @@ class Motion:
         self.dirs = [DIRS[c] for c in (spec.get("d") or "udlr") if c in DIRS] or [(0, 1)]
         self.range = tuple(spec.get("r") or (1, 1))
         self.sight = spec.get("s")
+        self.copy_way = spec.get("v", "same")   # (a "copy" person: how they turn your step)
+        self.grass = bool(spec.get("g"))
         self.facing = self.dirs[0] if self.kind in ("face", "march") else (DIRS.get(spec.get("f", ""), facing))
         self.t = 1.0
         self.steps = 0
@@ -127,6 +131,18 @@ class Motion:
                 self.step_to(t)
             return True
         return False
+
+    def copy(self, dx, dy, free):
+        """You stepped (dx, dy): a "copy" person takes their own step, turned their way, if free(tile) lets them.
+        They turn to it even when they can't go."""
+        d = {"same": (dx, dy), "opposite": (-dx, -dy), "ccw": (dy, -dx), "cw": (-dy, dx)}.get(self.copy_way, (dx, dy))
+        if not (d[0] or d[1]) or self.moving() or self.path:
+            return False
+        self.facing = d
+        t = (self.pos[0] + d[0], self.pos[1] + d[1])
+        if free(t):
+            self.step_to(t)
+        return True
 
     def walk(self, goal, passable, beside=True, limit=4000):
         """Set off for goal (beside it, if beside) by the shortest way over passable tiles. False if there is none."""

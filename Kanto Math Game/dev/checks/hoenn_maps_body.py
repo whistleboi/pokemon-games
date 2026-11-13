@@ -479,6 +479,12 @@ def _play(st, frames=1500):
     return said
 
 
+def _calm(st):
+    """No wild Pokemon on the floor (they stand anywhere at random, sometimes on the very tile a check steps into)."""
+    if hasattr(st, "run"):
+        st.run.floor.movers = [m for m in st.run.floor.movers if m.kind != "wild"]
+
+
 def _scene(key, came, flags_on=(), flags_off=(), at=None, step=None):
     for k in flags_on:
         story.story_flags[k] = True
@@ -493,6 +499,7 @@ def _scene(key, came, flags_on=(), flags_off=(), at=None, step=None):
             st.run.player = at
         st.anim = 0
     if step:
+        _calm(st)
         st.step(*step)
     return st, _play(st)
 
@@ -824,6 +831,187 @@ story.inventory.clear(); story.inventory.update(_inv0)
 if _saved_bp is not None:
     story.story_flags["berry_patches"] = _saved_bp
 story.story_flags.clear(); story.story_flags.update(_saved2)
+
+# ---- batch 9: Route 119 and the Weather Institute, Fortree City (two storeys), Route 120 (ORAS, parts 10-11)
+_saved9, _inv9, _team9 = dict(story.story_flags), dict(story.inventory), list(story.player_team)
+_rep9 = getattr(story, "repel_routes", 0)
+story.repel_routes = 9
+_mv = lambda st: {(m.x, m.y): (m.payload.get("text") if isinstance(m.payload, dict) else m.kind) for m in st.run.floor.movers}
+for _k in ("weather_institute_cleared", "got_rocky_helmet", "hoenn_rival_119", "hoenn_rival_119_met", "got_starter_mega_stone", "route120_kecleon"):
+    story.story_flags.pop(_k, None)
+story.story_flags["got_mega_bracelet"] = True
+for _k in ("ROCKY_HELMET", "ICY_ROCK", "DEVON_SCOPE"):
+    story.inventory.pop(_k, None)
+st = open_map("HOENN_ROUTE_119", "FORTREE_CITY")
+check({_mv(st).get((13, 33)), _mv(st).get((13, 34))} == {"Lookout grunt", "Bored grunt"}, "Route 119: two Grunts keep lookout by the Weather Institute while the team holds it")
+st = open_map("HOENN_WEATHER_INSTITUTE", "HOENN_ROUTE_119")
+_wi0 = _mv(st)
+st.run.enter_floor(1); frames(2)
+_wi1 = _mv(st)
+check(_wi0.get((15, 3)) == "trainer" and _wi1.get((10, 8)) == "trainer" and _wi1.get((19, 6)) == "trainer",
+      "Weather Institute: a Grunt in the lobby; upstairs a Grunt and the Admin by the Professor")
+st.run.enter_floor(0); frames(2)
+st._use_figure(next(m for m in st.run.floor.movers if isinstance(m.payload, dict) and m.payload.get("text") == "Grateful scientist")); tap(st)
+check(not story.inventory.get("ROCKY_HELMET"), "Weather Institute: no Rocky Helmet while the team is upstairs")
+story.story_flags["weather_institute_cleared"] = True
+st = open_map("HOENN_WEATHER_INSTITUTE", "HOENN_ROUTE_119")
+for _who in ("Grateful scientist", "Receptionist", "Receptionist"):
+    st.dialogue_box.visible = False
+    st._use_figure(next(m for m in st.run.floor.movers if isinstance(m.payload, dict) and m.payload.get("text") == _who)); tap(st)
+check(story.inventory.get("ROCKY_HELMET") == 1 and story.inventory.get("ICY_ROCK") == 1 and not story.inventory.get("SMOOTH_ROCK"),
+      "Weather Institute: once it's freed, the scientist's Rocky Helmet and the receptionist's weather rock (one a day)")
+st = open_map("HOENN_ROUTE_119", "FORTREE_CITY")
+check((13, 33) not in _mv(st), "Route 119: the lookouts gone once the Institute is freed")
+st.run.player, st.anim = (27, 26), 0
+st.dialogue_box.visible = False
+_calm(st); st.step(0, 1)
+said = _play(st)
+check("<TrainerIntroState>" in said, f"Route 119: your rival catches up over the bridge for a battle (Fly when you win) ({said[:1]})")
+story.story_flags["hoenn_rival_119"] = True
+st = open_map("HOENN_ROUTE_119", "FORTREE_CITY")
+_tk = next(m for m in st.run.floor.movers if (m.x, m.y) == (17, 128))
+st.run.player, st.anim = (12, 128), 0
+_seen9 = []
+for _d in ((0, 1), (0, -1)):
+    st.step(*_d); frames(20)
+    _seen9.append((_tk.x, _tk.y))
+check(_seen9 == [(18, 128), (17, 128)], f"Route 119: the Ninja Boy in the grass copies your steps, turned a quarter (Emerald's copy movement) ({_seen9})")
+_hp = story.player_team[0].current_hp = 1
+st.run.player, st.anim = (33, 110), 0
+st.dialogue_box.visible = False
+_calm(st); st.step(0, -1); tap(st)
+check(story.player_team[0].current_hp == story.player_team[0].max_hp, "Route 119: the rest stop's cabin heals your team")
+# Fortree: two storeys from one Emerald map, joined by ladders; Emerald's invisible Kecleon by the Gym
+st = open_map("FORTREE_CITY", "HOENN_ROUTE_119")
+_lads = sorted(t for t, k in st.exits.items() if k == "FORTREE_CITY_UPPER")
+st.player, st.anim = (_lads[0][0], _lads[0][1] + 1), 0
+_calm(st); st.step(0, -1)
+for _ in range(400):
+    if isinstance(g.current_state, _WTS) and g.current_state is not st:
+        break
+    frames(1)
+_up = g.current_state
+frames(3)
+check(len(_lads) == 5 and story.current_area_key == "FORTREE_CITY_UPPER" and _up.exits.get(_lads[0]) == "FORTREE_CITY"
+      and tuple(_up.player) == (_lads[0][0], _lads[0][1] - 1),
+      f"Fortree: up a ladder onto the treetops, beside the same ladder going down ({_lads[:1]} -> {_up.player})")
+check({"hiddenpower", "spinda", "guild", "wingull"} <= set(_up.doors.values()) and "Aarune" in [o.get("text") for o in _up._door_options("guild")],
+      "Fortree treetops: the treehouses' doors (the coin game, the Spinda trade, Aarune of the Flying guild)")
+_up._get_callback_for_option(next(o for o in _up._door_options("hiddenpower") if o.get("text") == "The coin game"))()
+check(type(g.current_state).__name__ == "GymPuzzleState" and g.current_state.kind == "coins", "Fortree: the old woman's coin game (three right for TM104 Hidden Power)")
+story.player_team = _team9[:5] + [Pokemon(g.loader.fetch_specific(327), g.assets)]
+_up = open_map("FORTREE_CITY_UPPER", "FORTREE_CITY")
+_up._get_callback_for_option(_up._door_options("spinda")[0])(); frames(300)
+check(story.player_team[-1].id == 300 and getattr(story.player_team[-1], "held_item", None) == "MAGOST_BERRY", "Fortree: the little girl trades her Skitty (with a Magost Berry) for a Spinda")
+story.player_team = list(_team9)
+st = open_map("FORTREE_CITY", "HOENN_ROUTE_119")
+check(st.barred.get((25, 8), {}).get("look") == "unseen", "Fortree: something unseeable stands in the way to the Gym")
+story.inventory["DEVON_SCOPE"] = 1
+st = open_map("FORTREE_CITY", "HOENN_ROUTE_119")
+st.player, st.anim = (25, 9), 0
+_calm(st); st.step(0, -1); tap(st)
+st = open_map("FORTREE_CITY", "HOENN_ROUTE_119")
+check((25, 8) not in st.barred, "Fortree: with the Devon Scope the Kecleon shows, and runs off when you walk into it")
+# Route 120: Steven on the bridge lends the Devon Scope and gives your starter's Mega Stone; the Kecleon beside him battles
+story.inventory.pop("DEVON_SCOPE", None)
+st = open_map("HOENN_ROUTE_120", "FORTREE_CITY")
+check(st._bars.get((12, 16), {}).get("look") == "unseen", "Route 120: an invisible Kecleon on the bridge beside Steven")
+st.run.player, st.anim = (5, 15), 0
+st.dialogue_box.visible = False
+_calm(st); st.step(1, 0)
+said = _play(st, 2000)
+check(story.inventory.get("DEVON_SCOPE") and story.story_flags.get("got_starter_mega_stone"), f"Route 120: Steven walks up, lends the Devon Scope and gives your starter's Mega Stone ({said[:1]})")
+st = open_map("HOENN_ROUTE_120", "FORTREE_CITY")
+st.run.player, st.anim = (12, 17), 0
+st.dialogue_box.visible = False
+_calm(st); st.step(0, -1)
+said = _play(st, 400)
+check("<WildBattleState>" in said, f"Route 120: with the Scope, walking into the Kecleon starts a battle ({said[-1:]})")
+g.change_state(st)
+story.repel_routes = _rep9
+story.player_team = _team9
+story.inventory.clear(); story.inventory.update(_inv9)
+story.story_flags.clear(); story.story_flags.update(_saved9)
+
+# ---- batch 10: Route 121, Route 122, Mt. Pyre (mountainside, summit, 1F-6F), Route 123 (ORAS, part 12)
+_saved10, _inv10, _team10 = dict(story.story_flags), dict(story.inventory), list(story.player_team)
+_badges10 = {k: list(v) for k, v in story.badges.items()}
+_rep10 = getattr(story, "repel_routes", 0)
+story.repel_routes = 9
+story.badges["HOENN"] = list(dict.fromkeys(list(story.badges.get("HOENN", [])) + ["STONE", "KNUCKLE", "DYNAMO", "HEAT", "BALANCE", "FEATHER"]))
+for _k in ("mt_pyre_cleared", "route121_grunts_ran", "mt_pyre_leader_left", "got_cleanse_tag", "got_eviolite_123", "got_tm28_123", "berry_master_123"):
+    story.story_flags.pop(_k, None)
+for _k in ("CLEANSE_TAG", "EVIOLITE", "TM28"):
+    story.inventory.pop(_k, None)
+_fig10 = lambda st, name: next(m for m in st.run.floor.movers if isinstance(m.payload, dict) and m.payload.get("text") == name)
+st = open_map("HOENN_ROUTE_121", "HOENN_ROUTE_120")
+check({_mv(st).get((30, 7)), _mv(st).get((31, 7))} == {"Hurried grunt", "Grunt"}, "Route 121: the team's Grunts gather before heading for Mt. Pyre")
+_y121 = next(y for y in range(5, 14) if st._npc_free((19, y)) and st._npc_free((20, y)))
+st.run.player, st.anim = (19, _y121), 0
+st.dialogue_box.visible = False
+_calm(st); st.step(1, 0)
+said = _play(st)
+_ran = story.story_flags.get("route121_grunts_ran")
+st = open_map("HOENN_ROUTE_121", "HOENN_ROUTE_120")
+check(_ran and (30, 7) not in _mv(st), f"Route 121: they hurry off south as you come near (ORAS's sighting) ({_ran}, {_mv(st).get((30, 7))}, {said[:1]})")
+st = open_map("HOENN_MT_PYRE", "HOENN_ROUTE_122")
+check(st.run.index == 2 and st._floor_name(2) == "1F", f"Mt. Pyre: in from Route 122 on the shrine's 1F ({st.run.index})")
+st._use_figure(_fig10(st, "Old woman")); tap(st)
+check(story.inventory.get("CLEANSE_TAG") == 1, "Mt. Pyre 1F: the old woman gives a Cleanse Tag")
+_ct = story.player_team[0].held_item if hasattr(story.player_team[0], "held_item") else None
+story.player_team[0].held_item = "CLEANSE_TAG"
+st = open_map("HOENN_MT_PYRE", "HOENN_ROUTE_122")
+_w, _w0 = st.run.recipe.get("wild") or [4, 6], st.recipe.get("wild") or [4, 6]
+story.player_team[0].held_item = _ct
+check(_w[1] < _w0[1], f"Mt. Pyre: a Cleanse Tag on your lead means fewer wild Pokemon about ({_w0} -> {_w})")
+while len(st.run.floors) <= 3:
+    st.run.enter_floor(len(st.run.floors))
+st.run.enter_floor(3); frames(2)
+st.run.player, st.anim = (11, 8), 0
+st.dialogue_box.visible = False
+_calm(st); st.step(0, 1)
+said = _play(st, 300)
+check(st.run.index == 2 and abs(st.run.player[0] - 20) + abs(st.run.player[1] - 9) <= 1 and any("hole" in x for x in said),   # (beside it, if a wild one sits there)
+      f"Mt. Pyre 2F: the hole in the floor drops you onto 1F, where Emerald lands you ({st.run.index}, {st.run.player})")
+st.run.player, st.anim = (19, 9), 0
+_calm(st); st.step(1, 0); frames(20)
+check(st.run.index == 2, "Mt. Pyre 1F: the landing spot is plain floor (no way back up through it)")
+st.run.enter_floor(1); frames(2)
+_sm = {(m.x, m.y) for m in st.run.floor.movers if m.kind == "trainer"}
+check({(21, 15), (25, 18), (21, 11), (25, 6)} <= _sm, f"Mt. Pyre summit: three Grunts up the path, the Admin by the altar (each on its own spot) ({sorted(_sm)})")
+st.run.player, st.anim = (23, 13), 0
+st.dialogue_box.visible = False
+_calm(st); st.step(0, -1)
+said = _play(st, 2500)
+check(story.story_flags.get("mt_pyre_leader_left") and any("Orb" in x for x in said), f"Mt. Pyre summit: the leader takes the Orb and leaves his Admin to battle you ({said[:1]})")
+story.story_flags["mt_pyre_cleared"] = True
+st = open_map("HOENN_MT_PYRE", "HOENN_ROUTE_122")
+st.run.enter_floor(1); frames(2)
+check(_mv(st).get((22, 5)) == "TALK TO THE ELDERS", "Mt. Pyre summit: after the Admin, the elders by the altar")
+_tmp = json.load(open("assets/town_maps.json", encoding="utf-8"))["HOENN_MT_PYRE"]
+check(_tmp["figure_floors"].get("TM105 SHADOW BALL") == 7 and _tmp["figure_floors"].get("SEA INCENSE") == 4 and _tmp["floors"][2].get("landings") == [[20, 9]], "Mt. Pyre: TM105 Shadow Ball on 6F, the Sea Incense on 3F; 1F's landing spot under 2F's hole")
+st = open_map("HOENN_ROUTE_123", "HOENN_ROUTE_118")
+st._use_figure(_fig10(st, "Magikarp fan")); tap(st)
+check(story.inventory.get("EVIOLITE") == 1, "Route 123: the Magikarp fan by the pond gives an Eviolite")
+story.player_team = [p for p in _team10 if "GRASS" not in [str(t).upper() for t in (p.types or [])]] or [Pokemon(g.loader.fetch_specific(258), g.assets)]
+_gl = next(m for m in st.run.floor.movers if (m.x, m.y) == (108, 13))
+st._use_figure(_gl); tap(st)
+_no = story.inventory.get("TM28")
+story.player_team = story.player_team + [Pokemon(g.loader.fetch_specific(252), g.assets)]
+st.dialogue_box.visible = False
+st._use_figure(_gl); tap(st)
+check(not _no and story.inventory.get("TM28") == 1, "Route 123: the Grass lover gives TM28 Giga Drain only to a Trainer with a Grass type")
+_b0 = sum(v for k, v in story.inventory.items() if k.endswith("_BERRY"))
+st.run.player, st.anim = (22, 7), 0
+st.dialogue_box.visible = False
+_calm(st); st.step(0, -1); tap(st)
+check(sum(v for k, v in story.inventory.items() if k.endswith("_BERRY")) - _b0 == 2, "Route 123: the Berry Master gives two Berries a day")
+g.change_state(st)
+story.repel_routes = _rep10
+story.badges.clear(); story.badges.update(_badges10)
+story.player_team = _team10
+story.inventory.clear(); story.inventory.update(_inv10)
+story.story_flags.clear(); story.story_flags.update(_saved10)
 
 story.story_flags.clear(); story.story_flags.update(_saved)
 print(f"##### {len(fails)} failures")

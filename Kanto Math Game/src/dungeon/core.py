@@ -558,7 +558,7 @@ class Run:
             [t for i, t in enumerate(spread) if i % self.n_floors == index]
         place = fixed or self.rng
         for idx, payload in mine:
-            own = (floor.spots.get(f"trainer:{payload.get('name')}") or floor.spots.get(f"trainer:{payload.get('spot_name')}"))                 if isinstance(payload, dict) else None  # (spot_name: a villain renamed for the version keeps its spot)
+            own = (floor.spots.get(f"trainer:{payload.get('spot_name')}") or floor.spots.get(f"trainer:{payload.get('name')}"))                 if isinstance(payload, dict) else None  # (spot_name first: a villain renamed for the version keeps its own spot, even with others now named alike)
             spot = own
             if not own:  # (anywhere, but somewhere you can walk to from the way in: never across water you can't cross yet)
                 afoot = on_foot(floor, floor.start) if self.recipe.get("layout") else None
@@ -731,7 +731,8 @@ class Run:
             self.enter_floor(len(self.floors))
         self.enter_floor(index)
         floor = self.floors[index]
-        self.player = self._beside(floor, (x, y))
+        land = (x, y) not in floor.exits and floor.walkable(x, y) and not floor.occupied(x, y)   # (a plain spot, not a passage: a hole's landing)
+        self.player = (x, y) if land else self._beside(floor, (x, y))
         self.reveal()
 
     def _ladders(self, index):

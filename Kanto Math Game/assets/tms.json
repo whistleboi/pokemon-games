@@ -97,6 +97,22 @@
   "gift": true,
   "from": "ORAS TM69: lying on the Jagged Pass's west hill"
  },
+ "TM104": {
+  "move": "HIDDEN-POWER",
+  "type": "NORMAL",
+  "tier": 8,
+  "price": 3000,
+  "gift": true,
+  "from": "ORAS TM10: Fortree City's old woman and her coin game"
+ },
+ "TM105": {
+  "move": "SHADOW-BALL",
+  "type": "GHOST",
+  "tier": 8,
+  "price": 3000,
+  "gift": true,
+  "from": "ORAS TM30: lying on Mt. Pyre's top floor"
+ },
  "TM11": {
   "move": "SOLAR-BEAM",
   "type": "GRASS",

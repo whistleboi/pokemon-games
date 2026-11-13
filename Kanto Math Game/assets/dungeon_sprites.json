@@ -1353,6 +1353,102 @@
     },
     "HOENN_ROUTE_118:Surf tip": {
       "sheet": "em_10.png"
+    },
+    "FORTREE_CITY:Kind local": {
+      "sheet": "em_29.png"
+    },
+    "FORTREE_CITY:Gym hopeful": {
+      "sheet": "em_34.png"
+    },
+    "FORTREE_CITY:Trade fan": {
+      "sheet": "em_189.png"
+    },
+    "FORTREE_CITY:Rain watcher": {
+      "sheet": "em_8.png"
+    },
+    "HOENN_ROUTE_119:Lookout grunt": {
+      "sheet": "@grunt"
+    },
+    "HOENN_ROUTE_119:Bored grunt": {
+      "sheet": "@grunt"
+    },
+    "HOENN_ROUTE_119:Secret Spot fan": {
+      "sheet": "em_9.png"
+    },
+    "HOENN_ROUTE_119:Fly dreamer": {
+      "sheet": "em_13.png"
+    },
+    "HOENN_ROUTE_119:Stuck cyclist": {
+      "sheet": "em_56.png"
+    },
+    "FORTREE_CITY_UPPER:Sky watcher": {
+      "sheet": "em_23.png"
+    },
+    "FORTREE_CITY_UPPER:Treetop resident": {
+      "sheet": "em_7.png"
+    },
+    "HOENN_ROUTE_120:TALK TO STEVEN": {
+      "sheet": "em_134.png"
+    },
+    "HOENN_WEATHER_INSTITUTE:Grateful scientist": {
+      "sheet": "em_65.png"
+    },
+    "HOENN_WEATHER_INSTITUTE:Receptionist": {
+      "sheet": "em_65.png"
+    },
+    "HOENN_WEATHER_INSTITUTE:Sleepy researcher": {
+      "sheet": "em_5.png"
+    },
+    "HOENN_WEATHER_INSTITUTE:WEATHER DIRECTOR": {
+      "sheet": "em_117.png"
+    },
+    "HOENN_WEATHER_INSTITUTE:TALK TO THE SCIENTISTS": {
+      "sheet": "em_46.png"
+    },
+    "HOENN_ROUTE_121:Hurried grunt": {
+      "sheet": "@grunt"
+    },
+    "HOENN_ROUTE_121:Grunt": {
+      "sheet": "@grunt"
+    },
+    "HOENN_ROUTE_121:Panting grunt": {
+      "sheet": "@grunt"
+    },
+    "HOENN_ROUTE_121:Pilgrim": {
+      "sheet": "em_24.png"
+    },
+    "HOENN_MT_PYRE:TALK TO THE ELDERS": {
+      "sheet": "em_29.png"
+    },
+    "HOENN_MT_PYRE:Old woman": {
+      "sheet": "em_30.png"
+    },
+    "HOENN_MT_PYRE:Mourner": {
+      "sheet": "em_18.png"
+    },
+    "HOENN_MT_PYRE:Grieving boy": {
+      "sheet": "em_65.png"
+    },
+    "HOENN_MT_PYRE:Weeping girl": {
+      "sheet": "em_16.png"
+    },
+    "HOENN_MT_PYRE:Bruised hiker": {
+      "sheet": "em_25.png"
+    },
+    "HOENN_ROUTE_123:Grass lover": {
+      "sheet": "em_14.png"
+    },
+    "HOENN_MT_PYRE:TM38 WILL-O-WISP": {
+      "item": "TM38"
+    },
+    "HOENN_MT_PYRE:SEA INCENSE": {
+      "item": "SEA_INCENSE"
+    },
+    "HOENN_MT_PYRE:TM105 SHADOW BALL": {
+      "item": "TM105"
+    },
+    "HOENN_MT_PYRE:Orb keeper": {
+      "sheet": "em_22.png"
     }
   },
   "townsperson": "NPC 17.png",
