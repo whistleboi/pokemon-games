@@ -1022,6 +1022,7 @@ def overhead(o, tile):
     """What passes over your head: (image, (x px, y px)). o: {"kind": "rail", "rect": [x, y, w, h]} in tiles; you walk
     underneath it (Goldenrod's Magnet Train line over the main road). The image takes in the shadow it casts below."""
     if o.get("kind") == "picture":  # the real game's own top layer over this map (roof tops, treetops you walk behind): {"kind": "picture", "f": file under assets/tiles, "at": [x, y] the map's top-left tile in it, "size": [w, h] tiles}; see-through where nothing is
+        o = dict(o, f=_version_file(o))   # (a picture of its own for each version: the Cave of Origin's crystals)
         key = ("top", o["f"])
         if key not in _PT:
             base = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "assets", "tiles")
@@ -1182,16 +1183,30 @@ def _ow(folder, name, tile):
     return _PT[key]
 
 
+def _version_file(spec):
+    """A picture's file: its own for this save's Hoenn version, if it gives one ("by_version" {version: file})."""
+    alt = spec.get("by_version") or {}
+    if not alt:
+        return spec["f"]
+    try:
+        from src.ui import theme
+        from src.world import hoenn
+        return alt.get(hoenn.version(theme.GAME.story_manager), spec["f"])
+    except Exception:
+        return spec["f"]
+
+
 def _picture(spec, w, h, tile):
     """A map's ground as the real game draws it: the part of a zone's picture this map covers (spec {"f": file under assets/tiles,
     "at": [x, y] the map's top-left tile in it}; 16 px a tile there), at the map's scale. None if there is none."""
     if not spec:
         return None
     try:
-        key = ("pic", spec["f"])
+        f = _version_file(spec)
+        key = ("pic", f)
         if key not in _PT:
             base = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "assets", "tiles")
-            _PT[key] = pygame.image.load(os.path.join(base, spec["f"]))
+            _PT[key] = pygame.image.load(os.path.join(base, f))
         img = _PT[key]
         part = pygame.Surface((w * 16, h * 16))
         part.fill((16, 16, 24))

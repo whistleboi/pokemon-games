@@ -74391,7 +74391,15 @@
       "Aarune: Hey there! The name's Aarune. I came from Unova, and I've been wandering Hoenn for eleven years.",
       "Aarune: A vagabond in search of dreams... and of the perfect Super-Secret Base!",
       "Aarune: See the odd trees, wall markings and bushes about? Each one hides a Secret Spot.",
-      "Aarune: I used to be a Pokémon Ranger, you know. Maybe one day I'll show you how to make a base of your own!"
+      "Aarune: I used to be a Pokémon Ranger, you know. And I'm working on Secret Bases for everyone...",
+      "Aarune: They aren't ready yet, though! Until they are, take this. It's Secret Power!"
+     ],
+     "gift_item": {
+      "TM112": 1
+     },
+     "flag": "got_tm112_aarune",
+     "done": [
+      "Aarune: The Secret Bases still aren't ready. I'll let you know! Secret Power's a fine move meanwhile."
      ]
     }
    },
@@ -87453,6 +87461,449 @@
   ]
  },
  "HOENN_ROUTE_126": {
+  "floors": [
+   {
+    "art": [
+     "cccccc~c~~ooo..cc^c^^c^^^^^^^^^^^~~ccccc~~ccccc~~~~~~~~o^^oooooo^cc^cccccccccccc",
+     "ccccccc~ccooo..cc.c..coooo::ooo~~ccoocccccoocccccccccccooooooooooccocccccccccccc",
+     "cccccccc~ooooo.cc.c.ccooo::::ooccoooocccoooooooccccc~ooooooooooooooocccccccccccc",
+     "ccccccccco::ooocc.c.c~~oo::::ooccooooooooooooooocccccoooooooooooo~~occcccccccccc",
+     "~cccccccco::ooocc.c.cccooo::oooccooooooooooooooooccccooooooooooooccocccccccccccc",
+     "~ccccccccoooooocc.cccc~~ooooooccoooooooooooooooooooooooooooooooooocccccccccccccc",
+     "~cccccccc~~~~oocc.cccccco~~~~~ccooccooooooooooccoooooooooooooooooocccccccccccccc",
+     "~~~cccccccccc~~cccccccc~~cccccooooccooooooooooccoooooooooooooooooccocccccccccccc",
+     "~~~ccccccccccccccccc~~~cccccccoooooooooooooooooooooooooooooooooooccocccccccccccc",
+     "~~~ccccccccccccccccccccoooccccoo::::::::::oooooooooooooooooooooooooooccccccccccc",
+     "~~~cccccccccccccccoocccooo~~oo:::::::::::::::ooooooooooooooooooooooooccccccccccc",
+     "~~~cc~ccccccccccccoccoooooccccoooooo:::::::::::ooooooooooooooooooo~~occccccccccc",
+     "~~~~~ccccccccccccooccooooooocc~~ooooo:::::::::::::::ooooooooooooooccoccccccccccc",
+     "~~~~~~~~~~~~~~oo~~ooooooooooooccccooo:::ooooo:::::::::oooooooooooooooccccccccccc",
+     "~~~~~~~~~~cccc~occoo:::::::::ooocccco:::ooooooo::::::::ooooooooooooooccccccccccc",
+     "~~~~~~~~~~cccccoooo::::::::::::ooocco:::oooooooo:::::::::ooooooooooooooccccccccc",
+     "~~~~~~~cccoooooooo::::::::::::::ooocc:::ooooooooo::::::::::::ooooooooccccccccccc",
+     "~~~~~~~cccoccooooo::::::::::::::occcc::::::oooooo:::::::::::::oooooooccooccccccc",
+     "~~~~~~~~~ooccooooo::::ooooo:::::occoo:::::::ooooo:::::::::::::::::oooooooccccccc",
+     "~~~~~~~ccooooooooo:::oooooooo:::oocco:::::::ooooo::::::::::::::::::oooooo~~cccc>",
+     "~~~~~ccooooooooocccccoccccccooooooccoo:::::ooocco::::::::::::::::::ooooooccccccc",
+     "~~~ccooooooooooccccccccccccccoooccoooooooooooocco:::::::::::::::::::oooooooooccc",
+     "~~~ccooooooooooccccooccccccccoccccooooooooooooooo::::::ooo::::::::::oooooo~~~ccc",
+     "~~~~~~ooooooocccccoooccccccccoccoooooooccoooooooo:::::ccccco::::::::oooooocccccc",
+     "~~~~ccoooooooccooooooocccccccccooooooooccooooooo::::::cccccco:::::::ooooooccc~~c",
+     "~~~~~ccoooooooccoo:::oooccccccc:::::oooooooooo::::::::ooccccooo:::::oooooo~~occc",
+     "~~~~~ccoooooooccooo::oooooccooo:::::::oooooo:::::::::::ooccccco::::oooooooccoooc",
+     "~~~~~~~~oooooccoooo::ooccoccoo::::::::::::::::::::::::::::oocc:::::ooooooooooooc",
+     "~~~~~~ccoooooccocco::ooccoooo::::::::::::::::::::::::::::::::::::::ooooooooooooc",
+     "~~~~~ccooooooocccco::::ooooo::::::::::::::::::::::::::::::::::::::oooooooooooooo",
+     "~~~ccccooo:oooccXoo:::::::::::::::::::::::::::::::::::::::::::::::oooooooooooooo",
+     "~~~ccooooo:ooooccooo:::::::::::::::::oooo:::::::::::::::::::::::::oooooooooooooo",
+     "~~ccoooooo::oooccooo:::::::::::::oooooccoooooo::::::::::::::::::::ooooooooo~~oo>",
+     "~~ccooooo::::oooocco:::::::::::oooooooccooooooooooooooooo::::::::::ooooooooccoo>",
+     "~~cccoooo::::oooocco::::::::::oooooocccccccccccccooooccoooo::::::::oooooooooooo>",
+     "~~cccoooo:::::occooo::::::::ooooocccccccccccccccccccoccooooo:::::::oooooooooooo>",
+     "ccccooooo:::::occoo:::::::ooccoocccccccccccccccccccccoooooooo:::::::ooooooooooo>",
+     "ccccooooo:::::occo:::::::oooccocccccccccccccccccccccccoooooooo::::::ooooooooooo>",
+     "cccccoooo::::oocco::::::occoooccccccccccccccccccccccccccooooooo:::::ooooooooooo>",
+     "cccccooooo:::occo:::::::occooccccccccccccccccccccccccccccoooccoo:::::oooooooooo>",
+     "cccccoccoo:::occo::::::oooocccccccccccccccccccccccccccccccooccoo:::::oooooooooo>",
+     "ccccooccoo:::occo::::::ooocccccccccccccccccccccccccccccccccoooooo::::oooooooooo>",
+     "cccccooooo:::occo::::::oooccccccccccccccccccccccccccccccccccoooooo::::ooooooooo>",
+     "cccccoooooo:occoo:::::ooooccccccccccccccccccccccccccccccccccoooooo::::ooooooooo>",
+     "cccccccoooooocco::::::ooooccccccccccccccccccccccccccccccccccoooooo::::ooooooooo>",
+     "cccccccoooocccoo::::::ooooccccccccccccccccccccccccccccccccccoooooX:::::oooooooo>",
+     "~~cccccooocccco:::::::ooooccccccccccccccccccccccccccccccccccooooooo::::oooooooo>",
+     "~~~~~ccooocccco:::::::occoccccccccccccccccccccccccccccccccccooccooo:::::ooooooo>",
+     "~~~~~ccooocccco::::::ooccoccccccccccccccccccccccccccccccccccoocccoo:::::ooooooo>",
+     "~cccccccoocccoo::::::oooooccccccccccccccccccccccccccccccccccoocccoo:::::ooooooo>",
+     "~ccccccccccoooo::::::oooooocccccccccccccccccccccccccccccccccooccco::::::ooooooo>",
+     "~ccccccccccoooo::::::ooooooccccccccccccccccccccccccccccccccooccooo::::::ooooooo>",
+     "~ccccccccoooooo::::::oooccoccccccccccccccccccccccccccccccccooccoo:::::::ooooooo>",
+     "~cccccccccooooo:::::::ooccoocccccccccccccccccccccccccccccccoooooo::::::ooooocco>",
+     "~cccccccccooooo:::::::ooooooccccccccccccccccccccccccccccccooooooo::::::ooooocco>",
+     "~cccccccccooooo:::::::ooooooccccccccccccccccccccccccccccccooocco:::::::oooooooo>",
+     "~cccccccccoooooo:::::::oooooocccccccccccccccccccccccccccccooocco:::::::oooooooo>",
+     "~~ccccccccoooooo:::::::oooooocccccccccccccccccccccccccccooooooo:::::::oooooooooo",
+     "~~cccoooooooooooo:::::::ooooooocccccccccccccccccccccccccooooooo::::::ooooooooooo",
+     "~~~cccccooooooooo::::::::ooooooocccccccccccccccccccoooooooooooo::::::ooooooooooc",
+     "~~~cccccooooooooo:::::::::ooccoooooocccccccccooooooooooooooooo::::::oooooooooooc",
+     "~~~cccccoooooooooo:::::::::occoooooooooooooooooooooooooooccooo::::::oooooooooocc",
+     "~~~cccoooooooooooo:::::::::::ooooooooooooooooooooooooooooccoo:::::::oooooooooocc",
+     "~~~cccoooooooooooo::::::::::::ooooooooooooooooccoooooooooooo:::::::oooooooooocc>",
+     "~~~ccccoooooccooooo::::::::::::::oooooooooooooccooooooooo::::::::::oooooooocccc>",
+     "~~~ccccoooooccoooooooo::::::::::::::::::oooooooooooo:::::::::::::::ooooooccccoo~",
+     "~~~ccccooooooooooooooooo::::::::::::::::::::::::::::::::::::::::::oooooooccoooo>",
+     "~~~cccooo::ooccooooooooooo:::::::::::::::::::::::::::::::::::::::oooooooccooooo>",
+     "~~ccoooo::::occoccccccoooooooo::::::::::::::::::::::::::::::::ooooooocccccooooo>",
+     "~~ccoooo::::oooccccccccoooooooo::::::::::::::::::::::::::::::oooooooccccooccooo>",
+     "~~~~ccooo::oooocccccccccooooooooo:::::::::::::::::::::::::ooooooooooccccooccooo>",
+     "~~~~ccoooooooooccccccccccooooooooooo::::::::::::::::::::oooooooooooocccoooooooo~",
+     "~~~~~~ccoooccccccccccccccccooooooccoooo:::::::::::::::ooooooooccooccooooooooooo~",
+     "~~~~~~ccoooccccccccccccccccooooooccoooooX:::::::ooooooooooooccccooccooooooooooo~",
+     "cccccccccccccccccccccccccccccocccoooooooooooooooooccooocccooccooccooooooooooooo>",
+     "cccccccccccccccccccccccccccccccccoooccooooooooooccccccccccccooooccooooooooooooo>",
+     "ccccccccccccccccccccccccccccccccccccccccccooccooccccccccccccoooooooooooooooooooo",
+     "ccccccccccccccccccccccccccccccccccccccccccoocccccccccccccooooooooooooooooooooooo",
+     "ccccccccccccccccccccccccccccccccccccccccccccccccccccocccooooooooooooooooooooooo>",
+     "ccccccccccccccccccccccccccccccccccccccccccccccccccccoooooooooooooooooooooooooooo"
+    ],
+    "exits": {
+     "^": "HOENN_ROUTE_124",
+     ">": "HOENN_ROUTE_127"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/0_41.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "trainer_spots": [
+     "Swimmer Barry",
+     "Swimmer Nikki",
+     "Swimmer Pablo"
+    ],
+    "edge_to": {
+     "17,0": [
+      17,
+      79
+     ],
+     "19,0": [
+      19,
+      79
+     ],
+     "20,0": [
+      20,
+      79
+     ],
+     "22,0": [
+      22,
+      79
+     ],
+     "23,0": [
+      23,
+      79
+     ],
+     "24,0": [
+      24,
+      79
+     ],
+     "25,0": [
+      25,
+      79
+     ],
+     "26,0": [
+      26,
+      79
+     ],
+     "27,0": [
+      27,
+      79
+     ],
+     "28,0": [
+      28,
+      79
+     ],
+     "29,0": [
+      29,
+      79
+     ],
+     "30,0": [
+      30,
+      79
+     ],
+     "31,0": [
+      31,
+      79
+     ],
+     "32,0": [
+      32,
+      79
+     ],
+     "56,0": [
+      56,
+      79
+     ],
+     "57,0": [
+      57,
+      79
+     ],
+     "64,0": [
+      64,
+      79
+     ],
+     "67,0": [
+      67,
+      79
+     ],
+     "79,19": [
+      0,
+      19
+     ],
+     "79,32": [
+      0,
+      32
+     ],
+     "79,33": [
+      0,
+      33
+     ],
+     "79,34": [
+      0,
+      34
+     ],
+     "79,35": [
+      0,
+      35
+     ],
+     "79,36": [
+      0,
+      36
+     ],
+     "79,37": [
+      0,
+      37
+     ],
+     "79,38": [
+      0,
+      38
+     ],
+     "79,39": [
+      0,
+      39
+     ],
+     "79,40": [
+      0,
+      40
+     ],
+     "79,41": [
+      0,
+      41
+     ],
+     "79,42": [
+      0,
+      42
+     ],
+     "79,43": [
+      0,
+      43
+     ],
+     "79,44": [
+      0,
+      44
+     ],
+     "79,45": [
+      0,
+      45
+     ],
+     "79,46": [
+      0,
+      46
+     ],
+     "79,47": [
+      0,
+      47
+     ],
+     "79,48": [
+      0,
+      48
+     ],
+     "79,49": [
+      0,
+      49
+     ],
+     "79,50": [
+      0,
+      50
+     ],
+     "79,51": [
+      0,
+      51
+     ],
+     "79,52": [
+      0,
+      52
+     ],
+     "79,53": [
+      0,
+      53
+     ],
+     "79,54": [
+      0,
+      54
+     ],
+     "79,55": [
+      0,
+      55
+     ],
+     "79,56": [
+      0,
+      56
+     ],
+     "79,63": [
+      0,
+      63
+     ],
+     "79,64": [
+      0,
+      64
+     ],
+     "79,66": [
+      0,
+      66
+     ],
+     "79,67": [
+      0,
+      67
+     ],
+     "79,68": [
+      0,
+      68
+     ],
+     "79,69": [
+      0,
+      69
+     ],
+     "79,70": [
+      0,
+      70
+     ],
+     "79,74": [
+      0,
+      74
+     ],
+     "79,75": [
+      0,
+      75
+     ],
+     "79,78": [
+      0,
+      78
+     ]
+    },
+    "dive": 1,
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/0_41.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       80,
+       80
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccc.....ccccccccccccccccccccccccccccccccccccccccccccccccccc",
+     "cccccccccc..ccccc\"\"\"\"\"\"......ccccccccccccccccccccccccccccccccccccccccccccccccccc",
+     "ccccccccc.......\"\"\"\"\"\"\"......ccccccccccccccccccccccccccccccccccccccccccccccccccc",
+     "ccccccccc........\"\"\"\"\"\"......ccccccccccccccccccccccccccccccccccccccccccccccccccc",
+     "cccccccccc....cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc..........cccccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccc...............ccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccc\"..........ccccccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccccccccccc\".\"\"\"\".........cccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccccccccccc\"\"\"ccccc.......\"\"cccccccccccccccccccccccccc",
+     "cccccccccccccccccccc.........cccccccc\"\"\"ccccccc......\"\"ccccccccccccccccccccccccc",
+     "ccccccccccccccccccc............cccccc\"\"\"cccccccc......\"\"\"ccccccccccccccccccccccc",
+     "cccccccccccccccccc..............ccccc\"\"\"ccccccccc......\"\"\"\"..ccccccccccccccccccc",
+     "cccccccccccccccccc..............ccccc\"\"\"\"\".cccccc.......\"\"\"\"..cccccccccccccccccc",
+     "cccccccccccccccccc....ccccc.....ccccc\"\"\"\"...ccccc......\"\"\"\"\"......cccccccccccccc",
+     "cccccccccccccccccc...cccccccc...ccccc\"\".....ccccc.....\"\"\"\"\"\"\"\".....ccccccccccccc",
+     "cccccccccccccccccc...ccccccccccccccccc.....cccccc....\"\"\"\"\"\"\"\"\"\"....ccccccccccccc",
+     "cccccccccccccccccc...cccccccccccccccccccccccccccc...\"\"\"\"\"\"\"\"\"\"\"\"...\"cccccccccccc",
+     "cccccccccccccccccc...cccccccccccccccccccccccccccc...\"\"\"ccc\"\"\"\"\"\"\"\"\"\"cccccccccccc",
+     "cccccccccccccccccc...cccccccccccccccccccccccccccc..\"\"\"cccccc\"\"\"\"\"\"\"\"cccccccccccc",
+     "cccccccccccccccccc...ccccccccccccccccccccccccccc...\"\"\"ccccccc\"\"\"\"\"\"\"cccccccccccc",
+     "cccccccccccccccccc...cccccccccc.....cccccccccc.....\"\"\"ccccccccc\"\"\"\"\"cccccccccccc",
+     "ccccccccccccccccccc..cccccccccc.......cccccc.......\"\"\"\"cccccccc\"\"\"\"ccccccccccccc",
+     "ccccccccccccccccccc..ccccccccc.......................\"\"\"\"\"cccc\"\"\"\"\"ccccccccccccc",
+     "ccccccccccccccccccc..cccccccc........................\"\"\"\"\"\"\"\"\"\"\"\"\"\"ccccccccccccc",
+     "ccccccccccccccccccc....ccccc...........................\"\"\"\"\"\"\"\"\"\"\"cccccccccccccc",
+     "cccccccccc\"cccccccc\"......................................\"\"\"\"\"\"\"\"cccccccccccccc",
+     "cccccccccc\"ccccccccc\"................cccc.....................\"\"\"\"cccccccccccccc",
+     "cccccccccc\"\"cccccccc\"............ccccccccccccc..................\"\"cccccccccccccc",
+     "ccccccccc\"\"\"\"ccccccc\"..........cccccccccccccccccccccccccc.......\"\"\"ccccccccccccc",
+     "ccccccccc\"\".\"ccccccc\"\".....\"\"\"ccccccccccccccccccccccccccccc......\"\"ccccccccccccc",
+     "ccccccccc\"\"..\"cccccc\"\"\"..\"\"\"cccccccccccccccccccccccccccccccc.....\"\"ccccccccccccc",
+     "ccccccccc\"...\"ccccc\"\"\"\"\"\"\"ccccccccccccccccccccccccccccccccccc.....\"\"cccccccccccc",
+     "ccccccccc\"..\"\"cccc\"\"\"\"\"\"\"ccccccccccccccccccccccccccccccccccccc.....\"cccccccccccc",
+     "ccccccccc\"\".\"ccccc\"\"\"\"\"\"ccccccccccccccccccccccccccccccccccccccc....\"cccccccccccc",
+     "cccccccccc\".\"cccc\"\"\"\"\"\"\"cccccccccccccccccccccccccccccccccccccccc.....ccccccccccc",
+     "cccccccccc\".\"cccc\"\"\"\"\"\"ccccccccccccccccccccccccccccccccccccccccc.....ccccccccccc",
+     "cccccccccc\"\"\"cccc\"\"\"\"\"\"cccccccccccccccccccccccccccccccccccccccccc....ccccccccccc",
+     "cccccccccc\"\"\"cccc\"\"\"\"\"\"ccccccccccccccccccccccccccccccccccccccccccc....cccccccccc",
+     "ccccccccccc\"ccccc\"..\"\"cccccccccccccccccccccccccccccccccccccccccccc....cccccccccc",
+     "cccccccccccccccc\"\"...\"cccccccccccccccccccccccccccccccccccccccccccc\"...cccccccccc",
+     "cccccccccccccccc\"....\"cccccccccccccccccccccccccccccccccccccccccccc\"....ccccccccc",
+     "ccccccccccccccc......\"ccccccccccccccccccccccccccccccccccccccccccccc\"...ccccccccc",
+     "ccccccccccccccc......\"ccccccccccccccccccccccccccccccccccccccccccccc\"....cccccccc",
+     "ccccccccccccccc......cccccccccccccccccccccccccccccccccccccccccccccc\"....cccccccc",
+     "ccccccccccccccc......cccccccccccccccccccccccccccccccccccccccccccccc\"....cccccccc",
+     "ccccccccccccccc.....\"ccccccccccccccccccccccccccccccccccccccccccccc\"\"....cccccccc",
+     "ccccccccccccccc.....\"ccccccccccccccccccccccccccccccccccccccccccccc\"\"\"...cccccccc",
+     "ccccccccccccccc\"....\"cccccccccccccccccccccccccccccccccccccccccccc\"\"\"\"...cccccccc",
+     "ccccccccccccccc\"....\"\"ccccccccccccccccccccccccccccccccccccccccccc\"\"\"\"..ccccccccc",
+     "ccccccccccccccc\"\"....\"ccccccccccccccccccccccccccccccccccccccccccc\"\"\"\"\"\"ccccccccc",
+     "ccccccccccccccc\"\"\"..\"\"cccccccccccccccccccccccccccccccccccccccccc\"\"\"\"\"\"\"ccccccccc",
+     "cccccccccccccccc\"\"\"\"\"\"\"ccccccccccccccccccccccccccccccccccccccccc\"\"\"\"\"\"\"ccccccccc",
+     "cccccccccccccccc\"\"\"\"\"\"\"cccccccccccccccccccccccccccccccccccccccc\"\"\"\"\"\"\"cccccccccc",
+     "ccccccccccccccccc\"\"\"\"\"\"\"ccccccccccccccccccccccccccccccccccccccc\"\"\"\"\"\"ccccccccccc",
+     "ccccccccccccccccc\"\"\"\"\"\"\"\"cccccccccccccccccccccccccccccccccccccc\"\".\"\"\"ccccccccccc",
+     "ccccccccccccccccc\"\"\"\"...\"\"cccccccccccccccccccccccccccccccccccc\"\"...\"cccccccccccc",
+     "cccccccccccccccccc\"\".......ccccccccccccccccccccccccccccccccccc\"\"\".\"\"cccccccccccc",
+     "cccccccccccccccccc\"........\"\"cccccccccccccccccccccccccccccccc\"\"\"\"\"\"\"cccccccccccc",
+     "cccccccccccccccccc\".........\"\"cccccccccccccccccccccccccccccc\"\"\"\"\"\"\"ccccccccccccc",
+     "ccccccccccccccccccc\"..........\"\"\"cccccccccccccccccccccccc\"\"\"\"\"\"\"\"\"\"ccccccccccccc",
+     "cccccccccccccccccccccc.........\"\"\"\"\"\"\"\"\"cccccncccccc\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"ccccccccccccc",
+     "cccccccc....cccccccccccc\"\"\"...\"\"\"\"\"\"\"\"\"\"\"\"......\"\"\"\"\"\"...\"\"\"\"\"\"\"\"\"cccccccccccccc",
+     "ccccccc......ccccccccccccc\"\"\"\"\"\"\"\"\"...\"\"..........\"\"\"\"......\"\"\"\"\"ccccccccccccccc",
+     "cccccc.......ccccccccccccccccc\"\"\"\"\"\"\"......................\"\"\"cccccccccccccccccc",
+     "cccc.........cccccccccccccccccc\"\"\"\"\"\"\"\".................\"\"\"\"\"ccccccccccccccccccc",
+     "cccc\"........cccccccccccccccccccc\"\"\"\"\"\"\"............\"\"\"\"\"\"cccccccccccccccccccccc",
+     "cccc\"\"cc....cccccccccccccccccccccccc\"\"\"\"\".........\"\"\"\"\"\"cccccccccccccccccccccccc",
+     "cccc\"\"ccccccccccccccccccccccccccccccccc\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"cccccccccccccccccccccccccc",
+     "cccc\"\"ccccccccccccccccccccccccccccccccccc\"\"\"\"\"\"\"cccccccccccccccccccccccccccccccc",
+     "cccc\"\"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+     "cccc\"\"\"\"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+     "cccc\"\"\"\"\"\"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+     "cccc\"\"\"\"\".cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+     "ccccc\"\"\"\"\"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+    ],
+    "exits": {
+     "n": "SOOTOPOLIS_CITY"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/0_51.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "surface": 0,
+    "theme": "seabed",
+    "pool": "HOENN_UNDERWATER_POOL_PERCENTAGES"
+   }
+  ],
   "floor_names": [
    "Route 126",
    "The seabed"
@@ -87461,193 +87912,7 @@
    "Swimmer Barry": 0,
    "Swimmer Nikki": 0,
    "Swimmer Pablo": 0
-  },
-  "floors": [
-   {
-    "art": [
-     "ccccccoooooooooccccccc^^^^^^^^^^^^^^^cccooqqcccocccoocoooooooooooooocccccccccccc",
-     "cccccccoqqooooooooocccoooooooooooqqoocccccoocccccccccccooooooooooqqocccccccccccc",
-     "ccccccccoooooooqqoocccoooo::oooqqoooocccooooooocccccoooooooooooooooocccccccccccc",
-     "cccccccccooooooooooocooooo::oooooooooooooooooooocccccooooooooooooooocccccccccccc",
-     "occccccccooooooccccccccooooooooqqooooooooooooooooccccooooooooooooqqocccccccccccc",
-     "occccccccooooooccccccooooooooooooooooooooooooooooooooooooooooooooooocccccccccccc",
-     "occcccccccccooocccccooqqoocccoqqooooooooooooooooooooooooooooooooooqqcccccccccccc",
-     "ooocccccccccccccccccooooocccccooooqqooooooooooqqoooooooooooooooooooocccccccccccc",
-     "ooocccccccccccccccccococccccccoooooooooooooooooooooooooooooooooooqqocccccccccccc",
-     "oooccccccccccccccccccccoooccccoooooooooooooooooooooooooooooooooooooooccccccccccc",
-     "ooooocccccccccccccoocccooooooooooooo::::::oooooooooooooooooooooooooooccccccccccc",
-     "ooooooccccccccccccooooooooqqooooooooo:::::::oooooooooooooooooooooooooccccccccccc",
-     "oooooooocccccccccooqqoooooooqqoooooooo::ooooo::oooooooooooooooooooqqoccccccccccc",
-     "oooooooooooccoooooooooooooooooqqoooooo:oooooooo:::::oooooooooooooooooccccccccccc",
-     "ooooooooooccccooqqooooooooooooooqqoooo:ooooooooo::::::oooooooooooooooccccccccccc",
-     "oooooooococccccooooo:::::::::oooooqqoo:oooooooooo::::::ooooooooooooooooccccccccc",
-     "ooooooocccooooooooo::::::::::::ooooooo:ooooooooooo:::::::ooooooooooooooccccccccc",
-     "ooooooocccooooooooo:::ooooo::::ooooqqo:ooooooooooo:::::::::::ooooooooqqooccccccc",
-     "oooooooooooqqoooooo::oooooooo::ooqqooo:::::ooooooo::::::::::::oooooooooooccccccc",
-     "oooooooqqooooooooooooooooooooooooooooo:::::ooooooo::::::::::::::::oooooooooccccc",
-     "oooooqqooooooooooooooooooooooooooooooooooooooooooo::::::::::::::::oooooooccccccc",
-     "ooooooooooooooooooooooooooooooooooooooooooooooqqoo:::::ooo:::::::::ooooooooooccc",
-     "oooqqoooooooooooooooooooooooooooqqoooooooooooooooo::::oooooo:::::::oooooooocoooc",
-     "oooooooooooooooooooooooooooooooooooooooooooooooooo:::oooooooo::::::ooooooocccooc",
-     "ooooqqoooooooooooooooooooooooooooooooooqqoooooooo::::oooooooooo::::ooooooocccooc",
-     "oooooooooooooooooooooooooooooooooooooooooooooooo:::::ooooooooooo:::ooooooooooccc",
-     "oooooqqoooooooqqoooooooooooooooo::::oooooooooo::::::::oooooooooo::ooooooooqqoooc",
-     "ooooooooooooooooooooooooooooooo:::::::oooooo:::::::::::oooooooo:::oooooooooooooc",
-     "ooooooqqoooooqqooooooooqqooooo::::::::::::::::::::::::::::oooo::::oooooooooooooc",
-     "ooooooooooooooooooooooooooooo::::::::::::::::::::::::::::::::::::oooooooooooooo>",
-     "oooooqqoooooooqXooooo::ooooo:::::::::oooo::::::::::::::::::::::::oooooooooooooo>",
-     "oooqqoooooooooooooooo::::::::::::ooooooooooooo:::::::::::::::::::oooooooooooooo>",
-     "oooooooooooooooqqoooo::::::::::oooooooooooooooooooooooooo::::::::oooooooooooooo>",
-     "ooqqoooooo::ooooooooo:::::::::ooooooooqqooooooooooooooooooo:::::::oooooooooqqoo>",
-     "oooooooooo::ooooooooo:::::::ooooooooocccccccccccoooooooooooo::::::ooooooooooooo>",
-     "oooooooooo:::oooooooo:::::oooooooocccccccccccccccccooqqoooooo:::::ooooooooooooo>",
-     "oooooooooo:::ooooooo:::::oooooooocccccccccccccccccccoooooooooo:::::oooooooooooo>",
-     "ooqqoooooo:::oooooo:::::ooooqqoocccccccccccccccccccccoooooooooo::::oooooooooooo>",
-     "oooooooooo::oooqqoo::::ooooooooccccccccccccccccccccccccooooooooo:::oooooooooooo>",
-     "ooooooooooo:oooooo:::::ooqqoooccccccccccccccccccccccccccooooooooo:::ooooooooooo>",
-     "ooooooooooo:ooqqoo::::oooooocccccccccccccccccccccccccccccoooooooo:::ooooooooooo>",
-     "ooooooooooo:oooooo::::ooooocccccccccccccccccccccccccccccccoooooooo::ooooooooooo>",
-     "ooooooooooo:ooqqoo::::oooocccccccccccccccccccccccccccccccccoooooooo::oooooooooo>",
-     "oooooooooooooooooo:::oooooccccccccccccccccccccccccccccccccccooooooo::oooooooooo>",
-     "ooooooooooooooooo::::oooooccccccccccccccccccccccccccccccccccooooooo::oooooooooo>",
-     "ooooooooooooooooo::::oooooccccccccccccccccccccccccccccccccccooooooX:::ooooooooo>",
-     "oooooooooooooooo:::::oooooccccccccccccccccccccccccccccccccccoooooooo::ooooooooo>",
-     "oooooooooooooooo:::::oooooccccccccccccccccccccccccccccccccccoooooooo:::oooooooo>",
-     "oooooooooooooooo::::ooooooccccccccccccccccccccccccccccccccccoooooooo:::oooooooo>",
-     "oooooooooooooooo::::ooooooccccccccccccccccccccccccccccccccccoooooooo:::oooooooo>",
-     "oooooooooooooooo::::ooooooccccccccccccccccccccccccccccccccccooooooo::::oooooooo>",
-     "oooooooooooooooo::::ooooooocccccccccccccccccccccccccccccccccooooooo::::oooooooo>",
-     "oooooooooooooooo::::oooooooccccccccccccccccccccccccccccccccooooooo:::::oooooooo>",
-     "oooooooooooooooo:::::ooooooccccccccccccccccccccccccccccccccooooooo::::ooooooooo>",
-     "oooooooooooooooo:::::ooooooocccccccccccccccccccccccccccccccooooooo::::ooooooqqo>",
-     "oooooooooooooooo:::::oooooooccccccccccccccccccccccccccccccooooooo:::::ooooooooo>",
-     "ooooooooooooooooo:::::ooooooccccccccccccccccccccccccccccccoooqqoo:::::ooooooooo>",
-     "ooooooooooooooooo:::::oooooooccccccccccccccccccccccccccccooooooo:::::oooooooooo>",
-     "oooooooooooooooooo:::::oooooooccccccccccccccccccccccccccoooooooo::::ooooooooooo>",
-     "oooooooooooooooooo::::::ooooooocccccccccccccccccccccoooooooooooo::::ooooooooooo>",
-     "oooooooooooooooooo:::::::oooooooooocccccqcccccooooooooooooooooo::::oooooooooooo>",
-     "ooooooooooooooooooo:::::::ooqqooooooooooooooooooooooooooooooooo::::oooooooooooo>",
-     "ooooooooooooooooooo::::::::ooooooooooooooooooooooooooooooqqooo:::::oooooooooooqq",
-     "ooooqqooooooooooooo::::::::::oooooooooooooooooooooooooooooooo:::::ooooooooooooo>",
-     "oooooooooooooooooooooo::::::::ooooooooooooooooqqoooooooooooo::::::oooooooooooqq>",
-     "oooooooooooooooooooooooo:::::::::oooooooooooooooooooooooo:::::::::oooooooooqqoo>",
-     "oooooooooooooooooooooooooo::::::::::::::oooooooooooo:::::::::::::ooooooooqqoooo>",
-     "oooooooooooooooooooooooooooooo::::::::::::::::::::::::::::::::ooooooooooooooooo>",
-     "ooooooooo::oooooooooooooooooooo::::::::::::::::::::::::::::::oooooooooooqqooooo>",
-     "ooooooooo::oooooooooooooooooooooo:::::::::::::::::::::::::ooooooooooooooooooooo>",
-     "oooooooooooooooooooooooooooooooooooo::::X:::::::::::::::ooooooooooooooooooqqooo>",
-     "ooooqqooooooooooooooooooooooooooooooooo:::::::::::::::ooooooooooooooooooooooooo>",
-     "ooooooooooooooooooooooooooooooooooooooooo:::::::ooooooooooooooooooooooooooooooo>",
-     "ooooooqqoooqqooooooooooooooooooooqqoooooooooooooooooooooooooooqqooooooooooooooo>",
-     "ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooqqooooooooooooooooo>",
-     "oooooooqqooooooooooooooooooqqoooooooooooooooooooooqqooooooooooooqqooooooooooooo>",
-     "ooooooooooooooooooooooooooooooooooooqqooooooooooqqooooooooooooooooooooooooooooo>",
-     "ooooooooooooooooooooooooooooooooooooooooooooqqooooooooooooooooooooooooooooooooo>",
-     "ooooooooooooooooooooooooooooooooooooooooooooooqqooooooooooooooooooooooooooooooo>",
-     "ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo>"
-    ],
-    "exits": {
-     "^": "HOENN_ROUTE_124",
-     ">": "HOENN_ROUTE_127"
-    },
-    "trainer_spots": [
-     "Swimmer Barry",
-     "Swimmer Nikki",
-     "Swimmer Pablo"
-    ],
-    "dive": 1
-   },
-   {
-    "art": [
-     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "cccccccccccccccccccccccccc..cccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "cccccccccccccccc.\"\"\"\"\"\"cc....ccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "cccccccccc..cccc\"\"\"\"\"\"\"cc....ccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "cccccccccc..ccccc\"\"\"\"\"\"ccc..cccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "ccccccccccccccccccccccccccccccc...........cccccccccccccccccccccccccccccccccccccc",
-     "ccccccccccccccccccccccccccccc................ccccccccccccccccccccccccccccccccccc",
-     "ccccccccccccccccccccccccccccc....ccc\"..........ccccccccccccccccccccccccccccccccc",
-     "ccccccccccccccccccccccccccccc...ccccc\".\"\"\"\".........cccccccccccccccccccccccccccc",
-     "ccccccccccccccccccccccccccccccccccccc\"\".....c.......\"\"cccccccccccccccccccccccccc",
-     "ccccccccccccccccccc............cccccc\"\"....cccc......\"\"ccccccccccccccccccccccccc",
-     "cccccccccccccccccc.............cccccc\"\"\"..cccccc......\"\"\"ccccccccccccccccccccccc",
-     "cccccccccccccccccc..............ccccc\"\"\"...cccccc......\"\"\"\"..ccccccccccccccccccc",
-     "cccccccccccccccccc..............ccccc\"\"\"\"..cccccc.......\"\"\"\"..cccccccccccccccccc",
-     "cccccccccccccccccc....ccccc.....ccccc\"\"\"\"...ccccc......\"\"\"\"\"......cccccccccccccc",
-     "cccccccccccccccccc...cccccccc...ccccc\"\".....ccccc.....\"\"\"\"\"\"\"\".....ccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccccc.....cccccc....\"\"\"\"\"\"\"\"\"\"....ccccccccccccc",
-     "ccccccccccccccccccccccccccccccccccccccccccccccccc...\"\"\"\"\"\"\"\"\"\"\"\"...\"cccccccccccc",
-     "ccccccccccccccccccccccccccccccccccccccccccccccccc...\"\"\"ccc\"\"\"\"\"\"\"\"\"\"cccccccccccc",
-     "cccccccccccccccccccccccccccccccccccccccccccccccc...\"\"\"cccccc\"\"\"\"\"\"\"\"cccccccccccc",
-     "ccccccccccccccccccccccccccccccccccccccccccccccc....\"\"\"ccccccc\"\"\"\"\"\"\"cccccccccccc",
-     "cccccccccccccccccc...cccccccccc.....ccccccccc......\"\"\"ccccccccc\"\"\"\"\"cccccccccccc",
-     "ccccccccccccccccccc..ccccccccc........ccccc........\"\"\"\"ccccccc.\"\"\"\"ccccccccccccc",
-     "ccccccccccccccccccc..cccccccc........................\"\"\"\"\"ccc.\"\"\"\"\"ccccccccccccc",
-     "ccccccccccccccccccc..ccccccc.........................\"\"\"\"\"\"\"\"\"\"\"\"\"\"ccccccccccccc",
-     "ccccccccccccccccccc....cccc............................\"\"\"\"\"\"\"\"\"\"\"cccccccccccccc",
-     "ccccccccccccccccccc\"......................................\"\"\"\"\"\"\"\"cccccccccccccc",
-     "cccccccccccccccccccc\"................cccc.....................\"\"\"\"cccccccccccccc",
-     "cccccccccccccccccccc\"............ccccccccccccc..................\"\"cccccccccccccc",
-     "ccccccccc...\".cccccc\"..........cccccccccccccccccccccccccc.......\"\"\"ccccccccccccc",
-     "ccccccccc\"..\"..ccccc\"\".....\"\"\"ccccccccccccccccccccccccccccc......\"\"ccccccccccccc",
-     "ccccccccc\"....ccccc.\"\"\"..\"\"\"cccccccccccccccccccccccccccccccc.....\"\"ccccccccccccc",
-     "ccccccccc\"...\"cccc.\"\"\"\"\"\"\"ccccccccccccccccccccccccccccccccccc.....\"\"cccccccccccc",
-     "ccccccccc...\"\"cccc\"\"\"\"\"\"\"ccccccccccccccccccccccccccccccccccccc.....\"cccccccccccc",
-     "cccccccc.\"\".\"cccc.\"\"\"\"\"\"ccccccccccccccccccccccccccccccccccccccc....\"cccccccccccc",
-     "cccccccc.....cccc\"\"\"\"\"\"\"cccccccccccccccccccccccccccccccccccccccc.....ccccccccccc",
-     "cccccccccc\".\"cccc\"\"\"\"\"\"ccccccccccccccccccccccccccccccccccccccccc.....ccccccccccc",
-     "cccccccccc\"\"\"cccc\"\"\"\"\"\"cccccccccccccccccccccccccccccccccccccccccc....ccccccccccc",
-     "cccccccccc\"\"\"cccc\"\"\"\"\"\"ccccccccccccccccccccccccccccccccccccccccccc....cccccccccc",
-     "ccccccccccc\"cccc.\"..\"\"cccccccccccccccccccccccccccccccccccccccccccc....cccccccccc",
-     "cccccccccccccccc\"\"...\"cccccccccccccccccccccccccccccccccccccccccccc\"...cccccccccc",
-     "ccccccccccccccc.\"....\"cccccccccccccccccccccccccccccccccccccccccccc\"....ccccccccc",
-     "ccccccccccccccc......\"ccccccccccccccccccccccccccccccccccccccccccccc\"...ccccccccc",
-     "ccccccccccccccc......\"ccccccccccccccccccccccccccccccccccccccccccccc\"....cccccccc",
-     "ccccccccccccccc......cccccccccccccccccccccccccccccccccccccccccccccc\"....cccccccc",
-     "ccccccccccccccc......ccccccccccccccccccccccccccccccccccccccccccccc.\"....cccccccc",
-     "ccccccccccccccc.....\"ccccccccccccccccccccccccccccccccccccccccccccc\"\"....cccccccc",
-     "ccccccccccccccc.....\"cccccccccccccccccccccccccccccccccccccccccccc.\"\"\"...cccccccc",
-     "ccccccccccccccc\"....\"cccccccccccccccccccccccccccccccccccccccccccc\"\"\"\"...cccccccc",
-     "ccccccccccccccc\"....\"\"ccccccccccccccccccccccccccccccccccccccccccc\"\"\"\"..ccccccccc",
-     "ccccccccccccccc\"\"....\"ccccccccccccccccccccccccccccccccccccccccccc...\"\"\"ccccccccc",
-     "ccccccccccccccc\"\"\"..\"\"ccccccccccccccccccccccccccccccccccccccccc.....\"\"\"ccccccccc",
-     "cccccccccccccccc\"\"\"\"\"\"\"cccccccccccccccccccccccccccccccccccccccc....\"\"\"\"ccccccccc",
-     "cccccccccccccccc\"\"\"\"\"\"\"cccccccccccccccccccccccccccccccccccccccc\"...\"\"\"cccccccccc",
-     "ccccccccccccccccc\"\"\"\"\"\"\"ccccccccccccccccccccccccccccccccccccccc\"\".\"\"\"ccccccccccc",
-     "ccccccccccccccccc\"\"\"\"\"\"\"\"ccccccccccccccccccccccccccccccccccccc.\"\".\"\"\"ccccccccccc",
-     "ccccccccccccccccc\"\"\"\"...\"\"cccccccccccccccccccccccccccccccccccc\"\"...\"cccccccccccc",
-     "cccccccccccccccccc\"\".......cccccccccccccccccccccccccccccccccc.\"\"\".\"\"cccccccccccc",
-     "cccccccccccccccccc\"........\"\"ccccccccccccccccccccccccccccccc.\"\"\"\"\"\"\"cccccccccccc",
-     "cccccccccccccccccc\".........\"\"ccccccccccccccccccccccccccccc.\"\"\"\"\"\"\"ccccccccccccc",
-     "ccccccccccccccccccc\"..........\"\"\"ccccccccccccccccccccccc.\"\"\"\"\"\"\"\"\"\"ccccccccccccc",
-     "cccccccccccccccccccccc.........\"\"\"\"\"\"\"\"\"cccccnccccc.\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"ccccccccccccc",
-     "cccccccccccccccccccccccc\"\"\"...\"\"\"\"\"\"\"\"\"\"\"\"......\"\"\"\"\"\"...\"\"\"\"\"\"\"\"\"cccccccccccccc",
-     "ccccccccc..ccccccccccccccc\"\"\"\"\"\"\"\"\"...\"\"..........\"\"\"\"......\"\"\"\"\"ccccccccccccccc",
-     "cccccccc....cccccccccccccccccc\"\"\"\"\"\"\"......................\"\"\"cccccccccccccccccc",
-     "cccccccc....ccccccccccccccccccc\"\"\"\"\"\"\"\".................\"\"\"\"\"ccccccccccccccccccc",
-     "cccc\"cccc..cccccccccccccccccccccc\"\"\"\"\"\"\"............\"\"\"\"\"\"cccccccccccccccccccccc",
-     "cccc\"\"ccc..ccccccccccccccccccccccccc\"\"\"\"\".........\"\"\"\"\"\"cccccccccccccccccccccccc",
-     "cccc\"\"ccc..cccccccccccccccccccccccccccc\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"cccccccccccccccccccccccccc",
-     "cccc\"\"ccccccccccccccccccccccccccccccccccc\"\"\"\"\"\"\"cccccccccccccccccccccccccccccccc",
-     "cccc\"\"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "cccc\"\"\"\"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "cccc\"\"\"\"\".cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "cccc\"\"\"\"\".cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "ccccc\"\"\"\".cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
-    ],
-    "exits": {
-     "n": "SOOTOPOLIS_CITY"
-    },
-    "theme": "seabed",
-    "surface": 0,
-    "pool": "HOENN_UNDERWATER_POOL_PERCENTAGES"
-   }
-  ]
+  }
  },
  "HOENN_ROUTE_127": {
   "floors": [
@@ -89636,205 +89901,170 @@
  },
  "SOOTOPOLIS_CITY": {
   "art": [
-   "eeeeeeegeeggggggegeeeeeeeggggggggggggggeeeeegggggggggggeeeee",
-   "eeeeggggeegeggggggeegggggggFFFFFFggggggggggggggggggIIIIIIgge",
-   "eggggegggggegeeegeeeggEEEggFFFFFFgeggggggggeeeeeeeeIIIIIIgge",
-   "ggeegggeAAAggggggeeeggEEEeeFFFFFFgeeggeeeeggHHHeeeeIIIIIIggg",
-   "eegggeggAAAeegggggggggEEEeeFFDFFFggeeggaaaaaHHHgeeeIIIIIIggg",
-   "gggeeggeAAAggggeeeeeegEDEeeeeeeeeegggegggeeeHHHggeeIIIIIIeeg",
-   "egBBBgeeADAggggeeggaageeeeeeeeeeeeeegeeegeeeHDHegaaaaaaaaaeg",
-   "ggBBBaaaaeaeggeeegeeeeeeeeaaaeeaaaaaggeegggggaggggggggggggee",
-   "geBBBegggaggggeeegeeeeeeeegggaaggggggggggggeeeegggggggggggee",
-   "eeBDBegegaggggeeeggggggggggeeeeeeeeegggggegggaggggggJJJggggg",
-   "aaaaaagegeeeeeeeeggeegggggggggggggaaggggggeegaggggggJJJggggg",
-   "gggggggggggggggaagggggggggggggggggaaggggegeegeeeeeegJJJgeege",
-   "eeggggggggeeeeeeeggggggeggggggggggaagegggggggeeeeeegJJJgeegg",
-   "gggegggggeeggggaageggggggeeeeeeeeeeeggggggggggggeeeggeegggee",
-   "eeeegeggKKKgeeeeeeggggaaaeeaaaaaaaaaaggggggPPPggeeeegeeeeggg",
-   "eggggegeKKKaeeeeeegeggeggaagggUUUgggeegggeaPPPggeeeegeeeeeeg",
-   "egeeeeggKKKeeeggaageggegeeeeggUDUggggggeggePPPggeeeegQQQQQQg",
-   "LLLeeeggKDKeeeggaaggggegeeeeg=a=a=geeeggggePDPgggeeeeQQQQQQg",
-   "LLLgOOOgeeeeeeggeeeeegggaeeag=====geeeegggeeeegegaaggQQQQQQe",
-   "LLLgOOOgeeeeeeggeeeeeggggaagg=j=j=gggeegggeeeegggaaggQQQQQQe",
-   "LLLgOOOeaaaaeeggeeggaggg======j=j===ggggggeeeeeeeeeggQQQQQQe",
-   "aaagOOOeggggaaggeeggaggg==============gggeaaeeeeeeegeeeegggg",
-   "gggggegggeeeeeegeeggeeeg============N=ggggggaagVVVgggggeeeeg",
-   "eegggeggSSSgaaggggggeeeg==ccccccccccccggggeaeeeVVVgeeeggeeee",
-   "gRRReegeSSSaeegggggggaagcccoooooooooocgggggeeeeVVVgeeeegeeee",
-   "eRRReeggSSSeeeggggeeg==ccoooooooooooocccgggeeeeVDVgeWWWggeee",
-   "eRRReeggSDSeeeggMMMMg==cooooooooooooooocgggeeeeeeeggWWWegeee",
-   "eRRReeggeeeeeeggMMMMg==cooooooooooooooocggeaaaeeeeegWWWeggee",
-   "aaaaaggeaaaaagggMMMMg==cooooGGGGGGooooocggCCCCgeeeegWDWeegee",
-   "eeggggggggggggggMMDMg==cooooGGGGGGooooocgeCCCCgeeeeggageegge",
-   "eggegggeeegggggeeeeeg==cooooGGGGGGooooocggCCCCgeeeeeeegeeege",
-   "egeegeeeeegeeeeeeeegg==cooooGGGGGGooooocggCCDCggaageeegggggg",
-   "ggeegggYYYgeeeeegaag===cooo.GGGDGG.oooocggeeeeeeeeggggeeegeg",
-   "geegggeYYYaeeeegg======cooo........oooocggeeeeeeeeZZZZZZggeg",
-   "eeegeggYYYeeeegg======ccooo......!.oooocgeaeeaaaeeZZZZZZggeg",
-   "eggggggYDYeeeeg=cccaaccoooo........oooocgggaagggeeZZZZZZggeg",
-   "ggeegegeeeeeeeg=cTT....oooo........ooooccccaacggeeZZZZZZgggg",
-   "gggggeeaeeeeggg=cTT....ooooooooooooooooo.!...cggeeZZDZZZgegg",
-   "egeegggggggggcccc.oooooooooooooooooooooo.....cgeaaaaaaaagggg",
-   "ggegg=cccccccc....oooooooooooooooooooooo.....cgggggggggeeggg",
-   "geeg==c.TTTT......oooooooooooooooooooooooo...cccccc===geegeg",
-   "geeg==c.TTTT......oooooooooooooooooooooooo........ccccggeggg",
-   "geeg==c...TT......oooooooooooooooooooooooo.........TTc=geegg",
-   "geeg==c...TT......ooooooooooooooooooooooooooo......TTc=ggegg",
-   "geeg==c...........ooooooooooooooooooooooooooo....TTTTc==gegg",
-   "eeee==c.......TT..ooooooooooooooooooooooooooo....TTTTc==gegg",
-   "egeee=====....TToooooooooooooooooooooooooooooooooTTTTc==gegg",
-   "eeeeeeeee===..TToooooooooooooooooooooooooooooooooTTTTc=eeegg",
-   "eeeeeeeeeee=c.TToooooooooooooooooooooooooooooooo======geeeee",
-   "eeeeeeeeeeeg===.oooooooooooooooooooooooooooooooc=====eeegeee",
-   "eeeeeeeeegeee==coooooooooooooooooooooooooo========eeeeeggeee",
-   "eeeeeeeeeeeeee=coooooooooooooooooooooooooc=======geeeeeegeee",
-   "eeeeegeeeeeegegcoooooooooooooooooooooo=========eeeeeegeegeee",
-   "eeeeeeeeeeeeeegcoooooooooooooooooooooc========eeeeeeeeeeeeee",
-   "eeeeeeegeeeeeggcoooooooooovvvvvvoooooc======eeegeeeeeeeeeeee",
-   "eeeeeeeeeeeeegg====ooooooooooooooooo=====eeeeeegeeeeeeeeeeee",
-   "eeeeeeeeegeeegg=========================geeeeeeegeeeeeeeeeee",
-   "eeeeeeeeeeeeege=======================eeeegeeeeeeeeeeeeeeeee",
-   "eeeeeeeeeeegegeeeeeeeeeeeeeeeeeeeeeeeeeeeeegeeeeeeeeeeeeeeee",
-   "eeeeeeeeeeegeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeegeeeeeeeeeeeeeeee"
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "ccccccccccccccccccccccccc..ccccccccccccccccccccccccccccccccc",
+   "ccccccccccccccccccccccccc.Nccccccccccccccccccccccccccccccccc",
+   "cccccccccEccccc......cccc.........cccccccccccFcccccccccccccc",
+   "cccccccccDccccc..cc..c..............cccccccccDcccccccccccccc",
+   "ccccccccc.cccc...c........ccc..cccccccccccccc.cccccccccccccc",
+   "ccccccccc.cccc...c........ccc..cccccccccccc....ccccccccccccc",
+   "ccccccccc.cccc...cccccccccc.........ccccccccc.cccccccccccccc",
+   "ccccccccc........ccccccccccccccccc..ccccccccc.cccccccccccccc",
+   "ccccccccccccccc..ccccccccccccccccc..ccccccccc......ccccccccc",
+   "cccccccccc.......ccccccccccccccccc..ccccccccc......ccccccccc",
+   "ccccccccc..cccc..cccccccc...........cccccccccccc...ccccccccc",
+   "cccccccccccc......ccccccc..ccccccccccccccccccccc...Ncccccccc",
+   "cccccccccccc......ccccccc..ccccccccccccccccccccc....cccccccc",
+   "cccccccccGc...cc..cccccc....cccncccccccccc.cHccc....cccccccc",
+   "cccccccccDc...cc..cccccc....cc...ccccccccc.cDcccc....ccccccc",
+   "cccccccc......cc.....cccc..ccc...ccccccccc....ccc..ccccccccc",
+   "cccccccc......cc.....cccc..cc.c.c.cccccccc....ccc..ccccccccc",
+   "cccccccccccc..cc..cc.ccc......c.c...cccccc.........ccccccccc",
+   "cccccccccccc..cc..cc.ccc..............cccccc.......ccccccccc",
+   "ccccccccc......c..cc...c............N.cccccc..cccccccccccccc",
+   "cccccccccccc..cccccc...c..cccccccccccccccccc...ccccccccccccc",
+   "cccccccccccc..ccccccc..ccccoooooooooocccccc....cLccccccccccc",
+   "cccccccccIc...ccccccc..ccoooooooooooocccccc....cDccccccccccc",
+   "cccccccccDc...ccccccc..coooooooooooooooccccN......cccccccccc",
+   "cccccccc......ccccccc..coooooooooooooooccccccc.....ccJcccccc",
+   "cccccccccccccccccBccc..cooooooooooooooocccccccc....ccDcccccc",
+   "cccccccccccccccccDccc..cooooccccccooooocccccccc....cc.cccccc",
+   "ccccccccccccccc.....c..cooooccccccoooooccccAccc.......cccccc",
+   "ccccccccccc........cc..coooocccCccoooooccccDcccc..c...cccccc",
+   "ccccccccccc.....c..c...cooo...cDc..ooooccc........cccccccccc",
+   "ccccccccccc....cc......cooo........ooooccc...........ccccccc",
+   "ccccccccKc....cc......ccooo......!.oooocccc..ccc.Ncccccccccc",
+   "ccccccccDc....ccccc..ccoooo........oooocccc..ccc..cMcccccccc",
+   "ccccccc.......ccccc....oooo........oooocccc..ccc..cDcccccccc",
+   "cccccccc....ccccccc....ooooooooooooooooo.!...ccc.....ccccccc",
+   "ccccccccccccccccc.oooooooooooooooooooooo.....ccccccccccccccc",
+   "cccccccccccccc....oooooooooooooooooooooo.....ccccccccccccccc",
+   "ccccccc.cccc.....Noooooooooooooooooooooooo...ccccccccccccccc",
+   "ccccccc.cccc......oooooooooooooooooooooooo........cccccccccc",
+   "ccccccc...cc..N...oooooooooooooooooooooooo.........ccccccccc",
+   "ccccccc..Ncc......ooooooooooooooooooooooooooo......ccccccccc",
+   "ccccccc..........Nooooooooooooooooooooooooooo....ccccccccccc",
+   "ccccccc.......cc..ooooooooooooooooooooooooooo....ccccccccccc",
+   "ccccccccccc...ccoooooooooooooooooooooooooooooooooccccccccccc",
+   "ccccccccccccc.ccoooooooooooooooooooooooooooooooooccccccccccc",
+   "ccccccccccccc.ccooooooooooooooooooooooooooooooo~c~cccccccccc",
+   "ccccccccccccccccoooooooooooooooooooooooooooooooccccccccccccc",
+   "ccccccccccccccccooooooooooooooooooooooooo~~~~~~~cccccccccccc",
+   "ccccccccccccccccoooooooooooooooooooooooooccccccccccccccccccc",
+   "ccccccccccccccccooooooooooooooooooooo~~~~~cccccccccccccccccc",
+   "ccccccccccccccccooooooooooovvvoooooooccccccccccccccccccccccc",
+   "ccccccccccccccccooooooooovvvvvvvoooooccccccccccccccccccccccc",
+   "ccccccccccccccc~~~~~oooovvvvvvvvvoo~~~cccccccccccccccccccccc",
+   "ccccccccccccccccccc~~~~~~~~~~~~~~~~~cccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
   ],
-  "parts": true,
   "exits": {
    "v": "HOENN_ROUTE_126",
-   "U": "HOENN_CAVE_OF_ORIGIN"
+   "n": "HOENN_CAVE_OF_ORIGIN"
   },
   "buildings": {
-   "A": "house",
-   "B": "house",
+   "A": "center",
+   "B": "mart",
+   "C": "gym",
    "E": "house",
    "F": "house",
+   "G": "house",
    "H": "house",
    "I": "house",
    "J": "house",
    "K": "house",
    "L": "house",
-   "O": "house",
-   "P": "house",
-   "Q": "house",
-   "R": "house",
-   "S": "house",
-   "V": "house",
-   "W": "house",
-   "Y": "house",
-   "Z": "house",
-   "M": "mart",
-   "C": "center",
-   "G": "gym",
-   "U": "cave"
+   "M": "house"
   },
   "roofs": {
-   "A": [
-    96,
-    104,
-    120
-   ],
-   "B": [
-    232,
-    232,
-    208
-   ],
-   "E": [
-    96,
-    104,
-    120
-   ],
-   "F": [
-    96,
-    104,
-    120
-   ],
-   "H": [
-    232,
-    232,
-    208
-   ],
-   "I": [
-    96,
-    104,
-    120
-   ],
-   "J": [
-    96,
-    104,
-    120
-   ],
-   "K": [
-    96,
-    104,
-    120
-   ],
-   "L": [
-    96,
-    104,
-    120
-   ],
-   "O": [
-    232,
-    232,
-    208
-   ],
-   "P": [
-    96,
-    104,
-    120
-   ],
-   "Q": [
-    96,
-    104,
-    120
-   ],
-   "R": [
-    232,
-    232,
-    208
-   ],
-   "S": [
-    232,
-    232,
-    208
-   ],
-   "V": [
-    232,
-    232,
-    208
-   ],
-   "W": [
-    232,
-    232,
-    208
-   ],
-   "Y": [
-    232,
-    232,
-    208
-   ],
-   "Z": [
-    232,
-    232,
-    208
-   ],
-   "M": [
-    72,
-    136,
-    216
-   ],
-   "C": [
-    200,
-    64,
-    80
-   ],
-   "G": [
-    208,
-    176,
-    104
-   ]
+   "_picture": {
+    "f": "em_ground/0_7.png",
+    "at": [
+     0,
+     0
+    ]
+   },
+   "_signs_in_picture": true,
+   "_buildings_in_picture": true
   },
   "people": [
-   "A Glinting Stone: Sablenite"
+   {
+    "text": "Old resident",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "You came all the way to Sootopolis? You're no ordinary tourist."
+     ]
+    }
+   },
+   {
+    "text": "Curious boy",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "I've never left this city. What's the world like outside our round sky?"
+     ]
+    }
+   },
+   "A Glinting Stone: Sablenite",
+   {
+    "text": "Worried girl",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Groudon and Kyogre... Where did the legends go? Will they come back?"
+     ]
+    }
+   },
+   {
+    "text": "Star gazer",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "At night the crater frames a circle of stars. It's the loveliest sky in Hoenn."
+     ]
+    }
+   },
+   {
+    "text": "Battle fan",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "The red one, the blue one... and then a green one from the sky! What a story!"
+     ]
+    }
+   },
+   {
+    "text": "Nervous boy",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Our city will be all right... won't it?"
+     ]
+    }
+   },
+   {
+    "text": "Seasons girl",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "If you're born in spring, do you love spring best? I was born in autumn, and I love it!"
+     ]
+    }
+   },
+   {
+    "text": "Legend teller",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "An old legend says the land and sea were shaped by a great battle between Pokémon."
+     ]
+    }
+   }
   ],
   "signs": [
    [
@@ -89845,7 +90075,1101 @@
     "SOOTOPOLIS CITY",
     "The mystical city where history slumbers."
    ]
-  ]
+  ],
+  "inside": {
+   "43,31": "center",
+   "17,29": "mart",
+   "9,6": "brick_house",
+   "45,6": "orb_house",
+   "9,17": "fan_house",
+   "44,17": "ruin_house",
+   "9,26": "lab_house",
+   "53,28": "doll_house",
+   "8,35": "crater_house",
+   "48,25": "size_house",
+   "51,36": "old_trainer"
+  },
+  "moves": {
+   "9,43": {
+    "m": "wander",
+    "d": "lr",
+    "r": [
+     1,
+     0
+    ]
+   },
+   "51,14": {
+    "m": "face",
+    "d": "d"
+   },
+   "43,26": {
+    "m": "look",
+    "d": "udlr"
+   },
+   "26,4": {
+    "m": "wander",
+    "d": "lr",
+    "r": [
+     1,
+     0
+    ]
+   },
+   "49,34": {
+    "m": "wander",
+    "d": "ud",
+    "r": [
+     0,
+     1
+    ]
+   },
+   "17,44": {
+    "m": "face",
+    "d": "r"
+   },
+   "14,42": {
+    "m": "face",
+    "d": "r"
+   },
+   "17,40": {
+    "m": "face",
+    "d": "r"
+   }
+  },
+  "scenes": [
+   {
+    "trigger": {
+     "zone": [
+      27,
+      19,
+      35,
+      25
+     ]
+    },
+    "condition": [
+     "seafloor_cavern_cleared",
+     "not:sootopolis_wallace_met",
+     "hoenn_version:OMEGA_RUBY"
+    ],
+    "flag": "sootopolis_wallace_met",
+    "cast": [
+     {
+      "sheet": "em_133.png",
+      "from": [
+       31,
+       18
+      ],
+      "to": "player",
+      "leave": [
+       31,
+       17
+      ],
+      "lines": [
+       "Wallace: You must be the Trainer Steven spoke of. I'm Wallace. I protect the Cave of Origin."
+      ]
+     },
+     {
+      "sheet": "em_134.png",
+      "from": [
+       24,
+       21
+      ],
+      "to": "player",
+      "leave": "back",
+      "lines": [
+       "Steven: {legend} went into the cave. If it draws on the power inside, Hoenn won't survive it."
+      ]
+     },
+     {
+      "sheet": "@leader",
+      "from": [
+       25,
+       22
+      ],
+      "to": "player",
+      "leave": "back",
+      "lines": [
+       "{leader}: We can't go any further. This is down to you now."
+      ]
+     },
+     {
+      "sheet": "em_120.png",
+      "from": [
+       36,
+       21
+      ],
+      "to": "player",
+      "leave": "back",
+      "lines": [
+       "Tabitha: Here. Our team's suit will protect you from what's down there."
+      ],
+      "event": {
+       "lines": [],
+       "gift_item": {
+        "MAGMA_SUIT": 1
+       }
+      }
+     },
+     {
+      "sheet": "@rival",
+      "from": [
+       37,
+       21
+      ],
+      "to": "player",
+      "leave": "back",
+      "lines": [
+       "{rival_name}: {player_name}! I came as fast as I could. Good luck in there!",
+       "Wallace: That Orb you carry... It will shield you and your Pokémon. Come, quickly."
+      ]
+     }
+    ]
+   },
+   {
+    "trigger": {
+     "zone": [
+      27,
+      19,
+      35,
+      25
+     ]
+    },
+    "condition": [
+     "seafloor_cavern_cleared",
+     "not:sootopolis_wallace_met",
+     "hoenn_version:ALPHA_SAPPHIRE"
+    ],
+    "flag": "sootopolis_wallace_met",
+    "cast": [
+     {
+      "sheet": "em_133.png",
+      "from": [
+       31,
+       18
+      ],
+      "to": "player",
+      "leave": [
+       31,
+       17
+      ],
+      "lines": [
+       "Wallace: You must be the Trainer Steven spoke of. I'm Wallace. I protect the Cave of Origin."
+      ]
+     },
+     {
+      "sheet": "em_134.png",
+      "from": [
+       24,
+       21
+      ],
+      "to": "player",
+      "leave": "back",
+      "lines": [
+       "Steven: {legend} went into the cave. If it draws on the power inside, Hoenn won't survive it."
+      ]
+     },
+     {
+      "sheet": "@leader",
+      "from": [
+       25,
+       22
+      ],
+      "to": "player",
+      "leave": "back",
+      "lines": [
+       "{leader}: We can't go any further. This is down to you now."
+      ]
+     },
+     {
+      "sheet": "em_118.png",
+      "from": [
+       36,
+       21
+      ],
+      "to": "player",
+      "leave": "back",
+      "lines": [
+       "Shelly: Here. Our team's suit will protect you from what's down there."
+      ],
+      "event": {
+       "lines": [],
+       "gift_item": {
+        "AQUA_SUIT": 1
+       }
+      }
+     },
+     {
+      "sheet": "@rival",
+      "from": [
+       37,
+       21
+      ],
+      "to": "player",
+      "leave": "back",
+      "lines": [
+       "{rival_name}: {player_name}! I came as fast as I could. Good luck in there!",
+       "Wallace: That Orb you carry... It will shield you and your Pokémon. Come, quickly."
+      ]
+     }
+    ]
+   }
+  ],
+  "surf": true,
+  "barred": [
+   {
+    "tiles": [
+     [
+      31,
+      17
+     ]
+    ],
+    "look": "sheet:em_133.png",
+    "face": "d",
+    "until": {
+     "flag_condition": "sootopolis_wallace_met"
+    },
+    "lines": [
+     "Wallace: The Cave of Origin. Nobody goes in without good reason."
+    ]
+   }
+  ],
+  "parts": true,
+  "overheads": [
+   {
+    "kind": "picture",
+    "f": "em_top/0_7.png",
+    "at": [
+     0,
+     0
+    ],
+    "size": [
+     60,
+     60
+    ]
+   }
+  ],
+  "rooms": {
+   "center": {
+    "art": [
+     "cccccccccccccc",
+     "cccccccccccccc",
+     "....cccNcc....",
+     "..N.cccmcc....",
+     "............N.",
+     "..............",
+     "c<.........cc.",
+     "....N......cc.",
+     "c.....nn.....c"
+    ],
+    "exits": {
+     "n": "OUT:43,31",
+     "<": "ROOM:center_2"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/15_2.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Heal",
+     {
+      "text": "Smitten girl",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I'm done living for love! I'll get strong! ...But the Gym Leader is so dreamy."
+       ]
+      }
+     },
+     {
+      "text": "Old Trainer",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Every Trainer who reaches Sootopolis has come a long way. Rest up."
+       ]
+      }
+     },
+     {
+      "text": "Gym hopeful",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Gym here is the toughest in Hoenn. Its Leader is a master of Water types."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "12,4": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     },
+     "4,7": {
+      "m": "wander",
+      "d": "lr",
+      "r": [
+       1,
+       0
+      ]
+     },
+     "2,3": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     },
+     "7,2": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/15_2.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       14,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Pokémon Center"
+   },
+   "center_2": {
+    "art": [
+     "cccccccccccccc",
+     "cccccccccccccc",
+     "cNNcccNcccNcc.",
+     "mmmcmcmmccmmc.",
+     "........c...c.",
+     "..............",
+     "cn............",
+     "..............",
+     "..............",
+     "c....cc..cc..c"
+    ],
+    "exits": {
+     "n": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/15_3.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Gift attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Mystery gifts arrive here sometimes. There's nothing waiting for you today."
+       ]
+      }
+     },
+     {
+      "text": "Link attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I'm sorry, the link rooms are closed for adjustments right now."
+       ]
+      }
+     },
+     {
+      "text": "Trade attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Trading here is closed for now. Sorry about that!"
+       ]
+      }
+     },
+     {
+      "text": "Record attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The record corner is being adjusted. Please come back another time."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "2,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "6,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "10,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "1,2": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/15_3.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       14,
+       10
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Pokémon Center 2F"
+   },
+   "mart": {
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "ccm........",
+     "cNm.......c",
+     "cmc...cc..c",
+     ".....Ncc.Nc",
+     "......cc..c",
+     "...nn......"
+    ],
+    "exits": {
+     "n": "OUT:17,29"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/15_4.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Shop",
+     {
+      "text": "Careful shopper",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Full Restores aren't cheap, but they're worth it this far into a journey."
+       ]
+      }
+     },
+     {
+      "text": "Gentleman",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Sootopolis has no roads at all. Everything here comes in by sea."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "5,5": {
+      "m": "face",
+      "d": "r"
+     },
+     "9,5": {
+      "m": "face",
+      "d": "r"
+     },
+     "1,3": {
+      "m": "face",
+      "d": "r"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/15_4.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       11,
+       8
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Poké Mart"
+   },
+   "brick_house": {
+    "art": [
+     "cccccccc",
+     "cccccccc",
+     "........",
+     "..Ncc...",
+     "..Ncc...",
+     "........",
+     "...nn..."
+    ],
+    "exits": {
+     "n": "OUT:9,6"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/15_5.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Kecleon ",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Kecleon: Puu puhyaah."
+       ]
+      }
+     },
+     {
+      "text": "Brick Break master",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Old man: For thirty years I've trained here in Sootopolis. I made a TM that shatters walls. Take it!"
+       ],
+       "gift_item": {
+        "TM43": 1
+       },
+       "flag": "got_tm43_sootopolis",
+       "done": [
+        "Old man: Brick Break smashes Reflect and Light Screen to bits. Use it well!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "2,4": {
+      "m": "face",
+      "d": "r"
+     },
+     "2,3": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "theme": "room",
+    "title": "House"
+   },
+   "orb_house": {
+    "art": [
+     "cccccccc",
+     "cccccccc",
+     "c......c",
+     "...Ncc..",
+     "....cc..",
+     "........",
+     "...nn..."
+    ],
+    "exits": {
+     "n": "OUT:45,6"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/15_6.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Thoughtful woman",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "On Mt. Pyre's summit, two Orbs once sat side by side. Seeing them together was soothing, somehow."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "3,3": {
+      "m": "face",
+      "d": "r"
+     }
+    },
+    "theme": "room",
+    "title": "House"
+   },
+   "fan_house": {
+    "art": [
+     "cccccccc",
+     "cccccccc",
+     "c.......",
+     "........",
+     "ccN...N.",
+     "cc......",
+     "...nn..."
+    ],
+    "exits": {
+     "n": "OUT:9,17"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/15_7.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Gym fan",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Our Gym Leader has fans from all over, even from outside Hoenn!"
+       ]
+      }
+     },
+     {
+      "text": "Fan club girl",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Fans come from far away. The Trainer Fan Club in Lilycove was packed!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "2,4": {
+      "m": "face",
+      "d": "d"
+     },
+     "6,4": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     }
+    },
+    "theme": "room",
+    "title": "House"
+   },
+   "ruin_house": {
+    "art": [
+     "cccccccc",
+     "cccccccc",
+     ".....N..",
+     "..Ncc...",
+     "..Ncc...",
+     "........",
+     "...nn..."
+    ],
+    "exits": {
+     "n": "OUT:44,17"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/15_8.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Dreamer ",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Even if there's no treasure, a dive to see a ruin would be beautiful."
+       ]
+      }
+     },
+     {
+      "text": "Azumarill ",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Azumarill: Marurii."
+       ]
+      }
+     },
+     {
+      "text": "Ruin hunter",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "They say there's an ancient ruin in the sea around here. Imagine the treasure!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "2,4": {
+      "m": "face",
+      "d": "r"
+     },
+     "5,2": {
+      "m": "face",
+      "d": "u"
+     },
+     "2,3": {
+      "m": "look",
+      "d": "udlr"
+     }
+    },
+    "theme": "room",
+    "title": "House"
+   },
+   "lab_house": {
+    "art": [
+     "cccccccc",
+     "cccccccc",
+     "c......c",
+     "...NccN.",
+     "....cc..",
+     "........",
+     "...nn..."
+    ],
+    "exits": {
+     "n": "OUT:9,26"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/15_9.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Researcher",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Sootopolis and Mt. Pyre seem to be connected somehow. We're still studying it."
+       ]
+      }
+     },
+     {
+      "text": "Little sister",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "My big brother used to study the sea."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "3,3": {
+      "m": "face",
+      "d": "r"
+     },
+     "6,3": {
+      "m": "face",
+      "d": "l"
+     }
+    },
+    "theme": "room",
+    "title": "House"
+   },
+   "doll_house": {
+    "art": [
+     "cccccccc",
+     "cccccccc",
+     "c.......",
+     "....N...",
+     "cc......",
+     "cc......",
+     "...nn..."
+    ],
+    "exits": {
+     "n": "OUT:53,28"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/15_10.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Doll lover",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Girl: You're my first guest in ages! You've brightened up my day. Here's a big Wailmer Doll!"
+       ],
+       "gift_item": {
+        "WAILMER_DOLL": 1
+       },
+       "flag": "got_wailmer_doll",
+       "done": [
+        "Girl: I love plush dolls! Squishy, squishy..."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "4,3": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     }
+    },
+    "theme": "room",
+    "title": "House"
+   },
+   "crater_house": {
+    "art": [
+     "cccccccc",
+     "cccccccc",
+     "........",
+     "...ccN..",
+     ".N.cc...",
+     "........",
+     "...nn..."
+    ],
+    "exits": {
+     "n": "OUT:8,35"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/15_11.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Historian",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "A volcano erupted under the sea. Its crater rose up and filled with rainwater. That's our city!"
+       ]
+      }
+     },
+     {
+      "text": "Wary woman",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The cave that joins Sootopolis to the sea... It's as if it was made to keep something in."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "5,3": {
+      "m": "face",
+      "d": "l"
+     },
+     "1,4": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     }
+    },
+    "theme": "room",
+    "title": "House"
+   },
+   "size_house": {
+    "art": [
+     "cccccccc",
+     "cccccccc",
+     "......cc",
+     "...cc...",
+     "..NccN..",
+     "........",
+     "...nn..."
+    ],
+    "exits": {
+     "n": "OUT:48,25"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/15_12.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Lotad fan",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I love Lotad! Big ones best of all. If you catch a huge Lotad, come and show me!"
+       ]
+      }
+     },
+     {
+      "text": "Seedot fan",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I love Seedot! The bigger the better. Show me a really big one sometime!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "2,4": {
+      "m": "face",
+      "d": "r"
+     },
+     "5,4": {
+      "m": "face",
+      "d": "l"
+     }
+    },
+    "theme": "room",
+    "title": "House"
+   },
+   "old_trainer": {
+    "art": [
+     "ccccccccccc",
+     "ccmcmcccccc",
+     "..ccc......",
+     "...........",
+     "......Ncc..",
+     ".......cc..",
+     "...........",
+     "...nn......"
+    ],
+    "exits": {
+     "n": "OUT:51,36"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/15_13.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Retired Trainer",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "When I was young I travelled the world with my Pokémon. Now I just love hearing about Trainers like you."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "6,4": {
+      "m": "face",
+      "d": "r"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/15_13.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       11,
+       8
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "House"
+   }
+  }
  },
  "EVER_GRANDE_CITY": {
   "art": [
@@ -90929,48 +92253,216 @@
   }
  },
  "HOENN_CAVE_OF_ORIGIN": {
-  "theme": "cave",
-  "floor_names": [
-   "The entrance",
-   "The deepest chamber"
-  ],
-  "figure_floors": {
-   "CONFRONT PRIMAL {legend}": 1,
-   "TALK TO {leader}": 1
-  },
   "floors": [
    {
     "art": [
      "ccccccccccccccccccc",
      "ccccccccccccccccccc",
      "ccccccccccccccccccc",
-     "cccccccc.+.cccccccc",
-     "ccccccccc.ccccccccc",
-     "ccccc.ccc.ccccccccc",
-     "ccccc.c.....ccccccc",
-     "ccccc.c.....ccccccc",
-     "ccccc.c.....ccccccc",
-     "ccccc.c.....ccccccc",
-     "ccccc.c.....c.ccccc",
-     "ccccc.c.....c.ccccc",
-     "ccccc.c.....c.ccccc",
-     "ccccc.c.....c..cccc",
-     "ccccc.c.....c..cccc",
-     "ccccc.c.....c..c.cc",
-     "ccccc.c.....c..c.cc",
-     "ccccc.c.....c.c..cc",
-     "ccccc.c.....c.c..cc",
-     "cccc..c.....c.c..cc",
-     "cccc..c.....c.c..cc",
-     "c.cc..........c..cc",
-     "c.c....c...c.....cc",
-     "c.c..............cc",
-     "c.................c",
-     "cccccccccvccccccccc"
+     "ccccccccccccccccccc",
+     "ccccccccccccccccccc",
+     "ccccccccc1ccccccccc",
+     "ccccccc.....ccccccc",
+     "ccccccc.....ccccccc",
+     "ccccccc.....ccccccc",
+     "ccccccc.....ccccccc",
+     "ccccccc.....ccccccc",
+     "ccccccc.....ccccccc",
+     "ccccccc.....ccccccc",
+     "ccccccc.....ccccccc",
+     "ccccccc.....ccccccc",
+     "ccccccc.....ccccccc",
+     "ccccccc.....ccccccc",
+     "ccccccc.....ccccccc",
+     "ccccccc.....ccccccc",
+     "ccccccc.....ccccccc",
+     "ccccccc..v..ccccccc",
+     "ccccccccccccccccccc",
+     "ccccccccccccccccccc",
+     "ccccccccccccccccccc",
+     "ccccccccccccccccccc",
+     "ccccccccccccccccccc"
     ],
     "exits": {
      "v": "SOOTOPOLIS_CITY"
-    }
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/24_137.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "links": {
+     "9,5": [
+      1,
+      11,
+      17
+     ]
+    },
+    "parts": true
+   },
+   {
+    "art": [
+     "ccccccccccccccccccccccc",
+     "ccccccccccccccccccccccc",
+     "ccccccccccccccccccccccc",
+     "ccccccccccccccccccccccc",
+     "ccccccccccccccccccccccc",
+     "ccccccccc.....1..cccccc",
+     "cccccc...........cccccc",
+     "ccccc.........ccccccccc",
+     "ccccc.....ccccccccccccc",
+     "ccccc....cccccccccccccc",
+     "ccccc...ccccccccccccccc",
+     "ccccc...ccccccccccccccc",
+     "ccccc...ccccccccccccccc",
+     "ccccc...ccccccccccccccc",
+     "ccccc.....ccccc...ccccc",
+     "ccccc.............ccccc",
+     "cccccc...........cccccc",
+     "ccccccc....1....ccccccc",
+     "ccccccccccccccccccccccc",
+     "ccccccccccccccccccccccc",
+     "ccccccccccccccccccccccc",
+     "ccccccccccccccccccccccc",
+     "ccccccccccccccccccccccc"
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/24_138.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "links": {
+     "11,17": [
+      0,
+      9,
+      5
+     ],
+     "14,5": [
+      2,
+      13,
+      5
+     ]
+    },
+    "parts": true
+   },
+   {
+    "art": [
+     "ccccccccccccccccccccccc",
+     "ccccccccccccccccccccccc",
+     "ccccccccccccccccccccccc",
+     "ccccccccccccccccccccccc",
+     "ccccccccccccccccccccccc",
+     "ccccccccc....1.cccccccc",
+     "ccccccccc.......ccccccc",
+     "cccccccccc......ccccccc",
+     "cccccccccccc....ccccccc",
+     "ccccccccccccc...ccccccc",
+     "cccccccccccccc..ccccccc",
+     "ccccc1cccccccc..ccccccc",
+     "ccccc..ccccccc..ccccccc",
+     "ccccc..ccccccc..ccccccc",
+     "ccccc..cccccc...ccccccc",
+     "ccccc...........ccccccc",
+     "cccccc.........cccccccc",
+     "ccccccc.......ccccccccc",
+     "ccccccccccccccccccccccc",
+     "ccccccccccccccccccccccc",
+     "ccccccccccccccccccccccc",
+     "ccccccccccccccccccccccc",
+     "ccccccccccccccccccccccc"
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/24_139.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "links": {
+     "13,5": [
+      1,
+      14,
+      5
+     ],
+     "5,11": [
+      3,
+      5,
+      10
+     ]
+    },
+    "parts": true
+   },
+   {
+    "art": [
+     "ccccccccccccccccccccc",
+     "ccccccccccccccccccccc",
+     "ccccccccccccccccccccc",
+     "ccccccccccccccccccccc",
+     "ccccccccccccccccccccc",
+     "ccccccc........cccccc",
+     "ccccccc.........ccccc",
+     "ccccc...cccc....ccccc",
+     "ccccc..cccccc...ccccc",
+     "ccccc..ccccccc..ccccc",
+     "ccccc1.ccccccc..ccccc",
+     "cccccccccccccc..ccccc",
+     "cccccccccccccc..ccccc",
+     "cccccccccccc....ccccc",
+     "cccccccc1......cccccc",
+     "cccccccc......ccccccc",
+     "ccccccccccccccccccccc",
+     "ccccccccccccccccccccc",
+     "ccccccccccccccccccccc",
+     "ccccccccccccccccccccc",
+     "ccccccccccccccccccccc"
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/24_140.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "links": {
+     "5,10": [
+      2,
+      5,
+      11
+     ],
+     "8,14": [
+      4,
+      7,
+      14
+     ]
+    },
+    "parts": true
    },
    {
     "art": [
@@ -90978,29 +92470,178 @@
      "ccccccccccccccccccc",
      "ccccccccccccccccccc",
      "ccccccccccccccccccc",
-     "cc.ccccccccccccc.cc",
-     "cc.ccc......cccc.cc",
-     "cc.cc...ccc...cc.cc",
-     "cc.cc..ccocc..cc.cc",
-     "cc.cc.ccooocc.cc.cc",
-     "cc.cc.coooooc.cc.cc",
-     "cc.cc.coooooc.cc.cc",
-     "cc.cc..coooc..cc.cc",
-     "cc.ccc..coc..ccc.cc",
-     "cc..cc...N...cc..cc",
-     "c.c.c.........c.c.c",
-     "c.c...N.........c.c",
-     "c......c...c......c",
-     "c........-........c",
+     "ccccccccccccccccccc",
+     "cccccc.......cccccc",
+     "cccccc......1.ccccc",
+     "ccccc..ccccc..ccccc",
+     "ccccc.ccccccc.ccccc",
+     "ccccc.ccccccccccccc",
+     "ccccc.ccccccccccccc",
+     "ccccc..cccccccccccc",
+     "ccccc...ccccccccccc",
+     "ccccc...ccccccccccc",
+     "cccccc.1....ccccccc",
+     "cccccc......ccccccc",
+     "ccccccccccccccccccc",
+     "ccccccccccccccccccc",
+     "ccccccccccccccccccc",
+     "ccccccccccccccccccc",
      "ccccccccccccccccccc"
     ],
     "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/24_141.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "links": {
+     "7,14": [
+      3,
+      8,
+      14
+     ],
+     "12,6": [
+      5,
+      9,
+      3
+     ]
+    },
+    "parts": true
+   },
+   {
+    "art": [
+     "ccccccccccccccccccc",
+     "ccccccccccccccccccc",
+     "ccccccccccccccccccc",
+     "ccccccc..1..ccccccc",
+     "ccccc.........ccccc",
+     "cccc...ccccc...cccc",
+     "cccc..cc.c.cc..cccc",
+     "cccc.ccc...ccc.cccc",
+     "cccc.c.......c.cccc",
+     "cccc.cc..c..cc.cccc",
+     "cccc.c.......c.cccc",
+     "cccc..cc...cc..cccc",
+     "cccc...c.c.c...cccc",
+     "ccccc.N.......ccccc",
+     "cccccc.......cccccc",
+     "ccccccccccccccccccc",
+     "ccccccccccccccccccc",
+     "ccccccccccccccccccc",
+     "ccccccccccccccccccc"
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/24_142.png",
+      "at": [
+       0,
+       0
+      ],
+      "by_version": {
+       "ALPHA_SAPPHIRE": "em_ground/24_142_as.png"
+      }
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
     "people": [
-     "CONFRONT PRIMAL {legend}",
      "TALK TO {leader}"
-    ]
+    ],
+    "links": {
+     "9,3": [
+      4,
+      12,
+      6
+     ]
+    },
+    "pool": "NO_WILD_INDOORS_PERCENTAGES",
+    "barred": [
+     {
+      "tiles": [
+       [
+        9,
+        9
+       ]
+      ],
+      "look": "sheet:@legend",
+      "face": "d",
+      "when": {
+       "condition": [
+        "hoenn_version:OMEGA_RUBY"
+       ],
+       "flag_condition": "not cave_of_origin_cleared"
+      },
+      "lines": [
+       "Groudon is drawing power from the great crystal above..."
+      ],
+      "boss": {
+       "id": 383,
+       "name": "Groudon",
+       "level": 45,
+       "primal": true,
+       "victory_flag": "cave_of_origin_cleared",
+       "lines": [
+        "Groudon is drawing power from the great crystal above...",
+        "Groudon underwent Primal Reversion! It attacks!"
+       ]
+      }
+     },
+     {
+      "tiles": [
+       [
+        9,
+        9
+       ]
+      ],
+      "look": "sheet:@legend",
+      "face": "d",
+      "when": {
+       "condition": [
+        "hoenn_version:ALPHA_SAPPHIRE"
+       ],
+       "flag_condition": "not cave_of_origin_cleared"
+      },
+      "lines": [
+       "Kyogre is drawing power from the great crystal above..."
+      ],
+      "boss": {
+       "id": 382,
+       "name": "Kyogre",
+       "level": 45,
+       "primal": true,
+       "victory_flag": "cave_of_origin_cleared",
+       "lines": [
+        "Kyogre is drawing power from the great crystal above...",
+        "Kyogre underwent Primal Reversion! It attacks!"
+       ]
+      }
+     }
+    ],
+    "parts": true
    }
-  ]
+  ],
+  "theme": "cave",
+  "floor_names": [
+   "Entrance",
+   "1F",
+   "B1F",
+   "B2F",
+   "B3F",
+   "The deepest chamber"
+  ],
+  "figure_floors": {
+   "CONFRONT PRIMAL {legend}": 1,
+   "TALK TO {leader}": 1
+  }
  },
  "HOENN_SHOAL_CAVE": {
   "floors": [

@@ -167,6 +167,14 @@
   "shop_only": true,
   "from": "Lilycove Department Store 4F"
  },
+ "TM112": {
+  "move": "SECRET-POWER",
+  "type": "NORMAL",
+  "tier": 8,
+  "price": 3000,
+  "gift": true,
+  "from": "ORAS TM94: from Aarune, on Route 111"
+ },
  "TM12": {
   "move": "SOLAR-BLADE",
   "type": "GRASS",

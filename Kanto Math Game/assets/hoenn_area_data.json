@@ -3116,7 +3116,7 @@
       "route_menu": [
         {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
         {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
-        {"text": "CONFRONT PRIMAL {legend}", "action": "BOSS", "condition": ["can_exit", "seafloor_cavern_cleared", "boss_not_defeated"], "color": "RED"},
+        {"text": "CONFRONT PRIMAL {legend}", "not_on_map": true, "action": "BOSS", "condition": ["can_exit", "seafloor_cavern_cleared", "boss_not_defeated"], "color": "RED"},
         {"text": "TALK TO {leader}", "action": "HOENN_EVENT", "event": "leader_orb", "condition": ["cave_of_origin_cleared", "not:got_stolen_orb"], "color": "GOLD"},
         {"text": "SOOTOPOLIS CITY", "action": "EXIT", "target_area": "SOOTOPOLIS_CITY", "condition": "can_exit", "color": "RED"}
       ],

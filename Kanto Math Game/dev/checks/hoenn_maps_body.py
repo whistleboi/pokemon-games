@@ -1286,6 +1286,7 @@ st.run.player, st.anim = (66, 69), 0
 _x, _y = st.run.player
 _mv = next(((dx, dy) for dx, dy in ((0, -1), (1, 0), (-1, 0), (0, 1)) if st.run.floor.walkable(_x + dx, _y + dy)), (0, -1)) if hasattr(st.run.floor, "walkable") else (0, -1)
 st.anim = 0
+_calm(st)
 st.step(*_mv); frames(12)
 check(st.safari and st.safari["steps"] == 499, f"Safari Game: each step counts down ({st.safari})")
 st.encounter = None
@@ -1507,6 +1508,64 @@ check(all(k in json.load(open("assets/tms.json", encoding="utf-8")) for k in ("T
       "Seafloor Cavern: TM Earthquake and TM Scald to find (new TMs)")
 story.inventory.clear(); story.inventory.update(_inv15)
 story.story_flags.clear(); story.story_flags.update(_saved15)
+
+# ---- batch 16: Route 126, Sootopolis City, the Cave of Origin
+_saved16, _inv16 = dict(story.story_flags), dict(story.inventory)
+_tm16 = json.load(open("assets/town_maps.json", encoding="utf-8"))
+_sm = _tm16["SOOTOPOLIS_CITY"]
+_v = [k for k, t in _sm["exits"].items() if t == "HOENN_ROUTE_126"]
+check("SOOTOPOLIS_CITY" in _tm16["HOENN_ROUTE_126"]["floors"][1]["exits"].values() and _v
+      and sum(r.count(_v[0]) for r in _sm["art"]) >= 10 and _sm.get("surf"),
+      "Route 126's seabed leads into Sootopolis; in the crater (crossed by Surf) you Dive back out from the deep water")
+story.inventory.update({"HM_SURF": 1, "HM_DIVE": 1})
+for _k in ("sootopolis_wallace_met", "got_tm43_sootopolis"):
+    story.story_flags.pop(_k, None)
+story.story_flags["seafloor_cavern_cleared"] = True
+story.story_flags["hoenn_version"] = "OMEGA_RUBY"
+st = open_map("SOOTOPOLIS_CITY", "HOENN_ROUTE_126")
+st.scenes.entered = True
+_blocked = (31, 17) in st.barred
+_inroom16 = {q.get("text") if isinstance(q, dict) else q for r in _sm["rooms"].values() for q in r.get("people", [])}
+_nod16 = sorted(k for k, v in st.doors.items() if "%d,%d" % k not in (_sm.get("inside") or {}) and v != "gym")
+check(not _nod16 and {"Heal", "Shop"} <= _inroom16, f"Sootopolis: every door but the Gym's leads inside ({_nod16})")
+story.inventory.pop("MAGMA_SUIT", None)
+st.player, st.anim = (31, 22), 0
+_calm(st); st.step(0, -1)
+said = _play(st, 4000)
+st = open_map("SOOTOPOLIS_CITY", "HOENN_ROUTE_126")
+check(_blocked and story.story_flags.get("sootopolis_wallace_met") and story.inventory.get("MAGMA_SUIT") == 1 and (31, 17) not in st.barred
+      and any("Wallace" in x for x in said),
+      f"Sootopolis: Wallace keeps the Cave of Origin; he and Steven meet you, the Admin gives you the team's suit ({said[:1]})")
+st._go("brick_house", ""); frames(2)
+st._get_callback_for_option(next(o for o in st.people.values() if isinstance(o, dict) and o.get("text") == "Brick Break master"))(); tap(st)
+check(story.inventory.get("TM43") == 1, "Sootopolis: the old man's TM Brick Break")
+_co = _tm16["HOENN_CAVE_OF_ORIGIN"]["floors"]
+_seen16 = {0}
+_todo = [0]
+while _todo:
+    _i = _todo.pop()
+    for _l in (_co[_i].get("links") or {}).values():
+        if _l[0] not in _seen16:
+            _seen16.add(_l[0]); _todo.append(_l[0])
+check(len(_co) == 6 and _seen16 == set(range(6)),
+      "Cave of Origin: down from its entrance through 1F and Ruby/Sapphire's B1F-B3F to the legend's chamber")
+_cf = _co[5]
+_bars16 = {b["boss"]["id"]: b for b in _cf.get("barred", []) if b.get("boss")}
+check(set(_bars16) == {382, 383} and all(b["tiles"] == [[9, 9]] and b["look"] == "sheet:@legend" and b["boss"].get("primal") for b in _bars16.values())
+      and "CONFRONT PRIMAL {legend}" not in (_cf.get("people") or []) and _cf["roofs"]["_picture"].get("by_version", {}).get("ALPHA_SAPPHIRE")
+      and _cf.get("pool") == "NO_WILD_INDOORS_PERCENTAGES",
+      "Cave of Origin: the legend (Emerald's Groudon / Kyogre) at the chamber's heart; the crystals its colour; no wild Pokemon there")
+from src.states.overworld.dungeon import scene_sheet as _ss
+story.story_flags["hoenn_version"] = "ALPHA_SAPPHIRE"
+_k16 = _ss(g, "@legend")
+story.story_flags["hoenn_version"] = "OMEGA_RUBY"
+check(_k16 == "em_197.png" and _ss(g, "@legend") == "em_198.png", "Cave of Origin: Kyogre in Alpha Sapphire, Groudon in Omega Ruby")
+_aar = next(p for p in _tm16["HOENN_ROUTE_111"]["people"] if isinstance(p, dict) and p.get("text") == "Aarune")
+check(_aar["event"].get("gift_item") == {"TM112": 1} and json.load(open("assets/tms.json", encoding="utf-8"))["TM112"]["move"] == "SECRET-POWER"
+      and any("Secret Bases" in x for x in _aar["event"]["lines"]),
+      "Route 111: Aarune gives TM Secret Power; his Secret Bases aren't ready yet")
+story.inventory.clear(); story.inventory.update(_inv16)
+story.story_flags.clear(); story.story_flags.update(_saved16)
 
 story.story_flags.clear(); story.story_flags.update(_saved)
 print(f"##### {len(fails)} failures")

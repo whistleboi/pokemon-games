@@ -2190,6 +2190,120 @@
     },
     "HOENN_SAFARI_ZONE:BIG PEARL": {
       "item": "BIG_PEARL"
+    },
+    "SOOTOPOLIS_CITY:Old resident": {
+      "sheet": "em_19.png"
+    },
+    "SOOTOPOLIS_CITY:Curious boy": {
+      "sheet": "em_5.png"
+    },
+    "SOOTOPOLIS_CITY:A Glinting Stone: Sablenite": {
+      "item": "SABLENITE"
+    },
+    "SOOTOPOLIS_CITY:Worried girl": {
+      "sheet": "em_7.png"
+    },
+    "SOOTOPOLIS_CITY:Star gazer": {
+      "sheet": "em_34.png"
+    },
+    "SOOTOPOLIS_CITY:Battle fan": {
+      "sheet": "em_44.png"
+    },
+    "SOOTOPOLIS_CITY:Nervous boy": {
+      "sheet": "em_14.png"
+    },
+    "SOOTOPOLIS_CITY:Seasons girl": {
+      "sheet": "em_10.png"
+    },
+    "SOOTOPOLIS_CITY:Legend teller": {
+      "sheet": "em_39.png"
+    },
+    "SOOTOPOLIS_CITY:Heal": {
+      "sheet": "em_58.png"
+    },
+    "SOOTOPOLIS_CITY:Smitten girl": {
+      "sheet": "em_16.png"
+    },
+    "SOOTOPOLIS_CITY:Old Trainer": {
+      "sheet": "em_48.png"
+    },
+    "SOOTOPOLIS_CITY:Gym hopeful": {
+      "sheet": "em_34.png"
+    },
+    "SOOTOPOLIS_CITY:Gift attendant": {
+      "sheet": "em_223.png"
+    },
+    "SOOTOPOLIS_CITY:Link attendant": {
+      "sheet": "em_85.png"
+    },
+    "SOOTOPOLIS_CITY:Trade attendant": {
+      "sheet": "em_85.png"
+    },
+    "SOOTOPOLIS_CITY:Record attendant": {
+      "sheet": "em_85.png"
+    },
+    "SOOTOPOLIS_CITY:Shop": {
+      "sheet": "em_83.png"
+    },
+    "SOOTOPOLIS_CITY:Careful shopper": {
+      "sheet": "em_17.png"
+    },
+    "SOOTOPOLIS_CITY:Gentleman": {
+      "sheet": "em_48.png"
+    },
+    "SOOTOPOLIS_CITY:Kecleon ": {
+      "sheet": "em_204.png"
+    },
+    "SOOTOPOLIS_CITY:Brick Break master": {
+      "sheet": "em_44.png"
+    },
+    "SOOTOPOLIS_CITY:Thoughtful woman": {
+      "sheet": "em_22.png"
+    },
+    "SOOTOPOLIS_CITY:Gym fan": {
+      "sheet": "em_26.png"
+    },
+    "SOOTOPOLIS_CITY:Fan club girl": {
+      "sheet": "em_10.png"
+    },
+    "SOOTOPOLIS_CITY:Dreamer ": {
+      "sheet": "em_26.png"
+    },
+    "SOOTOPOLIS_CITY:Azumarill ": {
+      "sheet": "em_210.png"
+    },
+    "SOOTOPOLIS_CITY:Ruin hunter": {
+      "sheet": "em_19.png"
+    },
+    "SOOTOPOLIS_CITY:Researcher": {
+      "sheet": "em_39.png"
+    },
+    "SOOTOPOLIS_CITY:Little sister": {
+      "sheet": "em_14.png"
+    },
+    "SOOTOPOLIS_CITY:Doll lover": {
+      "sheet": "em_20.png"
+    },
+    "SOOTOPOLIS_CITY:Historian": {
+      "sheet": "em_29.png"
+    },
+    "SOOTOPOLIS_CITY:Wary woman": {
+      "sheet": "em_18.png"
+    },
+    "SOOTOPOLIS_CITY:Lotad fan": {
+      "sheet": "em_50.png"
+    },
+    "SOOTOPOLIS_CITY:Seedot fan": {
+      "sheet": "em_55.png"
+    },
+    "SOOTOPOLIS_CITY:Retired Trainer": {
+      "sheet": "em_29.png"
+    },
+    "HOENN_CAVE_OF_ORIGIN:CONFRONT PRIMAL {legend}": {
+      "sheet": "@legend"
+    },
+    "HOENN_CAVE_OF_ORIGIN:TALK TO {leader}": {
+      "sheet": "@leader"
     }
   },
   "townsperson": "NPC 17.png",

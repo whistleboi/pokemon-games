@@ -354,14 +354,18 @@ class Scenes:
                     h.npc_heal()
                 ev = spec.get("event") if isinstance(spec.get("event"), dict) else str(spec.get("then") or "")
                 if isinstance(ev, dict) or ev.startswith("event:"):   # (a story event: a key, or one written out: a gift)
-                    st["phase"] = "wait"
-                    h.npc_event(ev if isinstance(ev, dict) else ev[6:], lambda: st.__setitem__("phase", "out"))
+                    st["phase"], st["ev"] = "event", ev   # (on the next frame: not from inside the closing of the lines just said)
                 else:
                     st["phase"] = "out"
             if spec.get("lines"):
                 h.npc_say(list(spec["lines"]), said)
             else:
                 said()
+            return False
+        if ph == "event":
+            ev = st.pop("ev")
+            st["phase"] = "wait"
+            h.npc_event(ev if isinstance(ev, dict) else ev[6:], lambda: st.__setitem__("phase", "out"))
             return False
         if ph in ("talk", "wait"):
             return False

@@ -222,6 +222,13 @@ def scene_sheet(game, token):
     if token == "@rival":
         who = str(getattr(game, "rival_character", "") or "").lower()
         return own.get(f"{who}.png") or own.get("rival.png") or "NPC 17.png"
+    if token in ("@legend", "@legend_asleep"):  # (this version's super-ancient Pokemon: Emerald's Groudon / Kyogre, awake or asleep)
+        try:
+            from src.world import hoenn as _h
+            aqua = _h.version(story) == "ALPHA_SAPPHIRE"
+        except Exception:
+            aqua = False
+        return ("em_205.png" if aqua else "em_206.png") if token.endswith("asleep") else ("em_197.png" if aqua else "em_198.png")
     if token in ("@leader", "@other_leader"):  # (this version's villain leader, or the other team's: Emerald's Maxie and Archie)
         try:
             from src.world import hoenn as _h
@@ -830,6 +837,8 @@ class DungeonState(OverworldBattles, PlayState):
                 continue  # (a house's option is through its door, not someone standing about; unless its room is built: then they stand in it)
             if boss_in_way and item.get("action") == "BOSS":
                 continue  # (it sleeps across the way out: see _gate)
+            if item.get("not_on_map"):
+                continue  # (the map stands it there itself, as a stand-in: the Cave of Origin's legend on its rock)
             fc = item.get("flag_condition")
             if fc:
                 parts = fc.split()
@@ -3046,7 +3055,7 @@ class DungeonState(OverworldBattles, PlayState):
             if img is not None:
                 return img
         pid = spec.get("pokemon")
-        if pid is None and item.get("action") == "BOSS":
+        if pid is None and item.get("action") == "BOSS" and not spec.get("sheet"):   # (a boss with a sheet of its own: the legend, Emerald's)
             pid = (item.get("boss") or self.area_data.get("area_boss") or {}).get("id")
         if pid is not None:
             ow = (sm.get("pokemon") or {}).get(str(pid))

@@ -1544,6 +1544,9 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, GameState)
                 and getattr(self, "_acts_second", None) == id(defender) and random.uniform(0, 100) < flinch:
             self.__dict__.setdefault("_flinched", set()).add(id(defender))  # only if it hasn't moved yet
         # Added effects (Ember's burn, Body Slam's paralysis...) on a target that survives.
+        if name == "SECRET-POWER":  # (its effect by where you battle: sleep in grass, freezing on snow and ice, else paralysis)
+            _where = str((self.game.story_manager.get_current_area_data() or {}).get("battle_type") or "").lower()
+            d = dict(d, ailment="sleep" if _where in ("grass", "forest", "route") else "freeze" if _where in ("snow", "ice") else "paralysis")
         chance = self.ability_effect_chance(attacker, defender, d.get("ailment_chance") or 0)  # Serene Grace...
         if damage and damage < defender_hp and chance and self._can_inflict(d.get("ailment"), defender) \
                 and random.uniform(0, 100) < chance:
