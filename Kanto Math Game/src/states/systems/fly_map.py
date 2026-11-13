@@ -270,7 +270,8 @@ class PokeNavState(GameState):
         f = self.game.assets.fonts
         accent = theme.ACCENT["tool"]
         route_name = self.area_data.get("route_name", "Unknown Area")
-        theme.menu_background(screen, accent, f"POKENAV: {route_name.upper()}", f["button"], title_x=176)
+        nav = "DEXNAV" if self.game.story_manager.get_current_region() == "HOENN" else "POKENAV"  # (ORAS's DexNav: Hoenn, from Route 101)
+        theme.menu_background(screen, accent, f"{nav}: {route_name.upper()}", f["button"], title_x=176)
         if not self.pool:
             theme.shadow_text(screen, "No wild Pokemon data for this area.", f["s_med"], self.game.width // 2,
                               self.game.height // 2, color=WHITE, shadow=theme.MENU_BG, align="center")

@@ -197,6 +197,30 @@ def held_pointer():
     return None
 
 
+def scene_sheet(game, token):
+    """A scene's walking sheet: a file ("em_64.png"), or a token for someone who depends on the save (Jordan, 11-12):
+    "@rival" (this save's rival, from trainers_<REGION>: Hoenn's Brendan or May), "@grunt" / "@grunt_f" (a villain of
+    this version's team: Team Magma in Omega Ruby, Team Aqua in Alpha Sapphire)."""
+    token = str(token or "")
+    if not token.startswith("@"):
+        return token
+    story = game.story_manager
+    region = str(story.get_current_region() or "")
+    own = sprite_map(game).get("trainers_" + region) or {}
+    if token == "@rival":
+        who = str(getattr(game, "rival_character", "") or "").lower()
+        return own.get(f"{who}.png") or own.get("rival.png") or "NPC 17.png"
+    if token in ("@grunt", "@grunt_f"):
+        try:
+            from src.world import hoenn as _h
+            aqua = _h.version(story) == "ALPHA_SAPPHIRE"
+        except Exception:
+            aqua = False
+        key = ("aqua" if aqua else "magma") + ("_f" if token.endswith("_f") else "")
+        return {"aqua": "em_117.png", "aqua_f": "em_118.png", "magma": "em_119.png", "magma_f": "em_120.png"}[key]
+    return "NPC 17.png"
+
+
 def sprite_map(game):
     """Which overworld sheet is whose (assets/dungeon_sprites.json)."""
     if "all" not in _sprite_map:
@@ -330,9 +354,10 @@ def art_recipe(m):
                 ch = chr(0x2700 + len(standers))
                 legend[ch] = {"figure": f"trainer:{standers.pop(0)}"}
                 out.append(ch)
-            elif c == "N" and people:  # someone standing: a route option's figure, by its text
+            elif c == "N" and people:  # someone standing: a route option's figure, by its text (or a passer-by of the map's own: {"text", "action": "EVENT", ...})
                 ch = chr(0x2500 + len(people))
-                legend[ch] = {"figure": people.pop(0)}
+                who = people.pop(0)
+                legend[ch] = {"figure": who.get("text") if isinstance(who, dict) else who}
                 out.append(ch)
             elif c == "D":  # a door: a way out (the building's own, or a gatehouse's), else walked into
                 letter = doors.get((x, y))
@@ -685,6 +710,8 @@ class DungeonState(OverworldBattles, PlayState):
     def _floor_of(self, item, default):
         """The floor a trainer, way out or figure is on: its zone's, or the recipe's "figure_floors"
         {text: floor} (Navel Rock: Lugia below, Ho-Oh on top), else default."""
+        if isinstance(item, dict) and item.get("_floor") is not None:  # (a passer-by of a map of floors: the floor it stands on)
+            return int(item["_floor"])
         floors = dict(self.recipe.get("figure_floors") or {}, **((self.recipe.get("art") or {}).get("figure_floors") or {}))
         on = (floors.get(item.get("text"), floors.get(item.get("spot_name"), floors.get(item.get("name"))))) if isinstance(item, dict) else None  # (spot_name: one of several with the same name)
         if on is not None:
@@ -780,6 +807,11 @@ class DungeonState(OverworldBattles, PlayState):
                 cond = None
             if rematch or self._check_route_condition(cond, left, item):
                 out.append(item)
+        # the map's own passers-by: people who just talk (Jordan, 11-12), each on its own floor
+        for _i, _f in (enumerate(_art_map["floors"]) if _art_map.get("floors") else [(None, _art_map)]):
+            _keep = self.__dict__.setdefault("_floor_folk", {})  # (the same dict each time: figures are kept by identity)
+            out += [_keep.setdefault(id(p), dict(p, _floor=_i)) if _i is not None else p
+                    for p in (_f.get("people") or []) if isinstance(p, dict) and p.get("text") and self.npc_shown(p)]
         return out + self._arrival_figures()
 
     def _arrival_figures(self):
@@ -808,6 +840,11 @@ class DungeonState(OverworldBattles, PlayState):
         pool = self.area_data.get("trainer_pool", [])
         self._mark_route_progress(any(not story.is_trainer_defeated(self.area_key, i) for i in range(len(pool))))
         now = self._figure_items()
+        _sc = getattr(self, "_scene_run", None)
+        _held = _sc.playing[2] if _sc is not None and _sc.playing else None
+        if _held is not None:  # (someone a scene is still playing out with stays till it ends)
+            now += [m.payload for m in self.run.floor.movers if getattr(m, "motion", None) is _held and m.kind == "figure"
+                    and not any(m.payload is j for j in now)]
         for item in [i for i in self.placed if not any(i is j for j in now)]:
             self.run.drop_figure(item)
         for item in [i for i in now if not any(i is j for j in self.placed)]:
@@ -860,9 +897,183 @@ class DungeonState(OverworldBattles, PlayState):
         self._sync_gate()
         self.say(gate.get("lines") or ["You push the switch."])
 
+    def _stand_in_img(self, look, bar):
+        """A story stand-in's picture (a map's "barred" look): "sheet:<walking sheet>" (bar "face" u d l r, "march": running
+        on the spot), "ow:<folder>:<thing>" (a real game's own thing: a bag, a boat), "mon:<species>". None if there is none."""
+        fc = {"u": (0, -1), "d": (0, 1), "l": (-1, 0), "r": (1, 0)}.get(bar.get("face", "d"), (0, 1))
+        fr = (1, 0, 3, 0)[(pygame.time.get_ticks() // 120) % 4] if bar.get("march") else 0
+        if look.startswith("mon:"):
+            from src.minigames.base import icon
+
+            class _Mon:  # (just what the walking sheet needs)
+                id, form, is_shiny, gender = int(look[4:]), "normal", False, None
+            return (self._follower_img(_Mon(), fc) if bar.get("face") else None) or icon(self.game, int(look[4:]), TILE + 6)
+        if look.startswith("sheet:"):
+            return self._sheet_frame(scene_sheet(self.game, look[6:]), fc, frame=fr)
+        if look.startswith("ow:"):
+            from src.dungeon import art as _art
+            fold, name = look[3:].split(":", 1)
+            return _art._ow(fold, name, TILE)
+        return None
+
+    # ---------------------------------------------------------------- people who move (src/dungeon/npc.py)
+    def _motion(self, m):
+        """A figure's or a trainer's Motion (made the first time it's asked for: its way of moving is the map's
+        "moves" at the spot it stands on, a trainer keeps the way it already faces)."""
+        if m.kind not in ("figure", "trainer"):
+            return None
+        mo = getattr(m, "motion", None)
+        if mo is None:
+            from src.dungeon import npc
+            here = self._here_art() if self.run.recipe.get("art") else {}
+            mo = m.motion = npc.Motion((m.x, m.y), npc.spec_at(here.get("moves"), (m.x, m.y)), seed=self.area_key, facing=tuple(m.facing or (0, 1)))
+            m.facing = mo.facing
+        return mo
+
+    def _npc_free(self, t, mover=None):
+        """Can a person step onto t: open ground nothing stands on (no way out, item, sign), not you."""
+        f = self.run.floor
+        x, y = t
+        if not (0 <= x < f.w and 0 <= y < f.h) or not f.walkable(x, y) or f.tile(x, y) == core.SURF or t in f.exits or t in f.items                 or t in f.tm_spots or t in f.decor:
+            return False
+        if t == tuple(self.run.player) or (self.anim > 0 and t == tuple(self.anim_from)):
+            return False
+        return not any(o is not mover and (t == (o.x, o.y) or (getattr(o, "motion", None) is not None and t == o.motion.frm and o.motion.moving()))
+                       for o in f.movers)
+
+    def _npc_tick(self):
+        f = self.run.floor
+        for m in list(f.movers):
+            mo = self._motion(m)
+            if mo is None:
+                continue
+            if mo.kind == "still" and mo.idle() and mo.emote == 0 and not mo.hold:
+                continue
+            turned = mo.tick(lambda t, m=m: self._npc_free(t, m))
+            if mo.gone:  # (walked off the map: gone for this visit)
+                self.run.remove(m)
+                continue
+            m.x, m.y = mo.pos
+            m.facing = mo.facing
+            if m.kind == "trainer" and (turned or not mo.idle()) and self._ready() and self.run._sees(m):
+                self._meet_trainer(m, spotted=True)  # (it turned your way, or walked into view: it's seen you)
+                return
+        sc = self._scenes()
+        if sc.busy():
+            sc.tick()
+        elif self._ready() and not self.walk_goal:
+            sc.check()
+
+    def _scenes(self):
+        from src.dungeon import npc
+        key = (id(self.run.floor), self.run.index)
+        if getattr(self, "_scene_key", None) != key:
+            here = self._here_art() if self.run.recipe.get("art") else {}
+            self._scene_key, self._scene_run = key, npc.Scenes(here.get("scenes"), self)
+        return self._scene_run
+
+    def _scene_mover(self, who):
+        for m in self.run.floor.movers:
+            if m.kind == "figure" and isinstance(m.payload, dict) and m.payload.get("text") == who:
+                return m
+            if m.kind == "trainer" and str(who).startswith("trainer:") and who[8:] in ((m.payload[1] or {}).get("name"), (m.payload[1] or {}).get("spot_name")):  # (spot_name: a villain renamed for the version)
+                return m
+        return None
+
+    # (the scene runner's host)
+    def npc_person(self, who):
+        m = self._scene_mover(who)
+        return self._motion(m) if m is not None else None
+
+    def npc_player(self):
+        return tuple(self.run.player)
+
+    def npc_passable(self, t, mo):
+        m = next((o for o in self.run.floor.movers if getattr(o, "motion", None) is mo), None)
+        return self._npc_free(t, m)
+
+    def npc_shown(self, scene):
+        story = self.game.story_manager
+        fc = scene.get("flag_condition")
+        if fc:
+            parts = fc.split()
+            if (len(parts) == 2 and parts[0] == "not" and story.story_flags.get(parts[1])) or (len(parts) == 1 and not story.story_flags.get(parts[0])):
+                return False
+        return not scene.get("condition") or self._check_route_condition(scene["condition"], False)
+
+    def npc_flag(self, name):
+        self.game.story_manager.story_flags[name] = True
+
+    def npc_flagged(self, name):
+        return bool(self.game.story_manager.story_flags.get(name))
+
+    def npc_say(self, lines, then):
+        from src.states.overworld.common import _fill_names
+        self.say([_fill_names(self.game, line) for line in lines], then=then)
+
+    def npc_run(self, who):
+        m = self._scene_mover(who)
+        if m is None:
+            return
+        self._scene_lock = False
+        if m.kind == "trainer":
+            self._meet_trainer(m)
+        else:
+            self._use_figure(m)
+
+    def npc_push(self, dx, dy):
+        self._scene_lock = False
+        self.walk_goal = None
+        self.step(dx, dy)
+
+    def npc_event(self, key, then):
+        from src.states.overworld.common import _run_story_event
+        _run_story_event(self, key, lambda c: self._check_route_condition(c, False), lambda lines: self.npc_say(lines, then))
+
+    def npc_heal(self):
+        from src.states.overworld.area_transition import heal_team
+        heal_team(self.game)
+
+    def npc_sheet(self, token):
+        return scene_sheet(self.game, token)
+
+    def npc_follow(self, t):
+        t, p = tuple(t), tuple(self.run.player)
+        if abs(t[0] - p[0]) + abs(t[1] - p[1]) != 1:
+            return
+        self.facing = (t[0] - p[0], t[1] - p[1])
+        self.anim_from, self.anim = p, STEP_FRAMES
+        self.partner_from, self.partner = self.partner, p
+        self.run.player = t
+
+    def npc_lock(self, on):
+        self._scene_lock = on
+        if on:
+            self.walk_goal = None
+
+    def npc_open(self, t):
+        f = self.run.floor
+        return 0 <= t[0] < f.w and 0 <= t[1] < f.h and f.walkable(*t) and not f.mover_at(*t)
+
+    def npc_face_player(self, spot):
+        p = self.run.player
+        self.facing = (max(-1, min(1, spot[0] - p[0])), max(-1, min(1, spot[1] - p[1])))
+
+    def npc_edge(self, mo):
+        f = self.run.floor
+        return min(f.exits, key=lambda t: abs(t[0] - mo.pos[0]) + abs(t[1] - mo.pos[1]), default=None)
+
     def _use_figure(self, mover):
         self.walk_goal = None
+        mo = getattr(mover, "motion", None)
+        if mo is not None:  # (they stop and turn to you)
+            mo.path = []
+            mo.face(self.run.player)
+            mover.facing = mo.facing
+            mo.hold = 150
         item = mover.payload
+        if isinstance(item, dict) and self._scenes().on_talk(item.get("text")):  # (a scene of theirs plays instead)
+            return
         if item.get("action") == "GAME_CORNER":
             self.talk_to_clerk()
             return
@@ -1095,7 +1306,7 @@ class DungeonState(OverworldBattles, PlayState):
 
     # ---------------------------------------------------------------- a step
     def _ready(self):
-        return self.mode == "MAP" and self.anim == 0 and not self.dialogue_box.visible
+        return self.mode == "MAP" and self.anim == 0 and not self.dialogue_box.visible and not getattr(self, "_scene_lock", False)
 
     braking = False  # (on a slope: you've braked (WAIT), and stay put till you move again)
 
@@ -2298,6 +2509,8 @@ class DungeonState(OverworldBattles, PlayState):
         if getattr(self, "_walker", None):
             self._walker_step()
             return
+        if self.mode == "MAP" and hasattr(self, "run") and not self.dialogue_box.visible:
+            self._npc_tick()
         if self.mode == "MAP":
             self._contest_check()
             self._follow_hold()
@@ -2326,7 +2539,24 @@ class DungeonState(OverworldBattles, PlayState):
         elif self.mode == "SPOTTED":
             self.spot_timer -= 1
             if self.spot_timer <= 0:
-                self._battle_trainer(self.encounter)
+                m = self.encounter
+                mo = self._motion(m)
+                if abs(m.x - self.run.player[0]) + abs(m.y - self.run.player[1]) > 1 and mo is not None:
+                    mo.walk(self.run.player, lambda t: self._npc_free(t, m))   # (they walk up to you, as in the games)
+                    self.mode = "APPROACH"
+                else:
+                    self._battle_trainer(m)
+        elif self.mode == "APPROACH":
+            m = self.encounter
+            mo = self._motion(m)
+            mo.tick(lambda t: self._npc_free(t, m))
+            m.x, m.y = mo.pos
+            m.facing = mo.facing
+            if mo.idle():
+                mo.face(self.run.player)
+                m.facing = mo.facing
+                self.facing = (-m.facing[0], -m.facing[1])
+                self._battle_trainer(m)
 
     # ---------------------------------------------------------------- drawing
     tap_mark = None
@@ -2610,9 +2840,9 @@ class DungeonState(OverworldBattles, PlayState):
         frame = (1 + 2 * (self.steps % 2)) if self.anim > STEP_FRAMES // 2 else 0
         return self._sheet_frame(sheet, self.facing, frame=frame)
 
-    def _figure_img(self, item):
+    def _figure_img(self, item, facing=(0, 1), frame=0):
         """A story figure's look: its own sheet ("AREA:TEXT" in dungeon_sprites.json), a boss's Pokemon
-        (its overworld sprite, else its party icon), or a townsperson."""
+        (its overworld sprite, else its party icon), or a townsperson; facing its way, at that step (src/dungeon/npc.py)."""
         sm = sprite_map(self.game)
         spec = (sm.get("figures") or {}).get(f"{self.area_key}:{item.get('text')}") or {}
         if spec.get("item"):
@@ -2620,7 +2850,7 @@ class DungeonState(OverworldBattles, PlayState):
         if spec.get("draw") == "ghost":  # (the Tower's unknown spirit: nobody can tell what it is yet)
             return self._sprite("ghost_figure", ghost_figure)
         if item.get("action") == "ARRIVAL":
-            return self._trainer_img(item["event"].get("trainer") or {})
+            return self._trainer_img(item["event"].get("trainer") or {}, facing, frame)
         if item.get("action") == "MAX_RAID":  # the den's next raid Pokemon, jumbo (Jordan, 11-06)
             img = self._raid_img()
             if img is not None:
@@ -2634,7 +2864,7 @@ class DungeonState(OverworldBattles, PlayState):
                 return self._sheet_frame(ow[0], (0, 1), col=ow[1], height=TILE + 26)
             from src.minigames.base import icon
             return icon(self.game, int(pid), TILE + 10)
-        return self._sheet_frame(spec.get("sheet") or sm.get("townsperson") or "NPC 17.png")
+        return self._sheet_frame(scene_sheet(self.game, spec.get("sheet")) or sm.get("townsperson") or "NPC 17.png", tuple(facing), frame=frame)
 
     JUMBO = TILE * 2 + 34  # a jumbo Pokemon's height on the map (2 x 2 tiles, standing a little over)
 
@@ -2680,12 +2910,17 @@ class DungeonState(OverworldBattles, PlayState):
             m.x, m.y = spot
             m.size = 2
 
-    def _trainer_img(self, info, facing=(0, 1)):
+    def _trainer_img(self, info, facing=(0, 1), frame=0):
         name = info.get("sprite") or "rival.png"
         sm = sprite_map(self.game)
-        sheet = (sm.get("trainers_" + str(self.area_data.get("region") or "")) or {}).get(name) or (sm.get("trainers") or {}).get(name)  # (the class as this region's own game draws it, where we have that: "trainers_SINNOH")
-        if sheet:  # its Pokemon Journeys overworld sprite, looking the way it faces
-            return self._sheet_frame(sheet, facing)
+        own = sm.get("trainers_" + str(self.area_data.get("region") or "")) or {}
+        for _role in ("rival", "friend"):  # (this save's rival or friend: their own walking sheet, where the region has one: Hoenn's Brendan and May)
+            _who = str(getattr(self.game, f"{_role}_character", "") or "").lower()
+            if name == "{%s_character}" % _role and _who and f"{_who}.png" in own:
+                name = f"{_who}.png"
+        sheet = own.get(name) or (sm.get("trainers") or {}).get(name)  # (the class as this region's own game draws it, where we have that: "trainers_SINNOH")
+        if sheet:  # its Pokemon Journeys overworld sprite, looking the way it faces (mid-step: its stepping frame)
+            return self._sheet_frame(sheet, tuple(facing), frame=frame)
 
         def make():
             img = _trainer_sprite(self.game, name)
@@ -2866,15 +3101,7 @@ class DungeonState(OverworldBattles, PlayState):
                     continue
                 _look = str(getattr(self, "_bars", {}).get((x, y), {}).get("look") or "")
                 if _look.startswith(("sheet:", "ow:", "mon:")):  # (someone or something standing there: "sheet:<walking sheet>", "ow:<folder>:<thing>" of a real game's own, "mon:<species number>": a scene's people, a briefcase, a wild Pokemon)
-                    from src.dungeon import art as _art
-                    if _look.startswith("mon:"):
-                        from src.minigames.base import icon
-                        img = icon(self.game, int(_look[4:]), TILE + 6)
-                    elif _look.startswith("sheet:"):
-                        img = self._sheet_frame(_look[6:])
-                    else:
-                        _fold, _name = _look[3:].split(":", 1)
-                        img = _art._ow(_fold, _name, TILE)
+                    img = self._stand_in_img(_look, self._bars.get((x, y), {}))
                     if img:
                         screen.blit(img, img.get_rect(midbottom=(r.centerx, r.bottom - 2)))
                     continue
@@ -2897,10 +3124,17 @@ class DungeonState(OverworldBattles, PlayState):
                 for k4 in range(4):
                     pygame.draw.rect(screen, (220, 50, 50) if k4 % 2 else (245, 245, 245), (r.x + 4 + k4 * (r.w - 8) // 4, r.centery - 8, (r.w - 8) // 4, 10))
         # wild Pokemon and trainers you can see
+        emotes = []
         for m in f.movers:
             if not self.run.visible(m.x, m.y) or m is self._ow_foe:
                 continue
             r = at(m.x, m.y)
+            mo = getattr(m, "motion", None)
+            if mo is not None:  # (a person mid-step: between the two tiles)
+                ax, ay = mo.at()
+                r = r.move(int(round((ax - m.x) * TILE)), int(round((ay - m.y) * TILE)))
+                if mo.emote > 0:
+                    emotes.append(r)
             if m.kind == "wild":
                 img = self._icon(m.payload, TILE, flip=(m.x < self.run.player[0]), facing=getattr(m, "facing", None))
                 screen.blit(img, img.get_rect(midbottom=(r.centerx, r.bottom + 4)))
@@ -2910,7 +3144,7 @@ class DungeonState(OverworldBattles, PlayState):
                     theme.shadow_text(screen, "!", fonts["label"], r.right - 6, r.y - 18, color=(220, 60, 50))
             elif m.kind == "figure":
                 self._fit_jumbo(m)
-                img = self._figure_img(m.payload)
+                img = self._figure_img(m.payload, mo.facing, mo.frame()) if mo is not None else self._figure_img(m.payload)
                 if img and getattr(m, "size", 1) > 1:  # a Max Raid's Pokemon: jumbo, over its 2 x 2 tiles
                     bob = int(3 * math.sin(pygame.time.get_ticks() / 400))
                     glow = pygame.Rect(r.x, r.y, TILE * 2, TILE * 2).inflate(-6, -30).move(0, 22)
@@ -2931,7 +3165,7 @@ class DungeonState(OverworldBattles, PlayState):
                     screen.blit(tag, tag.get_rect(center=pill.center))
                 continue
             else:
-                img = self._trainer_img(m.payload[1], m.facing)
+                img = self._trainer_img(m.payload[1], m.facing, mo.frame() if mo is not None else 0)
                 lift = 0
                 if f.tile(m.x, m.y) == core.SURF:  # (out on the sea: riding a Pokemon too)
                     frame = (pygame.time.get_ticks() // 160 + m.x) % 4
@@ -2948,6 +3182,16 @@ class DungeonState(OverworldBattles, PlayState):
                 tip = (r.centerx + fx * (TILE // 2 + 6), r.centery + fy * (TILE // 2 + 6))
                 pygame.draw.circle(screen, (255, 255, 255), tip, 5)
                 pygame.draw.circle(screen, (40, 40, 60), tip, 5, 2)
+        for a in (self._scenes().actors if hasattr(self, "run") else []):  # a scene's cast, walking in and out
+            ax, ay = a["m"].at()
+            if not self.run.visible(int(round(ax)), int(round(ay))):  # (in the fog, like everyone else)
+                continue
+            ar = at(int(round(ax)), int(round(ay))).move(int(round((ax - round(ax)) * TILE)), int(round((ay - round(ay)) * TILE)))
+            img = self._sheet_frame(a["sheet"], a["m"].facing, frame=a["m"].frame())
+            if img is not None:
+                screen.blit(img, img.get_rect(midbottom=(ar.centerx, ar.bottom - 2)))
+        for er in emotes:  # (someone has noticed you: a "!" over them)
+            theme.shadow_text(screen, "!", fonts["label"], er.centerx - 4, er.y - 34, color=(230, 60, 50))
         # you, your trainer, with your lead Pokemon a step behind
         k = 1 - self.anim / STEP_FRAMES if self.anim > 0 else 1
         lead = self.lead()
@@ -3000,7 +3244,8 @@ class DungeonState(OverworldBattles, PlayState):
             if wk.get("leaving"):
                 way = (-way[0], -way[1])
             wimg = self._sheet_frame(wk["sheet"], way, frame=int(wk["i"] * 2) % 4 if a != b and (wk["i"] < len(wk["path"]) - 1 or wk.get("leaving")) else 0)
-            drawn.append((wy, wimg, wimg.get_rect(midbottom=(int(wx), int(wy) - 2))))
+            if wimg is not None:
+                drawn.append((wy, wimg, wimg.get_rect(midbottom=(int(wx), int(wy) - 2))))
             if wk.get("with"):  # (their companion: the same way, two steps behind going, two ahead leaving)
                 j = max(0.0, wk["i"] - 2.0)
                 i2 = min(int(j), len(wk["path"]) - 1)

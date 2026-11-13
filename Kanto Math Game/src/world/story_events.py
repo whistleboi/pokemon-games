@@ -315,6 +315,7 @@ EVENTS = {
     "captain_stern": {"lines": ["Captain Stern: Those are the Devon Parts? Wonderful!",
                                 "With these we can finish the submarine and explore the sea floor."],
                       "requires": ["oceanic_museum_cleared"], "fail": ["hoenn_museum_stern"],
+                      "fail_flag": "slateport_saw_dock",  # (ORAS: once you've heard Stern is at the Museum, the Grunts' queue outside it goes in)
                       "take_item": {"DEVON_PARTS": 1}, "flag": "delivered_devon_parts"},
     "bike_shop": {"lines": ["Rydel: Welcome to Rydel's Cycles! You came all the way from Littleroot?",
                             "Then take a bike. Ride it everywhere and tell people about my shop!"],

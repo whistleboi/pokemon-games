@@ -903,6 +903,258 @@
     },
     "XD_ONBS:BONSLY'S GIRL": {
       "sheet": "orre_npc_04.png"
+    },
+    "OLDALE_TOWN:Poke Mart Clerk": {
+      "sheet": "em_83.png"
+    },
+    "OLDALE_TOWN:Path to Route 102": {
+      "sheet": "em_39.png"
+    },
+    "LITTLEROOT_TOWN:Little girl": {
+      "sheet": "em_6.png"
+    },
+    "LITTLEROOT_TOWN:Science fan": {
+      "sheet": "em_17.png"
+    },
+    "LITTLEROOT_TOWN:Boy": {
+      "sheet": "em_9.png"
+    },
+    "HOENN_ROUTE_101:Youngster": {
+      "sheet": "em_35.png"
+    },
+    "HOENN_ROUTE_101:Boy": {
+      "sheet": "em_9.png"
+    },
+    "OLDALE_TOWN:Girl": {
+      "sheet": "em_14.png"
+    },
+    "HOENN_ROUTE_102:Boy": {
+      "sheet": "em_7.png"
+    },
+    "HOENN_ROUTE_102:Little boy": {
+      "sheet": "em_11.png"
+    },
+    "HOENN_ROUTE_103:Boy": {
+      "sheet": "em_7.png"
+    },
+    "HOENN_ROUTE_103:Man": {
+      "sheet": "em_33.png"
+    },
+    "PETALBURG_CITY:Talk to Dad": {
+      "sheet": "em_25.png"
+    },
+    "PETALBURG_CITY:Gentleman": {
+      "sheet": "em_48.png"
+    },
+    "PETALBURG_CITY:Guide": {
+      "sheet": "em_9.png"
+    },
+    "PETALBURG_CITY:Wally's mother": {
+      "sheet": "em_26.png"
+    },
+    "PETALBURG_CITY:Boy": {
+      "sheet": "em_7.png"
+    },
+    "HOENN_ROUTE_104:Woman": {
+      "sheet": "em_20.png"
+    },
+    "HOENN_ROUTE_104:Boy": {
+      "sheet": "em_7.png"
+    },
+    "HOENN_ROUTE_104:Girl": {
+      "sheet": "em_14.png"
+    },
+    "HOENN_ROUTE_104:Mr. Briney": {
+      "sheet": "em_21.png"
+    },
+    "HOENN_ROUTE_104:Bug catcher": {
+      "sheet": "em_36.png"
+    },
+    "RUSTBORO_CITY:Man": {
+      "sheet": "em_65.png"
+    },
+    "RUSTBORO_CITY:Devon worker": {
+      "sheet": "em_116.png"
+    },
+    "RUSTBORO_CITY:Woman": {
+      "sheet": "em_34.png"
+    },
+    "RUSTBORO_CITY:Boy": {
+      "sheet": "em_9.png"
+    },
+    "RUSTBORO_CITY:Little boy": {
+      "sheet": "em_11.png"
+    },
+    "RUSTBORO_CITY:Little girl": {
+      "sheet": "em_12.png"
+    },
+    "HOENN_ROUTE_104:Berry lover": {
+      "sheet": "em_22.png"
+    },
+    "HOENN_ROUTE_104:Shopper": {
+      "sheet": "em_34.png"
+    },
+    "HOENN_ROUTE_104:Seed boy": {
+      "sheet": "em_9.png"
+    },
+    "HOENN_ROUTE_104:Cottage girl": {
+      "sheet": "em_10.png"
+    },
+    "HOENN_ROUTE_104:Lady": {
+      "sheet": "em_20.png"
+    },
+    "HOENN_ROUTE_104:Catcher boy": {
+      "sheet": "em_7.png"
+    },
+    "HOENN_ROUTE_104:Beach girl": {
+      "sheet": "em_14.png"
+    },
+    "RUSTBORO_CITY:Devon fan": {
+      "sheet": "em_17.png"
+    },
+    "RUSTBORO_CITY:Gym fan": {
+      "sheet": "em_33.png"
+    },
+    "RUSTBORO_CITY:Trader": {
+      "sheet": "em_65.png"
+    },
+    "RUSTBORO_CITY:Battle fan": {
+      "sheet": "em_7.png"
+    },
+    "RUSTBORO_CITY:School hopeful": {
+      "sheet": "em_5.png"
+    },
+    "RUSTBORO_CITY:Twin girl": {
+      "sheet": "em_6.png"
+    },
+    "HOENN_ROUTE_116:Tunneler": {
+      "sheet": "em_44.png"
+    },
+    "HOENN_ROUTE_116:Mr. Briney": {
+      "sheet": "em_21.png"
+    },
+    "HOENN_ROUTE_116:Short-sighted man": {
+      "sheet": "em_39.png"
+    },
+    "DEWFORD_TOWN:Trendy boy": {
+      "sheet": "em_7.png"
+    },
+    "DEWFORD_TOWN:Boat to Slateport": {
+      "sheet": "em_21.png"
+    },
+    "DEWFORD_TOWN:Boat to Route 104": {
+      "sheet": "em_21.png"
+    },
+    "DEWFORD_TOWN:Islander": {
+      "sheet": "em_20.png"
+    },
+    "DEWFORD_TOWN:Fisherman": {
+      "sheet": "em_50.png"
+    },
+    "HOENN_ROUTE_109:Seashore girl": {
+      "sheet": "em_12.png"
+    },
+    "HOENN_ROUTE_109:Old man": {
+      "sheet": "em_29.png"
+    },
+    "HOENN_ROUTE_109:Sandcastle boy": {
+      "sheet": "em_54.png"
+    },
+    "HOENN_ROUTE_109:Sandcastle girl": {
+      "sheet": "em_53.png"
+    },
+    "HOENN_ROUTE_109:Watchful mom": {
+      "sheet": "em_18.png"
+    },
+    "SLATEPORT_CITY:Weary hiker": {
+      "sheet": "em_17.png"
+    },
+    "SLATEPORT_CITY:Battle Tent hopeful": {
+      "sheet": "em_15.png"
+    },
+    "SLATEPORT_CITY:Nickname fan": {
+      "sheet": "em_39.png"
+    },
+    "SLATEPORT_CITY:Curious woman": {
+      "sheet": "em_26.png"
+    },
+    "SLATEPORT_CITY:Museum fan": {
+      "sheet": "em_19.png"
+    },
+    "SLATEPORT_CITY:Trade fan": {
+      "sheet": "em_34.png"
+    },
+    "SLATEPORT_CITY:Berry fan": {
+      "sheet": "em_18.png"
+    },
+    "SLATEPORT_CITY:Old woman": {
+      "sheet": "em_30.png"
+    },
+    "SLATEPORT_CITY:Stall clerk": {
+      "sheet": "em_83.png"
+    },
+    "SLATEPORT_CITY:Sailor": {
+      "sheet": "em_49.png"
+    },
+    "SLATEPORT_CITY:Shopper": {
+      "sheet": "em_8.png"
+    },
+    "SLATEPORT_CITY:Cook": {
+      "sheet": "em_27.png"
+    },
+    "SLATEPORT_CITY:Tent fan": {
+      "sheet": "em_33.png"
+    },
+    "SLATEPORT_CITY:Old sailor": {
+      "sheet": "em_49.png"
+    },
+    "SLATEPORT_CITY:Market Stall": {
+      "sheet": "em_83.png"
+    },
+    "SLATEPORT_CITY:Market": {
+      "sheet": "em_83.png"
+    },
+    "SLATEPORT_CITY:Big spender": {
+      "sheet": "em_18.png"
+    },
+    "SLATEPORT_CITY:Stall keeper": {
+      "sheet": "em_83.png"
+    },
+    "SLATEPORT_CITY:Lighthouse fan": {
+      "sheet": "em_66.png"
+    },
+    "HOENN_PETALBURG_WOODS:Girl": {
+      "sheet": "em_10.png"
+    },
+    "HOENN_PETALBURG_WOODS:Camper boy": {
+      "sheet": "em_9.png"
+    },
+    "HOENN_PETALBURG_WOODS:Devon researcher": {
+      "sheet": "em_23.png"
+    },
+    "HOENN_PETALBURG_WOODS:Watchful boy": {
+      "sheet": "em_13.png"
+    },
+    "HOENN_RUSTURF_TUNNEL:Wanda": {
+      "sheet": "em_20.png"
+    },
+    "HOENN_RUSTURF_TUNNEL:Digger": {
+      "sheet": "em_44.png"
+    },
+    "HOENN_GRANITE_CAVE:TALK TO STEVEN": {
+      "sheet": "em_134.png"
+    },
+    "HOENN_GRANITE_CAVE:Hiker": {
+      "sheet": "em_55.png"
+    },
+    "HOENN_ROUTE_110:Grunt": {
+      "sheet": "@grunt"
+    },
+    "HOENN_ROUTE_110:Nervous grunt": {
+      "sheet": "@grunt"
+    },
+    "HOENN_ROUTE_110:Cheery grunt": {
+      "sheet": "@grunt_f"
     }
   },
   "townsperson": "NPC 17.png",
@@ -919,7 +1171,9 @@
       "hilda",
       "rosa",
       "leaf"
-    ]
+    ],
+    "brendan": "em_0.png",
+    "may": "em_89.png"
   },
   "trainers_SINNOH": {
     "youngster.png": "pt_boy2.png",
@@ -989,5 +1243,60 @@
     "orre_snagem_grunt.png": "orre_trainer_burglar.png",
     "orre_street_performer.png": "orre_trainer_street_performer.png",
     "roughneck.png": "orre_trainer_biker.png"
+  },
+  "trainers_HOENN": {
+    "youngster.png": "em_35.png",
+    "bug_catcher.png": "em_36.png",
+    "swimmer_m.png": "em_42.png",
+    "swimmer_f.png": "em_43.png",
+    "hiker.png": "em_55.png",
+    "beauty.png": "em_45.png",
+    "lass.png": "em_47.png",
+    "bird_keeper.png": "em_66.png",
+    "birdkeeper.png": "em_66.png",
+    "guitarist.png": "em_66.png",
+    "kindler.png": "em_66.png",
+    "twins.png": "em_6.png",
+    "picknicker.png": "em_32.png",
+    "picnicker.png": "em_32.png",
+    "camper.png": "em_31.png",
+    "ninja_boy.png": "em_5.png",
+    "blackbelt.png": "em_44.png",
+    "richboy.png": "em_15.png",
+    "gentleman.png": "em_48.png",
+    "sailor.png": "em_49.png",
+    "fisherman.png": "em_50.png",
+    "psychic.png": "em_37.png",
+    "school_kid_m.png": "em_38.png",
+    "pokefan_f.png": "em_18.png",
+    "acetrainer_m.png": "em_33.png",
+    "acetrainer_f.png": "em_34.png",
+    "triathlete_m.png": "em_56.png",
+    "triathlete_f.png": "em_57.png",
+    "supernerd.png": "em_39.png",
+    "channeler.png": "em_40.png",
+    "oldman.png": "em_21.png",
+    "aqua_grunt.png": "em_117.png",
+    "magma_grunt.png": "em_119.png",
+    "matt.png": "em_117.png",
+    "courtney.png": "em_120.png",
+    "roxanne.png": "em_125.png",
+    "brawly.png": "em_126.png",
+    "wattson.png": "em_127.png",
+    "flannery.png": "em_128.png",
+    "norman.png": "em_129.png",
+    "winona.png": "em_130.png",
+    "tate_liza.png": "em_132.png",
+    "wallace.png": "em_133.png",
+    "sidney.png": "em_121.png",
+    "phoebe.png": "em_122.png",
+    "glacia.png": "em_123.png",
+    "drake.png": "em_124.png",
+    "steven.png": "em_134.png",
+    "wally.png": "em_135.png",
+    "archie.png": "em_195.png",
+    "maxie.png": "em_196.png",
+    "brendan.png": "em_100.png",
+    "may.png": "em_105.png"
   }
 }

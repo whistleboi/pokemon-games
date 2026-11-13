@@ -4201,3 +4201,8 @@ MAPS = {
         "people": ["AMPHAROSITE"],
     },
 }
+
+# Laid out from the real Emerald file (emerald.py, written by kanto_handoff/hoenn_rom_tools/hgen.py): these replace the entries above of the same name.
+from .emerald import HOENN as _EMERALD  # noqa: E402
+
+MAPS.update(_EMERALD)

@@ -1432,17 +1432,17 @@ check((_h103.run.floor.w, _h103.run.floor.h) == (80, 22) and {"OLDALE_TOWN", "HO
       f"Hoenn Route 103: from the Emerald map; in from Oldale (south) at {_h103.run.player}; Altering Cave north, Route 110 across the water")
 from src.dungeon import core as _c
 _w104, _pw = {}, {}
-for _i in range(3):
-    _c.ENTRANCE_INDEX = _i
+for _i in range(3):  # (each mouth is two tiles wide on both maps, as in Emerald: the first tile of each)
+    _c.ENTRANCE_INDEX = 2 * _i
     _w104[_i] = kanto("HOENN_ROUTE_104", came="HOENN_PETALBURG_WOODS").run.player
-    _c.ENTRANCE_INDEX = _i
+    _c.ENTRANCE_INDEX = 2 * _i
     _pw[_i] = kanto("HOENN_PETALBURG_WOODS", came="HOENN_ROUTE_104").run.player
 _c.ENTRANCE_INDEX = 0
 _h104 = kanto("HOENN_ROUTE_104", came="PETALBURG_CITY")
 check((_h104.run.floor.w, _h104.run.floor.h) == (40, 80) and _h104.run.player[0] >= 37 and 60 <= _h104.run.player[1] <= 64
       and {"RUSTBORO_CITY", "PETALBURG_CITY", "HOENN_PETALBURG_WOODS", "DEWFORD_TOWN", "HOENN_ROUTE_105"} == set(_h104.run.floor.exits.values()),
       f"Hoenn Route 104: read from the Emerald map; in from Petalburg (east) at {_h104.run.player}; the Woods, Rustboro, Briney's dock and the sea south")
-check(_w104[0][1] <= 30 and _w104[1][0] <= 12 and 38 <= _w104[1][1] <= 41 and _w104[2][0] >= 31 and _pw[0][1] <= 2 and _pw[1][0] <= 18 and _pw[1][1] >= 41 and _pw[2][0] >= 35 and _pw[2][1] >= 41,
+check(_w104[0][1] <= 30 and _w104[1][0] <= 12 and 38 <= _w104[1][1] <= 41 and _w104[2][0] >= 31 and _pw[0][1] <= 6 and _pw[1][0] <= 18 and _pw[1][1] >= 36 and _pw[2][0] >= 35 and _pw[2][1] >= 36,
       f"Petalburg Woods and Route 104: each of the three doors leads to its own (Route 104 side {_w104}; Woods side {_pw})")
 _hpw = kanto("HOENN_PETALBURG_WOODS", came="HOENN_ROUTE_104")
 _tpw = {str(m.payload) for m in _hpw.run.floor.movers if m.kind == "trainer"}

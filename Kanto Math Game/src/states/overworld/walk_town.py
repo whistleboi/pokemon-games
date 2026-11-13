@@ -128,6 +128,7 @@ class WalkTownState(CityState):
     _trainer_scale = dn.DungeonState._trainer_scale
     _jumbo = dn.DungeonState._jumbo
     _figure_img = dn.DungeonState._figure_img
+    _stand_in_img = dn.DungeonState._stand_in_img
     _trainer_img = dn.DungeonState._trainer_img
     _item_img = dn.DungeonState._item_img
     # (the Journal's mission under MENU, and the gold marker toward it: as on the route maps, Jordan 11-10)
@@ -227,6 +228,129 @@ class WalkTownState(CityState):
             cache[_ck] = art.surface(grid, kinds, TILE, m.get("roofs"), m.get("theme"))
         self.map_img = cache[_ck]
         self.overheads = [(o, *art.overhead(o, TILE)) for o in m.get("overheads", [])]
+        self._npc_init(m)
+
+    # ---------------------------------------------------------------- people who move (src/dungeon/npc.py)
+    def _npc_init(self, m):
+        """Each person's way of moving (the map's "moves", by their spot) and the map's story scenes."""
+        from src.dungeon import npc
+        self.motions = {home: npc.Motion(home, npc.spec_at(m.get("moves"), home), seed=self.area_key) for home in self.people}
+        self.scenes = npc.Scenes(m.get("scenes"), self)
+        self._scene_lock = False
+        # (an arrival event a scene acts out in its place: Norman outside the Gym instead of the old text)
+        self._scene_instead = {s["instead_of"] for s in self.scenes.list if s.get("instead_of") and self.scenes.pending(s)}
+
+    def _home_at(self, spot):
+        """The spot a person was placed on (their key in self.people), from where they stand now."""
+        for home, mo in getattr(self, "motions", {}).items():
+            if mo.pos == tuple(spot) and not mo.gone:
+                return home
+        return tuple(spot)
+
+    def _npc_free(self, t, mover=None):
+        """Can someone step onto t now: plain open ground, nobody there or arriving, not you, not a door, sign or way out."""
+        x, y = t
+        if not (0 <= x < self.w and 0 <= y < self.h) or self.rows[y][x] != "." or t in self.exits or t in self.doors or t in self.signs \
+                or t in getattr(self, "barred", {}) or (getattr(self, "grid", None) and self.grid[y][x] in "_()"):
+            return False
+        if t == tuple(self.player) or (self.anim > 0 and t == tuple(self.anim_from)) or t == tuple(getattr(self, "partner", ())):
+            return False
+        return not any(o is not mover and not o.gone and t in (o.pos, o.frm) for o in self.motions.values())
+
+    def _npc_tick(self):
+        if not getattr(self, "motions", None):
+            return
+        shown = set(self._people())
+        for home, mo in self.motions.items():
+            if mo.pos in shown or mo.moving() or mo.path:
+                mo.tick(lambda t, mo=mo: self._npc_free(t, mo))
+        if self.scenes.busy():
+            self.scenes.tick()
+        elif self.anim == 0 and not self._busy():
+            self.scenes.check()
+
+    # (the scene runner's host: src/dungeon/npc.py Scenes)
+    def npc_person(self, who):
+        for home, opt in self.people.items():
+            texts = [o.get("text") for o in opt.get("any", [opt])]
+            if who in texts and self._shown(opt):
+                return self.motions.get(home)
+        return None
+
+    def npc_player(self):
+        return tuple(self.player)
+
+    def npc_passable(self, t, m):
+        return self._npc_free(t, m)
+
+    def npc_shown(self, scene):
+        return self._shown(scene)
+
+    def npc_flag(self, name):
+        self.game.story_manager.story_flags[name] = True
+
+    def npc_flagged(self, name):
+        return bool(self.game.story_manager.story_flags.get(name))
+
+    def npc_say(self, lines, then):
+        from src.states.overworld.common import _fill_names
+
+        def done():
+            self.end_npc_interaction()
+            then()
+        self.show_message([_fill_names(self.game, line) for line in lines], callback=done)
+
+    def npc_run(self, who):
+        home = next((h for h, o in self.people.items() if who in [p.get("text") for p in o.get("any", [o])]), None)
+        if home is not None and home in self.motions:
+            self._talk(self.motions[home].pos)
+
+    def npc_push(self, dx, dy):
+        self._scene_lock = False
+        self.walk_goal = None
+        self.step(dx, dy)
+
+    def npc_event(self, key, then):
+        from src.states.overworld.common import _run_story_event
+
+        def show(lines):
+            self.npc_say(lines, then)
+        _run_story_event(self, key, self._check_menu_condition, show)
+
+    def npc_heal(self):
+        for p in self.game.story_manager.player_team:
+            if p:
+                p.heal_full()
+        if getattr(self.game.assets, "heal_sfx", None):
+            self.game.assets.heal_sfx.play()
+
+    def npc_sheet(self, token):
+        return dn.scene_sheet(self.game, token)
+
+    def npc_follow(self, t):
+        t = tuple(t)
+        if abs(t[0] - self.player[0]) + abs(t[1] - self.player[1]) != 1:
+            return
+        self.facing = (t[0] - self.player[0], t[1] - self.player[1])
+        self.anim_from, self.anim = self.player, STEP
+        self.partner_from, self.partner = self.partner, self.player
+        self.player = t
+        self._remember()
+
+    def npc_lock(self, on):
+        self._scene_lock = on
+        if on:
+            self.walk_goal = None
+
+    def npc_open(self, t):
+        return 0 <= t[0] < self.w and 0 <= t[1] < self.h and self.rows[t[1]][t[0]] == "." and t not in self.signs
+
+    def npc_face_player(self, spot):
+        self.facing = (max(-1, min(1, spot[0] - self.player[0])), max(-1, min(1, spot[1] - self.player[1])))
+
+    def npc_edge(self, m):
+        edge = [(x, y) for (x, y) in self.exits if not (x, y) in self.water_exits]
+        return min(edge, key=lambda t: abs(t[0] - m.pos[0]) + abs(t[1] - m.pos[1]), default=None)
 
     # ---------------------------------------------------------------- the map
     def _map_image(self):
@@ -248,6 +372,8 @@ class WalkTownState(CityState):
 
     def _bar_met(self, bar):
         story = self.game.story_manager
+        if bar.get("until_any"):  # (gone once any of these is true: the Museum queue, once you've seen Dock or cleared the Museum)
+            return any(self._shown(u) for u in bar["until_any"])
         if bar.get("item"):
             return story.inventory.get(bar["item"], 0) > 0
         if bar.get("until"):
@@ -297,6 +423,7 @@ class WalkTownState(CityState):
         loose = [o for o in self.area_data.get("explore_options", []) if option_kind(o) not in kinds]
         for opt, spot in zip(loose, self._free_spots(len(loose))):
             self.people[spot] = opt
+        self._npc_init({})
 
     def _edge_tiles(self, side):
         cells = {"north": [(x, 0) for x in range(self.w)], "south": [(x, self.h - 1) for x in range(self.w)],
@@ -355,7 +482,13 @@ class WalkTownState(CityState):
 
     def _people(self):
         """The people standing about now (each option's conditions met)."""
-        return {spot: (next(o for o in opt["any"] if self._shown(o)) if "any" in opt else opt) for spot, opt in self.people.items() if self._shown(opt)}
+        mos = getattr(self, "motions", {})
+        out = {}
+        for spot, opt in self.people.items():
+            if not self._shown(opt) or (spot in mos and mos[spot].gone):
+                continue
+            out[mos[spot].pos if spot in mos else spot] = next(o for o in opt["any"] if self._shown(o)) if "any" in opt else opt
+        return out
 
     def _open(self, t):
         x, y = t
@@ -419,7 +552,7 @@ class WalkTownState(CityState):
 
     # ---------------------------------------------------------------- walking
     def _busy(self):
-        return self.npc_active or bool(self.hover_menu_active)
+        return self.npc_active or bool(self.hover_menu_active) or getattr(self, "_scene_lock", False)
 
     def flash(self, text, frames=90):
         self.toast, self.toast_timer = text, frames
@@ -601,7 +734,15 @@ class WalkTownState(CityState):
         self.show_message(["Welcome to the Pokémon Center!", "We've restored your team to full health."])
 
     def _talk(self, spot):
-        opt = self.people[spot]
+        home = self._home_at(spot)
+        mo = getattr(self, "motions", {}).get(home)
+        if mo is not None:  # (they stop and turn to you)
+            if mo.moving():
+                return
+            mo.path = []
+            mo.face(self.player)
+            mo.hold = 150
+        opt = self.people[home]
         if not self._shown(opt):
             return self.flash("They don't have anything to say right now.")
         if "any" in opt:
@@ -609,6 +750,8 @@ class WalkTownState(CityState):
             if len(now) > 1:  # (several things to do with them right now: pick one, as at a door)
                 return self._create_hover_menu(now, None)
             opt = now[0]
+        if getattr(self, "scenes", None) and self.scenes.on_talk(opt.get("text")):  # (a scene of theirs plays instead: the clerk shows you round)
+            return
         cb = self._get_callback_for_option(opt)
         if cb:
             cb()
@@ -732,6 +875,7 @@ class WalkTownState(CityState):
     def update(self):
         if self.npc_active:
             return super().update()
+        self._npc_tick()
         if self.toast_timer > 0:
             self.toast_timer -= 1
         if self.banner > 0:
@@ -790,11 +934,21 @@ class WalkTownState(CityState):
             self.tap_mark[2] -= 1
         drawn = []
         people = self._people()
+        mos = getattr(self, "motions", {})
+        by_pos = {mo.pos: mo for mo in mos.values() if not mo.gone}
+        emotes = []
         for spot, opt in people.items():
-            img = self._figure_img(opt)
-            r = at(spot)
+            mo = by_pos.get(spot)
+            img = self._figure_img(opt, mo.facing, mo.frame()) if mo else self._figure_img(opt)
+            if mo:  # (mid-step: between the two tiles)
+                fx, fy = mo.at()
+                r = pygame.Rect(int(ox + fx * TILE), int(oy + fy * TILE), TILE, TILE)
+            else:
+                r = at(spot)
             if img is not None:
                 drawn.append((r.bottom, img, img.get_rect(midbottom=(r.centerx, r.bottom - 2))))
+            if mo and mo.emote > 0:  # (they've noticed you: a "!" over them, drawn after everyone)
+                emotes.append((r.centerx - 4, r.y - 34))
         k = 1 - self.anim / STEP if self.anim > 0 else 1
         lead = self.lead()
         me = self._player_img()
@@ -814,8 +968,22 @@ class WalkTownState(CityState):
             drawn.append((pr.bottom, me, me.get_rect(midbottom=(pr.centerx, pr.bottom))))
         for _b, img, rect in sorted(drawn, key=lambda t: t[0]):
             screen.blit(img, rect)
+        for a in (self.scenes.actors if getattr(self, "scenes", None) else []):  # a scene's cast, walking in and out
+            ax, ay = a["m"].at()
+            img = self._sheet_frame(a["sheet"], a["m"].facing, frame=a["m"].frame())
+            if img is not None:
+                r = pygame.Rect(int(ox + ax * TILE), int(oy + ay * TILE), TILE, TILE)
+                screen.blit(img, img.get_rect(midbottom=(r.centerx, r.bottom - 2)))
+        for ex, ey in emotes:
+            theme.shadow_text(screen, "!", fonts["label"], ex, ey, color=(230, 60, 50))
         for _t, _bar in getattr(self, "barred", {}).items():
-            art.blocker(screen, at(_t), _bar.get("look") or "person")
+            _look = str(_bar.get("look") or "person")
+            _img = self._stand_in_img(_look, _bar) if _look.startswith(("sheet:", "ow:", "mon:")) else None
+            if _img is not None:  # (a real game's own sprite: a boat at the pier, someone in the way)
+                screen.blit(_img, _img.get_rect(midbottom=(at(_t).centerx, at(_t).bottom - 2)))
+                continue
+            from src.dungeon import art
+            art.blocker(screen, at(_t), _look)
         if getattr(self, "bridge", None) and not self.deck and tuple(self.player) in self.bridge:  # (passing under a bridge: it goes over your head)
             art.bridge(screen, at(tuple(self.player)), "|" if self.bridge[tuple(self.player)] == (0, 1) else ";")
         for _o, img, (bx, by) in getattr(self, "overheads", []):  # (solid, over you: you walk under it, out of view)

@@ -385,6 +385,8 @@ class CityState(TownMenu, TownStory, KantoTown, JohtoTown, GameState):
             self.game.skip_arrival_event = False
             events = []
         for on_enter in events or []:
+            if on_enter.get("event") in getattr(self, "_scene_instead", ()):  # (the walked map's scene acts it out instead)
+                continue
             if self._try_on_enter_event(on_enter):
                 return
 

@@ -1300,7 +1300,7 @@
       ],
       "next_area": "OLDALE_TOWN",
       "region": "HOENN",
-        "starter_event": {"lines": ["Help! Somebody, help me!", "A man is running in circles... a wild POOCHYENA is chasing him!", "Professor Birch: You there! Please help me!"], "boss": {"id": 261, "name": "Poochyena", "level": 2, "exact_level": true, "no_catch": true, "victory_flag": "hoenn_birch_rescued", "lines": ["The wild POOCHYENA turns to face you!"], "won": ["The POOCHYENA ran off into the tall grass!", "Professor Birch: Whew... you saved me! I'm Birch, the Pokemon Professor.", "Professor Birch: Let's head back to my lab in Littleroot Town!"]}, "return_to": "LITTLEROOT_TOWN", "return_until": "hoenn_birch_thanked"}
+        "starter_event": {"walk_up": {"look": "sheet:em_64.png", "flag": "hoenn_birch_walked_up", "lines": ["Professor Birch hurries over and picks up his bag.", "Professor Birch: Whew... you saved me! I'm Birch, the Pokemon Professor.", "Professor Birch: Let's head back to my lab in Littleroot Town!"]}, "lines": ["Help! Somebody, help me!", "A man is running in circles... a wild POOCHYENA is chasing him!", "Professor Birch: You there! Please help me!"], "boss": {"id": 261, "name": "Poochyena", "level": 2, "exact_level": true, "no_catch": true, "victory_flag": "hoenn_birch_rescued", "lines": ["The wild POOCHYENA turns to face you!"], "won": ["The POOCHYENA ran off into the tall grass!"]}, "return_to": "LITTLEROOT_TOWN", "return_until": "hoenn_birch_thanked"}
     },
     "HOENN_ROUTE_102": {
       "area_type": "wild_route",

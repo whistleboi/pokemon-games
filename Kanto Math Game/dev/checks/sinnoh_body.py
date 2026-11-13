@@ -531,7 +531,7 @@ _s2 = _adv(400, lambda st: "Battle" in type(st).__name__)
 _got = len(story.player_team) == 1 and bool(story.story_flags.get("received_starter_sinnoh"))
 if _s2:
     g.current_state.player_won = True; g.current_state.exit_battle()
-_s3 = _adv(200, lambda st: story.current_area_key == "TWINLEAF_TOWN")
+_s3 = _adv(400, lambda st: story.current_area_key == "TWINLEAF_TOWN")  # (Rowan walks up and off, about 150 frames, then the trip home, about 75)
 check(_said and _s1 and _s2 and _got and _s3 and story.story_flags.get("sinnoh_starly_driven_off"),
       f"the opening plays through on the maps: the lake scene {_said}, the starter choice {_s1}, your first Pokemon {_got}, the Starly battle {_s2}, home to Twinleaf {_s3}")
 story.story_flags.clear(); story.story_flags.update(_sv); story.player_team = _team
