@@ -84774,202 +84774,592 @@
   ]
  },
  "HOENN_ROUTE_124": {
-  "buildings": {
-   "H": "house"
-  },
-  "roofs": {
-   "H": [
-    208,
-    72,
-    72
-   ]
-  },
-  "parts": true,
-  "floor_names": [
-   "Route 124",
-   "The seabed"
-  ],
-  "figure_floors": {
-   "Swimmer Grace": 0,
-   "Swimmer Roland": 0,
-   "Swimmer Jenny": 0
-  },
   "floors": [
    {
     "art": [
-     "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
-     "ooooocoooqqqqooooooooooooooooooooooooooooqqooooqqooooooooooooooocccooqqooooooooo",
-     "oooccccqqooooooooooooooooooooooooocccooooooqqqqooqqooocccoooooocccccoooooooooooo",
-     "oocccccooooooqqoooooooooooooooooocccccoqqoooooooooocccccccooqqoccccccooooooooooo",
-     "oocccccooo::oooqqooooooooooooqqocccccccoooooooooooooocccccccoooocccccocoqqoooooo",
-     "oocccccooo::oooooocoooqqooqqoooccccccccooo::oooqqoqqooocccooooqqooooocccoooooooo",
-     "ooccccccooooooooocccccooqqooqqoccccccccooo::ooooooooocccccoooooooqqoocccoooooooo",
-     "ooccccccoooooooooccoooooooooooocccccccccooooooooooocccccccoooooooooooooooooooooo",
-     "ooccccccooooooooooooooooooccccocccccccccooooooooooocccccoooooooooooooooqqooooooo",
-     "ooccccccooooooooooooooooooccccoccccccccccoooooooooocccccoooooooooooooooooooooooo",
-     "oooccccccoqqooooooooooooooccccoccccccccccoooooooooocccccoooooooooooo::oooqqooooo",
-     "oooccccccoooooooooooooooooocccoccccccccccoooooooooocccccoooooooooooo::oooooooooo",
-     "ooooccccccocoooooooooooooooooooccccccccccccocoooooooccccooooooooooooooooooqqoooo",
-     "oooooccccccccoqqoooooooooooooooccccccccccoocccooooooocccoooooooooooooooooooooooo",
-     "ooooooccccccccoocooooooooooooooooccccccccoocccoqqoooooooooooooooooooooooooooqqoq",
-     "oooooocccoccccocccooqqooooocoooooocccccoooooooooocccoqqooooooooooooooooooooooooo",
-     "ooooqqooooooooocccooooooqqcccoooooooooooooooqqooccccccoooooooooooqqoooooooooooqq",
-     "ooqqooooooqqooooooqqooqqoocccooqqqqoooooooooooccccccccccoooooooqqooooooooooooooo",
-     "<ooooooqqoooooooooooooooooooooooooooooooooococcccccccccccooqqooooooqqoocoooooooq",
-     "<qooooooooqqoooooooooooooooooqqooooooooooocccccccccccccccooooqqooooooocccooooooo",
-     "<oooooooqqooooooooooooooooooooooooooqqoooocccccccccccccccccoooooo::ooccccooooooo",
-     "<ooooooooooooooooooooooooooooooooooooooooooooooccccccccccoooooooo::ooccccccooooq",
-     "<ooooooqqooooooooooooooooooooooooooooooooooooooooccccccoooooooooooooocccccccoooq",
-     "<oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooocccccccoooo",
-     "<oooooooooooooooooooXoooooooooooooooooooooooooooqqoooooqqooooooooooocccccccccooo",
-     "<ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooocccccccccccccc",
-     "<ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooqqccccccccccccccc",
-     "<oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooqqoooccccccccccccccc",
-     "<ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooccccccccccccccc",
-     "<ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooccccccccccccc",
-     "<qoooooooooooooooooooooooooooooooooooooooooooXoooooooooooooooooooooccccccccccccc",
-     "<oqqooqqoooooooooooooooooooooo::oooooooooooooooooooooooooooooooooooooccccccccccc",
-     "<oooqqoooooooooooooooooooooooo::oooooooooooooooooooooooooooooooooooooccccccccccc",
-     "<oooooccooooooooooooooooooooooooooooooooooooooooooooooooooooooooo::ooooccccccccc",
-     "<ooooccccccoooooooooooooooooooooooooooooooooooooooooooooooooooooo::ooccccccccccc",
-     "<oooocccccccooooooqqoooooooooooooooooooooooooooooooooooooooooooooooooooccccccccc",
-     "<oqqocccccccccccccoooooooooooooooooooooooooo::oooooooooooooooooooooooooccccccccc",
-     "<oooooocccccccccccoooooooooooooooooooooooooo::oooooooooooooooooooooooooooccccccc",
-     "<oooooooccccccccccoooooooooooooooooooooooooooooooooooooooo====ooooooo::ooooccccc",
-     "<ooooooooccccccccoooooooooooooooooooooooooooooooooooooooo======oooooo::ooccccccc",
-     "<oooooqqooooooooooooooooooooooooooooooooooooooooooooooooo=======oooooooooooccccc",
-     "<ooooooooooqqoooooooooooooooooooooooooooooooooooooooooooo=======ooooooooqqoccccc",
-     "<ooooooooqqooooooooooooooooooooooooooooooooooooooooooooooo======oooooooooooooooo",
-     "<ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo=====oooooooooooooqqoo",
-     "<ooooooqqooooooooooooooooooooooqqoooooooooooooooooooooooooo===ooooooooooooooooqq",
-     "<ooooooooooqqoooooooooooooqqoooooooooooooooooooooooooooooooooooooooooHHHHoooooo>",
-     "<oooooqqoooooooooooooooooooooccccccooooooooooooooooooooooooooooooooo=HHHH=ooooo>",
-     "<oooooooqqoooooooooooooooococcccccccccoooooooooooooooooooooooooooooo=HDHH==oooo>",
-     "oooooooooooooooooooooooooccccooooocccccooooooooooooo::oooooooooooooo=====!=oooo>",
-     "ooooooooooqqooocooooqqoooccccccocccccccooooooooooooo::ooooooooooooooo======oooo>",
-     "oooooooooooocccccooooocccoooooooocccccccoqqoooooooooooooooooooooooooo=====ooooo>",
-     "ooooooooqqooooccccccocccccooooooocccccccoooooooooooooooooooooooooooooo===oooooo>",
-     "oqqooqqoooooooccccooocccccoooooooooccccccoooooooooooooooooooooo::oooooooooooooo>",
-     "oooqqooqqoooooocccooocccccoooooooooooccccoooooooooooooooooooooo::oooooooooooooo>",
-     "qqooooooooooqqooooooooccccoooooooooooccccoooooooooooooooooooooo::oooooooooooooo>",
-     "oooooooooooooooooooqqoooooooooooooqqooooooooooooooooooooooooooooooooooooooooooo>",
-     "oqqoooooooooooooooooooooooooooXoooooooqqooooooooooooooooooooooooooooooooooooooo>",
-     "oooqqoooooooooooooooooooooooooooooooocooqqooooooooooooooooooooooooooooooooooooo>",
-     "oooooooooooooooooooooooooooooqqooooocccoooooooooooooooo::oooooooooooooooooooooo>",
-     "ooooqqoooooooooooooooooooooqqooqqooocccccoooooooooooooo::oooooooooooooooooooooo>",
-     "ooooooooooooooooooooooooooooooooooqqoooooccooqqoooooooooooooooooooooooooooooooo>",
-     "oooqqooooo::oooooooooooocoqqooooqqooooooccccooooooooooooooooooooooooooooooooooo>",
-     "oooooooooo::ooooooooooocccooooooooooooooccccooooooooooooooooooooooooooooooooooo>",
-     "ooqqooooooooooooooooccccccooqqoooooooooocccccoooooooooooooooooooooooooooooooooo>",
-     "ooooqqooooooooccccooooccccoooooooooooooocccccooooooooooooooooooooooooo::ooooooo>",
-     "ooooooooooooocccccccccooooqqoo::oooooooocccccoqqooqqoooqqooooooooooooo::ooooooo>",
-     "oooooqqqqooooccccccccccccooooo::ooooooooccccccooqqoooooooqqoooooooooooooooooooo>",
-     "ooooooooocooccccccccccccccooooooooooooooccccccoooooqqooooooqqoooooooooooooooooo>",
-     "oooooooocccoccccccccccccccooooooooooooooocccccoooooooqqoooooooooooooooooooooooo>",
-     "oooooooocccccccccccccccccccooooooooooooooccccooooooooooqqoooqqooooooooooooooooo>",
-     "ooooooocccccccccccccccccccccooooooooooooooooooooooooooooooooooooooooooooooooooo>",
-     "ooccccccccccccccccccccccccccoooooooooooqqocoooooooooooooqqoqqoooooooooooooooooo>",
-     "occcccccccccccccccccccccccccooooocccooooocccoqqooooo::ooooooooooooooooooooooooo>",
-     "occcccccccccccccccccccocccccoooocccccqqoocccoooooooo::ooqqooqqooooooooooooccccco",
-     "ccccccccccccccccccccccooooooqqoocccccooooooooooooooooooooooooooooooooooccccccccc",
-     "ccccccccccccccccccccccccoooooooooccccooooqqooooooooooooqqooqqooooooooocccccccccc",
-     "ccccccccccccccccccccccooooooooqqoooooooooooooooooooooooooooooqqooooooocccccccccc",
-     "ccccccccccccccccccccccoooooooooooooooooooooooooooooooqqooooooooooooooocccccccccc",
-     "ccccccccccccccccccccccooooooooooooooooooooooooooooooooooqqoooooooooooccccccccccc",
-     "ccccccccccccccccccccccvvvvvvvvvvvvvvvvqvvvvvvqvvvvvvvvvvvvvvqqvvvvvvvccccccccccc"
+     "ooooooooo~~ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccoooooooo>",
+     "oooo~~~cccccccccccccccccccccccccccccccccccccccccccccccccccccccc~~~~~cccoooooooo>",
+     "oo~~cccccoooocccccccccccccccccccc~~~~~c~~ooccccoocccc~~~~~cccccccccc~oooooooooo>",
+     "oocccccooo::occ~~ccccccccccccccc~ccccc~ccooooooooooccccccccccccccccccoooccooooo>",
+     "oocccccoo::::ooccccccccccc~~ccc~cccccccooo::oooccoccocccccccooccccccc~~~ccooooo>",
+     "ooccccc~o::::oooo~~~~~cc~~cc~~occccccccoo::::ooccocco~~cccoccocco~~oocccooooooo>",
+     "ooccccccoo::ooooocccccooccccccocccccccc~o::::ooooooooccooooccooooccoocccooooooo>",
+     "ooccccccoooooooooccooooooo~~~~occcccccccoo::ooooooo~~~~~ooooooooooooooo~~oooooo>",
+     "ooccccccooooooooooooooooooccccoccccccccc~ooooooooooccccc...ooooooooooooccoooooo>",
+     "oocccccc~o~~ooooooooooooooccccoccccccccccooooooooooccccc....oooooooo::oooccoooo>",
+     ".ooccccccoccooooooooooooooccccoccccccccccooooooooooccccc....ooooooo::::ooccoooo>",
+     ".oocccccc~oooooooooooooooo.cccocccccccccc~~ooooooooccccc..N.ooooooo::::ooo~~ooo>",
+     ".ooocccccc~~~occoooooooooo..N.occcccccccccc~~~oooooocccc....oooooooo::ooooccooo>",
+     ".oooocccccccc~ccooooooooooo...occccccccccooccco~~ooooccc....oooooooooooooooocco~",
+     ".ooooocccccccco~~~ooccoooooooooooccccccccoocccoccoooocco...oooooooooooooooooccoc",
+     ".ooocccccoccccocccooccoocc~~~ooooocccccooooo~~oo~~~~~ccooooooooooccooooooooooocc",
+     ".occccooooccoooccc~~oocccccccoocc~~ooooooooocco~ccccc~~ooooooooccccooooooooooocc",
+     "ooccoooccoccooooooccooccoocccooccccoooooooooo~~cccccccc~~ooccooccoo~~oooooooooo~",
+     "ccoooooccoccoooooooooooooooooccooooooooooo~~~ccccccccccccoocc~~oooocco~~~ooooooc",
+     "ccooooooccccoooooooooooooooooccooooo~~ooooccccccccccccccc~~ooccoo::oo~cccooooooo",
+     "<oooooooccooooooooooooooooooooooooooccoooocccccccccccccccccooooo::::occcc~ooooo~",
+     "<ooooooccooooooooooooooooooooooooooooooooooooooccccccccccooooooo::::occccc~~oooc",
+     "<ooooooccooooooooooooooooooooooooooooooooooooooooccccccoooooooooo::oocccccccoooc",
+     "<ooooooooooooooooooooooooooooooooooooooooooooooo~~oooooccooooooooooo~ccccccc~ooo",
+     "<oooooooooooooooooooXoooooooooooooooooooooooooooccoooooccoooooooooooccccccccc~oo",
+     "<oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooocc~~~cccccccccc~~",
+     "<ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo~~occccccccccccccc.>",
+     "<oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooccooocccccccccccccc>",
+     "ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooocccccccccccccc>",
+     "ccoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooccccccccccccc",
+     "ccccooccoooooooooooooooooooooo::oooooooooooooXoooooooooooooooooooooccccccccccccc",
+     "<occccccooooooooooooooooooooo::::ooooooooooooooooooooooooooooooooooooccccccccccc",
+     "<oooccooooooooooooooooooooooo::::oooooooooooooooooooooooooooooooo::ooccccccccccc",
+     "<ooooccccoooo::ooooooooooooooo::oooooooooooooooooooooooooooooooo::::o~~ccccccccc",
+     "<oooocccccc~o::oooccoooooooooooooooooooooooooooooooooooooooooooo::::occccccccccc",
+     "<occocccccccoooo~~ccoooooooooooooooooooooooo::ooooooooooooooooooo::ooooccccccccc",
+     "<occoccccccc~~~~ccooooooooooooooooooooooooo::::ooooooooooooooooooooooooccccccccc",
+     "<oooooocccccccccccooooooooooooooooooooooooo::::oooooooooo......oooooo::ooccccccc",
+     "<oooooooccccccccccoooooooooooooooooooooooooo::ooooooooooo.......oooo::::o~~ccccc",
+     "<oooooccoccccccccooooooooooooooooooooooooooooooooooooooo..====..oooo::::occccccc",
+     "<oooooccooo~~ooooooooooooooooooooooooooooooooooooooooooo..=====..oooo::o~~occccc",
+     "<oooooooo~~ccooooooooooooooooooooooooooooooooooooooooooo..=====..oooooooccoccccc",
+     "<ooooooooccooooooooooooooooooooooooooooooooooooooooooooo...====..ooooooooooo~~o^",
+     "<ooooooccoooooooooooooooooooooo~~oooooooooooooooooooooooo..===..oooooooooooocc~~",
+     "<ooooooccooccoooooooooooooccoooccooooooooooooooooooooooooo.....ooooo......oooocc",
+     "<oooooccoooccoooooooooooooccooooooooooooooooooooooooooooooo..ooooooo.......ooooo",
+     "<oooooccccoooooooooooooooooo~~~~~~~~ooooooooooooooooooooooooooooooo..cccc..oooo^",
+     "<oooooooccooooooooooooooo~~~cccccccc~~~ooooooooooooo::ooooooooooooo..cAcc=..ooo^",
+     "<oooooooooccooooooooccoooccccccccccccccoooooooooooo::::oooooooooooo..cDcc!..ooo^",
+     "<ooooooooocc~~~~~oooccooocccccccccccccc~o~~oooooooo::::oooooooooooo...====..ooo^",
+     "ooooooooccooccccc~~~o~~~~~ooooccccccccccoccooooooooo::oooooooooooooo..===..oooo^",
+     "occooccoccooooccccccocccccoooooooccccccc~oooooooooooooooooooooo::oooo.....ooooo^",
+     "occcccc~~oooooccccooocccccooo...oooccccccooooooooooooooooooooo::::oooo..ooooooo^",
+     "ccoccooccooo~~occcooocccccooo..Noooooccccooooooooooooooooooooo::::ooooooooooooo^",
+     "ccooooooooooccooooo~~occccoooo..oo~~occccooooooooooooooooooooo::::ooooooooooooo^",
+     "cccooooooooooooooooccoooooooooooooccoo~~ooooooooooooooooooooooo::oooooooooooooo^",
+     "cccccoooooooooooooooooooooooooXoooooooccccooooooooooooooooooooooooooooooooooooo^",
+     "cccccooooooooooooooooooooooooccooooo~~~cccooooooooooooo::oooooooooooooooooooooo^",
+     "ccccccooooooooooooooooooooo~~cc~~oooccc~~ooooooooooooo::::ooooooooooooooooooooo^",
+     "ccccccoooooooooooooooooooooccoocco~~cccccooooccooooooo::::ooooooooooooooooooooo^",
+     "ccc~~ooooo::oooooooooooooo~~ooooccccoooo~~~~occoooooooo::oooooooooooooooooooooo^",
+     "cccccoooo::::oooooooooo~~~ccooooccoooo.occccooooooooooooooooooooooooooooooooooo^",
+     "ccccooooo::::ooooooo~~~cccccccoooooo...occcc~oooooooooooooooooooooooooooooooooo^",
+     "cccc~~oooo::ooooooooccccccccccoooooo...occcccooooooooooooooooooooooooo::ooooooo^",
+     "ccccccooooooo~~~~~~ooocccc~~oo::oooo...occccco~~ooccoooccoooooooooooo::::oooooo^",
+     "ccccccc~~oooocccccc~~~~ccccco::::oooo..occccc~ccccccoooccccoooooooooo::::oooooo^",
+     "cccccccccooo~cccccccccc~~~ooo::::oooooooccccccoocco~~oooocc~~ooooooooo::ooooooo^",
+     "cccccccc~~~occccccccccccccoooo::ooooooooccccccoooooccccooooccoooooooooooooooooo^",
+     "ccccccccccc~ccccccccccccccooooooooooooooocccccoooooooccccoooccooooooooooooooooo^",
+     "cccccccccccccccccccccccccc~~oooooooooooooccccooooooooooccoooccooooooooooooooooo^",
+     "cccccc~~~~~cccccccccccccccccooooooooooo~~oooooooooooooooccoccoooooooooooooooooo^",
+     "c~~~~~ccccccccccc....cccccccooooooooooocc~~~o~~ooooo::ooccoccoooooooooooooooooo^",
+     "cccccccccccccccccc...cccccccoooo~~~~~ccoocccoccoooo::::occoo~~ooooooooooooooooo^",
+     "~ccccccccccccccccc...ccccccc~~oocccccccoocccooooooo::::occooccooooooooooo~~~~~~~",
+     "ccccccccccccccc......c~~ooooccoocccccooooccooooooooo::occooccooooooooo~~~ccccccc",
+     "cccccccccccccc...c...cccoooooo~~occccooooccooooooooooooccooccccooooooocccccccccc",
+     "cccccccccccccc....c..cooooooooccooooooooooooooooooooo~~ooooooccooooooocccccccccc",
+     "ccccccccccccccccc.c..coooooooooooooooooooooooooooooooccoccooooooooooo~cccccccccc",
+     "ccccccccccccccccc.c..coooooooooooooooooooooooooooooooocccccc~~ccoooooccccccccccc",
+     "cccccccccccccccccvcvvcvvvvvvvvvvvoocc~~~oocc~~~oooooooccvvccccccvoov~ccccccccccc"
     ],
     "exits": {
+     "v": "HOENN_ROUTE_126",
      "<": "LILYCOVE_CITY",
-     ">": "MOSSDEEP_CITY",
-     "v": "HOENN_ROUTE_126"
+     ">": "HOENN_ROUTE_125",
+     "^": "MOSSDEEP_CITY"
     },
-    "trainer_spots": [
-     "Swimmer Grace",
-     "Swimmer Roland",
-     "Swimmer Jenny"
+    "buildings": {
+     "A": "house"
+    },
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/0_39.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "YELLOW SHARD",
+     "RED SHARD",
+     "BLUE SHARD"
     ],
     "signs": [
      [
       "TREASURE HUNTER'S HOUSE"
      ]
     ],
-    "dive": 1
+    "trainer_spots": [
+     "Swimmer Grace",
+     "Swimmer Roland",
+     "Swimmer Jenny"
+    ],
+    "inside": {
+     "70,48": "treasure_hunter"
+    },
+    "edge_to": {
+     "17,79": [
+      17,
+      0
+     ],
+     "19,79": [
+      19,
+      0
+     ],
+     "20,79": [
+      20,
+      0
+     ],
+     "22,79": [
+      22,
+      0
+     ],
+     "23,79": [
+      23,
+      0
+     ],
+     "24,79": [
+      24,
+      0
+     ],
+     "25,79": [
+      25,
+      0
+     ],
+     "26,79": [
+      26,
+      0
+     ],
+     "27,79": [
+      27,
+      0
+     ],
+     "28,79": [
+      28,
+      0
+     ],
+     "29,79": [
+      29,
+      0
+     ],
+     "30,79": [
+      30,
+      0
+     ],
+     "31,79": [
+      31,
+      0
+     ],
+     "32,79": [
+      32,
+      0
+     ],
+     "56,79": [
+      56,
+      0
+     ],
+     "57,79": [
+      57,
+      0
+     ],
+     "64,79": [
+      64,
+      0
+     ],
+     "67,79": [
+      67,
+      0
+     ],
+     "0,20": [
+      79,
+      10
+     ],
+     "0,21": [
+      79,
+      11
+     ],
+     "0,22": [
+      79,
+      12
+     ],
+     "0,23": [
+      79,
+      13
+     ],
+     "0,24": [
+      79,
+      14
+     ],
+     "0,25": [
+      79,
+      15
+     ],
+     "0,26": [
+      79,
+      16
+     ],
+     "0,27": [
+      79,
+      17
+     ],
+     "0,31": [
+      79,
+      21
+     ],
+     "0,32": [
+      79,
+      22
+     ],
+     "0,33": [
+      79,
+      23
+     ],
+     "0,34": [
+      79,
+      24
+     ],
+     "0,35": [
+      79,
+      25
+     ],
+     "0,36": [
+      79,
+      26
+     ],
+     "0,37": [
+      79,
+      27
+     ],
+     "0,38": [
+      79,
+      28
+     ],
+     "0,39": [
+      79,
+      29
+     ],
+     "0,40": [
+      79,
+      30
+     ],
+     "0,41": [
+      79,
+      31
+     ],
+     "0,42": [
+      79,
+      32
+     ],
+     "0,43": [
+      79,
+      33
+     ],
+     "0,44": [
+      79,
+      34
+     ],
+     "0,45": [
+      79,
+      35
+     ],
+     "0,46": [
+      79,
+      36
+     ],
+     "0,47": [
+      79,
+      37
+     ],
+     "0,48": [
+      79,
+      38
+     ],
+     "0,49": [
+      79,
+      39
+     ],
+     "79,0": [
+      0,
+      0
+     ],
+     "79,1": [
+      0,
+      1
+     ],
+     "79,2": [
+      0,
+      2
+     ],
+     "79,3": [
+      0,
+      3
+     ],
+     "79,4": [
+      0,
+      4
+     ],
+     "79,5": [
+      0,
+      5
+     ],
+     "79,6": [
+      0,
+      6
+     ],
+     "79,7": [
+      0,
+      7
+     ],
+     "79,8": [
+      0,
+      8
+     ],
+     "79,9": [
+      0,
+      9
+     ],
+     "79,10": [
+      0,
+      10
+     ],
+     "79,11": [
+      0,
+      11
+     ],
+     "79,12": [
+      0,
+      12
+     ],
+     "79,26": [
+      0,
+      26
+     ],
+     "79,27": [
+      0,
+      27
+     ],
+     "79,28": [
+      0,
+      28
+     ],
+     "79,42": [
+      0,
+      2
+     ],
+     "79,46": [
+      0,
+      6
+     ],
+     "79,47": [
+      0,
+      7
+     ],
+     "79,48": [
+      0,
+      8
+     ],
+     "79,49": [
+      0,
+      9
+     ],
+     "79,50": [
+      0,
+      10
+     ],
+     "79,51": [
+      0,
+      11
+     ],
+     "79,52": [
+      0,
+      12
+     ],
+     "79,53": [
+      0,
+      13
+     ],
+     "79,54": [
+      0,
+      14
+     ],
+     "79,55": [
+      0,
+      15
+     ],
+     "79,56": [
+      0,
+      16
+     ],
+     "79,57": [
+      0,
+      17
+     ],
+     "79,58": [
+      0,
+      18
+     ],
+     "79,59": [
+      0,
+      19
+     ],
+     "79,60": [
+      0,
+      20
+     ],
+     "79,61": [
+      0,
+      21
+     ],
+     "79,62": [
+      0,
+      22
+     ],
+     "79,63": [
+      0,
+      23
+     ],
+     "79,64": [
+      0,
+      24
+     ],
+     "79,65": [
+      0,
+      25
+     ],
+     "79,66": [
+      0,
+      26
+     ],
+     "79,67": [
+      0,
+      27
+     ],
+     "79,68": [
+      0,
+      28
+     ],
+     "79,69": [
+      0,
+      29
+     ],
+     "79,70": [
+      0,
+      30
+     ],
+     "79,71": [
+      0,
+      31
+     ],
+     "79,72": [
+      0,
+      32
+     ]
+    },
+    "moves": {
+     "28,12": {
+      "m": "look",
+      "d": "udlr"
+     },
+     "31,53": {
+      "m": "look",
+      "d": "udlr"
+     },
+     "58,11": {
+      "m": "look",
+      "d": "udlr"
+     }
+    },
+    "dive": 1,
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/0_39.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       80,
+       80
+      ]
+     }
+    ]
    },
    {
     "art": [
      "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "ccccccccc...cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "ccccccccc....ccc\"cc\"\"\"\"\"\"\"\"\"cc\"\"\"cccccccc.....cccccccccccccccccccccccccccccccccc",
-     "ccccccccc....cc\"\"\"\"\"cc\"\"ccc\"\"\"\"\"cccc\"\"\"\"c.....cccccccccccccccccccccccccccccccccc",
-     "cccccccccc..ccccc\"\"\"\"\"\"\"\"cc\"\"\"\"\"ccc\"\"\"\"\"c.....cccccccccccccccccccccccccccccccccc",
-     "cccccccccccccccccccccc\"\"\"\"\"\"\"ccccccccccccc..ccccc\"cccccccccccccccccccccccccccccc",
-     "ccccccccccccccccccccccccc\"\"ccccccccccccccccccccc\"\"cccccccccccccccccccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccccccccccccccc\"\"ccccccccccccccccc...cccccccccc",
-     "cccccccccccccccccccccccccccccccccccccccccccccccc\"\"cccccccc\"\"ccccccc....ccccccccc",
-     "cccccccccccccccccccccccccccccccccccccccccccccccc\"\"\"cccccc.\"\"\"cccccc....ccccccccc",
-     "ccccccccccccccccccccccccccccccc\"cccccccccccccccc\"\"\"cccccc\"\"\"\"\"cccccc..cccccccccc",
-     "ccccccccccccccccccccccccccccccc\"cccccccccccccccc\"\"\"cccccc\"\"\"\"\"cccccccccccccccccc",
-     "ccccccccccccccccccccccccccccccc\"\"cccccccccccccccc\"\"cccccc\"\"\"\"\"cccccccccccccccccc",
-     "ccccccccccccccccccccccccccccccc\"\"\"cccccccccccccccc\"cccccc\"\"\"\"\"cccccccccccccccccc",
-     "ccccccccccccccccccccccccccccccc\"\"\"ccccccc\"\"\"\"\"\"cccccccccc\"\"\"\"\"cccccccccccccccccc",
-     "ccccccccccccccccccccccccccccccccc\"\"c\"\"\"ccc\"\"\"\"cccccccccccc\"\"\"ccccccccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccc\"\"\"\"\"ccccccccccccccccc\"ccccccccccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc...ccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc....cccccccccccc",
-     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc....cccccccccccc",
-     "cccccccccccccccccccccccccccccccccccccccccccccccccc\"cccccccccccccc..ccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccccccccccccccccc\"ccccccccccccccccccccccccccccc",
+     "cccccccccc..cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+     "ccccccccc.......\"..\"\"\"\"\"\"\"\"\"..\"\"\"..ccccccc..cccccccccccccccccccccccccccccccccccc",
+     "ccccccccc......\"\"\"\"\"..\"\"...\"\"\"\"\"....\"\"\"\".........ccccccccccccccccccccccccccccccc",
+     "cccccccccc..ccccc\"\"\"\"\"\"\"\"..\"\"\"\"\"...\"\"\"\"\"..........cccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccc\"\"\"\"\"\"\"....ccccccccc..cccc.\"cccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccc\"\"......ccccccccccccccc\"\"cccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccccc..ccccccccccccccc\"\"cccccccccccccccccc..cccccccccc",
+     "ccccccccccccccccccccccccccccccc..ccccccccccccccc\"\"cccccccc\"\"...........ccccccccc",
+     "ccccccccccccccccccccccccccccccc..ccccccccccccccc\"\"\"ccccccc\"\"\"..........ccccccccc",
+     "ccccccccccccccccccccccccccccccc\"..cccccccccccccc\"\"\"cccccc\"\"\"\"\"cccccc..cccccccccc",
+     "ccccccccccccccccccccccccccccccc\"..cccccccccccccc\"\"\"cccccc\"\"\"\"\"cccccccccccccccccc",
+     "ccccccccccccccccccccccccccccccc\"\"..ccccccccccccc.\"\"cccccc\"\"\"\"\"cccccccccccccccccc",
+     "ccccccccccccccccccccccccccccccc\"\"\"..cccccccccccc..\"cccccc\"\"\"\"\"cccccccccccccccccc",
+     "ccccccccccccccccccccccccccccccc\"\"\".......\"\"\"\"\"\"....cccccc\"\"\"\"\"cccccccccccccccccc",
+     "ccccccccccccccccccccccccccccccccc\"\".\"\"\"...\"\"\"\".....ccccccc\"\"\".cccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccc\"\"\"\"\"..........ccccccc\"...cccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccccccccccccccc...cccccccc...ccc..ccccccccccccc",
+     "ccccccccccccccccccccccccccccccccccccccccccccccccc..cccccccc.........cccccccccccc",
+     "ccccccccccccccccccccccccccccccccccccccccccccccccc..ccccccccc........cccccccccccc",
+     "ccccccccccccccccccccccccccccccccccccccccccccccccc.\"cccccccccccccc..ccccccccccccc",
+     "ccccccccccccccccccccccccccccccccccccccccccccccccc.\"ccccccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccccccccccccccccccccccccccc\"\"ccccccccccccccccccccccccccccc",
      "ccccccccccc\"\"\"\"\"\"\"\"cccccccccccccccccccccccccccccc\"\"ccccccccccccccccccccccccccccc",
-     "cccccccccc.\"\"\"\"\"\"\"\"cccccccccccccccccccccccccccccc\"\"ccccccccccccccccccccccccccccc",
-     "ccccccccc.\"\"\"\"\"\"\"\"\"\"ccccccccccccccccccccccccccccc\"\"ccccccccccccccccccccccccccccc",
-     "ccccccccc\"\"\"\"ccc\"\"\"\"\"\"cccccccccccccccccccccccccccc\"ccccccccccccccccccccccccccccc",
-     "cccccccc.\"\"\"\"cccc\"\"\"\"\"cccccccccccccccccccccccccc.c\"ccccccccccccccccccccccccccccc",
-     "cccccccc\"\"\"\"\"\"\"ccc\"\"\"\"ccccccc...ccccccccccccccc.\"ccccccccccccccccccccccccccccccc",
-     "cccccccc\"\"\"\"\"\"\"\"\"c\"\"\"\"\"cccccc....ccccccccccccc..\"cccccccccccccccc..ccccccccccccc",
-     "cccccccc\"\"\"\"\"cc\"\"cc\"\"\"\"cccccc....ccccccccccccccc\"ccccccccccccccc...ccccccccccccc",
-     "cccccccc\"\"\"\"c..cccccc\"\"ccccccc..cccccccccccccccccccccccccccccccc....cccccccccccc",
-     "cccccccc\"\"\"\"...c.\"\"cc\"\"ccccccccccccccccccccccccccccccccccccccccc....cccccccccccc",
-     "cccccccc\"\"\"\".....\"\"cc\"\"cccccccccccccccccccc...ccccccccccccccccccc..ccccccccccccc",
-     "ccccccccc\"\"\"\"...\"\"\"c\"\"\"cccccccccccccccccccc....ccccccccccccccccccccccccccccccccc",
-     "ccccccccc\"\"\"\"...\"\"\"\"\"cccccccc.\"cccccccccccc....ccccccccccccccccccccc...ccccccccc",
-     "ccccccccc\"\"\"\"\".\"\"\"\"\"\"cccccccc\"\"\"cccccccccccc..cccccccccccccccccccccc....cccccccc",
-     "ccccccccc\"\"\"\"\".\"\"\"\"\"\"cccccccc\"\"\"cccccccccccccccccccccccccccccccccccc....cccccccc",
-     "cccccccccc\"\"\"\"..\"\"\"cccccccccc\"\"\"ccccccccccccccccccccccccccccccccccccc..ccccccccc",
-     "cccccccccccc\"\".\"\"cccccccccccc\"\"ccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccccc\"\"\"..cccccccc...cccccccccccccccccccccccccc",
-     "ccccccccccccccccccccccccccccccccccccc\"\"\"\"...ccccccc....ccccccccccccccccccccccccc",
-     "ccccccccccccccccccccccccccccccccccccc\"\"\"\"\".\"\"cccccc....ccccccccccccccccccccccccc",
-     "ccccccccccccccccccccccccccccccccccccc\"\"\"\"\".\"\"ccccccc..cccccccccccccccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccccc\"\"\"\"..\"ccccccccccccccccc....cccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccccccc\"\".\"cccccccccccccccccc....cccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc....cccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc....cccccccccccccc",
-     "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc..ccccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccccccccccccccccccccc...ccccccccccccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccccccccccccccccccccc....cccccccccccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccccccccccccccccccccc....cccccccccccccccccccccc",
-     "ccccccccc...ccccccccccccccccccccccccccccccccccccccccccc..ccccccccccccccccccccccc",
-     "ccccccccc....ccc\"\"\"\"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "ccccccccc....ccc\"\"\"\"\"\"\"ccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "cccccccccc..ccccccc\"\"\"\"\"\"cccccccccccccccccccccccccccccc\"ccccccccccccc...cccccccc",
-     "ccccccccccccccccccccc\"\"\"\"cccc...ccccccccccccccccccccccc\"\"cccccccccccc....ccccccc",
-     "ccccccccccccccccccccccccccccc....cccccccccccccccccccccc\"\"\"ccccccccccc....ccccccc",
-     "ccccccccccccccccccccccccccccc....cccccccccccccccccccccc\"\"\"cccccccccccc..cccccccc",
+     "ccccccccccc\"\"\"\"\"\"\"\"cccccccccccccccccccccccccccccc\"\"ccccccccccccccccccccccccccccc",
+     "cccccccccc\"\"\"\"\"\"\"\"\"\"ccccccccccccccccccccccccccccc\"\"ccccccccccccccccccccccccccccc",
+     "ccccccccc\"\"\"\"...\"\"\"\"\"\"ccccccccccccccccccccccccccc.\"ccccccccccccccccccccccccccccc",
+     "ccccccccc\"\"\"\"....\"\"\"\"\"ccccccccccccccccccccccccccc.\"ccccccccccccccccccccccccccccc",
+     "cccccccc\"\"\"\"\"\"\"...\"\"\"\"cccccccc..cccccccccccccccc\"..ccccccccccccccccccccccccccccc",
+     "cccccccc\"\"\"\"\"\"\"\"\".\"\"\"\"\"cccccc....ccccccccccccccc\"..ccccccccccccccccccccccccccccc",
+     "cccccccc\"\"\"\"\"..\"\"..\"\"\"\"cccccc....ccccccccccccccc\"..cccccccccccccc..ccccccccccccc",
+     "cccccccc\"\"\"\".........\"\"ccccccc..cccccccccccccccc..cccccccccccccc....cccccccccccc",
+     "cccccccc\"\"\"\".....\"\"..\"\"ccccccc..cccccccccccccccc..cccccccccccccc....cccccccccccc",
+     "cccccccc\"\"\"\"\"...\"\"\"..\"\"ccccccc..cccccccccccc..cc..ccccccccccccccc..ccccccccccccc",
+     "ccccccccc\"\"\"\"\"\"\"\"\"\".\"\"\"ccccccc..ccccccccccc.......cccccccccccccccccccccccccccccc",
+     "ccccccccc\"\"\"\"\"\"\"\"\"\"\"\"ccccccccc\".ccccccccccc.......ccccccccccccccccccc..ccccccccc",
+     "ccccccccc\"\"\"\"\"\"\"\"\"\"\"\"cccccccc\"\"\"cccccccccccc..cccccccccccccccccccccc....cccccccc",
+     "ccccccccc\"\"\"\"\"\"\"\"\"\"\"\"cccccccc\"\"\"cccccccccccccccccccccccccccccccccccc....cccccccc",
+     "cccccccccc\"\"\"\".\"\"\"\"cccccccccc\"\"\"ccccccccccccccccccccccccccccccccccccc..ccccccccc",
+     "cccccccccccc\"\"\"\"\"cccccccccccc\"\"ccccccccccccccccccccccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccc..ccccccccccccccccccccccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccc..ccccccccccccccccccccccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccc..ccccccccccccccccccccccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccc..ccccccccccccccccccccccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccc...cccccccccccccccccccccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccc.........\"\"\"\"cccccccccc..cccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccc........\"\"\"\"\"\"\"ccccccc....ccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccc.....cccc\"\"\"\"\"\"\"\"cccccc....ccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccc....ccccc\"\"\"\"\"\"\"\"ccccccc..cccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccc....cccccc\"\"\"\"N\"\"cccccccccccccccccc..ccccccccccccccc",
+     "ccccccccccccccccccccccccccc....ccccccccc\"\"\"\"cccccccccccccccccc....cccccccccccccc",
+     "ccccccccccccccccccccccccccc...cccccccccccccccccccccccccccccccc....cccccccccccccc",
+     "ccccccccccccccccccccccccccc...cccccccccccccccccccccccccccccccc....cccccccccccccc",
+     "ccccccccccccccccccccccccccc...ccccccccccccccccccccccccccccccccc..ccccccccccccccc",
+     "ccccccccccccccccccccccccccc....ccccccccccccccccccccccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccc....cccccccccccccccccccccccc..ccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccc....cccccccccccccccccccccc....cccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccc...cccccccccccccccccccccc....cccccccccccccccccccccc",
+     "cccccccccc..cccccccccccccccccc..cccccccccccccccccccccc...ccccccccccccccccccccccc",
+     "ccccccccc.......\"\"\"\"cccccccccc..cccccccccccccccccccccc...ccccccccccccccccccccccc",
+     "ccccccccc.......\"\"\"\"\"\"\"ccccccc..ccccccccccccccccccccccc..ccccccccccccccccccccccc",
+     "cccccccccc..ccccccc\"\"\"\"\"\"ccccc..ccccccccccccccccccccccc\".ccccccccccccc..cccccccc",
+     "ccccccccccccccccccccc\"\"\"\"ccccc..ccccccccccccccccccccccc\"\"cccccccccccc....ccccccc",
+     "ccccccccccccccccccccc............cccccccccccccccccccccc\"\"\"ccccccccccc....ccccccc",
+     "ccccccccccccccccccccccc..........cccccccccccccccccccccc\"\"\"cccccccccccc..cccccccc",
      "cccccccccccccccccccccccccccccc..ccccccccccccccccccccccc\"\"\"cccccccccccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccc\"\"cccccccccccccccccccccc",
-     "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccc\"cccccccccccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "ccccccccccccccccccccccccccccccccccccccccccccccccccc...cccccccccccccccccccccccccc",
-     "ccccccccccccccccccccccccccccccccccccccccccccccccccc....ccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccccccccccccccccccccccccccccc.\"\"cccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccccccccccccccccccccccccccccc..\"cccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccccccccccccccccccccccccccccc..ccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccccccccccccccccccc.....ccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccccccccccccccccccccccccc......ccccccccccccccccccccccc",
      "ccccccccccccccccccccccccccccccccccccccccccccccccccc....ccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccccccccccccccccccccccccc..cccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
@@ -84979,133 +85369,296 @@
      "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
     ],
     "exits": {},
-    "theme": "seabed",
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/0_50.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "GREEN SHARD"
+    ],
     "surface": 0,
+    "theme": "seabed",
     "pool": "HOENN_UNDERWATER_POOL_PERCENTAGES"
    }
-  ]
+  ],
+  "rooms": {
+   "treasure_hunter": {
+    "art": [
+     "cccccccccc",
+     "ccccccc!cc",
+     ".........c",
+     "..........",
+     "...ccN....",
+     "...cc.....",
+     "..........",
+     "..........",
+     "...nn....c"
+    ],
+    "exits": {
+     "n": "OUT:70,48"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/33_0.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Treasure Hunter",
+      "action": "EVENT",
+      "color": "GOLD",
+      "event": {
+       "lines": [
+        "Treasure Hunter: A Shard! Pieces of tools from ancient times... Trade it with me!"
+       ],
+       "swap": {
+        "RED_SHARD": "FIRE_STONE",
+        "YELLOW_SHARD": "THUNDER_STONE",
+        "BLUE_SHARD": "WATER_STONE",
+        "GREEN_SHARD": "LEAF_STONE"
+       },
+       "fail": [
+        "Treasure Hunter: Have you seen any Shards? Bits of ancient tools, red, yellow, blue and green.",
+        "Treasure Hunter: Bring me one and I'll trade you an evolution stone for it!"
+       ]
+      }
+     }
+    ],
+    "signs": [
+     [
+      "Wanted item",
+      "Trade item"
+     ]
+    ],
+    "moves": {
+     "5,4": {
+      "m": "face",
+      "d": "l"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/33_0.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       10,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Treasure Hunter's house"
+   }
+  },
+  "floor_names": [
+   "Route 124",
+   "The seabed"
+  ],
+  "figure_floors": {
+   "Swimmer Grace": 0,
+   "Swimmer Roland": 0,
+   "Swimmer Jenny": 0
+  }
  },
  "MOSSDEEP_CITY": {
   "art": [
-   "oooocccccccccccooccco^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
-   "oooocccccccccccooooooooooooooooooooooooooooooooooooooccooooooooooooooooooooooooo",
-   "oooooocccccccooooooooooooooooooooooooooooooooooooooccooooooooLooooOooooooooooooo",
-   "ooooccooooooooooooooooooooooooooooooooooooooooooEEEEoooooToooLoRRoOooooooooooooo",
-   "<oooooooooooooooooooooooooooooo...........ooooocEEEE....TTTooLoRRoOooooooooooooo",
-   "<ooooooooooooooooooooqoooc.....TTTTGGGGGG.....ccEEEE..TT.T..oLoRRoOooooooooooooo",
-   "<ooooooooooooooqooooooocTT.BBBBTTTTGGGGGG..TT.ccEDEE......c..LIRR.O...oooooooooo",
-   "<ooooooooooooqcTT.AAAA.TTTTBBBB.TT.GGGGGG.TTTc..T.....T.c.cT.LIRR.O..Tcooooooooo",
-   "<ooooooooooooccTT.AAAATTTTTBBBB....GGGGGGTTTccT..====.c.cc.TSSSSSSSSS.cccooooooo",
-   "<oooooooooooocc.TTAAAATTTT.BDBB...!GGGDGGTTc.....====c.c.c..SSSSSSSSS.ccccoooooo",
-   "<oooooooooooqcc.TTADAA........T.=========.ccT...===.cc.c.c..SSSSSSSSS..ccccooooo",
-   "<ooooooooooooccc...........T....=========.cc...====c.cc..c..SSSSSSSSS..cccccoooo",
-   "<ooooooooooooccc........TT......===......cTT..=====c.cc..c..SSSSSSSSS..ccccccooo",
-   "<ooooooooooooocccCCCC...TTTPPPP.===....TccTTT.=====cTccc.c..SSSSSSSSS..cccccccco",
-   "<ooooooooooooocccCCCC.TTTTTPPPP.===..T..cc.T..=====c.c.cccT.SSSSSSSSS..ccccccccc",
-   "<ooooooooooooooccCCCC.TTTT.PPPP.===TMMMMcc.....===.ccc.TcccTSSSSDSSSS..ccccccTcc",
-   "<ooooooooooooooccCDCC....!.PDPP.===.MMMMcccT....==..ccc.c.cc.T.===!.T.ccccccc.cc",
-   "<oooooooooooooocc.......T==========.MMMMcccc....==..ccccccccccN===..N.cccccccccc",
-   "<ooooooooooooooccc.TT....==========.MDMM.ccc.........ccccccccccaaacccccc.ccc.ccc",
-   "oooooooooooooooccc.TTTT..==...T.==========ccc.T..T....cccccccccaaacccccccccc.ccc",
-   "o==ooooooooooooocccccTT..==.....===HHHHH==cccc..TTT..==.ccccccT......TccccccTccc",
-   "======ooooooooooccccc....==..TT.==.HHHHH==.ccccc.T...====rcccccaaacccccccc.ccccc",
-   "===TT==ooooooooooooccccc.==.TTT.==.HHHHH==..ccccccc..=======cccaaaKKKKccT..ccccc",
-   "====TT==oooooooooooccccc.==.TT..==THHHHH==....cccccc..=======.....KKKK...ccccccc",
-   "========oooooooooooooocccaacccc.==.HDHHH==.......cccT...=====.....KKKK..ccccccco",
-   "=========ooooooooooooocccaacccc.==......========..cccccT.==.......KDKKT.ccccccco",
-   "o===TT===oooooooooooooooooooocc.==......========..cccccc......T......T.cccccccco",
-   "oo=======oooooooooooooooooooocccaaccTTTTcTTc..==.....ccccaacccccc...TTTccccccooo",
-   "oo=======oooooooooooooooooooocccaaccTTTT.TTc..==......cccaacccc.cc...T.cccccoooo",
-   "oo=======oooooooooooooooooooooooooocTTTTTTcc..=============...ccccccccccccccoooo",
-   "ooo=====oooooooooooooooooooooooooooTTTTTToccc.=============....Tcccccccccccooooo",
-   "oooo===oooooooooooooooooooooooooooTTooTTTTcTccaaccc...............Tccccccccooooo",
-   "oooooooooooooooooooooooooooooooooooTTTTTToc.TT....cccc.......T...ccc.Tcccccooooo",
-   "ooooooooooooooooooooooooooooooooooooTToooocTTT.......ccccccc...ccc.T..cooooooooo",
-   "ccccccccoooooooooooooooooooooooooooTTTTTTocTT.T...........Tccccccccccccooooooooo",
-   "cccccccccoccooooooooooooooooooooooooooTTTTcccTTcc..T.........T..cooooooooooooooo",
-   "cccccccccccccccccccccooooooooooooooTTTTTToooTTTTcccccccccccccccccooooooooooccooo",
-   "ccccccccccccccccccccccooooooooooooooTTooTToooTTooooooooooooooooooooooooooocccooo",
-   "cccccccccccccccccccccccooooooooooooTTooTTTToTToooooooooooooooooooooooooooocccooo",
-   "cccccccccccccccccccccccoooooooooooooTTTTTTTTooovvvvvvvvvvvvvvvvvvvvvvvvvvcccccoo"
+   "ooooc^^cccc^^^cccccc^oo^^^^^^^^^^^^^^^^^^^^^^^^^^^^^occ^^^^^^^^^^^^^^^^^^^^^^^^^",
+   "ooooccc.....cccooooooooooooooooooooooooooooooooooooccccooooooooooooooooooooooooo",
+   "<ooo~~cccccccooooooooooooooooooooooooooooooooooooooccoooooooo......ooooooooooooo",
+   "ooccccoooooooooooooo...oooooooooooooooooooooooo~cccc~~ooccc~~......ooooooooooooo",
+   "ccccooooooooo.............oooo~...........~ooo~ccccc.....cc~o......ooooooooooooo",
+   "ccoooooooooo.........c...c....................cccGcc...Ncccc~....o.ooooooooooooo",
+   "<oooooooooo....c.......c.......cccccccccc.....cccDcc......c...........~ooooooooo",
+   "<ooooooooo...cc.........cc.cccc.cc.cccccc..ccc..........c.c...........c~oooooooo",
+   "<ooooooooo...cccc.cccc.cccccAcc....cccBcc.cccc........c.cc..ccccccccc.cc.~oooooo",
+   "<ooooooooo...cc...cHcccccc.cDcc...!..cDc.ccc.........ccccc..ccccccccc.cccc~ooooo",
+   "<ooooooooo..ccc...cDcc....................cc........cccccc..ccccccccc..cccc~oooo",
+   "<ooooooooo...ccc..........................cc.......ccccccc..ccccccccc..ccccc~ooo",
+   "<ooooooooo...ccc................N.....N..c.........ccccccc..ccccccccc..cccccc~oo",
+   "<ooooooooo....ccc......Ncc..............cc.c.......ccccccc..ccccccccc..ccccccc.~",
+   "<ooooooooo....ccccccc....cccccc.........ccccc......ccccccc..ccccccccc..ccccccccc",
+   "<ooooooooo.....cccIcc.cccc.cCcc.........cc.........cccccccc.ccccncccc..ccccccccc",
+   "<oooooooooo....cccDcc....!.cDcc.....ccccccc.........cccccccc......!...cccccccccc",
+   "<oooooooooo....cc...................cFcccccc........ccccccccccN.....N.cccccccccc",
+   "<oooooooooo....ccc..................cDcc.ccc.N.......cccccccccc...cccccccccccccc",
+   "<...ooooooo....ccc.cc.....................ccc.........ccccccccc...cccccccccccccc",
+   "<......ooooo....ccccccc...................cccc...c......cccccc........cccccccccc",
+   "<==......ooo....ccccc.....N........ccccc...cccccccc.....N!ccccc...cccccccc.ccccc",
+   "<=====.............ccccc.....cc....ccccc....ccccccc.........ccc...cccccc...ccccc",
+   "<==cc==............ccccc....cc.....cJccc......cccccc..............cccc...ccccccc",
+   "<===cc=...............ccc..cccc....cDccc.........ccc..............cEcc..ccccccco",
+   "<=======...........N..ccc..cccc...................ccccc...........cDcc..ccccccco",
+   "<.======.....................cc...................cccccc...............cccccccco",
+   "<..=cc==.....................ccc..cccccccccc.........cccc..cccccc....c.ccccccooo",
+   "<..=====..oooo...............ccc..cccccccccc..........ccc..ccccccc..ccccccccoooo",
+   "<..=====..ooooooo..............N...ccccccccc.................Nccccccccccccccoooo",
+   "<o..===..oooooooooooooo.............ccccccccc...................cccccccccccooooo",
+   "<oo.....oooooooooooooooooooo.......cccccccc.cc..ccc................ccccccccooooo",
+   "<ooooooooooooooooooooooooooooooo..ccccccccc.......cccc...........ccccccccccooooo",
+   "oooooooooooooooooooooooooooooooooo.cccccccc.cc.......ccccccc...ccccccccooooooooo",
+   "cccccccc~occooooooooooooooooooooooo.ccccccccc.....N........ccccccccccccooooooooo",
+   "ccccccccc~ccooooooooooooooooooooooocccccccccccccc...............coooooooooo~~ooo",
+   "ccccccccccccccccccccc~ooooooooooooo...cccccccccccccccccccccccccccooooooooo~.cooo",
+   "ccccccccccccccc....ccc~ooooooooooooccccccccccccc......ooooooooooooooooooooc.cooo",
+   "cccccccccccccccc.c..c.coooooooooooo.ccccccccccc.ooooooooooooooooooooooooo~...~oo",
+   "cccccccccccccccc.vcvcvcccvvvvvvvvvvcccccccccccvooooooooooooovvvvvvvvvoooocvcccoo"
   ],
-  "parts": true,
   "exits": {
-   "<": "HOENN_ROUTE_124",
    "^": "HOENN_ROUTE_125",
    "v": "HOENN_ROUTE_127",
-   "S": "HOENN_SPACE_CENTER"
+   "<": "HOENN_ROUTE_124",
+   "n": "HOENN_SPACE_CENTER"
   },
   "buildings": {
-   "A": "steven",
-   "B": "house",
-   "G": "gym",
-   "C": "house",
-   "P": "center",
-   "M": "mart",
-   "H": "house",
+   "A": "house",
+   "B": "gym",
+   "C": "center",
    "E": "house",
-   "S": "space",
-   "K": "house",
-   "R": "rocket",
-   "L": "gantry",
-   "O": "gantry",
-   "I": "gantry"
+   "F": "mart",
+   "G": "house",
+   "H": "steven",
+   "I": "house",
+   "J": "house"
   },
   "roofs": {
-   "A": [
-    184,
-    80,
-    80
-   ],
-   "B": [
-    184,
-    80,
-    80
-   ],
-   "G": [
-    208,
-    176,
-    104
-   ],
-   "C": [
-    184,
-    80,
-    80
-   ],
-   "P": [
-    200,
-    64,
-    80
-   ],
-   "M": [
-    112,
-    184,
-    240
-   ],
-   "H": [
-    128,
-    128,
-    136
-   ],
-   "E": [
-    184,
-    80,
-    80
-   ],
-   "S": [
-    200,
-    208,
-    128
-   ],
-   "K": [
-    184,
-    80,
-    80
-   ]
+   "_picture": {
+    "f": "em_ground/0_6.png",
+    "at": [
+     0,
+     0
+    ]
+   },
+   "_signs_in_picture": true,
+   "_buildings_in_picture": true
   },
   "people": [
+   {
+    "text": "Surfer",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Ships are fine, but crossing the sea on a Pokémon with Surf? Now that's a trip!"
+     ]
+    }
+   },
+   {
+    "text": "Rocket watcher",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "The Space Center launches huge rockets from this island. It's quite a sight!"
+     ]
+    }
+   },
+   {
+    "text": "Old salt",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "I love the sea, but after a long voyage, solid ground feels pretty good too."
+     ]
+    }
+   },
+   {
+    "text": "Rock boy",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Boy: Steven gave me this weird rock. I think it's called a King's Rock. You can have it!"
+     ],
+     "gift_item": {
+      "KINGS_ROCK": 1
+     },
+     "flag": "got_kings_rock_mossdeep",
+     "done": [
+      "Boy: What's that rock good for, anyway? Some Pokémon evolve holding it? Weird!"
+     ]
+    }
+   },
    "Battle Courtney",
-   "Battle Matt"
+   "Battle Matt",
+   {
+    "text": "Flower girl",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Wouldn't it be nice if the whole world was covered in plants and flowers like this island?"
+     ]
+    }
+   },
+   {
+    "text": "Wailmer watcher",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "You can see wild Wailmer around Mossdeep. Wailmer watching, they call it!"
+     ]
+    }
+   },
+   {
+    "text": "Rock keeper",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "The Space Center put this white rock here. It's their wish for every rocket to fly safely."
+     ]
+    }
+   },
+   {
+    "text": "Black belt",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "I'm a Fighting-type Trainer, and Mossdeep's Psychic Gym is just hopeless for me!"
+     ]
+    }
+   },
+   {
+    "text": "Wave watcher",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "The waves are so nice on my feet... You know Sootopolis? It's built inside a crater!"
+     ]
+    }
+   },
+   {
+    "text": "Scott",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Scott: I heard Mossdeep's Gym Leaders are tough, so I came to watch. Good luck in there!"
+     ]
+    }
+   },
+   {
+    "text": "Thoughtful man",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "All life comes from the sea. And in the end, everything goes back to it."
+     ]
+    }
+   }
   ],
   "signs": [
    [
@@ -85118,60 +85671,1782 @@
    ],
    [
     "MOSSDEEP SPACE CENTER"
+   ],
+   [
+    "It's a white rock."
    ]
-  ]
+  ],
+  "inside": {
+   "28,9": "block_house",
+   "28,16": "center",
+   "67,25": "wingull_house",
+   "37,18": "mart",
+   "49,6": "rod_house",
+   "19,10": "steven",
+   "18,16": "secret_house",
+   "36,24": "hex_house"
+  },
+  "edge_to": {
+   "5,0": [
+    5,
+    39
+   ],
+   "6,0": [
+    6,
+    39
+   ],
+   "11,0": [
+    11,
+    39
+   ],
+   "12,0": [
+    12,
+    39
+   ],
+   "13,0": [
+    13,
+    39
+   ],
+   "20,0": [
+    20,
+    39
+   ],
+   "23,0": [
+    23,
+    39
+   ],
+   "24,0": [
+    24,
+    39
+   ],
+   "25,0": [
+    25,
+    39
+   ],
+   "26,0": [
+    26,
+    39
+   ],
+   "27,0": [
+    27,
+    39
+   ],
+   "28,0": [
+    28,
+    39
+   ],
+   "29,0": [
+    29,
+    39
+   ],
+   "30,0": [
+    30,
+    39
+   ],
+   "31,0": [
+    31,
+    39
+   ],
+   "32,0": [
+    32,
+    39
+   ],
+   "33,0": [
+    33,
+    39
+   ],
+   "34,0": [
+    34,
+    39
+   ],
+   "35,0": [
+    35,
+    39
+   ],
+   "36,0": [
+    36,
+    39
+   ],
+   "37,0": [
+    37,
+    39
+   ],
+   "38,0": [
+    38,
+    39
+   ],
+   "39,0": [
+    39,
+    39
+   ],
+   "40,0": [
+    40,
+    39
+   ],
+   "41,0": [
+    41,
+    39
+   ],
+   "42,0": [
+    42,
+    39
+   ],
+   "43,0": [
+    43,
+    39
+   ],
+   "44,0": [
+    44,
+    39
+   ],
+   "45,0": [
+    45,
+    39
+   ],
+   "46,0": [
+    46,
+    39
+   ],
+   "47,0": [
+    47,
+    39
+   ],
+   "48,0": [
+    48,
+    39
+   ],
+   "49,0": [
+    49,
+    39
+   ],
+   "50,0": [
+    50,
+    39
+   ],
+   "51,0": [
+    51,
+    39
+   ],
+   "55,0": [
+    55,
+    39
+   ],
+   "56,0": [
+    56,
+    39
+   ],
+   "57,0": [
+    57,
+    39
+   ],
+   "58,0": [
+    58,
+    39
+   ],
+   "59,0": [
+    59,
+    39
+   ],
+   "60,0": [
+    60,
+    39
+   ],
+   "61,0": [
+    61,
+    39
+   ],
+   "62,0": [
+    62,
+    39
+   ],
+   "63,0": [
+    63,
+    39
+   ],
+   "64,0": [
+    64,
+    39
+   ],
+   "65,0": [
+    65,
+    39
+   ],
+   "66,0": [
+    66,
+    39
+   ],
+   "67,0": [
+    67,
+    39
+   ],
+   "68,0": [
+    68,
+    39
+   ],
+   "69,0": [
+    69,
+    39
+   ],
+   "70,0": [
+    70,
+    39
+   ],
+   "71,0": [
+    71,
+    39
+   ],
+   "72,0": [
+    72,
+    39
+   ],
+   "73,0": [
+    73,
+    39
+   ],
+   "74,0": [
+    74,
+    39
+   ],
+   "75,0": [
+    75,
+    39
+   ],
+   "76,0": [
+    76,
+    39
+   ],
+   "77,0": [
+    77,
+    39
+   ],
+   "78,0": [
+    78,
+    39
+   ],
+   "79,0": [
+    79,
+    39
+   ],
+   "17,39": [
+    17,
+    0
+   ],
+   "19,39": [
+    19,
+    0
+   ],
+   "21,39": [
+    21,
+    0
+   ],
+   "25,39": [
+    25,
+    0
+   ],
+   "26,39": [
+    26,
+    0
+   ],
+   "27,39": [
+    27,
+    0
+   ],
+   "28,39": [
+    28,
+    0
+   ],
+   "29,39": [
+    29,
+    0
+   ],
+   "30,39": [
+    30,
+    0
+   ],
+   "31,39": [
+    31,
+    0
+   ],
+   "32,39": [
+    32,
+    0
+   ],
+   "33,39": [
+    33,
+    0
+   ],
+   "34,39": [
+    34,
+    0
+   ],
+   "46,39": [
+    46,
+    0
+   ],
+   "60,39": [
+    60,
+    0
+   ],
+   "61,39": [
+    61,
+    0
+   ],
+   "62,39": [
+    62,
+    0
+   ],
+   "63,39": [
+    63,
+    0
+   ],
+   "64,39": [
+    64,
+    0
+   ],
+   "65,39": [
+    65,
+    0
+   ],
+   "66,39": [
+    66,
+    0
+   ],
+   "67,39": [
+    67,
+    0
+   ],
+   "68,39": [
+    68,
+    0
+   ],
+   "74,39": [
+    74,
+    0
+   ],
+   "0,2": [
+    79,
+    42
+   ],
+   "0,6": [
+    79,
+    46
+   ],
+   "0,7": [
+    79,
+    47
+   ],
+   "0,8": [
+    79,
+    48
+   ],
+   "0,9": [
+    79,
+    49
+   ],
+   "0,10": [
+    79,
+    50
+   ],
+   "0,11": [
+    79,
+    51
+   ],
+   "0,12": [
+    79,
+    52
+   ],
+   "0,13": [
+    79,
+    53
+   ],
+   "0,14": [
+    79,
+    54
+   ],
+   "0,15": [
+    79,
+    55
+   ],
+   "0,16": [
+    79,
+    56
+   ],
+   "0,17": [
+    79,
+    57
+   ],
+   "0,18": [
+    79,
+    58
+   ],
+   "0,19": [
+    79,
+    59
+   ],
+   "0,20": [
+    79,
+    60
+   ],
+   "0,21": [
+    79,
+    61
+   ],
+   "0,22": [
+    79,
+    62
+   ],
+   "0,23": [
+    79,
+    63
+   ],
+   "0,24": [
+    79,
+    64
+   ],
+   "0,25": [
+    79,
+    65
+   ],
+   "0,26": [
+    79,
+    66
+   ],
+   "0,27": [
+    79,
+    67
+   ],
+   "0,28": [
+    79,
+    68
+   ],
+   "0,29": [
+    79,
+    69
+   ],
+   "0,30": [
+    79,
+    70
+   ],
+   "0,31": [
+    79,
+    71
+   ],
+   "0,32": [
+    79,
+    72
+   ]
+  },
+  "moves": {
+   "38,12": {
+    "m": "wander",
+    "d": "udlr",
+    "r": [
+     1,
+     1
+    ]
+   },
+   "50,34": {
+    "m": "wander",
+    "d": "lr",
+    "r": [
+     1,
+     0
+    ]
+   },
+   "32,12": {
+    "m": "wander",
+    "d": "udlr",
+    "r": [
+     1,
+     1
+    ]
+   },
+   "26,21": {
+    "m": "wander",
+    "d": "ud",
+    "r": [
+     0,
+     1
+    ]
+   },
+   "45,18": {
+    "m": "face",
+    "d": "l"
+   },
+   "55,5": {
+    "m": "face",
+    "d": "u"
+   },
+   "56,21": {
+    "m": "face",
+    "d": "r"
+   },
+   "61,29": {
+    "m": "look",
+    "d": "dl"
+   },
+   "23,13": {
+    "m": "wander",
+    "d": "udlr",
+    "r": [
+     1,
+     1
+    ]
+   }
+  },
+  "scenes": [
+   {
+    "trigger": {
+     "zone": [
+      35,
+      10,
+      41,
+      13
+     ]
+    },
+    "condition": [
+     "badge_mind_earned",
+     "not:mossdeep_steven_dive"
+    ],
+    "flag": "mossdeep_steven_dive",
+    "cast": [
+     {
+      "sheet": "em_134.png",
+      "from": [
+       30,
+       12
+      ],
+      "to": "player",
+      "leave": [
+       19,
+       11
+      ],
+      "lines": [
+       "The ground shakes! Far to the south, a pillar of light bursts up out of the sea!",
+       "Steven: Did you feel that? {team} has broken into the Seafloor Cavern.",
+       "Steven: It was sealed since ancient times by a Pokémon's power. They mean to wake the super-ancient Pokémon inside!",
+       "Steven: I can't stop them alone. With the Mind Badge, your Pokémon can Dive. Go to Route 128 and dive down!"
+      ]
+     }
+    ]
+   }
+  ],
+  "parts": true,
+  "overheads": [
+   {
+    "kind": "picture",
+    "f": "em_top/0_6.png",
+    "at": [
+     0,
+     0
+    ],
+    "size": [
+     80,
+     40
+    ]
+   }
+  ],
+  "rooms": {
+   "block_house": {
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "...........",
+     "...N.......",
+     ".....ccN...",
+     ".....cc....",
+     "...........",
+     "c..nn.....c"
+    ],
+    "exits": {
+     "n": "OUT:28,9"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/14_1.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Block taster",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Block taster: Let me see your first Pokémon... I can always tell which Pokéblocks they like."
+       ],
+       "block_taste": true
+      }
+     },
+     {
+      "text": "Taster's wife",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "My husband can tell what a Pokémon likes to eat just by looking at it!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "3,3": {
+      "m": "wander",
+      "d": "ud",
+      "r": [
+       0,
+       1
+      ]
+     },
+     "7,4": {
+      "m": "face",
+      "d": "l"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/14_1.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       11,
+       8
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "House"
+   },
+   "wingull_house": {
+    "art": [
+     "cccccccccc",
+     "cccccccccc",
+     "........cc",
+     "..........",
+     "..ccN.....",
+     "..ccN.....",
+     "......N...",
+     "..........",
+     "...nn....c"
+    ],
+    "exits": {
+     "n": "OUT:67,25"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/14_2.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Letter writer",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I can't see my friend in Fortree, but my Wingull carries our letters back and forth."
+       ]
+      }
+     },
+     {
+      "text": "Wingull",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Wingull: Pihyoh!",
+        "Wingull took a letter in its beak and flew off toward Fortree!"
+       ],
+       "flag": "mossdeep_wingull_letter",
+       "done": [
+        "Wingull: Pihyoh! It's back from Fortree, resting after its long flight."
+       ]
+      }
+     },
+     {
+      "text": "Big sister",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "My little sister writes to her boyfriend in Fortree. Not that I'm jealous or anything."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "6,6": {
+      "m": "face",
+      "d": "l"
+     },
+     "4,4": {
+      "m": "face",
+      "d": "d"
+     },
+     "4,5": {
+      "m": "face",
+      "d": "u"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/14_2.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       10,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "House"
+   },
+   "center": {
+    "art": [
+     "cccccccccccccc",
+     "cccccccccccccc",
+     "....cccNcc....",
+     "....cccmcc....",
+     "........N.....",
+     "...N..........",
+     "c<.........cc.",
+     "...........cc.",
+     "c.....nn.....c"
+    ],
+    "exits": {
+     "n": "OUT:28,16",
+     "<": "ROOM:center_2"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/14_3.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Heal",
+     {
+      "text": "Gym watcher",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Gym Leaders here are twins. Their combination attacks are amazing!"
+       ]
+      }
+     },
+     {
+      "text": "Ability fan",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "A Pokémon's Ability can change how some moves work, or stop them working at all."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "8,4": {
+      "m": "face",
+      "d": "u"
+     },
+     "3,5": {
+      "m": "look",
+      "d": "udlr"
+     },
+     "7,2": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/14_3.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       14,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Pokémon Center"
+   },
+   "center_2": {
+    "art": [
+     "cccccccccccccc",
+     "cccccccccccccc",
+     "cNNcccNcccNcc.",
+     "mmmcmcmmccmmc.",
+     "........c...c.",
+     "..............",
+     "cn............",
+     "...........N..",
+     "..............",
+     "c....cc..cc..c"
+    ],
+    "exits": {
+     "n": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/14_4.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Gift attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Mystery gifts arrive here sometimes. There's nothing waiting for you today."
+       ]
+      }
+     },
+     {
+      "text": "Link attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I'm sorry, the link rooms are closed for adjustments right now."
+       ]
+      }
+     },
+     {
+      "text": "Trade attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Trading here is closed for now. Sorry about that!"
+       ]
+      }
+     },
+     {
+      "text": "Record attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The record corner is being adjusted. Please come back another time."
+       ]
+      }
+     },
+     {
+      "text": "Link dreamer",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "If I win loads of link battles, maybe I'll get fans of my own!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "2,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "6,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "10,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "1,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "11,7": {
+      "m": "wander",
+      "d": "lr",
+      "r": [
+       1,
+       0
+      ]
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/14_4.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       14,
+       10
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Pokémon Center 2F"
+   },
+   "mart": {
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "ccm........",
+     "cNm..N..N.c",
+     "cmc...cc..c",
+     ".N....cc..c",
+     "......cc..c",
+     "...nn......"
+    ],
+    "exits": {
+     "n": "OUT:37,18"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/14_5.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Shop",
+     {
+      "text": "Ball sailor",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Net Balls and Dive Balls are made right here in Mossdeep. Great for Water Pokémon!"
+       ]
+      }
+     },
+     {
+      "text": "Repel fan",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "A Max Repel keeps weak Pokémon away longer than any other Repel."
+       ]
+      }
+     },
+     {
+      "text": "Revive fan",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "A Revive brings a fainted Pokémon back! It won't restore its moves' PP, though."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "1,5": {
+      "m": "face",
+      "d": "u"
+     },
+     "8,3": {
+      "m": "wander",
+      "d": "ud",
+      "r": [
+       0,
+       1
+      ]
+     },
+     "5,3": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     },
+     "1,3": {
+      "m": "face",
+      "d": "r"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/14_5.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       11,
+       8
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Poké Mart"
+   },
+   "rod_house": {
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "...........",
+     "...........",
+     "....Ncc....",
+     ".....cc....",
+     "...........",
+     "c..nn.....c"
+    ],
+    "exits": {
+     "n": "OUT:49,6"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/14_6.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Super Rod fisherman",
+      "action": "EVENT",
+      "event": {
+       "requires": [
+        "not:has_item:SUPER_ROD"
+       ],
+       "fail": [
+        "Fisherman: You've got a Super Rod already! Go after the Pokémon of the deep sea with it."
+       ],
+       "lines": [
+        "Fisherman: Hey there, Trainer! A Super Rod really is super. It hooks Pokémon right off the seafloor!",
+        "Fisherman: Here, take this one!"
+       ],
+       "gift_item": {
+        "SUPER_ROD": 1
+       },
+       "flag": "got_super_rod_mossdeep",
+       "done": [
+        "Fisherman: Go after the seafloor Pokémon with your Super Rod!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "4,4": {
+      "m": "face",
+      "d": "r"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/14_6.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       11,
+       8
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Fisherman's house"
+   },
+   "steven": {
+    "art": [
+     "ccccccccccc",
+     "!!ccccccccc",
+     "...........",
+     "....Nccc...",
+     "....ccNc..!",
+     "...........",
+     ".........N!",
+     "...nn......"
+    ],
+    "exits": {
+     "n": "OUT:19,10"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/14_7.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Beldum's Poké Ball",
+      "action": "EVENT",
+      "color": "GOLD",
+      "condition": [
+       "beat_hoenn_champion"
+      ],
+      "flag_condition": "not got_beldum_steven",
+      "event": {
+       "lines": [
+        "There's a Poké Ball on the table, with a note: \"For the new Champion. Look after it for me. - Steven\""
+       ],
+       "gift_pokemon": 374,
+       "gift_level": 5,
+       "requires": [
+        "party_room"
+       ],
+       "fail": [
+        "There's no room in your party for the Pokémon in this ball."
+       ],
+       "flag": "got_beldum_steven"
+      }
+     },
+     "Steven's House",
+     {
+      "text": "Steven",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Steven: The cavern under the sea between Mossdeep and Sootopolis... Captain Stern found it with his sub.",
+        "Steven: That's where they've gone. Dive down from Route 128, and be careful."
+       ]
+      }
+     }
+    ],
+    "signs": [
+     [
+      "Steven's collection of rare stones. Every one of them polished."
+     ],
+     [
+      "Steven's collection of rare stones. Every one of them polished."
+     ],
+     [
+      "Steven's collection of rare stones. Every one of them polished."
+     ],
+     [
+      "Steven's collection of rare stones. Every one of them polished."
+     ]
+    ],
+    "moves": {
+     "9,6": {
+      "m": "face",
+      "d": "r"
+     },
+     "6,4": {
+      "m": "march",
+      "d": "l"
+     },
+     "4,3": {
+      "m": "look",
+      "d": "udlr"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/14_7.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       11,
+       8
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Steven's house"
+   },
+   "secret_house": {
+    "art": [
+     "cccccccccc",
+     "cccccccccc",
+     "..........",
+     "cc........",
+     "ccNN....cc",
+     "........cc",
+     "......N...",
+     "...nn....."
+    ],
+    "exits": {
+     "n": "OUT:18,16"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/14_8.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Skitty",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Skitty: Miyaan?"
+       ]
+      }
+     },
+     {
+      "text": "Explorer's sister",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "My little brother loves finding hidden spots and having battles there."
+       ]
+      }
+     },
+     {
+      "text": "Little explorer",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I found a hidden spot in the bushes on the route! You should find one too!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "3,4": {
+      "m": "face",
+      "d": "l"
+     },
+     "6,6": {
+      "m": "wander",
+      "d": "lr",
+      "r": [
+       1,
+       0
+      ]
+     },
+     "2,4": {
+      "m": "look",
+      "d": "udlr"
+     }
+    },
+    "theme": "room",
+    "title": "House"
+   },
+   "hex_house": {
+    "art": [
+     "cccccccccccc",
+     "cccccccccccc",
+     "..ccNcNcc...",
+     "..cmmcmmc...",
+     "............",
+     "............",
+     "..cc...cc...",
+     "..cc...cc...",
+     "............",
+     ".....nn....."
+    ],
+    "exits": {
+     "n": "OUT:36,24"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/14_11.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Elder sister",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "My sister can see the past in a Gym Badge. Once a day, she'll quiz you on yours!"
+       ]
+      }
+     },
+     {
+      "text": "Badge reader",
+      "action": "EVENT",
+      "color": "PURPLE",
+      "event": {
+       "lines": [
+        "Badge reader: Show me your Badges... I can feel the Pokémon that fought for each one.",
+        "Badge reader: Let's see how well you remember. Answer my question, and I'll reward you!"
+       ],
+       "trivia": true
+      }
+     }
+    ],
+    "moves": {
+     "6,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "4,2": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/14_11.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       12,
+       10
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Hex Maniac sisters' house"
+   }
+  }
  },
  "HOENN_ROUTE_125": {
   "art": [
-   "ooooooooooooooooooooooccccccccccccccoooooooooooooooooooooooooooooooooooooooooooo",
-   "ooooooooooooooooooqqooccccccccccccccooooooooooooooooooocoooooooooooooooooooooooo",
-   "ooooooooooooooooooooooccccccccccccccoooooqqoooooooqqoocccooqqooooooooooooooooooo",
-   "oooooooooooooooooooccccccccccccccccccccoooooooooqqoooocccooooqqooooooooooooooooo",
-   "oooooooooooooooooooccccccccccccccccccccooooccoooooooqqoooqqooooooooooooooooooooo",
-   "oooooooooooooooooooccccccccccccccccccccoooccccqqoooooooooooooooqqooooooooooooooo",
-   "oooooooooooooooooocccccccccccccccccccccoooccccoooooooooooooooooooooooooooooooooo",
-   "oooooooooooooooooocccccccccccccccccccccooooooooooooooooooooooooooqqooooooooooooo",
-   "oooooooooooooooooocccccccccccccccccccccooqqooooooooo====ooooocccoooooooooooooooo",
-   "ooooooooooooooqqoocccccccccccccccccccccoqoooooooooo=cccc=ooocccccooooooooooooooo",
-   "oooooooooooooooooccccccccccccccccccccccoooooooooooo=ccccc=oocccccooooooooooooooo",
-   "oooooooooooocoooocccccccccccccccccccccoooooooooooooo==ccc=oocccccooqqooooooooooo",
-   "ooooooooooocccooccccccccccccccccccccccooooooooooooooo====ooooccccooooooooooooooo",
-   "oooooooqqoocccooccccccccccccccccccccccoooooooooooooooooooooooooooooooooooooooooo",
-   "qooooccooqqoooqoccccccccccccccccccccccoooooooooooooooooooooooooqqooooooooooooooo",
-   "oqqoccccooooooooccccccccccccccccccccccoooooo=qo=oooooooooooooooooooooooooooooooo",
-   "ooooooooooooqqooccccccccccccccccccccccooooo==qo==ooooooooooooqqooooooooooooooooo",
-   "ooqqoooooooooooocccccccccccccccccccccooooo=cc=occ=ooooooooccoooooooooooooooooooo",
-   "qooooooooooooooocccccccccccccccccccccooooo=cc==cc=oooooooccccooooooooooooooooooo",
-   "ocooooooooooooooooocccncccccccccccccooooooo======ooooooooccccooooooooooooooooooo",
-   "cccoooooooooooooooooooooccccccccccccooooooooooooooooooooocccccoooooooooooooooooo",
-   "cccooooooo=oooooooooooooccccccccccccooooooooooooooooooooocccccoqqooooooooooooooo",
-   "cccooo======ooooooooooooccccccccccccooooooooooooooooooooocccccXooooooooooooooooo",
-   "ooooo=ccc==ooooooooooooooooooooooooooooooooooooooooooqqooccccccooooooooooooooooo",
-   "ccooo=cccc=oooooooooooooooooqqoooooooooooooooooooooooooooccccccooooooooooooooooo",
-   "coooo=cccc=oooooooooooooooooooqqooooqqoooooooooooooooooooocccccooooooooooooooooo",
-   "ccoooo====ooooooooooooooooooooooqqooooooooooooX=oooooooqqoccccooqqoooooooooooooo",
-   "ccooooooooooooooooooooooooooooooooooooooooooo=cc=ooooooooooooooooooooooooooooooo",
-   "ccoooooooooooooooooooo====ooooooooooooooooooo=cc=ooooooooooqqooooooooooooooooooo",
-   "ccooooooooooooooooooo=cccc=ooooooooooooooooooo==oooooooooooooooooooooooooooooooo",
-   "ccooooooooooooooooooo=cccc=oooXooooooooooooooooooooooooooooooqqooooooooooooooooo",
-   "ccooooooooooooooooooo=cccc=oooooooooooooooooooooooooqqooooooooocoqqooooooooooooo",
-   "ccoooooooooooooooooooo=ccc=ooooooooooooooooooooooooooooooooooocccooooooooooooooo",
-   "ccccooooooooooooooooooo===ooooooooooooooqqoooooooooooooooooocccccooooooooooooooo",
-   "coooooooooooooooooooooooooooooooooooooooooooooooooooooqqooqqoooooooooooooooooooo",
-   "ooooqqoooooooooooooooooooooooooooooooooooqqoooooooooqqooqqoooooooooooooooooooooo",
-   "oooooocccccooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
-   "ooooocccccccccooooooqqoooooooooooooooooooooooooooooqqooooooooooooooooooooooooooo",
-   "oooocccccccccccooocoooooooooooooooooooooooooooooooooooooqqoooooooooooooooooooooo",
-   "qqoocccccccccccovcccoqqvvvvvvvvvvvvvvvvvvvvvvvvvvvvvqqvvvvvvvvvvvvvvvvvvvvvvvvvv"
+   "<oooooooooooooooooccoo~cccccccccccc~oooooooooooooooooooooooooooooooooooooooooooo",
+   "<oooooooooooooooooccooccccccccccccccoooooccoooooooccoo~~~ooccooooooooooooooooooo",
+   "<oooooooooooooooooooooccccccccccccccoooooccooooo~~ccoocccoocc~~ooooooooooooooooo",
+   "<oooooooooooooooooo~cccccccccccccccccc~oooooooooccoocccccccooccooooooooooooooooo",
+   "<ooooooooooooooooooccccccccccccccccccccooo~~~~ccooooccoooccoooo~~ooooooooooooooo",
+   "<ooooooooooooooooo.ccccccccccccccccccccoooccccccoooooooooooooooccooooooooooooooo",
+   "<ooooooooooooooooocccccccccccccccccccccoooccccooooooooooooooooooo~~ooooooooooooo",
+   "<ooooooooooooooooocccccccccccccccccccccoo~~oooooooo......ooooooooccooooooooooooo",
+   "<ooooooooooooo~~oocccccccccccccccccccccccccoooooooo.......oo~~~~~ooooooooooooooo",
+   "<ooooooooooooocco.cccccccccccccccccccccccoooooooooo.cccc...occcccooooooooooooooo",
+   "<ooooooooooooooooccccccccccccccccccccccoooooooooooo.ccccc..occcccooccooooooooooo",
+   "<oooooooooo~~~oo.ccccccccccccccccccccc.oooooooooooo..=ccc..occcccooccooooooooooo",
+   "<ooooooccoocccooccccccccccccccccccccccoooooooooooooo......oooccccooooooooooooooo",
+   "~oooooocccccccccccccccccccccccccccccccoooooo....oooooo...oooooo~~ooooooooooooooo",
+   "c~~o~~~~occoooccccccccccccccccccccccccoooooo....oooooooooooooooccooooooooooooooo",
+   "occoccccoooo~~ooccccccccccccccccccccccoooo...cc...ooooooooooo~~ooooooooooooooooo",
+   "oo~~oooooooocco.ccccccccccccccccccccccoooo...cc...oooooooooooccooooooooooooooooo",
+   "~occooooooooooo.ccccccccccccccccccccc.oooo.cc==cc.ooooooo~~~~ooooooooooooooooooo",
+   "cooooooooooooo..cccccccccccccccccccccooooo.cc==cc.oooooooccccooooooooooooooooooo",
+   "~~~ooooooooo.......cccnccccccccccccc.ooooo........ooooooocccc~oooooooooooooooooo",
+   "cccooooo................cccccccccccc.ooooooooooooooooooooccccco~~ooooooooooooooo",
+   "cccoo...................cccccccccccc.oooooooooooooooooooocccccXccooooooooooooooo",
+   "cccoo.....=.oooo........cccccccccccc.ooooooooooooooooccooccccc~ooooooooooooooooo",
+   "~~ooo.ccc=..oooooo.......oooccoooooooooooooooooooooooccooccccccooooooooooooooooo",
+   "ccooo.cccc..ooooooo...ooooooccccooooccoooooooooooooooooooccccccooooooooooooooooo",
+   "~~ooo.cccc.oooooooooooooooooooccccooccooooooo....oooooo~~occcccoccoooooooooooooo",
+   "<cooo......oooooooooooooooooooooccooooooooooo.X..ooooooccoccccooccoooooooooooooo",
+   "<coooo....ooooooooooo......oooooooooooooooooo.cc.oooooooooo~~ooooooooooooooooooo",
+   "<cooooooooooooooooooo.......ooXoooooooooooooo.cc.ooooooooooccooooooooooooooooooo",
+   ".cooooooooooooooooooo.cccc..ooooooooooooooooo....oooooooooooo~~ooooooooooooooooo",
+   ".cooooooooooooooooooo.cccc..ooooooooooooooooooooooooccoooooooccooccooooooooooooo",
+   ".cooooooooooooooooooo.cccc..ooooooooooooooooooooooooccoooooooo~~~ccooooooooooooo",
+   ".c~~ooooooooooooooooo..ccc..ooooooooooooccoooooooooooooooooo~~cccooooooooooooooo",
+   "ccccoooooooooooooooooo.....oooooooooooooccooooooooooooccoocccccccooooooooooooooo",
+   "cccc~~oooooooooooooooooo..oooooooooooooooccoooooooooccccccccoooooooooooooooooooo",
+   "ccccccoooooooooooooooooooooooooooooooooooccoooooooooccooccoooooooooooooooooooooo",
+   "ccccc~~~~~~~oooooooo~~oooooooooooooooooooooooooooooccooooooooooooooooooooooooooo",
+   "cccc~c.ccccc~~~oooooccoooooooooooooooooooooooooooooccoooccoooooooooooooooooooooo",
+   "ccccc..cccc...coo~~~o~~ooooooooooooooooooooooooooooo~~ooccoooooooooooooooooooooo",
+   "cccccvvccccvvvccccccvccvvvvvvvvvvvvvvvvvvvvvvvvvvvvvccovvvvvvvvvvvvvvvvvvvvvvvvv"
   ],
   "exits": {
    "v": "MOSSDEEP_CITY",
+   "<": "HOENN_ROUTE_124",
    "n": "HOENN_SHOAL_CAVE"
+  },
+  "buildings": {},
+  "roofs": {
+   "_picture": {
+    "f": "em_ground/0_40.png",
+    "at": [
+     0,
+     0
+    ]
+   },
+   "_signs_in_picture": true,
+   "_buildings_in_picture": true
   },
   "trainer_spots": [
    "Swimmer Nance",
    "Sailor Forrest",
    "Swimmer Ernest"
+  ],
+  "edge_to": {
+   "5,39": [
+    5,
+    0
+   ],
+   "6,39": [
+    6,
+    0
+   ],
+   "11,39": [
+    11,
+    0
+   ],
+   "12,39": [
+    12,
+    0
+   ],
+   "13,39": [
+    13,
+    0
+   ],
+   "20,39": [
+    20,
+    0
+   ],
+   "23,39": [
+    23,
+    0
+   ],
+   "24,39": [
+    24,
+    0
+   ],
+   "25,39": [
+    25,
+    0
+   ],
+   "26,39": [
+    26,
+    0
+   ],
+   "27,39": [
+    27,
+    0
+   ],
+   "28,39": [
+    28,
+    0
+   ],
+   "29,39": [
+    29,
+    0
+   ],
+   "30,39": [
+    30,
+    0
+   ],
+   "31,39": [
+    31,
+    0
+   ],
+   "32,39": [
+    32,
+    0
+   ],
+   "33,39": [
+    33,
+    0
+   ],
+   "34,39": [
+    34,
+    0
+   ],
+   "35,39": [
+    35,
+    0
+   ],
+   "36,39": [
+    36,
+    0
+   ],
+   "37,39": [
+    37,
+    0
+   ],
+   "38,39": [
+    38,
+    0
+   ],
+   "39,39": [
+    39,
+    0
+   ],
+   "40,39": [
+    40,
+    0
+   ],
+   "41,39": [
+    41,
+    0
+   ],
+   "42,39": [
+    42,
+    0
+   ],
+   "43,39": [
+    43,
+    0
+   ],
+   "44,39": [
+    44,
+    0
+   ],
+   "45,39": [
+    45,
+    0
+   ],
+   "46,39": [
+    46,
+    0
+   ],
+   "47,39": [
+    47,
+    0
+   ],
+   "48,39": [
+    48,
+    0
+   ],
+   "49,39": [
+    49,
+    0
+   ],
+   "50,39": [
+    50,
+    0
+   ],
+   "51,39": [
+    51,
+    0
+   ],
+   "55,39": [
+    55,
+    0
+   ],
+   "56,39": [
+    56,
+    0
+   ],
+   "57,39": [
+    57,
+    0
+   ],
+   "58,39": [
+    58,
+    0
+   ],
+   "59,39": [
+    59,
+    0
+   ],
+   "60,39": [
+    60,
+    0
+   ],
+   "61,39": [
+    61,
+    0
+   ],
+   "62,39": [
+    62,
+    0
+   ],
+   "63,39": [
+    63,
+    0
+   ],
+   "64,39": [
+    64,
+    0
+   ],
+   "65,39": [
+    65,
+    0
+   ],
+   "66,39": [
+    66,
+    0
+   ],
+   "67,39": [
+    67,
+    0
+   ],
+   "68,39": [
+    68,
+    0
+   ],
+   "69,39": [
+    69,
+    0
+   ],
+   "70,39": [
+    70,
+    0
+   ],
+   "71,39": [
+    71,
+    0
+   ],
+   "72,39": [
+    72,
+    0
+   ],
+   "73,39": [
+    73,
+    0
+   ],
+   "74,39": [
+    74,
+    0
+   ],
+   "75,39": [
+    75,
+    0
+   ],
+   "76,39": [
+    76,
+    0
+   ],
+   "77,39": [
+    77,
+    0
+   ],
+   "78,39": [
+    78,
+    0
+   ],
+   "79,39": [
+    79,
+    0
+   ],
+   "0,0": [
+    79,
+    0
+   ],
+   "0,1": [
+    79,
+    1
+   ],
+   "0,2": [
+    79,
+    2
+   ],
+   "0,3": [
+    79,
+    3
+   ],
+   "0,4": [
+    79,
+    4
+   ],
+   "0,5": [
+    79,
+    5
+   ],
+   "0,6": [
+    79,
+    6
+   ],
+   "0,7": [
+    79,
+    7
+   ],
+   "0,8": [
+    79,
+    8
+   ],
+   "0,9": [
+    79,
+    9
+   ],
+   "0,10": [
+    79,
+    10
+   ],
+   "0,11": [
+    79,
+    11
+   ],
+   "0,12": [
+    79,
+    12
+   ],
+   "0,26": [
+    79,
+    26
+   ],
+   "0,27": [
+    79,
+    27
+   ],
+   "0,28": [
+    79,
+    28
+   ]
+  },
+  "moves": {
+   "30,28": {
+    "m": "wander",
+    "d": "udlr",
+    "r": [
+     9,
+     9
+    ],
+    "s": 3
+   }
+  },
+  "parts": true,
+  "overheads": [
+   {
+    "kind": "picture",
+    "f": "em_top/0_40.png",
+    "at": [
+     0,
+     0
+    ],
+    "size": [
+     80,
+     40
+    ]
+   }
   ]
  },
  "HOENN_ROUTE_126": {
@@ -88578,6 +90853,255 @@
     "theme": "room",
     "title": "Rest house"
    }
+  }
+ },
+ "HOENN_SPACE_CENTER": {
+  "floors": [
+   {
+    "art": [
+     "cccccccccccccccc",
+     "ccccccccccccc1cc",
+     "..........N.....",
+     "................",
+     "................",
+     "..Nccc....cc.cc.",
+     "..ccccN....X....",
+     "..........ccccN.",
+     "..........cccc..",
+     ".......nn......."
+    ],
+    "exits": {
+     "n": "MOSSDEEP_CITY"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/14_9.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Rocket fan",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "A giant metal rocket bursting through the sky into space... It blows my mind!"
+       ]
+      }
+     },
+     {
+      "text": "The notice",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "\"To the Space Center: we will soon come for your rocket fuel. - {team}\""
+       ]
+      },
+      "condition": [
+       "badge_mind_earned",
+       "not:space_center_cleared"
+      ]
+     },
+     {
+      "text": "Beachcomber",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Sailor: I found this shiny stone on the beach. It's a Sun Stone! You have it."
+       ],
+       "gift_item": {
+        "SUN_STONE": 1
+       },
+       "flag": "got_sun_stone_space_center",
+       "done": [
+        "Sailor: Watching the launches from these windows never gets old."
+       ]
+      }
+     },
+     {
+      "text": "Space dreamer",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Some people say Pokémon came from space. Could it be true?"
+       ]
+      }
+     }
+    ],
+    "trainer_spots": [
+     "Team Magma Grunt"
+    ],
+    "links": {
+     "13,1": [
+      1,
+      13,
+      1
+     ]
+    },
+    "moves": {
+     "10,2": {
+      "m": "face",
+      "d": "u"
+     },
+     "14,7": {
+      "m": "wander",
+      "d": "ud",
+      "r": [
+       0,
+       1
+      ]
+     },
+     "6,6": {
+      "m": "face",
+      "d": "l"
+     },
+     "2,5": {
+      "m": "march",
+      "d": "l"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/14_9.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       16,
+       10
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "cccccccccccccccc",
+     "ccccccccccccc1cc",
+     "c.....N.....X...",
+     "c...............",
+     "ccccccccccccc...",
+     "................",
+     ".....N..........",
+     "..cc.cc.cc.cc...",
+     ".N.........N....",
+     ".X.............."
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/14_10.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Astronaut hopeful",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I wish ordinary people could go to space one day..."
+       ]
+      }
+     },
+     {
+      "text": "Weather scientist",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Mossdeep is mostly sunny with steady winds. Perfect for launching rockets."
+       ]
+      }
+     },
+     {
+      "text": "Steven ",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Steven: {team} is after the rocket fuel! Let's stop them together!"
+       ]
+      }
+     },
+     {
+      "text": "Old dreamer",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "If I were younger, I'd have trained to be an astronaut... No, it's not too late!"
+       ]
+      }
+     }
+    ],
+    "trainer_spots": [
+     "Magma Admin Tabitha",
+     "Magma Leader Maxie"
+    ],
+    "links": {
+     "13,1": [
+      0,
+      13,
+      1
+     ]
+    },
+    "moves": {
+     "6,2": {
+      "m": "face",
+      "d": "u"
+     },
+     "11,8": {
+      "m": "face",
+      "d": "u"
+     },
+     "5,6": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     },
+     "1,8": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/14_10.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       16,
+       10
+      ]
+     }
+    ]
+   }
+  ],
+  "floor_names": [
+   "1F",
+   "2F"
+  ],
+  "figure_floors": {
+   "Team Magma Grunt": 0,
+   "Magma Admin Tabitha": 1,
+   "Magma Leader Maxie": 1
   }
  },
  "TWINLEAF_TOWN": {

@@ -341,6 +341,9 @@ for _a in _all:
         if (_af and _af[_p.run.index].get("parts")) or (_dg.recipe_for(g, _a).get("art") or {}).get("parts"):  # (in parts, Rock Tunnel's 1F: each from its own ladder; Route 42: each from its own way out)
             for _t in list(_f.exits):
                 _reach = {**_reach, **_reach_of(_f, _t)}
+        for _t in getattr(_f, "deep", ()):  # (deep sea: come up into it from the seabed by Dive: Route 124's rocky northern waters)
+            if _t not in _reach:
+                _reach = {**_reach, **_reach_of(_f, _t)}
         _drawn = bool(_dg.recipe_for(g, _a).get("layout"))  # (a drawn place's clerk stands behind its counter)
         if any(t not in _reach for t in list(_f.exits) + ([] if _drawn else [(m.x, m.y) for m in _f.movers])):
             _bad.append((_a, "out of reach"))

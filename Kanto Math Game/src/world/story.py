@@ -1105,7 +1105,10 @@ class StoryManager:
 
     def trainer_on_map(self, area, index, info):
         """Is this trainer out on the map? Beaten ones stay beaten; an ordinary route trainer is back the next day (real
-        time; Jordan, 11-08). Enemy teams, rivals, gyms and story battles never come back."""
+        time; Jordan, 11-08). Enemy teams, rivals, gyms and story battles never come back. "when_flags": only once the
+        story has got that far (the Space Center's invaders, after the Mind Badge)."""
+        if info.get("when_flags") and not all(self.story_flags.get(f) for f in info["when_flags"]):
+            return False
         if not self.is_trainer_defeated(area, index):
             return True
         cls = str(info.get("class", "")).upper()

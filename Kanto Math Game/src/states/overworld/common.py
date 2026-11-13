@@ -14,6 +14,59 @@ from src.world import story_events
 from src.config import WHITE, BLACK, GOLD
 
 
+TRIVIA_PRIZES = [("RARE_CANDY", 1), ("RARE_CANDY", 2), ("LUM_BERRY", 2), ("SITRUS_BERRY", 3), ("MAX_REVIVE", 1),
+                 ("ULTRA_BALL", 5), ("FULL_RESTORE", 1)]
+
+
+def _badge_trivia(state, lines, show):
+    """Once a day, a question about one of this region's badges you hold: who gave it you, their strongest Pokemon, or
+    the town of its Gym. Three answers to pick from; right: a good prize (TRIVIA_PRIZES)."""
+    import datetime as _dt
+    import random as _rnd
+    game = state.game
+    story = game.story_manager
+    region = story.get_current_region()
+    gyms = []
+    for a in game.loader.area_data.get("STORY_PROGRESSION", {}).values():
+        lead = (a.get("gym") or {}).get("leader") if isinstance(a, dict) and a.get("region") == region else None
+        if isinstance(lead, dict) and lead.get("badge_reward") and lead.get("team"):
+            levels = list(lead.get("levels") or [0] * len(lead["team"]))
+            ace = lead["team"][max(range(len(lead["team"])), key=lambda i: (levels[i] if i < len(levels) else 0, i))]
+            gyms.append({"badge": lead["badge_reward"], "leader": lead.get("name"), "town": a.get("route_name"),
+                         "ace": str((game.loader.fetch_specific(int(ace)) or {}).get("name", "?")).title()})
+    mine = [g for g in gyms if g["badge"] in (story.badges.get(region) or [])]
+    if not mine:
+        show(_resolve_lines(game, lines + ["Badge reader: You have no badges for me to read yet. Come back once you've earned one!"]))
+        return
+    today = _dt.date.today().isoformat()
+    if story.story_flags.get("badge_trivia_day") == today or not hasattr(state, "_create_hover_menu"):
+        show(_resolve_lines(game, lines + ["Badge reader: One reading a day. Come back tomorrow for another question!"]))
+        return
+    story.story_flags["badge_trivia_day"] = today
+    rng = _rnd.Random()
+    g = rng.choice(mine)
+    kind, others = rng.choice([("leader", "Which Gym Leader gave you the {badge} Badge?"),
+                               ("ace", "Who was {leader}'s strongest Pokémon?"),
+                               ("town", "In which town is the Gym of the {badge} Badge?")])
+    right = g[kind]
+    wrong = rng.sample(sorted({x[kind] for x in gyms if x[kind] != right}), 2)
+    answers = [right] + wrong
+    rng.shuffle(answers)
+    item, qty = rng.choice(TRIVIA_PRIZES)
+    from src.pokemon import forms as _forms
+    prize = f"{qty} {_forms.item_label(item)}" if qty > 1 else f"a {_forms.item_label(item)}"
+    opts = [{"text": a, "action": "EVENT", "event": (
+                {"lines": [f"Badge reader: {a}! That's right! You truly remember your journey.", f"Here, take {prize}."],
+                 "gift_item": {item: qty}} if a == right else
+                {"lines": [f"Badge reader: {a}? No... it was {right}. Try again tomorrow!"]})} for a in answers]
+    question = "Badge reader: " + others.format(badge=str(g["badge"]).title(), leader=g["leader"])
+    say = getattr(state, "show_message", None)
+    if say is None:
+        show(_resolve_lines(game, lines + [question]))
+        return
+    say(_resolve_lines(game, lines + [question]), callback=lambda: state._create_hover_menu(opts, None))
+
+
 def _memories(game):
     """The lines the Memory Girl reads from your first Pokemon: where you met, the battles it won with you, the catches
     it was there for, its Contest ribbons (what our game keeps of a Pokemon's journey)."""
@@ -317,6 +370,34 @@ def _run_story_event(state, key, check, show):
         game.data.mark_seen(new.id)
         game.data.add_pokemon(new)
         lines.append(f"{old.display_name} was traded for {new.display_name}!")
+    if ev.get("trivia"):  # Mossdeep's Hex Maniac: a daily question about one of your badges (Jordan, 11-13)
+        _badge_trivia(state, lines, show)
+        return
+    if ev.get("swap"):  # a trade of items (Route 124's Treasure Hunter: a Shard for its evolution stone), as often as you like
+        have = next((k for k in ev["swap"] if story.inventory.get(k, 0) > 0), None)
+        if have is None:
+            show(_resolve_lines(game, ev.get("fail") or ["You don't have anything they want."]))
+            return
+        give = ev["swap"][have]
+        story.inventory[have] -= 1
+        if story.inventory[have] <= 0:
+            story.inventory.pop(have, None)
+        story.inventory[give] = story.inventory.get(give, 0) + 1
+        from src.pokemon import forms as _forms
+        lines.append(f"{game.player_name} traded the {_forms.item_label(have).upper()} for the {_forms.item_label(give).upper()}!")
+    if ev.get("badges"):  # Mossdeep's Hex Maniac: she reads your badges
+        got = list(story.badges.get(story.get_current_region(), []) or [])
+        lines.append(f"You have {len(got)} badge{'s' if len(got) != 1 else ''} here: " + ", ".join(str(b).title() for b in got) + "."
+                     if got else "You don't have a single badge from this region yet!")
+        if got:
+            lines.append("Each one still glows with the strength of the Pokémon that won it with you.")
+    if ev.get("block_taste"):  # Mossdeep's husband: the Pokeblock colour your first Pokemon likes, by its type
+        lead = next((p for p in story.player_team if p and not getattr(p, "is_egg", False)), None)
+        if lead is not None:
+            from src.pokemon import contest as _ct
+            cat = _ct.move_category((getattr(lead, "types", None) or ["NORMAL"])[0])
+            col = {"COOL": "red", "BEAUTY": "blue", "CUTE": "pink", "SMART": "green", "TOUGH": "yellow"}[cat]
+            lines.append(f"Hmm... Your {lead.display_name} likes {col} Pokéblocks. I'm sure of it!")
     if ev.get("memory"):  # the Memory Girl (ORAS, outside Lilycove's Pokemon Center): what your lead Pokemon remembers
         lines += _memories(game)
     if ev.get("daily_gift"):  # one a day (Jordan, 11-12: the Weather Institute's receptionist and her weather rocks):

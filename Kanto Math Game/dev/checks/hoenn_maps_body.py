@@ -1288,5 +1288,111 @@ check("rest_house" in (_sz.get("rooms") or {}) or any(n == "Rest House" for n in
 story.inventory.clear(); story.inventory.update(_inv12)
 story.story_flags.clear(); story.story_flags.update(_saved12)
 
+# ---- batch 13: Route 124 (Dive), Mossdeep City, the Space Center, Route 125
+_saved13, _inv13, _team13 = dict(story.story_flags), dict(story.inventory), list(story.player_team)
+_tm13 = json.load(open("assets/town_maps.json", encoding="utf-8"))
+st = open_map("HOENN_ROUTE_124", "LILYCOVE_CITY")
+_calm(st)
+_deep = [(x, y) for y, r in enumerate(_tm13["HOENN_ROUTE_124"]["floors"][0]["art"]) for x, c in enumerate(r) if c == ":"]
+_below = st.run.made(1)
+_spot = next(t for t in _deep if _below.walkable(*t) and 20 <= t[1] <= 70)
+story.inventory["HM_DIVE"] = 1
+st.run.player, st.anim = _spot, 0
+st.dive_here(); frames(4)
+_dove = st.run.index
+st.surface_here(); frames(4)
+check(_dove == 1 and st.run.index == 0 and tuple(st.run.player) == _spot,
+      f"Route 124: Dive on the deep, dark sea to the seabed, and come back up ({_spot}, {_dove})")
+_north = [t for t in _deep if t[1] < 14 and _below.walkable(*t)]
+check(len(_north) >= 4, f"Route 124: the rocky northern waters are reached from the seabed, coming up through their deep patches ({len(_north)})")
+_shards = {o["text"] for o in g.loader.area_data["STORY_PROGRESSION"]["HOENN_ROUTE_124"]["route_menu"] if "SHARD" in o["text"]}
+check(_shards == {"RED SHARD", "BLUE SHARD", "YELLOW SHARD", "GREEN SHARD"}, f"Route 124: four Shards to find, one on the seabed ({_shards})")
+_th = next(o for o in _tm13["HOENN_ROUTE_124"]["rooms"]["treasure_hunter"]["people"] if isinstance(o, dict))
+story.inventory.update({"RED_SHARD": 2}); story.inventory.pop("FIRE_STONE", None)
+from src.states.overworld.common import _run_story_event
+_said13 = []
+_run_story_event(st, _th["event"], lambda c: True, lambda l, **k: _said13.extend(l))
+tap(st)
+check(story.inventory.get("FIRE_STONE") == 1 and story.inventory.get("RED_SHARD") == 1,
+      "Route 124: the Treasure Hunter trades an evolution stone for a Shard (red: a Fire Stone)")
+# Mossdeep: every door leads inside; the earthquake after the Mind Badge; the townsfolk's gifts
+st = open_map("MOSSDEEP_CITY", "HOENN_ROUTE_124")
+st.scenes.entered = True
+_m = _tm13["MOSSDEEP_CITY"]
+_inroom = {q.get("text") if isinstance(q, dict) else q for r in _m["rooms"].values() for q in r.get("people", [])}
+_nod = sorted(k for k, v in st.doors.items() if "%d,%d" % k not in (_m.get("inside") or {}) and v != "gym")
+check(not _nod and {"Heal", "Shop", "Steven's House"} <= _inroom,
+      f"Mossdeep: every door but the Gym's leads inside; the nurse, the clerk and Steven's note are in there ({_nod})")
+for _k in ("mossdeep_steven_dive", "badge_mind_earned"):
+    story.story_flags.pop(_k, None)
+story.badges.setdefault("HOENN", [])
+story.story_flags["badge_mind_earned"] = True
+st, said = _scene("MOSSDEEP_CITY", "HOENN_ROUTE_124", ["badge_mind_earned"], ["mossdeep_steven_dive"], at=(38, 10), step=(0, 1))
+check(story.story_flags.get("mossdeep_steven_dive") and any("Seafloor Cavern" in x for x in said),
+      f"Mossdeep: after the Mind Badge, the earthquake, and Steven sends you diving for the Seafloor Cavern ({said[:1]})")
+def _talk13(room, name):
+    st._go(room, "")
+    frames(2)
+    o = next(o for o in st.people.values() if isinstance(o, dict) and o.get("text") == name)
+    st._get_callback_for_option(o)()
+    return _play(st, 300)
+story.inventory.pop("SUPER_ROD", None)
+_talk13("rod_house", "Super Rod fisherman")
+_rod = story.inventory.get("SUPER_ROD", 0)
+_talk13("rod_house", "Super Rod fisherman")
+check(_rod == 1 and story.inventory.get("SUPER_ROD") == 1, "Mossdeep: the fisherman by the launchpad gives the Super Rod, once")
+_cap = []
+st._create_hover_menu = lambda opts, _b: _cap.append(opts)
+story.badges["HOENN"] = ["STONE", "KNUCKLE", "DYNAMO"]
+story.story_flags.pop("badge_trivia_day", None)
+_inv_b = dict(story.inventory)
+said = _talk13("hex_house", "Badge reader")
+_q = [x for x in said if "?" in x]
+_right = next((o for o in (_cap[0] if _cap else []) if o["event"].get("gift_item")), None)
+if _right:
+    st._get_callback_for_option(_right)(); tap(st)
+_won = sum(story.inventory.values()) > sum(_inv_b.values())
+_three = bool(_cap) and len({o["text"] for o in _cap[0]}) == 3
+_cap.clear()
+said2 = _talk13("hex_house", "Badge reader")
+check(_q and _three and len(_cap) == 0 and _right and _won and any("tomorrow" in x for x in said2),
+      f"Mossdeep: the Hex Maniac's daily question about one of your badges; a right answer wins a prize; once a day ({_q[-1:]}, {_right and _right['text']})")
+del st._create_hover_menu
+story.story_flags.pop("mossdeep_wingull_letter", None); story.story_flags.pop("got_mental_herb_fortree", None); story.inventory.pop("MENTAL_HERB", None)
+_talk13("wingull_house", "Wingull")
+_ft = next(o for o in g.loader.area_data["STORY_PROGRESSION"]["FORTREE_CITY_UPPER"]["explore_options"] if o.get("door") == "wingull") if "FORTREE_CITY_UPPER" in g.loader.area_data["STORY_PROGRESSION"] else next(o for a in g.loader.area_data["STORY_PROGRESSION"].values() if isinstance(a, dict) for o in a.get("explore_options", []) if o.get("door") == "wingull")
+_run_story_event(st, _ft["event"], lambda c: st._check_menu_condition(c) if hasattr(st, "_check_menu_condition") else True, lambda l, **k: None)
+tap(st)
+check(story.story_flags.get("mossdeep_wingull_letter") and story.inventory.get("MENTAL_HERB") == 1,
+      "Mossdeep's Wingull flies a letter to Fortree; its trainer there gives you a Mental Herb")
+said = _talk13("block_house", "Block taster")
+check(any("Pokéblocks" in x for x in said), f"Mossdeep: the man who can tell which Pokeblocks your Pokemon likes ({said[-1:]})")
+st._go(None, "OUT:23,13"); frames(2)
+story.story_flags.pop("got_kings_rock_mossdeep", None); story.inventory.pop("KINGS_ROCK", None)
+st._get_callback_for_option(next(o for o in st.people.values() if isinstance(o, dict) and o.get("text") == "Rock boy"))(); tap(st)
+check(story.inventory.get("KINGS_ROCK") == 1, "Mossdeep: the boy by Steven's house gives you the King's Rock")
+story.story_flags["beat_hoenn_champion"] = True
+story.story_flags.pop("got_beldum_steven", None)
+story.player_team = _team13[:5]
+_n13 = len(story.player_team)
+_talk13("steven", "Beldum's Poké Ball")
+check(len(story.player_team) == _n13 + 1 and story.player_team[-1].id == 374, "Mossdeep: once you're Champion, Steven leaves you a Beldum")
+story.player_team = _team13
+# the Space Center: quiet before the Mind Badge, stormed after it
+story.story_flags.pop("badge_mind_earned", None)
+st = open_map("HOENN_SPACE_CENTER", "MOSSDEEP_CITY")
+_quiet = not any(m.kind == "trainer" for f in st.run.floors for m in f.movers)
+story.story_flags["badge_mind_earned"] = True
+st = open_map("HOENN_SPACE_CENTER", "MOSSDEEP_CITY")
+st.run.enter_floor(1); frames(2)
+_all13 = [(m.payload[1] if isinstance(m.payload, tuple) else m.payload).get("name") for f in st.run.floors for m in f.movers if m.kind == "trainer"]
+check(_quiet and len(_all13) == 3, f"Space Center: Emerald's two floors; the team storms it only after the Mind Badge ({_all13})")
+_r125 = _tm13["HOENN_ROUTE_125"]
+check(not _r125.get("floors") and "HOENN_SHOAL_CAVE" in _r125["exits"].values() and len(_r125.get("trainer_spots", [])) == 3,
+      "Route 125: Emerald's map, its three Trainers, and Shoal Cave's mouth")
+story.player_team = _team13
+story.inventory.clear(); story.inventory.update(_inv13)
+story.story_flags.clear(); story.story_flags.update(_saved13)
+
 story.story_flags.clear(); story.story_flags.update(_saved)
 print(f"##### {len(fails)} failures")

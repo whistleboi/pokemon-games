@@ -1992,6 +1992,153 @@
     },
     "HOENN_SAFARI_ZONE:Feeder expert": {
       "sheet": "em_17.png"
+    },
+    "HOENN_ROUTE_124:YELLOW SHARD": {
+      "item": "YELLOW_SHARD"
+    },
+    "HOENN_ROUTE_124:RED SHARD": {
+      "item": "RED_SHARD"
+    },
+    "HOENN_ROUTE_124:BLUE SHARD": {
+      "item": "BLUE_SHARD"
+    },
+    "HOENN_ROUTE_124:GREEN SHARD": {
+      "item": "GREEN_SHARD"
+    },
+    "MOSSDEEP_CITY:Surfer": {
+      "sheet": "em_19.png"
+    },
+    "MOSSDEEP_CITY:Rocket watcher": {
+      "sheet": "em_18.png"
+    },
+    "MOSSDEEP_CITY:Old salt": {
+      "sheet": "em_49.png"
+    },
+    "MOSSDEEP_CITY:Rock boy": {
+      "sheet": "em_9.png"
+    },
+    "MOSSDEEP_CITY:Flower girl": {
+      "sheet": "em_8.png"
+    },
+    "MOSSDEEP_CITY:Wailmer watcher": {
+      "sheet": "em_5.png"
+    },
+    "MOSSDEEP_CITY:Rock keeper": {
+      "sheet": "em_16.png"
+    },
+    "MOSSDEEP_CITY:Black belt": {
+      "sheet": "em_44.png"
+    },
+    "MOSSDEEP_CITY:Wave watcher": {
+      "sheet": "em_44.png"
+    },
+    "MOSSDEEP_CITY:Scott": {
+      "sheet": "em_219.png"
+    },
+    "MOSSDEEP_CITY:Thoughtful man": {
+      "sheet": "em_21.png"
+    },
+    "MOSSDEEP_CITY:Block taster": {
+      "sheet": "em_44.png"
+    },
+    "MOSSDEEP_CITY:Taster's wife": {
+      "sheet": "em_20.png"
+    },
+    "MOSSDEEP_CITY:Letter writer": {
+      "sheet": "em_6.png"
+    },
+    "MOSSDEEP_CITY:Wingull": {
+      "sheet": "em_211.png"
+    },
+    "MOSSDEEP_CITY:Big sister": {
+      "sheet": "em_65.png"
+    },
+    "MOSSDEEP_CITY:Heal": {
+      "sheet": "em_58.png"
+    },
+    "MOSSDEEP_CITY:Gym watcher": {
+      "sheet": "em_20.png"
+    },
+    "MOSSDEEP_CITY:Ability fan": {
+      "sheet": "em_8.png"
+    },
+    "MOSSDEEP_CITY:Gift attendant": {
+      "sheet": "em_223.png"
+    },
+    "MOSSDEEP_CITY:Link attendant": {
+      "sheet": "em_85.png"
+    },
+    "MOSSDEEP_CITY:Trade attendant": {
+      "sheet": "em_85.png"
+    },
+    "MOSSDEEP_CITY:Record attendant": {
+      "sheet": "em_85.png"
+    },
+    "MOSSDEEP_CITY:Link dreamer": {
+      "sheet": "em_34.png"
+    },
+    "MOSSDEEP_CITY:Shop": {
+      "sheet": "em_83.png"
+    },
+    "MOSSDEEP_CITY:Ball sailor": {
+      "sheet": "em_49.png"
+    },
+    "MOSSDEEP_CITY:Repel fan": {
+      "sheet": "em_9.png"
+    },
+    "MOSSDEEP_CITY:Revive fan": {
+      "sheet": "em_34.png"
+    },
+    "MOSSDEEP_CITY:Super Rod fisherman": {
+      "sheet": "em_50.png"
+    },
+    "MOSSDEEP_CITY:Steven's House": {
+      "sheet": "em_5.png"
+    },
+    "MOSSDEEP_CITY:Steven": {
+      "sheet": "em_134.png"
+    },
+    "MOSSDEEP_CITY:Skitty": {
+      "sheet": "em_203.png"
+    },
+    "MOSSDEEP_CITY:Explorer's sister": {
+      "sheet": "em_20.png"
+    },
+    "MOSSDEEP_CITY:Little explorer": {
+      "sheet": "em_5.png"
+    },
+    "MOSSDEEP_CITY:Elder sister": {
+      "sheet": "em_65.png"
+    },
+    "MOSSDEEP_CITY:Badge reader": {
+      "sheet": "em_21.png"
+    },
+    "HOENN_SPACE_CENTER:Rocket fan": {
+      "sheet": "em_29.png"
+    },
+    "HOENN_SPACE_CENTER:The notice": {
+      "sheet": "em_5.png"
+    },
+    "HOENN_SPACE_CENTER:Beachcomber": {
+      "sheet": "em_49.png"
+    },
+    "HOENN_SPACE_CENTER:Space dreamer": {
+      "sheet": "em_26.png"
+    },
+    "HOENN_SPACE_CENTER:Astronaut hopeful": {
+      "sheet": "em_15.png"
+    },
+    "HOENN_SPACE_CENTER:Weather scientist": {
+      "sheet": "em_46.png"
+    },
+    "HOENN_SPACE_CENTER:Steven ": {
+      "sheet": "em_134.png"
+    },
+    "HOENN_SPACE_CENTER:Old dreamer": {
+      "sheet": "em_48.png"
+    },
+    "HOENN_ROUTE_124:Treasure Hunter": {
+      "sheet": "em_66.png"
     }
   },
   "townsperson": "NPC 17.png",

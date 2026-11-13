@@ -202,6 +202,12 @@ class MoveEffects:
     def before_move(self, mon):
         """Confusion and infatuation can stop a move. Returns (stopped, lines)."""
         v, label, lines = self.vol(mon), self._label(mon), []
+        _mind = [k for k in ("infatuated", "taunt", "encore", "disabled") if v.get(k)]
+        if _mind and getattr(mon, "held_item", None) == "MENTAL_HERB":  # (a Mental Herb: used up, it frees the mind of all of them)
+            for k in _mind:
+                v.pop(k, None)
+            mon.held_item = None
+            lines.append(f"{label} used its Mental Herb to snap out of it!")
         loafing = self.ability_loafs(mon)  # Truant
         if loafing:
             return True, [loafing]

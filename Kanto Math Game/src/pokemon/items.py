@@ -99,7 +99,8 @@ HELD = {"MYSTIC_WATER": {"price": 1000, "text": "Give it to a Pokemon to hold: i
         "CHARCOAL": {"price": 1000, "text": "Give it to a Pokemon to hold: its Fire-type moves hit harder."},
         "SEA_INCENSE": {"price": 1000, "text": "Give it to a Pokemon to hold: its Water-type moves hit harder."},
         "CLEANSE_TAG": {"price": 1000, "text": "Give it to your lead Pokemon to hold: fewer wild Pokemon come near."},
-        "EVIOLITE": {"price": 3000, "text": "Give it to a Pokemon that can still evolve: it takes less damage."}}
+        "EVIOLITE": {"price": 3000, "text": "Give it to a Pokemon that can still evolve: it takes less damage."},
+        "MENTAL_HERB": {"price": 1000, "text": "Held: used up to free its holder from love, Taunt, Encore and Disable."}}
 
 
 def held_boost(pokemon, move_type):
