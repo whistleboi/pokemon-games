@@ -1449,6 +1449,480 @@
     },
     "HOENN_MT_PYRE:Orb keeper": {
       "sheet": "em_22.png"
+    },
+    "LILYCOVE_CITY:Smart man": {
+      "sheet": "em_48.png"
+    },
+    "LILYCOVE_CITY:Art dealer": {
+      "sheet": "em_23.png"
+    },
+    "LILYCOVE_CITY:Lookout grunt": {
+      "sheet": "@grunt"
+    },
+    "LILYCOVE_CITY:Tourist": {
+      "sheet": "em_15.png"
+    },
+    "LILYCOVE_CITY:Wailmer trainer": {
+      "sheet": "@grunt"
+    },
+    "LILYCOVE_CITY:Old fisherman": {
+      "sheet": "em_21.png"
+    },
+    "LILYCOVE_CITY:Curious boy": {
+      "sheet": "em_8.png"
+    },
+    "LILYCOVE_CITY:Sailor": {
+      "sheet": "em_49.png"
+    },
+    "LILYCOVE_CITY:Pokéblock fan": {
+      "sheet": "em_38.png"
+    },
+    "LILYCOVE_CITY:Newlywed": {
+      "sheet": "em_23.png"
+    },
+    "LILYCOVE_CITY:Honeymooner": {
+      "sheet": "em_24.png"
+    },
+    "LILYCOVE_CITY:Dozing man": {
+      "sheet": "em_20.png"
+    },
+    "LILYCOVE_CITY:Contest fan": {
+      "sheet": "em_19.png"
+    },
+    "LILYCOVE_CITY:Old sailor": {
+      "sheet": "em_49.png"
+    },
+    "LILYCOVE_CITY:Fisherman": {
+      "sheet": "em_17.png"
+    },
+    "LILYCOVE_CITY:Old woman": {
+      "sheet": "em_22.png"
+    },
+    "LILYCOVE_CITY:Old man": {
+      "sheet": "em_21.png"
+    },
+    "HOENN_TEAM_HIDEOUT:MASTER BALL": {
+      "item": "MASTER_BALL"
+    },
+    "HOENN_TEAM_HIDEOUT:NUGGET": {
+      "item": "NUGGET"
+    },
+    "HOENN_TEAM_HIDEOUT:Grunt": {
+      "sheet": "@grunt"
+    },
+    "LILYCOVE_CITY:Store greeter": {
+      "sheet": "em_45.png"
+    },
+    "LILYCOVE_CITY:Loto clerk": {
+      "sheet": "em_45.png"
+    },
+    "LILYCOVE_CITY:Little girl": {
+      "sheet": "em_12.png"
+    },
+    "LILYCOVE_CITY:Happy shopper": {
+      "sheet": "em_18.png"
+    },
+    "LILYCOVE_CITY:Azumarill": {
+      "sheet": "em_210.png"
+    },
+    "LILYCOVE_CITY:Contest lady": {
+      "sheet": "em_25.png"
+    },
+    "LILYCOVE_CITY:Wise shopper": {
+      "sheet": "em_27.png"
+    },
+    "LILYCOVE_CITY:Gift hunter": {
+      "sheet": "em_18.png"
+    },
+    "LILYCOVE_CITY:Traveller": {
+      "sheet": "em_49.png"
+    },
+    "LILYCOVE_CITY:Travel clerk": {
+      "sheet": "em_24.png"
+    },
+    "LILYCOVE_CITY:Trainer clerk": {
+      "sheet": "em_24.png"
+    },
+    "LILYCOVE_CITY:Department Store": {
+      "sheet": "em_24.png"
+    },
+    "LILYCOVE_CITY:Battle clerk": {
+      "sheet": "em_24.png"
+    },
+    "LILYCOVE_CITY:Battle fan": {
+      "sheet": "em_51.png"
+    },
+    "LILYCOVE_CITY:Proud owner": {
+      "sheet": "em_34.png"
+    },
+    "LILYCOVE_CITY:Careful buyer": {
+      "sheet": "em_25.png"
+    },
+    "LILYCOVE_CITY:Thinking man": {
+      "sheet": "em_48.png"
+    },
+    "LILYCOVE_CITY:Catalogue reader": {
+      "sheet": "em_20.png"
+    },
+    "LILYCOVE_CITY:TM collector": {
+      "sheet": "em_35.png"
+    },
+    "LILYCOVE_CITY:Attack TM clerk": {
+      "sheet": "em_24.png"
+    },
+    "LILYCOVE_CITY:Defence TM clerk": {
+      "sheet": "em_24.png"
+    },
+    "LILYCOVE_CITY:Contest clerk": {
+      "sheet": "em_24.png"
+    },
+    "LILYCOVE_CITY:Doll clerk": {
+      "sheet": "em_24.png"
+    },
+    "LILYCOVE_CITY:Mat lover": {
+      "sheet": "em_20.png"
+    },
+    "LILYCOVE_CITY:Small girl": {
+      "sheet": "em_12.png"
+    },
+    "LILYCOVE_CITY:Mat clerk": {
+      "sheet": "em_24.png"
+    },
+    "LILYCOVE_CITY:Poster clerk": {
+      "sheet": "em_24.png"
+    },
+    "LILYCOVE_CITY:Doting mother": {
+      "sheet": "em_18.png"
+    },
+    "LILYCOVE_CITY:Rooftop stand": {
+      "sheet": "em_84.png"
+    },
+    "LILYCOVE_CITY:Bargain hunter": {
+      "sheet": "em_23.png"
+    },
+    "LILYCOVE_CITY:Thirsty boy": {
+      "sheet": "em_33.png"
+    },
+    "LILYCOVE_CITY:Dreamer": {
+      "sheet": "em_24.png"
+    },
+    "LILYCOVE_CITY:Guide": {
+      "sheet": "em_17.png"
+    },
+    "LILYCOVE_CITY:Regular": {
+      "sheet": "em_37.png"
+    },
+    "LILYCOVE_CITY:Eager visitor": {
+      "sheet": "em_20.png"
+    },
+    "LILYCOVE_CITY:Young artist": {
+      "sheet": "em_99.png"
+    },
+    "LILYCOVE_CITY:Art lover": {
+      "sheet": "em_38.png"
+    },
+    "LILYCOVE_CITY:Museum boy": {
+      "sheet": "em_5.png"
+    },
+    "LILYCOVE_CITY:Museum mom": {
+      "sheet": "em_26.png"
+    },
+    "LILYCOVE_CITY:Painter": {
+      "sheet": "em_99.png"
+    },
+    "LILYCOVE_CITY:Lilycove Museum": {
+      "sheet": "em_45.png"
+    },
+    "LILYCOVE_CITY:Critic": {
+      "sheet": "em_21.png"
+    },
+    "LILYCOVE_CITY:Admirer": {
+      "sheet": "em_15.png"
+    },
+    "LILYCOVE_CITY:Curator": {
+      "sheet": "em_48.png"
+    },
+    "LILYCOVE_CITY:Returning visitor": {
+      "sheet": "em_10.png"
+    },
+    "LILYCOVE_CITY:Motel owner": {
+      "sheet": "em_19.png"
+    },
+    "LILYCOVE_CITY:Handheld gamer": {
+      "sheet": "em_189.png"
+    },
+    "LILYCOVE_CITY:Programmer": {
+      "sheet": "em_65.png"
+    },
+    "LILYCOVE_CITY:Graphic artist": {
+      "sheet": "em_46.png"
+    },
+    "LILYCOVE_CITY:Sea lover": {
+      "sheet": "em_20.png"
+    },
+    "LILYCOVE_CITY:Game designer": {
+      "sheet": "em_33.png"
+    },
+    "LILYCOVE_CITY:Scott": {
+      "sheet": "em_219.png"
+    },
+    "LILYCOVE_CITY:Double battle fan": {
+      "sheet": "em_17.png"
+    },
+    "LILYCOVE_CITY:Second": {
+      "sheet": "em_189.png"
+    },
+    "LILYCOVE_CITY:Eldest": {
+      "sheet": "em_189.png"
+    },
+    "LILYCOVE_CITY:Third": {
+      "sheet": "em_189.png"
+    },
+    "LILYCOVE_CITY:Pokéblock Master": {
+      "sheet": "em_18.png"
+    },
+    "LILYCOVE_CITY:Youngest": {
+      "sheet": "em_189.png"
+    },
+    "LILYCOVE_CITY:Proud father": {
+      "sheet": "em_19.png"
+    },
+    "LILYCOVE_CITY:Move Deleter": {
+      "sheet": "em_21.png"
+    },
+    "LILYCOVE_CITY:TV fan": {
+      "sheet": "em_7.png"
+    },
+    "LILYCOVE_CITY:Dreamy fan": {
+      "sheet": "em_12.png"
+    },
+    "LILYCOVE_CITY:Loyal fan": {
+      "sheet": "em_9.png"
+    },
+    "LILYCOVE_CITY:Battle watcher": {
+      "sheet": "em_24.png"
+    },
+    "LILYCOVE_CITY:Rumour fan": {
+      "sheet": "em_65.png"
+    },
+    "LILYCOVE_CITY:Stern fan": {
+      "sheet": "em_22.png"
+    },
+    "LILYCOVE_CITY:Brawly's fan": {
+      "sheet": "em_47.png"
+    },
+    "LILYCOVE_CITY:Club president": {
+      "sheet": "em_25.png"
+    },
+    "LILYCOVE_CITY:Young fan": {
+      "sheet": "em_5.png"
+    },
+    "LILYCOVE_CITY:Kecleon": {
+      "sheet": "em_204.png"
+    },
+    "LILYCOVE_CITY:Kind man": {
+      "sheet": "em_21.png"
+    },
+    "LILYCOVE_CITY:Sleepy man": {
+      "sheet": "em_17.png"
+    },
+    "LILYCOVE_CITY:Sea dreamer": {
+      "sheet": "em_65.png"
+    },
+    "LILYCOVE_CITY:Trench talker": {
+      "sheet": "em_19.png"
+    },
+    "LILYCOVE_CITY:Prize desk": {
+      "sheet": "em_85.png"
+    },
+    "LILYCOVE_CITY:Contest Hall": {
+      "sheet": "em_85.png"
+    },
+    "LILYCOVE_CITY:Wowed boy": {
+      "sheet": "em_5.png"
+    },
+    "LILYCOVE_CITY:Fast fan": {
+      "sheet": "em_66.png"
+    },
+    "LILYCOVE_CITY:Impressed boy": {
+      "sheet": "em_31.png"
+    },
+    "LILYCOVE_CITY:Feast for the eyes": {
+      "sheet": "em_99.png"
+    },
+    "LILYCOVE_CITY:Berry lady": {
+      "sheet": "em_21.png"
+    },
+    "LILYCOVE_CITY:Hopeful entrant": {
+      "sheet": "em_50.png"
+    },
+    "LILYCOVE_CITY:Family blender": {
+      "sheet": "em_5.png"
+    },
+    "LILYCOVE_CITY:Blend watcher": {
+      "sheet": "em_115.png"
+    },
+    "LILYCOVE_CITY:Gossip": {
+      "sheet": "em_16.png"
+    },
+    "LILYCOVE_CITY:Lucky girl": {
+      "sheet": "em_12.png"
+    },
+    "LILYCOVE_CITY:Tough fan": {
+      "sheet": "em_17.png"
+    },
+    "LILYCOVE_CITY:Cute fan": {
+      "sheet": "em_44.png"
+    },
+    "LILYCOVE_CITY:Eager blender": {
+      "sheet": "em_7.png"
+    },
+    "LILYCOVE_CITY:Daily stroller": {
+      "sheet": "em_10.png"
+    },
+    "LILYCOVE_CITY:Friendly blender": {
+      "sheet": "em_18.png"
+    },
+    "LILYCOVE_CITY:Excited kid": {
+      "sheet": "em_8.png"
+    },
+    "LILYCOVE_CITY:Speedy blender": {
+      "sheet": "em_65.png"
+    },
+    "LILYCOVE_CITY:Sweet maker": {
+      "sheet": "em_6.png"
+    },
+    "LILYCOVE_CITY:Case girl": {
+      "sheet": "em_12.png"
+    },
+    "LILYCOVE_CITY:Contest regular": {
+      "sheet": "em_13.png"
+    },
+    "LILYCOVE_CITY:Glitz lover": {
+      "sheet": "em_19.png"
+    },
+    "LILYCOVE_CITY:Pokéblock wonderer": {
+      "sheet": "em_14.png"
+    },
+    "LILYCOVE_CITY:Glad winner": {
+      "sheet": "em_20.png"
+    },
+    "LILYCOVE_CITY:Beauty MC": {
+      "sheet": "em_24.png"
+    },
+    "LILYCOVE_CITY:Beauty judge": {
+      "sheet": "em_190.png"
+    },
+    "LILYCOVE_CITY:Grooming tip": {
+      "sheet": "em_16.png"
+    },
+    "LILYCOVE_CITY:Proud beauty": {
+      "sheet": "em_26.png"
+    },
+    "LILYCOVE_CITY:Over-groomer": {
+      "sheet": "em_6.png"
+    },
+    "LILYCOVE_CITY:Aurora fan": {
+      "sheet": "em_37.png"
+    },
+    "LILYCOVE_CITY:Fond lady": {
+      "sheet": "em_18.png"
+    },
+    "LILYCOVE_CITY:Honest boy": {
+      "sheet": "em_31.png"
+    },
+    "LILYCOVE_CITY:Puzzled man": {
+      "sheet": "em_19.png"
+    },
+    "LILYCOVE_CITY:Move watcher": {
+      "sheet": "em_7.png"
+    },
+    "LILYCOVE_CITY:Smart MC": {
+      "sheet": "em_24.png"
+    },
+    "LILYCOVE_CITY:Smart judge": {
+      "sheet": "em_190.png"
+    },
+    "LILYCOVE_CITY:Cute MC": {
+      "sheet": "em_24.png"
+    },
+    "LILYCOVE_CITY:Cute judge": {
+      "sheet": "em_190.png"
+    },
+    "LILYCOVE_CITY:Cheering mom": {
+      "sheet": "em_20.png"
+    },
+    "LILYCOVE_CITY:Grandchild": {
+      "sheet": "em_22.png"
+    },
+    "LILYCOVE_CITY:Green fan": {
+      "sheet": "em_34.png"
+    },
+    "LILYCOVE_CITY:Inspired girl": {
+      "sheet": "em_12.png"
+    },
+    "LILYCOVE_CITY:Wrong entrant": {
+      "sheet": "em_44.png"
+    },
+    "LILYCOVE_CITY:Wise entrant": {
+      "sheet": "em_21.png"
+    },
+    "LILYCOVE_CITY:Hopeful entrant 2": {
+      "sheet": "em_39.png"
+    },
+    "LILYCOVE_CITY:Zubat's Trainer": {
+      "sheet": "em_28.png"
+    },
+    "LILYCOVE_CITY:Azurill's Trainer": {
+      "sheet": "em_9.png"
+    },
+    "LILYCOVE_CITY:Contest star": {
+      "sheet": "em_10.png"
+    },
+    "LILYCOVE_CITY:Petal dancer": {
+      "sheet": "em_13.png"
+    },
+    "LILYCOVE_CITY:Cute entrant": {
+      "sheet": "em_22.png"
+    },
+    "LILYCOVE_CITY:Wide-eyed sailor": {
+      "sheet": "em_49.png"
+    },
+    "LILYCOVE_CITY:Double winner": {
+      "sheet": "em_7.png"
+    },
+    "LILYCOVE_CITY:Heal": {
+      "sheet": "em_58.png"
+    },
+    "LILYCOVE_CITY:Dreaming boy": {
+      "sheet": "em_7.png"
+    },
+    "LILYCOVE_CITY:Wary hiker": {
+      "sheet": "em_39.png"
+    },
+    "LILYCOVE_CITY:Gift attendant": {
+      "sheet": "em_223.png"
+    },
+    "LILYCOVE_CITY:Link attendant": {
+      "sheet": "em_85.png"
+    },
+    "LILYCOVE_CITY:Trade attendant": {
+      "sheet": "em_85.png"
+    },
+    "LILYCOVE_CITY:Record attendant": {
+      "sheet": "em_85.png"
+    },
+    "LILYCOVE_CITY:Ferry to Slateport": {
+      "sheet": "em_21.png"
+    },
+    "LILYCOVE_CITY:S.S. Tidal": {
+      "sheet": "em_21.png"
+    },
+    "LILYCOVE_CITY:Idle sailor": {
+      "sheet": "em_49.png"
+    },
+    "LILYCOVE_CITY:Memory Girl": {
+      "sheet": "em_47.png"
     }
   },
   "townsperson": "NPC 17.png",

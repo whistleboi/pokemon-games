@@ -171,7 +171,7 @@ check(_multi >= 4 and not _bad, f"places joined several ways ({_multi} sides): o
 
 # every door in a rebuilt town opens something (a house is just a house; the Center and Mart: the shared rooms), but the
 # places not built yet (HANDOFF_HOENN_MAPS.md's gaps: Rustboro's Trainer's School, Slateport's Fan Club and its harbor's ferry)
-NOT_YET = {("RUSTBORO_CITY", "school"), ("SLATEPORT_CITY", "fanclub"), ("SLATEPORT_CITY", "harbor")}
+NOT_YET = {("RUSTBORO_CITY", "school"), ("SLATEPORT_CITY", "fanclub"), ("SLATEPORT_CITY", "harbor")}   # (Slateport's ferry: once the sub is taken)
 _shut = []
 for key in BUILT:
     if _area[key].get("area_type") != "town":
@@ -870,6 +870,8 @@ check("<TrainerIntroState>" in said, f"Route 119: your rival catches up over the
 story.story_flags["hoenn_rival_119"] = True
 st = open_map("HOENN_ROUTE_119", "FORTREE_CITY")
 _tk = next(m for m in st.run.floor.movers if (m.x, m.y) == (17, 128))
+st.run.floor.movers = [m for m in st.run.floor.movers if m is _tk or m.kind not in ("trainer", "wild")]   # (no one else walking up mid-test)
+st._motion(_tk).sight = 0
 st.run.player, st.anim = (12, 128), 0
 _seen9 = []
 for _d in ((0, 1), (0, -1)):
@@ -1012,6 +1014,230 @@ story.badges.clear(); story.badges.update(_badges10)
 story.player_team = _team10
 story.inventory.clear(); story.inventory.update(_inv10)
 story.story_flags.clear(); story.story_flags.update(_saved10)
+
+# ---- batch 11: Slateport's stolen submarine, Lilycove City, the team's hideout (ORAS, parts 13-14)
+_saved11, _inv11, _team11 = dict(story.story_flags), dict(story.inventory), list(story.player_team)
+_rep11 = getattr(story, "repel_routes", 0)
+story.repel_routes = 9
+for _k in ("slateport_sub_stolen", "hoenn_rival_lilycove", "lilycove_rival_met", "aqua_hideout_cleared", "got_altarianite",
+           "lilycove_berry_day", "got_master_ball_hideout", "hideout_electrode_1"):
+    story.story_flags.pop(_k, None)
+for _k in ("ALTARIANITE", "MASTER_BALL"):
+    story.inventory.pop(_k, None)
+story.story_flags.update({"got_mt_pyre_orb": True, "mt_pyre_cleared": True, "slateport_grunt_defeated": True,
+                          "oceanic_museum_cleared": True, "contest_pass_received": True})
+st = open_map("SLATEPORT_CITY", "HOENN_ROUTE_110")
+st.scenes.entered = True
+st.player, st.anim = (23, 15), 0
+_calm(st); st.step(1, 0)
+said = _play(st, 2500)
+check("<TrainerIntroState>" in said and any("submarine" in x for x in said),
+      f"Slateport: after Mt. Pyre, the leader takes Captain Stern's submarine and a Grunt keeps you busy ({said[:1]})")
+story.story_flags["slateport_sub_stolen"] = True
+st = open_map("SLATEPORT_CITY", "HOENN_ROUTE_110")
+_fs = [o.get("text") for o in st._door_options("harbor") if st._shown(o)]
+st = open_map("LILYCOVE_CITY", "HOENN_ROUTE_121")
+_fl = [o.get("text") for o in st._door_options("harbor")]
+check("Ferry to Lilycove" in _fs and "Ferry to Slateport" in _fl, f"Slateport and Lilycove: the ferry between their harbours, once the sub is taken ({_fs}, {_fl})")
+check((70, 5) in st.barred and sum(1 for t in st.barred if t[0] == 79) == 8,
+      "Lilycove: a Grunt guards the cave in the cove; the team's Wailmer block the sea way to Route 124")
+st.scenes.entered = True
+st.player, st.anim = (31, 17), 0
+st.step(0, -1)
+said = _play(st, 2500)
+check("<TrainerIntroState>" in said, f"Lilycove: by the north stairs your rival walks up for a battle ({said[:1]})")
+story.story_flags["hoenn_rival_lilycove"] = True
+st = open_map("LILYCOVE_CITY", "HOENN_ROUTE_121")
+check((70, 5) not in st.barred and st.exits.get((70, 5)) == "HOENN_TEAM_HIDEOUT", "Lilycove: after your rival, the cave is open (Surf across the cove)")
+_col = next(o for o in st.people.values() if isinstance(o, dict) and o.get("text") == "The Collector")
+story.player_team = [p for p in _team11 if p.id != 334] or [Pokemon(g.loader.fetch_specific(258), g.assets)]
+st._get_callback_for_option(_col)(); tap(st)
+_no = story.inventory.get("ALTARIANITE")
+story.player_team = story.player_team + [Pokemon(g.loader.fetch_specific(334), g.assets)]
+st._get_callback_for_option(_col)(); tap(st)
+check(not _no and story.inventory.get("ALTARIANITE") == 1, "Lilycove: the Fan Club man gives the Altarianite once you show him an Altaria")
+# Lilycove's buildings walked inside (Emerald's own rooms): the store's floors by its stairs, a clerk across the counter
+def _stairs(st, target):
+    """Step onto the room's way out that leads to target, from the open tile beside it (as a player walks up the stairs)."""
+    t = next(t for t, v in st.exits.items() if v == target)
+    for dx, dy in ((0, 1), (0, -1), (1, 0), (-1, 0)):
+        b = (t[0] + dx, t[1] + dy)
+        if st._open(b) and b not in st.exits and b not in st._people():
+            st.player, st.anim = b, 0
+            st.step(-dx, -dy); frames(2)
+            return st.room
+    return None
+
+
+st = open_map("LILYCOVE_CITY", "HOENN_ROUTE_121")
+st.scenes.entered = True
+st.player, st.anim = (27, 7), 0
+st.step(0, -1); frames(2)
+_floors = [st.room]
+for _r in ("dept_2", "dept_3", "dept_4", "dept_5", "dept_roof"):
+    _floors.append(_stairs(st, "ROOM:" + _r))
+check(_floors == ["dept", "dept_2", "dept_3", "dept_4", "dept_5", "dept_roof"],
+      f"Lilycove: in at the Department Store's door, and up its stairs floor by floor to the rooftop ({_floors})")
+_down = [_stairs(st, "ROOM:dept_5"), _stairs(st, "ROOM:dept_4"), _stairs(st, "ROOM:dept_3"), _stairs(st, "ROOM:dept_2"), _stairs(st, "ROOM:dept")]
+_out = next(v for v in st.exits.values() if str(v).startswith("OUT:"))
+_stairs(st, _out)
+check(_down[-1] == "dept" and st.room is None and st.player == (27, 7), f"Lilycove: down again and out of the store's door ({_down}, {st.player})")
+st._go("dept_2", "ROOM:dept_3"); frames(2)
+st.player, st.facing, st.anim = (10, 4), (0, 1), 0
+st.step(0, 1); frames(2)
+_cs = g.current_state
+check(type(_cs).__name__ == "PokeMartState" and "GREAT_BALL" in (_cs.stock or []) and "TM08" not in (_cs.stock or []),
+      f"Lilycove: 2F's clerk across the counter sells his own shelf (Poke Balls, medicine) ({type(_cs).__name__})")
+g.change_state(st)
+_shelves = {o.get("text"): o.get("stock") for r in _tm2["LILYCOVE_CITY"]["rooms"].values() for o in r.get("people", []) if isinstance(o, dict) and o.get("stock")}
+check(_shelves.get("Attack TM clerk") == ["TM08", "TM03", "TM05", "TM04"] and "X_ATTACK" in _shelves.get("Battle clerk", [])
+      and "LEMONADE" in _shelves.get("Rooftop stand", []) and "RED_POKEBLOCK" in _shelves.get("Contest clerk", []),
+      f"Lilycove: each counter of the store sells its own kind of thing (2F travel and Trainer goods, 3F X items, 4F TMs, 5F Pokeblocks, rooftop drinks)")
+check("Department Store" in _tm2["LILYCOVE_CITY"]["rooms"]["dept_3"]["people"], "Lilycove: 3F keeps the store's old shelf (its evolution stones)")
+st._go("dept", "ROOM:dept_2"); frames(2)
+_loto = next(o for o in st.people.values() if isinstance(o, dict) and o.get("text") == "Loto clerk")
+_before = sum(story.inventory.get(k, 0) for k in ("MOOMOO_MILK", "RARE_CANDY", "MASTER_BALL"))
+story.story_flags.pop("lilycove_loto_day", None)
+st._get_callback_for_option(_loto)(); tap(st)
+_one = sum(story.inventory.get(k, 0) for k in ("MOOMOO_MILK", "RARE_CANDY", "MASTER_BALL"))
+st._get_callback_for_option(_loto)(); tap(st)
+check(_one == _before + 1 and sum(story.inventory.get(k, 0) for k in ("MOOMOO_MILK", "RARE_CANDY", "MASTER_BALL")) == _one,
+      "Lilycove: 1F's Lottery Corner, one Loto prize a day")
+# the Museum: the curator keeps the stairs till a Master Rank win; upstairs, a portrait of each champion
+_rib = [list(getattr(p, "ribbons", []) or []) for p in story.player_team]
+for p in story.player_team:
+    p.ribbons = []
+story.pc_pokemon = [None] * 300
+st._go(None, "OUT:27,6"); frames(2)
+st.player, st.anim = (12, 6), 0
+st.step(0, -1); frames(2)
+_shut = st.room == "museum" and (16, 2) in st.barred
+story.player_team[0].ribbons = ["BEAUTY_MASTER"]
+st._go("museum", "OUT:12,5"); frames(2)
+_open = (16, 2) not in st.barred
+_up = _stairs(st, "ROOM:museum_2")
+_por = sorted(t for t, b in st.barred.items() if str(b.get("look")).startswith("ribbon:"))
+st.player, st.facing, st.anim = (10, 7), (0, -1), 0
+st.step(0, -1)
+said = _play(st, 200)
+_nm = story.player_team[0].display_name
+check(_shut and _open and _up == "museum_2" and _por == [(10, 6)] and any(_nm in x and "Beauty" in x for x in said),
+      f"Lilycove Museum: the curator lets you upstairs after a Master Rank win; your Beauty champion's portrait hangs there ({_por}, {said[:1]})")
+_cur = next(o for o in st.people.values() if isinstance(o, dict) and o.get("text") == "Curator")
+story.inventory.pop("GLASS_ORNAMENT", None)
+st._get_callback_for_option(_cur)(); tap(st)
+_none = story.inventory.get("GLASS_ORNAMENT")
+story.player_team[0].ribbons = [c + "_MASTER" for c in ("COOL", "BEAUTY", "CUTE", "SMART", "TOUGH")]
+st._go("museum_2", "ROOM:museum"); frames(2)
+_all = sorted(t for t, b in st.barred.items() if str(b.get("look")).startswith("ribbon:"))
+st._get_callback_for_option(_cur)(); tap(st)
+check(not _none and story.inventory.get("GLASS_ORNAMENT") == 1 and len(_all) == 5,
+      "Lilycove Museum: all five portraits up, and the curator's thank-you gift")
+for p, r in zip(story.player_team, _rib):
+    p.ribbons = r
+# the motel (Game Freak upstairs: the Diploma for a full Hoenn Pokedex) and the Pokeblock Master's house
+st._go("motel_2", "ROOM:motel"); frames(2)
+_gd = next(o for o in st.people.values() if isinstance(o, dict) and o.get("text") == "Game designer")
+story.story_flags.pop("hoenn_catch_143", None); story.story_flags.pop("hoenn_diploma", None); story.inventory.pop("DIPLOMA", None)
+st._get_callback_for_option(_gd)(); tap(st)
+_no = story.inventory.get("DIPLOMA")
+story.story_flags["hoenn_catch_143"] = True
+st._get_callback_for_option(_gd)(); tap(st)
+check(not _no and story.inventory.get("DIPLOMA") == 1, "Cove Lily Motel: Game Freak's designer gives a Diploma for a full Hoenn Pokedex")
+st._go(None, "OUT:11,22"); frames(2)
+st.player, st.anim = (11, 23), 0
+st.step(0, -1); frames(2)
+_pm = next((o for o in st.people.values() if isinstance(o, dict) and o.get("text") == "Pokéblock Master"), None)
+story.story_flags.pop("got_pokeblock_master_gift", None)
+_rb = story.inventory.get("RED_POKEBLOCK", 0)
+if _pm:
+    st._get_callback_for_option(_pm)(); tap(st)
+check(st.room == "pokeblock_house" and story.inventory.get("RED_POKEBLOCK", 0) == _rb + 1,
+      f"Lilycove: the Pokeblock Master's house, north of the harbour: her tips and a Pokeblock of each colour ({st.room})")
+st._go(None, "OUT:11,22"); frames(2)
+_mg = next(o for o in st.people.values() if isinstance(o, dict) and o.get("text") == "Memory Girl")
+st._get_callback_for_option(_mg)()
+said = _play(st, 200)
+check(any("memories" in x for x in said) and any(story.player_team[0].display_name in x for x in said),
+      f"Lilycove: the Memory Girl outside the Center reads your first Pokemon's memories ({said[:2]})")
+_lin = _tm2["LILYCOVE_CITY"].get("inside", {})
+_nod = sorted("%d,%d" % t for t in st.doors if "%d,%d" % t not in _lin)
+_inroom = {q.get("text") if isinstance(q, dict) else q for r in _tm2["LILYCOVE_CITY"]["rooms"].values() for q in r.get("people", [])}
+_kept = all(o.get("text") in _inroom or "door:" + k in _inroom for t, k in st.doors.items() if "%d,%d" % t in _lin for o in st._door_options(k))
+check(not _nod and _kept, f"Lilycove: every door leads inside, and whoever ran its menu is in there (nurse, Contest counter, harbour sailor) ({_nod})")
+st.player, st.anim = (36, 7), 0
+st.step(0, -1); frames(2)
+_md = next(o for o in st.people.values() if isinstance(o, dict) and o.get("text") == "Move Deleter")
+st._get_callback_for_option(_md)()
+said = _play(st, 200)
+check(st.room == "move_deleter" and any("forgot how" in x for x in said), f"Lilycove: the Move Deleter has forgotten how to delete moves ({said[-1:]})")
+st._go("house_sleepy", "OUT:55,15"); frames(2)
+story.story_flags.pop("got_tm21_lilycove", None); story.inventory.pop("TM21", None)
+st._get_callback_for_option(next(o for o in st.people.values() if isinstance(o, dict) and o.get("text") == "Sleepy man"))(); tap(st)
+check(story.inventory.get("TM21") == 1, "Lilycove: the sleepy man in the house by the Berry gentleman gives TM21 Rest")
+st._go("center", "OUT:24,14"); frames(2)
+_hp = story.player_team[0]; _hp.current_hp = 1
+st.player, st.facing, st.anim = (7, 4), (0, -1), 0
+st.step(0, -1); frames(2); tap(st)
+check(_hp.current_hp == _hp.get_max_hp(), "Lilycove: the Pokemon Center's nurse heals you across her counter")
+st._go("contest_lobby", "OUT:23,24"); frames(2)
+_up = _stairs(st, "ROOM:contest_hall")
+check("Contest Hall" in _tm2["LILYCOVE_CITY"]["rooms"]["contest_lobby"]["people"] and _up == "contest_hall",
+      "Lilycove: the Contest lobby's counter enters you in Contests; through to the hall's stages")
+st._go(None, "OUT:24,14"); frames(2)
+st = open_map("HOENN_TEAM_HIDEOUT", "LILYCOVE_CITY")
+check(st._floor_name(0) == "1F" and "Magma" in g.loader.area_data["STORY_PROGRESSION"]["HOENN_TEAM_HIDEOUT"]["route_name"],
+      "The hideout: the version's team's (Team Magma Hideout in Omega Ruby)")
+# the whole way through: the stairs and Emerald's warp panels lead from the cave mouth to the Admin in the sub room
+_hf = json.load(open("assets/town_maps.json", encoding="utf-8"))["HOENN_TEAM_HIDEOUT"]["floors"]
+_ok = set(".=\"NX1w$o")   # (o: 1F's water, crossed with Surf)
+_todo = [(0, x, y) for y, r in enumerate(_hf[0]["art"]) for x, c in enumerate(r) if c not in _ok and c in _hf[0].get("exits", {})]
+_seen = set(_todo)
+while _todo:
+    _f, _x, _y = _todo.pop()
+    _ln = (_hf[_f].get("links") or {}).get(f"{_x},{_y}")
+    _nxt = [(_ln[0], _ln[1], _ln[2])] if _ln else []
+    _nxt += [(_f, _x + dx, _y + dy) for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1))]
+    for _n in _nxt:
+        _a = _hf[_n[0]]["art"]
+        if _n not in _seen and 0 <= _n[2] < len(_a) and 0 <= _n[1] < len(_a[0]) and _a[_n[2]][_n[1]] in _ok:
+            _seen.add(_n); _todo.append(_n)
+_near = lambda f, x, y: any((f, x + dx, y + dy) in _seen for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1), (0, 0)))
+check(_near(2, 23, 10) and _near(1, 15, 9), "The hideout: from the cave mouth, down the stairs and through the warp panels to the leader's room and the Admin")
+st.run.enter_floor(1); frames(2)
+_calm(st)
+_mb = next(m for m in st.run.floor.movers if isinstance(m.payload, dict) and m.payload.get("text") == "MASTER BALL")
+st._use_figure(_mb); tap(st)
+_el = next(m for m in st.run.floor.movers if isinstance(m.payload, dict) and m.payload.get("text") == "POKE BALL")
+st.dialogue_box.visible = False
+st._use_figure(_el)
+said = _play(st, 300)
+check(story.inventory.get("MASTER_BALL") == 1 and "<WildBattleState>" in said,
+      "The hideout: the leader's room's Poke Balls: the Master Ball, and an Electrode in disguise")
+g.change_state(st)
+# the sub room: five Grunts rush you (ORAS's horde battle), one battle with their five Poochyena
+st = open_map("HOENN_TEAM_HIDEOUT", "LILYCOVE_CITY")
+st.run.enter_floor(1); frames(2)
+st.run.enter_floor(2); frames(2)
+_calm(st)
+story.story_flags.pop("hideout_horde_beaten", None)
+st.run.player, st.anim = (20, 12), 0
+st.step(-1, 0)
+said = _play(st, 3000)
+from src.states.overworld.common import _start_event_battle
+_hz = next(s for s in _hf[2]["scenes"] if s["flag"] == "hideout_horde_beaten")
+_hb = _start_event_battle(g, "HOENN_TEAM_HIDEOUT", _hz["cast"][-1]["event"]["battle"], "hideout_horde_beaten")
+_hbt = getattr(_hb, "battle", None) or getattr(_hb, "next_state", None)
+_ht = [p.id for p in getattr(_hbt, "opponent_team", None) or []]
+check("<TrainerIntroState>" in said and any("Five of us" in x for x in said) and len(_hz["cast"]) == 5,
+      f"The hideout: in the sub room five Grunts run up together and battle you ({said[:1]})")
+check(_ht == [261] * 5 and "Magma Grunts" in str(getattr(_hbt, "trainer_name", "")),
+      f"The hideout: the five Grunts' battle is their five Poochyena, in this version's team ({getattr(_hbt, 'trainer_name', '')}, {_ht})")
+g.change_state(st)
+story.repel_routes = _rep11
+story.player_team = _team11
+story.inventory.clear(); story.inventory.update(_inv11)
+story.story_flags.clear(); story.story_flags.update(_saved11)
 
 story.story_flags.clear(); story.story_flags.update(_saved)
 print(f"##### {len(fails)} failures")

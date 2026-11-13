@@ -925,6 +925,12 @@ class DungeonState(OverworldBattles, PlayState):
     def _stand_in_img(self, look, bar):
         """A story stand-in's picture (a map's "barred" look): "sheet:<walking sheet>" (bar "face" u d l r, "march": running
         on the spot), "ow:<folder>:<thing>" (a real game's own thing: a bag, a boat), "mon:<species>". None if there is none."""
+        if look.startswith("ribbon:"):  # (a portrait of your Pokemon that won it: Lilycove Museum's paintings)
+            p = self.game.story_manager.ribbon_holder(look[7:])
+            if p is None:
+                return None
+            from src.minigames.base import icon
+            return icon(self.game, int(p.id), TILE + 6)
         fc = {"u": (0, -1), "d": (0, 1), "l": (-1, 0), "r": (1, 0)}.get(bar.get("face", "d"), (0, 1))
         fr = (1, 0, 3, 0)[(pygame.time.get_ticks() // 120) % 4] if bar.get("march") else 0
         if look.startswith("mon:"):
@@ -3255,7 +3261,7 @@ class DungeonState(OverworldBattles, PlayState):
                 _look = str(getattr(self, "_bars", {}).get((x, y), {}).get("look") or "")
                 if _look == "unseen":  # (something invisible in the way: Route 120's Kecleon, till the Devon Scope)
                     continue
-                if _look.startswith(("sheet:", "ow:", "mon:")):  # (someone or something standing there: "sheet:<walking sheet>", "ow:<folder>:<thing>" of a real game's own, "mon:<species number>": a scene's people, a briefcase, a wild Pokemon)
+                if _look.startswith(("sheet:", "ow:", "mon:", "ribbon:")):  # (someone or something standing there: "sheet:<walking sheet>", "ow:<folder>:<thing>" of a real game's own, "mon:<species number>": a scene's people, a briefcase, a wild Pokemon)
                     img = self._stand_in_img(_look, self._bars.get((x, y), {}))
                     if img:
                         screen.blit(img, img.get_rect(midbottom=(r.centerx, r.bottom - 2)))

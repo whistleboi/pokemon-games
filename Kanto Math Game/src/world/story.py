@@ -277,6 +277,15 @@ class StoryManager:
                     return keep, i, context
         return None
 
+    def ribbon_holder(self, pattern):
+        """The first Pokemon of yours (the party, then the PC) with a ribbon matching pattern ("BEAUTY_MASTER", or
+        "*_MASTER" for any category), or None."""
+        import fnmatch
+        for p in list(self.player_team) + list(getattr(self, "pc_pokemon", None) or []):
+            if p and any(fnmatch.fnmatch(str(r), pattern) for r in (getattr(p, "ribbons", None) or [])):
+                return p
+        return None
+
     def special_condition(self, condition):
         """Conditions shared by town and route menus. None when the condition isn't one of these."""
         if not isinstance(condition, str):
@@ -291,6 +300,8 @@ class StoryManager:
         if condition.startswith("party_type:"):  # (a Pokemon of that type with you: Route 123's Grass lover)
             t = condition.split(":", 1)[1].upper()
             return any(p and t in [str(x).upper() for x in (getattr(p, "types", None) or [])] for p in self.player_team)
+        if condition.startswith("has_ribbon:"):  # (a Pokemon of yours, with you or in the PC, has won it: Lilycove Museum's portraits)
+            return self.ribbon_holder(condition.split(":", 1)[1]) is not None
         if condition == "party_room":  # (room in the party for a gift: Lavaridge's Egg)
             return len([p for p in self.player_team if p]) < 6
         if condition == "all_unown_registered":

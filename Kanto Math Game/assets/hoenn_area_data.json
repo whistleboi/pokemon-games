@@ -1017,12 +1017,14 @@
         {"text": "S.S. Tidal", "door": "harbor", "target_area": "HOENN_SS_TIDAL", "condition": "has_balance_badge"},
         {"text": "Southern Island", "door": "harbor", "target_area": "HOENN_SOUTHERN_ISLAND", "item_condition": "EON_TICKET", "message": "The ship sails south across the sea to Southern Island."}
       ],
-      "explore_options": [{"text": "Market Stall", "door": "market", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_alakazite", "event": {"lines": ["Merchant: This odd stone has been on my stall for ages. It's yours!", "You found the ALAKAZITE!"], "gift_item": {"ALAKAZITE": 1}, "flag": "got_alakazite"}}, 
-        { "text": "Heal", "action": "HEAL" },
-        { "text": "Shop", "action": "SHOP" },
-        { "text": "Contest Hall", "door": "contest", "action": "NPC", "target": "contest_hall" },
-        { "text": "Market", "door": "market", "action": "NPC", "target": "slateport_market" },
-        { "text": "Talk to Stern", "door": "shipyard", "action": "NPC", "target": "captain_stern" }
+      "explore_options": [
+        {"text": "Market Stall", "door": "market", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_alakazite", "event": {"lines": ["Merchant: This odd stone has been on my stall for ages. It's yours!", "You found the ALAKAZITE!"], "gift_item": {"ALAKAZITE": 1}, "flag": "got_alakazite"}},
+        {"text": "Heal", "action": "HEAL"},
+        {"text": "Shop", "action": "SHOP"},
+        {"text": "Contest Hall", "door": "contest", "action": "NPC", "target": "contest_hall"},
+        {"text": "Market", "door": "market", "action": "NPC", "target": "slateport_market"},
+        {"text": "Talk to Stern", "door": "shipyard", "action": "NPC", "target": "captain_stern"},
+        {"text": "Ferry to Lilycove", "door": "harbor", "action": "EVENT", "color": "BLUE", "condition": "slateport_sub_stolen", "event": {"lines": ["Captain Stern: Please, stop them! Take the ferry to Lilycove. It's on me!"], "travel": "LILYCOVE_CITY"}}
       ],
       "next_area": "HOENN_ROUTE_110",
       "on_enter_event": {
@@ -1165,15 +1167,19 @@
         { "text": "Route 122", "target_area": "HOENN_ROUTE_122" },
             {"text": "S.S. Tidal", "door": "harbor", "target_area": "HOENN_SS_TIDAL", "condition": "has_balance_badge"}
         ],
-      "explore_options": [{"text": "The Collector", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_altarianite", "event": {"lines": ["Collector: A lovely Altaria! Take this, it suits a Pokemon like that.", "You found the ALTARIANITE!"], "gift_item": {"ALTARIANITE": 1}, "flag": "got_altarianite"}}, 
+      "explore_options": [
+        {"text": "The Collector", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_altarianite", "event": {"requires": ["party_has:334"], "fail": ["Collector: Lisia's partner Ali is an Altaria. Show me one, and I'll give you something special!"], "lines": ["Collector: An Altaria! Just like Lisia's Ali! Take this, it suits a Pokémon like that."], "gift_item": {"ALTARIANITE": 1}, "flag": "got_altarianite"}},
         {"text": "Heal", "action": "HEAL"},
-        {"text": "Department Store", "action": "SHOP"},
+        {"text": "Department Store", "door": "dept", "action": "SHOP"},
         {"text": "Contest Hall", "door": "contest", "action": "NPC", "target": "contest_hall"},
         {"text": "Lilycove Museum", "door": "museum", "action": "NPC", "target": "contest_museum"},
-        {"text": "Team Hideout", "action": "TRAVEL", "target_area": "HOENN_TEAM_HIDEOUT", "condition": "hoenn_rival_lilycove"}
+        {"text": "Berry gentleman", "action": "EVENT", "color": "GREEN", "event": {"lines": ["Gentleman: Ah, a young Trainer. Have a Berry, with an old man's compliments."], "daily_gift": {"key": "lilycove_berry_day", "items": ["CHERI_BERRY", "CHESTO_BERRY", "PECHA_BERRY", "RAWST_BERRY", "ASPEAR_BERRY", "LEPPA_BERRY", "ORAN_BERRY", "PERSIM_BERRY", "LUM_BERRY", "SITRUS_BERRY"], "wait": ["Gentleman: One a day, young one. Come back tomorrow!"]}}},
+        {"text": "Memory Girl", "action": "EVENT", "color": "PINK", "event": {"lines": [], "memory": true}},
+        {"text": "Ferry to Slateport", "door": "harbor", "action": "EVENT", "color": "BLUE", "event": {"lines": ["Sailor: The ferry to Slateport is ready to sail. All aboard!"], "travel": "SLATEPORT_CITY"}},
+        {"text": "TEAM HIDEOUT", "action": "EXIT", "target_area": "HOENN_TEAM_HIDEOUT", "condition": ["can_exit", "hoenn_rival_lilycove"], "color": "RED"}
       ],
       "next_area": "HOENN_ROUTE_121",
-      "on_enter_event": {"type": "trainer_battle", "condition": "got_mt_pyre_orb", "flag_check": "hoenn_rival_lilycove", "trainer": {"name": "{rival_name}", "class": "RIVAL", "sprite": "{rival_character}", "is_boss_battle": true, "team": [277, 321, 286, 257], "team_choice": {"252": [277, 321, 286, 257], "255": [277, 286, 219, 260], "258": [277, 219, 321, 254]}, "levels": [37, 37, 37, 39], "movesets": {"277": ["DOUBLE-TEAM", "AERIAL-ACE", "QUICK-GUARD", "AGILITY"], "321": ["REST", "BRINE", "WATER-SPOUT", "AMNESIA"], "286": ["COUNTER", "MACH-PUNCH", "FORCE-PALM", "MIND-READER"], "257": ["QUICK-ATTACK", "BULK-UP", "BLAZE-KICK", "FOCUS-ENERGY"], "219": ["FLAME-BURST", "ROCK-SLIDE", "LAVA-PLUME", "AMNESIA"], "260": ["MUD-BOMB", "ROCK-SLIDE", "PROTECT", "MUDDY-WATER"], "254": ["AGILITY", "SLAM", "DUAL-CHOP", "DETECT"]}, "rewards": {"balls": 10}, "dialogue": {"intro": ["{rival_name}: {player_name}! {team} is hiding out near Lilycove!", "{rival_name}: Before you go after them, battle me one more time!"], "player_won": ["{rival_name}: You're ready. Their hideout is in the cove east of town!"], "player_lost": ["{rival_name}: Not yet! Train a little more first."]}}},
+      "on_enter_event": null,
       "department_store": true
     },
     "MOSSDEEP_CITY": {
@@ -3266,19 +3272,26 @@
     },
     "HOENN_TEAM_HIDEOUT": {
       "area_type": "dungeon",
-      "route_name": "Team Aqua Hideout",
+      "route_name": "{team} Hideout",
       "region": "HOENN",
       "battle_type": "cave",
       "backgrounds": { "main": "aqua_hideout.png" },
       "min_rounds": 0,
       "trainer_pool": [
-        {"name": "Team Aqua Grunt", "class": "ROCKET", "sprite": "aqua_grunt.png", "team": [318, 72], "rewards": {"balls": 3}, "dialogue": {"intro": ["Grunt: How did you find our hideout?!"], "player_won": ["Grunt: Abandon ship!"], "player_lost": ["Grunt: Get out of here!"]}, "villain": "grunt"},
-        {"name": "Team Aqua Grunt", "class": "ROCKET", "sprite": "aqua_grunt.png", "team": [41, 319], "rewards": {"balls": 3}, "dialogue": {"intro": ["Grunt: The submarine already left! You're too late!"], "player_won": ["Grunt: Maybe not too late..."], "player_lost": ["Grunt: Told you!"]}, "villain": "grunt"},
-        {"name": "Aqua Admin Matt", "class": "ROCKET_LEADER", "sprite": "aqua_grunt.png", "team": [323], "rewards": {"balls": 10, "MASTER_BALL": 1}, "is_boss_battle": true, "victory_flag": "aqua_hideout_cleared", "dialogue": {"intro": ["Matt: Hoohahah! The boss is already on his way to the Seafloor Cavern!", "Matt: You'll have to get past me first!"], "player_won": ["Matt: Hoo! You're strong! Fine, take this... the boss won't miss it.", "You found a MASTER BALL in Team Aqua's storage room!"], "player_lost": ["Matt: Hoohahah! Off you go!"]}, "villain": "admin_b", "team_by_version": {"OMEGA_RUBY": [323], "ALPHA_SAPPHIRE": [319]}, "levels": [39]}
+        {"name": "Team Grunt (entrance)", "class": "ROCKET", "sprite": "aqua_grunt.png", "team": [318, 72], "rewards": {"balls": 3}, "dialogue": {"intro": ["Grunt: How did you find our hideout?!"], "player_won": ["Grunt: Abandon ship!"], "player_lost": ["Grunt: Get out of here!"]}, "villain": "grunt"},
+        {"name": "Team Grunt (1F)", "class": "ROCKET", "sprite": "aqua_grunt.png", "team": [318, 41], "rewards": {"balls": 3}, "dialogue": {"intro": ["Grunt: The submarine already left! You're too late!"], "player_won": ["Grunt: Maybe not too late..."], "player_lost": ["Grunt: Told you!"]}, "villain": "grunt"},
+        {"name": "Team Grunt (B1F)", "class": "ROCKET", "sprite": "aqua_grunt.png", "team": [261, 42], "rewards": {"balls": 3}, "dialogue": {"intro": ["Grunt: How did you find our hideout?!"], "player_won": ["Grunt: Abandon ship!"], "player_lost": ["Grunt: Get out of here!"]}, "villain": "grunt"},
+        {"name": "Team Grunt (sub room)", "class": "ROCKET", "sprite": "aqua_grunt.png", "team": [319, 262], "rewards": {"balls": 3}, "dialogue": {"intro": ["Grunt: The submarine already left! You're too late!"], "player_won": ["Grunt: Maybe not too late..."], "player_lost": ["Grunt: Told you!"]}, "villain": "grunt"},
+        {"name": "Admin Matt", "class": "ROCKET_LEADER", "sprite": "aqua_grunt.png", "team": [323], "rewards": {"balls": 10}, "is_boss_battle": true, "victory_flag": "aqua_hideout_cleared", "dialogue": {"intro": ["Matt: Hoohahah! The boss is already on his way to the Seafloor Cavern!", "Matt: You'll have to get past me first!"], "player_won": ["Matt: Hoo! You're strong! Fine, take this... the boss won't miss it.", "You found a MASTER BALL in Team Aqua's storage room!"], "player_lost": ["Matt: Hoohahah! Off you go!"]}, "villain": "admin_b", "team_by_version": {"OMEGA_RUBY": [323], "ALPHA_SAPPHIRE": [319]}, "levels": [39]}
       ],
-      "route_menu": [{"text": "SHARPEDONITE", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_sharpedonite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the SHARPEDONITE!"], "gift_item": {"SHARPEDONITE": 1}, "flag": "got_sharpedonite"}}, 
-        { "text": "RAID THE HIDEOUT", "action": "TRAINER", "condition": "has_trainers", "color": "PURPLE" },
-        { "text": "LILYCOVE CITY", "action": "EXIT", "target_area": "LILYCOVE_CITY", "condition": "can_exit", "color": "RED" }
+      "route_menu": [
+        {"text": "SHARPEDONITE", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_sharpedonite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the SHARPEDONITE!"], "gift_item": {"SHARPEDONITE": 1}, "flag": "got_sharpedonite"}},
+        {"text": "MASTER BALL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_master_ball_hideout", "event": {"lines": ["A Poké Ball lies in the leader's room... It's the Master Ball!"], "gift_item": {"MASTER_BALL": 1}, "flag": "got_master_ball_hideout"}},
+        {"text": "NUGGET", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_nugget_hideout", "event": {"lines": ["There's a Nugget in this Poké Ball!"], "gift_item": {"NUGGET": 1}, "flag": "got_nugget_hideout"}},
+        {"text": "POKE BALL", "action": "BOSS", "color": "GOLD", "found": true, "flag_condition": "not hideout_electrode_1", "boss": {"id": 101, "name": "Electrode", "level": 34, "victory_flag": "hideout_electrode_1", "lines": ["It's a Poké Ball... no! It's an Electrode in disguise!"]}},
+        {"text": "POKE BALL ", "action": "BOSS", "color": "GOLD", "found": true, "flag_condition": "not hideout_electrode_2", "boss": {"id": 101, "name": "Electrode", "level": 34, "victory_flag": "hideout_electrode_2", "lines": ["It's a Poké Ball... no! It's an Electrode in disguise!"]}},
+        {"text": "RAID THE HIDEOUT", "action": "TRAINER", "condition": "has_trainers", "color": "PURPLE"},
+        {"text": "LILYCOVE CITY", "action": "EXIT", "target_area": "LILYCOVE_CITY", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "LILYCOVE_CITY"
     },

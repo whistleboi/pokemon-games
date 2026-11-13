@@ -597,6 +597,11 @@ class WalkTownState(CityState):
                     self.npc_flag(ob["flag"])
                 from src.states.overworld.common import _fill_names
                 return self.show_message([_fill_names(self.game, x) for x in ob.get("lines") or ["..."]])
+            if str(bar.get("look") or "").startswith("ribbon:"):  # (a portrait: who it shows, in the words under it)
+                p = self.game.story_manager.ribbon_holder(bar["look"][7:])
+                from src.states.overworld.common import _fill_names
+                name = getattr(p, "display_name", None) or getattr(p, "name", "") if p else ""
+                return self.show_message([_fill_names(self.game, x).replace("{ribbon_mon}", str(name)) for x in bar.get("lines") or ["..."]])
             return self.flash((self.barred[tuple(to)].get("lines") or ["Someone is standing in the way."])[0], 130)
         if to in self.signs:
             self.walk_goal = None
@@ -1015,9 +1020,12 @@ class WalkTownState(CityState):
             _look = str(_bar.get("look") or "person")
             if _look == "unseen":  # (something invisible in the way: Fortree's Kecleon, till the Devon Scope)
                 continue
-            _img = self._stand_in_img(_look, _bar) if _look.startswith(("sheet:", "ow:", "mon:")) else None
+            _img = self._stand_in_img(_look, _bar) if _look.startswith(("sheet:", "ow:", "mon:", "ribbon:")) else None
+            if _img is None and _look.startswith("ribbon:"):
+                continue
             if _img is not None:  # (a real game's own sprite: a boat at the pier, someone in the way)
-                screen.blit(_img, _img.get_rect(midbottom=(at(_t).centerx, at(_t).bottom - 2)))
+                _nx, _ny = _bar.get("nudge") or (0, 0)   # (drawn off its tile's centre, in tiles: a portrait across its two-tile frame)
+                screen.blit(_img, _img.get_rect(midbottom=(int(at(_t).centerx + _nx * TILE), int(at(_t).bottom - 2 + _ny * TILE))))
                 continue
             from src.dungeon import art
             art.blocker(screen, at(_t), _look)
@@ -1064,7 +1072,7 @@ class WalkTownState(CityState):
         box = screen.get_clip()  # (the map's frame, while the map is drawn)
         if not (box.x - 60 <= cx <= box.right + 60 and box.y - 40 <= bottom <= box.bottom + 60):
             return  # (off screen: no tag piling up at the edge)
-        tag = fonts["caption"].render(theme.pokemon_word(text), True, (255, 255, 255))
+        tag = fonts["caption"].render(theme.pokemon_word(text).replace("É", "é"), True, (255, 255, 255))  # (in capitals the game writes POKéMON: the font has no capital É)
         pill = tag.get_rect(midbottom=(cx, bottom)).inflate(12, 6)
         pill.clamp_ip(box.inflate(-8, -8))  # (one at the very edge stays in the frame)
         if taken is not None:

@@ -14,6 +14,34 @@ from src.world import story_events
 from src.config import WHITE, BLACK, GOLD
 
 
+def _memories(game):
+    """The lines the Memory Girl reads from your first Pokemon: where you met, the battles it won with you, the catches
+    it was there for, its Contest ribbons (what our game keeps of a Pokemon's journey)."""
+    lead = next((p for p in game.story_manager.player_team if p and not getattr(p, "is_egg", False)), None)
+    if lead is None:
+        return ["Memory Girl: Hmm? You don't have a Pokemon with you."]
+    name = getattr(lead, "display_name", None) or getattr(lead, "name", "Your Pokemon")
+    c = getattr(lead, "counters", None) or {}
+    out = [f"Memory Girl: Let me see... I can feel {name}'s memories."]
+    region = str(getattr(lead, "caught_region", "") or "").replace("_", " ").title()
+    lvl = getattr(lead, "caught_level", None)
+    if region:
+        out.append(f"It remembers the day it met you in {region}" + (f", back at level {lvl}." if lvl else "."))
+    if c.get("wins"):
+        out.append(f"It remembers winning {c['wins']} battle{'s' if c['wins'] != 1 else ''} with you"
+                   + (f", and {c['crits']} critical hit{'s' if c.get('crits') != 1 else ''} that made you cheer!" if c.get("crits") else "!"))
+    if c.get("catches"):
+        out.append(f"It was there when you caught {c['catches']} Pokemon. It made new friends each time.")
+    rib = getattr(lead, "ribbons", None) or []
+    if rib:
+        out.append(f"It remembers the crowd at the Contest Hall, and the {len(rib)} ribbon{'s' if len(rib) != 1 else ''} it won.")
+    if len(out) == 1:
+        out.append("Its memories with you are only just starting. Go and make some more!")
+    else:
+        out.append(f"Memory Girl: {name} treasures every one of those moments with you.")
+    return out
+
+
 def _fill_names(game, text):
     if not isinstance(text, str):
         return text
@@ -165,6 +193,14 @@ def _start_event_battle(game, area_key, t_info, flag):
     """A story NPC's trainer battle (team chosen by the region starter when it has a team_choice)."""
     from src.states.battle import TrainerBattleState, TrainerIntroState
     t_info = _cast_trainer(game, t_info)
+    if t_info.get("villain") and str(game.story_manager.get_current_region() or "") == "HOENN":
+        from src.world import hoenn as _h   # (a scene's villain, written into a map: dressed as this version's team, like the data's)
+        v = _h.VERSIONS.get(_h.version(game.story_manager))
+        if v:
+            keep = t_info.get("name")
+            t_info = _h._villain(dict(t_info), v)
+            if "{" in str(keep or ""):   # (a name of its own with the team's word in it: "{team} Grunts")
+                t_info["name"] = keep
     team = _story_team(game, area_key, t_info)
     sprite = _trainer_sprite(game, t_info.get("sprite"))
     dlg = t_info.get("dialogue") or {}
@@ -281,6 +317,8 @@ def _run_story_event(state, key, check, show):
         game.data.mark_seen(new.id)
         game.data.add_pokemon(new)
         lines.append(f"{old.display_name} was traded for {new.display_name}!")
+    if ev.get("memory"):  # the Memory Girl (ORAS, outside Lilycove's Pokemon Center): what your lead Pokemon remembers
+        lines += _memories(game)
     if ev.get("daily_gift"):  # one a day (Jordan, 11-12: the Weather Institute's receptionist and her weather rocks):
         dg = ev["daily_gift"]  # {"key": its record, "items": [...], "order": true (in turn) or random, "wait": lines}
         import datetime as _dt

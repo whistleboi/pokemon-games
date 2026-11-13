@@ -72510,6 +72510,74 @@
       }
      }
     ]
+   },
+   {
+    "trigger": {
+     "zone": [
+      24,
+      13,
+      33,
+      18
+     ]
+    },
+    "condition": [
+     "got_mt_pyre_orb",
+     "not:slateport_sub_stolen"
+    ],
+    "flag": "slateport_sub_stolen",
+    "cast": [
+     {
+      "sheet": "@leader",
+      "from": [
+       28,
+       12
+      ],
+      "to": "player",
+      "leave": "back",
+      "lines": [
+       "{leader}: Ah, the meddling child. Thank Captain Stern for his submarine, won't you?",
+       "{leader}: If you want to stop us, come to our hideout in Lilycove. Not that you'll make it in time!"
+      ]
+     },
+     {
+      "sheet": "@grunt",
+      "from": [
+       28,
+       12
+      ],
+      "to": "player",
+      "leave": "back",
+      "lines": [
+       "Grunt: Orders are orders! I'm keeping you busy!"
+      ],
+      "event": {
+       "lines": [],
+       "flag": "slateport_sub_stolen",
+       "battle": {
+        "name": "Team Grunt (harbour)",
+        "class": "ROCKET",
+        "sprite": "aqua_grunt.png",
+        "villain": "grunt",
+        "team": [
+         261,
+         41
+        ],
+        "levels": [
+         35,
+         35
+        ],
+        "rewards": {
+         "balls": 3
+        },
+        "dialogue": {
+         "player_won": [
+          "Grunt: Too late! The sub's already gone!"
+         ]
+        }
+       }
+      }
+     }
+    ]
    }
   ],
   "barred": [
@@ -72776,7 +72844,7 @@
      "ccccccc~ccccccccccccc~ccooooooooc\".\"cccc",
      "ccccccc~ccccccccccccc~cccoooooooc\"\".cccc",
      "ccccccc~ccccccccccccc~cccoooooooc\".\"cccc",
-     "cccccccccccccccccccccccccoooooooc.\".cccc",
+     "cccccccccccccccccccccccccoooooooc.X.cccc",
      "cccccccccccccccccccccccccoooooooc\"X\"cccc",
      "ccccccc~ccccccccccccc~ccccooooooc...cccc",
      "ccccccc~ccccccccccccc~ccccooooooc...cccc",
@@ -72925,6 +72993,7 @@
     ],
     "trainer_spots": [
      "Biker Edwin",
+     "{rival_name}",
      "Triathlete Alyssa",
      "Triathlete Dylan"
     ],
@@ -73298,6 +73367,7 @@
   ],
   "figure_floors": {
    "Biker Edwin": 0,
+   "{rival_name}": 0,
    "Triathlete Alyssa": 0,
    "Triathlete Dylan": 0
   }
@@ -79426,132 +79496,260 @@
  },
  "LILYCOVE_CITY": {
   "art": [
-   "ccTTTTTUUUUUUUUUUTTTTTTMMMMMMMMMTTTTcccoooooooooooooooooooooooooocccccccccccccoo",
-   "ccTTT#TUUUUUUUUUU##TTTTMMMMMMMMMTTTTcccoooooooooooooooooooooooooocccccccccccccoo",
-   "ccTTTcTUUUUUUUUUUTcTTTTMMMMMMMMMTTTT###..........oooooooooooooooocccccccccccccoo",
-   "ccTTTcTUUUUUUUUUUTcTTTTMMMMMMMMMTTTAAAATTBBBBTTTT....oooooooooooocccccccccccccoo",
-   "cccTTcTUUUUUUUUUUTcTTTTMMMMMMMMMTT.AAAATTBBBBTTTTTTTT..#cooooaoaccccccTcccccccoo",
-   "cccTTcTUUUUUUUUUUTc....MMMMMMMMM...AAAATTBBBBTTTTTTTT...ccooaaacccccccccccccccoo",
-   "TcccTcTUUUUUDUUUUTc....MMMMDMMMM..aADAATTBDBBTTTT.......cccaaaacccccoooooooooooo",
-   "TcccTccccccaacccccc!.........!..........................ccccaaaccccooooooooooooo",
-   "TTcccccccccaaacccccc....................................cccccaaacaoooooooooooooo",
-   "TTcTTTTcccc....................................#______#.ccccccaaooooooooooccccoo",
-   "TTcccccc..........................ccccccccccc..)......(.cccTccooooooooooooccccoo",
-   "TTTTTTcccccEEEEccccccccCCCCccccaaccccFFFFFc.cccc______cccc##=oooooooooooooccccoo",
-   "TTTTTTcccccEEEEccccccccCCCCccccaacccTFFFFFc...........GGGG#c=ooooooooooooooooooo",
-   "TTTTTTTTTTTEEEE........CCCC.......TTTFFFFFc...........GGGGc##=oooooooooooooooooo",
-   "TTTTTTTT...EDEE........CDCC.........aFDFFFc..#___#....GGGGcTc==ooooooooooooooooo",
-   "<.....!...................................c..)...(....GDGGcTc===oooooooooooooooo",
-   "<.......................................N.cccc#..(........cTc=====oooooooooooooo",
-   "..............................................(..c__#.....cTc======oo=oooooooooo",
-   "TTTT................QQQQQQQ...................(.....(.....cTc==========ooooooooo",
-   "TTTT......IIII......QQQQQQQ...................(.....(.....cTc===========ooooooqc",
-   "TTTTTTTTTTIIII......QQQQQQQ.........KKKKKK....c_____cccaacccc===========ooooooow",
-   "TTTTTTTTTTIIII....TTQQQQQQQTT.......KKKKKK..........cccaaccc===========oooooooow",
-   "cccTTTT...IDII...TTTQQQQQQQTTT......KKKKKKTTT.......c=================ooooooqqoo",
-   "oocTTTT..........TTTQQQQQQQTTT......KKKKKKTTT.......c================ooooooooooo",
-   "oocTTTT..........TTTQQQDQQQTT!.....aKKKDKKTTT....cccN================ooooooooooo",
-   "oocTTTT.............................aaaaaaTT.....c===================ooooooooooo",
-   "oocTTTTT.........................................c==================aoooooqqoooo",
-   "oocTTTTTTPPPPPPP.....TTTTT..................cccccc==================oooooooooooo",
-   "oocTTTTTTPPPPPPPcccccccccc..............ccccc=c====================ooooooooqqooo",
-   "oocTTTTTTPPPPPPPoooooooooccc......ccccccc=========================ooooooooqooooo",
-   "ooccTT!TTPPPPPPPoooooooooooc......c==============================oooooooocccoooo",
-   "ooocTT..TPPPPPPPoooooooooooc......c=c===========================aoooooooocccoooo",
-   "oooc.....PPPDPPP..oooooooooc......c=============================ooooooooocccoooo",
-   "oooc..............cooooooooccc......_=======c===================oooooooooooooooo",
-   "oooc..............cooooooooooc..........__==============a=c.....cooooooooooooooo",
-   "oooccc............coooooooooocc...............__=========.c.....cooooooooooooooo",
-   "ooooocccc.....cccccoooooooooooc.................................cooooooqqooooooo",
-   "oooooooocccccccooooooooooooooocccc..................ccccccc.....cooooooooooooooo",
-   "oooooooooooooooooooooooooooooooooccccccccccccccccccccooooocccccccooooooooooooooo",
-   "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "ccccccccccccccccccccccccccccccccccccccccccccccccc~~~~~~ccccccccccccccccccccccccc",
+   "ccccccccccccccccccccccccccccccccccccccccccccccccc~~~~~~~~~cccccccccccccccccccccc",
+   "ccccccccccccccccccccccccccccccccccccccccccccccccccccc~~~~~cccccccccccccccccccccc",
+   "cccccccccccEccccccccccccccccccccccccccccccccccccccccc...cccccccccccccccccccccccc",
+   "cccccccccccDDccccccccccccccAccccccccHcccccIcccccccccc...ccccc.ccccccccnccccccccc",
+   "ccccccccccc..cccccc....ccccDcccc..!cDcccccDcccccc.......cccc...ccccooooooocccccc",
+   "ccccccccccc..cccccc!.........!....................N.....ccc..c.ccccooooooocccccc",
+   "cccccccc..c..c..........................................ccc......cooooooooo~~~cc",
+   "cccccccc........N.....................N........c______cNccc.....ooooooooooccccoo",
+   "cccccccc..........................ccccccccccc..)......(.ccc...ooooooooooooccccow",
+   "ccccccccccccccccccccccccccccccc..cccccccccc.cccc______cccccc..ooooooooooooccccow",
+   "ccccccccccccccccccccccccccccccc..ccc.cccccc..............ccc..ooooooooooooooooow",
+   "ccccccccccccLcccccccccccCcccccc..c...ccGccc...........ccccccc.ooooooooooooooooow",
+   "ccccccccccccDcccccccccccDcccccc..ccc!ccDccc..c___c....cJccccc...ooooooooooooooow",
+   "<.....!..............N....N...............c..)...(....cDccccc......oooo..Nooooow",
+   "<.........................................ccccc..(........ccc==...........ooooow",
+   "<.............................................(..c__c....Nccc=====........ooooow",
+   "cccc...........N..............................(.....(.....ccc=====...=....oooocc",
+   "cccc....cccccccccccccccccccccc................(.....(.....ccc====........ooocccc",
+   "cccccccc..cccc......ccccccc.....N.............c_____ccc..cccc==..........oooccoo",
+   "cccccccc..cKcc....ccccccccccc.......cccccc..........ccc..ccc=..........oooooccow",
+   "ccccccc...cDcc....ccccccccccc.......cccccc..........c=====............ooooooccow",
+   "ooccccc.........N.cccccFccccc.......cBcccc..........c==.........==...ooooooccoow",
+   "ooccccc...........cccccDccccc!.....!cDcccc.......cccc.........===....ooooooccoow",
+   ".occccc.................................NN.......c=..................oooooccooow",
+   ".occccc..........................................c=.....===.........coooooccooow",
+   ".occccc............................N........cccccc=......===........oooooooccoow",
+   ".occccc..cccccccccccccccNc..N...........ccccc=c===.......=====.....ooooooooccoow",
+   ".occccc..ccccccc~~~~oooooccc......ccccccc=========......===......oooooooo~c~ooow",
+   "oocccc!..ccccccc~~~~oooooooc......c=============.................oooooooocccooow",
+   "oooccc...cccMccc~~~~oooooooc......c=c==========.................coooooooocccooow",
+   "oooc.....cccDccc..~ooooooooc......c============....==............oooooooocccooow",
+   "oooc..............cooooooooccc......c=======c==....==............oooooooccooooow",
+   "oooc............N.cooooooooooc...........c=====.....=...c.c..c..~oooooooccooooow",
+   "oooccc..........N.coooooooooocc................c..........c.....cooccooccoooooow",
+   "ooooocccc.....cccccoooooooooooc.................................cccccccccoooooow",
+   "oooooooocccccccoooooooooooooooccccNN................ccccccc.....cccooccoooooooow",
+   "oooooooooooooooooooooooooooooooooccccccccccccccccccccooooocccccccoooooooooooooow",
+   "ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooow"
   ],
   "exits": {
    "<": "HOENN_ROUTE_121",
-   "w": "HOENN_ROUTE_124"
+   "w": "HOENN_ROUTE_124",
+   "n": "HOENN_TEAM_HIDEOUT"
   },
   "buildings": {
-   "U": "museum",
-   "M": "mart",
-   "A": "house",
+   "A": "dept",
    "B": "house",
-   "E": "house",
    "C": "center",
-   "F": "house",
+   "E": "museum",
+   "F": "contest",
    "G": "house",
+   "H": "house",
    "I": "house",
-   "Q": "contest",
+   "J": "house",
    "K": "house",
-   "P": "harbor"
+   "L": "house",
+   "M": "harbor"
   },
   "roofs": {
-   "U": [
-    112,
-    192,
-    160
-   ],
-   "M": [
-    184,
-    200,
-    224
-   ],
-   "A": [
-    64,
-    72,
-    104
-   ],
-   "B": [
-    64,
-    72,
-    104
-   ],
-   "E": [
-    64,
-    72,
-    104
-   ],
-   "C": [
-    200,
-    64,
-    80
-   ],
-   "F": [
-    64,
-    72,
-    104
-   ],
-   "G": [
-    64,
-    72,
-    104
-   ],
-   "I": [
-    64,
-    72,
-    104
-   ],
-   "K": [
-    232,
-    224,
-    160
-   ],
-   "P": [
-    232,
-    144,
-    112
-   ]
+   "_picture": {
+    "f": "em_ground/0_5.png",
+    "at": [
+     0,
+     0
+    ]
+   },
+   "_signs_in_picture": true,
+   "_buildings_in_picture": true
   },
   "people": [
+   {
+    "text": "Smart man",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "A good suit and a good Pokémon. Both should fit you perfectly."
+     ]
+    }
+   },
+   {
+    "text": "Art dealer",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "I deal in fine art, especially paintings. The Museum here has wonderful pieces."
+     ]
+    }
+   },
+   {
+    "text": "Lookout grunt",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Hey, you! Don't go near the cave in the cove! You've got no business there!"
+     ]
+    },
+    "condition": [
+     "not:aqua_hideout_cleared"
+    ],
+    "_look": "@grunt"
+   },
+   "Berry gentleman",
+   {
+    "text": "Tourist",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "I came all the way from Kanto. Hoenn is beautiful, with water everywhere you look."
+     ]
+    }
+   },
+   "Memory Girl",
+   {
+    "text": "Wailmer trainer",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "There! Wailmer! Leap out of the water! Nobody gets past our blockade!"
+     ]
+    },
+    "condition": [
+     "not:aqua_hideout_cleared"
+    ],
+    "_look": "@grunt"
+   },
+   {
+    "text": "Old fisherman",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "That cave in the cove was a natural one. Now someone's dug it out bigger."
+     ]
+    }
+   },
+   {
+    "text": "Curious boy",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Have you seen that strange cave across the cove at the edge of town?"
+     ]
+    }
+   },
+   {
+    "text": "Sailor",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "The team's training Wailmer out in the cove. We sailors can't get out to sea!"
+     ]
+    },
+    "condition": [
+     "not:aqua_hideout_cleared"
+    ]
+   },
+   {
+    "text": "Pokéblock fan",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Do you make Pokéblocks? Put Berries in your Pokéblock Kit and see what comes out!"
+     ]
+    }
+   },
+   {
+    "text": "Newlywed",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "We just arrived for our honeymoon. Lilycove is so lovely!"
+     ]
+    }
+   },
+   {
+    "text": "Honeymooner",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "On our honeymoon we're seeing all the rare Pokémon we can!"
+     ]
+    }
+   },
+   {
+    "text": "Dozing man",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "I was napping at the seaside inn to the sound of the waves... until the team showed up."
+     ]
+    }
+   },
    "The Collector",
-   "Team Hideout"
+   {
+    "text": "Contest fan",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "There's a Contest Hall right here in town. That means there are tough Pokémon about!"
+     ]
+    }
+   },
+   {
+    "text": "Old sailor",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "I heard there's a tower somewhere out on the sea routes. A pillar right up to the sky."
+     ]
+    }
+   },
+   {
+    "text": "Fisherman",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "I saw a tall tower out around Route 131. Could it be that pillar?"
+     ]
+    }
+   },
+   {
+    "text": "Old woman",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Sixty years ago, my husband proposed to me right here. The sea hasn't changed a bit."
+     ]
+    }
+   },
+   {
+    "text": "Old man",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "We grow old and wrinkled, but the sea stays forever young."
+     ]
+    }
+   }
   ],
   "signs": [
+   [
+    "MOVE DELETER'S HOUSE",
+    "Unwanted POKeMON moves deleted."
+   ],
    [
     "LILYCOVE MUSEUM"
    ],
    [
     "LILYCOVE DEPARTMENT STORE"
+   ],
+   [
+    "POKeMON TRAINER FAN CLUB",
+    "The names of TRAINERS are scribbled"
    ],
    [
     "LILYCOVE CITY",
@@ -79561,9 +79759,3848 @@
     "CONTEST HALL"
    ],
    [
+    "COVE LILY MOTEL",
+    "Remember us as COVE LILY of"
+   ],
+   [
     "LILYCOVE HARBOR"
    ]
-  ]
+  ],
+  "inside": {
+   "27,6": "dept",
+   "37,24": "motel",
+   "24,14": "center",
+   "11,5": "museum",
+   "12,5": "museum",
+   "23,24": "contest_lobby",
+   "39,14": "fan_club",
+   "36,6": "move_deleter",
+   "42,6": "house_kecleon",
+   "55,15": "house_sleepy",
+   "11,22": "pokeblock_house",
+   "12,14": "house_sea",
+   "12,32": "harbor"
+  },
+  "edge_to": {
+   "0,15": [
+    79,
+    5
+   ],
+   "0,16": [
+    79,
+    6
+   ],
+   "0,17": [
+    79,
+    7
+   ],
+   "79,10": [
+    0,
+    20
+   ],
+   "79,11": [
+    0,
+    21
+   ],
+   "79,12": [
+    0,
+    22
+   ],
+   "79,13": [
+    0,
+    23
+   ],
+   "79,14": [
+    0,
+    24
+   ],
+   "79,15": [
+    0,
+    25
+   ],
+   "79,16": [
+    0,
+    26
+   ],
+   "79,17": [
+    0,
+    27
+   ],
+   "79,21": [
+    0,
+    31
+   ],
+   "79,22": [
+    0,
+    32
+   ],
+   "79,23": [
+    0,
+    33
+   ],
+   "79,24": [
+    0,
+    34
+   ],
+   "79,25": [
+    0,
+    35
+   ],
+   "79,26": [
+    0,
+    36
+   ],
+   "79,27": [
+    0,
+    37
+   ],
+   "79,28": [
+    0,
+    38
+   ],
+   "79,29": [
+    0,
+    39
+   ],
+   "79,30": [
+    0,
+    40
+   ],
+   "79,31": [
+    0,
+    41
+   ],
+   "79,32": [
+    0,
+    42
+   ],
+   "79,33": [
+    0,
+    43
+   ],
+   "79,34": [
+    0,
+    44
+   ],
+   "79,35": [
+    0,
+    45
+   ],
+   "79,36": [
+    0,
+    46
+   ],
+   "79,37": [
+    0,
+    47
+   ],
+   "79,38": [
+    0,
+    48
+   ],
+   "79,39": [
+    0,
+    49
+   ]
+  },
+  "moves": {
+   "32,20": {
+    "m": "wander",
+    "d": "ud",
+    "r": [
+     0,
+     1
+    ]
+   },
+   "15,18": {
+    "m": "wander",
+    "d": "udlr",
+    "r": [
+     1,
+     1
+    ]
+   },
+   "28,28": {
+    "m": "look",
+    "d": "udlr"
+   },
+   "21,15": {
+    "m": "wander",
+    "d": "udlr",
+    "r": [
+     1,
+     1
+    ]
+   },
+   "16,9": {
+    "m": "wander",
+    "d": "lr",
+    "r": [
+     1,
+     0
+    ]
+   },
+   "35,27": {
+    "m": "wander",
+    "d": "udlr",
+    "r": [
+     1,
+     1
+    ]
+   },
+   "35,37": {
+    "m": "face",
+    "d": "d"
+   },
+   "34,37": {
+    "m": "face",
+    "d": "d"
+   },
+   "57,17": {
+    "m": "look",
+    "d": "udlr"
+   },
+   "50,7": {
+    "m": "wander",
+    "d": "udlr",
+    "r": [
+     1,
+     1
+    ]
+   },
+   "16,23": {
+    "m": "face",
+    "d": "r"
+   },
+   "41,25": {
+    "m": "face",
+    "d": "l"
+   },
+   "40,25": {
+    "m": "face",
+    "d": "r"
+   },
+   "16,34": {
+    "m": "face",
+    "d": "d"
+   },
+   "16,35": {
+    "m": "face",
+    "d": "u"
+   },
+   "38,9": {
+    "m": "face",
+    "d": "l"
+   },
+   "73,15": {
+    "m": "face",
+    "d": "r"
+   },
+   "26,15": {
+    "m": "face",
+    "d": "d"
+   }
+  },
+  "scenes": [
+   {
+    "trigger": {
+     "zone": [
+      28,
+      10,
+      34,
+      16
+     ]
+    },
+    "condition": [
+     "got_mt_pyre_orb",
+     "not:hoenn_rival_lilycove"
+    ],
+    "flag": "lilycove_rival_met",
+    "cast": [
+     {
+      "sheet": "@rival",
+      "from": [
+       27,
+       7
+      ],
+      "to": "player",
+      "leave": "back",
+      "event": {
+       "lines": [],
+       "flag": "hoenn_rival_lilycove",
+       "battle": {
+        "name": "{rival_name}",
+        "class": "RIVAL",
+        "sprite": "{rival_character}",
+        "is_boss_battle": true,
+        "team": [
+         277,
+         321,
+         286,
+         257
+        ],
+        "team_choice": {
+         "252": [
+          277,
+          321,
+          286,
+          257
+         ],
+         "255": [
+          277,
+          286,
+          219,
+          260
+         ],
+         "258": [
+          277,
+          219,
+          321,
+          254
+         ]
+        },
+        "levels": [
+         37,
+         37,
+         37,
+         39
+        ],
+        "movesets": {
+         "277": [
+          "DOUBLE-TEAM",
+          "AERIAL-ACE",
+          "QUICK-GUARD",
+          "AGILITY"
+         ],
+         "321": [
+          "REST",
+          "BRINE",
+          "WATER-SPOUT",
+          "AMNESIA"
+         ],
+         "286": [
+          "COUNTER",
+          "MACH-PUNCH",
+          "FORCE-PALM",
+          "MIND-READER"
+         ],
+         "257": [
+          "QUICK-ATTACK",
+          "BULK-UP",
+          "BLAZE-KICK",
+          "FOCUS-ENERGY"
+         ],
+         "219": [
+          "FLAME-BURST",
+          "ROCK-SLIDE",
+          "LAVA-PLUME",
+          "AMNESIA"
+         ],
+         "260": [
+          "MUD-BOMB",
+          "ROCK-SLIDE",
+          "PROTECT",
+          "MUDDY-WATER"
+         ],
+         "254": [
+          "AGILITY",
+          "SLAM",
+          "DUAL-CHOP",
+          "DETECT"
+         ]
+        },
+        "rewards": {
+         "balls": 10
+        },
+        "dialogue": {
+         "intro": [
+          "{rival_name}: {player_name}! {team} is hiding out near Lilycove!",
+          "{rival_name}: Before you go after them, battle me one more time!"
+         ],
+         "player_won": [
+          "{rival_name}: You're ready. Their hideout is in the cove east of town!"
+         ],
+         "player_lost": [
+          "{rival_name}: Not yet! Train a little more first."
+         ]
+        }
+       }
+      }
+     }
+    ]
+   }
+  ],
+  "barred": [
+   {
+    "tiles": [
+     [
+      70,
+      5
+     ]
+    ],
+    "look": "sheet:@grunt",
+    "face": "d",
+    "until": {
+     "flag_condition": "hoenn_rival_lilycove"
+    },
+    "lines": [
+     "Grunt: This cave's off limits! Scram!"
+    ]
+   },
+   {
+    "tiles": [
+     [
+      79,
+      10
+     ]
+    ],
+    "look": "mon:320",
+    "face": "l",
+    "until": {
+     "flag_condition": "aqua_hideout_cleared"
+    },
+    "lines": [
+     "The team's Wailmer block the way out to sea."
+    ]
+   },
+   {
+    "tiles": [
+     [
+      79,
+      11
+     ]
+    ],
+    "look": "mon:320",
+    "face": "l",
+    "until": {
+     "flag_condition": "aqua_hideout_cleared"
+    },
+    "lines": [
+     "The team's Wailmer block the way out to sea."
+    ]
+   },
+   {
+    "tiles": [
+     [
+      79,
+      12
+     ]
+    ],
+    "look": "mon:320",
+    "face": "l",
+    "until": {
+     "flag_condition": "aqua_hideout_cleared"
+    },
+    "lines": [
+     "The team's Wailmer block the way out to sea."
+    ]
+   },
+   {
+    "tiles": [
+     [
+      79,
+      13
+     ]
+    ],
+    "look": "mon:320",
+    "face": "l",
+    "until": {
+     "flag_condition": "aqua_hideout_cleared"
+    },
+    "lines": [
+     "The team's Wailmer block the way out to sea."
+    ]
+   },
+   {
+    "tiles": [
+     [
+      79,
+      14
+     ]
+    ],
+    "look": "mon:320",
+    "face": "l",
+    "until": {
+     "flag_condition": "aqua_hideout_cleared"
+    },
+    "lines": [
+     "The team's Wailmer block the way out to sea."
+    ]
+   },
+   {
+    "tiles": [
+     [
+      79,
+      15
+     ]
+    ],
+    "look": "mon:320",
+    "face": "l",
+    "until": {
+     "flag_condition": "aqua_hideout_cleared"
+    },
+    "lines": [
+     "The team's Wailmer block the way out to sea."
+    ]
+   },
+   {
+    "tiles": [
+     [
+      79,
+      16
+     ]
+    ],
+    "look": "mon:320",
+    "face": "l",
+    "until": {
+     "flag_condition": "aqua_hideout_cleared"
+    },
+    "lines": [
+     "The team's Wailmer block the way out to sea."
+    ]
+   },
+   {
+    "tiles": [
+     [
+      79,
+      17
+     ]
+    ],
+    "look": "mon:320",
+    "face": "l",
+    "until": {
+     "flag_condition": "aqua_hideout_cleared"
+    },
+    "lines": [
+     "The team's Wailmer block the way out to sea."
+    ]
+   }
+  ],
+  "overheads": [
+   {
+    "kind": "picture",
+    "f": "em_top/0_5.png",
+    "at": [
+     0,
+     0
+    ],
+    "size": [
+     80,
+     40
+    ]
+   }
+  ],
+  "rooms": {
+   "dept": {
+    "art": [
+     "cccccccccccccccccc",
+     "cccccccccccccccc<c",
+     "......mcNcNm......",
+     "......cmmmmc......",
+     "....N.............",
+     "cc............N...",
+     "..NN..............",
+     "cc......nn....c.cc"
+    ],
+    "exits": {
+     "n": "OUT:27,6",
+     "<": "ROOM:dept_2"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/13_16.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Store greeter",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Welcome to the Lilycove Department Store! Five floors and a rooftop. Enjoy!"
+       ]
+      }
+     },
+     {
+      "text": "Loto clerk",
+      "action": "EVENT",
+      "color": "GOLD",
+      "event": {
+       "lines": [
+        "Loto clerk: This is the Lottery Corner! One Loto Ticket a day.",
+        "Loto clerk: Let's compare today's number with your Pokémon's... We have a match!"
+       ],
+       "daily_gift": {
+        "key": "lilycove_loto_day",
+        "items": [
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "MOOMOO_MILK",
+         "RARE_CANDY",
+         "RARE_CANDY",
+         "RARE_CANDY",
+         "RARE_CANDY",
+         "RARE_CANDY",
+         "RARE_CANDY",
+         "RARE_CANDY",
+         "RARE_CANDY",
+         "RARE_CANDY",
+         "RARE_CANDY",
+         "RARE_CANDY",
+         "RARE_CANDY",
+         "RARE_CANDY",
+         "RARE_CANDY",
+         "RARE_CANDY",
+         "MASTER_BALL"
+        ],
+        "wait": [
+         "Loto clerk: You've drawn today's ticket already. Come back tomorrow!"
+        ]
+       }
+      }
+     },
+     {
+      "text": "Little girl",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Mom's buying me something nice today!"
+       ]
+      }
+     },
+     {
+      "text": "Happy shopper",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Every time I come here I end up buying far too much. It's so much fun!"
+       ]
+      }
+     },
+     {
+      "text": "Azumarill",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Azumarill: Marill-rill!"
+       ]
+      }
+     },
+     {
+      "text": "Contest lady",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "My Azumarill won a Contest, so I'm buying it a treat."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "8,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "10,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "14,5": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     },
+     "4,4": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     },
+     "3,6": {
+      "m": "look",
+      "d": "udlr"
+     },
+     "2,6": {
+      "m": "look",
+      "d": "udlr"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/13_16.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       18,
+       8
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Department Store 1F"
+   },
+   "dept_2": {
+    "art": [
+     "cccccccccccccccccc",
+     "ccccccccccccc<ccnc",
+     "........N.........",
+     "..................",
+     "..cc..........cc.c",
+     "N.cc..mmmmmm.Ncc..",
+     "..cc..mNccNm..cc..",
+     "......cccccc.....c"
+    ],
+    "exits": {
+     "n": "ROOM:dept",
+     "<": "ROOM:dept_3"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/13_17.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Wise shopper",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "An item is only as good as the Trainer using it. Learn when to use each one."
+       ]
+      }
+     },
+     {
+      "text": "Gift hunter",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "My husband is waiting at home. What would make a good present for him?"
+       ]
+      }
+     },
+     {
+      "text": "Traveller",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I'm off on a long journey soon, so I'm stocking up on everything."
+       ]
+      }
+     },
+     {
+      "text": "Travel clerk",
+      "action": "SHOP",
+      "stock": [
+       "ESCAPE_ROPE",
+       "REPEL",
+       "SUPER_REPEL",
+       "MAX_REPEL"
+      ]
+     },
+     {
+      "text": "Trainer clerk",
+      "action": "SHOP",
+      "stock": [
+       "POKE_BALLS",
+       "GREAT_BALL",
+       "ULTRA_BALL",
+       "POTION",
+       "SUPER_POTION",
+       "HYPER_POTION",
+       "MAX_POTION",
+       "REVIVE",
+       "ANTIDOTE",
+       "PARALYZE_HEAL",
+       "AWAKENING",
+       "BURN_HEAL",
+       "ICE_HEAL",
+       "FULL_HEAL"
+      ]
+     }
+    ],
+    "moves": {
+     "8,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "0,5": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     },
+     "13,5": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     },
+     "7,6": {
+      "m": "face",
+      "d": "u"
+     },
+     "10,6": {
+      "m": "face",
+      "d": "u"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/13_17.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       18,
+       8
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Department Store 2F"
+   },
+   "dept_3": {
+    "art": [
+     "cccccccccccccccccc",
+     "cccccccccccccncc<c",
+     "......mcNcNm......",
+     "......cmmmmc......",
+     "..cc..........cc..",
+     "N.cc.........Ncc..",
+     "..cc..........cc..",
+     ".......N.........."
+    ],
+    "exits": {
+     "n": "ROOM:dept_2",
+     "<": "ROOM:dept_4"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/13_18.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Department Store",
+     {
+      "text": "Battle clerk",
+      "action": "SHOP",
+      "stock": [
+       "X_ATTACK",
+       "X_DEFENSE",
+       "X_SP_ATK",
+       "X_SP_DEF",
+       "X_SPEED",
+       "X_ACCURACY",
+       "DIRE_HIT",
+       "GUARD_SPEC"
+      ]
+     },
+     {
+      "text": "Battle fan",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "X items only last one battle, but the right one at the right time turns it around!"
+       ]
+      }
+     },
+     {
+      "text": "Proud owner",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I used a Water Stone here and my Staryu became Starmie!"
+       ]
+      }
+     },
+     {
+      "text": "Careful buyer",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "A stone to evolve it now, or wait and let it learn more moves first? Hmm..."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "0,5": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     },
+     "7,7": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     },
+     "13,5": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     },
+     "10,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "8,2": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/13_18.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       18,
+       8
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Department Store 3F"
+   },
+   "dept_4": {
+    "art": [
+     "cccccccccccccccccc",
+     "ccccccccccccc<ccnc",
+     "N.....N...........",
+     "..................",
+     ".............N....",
+     ".cc...mmmmm..cccc.",
+     ".cc...mNcNm..cccc.",
+     "......ccccc......."
+    ],
+    "exits": {
+     "n": "ROOM:dept_3",
+     "<": "ROOM:dept_5"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/13_19.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Thinking man",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "An attacking move or a defending one? Choosing a TM is never easy."
+       ]
+      }
+     },
+     {
+      "text": "Catalogue reader",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "There are so many TMs. My catalogue lists more than a hundred!"
+       ]
+      }
+     },
+     {
+      "text": "TM collector",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I want every TM there is, but a Pokémon can only know four moves at once."
+       ]
+      }
+     },
+     {
+      "text": "Attack TM clerk",
+      "action": "SHOP",
+      "stock": [
+       "TM08",
+       "TM03",
+       "TM05",
+       "TM04"
+      ]
+     },
+     {
+      "text": "Defence TM clerk",
+      "action": "SHOP",
+      "stock": [
+       "TM25",
+       "TM19",
+       "TM18",
+       "TM17"
+      ]
+     }
+    ],
+    "moves": {
+     "0,2": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     },
+     "6,2": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     },
+     "13,4": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     },
+     "7,6": {
+      "m": "face",
+      "d": "u"
+     },
+     "9,6": {
+      "m": "face",
+      "d": "u"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/13_19.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       18,
+       8
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Department Store 4F"
+   },
+   "dept_5": {
+    "art": [
+     "cccccccccccccccccc",
+     "cccccccccccccncc<c",
+     ".....mcNcNcm......",
+     ".....cmmmmmc......",
+     "..cc..............",
+     "..cc..cc.Ncc..mmmm",
+     ".Ncc..cc..cc..mNcN",
+     ".......N......cccc"
+    ],
+    "exits": {
+     "n": "ROOM:dept_4",
+     "<": "ROOM:dept_roof"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/13_20.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Contest clerk",
+      "action": "SHOP",
+      "stock": [
+       "RED_POKEBLOCK",
+       "BLUE_POKEBLOCK",
+       "PINK_POKEBLOCK",
+       "GREEN_POKEBLOCK",
+       "YELLOW_POKEBLOCK"
+      ]
+     },
+     {
+      "text": "Doll clerk",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Dolls for your room! Today's are all on order, I'm afraid."
+       ]
+      }
+     },
+     {
+      "text": "Mat lover",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "All these mats... Which one should I get? Maybe all of them!"
+       ]
+      }
+     },
+     {
+      "text": "Small girl",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I'm too little to raise a Pokémon, so I'm getting a cute doll instead."
+       ]
+      }
+     },
+     {
+      "text": "Mat clerk",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Mats and cushions! A new delivery comes in soon."
+       ]
+      }
+     },
+     {
+      "text": "Poster clerk",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Posters of Pokémon! Sorry, we're restocking the shelves."
+       ]
+      }
+     },
+     {
+      "text": "Doting mother",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "So many cute dolls! Maybe I'll buy one for myself this time."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "1,6": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     },
+     "7,7": {
+      "m": "look",
+      "d": "dl"
+     },
+     "9,5": {
+      "m": "face",
+      "d": "r"
+     },
+     "7,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "9,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "15,6": {
+      "m": "face",
+      "d": "l"
+     },
+     "17,6": {
+      "m": "face",
+      "d": "u"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/13_20.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       18,
+       8
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Department Store 5F"
+   },
+   "dept_roof": {
+    "art": [
+     "cccccccccccccccccc",
+     "c.....N..cc.cccccc",
+     "c...........cccccc",
+     "ccc.........cnc..c",
+     "c...N...........cc",
+     "ccc..ccN.cc....Ncc",
+     "c................c",
+     "cccccccccccccccccc",
+     "cccccccccccccccccc",
+     "cccccccccccccccccc",
+     "cccccccccccccccccc",
+     "cccccccccccccccccc"
+    ],
+    "exits": {
+     "n": "ROOM:dept_5"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/13_21.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Rooftop stand",
+      "action": "SHOP",
+      "stock": [
+       "FRESH_WATER",
+       "SODA_POP",
+       "LEMONADE"
+      ]
+     },
+     {
+      "text": "Bargain hunter",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I'm waiting for the big clear-out sale up here. Things you can't buy anywhere else!"
+       ]
+      }
+     },
+     {
+      "text": "Thirsty boy",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I'm so thirsty... A cold Lemonade would hit the spot."
+       ]
+      }
+     },
+     {
+      "text": "Dreamer",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Looking out from up here, I wish there were two of me, to see twice as much!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "6,1": {
+      "m": "face",
+      "d": "d"
+     },
+     "4,4": {
+      "m": "face",
+      "d": "u"
+     },
+     "7,5": {
+      "m": "wander",
+      "d": "lr",
+      "r": [
+       1,
+       0
+      ]
+     },
+     "15,5": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/13_21.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       18,
+       12
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Department Store Rooftop"
+   },
+   "museum": {
+    "art": [
+     "ccccccccccccccccccccc",
+     "c!!cc!!cc!c!cccc<cc!!",
+     "..N...N......m.......",
+     "...........N.c.....N.",
+     ".............c.......",
+     "cccccccccc...........",
+     "cc!!cc!ccm...........",
+     ".........c...N.ccccc.",
+     "..NN.....c.....ccccc.",
+     "...............c!!!c.",
+     ".cmmmmc......N.......",
+     ".mccccm...........!..",
+     ".mcccNm........!.....",
+     ".cmmmmc..nn.........."
+    ],
+    "exits": {
+     "n": "OUT:12,5",
+     "<": "ROOM:museum_2"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/13_2.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Guide",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The museum is a favourite with tourists now. It's great for all of Hoenn!"
+       ]
+      }
+     },
+     {
+      "text": "Regular",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The curator has been in such a good mood lately."
+       ]
+      }
+     },
+     {
+      "text": "Eager visitor",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I heard new paintings arrived. Are they up on the second floor?"
+       ]
+      }
+     },
+     {
+      "text": "Young artist",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "One day I'll have a painting of my own hanging here."
+       ]
+      }
+     },
+     {
+      "text": "Art lover",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Battling is fun, but we mustn't forget our love of fine art."
+       ]
+      }
+     },
+     {
+      "text": "Museum boy",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "This lady is pretty! She looks like my mom!"
+       ]
+      }
+     },
+     {
+      "text": "Museum mom",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "This Pokémon is so sweet. Just like our little boy!"
+       ]
+      }
+     },
+     {
+      "text": "Painter",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The curator is a wonderful man. Every artist dreams of hanging their work here."
+       ]
+      }
+     },
+     "Lilycove Museum"
+    ],
+    "signs": [
+     [
+      "A strange landscape, like something out of a dream."
+     ],
+     [
+      "A strange landscape, like something out of a dream."
+     ],
+     [
+      "A painting of Berries. They look good enough to eat!"
+     ],
+     [
+      "A painting of Berries. They look good enough to eat!"
+     ],
+     [
+      "A very old painting. Its paint is flaking away in places."
+     ],
+     [
+      "A very old painting. Its paint is flaking away in places."
+     ],
+     [
+      "A legendary Pokémon of long ago. The artist painted it from the old stories."
+     ],
+     [
+      "A legendary Pokémon of long ago. The artist painted it from the old stories."
+     ],
+     [
+      "A smiling woman with a Pokémon curled up on her lap."
+     ],
+     [
+      "A smiling woman with a Pokémon curled up on her lap."
+     ],
+     [
+      "Grass Pokémon swaying in the wind, as if they were dancing."
+     ],
+     [
+      "A huge stone tablet, carved with Pokémon and old writing."
+     ],
+     [
+      "A huge stone tablet, carved with Pokémon and old writing."
+     ],
+     [
+      "A huge stone tablet, carved with Pokémon and old writing."
+     ],
+     [
+      "A big Poké Ball carved out of black stone. It's said to be very old."
+     ],
+     [
+      "A copy of a famous statue of an ancient bird Pokémon."
+     ]
+    ],
+    "moves": {
+     "13,7": {
+      "m": "face",
+      "d": "r"
+     },
+     "13,10": {
+      "m": "wander",
+      "d": "lr",
+      "r": [
+       2,
+       0
+      ]
+     },
+     "2,8": {
+      "m": "face",
+      "d": "u"
+     },
+     "3,8": {
+      "m": "face",
+      "d": "u"
+     },
+     "11,3": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     },
+     "19,3": {
+      "m": "face",
+      "d": "u"
+     },
+     "2,2": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       2,
+       2
+      ]
+     },
+     "6,2": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     },
+     "5,12": {
+      "m": "face",
+      "d": "r"
+     }
+    },
+    "barred": [
+     {
+      "tiles": [
+       [
+        16,
+        2
+       ]
+      ],
+      "look": "sheet:em_48.png",
+      "face": "d",
+      "until": {
+       "condition": [
+        "has_ribbon:*_MASTER"
+       ]
+      },
+      "lines": [
+       "Curator: Upstairs is our special hall. I'm saving it for portraits of Contest champions."
+      ]
+     }
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/13_2.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       21,
+       14
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Lilycove Museum"
+   },
+   "museum_2": {
+    "art": [
+     "cccccccccccccccccccccc",
+     "cccccccccccccncccccccc",
+     "cccc.......!...!..cccc",
+     ".......N..............",
+     "......................",
+     ".mccc....mccc....mccc.",
+     ".c!cc....c!cc.N..c!cc.",
+     "......................",
+     "..........N...........",
+     ".....mccc....mccc.....",
+     ".....c!cc....c!cc..N..",
+     "......................",
+     "......................"
+    ],
+    "exits": {
+     "n": "ROOM:museum"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/13_3.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Critic",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "So these are the Contest portraits. Rather charming, I must say."
+       ]
+      }
+     },
+     {
+      "text": "Admirer",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Paintings of your own Pokémon! Isn't that every Trainer's dream?"
+       ]
+      }
+     },
+     {
+      "text": "Curator",
+      "action": "EVENT",
+      "color": "GOLD",
+      "event": {
+       "requires": [
+        "has_ribbon:COOL_MASTER",
+        "has_ribbon:BEAUTY_MASTER",
+        "has_ribbon:CUTE_MASTER",
+        "has_ribbon:SMART_MASTER",
+        "has_ribbon:TOUGH_MASTER"
+       ],
+       "fail": [
+        "Curator: Your portraits bring in so many visitors! Win the Master Rank in all five kinds of Contest, and this hall will be complete."
+       ],
+       "lines": [
+        "Curator: All five portraits! The hall is complete, and it's all thanks to you.",
+        "Curator: Please take this. It's made from the same glass as our display cases."
+       ],
+       "gift_item": {
+        "GLASS_ORNAMENT": 1
+       },
+       "flag": "lilycove_museum_complete",
+       "done": [
+        "Curator: Visitors come from all over Hoenn to see your Pokémon's portraits."
+       ]
+      }
+     },
+     {
+      "text": "Returning visitor",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I've been away, and look at these new paintings! I wish someone would paint my Pokémon."
+       ]
+      }
+     }
+    ],
+    "signs": [
+     [
+      "A copy of a famous statue of an ancient bird Pokémon."
+     ],
+     [
+      "A copy of a famous statue of an ancient bird Pokémon."
+     ],
+     [
+      "An empty frame. A portrait of a Contest champion could hang here."
+     ],
+     [
+      "An empty frame. A portrait of a Contest champion could hang here."
+     ],
+     [
+      "An empty frame. A portrait of a Contest champion could hang here."
+     ],
+     [
+      "An empty frame. A portrait of a Contest champion could hang here."
+     ],
+     [
+      "An empty frame. A portrait of a Contest champion could hang here."
+     ]
+    ],
+    "moves": {
+     "10,8": {
+      "m": "face",
+      "d": "u"
+     },
+     "19,10": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     },
+     "7,3": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     },
+     "14,6": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     }
+    },
+    "barred": [
+     {
+      "tiles": [
+       [
+        2,
+        6
+       ]
+      ],
+      "look": "ribbon:COOL_MASTER",
+      "nudge": [
+       0.5,
+       0.05
+      ],
+      "when": {
+       "condition": [
+        "has_ribbon:COOL_MASTER"
+       ]
+      },
+      "lines": [
+       "A portrait of {ribbon_mon}, champion of the Cool Contest's Master Rank."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        10,
+        6
+       ]
+      ],
+      "look": "ribbon:BEAUTY_MASTER",
+      "nudge": [
+       0.5,
+       0.05
+      ],
+      "when": {
+       "condition": [
+        "has_ribbon:BEAUTY_MASTER"
+       ]
+      },
+      "lines": [
+       "A portrait of {ribbon_mon}, champion of the Beauty Contest's Master Rank."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        18,
+        6
+       ]
+      ],
+      "look": "ribbon:CUTE_MASTER",
+      "nudge": [
+       0.5,
+       0.05
+      ],
+      "when": {
+       "condition": [
+        "has_ribbon:CUTE_MASTER"
+       ]
+      },
+      "lines": [
+       "A portrait of {ribbon_mon}, champion of the Cute Contest's Master Rank."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        6,
+        10
+       ]
+      ],
+      "look": "ribbon:SMART_MASTER",
+      "nudge": [
+       0.5,
+       0.05
+      ],
+      "when": {
+       "condition": [
+        "has_ribbon:SMART_MASTER"
+       ]
+      },
+      "lines": [
+       "A portrait of {ribbon_mon}, champion of the Smart Contest's Master Rank."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        14,
+        10
+       ]
+      ],
+      "look": "ribbon:TOUGH_MASTER",
+      "nudge": [
+       0.5,
+       0.05
+      ],
+      "when": {
+       "condition": [
+        "has_ribbon:TOUGH_MASTER"
+       ]
+      },
+      "lines": [
+       "A portrait of {ribbon_mon}, champion of the Tough Contest's Master Rank."
+      ]
+     }
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/13_3.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       22,
+       13
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Lilycove Museum 2F"
+   },
+   "motel": {
+    "art": [
+     "cccccccccccc",
+     "cc<ccccccccc",
+     "............",
+     "..........N.",
+     "..cc....cc..",
+     "..cc....cc..",
+     "............",
+     "............",
+     ".....nn....."
+    ],
+    "exits": {
+     "n": "OUT:37,24",
+     "<": "ROOM:motel_2"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/13_0.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Motel owner",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Since that team moved into the cove, hardly anyone stays here.",
+        "A big group did book in upstairs, though. They called themselves Game Freak."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "10,3": {
+      "m": "face",
+      "d": "u"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/13_0.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       12,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Cove Lily Motel"
+   },
+   "motel_2": {
+    "art": [
+     "cccccccccccc",
+     "ccnccccccccc",
+     "............",
+     "..cc...NccN.",
+     ".NccN...cc..",
+     "............",
+     "..ccN...cc..",
+     ".Ncc...Ncc..",
+     "............"
+    ],
+    "exits": {
+     "n": "ROOM:motel"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/13_1.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Handheld gamer",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "You never know when someone will challenge you, so I always carry my game with me."
+       ]
+      }
+     },
+     {
+      "text": "Programmer",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I'm the programmer. I wonder what the slot machines are like around here."
+       ]
+      }
+     },
+     {
+      "text": "Graphic artist",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I'm the graphic artist! Aren't Hoenn's Pokémon interesting?"
+       ]
+      }
+     },
+     {
+      "text": "Sea lover",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The sea breeze tickles my heart. It's wonderful here!"
+       ]
+      }
+     },
+     {
+      "text": "Game designer",
+      "action": "EVENT",
+      "color": "GOLD",
+      "event": {
+       "requires": [
+        "hoenn_catch_143"
+       ],
+       "fail": [
+        "Game designer: I made the Hoenn Pokédex! Fill every page, and I'll have something for you."
+       ],
+       "lines": [
+        "Game designer: You've completed the Hoenn Pokédex! That's amazing!",
+        "Game designer: This Diploma is the proof. Congratulations!"
+       ],
+       "gift_item": {
+        "DIPLOMA": 1
+       },
+       "flag": "hoenn_diploma",
+       "done": [
+        "Game designer: A full Hoenn Pokédex... I still can't believe it!"
+       ]
+      }
+     },
+     {
+      "text": "Scott",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Scott: I came to check out the Contests. Winning one takes strategy, just like a battle."
+       ]
+      }
+     },
+     {
+      "text": "Double battle fan",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Double battles against Twins are the best! Two at once!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "4,6": {
+      "m": "face",
+      "d": "l"
+     },
+     "1,4": {
+      "m": "face",
+      "d": "r"
+     },
+     "7,7": {
+      "m": "face",
+      "d": "r"
+     },
+     "10,3": {
+      "m": "face",
+      "d": "l"
+     },
+     "7,3": {
+      "m": "face",
+      "d": "d"
+     },
+     "4,4": {
+      "m": "face",
+      "d": "l"
+     },
+     "1,7": {
+      "m": "face",
+      "d": "r"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/13_1.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       12,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Cove Lily Motel 2F"
+   },
+   "pokeblock_house": {
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "...........",
+     "..N........",
+     ".N.N.ccN...",
+     "..N..ccN...",
+     "...........",
+     "c..nn.....c"
+    ],
+    "exits": {
+     "n": "OUT:11,22"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/13_14.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Second",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "No, I'm going to win!"
+       ]
+      }
+     },
+     {
+      "text": "Eldest",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "We're having a Multi Battle, and I'm going to win!"
+       ]
+      }
+     },
+     {
+      "text": "Third",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "We mix Pokéblocks with Mom. What colour will come out?"
+       ]
+      }
+     },
+     {
+      "text": "Pokéblock Master",
+      "action": "EVENT",
+      "color": "PINK",
+      "event": {
+       "lines": [
+        "Pokéblock Master: Travelling alone at your age? Good for you! Let me teach you about Pokéblocks.",
+        "Each colour raises one condition: red Cool, blue Beauty, pink Cute, green Smart, yellow Tough.",
+        "Every Pokéblock adds sheen too. Once a Pokémon's sheen is full, it won't eat any more, so choose well!",
+        "Here, one of each to start you off."
+       ],
+       "gift_item": {
+        "RED_POKEBLOCK": 1,
+        "BLUE_POKEBLOCK": 1,
+        "PINK_POKEBLOCK": 1,
+        "GREEN_POKEBLOCK": 1,
+        "YELLOW_POKEBLOCK": 1
+       },
+       "flag": "got_pokeblock_master_gift",
+       "done": [
+        "Pokéblock Master: Feed the colour that matches the Contest you're entering. And mind the sheen!"
+       ]
+      }
+     },
+     {
+      "text": "Youngest",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Wait for me! I want to battle too!"
+       ]
+      }
+     },
+     {
+      "text": "Proud father",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "When my wife had quadruplets, I was shocked! Now I love watching them play together."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "7,4": {
+      "m": "face",
+      "d": "l"
+     },
+     "7,5": {
+      "m": "face",
+      "d": "l"
+     },
+     "1,4": {
+      "m": "face",
+      "d": "d"
+     },
+     "2,3": {
+      "m": "face",
+      "d": "d"
+     },
+     "3,4": {
+      "m": "face",
+      "d": "d"
+     },
+     "2,5": {
+      "m": "face",
+      "d": "u"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/13_14.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       11,
+       8
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Pokéblock Master's house"
+   },
+   "move_deleter": {
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "...........",
+     "...........",
+     "....Ncc....",
+     ".....cc....",
+     "...........",
+     "c..nn.....c"
+    ],
+    "exits": {
+     "n": "OUT:36,6"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/13_11.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Move Deleter",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Move Deleter: Hm? Oh, yes... I used to help Pokémon forget their moves.",
+        "Move Deleter: But, well... I forgot how to do that!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "4,4": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/13_11.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       11,
+       8
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Move Deleter's house"
+   },
+   "fan_club": {
+    "art": [
+     "cccccccccccc",
+     "cccccccccccc",
+     "............",
+     "....cccc....",
+     "....cccc....",
+     "...........N",
+     "............",
+     "ccc......ccc",
+     "ccc..N...ccc",
+     ".N..cccc....",
+     "...NccccN.N.",
+     "...N..NN....",
+     "............",
+     ".....nn....."
+    ],
+    "exits": {
+     "n": "OUT:39,14"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/13_9.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "TV fan",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "There's going to be a TV special on a famous Trainer soon. I hope you catch it!"
+       ]
+      }
+     },
+     {
+      "text": "Dreamy fan",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "My favourite Trainer is cool, strong and really kind... I wish someone like that would come by."
+       ]
+      }
+     },
+     {
+      "text": "Loyal fan",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Whatever the others say, I've picked my favourite. I'll cheer for them no matter what!"
+       ]
+      }
+     },
+     {
+      "text": "Battle watcher",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The tougher the fight, the better a Trainer looks. I can't wait for the next big battle!"
+       ]
+      }
+     },
+     {
+      "text": "Rumour fan",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I keep hearing about a tough new Trainer beating Gym Leaders. Know anything about that?"
+       ]
+      }
+     },
+     {
+      "text": "Stern fan",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "True strength isn't only winning. It's how you win, and what you learn when you lose."
+       ]
+      }
+     },
+     {
+      "text": "Brawly's fan",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "My favourite Trainer is Dewford's Gym Leader, Brawly! ...Though you're catching up fast."
+       ]
+      }
+     },
+     {
+      "text": "Club president",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "We all love battles here. We argue every day about who the strongest Trainer is.",
+        "Become famous, and we might just start cheering for you!"
+       ]
+      }
+     },
+     {
+      "text": "Young fan",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "When I grow up I want to be a strong Trainer. Strong like a Gym Leader!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "3,11": {
+      "m": "face",
+      "d": "u"
+     },
+     "8,10": {
+      "m": "face",
+      "d": "l"
+     },
+     "6,11": {
+      "m": "face",
+      "d": "u"
+     },
+     "5,8": {
+      "m": "face",
+      "d": "d"
+     },
+     "7,11": {
+      "m": "face",
+      "d": "u"
+     },
+     "1,9": {
+      "m": "face",
+      "d": "d"
+     },
+     "3,10": {
+      "m": "face",
+      "d": "r"
+     },
+     "10,10": {
+      "m": "face",
+      "d": "l"
+     },
+     "11,5": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/13_9.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       12,
+       14
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Pokémon Trainer Fan Club"
+   },
+   "house_kecleon": {
+    "art": [
+     "cccccccccc",
+     "cccccccccc",
+     "........cc",
+     "..........",
+     "..ccN.....",
+     "..ccN.....",
+     "..........",
+     "..........",
+     "...nn....c"
+    ],
+    "exits": {
+     "n": "OUT:42,6"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/13_12.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Kecleon",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Kecleon: Ruroro?"
+       ]
+      }
+     },
+     {
+      "text": "Kind man",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Pokémon are our partners, not our tools. Sadly, some people never understand that."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "4,5": {
+      "m": "face",
+      "d": "l"
+     },
+     "4,4": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/13_12.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       10,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "House"
+   },
+   "house_sleepy": {
+    "art": [
+     "cccccccc",
+     "cccccccc",
+     "........",
+     ".cc.....",
+     "Ncc.....",
+     "........",
+     "........",
+     "..nn...."
+    ],
+    "exits": {
+     "n": "OUT:55,15"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/13_13.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Sleepy man",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Sleepy man: Yawn... Sleep is the best medicine. Sleep and you get better...",
+        "Sleepy man: Huh? I'm not awake yet... Here, take this."
+       ],
+       "gift_item": {
+        "TM21": 1
+       },
+       "flag": "got_tm21_lilycove",
+       "done": [
+        "Sleepy man: Rest heals your Pokémon completely... but then it falls asleep. Zzz..."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "0,4": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "theme": "room",
+    "title": "House"
+   },
+   "house_sea": {
+    "art": [
+     "cccccccccc",
+     "cccccccccc",
+     "........cc",
+     "..........",
+     ".Ncc...N..",
+     "..cc......",
+     "..........",
+     "..........",
+     "...nn....c"
+    ],
+    "exits": {
+     "n": "OUT:12,14"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/13_15.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Sea dreamer",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Someone said the planet's biggest mysteries lie at the bottom of the sea. I wonder..."
+       ]
+      }
+     },
+     {
+      "text": "Trench talker",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "There's a deep trench under the sea between Mossdeep and Sootopolis. So I've heard, anyway."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "1,4": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     },
+     "7,4": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/13_15.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       10,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "House"
+   },
+   "contest_lobby": {
+    "art": [
+     "ccccccccccccccccccccccccccccccc",
+     "ccccccccc<ccccccccccc<ccccccccc",
+     "...........mccNNccc............",
+     "...........cmmmmmmc.......NNN..",
+     "...N...........................",
+     ".......................c..Nc...",
+     ".....N.........................",
+     "........N.................NNN..",
+     "N.................N....N.......",
+     "....N.................NcN.NcN..",
+     ".........N.....................",
+     "..............nn..............."
+    ],
+    "exits": {
+     "n": "OUT:23,24",
+     "<": "ROOM:contest_hall"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/13_4.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Prize desk",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Congratulations to every winner! Your prizes are handed out here after each Contest."
+       ]
+      }
+     },
+     "Contest Hall",
+     {
+      "text": "Wowed boy",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Whoa! Awesome!"
+       ]
+      }
+     },
+     {
+      "text": "Fast fan",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "That was so fast!"
+       ]
+      }
+     },
+     {
+      "text": "Impressed boy",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "What an expert!"
+       ]
+      }
+     },
+     {
+      "text": "Feast for the eyes",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Coming to a Contest is a treat! Look at all these Pokémon!"
+       ]
+      }
+     },
+     {
+      "text": "Berry lady",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I always carry Berries, just in case. Pokéblocks are so much fun to make."
+       ]
+      }
+     },
+     {
+      "text": "Hopeful entrant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I've cared for this Pokémon every single day. Its condition is perfect. Today I win!"
+       ]
+      }
+     },
+     {
+      "text": "Family blender",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I made Pokéblocks with my whole family. They came out great!"
+       ]
+      }
+     },
+     {
+      "text": "Blend watcher",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Watch how he times every turn of the blender. Like clockwork!"
+       ]
+      }
+     },
+     {
+      "text": "Gossip",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "They say the Blend Master trains deep in the mountains and only visits now and then."
+       ]
+      }
+     },
+     {
+      "text": "Lucky girl",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I blended with the Blend Master once. We made amazing Pokéblocks!"
+       ]
+      }
+     },
+     {
+      "text": "Tough fan",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Tough Contest is wild! All those powerful appeals... I love it!"
+       ]
+      }
+     },
+     {
+      "text": "Cute fan",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Master Rank, here I come! Everyone will see my Pokémon is the cutest of all!"
+       ]
+      }
+     },
+     {
+      "text": "Eager blender",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Come on, let's start blending already!"
+       ]
+      }
+     },
+     {
+      "text": "Daily stroller",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "You see all kinds of Pokémon here. I make it part of my walk every day."
+       ]
+      }
+     },
+     {
+      "text": "Friendly blender",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "You look like you'd be good at blending. Want to join us?"
+       ]
+      }
+     },
+     {
+      "text": "Excited kid",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I wonder what colour of Pokéblock I'll get? This is so exciting!"
+       ]
+      }
+     },
+     {
+      "text": "Speedy blender",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Today's the day I set a new record for blending Berries!"
+       ]
+      }
+     },
+     {
+      "text": "Sweet maker",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I'm making tasty Pokéblocks so my Pokémon gets even cuter."
+       ]
+      }
+     },
+     {
+      "text": "Case girl",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The lady at the counter gave me a case for my Pokéblocks! Yippee!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "14,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "26,9": {
+      "m": "face",
+      "d": "r"
+     },
+     "18,8": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     },
+     "4,9": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       2,
+       2
+      ]
+     },
+     "3,4": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     },
+     "23,8": {
+      "m": "face",
+      "d": "d"
+     },
+     "28,9": {
+      "m": "face",
+      "d": "l"
+     },
+     "5,6": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     },
+     "0,8": {
+      "m": "face",
+      "d": "r"
+     },
+     "8,7": {
+      "m": "wander",
+      "d": "ud",
+      "r": [
+       0,
+       1
+      ]
+     },
+     "22,9": {
+      "m": "face",
+      "d": "r"
+     },
+     "26,5": {
+      "m": "face",
+      "d": "r"
+     },
+     "24,9": {
+      "m": "face",
+      "d": "l"
+     },
+     "27,3": {
+      "m": "face",
+      "d": "d"
+     },
+     "28,3": {
+      "m": "face",
+      "d": "d"
+     },
+     "28,7": {
+      "m": "face",
+      "d": "u"
+     },
+     "26,7": {
+      "m": "face",
+      "d": "u"
+     },
+     "27,7": {
+      "m": "face",
+      "d": "u"
+     },
+     "26,3": {
+      "m": "face",
+      "d": "d"
+     },
+     "9,10": {
+      "m": "face",
+      "d": "r"
+     },
+     "15,2": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/13_4.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       31,
+       12
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Contest Hall"
+   },
+   "contest_hall": {
+    "art": [
+     "ccccccccccccccccccccccccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccccccccccccccccccccccccc",
+     "cccccccccc...............................cccccccccc",
+     "cccccccccc...............................cccccccccc",
+     "ccccc.........................................ccccc",
+     "ccccc......N......ccccccccccccccc.............ccccc",
+     "..................c.......N.....c.......N..........",
+     "........c.........c..ccccccccc..c.........c........",
+     "..................c.Nc..N..N.c..c..................",
+     "..c..c............c..c.......cN.c............c..c..",
+     "..................c..c.......c..c..................",
+     "..................c..cN.N.N.Nc..c..................",
+     "..................c..ccc...ccc..c..................",
+     "..................c.............c..................",
+     "..................ccccc!...!ccccc..................",
+     "...................................................",
+     "...................................................",
+     "......ccccccccccccccc.........ccccccccccccccc......",
+     "......c......N......c.........c......N......c......",
+     "......c..ccccccccc..c.........c..ccccccccc..c......",
+     "......c.Nc..N..N.c..c.........c..c..N..N.c..c......",
+     "......c..c.......c..c.........c.Nc.......c..c......",
+     "......c.Nc.......cN.c.........c..c.......cN.c......",
+     "......c..cN.N.N.Nc..c.........c..cN.N.N.Nc..c......",
+     "......c..ccc...ccc..c..N......c..ccc...ccc..c......",
+     "......c.............c.........c.............c......",
+     "......ccccc!...!ccccc.........ccccc!...!ccccc......",
+     "...................................................",
+     "..............................N....................",
+     "...................................................",
+     "...c...c...c.......nn.........nn.......c...c...c..."
+    ],
+    "exits": {
+     "n": "ROOM:contest_lobby"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/13_5.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Contest regular",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Cool moves do best in a Cool Contest, beautiful ones in a Beauty Contest. Match them up!"
+       ]
+      }
+     },
+     {
+      "text": "Glitz lover",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Ha ha! Look at all those pretty Pokémon! I love this glitz!"
+       ]
+      }
+     },
+     {
+      "text": "Pokéblock wonderer",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The winner earlier had loads of Pokéblocks. Is that the secret?"
+       ]
+      }
+     },
+     {
+      "text": "Glad winner",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Winning a Beauty Contest makes me happier than winning a battle."
+       ]
+      }
+     },
+     {
+      "text": "Beauty MC",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "MC: Entering the Beauty Contest too? Good luck!"
+       ]
+      }
+     },
+     {
+      "text": "Beauty judge",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Judge: Such beautiful Pokémon! I almost forgot to give scores!"
+       ]
+      }
+     },
+     {
+      "text": "Grooming tip",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Beauty alone won't win. Keep your Pokémon glossy, like mine!"
+       ]
+      }
+     },
+     {
+      "text": "Proud beauty",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "There's no Pokémon as beautiful as mine. All eyes will be on it."
+       ]
+      }
+     },
+     {
+      "text": "Over-groomer",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I brushed my Pokémon so hard its coat got all fluffy. Oh no..."
+       ]
+      }
+     },
+     {
+      "text": "Aurora fan",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "My Aurora Beam is so dazzling the judge won't even see it! ...Wait, that's bad."
+       ]
+      }
+     },
+     {
+      "text": "Fond lady",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "This pretty Pokémon looks just like me when I was young!"
+       ]
+      }
+     },
+     {
+      "text": "Honest boy",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I think the Pokémon look smarter than their Trainers. By a lot."
+       ]
+      }
+     },
+     {
+      "text": "Puzzled man",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "That girl over there is the cutest... What, they're judging the Pokémon?"
+       ]
+      }
+     },
+     {
+      "text": "Move watcher",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Even with the same Pokémon, every Trainer uses different moves to appeal."
+       ]
+      }
+     },
+     {
+      "text": "Smart MC",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "MC: Smart Pokémon and their Trainers, are you ready? Let's appeal!"
+       ]
+      }
+     },
+     {
+      "text": "Smart judge",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Judge: Enjoying the Contest? Clever appeals always catch my eye."
+       ]
+      }
+     },
+     {
+      "text": "Cute MC",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "MC: We're in the middle of a Contest! Sign up at the counter in the lobby first, okay?"
+       ]
+      }
+     },
+     {
+      "text": "Cute judge",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Judge: What charming, adorable appeals! Wonderful!"
+       ]
+      }
+     },
+     {
+      "text": "Cheering mom",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "My child is on stage! Go for it, dear! Your Pokémon is the best!"
+       ]
+      }
+     },
+     {
+      "text": "Grandchild",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "You're amazing, Grandpa!"
+       ]
+      }
+     },
+     {
+      "text": "Green fan",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I love Smart Contests. That clever green colour... so lovely."
+       ]
+      }
+     },
+     {
+      "text": "Inspired girl",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "All these cute Pokémon make me want my own! I'm going to catch some!"
+       ]
+      }
+     },
+     {
+      "text": "Wrong entrant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Oh no... I entered my tough Pokémon in the Smart Contest by mistake!"
+       ]
+      }
+     },
+     {
+      "text": "Wise entrant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Years of wisdom went into raising this Pokémon. It won't lose easily."
+       ]
+      }
+     },
+     {
+      "text": "Hopeful entrant 2",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "One more smart move and the crowd will go wild!"
+       ]
+      }
+     },
+     {
+      "text": "Zubat's Trainer",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "My Zubat's Leech Life is so cute I kept using it... and the crowd got bored!"
+       ]
+      }
+     },
+     {
+      "text": "Azurill's Trainer",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Oh no... My Azurill got distracted by another Pokémon."
+       ]
+      }
+     },
+     {
+      "text": "Contest star",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "My Pokémon never wins battles, but in a Contest, watch out!"
+       ]
+      }
+     },
+     {
+      "text": "Petal dancer",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "My Pokémon's Petal Dance is pure elegance. Nobody had better interrupt!"
+       ]
+      }
+     },
+     {
+      "text": "Cute entrant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Everyone's Pokémon is cute, but one cute appeal from mine and it's over!"
+       ]
+      }
+     },
+     {
+      "text": "Wide-eyed sailor",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "This place is huge! The tension in the air... Nothing like a small-town hall."
+       ]
+      }
+     },
+     {
+      "text": "Double winner",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "My Pokémon won the Beauty Contest before, and today it won the Smart Contest too!"
+       ]
+      }
+     }
+    ],
+    "signs": [
+     [
+      "Beauty Contest stage: lovely Pokémon only!"
+     ],
+     [
+      "Beauty Contest stage: lovely Pokémon only!"
+     ],
+     [
+      "Smart Contest stage: clever Pokémon at work!"
+     ],
+     [
+      "Smart Contest stage: clever Pokémon at work!"
+     ],
+     [
+      "Cute Contest stage: prepare to be charmed!"
+     ],
+     [
+      "Cute Contest stage: prepare to be charmed!"
+     ]
+    ],
+    "moves": {
+     "30,30": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       4,
+       4
+      ]
+     },
+     "11,7": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       3,
+       3
+      ]
+     },
+     "40,8": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       2,
+       2
+      ]
+     },
+     "12,22": {
+      "m": "face",
+      "d": "d"
+     },
+     "15,22": {
+      "m": "face",
+      "d": "d"
+     },
+     "10,25": {
+      "m": "face",
+      "d": "u"
+     },
+     "12,25": {
+      "m": "face",
+      "d": "u"
+     },
+     "14,25": {
+      "m": "face",
+      "d": "u"
+     },
+     "16,25": {
+      "m": "face",
+      "d": "u"
+     },
+     "8,24": {
+      "m": "face",
+      "d": "r"
+     },
+     "18,24": {
+      "m": "face",
+      "d": "l"
+     },
+     "8,22": {
+      "m": "face",
+      "d": "r"
+     },
+     "24,10": {
+      "m": "face",
+      "d": "d"
+     },
+     "27,10": {
+      "m": "face",
+      "d": "d"
+     },
+     "22,13": {
+      "m": "face",
+      "d": "u"
+     },
+     "24,13": {
+      "m": "face",
+      "d": "u"
+     },
+     "26,13": {
+      "m": "face",
+      "d": "u"
+     },
+     "28,13": {
+      "m": "face",
+      "d": "u"
+     },
+     "20,10": {
+      "m": "face",
+      "d": "r"
+     },
+     "30,11": {
+      "m": "face",
+      "d": "l"
+     },
+     "26,8": {
+      "m": "face",
+      "d": "d"
+     },
+     "13,20": {
+      "m": "face",
+      "d": "d"
+     },
+     "36,22": {
+      "m": "face",
+      "d": "d"
+     },
+     "39,22": {
+      "m": "face",
+      "d": "d"
+     },
+     "34,25": {
+      "m": "face",
+      "d": "u"
+     },
+     "36,25": {
+      "m": "face",
+      "d": "u"
+     },
+     "38,25": {
+      "m": "face",
+      "d": "u"
+     },
+     "40,25": {
+      "m": "face",
+      "d": "u"
+     },
+     "32,23": {
+      "m": "face",
+      "d": "r"
+     },
+     "37,20": {
+      "m": "face",
+      "d": "d"
+     },
+     "42,24": {
+      "m": "face",
+      "d": "l"
+     },
+     "23,26": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/13_5.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       51,
+       33
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Contest Hall stages"
+   },
+   "center": {
+    "art": [
+     "cccccccccccccc",
+     "cccccccccccccc",
+     "....cccNcc....",
+     "....cccmcc....",
+     "..............",
+     "..............",
+     "c<.........cc.",
+     "..........Ncc.",
+     "c.....nn...N.c"
+    ],
+    "exits": {
+     "n": "OUT:24,14",
+     "<": "ROOM:center_2"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/13_6.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Heal",
+     {
+      "text": "Dreaming boy",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "How many kinds of Pokémon are out there? I'd love to cross the sea and trade for them all."
+       ]
+      }
+     },
+     {
+      "text": "Wary hiker",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I've heard about scoundrels who steal Pokémon and break off pieces of meteorites."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "10,7": {
+      "m": "face",
+      "d": "r"
+     },
+     "11,8": {
+      "m": "face",
+      "d": "u"
+     },
+     "7,2": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/13_6.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       14,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Pokémon Center"
+   },
+   "center_2": {
+    "art": [
+     "cccccccccccccc",
+     "cccccccccccccc",
+     "cNNcccNcccNcc.",
+     "mmmcmcmmccmmc.",
+     "........c...c.",
+     "..............",
+     "cn............",
+     "..............",
+     "..............",
+     "c....cc..cc..c"
+    ],
+    "exits": {
+     "n": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/13_7.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Gift attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Mystery gifts arrive here sometimes. There's nothing waiting for you today."
+       ]
+      }
+     },
+     {
+      "text": "Link attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I'm sorry, the link rooms are closed for adjustments right now."
+       ]
+      }
+     },
+     {
+      "text": "Trade attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Trading here is closed for now. Sorry about that!"
+       ]
+      }
+     },
+     {
+      "text": "Record attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The record corner is being adjusted. Please come back another time."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "2,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "6,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "10,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "1,2": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/13_7.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       14,
+       10
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Pokémon Center 2F"
+   },
+   "harbor": {
+    "art": [
+     "cccccccccccccccccccccccc",
+     "cccccccccccccccccccccccc",
+     "cccccccccccccccccccccccc",
+     "cccccccccccccccccccccccc",
+     "...ccccccccccccccccccccc",
+     "...c~~~~~~~~~~~~~~~~~~~~",
+     "...c~~~~~~~~~~~~~~~~~~~~",
+     "...c~~~~~~~~~~~~~~~~~~~~",
+     "...c~~~~~~~~~~~~~~~~~~~~",
+     "...c~~~~~~~~~~~~~~~~~~~~",
+     "...cccc.Nccccccccccccccc",
+     ".................ccccccc",
+     ".................ccccccc",
+     "...N.............ccccccc",
+     "...........nn....ccccccc"
+    ],
+    "exits": {
+     "n": "OUT:12,32"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/13_10.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "door:harbor",
+     {
+      "text": "Idle sailor",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The S.S. Tidal sails at last. The shipyard in Slateport must have worked overtime!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "3,13": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     },
+     "8,10": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/13_10.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       24,
+       15
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Lilycove Harbour"
+   }
+  }
  },
  "HOENN_ROUTE_122": {
   "art": [
@@ -83437,6 +87474,566 @@
    "Team Grunt (lobby)": 0,
    "Admin Tabitha": 1,
    "Team Grunt (upstairs)": 1
+  }
+ },
+ "HOENN_TEAM_HIDEOUT": {
+  "floors": [
+   {
+    "art": [
+     "cccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccc1ccccc",
+     "cccccccc.....cc..........ccc",
+     "cccccc...................ccc",
+     "ccccc...............X.....cc",
+     "ccccc...cccccccccccc......cc",
+     "ccccc...cccccccccccc......cc",
+     "cccc....cccccccccccc......cc",
+     "ccc.....cccccccccccc.....ccc",
+     "cc.......................ccc",
+     "cc.......................ccc",
+     "cc...cccccccc.Xcccccccc..ccc",
+     "cc...cccccccc..cccccccc..ccc",
+     "cc...ccoooooooooooooocc...cc",
+     "cc...ccoooooooooooooocc...cc",
+     "cc...ccoooooooooooooocc...cc",
+     "cccc.ccoooooooooooooocc...cc",
+     "cccc......~ooooo~.........cc",
+     "cc........coooooc.........cc",
+     "cc...ccccccoooooccccccc.cccc",
+     "cc...ccoooooooooooooocc.cccc",
+     "cc...ccoooooooooooooocc...cc",
+     "cc...ccoooooooooooooocc...cc",
+     "cccc.ccoooooooooooooocc...cc",
+     "cccc.ccoooooooooooooocc.cccc",
+     "cc.........~ooo~........cccc",
+     "cc.........coooc..........cc",
+     "cccccccccccconnccccccccccccc",
+     "cccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccc"
+    ],
+    "exits": {
+     "n": "LILYCOVE_CITY"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/24_23.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "trainer_spots": [
+     "Team Grunt (1F)",
+     "Team Grunt (entrance)"
+    ],
+    "links": {
+     "22,1": [
+      1,
+      29,
+      1
+     ]
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/24_23.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       28,
+       30
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "ccccccccccccccccccccccccccccccccccccccccccccccccccc",
+     "cccccccccccc1ccccc1cccccccccc1ccccccccccccccccccccc",
+     "cccccccc......c......cccccc.....ccccccccccc...ccccc",
+     "ccc1cccc......c......cccccc.....ccccccccccc..1ccccc",
+     "c....cc.......c.....1..ccc.1...1.cccccccc.......ccc",
+     "c.............c..........c.......cccccccc.1..1..1.c",
+     "c.............ccccccccccccccccccccccccccccccccccccc",
+     "c....ccc......ccccccccccccccccccccccccccccccccccccc",
+     "c.............ccc.cc...ccc...cccccccccccccccccccccc",
+     "c.......ccc...cNN.cc.....c...cccccccccccc.1..1..1.c",
+     "c.............cNN......1.c...cccccccccccccccccccccc",
+     "c.............c..........c....cc.cccccccccccccccccc",
+     "cccccccccccccccccccccccccc.1.....cccccccccccccccccc",
+     "cccccccccccccccccccccccccc.......cccccccc.1..1..1.c",
+     "c........................cccccccccccccccccccccccccc",
+     "c..1.............cc...ccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccc...ccc...X....cccccccccccccccccc",
+     "cccccccccccccccc.................cccccccc.1..1..1.c",
+     "cccccccccccccccc.................cccccccc.........c",
+     "cccccccccccccccc.cc...cccc......1cccccccccccccccccc",
+     "c..1.............................cccccccccccccccccc",
+     "c................................cccccccccccccccccc",
+     "ccccccccccccccccccccccccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccccccccccccccccccccccccc"
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/24_24.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "MASTER BALL",
+     "POKE BALL",
+     "POKE BALL ",
+     "NUGGET"
+    ],
+    "trainer_spots": [
+     "Team Grunt (B1F)"
+    ],
+    "links": {
+     "29,1": [
+      0,
+      22,
+      1
+     ],
+     "18,1": [
+      2,
+      18,
+      1
+     ],
+     "12,1": [
+      2,
+      12,
+      1
+     ],
+     "3,3": [
+      2,
+      3,
+      3
+     ],
+     "31,4": [
+      1,
+      27,
+      12
+     ],
+     "27,4": [
+      1,
+      3,
+      15
+     ],
+     "20,4": [
+      1,
+      32,
+      19
+     ],
+     "27,12": [
+      1,
+      31,
+      4
+     ],
+     "3,15": [
+      1,
+      27,
+      4
+     ],
+     "3,20": [
+      1,
+      45,
+      3
+     ],
+     "32,19": [
+      1,
+      20,
+      4
+     ],
+     "23,10": [
+      1,
+      42,
+      17
+     ],
+     "45,3": [
+      1,
+      3,
+      20
+     ],
+     "42,5": [
+      1,
+      48,
+      9
+     ],
+     "45,5": [
+      1,
+      45,
+      3
+     ],
+     "48,5": [
+      1,
+      42,
+      9
+     ],
+     "42,9": [
+      1,
+      48,
+      5
+     ],
+     "45,9": [
+      1,
+      45,
+      13
+     ],
+     "48,9": [
+      1,
+      42,
+      5
+     ],
+     "42,13": [
+      1,
+      48,
+      17
+     ],
+     "45,13": [
+      1,
+      45,
+      9
+     ],
+     "48,13": [
+      1,
+      45,
+      3
+     ],
+     "42,17": [
+      1,
+      23,
+      10
+     ],
+     "45,17": [
+      1,
+      45,
+      9
+     ],
+     "48,17": [
+      1,
+      42,
+      13
+     ]
+    },
+    "moves": {
+     "15,9": {
+      "m": "look",
+      "d": "udlr"
+     },
+     "16,9": {
+      "m": "look",
+      "d": "udlr"
+     },
+     "15,10": {
+      "m": "look",
+      "d": "udlr"
+     },
+     "16,10": {
+      "m": "look",
+      "d": "udlr"
+     }
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/24_24.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       51,
+       24
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "cccccccccccccccccccccccccccccccccc",
+     "cccccccccccc1ccccc1ccccccccccccccc",
+     "ccccccccc.....c.....cccc..cccc...c",
+     "ccc1ccc.......c.....cccc..cccc...c",
+     "c.....c.......c.....cccc..cccc...c",
+     "c.....c......Xc......cc....cc....c",
+     "c.cc..c....cccc..................c",
+     "c.ccc.c.......c..cc..............c",
+     "c.ccc1c.1.....c..cc.ccc..ccccc.1.c",
+     "c.....c.......c......cc..cc.cc...c",
+     "ccccccccccccccc........X.........c",
+     "ccccccccccccccc..................c",
+     "c.............c........c.........c",
+     "c..N........1.c...1...cc.........c",
+     "c.............c......ccccccccccccc",
+     "ccccccccccccccc......ccccccccccccc",
+     "cooooooooooooo.ccccccccc.........c",
+     "cooooooooooooooooooooooc.......1.c",
+     "cooooooooooooooooooooooc.....ccccc",
+     "cooooooooooooooooooooooN.....ccccc",
+     "cooooooooooooooooooooooc.....cc.1c",
+     "cooooooooooooooooooooooc.........c",
+     "cooooooooooooooooooooooccccccccccc",
+     "cccccccccccccccccccccccccccccccccc"
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/24_25.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "SHARPEDONITE",
+     {
+      "text": "Grunt",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Hehehe! The Boss is already on his way to a cave under the sea!"
+       ]
+      },
+      "_look": "@grunt"
+     }
+    ],
+    "trainer_spots": [
+     "Team Grunt (sub room)",
+     "Admin Matt"
+    ],
+    "links": {
+     "18,1": [
+      1,
+      18,
+      1
+     ],
+     "12,1": [
+      1,
+      12,
+      1
+     ],
+     "3,3": [
+      1,
+      3,
+      3
+     ],
+     "31,8": [
+      2,
+      5,
+      8
+     ],
+     "8,8": [
+      2,
+      31,
+      17
+     ],
+     "5,8": [
+      2,
+      31,
+      8
+     ],
+     "18,13": [
+      2,
+      12,
+      13
+     ],
+     "12,13": [
+      2,
+      18,
+      13
+     ],
+     "31,17": [
+      2,
+      8,
+      8
+     ],
+     "32,20": [
+      1,
+      31,
+      4
+     ]
+    },
+    "moves": {
+     "23,19": {
+      "m": "face",
+      "d": "l"
+     },
+     "3,13": {
+      "m": "look",
+      "d": "udlr"
+     }
+    },
+    "scenes": [
+     {
+      "trigger": {
+       "zone": [
+        15,
+        12,
+        19,
+        13
+       ]
+      },
+      "condition": [
+       "not:hideout_horde_beaten"
+      ],
+      "flag": "hideout_horde_beaten",
+      "cast": [
+       {
+        "sheet": "@grunt",
+        "from": [
+         28,
+         11
+        ],
+        "to": [
+         16,
+         11
+        ],
+        "leave": "back",
+        "lines": [
+         "Grunt: There's the kid! Everybody, get over here!"
+        ]
+       },
+       {
+        "sheet": "@grunt_f",
+        "from": [
+         29,
+         11
+        ],
+        "to": [
+         17,
+         11
+        ],
+        "leave": "back",
+        "concurrent": true
+       },
+       {
+        "sheet": "@grunt",
+        "from": [
+         30,
+         11
+        ],
+        "to": [
+         18,
+         11
+        ],
+        "leave": "back",
+        "concurrent": true
+       },
+       {
+        "sheet": "@grunt_f",
+        "from": [
+         31,
+         11
+        ],
+        "to": [
+         19,
+         11
+        ],
+        "leave": "back",
+        "concurrent": true
+       },
+       {
+        "sheet": "@grunt",
+        "from": [
+         32,
+         11
+        ],
+        "to": "player",
+        "leave": "back",
+        "lines": [
+         "Grunt: Five of us against one kid! Let's see you get past this!"
+        ],
+        "event": {
+         "lines": [],
+         "flag": "hideout_horde_beaten",
+         "battle": {
+          "name": "{team} Grunts",
+          "class": "ROCKET",
+          "sprite": "aqua_grunt.png",
+          "villain": "grunt",
+          "team": [
+           261,
+           261,
+           261,
+           261,
+           261
+          ],
+          "levels": [
+           18,
+           18,
+           18,
+           18,
+           18
+          ],
+          "rewards": {
+           "balls": 2
+          },
+          "dialogue": {
+           "player_won": [
+            "Grunts: Five of us, and we still lost?! Somebody tell the Admin!"
+           ],
+           "player_lost": [
+            "Grunts: Ha! That's teamwork for you!"
+           ]
+          }
+         }
+        }
+       }
+      ]
+     }
+    ],
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/24_25.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       34,
+       24
+      ]
+     }
+    ]
+   }
+  ],
+  "floor_names": [
+   "1F",
+   "B1F",
+   "B2F"
+  ],
+  "figure_floors": {
+   "MASTER BALL": 1,
+   "NUGGET": 1,
+   "POKE BALL": 1,
+   "POKE BALL ": 1,
+   "SHARPEDONITE": 2,
+   "Team Grunt (1F)": 0,
+   "Team Grunt (entrance)": 0,
+   "Team Grunt (B1F)": 1,
+   "Team Grunt (sub room)": 2,
+   "Admin Matt": 2
   }
  },
  "TWINLEAF_TOWN": {
