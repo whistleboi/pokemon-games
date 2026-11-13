@@ -373,6 +373,18 @@ def _run_story_event(state, key, check, show):
     if ev.get("trivia"):  # Mossdeep's Hex Maniac: a daily question about one of your badges (Jordan, 11-13)
         _badge_trivia(state, lines, show)
         return
+    if ev.get("craft"):  # made from what you bring (Shoal Cave's old man: four Shoal Salt and four Shoal Shells, a Shell Bell)
+        cr = ev["craft"]   # {"needs": {item: count}, "gives": item}
+        if any(story.inventory.get(k, 0) < n for k, n in cr["needs"].items()):
+            show(_resolve_lines(game, ev.get("fail") or ["You don't have everything that's needed yet."]))
+            return
+        for k, n in cr["needs"].items():
+            story.inventory[k] -= n
+            if story.inventory[k] <= 0:
+                story.inventory.pop(k, None)
+        story.inventory[cr["gives"]] = story.inventory.get(cr["gives"], 0) + 1
+        from src.pokemon import forms as _forms
+        lines.append(f"{game.player_name} received the {_forms.item_label(cr['gives']).upper()}!")
     if ev.get("swap"):  # a trade of items (Route 124's Treasure Hunter: a Shard for its evolution stone), as often as you like
         have = next((k for k in ev["swap"] if story.inventory.get(k, 0) > 0), None)
         if have is None:

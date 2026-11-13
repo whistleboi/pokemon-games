@@ -202,6 +202,13 @@ def held_pointer():
     return None
 
 
+def high_tide(now=None):
+    """Shoal Cave's tide (the games: in from 3:00 to 9:00 and from 15:00 to 21:00, real time)."""
+    import datetime as _dt
+    h = (now or _dt.datetime.now()).hour
+    return 3 <= h < 9 or 15 <= h < 21
+
+
 def scene_sheet(game, token):
     """("mon:<species>" passes through: a Pokemon walking in a scene.) A scene's walking sheet: a file ("em_64.png"), or a token for someone who depends on the save (Jordan, 11-12):
     "@rival" (this save's rival, from trainers_<REGION>: Hoenn's Brendan or May), "@grunt" / "@grunt_f" (a villain of
@@ -668,6 +675,10 @@ class DungeonState(OverworldBattles, PlayState):
                     fwd.append(target)
             exits_by_floor = {k: (v[0], v[1]) for k, v in by.items()}
             story.story_flags[f"zone_{self.area_key}"] = self.zones[start * self.per_floor]
+
+        tides = (recipe.get("art") or {}).get("tides")  # (Shoal Cave: the sea in or out, by the clock: its high- or low-tide rooms)
+        if tides:
+            start = int(tides["high" if high_tide() else "low"].get(str(start), start))
 
         gate = self.recipe.get("gate")  # (a way out hidden till a switch is pushed: the Game Corner's stairs behind its poster)
         if gate and (entrance == gate.get("target") or any(story.story_flags.get(k) for k in gate.get("open_if", ()))):

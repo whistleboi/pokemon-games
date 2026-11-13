@@ -1394,5 +1394,43 @@ story.player_team = _team13
 story.inventory.clear(); story.inventory.update(_inv13)
 story.story_flags.clear(); story.story_flags.update(_saved13)
 
+# ---- batch 14: Shoal Cave and its tides
+_saved14, _inv14 = dict(story.story_flags), dict(story.inventory)
+from src.states.overworld import dungeon as _dg14
+_ht = _dg14.high_tide
+story.inventory["HM_SURF"] = 1
+_dg14.high_tide = lambda now=None: False
+st = open_map("HOENN_SHOAL_CAVE", "HOENN_ROUTE_125")
+_low = st.run.index
+_dg14.high_tide = lambda now=None: True
+st = open_map("HOENN_SHOAL_CAVE", "HOENN_ROUTE_125")
+_high = st.run.index
+_dg14.high_tide = _ht
+check(_low == 0 and _high == 5 and "Route 125" not in st._floor_name(5) and "high" in st._floor_name(5),
+      f"Shoal Cave: walking in at low tide you find the dry entrance; at high tide, the flooded one ({_low}, {_high})")
+check(_dg14.high_tide(__import__("datetime").datetime(2026, 1, 1, 4)) and not _dg14.high_tide(__import__("datetime").datetime(2026, 1, 1, 10)),
+      "Shoal Cave: high tide from 3:00 to 9:00 and 15:00 to 21:00 (real time)")
+_sc = json.load(open("assets/town_maps.json", encoding="utf-8"))["HOENN_SHOAL_CAVE"]["floors"]
+check(all(v[0] in (5, 6) for v in _sc[6].get("links", {}).values()) and any(v[0] in (2, 3) for v in _sc[1].get("links", {}).values()),
+      "Shoal Cave: the ladders down to its lower rooms are only above water at low tide")
+st.run.enter_floor(0); frames(2)
+_mk = next(m.payload for f in st.run.floors for m in f.movers if isinstance(m.payload, dict) and m.payload.get("text") == "Shell Bell maker ")
+from src.states.overworld.common import _run_story_event
+story.inventory.update({"SHOAL_SALT": 4, "SHOAL_SHELL": 3}); story.inventory.pop("SHELL_BELL", None)
+_run_story_event(st, _mk["event"], lambda c: True, lambda l, **k: None); tap(st)
+_none14 = story.inventory.get("SHELL_BELL")
+story.inventory["SHOAL_SHELL"] = 4
+_run_story_event(st, _mk["event"], lambda c: True, lambda l, **k: None); tap(st)
+check(not _none14 and story.inventory.get("SHELL_BELL") == 1 and not story.inventory.get("SHOAL_SALT"),
+      "Shoal Cave: the old man makes a Shell Bell from four Shoal Salt and four Shoal Shells")
+_salt = next(o for o in json.load(open("assets/town_maps.json", encoding="utf-8"))["HOENN_SHOAL_CAVE"]["floors"][2]["people"] if isinstance(o, dict) and o.get("text") == "SHOAL SALT")
+story.story_flags.pop("shoal_salt_1", None)
+_run_story_event(st, _salt["event"], lambda c: True, lambda l, **k: None); tap(st)
+_one = story.inventory.get("SHOAL_SALT", 0)
+_run_story_event(st, _salt["event"], lambda c: True, lambda l, **k: None); tap(st)
+check(_one == 2 and story.inventory.get("SHOAL_SALT") == 2, "Shoal Cave: Shoal Salt to pick up again each day")
+story.inventory.clear(); story.inventory.update(_inv14)
+story.story_flags.clear(); story.story_flags.update(_saved14)
+
 story.story_flags.clear(); story.story_flags.update(_saved)
 print(f"##### {len(fails)} failures")

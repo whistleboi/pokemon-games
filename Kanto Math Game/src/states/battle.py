@@ -1511,6 +1511,9 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, GameState)
         if damage >= defender_hp > 1 and self.vol(defender).get("endure"):
             damage = defender_hp - 1
             lines.append(f"{def_label} endured the hit!")
+        if damage >= defender_hp > 1 and attacker is not defender and getattr(defender, "held_item", None) == "FOCUS_BAND"                 and random.random() < 0.1:  # (a held Focus Band: now and then it hangs on at 1 HP)
+            damage = defender_hp - 1
+            lines.append(f"{def_label} hung on using its Focus Band!")
         if landed > 1:
             lines.append(f"Hit {landed} times!")
         # Drain (Giga Drain +50) heals the user; negative drain is recoil (Take Down -25).
@@ -1522,6 +1525,9 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, GameState)
             self._adjust_hp(attacker, amount if drain > 0 else -amount)
             lines.append(f"{def_label} had its energy drained!" if drain > 0
                          else f"{att_label} is damaged by recoil!")
+        if damage and attacker is not defender and getattr(attacker, "held_item", None) == "SHELL_BELL":  # (a held Shell Bell: an eighth of the damage back)
+            self._adjust_hp(attacker, max(1, min(damage, defender_hp) // 8))
+            lines.append(f"{att_label} restored a little HP using its Shell Bell!")
         if weather_mult == 0:
             lines.append(self.FIZZLE_TEXT.get(self.weather, "But it failed!"))
         else:

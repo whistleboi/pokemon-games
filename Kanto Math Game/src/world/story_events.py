@@ -16,6 +16,7 @@ Each entry is keyed by the button's "target". Fields (all optional):
   trade     {"want": species, "give": species, "item": held}: your first Pokemon they want, for theirs (same level)
   daily_gift  {"key", "items", "order", "wait"}: one of these a day (in turn, or at random)
   swap      {item: item}: trade the first of these you have for its pair (the Treasure Hunter's Shards), any number of times
+  craft     {"needs": {item: count}, "gives": item}: made from what you bring (Shoal Cave's Shell Bell)
   badges    true: says which of this region's badges you have (Mossdeep's Hex Maniac)
   block_taste  true: the Pokeblock colour your first Pokemon likes, from its type
   memory    true: the Memory Girl reads your first Pokemon's journey (where you met, its wins, catches, ribbons)

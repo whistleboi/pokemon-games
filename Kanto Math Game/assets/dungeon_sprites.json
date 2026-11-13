@@ -2139,6 +2139,30 @@
     },
     "HOENN_ROUTE_124:Treasure Hunter": {
       "sheet": "em_66.png"
+    },
+    "HOENN_SHOAL_CAVE:Shell Bell maker": {
+      "sheet": "em_21.png"
+    },
+    "HOENN_SHOAL_CAVE:Black Belt": {
+      "sheet": "em_44.png"
+    },
+    "HOENN_SHOAL_CAVE:Shell Bell maker ": {
+      "sheet": "em_21.png"
+    },
+    "HOENN_SHOAL_CAVE:RARE CANDY": {
+      "item": "RARE_CANDY"
+    },
+    "HOENN_SHOAL_CAVE:ICE HEAL": {
+      "item": "ICE_HEAL"
+    },
+    "HOENN_SHOAL_CAVE:TM27 ICY WIND": {
+      "item": "TM27"
+    },
+    "HOENN_SHOAL_CAVE:TM35 HAIL": {
+      "item": "TM35"
+    },
+    "HOENN_SHOAL_CAVE:NEVER-MELT ICE": {
+      "item": "NEVER_MELT_ICE"
     }
   },
   "townsperson": "NPC 17.png",
