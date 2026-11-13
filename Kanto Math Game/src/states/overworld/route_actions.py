@@ -82,6 +82,23 @@ class RouteActions:
             lines.append("Youngest sister: I'll have another Berry for you tomorrow!")
         self.show_dialogue(lines, callback=self.show_progression_menu)
 
+    def visit_berry_boy(self):
+        """Route 114's rich boy outside Lanette's house (ORAS "A Berry A Day"): one of five Berries, once a day."""
+        from src.world import berries
+        self.is_progression_paused = True
+        self.hide_menu_buttons()
+        story = self.game.story_manager
+        today = datetime.date.today().isoformat()
+        if story.story_flags.get("route114_berry_day") == today:
+            lines = ["Berry boy: That's today's Berry! Come back tomorrow for another."]
+        else:
+            story.story_flags["route114_berry_day"] = today
+            b = random.choice(("RAZZ_BERRY", "BLUK_BERRY", "NANAB_BERRY", "WEPEAR_BERRY", "PINAP_BERRY"))
+            story.inventory[b] = story.inventory.get(b, 0) + 1
+            lines = ["Berry boy: I love Berries, so I collect them! Here, have one.",
+                     f"{self.game.player_name} received {berries.a(berries.name(b)).upper()}!"]
+        self.show_dialogue(lines, callback=self.show_progression_menu)
+
     def action_pick_berries(self):
         """Berry trees: once a day per route, pick a few of the berries that grow here."""
         from src.pokemon.poffin import berry_name

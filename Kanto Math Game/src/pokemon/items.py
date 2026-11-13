@@ -27,6 +27,7 @@ MEDICINE = {
     "BURN_HEAL": {"cure": ["burn"], "price": 200, "text": "Heals a burn."},
     "ICE_HEAL": {"cure": ["freeze"], "price": 200, "text": "Thaws out a frozen Pokemon."},
     "FULL_HEAL": {"cure": "all", "price": 400, "text": "Cures any status condition."},
+    "LAVA_COOKIE": {"cure": "all", "price": 200, "text": "Mt. Chimney's own treat, baked with volcanic ash. Cures any status condition."},
     "REVIVE": {"revive": 0.5, "price": 2000, "text": "Revives a fainted Pokemon with half its HP."},
     "MAX_REVIVE": {"revive": 1.0, "price": 4000, "text": "Revives a fainted Pokemon with all its HP."},
     "RARE_CANDY": {"price": 10000, "text": "Raises a Pokemon's level by one."},

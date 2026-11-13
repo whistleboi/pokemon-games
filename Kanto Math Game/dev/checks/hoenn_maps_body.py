@@ -620,6 +620,73 @@ check(story.story_flags.get("heard_cozmo") and any("Meteor Falls" in x for x in 
 if _had_str is not None:
     story.inventory["HM_STRENGTH"] = _had_str
 
+# ---- batch 7: Route 114, Meteor Falls, Route 115, Mt. Chimney (ORAS, parts 8-9)
+_rep = getattr(story, "repel_routes", 0)
+story.repel_routes = 9   # (no wild Pokemon in the way of the scenes)
+for _k in ("meteor_falls_cleared", "route114_rival_race", "got_tm_dig_114", "route114_berry_day", "meteor_falls_rival_joins",
+           "meteor_falls_other_leader", "mt_chimney_boss_defeated", "mt_chimney_other_leader", "cozmo_thanked"):
+    story.story_flags.pop(_k, None)
+story.story_flags["heard_cozmo"] = True
+_tm15 = story.inventory.pop("TM15", None)
+st = open_map("HOENN_ROUTE_114", "FALLARBOR_TOWN")
+st.run.player, st.facing = (29, 6), (0, -1)
+st._read_sign(); tap(st)
+check(story.inventory.get("TM15", 0) > 0, "Route 114: the Fossil Maniac's little brother gives you TM15 (Dig)")
+st.run.player, st.facing = (27, 37), (0, -1)
+st._read_sign()
+check(st.dialogue_box.visible and "Lanette" in " ".join(st.dialogue_box.text_lines), f"Route 114: Lanette at home ({st.dialogue_box.text_lines[:1]})")
+tap(st)
+_bb = next(m for m in st.run.floor.movers if m.kind == "figure" and isinstance(m.payload, dict) and m.payload.get("text") == "Berry boy")
+st._use_figure(_bb)
+check(story.story_flags.get("route114_berry_day") and "Berry" in " ".join(st.dialogue_box.text_lines), "Route 114: the rich boy gives a Berry a day")
+tap(st)
+st, said = _scene("HOENN_ROUTE_114", "FALLARBOR_TOWN", at=(25, 43), step=(0, 1))
+check(story.story_flags.get("route114_rival_race") and any("Meteor Falls" in x for x in said), f"Route 114: your rival saw them take the Professor into Meteor Falls ({said[:1]})")
+st, said = _scene("HOENN_METEOR_FALLS", "HOENN_ROUTE_114", at=(19, 18), step=(-1, 0))
+_f0 = _tm["HOENN_METEOR_FALLS"]["floors"][0]
+check(story.story_flags.get("meteor_falls_rival_joins") and {"Admin Tabitha", "Team Magma Grunt"} <= set(_f0.get("trainer_spots", [])),
+      f"Meteor Falls: by the falls the Admin and her Grunts hold Professor Cozmo; your rival catches up and heals you ({said[:1]})")
+st, said = _scene("HOENN_METEOR_FALLS", "HOENN_ROUTE_114", ["meteor_falls_cleared"])
+check(story.story_flags.get("meteor_falls_other_leader") and any("Mt. Chimney" in x for x in said) and not any("{" in x for x in said),
+      f"Meteor Falls: after the Admin, the other team's leader turns up, and your rival takes Cozmo home ({said[:1]})")
+st, said = _scene("HOENN_MT_CHIMNEY", "HOENN_ROUTE_112", ["mt_chimney_boss_defeated"])
+check(story.story_flags.get("mt_chimney_other_leader") and any("orbs" in x for x in said) and set(_tm["HOENN_MT_CHIMNEY"].get("trainer_spots", [])) >= {"Team Leader", "Team Admin"},
+      f"Mt. Chimney: the Admin and the leader on the summit; after him, the other team's leader worries about the orbs ({said[:1]})")
+_mf = _tm["HOENN_METEOR_FALLS"]
+check(len(_mf["floors"]) == 4 and _mf["floors"][0].get("parts") and _mf.get("figure_floors", {}).get("THE MILLENNIUM COMET") == 3,
+      "Meteor Falls: four floors from Emerald (no Steven's room); 1F's pockets reached from B1F; the comet's Jirachi in the deepest room")
+story.repel_routes = _rep
+if _tm15 is None:
+    story.inventory.pop("TM15", None)
+
+# after Meteor Falls (ORAS): Cozmo's thanks (TM100 Smack Down: a story gift, never sold), your rival's offer to go
+# back to Mauville together; Mt. Chimney's Lava Cookies
+from src.pokemon import tms as _tms, items as _items
+for _k in ("cozmo_thanked", "rival_mauville_ride"):
+    story.story_flags.pop(_k, None)
+story.story_flags["meteor_falls_cleared"] = True
+_t100 = story.inventory.pop("TM100", None)
+st = open_map("FALLARBOR_TOWN", "HOENN_ROUTE_114")
+_cz = next(o for o in st._door_options("cozmo") if o.get("target") == "professor_cozmo")
+st._get_callback_for_option(_cz)(); tap(st)
+check(story.inventory.get("TM100", 0) > 0 and _tms.move_of(g, "TM100") == "SMACK-DOWN" and "TM100" not in _tms.mart_stock(g, 8),
+      "Fallarbor: Professor Cozmo thanks you with TM100 Smack Down (a story gift: not in any Mart)")
+st = open_map("FALLARBOR_TOWN", "HOENN_ROUTE_114")
+_rr = st._door_options("rivalride")
+_shown_rival = any((o.get("any") or [o])[0].get("door") == "rivalride" for o in st._people().values() if isinstance(o, dict))
+st._get_callback_for_option(_rr[0])()
+frames(3)
+check(_shown_rival and len(_rr) == 2 and type(g.current_state).__name__ == "AreaTransitionState" and getattr(g.current_state, "next_area_key", None) == "MAUVILLE_CITY",
+      f"Fallarbor: your rival waits outside Cozmo's house and takes you back to Mauville if you like ({[o.get('text') for o in _rr]})")
+st = open_map("HOENN_MT_CHIMNEY", "HOENN_ROUTE_112")
+_lady = next(m for m in st.run.floor.movers if m.kind == "figure" and isinstance(m.payload, dict) and m.payload.get("text") == "Lava Cookie lady")
+st._use_figure(_lady)
+check(type(g.current_state).__name__ == "PokeMartState" and getattr(g.current_state, "stock", None) == ["LAVA_COOKIE"] and _items.price("LAVA_COOKIE") == 200
+      and _items.MEDICINE["LAVA_COOKIE"].get("cure") == "all", "Mt. Chimney: the Lava Cookie lady sells Lava Cookies (200; they cure any status)")
+g.change_state(st)
+if _t100 is None:
+    story.inventory.pop("TM100", None)
+
 # ---- Berries (11-12): soft soil from Emerald's own Berry trees; pick, plant, water, grow on the clock
 from src.world import berries as _berries
 import time as _time

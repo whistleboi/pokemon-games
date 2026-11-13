@@ -75517,7 +75517,7 @@
    "<....cccc..N..cDcccc",
    "<....cEcc..........c",
    ".....cDcc.........cc",
-   "c................ccc",
+   "c......N.........ccc",
    "cccc..........cccccc"
   ],
   "exits": {
@@ -75569,7 +75569,8 @@
       "Have you battled Flannery at the Lavaridge Gym? Her grandfather was a famous Gym Leader too."
      ]
     }
-   }
+   },
+   "door:rivalride"
   ],
   "signs": [
    [
@@ -75757,112 +75758,122 @@
  },
  "HOENN_ROUTE_114": {
   "art": [
-   "TTTTTTTTTTTTTTTTTcccccTTTccccccccccccccc",
-   "TTTTTTTTTTTTTTTTccccccTTcccccccccccccccc",
-   "TTTTTcccccccccccccccccccccccFFFFcccccccc",
-   "TTTTccccccccccccccccccccccccFFFFTTTTTTTT",
-   "TTTTcccccTTTTcccccccccccccccFFFFT=T=T=T=",
-   "TTTTccccTTTTTTTTTTTcccccccccFDFFffffffff",
-   "TTTTcccTTTTTooooooTccccc========fTTffTTf",
-   "ccccccccTTTTooTcccccccc========!ffTfffTf",
-   "ccccccccTTooTcccccccccc==oo=====ffffffff",
-   "cccccccccTooTcccccccccc==oo============>",
-   "ccccccccc$$$$cccccc====================>",
-   "ccccccccc$$$$ccccTT=============ffffffff",
-   "cccTTTTcc$$$$ccccT==============fTffffTf",
-   "cccTTTTTTooooTTT================fTTffTTf",
-   "cccTTTTTTToo=TTTT=o=========T=====ffffff",
-   "cccTTTTTTooo=T=T==o=====ooo=TTT======TT=",
-   "TTTTTTTToooo============ooo==T==TT==TTTT",
-   "oTTooTTTToooo====TT=====ooo==TT=TTTTTTTT",
-   "oTTTTTTTToooooo=TTTT====ooo==T==TTTTTTTT",
-   "TTTTTTTTToooooo=TTT==========TT=TTTTTTTT",
-   "TTTTTTTTToooooo==T=========c=TTTTTTTTTTT",
-   "cTTTTTTTTooooooo===eeee=======TTTTTTTTTT",
-   "e=TTTTTXoooooooooooeeeeoooooooTTTTTTTTTT",
-   "ee=T=T==oooooooooooeeeeoooooooTTTTTTTTTT",
-   "eeeeee==oooooooooooeeeeoooooooTTTTTTTTTT",
-   "ceeeee==ooTTTToooooeeeeoooooooTTTTTTTTTo",
-   "ceeeee==ooTTTToooooeeeeoooooooTTTTTTTTee",
-   "eeceee==ooTTTToooooeeeeoooooooooooeeeeee",
-   "eeceeec=oocTTcoooooeeeeooooooooooceeecee",
-   "eeeceec=oooooooooooeeeeooooooooooceeecee",
-   "eeeceec=oooooooooooeeeeooooooooooceeecee",
-   "eeeceec.oooooooooooeeeeooooooooooceceeee",
-   "eeeceec.oooooooooooeeeeooooooooooceceece",
-   "eeeceec........ooooeeee..LLLLL...ceceece",
-   "eeeeeceeee...............LLLLL\"\".ceceece",
-   "eeeceeeeeec..............LLLLL\"\"\"cececee",
-   "ceecceeeeec.e............LLDLL.\"\"cececee",
-   "eeceeeeceec.ec..........c......\"\"cececee",
-   "eeceeeecceecec...........!.......cececee",
-   "eeceeeecccecec.......\"cc.........cececee",
-   "eeceeeecccecec..X...\"\"\"..........cececee",
-   "ecceeeecccecec.......\"\"cc........cececee",
-   "cceeeeecccecec.c..\"\"\"\"\"\"\"........cececee",
-   "ceeeeeccccecec....\"\"\"\"\"\".........cececee",
-   "ceeccccccceceee...\"\"\"\"\"..........cececee",
-   "cecccccccceceeee..\"\"\"\"...........cececee",
-   "cecccccccccceeeec.\"\".............cececee",
-   "eccccceeccceeeeec............c..eeeeecee",
-   "ecccceecceeeeeeec............eeeceeeeeee",
-   "eccccceceeeeeceec\"\"\"........cceeeceeeeee",
-   "eccccceeeeeeec\"\"\"\"\"\"cc.....ccceeceeeeeee",
-   "eccccceeeeeeec\"\"\"\"\"\"\"\".....cccccceeeeeee",
-   "ecccccecceeeec\"\"\"\"\"\"\"\"\"....cceecceeeeeee",
-   "ecccccccceeeeeee.\"\"\"\"\"\".eeeeceecceeeeeee",
-   "eccceceeeceeeeeec\"\"\"\"\"\"cceeeeeeccceeeece",
-   "ecceeeeceeeceeeeee.\"\"\"\"cceXeeeeccceeeece",
-   "eceeeeccceeeeceeeec\"\"\"\"cceeeeeecccceeece",
-   "eeeeeccceeececeeeec.\".\"cceeceeecccceecee",
-   "eeeeecccceeccceeeeeeeeeeeeeceeeeecceecee",
-   "eeeeecccceeccceeeeeeeeeeeeeceeeeecceecee",
-   "eeeccccccecccceeeXeeeeeeeeeceeeeecceecee",
-   "eeccccccccccceeeeeeeeceeeeceeeeeccceecee",
-   "eeccccccccccceceeeeeccceeeeceeeeccceecee",
-   "eecccccc^cceccceeeeeeeeecccceeeeccceecee",
-   "eeccccc!eeeeceeeeeeeeeeecccceeecccceceee",
-   "eeccccceeeecceeeeeeeeeeeeeceeeeccceeceee",
-   "eeccccceeeecceeeeeceeceeeecceeeccceeceee",
-   "eecccccceeecceeccceeeceeeecceeeccceeceee",
-   "eecccccceeecceeecceecceeeecceeecceeeceee",
-   "eecceeceeeeeceecccceceeceecceeecceeceeee",
-   "eecececceeeeeeeccccccecceeeceeecceeceeee",
-   "eecececceeeeeeeccceeeecceecceeecceeceeee",
-   "eececeeeceeeeeecccceeccceeeeeeeccceeeeee",
-   "eeceeececceeeeeceeceeccceeeeeeceeceeeeee",
-   "eeeececeeeeeeeeeceeeeceeceeeecceceeeeeee",
-   "eeeececeeeeeeceeeececcceeeeeeeeeceeeeeee",
-   "eeeeeceeeeeeeeeceeeeccceeeeeeeeeceeeeeee",
-   "eeeeeeceeeeeceeeeeeeeceeceeeeeceeeeeeeee",
-   "eeeeeeeeeeeeeeeeeeeeeeeceeeceeceeeeeeeee",
-   "eeeeeeeeeeeeeeeeeeeeeeeeceeeeeeeeeeeeeee"
+   "cccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccAcccccccccc",
+   "ccccccc..ooooooooooccccccccccDcc........",
+   "ccccccc..oooooooooocccc.................",
+   "ccccccc..ooooooccccccc..oooo...!.......>",
+   "ccccccc..ooooccccccccc..oooo...........>",
+   "ccccccc..ooooccccccccc..oooo...........>",
+   "ccccccccc$$$$ccccc.....................>",
+   "ccccccccc$$$$ccc...N...................>",
+   "ccccccccc$$$$ccc.cc....................>",
+   "ccccccc..oooo....ooo...................>",
+   "cccccccc.oooo.cc.ooo...ooooo...........>",
+   "ccccccc.oooooccccooo...ooooocc.........>",
+   "cccccccoooooo..........ooooo.cc......cc>",
+   "cccccccccooooooo.......ooooo..cccc..cccc",
+   "cccccccccooooooo.cc....ooooo.ccccccccccc",
+   "ccccccc.oooooooocccc............cccccccc",
+   "ccccccccoooooooo.cc........c.cc..ccccccc",
+   "cccccccXooooooooooo....ooooooocccccccccc",
+   "ccccccccooooooooooo....ooooooo.ccccccccc",
+   "cccccccoooooooooooo....ooooooocccccccccc",
+   "cccccccoooooooooooo....ooooooo.ccccccccc",
+   "cccccccooo....ooooo....ooooooocccccccccc",
+   "cccccccooo....ooooo....ooooooooooccccccc",
+   "cccccccooo.cc.ooooo....ooooooooooccccccc",
+   "cccccccooo....ooooo....ooooooooooccccccc",
+   "cccccccoooooooooooo....ooooooooooccccccc",
+   "ccccccc.ooooooooooo....ooooooooooccccccc",
+   "ccccccc.ooooooooooo....ooooooooooccccccc",
+   "ccccccc.ooooooooooo....ooooooooooccccccc",
+   "ccccccc.......ooooo....o.........ccccccc",
+   "cccccccccccc.............ccccc\"\".ccccccc",
+   "cccccccccccc.............ccBcc\"\"\"ccccccc",
+   "ccccccccccc..cc____...__cccDcc.\"\"ccccccc",
+   "ccccccccccc..c).........c_..._c\"\"ccccccc",
+   "cccccccccccc.c).......cc.!....(\"\"ccccccc",
+   "cccccccccccc.c)......\"cc......(.\"ccccccc",
+   "cccccccccccc.c).X...\"\"\"cc.....(..ccccccc",
+   "cccccccccccc.c)..c___\"\"cc.....(..ccccccc",
+   "cccccccccccc.c)c.)\"\"\"\"\"\"\"..N..(..ccccccc",
+   "cccccccccccc0c)..)\"\"\"\"\"\"......(c.ccccccc",
+   "cccccccccccc...c.)\"\"\"\"\"...._c.(c.ccccccc",
+   "cccccccccccc....c)\"\"\"\"......(.(c.ccccccc",
+   "cccccccccccc....c)\"\"._____c.(.(..ccccccc",
+   "cccccc..ccc.....c)........(.(c(ccccccccc",
+   "ccccc..cc.......c)........(.cccccccccccc",
+   "cccccc.c.....c..c\"\"\"cc....(ccccccccccccc",
+   "cccccc.......c\"\"\"\"\"\"cc....(ccccccccccccc",
+   "cccccc.......c\"\"\"\"\"\"\"\"....(ccccccccccccc",
+   "cccccc.cc....c\"\"\"\"\"\"\"\"\"...(cc..ccccccccc",
+   "ccccccccc.......c\"\"\"\"\"\"cccccc0.ccccccccc",
+   "cccccccccc......c\"\"\"\"\"\"cc.....0ccccccccc",
+   "cccccccccccc......c\"\"\"\"cc.X....ccccccccc",
+   "cccccccccccccc....c\".\"\"cc......ccccccccc",
+   "cccccccccccccc....c.c.\"cc..c...ccccccccc",
+   "cccccccccccccc.............c.....ccccccc",
+   "cccccccccccccc.............c.....ccccccc",
+   "cccccccccccccc...X.........c.....ccccccc",
+   "cccccccccccccccccccccc....c.....cccccccc",
+   "ccccccccccccccc.....cccccccc....cccccccc",
+   "cccccccc^cc.ccc.........cccc....cccccccc",
+   "ccccccc!...0c...........cccc...ccccccccc",
+   "ccccccc....cc.............c....ccccccccc",
+   "ccccccc....cc.....cccc....cc...ccccccccc",
+   "cccccccc...cc..ccccccc....cc...ccccccccc",
+   "cccccccc...cc...cccccc....cc...ccccccccc",
+   "ccccccc.....c..cccccc.0c..cc...ccccccccc",
+   "cccccccc.......cccccc.cc...c...ccccccccc",
+   "cccccccc.......ccc....cc..cc...ccccccccc",
+   "ccccccccc......ccccccccc.......ccccccccc",
+   "cccccccccc.....ccccccccc......cccccccccc",
+   "ccccccccccccccccccccccccc....ccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccc"
   ],
   "exits": {
    ">": "FALLARBOR_TOWN",
    "^": "HOENN_METEOR_FALLS"
   },
   "buildings": {
-   "F": "fossil",
-   "L": "house"
+   "A": "fossil",
+   "B": "lanette"
   },
   "roofs": {
-   "F": [
-    240,
-    192,
-    80
-   ],
-   "L": [
-    192,
-    64,
-    80
-   ]
+   "_picture": {
+    "f": "em_ground/0_29.png",
+    "at": [
+     0,
+     0
+    ]
+   },
+   "_signs_in_picture": true,
+   "_buildings_in_picture": true
   },
-  "trainer_spots": [
-   "Fisherman Kai",
-   "Picnicker Angelina",
-   "Pokemaniac Steve",
-   "Hiker Lucas"
+  "people": [
+   {
+    "text": "Roar man",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "My Pokémon's Roar scares everyone off. Nobody ever comes near me... Sigh."
+     ]
+    }
+   },
+   {
+    "text": "Berry boy",
+    "action": "NPC",
+    "target": "berry_boy",
+    "_look": "em_65.png"
+   }
   ],
   "signs": [
    [
@@ -75875,238 +75886,1079 @@
     "METEOR FALLS",
     "Rustboro City: through here."
    ]
+  ],
+  "trainer_spots": [
+   "Fisherman Kai",
+   "Picnicker Angelina",
+   "Pokemaniac Steve",
+   "Hiker Lucas"
+  ],
+  "edge_to": {
+   "39,7": [
+    0,
+    7
+   ],
+   "39,8": [
+    0,
+    8
+   ],
+   "39,9": [
+    0,
+    9
+   ],
+   "39,10": [
+    0,
+    10
+   ],
+   "39,11": [
+    0,
+    11
+   ],
+   "39,12": [
+    0,
+    12
+   ],
+   "39,13": [
+    0,
+    13
+   ],
+   "39,14": [
+    0,
+    14
+   ],
+   "39,15": [
+    0,
+    15
+   ],
+   "39,16": [
+    0,
+    16
+   ]
+  },
+  "moves": {
+   "19,11": {
+    "m": "face",
+    "d": "r"
+   },
+   "27,42": {
+    "m": "wander",
+    "d": "ud",
+    "r": [
+     0,
+     1
+    ]
+   }
+  },
+  "scenes": [
+   {
+    "trigger": {
+     "zone": [
+      12,
+      44,
+      31,
+      56
+     ]
+    },
+    "condition": [
+     "heard_cozmo",
+     "not:meteor_falls_cleared"
+    ],
+    "flag": "route114_rival_race",
+    "cast": [
+     {
+      "sheet": "@rival",
+      "from": [
+       20,
+       58
+      ],
+      "to": "player",
+      "leave": [
+       8,
+       64
+      ],
+      "lines": [
+       "{rival_name}: {player_name}! I saw {team} take Professor Cozmo into Meteor Falls!",
+       "{rival_name}: Come on, we've got to catch up!"
+      ]
+     }
+    ]
+   }
+  ],
+  "berry_soil": [
+   [
+    31,
+    43,
+    "PERSIM_BERRY"
+   ],
+   [
+    31,
+    44,
+    "PERSIM_BERRY"
+   ],
+   [
+    31,
+    45,
+    "PERSIM_BERRY"
+   ]
+  ],
+  "barred": [
+   {
+    "tiles": [
+     [
+      19,
+      12
+     ]
+    ],
+    "look": "mon:261",
+    "face": "d",
+    "lines": [
+     "Poochyena: Grrr... Woof!"
+    ]
+   }
+  ],
+  "overheads": [
+   {
+    "kind": "picture",
+    "f": "em_top/0_29.png",
+    "at": [
+     0,
+     0
+    ],
+    "size": [
+     40,
+     80
+    ]
+   }
   ]
  },
  "HOENN_METEOR_FALLS": {
-  "art": [
-   "cccccccccccccccccccccccccccccc",
-   "cccccccccccccccccccccccccccccc",
-   "cccccccccccccccccccccccccccccc",
-   "cccccccccccccccccccccccccccccc",
-   "cccccccccccccoooooccccccccc.cc",
-   "cccccccccccccoooooccccccccc..c",
-   "ccccccccooooooooooccccccccc..c",
-   "cccccccooooooooooocccccccc...c",
-   "cccccccooooooooooocccccccc...c",
-   "ccccccccoooooooocccccccccc...c",
-   "cccccccc$$$$$$$$ccccccccccc.cc",
-   "cccccccc$$$$$$$$ccccccccccc.cc",
-   "cccccccc$$$$$$$$ccccccccccc.cc",
-   "c...cccc$$$$$$$$cccccccc....cc",
-   "c...ccccoooooooocccccccc.....c",
-   "c...ccoooooooooooccocccc.....c",
-   "cc..ccoooooooooooooooocccc..cc",
-   "c....cooooo.......coooc.....cc",
-   "cc..ccoooooc.................c",
-   "cc....ooooocc..c........X..>.c",
-   "cc..........X..c..coooccc....c",
-   "ccc............c..coooocc....c",
-   "cccc...........c..cooooccccccc",
-   "cccccc.ccc....ccccccoooccccccc",
-   "cccccc.ccc.c...ccccc$$$ccccccc",
-   "cccc....cccccccccccc$$$ccccccc",
-   "ccc.....X.cccccccccc$$$ccccccc",
-   "c..............ccccc$$$ccccccc",
-   "c...ccccc......ccccc$$$ccccccc",
-   "ccccccccccccc.ccccccoooccccccc",
-   "cccccccccc......cccooooocccccc",
-   "ccccccccccccc.cccccooooocccccc",
-   "ccccccccccc....ccccooooocccccc",
-   "ccccccccccccc.cccccooooocccccc",
-   "cccccccccccc.....ccooooocccccc",
-   "ccccccccccccc....ccooooocccccc",
-   "ccccccccccc.c....coooooocccccc",
-   "ccc.........c.ccccoooooooccccc",
-   "ccc...X........ccoooooooooccoc",
-   "ccc............ccooooooooooooc",
-   "cc....v..c......cooooooooooooc",
-   "cccccccccccccccccccccccccccccc"
+  "floors": [
+   {
+    "art": [
+     "cccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccc",
+     "c......ccc1ccccccccccccccccccc",
+     "c....1.c.....oooooccccccccc.cc",
+     "c......c.....oooooccccccccc..c",
+     "c.....ccooooooooooccccccccc..c",
+     "c.....cooooooooooocccccccc...c",
+     "c....ccooooooooooocccccccc...c",
+     "cccccc..oooooooo..cccccccc...c",
+     "cccccccc$$$$$$$$ccccccccccc.cc",
+     "cccccccc$$$$$$$$ccccccccccc.cc",
+     "cccccccc$$$$$$$$ccccccccccc.cc",
+     "c...cccc$$$$$$$$cccccccc....cc",
+     "c.N.cccc$$$$$$$$cccccccc.....c",
+     "c...ccooooooooooocco..cc.....c",
+     "cc.cccoooooooooooccoooccccc.cc",
+     "c....coooooc......coooc.....cc",
+     "cc.cccoooooc...............n.c",
+     "cc....oooooccc.c........cccccc",
+     "cc..........X..c..cooocccccccc",
+     "ccc........X..Xc..cooooccccccc",
+     "cccc...........c..cooooccccccc",
+     "cccccc.ccc....ccccc.oooccccccc",
+     "cccccc.ccc.c...ccccc$$$ccccccc",
+     "cccc....cccccccccccc$$$ccccccc",
+     "ccc.......cccccccccc$$$ccccccc",
+     "c..............ccccc$$$ccccccc",
+     "c...c...c......ccccc$$$ccc1ccc",
+     "ccccc___ccccc.cccccc$$$cc....c",
+     "cccc......c.....cccoooooc..c.c",
+     "cccc______ccc.cccccoooooc....c",
+     "cccc.......c...ccccoooooc....c",
+     "cccc_______cc.cccccoooooc....c",
+     "ccc.........c....ccoooooc....c",
+     "ccc_________c....ccooccoc.c..c",
+     "ccc.........c....coooccocc..cc",
+     "ccc_________c.ccccoooooooccccc",
+     "ccc............c.oooooooooccoc",
+     "ccc...<........c.oooooccooccoc",
+     "cccccccccc......coooooccoooooc",
+     "cccccccccccccccccccccccccccccc"
+    ],
+    "exits": {
+     "n": "HOENN_ROUTE_114",
+     "<": "HOENN_ROUTE_115"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/24_0.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "AERODACTYLITE"
+    ],
+    "trainer_spots": [
+     "Admin Tabitha",
+     "Team Aqua Grunt",
+     "Team Magma Grunt"
+    ],
+    "links": {
+     "10,3": [
+      1,
+      10,
+      29
+     ],
+     "5,4": [
+      2,
+      3,
+      23
+     ],
+     "26,28": [
+      2,
+      20,
+      36
+     ]
+    },
+    "moves": {
+     "2,14": {
+      "m": "look",
+      "d": "udlr"
+     }
+    },
+    "scenes": [
+     {
+      "trigger": {
+       "zone": [
+        8,
+        15,
+        26,
+        25
+       ]
+      },
+      "condition": [
+       "heard_cozmo",
+       "not:meteor_falls_cleared"
+      ],
+      "flag": "meteor_falls_rival_joins",
+      "cast": [
+       {
+        "sheet": "@rival",
+        "from": [
+         27,
+         18
+        ],
+        "to": "player",
+        "heal": true,
+        "lines": [
+         "{rival_name}: There they are! {player_name}, let's take them on together!",
+         "{rival_name}: Here, let me heal your team first!"
+        ]
+       }
+      ]
+     },
+     {
+      "trigger": "enter",
+      "condition": [
+       "meteor_falls_cleared",
+       "not:cozmo_thanked"
+      ],
+      "flag": "meteor_falls_other_leader",
+      "cast": [
+       {
+        "sheet": "@other_leader",
+        "from": [
+         6,
+         20
+        ],
+        "to": "player",
+        "leave": "back",
+        "lines": [
+         "{other_leader}: Hah! So {team} made off with the Meteorite. They're headed for Mt. Chimney.",
+         "{other_leader}: I lead {other_team}. Meddle in their plans all you like... just stay out of mine."
+        ]
+       },
+       {
+        "sheet": "@rival",
+        "from": [
+         27,
+         18
+        ],
+        "to": "player",
+        "leave": [
+         27,
+         18
+        ],
+        "lines": [
+         "{rival_name}: The Meteorite's gone, but the Professor's safe. I'll take him home to Fallarbor!"
+        ]
+       }
+      ]
+     }
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        13,
+        23
+       ]
+      ],
+      "look": "sheet:em_46.png",
+      "face": "u",
+      "until": {
+       "flag_condition": "meteor_falls_cleared"
+      },
+      "lines": [
+       "Professor Cozmo: Th-they want my Meteorite! Please, help!"
+      ]
+     }
+    ],
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/24_0.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       30,
+       42
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "cccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccc",
+     "cccccccc............cccccccccc",
+     "cccccccc...N........cccccccccc",
+     "cccccccc.....c......cccccccccc",
+     "ccccccccc.cccc______cccccccccc",
+     "cccccccc.....c.......ccccccccc",
+     "ccccccccc.cccc_______ccccccccc",
+     "ccccccc.....c.........cccccccc",
+     "ccccccccc.ccc_________cccccccc",
+     "cccccccc...c...........ccccccc",
+     "ccccccccc.cc______c____ccccccc",
+     "ccccc.X....c......c.....cccccc",
+     "ccccc.....c..____c......cccccc",
+     "cccc1....cc......c._____cccccc",
+     "cccc....ccc____cccc.......cccc",
+     "cccccccc.......cccc.......cccc",
+     "cccccccc.......cccc.______cccc",
+     "cccccccc..cc___cccc.......cccc",
+     "cccccc....cc....c.........cccc",
+     "ccccc..1..cc.......c......cccc",
+     "cccc.....oocco..........cccccc",
+     "ccccoooooooccoooo......ccccccc",
+     "ccccooooooccooooo....1.ccccccc",
+     "ccccccooccccooooo......ccccccc",
+     "ccccccccccooooooo......ccccccc",
+     "ccccooccoooooo......cccccccccc",
+     "ccccoooooooooo......cccccccccc",
+     "ccccoooo............cccccccccc",
+     "ccccoooo..1.........cccccccccc",
+     "cccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccc"
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/24_1.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "AN OLD WOMAN"
+    ],
+    "trainer_spots": [
+     "Old Couple John & Jay"
+    ],
+    "links": {
+     "10,29": [
+      0,
+      10,
+      3
+     ],
+     "4,14": [
+      2,
+      5,
+      6
+     ],
+     "7,20": [
+      2,
+      7,
+      11
+     ],
+     "21,23": [
+      2,
+      18,
+      15
+     ]
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/24_1.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       30,
+       32
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "ccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccc",
+     "ccccccccccccccccc1ccccccccccc",
+     "ccccccccccccc.c.......ccccccc",
+     "ccccccccc.c........c.oooccccc",
+     "ccc..1....c..........oooccccc",
+     "ccc......ccoooooooooooooccccc",
+     "ccc.....cccoooooooooooooccccc",
+     "ccc..c...ccoooooooooooooccccc",
+     "ccc..c.c.ccoooooooooooooccccc",
+     "ccc..c.1.ccoooc.....coooccccc",
+     "ccc..c...ccoooc.cccccoooocccc",
+     "ccc..c...ccoooc.cccccoooocccc",
+     "ccc..cc.cccoooc.cccccoooocccc",
+     "ccc...c.cccoooc...1.coooocccc",
+     "ccc...c...ooooc.....coooocccc",
+     "ccc...c...ooooc.....coooocccc",
+     "ccc...c...ooooc....ccoooocccc",
+     "ccc...............cccoooocccc",
+     "ccc...............coooooocccc",
+     "cc........c.......coooooocccc",
+     "cc.c......c.....cccoooooocccc",
+     "cc.1......c.....coooooooocccc",
+     "ccc....c.cc.....coooooooocccc",
+     "cc.....c.......ccoooooooocccc",
+     "cc.....c.......ccoooooocccccc",
+     "cccccccccccccc.cooooooocccccc",
+     "ccccccccccccccccooooooocccccc",
+     "ccccccccccccccccooooooocccccc",
+     "ccccccccccccccccooooooocccccc",
+     "ccccccccccccccccooooooocccccc",
+     "ccccccccccccccccooooooocccccc",
+     "ccccccccccccccccooooooocccccc",
+     "cccccccccccccccc.......cccccc",
+     "ccccccccccccccccc......cccccc",
+     "cccccccccccccccccc..1..cccccc",
+     "ccccccccccccccccccccccccccccc"
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/24_2.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "links": {
+     "5,6": [
+      1,
+      4,
+      14
+     ],
+     "7,11": [
+      1,
+      7,
+      20
+     ],
+     "18,15": [
+      1,
+      21,
+      23
+     ],
+     "17,3": [
+      3,
+      5,
+      15
+     ],
+     "3,23": [
+      0,
+      5,
+      4
+     ],
+     "20,36": [
+      0,
+      26,
+      28
+     ]
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/24_2.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       29,
+       38
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "ccccccccccc",
+     "ccc..N..ccc",
+     "ccc.....ccc",
+     "cccoooooccc",
+     "cccoooooccc",
+     "cccoooooccc",
+     "cccoooooccc",
+     "cccoooooccc",
+     "cccoooooccc",
+     "cccoooooccc",
+     "cccoooooccc",
+     "cccoooooccc",
+     "ccc.....ccc",
+     "ccc..1..ccc",
+     "ccccccccccc",
+     "ccccccccccc"
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/24_3.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "THE MILLENNIUM COMET"
+    ],
+    "links": {
+     "5,15": [
+      2,
+      17,
+      3
+     ]
+    },
+    "moves": {
+     "5,3": {
+      "m": "look",
+      "d": "udlr"
+     }
+    }
+   }
   ],
   "theme": "cave",
-  "exits": {
-   ">": "HOENN_ROUTE_114",
-   "v": "HOENN_ROUTE_115"
-  },
-  "trainer_spots": [
-   "Team Magma Grunt",
-   "Team Aqua Grunt",
-   "Admin Tabitha",
-   "Old Couple John & Jay"
-  ]
+  "figure_floors": {
+   "AERODACTYLITE": 0,
+   "AN OLD WOMAN": 1,
+   "THE MILLENNIUM COMET": 3,
+   "Admin Tabitha": 0,
+   "Team Aqua Grunt": 0,
+   "Team Magma Grunt": 0,
+   "Old Couple John & Jay": 1
+  }
  },
  "HOENN_ROUTE_115": {
   "art": [
-   "ccTTTTTTTTTTTTTTcccccccccccccccccccccccc",
-   "ocTTTTTTTTTTTTTTcccccccccccccccccccccccc",
-   "ocTTTTTTTTTTTTTT..cccccccccccccccccccccc",
-   "ocTTTTTTTTTTTTT...cccccccccccccccccccccc",
-   "ocTTTTTTTTTTq.....cccccccccccccccccccccc",
-   "ocTTTTTTTT..q.....cccccccccccccccccccccc",
-   "ocTTTTTTTT......ccccccccccccccccccccccce",
-   "ocTTTTTTTTTTT......ceecccccceeeeecccccce",
-   "ocTTTTTTTTTTT...cceeeeccccccccccecccccce",
-   "ocTTTTTTTTTTT...cceeeeeeccccccccecccccce",
-   "ocTTTTTTTTTTT.TTcceeeeeeeeeeeeccecccccce",
-   "ocTTTTTTTTTTT.TTcceeeeeeeeeeeecceeeeecce",
-   "ocTTTTTTTTTTX.....eeccccccceeccceeeeecce",
-   "ocTTTTTTTTTTT....ceeceeeeeeeeccceeeeecce",
-   "occTTTTTTTTTq.......ceeeecececcceeeeecce",
-   "occTTTTTTTTTT.......ceeeeccceccceeeeccce",
-   "oocccTTTTTTTT.TTT..eeeeeeeeeeccceeececee",
-   "oooccccTTTTTT.TTT.cececeececeecceeececee",
-   "oooooccTTTTTTTTTT.ceccceeceeceeeeeceecee",
-   "oooqqocTTTTTTTTTT.ceeeeeececceeeeeceecee",
-   "oooqqocTTTTTTTTT..cceeceeeceeeeeeeceecee",
-   "oooooocTTTTTTTTT..eececececeeeeeeceeecee",
-   "oqqoooccTTTTTTTcTcceeeeceeeeeeceeeeceeee",
-   "ooooooccTTTTTTTcTcceeeeceeceeecceeeeeeee",
-   "oooooqccTTTTTTTTTcceceeeecceeceeeeeeeeee",
-   "oooqqqccTTTTTTTT.eeeceeeeeeecceeeeeeeeee",
-   "oooqqoocTTTTTTTTcecceeeeeeeecceeeeeeeeee",
-   "ooooooocTTTTTTTTcecceeceeceeeeeeeeeeeeee",
-   "ooqqooocTTTTTTTTcecccececceeeeeeeeeeeeee",
-   "oqqoooocTTTTTTTTcecccececceeeeeeeeeeeeee",
-   "oqqoooocccTTTTT.eeccccccccceeeeeeeeeeeee",
-   "oooooooccccTTTTceecccccccccceeeeeeeeeeee",
-   "ooqqoooooccTTTTceeecccccccccceeeeeeeeeee",
-   "ooooooooooccccccceecccccccccccccceeeeeee",
-   "oqqqqooooocccccceeecccccccccccccccccccce",
-   "oqqoooooooccccccecccccccccccccccccccccce",
-   "oooooooooocccccceccccccccccccccccccccccc",
-   "oqqoooooooqqocc.eeeeccccccc^cccccccccccc",
-   "qqooooooooooooc.ceeccccceceecccccccccccc",
-   "qqqqoooooooqcocccceeeccceeeecccccccccccc",
-   "ooqqoooqqooooocc.cececcceeeeccceeccccccc",
-   "oooooooqqooooooc...ccccceeeeccceeccccccc",
-   "oqqooooooqqooc=ceeeee.cceeccceeeeccccccc",
-   "ooooooqqoooq====......ceeeeecceecccccccc",
-   "qqoooooooooq======....ceeeeecceccccccccc",
-   "oqqooooooqqooo==......ccceeeeeeccccccccc",
-   "oqqooooooqqoo==Xeec...ccceeeeeeccccccccc",
-   "ooooooooooooo=====c...ccceeeeeeeeccccccc",
-   "oqqoooooooooo=====c..ee.cceecccccccccccc",
-   "ooooooooooooo=====c....ee....eeecccccccc",
-   "ooqqooooqqooo=====c.......==....cccccccc",
-   "oooqqoooooooo=====c.......==.....TTTTTTT",
-   "oqqqqoooooooo=====cc......==.(...TTTTTTT",
-   "oqqooooooooooo=====cccTT..==.(...TTTTTTT",
-   "ooooooooooqqoo=======.TT..==.(..cTTTTTTT",
-   "ooqqooooooqqooooo=.....T..==.(...TTTTTTT",
-   "qqooooooooooooooooo...TT..==.(...TTTTTTT",
-   "qqooooooooooooooooo...TT..==.(...TTTTTTT",
-   "qqoooooooooooooooooo.cTT..==.(...TTTTTTT",
-   "oqqooooooooooooooooo.cTT..==.(...TTTTTTT",
-   "oqqoooooo===========.cTTX.==.(...TTTTTTT",
-   "oqqoooo========.......TT..==.(...TTTTTTT",
-   "oqqooo======....!.....TT.....(...TTTTTTT",
-   "qqoooo=====c.......TT.(....=.(...TTTTTTT",
-   "qqoooo====.........TT.(......(...TTTTTTT",
-   "oooooo===c.........TT.(....=.(...TTTTTTT",
-   "ccoooo===c.........TT.(....=.(...TTTTTTT",
-   "oqqooo===c............(....=..___TTTTTTT",
-   "oqqooo===c.....(......(..........TTTTTTT",
-   "oooooo===c.....(......._________TTTTTTTT",
-   "ccoooo===ceec..(................TTTTTTTT",
-   "qqoooo======cTT.____............TTTTTTTT",
-   "qqooooo=====cTT........_________TTTTTTTT",
-   "ooooooo=====cTTTT...............TTTTTTTT",
-   "occooooooooocTTTT...............TTTTTTTT",
-   "oooooooooooocTTTT_____..______TTTTTTTTTT",
-   "ooccqqoooqqoTTTTT.............TTTTTTTTTT",
-   "ooooqqoooqqcTTTTT.........TTTTTTTTTTTTTT",
-   "ooooooccqqocTTTTT.........TTTTTTTTTTTTTT",
-   "ooooooooqqoTTTTTT.vvvvvvTTTTTTTTTTTTTTTT"
+   "cccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccc",
+   "ccccc\"\"\"cc..ccc.cccccccccccccccccccccccc",
+   "cccc\"\"\"\"\".......cccccccccccccccccccccccc",
+   "cccc\"\"\"\"\"c......cc.c..cccccccccccccccccc",
+   "cccc\"\"\"\"\"cccc.cccc....cccccc7ccccccccccc",
+   "cccc..\"\".cccc.cccc......cccc7ccccccccccc",
+   "cccccc..ccccc.cccc............cccccccccc",
+   "ccccccc.ccccc.cccc............cccccccccc",
+   "ccccccc..ccXc.cccc..ccccccc..ccccccccccc",
+   "cccccccc....c..ccc..c........ccccccccccc",
+   "ccccccccccc.........c....ccc.ccccccccccc",
+   "ccccc...............c....ccc.ccccccccccc",
+   "cccccccc....c.....c..........ccccccccccc",
+   "ccccccccc..cc.ccc.c.ccc..c.ccccccccccccc",
+   "cccccccccc....ccc.c.ccc..ccccccccccccccc",
+   "ccccccccccc..cccc.c......ccccccccccccccc",
+   "ccccccccccc.cccc..cc..cccccccccccccccccc",
+   "ccccccc..cc.cccc.cccc.cccccccccccccccccc",
+   "cccccccc.cc.ccc..ccccccccccccccccccccccc",
+   "cccccccc..c..cc.cccccccccccccccccccccccc",
+   "ccccccccc.c.....cccccccccccccccccccccccc",
+   "ccccccccc.cc...ccccccccccccccccccccccccc",
+   "cccccoocc..cc.cccccccccccccccccccccccccc",
+   "ccccoooccc.cc.cccccccccccccccccccccccccc",
+   "ccccoooccc..c.cccccccccccccccccccccccccc",
+   "cccooooccc....cccccccccccccccccccccccccc",
+   "cccooooccc....cccccccccccccccccccccccccc",
+   "ccccooo==cc...cccccccccccccccccccccccccc",
+   "ccccooooooc....ccccccccccccccccccccccccc",
+   "cccccoooooc..ccccccccccccccccccccccccccc",
+   "cccccooooo====cccccccccccccccccccccccccc",
+   "cccooooooo====cccccccccccccccccccccccccc",
+   "cccooooooocco=cccccccccccccccccccccccccc",
+   "cccoooooooccooccccccccccccc^cccccccccccc",
+   "ccoooooooooccocccccccccc.!..cccccccccccc",
+   "ccccoooooooccocccccccccc....cccccccccccc",
+   "ccccoooccooooooccccccccc....ccc..ccccccc",
+   "cccooooccccooooccccccccc....ccc..ccccccc",
+   "cccoooccoccooccccccccccc..ccc....ccccccc",
+   "ccooooccoooccccc.....cc.....cc..cccccccc",
+   "ccoooooooooccooc.....cc.....cc.ccccccccc",
+   "cccooooooccooo=c.....cccc......ccccccccc",
+   "cccooooooccoo=Xc..c..cccc......ccccccccc",
+   "cccoooooooooo=====c..cccc........ccccccc",
+   "cccoooooooooo=====c..ccccc..cccccccccccc",
+   "ccccooooccooo=====c....cc....ccccccccccc",
+   "ccccooooccooo=====c..........0..cccccccc",
+   "cccccoooooooo=====c..........(...ccccccc",
+   "cccccooooooooo====cc.........(...ccccccc",
+   "cccooooooooooo=====ccccc.....(...ccccccc",
+   "ccccooooooccoo=======ccc.....(..cccccccc",
+   "ccccooooooccoooooooooccc.....(...ccccccc",
+   "ccoooooooooooooooooooccc.....(...ccccccc",
+   "ccoooooooooooooooooooccc.....(...ccccccc",
+   "ccoooooooooooooooooooccc.....(...ccccccc",
+   "cccooooooooooooooooooccc.....(...ccccccc",
+   "cccoooooo============ccc.....(...ccccccc",
+   "cccoooo=======c.......cc.....(...ccccccc",
+   "cccooo=====c..........ccX....(c..ccccccc",
+   "ccoooo=====c.......cc.(......(...ccccccc",
+   "ccoooo===c......!..cc.(......(.c.ccccccc",
+   "ccoooo===c.........cc.(......(.c.ccccccc",
+   "ccoooo===c.........cc.(......(...ccccccc",
+   "cccooo===c............(......c___ccccccc",
+   "cccooo===c.....(..N...(..........ccccccc",
+   "ccoooo===c.....(......c_________cccccccc",
+   "ccoooo===c..c..(................cccccccc",
+   "ccooooo=====cccc____............cccccccc",
+   "ccooooo=====ccc........_________cccccccc",
+   "cccooooo===occccc...............cccccccc",
+   "cccoooooooooccccc...............cccccccc",
+   "ccccooooooooccccc_____..______cccccccccc",
+   "ccccccooocc~ccccc.............cccccccccc",
+   "ccccccccocccccccc.........cccccccccccccc",
+   "ccccccccccccccccc.........cccccccccccccc",
+   "ccccccccccccccccc..vvvvvcccccccccccccccc"
   ],
   "exits": {
    "v": "RUSTBORO_CITY",
    "^": "HOENN_METEOR_FALLS"
   },
+  "buildings": {},
+  "roofs": {
+   "_picture": {
+    "f": "em_ground/0_30.png",
+    "at": [
+     0,
+     0
+    ]
+   },
+   "_signs_in_picture": true,
+   "_buildings_in_picture": true
+  },
+  "people": [
+   {
+    "text": "Cave hiker",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Exploring a cave isn't like walking a road. You never know when wild Pokémon will pop out!"
+     ]
+    }
+   }
+  ],
+  "signs": [
+   [
+    "METEOR FALLS",
+    "FALLARBOR TOWN THROUGH HERE"
+   ],
+   [
+    "ROUTE 115",
+    "South: Rustboro City."
+   ]
+  ],
   "trainer_spots": [
    "Collector Hector",
    "Black Belt Nob",
    "Battle Girl Cyndy"
   ],
-  "signs": [
-   [
-    "ROUTE 115",
-    "South: Rustboro City."
+  "edge_to": {
+   "19,79": [
+    19,
+    0
+   ],
+   "20,79": [
+    20,
+    0
+   ],
+   "21,79": [
+    21,
+    0
+   ],
+   "22,79": [
+    22,
+    0
+   ],
+   "23,79": [
+    23,
+    0
    ]
+  },
+  "moves": {
+   "18,68": {
+    "m": "wander",
+    "d": "udlr",
+    "r": [
+     1,
+     1
+    ]
+   },
+   "11,12": {
+    "m": "still",
+    "s": 3
+   },
+   "24,62": {
+    "m": "look",
+    "d": "dr",
+    "s": 4
+   }
+  },
+  "berry_soil": [
+   [
+    12,
+    5,
+    "KELPSY_BERRY"
+   ],
+   [
+    13,
+    5,
+    "KELPSY_BERRY"
+   ],
+   [
+    14,
+    5,
+    "KELPSY_BERRY"
+   ],
+   [
+    31,
+    64,
+    "BLUK_BERRY"
+   ],
+   [
+    31,
+    65,
+    "BLUK_BERRY"
+   ]
+  ],
+  "overheads": [
+   {
+    "kind": "picture",
+    "f": "em_top/0_30.png",
+    "at": [
+     0,
+     0
+    ],
+    "size": [
+     40,
+     80
+    ]
+   }
   ]
  },
  "HOENN_MT_CHIMNEY": {
   "art": [
-   "cccccccccccccccc*ccccccc**cccccccccccccc",
-   "cccccccccccccccc*ccccccc**eccccccccccccc",
-   "cccccccccccccccc**ccccc**ceccccccccccccc",
-   "ccccccccccccccc**********ceecccccccccccc",
-   "ccccccccccccccc**********cceeccccccccccc",
-   "ccccccccccccccc**********ecceeeeeccccccc",
-   "cccccccccceeeem*********ceccceeeeccccccc",
-   "ccccccceeeeeeeeX********ceecceeeeccccccc",
-   "ccccccceeeeccccc********ccecceeeeccccccc",
-   "ccccccceeeecccc*********eeeeceeecccccccc",
-   "ccccccceececceee******eceeeeeeeecccccccc",
-   "cccccccceceeeceeceeeeeeeeceeeeeecccccccc",
-   "cccccccccceeXeeceeeeeeeeeeceeeeecccccccc",
-   "cccccccceeeeeecceeceeeeeeeceeeeecccccccc",
-   "ccccccccceeececeeceeeeeeeeeeeeeecccccccc",
-   "ccccccccceeeccceeeeeeeeeeeeeeeeecccccccc",
-   "ccccccccceeeeeeeXeeeeeeeXeeeeeeccccccccc",
-   "cccccccccceeeeeeeeeeeeeeeeeeeeeccccccccc",
-   "cccccccccccceeeeeeeeeeeeeeeeeeeccccccccc",
-   "cccccccccccceeeeeeeeeeeeeeeeeecccccccccc",
-   "cccccccccccccceeeeeeeeeeeeeeeccccccccccc",
-   "ccccccccccccccceeeeeeeeeeeeecccccccccccc",
-   "ccccccccccccccccceeccccccecccccccccccccc",
-   "cccccccccccccccccccceeeeeecccccccccccccc",
-   "ccccccccccccccccccccecccccceeccccccccccc",
-   "cccccccccccccccccccceeeeeeeeeccccccccccc",
-   "cccccccccccccccccceeeeeeeeeccccccccccccc",
-   "ccccccccTcccccccccceeeccccecccccTcccccTc",
-   "cccccTccccccccccccccccceeeecceecccccccTc",
-   "cccccTTccccccccccccccccccceceeecccccTccT",
-   "ccccccccccccccccccccccceeeeeeeeccTcccccc",
-   "ccccccccccccc#########ceeeeecccccccTTccc",
-   "ccccccccccccc#KKKKKKeeccccecceeecccTccTc",
-   "ccccccccccTTc#KKKKKKeeeeeeeeeeecccTcccTT",
-   "cccccccccccTc#KKKKKKeeeeeeeeeeeccccccTcc",
-   "ccccccTcccccT#KKKKKKeeeeeeeeeeeccccccccT",
-   "ccccccTTccTcT#KKKDKKeeeeeeeeeeeccccccccc",
-   "ccTcccccccTcT#TTeeeeeeee!eeeTTeccccccccc",
-   "cTTTccccccccc#eeeeeeeeeeeeeeeecccTTccccc",
-   "cccTTcccTcccc######eeee######cccTTccTccc",
-   "cTccccccTccTTcTccc#eeee#ccccccccccccTccc",
-   "cTTcccccccccccTTcTTTeeTTTccTcccTcccccccc",
-   "cccccTcccTTTTccTTTTTvvTTTTTTcccccTcccccc",
-   "cccccTccccccTTcTTTTTTTTTTTTccccccTTccccc",
-   "TTcTcTccTcTcTTcTTTTTTTTTTTTccTTccTTccTcc",
-   "TTcTcTTccccccTccTTTTTTTTTTTcTTTcTccTcTcc",
-   "TTcTccTccccccTcccTTTTTTTTTTcTTccTTTTcTcc"
+   "cccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccN..Nccccccc",
+   "cccccccccc...Xccccccccccccccc....ccccccc",
+   "ccccccc........cccccccccccccc....ccccccc",
+   "ccccccc....cccccccccccccccccc....ccccccc",
+   "ccccccc....cccccccccccccccccc...cccccccc",
+   "cccccccccc.ccccccccccccccccc....cccccccc",
+   "cccccccccc..Xcccccccccccccc.....cccccccc",
+   "cccccccccc.....cccccccccccc.N..Ncccccccc",
+   "cccccccc....ccccccccccccccc.....cccccccc",
+   "ccccccccc...ccc..cccccc.........cccccccc",
+   "ccccccccc...ccc.................cccccccc",
+   "cccccccccX.....................ccccccccc",
+   "ccccccccccX............N.......ccccccccc",
+   "cccccccccccc...................ccccccccc",
+   "cccccccccccc.........N..N.....cccccccccc",
+   "cccccccccccccc...............ccccccccccc",
+   "ccccccccccccccc........N....cccccccccccc",
+   "ccccccccccccccccc..cccccc.cccccccccccccc",
+   "cccccccccccccccccccc......cccccccccccccc",
+   "cccccccccccccccccccc.cccccc..ccccccccccc",
+   "cccccccccccccccccccc.........ccccccccccc",
+   "cccccccccccccccccc.........ccccccccccccc",
+   "ccccccccccccccccccc...cccc.ccccccccccccc",
+   "ccccccccccccccccccccccc....cc..ccccccccc",
+   "cccccccccccccccccccccccccc.c...ccccccccc",
+   "ccccccccccccccccccccccc........ccccccccc",
+   "ccccccccccccccccccccccc.....cccccccccccc",
+   "cccccccccccccc........cccc.cc...cccccccc",
+   "cccccccccccccc.ccccc...........ccccccccc",
+   "cccccccccccccccccccc...........ccccccccc",
+   "cccccccccccccccccAcc........c..ccccccccc",
+   "cccccccccccccccccDDc...........ccccccccc",
+   "cccccccccccccc..........!......ccccccccc",
+   "cccccccccccccccc............cccccccccccc",
+   "cccccccccccccccccccN..Nccccccccccccccccc",
+   "ccccccccccccccccccc....ccccccccccccccccc",
+   "ccccccccccccccccccccvvcccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccc"
   ],
   "exits": {
    "v": "HOENN_JAGGED_PASS"
   },
   "buildings": {
-   "K": "cablecar"
+   "A": "cablecar"
   },
   "roofs": {
-   "K": [
-    224,
-    128,
-    64
-   ]
+   "_picture": {
+    "f": "em_ground/24_12.png",
+    "at": [
+     0,
+     0
+    ]
+   },
+   "_signs_in_picture": true,
+   "_buildings_in_picture": true
   },
-  "trainer_spots": [
-   "Team Leader",
-   "Team Admin",
-   "Team Magma Grunt",
-   "Team Aqua Grunt"
+  "people": [
+   {
+    "text": "Outnumbered grunt",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Darn it, there's so many of {team}! We can't keep up!"
+     ]
+    },
+    "condition": "not:mt_chimney_boss_defeated",
+    "_look": "@other_grunt"
+   },
+   {
+    "text": "Fighting grunt",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Douse them! Go, go, {team}!"
+     ]
+    },
+    "condition": "not:mt_chimney_boss_defeated",
+    "_look": "@grunt"
+   },
+   {
+    "text": "Annoyed grunt",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "We're {team}! They're {other_team}! Why'd they pick a name so like ours?"
+     ]
+    },
+    "condition": "not:mt_chimney_boss_defeated",
+    "_look": "@grunt"
+   },
+   {
+    "text": "Fuming grunt",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "We're {other_team}, and I can't stand {team}!"
+     ]
+    },
+    "condition": "not:mt_chimney_boss_defeated",
+    "_look": "@other_grunt"
+   },
+   {
+    "text": "Meteorite grunt",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Meteorites hold amazing power!"
+     ]
+    },
+    "condition": "not:mt_chimney_boss_defeated",
+    "_look": "@grunt"
+   },
+   {
+    "text": "Grumbling grunt",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "That annoying {other_team}! They always get in our way!"
+     ]
+    },
+    "condition": "not:mt_chimney_boss_defeated",
+    "_look": "@grunt"
+   },
+   {
+    "text": "Other team's leader",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "{other_leader}: You again? Can't you see I'm busy holding {team} back?"
+     ]
+    },
+    "condition": "not:mt_chimney_boss_defeated",
+    "_look": "@other_leader"
+   },
+   {
+    "text": "Gate grunt",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Don't mess with us! We're trying to wake that thing up, for everyone's sake!"
+     ]
+    },
+    "condition": "not:mt_chimney_boss_defeated",
+    "_look": "@grunt"
+   },
+   {
+    "text": "Lava Cookie lady",
+    "action": "SHOP",
+    "stock": [
+     "LAVA_COOKIE"
+    ],
+    "_look": "em_30.png"
+   },
+   {
+    "text": "Busy grunt",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "We'll keep going until we get what we want!"
+     ]
+    },
+    "condition": "not:mt_chimney_boss_defeated",
+    "_look": "@grunt"
+   }
   ],
   "signs": [
    [
     "MT. CHIMNEY",
     "South: the Jagged Pass."
    ]
+  ],
+  "trainer_spots": [
+   "Team Leader",
+   "Team Admin",
+   "Team Magma Grunt",
+   "Team Aqua Grunt"
+  ],
+  "moves": {
+   "32,5": {
+    "m": "face",
+    "d": "l"
+   },
+   "29,5": {
+    "m": "face",
+    "d": "r"
+   },
+   "28,12": {
+    "m": "face",
+    "d": "r"
+   },
+   "31,12": {
+    "m": "face",
+    "d": "l"
+   },
+   "23,17": {
+    "m": "face",
+    "d": "d"
+   },
+   "23,21": {
+    "m": "face",
+    "d": "u"
+   },
+   "21,19": {
+    "m": "face",
+    "d": "r"
+   },
+   "22,39": {
+    "m": "face",
+    "d": "l"
+   },
+   "24,19": {
+    "m": "face",
+    "d": "l"
+   },
+   "19,39": {
+    "m": "face",
+    "d": "r"
+   }
+  },
+  "scenes": [
+   {
+    "trigger": "enter",
+    "condition": [
+     "mt_chimney_boss_defeated"
+    ],
+    "flag": "mt_chimney_other_leader",
+    "cast": [
+     {
+      "sheet": "@other_leader",
+      "from": [
+       24,
+       19
+      ],
+      "to": "player",
+      "leave": "back",
+      "lines": [
+       "{other_leader}: {leader} gave up the Meteorite, just like that? Something's wrong...",
+       "{other_leader}: If they've found out where the orbs are hidden... I have to move first."
+      ]
+     }
+    ]
+   }
+  ],
+  "overheads": [
+   {
+    "kind": "picture",
+    "f": "em_top/24_12.png",
+    "at": [
+     0,
+     0
+    ],
+    "size": [
+     40,
+     47
+    ]
+   }
   ]
  },
  "HOENN_JAGGED_PASS": {

@@ -1260,6 +1260,51 @@
     },
     "HOENN_ROUTE_111:Aarune": {
       "sheet": "aarune.png"
+    },
+    "HOENN_ROUTE_114:Roar man": {
+      "sheet": "em_48.png"
+    },
+    "HOENN_ROUTE_114:Berry boy": {
+      "sheet": "em_65.png"
+    },
+    "HOENN_ROUTE_115:Cave hiker": {
+      "sheet": "em_20.png"
+    },
+    "HOENN_MT_CHIMNEY:Outnumbered grunt": {
+      "sheet": "@other_grunt"
+    },
+    "HOENN_MT_CHIMNEY:Fighting grunt": {
+      "sheet": "@grunt"
+    },
+    "HOENN_MT_CHIMNEY:Annoyed grunt": {
+      "sheet": "@grunt"
+    },
+    "HOENN_MT_CHIMNEY:Fuming grunt": {
+      "sheet": "@other_grunt"
+    },
+    "HOENN_MT_CHIMNEY:Meteorite grunt": {
+      "sheet": "@grunt"
+    },
+    "HOENN_MT_CHIMNEY:Grumbling grunt": {
+      "sheet": "@grunt"
+    },
+    "HOENN_MT_CHIMNEY:Other team's leader": {
+      "sheet": "@other_leader"
+    },
+    "HOENN_MT_CHIMNEY:Gate grunt": {
+      "sheet": "@grunt"
+    },
+    "HOENN_MT_CHIMNEY:Lava Cookie lady": {
+      "sheet": "em_30.png"
+    },
+    "HOENN_MT_CHIMNEY:Busy grunt": {
+      "sheet": "@grunt"
+    },
+    "FALLARBOR_TOWN:Go back to Mauville together": {
+      "sheet": "@rival"
+    },
+    "FALLARBOR_TOWN:I'll walk, thanks": {
+      "sheet": "@rival"
     }
   },
   "townsperson": "NPC 17.png",

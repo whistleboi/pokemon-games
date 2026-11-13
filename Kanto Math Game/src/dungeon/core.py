@@ -460,9 +460,9 @@ def pick_tm(seed, spot_id, tm_table, owned, badges):
     TMs not owned yet, up to one tier above the region's badges. None if every TM is owned."""
     rng = random.Random(f"{seed}:{spot_id}")
     cap = min(8, badges + 1)
-    pool = sorted(k for k, d in tm_table.items() if k not in owned and d.get("tier", 8) <= cap)
+    pool = sorted(k for k, d in tm_table.items() if k not in owned and d.get("tier", 8) <= cap and not d.get("gift"))
     if not pool:
-        pool = sorted(k for k in tm_table if k not in owned)
+        pool = sorted(k for k, d in tm_table.items() if k not in owned and not d.get("gift"))  # (story gifts: only ever given)
     return rng.choice(pool) if pool else None
 
 

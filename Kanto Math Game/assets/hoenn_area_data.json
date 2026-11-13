@@ -1091,7 +1091,9 @@
         { "text": "Route 113", "target_area": "HOENN_ROUTE_113" },
         { "text": "Route 114", "target_area": "HOENN_ROUTE_114" }
       ],
-      "explore_options": [{"text": "Professor Cozmo", "door": "cozmo", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_galladite", "event": {"lines": ["Professor Cozmo: A strange stone, not a meteorite at all. You should have it.", "You found the GALLADITE!"], "gift_item": {"GALLADITE": 1}, "flag": "got_galladite"}}, 
+      "explore_options": [
+        {"text": "Go back to Mauville together", "door": "rivalride", "who": "{rival_name}", "action": "EVENT", "color": "GOLD", "look": "@rival", "condition": "cozmo_thanked", "flag_condition": "not rival_mauville_ride", "event": {"lines": ["{rival_name}: The Professor's safe! I'm heading back to Mauville. Want to come along?", "{rival_name}: Great! Let's go together!"], "flag": "rival_mauville_ride", "travel": "MAUVILLE_CITY"}},
+        {"text": "I'll walk, thanks", "door": "rivalride", "who": "{rival_name}", "action": "EVENT", "color": "BLUE", "look": "@rival", "condition": "cozmo_thanked", "flag_condition": "not rival_mauville_ride", "event": {"lines": ["{rival_name}: Okay! Exploring Meteor Falls and Route 115 on the way? See you in Mauville, then!"], "flag": "rival_mauville_ride"}},{"text": "Professor Cozmo", "door": "cozmo", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_galladite", "event": {"lines": ["Professor Cozmo: A strange stone, not a meteorite at all. You should have it.", "You found the GALLADITE!"], "gift_item": {"GALLADITE": 1}, "flag": "got_galladite"}}, 
         { "text": "Heal", "action": "HEAL" },
         { "text": "Talk to Cozmo", "door": "cozmo", "action": "NPC", "target": "professor_cozmo" },
         { "text": "Contest Hall", "door": "contest", "action": "NPC", "target": "contest_hall" }
@@ -1852,6 +1854,8 @@
         }
       ],
       "route_menu": [
+        {"text": "FOSSIL MANIAC'S HOUSE", "door": "fossil", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_tm_dig_114", "event": {"lines": ["Little brother: My big brother digs for fossils in the cave out back.", "Little brother: Here, he'd want you to have this! It teaches Dig."], "gift_item": {"TM15": 1}, "flag": "got_tm_dig_114"}},
+        {"text": "LANETTE'S HOUSE", "door": "lanette", "action": "EVENT", "color": "GOLD", "event": {"lines": ["Lanette: Oh! A visitor? Sorry about the mess... please don't tell anyone how cluttered it is!", "Lanette: I look after the Pokémon Storage System. I've made the Boxes hold far more Pokémon than before!"]}},
         {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
         {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"},
@@ -1859,7 +1863,8 @@
         {"text": "TERRA CAVE", "action": "EXIT", "target": "HOENN_TERRA_CAVE", "condition": ["can_exit", "delta_episode_cleared", "hoenn_version:ALPHA_SAPPHIRE"], "color": "RED"},
         {"text": "FALLARBOR TOWN", "action": "EXIT", "target_area": "FALLARBOR_TOWN", "condition": "can_exit", "color": "RED"},
         {"text": "METEOR FALLS", "action": "EXIT", "target_area": "HOENN_METEOR_FALLS", "condition": "can_exit", "color": "RED"},
-        {"text": "Desert Underpass", "door": "fossil", "action": "EXIT", "target_area": "HOENN_DESERT_UNDERPASS", "condition": ["can_exit", "beat_hoenn_champion"], "color": "RED"}
+        {"text": "Desert Underpass", "door": "fossil", "action": "EXIT", "target_area": "HOENN_DESERT_UNDERPASS", "condition": ["can_exit", "beat_hoenn_champion"], "color": "RED"},
+        {"text": "FOSSIL MANIAC", "door": "fossil", "action": "EVENT", "color": "GOLD", "event": {"lines": ["Fossil Maniac: Dig, dig, dig! No fossils for you, though. Try the sandstorm on Route 111!"]}}
       ],
       "next_area": "FALLARBOR_TOWN",
       "region": "HOENN"

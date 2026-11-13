@@ -25,6 +25,9 @@ ITEMS = os.path.join("assets", "sprites", "items")
 SWSH = "sword-shield"
 MACHINE = 4
 PRICES = [1000, 1000, 1500, 1500, 2000, 2000, 2500, 2500, 3000]  # by tier: cheap (Jordan)
+# Story gifts whose move isn't one of Sword/Shield's 100 (Jordan, 11-12): numbered on from TM100, only ever given
+# ("gift": never sold or won). Professor Cozmo's thanks after Meteor Falls (ORAS: TM23 Smack Down).
+GIFT_TMS = {"TM100": ("SMACK-DOWN", "ORAS TM23: Professor Cozmo, Fallarbor Town")}
 
 
 def rows(name):
@@ -57,6 +60,10 @@ def main():
         move = tms[key]
         out[key] = {"move": move, "type": moves.get(move, {}).get("type", "NORMAL"), "tier": tier,
                     "price": PRICES[tier]}
+    for key, (move, where) in GIFT_TMS.items():
+        out[key] = {"move": move, "type": moves.get(move, {}).get("type", "NORMAL"), "tier": 8, "price": 3000,
+                    "gift": True, "from": where}
+        tms[key] = move
     out = dict(sorted(out.items()))
 
     species_of = {int(r["id"]): int(r["species_id"]) for r in rows("pokemon")}

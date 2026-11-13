@@ -70,6 +70,18 @@ def info(story):
     return VERSIONS.get(version(story))
 
 
+def words(story):
+    """The version's names for a scene's lines (Jordan, 11-12: the maps' ORAS scenes): {team}, {leader}, {admin}...,
+    and the other team's: {other_team}, {other_team_short}, {other_leader}, {other_admin}."""
+    v = info(story)
+    if not v:
+        return dict(NEUTRAL, admin="Tabitha/Shelly", other_team="Team Aqua/Magma", other_team_short="Aqua/Magma",
+                    other_leader="Archie/Maxie", other_admin="Shelly/Tabitha")
+    o = VERSIONS["ALPHA_SAPPHIRE" if v["key"] == "OMEGA_RUBY" else "OMEGA_RUBY"]
+    return dict({t: v[t] for t in TOKENS}, admin=v["admin_a"][0], other_team=o["team"], other_team_short=o["team_short"],
+                other_leader=o["leader"], other_admin=o["admin_a"][0])
+
+
 def is_hoenn_area(key, area):
     return str(area.get("region") or "").upper() == "HOENN" or key.startswith("HOENN_")
 

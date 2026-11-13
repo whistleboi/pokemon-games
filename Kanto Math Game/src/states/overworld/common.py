@@ -20,6 +20,10 @@ def _fill_names(game, text):
     text = (text.replace("{player_name}", getattr(game, "player_name", "TRAINER"))
                 .replace("{rival_name}", getattr(game, "rival_name", "???"))
                 .replace("{friend_name}", getattr(game, "friend_name", None) or "???"))
+    if "{" in text and getattr(game, "story_manager", None) is not None and str(game.story_manager.get_current_region() or "") == "HOENN":
+        from src.world import hoenn as _hoenn   # (Hoenn's scenes name the version's team and its leader: {team}, {leader}, {other_leader}...)
+        for k, v in sorted(_hoenn.words(game.story_manager).items(), key=lambda kv: -len(kv[0])):
+            text = text.replace("{" + k + "}", v)
     if "{kanto_" in text:  # Mew's hint: Kanto species #1-150 only (other regions don't count)
         caught = game.story_manager.kanto_caught_count()
         text = text.replace("{kanto_caught}", str(caught)).replace("{kanto_missing}", str(150 - caught))
@@ -249,6 +253,10 @@ def _run_story_event(state, key, check, show):
         lines.append(story_events.gift_pokemon(game, gift, ev.get("gift_level")))
     if flag:
         story.story_flags[flag] = True
+    if ev.get("travel"):  # (and off you go: Fallarbor's rival takes you back to Mauville)
+        from src.states.overworld import AreaTransitionState
+        game.change_state(AreaTransitionState(game, ev["travel"], initial_message=lines or None))
+        return
     show(lines or ["..."])
 
 

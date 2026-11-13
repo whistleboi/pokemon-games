@@ -210,12 +210,21 @@ def scene_sheet(game, token):
     if token == "@rival":
         who = str(getattr(game, "rival_character", "") or "").lower()
         return own.get(f"{who}.png") or own.get("rival.png") or "NPC 17.png"
-    if token in ("@grunt", "@grunt_f"):
+    if token in ("@leader", "@other_leader"):  # (this version's villain leader, or the other team's: Emerald's Maxie and Archie)
         try:
             from src.world import hoenn as _h
             aqua = _h.version(story) == "ALPHA_SAPPHIRE"
         except Exception:
             aqua = False
+        return "em_195.png" if aqua == (token == "@leader") else "em_196.png"
+    if token in ("@grunt", "@grunt_f", "@other_grunt", "@other_grunt_f"):  # (this version's team; "other": the rival team's, Mt. Chimney's fight)
+        try:
+            from src.world import hoenn as _h
+            aqua = _h.version(story) == "ALPHA_SAPPHIRE"
+        except Exception:
+            aqua = False
+        if "other" in token:
+            aqua = not aqua
         key = ("aqua" if aqua else "magma") + ("_f" if token.endswith("_f") else "")
         return {"aqua": "em_117.png", "aqua_f": "em_118.png", "magma": "em_119.png", "magma_f": "em_120.png"}[key]
     return "NPC 17.png"

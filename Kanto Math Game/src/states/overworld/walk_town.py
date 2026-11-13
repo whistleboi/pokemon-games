@@ -1036,7 +1036,7 @@ class WalkTownState(CityState):
         from src.states.overworld.common import _fill_names
         taken = []  # (name tags that would sit on top of one another: the one with something to do is shown: a row of clerks)
         for spot, opt in sorted(people.items(), key=lambda kv: (kv[1].get("action") == "EVENT" and not (kv[1].get("event") or {}).get("battle"), kv[0])):
-            self._pill(screen, _fill_names(self.game, opt.get("text", "")).upper()[:28], at(spot).centerx,
+            self._pill(screen, _fill_names(self.game, opt.get("who") or opt.get("text", "")).upper()[:28], at(spot).centerx,  # ("who": the person, when the option says what they offer)
                        at(spot).y - 34, fonts, taken)
         if not self._busy():
             self._draw_guide(screen, at)

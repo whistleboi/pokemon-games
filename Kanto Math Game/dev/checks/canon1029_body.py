@@ -1317,7 +1317,7 @@ print("38) TMs (100, reusable) in Marts by badges, from Leaders and trainers; Ma
 from src.pokemon import tms as _tm
 from src.states.systems import PokeMartState as _Mart38, BagState as _Bag38
 _saved38 = (dict(story.inventory), story.current_area_key, dict(story.badges), list(story.player_team), story.money)
-_t = _tm.table(g)
+_t = {k: d for k, d in _tm.table(g).items() if not d.get("gift")}   # (TM100 on: story gifts, 11-12)
 check(len(_t) == 100 and _t["TM24"]["move"] == "SNORE" and all(0 <= d["tier"] <= 8 for d in _t.values()),
       f"Sword/Shield's TM00-TM99 ({len(_t)})")
 check(_tm.label(g, "TM05") == "TM05 Thunder Punch", f"named by their move ({_tm.label(g, 'TM05')})")

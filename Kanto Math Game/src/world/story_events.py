@@ -12,6 +12,7 @@ Each entry is keyed by the button's "target". Fields (all optional):
   gift_item {item: qty} given straight away ("balls" adds Poke Balls)
   gift_pokemon  species id, or {starter id: species id}
   gift_level    the gift's level (default: the area's wild level)
+  travel    an area: after the lines you're taken there (Fallarbor's rival, back to Mauville with you)
 """
 
 GRUNT_G = {"name": "Galactic Grunt", "class": "GRUNT", "sprite": "galactic_grunt.png"}
@@ -331,8 +332,9 @@ EVENTS = {
          "requires": ["heard_cozmo", "not:meteor_falls_cleared"]},
         {"lines": ["Professor Cozmo: Thank you for saving me at Meteor Falls!",
                    "Professor Cozmo: They took my Meteorite up Mt. Chimney. Please stop them!",
-                   "Professor Cozmo: The Cable Car on Route 112 goes to the top."],
-         "requires": ["meteor_falls_cleared"], "flag": "cozmo_thanked"},
+                   "Professor Cozmo: The Cable Car on Route 112 goes to the top.",
+                   "Professor Cozmo: Please, take this as thanks. It teaches Smack Down!"],
+         "requires": ["meteor_falls_cleared"], "flag": "cozmo_thanked", "gift_item": {"TM100": 1}},  # (ORAS: TM23 Smack Down)
         # Jordan (11-04): Hoenn's Jirachi (no place in the games: it was an event gift) wakes
         # in Meteor Falls under the Millennium Comet, after the Delta Episode.
         {"lines": ["Professor Cozmo: Have you seen the sky? The Millennium Comet is passing over Hoenn!",
@@ -367,7 +369,8 @@ EVENTS = {
 
 # Route buttons that already have their own handler in PlayState.
 ROUTE_METHODS = {"sage_li": "visit_sage_li", "director_radio": "visit_director_radio",
-                 "pretty_petal": "visit_pretty_petal"}  # (Route 104's flower shop: the Wailmer Pail, a Berry a day)
+                 "pretty_petal": "visit_pretty_petal",
+                 "berry_boy": "visit_berry_boy"}  # (Route 114's rich boy: a Berry a day)  # (Route 104's flower shop: the Wailmer Pail, a Berry a day)
 
 
 def get(key):
