@@ -53,6 +53,35 @@ class RouteActions:
                       f"({left} more Shadow Pokemon here after this one.)" if left else "(It's the last one here!)"],
             "won": [f"The {name} ran off... it will be back."], "rewards": {"balls": 5}})
 
+    PETAL_BERRIES = ("CHERI_BERRY", "CHESTO_BERRY", "PECHA_BERRY", "RAWST_BERRY", "ASPEAR_BERRY", "LEPPA_BERRY",
+                     "ORAN_BERRY", "PERSIM_BERRY")
+
+    def visit_pretty_petal(self):
+        """Route 104's Pretty Petal flower shop (ORAS): the eldest sister tells you how Berries grow, the middle one
+        gives you the Wailmer Pail, the youngest a Berry every day (one of eight)."""
+        from src.world import berries
+        self.is_progression_paused = True
+        self.hide_menu_buttons()
+        story = self.game.story_manager
+        inv, flags = story.inventory, story.story_flags
+        lines = ["Welcome to the Pretty Petal Flower Shop!"]
+        if not flags.get("got_wailmer_pail"):
+            flags["got_wailmer_pail"] = True
+            inv["WAILMER_PAIL"] = 1
+            lines += ["Eldest sister: Plant a Berry in soft soil and it grows into a tree, stage by stage.",
+                      "Eldest sister: Pick the Berries once they're ripe, then plant another!",
+                      "Middle sister: Take this! Water a growing plant once at each stage and it bears more Berries.",
+                      f"{self.game.player_name} received the WAILMER PAIL!"]
+        today = datetime.date.today().isoformat()
+        if flags.get("pretty_petal_berry_day") != today:
+            flags["pretty_petal_berry_day"] = today
+            b = random.choice(self.PETAL_BERRIES)
+            inv[b] = inv.get(b, 0) + 1
+            lines += ["Youngest sister: Here's today's Berry for you!", f"{self.game.player_name} received {berries.a(berries.name(b)).upper()}!"]
+        else:
+            lines.append("Youngest sister: I'll have another Berry for you tomorrow!")
+        self.show_dialogue(lines, callback=self.show_progression_menu)
+
     def action_pick_berries(self):
         """Berry trees: once a day per route, pick a few of the berries that grow here."""
         from src.pokemon.poffin import berry_name

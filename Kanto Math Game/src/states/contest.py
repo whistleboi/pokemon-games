@@ -131,7 +131,14 @@ class ContestHallState(GameState):
                          "This is your CONTEST PASS, and a POKeBLOCK CASE to start you off.",
                          "Feed Pokeblocks to raise condition, then dazzle the crowd!"]
             lines.append("You received the CONTEST PASS and POKeBLOCK CASE!")
+            if self.region == "HOENN":
+                inv["POKEBLOCK_KIT"] = 1
+                lines += ["And a POKeBLOCK KIT: put Berries in it to make your own Pokeblocks!", "You received the POKeBLOCK KIT!"]
             return lines
+        if self.region == "HOENN" and not inv.get("POKEBLOCK_KIT"):  # (Lisia's Kit, for a save from before the Berry patches)
+            inv["POKEBLOCK_KIT"] = 1
+            return ["Welcome to the Contest Hall!", "Lisia left this for you: a POKeBLOCK KIT, to make Pokeblocks from Berries!",
+                    "You received the POKeBLOCK KIT!", "Would you like to enter a contest today?"]
         return ["Welcome to the Contest Hall!", "Would you like to enter a contest today?"]
 
     # -- menus ----------------------------------------------------------

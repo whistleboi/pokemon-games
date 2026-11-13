@@ -93,6 +93,236 @@ for key in BUILT:
     texts = [p.get("text") if isinstance(p, dict) else p for f in _parts for p in f.get("people", []) if isinstance(p, (dict, str))]
     check(len(texts) == len(set(texts)), f"{key}: each person has a name of their own")
 
+# ---- ways between places (11-12, rewritten from the dungeon suite's old Hoenn checks): in from each way, you stand beside
+# it; and where two places are joined several separate ways (Route 116 and Rusturf Tunnel, Route 112 and the Fiery Path,
+# Routes 111 and 112, the Woods' three doors), out by one you come in by its own, and back by it you're where you left
+from src.dungeon import core as _core
+
+
+def _exits(st):
+    return dict(st.exits) if isinstance(st, _WTS) else dict(st.run.floor.exits)
+
+
+def _pos(st):
+    return tuple(st.player) if isinstance(st, _WTS) else tuple(st.run.player)
+
+
+def arrive(key, came, idx=None, cnt=None, tile=None):
+    """Open key as if you'd left came by its idx-th tile (of cnt) leading here: tile, that one (its edge partner, if it has one)."""
+    if idx is not None:
+        g.walk_town_exit = (came, idx, cnt)
+        _core.ENTRANCE_INDEX, _core.ENTRANCE_COUNT = idx, cnt
+    _to = (_tm[came].get("edge_to") or {}).get("%d,%d" % tuple(tile)) if tile is not None and came in _tm else None
+    g.arrive_edge = (came, key, tuple(_to)) if _to else None
+    st = open_map(key, came)
+    g.walk_town_exit = None
+    _core.ENTRANCE_INDEX = _core.ENTRANCE_COUNT = 0
+    return st
+
+
+def _near(p, tiles, d=2):
+    return any(abs(p[0] - t[0]) + abs(p[1] - t[1]) <= d for t in tiles)
+
+
+def _groups(tiles):
+    """Separate mouths: tiles touching each other, in the order the game counts them."""
+    out = []
+    for t in tiles:
+        grp = next((q for q in out if any(abs(t[0] - u[0]) + abs(t[1] - u[1]) == 1 for u in q)), None)
+        if grp is not None:
+            grp.append(t)
+        else:
+            out.append([t])
+    return out
+
+
+_far, _pairs = [], []
+for key in BUILT:
+    _parts = _tm[key]["floors"] if _tm[key].get("floors") else [_tm[key]]
+    for came in sorted({v for f in _parts for v in f.get("exits", {}).values()} & set(BUILT)):
+        st = arrive(key, came)
+        own = [t for t, v in _exits(st).items() if v == came]
+        if own and not _near(_pos(st), own):
+            _far.append((key, came, _pos(st)))
+        if key < came:
+            _pairs.append((key, came))
+check(not _far, f"every rebuilt map: in from each way, you stand beside that way {_far[:4]}")
+_bad, _multi = [], 0
+for a, b in _pairs:
+    for x, y in ((a, b), (b, a)):
+        if _tm[x].get("floors") or _tm[y].get("floors"):  # (a map of floors: its own section below)
+            continue
+        st = arrive(x, y)
+        ta = [t for t, v in _exits(st).items() if v == y]
+        mouths = _groups(ta)
+        if len(mouths) < 2:
+            continue
+        _multi += 1
+        for m in mouths:
+            i = ta.index(m[len(m) // 2])
+            sb = arrive(y, x, i, len(ta), tile=ta[i])
+            tb = [t for t, v in _exits(sb).items() if v == x]
+            j = min(range(len(tb)), key=lambda k: abs(tb[k][0] - _pos(sb)[0]) + abs(tb[k][1] - _pos(sb)[1])) if tb else 0
+            back = arrive(x, y, j, len(tb), tile=tb[j] if tb else None)
+            if not _near(_pos(back), m):
+                _bad.append((x, y, m[0], _pos(sb), _pos(back)))
+check(_multi >= 4 and not _bad, f"places joined several ways ({_multi} sides): out by each mouth and straight back, you're at that mouth again {_bad[:3]}")
+
+# every door in a rebuilt town opens something (a house is just a house; the Center and Mart: the shared rooms), but the
+# places not built yet (HANDOFF_HOENN_MAPS.md's gaps: Rustboro's Trainer's School, Slateport's Fan Club and its harbor's ferry)
+NOT_YET = {("RUSTBORO_CITY", "school"), ("SLATEPORT_CITY", "fanclub"), ("SLATEPORT_CITY", "harbor")}
+_shut = []
+for key in BUILT:
+    if _area[key].get("area_type") != "town":
+        continue
+    st = arrive(key, sorted(_tm[key]["exits"].values())[0])
+    for t, kind in st.doors.items():
+        if kind not in ("house", "center", "mart") and not st._door_options(kind) and (key, kind) not in NOT_YET:
+            _shut.append((key, kind))
+check(not _shut, f"every door in a rebuilt town opens something {sorted(set(_shut))[:6]}")
+import os as _os
+_pics = [(k, o.get("f")) for k in BUILT for f in (_tm[k]["floors"] if _tm[k].get("floors") else [_tm[k]])
+         for o in (f.get("overheads") or []) + [f.get("roofs", {}).get("_picture") or {}] if isinstance(o, dict) and o.get("f")]
+_gone = [(k, f) for k, f in _pics if not _os.path.exists(_os.path.join("assets", "tiles", f))]
+check(len(_pics) >= len(BUILT) and not _gone, f"every rebuilt map's picture and the layer drawn over you are there ({len(_pics)}) {_gone[:3]}")
+_mv_maps = [k for k in BUILT if not _tm[k].get("floors") and _tm[k].get("moves") and _area[k].get("area_type") != "town"]
+st = arrive(_mv_maps[0], sorted(_tm[_mv_maps[0]]["exits"].values())[0])
+_moving = sum(1 for m in st.run.floor.movers if getattr(m, "motion", None) is not None or st._motion(m) is not None)
+check(_moving > 0, f"people move as Emerald moves them ({len(_mv_maps)} routes with moving people; {_mv_maps[0]}: {_moving})")
+
+
+def _reach(st):
+    """The ground you can walk from where you stand (floor and grass), hopping ledges only their own way, as you walk them."""
+    f = st.run.floor
+    ok = lambda t: 0 <= t[0] < f.w and 0 <= t[1] < f.h and f.tiles[t[1]][t[0]] in (_core.FLOOR, _core.GRASS)
+    seen, todo = {tuple(st.run.player)}, [tuple(st.run.player)]
+    while todo:
+        x, y = todo.pop()
+        for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+            n = (x + dx, y + dy)
+            if str(f.decor.get(n, "")) == f"ledge:{dx},{dy}":  # (a ledge from its high side: over it)
+                n = (n[0] + dx, n[1] + dy)
+            if n not in seen and ok(n):
+                seen.add(n); todo.append(n)
+    return seen
+
+
+def _by(seen, st, who):
+    ways = [t for t, v in st.run.floor.exits.items() if v == who]
+    return any(_near(n, ways, 1) for n in seen)
+
+
+# Rusturf Tunnel: the cracked rock before Verdanturf
+_rs = story.inventory.pop("HM_ROCK_SMASH", None)
+st = arrive("HOENN_RUSTURF_TUNNEL", "HOENN_ROUTE_116")
+_g1 = st._gate("VERDANTURF_TOWN")
+story.inventory["HM_ROCK_SMASH"] = 1
+_g2 = st._gate("VERDANTURF_TOWN")
+check(_g1 and tuple(_g1[:3]) == ("rock", "ROCK SMASH", False) and _g2[2], f"Rusturf Tunnel: a cracked rock before Verdanturf until Rock Smash ({_g1})")
+if _rs is None:
+    story.inventory.pop("HM_ROCK_SMASH", None)
+# Granite Cave: fallen rocks bar the short way to Steven's side till you've met him
+_ms = story.story_flags.pop("met_steven", None)
+st = arrive("HOENN_GRANITE_CAVE", "HOENN_ROUTE_106")
+_rub = []
+for _i in range(st.run.n_floors):
+    st.run.made(_i)
+    st.run.index = _i
+    st._clear_boulders()
+    _rub += [(_i, t) for t, v in st.run.floor.decor.items() if str(v).startswith("rubble:")]
+story.story_flags["met_steven"] = True
+_open = []
+for _i, t in _rub:
+    st.run.index = _i
+    st._clear_boulders()
+    _open.append(st.run.floor.walkable(*t))
+check(_rub and all(_open), f"Granite Cave: fallen rocks bar the short way {_rub} till you've met Steven, then they're gone")
+if _ms is None:
+    story.story_flags.pop("met_steven", None)
+# (by here in the story you carry Cut and Rock Smash: the small trees and cracked rocks are out of the way)
+_hm_had = {k: story.inventory.get(k) for k in ("HM_CUT", "HM_ROCK_SMASH")}
+story.inventory.update({"HM_CUT": 1, "HM_ROCK_SMASH": 1})
+# Route 110: the Cycling Road a deck of its own, its gates barred without a Bicycle; underneath, Slateport to Mauville on foot
+_bk = story.inventory.pop("BICYCLE", None)
+st = arrive("HOENN_ROUTE_110", "SLATEPORT_CITY")
+st._clear_boulders()
+_bars = [t for t, b in st._bars.items() if b.get("item") == "BICYCLE"]
+_shut110 = [str(st.run.floor.decor.get(t, "")) for t in _bars]
+_walk110 = _by(_reach(st), st, "MAUVILLE_CITY")
+story.inventory["BICYCLE"] = 1
+st._clear_boulders()
+check(st.run.n_floors == 2 and _bars and all(v.startswith("barrier:") for v in _shut110) and all(st.run.floor.walkable(*t) for t in _bars) and _walk110,
+      f"Route 110: the Cycling Road is a deck of its own; its gates {_bars} barred without a Bicycle ({_shut110}), open with one; underneath you walk from Slateport to Mauville ({_walk110})")
+if _bk is None:
+    story.inventory.pop("BICYCLE", None)
+# Route 111: the sandstorm bars the way north without the Go-Goggles; the junction to Route 112 stays open
+_gg = story.inventory.pop("GO_GOGGLES", None)
+st = arrive("HOENN_ROUTE_111", "MAUVILLE_CITY")
+st._clear_boulders()
+_dry = _reach(st)
+_dry113, _dry112 = _by(_dry, st, "HOENN_ROUTE_113"), _by(_dry, st, "HOENN_ROUTE_112")
+story.inventory["GO_GOGGLES"] = 1
+st._clear_boulders()
+_wet113 = _by(_reach(st), st, "HOENN_ROUTE_113")
+check(not _dry113 and _dry112 and _wet113,
+      f"Route 111: the sandstorm bars the way to Route 113 without the Go-Goggles ({_dry113}), not the junction to Route 112 ({_dry112}); with them you cross ({_wet113})")
+if _gg is None:
+    story.inventory.pop("GO_GOGGLES", None)
+# Route 112: in from Route 111 at the south: the ledges hop east only; the Fiery Path and the cable car yes; Lavaridge, the Jagged Pass, the north hill no
+_r111 = arrive("HOENN_ROUTE_111", "HOENN_ROUTE_112")
+_w111 = [t for t, v in _r111.run.floor.exits.items() if v == "HOENN_ROUTE_112"]
+st = arrive("HOENN_ROUTE_112", "HOENN_ROUTE_111", len(_w111) - 1, len(_w111))   # (by Route 111's southmost tile)
+_s112 = _reach(st)
+_hill = [t for t, v in st.run.floor.exits.items() if v == "HOENN_ROUTE_111" and t[1] < 20]
+check(_pos(st)[1] > 40 and _by(_s112, st, "HOENN_FIERY_PATH") and not _by(_s112, st, "LAVARIDGE_TOWN") and not _by(_s112, st, "HOENN_JAGGED_PASS")
+      and not any(_near(n, _hill, 1) for n in _s112) and "door:cablecar" in st.run.floor.decor.values() and any(str(v).startswith("ledge:1,") for v in st.run.floor.decor.values()),
+      f"Route 112: in from Route 111 at {_pos(st)}: the Fiery Path and the cable car, not Lavaridge or the Jagged Pass past the east-hopping ledges, nor the north hill")
+
+for _k, _v in _hm_had.items():
+    if _v is None:
+        story.inventory.pop(_k, None)
+    else:
+        story.inventory[_k] = _v
+# a trainer who sees you walks up for a battle (Emerald's own sight lines, the trainers' "range")
+_spot = None
+for _key in ("HOENN_ROUTE_102", "HOENN_ROUTE_104", "HOENN_ROUTE_116", "HOENN_ROUTE_117", "HOENN_ROUTE_110"):
+    st = arrive(_key, sorted(_tm[_key]["exits"].values())[0])
+    f = st.run.floor
+    for m in f.movers:
+        if m.kind != "trainer" or not getattr(m, "facing", None):
+            continue
+        dx, dy = m.facing
+        line = [(m.x + dx * k, m.y + dy * k) for k in (1, 2, 3)]
+        if all(f.walkable(*t) and f.mover_at(*t) is None for t in line):
+            _spot = (st, m, line)
+            break
+    if _spot:
+        break
+_fought = None
+if _spot:
+    st, m, line = _spot
+    st.run.player, st.anim = line[2], 0
+    st.facing = (-m.facing[0], -m.facing[1])
+    st.step(-m.facing[0], -m.facing[1])   # (one step into its sight)
+    for _ in range(400):
+        if g.current_state is not st:
+            break
+        if st.dialogue_box.visible:
+            st.dialogue_box.advance()
+        st.update(); st.draw()
+    _fought = type(g.current_state).__name__
+check(_spot is not None and _fought and "Trainer" in _fought,
+      f"a trainer who sees you walks up and battles ({_spot and _spot[0].area_key}, {_spot and (_spot[1].x, _spot[1].y)}: {_fought})")
+
+# the towns' own doors (Emerald's buildings; the games' places in them)
+_want_doors = {"LITTLEROOT_TOWN": {"home", "rival", "lab"}, "RUSTBORO_CITY": {"devon", "gym", "center", "mart"},
+               "SLATEPORT_CITY": {"museum", "shipyard", "contest"}, "MAUVILLE_CITY": {"bike", "game corner", "gym"},
+               "VERDANTURF_TOWN": {"contest", "wally"}, "FALLARBOR_TOWN": {"cozmo", "contest"}}
+for key, want in _want_doors.items():
+    st = arrive(key, sorted(_tm[key]["exits"].values())[0])
+    have = set(st.doors.values())
+    check(want <= have and all(st._door_options(k) for k in want), f"{key}: its own doors {sorted(want)}, each opening something (has {sorted(have)})")
+
 # ---- story scenes, played as a player meets them
 def walk_into(st, way, n=1):
     for _ in range(n):
@@ -367,6 +597,79 @@ for _fl, _who in (("winstrate_victor", "Victoria"), ("winstrate_victoria", "Vivi
 _mb = story.inventory.get("MACHO_BRACE", 0)
 st, said = _scene("HOENN_ROUTE_111", "MAUVILLE_CITY", ["winstrate_vicky"], at=(13, 116))
 check(story.inventory.get("MACHO_BRACE", 0) > _mb, f"Route 111: beat all four and Victoria gives you the Macho Brace ({said[-1:]})")
+# ---- batch 6: Route 112, Fiery Path, Route 113, Fallarbor
+import src.dungeon.core as _core
+_had_str = story.inventory.pop("HM_STRENGTH", None)
+st, said = _scene("HOENN_ROUTE_112", "HOENN_ROUTE_111", [], ["got_strength_hoenn"], at=(37, 50))
+check(story.inventory.get("HM_STRENGTH", 0) > 0 and any("Mt. Chimney" in x for x in said), f"Route 112: your rival walks up, heals your team and gives you Strength ({said[:1]})")
+_r112 = _tm2["HOENN_ROUTE_112"]
+check(_r112["art"][30][26] == "N" and _r112["art"][30][27] == "N" and "cablecar" in _r112["buildings"].values(),
+      "Route 112: two Grunts stand in the only way up to the cable car (until Meteor Falls)")
+for _a, _b in (("HOENN_FIERY_PATH", "HOENN_ROUTE_112"), ("HOENN_ROUTE_112", "HOENN_FIERY_PATH")):
+    _st = open_map(_a, _b)
+    _mouths = [t for t, v in _st.run.floor.exits.items() if v == _b]
+    _land = []
+    for _m in _mouths:
+        _core.ENTRANCE_INDEX, _core.ENTRANCE_COUNT = _mouths.index(_m), len(_mouths)
+        _land.append(tuple(open_map(_b, _a).run.player))
+    check(len(_mouths) == 2 and _land[0][1] < _land[1][1], f"{_a}: out of the north mouth you come out north, the south one south ({_mouths} -> {_land})")
+st, said = _scene("HOENN_ROUTE_113", "HOENN_ROUTE_111", [], ["heard_cozmo", "route113_rival_rest", "meteor_falls_cleared"])
+check(story.story_flags.get("route113_rival_rest") and any("Cozmo" in x for x in said), f"Route 113: your rival, resting, heals your team and tells you of Professor Cozmo ({said[:1]})")
+st, said = _scene("FALLARBOR_TOWN", "HOENN_ROUTE_113", [], ["heard_cozmo", "fallarbor_cozmo_taken", "meteor_falls_cleared"], at=(12, 10), step=(-1, 0))
+check(story.story_flags.get("heard_cozmo") and any("Meteor Falls" in x for x in said), f"Fallarbor: your rival runs out of Cozmo's house: he's been taken to Meteor Falls ({said[-1:]})")
+if _had_str is not None:
+    story.inventory["HM_STRENGTH"] = _had_str
+
+# ---- Berries (11-12): soft soil from Emerald's own Berry trees; pick, plant, water, grow on the clock
+from src.world import berries as _berries
+import time as _time
+_soil = {k: v.get("berry_soil") for k, v in _tm2.items() if v.get("berry_soil")}
+check(len(_soil) >= 7 and [24, 2, "ORAN_BERRY"] in _soil.get("HOENN_ROUTE_102", []), f"Berries: soft soil on {len(_soil)} Hoenn maps, Emerald's starting Berries (Route 102's Oran and Pecha)")
+_saved_bp = story.story_flags.pop("berry_patches", None)
+_inv0 = dict(story.inventory)
+for _k in ("ORAN_BERRY", "WAILMER_PAIL"):
+    story.inventory.pop(_k, None)
+st = open_map("HOENN_ROUTE_102", "OLDALE_TOWN")
+_f = st.run.floor
+check(str(_f.decor.get((24, 2), "")).startswith("soil:"), f"Route 102: the soil patch stands on the map ({_f.decor.get((24, 2))})")
+st.run.player, st.facing = (24, 3), (0, -1)
+st._read_sign()
+check(story.inventory.get("ORAN_BERRY", 0) >= 2, f"Route 102: walking up to the ripe tree picks its Oran Berries ({story.inventory.get('ORAN_BERRY')})")
+st.dialogue_box.visible = False
+st._read_sign()
+_cb = st.dialogue_box.callback   # ("Plant a Berry here?": past the words, the Berry screen)
+if _cb:
+    st.dialogue_box.callback = None
+    _cb()
+check(type(g.current_state).__name__ == "PlantBerryState", f"Route 102: empty soil asks which Berry to plant ({type(g.current_state).__name__})")
+if type(g.current_state).__name__ == "PlantBerryState":
+    g.current_state.chose("ORAN_BERRY")
+_rec = _berries.record(story, "HOENN_ROUTE_102", (24, 2), None)
+check(_rec.get("berry") == "ORAN_BERRY" and _berries.stage(_rec) == 0, f"Route 102: an Oran Berry planted ({_rec})")
+story.inventory["WAILMER_PAIL"] = 1
+_t0 = _rec["t"]
+for _h in (0.1, 4.1, 8.1, 12.1):
+    _berries.clock = lambda _h=_h: _t0 + _h * 3600
+    st.dialogue_box.visible = False
+    st._read_sign()
+_berries.clock = lambda: _t0 + 16.1 * 3600
+_n0 = story.inventory.get("ORAN_BERRY", 0)
+st.dialogue_box.visible = False
+st._read_sign()
+_berries.clock = _time.time
+check(story.inventory.get("ORAN_BERRY", 0) - _n0 == 5, f"Route 102: watered at all four stages, it bears the most Berries ({story.inventory.get('ORAN_BERRY', 0) - _n0})")
+g.change_state(st)
+# Route 104's Pretty Petal: the Wailmer Pail; Route 113's Glass Workshop: its flutes; Lisia's Pokeblock Kit
+_r104 = next(o for o in _find(_json.load(open("assets/hoenn_area_data.json", encoding="utf-8")), "HOENN_ROUTE_104")["route_menu"] if o.get("door") == "flower")
+_r113 = next(o for o in _find(_json.load(open("assets/hoenn_area_data.json", encoding="utf-8")), "HOENN_ROUTE_113")["route_menu"] if o.get("door") == "glass")
+check("flower" in _tm2["HOENN_ROUTE_104"]["buildings"].values() and _r104.get("target") == "pretty_petal",
+      "Route 104: the Pretty Petal Flower Shop's door (the Wailmer Pail, a Berry a day)")
+check("glass" in _tm2["HOENN_ROUTE_113"]["buildings"].values() and len(_r113.get("stock", [])) == 5, "Route 113: the Glass Workshop sells the five flutes")
+from src.states.berry_patch import blocks_from as _blocks
+check(_blocks(["SPELON_BERRY", "PECHA_BERRY"]) == {"RED_POKEBLOCK": 2, "PINK_POKEBLOCK": 1}, "Pokeblock Kit: a Spelon makes two red Pokeblocks, a Pecha one pink")
+story.inventory.clear(); story.inventory.update(_inv0)
+if _saved_bp is not None:
+    story.story_flags["berry_patches"] = _saved_bp
 story.story_flags.clear(); story.story_flags.update(_saved2)
 
 story.story_flags.clear(); story.story_flags.update(_saved)

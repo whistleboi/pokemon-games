@@ -287,8 +287,8 @@ EVENTS = {
         "take_item": {"LETTER": 1}, "flag": "met_steven",
         "done": ["Steven: Mr. Briney can take you on to Slateport. Good luck!"]},
     "rival_route112": {
-        "lines": ["{rival_name}: Hey, {player_name}! Heading for Lavaridge Town?",
-                  "{rival_name}: The way through is the Fiery Path, but boulders block it. Take this!"],
+        "lines": ["{rival_name}: Hey, {player_name}! See that? That's Mt. Chimney, right up ahead!",
+                  "{rival_name}: The cable car's blocked, so it's the Fiery Path for us. Boulders block its side tunnels. Take this!"],
         "gift_item": {"HM_STRENGTH": 1}, "flag": "got_strength_hoenn",
         "done": ["{rival_name}: Use Strength to move the boulders in the Fiery Path!"]},
     "weather_scientists": {
@@ -366,7 +366,8 @@ EVENTS = {
 }
 
 # Route buttons that already have their own handler in PlayState.
-ROUTE_METHODS = {"sage_li": "visit_sage_li", "director_radio": "visit_director_radio"}
+ROUTE_METHODS = {"sage_li": "visit_sage_li", "director_radio": "visit_director_radio",
+                 "pretty_petal": "visit_pretty_petal"}  # (Route 104's flower shop: the Wailmer Pail, a Berry a day)
 
 
 def get(key):

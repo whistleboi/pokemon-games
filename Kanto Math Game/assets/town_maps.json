@@ -68298,6 +68298,16 @@
     "PROF. BIRCH'S POKEMON LAB"
    ]
   ],
+  "edge_to": {
+   "10,0": [
+    10,
+    19
+   ],
+   "11,0": [
+    11,
+    19
+   ]
+  },
   "moves": {
    "16,10": {
     "m": "wander",
@@ -68433,6 +68443,32 @@
     "North: Oldale Town."
    ]
   ],
+  "edge_to": {
+   "8,0": [
+    8,
+    19
+   ],
+   "9,0": [
+    9,
+    19
+   ],
+   "10,0": [
+    10,
+    19
+   ],
+   "11,0": [
+    11,
+    19
+   ],
+   "10,19": [
+    10,
+    0
+   ],
+   "11,19": [
+    11,
+    0
+   ]
+  },
   "moves": {
    "16,8": {
     "m": "look",
@@ -68566,7 +68602,7 @@
    "cccc.cDcc.....cDcccc",
    "cccc..............cc",
    "cccc............cccc",
-   "ccccvvvvvvvvvvvvcccc"
+   "cccc....vvvv....cccc"
   ],
   "exits": {
    "^": "HOENN_ROUTE_103",
@@ -68609,6 +68645,48 @@
     "Where things start off scarce."
    ]
   ],
+  "edge_to": {
+   "8,0": [
+    8,
+    21
+   ],
+   "9,0": [
+    9,
+    21
+   ],
+   "10,0": [
+    10,
+    21
+   ],
+   "11,0": [
+    11,
+    21
+   ],
+   "8,19": [
+    8,
+    0
+   ],
+   "9,19": [
+    9,
+    0
+   ],
+   "10,19": [
+    10,
+    0
+   ],
+   "11,19": [
+    11,
+    0
+   ],
+   "0,10": [
+    49,
+    10
+   ],
+   "0,11": [
+    49,
+    11
+   ]
+  },
   "moves": {
    "13,7": {
     "m": "face",
@@ -68741,6 +68819,32 @@
    "Lass Katie",
    "Bug Catcher Lyle"
   ],
+  "edge_to": {
+   "0,6": [
+    29,
+    16
+   ],
+   "0,7": [
+    29,
+    17
+   ],
+   "0,8": [
+    29,
+    18
+   ],
+   "0,9": [
+    29,
+    19
+   ],
+   "49,10": [
+    0,
+    10
+   ],
+   "49,11": [
+    0,
+    11
+   ]
+  },
   "moves": {
    "18,11": {
     "m": "look",
@@ -68787,6 +68891,18 @@
      }
     ]
    }
+  ],
+  "berry_soil": [
+   [
+    24,
+    2,
+    "ORAN_BERRY"
+   ],
+   [
+    25,
+    2,
+    "PECHA_BERRY"
+   ]
   ],
   "overheads": [
    {
@@ -68877,6 +68993,44 @@
    "Fisherman Andrew",
    "Lass Natalie"
   ],
+  "edge_to": {
+   "8,21": [
+    8,
+    0
+   ],
+   "9,21": [
+    9,
+    0
+   ],
+   "10,21": [
+    10,
+    0
+   ],
+   "11,21": [
+    11,
+    0
+   ],
+   "79,7": [
+    0,
+    67
+   ],
+   "79,8": [
+    0,
+    68
+   ],
+   "79,9": [
+    0,
+    69
+   ],
+   "79,10": [
+    0,
+    70
+   ],
+   "79,11": [
+    0,
+    71
+   ]
+  },
   "moves": {
    "49,12": {
     "m": "face",
@@ -68915,6 +69069,23 @@
      "{rival_name}: I'm heading back to the lab. Come by when you're done here!"
     ]
    }
+  ],
+  "berry_soil": [
+   [
+    58,
+    5,
+    "CHERI_BERRY"
+   ],
+   [
+    59,
+    5,
+    "LEPPA_BERRY"
+   ],
+   [
+    60,
+    5,
+    "CHERI_BERRY"
+   ]
   ],
   "overheads": [
    {
@@ -69041,6 +69212,32 @@
     "Where people mingle with nature."
    ]
   ],
+  "edge_to": {
+   "0,12": [
+    39,
+    62
+   ],
+   "0,13": [
+    39,
+    63
+   ],
+   "29,16": [
+    0,
+    6
+   ],
+   "29,17": [
+    0,
+    7
+   ],
+   "29,18": [
+    0,
+    8
+   ],
+   "29,19": [
+    0,
+    9
+   ]
+  },
   "moves": {
    "15,10": {
     "m": "face",
@@ -69320,7 +69517,7 @@
  },
  "HOENN_ROUTE_104": {
   "art": [
-   "cccccccccc^^^^^^^^^^^^^^^^^^^^^^^^cccccc",
+   "cccccccccc..^^^^^^^^..............cccccc",
    "cccccccccccc......................cccccc",
    "cccccccccccc....................cccccccc",
    "cccccccccccccc..................cccccccc",
@@ -69381,7 +69578,7 @@
    "oooooccoooooooo====cc\"\"\"\"\"\"\"\"\"....cccccc",
    "ooooooccooooooo=====c\"\"\"\"\"\".......cccccc",
    "ooooooccoooooooN====cc\"\"\"...........cccc",
-   "ooooooccoooooo=======c\"\"\"..............>",
+   "ooooooccoooooo=======c\"\"\"...............",
    "ooooooccoooooo=======ccc...............>",
    "oooooooccooooo=========c...N...........>",
    "oooooccccooooo=========cc...........cccc",
@@ -69399,7 +69596,7 @@
    "oooooccccoooooooooooooooooooo==ccccccccc",
    "oooooooccooooooooooooooooooooccccccccccc",
    "ooooooccoooooooooooooooooooccccccccccccc",
-   "uuuuuuccuuuuuuuuuuuuuuuuuuuccuuccccccccc"
+   "uuuuuuccouuuuuuuuuuuuuuuuuoccuuccccccccc"
   ],
   "exits": {
    "^": "RUSTBORO_CITY",
@@ -69410,7 +69607,7 @@
   },
   "buildings": {
    "A": "house",
-   "B": "house"
+   "B": "flower"
   },
   "roofs": {
    "_picture": {
@@ -69531,6 +69728,148 @@
    "Lady Cindy",
    "Rich Boy Winston"
   ],
+  "edge_to": {
+   "12,0": [
+    12,
+    59
+   ],
+   "13,0": [
+    13,
+    59
+   ],
+   "14,0": [
+    14,
+    59
+   ],
+   "15,0": [
+    15,
+    59
+   ],
+   "16,0": [
+    16,
+    59
+   ],
+   "17,0": [
+    17,
+    59
+   ],
+   "18,0": [
+    18,
+    59
+   ],
+   "19,0": [
+    19,
+    59
+   ],
+   "0,79": [
+    0,
+    0
+   ],
+   "1,79": [
+    1,
+    0
+   ],
+   "2,79": [
+    2,
+    0
+   ],
+   "3,79": [
+    3,
+    0
+   ],
+   "4,79": [
+    4,
+    0
+   ],
+   "5,79": [
+    5,
+    0
+   ],
+   "9,79": [
+    9,
+    0
+   ],
+   "10,79": [
+    10,
+    0
+   ],
+   "11,79": [
+    11,
+    0
+   ],
+   "12,79": [
+    12,
+    0
+   ],
+   "13,79": [
+    13,
+    0
+   ],
+   "14,79": [
+    14,
+    0
+   ],
+   "15,79": [
+    15,
+    0
+   ],
+   "16,79": [
+    16,
+    0
+   ],
+   "17,79": [
+    17,
+    0
+   ],
+   "18,79": [
+    18,
+    0
+   ],
+   "19,79": [
+    19,
+    0
+   ],
+   "20,79": [
+    20,
+    0
+   ],
+   "21,79": [
+    21,
+    0
+   ],
+   "22,79": [
+    22,
+    0
+   ],
+   "23,79": [
+    23,
+    0
+   ],
+   "24,79": [
+    24,
+    0
+   ],
+   "25,79": [
+    25,
+    0
+   ],
+   "29,79": [
+    29,
+    0
+   ],
+   "30,79": [
+    30,
+    0
+   ],
+   "39,62": [
+    0,
+    12
+   ],
+   "39,63": [
+    0,
+    13
+   ]
+  },
   "moves": {
    "15,60": {
     "m": "face",
@@ -69617,6 +69956,58 @@
     ]
    }
   ],
+  "berry_soil": [
+   [
+    34,
+    6,
+    "CHERI_BERRY"
+   ],
+   [
+    35,
+    6,
+    "CHERI_BERRY"
+   ],
+   [
+    36,
+    6,
+    "LEPPA_BERRY"
+   ],
+   [
+    3,
+    22,
+    "CHERI_BERRY"
+   ],
+   [
+    3,
+    23,
+    "ORAN_BERRY"
+   ],
+   [
+    3,
+    24,
+    "CHERI_BERRY"
+   ],
+   [
+    3,
+    25,
+    "CHERI_BERRY"
+   ],
+   [
+    22,
+    41,
+    "ORAN_BERRY"
+   ],
+   [
+    23,
+    41,
+    "CHERI_BERRY"
+   ],
+   [
+    24,
+    41,
+    "PECHA_BERRY"
+   ]
+  ],
   "barred": [
    {
     "tiles": [
@@ -69663,7 +70054,7 @@
    "cccccccccccccccccc.....................>",
    "cccccccccccccccccc.....................>",
    "cccccccccccccccccc.N....ccccccccccccccc>",
-   "cccccccccccGcccccc......c...........ccc>",
+   "cccccccccccGcccccc......c...........ccc.",
    "ccccccc...cDDc...c......c...........cccc",
    "ccccccc..........c.c..c.cccccc.ccccccccc",
    "ccccccc..........c......cccccc.ccccccccc",
@@ -69865,6 +70256,84 @@
     "The city probing the integration of nature and science."
    ]
   ],
+  "edge_to": {
+   "19,0": [
+    19,
+    79
+   ],
+   "20,0": [
+    20,
+    79
+   ],
+   "21,0": [
+    21,
+    79
+   ],
+   "22,0": [
+    22,
+    79
+   ],
+   "23,0": [
+    23,
+    79
+   ],
+   "12,59": [
+    12,
+    0
+   ],
+   "13,59": [
+    13,
+    0
+   ],
+   "14,59": [
+    14,
+    0
+   ],
+   "15,59": [
+    15,
+    0
+   ],
+   "16,59": [
+    16,
+    0
+   ],
+   "17,59": [
+    17,
+    0
+   ],
+   "18,59": [
+    18,
+    0
+   ],
+   "19,59": [
+    19,
+    0
+   ],
+   "39,8": [
+    0,
+    8
+   ],
+   "39,9": [
+    0,
+    9
+   ],
+   "39,10": [
+    0,
+    10
+   ],
+   "39,11": [
+    0,
+    11
+   ],
+   "39,12": [
+    0,
+    12
+   ],
+   "39,13": [
+    0,
+    13
+   ]
+  },
   "moves": {
    "22,34": {
     "m": "wander",
@@ -70141,6 +70610,32 @@
    "Bug Catcher Jose",
    "Hiker Clark"
   ],
+  "edge_to": {
+   "0,8": [
+    39,
+    8
+   ],
+   "0,9": [
+    39,
+    9
+   ],
+   "0,10": [
+    39,
+    10
+   ],
+   "0,11": [
+    39,
+    11
+   ],
+   "0,12": [
+    39,
+    12
+   ],
+   "0,13": [
+    39,
+    13
+   ]
+  },
   "moves": {
    "46,9": {
     "m": "look",
@@ -70160,6 +70655,28 @@
     "s": 5
    }
   },
+  "berry_soil": [
+   [
+    18,
+    2,
+    "PINAP_BERRY"
+   ],
+   [
+    19,
+    2,
+    "CHESTO_BERRY"
+   ],
+   [
+    20,
+    2,
+    "CHESTO_BERRY"
+   ],
+   [
+    21,
+    2,
+    "PINAP_BERRY"
+   ]
+  ],
   "parts": true,
   "overheads": [
    {
@@ -70415,6 +70932,64 @@
     "Leader: Brawly"
    ]
   ],
+  "edge_to": {
+   "3,0": [
+    63,
+    19
+   ],
+   "4,0": [
+    64,
+    19
+   ],
+   "5,0": [
+    65,
+    19
+   ],
+   "6,0": [
+    66,
+    19
+   ],
+   "7,0": [
+    67,
+    19
+   ],
+   "8,0": [
+    68,
+    19
+   ],
+   "9,0": [
+    69,
+    19
+   ],
+   "10,0": [
+    70,
+    19
+   ],
+   "11,0": [
+    71,
+    19
+   ],
+   "12,0": [
+    72,
+    19
+   ],
+   "19,8": [
+    0,
+    8
+   ],
+   "19,9": [
+    0,
+    9
+   ],
+   "19,10": [
+    0,
+    10
+   ],
+   "19,11": [
+    0,
+    11
+   ]
+  },
   "moves": {
    "7,12": {
     "m": "wander",
@@ -70472,7 +71047,7 @@
  },
  "HOENN_ROUTE_106": {
   "art": [
-   "ccccccccccwwwwwwwwwwwwwwwwwwwccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "ccccccccccwwoowwwwwwwwwwwwwwwccccccccccccccccccccccccccccccccccccccccccccccccccc",
    "ccccccccccoooooooooooooooooooccccccccccccccccccccccccccccccccccccccccccccccccccc",
    "ccccccccc~c~ooooooooooooooocco~c~ccccccccccccccccccccccccccccccccccccccccccccccc",
    "ccccccccccccoooooooooooooooccoccccccc~cc~ccccccccccccccccccccccccccccccccccccccc",
@@ -70491,7 +71066,7 @@
    "cccccccccccccccccccccccccccccccccccccccccccccccc^cc==================oooocc~cccc",
    "cccccccccccccccccccccccccccccccccccccccccccccccc========cc===========ooooccccccc",
    "ccccccccccccccccccccccccccccccccccccccccccccccc========ccccc===========oo~cccccc",
-   "ccccccccccccccccccccccccccccccccccccccccccccccc======cccccccccvvvvvvvvvvvccccccc"
+   "ccccccccccccccccccccccccccccccccccccccccccccccc======ccccccccc=vvvvvvvvvvccccccc"
   ],
   "exits": {
    "w": "HOENN_ROUTE_105",
@@ -70521,6 +71096,116 @@
    "Swimmer Ned",
    "Team Aqua Grunt"
   ],
+  "edge_to": {
+   "10,0": [
+    10,
+    79
+   ],
+   "11,0": [
+    11,
+    79
+   ],
+   "14,0": [
+    14,
+    79
+   ],
+   "15,0": [
+    15,
+    79
+   ],
+   "16,0": [
+    16,
+    79
+   ],
+   "17,0": [
+    17,
+    79
+   ],
+   "18,0": [
+    18,
+    79
+   ],
+   "19,0": [
+    19,
+    79
+   ],
+   "20,0": [
+    20,
+    79
+   ],
+   "21,0": [
+    21,
+    79
+   ],
+   "22,0": [
+    22,
+    79
+   ],
+   "23,0": [
+    23,
+    79
+   ],
+   "24,0": [
+    24,
+    79
+   ],
+   "25,0": [
+    25,
+    79
+   ],
+   "26,0": [
+    26,
+    79
+   ],
+   "27,0": [
+    27,
+    79
+   ],
+   "28,0": [
+    28,
+    79
+   ],
+   "63,19": [
+    3,
+    0
+   ],
+   "64,19": [
+    4,
+    0
+   ],
+   "65,19": [
+    5,
+    0
+   ],
+   "66,19": [
+    6,
+    0
+   ],
+   "67,19": [
+    7,
+    0
+   ],
+   "68,19": [
+    8,
+    0
+   ],
+   "69,19": [
+    9,
+    0
+   ],
+   "70,19": [
+    10,
+    0
+   ],
+   "71,19": [
+    11,
+    0
+   ],
+   "72,19": [
+    12,
+    0
+   ]
+  },
   "overheads": [
    {
     "kind": "picture",
@@ -70843,7 +71528,7 @@
  },
  "HOENN_ROUTE_109": {
   "art": [
-   "cc^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^cc",
+   "cco^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^cc",
    "ccoooooo============================oocc",
    "cccoooooo=.....====================ooocc",
    "cccoooooo=ccccc====================ooocc",
@@ -70988,6 +71673,196 @@
    "Sailor Huey",
    "Swimmer Grace"
   ],
+  "edge_to": {
+   "3,0": [
+    3,
+    59
+   ],
+   "4,0": [
+    4,
+    59
+   ],
+   "5,0": [
+    5,
+    59
+   ],
+   "6,0": [
+    6,
+    59
+   ],
+   "7,0": [
+    7,
+    59
+   ],
+   "8,0": [
+    8,
+    59
+   ],
+   "9,0": [
+    9,
+    59
+   ],
+   "10,0": [
+    10,
+    59
+   ],
+   "11,0": [
+    11,
+    59
+   ],
+   "12,0": [
+    12,
+    59
+   ],
+   "13,0": [
+    13,
+    59
+   ],
+   "14,0": [
+    14,
+    59
+   ],
+   "15,0": [
+    15,
+    59
+   ],
+   "16,0": [
+    16,
+    59
+   ],
+   "17,0": [
+    17,
+    59
+   ],
+   "18,0": [
+    18,
+    59
+   ],
+   "19,0": [
+    19,
+    59
+   ],
+   "20,0": [
+    20,
+    59
+   ],
+   "21,0": [
+    21,
+    59
+   ],
+   "22,0": [
+    22,
+    59
+   ],
+   "23,0": [
+    23,
+    59
+   ],
+   "24,0": [
+    24,
+    59
+   ],
+   "25,0": [
+    25,
+    59
+   ],
+   "26,0": [
+    26,
+    59
+   ],
+   "27,0": [
+    27,
+    59
+   ],
+   "28,0": [
+    28,
+    59
+   ],
+   "29,0": [
+    29,
+    59
+   ],
+   "30,0": [
+    30,
+    59
+   ],
+   "31,0": [
+    31,
+    59
+   ],
+   "32,0": [
+    32,
+    59
+   ],
+   "33,0": [
+    33,
+    59
+   ],
+   "34,0": [
+    34,
+    59
+   ],
+   "35,0": [
+    35,
+    59
+   ],
+   "36,0": [
+    36,
+    59
+   ],
+   "37,0": [
+    37,
+    59
+   ],
+   "0,43": [
+    59,
+    3
+   ],
+   "0,44": [
+    59,
+    4
+   ],
+   "0,45": [
+    59,
+    5
+   ],
+   "0,46": [
+    59,
+    6
+   ],
+   "0,47": [
+    59,
+    7
+   ],
+   "0,48": [
+    59,
+    8
+   ],
+   "0,49": [
+    59,
+    9
+   ],
+   "0,50": [
+    59,
+    10
+   ],
+   "0,51": [
+    59,
+    11
+   ],
+   "0,52": [
+    59,
+    12
+   ],
+   "0,53": [
+    59,
+    13
+   ],
+   "0,54": [
+    59,
+    14
+   ]
+  },
   "moves": {
    "11,6": {
     "m": "face",
@@ -71321,6 +72196,200 @@
     "Unique items found nowhere else!"
    ]
   ],
+  "edge_to": {
+   "15,0": [
+    15,
+    99
+   ],
+   "16,0": [
+    16,
+    99
+   ],
+   "17,0": [
+    17,
+    99
+   ],
+   "18,0": [
+    18,
+    99
+   ],
+   "19,0": [
+    19,
+    99
+   ],
+   "3,59": [
+    3,
+    0
+   ],
+   "4,59": [
+    4,
+    0
+   ],
+   "5,59": [
+    5,
+    0
+   ],
+   "6,59": [
+    6,
+    0
+   ],
+   "7,59": [
+    7,
+    0
+   ],
+   "8,59": [
+    8,
+    0
+   ],
+   "9,59": [
+    9,
+    0
+   ],
+   "10,59": [
+    10,
+    0
+   ],
+   "11,59": [
+    11,
+    0
+   ],
+   "12,59": [
+    12,
+    0
+   ],
+   "13,59": [
+    13,
+    0
+   ],
+   "14,59": [
+    14,
+    0
+   ],
+   "15,59": [
+    15,
+    0
+   ],
+   "16,59": [
+    16,
+    0
+   ],
+   "17,59": [
+    17,
+    0
+   ],
+   "18,59": [
+    18,
+    0
+   ],
+   "19,59": [
+    19,
+    0
+   ],
+   "20,59": [
+    20,
+    0
+   ],
+   "21,59": [
+    21,
+    0
+   ],
+   "22,59": [
+    22,
+    0
+   ],
+   "23,59": [
+    23,
+    0
+   ],
+   "24,59": [
+    24,
+    0
+   ],
+   "25,59": [
+    25,
+    0
+   ],
+   "26,59": [
+    26,
+    0
+   ],
+   "27,59": [
+    27,
+    0
+   ],
+   "28,59": [
+    28,
+    0
+   ],
+   "29,59": [
+    29,
+    0
+   ],
+   "30,59": [
+    30,
+    0
+   ],
+   "31,59": [
+    31,
+    0
+   ],
+   "32,59": [
+    32,
+    0
+   ],
+   "33,59": [
+    33,
+    0
+   ],
+   "34,59": [
+    34,
+    0
+   ],
+   "35,59": [
+    35,
+    0
+   ],
+   "36,59": [
+    36,
+    0
+   ],
+   "37,59": [
+    37,
+    0
+   ],
+   "39,7": [
+    0,
+    7
+   ],
+   "39,8": [
+    0,
+    8
+   ],
+   "39,9": [
+    0,
+    9
+   ],
+   "39,10": [
+    0,
+    10
+   ],
+   "39,11": [
+    0,
+    11
+   ],
+   "39,12": [
+    0,
+    12
+   ],
+   "39,13": [
+    0,
+    13
+   ],
+   "39,14": [
+    0,
+    14
+   ]
+  },
   "moves": {
    "6,38": {
     "m": "face",
@@ -71455,12 +72524,14 @@
       ],
       "event": {
        "lines": [
-        "Lisia: You should give it a try! Here's a Contest Pass, and a Pokéblock Case with some Pokéblocks to start you off!",
+        "Lisia: You should give it a try! Here's a Contest Pass, a Pokéblock Case with some Pokéblocks,",
+        "Lisia: and a Pokéblock Kit! Put Berries in it to make Pokéblocks of your own!",
         "Lisia: See you in the Contest Hall!"
        ],
        "gift_item": {
         "CONTEST_PASS": 1,
         "POKEBLOCK_CASE": 1,
+        "POKEBLOCK_KIT": 1,
         "RED_POKEBLOCK": 3,
         "BLUE_POKEBLOCK": 3,
         "PINK_POKEBLOCK": 3,
@@ -71698,7 +72769,7 @@
      "cccc.............ccccccccccccccccccccooo",
      "cccc..........ccccccc11cccccccccccccc..o",
      "cccc..........ccccccc..cccccccccccccccco",
-     "cccc..........c.cc.c......ooo.....ccccco",
+     "cccc..........c.cc.c..............ccccco",
      "cccc.........!c1cc1c....cccccc...cccccco",
      "ccc!.............c.....cccccccc..cccccco",
      "ccc..............c....ccccccccccccccccco",
@@ -71722,9 +72793,9 @@
      "ccc\"\"\"cooooooooooooooooooooooooooooooccc",
      "ccc\"\".cooooooooooooooooooooooooooooooccc",
      "ccc\"\"..ccccccccccccccccccccccccccccccccc",
-     "ccc\"\"......ooo...\"\".\".\"..\"\".\".\"\"\"!\".\"ccc",
-     "ccc\"\"\"\"\"\"..ooo.....\"..\"\"\"\".\".\".\"\"\"\"\"\"ccc",
-     "ccc\"\"\"\"\"\"\".ooo..\".\"..\"\"\".\"\"\"\"\"\"\"\"\"\"\"\"ccc",
+     "ccc\"\"............\"\".\".\"..\"\".\".\"\"\"!\".\"ccc",
+     "ccc\"\"\"\"\"\"..........\"..\"\"\"\".\".\".\"\"\"\"\"\"ccc",
+     "ccc\"\"\"\"\"\"\"......\".\"..\"\"\".\"\"\"\"\"\"\"\"\"\"\"\"ccc",
      "ccccccccccccccccccccccccccccccc\"\"\"\"\"\"ccc",
      "ccccccccccccccccccccoooooooooooc\"\"\"\"\"ccc",
      "ccccccccccccccccccccoooooooooooc.\"\"\"\"ccc",
@@ -71752,9 +72823,9 @@
      "cccccccc.ccDcc~~ccc~ccccooooooc\"\".\"\"\"\"cc",
      "<...ccc.!....c~~ccc~ccccooooooc\"\"\"\"\"\".cc",
      "<.............cccccccccccc..cc\"\"\"\"\"\"\"\"cc",
-     "<...............ooo....\"\".\"\"\"\".\".\".\"\"\"cc",
-     "<...............ooo.....X\".\".\"\"\"\"\"\"\".!cc",
-     "<...............ooo...\"...\".\"\"...\"\"\"..cc",
+     "<......................\"\".\"\"\"\".\".\".\"\"\"cc",
+     "<.......................X\".\".\"\"\"\"\"\"\".!cc",
+     "<.....................\"...\".\"\"...\"\"\"..cc",
      "cccccc......ccccccccccccccccccc....ccccc",
      "cccccccc....ooocccccoooooooooooooooocccc",
      "cccccccc....ooo~ccc~oooooooooooooooocccc",
@@ -71782,7 +72853,7 @@
      "cccccccccc.\"\"\"\"........cccccccccccccccoo",
      "ccccccccccc..\"\"...........ccccccccccccoo",
      "ccccccccccccc..........cccccccccccccoooo",
-     "cccccccccccccccvvvvvvcccccccccccccccvvvv"
+     "cccccccccccccccvvvvv.ccccccccccccccc...."
     ],
     "exits": {
      "^": "MAUVILLE_CITY",
@@ -71931,6 +73002,96 @@
       88
      ]
     },
+    "edge_to": {
+     "12,0": [
+      12,
+      19
+     ],
+     "13,0": [
+      13,
+      19
+     ],
+     "14,0": [
+      14,
+      19
+     ],
+     "15,0": [
+      15,
+      19
+     ],
+     "16,0": [
+      16,
+      19
+     ],
+     "17,0": [
+      17,
+      19
+     ],
+     "18,0": [
+      18,
+      19
+     ],
+     "28,0": [
+      28,
+      19
+     ],
+     "36,0": [
+      36,
+      19
+     ],
+     "37,0": [
+      37,
+      19
+     ],
+     "38,0": [
+      38,
+      19
+     ],
+     "39,0": [
+      39,
+      19
+     ],
+     "15,99": [
+      15,
+      0
+     ],
+     "16,99": [
+      16,
+      0
+     ],
+     "17,99": [
+      17,
+      0
+     ],
+     "18,99": [
+      18,
+      0
+     ],
+     "19,99": [
+      19,
+      0
+     ],
+     "0,67": [
+      79,
+      7
+     ],
+     "0,68": [
+      79,
+      8
+     ],
+     "0,69": [
+      79,
+      9
+     ],
+     "0,70": [
+      79,
+      10
+     ],
+     "0,71": [
+      79,
+      11
+     ]
+    },
     "moves": {
      "7,83": {
       "m": "face",
@@ -71968,6 +73129,23 @@
       ],
       "after": "leave"
      }
+    ],
+    "berry_soil": [
+     [
+      5,
+      11,
+      "NANAB_BERRY"
+     ],
+     [
+      6,
+      11,
+      "NANAB_BERRY"
+     ],
+     [
+      7,
+      11,
+      "NANAB_BERRY"
+     ]
     ],
     "parts": true,
     "barred": [
@@ -72174,10 +73352,10 @@
    "c....cccDccc..c...cHcccEcc.....cFccccccc",
    "ccccccc.......c..NcDcccDcc.....cDcccccIc",
    "ccccccc....!..c.....................ccDc",
-   "ccccccc.......c..............N.....ccc.>",
-   "ccccccc.......c....................ccc.>",
-   "ccccccccccccccc....cccccccccccccc..cooo>",
-   "ccccccccccccvvvvvvvccccccccvvvvvvvccvvvv"
+   "ccccccc.......c..............N.....ccc..",
+   "ccccccc.......c....................ccc..",
+   "ccccccccccccccc....cccccccccccccc..coooo",
+   "ccccccccccccvvvvvvvcccccccc.v.....ccvvvv"
   ],
   "exits": {
    "^": "HOENN_ROUTE_111",
@@ -72271,6 +73449,120 @@
     "MAUVILLE GAME CORNER"
    ]
   ],
+  "edge_to": {
+   "13,0": [
+    13,
+    139
+   ],
+   "14,0": [
+    14,
+    139
+   ],
+   "15,0": [
+    15,
+    139
+   ],
+   "16,0": [
+    16,
+    139
+   ],
+   "17,0": [
+    17,
+    139
+   ],
+   "18,0": [
+    18,
+    139
+   ],
+   "19,0": [
+    19,
+    139
+   ],
+   "12,19": [
+    12,
+    0
+   ],
+   "13,19": [
+    13,
+    0
+   ],
+   "14,19": [
+    14,
+    0
+   ],
+   "15,19": [
+    15,
+    0
+   ],
+   "16,19": [
+    16,
+    0
+   ],
+   "17,19": [
+    17,
+    0
+   ],
+   "18,19": [
+    18,
+    0
+   ],
+   "28,19": [
+    28,
+    0
+   ],
+   "36,19": [
+    36,
+    0
+   ],
+   "37,19": [
+    37,
+    0
+   ],
+   "38,19": [
+    38,
+    0
+   ],
+   "39,19": [
+    39,
+    0
+   ],
+   "0,7": [
+    59,
+    7
+   ],
+   "0,8": [
+    59,
+    8
+   ],
+   "0,9": [
+    59,
+    9
+   ],
+   "0,10": [
+    59,
+    10
+   ],
+   "39,7": [
+    0,
+    7
+   ],
+   "39,8": [
+    0,
+    8
+   ],
+   "39,9": [
+    0,
+    9
+   ],
+   "39,10": [
+    0,
+    10
+   ],
+   "39,11": [
+    0,
+    11
+   ]
+  },
   "moves": {
    "24,10": {
     "m": "wander",
@@ -72360,19 +73652,19 @@
  },
  "HOENN_ROUTE_117": {
   "art": [
-   "cccccccccccccccccccccccccccccccccccccc..\"........\"\"........>",
-   "cccccccc..\"\"cccccc....oooooooccccccccc....\"....c.\"\"\"\"......>",
-   "cccccccc\"\"\"\"\"\"\"2......ooooooooccccccccc.\"\".....\"...........>",
-   "ccccccccccccccc.......oooooooooccccccc.\"\"....\"....cccc..c..>",
-   "cccccccc......c.......oooooooooccccc..\".\"c.....N..cAcc.....>",
+   "cccccccccccccccccccccccccccccccccccccc..\"........\"\".........",
+   "cccccccc..\"\"cccccc....oooooooccccccccc....\"....c.\"\"\"\".......",
+   "cccccccc\"\"\"\"\"\"\"2......ooooooooccccccccc.\"\".....\"............",
+   "ccccccccccccccc.......oooooooooccccccc.\"\"....\"....cccc..c...",
+   "cccccccc......c.......oooooooooccccc..\".\"c.....N..cAcc......",
    "cccccccc......c..........Nooooocccccccccccccccc.c!cDcccccccc",
-   "cccccccc......c.!.........ooooo............................>",
+   "cccccccc......c.!.........ooooo.............................",
    "ccccccccc....cc.............ooo........X...................>",
    "<.....................................................X....>",
    "<......................................cccccccc............>",
    "<.......X...........ooo................cccccccc.N..........>",
-   "<...................oooo..............cccccccccc...........>",
-   "<...................oooooo............cccccccccc.!.........>",
+   "<...................oooo..............cccccccccc............",
+   "<...................oooooo............cccccccccc.!..........",
    "ccccccccccc..Nccc.\"\"ooooooX...........cc.ccc.cc...........cc",
    "ccccccccc.......c\"\"\"oooooooo.\"\"\"......cc.....cc........ccccc",
    "ccccccccc.......c\"\"\"oooooooo\"\"\"\"\"....................ccccccc",
@@ -72457,6 +73749,44 @@
    "Pokémon Breeder Isaac",
    "Triathlete Maria"
   ],
+  "edge_to": {
+   "0,8": [
+    19,
+    8
+   ],
+   "0,9": [
+    19,
+    9
+   ],
+   "0,10": [
+    19,
+    10
+   ],
+   "0,11": [
+    19,
+    11
+   ],
+   "0,12": [
+    19,
+    12
+   ],
+   "59,7": [
+    0,
+    7
+   ],
+   "59,8": [
+    0,
+    8
+   ],
+   "59,9": [
+    0,
+    9
+   ],
+   "59,10": [
+    0,
+    10
+   ]
+  },
   "moves": {
    "13,13": {
     "m": "face",
@@ -72497,6 +73827,23 @@
     "s": 5
    }
   },
+  "berry_soil": [
+   [
+    41,
+    13,
+    "WEPEAR_BERRY"
+   ],
+   [
+    42,
+    13,
+    "WEPEAR_BERRY"
+   ],
+   [
+    43,
+    13,
+    "WEPEAR_BERRY"
+   ]
+  ],
   "barred": [
    {
     "tiles": [
@@ -72573,9 +73920,9 @@
    "ccccccc..NccBcccCccc",
    "ccccccc!..ccDcccDccc",
    "cccccc....c........c",
-   "cccccc.............>",
-   "cccAcc.N......!....>",
-   "cccDcc......N......>",
+   "cccccc..............",
+   "cccAcc.N......!.....",
+   "cccDcc......N.......",
    "c!.................>",
    "...................>",
    "...................>",
@@ -72584,8 +73931,8 @@
    "cFcc....ccEcc...cccc",
    "cDcc...!ccDcc...cGcc",
    "c.............N.cDcc",
-   "c..................>",
-   "....N..............>",
+   "c...................",
+   "....N...............",
    "c......cccc....ccc.c",
    "ccc...ccccccc.....cc"
   ],
@@ -72699,6 +74046,28 @@
     "WALLY'S UNCLE'S HOUSE"
    ]
   ],
+  "edge_to": {
+   "19,8": [
+    0,
+    8
+   ],
+   "19,9": [
+    0,
+    9
+   ],
+   "19,10": [
+    0,
+    10
+   ],
+   "19,11": [
+    0,
+    11
+   ],
+   "19,12": [
+    0,
+    12
+   ]
+  },
   "moves": {
    "7,11": {
     "m": "wander",
@@ -72821,7 +74190,7 @@
    "cccccc............cccccccccccccccccccccc",
    "cccc___...___ccccccccccccccccccccccccccc",
    "cc...........ccccccccccccccccccccccccccc",
-   "^...........cccccccccccccccccccccccccccc",
+   "^......N....cccccccccccccccccccccccccccc",
    "^..........ccccccccccccccccccccccccccccc",
    "^..........ccccccccccccccccccccccccccccc",
    "^..........ccccccccccccccccccccccccccccc",
@@ -72976,6 +74345,19 @@
     }
    },
    {
+    "text": "Aarune",
+    "action": "EVENT",
+    "_look": "aarune.png",
+    "event": {
+     "lines": [
+      "Aarune: Hey there! The name's Aarune. I came from Unova, and I've been wandering Hoenn for eleven years.",
+      "Aarune: A vagabond in search of dreams... and of the perfect Super-Secret Base!",
+      "Aarune: See the odd trees, wall markings and bushes about? Each one hides a Secret Spot.",
+      "Aarune: I used to be a Pokémon Ranger, you know. Maybe one day I'll show you how to make a base of your own!"
+     ]
+    }
+   },
+   {
     "text": "Ruin seeker",
     "action": "EVENT",
     "event": {
@@ -73076,6 +74458,92 @@
    "Hiker Clark",
    "Cooltrainer Wilton"
   ],
+  "edge_to": {
+   "13,139": [
+    13,
+    0
+   ],
+   "14,139": [
+    14,
+    0
+   ],
+   "15,139": [
+    15,
+    0
+   ],
+   "16,139": [
+    16,
+    0
+   ],
+   "17,139": [
+    17,
+    0
+   ],
+   "18,139": [
+    18,
+    0
+   ],
+   "19,139": [
+    19,
+    0
+   ],
+   "0,7": [
+    99,
+    7
+   ],
+   "0,8": [
+    99,
+    8
+   ],
+   "0,9": [
+    99,
+    9
+   ],
+   "0,10": [
+    99,
+    10
+   ],
+   "0,28": [
+    39,
+    8
+   ],
+   "0,29": [
+    39,
+    9
+   ],
+   "0,30": [
+    39,
+    10
+   ],
+   "0,31": [
+    39,
+    11
+   ],
+   "0,66": [
+    39,
+    46
+   ],
+   "0,67": [
+    39,
+    47
+   ],
+   "0,68": [
+    39,
+    48
+   ],
+   "0,69": [
+    39,
+    49
+   ],
+   "0,70": [
+    39,
+    50
+   ],
+   "0,71": [
+    39,
+    51
+   ]
+  },
   "moves": {
    "23,8": {
     "m": "wander",
@@ -73347,6 +74815,28 @@
     ]
    }
   ],
+  "berry_soil": [
+   [
+    18,
+    5,
+    "ORAN_BERRY"
+   ],
+   [
+    19,
+    5,
+    "ORAN_BERRY"
+   ],
+   [
+    22,
+    5,
+    "RAZZ_BERRY"
+   ],
+   [
+    23,
+    5,
+    "RAZZ_BERRY"
+   ]
+  ],
   "barred": [
    {
     "item": "GO_GOGGLES",
@@ -73420,88 +74910,120 @@
  },
  "HOENN_ROUTE_112": {
   "art": [
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "ccccccccccccccTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "ccccccccccccccccccccccccTT.cccc.TTT\"\"TTT",
-   "cccccccccccccccccccccccccT......c\"\"\"\"\"cT",
-   "cccccccccccccccccccccccccTc.....\"\"\"\"\"...",
+   "cccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccc.cccc.ccc\"\"ccc",
+   "cccccccccccccccccccccccccc......c\"\"\"\"\"cc",
+   "ccccccccccccccccccccccccccc.....\"\"\"\"\"..>",
    "ccccccccccccccccccccccccccc......\"\"....>",
-   "cccccccccTccccccccccccncc...\"\"\"....TT...",
-   "cccccccccTTccccccccccc.....\"\"\"\"\"\"TTTTTTT",
-   "ccccccccccTcccccccccc.....\"\"\"\"\"cTTTTTTTT",
-   "ccccccccccccccccccceeec....cTTTTTTTTTTTT",
-   "cccccccccccccccccccceeceecccTTTTTTTTTTTT",
-   "ccccccccccTccccccceeeceeccccTTTTTTTTTTTT",
-   "ccccccccccTccccccccTececcccccTTTTTTTTTcc",
-   "ccccccccccccccccTccTTcTccccTccccTTTTTccc",
-   "ccccccccccccccccTcccTcTccccTcccccTTTTccc",
-   "ccccccccccccccccccccccTccTccccccccccTccc",
-   "cccccccccccccccccccccTTccTTTcccccccccccc",
-   "cccccccccccccccccccccTcccTTTTTcccccccccc",
-   "TcccccccccccccccccccccccTTTTTTccTccccccc",
-   "TcccccTcccccccccccccccccTTcKKKKKKccccccc",
-   "cccTccTcccccccccccTccccccccKKKKKKccccccc",
-   "cccTcccccTccccccccTccccccccKKKKKKTcccccc",
-   "cTTTcccccTcTccccccTcccTcccTKKKKKKTcccccc",
-   "cTTTcTcccccTcccccccccTTTTTTKKDKKKTcccccc",
-   "TccccTcTTccccccccccccTTTTTeeeeeeeccccccc",
-   "TccccccTTccTTccccccTcTTTTeeXeeXTTccccccc",
-   "cccccccccccTTcccTTcTcTTTeeeeeeTTTccccccc",
-   "ccccTTcccTTcccccTTcTcTTeeeeeeTTcTccTcccc",
-   "TTTcTTcccTTcccccTTcccTTeeeeeTTTcTccTcccc",
-   "TTTcTTTTcccccccccccceTeeeeeeTcccTccccccc",
-   "TTTTTTTTcccccccccccceeeeeeeTTcccccccTccc",
-   "TTTTTTcTccccccccceeeeeeeeeeTTcccTTcTcccc",
-   "TTTTTTcTcccnccceeeeeeeeeeeeTTcccTTTTcccc",
-   "TTTTTTTTTeeeeeeeeeeeee!eeeTTTcccTTTccccc",
-   "TTTTTTTTTTTeeeeeeeeeeeeeeeTTccccTTTccccc",
-   "TTTTTTTTTTTeeeeeeeeeeeXeeeccccccTTTccccc",
-   "TTTTTTTTTTTTceeeeeeeeeecccccccccTTTccccc",
-   "TTTTTTTTTTTTcccccccc==cccccccTTcTTTTcccc",
-   "TTTTTTTTTTTTcccccccc==cccccccTTTTTTTcTTT",
-   "TTTTTTTTTTTTcc.ccccc==cccc\"\"\"\"\"TTTTTTTTT",
-   "TTTTTTTTTTTTcc.).).!==...\"\"\"\"\"\"\"\"\"TTTTTT",
-   "TTTTTTTTTTcccc.).)..==...\"\"\"\"\"\"\"\"\"..TTTT",
-   "TTTTTT^^TTc..).).)..==..eeeeeec\"\"\"......",
-   ".TTTTT..TTc..).).)..==.ccceeeeec........",
-   "..TTT...TTc..).).)..==...ccccccc........",
-   "<==.!....Tc..).).)..==........cc...====>",
-   "<======...)..).).)..====================",
-   ".======...)..).).)..==================..",
-   "..........TTTTTTTc.....................c",
-   "T........TTTTTTTTT######TTTTTT#####.cccc",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTccccc",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTccccc",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTccccc",
-   "TTTcccccTTTTTTTTTTTTTTTTTTTTTccccccccccc",
-   "TccccccccccccccTTTTTTTTTTccccccccccccccc",
-   "cccccccccccccccccTTTTTTTcccccccccccccccc"
+   "ccccccccccccccccccccccvcc...\"\"\"........>",
+   "cccccccccccccccccccccc.....\"\"\"\"\"\"..cc..>",
+   "ccccccccccccccccccccc.....\"\"\"\"\"c\"ccccccc",
+   "ccccccccccccccccccccccc...cc\"\"\"\"cccccccc",
+   "cccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccc",
+   "ccccccccccccccccccccccccccccAccccccccccc",
+   "ccccccccccccccccccccccccccccDDcccccccccc",
+   "cccccccccccccccccccccccccc.......ccccccc",
+   "ccccccccccccccccccccccccc..X..Xccccccccc",
+   "ccccccccccccccccccccccccccNNcccccccccccc",
+   "ccccccccccccccccccccccc.......cccccccccc",
+   "ccccccccccccccccccccccc......ccccccccccc",
+   "cccccccccccccccccccc.c......cccccccccccc",
+   "cccccccccccccccccccc........cccccccccccc",
+   "ccccccccccc.ccccc..........ccccccccccccc",
+   "cccccccccccvccc............ccccccccccccc",
+   "ccccccccc.............!....ccccccccccccc",
+   "ccccccccc.................cccccccccccccc",
+   "ccccccccccc...........X...cccccccccccccc",
+   "ccccccccccccc..........ccccccccccccccccc",
+   "cccccccccccccccccccc..cccccccccccccccccc",
+   "cccccccccccccccccccc..cccccccccccccccccc",
+   "cccccccccccc)).c_ccc..cccc\"\"\"\"\"ccccccccc",
+   "cccccccccccc)).).).!.....\"\"\"\"\"\"\"\"\"cccccc",
+   "ccccccccccc_c).).).......\"\"\"\"\"\"\"\"\"..cccc",
+   "ccccccnncc)..).).).....cccccccc\"\"\".....>",
+   "<ccccc..cc)..).).).....ccccccccc.......>",
+   "<.ccc...cc)..).).).......ccccccc.......>",
+   "<...!....c)..).).)............cc.N.....>",
+   "<.......N.)..).).).....................>",
+   "<.........)..).).).....................>",
+   "<.........)..).).)....................cc",
+   "<.........ccccccc)cccccccccccccccccccccc",
+   "c........ccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccc"
   ],
-  "parts": true,
   "exits": {
    "<": "LAVARIDGE_TOWN",
    ">": "HOENN_ROUTE_111",
-   "n": "HOENN_FIERY_PATH",
-   "^": "HOENN_JAGGED_PASS"
+   "n": "HOENN_JAGGED_PASS",
+   "v": "HOENN_FIERY_PATH"
   },
   "buildings": {
-   "K": "cablecar"
+   "A": "cablecar"
   },
   "roofs": {
-   "K": [
-    224,
-    136,
-    64
-   ]
+   "_picture": {
+    "f": "em_ground/0_27.png",
+    "at": [
+     0,
+     0
+    ]
+   },
+   "_signs_in_picture": true,
+   "_buildings_in_picture": true
   },
-  "trainer_spots": [
-   "Hiker Trent",
-   "Team Magma Grunt",
-   "Team Aqua Grunt"
+  "people": [
+   {
+    "text": "Grunt",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Is our leader really going to wake that thing up? I heard we need a Meteorite first."
+     ]
+    },
+    "condition": "not:meteor_falls_cleared",
+    "_look": "@grunt"
+   },
+   {
+    "text": "Gate grunt",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "So that's why the rest of the crew headed to Fallarbor. Now scram, the cable car's closed!"
+     ]
+    },
+    "condition": "not:meteor_falls_cleared",
+    "_look": "@grunt"
+   },
+   "TALK TO YOUR RIVAL",
+   {
+    "text": "Ledge hiker",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "I'd like to get to Mauville, but once I hop down these ledges there's no climbing back to Lavaridge."
+     ]
+    }
+   }
   ],
   "signs": [
    [
@@ -73516,102 +75038,305 @@
     "ROUTE 112",
     "West: Lavaridge Town."
    ]
+  ],
+  "trainer_spots": [
+   "Hiker Trent",
+   "Team Magma Grunt",
+   "Team Aqua Grunt"
+  ],
+  "edge_to": {
+   "0,47": [
+    19,
+    7
+   ],
+   "0,48": [
+    19,
+    8
+   ],
+   "0,49": [
+    19,
+    9
+   ],
+   "0,50": [
+    19,
+    10
+   ],
+   "0,51": [
+    19,
+    11
+   ],
+   "0,52": [
+    19,
+    12
+   ],
+   "0,53": [
+    19,
+    13
+   ],
+   "39,8": [
+    0,
+    28
+   ],
+   "39,9": [
+    0,
+    29
+   ],
+   "39,10": [
+    0,
+    30
+   ],
+   "39,11": [
+    0,
+    31
+   ],
+   "39,46": [
+    0,
+    66
+   ],
+   "39,47": [
+    0,
+    67
+   ],
+   "39,48": [
+    0,
+    68
+   ],
+   "39,49": [
+    0,
+    69
+   ],
+   "39,50": [
+    0,
+    70
+   ],
+   "39,51": [
+    0,
+    71
+   ]
+  },
+  "moves": {
+   "8,50": {
+    "m": "wander",
+    "d": "ud",
+    "r": [
+     0,
+     3
+    ]
+   },
+   "26,30": {
+    "m": "face",
+    "d": "u"
+   },
+   "27,30": {
+    "m": "face",
+    "d": "u"
+   }
+  },
+  "scenes": [
+   {
+    "who": "TALK TO YOUR RIVAL",
+    "trigger": {
+     "zone": [
+      26,
+      44,
+      39,
+      53
+     ]
+    },
+    "condition": "not:got_strength_hoenn",
+    "approach": true,
+    "then": "talk",
+    "heal": true,
+    "after": "leave",
+    "after_lines": [
+     "{rival_name}: I'm off to Fallarbor Town to meet Professor Cozmo, a friend of my dad's. See you!"
+    ]
+   }
+  ],
+  "berry_soil": [
+   [
+    27,
+    6,
+    "RAWST_BERRY"
+   ],
+   [
+    28,
+    6,
+    "PECHA_BERRY"
+   ],
+   [
+    29,
+    6,
+    "PECHA_BERRY"
+   ],
+   [
+    30,
+    6,
+    "RAWST_BERRY"
+   ]
+  ],
+  "parts": true,
+  "overheads": [
+   {
+    "kind": "picture",
+    "f": "em_top/0_27.png",
+    "at": [
+     0,
+     0
+    ],
+    "size": [
+     40,
+     60
+    ]
+   }
   ]
  },
  "HOENN_FIERY_PATH": {
   "art": [
    "ccccccccccccccccccccccccccccccccccc",
    "ccccccccccccccccccccccccccccccccccc",
-   "ccc..........ccccc...........cccccc",
-   "ccc..........ccccc...........cccccc",
-   "ccc..........ccccc...........cccccc",
-   "ccc..........ccccc....ccccvcccccccc",
-   "ccc...cccccccccccc....ccccccccccccc",
-   "ccc...cccccccccccc....ccccccccccccc",
-   "ccc...cccncccccccc....ccccccccccccc",
-   "ccc...c....ccccccc..r.ccccccccccccc",
-   "ccc........ccccccc....ccccccccccccc",
-   "ccc...c....ccccccc....ccccccccccccc",
-   "ccc...c...rccccccc..X.ccccccccccccc",
-   "ccc...cccccccccccc....ccccccccccccc",
-   "ccc...................ccccccccccccc",
-   "ccc.........X.........ccccccccccccc",
-   "ccc...................ccccccccccccc",
-   "ccc...cccccccccccc....ccccccccccccc",
-   "ccc...cccccccccccc..........ccccccc",
-   "ccc...cccccccccccc...........cccccc",
-   "ccc...cccccccccccc...........cccccc",
-   "c...r....ccccccccccccccc.....cccccc",
-   "c........ccccccccccccccc.....cccccc",
-   "c........ccccccccccccccc.....cccccc",
-   "c..........ccccccccccccc.....cccccc",
-   "cccccccc...ccccccccccccc.....cccccc",
-   "cccccccc...ccccccccccccc.....cccccc",
-   "cccccccc...ccccccccccccc.....cccccc",
-   "cccccccc...ccccccccccccc..X..cccccc",
-   "cccccccc...ccccccccccccc.....cccccc",
-   "ccc.........cccccccccccc.....cccccc",
-   "ccc.r.....r.cccccccccccc.....cccccc",
-   "ccc.........cccccccccccc.....cccccc",
-   "ccc.........cccccccccccc.....cccccc",
-   "ccc.........cccccccccccc.....cccccc",
-   "ccc.........cccccccccccc.....cccccc",
-   "cccccccccccccccccccccccc.....cccccc",
-   "ccccccccccccccccccccccccccvcccccccc"
+   "ccccccc...ccccccccc........cccccccc",
+   "cccccc..N..cccccccc.........ccccccc",
+   "cccccc.....cccccccc.......v.ccccccc",
+   "cccccc.ccccccccccc....ccccccccccccc",
+   "cccccc.ccccccccccc...cccccccccccccc",
+   "ccc....ccccccccccc...cccccccccccccc",
+   "ccc.cc.ccccccccccc...cccccccccccccc",
+   "ccc.cc.ccccccccccc...cccccccccccccc",
+   "ccc.cc.ccccccccccc...cccccccccccccc",
+   "ccc.....b....ccccc...cccccccccccccc",
+   "cccbccccccc.cccccc..Xcccccccccccccc",
+   "ccc.ccccccc.cccccc...cccccccccccccc",
+   "ccc.cccccc..cccccc...cccccccccccccc",
+   "ccc.ccccccb.X....b...cccccccccccccc",
+   "ccc.cccccc...ccccc...cccccccccccccc",
+   "ccc.cccccccccccccc...cccccccccccccc",
+   "ccc.cccccccccccccc....ccccccccccccc",
+   "ccc.cccccccccccccc....ccccccccccccc",
+   "ccc.ccccccccccccccc........cccccccc",
+   "cc..c.ccccccccccccc.........ccccccc",
+   "cc.....cccccccccccc.........ccccccc",
+   "ccccc.b.cccccccccccccccc....ccccccc",
+   "cccccb..cccccccccccccccc....ccccccc",
+   "ccccc..ccccccccccccccccc....ccccccc",
+   "ccccc.ccccccccccccccccccc...ccccccc",
+   "ccccc.ccccccccccccccccccc...ccccccc",
+   "ccccc....cccccccccccccccc.X.ccccccc",
+   "cccccc...cccccccccccccccc...ccccccc",
+   "cccccc...cccccccccccccccc...ccccccc",
+   "ccccc.....ccccccccccccccc...ccccccc",
+   "cccc.......cccccccccccccc...ccccccc",
+   "cccc.......cccccccccccccc...ccccccc",
+   "cccc.......cccccccccccccc...ccccccc",
+   "ccccccccccccccccccccccccc...ccccccc",
+   "ccccccccccccccccccccccccc.v.ccccccc",
+   "ccccccccccccccccccccccccccccccccccc"
   ],
-  "theme": "cave",
   "exits": {
-   "v": "HOENN_ROUTE_112",
-   "n": "HOENN_MT_CHIMNEY"
+   "v": "HOENN_ROUTE_112"
   },
+  "buildings": {},
+  "roofs": {
+   "_picture": {
+    "f": "em_ground/24_14.png",
+    "at": [
+     0,
+     0
+    ]
+   },
+   "_signs_in_picture": true,
+   "_buildings_in_picture": true
+  },
+  "people": [
+   "CHARIZARDITE X"
+  ],
   "trainer_spots": [
    "Kindler Bernie",
    "Battle Girl Cyndy",
    "Team Magma Grunt"
+  ],
+  "moves": {
+   "8,3": {
+    "m": "look",
+    "d": "udlr"
+   }
+  },
+  "theme": "cave",
+  "overheads": [
+   {
+    "kind": "picture",
+    "f": "em_top/24_14.png",
+    "at": [
+     0,
+     0
+    ],
+    "size": [
+     35,
+     38
+    ]
+   }
   ]
  },
  "HOENN_ROUTE_113": {
   "art": [
-   "ccccccccccccccccTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#ccccccccccc",
-   "ccccccccccccccccTTT#TTTTTTT#TTTTTTTTTTTTT#T#T#T#T#T#TeTTT#TTTTTTT#T#TTTTTTTTTTT#TTTTT#T#cccccccccccc",
-   "ccccccccccccccccTTTTTTTTTTTTTTTTWWWWTTTTTTe\"\"\"\"\"\"\"\"eeee#e\"\"T#T#T#eee#eeeeT##ee#\"eTTT#T#ccccccccccccc",
-   "ccccccccccccccccTTT#T#T#TeeTTTT#WWWWT#T#T#\"\"\"\"\"\"\"\"\"\"eee#eeeeee\"\"\"eeeeeeeeeeeeeeeeeeee#cccccccccccccc",
-   "ccccccccccccccccTTTT_####eeT#T#TWWWWee\"\"\"\"\"\"\"\"\"\"#cc#eee#ee!e\"\"\"\"\"\"ee#e\"TTTT___e\"#_ee_ccccccccccccccc",
-   "ccccccccccccccccTTT#eeeeeeeeeee!WDWWe\"\"\"\"\"\"\"\"\"\"\"cccc\"e\"#eeee\"\"\"\"\"\"ee#eeT#T#eeeXe#eee\"ccccccccccccccc",
-   "eeeeeeeeeeeeeeecTTTTeeee\"eeeeeeeeeee\"\"\"\"\"\"\"\"\"eeecccceee#\"\"\"\"\"\"\"\"\"#c##TTTTTTeeeee#\"ee\"!\"eeecccccccccc",
-   "eeeffffeffffeeecTTT#ee\"\"\"\"(eeeeeeee\"\"\"\"\"\"\"\"eeeeecccceee#\"\"\"\"\"\"\"\"\"ccc#TTTTT#_____c\"\"\"\"eeee...ccccccc.",
-   "eeeffffeffffeee(eT#e\"\"\"\"\"\"c__#eeeee\"\"ee#ccc#eeXecccc___c\"\"\"\"\"\"eeeccc#\"T#T#\"\"\"\"\"\"\"\"\"\"\"eee..........=>",
-   "<eeeeeeeeeee!eeeee#\"\"\"\"\"\"\"\"\"\"(Xeeeeeee#cccccc#eeeeee\"\"\"\"\"\"\"\"\"\"eeeccc#ee\"\"\"\"\"\"\"\"\"\"\"\"\"eee...........=>",
-   "<eeeeeeeeeeeeeeeeeee\"\"\"\"\"\"\"\"\"c_____eeecccccccceeeeee\"\"\"\"\"\"\"#__eee___cee\"\"\"\"\"\"\"\"\"\"\"\"\"ee..............",
-   "eeeffffeffffeeeeeeeeee\"\"\"\"\"\"\"\"\"\"\"eeeeecccccccceeeeeeee\"\"\"\"\"#eeXeeeeeeee\"\"\"\"\"\"\"\"\"\"\"ee\"e....#ccccccccc",
-   "eeeffffeffffeeeeeeeeee\"\"\"\"\"\"\"\"\"\"\"eeeeecccccccc###eeeeee\"\"\"\"#e\"\"eeeeeeeeee\"\"\"\"#cccccccccccccccccccccc",
-   "eeeeeeeeeeeeeeeeTeeeee\"\"\"\"\"\"\"\"\"\"\"eeeeeeeeeccccccc\"ee\"#cc####eTTTTTTTTTTTTTT\"\"ccccccccccccccccccccccc",
-   "TTTTTTTTTTTTTTeeTTTTTTTTTT\"\"\"\"\"\"eeeeTTTT\"ecccccTTTTT\"cccccc#TT#TTTTT#TTT#T##cccccccccccccccccccccccc",
-   "TTTTTcTTTcTTTTTeTTTTTTTTT##ccccccc#\"TTTTT\"eccccTT#TTTcccc__cTTTTTTTTTTTTTTTccccccccccccccccccccccccc",
-   "cTTTTTTTTTTTTTTTTT#TTT#TTTcccccccccc#T#TTTTTTTTTTTTT#ccccc#TTTTTTTTTTTTTTT#ccccccccccccccccccccccccc",
-   "TTTTTTTTTTTTTTTTTTTTTTTTT#cccccccccccTTTTTTTTTTTTTTTTccccccTTTTTTTTTTTTTTTTccccccccccccccccccccccccc",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTcccccccccccTTTTTTTTTTTTTTT#ccccccTTTTTTTTTTTTTTT#ccccccccccccccccccccccccc",
-   "TTTTTTTTTTTTTTTTTTTTTTTTT#cccccccccccTTTTTTTTTTTTTTTTccccccTTTTTTTTTTTTTTTTccccccccccccccccccccccccc"
+   "ccccccccccccccc(cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "ccccccccccccccc(cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "ccccccccccccccc(ccccccccccccccccccccccccc..\"\"\"\"\"\"\"\"\"\"\"\").cccccccc...).c..ccccccccccccccccccccccccccc",
+   "ccccccccccccccc(cccccccccccccccccccccccccc\"\"\"\"\"\"\"\"\"\"\"\"\")......\"\"\"...)...........cccccccccccccccccccc",
+   "ccccccccccccccc(cccc______ccccc.cAcc..\"\"\"\"\"\"\"\"\"\"cccc\"\"\")..!.\"\"\"\"\"\"..).c...cccc.c)ccccccccccccccccccc",
+   "ccccccccccccccc(cccc......(....!cDcc.\"\"\"\"\"\"\"\"\"\"\"cccc\"\"\")....\"\"\"\"\"\"..)..cccc...X.)\"\"\"\"ccccccccccccccc",
+   "<..............(ccc.....\"\"(.........\"\"\"\"\"\"\"\"\".X.cccc...)\"\"\"\"\"\"\"\"\"ccc)...........)\"\"\"\"!c...cccccccccc",
+   "<..............(cccc..\"\"\"\"(........\"\"\"\"\"\"\"\".....cccc...)\"\"\"\"\"\"\"\"\"ccc)cccccc_____c\"\"\"\".......ccccccc>",
+   "<..............(.cc.\"\"\"\"\"\"c__c.....\"\"..ccccc....cccc___c\"\"\"\"\"\"X..ccc)ccccc\"\"\"\"\"\"\"\"\"\"\"..............>",
+   "<...........!..c___\"\"\"\"\"\"\"\"\"\"(X.......cccccccc......\"\"\"\"\"\"\"\"\"\"...ccc)..\"\"\"\"\"\"\"\"\"\"\"\"\"...............>",
+   "<...................\"\"\"\"\"\"\"\"\"c_____.N.cccccccc......\"\"\"\"\"\"\"c__...___c..\"\"\"\"\"\"\"\"\"\"\"\"\"...............>",
+   "<.....................\"\"\"\"\"\"\"\"\"\"\".....cccccccc........\"\"\"\"\")...........\"\"\"\"\"\"\"\"\"\"\"..c.....cccccccccc",
+   "<.....................\"\"\"\"\"\"\"\"\"\"\".....ccccccccccc......\"\"\"\").cc...N......\"\"\"\"ccccccccccccccccccccccc",
+   "<.....................\"\"\"\"\"\"\"\"\"\"\".........cccccccc..ccccccc)...............ccccccccccccccccccccccccc",
+   "<..............cc.........\"\"\"\"\"\"........c.cccccc....ccccccc).ccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccc..ccccccccccccccccccccccccccccccccccccccccc__ccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
   ],
   "exits": {
    "<": "FALLARBOR_TOWN",
    ">": "HOENN_ROUTE_111"
   },
   "buildings": {
-   "W": "house"
+   "A": "glass"
   },
   "roofs": {
-   "W": [
-    160,
-    160,
-    128
-   ]
+   "_picture": {
+    "f": "em_ground/0_28.png",
+    "at": [
+     0,
+     0
+    ]
+   },
+   "_signs_in_picture": true,
+   "_buildings_in_picture": true
   },
-  "trainer_spots": [
-   "Ninja Boy Takashi",
-   "Parasol Lady Madeline",
-   "Youngster Neal",
-   "Ninja Boy Lung"
+  "people": [
+   {
+    "text": "Glass fan",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Wahaha! The volcano's ash can be made into glass. What a wonderful age we live in!"
+     ]
+    }
+   },
+   {
+    "text": "Ash walker",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Walking through the ash is fun. You can see every footprint you leave behind!"
+     ]
+    }
+   }
   ],
   "signs": [
    [
@@ -73630,6 +75355,146 @@
     "ROUTE 113",
     "East: Route 111."
    ]
+  ],
+  "trainer_spots": [
+   "Ninja Boy Takashi",
+   "Parasol Lady Madeline",
+   "Ninja Boy Lung",
+   "Youngster Neal"
+  ],
+  "edge_to": {
+   "0,6": [
+    19,
+    6
+   ],
+   "0,7": [
+    19,
+    7
+   ],
+   "0,8": [
+    19,
+    8
+   ],
+   "0,9": [
+    19,
+    9
+   ],
+   "0,10": [
+    19,
+    10
+   ],
+   "0,11": [
+    19,
+    11
+   ],
+   "0,12": [
+    19,
+    12
+   ],
+   "0,13": [
+    19,
+    13
+   ],
+   "0,14": [
+    19,
+    14
+   ],
+   "99,7": [
+    0,
+    7
+   ],
+   "99,8": [
+    0,
+    8
+   ],
+   "99,9": [
+    0,
+    9
+   ],
+   "99,10": [
+    0,
+    10
+   ]
+  },
+  "moves": {
+   "66,12": {
+    "m": "wander",
+    "d": "lr",
+    "r": [
+     1,
+     0
+    ]
+   },
+   "36,10": {
+    "m": "wander",
+    "d": "ud",
+    "r": [
+     0,
+     1
+    ]
+   },
+   "46,6": {
+    "m": "face",
+    "d": "d",
+    "s": 1
+   },
+   "62,8": {
+    "m": "face",
+    "d": "d",
+    "s": 3
+   }
+  },
+  "scenes": [
+   {
+    "trigger": {
+     "zone": [
+      84,
+      5,
+      99,
+      12
+     ]
+    },
+    "condition": [
+     "not:heard_cozmo",
+     "not:meteor_falls_cleared"
+    ],
+    "flag": "route113_rival_rest",
+    "cast": [
+     {
+      "sheet": "@rival",
+      "from": [
+       88,
+       9
+      ],
+      "to": "player",
+      "heal": true,
+      "leave": [
+       0,
+       9
+      ],
+      "lines": [
+       "{rival_name}: Oh, {player_name}! This ash makes for a long walk. I had to stop for a rest.",
+       "{rival_name}: Let me heal your Pokémon while we're here.",
+       "{rival_name}: Professor Cozmo in Fallarbor studies Meteorites. He and my dad are looking at how they affect Pokémon.",
+       "{rival_name}: Right, rest's over. See you in Fallarbor!"
+      ]
+     }
+    ]
+   }
+  ],
+  "overheads": [
+   {
+    "kind": "picture",
+    "f": "em_top/0_28.png",
+    "at": [
+     0,
+     0
+    ],
+    "size": [
+     100,
+     20
+    ]
+   }
   ]
  },
  "FALLARBOR_TOWN": {
@@ -73637,57 +75502,75 @@
    "cccccccccccccccccccc",
    "cccccccccccccccccccc",
    "cccccccccccccccccccc",
-   "AAAAeeQQQQQeeccccccc",
-   "AAAAeeQQQQQeeCCCCccc",
-   "AAAAeeQQQQQeeCCCCccc",
-   "AADAerQQQQQreCCCCeee",
-   "eee!eeQQDQQeeCDCCeee",
-   "eeeeee!==eeeee=eeeee",
-   "<==================>",
-   "<==================>",
-   "eeeeeeeeee!==eeeeeee",
-   "eeeeeeeeeee==eMMMMee",
-   "eeeeeeeeeee==eMMMMee",
-   "eeeeeKKKKee==eMMMMTT",
-   "erreeKKKKee==eMDMMTT",
-   "eeeeeKKKKee=====eTTT",
-   "TTTTTKKDKee=====eTTT",
-   "TTTTTeeeeeeeeTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTT"
+   "cccccccccccccccccccc",
+   "cccccccccccccccccccc",
+   "cFcc..ccccc..ccccccc",
+   "cDcc.cccBccc.cCcc..>",
+   "<..!.cccDccc.cDcc..>",
+   "<.....!............>",
+   "<..........N.......>",
+   "<..................>",
+   "<.......N.!........>",
+   "<..................>",
+   "<.............cccc.>",
+   "<.............cAcc.>",
+   "<....cccc..N..cDcccc",
+   "<....cEcc..........c",
+   ".....cDcc.........cc",
+   "c................ccc",
+   "cccc..........cccccc"
   ],
   "exits": {
    "<": "HOENN_ROUTE_114",
    ">": "HOENN_ROUTE_113"
   },
   "buildings": {
-   "A": "house",
-   "Q": "contest",
+   "A": "mart",
+   "B": "contest",
    "C": "center",
-   "K": "cozmo",
-   "M": "mart"
+   "E": "cozmo",
+   "F": "house"
   },
   "roofs": {
-   "A": [
-    224,
-    152,
-    40
-   ],
-   "K": [
-    224,
-    152,
-    40
-   ],
-   "C": [
-    224,
-    96,
-    88
-   ],
-   "M": [
-    72,
-    120,
-    190
-   ]
+   "_picture": {
+    "f": "em_ground/0_13.png",
+    "at": [
+     0,
+     0
+    ]
+   },
+   "_signs_in_picture": true,
+   "_buildings_in_picture": true
   },
+  "people": [
+   {
+    "text": "Meteor fan",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Meteors have fallen around here since long ago. They say one carved out Meteor Falls!"
+     ]
+    }
+   },
+   {
+    "text": "Azurill girl",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Look at my Azurill! Isn't it smooth and squishy?"
+     ]
+    }
+   },
+   {
+    "text": "Flannery fan",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Have you battled Flannery at the Lavaridge Gym? Her grandfather was a famous Gym Leader too."
+     ]
+    }
+   }
+  ],
   "signs": [
    [
     "MOVE REMINDER'S HOUSE"
@@ -73699,6 +75582,177 @@
     "FALLARBOR TOWN",
     "A farm community with small gardens."
    ]
+  ],
+  "edge_to": {
+   "0,7": [
+    39,
+    7
+   ],
+   "0,8": [
+    39,
+    8
+   ],
+   "0,9": [
+    39,
+    9
+   ],
+   "0,10": [
+    39,
+    10
+   ],
+   "0,11": [
+    39,
+    11
+   ],
+   "0,12": [
+    39,
+    12
+   ],
+   "0,13": [
+    39,
+    13
+   ],
+   "0,14": [
+    39,
+    14
+   ],
+   "0,15": [
+    39,
+    15
+   ],
+   "0,16": [
+    39,
+    16
+   ],
+   "19,6": [
+    0,
+    6
+   ],
+   "19,7": [
+    0,
+    7
+   ],
+   "19,8": [
+    0,
+    8
+   ],
+   "19,9": [
+    0,
+    9
+   ],
+   "19,10": [
+    0,
+    10
+   ],
+   "19,11": [
+    0,
+    11
+   ],
+   "19,12": [
+    0,
+    12
+   ],
+   "19,13": [
+    0,
+    13
+   ],
+   "19,14": [
+    0,
+    14
+   ]
+  },
+  "moves": {
+   "8,11": {
+    "m": "face",
+    "d": "d"
+   },
+   "11,9": {
+    "m": "wander",
+    "d": "lr",
+    "r": [
+     1,
+     0
+    ]
+   },
+   "11,15": {
+    "m": "wander",
+    "d": "ud",
+    "r": [
+     0,
+     1
+    ]
+   }
+  },
+  "scenes": [
+   {
+    "trigger": {
+     "zone": [
+      8,
+      5,
+      15,
+      18
+     ]
+    },
+    "condition": [
+     "not:heard_cozmo",
+     "not:meteor_falls_cleared"
+    ],
+    "flag": "fallarbor_cozmo_taken",
+    "cast": [
+     {
+      "sheet": "@rival",
+      "from": [
+       6,
+       17
+      ],
+      "to": "player",
+      "leave": [
+       0,
+       10
+      ],
+      "lines": [
+       "{rival_name}: {player_name}! Over here, quick! Something's happened at Professor Cozmo's house!"
+      ],
+      "event": {
+       "lines": [
+        "Cozmo's wife: Some strange people came and took my husband away, Meteorite and all!",
+        "Cozmo's wife: They said they were going to Meteor Falls. Please, help him!",
+        "{rival_name}: Meteor Falls is along Route 114, west of here. Let's meet up there!"
+       ],
+       "flag": "heard_cozmo"
+      }
+     }
+    ]
+   }
+  ],
+  "barred": [
+   {
+    "tiles": [
+     [
+      8,
+      12
+     ]
+    ],
+    "look": "mon:298",
+    "face": "u",
+    "lines": [
+     "Azurill: Rooreelooo!"
+    ]
+   }
+  ],
+  "overheads": [
+   {
+    "kind": "picture",
+    "f": "em_top/0_13.png",
+    "at": [
+     0,
+     0
+    ],
+    "size": [
+     20,
+     20
+    ]
+   }
   ]
  },
  "HOENN_ROUTE_114": {

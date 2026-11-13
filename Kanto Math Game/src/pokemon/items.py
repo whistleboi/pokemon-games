@@ -30,6 +30,18 @@ MEDICINE = {
     "REVIVE": {"revive": 0.5, "price": 2000, "text": "Revives a fainted Pokemon with half its HP."},
     "MAX_REVIVE": {"revive": 1.0, "price": 4000, "text": "Revives a fainted Pokemon with all its HP."},
     "RARE_CANDY": {"price": 10000, "text": "Raises a Pokemon's level by one."},
+    # Berries that heal (Hoenn's berry patches, Jordan 11-12): used from the Berries pocket, in or out of battle
+    # (no price here: the shops' berry price stands)
+    "ORAN_BERRY": {"heal": 10, "berry": True, "text": "A Berry. Restores 10 HP."},
+    "SITRUS_BERRY": {"heal": 30, "berry": True, "text": "A Berry. Restores 30 HP."},
+    "CHERI_BERRY": {"cure": ["paralysis"], "berry": True, "text": "A Berry. Cures paralysis."},
+    "CHESTO_BERRY": {"cure": ["sleep"], "berry": True, "text": "A Berry. Wakes up a sleeping Pokemon."},
+    "PECHA_BERRY": {"cure": ["poison", "toxic"], "berry": True, "text": "A Berry. Cures poison."},
+    "RAWST_BERRY": {"cure": ["burn"], "berry": True, "text": "A Berry. Heals a burn."},
+    "ASPEAR_BERRY": {"cure": ["freeze"], "berry": True, "text": "A Berry. Thaws out a frozen Pokemon."},
+    "LUM_BERRY": {"cure": "all", "berry": True, "text": "A Berry. Cures any status condition."},
+    # Route 113's Glass Workshop flutes (blown from volcanic ash; sold there): played again and again ("keep")
+    "BLUE_FLUTE": {"cure": ["sleep"], "keep": True, "price": 100, "text": "A blue glass flute. Its tune wakes a sleeping Pokemon."},
 }
 BATTLE = {
     "X_ATTACK": {"stat": "ATTACK", "price": 1000, "text": "Sharply raises Attack in battle."},
@@ -40,6 +52,8 @@ BATTLE = {
     "X_ACCURACY": {"stat": "ACCURACY", "price": 1000, "text": "Sharply raises accuracy in battle."},
     "DIRE_HIT": {"focus": 2, "price": 1000, "text": "Makes critical hits much more likely in battle."},
     "GUARD_SPEC": {"mist": 5, "price": 1500, "text": "Stops your team's stats being lowered for five turns."},
+    "YELLOW_FLUTE": {"cure_vol": "confused", "keep": True, "price": 300, "text": "A yellow glass flute. In battle, its tune snaps a Pokemon out of confusion."},
+    "RED_FLUTE": {"cure_vol": "infatuated", "keep": True, "price": 200, "text": "A red glass flute. In battle, its tune snaps a Pokemon out of infatuation."},
 }
 FIELD = {
     "REPEL": {"repel": 2, "price": 400, "text": "Keeps wild Pokemon away: leave the next 2 routes without battling."},
@@ -48,6 +62,8 @@ FIELD = {
     "ESCAPE_ROPE": {"escape": True, "price": 1000, "text": "Leads out of a cave or building, to the last Pokemon Center."},
     # Route dungeons (src/states/overworld/dungeon.py): HONEY on the map draws three wild Pokemon to catch.
     "HONEY": {"attract": True, "price": 300, "text": "Sweet honey. Use it out on a route to draw in three wild Pokemon."},
+    "BLACK_FLUTE": {"repel": 1, "keep": True, "price": 400, "text": "A black glass flute. Its tune keeps wild Pokemon away for the next route."},
+    "WHITE_FLUTE": {"attract": True, "keep": True, "price": 500, "text": "A white glass flute. Play it out on a route to draw in three wild Pokemon."},
 }
 BALL_PRICES = {"POKE_BALLS": 1000, "GREAT_BALL": 600, "ULTRA_BALL": 800, "PREMIER_BALL": 20, "NET_BALL": 1000,
                "DIVE_BALL": 1000, "NEST_BALL": 1000, "REPEAT_BALL": 1000, "TIMER_BALL": 1000, "QUICK_BALL": 1000,

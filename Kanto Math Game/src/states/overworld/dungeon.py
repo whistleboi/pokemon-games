@@ -671,6 +671,17 @@ class DungeonState(OverworldBattles, PlayState):
                             floor_of=lambda t: self._floor_of(t, None), exits_by_floor=exits_by_floor,
                             start_floor=start)
 
+        at_edge = getattr(game, "arrive_edge", None)  # (out by an edge tile there: in beside its own partner here)
+        game.arrive_edge = None
+        if at_edge and at_edge[0] == entrance and at_edge[1] == self.area_key:
+            p2, f = tuple(at_edge[2]), self.run.floor
+            own = [e for e, v in f.exits.items() if v == entrance]
+            t = min(own, key=lambda e: abs(e[0] - p2[0]) + abs(e[1] - p2[1])) if own else None  # (its partner, or the nearest to it)
+            if t is not None:
+                step = (1, 0) if t[0] == 0 else (-1, 0) if t[0] == f.w - 1 else (0, 1) if t[1] == 0 else (0, -1)
+                inn = (t[0] + step[0], t[1] + step[1])
+                if f.walkable(*inn) and inn not in f.exits:
+                    self.run.player = inn
         self._sync_gate()
         if not self.run.fog and not story.story_flags.get(f"visited_{self.area_key}"):  # (dark places keep their own darkness)
             self.run.explore = True
@@ -1622,6 +1633,8 @@ class DungeonState(OverworldBattles, PlayState):
             self.say([f"A {name} is sound asleep, right in the way!", "It won't budge. Maybe a sound would wake it..."])
             return
         same = [t for t, v in self.run.floor.exits.items() if v == target]
+        _to = (self._here_art() or {}).get("edge_to", {}).get("%d,%d" % tuple(self.run.player))
+        self.game.arrive_edge = (self.area_key, target, tuple(_to)) if _to else None  # (out by an edge tile: in at its partner there)
         core.ENTRANCE_INDEX = same.index(tuple(self.run.player)) if tuple(self.run.player) in same else 0
         core.ENTRANCE_COUNT = len(same)  # (how many tiles that way out has here: the far side takes the matching place along its own)
         if len(same) > 1:  # (out to a town with as many ways back: in by the matching one, Victory Road's two mouths at Ever Grande)
@@ -1948,8 +1961,8 @@ class DungeonState(OverworldBattles, PlayState):
         if self.contest:
             self.flash("Not during the contest!")
             return
-        if source == "HONEY" and not (self._can_catch() and self._get_wild_pool(self.area_data)
-                                      and self.game.story_manager.inventory.get("HONEY", 0) > 0):
+        if source in ("HONEY", "WHITE_FLUTE") and not (self._can_catch() and self._get_wild_pool(self.area_data)
+                                                       and self.game.story_manager.inventory.get(source, 0) > 0):
             source = None
         source = source or self._scent_source()
         story = self.game.story_manager
@@ -1964,6 +1977,8 @@ class DungeonState(OverworldBattles, PlayState):
         if source == "HONEY":
             story.inventory["HONEY"] -= 1
             first = f"{self.game.player_name} spread some HONEY around..."
+        elif source == "WHITE_FLUTE":
+            first = f"{self.game.player_name} played the WHITE FLUTE..."
         else:
             self.scent_floor = self.run.index
             first = "A sweet scent drifted through the air..."
@@ -2305,6 +2320,11 @@ class DungeonState(OverworldBattles, PlayState):
         if calm and f.current and all(flags.get(f"boulder_{self.area_key}_{i}_{bx}_{by}") for i, bx, by in calm):
             f.current.clear()
         self._bars = {tuple(t): bar for bar in here.get("barred", []) for t in bar.get("tiles", [])}
+        self._soil = {(int(x), int(y)): b for x, y, b in here.get("berry_soil", [])}  # (soft soil: src/world/berries.py)
+        for t in self._soil:
+            if str(f.decor.get(t, "building")) in ("building", "") :  # (soil drawn into the map's picture: the patch stands there)
+                f.decor[t] = f"soil:{t[0]},{t[1]}"
+                f.tiles[t[1]][t[0]] = core.WALL
         for bar in here.get("barred", []):  # (a rockslide in the way until a story flag: Granite Cave's short way back, once you've met Steven)
             for t in map(tuple, bar.get("tiles", [])):
                 kind = "barrier" if bar.get("item") or bar.get("look") else "rubble"  # (or till you carry something: the Cycling Road's gates and the Bicycle)
@@ -2462,6 +2482,9 @@ class DungeonState(OverworldBattles, PlayState):
         if what.startswith("fallen:"):
             self.say(["A boulder that fell from above.", "It's frozen fast in the ice."])
             return True
+        if what.startswith("soil:"):  # soft soil: pick, water or plant (src/world/berries.py)
+            self._soil_patch(t)
+            return True
         if what.startswith("door:"):  # a house on the route (Oak's aide's): its route option, by its "door"
             opt = next((o for o in self.area_data.get("route_menu", []) if o.get("door") == what[5:]
                         and self._check_route_condition(o.get("condition"), False, o)
@@ -2480,6 +2503,46 @@ class DungeonState(OverworldBattles, PlayState):
                 self.say([_fill_names(self.game, line) for line in lines])
                 return True
         return False
+
+    def _soil_patch(self, t):
+        from src.world import berries
+        story = self.game.story_manager
+        first = getattr(self, "_soil", {}).get(tuple(t))
+        lines, empty = berries.touch(story, self.area_key, t, first)
+        if not empty:
+            self.say(lines)
+            return
+        if not berries.plantable(story):
+            self.say(lines + ["You could plant a Berry here, if you had one."])
+            return
+
+        def ask():
+            from src.states.berry_patch import PlantBerryState
+            self.game.change_state(PlantBerryState(self.game, self, lambda b: self.say(berries.plant(story, self.area_key, t, b))))
+        self.say(lines + ["Plant a Berry here?"], ask)
+
+    def _berry_img(self, rec, st):
+        """A patch's picture: soil (damp once watered), and the plant at its stage (Essentials' Berry-tree sheets)."""
+        from src.world import berries
+        cache = self.__dict__.setdefault("_berry_imgs", {})
+
+        def load(name):
+            if name not in cache:
+                try:
+                    cache[name] = pygame.image.load(os.path.join(self.game.assets.assets_dir, "dungeon", "berries", name + ".png")).convert_alpha()
+                except (pygame.error, FileNotFoundError):
+                    cache[name] = None
+            return cache[name]
+        soil = load("_damp") if berries.watered(rec) else None  # (dry soil is the map picture's own; damp once watered)
+        plant = None
+        if st is not None:
+            sheet = load("_planted" if st == 0 else str(rec["berry"]).replace("_BERRY", "").lower())
+            if sheet is not None:
+                fw, fh = sheet.get_width() // 4, sheet.get_height() // 4
+                row = 0 if st == 0 else st - 1
+                col = (pygame.time.get_ticks() // 400) % 4 if st == berries.RIPE else 0
+                plant = sheet.subsurface((col * fw, row * fh, fw, fh))
+        return soil, plant
 
     def _choice_event(self, e):
         if e.type == pygame.MOUSEBUTTONDOWN and e.button == 1:
@@ -3097,6 +3160,20 @@ class DungeonState(OverworldBattles, PlayState):
                 pygame.draw.ellipse(screen, (255, 236, 140), glow, 3)
                 screen.blit(img, img.get_rect(center=(glow.centerx, glow.centery + bob)))
         for (x, y), what in f.decor.items():  # boulders (Strength and the slide puzzle push them aside)
+            if str(what).startswith("soil:") and (x, y) in f.seen and x0 <= x < x1 and y0 <= y < y1:  # (soft soil and its Berry tree)
+                from src.world import berries as _berries
+                r = at(x, y)
+                _rec = _berries.record(self.game.story_manager, self.area_key, (x, y), getattr(self, "_soil", {}).get((x, y)))
+                _soil, _plant = self._berry_img(_rec, _berries.stage(_rec))
+                if _soil is not None:
+                    s2 = pygame.transform.scale(_soil, (r.w, r.h))
+                    s2.set_alpha(170)
+                    screen.blit(s2, r)
+                if _plant is not None:
+                    k = r.w / _plant.get_width()
+                    p2 = pygame.transform.scale(_plant, (r.w, int(_plant.get_height() * k)))
+                    screen.blit(p2, p2.get_rect(midbottom=(r.centerx, r.bottom - 2)))
+                continue
             if str(what).startswith("crate:") and (x, y) in f.seen and x0 <= x < x1 and y0 <= y < y1:  # (a crate: the map's own crate picture)
                 r = at(x, y)
                 img = self._crate_img()

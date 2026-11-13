@@ -194,6 +194,7 @@ class WalkTownState(CityState):
         self.stops = {tuple(t) for t in m.get("stops", [])}  # (where a spin tile's slide ends: Viridian Gym's stop tiles)
         # someone standing in the way till the story moves on (the map's "barred", as on the routes: Snowpoint Temple's guard)
         self._bar_list = m.get("barred", [])
+        self._edge_to = m.get("edge_to") or {}  # (out by this edge tile: in at its partner on the next map, Emerald's own connection)
         self.barred = {tuple(t): bar for bar in m.get("barred", []) if not self._bar_met(bar) and self._bar_here(bar) for t in bar.get("tiles", [])}
         self.sign_scenes = {tuple(int(v) for v in k.split(",")): s for k, s in (m.get("sign_scenes") or {}).items()}  # (reading this sign starts a scene)
         # a bridge in town has two levels, like a route's: its deck, crossed along its length, and the street under it, crossed along its width
@@ -475,6 +476,11 @@ class WalkTownState(CityState):
                 used = getattr(self.game, "walk_town_exit", None)  # (several ways between two places: in by the matching one: Mauville's four staircases)
                 if used and used[0] == came and used[2] == len(edge):
                     t = edge[used[1]]
+                at_edge = getattr(self.game, "arrive_edge", None)  # (out by an edge tile there: in at its own partner here)
+                self.game.arrive_edge = None
+                if at_edge and at_edge[0] == came and at_edge[1] == self.area_key:  # (its partner, or the nearest of these to it)
+                    p2 = tuple(at_edge[2])
+                    t = min(edge, key=lambda e: abs(e[0] - p2[0]) + abs(e[1] - p2[1]))
                 self.game.walk_town_exit = None
                 inward = next(((t[0] + dx, t[1] + dy) for dx, dy in DIRS if self._open((t[0] + dx, t[1] + dy))
                                and (t[0] + dx, t[1] + dy) not in self.exits), t)
@@ -801,6 +807,8 @@ class WalkTownState(CityState):
         same = [t for t, v in self.exits.items() if v == target]
         at = tuple(self.player)
         self.game.walk_town_exit = (self.area_key, same.index(at), len(same)) if at in same else None
+        _to = getattr(self, "_edge_to", {}).get(f"{at[0]},{at[1]}")
+        self.game.arrive_edge = (self.area_key, target, tuple(_to)) if _to else None
         dn.core.ENTRANCE_INDEX = same.index(at) if at in same and len(same) > 1 else 0  # (the same, into a route or cave)
         dn.core.ENTRANCE_COUNT = len(same) if at in same else 0
         cb()

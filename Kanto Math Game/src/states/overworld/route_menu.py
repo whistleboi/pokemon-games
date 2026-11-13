@@ -552,6 +552,9 @@ class RouteMenu:
             return lambda: self.action_snag_shadow(repeat=bool(item.get("repeat")))
         if action == "BERRY":
             return self.action_pick_berries
+        if action == "SHOP":  # a shop on a route (Route 113's Glass Workshop: its flutes)
+            from src.states.systems import PokeMartState
+            return lambda s=list(item.get("stock") or []): self.game.change_state(PokeMartState(self.game, self, stock=s))
         if action == "WEATHER_DIRECTOR":
             return self.visit_weather_director
         if action == "EVENT":

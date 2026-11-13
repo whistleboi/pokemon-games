@@ -1417,6 +1417,7 @@
         }
       ],
       "route_menu": [
+        {"text": "PRETTY PETAL FLOWER SHOP", "door": "flower", "action": "NPC", "target": "pretty_petal", "color": "GOLD"},
         {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
         {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"},
@@ -1803,6 +1804,7 @@
         }
       ],
       "route_menu": [
+        {"text": "GLASS WORKSHOP", "door": "glass", "action": "SHOP", "color": "GOLD", "stock": ["BLUE_FLUTE", "YELLOW_FLUTE", "RED_FLUTE", "BLACK_FLUTE", "WHITE_FLUTE"]},
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },

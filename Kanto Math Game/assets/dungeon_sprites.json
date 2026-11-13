@@ -1230,6 +1230,36 @@
     },
     "HOENN_ROUTE_111:Victor": {
       "sheet": "em_19.png"
+    },
+    "HOENN_ROUTE_112:Grunt": {
+      "sheet": "@grunt"
+    },
+    "HOENN_ROUTE_112:Gate grunt": {
+      "sheet": "@grunt"
+    },
+    "HOENN_ROUTE_112:Ledge hiker": {
+      "sheet": "em_55.png"
+    },
+    "HOENN_ROUTE_113:Glass fan": {
+      "sheet": "em_48.png"
+    },
+    "HOENN_ROUTE_113:Ash walker": {
+      "sheet": "em_5.png"
+    },
+    "FALLARBOR_TOWN:Meteor fan": {
+      "sheet": "em_21.png"
+    },
+    "FALLARBOR_TOWN:Azurill girl": {
+      "sheet": "em_8.png"
+    },
+    "FALLARBOR_TOWN:Flannery fan": {
+      "sheet": "em_48.png"
+    },
+    "HOENN_ROUTE_112:TALK TO YOUR RIVAL": {
+      "sheet": "@rival"
+    },
+    "HOENN_ROUTE_111:Aarune": {
+      "sheet": "aarune.png"
     }
   },
   "townsperson": "NPC 17.png",

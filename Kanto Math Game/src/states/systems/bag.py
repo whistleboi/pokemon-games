@@ -66,11 +66,11 @@ class BagState(GameState):
         self.refresh_buttons()
 
     POCKETS = ("ITEMS", "MEDICINE", "POKE BALLS", "BERRIES", "TMs & HMs", "KEY ITEMS")
-    BATTLE_POCKETS = ("MEDICINE", "POKE BALLS", "BATTLE ITEMS")
+    BATTLE_POCKETS = ("MEDICINE", "POKE BALLS", "BERRIES", "BATTLE ITEMS")
     MEDICINE = tuple(itemlib.MEDICINE)
     BATTLE_ITEMS = ("DAMP_ROCK", "HEAT_ROCK", "SMOOTH_ROCK", "ICY_ROCK") + tuple(itemlib.BATTLE)
     # Usable from the Bag (anything else says there's no use for it right now).
-    USABLE_KEYS = ("TOWN_MAP", "JOHTO_MAP", "UNOWN_REPORT", "POFFIN_CASE", "BERRY_POUCH", "WEATHER_DIAL")
+    USABLE_KEYS = ("TOWN_MAP", "JOHTO_MAP", "UNOWN_REPORT", "POFFIN_CASE", "BERRY_POUCH", "WEATHER_DIAL", "POKEBLOCK_KIT", "WAILMER_PAIL")
     USABLE_MEDICINE = ("POTION", "FULL_HEAL", "REVIVE", "RARE_CANDY")
     # Key items the games keep in the Items pocket (held / stones / fossils).
     ITEM_POCKET_KEYS = ("ITE", "_FOSSIL", "OLD_AMBER", "_ORB", "_DRIVE", "ROCKY_HELMET", "SOOTHE_BELL", "AMULET_COIN")
@@ -80,6 +80,8 @@ class BagState(GameState):
         from src.pokemon import zpower
         if key in zpower.KEY_ITEMS:
             return "KEY ITEMS"
+        if key.endswith("_BERRY"):  # (a healing berry too: berries keep their own pocket)
+            return "BERRIES"
         if key in self.MEDICINE:
             return "MEDICINE"
         if key in self.BATTLE_ITEMS:
@@ -325,6 +327,20 @@ class BagState(GameState):
         if item_key == "POFFIN_CASE":
             from src.states.poffin import PoffinCaseState
             self.game.change_state(PoffinCaseState(self.game, self))
+            return
+
+        if item_key == "POKEBLOCK_KIT":  # Berries into Pokeblocks (src/states/berry_patch.py)
+            from src.pokemon.poffin import BERRIES
+            if not any(self.game.story_manager.inventory.get(b, 0) > 0 for b in BERRIES):
+                self._back_to_bag(["You don't have any Berries to put in the Kit.", "Pick them from Berry trees in soft soil!"])
+                return
+            from src.states.berry_patch import PokeblockKitState
+            self.game.change_state(PokeblockKitState(self.game, self))
+            return
+
+        if item_key == "WAILMER_PAIL":
+            self._back_to_bag(["Walk up to a growing Berry plant to water it with the Wailmer Pail.",
+                               "Water it once in each stage for a bigger harvest!"])
             return
 
         if item_key == "WEATHER_DIAL":
@@ -603,7 +619,8 @@ class BagState(GameState):
         if not used:
             self._back_to_bag(lines)
             return
-        self._take(item)
+        if not itemlib.info(item).get("keep"):  # (a flute is played, not used up)
+            self._take(item)
         if self.game.assets.heal_sfx:
             self.game.assets.heal_sfx.play()
         label = forms.item_label(item).upper()
@@ -627,6 +644,13 @@ class BagState(GameState):
                 self.game.change_state(battle)
                 battle.show_message(lines, callback=battle.return_to_menu)
                 return
+        elif "cure_vol" in data:  # a flute: snaps your Pokemon out of confusion / infatuation
+            if not battle.vol(mon).get(data["cure_vol"]):
+                self.game.change_state(battle)
+                battle.show_message([f"It won't have any effect on {mon.display_name.upper()}."], callback=battle.return_to_menu)
+                return
+            battle.vol(mon).pop(data["cure_vol"], None)
+            lines = [f"{mon.display_name.upper()} snapped out of {'its confusion' if data['cure_vol'] == 'confused' else 'its infatuation'}!"]
         elif "focus" in data:
             if battle.vol(mon).get("focus"):
                 self.game.change_state(battle)
@@ -638,7 +662,8 @@ class BagState(GameState):
         else:
             battle.side(mon)["mist"] = data["mist"]
             lines = ["Your team became shrouded in mist!"]
-        self._take(item)
+        if not data.get("keep"):
+            self._take(item)
         self.game.change_state(battle)
         battle.show_message([f"{self.game.player_name} used the {label}!"] + lines, callback=battle.on_item_used)
 
@@ -652,16 +677,18 @@ class BagState(GameState):
                 self._back_to_bag(["Use HONEY out on a route, to draw in wild Pokemon."])
                 return
             self.game.change_state(walk)
-            walk.use_scent("HONEY")
+            walk.use_scent("HONEY" if item == "HONEY" else item)  # (the White Flute: played, not used up)
             return
         if "repel" in data:
             if getattr(story, "repel_routes", 0) > 0:
                 self._back_to_bag([f"A Repel is already working ({story.repel_routes} more routes)."])
                 return
             story.repel_routes = data["repel"]
-            self._take(item)
-            self._back_to_bag([f"You used the {forms.item_label(item).upper()}!",
-                               f"Wild Pokemon will stay away for the next {data['repel']} routes:",
+            if not data.get("keep"):
+                self._take(item)
+            n = data["repel"]
+            self._back_to_bag([f"You {'played' if data.get('keep') else 'used'} the {forms.item_label(item).upper()}!",
+                               f"Wild Pokemon will stay away for the next {n} route{'s' if n != 1 else ''}:",
                                "you can leave them without battling."])
             return
         area = story.get_current_area_data()
