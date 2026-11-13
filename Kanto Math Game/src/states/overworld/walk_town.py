@@ -129,6 +129,7 @@ class WalkTownState(CityState):
     _jumbo = dn.DungeonState._jumbo
     _figure_img = dn.DungeonState._figure_img
     _stand_in_img = dn.DungeonState._stand_in_img
+    _actor_img = dn.DungeonState._actor_img
     _trainer_img = dn.DungeonState._trainer_img
     _item_img = dn.DungeonState._item_img
     # (the Journal's mission under MENU, and the gold marker toward it: as on the route maps, Jordan 11-10)
@@ -192,7 +193,9 @@ class WalkTownState(CityState):
         self.links = {tuple(int(v) for v in k.split(",")): (to[1], to[2]) for k, to in (m.get("links") or {}).items()}
         self.stops = {tuple(t) for t in m.get("stops", [])}  # (where a spin tile's slide ends: Viridian Gym's stop tiles)
         # someone standing in the way till the story moves on (the map's "barred", as on the routes: Snowpoint Temple's guard)
-        self.barred = {tuple(t): bar for bar in m.get("barred", []) if not self._bar_met(bar) for t in bar.get("tiles", [])}
+        self._bar_list = m.get("barred", [])
+        self.barred = {tuple(t): bar for bar in m.get("barred", []) if not self._bar_met(bar) and self._bar_here(bar) for t in bar.get("tiles", [])}
+        self.sign_scenes = {tuple(int(v) for v in k.split(",")): s for k, s in (m.get("sign_scenes") or {}).items()}  # (reading this sign starts a scene)
         # a bridge in town has two levels, like a route's: its deck, crossed along its length, and the street under it, crossed along its width
         self.bridge = {(x, y): art.BRIDGES[c] for y, row in enumerate(grid) for x, c in enumerate(row) if c in art.BRIDGES}
         self.deck = True
@@ -288,6 +291,8 @@ class WalkTownState(CityState):
 
     def npc_flag(self, name):
         self.game.story_manager.story_flags[name] = True
+        # (a scene that moves the story on: stand-ins come and go at once, the Shroomish back beside its girl)
+        self.barred = {tuple(t): bar for bar in getattr(self, "_bar_list", []) if not self._bar_met(bar) and self._bar_here(bar) for t in bar.get("tiles", [])}
 
     def npc_flagged(self, name):
         return bool(self.game.story_manager.story_flags.get(name))
@@ -312,10 +317,14 @@ class WalkTownState(CityState):
 
     def npc_event(self, key, then):
         from src.states.overworld.common import _run_story_event
+        shown = []
 
         def show(lines):
+            shown.append(1)
             self.npc_say(lines, then)
         _run_story_event(self, key, self._check_menu_condition, show)
+        if not shown:  # (a battle or a scene of its own began instead: the scene carries on once you're back)
+            then()
 
     def npc_heal(self):
         for p in self.game.story_manager.player_team:
@@ -369,6 +378,10 @@ class WalkTownState(CityState):
         if combined_center(self.game):
             options = center_entrance(options)
         return [o for o in options if self._shown(o)]
+
+    def _bar_here(self, bar):
+        """A stand-in that only turns up once the story says so ("when": its conditions, as an option's): the Shroomish back with its girl."""
+        return not bar.get("when") or self._shown(bar["when"])
 
     def _bar_met(self, bar):
         story = self.game.story_manager
@@ -714,6 +727,13 @@ class WalkTownState(CityState):
         self._create_hover_menu(opts, None)  # (a building with several things inside: pick one)
 
     def _read(self, spot):
+        sc = getattr(self, "sign_scenes", {}).get(tuple(spot))
+        if sc and getattr(self, "scenes", None) and not self.scenes.busy() and self.scenes.pending(sc):  # (something behind the sign)
+            self.scenes.start(sc, None)
+            return
+        return self._read_plain(spot)
+
+    def _read_plain(self, spot):
         from src.states.overworld.common import _fill_names
         self.show_message([_fill_names(self.game, line) for line in self.signs[spot]])
 
@@ -970,7 +990,7 @@ class WalkTownState(CityState):
             screen.blit(img, rect)
         for a in (self.scenes.actors if getattr(self, "scenes", None) else []):  # a scene's cast, walking in and out
             ax, ay = a["m"].at()
-            img = self._sheet_frame(a["sheet"], a["m"].facing, frame=a["m"].frame())
+            img = self._actor_img(a["sheet"], a["m"].facing, a["m"].frame())
             if img is not None:
                 r = pygame.Rect(int(ox + ax * TILE), int(oy + ay * TILE), TILE, TILE)
                 screen.blit(img, img.get_rect(midbottom=(r.centerx, r.bottom - 2)))

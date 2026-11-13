@@ -971,7 +971,7 @@
         { "text": "Route 116", "target_area": "HOENN_ROUTE_116" },
         { "text": "Rusturf Tunnel", "target_area": "HOENN_RUSTURF_TUNNEL" }
       ],
-      "explore_options": [{"text": "Mr. Stone", "door": "devon", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_pidgeotite", "event": {"lines": ["Mr. Stone: An intriguing stone! Here, a special Mega Stone in return.", "You found the PIDGEOTITE!"], "gift_item": {"PIDGEOTITE": 1}, "flag": "got_pidgeotite"}}, 
+      "explore_options": [{"text": "Mr. Stone", "door": "devon", "action": "EVENT", "color": "GOLD", "condition": "has_item:INTRIGUING_STONE", "flag_condition": "not got_pidgeotite", "event": {"lines": ["Mr. Stone: Oh! Is that an Intriguing Stone? What a find! May I have it?", "Mr. Stone: In return, take this. It's a Mega Stone for Pidgeot."], "take_item": {"INTRIGUING_STONE": 1}, "gift_item": {"PIDGEOTITE": 1}, "flag": "got_pidgeotite"}}, 
         { "text": "Heal", "action": "HEAL" },
         { "text": "Shop", "action": "SHOP" },
         { "text": "Gym", "action": "GYM" },

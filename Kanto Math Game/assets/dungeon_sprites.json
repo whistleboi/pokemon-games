@@ -1155,6 +1155,81 @@
     },
     "HOENN_ROUTE_110:Cheery grunt": {
       "sheet": "@grunt_f"
+    },
+    "MAUVILLE_CITY:Shopper": {
+      "sheet": "em_26.png"
+    },
+    "MAUVILLE_CITY:Straight-road man": {
+      "sheet": "em_17.png"
+    },
+    "MAUVILLE_CITY:Man in a Suit": {
+      "sheet": "em_15.png"
+    },
+    "MAUVILLE_CITY:Road fan": {
+      "sheet": "em_39.png"
+    },
+    "MAUVILLE_CITY:TV fan": {
+      "sheet": "em_38.png"
+    },
+    "MAUVILLE_CITY:Careful boy": {
+      "sheet": "em_13.png"
+    },
+    "HOENN_ROUTE_117:Day-Care Man": {
+      "sheet": "em_29.png"
+    },
+    "HOENN_ROUTE_117:Little boy": {
+      "sheet": "em_11.png"
+    },
+    "HOENN_ROUTE_117:Day Care visitor": {
+      "sheet": "em_10.png"
+    },
+    "HOENN_ROUTE_117:Gardener": {
+      "sheet": "em_16.png"
+    },
+    "VERDANTURF_TOWN:Little girl": {
+      "sheet": "em_6.png"
+    },
+    "VERDANTURF_TOWN:Tent hopeful": {
+      "sheet": "em_31.png"
+    },
+    "VERDANTURF_TOWN:Wanda": {
+      "sheet": "em_7.png"
+    },
+    "VERDANTURF_TOWN:Clean-air man": {
+      "sheet": "em_23.png"
+    },
+    "HOENN_ROUTE_111:Flower girl": {
+      "sheet": "em_8.png"
+    },
+    "HOENN_ROUTE_111:Secret base boy": {
+      "sheet": "em_7.png"
+    },
+    "HOENN_ROUTE_111:Ruin seeker": {
+      "sheet": "em_55.png"
+    },
+    "HOENN_ROUTE_111:Gabby": {
+      "sheet": "em_68.png"
+    },
+    "HOENN_ROUTE_111:Ty": {
+      "sheet": "em_110.png"
+    },
+    "HOENN_ROUTE_111:Ranked man": {
+      "sheet": "em_33.png"
+    },
+    "HOENN_ROUTE_111:Forgetful man": {
+      "sheet": "em_17.png"
+    },
+    "HOENN_ROUTE_111:Tired Trainer": {
+      "sheet": "em_65.png"
+    },
+    "VERDANTURF_TOWN:A Glinting Stone: Mawilite": {
+      "item": "MAWILITE"
+    },
+    "VERDANTURF_TOWN:Shroomish girl": {
+      "sheet": "em_12.png"
+    },
+    "HOENN_ROUTE_111:Victor": {
+      "sheet": "em_19.png"
     }
   },
   "townsperson": "NPC 17.png",

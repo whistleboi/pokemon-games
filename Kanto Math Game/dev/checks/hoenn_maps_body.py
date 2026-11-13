@@ -304,6 +304,69 @@ for _k, _v in _inv.items():
         story.inventory[_k] = _v
 st, said = _scene("HOENN_ROUTE_110", "SLATEPORT_CITY", ["oceanic_museum_cleared"], ["defeated_rival_110"], at=(34, 58))
 check("<TrainerIntroState>" in said, f"Route 110: your rival walks up for a battle ({said[:1]})")
+# ---- batch 5: Mauville, Route 117, Verdanturf, Route 111
+st, said = _scene("MAUVILLE_CITY", "HOENN_ROUTE_110", ["helped_wally"], ["defeated_wally_mauville"])
+check(any("Trainer" in x for x in said if x.startswith("<")),   # (his lines open the battle: the battle's own intro shows them)
+      f"Mauville: Wally steps up from the Gym door to battle you, his uncle beside him ({said[:1]})")
+story.story_flags["defeated_wally_mauville"] = True
+_mv = _tm2["MAUVILLE_CITY"]
+check("HOENN_NEW_MAUVILLE" in _mv["exits"].values() and "HOENN_ROUTE_111" in _mv["exits"].values(),
+      "Mauville: the east house leads into New Mauville; Route 111 north")
+_r111 = _tm2["HOENN_ROUTE_111"]
+_dr = [(x, y) for y, r in enumerate(_r111["art"]) for x, c in enumerate(r) if c == "N"]
+check((29, 88) in _dr and "HOENN_MIRAGE_TOWER" in _r111["exits"].values() and any(b.get("look") == "storm" for b in _r111.get("barred", [])),
+      "Route 111: the Desert Ruins at their door, Mirage Tower in the desert, the sandstorm until the Go-Goggles")
+check("daycare" in _tm2["HOENN_ROUTE_117"]["buildings"].values() and len(_tm2["HOENN_ROUTE_117"].get("barred", [])) == 4,
+      "Route 117: the Day Care, its Pokemon playing in the yard")
+check({"contest", "wally", "center", "mart"} <= set(_tm2["VERDANTURF_TOWN"]["buildings"].values()), "Verdanturf: the Contest Hall, Wally's uncle's house, the Center and Mart")
+
+
+def _press(st, at, face):
+    """Stand at a spot facing a person or sign and press A (towns)."""
+    st.player, st.facing, st.anim = at, face, 0
+    st.handle_events([pygame.event.Event(pygame.KEYDOWN, key=pygame.K_RETURN, mod=0, unicode="", scancode=0)])
+    return _play(st)
+
+
+# Verdanturf (ORAS): the little girl's lost Shroomish is behind the town sign; she gives the Intriguing Stone, which Mr. Stone trades for the Pidgeotite
+for _k in ("verdanturf_shroomish_asked", "verdanturf_shroomish_found", "got_intriguing_stone"):
+    story.story_flags.pop(_k, None)
+_stone = story.inventory.get("INTRIGUING_STONE", 0)
+st = open_map("VERDANTURF_TOWN", "HOENN_ROUTE_117")
+st.scenes.entered = True
+_press(st, (14, 7), (0, -1))
+check(not story.story_flags.get("verdanturf_shroomish_found"), "Verdanturf: the town sign is just a sign until the girl asks for help")
+said = _press(st, (14, 16), (0, -1))
+check(story.story_flags.get("verdanturf_shroomish_asked") and any("Shroomish" in x for x in said), f"Verdanturf: the little girl has lost her Shroomish near the sign ({said[:1]})")
+said = _press(st, (14, 7), (0, -1))
+check(story.story_flags.get("verdanturf_shroomish_found") and (13, 15) in st.barred, f"Verdanturf: reading the sign, the Shroomish pops out and hops back beside her ({said[:1]})")
+said = _press(st, (14, 16), (0, -1))
+check(story.inventory.get("INTRIGUING_STONE", 0) > _stone, f"Verdanturf: she thanks you with the Intriguing Stone ({said[-1:]})")
+import json as _json
+def _find(d, key):
+    if isinstance(d, dict):
+        if key in d:
+            return d[key]
+        for v in d.values():
+            r = _find(v, key)
+            if r is not None:
+                return r
+_ms = next(o for o in _find(_json.load(open("assets/hoenn_area_data.json", encoding="utf-8")), "RUSTBORO_CITY")["explore_options"] if o.get("text") == "Mr. Stone")
+check(_ms.get("condition") == "has_item:INTRIGUING_STONE" and _ms["event"].get("take_item") == {"INTRIGUING_STONE": 1},
+      "Rustboro: Mr. Stone trades the Pidgeotite for the Intriguing Stone")
+story.inventory["INTRIGUING_STONE"] = _stone
+
+# Route 111 (ORAS): the Winstrates, four battles in a row out of their door; Victoria gives the Macho Brace
+for _k in ("winstrate_asked", "winstrate_victor", "winstrate_victoria", "winstrate_vivi", "winstrate_vicky", "winstrate_brace"):
+    story.story_flags.pop(_k, None)
+st, said = _scene("HOENN_ROUTE_111", "MAUVILLE_CITY", at=(14, 116), step=(0, -1))
+check("<TrainerIntroState>" in said and any("Victor:" in x for x in said), f"Route 111: Victor challenges you to the Winstrate family ({said[:1]})")
+for _fl, _who in (("winstrate_victor", "Victoria"), ("winstrate_victoria", "Vivi"), ("winstrate_vivi", "Vicky")):
+    st, said = _scene("HOENN_ROUTE_111", "MAUVILLE_CITY", [_fl], at=(13, 116))
+    check("<TrainerIntroState>" in said and any(_who + ":" in x for x in said), f"Route 111: {_who} walks out of the house to battle next ({said[:1]})")
+_mb = story.inventory.get("MACHO_BRACE", 0)
+st, said = _scene("HOENN_ROUTE_111", "MAUVILLE_CITY", ["winstrate_vicky"], at=(13, 116))
+check(story.inventory.get("MACHO_BRACE", 0) > _mb, f"Route 111: beat all four and Victoria gives you the Macho Brace ({said[-1:]})")
 story.story_flags.clear(); story.story_flags.update(_saved2)
 
 story.story_flags.clear(); story.story_flags.update(_saved)

@@ -430,12 +430,12 @@ class Scenes:
 
             def then():
                 self.playing[1] = "after"
-                ev = str(s.get("then") or "")
+                ev = s.get("event") if isinstance(s.get("event"), dict) else str(s.get("then") or "")
                 if ev == "talk":
                     h.npc_run(s.get("who"))
-                elif ev.startswith("event:"):
+                elif isinstance(ev, dict) or ev.startswith("event:"):   # (a story event: a key, or written out: a battle, a gift)
                     self.playing[1] = "pause"
-                    h.npc_event(ev[6:], lambda: self._resume("after"))
+                    h.npc_event(ev if isinstance(ev, dict) else ev[6:], lambda: self._resume("after"))
             if s.get("lines"):
                 h.npc_say(list(s["lines"]), then)
             else:

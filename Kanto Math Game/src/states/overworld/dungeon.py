@@ -198,11 +198,11 @@ def held_pointer():
 
 
 def scene_sheet(game, token):
-    """A scene's walking sheet: a file ("em_64.png"), or a token for someone who depends on the save (Jordan, 11-12):
+    """("mon:<species>" passes through: a Pokemon walking in a scene.) A scene's walking sheet: a file ("em_64.png"), or a token for someone who depends on the save (Jordan, 11-12):
     "@rival" (this save's rival, from trainers_<REGION>: Hoenn's Brendan or May), "@grunt" / "@grunt_f" (a villain of
     this version's team: Team Magma in Omega Ruby, Team Aqua in Alpha Sapphire)."""
     token = str(token or "")
-    if not token.startswith("@"):
+    if not token.startswith("@") or token.startswith("mon:"):
         return token
     story = game.story_manager
     region = str(story.get_current_region() or "")
@@ -1028,7 +1028,22 @@ class DungeonState(OverworldBattles, PlayState):
 
     def npc_event(self, key, then):
         from src.states.overworld.common import _run_story_event
-        _run_story_event(self, key, lambda c: self._check_route_condition(c, False), lambda lines: self.npc_say(lines, then))
+        shown = []
+
+        def show(lines):
+            shown.append(1)
+            self.npc_say(lines, then)
+        _run_story_event(self, key, lambda c: self._check_route_condition(c, False), show)
+        if not shown:  # (a battle or a scene of its own began instead: the scene carries on once you're back)
+            then()
+
+    def _actor_img(self, sheet, facing, frame):
+        """A scene's walker: a person's walking sheet, or a Pokemon ("mon:<species>": its following sprite)."""
+        if str(sheet).startswith("mon:"):
+            class _Mon:  # (just what the walking sheet needs)
+                id, form, is_shiny, gender = int(str(sheet)[4:]), "normal", False, None
+            return self._follower_img(_Mon(), tuple(facing))
+        return self._sheet_frame(sheet, facing, frame=frame)
 
     def npc_heal(self):
         from src.states.overworld.area_transition import heal_team
@@ -3187,7 +3202,7 @@ class DungeonState(OverworldBattles, PlayState):
             if not self.run.visible(int(round(ax)), int(round(ay))):  # (in the fog, like everyone else)
                 continue
             ar = at(int(round(ax)), int(round(ay))).move(int(round((ax - round(ax)) * TILE)), int(round((ay - round(ay)) * TILE)))
-            img = self._sheet_frame(a["sheet"], a["m"].facing, frame=a["m"].frame())
+            img = self._actor_img(a["sheet"], a["m"].facing, a["m"].frame())
             if img is not None:
                 screen.blit(img, img.get_rect(midbottom=(ar.centerx, ar.bottom - 2)))
         for er in emotes:  # (someone has noticed you: a "!" over them)
