@@ -2304,6 +2304,81 @@
     },
     "HOENN_CAVE_OF_ORIGIN:TALK TO {leader}": {
       "sheet": "@leader"
+    },
+    "PACIFIDLOG_TOWN:A Glinting Stone: Kangaskhanite": {
+      "item": "KANGASKHANITE"
+    },
+    "PACIFIDLOG_TOWN:Old fisherman": {
+      "sheet": "em_50.png"
+    },
+    "PACIFIDLOG_TOWN:Proud local": {
+      "sheet": "em_5.png"
+    },
+    "PACIFIDLOG_TOWN:Tide warner": {
+      "sheet": "em_8.png"
+    },
+    "PACIFIDLOG_TOWN:Card girl": {
+      "sheet": "em_10.png"
+    },
+    "PACIFIDLOG_TOWN:Heal": {
+      "sheet": "em_58.png"
+    },
+    "PACIFIDLOG_TOWN:Corsola fan": {
+      "sheet": "em_16.png"
+    },
+    "PACIFIDLOG_TOWN:Old islander": {
+      "sheet": "em_29.png"
+    },
+    "PACIFIDLOG_TOWN:Explosion tutor": {
+      "sheet": "em_66.png"
+    },
+    "PACIFIDLOG_TOWN:Gift attendant": {
+      "sheet": "em_223.png"
+    },
+    "PACIFIDLOG_TOWN:Link attendant": {
+      "sheet": "em_85.png"
+    },
+    "PACIFIDLOG_TOWN:Trade attendant": {
+      "sheet": "em_85.png"
+    },
+    "PACIFIDLOG_TOWN:Record attendant": {
+      "sheet": "em_85.png"
+    },
+    "PACIFIDLOG_TOWN:Grandchild": {
+      "sheet": "em_26.png"
+    },
+    "PACIFIDLOG_TOWN:Old storyteller": {
+      "sheet": "em_66.png"
+    },
+    "PACIFIDLOG_TOWN:Friendly man": {
+      "sheet": "em_48.png"
+    },
+    "PACIFIDLOG_TOWN:Azurill": {
+      "sheet": "em_214.png"
+    },
+    "PACIFIDLOG_TOWN:Azurill ": {
+      "sheet": "em_214.png"
+    },
+    "PACIFIDLOG_TOWN:Bagon wisher": {
+      "sheet": "em_33.png"
+    },
+    "PACIFIDLOG_TOWN:Pokédex fan": {
+      "sheet": "em_10.png"
+    },
+    "PACIFIDLOG_TOWN:Sky watcher": {
+      "sheet": "em_20.png"
+    },
+    "PACIFIDLOG_TOWN:Curious kid": {
+      "sheet": "em_7.png"
+    },
+    "PACIFIDLOG_TOWN:Excited kid": {
+      "sheet": "em_12.png"
+    },
+    "PACIFIDLOG_TOWN:Mirage scholar": {
+      "sheet": "em_48.png"
+    },
+    "PACIFIDLOG_TOWN:Mirage watcher": {
+      "sheet": "em_21.png"
     }
   },
   "townsperson": "NPC 17.png",

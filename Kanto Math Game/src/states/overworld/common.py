@@ -385,6 +385,40 @@ def _run_story_event(state, key, check, show):
         story.inventory[cr["gives"]] = story.inventory.get(cr["gives"], 0) + 1
         from src.pokemon import forms as _forms
         lines.append(f"{game.player_name} received the {_forms.item_label(cr['gives']).upper()}!")
+    if ev.get("tutor"):  # a move tutor (Pacifidlog's Explosion man): {"move", "like": a TM move whose learners can learn it too}
+        tu = ev["tutor"]
+        import json as _json, os as _os
+        try:
+            learners = set(_json.load(open(_os.path.join("assets", "tm_learners.json"), encoding="utf-8")).get(tu.get("like", ""), []))
+        except (OSError, ValueError):
+            learners = set()
+        from src.pokemon import moves as _mv
+        who = next((p for p in story.player_team if p and not getattr(p, "is_egg", False)
+                    and (int(p.id) in learners or str(p.id) in learners or tu["move"] in _mv.learnable(game, p))
+                    and tu["move"] not in (_mv.move_pool(game, p) or [])), None)
+        if who is None:
+            show(_resolve_lines(game, ev.get("fail") or ["None of your Pokemon can learn it right now."]))
+            return
+        _mv.move_pool(game, who).append(tu["move"])
+        if len(who.moves) < _mv.MAX_MOVES:
+            who.moves.append(tu["move"])
+        lines.append(f"{who.display_name.upper()} learned {tu['move'].replace('-', ' ')}! (Set its moves in the Summary.)")
+    if ev.get("friend_tm"):  # once a week: Return for a first Pokemon that likes you, Frustration if not (Pacifidlog, Emerald)
+        import datetime as _dt
+        week = _dt.date.today().isocalendar()[:2]
+        key = ev["friend_tm"]
+        if story.story_flags.get(key) == list(week):
+            show(_resolve_lines(game, ev.get("wait") or ["Come back next week!"]))
+            return
+        from src.pokemon import evolution as _evo
+        lead = next((p for p in story.player_team if p and not getattr(p, "is_egg", False)), None)
+        fond = lead is not None and (getattr(lead, "friendship", 0) >= _evo.FRIENDSHIP_CATCHES or getattr(lead, "affection", 0) >= 150)
+        tm = "TM113" if fond else "TM114"
+        story.story_flags[key] = list(week)
+        story.inventory[tm] = story.inventory.get(tm, 0) + 1
+        lines += ([f"Your {lead.display_name} looks so happy with you. This TM's for you: Return!"] if fond
+                  else ["Your Pokemon doesn't seem very close to you... Here, this TM suits it: Frustration."])
+        lines.append(f"{game.player_name} received {tm}!")
     if ev.get("swap"):  # a trade of items (Route 124's Treasure Hunter: a Shard for its evolution stone), as often as you like
         have = next((k for k in ev["swap"] if story.inventory.get(k, 0) > 0), None)
         if have is None:

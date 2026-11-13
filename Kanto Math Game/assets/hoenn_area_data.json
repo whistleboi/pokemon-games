@@ -2621,7 +2621,7 @@
           "rewards": { "balls": 4 }
         }
       ],
-      "route_menu": [
+      "route_menu": [{"text": "SKY PILLAR", "action": "EXIT", "target_area": "HOENN_SKY_PILLAR", "condition": ["can_exit", "beat_hoenn_champion"], "color": "RED"}, 
         {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
         {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},

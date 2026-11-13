@@ -36,7 +36,9 @@ GIFT_TMS = {"TM100": ("SMACK-DOWN", "ORAS TM23: Professor Cozmo, Fallarbor Town"
             "TM106": ("EARTHQUAKE", "ORAS TM26 / Emerald TM26: lying in the Seafloor Cavern"),
             "TM107": ("SCALD", "ORAS TM55: on the island in the Seafloor Cavern's current room"),
             "TM108": ("FROST-BREATH", "ORAS TM79: in Shoal Cave, by the sandy slope"),
-            "TM112": ("SECRET-POWER", "ORAS TM94: from Aarune, on Route 111")}
+            "TM112": ("SECRET-POWER", "ORAS TM94: from Aarune, on Route 111"),
+            "TM113": ("RETURN", "Emerald TM27: Pacifidlog's man, for a Pokemon that likes you"),
+            "TM114": ("FRUSTRATION", "Emerald TM21: Pacifidlog's man, for a Pokemon that doesn't")}
 # Sold only by the shop that lists them (Jordan, 11-13: match the games): Lilycove Department Store's TM Corner
 # (Emerald and ORAS: Fire Blast, Thunder, Blizzard), never on an ordinary Mart's shelf.
 SHOP_TMS = {"TM109": ("FIRE-BLAST", "Lilycove Department Store 4F"), "TM110": ("THUNDER", "Lilycove Department Store 4F"),

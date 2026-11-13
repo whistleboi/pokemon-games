@@ -222,6 +222,12 @@ def scene_sheet(game, token):
     if token == "@rival":
         who = str(getattr(game, "rival_character", "") or "").lower()
         return own.get(f"{who}.png") or own.get("rival.png") or "NPC 17.png"
+    if token == "@legend_primal":  # (its Primal form: Jordan's overworld sheets, 11-13)
+        try:
+            from src.world import hoenn as _h
+            return "primal_kyogre.png" if _h.version(story) == "ALPHA_SAPPHIRE" else "primal_groudon.png"
+        except Exception:
+            return "primal_groudon.png"
     if token in ("@legend", "@legend_asleep"):  # (this version's super-ancient Pokemon: Emerald's Groudon / Kyogre, awake or asleep)
         try:
             from src.world import hoenn as _h
@@ -968,8 +974,8 @@ class DungeonState(OverworldBattles, PlayState):
             class _Mon:  # (just what the walking sheet needs)
                 id, form, is_shiny, gender = int(look[4:]), "normal", False, None
             return (self._follower_img(_Mon(), fc) if bar.get("face") else None) or icon(self.game, int(look[4:]), TILE + 6)
-        if look.startswith("sheet:"):
-            return self._sheet_frame(scene_sheet(self.game, look[6:]), fc, frame=fr)
+        if look.startswith("sheet:"):   # ("big": a legend standing two tiles tall, the Cave of Origin's Primal one)
+            return self._sheet_frame(scene_sheet(self.game, look[6:]), fc, frame=fr, height=self.JUMBO if bar.get("big") else None)
         if look.startswith("ow:"):
             from src.dungeon import art as _art
             fold, name = look[3:].split(":", 1)

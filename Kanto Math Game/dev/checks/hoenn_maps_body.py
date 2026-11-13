@@ -1551,7 +1551,7 @@ check(len(_co) == 6 and _seen16 == set(range(6)),
       "Cave of Origin: down from its entrance through 1F and Ruby/Sapphire's B1F-B3F to the legend's chamber")
 _cf = _co[5]
 _bars16 = {b["boss"]["id"]: b for b in _cf.get("barred", []) if b.get("boss")}
-check(set(_bars16) == {382, 383} and all(b["tiles"] == [[9, 9]] and b["look"] == "sheet:@legend" and b["boss"].get("primal") for b in _bars16.values())
+check(set(_bars16) == {382, 383} and all(b["tiles"] == [[9, 9]] and b["look"] == "sheet:@legend_primal" and b.get("big") and b["boss"].get("primal") for b in _bars16.values())
       and "CONFRONT PRIMAL {legend}" not in (_cf.get("people") or []) and _cf["roofs"]["_picture"].get("by_version", {}).get("ALPHA_SAPPHIRE")
       and _cf.get("pool") == "NO_WILD_INDOORS_PERCENTAGES",
       "Cave of Origin: the legend (Emerald's Groudon / Kyogre) at the chamber's heart; the crystals its colour; no wild Pokemon there")
@@ -1559,13 +1559,59 @@ from src.states.overworld.dungeon import scene_sheet as _ss
 story.story_flags["hoenn_version"] = "ALPHA_SAPPHIRE"
 _k16 = _ss(g, "@legend")
 story.story_flags["hoenn_version"] = "OMEGA_RUBY"
-check(_k16 == "em_197.png" and _ss(g, "@legend") == "em_198.png", "Cave of Origin: Kyogre in Alpha Sapphire, Groudon in Omega Ruby")
+_kp = _ss(g, "@legend_primal")
+story.story_flags["hoenn_version"] = "ALPHA_SAPPHIRE"
+_kp2 = _ss(g, "@legend_primal")
+story.story_flags["hoenn_version"] = "OMEGA_RUBY"
+check(_k16 == "em_197.png" and _ss(g, "@legend") == "em_198.png" and _kp == "primal_groudon.png" and _kp2 == "primal_kyogre.png"
+      and os.path.exists(os.path.join("assets", "dungeon", "characters", "primal_kyogre.png")),
+      "Cave of Origin: Primal Groudon in Omega Ruby, Primal Kyogre in Alpha Sapphire (Jordan's overworld sprites)")
+from src.pokemon import forms as _fm16
+_pg = Pokemon(g.loader.fetch_specific(383), g.assets); _pg.primal_ready = True
+_pf = _fm16.opponent_form(g.assets, _pg, False)
+check(_pf and _pf.get("form") == "primal", "Cave of Origin: the battle starts with the legend already in its Primal form")
 _aar = next(p for p in _tm16["HOENN_ROUTE_111"]["people"] if isinstance(p, dict) and p.get("text") == "Aarune")
 check(_aar["event"].get("gift_item") == {"TM112": 1} and json.load(open("assets/tms.json", encoding="utf-8"))["TM112"]["move"] == "SECRET-POWER"
       and any("Secret Bases" in x for x in _aar["event"]["lines"]),
       "Route 111: Aarune gives TM Secret Power; his Secret Bases aren't ready yet")
 story.inventory.clear(); story.inventory.update(_inv16)
 story.story_flags.clear(); story.story_flags.update(_saved16)
+
+# ---- batch 17: Routes 129-131, Pacifidlog Town
+_saved17, _inv17, _team17 = dict(story.story_flags), dict(story.inventory), list(story.player_team)
+_tm17 = json.load(open("assets/town_maps.json", encoding="utf-8"))
+_pm = _tm17["PACIFIDLOG_TOWN"]
+st = open_map("PACIFIDLOG_TOWN", "HOENN_ROUTE_131")
+st.scenes.entered = True
+_nod17 = sorted(k for k, v in st.doors.items() if "%d,%d" % k not in (_pm.get("inside") or {}))
+check(not _nod17 and "Heal" in [q for r in _pm["rooms"].values() for q in r.get("people", []) if isinstance(q, str)],
+      f"Pacifidlog: every door leads inside; the nurse in the Center ({_nod17})")
+def _p17(room, name):
+    return next(o for o in _pm["rooms"][room]["people"] if isinstance(o, dict) and o.get("text") == name)
+_geo = Pokemon(g.loader.fetch_specific(74), g.assets); _geo.level = 20
+story.player_team = [_geo]
+_run_story_event(st, _p17("center", "Explosion tutor")["event"], lambda c: True, lambda l, **k: None); tap(st)
+from src.pokemon import moves as _mv17
+check("EXPLOSION" in _mv17.move_pool(g, _geo), "Pacifidlog: the Center's tutor teaches Explosion (to a Geodude)")
+story.story_flags.pop("pacifidlog_friend_tm_week", None)
+story.inventory.pop("TM113", None); story.inventory.pop("TM114", None)
+_geo.friendship = 9
+_run_story_event(st, _p17("friend_house", "Friendly man")["event"], lambda c: True, lambda l, **k: None); tap(st)
+_ret = story.inventory.get("TM113")
+_run_story_event(st, _p17("friend_house", "Friendly man")["event"], lambda c: True, lambda l, **k: None); tap(st)
+check(_ret == 1 and not story.inventory.get("TM114") and story.inventory.get("TM113") == 1,
+      "Pacifidlog: TM Return for a Pokemon that likes you, once a week")
+story.player_team = [Pokemon(g.loader.fetch_specific(371), g.assets)]
+story.story_flags.pop("pacifidlog_bagon_trade", None)
+_run_story_event(st, _p17("trade_house", "Bagon wisher")["event"], lambda c: True, lambda l, **k: None); tap(st)
+check(story.player_team[0].id == 116, "Pacifidlog: the girl trades her Horsea for your Bagon")
+story.player_team = _team17
+_r131 = _tm17["HOENN_ROUTE_131"]
+check("HOENN_SKY_PILLAR" in _r131["exits"].values() and any(o.get("target_area") == "HOENN_SKY_PILLAR" and "beat_hoenn_champion" in o.get("condition", [])
+      for o in g.loader.area_data["STORY_PROGRESSION"]["HOENN_ROUTE_131"]["route_menu"]),
+      "Route 131: the Sky Pillar's door, open once you're Champion")
+story.inventory.clear(); story.inventory.update(_inv17)
+story.story_flags.clear(); story.story_flags.update(_saved17)
 
 story.story_flags.clear(); story.story_flags.update(_saved)
 print(f"##### {len(fails)} failures")

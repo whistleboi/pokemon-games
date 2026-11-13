@@ -175,6 +175,22 @@
   "gift": true,
   "from": "ORAS TM94: from Aarune, on Route 111"
  },
+ "TM113": {
+  "move": "RETURN",
+  "type": "NORMAL",
+  "tier": 8,
+  "price": 3000,
+  "gift": true,
+  "from": "Emerald TM27: Pacifidlog's man, for a Pokemon that likes you"
+ },
+ "TM114": {
+  "move": "FRUSTRATION",
+  "type": "NORMAL",
+  "tier": 8,
+  "price": 3000,
+  "gift": true,
+  "from": "Emerald TM21: Pacifidlog's man, for a Pokemon that doesn't"
+ },
  "TM12": {
   "move": "SOLAR-BLADE",
   "type": "GRASS",
