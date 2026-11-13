@@ -724,14 +724,15 @@ class Run:
                 return t
         return floor.start
 
-    def warp(self, index, x, y):
-        """Through a passage to any floor (a map's "links": Mt. Coronet's branching rooms): beside its far end."""
+    def warp(self, index, x, y, land=False):
+        """Through a passage to any floor (a map's "links": Mt. Coronet's branching rooms): beside its far end; land:
+        onto that very spot, when it's plain floor (falling through a hole: Mt. Pyre's)."""
         index = max(0, min(self.n_floors - 1, index))
         while len(self.floors) <= index:  # (floors are made in order: the ones on the way too)
             self.enter_floor(len(self.floors))
         self.enter_floor(index)
         floor = self.floors[index]
-        land = (x, y) not in floor.exits and floor.walkable(x, y) and not floor.occupied(x, y)   # (a plain spot, not a passage: a hole's landing)
+        land = land and (x, y) not in floor.exits and floor.walkable(x, y) and not floor.occupied(x, y)   # (a plain spot, not a passage: a hole's landing)
         self.player = (x, y) if land else self._beside(floor, (x, y))
         self.reveal()
 

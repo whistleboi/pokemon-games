@@ -1239,5 +1239,54 @@ story.player_team = _team11
 story.inventory.clear(); story.inventory.update(_inv11)
 story.story_flags.clear(); story.story_flags.update(_saved11)
 
+# ---- batch 12: the Safari Zone (Emerald's six areas stitched into one map) and the Safari Game
+_saved12, _inv12 = dict(story.story_flags), dict(story.inventory)
+_sz = _tm2["HOENN_SAFARI_ZONE"] if "HOENN_SAFARI_ZONE" in _tm2 else json.load(open("assets/town_maps.json", encoding="utf-8"))["HOENN_SAFARI_ZONE"]
+_sa = g.loader.area_data["STORY_PROGRESSION"]["HOENN_SAFARI_ZONE"]
+check(len(_sz["zone_rects"]) == 6 and len(_sa["zones"]) == 6 and all(g.loader.area_data.get(v) for v in _sa["zone_pools"].values()),
+      "Safari Zone: one map of Emerald's six areas, each its own zone with its own Pokemon (5 and 6: Emerald's Johto ones)")
+check(any(o.get("door") == "safari" and o.get("target_area") == "HOENN_SAFARI_ZONE" for o in g.loader.area_data["STORY_PROGRESSION"]["HOENN_ROUTE_121"]["route_menu"])
+      and "HOENN_ROUTE_121" in _sz["floors"][0]["exits"].values() if _sz.get("floors") else "HOENN_ROUTE_121" in _sz["exits"].values(),
+      "Safari Zone: in by Route 121's Safari Zone door, out by the entrance building again")
+story.story_flags.pop("beat_hoenn_champion", None)
+st = open_map("HOENN_SAFARI_ZONE", "HOENN_ROUTE_121")
+_calm(st)
+said = _play(st, 300)
+_sf = dict(st.safari or {})
+check(_sf.get("balls") == 30 and _sf.get("steps") == 500 and "hello" not in _sf,
+      f"Safari Game: each visit, 30 Safari Balls and 500 steps ({_sf}, {said[:1]})")
+def _try_east(st):
+    st.run.player, st.anim = (75, 56), 0
+    st.step(1, 0); frames(12)
+    _play(st, 200)
+    return st.run.player
+
+
+_shut12 = _try_east(st)
+check(_shut12 == (75, 56), f"Safari Zone: workers close Emerald's new eastern areas until you're Champion ({_shut12})")
+st.run.player, st.anim = (66, 69), 0
+_x, _y = st.run.player
+_mv = next(((dx, dy) for dx, dy in ((0, -1), (1, 0), (-1, 0), (0, 1)) if st.run.floor.walkable(_x + dx, _y + dy)), (0, -1)) if hasattr(st.run.floor, "walkable") else (0, -1)
+st.anim = 0
+st.step(*_mv); frames(12)
+check(st.safari and st.safari["steps"] == 499, f"Safari Game: each step counts down ({st.safari})")
+st.encounter = None
+st._pick(1)
+check(st.mode != "BATTLE" and "battling" in str(getattr(st, "toast", "")).lower(), f"Safari Game: no battling wild Pokemon, only catching ({st.toast})")
+st.safari["steps"] = 0
+said = _play(st, 600)
+frames(90)
+check(any("Time's up" in x for x in said) and story.current_area_key == "HOENN_ROUTE_121",
+      f"Safari Game: out of steps, the visit ends and you're back on Route 121 ({said[:1]}, {story.current_area_key})")
+story.story_flags["beat_hoenn_champion"] = True
+st = open_map("HOENN_SAFARI_ZONE", "HOENN_ROUTE_121")
+_play(st, 300)
+_calm(st)
+check(_try_east(st) == (76, 56), "Safari Zone: once you're Champion the new areas are open")
+check("rest_house" in (_sz.get("rooms") or {}) or any(n == "Rest House" for n in (_sz.get("floor_names") or [])),
+      "Safari Zone: the rest house walked inside")
+story.inventory.clear(); story.inventory.update(_inv12)
+story.story_flags.clear(); story.story_flags.update(_saved12)
+
 story.story_flags.clear(); story.story_flags.update(_saved)
 print(f"##### {len(fails)} failures")

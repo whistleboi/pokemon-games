@@ -1923,6 +1923,75 @@
     },
     "LILYCOVE_CITY:Memory Girl": {
       "sheet": "em_47.png"
+    },
+    "HOENN_SAFARI_ZONE:ULTRA BALL": {
+      "item": "ULTRA_BALL"
+    },
+    "HOENN_SAFARI_ZONE:TM11 SOLAR BEAM": {
+      "item": "TM11"
+    },
+    "HOENN_SAFARI_ZONE:Tired hiker": {
+      "sheet": "em_19.png"
+    },
+    "HOENN_SAFARI_ZONE:Lake seeker": {
+      "sheet": "em_50.png"
+    },
+    "HOENN_SAFARI_ZONE:NUGGET": {
+      "item": "NUGGET"
+    },
+    "HOENN_SAFARI_ZONE:Last-ball girl": {
+      "sheet": "em_13.png"
+    },
+    "HOENN_SAFARI_ZONE:Unlucky boy": {
+      "sheet": "em_14.png"
+    },
+    "HOENN_SAFARI_ZONE:Eager collector": {
+      "sheet": "em_65.png"
+    },
+    "HOENN_SAFARI_ZONE:Pikachu hunter": {
+      "sheet": "em_16.png"
+    },
+    "HOENN_SAFARI_ZONE:Bikeless boy": {
+      "sheet": "em_65.png"
+    },
+    "HOENN_SAFARI_ZONE:Wise traveller": {
+      "sheet": "em_15.png"
+    },
+    "HOENN_SAFARI_ZONE:Pokéblock thrower": {
+      "sheet": "em_20.png"
+    },
+    "HOENN_SAFARI_ZONE:FULL RESTORE": {
+      "item": "FULL_RESTORE"
+    },
+    "HOENN_SAFARI_ZONE:Proud worker": {
+      "sheet": "em_31.png"
+    },
+    "HOENN_SAFARI_ZONE:Amazed kid": {
+      "sheet": "em_12.png"
+    },
+    "HOENN_SAFARI_ZONE:Feeder fan": {
+      "sheet": "em_7.png"
+    },
+    "HOENN_SAFARI_ZONE:Thrilled girl": {
+      "sheet": "em_17.png"
+    },
+    "HOENN_SAFARI_ZONE:Puzzled girl": {
+      "sheet": "em_35.png"
+    },
+    "HOENN_SAFARI_ZONE:Safari guide": {
+      "sheet": "em_31.png"
+    },
+    "HOENN_SAFARI_ZONE:MAX REVIVE": {
+      "item": "MAX_REVIVE"
+    },
+    "HOENN_SAFARI_ZONE:Close-up catcher": {
+      "sheet": "em_35.png"
+    },
+    "HOENN_SAFARI_ZONE:Calm Trainer": {
+      "sheet": "em_37.png"
+    },
+    "HOENN_SAFARI_ZONE:Feeder expert": {
+      "sheet": "em_17.png"
     }
   },
   "townsperson": "NPC 17.png",

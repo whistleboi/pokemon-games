@@ -1141,7 +1141,7 @@ story.player_team, story.pc_pokemon = _saved30
 
 print("31) Safari Zones in areas: own pictures, own Pokemon, area buttons under EXPLORE (Jordan, 11-02)")
 _saved31 = (dict(story.story_flags), story.current_area_key)
-for _area, _n in (("SAFARI_ZONE", 4), ("JOHTO_SAFARI_ZONE", 12), ("HOENN_SAFARI_ZONE", 4), ("GREAT_MARSH", 6)):
+for _area, _n in (("SAFARI_ZONE", 4), ("JOHTO_SAFARI_ZONE", 12), ("HOENN_SAFARI_ZONE", 6), ("GREAT_MARSH", 6)):
     _ad = g.loader.area_data["STORY_PROGRESSION"][_area]
     _zs = _ad.get("zones") or []
     _pics = [z["key"] for z in _zs if g.assets.get_journeys_background("routes", f"{_area}_{z['key']}") is not None]

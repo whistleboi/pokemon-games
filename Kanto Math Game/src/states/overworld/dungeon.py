@@ -133,6 +133,10 @@ FACING_ROW = {(0, 1): 0, (-1, 0): 1, (1, 0): 2, (0, -1): 3}  # a sheet's rows: d
 
 # The Bug-Catching Contest: its balls and turns, prizes for 1st, 2nd, 3rd (and the rest), how a catch scores
 CONTEST_BALLS, CONTEST_TURNS = 20, 150
+# The Safari Game (Jordan, 11-13: "a timer or ball limit for safari visits"): an area with "safari_game" gives each visit
+# its own Safari Balls and steps (Emerald's 30 and 500); you catch only with those, no battling; when either runs out,
+# the visit is over and you're walked back out.
+SAFARI_BALLS, SAFARI_STEPS = 30, 500
 CONTEST_DAYS = tuple(range(7))  # any day, once a day (Jordan, 11-05; the games: Tuesday, Thursday, Saturday)
 CONTEST_PRIZES = ["SUN_STONE", "EVERSTONE", "RARE_CANDY"]
 CONTEST_RARE = {123: 100, 127: 100, 12: 70, 15: 70, 49: 70, 402: 60, 11: 30, 14: 30, 47: 40}
@@ -265,7 +269,8 @@ def with_rooms(m):
     if not rooms:
         return m
     floors = [dict(f) for f in m["floors"]] if m.get("floors") else [
-        {k: m[k] for k in ("art", "exits", "signs", "people", "trainer_spots", "links", "overheads", "parts", "boss_spot", "inside", "stops") if k in m}]
+        {k: m[k] for k in ("art", "exits", "signs", "people", "trainer_spots", "links", "overheads", "parts", "boss_spot", "inside", "stops",
+                           "barred", "moves", "scenes", "berry_soil", "sign_scenes", "edge_to", "dive", "surface", "pool") if k in m}]   # (the map's own floor keeps everything of its own: who's in the way, how people move)
     n0 = len(floors)
     names = list(m.get("floor_names") or [""] * n0)
     where, doors = {}, {}
@@ -722,6 +727,10 @@ class DungeonState(OverworldBattles, PlayState):
         # the Bug-Catching Contest: its Sport Balls, the turns left, your best catch (only one is kept)
         self.contest = ({"balls": CONTEST_BALLS, "turns": CONTEST_TURNS, "best": None, "score": 0}
                         if self.area_data.get("bug_contest") else None)
+        _sg = self.area_data.get("safari_game")
+        self.safari = ({"balls": int((_sg if isinstance(_sg, dict) else {}).get("balls", SAFARI_BALLS)),
+                        "steps": int((_sg if isinstance(_sg, dict) else {}).get("steps", SAFARI_STEPS)), "hello": True}
+                       if _sg and not self.contest else None)
         self._floor_surf = None
         self._floor_index = -1
         self._sprites = {}
@@ -1487,6 +1496,8 @@ class DungeonState(OverworldBattles, PlayState):
             self._copy_step(dx, dy)
             self._note_area()
             self._contest_tick()
+            if getattr(self, "safari", None) and self.safari["steps"] > 0:
+                self.safari["steps"] -= 1
         self._handle(events)
 
     def wait_turn(self):
@@ -1530,7 +1541,7 @@ class DungeonState(OverworldBattles, PlayState):
                 self.walk_goal = None
                 _i, _x, _y = (int(v) for v in ev[1].split(":")[1:4])
                 if ev[1].endswith(":fall"):  # (a hole in the floor: down you go, onto the spot below)
-                    self.say(["Whoa! You fell through a hole in the floor!"], then=lambda: self._warp(_i, _x, _y))
+                    self.say(["Whoa! You fell through a hole in the floor!"], then=lambda: self._warp(_i, _x, _y, land=True))
                 elif _i == self.run.index or self._indoors(_i) or self._indoors(self.run.index):  # (a warp panel: across the same floor; a house's door or mat: straight in or out)
                     self._warp(_i, _x, _y)
                 else:
@@ -1601,12 +1612,12 @@ class DungeonState(OverworldBattles, PlayState):
         self.anim_from = self.partner = self.partner_from = self.run.player
         self.banner = 120
 
-    def _warp(self, index, x, y):
+    def _warp(self, index, x, y, land=False):
         if self.zones and self._indoors(self.run.index) and not self._indoors(index):  # (out of a house: the area its door is in, said nothing)
             self.game.story_manager.story_flags[f"zone_{self.area_key}"] = self.zones[self._zone_index(index, x, y)]
         else:
             self._set_zone(index)
-        self.run.warp(index, x, y)
+        self.run.warp(index, x, y, land=land)
         self.anim = 0
         self.anim_from = self.partner = self.partner_from = self.run.player
         self.banner = 120
@@ -1773,6 +1784,8 @@ class DungeonState(OverworldBattles, PlayState):
     def _can_catch(self):
         if self.contest:
             return self.contest["balls"] > 0
+        if getattr(self, "safari", None):
+            return self.safari["balls"] > 0
         story = self.game.story_manager
         return catching.total_balls(story) > 0 and story.catch_unlocked()
 
@@ -1798,6 +1811,8 @@ class DungeonState(OverworldBattles, PlayState):
             self._start_math()
         elif self.contest:
             self.flash("In the contest, you catch with MATH!")
+        elif getattr(self, "safari", None):
+            self.flash("No battling in the Safari Zone. Catch with MATH!")
         else:
             self._battle_wild(self.encounter)
 
@@ -1814,6 +1829,9 @@ class DungeonState(OverworldBattles, PlayState):
         if self.contest:  # a Sport Ball (the contest's own)
             ball = "SPORT_BALL"
             self.contest["balls"] -= 1
+        elif getattr(self, "safari", None):  # a Safari Ball (this visit's own)
+            ball = "SAFARI_BALL"
+            self.safari["balls"] -= 1
         else:
             ball = catching.selected(story)
             catching.use(story, ball)
@@ -1945,6 +1963,21 @@ class DungeonState(OverworldBattles, PlayState):
         """A turn of the contest gone (a step, or WAIT)."""
         if self.contest and self.contest["turns"] > 0:
             self.contest["turns"] -= 1
+
+    def _safari_check(self):
+        """The Safari Game: its welcome on arrival; out of steps or Safari Balls, the visit is over."""
+        sf = getattr(self, "safari", None)
+        if not sf or not self._ready() or self.dialogue_box.visible:
+            return
+        if sf.pop("hello", False):
+            self.say([f"Welcome to the Safari Zone! Here are {sf['balls']} Safari Balls.",
+                      f"You have {sf['steps']} steps to catch what you can. Catch with MATH: no battling here!"])
+            return
+        if sf["steps"] <= 0 or sf["balls"] <= 0:
+            self.safari = None
+            self.say(["Ding-dong! Time's up!" if sf["steps"] <= 0 else "You're out of Safari Balls!",
+                      "Your Safari Game is over. Please come again!"],
+                     then=lambda: self._leave(next(iter(self.recipe.get("exit_floors") or self.exit_items or [self.area_data.get("next_area")]))))
 
     def _contest_check(self):
         """Time's up, or no Sport Balls left: the judging."""
@@ -2641,6 +2674,7 @@ class DungeonState(OverworldBattles, PlayState):
             self._npc_tick()
         if self.mode == "MAP":
             self._contest_check()
+            self._safari_check()
             self._follow_hold()
             if self.sliding and self._ready():  # (still sliding on the ice)
                 self.step(*self.sliding)
@@ -3737,11 +3771,18 @@ class DungeonState(OverworldBattles, PlayState):
         while font.size(title)[0] > room and len(title) > 4:  # a long name: shortened
             title = title[:-2].rstrip() + "."
         theme.shadow_text(screen, title, font, bar.x + 20, bar.centery - font.get_height() // 2)
-        ball = "SPORT_BALL" if self.contest else catching.selected(story)
+        sf = getattr(self, "safari", None)
+        ball = "SPORT_BALL" if self.contest else "SAFARI_BALL" if sf else catching.selected(story)
         bimg = self._item_img(ball, 30) or self._ball_img(30)
         bx = bar.right - 380
         screen.blit(bimg, (bx, bar.centery - 15))
-        count = self.contest["balls"] if self.contest else catching.owned(story, ball)
+        count = self.contest["balls"] if self.contest else sf["balls"] if sf else catching.owned(story, ball)
+        if sf:  # (the Safari Game: the steps left)
+            t = fonts["label"].render(f"STEPS {sf['steps']}", True, (255, 255, 255))
+            pill = t.get_rect(midtop=(bar.centerx, bar.bottom + 8)).inflate(24, 10)
+            pygame.draw.rect(screen, (30, 36, 58), pill, border_radius=10)
+            pygame.draw.rect(screen, theme.POKEMON if sf["steps"] > 50 else theme.FIGHT, pill, 2, border_radius=10)
+            screen.blit(t, t.get_rect(center=pill.center))
         theme.shadow_text(screen, f"x{count}", fonts["label"], bx + 36, bar.centery - 12)
         if self.contest:  # the time left, and your best catch so far
             c = self.contest

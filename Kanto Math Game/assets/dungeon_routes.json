@@ -1767,7 +1767,7 @@
     }
   },
   "HOENN_SAFARI_ZONE": {
-    "zones_per_floor": 4,
+    "zones_per_floor": 6,
     "size": [
       36,
       24

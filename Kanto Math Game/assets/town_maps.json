@@ -88036,6 +88036,550 @@
    "Admin Matt": 2
   }
  },
+ "HOENN_SAFARI_ZONE": {
+  "art": [
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccc\"\"\"cccccccccccccccccccccccccccccccccccccccccccccccc.cccccccccccccccccc",
+   "cc\"\"\"\"\"\"ccccccccccccccccoooooooocccccccccccccccN\"\"\"\"\"\"..c======0cccccccccccccccccccccccccc.ccccc................cccccccc",
+   "cc\"\"!\"\"\"ccccccccccccccccoooooooo.N.cccccccccccc\"\"\"\"\"\"\"..====0======0ccccccccccccccccccc..0.......ccccccccccccc..cccccccc",
+   "cc\"\".\"\"\"N..cccccccccccccoooooooo....cccccccccc\"\"\"\"\"\"\"\"..=============cccccccccccccccccc.....0..ccc...\"\"\"\"\"\"\"\"c..cccccccc",
+   "cc\"\"\"\"\"....cccccccccccccoooooooooooocccccccccc\"\"\"\"\"\"\"\"...=====N======cccccccccccccccccc........c....\"\"\"\"\"\"\"..c..cccccccc",
+   "cc\"\"\"\"\"........cccccccccoooooooooooocccccccc\"\"\"\"\"\"\"\"\"....========0===cccccccccccccccccc.0.....cc.................ccccccc",
+   "cc\"\"\"\".........cccc.ccccoooooooooooocccccccc\"\"\"\"\"\"\"\"\"....==========c=cccccccccccccccccc....0..c..................ccccccc",
+   "cc\"\".............c..ccccoooooooooooocccccccc\"\"\"\"\"\".......============ccccccccccccccccc........c..................ccccccc",
+   "cc...............c....ccoooooooooooocccccccc\"\"\"\"\"\"........c======0====cccccccccccccccc..0.....c....ccccccc..c...\"ccccccc",
+   "cccccc.....cc..ccc...ccc............\"\"cccccc\"\"\"............=========0=cccccccccccccccc.......cc....ccccccc..cc.\"\"ccccccc",
+   "cccccc.....c..................\"\"\"!\"\"\"\"cccccc................==========ccccccccccccccccc____c.c.....ccccccc...ccc\"ccccccc",
+   "cccccccc...c\"\"\"\".............\"\"\"\".\"\"\"\"cccccc.........c........c========cccccccccccccc.)....(.c..cccccccc.......c\"ccccccc",
+   "cccccccc...c\"\"\"\"\"\"\"...........\"\"\"\"\"\"\"\"cccccc.......c..........c========cccccccccccccc.).N..(.c..c...cccc.......c\"ccccccc",
+   "cccccccc...c\"\"\"\"\"\"\"\"\"\"..cc.....\"\"\"\"\"\"\"cccc.........c..........c=c======cccccccccccccccc____ccc..c..............c\"ccccccc",
+   "cccccccc...c\"\"\"\"\"\"\"\"\"\"..cccc......\"\"\"\"cccc.......c...............c=======ccccccccccc\"...........c..............ccccccccc",
+   "cccccccc........c\"\"\"\"\"\".cccc.......ccccccc.....c.................c========cccccccccc\"\"\"\"N.....ccc...............cccccccc",
+   "cccccccc........c\"\"\"\"\"\".cccN..c.....ccccccc....c...........c__'c.c======c=cccccccccc\"\"\"\"\"\"..ccc................\"cccccccc",
+   "ccccccc\"\"..............c..cc........cccccc.....c......c....)..'(ccc=======cccccccccc\"!\"\"\"\"ccc......c...ccc....N\"\"ccccccc",
+   "cccccccc\"\"\"........ccccc............cccccc.....c..........cc__'ccc.=======cccccccccc\".\"\"\"\"c......ccc.....cc...\"\"\"ccccccc",
+   "ccccccc\"\"\"\"\".......ccccc.....c......cccccccc...cc..cc.....c........=======cccccccccc\"\"\"\"\"\"c......c........cc.\"\"\"\"ccccccc",
+   "ccccccc\"\"\"\"\"\"\".............c........cccccccc........c.....c...............cccccccccc\"\"\"\"\"\"c......c.........c\"\"\"\"\"ccccccc",
+   "ccccccc\"c\"\"\"\"\".............c.....\"\"\"cccccccc........ccc....c........\"\"\"\"!\"ccccccccccccccccc......c.........c\"\"\"\"\"ccccccc",
+   "\"c\"\"\"...........c.......cccc...\"\"\"\"\"ccccccccc.......ccc....c.......\"\"\"\"\".\"ccccccccccc............c.........c\"\"\"\"\"ccccccc",
+   "\"\"\"\"\"\"..........ccc......ccc.\"\"\"\"\"\"\"cccccccc........ccc....cc.....\"\"\"\"\"\"\"\"ccccccccccc............c.........c\"\"\"\"\"ccccccc",
+   "\"\"\"\"\"\"..........ccc....ccccc\"\"\"!\"\"\"\"cccccccc..N.....ccc..........c\"\"\"\"\"\"\"\"ccccccccccc............c.........cc\"\"\"\"ccccccc",
+   "c\"\"\"\"\"\".........ccc....ccccc\"\"\".\"\"\"\"cccccccc\"\"....c.................ccccccccccccccccc...........cc.........cc\"\"\"\"ccccccc",
+   "\"\"\"\"\"\"\"....cc..cccc....ccccc\"\"\"\"\"\"\"\"cccccccc\"\"\"...c\"\"...............ccccccccccccccccc..........cc...........c\"\"\"cccccccc",
+   "cccc\"\"\"...cc...........ccccc\"\"\"\"\"\"cccccccc\"\"\"\"\"\"c..\"\"\"...................cccccccccccccc......ccc............cccccccccccc",
+   "cccc\"\".....c...........ccccc\"\"\"\"\"\"cccccccc\"\"\"\"\"\"c\"\"\"\"\"\"..................ccccccccccccccccccccc................cccccccccc",
+   "cccccc.....cc..........ccccccccccccccccccc\"\"\"!\"\"c\"\"\"\"\"\"..cccccccccc......ccccccccccccc...........................ccccccc",
+   "cccccc.....c..c..cccc..ccccccccccccccccccc\"\"\".\"\"c\"\"\"\"\"\"..cccccccccc......ccccccccccccc.......N...................ccccccc",
+   "ccccccc....ccccccc......cccccccccccccccccc\"\"\"\"\"\"c\"\"\"\"\"\"..cccccccccccc..ccccccccccccccc...........cccccccccc......ccccccc",
+   "ccccccc....cc...........cccccccccccccccccc\"\"\"\"\"\"c\"\"\"\"\"...cccccccccccc..ccccccccccccccc...........cccccccccc......ccccccc",
+   "ccccccc....cccccc.......cccccccccccccccccccc\"\"\"\"ccccc\".cccccccccccccc..ccccccccccccccc...cccccccccccccccccc......ccccccc",
+   "ccccccc....cccccc.......cccccccccccccccccccc\"\"\"\"ccccc..cccccccccccccc..ccccccccccccccc...cccccccccccccccccc......ccccccc",
+   "ccccccc....cccccccc.....ccccccccccccccccccccccccccccccccccccccccccccc..ccccccccccccccc...cccccccccccccccccc......ccccccc",
+   "ccccccc....cccccccc.....ccccccccccccccccccccccccccccccccccccccccccccc..ccccccccccccccc...cccccccccccccccccc......ccccccc",
+   "cccccccc7cccccccccc_______cccccccccccccccccccccccccccccccccccccccc.....ccccccccccccccc...cccccccccccccc..........ccccccc",
+   "cccccccc7cccccccccc.......cccccccccccccccccccccccccccccccc....''''.....ccccccccccccccc...cccccccccccccc..........ccccccc",
+   "ccccccc...ccccccccc........ccccccccccccccccc....ccccc....c....'ccc...........ccccccccc.......cccccc..............ccccccc",
+   "ccccccc...ccccccccc.........cccccccccccccccc....ccccc....c..'''..c..........cccccccccc.......cccccc.........oooocccccccc",
+   "ccccccc...cccccccc..........cAcc..c.............cc......Nc..'cc..c.c_____c...ccccccccc.....................ooooocccccccc",
+   "ccccccc...cccccccc.c........cDcc!...............c........''''....c.).....(cccccccccccc.N.................ooooocccccccccc",
+   "ccccccc....cccccccc...................cccc...\"\"\"c.......ccccc....ccc_____cc\"\"\"cccccc.\"\"................ooooooocccccccccc",
+   "ccccccc....cccccccc...N...............cccc..\"\"\"\"ccccc..ccc.............\"\"\"\"\"\"\"cccccc\"\"\"\".............ooooooo..cccccccccc",
+   "cccc\"\"\"....cccccccccccccccc.......cccccccccccc\"\"\"\".......c....cccccc...\"\"\"\"\"\"\"cccccccc\"\".............ooooo..\"\"cccccccccc",
+   "cccc\"\"\"....cccccccccccccccc.......cccccccccccc\"\"\"\"\"...........cccccc....\"\"\"\"\"\"cccccccc\"\".............ooooo.\"\"!\"\"cccccccc",
+   "cccc\"\"\"...c................c....cccccccccccccc\"\"\"\"\"\".........ccccccccc...\"\"\"cccccccccc\"\"\"\"...........ooo...\"\".\"\"cccccccc",
+   "cccc\"\"\"..cc................cc...cccccccccccccc\"\"\"\"\"\".........cccccccc......\"cccccccccc\"\"\"\".....\"\"....ooo...\"\"\"\"\"cccccccc",
+   "cc\"\"\"\"...cc..ooooooooooo...cc...cccccccccccccc\"\"\"\"\"\".......................ccccccccccc\"\"\"\"....\"\"\"....ooo...\"\"\"\"\"cccccccc",
+   "cc\"\"\"\"...cc..ooooooooooo...cc...cccccccccccccc\"\"\".cccc......................cccccccccc\"\"\".....\"\"\"....ooo...\"\"\"\"Ncccccccc",
+   "cc\"\"\"....cc..ooooo!ooooo...cc.....cccccccccccc....cccc......................................N.cccc..c$$$c.\"ccccccccccccc",
+   "cc\"\".....cc..ooooooooooo...cc....cccccccccccccc...cccc........................................cccc..c$$$cccccccccccccccc",
+   "cc.......cc..ooooooooooo...cc.....ccccccccccc.....cccccc......cccccccccccccccccccccc........ccccc..\"c$$$ccccc..ccccccccc",
+   "cc.......cc....ooooooooo...cc.....cccccccccc......cccccc......cccccccccccccccccccccc........ccccc.\"\"coooo......ccccccccc",
+   "cc.......cc...............ccc...................cccccccc....cccccccccccccccccccccccc\".......ccccc\"\"\"coooo........ccccccc",
+   "cccc....\"cc...............ccc...................cccccccc....cccccccccccccccccccccccc\"\".....\"ccccc\"\"\"coooo!.......ccccccc",
+   "cccc...\"\"cccccccccc..ccccccc.........ccccccccccccccccccc.....cccccccccccccccccccccc\"\"\"\"....\"ccccc\"\"\"coooo......ccccccccc",
+   "cccc...\"\"cccccccccc..ccccccc..........cccccccccccccccccc.....cccccccccccccccccccccc\"\"\"\"...\"\"ccccc\"\".cooooooooooccccccccc",
+   "cccc...\"\"\"\"\"__c.................cccccccccccccccccccccccc...........cccccccccccccccc\"\"\"\"...\"\"ccccc\"..cooooooooooccccccccc",
+   "cccc....\"\"\"\"\"\"(.................cccccccccccccccccccccccc...........cccccccccccccccc\"\"\"\"...\"\"ccc..\".ccooooooooooccccccccc",
+   "cccc......\"\"\"\"(...........cccccccccccccccccccccccccccc.................cccccccccccccccc.N.\"\"ccc.\"..coooooooooooo.ccccccc",
+   "cc........\"\"\"\"(...........cccccccccccccccccccccccc\"\"\".........\"\"\"......cccccccccccccccc..\"\"\"ccc\"..ccoooooooooooooccccccc",
+   "cc.........\"\"\"c_____cccccccccccccccccccccccccc\"\"\"\"\"\"\".......\"\"\"\"\"\"N.....ccccccccccccccccccccccc...c..ooooooooooooccccccc",
+   "cc..................cccccccccccccccccccccccccc\"\"\"\"\"\"........\"\"\"\"\"\"\"......cccccccccccccccccccccc..cc...oooooooooooccccccc",
+   "....................cccccc\"\"\"\"\"\"\"\"cccccccccc\"\"\"\"\"\"\"........\"\"\"\"\"!\"\"\"..ccccccccccccccccccccccc...\"\"\".N..ooooooooooccccccc",
+   "oooooooo............cccccc\"\"\"\"\"\"\"\"cccccccccc\"\"\"\"\"\".....N...\"\"\"\"\".\"\"\"..ccccccccccccccccccccccc.\"\"\"\"\"\"....oooooo...ccccccc",
+   "oooooooocccc.............\"\"\"\"\"\"\"\"\"cccccccccc\"\"\"............\"\"\"\"\"\"\"\"\"..cccccccccccccccccccccc.\"\"\".\"\"\".....ooooo..\"ccccccc",
+   "oooooooocccc..............\"\"\"\"\"\"\"\"cccccccccc................\"\"\"\"\"\"\"\"..ccnccccccccccccccccccc\"\"\"\"\"\"\"!\".....oooo.\".ccccccc",
+   "oooooooocccccccc............\"\"\"\"\"\"\"\"cccccc........cccc........\"\"\"\"......Nccccccccccccccccccccccccc\".\"\".........\"\"ccccccc",
+   "oooooooocccccccc..............\"\"\"\"..ccccccc.......cccc...................ccccccccccccccccccccccccc\"\"\"\"........\"\"\"ccccccc",
+   "oooooooocccccccccccc...........................ccccccccc.................ccccccccccccccccccccccccc\".\"\"\"...\".\"\"\".\"ccccccc",
+   "N.......cccccccccccc............................cccccccc.................ccccccccccccccccccccccccc\"\".\"....\"\"\"\"\"\"\"ccccccc",
+   "cccccccccccccccccccccccccc......cccccccccccccccccccccccccccc.......ccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccc......cccccccccccccccccccccccccccc........cccccccccccccccccccccccccccccccccccccccccccccccccccc"
+  ],
+  "exits": {
+   "n": "HOENN_ROUTE_121"
+  },
+  "buildings": {
+   "A": "house"
+  },
+  "roofs": {
+   "_picture": {
+    "f": "em_ground/26_S.png",
+    "at": [
+     0,
+     0
+    ]
+   },
+   "_signs_in_picture": true,
+   "_buildings_in_picture": true
+  },
+  "people": [
+   "ULTRA BALL",
+   "TM11 SOLAR BEAM",
+   {
+    "text": "Tired hiker",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Phew... I made it all the way out here, but I'm too worn out to catch anything."
+     ]
+    }
+   },
+   {
+    "text": "Lake seeker",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "I'm looking for Water Pokémon you don't see elsewhere in Hoenn. Where's the lake?"
+     ]
+    }
+   },
+   "NUGGET",
+   {
+    "text": "Last-ball girl",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Only a couple of Poké Balls left... What should I catch?"
+     ]
+    }
+   },
+   "ABSOLITE",
+   {
+    "text": "Unlucky boy",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "I can't catch anything out here! These Pokémon are tough."
+     ]
+    }
+   },
+   {
+    "text": "Eager collector",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "I'm going to catch loads of rare Pokémon here and trade them with my friends!"
+     ]
+    }
+   },
+   {
+    "text": "Pikachu hunter",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "I heard you can find Pikachu in the Safari Zone. Where could it be?"
+     ]
+    }
+   },
+   {
+    "text": "Bikeless boy",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "I want to go deeper, but I forgot my Bike. Rare Pokémon live out in the far areas."
+     ]
+    }
+   },
+   {
+    "text": "Wise traveller",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "The Pokémon around here seem to come from somewhere far from Hoenn."
+     ]
+    }
+   },
+   {
+    "text": "Pokéblock thrower",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Sometimes a Pokémon ignores the Pokéblock I toss. Do they have favourite flavours?"
+     ]
+    }
+   },
+   "FULL RESTORE",
+   {
+    "text": "Proud worker",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "The Safari Zone's new areas are finished! We hope you enjoy them."
+     ]
+    },
+    "condition": [
+     "beat_hoenn_champion"
+    ]
+   },
+   {
+    "text": "Amazed kid",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Wow! I've never seen any of these Pokémon before!"
+     ]
+    }
+   },
+   {
+    "text": "Feeder fan",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Did you know? Pokémon gather around those square feeders."
+     ]
+    }
+   },
+   {
+    "text": "Thrilled girl",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "All these Pokémon are new to me, and I'm allowed to catch them! So cool!"
+     ]
+    }
+   },
+   {
+    "text": "Puzzled girl",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "I left a Pokéblock in a feeder and it vanished. Some Pokémon must have eaten it!"
+     ]
+    }
+   },
+   {
+    "text": "Safari guide",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Welcome to the Safari Zone! Some areas need a Bike to reach. Good luck!"
+     ]
+    }
+   },
+   "MAX REVIVE"
+  ],
+  "signs": [
+   [
+    "A Pokéblock feeder. Wild Pokémon like to gather around it."
+   ],
+   [
+    "A Pokéblock feeder. Wild Pokémon like to gather around it."
+   ],
+   [
+    "A Pokéblock feeder. Wild Pokémon like to gather around it."
+   ],
+   [
+    "A Pokéblock feeder. Wild Pokémon like to gather around it."
+   ],
+   [
+    "A Pokéblock feeder. Wild Pokémon like to gather around it."
+   ],
+   [
+    "A Pokéblock feeder. Wild Pokémon like to gather around it."
+   ],
+   [
+    "Relieve your tired feet.",
+    "REST HOUSE"
+   ],
+   [
+    "A Pokéblock feeder. Wild Pokémon like to gather around it."
+   ],
+   [
+    "A Pokéblock feeder. Wild Pokémon like to gather around it."
+   ],
+   [
+    "A Pokéblock feeder. Wild Pokémon like to gather around it."
+   ],
+   [
+    "A Pokéblock feeder. Wild Pokémon like to gather around it."
+   ],
+   [
+    "A Pokéblock feeder. Wild Pokémon like to gather around it."
+   ]
+  ],
+  "inside": {
+   "29,47": "rest_house"
+  },
+  "moves": {
+   "8,8": {
+    "m": "face",
+    "d": "d"
+   },
+   "62,9": {
+    "m": "wander",
+    "d": "udlr",
+    "r": [
+     1,
+     1
+    ]
+   },
+   "46,29": {
+    "m": "wander",
+    "d": "udlr",
+    "r": [
+     1,
+     1
+    ]
+   },
+   "22,49": {
+    "m": "face",
+    "d": "d"
+   },
+   "72,74": {
+    "m": "face",
+    "d": "d"
+   },
+   "66,68": {
+    "m": "wander",
+    "d": "udlr",
+    "r": [
+     1,
+     1
+    ]
+   },
+   "56,46": {
+    "m": "face",
+    "d": "d"
+   },
+   "55,71": {
+    "m": "wander",
+    "d": "udlr",
+    "r": [
+     1,
+     1
+    ]
+   },
+   "88,20": {
+    "m": "look",
+    "d": "udlr"
+   },
+   "110,22": {
+    "m": "look",
+    "d": "udlr"
+   },
+   "93,35": {
+    "m": "look",
+    "d": "udlr"
+   },
+   "87,47": {
+    "m": "look",
+    "d": "udlr"
+   },
+   "100,70": {
+    "m": "wander",
+    "d": "udlr",
+    "r": [
+     1,
+     1
+    ]
+   },
+   "88,66": {
+    "m": "wander",
+    "d": "udlr",
+    "r": [
+     1,
+     1
+    ]
+   },
+   "92,56": {
+    "m": "face",
+    "d": "l"
+   },
+   "33,7": {
+    "m": "look",
+    "d": "udlr"
+   },
+   "47,6": {
+    "m": "look",
+    "d": "udlr"
+   },
+   "0,77": {
+    "m": "look",
+    "d": "udlr"
+   },
+   "88,17": {
+    "m": "look",
+    "d": "udlr"
+   },
+   "111,55": {
+    "m": "look",
+    "d": "udlr"
+   }
+  },
+  "zone_rects": [
+   [
+    40,
+    40,
+    40,
+    40
+   ],
+   [
+    0,
+    40,
+    40,
+    40
+   ],
+   [
+    0,
+    0,
+    40,
+    40
+   ],
+   [
+    40,
+    0,
+    40,
+    40
+   ],
+   [
+    80,
+    40,
+    40,
+    40
+   ],
+   [
+    80,
+    0,
+    40,
+    40
+   ]
+  ],
+  "barred": [
+   {
+    "tiles": [
+     [
+      76,
+      56
+     ],
+     [
+      76,
+      57
+     ]
+    ],
+    "look": "sheet:em_31.png",
+    "face": "r",
+    "until": {
+     "flag_condition": "beat_hoenn_champion"
+    },
+    "lines": [
+     "Worker: This area is still under construction. It's off limits, sorry!"
+    ]
+   }
+  ],
+  "overheads": [
+   {
+    "kind": "picture",
+    "f": "em_top/26_S.png",
+    "at": [
+     0,
+     0
+    ],
+    "size": [
+     120,
+     80
+    ]
+   }
+  ],
+  "rooms": {
+   "rest_house": {
+    "art": [
+     "cccccccccc",
+     "cccccccccc",
+     "cccccccccc",
+     "cccccccccc",
+     ".......NN.",
+     "..Ncc.....",
+     "...cc.....",
+     "..........",
+     "...nn....."
+    ],
+    "exits": {
+     "n": "OUT:29,47"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/26_11.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Close-up catcher",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Get close to a Pokémon and your chance of catching it goes up. But it might run!"
+       ]
+      }
+     },
+     {
+      "text": "Calm Trainer",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "A Pokémon that's had a Pokéblock is slower to run away."
+       ]
+      }
+     },
+     {
+      "text": "Feeder expert",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Pokémon of a certain nature are drawn to certain Pokéblocks in the feeders."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "7,4": {
+      "m": "face",
+      "d": "r"
+     },
+     "8,4": {
+      "m": "face",
+      "d": "l"
+     },
+     "2,5": {
+      "m": "face",
+      "d": "r"
+     }
+    },
+    "theme": "room",
+    "title": "Rest house"
+   }
+  }
+ },
  "TWINLEAF_TOWN": {
   "art": [
    "TTTTTTkkkkkk..^^^^..kkkkkkTTTTTT",
