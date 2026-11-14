@@ -973,14 +973,19 @@ class DungeonState(OverworldBattles, PlayState):
 
     def _boss_spot(self):
         """The tile the area's boss sleeps on (the map's "boss_spot"), while it is still there."""
-        spot = (self.recipe.get("art") or {}).get("boss_spot")
+        art = self.recipe.get("art") or {}
+        spot = art.get("boss_spot")
+        if not spot and art.get("floors") and hasattr(self, "run") and self.run.index < len(art["floors"]):
+            spot = art["floors"][self.run.index].get("boss_spot")   # (a boss on one floor of a place of floors: the Pokemon Tower's ghost on 6F)
         boss = self.area_data.get("area_boss") or {}
         if not spot or not boss or self.game.story_manager.story_flags.get(boss.get("victory_flag")):
             return None
         return tuple(spot)
 
     def _sync_boss_spot(self):
-        if (self.recipe.get("art") or {}).get("boss_spot") and hasattr(self, "run") and not self._boss_spot():
+        _art = self.recipe.get("art") or {}
+        _has = _art.get("boss_spot") or any(f.get("boss_spot") for f in (_art.get("floors") or []))
+        if _has and hasattr(self, "run") and not self._boss_spot():
             for t in [t for t, v in self.run.floor.exits.items() if v == "BOSS"]:  # (beaten: the way is clear)
                 del self.run.floor.exits[t]
 
@@ -1846,7 +1851,8 @@ class DungeonState(OverworldBattles, PlayState):
                 self._get_route_callback(boss)()
                 return
             name = (self.area_data.get("area_boss") or {}).get("name", "A Pokemon")
-            self.say([f"A {name} is sound asleep, right in the way!", "It won't budge. Maybe a sound would wake it..."])
+            self.say((self.area_data.get("area_boss") or {}).get("blocked_lines")   # (its own words: the Pokemon Tower's ghost)
+                     or [f"A {name} is sound asleep, right in the way!", "It won't budge. Maybe a sound would wake it..."])
             return
         same = [t for t, v in self.run.floor.exits.items() if v == target]
         _to = (self._here_art() or {}).get("edge_to", {}).get("%d,%d" % tuple(self.run.player))
@@ -2888,6 +2894,9 @@ class DungeonState(OverworldBattles, PlayState):
             return super().update()
         if hasattr(self, "run"):
             self._clear_boulders()
+            if getattr(self, "_boss_synced", None) != self.run.index:   # (up or down a floor: a beaten boss's tile there is clear too, the Tower's 6F)
+                self._boss_synced = self.run.index
+                self._sync_boss_spot()
         if self.dialogue_box.visible:
             self.dialogue_box.update()
         if self.toast_timer > 0:

@@ -4110,6 +4110,48 @@
     },
     "CELADON_GAME_CORNER:Gentleman": {
       "sheet": "fr_61.png"
+    },
+    "KANTO_POKEMON_TOWER:Girl": {
+      "sheet": "fr_28.png"
+    },
+    "KANTO_POKEMON_TOWER:Channeler": {
+      "sheet": "fr_58.png"
+    },
+    "KANTO_POKEMON_TOWER:Old woman": {
+      "sheet": "fr_31.png"
+    },
+    "KANTO_POKEMON_TOWER:Man": {
+      "sheet": "fr_30.png"
+    },
+    "KANTO_POKEMON_TOWER:Receptionist": {
+      "sheet": "fr_48.png"
+    },
+    "KANTO_POKEMON_TOWER:ESCAPE ROPE": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_POKEMON_TOWER:AWAKENING": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_POKEMON_TOWER:ELIXIR": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_POKEMON_TOWER:GREAT BALL": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_POKEMON_TOWER:CLEANSE TAG": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_POKEMON_TOWER:NUGGET": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_POKEMON_TOWER:RARE CANDY": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_POKEMON_TOWER:X ACCURACY": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_POKEMON_TOWER:MR. FUJI": {
+      "sheet": "fr_78.png"
     }
   },
   "townsperson": "NPC 17.png",

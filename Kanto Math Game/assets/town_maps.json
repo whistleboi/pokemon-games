@@ -13085,124 +13085,625 @@
   ]
  },
  "KANTO_POKEMON_TOWER": {
-  "theme": "tower",
-  "fog": true,
-  "buildings": {},
   "floors": [
    {
     "art": [
-     "ccccccccccccccccccc",
-     "ccccccccccccccccccc",
-     "cccccccc....ccccccc",
-     "cccccc........ccccc",
-     "cccc............ccc",
-     "ccc..............cc",
-     "cc................c",
-     "c.................c",
-     "c................cc",
-     ".................+c",
-     ".................cc",
-     ".............mmmmmm",
-     ".............mmmmmm",
-     "c............mccccc",
-     "c...!........mccccc",
-     "cc...........mccccc",
-     "cccc.........mccccc",
-     "ccccccc.....ccccccc",
-     "cccccccc.v.cccccccc",
-     "ccccccccccccccccccc"
+     "cccccccccccccccccccccccc",
+     "cccccccccccccccccccccccc",
+     "ccccccccc.....cccccccccc",
+     "ccccccc.........cccccccc",
+     "ccccc.............cccccc",
+     "cccc...............ccccc",
+     "ccc............N....cccc",
+     "ccc...............N.cccc",
+     "cc.....N...........ccccc",
+     "cc................1ccccc",
+     "cc.................ccccc",
+     "cc...................ccc",
+     "cc......N......mmmmmmccc",
+     "ccc............mccNccccc",
+     "ccc............mcccccccc",
+     "cccc...........mcccccccc",
+     "cccccc.........mcccccccc",
+     "ccccccccc.....cccccccccc",
+     "cccccccccc.n.ccccccccccc",
+     "ccccccccccncnccccccccccc"
     ],
     "exits": {
-     "v": "LAVENDER_TOWN"
+     "n": "LAVENDER_TOWN"
     },
-    "signs": [
-     [
-      "POKEMON TOWER",
-      "Here rest the Pokemon who have passed on. Please be quiet."
-     ]
-    ]
-   },
-   {
-    "art": [
-     "ccccccccccccccccccc",
-     "ccccccccccccccccccc",
-     "cccccccc....ccccccc",
-     "cccccrr.......ccccc",
-     "cccrrrr.........ccc",
-     "ccc..............cc",
-     "cc..rrrrrrrrrrrrr.c",
-     "c...r.............c",
-     "c...r..........r.rr",
-     "cc..r...rrr...r..rc",
-     "c-..r...rrr...r..+c",
-     "cc..r.........r..cc",
-     "c...r.........r..rr",
-     "c...r...rrrrrrr.rrc",
-     "c.................c",
-     "ccrrr..........rrcc",
-     "ccccr..........cccc",
-     "cccccccrrrrrccccccc"
-    ],
-    "exits": {}
-   },
-   {
-    "art": [
-     "ccccccccccccccccccc",
-     "ccccccccccccccccccc",
-     "cccccccc....ccccccc",
-     "cccccc........ccccc",
-     "ccccrrrrr..rrrrrccc",
-     "ccc.rr.......rrr.cc",
-     "cc................c",
-     "c.....rrrrr.......c",
-     "c..rrr.......rrr.cc",
-     "cc.rrr...c...rrr.cc",
-     "c-.rrr.......rrrNN+",
-     "cc.r.......rr....cc",
-     "...r....rrr........",
-     "c..rr..........rrrc",
-     "c..rr.........r...c",
-     "cc..rrrr...rrr...cc",
-     "cccc...........cccc",
-     "ccccccc.....ccccccc"
-    ],
-    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_88.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
     "people": [
-     "GHOST",
-     "CONFRONT GHOST"
+     {
+      "text": "Girl",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "My Growlithe... Why did you have to go?"
+       ]
+      }
+     },
+     {
+      "text": "Channeler",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I am a Channeler. Spirits are up to mischief here. I sense them high in the Tower."
+       ]
+      }
+     },
+     {
+      "text": "Old woman",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Did you come to pay your respects? Bless your Pokémon-loving heart."
+       ]
+      }
+     },
+     {
+      "text": "Man",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I came to pray for my dear Clefairy. Sniff... I can't stop crying..."
+       ]
+      }
+     },
+     {
+      "text": "Receptionist",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Pokémon Tower was built in memory of Pokémon that have passed on."
+       ]
+      }
+     }
+    ],
+    "links": {
+     "18,9": [
+      1,
+      18,
+      10
+     ]
+    },
+    "moves": {
+     "18,13": {
+      "m": "face",
+      "d": "u"
+     },
+     "18,7": {
+      "m": "face",
+      "d": "l"
+     },
+     "15,6": {
+      "m": "face",
+      "d": "u"
+     },
+     "7,8": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     },
+     "8,12": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       2,
+       2
+      ]
+     }
+    },
+    "theme": "room",
+    "pool": "NO_WILD_INDOORS_PERCENTAGES",
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_88.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       24,
+       20
+      ]
+     }
     ]
    },
    {
     "art": [
-     "ccccccccccccccccccc",
-     "ccccccccccccccccccc",
-     "cccccccrrrrrccccccc",
-     "ccccccrc.N.crrccccc",
-     "ccccrrrc...crrrrccc",
-     "cccrrrr.....rrrrrcc",
-     "ccrrrrr..X..rrrrrrc",
-     "crrrrrr.....rrrrrrc",
-     "crrrrrr.....rrrrrrr",
-     "rrrrrrr.....rrrrrrr",
-     "rrrrrrr.....rrrrrrr",
-     "rrrrrrr.....rrrrrrr",
-     "rrrrrrrr..Xrrrrrrrr",
-     "crrrrrrr...rrrrrrrc",
-     "crrrrrrr...rrrrrrrc",
-     "ccrrrrrcc...rrrrrcc",
-     "ccccrrrc-...rrrcccc",
-     "ccccccccc...ccccccc"
+     "cccccccccccccccccccccccc",
+     "cccccccccccccccccccccccc",
+     "cccccccccccccccccccccccc",
+     "ccccccccc.......cccccccc",
+     "ccccccccc.........cccccc",
+     "cccccccc...........ccccc",
+     "ccc.................cccc",
+     "cccN...ccccccccc....cccc",
+     "cccc...ccc.........ccccc",
+     "cccc.ccccc...ccccc.ccccc",
+     "cccc1ccccc...ccccc1ccccc",
+     "cccc...ccc.........ccccc",
+     "cc.....ccc...........ccc",
+     "ccc.ccccccccc.......cccc",
+     "ccccccccccccc..cccc.cccc",
+     "cccc...............ccccc",
+     "cccccc...........ccccccc",
+     "cccccccccccccccccccccccc",
+     "cccccccccccccccccccccccc",
+     "cccccccccccccccccccccccc"
     ],
     "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_89.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Channeler",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Even we can't make out the wandering ghosts. A Silph Scope could show them for what they are."
+       ]
+      }
+     }
+    ],
+    "links": {
+     "4,10": [
+      2,
+      4,
+      10
+     ],
+     "18,10": [
+      0,
+      18,
+      9
+     ]
+    },
+    "moves": {
+     "3,7": {
+      "m": "face",
+      "d": "r"
+     }
+    },
+    "pool": "NO_WILD_INDOORS_PERCENTAGES"
+   },
+   {
+    "art": [
+     "cccccccccccccccccccccccc",
+     "cccccccccccccccccccccccc",
+     "ccccccccc....Ncccccccccc",
+     "ccccccccc.......cccccccc",
+     "ccccccccc...X.....cccccc",
+     "cccc...............ccccc",
+     "ccc...ccccccccccccc.cccc",
+     "ccc...c.............cccc",
+     "cc....c..........c.ccccc",
+     "cccc..c..Xccc...c..ccccc",
+     "cccc1.c...ccc...c.1ccccc",
+     "cccc..c.........c..ccccc",
+     "cc....c.........c..ccccc",
+     "ccc...c...ccccccc.cccccc",
+     "ccc.......X.........cccc",
+     "ccccccc..........ccccccc",
+     "ccccccc..........ccccccc",
+     "cccccccccccccccccccccccc",
+     "cccccccccccccccccccccccc",
+     "cccccccccccccccccccccccc"
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_90.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "ESCAPE ROPE"
+    ],
+    "trainer_spots": [
+     "Hope",
+     "Carly",
+     "Patricia"
+    ],
+    "links": {
+     "4,10": [
+      1,
+      4,
+      10
+     ],
+     "18,10": [
+      3,
+      18,
+      10
+     ]
+    },
+    "moves": {
+     "13,2": {
+      "m": "face",
+      "d": "d"
+     }
+    }
+   },
+   {
+    "art": [
+     "cccccccccccccccccccccccc",
+     "cccccccccccccccccccccccc",
+     "ccccccccc.....cccccccccc",
+     "ccccccc.........cccccccc",
+     "ccccc.....c...cccccccccc",
+     "cccc..ccc.c.cc....cccccc",
+     "ccc.......c.....cc..cccc",
+     "ccc...ccc..cccc..X..cccc",
+     "cccc......c........ccccc",
+     "cccc......c........ccccc",
+     "cccc1..ccc..ccc...1ccccc",
+     "cccc...cN..cN......ccccc",
+     "cc..X..ccc..ccc..ccccccc",
+     "ccc..c.........X....cccc",
+     "ccc...c.cc...cccc...cccc",
+     "cccc.......c.......ccccc",
+     "ccccccccc..Ncc...ccccccc",
+     "ccccccccccc...cccccccccc",
+     "cccccccccccccccccccccccc",
+     "cccccccccccccccccccccccc"
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_91.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "AWAKENING",
+     "ELIXIR",
+     "GREAT BALL"
+    ],
+    "trainer_spots": [
+     "Laurel",
+     "Paula",
+     "Jody"
+    ],
+    "links": {
+     "4,10": [
+      4,
+      4,
+      10
+     ],
+     "18,10": [
+      2,
+      18,
+      10
+     ]
+    },
+    "moves": {
+     "12,11": {
+      "m": "face",
+      "d": "d"
+     },
+     "8,11": {
+      "m": "face",
+      "d": "d"
+     },
+     "11,16": {
+      "m": "face",
+      "d": "d"
+     }
+    }
+   },
+   {
+    "art": [
+     "cccccccccccccccccccccccc",
+     "cccccccccccccccccccccccc",
+     "ccccccccc.....cccccccccc",
+     "ccccccc.........cccccccc",
+     "ccccc..ccccX.ccccccccccc",
+     "cccc..cc.......ccc.ccccc",
+     "ccc.................cccc",
+     "ccc.....ccccc......Xcccc",
+     "cc...ccc....N..ccc.ccccc",
+     "cccc.ccc...N...ccc.ccccc",
+     "cccc1ccc.......ccc1ccccc",
+     "cccc.c.......cc....ccccc",
+     "cc...c.X..ccc........ccc",
+     "ccc..cc..........ccccccc",
+     "ccc..cc.........c...cccc",
+     "cccc..cccc...ccc...ccccc",
+     "ccccccN....X.....ccccccc",
+     "ccccccccc.....cccccccccc",
+     "cccccccccccccccccccccccc",
+     "cccccccccccccccccccccccc"
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_92.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Channeler",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Channeler: Come, child! I have purified this space. Rest here.",
+        "Your Pokémon were rested and look much better!"
+       ],
+       "heal": true
+      }
+     },
+     "CLEANSE TAG",
+     "NUGGET"
+    ],
+    "trainer_spots": [
+     "Ruth",
+     "Tammy",
+     "Karina",
+     "Janae"
+    ],
+    "links": {
+     "4,10": [
+      3,
+      4,
+      10
+     ],
+     "18,10": [
+      5,
+      18,
+      10
+     ]
+    },
+    "moves": {
+     "12,8": {
+      "m": "face",
+      "d": "r"
+     },
+     "6,16": {
+      "m": "face",
+      "d": "d"
+     },
+     "11,9": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "hidden": {
+     "7,3": "BIG_MUSHROOM"
+    }
+   },
+   {
+    "art": [
+     "cccccccccccccccccccccccc",
+     "cccccccccccccccccccccccc",
+     "cccccccccccccccccccccccc",
+     "ccccccc.........cccccccc",
+     "cccccc............cccccc",
+     "ccccc.cccc...cc...cccccc",
+     "ccc......X...cc...Xccccc",
+     "ccc..........cc..ccccccc",
+     "cc...........cc......ccc",
+     "ccccc..c.....cc....ccccc",
+     "ccccc..ccccccX....1ccccc",
+     "cc......ccccc......ccccc",
+     "cc...........cccc.cccccc",
+     "ccccc...ccc....cc..ccccc",
+     "ccc.....ccc..cccc.cccccc",
+     "cccccNccccc..ccN...ccccc",
+     "ccccccccccc1.cc..ccccccc",
+     "ccccccccccc.cccccccccccc",
+     "cccccccccccccccccccccccc",
+     "cccccccccccccccccccccccc"
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_93.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "RARE CANDY",
+     "X ACCURACY"
+    ],
+    "trainer_spots": [
+     "Emilia",
+     "Jennifer",
+     "Angelica"
+    ],
+    "links": {
+     "11,16": [
+      6,
+      11,
+      16
+     ],
+     "18,10": [
+      4,
+      18,
+      10
+     ]
+    },
+    "moves": {
+     "5,15": {
+      "m": "face",
+      "d": "d"
+     },
+     "15,15": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "boss_spot": [
+     11,
+     15
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        12,
+        15
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "tower_ghost_defeated"
+      },
+      "lines": [
+       "A ghost blocks the stairs! You can't make out what it is...",
+       "Get out... Go away..."
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "cccccccccccccccccccccccc",
+     "cccccccccccccccccccccccc",
+     "cccccccccccccccccccccccc",
+     "cccccccccc...ccccccccccc",
+     "cccccccccc.N.ccccccccccc",
+     "ccccccccc.....cccccccccc",
+     "cccccccccX....cccccccccc",
+     "ccccccccc.....cccccccccc",
+     "ccccccccc....Xcccccccccc",
+     "ccccccccc.....cccccccccc",
+     "cccccccccX....cccccccccc",
+     "ccccccccc.....cccccccccc",
+     "cccccccccc...ccccccccccc",
+     "cccccccccc...ccccccccccc",
+     "cccccccccc...ccccccccccc",
+     "ccccccccccc...cccccccccc",
+     "ccccccccccc1..cccccccccc",
+     "ccccccccccc...cccccccccc",
+     "cccccccccccccccccccccccc",
+     "cccccccccccccccccccccccc"
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_94.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
     "people": [
      "MR. FUJI"
     ],
     "trainer_spots": [
      "Jessie and James",
-     "Grunt"
-    ]
+     "Grunt 7F 2",
+     "Grunt 7F 1"
+    ],
+    "links": {
+     "11,16": [
+      5,
+      11,
+      16
+     ]
+    },
+    "moves": {
+     "11,4": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "hidden": {
+     "11,4": "SOOTHE_BELL"
+    }
    }
-  ]
+  ],
+  "theme": "tower",
+  "floor_names": [
+   "1F",
+   "2F",
+   "3F",
+   "4F",
+   "5F",
+   "6F",
+   "7F"
+  ],
+  "figure_floors": {
+   "Hope": 2,
+   "Carly": 2,
+   "Patricia": 2,
+   "ESCAPE ROPE": 2,
+   "Laurel": 3,
+   "Paula": 3,
+   "Jody": 3,
+   "AWAKENING": 3,
+   "ELIXIR": 3,
+   "GREAT BALL": 3,
+   "Ruth": 4,
+   "Tammy": 4,
+   "Karina": 4,
+   "Janae": 4,
+   "CLEANSE TAG": 4,
+   "NUGGET": 4,
+   "Emilia": 5,
+   "Jennifer": 5,
+   "Angelica": 5,
+   "RARE CANDY": 5,
+   "X ACCURACY": 5,
+   "Jessie and James": 6,
+   "Grunt 7F 2": 6,
+   "Grunt 7F 1": 6,
+   "MR. FUJI": 6
+  }
  },
  "ROCKET_HIDEOUT": {
   "floors": [

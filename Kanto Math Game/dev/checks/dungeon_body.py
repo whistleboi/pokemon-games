@@ -360,7 +360,7 @@ check(_p.run.n_floors == 5 and story.story_flags.get("zone_SEAFOAM_ISLANDS") == 
 _p._descend()
 check(story.story_flags.get("zone_SEAFOAM_ISLANDS") == "b1f" and _p._floor_name(1) == "B1F", "down the stairs: B1F's Pokemon")
 _tower = kanto("KANTO_POKEMON_TOWER", came="LAVENDER_TOWN")
-check(_tower.run.n_floors == 4 and "LAVENDER_TOWN" in _tower.run.floor.exits.values(), "the Pokemon Tower: four floors, the way out on 1F")
+check(_tower.run.n_floors == 7 and "LAVENDER_TOWN" in _tower.run.floor.exits.values(), "the Pokemon Tower: FireRed's seven floors (Kanto batch 14), the way out on 1F")
 
 # figures: a legendary doesn't wait for the trainers; story people; the rival on arrival
 for _k in ("POWER_PLANT_boss_defeated",):

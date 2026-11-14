@@ -2905,7 +2905,8 @@
       "area_boss": {
         "id": 10500,
         "victory_flag": "tower_ghost_defeated",
-        "name": "(Ghost)"
+        "name": "(Ghost)",
+        "blocked_lines": ["A ghost blocks the stairs! You can't make out what it is...", "Get out... Go away...", "You'll need a Silph Scope to see it."]
       },
       "alt_forms": {
         "enabled": true,
@@ -2945,7 +2946,7 @@
         },
         {
           "sprite": "rocket_grunt_m.png",
-          "name": "Grunt",
+          "name": "Grunt", "spot_name": "Grunt 7F 1",
           "class": "ROCKET_GRUNT",
           "team": [
             41,
@@ -2955,7 +2956,7 @@
           "rewards": {
             "balls": 3
           },
-          "zone": "floor_4"
+          "zone": "floor_7"
         },
         {
           "sprite": "jessie_james.png",
@@ -2969,10 +2970,29 @@
           "rewards": {
             "balls": 3
           },
-          "zone": "floor_4"
-        }
+          "zone": "floor_7"
+        },
+        {"sprite": "channeler.png", "name": "Patricia", "class": "CHANNELER", "team": [92], "rewards": {"balls": 3}},
+        {"sprite": "channeler.png", "name": "Hope", "class": "CHANNELER", "team": [92], "rewards": {"balls": 3}},
+        {"sprite": "channeler.png", "name": "Jody", "class": "CHANNELER", "team": [92], "rewards": {"balls": 3}},
+        {"sprite": "channeler.png", "name": "Ruth", "class": "CHANNELER", "team": [92], "rewards": {"balls": 3}},
+        {"sprite": "channeler.png", "name": "Tammy", "class": "CHANNELER", "team": [93], "rewards": {"balls": 3}},
+        {"sprite": "channeler.png", "name": "Karina", "class": "CHANNELER", "team": [92], "rewards": {"balls": 3}},
+        {"sprite": "channeler.png", "name": "Janae", "class": "CHANNELER", "team": [92], "rewards": {"balls": 3}},
+        {"sprite": "channeler.png", "name": "Angelica", "class": "CHANNELER", "team": [92, 92, 92], "rewards": {"balls": 3}},
+        {"sprite": "channeler.png", "name": "Jennifer", "class": "CHANNELER", "team": [92], "rewards": {"balls": 3}},
+        {"sprite": "channeler.png", "name": "Emilia", "class": "CHANNELER", "team": [92], "rewards": {"balls": 3}},
+        {"sprite": "rocket_grunt_m.png", "name": "Grunt", "spot_name": "Grunt 7F 2", "class": "ROCKET_GRUNT", "team": [109, 96], "rewards": {"balls": 3}}
       ],
-      "route_menu": [{"text": "GHOST", "action": "EVENT", "zone": "floor_3", "condition": ["not:has_item:SILPH_SCOPE", "not:tower_ghost_defeated"], "event": {"lines": ["A ghost blocks the stairs! You can't make out what it is...", "Get out... Go away...", "You'll need a Silph Scope to see it."]}}, {"text": "MR. FUJI", "action": "EVENT", "zone": "floor_4", "condition": "tower_ghost_defeated", "flag_condition": "not fuji_rescued", "event": {"lines": ["Mr. Fuji: You came all this way to rescue me? Thank you, young trainer.", "Team Rocket wanted the Pokemon here... but you've sent them running.", "Please, come and see me at my house in Lavender Town."], "flag": "fuji_rescued"}}, 
+      "route_menu": [{"text": "ESCAPE ROPE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_escrope_ptower", "event": {"lines": ["An Escape Rope, left by a grave."], "gift_item": {"ESCAPE_ROPE": 1}, "flag": "got_escrope_ptower"}},
+        {"text": "ELIXIR", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_elixir_ptower", "event": {"lines": ["An Elixir, set down as an offering."], "gift_item": {"ELIXIR": 1}, "flag": "got_elixir_ptower"}},
+        {"text": "AWAKENING", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_awakening_ptower", "event": {"lines": ["An Awakening, by a gravestone."], "gift_item": {"AWAKENING": 1}, "flag": "got_awakening_ptower"}},
+        {"text": "GREAT BALL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_greatball_ptower", "event": {"lines": ["A Great Ball, left behind."], "gift_item": {"GREAT_BALL": 1}, "flag": "got_greatball_ptower"}},
+        {"text": "NUGGET", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_nugget_ptower", "event": {"lines": ["A Nugget! Someone's offering, long forgotten."], "gift_item": {"NUGGET": 1}, "flag": "got_nugget_ptower"}},
+        {"text": "CLEANSE TAG", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_cleansetag_ptower", "event": {"lines": ["A Cleanse Tag! Held by your lead Pokémon, it keeps wild Pokémon away."], "gift_item": {"CLEANSE_TAG": 1}, "flag": "got_cleansetag_ptower"}},
+        {"text": "RARE CANDY", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_rarecandy_ptower", "event": {"lines": ["A Rare Candy!"], "gift_item": {"RARE_CANDY": 1}, "flag": "got_rarecandy_ptower"}},
+        {"text": "X ACCURACY", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_xaccuracy_ptower", "event": {"lines": ["An X Accuracy, by the wall."], "gift_item": {"X_ACCURACY": 1}, "flag": "got_xaccuracy_ptower"}},
+        {"text": "GHOST", "action": "EVENT", "zone": "floor_6", "not_on_map": true, "condition": ["not:has_item:SILPH_SCOPE", "not:tower_ghost_defeated"], "event": {"lines": ["A ghost blocks the stairs! You can't make out what it is...", "Get out... Go away...", "You'll need a Silph Scope to see it."]}}, {"text": "MR. FUJI", "action": "EVENT", "zone": "floor_7", "condition": "tower_ghost_defeated", "flag_condition": "not fuji_rescued", "event": {"lines": ["Mr. Fuji: You came all this way to rescue me? Thank you, young trainer.", "Team Rocket wanted the Pokemon here... but you've sent them running.", "Please, come and see me at my house in Lavender Town."], "flag": "fuji_rescued"}}, 
         {
           "text": "CATCH WILD PKMN",
           "action": "CATCH",
@@ -3002,7 +3022,7 @@
           "condition": ["boss_available", "has_item:SILPH_SCOPE"],
           "has_SILPH_SCOPE": true,
           "color": "GOLD",
-          "zone": "floor_3"
+          "zone": "floor_6"
         },
         {
           "text": "EXIT TOWER",
@@ -3094,7 +3114,7 @@
         {
           "key": "floor_4",
           "name": "4F"
-        }
+        }, {"key": "floor_5", "name": "5F"}, {"key": "floor_6", "name": "6F"}, {"key": "floor_7", "name": "7F"}
       ],
       "zones_linear": true,
       "zone_moods": [

@@ -1027,6 +1027,39 @@ for _k, _v in _gcs.items():
     if _v is not None:
         story.story_flags[_k] = _v
 
+# ---- batch 14: the Pokemon Tower, FireRed's seven floors
+_tf = ("tower_ghost_defeated", "fuji_rescued", "defeated_rival_tower")
+_tfs = {k: story.story_flags.pop(k, None) for k in _tf}
+story.story_flags["defeated_rival_tower"] = True   # (the rival's battle on the way in: not what this checks)
+_scope = story.inventory.pop("SILPH_SCOPE", None)
+pt = open_map("KANTO_POKEMON_TOWER", "LAVENDER_TOWN")
+check(pt.run.n_floors == 7 and pt.run.index == 0, f"Pokémon Tower: FireRed's seven floors, in at 1F ({pt.run.n_floors})")
+_n = []
+for _i in range(7):
+    _floor(pt, _i)
+    _n.append(sum(1 for m in pt.run.floor.movers if m.kind == "trainer"))
+check(_n[2:] == [3, 3, 4, 3, 3], f"...FireRed's trainers on 3F-7F: three, three, four, three, three ({_n})")
+_floor(pt, 5)
+_quiet(pt)
+check(pt.run.floor.exits.get((11, 15)) == "BOSS", "...6F: the ghost stands across the way to 7F's stairs")
+pt.run.player = (11, 14); pt.anim = 0; said.clear()
+pt.step(0, 1); play(lambda: g.current_state._ready(), 300)
+check(tuple(pt.run.player) == (11, 14) and any("Silph Scope" in s for s in said), f"...without the Silph Scope: it won't let you by ({said[:3]})")
+pt.run.player = (12, 14); pt.anim = 0
+pt.step(0, 1); play(lambda: g.current_state._ready(), 300)
+check(tuple(pt.run.player) == (12, 14), f"...nor past it ({pt.run.player})")
+story.story_flags["tower_ghost_defeated"] = True
+pt = open_map("KANTO_POKEMON_TOWER", "LAVENDER_TOWN"); _floor(pt, 5); _quiet(pt); frames(2)
+check(pt.run.floor.exits.get((11, 15)) != "BOSS", "...laid to rest: the way is clear")
+_floor(pt, 6)
+check(_figure(pt, "MR. FUJI") == (11, 4), f"...7F: Mr. Fuji where FireRed has him ({_figure(pt, 'MR. FUJI')})")
+for _k, _v in _tfs.items():
+    story.story_flags.pop(_k, None)
+    if _v is not None:
+        story.story_flags[_k] = _v
+if _scope is not None:
+    story.inventory["SILPH_SCOPE"] = _scope
+
 print(f"##### {len(fails)} failures")
 for m in fails:
     print("   FAIL " + m)
