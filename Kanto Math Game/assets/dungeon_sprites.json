@@ -107,10 +107,10 @@
       "sheet": "fr_60.png"
     },
     "KANTO_ROUTE_16:GATE GUARD": {
-      "sheet": "NPC 01.png"
+      "sheet": "fr_60.png"
     },
     "KANTO_ROUTE_18:GATE GUARD": {
-      "sheet": "NPC 01.png"
+      "sheet": "fr_60.png"
     },
     "KANTO_ROUTE_2:FOREST GUIDE": {
       "sheet": "fr_18.png"
@@ -143,10 +143,10 @@
       "sheet": "fr_57.png"
     },
     "KANTO_ROUTE_16:CYCLIST": {
-      "sheet": "NPC 25.png"
+      "sheet": "fr_32.png"
     },
     "KANTO_ROUTE_16:A QUIET HOUSE": {
-      "sheet": "NPC 23.png"
+      "sheet": "fr_23.png"
     },
     "SAFARI_ZONE:SAFARI RANGER": {
       "sheet": "fr_55.png"
@@ -4299,6 +4299,21 @@
     },
     "SAFARI_ZONE:MAX POTION ": {
       "item": "POKE_BALL"
+    },
+    "KANTO_ROUTE_16:Fearow": {
+      "sheet": "fr_133.png"
+    },
+    "KANTO_ROUTE_16:Boy": {
+      "sheet": "fr_16.png"
+    },
+    "KANTO_ROUTE_16:OAK'S AIDE": {
+      "sheet": "fr_55.png"
+    },
+    "KANTO_ROUTE_16:Girl": {
+      "sheet": "fr_17.png"
+    },
+    "KANTO_ROUTE_18:Trader": {
+      "sheet": "fr_19.png"
     }
   },
   "townsperson": "NPC 17.png",

@@ -344,7 +344,7 @@ def with_rooms(m):
         return m
     floors = [dict(f) for f in m["floors"]] if m.get("floors") else [
         {k: m[k] for k in ("art", "exits", "signs", "people", "trainer_spots", "links", "overheads", "parts", "boss_spot", "inside", "stops",
-                           "barred", "moves", "scenes", "berry_soil", "sign_scenes", "edge_to", "dive", "surface", "pool", "hidden") if k in m}]   # (the map's own floor keeps everything of its own: who's in the way, how people move)
+                           "barred", "moves", "scenes", "berry_soil", "sign_scenes", "edge_to", "dive", "surface", "pool", "hidden", "cycling", "downhill") if k in m}]   # (the map's own floor keeps everything of its own: who's in the way, how people move)
     n0 = len(floors)
     names = list(m.get("floor_names") or [""] * n0)
     where, doors = {}, {}

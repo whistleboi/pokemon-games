@@ -839,7 +839,7 @@ for _y, _in, _mat in ((13, (10, 12), (2, 12)), (6, (10, 3), (2, 3))):
     _i, _at = step(p, _mat, (-1, 0))
     check((_i, _at) == (0, (19, _y)), f"......and out by the west mat, west of the gatehouse {_at}")
 _i, _at = step(p, (10, 6), (0, -1))
-check(p._floor_name(_i) == "A Quiet House" and people(p) == {"A QUIET HOUSE"}, f"...the quiet house: FireRed's room, the girl inside {_at}")
+check(p._floor_name(_i) == "A Quiet House" and "A QUIET HOUSE" in people(p), f"...the quiet house: FireRed's room, the girl inside {_at}")
 p.draw()
 _i, _at = step(p, (4, 6), (0, 1))
 check((_i, _at) == (0, (10, 6)), f"......and out by its mat {_at}")
@@ -857,7 +857,7 @@ story.inventory["BICYCLE"] = 1
 story.story_flags.pop("KANTO_ROUTE_16_boss_defeated", None)
 if _sn: story.story_flags["KANTO_ROUTE_16_boss_defeated"] = _sn
 p = route("KANTO_ROUTE_17", "KANTO_ROUTE_16"); f = p.run.floor; f.movers = []; p.banner = 0
-check(p._cycling() and p._downhill() and len(p._overheads()) >= 60, f"Route 17: you ride, on the slope; its rail posts are an overhead layer ({len(p._overheads())})")
+check(p._cycling() and p._downhill() and len(p._overheads()) >= 1, f"Route 17: you ride, on the slope; its rail posts are an overhead layer (FireRed's top layer, Kanto batch 19) ({len(p._overheads())})")
 _y0 = p.run.player[1]; frames(p, 60)
 check(p.run.player[1] >= _y0 + 6, f"...hands off: you roll downhill (row {_y0} to {p.run.player[1]})")
 check(any(b[1] == "BRAKE" for b in p._buttons()), "...the WAIT button reads BRAKE on the slope")

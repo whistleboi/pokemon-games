@@ -1118,6 +1118,24 @@ _rf = sz.recipe["art"]["room_floors"]
 _floor(sz, _rf["secret"])
 check(_figure(sz, "SECRET HOUSE MAN") == (6, 5), "...out west, FireRed's Secret House")
 
+# ---- batch 19: Routes 18, 17 (Cycling Road) and 16
+r16 = open_map("KANTO_ROUTE_16", "CELADON_CITY")
+_sn16 = story.story_flags.pop("KANTO_ROUTE_16_boss_defeated", None)
+r16 = open_map("KANTO_ROUTE_16", "CELADON_CITY")
+check(r16.run.floor.exits.get((31, 13)) == "BOSS", "Route 16: Snorlax asleep where FireRed has him")
+_rf = r16.recipe["art"]["room_floors"]
+_floor(r16, _rf["gate_2"])
+check(_figure(r16, "OAK'S AIDE") == (10, 6), "...the Cycling Road gate's upstairs: Oak's aide (FireRed's Amulet Coin for forty kinds)")
+if _sn16 is not None:
+    story.story_flags["KANTO_ROUTE_16_boss_defeated"] = _sn16
+r18 = open_map("KANTO_ROUTE_18", "FUCHSIA_CITY")
+_rf = r18.recipe["art"]["room_floors"]
+_floor(r18, _rf["gate_2"])
+check(_figure(r18, "Trader") == (5, 3), "Route 18: upstairs in the gate, FireRed's trader (his Lickitung for a Golduck)")
+r17 = open_map("KANTO_ROUTE_17", "KANTO_ROUTE_16")
+check(set(r17.run.floor.exits.values()) <= {"KANTO_ROUTE_16", "KANTO_ROUTE_18"} and r17._here_art().get("downhill") == [0, 158],
+      "Cycling Road: FireRed's road, downhill all the way")
+
 print(f"##### {len(fails)} failures")
 for m in fails:
     print("   FAIL " + m)

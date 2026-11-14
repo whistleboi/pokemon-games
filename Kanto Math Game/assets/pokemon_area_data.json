@@ -2410,7 +2410,8 @@
         { "sprite": "biker.png", "name": "Hideo", "class": "BIKER", "team": [110], "levels": [33], "rewards": { "balls": 3 } },
         { "sprite": "cueball.png", "name": "Koji", "class": "CUE_BALL", "team": [66, 56, 66], "levels": [28, 28, 28], "rewards": { "balls": 3 } }
       ],
-      "route_menu": [{"text": "GATE GUARD", "action": "EVENT", "event": {"lines": ["Guard: The Cycling Road is downhill all the way. Bicycles only!"]}}, {"text": "CYCLIST", "action": "EVENT", "event": {"lines": ["Cyclist: No Bicycle? The Bike Shop is in Cerulean City."]}}, {"text": "A QUIET HOUSE", "action": "EVENT", "door": "flyhouse", "event": {"lines": ["Girl: Oh! You found my secret hideaway. Not many people come by here.", "Here, take this HM. Fly takes you to any town you've been to, in a flash!"], "gift_item": {"HM_FLY": 1}, "flag": "got_hm_fly_kanto", "done": ["Girl: Have fun flying around Kanto! Visit any town you've seen before."]}}, 
+      "route_menu": [{"text": "OAK'S AIDE", "action": "EVENT", "door": "gate_2", "color": "GOLD", "event": {"requires": ["caught_kanto:40"], "fail": ["Aide: Hi! I'm one of Professor Oak's aides.", "Aide: Catch forty kinds of Pokémon and I've got a reward for you from the Professor!"], "lines": ["Aide: Hi! I'm one of Professor Oak's aides.", "Aide: Forty kinds! Wow! Here, this is from the Professor: an Amulet Coin.", "Battles pay double when your team carries it!"], "gift_item": {"AMULET_COIN": 1}, "flag": "got_amulet_coin_kanto", "done": ["Aide: With the Amulet Coin, your battles pay out twice as much. Spend it well!"]}},
+        {"text": "GATE GUARD", "action": "EVENT", "event": {"lines": ["Guard: The Cycling Road is downhill all the way. Bicycles only!"]}}, {"text": "CYCLIST", "action": "EVENT", "event": {"lines": ["Cyclist: No Bicycle? The Bike Shop is in Cerulean City."]}}, {"text": "A QUIET HOUSE", "action": "EVENT", "door": "flyhouse", "event": {"lines": ["Girl: Oh! You found my secret hideaway. Not many people come by here.", "Here, take this HM. Fly takes you to any town you've been to, in a flash!"], "gift_item": {"HM_FLY": 1}, "flag": "got_hm_fly_kanto", "done": ["Girl: Have fun flying around Kanto! Visit any town you've seen before."]}}, 
         {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
         {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN"},
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
@@ -2468,7 +2469,8 @@
         { "sprite": "birdkeeper.png", "name": "Jacob", "class": "BIRD_KEEPER", "team": [21, 21, 22, 21], "levels": [26, 26, 26, 26], "rewards": { "balls": 3 } },
         { "sprite": "birdkeeper.png", "name": "Ramiro", "class": "BIRD_KEEPER", "team": [85], "levels": [34], "rewards": { "balls": 3 } }
       ],
-      "route_menu": [{"text": "GATE GUARD", "action": "EVENT", "event": {"lines": ["Guard: Riding up the Cycling Road is hard work. Take it slow!"]}}, 
+      "route_menu": [{"text": "Trader", "action": "EVENT", "door": "gate_2", "color": "GOLD", "flag_condition": "not route18_lickitung_trade", "event": {"requires": ["party_has:55"], "fail": ["Man: I'm looking for a Golduck. Got one? I'll trade you my Lickitung for it!"], "lines": ["Man: A Golduck! Will you trade it for my Lickitung? Thanks a lot!"], "trade": {"want": 55, "give": 108}, "flag": "route18_lickitung_trade"}},
+        {"text": "GATE GUARD", "action": "EVENT", "event": {"lines": ["Guard: Riding up the Cycling Road is hard work. Take it slow!"]}}, 
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },

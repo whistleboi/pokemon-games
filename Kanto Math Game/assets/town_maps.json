@@ -18598,68 +18598,53 @@
  },
  "KANTO_ROUTE_16": {
   "art": [
-   "~~TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "~~TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "~~TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "~.TTTTTTT.....TTTTTTGGGGGGGGTTTTTTTTTTTTTTTTTTTT",
-   "~kkkkkkkkHHHHHkkkkkkGGGGGGGGkkkkkkkkkkkkkkTTTTTT",
-   "~k.======HDHHH======GGGGGGGG==X==\"\"\"\"\"\"\"\"\"TTTTTT",
-   "~k.=================DGGGGGGD=====\"\"\"\"\"\"\"\"\"TTTTTT",
-   "~k.=================GGGGGGGG=====\"\"\"\"\"\"\"\"\"TTTTTT",
-   "~k.==============...GGGGGGGG..============TTTTTT",
-   "~k..................GGGGGGGG..============TTTTTT",
-   "~kkkkkkkkkkkkkkkkkkkGGGGGGGGkk============TTTTTT",
-   "~k..................GGGGGGGG.kkkk!kkkkkkk2TTTTTT",
-   "~k.===..X.==X===X===GGGGGGGG==TTT..............>",
-   "~k.===....==========DGGGGGGD==.................>",
-   "~k.===X...X===X=====GGGGGGGG==TTT..............>",
-   "~k.===....=====kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk",
-   "~k.===....=====kTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "~k.===!========kTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "~k.============kTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "~kvvvvvvvvvvvvvkTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT"
+   "oocccccccccccccccccccccccccccccccccccccccccccccc",
+   "oocccccccccccccccccccccccccccccccccccccccccccccc",
+   "oocccccccccccccccccccccccccccccccccccccccccccccc",
+   "o.cccccccccccccccccccccccccccccccccccccccccccccc",
+   "occcccccccAccccccccccccccccccccccccccccccccccccc",
+   "oc.......cDccc.......cccccc...X..\"\"\"\"\"\"\"\"\"cccccc",
+   "oc..................DBccccCD.....\"\"\"\"\"\"\"\"\"cccccc",
+   "oc...................cccccc......\"\"\"\"\"\"\"\"\"cccccc",
+   "oc...................cccccc...............cccccc",
+   "oc...................cccccc...............cccccc",
+   "occccccccccccccccccccccccccccc............cccccc",
+   "oc...................cccccc..cccc!ccccccc2cccccc",
+   "oc......X...X...X....cccccc...ccc..............>",
+   "oc..................DEccccFD...................>",
+   "oc....X...X...X......cccccc...ccc..............>",
+   "oc.............ccccccccccccccccccccccccccccccccc",
+   "oc.............ccccccccccccccccccccccccccccccccc",
+   "oc....!........ccccccccccccccccccccccccccccccccc",
+   "oc.............ccccccccccccccccccccccccccccccccc",
+   ".cvvvvvvvvvvvvvccccccccccccccccccccccccccccccccc"
   ],
   "exits": {
-   ">": "CELADON_CITY",
-   "v": "KANTO_ROUTE_17"
+   "v": "KANTO_ROUTE_17",
+   ">": "CELADON_CITY"
   },
   "buildings": {
-   "G": "gate",
-   "H": "flyhouse"
+   "A": "flyhouse",
+   "B": "gate",
+   "C": "gate",
+   "E": "gate",
+   "F": "gate"
   },
   "roofs": {
-   "G": [
-    172,
-    189,
-    205
-   ],
-   "H": [
-    115,
-    189,
-    246
-   ]
-  },
-  "overheads": [
-   {
-    "kind": "tops",
-    "rect": [
-     9,
-     3,
-     5,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     115,
-     189,
-     246
+   "_picture": {
+    "f": "fr_ground/3_34.png",
+    "at": [
+     0,
+     0
     ]
-   }
-  ],
+   },
+   "_signs_in_picture": true,
+   "_buildings_in_picture": true
+  },
   "signs": [
    [
-    "CYCLING ROAD",
-    "Enjoy the slope!"
+    "Enjoy the slope!",
+    "CYCLING ROAD"
    ],
    [
     "ROUTE 16",
@@ -18675,11 +18660,120 @@
    "Hideo",
    "Koji"
   ],
+  "inside": {
+   "10,5": "flyhouse",
+   "20,6": "gate",
+   "27,6": "gate",
+   "20,13": "gate",
+   "27,13": "gate"
+  },
+  "edge_to": {
+   "2,19": [
+    2,
+    0
+   ],
+   "3,19": [
+    3,
+    0
+   ],
+   "4,19": [
+    4,
+    0
+   ],
+   "5,19": [
+    5,
+    0
+   ],
+   "6,19": [
+    6,
+    0
+   ],
+   "7,19": [
+    7,
+    0
+   ],
+   "8,19": [
+    8,
+    0
+   ],
+   "9,19": [
+    9,
+    0
+   ],
+   "10,19": [
+    10,
+    0
+   ],
+   "11,19": [
+    11,
+    0
+   ],
+   "12,19": [
+    12,
+    0
+   ],
+   "13,19": [
+    13,
+    0
+   ],
+   "14,19": [
+    14,
+    0
+   ],
+   "47,12": [
+    0,
+    22
+   ],
+   "47,13": [
+    0,
+    23
+   ],
+   "47,14": [
+    0,
+    24
+   ]
+  },
+  "moves": {
+   "30,5": {
+    "m": "face",
+    "d": "d",
+    "s": 1
+   },
+   "8,12": {
+    "m": "look",
+    "d": "udlr",
+    "s": 1
+   },
+   "12,12": {
+    "m": "look",
+    "d": "udlr",
+    "s": 1
+   },
+   "16,12": {
+    "m": "look",
+    "d": "udlr",
+    "s": 1
+   },
+   "6,14": {
+    "m": "look",
+    "d": "udlr",
+    "s": 1
+   },
+   "10,14": {
+    "m": "look",
+    "d": "udlr",
+    "s": 1
+   },
+   "14,14": {
+    "m": "look",
+    "d": "udlr",
+    "s": 1
+   }
+  },
   "boss_spot": [
    31,
    13
   ],
-  "parts": true,
   "cycling": [
    0,
    10,
@@ -18688,16 +18782,15 @@
   ],
   "rooms": {
    "flyhouse": {
-    "theme": "room",
     "art": [
      "ccccccccccc",
      "ccccccccccc",
      "....N......",
-     "...======..",
-     "...==mm==..",
-     "...==mm==..",
-     "...======..",
-     "z...v.....z",
+     ".........N.",
+     ".....cc....",
+     ".....cc....",
+     "...........",
+     "c..vvv....c",
      "ccccccccccc"
     ],
     "exits": {
@@ -18705,92 +18798,46 @@
     },
     "buildings": {},
     "roofs": {
-     "_floor": [
-      166,
-      165,
-      140
-     ],
-     "_wall": [
-      172,
-      197,
-      180
-     ],
-     "_things": {
-      "5,4": [
-       213,
-       197,
-       106
-      ],
-      "6,4": [
-       213,
-       197,
-       106
-      ],
-      "5,5": [
-       213,
-       197,
-       106
-      ],
-      "6,5": [
-       213,
-       197,
-       106
+     "_picture": {
+      "f": "fr_ground/25_0.png",
+      "at": [
+       0,
+       0
       ]
      },
-     "_kinds": {
-      "5,4": "table",
-      "6,4": "table",
-      "5,5": "table",
-      "6,5": "table"
-     },
-     "_mat": true,
-     "_fittings": [
-      {
-       "kind": "stool",
-       "rect": [
-        4,
-        4,
-        1,
-        1
-       ]
-      },
-      {
-       "kind": "stool",
-       "rect": [
-        4,
-        5,
-        1,
-        1
-       ]
-      },
-      {
-       "kind": "stool",
-       "rect": [
-        7,
-        4,
-        1,
-        1
-       ]
-      },
-      {
-       "kind": "stool",
-       "rect": [
-        7,
-        5,
-        1,
-        1
-       ]
-      }
-     ],
-     "_rug": [
-      90,
-      123,
-      180
-     ]
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
     },
     "people": [
-     "A QUIET HOUSE"
+     "A QUIET HOUSE",
+     {
+      "text": "Fearow",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "FEAROW: Kyueen!"
+       ]
+      }
+     }
     ],
+    "moves": {
+     "9,3": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     },
+     "4,2": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     }
+    },
     "land": {
      "10,5": [
       10,
@@ -18803,221 +18850,81 @@
       6
      ]
     },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/25_0.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       11,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
     "title": "A Quiet House"
    },
    "gate": {
-    "theme": "room",
     "art": [
      "ccccccccccccc",
      "ccccccccccccc",
-     "c.=========.c",
-     "c<=========>c",
-     "c.=====N===.c",
+     "c...........c",
+     "c<.........>c",
+     "c......N....c",
      "c...........c",
      "ccccccccccccc",
      "ccccccccccccc",
-     "c.....N.....c",
-     "cmmmmmmmmmmmc",
+     "ccccccNcccccc",
+     "ccmmmmmmmmmcc",
      "c...........c",
-     "c.=========.c",
-     "cv=========^c",
-     "c.=========.c",
      "c...........c",
-     "cmmmmmmm..mmc",
-     "c......m..ccc",
-     "c......m..mmc"
+     "c^.........vc",
+     "c...........c",
+     "c...........c",
+     "ccmmmmmc..ccc",
+     "cccccccm.nccc",
+     "cccccccm..ccc"
     ],
     "exits": {
      "<": "OUT:20,6",
      ">": "OUT:27,6",
-     "v": "OUT:20,13",
-     "^": "OUT:27,13"
+     "^": "OUT:20,13",
+     "v": "OUT:27,13",
+     "n": "ROOM:gate_2"
     },
     "buildings": {},
     "roofs": {
-     "_floor": [
-      184,
-      180,
-      135
-     ],
-     "_wall": [
-      213,
-      222,
-      197
-     ],
-     "_things": {
-      "1,9": [
-       246,
-       238,
-       189
-      ],
-      "2,9": [
-       246,
-       238,
-       189
-      ],
-      "3,9": [
-       246,
-       238,
-       189
-      ],
-      "4,9": [
-       246,
-       238,
-       189
-      ],
-      "5,9": [
-       246,
-       238,
-       189
-      ],
-      "6,9": [
-       246,
-       238,
-       189
-      ],
-      "7,9": [
-       246,
-       238,
-       189
-      ],
-      "8,9": [
-       246,
-       238,
-       189
-      ],
-      "9,9": [
-       246,
-       238,
-       189
-      ],
-      "10,9": [
-       246,
-       238,
-       189
-      ],
-      "11,9": [
-       246,
-       238,
-       189
-      ],
-      "1,15": [
-       246,
-       238,
-       189
-      ],
-      "2,15": [
-       246,
-       238,
-       189
-      ],
-      "3,15": [
-       246,
-       238,
-       189
-      ],
-      "4,15": [
-       246,
-       238,
-       189
-      ],
-      "5,15": [
-       246,
-       238,
-       189
-      ],
-      "6,15": [
-       246,
-       238,
-       189
-      ],
-      "7,15": [
-       246,
-       238,
-       189
-      ],
-      "10,15": [
-       180,
-       180,
-       164
-      ],
-      "11,15": [
-       255,
-       255,
-       255
-      ],
-      "7,16": [
-       246,
-       238,
-       189
-      ],
-      "7,17": [
-       131,
-       131,
-       131
-      ],
-      "10,17": [
-       180,
-       180,
-       164
-      ],
-      "11,17": [
-       180,
-       180,
-       164
-      ],
-      "10,16": [
-       255,
-       255,
-       255
-      ],
-      "11,16": [
-       255,
-       255,
-       255
+     "_picture": {
+      "f": "fr_ground/25_1.png",
+      "at": [
+       0,
+       0
       ]
      },
-     "_stairs": {
-      "10,16": "flight",
-      "11,16": "flight"
-     },
-     "_kinds": {
-      "1,9": "table",
-      "2,9": "table",
-      "3,9": "table",
-      "4,9": "table",
-      "5,9": "table",
-      "6,9": "table",
-      "7,9": "table",
-      "8,9": "table",
-      "9,9": "table",
-      "10,9": "table",
-      "11,9": "table",
-      "1,15": "table",
-      "2,15": "table",
-      "3,15": "table",
-      "4,15": "table",
-      "5,15": "table",
-      "6,15": "table",
-      "7,15": "table",
-      "10,15": "table",
-      "11,15": "table",
-      "7,16": "table",
-      "7,17": "table",
-      "10,17": "table",
-      "11,17": "table"
-     },
-     "_mat": true,
-     "_rug": [
-      115,
-      156,
-      180
-     ]
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
     },
     "people": [
      "CYCLIST",
      "GATE GUARD"
     ],
+    "moves": {
+     "6,8": {
+      "m": "face",
+      "d": "d"
+     },
+     "7,4": {
+      "m": "wander",
+      "d": "lr",
+      "r": [
+       1,
+       0
+      ]
+     }
+    },
     "land": {
      "20,6": [
       19,
@@ -19054,180 +18961,303 @@
       12
      ]
     },
-    "title": "Cycling Road Gate",
-    "parts": true
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/25_1.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       13,
+       18
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Cycling Road Gate"
+   },
+   "gate_2": {
+    "art": [
+     "ccccccccccccc",
+     "cccc!ccc!cccc",
+     "cc.........cc",
+     "c.....N.....c",
+     "c...........c",
+     "c..cc...cc..c",
+     "c..cc...ccN.c",
+     "c...........c",
+     "c...N...cc..c",
+     "c.......ccv.c",
+     "cc......cc..c"
+    ],
+    "exits": {
+     "v": "ROOM:gate"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/25_2.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Boy",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I'm on a relaxing ride on my new bike with my girlfriend."
+       ]
+      }
+     },
+     "OAK'S AIDE",
+     {
+      "text": "Girl",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "We're going riding together on our new bikes!"
+       ]
+      }
+     }
+    ],
+    "signs": [
+     [
+      "Through the binoculars... It's Celadon's Dept. Store, way over there!"
+     ],
+     [
+      "Through the binoculars... There's a long path along the sea. That's Cycling Road!"
+     ]
+    ],
+    "moves": {
+     "6,3": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     },
+     "4,8": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     },
+     "10,6": {
+      "m": "face",
+      "d": "l"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/25_2.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       13,
+       11
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Cycling Road Gate 2F"
    }
   },
-  "inside": {
-   "10,5": "flyhouse",
-   "20,6": "gate",
-   "27,6": "gate",
-   "20,13": "gate",
-   "27,13": "gate"
-  }
+  "parts": true,
+  "hidden": {
+   "31,13": "LEFTOVERS"
+  },
+  "overheads": [
+   {
+    "kind": "picture",
+    "f": "fr_top/3_34.png",
+    "at": [
+     0,
+     0
+    ],
+    "size": [
+     48,
+     20
+    ]
+   }
+  ]
  },
  "KANTO_ROUTE_17": {
   "art": [
-   "~k^^^^^^^^^^^^^kTTTTTTTT",
-   "~k.eee....eee..kTTTTTTTT",
-   "~k.eee....eee..k.~~~~~~~",
-   "~k.eee....eee..k.~~~~~~~",
-   "~k.eee....eee..k.~~~~~~~",
-   "~k.eee....eee..k.~~~~~~~",
-   "~k.eee....eee..k.~~~~~~~",
-   "~k.eeeddddeee..k.~~~~~~~",
-   "~k.eeeddddeee..k.......~",
-   "~k.eeeddddeee..kkkkkkkk~",
-   "~k.eeeddddeee.........k~",
-   "~k.eeeddddeee..\"\"\"\"\"\".k~",
-   "~k.eeeddddeee..\"\"\"\"\"\".k~",
-   "~k.eeeddddeee..\"\"\"\"\"\".k~",
-   "~k.eeeddddeee..\"\"\"\"\"\".k~",
-   "~k.eee....eXe..\"\"\"\"\"\".k~",
-   "~k.eee....eee..\"\"\"\"\"\".k~",
-   "~k.eee....eee..\"\"\"\"\"\".k~",
-   "~k.eXe....eee..\"\"\"\"\"\".k~",
-   "~k.eee....eee..\"\"\"\"\"\".k~",
-   "~k.eee....eee..\"\"\"\"\"\".k~",
-   "~k.eee....eee..\"\"\"\"\"\".k~",
-   "~k.eee....eee.........k~",
-   "~k.eee....eee.dddd....k~",
-   "~k.eee....eee.dXddddd.k~",
-   "~k.eee....eee.ddddddd.k~",
-   "~k.eee....eee.ddddddd.k~",
-   "~k.eee....eee....dddd.k~",
-   "~k.eee....eee.........k~",
-   "~k.eee....eee.........k~",
-   "~k.eee....eeeooooee...k~",
-   "~k.eee....eeeooooeee..k~",
-   "~k.eee....eeeooooeee..k~",
-   "~k.eee....eeeooooeee..k~",
-   "~k.eee....eeeooooeee..k~",
-   "~k.eee....eeeooooeee..k~",
-   "~k.eee....eeeooooeee..k~",
-   "~k.eee....eeeooooeee..k~",
-   "~k.eee.X..eeeooooeee..k~",
-   "~k.eee....eeeooooeee..k~",
-   "~k.eee....eeeooooeee..k~",
-   "~k.eee....eeeooooeXe..k~",
-   "~k.eee.....eeooooeee..k~",
-   "~k.eee.......ooooeee..k~",
-   "~k.eeeoooo===ooooeee..k~",
-   "~k.eeeoooo===ooooeee..k~",
-   "~k.eeeoooo===ooooeee..k~",
-   "~k.eeeoooo===ooooeee..k~",
-   "~k.eeeoooo===ooooeee..k~",
-   "~k.eeeoooo===ooooeee..k~",
-   "~k.eeeoooo===ooooeee..k~",
-   "~k.eeeoooo===ooooeee..k~",
-   "~k.eeeoooo===ooooeee..k~",
-   "~k.eeeoooo==!ooooeee..k~",
-   "~k.eeeoooo===ooooeee..k~",
-   "~k.eeeoooo===ooooeee..k~",
-   "~k.eeeoooo===ooooeee..k~",
-   "~k.eeeoooo===ooooeee..k~",
-   "~k.eeeoooo===ooooeee..k~",
-   "~k.eeeoooo===ooooeee..k~",
-   "~k.eeeoooo===ooooeee..k~",
-   "~kXeeeoooo===ooooeee.Xk~",
-   "~k.eeeoooo===ooooeee..k~",
-   "~k.eeeoooo===ooooeee..k~",
-   "~k.eeeoooo===ooooeee..k~",
-   "~k.eeeoooo===ooooeee..k~",
-   "~k.eeeoooo===ooooeee..k~",
-   "~k.eeeoooo===ooooeee..k~",
-   "~k.eeeoooo==!ooooeee..k~",
-   "~k.eeeoooo===ooooeee..k~",
-   "~k.eeeoooo===ooooeee..k~",
-   "~k.eeeoooo===ooooeee..k~",
-   "~k.eeeoooo===ooooeee..k~",
-   "~k.eeeoooo===ooooeee..k~",
-   "~k.eeeoooo===ooooeee..k~",
-   "~k.eeeoooo===ooooeee..k~",
-   "~k.eeeoooo===ooooeee..k~",
-   "~k.eeeoooo===ooooeee..k~",
-   "~k.eeeoooo===ooooeee..k~",
-   "~k.eeeoooo===ooooeee..k~",
-   "~k.eeeoooo===ooooeee..k~",
-   "~k.eeeoooo===ooooeee..k~",
-   "~k.eeeoooo===ooooeee..k~",
-   "~k.eeeoooo==!ooooeee..k~",
-   "~k.eeeoooo===ooooeee..k~",
-   "~k.eeeoooo===ooooeee..k~",
-   "~k.eeeoooo===ooooeee..k~",
-   "~k.eeeoooo===ooooeee..k~",
-   "~k.eeeoooo===ooooeee..k~",
-   "~k.eeeoooo===ooooeee..k~",
-   "~k.eeeoooo===ooooeee..k~",
-   "~k.eeeoooo===ooooeee..k~",
-   "~k.eeeoooo===ooooeee..k~",
-   "~k.eeeoooo===ooooeee..k~",
-   "~k.eee....===ooooeXe..k~",
-   "~k.eee..=====ooooeee..k~",
-   "~k.eee..=====ooooeee..k~",
-   "~k.eee..====!ooooeee..k~",
-   "~k.eee..oooooooooeee..k~",
-   "~k.eee..oooooooooeee..k~",
-   "~k.eee..oooooooooeee..k~",
-   "~k.eee..oooooooooeee..k~",
-   "~k.eee..oooooooooeee..k~",
-   "~k.eee..oooooooooeee..k~",
-   "~k.eee..oooooooooeee..k~",
-   "~k.eee..oooooooooeee..k~",
-   "~k.eee..oooooooooeee..k~",
-   "~k.eee..oooooooooeee..k~",
-   "~k.eee..oooooooooeee..k~",
-   "~k.eee..oooooooooeee..k~",
-   "~k.eee..oooooooooeee..k~",
-   "~k.eee..oooooooooeee..k~",
-   "~k.eee..oooooooooeee..k~",
-   "~k.eee..oooooooooeee..k~",
-   "~k.eee..oooooooooeee..k~",
-   "~k.eee..oooooooooeee..k~",
-   "~k.eXe..oooooooooeee..k~",
-   "~k.eee..oooooooooeee..k~",
-   "~k.eee..oooooooooeee..k~",
-   "~k.eee..oooooooooeee..k~",
-   "~k.eee..oooooooooeee..k~",
-   "~k.eee..oooooooooeee..k~",
-   "~k.eee...........eee..k~",
-   "~k.eee...........eee..k~",
-   "~k.eee...........eee..k~",
-   "~k.eee......!....eee..k~",
-   "~k.eee..oooooooooeee..k~",
-   "~k.eee..oooooooooeee..k~",
-   "~k.eee..oooooooooeee..k~",
-   "~k.eee..oooooooooeee..k~",
-   "~k.eee..oooooooooeee..k~",
-   "~k.eee..oooooooooeee..k~",
-   "~k.eee..oooooooooeee..k~",
-   "~k.eee...........eee..k~",
-   "~k.eee..........Xeee..k~",
-   "~k.eee...........eee..k~",
-   "~k..ee............ee..k~",
-   "~kkkkkkk...kkk...kkkkkk~",
-   "~~~~~~~kee....ee.k~~~~~~",
-   "~qq~~~~keee...eeek~~qq~~",
-   "~~qq~~~keee...eeek~qq~~~",
-   "~~qq~~~keeedddeeek~qq~~~",
-   "~~~qq~~keeedddeeek~qq~~~",
-   "~~~qq~~keeedddeeek~qq~~~",
-   "~~~qq~~keeedddeeek~qq~~~",
-   "~~~qq~~keeedddeeek~qqqq~",
-   "~~qq~~~keeedddeeek~~~qq~",
-   "~~qq~~~keeedddeeek~~~qq~",
-   "~qq~~~~keeedddeeek~~~qq~",
-   "~qq~~~~keeedddeeek~~qq~~",
-   "~qq~~~~keeedddeeek~~qq~~",
-   "~qq~~~~keeedddeeek~~~qq~",
-   "~~qq~~~keeedddeeek~qqqq~",
-   "~~qq~~~keee...eeek~qq~~~",
-   "~~qq~~~keee...eeek~~qq~~",
-   "~~qq~~~keee...eeek~~qq~~",
-   "~~~qq~~keee...eeek~~qq~~",
-   "~~~qq~~k.ee!...eek~~qq~~",
-   "~~~~qq~k____.____k~qq~~~",
-   "~~~~qq~kvvvvvvvvvk~qq~~~"
+   "cc^^^^^^^^^^^^^ccccccccc",
+   "cc.............ccccccccc",
+   "cc.............ccccccccc",
+   "cc.............ccccccccc",
+   "cc.............ccccccccc",
+   "cc.............ccccccccc",
+   "cc.............ccccccccc",
+   "cc.............ccccccccc",
+   "cc.............ccccccccc",
+   "cc.............ccccccccc",
+   "cc....................cc",
+   "cc.............\"\"\"\"\"\".cc",
+   "cc.............\"\"\"\"\"\".cc",
+   "cc.............\"\"\"\"\"\".cc",
+   "cc.............\"\"\"\"\"\".cc",
+   "cc.........X...\"\"\"\"\"\".cc",
+   "cc.............\"\"\"\"\"\".cc",
+   "cc.............\"\"\"\"\"\".cc",
+   "cc..X..........\"\"\"\"\"\".cc",
+   "cc.............\"\"\"\"\"\".cc",
+   "cc.............\"\"\"\"\"\".cc",
+   "cc.............\"\"\"\"\"\".cc",
+   "cc....................cc",
+   "cc....................cc",
+   "cc.............X......cc",
+   "cc....................cc",
+   "cc....................cc",
+   "cc....................cc",
+   "cc....................cc",
+   "cc....................cc",
+   "cc...........oooo.....cc",
+   "cc...........oooo.....cc",
+   "cc...........oooo.....cc",
+   "cc...........oooo.....cc",
+   "cc...........oooo.....cc",
+   "cc...........oooo.....cc",
+   "cc...........oooo.....cc",
+   "cc...........oooo.....cc",
+   "cc.....X.....oooo.....cc",
+   "cc...........oooo.....cc",
+   "cc...........oooo.....cc",
+   "cc...........oooo.X...cc",
+   "cc...........oooo.....cc",
+   "cc...........oooo.....cc",
+   "cc....oooo...oooo.....cc",
+   "cc....oooo...oooo.....cc",
+   "cc....oooo...oooo.....cc",
+   "cc....oooo...oooo.....cc",
+   "cc....oooo...oooo.....cc",
+   "cc....oooo...oooo.....cc",
+   "cc....oooo...oooo.....cc",
+   "cc....oooo...oooo.....cc",
+   "cc....oooo...oooo.....cc",
+   "cc....oooo..!oooo.....cc",
+   "cc....oooo...oooo.....cc",
+   "cc....oooo...oooo.....cc",
+   "cc....oooo...oooo.....cc",
+   "cc....oooo...oooo.....cc",
+   "cc....oooo...oooo.....cc",
+   "cc....oooo...oooo.....cc",
+   "cc....oooo...oooo.....cc",
+   "ccX...oooo...oooo....Xcc",
+   "cc....oooo...oooo.....cc",
+   "cc....oooo...oooo.....cc",
+   "cc....oooo...oooo.....cc",
+   "cc....oooo...oooo.....cc",
+   "cc....oooo...oooo.....cc",
+   "cc....oooo...oooo.....cc",
+   "cc....oooo..!oooo.....cc",
+   "cc....oooo...oooo.....cc",
+   "cc....oooo...oooo.....cc",
+   "cc....oooo...oooo.....cc",
+   "cc....oooo...oooo.....cc",
+   "cc....oooo...oooo.....cc",
+   "cc....oooo...oooo.....cc",
+   "cc....oooo...oooo.....cc",
+   "cc....oooo...oooo.....cc",
+   "cc....oooo...oooo.....cc",
+   "cc....oooo...oooo.....cc",
+   "cc....oooo...oooo.....cc",
+   "cc....oooo...oooo.....cc",
+   "cc....oooo...oooo.....cc",
+   "cc....oooo...oooo.....cc",
+   "cc....oooo..!oooo.....cc",
+   "cc....oooo...oooo.....cc",
+   "cc....oooo...oooo.....cc",
+   "cc....oooo...oooo.....cc",
+   "cc....oooo...oooo.....cc",
+   "cc....oooo...oooo.....cc",
+   "cc....oooo...oooo.....cc",
+   "cc....oooo...oooo.....cc",
+   "cc....oooo...oooo.....cc",
+   "cc....oooo...oooo.....cc",
+   "cc....oooo...oooo.....cc",
+   "cc...........oooo.X...cc",
+   "cc...........oooo.....cc",
+   "cc...........oooo.....cc",
+   "cc..........!oooo.....cc",
+   "cc......ooooooooo.....cc",
+   "cc......ooooooooo.....cc",
+   "cc......ooooooooo.....cc",
+   "cc......ooooooooo.....cc",
+   "cc......ooooooooo.....cc",
+   "cc......ooooooooo.....cc",
+   "cc......ooooooooo.....cc",
+   "cc......ooooooooo.....cc",
+   "cc......ooooooooo.....cc",
+   "cc......ooooooooo.....cc",
+   "cc......ooooooooo.....cc",
+   "cc......ooooooooo.....cc",
+   "cc......ooooooooo.....cc",
+   "cc......ooooooooo.....cc",
+   "cc......ooooooooo.....cc",
+   "cc......ooooooooo.....cc",
+   "cc......ooooooooo.....cc",
+   "cc......ooooooooo.....cc",
+   "cc..X...ooooooooo.....cc",
+   "cc......ooooooooo.....cc",
+   "cc......ooooooooo.....cc",
+   "cc......ooooooooo.....cc",
+   "cc......ooooooooo.....cc",
+   "cc......ooooooooo.....cc",
+   "cc....................cc",
+   "cc....................cc",
+   "cc....................cc",
+   "cc..........!.........cc",
+   "cc......ooooooooo.....cc",
+   "cc......ooooooooo.....cc",
+   "cc......ooooooooo.....cc",
+   "cc......ooooooooo.....cc",
+   "cc......ooooooooo.....cc",
+   "cc......ooooooooo.....cc",
+   "cc......ooooooooo.....cc",
+   "cc....................cc",
+   "cc..............X.....cc",
+   "cc....................cc",
+   "cc....................cc",
+   "cccccccc...ccc...ccccccc",
+   "c~~ccccc.........ccc~~~c",
+   "c~~ccccc.........ccc~~cc",
+   "cc~~cccc.........cc~~ccc",
+   "cc~~cccc.........cc~~ccc",
+   "ccc~~ccc.........cc~~ccc",
+   "ccc~~ccc.........cc~~ccc",
+   "ccc~~ccc.........cc~~ccc",
+   "ccc~~ccc.........cc~~~~c",
+   "cc~~cccc.........cccc~~c",
+   "cc~~cccc.........cccc~~c",
+   "c~~ccccc.........cccc~~c",
+   "c~~ccccc.........ccc~~cc",
+   "c~~ccccc.........ccc~~cc",
+   "c~~ccccc.........cccc~~c",
+   "cc~~cccc.........cc~~~~c",
+   "cc~~cccc.........cc~~ccc",
+   "cc~~cccc.........ccc~~cc",
+   "cc~~cccc.........ccc~~cc",
+   "ccc~~ccc.........ccc~~cc",
+   "ccc~~ccc...!.....ccc~~cc",
+   "cccc~~cc____.____cc~~ccc",
+   "cccc~~ccvvvvvvvvvcc~~ccc"
   ],
   "exits": {
    "^": "KANTO_ROUTE_16",
@@ -19235,887 +19265,24 @@
   },
   "buildings": {},
   "roofs": {
-   "_rocks": "big"
+   "_picture": {
+    "f": "fr_ground/3_35.png",
+    "at": [
+     0,
+     0
+    ]
+   },
+   "_signs_in_picture": true,
+   "_buildings_in_picture": true
   },
-  "overheads": [
-   {
-    "kind": "tops",
-    "rect": [
-     2,
-     1,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "left"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     14,
-     1,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "right"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     2,
-     3,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "left"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     2,
-     6,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "left"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     14,
-     6,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "right"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     2,
-     8,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "left"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     2,
-     11,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "left"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     21,
-     11,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "right"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     2,
-     13,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "left"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     2,
-     16,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "left"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     21,
-     16,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "right"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     2,
-     18,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "left"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     2,
-     21,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "left"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     21,
-     21,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "right"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     2,
-     23,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "left"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     2,
-     26,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "left"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     21,
-     26,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "right"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     2,
-     28,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "left"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     2,
-     31,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "left"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     21,
-     31,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "right"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     2,
-     33,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "left"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     2,
-     36,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "left"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     21,
-     36,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "right"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     2,
-     38,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "left"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     2,
-     41,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "left"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     21,
-     41,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "right"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     2,
-     43,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "left"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     2,
-     46,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "left"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     21,
-     46,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "right"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     2,
-     48,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "left"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     2,
-     51,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "left"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     21,
-     51,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "right"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     2,
-     53,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "left"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     2,
-     56,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "left"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     21,
-     56,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "right"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     2,
-     58,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "left"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     2,
-     63,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "left"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     2,
-     66,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "left"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     21,
-     66,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "right"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     2,
-     68,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "left"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     2,
-     71,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "left"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     21,
-     71,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "right"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     2,
-     73,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "left"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     2,
-     76,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "left"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     21,
-     76,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "right"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     2,
-     78,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "left"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     2,
-     81,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "left"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     21,
-     81,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "right"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     2,
-     83,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "left"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     2,
-     86,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "left"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     21,
-     86,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "right"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     2,
-     88,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "left"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     2,
-     91,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "left"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     21,
-     91,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "right"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     2,
-     93,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "left"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     2,
-     96,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "left"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     21,
-     96,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "right"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     2,
-     98,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "left"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     2,
-     101,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "left"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     21,
-     101,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "right"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     2,
-     103,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "left"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     2,
-     106,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "left"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     21,
-     106,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "right"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     2,
-     108,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "left"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     2,
-     111,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "left"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     21,
-     111,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "right"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     2,
-     113,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "left"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     2,
-     116,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "left"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     21,
-     116,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "right"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     2,
-     118,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "left"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     2,
-     121,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "left"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     21,
-     121,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "right"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     2,
-     123,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "left"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     2,
-     126,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "left"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     21,
-     126,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "right"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     2,
-     128,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "left"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     2,
-     131,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "left"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     21,
-     131,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "right"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     2,
-     133,
-     1,
-     1
-    ],
-    "of": "post",
-    "side": "left"
-   }
-  ],
   "signs": [
    [
     "NOTICE",
-    "Watch out for discarded items."
+    "Watch out for discarded items!"
    ],
    [
     "TRAINER TIPS",
-    "All Pokemon are unique. Even two of the same kind and level grow at different rates."
+    "All Pokémon are unique. Even two of the same kind and level grow at different rates."
    ],
    [
     "TRAINER TIPS",
@@ -20127,7 +19294,7 @@
    ],
    [
     "NOTICE",
-    "Don't throw the game, throw Poke Balls instead!"
+    "Don't throw the game, throw Poké Balls instead!"
    ],
    [
     "CYCLING ROAD",
@@ -20146,62 +19313,246 @@
    "Jaxon",
    "William"
   ],
+  "edge_to": {
+   "2,0": [
+    2,
+    19
+   ],
+   "3,0": [
+    3,
+    19
+   ],
+   "4,0": [
+    4,
+    19
+   ],
+   "5,0": [
+    5,
+    19
+   ],
+   "6,0": [
+    6,
+    19
+   ],
+   "7,0": [
+    7,
+    19
+   ],
+   "8,0": [
+    8,
+    19
+   ],
+   "9,0": [
+    9,
+    19
+   ],
+   "10,0": [
+    10,
+    19
+   ],
+   "11,0": [
+    11,
+    19
+   ],
+   "12,0": [
+    12,
+    19
+   ],
+   "13,0": [
+    13,
+    19
+   ],
+   "14,0": [
+    14,
+    19
+   ],
+   "8,159": [
+    8,
+    0
+   ],
+   "9,159": [
+    9,
+    0
+   ],
+   "10,159": [
+    10,
+    0
+   ],
+   "11,159": [
+    11,
+    0
+   ],
+   "12,159": [
+    12,
+    0
+   ],
+   "13,159": [
+    13,
+    0
+   ],
+   "14,159": [
+    14,
+    0
+   ],
+   "15,159": [
+    15,
+    0
+   ],
+   "16,159": [
+    16,
+    0
+   ]
+  },
+  "moves": {
+   "11,15": {
+    "m": "wander",
+    "d": "ud",
+    "r": [
+     0,
+     5
+    ],
+    "s": 1
+   },
+   "4,18": {
+    "m": "wander",
+    "d": "ud",
+    "r": [
+     0,
+     6
+    ],
+    "s": 1
+   },
+   "15,24": {
+    "m": "wander",
+    "d": "udlr",
+    "r": [
+     4,
+     2
+    ],
+    "s": 1
+   },
+   "7,38": {
+    "m": "look",
+    "d": "lr",
+    "s": 5
+   },
+   "18,41": {
+    "m": "wander",
+    "d": "ud",
+    "r": [
+     0,
+     5
+    ],
+    "s": 1
+   },
+   "2,61": {
+    "m": "face",
+    "d": "r",
+    "s": 4
+   },
+   "21,61": {
+    "m": "face",
+    "d": "l",
+    "s": 3
+   },
+   "18,94": {
+    "m": "wander",
+    "d": "ud",
+    "r": [
+     0,
+     5
+    ],
+    "s": 1
+   },
+   "4,116": {
+    "m": "wander",
+    "d": "ud",
+    "r": [
+     0,
+     5
+    ],
+    "s": 1
+   },
+   "16,134": {
+    "m": "wander",
+    "d": "udlr",
+    "r": [
+     8,
+     1
+    ],
+    "s": 1
+   }
+  },
   "cycling": true,
   "downhill": [
    0,
    158
+  ],
+  "hidden": {
+   "18,83": "RARE_CANDY",
+   "10,53": "FULL_RESTORE",
+   "4,68": "PP_UP",
+   "4,125": "MAX_REVIVE",
+   "14,157": "MAX_ELIXIR"
+  },
+  "parts": true,
+  "overheads": [
+   {
+    "kind": "picture",
+    "f": "fr_top/3_35.png",
+    "at": [
+     0,
+     0
+    ],
+    "size": [
+     24,
+     160
+    ]
+   }
   ]
  },
  "KANTO_ROUTE_18": {
   "art": [
-   "~~~~~q~k^^^^^^^^^k~q~~~~~~~~~~~~kTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "~~~~~q~k.f.....f.k~qqq~~~~~~~~~~kTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "~~~qqookf.......fkooqq~~~~~~~~~~kTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "~~~qqook.f.....f.kooooqqqq~~qqq~kTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "~~qqoookf.......fkooooqqqqqqqqq~kTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "~~qqoook.f.....f.kooooooooqqooookTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "~qqooookf.......fkooooooooooooookTTTTTTTTGGGGGGGGTTTTkTTTTTT",
-   "~qqooook.=======................kkkkk!kkkGGGGGGGG...!kkkkkkk",
-   "~~qqoook=================================GGGGGGGG==========>",
-   "~~qqoook=================================DGGGGGGD==========>",
-   "~~qqoook=================================GGGGGGGG==========>",
-   "~~qqoooooooooooooooooooooooooooooooooo##########..kkkkkkkkkk",
-   "~~qqoooooooooooooooooooooooooooooooqqo#X..........TTTTTTTTTT",
-   "~~qqoooooooooooooooooooooooooooooooqqo#.\"\"\"\"\"\"....TTTTTTTTTT",
-   "~~~~qqoooooqqqqooooooooooooooooooooooo#.\"\"\"\"\"\"X#TTTTTTTTTTTT",
-   "~~~~qqqqoooqqqqoooooooooqqqqooqqqqooq~#.\"X\"\"\"\".kTTTTTTTTTTTT",
-   "~~~~~~qqqqqqooooooqqqqqqqqqqqqqqqqqqq~#.\"\"\"\"\"\".kTTTTTTTTTTTT",
-   "~~~~~~~~qqqqqqqqqqqqqqqq~~~~qq~~~~qq~~#........kTTTTTTTTTTTT",
-   "~~~~~~~~~~~~qqqqqq~~~~~~~~~~~~~~~~~qq~##########~~~~~~TTTTTT",
-   "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~qq~~~~~~~~~~~~~~~~~TTTTTT"
+   "....o~~c^^^^^^^^^c~~oo..oooooooocccccccccccccccccccccccccccc",
+   "ooooo~~c.........c~~~~oooooooooocccccccccccccccccccccccccccc",
+   "ooo~~ooc.........coo~~oooooooooocccccccccccccccccccccccccccc",
+   "ooo~~ooc.........coooo~~~~oo~~~~cccccccccccccccccccccccccccc",
+   "oo~~oooc.........coooo~~~~~~~~~~cccccccccccccccccccccccccccc",
+   "oo~~oooc.........coooooooo~~oooocccccccccccccccccccccccccccc",
+   "o~~ooooc.........coooooooooooooocccccccccccccccccccccccccccc",
+   "o~~ooooc........................ccccc!ccc.cccccc....!ccccccc",
+   "oo~~oooc..................................cccccc...........>",
+   "oo~~oooc.................................DAccccBD..........>",
+   "oo~~oooc..................................cccccc...........>",
+   "oo~~oooooooooooooooooooooooooooooooooocccccccccc..cccccccccc",
+   "oo~~ooooooooooooooooooooooooooooooo~~ocX..........cccccccccc",
+   "oo~~ooooooooooooooooooooooooooooooo~~oc.\"\"\"\"\"\"....cccccccccc",
+   "oooo~~ooooo~~~~oooooooooooooooooooooooc.\"\"\"\"\"\"Xccccccccccccc",
+   "oooo~~~~ooo~~~~ooooooooo~~~~oo~~~~oo~~c.\"X\"\"\"\".ccccccccccccc",
+   "oooooo~~~~~~oooooo~~~~~~~~~~~~~~~~~~~~c.\"\"\"\"\"\".ccccccccccccc",
+   "oooooooo~~~~~~~~~~~~~~~~oooo~~oooo~~ccc........ccccccccccccc",
+   "oooooooooooo~~~~~~ooooooooooooooooo~~ccccccccccccccccccccccc",
+   "ooooooooooooooooooooooooooooooooooo~~ccccccccccccccccccccccc"
   ],
   "exits": {
    "^": "KANTO_ROUTE_17",
    ">": "FUCHSIA_CITY"
   },
   "buildings": {
-   "G": "gate"
+   "A": "gate",
+   "B": "gate"
   },
   "roofs": {
-   "G": [
-    172,
-    189,
-    205
-   ],
-   "_rocks": "big"
+   "_picture": {
+    "f": "fr_ground/3_36.png",
+    "at": [
+     0,
+     0
+    ]
+   },
+   "_signs_in_picture": true,
+   "_buildings_in_picture": true
   },
-  "overheads": [
-   {
-    "kind": "tops",
-    "rect": [
-     48,
-     13,
-     2,
-     1
-    ],
-    "of": "tree"
-   }
-  ],
   "signs": [
    [
     "CYCLING ROAD",
@@ -20217,7 +19568,77 @@
    "Jacob",
    "Ramiro"
   ],
-  "parts": true,
+  "inside": {
+   "41,9": "gate",
+   "48,9": "gate"
+  },
+  "edge_to": {
+   "8,0": [
+    8,
+    159
+   ],
+   "9,0": [
+    9,
+    159
+   ],
+   "10,0": [
+    10,
+    159
+   ],
+   "11,0": [
+    11,
+    159
+   ],
+   "12,0": [
+    12,
+    159
+   ],
+   "13,0": [
+    13,
+    159
+   ],
+   "14,0": [
+    14,
+    159
+   ],
+   "15,0": [
+    15,
+    159
+   ],
+   "16,0": [
+    16,
+    159
+   ],
+   "59,8": [
+    0,
+    18
+   ],
+   "59,9": [
+    0,
+    19
+   ],
+   "59,10": [
+    0,
+    20
+   ]
+  },
+  "moves": {
+   "39,12": {
+    "m": "face",
+    "d": "r",
+    "s": 6
+   },
+   "46,14": {
+    "m": "face",
+    "d": "l",
+    "s": 4
+   },
+   "41,15": {
+    "m": "look",
+    "d": "udlr",
+    "s": 1
+   }
+  },
   "cycling": [
    0,
    0,
@@ -20226,197 +19647,46 @@
   ],
   "rooms": {
    "gate": {
-    "theme": "room",
     "art": [
      "ccccccccccccc",
      "ccccccccccccc",
-     "cz....N....zc",
-     "c.mmmmmmmmm.c",
+     "ccccccNcccccc",
+     "c.cmmmmmmmc.c",
      "c...........c",
-     "c.=========.c",
-     "c<=========>c",
-     "c.=========.c",
      "c...........c",
-     "cmmmmmmm..mmc",
-     "c......m..ccc",
-     "c......m..mmc"
+     "c<.........>c",
+     "c...........c",
+     "c...........c",
+     "ccmmmmmc..ccc",
+     "cccccccm.vccc",
+     "cccccccm..ccc"
     ],
     "exits": {
      "<": "OUT:41,9",
-     ">": "OUT:48,9"
+     ">": "OUT:48,9",
+     "v": "ROOM:gate_2"
     },
     "buildings": {},
     "roofs": {
-     "_floor": [
-      191,
-      183,
-      129
-     ],
-     "_wall": [
-      213,
-      222,
-      197
-     ],
-     "_things": {
-      "2,3": [
-       246,
-       238,
-       189
-      ],
-      "3,3": [
-       246,
-       238,
-       189
-      ],
-      "4,3": [
-       246,
-       238,
-       189
-      ],
-      "5,3": [
-       246,
-       238,
-       189
-      ],
-      "6,3": [
-       246,
-       238,
-       189
-      ],
-      "7,3": [
-       246,
-       238,
-       189
-      ],
-      "8,3": [
-       246,
-       238,
-       189
-      ],
-      "9,3": [
-       246,
-       238,
-       189
-      ],
-      "10,3": [
-       246,
-       238,
-       189
-      ],
-      "1,9": [
-       246,
-       238,
-       189
-      ],
-      "2,9": [
-       246,
-       238,
-       189
-      ],
-      "3,9": [
-       246,
-       238,
-       189
-      ],
-      "4,9": [
-       246,
-       238,
-       189
-      ],
-      "5,9": [
-       246,
-       238,
-       189
-      ],
-      "6,9": [
-       246,
-       238,
-       189
-      ],
-      "7,9": [
-       246,
-       238,
-       189
-      ],
-      "10,9": [
-       180,
-       180,
-       164
-      ],
-      "11,9": [
-       255,
-       255,
-       255
-      ],
-      "7,10": [
-       246,
-       238,
-       189
-      ],
-      "7,11": [
-       131,
-       131,
-       131
-      ],
-      "10,11": [
-       180,
-       180,
-       164
-      ],
-      "11,11": [
-       180,
-       180,
-       164
-      ],
-      "10,10": [
-       255,
-       255,
-       255
-      ],
-      "11,10": [
-       255,
-       255,
-       255
+     "_picture": {
+      "f": "fr_ground/26_0.png",
+      "at": [
+       0,
+       0
       ]
      },
-     "_stairs": {
-      "10,10": "flight",
-      "11,10": "flight"
-     },
-     "_kinds": {
-      "2,3": "table",
-      "3,3": "table",
-      "4,3": "table",
-      "5,3": "table",
-      "6,3": "table",
-      "7,3": "table",
-      "8,3": "table",
-      "9,3": "table",
-      "10,3": "table",
-      "1,9": "table",
-      "2,9": "table",
-      "3,9": "table",
-      "4,9": "table",
-      "5,9": "table",
-      "6,9": "table",
-      "7,9": "table",
-      "10,9": "table",
-      "11,9": "table",
-      "7,10": "table",
-      "7,11": "table",
-      "10,11": "table",
-      "11,11": "table"
-     },
-     "_mat": true,
-     "_rug": [
-      115,
-      156,
-      180
-     ]
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
     },
     "people": [
      "GATE GUARD"
     ],
+    "moves": {
+     "6,2": {
+      "m": "face",
+      "d": "d"
+     }
+    },
     "land": {
      "41,9": [
       40,
@@ -20437,14 +19707,102 @@
       6
      ]
     },
-    "title": "Cycling Road Gate",
-    "parts": true
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/26_0.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       13,
+       12
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Cycling Road Gate"
+   },
+   "gate_2": {
+    "art": [
+     "ccccccccccccc",
+     "cccc!ccc!cccc",
+     "cc.........cc",
+     "c....N......c",
+     "c...........c",
+     "c..cc...cc..c",
+     "c..cc...cc..c",
+     "c...........c",
+     "c.......cc..c",
+     "c.......ccv.c",
+     "cc......cc..c"
+    ],
+    "exits": {
+     "v": "ROOM:gate"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/26_1.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Trader"
+    ],
+    "signs": [
+     [
+      "Through the binoculars... Pallet Town is that way. It's a long way off!"
+     ],
+     [
+      "Through the binoculars... There are people swimming far out at sea!"
+     ]
+    ],
+    "moves": {
+     "5,3": {
+      "m": "face",
+      "d": "l"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/26_1.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       13,
+       11
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Cycling Road Gate 2F"
    }
   },
-  "inside": {
-   "41,9": "gate",
-   "48,9": "gate"
-  }
+  "parts": true,
+  "overheads": [
+   {
+    "kind": "picture",
+    "f": "fr_top/3_36.png",
+    "at": [
+     0,
+     0
+    ],
+    "size": [
+     60,
+     20
+    ]
+   }
+  ]
  },
  "FUCHSIA_CITY": {
   "art": [
