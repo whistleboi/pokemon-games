@@ -3648,6 +3648,123 @@
     },
     "VERMILLION_CITY:Pidgey": {
       "sheet": "fr_116.png"
+    },
+    "KANTO_SS_ANNE:Sailor": {
+      "sheet": "fr_62.png"
+    },
+    "KANTO_SS_ANNE:Waiter": {
+      "sheet": "fr_47.png"
+    },
+    "KANTO_SS_ANNE:Passenger": {
+      "sheet": "fr_18.png"
+    },
+    "KANTO_SS_ANNE:Seasick man": {
+      "sheet": "fr_30.png"
+    },
+    "KANTO_SS_ANNE:Deckhand": {
+      "sheet": "fr_62.png"
+    },
+    "KANTO_SS_ANNE:Chef  ": {
+      "sheet": "fr_59.png"
+    },
+    "KANTO_SS_ANNE:Chef": {
+      "sheet": "fr_59.png"
+    },
+    "KANTO_SS_ANNE:Cook": {
+      "sheet": "fr_59.png"
+    },
+    "KANTO_SS_ANNE:Chef ": {
+      "sheet": "fr_59.png"
+    },
+    "KANTO_SS_ANNE:Cook ": {
+      "sheet": "fr_59.png"
+    },
+    "KANTO_SS_ANNE:Head chef": {
+      "sheet": "fr_59.png"
+    },
+    "KANTO_SS_ANNE:Cook  ": {
+      "sheet": "fr_59.png"
+    },
+    "KANTO_SS_ANNE:GREAT BALL": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_SS_ANNE:Agent": {
+      "sheet": "fr_61.png"
+    },
+    "KANTO_SS_ANNE:Mother": {
+      "sheet": "fr_28.png"
+    },
+    "KANTO_SS_ANNE:TM43": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_SS_ANNE:Wigglytuff": {
+      "sheet": "fr_131.png"
+    },
+    "KANTO_SS_ANNE:Gentleman": {
+      "sheet": "fr_61.png"
+    },
+    "KANTO_SS_ANNE:Lady": {
+      "sheet": "fr_17.png"
+    },
+    "KANTO_SS_ANNE:Girl": {
+      "sheet": "fr_23.png"
+    },
+    "KANTO_SS_ANNE:Kind lady": {
+      "sheet": "fr_28.png"
+    },
+    "KANTO_SS_ANNE:STARDUST": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_SS_ANNE:Old man": {
+      "sheet": "fr_32.png"
+    },
+    "KANTO_SS_ANNE:X ATTACK": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_SS_ANNE:Boy": {
+      "sheet": "fr_31.png"
+    },
+    "KANTO_SS_ANNE:CAPTAIN": {
+      "sheet": "fr_63.png"
+    },
+    "KANTO_SS_ANNE:TM21": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_SS_ANNE:ETHER": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_SS_ANNE:SUPER POTION": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_SS_ANNE:Machoke": {
+      "sheet": "fr_134.png"
+    },
+    "KANTO_SS_ANNE:Trainer": {
+      "sheet": "fr_19.png"
+    },
+    "VERMILLION_CITY:Orange Islands Ferry": {
+      "sheet": "fr_62.png"
+    },
+    "VERMILLION_CITY:S.S. Aqua to Olivine": {
+      "sheet": "fr_62.png"
+    },
+    "VERMILLION_CITY:S.S. Anne to the Orange Islands": {
+      "sheet": "fr_62.png"
+    },
+    "VERMILLION_CITY:Seagallop to One Island": {
+      "sheet": "fr_62.png"
+    },
+    "VERMILLION_CITY:Seagallop to Four Island": {
+      "sheet": "fr_62.png"
+    },
+    "VERMILLION_CITY:S.S. Aqua": {
+      "sheet": "fr_62.png"
+    },
+    "VERMILLION_CITY:S.S. Anne": {
+      "sheet": "fr_62.png"
+    },
+    "VERMILLION_CITY:Dock sailor": {
+      "sheet": "fr_62.png"
     }
   },
   "townsperson": "NPC 17.png",

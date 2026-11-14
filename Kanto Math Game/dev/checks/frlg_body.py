@@ -726,9 +726,13 @@ g.walk_town_room = None
 
 p = route("KANTO_SS_ANNE", "VERMILLION_CITY")
 f = p.run.floor
-check(p.run.n_floors == 7 and (f.w, f.h) == (31, 21) and p.run.index == 0 and p.run.player[1] <= 4 and 17 <= p.run.player[0] <= 21,
-      f"the S.S. Anne: FireRed's seven floors; up the gangway onto 1F {tuple(p.run.player)}")
-check([f.decor.get((x, 10)) for x in (5, 8, 11, 14, 17, 20)] == [f"door:cabin{k}" for k in range(6)], "...1F's corridor: six cabin doors, our six cabins in order")
+# (11-14, Jordan: "S S Anne looks like FRLG": FireRed's whole ship: five decks, and every cabin, the kitchen and the
+# Captain's office as rooms, their trainers in them; our cabin system is gone from the map)
+_rf = p.recipe["art"].get("room_floors") or {}
+check(p.recipe["art"].get("outdoor_floors") == 5 and (f.w, f.h) == (31, 21) and p.run.index == 0 and p.run.player[1] <= 4 and 17 <= p.run.player[0] <= 21
+      and {"kitchen", "captain", "c1_1", "c2_1", "c3_1"} <= set(_rf),
+      f"the S.S. Anne: FireRed's five decks with its cabins, kitchen and Captain's office as rooms; up the gangway onto 1F {tuple(p.run.player)}")
+check(all(str(f.exits.get((x, 10), "")).startswith("WARP:") for x in (5, 8, 11, 14, 17, 23)), "...1F's corridor: FireRed's cabin doors")
 f.movers = []
 p.run.player = (4, 8); p.anim = 0; p.sliding = None
 _ev = p.run.step(-1, 0); p._handle(_ev)

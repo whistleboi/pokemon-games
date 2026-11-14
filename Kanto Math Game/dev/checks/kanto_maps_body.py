@@ -696,6 +696,75 @@ _pp = {o.get("text"): p for p, o in ve._people().items()}
 check(_pp.get("Gentleman Tucker") == (7, 8) and _pp.get("Gym") == (5, 2), f"...Gentleman Tucker (FireRed's) by the door, Lt. Surge beyond ({_pp})")
 story.badges["KANTO"] = []
 
+# ---- batch 7: the S.S. Anne (FireRed's whole ship, Jordan 11-14) and Vermilion's harbour
+story.badges["KANTO"] = ["BOULDER", "CASCADE"]
+for _k in ("ss_anne_departed", "got_hm_cut_kanto", "ss_anne_cleared"):
+    story.story_flags.pop(_k, None)
+story.inventory.pop("SS_TICKET", None); story.inventory.pop("HM_CUT", None)
+ve = open_map("VERMILLION_CITY", "KANTO_ROUTE_6")
+ve.player = (23, 33); ve.anim = 0
+walk(ve, "d")
+ve = g.current_state
+_pic = json.dumps(ve.town_map["rooms"]["harbor"]["roofs"]["_picture"])
+check(ve.room == "harbor" and "1_4_ship" in _pic and "ss_anne_departed" in _pic, f"Vermilion Harbor: FireRed's dock, the S.S. Anne moored at the pier ({ve.room})")
+_gang = next(xy for xy, v in ve.exits.items() if v == "KANTO_SS_ANNE")
+ve.player = (_gang[0], _gang[1] - 1); ve.anim = 0
+walk(ve, "d")
+check(g.current_state is ve and ve.room == "harbor", f"...no boarding without the S.S. Ticket ({ve.toast!r})")
+story.inventory["SS_TICKET"] = 1
+ve.player = (_gang[0], _gang[1] - 1); ve.anim = 0
+walk(ve, "d")
+play(lambda: isinstance(g.current_state, PlayState), 600)
+an = g.current_state
+check(isinstance(an, PlayState) and story.current_area_key == "KANTO_SS_ANNE" and an.run.index == 0, f"...with it, up the gangway onto the ship's 1F ({story.current_area_key})")
+_rf = an.recipe["art"]["room_floors"]
+
+
+def _floor(st, i):
+    while len(st.run.floors) <= i:
+        st.run.enter_floor(len(st.run.floors))
+    st.run.enter_floor(i); frames(2)
+    return st
+
+
+def _trainers(st):
+    return {st.area_data["trainer_pool"][m.payload[0]]["name"]: (m.x, m.y) for m in st.run.floor.movers if m.kind == "trainer"}
+
+
+_floor(an, _rf["c1_2"])
+_t = _trainers(an)
+check(_t.get("Lass Ann") == (5, 3) and _t.get("Youngster Tyler") == (0, 4), f"...a 1F cabin: Lass Ann (the data's) and Youngster Tyler (FireRed's, added) on FireRed's spots ({_t})")
+_floor(an, _rf["c3_4"])
+_t = _trainers(an)
+check(_t.get("Sailor Duncan") == (3, 3) and _t.get("Sailor Leonard") == (2, 6), f"...a B1F cabin: Sailors Duncan and Leonard ({_t})")
+_floor(an, 3)
+_t = _trainers(an)
+check(_t.get("Sailor Trevor") == (12, 10) and _t.get("Sailor Edmond") == (6, 9), f"...the deck: Sailors Trevor and Edmond ({_t})")
+_floor(an, 1)
+_t = _trainers(an)
+check(_t.get("{rival_name}") == (30, 4), f"...2F: your rival by the Captain's door ({_t})")
+_floor(an, _rf["captain"])
+_cap = _figure(an, "CAPTAIN")
+check(_cap == (5, 4), f"...the Captain in his office at FireRed's spot ({_cap})")
+_ev = next(o for o in _area["KANTO_SS_ANNE"]["route_menu"] if o.get("text") == "CAPTAIN")
+from src.states.overworld import _run_story_event
+_run_story_event(an, _ev["event"], lambda c: True, lambda lines: said.extend(lines))
+check(story.inventory.get("HM_CUT") == 1, "...he gives you HM Cut")
+# back on the dock: she sails
+story.current_area_key, story.last_area_key = "VERMILLION_CITY", "KANTO_SS_ANNE"
+g.walk_town_pos = None
+said.clear()
+ve = CityState(g); g.change_state(ve); frames(2)
+play(lambda: story.story_flags.get("ss_anne_departed") and not g.current_state._busy(), 900)
+ve = g.current_state
+check(ve.room == "harbor" and story.story_flags.get("ss_anne_departed") and any("setting sail" in s for s in said),
+      f"...back on the dock, the S.S. Anne sounds her horn and sails ({ve.room}, {said[:1]})")
+check(getattr(ve, "_pic_now", "").endswith("1_4.png"), f"...and the dock is open water ({getattr(ve, '_pic_now', None)})")
+ve.player = (_gang[0], _gang[1] - 1); ve.anim = 0
+walk(ve, "d")
+check(g.current_state is ve and ve.room == "harbor", "...she's gone: no way aboard now")
+story.badges["KANTO"] = []
+
 print(f"##### {len(fails)} failures")
 for m in fails:
     print("   FAIL " + m)

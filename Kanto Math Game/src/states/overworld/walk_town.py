@@ -243,7 +243,20 @@ class WalkTownState(CityState):
             cache[_ck] = art.surface(grid, kinds, TILE, m.get("roofs"), m.get("theme"))
         self.map_img = cache[_ck]
         self.overheads = [(o, *art.overhead(o, TILE)) for o in m.get("overheads", [])]
+        self._pic_now = art._version_file(_pic) if _pic else None
         self._npc_init(m)
+
+    def _refresh_picture(self):
+        """A flag changed the picture of the map you're on (the S.S. Anne sails out of the harbour): draw the new one,
+        without starting its people and scenes over."""
+        from src.dungeon import art
+        m = ((self.town_map.get("rooms") or {}).get(self.room) if getattr(self, "room", None) else self.town_map) if getattr(self, "town_map", None) else None
+        pic = ((m or {}).get("roofs") or {}).get("_picture")
+        if not pic or not (pic.get("until") or pic.get("when")) or art._version_file(pic) == getattr(self, "_pic_now", None):
+            return
+        self._pic_now = art._version_file(pic)
+        self.map_img = art.surface(self.grid, m.get("buildings", {}), TILE, m.get("roofs"), m.get("theme"))
+        self.overheads = [(o, *art.overhead(o, TILE)) for o in m.get("overheads", [])]
 
     # ---------------------------------------------------------------- people who move (src/dungeon/npc.py)
     def _npc_init(self, m):
@@ -316,6 +329,7 @@ class WalkTownState(CityState):
 
     def npc_flag(self, name):
         self.game.story_manager.story_flags[name] = True
+        self._refresh_picture()
         # (a scene that moves the story on: stand-ins come and go at once, the Shroomish back beside its girl)
         self.barred = {tuple(t): bar for bar in getattr(self, "_bar_list", []) if not self._bar_met(bar) and self._bar_here(bar) for t in bar.get("tiles", [])}
         self.barred.update(self._rot_bars())

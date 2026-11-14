@@ -7782,6 +7782,9 @@
    ]
   ],
   "inside": {
+   "22,34": "harbor",
+   "23,34": "harbor",
+   "24,34": "harbor",
    "9,6": "guru",
    "15,6": "center",
    "12,17": "fanclub",
@@ -8810,6 +8813,114 @@
     ],
     "theme": "room",
     "title": "House"
+   },
+   "harbor": {
+    "art": [
+     "cccccccccc~~cccccccccccccccccc~ccc~cccccccccc~~~~~~~~~~~~~~~~~~~~~~~~~",
+     "cccccccccc~~cccccccccccccccccc~ccc~cccccccccc~~~~~~~~~~~~~~~~~~~~~~~~~",
+     "cccc~~cccccccccccccccccccccccc~ccc~cccccccccc~c........ccc.ccccccccccc",
+     "cccc~~cccccccccccccc~~~~cccccc~ccc~ccccccccc~~c........ccc.ccccccccccc",
+     "~~cccccccc~~cc~~cc~~~~~~ccc~~c~ccc~c~~cccc~~~~c............ccccccccccc",
+     "~~ccccc~~c~~~~~~~~~~ooo~~~~~~~~n<<~~~~~~cc~~ooooooooooooo..c~~~~~~~~~~",
+     "cccc~~c~~~~o~~oo~~ooooo~~~~oo~~...~~oo~~~~ooooooooooooooo..c~~~~~~~~~~",
+     "cccc~~~~o~~oooooooooooooooooooo...oooooo~~ooooooooooooooo..c~~~~~~~~~~",
+     "ccc~~o~~oooooooooooooooooooooooN.Nooooooooooooooooooooooo..c~~~~~~~~~~",
+     "c~~~~oooooooooooooooooooooooooo...ooooooooooooooooooooooo..c~~~~~~~~~~",
+     "c~~oooooooooooooooooooo~~ooooooc.coooooo~~ooooooooooooooo..c~~~~~~~~~~",
+     "cc~~ooooooooooooooooo~~~~oo~~~~c.c~~oo~~~~~~ooooooooooooo..c~~~~~~~~~~",
+     "cc~~ooooooooooooooooo~~cc~~~~~~c.c~~~~~~cc~~ooooooooooooo..c~~~~~~~~~~",
+     "~~oooooooooooooooooo~~ccc~~ccc~c.c~c~~cccccc~~ooooooooooo..c~~~~~~~~~~",
+     "~~oooooooooooooooo~~~~cccccccc~c>c~ccccccccc~~ooooooooooo..c~~~~~~~~~~",
+     "c~~ooooooooooooooo~~cccccccccc~~~~~~ccccccccc~~oooooooooo..c~~~~~~~~~~",
+     "c~~oooooooooooooo~~cccccccccccccccccccccccccc~~oo~~oooooo..c~~~~~~~~~~",
+     "cc~~oooooooooo~~o~~cccccccccccccccccccccccccccc~~~~oooooo..c~~~~~~~~~~",
+     "cc~~o~~ooooo~~~~~~ccccccccccccccccccccccccccccc~~c~~ooooo..c~~~~~~~~~~",
+     "ccc~~~~o~~oo~~cc~~cccccccccccccccccccccccccccccccc~~ooooo..c~~~~~~~~~~",
+     "ccc~~c~~~~~~cccccccccccccccccccccccccccccccccccccccc~~ooo..c~~~~~~~~~~",
+     "cccccc~~cc~~cccccccccccccccccccccccccccccccccccccccc~~ooo..c~~~~~~~~~~",
+     "ccccccccccccccccccccccccccccccccccccccccccccccccccc~~oooo..c~~~~~~~~~~",
+     "ccccccccccccccccccccccccccccccccccccccccccccccccccc~~~~oo..c~~~~~~~~~~",
+     "ccccccccccccccccccccccccccccccccccccccccccccccccccccc~~oo..c~~~~~~~~~~",
+     "cccccccccccccccccccccccccccccccccccccccccccccccccccc~~ooo..c~~~~~~~~~~",
+     "cccccccccccccccccccccccccccccccccccccccccccccccccccc~~ooo..c~~~~~~~~~~",
+     "ccccccccccccccccccccccccccccccccccccccccccccccccccccc~~oo..c~~~~~~~~~~",
+     "ccccccccccccccccccccccccccccccccccccccccccccccccccccc~~~~..c~~~~~~~~~~",
+     "ccccccccccccccccccccccccccccccccccccccccccccccccccccc~~~~ccc~~~~~~~~~~",
+     "ccccccccccccccccccccccccccccccccccccccccccccccccccccccc~~~~~~~~~~~~~~~",
+     "cccccccccccccccccccccccccccccccccccccccccccccccccccccc~~~~~~~~~~~~~~~~"
+    ],
+    "exits": {
+     "n": "OUT:22,34",
+     "<": "OUT:23,34",
+     ">": "KANTO_SS_ANNE"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_4.png",
+      "at": [
+       0,
+       0
+      ],
+      "until": {
+       "flag": "ss_anne_departed",
+       "f": "fr_ground/1_4_ship.png"
+      }
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "door:harbor",
+     {
+      "text": "Dock sailor",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Sailor: The S.S. Anne's a beauty, isn't she? She visits Vermilion once a year."
+       ]
+      }
+     }
+    ],
+    "scenes": [
+     {
+      "who": "Dock sailor",
+      "trigger": "enter",
+      "condition": [
+       "got_hm_cut_kanto",
+       "not:ss_anne_departed"
+      ],
+      "flag": "ss_anne_departed",
+      "lines": [
+       "The S.S. Anne sounded her horn: she's setting sail!",
+       "Sailor: There she goes! She'll be back in Vermilion next year."
+      ],
+      "after": "stay"
+     }
+    ],
+    "locked": {
+     "KANTO_SS_ANNE": "Sailor: Boarding the S.S. Anne takes an S.S. Ticket."
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_4.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       70,
+       32
+      ],
+      "until": {
+       "flag": "ss_anne_departed",
+       "f": "fr_top/1_4_ship.png"
+      }
+     }
+    ],
+    "theme": "room",
+    "title": "Vermilion Harbor"
    }
   },
   "surf": true,
@@ -8832,40 +8943,10 @@
   ]
  },
  "KANTO_SS_ANNE": {
-  "theme": "ship",
-  "buildings": {
-   "A": "cabin0",
-   "B": "cabin1",
-   "C": "cabin2",
-   "E": "cabin3",
-   "F": "cabin4",
-   "G": "cabin5"
-  },
-  "cabin_trainers": [
-   0,
-   1,
-   2,
-   3,
-   4,
-   5
-  ],
-  "floor_names": [
-   "1F",
-   "2F",
-   "3F",
-   "Deck",
-   "B1F",
-   "Kitchen",
-   "Captain's Office"
-  ],
-  "figure_floors": {
-   "CAPTAIN": 6,
-   "{rival_name}": 1
-  },
   "floors": [
    {
     "art": [
-     "cccccccccccccccccccc^cccccccccc",
+     "ccccccccccccccccccccccccccccccc",
      "ccccccccccccccccccc^ccccccccccc",
      "cccccccccccccccccc...cccccccccc",
      "cccccccccccccccccc...cccccccccc",
@@ -8873,39 +8954,79 @@
      "cccccccccccccccccc...cccccccccc",
      "cccccccccccccccccc...cccccccccc",
      "cccccccccccccccccc...cccccccccc",
-     "ccc1..........................c",
-     "ccc...........................c",
-     "c...ADABDBCDCEDEFDFGDG........c",
-     "c...AAABBBCCCEEEFFFGGGcccc....c",
+     "ccc1..............N...........c",
+     "ccc.........N.................c",
+     "c....D..D..D..D..D..D..D......c",
+     "c...cBccCccEccFccGccIccHcc....c",
      "c...cccccccccccccccccccccc....c",
      "c...cccccccccccccccccccccc....c",
      "c...cccccccccccccccccccccc....c",
      "c...cccccccccccccccccccccc....c",
      "c...cccccccccccccccccccccccc..c",
      "c...cccccccccccccccccccccccc1.c",
-     "c.1.cccccccccccccccccccccccc..c",
-     "ccccccccccccccccccccccccccccccc",
-     "ccc1ccccccccccccccccccccccccccc"
+     "c.D.cccccccccccccccccccccccc..c",
+     "ccAcccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccccc"
     ],
     "exits": {
      "^": "VERMILLION_CITY"
     },
-    "parts": true,
+    "buildings": {
+     "A": "house",
+     "B": "cabin0",
+     "C": "cabin1",
+     "E": "cabin2",
+     "F": "cabin3",
+     "G": "cabin4",
+     "H": "house",
+     "I": "cabin5"
+    },
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_5.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Sailor",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The passengers get bored on long voyages. Some of them might challenge you!"
+       ]
+      }
+     },
+     {
+      "text": "Waiter",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Bonjour! I am the waiter on this ship. Anything you wish, I will bring! ...No? Ah, the strong, silent type!"
+       ]
+      }
+     }
+    ],
+    "inside": {
+     "2,18": "kitchen",
+     "5,10": "c1_1",
+     "8,10": "c1_2",
+     "11,10": "c1_3",
+     "14,10": "c1_4",
+     "17,10": "c1_5",
+     "23,10": "c1_6",
+     "20,10": "c1_7"
+    },
     "links": {
      "3,8": [
       1,
       2,
       2
-     ],
-     "2,18": [
-      5,
-      7,
-      1
-     ],
-     "3,20": [
-      5,
-      7,
-      1
      ],
      "28,17": [
       4,
@@ -8913,23 +9034,45 @@
       3
      ]
     },
-    "roofs": {
-     "_passage": "stairs"
-    }
+    "moves": {
+     "18,8": {
+      "m": "face",
+      "d": "u"
+     },
+     "12,9": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_5.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       31,
+       21
+      ]
+     }
+    ]
    },
    {
     "art": [
      "cccccccccccccccccccccccccccccccccc",
-     "cccccccccccccccccccccccccccccccccc",
-     "c.1ccccccccccccccccccccccccccc1ccc",
-     "c..cccccccccccccccccccccccccccXccc",
+     "ccccccccccccccccccccccccccccccAccc",
+     "c.1cccccccccccccccccccccccccccDccc",
+     "c..ccccccccccccccccccccccccccc.ccc",
+     "c....cccccccccccccccccccccccccX..c",
      "c....ccccccccccccccccccccccccc...c",
      "c....ccccccccccccccccccccccccc...c",
-     "c....ccccccccccccccccccccccccc...c",
-     "c....ccccccccccccccccccccccccc...c",
+     "c.N..ccccccccccccccccccccccccc...c",
      "c....ccccccccccccccccccccccc.....c",
-     "c....ccccccccccccccccccccccc.....c",
-     "c....ccccccccccccccccccccccc.....c",
+     "c....cBcccCcccEcccFcccGcccHc.....c",
+     "c....cDcccDcccDcccDcccDcccDc.....c",
      "ccc..............................c",
      "ccc1.............................c",
      "ccc..............................c",
@@ -8937,7 +9080,49 @@
      "cccccccccccccccccccccccccccccccccc"
     ],
     "exits": {},
-    "parts": true,
+    "buildings": {
+     "A": "house",
+     "B": "house",
+     "C": "house",
+     "E": "house",
+     "F": "house",
+     "G": "house",
+     "H": "house"
+    },
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_6.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Sailor",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "This ship's a luxury liner for Trainers! At every port we hold a party for invited Trainers."
+       ]
+      }
+     }
+    ],
+    "trainer_spots": [
+     "{rival_name}"
+    ],
+    "inside": {
+     "30,2": "captain",
+     "6,10": "c2_1",
+     "10,10": "c2_2",
+     "14,10": "c2_3",
+     "18,10": "c2_4",
+     "22,10": "c2_5",
+     "26,10": "c2_6"
+    },
     "links": {
      "2,2": [
       0,
@@ -8948,19 +9133,33 @@
       2,
       18,
       2
-     ],
-     "30,2": [
-      6,
-      3,
-      7
      ]
     },
-    "trainer_spots": [
-     "{rival_name}"
-    ],
-    "roofs": {
-     "_passage": "stairs"
-    }
+    "moves": {
+     "2,7": {
+      "m": "wander",
+      "d": "ud",
+      "r": [
+       0,
+       2
+      ]
+     }
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_6.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       34,
+       16
+      ]
+     }
+    ]
    },
    {
     "art": [
@@ -8968,12 +9167,34 @@
      "cccccccccccccccccccccc",
      "cc................1ccc",
      "c..................ccc",
-     "c1...................c",
+     "c1........N..........c",
      "1....................c",
      "cccccccccccccccccccccc"
     ],
     "exits": {},
-    "parts": true,
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_7.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Sailor",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Our Captain's a master of Cut. They say he even teaches it to Pokémon!"
+       ]
+      }
+     }
+    ],
     "links": {
      "1,4": [
       3,
@@ -8991,9 +9212,17 @@
       8
      ]
     },
-    "roofs": {
-     "_passage": "stairs"
-    }
+    "moves": {
+     "10,4": {
+      "m": "wander",
+      "d": "lr",
+      "r": [
+       3,
+       0
+      ]
+     }
+    },
+    "parts": true
    },
    {
     "art": [
@@ -9002,15 +9231,15 @@
      "cccccccccccccccccccccccc",
      "cccccccccccccccccccccccc",
      "cccccccccccccccccccccccc",
-     "ccccccccc.....cccccccccc",
+     "ccccccccc..N..cccccccccc",
      "ccccccc........ccccccccc",
      "ccccc...c...c...cccccccc",
      "ccc.............1ccccccc",
-     "c...............1ccccccc",
-     "ccc.............cccccccc",
-     "ccccc...........cccccccc",
+     "c.....X.........1ccccccc",
+     "ccc.........X...cccccccc",
+     "ccccc.........N.cccccccc",
      "ccccccc...c....ccccccccc",
-     "ccccccccc.....cccccccccc",
+     "ccccccccc....Ncccccccccc",
      "cccccccccccccccccccccccc",
      "cccccccccccccccccccccccc",
      "cccccccccccccccccccccccc",
@@ -9018,7 +9247,51 @@
      "cccccccccccccccccccccccc"
     ],
     "exits": {},
-    "parts": true,
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_9.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Passenger",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The party's over now. The ship will be sailing soon."
+       ]
+      }
+     },
+     {
+      "text": "Seasick man",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Urgh... I feel ill. I came out for some fresh air..."
+       ]
+      }
+     },
+     {
+      "text": "Deckhand",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Phew! Scrubbing the deck is hard work!"
+       ]
+      }
+     }
+    ],
+    "trainer_spots": [
+     "Sailor Edmond",
+     "Sailor Trevor"
+    ],
     "links": {
      "16,8": [
       2,
@@ -9031,22 +9304,76 @@
       4
      ]
     },
-    "roofs": {
-     "_passage": "stairs"
-    }
+    "moves": {
+     "14,11": {
+      "m": "face",
+      "d": "d"
+     },
+     "13,13": {
+      "m": "wander",
+      "d": "lr",
+      "r": [
+       4,
+       0
+      ]
+     },
+     "11,5": {
+      "m": "face",
+      "d": "l"
+     }
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_9.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       24,
+       19
+      ]
+     }
+    ]
    },
    {
     "art": [
      "ccccccccccccccccccccccc",
-     "ccccccccccccccccccccccc",
-     "ccccccccccccccccccccccc",
+     "ccAcccBcccCcccEcccFcccc",
+     "ccDcccDcccDcccDcccDcccc",
      "c..................1ccc",
      "c...................ccc",
      "c....................cc",
      "ccccccccccccccccccccccc"
     ],
     "exits": {},
-    "parts": true,
+    "buildings": {
+     "A": "house",
+     "B": "house",
+     "C": "house",
+     "E": "house",
+     "F": "house"
+    },
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_8.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "inside": {
+     "2,2": "c3_1",
+     "6,2": "c3_2",
+     "10,2": "c3_3",
+     "14,2": "c3_4",
+     "18,2": "c3_5"
+    },
     "links": {
      "19,3": [
       0,
@@ -9054,70 +9381,1384 @@
       17
      ]
     },
-    "roofs": {
-     "_passage": "stairs"
-    }
-   },
-   {
+    "parts": true,
+    "hidden": {
+     "21,5": "HYPER_POTION"
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_8.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       23,
+       7
+      ]
+     }
+    ]
+   }
+  ],
+  "rooms": {
+   "kitchen": {
     "art": [
      "cccccccccccccccc",
-     "ccccccc1cccccccc",
+     "ccccccc^cccccccc",
      "c..............c",
      "c..............c",
+     "c..cc..cc.Ncc.cc",
+     "cN.cc..cc..cc.Nc",
+     "c..cc.Ncc..cc.cc",
+     "c..cc..cc..cc.Nc",
      "c..cc..cc..cc.cc",
-     "c..cc..cc..cc..c",
-     "c..cc..cc..cc.cc",
-     "c..cc..cc..cc..c",
-     "c..cc..cc..cc.cc",
-     "c..............c",
-     "c..............c",
+     "c.......N.....Nc",
+     "cN.............c",
      "cccccccccccccccc",
      "cccccccccccccccc",
      "cccccccccccccccc"
     ],
-    "exits": {},
-    "parts": true,
-    "links": {
-     "7,1": [
-      0,
-      2,
-      18
-     ]
+    "exits": {
+     "^": "OUT:2,18"
     },
+    "buildings": {},
     "roofs": {
-     "_passage": "stairs"
-    }
+     "_picture": {
+      "f": "fr_ground/1_10.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Chef  ",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "So busy, I'm dizzy! Give me room, give me room!"
+       ]
+      }
+     },
+     {
+      "text": "Chef",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Out of the way, little one! We're busy!"
+       ]
+      }
+     },
+     {
+      "text": "Cook",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Hum-de-hum... I peel potatoes every single day..."
+       ]
+      }
+     },
+     {
+      "text": "Chef ",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I saw a funny Berry in the bin earlier. I wonder what it was?"
+       ]
+      }
+     },
+     {
+      "text": "Cook ",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Have you heard of Snorlax? It eats and sleeps like nothing else!"
+       ]
+      }
+     },
+     {
+      "text": "Head chef",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Ahem! I am the head chef! Tonight's main course is... fish. Again. The guests will grumble!"
+       ]
+      }
+     },
+     {
+      "text": "Cook  ",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Sniff... I only ever get to peel the onions... Sniff..."
+       ]
+      }
+     },
+     "GREAT BALL"
+    ],
+    "moves": {
+     "1,5": {
+      "m": "wander",
+      "d": "ud",
+      "r": [
+       0,
+       1
+      ]
+     },
+     "6,6": {
+      "m": "wander",
+      "d": "ud",
+      "r": [
+       0,
+       2
+      ]
+     },
+     "10,4": {
+      "m": "look",
+      "d": "dr"
+     },
+     "8,9": {
+      "m": "face",
+      "d": "u"
+     },
+     "14,5": {
+      "m": "face",
+      "d": "u"
+     },
+     "14,7": {
+      "m": "face",
+      "d": "l"
+     },
+     "14,9": {
+      "m": "face",
+      "d": "u"
+     },
+     "1,10": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "hidden": {
+     "14,8": "CHESTO_BERRY",
+     "14,4": "PECHA_BERRY",
+     "14,6": "CHERI_BERRY"
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_10.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       16,
+       14
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Kitchen"
    },
-   {
+   "c1_1": {
+    "art": [
+     "cccccc",
+     "cc^ccc",
+     ".....c",
+     "......",
+     "......",
+     "ccN.c.",
+     "cc..c.",
+     "cc...."
+    ],
+    "exits": {
+     "^": "OUT:5,10"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_12.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Agent",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Shh! I'm with the Global Police, on Team Rocket's trail. They're up to no good!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "2,5": {
+      "m": "wander",
+      "d": "lr",
+      "r": [
+       2,
+       0
+      ]
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_12.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       6,
+       8
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Cabin"
+   },
+   "c1_2": {
+    "art": [
+     "cccccc",
+     "cc^ccc",
+     ".....c",
+     ".....X",
+     "X.....",
+     "cc..c.",
+     "ccN.c.",
+     "cc...N"
+    ],
+    "exits": {
+     "^": "OUT:8,10"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_13.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Mother",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "My children and I are cruising around the world!"
+       ]
+      }
+     },
+     "TM43"
+    ],
+    "trainer_spots": [
+     "Lass Ann",
+     "Youngster Tyler"
+    ],
+    "moves": {
+     "2,6": {
+      "m": "face",
+      "d": "l"
+     },
+     "5,7": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_13.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       6,
+       8
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Cabin"
+   },
+   "c1_3": {
+    "art": [
+     "cccccc",
+     "cc^ccc",
+     "....Nc",
+     "......",
+     "N..N..",
+     "cc..c.",
+     "cc..c.",
+     "cc...."
+    ],
+    "exits": {
+     "^": "OUT:11,10"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_14.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Wigglytuff",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "WIGGLYTUFF: Puup pupuu!"
+       ]
+      }
+     },
+     {
+      "text": "Gentleman",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "A world cruise: so elegant, yet so cozy!"
+       ]
+      }
+     },
+     {
+      "text": "Lady",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I always travel with my Wigglytuff. I'd never leave home without it!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "3,4": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       2,
+       3
+      ]
+     },
+     "4,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "0,4": {
+      "m": "face",
+      "d": "r"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_14.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       6,
+       8
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Cabin"
+   },
+   "c1_4": {
+    "art": [
+     "cccccc",
+     "cc^ccc",
+     ".....c",
+     "......",
+     "..N...",
+     "cc..c.",
+     "cc..c.",
+     "cc...."
+    ],
+    "exits": {
+     "^": "OUT:14,10"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_15.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Girl",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Waiter! A slice of cherry pie, please!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "2,4": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_15.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       6,
+       8
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Cabin"
+   },
+   "c1_5": {
+    "art": [
+     "cccccc",
+     "cc^ccc",
+     ".....c",
+     "......",
+     "......",
+     "cc..c.",
+     "ccX.c.",
+     "cc...."
+    ],
+    "exits": {
+     "^": "OUT:17,10"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_16.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "trainer_spots": [
+     "Gentleman Arthur"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_16.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       6,
+       8
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Cabin"
+   },
+   "c1_6": {
+    "art": [
+     "cccccc",
+     "cc^ccc",
+     ".....c",
+     "....X.",
+     "......",
+     "cc..c.",
+     "cc..c.",
+     "cc...."
+    ],
+    "exits": {
+     "^": "OUT:23,10"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_17.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "trainer_spots": [
+     "Gentleman Thomas"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_17.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       6,
+       8
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Cabin"
+   },
+   "c1_7": {
+    "art": [
+     "cccccc",
+     "cc^ccc",
+     ".....c",
+     "......",
+     "......",
+     "cc.Nc.",
+     "cc..c.",
+     "cc...."
+    ],
+    "exits": {
+     "^": "OUT:20,10"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_29.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Kind lady",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Kind lady: You look worn out. Rest a while, dear.",
+        "Your Pokémon were rested and look much better!",
+        "Kind lady: Oh, sorry for fussing! You remind me of my little brother."
+       ],
+       "heal": true
+      }
+     }
+    ],
+    "moves": {
+     "3,5": {
+      "m": "face",
+      "d": "u"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_29.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       6,
+       8
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Cabin"
+   },
+   "c2_1": {
+    "art": [
+     "cccccc",
+     "cccccc",
+     "ccc.c.",
+     "ccc.c.",
+     ".N....",
+     "......",
+     "......",
+     "c...v.",
+     "cccccc"
+    ],
+    "exits": {
+     "v": "OUT:6,10"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_18.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Gentleman",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "In all my travels I've never seen a Pokémon sleep like the one blocking the road! Just like this... Zzz..."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "1,4": {
+      "m": "face",
+      "d": "l"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_18.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       6,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Cabin"
+   },
+   "c2_2": {
+    "art": [
+     "cccccc",
+     "cccccc",
+     "ccc.c.",
+     "cccNc.",
+     ".X....",
+     ".....X",
+     "......",
+     "c...v.",
+     "cccccc"
+    ],
+    "exits": {
+     "v": "OUT:10,10"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_19.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "STARDUST"
+    ],
+    "trainer_spots": [
+     "Gentleman Brooks",
+     "Fisherman Dale"
+    ],
+    "moves": {
+     "3,3": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_19.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       6,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Cabin"
+   },
+   "c2_3": {
+    "art": [
+     "cccccc",
+     "cccccc",
+     "cccNc.",
+     "ccc.c.",
+     "......",
+     "..N...",
+     "......",
+     "c...v.",
+     "cccccc"
+    ],
+    "exits": {
+     "v": "OUT:14,10"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_20.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Old man",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Cut chops down small trees. But it's an HM: once learned, it's not easily forgotten!"
+       ]
+      }
+     },
+     {
+      "text": "Gentleman",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I've seen Pokémon carry people across the water on their backs!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "2,5": {
+      "m": "wander",
+      "d": "lr",
+      "r": [
+       1,
+       0
+      ]
+     },
+     "3,2": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_20.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       6,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Cabin"
+   },
+   "c2_4": {
+    "art": [
+     "cccccc",
+     "cccccc",
+     "ccc.c.",
+     "cccXc.",
+     "..N...",
+     "X.....",
+     "......",
+     "c...v.",
+     "cccccc"
+    ],
+    "exits": {
+     "v": "OUT:18,10"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_21.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "X ATTACK"
+    ],
+    "trainer_spots": [
+     "Lass Dawn",
+     "Gentleman Lamar"
+    ],
+    "moves": {
+     "2,4": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_21.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       6,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Cabin"
+   },
+   "c2_5": {
+    "art": [
+     "cccccc",
+     "cccccc",
+     "ccc.cN",
+     "ccc.c.",
+     "......",
+     "...N..",
+     "......",
+     "c...v.",
+     "cccccc"
+    ],
+    "exits": {
+     "v": "OUT:22,10"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_22.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Gentleman",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Have you been to the Safari Zone in Fuchsia City? There are rare Pokémon there!"
+       ]
+      }
+     },
+     {
+      "text": "Boy",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "My dad and I love the Safari Zone! I want to go again!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "5,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "3,5": {
+      "m": "look",
+      "d": "udlr"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_22.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       6,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Cabin"
+   },
+   "c2_6": {
+    "art": [
+     "cccccc",
+     "cccccc",
+     "ccc.c.",
+     "ccc.c.",
+     ".N..N.",
+     "......",
+     "......",
+     "c...v.",
+     "cccccc"
+    ],
+    "exits": {
+     "v": "OUT:26,10"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_23.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Boy",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I hear lots of people get seasick on this ship."
+       ]
+      }
+     },
+     {
+      "text": "Girl",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Captain's feeling awfully sick. He looked so pale!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "1,4": {
+      "m": "face",
+      "d": "r"
+     },
+     "4,4": {
+      "m": "face",
+      "d": "l"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_23.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       6,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Cabin"
+   },
+   "captain": {
     "art": [
      "ccccccccc",
      "ccccccccc",
      "c......cc",
-     "cccc.c..c",
-     "cccc.N..c",
+     "cc!c.!..c",
+     "cc!c.N..c",
      "c.......c",
      "ccc.....c",
-     "ccc1....c",
+     "cccn....c",
      "ccc.....c",
      "ccccccccc"
     ],
-    "exits": {},
-    "parts": true,
-    "links": {
-     "3,7": [
-      1,
-      30,
-      2
-     ]
+    "exits": {
+     "n": "OUT:30,2"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_11.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
     },
     "people": [
      "CAPTAIN"
     ],
+    "signs": [
+     [
+      "A book: \"Beating Seasickness, A Sailor's Guide.\""
+     ],
+     [
+      "A bucket. ...Better not look inside."
+     ],
+     [
+      "A book: \"Beating Seasickness, A Sailor's Guide.\""
+     ]
+    ],
+    "moves": {
+     "5,4": {
+      "m": "face",
+      "d": "u"
+     }
+    },
+    "theme": "room",
+    "title": "Captain's Office"
+   },
+   "c3_1": {
+    "art": [
+     "cccccc",
+     "cccccc",
+     "cccXcX",
+     "ccc.c.",
+     "......",
+     "......",
+     "......",
+     "c...v.",
+     "cccccc"
+    ],
+    "exits": {
+     "v": "OUT:2,2"
+    },
+    "buildings": {},
     "roofs": {
-     "_passage": "stairs"
-    }
+     "_picture": {
+      "f": "fr_ground/1_24.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "trainer_spots": [
+     "Sailor Phillip",
+     "Fisherman Barny"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_24.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       6,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Cabin"
+   },
+   "c3_2": {
+    "art": [
+     "cccccc",
+     "cccccc",
+     "cccNc.",
+     "ccc.c.",
+     "......",
+     "...X..",
+     "......",
+     "c...v.",
+     "cccccc"
+    ],
+    "exits": {
+     "v": "OUT:6,2"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_25.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "TM21"
+    ],
+    "trainer_spots": [
+     "Sailor Huey"
+    ],
+    "moves": {
+     "3,2": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_25.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       6,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Cabin"
+   },
+   "c3_3": {
+    "art": [
+     "cccccc",
+     "cccccc",
+     "ccc.c.",
+     "ccc.c.",
+     "....X.",
+     ".N....",
+     "......",
+     "c...v.",
+     "cccccc"
+    ],
+    "exits": {
+     "v": "OUT:10,2"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_26.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "ETHER"
+    ],
+    "trainer_spots": [
+     "Sailor Dylan"
+    ],
+    "moves": {
+     "1,5": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_26.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       6,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Cabin"
+   },
+   "c3_4": {
+    "art": [
+     "cccccc",
+     "cccccc",
+     "ccc.c.",
+     "cccXc.",
+     "......",
+     "......",
+     "..X...",
+     "c...v.",
+     "cccccc"
+    ],
+    "exits": {
+     "v": "OUT:14,2"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_27.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "trainer_spots": [
+     "Sailor Duncan",
+     "Sailor Leonard"
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_27.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       6,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Cabin"
+   },
+   "c3_5": {
+    "art": [
+     "cccccc",
+     "cccccc",
+     "ccN.c.",
+     "ccc.c.",
+     "......",
+     "..NN..",
+     "......",
+     "c...v.",
+     "cccccc"
+    ],
+    "exits": {
+     "v": "OUT:18,2"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_28.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "SUPER POTION",
+     {
+      "text": "Machoke",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "MACHOKE: Gwoh! Goggoh!"
+       ]
+      }
+     },
+     {
+      "text": "Trainer",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "My buddy Machoke is super strong! Strong enough to shove big boulders aside!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "3,5": {
+      "m": "face",
+      "d": "d"
+     },
+     "2,5": {
+      "m": "face",
+      "d": "d"
+     },
+     "2,2": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_28.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       6,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Cabin"
    }
-  ]
+  },
+  "theme": "ship",
+  "floor_names": [
+   "1F",
+   "2F",
+   "3F",
+   "Deck",
+   "B1F"
+  ],
+  "figure_floors": {
+   "{rival_name}": 1,
+   "Sailor Edmond": 3,
+   "Sailor Trevor": 3
+  }
  },
  "KANTO_ROUTE_11": {
   "art": [
