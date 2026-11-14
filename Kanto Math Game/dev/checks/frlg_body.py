@@ -894,7 +894,7 @@ story.badges["KANTO"] = ["BOULDER", "CASCADE", "THUNDER", "RAINBOW", "SOUL", "MA
 _bf = {k: story.story_flags.pop(k) for k in list(story.story_flags) if k.startswith("boulder_SEAFOAM")}
 for _a, _b, _size in (("KANTO_ROUTE_19", "FUCHSIA_CITY", (24, 60)), ("KANTO_ROUTE_19", "KANTO_ROUTE_20", (24, 60)), ("KANTO_ROUTE_20", "KANTO_ROUTE_19", (120, 20)),
                       ("KANTO_ROUTE_20", "CINNABAR_ISLAND", (120, 20)), ("KANTO_ROUTE_21", "PALLET_TOWN", (24, 100)), ("KANTO_ROUTE_21", "CINNABAR_ISLAND", (24, 100)),
-                      ("KANTO_ROUTE_23", "KANTO_ROUTE_22", (24, 160)), ("KANTO_ROUTE_23", "INDIGO_PLATEAU", (24, 160)), ("SAFARI_ZONE", "FUCHSIA_CITY", (158, 80))):
+                      ("KANTO_ROUTE_23", "KANTO_ROUTE_22", (24, 160)), ("KANTO_ROUTE_23", "INDIGO_PLATEAU", (24, 160)), ("SAFARI_ZONE", "FUCHSIA_CITY", (157, 78))):
     p = route(_a, _b); f = p.run.floor
     _edge = [t for t, v in f.exits.items() if v == _b]
     check((f.w, f.h) == _size and _edge and min(abs(p.run.player[0] - x) + abs(p.run.player[1] - y) for x, y in _edge) <= 1,
@@ -972,7 +972,7 @@ for _n, (_dx, _dy), _zone, _who in ((1, (79, 67), "center", {"SAFARI RANGER", "R
     check(p.run.index == _n and tuple(p.run.player) == (4, 8) and (f.w, f.h) == (13, 11) and not any(m.kind == "wild" for m in f.movers) and not f.items
           and {m.payload.get("text") for m in f.movers if m.kind == "figure"} == _who and story.story_flags.get("zone_SAFARI_ZONE") == _zone,
           f"...in at the {p._floor_name(_n)}'s door {(_dx, _dy)}: FireRed's room, its people, nothing wild (floor {p.run.index}, {tuple(p.run.player)}, zone {story.story_flags.get('zone_SAFARI_ZONE')})")
-    check(len(p._overheads()) >= 2 and not f.walkable(8, 5 if _n == 5 else 6) and f.walkable(9, 2), "......its shelves hang over the row below; the counter or desks in the way")
+    check(len(p._overheads()) >= 1 and not f.walkable(8, 5 if _n == 5 else 6) and f.walkable(9, 2), "......its shelves hang over the row below (FireRed's top layer, Kanto batch 18); the counter or desks in the way")
     p.draw()
     _who1 = next(m for m in f.movers if m.kind == "figure")
     _ev = p.run.step(0, 1); p._handle(_ev); frames(p, 4)

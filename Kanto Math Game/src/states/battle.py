@@ -1205,6 +1205,11 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, GameState)
         o_pri = theirs.get("priority", 0) + self.ability_priority(self.opponent_pokemon, theirs)
         p_spd, o_spd = self._speed(self.player_pokemon), self._speed(self.opponent_pokemon)
         player_first = (p_pri > o_pri) or (p_pri == o_pri and (p_spd > o_spd or (p_spd == o_spd and random.random() < 0.5)))
+        if p_pri == o_pri:   # (a held Quick Claw: now and then its holder goes first in its priority bracket. FireRed's Safari Zone, 11-14)
+            p_claw = getattr(self.player_pokemon, "held_item", None) == "QUICK_CLAW" and random.random() < 0.2
+            o_claw = getattr(self.opponent_pokemon, "held_item", None) == "QUICK_CLAW" and random.random() < 0.2
+            if p_claw != o_claw:
+                player_first = p_claw
         self._acts_second = id(self.opponent_pokemon if player_first else self.player_pokemon)
         if player_first:
             self.turn_actions += [self.player_attack, self.opponent_attack]

@@ -1106,6 +1106,18 @@ check(_pp.get("RARE CANDY") == (11, 5) and "b" in "".join(fu.town_map["rooms"]["
 _pp = _room_of(fu, "brother")
 check(set(fu.exits.values()) == {"OUT:38,31", "OUT:39,28"}, f"...the Fishing Guru's brother's house: front door and back door to the pond ({sorted(fu.exits.values())})")
 
+# ---- batch 18: the Safari Zone, FireRed's four areas on one map
+sz = open_map("SAFARI_ZONE", "FUCHSIA_CITY")
+check((sz.run.floor.w, sz.run.floor.h) == (157, 78) and sz.run.index == 0 and 70 <= sz.run.player[1] <= 77,
+      f"Safari Zone: FireRed's four areas on one map, in at the Center's south gate ({sz.run.player})")
+check(sz.safari and sz.safari["balls"] == 30 and sz.safari["steps"] == 600, f"...the Safari Game: FireRed's 30 Safari Balls and 600 steps ({sz.safari})")
+_pad = sz.recipe["art"]["floors"][0]["links"].get("58,34") if sz.recipe["art"].get("floors") else None
+check(_pad and _pad[1:] == [30, 47], f"...the gateways join the areas: North's west gate to the West ({_pad})")
+check(sz.zones[sz._zone_index(0, 130, 60)] == "east" and sz.zones[sz._zone_index(0, 20, 60)] == "west", "...each area its own Pokémon (the data's zones)")
+_rf = sz.recipe["art"]["room_floors"]
+_floor(sz, _rf["secret"])
+check(_figure(sz, "SECRET HOUSE MAN") == (6, 5), "...out west, FireRed's Secret House")
+
 print(f"##### {len(fails)} failures")
 for m in fails:
     print("   FAIL " + m)
