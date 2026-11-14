@@ -96,7 +96,7 @@ for key in BUILT:
     m = _tm[key]
     a = _area.get(key, {})
     _parts = m["floors"] if m.get("floors") else [m]
-    targets = set(v for f in _parts for v in f.get("exits", {}).values())
+    targets = set(v for f in _parts for v in f.get("exits", {}).values() if not str(v).startswith(("ROOM:", "OUT:")))   # (a room's stairs and doors stay inside the place)
     known = {o.get("target_area") or o.get("target") for o in a.get("travel_options", []) + a.get("route_menu", []) + a.get("explore_options", [])}
     check(targets <= known, f"{key}: every way out on the map is a way out in the story data {sorted(targets - known)}")
     came = sorted(targets)[0] if targets else key
@@ -334,7 +334,8 @@ if isinstance(intro, TrainerIntroState):
 # ---- batch 3: Route 2, Viridian Forest, Pewter City (FireRed 3.20, 1.0, 3.2)
 story.badges["KANTO"] = []
 story.story_flags.pop("visited_PEWTER_CITY", None)
-story.story_flags.pop("visited_CERULEAN_CITY", None)   # (the map sweep above walked into every town)
+for _k in [k for k in story.story_flags if k.startswith("visited_") and k[8:] not in ("PALLET_TOWN", "VIRIDIAN_CITY")]:
+    story.story_flags.pop(_k)   # (the map sweep above walked into every town)
 _m = [m.get("id") for m in story.get_active_missions()]
 check(_m and _m[0] == "m1b", f"the Journal, Pokedex in hand: through Viridian Forest to Pewter ({_m[:2]})")
 
@@ -624,6 +625,75 @@ check({o.get("text") for o in bh._people().values()} == {"Talk to Bill"} and _sm
 story.story_flags["got_ss_ticket_bill"] = True
 bh = open_map("BILLS_HOUSE", "KANTO_ROUTE_25")
 check({o.get("text"): p for p, o in bh._people().items()}.get("Bill") == (7, 5), "...and once you've helped him, Bill himself at FireRed's spot")
+story.badges["KANTO"] = []
+
+# ---- batch 6: Route 5, the Underground Path, Route 6, Vermilion City
+story.badges["KANTO"] = ["BOULDER", "CASCADE"]
+_tea = story.inventory.pop("TEA", None)
+r5 = open_map("KANTO_ROUTE_5", "SAFFRON_CITY")
+check(r5._floor_name(r5.run.index) == "Saffron Gate" and "GUARD" in {m.payload.get("text") for m in r5.run.floor.movers if m.kind == "figure"},
+      f"Route 5: in from Saffron, inside its gatehouse, the thirsty guard ({r5._floor_name(r5.run.index)})")
+r5.run.floor.movers = [m for m in r5.run.floor.movers if m.kind == "figure"]
+r5.run.player = (4, 4); r5.anim = 0
+said.clear()
+r5.step(0, 1)
+play(lambda: any("thirsty" in s for s in said) and r5._ready(), 900)
+check(any("thirsty" in s for s in said) and r5.run.player[1] <= 4, f"...heading for Saffron without a drink, the guard calls you back ({r5.run.player}, {said[:1]})")
+story.inventory["TEA"] = 1
+r5 = open_map("KANTO_ROUTE_5", "CERULEAN_CITY")
+check(r5.run.index == 0 and r5.run.player[1] <= 2, f"...in from Cerulean at the top ({r5.run.player})")
+if _tea is None:
+    story.inventory.pop("TEA", None)
+# the Underground Path: down the stairs, the length of the tunnel, up into the Route 6 hut
+up = open_map("UNDERGROUND_PATH", "KANTO_ROUTE_5")
+check(up.room is None and "KANTO_ROUTE_5" in up.exits.values(), f"Underground Path: in from Route 5 in its hut ({up.room})")
+_st = next(xy for xy, v in up.exits.items() if v == "ROOM:ns")
+up.player = (_st[0], _st[1] - 1) if up._open((_st[0], _st[1] - 1)) else (_st[0] - 1, _st[1]); up.anim = 0
+walk(up, "d" if up.player[1] < _st[1] else "r")
+up = g.current_state
+check(up.room == "ns" and up.player[1] <= 6 and any(o.get("text") == "Talk to Fossil Maniac" for o in up._people().values()),
+      f"...down its stairs: the north end of the tunnel, the Fossil Maniac in it ({up.room}, {up.player})")
+_low = next(xy for xy, v in up.exits.items() if v == "ROOM:south")
+up.player = (_low[0], _low[1] - 1); up.anim = 0
+walk(up, "d")
+up = g.current_state
+check(up.room == "south" and "KANTO_ROUTE_6" in up.exits.values(), f"...and at its south end, up into the Route 6 hut ({up.room})")
+# Vermilion Gym: FireRed's trash-can puzzle
+for _k in ("vermilion_gym_lock1", "vermilion_gym_open", "vermilion_gym_lock1_where"):
+    story.story_flags.pop(_k, None)
+ve = open_map("VERMILLION_CITY", "KANTO_ROUTE_6")
+ve.player = (14, 26); ve.anim = 0
+walk(ve, "u")
+ve = g.current_state
+check(ve.room == "gym" and (5, 6) in ve.barred and (5, 7) in ve.barred, f"Vermilion Gym: the electric gate is shut ({ve.room})")
+_cans = [(x, y) for y in (10, 12, 14) for x in (1, 3, 5, 7, 9)]
+story.story_flags["vermilion_gym_lock1_where"] = [6, 7]   # (switches under cans 6 and 7: (3,12), then (5,12) beside it)
+
+
+def _search(can, frm):
+    ve = g.current_state
+    ve.player = frm; ve.anim = 0
+    said.clear()
+    ve.step(can[0] - frm[0], can[1] - frm[1])
+    play(lambda: not g.current_state._busy(), 300)
+
+
+_search((9, 10), (9, 11))
+check(not story.story_flags.get("vermilion_gym_lock1") and any("only trash" in s for s in said), "...an empty can: only trash")
+_search((3, 12), (3, 13))
+check(story.story_flags.get("vermilion_gym_lock1") and any("first electric lock" in s for s in said), "...the first switch, under a can: one lock opens")
+_pic = json.dumps((g.current_state.town_map["rooms"]["gym"]["roofs"]["_picture"]))
+check("9_6_lock1" in _pic, "...FireRed's own picture of the half-open gate is ready for it")
+_search((9, 14), (9, 13))
+check(not story.story_flags.get("vermilion_gym_lock1") and any("reset" in s for s in said), "...the wrong can next: the locks reset")
+story.story_flags["vermilion_gym_lock1_where"] = [6, 7]
+_search((3, 12), (3, 13))
+_search((5, 12), (5, 13))
+ve = g.current_state
+check(story.story_flags.get("vermilion_gym_open") and (5, 6) not in ve.barred and ve._open((5, 6)) and ve._open((5, 7)),
+      f"...the second switch beside the first: the door to Lt. Surge opens ({said[-1:]})")
+_pp = {o.get("text"): p for p, o in ve._people().items()}
+check(_pp.get("Gentleman Tucker") == (7, 8) and _pp.get("Gym") == (5, 2), f"...Gentleman Tucker (FireRed's) by the door, Lt. Surge beyond ({_pp})")
 story.badges["KANTO"] = []
 
 print(f"##### {len(fails)} failures")

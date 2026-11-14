@@ -493,7 +493,9 @@ enter(t, (15, 6))
 check(t.room == "center", "...its Center is the shared room")
 t._go(None, "OUT:15,6")
 enter(t, (14, 25))
-check(t.room == "gym" and t.people.get((5, 2), {}).get("action") == "GYM" and t._open((5, 6)) and t._open((5, 7)), f"...its Gym: FireRed's room, the gate open, Lt. Surge at the back ({t.room})")
+# (11-14: FireRed's trash-can puzzle is built: the gate stays shut till both switches are found; kanto_maps plays it)
+check(t.room == "gym" and t.people.get((5, 2), {}).get("action") == "GYM" and not t._open((5, 6)) and not t._open((5, 7)),
+      f"...its Gym: FireRed's room, the electric gate shut, Lt. Surge at the back ({t.room})")
 t.draw(); t._go(None, "OUT:14,25")
 t = at_town("LAVENDER_TOWN", "KANTO_ROUTE_10_SOUTH", (24, 20), lambda x, y: y <= 2, {"KANTO_ROUTE_10_SOUTH", "KANTO_ROUTE_8", "KANTO_ROUTE_12"},
             {"center", "mart", "ptower", "fuji"}, "Lavender Town")
@@ -980,7 +982,7 @@ for _k, _v in _had.items():
 # ---- the ordinary houses in the towns (FireRed's own rooms: 7.0-7.9, 9.4, 9.7, 8.3, 8.4, 10.17-10.19, 14.4, 14.8, 14.9, 11.2, 11.4, 11.9)
 for _town, _came, _doors in (
         ("CERULEAN_CITY", "KANTO_ROUTE_4", (((10, 11), "house_w", (10, 10), 1), ((10, 8), "house_w", (10, 10), 1), ((30, 11), "house_ne", (10, 9), 2), ((31, 8), "house_ne", (10, 9), 2), ((15, 17), "house_mid", (11, 9), 2), ((23, 28), "house_s", (11, 9), 1), ((17, 11), "house_n", (11, 9), 1))),
-        ("VERMILLION_CITY", "KANTO_ROUTE_6", (((19, 17), "house_n", (11, 9), 1), ((28, 24), "house_e", (11, 9), 2))),
+        ("VERMILLION_CITY", "KANTO_ROUTE_6", (((19, 17), "house_n", (11, 9), 1), ((28, 24), "house_e", (11, 9), 3))),   # (11-14: FireRed's Pidgey stands with its owners)
         ("LAVENDER_TOWN", "KANTO_ROUTE_8", (((5, 16), "house_w", (11, 9), 1), ((10, 16), "rater", (11, 9), 1))),
         ("CELADON_CITY", "KANTO_ROUTE_7", (((37, 29), "restaurant", (15, 11), 5), ((41, 29), "house_e", (11, 9), 2), ((49, 29), "hotel", (17, 11), 3))),
         ("SAFFRON_CITY", "KANTO_ROUTE_5", (((27, 21), "house_w", (11, 9), 2), ((43, 38), "psychic", (11, 9), 1), ((47, 21), "fans", (11, 17), 4))),

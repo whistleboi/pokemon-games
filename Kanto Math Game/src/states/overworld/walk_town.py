@@ -394,6 +394,51 @@ class WalkTownState(CityState):
         x, y = self.player
         return not (0 <= y < self.h and 0 <= x < self.w and self.rows[y][x] == "o")
 
+    def _trash_can(self, t):
+        """A room's "trashcans" {"cans": [[x, y]...] in rows of "cols", "first": flag, "open": flag} (FireRed's Vermilion
+        Gym): two switches hide in the cans, the second always beside the first (left, right, up or down in the grid).
+        Find the first and one lock opens; the second next opens the door; a wrong can after the first resets both and
+        hides the switches somewhere new. Returns True when t was a can."""
+        tc = (((self.town_map or {}).get("rooms") or {}).get(getattr(self, "room", None)) or {}).get("trashcans") if getattr(self, "town_map", None) else None
+        if not tc or [t[0], t[1]] not in tc["cans"]:
+            return False
+        import random
+        story = self.game.story_manager
+        flags = story.story_flags
+        cans, cols = [tuple(c) for c in tc["cans"]], int(tc.get("cols", 5))
+        i = cans.index(tuple(t))
+
+        def hide():
+            first = random.randrange(len(cans))
+            r, c = divmod(first, cols)
+            near = [rr * cols + cc for rr, cc in ((r - 1, c), (r + 1, c), (r, c - 1), (r, c + 1))
+                    if 0 <= cc < cols and 0 <= rr * cols + cc < len(cans) and 0 <= rr]
+            flags[tc["first"] + "_where"] = [first, random.choice(near)]
+        if flags.get(tc["open"]):
+            self.show_message(["Nope, there's only trash in here."])
+            return True
+        if not flags.get(tc["first"] + "_where"):
+            hide()
+        first, second = flags[tc["first"] + "_where"]
+        if not flags.get(tc["first"]):
+            if i == first:
+                flags[tc["first"]] = True
+                self._from_art(self.town_map["rooms"][self.room])
+                self.show_message(["Hey! There's a switch under the trash!", "Click! The first electric lock opened!"])
+            else:
+                self.show_message(["Nope, there's only trash in here."])
+            return True
+        if i == second:
+            flags[tc["open"]] = True
+            self._from_art(self.town_map["rooms"][self.room])
+            self.show_message(["There's another switch under the trash!", "Click! The second electric lock opened! The door to the Leader is open!"])
+        else:
+            flags.pop(tc["first"], None)
+            hide()
+            self._from_art(self.town_map["rooms"][self.room])
+            self.show_message(["Nope, there's only trash in here.", "Hey! The electric locks were reset!"])
+        return True
+
     def _town_hidden(self, t):
         """An item hidden in town (the map's or room's "hidden" {"x,y": item}: the game's own hidden items, as on the
         routes): found by stepping on its spot, or walking into it where it's solid. Once each."""
@@ -654,6 +699,9 @@ class WalkTownState(CityState):
             return self.flash("Your team fainted: stay close to a friend.")
         if roster.world.occupied(self.game, to):
             self.walk_goal = None  # (a friend or their Pokemon is standing there)
+            return
+        if self._trash_can(to):   # (Vermilion Gym's trash cans: search one by walking into it)
+            self.walk_goal = None
             return
         if tuple(to) in getattr(self, "barred", {}):
             self.walk_goal = None

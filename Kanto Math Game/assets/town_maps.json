@@ -4926,7 +4926,7 @@
    "ccccccccccccccc....c________c....ccccccccccccccc",
    "ccccccccccccccc....c........c....ccccccccccccccc",
    "ccccccccccccccc....c........c....ccccccccccccccc",
-   "cccccccccccccccvvvvcvvvvvvvvcvvvvccccccccccccccc"
+   "cccccccccccccccvvvvc........cvvvvccccccccccccccc"
   ],
   "exits": {
    "^": "KANTO_ROUTE_24",
@@ -5158,38 +5158,6 @@
    ],
    "18,39": [
     18,
-    0
-   ],
-   "20,39": [
-    20,
-    0
-   ],
-   "21,39": [
-    21,
-    0
-   ],
-   "22,39": [
-    22,
-    0
-   ],
-   "23,39": [
-    23,
-    0
-   ],
-   "24,39": [
-    24,
-    0
-   ],
-   "25,39": [
-    25,
-    0
-   ],
-   "26,39": [
-    26,
-    0
-   ],
-   "27,39": [
-    27,
     0
    ],
    "29,39": [
@@ -6749,139 +6717,122 @@
  },
  "KANTO_ROUTE_5": {
   "art": [
-   "TTTTTTTTTTTTTTk^^^^k^^^^^^^^k^^^^kTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTk====k........k====kTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTk====k........k====kTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTk====k........k====kTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTk====k________k====kTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTk====k\"\"\"\"\"\"\"\"k====kTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTk====k\"\"\"\"\"\"\"\"k====kTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTk====k........k====kTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTk====k........k====kTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTk====k________k====kTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTk====k\"\"\"\"\"\"\"\"k====kTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTk====k\"\"\"\"\"\"\"\"k====kTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTk====k........k====kTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTk====k........k====kTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTk====k________k====kTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTk====k\"\"\"\"\"\"\"\"k====kTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTk====k\"\"\"\"\"\"\"\"k====kTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTk====k........k====kTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTk====k........k====kTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTk====k________k====kTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTk====k........k====kTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTk====k........k====kTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTk====kdYYYYYddk====kTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTk====kdYYYYYddk====kTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTk====kdYYYYYddk====kTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTk====kdYYDYYddk====kTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTk====kddddddddk====kTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTk....__________....kTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTk..................kTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTk...............UUUUTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTk........====...UUUUTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTk........====...UDUUTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTk.......k=DD.k....!kTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTk.......GGGGGG.....kTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTkkkkkkkkGGGGGGkkkkkkTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTGGGGGGTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTGGGGGGTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTGGGGGGTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTGGGGGGTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTkkkkkkTTTTTTTTTTTTTTTTTTTT"
+   "ccccccccccccccc^^^^cccccccccc^^^^ccccccccccccccc",
+   "ccccccccccccccc....cccccccccc....ccccccccccccccc",
+   "ccccccccccccccc....cccccccccc....ccccccccccccccc",
+   "ccccccccccccccc....cccccccccc....ccccccccccccccc",
+   "ccccccccccccccc....c________c....ccccccccccccccc",
+   "ccccccccccccccc....cccccccccc....ccccccccccccccc",
+   "ccccccccccccccc....cccccccccc....ccccccccccccccc",
+   "ccccccccccccccc....cccccccccc....ccccccccccccccc",
+   "ccccccccccccccc....cccccccccc....ccccccccccccccc",
+   "ccccccccccccccc....c________c....ccccccccccccccc",
+   "ccccccccccccccc....cccccccccc....ccccccccccccccc",
+   "ccccccccccccccc....cccccccccc....ccccccccccccccc",
+   "ccccccccccccccc....cccccccccc....ccccccccccccccc",
+   "ccccccccccccccc....cccccccccc....ccccccccccccccc",
+   "ccccccccccccccc....c________c....ccccccccccccccc",
+   "ccccccccccccccc....cccccccccc....ccccccccccccccc",
+   "ccccccccccccccc....cccccccccc....ccccccccccccccc",
+   "ccccccccccccccc....cccccccccc....ccccccccccccccc",
+   "ccccccccccccccc....cccccccccc....ccccccccccccccc",
+   "ccccccccccccccc....c________c....ccccccccccccccc",
+   "ccccccccccccccc....c........c....ccccccccccccccc",
+   "ccccccccccccccc....c........c....ccccccccccccccc",
+   "ccccccccccccccc....c.ccccc..c....ccccccccccccccc",
+   "ccccccccccccccc....c.ccccc..c....ccccccccccccccc",
+   "ccccccccccccccc....c.ccAcc..c....ccccccccccccccc",
+   "ccccccccccccccc....c.ccDcc..c....ccccccccccccccc",
+   "ccccccccccccccc....c........c....ccccccccccccccc",
+   "ccccccccccccccc....__________....ccccccccccccccc",
+   "ccccccccccccccc..................ccccccccccccccc",
+   "ccccccccccccccc...............cccccccccccccccccc",
+   "ccccccccccccccc...............cccccccccccccccccc",
+   "ccccccccccccccc...............cncccccccccccccccc",
+   "ccccccccccccccc.......c.DD.c....!ccccccccccccccc",
+   "ccccccccccccccc.......ccBBcc.....ccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccc"
   ],
   "exits": {
    "^": "CERULEAN_CITY",
-   "U": "UNDERGROUND_PATH"
+   "n": "UNDERGROUND_PATH"
   },
   "buildings": {
-   "G": "gate",
-   "U": "tunnel",
-   "Y": "daycare"
+   "A": "daycare",
+   "B": "gate"
   },
   "roofs": {
-   "G": [
-    172,
-    189,
-    205
-   ],
-   "U": [
-    172,
-    189,
-    205
-   ],
-   "Y": [
-    230,
-    189,
-    82
-   ]
+   "_picture": {
+    "f": "fr_ground/3_23.png",
+    "at": [
+     0,
+     0
+    ]
+   },
+   "_signs_in_picture": true,
+   "_buildings_in_picture": true
   },
-  "overheads": [
-   {
-    "kind": "tops",
-    "rect": [
-     21,
-     21,
-     5,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     230,
-     189,
-     82
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     30,
-     28,
-     3,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     172,
-     189,
-     205
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     23,
-     32,
-     1,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     172,
-     189,
-     205
-    ]
-   }
-  ],
   "signs": [
    [
     "UNDERGROUND PATH",
-    "Cerulean City - Vermilion City, under Saffron. Down the stairs here!"
+    "Cerulean City - Vermilion City"
    ]
   ],
-  "people": [],
+  "inside": {
+   "23,25": "daycare",
+   "24,32": "gate",
+   "25,32": "gate"
+  },
+  "edge_to": {
+   "15,0": [
+    15,
+    39
+   ],
+   "16,0": [
+    16,
+    39
+   ],
+   "17,0": [
+    17,
+    39
+   ],
+   "18,0": [
+    18,
+    39
+   ],
+   "29,0": [
+    29,
+    39
+   ],
+   "30,0": [
+    30,
+    39
+   ],
+   "31,0": [
+    31,
+    39
+   ],
+   "32,0": [
+    32,
+    39
+   ]
+  },
   "rooms": {
    "daycare": {
-    "theme": "room",
     "art": [
      "cccccccccccc",
      "cccccccccccc",
-     "....j.......",
-     "z...j======.",
-     "z...N==mm==.",
-     "z....==mm==.",
-     "z....======z",
-     "z...v......z",
+     "....c.......",
+     "c...c.......",
+     "c...N..cc...",
+     "c......cc...",
+     "c..........c",
+     "c..vvv.....c",
      "cccccccccccc"
     ],
     "exits": {
@@ -6889,92 +6840,25 @@
     },
     "buildings": {},
     "roofs": {
-     "_floor": [
-      198,
-      188,
-      137
-     ],
-     "_wall": [
-      123,
-      189,
-      222
-     ],
-     "_things": {
-      "7,4": [
-       238,
-       230,
-       172
-      ],
-      "8,4": [
-       238,
-       230,
-       172
-      ],
-      "7,5": [
-       238,
-       230,
-       172
-      ],
-      "8,5": [
-       238,
-       230,
-       172
+     "_picture": {
+      "f": "fr_ground/17_0.png",
+      "at": [
+       0,
+       0
       ]
      },
-     "_kinds": {
-      "7,4": "table",
-      "8,4": "table",
-      "7,5": "table",
-      "8,5": "table"
-     },
-     "_mat": true,
-     "_fittings": [
-      {
-       "kind": "stool",
-       "rect": [
-        6,
-        4,
-        1,
-        1
-       ]
-      },
-      {
-       "kind": "stool",
-       "rect": [
-        6,
-        5,
-        1,
-        1
-       ]
-      },
-      {
-       "kind": "stool",
-       "rect": [
-        9,
-        4,
-        1,
-        1
-       ]
-      },
-      {
-       "kind": "stool",
-       "rect": [
-        9,
-        5,
-        1,
-        1
-       ]
-      }
-     ],
-     "_rug": [
-      206,
-      150,
-      198
-     ]
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
     },
     "people": [
      "POKéMON DAY CARE"
     ],
+    "moves": {
+     "4,4": {
+      "m": "face",
+      "d": "d"
+     }
+    },
     "land": {
      "23,25": [
       23,
@@ -6987,148 +6871,83 @@
       6
      ]
     },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/17_0.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       12,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
     "title": "Day Care"
    },
    "gate": {
-    "theme": "room",
     "art": [
      "ccccccccc",
-     "cccc^cccc",
-     "..m...m..",
-     "z.m===m.z",
-     "..m===m..",
-     ".Nm===m..",
-     "z.m===m.z",
-     "..m===m..",
-     "..m===m..",
-     "z.mvv.m.z",
+     "cccc^<ccc",
+     "ccm...mcc",
+     "ccm...mcc",
+     "ccm...mcc",
+     "cNm...mcc",
+     "ccm...mcc",
+     "ccm...mcc",
+     "ccm...mcc",
+     "ccmvv.mcc",
      "ccccccccc"
     ],
     "exits": {
      "v": "SAFFRON_CITY",
-     "^": "OUT:24,32"
+     "^": "OUT:24,32",
+     "<": "OUT:25,32"
     },
     "buildings": {},
     "roofs": {
-     "_floor": [
-      192,
-      182,
-      126
-     ],
-     "_wall": [
-      213,
-      222,
-      197
-     ],
-     "_things": {
-      "2,2": [
-       246,
-       238,
-       189
-      ],
-      "6,2": [
-       246,
-       238,
-       189
-      ],
-      "2,3": [
-       246,
-       238,
-       189
-      ],
-      "6,3": [
-       246,
-       238,
-       189
-      ],
-      "2,4": [
-       246,
-       238,
-       189
-      ],
-      "6,4": [
-       246,
-       238,
-       189
-      ],
-      "2,5": [
-       246,
-       238,
-       189
-      ],
-      "6,5": [
-       246,
-       238,
-       189
-      ],
-      "2,6": [
-       246,
-       238,
-       189
-      ],
-      "6,6": [
-       246,
-       238,
-       189
-      ],
-      "2,7": [
-       246,
-       238,
-       189
-      ],
-      "6,7": [
-       246,
-       238,
-       189
-      ],
-      "2,8": [
-       246,
-       238,
-       189
-      ],
-      "6,8": [
-       246,
-       238,
-       189
-      ],
-      "2,9": [
-       131,
-       131,
-       131
-      ],
-      "6,9": [
-       131,
-       131,
-       131
+     "_picture": {
+      "f": "fr_ground/17_1.png",
+      "at": [
+       0,
+       0
       ]
      },
-     "_kinds": {
-      "2,2": "table",
-      "6,2": "table",
-      "2,3": "table",
-      "6,3": "table",
-      "2,4": "table",
-      "6,4": "table",
-      "2,5": "table",
-      "6,5": "table",
-      "2,6": "table",
-      "6,6": "table",
-      "2,7": "table",
-      "6,7": "table",
-      "2,8": "table",
-      "6,8": "table",
-      "2,9": "table",
-      "6,9": "table"
-     },
-     "_mat": true,
-     "_rug": [
-      115,
-      156,
-      180
-     ]
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
     },
     "people": [
      "GUARD"
+    ],
+    "moves": {
+     "1,5": {
+      "m": "face",
+      "d": "r"
+     }
+    },
+    "scenes": [
+     {
+      "who": "GUARD",
+      "trigger": {
+       "zone": [
+        3,
+        5,
+        5,
+        5
+       ]
+      },
+      "condition": "not:has_item:TEA",
+      "every": true,
+      "then": "talk",
+      "push": [
+       0,
+       -1
+      ],
+      "after": "stay"
+     }
     ],
     "land": {
      "24,32": [
@@ -7150,18 +6969,40 @@
       2
      ]
     },
-    "title": "Saffron Gate",
-    "parts": true
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/17_1.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       9,
+       11
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Saffron Gate"
    }
   },
-  "inside": {
-   "23,25": "daycare",
-   "24,32": "gate",
-   "25,32": "gate"
-  }
+  "overheads": [
+   {
+    "kind": "picture",
+    "f": "fr_top/3_23.png",
+    "at": [
+     0,
+     0
+    ],
+    "size": [
+     48,
+     40
+    ]
+   }
+  ]
  },
  "UNDERGROUND_PATH": {
-  "theme": "tunnel",
   "art": [
    "ccccccccccccc",
    "ccccccccccccc",
@@ -7169,7 +7010,7 @@
    "..cc.cc..cc..",
    "..c..ccv..c..",
    "..c..cc...c..",
-   "..cc.....cc..",
+   "..cc.N...cc..",
    ".............",
    "c....^^^....c",
    "ccccccccccccc"
@@ -7179,14 +7020,42 @@
    "v": "ROOM:ns"
   },
   "buildings": {},
+  "roofs": {
+   "_picture": {
+    "f": "fr_ground/1_30.png",
+    "at": [
+     0,
+     0
+    ]
+   },
+   "_signs_in_picture": true,
+   "_buildings_in_picture": true
+  },
+  "people": [
+   {
+    "text": "Little girl",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "The tunnel under Saffron goes all the way to Vermilion. It's ever so long!"
+     ]
+    }
+   }
+  ],
+  "moves": {
+   "5,6": {
+    "m": "face",
+    "d": "d"
+   }
+  },
+  "theme": "tunnel",
   "rooms": {
    "ns": {
-    "theme": "tunnel",
     "art": [
      "cccccccc",
      "cccccccc",
      "c....ccc",
-     "c...vccc",
+     "c...nccc",
      "c....ccc",
      "c......c",
      "c......c",
@@ -7211,10 +7080,10 @@
      "c......c",
      "c......c",
      "c......c",
-     "cN.....c",
      "c......c",
      "c......c",
      "c......c",
+     "c..N...c",
      "c......c",
      "c......c",
      "c......c",
@@ -7243,185 +7112,345 @@
      "c......c",
      "c......c",
      "ccc....c",
-     "ccc^...c",
+     "ccc<...c",
      "ccc....c",
      "cccccccc"
     ],
     "exits": {
-     "v": "ROOM:MAIN",
-     "^": "ROOM:south"
+     "n": "ROOM:MAIN",
+     "<": "ROOM:south"
     },
     "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_31.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
     "people": [
      "Talk to Fossil Maniac"
-    ]
+    ],
+    "hidden": {
+     "5,30": "POTION",
+     "5,6": "ANTIDOTE",
+     "2,57": "BURN_HEAL",
+     "1,24": "AWAKENING",
+     "6,53": "ICE_HEAL",
+     "3,15": "PARALYZE_HEAL",
+     "3,39": "ETHER"
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_31.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       8,
+       63
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Underground Path"
    },
    "south": {
-    "theme": "tunnel",
     "art": [
      "ccccccccccccc",
      "ccccccccccccc",
      "c...........c",
      "..cc.cc..cc..",
-     "..c..cc^..c..",
-     "..c..cc...c..",
-     "..cc.....cc..",
+     "..m..ccn..m..",
+     "..m..cc...m..",
+     "..cc.N...cc..",
      ".............",
      "c....vvv....c",
      "ccccccccccccc"
     ],
     "exits": {
      "v": "KANTO_ROUTE_6",
-     "^": "ROOM:ns"
+     "n": "ROOM:ns"
     },
-    "buildings": {}
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_32.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Girl",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "People lose things in the dark down in the Underground Path all the time."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "5,6": {
+      "m": "look",
+      "d": "udlr"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_32.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       13,
+       10
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Underground Path"
    },
    "west": {
-    "theme": "tunnel",
     "art": [
      "ccccccccccccc",
      "ccccccccccccc",
      "c...........c",
      "..cc.cc..cc..",
-     "..c..ccv..c..",
-     "..c..cc...c..",
+     "..m..ccn..m..",
+     "..m..cc...m..",
      "..cc.....cc..",
      ".............",
-     "c....<<<....c",
+     "c....vvv....c",
      "ccccccccccccc"
     ],
     "exits": {
-     "<": "KANTO_ROUTE_7",
-     "v": "ROOM:ew"
+     "v": "KANTO_ROUTE_7",
+     "n": "ROOM:ew"
     },
-    "buildings": {}
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_33.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_33.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       13,
+       10
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Underground Path"
    },
    "ew": {
-    "theme": "tunnel",
     "art": [
      "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
      "c............................................................................ccc",
-     "ccc.........................................................................vccc",
-     "ccc^.........................................................................ccc",
+     "ccc.........................................................................nccc",
+     "ccc<.........................................................................ccc",
      "ccc............................................................................c",
      "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
     ],
     "exits": {
-     "v": "ROOM:east",
-     "^": "ROOM:west"
+     "n": "ROOM:east",
+     "<": "ROOM:west"
     },
-    "buildings": {}
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_34.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "hidden": {
+     "7,3": "POTION",
+     "17,5": "PARALYZE_HEAL",
+     "31,4": "AWAKENING",
+     "45,3": "BURN_HEAL",
+     "70,3": "ICE_HEAL",
+     "55,2": "ETHER",
+     "62,5": "ANTIDOTE"
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_34.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       80,
+       7
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Underground Path"
    },
    "east": {
-    "theme": "tunnel",
     "art": [
      "ccccccccccccc",
      "ccccccccccccc",
      "c...........c",
      "..cc.cc..cc..",
-     "..c..ccv..c..",
-     "..c..cc...c..",
+     "..m..ccn..m..",
+     "..m..cc...m..",
      "..cc.....cc..",
      ".............",
-     "c....>>>....c",
+     "c....vvv....c",
      "ccccccccccccc"
     ],
     "exits": {
-     ">": "KANTO_ROUTE_8",
-     "v": "ROOM:ew"
+     "v": "KANTO_ROUTE_8",
+     "n": "ROOM:ew"
     },
-    "buildings": {}
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_35.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_35.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       13,
+       10
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Underground Path"
    }
-  }
- },
- "KANTO_ROUTE_6": {
-  "art": [
-   "TTTTTTTTTTGGGGGGTTTTTTTT",
-   "TTTTTTTTTTGGGGGGTTTTTTTT",
-   "TTTTTTTTTTGGGGGGTTTTTTTT",
-   "TTTTTTTTTTGGGGGGTTTTTTTT",
-   "TTkkkkkkkkGGGGGGkkkkkkTT",
-   "TT.......kGGDDGGk.....TT",
-   "TT.......k.====.k.....TT",
-   "TT___.____.====.___.__TT",
-   "TT.........====.......TT",
-   "TT....................TT",
-   "TT....................TT",
-   "TT_______.________UUUUTT",
-   "TT================UUUUTT",
-   "TT================UDUUTT",
-   "TT====================TT",
-   "TT\"\"\"\"===\"\"\"\"\"\"======!TT",
-   "TT\"X\"\"===\"\"\"\"\"\"\"\"\"\"\"\"\"TT",
-   "TT\"\"\"\"===\"\"\"\"\"\"\"\"\"\"\"\"\"TT",
-   "TT\"\"\"\"===\"\"\"\"\"\"\"\"\"\"\"\"\"TT",
-   "TT\"\"\"\"==============\"\"TT",
-   "TT\"\"\"\"==============\"\"TT",
-   "TT\"\"\"\"======XX======\"\"TT",
-   "TT\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"===\"\"TT",
-   "TTooooooooooooo\"\"===\"\"TT",
-   "TTooooooooooooo\"\"===\"\"TT",
-   "TTooooooooooooo\"\"===X\"TT",
-   "TTooooooooooooo\"\"===\"\"TT",
-   "TT........==========\"\"TT",
-   "TT........==========\"\"TT",
-   "TT........==========\"\"TT",
-   "TTkkkkk...===\"\"\"\"kkkkkTT",
-   "TTTTTTk...===\"\"\"\"kTTTTTT",
-   "TTTTTTk...===X\"\"\"kTTTTTT",
-   "TTTTTTk...===X\"\"\"kTTTTTT",
-   "TTTTTTkkkk===kkkkkTTTTTT",
-   "TTTTTTTT.k===kTTTTTTTTTT",
-   "TTTTTTTT.k===kTTTTTTTTTT",
-   "TTTTTTTT.k===kTTTTTTTTTT",
-   "~~~~~~~~~k===kTTTTTTTTTT",
-   "~~~~~~~~~kvvvkTTTTTTTTTT"
-  ],
-  "exits": {
-   "U": "UNDERGROUND_PATH",
-   "v": "VERMILLION_CITY"
-  },
-  "buildings": {
-   "G": "gate",
-   "U": "tunnel"
-  },
-  "roofs": {
-   "G": [
-    172,
-    189,
-    205
-   ],
-   "U": [
-    172,
-    189,
-    205
-   ]
   },
   "overheads": [
    {
-    "kind": "tops",
-    "rect": [
-     18,
-     10,
-     4,
-     1
+    "kind": "picture",
+    "f": "fr_top/1_30.png",
+    "at": [
+     0,
+     0
     ],
-    "of": "roof",
-    "colour": [
-     172,
-     189,
-     205
+    "size": [
+     13,
+     10
     ]
    }
+  ]
+ },
+ "KANTO_ROUTE_6": {
+  "art": [
+   "cccccccccccccccccccccccc",
+   "cccccccccccccccccccccccc",
+   "cccccccccccccccccccccccc",
+   "cccccccccccccccccccccccc",
+   "ccccccccccccAccccccccccc",
+   "cc.......cccDDccc.....cc",
+   "cc.......c......c.....cc",
+   "cc___.____......___.__cc",
+   "cc....................cc",
+   "cc....................cc",
+   "cc....................cc",
+   "cc_______.________cccccc",
+   "cc................cccccc",
+   "cc................cncccc",
+   "cc....................cc",
+   "cc\"\"\"\"...\"\"\"\"\"\"......!cc",
+   "cc\"X\"\"...\"\"\"\"\"\"\"\"\"\"\"\"\"cc",
+   "cc\"\"\"\"...\"\"\"\"\"\"\"\"\"\"\"\"\"cc",
+   "cc\"\"\"\"...\"\"\"\"\"\"\"\"\"\"\"\"\"cc",
+   "cc\"\"\"\"..............\"\"cc",
+   "cc\"\"\"\"..............\"\"cc",
+   "cc\"\"\"\"......XX......\"\"cc",
+   "cc\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"...\"\"cc",
+   "ccooooooooooooo\"\"...\"\"cc",
+   "ccooooooooooooo\"\"...\"\"cc",
+   "ccooooooooooooo\"\"...X\"cc",
+   "ccooooooooooooo\"\"...\"\"cc",
+   "cc..................\"\"cc",
+   "cc..................\"\"cc",
+   "cc..................\"\"cc",
+   "ccccccc......\"\"\"\"ccccccc",
+   "ccccccc......\"\"\"\"ccccccc",
+   "ccccccc......X\"\"\"ccccccc",
+   "ccccccc......X\"\"\"ccccccc",
+   "cccccccccc...ccccccccccc",
+   "cccccccccc...ccccccccccc",
+   "cccccccccc...ccccccccccc",
+   "cccccccccc...ccccccccccc",
+   "cccccccccc...ccccccccccc",
+   "ccccccccccvvvccccccccccc"
   ],
+  "exits": {
+   "v": "VERMILLION_CITY",
+   "n": "UNDERGROUND_PATH"
+  },
+  "buildings": {
+   "A": "gate"
+  },
+  "roofs": {
+   "_picture": {
+    "f": "fr_ground/3_24.png",
+    "at": [
+     0,
+     0
+    ]
+   },
+   "_signs_in_picture": true,
+   "_buildings_in_picture": true
+  },
   "signs": [
    [
     "UNDERGROUND PATH",
-    "Cerulean City - Vermilion City, under Saffron. Down the stairs here!"
+    "Cerulean City - Vermilion City"
    ]
   ],
-  "people": [],
   "trainer_spots": [
    "Keigo",
    "Ricky",
@@ -7430,20 +7459,67 @@
    "Isabelle",
    "Jeff"
   ],
+  "inside": {
+   "12,5": "gate",
+   "13,5": "gate"
+  },
+  "edge_to": {
+   "10,39": [
+    22,
+    0
+   ],
+   "11,39": [
+    23,
+    0
+   ],
+   "12,39": [
+    24,
+    0
+   ]
+  },
+  "moves": {
+   "3,16": {
+    "m": "face",
+    "d": "r",
+    "s": 5
+   },
+   "12,21": {
+    "m": "face",
+    "d": "r"
+   },
+   "13,21": {
+    "m": "face",
+    "d": "l"
+   },
+   "20,25": {
+    "m": "face",
+    "d": "l",
+    "s": 3
+   },
+   "13,32": {
+    "m": "face",
+    "d": "l",
+    "s": 3
+   },
+   "13,33": {
+    "m": "face",
+    "d": "l",
+    "s": 3
+   }
+  },
   "rooms": {
    "gate": {
-    "theme": "room",
     "art": [
      "ccccccccc",
      "cccc^^ccc",
-     "..m...m..",
-     "z.m===m.z",
-     "..m===m..",
-     "..m===mN.",
-     "z.m===m.z",
-     "..m===m..",
-     "..m===m..",
-     "z.m.vvm.z",
+     "ccm...mcc",
+     "ccm...mcc",
+     "ccm...mcc",
+     "ccm...mNc",
+     "ccm...mcc",
+     "ccm...mcc",
+     "ccm...mcc",
+     "ccm.vvmcc",
      "ccccccccc"
     ],
     "exits": {
@@ -7452,125 +7528,45 @@
     },
     "buildings": {},
     "roofs": {
-     "_floor": [
-      192,
-      182,
-      126
-     ],
-     "_wall": [
-      213,
-      222,
-      197
-     ],
-     "_things": {
-      "2,2": [
-       246,
-       238,
-       189
-      ],
-      "6,2": [
-       246,
-       238,
-       189
-      ],
-      "2,3": [
-       246,
-       238,
-       189
-      ],
-      "6,3": [
-       246,
-       238,
-       189
-      ],
-      "2,4": [
-       246,
-       238,
-       189
-      ],
-      "6,4": [
-       246,
-       238,
-       189
-      ],
-      "2,5": [
-       246,
-       238,
-       189
-      ],
-      "6,5": [
-       246,
-       238,
-       189
-      ],
-      "2,6": [
-       246,
-       238,
-       189
-      ],
-      "6,6": [
-       246,
-       238,
-       189
-      ],
-      "2,7": [
-       246,
-       238,
-       189
-      ],
-      "6,7": [
-       246,
-       238,
-       189
-      ],
-      "2,8": [
-       246,
-       238,
-       189
-      ],
-      "6,8": [
-       246,
-       238,
-       189
-      ],
-      "2,9": [
-       131,
-       131,
-       131
-      ],
-      "6,9": [
-       131,
-       131,
-       131
+     "_picture": {
+      "f": "fr_ground/18_0.png",
+      "at": [
+       0,
+       0
       ]
      },
-     "_kinds": {
-      "2,2": "table",
-      "6,2": "table",
-      "2,3": "table",
-      "6,3": "table",
-      "2,4": "table",
-      "6,4": "table",
-      "2,5": "table",
-      "6,5": "table",
-      "2,6": "table",
-      "6,6": "table",
-      "2,7": "table",
-      "6,7": "table",
-      "2,8": "table",
-      "6,8": "table",
-      "2,9": "table",
-      "6,9": "table"
-     },
-     "_mat": true,
-     "_rug": [
-      115,
-      156,
-      180
-     ]
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
     },
     "people": [
      "GUARD"
+    ],
+    "moves": {
+     "7,5": {
+      "m": "face",
+      "d": "l"
+     }
+    },
+    "scenes": [
+     {
+      "who": "GUARD",
+      "trigger": {
+       "zone": [
+        3,
+        5,
+        5,
+        5
+       ]
+      },
+      "condition": "not:has_item:TEA",
+      "every": true,
+      "then": "talk",
+      "push": [
+       0,
+       1
+      ],
+      "after": "stay"
+     }
     ],
     "land": {
      "12,5": [
@@ -7592,209 +7588,175 @@
       8
      ]
     },
-    "title": "Saffron Gate",
-    "parts": true
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/18_0.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       9,
+       11
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Saffron Gate"
    }
   },
-  "inside": {
-   "12,5": "gate",
-   "13,5": "gate"
-  }
+  "hidden": {
+   "5,5": "SITRUS_BERRY",
+   "19,5": "RARE_CANDY"
+  },
+  "overheads": [
+   {
+    "kind": "picture",
+    "f": "fr_top/3_24.png",
+    "at": [
+     0,
+     0
+    ],
+    "size": [
+     24,
+     40
+    ]
+   }
+  ]
  },
  "VERMILLION_CITY": {
   "art": [
-   "~~~~~~~~~~~~~~~~~~~~~k^^^kTTTTTTTTTTTTTTTTTTTTTT",
-   "~~~~~~~~~~~~~~~~~~~~~k...kTTTTTTTTTTTTTTTTTTTTTT",
-   "~~~~~~qqqq~~~~~~~~~~~k...kTTTTTTTTTTTTTTTTTTTTTT",
-   "~~~~qqqqqq~~~CCCCC~~~k...kTTTTTTTTTTTTTTTTTTTTTT",
-   "~~~~qqooWWWWWCCCCCAAAA...BBBBBTTTTTTTTTTTTTTTTTT",
-   "~~~qqoooWWWWWCCCCCAAAA...BBBBBTTTTTTTTTTTTTTTTTT",
-   "~~~qqoooWDWWWCCDCCAAAA...BBBBBkkk!kkkkkkkkTTTTTT",
-   "~~qqoooos................................kTTTTTT",
-   "~~qqoooosssssss.................d=====d..kTTTTTT",
-   "~qqooooossssssssssss.....dddd...=======..kTTTTTT",
-   "~qqooooooooooosssssss....dddd...=======..kTTTTTT",
-   "~qqooooooooooosssssssss..dddd...===N===..kTTTTTT",
-   "~qqooooooooooooooooosss..dddd...=======..kTTTTTT",
-   "~qqooooooooooooooooosss.........=======..kTTTTTT",
-   "~qqoooooooo.....oooosss.........d=====d..kTTTTTT",
-   "~~qqoooosssFFFFFssEEEEs....MMMM..........kTTTTTT",
-   "~~qqoooosssFFFFFssEEEEs....MMMM..........TT.....",
-   "~~~qqoooss!FDFFFssEDEE=....MMDMББББББББББTTkk!kk",
-   "~~~qqooossss....===...............!............>",
-   "~~qqooooss==...................................>",
-   "~~qqooooss.........................eee.........>",
-   "~~qqooooss..........sssss......ooo.eee.ooooooooo",
-   "~~qqooooss.VVVVVVV.sssssss.IIIIooo.eee.ooooooooo",
-   "~~~qqoooss.VVVVVVV.sooooss.IIIIooo.eee.ooooooooo",
-   "~~~qqoookk!VVVVVVVk2oooosssIDIIooo.eee.ooccccccc",
-   "~~~qqoooss...YDY...soooossss=..oooo===oooccccccc",
-   "~~~qqooossssss.....sooooooooooooooo===oooccccccc",
-   "~~qqoooossssssssssssooooooooooooooo===oooccccccc",
-   "~~qqoooossssssssssssoo================oooccccccc",
-   "~~qqoooooooooooooooooo================ooocc~~~~~",
-   "~~qqoooooooooooooooooo================oooqq~~~~~",
-   "~~~qqooooooooooooooooo===ooooooooooooooooqq~~~~~",
-   "~~~qqooooooooooooooooo===ooooooooooooooooqq~~~~~",
-   "~~~~~qqoooooooooooooqq===qqqqoooooooooooqq~~~~~~",
-   "~~~~~qqoooooooooqqqqkcDDDckqqqqqqooooqqoqq~~~~~~",
-   "~~~~~~qqooooooqqqqqq~~PPP~~~~qqqqooooqqoqq~~~~~~",
-   "~~~~~~qqqqooooqq~~~~~~PPP~~~~~~~~qqoooooqq~~~~~~",
-   "~~~~~~~~qqqqqq~~~~~~~~,k,~~~~~~~~qqqqqqqq~~~~~~~",
-   "~~~~~~~~~~qqqq~~~~~~~~,k,~~~~~~~~~~qqqqqq~~~~~~~",
-   "~~~~~~~~~~~~~~~~~~~~~~,k,~~~~~~~~~~~~~~~~~~~~~~~"
+   "cccccccccccccccccccccc^^^ccccccccccccccccccccccc",
+   "cccccccccccccccccccccc...ccccccccccccccccccccccc",
+   "cccccc~~~~cccccccccccc...ccccccccccccccccccccccc",
+   "cccc~~~~~~cccccccccccc...ccccccccccccccccccccccc",
+   "cccc~~oocccccccccccccc...ccccccccccccccccccccccc",
+   "ccc~~ooocBcccccCcccccc...ccccccccccccccccccccccc",
+   "ccc~~ooocDcccccDcccccc...cccccccc!cccccccccccccc",
+   "cc~~oooo=................N...............ccccccc",
+   "cc~~oooo=======..........................ccccccc",
+   "c~~ooooo=========N==.....................ccccccc",
+   "c~~ooooooooooo=======...............N....ccccccc",
+   "c~~ooooooooooo========N............N.....ccccccc",
+   "c~~ooooooooooooooooo===..................ccccccc",
+   "c~~ooooooooooooooooo===..................ccccccc",
+   "c~~oooooooo.....oooo===..................ccccccc",
+   "cc~~oooo===ccccc==cccc=....cccc..........ccccccc",
+   "cc~~oooo===cEccc==cFcc=....ccGc..........ccccccc",
+   "ccc~~ooo==!cDccc==cDcc.....ccDccccccccccccccc!cc",
+   "ccc~~ooo====......................!............>",
+   "cc~~oooo==.....................................>",
+   "cc~~oooo==.....................................>",
+   "cc~~oooo==..........=====......ooo.....oooooooo>",
+   "cc~~oooo==.ccccccc.=======.ccccooo.....oooooooo>",
+   "ccc~~ooo==.ccccccc.=oooo==.cHccooo.....oooooooo>",
+   "ccc~~ooocc!cccIcccc2oooo===cDccooo.....ooccccccc",
+   "ccc~~ooo==...cDc...=oooo====...oooo...oooccccccc",
+   "ccc~~ooo======.....=ooooooooooooooo...oooccccccc",
+   "cc~~oooo============ooooooooooooooo...oooccccccc",
+   "cc~~oooo============oo................oooccccccc",
+   "cc~~oooooooooooooooooo................ooo~~ccccc",
+   "cc~~oooooooooooooooooo.........N......ooo~~ccccc",
+   "ccc~~ooooooooooooooooo...oooooooooooooooo~~ccccc",
+   "ccc~~ooooooooooooooooo...oooooooooooooooo~~ccccc",
+   "ccccc~~ooooooooooooo~~..N~~~~ooooooooooo~~cccccc",
+   "ccccc~~ooooooooo~~~~~~DDD~~~~~~~~oooo~~o~~cccccc",
+   "cccccc~~oooooo~~~~~~ccAAAcccc~~~~oooo~~o~~cccccc",
+   "cccccc~~~~oooo~~ccccccccccccccccc~~ooooo~~cccccc",
+   "cccccccc~~~~~~ccccccccccccccccccc~~~~~~~~ccccccc",
+   "cccccccccc~~~~ccccccccccccccccccccc~~~~~~ccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccc"
   ],
   "exits": {
    "^": "KANTO_ROUTE_6",
    ">": "KANTO_ROUTE_11"
   },
   "buildings": {
-   "A": "house",
-   "B": "house",
+   "A": "harbor",
+   "B": "guru",
    "C": "center",
-   "E": "house",
-   "F": "fanclub",
-   "I": "house",
-   "M": "mart",
-   "P": "harbor",
-   "V": "gym",
-   "W": "guru",
-   "Y": "gym",
-   "Б": "hedge"
+   "E": "fanclub",
+   "F": "house",
+   "G": "mart",
+   "H": "house",
+   "I": "gym"
   },
   "roofs": {
-   "A": [
-    255,
-    189,
-    32
-   ],
-   "B": [
-    255,
-    189,
-    32
-   ],
-   "C": [
-    222,
-    106,
-    98
-   ],
-   "E": [
-    255,
-    189,
-    32
-   ],
-   "F": [
-    98,
-    189,
-    148
-   ],
-   "I": [
-    255,
-    189,
-    32
-   ],
-   "M": [
-    98,
-    164,
-    222
-   ],
-   "P": [
-    172,
-    189,
-    205
-   ],
-   "V": [
-    197,
-    172,
-    106
-   ],
-   "W": [
-    255,
-    189,
-    32
-   ],
-   "Y": [
-    197,
-    172,
-    106
-   ],
-   "_rocks": "big"
+   "_picture": {
+    "f": "fr_ground/3_5.png",
+    "at": [
+     0,
+     0
+    ]
+   },
+   "_signs_in_picture": true,
+   "_buildings_in_picture": true
   },
-  "overheads": [
+  "people": [
    {
-    "kind": "tops",
-    "rect": [
-     11,
-     14,
-     5,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     98,
-     189,
-     148
-    ]
+    "text": "Scientist",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Vermilion's the port of exquisite sunsets. And of Lt. Surge, the Lightning American!"
+     ]
+    }
    },
    {
-    "kind": "tops",
-    "rect": [
-     20,
-     14,
-     2,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     255,
-     189,
-     32
-    ]
+    "text": "Old man",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Have you seen the S.S. Anne in the harbor? It only comes to Vermilion once a year."
+     ]
+    }
    },
    {
-    "kind": "tops",
-    "rect": [
-     27,
-     14,
-     4,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     98,
-     164,
-     222
-    ]
+    "text": "Builder",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "I'm putting up a building on this lot. I own it! My Machop is stamping the ground flat."
+     ]
+    }
    },
    {
-    "kind": "tops",
-    "rect": [
-     11,
-     21,
-     7,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     197,
-     172,
-     106
-    ]
+    "text": "Lady",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "We're careful about pollution here. Grimer breed in sludge, you know."
+     ]
+    }
    },
    {
-    "kind": "tops",
-    "rect": [
-     27,
-     21,
-     4,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     255,
-     189,
-     32
-    ]
+    "text": "Machop",
+    "action": "EVENT",
+    "door": "outside",
+    "event": {
+     "lines": [
+      "Machop: Maaa-chop! (It's stomping the ground flat for a new building.)"
+     ]
+    }
+   },
+   {
+    "text": "Sailor",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "The S.S. Anne is a famous luxury liner. It visits Vermilion once a year."
+     ]
+    }
+   },
+   {
+    "text": "Harbor sailor",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Welcome to Vermilion Harbor! Ships leave from the dock just inside."
+     ]
+    }
    }
   ],
   "signs": [
@@ -7815,139 +7777,560 @@
     "Ships to far-off places. Show your ticket at the door!"
    ],
    [
-    "VERMILION CITY GYM",
+    "VERMILION CITY POKéMON GYM",
     "Leader: Lt. Surge, the Lightning American!"
    ]
   ],
-  "people": [
-   {
-    "text": "Machop",
-    "action": "EVENT",
-    "door": "outside",
-    "event": {
-     "lines": [
-      "Machop: Maaa-chop! (It's stomping the ground flat for a new building.)"
-     ]
-    }
+  "inside": {
+   "9,6": "guru",
+   "15,6": "center",
+   "12,17": "fanclub",
+   "19,17": "house_n",
+   "29,17": "mart",
+   "28,24": "house_e",
+   "14,25": "gym"
+  },
+  "edge_to": {
+   "22,0": [
+    10,
+    39
+   ],
+   "23,0": [
+    11,
+    39
+   ],
+   "24,0": [
+    12,
+    39
+   ],
+   "47,18": [
+    0,
+    8
+   ],
+   "47,19": [
+    0,
+    9
+   ],
+   "47,20": [
+    0,
+    10
+   ],
+   "47,21": [
+    0,
+    11
+   ],
+   "47,22": [
+    0,
+    12
+   ],
+   "47,23": [
+    0,
+    13
+   ]
+  },
+  "moves": {
+   "22,11": {
+    "m": "wander",
+    "d": "lr",
+    "r": [
+     4,
+     0
+    ]
+   },
+   "17,9": {
+    "m": "look",
+    "d": "udlr"
+   },
+   "36,10": {
+    "m": "look",
+    "d": "dl"
+   },
+   "31,30": {
+    "m": "wander",
+    "d": "lr",
+    "r": [
+     4,
+     0
+    ]
+   },
+   "24,33": {
+    "m": "face",
+    "d": "u"
+   },
+   "25,7": {
+    "m": "look",
+    "d": "udlr"
    }
-  ],
+  },
   "rooms": {
-   "center": {
-    "theme": "room",
+   "guru": {
     "art": [
-     "ccccccccccccccc",
-     "ccccccccccccccc",
-     "....zmmN.mz....",
-     "....mmmmmmm....",
-     "...............",
-     "...............",
-     "ce.........mm..",
-     "...........mm..",
-     "......vvv......",
-     "ccccccccccccccc"
+     "ccccccccccc",
+     "ccccccccccc",
+     "...........",
+     "...........",
+     ".....cc....",
+     "....Ncc....",
+     "...........",
+     "c..vvv....c",
+     "ccccccccccc"
     ],
     "exits": {
-     "v": "OUT:15,6"
+     "v": "OUT:9,6"
     },
     "buildings": {},
     "roofs": {
-     "_floor": [
-      225,
-      219,
-      171
-     ],
-     "_wall": [
-      230,
-      139,
-      98
-     ],
-     "_things": {
-      "5,2": [
-       82,
-       82,
-       106
-      ],
-      "6,2": [
-       82,
-       82,
-       106
-      ],
-      "9,2": [
-       82,
-       82,
-       106
-      ],
-      "4,3": [
-       82,
-       82,
-       106
-      ],
-      "5,3": [
-       255,
-       131,
-       115
-      ],
-      "6,3": [
-       255,
-       131,
-       115
-      ],
-      "7,3": [
-       180,
-       180,
-       164
-      ],
-      "8,3": [
-       255,
-       131,
-       115
-      ],
-      "9,3": [
-       255,
-       131,
-       115
-      ],
-      "10,3": [
-       82,
-       82,
-       106
-      ],
-      "11,6": [
-       255,
-       255,
-       255
-      ],
-      "12,6": [
-       255,
-       255,
-       255
-      ],
-      "11,7": [
-       222,
-       213,
-       230
-      ],
-      "12,7": [
-       255,
-       255,
-       255
+     "_picture": {
+      "f": "fr_ground/9_0.png",
+      "at": [
+       0,
+       0
       ]
-     }
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
     },
     "people": [
-     "Heal"
-    ]
-   },
-   "mart": {
+     "Fishing Guru"
+    ],
+    "moves": {
+     "4,5": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/9_0.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       11,
+       9
+      ]
+     }
+    ],
     "theme": "room",
+    "title": "Fishing Guru's house"
+   },
+   "center": {
+    "art": [
+     "ccccccccccccccc",
+     "ccccccccccccccc",
+     "....mccNccm....",
+     "....cmmmmmc....",
+     "......N.......N",
+     "............N..",
+     "c<.........cc..",
+     "...........cc..",
+     "....N.vvv......",
+     "ccccccccccccccc"
+    ],
+    "exits": {
+     "v": "OUT:15,6",
+     "<": "ROOM:center_2"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/9_1.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Heal",
+     {
+      "text": "Sailor",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Phew, back on dry land. The S.S. Anne's a grand ship, but I like my feet on the ground."
+       ]
+      }
+     },
+     {
+      "text": "Youngster",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Higher levels mean more power, but every Pokémon has types it's weak to."
+       ]
+      }
+     },
+     {
+      "text": "Man",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Two Pokémon at the same level can still differ. One raised by a Trainer is stronger than a wild one."
+       ]
+      }
+     },
+     {
+      "text": "Lady",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "My Pokémon was poisoned and fainted on the way here!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "4,8": {
+      "m": "wander",
+      "d": "lr",
+      "r": [
+       1,
+       0
+      ]
+     },
+     "12,5": {
+      "m": "face",
+      "d": "d"
+     },
+     "14,4": {
+      "m": "wander",
+      "d": "ud",
+      "r": [
+       0,
+       1
+      ]
+     },
+     "6,4": {
+      "m": "face",
+      "d": "d"
+     },
+     "7,2": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/9_1.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       15,
+       10
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Pokémon Center"
+   },
+   "center_2": {
+    "art": [
+     "ccccccccccccccc",
+     "ccccccccccccccc",
+     "cNNcccNcccNccc.",
+     "mmmcmcmmccmmcc.",
+     "...............",
+     "...............",
+     "c<.............",
+     "...............",
+     "...c.........c.",
+     "ccccccccccccccc"
+    ],
+    "exits": {
+     "<": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/9_2.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Mystery Gift lady",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Mystery Gifts arrive here now and then. There's nothing for you today, I'm afraid."
+       ]
+      }
+     },
+     {
+      "text": "Link attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I'm sorry, the Union Room is closed for now."
+       ]
+      }
+     },
+     {
+      "text": "Trade attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Trade Center is closed for maintenance. Please come back another time!"
+       ]
+      }
+     },
+     {
+      "text": "Colosseum attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Colosseum is closed for now. Sorry about that!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "2,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "6,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "10,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "1,2": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/9_2.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       15,
+       10
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Pokémon Center 2F"
+   },
+   "fanclub": {
+    "art": [
+     "cccccccccccc",
+     "cc!cccccc!cc",
+     "............",
+     "............",
+     "c....NN....c",
+     "c...NccN...c",
+     "c...NccN...c",
+     "c..........c",
+     "c..........c",
+     "............",
+     "c...vvv....c",
+     "cccccccccccc"
+    ],
+    "exits": {
+     "v": "OUT:12,17"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/9_3.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Pokemon Fan Club",
+     {
+      "text": "Member",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Chairman adores his Pokémon. But Daisy's the one Pokémon like most, I think!"
+       ]
+      }
+     },
+     {
+      "text": "Seel's owner",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "My Seel is twice as charming as any Pikachu! It squeals when I hug it!"
+       ]
+      }
+     },
+     {
+      "text": "Pikachu's owner",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Ha! Nothing beats my Pikachu. Just look at it!"
+       ]
+      }
+     },
+     {
+      "text": "Seel",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "SEEL: Kyuoo!"
+       ]
+      }
+     },
+     {
+      "text": "Pikachu",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "PIKACHU: Pika pika!"
+       ]
+      }
+     }
+    ],
+    "signs": [
+     [
+      "Fan Club rule: let's all listen politely to other Trainers."
+     ],
+     [
+      "Fan Club rule: if someone brags, brag right back!"
+     ]
+    ],
+    "moves": {
+     "6,4": {
+      "m": "face",
+      "d": "d"
+     },
+     "7,6": {
+      "m": "look",
+      "d": "udlr"
+     },
+     "4,6": {
+      "m": "look",
+      "d": "udlr"
+     },
+     "4,5": {
+      "m": "face",
+      "d": "d"
+     },
+     "7,5": {
+      "m": "face",
+      "d": "d"
+     },
+     "5,4": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/9_3.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       12,
+       12
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Pokémon Fan Club"
+   },
+   "house_n": {
     "art": [
      "ccccccccccc",
      "ccccccccccc",
-     "cz.m......m",
-     "..Nm.......",
-     "mmmm...mm.m",
-     ".......mm.m",
-     ".mm....mm.m",
+     "...........",
+     "...........",
+     "....Ncc....",
+     ".....cc....",
+     "...........",
+     "c..vvv....c",
+     "ccccccccccc"
+    ],
+    "exits": {
+     "v": "OUT:19,17"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/9_4.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Boy",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The S.S. Anne docks here once a year. Trainers from all over ride it!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "4,4": {
+      "m": "face",
+      "d": "u"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/9_4.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       11,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "House"
+   },
+   "mart": {
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "cccmN.....c",
+     "ccNm.......",
+     "mcmm...ccNc",
+     ".......cc.c",
+     ".cc....cc.c",
      "...vvv.....",
      "ccccccccccc"
     ],
@@ -7956,134 +8339,92 @@
     },
     "buildings": {},
     "roofs": {
-     "_floor": [
-      93,
-      148,
-      219
-     ],
-     "_wall": [
-      255,
-      255,
-      255
-     ],
-     "_things": {
-      "3,2": [
-       82,
-       82,
-       106
-      ],
-      "10,2": [
-       213,
-       197,
-       106
-      ],
-      "3,3": [
-       189,
-       230,
-       255
-      ],
-      "0,4": [
-       255,
-       255,
-       255
-      ],
-      "1,4": [
-       139,
-       180,
-       222
-      ],
-      "2,4": [
-       139,
-       180,
-       222
-      ],
-      "3,4": [
-       189,
-       230,
-       255
-      ],
-      "7,4": [
-       255,
-       255,
-       255
-      ],
-      "8,4": [
-       255,
-       255,
-       255
-      ],
-      "10,4": [
-       255,
-       255,
-       255
-      ],
-      "7,5": [
-       255,
-       255,
-       255
-      ],
-      "8,5": [
-       255,
-       255,
-       255
-      ],
-      "10,5": [
-       255,
-       255,
-       255
-      ],
-      "1,6": [
-       255,
-       255,
-       255
-      ],
-      "2,6": [
-       139,
-       180,
-       222
-      ],
-      "7,6": [
-       180,
-       180,
-       164
-      ],
-      "8,6": [
-       180,
-       180,
-       164
-      ],
-      "10,6": [
-       180,
-       180,
-       164
+     "_picture": {
+      "f": "fr_ground/9_5.png",
+      "at": [
+       0,
+       0
       ]
-     }
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
     },
     "people": [
-     "Shop"
-    ]
+     {
+      "text": "Man",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Pokémon aren't good or bad. It depends on their Trainer."
+       ]
+      }
+     },
+     "Shop",
+     {
+      "text": "Old man",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Some people use Pokémon for crimes. Team Rocket sells rare ones, and abandons the rest."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "4,2": {
+      "m": "face",
+      "d": "l"
+     },
+     "9,4": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       2
+      ]
+     },
+     "2,3": {
+      "m": "face",
+      "d": "r"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/9_5.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       11,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Poké Mart"
    },
    "gym": {
-    "theme": "room",
     "art": [
      "ccccccccccc",
      "ccccccccccc",
-     "c..m.N.m..c",
+     "c..c.N.c..c",
      "c.........c",
      "c.........c",
      "c.........c",
-     "mmmmm.mmmmm",
-     "mmmmm.mmmmm",
+     "ccccc.ccccc",
+     "ccccc.ccccc",
+     ".......N...",
+     "...........",
+     ".c.c.c.c.c.",
+     "..N........",
+     ".c.c.c.c.c.",
+     "........N..",
+     ".c.c.c.c.c.",
      "...........",
      "...........",
-     ".m.m.m.m.m.",
-     "...........",
-     ".m.m.m.m.m.",
-     "...........",
-     ".m.m.m.m.m.",
-     "...........",
-     "...........",
-     "...jN..j...",
+     "...!N..!...",
      "...........",
      "....vvv....",
      "ccccccccccc"
@@ -8093,587 +8434,297 @@
     },
     "buildings": {},
     "roofs": {
-     "_floor": [
-      205,
-      201,
-      130
-     ],
-     "_wall": [
-      238,
-      197,
-      82
-     ],
-     "_things": {
-      "3,2": [
-       82,
-       82,
-       106
+     "_picture": {
+      "f": "fr_ground/9_6.png",
+      "at": [
+       0,
+       0
       ],
-      "7,2": [
-       82,
-       82,
-       106
-      ],
-      "0,6": [
-       255,
-       255,
-       255
-      ],
-      "1,6": [
-       255,
-       255,
-       255
-      ],
-      "2,6": [
-       255,
-       255,
-       255
-      ],
-      "3,6": [
-       255,
-       255,
-       255
-      ],
-      "4,6": [
-       222,
-       222,
-       148
-      ],
-      "6,6": [
-       222,
-       222,
-       148
-      ],
-      "7,6": [
-       255,
-       255,
-       255
-      ],
-      "8,6": [
-       255,
-       255,
-       255
-      ],
-      "9,6": [
-       255,
-       255,
-       255
-      ],
-      "10,6": [
-       255,
-       255,
-       255
-      ],
-      "0,7": [
-       238,
-       197,
-       82
-      ],
-      "1,7": [
-       238,
-       197,
-       82
-      ],
-      "2,7": [
-       172,
-       189,
-       205
-      ],
-      "3,7": [
-       238,
-       197,
-       82
-      ],
-      "4,7": [
-       222,
-       222,
-       148
-      ],
-      "6,7": [
-       222,
-       222,
-       148
-      ],
-      "7,7": [
-       238,
-       197,
-       82
-      ],
-      "8,7": [
-       172,
-       189,
-       205
-      ],
-      "9,7": [
-       238,
-       197,
-       82
-      ],
-      "10,7": [
-       238,
-       197,
-       82
-      ],
-      "1,10": [
-       82,
-       82,
-       106
-      ],
-      "3,10": [
-       82,
-       82,
-       106
-      ],
-      "5,10": [
-       82,
-       82,
-       106
-      ],
-      "7,10": [
-       82,
-       82,
-       106
-      ],
-      "9,10": [
-       82,
-       82,
-       106
-      ],
-      "1,12": [
-       82,
-       82,
-       106
-      ],
-      "3,12": [
-       82,
-       82,
-       106
-      ],
-      "5,12": [
-       82,
-       82,
-       106
-      ],
-      "7,12": [
-       82,
-       82,
-       106
-      ],
-      "9,12": [
-       82,
-       82,
-       106
-      ],
-      "1,14": [
-       82,
-       82,
-       106
-      ],
-      "3,14": [
-       82,
-       82,
-       106
-      ],
-      "5,14": [
-       82,
-       82,
-       106
-      ],
-      "7,14": [
-       82,
-       82,
-       106
-      ],
-      "9,14": [
-       82,
-       82,
-       106
+      "when": [
+       {
+        "flag": "vermilion_gym_lock1",
+        "f": "fr_ground/9_6_lock1.png"
+       },
+       {
+        "flag": "vermilion_gym_open",
+        "f": "fr_ground/9_6_open.png"
+       }
       ]
-     }
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
     },
     "people": [
      "Gym",
      {
+      "text": "Gentleman Tucker",
+      "action": "EVENT",
+      "_look": "fr_61.png",
+      "event": {
+       "lines": [
+        "Gentleman Tucker: When I was in the army, Lt. Surge was my commanding officer. A tough one!"
+       ],
+       "flag": "gym_trainer_VERMILLION_CITY_2",
+       "battle": {
+        "name": "Gentleman Tucker",
+        "class": "GENTLEMAN",
+        "sprite": "gentleman.png",
+        "team": [
+         25
+        ],
+        "levels": [
+         23
+        ],
+        "rewards": {
+         "balls": 3
+        },
+        "dialogue": {
+         "player_won": [
+          "Gentleman Tucker: Stop! You're too good!"
+         ]
+        }
+       },
+       "done": [
+        "Gentleman Tucker: That door's not easy to open. Lt. Surge was always careful."
+       ]
+      }
+     },
+     {
+      "text": "Rocker Baily",
+      "action": "EVENT",
+      "_look": "fr_30.png",
+      "event": {
+       "lines": [
+        "Rocker Baily: I'm a lightweight, but I'm great with electricity!"
+       ],
+       "flag": "gym_trainer_VERMILLION_CITY_0",
+       "battle": {
+        "name": "Rocker Baily",
+        "class": "ROCKER",
+        "sprite": "rocker.png",
+        "team": [
+         100,
+         100
+        ],
+        "levels": null,
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Rocker Baily: Fried!"
+         ]
+        }
+       },
+       "done": [
+        "Rocker Baily: Okay, a tip: Lt. Surge hid switches in the trash. Check every can!"
+       ]
+      }
+     },
+     {
+      "text": "Sailor Dwayne",
+      "action": "EVENT",
+      "_look": "fr_62.png",
+      "event": {
+       "lines": [
+        "Sailor Dwayne: This is no place for kids!"
+       ],
+       "flag": "gym_trainer_VERMILLION_CITY_1",
+       "battle": {
+        "name": "Sailor Dwayne",
+        "class": "SAILOR",
+        "sprite": "sailor.png",
+        "team": [
+         25,
+         81
+        ],
+        "levels": null,
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Sailor Dwayne: Whoa! You surprised me!"
+         ]
+        }
+       },
+       "done": [
+        "Sailor Dwayne: Lt. Surge built the traps himself. A double lock on the door!"
+       ]
+      }
+     },
+     {
       "text": "Gym Guide",
       "action": "EVENT",
-      "door": "inside",
       "event": {
        "lines": [
-        "Gym Guide: Lt. Surge's Electric Pokemon can't touch Ground types!"
+        "Gym Guide: Yo, champ in the making! Lt. Surge's a master of Electric Pokémon.",
+        "Gym Guide: He hid switches in the trash cans to keep out the riffraff. Find both to open his door!"
        ]
       }
      }
-    ]
-   },
-   "fanclub": {
-    "theme": "room",
-    "art": [
-     "cccccccccccc",
-     "cccccccccccc",
-     "............",
-     "............",
-     "m....N.....m",
-     "m....mm....m",
-     "m....mm....m",
-     "m..........m",
-     "m..........m",
-     "............",
-     "m...vvv....m",
-     "cccccccccccc"
     ],
-    "exits": {
-     "v": "OUT:12,17"
-    },
-    "buildings": {},
-    "roofs": {
-     "_floor": [
-      204,
-      188,
-      202
+    "signs": [
+     [
+      "VERMILION GYM",
+      "Leader: Lt. Surge"
      ],
-     "_wall": [
-      238,
-      230,
-      172
-     ],
-     "_things": {
-      "0,4": [
-       197,
-       205,
-       222
-      ],
-      "11,4": [
-       230,
-       230,
-       246
-      ],
-      "0,5": [
-       189,
-       238,
-       238
-      ],
-      "5,5": [
-       238,
-       230,
-       172
-      ],
-      "6,5": [
-       238,
-       230,
-       172
-      ],
-      "11,5": [
-       189,
-       238,
-       238
-      ],
-      "0,6": [
-       123,
-       189,
-       222
-      ],
-      "5,6": [
-       238,
-       230,
-       172
-      ],
-      "6,6": [
-       238,
-       230,
-       172
-      ],
-      "11,6": [
-       123,
-       189,
-       222
-      ],
-      "0,7": [
-       189,
-       238,
-       238
-      ],
-      "11,7": [
-       189,
-       238,
-       238
-      ],
-      "0,8": [
-       123,
-       189,
-       222
-      ],
-      "11,8": [
-       123,
-       189,
-       222
-      ],
-      "0,10": [
-       197,
-       205,
-       222
-      ],
-      "11,10": [
-       230,
-       230,
-       246
-      ]
-     }
-    },
-    "people": [
-     "Pokemon Fan Club"
-    ]
-   },
-   "guru": {
-    "theme": "room",
-    "art": [
-     "ccccccccccc",
-     "ccccccccccc",
-     "...........",
-     "...........",
-     ".....mm....",
-     "....Nmm....",
-     "...........",
-     "m..vvv....m",
-     "ccccccccccc"
-    ],
-    "exits": {
-     "v": "OUT:9,6"
-    },
-    "buildings": {},
-    "roofs": {
-     "_floor": [
-      166,
-      165,
-      140
-     ],
-     "_wall": [
-      172,
-      197,
-      180
-     ],
-     "_things": {
-      "5,4": [
-       213,
-       197,
-       106
-      ],
-      "6,4": [
-       213,
-       197,
-       106
-      ],
-      "5,5": [
-       213,
-       197,
-       106
-      ],
-      "6,5": [
-       213,
-       197,
-       106
-      ],
-      "0,7": [
-       82,
-       82,
-       106
-      ],
-      "10,7": [
-       82,
-       82,
-       106
-      ]
-     }
-    },
-    "people": [
-     "Fishing Guru"
-    ]
-   },
-   "house_n": {
-    "theme": "room",
-    "art": [
-     "ccccccccccc",
-     "mmmmcmccccc",
-     "...........",
-     "...======..",
-     "...=Nmm==..",
-     "...==mm==..",
-     "...======..",
-     "z...v.....z",
-     "ccccccccccc"
-    ],
-    "exits": {
-     "v": "OUT:19,17"
-    },
-    "buildings": {},
-    "roofs": {
-     "_floor": [
-      166,
-      165,
-      140
-     ],
-     "_wall": [
-      172,
-      197,
-      180
-     ],
-     "_things": {
-      "0,1": [
-       224,
-       228,
-       236
-      ],
-      "1,1": [
-       224,
-       228,
-       236
-      ],
-      "2,1": [
-       236,
-       212,
-       120
-      ],
-      "3,1": [
-       70,
-       70,
-       84
-      ],
-      "5,1": [
-       214,
-       220,
-       228
-      ],
-      "5,4": [
-       213,
-       197,
-       106
-      ],
-      "6,4": [
-       213,
-       197,
-       106
-      ],
-      "5,5": [
-       213,
-       197,
-       106
-      ],
-      "6,5": [
-       213,
-       197,
-       106
-      ]
-     },
-     "_kinds": {
-      "0,1": "sink",
-      "1,1": "sink",
-      "2,1": "shelf",
-      "3,1": "tv",
-      "5,1": "fridge",
-      "5,4": "table",
-      "6,4": "table",
-      "5,5": "table",
-      "6,5": "table"
-     },
-     "_fittings": [
-      {
-       "kind": "stool",
-       "rect": [
-        4,
-        4,
-        1,
-        1
-       ]
-      },
-      {
-       "kind": "stool",
-       "rect": [
-        4,
-        5,
-        1,
-        1
-       ]
-      },
-      {
-       "kind": "stool",
-       "rect": [
-        7,
-        4,
-        1,
-        1
-       ]
-      },
-      {
-       "kind": "stool",
-       "rect": [
-        7,
-        5,
-        1,
-        1
-       ]
-      },
-      {
-       "kind": "pane",
-       "rect": [
-        7.1,
-        0.45,
-        0.8,
-        0.9
-       ]
-      },
-      {
-       "kind": "pane",
-       "rect": [
-        8.1,
-        0.45,
-        0.8,
-        0.9
-       ]
-      },
-      {
-       "kind": "pane",
-       "rect": [
-        9.1,
-        0.45,
-        1.8,
-        0.9
-       ],
-       "colour": [
-        96,
-        176,
-        112
-       ]
-      }
-     ],
-     "_rug": [
-      90,
-      123,
-      180
+     [
+      "VERMILION GYM",
+      "Leader: Lt. Surge"
      ]
-    },
-    "people": [
-     {
-      "text": "Boy",
-      "action": "EVENT",
-      "door": "inside",
-      "event": {
-       "lines": [
-        "Boy: The S.S. Anne docks here once a year. Trainers from all over ride it!"
-       ]
-      }
+    ],
+    "moves": {
+     "5,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "4,17": {
+      "m": "face",
+      "d": "d"
+     },
+     "2,11": {
+      "m": "look",
+      "d": "udlr",
+      "s": 3
+     },
+     "8,13": {
+      "m": "look",
+      "d": "udlr",
+      "s": 3
+     },
+     "7,8": {
+      "m": "face",
+      "d": "l",
+      "s": 3
      }
-    ]
+    },
+    "trashcans": {
+     "cans": [
+      [
+       1,
+       10
+      ],
+      [
+       3,
+       10
+      ],
+      [
+       5,
+       10
+      ],
+      [
+       7,
+       10
+      ],
+      [
+       9,
+       10
+      ],
+      [
+       1,
+       12
+      ],
+      [
+       3,
+       12
+      ],
+      [
+       5,
+       12
+      ],
+      [
+       7,
+       12
+      ],
+      [
+       9,
+       12
+      ],
+      [
+       1,
+       14
+      ],
+      [
+       3,
+       14
+      ],
+      [
+       5,
+       14
+      ],
+      [
+       7,
+       14
+      ],
+      [
+       9,
+       14
+      ]
+     ],
+     "cols": 5,
+     "first": "vermilion_gym_lock1",
+     "open": "vermilion_gym_open"
+    },
+    "barred": [
+     {
+      "tiles": [
+       [
+        5,
+        6
+       ],
+       [
+        5,
+        7
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "vermilion_gym_open"
+      },
+      "lines": [
+       "An electric beam blocks the door!",
+       "There must be switches hidden somewhere..."
+      ]
+     }
+    ],
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/9_6.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       11,
+       21
+      ],
+      "when": [
+       {
+        "flag": "vermilion_gym_lock1",
+        "f": "fr_top/9_6_lock1.png"
+       },
+       {
+        "flag": "vermilion_gym_open",
+        "f": "fr_top/9_6_open.png"
+       }
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Vermilion Gym"
    },
    "house_e": {
-    "theme": "room",
     "art": [
      "ccccccccccc",
-     "mmmmcmccccc",
+     "ccccccccccc",
      "...........",
-     "...======..",
-     "..N==mmN=..",
-     "...==mm==..",
-     "...======..",
-     "z...v.....z",
+     "...........",
+     "..N..c!N...",
+     "..N..cc....",
+     "...........",
+     "c..vvv....c",
      "ccccccccccc"
     ],
     "exits": {
@@ -8681,184 +8732,104 @@
     },
     "buildings": {},
     "roofs": {
-     "_floor": [
-      166,
-      165,
-      140
-     ],
-     "_wall": [
-      172,
-      197,
-      180
-     ],
-     "_things": {
-      "0,1": [
-       224,
-       228,
-       236
-      ],
-      "1,1": [
-       224,
-       228,
-       236
-      ],
-      "2,1": [
-       236,
-       212,
-       120
-      ],
-      "3,1": [
-       70,
-       70,
-       84
-      ],
-      "5,1": [
-       214,
-       220,
-       228
-      ],
-      "5,4": [
-       213,
-       197,
-       106
-      ],
-      "6,4": [
-       213,
-       197,
-       106
-      ],
-      "5,5": [
-       213,
-       197,
-       106
-      ],
-      "6,5": [
-       213,
-       197,
-       106
+     "_picture": {
+      "f": "fr_ground/9_7.png",
+      "at": [
+       0,
+       0
       ]
      },
-     "_kinds": {
-      "0,1": "sink",
-      "1,1": "sink",
-      "2,1": "shelf",
-      "3,1": "tv",
-      "5,1": "fridge",
-      "5,4": "table",
-      "6,4": "table",
-      "5,5": "table",
-      "6,5": "table"
-     },
-     "_fittings": [
-      {
-       "kind": "stool",
-       "rect": [
-        4,
-        4,
-        1,
-        1
-       ]
-      },
-      {
-       "kind": "stool",
-       "rect": [
-        4,
-        5,
-        1,
-        1
-       ]
-      },
-      {
-       "kind": "stool",
-       "rect": [
-        7,
-        4,
-        1,
-        1
-       ]
-      },
-      {
-       "kind": "stool",
-       "rect": [
-        7,
-        5,
-        1,
-        1
-       ]
-      },
-      {
-       "kind": "pane",
-       "rect": [
-        7.1,
-        0.45,
-        0.8,
-        0.9
-       ]
-      },
-      {
-       "kind": "pane",
-       "rect": [
-        8.1,
-        0.45,
-        0.8,
-        0.9
-       ]
-      },
-      {
-       "kind": "pane",
-       "rect": [
-        9.1,
-        0.45,
-        1.8,
-        0.9
-       ],
-       "colour": [
-        96,
-        176,
-        112
-       ]
-      }
-     ],
-     "_rug": [
-      90,
-      123,
-      180
-     ]
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
     },
     "people": [
      {
-      "text": "Man",
+      "text": "Girl",
       "action": "EVENT",
-      "door": "inside",
       "event": {
        "lines": [
-        "Man: A small tree blocks the way to Lt. Surge's Gym. Cut would clear it."
+        "I swap letters with all sorts of people. My Pidgey carries them for me!"
        ]
       }
      },
      {
-      "text": "Girl",
+      "text": "Boy",
       "action": "EVENT",
-      "door": "inside",
       "event": {
        "lines": [
-        "Girl: My Pidgey carries letters for me. Isn't it clever?"
+        "I'm sending my Pidgey to fly a letter to Saffron, up north."
+       ]
+      }
+     },
+     {
+      "text": "Pidgey",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "PIDGEY: Kurukkoo!"
        ]
       }
      }
-    ]
+    ],
+    "signs": [
+     [
+      "A letter: \"Dear Pippi, I hope to see you soon. Love, from Vermilion.\""
+     ]
+    ],
+    "moves": {
+     "7,4": {
+      "m": "face",
+      "d": "l"
+     },
+     "2,5": {
+      "m": "wander",
+      "d": "lr",
+      "r": [
+       2,
+       0
+      ]
+     },
+     "2,4": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/9_7.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       11,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "House"
    }
   },
-  "inside": {
-   "15,6": "center",
-   "29,17": "mart",
-   "14,25": "gym",
-   "12,17": "fanclub",
-   "9,6": "guru",
-   "19,17": "house_n",
-   "28,24": "house_e"
+  "surf": true,
+  "hidden": {
+   "14,11": "MAX_ETHER"
   },
-  "surf": true
+  "overheads": [
+   {
+    "kind": "picture",
+    "f": "fr_top/3_5.png",
+    "at": [
+     0,
+     0
+    ],
+    "size": [
+     48,
+     40
+    ]
+   }
+  ]
  },
  "KANTO_SS_ANNE": {
   "theme": "ship",

@@ -83,10 +83,10 @@
       "item": "GOLD_TEETH"
     },
     "KANTO_ROUTE_5:GUARD": {
-      "sheet": "NPC 01.png"
+      "sheet": "fr_60.png"
     },
     "KANTO_ROUTE_6:GUARD": {
-      "sheet": "NPC 01.png"
+      "sheet": "fr_60.png"
     },
     "KANTO_ROUTE_7:GUARD": {
       "sheet": "NPC 01.png"
@@ -323,7 +323,7 @@
       "item": "HELIX_FOSSIL"
     },
     "KANTO_ROUTE_5:POKéMON DAY CARE": {
-      "sheet": "NPC 11.png"
+      "sheet": "fr_61.png"
     },
     "SILPH_CITY:NURSE": {
       "sheet": "NPC 16.png"
@@ -3555,6 +3555,99 @@
     },
     "BILLS_HOUSE:Bill": {
       "sheet": "fr_73.png"
+    },
+    "UNDERGROUND_PATH:Little girl": {
+      "sheet": "fr_17.png"
+    },
+    "UNDERGROUND_PATH:Girl": {
+      "sheet": "fr_28.png"
+    },
+    "VERMILLION_CITY:Scientist": {
+      "sheet": "fr_55.png"
+    },
+    "VERMILLION_CITY:Old man": {
+      "sheet": "fr_30.png"
+    },
+    "VERMILLION_CITY:Builder": {
+      "sheet": "fr_33.png"
+    },
+    "VERMILLION_CITY:Lady": {
+      "sheet": "fr_25.png"
+    },
+    "VERMILLION_CITY:Sailor": {
+      "sheet": "fr_42.png"
+    },
+    "VERMILLION_CITY:Harbor sailor": {
+      "sheet": "fr_62.png"
+    },
+    "VERMILLION_CITY:Fishing Guru": {
+      "sheet": "fr_57.png"
+    },
+    "VERMILLION_CITY:Heal": {
+      "sheet": "fr_64.png"
+    },
+    "VERMILLION_CITY:Youngster": {
+      "sheet": "fr_18.png"
+    },
+    "VERMILLION_CITY:Man": {
+      "sheet": "fr_42.png"
+    },
+    "VERMILLION_CITY:Mystery Gift lady": {
+      "sheet": "fr_69.png"
+    },
+    "VERMILLION_CITY:Link attendant": {
+      "sheet": "fr_65.png"
+    },
+    "VERMILLION_CITY:Trade attendant": {
+      "sheet": "fr_65.png"
+    },
+    "VERMILLION_CITY:Colosseum attendant": {
+      "sheet": "fr_65.png"
+    },
+    "VERMILLION_CITY:Pokemon Fan Club": {
+      "sheet": "fr_61.png"
+    },
+    "VERMILLION_CITY:Member": {
+      "sheet": "fr_48.png"
+    },
+    "VERMILLION_CITY:Seel's owner": {
+      "sheet": "fr_23.png"
+    },
+    "VERMILLION_CITY:Pikachu's owner": {
+      "sheet": "fr_27.png"
+    },
+    "VERMILLION_CITY:Seel": {
+      "sheet": "fr_126.png"
+    },
+    "VERMILLION_CITY:Pikachu": {
+      "sheet": "fr_120.png"
+    },
+    "VERMILLION_CITY:Boy": {
+      "sheet": "fr_19.png"
+    },
+    "VERMILLION_CITY:Shop": {
+      "sheet": "fr_68.png"
+    },
+    "VERMILLION_CITY:Gym": {
+      "sheet": "fr_82.png"
+    },
+    "VERMILLION_CITY:Gentleman Tucker": {
+      "sheet": "fr_61.png"
+    },
+    "VERMILLION_CITY:Rocker Baily": {
+      "sheet": "fr_30.png"
+    },
+    "VERMILLION_CITY:Sailor Dwayne": {
+      "sheet": "fr_62.png"
+    },
+    "VERMILLION_CITY:Gym Guide": {
+      "sheet": "fr_91.png"
+    },
+    "VERMILLION_CITY:Girl": {
+      "sheet": "fr_22.png"
+    },
+    "VERMILLION_CITY:Pidgey": {
+      "sheet": "fr_116.png"
     }
   },
   "townsperson": "NPC 17.png",
