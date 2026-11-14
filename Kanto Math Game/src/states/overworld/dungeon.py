@@ -591,6 +591,12 @@ def dungeon_for(game, restore_data=None):
     key = game.story_manager.current_area_key
     if not enabled(game, key):
         return None
+    if key == "HOENN_SOARING_IN_THE_SKY":  # (Soaring in the Sky, 3D: the flight over ORAS's Hoenn, not a map)
+        from src.states.overworld.soaring3d import Soaring3DState
+        cur = getattr(game, "soaring3d_state", None)
+        if restore_data and cur is not None and getattr(cur, "area_key", None) == key:
+            return cur
+        return object.__new__(Soaring3DState)
     cur = getattr(game, "dungeon_state", None)
     if restore_data and cur is not None and getattr(cur, "area_key", None) == key:
         return cur
