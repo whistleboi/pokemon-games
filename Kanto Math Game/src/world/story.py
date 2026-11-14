@@ -1191,6 +1191,8 @@ class StoryManager:
             self.inventory = {}
         from src.world import hms
         hms.give_for_badges(self)  # HMs from badges already won
+        from src.world import soaring3d
+        soaring3d.give_flute(self)  # the Eon Flute, for a save that met its Eon before the flute was in the game
         for item, qty in list(self.inventory.items()):  # an HM is never used up: one of each
             if str(item).startswith("HM_") and qty > 1:
                 self.inventory[item] = 1

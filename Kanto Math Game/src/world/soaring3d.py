@@ -13,6 +13,33 @@ What's out there comes from the HOENN_SOARING_IN_THE_SKY area's own menu (assets
 import math
 
 AREA = "HOENN_SOARING_IN_THE_SKY"
+FLUTE = "EON_FLUTE"
+FLUTE_TEXT = "Play it outside in Hoenn and your Eon friend comes to fly you high over the region."
+
+
+# ---------------------------------------------------------------- the Eon Flute (ORAS: Steven gives it at Southern Island)
+def give_flute(story):
+    """The Eon Flute comes with the Eon at Southern Island; a save that met its Eon before the flute was in the game
+    gets it now. True if it was added."""
+    if story.inventory.get(FLUTE, 0) > 0 or not story.story_flags.get("got_mega_bracelet"):
+        return False
+    mine = story.store_regions() if hasattr(story, "store_regions") else None
+    if mine is not None and "HOENN" not in mine:
+        return False
+    story.inventory[FLUTE] = 1
+    return True
+
+
+def flute_block(story):
+    """Why the Eon Flute can't be played here (a line to show), or None."""
+    if str(story.get_current_region() or "").upper() != "HOENN":
+        return "Your Eon friend can't hear the flute this far from Hoenn."
+    area = story.get_current_area_data() or {}
+    if area.get("indoors") or area.get("battle_type") in ("indoor", "cave"):
+        return "There's no open sky here. Try it outside!"
+    if story.current_area_key == AREA:
+        return "You're already soaring!"
+    return None
 
 # Towns, read off the baked map (world units). Landing picks the nearest you've visited.
 TOWNS = {

@@ -88,6 +88,22 @@ def rift_picture(size=256):
     return s
 
 
+def mount(game):
+    """(species id, name) of the Eon you ride: one in your party first, else your version's, else Latios."""
+    story = game.story_manager
+    for p in getattr(story, "player_team", []) or []:
+        if getattr(p, "id", None) in (380, 381):
+            return p.id, ("Latias" if p.id == 380 else "Latios")
+    try:
+        from src.world import hoenn
+        v = hoenn.info(story)
+        if v and v.get("eon_id") in (380, 381):
+            return v["eon_id"], v["eon"]
+    except Exception:
+        pass
+    return 381, "Latios"
+
+
 def follower(game, pid, size, row=0, frame=0):
     """A flying Pokemon in the world: its following-Pokemon sheet (assets/dungeon/followers, 4 x 4: rows down, left,
     right, up), cropped to the box all its frames share, at this height; the party icon if it has no sheet."""
@@ -241,19 +257,7 @@ class Soaring3DState(PlayState):
         self.mm_rect = (x0, z0, x1, z1)
 
     def _mount(self):
-        """(species id, name) of the Eon you ride: one in your party first, else your version's, else Latios."""
-        story = self.game.story_manager
-        for p in getattr(story, "player_team", []) or []:
-            if getattr(p, "id", None) in (380, 381):
-                return p.id, ("Latias" if p.id == 380 else "Latios")
-        try:
-            from src.world import hoenn
-            v = hoenn.info(story)
-            if v and v.get("eon_id") in (380, 381):
-                return v["eon_id"], v["eon"]
-        except Exception:
-            pass
-        return 381, "Latios"
+        return mount(self.game)
 
     def _eon_img(self, bank_i, pitch_i):
         key = (bank_i, pitch_i)

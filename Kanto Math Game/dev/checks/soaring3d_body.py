@@ -54,6 +54,29 @@ for k in ("MOSSDEEP_CITY", "SLATEPORT_CITY", "DEWFORD_TOWN", "LILYCOVE_CITY"):
     flags[f"visited_{k}"] = True
 story.current_area_key = "MOSSDEEP_CITY"
 
+print("== the Eon Flute")
+from src.states.systems import BagState
+flags.pop("got_mega_bracelet", None)
+story.inventory.pop(S3.FLUTE, None)
+check(not S3.give_flute(story), "no flute before Southern Island")
+flags["got_mega_bracelet"] = True
+check(S3.give_flute(story) and story.inventory.get(S3.FLUTE) == 1, "a save past Southern Island gets the flute")
+bag = BagState(g, g.current_state)
+check(bag.usable(S3.FLUTE), "the flute can be used from the Bag")
+check(bag.pocket_of(S3.FLUTE) == "KEY ITEMS", f"the flute is in Key Items ({bag.pocket_of(S3.FLUTE)})")
+from src.pokemon import items as _items
+check("fly you high" in _items.describe(S3.FLUTE), "it says what it does")
+story.current_area_key = "HOENN_GRANITE_CAVE"
+check(S3.flute_block(story) is not None, "no flying from inside a cave")
+story.current_area_key = "MOSSDEEP_CITY"
+check(S3.flute_block(story) is None, "it plays in Mossdeep")
+g.change_state(bag); bag.use_item(S3.FLUTE)
+check(isinstance(g.current_state, AreaTransitionState), "playing it starts the trip up")
+st = run_transition()
+check(isinstance(st, Soaring3DState), f"the trip ends in the 3D flight ({type(st).__name__})")
+g.soaring3d_state = None
+story.current_area_key = "MOSSDEEP_CITY"
+
 print("== up from Mossdeep")
 mossdeep = story.get_current_area_data()
 exit_item = next(i for i in mossdeep.get("route_menu", mossdeep.get("town_menu", [])) or [] if

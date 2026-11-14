@@ -70,7 +70,7 @@ class BagState(GameState):
     MEDICINE = tuple(itemlib.MEDICINE)
     BATTLE_ITEMS = ("DAMP_ROCK", "HEAT_ROCK", "SMOOTH_ROCK", "ICY_ROCK") + tuple(itemlib.BATTLE)
     # Usable from the Bag (anything else says there's no use for it right now).
-    USABLE_KEYS = ("TOWN_MAP", "JOHTO_MAP", "UNOWN_REPORT", "POFFIN_CASE", "BERRY_POUCH", "WEATHER_DIAL", "POKEBLOCK_KIT", "WAILMER_PAIL")
+    USABLE_KEYS = ("TOWN_MAP", "JOHTO_MAP", "UNOWN_REPORT", "POFFIN_CASE", "BERRY_POUCH", "WEATHER_DIAL", "POKEBLOCK_KIT", "WAILMER_PAIL", "EON_FLUTE")
     USABLE_MEDICINE = ("POTION", "FULL_HEAL", "REVIVE", "RARE_CANDY")
     # Key items the games keep in the Items pocket (held / stones / fossils).
     ITEM_POCKET_KEYS = ("ITE", "_FOSSIL", "OLD_AMBER", "_ORB", "_DRIVE", "ROCKY_HELMET", "SOOTHE_BELL", "AMULET_COIN")
@@ -346,6 +346,19 @@ class BagState(GameState):
         if item_key == "WAILMER_PAIL":
             self._back_to_bag(["Walk up to a growing Berry plant to water it with the Wailmer Pail.",
                                "Water it once in each stage for a bigger harvest!"])
+            return
+
+        if item_key == "EON_FLUTE":  # Soaring in the Sky (src/states/overworld/soaring3d.py)
+            from src.world import soaring3d
+            why = soaring3d.flute_block(self.game.story_manager)
+            if why:
+                self._back_to_bag(["You played the Eon Flute...", why])
+                return
+            from src.states.overworld.soaring3d import mount
+            _pid, eon = mount(self.game)
+            from src.states.overworld.area_transition import AreaTransitionState
+            self.game.change_state(AreaTransitionState(
+                self.game, soaring3d.AREA, initial_message=f"You played the Eon Flute! {eon} swooped down to carry you up!"))
             return
 
         if item_key == "WEATHER_DIAL":
