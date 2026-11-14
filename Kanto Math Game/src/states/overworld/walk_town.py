@@ -1346,16 +1346,17 @@ class WalkTownState(CityState):
         if getattr(self, "_guide_key", None) == key:
             return self._guide_hit
         self._guide_key, self._guide_hit = key, None
-        if not guide.tracked_mission(self.game):
+        mission = guide.tracked_mission(self.game)
+        if not mission:
             return None
         px, py = self.player
         near = lambda t: abs(t[0] - px) + abs(t[1] - py)
         for spot, opt in sorted(self._people().items(), key=lambda kv: near(kv[0])):
-            if guide.advances_goal(self.game, self.area_key, opt):
+            if guide.advances_goal(self.game, self.area_key, opt, mission):
                 self._guide_hit = (spot, "Here")
                 return self._guide_hit
         for spot, kind in sorted(self.doors.items(), key=lambda kv: near(kv[0])):
-            if any(guide.advances_goal(self.game, self.area_key, o) for o in self._door_options(kind)):
+            if any(guide.advances_goal(self.game, self.area_key, o, mission) for o in self._door_options(kind)):
                 self._guide_hit = (spot, "Here")
                 return self._guide_hit
         inside = {}  # (a building that is an area of its own: Celadon's Game Corner)

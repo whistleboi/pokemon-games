@@ -31,6 +31,21 @@ def _name_index(game):
     return _NAMES[key]
 
 
+_HITS = {}
+
+
+def _text_hits(game, text):
+    """The place names in a mission's text, longest first. Kept per text: every region's names are more
+    patterns than re's own cache holds, and a town's guide asks this for each person and door
+    (Lilycove, 11-13: a second's freeze every second)."""
+    key = (id(game.loader), text)
+    if key not in _HITS:
+        if len(_HITS) > 256:
+            _HITS.clear()
+        _HITS[key] = [(name, k) for name, k in _name_index(game) if re.search(r"\b" + re.escape(name) + r"\b", text)]
+    return _HITS[key]
+
+
 def mission_target(game, mission):
     """The area a mission is about: the first of its "targets" ([area, done-when condition]) not done
     yet (the Silph Scope's hideout before the Tower), else its "target", else the longest place name in
@@ -43,7 +58,7 @@ def mission_target(game, mission):
         return mission["target"]
     text = " ".join(str(mission.get(k) or "") for k in ("title", "text", "description", "desc")).lower()
     region = story.get_current_region()
-    hits = [(name, k) for name, k in _name_index(game) if re.search(r"\b" + re.escape(name) + r"\b", text)]
+    hits = _text_hits(game, text)
     if not hits:
         return None
     longest = len(hits[0][0])
@@ -103,11 +118,11 @@ def _named_in_mission(game, mission, area_key, item):
     return bool(re.search(r"\b" + re.escape(label) + r"\b", text))
 
 
-def advances_goal(game, area_key, item):
+def advances_goal(game, area_key, item, mission=None):
     """True when using this menu button is what the tracked Journal mission needs (Jordan, 11-01): a
     trainer here whose win sets its flag, a story event or legendary that sets it, or the Gym of a
-    badge mission. The button is then shown in gold."""
-    mission = tracked_mission(game)
+    badge mission. The button is then shown in gold. (mission: the tracked one, when the caller has it.)"""
+    mission = mission or tracked_mission(game)
     if not mission:
         return False
     story = game.story_manager
