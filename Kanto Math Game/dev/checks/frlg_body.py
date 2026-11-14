@@ -340,21 +340,33 @@ enter(t, (22, 19))
 check(t.room == "center", "...its Center is the shared room")
 t._go(None, "OUT:22,19")
 enter(t, (31, 21))
-check(t.room == "gym" and t.people.get((8, 6), {}).get("action") == "GYM" and len(t.people) == 3, f"...its Gym: FireRed's room, Misty, the guide and the poolside spot ({t.room})")
+# (11-14: FireRed's Picnicker Diana and Swimmer Luis stand in it too, talk to battle)
+check(t.room == "gym" and t.people.get((8, 6), {}).get("action") == "GYM" and len(t.people) == 5
+      and {o.get("text") for o in t.people.values()} >= {"Gym Guide", "Search the Gym's Pool", "Picnicker Diana", "Swimmer Luis"},
+      f"...its Gym: FireRed's room, Misty, the guide, her two trainers and the poolside spot ({t.room})")
 t.draw(); t._go(None, "OUT:31,21")
 g.walk_town_room = None
 t = town("CERULEAN_CITY", "KANTO_ROUTE_24")
 check(t.player[1] <= 5 and 21 <= t.player[0] <= 28 and (tuple(t.player) not in t.water_exits), f"...in from Route 24 you stand on land at the north end (the bridge or its east bank), not in the river {t.player}")
 t.draw()
 
+import json as _json
+_tmaps = _json.load(open(os.path.join("assets", "town_maps.json"), encoding="utf-8"))
 # ---- Route 24 (Nugget Bridge), Route 25, Bill's Sea Cottage, Route 5
-p = route("KANTO_ROUTE_24", "CERULEAN_CITY", index=6, count=11)
+# (11-14: rebuilt from FireRed by the Hoenn method: Cerulean's river and the sea east of the bridge cross to Route 24 too,
+# so the bridge is found by its tile; the rival, who now walks up at the bridge's foot, already beaten for these steps)
+_rv = story.story_flags.get("defeated_rival_nugget_bridge")
+story.story_flags["defeated_rival_nugget_bridge"] = True
+_r24 = [(x, y) for y, r in enumerate(_tmaps["KANTO_ROUTE_24"]["art"]) for x, c in enumerate(r) if _tmaps["KANTO_ROUTE_24"]["exits"].get(c) == "CERULEAN_CITY"]
+p = route("KANTO_ROUTE_24", "CERULEAN_CITY", index=_r24.index((11, 39)), count=len(_r24))
 f = p.run.floor
 check((f.w, f.h) == (24, 40) and p.run.player[1] >= 36 and 10 <= p.run.player[0] <= 12 and set(f.exits.values()) == {"CERULEAN_CITY", "KANTO_ROUTE_25"},
       f"Route 24: FireRed's 24 x 40; off Cerulean's bridge you stand on Nugget Bridge {p.run.player}")
 check(sum(m.kind == "trainer" for m in f.movers) == 7, f"...FireRed's six trainers and the Rocket at the bridge's head ({sum(m.kind == 'trainer' for m in f.movers)})")
 _e, _w = hop(p, (12, 4), (1, 0)), hop(p, (14, 4), (-1, 0))
 check(_e == (14, 4) and _w == (14, 4), f"...the ledge beside the top path is hopped east ({_e}), not back west ({_w})")
+if not _rv:
+    story.story_flags.pop("defeated_rival_nugget_bridge", None)
 p = route("KANTO_ROUTE_25", "KANTO_ROUTE_24")
 f = p.run.floor
 check((f.w, f.h) == (72, 20) and p.run.player[0] <= 2 and f.exits.get((51, 4)) == "BILLS_HOUSE" and sum(m.kind == "trainer" for m in f.movers) == 9,
@@ -967,7 +979,7 @@ for _k, _v in _had.items():
 
 # ---- the ordinary houses in the towns (FireRed's own rooms: 7.0-7.9, 9.4, 9.7, 8.3, 8.4, 10.17-10.19, 14.4, 14.8, 14.9, 11.2, 11.4, 11.9)
 for _town, _came, _doors in (
-        ("CERULEAN_CITY", "KANTO_ROUTE_4", (((10, 11), "house_w", (10, 10), 1), ((30, 11), "house_ne", (10, 9), 2), ((31, 8), "house_ne", (10, 9), 2), ((15, 17), "house_mid", (11, 9), 2), ((23, 28), "house_s", (11, 9), 1), ((17, 11), "house_n", (11, 9), 1))),
+        ("CERULEAN_CITY", "KANTO_ROUTE_4", (((10, 11), "house_w", (10, 10), 1), ((10, 8), "house_w", (10, 10), 1), ((30, 11), "house_ne", (10, 9), 2), ((31, 8), "house_ne", (10, 9), 2), ((15, 17), "house_mid", (11, 9), 2), ((23, 28), "house_s", (11, 9), 1), ((17, 11), "house_n", (11, 9), 1))),
         ("VERMILLION_CITY", "KANTO_ROUTE_6", (((19, 17), "house_n", (11, 9), 1), ((28, 24), "house_e", (11, 9), 2))),
         ("LAVENDER_TOWN", "KANTO_ROUTE_8", (((5, 16), "house_w", (11, 9), 1), ((10, 16), "rater", (11, 9), 1))),
         ("CELADON_CITY", "KANTO_ROUTE_7", (((37, 29), "restaurant", (15, 11), 5), ((41, 29), "house_e", (11, 9), 2), ((49, 29), "hotel", (17, 11), 3))),

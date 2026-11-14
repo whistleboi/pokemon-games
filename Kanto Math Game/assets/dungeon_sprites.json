@@ -3444,6 +3444,117 @@
     },
     "KANTO_ROUTE_4:TM120": {
       "item": "POKE_BALL"
+    },
+    "CERULEAN_CITY:ROCKET GRUNT": {
+      "sheet": "fr_49.png"
+    },
+    "CERULEAN_CITY:Police officer": {
+      "sheet": "fr_60.png"
+    },
+    "CERULEAN_CITY:Cave guard": {
+      "sheet": "fr_41.png"
+    },
+    "CERULEAN_CITY:Little boy": {
+      "sheet": "fr_16.png"
+    },
+    "CERULEAN_CITY:Youngster": {
+      "sheet": "fr_22.png"
+    },
+    "CERULEAN_CITY:Gentleman": {
+      "sheet": "fr_30.png"
+    },
+    "CERULEAN_CITY:Slowbro": {
+      "sheet": "fr_129.png"
+    },
+    "CERULEAN_CITY:Trainer": {
+      "sheet": "fr_22.png"
+    },
+    "CERULEAN_CITY:Girl": {
+      "sheet": "fr_23.png"
+    },
+    "CERULEAN_CITY:Badge fan": {
+      "sheet": "fr_61.png"
+    },
+    "CERULEAN_CITY:Man": {
+      "sheet": "fr_26.png"
+    },
+    "CERULEAN_CITY:Woman": {
+      "sheet": "fr_22.png"
+    },
+    "CERULEAN_CITY:Trader": {
+      "sheet": "fr_32.png"
+    },
+    "CERULEAN_CITY:Wife": {
+      "sheet": "fr_35.png"
+    },
+    "CERULEAN_CITY:Heal": {
+      "sheet": "fr_64.png"
+    },
+    "CERULEAN_CITY:Lady": {
+      "sheet": "fr_18.png"
+    },
+    "CERULEAN_CITY:Boy": {
+      "sheet": "fr_18.png"
+    },
+    "CERULEAN_CITY:Mystery Gift lady": {
+      "sheet": "fr_69.png"
+    },
+    "CERULEAN_CITY:Link attendant": {
+      "sheet": "fr_65.png"
+    },
+    "CERULEAN_CITY:Trade attendant": {
+      "sheet": "fr_65.png"
+    },
+    "CERULEAN_CITY:Colosseum attendant": {
+      "sheet": "fr_65.png"
+    },
+    "CERULEAN_CITY:Gym": {
+      "sheet": "fr_81.png"
+    },
+    "CERULEAN_CITY:Picnicker Diana": {
+      "sheet": "fr_40.png"
+    },
+    "CERULEAN_CITY:Swimmer Luis": {
+      "sheet": "fr_43.png"
+    },
+    "CERULEAN_CITY:Gym Guide": {
+      "sheet": "fr_91.png"
+    },
+    "CERULEAN_CITY:Bike Shop": {
+      "sheet": "fr_25.png"
+    },
+    "CERULEAN_CITY:Shopper": {
+      "sheet": "fr_18.png"
+    },
+    "CERULEAN_CITY:Shop": {
+      "sheet": "fr_68.png"
+    },
+    "CERULEAN_CITY:Old man": {
+      "sheet": "fr_32.png"
+    },
+    "CERULEAN_CITY:Berry grinder": {
+      "sheet": "fr_33.png"
+    },
+    "KANTO_ROUTE_24:TM31": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_ROUTE_24:{rival_name}": {
+      "sheet": "@rival"
+    },
+    "KANTO_ROUTE_25:TM112": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_ROUTE_25:Boyfriend": {
+      "sheet": "fr_29.png"
+    },
+    "KANTO_ROUTE_25:Girlfriend": {
+      "sheet": "fr_25.png"
+    },
+    "BILLS_HOUSE:Talk to Bill": {
+      "sheet": "fr_113.png"
+    },
+    "BILLS_HOUSE:Bill": {
+      "sheet": "fr_73.png"
     }
   },
   "townsperson": "NPC 17.png",

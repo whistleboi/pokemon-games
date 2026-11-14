@@ -680,6 +680,8 @@
         {"text": "Cerulean Cave", "target_area": "CERULEAN_CAVE", "condition": "beat_champion"}
       ],
       "explore_options": [
+        {"text": "ROCKET GRUNT", "action": "EVENT", "flag_condition": "not got_tm_dig_cerulean", "event": {"lines": ["Grunt: Hey! Stay out! This is none of your business!", "Grunt: ...What, the TM? Never heard of it. Get lost, kid!"], "flag": "got_tm_dig_cerulean", "battle": {"name": "Team Rocket Grunt", "class": "ROCKET_GRUNT", "sprite": "rocket_grunt_m.png", "team": [66, 96], "levels": [17, 17], "rewards": {"balls": 2, "TM15": 1}, "dialogue": {"player_won": ["Grunt: Argh! OK, OK, take your TM back! I'm out of here!"]}}}}, 
+        {"text": "Trader", "action": "EVENT", "door": "house_mid", "color": "GOLD", "flag_condition": "not cerulean_jynx_trade", "event": {"requires": ["party_has:61"], "fail": ["Old man: I'm looking for a Poliwhirl. Bring me one and I'll trade you my Jynx for it!"], "lines": ["Old man: A Poliwhirl! Will you trade it for my Jynx? Wonderful, thank you!"], "trade": {"want": 61, "give": 124}, "flag": "cerulean_jynx_trade"}},
         { "text": "Heal", "action": "HEAL" },
         { "text": "Shop", "action": "SHOP" },
         { "text": "Gym", "action": "GYM" },
@@ -2618,6 +2620,7 @@
         {"name": "Team Rocket Grunt", "class": "ROCKET_GRUNT", "sprite": "rocket_grunt_m.png", "team": [23, 41], "rewards": {"balls": 8}, "is_boss_battle": true, "dialogue": {"intro": ["Congratulations! You beat our five contest trainers! Here's a nugget...", "...Now, how about joining Team Rocket? No? Then I'll make you!"], "player_won": ["Arrgh! You're good. You'd have made a great Rocket..."], "player_lost": ["Heh. Think about it!"]}}
       ],
       "route_menu": [
+        {"text": "TM31", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm31_route24", "event": {"lines": ["A TM, lying by the bridge! It's Attract."], "gift_item": {"TM31": 1}, "flag": "got_tm31_route24"}},
         {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
         {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN"},
@@ -2652,6 +2655,7 @@
         { "sprite": "hiker.png", "name": "Nob", "class": "HIKER", "team": [74, 74, 66, 74], "levels": [13, 13, 13, 13], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
+        {"text": "TM112", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm112_route25", "event": {"lines": ["A TM, tucked behind the trees! It's Secret Power."], "gift_item": {"TM112": 1}, "flag": "got_tm112_route25"}},
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },

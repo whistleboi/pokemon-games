@@ -334,6 +334,7 @@ if isinstance(intro, TrainerIntroState):
 # ---- batch 3: Route 2, Viridian Forest, Pewter City (FireRed 3.20, 1.0, 3.2)
 story.badges["KANTO"] = []
 story.story_flags.pop("visited_PEWTER_CITY", None)
+story.story_flags.pop("visited_CERULEAN_CITY", None)   # (the map sweep above walked into every town)
 _m = [m.get("id") for m in story.get_active_missions()]
 check(_m and _m[0] == "m1b", f"the Journal, Pokedex in hand: through Viridian Forest to Pewter ({_m[:2]})")
 
@@ -552,6 +553,77 @@ r4 = open_map("KANTO_ROUTE_4", "MT_MOON")
 check(abs(r4.run.player[0] - 10) <= 2 and r4.run.player[1] <= 7, f"Route 4: out of Mt. Moon's far mouth ({r4.run.player})")
 check(_figure(r4, "TM120") == (45, 5), f"...FireRed's TM (Roar, our TM120) on the ledge ({_figure(r4, 'TM120')})")
 check("CERULEAN_CITY" in set(r4.run.floor.exits.values()), "...and east to Cerulean City")
+story.badges["KANTO"] = []
+
+# ---- batch 5: Cerulean City, Route 24 (Nugget Bridge), Route 25, Bill's Sea Cottage
+story.badges["KANTO"] = ["BOULDER"]
+story.story_flags.pop("defeated_rival_nugget_bridge", None)
+r24 = open_map("KANTO_ROUTE_24", "CERULEAN_CITY")
+_tr = sorted((m.x, m.y) for m in r24.run.floor.movers if m.kind == "trainer")
+check(len(_tr) == 7 and (12, 15) in _tr and (12, 31) in _tr, f"Route 24: Nugget Bridge's five, the hidden camper and the Rocket on FireRed's spots ({_tr})")
+_riv = next(((m.x, m.y) for m in r24.run.floor.movers if m.kind == "figure" and m.payload.get("action") == "ARRIVAL"), None)
+check(_riv == (11, 37), f"...your rival waits at the foot of the bridge ({_riv})")
+r24.run.floor.movers = [m for m in r24.run.floor.movers if m.kind == "figure"]
+r24.run.player = (11, 39); r24.anim = 0
+said.clear()
+play(lambda: isinstance(g.current_state, TrainerIntroState), 1500)
+_b = getattr(g.current_state, "next_state", None)
+check(isinstance(g.current_state, TrainerIntroState) and getattr(_b, "trainer_class", "") == "RIVAL", f"...he walks up and battles you ({type(g.current_state).__name__})")
+if _b is not None:
+    g.change_state(_b); _b.player_won = True; _b.exit_battle(); play(lambda: isinstance(g.current_state, PlayState), 600)
+# the burgled house: in at the front, out through the hole at the back, and the Grunt in the yard
+story.story_flags.pop("got_tm_dig_cerulean", None)
+story.inventory.pop("TM15", None)
+ce = open_map("CERULEAN_CITY", "KANTO_ROUTE_4")
+ce.player = (30, 12); ce.anim = 0
+walk(ce, "u")
+ce = g.current_state
+check(ce.room == "house_ne", f"Cerulean: into the burgled house ({ce.room})")
+_hole = next(xy for xy, v in ce.exits.items() if v == "OUT:31,8")
+ce.player = (_hole[0], _hole[1] + 1); ce.anim = 0
+said.clear()
+walk(ce, "u")
+play(lambda: isinstance(g.current_state, TrainerIntroState), 1500)
+_b = getattr(g.current_state, "next_state", None)
+check(isinstance(g.current_state, TrainerIntroState) and _b and [p.id for p in _b.opponent_team] == [66, 96],
+      f"...out through the hole in the back wall: the Grunt in the yard rounds on you (Machop, Drowzee) ({type(g.current_state).__name__})")
+if _b is not None:
+    g.change_state(_b); _b.player_won = True; _b.exit_battle(); play(lambda: isinstance(g.current_state, _WTS), 600)
+check(story.inventory.get("TM15") == 1 and story.story_flags.get("got_tm_dig_cerulean"), "...beaten, he hands back TM28 Dig (our TM15)")
+# the trade house: Poliwhirl for Jynx
+story.story_flags.pop("cerulean_jynx_trade", None)
+story.player_team = [mk(61)] + story.player_team[:1]
+ce = open_map("CERULEAN_CITY", "KANTO_ROUTE_4")
+ce.player = (15, 18); ce.anim = 0
+walk(ce, "u")
+ce = g.current_state
+ce.player = (2, 3); ce.anim = 0; ce.facing = (0, -1)
+walk(ce, "u")
+play(lambda: not g.current_state._busy(), 600)
+check(ce.room == "house_mid" and story.player_team[0].id == 124 and story.story_flags.get("cerulean_jynx_trade"), f"...the trade house: Poliwhirl for Jynx ({story.player_team[0].id})")
+# Misty's Gym: her two trainers, FireRed's spots, talk to battle
+ce = open_map("CERULEAN_CITY", "KANTO_ROUTE_4")
+ce.player = (31, 22); ce.anim = 0
+walk(ce, "u")
+ce = g.current_state
+_pp = {o.get("text"): p for p, o in ce._people().items()}
+check(ce.room == "gym" and _pp.get("Picnicker Diana") == (4, 7) and _pp.get("Swimmer Luis") == (10, 12) and _pp.get("Gym") == (8, 6),
+      f"Cerulean Gym: Misty, Diana and Luis on FireRed's spots ({_pp})")
+# the cave's guard, till you're Champion
+ce = open_map("CERULEAN_CITY", "KANTO_ROUTE_4")
+check(any(o.get("text") == "Cave guard" for o in ce._people().values()), "Cerulean Cave's guard stands by its mouth")
+story.story_flags["beat_champion"] = True   # (checked on the open map: arriving as Champion brings Mom's call first)
+check(not any(o.get("text") == "Cave guard" for o in ce._people().values()), "...and steps aside once you're Champion")
+story.story_flags.pop("beat_champion", None)
+# Bill: a Clefairy by his machine till you've helped him, then himself
+story.story_flags.pop("got_ss_ticket_bill", None)
+bh = open_map("BILLS_HOUSE", "KANTO_ROUTE_25")
+_sm = json.load(open("assets/dungeon_sprites.json", encoding="utf-8"))["figures"]
+check({o.get("text") for o in bh._people().values()} == {"Talk to Bill"} and _sm.get("BILLS_HOUSE:Talk to Bill", {}).get("sheet") == "fr_113.png",
+      f"Bill's Sea Cottage: Bill is a Clefairy ({[o.get('text') for o in bh._people().values()]})")
+story.story_flags["got_ss_ticket_bill"] = True
+bh = open_map("BILLS_HOUSE", "KANTO_ROUTE_25")
+check({o.get("text"): p for p, o in bh._people().items()}.get("Bill") == (7, 5), "...and once you've helped him, Bill himself at FireRed's spot")
 story.badges["KANTO"] = []
 
 print(f"##### {len(fails)} failures")
