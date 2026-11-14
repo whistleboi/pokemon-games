@@ -348,17 +348,17 @@ class BagState(GameState):
                                "Water it once in each stage for a bigger harvest!"])
             return
 
-        if item_key == "EON_FLUTE":  # Soaring in the Sky (src/states/overworld/soaring.py)
-            from src.world import soaring
-            story = self.game.story_manager
-            why = soaring.flute_block(story)
+        if item_key == "EON_FLUTE":  # Soaring in the Sky (src/states/overworld/soaring3d.py)
+            from src.world import soaring3d
+            why = soaring3d.flute_block(self.game.story_manager)
             if why:
                 self._back_to_bag(["You played the Eon Flute...", why])
                 return
-            _pid, eon = soaring.mount(self.game)
+            from src.states.overworld.soaring3d import mount
+            _pid, eon = mount(self.game)
             from src.states.overworld.area_transition import AreaTransitionState
             self.game.change_state(AreaTransitionState(
-                self.game, soaring.AREA, initial_message=f"You played the Eon Flute! {eon} swooped down to carry you up!"))
+                self.game, soaring3d.AREA, initial_message=f"You played the Eon Flute! {eon} swooped down to carry you up!"))
             return
 
         if item_key == "WEATHER_DIAL":

@@ -262,7 +262,6 @@
     },
     "HOENN_SOARING_IN_THE_SKY": {
       "area_type": "wild_route",
-      "soaring": true,
       "route_name": "Soaring in the Sky",
       "region": "HOENN",
       "battle_type": "field",
@@ -282,7 +281,7 @@
         {"text": "Mirage Cave", "action": "EXIT", "target_area": "HOENN_MIRAGE_CAVE", "condition": "can_exit", "color": "RED"},
         {"text": "Mirage Forest", "action": "EXIT", "target_area": "HOENN_MIRAGE_FOREST", "condition": "can_exit", "color": "RED"},
         {"text": "Mirage Mountain", "action": "EXIT", "target_area": "HOENN_MIRAGE_MOUNTAIN", "condition": "can_exit", "color": "RED"},
-        {"text": "Mirage Island", "action": "EXIT", "target_area": "HOENN_MIRAGE_ISLAND", "condition": "can_exit", "color": "RED"},
+        {"text": "Mirage Island", "action": "EXIT", "target_area": "HOENN_MIRAGE_ISLANDS", "condition": "can_exit", "color": "RED"},
         {"text": "CRESCENT ISLE", "action": "EXIT", "target": "HOENN_CRESCENT_ISLE", "condition": "can_exit", "color": "RED"},
         {"text": "FABLED CAVE", "action": "EXIT", "target": "HOENN_FABLED_CAVE", "condition": "can_exit", "color": "RED"},
         {"text": "GNARLED DEN", "action": "EXIT", "target": "HOENN_GNARLED_DEN", "condition": "can_exit", "color": "RED"},

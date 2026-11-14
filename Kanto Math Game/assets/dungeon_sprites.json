@@ -3214,6 +3214,12 @@
     "HOENN_NEW_MAUVILLE:Security computer": {
       "draw": "terminal"
     },
+    "MAUVILLE_CITY:Wattson": {
+      "sheet": "em_127.png"
+    },
+    "MAUVILLE_CITY:TM89 U-TURN": {
+      "item": "HTM89"
+    },
     "HOENN_CRESCENT_ISLE:SOAR AWAY": {
       "pokemon": "eon"
     },

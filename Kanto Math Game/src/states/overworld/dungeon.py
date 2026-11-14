@@ -589,14 +589,14 @@ def dungeon_for(game, restore_data=None):
     """What PlayState(game, restore_data) should be here: the walk going on (back from a battle), a
     new DungeonState (still to be set up), or None for the old route screen."""
     key = game.story_manager.current_area_key
-    if (game.loader.area_data.get("STORY_PROGRESSION", {}).get(key) or {}).get("soaring"):
-        from src.states.overworld.soaring import SoaringState   # (Soaring in the Sky: the flight, not a map)
-        cur = getattr(game, "soaring_state", None)
-        if restore_data and cur is not None and getattr(cur, "area_key", None) == key:
-            return cur
-        return object.__new__(SoaringState)
     if not enabled(game, key):
         return None
+    if key == "HOENN_SOARING_IN_THE_SKY":  # (Soaring in the Sky, 3D: the flight over ORAS's Hoenn, not a map)
+        from src.states.overworld.soaring3d import Soaring3DState
+        cur = getattr(game, "soaring3d_state", None)
+        if restore_data and cur is not None and getattr(cur, "area_key", None) == key:
+            return cur
+        return object.__new__(Soaring3DState)
     cur = getattr(game, "dungeon_state", None)
     if restore_data and cur is not None and getattr(cur, "area_key", None) == key:
         return cur

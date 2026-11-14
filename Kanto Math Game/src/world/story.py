@@ -1191,8 +1191,8 @@ class StoryManager:
             self.inventory = {}
         from src.world import hms
         hms.give_for_badges(self)  # HMs from badges already won
-        from src.world import soaring
-        soaring.give_flute(self)  # the Eon Flute, for a save that met its Eon before the flute was in the game
+        from src.world import soaring3d
+        soaring3d.give_flute(self)  # the Eon Flute, for a save that met its Eon before the flute was in the game
         if getattr(self, "active_store", None) == "HOENN" and getattr(self, "game", None) is not None:
             from src.pokemon import tms   # (Hoenn's own TMs, 11-14: a Hoenn Bag's Sword/Shield TMs with a Hoenn number become Hoenn's)
             for item in [k for k, q in self.inventory.items() if q and tms.is_tm(k) and not tms.is_hoenn(k)]:

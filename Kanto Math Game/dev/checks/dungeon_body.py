@@ -333,6 +333,8 @@ for _a in _all:
     try:
         story.badges.setdefault(str(_prog[_a].get("region") or "KANTO").upper(), [])
         _p = kanto(_a, came=None)
+        if _a == "HOENN_SOARING_IN_THE_SKY" and type(_p).__name__ == "Soaring3DState":
+            continue  # (the flight, not a map: its own suite, soaring3d)
         if not isinstance(_p, DungeonState):
             _bad.append((_a, "not a map"))
             continue
