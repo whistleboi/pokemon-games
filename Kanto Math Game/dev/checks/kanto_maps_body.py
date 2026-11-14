@@ -1160,6 +1160,49 @@ story.story_flags.pop("silph_co_cleared", None)
 if _sc is not None:
     story.story_flags["silph_co_cleared"] = _sc
 
+# ---- batch 21: Silph Co., FireRed's eleven floors
+_sf = ("silph_co_cleared", "got_card_key")
+_sfs = {k: story.story_flags.pop(k, None) for k in _sf}
+_ck = story.inventory.pop("CARD_KEY", None)
+si = open_map("SILPH_CITY", "SAFFRON_CITY")
+check(si.run.n_floors == 11 and si.run.index == 0 and (si.run.floor.w, si.run.floor.h) == (36, 22), f"Silph Co.: FireRed's eleven floors, in at 1F ({si.run.n_floors}, {si.run.player})")
+_n, _who = [], {}
+for _i in range(11):
+    _floor(si, _i)
+    _ms = [m for m in si.run.floor.movers if m.kind == "trainer"]
+    _n.append(len(_ms))
+    for m in _ms:
+        _who[m.payload[1].get("spot_name") or m.payload[1]["name"]] = (_i, m.x, m.y)
+check(_n == [1, 3, 2, 3, 4, 2, 5, 3, 3, 2, 3], f"...FireRed's trainers floor by floor, the data's among them ({_n})")
+check(_who.get("Grunt 3F") == (2, 25, 9) and _who.get("Admin Proton") == (7, 28, 5) and _who.get("Archer") == (8, 15, 18),
+      f"...the data's on the floors their words name: the warp-panel grunt on 3F, Proton on 8F, Archer on 9F ({_who.get('Admin Proton')}, {_who.get('Archer')})")
+check(_who.get("{rival_name}") == (6, 2, 6) and _who.get("Giovanni") == (10, 6, 11) and _who.get("Executive Ariana") == (10, 16, 12),
+      f"...your rival on 7F; Giovanni and Ariana on 11F, where FireRed has the Boss and his guard ({_who.get('Giovanni')})")
+_floor(si, 4)
+check(_figure(si, "CARD KEY") == (22, 21) and "1_51_locked" in json.dumps(si.recipe), f"...5F: the Card Key on the floor; the doors drawn locked ({_figure(si, 'CARD KEY')})")
+si.run.floor.movers = [m for m in si.run.floor.movers if m.kind not in ("wild", "trainer")]
+si.run.player = (6, 9); si.anim = 0; said.clear()
+si.step(1, 0); play(lambda: g.current_state._ready(), 300)
+check(tuple(si.run.player) == (6, 9) and any("Card Key" in s for s in said + [si.toast]), f"...a locked door won't open without it ({si.run.player}, {said[:1]}, {si.toast!r})")
+story.inventory["CARD_KEY"] = 1; story.story_flags["got_card_key"] = True
+si.run.player = (6, 9); si.anim = 0
+si.step(1, 0); play(lambda: g.current_state._ready(), 300)
+check(tuple(si.run.player) == (7, 9), f"...with the Card Key, through it ({si.run.player})")
+_floor(si, 6)
+check(_figure(si, "LAPRAS") == (0, 7), f"...7F: the worker who gives you a Lapras ({_figure(si, 'LAPRAS')})")
+_floor(si, 8)
+check(_figure(si, "NURSE") == (2, 16), "...9F: the nurse who rests your team")
+story.story_flags["silph_co_cleared"] = True
+si = open_map("SILPH_CITY", "SAFFRON_CITY"); _floor(si, 10)
+check(_figure(si, "VISIT THE PRESIDENT") == (9, 9), f"...Silph freed: the President in his boardroom ({_figure(si, 'VISIT THE PRESIDENT')})")
+story.inventory.pop("CARD_KEY", None)
+if _ck is not None:
+    story.inventory["CARD_KEY"] = _ck
+for _k, _v in _sfs.items():
+    story.story_flags.pop(_k, None)
+    if _v is not None:
+        story.story_flags[_k] = _v
+
 print(f"##### {len(fails)} failures")
 for m in fails:
     print("   FAIL " + m)

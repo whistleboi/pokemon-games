@@ -14313,162 +14313,2106 @@
   "descend": true
  },
  "SILPH_CITY": {
+  "floors": [
+   {
+    "art": [
+     "cccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccc!ccccc",
+     "cccccccccccccccccccccccccccccc.1cccc",
+     "cccccccccccccccccccccccccccccc..cccc",
+     "ccccccmccc..........................",
+     "ccccccm.............................",
+     "ccccccc.............................",
+     "cccNccm............................c",
+     "mmmmmmm......ccc....ccc.......cc....",
+     "............ccccc..ccccc......cc....",
+     "...........cccccccccccccc..........c",
+     "..........cccccccccccccccc..........",
+     "..........cccccccccccccccc....cc....",
+     "...........cccccccccccccc.....cc...c",
+     "............ccccc..ccccc............",
+     ".............ccc....ccc.............",
+     "..............................cc...c",
+     "............X.................cc....",
+     "....................................",
+     "...................................c",
+     "........nn.............c..c..c..c...",
+     "cccccccncccccccccccccccccccccccccccc"
+    ],
+    "exits": {
+     "n": "SAFFRON_CITY"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_47.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Receptionist",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Welcome to Silph Co. The President's office is the boardroom on 11F."
+       ]
+      }
+     }
+    ],
+    "signs": [
+     [
+      "SILPH CO. HEAD OFFICE",
+      "1F"
+     ]
+    ],
+    "trainer_spots": [
+     "Grunt 1F"
+    ],
+    "links": {
+     "31,2": [
+      1,
+      30,
+      2
+     ]
+    },
+    "moves": {
+     "3,7": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "pool": "NO_WILD_INDOORS_PERCENTAGES",
+    "theme": "room",
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_47.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       36,
+       22
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "cccccccccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccc!cccccc",
+     "cccccccccccccccccccccccccccc1.1ccccc",
+     "cccccccccccccccccccccccccccc...ccccc",
+     "ccc.....ccNcc.cc....................",
+     "...........cc.......................",
+     "..1........cc..1....................",
+     "...........cc.......................",
+     "ccccc..cccccccccccccccccccccc..ccccc",
+     "ccccc..cccccccccccccccccccccc..ccccc",
+     ".................cccccc.............",
+     "....................................",
+     ".............................X......",
+     "..........................cccccccccc",
+     "................ccc.Xccc..cccccccccc",
+     "ccccc..ccccccc..ccc..ccc..cc........",
+     "ccccc..ccccccc............cc........",
+     "............cc......................",
+     "............cc..ccc..ccc....Xccc....",
+     "..ccc..1...ccc..ccc..ccc..cc.ccc.1.c",
+     "............cc............cc........",
+     "...........ccc............cc.......c"
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_48.png",
+      "at": [
+       0,
+       0
+      ],
+      "until": {
+       "flag": "got_card_key",
+       "f": "fr_ground/1_48_locked.png"
+      }
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "TALK TO EMPLOYEE"
+    ],
+    "signs": [
+     [
+      "SILPH CO. HEAD OFFICE",
+      "2F"
+     ]
+    ],
+    "trainer_spots": [
+     "Grunt 2F 1",
+     "Grunt 2F 2",
+     "Scientist Jerry"
+    ],
+    "links": {
+     "28,2": [
+      2,
+      28,
+      2
+     ],
+     "2,6": [
+      2,
+      33,
+      5
+     ],
+     "15,6": [
+      7,
+      2,
+      17
+     ],
+     "30,2": [
+      0,
+      31,
+      2
+     ],
+     "7,19": [
+      5,
+      29,
+      5
+     ],
+     "33,19": [
+      7,
+      10,
+      6
+     ]
+    },
+    "moves": {
+     "10,4": {
+      "m": "face",
+      "d": "u"
+     }
+    },
+    "pool": "NO_WILD_INDOORS_PERCENTAGES",
+    "barred": [
+     {
+      "tiles": [
+       [
+        5,
+        8
+       ],
+       [
+        6,
+        8
+       ],
+       [
+        5,
+        9
+       ],
+       [
+        6,
+        9
+       ],
+       [
+        5,
+        15
+       ],
+       [
+        6,
+        15
+       ],
+       [
+        5,
+        16
+       ],
+       [
+        6,
+        16
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "item_condition": "CARD_KEY"
+      },
+      "lines": [
+       "The door is locked. It needs a Card Key..."
+      ]
+     }
+    ],
+    "hidden": {
+     "11,21": "ULTRA_BALL"
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_48.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       36,
+       22
+      ],
+      "until": {
+       "flag": "got_card_key",
+       "f": "fr_top/1_48_locked.png"
+      }
+     }
+    ]
+   },
+   {
+    "art": [
+     "cccccccccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccc!cccccc",
+     "cccccccccccccccccccccccccccc1.1ccccc",
+     "cccccccccccccccccccccccccccc...ccccc",
+     "ccc.................................",
+     ".................................1..",
+     "....1...............................",
+     "....................................",
+     "cccccccccccccccccccccc....cccccccccc",
+     "cccccccccccccccccccccc...Xcccccccccc",
+     "........Ncc.........cc....cc........",
+     "c....ccc.ccc...ccc..cc....cc........",
+     "c...Xccc.......ccc..............ccc.",
+     ".....ccc.......ccc.............Nccc.",
+     "..1......ccc.1......cc....cc.1......",
+     ".........cc.........cc....cc........",
+     "cccccccccccccccccccccc....cccccccccc",
+     "cccccccccccccccccccccc....cccccccccc",
+     "........cccccc...................ccc",
+     "....................................",
+     "...1............................1...",
+     "...................................."
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_49.png",
+      "at": [
+       0,
+       0
+      ],
+      "until": {
+       "flag": "got_card_key",
+       "f": "fr_ground/1_49_locked.png"
+      }
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "HYPER POTION",
+     {
+      "text": "Worker",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I work for Silph Co.... With Team Rocket here, what am I supposed to do?"
+       ]
+      }
+     }
+    ],
+    "signs": [
+     [
+      "SILPH CO. HEAD OFFICE",
+      "3F"
+     ]
+    ],
+    "trainer_spots": [
+     "Grunt 3F",
+     "Scientist Jose"
+    ],
+    "links": {
+     "28,2": [
+      1,
+      28,
+      2
+     ],
+     "4,6": [
+      4,
+      15,
+      7
+     ],
+     "13,14": [
+      6,
+      5,
+      4
+     ],
+     "30,2": [
+      3,
+      30,
+      2
+     ],
+     "2,14": [
+      8,
+      9,
+      4
+     ],
+     "3,20": [
+      4,
+      2,
+      20
+     ],
+     "29,14": [
+      0,
+      32,
+      20
+     ],
+     "32,20": [
+      0,
+      29,
+      14
+     ],
+     "33,5": [
+      1,
+      2,
+      6
+     ]
+    },
+    "moves": {
+     "31,13": {
+      "m": "look",
+      "d": "udlr"
+     },
+     "8,10": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "pool": "NO_WILD_INDOORS_PERCENTAGES",
+    "barred": [
+     {
+      "tiles": [
+       [
+        9,
+        11
+       ],
+       [
+        10,
+        11
+       ],
+       [
+        9,
+        12
+       ],
+       [
+        10,
+        12
+       ],
+       [
+        9,
+        13
+       ],
+       [
+        10,
+        13
+       ],
+       [
+        20,
+        11
+       ],
+       [
+        21,
+        11
+       ],
+       [
+        20,
+        12
+       ],
+       [
+        21,
+        12
+       ],
+       [
+        20,
+        13
+       ],
+       [
+        21,
+        13
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "item_condition": "CARD_KEY"
+      },
+      "lines": [
+       "The door is locked. It needs a Card Key..."
+      ]
+     }
+    ],
+    "hidden": {
+     "34,18": "PROTEIN"
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_49.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       36,
+       22
+      ],
+      "until": {
+       "flag": "got_card_key",
+       "f": "fr_top/1_49_locked.png"
+      }
+     }
+    ]
+   },
+   {
+    "art": [
+     "cccccccccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccc!cccccc",
+     "cccccccccccccccccccccccccccc1.1ccccc",
+     "cccccccccccccccccccccccccccc...ccccc",
+     ".........cc........cc...............",
+     ".ccccN.c.cc..cccc..cc...............",
+     ".ccccccc.cc..cccc.1cc...............",
+     ".ccccccc.cc..cccc..cc...............",
+     ".ccccccc.cc...X....cc...............",
+     ".ccccccc.cc.1......cc...ccccc..ccccc",
+     ".ccccccc.cc........cc...ccccc..ccccc",
+     ".ccNcccc.ccccc..ccccc...cc..........",
+     ".cc.Nccc.ccccc..ccccc...cc..........",
+     ".cN..cc..cc........cc...cc...ccc....",
+     ".........cc.......1cc...cc...ccc...c",
+     ".........cc........cc...cc..........",
+     "ccc..ccccccccc..ccccc...cc.......X..",
+     "ccc..ccccccccc..ccccc...cc...ccc...c",
+     "c......cccc.............cc...cNc....",
+     "..........X.............ccc.........",
+     "..1.....................ccc........c",
+     "........................ccc........."
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_50.png",
+      "at": [
+       0,
+       0
+      ],
+      "until": {
+       "flag": "got_card_key",
+       "f": "fr_ground/1_50_locked.png"
+      }
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Worker",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Shh! Can't you see I'm hiding?"
+       ]
+      }
+     },
+     "MAX REVIVE",
+     "ESCAPE ROPE",
+     "FULL HEAL",
+     "TM128"
+    ],
+    "signs": [
+     [
+      "SILPH CO. HEAD OFFICE",
+      "4F"
+     ]
+    ],
+    "trainer_spots": [
+     "Scientist Taylor",
+     "Grunt 4F 1",
+     "Grunt 4F 2"
+    ],
+    "links": {
+     "28,2": [
+      4,
+      28,
+      2
+     ],
+     "18,6": [
+      5,
+      2,
+      6
+     ],
+     "30,2": [
+      2,
+      30,
+      2
+     ],
+     "12,9": [
+      9,
+      10,
+      14
+     ],
+     "2,20": [
+      9,
+      14,
+      17
+     ],
+     "18,14": [
+      9,
+      14,
+      9
+     ]
+    },
+    "moves": {
+     "5,5": {
+      "m": "look",
+      "d": "udlr"
+     },
+     "3,11": {
+      "m": "face",
+      "d": "d"
+     },
+     "4,12": {
+      "m": "face",
+      "d": "d"
+     },
+     "2,13": {
+      "m": "face",
+      "d": "d"
+     },
+     "30,18": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "pool": "NO_WILD_INDOORS_PERCENTAGES",
+    "barred": [
+     {
+      "tiles": [
+       [
+        3,
+        16
+       ],
+       [
+        4,
+        16
+       ],
+       [
+        3,
+        17
+       ],
+       [
+        4,
+        17
+       ],
+       [
+        14,
+        11
+       ],
+       [
+        15,
+        11
+       ],
+       [
+        14,
+        12
+       ],
+       [
+        15,
+        12
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "item_condition": "CARD_KEY"
+      },
+      "lines": [
+       "The door is locked. It needs a Card Key..."
+      ]
+     }
+    ],
+    "hidden": {
+     "35,20": "IRON"
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_50.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       36,
+       22
+      ],
+      "until": {
+       "flag": "got_card_key",
+       "f": "fr_top/1_50_locked.png"
+      }
+     }
+    ]
+   },
+   {
+    "art": [
+     "cccccccccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccc!cccccc",
+     "cccccccccccccccccccccccccccc1.1ccccc",
+     "cccccccccccccccccccccccccccc...ccccc",
+     ".......cc........ccc................",
+     ".......cc........................1..",
+     ".c.c.c.cc..X........................",
+     "..N....cc......1..cccccccccc..cccccX",
+     ".......cc.........cccccccccc..ccccc.",
+     "....N......ccccccccc............ccc.",
+     "...........ccccccccc.............cc.",
+     ".c.c.c.cc..cc.....cc.....ccc!cc..cc.",
+     ".......cc..cc.....cc........ccc..cc.",
+     "ccccccccc..ccc..N......X....cc!..cc.",
+     "ccccccccc..cc...............ccc..cc.",
+     ".......cc..cc.....cc.....!ccccc..cc.",
+     "...cc..cc..ccc....cc.............cc.",
+     ".ccccc.cc..cc.....cc.............cc.",
+     ".Ncccc.....cccccccccccccccccccccccc.",
+     "...ccc.....cccccccccccccccccccccccc.",
+     "..1ccc.cc.1..c..c..c..c..c..c..c....",
+     ".......ccX............N............."
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_51.png",
+      "at": [
+       0,
+       0
+      ],
+      "until": {
+       "flag": "got_card_key",
+       "f": "fr_ground/1_51_locked.png"
+      }
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Scientist",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Those thugs' boss said he wanted strong Pokémon. I hope the President got away safely."
+       ]
+      }
+     },
+     "PROTEIN",
+     {
+      "text": "Worker",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Team Rocket is in an uproar about some intruder. That's you, isn't it?"
+       ]
+      }
+     },
+     "TM127",
+     "CARD KEY"
+    ],
+    "signs": [
+     [
+      "SILPH CO. HEAD OFFICE",
+      "5F"
+     ],
+     [
+      "A Pokémon report!",
+      "Some Pokémon evolve when they're traded."
+     ],
+     [
+      "A Pokémon report!",
+      "More than 350 Pokémon moves are known so far."
+     ],
+     [
+      "A Pokémon report!",
+      "Porygon, the first virtual Pokémon, was made in a Pokémon lab."
+     ]
+    ],
+    "trainer_spots": [
+     "Scientist Beau",
+     "Grunt 5F 2",
+     "Juggler Dalton",
+     "Grunt 5F 1"
+    ],
+    "links": {
+     "28,2": [
+      3,
+      28,
+      2
+     ],
+     "15,7": [
+      2,
+      4,
+      6
+     ],
+     "30,2": [
+      5,
+      26,
+      2
+     ],
+     "10,20": [
+      8,
+      22,
+      18
+     ],
+     "2,20": [
+      2,
+      3,
+      20
+     ],
+     "33,5": [
+      6,
+      25,
+      17
+     ]
+    },
+    "moves": {
+     "16,13": {
+      "m": "look",
+      "d": "udlr"
+     },
+     "2,7": {
+      "m": "wander",
+      "d": "lr",
+      "r": [
+       2,
+       0
+      ]
+     },
+     "4,9": {
+      "m": "face",
+      "d": "d"
+     },
+     "1,18": {
+      "m": "face",
+      "d": "d"
+     },
+     "22,21": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "pool": "NO_WILD_INDOORS_PERCENTAGES",
+    "barred": [
+     {
+      "tiles": [
+       [
+        7,
+        8
+       ],
+       [
+        8,
+        8
+       ],
+       [
+        7,
+        9
+       ],
+       [
+        8,
+        9
+       ],
+       [
+        7,
+        10
+       ],
+       [
+        8,
+        10
+       ],
+       [
+        7,
+        17
+       ],
+       [
+        8,
+        17
+       ],
+       [
+        7,
+        18
+       ],
+       [
+        8,
+        18
+       ],
+       [
+        7,
+        19
+       ],
+       [
+        8,
+        19
+       ],
+       [
+        18,
+        12
+       ],
+       [
+        19,
+        12
+       ],
+       [
+        18,
+        13
+       ],
+       [
+        19,
+        13
+       ],
+       [
+        18,
+        14
+       ],
+       [
+        19,
+        14
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "item_condition": "CARD_KEY"
+      },
+      "lines": [
+       "The door is locked. It needs a Card Key..."
+      ]
+     }
+    ],
+    "hidden": {
+     "13,16": "ELIXIR",
+     "32,9": "PP_UP"
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_51.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       36,
+       22
+      ],
+      "until": {
+       "flag": "got_card_key",
+       "f": "fr_top/1_51_locked.png"
+      }
+     }
+    ]
+   },
+   {
+    "art": [
+     "ccccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccc!ccccc",
+     "cccccccccccccc1.ccccccccc.1cccc",
+     "cccccccccccccc..ccccccccc..cccc",
+     ".....cc........................",
+     ".....cc..............X.......1.",
+     "..1..cc....ccccccccccc..ccccc..",
+     "...........ccccccccccc..ccccc..",
+     ".c.c......ccc..............cc..",
+     ".....cc....cc.N........NN..cc..",
+     "ccccccc....cc....cccccccc..cc..",
+     "ccccccc...cccc...cccccccc..cc..",
+     ".....cc....cc...Ncccccccc..cc..",
+     ".cc..cc....ccc........N....cc..",
+     ".cN..cc...ccc..............cc..",
+     ".cc........ccccc..ccccccccccc..",
+     ".cc........ccccc..ccccccccccc..",
+     ".Nc..cc...........X............",
+     ".....cc........................"
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_52.png",
+      "at": [
+       0,
+       0
+      ],
+      "until": {
+       "flag": "got_card_key",
+       "f": "fr_ground/1_52_locked.png"
+      }
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Worker  ",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Rockets marched in and took over the whole building!"
+       ]
+      }
+     },
+     {
+      "text": "Worker",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Oh dear, oh dear... Please help me!"
+       ]
+      }
+     },
+     {
+      "text": "Woman",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The man next to me is such a coward!"
+       ]
+      }
+     },
+     {
+      "text": "Woman ",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Team Rocket wants to rule the world with Pokémon!"
+       ]
+      }
+     },
+     {
+      "text": "Worker ",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "They must have come for Silph's Pokémon products."
+       ]
+      }
+     },
+     "HP UP",
+     "X SP. ATK"
+    ],
+    "signs": [
+     [
+      "SILPH CO. HEAD OFFICE",
+      "6F"
+     ]
+    ],
+    "trainer_spots": [
+     "Grunt 6F 1",
+     "Grunt 6F 2"
+    ],
+    "links": {
+     "14,2": [
+      6,
+      19,
+      2
+     ],
+     "29,5": [
+      1,
+      7,
+      19
+     ],
+     "26,2": [
+      4,
+      30,
+      2
+     ],
+     "2,6": [
+      3,
+      18,
+      6
+     ]
+    },
+    "moves": {
+     "23,9": {
+      "m": "face",
+      "d": "d"
+     },
+     "24,9": {
+      "m": "face",
+      "d": "d"
+     },
+     "22,13": {
+      "m": "face",
+      "d": "u"
+     },
+     "14,9": {
+      "m": "look",
+      "d": "udlr"
+     },
+     "16,12": {
+      "m": "face",
+      "d": "r"
+     },
+     "2,14": {
+      "m": "face",
+      "d": "d"
+     },
+     "1,17": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "pool": "NO_WILD_INDOORS_PERCENTAGES",
+    "barred": [
+     {
+      "tiles": [
+       [
+        5,
+        14
+       ],
+       [
+        6,
+        14
+       ],
+       [
+        5,
+        15
+       ],
+       [
+        6,
+        15
+       ],
+       [
+        5,
+        16
+       ],
+       [
+        6,
+        16
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "item_condition": "CARD_KEY"
+      },
+      "lines": [
+       "The door is locked. It needs a Card Key..."
+      ]
+     }
+    ],
+    "hidden": {
+     "1,8": "CARBOS"
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_52.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       31,
+       19
+      ],
+      "until": {
+       "flag": "got_card_key",
+       "f": "fr_top/1_52_locked.png"
+      }
+     }
+    ]
+   },
+   {
+    "art": [
+     "ccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccc!cccccccccc",
+     "ccccccccccccccccccc1.ccccc.1ccc",
+     "ccccccccccccccccccc..ccccc..ccc",
+     ".....1cccccccX.cc..............",
+     "......ccccccc..cc.......X......",
+     "..Xcccccccccc..................",
+     "N.....cc............cccc..ccccc",
+     ".....1ccccc..cccc...cccc..ccccc",
+     "......ccccc..cccc...ccc........",
+     "cccccccc..N....cc...cc......cc.",
+     "cccccccc.cc.cc.cc...ccc.......N",
+     "N.....cc.cc.cc.cc...cc.........",
+     "...X..cc.......cc...ccccc..cccc",
+     "......cc.N...N.cc...ccccc..cccc",
+     ".c..c.cc.......cc...cc..X......",
+     "......ccccccccccc...cc.........",
+     "......ccccccccccc...cc...1.....",
+     "....................cc........."
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_53.png",
+      "at": [
+       0,
+       0
+      ],
+      "until": {
+       "flag": "got_card_key",
+       "f": "fr_ground/1_53_locked.png"
+      }
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "LAPRAS",
+     {
+      "text": "Woman",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "You came to rescue me? It's far too dangerous here!"
+       ]
+      }
+     },
+     "TM116",
+     "CALCIUM",
+     {
+      "text": "Worker ",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "If Team Rocket takes over Silph, who knows what they'll do with our Pokémon?"
+       ]
+      }
+     },
+     {
+      "text": "Worker",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Team Rocket came for the Master Ball. It catches any Pokémon, every time."
+       ]
+      }
+     }
+    ],
+    "signs": [
+     [
+      "SILPH CO. HEAD OFFICE",
+      "7F"
+     ]
+    ],
+    "trainer_spots": [
+     "Grunt 7F 3",
+     "Grunt 7F 1",
+     "{rival_name}",
+     "Connor",
+     "Grunt 7F 2"
+    ],
+    "links": {
+     "19,2": [
+      5,
+      14,
+      2
+     ],
+     "5,8": [
+      10,
+      2,
+      5
+     ],
+     "25,17": [
+      4,
+      33,
+      5
+     ],
+     "27,2": [
+      7,
+      28,
+      2
+     ],
+     "5,4": [
+      2,
+      13,
+      14
+     ]
+    },
+    "moves": {
+     "10,10": {
+      "m": "look",
+      "d": "udlr"
+     },
+     "13,14": {
+      "m": "face",
+      "d": "l"
+     },
+     "9,14": {
+      "m": "wander",
+      "d": "lr",
+      "r": [
+       1,
+       0
+      ]
+     },
+     "0,12": {
+      "m": "face",
+      "d": "d"
+     },
+     "30,11": {
+      "m": "face",
+      "d": "d"
+     },
+     "0,7": {
+      "m": "face",
+      "d": "r"
+     }
+    },
+    "pool": "NO_WILD_INDOORS_PERCENTAGES",
+    "barred": [
+     {
+      "tiles": [
+       [
+        11,
+        8
+       ],
+       [
+        12,
+        8
+       ],
+       [
+        11,
+        9
+       ],
+       [
+        12,
+        9
+       ],
+       [
+        24,
+        7
+       ],
+       [
+        25,
+        7
+       ],
+       [
+        24,
+        8
+       ],
+       [
+        25,
+        8
+       ],
+       [
+        25,
+        13
+       ],
+       [
+        26,
+        13
+       ],
+       [
+        25,
+        14
+       ],
+       [
+        26,
+        14
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "item_condition": "CARD_KEY"
+      },
+      "lines": [
+       "The door is locked. It needs a Card Key..."
+      ]
+     }
+    ],
+    "hidden": {
+     "22,11": "ZINC"
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_53.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       31,
+       19
+      ],
+      "until": {
+       "flag": "got_card_key",
+       "f": "fr_top/1_53_locked.png"
+      }
+     }
+    ]
+   },
+   {
+    "art": [
+     "ccccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccc!ccc",
+     "cccccccccccccccc1.ccccccccc.1cc",
+     "cccccccccccccccc..ccccccccc..cc",
+     ".....cc..X..cc.................",
+     "..N..cc.....cc..............X..",
+     ".ccc.cc...1.cc...cccccccccccccc",
+     ".ccc.cc.....cc...cccccccccccccc",
+     ".ccc.cc..ccccc...cc.....N......",
+     ".ccc.cc..ccccc...cc.c.c......N.",
+     ".ccc.......1cc...cc..........c.",
+     "..........cccc...cc.cc.........",
+     "..1..cc...cccc...cc.cc.......c.",
+     ".....cc.....cc...cc............",
+     "ccccccc..ccccc...ccccccc..ccccc",
+     "ccccccc..ccccc...ccccccc..ccccc",
+     "c..............................",
+     "..1.......X....................",
+     "c.............................."
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_54.png",
+      "at": [
+       0,
+       0
+      ],
+      "until": {
+       "flag": "got_card_key",
+       "f": "fr_ground/1_54_locked.png"
+      }
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Worker",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Is this the end of Silph Co.?"
+       ]
+      }
+     },
+     "IRON",
+     {
+      "text": "Scientist",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Team Rocket's boss is cruel. To him, Pokémon are only tools."
+       ]
+      }
+     }
+    ],
+    "signs": [
+     [
+      "SILPH CO. HEAD OFFICE",
+      "8F"
+     ]
+    ],
+    "trainer_spots": [
+     "Scientist Parker",
+     "Admin Proton",
+     "Grunt 8F"
+    ],
+    "links": {
+     "16,2": [
+      8,
+      16,
+      2
+     ],
+     "11,10": [
+      0,
+      2,
+      12
+     ],
+     "10,6": [
+      1,
+      33,
+      19
+     ],
+     "28,2": [
+      6,
+      27,
+      2
+     ],
+     "2,12": [
+      0,
+      11,
+      10
+     ],
+     "2,17": [
+      1,
+      15,
+      6
+     ]
+    },
+    "moves": {
+     "2,5": {
+      "m": "wander",
+      "d": "lr",
+      "r": [
+       1,
+       0
+      ]
+     },
+     "29,9": {
+      "m": "face",
+      "d": "d"
+     },
+     "24,8": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "pool": "NO_WILD_INDOORS_PERCENTAGES",
+    "barred": [
+     {
+      "tiles": [
+       [
+        5,
+        9
+       ],
+       [
+        6,
+        9
+       ],
+       [
+        5,
+        10
+       ],
+       [
+        6,
+        10
+       ],
+       [
+        5,
+        11
+       ],
+       [
+        6,
+        11
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "item_condition": "CARD_KEY"
+      },
+      "lines": [
+       "The door is locked. It needs a Card Key..."
+      ]
+     }
+    ],
+    "hidden": {
+     "29,10": "NUGGET"
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_54.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       31,
+       19
+      ],
+      "until": {
+       "flag": "got_card_key",
+       "f": "fr_top/1_54_locked.png"
+      }
+     }
+    ]
+   },
+   {
+    "art": [
+     "ccccccccccccccccccccccccccccccc",
+     "ccccccccccccccccc!ccccccccccccc",
+     "cccccccccccccccc1.1cccccccccccc",
+     "cccccccccccccccc...cccccccccccc",
+     ".........1..cc.................",
+     "............cc.................",
+     ".Xcccccccccccc..ccccc..cccccc..",
+     "..cccccccccccc..ccccc..cccccc..",
+     "..cccc......ccc.cc.........ccc.",
+     "..cc...cc...cc..cc.....cc..cc..",
+     ".......cc...cc..cc.....cc..ccc.",
+     "............ccc.cc.........cc..",
+     "..cc...ccccccc..ccccc..ccccccc.",
+     "..cc...ccccccc..ccccc..ccccccc.",
+     "cccc...cccc.ccc.cc..........cc.",
+     "cccc...cc...cc..cc...cccc...cc.",
+     "..N.............cc...cccc.X.cc.",
+     ".c.c............cc...cccc......",
+     ".......cc...cc.Xcc....1cc......"
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_55.png",
+      "at": [
+       0,
+       0
+      ],
+      "until": {
+       "flag": "got_card_key",
+       "f": "fr_ground/1_55_locked.png"
+      }
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "NURSE"
+    ],
+    "signs": [
+     [
+      "SILPH CO. HEAD OFFICE",
+      "9F"
+     ]
+    ],
+    "trainer_spots": [
+     "Grunt 9F",
+     "Scientist Ed",
+     "Archer"
+    ],
+    "links": {
+     "16,2": [
+      7,
+      16,
+      2
+     ],
+     "22,18": [
+      4,
+      10,
+      20
+     ],
+     "9,4": [
+      2,
+      2,
+      14
+     ],
+     "18,2": [
+      9,
+      8,
+      2
+     ]
+    },
+    "moves": {
+     "2,16": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "pool": "NO_WILD_INDOORS_PERCENTAGES",
+    "barred": [
+     {
+      "tiles": [
+       [
+        2,
+        9
+       ],
+       [
+        3,
+        9
+       ],
+       [
+        2,
+        10
+       ],
+       [
+        3,
+        10
+       ],
+       [
+        2,
+        11
+       ],
+       [
+        3,
+        11
+       ],
+       [
+        12,
+        15
+       ],
+       [
+        13,
+        15
+       ],
+       [
+        12,
+        16
+       ],
+       [
+        13,
+        16
+       ],
+       [
+        12,
+        17
+       ],
+       [
+        13,
+        17
+       ],
+       [
+        21,
+        6
+       ],
+       [
+        22,
+        6
+       ],
+       [
+        21,
+        7
+       ],
+       [
+        22,
+        7
+       ],
+       [
+        21,
+        12
+       ],
+       [
+        22,
+        12
+       ],
+       [
+        21,
+        13
+       ],
+       [
+        22,
+        13
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "item_condition": "CARD_KEY"
+      },
+      "lines": [
+       "The door is locked. It needs a Card Key..."
+      ]
+     }
+    ],
+    "hidden": {
+     "11,14": "MAX_POTION",
+     "5,8": "CALCIUM"
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_55.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       31,
+       19
+      ],
+      "until": {
+       "flag": "got_card_key",
+       "f": "fr_top/1_55_locked.png"
+      }
+     }
+    ]
+   },
+   {
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccc!ccccccccc",
+     "cccccc1.1cccccccc",
+     "cccccc...cccccccc",
+     ".................",
+     ".................",
+     ".......ccccc..ccc",
+     "..X...cccccc..ccc",
+     ".......cc........",
+     "......cccc....1..",
+     ".......cc........",
+     "ccc..ccccccc..ccc",
+     "ccc..ccccccc..ccc",
+     "X......cc........",
+     "..cccc.cc.1..cc..",
+     "c.NccN.cc..cccc..",
+     "..cccc.cc..cc....",
+     "..cNcc.cc.N...1..",
+     "c......cc........"
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_56.png",
+      "at": [
+       0,
+       0
+      ],
+      "until": {
+       "flag": "got_card_key",
+       "f": "fr_ground/1_56_locked.png"
+      }
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "ULTRA BALL",
+     "CARBOS",
+     "RARE CANDY",
+     {
+      "text": "Woman",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Waaah! I'm so scared!"
+       ]
+      }
+     }
+    ],
+    "signs": [
+     [
+      "SILPH CO. HEAD OFFICE",
+      "10F"
+     ]
+    ],
+    "trainer_spots": [
+     "Scientist Travis",
+     "Grunt 10F"
+    ],
+    "links": {
+     "6,2": [
+      10,
+      7,
+      2
+     ],
+     "10,14": [
+      3,
+      12,
+      9
+     ],
+     "14,9": [
+      3,
+      18,
+      14
+     ],
+     "8,2": [
+      8,
+      18,
+      2
+     ],
+     "14,17": [
+      3,
+      2,
+      20
+     ]
+    },
+    "moves": {
+     "10,17": {
+      "m": "face",
+      "d": "d"
+     },
+     "5,15": {
+      "m": "face",
+      "d": "d"
+     },
+     "2,15": {
+      "m": "face",
+      "d": "d"
+     },
+     "3,17": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "pool": "NO_WILD_INDOORS_PERCENTAGES",
+    "barred": [
+     {
+      "tiles": [
+       [
+        12,
+        11
+       ],
+       [
+        13,
+        11
+       ],
+       [
+        12,
+        12
+       ],
+       [
+        13,
+        12
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "item_condition": "CARD_KEY"
+      },
+      "lines": [
+       "The door is locked. It needs a Card Key..."
+      ]
+     }
+    ],
+    "hidden": {
+     "9,9": "HP_UP"
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_56.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       17,
+       19
+      ],
+      "until": {
+       "flag": "got_card_key",
+       "f": "fr_top/1_56_locked.png"
+      }
+     }
+    ]
+   },
+   {
+    "art": [
+     "ccccccccccccccccc",
+     "cccccccc!cccccccc",
+     "ccccccc1..ccccccc",
+     "ccccccc...ccccccc",
+     "...cc............",
+     "..1cc............",
+     "...cccccccccccc..",
+     "...cccccccccccc..",
+     "...cc..ccccc.cc..",
+     "...cc....N.N.cc..",
+     "...cc........cc..",
+     "...cc.Xccccc.cc..",
+     "...cc..ccccc.cc.X",
+     "...cc..ccccc.cc..",
+     "...cc........cc..",
+     "...cc........cc..",
+     "...cc..cccccccc..",
+     "...cc..cccccccc..",
+     ".........ccc.cc.N",
+     "..X..........cc.."
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_57.png",
+      "at": [
+       0,
+       0
+      ],
+      "until": {
+       "flag": "got_card_key",
+       "f": "fr_ground/1_57_locked.png"
+      }
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "VISIT THE PRESIDENT",
+     {
+      "text": "Secretary",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Thank you for rescuing us all. Everyone here, the President too, owes you so much."
+       ]
+      }
+     },
+     "ZINC"
+    ],
+    "signs": [
+     [
+      "SILPH CO. HEAD OFFICE",
+      "11F"
+     ]
+    ],
+    "trainer_spots": [
+     "Giovanni",
+     "Executive Ariana",
+     "Grunt 11F"
+    ],
+    "links": {
+     "7,2": [
+      9,
+      6,
+      2
+     ],
+     "2,5": [
+      6,
+      5,
+      8
+     ]
+    },
+    "moves": {
+     "11,9": {
+      "m": "face",
+      "d": "d"
+     },
+     "16,18": {
+      "m": "face",
+      "d": "d"
+     },
+     "9,9": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "pool": "NO_WILD_INDOORS_PERCENTAGES",
+    "barred": [
+     {
+      "tiles": [
+       [
+        5,
+        16
+       ],
+       [
+        6,
+        16
+       ],
+       [
+        5,
+        17
+       ],
+       [
+        6,
+        17
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "item_condition": "CARD_KEY"
+      },
+      "lines": [
+       "The door is locked. It needs a Card Key..."
+      ]
+     }
+    ],
+    "hidden": {
+     "10,18": "REVIVE"
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_57.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       17,
+       20
+      ],
+      "until": {
+       "flag": "got_card_key",
+       "f": "fr_top/1_57_locked.png"
+      }
+     }
+    ]
+   }
+  ],
   "theme": "ship",
-  "buildings": {},
   "floor_names": [
    "1F",
    "2F",
    "3F",
    "4F",
-   "5F"
+   "5F",
+   "6F",
+   "7F",
+   "8F",
+   "9F",
+   "10F",
+   "11F"
   ],
-  "floors": [
-   {
-    "art": [
-     "cccccccccccccccccccccccccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccc",
-     "ccccccccccccccccccccccccccccccccc+cc",
-     "ccccccccccccccccccccccccccccccc...cc",
-     "ccccccccccccccccccccccccccccccc.cccc",
-     "c....cc.............................",
-     "c....ccN............................",
-     "c.....c.......................mm...m",
-     "c.ccccc......mmm....mmm.......mm.m..",
-     "c...........mmmmm..mmmmm......mm.m..",
-     "c..........cccccccccccccc..........m",
-     "c.........cccccccccccccccc....mm....",
-     "ccc..mm...cccccccccccccccc....mm.m..",
-     "ccc..mm....cccccccccccccc.....mm.m.m",
-     "c...........ccccc..ccccc............",
-     "ccc..mm......ccc....ccc.......mm....",
-     "ccc..mm.......................mm.m.m",
-     "c.............................mm.m..",
-     "c...................................",
-     "c..................................m",
-     "c......................m..m..m..m...",
-     "cccccccccvcccccccccccccccccccccccccc"
-    ],
-    "exits": {
-     "v": "SAFFRON_CITY"
-    },
-    "people": [
-     "NURSE"
-    ]
-   },
-   {
-    "art": [
-     "cccccccccccccccccccccccccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccc",
-     "cccccccccccccccccccccccccc+c....-ccc",
-     "cccccccccccccccccccccccccc.c...c.ccc",
-     "cccccccccccccccccccccccccc.....ccccc",
-     "c.........Nccc......................",
-     "c.m........ccc.m....................",
-     "ccccc..cccccccccccccccccccccc..mmmmm",
-     "cccccc.ccccccccccccccccccccccc.mmmmm",
-     "cccccc.ccccccccccccccccccccccc.mmmmm",
-     "cccccc.ccccccccccccccccccccccc.mmmmm",
-     "c...................................",
-     "c.........................cccccccccc",
-     "c.........................cccccccccc",
-     "ccccc..ccccccc............cccccccccc",
-     "cccccc.cccccccc.mmm..mmm..cc......cc",
-     "cccccc.cccccccc.mmmm.mmmm.cc........",
-     "cccccc.cccccccc.....................",
-     "c..........cccc.mmm..mmm..mm.mmmm..m",
-     "c.mmmm.m...cccc.mmmm.mmmm.mm.mmm.m.m",
-     "c.mmm......cccc...........mm.mmm...m",
-     "c..........cccc...........mm.......m"
-    ],
-    "exits": {},
-    "people": [
-     "TALK TO EMPLOYEE"
-    ]
-   },
-   {
-    "art": [
-     "cccccccccccccccccccccccccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccc",
-     "cccccccccccccccccccccccccc-c...+cccc",
-     "cccccccccccccccccccccccccc......cccc",
-     "c................................c..",
-     "c...m...............................",
-     "cccccccccccccccccccccc....cccccccccc",
-     "ccccccccccccccccccccccc...cccccccccc",
-     "ccccccccccccccccccccccc...cccccccccc",
-     "ccccccccccccccccccccccc...cccccccccc",
-     "c....ccc.ccc...ccc..ccc...ccc.......",
-     "c....ccc.ccc...ccc..ccc...ccc...mmm.",
-     "c...cccc......cccc.............mmmm.",
-     "c.m......ccc........ccc...cc.m..mmm.",
-     "ccccccccccccccccccccccc...cccccccccc",
-     "ccccccccccccccccccccccc...cccccccccc",
-     "ccccccccccccccccccccccc...cccccccccc",
-     "ccccccccccccccccccccccc...cccccccccc",
-     "c...................................",
-     "c..m............................m...",
-     "c..................................."
-    ],
-    "exits": {}
-   },
-   {
-    "art": [
-     "cccccccccccccccccccccccccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccc",
-     "cccccccccccccccccccccccccccccccccccc",
-     "cccccccccccccccccccccccccc+c...-cccc",
-     "cccccccccccccccccccccccccc......cccc",
-     "ccccc....cc..cccc..ccc..............",
-     "cccccccc.cc..cccc..ccc..............",
-     "cccccccc.cc.cccccc.ccc..............",
-     "cccccccc.cc........ccc..mmmmm..mmmmm",
-     "cccccccc.cc.m......ccc..mmmmmm.mmmmm",
-     "cccccccc.ccccc..cccccc..mmmmmm.mmmmm",
-     "ccc.cccc.cccccc.cccccc..mmmmmm.mmmmm",
-     "ccc..ccc.cccccc.cccccc..mmm.........",
-     "cc...cc..cccccc.cccccc..mmm..mmm....",
-     "c........cc.......cccc..mmm.mmmmm..m",
-     "ccc..ccccccccc..cccccc..mmm..mmm....",
-     "cccc.cccccccccc.cccccc..mmm.........",
-     "cccc.cccccccccc.cccccc..mmm..mmm...m",
-     "cccc.cccccccccc.cccccc..mmm.mmmmm...",
-     "........................mmm..mmm....",
-     "..m.....................mmm........m",
-     "........................mmm........."
-    ],
-    "exits": {}
-   },
-   {
-    "art": [
-     "cccccccccccccccccccc",
-     "cccccccccccccccccccc",
-     "cccccccccccccccccccc",
-     "cccccccc-...cccccccc",
-     "cccccccc....cccccccc",
-     "ccc.cccc.cccccccc..c",
-     "ccc..ccc.ccccccccc.c",
-     "ccc..ccc.ccccccccc.c",
-     "ccc..ccc.ccccccccc.c",
-     "ccc..ccc..ccc......c",
-     "ccc..ccc.......ccc.c",
-     "ccc..ccc.mmmmm.ccc.c",
-     "ccc..ccc.mmmmm.ccc.c",
-     "ccc..ccc.mmmmm.ccc.c",
-     "ccc..ccc.N.....ccc.c",
-     "ccc..ccc.ccccccccc.c",
-     "ccc..ccc.ccccccccc.c",
-     "ccc..ccc.ccccccccc.c",
-     "ccc..ccc.ccccccccc.c",
-     "ccc............ccc.c",
-     "cccccccccccccccccccc"
-    ],
-    "exits": {},
-    "people": [
-     "VISIT THE PRESIDENT"
-    ]
-   }
-  ]
+  "figure_floors": {
+   "Grunt 1F": 0,
+   "Grunt 2F 1": 1,
+   "Grunt 2F 2": 1,
+   "Scientist Jerry": 1,
+   "TALK TO EMPLOYEE": 1,
+   "Grunt 3F": 2,
+   "Scientist Jose": 2,
+   "HYPER POTION": 2,
+   "Scientist Taylor": 3,
+   "Grunt 4F 1": 3,
+   "Grunt 4F 2": 3,
+   "MAX REVIVE": 3,
+   "ESCAPE ROPE": 3,
+   "FULL HEAL": 3,
+   "TM128": 3,
+   "Scientist Beau": 4,
+   "Grunt 5F 2": 4,
+   "Juggler Dalton": 4,
+   "Grunt 5F 1": 4,
+   "PROTEIN": 4,
+   "TM127": 4,
+   "CARD KEY": 4,
+   "Grunt 6F 1": 5,
+   "Grunt 6F 2": 5,
+   "HP UP": 5,
+   "X SP. ATK": 5,
+   "Grunt 7F 3": 6,
+   "Grunt 7F 1": 6,
+   "{rival_name}": 6,
+   "Connor": 6,
+   "Grunt 7F 2": 6,
+   "LAPRAS": 6,
+   "TM116": 6,
+   "CALCIUM": 6,
+   "Scientist Parker": 7,
+   "Admin Proton": 7,
+   "Grunt 8F": 7,
+   "IRON": 7,
+   "Grunt 9F": 8,
+   "Scientist Ed": 8,
+   "Archer": 8,
+   "NURSE": 8,
+   "Scientist Travis": 9,
+   "Grunt 10F": 9,
+   "ULTRA BALL": 9,
+   "CARBOS": 9,
+   "RARE CANDY": 9,
+   "Giovanni": 10,
+   "Executive Ariana": 10,
+   "Grunt 11F": 10,
+   "VISIT THE PRESIDENT": 10,
+   "ZINC": 10
+  }
  },
  "KANTO_ROUTE_8": {
   "art": [

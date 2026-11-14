@@ -91,7 +91,7 @@
       80, 82, 85, 87, 89, 91, 94, 101, 103, 105, 112, 121, 130, 131, 134, 135, 136, 139, 141, 142, 143, 149
     ],
 
-    "KEY_ITEMS": ["ITEMFINDER", "LIFT_KEY", "CLEFABLITE", "VICTREEBELITE", "STARMINITE", "DRAGONINITE", "MEGANIUMITE", "FERALIGITE", "SKARMORITE", "FROSLASSITE", "EMBOARITE", "EXCADRITE", "SCOLIPITE", "SCRAFTINITE", "EELEKTROSSITE", "CHANDELURITE", "CHESNAUGHTITE", "DELPHOXITE", "GRENINJITE", "PYROARITE", "FLOETTITE", "MALAMARITE", "BARBARACITE", "DRAGALGITE", "HAWLUCHANITE", "ZYGARDITE", "DRAMPANITE", "FALINKSITE", 
+    "KEY_ITEMS": ["ITEMFINDER", "LIFT_KEY", "CARD_KEY", "CLEFABLITE", "VICTREEBELITE", "STARMINITE", "DRAGONINITE", "MEGANIUMITE", "FERALIGITE", "SKARMORITE", "FROSLASSITE", "EMBOARITE", "EXCADRITE", "SCOLIPITE", "SCRAFTINITE", "EELEKTROSSITE", "CHANDELURITE", "CHESNAUGHTITE", "DELPHOXITE", "GRENINJITE", "PYROARITE", "FLOETTITE", "MALAMARITE", "BARBARACITE", "DRAGALGITE", "HAWLUCHANITE", "ZYGARDITE", "DRAMPANITE", "FALINKSITE", 
       "SNAG_MACHINE",
       "ADAMANT_ORB", "LUSTROUS_ORB", "GRISEOUS_ORB",
       "BURN_DRIVE", "DOUSE_DRIVE", "CHILL_DRIVE", "SHOCK_DRIVE",
@@ -945,6 +945,30 @@
         {
           "key": "5f",
           "name": "5F"
+        },
+        {
+          "key": "6f",
+          "name": "6F"
+        },
+        {
+          "key": "7f",
+          "name": "7F"
+        },
+        {
+          "key": "8f",
+          "name": "8F"
+        },
+        {
+          "key": "9f",
+          "name": "9F"
+        },
+        {
+          "key": "10f",
+          "name": "10F"
+        },
+        {
+          "key": "11f",
+          "name": "11F"
         }
       ],
       "zones_linear": true,
@@ -975,7 +999,8 @@
               "Scram, kid!"
             ]
           },
-          "zone": "1f"
+          "zone": "1f",
+          "spot_name": "Grunt 1F"
         },
         {
           "sprite": "rocket_grunt_f.png",
@@ -1000,7 +1025,8 @@
               "Lost in the maze, huh?"
             ]
           },
-          "zone": "1f"
+          "zone": "3f",
+          "spot_name": "Grunt 3F"
         },
         {
           "sprite": "scientist.png",
@@ -1026,7 +1052,7 @@
               "Science wins again!"
             ]
           },
-          "zone": "2f"
+          "zone": "4f"
         },
         {
           "sprite": "rocket_grunt_m.png",
@@ -1051,7 +1077,8 @@
               "Get lost!"
             ]
           },
-          "zone": "2f"
+          "zone": "5f",
+          "spot_name": "Grunt 5F 1"
         },
         {
           "sprite": "scientist.png",
@@ -1075,7 +1102,7 @@
               "I have no choice!"
             ]
           },
-          "zone": "3f"
+          "zone": "7f"
         },
         {
           "name": "{rival_name}",
@@ -1135,7 +1162,7 @@
               "{rival_name}: Not even close. Turn back while you can."
             ]
           },
-          "zone": "3f"
+          "zone": "7f"
         },
         {
           "sprite": "proton.png",
@@ -1162,7 +1189,7 @@
               "Too slow, kid."
             ]
           },
-          "zone": "4f"
+          "zone": "8f"
         },
         {
           "sprite": "archer.png",
@@ -1188,7 +1215,7 @@
               "Typical child."
             ]
           },
-          "zone": "4f"
+          "zone": "9f"
         },
         {
           "sprite": "ariana.png",
@@ -1233,7 +1260,7 @@
               "BITE"
             ]
           },
-          "zone": "5f"
+          "zone": "11f"
         },
         {
           "sprite": "leader_giovanni.png",
@@ -1270,10 +1297,868 @@
               "Giovanni: That's what happens when you meddle with Team Rocket."
             ]
           },
+          "zone": "11f"
+        },
+        {
+          "sprite": "rocket_grunt_m.png",
+          "name": "Grunt",
+          "class": "ROCKET",
+          "team": [
+            42,
+            41,
+            41,
+            20,
+            41
+          ],
+          "levels": null,
+          "rewards": {
+            "balls": 3
+          },
+          "dialogue": {
+            "intro": [
+              "Silph Co. belongs to Team Rocket now!"
+            ],
+            "player_won": [
+              "No way!"
+            ],
+            "player_lost": [
+              "Ha! Go home, kid!"
+            ]
+          },
+          "zone": "2f",
+          "spot_name": "Grunt 2F 1"
+        },
+        {
+          "sprite": "scientist.png",
+          "name": "Scientist Jerry",
+          "class": "SCIENTIST",
+          "team": [
+            81,
+            100,
+            82
+          ],
+          "levels": null,
+          "rewards": {
+            "balls": 3
+          },
+          "dialogue": {
+            "intro": [
+              "Think you can find your way through this building? Good luck!"
+            ],
+            "player_won": [
+              "I lost my way too..."
+            ],
+            "player_lost": [
+              "Lost already?"
+            ]
+          },
+          "zone": "2f"
+        },
+        {
+          "sprite": "rocket_grunt_m.png",
+          "name": "Grunt",
+          "class": "ROCKET",
+          "team": [
+            104,
+            41
+          ],
+          "levels": null,
+          "rewards": {
+            "balls": 3
+          },
+          "dialogue": {
+            "intro": [
+              "See the diamond tiles? Step on one and it whisks you somewhere else."
+            ],
+            "player_won": [
+              "Argh! Off you go, then!"
+            ],
+            "player_lost": [
+              "Ha! Go home, kid!"
+            ]
+          },
+          "zone": "2f",
+          "spot_name": "Grunt 2F 2"
+        },
+        {
+          "sprite": "scientist.png",
+          "name": "Scientist Jose",
+          "class": "SCIENTIST",
+          "team": [
+            101,
+            110
+          ],
+          "levels": null,
+          "rewards": {
+            "balls": 3
+          },
+          "dialogue": {
+            "intro": [
+              "Team Rocket promised I could study Pokémon all I like if I helped them!"
+            ],
+            "player_won": [
+              "Maybe that was a bad deal..."
+            ],
+            "player_lost": [
+              "Science!"
+            ]
+          },
+          "zone": "3f"
+        },
+        {
+          "sprite": "rocket_grunt_m.png",
+          "name": "Grunt",
+          "class": "ROCKET",
+          "team": [
+            23,
+            41,
+            104
+          ],
+          "levels": null,
+          "rewards": {
+            "balls": 3
+          },
+          "dialogue": {
+            "intro": [
+              "Intruder! I'd better tell the Boss up on 11F!"
+            ],
+            "player_won": [
+              "Too late to warn anyone..."
+            ],
+            "player_lost": [
+              "Ha! Go home, kid!"
+            ]
+          },
+          "zone": "4f",
+          "spot_name": "Grunt 4F 1"
+        },
+        {
+          "sprite": "rocket_grunt_f.png",
+          "name": "Grunt",
+          "class": "ROCKET",
+          "team": [
+            66,
+            96
+          ],
+          "levels": null,
+          "rewards": {
+            "balls": 3
+          },
+          "dialogue": {
+            "intro": [
+              "Ha ha ha! The Boss has wanted this building for ages!"
+            ],
+            "player_won": [
+              "You'll regret this!"
+            ],
+            "player_lost": [
+              "Ha! Go home, kid!"
+            ]
+          },
+          "zone": "4f",
+          "spot_name": "Grunt 4F 2"
+        },
+        {
+          "sprite": "rocket_grunt_m.png",
+          "name": "Grunt",
+          "class": "ROCKET",
+          "team": [
+            97
+          ],
+          "levels": null,
+          "rewards": {
+            "balls": 3
+          },
+          "dialogue": {
+            "intro": [
+              "Hey, did you know Koffing turns into Weezing?"
+            ],
+            "player_won": [
+              "Why did I bring that up..."
+            ],
+            "player_lost": [
+              "Ha! Go home, kid!"
+            ]
+          },
+          "zone": "5f",
+          "spot_name": "Grunt 5F 2"
+        },
+        {
+          "sprite": "juggler.png",
+          "name": "Juggler Dalton",
+          "class": "JUGGLER",
+          "team": [
+            64,
+            122
+          ],
+          "levels": null,
+          "rewards": {
+            "balls": 3
+          },
+          "dialogue": {
+            "intro": [
+              "Only 5F? You've got a long climb to the Boss!"
+            ],
+            "player_won": [
+              "I dropped everything!"
+            ],
+            "player_lost": [
+              "Ta-da!"
+            ]
+          },
           "zone": "5f"
+        },
+        {
+          "sprite": "scientist.png",
+          "name": "Scientist Beau",
+          "class": "SCIENTIST",
+          "team": [
+            82,
+            109,
+            110,
+            81
+          ],
+          "levels": null,
+          "rewards": {
+            "balls": 3
+          },
+          "dialogue": {
+            "intro": [
+              "We were building the perfect Poké Ball, one that catches anything!"
+            ],
+            "player_won": [
+              "Imperfect results..."
+            ],
+            "player_lost": [
+              "Perfect!"
+            ]
+          },
+          "zone": "5f"
+        },
+        {
+          "sprite": "rocket_grunt_m.png",
+          "name": "Grunt",
+          "class": "ROCKET",
+          "team": [
+            66,
+            67
+          ],
+          "levels": null,
+          "rewards": {
+            "balls": 3
+          },
+          "dialogue": {
+            "intro": [
+              "You'll never get past Team Rocket!"
+            ],
+            "player_won": [
+              "My brothers will get you for this!"
+            ],
+            "player_lost": [
+              "Ha! Go home, kid!"
+            ]
+          },
+          "zone": "6f",
+          "spot_name": "Grunt 6F 1"
+        },
+        {
+          "sprite": "rocket_grunt_f.png",
+          "name": "Grunt",
+          "class": "ROCKET",
+          "team": [
+            41,
+            41,
+            42
+          ],
+          "levels": null,
+          "rewards": {
+            "balls": 3
+          },
+          "dialogue": {
+            "intro": [
+              "Heroes always get in the way of us bad guys!"
+            ],
+            "player_won": [
+              "Hmph! Fine!"
+            ],
+            "player_lost": [
+              "Ha! Go home, kid!"
+            ]
+          },
+          "zone": "6f",
+          "spot_name": "Grunt 6F 2"
+        },
+        {
+          "sprite": "rocket_grunt_m.png",
+          "name": "Grunt",
+          "class": "ROCKET",
+          "team": [
+            104,
+            104
+          ],
+          "levels": null,
+          "rewards": {
+            "balls": 3
+          },
+          "dialogue": {
+            "intro": [
+              "Stop right there! This floor is off limits!"
+            ],
+            "player_won": [
+              "My brothers will pay you back!"
+            ],
+            "player_lost": [
+              "Ha! Go home, kid!"
+            ]
+          },
+          "zone": "7f",
+          "spot_name": "Grunt 7F 1"
+        },
+        {
+          "sprite": "rocket_grunt_m.png",
+          "name": "Grunt",
+          "class": "ROCKET",
+          "team": [
+            27,
+            28
+          ],
+          "levels": null,
+          "rewards": {
+            "balls": 3
+          },
+          "dialogue": {
+            "intro": [
+              "Go home before the Boss loses his temper!"
+            ],
+            "player_won": [
+              "Aww..."
+            ],
+            "player_lost": [
+              "Ha! Go home, kid!"
+            ]
+          },
+          "zone": "7f",
+          "spot_name": "Grunt 7F 2"
+        },
+        {
+          "sprite": "rocket_grunt_f.png",
+          "name": "Grunt",
+          "class": "ROCKET",
+          "team": [
+            20,
+            41,
+            42,
+            19
+          ],
+          "levels": null,
+          "rewards": {
+            "balls": 3
+          },
+          "dialogue": {
+            "intro": [
+              "Running around won't help you find the Boss!"
+            ],
+            "player_won": [
+              "How did you get so strong?"
+            ],
+            "player_lost": [
+              "Ha! Go home, kid!"
+            ]
+          },
+          "zone": "7f",
+          "spot_name": "Grunt 7F 3"
+        },
+        {
+          "sprite": "rocket_grunt_m.png",
+          "name": "Grunt",
+          "class": "ROCKET",
+          "team": [
+            110,
+            42,
+            109
+          ],
+          "levels": null,
+          "rewards": {
+            "balls": 3
+          },
+          "dialogue": {
+            "intro": [
+              "Leave now, or I'll call for backup!"
+            ],
+            "player_won": [
+              "I'll let my brothers handle you."
+            ],
+            "player_lost": [
+              "Ha! Go home, kid!"
+            ]
+          },
+          "zone": "8f",
+          "spot_name": "Grunt 8F"
+        },
+        {
+          "sprite": "scientist.png",
+          "name": "Scientist Parker",
+          "class": "SCIENTIST",
+          "team": [
+            88,
+            101
+          ],
+          "levels": null,
+          "rewards": {
+            "balls": 3
+          },
+          "dialogue": {
+            "intro": [
+              "How do you like our building's maze?"
+            ],
+            "player_won": [
+              "You solved it, didn't you?"
+            ],
+            "player_lost": [
+              "Lost, are we?"
+            ]
+          },
+          "zone": "8f"
+        },
+        {
+          "sprite": "scientist.png",
+          "name": "Scientist Ed",
+          "class": "SCIENTIST",
+          "team": [
+            100,
+            109,
+            82
+          ],
+          "levels": null,
+          "rewards": {
+            "balls": 3
+          },
+          "dialogue": {
+            "intro": [
+              "Hit a Pokémon where it's weak. Type matchups matter!"
+            ],
+            "player_won": [
+              "You know your types!"
+            ],
+            "player_lost": [
+              "Weak spots!"
+            ]
+          },
+          "zone": "9f"
+        },
+        {
+          "sprite": "rocket_grunt_f.png",
+          "name": "Grunt",
+          "class": "ROCKET",
+          "team": [
+            96,
+            88,
+            66
+          ],
+          "levels": null,
+          "rewards": {
+            "balls": 3
+          },
+          "dialogue": {
+            "intro": [
+              "If I'd started training at your age..."
+            ],
+            "player_won": [
+              "...I'd still lose to you."
+            ],
+            "player_lost": [
+              "Ha! Go home, kid!"
+            ]
+          },
+          "zone": "9f",
+          "spot_name": "Grunt 9F"
+        },
+        {
+          "sprite": "scientist.png",
+          "name": "Scientist Travis",
+          "class": "SCIENTIST",
+          "team": [
+            81,
+            109
+          ],
+          "levels": null,
+          "rewards": {
+            "balls": 3
+          },
+          "dialogue": {
+            "intro": [
+              "Happy now that you've come this far? Then go home!"
+            ],
+            "player_won": [
+              "You won't go home, will you?"
+            ],
+            "player_lost": [
+              "Off you go!"
+            ]
+          },
+          "zone": "10f"
+        },
+        {
+          "sprite": "rocket_grunt_m.png",
+          "name": "Grunt",
+          "class": "ROCKET",
+          "team": [
+            67
+          ],
+          "levels": null,
+          "rewards": {
+            "balls": 3
+          },
+          "dialogue": {
+            "intro": [
+              "Good try, but the boardroom is one more floor up!"
+            ],
+            "player_won": [
+              "Ugh! The Boss is right upstairs!"
+            ],
+            "player_lost": [
+              "Ha! Go home, kid!"
+            ]
+          },
+          "zone": "10f",
+          "spot_name": "Grunt 10F"
+        },
+        {
+          "sprite": "rocket_grunt_m.png",
+          "name": "Grunt",
+          "class": "ROCKET",
+          "team": [
+            104,
+            96,
+            105
+          ],
+          "levels": null,
+          "rewards": {
+            "balls": 3
+          },
+          "dialogue": {
+            "intro": [
+              "So you want to see the Boss? You'll have to beat me first!"
+            ],
+            "player_won": [
+              "Go on... he's waiting."
+            ],
+            "player_lost": [
+              "Ha! Go home, kid!"
+            ]
+          },
+          "zone": "11f",
+          "spot_name": "Grunt 11F"
         }
       ],
       "route_menu": [
+        {
+          "text": "HYPER POTION",
+          "action": "EVENT",
+          "color": "GOLD",
+          "found": true,
+          "zone": "3f",
+          "flag_condition": "not got_hyperpotion_silph",
+          "event": {
+            "lines": [
+              "A Hyper Potion, left by a desk."
+            ],
+            "gift_item": {
+              "HYPER_POTION": 1
+            },
+            "flag": "got_hyperpotion_silph"
+          }
+        },
+        {
+          "text": "MAX REVIVE",
+          "action": "EVENT",
+          "color": "GOLD",
+          "found": true,
+          "zone": "4f",
+          "flag_condition": "not got_maxrevive_silph",
+          "event": {
+            "lines": [
+              "A Max Revive in the storeroom!"
+            ],
+            "gift_item": {
+              "MAX_REVIVE": 1
+            },
+            "flag": "got_maxrevive_silph"
+          }
+        },
+        {
+          "text": "ESCAPE ROPE",
+          "action": "EVENT",
+          "color": "GOLD",
+          "found": true,
+          "zone": "4f",
+          "flag_condition": "not got_escaperope_silph",
+          "event": {
+            "lines": [
+              "An Escape Rope in the storeroom."
+            ],
+            "gift_item": {
+              "ESCAPE_ROPE": 1
+            },
+            "flag": "got_escaperope_silph"
+          }
+        },
+        {
+          "text": "FULL HEAL",
+          "action": "EVENT",
+          "color": "GOLD",
+          "found": true,
+          "zone": "4f",
+          "flag_condition": "not got_fullheal_silph",
+          "event": {
+            "lines": [
+              "A Full Heal in the storeroom."
+            ],
+            "gift_item": {
+              "FULL_HEAL": 1
+            },
+            "flag": "got_fullheal_silph"
+          }
+        },
+        {
+          "text": "TM128",
+          "action": "EVENT",
+          "color": "GOLD",
+          "found": true,
+          "zone": "4f",
+          "flag_condition": "not got_tm128_silph",
+          "event": {
+            "lines": [
+              "A TM on the floor! It's Torment."
+            ],
+            "gift_item": {
+              "TM128": 1
+            },
+            "flag": "got_tm128_silph"
+          }
+        },
+        {
+          "text": "PROTEIN",
+          "action": "EVENT",
+          "color": "GOLD",
+          "found": true,
+          "zone": "5f",
+          "flag_condition": "not got_protein_silph",
+          "event": {
+            "lines": [
+              "Someone left a Protein here."
+            ],
+            "gift_item": {
+              "PROTEIN": 1
+            },
+            "flag": "got_protein_silph"
+          }
+        },
+        {
+          "text": "TM127",
+          "action": "EVENT",
+          "color": "GOLD",
+          "found": true,
+          "zone": "5f",
+          "flag_condition": "not got_tm127_silph",
+          "event": {
+            "lines": [
+              "A TM, tucked away in a corner! It's Focus Punch."
+            ],
+            "gift_item": {
+              "TM127": 1
+            },
+            "flag": "got_tm127_silph"
+          }
+        },
+        {
+          "text": "CARD KEY",
+          "action": "EVENT",
+          "color": "GOLD",
+          "found": true,
+          "zone": "5f",
+          "flag_condition": "not got_card_key",
+          "event": {
+            "lines": [
+              "It's Silph's Card Key! It opens the locked doors all over the building."
+            ],
+            "gift_item": {
+              "CARD_KEY": 1
+            },
+            "flag": "got_card_key"
+          }
+        },
+        {
+          "text": "HP UP",
+          "action": "EVENT",
+          "color": "GOLD",
+          "found": true,
+          "zone": "6f",
+          "flag_condition": "not got_hpup_silph",
+          "event": {
+            "lines": [
+              "An HP Up behind the desks!"
+            ],
+            "gift_item": {
+              "HP_UP": 1
+            },
+            "flag": "got_hpup_silph"
+          }
+        },
+        {
+          "text": "X SP. ATK",
+          "action": "EVENT",
+          "color": "GOLD",
+          "found": true,
+          "zone": "6f",
+          "flag_condition": "not got_xspatk_silph",
+          "event": {
+            "lines": [
+              "An X Sp. Atk in the corner."
+            ],
+            "gift_item": {
+              "X_SP_ATK": 1
+            },
+            "flag": "got_xspatk_silph"
+          }
+        },
+        {
+          "text": "CALCIUM",
+          "action": "EVENT",
+          "color": "GOLD",
+          "found": true,
+          "zone": "7f",
+          "flag_condition": "not got_calcium_silph",
+          "event": {
+            "lines": [
+              "A Calcium, left in a meeting room."
+            ],
+            "gift_item": {
+              "CALCIUM": 1
+            },
+            "flag": "got_calcium_silph"
+          }
+        },
+        {
+          "text": "TM116",
+          "action": "EVENT",
+          "color": "GOLD",
+          "found": true,
+          "zone": "7f",
+          "flag_condition": "not got_tm116_silph",
+          "event": {
+            "lines": [
+              "A TM behind the locked door! It's Bulk Up."
+            ],
+            "gift_item": {
+              "TM116": 1
+            },
+            "flag": "got_tm116_silph"
+          }
+        },
+        {
+          "text": "IRON",
+          "action": "EVENT",
+          "color": "GOLD",
+          "found": true,
+          "zone": "8f",
+          "flag_condition": "not got_iron_silph",
+          "event": {
+            "lines": [
+              "An Iron, left on the floor."
+            ],
+            "gift_item": {
+              "IRON": 1
+            },
+            "flag": "got_iron_silph"
+          }
+        },
+        {
+          "text": "CARBOS",
+          "action": "EVENT",
+          "color": "GOLD",
+          "found": true,
+          "zone": "10f",
+          "flag_condition": "not got_carbos_silph",
+          "event": {
+            "lines": [
+              "A Carbos in the office."
+            ],
+            "gift_item": {
+              "CARBOS": 1
+            },
+            "flag": "got_carbos_silph"
+          }
+        },
+        {
+          "text": "ULTRA BALL",
+          "action": "EVENT",
+          "color": "GOLD",
+          "found": true,
+          "zone": "10f",
+          "flag_condition": "not got_ultraball_silph",
+          "event": {
+            "lines": [
+              "An Ultra Ball in the office!"
+            ],
+            "gift_item": {
+              "ULTRA_BALL": 1
+            },
+            "flag": "got_ultraball_silph"
+          }
+        },
+        {
+          "text": "RARE CANDY",
+          "action": "EVENT",
+          "color": "GOLD",
+          "found": true,
+          "zone": "10f",
+          "flag_condition": "not got_rarecandy_silph",
+          "event": {
+            "lines": [
+              "A Rare Candy in the office!"
+            ],
+            "gift_item": {
+              "RARE_CANDY": 1
+            },
+            "flag": "got_rarecandy_silph"
+          }
+        },
+        {
+          "text": "ZINC",
+          "action": "EVENT",
+          "color": "GOLD",
+          "found": true,
+          "zone": "11f",
+          "flag_condition": "not got_zinc_silph",
+          "event": {
+            "lines": [
+              "A Zinc in the boardroom's back corridor."
+            ],
+            "gift_item": {
+              "ZINC": 1
+            },
+            "flag": "got_zinc_silph"
+          }
+        },
+        {
+          "text": "LAPRAS",
+          "action": "EVENT",
+          "color": "GOLD",
+          "zone": "7f",
+          "event": {
+            "lines": [
+              "Employee: Oh! You're not one of the Rockets! You came to rescue us?",
+              "Thank you! Please take this Pokémon, as thanks for saving us."
+            ],
+            "gift_pokemon": 131,
+            "gift_level": 25,
+            "flag": "got_silph_lapras",
+            "done": [
+              "Employee: That Lapras was going to be a research subject. It's much happier with you!"
+            ]
+          }
+        },
         {
           "text": "LOOK FOR TRAINER",
           "action": "TRAINER",
@@ -1288,7 +2173,7 @@
         {
           "text": "NURSE",
           "action": "EVENT",
-          "zone": "1f",
+          "zone": "9f",
           "color": "GREEN",
           "event": {
             "lines": [
@@ -1327,7 +2212,7 @@
               {
                 "lines": [
                   "Employee: They're everywhere... the black suits... the red 'R'...",
-                  "Please stop them! Their boss is up on 5F, in the President's office."
+                  "Please stop them! Their boss is up on 11F, in the President's office."
                 ]
               }
             ]
@@ -1336,7 +2221,7 @@
         {
           "text": "VISIT THE PRESIDENT",
           "action": "EVENT",
-          "zone": "5f",
+          "zone": "11f",
           "flag_condition": "silph_co_cleared",
           "color": "GOLD",
           "event": {

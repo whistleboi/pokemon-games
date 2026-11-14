@@ -421,13 +421,15 @@ for _k in ("silph_co_cleared", "hideout_giovanni_defeated", "game_corner_cleared
     story.story_flags.pop(_k, None)
 story.defeated_trainers.pop("SILPH_CITY", None)
 _sil = kanto("SILPH_CITY", came="SAFFRON_CITY")
-check(_sil.run.n_floors == 5 and _sil._floor_name(4) == "5F" and "SAFFRON_CITY" in _sil.run.floor.exits.values(),
-      "Silph Co.: 1F (the way out) up to 5F")
-check(any(m.kind == "figure" and m.payload.get("text") == "NURSE" for m in _sil.run.floor.movers), "a nurse on 1F")
-while _sil.run.index < 4:
+check(_sil.run.n_floors == 11 and _sil._floor_name(10) == "11F" and "SAFFRON_CITY" in _sil.run.floor.exits.values(),
+      "Silph Co.: 1F (the way out) up to 11F (FireRed's floors)")
+while _sil.run.index < 8:
+    _sil._descend()
+check(any(m.kind == "figure" and m.payload.get("text") == "NURSE" for m in _sil.run.floor.movers), "a nurse on 9F (FireRed's)")
+while _sil.run.index < 10:
     _sil._descend()
 check(any(m.kind == "trainer" and m.payload[1].get("name") == "Giovanni" for m in _sil.run.floor.movers),
-      "Giovanni waits on 5F")
+      "Giovanni waits on 11F")
 _hid = kanto("ROCKET_HIDEOUT", came="CELADON_GAME_CORNER")
 while _hid.run.index < 3:
     _hid._descend()
