@@ -509,7 +509,7 @@ t = at_town("CELADON_CITY", "KANTO_ROUTE_7", (60, 40), lambda x, y: x >= 57, {"K
             {"center", "dept", "gym", "game corner", "mansion", "hotel"}, "Celadon City")
 check(t._door_options("dept") and t._door_options("game corner") and t.doors.get((11, 30)) == "gym" and t.doors.get((30, 4)) == "mansion",
       "...the Dept. Store and the Game Corner open their options; the Gym's porch door; the Mansion's back door")
-check(t.doors.get((26, 18)) == "diner" and t._open((23, 19)) and t._open((26, 19)) and t.locked.get("diner"), "...the diner has HeartGold's door, and a way into its yard")
+check(t.doors.get((26, 18)) == "diner" and t.locked.get("diner"), "...the diner has HeartGold's door (batch 12: FireRed's fenced pond yard below it, as FireRed draws it), shut")
 enter(t, (11, 30))
 check(t.room == "gym" and t.people.get((6, 4), {}).get("action") == "GYM" and t.rows[8][6] == "2", f"...its Gym: FireRed's room, Erika behind the small trees ({t.room})")
 t.draw(); t._go(None, "OUT:11,30")
@@ -708,7 +708,7 @@ check(tuple(t.player) == (34, 22), f"...out of the Game Corner with no remembere
 # the Prize Corner next door (FireRed's room 10.15)
 check(t.doors.get((39, 20)) == "prize corner", "Celadon: the Prize Corner's own door, beside the Game Corner")
 enter(t, (39, 20))
-check(t.room == "prize" and (t.w, t.h) == (9, 10) and sorted(t.people) == [(2, 2), (4, 2), (6, 2)], f"...through it: FireRed's room, three clerks behind the counter ({t.room}, {sorted(t.people)})")
+check(t.room == "prize" and (t.w, t.h) == (9, 10) and {(2, 2), (4, 2), (6, 2)} <= set(t.people), f"...through it: FireRed's room, three clerks behind the counter (and FireRed's two customers, batch 12) ({t.room}, {sorted(t.people)})")
 t.draw()
 check(tstep(t, (2, 5), (0, -1)) == (2, 4), "...walk up to the counter")
 t.step(0, -1)
@@ -989,7 +989,7 @@ for _town, _came, _doors in (
         ("CERULEAN_CITY", "KANTO_ROUTE_4", (((10, 11), "house_w", (10, 10), 1), ((10, 8), "house_w", (10, 10), 1), ((30, 11), "house_ne", (10, 9), 2), ((31, 8), "house_ne", (10, 9), 2), ((15, 17), "house_mid", (11, 9), 2), ((23, 28), "house_s", (11, 9), 1), ((17, 11), "house_n", (11, 9), 1))),
         ("VERMILLION_CITY", "KANTO_ROUTE_6", (((19, 17), "house_n", (11, 9), 1), ((28, 24), "house_e", (11, 9), 3))),   # (11-14: FireRed's Pidgey stands with its owners)
         ("LAVENDER_TOWN", "KANTO_ROUTE_8", (((5, 16), "house_w", (11, 9), 2), ((10, 16), "rater", (11, 9), 1))),   # (batch 10: the Cubone house has its Cubone)
-        ("CELADON_CITY", "KANTO_ROUTE_7", (((37, 29), "restaurant", (15, 11), 5), ((41, 29), "house_e", (11, 9), 2), ((49, 29), "hotel", (17, 11), 3))),
+        ("CELADON_CITY", "KANTO_ROUTE_7", (((37, 29), "restaurant", (15, 11), 4), ((41, 29), "house_e", (11, 9), 3), ((49, 29), "hotel", (17, 11), 4))),   # (batch 12: FireRed's own people)
         ("SAFFRON_CITY", "KANTO_ROUTE_5", (((27, 21), "house_w", (11, 9), 2), ((43, 38), "psychic", (11, 9), 1), ((47, 21), "fans", (11, 17), 4))),
         ("FUCHSIA_CITY", "KANTO_ROUTE_15", (((28, 16), "office", (20, 11), 4), ((14, 31), "house_w", (11, 9), 2), ((19, 31), "deleter", (11, 9), 1)))):
     t = town(_town, _came)

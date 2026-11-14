@@ -89,10 +89,10 @@
       "sheet": "fr_60.png"
     },
     "KANTO_ROUTE_7:GUARD": {
-      "sheet": "NPC 01.png"
+      "sheet": "fr_60.png"
     },
     "KANTO_ROUTE_8:GUARD": {
-      "sheet": "NPC 01.png"
+      "sheet": "fr_60.png"
     },
     "KANTO_ROUTE_22:GATE GUARD": {
       "sheet": "fr_60.png"
@@ -3900,6 +3900,150 @@
     },
     "LAVENDER_TOWN:Shop": {
       "sheet": "fr_68.png"
+    },
+    "CELADON_CITY:ETHER": {
+      "item": "POKE_BALL"
+    },
+    "CELADON_CITY:Little girl": {
+      "sheet": "fr_17.png"
+    },
+    "CELADON_CITY:Poliwrath": {
+      "sheet": "fr_112.png"
+    },
+    "CELADON_CITY:Old man": {
+      "sheet": "fr_33.png"
+    },
+    "CELADON_CITY:Grunt": {
+      "sheet": "fr_49.png"
+    },
+    "CELADON_CITY:Girl": {
+      "sheet": "fr_27.png"
+    },
+    "CELADON_CITY:Old man ": {
+      "sheet": "fr_33.png"
+    },
+    "CELADON_CITY:Woman": {
+      "sheet": "fr_29.png"
+    },
+    "CELADON_CITY:Gambler": {
+      "sheet": "fr_33.png"
+    },
+    "CELADON_CITY:Man ": {
+      "sheet": "fr_47.png"
+    },
+    "CELADON_CITY:Man": {
+      "sheet": "fr_25.png"
+    },
+    "CELADON_CITY:Grunt ": {
+      "sheet": "fr_49.png"
+    },
+    "CELADON_CITY:Receptionist": {
+      "sheet": "fr_35.png"
+    },
+    "CELADON_CITY:Dept. Store": {
+      "sheet": "fr_68.png"
+    },
+    "CELADON_CITY:Clerk ": {
+      "sheet": "fr_47.png"
+    },
+    "CELADON_CITY:Clerk": {
+      "sheet": "fr_47.png"
+    },
+    "CELADON_CITY:Lady": {
+      "sheet": "fr_22.png"
+    },
+    "CELADON_CITY:Boy": {
+      "sheet": "fr_16.png"
+    },
+    "CELADON_CITY:Boy  ": {
+      "sheet": "fr_51.png"
+    },
+    "CELADON_CITY:Boy ": {
+      "sheet": "fr_51.png"
+    },
+    "CELADON_CITY:Youngster": {
+      "sheet": "fr_18.png"
+    },
+    "CELADON_CITY:Gentleman": {
+      "sheet": "fr_61.png"
+    },
+    "CELADON_CITY:Sailor": {
+      "sheet": "fr_62.png"
+    },
+    "CELADON_CITY:Nidoran": {
+      "sheet": "fr_122.png"
+    },
+    "CELADON_CITY:Meowth": {
+      "sheet": "fr_125.png"
+    },
+    "CELADON_CITY:Celadon Mansion": {
+      "sheet": "fr_35.png"
+    },
+    "CELADON_CITY:Clefairy": {
+      "sheet": "fr_113.png"
+    },
+    "CELADON_CITY:Game designer": {
+      "sheet": "fr_25.png"
+    },
+    "CELADON_CITY:Programmer": {
+      "sheet": "fr_26.png"
+    },
+    "CELADON_CITY:Artist": {
+      "sheet": "fr_52.png"
+    },
+    "CELADON_CITY:Writer": {
+      "sheet": "fr_27.png"
+    },
+    "CELADON_CITY:EEVEE": {
+      "item": "POKE_BALL"
+    },
+    "CELADON_CITY:Heal": {
+      "sheet": "fr_64.png"
+    },
+    "CELADON_CITY:Biker": {
+      "sheet": "fr_42.png"
+    },
+    "CELADON_CITY:Mystery Gift lady": {
+      "sheet": "fr_69.png"
+    },
+    "CELADON_CITY:Link attendant": {
+      "sheet": "fr_65.png"
+    },
+    "CELADON_CITY:Trade attendant": {
+      "sheet": "fr_65.png"
+    },
+    "CELADON_CITY:Colosseum attendant": {
+      "sheet": "fr_65.png"
+    },
+    "CELADON_CITY:Prize Corner": {
+      "sheet": "fr_47.png"
+    },
+    "CELADON_CITY:Beauty Lori": {
+      "sheet": "fr_29.png"
+    },
+    "CELADON_CITY:Gym": {
+      "sheet": "fr_83.png"
+    },
+    "CELADON_CITY:Lass Lisa": {
+      "sheet": "fr_22.png"
+    },
+    "CELADON_CITY:Beauty Tamia": {
+      "sheet": "fr_29.png"
+    },
+    "CELADON_CITY:Cooltrainer Mary": {
+      "sheet": "fr_42.png"
+    },
+    "CELADON_CITY:Picnicker Tina": {
+      "sheet": "fr_40.png"
+    },
+    "CELADON_CITY:Beauty Bridget": {
+      "sheet": "fr_29.png"
+    },
+    "CELADON_CITY:Lass Kay": {
+      "sheet": "fr_22.png"
+    },
+    "CELADON_CITY:Chef": {
+      "sheet": "fr_59.png"
     }
   },
   "townsperson": "NPC 17.png",

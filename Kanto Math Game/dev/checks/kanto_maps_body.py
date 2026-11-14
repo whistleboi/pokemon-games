@@ -911,6 +911,72 @@ walk(lv, "u")
 lv = g.current_state
 check(lv.room == "center", f"...the Pokémon Center ({lv.room})")
 
+# ---- batch 11: Route 8 and Route 7, Saffron's east and west gatehouses
+_tea = story.inventory.pop("TEA", None)
+r8 = open_map("KANTO_ROUTE_8", "LAVENDER_TOWN")
+_quiet_t = len(_trainers(r8))
+check(r8.run.player[0] >= 69 and _quiet_t == 12, f"Route 8: in from Lavender at its east end, FireRed's twelve trainers ({r8.run.player}, {_quiet_t})")
+_quiet(r8)
+_rf = r8.recipe["art"]["room_floors"]
+r8.run.player = (8, 10)
+_stepper(r8, (-1, 0))
+check(r8.run.index == _rf["gate"], f"...west into Saffron's east gate ({r8._floor_name(r8.run.index)}, {r8.run.player})")
+_quiet(r8)
+r8.run.player = (5, 5); r8.anim = 0
+said.clear()
+r8.step(-1, 0)
+play(lambda: any("thirsty" in s for s in said) and r8._ready(), 900)
+check(any("thirsty" in s for s in said) and r8.run.player[0] >= 4, f"...heading for Saffron without a drink, the guard calls you back ({r8.run.player})")
+r7 = open_map("KANTO_ROUTE_7", "CELADON_CITY")
+_t = _trainers(r7)
+check(r7.run.player[0] <= 2 and set(_t) == {"Alpesh", "Kelly", "Nancy"}, f"Route 7: in from Celadon at its west edge, the data's three trainers along it ({_t})")
+_quiet(r7)
+_rf = r7.recipe["art"]["room_floors"]
+r7.run.player = (14, 10)
+_stepper(r7, (1, 0))
+check(r7.run.index == _rf["gate"], f"...east into Saffron's west gate ({r7._floor_name(r7.run.index)})")
+_quiet(r7)
+r7.run.player = (7, 5); r7.anim = 0
+said.clear()
+r7.step(1, 0)
+play(lambda: any("thirsty" in s for s in said) and r7._ready(), 900)
+check(any("thirsty" in s for s in said) and r7.run.player[0] <= 8, f"...and here too, the thirsty guard ({r7.run.player})")
+if _tea is not None:
+    story.inventory["TEA"] = _tea
+
+# ---- batch 12: Celadon City and its rooms
+def _room_of(st, room):
+    st._go(room, ""); frames(2)
+    return {o.get("text"): p for p, o in st._people().items()}
+
+
+ce = open_map("CELADON_CITY", "KANTO_ROUTE_7")
+check((ce.w, ce.h) == (60, 40) and ce.doors.get((26, 18)) == "diner" and ce.locked.get("diner"), "Celadon: FireRed's city; HeartGold's diner door, shut")
+_pp = _room_of(ce, "gym")
+_gt = [n for n in _pp if n and n.startswith(("Lass", "Beauty", "Picnicker", "Cooltrainer"))]
+check(_pp.get("Gym") == (6, 4) and len(_gt) == 7, f"...Erika's Gym: Erika at FireRed's spot, FireRed's seven trainers ({sorted(_gt)})")
+check(any(c == "2" for r in ce.rows for c in r), "...FireRed's Cut trees in the Gym")
+_pp = _room_of(ce, "mansion")
+check(_pp.get("Celadon Mansion") == (2, 9), f"...the Mansion: the old lady with the Tea, where FireRed has her ({_pp.get('Celadon Mansion')})")
+_pp = _room_of(ce, "roof_room")
+check(_pp.get("EEVEE") == (7, 3), f"...up on the roof, FireRed's Eevee in its Poké Ball ({_pp.get('EEVEE')})")
+story.story_flags.pop("got_eevee_celadon", None)
+_n = len([p for p in story.player_team if p])
+ce.player = (7, 4); ce.anim = 0; ce.facing = (0, -1)
+said.clear()
+walk(ce, "u")
+play(lambda: not g.current_state._busy(), 600)
+_got = story.story_flags.get("got_eevee_celadon")
+check(_got or _n >= 6, f"...walk up to it and it's yours ({said[:2]})")
+if _got:
+    _ev = [p for p in story.player_team if p and p.id == 133]
+    check(_ev and _ev[-1].level == 25, f"......an Eevee, Lv25 as in FireRed ({[(p.id, p.level) for p in _ev]})")
+    story.player_team[:] = [p for p in story.player_team if not (p and p.id == 133 and p is _ev[-1])]
+_pp = _room_of(ce, "dept_2")
+check(_pp.get("Dept. Store") == (1, 6), "...the Dept. Store's shop at its 2F counter")
+_pp = _room_of(ce, "prize")
+check(_pp.get("Prize Corner") == (4, 2), "...the Prize Corner's clerk")
+
 print(f"##### {len(fails)} failures")
 for m in fails:
     print("   FAIL " + m)

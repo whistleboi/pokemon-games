@@ -866,6 +866,8 @@
         {"text": "Fuchsia City", "target_area": "FUCHSIA_CITY", "flag_condition": "visited_FUCHSIA_CITY"}
       ],
       "explore_options": [
+        {"text": "EEVEE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_eevee_celadon", "event": {"requires": ["party_room"], "fail": ["A Poké Ball sits on the table... but your team is full. Make room and come back!"], "lines": ["A Poké Ball sits on the table, with a note: \"Please look after this Eevee.\"", "You got an Eevee!"], "gift_pokemon": 133, "gift_level": 25, "flag": "got_eevee_celadon"}},
+        {"text": "ETHER", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_ether_celadon", "event": {"lines": ["An Ether, tucked behind the building."], "gift_item": {"ETHER": 1}, "flag": "got_ether_celadon"}},
         {"text": "Heal", "action": "HEAL"},
         {"text": "Dept. Store", "action": "SHOP", "door": "dept"},
         {"text": "Gym", "action": "GYM"},

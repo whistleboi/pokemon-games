@@ -1412,9 +1412,13 @@ class WalkTownState(CityState):
         for _o, img, (bx, by) in getattr(self, "overheads", []):  # (solid, over you: you walk under it, out of view)
             screen.blit(img, (ox + bx, oy + by))
         # the buildings' names over their doors, who the people are, where the ways out go
-        for spot, kind in self.doors.items():
+        _named = []   # (a building with several door tiles, the Dept. Store's two: its name once)
+        for spot, kind in sorted(self.doors.items()):
             if kind == "house" or (kind == "home" and spot != min(t for t, k2 in self.doors.items() if k2 == "home")):
                 continue
+            if any(k2 == kind and abs(s2[0] - spot[0]) + abs(s2[1] - spot[1]) <= 6 for s2, k2 in _named):
+                continue
+            _named.append((spot, kind))
             label = LABELS.get(kind) or next((o.get("text", "") for o in self.area_data.get("explore_options", [])
                                               if o.get("door") == kind and o.get("action") not in (None, "EVENT")), "").upper()
             if label:   # (a landmark or a place the story names; a plain house or room has no tag)

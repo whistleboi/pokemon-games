@@ -13717,54 +13717,51 @@
  },
  "KANTO_ROUTE_8": {
   "art": [
-   "TTTTcccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-   "TTTTcccccccc~~~~cccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-   "TTTTccccccccUUUUf========k..............................TTTTTTTTTTTTcccc",
-   "TTTTccccccccUUUU.====X===k...X..........X...............TTTTTTTTTTTTcccc",
-   "TTTTccccccccUDUUf========k..=X=======================...TTTTTTTTTTTTcccc",
-   "TTTTcccc.f.f.===!==k_____k..=X=======================...TTTTTTTTTTTTcccc",
-   "....ccccfX...======k=====k..=X=====================X=...TTTTTTf.f.f.cccc",
-   "kGGGGGGGkk...======k=====k..===...................===...TTTTTT.f.f.fcccc",
-   ".GGGGGGG.....===...k=====k..===...kkkkkkkkkkkkk...===...TTTTTT......cccc",
-   "=GGGGGGG.=======...k_____k..===..kkf\"\".\"\".\"\"..kk..===...TTTTTT...======>",
-   "kGGGGGGD========...k=====k..===..kf..\"\"\"\"\".\"\"f.k..===...TTTTTT...======>",
-   "=GGGGGGG========...k=====...===..k.f\"\".\".\"\".\".fk..===...TTTTTT...======>",
-   "kkkkkkkk.....===...k=====...===..k..\"\"\"\"\"\"\"\"\"\".2..===...TTTTTT...===kkkk",
-   "TTTTcccccccc.===...kkkkkkk..===..kf\".\".\".\".\"\"\".k..===...TTTTTT...===cccc",
-   "TTTTcccccccc.===............===..k.\"\"\"\"\"\"\"\".\".fk..===.........X..===cccc",
-   "TTTTcccccccc.===............===..2..\".\".\"\".\".\".k..===..X.........===cccc",
-   "TTTTcccccccc.=X================..k.\".\"\"\".\"\"\"\"\".k..==================cccc",
-   "TTTTcccccccc.===========X======..kf.f.\".\"\"f.\".fk..==================cccc",
-   "TTTTcccccccc.==================..k.f.f.\".f.f.f.k..==================cccc",
-   "TTTTcccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccc.........c..............................cccccccccccccccc",
+   "cccccccccccccccc.....X...c...X..........X...............cccccccccccccccc",
+   "cccccccccccccncc.........c...X..........................cccccccccccccccc",
+   "cccccccc........!..c_____c...X..........................cccccccccccccccc",
+   "cccccccc.X.........c.....c...X.....................X....cccccc......cccc",
+   "cccccccccc.........c.....c..............................cccccc......cccc",
+   "ccccccc............c.....c........ccccccccccccc.........cccccc......cccc",
+   "ccccccc............c_____c.......cc.\"\".\"\".\"\"..cc........cccccc.........>",
+   "ccccccAD...........c.....c.......c...\"\"\"\"\".\"\"..c........cccccc.........>",
+   "ccccccc............c.............c..\"\".\".\"\".\"..c........cccccc.........>",
+   "cccccccc...........c.............c..\"\"\"\"\"\"\"\"\"\".2........cccccc......cccc",
+   "cccccccccccc.......ccccccc.......c.\".\".\".\".\"\"\".c........cccccc......cccc",
+   "cccccccccccc.....................c.\"\"\"\"\"\"\"\".\"..c..............X.....cccc",
+   "cccccccccccc.....................2..\".\".\"\".\".\".c.......X............cccc",
+   "cccccccccccc..X..................c.\".\"\"\".\"\"\"\"\".c....................cccc",
+   "cccccccccccc............X........c....\".\"\"..\"..c....................cccc",
+   "cccccccccccc.....................c.....\".......c....................cccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
   ],
   "exits": {
    ">": "LAVENDER_TOWN",
-   "U": "UNDERGROUND_PATH"
+   "n": "UNDERGROUND_PATH"
   },
   "buildings": {
-   "G": "gate",
-   "U": "tunnel"
+   "A": "gate"
   },
   "roofs": {
-   "G": [
-    172,
-    189,
-    205
-   ],
-   "U": [
-    172,
-    189,
-    205
-   ]
+   "_picture": {
+    "f": "fr_ground/3_26.png",
+    "at": [
+     0,
+     0
+    ]
+   },
+   "_signs_in_picture": true,
+   "_buildings_in_picture": true
   },
   "signs": [
    [
     "UNDERGROUND PATH",
-    "Celadon City - Lavender Town, under Saffron. Down the stairs here!"
+    "Celadon City - Lavender Town"
    ]
   ],
-  "people": [],
   "trainer_spots": [
    "Stan",
    "Paige",
@@ -13779,19 +13776,105 @@
    "Ricardo",
    "Jaren"
   ],
+  "inside": {
+   "7,10": "gate"
+  },
+  "edge_to": {
+   "71,9": [
+    0,
+    9
+   ],
+   "71,10": [
+    0,
+    10
+   ],
+   "71,11": [
+    0,
+    11
+   ]
+  },
+  "moves": {
+   "21,3": {
+    "m": "look",
+    "d": "udlr",
+    "s": 1
+   },
+   "29,3": {
+    "m": "face",
+    "d": "l",
+    "s": 3
+   },
+   "40,3": {
+    "m": "face",
+    "d": "d",
+    "s": 1
+   },
+   "29,4": {
+    "m": "face",
+    "d": "r",
+    "s": 6
+   },
+   "29,5": {
+    "m": "face",
+    "d": "l",
+    "s": 3
+   },
+   "9,6": {
+    "m": "face",
+    "d": "r",
+    "s": 4
+   },
+   "29,6": {
+    "m": "face",
+    "d": "r",
+    "s": 6
+   },
+   "51,6": {
+    "m": "look",
+    "d": "udlr",
+    "s": 4
+   },
+   "62,14": {
+    "m": "face",
+    "d": "l",
+    "s": 6
+   },
+   "55,15": {
+    "m": "face",
+    "d": "d",
+    "s": 3
+   },
+   "14,16": {
+    "m": "wander",
+    "d": "udlr",
+    "r": [
+     5,
+     2
+    ],
+    "s": 1
+   },
+   "24,17": {
+    "m": "wander",
+    "d": "udlr",
+    "r": [
+     5,
+     5
+    ],
+    "s": 1
+   }
+  },
   "rooms": {
    "gate": {
-    "theme": "room",
     "art": [
      "ccccccccccccc",
      "ccccccccccccc",
-     "cz....N....zc",
-     "c.mmmmmmmmm.c",
-     "c<.=======..c",
-     "c<.=======.>c",
-     "c..=======.>c",
-     "c.mmmmmmmmm.c",
-     "cz.........zc"
+     "ccccccNcccccc",
+     "c.cmmmmmmmc.c",
+     "c<..........c",
+     "c<.........>c",
+     "c..........>c",
+     "c.cmmmmmmmc.c",
+     "ccccccccccccc"
     ],
     "exits": {
      "<": "SAFFRON_CITY",
@@ -13799,137 +13882,45 @@
     },
     "buildings": {},
     "roofs": {
-     "_floor": [
-      181,
-      176,
-      131
-     ],
-     "_wall": [
-      213,
-      222,
-      197
-     ],
-     "_things": {
-      "2,3": [
-       246,
-       238,
-       189
-      ],
-      "3,3": [
-       246,
-       238,
-       189
-      ],
-      "4,3": [
-       246,
-       238,
-       189
-      ],
-      "5,3": [
-       246,
-       238,
-       189
-      ],
-      "6,3": [
-       246,
-       238,
-       189
-      ],
-      "7,3": [
-       246,
-       238,
-       189
-      ],
-      "8,3": [
-       246,
-       238,
-       189
-      ],
-      "9,3": [
-       246,
-       238,
-       189
-      ],
-      "10,3": [
-       246,
-       238,
-       189
-      ],
-      "2,7": [
-       246,
-       238,
-       189
-      ],
-      "3,7": [
-       246,
-       238,
-       189
-      ],
-      "4,7": [
-       246,
-       238,
-       189
-      ],
-      "5,7": [
-       246,
-       238,
-       189
-      ],
-      "6,7": [
-       246,
-       238,
-       189
-      ],
-      "7,7": [
-       246,
-       238,
-       189
-      ],
-      "8,7": [
-       246,
-       238,
-       189
-      ],
-      "9,7": [
-       246,
-       238,
-       189
-      ],
-      "10,7": [
-       246,
-       238,
-       189
+     "_picture": {
+      "f": "fr_ground/20_0.png",
+      "at": [
+       0,
+       0
       ]
      },
-     "_kinds": {
-      "2,3": "table",
-      "3,3": "table",
-      "4,3": "table",
-      "5,3": "table",
-      "6,3": "table",
-      "7,3": "table",
-      "8,3": "table",
-      "9,3": "table",
-      "10,3": "table",
-      "2,7": "table",
-      "3,7": "table",
-      "4,7": "table",
-      "5,7": "table",
-      "6,7": "table",
-      "7,7": "table",
-      "8,7": "table",
-      "9,7": "table",
-      "10,7": "table"
-     },
-     "_mat": true,
-     "_rug": [
-      115,
-      156,
-      180
-     ]
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
     },
     "people": [
      "GUARD"
+    ],
+    "moves": {
+     "6,2": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "scenes": [
+     {
+      "who": "GUARD",
+      "trigger": {
+       "zone": [
+        4,
+        4,
+        4,
+        6
+       ]
+      },
+      "condition": "not:has_item:TEA",
+      "every": true,
+      "then": "talk",
+      "push": [
+       1,
+       0
+      ],
+      "after": "stay"
+     }
     ],
     "land": {
      "7,10": [
@@ -13943,267 +13934,175 @@
       5
      ]
     },
-    "title": "Saffron Gate",
-    "parts": true
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/20_0.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       13,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Saffron Gate"
    }
   },
-  "inside": {
-   "7,10": "gate"
-  }
- },
- "KANTO_ROUTE_7": {
-  "art": [
-   "TTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTT",
-   "<.........)\"\"\"\"\"\"\"\"kTTTT",
-   "<.........)\"\"\"\"\"\"\"\"kTTTT",
-   "<.........)\"\"\"\"\"\"\"\"kTTTT",
-   "<.........)\"\"\"\"\"\"f.kTTTT",
-   "TTTT......)\"\"\"\"\"\".fk....",
-   "TTTT......)f.f.....kkkkk",
-   "TTTT__..__c.f..GGGGGGG..",
-   "TTTT...........GGGGGGG==",
-   "TTTT..........=DGGGGGGk=",
-   "TTTT..........=GGGGGGG==",
-   "TTTT__UUUU..______ckkkkk",
-   "TTTT..UUUU.........kTkTT",
-   "TTTT.!UDUU.........kTTTT",
-   "TTTT...............kTTTT",
-   "TTTT...............kTTTT",
-   "TTTT................TTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTT"
-  ],
-  "exits": {
-   "<": "CELADON_CITY",
-   "U": "UNDERGROUND_PATH"
-  },
-  "buildings": {
-   "G": "gate",
-   "U": "tunnel"
-  },
-  "roofs": {
-   "G": [
-    172,
-    189,
-    205
-   ],
-   "U": [
-    172,
-    189,
-    205
-   ]
+  "hidden": {
+   "42,10": "RAWST_BERRY",
+   "38,11": "LUM_BERRY",
+   "42,15": "LEPPA_BERRY"
   },
   "overheads": [
    {
-    "kind": "tops",
-    "rect": [
+    "kind": "picture",
+    "f": "fr_top/3_26.png",
+    "at": [
      0,
-     5,
-     4,
-     1
+     0
     ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     16,
-     7,
-     3,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     172,
-     189,
-     205
+    "size": [
+     72,
+     20
     ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     6,
-     11,
-     4,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     172,
-     189,
-     205
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     4,
-     17,
-     16,
-     1
-    ],
-    "of": "tree"
    }
+  ]
+ },
+ "KANTO_ROUTE_7": {
+  "art": [
+   "cccccccccccccccccccccccc",
+   "cccccccccccccccccccccccc",
+   "<.........)\"\"\"\"\"\"\"\"ccccc",
+   "<.........)\"\"\"\"\"\"\"\"ccccc",
+   "<.....X...)\"\"\"\"\"\"\"\"ccccc",
+   "<.........)\"\"\"\"\"\"..ccccc",
+   "cccc......)\"\"\"\"\"\"..ccccc",
+   "cccc......).X......ccccc",
+   "cccc__..__c.....cccccccc",
+   "cccc............cccccccc",
+   "cccc...........DAccccccc",
+   "cccc............cccccccc",
+   "cccc__cccc..______cccccc",
+   "cccc..cccc.........ccccc",
+   "cccc.!cncc.........ccccc",
+   "cccc...............ccccc",
+   "cccc..........X....ccccc",
+   "cccc................cccc",
+   "cccccccccccccccccccccccc",
+   "cccccccccccccccccccccccc"
   ],
+  "exits": {
+   "<": "CELADON_CITY",
+   "n": "UNDERGROUND_PATH"
+  },
+  "buildings": {
+   "A": "gate"
+  },
+  "roofs": {
+   "_picture": {
+    "f": "fr_ground/3_25.png",
+    "at": [
+     0,
+     0
+    ]
+   },
+   "_signs_in_picture": true,
+   "_buildings_in_picture": true
+  },
   "signs": [
    [
     "UNDERGROUND PATH",
-    "Celadon City - Lavender Town, under Saffron. Down the stairs here!"
+    "Celadon City - Lavender Town"
    ]
   ],
-  "people": [],
+  "trainer_spots": [
+   "Kelly",
+   "Alpesh",
+   "Nancy"
+  ],
+  "inside": {
+   "15,10": "gate"
+  },
+  "edge_to": {
+   "0,2": [
+    59,
+    12
+   ],
+   "0,3": [
+    59,
+    13
+   ],
+   "0,4": [
+    59,
+    14
+   ],
+   "0,5": [
+    59,
+    15
+   ]
+  },
   "rooms": {
    "gate": {
-    "theme": "room",
     "art": [
      "ccccccccccccc",
      "ccccccccccccc",
-     "cz....N....zc",
-     "c.mmmmmmmmm.c",
-     "c..=======..c",
-     "c<.=======.>c",
-     "c<.=======.>c",
-     "c.mmmmmmmmm.c",
-     "cz.........zc"
+     "ccccccNcccccc",
+     "c.cmmmmmmmc.c",
+     "c...........c",
+     "c<.........>c",
+     "c<.........>c",
+     "c.cmmmmmmmc.c",
+     "ccccccccccccc"
     ],
     "exits": {
-     ">": "SAFFRON_CITY",
-     "<": "OUT:15,10"
+     "<": "OUT:15,10",
+     ">": "SAFFRON_CITY"
     },
     "buildings": {},
     "roofs": {
-     "_floor": [
-      181,
-      176,
-      131
-     ],
-     "_wall": [
-      213,
-      222,
-      197
-     ],
-     "_things": {
-      "2,3": [
-       246,
-       238,
-       189
-      ],
-      "3,3": [
-       246,
-       238,
-       189
-      ],
-      "4,3": [
-       246,
-       238,
-       189
-      ],
-      "5,3": [
-       246,
-       238,
-       189
-      ],
-      "6,3": [
-       246,
-       238,
-       189
-      ],
-      "7,3": [
-       246,
-       238,
-       189
-      ],
-      "8,3": [
-       246,
-       238,
-       189
-      ],
-      "9,3": [
-       246,
-       238,
-       189
-      ],
-      "10,3": [
-       246,
-       238,
-       189
-      ],
-      "2,7": [
-       246,
-       238,
-       189
-      ],
-      "3,7": [
-       246,
-       238,
-       189
-      ],
-      "4,7": [
-       246,
-       238,
-       189
-      ],
-      "5,7": [
-       246,
-       238,
-       189
-      ],
-      "6,7": [
-       246,
-       238,
-       189
-      ],
-      "7,7": [
-       246,
-       238,
-       189
-      ],
-      "8,7": [
-       246,
-       238,
-       189
-      ],
-      "9,7": [
-       246,
-       238,
-       189
-      ],
-      "10,7": [
-       246,
-       238,
-       189
+     "_picture": {
+      "f": "fr_ground/19_0.png",
+      "at": [
+       0,
+       0
       ]
      },
-     "_kinds": {
-      "2,3": "table",
-      "3,3": "table",
-      "4,3": "table",
-      "5,3": "table",
-      "6,3": "table",
-      "7,3": "table",
-      "8,3": "table",
-      "9,3": "table",
-      "10,3": "table",
-      "2,7": "table",
-      "3,7": "table",
-      "4,7": "table",
-      "5,7": "table",
-      "6,7": "table",
-      "7,7": "table",
-      "8,7": "table",
-      "9,7": "table",
-      "10,7": "table"
-     },
-     "_mat": true,
-     "_rug": [
-      115,
-      156,
-      180
-     ]
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
     },
     "people": [
      "GUARD"
+    ],
+    "moves": {
+     "6,2": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "scenes": [
+     {
+      "who": "GUARD",
+      "trigger": {
+       "zone": [
+        8,
+        4,
+        8,
+        6
+       ]
+      },
+      "condition": "not:has_item:TEA",
+      "every": true,
+      "then": "talk",
+      "push": [
+       -1,
+       0
+      ],
+      "after": "stay"
+     }
     ],
     "land": {
      "15,10": [
@@ -14217,1952 +14116,1704 @@
       5
      ]
     },
-    "title": "Saffron Gate",
-    "parts": true
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/19_0.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       13,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Saffron Gate"
    }
   },
-  "inside": {
-   "15,10": "gate"
-  }
+  "hidden": {
+   "16,15": "WEPEAR_BERRY"
+  },
+  "overheads": [
+   {
+    "kind": "picture",
+    "f": "fr_top/3_25.png",
+    "at": [
+     0,
+     0
+    ],
+    "size": [
+     24,
+     20
+    ]
+   }
+  ]
  },
  "CELADON_CITY": {
   "art": [
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTT....................................................TTTT",
-   "TTTT.........................===........................TTTT",
-   "TTTT.....................TTTT.D.TTTTTT..TTTTTTTTTTTTTT..TTTT",
-   "TTTTHHHHH.........IIIIIIITTYYYYYYYTTTT..TTTTTTTTTTTTTT..TTTT",
-   "TTTTHHHHHSSSSSSSSSIIIIIIIeeYYYYYYYeeeeeeeeeeee......TT..TTTT",
-   "TTTTHHHHHSSSSSSSSSIIIIIIIeeYYYYYYYeeeeeeeeeeee......TT..TTTT",
-   "TTTTHHHHHSSSSSSSSSIIIIIIIeeYYYYYYYJJJJKKKKLLLLCCCCC.TT..TTTT",
-   "TTTTHHHHHSSSSSSSSSIIIIIII..YYYYYYYJJJJKKKKLLLLCCCCC.TT..TTTT",
-   "TTTTHHHHHSSSSSSSSSIIIIIII..YYYYYYYJJJJKKKKLLLLCCCCC.TTTTTTTT",
-   "TTTTHHHHHSSSSSSSSSIIIIIII.!YYYDYYYJJJJKKKKLLLLCCDCC.TTTTTTTT",
-   "TTTT.....SSSSSSSSS............e.....f..f..f....eeeeeeeeeeee>",
-   "TTTT.eee.SSSSSSSSS.eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee>",
-   "TTTT.eee.SSDSSSDSS!eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee>",
-   "TTTT.eee...e...e...eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee.......>",
-   "TTTT.eeeeeeeeeeeeeeeee...........!..................TTTTTTTT",
-   "TTTT.eeeeeeeeeeeeeeeee.kΔΔΔΔΔΔkQQQQQQQPPP...........TTTTTTTT",
-   "TTTT.eeeee.f...f.eeeee!kΔΔDΔΔΔkQQQQQQQPPPdddMMMMOOOOTTTTTTTT",
-   "TTTT.eeeee..ΘΘΘ..eeeee........kQQQQQQQPPPdddMMMMOOOOTTTTTTTT",
-   "TTTT.eeeeef.ΘΘΘ.feeeee.k......kQQQQQQQPDPdddMMMMOOOOTT..TTTT",
-   "TTTT.eeeee.......eeeee.kooooookQQQDQQQT.TdddMMMMOOOOTT..TTTT",
-   "<.eeeeeeee.f...f.eeeee.kooooook..........ddd..f..f..2...TTTT",
-   "<.eeeeeeeeeeeeeeeeeeee.kooooookkk!kkkk!kk...k!kkkkkkkk..TTTT",
-   "<.eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeTT..TTTT",
-   "kkkkUUUUeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeTT..TTTT",
-   "TTTTUUUU........VVVV.....eeeeeeeAAAABBBBEEEEFFFFRRRRTT..TTTT",
-   "TTTTUUUUZZZZZZZZVVVVWWWW.eeeeee.AAAABBBBEEEEFFFFRRRRTT..TTTT",
-   "TTTTUUUUZZZZZZZZVVVVWWWW.eeeeee.AAAABBBBEEEEFFFFRRRRTT..TTTT",
-   "TTTTUUUUZZZZZZZZVVVVWWWW.eeeeee.AAAABDBBEDEEFFFFRDRRTT..TTTT",
-   "TTTTf.f...GDG....f.fWWWW.eeeeee..f.f.e...e..f.f..e......TTTT",
-   "TTTT.f.f.......f!.f.WWWW.eeeeeeeeeeeeeeeeeeeeeeeeeee....TTTT",
-   "TTTTf............f.fWWWW.eeeeeeeeeeeeeeeeeeeeeeeeeee...fTTTT",
-   "TTTT______..________WWWW................................TTTT",
-   "TTTT.f..............WWWWTTTTTTTTTTTTTTTT.TTTTTTTTTT....fTTTT",
-   "TTTTf...................TTTTTTTTTTTTTTTT2TTTTTTTTTT..f..TTTT",
-   "TTTT.f.f..................................TT........f.TTTTTT",
-   "TTTT......................................kkkkkkkkkkkkTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT"
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccc....................................................cccc",
+   "cccc.N..................................................cccc",
+   "cccc.....................cccc.D.cccccc..cccccccccccccc..cccc",
+   "ccccccccc.........ccccccccccLDMDOccccc..cccccccccccccc..cccc",
+   "ccccccccccccccccccccccccc..ccccccc..................cc..cccc",
+   "ccccccccccccccccccccccccc..ccccccc..................cc..cccc",
+   "ccccccccccccccccccccccccc..cccccccccccccccccccccccc.cc..cccc",
+   "ccccccccccccccccccccccccc..cccccccccccccccccccccccc.cc..cccc",
+   "cccccccccccccccccccccccccN.cccEcccccccccccccccccFcc.cccccccc",
+   "ccccccccccccccccccccccccc.!cccDcccccccccccccccccDcc.cccccccc",
+   "cccc.....ccccccccc.........................................>",
+   "cccc.....ccBcccCcc.........................................>",
+   "cccc.....ccDcccDcc!.................N.N....................>",
+   "cccc............................................N..........>",
+   "cccc.............................!..................cccccccc",
+   "cccc...................cccPcccccccccccccc...........cccccccc",
+   "cccc.......N..........!cccDcccccccccccccc...cccccccccccccccc",
+   "cccc........ccc........c..N...cccccccccGc...cccccccccccccccc",
+   "cccc........ccc........c......ccccAccccDc...cccccccccc..cccc",
+   "cccc...................cooooooccccDcccc.c...cccccccccc..cccc",
+   "<.................N....cooooooc.....................2...cccc",
+   "<......................cooooooccc!cccc!cc...c!cccccccc..cccc",
+   "<.............................N................N....cc..cccc",
+   "cccccccc............................................cc..cccc",
+   "cccccccc........cccc............cccccccccccccccccccccc..cccc",
+   "cccccccccccccccccccccccc........cccccccccccccccccccccc..cccc",
+   "cccccccccccccccccccccccc........cccccIcccJcccccccKcccc..cccc",
+   "cccccccccccHcccccccccccc........cccccDcccDcccccccDcccc..cccc",
+   "cccc.....NcDc.......cccc................................cccc",
+   "cccc............!...cccc..............N.................cccc",
+   "cccc................cccc................................cccc",
+   "cccc______..________cccc................................cccc",
+   "cccc................cccccccccccccccccccc.cccccccccc.....cccc",
+   "cccc....................cccccccccccccccc2cccccccccc.....cccc",
+   "cccc......................................cc..........cccccc",
+   "cccc......................................cccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
   ],
   "exits": {
    "<": "KANTO_ROUTE_16",
    ">": "KANTO_ROUTE_7"
   },
   "buildings": {
-   "A": "house",
-   "B": "house",
-   "C": "center",
-   "E": "house",
-   "F": "house",
-   "G": "gym",
-   "H": "house",
+   "A": "game corner",
+   "B": "dept",
+   "C": "dept",
+   "E": "mansion",
+   "F": "center",
+   "G": "prize corner",
+   "H": "gym",
    "I": "house",
    "J": "house",
-   "K": "house",
-   "L": "house",
-   "M": "house",
-   "O": "house",
-   "P": "prize corner",
-   "Q": "game corner",
-   "R": "hotel",
-   "S": "dept",
-   "U": "house",
-   "V": "house",
-   "W": "house",
-   "Y": "mansion",
-   "Z": "gym",
-   "Δ": "diner",
-   "Θ": "fountain"
+   "K": "hotel",
+   "L": "mansion",
+   "M": "mansion",
+   "O": "mansion",
+   "P": "diner"
   },
   "roofs": {
-   "A": [
-    180,
-    189,
-    131
-   ],
-   "B": [
-    180,
-    189,
-    131
-   ],
-   "C": [
-    222,
-    106,
-    98
-   ],
-   "E": [
-    180,
-    189,
-    131
-   ],
-   "F": [
-    180,
-    189,
-    131
-   ],
-   "H": [
-    180,
-    189,
-    131
-   ],
-   "I": [
-    180,
-    189,
-    131
-   ],
-   "J": [
-    180,
-    189,
-    131
-   ],
-   "K": [
-    180,
-    189,
-    131
-   ],
-   "L": [
-    180,
-    189,
-    131
-   ],
-   "M": [
-    180,
-    189,
-    131
-   ],
-   "O": [
-    180,
-    189,
-    131
-   ],
-   "P": [
-    246,
-    238,
-    189
-   ],
-   "Q": [
-    246,
-    238,
-    189
-   ],
-   "R": [
-    180,
-    189,
-    131
-   ],
-   "S": [
-    148,
-    164,
-    180
-   ],
-   "U": [
-    180,
-    189,
-    131
-   ],
-   "V": [
-    180,
-    189,
-    131
-   ],
-   "W": [
-    180,
-    189,
-    131
-   ],
-   "Y": [
-    180,
-    189,
-    131
-   ],
-   "Z": [
-    197,
-    172,
-    106
-   ],
-   "Δ": [
-    115,
-    189,
-    246
-   ],
-   "G": [
-    197,
-    172,
-    106
-   ]
+   "_picture": {
+    "f": "fr_ground/3_6.png",
+    "at": [
+     0,
+     0
+    ]
+   },
+   "_signs_in_picture": true,
+   "_buildings_in_picture": true
   },
-  "overheads": [
+  "people": [
+   "ETHER",
    {
-    "kind": "tops",
-    "rect": [
-     25,
-     3,
-     4,
-     1
-    ],
-    "of": "tree"
+    "text": "Little girl",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Ow, I scalded my tongue! The nice old lady in the Mansion gave me some hot Tea."
+     ]
+    }
    },
    {
-    "kind": "tops",
-    "rect": [
-     32,
-     3,
-     6,
-     1
-    ],
-    "of": "tree"
+    "text": "Poliwrath",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "POLIWRATH: Ribi ribit!"
+     ]
+    }
    },
    {
-    "kind": "tops",
-    "rect": [
-     40,
-     3,
-     14,
-     1
-    ],
-    "of": "tree"
+    "text": "Old man",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "This is my trusted pal, Poliwrath. It evolved from a Poliwhirl when I used a Water Stone."
+     ]
+    }
    },
    {
-    "kind": "tops",
-    "rect": [
-     4,
-     4,
-     5,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     180,
-     189,
-     131
-    ]
+    "text": "Grunt",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Keep out of Team Rocket's way! Get lost!"
+     ]
+    }
    },
    {
-    "kind": "tops",
-    "rect": [
-     18,
-     4,
-     7,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     180,
-     189,
-     131
-    ]
+    "text": "Girl",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "I got my Koffing in Cinnabar. It's usually nice, but it breathes poison when it's angry."
+     ]
+    }
    },
    {
-    "kind": "tops",
-    "rect": [
-     29,
-     4,
-     1,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     180,
-     189,
-     131
-    ]
+    "text": "Old man ",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "My Poliwrath and I go everywhere together. It's a strong one!"
+     ]
+    }
    },
    {
-    "kind": "tops",
-    "rect": [
-     31,
-     4,
-     1,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     180,
-     189,
-     131
-    ]
+    "text": "Woman",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Celadon is proud of its trees and flowers. We keep the whole city beautiful."
+     ]
+    }
    },
    {
-    "kind": "tops",
-    "rect": [
-     9,
-     5,
-     9,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     148,
-     164,
-     180
-    ]
+    "text": "Gambler",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Moan... I blew it all at the slots! I should have cashed my coins in for prizes!"
+     ]
+    }
    },
    {
-    "kind": "tops",
-    "rect": [
-     34,
-     7,
-     12,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     180,
-     189,
-     131
-    ]
+    "text": "Man ",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Oh, what am I to do? Someone stole our Silph Scope! The thief ran into the Game Corner..."
+     ]
+    }
    },
    {
-    "kind": "tops",
-    "rect": [
-     46,
-     7,
-     5,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     222,
-     106,
-     98
-    ]
+    "text": "Man",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Heheh! This Gym is great! It's full of women!"
+     ]
+    }
    },
    {
-    "kind": "tops",
-    "rect": [
-     54,
-     9,
-     2,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     52,
-     15,
-     8,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     24,
-     16,
-     6,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     115,
-     189,
-     246
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     44,
-     17,
-     8,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     180,
-     189,
-     131
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     12,
-     18,
-     3,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     123,
-     164,
-     189
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     16,
-     25,
-     4,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     180,
-     189,
-     131
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     32,
-     25,
-     20,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     180,
-     189,
-     131
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     8,
-     26,
-     8,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     197,
-     172,
-     106
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     20,
-     26,
-     4,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     180,
-     189,
-     131
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     24,
-     33,
-     16,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     41,
-     33,
-     10,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     54,
-     35,
-     2,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     4,
-     37,
-     38,
-     1
-    ],
-    "of": "tree"
+    "text": "Grunt ",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "What are you staring at? Get lost before I lose my temper."
+     ]
+    }
    }
   ],
   "signs": [
    [
-    "CELADON CONDOMINIUMS",
-    "Quiet homes, right in the city."
+    "CELADON MANSION"
    ],
    [
-    "CELADON DEPT. STORE",
-    "Everything a trainer needs, on every floor!"
-   ],
-   [
-    "CELADON CITY",
-    "The City of Rainbow Dreams. Dream big, and count every step!"
-   ],
-   [
-    "CELADON DINER",
-    "Smells good in there!"
-   ],
-   [
-    "GAME CORNER",
-    "The playground for grown-ups... and math whizzes!"
-   ],
-   [
-    "PRIZE CORNER",
-    "Trade your coins for prizes!"
+    "Find what you need at the CELADON DEPT. STORE!"
    ],
    [
     "TRAINER TIPS",
-    "Route 16 is west. Cycling Road starts there!"
+    "X Accuracy makes your moves land more often."
    ],
    [
-    "CELADON CITY GYM",
+    "CELADON CITY",
+    "The City of Rainbow Dreams"
+   ],
+   [
+    "ROCKET GAME CORNER",
+    "The playground for grown-ups!"
+   ],
+   [
+    "Coins exchanged for prizes!",
+    "PRIZE EXCHANGE"
+   ],
+   [
+    "TRAINER TIPS",
+    "Guard Spec. protects Pokémon from having their stats lowered."
+   ],
+   [
+    "CELADON CITY POKéMON GYM",
     "Leader: Erika, the Nature-Loving Princess!"
    ]
   ],
+  "inside": {
+   "11,14": "dept",
+   "15,14": "dept",
+   "30,11": "mansion",
+   "48,11": "center",
+   "39,20": "prize",
+   "11,30": "gym",
+   "37,29": "restaurant",
+   "41,29": "house_e",
+   "49,29": "hotel",
+   "29,5": "mansion",
+   "30,4": "mansion",
+   "31,5": "mansion"
+  },
+  "edge_to": {
+   "0,22": [
+    47,
+    12
+   ],
+   "0,23": [
+    47,
+    13
+   ],
+   "0,24": [
+    47,
+    14
+   ],
+   "59,12": [
+    0,
+    2
+   ],
+   "59,13": [
+    0,
+    3
+   ],
+   "59,14": [
+    0,
+    4
+   ],
+   "59,15": [
+    0,
+    5
+   ]
+  },
+  "moves": {
+   "48,15": {
+    "m": "wander",
+    "d": "lr",
+    "r": [
+     4,
+     0
+    ]
+   },
+   "38,14": {
+    "m": "face",
+    "d": "l"
+   },
+   "36,14": {
+    "m": "face",
+    "d": "r"
+   },
+   "11,18": {
+    "m": "wander",
+    "d": "udlr",
+    "r": [
+     4,
+     4
+    ]
+   },
+   "18,22": {
+    "m": "wander",
+    "d": "udlr",
+    "r": [
+     2,
+     5
+    ]
+   },
+   "30,24": {
+    "m": "face",
+    "d": "d"
+   },
+   "26,19": {
+    "m": "face",
+    "d": "d"
+   },
+   "38,31": {
+    "m": "wander",
+    "d": "lr",
+    "r": [
+     5,
+     0
+    ]
+   },
+   "9,30": {
+    "m": "face",
+    "d": "u"
+   },
+   "25,10": {
+    "m": "face",
+    "d": "u"
+   },
+   "47,24": {
+    "m": "look",
+    "d": "udlr"
+   },
+   "5,3": {
+    "m": "face",
+    "d": "d"
+   }
+  },
+  "locked": {
+   "diner": "Celadon Diner: every table is taken today. Smells good, though!"
+  },
   "rooms": {
-   "center": {
+   "dept": {
+    "art": [
+     "ccccccccccccc",
+     "cccccccc!cccc",
+     "ccccn.....ccc",
+     "cccc......ccc",
+     "cccc......ccc",
+     "...........cc",
+     ".............",
+     "c............",
+     "...mmmmmmm...",
+     "...mcccccm...",
+     "...mccNccm...",
+     "...mmmmmm!...",
+     ".............",
+     "c...........c",
+     "..v.......<..",
+     "cvcvccccc<c<c"
+    ],
+    "exits": {
+     "v": "OUT:11,14",
+     "<": "OUT:15,14",
+     "n": "ROOM:dept_2"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/10_0.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Receptionist",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Welcome to the Celadon Dept. Store! The board on the right shows each floor."
+       ]
+      }
+     }
+    ],
+    "signs": [
+     [
+      "1F: SERVICE COUNTER"
+     ],
+     [
+      "1F: SERVICE COUNTER  2F: TRAINER'S MARKET  3F: TV GAME SHOP",
+      "4F: WISE MAN GIFTS  5F: DRUGSTORE  ROOF: ROOFTOP SQUARE"
+     ]
+    ],
+    "moves": {
+     "6,10": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/10_0.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       13,
+       16
+      ]
+     }
+    ],
     "theme": "room",
+    "title": "Dept. Store 1F"
+   },
+   "dept_2": {
+    "art": [
+     "ccccccccccccc",
+     "cccc!cccccccc",
+     "cccn.....<ccc",
+     "ccc.......ccc",
+     "ccc.......ccc",
+     "ccm.......ccc",
+     "cNm........N.",
+     "ccm..........",
+     "cNm....cc.cc.",
+     "mmm....cc.cc.",
+     ".....N.cc.cc.",
+     ".ccc.........",
+     ".......cc.cc.",
+     ".ccc...cc.cc.",
+     ".......cc.cc."
+    ],
+    "exits": {
+     "n": "ROOM:dept",
+     "<": "ROOM:dept_3"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/10_1.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Dept. Store",
+     {
+      "text": "Clerk ",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "A customer named Lance drops by now and then. He always buys capes. I wonder why..."
+       ]
+      }
+     },
+     {
+      "text": "Clerk",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Please come again!"
+       ]
+      }
+     },
+     {
+      "text": "Lady",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "For long trips, buy some Revives. You never know!"
+       ]
+      }
+     }
+    ],
+    "signs": [
+     [
+      "Top-grade items for Trainers!",
+      "2F: TRAINER'S MARKET"
+     ]
+    ],
+    "moves": {
+     "5,10": {
+      "m": "wander",
+      "d": "ud",
+      "r": [
+       0,
+       1
+      ]
+     },
+     "1,8": {
+      "m": "face",
+      "d": "d"
+     },
+     "11,6": {
+      "m": "wander",
+      "d": "lr",
+      "r": [
+       1,
+       0
+      ]
+     },
+     "1,6": {
+      "m": "face",
+      "d": "r"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/10_1.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       13,
+       15
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Dept. Store 2F"
+   },
+   "dept_3": {
+    "art": [
+     "ccccccccccccc",
+     "cccccccc!cccc",
+     "ccc<.....nccc",
+     "ccc.......ccc",
+     "ccc.......ccc",
+     "...........cc",
+     "...........N.",
+     ".............",
+     "m!cm!cm.mmmmm",
+     ".N..N...mcNcm",
+     "........mcccm",
+     "m!cm!cm.mmmmm",
+     ".............",
+     ".............",
+     "c........N..c"
+    ],
+    "exits": {
+     "n": "ROOM:dept_2",
+     "<": "ROOM:dept_4"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/10_2.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Boy",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Trading is the way to fill your Pokédex. Check the ID No. of anything you get in a trade."
+       ]
+      }
+     },
+     {
+      "text": "Boy  ",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "All right! My buddy's trading me his Kangaskhan for my Haunter!"
+       ]
+      }
+     },
+     {
+      "text": "Boy ",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I love Haunter! I collect them! Huh? My Haunter turned into something else when I traded it!"
+       ]
+      }
+     },
+     {
+      "text": "Clerk",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Every Pokémon you catch gets an ID No. and an OT, its Original Trainer. That's you!"
+       ]
+      }
+     },
+     {
+      "text": "Girl",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "You can tell where a traded Pokémon came from by its ID No."
+       ]
+      }
+     }
+    ],
+    "signs": [
+     [
+      "3F: TV GAME SHOP"
+     ],
+     [
+      "It's a game console."
+     ],
+     [
+      "It's a game console."
+     ],
+     [
+      "It's a game console."
+     ],
+     [
+      "It's a game console."
+     ]
+    ],
+    "moves": {
+     "10,9": {
+      "m": "face",
+      "d": "u"
+     },
+     "11,6": {
+      "m": "face",
+      "d": "d"
+     },
+     "4,9": {
+      "m": "face",
+      "d": "d"
+     },
+     "1,9": {
+      "m": "face",
+      "d": "d"
+     },
+     "9,14": {
+      "m": "look",
+      "d": "lr"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/10_2.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       13,
+       15
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Dept. Store 3F"
+   },
+   "dept_4": {
+    "art": [
+     "ccccccccccccc",
+     "cccc!cccccccc",
+     "cccn.....<ccc",
+     "ccc.......ccc",
+     "ccc.......ccc",
+     "..........ccc",
+     "......N......",
+     ".cc..ccc.ccc.",
+     ".cc..........",
+     ".cc..ccc.ccc.",
+     ".............",
+     "..........N..",
+     "mmmmmmmm.....",
+     "cccNcccm.....",
+     "cccccccc.cc.."
+    ],
+    "exits": {
+     "n": "ROOM:dept_3",
+     "<": "ROOM:dept_5"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/10_3.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Man",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I'm buying a present for my girlfriend. A Poké Doll should do. It's the latest thing!"
+       ]
+      }
+     },
+     {
+      "text": "Youngster",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Here's a tip: a Poké Doll can distract a wild Pokémon long enough for you to run away!"
+       ]
+      }
+     },
+     {
+      "text": "Clerk",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Please come again!"
+       ]
+      }
+     }
+    ],
+    "signs": [
+     [
+      "Express yourself with gifts!",
+      "4F: WISE MAN GIFTS"
+     ]
+    ],
+    "moves": {
+     "6,6": {
+      "m": "face",
+      "d": "d"
+     },
+     "10,11": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     },
+     "3,13": {
+      "m": "face",
+      "d": "u"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/10_3.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       13,
+       15
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Dept. Store 4F"
+   },
+   "dept_5": {
+    "art": [
+     "ccccccccccccc",
+     "cccccccc!cccc",
+     "ccc<.....nccc",
+     "ccc.......ccc",
+     "ccc.......ccc",
+     "ccm.......ccc",
+     "cNm........N.",
+     "cNm..........",
+     "mmm...Ncc.cc.",
+     ".......cc.cc.",
+     ".............",
+     ".cc.cc.......",
+     ".cc.cc.cc.cc.",
+     ".cc.cc.cc.cc.",
+     "c...........c"
+    ],
+    "exits": {
+     "n": "ROOM:dept_4",
+     "<": "ROOM:dept_roof"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/10_4.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Clerk ",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Please come again!"
+       ]
+      }
+     },
+     {
+      "text": "Gentleman",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Stat boosters are sold only here. HP Up raises a Pokémon's HP for good!"
+       ]
+      }
+     },
+     {
+      "text": "Clerk",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Please come again!"
+       ]
+      }
+     },
+     {
+      "text": "Sailor",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I'm here for stat boosters. Protein raises Attack, Iron raises Defense..."
+       ]
+      }
+     }
+    ],
+    "signs": [
+     [
+      "5F: DRUGSTORE"
+     ]
+    ],
+    "moves": {
+     "11,6": {
+      "m": "wander",
+      "d": "lr",
+      "r": [
+       1,
+       0
+      ]
+     },
+     "6,8": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     },
+     "1,7": {
+      "m": "face",
+      "d": "d"
+     },
+     "1,6": {
+      "m": "face",
+      "d": "r"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/10_4.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       13,
+       15
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Dept. Store 5F"
+   },
+   "dept_roof": {
+    "art": [
+     "ccccccccccccccccccc",
+     "ccccccccccccccccccc",
+     "ccccccccccccccccccc",
+     "c........c!!!c!cccc",
+     "c....N..........ccc",
+     "c...cc...N......ccc",
+     "c...cc.........nccc",
+     "c...............ccc",
+     "c...............ccc",
+     "ccccccccccccccccccc",
+     "ccccccccccccccccccc",
+     "ccccccccccccccccccc",
+     "ccccccccccccccccccc",
+     "ccccccccccccccccccc"
+    ],
+    "exits": {
+     "n": "ROOM:dept_5"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/10_5.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Little girl",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I'm thirsty! I want something to drink!"
+       ]
+      }
+     },
+     {
+      "text": "Man",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "My sister's a Trainer, believe it or not. But she's so immature!"
+       ]
+      }
+     }
+    ],
+    "signs": [
+     [
+      "A vending machine. It's out of order."
+     ],
+     [
+      "A vending machine. It's out of order."
+     ],
+     [
+      "A vending machine. It's out of order."
+     ],
+     [
+      "ROOFTOP SQUARE",
+      "VENDING MACHINES"
+     ]
+    ],
+    "moves": {
+     "9,5": {
+      "m": "face",
+      "d": "l"
+     },
+     "5,4": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       2,
+       1
+      ]
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/10_5.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       19,
+       14
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Dept. Store Roof"
+   },
+   "mansion": {
+    "art": [
+     "ccccccccccccccc",
+     "cc^cccccccccccc",
+     "....ncccc...ncc",
+     ".....cccc....cc",
+     ".......cc......",
+     "ccccccccc......",
+     "cccccccccc....c",
+     "c.c.c..cc......",
+     ".....N.cc......",
+     ".NN....ccc....c",
+     ".cccc..cc......",
+     ".cccc..cc......",
+     ".cccc..!!c....c",
+     ".....N.........",
+     "...............",
+     "ccccccccc.....c",
+     "ccccccccc......",
+     "c..............",
+     "............v..",
+     "cccccccccccvcvc"
+    ],
+    "exits": {
+     "v": "OUT:30,11",
+     "n": "ROOM:mansion_2",
+     "^": "OUT:30,4"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/10_7.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Nidoran",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "NIDORAN: Kya kyaoo!"
+       ]
+      }
+     },
+     {
+      "text": "Meowth",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "MEOWTH: Meow!"
+       ]
+      }
+     },
+     "Celadon Mansion",
+     {
+      "text": "Clefairy",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "CLEFAIRY: Pi pippippi!"
+       ]
+      }
+     }
+    ],
+    "signs": [
+     [
+      "CELADON MANSION",
+      "Manager's Suite"
+     ],
+     [
+      "CELADON MANSION",
+      "Manager's Suite"
+     ]
+    ],
+    "moves": {
+     "1,9": {
+      "m": "face",
+      "d": "r"
+     },
+     "5,13": {
+      "m": "wander",
+      "d": "lr",
+      "r": [
+       1,
+       0
+      ]
+     },
+     "5,8": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       2,
+       1
+      ]
+     },
+     "2,9": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/10_7.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       15,
+       20
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Celadon Mansion"
+   },
+   "mansion_2": {
     "art": [
      "ccccccccccccccc",
      "ccccccccccccccc",
-     "....zmmN.mz....",
-     "....mmmmmmm....",
+     "cc<.ncccccc<ncc",
+     "cc...cccccc..cc",
+     ".......cc......",
+     "ccccccccc......",
+     "cccccccccc....c",
+     "c......cc......",
+     ".......cc......",
+     ".cccc..ccc....c",
+     ".cccc..cc......",
+     ".cccc..cc......",
+     ".......!!c....c",
      "...............",
      "...............",
-     "ce.........mm..",
-     "...........mm..",
+     "ccccccccc.....c",
+     "ccccccccc......",
+     "c..............",
+     "..............c",
+     "ccccccccccccccc"
+    ],
+    "exits": {
+     "n": "ROOM:mansion",
+     "<": "ROOM:mansion_3"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/10_8.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "signs": [
+     [
+      "Meeting Room"
+     ],
+     [
+      "Meeting Room"
+     ]
+    ],
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/10_8.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       15,
+       20
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Celadon Mansion 2F"
+   },
+   "mansion_3": {
+    "art": [
+     "ccccccccccccccc",
+     "ccccccccccccccc",
+     "ccn.<ccccccn<cc",
+     "cc...cccccc..cc",
+     ".......cc......",
+     "ccccccccc......",
+     "cccccccccc....c",
+     ".......cc......",
+     "...N...cc......",
+     "ccc.cccccc....c",
+     "N...N..cc......",
+     ".......cc......",
+     "cccc...!!c....c",
+     "N..c...........",
+     "...............",
+     "ccccccccc.....c",
+     "ccccccccc......",
+     "c..............",
+     "..............c",
+     "ccccccccccccccc"
+    ],
+    "exits": {
+     "n": "ROOM:mansion_2",
+     "<": "ROOM:mansion_roof"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/10_9.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Game designer",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I'm the game designer! Filling up your Pokédex is tough, but don't give up!"
+       ]
+      }
+     },
+     {
+      "text": "Programmer",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Me? I'm the programmer!"
+       ]
+      }
+     },
+     {
+      "text": "Artist",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I'm the graphic artist! I drew you!"
+       ]
+      }
+     },
+     {
+      "text": "Writer",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I wrote the story! Isn't Erika lovely? I like Misty a lot too. Oh, and Sabrina..."
+       ]
+      }
+     }
+    ],
+    "signs": [
+     [
+      "Development Room"
+     ],
+     [
+      "Development Room"
+     ]
+    ],
+    "moves": {
+     "0,10": {
+      "m": "face",
+      "d": "u"
+     },
+     "3,8": {
+      "m": "face",
+      "d": "d"
+     },
+     "4,10": {
+      "m": "face",
+      "d": "u"
+     },
+     "0,13": {
+      "m": "face",
+      "d": "r"
+     }
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/10_9.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       15,
+       20
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Celadon Mansion 3F"
+   },
+   "mansion_roof": {
+    "art": [
+     "cccccccccccccc",
+     "cccccccccccccc",
+     "c...nccc..nccc",
+     "c....ccc...ccc",
+     "c......c.....c",
+     "c......c...ccc",
+     "ccccc..c.....c",
+     "ccccc..c...ccc",
+     "ccccc..c.....c",
+     "ccccc..c...ccc",
+     "ccccc..c.....c",
+     "ccccc..c...ccc",
+     "cc<!!..c.....c",
+     "c......c.....c",
+     "c......c.....c",
+     "cccccccc.....c",
+     "c............c",
+     "ccc..........c",
+     "cccccccccccccc",
+     "cccccccccccccc",
+     "cccccccccccccc",
+     "cccccccccccccc",
+     "cccccccccccccc"
+    ],
+    "exits": {
+     "n": "ROOM:mansion_3",
+     "<": "ROOM:roof_room"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/10_10.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "signs": [
+     [
+      "I KNOW EVERYTHING!"
+     ],
+     [
+      "I KNOW EVERYTHING!"
+     ]
+    ],
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/10_10.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       14,
+       23
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Celadon Mansion Roof"
+   },
+   "roof_room": {
+    "art": [
+     "cccccccccc",
+     "cccc!!cccc",
+     "........cc",
+     ".......N..",
+     "....!c....",
+     "...N......",
+     "..........",
+     "c...v....c",
+     "cccvcvcccc"
+    ],
+    "exits": {
+     "v": "ROOM:mansion_roof"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/10_11.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "EEVEE",
+     {
+      "text": "Man",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "There's nothing I don't know, just like it says on the blackboard. Ask me about TMs!"
+       ]
+      }
+     }
+    ],
+    "signs": [
+     [
+      "A blackboard covered in notes about Pokémon."
+     ],
+     [
+      "A blackboard covered in notes about Pokémon."
+     ],
+     [
+      "A pamphlet on TMs. A TM teaches a move once; an HM can be used again and again."
+     ]
+    ],
+    "moves": {
+     "3,5": {
+      "m": "face",
+      "d": "d"
+     },
+     "7,3": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/10_11.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       10,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Rooftop Room"
+   },
+   "center": {
+    "art": [
+     "ccccccccccccccc",
+     "ccccccccccccccc",
+     "....mccNccm....",
+     "....cmmmmmc....",
+     "....N..........",
+     "............N..",
+     "c<........Ncc..",
+     "...........cc..",
      "......vvv......",
      "ccccccccccccccc"
     ],
     "exits": {
-     "v": "OUT:48,11"
+     "v": "OUT:48,11",
+     "<": "ROOM:center_2"
     },
     "buildings": {},
     "roofs": {
-     "_floor": [
-      225,
-      219,
-      171
-     ],
-     "_wall": [
-      230,
-      139,
-      98
-     ],
-     "_things": {
-      "5,2": [
-       82,
-       82,
-       106
-      ],
-      "6,2": [
-       82,
-       82,
-       106
-      ],
-      "9,2": [
-       82,
-       82,
-       106
-      ],
-      "4,3": [
-       82,
-       82,
-       106
-      ],
-      "5,3": [
-       255,
-       131,
-       115
-      ],
-      "6,3": [
-       255,
-       131,
-       115
-      ],
-      "7,3": [
-       180,
-       180,
-       164
-      ],
-      "8,3": [
-       255,
-       131,
-       115
-      ],
-      "9,3": [
-       255,
-       131,
-       115
-      ],
-      "10,3": [
-       82,
-       82,
-       106
-      ],
-      "11,6": [
-       255,
-       255,
-       255
-      ],
-      "12,6": [
-       255,
-       255,
-       255
-      ],
-      "11,7": [
-       222,
-       213,
-       230
-      ],
-      "12,7": [
-       255,
-       255,
-       255
+     "_picture": {
+      "f": "fr_ground/10_12.png",
+      "at": [
+       0,
+       0
       ]
-     }
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
     },
     "people": [
-     "Heal"
-    ]
-   },
-   "gym": {
-    "theme": "room",
-    "art": [
-     "ccccccccccccc",
-     "ccccccccccccc",
-     "m...........m",
-     "m..mmmmmmm..m",
-     "mm.mm.N..m.mm",
-     "m..2.....m..m",
-     "m..m.....2..m",
-     "m..m.....m..m",
-     "m..mmm2mmm..m",
-     "m..mm...mm..m",
-     "m..........mm",
-     "mm..........m",
-     "m...........m",
-     "m..mm...mm..m",
-     "m..mm...mm..m",
-     "m...........m",
-     "m...j...j...m",
-     "m...........m",
-     "m....vvv....m",
-     "ccccccccccccc"
+     "Heal",
+     {
+      "text": "Gentleman",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "A Poké Flute wakes sleeping Pokémon. Its tune drives off drowsiness."
+       ]
+      }
+     },
+     {
+      "text": "Youngster",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "If I had a Bike, I'd go to Cycling Road!"
+       ]
+      }
+     },
+     {
+      "text": "Biker",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I rode here from Fuchsia. Cycling Road's uphill this way. I'm beat!"
+       ]
+      }
+     }
     ],
-    "exits": {
-     "v": "OUT:11,30"
-    },
-    "buildings": {},
-    "roofs": {
-     "_floor": [
-      134,
-      206,
-      143
-     ],
-     "_wall": [
-      246,
-      189,
-      115
-     ],
-     "_things": {
-      "0,2": [
-       246,
-       189,
-       115
-      ],
-      "12,2": [
-       246,
-       189,
-       115
-      ],
-      "0,3": [
-       246,
-       189,
-       115
-      ],
-      "3,3": [
-       115,
-       205,
-       90
-      ],
-      "4,3": [
-       115,
-       205,
-       90
-      ],
-      "5,3": [
-       115,
-       205,
-       90
-      ],
-      "6,3": [
-       115,
-       205,
-       90
-      ],
-      "7,3": [
-       115,
-       205,
-       90
-      ],
-      "8,3": [
-       115,
-       205,
-       90
-      ],
-      "9,3": [
-       115,
-       205,
-       90
-      ],
-      "12,3": [
-       246,
-       189,
-       115
-      ],
-      "0,4": [
-       246,
-       189,
-       115
-      ],
-      "1,4": [
-       115,
-       205,
-       90
-      ],
-      "3,4": [
-       115,
-       205,
-       90
-      ],
-      "4,4": [
-       115,
-       205,
-       90
-      ],
-      "9,4": [
-       115,
-       205,
-       90
-      ],
-      "11,4": [
-       115,
-       205,
-       90
-      ],
-      "12,4": [
-       246,
-       189,
-       115
-      ],
-      "0,5": [
-       246,
-       189,
-       115
-      ],
-      "9,5": [
-       115,
-       205,
-       90
-      ],
-      "12,5": [
-       246,
-       189,
-       115
-      ],
-      "0,6": [
-       246,
-       189,
-       115
-      ],
-      "3,6": [
-       115,
-       205,
-       90
-      ],
-      "12,6": [
-       246,
-       189,
-       115
-      ],
-      "0,7": [
-       246,
-       189,
-       115
-      ],
-      "3,7": [
-       115,
-       205,
-       90
-      ],
-      "9,7": [
-       115,
-       205,
-       90
-      ],
-      "12,7": [
-       246,
-       189,
-       115
-      ],
-      "0,8": [
-       246,
-       189,
-       115
-      ],
-      "3,8": [
-       115,
-       205,
-       90
-      ],
-      "4,8": [
-       115,
-       205,
-       90
-      ],
-      "5,8": [
-       115,
-       205,
-       90
-      ],
-      "7,8": [
-       115,
-       205,
-       90
-      ],
-      "8,8": [
-       115,
-       205,
-       90
-      ],
-      "9,8": [
-       115,
-       205,
-       90
-      ],
-      "12,8": [
-       246,
-       189,
-       115
-      ],
-      "0,9": [
-       246,
-       189,
-       115
-      ],
-      "3,9": [
-       115,
-       205,
-       90
-      ],
-      "4,9": [
-       115,
-       205,
-       90
-      ],
-      "8,9": [
-       115,
-       205,
-       90
-      ],
-      "9,9": [
-       115,
-       205,
-       90
-      ],
-      "12,9": [
-       246,
-       189,
-       115
-      ],
-      "0,10": [
-       246,
-       189,
-       115
-      ],
-      "11,10": [
-       115,
-       205,
-       90
-      ],
-      "12,10": [
-       246,
-       189,
-       115
-      ],
-      "0,11": [
-       246,
-       189,
-       115
-      ],
-      "1,11": [
-       115,
-       205,
-       90
-      ],
-      "12,11": [
-       246,
-       189,
-       115
-      ],
-      "0,12": [
-       246,
-       189,
-       115
-      ],
-      "12,12": [
-       246,
-       189,
-       115
-      ],
-      "0,13": [
-       246,
-       189,
-       115
-      ],
-      "3,13": [
-       115,
-       205,
-       90
-      ],
-      "4,13": [
-       115,
-       205,
-       90
-      ],
-      "8,13": [
-       115,
-       205,
-       90
-      ],
-      "9,13": [
-       115,
-       205,
-       90
-      ],
-      "12,13": [
-       246,
-       189,
-       115
-      ],
-      "0,14": [
-       246,
-       189,
-       115
-      ],
-      "3,14": [
-       115,
-       205,
-       90
-      ],
-      "4,14": [
-       115,
-       205,
-       90
-      ],
-      "8,14": [
-       115,
-       205,
-       90
-      ],
-      "9,14": [
-       115,
-       205,
-       90
-      ],
-      "12,14": [
-       246,
-       189,
-       115
-      ],
-      "0,15": [
-       246,
-       189,
-       115
-      ],
-      "12,15": [
-       246,
-       189,
-       115
-      ],
-      "0,16": [
-       246,
-       189,
-       115
-      ],
-      "12,16": [
-       246,
-       189,
-       115
-      ],
-      "0,17": [
-       246,
-       189,
-       115
-      ],
-      "12,17": [
-       246,
-       189,
-       115
-      ],
-      "0,18": [
-       222,
-       189,
-       246
-      ],
-      "12,18": [
-       222,
-       189,
-       246
+    "moves": {
+     "4,4": {
+      "m": "look",
+      "d": "udlr"
+     },
+     "10,6": {
+      "m": "wander",
+      "d": "lr",
+      "r": [
+       2,
+       0
       ]
+     },
+     "12,5": {
+      "m": "face",
+      "d": "d"
+     },
+     "7,2": {
+      "m": "face",
+      "d": "d"
      }
     },
-    "people": [
-     "Gym"
-    ]
-   },
-   "dept": {
-    "theme": "room",
-    "art": [
-     "ccccccccccccc",
-     "ccccccccccccc",
-     "ccmm......ccc",
-     "mmmm......mmm",
-     "mmmm......mmm",
-     "...........mm",
-     ".............",
-     "m............",
-     "...mmmmmmm...",
-     "...m.....m...",
-     "...m..N..m...",
-     "...mmmmmmm...",
-     ".............",
-     "m...........m",
-     "..v.......>..",
-     "ccccccccccccc"
-    ],
-    "exits": {
-     "v": "OUT:11,14",
-     ">": "OUT:15,14"
-    },
-    "buildings": {},
-    "roofs": {
-     "_floor": [
-      220,
-      174,
-      108
-     ],
-     "_wall": [
-      156,
-      139,
-      172
-     ],
-     "_things": {
-      "2,2": [
-       205,
-       172,
-       222
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/10_12.png",
+      "at": [
+       0,
+       0
       ],
-      "3,2": [
-       205,
-       172,
-       222
-      ],
-      "0,3": [
-       246,
-       255,
-       255
-      ],
-      "1,3": [
-       246,
-       255,
-       255
-      ],
-      "2,3": [
-       246,
-       255,
-       255
-      ],
-      "3,3": [
-       246,
-       255,
-       255
-      ],
-      "10,3": [
-       246,
-       255,
-       255
-      ],
-      "11,3": [
-       246,
-       255,
-       255
-      ],
-      "12,3": [
-       246,
-       255,
-       255
-      ],
-      "0,4": [
-       213,
-       205,
-       230
-      ],
-      "1,4": [
-       213,
-       205,
-       230
-      ],
-      "2,4": [
-       213,
-       205,
-       230
-      ],
-      "3,4": [
-       213,
-       205,
-       230
-      ],
-      "10,4": [
-       213,
-       205,
-       230
-      ],
-      "11,4": [
-       213,
-       205,
-       230
-      ],
-      "12,4": [
-       213,
-       205,
-       230
-      ],
-      "11,5": [
-       213,
-       205,
-       230
-      ],
-      "12,5": [
-       213,
-       205,
-       230
-      ],
-      "0,7": [
-       82,
-       82,
-       106
-      ],
-      "3,8": [
-       246,
-       255,
-       255
-      ],
-      "4,8": [
-       246,
-       255,
-       255
-      ],
-      "5,8": [
-       246,
-       255,
-       255
-      ],
-      "6,8": [
-       246,
-       255,
-       255
-      ],
-      "7,8": [
-       246,
-       255,
-       255
-      ],
-      "8,8": [
-       246,
-       255,
-       255
-      ],
-      "9,8": [
-       246,
-       255,
-       255
-      ],
-      "3,9": [
-       246,
-       255,
-       255
-      ],
-      "9,9": [
-       246,
-       255,
-       255
-      ],
-      "3,10": [
-       246,
-       255,
-       255
-      ],
-      "9,10": [
-       246,
-       255,
-       255
-      ],
-      "3,11": [
-       246,
-       255,
-       255
-      ],
-      "4,11": [
-       246,
-       255,
-       255
-      ],
-      "5,11": [
-       246,
-       255,
-       255
-      ],
-      "6,11": [
-       238,
-       213,
-       82
-      ],
-      "7,11": [
-       246,
-       255,
-       255
-      ],
-      "8,11": [
-       246,
-       255,
-       255
-      ],
-      "9,11": [
-       213,
-       205,
-       230
-      ],
-      "0,13": [
-       82,
-       82,
-       106
-      ],
-      "12,13": [
-       82,
-       82,
-       106
+      "size": [
+       15,
+       10
       ]
      }
-    },
-    "people": [
-     "Dept. Store"
     ],
-    "parts": true
-   },
-   "mansion": {
     "theme": "room",
+    "title": "Pokémon Center"
+   },
+   "center_2": {
     "art": [
      "ccccccccccccccc",
-     "mm>mmmmccmmmmmm",
-     ".....mmcc....mm",
-     ".....mmcc....mm",
-     ".......cc......",
-     "mmmmmmmcc......",
-     "mmmmmmmccm....m",
-     "m.m.m..cc......",
-     ".......cc......",
-     "..N....ccm....m",
-     ".mmmm..cc......",
-     ".mmmm..mm......",
-     ".mmmm..mmm....m",
+     "ccccccccccccccc",
+     "cNNcccNcccNccc.",
+     "mmmcmcmmccmmcc.",
      "...............",
      "...............",
-     "mmmmmmmmm.....m",
-     "mmmmmmmmm......",
-     "m..............",
-     "............v..",
+     "c<.............",
+     "...............",
+     "...c.........c.",
      "ccccccccccccccc"
     ],
     "exits": {
-     "v": "OUT:30,11",
-     ">": "OUT:30,4"
+     "<": "ROOM:center"
     },
     "buildings": {},
     "roofs": {
-     "_floor": [
-      100,
-      135,
-      183
-     ],
-     "_wall": [
-      205,
-      205,
-      213
-     ],
-     "_things": {
-      "0,1": [
-       205,
-       205,
-       213
-      ],
-      "1,1": [
-       205,
-       205,
-       213
-      ],
-      "3,1": [
-       205,
-       205,
-       213
-      ],
-      "4,1": [
-       106,
-       172,
-       115
-      ],
-      "5,1": [
-       205,
-       205,
-       213
-      ],
-      "6,1": [
-       238,
-       238,
-       238
-      ],
-      "9,1": [
-       106,
-       172,
-       115
-      ],
-      "10,1": [
-       106,
-       172,
-       115
-      ],
-      "11,1": [
-       205,
-       205,
-       213
-      ],
-      "12,1": [
-       106,
-       172,
-       115
-      ],
-      "13,1": [
-       205,
-       205,
-       213
-      ],
-      "14,1": [
-       238,
-       238,
-       238
-      ],
-      "5,2": [
-       238,
-       238,
-       238
-      ],
-      "6,2": [
-       238,
-       238,
-       238
-      ],
-      "13,2": [
-       238,
-       238,
-       238
-      ],
-      "14,2": [
-       238,
-       238,
-       238
-      ],
-      "5,3": [
-       98,
-       123,
-       180
-      ],
-      "6,3": [
-       148,
-       156,
-       156
-      ],
-      "13,3": [
-       98,
-       123,
-       180
-      ],
-      "14,3": [
-       148,
-       156,
-       156
-      ],
-      "0,5": [
-       205,
-       205,
-       213
-      ],
-      "1,5": [
-       205,
-       205,
-       213
-      ],
-      "2,5": [
-       205,
-       205,
-       213
-      ],
-      "3,5": [
-       255,
-       255,
-       255
-      ],
-      "4,5": [
-       205,
-       205,
-       213
-      ],
-      "5,5": [
-       255,
-       255,
-       255
-      ],
-      "6,5": [
-       255,
-       255,
-       255
-      ],
-      "0,6": [
-       205,
-       205,
-       213
-      ],
-      "1,6": [
-       205,
-       205,
-       213
-      ],
-      "2,6": [
-       205,
-       205,
-       213
-      ],
-      "3,6": [
-       106,
-       172,
-       115
-      ],
-      "4,6": [
-       205,
-       205,
-       213
-      ],
-      "5,6": [
-       106,
-       172,
-       115
-      ],
-      "6,6": [
-       106,
-       172,
-       115
-      ],
-      "9,6": [
-       90,
-       123,
-       180
-      ],
-      "14,6": [
-       115,
-       156,
-       197
-      ],
-      "0,7": [
-       90,
-       123,
-       180
-      ],
-      "2,7": [
-       90,
-       123,
-       180
-      ],
-      "4,7": [
-       90,
-       123,
-       180
-      ],
-      "9,9": [
-       90,
-       123,
-       180
-      ],
-      "14,9": [
-       115,
-       156,
-       197
-      ],
-      "1,10": [
-       222,
-       205,
-       106
-      ],
-      "2,10": [
-       82,
-       82,
-       106
-      ],
-      "3,10": [
-       82,
-       82,
-       106
-      ],
-      "4,10": [
-       222,
-       205,
-       106
-      ],
-      "1,11": [
-       222,
-       205,
-       106
-      ],
-      "2,11": [
-       222,
-       205,
-       106
-      ],
-      "3,11": [
-       222,
-       205,
-       106
-      ],
-      "4,11": [
-       222,
-       205,
-       106
-      ],
-      "7,11": [
-       255,
-       255,
-       255
-      ],
-      "8,11": [
-       180,
-       180,
-       164
-      ],
-      "1,12": [
-       123,
-       123,
-       123
-      ],
-      "2,12": [
-       123,
-       123,
-       123
-      ],
-      "3,12": [
-       123,
-       123,
-       123
-      ],
-      "4,12": [
-       123,
-       123,
-       123
-      ],
-      "7,12": [
-       180,
-       180,
-       164
-      ],
-      "8,12": [
-       180,
-       180,
-       164
-      ],
-      "9,12": [
-       90,
-       123,
-       180
-      ],
-      "14,12": [
-       115,
-       156,
-       197
-      ],
-      "0,15": [
-       205,
-       205,
-       213
-      ],
-      "1,15": [
-       205,
-       205,
-       213
-      ],
-      "2,15": [
-       255,
-       255,
-       255
-      ],
-      "3,15": [
-       255,
-       255,
-       255
-      ],
-      "4,15": [
-       205,
-       205,
-       213
-      ],
-      "5,15": [
-       205,
-       205,
-       213
-      ],
-      "6,15": [
-       205,
-       205,
-       213
-      ],
-      "7,15": [
-       205,
-       205,
-       213
-      ],
-      "8,15": [
-       205,
-       205,
-       213
-      ],
-      "14,15": [
-       115,
-       156,
-       197
-      ],
-      "0,16": [
-       205,
-       205,
-       213
-      ],
-      "1,16": [
-       205,
-       205,
-       213
-      ],
-      "2,16": [
-       255,
-       255,
-       255
-      ],
-      "3,16": [
-       255,
-       255,
-       255
-      ],
-      "4,16": [
-       205,
-       205,
-       213
-      ],
-      "5,16": [
-       205,
-       205,
-       213
-      ],
-      "6,16": [
-       205,
-       205,
-       213
-      ],
-      "7,16": [
-       205,
-       205,
-       213
-      ],
-      "8,16": [
-       180,
-       180,
-       164
-      ],
-      "0,17": [
-       90,
-       123,
-       180
+     "_picture": {
+      "f": "fr_ground/10_13.png",
+      "at": [
+       0,
+       0
       ]
-     }
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
     },
     "people": [
-     "Celadon Mansion"
+     {
+      "text": "Mystery Gift lady",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Mystery Gifts arrive here now and then. There's nothing for you today, I'm afraid."
+       ]
+      }
+     },
+     {
+      "text": "Link attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I'm sorry, the Union Room is closed for now."
+       ]
+      }
+     },
+     {
+      "text": "Trade attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Trade Center is closed for maintenance. Please come back another time!"
+       ]
+      }
+     },
+     {
+      "text": "Colosseum attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Colosseum is closed for now. Sorry about that!"
+       ]
+      }
+     }
     ],
-    "parts": true
+    "moves": {
+     "2,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "6,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "10,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "1,2": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/10_13.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       15,
+       10
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Pokémon Center 2F"
    },
    "prize": {
-    "theme": "room",
     "art": [
      "ccccccccc",
-     "ccccccccc",
-     "m.N.N.N.m",
-     "mmmmmmmmm",
+     "mcccccccm",
+     "mcNcNcNcm",
+     "cmmmmmmmc",
      ".........",
      ".........",
-     "mm.....mm",
-     ".........",
+     "ccN....cc",
+     "......N..",
      "....v....",
-     "ccccccccc"
+     "cccvcvccc"
     ],
     "exits": {
      "v": "OUT:39,20"
     },
     "buildings": {},
     "roofs": {
-     "_floor": [
-      206,
-      155,
-      27
-     ],
-     "_wall": [
-      168,
-      200,
-      240
-     ],
-     "_things": {
-      "0,2": [
-       160,
-       248,
-       176
-      ],
-      "8,2": [
-       160,
-       248,
-       176
-      ],
-      "0,3": [
-       160,
-       248,
-       176
-      ],
-      "1,3": [
-       160,
-       248,
-       176
-      ],
-      "2,3": [
-       160,
-       248,
-       176
-      ],
-      "3,3": [
-       160,
-       248,
-       176
-      ],
-      "4,3": [
-       160,
-       248,
-       176
-      ],
-      "5,3": [
-       160,
-       248,
-       176
-      ],
-      "6,3": [
-       160,
-       248,
-       176
-      ],
-      "7,3": [
-       160,
-       248,
-       176
-      ],
-      "8,3": [
-       160,
-       248,
-       176
-      ],
-      "0,6": [
-       82,
-       82,
-       106
-      ],
-      "1,6": [
-       82,
-       82,
-       106
-      ],
-      "7,6": [
-       82,
-       82,
-       106
-      ],
-      "8,6": [
-       82,
-       82,
-       106
-      ]
-     },
-     "_fittings": [
-      {
-       "kind": "emblem",
-       "rect": [
-        3.5,
-        0.45,
-        2,
-        1.1
-       ]
-      },
-      {
-       "kind": "case_top",
-       "rect": [
-        1,
-        0.6,
-        2,
-        0.95
-       ]
-      },
-      {
-       "kind": "case",
-       "rect": [
-        1,
-        1.5,
-        2,
-        0.95
-       ]
-      },
-      {
-       "kind": "case_top",
-       "rect": [
-        6,
-        0.6,
-        2,
-        0.95
-       ]
-      },
-      {
-       "kind": "case",
-       "rect": [
-        6,
-        1.5,
-        2,
-        0.95
-       ]
-      },
-      {
-       "kind": "window",
-       "rect": [
-        2,
-        3,
-        1,
-        1
-       ]
-      },
-      {
-       "kind": "window",
-       "rect": [
-        4,
-        3,
-        1,
-        1
-       ]
-      },
-      {
-       "kind": "window",
-       "rect": [
-        6,
-        3,
-        1,
-        1
-       ]
-      },
-      {
-       "kind": "case",
-       "rect": [
-        0,
-        6.25,
-        2,
-        1.2
-       ]
-      },
-      {
-       "kind": "case",
-       "rect": [
-        7,
-        6.25,
-        2,
-        1.2
-       ]
-      }
-     ]
-    },
-    "overheads": [
-     {
-      "kind": "case_top",
-      "rect": [
+     "_picture": {
+      "f": "fr_ground/10_15.png",
+      "at": [
        0,
-       5.1,
-       2,
-       1.2
+       0
       ]
      },
-     {
-      "kind": "case_top",
-      "rect": [
-       7,
-       5.1,
-       2,
-       1.2
-      ]
-     }
-    ],
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
     "people": [
      {
-      "text": "Clerk",
+      "text": "Clerk ",
       "action": "EVENT",
-      "door": "inside",
       "event": {
        "lines": [
-        "Clerk: Prizes are at the middle window."
+        "We exchange your coins for prizes."
        ]
       }
      },
@@ -16170,28 +15821,421 @@
      {
       "text": "Clerk",
       "action": "EVENT",
-      "door": "inside",
       "event": {
        "lines": [
-        "Clerk: Prizes are at the middle window."
+        "We exchange your coins for prizes."
+       ]
+      }
+     },
+     {
+      "text": "Man",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I sure do fancy that Porygon! But it's hard to win at the slots!"
+       ]
+      }
+     },
+     {
+      "text": "Gambler",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Gahaha! I raked it in today! If only every day were like this!"
        ]
       }
      }
-    ]
+    ],
+    "moves": {
+     "2,6": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     },
+     "6,7": {
+      "m": "look",
+      "d": "udlr"
+     },
+     "6,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "2,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "4,2": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/10_15.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       9,
+       10
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Prize Corner"
+   },
+   "gym": {
+    "art": [
+     "ccccccccccccc",
+     "ccccccccccccc",
+     "c...........c",
+     "c..ccccccc..c",
+     "cc.ccNNN.c.cc",
+     "c..2.....c..c",
+     "c.Nc.....2..c",
+     "c..c....NcN.c",
+     "c..ccc2ccc..c",
+     "c..cc...cc..c",
+     "c........N.cc",
+     "cc.N........c",
+     "c...........c",
+     "c..cc...cc..c",
+     "c..cc...cc..c",
+     "c...........c",
+     "c...!...!...c",
+     "c...........c",
+     "c....vvv....c",
+     "ccccccccccccc"
+    ],
+    "exits": {
+     "v": "OUT:11,30"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/10_16.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Beauty Lori",
+      "action": "EVENT",
+      "_look": "fr_29.png",
+      "event": {
+       "lines": [
+        "Beauty Lori: When I yawn, Erika gets sleepy too. And then she dozes off..."
+       ],
+       "flag": "gym_trainer_CELADON_CITY_4",
+       "battle": {
+        "name": "Beauty Lori",
+        "class": "BEAUTY",
+        "sprite": "beauty.png",
+        "team": [
+         102
+        ],
+        "levels": null,
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Beauty Lori: Oh, you're strong!"
+         ]
+        }
+       },
+       "done": [
+        "Beauty Lori: Grass types make you drowsy, don't they?"
+       ]
+      }
+     },
+     "Gym",
+     {
+      "text": "Lass Lisa",
+      "action": "EVENT",
+      "_look": "fr_22.png",
+      "event": {
+       "lines": [
+        "Lass Lisa: Pleased to meet you. My hobby is Pokémon training."
+       ],
+       "flag": "gym_trainer_CELADON_CITY_5",
+       "battle": {
+        "name": "Lass Lisa",
+        "class": "LASS",
+        "sprite": "lass.png",
+        "team": [
+         43,
+         44
+        ],
+        "levels": null,
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Lass Lisa: Oh! Splendid!"
+         ]
+        }
+       },
+       "done": [
+        "Lass Lisa: I have a blind date coming up. I'd better rest."
+       ]
+      }
+     },
+     {
+      "text": "Beauty Tamia",
+      "action": "EVENT",
+      "_look": "fr_29.png",
+      "event": {
+       "lines": [
+        "Beauty Tamia: Welcome to Celadon Gym! Don't underestimate girl power!"
+       ],
+       "flag": "gym_trainer_CELADON_CITY_3",
+       "battle": {
+        "name": "Beauty Tamia",
+        "class": "BEAUTY",
+        "sprite": "beauty.png",
+        "team": [
+         69,
+         69
+        ],
+        "levels": null,
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Beauty Tamia: Oh! Beaten!"
+         ]
+        }
+       },
+       "done": [
+        "Beauty Tamia: I didn't bring my best Pokémon. Wait till next time!"
+       ]
+      }
+     },
+     {
+      "text": "Cooltrainer Mary",
+      "action": "EVENT",
+      "_look": "fr_42.png",
+      "event": {
+       "lines": [
+        "Cooltrainer Mary: I'm going to beat you with my flowers!"
+       ],
+       "flag": "gym_trainer_CELADON_CITY_6",
+       "battle": {
+        "name": "Cooltrainer Mary",
+        "class": "COOLTRAINER",
+        "sprite": "acetrainer_f.png",
+        "team": [
+         69,
+         43,
+         70,
+         44,
+         2
+        ],
+        "levels": null,
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Cooltrainer Mary: You're too tough!"
+         ]
+        }
+       },
+       "done": [
+        "Cooltrainer Mary: Erika is the Nature-Loving Princess. Her Pokémon are beautiful!"
+       ]
+      }
+     },
+     {
+      "text": "Picnicker Tina",
+      "action": "EVENT",
+      "_look": "fr_40.png",
+      "event": {
+       "lines": [
+        "Picnicker Tina: Oh! A challenger! I won't go easy on you!"
+       ],
+       "flag": "gym_trainer_CELADON_CITY_2",
+       "battle": {
+        "name": "Picnicker Tina",
+        "class": "PICNICKER",
+        "sprite": "picnicker.png",
+        "team": [
+         1,
+         2
+        ],
+        "levels": null,
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Picnicker Tina: I'm in shock!"
+         ]
+        }
+       },
+       "done": [
+        "Picnicker Tina: Erika's the leader. We're all her students."
+       ]
+      }
+     },
+     {
+      "text": "Beauty Bridget",
+      "action": "EVENT",
+      "_look": "fr_29.png",
+      "event": {
+       "lines": [
+        "Beauty Bridget: Hey! You're not allowed in here!"
+       ],
+       "flag": "gym_trainer_CELADON_CITY_1",
+       "battle": {
+        "name": "Beauty Bridget",
+        "class": "BEAUTY",
+        "sprite": "beauty.png",
+        "team": [
+         43,
+         69
+        ],
+        "levels": null,
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Beauty Bridget: I give up!"
+         ]
+        }
+       },
+       "done": [
+        "Beauty Bridget: Erika's gentle, but her Pokémon aren't."
+       ]
+      }
+     },
+     {
+      "text": "Lass Kay",
+      "action": "EVENT",
+      "_look": "fr_22.png",
+      "event": {
+       "lines": [
+        "Lass Kay: Look, look! See my grass Pokémon? They're so easy to raise!"
+       ],
+       "flag": "gym_trainer_CELADON_CITY_0",
+       "battle": {
+        "name": "Lass Kay",
+        "class": "LASS",
+        "sprite": "lass.png",
+        "team": [
+         69,
+         70
+        ],
+        "levels": null,
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Lass Kay: No way!"
+         ]
+        }
+       },
+       "done": [
+        "Lass Kay: Erika's Pokémon are all Grass types. Bring fire!"
+       ]
+      }
+     }
+    ],
+    "signs": [
+     [
+      "CELADON GYM",
+      "Leader: Erika"
+     ],
+     [
+      "CELADON GYM",
+      "Leader: Erika"
+     ]
+    ],
+    "moves": {
+     "6,4": {
+      "m": "face",
+      "d": "d"
+     },
+     "3,11": {
+      "m": "face",
+      "d": "r",
+      "s": 3
+     },
+     "9,10": {
+      "m": "face",
+      "d": "l",
+      "s": 3
+     },
+     "10,7": {
+      "m": "face",
+      "d": "d",
+      "s": 2
+     },
+     "2,6": {
+      "m": "face",
+      "d": "d",
+      "s": 4
+     },
+     "5,4": {
+      "m": "face",
+      "d": "d",
+      "s": 3
+     },
+     "7,4": {
+      "m": "face",
+      "d": "d",
+      "s": 2
+     },
+     "8,7": {
+      "m": "face",
+      "d": "l",
+      "s": 2
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/10_16.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       13,
+       20
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Celadon Gym"
    },
    "restaurant": {
-    "theme": "room",
     "art": [
      "ccccccccccccccc",
      "ccccccccccccccc",
-     ".N........mmmmm",
-     ".mm.......m....",
-     ".mm......NmN...",
-     "..........m....",
-     "..........m....",
-     ".mmN......m.N..",
-     ".mm.......mmmmm",
-     "......v........",
+     ".N........mcccc",
+     ".cc.......mcccc",
+     ".cc......Nccccc",
+     "..........mcccc",
+     "..........mcccc",
+     ".ccN......mcNcc",
+     ".cc.......cmmmm",
+     ".....vvv.......",
      "ccccccccccccccc"
     ],
     "exits": {
@@ -16199,333 +16243,103 @@
     },
     "buildings": {},
     "roofs": {
-     "_floor": [
-      202,
-      198,
-      147
-     ],
-     "_wall": [
-      213,
-      213,
-      164
-     ],
-     "_things": {
-      "10,2": [
-       189,
-       230,
-       255
-      ],
-      "11,2": [
-       224,
-       228,
-       236
-      ],
-      "12,2": [
-       224,
-       228,
-       236
-      ],
-      "13,2": [
-       236,
-       212,
-       120
-      ],
-      "14,2": [
-       236,
-       212,
-       120
-      ],
-      "1,3": [
-       205,
-       172,
-       115
-      ],
-      "2,3": [
-       205,
-       172,
-       115
-      ],
-      "10,3": [
-       189,
-       230,
-       255
-      ],
-      "1,4": [
-       205,
-       172,
-       115
-      ],
-      "2,4": [
-       205,
-       172,
-       115
-      ],
-      "10,4": [
-       131,
-       131,
-       139
-      ],
-      "10,5": [
-       189,
-       230,
-       255
-      ],
-      "10,6": [
-       189,
-       230,
-       255
-      ],
-      "1,7": [
-       205,
-       172,
-       115
-      ],
-      "2,7": [
-       131,
-       131,
-       139
-      ],
-      "10,7": [
-       189,
-       230,
-       255
-      ],
-      "1,8": [
-       205,
-       172,
-       115
-      ],
-      "2,8": [
-       205,
-       172,
-       115
-      ],
-      "10,8": [
-       189,
-       230,
-       255
-      ],
-      "11,8": [
-       189,
-       230,
-       255
-      ],
-      "12,8": [
-       189,
-       230,
-       255
-      ],
-      "13,8": [
-       189,
-       230,
-       255
-      ],
-      "14,8": [
-       189,
-       230,
-       255
+     "_picture": {
+      "f": "fr_ground/10_17.png",
+      "at": [
+       0,
+       0
       ]
      },
-     "_kinds": {
-      "11,2": "sink",
-      "12,2": "sink",
-      "13,2": "shelf",
-      "14,2": "shelf",
-      "10,2": "table",
-      "1,3": "table",
-      "2,3": "table",
-      "10,3": "table",
-      "1,4": "table",
-      "2,4": "table",
-      "10,4": "table",
-      "10,5": "table",
-      "10,6": "table",
-      "1,7": "table",
-      "2,7": "table",
-      "10,7": "table",
-      "1,8": "table",
-      "2,8": "table",
-      "10,8": "table",
-      "11,8": "table",
-      "12,8": "table",
-      "13,8": "table",
-      "14,8": "table"
-     },
-     "_fittings": [
-      {
-       "kind": "stool",
-       "rect": [
-        2,
-        2,
-        1,
-        1
-       ]
-      },
-      {
-       "kind": "stool",
-       "rect": [
-        3,
-        3,
-        1,
-        1
-       ]
-      },
-      {
-       "kind": "stool",
-       "rect": [
-        3,
-        4,
-        1,
-        1
-       ]
-      },
-      {
-       "kind": "stool",
-       "rect": [
-        1,
-        6,
-        1,
-        1
-       ]
-      },
-      {
-       "kind": "stool",
-       "rect": [
-        2,
-        6,
-        1,
-        1
-       ]
-      },
-      {
-       "kind": "stool",
-       "rect": [
-        3,
-        8,
-        1,
-        1
-       ]
-      },
-      {
-       "kind": "stool",
-       "rect": [
-        9,
-        2,
-        1,
-        1
-       ]
-      },
-      {
-       "kind": "stool",
-       "rect": [
-        9,
-        3,
-        1,
-        1
-       ]
-      },
-      {
-       "kind": "stool",
-       "rect": [
-        9,
-        5,
-        1,
-        1
-       ]
-      },
-      {
-       "kind": "stool",
-       "rect": [
-        9,
-        6,
-        1,
-        1
-       ]
-      },
-      {
-       "kind": "pane",
-       "rect": [
-        4.1,
-        0.45,
-        1.8,
-        0.9
-       ]
-      },
-      {
-       "kind": "pane",
-       "rect": [
-        7.1,
-        0.45,
-        1.8,
-        0.9
-       ]
-      }
-     ]
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
     },
     "people": [
      {
-      "text": "Gambler",
-      "action": "EVENT",
-      "door": "inside",
-      "event": {
-       "lines": [
-        "Gambler: I lost all my coins at the Game Corner. Lunch will cheer me up."
-       ]
-      }
-     },
-     {
       "text": "Man",
       "action": "EVENT",
-      "door": "inside",
       "event": {
        "lines": [
-        "Man: The food here is worth the wait."
+        "Go ahead, laugh! I'm flat broke! No more slots for me. I'm going straight!"
        ]
       }
      },
      {
-      "text": "Cook",
+      "text": "Girl",
       "action": "EVENT",
-      "door": "inside",
       "event": {
        "lines": [
-        "Cook: Order's up! Mind the hot plate."
+        "Munch... The man at that table lost everything at the slots."
        ]
       }
      },
      {
-      "text": "Man",
+      "text": "Man ",
       "action": "EVENT",
-      "door": "inside",
       "event": {
        "lines": [
-        "Man: Psst. The Game Corner has a secret. Look closely at its poster."
+        "Psst! I hear there's a basement under the Game Corner."
        ]
       }
      },
      {
       "text": "Chef",
       "action": "EVENT",
-      "door": "inside",
       "event": {
        "lines": [
-        "Chef: Welcome! We're busy today, but sit anywhere."
+        "Hi! Sorry, we're on a break right now."
        ]
       }
      }
-    ]
+    ],
+    "moves": {
+     "12,7": {
+      "m": "wander",
+      "d": "lr",
+      "r": [
+       2,
+       0
+      ]
+     },
+     "9,4": {
+      "m": "face",
+      "d": "r"
+     },
+     "1,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "3,7": {
+      "m": "face",
+      "d": "l"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/10_17.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       15,
+       11
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Restaurant"
    },
    "house_e": {
-    "theme": "room",
     "art": [
      "ccccccccccc",
-     "mmmccmccccc",
+     "ccccccccccc",
      ".....N.....",
-     "...======..",
-     "..N==mm==..",
-     "...==mm==..",
-     "...======..",
-     "z...v.....z",
+     "...........",
+     "..N..cc.N..",
+     ".....cc....",
+     "...........",
+     "c..vvv....c",
      "ccccccccccc"
     ],
     "exits": {
@@ -16533,465 +16347,209 @@
     },
     "buildings": {},
     "roofs": {
-     "_floor": [
-      210,
-      188,
-      135
-     ],
-     "_wall": [
-      172,
-      197,
-      180
-     ],
-     "_things": {
-      "0,1": [
-       224,
-       228,
-       236
-      ],
-      "1,1": [
-       224,
-       228,
-       236
-      ],
-      "2,1": [
-       214,
-       110,
-       80
-      ],
-      "5,1": [
-       214,
-       220,
-       228
-      ],
-      "5,4": [
-       213,
-       197,
-       106
-      ],
-      "6,4": [
-       213,
-       197,
-       106
-      ],
-      "5,5": [
-       213,
-       197,
-       106
-      ],
-      "6,5": [
-       213,
-       197,
-       106
+     "_picture": {
+      "f": "fr_ground/10_18.png",
+      "at": [
+       0,
+       0
       ]
      },
-     "_kinds": {
-      "0,1": "sink",
-      "1,1": "sink",
-      "2,1": "shelf",
-      "5,1": "fridge",
-      "5,4": "table",
-      "6,4": "table",
-      "5,5": "table",
-      "6,5": "table"
-     },
-     "_fittings": [
-      {
-       "kind": "stool",
-       "rect": [
-        4,
-        4,
-        1,
-        1
-       ]
-      },
-      {
-       "kind": "stool",
-       "rect": [
-        4,
-        5,
-        1,
-        1
-       ]
-      },
-      {
-       "kind": "stool",
-       "rect": [
-        7,
-        4,
-        1,
-        1
-       ]
-      },
-      {
-       "kind": "stool",
-       "rect": [
-        7,
-        5,
-        1,
-        1
-       ]
-      },
-      {
-       "kind": "pane",
-       "rect": [
-        3.1,
-        0.45,
-        0.8,
-        0.9
-       ]
-      },
-      {
-       "kind": "pane",
-       "rect": [
-        8.1,
-        0.45,
-        0.8,
-        0.9
-       ]
-      },
-      {
-       "kind": "pane",
-       "rect": [
-        9.1,
-        0.45,
-        1.8,
-        0.9
-       ],
-       "colour": [
-        96,
-        176,
-        112
-       ]
-      }
-     ],
-     "_rug": [
-      238,
-      180,
-      115
-     ]
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
     },
     "people": [
      {
-      "text": "Woman",
+      "text": "Old man",
       "action": "EVENT",
-      "door": "inside",
       "event": {
        "lines": [
-        "Woman: Celadon's Department Store has everything. I shop there every day!"
+        "Hehehe! The slots just reel in the money, big-time!"
        ]
       }
      },
      {
-      "text": "Man",
+      "text": "Grunt",
       "action": "EVENT",
-      "door": "inside",
       "event": {
        "lines": [
-        "Man: Don't mind us. We're just... visiting."
+        "Chief! We shipped two thousand more Pokémon as slot prizes again today!"
+       ]
+      }
+     },
+     {
+      "text": "Grunt ",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Don't touch the poster at the Game Corner! There's no secret switch behind it!"
        ]
       }
      }
-    ]
+    ],
+    "moves": {
+     "5,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "2,4": {
+      "m": "wander",
+      "d": "ud",
+      "r": [
+       0,
+       5
+      ]
+     },
+     "8,4": {
+      "m": "wander",
+      "d": "ud",
+      "r": [
+       0,
+       5
+      ]
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/10_18.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       11,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "House"
    },
    "hotel": {
-    "theme": "room",
     "art": [
      "ccccccccccccccccc",
      "ccccccccccccccccc",
-     "cc.......c.......",
-     ".........c...mm..",
-     ".....N...c...mm..",
-     "mmmmmmmmmm.......",
-     "...N.............",
-     ".........N...mm..",
-     ".............mm..",
-     ".z..v..zz.......z",
-     "ccccccccccccccccc"
+     "cccccccccc.......",
+     "cccccccccc...cc..",
+     "cccccNcccc...cc..",
+     "mmmmmmmmcc.......",
+     "..NN.............",
+     ".........N...cc..",
+     ".............cc..",
+     ".c..v..cc.......c",
+     "cccvcvccccccccccc"
     ],
     "exits": {
      "v": "OUT:49,29"
     },
     "buildings": {},
     "roofs": {
-     "_floor": [
-      233,
-      152,
-      135
-     ],
-     "_wall": [
-      197,
-      180,
-      74
-     ],
-     "_things": {
-      "13,3": [
-       213,
-       197,
-       106
-      ],
-      "14,3": [
-       213,
-       197,
-       106
-      ],
-      "13,4": [
-       213,
-       197,
-       106
-      ],
-      "14,4": [
-       213,
-       197,
-       106
-      ],
-      "0,5": [
-       222,
-       213,
-       230
-      ],
-      "1,5": [
-       222,
-       213,
-       230
-      ],
-      "2,5": [
-       222,
-       213,
-       230
-      ],
-      "3,5": [
-       222,
-       213,
-       230
-      ],
-      "4,5": [
-       222,
-       213,
-       230
-      ],
-      "5,5": [
-       222,
-       213,
-       230
-      ],
-      "6,5": [
-       222,
-       213,
-       230
-      ],
-      "7,5": [
-       222,
-       213,
-       230
-      ],
-      "8,5": [
-       222,
-       213,
-       230
-      ],
-      "9,5": [
-       197,
-       180,
-       74
-      ],
-      "13,7": [
-       213,
-       197,
-       106
-      ],
-      "14,7": [
-       213,
-       197,
-       106
-      ],
-      "13,8": [
-       213,
-       197,
-       106
-      ],
-      "14,8": [
-       213,
-       197,
-       106
+     "_picture": {
+      "f": "fr_ground/10_19.png",
+      "at": [
+       0,
+       0
       ]
      },
-     "_stairs": {
-      "0,2": "flight",
-      "1,2": "flight"
-     },
-     "_kinds": {
-      "13,3": "table",
-      "14,3": "table",
-      "13,4": "table",
-      "14,4": "table",
-      "0,5": "table",
-      "1,5": "table",
-      "2,5": "table",
-      "3,5": "table",
-      "4,5": "table",
-      "5,5": "table",
-      "6,5": "table",
-      "7,5": "table",
-      "8,5": "table",
-      "9,5": "table",
-      "13,7": "table",
-      "14,7": "table",
-      "13,8": "table",
-      "14,8": "table"
-     },
-     "_fittings": [
-      {
-       "kind": "stool",
-       "rect": [
-        12,
-        3,
-        1,
-        1
-       ]
-      },
-      {
-       "kind": "stool",
-       "rect": [
-        12,
-        4,
-        1,
-        1
-       ]
-      },
-      {
-       "kind": "stool",
-       "rect": [
-        15,
-        3,
-        1,
-        1
-       ]
-      },
-      {
-       "kind": "stool",
-       "rect": [
-        15,
-        4,
-        1,
-        1
-       ]
-      },
-      {
-       "kind": "stool",
-       "rect": [
-        12,
-        7,
-        1,
-        1
-       ]
-      },
-      {
-       "kind": "stool",
-       "rect": [
-        12,
-        8,
-        1,
-        1
-       ]
-      },
-      {
-       "kind": "stool",
-       "rect": [
-        15,
-        7,
-        1,
-        1
-       ]
-      },
-      {
-       "kind": "stool",
-       "rect": [
-        15,
-        8,
-        1,
-        1
-       ]
-      },
-      {
-       "kind": "pane",
-       "rect": [
-        2.1,
-        0.45,
-        0.8,
-        0.9
-       ]
-      },
-      {
-       "kind": "pane",
-       "rect": [
-        7.1,
-        0.45,
-        0.8,
-        0.9
-       ]
-      },
-      {
-       "kind": "pane",
-       "rect": [
-        12.1,
-        0.45,
-        2.8,
-        0.9
-       ]
-      }
-     ]
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
     },
     "people": [
      {
       "text": "Receptionist",
       "action": "EVENT",
-      "door": "inside",
       "event": {
        "lines": [
-        "Receptionist: Welcome to the Celadon Hotel! Sorry, we're all booked up tonight."
+        "Pokémon? No, this is a hotel for people. We're all booked up, sorry."
+       ]
+      }
+     },
+     {
+      "text": "Boy",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Yippee! I'm on vacation! My big sister brought me along!"
        ]
       }
      },
      {
       "text": "Woman",
       "action": "EVENT",
-      "door": "inside",
       "event": {
        "lines": [
-        "Woman: I'm on holiday. The Game Corner is such fun!"
+        "I'm on vacation with my brother and my boyfriend. Celadon is so pretty!"
        ]
       }
      },
      {
       "text": "Man",
       "action": "EVENT",
-      "door": "inside",
       "event": {
        "lines": [
-        "Man: My brother runs the Bike Shop in Cerulean City."
+        "Why... why did she have to bring her brother?"
        ]
       }
      }
-    ]
+    ],
+    "moves": {
+     "5,4": {
+      "m": "face",
+      "d": "d"
+     },
+     "3,6": {
+      "m": "look",
+      "d": "udlr"
+     },
+     "9,7": {
+      "m": "wander",
+      "d": "lr",
+      "r": [
+       1,
+       0
+      ]
+     },
+     "2,6": {
+      "m": "face",
+      "d": "r"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/10_19.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       17,
+       11
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Celadon Hotel"
    }
   },
-  "inside": {
-   "48,11": "center",
-   "11,30": "gym",
-   "11,14": "dept",
-   "15,14": "dept",
-   "30,11": "mansion",
-   "30,4": "mansion",
-   "39,20": "prize",
-   "37,29": "restaurant",
-   "41,29": "house_e",
-   "49,29": "hotel"
-  },
   "surf": true,
-  "locked": {
-   "diner": "Celadon Diner: every table is taken today. Smells good, though!"
-  }
+  "hidden": {
+   "55,20": "PP_UP"
+  },
+  "overheads": [
+   {
+    "kind": "picture",
+    "f": "fr_top/3_6.png",
+    "at": [
+     0,
+     0
+    ],
+    "size": [
+     60,
+     40
+    ]
+   }
+  ]
  },
  "KANTO_ROUTE_12": {
   "art": [
