@@ -201,6 +201,34 @@ def spots(story, day=None):
     return out
 
 
+# Each Mirage spot hides one more item, a new one each day (ORAS's daily slot; Bulbapedia "Mirage spot"): picked once a day.
+DAILY_ITEMS = {
+    "cave": [("RED_SHARD", 50), ("BLUE_SHARD", 30), ("DEEP_SEA_TOOTH", 20)],
+    "forest": [("TINY_MUSHROOM", 50), ("BIG_MUSHROOM", 30), ("RAZOR_CLAW", 20)],
+    "island": [("PEARL", 50), ("BIG_PEARL", 30), ("RAZOR_FANG", 20)],
+    "mountain": [("YELLOW_SHARD", 50), ("GREEN_SHARD", 30), ("DEEP_SEA_SCALE", 20)],
+    "crescent": [("HEART_SCALE", 40), ("DEEP_SEA_TOOTH", 20), ("RAZOR_CLAW", 10), ("DEEP_SEA_SCALE", 10), ("RAZOR_FANG", 20)],
+}
+
+
+def daily_item(story, kind, day=None):
+    """Today's hidden item at a kind of Mirage spot: the same all day (each save its own), by ORAS's odds."""
+    day = day or datetime.date.today()
+    seed = sum(ord(c) for c in str(getattr(story, "player_name", "") or ""))
+    rng = random.Random(day.toordinal() * 31 + seed)
+    items, weights = zip(*DAILY_ITEMS[kind])
+    return rng.choices(items, weights)[0]
+
+
+def new_day_item(story, day=None):
+    """Landing on a Mirage spot: its hidden item is there again if you haven't taken one today (the flag its option
+    waits for: "mirage_daily_ready")."""
+    today = (day or datetime.date.today()).toordinal()
+    if story.story_flags.get("mirage_daily_day") != today:
+        story.story_flags["mirage_daily_day"] = today
+        story.story_flags["mirage_daily_ready"] = True
+
+
 NO_SHOW = 0.2   # how often a Mirage spot's ring stays quiet (one visit in five)
 
 
@@ -232,7 +260,8 @@ def roll_visit(story, spot, rng=random):
 
 
 def nearest_town(game, gx, gy):
-    """(area key, name) of the Hoenn town nearest a ground point: where you land."""
+    """(area key, name) of the Hoenn town you've been to nearest a ground point: where you land (ORAS: only places
+    you've visited; none yet, then the nearest of all)."""
     pts = ((game.assets.__dict__.get("_soar_pts")) or None)
     if pts is None:
         import json
@@ -243,8 +272,10 @@ def nearest_town(game, gx, gy):
         except (OSError, ValueError):
             pts = {}
         game.assets.__dict__["_soar_pts"] = pts
+    flags = game.story_manager.story_flags
+    been = {k: v for k, v in pts.items() if flags.get(f"visited_{k}")} or pts
     best = None
-    for key, pt in pts.items():
+    for key, pt in been.items():
         x, y = ground_xy(pt)
         d = (x - gx) ** 2 + (y - gy) ** 2
         if best is None or d < best[0]:

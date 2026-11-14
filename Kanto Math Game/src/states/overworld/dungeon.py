@@ -876,7 +876,8 @@ class DungeonState(OverworldBattles, PlayState):
             left = item.get("action") != "BOSS" and any(
                 not story.is_trainer_defeated(self.area_key, i)
                 and (zone is None or self._floor_of(t, None) in (None, zone)) for i, t in enumerate(pool))
-            rematch = item.get("action") == "BOSS" and flags.get(f"legend_rematch_{self._boss_flag_for(item)}")
+            from src.states.battle import legend_back
+            rematch = item.get("action") == "BOSS" and legend_back(flags, self._boss_flag_for(item))
             cond = item.get("condition")
             if isinstance(cond, list):  # (on the map there are no rounds to play first: it's there when the story says so,
                 cond = [c for c in cond if c != "can_exit"]  # not after two wild battles: the Cave of Origin's Primal)
@@ -1390,8 +1391,15 @@ class DungeonState(OverworldBattles, PlayState):
             if keep is not None:
                 story.story_flags[flag] = keep
 
-    def _wild_for_pool(self, rng):
+    def _wild_for_pool(self, rng, kind=None):
+        """kind "smash": the area's Rock Smash Pokemon; on a sea tile (core.CURRENT_TILE) its surfing Pokemon (Jordan,
+        11-14: the games' own pools, "rock_smash_pool_percentages" / "surf_pool_percentages"), else its usual pool."""
         area = self.area_data
+        own_kind = {"smash": "rock_smash_pool_percentages", "surf": "surf_pool_percentages"}.get(
+            kind or ("surf" if core.CURRENT_TILE in (core.SURF, core.WATER) else None))
+        if own_kind and area.get(own_kind) and self.game.loader.area_data.get(area[own_kind]):
+            area = {k: v for k, v in dict(area, wild_pool_percentages=area[own_kind]).items()
+                    if k not in ("zone_pools", "day_pool_percentages", "night_pool_percentages")}
         layout = self.recipe.get("layout") if isinstance(getattr(self, "recipe", None), dict) else None
         own = layout[core.CURRENT_FLOOR].get("pool") if layout and core.CURRENT_FLOOR < len(layout) else None
         if own:  # (this floor's own Pokemon: the seabed's)
@@ -2571,7 +2579,8 @@ class DungeonState(OverworldBattles, PlayState):
                 del f.decor[t]
                 f.tiles[t[1]][t[0]] = core.FLOOR  # (you hop across them on the Bicycle: the Jagged Pass's round stones)
                 self.__dict__.setdefault("_stones", set()).add(t)
-            elif str(what).startswith("crack:") and self.game.story_manager.inventory.get("HM_ROCK_SMASH", 0) > 0:
+            elif str(what).startswith("crack:") and self.game.story_manager.inventory.get("HM_ROCK_SMASH", 0) > 0 \
+                    and not (self.run.recipe.get("art") or {}).get("smash_wild"):   # (Soaring's Mirage spots: broken one at a time)
                 del f.decor[t]
                 f.tiles[t[1]][t[0]] = core.FLOOR  # (your Pokemon breaks it)
             elif str(what).startswith("climb:") and self.game.story_manager.inventory.get("HM_ROCK_CLIMB", 0) > 0:
@@ -2657,6 +2666,28 @@ class DungeonState(OverworldBattles, PlayState):
             self.game.change_state(SlidePuzzleState(self.game, done))
         self.say(["A huge boulder is in the way.", "Use Strength to push it? Slide the numbers into order!"], then=go)
 
+    SMASH_WILD = 0.4   # (how often a broken rock hides a wild Pokemon: ORAS's Rock Smash, the area's own Pokemon)
+
+    def _smash(self, t):
+        """Your Pokemon breaks a cracked rock (Soaring's Mirage spots, map "smash_wild"); a wild Pokemon may jump out."""
+        f = self.run.floor
+        f.decor.pop(t, None)
+        f.tiles[t[1]][t[0]] = core.FLOOR
+        self.__dict__.setdefault("_smashed", {}).setdefault(self.run.index, set()).add(t)
+        self._floor_surf = None
+        rng = random.Random()
+        if rng.random() >= self.SMASH_WILD:
+            self.say(["Your Pokemon used Rock Smash!", "The rock crumbled away."])
+            return
+        mon = self._wild_for_pool(rng, "smash")
+        if mon is None:
+            self.say(["Your Pokemon used Rock Smash!", "The rock crumbled away."])
+            return
+        mover = core.Mover("wild", t[0], t[1], payload=mon)
+        f.movers.append(mover)
+        self.say(["Your Pokemon used Rock Smash!", f"A wild {getattr(mon, 'display_name', 'Pokemon')} jumped out!"],
+                 then=lambda: self._meet_wild(mover))
+
     def _read_sign(self):
         """The sign (or door) you face on one of our own maps: read it out (or go in)."""
         f = self.run.floor
@@ -2687,6 +2718,9 @@ class DungeonState(OverworldBattles, PlayState):
             self.say(["Round stones, in a row.", "On a Bicycle, you could hop across them!"])
             return True
         if what.startswith("crack:"):
+            if m.get("smash_wild") and self.game.story_manager.inventory.get("HM_ROCK_SMASH", 0) > 0:
+                self._smash(t)
+                return True
             self.say(["A cracked rock is in the way.", "A Pokemon that knows Rock Smash could break it."])
             return True
         if what.startswith("falls:"):
@@ -2896,7 +2930,10 @@ class DungeonState(OverworldBattles, PlayState):
             flags = self.game.story_manager.story_flags
             if any(c == "x" for row in grid for c in row):  # (a whirlpool cleared is open sea)
                 grid = ["".join("o" if c == "x" and flags.get(self._boulder_flag((i, j))) else c for i, c in enumerate(row)) for j, row in enumerate(grid)]
-            if self.game.story_manager.inventory.get("HM_ROCK_SMASH", 0) > 0 and any("0" in row for row in grid):  # (cracked rocks, broken)
+            if m.get("smash_wild"):  # (rocks broken one at a time, a wild Pokemon behind some: Soaring's Mirage spots)
+                gone = self.__dict__.get("_smashed", {}).get(self.run.index, set())
+                grid = ["".join("." if c == "0" and (i, j) in gone else c for i, c in enumerate(row)) for j, row in enumerate(grid)]
+            elif self.game.story_manager.inventory.get("HM_ROCK_SMASH", 0) > 0 and any("0" in row for row in grid):  # (cracked rocks, broken)
                 grid = [row.replace("0", ".") for row in grid]
             if self.game.story_manager.inventory.get("HM_CUT", 0) > 0 and any("2" in row for row in grid):  # (small trees, cut down)
                 grid = [row.replace("2", ".") for row in grid]

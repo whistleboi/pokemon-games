@@ -77733,7 +77733,7 @@
       "Aarune: They aren't ready yet, though! Until they are, take this. It's Secret Power!"
      ],
      "gift_item": {
-      "TM112": 1
+      "HTM94": 1
      },
      "flag": "got_tm112_aarune",
      "done": [
@@ -80769,8 +80769,8 @@
    "_buildings_in_picture": true
   },
   "people": [
-   "TM103 ROCK POLISH",
-   "TM102 FLAME CHARGE",
+   "TM69 ROCK POLISH",
+   "TM43 FLAME CHARGE",
    {
     "text": "Lookout grunt",
     "action": "EVENT",
@@ -80935,7 +80935,7 @@
       "Black Belt: You don't? Then take this, and feel the Swords Dance!"
      ],
      "gift_item": {
-      "TM101": 1
+      "HTM75": 1
      },
      "flag": "got_tm_swords_dance",
      "done": [
@@ -86036,20 +86036,20 @@
       "text": "Attack TM clerk",
       "action": "SHOP",
       "stock": [
-       "TM109",
-       "TM110",
-       "TM111",
-       "TM08"
+       "HTM38",
+       "HTM25",
+       "HTM14",
+       "HTM15"
       ]
      },
      {
       "text": "Defence TM clerk",
       "action": "SHOP",
       "stock": [
-       "TM25",
-       "TM19",
-       "TM18",
-       "TM17"
+       "HTM17",
+       "HTM20",
+       "HTM33",
+       "HTM16"
       ]
      }
     ],
@@ -87561,7 +87561,7 @@
         "Sleepy man: Huh? I'm not awake yet... Here, take this."
        ],
        "gift_item": {
-        "TM21": 1
+        "HTM44": 1
        },
        "flag": "got_tm21_lilycove",
        "done": [
@@ -88985,7 +88985,7 @@
      "_buildings_in_picture": true
     },
     "people": [
-     "TM38 WILL-O-WISP"
+     "TM61 WILL-O-WISP"
     ],
     "trainer_spots": [
      "Hex Maniac Leah"
@@ -89658,7 +89658,7 @@
      "_buildings_in_picture": true
     },
     "people": [
-     "TM105 SHADOW BALL",
+     "TM30 SHADOW BALL",
      "MEDICHAMITE"
     ],
     "links": {
@@ -89712,12 +89712,12 @@
    "6F"
   ],
   "figure_floors": {
-   "TM38 WILL-O-WISP": 0,
+   "TM61 WILL-O-WISP": 0,
    "BANETTITE": 1,
    "TALK TO THE ELDERS": 1,
    "SEA INCENSE": 4,
    "MEDICHAMITE": 7,
-   "TM105 SHADOW BALL": 7,
+   "TM30 SHADOW BALL": 7,
    "THE BLACK FOG": 7,
    "Hex Maniac Leah": 3,
    "Admin Courtney": 1,
@@ -89784,7 +89784,7 @@
       "Grass lover: No Grass-type Pokémon? Come back when you have one!"
      ],
      "gift_item": {
-      "TM28": 1
+      "HTM104": 1
      },
      "flag": "got_tm28_123",
      "done": [
@@ -98684,7 +98684,7 @@
         "Old man: For thirty years I've trained here in Sootopolis. I made a TM that shatters walls. Take it!"
        ],
        "gift_item": {
-        "TM43": 1
+        "HTM31": 1
        },
        "flag": "got_tm43_sootopolis",
        "done": [
@@ -101841,7 +101841,7 @@
      "_buildings_in_picture": true
     },
     "people": [
-     "TM107 SCALD"
+     "TM55 SCALD"
     ],
     "links": {
      "11,21": [
@@ -102052,7 +102052,7 @@
      "_buildings_in_picture": true
     },
     "people": [
-     "TM106 EARTHQUAKE",
+     "TM26 EARTHQUAKE",
      {
       "text": "Grunt",
       "action": "EVENT",
@@ -102886,7 +102886,7 @@
        }
       }
      },
-     "TM108 FROST BREATH"
+     "TM79 FROST BREATH"
     ],
     "links": {
      "3,12": [
@@ -103059,7 +103059,7 @@
      "_buildings_in_picture": true
     },
     "people": [
-     "TM35 HAIL",
+     "TM07 HAIL",
      "GLALITITE",
      "NEVER-MELT ICE"
     ],
@@ -103400,8 +103400,8 @@
   "figure_floors": {
    "RARE CANDY": 0,
    "ICE HEAL": 1,
-   "TM108 FROST BREATH": 2,
-   "TM35 HAIL": 4,
+   "TM79 FROST BREATH": 2,
+   "TM07 HAIL": 4,
    "NEVER-MELT ICE": 4,
    "GLALITITE": 4,
    "SLOWBRONITE": 6,
@@ -104609,7 +104609,7 @@
   },
   "people": [
    "CALCIUM",
-   "TM11 SOLAR BEAM",
+   "TM22 SOLAR BEAM",
    {
     "text": "Tired hiker",
     "action": "EVENT",
@@ -106834,7 +106834,7 @@
      "BIG NUGGET    ",
      "BIG NUGGET     ",
      "BIG NUGGET      ",
-     "TM115 ICE BEAM",
+     "TM13 ICE BEAM",
      "BIG NUGGET       ",
      "NUGGET ",
      "NUGGET   ",
@@ -107046,7 +107046,7 @@
     "people": [
      "LUXURY BALL",
      "SCANNER",
-     "TM33 RAIN DANCE",
+     "TM18 RAIN DANCE",
      "WATER STONE"
     ],
     "links": {
@@ -107949,7 +107949,7 @@
     },
     "people": [
      "SEEK HEATRAN",
-     "TM34 SUNNY DAY",
+     "TM11 SUNNY DAY",
      "CHARIZARDITE Y"
     ],
     "moves": {
@@ -242108,7 +242108,7 @@
    "~~~s...fs~~~~~~~~~~~~~~~",
    "~~~s...s~~~~~~~~~~~~~~~~",
    "~~s..f.s~~~~~~~~~~~~~~~~",
-   "~~s....s~~~~~~~~~~~~~~~~",
+   "~~s.N..s~~~~~~~~~~~~~~~~",
    "~~~s...s~~~~~~~~~~~~~~~~",
    "~~~s.f..s~~~~~~~~~~~~~~~",
    "~~~~s....ss~~~~~~~~~~~~~",
@@ -242122,6 +242122,7 @@
   "buildings": {},
   "people": [
    "SEEK CRESSELIA",
+   "HIDDEN ITEM",
    "SOAR AWAY"
   ],
   "arrive": {
@@ -242497,15 +242498,15 @@
    "~~~~~ssssssssss~~~~~",
    "~~~ssTTTTTTTTTTss~~~",
    "~~sTTT...TTT.NTTTs~~",
-   "~~sTT....\"\"\"...TTs~~",
+   "~~sTT0...\"\"\"...TTs~~",
    "~sTTN..\"\"\"\"\"\"...TTs~",
    "~sTT..\"\"\"..\"\"\"..TTs~",
    "~sTT.\"\"\"....\"\"..NTs~",
-   "~sTT.\"\"..f...\"\"..Ts~",
+   "~sTT.\"\".Nf...\"\"..Ts~",
    "~sTTN.\"\"....\"\"...Ts~",
    "~sTT..\"\"\"..\"\"\"..TTs~",
    "~sTTT..\"\"\"\"\"\"..NTTs~",
-   "~~sTT..........TTs~~",
+   "~~sTT...0...0..TTs~~",
    "~~sTTTN..T..NTTTTs~~",
    "~~~sTTTT.....TTTs~~~",
    "~~~~ssTT..N..TTs~~~~",
@@ -242519,6 +242520,7 @@
    "FULL RESTORE 2",
    "TM74 3",
    "CALCIUM 4",
+   "HIDDEN ITEM",
    "HYPER POTION 5",
    "MAX REVIVE 6",
    "GREEN SHARD 7",
@@ -242536,7 +242538,8 @@
     10,
     14
    ]
-  ]
+  ],
+  "smash_wild": true
  },
  "HOENN_MIRAGE_CAVE": {
   "floors": [
@@ -242568,14 +242571,14 @@
     "art": [
      "cccccccccccccccccccc",
      "cc.....cccccc....Ncc",
-     "cc..r...cccc..r...cc",
-     "cc.......cc.......cc",
+     "cc..0...cccc..r...cc",
+     "cc..N....cc.......cc",
      "ccc..N..........cccc",
-     "cccc.......r....N.cc",
+     "cccc.......0....N.cc",
      "cc......cccc......cc",
-     "cc.N...cccccc..r..cc",
+     "cc.N...cccccc..0..cc",
      "cc.....ccccc......cc",
-     "ccc..r.........N.ccc",
+     "ccc..0.........N.ccc",
      "cccc.....N.......ccc",
      "cccccc........cccccc",
      "cccccccc.1cccccccccc",
@@ -242584,6 +242587,7 @@
     "exits": {},
     "people": [
      "TM95 2",
+     "HIDDEN ITEM",
      "YELLOW SHARD 3",
      "CARBOS 4",
      "RARE CANDY 6",
@@ -242609,20 +242613,21 @@
     6,
     5
    ]
-  }
+  },
+  "smash_wild": true
  },
  "HOENN_MIRAGE_MOUNTAIN": {
   "art": [
    "~~~~~~~~~~~~~~~~~~~~",
    "~~~~~~sccccccs~~~~~~",
    "~~~~sccc.NN.cccs~~~~",
-   "~~~sccN.......ccs~~~",
+   "~~~sccN.....0.ccs~~~",
    "~~sccc..cccc..cccs~~",
    "~~scc..cc..cc..ccs~~",
    "~scc.N.c....c....cs~",
    "~scc...c.N..c..N.cs~",
    "~scc...cc__cc....cs~",
-   "~scc.............cs~",
+   "~scc.0....N....0.cs~",
    "~sccc____ccc..cccs~~",
    "~~scc.N.......ccs~~~",
    "~~sccc....N..cccs~~~",
@@ -242641,6 +242646,7 @@
    "RED SHARD 4",
    "RARE CANDY 5",
    "FULL RESTORE 6",
+   "HIDDEN ITEM",
    "BLUE SHARD 7",
    "MAX REVIVE 8",
    "SOAR AWAY"
@@ -242656,7 +242662,8 @@
     9,
     14
    ]
-  ]
+  ],
+  "smash_wild": true
  },
  "HOENN_MIRAGE_ISLANDS": {
   "art": [
@@ -242665,15 +242672,15 @@
    "~~~~~ss..........ss~~~",
    "~~~~s...N.N.N.N.N..s~~",
    "~~~s...............s~~",
-   "~~s...r..\"\"\"\"..r...s~~",
+   "~~s...0..\"\"\"\"..r...s~~",
    "~~s.N..\"\"\"\"\"\"\".....s~~",
    "~s....\"\"\"\"\"\"\"\"\"\"..N.s~",
    "~s...\"\"\"\"ff\"\"\"\".....s~",
-   "~sN..\"\"\"\"\"\"\"\"\"\"..r..s~",
-   "~s.....\"\"\"\"\"\".......s~",
-   "~~s..r.......f..N..s~~",
+   "~sN..\"\"\"\"\"\"\"\"\"\".0r..s~",
+   "~s.....\"\"\"\"\"\"..N....s~",
+   "~~s..0.......f..N..s~~",
    "~~s.f....N.........s~~",
-   "~~~s.........r....s~~~",
+   "~~~s.........0....s~~~",
    "~~~~s...N........s~~~~",
    "~~~~~ss...N....ss~~~~~",
    "~~~~~~~sssssss~~~~~~~~",
@@ -242690,6 +242697,7 @@
    "BIG PEARL 2",
    "STAR PIECE 3",
    "TM91 5",
+   "HIDDEN ITEM",
    "TM90 6",
    "RARE CANDY 7",
    "TM66 8",
@@ -242710,6 +242718,7 @@
   "ring": [
    12,
    3
-  ]
+  ],
+  "smash_wild": true
  }
 }

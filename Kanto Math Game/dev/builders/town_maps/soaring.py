@@ -290,16 +290,18 @@ EON = "SOAR AWAY"   # (your Eon, waiting: its figure is drawn as the one that ca
 # ORAS's places for each kind of daily Mirage spot, in src/world/soaring.DAILY's order, and the item each hides
 # (Bulbapedia's tables; the PP items are left out: this game has no PP).
 MIRAGE_ITEMS = {
-    "island": [None, "BIG_PEARL", "STAR_PIECE", None, "TM91", "TM90", "RARE_CANDY", "TM66"],
-    "forest": [None, "FULL_RESTORE", "TM74", "CALCIUM", "HYPER_POTION", "MAX_REVIVE", "GREEN_SHARD", "IRON"],
-    "cave": [None, "TM95", "YELLOW_SHARD", "CARBOS", None, "RARE_CANDY", "FULL_HEAL", "BIG_PEARL"],
-    "mountain": ["PROTEIN", "TM84", "ZINC", "RED_SHARD", "RARE_CANDY", "FULL_RESTORE", "BLUE_SHARD", "MAX_REVIVE"],
+    "island": [None, "BIG_PEARL", "STAR_PIECE", None, "HTM91", "HTM90", "RARE_CANDY", "HTM66"],
+    "forest": [None, "FULL_RESTORE", "HTM74", "CALCIUM", "HYPER_POTION", "MAX_REVIVE", "GREEN_SHARD", "IRON"],
+    "cave": [None, "HTM95", "YELLOW_SHARD", "CARBOS", None, "RARE_CANDY", "FULL_HEAL", "BIG_PEARL"],
+    "mountain": ["PROTEIN", "HTM84", "ZINC", "RED_SHARD", "RARE_CANDY", "FULL_RESTORE", "BLUE_SHARD", "MAX_REVIVE"],
 }
 
 
 def item_text(kind, i):
     """An item option's text on the map ("ZINC" ...; each unique in its area: the place's number after it)."""
-    return f"{MIRAGE_ITEMS[kind][i].replace('_', ' ')} {i + 1}"
+    item = MIRAGE_ITEMS[kind][i]
+    shown = item[1:] if item.startswith("HTM") else item   # (Hoenn's own TMs show as "TM91")
+    return f"{shown.replace('_', ' ')} {i + 1}"
 
 
 def _items(kind):
@@ -380,3 +382,44 @@ for _key, _m in SOARING.items():   # Hoopa's ring floats at the back (dungeon.py
         _legs = [xy for xy, who in zip(_ns, _fl["people"] or []) if str(who).startswith("SEEK ")]
         if _legs:
             _fl["ring"] = list(_legs[len(_legs) // 2])
+
+
+# ORAS's extras on the Mirage spots (Jordan, 11-14): a hidden item, a new one each day (option "HIDDEN ITEM", its
+# event's "gift_daily"), and cracked rocks your Pokemon breaks one at a time, a wild Pokemon from the place's pool behind
+# some (map "smash_wild": dungeon._smash). Crescent Isle has the item but no rocks (no wild Pokemon there).
+HIDDEN = "HIDDEN ITEM"
+
+
+def _put(rows, x, y, ch, was="."):
+    assert rows[y][x] in was, f"{x},{y} is {rows[y][x]!r}, not {was!r}"
+    return rows[:y] + [rows[y][:x] + ch + rows[y][x + 1:]] + rows[y + 1:]
+
+
+def _add_person(fl, x, y, name):
+    """Stand someone at (x, y), in its place in the people list (reading order of the N's)."""
+    before = sum(r.count("N") for r in fl["art"][:y]) + fl["art"][y][:x].count("N")
+    fl["art"] = _put(fl["art"], x, y, "N")
+    fl["people"] = list(fl["people"])
+    fl["people"].insert(before, name)
+
+
+_EXTRAS = {   # map: (floor, hidden item's tile, rocks' tiles)
+    "HOENN_CRESCENT_ISLE": (None, (4, 9), []),
+    "HOENN_MIRAGE_FOREST": (None, (8, 8), [(8, 12), (12, 12), (5, 4)]),
+    "HOENN_MIRAGE_MOUNTAIN": (None, (10, 9), [(5, 9), (15, 9), (12, 3)]),
+    "HOENN_MIRAGE_CAVE": (1, (4, 3), [(4, 2), (11, 5), (5, 9), (15, 7)]),
+    "HOENN_MIRAGE_ISLANDS": (None, (15, 10), [(6, 5), (16, 9), (13, 13), (5, 11)]),
+}
+for _key, (_fi, _item_at, _rocks) in _EXTRAS.items():
+    _m = SOARING[_key]
+    _fl = _m["floors"][_fi] if _fi is not None else _m
+    for _x, _y in _rocks:
+        _fl["art"] = _put(_fl["art"], _x, _y, "0", ".r")
+    _add_person(_fl, _item_at[0], _item_at[1], HIDDEN)
+    if _rocks:
+        _m["smash_wild"] = True
+    _rows = _m["floors"][0]["art"] if _m.get("floors") else _m["art"]   # (the Eon's spot moved in the list: land beside it again)
+    _people = _m["floors"][0]["people"] if _m.get("floors") else _m["people"]
+    _m["arrive"] = {"HOENN_SOARING_IN_THE_SKY": _arrive(_rows, _people.index(EON))}
+    if not _m.get("floors"):
+        _m["landings"] = [_m["arrive"]["HOENN_SOARING_IN_THE_SKY"]]

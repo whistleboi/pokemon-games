@@ -308,6 +308,7 @@ class SoaringState(PlayState):
     def _land_on(self, spot):
         """Down onto a Mirage spot: which legend is out is settled now, for this visit."""
         line = f"{self.eon_name} landed on {spot['name']}."
+        soaring.new_day_item(self.game.story_manager)
         if spot.get("place"):
             soaring.mark_place(self.game.story_manager, *spot["place"])
         if spot.get("legends"):

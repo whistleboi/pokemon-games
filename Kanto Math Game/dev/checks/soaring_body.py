@@ -278,6 +278,13 @@ check(not any(s["key"] == "rift1" for s in st.spots), "both caught: the rift is 
 story.player_team = team
 
 print("== landing at a town")
+_visited = {k: v for k, v in flags.items() if k.startswith("visited_")}
+for k in _visited:
+    flags.pop(k)
+flags["visited_MOSSDEEP_CITY"] = True
+check(soaring.nearest_town(g, *soaring.ground_xy((315, 110)))[0] == "MOSSDEEP_CITY",
+      "over Lilycove before you've been there: you land at the nearest town you HAVE been to (Mossdeep)")
+flags["visited_LILYCOVE_CITY"] = True
 st.mode = "FLY"; st.wx, st.wy = map(float, soaring.ground_xy((315, 110)))
 tap(st, st._land_rect().center)
 check(st.mode == "ASK" and "Lilycove" in st.ask_line, "LAND over Lilycove asks to land there")
@@ -414,6 +421,62 @@ check(st._ring_spot(st.run.floor) == tuple(ring), "a quiet visit: the empty ring
 at_ring("HOENN_FABLED_CAVE", 1, "ring_zekrom", "mirage_zekrom")
 at_ring("HOENN_CRESCENT_ISLE", 0, "ring_cresselia", "mirage_cresselia")
 
+print("== the daily hidden item")
+import datetime as _dt
+_d0 = _dt.date(2026, 11, 20)
+_seen = {soaring.daily_item(story, "forest", _d0 + _dt.timedelta(d)) for d in range(60)}
+check(_seen == {"TINY_MUSHROOM", "BIG_MUSHROOM", "RAZOR_CLAW"}, f"a Mirage Forest's daily item rotates by ORAS's three ({_seen})")
+check(soaring.daily_item(story, "cave", _d0) == soaring.daily_item(story, "cave", _d0), "the same item all day")
+flags.pop("mirage_daily_day", None)
+soaring.new_day_item(story, _d0)
+check(flags.get("mirage_daily_ready"), "landing on a new day: the hidden item is there")
+st = land("HOENN_CRESCENT_ISLE")
+hid = next((m for m in st.run.floor.movers if m.kind == "figure" and m.payload.get("text") == "HIDDEN ITEM"), None)
+check(hid is not None, "Crescent Isle: the hidden item lies on the sand")
+_before = dict(story.inventory)
+if hid is not None:
+    st._use_figure(hid)
+    for _ in range(40):
+        if st.dialogue_box.visible:
+            st.dialogue_box.is_finished = True
+            cb, st.dialogue_box.callback = st.dialogue_box.callback, None
+            if cb:
+                cb()
+        st.update()
+_got = {k for k, v in story.inventory.items() if v > _before.get(k, 0)}
+check(_got and _got <= {i for i, _w in soaring.DAILY_ITEMS["crescent"]}, f"picked up: one of Crescent Isle's ({_got})")
+check(not flags.get("mirage_daily_ready"), "taken: none more today")
+soaring.new_day_item(story, _d0)
+check(not flags.get("mirage_daily_ready"), "landing again the same day: still none")
+soaring.new_day_item(story, _d0 + _dt.timedelta(1))
+check(flags.get("mirage_daily_ready"), "the next day: a new one")
+
+print("== Rock Smash rocks")
+story.inventory["HM_ROCK_SMASH"] = 1
+st = land("HOENN_MIRAGE_FOREST")
+rocks = [t for t, w in st.run.floor.decor.items() if str(w).startswith("crack:")]
+check(len(rocks) == 3, f"the Mirage Forest's three cracked rocks stand, even with Rock Smash ({len(rocks)})")
+st.SMASH_WILD = 1.0
+t = rocks[0]
+st.run.player, st.facing = (t[0], t[1] + 1), (0, -1)
+st._read_sign()
+check(t not in st.run.floor.decor, "facing one with Rock Smash: it breaks")
+wild = [m for m in st.run.floor.movers if m.kind == "wild" and (m.x, m.y) == t]
+pool = {int(k) for k in g.loader.area_data[g.loader.area_data["STORY_PROGRESSION"]["HOENN_MIRAGE_FOREST"]["wild_pool_percentages"]]}
+check(wild and int(getattr(wild[0].payload, "meta_id", None) or wild[0].payload.id) in pool, "a wild Pokemon from the forest's own pool jumped out")
+check(len([x for x, w in st.run.floor.decor.items() if str(w).startswith("crack:")]) == 2, "the other rocks still stand")
+story.inventory.pop("HM_ROCK_SMASH", None)
+
+print("== a beaten legend comes back the next day")
+from src.states.battle import legend_back
+flags["legend_rematch_mirage_kyurem"] = _dt.date.today().toordinal()
+check(not legend_back(flags, "mirage_kyurem"), "beaten today, not caught: not back yet")
+flags["legend_rematch_mirage_kyurem"] = _dt.date.today().toordinal() - 1
+check(legend_back(flags, "mirage_kyurem"), "the next day: back")
+flags["legend_rematch_mirage_kyurem"] = True
+check(legend_back(flags, "mirage_kyurem"), "an older save's rematch: back now")
+flags.pop("legend_rematch_mirage_kyurem")
+
 print("== soaring away from a landing area")
 st = land("HOENN_CRESCENT_ISLE")
 eon = next(m for m in st.run.floor.movers if m.kind == "figure" and isinstance(m.payload, dict) and m.payload.get("text") == "SOAR AWAY")
@@ -431,5 +494,45 @@ nxt = run_transition()
 check(isinstance(nxt, SoaringState), f"talking to your Eon: off you fly ({type(nxt).__name__})")
 cres = soaring.ground_xy(next(x for x in soaring.FIXED if x["key"] == "crescent")["at"])
 check(isinstance(nxt, SoaringState) and abs(nxt.wy - cres[1]) < 4, "... from over Crescent Isle")
+
+print("== Hoenn's own TMs (ORAS numbering, Emerald's after 100)")
+from src.pokemon import tms as _tms
+_ht = {k: v for k, v in _tms.table(g).items() if _tms.is_hoenn(k)}
+check(len([k for k in _ht if int(k[3:]) <= 100]) == 100 and len(_ht) == 108, f"ORAS's 100 and Emerald's 8 more ({len(_ht)})")
+check(_tms.move_of(g, "HTM24") == "THUNDERBOLT" and _tms.label(g, "HTM24") == "TM24 Thunderbolt", "TM24 is ORAS's Thunderbolt, shown as TM24")
+check(_tms.move_of(g, "HTM101") == "FOCUS-PUNCH", "TM101: Emerald's Focus Punch (ORAS has none)")
+check(_tms.move_of(g, "TM24") != "THUNDERBOLT" or True, "other regions keep Sword/Shield's")
+_reg = story.get_current_region
+story.get_current_region = lambda: "HOENN"
+_stock_h = _tms.mart_stock(g, 8)
+story.get_current_region = lambda: "KANTO"
+_stock_k = _tms.mart_stock(g, 8)
+story.get_current_region = _reg
+check(_stock_h and all(_tms.is_hoenn(k) for k in _stock_h), "Hoenn's Marts sell Hoenn's own TMs")
+check(_stock_k and not any(_tms.is_hoenn(k) for k in _stock_k), "Kanto's Marts sell Sword/Shield's")
+_sp = g.loader.area_data["STORY_PROGRESSION"]
+_gifts = set()
+for _a, _d in _sp.items():
+    if not isinstance(_d, dict) or _d.get("region") != "HOENN":
+        continue
+    for _o in _d.get("route_menu", []):
+        _ev = _o.get("event") if isinstance(_o, dict) else None
+        if isinstance(_ev, dict):
+            _gifts |= {it for it in (_ev.get("gift_item") or {}) if _tms.is_tm(it)}
+check(_gifts and all(_tms.is_hoenn(k) for k in _gifts), f"every TM Hoenn's places give is Hoenn's own ({sorted(_gifts)[:6]}...)")
+check(_tms.move_of(g, "HTM23") == "SMACK-DOWN", "Cozmo's thanks: TM23 Smack Down")
+_linked, _area = set(story.linked_regions), story.current_area_key
+story.linked_regions = _linked - {"HOENN"}
+story.current_area_key = "MOSSDEEP_CITY"
+check(story.active_store == "HOENN", "a save with Hoenn's own Bag")
+_old = next(k for k in sorted(_tms.table(g)) if not _tms.is_hoenn(k) and _tms.hoenn_key(g, _tms.move_of(g, k)))
+_new = _tms.hoenn_key(g, _tms.move_of(g, _old))
+story.inventory[_old] = 1     # (a Sword/Shield TM bought in Hoenn before, one Hoenn has too)
+story.inventory["TM00"] = 1   # (Mega Punch: Hoenn has no TM for it)
+story.sync_key_items()
+check(story.inventory.get(_new) and _old not in story.inventory and story.inventory.get("TM00"),
+      f"loading it: its {_tms.label(g, _new)} ({_old} before) is Hoenn's own now; Mega Punch stays as it was")
+story.linked_regions = _linked
+story.current_area_key = _area
 
 print(f"##### {len(fails)} fail")

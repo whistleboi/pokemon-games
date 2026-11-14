@@ -1306,11 +1306,11 @@
     "FALLARBOR_TOWN:I'll walk, thanks": {
       "sheet": "@rival"
     },
-    "HOENN_JAGGED_PASS:TM103 ROCK POLISH": {
-      "item": "TM103"
+    "HOENN_JAGGED_PASS:TM69 ROCK POLISH": {
+      "item": "HTM69"
     },
-    "HOENN_JAGGED_PASS:TM102 FLAME CHARGE": {
-      "item": "TM102"
+    "HOENN_JAGGED_PASS:TM43 FLAME CHARGE": {
+      "item": "HTM43"
     },
     "HOENN_JAGGED_PASS:Lookout grunt": {
       "sheet": "@grunt"
@@ -1438,14 +1438,14 @@
     "HOENN_ROUTE_123:Grass lover": {
       "sheet": "em_14.png"
     },
-    "HOENN_MT_PYRE:TM38 WILL-O-WISP": {
-      "item": "TM38"
+    "HOENN_MT_PYRE:TM61 WILL-O-WISP": {
+      "item": "HTM61"
     },
     "HOENN_MT_PYRE:SEA INCENSE": {
       "item": "SEA_INCENSE"
     },
-    "HOENN_MT_PYRE:TM105 SHADOW BALL": {
-      "item": "TM105"
+    "HOENN_MT_PYRE:TM30 SHADOW BALL": {
+      "item": "HTM30"
     },
     "HOENN_MT_PYRE:Orb keeper": {
       "sheet": "em_22.png"
@@ -1927,8 +1927,8 @@
     "HOENN_SAFARI_ZONE:ULTRA BALL": {
       "item": "ULTRA_BALL"
     },
-    "HOENN_SAFARI_ZONE:TM11 SOLAR BEAM": {
-      "item": "TM11"
+    "HOENN_SAFARI_ZONE:TM22 SOLAR BEAM": {
+      "item": "HTM22"
     },
     "HOENN_SAFARI_ZONE:Tired hiker": {
       "sheet": "em_19.png"
@@ -2158,8 +2158,8 @@
     "HOENN_SHOAL_CAVE:TM27 ICY WIND": {
       "item": "TM27"
     },
-    "HOENN_SHOAL_CAVE:TM35 HAIL": {
-      "item": "TM35"
+    "HOENN_SHOAL_CAVE:TM07 HAIL": {
+      "item": "HTM07"
     },
     "HOENN_SHOAL_CAVE:NEVER-MELT ICE": {
       "item": "NEVER_MELT_ICE"
@@ -2167,11 +2167,11 @@
     "HOENN_SEAFLOOR_CAVERN:Lookout grunt": {
       "sheet": "@grunt"
     },
-    "HOENN_SEAFLOOR_CAVERN:TM107 SCALD": {
-      "item": "TM107"
+    "HOENN_SEAFLOOR_CAVERN:TM55 SCALD": {
+      "item": "HTM55"
     },
-    "HOENN_SEAFLOOR_CAVERN:TM106 EARTHQUAKE": {
-      "item": "TM106"
+    "HOENN_SEAFLOOR_CAVERN:TM26 EARTHQUAKE": {
+      "item": "HTM26"
     },
     "HOENN_SEAFLOOR_CAVERN:Grunt": {
       "sheet": "@grunt"
@@ -2182,8 +2182,8 @@
     "LILYCOVE_CITY:Vitamin clerk": {
       "sheet": "em_24.png"
     },
-    "HOENN_SHOAL_CAVE:TM108 FROST BREATH": {
-      "item": "TM108"
+    "HOENN_SHOAL_CAVE:TM79 FROST BREATH": {
+      "item": "HTM79"
     },
     "HOENN_SAFARI_ZONE:CALCIUM": {
       "item": "CALCIUM"
@@ -2662,8 +2662,8 @@
     "HOENN_ABANDONED_SHIP:Treasure hunter": {
       "sheet": "em_31.png"
     },
-    "HOENN_ABANDONED_SHIP:TM115 ICE BEAM": {
-      "item": "TM115"
+    "HOENN_ABANDONED_SHIP:TM13 ICE BEAM": {
+      "item": "HTM13"
     },
     "HOENN_ABANDONED_SHIP:LUXURY BALL": {
       "item": "LUXURY_BALL"
@@ -2671,8 +2671,8 @@
     "HOENN_ABANDONED_SHIP:SCANNER": {
       "item": "SCANNER"
     },
-    "HOENN_ABANDONED_SHIP:TM33 RAIN DANCE": {
-      "item": "TM33"
+    "HOENN_ABANDONED_SHIP:TM18 RAIN DANCE": {
+      "item": "HTM18"
     },
     "HOENN_ABANDONED_SHIP:WATER STONE": {
       "item": "WATER_STONE"
@@ -3094,8 +3094,8 @@
     "HOENN_MIRAGE_TOWER:CLAW FOSSIL": {
       "item": "CLAW_FOSSIL"
     },
-    "HOENN_SCORCHED_SLAB:TM34 SUNNY DAY": {
-      "item": "TM34"
+    "HOENN_SCORCHED_SLAB:TM11 SUNNY DAY": {
+      "item": "HTM11"
     },
     "LILYCOVE_CITY:Ferry clerk": {
       "sheet": "em_21.png"
@@ -3185,16 +3185,31 @@
       "item": "STAR_PIECE"
     },
     "HOENN_MIRAGE_ISLANDS:TM91 5": {
-      "item": "TM91"
+      "item": "HTM91"
     },
     "HOENN_MIRAGE_ISLANDS:TM90 6": {
-      "item": "TM90"
+      "item": "HTM90"
     },
     "HOENN_MIRAGE_ISLANDS:RARE CANDY 7": {
       "item": "RARE_CANDY"
     },
     "HOENN_MIRAGE_ISLANDS:TM66 8": {
-      "item": "TM66"
+      "item": "HTM66"
+    },
+    "HOENN_CRESCENT_ISLE:HIDDEN ITEM": {
+      "item": "POKE_BALL"
+    },
+    "HOENN_MIRAGE_FOREST:HIDDEN ITEM": {
+      "item": "POKE_BALL"
+    },
+    "HOENN_MIRAGE_MOUNTAIN:HIDDEN ITEM": {
+      "item": "POKE_BALL"
+    },
+    "HOENN_MIRAGE_CAVE:HIDDEN ITEM": {
+      "item": "POKE_BALL"
+    },
+    "HOENN_MIRAGE_ISLANDS:HIDDEN ITEM": {
+      "item": "POKE_BALL"
     },
     "HOENN_CRESCENT_ISLE:SOAR AWAY": {
       "pokemon": "eon"
@@ -3227,7 +3242,7 @@
       "item": "FULL_RESTORE"
     },
     "HOENN_MIRAGE_FOREST:TM74 3": {
-      "item": "TM74"
+      "item": "HTM74"
     },
     "HOENN_MIRAGE_FOREST:CALCIUM 4": {
       "item": "CALCIUM"
@@ -3245,7 +3260,7 @@
       "item": "IRON"
     },
     "HOENN_MIRAGE_CAVE:TM95 2": {
-      "item": "TM95"
+      "item": "HTM95"
     },
     "HOENN_MIRAGE_CAVE:YELLOW SHARD 3": {
       "item": "YELLOW_SHARD"
@@ -3266,7 +3281,7 @@
       "item": "PROTEIN"
     },
     "HOENN_MIRAGE_MOUNTAIN:TM84 2": {
-      "item": "TM84"
+      "item": "HTM84"
     },
     "HOENN_MIRAGE_MOUNTAIN:ZINC 3": {
       "item": "ZINC"

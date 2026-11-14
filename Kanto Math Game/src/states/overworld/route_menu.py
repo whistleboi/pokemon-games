@@ -267,7 +267,8 @@ class RouteMenu:
                 valid_options.append(item)
                 continue
 
-            if action == "BOSS" and flags.get(f"legend_rematch_{self._boss_flag_for(item)}"):
+            from src.states.battle import legend_back
+            if action == "BOSS" and legend_back(flags, self._boss_flag_for(item)):
                 valid_options.append(item)  # a beaten legendary that got away: rematch until caught
                 continue
 

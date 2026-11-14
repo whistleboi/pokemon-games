@@ -25,6 +25,7 @@ import random
 from collections import deque
 
 CURRENT_FLOOR = 0  # the floor being made or walked right now (a floor's own wild pool: the seabed's)
+CURRENT_TILE = None  # the tile a new wild Pokemon will stand on (out on the sea: the area's surfing Pokemon)
 ENTRANCE_COUNT = 0  # how many tiles the way out you left by had (0: unknown): a wide edge maps place for place
 ENTRANCE_SPREAD = False  # the count is of buildings, not door tiles (out of one of Route 2's two gatehouses into Viridian Forest, whose gates are three tiles wide): the same way along
 ENTRANCE_INDEX = 0  # which of several ways in from the same place you came by (Route 41's four Whirl Islands caves)
@@ -602,7 +603,12 @@ class Run:
                           far_from=self.player if far else floor.start, min_dist=self.RESPAWN_FAR if far else 5)
         if spot is None:
             return None
-        payload = self.make_wild(self.rng, spot) if self._wild_at else self.make_wild(self.rng)
+        global CURRENT_TILE
+        CURRENT_TILE = floor.tile(*spot)
+        try:
+            payload = self.make_wild(self.rng, spot) if self._wild_at else self.make_wild(self.rng)
+        finally:
+            CURRENT_TILE = None
         if payload is None:
             return None
         m = Mover("wild", spot[0], spot[1], payload)

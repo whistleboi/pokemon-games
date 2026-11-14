@@ -1193,6 +1193,13 @@ class StoryManager:
         hms.give_for_badges(self)  # HMs from badges already won
         from src.world import soaring
         soaring.give_flute(self)  # the Eon Flute, for a save that met its Eon before the flute was in the game
+        if getattr(self, "active_store", None) == "HOENN" and getattr(self, "game", None) is not None:
+            from src.pokemon import tms   # (Hoenn's own TMs, 11-14: a Hoenn Bag's Sword/Shield TMs with a Hoenn number become Hoenn's)
+            for item in [k for k, q in self.inventory.items() if q and tms.is_tm(k) and not tms.is_hoenn(k)]:
+                new = tms.hoenn_key(self.game, tms.move_of(self.game, item))
+                if new:
+                    self.inventory[new] = max(self.inventory.get(new, 0), 1)
+                    del self.inventory[item]
         for item, qty in list(self.inventory.items()):  # an HM is never used up: one of each
             if str(item).startswith("HM_") and qty > 1:
                 self.inventory[item] = 1
