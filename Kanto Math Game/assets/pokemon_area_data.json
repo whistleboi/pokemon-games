@@ -160,23 +160,45 @@
         "condition": { "badges_min": 2, "visited_not": "VERMILLION_CITY" }
       },
       {
+        "id": "k_bill", "type": "MAIN", "text": "Bill's Sea Cottage", "target": "BILLS_HOUSE",
+        "desc": "North of Cerulean City, cross Nugget Bridge (Route 24): five trainers wait on it, and {rival_name} too. Then follow Route 25 east to Bill's Sea Cottage at the very end. Bill, the man who made the PC Storage System, needs your help, and he'll give you a ticket for the S.S. Anne.",
+        "condition": {"visited": "CERULEAN_CITY", "flag_not": "got_ss_ticket_bill"}, "completed_flag": "got_ss_ticket_bill"
+      },
+      {
         "id": "m6", "type": "MAIN", "text": "The Thunder Badge", "desc": "Challenge Lt. Surge at the Vermilion City Gym. His Electric-type Pokémon are lightning fast!",
         "condition": { "visited": "VERMILLION_CITY", "badges_less": 3 }
+      },
+      {
+        "id": "k_ssanne", "type": "MAIN", "text": "The S.S. Anne", "target": "KANTO_SS_ANNE",
+        "desc": "A small tree blocks the way to Vermilion's Gym, and only Cut can clear it. The S.S. Anne is docked at the harbour at the south end of town: show your S.S. Ticket and go aboard. The Captain's cabin is at the back of the ship, up on 2F. He's seasick! Help him out and he'll give you HM Cut. Teach it to a Pokémon from the Bag, and hurry: the ship sails once you leave.",
+        "condition": {"visited": "VERMILLION_CITY", "flag": "got_ss_ticket_bill", "item_not": "HM_CUT"}, "completed_flag": "got_hm_cut_kanto", "steps": [{"room": "captain", "at": [5, 4], "label": "Captain", "done": "got_hm_cut_kanto"}]
       },
       {
         "id": "m7", "type": "MAIN", "text": "The Dark Tunnel", "desc": "Travel north from Vermilion back to Cerulean, then head east through Route 9 and Route 10 to brave the Rock Tunnel.",
         "condition": { "badges_min": 3, "visited_not": "LAVENDER_TOWN" }
       },
       {
-        "id": "m8", "type": "MAIN", "text": "Spirit of Lavender", "desc": "A restless spirit haunts the Pokémon Tower. You'll need a Silph Scope to see it. Team Rocket in Celadon might have one...",
+        "id": "m8", "type": "MAIN", "text": "Spirit of Lavender", "desc": "A restless spirit haunts the Pokémon Tower. You'll need a Silph Scope to see it. Team Rocket in Celadon might have one... With the Silph Scope, climb the Tower: the ghost blocks the stairs on 6F, and Mr. Fuji is held on 7F. Once he's free, visit him at his house in Lavender Town.",
         "condition": { "visited": "LAVENDER_TOWN", "item_not": "POKE_FLUTE" },
-        "targets": [["ROCKET_HIDEOUT", "has_item:SILPH_SCOPE"]], "target": "KANTO_POKEMON_TOWER"
+        "targets": [["ROCKET_HIDEOUT", "has_item:SILPH_SCOPE"], ["KANTO_POKEMON_TOWER", "fuji_rescued"]], "target": "LAVENDER_TOWN",
+        "steps": [{"area": "KANTO_POKEMON_TOWER", "floor": 5, "at": [11, 15], "label": "Ghost", "done": "tower_ghost_defeated"},
+                  {"area": "KANTO_POKEMON_TOWER", "floor": 6, "at": [11, 4], "label": "Mr. Fuji", "done": "fuji_rescued"}]
       },
       {"id": "k_power", "type": "SIDE", "text": "Lights Out in Lavender", "target": "POWER_PLANT", "desc": "Lavender's Radio Tower has no power! Surf along the channel on Route 10 to the Power Plant and help the manager fix the generator.", "condition": {"visited": "LAVENDER_TOWN", "flag_not": "power_plant_fixed"}},
       {"id": "k_teeth", "type": "SIDE", "text": "The Warden's Teeth", "target": "SAFARI_ZONE", "desc": "The Safari Zone's Warden lost his Gold Teeth and can't talk! Find them in the Safari Zone's west area and take them back to him in Fuchsia City.", "condition": {"flag": "heard_warden_teeth", "flag_not": "got_hm_strength_kanto"}},
       {
         "id": "m9", "type": "MAIN", "text": "The Rainbow Badge", "desc": "Travel west through Route 8 and Route 7 to reach Celadon City. Challenge Erika for the Rainbow Badge!",
         "condition": { "visited": "CELADON_CITY", "badges_less": 4 }
+      },
+      {
+        "id": "k_hideout1", "type": "MAIN", "text": "The Game Corner's Secret", "target": "CELADON_GAME_CORNER",
+        "desc": "Team Rocket is up to something in Celadon's Game Corner. A grunt stands guard by the poster at the back of the room. Beat him, then check the poster: there's a switch behind it, and stairs open in the corner, down to Team Rocket's hideout.",
+        "condition": {"visited": "CELADON_CITY", "badges_min": 3, "flag_not": ["game_corner_poster", "game_corner_cleared"]}, "completed_flag": "game_corner_poster"
+      },
+      {
+        "id": "k_hideout2", "type": "MAIN", "text": "The Rocket Hideout", "target": "ROCKET_HIDEOUT",
+        "desc": "The hideout's floors are a maze of arrow tiles that whisk you along: watch where each one points. Take the stairs all the way down to B4F, beat the grunt there and pick up the Lift Key he drops. The elevator on B1F or B2F then takes you down to the far side of B4F, where Giovanni, Team Rocket's boss, is waiting. Beat him and take the Silph Scope.",
+        "condition": {"flag": "game_corner_poster", "badges_min": 3, "flag_not": "game_corner_cleared"}, "completed_flag": "game_corner_cleared", "steps": [{"floor": 3, "at": [3, 2], "label": "Lift Key", "done": "has_item:LIFT_KEY"}, {"floor": 3, "at": [19, 4], "label": "Giovanni", "done": "hideout_giovanni_defeated"}, {"floor": 3, "at": [20, 5], "label": "Silph Scope", "done": "game_corner_cleared"}]
       },
       {
         "id": "m10", "type": "MAIN", "text": "Journey to Fuchsia", "desc": "Travel south to Fuchsia City. Take the long way through Route 12-15 or the fast way via Cycling Road (Route 16-18)!",
@@ -187,9 +209,14 @@
         "condition": { "visited": "FUCHSIA_CITY", "badges_less": 5 }
       },
       {
+        "id": "k_tea", "type": "MAIN", "text": "A Drink for the Guards", "target": "CELADON_CITY",
+        "desc": "The guards at Saffron City's gates won't let anyone by: they're parched! An old woman in Celadon Mansion, the tall building in the north of Celadon City, will give you some Tea. Bring it to any of Saffron's four gatehouses and the guard will let you through.",
+        "condition": {"badges_min": 5, "item_not": "TEA", "flag_not": "silph_co_cleared"}, "completed_flag": "got_tea"
+      },
+      {
         "id": "s_silph", "type": "MAIN", "text": "Silph Co. Takeover: the Card Key", "target": "SILPH_CITY",
         "desc": "Team Rocket has seized Silph Co., the tall building in the middle of Saffron City, and their grunts block Saffron's Gym until they're driven out. Inside, the Rockets have locked many doors. Don't worry about them yet: take the stairs in the top-right corner of each floor up to 5F. The Card Key that opens every locked door is lying on 5F's floor, in the bottom corridor.",
-        "condition": { "flag": "tower_ghost_defeated", "flag_not": "silph_co_cleared" }, "completed_flag": "got_card_key",
+        "condition": { "flag": "tower_ghost_defeated", "flag_not": "silph_co_cleared", "badges_min": 5, "item": "TEA" }, "completed_flag": "got_card_key",
         "steps": [{ "floor": 4, "at": [22, 21], "label": "Card Key", "done": "got_card_key" }]
       },
       {
@@ -206,7 +233,7 @@
       },
       {
         "id": "m12", "type": "MAIN", "text": "The Marsh Badge", "desc": "Now that Saffron City is accessible, challenge Sabrina at the Saffron Gym for your sixth badge!",
-        "condition": { "badges_min": 5, "badges_less": 6, "flag": "silph_co_cleared" }
+        "condition": { "badges_min": 5, "badges_less": 6, "flag": ["silph_co_cleared", "received_silph_reward"] }
       },
       {
         "id": "m13", "type": "MAIN", "text": "Seafoam and Volcanoes", "desc": "Surf south from Fuchsia through Route 19 and 20. Navigate the Seafoam Islands to reach Cinnabar Island.",

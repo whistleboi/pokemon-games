@@ -1229,6 +1229,8 @@ _ck = story.inventory.pop("CARD_KEY", None)
 _tm0 = story.tracked_mission
 story.story_flags["tower_ghost_defeated"] = True
 story.current_area_key = "SAFFRON_CITY"
+_sb, _tea = list(story.badges.get("KANTO", [])), story.inventory.get("TEA")
+story.badges["KANTO"] = ["BOULDER", "CASCADE", "THUNDER", "RAINBOW", "SOUL"]; story.inventory["TEA"] = 1
 _act = {m["id"]: m for m in story.get_all_journal_entries() if m.get("status") == "ACTIVE"}
 check("s_silph" in _act and "s_silph2" not in _act and "Card Key" in _act["s_silph"]["desc"] and "5F" in _act["s_silph"]["desc"],
       f"Journal: Silph Co.'s first step, the Card Key on 5F ({[k for k in _act if 'silph' in k]})")
@@ -1261,6 +1263,10 @@ story.tracked_mission = "s_silph3"
 si = open_map("SILPH_CITY", "SAFFRON_CITY"); _floor(si, 10); si._guide_key = None; si._step_key = None
 check(si._guide_spot() == ((9, 9), "President"), f"...on 11F the marker is on the President ({si._guide_spot()})")
 story.tracked_mission = _tm0
+story.badges["KANTO"] = _sb
+story.inventory.pop("TEA", None)
+if _tea is not None:
+    story.inventory["TEA"] = _tea
 story.inventory.pop("CARD_KEY", None)
 if _ck is not None:
     story.inventory["CARD_KEY"] = _ck
@@ -1268,6 +1274,104 @@ for _k, _v in _sfs.items():
     story.story_flags.pop(_k, None)
     if _v is not None:
         story.story_flags[_k] = _v
+
+# ---- the Journal through Kanto's main story (Jordan, 11-14: "ensure the journal nicely guides the player"): at each
+# point of FireRed's story, the mission the guide follows and the place it points to
+from src.world import guide as _guide
+_jf = ("got_ss_ticket_bill", "got_hm_cut_kanto", "game_corner_poster", "game_corner_cleared", "hideout_giovanni_defeated",
+       "tower_ghost_defeated", "fuji_rescued", "got_tea", "got_card_key", "silph_co_cleared", "received_silph_reward",
+       "visited_CERULEAN_CITY", "visited_VERMILLION_CITY", "visited_LAVENDER_TOWN", "visited_CELADON_CITY", "visited_FUCHSIA_CITY",
+       "visited_PEWTER_CITY", "visited_SAFFRON_CITY", "received_pokedex_kanto", "received_starter_kanto", "viridian_rocket_defeated")
+_jfs = {k: story.story_flags.pop(k, None) for k in _jf}
+_jinv = {k: story.inventory.pop(k, None) for k in ("SS_TICKET", "HM_CUT", "SILPH_SCOPE", "LIFT_KEY", "POKE_FLUTE", "TEA", "CARD_KEY")}
+_jb, _tm0 = list(story.badges.get("KANTO", [])), story.tracked_mission
+story.tracked_mission = None
+story.current_area_key = "CERULEAN_CITY"
+_BADGES = ["BOULDER", "CASCADE", "THUNDER", "RAINBOW", "SOUL", "MARSH", "VOLCANO", "EARTH"]
+
+
+def _journal(n, flags=(), items=()):
+    story.badges["KANTO"] = _BADGES[:n]
+    for f in flags:
+        story.story_flags[f] = True
+    for it in items:
+        story.inventory[it] = 1
+    m = _guide.tracked_mission(g)
+    return (m or {}).get("id"), _guide.mission_target(g, m) if m else None
+
+
+for _f in ("received_starter_kanto", "received_pokedex_kanto", "viridian_rocket_defeated", "visited_PEWTER_CITY"):
+    story.story_flags[_f] = True
+_steps = [
+    ("Cerulean: over Nugget Bridge to Bill first, as FireRed leads", _journal(1, ["visited_CERULEAN_CITY"]), ("k_bill", "BILLS_HOUSE")),
+    ("the ticket, one badge: Misty", _journal(1, ["got_ss_ticket_bill"], ["SS_TICKET"]), "m4"),
+    ("Misty beaten, the ticket: south to Vermilion", _journal(2), "m5"),
+    ("Vermilion: aboard the S.S. Anne for Cut", _journal(2, ["visited_VERMILLION_CITY"]), ("k_ssanne", "KANTO_SS_ANNE")),
+    ("Cut: Lt. Surge", _journal(2, ["got_hm_cut_kanto"], ["HM_CUT"]), "m6"),
+    ("three badges: the Rock Tunnel to Lavender", _journal(3), "m7"),
+    ("Lavender: the Silph Scope first, in Celadon's hideout", _journal(3, ["visited_LAVENDER_TOWN"]), ("m8", "ROCKET_HIDEOUT")),
+    ("Celadon: the Game Corner's poster", _journal(3, ["visited_CELADON_CITY"]), ("k_hideout1", "CELADON_GAME_CORNER")),
+    ("the stairs open: down into the hideout", _journal(3, ["game_corner_poster"]), ("k_hideout2", "ROCKET_HIDEOUT")),
+    ("the Silph Scope: Erika, while you're in Celadon", _journal(3, ["hideout_giovanni_defeated", "game_corner_cleared"], ["SILPH_SCOPE"]), "m9"),
+    ("four badges: up the Pokémon Tower", _journal(4), ("m8", "KANTO_POKEMON_TOWER")),
+    ("Mr. Fuji saved: to his house in Lavender", _journal(4, ["tower_ghost_defeated", "fuji_rescued"]), ("m8", "LAVENDER_TOWN")),
+    ("the Poké Flute: south to Fuchsia", _journal(4, [], ["POKE_FLUTE"]), "m10"),
+    ("Fuchsia: Koga", _journal(4, ["visited_FUCHSIA_CITY"]), "m11"),
+    ("five badges, no Tea: Celadon Mansion", _journal(5), ("k_tea", "CELADON_CITY")),
+    ("the Tea: Silph Co.", _journal(5, ["got_tea"], ["TEA"]), ("s_silph", "SILPH_CITY")),
+    ("the Card Key: the boardroom", _journal(5, ["got_card_key"], ["CARD_KEY"]), ("s_silph2", "SILPH_CITY")),
+    ("Silph freed: the President", _journal(5, ["silph_co_cleared"]), ("s_silph3", "SILPH_CITY")),
+    ("the Master Ball: Sabrina", _journal(5, ["received_silph_reward"]), "m12"),
+]
+for _what, (_id, _to), _want in _steps:
+    _ok = _id == _want if isinstance(_want, str) else (_id, _to) == _want
+    check(_ok, f"Journal: {_what} ({_id} -> {_to})")
+# ---- the marker inside: the S.S. Anne's Captain, the Hideout's Lift Key, the Tower's ghost
+for _f in ("visited_LAVENDER_TOWN", "visited_CELADON_CITY", "visited_FUCHSIA_CITY", "game_corner_poster", "game_corner_cleared", "got_hm_cut_kanto"):
+    story.story_flags.pop(_f, None)
+story.inventory.pop("HM_CUT", None); story.badges["KANTO"] = _BADGES[:2]
+check(_journal(2)[0] == "k_ssanne", "...the S.S. Anne's step is the one the Journal shows")
+_cut = None
+an = open_map("KANTO_SS_ANNE", "VERMILLION_CITY"); an._guide_key = an._step_key = None
+_gs = an._guide_spot()
+check(_gs is not None and _gs[1].startswith("To "), f"...aboard the S.S. Anne the marker leads toward the Captain ({_gs})")
+_floor(an, an.recipe["art"]["room_floors"]["captain"]); an.run.player = (5, 6); an._guide_key = an._step_key = None
+check(an._guide_spot() == ((5, 4), "Captain"), f"......and in his cabin, onto him ({an._guide_spot()})")
+if _cut is not None:
+    story.story_flags["got_hm_cut_kanto"] = _cut
+_hf = {}
+story.inventory.pop("SILPH_SCOPE", None); story.inventory.pop("POKE_FLUTE", None)
+check(_journal(3, ["got_hm_cut_kanto", "visited_LAVENDER_TOWN", "visited_CELADON_CITY", "game_corner_poster"], ["HM_CUT"])[0] == "k_hideout2", "...the hideout's step is the one the Journal shows")
+_lk = story.inventory.pop("LIFT_KEY", None)
+hq = open_map("ROCKET_HIDEOUT", "CELADON_GAME_CORNER")
+_way = []
+for _i in range(4):
+    _floor(hq, _i); hq._guide_key = hq._step_key = None
+    _way.append(hq._guide_spot())
+check(all(_way) and _way[3][1] == "Lift Key", f"...in the Rocket Hideout the marker leads floor by floor to the Lift Key ({_way})")
+story.inventory["LIFT_KEY"] = 1
+_floor(hq, 0); hq._guide_key = hq._step_key = None
+_gs = hq._guide_spot()
+check(_gs and _gs[1] == "To B4F", f"......with the Lift Key, to the elevator, down to Giovanni ({_gs})")
+story.inventory.pop("LIFT_KEY", None)
+if _lk is not None:
+    story.inventory["LIFT_KEY"] = _lk
+for _k, _v in _hf.items():
+    story.story_flags.pop(_k, None)
+    if _v is not None:
+        story.story_flags[_k] = _v
+story.tracked_mission = _tm0
+story.badges["KANTO"] = _jb
+story.tracked_mission = _tm0
+for _k, _v in _jfs.items():
+    story.story_flags.pop(_k, None)
+    if _v is not None:
+        story.story_flags[_k] = _v
+for _k, _v in _jinv.items():
+    story.inventory.pop(_k, None)
+    if _v is not None:
+        story.inventory[_k] = _v
+
 
 print(f"##### {len(fails)} failures")
 for m in fails:

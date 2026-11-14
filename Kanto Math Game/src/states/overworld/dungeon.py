@@ -3860,9 +3860,12 @@ class DungeonState(OverworldBattles, PlayState):
         story = self.game.story_manager
         step = next((s for s in mission["steps"] if s.get("area", guide.mission_target(self.game, mission)) == self.area_key
                      and not guide._ok(story, s.get("done"))), None)
-        if not step or not 0 <= step["floor"] < self.run.n_floors:
+        fl = step.get("floor") if step else None
+        if step and step.get("room"):  # (a room of the map, walked as a floor of its own: the S.S. Anne's Captain's cabin)
+            fl = ((self.run.recipe.get("art") or {}).get("room_floors") or {}).get(step["room"])
+        if fl is None or not 0 <= fl < self.run.n_floors:
             return None
-        goal = (step["floor"], *step["at"])
+        goal = (fl, *step["at"])
         start = (self.run.index, *self.run.player)
         key = (start, goal, tuple(sorted(k for k, v in story.inventory.items() if v)), len(story.story_flags))
         if getattr(self, "_step_key", None) != key:
@@ -3889,6 +3892,24 @@ class DungeonState(OverworldBattles, PlayState):
             fl = floors[i]
             return fl.inside(x, y) and (x, y) not in bars[i] and (fl.walkable(x, y) or (x, y) in opened[i] or (i, x, y) == goal)
 
+        stops = [{tuple(t) for t in (plans[i].get("stops") or [])} if i < len(plans) and isinstance(plans[i], dict) else set()
+                 for i in range(len(floors))]
+
+        def slide(i, x, y, dx, dy):
+            """Where a step from (x, y) ends: on a spin tile or ice you're carried on (the Rocket Hideout's maze)."""
+            fl, at, seen = floors[i], (x + dx, y + dy), set()
+            cur, ice = getattr(fl, "current", {}) or {}, getattr(fl, "ice", ()) or ()
+            while at not in seen and at not in fl.exits and at not in stops[i]:
+                seen.add(at)
+                d = cur.get(at) or ((dx, dy) if at in ice else None)
+                if not d:
+                    break
+                nxt = (at[0] + d[0], at[1] + d[1])
+                if not ok(i, *nxt):
+                    break
+                at, (dx, dy) = nxt, d
+            return (i, *at)
+
         def beside(i, x, y):
             return [(i, x + dx, y + dy) for dx, dy in core.DIRS if ok(i, x + dx, y + dy)]
 
@@ -3904,17 +3925,20 @@ class DungeonState(OverworldBattles, PlayState):
                     return beside(f2, x2, y2)
             return []
 
-        prev, q = {start: None}, deque([start])
+        prev, q, passed = {start: None}, deque([start]), set()
         while q:
             cur = q.popleft()
             if cur == goal:
                 break
             i, x, y = cur
-            nxt = onward(i, x, y) if cur != start and (x, y) in floors[i].exits else \
-                [(i, x + dx, y + dy) for dx, dy in core.DIRS if ok(i, x + dx, y + dy)]
+            through = cur != start and (x, y) in floors[i].exits   # (stairs or a pad: on through it)
+            nxt = onward(i, x, y) if through else \
+                [slide(i, x, y, dx, dy) for dx, dy in core.DIRS if ok(i, x + dx, y + dy)]
             for n in nxt:
                 if n not in prev:
                     prev[n] = cur
+                    if through:
+                        passed.add(cur)
                     q.append(n)
         if goal not in prev:
             return None
@@ -3924,8 +3948,8 @@ class DungeonState(OverworldBattles, PlayState):
             c = prev[c]
         path.reverse()
         for a, b in zip(path, path[1:]):  # (the first passage on the way: the stairs or pad to take)
-            if a[0] != b[0] or abs(a[1] - b[1]) + abs(a[2] - b[2]) > 1:
-                return ((a[1], a[2]), "To " + self._floor_name(b[0])) if a[0] == self.run.index else None
+            if a in passed and prev.get(b) == a:
+                return ((a[1], a[2]), "To " + self._floor_name(b[0]) if b[0] != a[0] else "Warp") if a[0] == self.run.index else None
         return ((goal[1], goal[2]), label) if goal[0] == self.run.index else None
 
     def _draw_gate(self, screen, r, kind):
