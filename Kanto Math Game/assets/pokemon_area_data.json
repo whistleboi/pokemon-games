@@ -2329,7 +2329,8 @@
         { "sprite": "biker.png", "name": "Ernest", "class": "BIKER", "team": [109, 109, 110, 109, 88], "levels": [25, 25, 25, 25, 25], "rewards": { "balls": 3 } },
         { "sprite": "birdkeeper.png", "name": "Chester", "class": "BIRD_KEEPER", "team": [85, 84, 84], "levels": [28, 28, 28], "rewards": { "balls": 3 } }
       ],
-      "route_menu": [{"text": "GATE GUARD", "action": "EVENT", "event": {"lines": ["Guard: Fuchsia City is west. Don't miss the Safari Zone!"]}}, 
+      "route_menu": [{"text": "TM33", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm33_route15", "event": {"lines": ["A TM, lying in the grass! It's Rain Dance."], "gift_item": {"TM33": 1}, "flag": "got_tm33_route15"}},
+        {"text": "GATE GUARD", "action": "EVENT", "event": {"lines": ["Guard: Fuchsia City is west. Don't miss the Safari Zone!"]}}, 
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },

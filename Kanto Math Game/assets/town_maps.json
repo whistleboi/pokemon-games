@@ -17424,7 +17424,7 @@
    "cccccccc\"\"\"\"cc....ooo~~o",
    "cccccccc\"\"\"\"cc....ooo~~o",
    "cccccccc\"\"\"\"cc..oooo~~oo",
-   "ccccccccccccccvvvvvv~~vv"
+   "ccccccccccccccvvvvvv~~.."
   ],
   "exits": {
    "^": "LAVENDER_TOWN",
@@ -17507,14 +17507,6 @@
    ],
    "19,119": [
     67,
-    0
-   ],
-   "22,119": [
-    70,
-    0
-   ],
-   "23,119": [
-    71,
     0
    ],
    "0,69": [
@@ -17824,26 +17816,26 @@
  },
  "KANTO_ROUTE_13": {
   "art": [
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT^^ooooqq~~",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT,,ooooqq~~",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT,,ooooqq~~",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT,,ooooqq~~",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT,,oooqq~~~",
-   "<...f.f.f.f.....Xddddd...........fk.........2....\"\"\"\"\"\"\"\"\"\".TT,,oooqq~~~",
-   "kkkkkkkkkkkkkkkk.dddddkkkkkkkkk.f.k..!kkkkkk.....\"\"\"\"\"\"\"\"\"\".TTX,oooqq~~~",
-   "<............ddd......k...................XXTTTT.\"\"\"\"\"\"\"\"\"\".TT,,oooqq~~~",
-   "kkkkkkkkkkkkkdXdkkkkkkk..kkkkkkkkkkkkkkkkk..TTTT.\"\"\"\"\"\"\"\"\"\".TT,,ooooqq~~",
-   "<f..f........dddk.f.................k.......TTTTTTTTTTTTTTTTTT,,ooooqq~~",
-   "kkkkkk..kkkkkkkkkf.kkkkkkkkkkkkkk..Xk..kkk..TTTTTTTTTTTTTTTTTT,,ooooqq~~",
-   "<.......k.................dddXk...............,,,,,,,,X,,,,,,,,,ooooqq~~",
-   "kkkkkkkkk..kkkkkkkkkkkkkkkddddk..kkkkkkkk!kk..,,,,,,,,,,,,,,,,,Xoooqq~~~",
-   "k.....................k...dddd................oooooooooooooooooooooqq~~~",
-   "k.kkkkkk.Xkkkkkkkkkkk!k.kkkkkkkkkkkkkkkkkkkkkkoooooooooooooooooooooqq~~~",
-   "TTTTTTTTTTTTTTTTTTTTTTTT~~~~~~~~~~~~~~~~~~~~ooooooooooooooooooqqoooqq~~~",
-   "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~qqooooooqqqqooooooqqqqqqqq~~~~",
-   "~~~~~~~~~~~~qq~~~~~~qq~~~~~~~~~~~~~~qq~~~~~~qqqqqqqqqqqqooqqqq~~qqqq~~~~",
-   "~~~~~~~qq~~~qq~~~~~~qq~~qq~~~~~~~~~~qq~~~~~~qqqqqq~~~~qqqqqq~~~~~~~~~~~~",
-   "~~~~~~~qq~~~~~~~~~~~~~~~qq~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~qq~~~~~~~~~~~~~~"
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc^^^^^^~~cc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc..oooo~~cc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc..oooo~~cc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc..oooo~~cc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc..ooo~~ccc",
+   "<...............X.................c.........2....\"\"\"\"\"\"\"\"\"\".cc..ooo~~ccc",
+   "cccccccccccccccc......ccccccccc...c..!cccccc.....\"\"\"\"\"\"\"\"\"\".ccX.ooo~~ccc",
+   "<.....................c...................XXcccc.\"\"\"\"\"\"\"\"\"\".cc..ooo~~ccc",
+   "ccccccccccccc.X.ccccccc..ccccccccccccccccc..cccc.\"\"\"\"\"\"\"\"\"\".cc..oooo~~cc",
+   "<...............c...................c.......cccccccccccccccccc..oooo~~cc",
+   "cccccc..ccccccccc..cccccccccccccc..Xc..ccc..cccccccccccccccccc..oooo~~cc",
+   "<.......c....................Xc.......................X.........oooo~~cc",
+   "ccccccccc..ccccccccccccccc....c..cccccccc!cc...................Xooo~~ccc",
+   "c.....................c.......................ooooooooooooooooooooo~~ccc",
+   "c.cccccc.Xccccccccccc!c.ccccccccccccccccccccccooooooooooooooooooooo~~ccc",
+   "cccccccccccccccccccccccccccccccccccccccccc~~oooooooooooooooooo~~ooo~~ccc",
+   "cccccccccccccccccccccccccccccccccccccccccc~~oooooo~~~~oooooo~~~~~~~~cccc",
+   "cccccccccccc~~cccccc~~cccccccccccccc~~cccccc~~~~~~~~~~~~oo~~~~cc~~~~cccc",
+   "ccccccc~~ccc~~cccccc~~cc~~cccccccccc~~cccccc~~~~~~cccc~~~~~~cccccccccccc",
+   "ccccccc~~ccccccccccccccc~~cccccccccccccccccccccccccccccc~~cccccccccccccc"
   ],
   "exits": {
    "^": "KANTO_ROUTE_12",
@@ -17851,44 +17843,20 @@
   },
   "buildings": {},
   "roofs": {
-   "_rocks": "big"
+   "_picture": {
+    "f": "fr_ground/3_31.png",
+    "at": [
+     0,
+     0
+    ]
+   },
+   "_signs_in_picture": true,
+   "_buildings_in_picture": true
   },
-  "overheads": [
-   {
-    "kind": "tops",
-    "rect": [
-     44,
-     6,
-     4,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     48,
-     8,
-     1,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     59,
-     8,
-     1,
-     1
-    ],
-    "of": "tree"
-   }
-  ],
   "signs": [
    [
     "TRAINER TIPS",
-    "Use SELECT to switch items in the Bag!"
+    "Use the Bag between battles to switch your Pokémon's held items!"
    ],
    [
     "ROUTE 13",
@@ -17896,7 +17864,7 @@
    ],
    [
     "TRAINER TIPS",
-    "Look, look! Look to the left of that post!"
+    "Look, look! Look to the left of this sign! ...Something's hidden there."
    ]
   ],
   "trainer_spots": [
@@ -17910,109 +17878,210 @@
    "Susie",
    "Sebastian",
    "Robert"
+  ],
+  "edge_to": {
+   "62,0": [
+    14,
+    119
+   ],
+   "63,0": [
+    15,
+    119
+   ],
+   "64,0": [
+    16,
+    119
+   ],
+   "65,0": [
+    17,
+    119
+   ],
+   "66,0": [
+    18,
+    119
+   ],
+   "67,0": [
+    19,
+    119
+   ],
+   "0,5": [
+    23,
+    5
+   ],
+   "0,7": [
+    23,
+    7
+   ],
+   "0,9": [
+    23,
+    9
+   ],
+   "0,11": [
+    23,
+    11
+   ]
+  },
+  "moves": {
+   "16,5": {
+    "m": "face",
+    "d": "r",
+    "s": 3
+   },
+   "62,6": {
+    "m": "wander",
+    "d": "udlr",
+    "r": [
+     1,
+     1
+    ],
+    "s": 1
+   },
+   "42,7": {
+    "m": "face",
+    "d": "d",
+    "s": 3
+   },
+   "43,7": {
+    "m": "face",
+    "d": "d",
+    "s": 3
+   },
+   "14,8": {
+    "m": "look",
+    "d": "udlr",
+    "s": 1
+   },
+   "35,10": {
+    "m": "face",
+    "d": "d",
+    "s": 1
+   },
+   "29,11": {
+    "m": "face",
+    "d": "l",
+    "s": 3
+   },
+   "54,11": {
+    "m": "wander",
+    "d": "udlr",
+    "r": [
+     1,
+     1
+    ],
+    "s": 1
+   },
+   "63,12": {
+    "m": "wander",
+    "d": "udlr",
+    "r": [
+     1,
+     1
+    ],
+    "s": 1
+   },
+   "9,14": {
+    "m": "face",
+    "d": "u",
+    "s": 3
+   }
+  },
+  "hidden": {
+   "23,14": "PP_UP"
+  },
+  "overheads": [
+   {
+    "kind": "picture",
+    "f": "fr_top/3_31.png",
+    "at": [
+     0,
+     0
+    ],
+    "size": [
+     72,
+     20
+    ]
+   }
   ]
  },
  "KANTO_ROUTE_14": {
   "art": [
-   "TTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTk....f.f.f.......>",
-   "TTTTTTkX.kkkkkkkkkkkkkkk",
-   "TTTTTTk................>",
-   "TTTTTTkkkkkkkkkkkk..kkkk",
-   "TTTTTTk.X..............>",
-   "TTTTTTkkk..kkkkkkkkkkkkk",
-   "TTTTTTk................>",
-   "TTTTTTkkkkkkkk...!kkkkkk",
-   "TTTTTTk.f.f...===.......",
-   "TTTTTTkf.fX...===kkkkkkk",
-   "TTTTTTk.f.....===kTTTTTT",
-   "TTTTTTk.......==XkTTTTTT",
-   "TTTTTTkTTTTTT.===kTTTTTT",
-   "TTTTTTkTTTTTT.===kTTTTTT",
-   "TTTTTTk\"\"\"\"\"TT===kTTTTTT",
-   "TTTTTTk\"\"\"\"\"TT===kTTTTTT",
-   "TTTTTTk\"\"\"\"\"TT===kTTTTTT",
-   "TTTTTTk\"\"\"\"\"TT===kTTTTTT",
-   "TTTTTTk\"\"\"\"\"TT===k~~~~~~",
-   "TTTTTTk\"\"\"\"\"TT===k~~~~~~",
-   "TTTTTTk.....TT===k~~~~~~",
-   "TTTTTTk2____TT===k~~~~~~",
-   "TTTTTTk..===TT===k~~~~~~",
-   "TTTTTTk..===TT===k~~~~~~",
-   "TTTTTTk..===TT===k~~~~~~",
-   "TTTTTTk..===TT===k....~~",
-   "TTTTTTkX.===TT===kkkkk~~",
-   "TTTTTTk..===TT===....k~~",
-   "TTTTTTk..===TT===....k~~",
-   "TTTTTTkX.===TT===....k~~",
-   "TTTTTTk..===2.===.X..k~~",
-   "TTTTTTk..===TT===....k~~",
-   "TTTTTTkX.=X=TT===....k~~",
-   "TTTTTTk..===TT===....k~~",
-   "TTTTTTk..===TT===..f.k~~",
-   "TTTTTTk..===TT===.f..k~~",
-   "TTTTTTk..===TT===..f.k~~",
-   "TTTTTTk..===TT===.f..k~~",
-   "TTTTTTk..===TT===..f.k~~",
-   "TTTTTTk..===TT===.f..k~~",
-   "TT==========TT===..f.k~~",
-   "TT==========..===....k~~",
-   "<2==========..===.X..k~~",
-   "<)............===....k~~",
-   "_c..f.f.f.f...===....k~~",
-   "<....f.f.f....===....k~~",
-   "<...........X.===....k~~",
-   "<================....k~~",
-   "<================....k~~",
-   "<================....k~~",
-   "kkkkkkkkkkkkkkkkkkkkkk~~",
-   "TTTTTTTTTTTTTTTTTTTTTT~~",
-   "TTTTTTTTTTTTTTTTTTTTTT~~",
-   "TTTTTTTTTTTTTTTTTTTTTT~~",
-   "TTTTTTTTTTTTTTTTTTTTTT~~"
+   "cccccccccccccccccccccccc",
+   "cccccccccccccccccccccccc",
+   "cccccccccccccccccccccccc",
+   "cccccccccccccccccccccccc",
+   "cccccccccccccccccccccccc",
+   "ccccccc................>",
+   "cccccccX.ccccccccccccccc",
+   "ccccccc................>",
+   "cccccccccccccccccc..cccc",
+   "ccccccc.X..............>",
+   "ccccccccc..ccccccccccccc",
+   "ccccccc................>",
+   "cccccccccccccc...!cccccc",
+   "ccccccc.................",
+   "ccccccc...X......ccccccc",
+   "ccccccc..........ccccccc",
+   "ccccccc.........Xccccccc",
+   "ccccccccccccc....ccccccc",
+   "ccccccccccccc....ccccccc",
+   "ccccccc\"\"\"\"\"cc...ccccccc",
+   "ccccccc\"\"\"\"\"cc...ccccccc",
+   "ccccccc\"\"\"\"\"cc...ccccccc",
+   "ccccccc\"\"\"\"\"cc...ccccccc",
+   "ccccccc\"\"\"\"\"cc...ccccccc",
+   "ccccccc\"\"\"\"\"cc...ccccccc",
+   "ccccccc.....cc...ccccccc",
+   "ccccccc2____cc...ccccccc",
+   "ccccccc.....cc...ccccccc",
+   "ccccccc.....cc...ccccccc",
+   "ccccccc.....cc...ccccccc",
+   "ccccccc.....cc...ccccccc",
+   "cccccccX....cc...ccccccc",
+   "ccccccc.....cc.......ccc",
+   "ccccccc.....cc.......ccc",
+   "cccccccX....cc.......ccc",
+   "ccccccc.....2.....X..ccc",
+   "ccccccc.....cc.......ccc",
+   "cccccccX..X.cc.......ccc",
+   "ccccccc.....cc.......ccc",
+   "ccccccc.....cc.......ccc",
+   "ccccccc.....cc.......ccc",
+   "ccccccc.....cc.......ccc",
+   "ccccccc.....cc.......ccc",
+   "ccccccc.....cc.......ccc",
+   "ccccccc.....cc.......ccc",
+   "cc..........cc.......ccc",
+   "cc...................ccc",
+   "<2................X..ccc",
+   "<)...................ccc",
+   "_c...................ccc",
+   "<....................ccc",
+   "<...........X........ccc",
+   "<....................ccc",
+   "<....................ccc",
+   "<....................ccc",
+   "cccccccccccccccccccccccc",
+   "cccccccccccccccccccccccc",
+   "cccccccccccccccccccccccc",
+   "cccccccccccccccccccccccc",
+   "cccccccccccccccccccccccc"
   ],
   "exits": {
-   ">": "KANTO_ROUTE_13",
-   "<": "KANTO_ROUTE_15"
+   "<": "KANTO_ROUTE_15",
+   ">": "KANTO_ROUTE_13"
   },
   "buildings": {},
-  "roofs": {},
-  "overheads": [
-   {
-    "kind": "tops",
-    "rect": [
-     7,
-     16,
-     6,
-     1
-    ],
-    "of": "tree"
+  "roofs": {
+   "_picture": {
+    "f": "fr_ground/3_32.png",
+    "at": [
+     0,
+     0
+    ]
    },
-   {
-    "kind": "tops",
-    "rect": [
-     13,
-     18,
-     1,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     13,
-     35,
-     1,
-     1
-    ],
-    "of": "tree"
-   }
-  ],
+   "_signs_in_picture": true,
+   "_buildings_in_picture": true
+  },
   "signs": [
    [
     "ROUTE 14",
@@ -18031,45 +18100,190 @@
    "Lukas",
    "Benny",
    "Kiri & Jan"
+  ],
+  "edge_to": {
+   "0,47": [
+    71,
+    7
+   ],
+   "0,48": [
+    71,
+    8
+   ],
+   "0,50": [
+    71,
+    10
+   ],
+   "0,51": [
+    71,
+    11
+   ],
+   "0,52": [
+    71,
+    12
+   ],
+   "0,53": [
+    71,
+    13
+   ],
+   "0,54": [
+    71,
+    14
+   ],
+   "23,5": [
+    0,
+    5
+   ],
+   "23,7": [
+    0,
+    7
+   ],
+   "23,9": [
+    0,
+    9
+   ],
+   "23,11": [
+    0,
+    11
+   ]
+  },
+  "moves": {
+   "7,6": {
+    "m": "face",
+    "d": "r",
+    "s": 1
+   },
+   "8,9": {
+    "m": "wander",
+    "d": "lr",
+    "r": [
+     1,
+     0
+    ],
+    "s": 1
+   },
+   "10,14": {
+    "m": "face",
+    "d": "r",
+    "s": 4
+   },
+   "16,16": {
+    "m": "face",
+    "d": "u",
+    "s": 3
+   },
+   "7,31": {
+    "m": "face",
+    "d": "r",
+    "s": 2
+   },
+   "7,34": {
+    "m": "face",
+    "d": "r",
+    "s": 2
+   },
+   "18,35": {
+    "m": "wander",
+    "d": "udlr",
+    "r": [
+     2,
+     2
+    ],
+    "s": 1
+   },
+   "7,37": {
+    "m": "face",
+    "d": "r",
+    "s": 2
+   },
+   "10,37": {
+    "m": "wander",
+    "d": "ud",
+    "r": [
+     0,
+     6
+    ],
+    "s": 1
+   },
+   "18,47": {
+    "m": "wander",
+    "d": "udlr",
+    "r": [
+     2,
+     2
+    ],
+    "s": 1
+   },
+   "12,51": {
+    "m": "face",
+    "d": "d",
+    "s": 1
+   }
+  },
+  "hidden": {
+   "9,20": "ZINC",
+   "19,53": "PINAP_BERRY"
+  },
+  "overheads": [
+   {
+    "kind": "picture",
+    "f": "fr_top/3_32.png",
+    "at": [
+     0,
+     0
+    ],
+    "size": [
+     24,
+     60
+    ]
+   }
   ]
  },
  "KANTO_ROUTE_15": {
   "art": [
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTk=======================================================",
-   "TTTTTTTTTTTTTTTTk===========X===========================================",
-   "TTTTTT..........k======================X===============================>",
-   "TTTTTTkkkGGGGGGGG...................................X..................>",
-   "TTTTTT...GGGGGGGG_______________________________________________________",
-   "<========GGGGGGGG===\"\"\"\"\"\"f.f.f.\"\"\"\"\"\".........f.f.\"\"\"\"f.f.\"\"\"\"\"\"\"f.f..>",
-   "<========DGGGGGGD===\"\"\"\"\"\".f.f.f\"\"\"\"\"\"...!......f.f\"\"\"\".f.f\"\"\"\"\"\"\".f.f.>",
-   "<========GGGGGGGG==============X==================X===X====X===========>",
-   "kkkkkkkkkkkkkkkkk=====X=====================X==================X=======>",
-   "TTTTTTTTTTTTTTTTk====================X=================================>",
-   "TTTTTTTTTTTTTTTTkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT"
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "ccccccccccccccccc.......................................................",
+   "ccccccccccccccccc...N.......X...........................................",
+   "ccccccccccccccccc......................X...............................>",
+   "ccccccccccccccccc...................................X..................>",
+   "cccccc....cccccc._______________________________________________________",
+   "<.........cccccc....\"\"\"\"\"\"......\"\"\"\"\"\".............\"\"\"\"....\"\"\"\"\"\"\".....>",
+   "<........DAccccBD...\"\"\"\"\"\"......\"\"\"\"\"\"...!.........\"\"\"\"....\"\"\"\"\"\"\".....>",
+   "<.........cccccc...............X..................X...X....X...........>",
+   "ccccccccccccccccc.....X.....................X..................X.......>",
+   "ccccccccccccccccc....................X.................................>",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccc........................................................",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
   ],
   "exits": {
-   ">": "KANTO_ROUTE_14",
-   "<": "FUCHSIA_CITY"
+   "<": "FUCHSIA_CITY",
+   ">": "KANTO_ROUTE_14"
   },
   "buildings": {
-   "G": "gate"
+   "A": "gate",
+   "B": "gate"
   },
   "roofs": {
-   "G": [
-    172,
-    189,
-    205
-   ]
+   "_picture": {
+    "f": "fr_ground/3_33.png",
+    "at": [
+     0,
+     0
+    ]
+   },
+   "_signs_in_picture": true,
+   "_buildings_in_picture": true
   },
+  "people": [
+   "TM33"
+  ],
   "signs": [
    [
     "ROUTE 15",
@@ -18089,200 +18303,171 @@
    "Ernest",
    "Chester"
   ],
-  "parts": true,
+  "inside": {
+   "9,11": "gate",
+   "16,11": "gate"
+  },
+  "edge_to": {
+   "0,10": [
+    47,
+    20
+   ],
+   "0,11": [
+    47,
+    21
+   ],
+   "0,12": [
+    47,
+    22
+   ],
+   "71,7": [
+    0,
+    47
+   ],
+   "71,8": [
+    0,
+    48
+   ],
+   "71,10": [
+    0,
+    50
+   ],
+   "71,11": [
+    0,
+    51
+   ],
+   "71,12": [
+    0,
+    52
+   ],
+   "71,13": [
+    0,
+    53
+   ],
+   "71,14": [
+    0,
+    54
+   ]
+  },
+  "moves": {
+   "20,6": {
+    "m": "face",
+    "d": "d"
+   },
+   "28,6": {
+    "m": "wander",
+    "d": "udlr",
+    "r": [
+     2,
+     4
+    ],
+    "s": 1
+   },
+   "39,7": {
+    "m": "face",
+    "d": "d",
+    "s": 1
+   },
+   "52,8": {
+    "m": "wander",
+    "d": "udlr",
+    "r": [
+     2,
+     4
+    ],
+    "s": 1
+   },
+   "31,12": {
+    "m": "face",
+    "d": "l",
+    "s": 5
+   },
+   "50,12": {
+    "m": "face",
+    "d": "d",
+    "s": 2
+   },
+   "54,12": {
+    "m": "face",
+    "d": "d",
+    "s": 2
+   },
+   "59,12": {
+    "m": "look",
+    "d": "dr",
+    "s": 2
+   },
+   "22,13": {
+    "m": "wander",
+    "d": "udlr",
+    "r": [
+     1,
+     1
+    ],
+    "s": 1
+   },
+   "44,13": {
+    "m": "wander",
+    "d": "udlr",
+    "r": [
+     1,
+     1
+    ],
+    "s": 1
+   },
+   "63,13": {
+    "m": "look",
+    "d": "du",
+    "s": 1
+   },
+   "37,14": {
+    "m": "face",
+    "d": "u",
+    "s": 2
+   }
+  },
   "rooms": {
    "gate": {
-    "theme": "room",
     "art": [
      "ccccccccccccc",
      "ccccccccccccc",
-     "cz....N....zc",
-     "c.mmmmmmmmm.c",
+     "ccccccNcccccc",
+     "c.cmmmmmmmc.c",
      "c...........c",
-     "c.=========.c",
-     "c<=========>c",
-     "c<=========>c",
      "c...........c",
-     "cmmmmmmm..mmc",
-     "c......m..ccc",
-     "c......m..mmc"
+     "c<.........>c",
+     "c<.........>c",
+     "c...........c",
+     "ccmmmmmc..ccc",
+     "cccccccm.vccc",
+     "cccccccm..ccc"
     ],
     "exits": {
      "<": "OUT:9,11",
-     ">": "OUT:16,11"
+     ">": "OUT:16,11",
+     "v": "ROOM:gate_2"
     },
     "buildings": {},
     "roofs": {
-     "_floor": [
-      191,
-      183,
-      129
-     ],
-     "_wall": [
-      213,
-      222,
-      197
-     ],
-     "_things": {
-      "2,3": [
-       246,
-       238,
-       189
-      ],
-      "3,3": [
-       246,
-       238,
-       189
-      ],
-      "4,3": [
-       246,
-       238,
-       189
-      ],
-      "5,3": [
-       246,
-       238,
-       189
-      ],
-      "6,3": [
-       246,
-       238,
-       189
-      ],
-      "7,3": [
-       246,
-       238,
-       189
-      ],
-      "8,3": [
-       246,
-       238,
-       189
-      ],
-      "9,3": [
-       246,
-       238,
-       189
-      ],
-      "10,3": [
-       246,
-       238,
-       189
-      ],
-      "1,9": [
-       246,
-       238,
-       189
-      ],
-      "2,9": [
-       246,
-       238,
-       189
-      ],
-      "3,9": [
-       246,
-       238,
-       189
-      ],
-      "4,9": [
-       246,
-       238,
-       189
-      ],
-      "5,9": [
-       246,
-       238,
-       189
-      ],
-      "6,9": [
-       246,
-       238,
-       189
-      ],
-      "7,9": [
-       246,
-       238,
-       189
-      ],
-      "10,9": [
-       180,
-       180,
-       164
-      ],
-      "11,9": [
-       255,
-       255,
-       255
-      ],
-      "7,10": [
-       246,
-       238,
-       189
-      ],
-      "7,11": [
-       131,
-       131,
-       131
-      ],
-      "10,11": [
-       180,
-       180,
-       164
-      ],
-      "11,11": [
-       180,
-       180,
-       164
-      ],
-      "10,10": [
-       255,
-       255,
-       255
-      ],
-      "11,10": [
-       255,
-       255,
-       255
+     "_picture": {
+      "f": "fr_ground/24_0.png",
+      "at": [
+       0,
+       0
       ]
      },
-     "_stairs": {
-      "10,10": "flight",
-      "11,10": "flight"
-     },
-     "_kinds": {
-      "2,3": "table",
-      "3,3": "table",
-      "4,3": "table",
-      "5,3": "table",
-      "6,3": "table",
-      "7,3": "table",
-      "8,3": "table",
-      "9,3": "table",
-      "10,3": "table",
-      "1,9": "table",
-      "2,9": "table",
-      "3,9": "table",
-      "4,9": "table",
-      "5,9": "table",
-      "6,9": "table",
-      "7,9": "table",
-      "10,9": "table",
-      "11,9": "table",
-      "7,10": "table",
-      "7,11": "table",
-      "10,11": "table",
-      "11,11": "table"
-     },
-     "_mat": true,
-     "_rug": [
-      115,
-      156,
-      180
-     ]
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
     },
     "people": [
      "GATE GUARD"
     ],
+    "moves": {
+     "6,2": {
+      "m": "face",
+      "d": "d"
+     }
+    },
     "land": {
      "9,11": [
       8,
@@ -18303,14 +18488,110 @@
       6
      ]
     },
-    "title": "Route 15 Gate",
-    "parts": true
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/24_0.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       13,
+       12
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Route 15 Gate"
+   },
+   "gate_2": {
+    "art": [
+     "ccccccccccccc",
+     "cccc!ccc!cccc",
+     "cc.........cc",
+     "c...........c",
+     "c...........c",
+     "c..ccN..cc..c",
+     "c..cc...cc..c",
+     "c...........c",
+     "c.......cc..c",
+     "c.......ccv.c",
+     "cc......cc..c"
+    ],
+    "exits": {
+     "v": "ROOM:gate"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/24_1.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Oak's aide",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Hi again! I'm one of Professor Oak's aides. Keep filling that Pokédex! The Professor's counting on you."
+       ]
+      }
+     }
+    ],
+    "signs": [
+     [
+      "Through the binoculars... Out at sea, a little island. There's someone on it!"
+     ],
+     [
+      "Through the binoculars... It looks like a small island far to the south!"
+     ]
+    ],
+    "moves": {
+     "5,5": {
+      "m": "face",
+      "d": "u"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/24_1.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       13,
+       11
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Route 15 Gate 2F"
    }
   },
-  "inside": {
-   "9,11": "gate",
-   "16,11": "gate"
-  }
+  "parts": true,
+  "overheads": [
+   {
+    "kind": "picture",
+    "f": "fr_top/3_33.png",
+    "at": [
+     0,
+     0
+    ],
+    "size": [
+     72,
+     20
+    ]
+   }
+  ]
  },
  "KANTO_ROUTE_16": {
   "art": [

@@ -104,7 +104,7 @@
       "sheet": "fr_60.png"
     },
     "KANTO_ROUTE_15:GATE GUARD": {
-      "sheet": "NPC 01.png"
+      "sheet": "fr_60.png"
     },
     "KANTO_ROUTE_16:GATE GUARD": {
       "sheet": "NPC 01.png"
@@ -4161,6 +4161,12 @@
     },
     "KANTO_ROUTE_12:Little girl": {
       "sheet": "fr_22.png"
+    },
+    "KANTO_ROUTE_15:TM33": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_ROUTE_15:Oak's aide": {
+      "sheet": "fr_55.png"
     }
   },
   "townsperson": "NPC 17.png",
