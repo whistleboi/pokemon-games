@@ -241,9 +241,27 @@ class Scenes:
         self.done_here = set()  # (played on this visit: an "every" scene waits till you leave its zone)
         self.entered = False
         self.actors = []        # the cast on the map now: {"m": Motion, "sheet": file}
+        self.departing = []     # (someone walking off after their scene: you can move again; gone at the edge or out of view)
 
     def busy(self):
         return self.playing is not None
+
+    VIEW = (10, 6)   # (tiles from you, across and up/down, past which someone is out of view: about the map's frame)
+
+    def _out_of_view(self, tile):
+        h, me = self.host, self.host.npc_player()
+        if hasattr(h, "npc_in_view"):
+            return not h.npc_in_view(tile)
+        return abs(tile[0] - me[0]) > self.VIEW[0] or abs(tile[1] - me[1]) > self.VIEW[1]
+
+    def sweep(self):
+        """Every frame: someone who walked off after their scene is gone once at the map's edge or out of view
+        (Jordan, 11-13: don't hold the player while they walk the whole way)."""
+        for m in list(self.departing):
+            if m.gone or m.idle() or self._out_of_view(m.pos):
+                m.gone = True
+                m.path = []
+                self.departing.remove(m)
 
     def pending(self, s):
         h = self.host
@@ -298,6 +316,8 @@ class Scenes:
     def start(self, s, m):
         h = self.host
         h.npc_lock(True)
+        if s.get("trigger") != "talk" and hasattr(h, "npc_cue"):   # (Jordan, 11-13: a sound as a scene takes over, before anyone walks up)
+            h.npc_cue()
         st = {"i": 0, "going": False, "steps": 0, "ci": 0, "phase": "spawn", "spawned": set(), "by": {}}
         if m is not None:
             m.path = []
@@ -378,7 +398,7 @@ class Scenes:
             st["phase"] = "leaving"
             return False
         if ph == "leaving":
-            if not m.idle():
+            if not m.idle() and not self._out_of_view(m.pos):   # (out of view: gone, no need to wait for them to reach it)
                 return False
             if a in self.actors:
                 self.actors.remove(a)
@@ -476,13 +496,17 @@ class Scenes:
             after = s.get("after", "home") if m is not None else "stay"
             if after == "home":
                 m.walk(m.home, lambda t: h.npc_passable(t, m), beside=False)
-            elif after == "leave":
+            elif after == "leave":   # (they walk off; you can move at once: sweep() takes them away at the edge or out of view)
                 edge = h.npc_edge(m)
                 if edge:
                     m.walk(edge, lambda t: h.npc_passable(t, m) or t == edge, beside=False)
-                self.playing[1] = "leaving"
+                    self.departing.append(m)
+                else:
+                    m.gone = True
                 if s.get("flag") and not s.get("every"):
                     h.npc_flag(s["flag"])
+                h.npc_lock(False)
+                self.playing = None
                 return
             if s.get("flag") and not s.get("every"):
                 h.npc_flag(s["flag"])

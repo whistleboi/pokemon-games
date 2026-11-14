@@ -160,6 +160,7 @@ class AssetManager:
 
         self.shiny_sfx = self._load_sound("shiny.ogg")
         self.heal_sfx = self._load_sound("heal.ogg")
+        self.alert_sfx = self._load_sound("scene_alert.wav")   # (a story scene starts: someone's noticed you; our own chime)
         self.ui_sfx = {k: self._load_sound(f"ui_{k}.wav") for k in ("select", "back", "correct", "wrong")}
         self.music_playlist = self._load_music()
         self.game_text = {}

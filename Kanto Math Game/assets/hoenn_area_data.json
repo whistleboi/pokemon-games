@@ -945,7 +945,7 @@
       "region": "HOENN",
       "backgrounds": { "main": "petalburg_city.png", "pokecenter": "petalburg_center.png", "pokemart": "petalburg_mart.png", "gym": ["petalburg_gym.png", "petalburg_gym_2.png", "petalburg_gym_leader.png"] },
       "has_gym": true,
-      "gym": {"requirements": {"badges": 4, "fail_text": ["Dad: So you want to battle me? Earn four badges first.", "Then we'll see how strong you've become!"]}, "trainers": [{"name": "Youngster Tommy", "class": "YOUNGSTER", "sprite": "youngster.png", "team": [16, 19], "rewards": {"balls": 2}}, {"name": "Lass Gina", "class": "LASS", "sprite": "lass.png", "team": [29, 32], "rewards": {"balls": 2}}], "leader": {"name": "Norman", "class": "GYM_LEADER", "sprite": "norman.png", "team": [289, 288, 289], "levels": [28, 28, 30], "badge_reward": "BALANCE", "rewards": {"balls": 5}, "dialogue": {"intro": ["Dad: So you really did earn four badges, {player_name}. I'm proud of you. But in this Gym I'm not your father, I'm its Leader, and I won't go easy on you!"], "player_won": ["Dad: ...I lost to my own child. You've grown so strong, {player_name}. I couldn't be prouder.", "Dad: Take the Balance Badge. You earned it!"], "player_lost": ["Dad: Don't hang your head, {player_name}. Train hard and come back. Your dad will be right here waiting."]}, "victory_flag": "badge_balance_earned", "team_moves": [["RETALIATE", "YAWN", "FEINT-ATTACK", "ENCORE"], ["ENCORE", "FEINT-ATTACK", "RETALIATE", "FURY-SWIPES"], ["RETALIATE", "FEINT-ATTACK", "SWAGGER", "CHIP-AWAY"]]}},
+      "gym": {"requirements": {"badges": 4, "fail_text": ["Dad: So you want to battle me? Earn four badges first.", "Then we'll see how strong you've become!"]}, "trainers": [{"name": "Youngster Tommy", "class": "YOUNGSTER", "sprite": "youngster.png", "team": [16, 19], "rewards": {"balls": 2}}, {"name": "Lass Gina", "class": "LASS", "sprite": "lass.png", "team": [29, 32], "rewards": {"balls": 2}}], "leader": {"name": "Norman", "class": "GYM_LEADER", "sprite": "norman.png", "team": [289, 288, 289], "levels": [28, 28, 30], "badge_reward": "BALANCE", "rewards": {"balls": 5, "TM79": 1}, "dialogue": {"intro": ["Dad: So you really did earn four badges, {player_name}. I'm proud of you. But in this Gym I'm not your father, I'm its Leader, and I won't go easy on you!"], "player_won": ["Dad: ...I lost to my own child. You've grown so strong, {player_name}. I couldn't be prouder.", "Dad: Take the Balance Badge. You earned it!"], "player_lost": ["Dad: Don't hang your head, {player_name}. Train hard and come back. Your dad will be right here waiting."]}, "victory_flag": "badge_balance_earned", "team_moves": [["RETALIATE", "YAWN", "FEINT-ATTACK", "ENCORE"], ["ENCORE", "FEINT-ATTACK", "RETALIATE", "FURY-SWIPES"], ["RETALIATE", "FEINT-ATTACK", "SWAGGER", "CHIP-AWAY"]]}},
       "travel_options": [
         { "text": "Route 102", "target_area": "HOENN_ROUTE_102" },
         { "text": "Route 104", "target_area": "HOENN_ROUTE_104" },
@@ -955,7 +955,7 @@
         {"text": "Heal", "action": "HEAL"},
         {"text": "Shop", "action": "SHOP"},
         {"text": "Gym", "action": "GYM"},
-        {"text": "Talk to Dad", "action": "NPC", "target": "norman_petalburg"},
+        {"text": "Talk to Dad", "action": "NPC", "target": "norman_petalburg", "flag_condition": "not helped_wally", "look": "em_129.png"},
         {"text": "Battle Courtney", "action": "EVENT", "color": "GOLD", "flag_condition": "not delta_courtney_petalburg", "event": {"lines": ["Courtney: The meteor... we have to know what's coming. Battle me!"], "flag": "delta_courtney_petalburg", "battle": {"name": "Magma Admin Courtney", "class": "TEAM_MAGMA", "sprite": "courtney.png", "team": [323], "levels": [53], "is_boss_battle": true, "rewards": {"balls": 10}, "dialogue": {"player_won": ["Magma Admin Courtney: Well fought!"]}}}, "condition": ["beat_hoenn_champion"]},
         {"text": "Battle Matt", "action": "EVENT", "color": "GOLD", "flag_condition": "not delta_matt_petalburg", "event": {"lines": ["Matt: The meteor... we have to know what's coming. Battle me!"], "flag": "delta_matt_petalburg", "battle": {"name": "Aqua Admin Matt", "class": "TEAM_AQUA", "sprite": "matt.png", "team": [319], "levels": [53], "is_boss_battle": true, "rewards": {"balls": 10}, "dialogue": {"player_won": ["Aqua Admin Matt: Well fought!"]}}}, "condition": ["beat_hoenn_champion"]}
       ],
@@ -968,7 +968,7 @@
       "region": "HOENN",
       "backgrounds": { "main": "rustboro_city.png", "pokecenter": "rustboro_center.png", "pokemart": "rustboro_mart.png", "gym": "rustboro_gym.png" },
       "has_gym": true,
-      "gym": {"trainers": [{"name": "Youngster Josh", "class": "YOUNGSTER", "sprite": "youngster.png", "team": [74], "rewards": {"balls": 2}}, {"name": "Hiker Marc", "class": "HIKER", "sprite": "hiker.png", "team": [74, 299], "rewards": {"balls": 2}}], "leader": {"name": "Roxanne", "class": "GYM_LEADER", "sprite": "roxanne.png", "team": [74, 299], "levels": [12, 14], "badge_reward": "STONE", "rewards": {"balls": 5}, "dialogue": {"intro": ["Roxanne: Welcome to the Rustboro City Gym! I'm Roxanne, the Rock-type Gym Leader."], "player_won": ["Your strategy was flawless!"], "player_lost": ["Don't worry, you'll get it next time."]}, "victory_flag": "badge_stone_earned", "movesets": {"74": ["TACKLE", "DEFENSE-CURL", "ROCK-THROW", "ROCK-TOMB"], "299": ["BLOCK", "HARDEN", "TACKLE", "ROCK-TOMB"]}}},
+      "gym": {"trainers": [{"name": "Youngster Josh", "class": "YOUNGSTER", "sprite": "youngster.png", "team": [74], "rewards": {"balls": 2}}, {"name": "Hiker Marc", "class": "HIKER", "sprite": "hiker.png", "team": [74, 299], "rewards": {"balls": 2}}], "leader": {"name": "Roxanne", "class": "GYM_LEADER", "sprite": "roxanne.png", "team": [74, 299], "levels": [12, 14], "badge_reward": "STONE", "rewards": {"balls": 5, "TM48": 1}, "dialogue": {"intro": ["Roxanne: Welcome to the Rustboro City Gym! I'm Roxanne, the Rock-type Gym Leader."], "player_won": ["Your strategy was flawless!"], "player_lost": ["Don't worry, you'll get it next time."]}, "victory_flag": "badge_stone_earned", "movesets": {"74": ["TACKLE", "DEFENSE-CURL", "ROCK-THROW", "ROCK-TOMB"], "299": ["BLOCK", "HARDEN", "TACKLE", "ROCK-TOMB"]}}},
       "travel_options": [
         { "text": "Route 104", "target_area": "HOENN_ROUTE_104" },
         { "text": "Route 115", "target_area": "HOENN_ROUTE_115" },
@@ -991,7 +991,7 @@
       "region": "HOENN",
       "backgrounds": { "main": "dewford_town.png", "pokecenter": "dewford_center.png", "pokemart": "dewford_mart.png", "gym": "dewford_gym.png" },
       "has_gym": true,
-      "gym": {"trainers": [{"name": "Blackbelt Koichi", "class": "BLACKBELT", "sprite": "blackbelt.png", "team": [66], "rewards": {"balls": 2}}], "leader": {"name": "Brawly", "class": "GYM_LEADER", "sprite": "brawly.png", "team": [66, 296], "levels": [14, 16], "badge_reward": "KNUCKLE", "rewards": {"balls": 5, "RARE_CANDY": 3}, "dialogue": {"intro": ["Brawly: Welcome to the Dewford Town Gym! I'm Brawly, the Fighting-type Gym Leader."], "player_won": ["You're a real wave!"], "player_lost": ["Don't worry, you'll get it next time."]}, "victory_flag": "badge_knuckle_earned", "movesets": {"66": ["KARATE-CHOP", "LOW-KICK", "SEISMIC-TOSS", "BULK-UP"], "296": ["ARM-THRUST", "VITAL-THROW", "REVERSAL", "BULK-UP"]}}, "requirements": {"badges": 1, "fail_text": ["Brawly is only accepting challengers with 1 Hoenn badge.", "Come back after you've beaten the earlier Gyms!"]}},
+      "gym": {"trainers": [{"name": "Blackbelt Koichi", "class": "BLACKBELT", "sprite": "blackbelt.png", "team": [66], "rewards": {"balls": 2}}], "leader": {"name": "Brawly", "class": "GYM_LEADER", "sprite": "brawly.png", "team": [66, 296], "levels": [14, 16], "badge_reward": "KNUCKLE", "rewards": {"balls": 5, "RARE_CANDY": 3, "TM116": 1}, "dialogue": {"intro": ["Brawly: Welcome to the Dewford Town Gym! I'm Brawly, the Fighting-type Gym Leader."], "player_won": ["You're a real wave!"], "player_lost": ["Don't worry, you'll get it next time."]}, "victory_flag": "badge_knuckle_earned", "movesets": {"66": ["KARATE-CHOP", "LOW-KICK", "SEISMIC-TOSS", "BULK-UP"], "296": ["ARM-THRUST", "VITAL-THROW", "REVERSAL", "BULK-UP"]}}, "requirements": {"badges": 1, "fail_text": ["Brawly is only accepting challengers with 1 Hoenn badge.", "Come back after you've beaten the earlier Gyms!"]}},
       "travel_options": [
         {"text": "Route 106", "target_area": "HOENN_ROUTE_106"},
         {"text": "Route 107", "target_area": "HOENN_ROUTE_107", "condition": "has_item:HM_SURF"},
@@ -1028,6 +1028,8 @@
         {"text": "Contest Hall", "door": "contest", "action": "NPC", "target": "contest_hall"},
         {"text": "Market", "door": "market", "action": "NPC", "target": "slateport_market"},
         {"text": "Talk to Stern", "door": "shipyard", "action": "NPC", "target": "captain_stern"},
+        {"text": "GIVE SCANNER: DEEPSEATOOTH", "door": "shipyard", "action": "EVENT", "color": "GOLD", "condition": "has_item:SCANNER", "flag_condition": "not stern_scanner_traded", "event": {"lines": ["Captain Stern: That's a Scanner! You found it on the old ship? Thank you!", "Captain Stern: Please, take this DeepSeaTooth for your trouble."], "take_item": {"SCANNER": 1}, "gift_item": {"DEEP_SEA_TOOTH": 1}, "flag": "stern_scanner_traded"}},
+        {"text": "GIVE SCANNER: DEEPSEASCALE", "door": "shipyard", "action": "EVENT", "color": "GOLD", "condition": "has_item:SCANNER", "flag_condition": "not stern_scanner_traded", "event": {"lines": ["Captain Stern: That's a Scanner! You found it on the old ship? Thank you!", "Captain Stern: Please, take this DeepSeaScale for your trouble."], "take_item": {"SCANNER": 1}, "gift_item": {"DEEP_SEA_SCALE": 1}, "flag": "stern_scanner_traded"}},
         {"text": "Ferry to Lilycove", "door": "harbor", "action": "EVENT", "color": "BLUE", "condition": "slateport_sub_stolen", "event": {"lines": ["Captain Stern: Please, stop them! Take the ferry to Lilycove. It's on me!"], "travel": "LILYCOVE_CITY"}}
       ],
       "next_area": "HOENN_ROUTE_110",
@@ -1051,7 +1053,7 @@
       "region": "HOENN",
       "backgrounds": { "main": "mauville_city.png", "pokecenter": "mauville_center.png", "pokemart": "mauville_mart.png", "gym": "mauville_gym.png" },
       "has_gym": true,
-      "gym": {"trainers": [{"name": "Guitarist Kirk", "class": "GUITARIST", "sprite": "guitarist.png", "team": [309], "rewards": {"balls": 2}}], "leader": {"name": "Wattson", "class": "GYM_LEADER", "sprite": "wattson.png", "team": [81, 100, 82], "levels": [19, 19, 21], "badge_reward": "DYNAMO", "rewards": {"balls": 5, "DEVON_SCOPE": 1}, "dialogue": {"intro": ["Wattson: Welcome to the Mauville City Gym! I'm Wattson, the Electric-type Gym Leader."], "player_won": ["Shocking performance!"], "player_lost": ["Don't worry, you'll get it next time."]}, "victory_flag": "badge_dynamo_earned", "movesets": {"81": ["THUNDER-SHOCK", "SUPERSONIC", "SONICBOOM", "THUNDER-WAVE"], "100": ["ROLLOUT", "SPARK", "SONICBOOM", "SELF-DESTRUCT"], "82": ["SHOCK-WAVE", "SUPERSONIC", "SONICBOOM", "THUNDER-WAVE"]}}, "requirements": {"badges": 2, "fail_text": ["Wattson is only accepting challengers with 2 Hoenn badges.", "Come back after you've beaten the earlier Gyms!"], "flags": ["defeated_wally_mauville"]}},
+      "gym": {"trainers": [{"name": "Guitarist Kirk", "class": "GUITARIST", "sprite": "guitarist.png", "team": [309], "rewards": {"balls": 2}}], "leader": {"name": "Wattson", "class": "GYM_LEADER", "sprite": "wattson.png", "team": [81, 100, 82], "levels": [19, 19, 21], "badge_reward": "DYNAMO", "rewards": {"balls": 5, "DEVON_SCOPE": 1, "TM80": 1}, "dialogue": {"intro": ["Wattson: Welcome to the Mauville City Gym! I'm Wattson, the Electric-type Gym Leader."], "player_won": ["Shocking performance!"], "player_lost": ["Don't worry, you'll get it next time."]}, "victory_flag": "badge_dynamo_earned", "movesets": {"81": ["THUNDER-SHOCK", "SUPERSONIC", "SONICBOOM", "THUNDER-WAVE"], "100": ["ROLLOUT", "SPARK", "SONICBOOM", "SELF-DESTRUCT"], "82": ["SHOCK-WAVE", "SUPERSONIC", "SONICBOOM", "THUNDER-WAVE"]}}, "requirements": {"badges": 2, "fail_text": ["Wattson is only accepting challengers with 2 Hoenn badges.", "Come back after you've beaten the earlier Gyms!"], "flags": ["defeated_wally_mauville"]}},
       "travel_options": [
         {"text": "Route 110", "target_area": "HOENN_ROUTE_110"},
         {"text": "Route 111", "target_area": "HOENN_ROUTE_111", "condition": "has_item:HM_ROCK_SMASH"},
@@ -1113,7 +1115,7 @@
       "region": "HOENN",
       "backgrounds": { "main": "lavaridge_town.png", "pokecenter": "lavaridge_center.png", "pokemart": "lavaridge_mart.png", "gym": ["lavaridge_gym.png", "lavaridge_gym_leader.png"] },
       "has_gym": true,
-      "gym": {"trainers": [{"name": "Kindler Jeff", "class": "KINDLER", "sprite": "kindler.png", "team": [322], "rewards": {"balls": 2}}], "leader": {"name": "Flannery", "class": "GYM_LEADER", "sprite": "flannery.png", "team": [218, 322, 324], "levels": [26, 26, 28], "badge_reward": "HEAT", "rewards": {"balls": 5, "RARE_CANDY": 3, "ROOT_FOSSIL": 1}, "dialogue": {"intro": ["Flannery: Welcome to the Lavaridge Town Gym! I'm Flannery, the Fire-type Gym Leader."], "player_won": ["You're too hot to handle!", "Take this Root Fossil too. The fossil lab in Rustboro City can revive it!"], "player_lost": ["Don't worry, you'll get it next time."]}, "victory_flag": "badge_heat_earned", "movesets": {"218": ["OVERHEAT", "SMOG", "LIGHT-SCREEN", "SUNNY-DAY"], "324": ["OVERHEAT", "SUNNY-DAY", "BODY-SLAM", "ATTRACT"]}}, "requirements": {"badges": 3, "fail_text": ["Flannery is only accepting challengers with 3 Hoenn badges.", "Come back after you've beaten the earlier Gyms!"]}},
+      "gym": {"trainers": [{"name": "Kindler Jeff", "class": "KINDLER", "sprite": "kindler.png", "team": [322], "rewards": {"balls": 2}}], "leader": {"name": "Flannery", "class": "GYM_LEADER", "sprite": "flannery.png", "team": [218, 322, 324], "levels": [26, 26, 28], "badge_reward": "HEAT", "rewards": {"balls": 5, "RARE_CANDY": 3, "ROOT_FOSSIL": 1, "TM117": 1}, "dialogue": {"intro": ["Flannery: Welcome to the Lavaridge Town Gym! I'm Flannery, the Fire-type Gym Leader."], "player_won": ["You're too hot to handle!", "Take this Root Fossil too. The fossil lab in Rustboro City can revive it!"], "player_lost": ["Don't worry, you'll get it next time."]}, "victory_flag": "badge_heat_earned", "movesets": {"218": ["OVERHEAT", "SMOG", "LIGHT-SCREEN", "SUNNY-DAY"], "324": ["OVERHEAT", "SUNNY-DAY", "BODY-SLAM", "ATTRACT"]}}, "requirements": {"badges": 3, "fail_text": ["Flannery is only accepting challengers with 3 Hoenn badges.", "Come back after you've beaten the earlier Gyms!"]}},
       "travel_options": [
         { "text": "Route 112", "target_area": "HOENN_ROUTE_112" },
         { "text": "Jagged Pass", "target_area": "HOENN_JAGGED_PASS" },
@@ -1143,7 +1145,7 @@
       "region": "HOENN",
       "backgrounds": { "main": "fortree_city.png", "pokecenter": "fortree_center.png", "pokemart": "fortree_mart.png", "gym": "fortree_gym.png" },
       "has_gym": true,
-      "gym": {"trainers": [{"name": "Bird Keeper Jared", "class": "BIRD_KEEPER", "sprite": "bird_keeper.png", "team": [333], "rewards": {"balls": 2}}], "leader": {"name": "Winona", "class": "GYM_LEADER", "sprite": "winona.png", "team": [277, 279, 227, 334], "levels": [33, 33, 33, 35], "badge_reward": "FEATHER", "rewards": {"balls": 5, "RARE_CANDY": 3}, "dialogue": {"intro": ["Winona: Welcome to the Fortree City Gym! I'm Winona, the Flying-type Gym Leader."], "player_won": ["You soared above me!"], "player_lost": ["Don't worry, you'll get it next time."]}, "victory_flag": "badge_feather_earned", "movesets": {"277": ["QUICK-ATTACK", "AERIAL-ACE", "DOUBLE-TEAM", "ENDEAVOR"], "279": ["WATER-GUN", "SUPERSONIC", "PROTECT", "AERIAL-ACE"], "227": ["SAND-ATTACK", "FURY-ATTACK", "STEEL-WING", "AERIAL-ACE"], "334": ["EARTHQUAKE", "DRAGONBREATH", "DRAGON-DANCE", "AERIAL-ACE"]}}, "requirements": {"badges": 5, "fail_text": ["Something invisible is blocking the Gym door!", "Winona needs 5 Hoenn badges, and you'll need a way to see what's in the way.", "Steven was heading east to Route 120..."], "flags": ["got_starter_mega_stone"]}},
+      "gym": {"trainers": [{"name": "Bird Keeper Jared", "class": "BIRD_KEEPER", "sprite": "bird_keeper.png", "team": [333], "rewards": {"balls": 2}}], "leader": {"name": "Winona", "class": "GYM_LEADER", "sprite": "winona.png", "team": [277, 279, 227, 334], "levels": [33, 33, 33, 35], "badge_reward": "FEATHER", "rewards": {"balls": 5, "RARE_CANDY": 3, "TM118": 1}, "dialogue": {"intro": ["Winona: Welcome to the Fortree City Gym! I'm Winona, the Flying-type Gym Leader."], "player_won": ["You soared above me!"], "player_lost": ["Don't worry, you'll get it next time."]}, "victory_flag": "badge_feather_earned", "movesets": {"277": ["QUICK-ATTACK", "AERIAL-ACE", "DOUBLE-TEAM", "ENDEAVOR"], "279": ["WATER-GUN", "SUPERSONIC", "PROTECT", "AERIAL-ACE"], "227": ["SAND-ATTACK", "FURY-ATTACK", "STEEL-WING", "AERIAL-ACE"], "334": ["EARTHQUAKE", "DRAGONBREATH", "DRAGON-DANCE", "AERIAL-ACE"]}}, "requirements": {"badges": 5, "fail_text": ["Something invisible is blocking the Gym door!", "Winona needs 5 Hoenn badges, and you'll need a way to see what's in the way.", "Steven was heading east to Route 120..."], "flags": ["got_starter_mega_stone"]}},
       "travel_options": [
         {"text": "Up to the treetops", "target_area": "FORTREE_CITY_UPPER"},
         {"text": "Route 119", "target_area": "HOENN_ROUTE_119"},
@@ -1192,7 +1194,7 @@
       "region": "HOENN",
       "backgrounds": { "main": "mossdeep_city.png", "pokecenter": "mossdeep_center.png", "pokemart": "mossdeep_mart.png", "gym": ["mossdeep_gym.png", "mossdeep_gym_leader.png"] },
       "has_gym": true,
-      "gym": {"trainers": [{"name": "Psychic Preston", "class": "PSYCHIC", "sprite": "psychic.png", "team": [307, 308], "rewards": {"balls": 2}}], "leader": {"name": "Tate & Liza", "class": "GYM_LEADER", "sprite": "tate_liza.png", "team": [337, 338], "levels": [45, 45], "badge_reward": "MIND", "rewards": {"balls": 5, "DIVE_GEAR": 1}, "dialogue": {"intro": ["Tate & Liza: Welcome to the Mossdeep City Gym! We're the Psychic-type Gym Leaders."], "player_won": ["Your mind is sharp!"], "player_lost": ["Don't worry, you'll get it next time."]}, "victory_flag": "badge_mind_earned", "movesets": {"337": ["LIGHT-SCREEN", "PSYCHIC", "HYPNOSIS", "CALM-MIND"], "338": ["SUNNY-DAY", "SOLAR-BEAM", "PSYCHIC", "FLAMETHROWER"]}}, "requirements": {"badges": 6, "fail_text": ["Tate & Liza is only accepting challengers with 6 Hoenn badges.", "Come back after you've beaten the earlier Gyms!"]}},
+      "gym": {"trainers": [{"name": "Psychic Preston", "class": "PSYCHIC", "sprite": "psychic.png", "team": [307, 308], "rewards": {"balls": 2}}], "leader": {"name": "Tate & Liza", "class": "GYM_LEADER", "sprite": "tate_liza.png", "team": [337, 338], "levels": [45, 45], "badge_reward": "MIND", "rewards": {"balls": 5, "DIVE_GEAR": 1, "TM119": 1}, "dialogue": {"intro": ["Tate & Liza: Welcome to the Mossdeep City Gym! We're the Psychic-type Gym Leaders."], "player_won": ["Your mind is sharp!"], "player_lost": ["Don't worry, you'll get it next time."]}, "victory_flag": "badge_mind_earned", "movesets": {"337": ["LIGHT-SCREEN", "PSYCHIC", "HYPNOSIS", "CALM-MIND"], "338": ["SUNNY-DAY", "SOLAR-BEAM", "PSYCHIC", "FLAMETHROWER"]}}, "requirements": {"badges": 6, "fail_text": ["Tate & Liza is only accepting challengers with 6 Hoenn badges.", "Come back after you've beaten the earlier Gyms!"]}},
       "travel_options": [
         {"text": "Route 124", "target_area": "HOENN_ROUTE_124"},
         {"text": "Route 125", "target_area": "HOENN_ROUTE_125"},
@@ -1483,7 +1485,7 @@
         {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
         {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"},
-        {"text": "ISLAND CAVE", "action": "EXIT", "target_area": "HOENN_ISLAND_CAVE", "condition": ["can_exit", "regi_trio_awakened"], "color": "RED"},
+        {"text": "ISLAND CAVE", "action": "EXIT", "target_area": "HOENN_ISLAND_CAVE", "condition": ["can_exit", "regi_trio_awakened"], "color": "RED", "locked_text": ["A rock face. The shape of a doorway is carved into it, but it's sealed shut."]},
         {"text": "ROUTE 104", "action": "EXIT", "target_area": "HOENN_ROUTE_104", "condition": "can_exit", "color": "RED"},
         {"text": "ROUTE 106", "action": "EXIT", "target_area": "HOENN_ROUTE_106", "condition": "can_exit", "color": "RED"}
       ],
@@ -1606,6 +1608,7 @@
         }
       ],
       "route_menu": [
+        {"text": "STAR PIECE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_star_piece_108", "event": {"lines": ["A Star Piece, washed up on the rocks!"], "gift_item": {"STAR_PIECE": 1}, "flag": "got_star_piece_108"}},
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
@@ -1733,7 +1736,7 @@
         {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
         {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"},
-        {"text": "DESERT RUINS", "action": "EXIT", "target_area": "HOENN_DESERT_RUINS", "condition": ["can_exit", "regi_trio_awakened"], "color": "RED"},
+        {"text": "DESERT RUINS", "action": "EXIT", "target_area": "HOENN_DESERT_RUINS", "condition": ["can_exit", "regi_trio_awakened"], "color": "RED", "locked_text": ["A rock face. The shape of a doorway is carved into it, but it's sealed shut."]},
         {"text": "MAUVILLE CITY", "action": "EXIT", "target_area": "MAUVILLE_CITY", "condition": "can_exit", "color": "RED"},
         {"text": "ROUTE 112", "action": "EXIT", "target_area": "HOENN_ROUTE_112", "condition": "can_exit", "color": "RED"},
         {"text": "ROUTE 113", "action": "EXIT", "target_area": "HOENN_ROUTE_113", "condition": "can_exit", "color": "RED"},
@@ -2151,7 +2154,7 @@
         {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
         {"text": "TALK TO STEVEN", "action": "HOENN_EVENT", "event": "starter_stone", "condition": ["got_mega_bracelet", "weather_institute_cleared", "not:got_starter_mega_stone"], "color": "GOLD"},
-        {"text": "ANCIENT TOMB", "action": "EXIT", "target_area": "HOENN_ANCIENT_TOMB", "condition": ["can_exit", "regi_trio_awakened"], "color": "RED"},
+        {"text": "ANCIENT TOMB", "action": "EXIT", "target_area": "HOENN_ANCIENT_TOMB", "condition": ["can_exit", "regi_trio_awakened"], "color": "RED", "locked_text": ["A rock face. The shape of a doorway is carved into it, but it's sealed shut."]},
         {"text": "ROUTE 121", "action": "EXIT", "target_area": "HOENN_ROUTE_121", "condition": "can_exit", "color": "RED"},
         {"text": "Scorched Slab", "action": "EXIT", "target_area": "HOENN_SCORCHED_SLAB", "condition": ["can_exit", "has_item:HM_SURF"], "color": "RED"},
         {"text": "FORTREE CITY", "action": "EXIT", "target": "FORTREE_CITY", "condition": "can_exit", "color": "RED"}
@@ -3015,12 +3018,22 @@
           "class": "SAILOR",
           "sprite": "sailor.png",
           "team": [278, 279],
-          "rewards": { "balls": 5, "SCANNER": 1 },
-          "is_boss_battle": true,
-          "victory_flag": "abandoned_ship_cleared"
-        }
+          "rewards": { "balls": 5 }
+        },
+        {"name": "Youngster Demetrius", "class": "YOUNGSTER", "sprite": "youngster.png", "team": [263, 309], "rewards": {"balls": 3}, "dialogue": {"intro": ["Whoa! You found my hiding spot! You're not my mom, are you?"], "player_won": ["I ran off after my mom got mad. Don't tell her I'm here!"]}},
+        {"name": "Ruin Maniac Garrison", "class": "RUIN_MANIAC", "sprite": "ruinmaniac.png", "team": [28], "rewards": {"balls": 3}, "dialogue": {"intro": ["A Trainer's real treasures are strength and kindness!"], "player_won": ["Somewhere on this ship, I saw something shining in a cabin."]}},
+        {"name": "Swimmer Jani", "class": "SWIMMER", "sprite": "swimmer_f.png", "team": [183], "rewards": {"balls": 3}, "dialogue": {"intro": ["I can't swim very well, but I'm great at battling!"], "player_won": ["Walking around this ship barefoot is kind of icky."]}}
       ],
       "route_menu": [
+        {"text": "ESCAPE ROPE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_escape_rope_ship", "event": {"lines": ["An Escape Rope, left in a flooded cabin."], "gift_item": {"ESCAPE_ROPE": 1}, "flag": "got_escape_rope_ship"}},
+        {"text": "DIVE BALL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_dive_ball_ship", "event": {"lines": ["A Dive Ball, rolled under a bunk."], "gift_item": {"DIVE_BALL": 1}, "flag": "got_dive_ball_ship"}},
+        {"text": "TM115 ICE BEAM", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm115_ship", "event": {"lines": ["A TM, locked away in the ship's storeroom!"], "gift_item": {"TM115": 1}, "flag": "got_tm115_ship"}},
+        {"text": "REVIVE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_revive_ship", "event": {"lines": ["A Revive, tucked in a cabin corner."], "gift_item": {"REVIVE": 1}, "flag": "got_revive_ship"}},
+        {"text": "STORAGE KEY", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_storage_key_ship", "event": {"lines": ["A key on the captain's desk. Its tag says 'Storage'."], "gift_item": {"STORAGE_KEY": 1}, "flag": "got_storage_key_ship"}},
+        {"text": "LUXURY BALL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_luxury_ball_ship", "event": {"lines": ["A Luxury Ball, in a cabin on the hidden floor."], "gift_item": {"LUXURY_BALL": 1}, "flag": "got_luxury_ball_ship"}},
+        {"text": "SCANNER", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not abandoned_ship_cleared", "event": {"lines": ["A strange device... It's the Scanner Captain Stern was looking for!"], "gift_item": {"SCANNER": 1}, "flag": "abandoned_ship_cleared"}},
+        {"text": "TM33 RAIN DANCE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm33_ship", "event": {"lines": ["A TM, left in a cabin on the hidden floor."], "gift_item": {"TM33": 1}, "flag": "got_tm33_ship"}},
+        {"text": "WATER STONE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_water_stone_ship", "event": {"lines": ["A Water Stone, glinting in a cabin on the hidden floor."], "gift_item": {"WATER_STONE": 1}, "flag": "got_water_stone_ship"}},
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
@@ -3434,7 +3447,7 @@
       "type": "MAIN",
       "title": "Feather Badge",
       "description": "Defeat Winona at the Fortree City Gym.",
-      "condition": { "required_region": "HOENN", "region_badges_min": 5, "region_badges_less": 6 },
+      "condition": { "required_region": "HOENN", "region_badges_min": 5, "region_badges_less": 6, "flag": "got_starter_mega_stone" },
       "completed_flag": "badge_feather_earned",
       "reward": "Feather Badge"
     },
@@ -3442,7 +3455,8 @@
       "id": "hoenn_m14",
       "type": "MAIN",
       "title": "Steven's Mega Stone",
-      "description": "Steven is on Route 120 with a Mega Stone for your starter.",
+      "description": "Steven is on Route 120. He has a Devon Scope to see what blocks the Fortree Gym, and a Mega Stone for your starter.",
+      "target": "HOENN_ROUTE_120",
       "condition": {
         "required_region": "HOENN",
         "flag": ["got_mega_bracelet", "weather_institute_cleared"],

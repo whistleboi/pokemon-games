@@ -75822,7 +75822,11 @@
     "at": [
      0,
      0
-    ]
+    ],
+    "until": {
+     "flag": "regi_trio_awakened",
+     "f": "em_ground/0_26_closed.png"
+    }
    },
    "_signs_in_picture": true,
    "_buildings_in_picture": true
@@ -76470,7 +76474,11 @@
     "size": [
      40,
      140
-    ]
+    ],
+    "until": {
+     "flag": "regi_trio_awakened",
+     "f": "em_top/0_26_closed.png"
+    }
    }
   ]
  },
@@ -81172,7 +81180,11 @@
     "at": [
      0,
      0
-    ]
+    ],
+    "until": {
+     "flag": "regi_trio_awakened",
+     "f": "em_ground/0_35_closed.png"
+    }
    },
    "_signs_in_picture": true,
    "_buildings_in_picture": true
@@ -81578,7 +81590,11 @@
     "size": [
      40,
      100
-    ]
+    ],
+    "until": {
+     "flag": "regi_trio_awakened",
+     "f": "em_top/0_35_closed.png"
+    }
    }
   ]
  },
@@ -94123,7 +94139,11 @@
     "at": [
      0,
      0
-    ]
+    ],
+    "until": {
+     "flag": "regi_trio_awakened",
+     "f": "em_ground/0_20_closed.png"
+    }
    },
    "_signs_in_picture": true,
    "_buildings_in_picture": true
@@ -94282,7 +94302,11 @@
     "size": [
      40,
      80
-    ]
+    ],
+    "until": {
+     "flag": "regi_trio_awakened",
+     "f": "em_top/0_20_closed.png"
+    }
    }
   ]
  },
@@ -100710,79 +100734,299 @@
  },
  "HOENN_ROUTE_108": {
   "art": [
-   "<oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo>",
-   "<oooooooooooooooooooooqqoooooooooocooooccooooooooooooooooooooooqqoooooooooooooo>",
-   "qqoooooooooooooooooooooooooccoooooccoooccooooqoooooooooooooqqqqoooooocooocoooqqq",
-   "<oooocoooqqqooooooooooooqqoccooooocoAAAAAAAAoooccoooocoooooqooqqqoooccooccoqqoo>",
-   "<oqoccooqooooocooooqqocoooooooooooccAAAAAAAAoooccoqoccoqooooooooooooooooooooooo>",
-   "<ooooooooooqooccoqooooccooooooooooooAAADAAAAooooooooooooooooooooooqqooqqooooooo>",
-   "<oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo>",
-   "<oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo>",
-   "<oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo>",
-   "<oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooXoooooooooooooooo>",
-   "<ooooooooooooooXooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo>",
-   "<oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo>",
-   "<ooooooooooooooooooooooooooooooooocoooooXoooooooooooooooooooooooooooooooooooooo>",
-   "<oooooooooooooooooooooooooooooooooccoooooooooooooooooooqqoooooooooooooooooooooo>",
-   "<oooqqooooooooooooooooooooooooooooooooooooooooooooqqooooooooooooooooooooooooooo>",
-   "<ooooooooocooooooooooooooooooooooooccoqqocoqqooooooooocooooooooooooooocoooooooo>",
-   "<oqqoooqqoccocooooooocoooooooooooooccoooccooocooooooooccooooooooocoqooccoqooooo>",
-   "<oooooooooooccoooqqoccooqooooocoqqooooooooooccoooqqqocooqqqooqqqccooooooooooooo>",
-   "qqoooooooooooooqqooooooooooqqoccoooooooooooooooqqoooccoooooqqooooooooooooooqqqqq",
-   "<oooooooooooooooooooooooqqooooooooooqqooooooooooooooooooooooooooooooqqooooooooo>"
+   "cccccccccccccccccccccccccccccccccccccccccccccccccoooooooooo.",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccooooooooocc",
+   "cccccccccccccccccccccc.ccccccccccccccccccccccccccooccocccccc",
+   "occccccccccccccccccccc...ccccccccooccccccccccccccooccocccco>",
+   "occccccoccccccccccoooooooccccccccoocccccccNc.ccooccoccooooo>",
+   "<oooooooccccccooccoooooooo.ccccccooooooo....oooooccoccooooo>",
+   "<ooooooooooooooooooooooooooo.n.oooooooooooooooooooooooooooo>",
+   "<oooooooooooooooooooooooooooooooooooooooooooooooooooooooooo>",
+   "<oooooooooooooooooooooooooooooooooooooooooooooooooooooooooo>",
+   "<oooooooooooooooooooooooooooooooooooooooooooooooooooooooooX>",
+   "<ooooooooooooooXooooooooooooooooooooooooooooooooooooooooooo>",
+   "<oooooooooooooooooooooooooooooooooooooooooooooooooooooooooo>",
+   "<ooooooooooooooooooooooooccoooooooooooooXccoo..oooooooooooo>",
+   "<ooccooooooooooooooooooooccoooooooooo..oocco.c..ooooooooooo>",
+   "<ooccooooooooooooooo...oooooccooccoooocooooo.c..oooo..ooooo>",
+   "occooccccoooooo..ooooc.oooccccccccooooooccooooooooccccccoooo",
+   "occooccccccooccccccoooooccccooccoccooccoccccooccccccccccoooo",
+   "ccoooooooccccccccccoccccccoooooooccccccccoccccccccoooooocccc",
+   "ccoooooooooccoooooccccccoooccooooooccooccoooccoooooccooocccc",
+   "<oooooooooooooooooccoooooooccooooooooooooooooooooooccoooooo."
   ],
   "exits": {
    "<": "HOENN_ROUTE_107",
    ">": "HOENN_ROUTE_109",
-   "A": "HOENN_ABANDONED_SHIP"
+   "n": "HOENN_ABANDONED_SHIP"
   },
+  "buildings": {},
+  "roofs": {
+   "_picture": {
+    "f": "em_ground/0_23.png",
+    "at": [
+     0,
+     0
+    ]
+   },
+   "_signs_in_picture": true,
+   "_buildings_in_picture": true
+  },
+  "people": [
+   "STAR PIECE"
+  ],
   "trainer_spots": [
    "Swimmer Jerome",
    "Swimmer Matthew",
    "Swimmer Alice"
   ],
-  "buildings": {
-   "A": "house"
-  },
-  "roofs": {
-   "A": [
-    222,
-    214,
-    170
+  "edge_to": {
+   "0,5": [
+    59,
+    5
+   ],
+   "0,6": [
+    59,
+    6
+   ],
+   "0,7": [
+    59,
+    7
+   ],
+   "0,8": [
+    59,
+    8
+   ],
+   "0,9": [
+    59,
+    9
+   ],
+   "0,10": [
+    59,
+    10
+   ],
+   "0,11": [
+    59,
+    11
+   ],
+   "0,12": [
+    59,
+    12
+   ],
+   "0,13": [
+    59,
+    13
+   ],
+   "0,14": [
+    59,
+    14
+   ],
+   "0,19": [
+    59,
+    19
+   ],
+   "59,3": [
+    0,
+    43
+   ],
+   "59,4": [
+    0,
+    44
+   ],
+   "59,5": [
+    0,
+    45
+   ],
+   "59,6": [
+    0,
+    46
+   ],
+   "59,7": [
+    0,
+    47
+   ],
+   "59,8": [
+    0,
+    48
+   ],
+   "59,9": [
+    0,
+    49
+   ],
+   "59,10": [
+    0,
+    50
+   ],
+   "59,11": [
+    0,
+    51
+   ],
+   "59,12": [
+    0,
+    52
+   ],
+   "59,13": [
+    0,
+    53
+   ],
+   "59,14": [
+    0,
+    54
    ]
-  }
+  },
+  "moves": {
+   "42,4": {
+    "m": "look",
+    "d": "udlr"
+   }
+  },
+  "hidden": {
+   "38,14": "RARE_CANDY"
+  },
+  "parts": true,
+  "overheads": [
+   {
+    "kind": "picture",
+    "f": "em_top/0_23.png",
+    "at": [
+     0,
+     0
+    ],
+    "size": [
+     60,
+     20
+    ]
+   }
+  ]
  },
  "HOENN_ROUTE_107": {
   "art": [
-   "cccccccoooooooooooooooooooooooooooooooooooooooooooooooooooo>",
-   "ccccccccooooooooooooooooooooooooooooooooooooooooooooooooooo>",
-   "cccccccoqoooooqqooooooooooccqqooooqqqoooooooooooooooooooooo>",
-   "cccccooooqqcccoooccccocqqcccooqcccoooqqooqqqooooooooooooooo>",
-   "<oooooooooooooooocccccccooooooocccooooooooooccccqooooooocco>",
-   "<oooooooooooooooooocccocooooooooooooooooooooccccoqqqooccccc>",
-   "<ooooooooooooooooooooooooooooooooooooooooooooooooooooocccccc",
-   "<oooooooooooooooooooooooooooooooooooooooooooooooooooooooooo>",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccoocccccccoo",
+   "cccccccccccccccccccc~c~cccccccccccccccccoo~c~ccooooocccccco.",
+   "ccccccccccccccccccccccccccccooccooccccooo~cccoooooooccoocco>",
+   "ccccccccccccccccoocccccccooooooooooooooooccccoooooooooooooo>",
+   "ccccccccooooccoooooooooccoooooooooooooooooooooooooooooooooo>",
+   "ccccccooooooooooooooooooooooooooooooooooooooooooooooooooooo>",
    "<oooooooooooooooooooooooooooooXoooooooooooooooooooooooooooo>",
    "<oooooooooooooXoooooooooooooooooooooooooooooooXoooooooooooo>",
-   "<oooooooooooooooooooooooooooooooooooooooooooooooooooooooooo>",
-   "<oooooooooooooooooooooooooooooooooooooooooooooooooooooooooo>",
-   "<ooooooooooooooooooooooqqoocccooooooooooooooooooooooooooooo>",
-   "<ooooooooooooooooooooqqoooocccqqoqqoocccccooooqqqqqoocccoqo>",
-   "<oooooqooqqqoocccccccoooooooooooooooooccccqooooooooocccccoo>",
-   "<ooooooooooooocccccccooooooooooooooooooccooqoooooooooocccoo>",
-   "<ooooooooooooooocccccoooooooooooooooooooooooooooooooooooooo>",
-   "<oooooooooooooooooooooooooooooooooooooooooooooooocooqqooooo>",
-   "<oooooooooooooooooooooooooooooooooooooooooooocccccooooooooo>",
-   "<oooooooooooooooooooooooooooooooooooooooooooocccooooooooooo>"
+   "<====oooooooooooooooooooooooooooooooooooooooooooooooooooooo>",
+   "<====oooooooooooooooooooooooooooooooooooooooooooooooooooooo>",
+   "======ooooooooooooooooooooooooooooooccoooooooooooooccoooooo>",
+   "=======ooooooooccoooooooooooooooccooccooooooocc~cc~ccoooooo>",
+   "=ccc=c=cc~cc~ooccccoooooooocc~c~ccccoccoooocccccccccccccooo>",
+   "cccccccccccccccooccccccooooccccc~occoccooooccooccccccccccco>",
+   "cccccccooooccccooooccccccooooccccoooooccooccoooooooccooocccc",
+   "cccccc=ooooooooooooooooccccccocccoooooccccccoooooooccooooocc",
+   "ccccccc=oooooooooooooooooccccooccoooooooccoooooooooooooooooo",
+   "ccccccc=ooooooooooooooooooooooooooooooooooooooooooooooooooo>"
   ],
   "exits": {
    "<": "DEWFORD_TOWN",
    ">": "HOENN_ROUTE_108"
   },
+  "buildings": {},
+  "roofs": {
+   "_picture": {
+    "f": "em_ground/0_22.png",
+    "at": [
+     0,
+     0
+    ]
+   },
+   "_signs_in_picture": true,
+   "_buildings_in_picture": true
+  },
   "trainer_spots": [
    "Swimmer Tony",
    "Swimmer Denise",
    "Swimmer Darrin"
+  ],
+  "edge_to": {
+   "0,8": [
+    19,
+    8
+   ],
+   "0,9": [
+    19,
+    9
+   ],
+   "0,10": [
+    19,
+    10
+   ],
+   "0,11": [
+    19,
+    11
+   ],
+   "59,4": [
+    0,
+    4
+   ],
+   "59,5": [
+    0,
+    5
+   ],
+   "59,6": [
+    0,
+    6
+   ],
+   "59,7": [
+    0,
+    7
+   ],
+   "59,8": [
+    0,
+    8
+   ],
+   "59,9": [
+    0,
+    9
+   ],
+   "59,10": [
+    0,
+    10
+   ],
+   "59,11": [
+    0,
+    11
+   ],
+   "59,12": [
+    0,
+    12
+   ],
+   "59,13": [
+    0,
+    13
+   ],
+   "59,14": [
+    0,
+    14
+   ],
+   "59,15": [
+    0,
+    15
+   ],
+   "59,19": [
+    0,
+    19
+   ]
+  },
+  "parts": true,
+  "overheads": [
+   {
+    "kind": "picture",
+    "f": "em_top/0_22.png",
+    "at": [
+     0,
+     0
+    ],
+    "size": [
+     60,
+     20
+    ]
+   }
   ]
  },
  "HOENN_NEW_MAUVILLE": {
@@ -103101,6 +103345,1090 @@
    ""
   ],
   "pool": "NO_WILD_INDOORS_PERCENTAGES"
+ },
+ "HOENN_ABANDONED_SHIP": {
+  "floors": [
+   {
+    "art": [
+     "ccccccccccccccccccccccc",
+     "ccccccccccccccccccccccc",
+     "ccccccccccccccccccccccc",
+     "ccccccccccccccccccccccc",
+     "ccccccccccccccccccccccc",
+     "cccccccccccc1cccccccccc",
+     "ccccccccc.....ccccccccc",
+     "cccccccccc..ccccccccccc",
+     "cccccccccc..ccccccccccc",
+     "cccccccc1c..c1ccccccccc",
+     "ccccccc....c...cccccccc",
+     "cccccccc....c...ccccccc",
+     "ccccccccccccc..cccccccc",
+     "ccccccccccccc..cccccccc",
+     "ccccccccccccc..cccccccc",
+     "cccccccccccccnncccccccc",
+     "ccccccccccccccccccccccc",
+     "ccccccccccccccccccccccc",
+     "~cccccccccccccccccccccc",
+     "~~~~~~~~~cccccccccccccc",
+     "~~~~~~~~~~~~~~~~~~~~~~~"
+    ],
+    "exits": {
+     "n": "HOENN_ROUTE_108"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/24_54.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "links": {
+     "13,9": [
+      1,
+      8,
+      11
+     ],
+     "8,9": [
+      1,
+      0,
+      11
+     ],
+     "12,5": [
+      4,
+      7,
+      6
+     ]
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/24_54.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       23,
+       21
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "cccccccccccccccccc",
+     "cccccccccccccccccc",
+     ".....1ccc.......1c",
+     "...1...c...1..1...",
+     "c.ccc..c..cccccc..",
+     "..ccc..c..cccccc..",
+     "..ccc..c..cccccc..",
+     "..ccc..c..cccccc.N",
+     "c.ccc..c..c.cccc..",
+     "..c1c..c..c1cc1c.c",
+     ".....X.c..........",
+     "11.....c11........"
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/24_55.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Excited kid",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Isn't this place great? Just being here gets me all excited!"
+       ]
+      }
+     }
+    ],
+    "trainer_spots": [
+     "Swimmer Charlie"
+    ],
+    "links": {
+     "9,11": [
+      0,
+      13,
+      9
+     ],
+     "8,11": [
+      0,
+      13,
+      9
+     ],
+     "0,11": [
+      0,
+      8,
+      9
+     ],
+     "1,11": [
+      0,
+      8,
+      9
+     ],
+     "11,9": [
+      2,
+      4,
+      16
+     ],
+     "14,9": [
+      2,
+      13,
+      16
+     ],
+     "11,3": [
+      2,
+      4,
+      1
+     ],
+     "14,3": [
+      2,
+      13,
+      1
+     ],
+     "3,9": [
+      3,
+      4,
+      16
+     ],
+     "16,2": [
+      5,
+      8,
+      2
+     ],
+     "5,2": [
+      5,
+      0,
+      2
+     ],
+     "3,3": [
+      3,
+      4,
+      1
+     ]
+    },
+    "moves": {
+     "17,7": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     }
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/24_55.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       18,
+       12
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "cccccccccccccccccc",
+     "cccc1cccccccc1cccc",
+     "c.......cccc.....c",
+     "c.......cccc....cc",
+     "cc......cc.......c",
+     "c.......cc..N....c",
+     "c.c.....ccc......c",
+     "c.......cc.......c",
+     "ccccccccccccc.cccc",
+     "ccccccccccccc.cccc",
+     "ccccccccccccc.cccc",
+     "ccc.....ccX....ccc",
+     "ccc.....cc.....ccc",
+     "c...c............c",
+     "c.......cc.cc...cc",
+     "c.......cc.cc....c",
+     "cc..11..ccX..11..c"
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/24_56.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Sightseer",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "You don't see ships like this anymore. I'm just looking around... nothing more."
+       ]
+      }
+     }
+    ],
+    "trainer_spots": [
+     "Beauty Thalia",
+     "Youngster Demetrius"
+    ],
+    "links": {
+     "4,16": [
+      1,
+      11,
+      9
+     ],
+     "5,16": [
+      1,
+      11,
+      9
+     ],
+     "4,1": [
+      1,
+      11,
+      3
+     ],
+     "13,16": [
+      1,
+      14,
+      9
+     ],
+     "13,1": [
+      1,
+      14,
+      3
+     ],
+     "14,16": [
+      1,
+      14,
+      9
+     ]
+    },
+    "moves": {
+     "12,5": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     }
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/24_56.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       18,
+       17
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "ccccccccc",
+     "cccc1cccc",
+     "cccX...Xc",
+     "ccc.....c",
+     "c...N...c",
+     "c.......c",
+     "c..c....c",
+     "c.......c",
+     "cccc.cccc",
+     "cccc.cccc",
+     "cccc.cccc",
+     "c.......c",
+     "c.......c",
+     "c.cc....c",
+     "c.cc....c",
+     "c.......c",
+     "c...11..c"
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/24_62.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "REVIVE"
+    ],
+    "trainer_spots": [
+     "Ruin Maniac Garrison",
+     "Swimmer Jani"
+    ],
+    "links": {
+     "4,16": [
+      1,
+      3,
+      9
+     ],
+     "5,16": [
+      1,
+      3,
+      9
+     ],
+     "4,1": [
+      1,
+      3,
+      3
+     ]
+    },
+    "moves": {
+     "4,4": {
+      "m": "look",
+      "d": "udlr"
+     }
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/24_62.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       9,
+       17
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "ccccccccc",
+     "ccccccccc",
+     ".......cc",
+     "c........",
+     "c..N.....",
+     "...cc....",
+     "N..cc..11"
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/24_63.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Researcher",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "This ship is the S.S. Cactus, from long ago. Captain Stern asked me to look it over.",
+        "He wants a Scanner found too, but I haven't had any luck."
+       ]
+      }
+     },
+     "STORAGE KEY"
+    ],
+    "links": {
+     "7,6": [
+      0,
+      12,
+      5
+     ],
+     "8,6": [
+      0,
+      12,
+      5
+     ]
+    },
+    "moves": {
+     "3,4": {
+      "m": "face",
+      "d": "d"
+     },
+     "0,6": {
+      "m": "look",
+      "d": "udlr"
+     }
+    }
+   },
+   {
+    "art": [
+     "ccccccccccccc",
+     "ccccccccccccc",
+     "1ccccccc1cccc",
+     "..cccc.c..ccc",
+     "..c1cc1c..c1c",
+     ".............",
+     ".........X..c",
+     ".....1..1..1.",
+     "c.N.ccccccccc",
+     "....ccccccccc"
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/24_57.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Tuber",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Yay! A real ship!"
+       ]
+      }
+     }
+    ],
+    "trainer_spots": [
+     "Sailor Duncan"
+    ],
+    "links": {
+     "6,4": [
+      7,
+      13,
+      7
+     ],
+     "3,4": [
+      7,
+      4,
+      7
+     ],
+     "5,7": [
+      6,
+      4,
+      1
+     ],
+     "8,7": [
+      6,
+      13,
+      1
+     ],
+     "11,7": [
+      6,
+      22,
+      1
+     ],
+     "11,4": [
+      8,
+      4,
+      7
+     ],
+     "0,2": [
+      1,
+      5,
+      2
+     ],
+     "8,2": [
+      1,
+      16,
+      2
+     ]
+    },
+    "moves": {
+     "2,8": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     }
+    },
+    "barred": [
+     {
+      "tiles": [
+       [
+        11,
+        4
+       ]
+      ],
+      "look": "unseen",
+      "item": "STORAGE_KEY",
+      "lines": [
+       "The door is locked. A sign on it reads \"Storage\"."
+      ]
+     }
+    ],
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/24_57.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       13,
+       10
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "cccc.ccccccccccccccccc.cccc",
+     "cccc1cccccccc1cccccccc1cccc",
+     "ccc...cccccc.....cccc...ccc",
+     "ccc...cccccc.....cccc...ccc",
+     "c.......cc......ccc.......c",
+     "c.cc...ccc.ooooo.cc.......c",
+     "c.cc....cc.oo:oo.cc.....cNc",
+     "cc....N.cc.o:::o.cc......cc"
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/24_58.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Queasy man",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Ugh... I feel seasick just standing on this ship. And it isn't even moving..."
+       ]
+      }
+     },
+     "ESCAPE ROPE"
+    ],
+    "links": {
+     "4,1": [
+      5,
+      5,
+      7
+     ],
+     "13,1": [
+      5,
+      8,
+      7
+     ],
+     "22,1": [
+      5,
+      11,
+      7
+     ]
+    },
+    "moves": {
+     "25,6": {
+      "m": "face",
+      "d": "l"
+     },
+     "6,7": {
+      "m": "look",
+      "d": "udlr"
+     }
+    },
+    "dive": 9,
+    "dive_at": [
+     1,
+     10
+    ],
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/24_58.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       27,
+       8
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "cccccccccccccccccc",
+     "cccccccccccccccccc",
+     "ccc.....cccc...ccc",
+     "ccc..ccccccc.N.ccc",
+     "c..N.cc..........c",
+     "c.......cc......cc",
+     "cc......ccc......c",
+     "c...11.ccc...11..c"
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/24_59.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "DIVE BALL",
+     {
+      "text": "Treasure hunter",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "This is the perfect place to explore! I bet there's treasure hidden on board."
+       ]
+      }
+     }
+    ],
+    "links": {
+     "4,7": [
+      5,
+      3,
+      4
+     ],
+     "5,7": [
+      5,
+      3,
+      4
+     ],
+     "13,7": [
+      5,
+      6,
+      4
+     ],
+     "14,7": [
+      5,
+      6,
+      4
+     ]
+    },
+    "moves": {
+     "3,4": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     },
+     "13,3": {
+      "m": "look",
+      "d": "udlr"
+     }
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/24_59.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       18,
+       8
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "ccccccccc",
+     "ccccccccc",
+     "c.......c",
+     "c.......c",
+     "c...N...c",
+     "c.......c",
+     "c.......c",
+     "c...11.cc"
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/24_61.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "TM115 ICE BEAM"
+    ],
+    "links": {
+     "4,7": [
+      5,
+      11,
+      4
+     ],
+     "5,7": [
+      5,
+      11,
+      4
+     ]
+    },
+    "moves": {
+     "4,4": {
+      "m": "look",
+      "d": "udlr"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/24_61.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       9,
+       8
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "ccccccccccccc",
+     "ccccccccccccc",
+     ".............",
+     "c..1..1..1...",
+     "..ccccccccc.c",
+     "c.ccccccccc..",
+     "..ccccccccc..",
+     "..ccccccccc..",
+     "ooc1cc1cc1c..",
+     ":oo..........",
+     "::o.........."
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/24_65.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "links": {
+     "3,8": [
+      10,
+      6,
+      14
+     ],
+     "6,8": [
+      10,
+      21,
+      14
+     ],
+     "9,8": [
+      10,
+      36,
+      14
+     ],
+     "3,3": [
+      10,
+      6,
+      1
+     ],
+     "6,3": [
+      10,
+      21,
+      1
+     ],
+     "9,3": [
+      10,
+      36,
+      1
+     ]
+    },
+    "barred": [
+     {
+      "tiles": [
+       [
+        3,
+        8
+       ]
+      ],
+      "look": "unseen",
+      "item": "RM_1_KEY",
+      "lines": [
+       "The door is locked. A sign on it reads \"Rm. 1\"."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        6,
+        8
+       ]
+      ],
+      "look": "unseen",
+      "item": "RM_2_KEY",
+      "lines": [
+       "The door is locked. A sign on it reads \"Rm. 2\"."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        3,
+        3
+       ]
+      ],
+      "look": "unseen",
+      "item": "RM_4_KEY",
+      "lines": [
+       "The door is locked. A sign on it reads \"Rm. 4\"."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        9,
+        3
+       ]
+      ],
+      "look": "unseen",
+      "item": "RM_6_KEY",
+      "lines": [
+       "The door is locked. A sign on it reads \"Rm. 6\"."
+      ]
+     }
+    ],
+    "dive": 6,
+    "dive_at": [
+     13,
+     7
+    ],
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/24_65.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       13,
+       11
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "ccccccccccccccccccccc.cccccccccccccccccccccc",
+     "cccccc1cccccccccccccc1cccccccccccccc1ccccccc",
+     "cc...........cc...ccc.cc....cc..........cc.c",
+     "c...........cccc..cc.ccc.........c......cc.c",
+     "c..cc........cc.............cc...........N.c",
+     "cc.cc........cc.............ccc.cc....c....c",
+     "c............cc.............cc..cc........cc",
+     "cccccccccccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccccccccccc",
+     "c......c.....cc.N...........cc..........cc.c",
+     "c....N....cc.cc..........c.ccccN...cc...cc.c",
+     "c.........cc.cc.............cc.....cc......c",
+     "cc...........cc.cc..........cc............cc",
+     "c.....11....ccc.cc...11.....cc...c..11.....c"
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/24_66.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "LUXURY BALL",
+     "SCANNER",
+     "TM33 RAIN DANCE",
+     "WATER STONE"
+    ],
+    "links": {
+     "6,14": [
+      9,
+      3,
+      8
+     ],
+     "7,14": [
+      9,
+      3,
+      8
+     ],
+     "21,14": [
+      9,
+      6,
+      8
+     ],
+     "22,14": [
+      9,
+      6,
+      8
+     ],
+     "36,14": [
+      9,
+      9,
+      8
+     ],
+     "37,14": [
+      9,
+      9,
+      8
+     ],
+     "6,1": [
+      9,
+      3,
+      3
+     ],
+     "21,1": [
+      9,
+      6,
+      3
+     ],
+     "36,1": [
+      9,
+      9,
+      3
+     ]
+    },
+    "moves": {
+     "41,4": {
+      "m": "look",
+      "d": "udlr"
+     },
+     "16,10": {
+      "m": "look",
+      "d": "udlr"
+     },
+     "5,11": {
+      "m": "look",
+      "d": "udlr"
+     },
+     "31,11": {
+      "m": "look",
+      "d": "udlr"
+     }
+    },
+    "hidden": {
+     "42,10": "RM_1_KEY",
+     "20,5": "RM_2_KEY",
+     "1,12": "RM_4_KEY",
+     "1,2": "RM_6_KEY"
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/24_66.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       44,
+       15
+      ]
+     }
+    ]
+   }
+  ],
+  "floor_names": [
+   "The deck",
+   "1F corridors",
+   "1F cabins",
+   "1F west cabins",
+   "Captain's Office",
+   "B1F corridors",
+   "B1F cabins",
+   "B1F east cabins",
+   "The storeroom",
+   "The hidden floor",
+   "The hidden cabins"
+  ],
+  "figure_floors": {
+   "Swimmer Charlie": 1,
+   "Beauty Thalia": 2,
+   "Youngster Demetrius": 2,
+   "Ruin Maniac Garrison": 3,
+   "Swimmer Jani": 3,
+   "Sailor Duncan": 5
+  }
  },
  "TWINLEAF_TOWN": {
   "art": [

@@ -941,7 +941,7 @@
       "sheet": "em_33.png"
     },
     "PETALBURG_CITY:Talk to Dad": {
-      "sheet": "em_25.png"
+      "sheet": "em_129.png"
     },
     "PETALBURG_CITY:Gentleman": {
       "sheet": "em_48.png"
@@ -2628,6 +2628,54 @@
     },
     "SOOTOPOLIS_CITY:Poké Fan Marissa": {
       "sheet": "em_18.png"
+    },
+    "HOENN_ROUTE_108:STAR PIECE": {
+      "item": "STAR_PIECE"
+    },
+    "HOENN_ABANDONED_SHIP:Excited kid": {
+      "sheet": "em_35.png"
+    },
+    "HOENN_ABANDONED_SHIP:Sightseer": {
+      "sheet": "em_48.png"
+    },
+    "HOENN_ABANDONED_SHIP:REVIVE": {
+      "item": "REVIVE"
+    },
+    "HOENN_ABANDONED_SHIP:Researcher": {
+      "sheet": "em_46.png"
+    },
+    "HOENN_ABANDONED_SHIP:STORAGE KEY": {
+      "item": "STORAGE_KEY"
+    },
+    "HOENN_ABANDONED_SHIP:Tuber": {
+      "sheet": "em_54.png"
+    },
+    "HOENN_ABANDONED_SHIP:Queasy man": {
+      "sheet": "em_17.png"
+    },
+    "HOENN_ABANDONED_SHIP:ESCAPE ROPE": {
+      "item": "ESCAPE_ROPE"
+    },
+    "HOENN_ABANDONED_SHIP:DIVE BALL": {
+      "item": "DIVE_BALL"
+    },
+    "HOENN_ABANDONED_SHIP:Treasure hunter": {
+      "sheet": "em_31.png"
+    },
+    "HOENN_ABANDONED_SHIP:TM115 ICE BEAM": {
+      "item": "TM115"
+    },
+    "HOENN_ABANDONED_SHIP:LUXURY BALL": {
+      "item": "LUXURY_BALL"
+    },
+    "HOENN_ABANDONED_SHIP:SCANNER": {
+      "item": "SCANNER"
+    },
+    "HOENN_ABANDONED_SHIP:TM33 RAIN DANCE": {
+      "item": "TM33"
+    },
+    "HOENN_ABANDONED_SHIP:WATER STONE": {
+      "item": "WATER_STONE"
     }
   },
   "townsperson": "NPC 17.png",

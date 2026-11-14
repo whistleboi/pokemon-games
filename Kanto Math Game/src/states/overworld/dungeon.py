@@ -350,7 +350,7 @@ def art_recipe(m):
         out["legend"] = {}
         for i, p in enumerate(parts):  # (each floor's own legend, under its own keys)
             out["layout"][i] = {"map": p["layout"][0]["map"], "legend": p["legend"]}
-            for k in ("dive", "surface", "pool", "exit_order", "indoors"):  # (Dive: the seabed floor under this one, the surface over it, its own wild Pokemon)
+            for k in ("dive", "dive_at", "surface", "pool", "exit_order", "indoors"):  # (Dive: the seabed floor under this one, the surface over it, its own wild Pokemon)
                 if m["floors"][i].get(k) is not None:
                     out["layout"][i][k] = m["floors"][i][k]
         out["floors"] = len(parts)
@@ -1025,6 +1025,9 @@ class DungeonState(OverworldBattles, PlayState):
             mo = self._motion(m)
             if mo is None:
                 continue
+            if mo.gone:  # (sent away after a scene, out of view: npc.Scenes.sweep)
+                self.run.remove(m)
+                continue
             if mo.kind == "still" and mo.idle() and mo.emote == 0 and not mo.hold:
                 continue
             turned = mo.tick(lambda t, m=m: self._npc_free(t, m))
@@ -1037,6 +1040,7 @@ class DungeonState(OverworldBattles, PlayState):
                 self._meet_trainer(m, spotted=True)  # (it turned your way, or walked into view: it's seen you)
                 return
         sc = self._scenes()
+        sc.sweep()
         if sc.busy():
             sc.tick()
         elif self._ready() and not self.walk_goal:
@@ -1062,6 +1066,12 @@ class DungeonState(OverworldBattles, PlayState):
     def npc_person(self, who):
         m = self._scene_mover(who)
         return self._motion(m) if m is not None else None
+
+    def npc_cue(self):
+        """A story scene starts: the alert chime (src/dungeon/npc.py Scenes.start)."""
+        snd = getattr(self.game.assets, "alert_sfx", None)
+        if snd:
+            snd.play()
 
     def npc_player(self):
         return tuple(self.run.player)
@@ -1285,8 +1295,14 @@ class DungeonState(OverworldBattles, PlayState):
         if self.game.story_manager.inventory.get("HM_DIVE", 0) <= 0:
             self.say(["The sea is deep and dark here.", "A Pokemon could DIVE down to the seabed."])
             return
-        to, spot = self._plan()["dive"], self.run.player
+        plan = self._plan()
+        to, spot = plan["dive"], tuple(plan.get("dive_at") or self.run.player)   # (dive_at: you swim through to a spot of its own: the Abandoned Ship's flooded cabin, to its hidden floor)
         below = self.run.made(to)
+        if plan.get("dive_at") and below.mover_at(*spot):   # (someone's on the spot you come up on: the nearest free one)
+            near = sorted(((x, y) for y in range(spot[1] - 2, spot[1] + 3) for x in range(spot[0] - 2, spot[0] + 3)
+                           if below.walkable(x, y) and not below.mover_at(x, y)),
+                          key=lambda t: abs(t[0] - spot[0]) + abs(t[1] - spot[1]))
+            spot = near[0] if near else spot
         if not below.walkable(*spot) or below.mover_at(*spot):
             self.flash("There's rock right under you here.", 100)
             return
@@ -1294,7 +1310,7 @@ class DungeonState(OverworldBattles, PlayState):
         self.run.jump_floor(to, spot)
         self.partner = self.partner_from = spot
         self._floor_surf = None
-        self.flash("You dived down to the seabed!", 110)
+        self.flash("You dived down and swam through to somewhere else!" if plan.get("dive_at") else "You dived down to the seabed!", 110)
 
     def surface_here(self):
         """On the seabed: back up to the sea right above you (only where there's open water overhead)."""
@@ -1569,6 +1585,7 @@ class DungeonState(OverworldBattles, PlayState):
             self.partner_from, self.partner = self.partner, before  # it steps where you were
             self.steps += 1
             self._lap_step()
+            self._hidden_item(self.run.player)
             self._copy_step(dx, dy)
             self._note_area()
             self._contest_tick()
@@ -1838,6 +1855,25 @@ class DungeonState(OverworldBattles, PlayState):
         if self.game.assets.heal_sfx:
             self.game.assets.heal_sfx.play()
         self.flash(f"You found a {name}!")
+
+    def _hidden_item(self, t):
+        """An item hidden on this floor (a map's "hidden" {"x,y": item}, the game's own hidden items): found by stepping on
+        its spot, or by walking into it where the spot is solid. Once each."""
+        m = self.run.recipe.get("art") or {}
+        if m.get("floors"):
+            m = m["floors"][self.run.index] if self.run.index < len(m["floors"]) else {}
+        item = (m.get("hidden") or {}).get(f"{t[0]},{t[1]}")
+        story = self.game.story_manager
+        flag = f"hidden_{self.area_key}_{self.run.index}_{t[0]}_{t[1]}"
+        if not item or story.story_flags.get(flag):
+            return False
+        story.story_flags[flag] = True
+        story.add_item(item)
+        if self.game.assets.heal_sfx:
+            self.game.assets.heal_sfx.play()
+        self.walk_goal = None
+        self.say([f"Something was hidden here... You found a {forms.item_label(item).upper()}!"])
+        return True
 
     def _pick_up_tm(self, spot):
         story = self.game.story_manager
@@ -2598,6 +2634,8 @@ class DungeonState(OverworldBattles, PlayState):
         m = self.run.recipe.get("art") or {}
         if m.get("floors"):  # (a map of floors: this floor's signs)
             m = dict(m, signs=m["floors"][self.run.index].get("signs", []))
+        if self._hidden_item(t):  # (an item hidden in something solid: the Abandoned Ship's Rm. 6 Key)
+            return True
         if what.startswith("whirl:"):  # a whirlpool in the way: Whirlpool clears it
             self._whirlpool(t)
             return True
@@ -3488,8 +3526,11 @@ class DungeonState(OverworldBattles, PlayState):
         me = self._player_img()
         drawn = []  # (bottom, image, rect): the lower one in front
         surfing = self._on_surf() or (self.anim > 0 and self._on_surf(self.anim_from))
+        _mine = len(drawn)   # (from here: you and your Pokemon, drawn again over the top layer while you're up on a bridge)
+        _partner_at = None
         if lead and self.partner != self.run.player and me is not None and not self._backdrop and not surfing:
             # (a battle draws its own; while you surf your Pokemon is the one carrying you)
+            _partner_at = len(drawn)
             (fx, fy), (tx, ty) = self.partner_from, self.partner
             pk = k
             r = pygame.Rect(int(ox + (fx + (tx - fx) * pk) * TILE), int(oy + (fy + (ty - fy) * pk) * TILE), TILE, TILE)
@@ -3517,6 +3558,7 @@ class DungeonState(OverworldBattles, PlayState):
         elif lead:  # (no trainer sprite: your lead Pokemon walks for you)
             img = self._icon(lead, TILE + 8, flip=(self.facing[0] > 0), facing=self.facing)
             drawn.append((pr.bottom, img, img.get_rect(center=(pr.centerx, pr.centery - 4))))
+        _me_drawn = drawn[_mine:]
         wk = getattr(self, "_walker", None)
         if wk:  # (someone walking up to you: between two tiles of their path)
             i = min(int(wk["i"]), len(wk["path"]) - 1)
@@ -3555,6 +3597,14 @@ class DungeonState(OverworldBattles, PlayState):
                     _art.bridge(screen, at(*t), "|" if spans[t] == (0, 1) else ";")
         for img, (bx, by) in self._overheads():  # (what passes over your head: you walk under it, out of view)
             screen.blit(img, (ox + bx, oy + by))
+        if spans and self.run.deck and _pic:   # (up on a bridge of a map drawn from its game's picture (Route 120's): the
+            _here = {self.run.player, self.anim_from if self.anim > 0 else self.run.player}   # bridge's top layer is under you)
+            if _here & set(spans):
+                _pt = {self.partner, self.partner_from}
+                for _i, (_b, img, rect) in sorted(enumerate(_me_drawn), key=lambda e: e[1][0]):
+                    if _partner_at is not None and _i == _partner_at - _mine and not (_pt & set(spans)):
+                        continue   # (your Pokemon, still on the bank: under the top layer as before)
+                    screen.blit(img, rect)
         # the fog: unseen tiles are dark, seen ones you can't see right now are dimmed
         fog = pygame.Surface((TILE, TILE), pygame.SRCALPHA)
         fog.fill((10, 14, 24, 150))

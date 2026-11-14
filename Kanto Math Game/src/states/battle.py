@@ -1854,7 +1854,8 @@ class TrainerBattleState(GimmickEffects, AbilityEffects, MoveEffects, GameState)
                     msgs.append(f"You already have the {item.replace('_', ' ').title()}!")
                     msgs.append("You received 2 RARE CANDYs instead!")
                 else:
-                    name = item.replace("_", " ").title()
+                    from src.pokemon import tms as _tms
+                    name = _tms.label(self.game, item) if _tms.is_tm(item) else item.replace("_", " ").title()   # ("TM48 Rock Tomb")
                     if qty == 1:
                         msgs.append(f"You received {name}!")
                     else:

@@ -191,6 +191,46 @@
   "gift": true,
   "from": "Emerald TM21: Pacifidlog's man, for a Pokemon that doesn't"
  },
+ "TM115": {
+  "move": "ICE-BEAM",
+  "type": "ICE",
+  "tier": 8,
+  "price": 3000,
+  "gift": true,
+  "from": "Emerald TM13: the Abandoned Ship's storeroom (the Storage Key)"
+ },
+ "TM116": {
+  "move": "BULK-UP",
+  "type": "FIGHTING",
+  "tier": 8,
+  "price": 3000,
+  "gift": true,
+  "from": "ORAS TM08: Brawly, for the Knuckle Badge"
+ },
+ "TM117": {
+  "move": "OVERHEAT",
+  "type": "FIRE",
+  "tier": 8,
+  "price": 3000,
+  "gift": true,
+  "from": "ORAS TM50: Flannery, for the Heat Badge"
+ },
+ "TM118": {
+  "move": "ROOST",
+  "type": "FLYING",
+  "tier": 8,
+  "price": 3000,
+  "gift": true,
+  "from": "ORAS TM19: Winona, for the Feather Badge"
+ },
+ "TM119": {
+  "move": "CALM-MIND",
+  "type": "PSYCHIC",
+  "tier": 8,
+  "price": 3000,
+  "gift": true,
+  "from": "ORAS TM04: Tate & Liza, for the Mind Badge"
+ },
  "TM12": {
   "move": "SOLAR-BLADE",
   "type": "GRASS",

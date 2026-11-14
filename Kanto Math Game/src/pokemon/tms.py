@@ -15,6 +15,9 @@ import os
 import random
 
 TRAINER_CHANCE = 0.35
+# Regions whose maps carry their games' own TMs (on the ground, from people) and whose Leaders give their own (Jordan,
+# 11-13: Hoenn, from Emerald / ORAS): no random TMs from battles there.
+REAL_TM_REGIONS = {"HOENN"}
 LEADER_CLASSES = ("GYM_LEADER", "ELITE_FOUR", "CHAMPION")
 
 
@@ -111,6 +114,8 @@ def reward(game, badges, trainer_class, team_types=(), rng=random):
     """A TM a battle win gives (None if none): every Leader / Elite Four / Champion gives one (of
     its type when there's one left), route trainers TRAINER_CHANCE of the time."""
     if trainer_class in (None, "WILD"):
+        return None
+    if game.story_manager.get_current_region() in REAL_TM_REGIONS:
         return None
     leader = trainer_class in LEADER_CLASSES
     if not leader and rng.random() >= TRAINER_CHANCE:

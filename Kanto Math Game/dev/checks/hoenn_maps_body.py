@@ -2086,5 +2086,169 @@ check(any("Phoebe:" in x for x in _said26b) and not story.story_flags.get("leagu
 story.badges.clear(); story.badges.update(_badges26)
 story.story_flags.clear(); story.story_flags.update(_saved26)
 
+# ---- batch 22 (11-13): Routes 107-108 and the Abandoned Ship (Emerald's S.S. Cactus): its locks, its Dive, hidden items
+_tm22 = json.load(open("assets/town_maps.json", encoding="utf-8"))
+_sp22 = g.loader.area_data["STORY_PROGRESSION"]
+_r108 = _tm22["HOENN_ROUTE_108"]
+check(_r108["exits"].get("n") == "HOENN_ABANDONED_SHIP" and _r108.get("hidden") == {"38,14": "RARE_CANDY"},
+      f"Route 108: the Abandoned Ship's door, and Emerald's hidden Rare Candy on the rock ({_r108.get('hidden')})")
+_saved22 = dict(story.story_flags); _inv22 = dict(story.inventory)
+for _k in ("STORAGE_KEY", "RM_1_KEY", "RM_6_KEY", "SCANNER"):
+    story.inventory.pop(_k, None)
+story.inventory.update({"HM_SURF": 1, "HM_DIVE": 1})
+st = open_map("HOENN_ABANDONED_SHIP", "HOENN_ROUTE_108")
+check(st.run.index == 0, f"Abandoned Ship: in from Route 108 onto the deck (floor {st.run.index})")
+st.run.jump_floor(5, (11, 5)); _calm(st); st.anim = 0
+st.step(0, -1)
+_said = _play(st, 300)
+_shut = st.run.index == 5 and any("Storage" in x for x in _said)
+story.inventory["STORAGE_KEY"] = 1
+st.run.player, st.anim = (11, 5), 0
+st.step(0, -1)
+_play(st, 300)
+check(_shut and st.run.index == 8, f"Abandoned Ship: the storeroom's door is locked till you have the Storage Key ({_said[:1]}, floor {st.run.index})")
+st.run.jump_floor(6, (13, 6)); _calm(st); st.anim = 0
+_below22 = st.run.made(9)
+_below22.movers = [m for m in _below22.movers if m.kind != "wild"]   # (a wild Pokemon may stand anywhere: on the spot you come up on, too)
+_act = st._act_here()
+if _act:
+    _act[1]()
+_play(st, 200)
+_down = (st.run.index, tuple(st.run.player))
+_calm(st)
+_act2 = st._act_here()
+if _act2:
+    _act2[1]()
+_play(st, 200)
+check(_act and _act[0] == "DIVE" and _down == (9, (1, 10)) and st.run.index == 6 and tuple(st.run.player) == (13, 7),
+      f"Abandoned Ship: Dive in the flooded cabin and come up on the hidden floor, and back ({_down}, {st.run.index} {st.run.player})")
+from src.dungeon import core as _core22
+_blocker = _core22.Mover("figure", 1, 10, payload={"text": "blocker"})
+st.run.made(9).movers.append(_blocker)
+st.run.jump_floor(6, (13, 6)); st.anim = 0
+st.dive_here()   # (no frames drawn: the stand-in has no picture)
+_up = (st.run.index, tuple(st.run.player))
+st.run.made(9).movers.remove(_blocker)
+check(_up[0] == 9 and _up[1] != (1, 10) and abs(_up[1][0] - 1) + abs(_up[1][1] - 10) <= 2,
+      f"Abandoned Ship: someone on the spot you'd come up on: you come up beside them instead ({_up})")
+st.run.jump_floor(9, (3, 9)); _calm(st); st.anim = 0
+st.step(0, -1)
+_said = _play(st, 300)
+_shut = st.run.index == 9 and any("Rm. 1" in x for x in _said)
+st.run.jump_floor(10, (42, 11)); _calm(st); st.anim = 0
+st.step(0, -1)
+_said = _play(st, 300)
+_got = story.inventory.get("RM_1_KEY", 0) == 1 and any("Rm 1 Key".upper() in x for x in _said)
+st.run.player, st.anim = (42, 11), 0
+st.step(0, -1)
+_play(st, 100)
+st.run.player, st.anim = (42, 11), 0
+st.step(0, -1)
+_twice = story.inventory.get("RM_1_KEY", 0) == 1
+check(_shut and _got and _twice, f"Abandoned Ship: Rm. 1 is locked; its key is hidden in room 3, found by stepping on it, once ({_said[-1:]})")
+st.run.player, st.anim = (1, 3), 0
+st.step(0, -1)
+_said = _play(st, 300)
+check(story.inventory.get("RM_6_KEY", 0) == 1, f"Abandoned Ship: the Rm. 6 Key hidden in solid furniture: walk into it to find it ({_said[-1:]})")
+st.run.jump_floor(9, (3, 9)); _calm(st); st.anim = 0
+st.step(0, -1)
+_play(st, 300)
+check(st.run.index == 10, f"Abandoned Ship: with the Rm. 1 Key, through to its cabin (floor {st.run.index})")
+_ship = _sp22["HOENN_ABANDONED_SHIP"]
+_scan = next(o for o in _ship["route_menu"] if o.get("text") == "SCANNER")
+_stern = [o for o in _sp22["SLATEPORT_CITY"].get("travel_options", []) + _sp22["SLATEPORT_CITY"].get("explore_options", []) if o.get("door") == "shipyard" and (o.get("event") or {}).get("take_item")]
+check(_scan["event"]["flag"] == "abandoned_ship_cleared" and len(_stern) == 2
+      and {next(iter(o["event"]["gift_item"])) for o in _stern} == {"DEEP_SEA_TOOTH", "DEEP_SEA_SCALE"}
+      and "SCANNER" in _tm22["HOENN_ABANDONED_SHIP"]["floors"][10]["people"],
+      "Abandoned Ship: the Scanner in room 2 (the mission); Captain Stern trades it for a DeepSeaTooth or DeepSeaScale")
+story.story_flags.clear(); story.story_flags.update(_saved22)
+story.inventory.clear(); story.inventory.update(_inv22)
+
+# ---- Route 120's pond bridges: up on one, you're drawn over the bridge's top layer (11-13, Jordan: "walking under the bridge")
+_a120 = _tm22["HOENN_ROUTE_120"]["art"]
+_b120 = [(x, y) for y, r in enumerate(_a120) for x, c in enumerate(r) if c == ";"]
+st = open_map("HOENN_ROUTE_120", "FORTREE_CITY")
+_calm(st)
+_bx, _by = _b120[len(_b120) // 2]
+st.run.floor.seen |= {(x, y) for x in range(st.run.floor.w) for y in range(st.run.floor.h)}
+st.run.player, st.anim, st.banner = (_bx, _by), 0, 0
+st.partner = st.partner_from = (_bx, _by)
+st.run.deck = True; st.draw(); _on = pygame.Surface.copy(g.screen)
+st.run.deck = False; st.draw(); _under = pygame.Surface.copy(g.screen)
+st.run.deck = True
+_px = st._view().center
+_diff = sum(1 for dx in range(-14, 15, 2) for dy in range(-30, 10, 2) if _on.get_at((_px[0] + dx, _px[1] + dy)) != _under.get_at((_px[0] + dx, _px[1] + dy)))
+check(_diff > 20, f"Route 120: up on a pond bridge you're drawn over it; passing under, it hides you ({_diff} pixels differ)")
+# ---- the Regi caves' doors: solid rock till the Sealed Chamber's braille is read (Emerald's load scripts)
+from src.dungeon import art as _art22
+for _k, _cave, _door in (("HOENN_ROUTE_120", "HOENN_ANCIENT_TOMB", (7, 55)), ("HOENN_ROUTE_111", "HOENN_DESERT_RUINS", (29, 87)),
+                         ("HOENN_ROUTE_105", "HOENN_ISLAND_CAVE", (9, 20))):
+    story.story_flags.pop("regi_trio_awakened", None)
+    _pic = _tm22[_k]["roofs"]["_picture"]
+    _shut_pic = _art22._version_file(_pic)
+    st = open_map(_k, "HOENN_ROUTE_121" if _k == "HOENN_ROUTE_120" else "MAUVILLE_CITY" if _k == "HOENN_ROUTE_111" else "HOENN_ROUTE_104")
+    _calm(st)
+    st.run.player, st.anim = (_door[0], _door[1] + 1), 0
+    st.step(0, -1)
+    _said = _play(st, 300)
+    _kept = g.current_state is st and st.area_key == _k
+    story.story_flags["regi_trio_awakened"] = True
+    check(_shut_pic.endswith("_closed.png") and _kept and any("sealed shut" in x for x in _said)
+          and not _art22._version_file(_pic).endswith("_closed.png"),
+          f"{_k}: the {_cave[6:].replace('_', ' ').title()}'s door is solid rock till the Regis wake ({_shut_pic}, {_said[:1]})")
+story.story_flags.pop("regi_trio_awakened", None)
+
+# ---- 11-13 (Jordan): Norman outside his Gym only till the Wally scene, in his own sprite
+from src.states.overworld import CityState as _CS13
+_fig13 = json.load(open("assets/dungeon_sprites.json", encoding="utf-8"))["figures"].get("PETALBURG_CITY:Talk to Dad")
+story.story_flags["helped_wally"] = True
+st = open_map("PETALBURG_CITY", "HOENN_ROUTE_102")
+_out = [o.get("text") for o in st._people().values() if isinstance(o, dict)]
+check("Talk to Dad" not in _out and _fig13 == {"sheet": "em_129.png"},
+      f"Petalburg: once you've helped Wally, Norman is in his Gym, not standing outside it (his sprite {_fig13})")
+# ---- a scene's walk-off doesn't hold you; the one walking off is gone out of view; a chime as a scene starts
+class _Chime:
+    n = 0
+    def play(self):
+        _Chime.n += 1
+_snd13 = g.assets.alert_sfx
+g.assets.alert_sfx = _Chime()
+story.story_flags["woods_boss_defeated"] = True
+story.story_flags.pop("woods_researcher_left", None)
+st = open_map("HOENN_PETALBURG_WOODS", "HOENN_ROUTE_104")
+_calm(st)
+st.run.player, st.anim = (24, 18), 0
+_sc13 = st._scenes()
+_free_at, _last_line, _gone_at = None, None, None
+for _i in range(1500):
+    if g.current_state is not st:
+        break
+    _talk = st.dialogue_box.visible
+    if _talk:
+        _last_line = _i
+        st.dialogue_box.advance()
+    st.update(); st.draw()
+    if _last_line is not None and not _talk and _free_at is None and not _sc13.busy() and not st.dialogue_box.visible:
+        _free_at = _i
+    if _free_at is not None and st._scene_mover("Devon researcher") is None:
+        _gone_at = _i
+        break
+check(_Chime.n >= 1, f"Scenes: a chime plays as a scene starts, before anyone walks up ({_Chime.n})")
+check(_free_at is not None and _free_at - _last_line <= 3 and story.story_flags.get("woods_researcher_left"),
+      f"Petalburg Woods: once the researcher's done talking you can move straight away ({_free_at} vs {_last_line})")
+check(_gone_at is not None, f"Petalburg Woods: the researcher's gone once he's out of view ({_gone_at})")
+g.assets.alert_sfx = _snd13
+# ---- no random TMs from battles in Hoenn (its maps have the real ones); its Leaders give their own (ORAS)
+from src.pokemon import tms as _tms13
+story.current_area_key = "RUSTBORO_CITY"
+_none = [_tms13.reward(g, 3, c, ["ROCK"]) for c in ("GYM_LEADER", "TRAINER", "ELITE_FOUR") for _ in range(10)]
+_lead13 = {k: _sp22[k]["gym"]["leader"]["rewards"] for k in ("RUSTBORO_CITY", "DEWFORD_TOWN", "MAUVILLE_CITY", "LAVARIDGE_TOWN",
+                                                               "PETALBURG_CITY", "FORTREE_CITY", "MOSSDEEP_CITY")}
+_moves13 = sorted(_tms13.move_of(g, k) for r in _lead13.values() for k in r if _tms13.is_tm(k))
+check(not any(_none) and _moves13 == sorted(["ROCK-TOMB", "BULK-UP", "VOLT-SWITCH", "OVERHEAT", "RETALIATE", "ROOST", "CALM-MIND"]),
+      f"Hoenn: no random TMs from battles; each Leader gives their own ORAS TM ({_moves13})")
+story.current_area_key = "PALLET_TOWN"
+check(_tms13.reward(g, 3, "GYM_LEADER", ["ROCK"]) is not None, "Kanto still gives its Leaders' TMs the old way")
+
 story.story_flags.clear(); story.story_flags.update(_saved)
 print(f"##### {len(fails)} failures")

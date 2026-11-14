@@ -279,6 +279,7 @@ class WalkTownState(CityState):
         for home, mo in self.motions.items():
             if mo.pos in shown or mo.moving() or mo.path:
                 mo.tick(lambda t, mo=mo: self._npc_free(t, mo))
+        self.scenes.sweep()
         if self.scenes.busy():
             self.scenes.tick()
         elif self.anim == 0 and not self._busy():
@@ -291,6 +292,12 @@ class WalkTownState(CityState):
             if who in texts and self._shown(opt):
                 return self.motions.get(home)
         return None
+
+    def npc_cue(self):
+        """A story scene starts: the alert chime (src/dungeon/npc.py Scenes.start)."""
+        snd = getattr(self.game.assets, "alert_sfx", None)
+        if snd:
+            snd.play()
 
     def npc_player(self):
         return tuple(self.player)
