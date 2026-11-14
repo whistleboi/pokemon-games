@@ -245,6 +245,14 @@
   "gift": true,
   "from": "FireRed TM05: lying on Route 4, east of Mt. Moon"
  },
+ "TM121": {
+  "move": "AERIAL-ACE",
+  "type": "FLYING",
+  "tier": 8,
+  "price": 3000,
+  "gift": true,
+  "from": "FireRed TM40: lying on Route 9, by the hill"
+ },
  "TM13": {
   "move": "FIRE-SPIN",
   "type": "FIRE",

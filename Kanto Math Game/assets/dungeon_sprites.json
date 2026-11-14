@@ -98,7 +98,7 @@
       "sheet": "fr_60.png"
     },
     "KANTO_ROUTE_11:GATE GUARD": {
-      "sheet": "NPC 01.png"
+      "sheet": "fr_60.png"
     },
     "KANTO_ROUTE_12:GATE GUARD": {
       "sheet": "NPC 01.png"
@@ -3765,6 +3765,36 @@
     },
     "VERMILLION_CITY:Dock sailor": {
       "sheet": "fr_62.png"
+    },
+    "KANTO_ROUTE_11:AWAKENING": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_ROUTE_11:X DEFEND": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_ROUTE_11:GREAT BALL": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_ROUTE_11:Man": {
+      "sheet": "fr_60.png"
+    },
+    "KANTO_ROUTE_11:Trader": {
+      "sheet": "fr_18.png"
+    },
+    "KANTO_ROUTE_11:OAK'S AIDE": {
+      "sheet": "fr_55.png"
+    },
+    "DIGGLETT_CAVE:Hiker": {
+      "sheet": "fr_56.png"
+    },
+    "DIGGLETT_CAVE:Old man": {
+      "sheet": "fr_32.png"
+    },
+    "KANTO_ROUTE_9:TM121": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_ROUTE_9:BURN HEAL": {
+      "item": "POKE_BALL"
     }
   },
   "townsperson": "NPC 17.png",

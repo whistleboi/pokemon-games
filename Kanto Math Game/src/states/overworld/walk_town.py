@@ -472,6 +472,16 @@ class WalkTownState(CityState):
         self.show_message([f"Something was hidden here... You found a {_forms.item_label(item).upper()}!"])
         return True
 
+    def _itemfinder(self, here):
+        """With the Itemfinder, a hidden item on screen makes it beep (once each visit)."""
+        from src.world import itemfinder
+        m = ((self.town_map.get("rooms") or {}).get(self.room) if getattr(self, "room", None) else self.town_map) if getattr(self, "town_map", None) else None
+        heard = self.__dict__.setdefault("_heard", {}).setdefault(getattr(self, "room", None) or "", set())
+        line = itemfinder.beep(self.game.story_manager, (m or {}).get("hidden"), here,
+                               lambda x, y: f"hidden_{self.area_key}_{getattr(self, 'room', None) or ''}_{x}_{y}", heard)
+        if line:
+            self.flash(line, 150)
+
     def npc_room(self, room, x, y):
         """A scene ends with you inside one of the town's rooms, standing at (x, y) (Oak walks you into his Lab)."""
         if room not in ((getattr(self, "town_map", None) or {}).get("rooms") or {}):
@@ -788,7 +798,8 @@ class WalkTownState(CityState):
         self.player = to
         self.steps += 1
         self._remember()
-        self._town_hidden(to)
+        if not self._town_hidden(to):
+            self._itemfinder(to)
         if getattr(self, "thin_ice", None) and self._step_ice(to):
             return
         self._step_switch(to)

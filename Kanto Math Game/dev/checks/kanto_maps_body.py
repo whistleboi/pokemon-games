@@ -116,8 +116,15 @@ for key in BUILT:
         walkable = set(".=\"NX!ow$[]{}%_()D<>^vnwu20b:|;,'")
         starts = [(x, y) for y, r in enumerate(grid) for x, c in enumerate(r) if c in "<>^vnwu"]
         seen, todo = set(starts[:1]), deque(starts[:1])
+        _thru = {}   # (a gatehouse with doors on both sides joins them: Route 11's east gate)
+        for _d, _rn in (m.get("inside") or {}).items():
+            _outs = [tuple(int(v) for v in str(t)[4:].split(",")) for t in ((m.get("rooms") or {}).get(_rn, {}).get("exits") or {}).values() if str(t).startswith("OUT:")]
+            _thru[tuple(int(v) for v in _d.split(","))] = _outs
         while todo:
             x, y = todo.popleft()
+            for t in _thru.get((x, y), []):
+                if t not in seen:
+                    seen.add(t); todo.append(t)
             for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
                 t = (x + dx, y + dy)
                 if 0 <= t[0] < w and 0 <= t[1] < h and t not in seen and grid[t[1]][t[0]] in walkable:
@@ -763,6 +770,92 @@ check(getattr(ve, "_pic_now", "").endswith("1_4.png"), f"...and the dock is open
 ve.player = (_gang[0], _gang[1] - 1); ve.anim = 0
 walk(ve, "d")
 check(g.current_state is ve and ve.room == "harbor", "...she's gone: no way aboard now")
+story.badges["KANTO"] = []
+
+# ---- batch 8: Route 11 and its gatehouse, Diglett's Cave, Route 9
+story.badges["KANTO"] = ["BOULDER", "CASCADE", "THUNDER"]
+for _k in ("got_itemfinder_kanto", "hidden_KANTO_ROUTE_11_0_58_5"):
+    story.story_flags.pop(_k, None)
+_had_if = story.inventory.pop("ITEMFINDER", None)
+
+
+def _quiet(st):
+    st.run.floor.movers = [m for m in st.run.floor.movers if m.kind not in ("wild", "trainer")]
+
+
+def _stepper(st, d):
+    st.anim = 0
+    st.step(*d)
+    play(lambda: g.current_state._ready(), 200)
+
+
+r11 = open_map("KANTO_ROUTE_11", "VERMILLION_CITY")
+_quiet(r11)
+check(r11.run.index == 0 and r11.run.player[0] <= 2, f"Route 11: in from Vermilion at its west end ({r11.run.player})")
+_rf = r11.recipe["art"]["room_floors"]
+r11.run.player = (58, 11)
+_stepper(r11, (0, -1))
+check(r11.run.index == _rf["gate"], f"...up into FireRed's east gatehouse ({r11._floor_name(r11.run.index)})")
+_quiet(r11)
+r11.run.player = (9, 9)
+_stepper(r11, (0, 1))
+check(r11.run.index == _rf["gate_2"], f"...its stairs lead up to 2F ({r11._floor_name(r11.run.index)}, {r11.run.player})")
+_aide = _figure(r11, "OAK'S AIDE")
+check(_aide == (2, 6) and _figure(r11, "Trader") == (7, 3), f"...upstairs, Oak's aide and the trader on FireRed's spots ({_aide})")
+_dex = g.data.data.setdefault("pokedex", {})
+_dex_was = dict(_dex)
+_dex.clear()
+said.clear()
+_use(r11, (3, 6), (-1, 0))
+check("ITEMFINDER" not in story.inventory and any("thirty" in s for s in said), f"...short of thirty kinds, the aide sends you off to catch more ({said[:2]})")
+for _i in range(1, 31):
+    _dex[f"k{_i}"] = {"id": _i}
+said.clear()
+_use(r11, (3, 6), (-1, 0))
+check(story.inventory.get("ITEMFINDER") == 1 and story.story_flags.get("got_itemfinder_kanto"), f"...with thirty, the Itemfinder ({said[-1:]})")
+_dex.clear(); _dex.update(_dex_was)
+r11.run.player = (10, 8)
+_stepper(r11, (0, 1))
+check(r11.run.index == _rf["gate"], f"...and back down the stairs ({r11._floor_name(r11.run.index)}, {r11.run.player})")
+# out the far door: the strip of Route 11 that joins Route 12
+_quiet(r11)
+_far = next(k for k, v in r11.run.floor_recipe.get("links", {}).items() if v[0] == 0 and v[1] >= 64) if hasattr(r11.run, "floor_recipe") else None
+_fl = r11.recipe["art"]["floors"][_rf["gate"]]
+_far = next((tuple(int(c) for c in k.split(",")) for k, v in _fl["links"].items() if v[0] == 0 and v[1] >= 64), None)
+r11.run.player = (_far[0] - 1, _far[1]); r11.anim = 0
+_stepper(r11, (1, 0))
+check(r11.run.index == 0 and r11.run.player[0] >= 64, f"...out its east door, on the Route 12 side of the gate ({r11.run.player})")
+# the Itemfinder beeps for the hidden Escape Rope
+_quiet(r11)
+r11.toast = ""
+_fl0 = r11.run.floor
+_spot = next(((x, y) for y in range(3, 9) for x in range(53, 63) if (x, y) != (58, 5) and _fl0.walkable(x, y) and _fl0.walkable(x + 1, y) and (x + 1, y) != (58, 5)), None)
+r11.run.player = _spot
+_stepper(r11, (1, 0))
+check("Itemfinder is beeping" in r11.toast, f"...near FireRed's hidden Escape Rope, the Itemfinder beeps ({r11.toast!r})")
+story.inventory.pop("ITEMFINDER", None)
+r11.__dict__.pop("_heard", None)
+r11.toast = ""
+r11.run.player = _spot
+_stepper(r11, (1, 0))
+check("Itemfinder" not in r11.toast, "...and without one, nothing")
+if _had_if:
+    story.inventory["ITEMFINDER"] = _had_if
+# Diglett's Cave: in from Route 11's hut, the long tunnel, out at Route 2
+dc = open_map("DIGGLETT_CAVE", "KANTO_ROUTE_11")
+check(dc.run.index == 2 and "Old man" in {m.payload.get("text") for m in dc.run.floor.movers if m.kind == "figure"},
+      f"Diglett's Cave: in from Route 11, the hut and its old man ({dc.run.index})")
+_floor(dc, 1)
+_tr = sorted(_trainers(dc))
+check((dc.run.floor.w, dc.run.floor.h) == (85, 80) and len(_tr) == 3, f"...the cave itself, FireRed's 85 x 80 tunnel, the data's three trainers in it ({_tr})")
+dc2 = open_map("DIGGLETT_CAVE", "KANTO_ROUTE_2")
+check(dc2.run.index == 0 and "KANTO_ROUTE_2" in json.dumps(dc2.recipe["art"]["floors"][0].get("exits")), f"...and its Route 2 end ({dc2.run.index})")
+# Route 9: FireRed's Cut tree, its TM
+story.inventory.pop("HM_CUT", None)
+r9 = open_map("KANTO_ROUTE_9", "CERULEAN_CITY")
+check(_figure(r9, "TM121") == (12, 17), f"Route 9: FireRed's TM (Aerial Ace, our TM121) at its spot ({_figure(r9, 'TM121')})")
+_cut = r9.run.floor.tile(2, 8)
+check(not r9.run.floor.walkable(2, 8) or r9.run.player != (2, 8), f"...the Cut tree at its west end ({_cut!r})")
 story.badges["KANTO"] = []
 
 print(f"##### {len(fails)} failures")

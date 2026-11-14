@@ -91,7 +91,7 @@
       80, 82, 85, 87, 89, 91, 94, 101, 103, 105, 112, 121, 130, 131, 134, 135, 136, 139, 141, 142, 143, 149
     ],
 
-    "KEY_ITEMS": ["CLEFABLITE", "VICTREEBELITE", "STARMINITE", "DRAGONINITE", "MEGANIUMITE", "FERALIGITE", "SKARMORITE", "FROSLASSITE", "EMBOARITE", "EXCADRITE", "SCOLIPITE", "SCRAFTINITE", "EELEKTROSSITE", "CHANDELURITE", "CHESNAUGHTITE", "DELPHOXITE", "GRENINJITE", "PYROARITE", "FLOETTITE", "MALAMARITE", "BARBARACITE", "DRAGALGITE", "HAWLUCHANITE", "ZYGARDITE", "DRAMPANITE", "FALINKSITE", 
+    "KEY_ITEMS": ["ITEMFINDER", "CLEFABLITE", "VICTREEBELITE", "STARMINITE", "DRAGONINITE", "MEGANIUMITE", "FERALIGITE", "SKARMORITE", "FROSLASSITE", "EMBOARITE", "EXCADRITE", "SCOLIPITE", "SCRAFTINITE", "EELEKTROSSITE", "CHANDELURITE", "CHESNAUGHTITE", "DELPHOXITE", "GRENINJITE", "PYROARITE", "FLOETTITE", "MALAMARITE", "BARBARACITE", "DRAGALGITE", "HAWLUCHANITE", "ZYGARDITE", "DRAMPANITE", "FALINKSITE", 
       "SNAG_MACHINE",
       "ADAMANT_ORB", "LUSTROUS_ORB", "GRISEOUS_ORB",
       "BURN_DRIVE", "DOUSE_DRIVE", "CHILL_DRIVE", "SHOCK_DRIVE",
@@ -2039,6 +2039,8 @@
         { "sprite": "hiker.png", "name": "Jeremy", "class": "HIKER", "team": [66, 95], "levels": [20, 20], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
+        {"text": "TM121", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm121_route9", "event": {"lines": ["A TM, lying by the hill! It's Aerial Ace."], "gift_item": {"TM121": 1}, "flag": "got_tm121_route9"}},
+        {"text": "BURN HEAL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_burnheal_route9", "event": {"lines": ["A Burn Heal, by the fence."], "gift_item": {"BURN_HEAL": 1}, "flag": "got_burnheal_route9"}},
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
@@ -2144,6 +2146,11 @@
         { "sprite": "engineer.png", "name": "Bernie", "class": "ENGINEER", "team": [81, 81, 82], "levels": [18, 18, 18], "rewards": { "balls": 3 } }
       ],
       "route_menu": [{"text": "GATE GUARD", "action": "EVENT", "event": {"lines": ["Guard: Route 12 is ahead. I hear a huge Pokemon sleeps on its pier."]}}, 
+        {"text": "OAK'S AIDE", "action": "EVENT", "door": "gate_2", "color": "GOLD", "event": {"requires": ["caught_kanto:30"], "fail": ["Aide: Hello again! I'm another of Professor Oak's aides.", "Aide: Catch thirty kinds of Pokémon and I'll give you something handy. Keep at it!"], "lines": ["Aide: Hello again! I'm another of Professor Oak's aides.", "Aide: Thirty kinds of Pokémon! The Professor asked me to give you this: the Itemfinder.", "It beeps when something's hidden nearby. Lots of things lie buried out there!"], "gift_item": {"ITEMFINDER": 1}, "flag": "got_itemfinder_kanto", "done": ["Aide: The Itemfinder beeps whenever a hidden item is close. Walk around until you find it!"]}},
+        {"text": "Trader", "action": "EVENT", "door": "gate_2", "color": "GOLD", "flag_condition": "not route11_nidorina_trade", "event": {"requires": ["party_has:33"], "fail": ["Boy: I'm after a Nidorino. Got one? I'll swap my Nidorina for it!"], "lines": ["Boy: A Nidorino! Will you trade it for my Nidorina? Great, thanks!"], "trade": {"want": 33, "give": 30}, "flag": "route11_nidorina_trade"}},
+        {"text": "X DEFEND", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_xdefense_route11", "event": {"lines": ["An X Defense, lying in the grass."], "gift_item": {"X_DEFENSE": 1}, "flag": "got_xdefense_route11"}},
+        {"text": "GREAT BALL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_greatball_route11", "event": {"lines": ["A Great Ball, by the trees."], "gift_item": {"GREAT_BALL": 1}, "flag": "got_greatball_route11"}},
+        {"text": "AWAKENING", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_awakening_route11", "event": {"lines": ["An Awakening, lying in a corner."], "gift_item": {"AWAKENING": 1}, "flag": "got_awakening_route11"}},
         {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
         {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN"},

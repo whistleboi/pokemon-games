@@ -4903,12 +4903,12 @@
    "<N..oooc..........................c......ccccccc",
    "<...oooc..........................c......ccccccc",
    "....oooc.....ccccccc..............c......ccccccc",
-   ".ooooooc...__ccCccccccccc.........c......c.....>",
+   ".ooooooc...__ccCccccccccc.........c......c......",
    ".ooooooc.....ccDccccccccc.........c......ccccccc",
    ".ooooooc............ccEcc___ccccccc............>",
    "cccccccc............ccDcc...ccccccc............>",
    "<...........................cccFccc___c..ccccccc",
-   "<...............N..........!..cDc.....c..c.....>",
+   "<...............N..........!..cDc.....c..c......",
    "<.................................N...c..ccccccc",
    "ccccccc..N............................c..ccccccc",
    "ccccccc.....cccc......................c..ccccccc",
@@ -5196,10 +5196,6 @@
     85,
     12
    ],
-   "47,16": [
-    0,
-    6
-   ],
    "47,18": [
     0,
     8
@@ -5207,10 +5203,6 @@
    "47,19": [
     0,
     9
-   ],
-   "47,21": [
-    0,
-    11
    ]
   },
   "moves": {
@@ -10762,93 +10754,55 @@
  },
  "KANTO_ROUTE_11": {
   "art": [
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTT...d================d\"\"\"\"d=============d\"\"\".....TTTTTTTTTTTT",
-   "TTTTTTccTTTT...==================\"\"\"\"===============\"\"\".....TTTTTTTTTTTT",
-   "TTTTccccccTT...==================\"\"\"\"=============X=\"\"\".....TTTTTTTTTTTT",
-   "TTTTccccccTT...===\"\"\"\"\"\"\"\"\"\"\"\"===\"\"\"\"===\"\"\"\"\"\"\"\"\"d=d\"\"\"...r.TTTTTTTTTTTT",
-   "....ccQcccTT...===\"\"\"\"\"\"\"\"\"\"\"\"===\"\"\"\"===\"\"\"\"\"\"\"\"\"\"\"\"\"\"\".....TTTTTTTTTTTT",
-   "kkk!ccDcccTT...===\"\"\"\"d==========\"\"\"\"==========d\"\"\"\"\"\"\".kkGGGGGGGTTTTTTT",
-   "<.........d=======\"X\"\"=========X=\"\"\"\"=====X=====\"\"\"\"\"\"\"...GGGGGGGkkkkkkk",
-   "<.........========\"\"\"\"===========\"\"\"\"===========\"\"\"\"d==d.=GGGGGGG=======",
-   "<.........d==============\"\"\"X\"==========\"\"\"\"\"===\"\"\"\"====.=DGGGGGGk======",
-   "ooooooooooooo..==========\"\"\"\"\"==========\"\"\"\"\"===\"\"\"\"===d.=GGGGGGG=======",
-   "ooooooooooooo..d========d\"\"\"\"\"d=========\"\"\"\"\"===\"\"\"\"===.kkkkkkkkkkkkkkkk",
-   "ooooooooooooo..\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"===\"\"\"\"\"===\"\"\"\"===.............TTTT",
-   "TTTTTTTTTTTT##.\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"===========\"\"X\"===.....TTTTTTTTTTTT",
-   "TTTTTTTTTTTT...\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"=X=========\"\"\"\"===.....TTTTTTTTTTTT",
-   "TTTTTTTTTTTTTT.d=d\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"===========\"\"\"\"===..X..TTTTTTTTTTTT",
-   "TTTTTTTTTTTTTT.=X=======================\"\"\"\"\"==========.....TTTTTTTTTTTT",
-   "TTTTTTTTTTTTTT.=================X=======\"\"\"\"\"==========.....TTTTTTTTTTTT",
-   "TTTTTTTTTTTTTT.d=======================d\"\"\"\"\"d========d.....TTTTTTTTTTTT"
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccc.....................\"\"\"\"...............\"\"\".....cccccccccccc",
+   "cccccccccccc.N...................\"\"\"\"...............\"\"\".....cccccccccccc",
+   "cccccccccccc.....................\"\"\"\".............X.\"\"\".....cccccccccccc",
+   "cccccccccccc......\"\"\"\"\"\"\"\"\"\"\"\"...\"\"\"\"...\"\"\"\"\"\"\"\"\"...\"\"\"...c.cccccccccccc",
+   "cccccccccccc......\"\"\"\"\"\"\"\"\"\"\"\"...\"\"\"\"...\"\"\"\"\"\"\"\"\"\"\"\"\"\"\".....cccccccccccc",
+   "ccc!ccnccccc......\"\"\"\"...........\"\"\"\"...........\"\"\"\"\"\"\".cccccccccccccccc",
+   "<.................\"X\"\".........X.\"\"\"\".....X.....\"\"\"\"\"\"\"....ccccccccccccc",
+   "<.................\"\"\"\"...........\"\"\"\"...........\"\"\"\".......cccccc......>",
+   "<........................\"\"\"X\"..........\"\"\"\"\"...\"\"\"\"......DAccccBD.....>",
+   "<oooooooooooo............\"\"\"\"\"..........\"\"\"\"\"...\"\"\"\".......cccccc......>",
+   "<oooooooooooo............\"\"\"\"\"..........\"\"N\"\"...\"\"\"\"....cccccccccccccccc",
+   "<oooooooooooo..\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"...\"\"\"\"\"...\"\"\"\"...........N....cccc",
+   "cccccccccccccc.\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"...........\"\"X\"........cccccccccccc",
+   "cccccccccccc...\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\".X.........\"\"\"\"........cccccccccccc",
+   "cccccccccccccc....\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"...........\"\"\"\".....X..cccccccccccc",
+   "cccccccccccccc..X.......................\"\"\"\"\"...............cccccccccccc",
+   "cccccccccccccc..................X.......\"\"\"\"\"...............cccccccccccc",
+   "cccccccccccccc..........................\"\"\"\"\"...............cccccccccccc"
   ],
   "exits": {
    "<": "VERMILLION_CITY",
-   "Q": "DIGGLETT_CAVE"
+   ">": "KANTO_ROUTE_12",
+   "n": "DIGGLETT_CAVE"
   },
   "buildings": {
-   "G": "gate",
-   "Q": "cave"
+   "A": "gate",
+   "B": "house"
   },
   "roofs": {
-   "G": [
-    172,
-    189,
-    205
-   ],
-   "Q": [
-    123,
-    74,
-    74
-   ]
+   "_picture": {
+    "f": "fr_ground/3_29.png",
+    "at": [
+     0,
+     0
+    ]
+   },
+   "_signs_in_picture": true,
+   "_buildings_in_picture": true
   },
-  "overheads": [
-   {
-    "kind": "tops",
-    "rect": [
-     60,
-     13,
-     8,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     12,
-     15,
-     2,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     14,
-     19,
-     26,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     45,
-     19,
-     15,
-     1
-    ],
-    "of": "tree"
-   }
+  "people": [
+   "AWAKENING",
+   "X DEFEND",
+   "GREAT BALL"
   ],
   "signs": [
    [
-    "DIGLETT'S CAVE",
-    "A long tunnel dug by Diglett. It comes out near Pewter City!"
+    "DIGLETT'S CAVE"
    ]
   ],
   "trainer_spots": [
@@ -10863,199 +10817,175 @@
    "Hugo",
    "Bernie"
   ],
+  "inside": {
+   "58,10": "gate",
+   "65,10": "gate"
+  },
+  "edge_to": {
+   "0,8": [
+    47,
+    18
+   ],
+   "0,9": [
+    47,
+    19
+   ],
+   "0,10": [
+    47,
+    20
+   ],
+   "0,11": [
+    47,
+    21
+   ],
+   "0,12": [
+    47,
+    22
+   ],
+   "0,13": [
+    47,
+    23
+   ],
+   "71,9": [
+    0,
+    69
+   ],
+   "71,10": [
+    0,
+    70
+   ],
+   "71,11": [
+    0,
+    71
+   ]
+  },
+  "moves": {
+   "42,12": {
+    "m": "face",
+    "d": "d"
+   },
+   "63,13": {
+    "m": "face",
+    "d": "d"
+   },
+   "13,3": {
+    "m": "face",
+    "d": "d"
+   },
+   "50,4": {
+    "m": "look",
+    "d": "udlr",
+    "s": 1
+   },
+   "19,8": {
+    "m": "look",
+    "d": "dl",
+    "s": 4
+   },
+   "31,8": {
+    "m": "look",
+    "d": "ul",
+    "s": 4
+   },
+   "42,8": {
+    "m": "look",
+    "d": "lr",
+    "s": 4
+   },
+   "28,10": {
+    "m": "wander",
+    "d": "udlr",
+    "r": [
+     8,
+     4
+    ],
+    "s": 1
+   },
+   "50,14": {
+    "m": "wander",
+    "d": "ud",
+    "r": [
+     0,
+     4
+    ],
+    "s": 1
+   },
+   "38,15": {
+    "m": "look",
+    "d": "udlr",
+    "s": 1
+   },
+   "57,16": {
+    "m": "look",
+    "d": "udlr",
+    "s": 1
+   },
+   "16,17": {
+    "m": "look",
+    "d": "udlr",
+    "s": 1
+   },
+   "32,18": {
+    "m": "look",
+    "d": "lr",
+    "s": 6
+   }
+  },
   "rooms": {
    "gate": {
-    "theme": "room",
     "art": [
      "ccccccccccccc",
      "ccccccccccccc",
-     "cz....N....zc",
-     "c.mmmmmmmmm.c",
+     "ccccccNcccccc",
+     "c.cmmmmmmmc.c",
      "c...........c",
-     "c.=========.c",
-     "c<=========>c",
-     "c<=========>c",
      "c...........c",
-     "cmmmmmmm..mmc",
-     "c......m..ccc",
-     "c......m..mmc"
+     "c<.........>c",
+     "c<.........>c",
+     "c...........c",
+     "ccmmmmmc..ccc",
+     "ccccNccm.vccc",
+     "cccccccm..ccc"
     ],
     "exits": {
-     ">": "KANTO_ROUTE_12",
-     "<": "OUT:58,10"
+     "<": "OUT:58,10",
+     ">": "OUT:65,10",
+     "v": "ROOM:gate_2"
     },
     "buildings": {},
     "roofs": {
-     "_floor": [
-      191,
-      183,
-      129
-     ],
-     "_wall": [
-      213,
-      222,
-      197
-     ],
-     "_things": {
-      "2,3": [
-       246,
-       238,
-       189
-      ],
-      "3,3": [
-       246,
-       238,
-       189
-      ],
-      "4,3": [
-       246,
-       238,
-       189
-      ],
-      "5,3": [
-       246,
-       238,
-       189
-      ],
-      "6,3": [
-       246,
-       238,
-       189
-      ],
-      "7,3": [
-       246,
-       238,
-       189
-      ],
-      "8,3": [
-       246,
-       238,
-       189
-      ],
-      "9,3": [
-       246,
-       238,
-       189
-      ],
-      "10,3": [
-       246,
-       238,
-       189
-      ],
-      "1,9": [
-       246,
-       238,
-       189
-      ],
-      "2,9": [
-       246,
-       238,
-       189
-      ],
-      "3,9": [
-       246,
-       238,
-       189
-      ],
-      "4,9": [
-       246,
-       238,
-       189
-      ],
-      "5,9": [
-       246,
-       238,
-       189
-      ],
-      "6,9": [
-       246,
-       238,
-       189
-      ],
-      "7,9": [
-       246,
-       238,
-       189
-      ],
-      "10,9": [
-       180,
-       180,
-       164
-      ],
-      "11,9": [
-       255,
-       255,
-       255
-      ],
-      "7,10": [
-       246,
-       238,
-       189
-      ],
-      "7,11": [
-       131,
-       131,
-       131
-      ],
-      "10,11": [
-       180,
-       180,
-       164
-      ],
-      "11,11": [
-       180,
-       180,
-       164
-      ],
-      "10,10": [
-       255,
-       255,
-       255
-      ],
-      "11,10": [
-       255,
-       255,
-       255
+     "_picture": {
+      "f": "fr_ground/22_0.png",
+      "at": [
+       0,
+       0
       ]
      },
-     "_stairs": {
-      "10,10": "flight",
-      "11,10": "flight"
-     },
-     "_kinds": {
-      "2,3": "table",
-      "3,3": "table",
-      "4,3": "table",
-      "5,3": "table",
-      "6,3": "table",
-      "7,3": "table",
-      "8,3": "table",
-      "9,3": "table",
-      "10,3": "table",
-      "1,9": "table",
-      "2,9": "table",
-      "3,9": "table",
-      "4,9": "table",
-      "5,9": "table",
-      "6,9": "table",
-      "7,9": "table",
-      "10,9": "table",
-      "11,9": "table",
-      "7,10": "table",
-      "7,11": "table",
-      "10,11": "table",
-      "11,11": "table"
-     },
-     "_mat": true,
-     "_rug": [
-      115,
-      156,
-      180
-     ]
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
     },
     "people": [
+     {
+      "text": "Man",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Thinking up nicknames is hard, isn't it? There's a man in Lavender Town who rates them. He'll help you rename your Pokémon too!"
+       ]
+      }
+     },
      "GATE GUARD"
     ],
+    "moves": {
+     "6,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "4,10": {
+      "m": "face",
+      "d": "u"
+     }
+    },
     "land": {
      "58,10": [
       57,
@@ -11068,22 +10998,116 @@
       6
      ]
     },
-    "title": "Route 11 Gate",
-    "parts": true
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/22_0.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       13,
+       12
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Route 11 Gate"
+   },
+   "gate_2": {
+    "art": [
+     "ccccccccccccc",
+     "cccc!ccc!cccc",
+     "cc.........cc",
+     "c......N....c",
+     "c...........c",
+     "c..cc...cc..c",
+     "c.Ncc...cc..c",
+     "c...........c",
+     "c.......cc..c",
+     "c.......ccv.c",
+     "cc......cc..c"
+    ],
+    "exits": {
+     "v": "ROOM:gate"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/22_1.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Trader",
+     "OAK'S AIDE"
+    ],
+    "signs": [
+     [
+      "Through the binoculars... Far to the east, a huge Pokémon lies fast asleep across the road!"
+     ],
+     [
+      "Through the binoculars... To reach Lavender Town from Cerulean City, Rock Tunnel looks like the way to go."
+     ]
+    ],
+    "moves": {
+     "2,6": {
+      "m": "look",
+      "d": "udlr"
+     },
+     "7,3": {
+      "m": "wander",
+      "d": "lr",
+      "r": [
+       2,
+       0
+      ]
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/22_1.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       13,
+       11
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Route 11 Gate 2F"
    }
   },
-  "inside": {
-   "58,10": "gate"
-  }
+  "hidden": {
+   "58,5": "ESCAPE_ROPE"
+  },
+  "parts": true,
+  "overheads": [
+   {
+    "kind": "picture",
+    "f": "fr_top/3_29.png",
+    "at": [
+     0,
+     0
+    ],
+    "size": [
+     72,
+     20
+    ]
+   }
+  ]
  },
  "DIGGLETT_CAVE": {
-  "theme": "cave",
-  "buildings": {},
-  "floor_names": [
-   "Route 2 end",
-   "Tunnel",
-   "Route 11 end"
-  ],
   "floors": [
    {
     "art": [
@@ -11091,7 +11115,7 @@
      "cccccccccc",
      "cc......cc",
      "cc......cc",
-     "cc....1.cc",
+     "cc..N.1.cc",
      "cc......cc",
      "cc..<...cc",
      "cccccccccc"
@@ -11099,14 +11123,43 @@
     "exits": {
      "<": "KANTO_ROUTE_2"
     },
-    "parts": true,
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_36.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Hiker",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I went into Rock Tunnel, but it's pitch black in there. If only I had a Pokémon that knew Flash..."
+       ]
+      }
+     }
+    ],
     "links": {
      "6,4": [
       1,
       3,
       3
      ]
-    }
+    },
+    "moves": {
+     "4,4": {
+      "m": "look",
+      "d": "udlr"
+     }
+    },
+    "parts": true
    },
    {
     "art": [
@@ -11130,7 +11183,7 @@
      "ccccccccccc..cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
      "ccccccccccc..........cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
      "ccccccccccc............cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "ccccccccccc............cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+     "ccccccccccc.......X....cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
      "ccccccccccccc..c.c............ccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
      "cccccccccccccccccccc...........cccccccccccccccccccccccccccccccccccccccccccccccccccccc",
      "cccccccccccccccccccc...........cccccccccccccccccccccccccccccccccccccccccccccccccccccc",
@@ -11150,7 +11203,7 @@
      "ccccccccccccccccccccccccccccccccccccc.........ccccccccccccccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccccccccccc...........cccccccccccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccccccccccc...........cccccccccccccccccccccccccccccccccccc",
-     "ccccccccccccccccccccccccccccccccccccccc..........cccccccccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccccccccccccc......X...cccccccccccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccccccccccccccc..........c.ccccccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccccccccccccccccccc.........cccccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccccccccccccccccccc..........ccccccccccccccccccccccccccccc",
@@ -11168,7 +11221,7 @@
      "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc.....cccccccccccc",
      "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc......ccccccccccc",
      "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc......ccccccccccc",
-     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc......ccccccccccc",
+     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc...X..ccccccccccc",
      "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc.....ccccccccccc",
      "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc.....ccccccccccc",
      "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc.....ccccccccccc",
@@ -11192,7 +11245,23 @@
      "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
     ],
     "exits": {},
-    "parts": true,
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_37.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "trainer_spots": [
+     "Ned",
+     "Luca",
+     "Justin"
+    ],
     "links": {
      "3,3": [
       0,
@@ -11204,7 +11273,8 @@
       6,
       4
      ]
-    }
+    },
+    "parts": true
    },
    {
     "art": [
@@ -11212,7 +11282,7 @@
      "cccccccccc",
      "cc......cc",
      "cc......cc",
-     "cc....1.cc",
+     "cc..N.1.cc",
      "cc......cc",
      "cc..>...cc",
      "cccccccccc"
@@ -11220,46 +11290,100 @@
     "exits": {
      ">": "KANTO_ROUTE_11"
     },
-    "parts": true,
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_38.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Old man",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Well, what a surprise! Diglett dug this whole long tunnel. It comes out right by Viridian City, they say."
+       ]
+      }
+     }
+    ],
     "links": {
      "6,4": [
       1,
       82,
       71
      ]
-    }
+    },
+    "moves": {
+     "4,4": {
+      "m": "look",
+      "d": "udlr"
+     }
+    },
+    "parts": true
    }
-  ]
+  ],
+  "theme": "cave",
+  "floor_names": [
+   "Route 2 end",
+   "Tunnel",
+   "Route 11 end"
+  ],
+  "figure_floors": {
+   "Ned": 1,
+   "Luca": 1,
+   "Justin": 1
+  }
  },
  "KANTO_ROUTE_9": {
   "art": [
    "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-   "TTTTTTk\"\"\"\"\"\"\"\"\"\"\"........X...cccccc\"\"\"\"\"\"cccccc...........======ccccccc",
-   "TTTTTTk\"\"\"\"\"\"\"\"\"\"\"............cccccc\"\"\"\"\"\"cccccc.....X.....======ccccccc",
-   "TTTTTTk\"\"\"\"\"\"\"\"\"\"\"ccccc.......cccccc......cccccc..........ccccc==ccccccc",
-   "TTTTTTk\"\"\"\"\"\"\"\"\"\"\"ccccc_____..cccccc__..__cccccc__..______ccccc__ccccccc",
-   "TTTTTTk\"\"\"\"\"\"\"\"\"\"\"ccccc=======cccccc======cccccc==========ccccc==ccccccc",
-   "......k...........ccccc=======ccccccX=====================ccccc==ccccccc",
-   "kkkkkkk________r..ccccc===X==!ccccccccccc========X========ccccc==ccccccc",
-   "<.2....d======dcccccccc=============ccccc====ccccc===cccccccccc========>",
-   "<.k....========cccccccc=============ccccc====ccccc===ccccc==X==========>",
-   "kkkkkcccccc===Xcccccccc___________==ccccc====ccccc===ccccc=============>",
-   "TTTTkcccccc____cccccccc===========..ccccc____ccccc__.ccccc===ccccc===ccc",
-   "TTTTkcccccc====cccccccc==========d..ccccc....ccccc...ccccc___ccccc___ccc",
-   "TTTTkcccccc======================....................ccccc===ccccc===ccc",
-   "TTTTkcccccc===============ccccccd....................ccccc...ccccc===ccc",
-   "TTTTkcccccc_________==____cccccc__.._________________ccccc___ccccc___ccc",
-   "TTTTkcccccc===============cccccc.............................X.......ccc",
-   "TTTTkcccccc=========X=====cccccc.....................................ccc",
-   "TTcccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-   "TTcccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+   "ccccccc\"\"\"\"\"\"\"\"\"\"\"........X...cccccc\"\"\"\"\"\"cccccc.................ccccccc",
+   "ccccccc\"\"\"\"\"\"\"\"\"\"\"............cccccc\"\"\"\"\"\"cccccc.....X...........ccccccc",
+   "ccccccc\"\"\"\"\"\"\"\"\"\"\"ccccc.......cccccc......cccccc..........ccccc..ccccccc",
+   "ccccccc\"\"\"\"\"\"\"\"\"\"\"ccccc_____..cccccc__..__cccccc__..______ccccc__ccccccc",
+   "ccccccc\"\"\"\"\"\"\"\"\"\"\"ccccc.......cccccc......cccccc..........ccccc..ccccccc",
+   "ccccccc...........ccccc.......ccccccX.....................ccccc..ccccccc",
+   "ccccccc________c..ccccc...X..!ccccccccccc........X........ccccc..ccccccc",
+   "<.2............cccccccc.............ccccc....ccccc...cccccccccc........>",
+   "<.c............cccccccc.............ccccc....ccccc...ccccc..X..........>",
+   "ccccccccccc...Xcccccccc___________..ccccc....ccccc...ccccc.............>",
+   "ccccccccccc____cccccccc.............ccccc____ccccc__.ccccc...ccccc...ccc",
+   "ccccccccccc....cccccccc.............ccccc....ccccc...ccccc___ccccc___ccc",
+   "ccccccccccc..........................................ccccc...ccccc...ccc",
+   "ccccccccccc...............cccccc.....................ccccc...ccccc...ccc",
+   "ccccccccccc_________..____cccccc__.._________________ccccc___ccccc___ccc",
+   "ccccccccccc...............cccccc.............................X.......ccc",
+   "ccccccccccc.N.......X.....cccccc.................................N...ccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
   ],
   "exits": {
    "<": "CERULEAN_CITY",
    ">": "KANTO_ROUTE_10"
   },
   "buildings": {},
-  "roofs": {},
+  "roofs": {
+   "_picture": {
+    "f": "fr_ground/3_27.png",
+    "at": [
+     0,
+     0
+    ]
+   },
+   "_signs_in_picture": true,
+   "_buildings_in_picture": true
+  },
+  "people": [
+   "TM121",
+   "BURN HEAL"
+  ],
   "signs": [
    [
     "ROUTE 9",
@@ -11276,6 +11400,106 @@
    "Alicia",
    "Alan",
    "Jeremy"
+  ],
+  "edge_to": {
+   "0,8": [
+    47,
+    18
+   ],
+   "0,9": [
+    47,
+    19
+   ],
+   "71,8": [
+    0,
+    8
+   ],
+   "71,9": [
+    0,
+    9
+   ],
+   "71,10": [
+    0,
+    10
+   ]
+  },
+  "moves": {
+   "12,17": {
+    "m": "face",
+    "d": "d"
+   },
+   "65,17": {
+    "m": "face",
+    "d": "d"
+   },
+   "26,1": {
+    "m": "face",
+    "d": "d",
+    "s": 2
+   },
+   "53,2": {
+    "m": "wander",
+    "d": "lr",
+    "r": [
+     3,
+     0
+    ],
+    "s": 1
+   },
+   "36,6": {
+    "m": "face",
+    "d": "r",
+    "s": 5
+   },
+   "26,7": {
+    "m": "look",
+    "d": "udlr",
+    "s": 3
+   },
+   "49,7": {
+    "m": "face",
+    "d": "r",
+    "s": 3
+   },
+   "60,9": {
+    "m": "face",
+    "d": "r",
+    "s": 4
+   },
+   "14,10": {
+    "m": "face",
+    "d": "l",
+    "s": 3
+   },
+   "61,16": {
+    "m": "face",
+    "d": "d",
+    "s": 1
+   },
+   "20,17": {
+    "m": "look",
+    "d": "ul",
+    "s": 4
+   }
+  },
+  "hidden": {
+   "15,7": "ETHER",
+   "63,2": "RARE_CANDY",
+   "48,2": "CHESTO_BERRY"
+  },
+  "overheads": [
+   {
+    "kind": "picture",
+    "f": "fr_top/3_27.png",
+    "at": [
+     0,
+     0
+    ],
+    "size": [
+     72,
+     20
+    ]
+   }
   ]
  },
  "KANTO_ROUTE_10": {

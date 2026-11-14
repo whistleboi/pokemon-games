@@ -287,6 +287,52 @@ def recipes(game):
     return _recipes["all"]
 
 
+def _upstairs(rooms, floors, names, where):
+    """Rooms reached from other rooms ("exits" {"v": "ROOM:gate_2"}: a gatehouse's stairs up) become floors too, after
+    the rest; each such stairs tile leads onto the tile beside the other room's stairs back."""
+    refs = lambda r: [str(t)[5:] for t in (r.get("exits") or {}).values() if str(t).startswith("ROOM:")]
+    grew = True
+    while grew:
+        grew = False
+        for name, room in rooms.items():
+            if name in where or not any(name in refs(rooms[o]) for o in where):
+                continue
+            where[name] = len(floors)
+            own = {k: v for k, v in room.items() if k not in ("art", "exits", "links", "land", "enter")}
+            floors.append(dict(own, art=list(room["art"]), exits={}, links={}, boss_spot=None, parts=True, indoors=True,
+                               pool="NO_WILD_INDOORS_PERCENTAGES", buildings=room.get("buildings") or {}))
+            names.append(str(room.get("title") or name).title())
+            grew = True
+
+    def stairs(name, to):
+        art = rooms[name]["art"]
+        chs = [ch for ch, t in (rooms[name].get("exits") or {}).items() if str(t) == f"ROOM:{to}"]
+        return [(x, y) for y, r in enumerate(art) for x, c in enumerate(r) if c in chs]
+
+    for name, j in where.items():
+        f = floors[j]
+        art = [list(r) for r in f["art"]]
+        links, keep = dict(f.get("links") or {}), dict(f.get("exits") or {})
+        for ch, target in (rooms[name].get("exits") or {}).items():
+            to = str(target)[5:] if str(target).startswith("ROOM:") else None
+            if to not in where:
+                continue
+            keep.pop(ch, None)
+            back = stairs(to, name)
+            if not back:
+                continue
+            bx, by = back[0]
+            tart = rooms[to]["art"]
+            near = next(((x, y) for x, y in ((bx, by - 1), (bx - 1, by), (bx + 1, by), (bx, by + 1))
+                         if 0 <= y < len(tart) and 0 <= x < len(tart[y]) and tart[y][x] in ".N"), (bx, by))
+            for ry, row in enumerate(art):
+                for rx, c in enumerate(row):
+                    if c == ch:
+                        row[rx] = "1"
+                        links[f"{rx},{ry}"] = [where[to], near[0], near[1]]
+        floors[j] = dict(f, art=["".join(r) for r in art], links=links, exits=keep)
+
+
 def with_rooms(m):
     """A route map with buildings you walk into (Jordan, 11-12: "buildings on routes"), in the towns' own words: "rooms"
     {name: a map of its own (theme "room", its mats' "exits" {"v": "OUT:x,y"}, "people": route options by their text)}
@@ -298,7 +344,7 @@ def with_rooms(m):
         return m
     floors = [dict(f) for f in m["floors"]] if m.get("floors") else [
         {k: m[k] for k in ("art", "exits", "signs", "people", "trainer_spots", "links", "overheads", "parts", "boss_spot", "inside", "stops",
-                           "barred", "moves", "scenes", "berry_soil", "sign_scenes", "edge_to", "dive", "surface", "pool") if k in m}]   # (the map's own floor keeps everything of its own: who's in the way, how people move)
+                           "barred", "moves", "scenes", "berry_soil", "sign_scenes", "edge_to", "dive", "surface", "pool", "hidden") if k in m}]   # (the map's own floor keeps everything of its own: who's in the way, how people move)
     n0 = len(floors)
     names = list(m.get("floor_names") or [""] * n0)
     where, doors = {}, {}
@@ -336,6 +382,7 @@ def with_rooms(m):
             mat = (enter[d][0], enter[d][1] + 1) if d in enter else mats.get(d) or next(iter(mats.values()), None)
             if mat:
                 floors[i] = dict(floors[i], links=dict(floors[i].get("links") or {}, **{d: [j, mat[0], mat[1]]}))
+    _upstairs(rooms, floors, names, where)
     on = dict(m.get("figure_floors") or {})
     for i, f in enumerate(floors):  # (everyone stays on the floor their spot is on: a figure with no floor named would be put on the last, a room)
         for t in list(f.get("people") or []) + list(f.get("trainer_spots") or []):
@@ -1611,6 +1658,7 @@ class DungeonState(OverworldBattles, PlayState):
             self._lap_step()
             if not self._hidden_item(self.run.player):
                 self._cracked_floor(self.run.player)
+                self._itemfinder(self.run.player)
             self._copy_step(dx, dy)
             self._note_area()
             self._contest_tick()
@@ -1916,6 +1964,18 @@ class DungeonState(OverworldBattles, PlayState):
         self.walk_goal = None
         self.say([f"Something was hidden here... You found a {forms.item_label(item).upper()}!"])
         return True
+
+    def _itemfinder(self, here):
+        """With the Itemfinder, a hidden item on screen makes it beep (once each visit to the floor)."""
+        from src.world import itemfinder
+        m = self.run.recipe.get("art") or {}
+        if m.get("floors"):
+            m = m["floors"][self.run.index] if self.run.index < len(m["floors"]) else {}
+        heard = self.__dict__.setdefault("_heard", {}).setdefault(self.run.index, set())
+        line = itemfinder.beep(self.game.story_manager, m.get("hidden"), here,
+                               lambda x, y: f"hidden_{self.area_key}_{self.run.index}_{x}_{y}", heard)
+        if line:
+            self.flash(line, 150)
 
     def _pick_up_tm(self, spot):
         story = self.game.story_manager
