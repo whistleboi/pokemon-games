@@ -45,7 +45,9 @@ GIFT_TMS = {"TM100": ("SMACK-DOWN", "ORAS TM23: Professor Cozmo, Fallarbor Town"
             "TM118": ("ROOST", "ORAS TM19: Winona, for the Feather Badge"),
             "TM119": ("CALM-MIND", "ORAS TM04: Tate & Liza, for the Mind Badge"),
             "TM120": ("ROAR", "FireRed TM05: lying on Route 4, east of Mt. Moon"),
-            "TM121": ("AERIAL-ACE", "FireRed TM40: lying on Route 9, by the hill")}
+            "TM121": ("AERIAL-ACE", "FireRed TM40: lying on Route 9, by the hill"),
+            "TM122": ("TAUNT", "FireRed TM12: lying in the Rocket Hideout, B2F"),
+            "TM123": ("SNATCH", "FireRed TM49: lying in the Rocket Hideout, B4F")}
 # Sold only by the shop that lists them (Jordan, 11-13: match the games): Lilycove Department Store's TM Corner
 # (Emerald and ORAS: Fire Blast, Thunder, Blizzard), never on an ordinary Mart's shelf.
 SHOP_TMS = {"TM109": ("FIRE-BLAST", "Lilycove Department Store 4F"), "TM110": ("THUNDER", "Lilycove Department Store 4F"),

@@ -253,6 +253,22 @@
   "gift": true,
   "from": "FireRed TM40: lying on Route 9, by the hill"
  },
+ "TM122": {
+  "move": "TAUNT",
+  "type": "DARK",
+  "tier": 8,
+  "price": 3000,
+  "gift": true,
+  "from": "FireRed TM12: lying in the Rocket Hideout, B2F"
+ },
+ "TM123": {
+  "move": "SNATCH",
+  "type": "DARK",
+  "tier": 8,
+  "price": 3000,
+  "gift": true,
+  "from": "FireRed TM49: lying in the Rocket Hideout, B4F"
+ },
  "TM13": {
   "move": "FIRE-SPIN",
   "type": "FIRE",

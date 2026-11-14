@@ -432,7 +432,11 @@ def art_recipe(m):
     for y, row in enumerate(grid):
         out = []
         for x, c in enumerate(row):
-            if [x, y] == list(m.get("boss_spot") or ()):  # the area's boss asleep on this very tile (the map's "boss_spot": Snorlax on Route 12)
+            if f"{x},{y}" in (m.get("decor") or {}):  # (a thing drawn in the map's picture that does something: a slot machine, the poster's switch)
+                ch = chr(0x2D80 + len(legend))
+                legend[ch] = {"decor": m["decor"][f"{x},{y}"]}
+                out.append(ch)
+            elif [x, y] == list(m.get("boss_spot") or ()):  # the area's boss asleep on this very tile (the map's "boss_spot": Snorlax on Route 12)
                 ch = chr(0x2D80 + len(legend))
                 legend[ch] = {"exit": "BOSS"}
                 out.append(ch)

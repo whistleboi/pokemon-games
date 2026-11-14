@@ -129,7 +129,9 @@ for key in BUILT:
                 t = (x + dx, y + dy)
                 if 0 <= t[0] < w and 0 <= t[1] < h and t not in seen and grid[t[1]][t[0]] in walkable:
                     seen.add(t); todo.append(t)
-        cut = [(x, y, c) for y, r in enumerate(grid) for x, c in enumerate(r) if c in "<>^vnwuDNX" and (x, y) not in seen]
+        _over = lambda x, y: any(0 <= y + 2 * dy < h and 0 <= x + 2 * dx < w and grid[y + dy][x + dx] == "m" and (x + 2 * dx, y + 2 * dy) in seen
+                                 for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)))   # (a clerk talked to across the counter: the Game Corner's)
+        cut = [(x, y, c) for y, r in enumerate(grid) for x, c in enumerate(r) if c in "<>^vnwuDNX" and (x, y) not in seen and not (c == "N" and _over(x, y))]
         check(not cut, f"{key}: every way out, door, person and trainer is reachable from the first way out {cut[:4]}")
     for rname, room in (m.get("rooms") or {}).items():   # (each building: its own FireRed room, and the way back out)
         outs = [v for v in room.get("exits", {}).values() if str(v).startswith(("OUT:", "ROOM:"))]
@@ -869,7 +871,8 @@ r10.run.player = (13, 21)
 _stepper(r10, (0, -1))
 check(r10.run.index == _rf["center"], f"...into FireRed's Pokémon Center by the tunnel ({r10._floor_name(r10.run.index)})")
 _quiet(r10)
-check(_figure(r10, "OAK'S AIDE") == (12, 5), f"...Oak's aide at FireRed's spot ({_figure(r10, \"OAK'S AIDE\")})")
+_aide = _figure(r10, "OAK'S AIDE")
+check(_aide == (12, 5), f"...Oak's aide at FireRed's spot ({_aide})")
 _dex = g.data.data.setdefault("pokedex", {})
 _dex_was = dict(_dex)
 _dex.clear()
@@ -976,6 +979,53 @@ _pp = _room_of(ce, "dept_2")
 check(_pp.get("Dept. Store") == (1, 6), "...the Dept. Store's shop at its 2F counter")
 _pp = _room_of(ce, "prize")
 check(_pp.get("Prize Corner") == (4, 2), "...the Prize Corner's clerk")
+
+# ---- batch 13: the Game Corner and the Rocket Hideout
+_gcf = ("game_corner_poster", "game_corner_guard_defeated", "game_corner_cleared", "visited_ROCKET_HIDEOUT", "hideout_giovanni_defeated", "got_lift_key")
+_gcs = {k: story.story_flags.pop(k, None) for k in _gcf}
+gc = open_map("CELADON_GAME_CORNER", "CELADON_CITY")
+_f = gc.run.floor
+check((_f.w, _f.h) == (18, 15) and "fr_ground/10_14" in json.dumps(gc.recipe["art"]), "Game Corner: FireRed's own room and picture")
+check(sum(v == "slot" for v in _f.decor.values()) == 20 and _f.decor.get((11, 1)) == "poster", f"...FireRed's slot machines play, the poster is a switch ({sum(v == 'slot' for v in _f.decor.values())})")
+check("ROCKET_HIDEOUT" not in _f.exits.values() and _figure(gc, "ROCKET GRUNT") == (11, 2), "...the stairs hidden, a grunt in front of the poster")
+gc.run.player = (5, 7); gc.facing = (0, -1)
+check(gc._act_here() and gc._act_here()[0] == "PLAY SLOTS", f"...stand at a machine: PLAY SLOTS ({gc._act_here()})")
+story.story_flags["game_corner_guard_defeated"] = True
+gc._sync_figures(); frames(2)
+gc.run.player = (11, 2); gc.facing = (0, -1)
+_act = gc._act_here()
+check(_act and _act[0] == "CHECK", f"...the grunt beaten, the poster can be checked ({_act})")
+_act[1](); play(lambda: g.current_state._ready(), 300)
+check(story.story_flags.get("game_corner_poster") and _f.exits.get((15, 2)) == "ROCKET_HIDEOUT", "...a switch behind it: FireRed's stairs open in the corner")
+gc = open_map("CELADON_GAME_CORNER", "CELADON_CITY")
+gc.run.player = (6, 4); gc.facing = (0, -1); gc.anim = 0
+_act = gc._act_here()
+check(_act and _act[0] == "TALK", f"...across the counter, the clerk ({_act and _act[0]})")
+_act[1](); frames(2)
+check(type(g.current_state).__name__ == "GameCornerState", f"......opens our own Game Corner menu: the games, coins, prizes ({type(g.current_state).__name__})")
+hq = open_map("ROCKET_HIDEOUT", "CELADON_GAME_CORNER")
+check(hq.run.index == 0 and (hq.run.floor.w, hq.run.floor.h) == (28, 34), f"Rocket Hideout: down the stairs to FireRed's B1F ({hq.run.player})")
+_g = {m.payload[1].get("spot_name"): (m.x, m.y) for m in hq.run.floor.movers if m.kind == "trainer"}
+check(_g.get("Grunt B1F 1") == (4, 9) and _g.get("Grunt B1F 5") == (6, 32) and len(_g) == 5, f"...B1F's five grunts on FireRed's spots, each his own team ({_g})")
+_floor(hq, 3)
+_g = {m.payload[1].get("spot_name"): (m.x, m.y) for m in hq.run.floor.movers if m.kind == "trainer"}
+check(len(_g) == 3 and _figure(hq, "GIOVANNI") == (19, 4) and _figure(hq, "LIFT KEY") == (3, 2), f"...B4F: three grunts, Giovanni at FireRed's spot, the Lift Key by the grunt who drops it ({_g})")
+_floor(hq, 0)
+hq.run.floor.movers = [m for m in hq.run.floor.movers if m.kind not in ("wild", "trainer")]
+story.inventory.pop("LIFT_KEY", None)
+hq.run.player = (24, 26); hq.anim = 0
+said.clear()
+hq.step(0, -1); play(lambda: g.current_state._ready(), 300)
+check(hq.run.index == 0 and any("key" in s.lower() for s in said + [hq.toast]), f"...the elevator won't move without the Lift Key ({hq.run.index}, {said[:1]}, {hq.toast!r})")
+story.inventory["LIFT_KEY"] = 1
+hq.run.player = (24, 26); hq.anim = 0
+hq.step(0, -1); play(lambda: g.current_state._ready(), 300)
+check(hq.run.index == 3 and abs(hq.run.player[0] - 20) <= 1 and hq.run.player[1] == 24, f"...with it: down to B4F's far side, Giovanni's, out in front of the lift ({hq.run.index}, {hq.run.player})")
+story.inventory.pop("LIFT_KEY", None)
+for _k, _v in _gcs.items():
+    story.story_flags.pop(_k, None)
+    if _v is not None:
+        story.story_flags[_k] = _v
 
 print(f"##### {len(fails)} failures")
 for m in fails:

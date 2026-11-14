@@ -335,10 +335,10 @@
       "sheet": "trchar016.png"
     },
     "ROCKET_HIDEOUT:GIOVANNI": {
-      "sheet": "trchar031.png"
+      "sheet": "fr_87.png"
     },
     "ROCKET_HIDEOUT:SILPH SCOPE": {
-      "item": "SILPH_SCOPE"
+      "item": "POKE_BALL"
     },
     "POKEMON_MANSION:BURGLAR SIMON": {
       "sheet": "trchar012.png"
@@ -347,7 +347,7 @@
       "sheet": "trchar024.png"
     },
     "CELADON_GAME_CORNER:CLERK": {
-      "sheet": "NPC 19.png"
+      "sheet": "fr_47.png"
     },
     "NATIONAL_PARK:BUG-CATCHING CONTEST": {
       "sheet": "NPC 01.png"
@@ -4044,6 +4044,72 @@
     },
     "CELADON_CITY:Chef": {
       "sheet": "fr_59.png"
+    },
+    "ROCKET_HIDEOUT:ESCAPE ROPE": {
+      "item": "POKE_BALL"
+    },
+    "ROCKET_HIDEOUT:HYPER POTION": {
+      "item": "POKE_BALL"
+    },
+    "ROCKET_HIDEOUT:X SPEED": {
+      "item": "POKE_BALL"
+    },
+    "ROCKET_HIDEOUT:MOON STONE": {
+      "item": "POKE_BALL"
+    },
+    "ROCKET_HIDEOUT:TM122": {
+      "item": "POKE_BALL"
+    },
+    "ROCKET_HIDEOUT:SUPER POTION": {
+      "item": "POKE_BALL"
+    },
+    "ROCKET_HIDEOUT:RARE CANDY": {
+      "item": "POKE_BALL"
+    },
+    "ROCKET_HIDEOUT:TM114": {
+      "item": "POKE_BALL"
+    },
+    "ROCKET_HIDEOUT:BLACK GLASSES": {
+      "item": "POKE_BALL"
+    },
+    "ROCKET_HIDEOUT:LIFT KEY": {
+      "item": "POKE_BALL"
+    },
+    "ROCKET_HIDEOUT:TM123": {
+      "item": "POKE_BALL"
+    },
+    "ROCKET_HIDEOUT:MAX ETHER": {
+      "item": "POKE_BALL"
+    },
+    "ROCKET_HIDEOUT:CALCIUM": {
+      "item": "POKE_BALL"
+    },
+    "CELADON_GAME_CORNER:Clerk": {
+      "sheet": "fr_48.png"
+    },
+    "CELADON_GAME_CORNER:Man": {
+      "sheet": "fr_30.png"
+    },
+    "CELADON_GAME_CORNER:Gambler ": {
+      "sheet": "fr_57.png"
+    },
+    "CELADON_GAME_CORNER:Fisherman": {
+      "sheet": "fr_55.png"
+    },
+    "CELADON_GAME_CORNER:Gambler": {
+      "sheet": "fr_28.png"
+    },
+    "CELADON_GAME_CORNER:Woman": {
+      "sheet": "fr_23.png"
+    },
+    "CELADON_GAME_CORNER:Old man": {
+      "sheet": "fr_33.png"
+    },
+    "CELADON_GAME_CORNER:Gym Guide": {
+      "sheet": "fr_91.png"
+    },
+    "CELADON_GAME_CORNER:Gentleman": {
+      "sheet": "fr_61.png"
     }
   },
   "townsperson": "NPC 17.png",

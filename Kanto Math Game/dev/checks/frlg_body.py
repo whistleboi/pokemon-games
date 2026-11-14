@@ -634,12 +634,15 @@ check(_done and _done[1] != _done[0] and (_done[1] in _stops or abs(_done[1][0] 
 p = route("ROCKET_HIDEOUT", "CELADON_GAME_CORNER")
 p.run.floor.movers = []
 p.run.player = (24, 26); p.anim = 0; p.sliding = None
-_ev = p.run.step(0, -1); p._handle(_ev)
+_lk = story.inventory.get("LIFT_KEY"); story.inventory["LIFT_KEY"] = 1   # (batch 13: FireRed's lift needs the Lift Key)
+p._clear_boulders()   # (its bar lifts now you have it)
+p.step(0, -1)
 for _q in range(40):
     if getattr(p, "dialogue_box", None) and p.dialogue_box.visible:
         p.dialogue_box.advance()
     frames(p)
-check(p.run.index == 3 and abs(p.run.player[0] - 20) + abs(p.run.player[1] - 23) <= 1, f"...the lift's door on B1F takes you down to B4F's (floor {p.run.index}, {tuple(p.run.player)})")
+check(p.run.index == 3 and abs(p.run.player[0] - 20) + abs(p.run.player[1] - 24) <= 1, f"...with the Lift Key, the lift's door on B1F takes you down to B4F's (floor {p.run.index}, {tuple(p.run.player)})")
+if _lk is None: story.inventory.pop("LIFT_KEY", None)
 _fig = [m.payload.get("text") if isinstance(m.payload, dict) else m.payload for m in p.run.floor.movers if m.kind == "figure"]
 check(any("GIOVANNI" in str(t) for t in _fig) or sum(m.kind == "trainer" for m in p.run.floor.movers) == 3, f"...B4F: Giovanni (when the story has him there) and its three Grunts ({_fig})")
 
@@ -656,8 +659,8 @@ p = route("CELADON_GAME_CORNER", "CELADON_CITY")
 f = p.run.floor
 check((f.w, f.h) == (18, 15) and [f.exits.get((x, 13)) for x in (9, 10, 11)] == ["CELADON_CITY"] * 3 and p.run.player[1] == 12,
       f"the Game Corner: FireRed's room, in at the mats {tuple(p.run.player)}")
-check(all(f.decor.get((x, y)) == "slot" for x in (0, 5, 6, 11, 12, 17) for y in range(6, 11)) and all(f.decor.get((x, 3)) == "counter" for x in range(1, 10)),
-      "...its six banks of slot machines and its long counter where FireRed has them")
+check(sum(v == "slot" for v in f.decor.values()) == 20 and all(f.decor.get((x, 3)) == "counter" for x in range(2, 9)),
+      "...FireRed's slot machines (batch 13: its out-of-order, reserved and keys machines are signs) and its counter where FireRed has them")
 _grunt = [m for m in f.movers if m.kind == "figure" and m.payload.get("text") == "ROCKET GRUNT"]
 check(len(_grunt) == 1 and (_grunt[0].x, _grunt[0].y) == (11, 2) and f.decor.get((11, 1)) == "poster", "...a Rocket Grunt stands in front of the poster, where FireRed has him")
 check("ROCKET_HIDEOUT" not in f.exits.values() and not f.walkable(15, 2), "...no stairs yet: the corner is plain wall")
@@ -765,7 +768,7 @@ check((_i, _at) == (0, (13, 22)), f"...out by its south mat, onto the pier below
 _i, _at = step(p, (13, 22), (1, -1) if False else (0, -1)) if False else (0, _at)
 p._warp(p.recipe["art"]["room_floors"]["gate"], 5, 3); frames(p, 2)
 _i, _at = step(p, (5, 2), (0, -1))
-check((_i, _at) == (0, (14, 14)), f"...and out by its north mat {_at}")
+check(_i == 0 and abs(_at[0] - 14) + abs(_at[1] - 14) <= 2, f"...and out by its north mat {_at}")   # (beside it when a wild Pokémon wandering outside stands on the spot: the once-flaky step, 11-14)
 _i, _at = step(p, (12, 87), (0, -1))
 check(p._floor_name(_i) == "Fishing House" and people(p) == {"FISHING GURU"}, f"...the fishing house: FireRed's room, the Fishing Guru's brother {_at}")
 p.draw()
