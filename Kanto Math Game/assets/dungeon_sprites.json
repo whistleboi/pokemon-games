@@ -113,31 +113,31 @@
       "sheet": "NPC 01.png"
     },
     "KANTO_ROUTE_2:FOREST GUIDE": {
-      "sheet": "NPC 20.png"
+      "sheet": "fr_18.png"
     },
     "KANTO_ROUTE_2:BUG FAN": {
-      "sheet": "NPC 02.png"
+      "sheet": "fr_42.png"
     },
     "KANTO_ROUTE_2:RESTING GIRL": {
-      "sheet": "NPC 08.png"
+      "sheet": "fr_32.png"
     },
     "KANTO_ROUTE_2:GATE LADY": {
-      "sheet": "NPC 14.png"
+      "sheet": "fr_28.png"
     },
     "KANTO_ROUTE_2:YOUNG TRAINER": {
-      "sheet": "NPC 05.png"
+      "sheet": "fr_23.png"
     },
     "KANTO_ROUTE_2:GATE VISITOR": {
-      "sheet": "NPC 21.png"
+      "sheet": "fr_26.png"
     },
     "KANTO_ROUTE_2:TRADER": {
-      "sheet": "NPC 24.png"
+      "sheet": "fr_51.png"
     },
     "KANTO_ROUTE_2:TRADER'S FRIEND": {
-      "sheet": "NPC 28.png"
+      "sheet": "fr_55.png"
     },
     "KANTO_ROUTE_2:OAK'S AIDE": {
-      "sheet": "NPC 15.png"
+      "sheet": "fr_55.png"
     },
     "KANTO_ROUTE_12:FISHING GURU": {
       "sheet": "NPC 10.png"
@@ -3258,6 +3258,117 @@
     },
     "KANTO_ROUTE_22:{rival_name}": {
       "sheet": "@rival"
+    },
+    "VIRIDIAN_FOREST:ANTIDOTE": {
+      "item": "POKE_BALL"
+    },
+    "VIRIDIAN_FOREST:POTION": {
+      "item": "POKE_BALL"
+    },
+    "VIRIDIAN_FOREST:POKE BALL": {
+      "item": "POKE_BALL"
+    },
+    "VIRIDIAN_FOREST:Bug Catcher": {
+      "sheet": "fr_18.png"
+    },
+    "VIRIDIAN_FOREST:Youngster": {
+      "sheet": "fr_19.png"
+    },
+    "VIRIDIAN_FOREST:POTION ": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_ROUTE_2:ETHER": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_ROUTE_2:PARALYZE HEAL": {
+      "item": "POKE_BALL"
+    },
+    "PEWTER_CITY:Girl": {
+      "sheet": "fr_51.png"
+    },
+    "PEWTER_CITY:Museum fan": {
+      "sheet": "fr_25.png"
+    },
+    "PEWTER_CITY:Boy": {
+      "sheet": "fr_16.png"
+    },
+    "PEWTER_CITY:Gardener": {
+      "sheet": "fr_20.png"
+    },
+    "PEWTER_CITY:Man": {
+      "sheet": "fr_27.png"
+    },
+    "PEWTER_CITY:Old Amber": {
+      "sheet": "fr_55.png"
+    },
+    "PEWTER_CITY:Amber scientist": {
+      "sheet": "fr_55.png"
+    },
+    "PEWTER_CITY:Old man": {
+      "sheet": "fr_32.png"
+    },
+    "PEWTER_CITY:Curator": {
+      "sheet": "fr_55.png"
+    },
+    "PEWTER_CITY:Visit Museum": {
+      "sheet": "fr_47.png"
+    },
+    "PEWTER_CITY:Researcher": {
+      "sheet": "fr_55.png"
+    },
+    "PEWTER_CITY:Guide": {
+      "sheet": "fr_55.png"
+    },
+    "PEWTER_CITY:Little girl": {
+      "sheet": "fr_17.png"
+    },
+    "PEWTER_CITY:Dad": {
+      "sheet": "fr_30.png"
+    },
+    "PEWTER_CITY:Gym": {
+      "sheet": "fr_80.png"
+    },
+    "PEWTER_CITY:Camper Liam": {
+      "sheet": "fr_39.png"
+    },
+    "PEWTER_CITY:Gym Guide": {
+      "sheet": "fr_91.png"
+    },
+    "PEWTER_CITY:Shop": {
+      "sheet": "fr_68.png"
+    },
+    "PEWTER_CITY:Shopper": {
+      "sheet": "fr_19.png"
+    },
+    "PEWTER_CITY:Nidoran": {
+      "sheet": "fr_123.png"
+    },
+    "PEWTER_CITY:Sleepy man": {
+      "sheet": "fr_18.png"
+    },
+    "PEWTER_CITY:Jigglypuff": {
+      "sheet": "fr_115.png"
+    },
+    "PEWTER_CITY:Heal": {
+      "sheet": "fr_64.png"
+    },
+    "PEWTER_CITY:Lady": {
+      "sheet": "fr_23.png"
+    },
+    "PEWTER_CITY:Man on the phone": {
+      "sheet": "fr_61.png"
+    },
+    "PEWTER_CITY:Mystery Gift lady": {
+      "sheet": "fr_69.png"
+    },
+    "PEWTER_CITY:Link attendant": {
+      "sheet": "fr_65.png"
+    },
+    "PEWTER_CITY:Trade attendant": {
+      "sheet": "fr_65.png"
+    },
+    "PEWTER_CITY:Colosseum attendant": {
+      "sheet": "fr_65.png"
     }
   },
   "townsperson": "NPC 17.png",

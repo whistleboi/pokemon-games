@@ -290,6 +290,8 @@ class StoryManager:
         """Conditions shared by town and route menus. None when the condition isn't one of these."""
         if not isinstance(condition, str):
             return None
+        if condition.startswith("caught_kanto:"):  # (kinds of Kanto Pokemon caught: Route 2's aide wants ten before HM Flash, FireRed)
+            return self.kanto_caught_count() >= int(condition.split(":", 1)[1])
         if condition.startswith("party_has:"):
             pid = int(condition.split(":", 1)[1])
             return any(p and p.id == pid for p in self.player_team)

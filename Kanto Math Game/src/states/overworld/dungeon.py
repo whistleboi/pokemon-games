@@ -180,6 +180,14 @@ def contest_entry(state):
          callback=lambda: game.change_state(AreaTransitionState(game, "BUG_CONTEST")))
 
 
+def running():
+    """Shift held down (Jordan, 11-14: hold Shift while moving to run; no shoes needed): each step takes half the time."""
+    try:
+        return bool(pygame.key.get_mods() & pygame.KMOD_SHIFT)
+    except pygame.error:
+        return False
+
+
 def held_way(keys_map):
     """The way a held arrow key (or WASD) points, or None (Jordan, 11-07: hold to keep walking)."""
     try:
@@ -1488,6 +1496,17 @@ class DungeonState(OverworldBattles, PlayState):
         x, y = t or self.run.player
         return bool(rows) and rows[0] <= y <= rows[1] and self.run.floor.tile(x, y) != core.SURF
 
+    def _may_run(self):
+        """Running (Shift held), on foot only: not surfing, riding, hopping, sliding on ice, or following someone in a scene."""
+        if not running() or not hasattr(self, "run") or getattr(self, "hop", None) or getattr(self, "sliding", None) or getattr(self, "_scene_lock", False):
+            return False
+        try:
+            if self.run.floor.tile(*self.run.player) == core.SURF or self._cycling():
+                return False
+        except Exception:
+            return False
+        return True
+
     def _cycling(self, t=None):
         """Are you riding here (the map's "cycling": true, or [x0, y0, x1, y1]; with the Bicycle)?"""
         area = self._here_art().get("cycling")
@@ -1888,7 +1907,10 @@ class DungeonState(OverworldBattles, PlayState):
         if not item or story.story_flags.get(flag):
             return False
         story.story_flags[flag] = True
-        story.add_item(item)
+        if item == "POKE_BALLS":  # (Poke Balls are the one ball count)
+            story.balls_left = getattr(story, "balls_left", 0) + 1
+        else:
+            story.add_item(item)
         if self.game.assets.heal_sfx:
             self.game.assets.heal_sfx.play()
         self.walk_goal = None
@@ -2809,7 +2831,7 @@ class DungeonState(OverworldBattles, PlayState):
         if self.banner > 0:
             self.banner -= 1
         if self.anim > 0:
-            self.anim -= 1
+            self.anim = max(0, self.anim - (2 if self._may_run() else 1))
         if getattr(self, "_walker", None):
             self._walker_step()
             return

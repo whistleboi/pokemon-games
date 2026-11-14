@@ -223,7 +223,7 @@ def enter(t, door):
 
 
 enter(t, (17, 25))
-check(t.room == "center" and (t.w, t.h) == (15, 10) and t.player == (7, 7) and set(t.exits.values()) == {"OUT:17,25"},
+check(t.room == "center" and (t.w, t.h) == (15, 10) and t.player == (7, 7) and "OUT:17,25" in set(t.exits.values()),   # (11-14: and FireRed's stairs up)
       f"Pewter's Pokemon Center: through the door you stand inside, by the mat ({t.room}, {t.player})")
 t.draw()
 check(tstep(t, (7, 5), (0, -1)) == (7, 4), "...walk up to the counter")
@@ -265,7 +265,7 @@ t._go(None, "OUT:25,4")
 check(t.player == (25, 5), f"...and out again behind the Museum ({t.player})")
 for _door, _room in (((33, 11), "house_ne"), ((9, 30), "house_sw")):
     enter(t, _door)
-    check(t.room == _room and len(t.people) == 1, f"the house at {_door}: open, someone at home ({t.room})")
+    check(t.room == _room and len(t.people) >= 1, f"the house at {_door}: open, someone at home ({t.room})")   # (11-14: FireRed's own people, two or three)
     t.draw()
     t._go(None, "OUT:%d,%d" % _door)
 g.walk_town_room = None

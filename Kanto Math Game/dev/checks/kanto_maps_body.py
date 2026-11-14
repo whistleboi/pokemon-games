@@ -65,7 +65,6 @@ def play(until, n=3000):
             st.handle_events([pygame.event.Event(pygame.MOUSEBUTTONDOWN, button=1, pos=(640, 600))])
         elif not isinstance(st, _WTS) and getattr(st, "dialogue_box", None) is not None and getattr(st.dialogue_box, "visible", False):
             _note(st)   # (a message on a screen of its own: the opening's words, the battle's)
-            st.dialogue_box.is_finished = True
             st.dialogue_box.advance()
         st.update(); st.draw()
     return until()
@@ -326,6 +325,174 @@ if isinstance(intro, TrainerIntroState):
     play(lambda: False, 200)
     check(story.story_flags.get("defeated_rival_route22_early") and not any(m.kind == "figure" and m.payload.get("action") == "ARRIVAL" for m in g.current_state.run.floor.movers),
           "Route 22: beaten, he's gone and the side mission is done")
+
+# ---- batch 3: Route 2, Viridian Forest, Pewter City (FireRed 3.20, 1.0, 3.2)
+story.badges["KANTO"] = []
+story.story_flags.pop("visited_PEWTER_CITY", None)
+_m = [m.get("id") for m in story.get_active_missions()]
+check(_m and _m[0] == "m1b", f"the Journal, Pokedex in hand: through Viridian Forest to Pewter ({_m[:2]})")
+
+
+def _figure(p, text):
+    return next(((m.x, m.y) for m in p.run.floor.movers if m.kind == "figure" and isinstance(m.payload, dict) and m.payload.get("text") == text), None)
+
+
+def _use(p, at, d):
+    """Stand at, face d, walk into whoever stands there (route maps), tapping through what's said."""
+    p.run.floor.movers = [m for m in p.run.floor.movers if m.kind != "wild"]
+    p.run.player = tuple(at); p.anim = 0
+    p.step(*d)
+    play(lambda: not getattr(g.current_state, "dialogue_box", None) or not g.current_state.dialogue_box.visible, 300)
+
+
+for _f in ("got_ether_route2",):
+    story.story_flags.pop(_f, None)
+r2 = open_map("KANTO_ROUTE_2", "VIRIDIAN_CITY")
+check(_figure(r2, "ETHER") == (17, 54), f"Route 2: FireRed's Ether lies at (17, 54) ({_figure(r2, 'ETHER')})")
+_had = story.inventory.get("ETHER", 0)
+_use(r2, (17, 55), (0, -1))
+check(story.inventory.get("ETHER", 0) == _had + 1 and story.story_flags.get("got_ether_route2"), "...walk up to it and you pick it up")
+fo = open_map("VIRIDIAN_FOREST", "KANTO_ROUTE_2")
+_tr = sorted((m.x, m.y) for m in fo.run.floor.movers if m.kind == "trainer")
+check(len(_tr) == 5 and (16, 5) in _tr and (47, 45) in _tr, f"Viridian Forest: the five Bug Catchers on FireRed's spots ({_tr})")
+_b = story.balls_left
+story.story_flags.pop("got_ball_forest", None)
+_use(fo, (5, 42), (0, -1))
+check(story.balls_left == _b + 1, f"...its Poké Ball item counts in your Poké Balls ({_b} -> {story.balls_left})")
+_had = story.inventory.get("POTION", 0)
+for _k in [k for k in story.story_flags if k.startswith("hidden_VIRIDIAN_FOREST")]:
+    story.story_flags.pop(_k)
+fo.run.player = (3, 23); fo.anim = 0
+fo.run.floor.movers = [m for m in fo.run.floor.movers if m.kind not in ("wild", "trainer")]   # (nobody to spot you on this step)
+for _ in range(300):   # (the Poke Ball's words tapped through first)
+    if fo._ready():
+        break
+    if fo.dialogue_box.visible:
+        fo.dialogue_box.advance()
+    fo.update(); fo.draw()
+fo.anim = 0
+fo.step(0, -1)
+play(lambda: False, 40)
+play(lambda: not fo.dialogue_box.visible, 200)
+check(story.inventory.get("POTION", 0) == _had + 1 and story.story_flags.get("hidden_VIRIDIAN_FOREST_0_3_22"), "...FireRed's hidden Potion at (3, 22) is found by stepping on it")
+
+pw = open_map("PEWTER_CITY", "KANTO_ROUTE_2")
+_m = [m.get("id") for m in story.get_active_missions()]
+check(_m and _m[0] == "m2", f"Pewter: the Journal moves on to Brock ({_m[:2]})")
+boy = next((p for p, o in pw._people().items() if o.get("text") == "Boy"), None)
+check(boy == (42, 20), f"Pewter: the boy waits by the east road at FireRed's spot ({boy})")
+pw.player = (41, 21); pw.anim = 0
+said.clear()
+walk(pw, "r")
+_trail = []
+play(lambda: (_trail.append(tuple(g.current_state.player)) or False) or (any("Pewter Gym" in s for s in said) and not g.current_state._busy()), 3000)
+check(any("Follow me" in s for s in said) and any(abs(p[0] - 16) + abs(p[1] - 17) <= 2 for p in _trail),
+      f"...head east without the Boulder Badge: he walks you to the Gym ({_trail[-1:]}, {said[:1]})")
+pw = g.current_state
+pw.player = (15, 17); pw.anim = 0
+walk(pw, "u")
+pw = g.current_state
+check(pw.room == "gym" and (6, 5) in pw._people() and (3, 8) in pw._people(), f"Pewter Gym: Brock and Camper Liam on FireRed's spots ({pw.room})")
+story.story_flags.pop("gym_trainer_PEWTER_CITY_0", None)
+pw.player = (4, 8); pw.anim = 0; pw.facing = (-1, 0)
+said.clear()
+walk(pw, "l")
+play(lambda: isinstance(g.current_state, TrainerIntroState), 600)
+_b = getattr(g.current_state, "next_state", None)
+check(isinstance(g.current_state, TrainerIntroState) and [p.id for p in _b.opponent_team] == [74, 27],
+      f"...talk to Liam: he battles with the data's own team (Geodude, Sandshrew) ({[p.id for p in _b.opponent_team] if _b else None})")
+if _b is not None:
+    g.change_state(_b); _b.player_won = True; _b.exit_battle()
+    play(lambda: isinstance(g.current_state, _WTS), 600)
+check(story.story_flags.get("gym_trainer_PEWTER_CITY_0") and getattr(g.current_state, "room", None) == "gym", "...beaten, you're back in the Gym")
+# the Museum's back room: the Old Amber, from its scientist
+story.story_flags.pop("received_old_amber", None)
+story.inventory.pop("OLD_AMBER", None)
+pw = open_map("PEWTER_CITY", "KANTO_ROUTE_2")
+pw.player = (25, 5); pw.anim = 0
+walk(pw, "u")
+pw = g.current_state
+check(pw.room == "museum_1f" and (22, 3) in pw.barred, f"Museum: in by the back door, the Amber on show ({pw.room}, {pw.player})")
+pw.player = (21, 4); pw.anim = 0; pw.facing = (0, -1)
+walk(pw, "u")
+play(lambda: not g.current_state._busy(), 600)
+play(lambda: False, 30)
+pw = g.current_state
+check(story.inventory.get("OLD_AMBER") == 1 and (22, 3) not in pw.barred, "...the scientist gives you the Old Amber, and it's gone from the case")
+for _k in [k for k in story.story_flags if k.startswith("hidden_PEWTER_CITY")]:
+    story.story_flags.pop(_k)
+pw = open_map("PEWTER_CITY", "KANTO_ROUTE_2")
+_b = story.balls_left
+pw.player = (6, 4); pw.anim = 0
+walk(pw, "u")
+play(lambda: not g.current_state._busy(), 300)
+check(story.balls_left == _b + 1, f"Pewter: FireRed's hidden Poké Ball at (6, 3) ({_b} -> {story.balls_left})")
+
+# ---- running (Jordan, 11-14: hold Shift while moving; no shoes): a step takes half the frames, on foot only
+import src.states.overworld.dungeon as _dn
+
+
+def _step_frames(st, at, d, run):
+    _dn.running = (lambda: True) if run else (lambda: False)
+    if isinstance(st, _WTS):
+        st.player = st.anim_from = at; st.anim = 0
+    else:
+        st.run.floor.movers = []; st.run.player = at; st.anim = 0
+    st.step(*d)
+    n = 0
+    while st.anim > 0 and n < 50:
+        st.update(); n += 1
+    return n
+
+
+t = open_map("PALLET_TOWN", "KANTO_ROUTE_1")
+_w, _r = _step_frames(t, (12, 8), (1, 0), False), _step_frames(t, (12, 8), (1, 0), True)
+check(_r < _w and _r * 2 <= _w + 1, f"running in town: a step takes {_r} frames instead of {_w}")
+p = open_map("KANTO_ROUTE_1", "PALLET_TOWN")
+_w, _r = _step_frames(p, (12, 30), (0, -1), False), _step_frames(p, (12, 30), (0, -1), True)
+check(_r < _w, f"running on a route: a step takes {_r} frames instead of {_w}")
+story.inventory["HM_SURF"] = 1
+t = open_map("PALLET_TOWN", "KANTO_ROUTE_1")
+_w, _r = _step_frames(t, (8, 17), (0, 1), False), _step_frames(t, (8, 17), (0, 1), True)
+check(_r == _w, f"no running while surfing Pallet's pond ({_r} = {_w} frames)")
+story.inventory.pop("HM_SURF", None)
+_dn.running = lambda: False
+
+# ---- the Museum's ticket (FireRed: 50, at the desk); and Route 2's aide wants ten kinds caught before HM Flash
+for _money, _paid in ((0, False), (500, True)):
+    story.story_flags.pop("museum_ticket_paid", None)
+    story.money = _money
+    pw = open_map("PEWTER_CITY", "KANTO_ROUTE_2")
+    pw.player = (17, 7); pw.anim = 0
+    walk(pw, "u")
+    pw = g.current_state
+    pw.player = (13, 6); pw.anim = 0
+    said.clear()
+    walk(pw, "u")
+    play(lambda: any("Receptionist" in s for s in said) and not g.current_state._busy(), 900)
+    pw = g.current_state
+    if _paid:
+        check(story.story_flags.get("museum_ticket_paid") and story.money == _money - 50 and pw.player[1] <= 5,
+              f"Museum: with money, you pay the 50 ticket and go in ({story.money}, {pw.player})")
+    else:
+        check(not story.story_flags.get("museum_ticket_paid") and pw.player[1] >= 6 and any("enough money" in s for s in said),
+              f"Museum: without 50, the receptionist turns you back ({pw.player}, {said[-1:]})")
+story.story_flags.pop("got_hm_flash_kanto", None)
+story.inventory.pop("HM_FLASH", None)
+for _n in (3, 10):
+    story.kanto_caught_count = lambda _n=_n: _n
+    r2 = open_map("KANTO_ROUTE_2", "VIRIDIAN_CITY")
+    _i, _at = r2.run.index, None
+    r2.run.floor.movers = [m for m in r2.run.floor.movers if m.kind != "wild"]
+    said.clear()
+    _aide = next(o for o in _area["KANTO_ROUTE_2"]["route_menu"] if o.get("text") == "OAK'S AIDE")
+    from src.states.overworld import _run_story_event
+    _run_story_event(r2, _aide["event"], lambda c: r2._check_route_condition(c, False), lambda lines: said.extend(lines))
+    if _n < 10:
+        check(not story.inventory.get("HM_FLASH") and any("ten different kinds" in s for s in said), f"Route 2's aide: with {_n} kinds caught, come back with ten")
+    else:
+        check(story.inventory.get("HM_FLASH") == 1, f"...with ten kinds caught, HM Flash")
+del story.kanto_caught_count
 
 print(f"##### {len(fails)} failures")
 for m in fails:

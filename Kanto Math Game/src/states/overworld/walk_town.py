@@ -274,6 +274,10 @@ class WalkTownState(CityState):
         return not any(o is not mover and not o.gone and t in (o.pos, o.frm) and (shown is None or h in shown) for h, o in self.motions.items())
 
     def _npc_tick(self):
+        self._bar_tick = getattr(self, "_bar_tick", 0) + 1
+        if self._bar_tick % 20 == 0 and not self._busy() and getattr(self, "_bar_list", None):   # (a gift or a battle moved the story on:
+            self.barred = {tuple(t): bar for bar in self._bar_list if not self._bar_met(bar) and self._bar_here(bar) for t in bar.get("tiles", [])}   # the Amber gone from its case)
+            self.barred.update(self._rot_bars())
         if not getattr(self, "motions", None):
             return
         self._shown_homes = {h for h, o in self.people.items() if self._shown(o)}
@@ -382,6 +386,32 @@ class WalkTownState(CityState):
     def npc_edge(self, m):
         edge = [(x, y) for (x, y) in self.exits if not (x, y) in self.water_exits]
         return min(edge, key=lambda t: abs(t[0] - m.pos[0]) + abs(t[1] - m.pos[1]), default=None)
+
+    def _may_run(self):
+        """Running (Shift held) on foot: not surfing, not following someone in a scene."""
+        if not dn.running() or getattr(self, "_scene_lock", False):
+            return False
+        x, y = self.player
+        return not (0 <= y < self.h and 0 <= x < self.w and self.rows[y][x] == "o")
+
+    def _town_hidden(self, t):
+        """An item hidden in town (the map's or room's "hidden" {"x,y": item}: the game's own hidden items, as on the
+        routes): found by stepping on its spot, or walking into it where it's solid. Once each."""
+        m = ((self.town_map.get("rooms") or {}).get(self.room) if getattr(self, "room", None) else self.town_map) if getattr(self, "town_map", None) else None
+        item = ((m or {}).get("hidden") or {}).get(f"{t[0]},{t[1]}")
+        story = self.game.story_manager
+        flag = f"hidden_{self.area_key}_{getattr(self, 'room', None) or ''}_{t[0]}_{t[1]}"
+        if not item or story.story_flags.get(flag):
+            return False
+        story.story_flags[flag] = True
+        if item == "POKE_BALLS":   # (Poke Balls are the one ball count)
+            story.balls_left = getattr(story, "balls_left", 0) + 1
+        else:
+            story.add_item(item)
+        from src.pokemon import forms as _forms
+        self.walk_goal = None
+        self.show_message([f"Something was hidden here... You found a {_forms.item_label(item).upper()}!"])
+        return True
 
     def npc_room(self, room, x, y):
         """A scene ends with you inside one of the town's rooms, standing at (x, y) (Oak walks you into his Lab)."""
@@ -674,6 +704,8 @@ class WalkTownState(CityState):
             return self.flash("The water pours down too hard. WATERFALL could climb it!", 110)
         if not self._open(to):
             self.walk_goal = None
+            if self._town_hidden(to):   # (an item hidden in something solid: walk into it)
+                return
             if 0 <= to[0] < self.w and 0 <= to[1] < self.h and self.rows[to[1]][to[0]] in "o2" and to not in self._people():
                 self.flash("The water's deep here. You'll need Surf to cross it!" if self.rows[to[1]][to[0]] == "o" else "A small tree is in the way. CUT could clear it!", 110)
             return
@@ -694,6 +726,7 @@ class WalkTownState(CityState):
         self.player = to
         self.steps += 1
         self._remember()
+        self._town_hidden(to)
         if getattr(self, "thin_ice", None) and self._step_ice(to):
             return
         self._step_switch(to)
@@ -967,7 +1000,7 @@ class WalkTownState(CityState):
         if self.banner > 0:
             self.banner -= 1
         if self.anim > 0:
-            self.anim -= 1
+            self.anim = max(0, self.anim - (2 if self._may_run() else 1))   # (Shift held: running, Jordan 11-14)
             return
         if not self._busy():  # held down: keep walking (a key), or keep heading for the finger
             way = held_way(KEYS)

@@ -139,8 +139,13 @@
         "condition": { "start_region": "KANTO", "flag": "received_pokedex_kanto", "flag_not": "viridian_rocket_defeated" }
       },
       {
-        "id": "m2", "type": "MAIN", "text": "Challenge Brock", "desc": "Head north through Route 2 and Viridian Forest to reach Pewter City. Earn your first badge from Brock, the rock-solid Gym Leader!",
-        "condition": { "start_region": "KANTO", "flag": "received_pokedex_kanto", "badges_less": 1 }
+        "id": "m1b", "type": "MAIN", "text": "Through Viridian Forest", "target": "VIRIDIAN_FOREST",
+        "desc": "Pewter City lies north, past Route 2 and the winding paths of Viridian Forest. Bug Catchers hide among the trees!",
+        "condition": { "start_region": "KANTO", "flag": "received_pokedex_kanto", "visited_not": "PEWTER_CITY", "badges_less": 1 }, "completed_flag": "visited_PEWTER_CITY"
+      },
+      {
+        "id": "m2", "type": "MAIN", "text": "Challenge Brock", "target": "PEWTER_CITY", "desc": "Head north through Route 2 and Viridian Forest to reach Pewter City. Earn your first badge from Brock, the rock-solid Gym Leader!",
+        "condition": { "start_region": "KANTO", "flag": "received_pokedex_kanto", "visited": "PEWTER_CITY", "badges_less": 1 }
       },
       {
         "id": "m3", "type": "MAIN", "text": "The Road to Cerulean", "desc": "With the Boulder Badge in hand, head east through Route 3 and the depths of Mt. Moon to find Cerulean City.",
@@ -645,7 +650,8 @@
         { "text": "Heal", "action": "HEAL" },
         { "text": "Shop", "action": "SHOP" },
         { "text": "Gym", "action": "GYM" },
-        { "text": "Visit Museum", "action": "NPC", "target": "museum", "door": "museum" }
+        { "text": "Visit Museum", "action": "NPC", "target": "museum", "door": "museum" },
+        {"text": "Old Amber", "action": "EVENT", "color": "GOLD", "door": "museum", "flag_condition": "not received_old_amber", "event": {"lines": ["Scientist: You came in the back way? Well, you seem trustworthy.", "Scientist: This Amber has something ancient sealed inside. Take it to the Pokémon Lab on Cinnabar Island: they can bring it back to life!"], "gift_item": {"OLD_AMBER": 1}, "flag": "received_old_amber"}}
       ],
       "on_enter_event": null
     },
@@ -1763,6 +1769,10 @@
         { "sprite": "bug_catcher.png", "name": "Rick", "class": "BUG_CATCHER", "team": [13, 10], "levels": [6, 6], "rewards": { "balls": 3 }, "dialogue": {"intro": ["I love bug Pokémon!"], "player_won": ["Wow, you're pretty good at battling!"], "player_lost": ["No way! I thought my bugs would win!"]} }
       ],
       "route_menu": [
+        {"text": "POKE BALL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_ball_forest", "event": {"lines": ["A Poké Ball, dropped among the roots."], "gift_item": {"balls": 1}, "flag": "got_ball_forest"}}, 
+        {"text": "ANTIDOTE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_antidote_forest", "event": {"lines": ["An Antidote, left behind by a Bug Catcher."], "gift_item": {"ANTIDOTE": 1}, "flag": "got_antidote_forest"}}, 
+        {"text": "POTION", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_potion_forest", "event": {"lines": ["A Potion, tucked under a bush."], "gift_item": {"POTION": 1}, "flag": "got_potion_forest"}}, 
+        {"text": "POTION ", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_potion_forest_2", "event": {"lines": ["Another Potion, near the forest's end."], "gift_item": {"POTION": 1}, "flag": "got_potion_forest_2"}},
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
@@ -1788,7 +1798,7 @@
         { "sprite": "lass.png", "name": "Patty", "class": "LASS", "team": [16, 19], "rewards": { "balls": 3 } },
         { "sprite": "school_kid_m.png", "name": "Billy", "class": "SCHOOL_KID", "team": [25], "rewards": { "balls": 3 } }
       ],
-      "route_menu": [{"text": "FOREST GUIDE", "action": "EVENT", "event": {"lines": ["Guide: Viridian Forest is a natural maze. Take your time in there!"]}}, {"text": "BUG FAN", "action": "EVENT", "event": {"lines": ["Boy: The forest is full of Bug Pokemon. Watch out for Weedle's sting!"]}}, {"text": "RESTING GIRL", "action": "EVENT", "event": {"lines": ["Girl: I made it through the forest! My feet hurt."]}}, {"text": "GATE LADY", "action": "EVENT", "event": {"lines": ["Lady: Pewter City is past the forest. Its Gym Leader uses Rock Pokemon."]}}, {"text": "YOUNG TRAINER", "action": "EVENT", "event": {"lines": ["Boy: Got Antidotes? You'll want some in the forest."]}}, {"text": "GATE VISITOR", "action": "EVENT", "event": {"lines": ["Man: Cut down the small tree outside and you can reach Diglett's Cave."]}}, {"text": "TRADER", "action": "EVENT", "event": {"lines": ["Man: I love trading Pokemon. A traded Pokemon grows fast!"]}}, {"text": "TRADER'S FRIEND", "action": "EVENT", "event": {"lines": ["Woman: He talks about trades all day long."]}}, {"text": "DIGLETT'S CAVE", "action": "EXIT", "target": "DIGGLETT_CAVE", "condition": ["can_exit", "has_item:HM_CUT"], "color": "RED"}, {"text": "OAK'S AIDE", "action": "EVENT", "door": "aide", "color": "GOLD", "event": {"lines": ["Aide: Oh, you're the trainer Professor Oak told me about!", "Caves can be pitch black inside. This HM will light the way. Take it!"], "gift_item": {"HM_FLASH": 1}, "flag": "got_hm_flash_kanto", "done": ["Aide: Flash lights up dark caves, so you can see where you're going. Good luck!"]}}, 
+      "route_menu": [{"text": "FOREST GUIDE", "action": "EVENT", "event": {"lines": ["Guide: Viridian Forest is a natural maze. Take your time in there!"]}}, {"text": "BUG FAN", "action": "EVENT", "event": {"lines": ["Boy: The forest is full of Bug Pokemon. Watch out for Weedle's sting!"]}}, {"text": "RESTING GIRL", "action": "EVENT", "event": {"lines": ["Girl: I made it through the forest! My feet hurt."]}}, {"text": "GATE LADY", "action": "EVENT", "event": {"lines": ["Lady: Pewter City is past the forest. Its Gym Leader uses Rock Pokemon."]}}, {"text": "YOUNG TRAINER", "action": "EVENT", "event": {"lines": ["Boy: Got Antidotes? You'll want some in the forest."]}}, {"text": "GATE VISITOR", "action": "EVENT", "event": {"lines": ["Man: Cut down the small tree outside and you can reach Diglett's Cave."]}}, {"text": "TRADER", "action": "EVENT", "event": {"lines": ["Man: I love trading Pokemon. A traded Pokemon grows fast!"]}}, {"text": "TRADER'S FRIEND", "action": "EVENT", "event": {"lines": ["Woman: He talks about trades all day long."]}}, {"text": "DIGLETT'S CAVE", "action": "EXIT", "target": "DIGGLETT_CAVE", "condition": ["can_exit", "has_item:HM_CUT"], "color": "RED"}, {"text": "ETHER", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_ether_route2", "event": {"lines": ["An Ether, lying by the trees."], "gift_item": {"ETHER": 1}, "flag": "got_ether_route2"}}, {"text": "PARALYZE HEAL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_parlyz_route2", "event": {"lines": ["A Paralyze Heal, dropped in the grass."], "gift_item": {"PARALYZE_HEAL": 1}, "flag": "got_parlyz_route2"}}, {"text": "OAK'S AIDE", "action": "EVENT", "door": "aide", "color": "GOLD", "event": {"requires": ["caught_kanto:10"], "fail": ["Aide: Oh, you're the trainer Professor Oak told me about! I'm one of his aides.", "Aide: I've got an HM for you, but first show me you're serious: catch ten different kinds of Pokémon and come back!"], "lines": ["Aide: Oh, you're the trainer Professor Oak told me about!", "Aide: Ten kinds of Pokémon already? The Professor will be thrilled!", "Caves can be pitch black inside. This HM will light the way. Take it!"], "gift_item": {"HM_FLASH": 1}, "flag": "got_hm_flash_kanto", "done": ["Aide: Flash lights up dark caves, so you can see where you're going. Good luck!"]}}, 
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },

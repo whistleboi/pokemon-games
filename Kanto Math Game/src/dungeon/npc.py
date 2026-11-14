@@ -24,6 +24,7 @@ Story scenes: a map's "scenes" [scene, ...]. A scene plays once its conditions a
                 nearest edge of the map and are gone for this visit)
     "push":     [dx, dy]: you take a step that way afterwards (someone who stops you going on)
     "every":    true: it plays every time it triggers (someone who keeps stopping you), and "flag" is not set
+    "push_unless": a flag: no step back once it's set (the scene's event let you by: the Museum ticket paid)
     "lead":     [[x, y, [lines]], ...]: they show you round: they walk to each spot in turn with you following one step
                 behind, and say that spot's lines there (Oldale's Mart clerk). Usually with "trigger": "talk" (it plays
                 when you talk to them, instead of their option; "then": "talk" runs the option at the end)
@@ -527,7 +528,7 @@ class Scenes:
                     self.playing[1] = "pause"
                     h.npc_say(list(s["after_lines"]), lambda: self._resume("after"))
                     return
-            if s.get("push"):
+            if s.get("push") and not (s.get("push_unless") and h.npc_flagged(s["push_unless"])):   # (not once they've let you by: paid the ticket)
                 h.npc_push(*s["push"])
             after = s.get("after", "home") if m is not None else "stay"
             if after == "home":

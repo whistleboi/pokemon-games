@@ -296,6 +296,13 @@ def _run_story_event(state, key, check, show):
         t_info = dict(ev["battle"], _intro_lines=lines or None)
         game.change_state(_start_event_battle(game, story.current_area_key, t_info, flag))
         return
+    if ev.get("pay"):  # (an entry fee: the Pewter Museum's 50 ticket, FireRed)
+        cost = int(ev["pay"])
+        if getattr(story, "money", 0) < cost:
+            show(_resolve_lines(game, ev.get("fail") or ["You don't have enough money."]))
+            return
+        story.money -= cost
+        lines.append(f"{getattr(game, 'player_name', 'You')} paid ${cost}.")
     if ev.get("starter"):  # (one of the Poke Balls on Oak's table: the starter screen, then the rival's first battle)
         from src.states.menus import StarterSelectionState
         reg = ev["starter"]
