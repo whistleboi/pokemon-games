@@ -858,6 +858,59 @@ _cut = r9.run.floor.tile(2, 8)
 check(not r9.run.floor.walkable(2, 8) or r9.run.player != (2, 8), f"...the Cut tree at its west end ({_cut!r})")
 story.badges["KANTO"] = []
 
+# ---- batch 9: Route 10 (FireRed's one map, our two areas), its Center and aide, Rock Tunnel
+story.story_flags.pop("got_everstone_kanto", None)
+_ev_had = story.inventory.pop("EVERSTONE", None)
+r10 = open_map("KANTO_ROUTE_10", "KANTO_ROUTE_9")
+_quiet(r10)
+_rf = r10.recipe["art"]["room_floors"]
+check(r10.run.index == 0 and r10.run.player[0] <= 2, f"Route 10: in from Route 9 at its west edge ({r10.run.player})")
+r10.run.player = (13, 21)
+_stepper(r10, (0, -1))
+check(r10.run.index == _rf["center"], f"...into FireRed's Pokémon Center by the tunnel ({r10._floor_name(r10.run.index)})")
+_quiet(r10)
+check(_figure(r10, "OAK'S AIDE") == (12, 5), f"...Oak's aide at FireRed's spot ({_figure(r10, \"OAK'S AIDE\")})")
+_dex = g.data.data.setdefault("pokedex", {})
+_dex_was = dict(_dex)
+_dex.clear()
+for _i in range(1, 21):
+    _dex[f"k{_i}"] = {"id": _i}
+_use(r10, (11, 5), (1, 0))
+check(story.inventory.get("EVERSTONE") == 1, "...twenty kinds caught: the aide's Everstone")
+_dex.clear(); _dex.update(_dex_was)
+story.inventory.pop("EVERSTONE", None)
+if _ev_had:
+    story.inventory["EVERSTONE"] = _ev_had
+rt = open_map("ROCK_TUNNEL", "KANTO_ROUTE_10")
+check(rt.run.index == 0 and rt.run.player[1] <= 4 and len(_trainers(rt)) == 7, f"Rock Tunnel: in at the north mouth, FireRed's seven trainers on 1F ({rt.run.player}, {len(_trainers(rt))})")
+_floor(rt, 1)
+check(len(_trainers(rt)) == 8, f"...and eight on B1F ({sorted(_trainers(rt))})")
+rt = open_map("ROCK_TUNNEL", "KANTO_ROUTE_10_SOUTH")
+check(rt.run.index == 0 and rt.run.player[1] >= 34, f"...in from the south area of Route 10 at the south mouth ({rt.run.player})")
+rs = open_map("KANTO_ROUTE_10_SOUTH", "ROCK_TUNNEL")
+check(rs.run.player[1] <= 9 and len(_trainers(rs)) == 4, f"Route 10 (south): out of the tunnel's south mouth, FireRed's four trainers ({rs.run.player})")
+
+# ---- batch 10: Lavender Town, widened (Jordan 11-14): the Radio Tower beside the Pokémon Tower, full size
+story.story_flags.pop("power_plant_fixed", None)
+lv = open_map("LAVENDER_TOWN", "KANTO_ROUTE_10_SOUTH")
+check((lv.w, lv.h) == (31, 20) and lv.player[1] <= 1, f"Lavender: FireRed's town with its east side widened (31 x 20), in from Route 10 at the top ({lv.player})")
+check(lv.rows[6][18] == "D" and lv.rows[6][25] == "D", "...two tower doors side by side on one row: the Pokémon Tower's and the Radio Tower's")
+check(all(not lv._open((x, 3)) for x in range(22, 29)), "...the Radio Tower itself solid")
+lv.player = (25, 7); lv.anim = 0
+lv.toast = ""
+walk(lv, "u")
+check(g.current_state is lv and lv.room is None and "power" in lv.toast.lower(), f"...its door shut, the power out ({lv.toast!r})")
+lv.player = (10, 12); lv.anim = 0
+walk(lv, "u")
+lv = g.current_state
+_pp = {o.get("text"): p for p, o in lv._people().items()}
+check(lv.room == "fuji" and _pp.get("Talk to Mr. Fuji") == (3, 3), f"...Mr. Fuji's Volunteer House, FireRed's room ({lv.room}, {_pp.get('Talk to Mr. Fuji')})")
+lv = open_map("LAVENDER_TOWN", "KANTO_ROUTE_10_SOUTH")
+lv.player = (6, 6); lv.anim = 0
+walk(lv, "u")
+lv = g.current_state
+check(lv.room == "center", f"...the Pokémon Center ({lv.room})")
+
 print(f"##### {len(fails)} failures")
 for m in fails:
     print("   FAIL " + m)

@@ -3795,6 +3795,111 @@
     },
     "KANTO_ROUTE_9:BURN HEAL": {
       "item": "POKE_BALL"
+    },
+    "KANTO_ROUTE_10:POKEMON CENTER": {
+      "sheet": "fr_64.png"
+    },
+    "KANTO_ROUTE_10:Man": {
+      "sheet": "fr_27.png"
+    },
+    "KANTO_ROUTE_10:Youngster": {
+      "sheet": "fr_61.png"
+    },
+    "KANTO_ROUTE_10:OAK'S AIDE": {
+      "sheet": "fr_55.png"
+    },
+    "KANTO_ROUTE_10:Girl": {
+      "sheet": "fr_18.png"
+    },
+    "KANTO_ROUTE_10:Mystery Gift lady": {
+      "sheet": "fr_69.png"
+    },
+    "KANTO_ROUTE_10:Link attendant": {
+      "sheet": "fr_65.png"
+    },
+    "KANTO_ROUTE_10:Trade attendant": {
+      "sheet": "fr_65.png"
+    },
+    "KANTO_ROUTE_10:Colosseum attendant": {
+      "sheet": "fr_65.png"
+    },
+    "ROCK_TUNNEL:REPEL": {
+      "item": "POKE_BALL"
+    },
+    "ROCK_TUNNEL:ESCAPE ROPE": {
+      "item": "POKE_BALL"
+    },
+    "ROCK_TUNNEL:PEARL": {
+      "item": "POKE_BALL"
+    },
+    "ROCK_TUNNEL:MAX ETHER": {
+      "item": "POKE_BALL"
+    },
+    "ROCK_TUNNEL:Hiker": {
+      "sheet": "fr_18.png"
+    },
+    "ROCK_TUNNEL:REVIVE": {
+      "item": "POKE_BALL"
+    },
+    "LAVENDER_TOWN:Boy": {
+      "sheet": "fr_18.png"
+    },
+    "LAVENDER_TOWN:Little girl": {
+      "sheet": "fr_17.png"
+    },
+    "LAVENDER_TOWN:Man": {
+      "sheet": "fr_30.png"
+    },
+    "LAVENDER_TOWN:Gentleman": {
+      "sheet": "fr_18.png"
+    },
+    "LAVENDER_TOWN:Heal": {
+      "sheet": "fr_64.png"
+    },
+    "LAVENDER_TOWN:Girl": {
+      "sheet": "fr_16.png"
+    },
+    "LAVENDER_TOWN:Youngster": {
+      "sheet": "fr_30.png"
+    },
+    "LAVENDER_TOWN:Mystery Gift lady": {
+      "sheet": "fr_69.png"
+    },
+    "LAVENDER_TOWN:Link attendant": {
+      "sheet": "fr_65.png"
+    },
+    "LAVENDER_TOWN:Trade attendant": {
+      "sheet": "fr_65.png"
+    },
+    "LAVENDER_TOWN:Colosseum attendant": {
+      "sheet": "fr_65.png"
+    },
+    "LAVENDER_TOWN:Girl ": {
+      "sheet": "fr_17.png"
+    },
+    "LAVENDER_TOWN:Talk to Mr. Fuji": {
+      "sheet": "fr_78.png"
+    },
+    "LAVENDER_TOWN:Nidorino": {
+      "sheet": "fr_124.png"
+    },
+    "LAVENDER_TOWN:Psyduck": {
+      "sheet": "fr_121.png"
+    },
+    "LAVENDER_TOWN:Woman": {
+      "sheet": "fr_42.png"
+    },
+    "LAVENDER_TOWN:Cubone": {
+      "sheet": "fr_111.png"
+    },
+    "LAVENDER_TOWN:Name Rater": {
+      "sheet": "fr_61.png"
+    },
+    "LAVENDER_TOWN:Lady": {
+      "sheet": "fr_26.png"
+    },
+    "LAVENDER_TOWN:Shop": {
+      "sheet": "fr_68.png"
     }
   },
   "townsperson": "NPC 17.png",

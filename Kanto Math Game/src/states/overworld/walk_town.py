@@ -35,6 +35,20 @@ LABELS = {"steven": "STEVEN'S HOUSE", "space": "SPACE CENTER", "cozmo": "PROF. C
           "burned": "BURNED TOWER", "bellchime": "BELLCHIME TRAIL", "theater": "DANCE THEATER", "pharmacy": "PHARMACY", "souvenir": "SOUVENIR SHOP", "leaguegate": "VICTORY ROAD", "dome": "POKEATHLON DOME"}
 _DATA = {}
 
+# Name tags (Jordan, 11-14: "nametags only show overhead for important places and people, it overcrowds the screen"):
+# a building is named when it's a landmark (LABELS) or a story option names it; a person when they do something (heal,
+# sell, a story errand, a gift, a trade, a quest); not the townsfolk who only chat, the trainers, things lying about.
+_ERRANDS = ("gift_item", "trade", "heal", "requires", "starter", "pay", "gift_pokemon", "give", "take_item", "story")
+
+
+def important_person(opt):
+    if not isinstance(opt, dict) or opt.get("found"):
+        return False
+    if opt.get("action") not in (None, "EVENT"):
+        return True
+    ev = opt.get("event") or {}
+    return opt.get("color") == "GOLD" or any(k in ev for k in _ERRANDS)
+
 
 def held_way(keys_map):
     """The way a held arrow key (or WASD) points, or None (Jordan, 11-07: hold to keep walking)."""
@@ -1402,8 +1416,9 @@ class WalkTownState(CityState):
             if kind == "house" or (kind == "home" and spot != min(t for t, k2 in self.doors.items() if k2 == "home")):
                 continue
             label = LABELS.get(kind) or next((o.get("text", "") for o in self.area_data.get("explore_options", [])
-                                              if o.get("door") == kind), kind).upper()
-            self._pill(screen, label, at(spot).centerx, at(spot).y - 6, fonts)
+                                              if o.get("door") == kind and o.get("action") not in (None, "EVENT")), "").upper()
+            if label:   # (a landmark or a place the story names; a plain house or room has no tag)
+                self._pill(screen, label, at(spot).centerx, at(spot).y - 6, fonts)
         ways = {}
         for spot, target in self.exits.items():
             ways.setdefault(target, []).append(spot)
@@ -1411,12 +1426,14 @@ class WalkTownState(CityState):
             tiles.sort()
             t = tiles[len(tiles) // 2]
             name = (self.game.loader.area_data.get("STORY_PROGRESSION", {}).get(target) or {}).get("route_name") or target
-            if str(target).startswith(("OUT:", "ROOM:")):  # (a room's mat or stairs: no place of their own to name)
-                name = "EXIT" if str(target).startswith("OUT:") else "STAIRS"
+            if str(target).startswith(("OUT:", "ROOM:")):  # (a room's mat or stairs: no place of their own to name, no tag)
+                continue
             self._pill(screen, str(name).upper(), at(t).centerx, at(t).centery + 10, fonts)
         from src.states.overworld.common import _fill_names
         taken = []  # (name tags that would sit on top of one another: the one with something to do is shown: a row of clerks)
         for spot, opt in sorted(people.items(), key=lambda kv: (kv[1].get("action") == "EVENT" and not (kv[1].get("event") or {}).get("battle"), kv[0])):
+            if not important_person(opt):   # (townsfolk who only chat: no tag)
+                continue
             self._pill(screen, _fill_names(self.game, opt.get("who") or opt.get("text", "")).upper()[:28], at(spot).centerx,  # ("who": the person, when the option says what they offer)
                        at(spot).y - 34, fonts, taken)
         if getattr(self, "turnstiles", None):
@@ -1502,10 +1519,17 @@ class WalkTownState(CityState):
         return self._guide_hit
 
     def _guide_lift(self, t):
+        """How high the Journal's arrow sits over a tile that already has a name tag (None: no tag there, so the arrow
+        brings its own)."""
         if t in self._people():
-            return 70  # (over the person's name)
-        if t in self.doors or t in self.exits:
-            return 44  # (over the building's name; a way out's name sits low on its tile)
+            return 70 if important_person(self._people()[t]) else None  # (over the person's name)
+        if t in self.doors:
+            kind = self.doors[t]
+            named = kind not in ("house", "home") and (LABELS.get(kind) or any(o.get("door") == kind and o.get("action") not in (None, "EVENT")
+                                                                             for o in self.area_data.get("explore_options", [])))
+            return 44 if named else None  # (over the building's name)
+        if t in self.exits and not str(self.exits[t]).startswith(("OUT:", "ROOM:")):
+            return 44  # (a way out's name sits low on its tile)
         return None
 
     def _draw_guide(self, screen, at):

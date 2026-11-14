@@ -433,7 +433,7 @@ p = at_route("KANTO_ROUTE_10", "KANTO_ROUTE_9", (24, 50), lambda x, y: x <= 2 an
 check(p.run.floor.exits.get((8, 19)) == "ROCK_TUNNEL" and str(p.run.floor.exits.get((13, 20))).startswith("WARP:") and p.run.floor.exits.get((7, 40)) == "POWER_PLANT",
       "...Rock Tunnel's mouth, the Center's door, the Power Plant's door")
 _i, _at = step(p, (13, 21), (0, -1))
-check(p._floor_name(_i) == "Pokemon Center" and people(p) == {"POKEMON CENTER"}, f"...the Pokemon Center: the shared room, its nurse {_at}")
+check(p._floor_name(_i) == "Pokémon Center" and {"POKEMON CENTER", "OAK'S AIDE"} <= people(p), f"...the Pokemon Center: FireRed's room (batch 9), its nurse and Oak's aide {_at}")
 p.draw()
 _i, _at = step(p, (7, 7), (0, 1))
 check((_i, _at) == (0, (13, 21)), f"......and out by its mat {_at}")
@@ -498,13 +498,13 @@ enter(t, (14, 25))
 check(t.room == "gym" and t.people.get((5, 2), {}).get("action") == "GYM" and not t._open((5, 6)) and not t._open((5, 7)),
       f"...its Gym: FireRed's room, the electric gate shut, Lt. Surge at the back ({t.room})")
 t.draw(); t._go(None, "OUT:14,25")
-t = at_town("LAVENDER_TOWN", "KANTO_ROUTE_10_SOUTH", (24, 20), lambda x, y: y <= 2, {"KANTO_ROUTE_10_SOUTH", "KANTO_ROUTE_8", "KANTO_ROUTE_12"},
-            {"center", "mart", "ptower", "fuji"}, "Lavender Town")
+t = at_town("LAVENDER_TOWN", "KANTO_ROUTE_10_SOUTH", (31, 20), lambda x, y: y <= 2, {"KANTO_ROUTE_10_SOUTH", "KANTO_ROUTE_8", "KANTO_ROUTE_12"},
+            {"center", "mart", "ptower", "fuji", "radio", "house"}, "Lavender Town")   # (batch 10: FireRed's town widened east for the Radio Tower)
 check(t._door_options("ptower") and t._door_options("fuji") and t.doors.get((18, 6)) == "ptower", "...the Tower's door at its foot and Mr. Fuji's house open their options")
 enter(t, (20, 15))
 check(t.room == "mart", "...its Mart is the shared room")
 t._go(None, "OUT:20,15")
-check(t.doors.get((18, 11)) == "radio" and t._door_options("radio") is not None and t.locked.get("radio"), "...HeartGold's Radio Tower stands below the Pokemon Tower's path, its door its own kind")
+check(t.doors.get((25, 6)) == "radio" and t._door_options("radio") is not None and t.locked.get("radio"), "...HeartGold's Radio Tower stands beside the Pokemon Tower (Jordan 11-14), its door its own kind")
 t = at_town("CELADON_CITY", "KANTO_ROUTE_7", (60, 40), lambda x, y: x >= 57, {"KANTO_ROUTE_7", "KANTO_ROUTE_16"},
             {"center", "dept", "gym", "game corner", "mansion", "hotel"}, "Celadon City")
 check(t._door_options("dept") and t._door_options("game corner") and t.doors.get((11, 30)) == "gym" and t.doors.get((30, 4)) == "mansion",
@@ -988,7 +988,7 @@ for _k, _v in _had.items():
 for _town, _came, _doors in (
         ("CERULEAN_CITY", "KANTO_ROUTE_4", (((10, 11), "house_w", (10, 10), 1), ((10, 8), "house_w", (10, 10), 1), ((30, 11), "house_ne", (10, 9), 2), ((31, 8), "house_ne", (10, 9), 2), ((15, 17), "house_mid", (11, 9), 2), ((23, 28), "house_s", (11, 9), 1), ((17, 11), "house_n", (11, 9), 1))),
         ("VERMILLION_CITY", "KANTO_ROUTE_6", (((19, 17), "house_n", (11, 9), 1), ((28, 24), "house_e", (11, 9), 3))),   # (11-14: FireRed's Pidgey stands with its owners)
-        ("LAVENDER_TOWN", "KANTO_ROUTE_8", (((5, 16), "house_w", (11, 9), 1), ((10, 16), "rater", (11, 9), 1))),
+        ("LAVENDER_TOWN", "KANTO_ROUTE_8", (((5, 16), "house_w", (11, 9), 2), ((10, 16), "rater", (11, 9), 1))),   # (batch 10: the Cubone house has its Cubone)
         ("CELADON_CITY", "KANTO_ROUTE_7", (((37, 29), "restaurant", (15, 11), 5), ((41, 29), "house_e", (11, 9), 2), ((49, 29), "hotel", (17, 11), 3))),
         ("SAFFRON_CITY", "KANTO_ROUTE_5", (((27, 21), "house_w", (11, 9), 2), ((43, 38), "psychic", (11, 9), 1), ((47, 21), "fans", (11, 17), 4))),
         ("FUCHSIA_CITY", "KANTO_ROUTE_15", (((28, 16), "office", (20, 11), 4), ((14, 31), "house_w", (11, 9), 2), ((19, 31), "deleter", (11, 9), 1)))):

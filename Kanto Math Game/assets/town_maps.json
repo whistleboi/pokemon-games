@@ -11509,219 +11509,204 @@
    "ccoooooooooooooooooooocc",
    "ccoooooooooooooooooooocc",
    "cc.................ooocc",
-   "cckk..kkkkkkkkkkkkkooocc",
-   "cc....\"\"\"\"\"\"\"\"\"\"\".kooocc",
-   "cc=d..\"\"\"\"\"\"\"\"\"\"\".kooocc",
-   "<===d.\"\"\"\"\"\"\"\"\"\"\".kooocc",
-   "<====.\"\"\"\"\"\"\"\"\"\"\".kooocc",
-   "<===d.\"\"\"\"\"\"\"\"\"\"\".kooocc",
-   "cc=d..............kooocc",
-   "cc_____________..kkooocc",
-   "cc................kooocc",
-   "cc................kooocc",
-   "ccccccccccc.......kooocc",
-   "ccccccccccc.......kooocc",
-   "cccccccccccCCCCC..kooocc",
-   "ccccccccQccCCCCC..kooocc",
-   "ccccccccDccCCCCC..kooocc",
-   "cc=======d2CCDCC..kooocc",
-   "cc==kkk!kT.d===d..kooocc",
-   "cc=====d..2=====..kooocc",
-   "cc=====...Td===d..kooocc",
-   "cc=====...2.......kooocc",
-   "cc====d...T.......kooocc",
-   "cc===d....2.......kooocc",
-   "cc=d.....XT.......kooocc",
-   "cc................kooocc",
-   "cc................kooocc",
-   "cckkkkkkkkkkkkkkkkkooocc",
+   "cccc..cccccccccccccooocc",
+   "cc....\"\"\"\"\"\"\"\"\"\"\".cooocc",
+   "cc....\"\"\"\"\"\"\"\"\"\"\".cooocc",
+   "<.....\"\"\"\"\"\"\"\"\"\"\".cooocc",
+   "<.....\"\"\"\"\"\"\"\"\"\"\".cooocc",
+   "<.....\"\"\"\"\"\"\"\"\"\"\".cooocc",
+   "cc................cooocc",
+   "cc_____________..ccooocc",
+   "cc................cooocc",
+   "cc................cooocc",
+   "ccccccccccc.......cooocc",
+   "ccccccccccc.......cooocc",
+   "cccccccccccccccc..cooocc",
+   "cccccccccccccccc..cooocc",
+   "ccccccccnccccAcc..cooocc",
+   "cc........2ccDcc..cooocc",
+   "cc..ccc!cc........cooocc",
+   "cc........2.......cooocc",
+   "cc........c.......cooocc",
+   "cc........2.......cooocc",
+   "cc........c.......cooocc",
+   "cc........2.......cooocc",
+   "cc.......Xc.......cooocc",
+   "cc................cooocc",
+   "cc................cooocc",
+   "cccccccccccccccccccooocc",
    "ccccccccccccccccc..ooocc",
    "ccccccccccccccccc..ooocc",
    "ccccccccccccccccc..ooocc",
    "ccccccccccccccccc..ooocc",
-   "cccPPPPPPPPPccccc..ooocc",
-   "c.kPPPPPPPPPkcccc..ooocc",
-   "c.kPPPPPPPPPkcccc..ooocc",
-   "c..PPPPPPPPPkcccc==ooocc",
-   "c.kPPPPPPPPPkcccc==ooocc",
-   "c__PPPPDPPPP.cccc==ooocc",
-   "c..........d=ccc===ooocc",
-   "cc....!..d===ccc===ooocc",
-   "cc===========ccc===ooocc",
-   "cc===========X=====ooocc",
-   "cc=================ooocc",
-   "cc===============ooooocc",
+   "ccccccccccccccccc..ooocc",
+   "c.ccccccccccccccc..ooocc",
+   "c.>cccccccccccccc..ooocc",
+   "c..cccccccccccccc..ooocc",
+   "c.ccccccccccccccc..ooocc",
+   "c__cccc>cccc.cccc..ooocc",
+   "c............ccc...ooocc",
+   "cc....!......ccc...ooocc",
+   "cc...........ccc...ooocc",
+   "cc...........X.....ooocc",
+   "cc.................ooocc",
+   "cc...............ooooocc",
    "ccoooooooooooooooooooocc",
    "ccoooooooooooooooooooocc",
    "ccoooooooooooooooooooocc"
   ],
   "exits": {
    "<": "KANTO_ROUTE_9",
-   "Q": "ROCK_TUNNEL",
-   "P": "POWER_PLANT"
+   "n": "ROCK_TUNNEL",
+   ">": "POWER_PLANT"
   },
   "buildings": {
-   "C": "center",
-   "P": "plant",
-   "Q": "cave"
+   "A": "center"
   },
   "roofs": {
-   "C": [
-    222,
-    106,
-    98
-   ],
-   "P": [
-    123,
-    123,
-    131
-   ],
-   "Q": [
-    123,
-    74,
-    74
-   ]
-  },
-  "overheads": [
-   {
-    "kind": "tops",
-    "rect": [
-     11,
-     16,
-     5,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     222,
-     106,
-     98
+   "_picture": {
+    "f": "fr_ground/k_r10.png",
+    "at": [
+     0,
+     0
     ]
-   }
-  ],
+   },
+   "_signs_in_picture": true,
+   "_buildings_in_picture": true
+  },
   "signs": [
    [
     "ROCK TUNNEL",
-    "A pitch-dark tunnel. Bring a Pokemon that knows Flash!"
+    "The way to Lavender Town"
    ],
    [
-    "POWER PLANT",
-    "Kanto's power comes from here. Zap!"
+    "POWER PLANT"
    ]
   ],
   "trainer_spots": [
    "Heidi",
    "Mark"
   ],
-  "parts": true,
+  "inside": {
+   "13,20": "center"
+  },
+  "edge_to": {
+   "0,8": [
+    71,
+    8
+   ],
+   "0,9": [
+    71,
+    9
+   ],
+   "0,10": [
+    71,
+    10
+   ]
+  },
+  "moves": {
+   "9,27": {
+    "m": "face",
+    "d": "d",
+    "s": 2
+   },
+   "13,44": {
+    "m": "face",
+    "d": "l",
+    "s": 5
+   }
+  },
   "rooms": {
    "center": {
-    "theme": "room",
     "art": [
      "ccccccccccccccc",
      "ccccccccccccccc",
-     "....zmmN.mz....",
-     "....mmmmmmm....",
-     "...............",
-     "...............",
-     "ce.........mm..",
-     "...........mm..",
+     "....mccNccm....",
+     "..N.cmmmmmc....",
+     ".........N.....",
+     "............N..",
+     "c<.........cc.N",
+     "...........cc..",
      "......vvv......",
      "ccccccccccccccc"
     ],
     "exits": {
-     "v": "OUT:13,20"
+     "v": "OUT:13,20",
+     "<": "ROOM:center_2"
     },
     "buildings": {},
     "roofs": {
-     "_floor": [
-      225,
-      219,
-      171
-     ],
-     "_wall": [
-      230,
-      139,
-      98
-     ],
-     "_things": {
-      "5,2": [
-       82,
-       82,
-       106
-      ],
-      "6,2": [
-       82,
-       82,
-       106
-      ],
-      "9,2": [
-       82,
-       82,
-       106
-      ],
-      "4,3": [
-       82,
-       82,
-       106
-      ],
-      "5,3": [
-       255,
-       131,
-       115
-      ],
-      "6,3": [
-       255,
-       131,
-       115
-      ],
-      "7,3": [
-       180,
-       180,
-       164
-      ],
-      "8,3": [
-       255,
-       131,
-       115
-      ],
-      "9,3": [
-       255,
-       131,
-       115
-      ],
-      "10,3": [
-       82,
-       82,
-       106
-      ],
-      "11,6": [
-       255,
-       255,
-       255
-      ],
-      "12,6": [
-       255,
-       255,
-       255
-      ],
-      "11,7": [
-       222,
-       213,
-       230
-      ],
-      "12,7": [
-       255,
-       255,
-       255
+     "_picture": {
+      "f": "fr_ground/21_0.png",
+      "at": [
+       0,
+       0
       ]
      },
-     "_mat": true
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
     },
     "people": [
-     "POKEMON CENTER"
+     "POKEMON CENTER",
+     {
+      "text": "Man",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "A Nugget's no use to me. I sold mine for 5,000! Best deal I ever made."
+       ]
+      }
+     },
+     {
+      "text": "Youngster",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Every type is strong against some types and weak against others. Learn them all!"
+       ]
+      }
+     },
+     "OAK'S AIDE",
+     {
+      "text": "Girl",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I heard ghosts haunt Lavender Town, just past Rock Tunnel..."
+       ]
+      }
+     }
     ],
-    "title": "Pokemon Center",
+    "moves": {
+     "2,3": {
+      "m": "wander",
+      "d": "lr",
+      "r": [
+       1,
+       0
+      ]
+     },
+     "9,4": {
+      "m": "wander",
+      "d": "lr",
+      "r": [
+       1,
+       0
+      ]
+     },
+     "14,6": {
+      "m": "face",
+      "d": "l"
+     },
+     "7,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "12,5": {
+      "m": "face",
+      "d": "d"
+     }
+    },
     "land": {
      "13,20": [
       13,
@@ -11733,12 +11718,147 @@
       7,
       7
      ]
-    }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/21_0.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       15,
+       10
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Pokémon Center"
+   },
+   "center_2": {
+    "art": [
+     "ccccccccccccccc",
+     "ccccccccccccccc",
+     "cNNcccNcccNccc.",
+     "mmmcmcmmccmmcc.",
+     "...............",
+     "...............",
+     "c<.............",
+     "...............",
+     "...c.........c.",
+     "ccccccccccccccc"
+    ],
+    "exits": {
+     "<": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/21_1.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Mystery Gift lady",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Mystery Gifts arrive here now and then. There's nothing for you today, I'm afraid."
+       ]
+      }
+     },
+     {
+      "text": "Link attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I'm sorry, the Union Room is closed for now."
+       ]
+      }
+     },
+     {
+      "text": "Trade attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Trade Center is closed for maintenance. Please come back another time!"
+       ]
+      }
+     },
+     {
+      "text": "Colosseum attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Colosseum is closed for now. Sorry about that!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "2,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "6,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "10,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "1,2": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/21_1.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       15,
+       10
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Pokémon Center 2F"
    }
   },
-  "inside": {
-   "13,20": "center"
-  }
+  "parts": true,
+  "hidden": {
+   "10,19": "SUPER_POTION",
+   "12,40": "MAX_ETHER",
+   "6,26": "CHERI_BERRY",
+   "17,29": "PERSIM_BERRY"
+  },
+  "overheads": [
+   {
+    "kind": "picture",
+    "f": "fr_top/k_r10.png",
+    "at": [
+     0,
+     0
+    ],
+    "size": [
+     24,
+     50
+    ]
+   }
+  ]
  },
  "KANTO_ROUTE_10_SOUTH": {
   "art": [
@@ -11748,72 +11868,50 @@
    "cccccccccccccccccccccccc",
    "cccccccccccccccccccccccc",
    "cccccccccccccccccccccccc",
-   "ccccccccQcccccccc=....cc",
-   "ccccccccDcccccccc=....cc",
-   "ccc===============....cc",
-   "ccc============!=d....cc",
-   "ccc====X========d.....cc",
-   "ccc=========ccccc.....cc",
-   "cc==X=======ccccc_.___cc",
-   "cc===cccccccccccc.....cc",
-   "cc===cccccccccccc.....cc",
+   "ccccccccccccccccc.....cc",
+   "ccccccccncccccccc.....cc",
+   "ccc...................cc",
+   "ccc............!......cc",
+   "ccc....X..............cc",
+   "ccc.........ccccc.....cc",
+   "cc..X.......ccccc_.___cc",
+   "cc...cccccccccccc.....cc",
+   "cc...cccccccccccc.....cc",
    "cc___cccccccccccc.....cc",
-   "cc===cccccccccccc____.cc",
-   "cc==dcccccccccccc.....cc",
-   "ccd.X.................cc",
+   "cc...cccccccccccc____.cc",
+   "cc...cccccccccccc.....cc",
+   "cc..X.................cc",
    "cc....................cc",
    "cc.............X......cc",
    "ccccccccccc...........cc",
    "ccccccccccc...........cc",
    "ccccccccccc...........cc",
-   "ccccccccccc__.ccLLLLLccc",
-   "ccccccccccc...ccLLLLLccc",
-   "cccccccc......ccLLLLLccc",
-   "cccccccc......ccLLLLLccc",
-   "cccccccc.....cccLLLLLccc",
-   "ccccccccvvvvvcccLLLLLccc"
+   "ccccccccccc__.cccccccccc",
+   "ccccccccccc...cccccccccc",
+   "cccccccc......cccccccccc",
+   "cccccccc......cccccccccc",
+   "cccccccc.....ccccccccccc",
+   "ccccccccvvvvvccccccccccc"
   ],
   "exits": {
-   "Q": "ROCK_TUNNEL",
-   "v": "LAVENDER_TOWN"
+   "v": "LAVENDER_TOWN",
+   "n": "ROCK_TUNNEL"
   },
-  "buildings": {
-   "L": "house",
-   "Q": "cave"
-  },
+  "buildings": {},
   "roofs": {
-   "L": [
-    148,
-    180,
-    148
-   ],
-   "Q": [
-    123,
-    74,
-    74
-   ]
-  },
-  "overheads": [
-   {
-    "kind": "tops",
-    "rect": [
-     16,
-     23,
-     5,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     148,
-     180,
-     148
+   "_picture": {
+    "f": "fr_ground/k_r10s.png",
+    "at": [
+     0,
+     0
     ]
-   }
-  ],
+   },
+   "_signs_in_picture": true,
+   "_buildings_in_picture": true
+  },
   "signs": [
    [
-    "ROCK TUNNEL",
-    "Cerulean City lies beyond. Mind the dark!"
+    "ROCK TUNNEL"
    ]
   ],
   "trainer_spots": [
@@ -11821,33 +11919,74 @@
    "Clark",
    "Trent",
    "Herman"
+  ],
+  "edge_to": {
+   "8,29": [
+    8,
+    0
+   ],
+   "9,29": [
+    9,
+    0
+   ],
+   "10,29": [
+    10,
+    0
+   ],
+   "11,29": [
+    11,
+    0
+   ],
+   "12,29": [
+    12,
+    0
+   ]
+  },
+  "moves": {
+   "7,10": {
+    "m": "look",
+    "d": "udlr",
+    "s": 2
+   },
+   "4,12": {
+    "m": "look",
+    "d": "udlr",
+    "s": 1
+   },
+   "4,18": {
+    "m": "face",
+    "d": "l",
+    "s": 2
+   },
+   "15,20": {
+    "m": "wander",
+    "d": "lr",
+    "r": [
+     2,
+     0
+    ],
+    "s": 2
+   }
+  },
+  "hidden": {
+   "20,7": "NANAB_BERRY"
+  },
+  "overheads": [
+   {
+    "kind": "picture",
+    "f": "fr_top/k_r10s.png",
+    "at": [
+     0,
+     0
+    ],
+    "size": [
+     24,
+     30
+    ]
+   }
   ]
  },
  "ROCK_TUNNEL": {
-  "theme": "cave",
-  "dark": true,
-  "buildings": {},
-  "floor_names": [
-   "1F",
-   "B1F"
-  ],
-  "figure_floors": {
-   "Lenny": 0,
-   "Ashton": 0,
-   "Lucas": 0,
-   "Oliver": 0,
-   "Leah": 0,
-   "Ariana": 0,
-   "Dana": 0,
-   "Eric": 1,
-   "Cooper": 1,
-   "Dudley": 1,
-   "Allen": 1,
-   "Sofia": 1,
-   "Steve": 1,
-   "Martha": 1,
-   "Winston": 1
-  },
   "floors": [
    {
     "art": [
@@ -11856,7 +11995,7 @@
      "ccc.1..ccccccccc.^...ccccccccccccccccccccc...1cc",
      "ccc.....cccccccc.....ccccccccccccccccccccc....cc",
      "ccc.....cccccccc.......................ccc....cc",
-     "ccc....Xcccccccc.......................ccc....cc",
+     "ccc....Xcccccccc.....................N.ccc....cc",
      "c...........cccc.......................ccc....cc",
      "c...........cccc.......................ccc....cc",
      "c...........cccc.......................ccc....cc",
@@ -11873,7 +12012,7 @@
      "c....cccc................ccccc...c..ccccc...cccc",
      "c....Xccc................cccc.......cccc......cc",
      "c........................ccc........ccc......1cc",
-     "c........................ccc........ccc.......cc",
+     "c.....................N..ccc.....N..ccc.......cc",
      "c.......................cccc........ccc.......cc",
      "c..................ccccccccc........ccc......Xcc",
      "cccccccccccccccccccccccccccc........ccc.......cc",
@@ -11884,7 +12023,7 @@
      "c...................................ccc.......cc",
      "c...................................ccc.....c.cc",
      "cccccccccccc...........cccccccc............ccccc",
-     "cccccccccccc..c........cccccccc............cc.cc",
+     "cccccccccccc..!........cccccccc............cc.cc",
      "cccccccccccc.......c...cccccccccc.............cc",
      "cccccccccccc...........cccccccccccc...........cc",
      "cccccccccccc.c......c..ccccccccccccccccccccccccc",
@@ -11896,7 +12035,38 @@
      "^": "KANTO_ROUTE_10",
      "v": "KANTO_ROUTE_10_SOUTH"
     },
-    "parts": true,
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_81.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "REPEL",
+     "ESCAPE ROPE",
+     "PEARL"
+    ],
+    "signs": [
+     [
+      "ROCK TUNNEL",
+      "Cerulean City - Lavender Town"
+     ]
+    ],
+    "trainer_spots": [
+     "Lenny",
+     "Ashton",
+     "Lucas",
+     "Oliver",
+     "Leah",
+     "Ariana",
+     "Dana"
+    ],
     "links": {
      "45,2": [
       1,
@@ -11919,21 +12089,62 @@
       3
      ]
     },
-    "trainer_spots": [
-     "Lenny",
-     "Ashton",
-     "Lucas",
-     "Oliver",
-     "Leah",
-     "Ariana",
-     "Dana"
-    ]
+    "moves": {
+     "37,5": {
+      "m": "look",
+      "d": "udlr"
+     },
+     "33,22": {
+      "m": "look",
+      "d": "udlr"
+     },
+     "22,22": {
+      "m": "look",
+      "d": "udlr"
+     },
+     "7,5": {
+      "m": "face",
+      "d": "d",
+      "s": 4
+     },
+     "27,10": {
+      "m": "face",
+      "d": "l",
+      "s": 3
+     },
+     "20,17": {
+      "m": "face",
+      "d": "l",
+      "s": 4
+     },
+     "5,20": {
+      "m": "face",
+      "d": "d",
+      "s": 4
+     },
+     "45,24": {
+      "m": "face",
+      "d": "l",
+      "s": 5
+     },
+     "39,27": {
+      "m": "face",
+      "d": "r",
+      "s": 4
+     },
+     "26,28": {
+      "m": "face",
+      "d": "d",
+      "s": 3
+     }
+    },
+    "parts": true
    },
    {
     "art": [
      "cccccccccccccccccccccccccccccccccccccccccccccccc",
      "ccc..ccc....cccc.....cc.c0.ccccccc.......c.ccccc",
-     "c.c..ccc....ccccc.....c0..0ccccc.c..........cccc",
+     "c.c..ccc.N..ccccc.....c0..0ccccc.c..........cccc",
      "c.1..ccc....cccc............ccc..1...........ccc",
      "c....ccc....ccc............0ccc..............ccc",
      "c....ccc....ccc.............ccc........c.X...ccc",
@@ -11960,7 +12171,7 @@
      "cccccccc....ccccccccccc.......cccc...c.0..0.cccc",
      "cccccccc....ccccccccccc.......ccc.....c.....cccc",
      "c...........ccccc.............ccc.....1....0.ccc",
-     "c...........ccccc.............ccc............ccc",
+     "c.N.........ccccc.............ccc............ccc",
      "c...........ccc...............ccc............0cc",
      "c.........ccccc...............ccc.............cc",
      "ccccccccccccccc....cccccccccccccc............ccc",
@@ -11968,12 +12179,46 @@
      "ccccccccccccccc...ccccccccccccccc.............cc",
      "c......cc.c.........c....ccccX.cc...........c.cc",
      "c.............................................cc",
-     "c.............................................cc",
+     "c.N...........................................cc",
      "c..............................cc.............cc",
      "cccccccccccccccccccccccccccccccccccccccccccccccc"
     ],
     "exits": {},
-    "parts": true,
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_82.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "MAX ETHER",
+     {
+      "text": "Hiker",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Up in rocky places like this, rockslides are a real danger. Imagine boulders crashing down!"
+       ]
+      }
+     },
+     "REVIVE"
+    ],
+    "trainer_spots": [
+     "Eric",
+     "Cooper",
+     "Dudley",
+     "Allen",
+     "Sofia",
+     "Steve",
+     "Martha",
+     "Winston"
+    ],
     "links": {
      "38,28": [
       0,
@@ -11996,306 +12241,750 @@
       21
      ]
     },
-    "trainer_spots": [
-     "Eric",
-     "Cooper",
-     "Dudley",
-     "Allen",
-     "Sofia",
-     "Steve",
-     "Martha",
-     "Winston"
-    ]
+    "moves": {
+     "2,29": {
+      "m": "face",
+      "d": "r"
+     },
+     "2,37": {
+      "m": "face",
+      "d": "d"
+     },
+     "9,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "41,5": {
+      "m": "face",
+      "d": "r",
+      "s": 3
+     },
+     "2,6": {
+      "m": "look",
+      "d": "udlr",
+      "s": 2
+     },
+     "5,11": {
+      "m": "face",
+      "d": "d",
+      "s": 4
+     },
+     "36,11": {
+      "m": "face",
+      "d": "d",
+      "s": 3
+     },
+     "11,15": {
+      "m": "face",
+      "d": "d",
+      "s": 4
+     },
+     "23,23": {
+      "m": "face",
+      "d": "r",
+      "s": 4
+     },
+     "15,33": {
+      "m": "face",
+      "d": "r",
+      "s": 2
+     },
+     "29,35": {
+      "m": "face",
+      "d": "d",
+      "s": 3
+     }
+    },
+    "parts": true
    }
-  ]
+  ],
+  "theme": "cave",
+  "floor_names": [
+   "1F",
+   "B1F"
+  ],
+  "figure_floors": {
+   "Lenny": 0,
+   "Ashton": 0,
+   "Lucas": 0,
+   "Oliver": 0,
+   "Leah": 0,
+   "Ariana": 0,
+   "Dana": 0,
+   "Eric": 1,
+   "Cooper": 1,
+   "Dudley": 1,
+   "Allen": 1,
+   "Sofia": 1,
+   "Steve": 1,
+   "Martha": 1,
+   "Winston": 1,
+   "REPEL": 0,
+   "ESCAPE ROPE": 0,
+   "PEARL": 0,
+   "MAX ETHER": 1,
+   "REVIVE": 1
+  }
  },
  "LAVENDER_TOWN": {
   "art": [
-   "cccccccc^^^^^ccPPPPPPPcc",
-   "cccccccc.....ccPPPPPPPcc",
-   "ccccCCCCC....ccPPPPPPPcc",
-   "ccccCCCCC....ccPPPPPPPcc",
-   "ccccCCCCC...!ccPPPPPPPcc",
-   "c...CCDCC....ccPPPPPPPcc",
-   "c....===.....ccPPPDPPPcc",
-   "c....===........=====!cc",
-   "c...............=====.cc",
-   "<.......FFFFF....RRRR.cc",
-   "<.......FFFFF....RRRR.cc",
-   "<......!FFDFF..!.RDRR.cc",
-   "k........===..........cc",
-   "c.................MMMMcc",
-   "c..AAAAABBBBB.....MMMMcc",
-   "c..AAAAABBBBB.....MMDMcc",
-   "c..AADAABBDBB...======cc",
-   "c.===========...======cc",
-   "c.===========.........cc",
-   "cccccccccccvvccccccccccc"
+   "cccccccc^^^^^cccccccccccccccccc",
+   "cccccccc.....cccccccccccccccccc",
+   "ccccccccc....cccccccccccccccccc",
+   "ccccccccc....cccccccccccccccccc",
+   "ccccccBcc...!cccccccccccccccccc",
+   "c...ccDcc....cccccAccccccHccccc",
+   "c............cccccDccccccDccccc",
+   "c.........N..........!......!cc",
+   "c............................cc",
+   "<.......ccccc................cc",
+   "<.......ccCcc......N.........cc",
+   "<......!ccDcc..!.............cc",
+   "c...........N................cc",
+   "c.................cccc.......cc",
+   "c..cccccccccc.....ccGc.......cc",
+   "c..ccEccccFcc.....ccDc.......cc",
+   "c..ccDccccDcc................cc",
+   "c............................cc",
+   "c............................cc",
+   "cccccccccccvvcccccccccccccccccc"
   ],
   "exits": {
    "^": "KANTO_ROUTE_10_SOUTH",
-   "<": "KANTO_ROUTE_8",
-   "v": "KANTO_ROUTE_12"
+   "v": "KANTO_ROUTE_12",
+   "<": "KANTO_ROUTE_8"
   },
   "buildings": {
-   "A": "house",
-   "B": "house",
-   "C": "center",
-   "F": "fuji",
-   "M": "mart",
-   "P": "ptower",
-   "R": "radio"
+   "A": "ptower",
+   "B": "center",
+   "C": "fuji",
+   "E": "house",
+   "F": "house",
+   "G": "mart",
+   "H": "radio"
   },
   "roofs": {
-   "A": [
-    172,
-    139,
-    213
-   ],
-   "B": [
-    172,
-    139,
-    213
-   ],
-   "C": [
-    222,
-    106,
-    98
-   ],
-   "F": [
-    172,
-    139,
-    213
-   ],
-   "M": [
-    98,
-    164,
-    222
-   ],
-   "P": {
-    "roof": [
-     150,
-     164,
-     110
-    ],
-    "wall": [
-     200,
-     206,
-     170
-    ],
-    "design": "tower"
+   "_picture": {
+    "f": "fr_ground/k_lav.png",
+    "at": [
+     0,
+     0
+    ]
    },
-   "R": {
-    "roof": [
-     150,
-     120,
-     190
-    ],
-    "wall": [
-     214,
-     210,
-     226
-    ],
-    "design": "tower"
-   }
+   "_signs_in_picture": true,
+   "_buildings_in_picture": true
   },
-  "overheads": [
+  "people": [
    {
-    "kind": "tops",
-    "rect": [
-     8,
-     1,
-     1,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     222,
-     106,
-     98
-    ]
+    "text": "Boy",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Ghosts have been seen in the Pokémon Tower. People say they're the spirits of Pokémon the Rockets hurt..."
+     ]
+    }
    },
    {
-    "kind": "tops",
-    "rect": [
-     8,
-     8,
-     5,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     172,
-     139,
-     213
-    ]
+    "text": "Little girl",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Do you believe in ghosts? ...Really? So there ARE believers..."
+     ]
+    }
    },
    {
-    "kind": "tops",
-    "rect": [
-     18,
-     12,
-     4,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     98,
-     164,
-     222
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     3,
-     13,
-     10,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     172,
-     139,
-     213
-    ]
+    "text": "Man",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Lavender is where people lay their Pokémon to rest. Services are held in the Pokémon Tower."
+     ]
+    }
    }
   ],
   "signs": [
    [
+    "New from Silph Co.: the SILPH SCOPE!",
+    "Make the invisible visible!"
+   ],
+   [
+    "POKéMON TOWER",
+    "Rest in peace, Pokémon friends."
+   ],
+   [
+    "KANTO RADIO TOWER",
+    "Bringing the music of Kanto to every ear!"
+   ],
+   [
+    "LAVENDER VOLUNTEER POKéMON HOUSE",
+    "A home for Pokémon with nowhere to go."
+   ],
+   [
     "LAVENDER TOWN",
-    "The Noble Purple Town. Even quiet places hold big answers!"
-   ],
-   [
-    "POKEMON TOWER",
-    "A resting place for Pokemon. Please be respectful."
-   ],
-   [
-    "MR. FUJI'S HOUSE",
-    "A home for Pokemon with nowhere to go."
-   ],
-   [
-    "LAVENDER RADIO TOWER",
-    "Off the air! The power's out..."
+    "The Noble Purple Town"
    ]
   ],
+  "inside": {
+   "6,5": "center",
+   "10,11": "fuji",
+   "5,16": "house_w",
+   "10,16": "rater",
+   "20,15": "mart"
+  },
+  "edge_to": {
+   "8,0": [
+    8,
+    29
+   ],
+   "9,0": [
+    9,
+    29
+   ],
+   "10,0": [
+    10,
+    29
+   ],
+   "11,0": [
+    11,
+    29
+   ],
+   "12,0": [
+    12,
+    29
+   ],
+   "11,19": [
+    11,
+    0
+   ],
+   "12,19": [
+    12,
+    0
+   ],
+   "0,9": [
+    71,
+    9
+   ],
+   "0,10": [
+    71,
+    10
+   ],
+   "0,11": [
+    71,
+    11
+   ]
+  },
+  "moves": {
+   "19,10": {
+    "m": "wander",
+    "d": "udlr",
+    "r": [
+     2,
+     1
+    ]
+   },
+   "12,12": {
+    "m": "face",
+    "d": "d"
+   },
+   "10,7": {
+    "m": "look",
+    "d": "lr"
+   }
+  },
+  "locked": {
+   "radio": "The Radio Tower is dark. The power's out!"
+  },
   "rooms": {
    "center": {
-    "theme": "room",
     "art": [
      "ccccccccccccccc",
      "ccccccccccccccc",
-     "....zmmN.mz....",
-     "....mmmmmmm....",
+     "..N.mccNccm....",
+     "....cmmmmmc....",
+     ".........N.....",
      "...............",
-     "...............",
-     "ce.........mm..",
-     "...........mm..",
+     "c<...N.....cc.N",
+     "...........cc..",
      "......vvv......",
      "ccccccccccccccc"
     ],
     "exits": {
-     "v": "OUT:6,5"
+     "v": "OUT:6,5",
+     "<": "ROOM:center_2"
     },
     "buildings": {},
     "roofs": {
-     "_floor": [
-      225,
-      219,
-      171
-     ],
-     "_wall": [
-      230,
-      139,
-      98
-     ],
-     "_things": {
-      "5,2": [
-       82,
-       82,
-       106
-      ],
-      "6,2": [
-       82,
-       82,
-       106
-      ],
-      "9,2": [
-       82,
-       82,
-       106
-      ],
-      "4,3": [
-       82,
-       82,
-       106
-      ],
-      "5,3": [
-       255,
-       131,
-       115
-      ],
-      "6,3": [
-       255,
-       131,
-       115
-      ],
-      "7,3": [
-       180,
-       180,
-       164
-      ],
-      "8,3": [
-       255,
-       131,
-       115
-      ],
-      "9,3": [
-       255,
-       131,
-       115
-      ],
-      "10,3": [
-       82,
-       82,
-       106
-      ],
-      "11,6": [
-       255,
-       255,
-       255
-      ],
-      "12,6": [
-       255,
-       255,
-       255
-      ],
-      "11,7": [
-       222,
-       213,
-       230
-      ],
-      "12,7": [
-       255,
-       255,
-       255
+     "_picture": {
+      "f": "fr_ground/8_0.png",
+      "at": [
+       0,
+       0
       ]
-     }
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
     },
     "people": [
-     "Heal"
-    ]
-   },
-   "mart": {
+     {
+      "text": "Gentleman",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Cubone wear their mothers' skulls. Some people would pay a fortune for one... It's shameful."
+       ]
+      }
+     },
+     "Heal",
+     {
+      "text": "Man",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Team Rocket will do anything for money. There's no job too dirty for them!"
+       ]
+      }
+     },
+     {
+      "text": "Girl",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I saw Cubone's mother trying to escape from Team Rocket. She didn't make it..."
+       ]
+      }
+     },
+     {
+      "text": "Youngster",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I just moved here. They say Mr. Fuji isn't from around here either."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "2,2": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     },
+     "5,6": {
+      "m": "wander",
+      "d": "ud",
+      "r": [
+       0,
+       2
+      ]
+     },
+     "9,4": {
+      "m": "face",
+      "d": "d"
+     },
+     "14,6": {
+      "m": "face",
+      "d": "l"
+     },
+     "7,2": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/8_0.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       15,
+       10
+      ]
+     }
+    ],
     "theme": "room",
+    "title": "Pokémon Center"
+   },
+   "center_2": {
+    "art": [
+     "ccccccccccccccc",
+     "ccccccccccccccc",
+     "cNNcccNcccNccc.",
+     "mmmcmcmmccmmcc.",
+     "...............",
+     "...............",
+     "c<.............",
+     "...............",
+     "...c.........c.",
+     "ccccccccccccccc"
+    ],
+    "exits": {
+     "<": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/8_1.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Mystery Gift lady",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Mystery Gifts arrive here now and then. There's nothing for you today, I'm afraid."
+       ]
+      }
+     },
+     {
+      "text": "Link attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I'm sorry, the Union Room is closed for now."
+       ]
+      }
+     },
+     {
+      "text": "Trade attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Trade Center is closed for maintenance. Please come back another time!"
+       ]
+      }
+     },
+     {
+      "text": "Colosseum attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Colosseum is closed for now. Sorry about that!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "2,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "6,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "10,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "1,2": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/8_1.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       15,
+       10
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Pokémon Center 2F"
+   },
+   "fuji": {
+    "art": [
+     "cccccccccccc",
+     "ccc!!ccccccc",
+     ".......Nc...",
+     "...N....c..c",
+     "cN...!c....c",
+     "c..N.cc..N.c",
+     ".........N..",
+     "c..vvv.....c",
+     "cccccccccccc"
+    ],
+    "exits": {
+     "v": "OUT:10,11"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/8_2.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Girl ",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "This is Mr. Fuji's house. He takes care of Pokémon that have no one to look after them."
+       ]
+      }
+     },
+     "Talk to Mr. Fuji",
+     {
+      "text": "Nidorino",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "NIDORINO: Gaoo!"
+       ]
+      }
+     },
+     {
+      "text": "Boy",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "That's odd... Mr. Fuji isn't here. Where did he go?"
+       ]
+      }
+     },
+     {
+      "text": "Girl",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "It's so warm in here! Pokémon are so nice to hug."
+       ]
+      }
+     },
+     {
+      "text": "Psyduck",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "PSYDUCK: Gwappa!"
+       ]
+      }
+     }
+    ],
+    "signs": [
+     [
+      "Pokémon magazines line the shelf. POKéMON INSIDER!"
+     ],
+     [
+      "Pokémon magazines line the shelf. POKéMON INSIDER!"
+     ],
+     [
+      "A letter on the table: \"Thank you for everything, Mr. Fuji.\""
+     ]
+    ],
+    "moves": {
+     "1,4": {
+      "m": "look",
+      "d": "udlr"
+     },
+     "9,6": {
+      "m": "face",
+      "d": "u"
+     },
+     "9,5": {
+      "m": "face",
+      "d": "d"
+     },
+     "3,5": {
+      "m": "look",
+      "d": "udlr"
+     },
+     "7,2": {
+      "m": "look",
+      "d": "udlr"
+     },
+     "3,3": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/8_2.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       12,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Volunteer Pokémon House"
+   },
+   "house_w": {
     "art": [
      "ccccccccccc",
      "ccccccccccc",
-     "cz.m......m",
-     "..Nm.......",
-     "mmmm...mm.m",
-     ".......mm.m",
-     ".mm....mm.m",
+     "...........",
+     "...........",
+     "....Ncc....",
+     ".....cc....",
+     "........N..",
+     "c..vvv....c",
+     "ccccccccccc"
+    ],
+    "exits": {
+     "v": "OUT:5,16"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/8_3.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Woman",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Those awful Rockets! That poor Cubone's mother... they took her and she never came back."
+       ]
+      }
+     },
+     {
+      "text": "Cubone",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "CUBONE: Kyarugoo!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "4,4": {
+      "m": "face",
+      "d": "d"
+     },
+     "8,6": {
+      "m": "look",
+      "d": "udlr"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/8_3.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       11,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "House"
+   },
+   "rater": {
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "...........",
+     "...........",
+     "....Ncc....",
+     ".....cc....",
+     "...........",
+     "c..vvv....c",
+     "ccccccccccc"
+    ],
+    "exits": {
+     "v": "OUT:10,16"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/8_4.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Name Rater",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Hello, hello! I'm the Name Rater. Hm! Your Pokémon have fine names already."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "4,4": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/8_4.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       11,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Name Rater's House"
+   },
+   "mart": {
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "cccm..N..Nc",
+     "ccNm.......",
+     "mcmm...cc.c",
+     ".......ccNc",
+     ".cc....cc.c",
      "...vvv.....",
      "ccccccccccc"
     ],
@@ -12304,562 +12993,96 @@
     },
     "buildings": {},
     "roofs": {
-     "_floor": [
-      93,
-      148,
-      219
-     ],
-     "_wall": [
-      255,
-      255,
-      255
-     ],
-     "_things": {
-      "3,2": [
-       82,
-       82,
-       106
-      ],
-      "10,2": [
-       213,
-       197,
-       106
-      ],
-      "3,3": [
-       189,
-       230,
-       255
-      ],
-      "0,4": [
-       255,
-       255,
-       255
-      ],
-      "1,4": [
-       139,
-       180,
-       222
-      ],
-      "2,4": [
-       139,
-       180,
-       222
-      ],
-      "3,4": [
-       189,
-       230,
-       255
-      ],
-      "7,4": [
-       255,
-       255,
-       255
-      ],
-      "8,4": [
-       255,
-       255,
-       255
-      ],
-      "10,4": [
-       255,
-       255,
-       255
-      ],
-      "7,5": [
-       255,
-       255,
-       255
-      ],
-      "8,5": [
-       255,
-       255,
-       255
-      ],
-      "10,5": [
-       255,
-       255,
-       255
-      ],
-      "1,6": [
-       255,
-       255,
-       255
-      ],
-      "2,6": [
-       139,
-       180,
-       222
-      ],
-      "7,6": [
-       180,
-       180,
-       164
-      ],
-      "8,6": [
-       180,
-       180,
-       164
-      ],
-      "10,6": [
-       180,
-       180,
-       164
-      ]
-     }
-    },
-    "people": [
-     "Shop"
-    ]
-   },
-   "fuji": {
-    "theme": "room",
-    "art": [
-     "cccccccccccc",
-     "cccccccccccc",
-     "........m...",
-     "...N....m..m",
-     "m....mm....m",
-     "m....mm....m",
-     "............",
-     "m..vvv.....m",
-     "cccccccccccc"
-    ],
-    "exits": {
-     "v": "OUT:10,11"
-    },
-    "buildings": {},
-    "roofs": {
-     "_floor": [
-      207,
-      206,
-      127
-     ],
-     "_wall": [
-      123,
-      189,
-      222
-     ],
-     "_things": {
-      "8,2": [
-       205,
-       205,
-       115
-      ],
-      "8,3": [
-       230,
-       230,
-       131
-      ],
-      "11,3": [
-       172,
-       172,
-       131
-      ],
-      "0,4": [
-       189,
-       238,
-       238
-      ],
-      "5,4": [
-       255,
-       255,
-       255
-      ],
-      "6,4": [
-       238,
-       230,
-       172
-      ],
-      "11,4": [
-       189,
-       238,
-       238
-      ],
-      "0,5": [
-       123,
-       189,
-       222
-      ],
-      "5,5": [
-       238,
-       230,
-       172
-      ],
-      "6,5": [
-       238,
-       230,
-       172
-      ],
-      "11,5": [
-       123,
-       189,
-       222
-      ],
-      "0,7": [
-       82,
-       82,
-       106
-      ],
-      "11,7": [
-       82,
-       82,
-       106
-      ]
-     }
-    },
-    "people": [
-     "Talk to Mr. Fuji"
-    ]
-   },
-   "house_w": {
-    "theme": "room",
-    "art": [
-     "ccccccccccc",
-     "mmmccmccccc",
-     "...........",
-     "...======..",
-     "...=Nmm==..",
-     "...==mm==..",
-     "...======..",
-     "z...v.....z",
-     "ccccccccccc"
-    ],
-    "exits": {
-     "v": "OUT:5,16"
-    },
-    "buildings": {},
-    "roofs": {
-     "_floor": [
-      210,
-      188,
-      135
-     ],
-     "_wall": [
-      172,
-      197,
-      180
-     ],
-     "_things": {
-      "0,1": [
-       224,
-       228,
-       236
-      ],
-      "1,1": [
-       224,
-       228,
-       236
-      ],
-      "2,1": [
-       214,
-       110,
-       80
-      ],
-      "5,1": [
-       214,
-       220,
-       228
-      ],
-      "5,4": [
-       213,
-       197,
-       106
-      ],
-      "6,4": [
-       213,
-       197,
-       106
-      ],
-      "5,5": [
-       213,
-       197,
-       106
-      ],
-      "6,5": [
-       213,
-       197,
-       106
+     "_picture": {
+      "f": "fr_ground/8_5.png",
+      "at": [
+       0,
+       0
       ]
      },
-     "_kinds": {
-      "0,1": "sink",
-      "1,1": "sink",
-      "2,1": "shelf",
-      "5,1": "fridge",
-      "5,4": "table",
-      "6,4": "table",
-      "5,5": "table",
-      "6,5": "table"
-     },
-     "_fittings": [
-      {
-       "kind": "stool",
-       "rect": [
-        4,
-        4,
-        1,
-        1
-       ]
-      },
-      {
-       "kind": "stool",
-       "rect": [
-        4,
-        5,
-        1,
-        1
-       ]
-      },
-      {
-       "kind": "stool",
-       "rect": [
-        7,
-        4,
-        1,
-        1
-       ]
-      },
-      {
-       "kind": "stool",
-       "rect": [
-        7,
-        5,
-        1,
-        1
-       ]
-      },
-      {
-       "kind": "pane",
-       "rect": [
-        3.1,
-        0.45,
-        0.8,
-        0.9
-       ]
-      },
-      {
-       "kind": "pane",
-       "rect": [
-        8.1,
-        0.45,
-        0.8,
-        0.9
-       ]
-      },
-      {
-       "kind": "pane",
-       "rect": [
-        9.1,
-        0.45,
-        1.8,
-        0.9
-       ],
-       "colour": [
-        96,
-        176,
-        112
-       ]
-      }
-     ],
-     "_rug": [
-      238,
-      180,
-      115
-     ]
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
     },
     "people": [
      {
-      "text": "Girl",
+      "text": "Man",
       "action": "EVENT",
-      "door": "inside",
       "event": {
        "lines": [
-        "Girl: They say a ghost haunts the Pokemon Tower. I can't see it, though!"
+        "I'm looking for items that raise Pokémon's stats. They work for as long as you have them!"
        ]
       }
-     }
-    ]
-   },
-   "rater": {
-    "theme": "room",
-    "art": [
-     "ccccccccccc",
-     "mmmccmccccc",
-     "...........",
-     "...======..",
-     "...=Nmm==..",
-     "...==mm==..",
-     "...======..",
-     "z...v.....z",
-     "ccccccccccc"
-    ],
-    "exits": {
-     "v": "OUT:10,16"
-    },
-    "buildings": {},
-    "roofs": {
-     "_floor": [
-      210,
-      188,
-      135
-     ],
-     "_wall": [
-      172,
-      197,
-      180
-     ],
-     "_things": {
-      "0,1": [
-       224,
-       228,
-       236
-      ],
-      "1,1": [
-       224,
-       228,
-       236
-      ],
-      "2,1": [
-       214,
-       110,
-       80
-      ],
-      "5,1": [
-       214,
-       220,
-       228
-      ],
-      "5,4": [
-       213,
-       197,
-       106
-      ],
-      "6,4": [
-       213,
-       197,
-       106
-      ],
-      "5,5": [
-       213,
-       197,
-       106
-      ],
-      "6,5": [
-       213,
-       197,
-       106
-      ]
      },
-     "_kinds": {
-      "0,1": "sink",
-      "1,1": "sink",
-      "2,1": "shelf",
-      "5,1": "fridge",
-      "5,4": "table",
-      "6,4": "table",
-      "5,5": "table",
-      "6,5": "table"
-     },
-     "_fittings": [
-      {
-       "kind": "stool",
-       "rect": [
-        4,
-        4,
-        1,
-        1
-       ]
-      },
-      {
-       "kind": "stool",
-       "rect": [
-        4,
-        5,
-        1,
-        1
-       ]
-      },
-      {
-       "kind": "stool",
-       "rect": [
-        7,
-        4,
-        1,
-        1
-       ]
-      },
-      {
-       "kind": "stool",
-       "rect": [
-        7,
-        5,
-        1,
-        1
-       ]
-      },
-      {
-       "kind": "pane",
-       "rect": [
-        3.1,
-        0.45,
-        0.8,
-        0.9
-       ]
-      },
-      {
-       "kind": "pane",
-       "rect": [
-        8.1,
-        0.45,
-        0.8,
-        0.9
-       ]
-      },
-      {
-       "kind": "pane",
-       "rect": [
-        9.1,
-        0.45,
-        1.8,
-        0.9
-       ],
-       "colour": [
-        96,
-        176,
-        112
-       ]
-      }
-     ],
-     "_rug": [
-      238,
-      180,
-      115
-     ]
-    },
-    "people": [
      {
-      "text": "Name Rater",
+      "text": "Lady",
       "action": "EVENT",
-      "door": "inside",
       "event": {
        "lines": [
-        "Name Rater: I'm the Name Rater. Hm! Your Pokemon have fine names already."
+        "Did you buy Revives? They bring back a fainted Pokémon!"
+       ]
+      }
+     },
+     "Shop",
+     {
+      "text": "Boy",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Sometimes two Trainers team up and send out two Pokémon at once. Be ready for it!"
        ]
       }
      }
-    ]
+    ],
+    "moves": {
+     "6,2": {
+      "m": "look",
+      "d": "udlr"
+     },
+     "9,2": {
+      "m": "look",
+      "d": "udlr"
+     },
+     "9,5": {
+      "m": "look",
+      "d": "lr"
+     },
+     "2,3": {
+      "m": "face",
+      "d": "r"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/8_5.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       11,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Poké Mart"
    }
   },
-  "inside": {
-   "6,5": "center",
-   "20,15": "mart",
-   "10,11": "fuji",
-   "5,16": "house_w",
-   "10,16": "rater"
-  },
-  "locked": {
-   "radio": "The Radio Tower is dark. The power's out!"
-  }
+  "overheads": [
+   {
+    "kind": "picture",
+    "f": "fr_top/k_lav.png",
+    "at": [
+     0,
+     0
+    ],
+    "size": [
+     31,
+     20
+    ]
+   }
+  ]
  },
  "KANTO_POKEMON_TOWER": {
   "theme": "tower",

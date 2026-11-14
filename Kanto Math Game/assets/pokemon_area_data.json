@@ -2065,6 +2065,7 @@
         { "sprite": "pokemaniac.png", "name": "Mark", "class": "POKEMANIAC", "team": [111, 108], "levels": [29, 29], "rewards": { "balls": 3 } }
       ],
       "route_menu": [{"text": "POKEMON CENTER", "action": "CENTER", "door": "center"}, 
+        {"text": "OAK'S AIDE", "action": "EVENT", "door": "center", "color": "GOLD", "event": {"requires": ["caught_kanto:20"], "fail": ["Aide: There you are! I'm one of Professor Oak's aides.", "Aide: Show me twenty kinds of Pokémon caught and I'll give you something from the Professor."], "lines": ["Aide: There you are! I'm one of Professor Oak's aides.", "Aide: Twenty kinds of Pokémon! Then this is yours: an Everstone.", "A Pokémon holding it won't evolve. Handy if you like it just the way it is!"], "gift_item": {"EVERSTONE": 1}, "flag": "got_everstone_kanto", "done": ["Aide: Give the Everstone to a Pokémon to hold, and it won't evolve."]}},
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
@@ -2865,6 +2866,11 @@
         { "sprite": "pokemaniac.png", "name": "Winston", "class": "POKEMANIAC", "team": [79], "levels": [25], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
+        {"text": "REPEL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_repel_rocktunnel", "event": {"lines": ["A Repel, lying in the dark."], "gift_item": {"REPEL": 1}, "flag": "got_repel_rocktunnel"}},
+        {"text": "PEARL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_pearl_rocktunnel", "event": {"lines": ["A Pearl! It gleams even in the dark."], "gift_item": {"PEARL": 1}, "flag": "got_pearl_rocktunnel"}},
+        {"text": "ESCAPE ROPE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_escrope_rocktunnel", "event": {"lines": ["An Escape Rope, dropped by the rocks."], "gift_item": {"ESCAPE_ROPE": 1}, "flag": "got_escrope_rocktunnel"}},
+        {"text": "REVIVE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_revive_rocktunnel", "event": {"lines": ["A Revive, tucked in a corner."], "gift_item": {"REVIVE": 1}, "flag": "got_revive_rocktunnel"}},
+        {"text": "MAX ETHER", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_maxether_rocktunnel", "event": {"lines": ["A Max Ether, by the rocks."], "gift_item": {"MAX_ETHER": 1}, "flag": "got_maxether_rocktunnel"}},
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
