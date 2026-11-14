@@ -876,7 +876,7 @@ f.movers = []; p.run.player = (9, 150); p.anim = 0; p.braking = False; frames(p,
 check(tuple(p.run.player) == (9, 159) and not p._downhill(), f"...the slope ends at the bottom: over the ledge onto level ground {tuple(p.run.player)}")
 t = town("FUCHSIA_CITY", "KANTO_ROUTE_15")
 enter(t, (9, 32))
-_gl = t.town_map["rooms"]["gym"]["roofs"]["_glass"]
+_gl = [(x, y) for y, r in enumerate(t.town_map["rooms"]["gym"]["art"]) for x, c in enumerate(r) if c in "cm" and 1 <= x <= 13 and 3 <= y <= 17]   # (Kanto batch 17: FireRed's picture; its invisible walls are its collision, unseen as in FireRed)
 check(t.room == "gym" and (t.w, t.h) == (15, 23) and t.people.get((7, 13), {}).get("action") == "GYM" and len(_gl) >= 50, f"Fuchsia Gym: FireRed's room, Koga on his pad, {len(_gl)} invisible walls")
 check(tstep(t, (3, 17), (0, -1)) == (3, 17) and tstep(t, (1, 17), (0, -1)) == (1, 16), "...walk into one: it stops you; the gap FireRed leaves lets you through")
 t.draw(); t._go(None, "OUT:9,32"); g.walk_town_room = None
@@ -994,7 +994,7 @@ for _town, _came, _doors in (
         ("LAVENDER_TOWN", "KANTO_ROUTE_8", (((5, 16), "house_w", (11, 9), 2), ((10, 16), "rater", (11, 9), 1))),   # (batch 10: the Cubone house has its Cubone)
         ("CELADON_CITY", "KANTO_ROUTE_7", (((37, 29), "restaurant", (15, 11), 4), ((41, 29), "house_e", (11, 9), 3), ((49, 29), "hotel", (17, 11), 4))),   # (batch 12: FireRed's own people)
         ("SAFFRON_CITY", "KANTO_ROUTE_5", (((27, 21), "house_w", (11, 9), 2), ((43, 38), "psychic", (11, 9), 1), ((47, 21), "fans", (11, 17), 4))),
-        ("FUCHSIA_CITY", "KANTO_ROUTE_15", (((28, 16), "office", (20, 11), 4), ((14, 31), "house_w", (11, 9), 2), ((19, 31), "deleter", (11, 9), 1)))):
+        ("FUCHSIA_CITY", "KANTO_ROUTE_15", (((28, 16), "office", (20, 11), 4), ((14, 31), "house_w", (11, 9), 3), ((19, 31), "deleter", (11, 9), 1)))):
     t = town(_town, _came)
     for _d, _room, _size, _n in _doors:
         enter(t, _d)

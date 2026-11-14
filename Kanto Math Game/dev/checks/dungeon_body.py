@@ -1641,8 +1641,8 @@ for _k in ("GOLD_TEETH", "HM_STRENGTH", "GOOD_ROD"):
 g.walk_town_pos = None
 story.current_area_key, story.last_area_key = "FUCHSIA_CITY", "KANTO_ROUTE_15"
 _fu = _CS(g); g.change_state(_fu); _tap_through(_fu)
-check({"warden", "brother", "gym", "center", "mart"} <= set(_fu.doors.values()) and set(_fu.exits.values()) == {
-    "KANTO_ROUTE_15", "KANTO_ROUTE_18", "KANTO_ROUTE_19", "SAFARI_ZONE"}, "Fuchsia: walked, its doors and four ways out")
+check({"warden", "brother", "gym", "center", "mart", "safari"} <= set(_fu.doors.values()) and set(_fu.exits.values()) == {
+    "KANTO_ROUTE_15", "KANTO_ROUTE_18", "KANTO_ROUTE_19"}, f"Fuchsia: walked, its doors and three ways out (the Safari Zone through its entrance house, Kanto batch 17) {sorted(set(_fu.doors.values()))} {sorted(set(_fu.exits.values()))}")
 def _talk_inside(t, kind):  # (11-11: their houses are rooms now: in by the door, talk to whoever is there, out again)
     door = max((d for d, k in t.doors.items() if k == kind), key=lambda d: d[1])
     t._enter(door)
@@ -1670,6 +1670,8 @@ if _tt:
 g.walk_town_pos = None
 story.current_area_key, story.last_area_key = "FUCHSIA_CITY", "SAFARI_ZONE"
 _fu = _CS(g); g.change_state(_fu); _tap_through(_fu)
+if getattr(_fu, "room", None) == "safari":   # (back from the Safari Zone you're in its entrance house: out to the street first. Kanto batch 17)
+    _fu._go(None, "OUT:24,5"); g.walk_town_room = None
 _talk_inside(_fu, "warden")
 check(story.inventory.get("HM_STRENGTH") == 1 and not story.inventory.get("GOLD_TEETH"), "the Warden: HM Strength for his teeth")
 

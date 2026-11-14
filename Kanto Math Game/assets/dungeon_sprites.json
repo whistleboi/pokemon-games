@@ -4167,6 +4167,105 @@
     },
     "KANTO_ROUTE_15:Oak's aide": {
       "sheet": "fr_55.png"
+    },
+    "FUCHSIA_CITY:Girl": {
+      "sheet": "fr_22.png"
+    },
+    "FUCHSIA_CITY:Boy": {
+      "sheet": "fr_16.png"
+    },
+    "FUCHSIA_CITY:Youngster": {
+      "sheet": "fr_18.png"
+    },
+    "FUCHSIA_CITY:Woman": {
+      "sheet": "fr_25.png"
+    },
+    "FUCHSIA_CITY:Erik": {
+      "sheet": "fr_27.png"
+    },
+    "FUCHSIA_CITY:Gentleman": {
+      "sheet": "fr_32.png"
+    },
+    "FUCHSIA_CITY:Attendant": {
+      "sheet": "fr_47.png"
+    },
+    "FUCHSIA_CITY:Attendant ": {
+      "sheet": "fr_47.png"
+    },
+    "FUCHSIA_CITY:Shop": {
+      "sheet": "fr_68.png"
+    },
+    "FUCHSIA_CITY:Man": {
+      "sheet": "fr_42.png"
+    },
+    "FUCHSIA_CITY:Worker": {
+      "sheet": "fr_47.png"
+    },
+    "FUCHSIA_CITY:Worker ": {
+      "sheet": "fr_47.png"
+    },
+    "FUCHSIA_CITY:Worker  ": {
+      "sheet": "fr_47.png"
+    },
+    "FUCHSIA_CITY:Worker   ": {
+      "sheet": "fr_47.png"
+    },
+    "FUCHSIA_CITY:Tamer Edgar": {
+      "sheet": "fr_25.png"
+    },
+    "FUCHSIA_CITY:Tamer Phil": {
+      "sheet": "fr_25.png"
+    },
+    "FUCHSIA_CITY:Juggler Shawn": {
+      "sheet": "fr_26.png"
+    },
+    "FUCHSIA_CITY:Juggler Kirk": {
+      "sheet": "fr_26.png"
+    },
+    "FUCHSIA_CITY:Gym": {
+      "sheet": "fr_84.png"
+    },
+    "FUCHSIA_CITY:Juggler Nate": {
+      "sheet": "fr_26.png"
+    },
+    "FUCHSIA_CITY:Juggler Kayden": {
+      "sheet": "fr_26.png"
+    },
+    "FUCHSIA_CITY:Gym Guide": {
+      "sheet": "fr_91.png"
+    },
+    "FUCHSIA_CITY:Old man": {
+      "sheet": "fr_32.png"
+    },
+    "FUCHSIA_CITY:Heal": {
+      "sheet": "fr_64.png"
+    },
+    "FUCHSIA_CITY:Mystery Gift lady": {
+      "sheet": "fr_69.png"
+    },
+    "FUCHSIA_CITY:Link attendant": {
+      "sheet": "fr_65.png"
+    },
+    "FUCHSIA_CITY:Trade attendant": {
+      "sheet": "fr_65.png"
+    },
+    "FUCHSIA_CITY:Colosseum attendant": {
+      "sheet": "fr_65.png"
+    },
+    "FUCHSIA_CITY:Return the Gold Teeth": {
+      "sheet": "fr_33.png"
+    },
+    "FUCHSIA_CITY:Warden": {
+      "sheet": "fr_33.png"
+    },
+    "FUCHSIA_CITY:RARE CANDY": {
+      "item": "POKE_BALL"
+    },
+    "FUCHSIA_CITY:Fishing Guru's Brother": {
+      "sheet": "fr_57.png"
+    },
+    "FUCHSIA_CITY:Move Deleter": {
+      "sheet": "fr_30.png"
     }
   },
   "townsperson": "NPC 17.png",

@@ -20445,336 +20445,157 @@
  },
  "FUCHSIA_CITY": {
   "art": [
-   "TTTTTTTTTTTTTTTTTTTTTTZZZZZZTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTZZZZZZTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTZZZZZZTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTZZZZZZTTTTTTTTTTTTTTTTTTTT",
-   "TTkkkkkkkkkkkkkkkkkkkkZZZZZZkkkkkkkkkkkkkkkkkkTT",
-   "TTddddddddddddddddddd.ZZDZZZ...dddddddddddddddTT",
-   "TTddddddddddddddddddd..===.....dddddddddNdddddTT",
-   "TTdddББББББББББББББddk!===kkk..ЛЛЛЛЛЛЛЛЛЛЛЛЛddTT",
-   "TTdddГ~~~~~ЖЗ=====Иdd..........П====ФФ=====ЦddTT",
-   "TTdddГ~~~~~ЖЗ=====Иdd..........П====ФФ=====ЦddTT",
-   "TTdddГkkkkk!Зkkkk!Иdd..TTTTTTT2Пkkk!ФФkkk!kЦddTT",
-   "TTddd........dddddddd.TdddddddddddddddddddddddTT",
-   "TTddd........dddddddd.TdddddddddddddddddddddddTT",
-   "TTddd....MMMMTTTTTTTT2Tdd.OOOOOO.ЧЧЧЧЧЧЧЧЧ..ddTT",
-   "TTddd....MMMM..........dd.OOOOOO.Ш=======Э..ddTT",
-   "TTdddddddMMDM..........ddkOOOOOO.Ш=======Э..ddTT",
-   "TTdddddddddddddddddddddddkOODOOO2Шkkkk!kkЭ..ddTT",
-   "kkkkkkkkdddddddddddddddddk.===...ddddNddddddddTT",
-   "<======kЮЮЮЮЮЮЮЮЮ!.......k!===k!.dddddddddddddTT",
-   "<======kЯ~~~~~~~Д.f......k.===..kkkkkkkkkkkkkkTT",
-   "<======kЯ~~~~~~~Дf.f.f...k.====================>",
-   "kk..===kk~~~~~~~k.f.f.f..k.====================>",
-   "TT..===kkkkkkkkkkkkkkkkk2k.====================>",
-   "TT..==========================.kkkkkkkkkkkk.....",
-   "TT..==========================.kf..~~~~~~~k...TT",
-   "TT..==========================.k.f.~~~~~~~k..TTT",
-   "TT..ccccccccccccccccccccccccc..kf.........k..TTT",
-   "TT..ccccccccccccccccccccccccc..k......===.k..TTT",
-   "TT..ccGGGGGGGccccccccccCCCCCc..k.....k=D=kk..TTT",
-   "TT..ccGGGGGGGHHHHHJJJJJCCCCCc..kWWWWWFFFFFk..TTT",
-   "TT..(.GGGGGGGHHHHHJJJJJCCCCC)...WWWWWFFFFF...TTT",
-   "TT..(.GGGGGGGHDHHHJDJJJCCDCC)..!WDWWWFDFFF...TTT",
-   "TT..(!..YDY..===============)................TTT",
-   "TT..(=======================)..kkkkk...kkkk..TTT",
-   "TT..(=======================)................TTT",
-   "TT..c____===ccccccc===______ck...............TTT",
-   "TT.......===ccccccc===.......kkkkkkkkkkkkkkkkTTT",
-   "TT..........ccccccc..........cccccccTTTTTTTTTTTT",
-   "TTTTTTTTTTTTccccccc..........cccccccTTTTTTTTTTTT",
-   "TTTTTTTTTTTTcccccccvvvvvvvvvvcccccccTTTTTTTTTTTT"
+   "cccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccc",
+   "ccccccccccccccccccccccccAccccccccccccccccccccccc",
+   "cc....................ccDccc..................cc",
+   "cc......................................N.....cc",
+   "cc...cccccccccccccc..c!...ccc..ccccccccccccc..cc",
+   "cc...cccccccccccccc............ccccccccccccc..cc",
+   "cc...cccccccccccccc............ccccccccccccc..cc",
+   "cc...cccccc!ccccc!c....ccccccc2cccc!ccccc!cc..cc",
+   "cc.............N......c..........N............cc",
+   "cc....................c.......................cc",
+   "cc.......cccccccccccc2c...cccccc.ccccccccc....cc",
+   "cc.......ccCc.............cccccc.ccccccccc....cc",
+   "cc.......ccDc.N..........cccEccc.ccccccccc....cc",
+   "cc.......................cccDccc2ccccc!ccc....cc",
+   "cccccccc.................c...........N........cc",
+   "<......cccccccccc!.......c!...c!..............cc",
+   "<......cccccccccc........c......cccccccccccccccc",
+   "<......cccccccccc........c..........N..........>",
+   "cc.....cc~~~~~~~c........c.....................>",
+   "cc.....ccccccccccccccccc2c.....................>",
+   "cc.............................cccccccccccc.....",
+   "cc.............................c...oooooooc...cc",
+   "cc.............................c...oooooooc..ccc",
+   "cc..ccccccccccccccccccccccccc..c..........c..ccc",
+   "cc..ccccccccccccccccccccccccc..c..........c..ccc",
+   "cc..ccccccccccccccccccccccccc..c.....c.D.cc..ccc",
+   "cc..ccccccccccccccccccccccccc..cccccccJDccc..ccc",
+   "cc..(cccccccccGccccKcccccHcc)...cBccccIccc...ccc",
+   "cc..(ccccFccccDccccDcccccDcc)..!cDccccDccc...ccc",
+   "cc..(!..cDc.................)................ccc",
+   "cc..(.......................)..ccccc...cccc..ccc",
+   "cc..(.......................)................ccc",
+   "cc..c____...ccccccc...______cc...............ccc",
+   "cc..........ccccccc..........ccccccccccccccccccc",
+   "cc..........ccccccc..........ccccccccccccccccccc",
+   "ccccccccccccccccccc..........ccccccccccccccccccc",
+   "cccccccccccccccccccvvvvvvvvvvccccccccccccccccccc"
   ],
   "exits": {
-   "Z": "SAFARI_ZONE",
+   "v": "KANTO_ROUTE_19",
    "<": "KANTO_ROUTE_18",
-   ">": "KANTO_ROUTE_15",
-   "v": "KANTO_ROUTE_19"
+   ">": "KANTO_ROUTE_15"
   },
   "buildings": {
-   "C": "center",
-   "F": "brother",
-   "G": "gym",
-   "H": "house",
-   "J": "house",
-   "M": "mart",
-   "O": "office",
-   "W": "warden",
-   "Y": "gym",
-   "Z": "safari",
-   "Б": "hedge",
-   "Г": "hedge",
-   "Д": "hedge",
-   "Ж": "hedge",
-   "З": "hedge",
-   "И": "hedge",
-   "Л": "hedge",
-   "П": "hedge",
-   "Ф": "hedge",
-   "Ц": "hedge",
-   "Ч": "hedge",
-   "Ш": "hedge",
-   "Э": "hedge",
-   "Ю": "hedge",
-   "Я": "hedge"
+   "A": "safari",
+   "B": "warden",
+   "C": "mart",
+   "E": "office",
+   "F": "gym",
+   "G": "house",
+   "H": "center",
+   "I": "brother",
+   "J": "brother",
+   "K": "house"
   },
   "roofs": {
-   "C": [
-    222,
-    106,
-    98
-   ],
-   "F": [
-    172,
-    189,
-    205
-   ],
-   "G": [
-    197,
-    172,
-    106
-   ],
-   "H": [
-    172,
-    189,
-    205
-   ],
-   "J": [
-    172,
-    189,
-    205
-   ],
-   "M": [
-    98,
-    164,
-    222
-   ],
-   "O": [
-    230,
-    213,
-    139
-   ],
-   "W": [
-    172,
-    189,
-    205
-   ],
-   "Y": [
-    197,
-    172,
-    106
-   ],
-   "Z": [
-    230,
-    213,
-    139
-   ]
+   "_picture": {
+    "f": "fr_ground/3_7.png",
+    "at": [
+     0,
+     0
+    ]
+   },
+   "_signs_in_picture": true,
+   "_buildings_in_picture": true
   },
-  "overheads": [
+  "people": [
    {
-    "kind": "tops",
-    "rect": [
-     5,
-     6,
-     14,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     164,
-     238,
-     172
-    ]
+    "text": "Girl",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "My father is the Gym Leader here. I'm training to use poison Pokémon too!"
+     ]
+    }
    },
    {
-    "kind": "tops",
-    "rect": [
-     31,
-     6,
-     9,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     164,
-     238,
-     172
-    ]
+    "text": "Boy",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Aww, I wish I was a Kangaskhan baby. I'd love to ride in a pouch!"
+     ]
+    }
    },
    {
-    "kind": "tops",
-    "rect": [
-     41,
-     6,
-     3,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     164,
-     238,
-     172
-    ]
+    "text": "Youngster",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "That item ball in there... Were you after it too? Hmm, I can't reach it either."
+     ]
+    }
    },
    {
-    "kind": "tops",
-    "rect": [
-     9,
-     12,
-     4,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     98,
-     164,
-     222
-    ]
+    "text": "Woman",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Did you try the Safari Game? There are rare Pokémon in there you won't find anywhere else."
+     ]
+    }
    },
    {
-    "kind": "tops",
-    "rect": [
-     26,
-     12,
-     6,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     230,
-     213,
-     139
-    ]
+    "text": "Erik",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Where's Sara? I said I'd meet her here."
+     ]
+    }
    },
    {
-    "kind": "tops",
-    "rect": [
-     33,
-     12,
-     9,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     164,
-     238,
-     172
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     8,
-     17,
-     9,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     164,
-     238,
-     172
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     46,
-     23,
-     2,
-     1
-    ],
-    "of": "tree"
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     32,
-     28,
-     5,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     172,
-     189,
-     205
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     38,
-     28,
-     1,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     172,
-     189,
-     205
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     40,
-     28,
-     1,
-     1
-    ],
-    "of": "roof",
-    "colour": [
-     172,
-     189,
-     205
-    ]
-   },
-   {
-    "kind": "tops",
-    "rect": [
-     2,
-     37,
-     10,
-     1
-    ],
-    "of": "tree"
+    "text": "Gentleman",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "The Safari Zone has a zoo out front. The Safari Game's out back. Have a look!"
+     ]
+    }
    }
   ],
   "signs": [
    [
     "SAFARI GAME",
-    "Pokemon-U-Catch!"
+    "Pokémon-U-Catch!"
    ],
    [
-    "POKEMON ZOO",
-    "A Pokemon from the Safari Zone lives in this pen."
+    "LAPRAS"
    ],
    [
-    "POKEMON ZOO",
-    "A Pokemon from the Safari Zone lives in this pen."
+    "KANGASKHAN"
    ],
    [
-    "POKEMON ZOO",
-    "A Pokemon from the Safari Zone lives in this pen."
+    "CHANSEY"
    ],
    [
-    "POKEMON ZOO",
-    "A Pokemon from the Safari Zone lives in this pen."
+    "VOLTORB"
    ],
    [
-    "POKEMON ZOO",
-    "A Pokemon from the Safari Zone lives in this pen."
+    "SLOWPOKE"
    ],
    [
-    "POKEMON ZOO",
-    "A Pokemon from the Safari Zone lives in this pen."
+    "The zoo's Pokémon belong to the Safari Zone. Please don't feed them!"
    ],
    [
-    "POKEMON PARADISE",
-    "Safari Zone"
+    "POKéMON PARADISE",
+    "SAFARI ZONE"
    ],
    [
     "FUCHSIA CITY",
@@ -20782,152 +20603,284 @@
    ],
    [
     "SAFARI ZONE",
-    "Warden's home"
+    "WARDEN'S HOME"
    ],
    [
-    "FUCHSIA CITY GYM",
-    "Leader: Koga, the Poisonous Ninja Master!"
+    "FUCHSIA CITY POKéMON GYM",
+    "Leader: Koga, the Poisonous Ninja Master"
    ]
   ],
-  "people": [
+  "inside": {
+   "24,5": "safari",
+   "33,31": "warden",
+   "11,15": "mart",
+   "28,16": "office",
+   "9,32": "gym",
+   "14,31": "house_w",
+   "25,31": "center",
+   "38,31": "brother",
+   "39,28": "brother",
+   "39,29": "brother",
+   "19,31": "deleter"
+  },
+  "edge_to": {
+   "19,39": [
+    7,
+    0
+   ],
+   "20,39": [
+    8,
+    0
+   ],
+   "21,39": [
+    9,
+    0
+   ],
+   "22,39": [
+    10,
+    0
+   ],
+   "23,39": [
+    11,
+    0
+   ],
+   "24,39": [
+    12,
+    0
+   ],
+   "25,39": [
+    13,
+    0
+   ],
+   "26,39": [
+    14,
+    0
+   ],
+   "27,39": [
+    15,
+    0
+   ],
+   "28,39": [
+    16,
+    0
+   ],
+   "0,18": [
+    59,
+    8
+   ],
+   "0,19": [
+    59,
+    9
+   ],
+   "0,20": [
+    59,
+    10
+   ],
+   "47,20": [
+    0,
+    10
+   ],
+   "47,21": [
+    0,
+    11
+   ],
+   "47,22": [
+    0,
+    12
+   ]
+  },
+  "moves": {
+   "37,17": {
+    "m": "face",
+    "d": "d"
+   },
+   "33,11": {
+    "m": "face",
+    "d": "u"
+   },
+   "14,15": {
+    "m": "wander",
+    "d": "lr",
+    "r": [
+     3,
+     0
+    ]
+   },
+   "36,20": {
+    "m": "wander",
+    "d": "lr",
+    "r": [
+     4,
+     0
+    ]
+   },
+   "15,11": {
+    "m": "face",
+    "d": "u"
+   },
+   "40,6": {
+    "m": "face",
+    "d": "d"
+   }
+  },
+  "back_doors": [
+   [
+    39,
+    28
+   ]
+  ],
+  "barred": [
    {
-    "text": "Lass",
-    "action": "EVENT",
-    "door": "outside",
-    "event": {
-     "lines": [
-      "Lass: The Safari Zone has a zoo out front. Did you see every pen?"
+    "tiles": [
+     [
+      36,
+      15
      ]
-    }
+    ],
+    "look": "mon:79",
+    "face": "d",
+    "lines": [
+     "SLOWPOKE: ...Yawn?"
+    ]
    },
    {
-    "text": "Old Man",
-    "action": "EVENT",
-    "door": "outside",
-    "event": {
-     "lines": [
-      "Old Man: The Warden runs the Safari Zone. Folks here call him Slowpoke!"
+    "tiles": [
+     [
+      33,
+      8
      ]
-    }
+    ],
+    "look": "mon:100",
+    "face": "d",
+    "lines": [
+     "VOLTORB: Bzzt!"
+    ]
+   },
+   {
+    "tiles": [
+     [
+      39,
+      8
+     ]
+    ],
+    "look": "mon:113",
+    "face": "d",
+    "lines": [
+     "CHANSEY: Chaaan-sey!"
+    ]
+   },
+   {
+    "tiles": [
+     [
+      16,
+      9
+     ]
+    ],
+    "look": "mon:115",
+    "face": "d",
+    "lines": [
+     "KANGASKHAN: Gwooo!"
+    ]
+   },
+   {
+    "tiles": [
+     [
+      12,
+      20
+     ]
+    ],
+    "look": "mon:131",
+    "face": "d",
+    "lines": [
+     "LAPRAS: Laaa..."
+    ]
    }
   ],
   "rooms": {
-   "center": {
-    "theme": "room",
+   "safari": {
     "art": [
-     "ccccccccccccccc",
-     "ccccccccccccccc",
-     "....zmmN.mz....",
-     "....mmmmmmm....",
-     "...............",
-     "...............",
-     "ce.........mm..",
-     "...........mm..",
-     "......vvv......",
-     "ccccccccccccccc"
+     "ccccccccc",
+     "cccc^cccc",
+     "ccm...mcc",
+     "ccm...mNc",
+     "ccm...mcc",
+     "ccm...mcc",
+     "cNm...mcc",
+     "ccmvvvmcc",
+     "ccccccccc"
     ],
     "exits": {
-     "v": "OUT:25,31"
+     "^": "SAFARI_ZONE",
+     "v": "OUT:24,5"
     },
     "buildings": {},
     "roofs": {
-     "_floor": [
-      225,
-      219,
-      171
-     ],
-     "_wall": [
-      230,
-      139,
-      98
-     ],
-     "_things": {
-      "5,2": [
-       82,
-       82,
-       106
-      ],
-      "6,2": [
-       82,
-       82,
-       106
-      ],
-      "9,2": [
-       82,
-       82,
-       106
-      ],
-      "4,3": [
-       82,
-       82,
-       106
-      ],
-      "5,3": [
-       255,
-       131,
-       115
-      ],
-      "6,3": [
-       255,
-       131,
-       115
-      ],
-      "7,3": [
-       180,
-       180,
-       164
-      ],
-      "8,3": [
-       255,
-       131,
-       115
-      ],
-      "9,3": [
-       255,
-       131,
-       115
-      ],
-      "10,3": [
-       82,
-       82,
-       106
-      ],
-      "11,6": [
-       255,
-       255,
-       255
-      ],
-      "12,6": [
-       255,
-       255,
-       255
-      ],
-      "11,7": [
-       222,
-       213,
-       230
-      ],
-      "12,7": [
-       255,
-       255,
-       255
+     "_picture": {
+      "f": "fr_ground/11_0.png",
+      "at": [
+       0,
+       0
       ]
-     }
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
     },
     "people": [
-     "Heal"
-    ]
+     {
+      "text": "Attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Welcome to the Safari Zone! Through the door, and good luck!"
+       ]
+      }
+     },
+     {
+      "text": "Attendant ",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Hi! Is it your first time at the Safari Zone? Catch rare Pokémon with the Safari Balls you're given!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "7,3": {
+      "m": "face",
+      "d": "l"
+     },
+     "1,6": {
+      "m": "face",
+      "d": "r"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/11_0.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       9,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Safari Zone Entrance"
    },
    "mart": {
-    "theme": "room",
     "art": [
      "ccccccccccc",
      "ccccccccccc",
-     "cz.m......m",
-     "..Nm.......",
-     "mmmm...mm.m",
-     ".......mm.m",
-     ".mm....mm.m",
+     "cccm......c",
+     "ccNm..N....",
+     "mcmm...cc.c",
+     ".......ccNc",
+     ".cc....cc.c",
      "...vvv.....",
      "ccccccccccc"
     ],
@@ -20936,136 +20889,200 @@
     },
     "buildings": {},
     "roofs": {
-     "_floor": [
-      93,
-      148,
-      219
-     ],
-     "_wall": [
-      255,
-      255,
-      255
-     ],
-     "_things": {
-      "3,2": [
-       82,
-       82,
-       106
-      ],
-      "10,2": [
-       213,
-       197,
-       106
-      ],
-      "3,3": [
-       189,
-       230,
-       255
-      ],
-      "0,4": [
-       255,
-       255,
-       255
-      ],
-      "1,4": [
-       139,
-       180,
-       222
-      ],
-      "2,4": [
-       139,
-       180,
-       222
-      ],
-      "3,4": [
-       189,
-       230,
-       255
-      ],
-      "7,4": [
-       255,
-       255,
-       255
-      ],
-      "8,4": [
-       255,
-       255,
-       255
-      ],
-      "10,4": [
-       255,
-       255,
-       255
-      ],
-      "7,5": [
-       255,
-       255,
-       255
-      ],
-      "8,5": [
-       255,
-       255,
-       255
-      ],
-      "10,5": [
-       255,
-       255,
-       255
-      ],
-      "1,6": [
-       255,
-       255,
-       255
-      ],
-      "2,6": [
-       139,
-       180,
-       222
-      ],
-      "7,6": [
-       180,
-       180,
-       164
-      ],
-      "8,6": [
-       180,
-       180,
-       164
-      ],
-      "10,6": [
-       180,
-       180,
-       164
+     "_picture": {
+      "f": "fr_ground/11_1.png",
+      "at": [
+       0,
+       0
       ]
-     }
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
     },
     "people": [
-     "Shop"
-    ]
+     "Shop",
+     {
+      "text": "Man",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Don't they sell Safari Zone pennants? Or lanterns? Something to remember it by!"
+       ]
+      }
+     },
+     {
+      "text": "Woman",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Did you try X Speed? It speeds up a Pokémon in battle."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "6,3": {
+      "m": "look",
+      "d": "udlr"
+     },
+     "9,5": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     },
+     "2,3": {
+      "m": "face",
+      "d": "r"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/11_1.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       11,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Poké Mart"
+   },
+   "office": {
+    "art": [
+     "cccccccccccccccccccc",
+     "cccccccccccccccccccc",
+     "..N.................",
+     ".......cccc.N.cccc..",
+     "......Ncccc...cccc..",
+     "....................",
+     "ccc...cccccccccccccc",
+     "ccc...cccccccccccccc",
+     "..........N.........",
+     "cc...vvv..........cc",
+     "cccccccccccccccccccc"
+    ],
+    "exits": {
+     "v": "OUT:28,16"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/11_2.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Worker",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Warden Slowpoke knows a lot about Pokémon. He even has fossils of rare, extinct Pokémon!"
+       ]
+      }
+     },
+     {
+      "text": "Worker ",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Warden came by, but I couldn't understand a word he said!"
+       ]
+      }
+     },
+     {
+      "text": "Worker  ",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "We call the Warden \"Slowpoke.\" He has that faraway look, you know?"
+       ]
+      }
+     },
+     {
+      "text": "Worker   ",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Warden's running a campaign: reach the far corner of the Safari Zone for a prize!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "2,2": {
+      "m": "face",
+      "d": "u"
+     },
+     "12,3": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     },
+     "6,4": {
+      "m": "face",
+      "d": "r"
+     },
+     "10,8": {
+      "m": "face",
+      "d": "l"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/11_2.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       20,
+       11
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Safari Zone Office"
    },
    "gym": {
-    "theme": "room",
     "art": [
      "ccccccccccccccc",
      "ccccccccccccccc",
      "...............",
-     "...mmmm....m...",
-     ".......mm..m...",
-     "mmm....m...m...",
-     ".......m...m...",
-     ".......m...m...",
-     ".......m..m....",
-     "m..mmmm...m....",
-     "m.........m....",
-     "...mmmmmmmm....",
-     "..........m....",
-     "...m...N...m...",
-     "mmmm.......m...",
-     "...m.......m...",
-     "...mmmmmmmmm...",
+     "...cccc....c...",
+     ".......cc..c.N.",
+     "ccc....c...c...",
+     "....N..c...c...",
+     ".......c...c...",
+     ".......c..c....",
+     "c.Ncccc...c....",
+     "c.........c....",
+     "...ccccccccN...",
+     "..........c....",
+     "...c...N...c...",
+     "cccc.......c...",
+     "...c.......c...",
+     "..NcccccccccN..",
      "...............",
      "...............",
-     "....j.....jN...",
+     "....!.....!N...",
      "...............",
      "......vvv......",
      "ccccccccccccccc"
@@ -21075,832 +21092,320 @@
     },
     "buildings": {},
     "roofs": {
-     "_floor": [
-      220,
-      176,
-      161
-     ],
-     "_wall": [
-      232,
-      208,
-      120
-     ],
-     "_things": {
-      "3,3": [
-       238,
-       180,
-       164
-      ],
-      "4,3": [
-       238,
-       180,
-       164
-      ],
-      "5,3": [
-       238,
-       180,
-       164
-      ],
-      "6,3": [
-       238,
-       180,
-       164
-      ],
-      "11,3": [
-       238,
-       180,
-       164
-      ],
-      "7,4": [
-       238,
-       180,
-       164
-      ],
-      "8,4": [
-       238,
-       180,
-       164
-      ],
-      "11,4": [
-       238,
-       180,
-       164
-      ],
-      "0,5": [
-       197,
-       156,
-       148
-      ],
-      "1,5": [
-       238,
-       180,
-       164
-      ],
-      "2,5": [
-       238,
-       180,
-       164
-      ],
-      "7,5": [
-       238,
-       180,
-       164
-      ],
-      "11,5": [
-       238,
-       180,
-       164
-      ],
-      "7,6": [
-       238,
-       180,
-       164
-      ],
-      "11,6": [
-       238,
-       180,
-       164
-      ],
-      "7,7": [
-       238,
-       180,
-       164
-      ],
-      "11,7": [
-       238,
-       180,
-       164
-      ],
-      "7,8": [
-       238,
-       180,
-       164
-      ],
-      "10,8": [
-       238,
-       180,
-       164
-      ],
-      "0,9": [
-       197,
-       156,
-       148
-      ],
-      "3,9": [
-       238,
-       180,
-       164
-      ],
-      "4,9": [
-       238,
-       180,
-       164
-      ],
-      "5,9": [
-       238,
-       180,
-       164
-      ],
-      "6,9": [
-       238,
-       180,
-       164
-      ],
-      "10,9": [
-       238,
-       180,
-       164
-      ],
-      "0,10": [
-       197,
-       156,
-       148
-      ],
-      "10,10": [
-       238,
-       180,
-       164
-      ],
-      "3,11": [
-       238,
-       180,
-       164
-      ],
-      "4,11": [
-       238,
-       180,
-       164
-      ],
-      "5,11": [
-       238,
-       180,
-       164
-      ],
-      "6,11": [
-       238,
-       180,
-       164
-      ],
-      "7,11": [
-       238,
-       180,
-       164
-      ],
-      "8,11": [
-       238,
-       180,
-       164
-      ],
-      "9,11": [
-       238,
-       180,
-       164
-      ],
-      "10,11": [
-       238,
-       180,
-       164
-      ],
-      "10,12": [
-       238,
-       180,
-       164
-      ],
-      "3,13": [
-       238,
-       180,
-       164
-      ],
-      "11,13": [
-       238,
-       180,
-       164
-      ],
-      "0,14": [
-       197,
-       156,
-       148
-      ],
-      "1,14": [
-       238,
-       180,
-       164
-      ],
-      "2,14": [
-       238,
-       180,
-       164
-      ],
-      "3,14": [
-       238,
-       180,
-       164
-      ],
-      "11,14": [
-       238,
-       180,
-       164
-      ],
-      "3,15": [
-       238,
-       180,
-       164
-      ],
-      "11,15": [
-       238,
-       180,
-       164
-      ],
-      "3,16": [
-       238,
-       180,
-       164
-      ],
-      "4,16": [
-       238,
-       180,
-       164
-      ],
-      "5,16": [
-       238,
-       180,
-       164
-      ],
-      "6,16": [
-       238,
-       180,
-       164
-      ],
-      "7,16": [
-       238,
-       180,
-       164
-      ],
-      "8,16": [
-       238,
-       180,
-       164
-      ],
-      "9,16": [
-       238,
-       180,
-       164
-      ],
-      "10,16": [
-       238,
-       180,
-       164
-      ],
-      "11,16": [
-       238,
-       180,
-       164
+     "_picture": {
+      "f": "fr_ground/11_3.png",
+      "at": [
+       0,
+       0
       ]
      },
-     "_glass": [
-      "3,3",
-      "4,3",
-      "5,3",
-      "6,3",
-      "11,3",
-      "7,4",
-      "8,4",
-      "11,4",
-      "0,5",
-      "1,5",
-      "2,5",
-      "7,5",
-      "11,5",
-      "7,6",
-      "11,6",
-      "7,7",
-      "11,7",
-      "7,8",
-      "10,8",
-      "0,9",
-      "3,9",
-      "4,9",
-      "5,9",
-      "6,9",
-      "10,9",
-      "0,10",
-      "10,10",
-      "3,11",
-      "4,11",
-      "5,11",
-      "6,11",
-      "7,11",
-      "8,11",
-      "9,11",
-      "10,11",
-      "10,12",
-      "3,13",
-      "11,13",
-      "0,14",
-      "1,14",
-      "2,14",
-      "3,14",
-      "11,14",
-      "3,15",
-      "11,15",
-      "3,16",
-      "4,16",
-      "5,16",
-      "6,16",
-      "7,16",
-      "8,16",
-      "9,16",
-      "10,16",
-      "11,16",
-      "4,19",
-      "10,19"
-     ],
-     "_fittings": [
-      {
-       "kind": "pad",
-       "rect": [
-        6,
-        12,
-        3,
-        3
-       ]
-      }
-     ]
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
     },
     "people": [
+     {
+      "text": "Tamer Edgar",
+      "action": "EVENT",
+      "_look": "fr_25.png",
+      "event": {
+       "lines": [
+        "Tamer Edgar: Hmmm... You're fierce. But are you fierce enough for Koga?"
+       ],
+       "flag": "gym_trainer_FUCHSIA_CITY_5",
+       "battle": {
+        "name": "Tamer Edgar",
+        "class": "TAMER",
+        "sprite": "tamer.png",
+        "team": [
+         24,
+         28,
+         24
+        ],
+        "levels": [
+         33,
+         33,
+         33
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Tamer Edgar: You are!"
+         ]
+        }
+       },
+       "done": [
+        "Tamer Edgar: Go ahead. Koga's waiting."
+       ]
+      }
+     },
+     {
+      "text": "Tamer Phil",
+      "action": "EVENT",
+      "_look": "fr_25.png",
+      "event": {
+       "lines": [
+        "Tamer Phil: Ninjas aren't the only ones who know tricks! My Pokémon do too!"
+       ],
+       "flag": "gym_trainer_FUCHSIA_CITY_4",
+       "battle": {
+        "name": "Tamer Phil",
+        "class": "TAMER",
+        "sprite": "tamer.png",
+        "team": [
+         28,
+         24
+        ],
+        "levels": [
+         34,
+         34
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Tamer Phil: Gah! Tricked!"
+         ]
+        }
+       },
+       "done": [
+        "Tamer Phil: Watch out for Koga's Weezing."
+       ]
+      }
+     },
+     {
+      "text": "Juggler Shawn",
+      "action": "EVENT",
+      "_look": "fr_26.png",
+      "event": {
+       "lines": [
+        "Juggler Shawn: I want to become a ninja too, just like Koga!"
+       ],
+       "flag": "gym_trainer_FUCHSIA_CITY_3",
+       "battle": {
+        "name": "Juggler Shawn",
+        "class": "JUGGLER",
+        "sprite": "juggler.png",
+        "team": [
+         96,
+         97
+        ],
+        "levels": [
+         34,
+         34
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Juggler Shawn: I lost!"
+         ]
+        }
+       },
+       "done": [
+        "Juggler Shawn: Koga is a master. I've got a long way to go."
+       ]
+      }
+     },
+     {
+      "text": "Juggler Kirk",
+      "action": "EVENT",
+      "_look": "fr_26.png",
+      "event": {
+       "lines": [
+        "Juggler Kirk: Something's wrong? You can't walk straight here!"
+       ],
+       "flag": "gym_trainer_FUCHSIA_CITY_2",
+       "battle": {
+        "name": "Juggler Kirk",
+        "class": "JUGGLER",
+        "sprite": "juggler.png",
+        "team": [
+         96,
+         96,
+         64,
+         96
+        ],
+        "levels": [
+         31,
+         31,
+         31,
+         31
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Juggler Kirk: Not bad!"
+         ]
+        }
+       },
+       "done": [
+        "Juggler Kirk: The walls aren't there... until you bump into them."
+       ]
+      }
+     },
      "Gym",
+     {
+      "text": "Juggler Nate",
+      "action": "EVENT",
+      "_look": "fr_26.png",
+      "event": {
+       "lines": [
+        "Juggler Nate: Strength isn't the key for Pokémon. It's strategy! I'll show you!"
+       ],
+       "flag": "gym_trainer_FUCHSIA_CITY_1",
+       "battle": {
+        "name": "Juggler Nate",
+        "class": "JUGGLER",
+        "sprite": "juggler.png",
+        "team": [
+         96,
+         64
+        ],
+        "levels": [
+         34,
+         34
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Juggler Nate: Hah! You're good!"
+         ]
+        }
+       },
+       "done": [
+        "Juggler Nate: Koga's poison is strategy too."
+       ]
+      }
+     },
+     {
+      "text": "Juggler Kayden",
+      "action": "EVENT",
+      "_look": "fr_26.png",
+      "event": {
+       "lines": [
+        "Juggler Kayden: Hey, do you know about the invisible walls? Bet you can't find the way!"
+       ],
+       "flag": "gym_trainer_FUCHSIA_CITY_0",
+       "battle": {
+        "name": "Juggler Kayden",
+        "class": "JUGGLER",
+        "sprite": "juggler.png",
+        "team": [
+         97
+        ],
+        "levels": [
+         38
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Juggler Kayden: Ow! You got me!"
+         ]
+        }
+       },
+       "done": [
+        "Juggler Kayden: Koga's tricks are tougher than mine."
+       ]
+      }
+     },
      {
       "text": "Gym Guide",
       "action": "EVENT",
-      "door": "inside",
       "event": {
        "lines": [
-        "Gym Guide: Koga's Gym is full of walls you can't see! Look for the faint glint on the floor."
+        "Gym Guide: Yo, champ in the making! Fuchsia Gym is full of invisible walls.",
+        "Gym Guide: Koga's right there, but you'll have to feel your way to him. Psychic moves work well on his poison Pokémon!"
        ]
       }
      }
-    ]
-   },
-   "warden": {
-    "theme": "room",
-    "art": [
-     "ccccccccccccc",
-     "ccccccccccccc",
-     ".............",
-     ".............",
-     "mm..mmmm..mmm",
-     "mm.N......m.m",
-     ".............",
-     ".............",
-     ".............",
-     "m.....v.....m",
-     "ccccccccccccc"
     ],
-    "exits": {
-     "v": "OUT:33,31"
-    },
-    "buildings": {},
-    "roofs": {
-     "_floor": [
-      184,
-      176,
-      130
-     ],
-     "_wall": [
-      172,
-      197,
-      180
-     ],
-     "_things": {
-      "0,4": [
-       213,
-       197,
-       106
-      ],
-      "1,4": [
-       213,
-       197,
-       106
-      ],
-      "4,4": [
-       98,
-       189,
-       213
-      ],
-      "5,4": [
-       98,
-       189,
-       213
-      ],
-      "6,4": [
-       98,
-       189,
-       213
-      ],
-      "7,4": [
-       98,
-       189,
-       213
-      ],
-      "10,4": [
-       222,
-       205,
-       74
-      ],
-      "11,4": [
-       222,
-       205,
-       74
-      ],
-      "12,4": [
-       222,
-       205,
-       74
-      ],
-      "0,5": [
-       213,
-       197,
-       106
-      ],
-      "1,5": [
-       213,
-       197,
-       106
-      ],
-      "10,5": [
-       222,
-       205,
-       74
-      ],
-      "12,5": [
-       222,
-       205,
-       74
-      ],
-      "0,9": [
-       82,
-       82,
-       106
-      ],
-      "12,9": [
-       82,
-       82,
-       106
-      ]
-     }
-    },
-    "people": [
+    "signs": [
      [
-      "Return the Gold Teeth",
-      "Warden"
+      "FUCHSIA GYM",
+      "Leader: Koga"
+     ],
+     [
+      "FUCHSIA GYM",
+      "Leader: Koga"
      ]
-    ]
-   },
-   "brother": {
-    "theme": "room",
-    "art": [
-     "cccccccccc",
-     "mmm>mmmmmm",
-     "..........",
-     "..........",
-     "m.........",
-     "......Nmm.",
-     ".......mm.",
-     "m.........",
-     "...v......",
-     "cccccccccc"
     ],
-    "exits": {
-     "v": "OUT:38,31",
-     ">": "OUT:39,28"
-    },
-    "buildings": {},
-    "roofs": {
-     "_floor": [
-      172,
-      168,
-      137
-     ],
-     "_wall": [
-      172,
-      197,
-      180
-     ],
-     "_things": {
-      "0,1": [
-       246,
-       238,
-       148
-      ],
-      "1,1": [
-       172,
-       197,
-       180
-      ],
-      "2,1": [
-       172,
-       197,
-       180
-      ],
-      "4,1": [
-       172,
-       197,
-       180
-      ],
-      "5,1": [
-       90,
-       189,
-       172
-      ],
-      "6,1": [
-       172,
-       197,
-       180
-      ],
-      "7,1": [
-       90,
-       189,
-       172
-      ],
-      "8,1": [
-       82,
-       82,
-       106
-      ],
-      "9,1": [
-       82,
-       82,
-       106
-      ],
-      "0,4": [
-       82,
-       82,
-       106
-      ],
-      "7,5": [
-       213,
-       197,
-       106
-      ],
-      "8,5": [
-       213,
-       197,
-       106
-      ],
-      "7,6": [
-       213,
-       197,
-       106
-      ],
-      "8,6": [
-       213,
-       197,
-       106
-      ],
-      "0,7": [
-       82,
-       82,
-       106
-      ]
+    "moves": {
+     "7,13": {
+      "m": "face",
+      "d": "d"
+     },
+     "11,19": {
+      "m": "face",
+      "d": "d"
+     },
+     "12,16": {
+      "m": "look",
+      "d": "dr",
+      "s": 4
+     },
+     "2,16": {
+      "m": "face",
+      "d": "d",
+      "s": 4
+     },
+     "11,11": {
+      "m": "face",
+      "d": "r",
+      "s": 3
+     },
+     "2,9": {
+      "m": "face",
+      "d": "l",
+      "s": 1
+     },
+     "4,6": {
+      "m": "look",
+      "d": "udlr",
+      "s": 2
+     },
+     "13,4": {
+      "m": "look",
+      "d": "udlr",
+      "s": 2
      }
     },
-    "people": [
-     "Fishing Guru's Brother"
-    ],
-    "parts": true
-   },
-   "office": {
-    "theme": "room",
-    "art": [
-     "cccccccccccccccccccc",
-     "cccccccccccccccccccc",
-     "..N.................",
-     ".......mmmm.N.mmmm..",
-     "......Nmmmm...mmmm..",
-     "....................",
-     "ccc...cccccccccccccc",
-     "ccc...cccccccccccccc",
-     "..........N.........",
-     "zz....v...........zz",
-     "cccccccccccccccccccc"
-    ],
-    "exits": {
-     "v": "OUT:28,16"
-    },
-    "buildings": {},
-    "roofs": {
-     "_floor": [
-      126,
-      128,
-      82
-     ],
-     "_wall": [
-      222,
-      205,
-      139
-     ],
-     "_things": {
-      "7,3": [
-       156,
-       213,
-       255
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/11_3.png",
+      "at": [
+       0,
+       0
       ],
-      "8,3": [
-       156,
-       213,
-       255
-      ],
-      "9,3": [
-       156,
-       213,
-       255
-      ],
-      "10,3": [
-       156,
-       213,
-       255
-      ],
-      "14,3": [
-       156,
-       213,
-       255
-      ],
-      "15,3": [
-       156,
-       213,
-       255
-      ],
-      "16,3": [
-       156,
-       213,
-       255
-      ],
-      "17,3": [
-       156,
-       213,
-       255
-      ],
-      "7,4": [
-       156,
-       213,
-       255
-      ],
-      "8,4": [
-       156,
-       213,
-       255
-      ],
-      "9,4": [
-       156,
-       213,
-       255
-      ],
-      "10,4": [
-       156,
-       213,
-       255
-      ],
-      "14,4": [
-       156,
-       213,
-       255
-      ],
-      "15,4": [
-       156,
-       213,
-       255
-      ],
-      "16,4": [
-       156,
-       213,
-       255
-      ],
-      "17,4": [
-       156,
-       213,
-       255
+      "size": [
+       15,
+       23
       ]
-     },
-     "_kinds": {
-      "7,3": "table",
-      "8,3": "table",
-      "9,3": "table",
-      "10,3": "table",
-      "14,3": "table",
-      "15,3": "table",
-      "16,3": "table",
-      "17,3": "table",
-      "7,4": "table",
-      "8,4": "table",
-      "9,4": "table",
-      "10,4": "table",
-      "14,4": "table",
-      "15,4": "table",
-      "16,4": "table",
-      "17,4": "table"
-     },
-     "_fittings": [
-      {
-       "kind": "pane",
-       "rect": [
-        9.6,
-        0.45,
-        0.8,
-        0.9
-       ]
-      },
-      {
-       "kind": "pane",
-       "rect": [
-        13.6,
-        0.45,
-        0.8,
-        0.9
-       ]
-      },
-      {
-       "kind": "goods",
-       "rect": [
-        0,
-        0.5,
-        2,
-        1.45
-       ]
-      },
-      {
-       "kind": "goods",
-       "rect": [
-        2,
-        0.5,
-        2,
-        1.45
-       ]
-      },
-      {
-       "kind": "goods",
-       "rect": [
-        4,
-        0.5,
-        2,
-        1.45
-       ]
-      }
-     ]
-    },
-    "people": [
-     {
-      "text": "Worker",
-      "action": "EVENT",
-      "door": "inside",
-      "event": {
-       "lines": [
-        "Worker: This is the Safari Zone's office. The Warden lives next door. He mumbles a lot lately."
-       ]
-      }
-     },
-     {
-      "text": "Worker",
-      "action": "EVENT",
-      "door": "inside",
-      "event": {
-       "lines": [
-        "Worker: We keep count of every Pokemon in the Safari Zone."
-       ]
-      }
-     },
-     {
-      "text": "Worker",
-      "action": "EVENT",
-      "door": "inside",
-      "event": {
-       "lines": [
-        "Worker: Safari Balls are the only balls allowed inside."
-       ]
-      }
-     },
-     {
-      "text": "Worker",
-      "action": "EVENT",
-      "door": "inside",
-      "event": {
-       "lines": [
-        "Worker: The Safari Zone has four areas. Can you find the Secret House?"
-       ]
-      }
      }
-    ]
+    ],
+    "theme": "room",
+    "title": "Fuchsia Gym"
    },
    "house_w": {
-    "theme": "room",
     "art": [
      "ccccccccccc",
-     "mmmmcmccccc",
+     "ccccccccccc",
      ".N.........",
-     "...======..",
-     "...==mmN=..",
-     "...==mm==..",
-     "...======..",
-     "z...v.....z",
+     "...........",
+     ".....ccN...",
+     "..N..cc....",
+     "...........",
+     "c..vvv....c",
      "ccccccccccc"
     ],
     "exits": {
@@ -21908,184 +21413,421 @@
     },
     "buildings": {},
     "roofs": {
-     "_floor": [
-      166,
-      165,
-      140
-     ],
-     "_wall": [
-      172,
-      197,
-      180
-     ],
-     "_things": {
-      "0,1": [
-       224,
-       228,
-       236
-      ],
-      "1,1": [
-       224,
-       228,
-       236
-      ],
-      "2,1": [
-       236,
-       212,
-       120
-      ],
-      "3,1": [
-       70,
-       70,
-       84
-      ],
-      "5,1": [
-       214,
-       220,
-       228
-      ],
-      "5,4": [
-       213,
-       197,
-       106
-      ],
-      "6,4": [
-       213,
-       197,
-       106
-      ],
-      "5,5": [
-       213,
-       197,
-       106
-      ],
-      "6,5": [
-       213,
-       197,
-       106
+     "_picture": {
+      "f": "fr_ground/11_4.png",
+      "at": [
+       0,
+       0
       ]
      },
-     "_kinds": {
-      "0,1": "sink",
-      "1,1": "sink",
-      "2,1": "shelf",
-      "3,1": "tv",
-      "5,1": "fridge",
-      "5,4": "table",
-      "6,4": "table",
-      "5,5": "table",
-      "6,5": "table"
-     },
-     "_fittings": [
-      {
-       "kind": "stool",
-       "rect": [
-        4,
-        4,
-        1,
-        1
-       ]
-      },
-      {
-       "kind": "stool",
-       "rect": [
-        4,
-        5,
-        1,
-        1
-       ]
-      },
-      {
-       "kind": "stool",
-       "rect": [
-        7,
-        4,
-        1,
-        1
-       ]
-      },
-      {
-       "kind": "stool",
-       "rect": [
-        7,
-        5,
-        1,
-        1
-       ]
-      },
-      {
-       "kind": "pane",
-       "rect": [
-        7.1,
-        0.45,
-        0.8,
-        0.9
-       ]
-      },
-      {
-       "kind": "pane",
-       "rect": [
-        8.1,
-        0.45,
-        0.8,
-        0.9
-       ]
-      },
-      {
-       "kind": "pane",
-       "rect": [
-        9.1,
-        0.45,
-        1.8,
-        0.9
-       ],
-       "colour": [
-        96,
-        176,
-        112
-       ]
-      }
-     ],
-     "_rug": [
-      90,
-      123,
-      180
-     ]
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
     },
     "people": [
      {
-      "text": "Boy",
+      "text": "Woman",
       "action": "EVENT",
-      "door": "inside",
       "event": {
        "lines": [
-        "Boy: The zoo outside has Pokemon from the Safari Zone."
+        "The Safari Zone's Warden is old, but still full of energy. His teeth are false, though!"
+       ]
+      }
+     },
+     {
+      "text": "Old man",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Hm? You've met Bill? He's my grandson! He always liked collecting things, even as a boy."
+       ]
+      }
+     },
+     {
+      "text": "Boy",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Bill keeps his own Pokémon notes on his PC. Did he show you?"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "7,4": {
+      "m": "face",
+      "d": "l"
+     },
+     "1,2": {
+      "m": "face",
+      "d": "u"
+     },
+     "2,5": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/11_4.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       11,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "House"
+   },
+   "center": {
+    "art": [
+     "ccccccccccccccc",
+     "ccccccccccccccc",
+     "....mccNccm....",
+     "....cmmmmmc..N.",
+     "...............",
+     "............N..",
+     "c<.........cc..",
+     "...........cc..",
+     "....N.vvv......",
+     "ccccccccccccccc"
+    ],
+    "exits": {
+     "v": "OUT:25,31",
+     "<": "ROOM:center_2"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/11_5.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Heal",
+     {
+      "text": "Man",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "There's a narrow trail west of Viridian City. It leads to the Pokémon League."
        ]
       }
      },
      {
       "text": "Woman",
       "action": "EVENT",
-      "door": "inside",
       "event": {
        "lines": [
-        "Woman: Koga's Gym is full of walls you can't see!"
+        "You can't become a good Trainer with one strong Pokémon. Raise lots of them!"
+       ]
+      }
+     },
+     {
+      "text": "Youngster",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "If you're filling your Pokédex, visit the Safari Zone. All sorts of rare Pokémon live there."
        ]
       }
      }
-    ]
+    ],
+    "moves": {
+     "12,5": {
+      "m": "face",
+      "d": "d"
+     },
+     "13,3": {
+      "m": "face",
+      "d": "u"
+     },
+     "4,8": {
+      "m": "wander",
+      "d": "lr",
+      "r": [
+       1,
+       0
+      ]
+     },
+     "7,2": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/11_5.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       15,
+       10
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Pokémon Center"
+   },
+   "center_2": {
+    "art": [
+     "ccccccccccccccc",
+     "ccccccccccccccc",
+     "cNNcccNcccNccc.",
+     "mmmcmcmmccmmcc.",
+     "...............",
+     "...............",
+     "c<.............",
+     "...............",
+     "...c.........c.",
+     "ccccccccccccccc"
+    ],
+    "exits": {
+     "<": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/11_6.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Mystery Gift lady",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Mystery Gifts arrive here now and then. There's nothing for you today, I'm afraid."
+       ]
+      }
+     },
+     {
+      "text": "Link attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I'm sorry, the Union Room is closed for now."
+       ]
+      }
+     },
+     {
+      "text": "Trade attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Trade Center is closed for maintenance. Please come back another time!"
+       ]
+      }
+     },
+     {
+      "text": "Colosseum attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Colosseum is closed for now. Sorry about that!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "2,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "6,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "10,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "1,2": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/11_6.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       15,
+       10
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Pokémon Center 2F"
+   },
+   "warden": {
+    "art": [
+     "ccccccccccccc",
+     "ccccccccccccc",
+     ".............",
+     ".............",
+     "cc..!!!!..ccm",
+     "cc.N......cNc",
+     "...........b.",
+     ".............",
+     ".............",
+     "c.....v.....c",
+     "cccccvcvccccc"
+    ],
+    "exits": {
+     "v": "OUT:33,31"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/11_7.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     [
+      "Return the Gold Teeth",
+      "Warden"
+     ],
+     "RARE CANDY"
+    ],
+    "signs": [
+     [
+      "Pokémon photos and fossils are on display."
+     ],
+     [
+      "Pokémon photos and fossils are on display."
+     ],
+     [
+      "Old Pokémon goods are on display."
+     ],
+     [
+      "Old Pokémon goods are on display."
+     ]
+    ],
+    "moves": {
+     "3,5": {
+      "m": "look",
+      "d": "udlr"
+     },
+     "11,5": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/11_7.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       13,
+       11
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Warden's House"
+   },
+   "brother": {
+    "art": [
+     "cccccccccc",
+     "ccc^cccccc",
+     "..........",
+     "..........",
+     "c.........",
+     "......Ncc.",
+     ".......cc.",
+     "c.........",
+     "...v......",
+     "ccvcvccccc"
+    ],
+    "exits": {
+     "v": "OUT:38,31",
+     "^": "OUT:39,28"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/11_8.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Fishing Guru's Brother"
+    ],
+    "moves": {
+     "6,5": {
+      "m": "face",
+      "d": "r"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/11_8.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       10,
+       10
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Fishing House"
    },
    "deleter": {
-    "theme": "room",
     "art": [
      "ccccccccccc",
-     "mmmmcmccccc",
+     "ccccccccccc",
      "...........",
-     "...======..",
-     "...=Nmm==..",
-     "...==mm==..",
-     "...======..",
-     "z...v.....z",
+     "...........",
+     "....Ncc....",
+     ".....cc....",
+     "...........",
+     "c...v.....c",
      "ccccccccccc"
     ],
     "exits": {
@@ -22093,181 +21835,68 @@
     },
     "buildings": {},
     "roofs": {
-     "_floor": [
-      166,
-      165,
-      140
-     ],
-     "_wall": [
-      172,
-      197,
-      180
-     ],
-     "_things": {
-      "0,1": [
-       224,
-       228,
-       236
-      ],
-      "1,1": [
-       224,
-       228,
-       236
-      ],
-      "2,1": [
-       236,
-       212,
-       120
-      ],
-      "3,1": [
-       70,
-       70,
-       84
-      ],
-      "5,1": [
-       214,
-       220,
-       228
-      ],
-      "5,4": [
-       213,
-       197,
-       106
-      ],
-      "6,4": [
-       213,
-       197,
-       106
-      ],
-      "5,5": [
-       213,
-       197,
-       106
-      ],
-      "6,5": [
-       213,
-       197,
-       106
+     "_picture": {
+      "f": "fr_ground/11_9.png",
+      "at": [
+       0,
+       0
       ]
      },
-     "_kinds": {
-      "0,1": "sink",
-      "1,1": "sink",
-      "2,1": "shelf",
-      "3,1": "tv",
-      "5,1": "fridge",
-      "5,4": "table",
-      "6,4": "table",
-      "5,5": "table",
-      "6,5": "table"
-     },
-     "_fittings": [
-      {
-       "kind": "stool",
-       "rect": [
-        4,
-        4,
-        1,
-        1
-       ]
-      },
-      {
-       "kind": "stool",
-       "rect": [
-        4,
-        5,
-        1,
-        1
-       ]
-      },
-      {
-       "kind": "stool",
-       "rect": [
-        7,
-        4,
-        1,
-        1
-       ]
-      },
-      {
-       "kind": "stool",
-       "rect": [
-        7,
-        5,
-        1,
-        1
-       ]
-      },
-      {
-       "kind": "pane",
-       "rect": [
-        7.1,
-        0.45,
-        0.8,
-        0.9
-       ]
-      },
-      {
-       "kind": "pane",
-       "rect": [
-        8.1,
-        0.45,
-        0.8,
-        0.9
-       ]
-      },
-      {
-       "kind": "pane",
-       "rect": [
-        9.1,
-        0.45,
-        1.8,
-        0.9
-       ],
-       "colour": [
-        96,
-        176,
-        112
-       ]
-      }
-     ],
-     "_rug": [
-      90,
-      123,
-      180
-     ]
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
     },
     "people": [
      {
       "text": "Move Deleter",
       "action": "EVENT",
-      "door": "inside",
       "event": {
        "lines": [
-        "Move Deleter: I'm the Move Deleter. Hm... your Pokemon know just what they need."
+        "Uh... Oh, yes, I'm the Move Deleter. I can make Pokémon forget moves. Your team looks fine as it is, though!"
        ]
       }
      }
-    ]
+    ],
+    "moves": {
+     "4,4": {
+      "m": "face",
+      "d": "r"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/11_9.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       11,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Move Deleter's House"
    }
   },
-  "inside": {
-   "25,31": "center",
-   "11,15": "mart",
-   "9,32": "gym",
-   "33,31": "warden",
-   "38,31": "brother",
-   "39,28": "brother",
-   "28,16": "office",
-   "14,31": "house_w",
-   "19,31": "deleter"
-  },
   "surf": true,
-  "back_doors": [
-   [
-    39,
-    28
-   ]
+  "hidden": {
+   "33,26": "MAX_REVIVE"
+  },
+  "overheads": [
+   {
+    "kind": "picture",
+    "f": "fr_top/3_7.png",
+    "at": [
+     0,
+     0
+    ],
+    "size": [
+     48,
+     40
+    ]
+   }
   ]
  },
  "SAFARI_ZONE": {

@@ -1088,6 +1088,24 @@ story.inventory.pop("TM113", None) if not _had else None
 if _fl is not None:
     story.inventory["POKE_FLUTE"] = _fl
 
+# ---- batch 17: Fuchsia City
+fu = open_map("FUCHSIA_CITY", "KANTO_ROUTE_15")
+check((fu.w, fu.h) == (48, 40) and fu.doors.get((24, 5)) == "safari" and "SAFARI_ZONE" not in fu.exits.values(),
+      "Fuchsia: FireRed's city; the Safari Zone's door opens its entrance house")
+_zoo = sorted(b.get("look") for b in fu.town_map.get("barred", []) if str(b.get("look", "")).startswith("mon:"))
+check(_zoo == ["mon:100", "mon:113", "mon:115", "mon:131", "mon:79"], f"...the zoo's Pokémon in their pens: Chansey, Kangaskhan, Voltorb, Slowpoke, Lapras ({_zoo})")
+fu.player = (24, 6); fu.anim = 0
+walk(fu, "u")
+fu = g.current_state
+check(fu.room == "safari" and "SAFARI_ZONE" in fu.exits.values(), f"...through it: the entrance, its far door into the Safari Zone ({fu.room})")
+_pp = _room_of(fu, "gym")
+_gt = [n for n in _pp if n and n.startswith(("Juggler", "Tamer"))]
+check(_pp.get("Gym") == (7, 13) and len(_gt) == 6, f"...Koga's Gym: Koga at FireRed's spot, his six trainers ({sorted(_gt)})")
+_pp = _room_of(fu, "warden")
+check(_pp.get("RARE CANDY") == (11, 5) and "b" in "".join(fu.town_map["rooms"]["warden"]["art"]), f"...the Warden's house: FireRed's boulder, the Rare Candy behind it ({_pp.get('RARE CANDY')})")
+_pp = _room_of(fu, "brother")
+check(set(fu.exits.values()) == {"OUT:38,31", "OUT:39,28"}, f"...the Fishing Guru's brother's house: front door and back door to the pond ({sorted(fu.exits.values())})")
+
 print(f"##### {len(fails)} failures")
 for m in fails:
     print("   FAIL " + m)
