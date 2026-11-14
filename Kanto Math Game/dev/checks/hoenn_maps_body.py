@@ -2158,7 +2158,7 @@ _ship = _sp22["HOENN_ABANDONED_SHIP"]
 _scan = next(o for o in _ship["route_menu"] if o.get("text") == "SCANNER")
 _stern = [o for o in _sp22["SLATEPORT_CITY"].get("travel_options", []) + _sp22["SLATEPORT_CITY"].get("explore_options", []) if o.get("door") == "shipyard" and (o.get("event") or {}).get("take_item")]
 check(_scan["event"]["flag"] == "abandoned_ship_cleared" and len(_stern) == 2
-      and {next(iter(o["event"]["gift_item"])) for o in _stern} == {"DEEP_SEA_TOOTH", "DEEP_SEA_SCALE"}
+      and {k for o in _stern for k in o["event"]["gift_item"] if k.startswith("DEEP")} == {"DEEP_SEA_TOOTH", "DEEP_SEA_SCALE"}
       and "SCANNER" in _tm22["HOENN_ABANDONED_SHIP"]["floors"][10]["people"],
       "Abandoned Ship: the Scanner in room 2 (the mission); Captain Stern trades it for a DeepSeaTooth or DeepSeaScale")
 story.story_flags.clear(); story.story_flags.update(_saved22)
@@ -2249,6 +2249,158 @@ check(not any(_none) and _moves13 == sorted(["ROCK-TOMB", "BULK-UP", "VOLT-SWITC
       f"Hoenn: no random TMs from battles; each Leader gives their own ORAS TM ({_moves13})")
 story.current_area_key = "PALLET_TOWN"
 check(_tms13.reward(g, 3, "GYM_LEADER", ["ROCK"]) is not None, "Kanto still gives its Leaders' TMs the old way")
+
+# ---- 11-13 (Jordan): every Hoenn Pokemon Center and Poke Mart walked inside (the early towns: h_marts.py)
+_tmM = json.load(open("assets/town_maps.json", encoding="utf-8"))
+_savedM = dict(story.story_flags)
+story.story_flags.update({"slateport_grunt_defeated": True, "defeated_wally_mauville": True})   # (past the towns' arrival battles)
+for _town, _came in (("OLDALE_TOWN", "HOENN_ROUTE_101"), ("PETALBURG_CITY", "HOENN_ROUTE_102"), ("RUSTBORO_CITY", "HOENN_ROUTE_104"),
+                     ("DEWFORD_TOWN", "HOENN_ROUTE_106"), ("SLATEPORT_CITY", "HOENN_ROUTE_109"), ("MAUVILLE_CITY", "HOENN_ROUTE_110"),
+                     ("VERDANTURF_TOWN", "HOENN_ROUTE_117"), ("FALLARBOR_TOWN", "HOENN_ROUTE_113"), ("LAVARIDGE_TOWN", "HOENN_JAGGED_PASS"),
+                     ("FORTREE_CITY", "HOENN_ROUTE_119")):
+    _res = {}
+    for _kind in ("center", "mart"):
+        if _kind not in _tmM[_town].get("rooms", {}):
+            continue
+        st = open_map(_town, _came)
+        st.scenes.entered = True
+        g.transitioning = False
+        _door = next((d for d, k in st.doors.items() if k == _kind), None)
+        _in = None
+        if _door is not None:
+            st._go(_kind, "OUT:%d,%d" % _door); frames(2)   # (in by its own door's way: OUT back to it)
+            _in = st.room
+        _res[_kind] = _in
+        if _kind == "center" and _in == "center":
+            _hp = story.player_team[0]; _hp.current_hp = 1
+            st.player, st.facing, st.anim = (7, 4), (0, -1), 0
+            st.step(0, -1); frames(2); tap(st)
+            _res["heal"] = _hp.current_hp == _hp.get_max_hp()
+            _res["up"] = _stairs(st, "ROOM:center_2")
+            _res["down"] = _stairs(st, "ROOM:center")
+        if _kind == "mart" and _in == "mart":
+            _shop = next((o for o in st.people.values() if isinstance(o, dict) and o.get("text") == "Shop"), None)
+            if _shop:
+                st._get_callback_for_option(_shop)(); frames(2)
+                _res["shop"] = type(g.current_state).__name__
+                g.change_state(st); frames(1)
+        g.transitioning = False
+    _ok = _res.get("center") == "center" and _res.get("heal") and _res.get("up") == "center_2" and _res.get("down") == "center"         and (_town == "DEWFORD_TOWN" or (_res.get("mart") == "mart" and "Mart" in str(_res.get("shop"))))
+    check(_ok, f"{_town}: its Pokemon Center (the nurse, the stairs up) and Poke Mart (the clerk's shop) are walked inside ({_res})")
+story.story_flags.clear(); story.story_flags.update(_savedM)
+
+# ---- 11-13 (Jordan): the Abandoned Ship takes Sea Mauville's place: ORAS's legend (by the version's bell), Spiritomb, items
+_spS = g.loader.area_data["STORY_PROGRESSION"]
+_savedS = dict(story.story_flags); _invS = dict(story.inventory)
+_bossS = []
+def _grab(self, boss):   # (the boss battle itself stood in for: who it is, at what level)
+    _bossS.append((boss.get("name"), boss.get("level")))
+from src.states.overworld.dungeon import DungeonState as _DS
+_orig_boss = _DS.__dict__.get("action_challenge_boss")
+_DS.action_challenge_boss = _grab
+def _bump(floor, at, step):
+    st = open_map("HOENN_ABANDONED_SHIP", "HOENN_ROUTE_108")
+    st.run.jump_floor(floor, at); _calm(st); st.anim = 0
+    st.step(*step)
+    return _play(st, 200)
+_rS = [b.get("boss", {}).get("name") for f in _tm22["HOENN_ABANDONED_SHIP"]["floors"] for b in f.get("barred", []) if b.get("boss")]
+check(_rS == ["Spiritomb"], f"Abandoned Ship: Spiritomb is its only legend-like special (Ho-Oh and Lugia live at Navel Rock) ({_rS})")
+story.story_flags.pop("cave_of_origin_cleared", None); _bossS.clear()
+_bump(2, (2, 7), (0, -1)); _before = list(_bossS)
+story.story_flags["cave_of_origin_cleared"] = True; _bossS.clear()
+_said = _bump(2, (2, 7), (0, -1))
+check(_before == [] and _bossS == [("Spiritomb", 50)], f"Abandoned Ship: once Groudon / Kyogre's dealt with, the old report and the Odd Keystone: Spiritomb ({_before}, {_bossS})")
+if _orig_boss is None:
+    del _DS.action_challenge_boss
+else:
+    _DS.action_challenge_boss = _orig_boss
+_ship = _spS["HOENN_ABANDONED_SHIP"]
+check("HOENN_SEA_MAUVILLE" not in _spS and not any(o.get("target_area") == "HOENN_SEA_MAUVILLE" for o in _spS["HOENN_ROUTE_108"]["route_menu"])
+      and _ship["wild_pool_percentages"] == "HOENN_SEA_MAUVILLE_PERCENTAGES"
+      and {"BEEDRILLITE", "MAX REPEL", "WHITE HERB"} <= {o["text"] for o in _ship["route_menu"]},
+      "Abandoned Ship: no separate Sea Mauville; its wild Pokemon and items aboard")
+story.story_flags.clear(); story.story_flags.update(_savedS)
+story.inventory.clear(); story.inventory.update(_invS)
+
+# ---- batch 23 (11-13): the Oceanic Museum, Mirage Tower, the Scorched Slab
+_tm23 = json.load(open("assets/town_maps.json", encoding="utf-8"))
+_sp23 = g.loader.area_data["STORY_PROGRESSION"]
+_saved23 = dict(story.story_flags); _inv23 = dict(story.inventory)
+st = open_map("HOENN_OCEANIC_MUSEUM", "SLATEPORT_CITY")
+_m1 = st.run.index
+st.run.jump_floor(1, (6, 2)); _calm(st)
+_tr23 = sorted((m.payload[1] or {}).get("name", "").strip().replace("Magma", "Aqua").replace("Maxie", "Archie") for m in st.run.floor.movers if m.kind == "trainer")   # (the version's team: Magma in Omega Ruby)
+_em_words = any("OCEANIC MINIFACT" in " ".join(s) for f in _tm23["HOENN_OCEANIC_MUSEUM"]["floors"] for s in f.get("signs", []))
+check(_m1 == 0 and _tr23 == ["Aqua Leader Archie", "Team Aqua Grunt", "Team Aqua Grunt"] and not _em_words,
+      f"Oceanic Museum: in from Slateport; the Grunts and their leader on 2F by Captain Stern; the exhibits in our own words ({_tr23})")
+story.story_flags.pop("mirage_tower_fossil", None); story.inventory.pop("ROOT_FOSSIL", None)
+story.badges.setdefault("HOENN", [])
+st = open_map("HOENN_MIRAGE_TOWER", "HOENN_ROUTE_111")
+st.run.jump_floor(3, (5, 5)); _calm(st)
+_ft = next(o for o in _sp23["HOENN_MIRAGE_TOWER"]["route_menu"] if o.get("text") == "ROOT FOSSIL")
+st._get_route_callback(_ft)()
+_said = _play(st, 400)
+_to23 = getattr(g.current_state, "next_area_key", None) if type(g.current_state).__name__ == "AreaTransitionState" else story.current_area_key
+_r111 = next(o for o in _sp23["HOENN_ROUTE_111"]["route_menu"] if o.get("target_area") == "HOENN_MIRAGE_TOWER")
+check(story.inventory.get("ROOT_FOSSIL") == 1 and story.story_flags.get("mirage_tower_fossil") and _to23 == "HOENN_ROUTE_111"
+      and _r111.get("flag_condition") == "not mirage_tower_fossil" and "CLAW FOSSIL" in _tm23["HOENN_MIRAGE_TOWER"]["floors"][3]["people"],
+      f"Mirage Tower: take the Root or Claw Fossil on top, the tower crumbles, you're back on Route 111 and it's gone ({_to23}, {_said[:1]})")
+g.transitioning = False
+story.story_flags["beat_hoenn_champion"] = True
+st = open_map("HOENN_SCORCHED_SLAB", "HOENN_ROUTE_120")
+_fig23 = sorted(m.payload.get("text") for m in st.run.floor.movers if m.kind == "figure" and isinstance(m.payload, dict))
+check({"SEEK HEATRAN", "TM34 SUNNY DAY", "CHARIZARDITE Y"} <= set(_fig23),
+      f"Scorched Slab: Emerald's TM (Sunny Day), the Charizardite Y, and Heatran once you're Champion ({_fig23})")
+story.story_flags.clear(); story.story_flags.update(_saved23)
+story.inventory.clear(); story.inventory.update(_inv23)
+
+# ---- 11-13 (Jordan): Navel Rock and Birth Island, Sevii's islands, reached from Hoenn by the Lilycove ferry's tickets;
+# never a region move: a Hoenn player stays in Hoenn there, the boat goes back the way you came, Fly once visited
+_spN = g.loader.area_data["STORY_PROGRESSION"]
+_savedN = dict(story.story_flags); _invN = dict(story.inventory); _keyN = story.current_area_key
+for _k in ("got_island_tickets", "visited_NAVEL_ROCK", "visited_ONE_ISLAND", "border_region"):
+    story.story_flags.pop(_k, None)
+for _k in ("MYSTIC_TICKET", "AURORA_TICKET"):
+    story.inventory.pop(_k, None)
+story.story_flags["beat_hoenn_champion"] = True
+_lc = _spN["LILYCOVE_CITY"]
+_clerk = next(o for o in _lc["explore_options"] if o.get("text") == "Ferry clerk")
+story.current_area_key = "LILYCOVE_CITY"
+story.inventory.update(_clerk["event"]["gift_item"]); story.story_flags[_clerk["event"]["flag"]] = True   # (the clerk's gift, as the town menu gives it)
+_ferries = {o["target_area"]: o.get("item_condition") for o in _lc["travel_options"] + _lc["explore_options"] if o.get("door") == "harbor" and o.get("target_area") in ("NAVEL_ROCK", "BIRTH_ISLAND")}
+_to, _lines = story.prepare_travel("NAVEL_ROCK")
+story.current_area_key = "NAVEL_ROCK"
+_reg = story.get_current_region()
+st = open_map("NAVEL_ROCK", "LILYCOVE_CITY")
+_figs = sorted(m.payload.get("text") for f in [st.run.made(i) for i in (8, 20)] for m in f.movers if m.kind == "figure" and isinstance(m.payload, dict))
+st._leave("ONE_ISLAND"); frames(1)
+_back = getattr(g.current_state, "next_area_key", None)
+g.transitioning = False
+story.current_area_key = "LILYCOVE_CITY"
+from src.states.systems.fly_map import FlyState as _Fly
+_fly = _Fly(g, st)
+_flykeys = [k for k, _n in _fly.cities]
+_heads = [r[1] for r in _fly.rows if r[0] == "heading"]
+check(story.inventory.get("MYSTIC_TICKET") and story.inventory.get("AURORA_TICKET") and _ferries == {"NAVEL_ROCK": "MYSTIC_TICKET", "BIRTH_ISLAND": "AURORA_TICKET"}
+      and _to == "NAVEL_ROCK" and not _lines and _reg == "HOENN" and _figs == ["SEEK HO-OH", "SEEK LUGIA"] and _back == "LILYCOVE_CITY"
+      and "NAVEL_ROCK" in _flykeys and "ONE_ISLAND" not in _flykeys and "Faraway Islands" in _heads,
+      f"Navel Rock from Hoenn: the Champion's tickets at Lilycove's harbour; still in Hoenn there (no region move); Ho-Oh and Lugia; the boat back to Lilycove; Fly once visited ({_reg}, {_back}, {_heads})")
+# a Kanto player: Seagallop only with the tickets (carried from Hoenn); the boat back to One Island
+_one = [o for o in _spN["ONE_ISLAND"].get("travel_options", []) + _spN["ONE_ISLAND"].get("explore_options", []) if o.get("target_area") in ("NAVEL_ROCK", "BIRTH_ISLAND")]
+story.current_area_key = "ONE_ISLAND"
+_to2, _l2 = story.prepare_travel("BIRTH_ISLAND")
+story.current_area_key = "BIRTH_ISLAND"
+_reg2 = story.get_current_region()
+st = open_map("BIRTH_ISLAND", "ONE_ISLAND")
+st._leave("ONE_ISLAND"); frames(1)
+_back2 = getattr(g.current_state, "next_area_key", None)
+g.transitioning = False
+check({o.get("item_condition") for o in _one} == {"MYSTIC_TICKET", "AURORA_TICKET"} and "MYSTIC_TICKET" in story.CARRY_ITEMS
+      and _reg2 == "KANTO" and _back2 == "ONE_ISLAND" and not _spN["BIRTH_ISLAND"]["route_menu"][0].get("condition"),
+      f"Birth Island from Sevii: the Seagallop only with the ticket (it travels with you from Hoenn); Kanto there; back to One Island; Deoxys ({_reg2}, {_back2})")
+story.story_flags.clear(); story.story_flags.update(_savedN)
+story.inventory.clear(); story.inventory.update(_invN)
+story.current_area_key = _keyN
 
 story.story_flags.clear(); story.story_flags.update(_saved)
 print(f"##### {len(fails)} failures")

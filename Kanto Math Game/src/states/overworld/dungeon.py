@@ -1447,6 +1447,9 @@ class DungeonState(OverworldBattles, PlayState):
 
     def _leave(self, target):
         self.game.dungeon_state = None
+        boat = self.area_data.get("boat_home") or {}   # (an island two regions share: the boat takes you back the way you came,
+        if target == boat.get("dock"):                 #  Navel Rock and Birth Island: Lilycove from Hoenn, One Island from Sevii)
+            target = boat.get(self.game.story_manager.get_current_region(), target)
         from src.coop import travel
         travel.passing(self.game, lambda: self.action_exit_route(target))
 

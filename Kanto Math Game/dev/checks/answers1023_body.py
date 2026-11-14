@@ -27,7 +27,7 @@ bosses = {(o.get("boss") or {}).get("id"): k for k, a in SP.items() for o in a.g
 bosses.update({(a.get("area_boss") or {}).get("id"): k for k, a in SP.items()})
 hoenn = {(o.get("boss") or {}).get("id"): k for k, a in SP.items() for o in a.get("route_menu", []) if k.startswith("HOENN_")}
 hoenn.update({(a.get("area_boss") or {}).get("id"): k for k, a in SP.items() if k.startswith("HOENN_")})  # (Unova's Underground Ruins has them too)
-check(hoenn.get(377) == "HOENN_ROUTE_111" and hoenn.get(378) == "HOENN_ROUTE_105" and hoenn.get(379) == "HOENN_ROUTE_120",
+check(hoenn.get(377) == "HOENN_DESERT_RUINS" and hoenn.get(378) == "HOENN_ISLAND_CAVE" and hoenn.get(379) == "HOENN_ANCIENT_TOMB",   # (11-13: in their own caves, walked inside; off Routes 111, 105, 120)
       f"Regis at the Desert Ruins, Island Cave and Ancient Tomb: {[hoenn.get(i) for i in (377, 378, 379)]}")
 check(all(bosses.get(i) for i in (637, 638, 645, 646)), "Unova's legendaries all have bosses")
 

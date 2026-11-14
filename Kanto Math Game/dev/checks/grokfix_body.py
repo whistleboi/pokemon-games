@@ -130,7 +130,7 @@ cap6 = levels.story_level_cap(story)
 check(cap5 == 35 and cap6 == 35, f"the cap never drops: 5 badges {cap5}, 6 badges {cap6} (HGSS: Jasmine 35, Pryce 34)")
 story.level_cap_mode = "NONE"
 joey = [levels.trainer_level(g, "JOHTO_ROUTE_29") for _ in range(200)]
-check(max(joey) <= 5, f"Route 29 trainers top out at Lv {max(joey)}")
+check(max(joey) <= 6, f"Route 29 trainers top out at Lv {max(joey)}")   # (a Lv 5 team: areas keep up with your team (11-07), at most one over)
 
 print("4.1 / 4.2 / 4.5) Johto details")
 story.inventory.pop("COIN_CASE", None)

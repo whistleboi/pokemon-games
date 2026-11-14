@@ -40,7 +40,7 @@ class FlyState(GameState):
         cities = []
         prog = game.loader.area_data.get("STORY_PROGRESSION", {})
         for key, data in prog.items():
-            if data.get("area_type") == "town" and story.story_flags.get(f"visited_{key}"):
+            if (data.get("area_type") == "town" or data.get("fly_island")) and story.story_flags.get(f"visited_{key}"):   # (fly_island: Navel Rock, Birth Island)
                 cities.append((key, data.get("route_name", key)))
         if story.inventory.get("MT_SILVER_MAP", 0) > 0:
             silver_key = "SILVER_LEAGUE_PLATEAU"
@@ -52,11 +52,12 @@ class FlyState(GameState):
         # Rows: a heading for each region, then its towns three to a row.
         here = story.get_current_region()
         order = {r: i for i, (r, _) in enumerate(story.get_region_starts())}
-        regions = sorted({story.area_region(k) for k, _ in cities},
+        group = lambda k: str(prog.get(k, {}).get("fly_group") or story.area_region(k)).upper()   # (islands two regions share: their own heading)
+        regions = sorted({group(k) for k, _ in cities},
                          key=lambda r: (r != here, order.get(r, 99), r))
         self.rows = []
         for region in regions:
-            towns = [c for c in cities if story.area_region(c[0]) == region]
+            towns = [c for c in cities if group(c[0]) == region]
             self.rows.append(("heading", region.title()))
             for i in range(0, len(towns), self.COLS):
                 self.rows.append(("towns", towns[i:i + self.COLS]))

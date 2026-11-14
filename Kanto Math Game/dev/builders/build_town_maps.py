@@ -142,6 +142,23 @@ def preview(key, m):
     pygame.image.save(surf, os.path.join(out, f"{key}.png"))
 
 
+def safe_write(target, text, tries=8):
+    """Write a whole file safely: to a temporary file beside it, then swapped in. Windows now and then refuses a write
+    (OSError 22: another program holding the file a moment): wait and try again; never leave the file half written."""
+    import time
+    tmp = target + ".tmp"
+    for i in range(tries):
+        try:
+            with open(tmp, "w", encoding="utf-8", newline="\n") as f:
+                f.write(text)
+            os.replace(tmp, target)
+            return
+        except OSError:
+            if i == tries - 1:
+                raise
+            time.sleep(0.5 * (i + 1))
+
+
 def main():
     for key, m in MAPS.items():
         if CHECKED is not None and key not in CHECKED:
@@ -156,9 +173,7 @@ def main():
             reachable(name, part)
             preview(name, part)
             print(f"  {name}: {len(part['art'][0])} x {len(part['art'])}")
-    with open(os.path.join("assets", "town_maps.json"), "w", encoding="utf-8", newline="\n") as f:
-        json.dump(MAPS, f, ensure_ascii=False, indent=1)
-        f.write("\n")
+    safe_write(os.path.join("assets", "town_maps.json"), json.dumps(MAPS, ensure_ascii=False, indent=1) + "\n")
 
 
 if __name__ == "__main__":

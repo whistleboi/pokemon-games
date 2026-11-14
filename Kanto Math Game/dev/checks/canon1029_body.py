@@ -1105,9 +1105,9 @@ g.data.data["pokedex"].update({str(_i): {"id": _i} for _i in range(152, 182)})  
 _m0 = story.money
 _lines = story.catch_milestones()
 check(story.story_flags.get("kanto_catch_30") and story.story_flags.get("kanto_catch_60")
-      and not story.story_flags.get("kanto_catch_90") and story.money - _m0 == 100000,
+      and not story.story_flags.get("kanto_catch_90") and story.money - _m0 == 2 * story.CATCH_BONUS,   # (the bonus: $5,000 since 11-10)
       f"64 Kanto species: the 30 and 60 bonuses ({_lines})")
-check(story.catch_milestones() == [] and story.money - _m0 == 100000, "and only once")
+check(story.catch_milestones() == [] and story.money - _m0 == 2 * story.CATCH_BONUS, "and only once")
 _cm = {m["id"]: m for m in g.loader.area_data["JOURNAL_MISSIONS"] if str(m.get("id", "")).startswith("cm")}
 if _cm:
     _ui = story._prepare_mission_for_ui(_cm["cm90"])

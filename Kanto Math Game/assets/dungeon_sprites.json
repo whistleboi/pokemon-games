@@ -983,7 +983,7 @@
       "sheet": "em_9.png"
     },
     "RUSTBORO_CITY:Little boy": {
-      "sheet": "em_11.png"
+      "sheet": "em_7.png"
     },
     "RUSTBORO_CITY:Little girl": {
       "sheet": "em_12.png"
@@ -2676,6 +2676,435 @@
     },
     "HOENN_ABANDONED_SHIP:WATER STONE": {
       "item": "WATER_STONE"
+    },
+    "OLDALE_TOWN:Heal": {
+      "sheet": "em_58.png"
+    },
+    "OLDALE_TOWN:PC user": {
+      "sheet": "em_48.png"
+    },
+    "OLDALE_TOWN:Center fan": {
+      "sheet": "em_7.png"
+    },
+    "OLDALE_TOWN:Battle Girl": {
+      "sheet": "em_14.png"
+    },
+    "OLDALE_TOWN:Gift attendant": {
+      "sheet": "em_223.png"
+    },
+    "OLDALE_TOWN:Link attendant": {
+      "sheet": "em_85.png"
+    },
+    "OLDALE_TOWN:Trade attendant": {
+      "sheet": "em_85.png"
+    },
+    "OLDALE_TOWN:Record attendant": {
+      "sheet": "em_85.png"
+    },
+    "OLDALE_TOWN:Shop": {
+      "sheet": "em_83.png"
+    },
+    "OLDALE_TOWN:Little boy": {
+      "sheet": "em_7.png"
+    },
+    "OLDALE_TOWN:Unlucky shopper": {
+      "sheet": "em_34.png"
+    },
+    "PETALBURG_CITY:Heal": {
+      "sheet": "em_58.png"
+    },
+    "PETALBURG_CITY:Smiling lady": {
+      "sheet": "em_65.png"
+    },
+    "PETALBURG_CITY:PC fan": {
+      "sheet": "em_17.png"
+    },
+    "PETALBURG_CITY:Ace Trainer": {
+      "sheet": "em_34.png"
+    },
+    "PETALBURG_CITY:Youngster": {
+      "sheet": "em_35.png"
+    },
+    "PETALBURG_CITY:Gift attendant": {
+      "sheet": "em_223.png"
+    },
+    "PETALBURG_CITY:Link attendant": {
+      "sheet": "em_85.png"
+    },
+    "PETALBURG_CITY:Trade attendant": {
+      "sheet": "em_85.png"
+    },
+    "PETALBURG_CITY:Record attendant": {
+      "sheet": "em_85.png"
+    },
+    "PETALBURG_CITY:Shop": {
+      "sheet": "em_83.png"
+    },
+    "PETALBURG_CITY:Little boy": {
+      "sheet": "em_7.png"
+    },
+    "PETALBURG_CITY:Hiker": {
+      "sheet": "em_19.png"
+    },
+    "PETALBURG_CITY:Lady": {
+      "sheet": "em_20.png"
+    },
+    "RUSTBORO_CITY:Heal": {
+      "sheet": "em_58.png"
+    },
+    "RUSTBORO_CITY:Pokéfan": {
+      "sheet": "em_18.png"
+    },
+    "RUSTBORO_CITY:Battle Girl": {
+      "sheet": "em_14.png"
+    },
+    "RUSTBORO_CITY:Gift attendant": {
+      "sheet": "em_223.png"
+    },
+    "RUSTBORO_CITY:Link attendant": {
+      "sheet": "em_85.png"
+    },
+    "RUSTBORO_CITY:Trade attendant": {
+      "sheet": "em_85.png"
+    },
+    "RUSTBORO_CITY:Record attendant": {
+      "sheet": "em_85.png"
+    },
+    "RUSTBORO_CITY:Bug Catcher": {
+      "sheet": "em_36.png"
+    },
+    "RUSTBORO_CITY:Shop": {
+      "sheet": "em_83.png"
+    },
+    "DEWFORD_TOWN:Heal": {
+      "sheet": "em_58.png"
+    },
+    "DEWFORD_TOWN:Ace Trainer": {
+      "sheet": "em_33.png"
+    },
+    "DEWFORD_TOWN:Pokéfan": {
+      "sheet": "em_18.png"
+    },
+    "DEWFORD_TOWN:Gift attendant": {
+      "sheet": "em_223.png"
+    },
+    "DEWFORD_TOWN:Link attendant": {
+      "sheet": "em_85.png"
+    },
+    "DEWFORD_TOWN:Trade attendant": {
+      "sheet": "em_85.png"
+    },
+    "DEWFORD_TOWN:Record attendant": {
+      "sheet": "em_85.png"
+    },
+    "SLATEPORT_CITY:Heal": {
+      "sheet": "em_58.png"
+    },
+    "SLATEPORT_CITY:Ace Trainer": {
+      "sheet": "em_33.png"
+    },
+    "SLATEPORT_CITY:Gift attendant": {
+      "sheet": "em_223.png"
+    },
+    "SLATEPORT_CITY:Link attendant": {
+      "sheet": "em_85.png"
+    },
+    "SLATEPORT_CITY:Trade attendant": {
+      "sheet": "em_85.png"
+    },
+    "SLATEPORT_CITY:Record attendant": {
+      "sheet": "em_85.png"
+    },
+    "SLATEPORT_CITY:Black Belt": {
+      "sheet": "em_44.png"
+    },
+    "SLATEPORT_CITY:Shop": {
+      "sheet": "em_83.png"
+    },
+    "MAUVILLE_CITY:Heal": {
+      "sheet": "em_58.png"
+    },
+    "MAUVILLE_CITY:Ace Trainer": {
+      "sheet": "em_33.png"
+    },
+    "MAUVILLE_CITY:Youngster": {
+      "sheet": "em_16.png"
+    },
+    "MAUVILLE_CITY:Boy": {
+      "sheet": "em_35.png"
+    },
+    "MAUVILLE_CITY:Gift attendant": {
+      "sheet": "em_223.png"
+    },
+    "MAUVILLE_CITY:Link attendant": {
+      "sheet": "em_85.png"
+    },
+    "MAUVILLE_CITY:Trade attendant": {
+      "sheet": "em_85.png"
+    },
+    "MAUVILLE_CITY:Record attendant": {
+      "sheet": "em_85.png"
+    },
+    "MAUVILLE_CITY:Shop": {
+      "sheet": "em_83.png"
+    },
+    "MAUVILLE_CITY:Old man": {
+      "sheet": "em_21.png"
+    },
+    "VERDANTURF_TOWN:Heal": {
+      "sheet": "em_58.png"
+    },
+    "VERDANTURF_TOWN:Old lady": {
+      "sheet": "em_21.png"
+    },
+    "VERDANTURF_TOWN:Gentleman": {
+      "sheet": "em_48.png"
+    },
+    "VERDANTURF_TOWN:Boy": {
+      "sheet": "em_11.png"
+    },
+    "VERDANTURF_TOWN:Gift attendant": {
+      "sheet": "em_223.png"
+    },
+    "VERDANTURF_TOWN:Link attendant": {
+      "sheet": "em_85.png"
+    },
+    "VERDANTURF_TOWN:Trade attendant": {
+      "sheet": "em_85.png"
+    },
+    "VERDANTURF_TOWN:Record attendant": {
+      "sheet": "em_85.png"
+    },
+    "VERDANTURF_TOWN:Lass": {
+      "sheet": "em_47.png"
+    },
+    "VERDANTURF_TOWN:Shop": {
+      "sheet": "em_83.png"
+    },
+    "VERDANTURF_TOWN:Psychic": {
+      "sheet": "em_9.png"
+    },
+    "VERDANTURF_TOWN:Shopper": {
+      "sheet": "em_22.png"
+    },
+    "FALLARBOR_TOWN:Heal": {
+      "sheet": "em_58.png"
+    },
+    "FALLARBOR_TOWN:Lanette": {
+      "sheet": "em_20.png"
+    },
+    "FALLARBOR_TOWN:Farmer": {
+      "sheet": "em_21.png"
+    },
+    "FALLARBOR_TOWN:Battle Girl": {
+      "sheet": "em_14.png"
+    },
+    "FALLARBOR_TOWN:Gift attendant": {
+      "sheet": "em_223.png"
+    },
+    "FALLARBOR_TOWN:Link attendant": {
+      "sheet": "em_85.png"
+    },
+    "FALLARBOR_TOWN:Trade attendant": {
+      "sheet": "em_85.png"
+    },
+    "FALLARBOR_TOWN:Record attendant": {
+      "sheet": "em_85.png"
+    },
+    "FALLARBOR_TOWN:Little girl": {
+      "sheet": "em_10.png"
+    },
+    "FALLARBOR_TOWN:Shop": {
+      "sheet": "em_83.png"
+    },
+    "FALLARBOR_TOWN:Lady": {
+      "sheet": "em_20.png"
+    },
+    "FALLARBOR_TOWN:Pokéfan": {
+      "sheet": "em_25.png"
+    },
+    "LAVARIDGE_TOWN:Heal": {
+      "sheet": "em_58.png"
+    },
+    "LAVARIDGE_TOWN:Old man": {
+      "sheet": "em_21.png"
+    },
+    "LAVARIDGE_TOWN:Hiker": {
+      "sheet": "em_24.png"
+    },
+    "LAVARIDGE_TOWN:Youngster": {
+      "sheet": "em_35.png"
+    },
+    "LAVARIDGE_TOWN:Gift attendant": {
+      "sheet": "em_223.png"
+    },
+    "LAVARIDGE_TOWN:Link attendant": {
+      "sheet": "em_85.png"
+    },
+    "LAVARIDGE_TOWN:Trade attendant": {
+      "sheet": "em_85.png"
+    },
+    "LAVARIDGE_TOWN:Record attendant": {
+      "sheet": "em_85.png"
+    },
+    "LAVARIDGE_TOWN:Shop": {
+      "sheet": "em_83.png"
+    },
+    "LAVARIDGE_TOWN:Picnicker": {
+      "sheet": "em_30.png"
+    },
+    "FORTREE_CITY:Heal": {
+      "sheet": "em_58.png"
+    },
+    "FORTREE_CITY:Girl": {
+      "sheet": "em_13.png"
+    },
+    "FORTREE_CITY:Ace Trainer": {
+      "sheet": "em_33.png"
+    },
+    "FORTREE_CITY:Gentleman": {
+      "sheet": "em_48.png"
+    },
+    "FORTREE_CITY:Gift attendant": {
+      "sheet": "em_223.png"
+    },
+    "FORTREE_CITY:Link attendant": {
+      "sheet": "em_85.png"
+    },
+    "FORTREE_CITY:Trade attendant": {
+      "sheet": "em_85.png"
+    },
+    "FORTREE_CITY:Record attendant": {
+      "sheet": "em_85.png"
+    },
+    "FORTREE_CITY:Shop": {
+      "sheet": "em_83.png"
+    },
+    "FORTREE_CITY:Lady": {
+      "sheet": "em_20.png"
+    },
+    "FORTREE_CITY:Battle Girl": {
+      "sheet": "em_14.png"
+    },
+    "FORTREE_CITY:Psychic": {
+      "sheet": "em_9.png"
+    },
+    "HOENN_ABANDONED_SHIP:MAX REPEL": {
+      "item": "MAX_REPEL"
+    },
+    "HOENN_ABANDONED_SHIP:BIG NUGGET": {
+      "item": "BIG_NUGGET"
+    },
+    "HOENN_ABANDONED_SHIP:BIG NUGGET ": {
+      "item": "BIG_NUGGET"
+    },
+    "HOENN_ABANDONED_SHIP:BIG NUGGET  ": {
+      "item": "BIG_NUGGET"
+    },
+    "HOENN_ABANDONED_SHIP:BIG NUGGET   ": {
+      "item": "BIG_NUGGET"
+    },
+    "HOENN_ABANDONED_SHIP:BIG NUGGET    ": {
+      "item": "BIG_NUGGET"
+    },
+    "HOENN_ABANDONED_SHIP:BIG NUGGET     ": {
+      "item": "BIG_NUGGET"
+    },
+    "HOENN_ABANDONED_SHIP:BIG NUGGET      ": {
+      "item": "BIG_NUGGET"
+    },
+    "HOENN_ABANDONED_SHIP:BIG NUGGET       ": {
+      "item": "BIG_NUGGET"
+    },
+    "HOENN_ABANDONED_SHIP:NUGGET ": {
+      "item": "NUGGET"
+    },
+    "HOENN_ABANDONED_SHIP:NUGGET   ": {
+      "item": "NUGGET"
+    },
+    "HOENN_ABANDONED_SHIP:NUGGET": {
+      "item": "NUGGET"
+    },
+    "HOENN_ABANDONED_SHIP:NUGGET  ": {
+      "item": "NUGGET"
+    },
+    "HOENN_ABANDONED_SHIP:BEEDRILLITE": {
+      "item": "BEEDRILLITE"
+    },
+    "HOENN_ABANDONED_SHIP:WHITE HERB": {
+      "item": "WHITE_HERB"
+    },
+    "HOENN_OCEANIC_MUSEUM:Ace Trainer": {
+      "sheet": "em_34.png"
+    },
+    "HOENN_OCEANIC_MUSEUM:Sea fan": {
+      "sheet": "em_39.png"
+    },
+    "HOENN_OCEANIC_MUSEUM:Grunt ": {
+      "sheet": "@grunt"
+    },
+    "HOENN_OCEANIC_MUSEUM:Grunt    ": {
+      "sheet": "@grunt"
+    },
+    "HOENN_OCEANIC_MUSEUM:Grunt (f)": {
+      "sheet": "@grunt_f"
+    },
+    "HOENN_OCEANIC_MUSEUM:TV reporter": {
+      "sheet": "em_67.png"
+    },
+    "HOENN_OCEANIC_MUSEUM:Grunt     ": {
+      "sheet": "@grunt"
+    },
+    "HOENN_OCEANIC_MUSEUM:Grunt   ": {
+      "sheet": "@grunt"
+    },
+    "HOENN_OCEANIC_MUSEUM:Grunt": {
+      "sheet": "@grunt"
+    },
+    "HOENN_OCEANIC_MUSEUM:Receptionist": {
+      "sheet": "em_45.png"
+    },
+    "HOENN_OCEANIC_MUSEUM:Receptionist ": {
+      "sheet": "em_45.png"
+    },
+    "HOENN_OCEANIC_MUSEUM:Pokéfan": {
+      "sheet": "em_25.png"
+    },
+    "HOENN_OCEANIC_MUSEUM:Grunt  ": {
+      "sheet": "@grunt"
+    },
+    "HOENN_OCEANIC_MUSEUM:Little girl": {
+      "sheet": "em_12.png"
+    },
+    "HOENN_OCEANIC_MUSEUM:Little boy": {
+      "sheet": "em_5.png"
+    },
+    "HOENN_OCEANIC_MUSEUM:Lady": {
+      "sheet": "em_18.png"
+    },
+    "HOENN_OCEANIC_MUSEUM:Captain Stern": {
+      "sheet": "em_46.png"
+    },
+    "HOENN_OCEANIC_MUSEUM:Ship fan": {
+      "sheet": "em_29.png"
+    },
+    "HOENN_MIRAGE_TOWER:ROOT FOSSIL": {
+      "item": "ROOT_FOSSIL"
+    },
+    "HOENN_MIRAGE_TOWER:CLAW FOSSIL": {
+      "item": "CLAW_FOSSIL"
+    },
+    "HOENN_SCORCHED_SLAB:TM34 SUNNY DAY": {
+      "item": "TM34"
+    },
+    "LILYCOVE_CITY:Ferry clerk": {
+      "sheet": "em_21.png"
+    },
+    "LILYCOVE_CITY:Ferry to Navel Rock": {
+      "sheet": "em_21.png"
+    },
+    "LILYCOVE_CITY:Ferry to Birth Island": {
+      "sheet": "em_21.png"
     }
   },
   "townsperson": "NPC 17.png",

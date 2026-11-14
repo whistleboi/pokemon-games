@@ -68645,6 +68645,10 @@
     "Where things start off scarce."
    ]
   ],
+  "inside": {
+   "6,16": "center",
+   "14,6": "mart"
+  },
   "edge_to": {
    "8,0": [
     8,
@@ -68743,7 +68747,285 @@
      20
     ]
    }
-  ]
+  ],
+  "rooms": {
+   "center": {
+    "art": [
+     "cccccccccccccc",
+     "cccccccccccccc",
+     "....cccNcc....",
+     "....cccmcc....",
+     "....N.........",
+     "..............",
+     "c<........Ncc.",
+     "...N.......cc.",
+     "c.....nn.....c"
+    ],
+    "exits": {
+     "n": "OUT:6,16",
+     "<": "ROOM:center_2"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/2_2.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Heal",
+     {
+      "text": "PC user",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The PC in the corner is free for any Trainer to use. Handy, isn't it?"
+       ]
+      }
+     },
+     {
+      "text": "Center fan",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Pokémon Centers are the best! Healing here never costs a thing."
+       ]
+      }
+     },
+     {
+      "text": "Battle Girl",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Upstairs is where Trainers link up to battle and trade. Well, usually."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "4,4": {
+      "m": "face",
+      "d": "d"
+     },
+     "10,6": {
+      "m": "face",
+      "d": "r"
+     },
+     "3,7": {
+      "m": "face",
+      "d": "r"
+     },
+     "7,2": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/2_2.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       14,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Pokémon Center"
+   },
+   "center_2": {
+    "art": [
+     "cccccccccccccc",
+     "cccccccccccccc",
+     "cNNcccNcccNcc.",
+     "mmmcmcmmccmmc.",
+     "........c...c.",
+     "..............",
+     "cn............",
+     "..............",
+     "..............",
+     "c....cc..cc..c"
+    ],
+    "exits": {
+     "n": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/2_3.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Gift attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Mystery gifts arrive here sometimes. There's nothing waiting for you today."
+       ]
+      }
+     },
+     {
+      "text": "Link attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I'm sorry, the link rooms are closed for adjustments right now."
+       ]
+      }
+     },
+     {
+      "text": "Trade attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Trading here is closed for now. Sorry about that!"
+       ]
+      }
+     },
+     {
+      "text": "Record attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The record corner is being adjusted. Please come back another time."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "2,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "6,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "10,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "1,2": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/2_3.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       14,
+       10
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Pokémon Center 2F"
+   },
+   "mart": {
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "ccm........",
+     "cNm.......c",
+     "cmc...cc.Nc",
+     ".....Ncc..c",
+     "......cc..c",
+     "...nn......"
+    ],
+    "exits": {
+     "n": "OUT:14,6"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/2_4.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Shop",
+     {
+      "text": "Little boy",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "When a Pokémon faints, bring it to a Pokémon Center. They'll fix it right up."
+       ]
+      }
+     },
+     {
+      "text": "Unlucky shopper",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I wanted Poké Balls, but they're all sold out today!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "5,5": {
+      "m": "face",
+      "d": "r"
+     },
+     "9,4": {
+      "m": "wander",
+      "d": "ud",
+      "r": [
+       0,
+       1
+      ]
+     },
+     "1,3": {
+      "m": "face",
+      "d": "r"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/2_4.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       11,
+       8
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Poké Mart"
+   }
+  }
  },
  "HOENN_ROUTE_102": {
   "art": [
@@ -68928,8 +69210,8 @@
    "cc\"\".........\"\"\"\"\"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
    "cc\"\"\"\"_______c\"\"\"\"ccccccccccccccccoooccccccccccccc........ccc.cccc....cccccccccc",
    "cc\"\"\"\"\"\"\"....c______ccccccccooccccoooccccccccncccc.cccccc.....ccccc.c.cccccccccc",
-   "cc\"\"\"\"\"\"\"...........ccccooccoooooooooooooooo......ccccccc......c.c.2.....cccc.c>",
-   "cc\"\"\"\"\"\"\".............ooooooooooooooooooooooooooo...ccccc......c....c...2cccc.c>",
+   "cc\"\"\"\"\"\"\"...........ccccooccoooooooooooooooo......ccccccc......c.c.2.....cccc.c.",
+   "cc\"\"\"\"\"\"\".............ooooooooooooooooooooooooooo...ccccc......c....c...2cccc.c.",
    "cc\"\"\"\"\"\"\"..!..........ooooooooooooooooooooooooooo....ccccc.c.c..ccc...cc.c.....>",
    "cccc\"\"\"\"X.........X.N.ooooooooooooooooooooooooooo......cccccccc......c.c.......>",
    "cccc\"\"\"\"......\"\"\"\"....ooooooooooooooooooooooooooo.........c.c.ccccccc..........>",
@@ -69009,14 +69291,6 @@
    "11,21": [
     11,
     0
-   ],
-   "79,7": [
-    0,
-    67
-   ],
-   "79,8": [
-    0,
-    68
    ],
    "79,9": [
     0,
@@ -69213,7 +69487,9 @@
    ]
   ],
   "inside": {
-   "15,8": "gym"
+   "15,8": "gym",
+   "20,16": "center",
+   "25,12": "mart"
   },
   "edge_to": {
    "0,12": [
@@ -69317,6 +69593,308 @@
    }
   ],
   "rooms": {
+   "center": {
+    "art": [
+     "cccccccccccccc",
+     "cccccccccccccc",
+     "....cccNcc.N..",
+     "..N.cccmcc....",
+     ".....N........",
+     "..............",
+     "c<.......N.cc.",
+     "...........cc.",
+     "c.....nn.....c"
+    ],
+    "exits": {
+     "n": "OUT:20,16",
+     "<": "ROOM:center_2"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/8_4.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Heal",
+     {
+      "text": "Smiling lady",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Hello there, Trainer! You've got a wonderful smile. Your Pokémon must love you."
+       ]
+      }
+     },
+     {
+      "text": "PC fan",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Whoever made the Pokémon Storage System is a real genius."
+       ]
+      }
+     },
+     {
+      "text": "Ace Trainer",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "There are lots of Pokémon types. Each one is strong against some and weak to others."
+       ]
+      }
+     },
+     {
+      "text": "Youngster",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "My Pokémon ate an Oran Berry and got some HP back! Berries are great."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "11,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "2,3": {
+      "m": "face",
+      "d": "d"
+     },
+     "9,6": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     },
+     "5,4": {
+      "m": "look",
+      "d": "udlr"
+     },
+     "7,2": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/8_4.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       14,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Pokémon Center"
+   },
+   "center_2": {
+    "art": [
+     "cccccccccccccc",
+     "cccccccccccccc",
+     "cNNcccNcccNcc.",
+     "mmmcmcmmccmmc.",
+     "........c...c.",
+     "..............",
+     "cn............",
+     "..............",
+     "..............",
+     "c....cc..cc..c"
+    ],
+    "exits": {
+     "n": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/8_5.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Gift attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Mystery gifts arrive here sometimes. There's nothing waiting for you today."
+       ]
+      }
+     },
+     {
+      "text": "Link attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I'm sorry, the link rooms are closed for adjustments right now."
+       ]
+      }
+     },
+     {
+      "text": "Trade attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Trading here is closed for now. Sorry about that!"
+       ]
+      }
+     },
+     {
+      "text": "Record attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The record corner is being adjusted. Please come back another time."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "2,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "6,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "10,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "1,2": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/8_5.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       14,
+       10
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Pokémon Center 2F"
+   },
+   "mart": {
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "ccm........",
+     "cNm...N...c",
+     "cmc...cc.Nc",
+     ".....Ncc..c",
+     "......cc..c",
+     "...nn......"
+    ],
+    "exits": {
+     "n": "OUT:25,12"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/8_6.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Shop",
+     {
+      "text": "Little boy",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Do you use Repels? They keep weak wild Pokémon away."
+       ]
+      }
+     },
+     {
+      "text": "Hiker",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Carry Antidotes! Walk around poisoned and your Pokémon keeps losing HP."
+       ]
+      }
+     },
+     {
+      "text": "Lady",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Even a weak Pokémon will grow strong if you keep raising it."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "9,4": {
+      "m": "face",
+      "d": "r"
+     },
+     "6,3": {
+      "m": "face",
+      "d": "d"
+     },
+     "5,5": {
+      "m": "face",
+      "d": "r"
+     },
+     "1,3": {
+      "m": "face",
+      "d": "r"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/8_6.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       11,
+       8
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Poké Mart"
+   },
    "gym": {
     "art": [
      "ccccccccc",
@@ -70966,7 +71544,9 @@
    ]
   ],
   "inside": {
-   "27,19": "gym"
+   "27,19": "gym",
+   "16,45": "mart",
+   "16,38": "center"
   },
   "edge_to": {
    "19,0": [
@@ -71220,6 +71800,299 @@
    }
   ],
   "rooms": {
+   "center": {
+    "art": [
+     "cccccccccccccc",
+     "cccccccccccccc",
+     "....cccNcc.N..",
+     "....cccmcc....",
+     "...N..........",
+     "..............",
+     "c<........Ncc.",
+     "...........cc.",
+     "c.....nn.....c"
+    ],
+    "exits": {
+     "n": "OUT:16,38",
+     "<": "ROOM:center_2"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/11_5.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Heal",
+     {
+      "text": "Pokéfan",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "My Pokémon has a Naive nature, and my friend's is Jolly. Every one is different!"
+       ]
+      }
+     },
+     {
+      "text": "Little boy",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Just like people, Pokémon can be boys or girls."
+       ]
+      }
+     },
+     {
+      "text": "Battle Girl",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The man next door gave me an HM! I taught it to my Pokémon right away."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "11,2": {
+      "m": "face",
+      "d": "l"
+     },
+     "3,4": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     },
+     "10,6": {
+      "m": "face",
+      "d": "r"
+     },
+     "7,2": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/11_5.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       14,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Pokémon Center"
+   },
+   "center_2": {
+    "art": [
+     "cccccccccccccc",
+     "cccccccccccccc",
+     "cNNcccNcccNcc.",
+     "mmmcmcmmccmmc.",
+     "........c...c.",
+     "..............",
+     "cn............",
+     "..............",
+     "..............",
+     "c....cc..cc..c"
+    ],
+    "exits": {
+     "n": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/11_6.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Gift attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Mystery gifts arrive here sometimes. There's nothing waiting for you today."
+       ]
+      }
+     },
+     {
+      "text": "Link attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I'm sorry, the link rooms are closed for adjustments right now."
+       ]
+      }
+     },
+     {
+      "text": "Trade attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Trading here is closed for now. Sorry about that!"
+       ]
+      }
+     },
+     {
+      "text": "Record attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The record corner is being adjusted. Please come back another time."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "2,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "6,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "10,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "1,2": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/11_6.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       14,
+       10
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Pokémon Center 2F"
+   },
+   "mart": {
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "ccm.....N..",
+     "cNm.......c",
+     "cmc...ccN.c",
+     "..N...cc..c",
+     "......cc..c",
+     "...nn......"
+    ],
+    "exits": {
+     "n": "OUT:16,45"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/11_7.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Bug Catcher",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I'll get an Escape Rope too, in case I get lost in a cave."
+       ]
+      }
+     },
+     "Shop",
+     {
+      "text": "Pokéfan",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I'm buying Paralyze Heals and Antidotes, just in case."
+       ]
+      }
+     },
+     {
+      "text": "Little boy",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "My Pokémon evolved! It has loads of HP now. I should buy some Potions."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "2,5": {
+      "m": "face",
+      "d": "u"
+     },
+     "8,4": {
+      "m": "wander",
+      "d": "ud",
+      "r": [
+       0,
+       1
+      ]
+     },
+     "8,2": {
+      "m": "face",
+      "d": "u"
+     },
+     "1,3": {
+      "m": "face",
+      "d": "r"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/11_7.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       11,
+       8
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Poké Mart"
+   },
    "gym": {
     "art": [
      "ccccccccccc",
@@ -71836,6 +72709,7 @@
    ]
   ],
   "inside": {
+   "2,10": "center",
    "8,17": "gym"
   },
   "edge_to": {
@@ -71939,6 +72813,191 @@
    }
   ],
   "rooms": {
+   "center": {
+    "art": [
+     "cccccccccccccc",
+     "cccccccccccccc",
+     "....cccNcc....",
+     "....cccmcc....",
+     "..............",
+     ".....N........",
+     "c<........Ncc.",
+     "...........cc.",
+     "c.....nn.....c"
+    ],
+    "exits": {
+     "n": "OUT:2,10",
+     "<": "ROOM:center_2"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/3_1.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Heal",
+     {
+      "text": "Ace Trainer",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Even a fainted Pokémon gets to share the Exp. from a battle it was in, if you switch it out."
+       ]
+      }
+     },
+     {
+      "text": "Pokéfan",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I've heard there's a big cave at the edge of town. Granite Cave, I think it's called."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "10,6": {
+      "m": "face",
+      "d": "r"
+     },
+     "5,5": {
+      "m": "wander",
+      "d": "lr",
+      "r": [
+       2,
+       0
+      ]
+     },
+     "7,2": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/3_1.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       14,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Pokémon Center"
+   },
+   "center_2": {
+    "art": [
+     "cccccccccccccc",
+     "cccccccccccccc",
+     "cNNcccNcccNcc.",
+     "mmmcmcmmccmmc.",
+     "........c...c.",
+     "..............",
+     "cn............",
+     "..............",
+     "..............",
+     "c....cc..cc..c"
+    ],
+    "exits": {
+     "n": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/3_2.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Gift attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Mystery gifts arrive here sometimes. There's nothing waiting for you today."
+       ]
+      }
+     },
+     {
+      "text": "Link attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I'm sorry, the link rooms are closed for adjustments right now."
+       ]
+      }
+     },
+     {
+      "text": "Trade attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Trading here is closed for now. Sorry about that!"
+       ]
+      }
+     },
+     {
+      "text": "Record attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The record corner is being adjusted. Please come back another time."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "2,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "6,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "10,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "1,2": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/3_2.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       14,
+       10
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Pokémon Center 2F"
+   },
    "gym": {
     "art": [
      "cccccccccccccccccc",
@@ -72629,7 +73688,7 @@
  },
  "HOENN_ROUTE_109": {
   "art": [
-   "cco^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^cc",
+   "cco.^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^cc",
    "ccoooooo============================oocc",
    "cccoooooo=.....====================ooocc",
    "cccoooooo=ccccc====================ooocc",
@@ -72775,10 +73834,6 @@
    "Swimmer Grace"
   ],
   "edge_to": {
-   "3,0": [
-    3,
-    59
-   ],
    "4,0": [
     4,
     59
@@ -73023,7 +74078,7 @@
  },
  "SLATEPORT_CITY": {
   "art": [
-   "ccccccccccccccc^^^^^cccccccccccccccccccc",
+   "ccccccccccccccc.^^^^cccccccccccccccccccc",
    "cccccccccccccccc....cccccccccccccccccccc",
    "cccccccccccccccc.....ccccccccccccccccccc",
    "cccccccccccccccc.....ccccccccccccccccccc",
@@ -73082,7 +74137,7 @@
    "cccccccccc..........c=======cccc..cccccc",
    "ccccco==ccccccccc...c==========c..c=occc",
    "cccccooo========c...c==========c..c=occc",
-   "cccvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvcc"
+   "cccoovvvvvvvvvvv=vvv=vvvvvvvvvv=vv=vvocc"
   ],
   "exits": {
    "^": "HOENN_ROUTE_110",
@@ -73297,11 +74352,11 @@
     "Unique items found nowhere else!"
    ]
   ],
+  "inside": {
+   "19,19": "center",
+   "13,26": "mart"
+  },
   "edge_to": {
-   "15,0": [
-    15,
-    99
-   ],
    "16,0": [
     16,
     99
@@ -73317,14 +74372,6 @@
    "19,0": [
     19,
     99
-   ],
-   "3,59": [
-    3,
-    0
-   ],
-   "4,59": [
-    4,
-    0
    ],
    "5,59": [
     5,
@@ -73370,10 +74417,6 @@
     15,
     0
    ],
-   "16,59": [
-    16,
-    0
-   ],
    "17,59": [
     17,
     0
@@ -73384,10 +74427,6 @@
    ],
    "19,59": [
     19,
-    0
-   ],
-   "20,59": [
-    20,
     0
    ],
    "21,59": [
@@ -73430,10 +74469,6 @@
     30,
     0
    ],
-   "31,59": [
-    31,
-    0
-   ],
    "32,59": [
     32,
     0
@@ -73442,20 +74477,12 @@
     33,
     0
    ],
-   "34,59": [
-    34,
-    0
-   ],
    "35,59": [
     35,
     0
    ],
    "36,59": [
     36,
-    0
-   ],
-   "37,59": [
-    37,
     0
    ],
    "39,7": [
@@ -73917,13 +74944,274 @@
      60
     ]
    }
-  ]
+  ],
+  "rooms": {
+   "center": {
+    "art": [
+     "cccccccccccccc",
+     "cccccccccccccc",
+     "....cccNcc....",
+     "..N.cccmcc....",
+     "..............",
+     "..............",
+     "c<.........cc.",
+     "..........Ncc.",
+     "c.....nn.....c"
+    ],
+    "exits": {
+     "n": "OUT:19,19",
+     "<": "ROOM:center_2"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/9_11.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Heal",
+     {
+      "text": "Sailor",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Want a tip for battling? Raise lots of different Pokémon, not just one."
+       ]
+      }
+     },
+     {
+      "text": "Ace Trainer",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I trade Pokémon with my friends. Traded Pokémon earn extra Exp.!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "2,3": {
+      "m": "face",
+      "d": "d"
+     },
+     "10,7": {
+      "m": "face",
+      "d": "r"
+     },
+     "7,2": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/9_11.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       14,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Pokémon Center"
+   },
+   "center_2": {
+    "art": [
+     "cccccccccccccc",
+     "cccccccccccccc",
+     "cNNcccNcccNcc.",
+     "mmmcmcmmccmmc.",
+     "........c...c.",
+     "..............",
+     "cn............",
+     "..............",
+     "..............",
+     "c....cc..cc..c"
+    ],
+    "exits": {
+     "n": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/9_12.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Gift attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Mystery gifts arrive here sometimes. There's nothing waiting for you today."
+       ]
+      }
+     },
+     {
+      "text": "Link attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I'm sorry, the link rooms are closed for adjustments right now."
+       ]
+      }
+     },
+     {
+      "text": "Trade attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Trading here is closed for now. Sorry about that!"
+       ]
+      }
+     },
+     {
+      "text": "Record attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The record corner is being adjusted. Please come back another time."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "2,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "6,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "10,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "1,2": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/9_12.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       14,
+       10
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Pokémon Center 2F"
+   },
+   "mart": {
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "ccm.N......",
+     "cNm.......c",
+     "cmc...cc..c",
+     ".....Ncc..c",
+     "......cc..c",
+     "...nn......"
+    ],
+    "exits": {
+     "n": "OUT:13,26"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/9_13.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Black Belt",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The market by the beach sells some interesting things. Go and see!"
+       ]
+      }
+     },
+     "Shop",
+     {
+      "text": "Ace Trainer",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "A Great Ball catches better than a Poké Ball. Worth the extra money."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "4,2": {
+      "m": "face",
+      "d": "u"
+     },
+     "5,5": {
+      "m": "look",
+      "d": "udlr"
+     },
+     "1,3": {
+      "m": "face",
+      "d": "r"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/9_13.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       11,
+       8
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Poké Mart"
+   }
+  }
  },
  "HOENN_ROUTE_110": {
   "floors": [
    {
     "art": [
-     "cccccccccccc..^^^^^ccccccccc.ccccccc^^^^",
+     "cccccccccccc..^^^^^ccccccccccccccccc^^^^",
      "cccccccccccc.......cccccccccccccccccoooo",
      "ccccccccccc.......ccccccccccccccccccoooo",
      "ccccccccccc.......cccccccccccccccccc.ooo",
@@ -73990,7 +75278,7 @@
      "cccccccccccccc~ccccccccoooooooooc\"\".cccc",
      "cccccccccccAcc~ccccccccooooooocc\"\"\".\"ccc",
      "cccccccc.ccDcc~~ccc~ccccooooooc\"\".\"\"\"\"cc",
-     "<...ccc.!....c~~ccc~ccccooooooc\"\"\"\"\"\".cc",
+     "....ccc.!....c~~ccc~ccccooooooc\"\"\"\"\"\".cc",
      "<.............cccccccccccc..cc\"\"\"\"\"\"\"\"cc",
      "<......................\"\".\"\"\"\".\".\".\"\"\"cc",
      "<.......................X\".\".\"\"\"\"\"\"\".!cc",
@@ -74228,10 +75516,6 @@
      "19,99": [
       19,
       0
-     ],
-     "0,67": [
-      79,
-      7
      ],
      "0,68": [
       79,
@@ -74609,7 +75893,9 @@
    ]
   ],
   "inside": {
-   "8,5": "gym"
+   "8,5": "gym",
+   "22,5": "center",
+   "23,14": "mart"
   },
   "edge_to": {
    "13,0": [
@@ -74796,6 +76082,295 @@
    }
   ],
   "rooms": {
+   "center": {
+    "art": [
+     "cccccccccccccc",
+     "cccccccccccccc",
+     "....cccNcc....",
+     "....cccmcc....",
+     "...........N..",
+     "..............",
+     "c<......N..cc.",
+     "...........cc.",
+     "c.N...nn.....c"
+    ],
+    "exits": {
+     "n": "OUT:22,5",
+     "<": "ROOM:center_2"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/10_5.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Heal",
+     {
+      "text": "Ace Trainer",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The record corner upstairs mixes in records from other Trainers. Fun!"
+       ]
+      }
+     },
+     {
+      "text": "Youngster",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "That man over there says the strangest things! He's funny, though."
+       ]
+      }
+     },
+     {
+      "text": "Boy",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "A record corner opened upstairs. Have you seen it yet?"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "8,6": {
+      "m": "look",
+      "d": "udlr"
+     },
+     "11,4": {
+      "m": "wander",
+      "d": "ud",
+      "r": [
+       0,
+       1
+      ]
+     },
+     "2,8": {
+      "m": "look",
+      "d": "udlr"
+     },
+     "7,2": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/10_5.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       14,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Pokémon Center"
+   },
+   "center_2": {
+    "art": [
+     "cccccccccccccc",
+     "cccccccccccccc",
+     "cNNcccNcccNcc.",
+     "mmmcmcmmccmmc.",
+     "........c...c.",
+     "..............",
+     "cn............",
+     "..............",
+     "........N.....",
+     "c....cc..cc..c"
+    ],
+    "exits": {
+     "n": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/10_6.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Gift attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Mystery gifts arrive here sometimes. There's nothing waiting for you today."
+       ]
+      }
+     },
+     {
+      "text": "Link attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I'm sorry, the link rooms are closed for adjustments right now."
+       ]
+      }
+     },
+     {
+      "text": "Trade attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Trading here is closed for now. Sorry about that!"
+       ]
+      }
+     },
+     {
+      "text": "Record attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The record corner is being adjusted. Please come back another time."
+       ]
+      }
+     },
+     {
+      "text": "Boy",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "You can link battle at the Colosseum upstairs. When it's open, anyway."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "2,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "6,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "10,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "1,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "8,8": {
+      "m": "face",
+      "d": "u"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/10_6.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       14,
+       10
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Pokémon Center 2F"
+   },
+   "mart": {
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "ccm........",
+     "cNm.......c",
+     "cmc..Ncc..c",
+     ".....Ncc..c",
+     "......cc..c",
+     "...nn......"
+    ],
+    "exits": {
+     "n": "OUT:23,14"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/10_7.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Shop",
+     {
+      "text": "Old man",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Some items raise a Pokémon's stats for one battle. X Attack, X Defense..."
+       ]
+      }
+     },
+     {
+      "text": "Ace Trainer",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Use a move, or use an item? Choosing well is what makes a good Trainer."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "5,4": {
+      "m": "face",
+      "d": "r"
+     },
+     "5,5": {
+      "m": "face",
+      "d": "r"
+     },
+     "1,3": {
+      "m": "face",
+      "d": "r"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/10_7.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       11,
+       8
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Poké Mart"
+   },
    "gym": {
     "art": [
      "cccccccccc",
@@ -75547,6 +77122,10 @@
     "WALLY'S UNCLE'S HOUSE"
    ]
   ],
+  "inside": {
+   "12,3": "mart",
+   "16,3": "center"
+  },
   "edge_to": {
    "19,8": [
     0,
@@ -75659,7 +77238,298 @@
      20
     ]
    }
-  ]
+  ],
+  "rooms": {
+   "center": {
+    "art": [
+     "cccccccccccccc",
+     "cccccccccccccc",
+     "....cccNcc..N.",
+     "....cccmcc....",
+     "..............",
+     "....N.........",
+     "c<........Ncc.",
+     "...........cc.",
+     "c.....nn.....c"
+    ],
+    "exits": {
+     "n": "OUT:16,3",
+     "<": "ROOM:center_2"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/6_4.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Heal",
+     {
+      "text": "Old lady",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "People come to Verdanturf for the clean air. The wind keeps the volcano's ash away."
+       ]
+      }
+     },
+     {
+      "text": "Gentleman",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "A real Trainer knows their Pokémon inside and out. Do you know yours?"
+       ]
+      }
+     },
+     {
+      "text": "Boy",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Some moves get stronger the more you use them in a row. Rollout's one!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "4,5": {
+      "m": "wander",
+      "d": "lr",
+      "r": [
+       1,
+       0
+      ]
+     },
+     "12,2": {
+      "m": "face",
+      "d": "u"
+     },
+     "10,6": {
+      "m": "face",
+      "d": "l"
+     },
+     "7,2": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/6_4.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       14,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Pokémon Center"
+   },
+   "center_2": {
+    "art": [
+     "cccccccccccccc",
+     "cccccccccccccc",
+     "cNNcccNcccNcc.",
+     "mmmcmcmmccmmc.",
+     "........c...c.",
+     "..............",
+     "cn............",
+     "..............",
+     "..............",
+     "c....cc..cc..c"
+    ],
+    "exits": {
+     "n": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/6_5.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Gift attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Mystery gifts arrive here sometimes. There's nothing waiting for you today."
+       ]
+      }
+     },
+     {
+      "text": "Link attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I'm sorry, the link rooms are closed for adjustments right now."
+       ]
+      }
+     },
+     {
+      "text": "Trade attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Trading here is closed for now. Sorry about that!"
+       ]
+      }
+     },
+     {
+      "text": "Record attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The record corner is being adjusted. Please come back another time."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "2,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "6,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "10,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "1,2": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/6_5.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       14,
+       10
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Pokémon Center 2F"
+   },
+   "mart": {
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "ccmN.......",
+     "cNm.......c",
+     "cmc..Ncc..c",
+     "......ccN.c",
+     "......cc..c",
+     "...nn......"
+    ],
+    "exits": {
+     "n": "OUT:12,3"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/6_3.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Lass",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "A Nest Ball works best on Pokémon that are still at a low level."
+       ]
+      }
+     },
+     "Shop",
+     {
+      "text": "Psychic",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "In a close battle, X Sp. Atk can turn things around."
+       ]
+      }
+     },
+     {
+      "text": "Shopper",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "They don't sell any guides to winning here. I checked!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "5,4": {
+      "m": "face",
+      "d": "r"
+     },
+     "8,5": {
+      "m": "face",
+      "d": "l"
+     },
+     "3,2": {
+      "m": "face",
+      "d": "l"
+     },
+     "1,3": {
+      "m": "face",
+      "d": "r"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/6_3.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       11,
+       8
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Poké Mart"
+   }
+  }
  },
  "HOENN_ROUTE_111": {
   "art": [
@@ -76531,7 +78401,7 @@
    "cccccccccccc)).).).!.....\"\"\"\"\"\"\"\"\"cccccc",
    "ccccccccccc_c).).).......\"\"\"\"\"\"\"\"\"..cccc",
    "ccccccnncc)..).).).....cccccccc\"\"\".....>",
-   "<ccccc..cc)..).).).....ccccccccc.......>",
+   ".ccccc..cc)..).).).....ccccccccc.......>",
    "<.ccc...cc)..).).).......ccccccc.......>",
    "<...!....c)..).).)............cc.N.....>",
    "<.......N.)..).).).....................>",
@@ -76619,10 +78489,6 @@
    "Team Aqua Grunt"
   ],
   "edge_to": {
-   "0,47": [
-    19,
-    7
-   ],
    "0,48": [
     19,
     8
@@ -76860,7 +78726,7 @@
    "ccccccccccccccc(cccc______ccccc.cAcc..\"\"\"\"\"\"\"\"\"\"cccc\"\"\")..!.\"\"\"\"\"\"..).c...cccc.c)ccccccccccccccccccc",
    "ccccccccccccccc(cccc......(....!cDcc.\"\"\"\"\"\"\"\"\"\"\"cccc\"\"\")....\"\"\"\"\"\"..)..cccc...X.)\"\"\"\"ccccccccccccccc",
    "<..............(ccc.....\"\"(.........\"\"\"\"\"\"\"\"\".X.cccc...)\"\"\"\"\"\"\"\"\"ccc)...........)\"\"\"\"!c...cccccccccc",
-   "<..............(cccc..\"\"\"\"(........\"\"\"\"\"\"\"\".....cccc...)\"\"\"\"\"\"\"\"\"ccc)cccccc_____c\"\"\"\".......ccccccc>",
+   "<..............(cccc..\"\"\"\"(........\"\"\"\"\"\"\"\".....cccc...)\"\"\"\"\"\"\"\"\"ccc)cccccc_____c\"\"\"\".......ccccccc.",
    "<..............(.cc.\"\"\"\"\"\"c__c.....\"\"..ccccc....cccc___c\"\"\"\"\"\"X..ccc)ccccc\"\"\"\"\"\"\"\"\"\"\"..............>",
    "<...........!..c___\"\"\"\"\"\"\"\"\"\"(X.......cccccccc......\"\"\"\"\"\"\"\"\"\"...ccc)..\"\"\"\"\"\"\"\"\"\"\"\"\"...............>",
    "<...................\"\"\"\"\"\"\"\"\"c_____.N.cccccccc......\"\"\"\"\"\"\"c__...___c..\"\"\"\"\"\"\"\"\"\"\"\"\"...............>",
@@ -76972,10 +78838,6 @@
    "0,14": [
     19,
     14
-   ],
-   "99,7": [
-    0,
-    7
    ],
    "99,8": [
     0,
@@ -77158,6 +79020,10 @@
     "A farm community with small gardens."
    ]
   ],
+  "inside": {
+   "15,15": "mart",
+   "14,7": "center"
+  },
   "edge_to": {
    "0,7": [
     39,
@@ -77328,7 +79194,299 @@
      20
     ]
    }
-  ]
+  ],
+  "rooms": {
+   "center": {
+    "art": [
+     "cccccccccccccc",
+     "cccccccccccccc",
+     "....cccNccN...",
+     "..N.cccmcc....",
+     "..............",
+     "..............",
+     "c<........Ncc.",
+     "...........cc.",
+     "c.....nn.....c"
+    ],
+    "exits": {
+     "n": "OUT:14,7",
+     "<": "ROOM:center_2"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/5_4.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Heal",
+     {
+      "text": "Lanette",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Lanette: Oh, hello! I'm Lanette. I look after the Pokémon Storage System you use on the PC.",
+        "Lanette: I hope it's working well for you!"
+       ]
+      }
+     },
+     {
+      "text": "Farmer",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "In Fallarbor, we plant seedlings of the ash-loving plants. The volcano's ash feeds them."
+       ]
+      }
+     },
+     {
+      "text": "Battle Girl",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I wonder what Pokémon looked like long, long ago. Fossils hold the answer!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "10,6": {
+      "m": "face",
+      "d": "r"
+     },
+     "2,3": {
+      "m": "face",
+      "d": "d"
+     },
+     "10,2": {
+      "m": "face",
+      "d": "u"
+     },
+     "7,2": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/5_4.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       14,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Pokémon Center"
+   },
+   "center_2": {
+    "art": [
+     "cccccccccccccc",
+     "cccccccccccccc",
+     "cNNcccNcccNcc.",
+     "mmmcmcmmccmmc.",
+     "........c...c.",
+     "..............",
+     "cn............",
+     "..............",
+     "..............",
+     "c....cc..cc..c"
+    ],
+    "exits": {
+     "n": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/5_5.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Gift attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Mystery gifts arrive here sometimes. There's nothing waiting for you today."
+       ]
+      }
+     },
+     {
+      "text": "Link attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I'm sorry, the link rooms are closed for adjustments right now."
+       ]
+      }
+     },
+     {
+      "text": "Trade attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Trading here is closed for now. Sorry about that!"
+       ]
+      }
+     },
+     {
+      "text": "Record attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The record corner is being adjusted. Please come back another time."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "2,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "6,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "10,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "1,2": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/5_5.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       14,
+       10
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Pokémon Center 2F"
+   },
+   "mart": {
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "ccm....N...",
+     "cNm..N....c",
+     "cmc...cc..c",
+     "......cc..c",
+     "......cc.Nc",
+     "...nn......"
+    ],
+    "exits": {
+     "n": "OUT:15,15"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/5_0.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Little girl",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I want everything here! But I spent all my allowance already..."
+       ]
+      }
+     },
+     "Shop",
+     {
+      "text": "Lady",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I can't decide whether to buy a Poké Ball or a Great Ball. Decisions, decisions..."
+       ]
+      }
+     },
+     {
+      "text": "Pokéfan",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I found a Nugget! I suppose I'll sell it here. Money's money."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "5,3": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     },
+     "9,6": {
+      "m": "face",
+      "d": "d"
+     },
+     "7,2": {
+      "m": "face",
+      "d": "u"
+     },
+     "1,3": {
+      "m": "face",
+      "d": "r"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/5_0.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       11,
+       8
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Poké Mart"
+   }
+  }
  },
  "HOENN_ROUTE_114": {
   "art": [
@@ -78810,7 +80968,9 @@
    ]
   ],
   "inside": {
-   "5,15": "gym"
+   "5,15": "gym",
+   "15,5": "mart",
+   "9,6": "center"
   },
   "links": {
    "9,2": [
@@ -78900,6 +81060,278 @@
    }
   ],
   "rooms": {
+   "center": {
+    "art": [
+     "cccccccccccccc",
+     "ccnccccccccccc",
+     "....cccNcc....",
+     ".N..cccmcc....",
+     "..............",
+     "..............",
+     "c<........Ncc.",
+     "...........cc.",
+     "c.....nn...N.c"
+    ],
+    "exits": {
+     "n": "OUT:9,2",
+     "<": "ROOM:center_2"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/4_5.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Heal",
+     {
+      "text": "Old man",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Hohoho! You can walk out to the hot springs right from here, kid."
+       ]
+      }
+     },
+     {
+      "text": "Hiker",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Pokémon and their Trainers grow closer when they rest together, I reckon."
+       ]
+      }
+     },
+     {
+      "text": "Youngster",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Sitting in the hot springs makes you feel all better. It's kind of like magic!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "11,8": {
+      "m": "face",
+      "d": "u"
+     },
+     "10,6": {
+      "m": "face",
+      "d": "l"
+     },
+     "1,3": {
+      "m": "face",
+      "d": "r"
+     },
+     "7,2": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/4_5.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       14,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Pokémon Center"
+   },
+   "center_2": {
+    "art": [
+     "cccccccccccccc",
+     "cccccccccccccc",
+     "cNNcccNcccNcc.",
+     "mmmcmcmmccmmc.",
+     "........c...c.",
+     "..............",
+     "cn............",
+     "..............",
+     "..............",
+     "c....cc..cc..c"
+    ],
+    "exits": {
+     "n": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/4_6.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Gift attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Mystery gifts arrive here sometimes. There's nothing waiting for you today."
+       ]
+      }
+     },
+     {
+      "text": "Link attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I'm sorry, the link rooms are closed for adjustments right now."
+       ]
+      }
+     },
+     {
+      "text": "Trade attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Trading here is closed for now. Sorry about that!"
+       ]
+      }
+     },
+     {
+      "text": "Record attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The record corner is being adjusted. Please come back another time."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "2,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "6,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "10,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "1,2": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/4_6.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       14,
+       10
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Pokémon Center 2F"
+   },
+   "mart": {
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "ccm.N......",
+     "cNm.......c",
+     "cmc...cc..c",
+     "......cc.Nc",
+     "......cc..c",
+     "...nn......"
+    ],
+    "exits": {
+     "n": "OUT:15,5"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/4_4.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Old man",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "X Speed makes your Pokémon faster for a battle. Very handy!"
+       ]
+      }
+     },
+     "Shop",
+     {
+      "text": "Picnicker",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Up on Mt. Chimney's peak they sell a sweet treat. Have you tried it?"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "4,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "9,5": {
+      "m": "face",
+      "d": "r"
+     },
+     "1,3": {
+      "m": "face",
+      "d": "r"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/4_4.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       11,
+       8
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Poké Mart"
+   },
    "gym": {
     "art": [
      "ccccccccccccccccc",
@@ -79900,7 +82332,9 @@
    ]
   ],
   "inside": {
-   "22,11": "gym"
+   "5,6": "center",
+   "22,11": "gym",
+   "4,14": "mart"
   },
   "edge_to": {
    "0,7": [
@@ -80058,6 +82492,295 @@
    }
   ],
   "rooms": {
+   "center": {
+    "art": [
+     "cccccccccccccc",
+     "cccccccccccccc",
+     "....cccNcc....",
+     "..N.cccmcc....",
+     "..............",
+     "........N.....",
+     "c<.........cc.",
+     "....N......cc.",
+     "c.....nn.....c"
+    ],
+    "exits": {
+     "n": "OUT:5,6",
+     "<": "ROOM:center_2"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/12_2.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Heal",
+     {
+      "text": "Girl",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Oh, wow, you've got a PokéNav! It's just like mine!"
+       ]
+      }
+     },
+     {
+      "text": "Ace Trainer",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Have you tried the record corner upstairs? You never know what you'll get."
+       ]
+      }
+     },
+     {
+      "text": "Gentleman",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Working on your Pokédex, are you? Keep at it, kid. Catch them all!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "4,7": {
+      "m": "look",
+      "d": "udlr"
+     },
+     "8,5": {
+      "m": "look",
+      "d": "udlr"
+     },
+     "2,3": {
+      "m": "face",
+      "d": "d"
+     },
+     "7,2": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/12_2.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       14,
+       9
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Pokémon Center"
+   },
+   "center_2": {
+    "art": [
+     "cccccccccccccc",
+     "cccccccccccccc",
+     "cNNcccNcccNcc.",
+     "mmmcmcmmccmmc.",
+     "........c...c.",
+     "..............",
+     "cn............",
+     "..............",
+     "..............",
+     "c....cc..cc..c"
+    ],
+    "exits": {
+     "n": "ROOM:center"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/12_3.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Gift attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Mystery gifts arrive here sometimes. There's nothing waiting for you today."
+       ]
+      }
+     },
+     {
+      "text": "Link attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I'm sorry, the link rooms are closed for adjustments right now."
+       ]
+      }
+     },
+     {
+      "text": "Trade attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Trading here is closed for now. Sorry about that!"
+       ]
+      }
+     },
+     {
+      "text": "Record attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The record corner is being adjusted. Please come back another time."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "2,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "6,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "10,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "1,2": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/12_3.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       14,
+       10
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Pokémon Center 2F"
+   },
+   "mart": {
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "ccm........",
+     "cNm......Nc",
+     "cmc...cc..c",
+     "......ccN.c",
+     ".....Ncc..c",
+     "...nn......"
+    ],
+    "exits": {
+     "n": "OUT:4,14"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/12_4.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Shop",
+     {
+      "text": "Lady",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "A Super Repel lasts a long time. It's the best kind for a long walk."
+       ]
+      }
+     },
+     {
+      "text": "Battle Girl",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I always buy more items than I think I'll need. Better safe than sorry!"
+       ]
+      }
+     },
+     {
+      "text": "Psychic",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "A Rare Candy makes a Pokémon grow a level, just like that."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "9,3": {
+      "m": "face",
+      "d": "u"
+     },
+     "8,5": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     },
+     "5,6": {
+      "m": "face",
+      "d": "r"
+     },
+     "1,3": {
+      "m": "face",
+      "d": "r"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/12_4.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       11,
+       8
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Poké Mart"
+   },
    "gym": {
     "art": [
      "cccccccccccccccccccc",
@@ -103640,6 +106363,40 @@
       ]
      }
     },
+    "barred": [
+     {
+      "tiles": [
+       [
+        2,
+        6
+       ]
+      ],
+      "look": "unseen",
+      "when": {
+       "condition": [
+        "cave_of_origin_cleared"
+       ]
+      },
+      "until": {
+       "flag_condition": "ship_spiritomb"
+      },
+      "lines": [
+       "An old filing cabinet, stuffed with papers."
+      ],
+      "boss": {
+       "id": 442,
+       "name": "Spiritomb",
+       "level": 50,
+       "victory_flag": "ship_spiritomb",
+       "lines": [
+        "An old report, in a cabinet: the ship's crew once worked for Wattson, raising energy from the sea.",
+        "\"...responsible for the loss of the Odd Keystone, donated by the Oreburgh Mine...\"",
+        "It feels as though you're being watched...",
+        "The Odd Keystone! Spiritomb appeared!"
+       ]
+      }
+     }
+    ],
     "parts": true,
     "overheads": [
      {
@@ -103925,7 +106682,7 @@
      "ccc...cccccc.....cccc...ccc",
      "c.......cc......ccc.......c",
      "c.cc...ccc.ooooo.cc.......c",
-     "c.cc....cc.oo:oo.cc.....cNc",
+     "c.cc....ccNoo:oo.cc.....cNc",
      "cc....N.cc.o:::o.cc......cc"
     ],
     "exits": {},
@@ -103942,6 +106699,7 @@
      "_buildings_in_picture": true
     },
     "people": [
+     "MAX REPEL",
      {
       "text": "Queasy man",
       "action": "EVENT",
@@ -104093,11 +106851,11 @@
     "art": [
      "ccccccccc",
      "ccccccccc",
-     "c.......c",
-     "c.......c",
+     "cNNN..NNc",
+     "cN.....Nc",
      "c...N...c",
-     "c.......c",
-     "c.......c",
+     "cN.....Nc",
+     "cNN...NNc",
      "c...11.cc"
     ],
     "exits": {},
@@ -104114,7 +106872,20 @@
      "_buildings_in_picture": true
     },
     "people": [
-     "TM115 ICE BEAM"
+     "BIG NUGGET",
+     "BIG NUGGET ",
+     "BIG NUGGET  ",
+     "BIG NUGGET   ",
+     "BIG NUGGET    ",
+     "BIG NUGGET     ",
+     "BIG NUGGET      ",
+     "TM115 ICE BEAM",
+     "BIG NUGGET       ",
+     "NUGGET ",
+     "NUGGET   ",
+     "NUGGET",
+     "NUGGET  ",
+     "BEEDRILLITE"
     ],
     "links": {
      "4,7": [
@@ -104160,7 +106931,7 @@
      "..ccccccccc..",
      "..ccccccccc..",
      "ooc1cc1cc1c..",
-     ":oo..........",
+     ":oo.........N",
      "::o.........."
     ],
     "exits": {},
@@ -104176,6 +106947,9 @@
      "_signs_in_picture": true,
      "_buildings_in_picture": true
     },
+    "people": [
+     "WHITE HERB"
+    ],
     "links": {
      "3,8": [
       10,
@@ -104429,6 +107203,826 @@
    "Swimmer Jani": 3,
    "Sailor Duncan": 5
   }
+ },
+ "HOENN_OCEANIC_MUSEUM": {
+  "floors": [
+   {
+    "art": [
+     "cccccccccccccccccccc",
+     "cc!!cc1cc!!c!!cc!!cc",
+     "....N.....N.N.......",
+     "........N...........",
+     "..!N...N.N....N!..!.",
+     ".......N....N.....N.",
+     ".....cccc..cccc.....",
+     "..!..cccc..cccc..N!.",
+     "..N..ccccnncccc...N."
+    ],
+    "exits": {
+     "n": "SLATEPORT_CITY"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/9_7.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Ace Trainer",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I want to learn about the sea, and use what I learn in battle."
+       ]
+      }
+     },
+     {
+      "text": "Sea fan",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The sea makes me so happy! Captain Stern is my hero."
+       ]
+      }
+     },
+     {
+      "text": "Grunt ",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Everything I learn in here, I'll use for {team}'s plans!"
+       ]
+      },
+      "_look": "@grunt"
+     },
+     {
+      "text": "Grunt    ",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I didn't have the entry fee, so I had to wait ages to sneak in."
+       ]
+      },
+      "_look": "@grunt"
+     },
+     {
+      "text": "Grunt (f)",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "{team} is doing this for the good of everyone!"
+       ]
+      },
+      "_look": "@grunt_f"
+     },
+     {
+      "text": "TV reporter",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I'm gathering stories for a TV show. Do you like Pokémon? Of course you do!"
+       ]
+      }
+     },
+     {
+      "text": "Grunt     ",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Aiyeeh! It's you again! The kid from Rustboro!"
+       ]
+      },
+      "_look": "@grunt"
+     },
+     {
+      "text": "Grunt   ",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "If the others hadn't botched it in Rustboro, we wouldn't need to be here!"
+       ]
+      },
+      "_look": "@grunt"
+     },
+     {
+      "text": "Receptionist",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Welcome to the Oceanic Museum! Please enjoy the exhibits."
+       ]
+      }
+     },
+     {
+      "text": "Receptionist ",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Welcome to the Oceanic Museum! Please enjoy the exhibits."
+       ]
+      }
+     },
+     {
+      "text": "Grunt",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "If I swiped a few of these exhibits, I bet I'd be rich..."
+       ]
+      },
+      "_look": "@grunt"
+     },
+     {
+      "text": "Pokéfan",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The sea goes on forever, and it's so deep. Think of all the Pokémon down there!"
+       ]
+      }
+     },
+     {
+      "text": "Grunt  ",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "We were told to meet here. But where's the boss?"
+       ]
+      },
+      "_look": "@grunt"
+     },
+     {
+      "text": "Little girl",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I want a sea Pokémon. I bet it'd be nice and cool to hug."
+       ]
+      }
+     }
+    ],
+    "signs": [
+     [
+      "A fossil with wavy ridges in it.",
+      "The ripples of an ancient sea floor, turned to stone."
+     ],
+     [
+      "A fossil with wavy ridges in it.",
+      "The ripples of an ancient sea floor, turned to stone."
+     ],
+     [
+      "A sample of soil from the deep sea floor.",
+      "It's made of the shells of tiny sea creatures."
+     ],
+     [
+      "A sample of soil from the deep sea floor.",
+      "It's made of the shells of tiny sea creatures."
+     ],
+     [
+      "A sample of beach sand.",
+      "Rivers carry stones down from the mountains, and the waves grind them into sand."
+     ],
+     [
+      "A sample of beach sand.",
+      "Rivers carry stones down from the mountains, and the waves grind them into sand."
+     ],
+     [
+      "A machine turns under a glass dome.",
+      "It shows how the tides rise and fall."
+     ],
+     [
+      "A machine turns under a glass dome.",
+      "It shows how the tides rise and fall."
+     ],
+     [
+      "A red ball bobs up and down in a glass tank.",
+      "It shows how waves move: up and down, not along."
+     ],
+     [
+      "OCEAN FACT 1: Why is the sea blue?",
+      "Water soaks up red light and lets the blue light through."
+     ],
+     [
+      "OCEAN FACT 2: Why is the sea salty?",
+      "Rivers wash salt from the rocks, and it builds up in the sea."
+     ],
+     [
+      "A blue liquid swirls round and round in a glass tank.",
+      "It shows how the sea's currents turn."
+     ],
+     [
+      "OCEAN FACT 3: Which is bigger, the sea or the land?",
+      "The sea, by far! It covers most of the world."
+     ]
+    ],
+    "links": {
+     "6,1": [
+      1,
+      6,
+      1
+     ]
+    },
+    "moves": {
+     "18,5": {
+      "m": "face",
+      "d": "u"
+     },
+     "12,2": {
+      "m": "face",
+      "d": "u"
+     },
+     "2,8": {
+      "m": "face",
+      "d": "u"
+     },
+     "3,4": {
+      "m": "face",
+      "d": "l"
+     },
+     "14,4": {
+      "m": "face",
+      "d": "r"
+     },
+     "8,3": {
+      "m": "face",
+      "d": "d"
+     },
+     "9,4": {
+      "m": "look",
+      "d": "ulr"
+     },
+     "4,2": {
+      "m": "look",
+      "d": "udlr"
+     },
+     "10,2": {
+      "m": "face",
+      "d": "u"
+     },
+     "17,7": {
+      "m": "face",
+      "d": "r"
+     },
+     "18,8": {
+      "m": "face",
+      "d": "u"
+     },
+     "7,4": {
+      "m": "look",
+      "d": "udlr"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/9_7.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       20,
+       9
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "cccccccccccccccccccc",
+     "cccccc1c!!cc!!c!!c!!",
+     "........X.c.........",
+     ".N!!!c....c.........",
+     "..c!!c......cc.cc.!.",
+     "...........XX.......",
+     "..c!!c...N...N......",
+     "..c!!c......N!!...!.",
+     "...................."
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/9_8.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Little boy",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "That submarine is so cool! I want to ride in it!"
+       ]
+      }
+     },
+     {
+      "text": "Lady",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Please don't run inside the museum!"
+       ]
+      }
+     },
+     {
+      "text": "Captain Stern",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Captain Stern: Ah, the parts from Devon! Thank you. Now my submarine can dive deeper than ever!"
+       ]
+      }
+     },
+     {
+      "text": "Ship fan",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "There's a model ship in here. It reminds me of the old wreck off Route 108..."
+       ]
+      }
+     }
+    ],
+    "signs": [
+     [
+      "A MODEL OF HOENN",
+      "A tiny Hoenn, with all its islands and seas."
+     ],
+     [
+      "A MODEL OF HOENN",
+      "A tiny Hoenn, with all its islands and seas."
+     ],
+     [
+      "A rubber ball swells and shrinks.",
+      "It shows how water squeezes things the deeper they go."
+     ],
+     [
+      "A rubber ball swells and shrinks.",
+      "It shows how water squeezes things the deeper they go."
+     ],
+     [
+      "How the sea flows",
+      "Near the surface, the wind pushes the water along."
+     ],
+     [
+      "How the sea flows",
+      "Near the surface, the wind pushes the water along."
+     ],
+     [
+      "How the sea flows",
+      "Deep down, cold water sinks and creeps slowly along the sea floor."
+     ],
+     [
+      "How the sea flows",
+      "Deep down, cold water sinks and creeps slowly along the sea floor."
+     ],
+     [
+      "SUBMARINE EXPLORER 1",
+      "A model of Captain Stern's submarine, built to reach the sea floor."
+     ],
+     [
+      "SUBMARINE EXPLORER 1",
+      "A model of Captain Stern's submarine, built to reach the sea floor."
+     ],
+     [
+      "A SUBMERSIBLE POD",
+      "A model of a small explorer sub, sent down without a crew."
+     ],
+     [
+      "SUBMARINE EXPLORER 1",
+      "A model of Captain Stern's submarine, built to reach the sea floor."
+     ],
+     [
+      "A SUBMERSIBLE POD",
+      "A model of a small explorer sub, sent down without a crew."
+     ],
+     [
+      "WATER SAMPLE 1",
+      "Clear water from the open sea. Sea Pokémon need it clean."
+     ],
+     [
+      "THE FERRY S.S. TIDAL",
+      "A model of the ferry that sails between Slateport and Lilycove."
+     ],
+     [
+      "THE FERRY S.S. TIDAL",
+      "A model of the ferry that sails between Slateport and Lilycove."
+     ],
+     [
+      "THE FERRY S.S. TIDAL",
+      "A model of the ferry that sails between Slateport and Lilycove."
+     ],
+     [
+      "THE FERRY S.S. TIDAL",
+      "A model of the ferry that sails between Slateport and Lilycove."
+     ],
+     [
+      "THE S.S. ANNE",
+      "A model of a famous luxury liner from a far-off region."
+     ],
+     [
+      "THE S.S. ANNE",
+      "A model of a famous luxury liner from a far-off region."
+     ],
+     [
+      "WATER SAMPLE 2",
+      "Murky water from a harbour. Even a little dirt changes the sea."
+     ]
+    ],
+    "trainer_spots": [
+     "Team Aqua Grunt",
+     "Team Aqua Grunt ",
+     "Aqua Leader Archie"
+    ],
+    "links": {
+     "6,1": [
+      0,
+      6,
+      1
+     ]
+    },
+    "moves": {
+     "13,6": {
+      "m": "face",
+      "d": "d"
+     },
+     "12,7": {
+      "m": "face",
+      "d": "r"
+     },
+     "9,6": {
+      "m": "look",
+      "d": "udlr"
+     },
+     "1,3": {
+      "m": "face",
+      "d": "r"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/9_8.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       20,
+       9
+      ]
+     }
+    ]
+   }
+  ],
+  "floor_names": [
+   "1F",
+   "2F"
+  ],
+  "figure_floors": {
+   "Team Aqua Grunt": 1,
+   "Team Aqua Grunt ": 1,
+   "Aqua Leader Archie": 1
+  }
+ },
+ "HOENN_MIRAGE_TOWER": {
+  "floors": [
+   {
+    "art": [
+     "ccccccccccccccccccccc",
+     "ccccccccccccccccccccc",
+     "cccc...........1.cccc",
+     "cccc.............cccc",
+     "cc.....ccccccc.c...cc",
+     "cc....ccccccccc....cc",
+     "cc...ccccccccccc...cc",
+     "cc...ccccccccccc...cc",
+     "cc...ccccccccccc...cc",
+     "cc...ccccccccccc...cc",
+     "cc...ccccccccccc...cc",
+     "cc...ccccccccccc...cc",
+     "cc....ccccccccc...ccc",
+     "cccc.............cccc",
+     "cccc....c.nc.....cccc",
+     "ccccccccccccccccccccc",
+     "ccccccccccccccccccccc"
+    ],
+    "exits": {
+     "n": "HOENN_ROUTE_111"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/24_94.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "links": {
+     "15,2": [
+      1,
+      15,
+      2
+     ]
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/24_94.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       21,
+       17
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "ccccccccccccccccccccc",
+     "ccccccccccccccccccccc",
+     "cccc...........1.cccc",
+     "cccc.............cccc",
+     "cc.....ccccccc.c...cc",
+     "cc....ccccccccc....cc",
+     "cc...ccccccccccc...cc",
+     "cc...ccccccccccc...cc",
+     "cc..cccccccccccc.cccc",
+     "cc.c.cccccccccccc..cc",
+     "cc...ccccccccccc..ccc",
+     "cc...ccccccccccc..ccc",
+     "cc....ccccccccc...1cc",
+     "cccc.............cccc",
+     "cccc.............cccc",
+     "ccccccccccccccccccccc",
+     "ccccccccccccccccccccc"
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/24_95.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "links": {
+     "18,12": [
+      2,
+      18,
+      12
+     ],
+     "15,2": [
+      0,
+      15,
+      2
+     ]
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/24_95.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       21,
+       17
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "ccccccccccccccccccccc",
+     "ccccccccccccccccccccc",
+     "cccc.............cccc",
+     "cccc.............cccc",
+     "cc1....ccccccc.....cc",
+     "cc....ccccccccc..cccc",
+     "cc..ccccccccccccc..cc",
+     "cc.0.ccccccccccc...cc",
+     "ccc.0ccccccccccc...cc",
+     "cc...ccccccccccc...cc",
+     "cc...ccccccccccc...cc",
+     "cc...ccccccccccc...cc",
+     "cc....ccccccccc...1cc",
+     "cccc.............cccc",
+     "cccc.............cccc",
+     "ccccccccccccccccccccc",
+     "ccccccccccccccccccccc"
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/24_96.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "links": {
+     "18,12": [
+      1,
+      18,
+      12
+     ],
+     "2,4": [
+      3,
+      1,
+      4
+     ]
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/24_96.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       21,
+       17
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "ccccccccccccc",
+     "ccc.......ccc",
+     "c.cc.....c..c",
+     "c..c.....c..c",
+     "c1.c.N.N.c..c",
+     "c..c.....c..c",
+     "c..ccc.ccc..c",
+     "cc....0.....c",
+     "ccc.......ccc",
+     "ccccccccccccc"
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/24_97.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "ROOT FOSSIL",
+     "CLAW FOSSIL"
+    ],
+    "links": {
+     "1,4": [
+      2,
+      2,
+      4
+     ]
+    },
+    "moves": {
+     "5,4": {
+      "m": "face",
+      "d": "d"
+     },
+     "7,4": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/24_97.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       13,
+       10
+      ]
+     }
+    ]
+   }
+  ],
+  "floor_names": [
+   "1F",
+   "2F",
+   "3F",
+   "4F"
+  ]
+ },
+ "HOENN_SCORCHED_SLAB": {
+  "floors": [
+   {
+    "art": [
+     "ccccccccccccccc",
+     "ccccccccccccccc",
+     "ccccccccccccccc",
+     "ccccc..N..ccccc",
+     "cccc.......cccc",
+     "cccc...N...cccc",
+     "cccc.......cccc",
+     "cccc......Ncccc",
+     "ccccooooooocccc",
+     "ccccooooooooccc",
+     "cccoooooooooccc",
+     "cccoooooooooccc",
+     "cccoooooooooccc",
+     "cccoooooooooccc",
+     "cccoooooooooccc",
+     "cccoooooooooccc",
+     "cccoooonooooccc",
+     "ccccccccccccccc",
+     "ccccccccccccccc",
+     "ccccccccccccccc"
+    ],
+    "exits": {
+     "n": "HOENN_ROUTE_120"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/24_73.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "SEEK HEATRAN",
+     "TM34 SUNNY DAY",
+     "CHARIZARDITE Y"
+    ],
+    "moves": {
+     "7,5": {
+      "m": "look",
+      "d": "udlr"
+     }
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/24_73.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       15,
+       20
+      ]
+     }
+    ]
+   }
+  ],
+  "floor_names": [
+   "Scorched Slab"
+  ]
  },
  "TWINLEAF_TOWN": {
   "art": [

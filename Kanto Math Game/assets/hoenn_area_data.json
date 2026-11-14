@@ -723,7 +723,9 @@
       "wild_pool_percentages": "HOENN_SCORCHED_SLAB_PERCENTAGES",
       "min_rounds": 1,
       "trainer_pool": [],
-      "route_menu": [{"text": "CHARIZARDITE Y", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_charizardite_y", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the CHARIZARDITE Y!"], "gift_item": {"CHARIZARDITE_Y": 1}, "flag": "got_charizardite_y"}}, 
+      "route_menu": [
+        {"text": "TM34 SUNNY DAY", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm34_slab", "event": {"lines": ["A TM, left on the scorching rock!"], "gift_item": {"TM34": 1}, "flag": "got_tm34_slab"}},
+{"text": "CHARIZARDITE Y", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_charizardite_y", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the CHARIZARDITE Y!"], "gift_item": {"CHARIZARDITE_Y": 1}, "flag": "got_charizardite_y"}}, 
         {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
         {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
         {"text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE"},
@@ -731,74 +733,6 @@
         {"text": "Route 120", "action": "EXIT", "target_area": "HOENN_ROUTE_120", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "HOENN_ROUTE_120"
-    },
-    "HOENN_SEA_MAUVILLE": {
-      "area_type": "dungeon",
-      "route_name": "Sea Mauville",
-      "region": "HOENN",
-      "battle_type": "indoor",
-      "can_fish": true,
-      "wild_pool_percentages": "HOENN_SEA_MAUVILLE_PERCENTAGES",
-      "min_rounds": 1,
-      "trainer_pool": [
-        {
-          "name": "Sailor Duncan",
-          "class": "SAILOR",
-          "sprite": "sailor.png",
-          "team": [
-            320,
-            67
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "Tuber Charlie",
-          "class": "SWIMMER",
-          "sprite": "swimmer_f.png",
-          "team": [
-            341
-          ],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Mysterious Sisters Scall & Ion",
-          "class": "TWINS",
-          "sprite": "twins.png",
-          "team": [
-            433,
-            281
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "Young Couple Lois & Hal",
-          "class": "TWINS",
-          "sprite": "twins.png",
-          "team": [
-            314,
-            313
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        }
-      ],
-      "route_menu": [{"text": "BEEDRILLITE", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_beedrillite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the BEEDRILLITE!"], "gift_item": {"BEEDRILLITE": 1}, "flag": "got_beedrillite"}}, 
-        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
-        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
-        {"text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE"},
-        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
-        {"text": "SEEK LUGIA", "action": "BOSS", "color": "GOLD", "flag_condition": "not sea_mauville_lugia", "boss": {"id": 249, "name": "Lugia", "victory_flag": "sea_mauville_lugia", "lines": ["A powerful presence fills the air... Lugia appears!"]}, "condition": ["beat_hoenn_champion"]},
-        {"text": "SEEK HO-OH", "action": "BOSS", "color": "GOLD", "flag_condition": "not sea_mauville_ho_oh", "boss": {"id": 250, "name": "Ho-Oh", "victory_flag": "sea_mauville_ho_oh", "lines": ["A powerful presence fills the air... Ho-Oh appears!"]}, "condition": ["beat_hoenn_champion"]},
-        {"text": "Route 108", "action": "EXIT", "target_area": "HOENN_ROUTE_108", "condition": "can_exit", "color": "RED"}
-      ],
-      "next_area": "HOENN_ROUTE_108"
     },
     "HOENN_ALTERING_CAVE": {
       "area_type": "dungeon",
@@ -840,6 +774,8 @@
       "min_rounds": 1,
       "trainer_pool": [],
       "route_menu": [
+        {"text": "ROOT FOSSIL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not mirage_tower_fossil", "event": {"lines": ["You picked up the Root Fossil!", "The ground began to shake... The Mirage Tower is crumbling into the sand!", "You scrambled out just in time."], "gift_item": {"ROOT_FOSSIL": 1}, "flag": "mirage_tower_fossil", "travel": "HOENN_ROUTE_111"}},
+        {"text": "CLAW FOSSIL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not mirage_tower_fossil", "event": {"lines": ["You picked up the Claw Fossil!", "The ground began to shake... The Mirage Tower is crumbling into the sand!", "You scrambled out just in time."], "gift_item": {"CLAW_FOSSIL": 1}, "flag": "mirage_tower_fossil", "travel": "HOENN_ROUTE_111"}},
         {
           "text": "CATCH WILD PKMN",
           "action": "CATCH",
@@ -1082,7 +1018,7 @@
         { "text": "Rusturf Tunnel", "target_area": "HOENN_RUSTURF_TUNNEL" }
       ],
       "explore_options": [{"text": "Wanda", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_gardevoirite", "event": {"lines": ["Wanda: You helped us so much. Please take this stone!", "You found the GARDEVOIRITE!"], "gift_item": {"GARDEVOIRITE": 1}, "flag": "got_gardevoirite"}}, {"text": "A Glinting Stone: Mawilite", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_mawilite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the MAWILITE!"], "gift_item": {"MAWILITE": 1}, "flag": "got_mawilite"}}, 
-        { "text": "Heal", "action": "HEAL" },
+        { "text": "Heal", "action": "HEAL" }, {"text": "Shop", "action": "SHOP"},
         { "text": "Contest Hall", "door": "contest", "action": "NPC", "target": "contest_hall" },
         { "text": "Talk to Wally", "door": "wally", "action": "NPC", "target": "wally_house" }
       ],
@@ -1102,7 +1038,7 @@
       "explore_options": [
         {"text": "Go back to Mauville together", "door": "rivalride", "who": "{rival_name}", "action": "EVENT", "color": "GOLD", "look": "@rival", "condition": "cozmo_thanked", "flag_condition": "not rival_mauville_ride", "event": {"lines": ["{rival_name}: The Professor's safe! I'm heading back to Mauville. Want to come along?", "{rival_name}: Great! Let's go together!"], "flag": "rival_mauville_ride", "travel": "MAUVILLE_CITY"}},
         {"text": "I'll walk, thanks", "door": "rivalride", "who": "{rival_name}", "action": "EVENT", "color": "BLUE", "look": "@rival", "condition": "cozmo_thanked", "flag_condition": "not rival_mauville_ride", "event": {"lines": ["{rival_name}: Okay! Exploring Meteor Falls and Route 115 on the way? See you in Mauville, then!"], "flag": "rival_mauville_ride"}},{"text": "Professor Cozmo", "door": "cozmo", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_galladite", "event": {"lines": ["Professor Cozmo: A strange stone, not a meteorite at all. You should have it.", "You found the GALLADITE!"], "gift_item": {"GALLADITE": 1}, "flag": "got_galladite"}}, 
-        { "text": "Heal", "action": "HEAL" },
+        { "text": "Heal", "action": "HEAL" }, {"text": "Shop", "action": "SHOP"},
         { "text": "Talk to Cozmo", "door": "cozmo", "action": "NPC", "target": "professor_cozmo" },
         { "text": "Contest Hall", "door": "contest", "action": "NPC", "target": "contest_hall" }
       ],
@@ -1171,7 +1107,9 @@
         { "text": "Route 124", "target_area": "HOENN_ROUTE_124", "condition": "has_item:HM_SURF" },
         { "text": "Safari Zone", "target_area": "HOENN_SAFARI_ZONE" },
         { "text": "Route 122", "target_area": "HOENN_ROUTE_122" },
-            {"text": "S.S. Tidal", "door": "harbor", "target_area": "HOENN_SS_TIDAL", "condition": "has_balance_badge"}
+            {"text": "S.S. Tidal", "door": "harbor", "target_area": "HOENN_SS_TIDAL", "condition": "has_balance_badge"},
+            {"text": "Ferry to Navel Rock", "door": "harbor", "target_area": "NAVEL_ROCK", "item_condition": "MYSTIC_TICKET", "message": "The ferry sails far out to sea, to a rocky island: Navel Rock."},
+            {"text": "Ferry to Birth Island", "door": "harbor", "target_area": "BIRTH_ISLAND", "item_condition": "AURORA_TICKET", "message": "The ferry sails far out to sea, to a bare little island: Birth Island."}
         ],
       "explore_options": [
         {"text": "The Collector", "action": "EVENT", "color": "GOLD", "flag_condition": "not got_altarianite", "event": {"requires": ["party_has:334"], "fail": ["Collector: Lisia's partner Ali is an Altaria. Show me one, and I'll give you something special!"], "lines": ["Collector: An Altaria! Just like Lisia's Ali! Take this, it suits a Pokémon like that."], "gift_item": {"ALTARIANITE": 1}, "flag": "got_altarianite"}},
@@ -1181,6 +1119,7 @@
         {"text": "Lilycove Museum", "door": "museum", "action": "NPC", "target": "contest_museum"},
         {"text": "Berry gentleman", "action": "EVENT", "color": "GREEN", "event": {"lines": ["Gentleman: Ah, a young Trainer. Have a Berry, with an old man's compliments."], "daily_gift": {"key": "lilycove_berry_day", "items": ["CHERI_BERRY", "CHESTO_BERRY", "PECHA_BERRY", "RAWST_BERRY", "ASPEAR_BERRY", "LEPPA_BERRY", "ORAN_BERRY", "PERSIM_BERRY", "LUM_BERRY", "SITRUS_BERRY"], "wait": ["Gentleman: One a day, young one. Come back tomorrow!"]}}},
         {"text": "Memory Girl", "action": "EVENT", "color": "PINK", "event": {"lines": [], "memory": true}},
+        {"text": "Ferry clerk", "door": "harbor", "action": "EVENT", "color": "GOLD", "condition": "beat_hoenn_champion", "flag_condition": "not got_island_tickets", "event": {"lines": ["Clerk: Ah, the new Champion! Two tickets came here addressed to you.", "Clerk: The Mystic Ticket and the Aurora Ticket... They're for ferries to islands far out at sea. Nobody knows who sent them."], "gift_item": {"MYSTIC_TICKET": 1, "AURORA_TICKET": 1}, "flag": "got_island_tickets"}},
         {"text": "Ferry to Slateport", "door": "harbor", "action": "EVENT", "color": "BLUE", "event": {"lines": ["Sailor: The ferry to Slateport is ready to sail. All aboard!"], "travel": "SLATEPORT_CITY"}},
         {"text": "TEAM HIDEOUT", "action": "EXIT", "target_area": "HOENN_TEAM_HIDEOUT", "condition": ["can_exit", "hoenn_rival_lilycove"], "color": "RED"}
       ],
@@ -1614,8 +1553,7 @@
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         { "text": "ROUTE 107", "action": "EXIT", "target_area": "HOENN_ROUTE_107", "condition": "can_exit", "color": "RED" },
         { "text": "ROUTE 109", "action": "EXIT", "target_area": "HOENN_ROUTE_109", "condition": "can_exit", "color": "RED" },
-        { "text": "ABANDONED SHIP", "action": "TRAVEL", "target_area": "HOENN_ABANDONED_SHIP", "condition": "can_exit", "color": "GREEN" },
-        {"text": "Sea Mauville", "action": "EXIT", "target_area": "HOENN_SEA_MAUVILLE", "condition": ["can_exit", "has_item:HM_SURF"], "color": "RED"}
+        { "text": "ABANDONED SHIP", "action": "TRAVEL", "target_area": "HOENN_ABANDONED_SHIP", "condition": "can_exit", "color": "GREEN" }
       ],
       "next_area": "HOENN_ROUTE_109",
       "region": "HOENN"
@@ -1740,7 +1678,7 @@
         {"text": "MAUVILLE CITY", "action": "EXIT", "target_area": "MAUVILLE_CITY", "condition": "can_exit", "color": "RED"},
         {"text": "ROUTE 112", "action": "EXIT", "target_area": "HOENN_ROUTE_112", "condition": "can_exit", "color": "RED"},
         {"text": "ROUTE 113", "action": "EXIT", "target_area": "HOENN_ROUTE_113", "condition": "can_exit", "color": "RED"},
-        {"text": "Mirage Tower", "action": "EXIT", "target_area": "HOENN_MIRAGE_TOWER", "condition": ["can_exit", "has_heat_badge"], "color": "RED"}
+        {"text": "Mirage Tower", "action": "EXIT", "target_area": "HOENN_MIRAGE_TOWER", "condition": ["can_exit", "has_heat_badge"], "flag_condition": "not mirage_tower_fossil", "locked_text": ["Only sand is left where the Mirage Tower stood."], "color": "RED"}
       ],
       "next_area": "HOENN_ROUTE_112",
       "region": "HOENN",
@@ -2996,7 +2934,7 @@
       "area_type": "dungeon",
       "route_name": "Abandoned Ship",
       "battle_type": "indoor",
-      "wild_pool_percentages": "HOENN_ABANDONED_SHIP_PERCENTAGES",
+      "wild_pool_percentages": "HOENN_SEA_MAUVILLE_PERCENTAGES", "can_fish": true,
       "min_rounds": 4,
       "trainer_pool": [
         {
@@ -3034,7 +2972,23 @@
         {"text": "SCANNER", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not abandoned_ship_cleared", "event": {"lines": ["A strange device... It's the Scanner Captain Stern was looking for!"], "gift_item": {"SCANNER": 1}, "flag": "abandoned_ship_cleared"}},
         {"text": "TM33 RAIN DANCE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm33_ship", "event": {"lines": ["A TM, left in a cabin on the hidden floor."], "gift_item": {"TM33": 1}, "flag": "got_tm33_ship"}},
         {"text": "WATER STONE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_water_stone_ship", "event": {"lines": ["A Water Stone, glinting in a cabin on the hidden floor."], "gift_item": {"WATER_STONE": 1}, "flag": "got_water_stone_ship"}},
+        {"text": "MAX REPEL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_max_repel_ship", "event": {"lines": ["A Max Repel, left by the flooded cabin's water."], "gift_item": {"MAX_REPEL": 1}, "flag": "got_max_repel_ship"}},
+        {"text": "WHITE HERB", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_white_herb_ship", "event": {"lines": ["A White Herb, growing in a damp corner of the ship!"], "gift_item": {"WHITE_HERB": 1}, "flag": "got_white_herb_ship"}},
+        {"text": "BEEDRILLITE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_beedrillite", "event": {"lines": ["Something glints on the storeroom floor... It's a Mega Stone! You found the Beedrillite!"], "gift_item": {"BEEDRILLITE": 1}, "flag": "got_beedrillite"}},
+        {"text": "BIG NUGGET", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_big_nugget_ship_0", "event": {"lines": ["A Big Nugget, left behind in the storeroom!"], "gift_item": {"BIG_NUGGET": 1}, "flag": "got_big_nugget_ship_0"}},
+        {"text": "BIG NUGGET ", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_big_nugget_ship_1", "event": {"lines": ["A Big Nugget, left behind in the storeroom!"], "gift_item": {"BIG_NUGGET": 1}, "flag": "got_big_nugget_ship_1"}},
+        {"text": "BIG NUGGET  ", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_big_nugget_ship_2", "event": {"lines": ["A Big Nugget, left behind in the storeroom!"], "gift_item": {"BIG_NUGGET": 1}, "flag": "got_big_nugget_ship_2"}},
+        {"text": "BIG NUGGET   ", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_big_nugget_ship_3", "event": {"lines": ["A Big Nugget, left behind in the storeroom!"], "gift_item": {"BIG_NUGGET": 1}, "flag": "got_big_nugget_ship_3"}},
+        {"text": "BIG NUGGET    ", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_big_nugget_ship_4", "event": {"lines": ["A Big Nugget, left behind in the storeroom!"], "gift_item": {"BIG_NUGGET": 1}, "flag": "got_big_nugget_ship_4"}},
+        {"text": "BIG NUGGET     ", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_big_nugget_ship_5", "event": {"lines": ["A Big Nugget, left behind in the storeroom!"], "gift_item": {"BIG_NUGGET": 1}, "flag": "got_big_nugget_ship_5"}},
+        {"text": "BIG NUGGET      ", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_big_nugget_ship_6", "event": {"lines": ["A Big Nugget, left behind in the storeroom!"], "gift_item": {"BIG_NUGGET": 1}, "flag": "got_big_nugget_ship_6"}},
+        {"text": "BIG NUGGET       ", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_big_nugget_ship_7", "event": {"lines": ["A Big Nugget, left behind in the storeroom!"], "gift_item": {"BIG_NUGGET": 1}, "flag": "got_big_nugget_ship_7"}},
+        {"text": "NUGGET", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_nugget_ship_0", "event": {"lines": ["A Nugget, left behind in the storeroom!"], "gift_item": {"NUGGET": 1}, "flag": "got_nugget_ship_0"}},
+        {"text": "NUGGET ", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_nugget_ship_1", "event": {"lines": ["A Nugget, left behind in the storeroom!"], "gift_item": {"NUGGET": 1}, "flag": "got_nugget_ship_1"}},
+        {"text": "NUGGET  ", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_nugget_ship_2", "event": {"lines": ["A Nugget, left behind in the storeroom!"], "gift_item": {"NUGGET": 1}, "flag": "got_nugget_ship_2"}},
+        {"text": "NUGGET   ", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_nugget_ship_3", "event": {"lines": ["A Nugget, left behind in the storeroom!"], "gift_item": {"NUGGET": 1}, "flag": "got_nugget_ship_3"}},
         { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
+        {"text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE"},
         { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
         { "text": "ROUTE 108", "action": "EXIT", "target_area": "HOENN_ROUTE_108", "condition": "can_exit", "color": "RED" }
@@ -3246,7 +3200,7 @@
           "villain": "grunt"
         },
         {
-          "name": "Team Aqua Grunt",
+          "name": "Team Aqua Grunt ",
           "class": "ROCKET",
           "sprite": "aqua_grunt.png",
           "team": [318, 41],

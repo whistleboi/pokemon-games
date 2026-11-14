@@ -84,7 +84,7 @@ check(vr["levels"] == [36, 38, 37, 37, 37, 40] and vr["team_choice"]["158"] == [
       "Silver at Victory Road: HGSS team and levels (Serebii kanto/4th/victoryroad)")
 check(pool("KANTO_ROUTE_11") == {21, 23, 27, 96} and 122 in pool("KANTO_ROUTE_2"), "FRLG Route 11 pool; Mr. Mime on Route 2")
 check(prog["KANTO_ROUTE_24"]["route_name"] == "Nugget Bridge" and prog["KANTO_ROUTE_25"]["route_name"] == "Route 25"
-      and prog["KANTO_ROUTE_24"]["trainer_pool"][5]["name"] == "Team Rocket Grunt", "Nugget Bridge is Route 24")
+      and prog["KANTO_ROUTE_24"]["trainer_pool"][-1]["name"] == "Team Rocket Grunt", "Nugget Bridge is Route 24")   # (the Grunt: the bridge's last, after its five)
 
 print("3) low")
 for area in ("BELLCHIME_TRAIL", "SAFARI_ZONE_GATE", "FRONTIER_ACCESS", "POKEATHLON_DOME",

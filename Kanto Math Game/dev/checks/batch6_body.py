@@ -113,8 +113,8 @@ got = lineup(battle_of(g.current_state))
 check(got[-1] == (160, 40) and len(got) == 6, f"Victory Road (HGSS levels): {got}")
 
 print("4) Red")
-red = next(o for o in prog["MT_SILVER"]["route_menu"] if o["text"] == "CHALLENGE RED")
-story.current_area_key = "MT_SILVER"
+red = next(o for o in prog["MT_SILVER_SUMMIT"]["route_menu"] if o["text"] == "CHALLENGE RED")   # (the summit: its own area since the Johto map pass)
+story.current_area_key = "MT_SILVER_SUMMIT"
 ps = ow.PlayState(g)
 g.change_state(ps)
 ow._run_story_event(ps, red["event"], lambda c: True, lambda lines: None)
@@ -174,7 +174,7 @@ check(isinstance(g.current_state, ow.AreaTransitionState) and g.current_state.ne
       and "S.S. Aqua" in str(seen.get("msg")), f"boarding message: {seen.get('msg')}")
 
 print("7) Magnet Train quest, Red Scale, GS Ball, Shiny Charm")
-story.story_flags.update({"visited_GOLDENROD_CITY": True, "visited_SAFFRON_CITY": True})
+story.story_flags.update({"visited_GOLDENROD_CITY": True, "visited_SAFFRON_CITY": True, "visited_LAVENDER_TOWN": True})   # (the manager asks once you've seen Lavender: HGSS's dark Radio Tower, 11-08)
 said = []
 show = lambda lines: said.append(lines)
 

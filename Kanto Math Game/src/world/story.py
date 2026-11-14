@@ -59,7 +59,7 @@ class StoryManager:
     # the region they're reached from ("storage_region" in REGION_START). Money and Poke Balls
     # are shared everywhere.
     LINKED = "LINKED"
-    CARRY_ITEMS = {"SS_TICKET"}  # travel tickets go with you between regions' Bags
+    CARRY_ITEMS = {"SS_TICKET", "MYSTIC_TICKET", "AURORA_TICKET"}  # travel tickets go with you between regions' Bags (the far islands' from Lilycove)
 
     @property
     def player_team(self):

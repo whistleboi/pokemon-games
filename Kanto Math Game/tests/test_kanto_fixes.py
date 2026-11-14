@@ -18,8 +18,8 @@ def ned_awards_super_rod():
             for v in o.values(): yield from walk(v)
         elif isinstance(o, list):
             for v in o: yield from walk(v)
-    ned = next(walk(json.loads(raw)))
-    assert ned["rewards"].get("SUPER_ROD") == 1
+    neds = list(walk(json.loads(raw)))   # (two Fishermen Ned now: Route 12's and the one with the rod)
+    assert any(n["rewards"].get("SUPER_ROD") == 1 for n in neds)
 
 def battle(team, foes):
     from src.states.battle import TrainerBattleState
