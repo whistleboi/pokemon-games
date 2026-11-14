@@ -75895,7 +75895,8 @@
   "inside": {
    "8,5": "gym",
    "22,5": "center",
-   "23,14": "mart"
+   "23,14": "mart",
+   "19,14": "hills"
   },
   "edge_to": {
    "13,0": [
@@ -76044,6 +76045,27 @@
       ],
       "to": "player",
       "then": "event:wally_mauville"
+     }
+    ]
+   },
+   {
+    "trigger": "enter",
+    "condition": "has_badge:RAIN",
+    "flag": "wattson_square_talk",
+    "cast": [
+     {
+      "sheet": "em_127.png",
+      "from": [
+       19,
+       9
+      ],
+      "to": "player",
+      "leave": "back",
+      "lines": [
+       "Wattson: Wahahaha! There you are! See the tower in the square? Its light is on.",
+       "Wattson: That means something's up in New Mauville. Come up to my flat in Mauville Hills!",
+       "Wattson: It's the building by the Mart. I'll explain there."
+      ]
      }
     ]
    }
@@ -76723,6 +76745,110 @@
     ],
     "theme": "room",
     "title": "Mauville Gym"
+   },
+   "hills": {
+    "art": [
+     "cccccccccccccccc",
+     "c..N...cc....N.c",
+     "c......cc......c",
+     "cyy....cc....zzc",
+     "c..............c",
+     "c.N............c",
+     "c..............c",
+     "cccccccnnccccccc"
+    ],
+    "exits": {
+     "n": "OUT:19,14"
+    },
+    "buildings": {},
+    "people": [
+     {
+      "any": [
+       {
+        "text": "Wattson",
+        "action": "EVENT",
+        "condition": [
+         "has_badge:RAIN",
+         "not:wattson_new_mauville_asked"
+        ],
+        "event": {
+         "lines": [
+          "Wattson: Wahahaha! You came! Come in, come in.",
+          "Wattson: New Mauville is an old power plant under Route 110. Nobody uses it now.",
+          "Wattson: But the tower lit up, so something may be wrong down there.",
+          "Wattson: Hold still... Click! That's your eyes scanned. The doors will open for you now.",
+          "Wattson: Run the check on the computer in New Mauville's back room, then come tell me!"
+         ],
+         "flag": "wattson_new_mauville_asked"
+        }
+       },
+       {
+        "text": "Wattson",
+        "action": "EVENT",
+        "condition": [
+         "new_mauville_checked",
+         "not:new_mauville_cleared"
+        ],
+        "event": {
+         "lines": [
+          "Wattson: All clear, you say? Wahahaha! Splendid!",
+          "Wattson: Here, this is for you. Thunderbolt suits a Trainer with spark!"
+         ],
+         "gift_item": {
+          "HTM24": 1
+         },
+         "flag": "new_mauville_cleared"
+        }
+       },
+       {
+        "text": "Wattson",
+        "action": "EVENT",
+        "condition": "wattson_new_mauville_asked",
+        "event": {
+         "lines": [
+          "Wattson: The computer is in New Mauville's back room. Surf along Route 110 to get there!"
+         ]
+        }
+       },
+       {
+        "text": "Wattson",
+        "action": "EVENT",
+        "event": {
+         "lines": [
+          "Wattson: Wahahaha! Mauville Hills is a fine place to live. You can see the whole city!"
+         ]
+        }
+       }
+      ]
+     },
+     {
+      "text": "TM89 U-TURN",
+      "action": "EVENT",
+      "found": true,
+      "flag_condition": "not got_tm89_hills",
+      "event": {
+       "lines": [
+        "Something was left out on the balcony... It's TM89 U-turn!"
+       ],
+       "gift_item": {
+        "HTM89": 1
+       },
+       "flag": "got_tm89_hills"
+      }
+     },
+     {
+      "text": "Collector",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Collector: Eek! Oh, it's only you.",
+        "Collector: A scary man in a suit keeps asking about my rent. I spent it all on my collection!"
+       ]
+      }
+     }
+    ],
+    "theme": "room",
+    "title": "Mauville Hills"
    }
   }
  },
@@ -103710,7 +103836,7 @@
  "HOENN_NEW_MAUVILLE": {
   "art": [
    "gggggggggggggggggggggg",
-   "gmmmeeeeeeXeeeeeeemmmg",
+   "gmmmeeeeeeNeeeeeeemmmg",
    "gmmmeeeeeeeeeeeeeemmmg",
    "geeeeemmeeeeeemmeeeeeg",
    "geeXeemmeeNeeemmeeXeeg",
@@ -103725,11 +103851,11 @@
    "v": "MAUVILLE_CITY"
   },
   "trainer_spots": [
-   "Wattson",
    "Team Magma Grunt",
    "Team Aqua Grunt"
   ],
   "people": [
+   "Security computer",
    "AMPHAROSITE"
   ]
  },

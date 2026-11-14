@@ -607,6 +607,23 @@ def dungeon_for(game, restore_data=None):
 
 
 # ---------------------------------------------------------------- the screen
+def terminal_figure():
+    """A computer terminal on a stand, its screen glowing (ours: New Mauville's security computer)."""
+    w, h = TILE, TILE + 10
+    img = pygame.Surface((w, h), pygame.SRCALPHA)
+    body = pygame.Rect(6, 10, w - 12, h - 18)
+    pygame.draw.rect(img, (96, 104, 120), body, border_radius=4)
+    pygame.draw.rect(img, (52, 58, 70), body, 2, border_radius=4)
+    screen = pygame.Rect(body.x + 5, body.y + 5, body.w - 10, body.h // 2)
+    pygame.draw.rect(img, (70, 210, 230), screen, border_radius=2)
+    for k in range(3):
+        pygame.draw.line(img, (190, 250, 255), (screen.x + 3, screen.y + 4 + k * 5), (screen.right - 6 - k * 4, screen.y + 4 + k * 5), 2)
+    for k in range(4):
+        pygame.draw.rect(img, (220, 200, 90) if k == 1 else (170, 176, 190), (body.x + 6 + k * 8, body.bottom - 10, 5, 4))
+    pygame.draw.rect(img, (70, 76, 90), (w // 2 - 4, h - 9, 8, 6))
+    return img
+
+
 def ghost_figure():
     """A pale, see-through spirit with hollow eyes and a wavy hem (Jordan, 11-10: the Pokemon Tower's
     mysterious ghost, drawn in our own style: not any one Pokemon)."""
@@ -3255,6 +3272,8 @@ class DungeonState(OverworldBattles, PlayState):
             return self._item_img(spec["item"], 40) or self._sheet_frame("Object ball.png", col=0, height=36)
         if spec.get("draw") == "ghost":  # (the Tower's unknown spirit: nobody can tell what it is yet)
             return self._sprite("ghost_figure", ghost_figure)
+        if spec.get("draw") == "terminal":  # (a computer you use: New Mauville's security check)
+            return self._sprite("terminal_figure", terminal_figure)
         if item.get("action") == "ARRIVAL":
             return self._trainer_img(item["event"].get("trainer") or {}, facing, frame)
         if item.get("action") == "MAX_RAID":  # the den's next raid Pokemon, jumbo (Jordan, 11-06)

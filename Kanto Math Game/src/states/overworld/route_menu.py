@@ -431,6 +431,8 @@ class RouteMenu:
             return self.game.story_manager.inventory.get("SILPH_SCOPE", 0) > 0
         if condition == "has_rainbow_wing":
             return self.game.story_manager.inventory.get("RAINBOW_WING", 0) > 0
+        if isinstance(condition, str) and condition.startswith("has_badge:"):  # (a badge earned)
+            return self.game.story_manager.has_badge(condition[10:])
         if condition == "has_8_badges":
             return sum(len(b) for b in self.game.story_manager.badges.values()) >= 8
         if condition == "has_8_kanto_badges":

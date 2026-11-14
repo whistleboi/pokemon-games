@@ -3211,6 +3211,9 @@
     "HOENN_MIRAGE_ISLANDS:HIDDEN ITEM": {
       "item": "POKE_BALL"
     },
+    "HOENN_NEW_MAUVILLE:Security computer": {
+      "draw": "terminal"
+    },
     "HOENN_CRESCENT_ISLE:SOAR AWAY": {
       "pokemon": "eon"
     },

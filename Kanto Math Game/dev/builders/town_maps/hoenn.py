@@ -4207,4 +4207,6 @@ from .emerald import HOENN as _EMERALD  # noqa: E402
 
 MAPS.update(_EMERALD)
 from .soaring import SOARING as _SOARING  # noqa: E402  (the places you land on from Soaring in the Sky)
+from . import hoenn_oras as _ORAS  # noqa: E402  (ORAS's New Mauville story, fitted to Emerald's Mauville)
 MAPS.update(_SOARING)
+_ORAS.apply(MAPS)
