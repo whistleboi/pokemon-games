@@ -24078,65 +24078,65 @@
  "KANTO_ROUTE_19": {
   "art": [
    "ccccccc^^^^^^^^^^ccccccc",
-   "cccccccssssssssssccccccc",
-   "cccccccsssssssrssccccccc",
-   "ccccccc_______rssccccccc",
-   "cccccccsssssssrssccccccc",
-   "ccccccc_______rssccccccc",
-   "cccccccsssssssrssccccccc",
-   "ccccccc_______rssccccccc",
-   "cccccccssssssssssccccccc",
-   "~~~~~ccossXsssssocc~~~~~",
-   "~~~~~qqosssssssXoqq~~~~~",
-   "~~~~~qqossssssssoqq~~~~~",
-   "~~~~~qqoossss!ssoqq~~~~~",
-   "~~~~~qqoooosssssoqq~~~~~",
-   "~~~~~qqooooooooooqqqq~~~",
-   "~~~~qqoooooooooooooqq~~~",
-   "~~~~qqoooooooooooooqq~~~",
-   "~~~qqoooooooXooooooqq~~~",
-   "~~~qqqqoooooooooooqqqq~~",
-   "~~~~~qqoooooooooooqqqq~~",
-   "~~~qqooooooooooooooooqq~",
-   "~~~qqooooooooooooooooqq~",
-   "~qqoooooooooooooXooooqq~",
-   "~qqoqqoooooooooooooooqq~",
-   "~qqoqqooooooooooooooooqq",
-   "~qqoooooooooooooooooooqq",
-   "qqoooooooooooooooooqqoqq",
-   "qqooooooXoooooooqqoqqoqq",
-   "~qqoooooooooooooqqooooqq",
-   "~qqoooooooooooooooooooqq",
-   "qqoooooooooooooooooooqq~",
-   "qqoooooooooooooooooooqq~",
-   "~qqoooooqqooooooooooooqq",
-   "~qqoooooqqooooooooXoooqq",
-   "~qqooooooooooooooooooqq~",
-   "~qqoooooooooooooooqqoqq~",
-   "qqoooqqoooooooooooqqqq~~",
-   "qqoooqqoooooooooooooqq~~",
-   "qqoooooooooooooooqqqq~~~",
-   "qqoooooooooooooooqqqq~~~",
-   "qqoqqoooooooooooooooqq~~",
-   "qqoqqoooXoooooooooooqq~~",
-   "ooooooooooooooooooooooqq",
-   "woooooooooooooooooooooqq",
-   "wooooooooooooooooooooqq~",
-   "wooooooooooooooooooooqq~",
-   "wooooooooooooooooooooqq~",
-   "wooooooooooXoooooooooqq~",
-   "wooooooooXooooXooooooqq~",
-   "woooooooooooXooooooooqq~",
-   "woooooooooooooooooooqq~~",
-   "woooooooooooooooooqqqq~~",
-   "woooooooooooooooooqqoqq~",
-   "wooqqooooooooooooooooqq~",
-   "wooqqooooooooqqooooqq~~~",
-   "woooooooqqoooqqooqqqq~~~",
-   "woooooooqqoooooooqq~~~~~",
-   "woqqqqqq~~qqqqooqq~~~~~~",
-   "qqqqqqqqqqqqqqqqqq~~~~~~",
-   "qq~~~~~~qq~~~~qq~~~~~~~~"
+   "ccccccc==========ccccccc",
+   "ccccccc=======c==ccccccc",
+   "ccccccc_______c==ccccccc",
+   "ccccccc=======c==ccccccc",
+   "ccccccc_______c==ccccccc",
+   "ccccccc=======c==ccccccc",
+   "ccccccc_______c==ccccccc",
+   "ccccccc==========ccccccc",
+   "ccccc~~o==X=====o~~ccccc",
+   "ccccc~~o=======Xo~~ccccc",
+   "ccccc~~o========o~~ccccc",
+   "ccccc~~oo====!==o~~ccccc",
+   "ccccc~~oooo=====o~~ccccc",
+   "ccccc~~oooooooooo~~~~ccc",
+   "cccc~~ooooooooooooo~~ccc",
+   "cccc~~ooooooooooooo~~ccc",
+   "ccc~~oooooooXoooooo~~ccc",
+   "ccc~~~~ooooooooooo~~~~cc",
+   "ccccc~~ooooooooooo~~~~cc",
+   "ccc~~oooooooooooooooo~~c",
+   "ccc~~oooooooooooooooo~~c",
+   "c~~oooooooooooooXoooo~~c",
+   "c~~o~~ooooooooooooooo~~c",
+   "c~~o~~oooooooooooooooo~~",
+   "c~~ooooooooooooooooooo~~",
+   "~~ooooooooooooooooo~~o~~",
+   "~~ooooooXooooooo~~o~~o~~",
+   "c~~ooooooooooooo~~oooo~~",
+   "c~~ooooooooooooooooooo~~",
+   "~~ooooooooooooooooooo~~c",
+   "~~ooooooooooooooooooo~~c",
+   "c~~ooooo~~oooooooooooo~~",
+   "c~~ooooo~~ooooooooXooo~~",
+   "c~~oooooooooooooooooo~~c",
+   "c~~ooooooooooooooo~~o~~c",
+   "~~ooo~~ooooooooooo~~~~cc",
+   "~~ooo~~ooooooooooooo~~cc",
+   "~~ooooooooooooooo~~~~ccc",
+   "~~ooooooooooooooo~~~~ccc",
+   "~~o~~ooooooooooooooo~~cc",
+   "~~o~~oooXooooooooooo~~cc",
+   "oooooooooooooooooooooo~~",
+   "wooooooooooooooooooooo~~",
+   "woooooooooooooooooooo~~c",
+   "woooooooooooooooooooo~~c",
+   "woooooooooooooooooooo~~c",
+   "wooooooooooXooooooooo~~c",
+   "wooooooooXooooXoooooo~~c",
+   "woooooooooooXoooooooo~~c",
+   "wooooooooooooooooooo~~cc",
+   "wooooooooooooooooo~~~~cc",
+   "wooooooooooooooooo~~o~~c",
+   "woo~~oooooooooooooooo~~c",
+   "woo~~oooooooo~~oooo~~ccc",
+   "wooooooo~~ooo~~oo~~~~ccc",
+   "wooooooo~~ooooooo~~ccccc",
+   "wo~~~~~~cc~~~~oo~~cccccc",
+   "~~~~~~~~~~~~~~~~~~cccccc",
+   "~~cccccc~~cccc~~cccccccc"
   ],
   "exits": {
    "^": "FUCHSIA_CITY",
@@ -24144,7 +24144,15 @@
   },
   "buildings": {},
   "roofs": {
-   "_rocks": "big"
+   "_picture": {
+    "f": "fr_ground/3_37.png",
+    "at": [
+     0,
+     0
+    ]
+   },
+   "_signs_in_picture": true,
+   "_buildings_in_picture": true
   },
   "signs": [
    [
@@ -24164,62 +24172,167 @@
    "Anya",
    "Alice",
    "Connie"
-  ]
+  ],
+  "edge_to": {
+   "7,0": [
+    19,
+    39
+   ],
+   "8,0": [
+    20,
+    39
+   ],
+   "9,0": [
+    21,
+    39
+   ],
+   "10,0": [
+    22,
+    39
+   ],
+   "11,0": [
+    23,
+    39
+   ],
+   "12,0": [
+    24,
+    39
+   ],
+   "13,0": [
+    25,
+    39
+   ],
+   "14,0": [
+    26,
+    39
+   ],
+   "15,0": [
+    27,
+    39
+   ],
+   "16,0": [
+    28,
+    39
+   ],
+   "0,43": [
+    119,
+    3
+   ],
+   "0,44": [
+    119,
+    4
+   ],
+   "0,45": [
+    119,
+    5
+   ],
+   "0,46": [
+    119,
+    6
+   ],
+   "0,47": [
+    119,
+    7
+   ],
+   "0,48": [
+    119,
+    8
+   ],
+   "0,49": [
+    119,
+    9
+   ],
+   "0,50": [
+    119,
+    10
+   ],
+   "0,51": [
+    119,
+    11
+   ],
+   "0,52": [
+    119,
+    12
+   ],
+   "0,53": [
+    119,
+    13
+   ],
+   "0,54": [
+    119,
+    14
+   ],
+   "0,55": [
+    119,
+    15
+   ],
+   "0,56": [
+    119,
+    16
+   ],
+   "0,57": [
+    119,
+    17
+   ]
+  }
  },
  "KANTO_ROUTE_20": {
   "art": [
-   "~~~~~~~~~~~~~~~~~~~~~~qq~~~~~~~~~~~~~~~~~~qqqq~~~~~~~~~~~~ccccc~qq~~~~qqqq~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
-   "~~~~~~~~~~~~qq~~~~qqqqqqqq~~~~~~qq~~~~~~qqqqqqqqqq~~~~~~~cccccccqqqqqqqqqqqqqq~~~~~~~~~~~~~~~~~~qq~~~~~~~~~~~~~~~~qqqqqq",
-   "~~~~~~~~~~qqqqqqqqqqqqooqqqqqqqqqqqqqqqqqqooooqqqqqq~~~~ccccccccc~qqqqooooqqqqqqqq~~qq~~~~~~qqqqqqqq~~~~qqqq~~~~qqqqqqqq",
-   "~~~~~~~~~~qqooqqqqooooooooqqqqqqooqqqqqqooooqqooooqqqq~cccccccccccoossssssssooqqqqqqqqqqqqqqqqqq~~qqqqqqqqqqqqqqqqooooow",
-   "~qq~~~~~~qqoooooooqqoosssoooooooooooooooooooqqooqqooqq~cccccccccccsssssssssssoooooqqooqqqqqqooooqqooqqqqooooqqqqoooqqoow",
-   "qqqqqqqqqqqoqqooooqqossssssoooooooqqooooooooooooqqoqqqccccccccccccssssssssssssooooooooooooooooooqqoooooooooooooooooqqoow",
-   "qooqqqqqqoooqqooooooosssssssooooooqqoooooooooooooooqqqccccccccccccsssscccccsssooooooooooooooooooooooooooooooooooooooooow",
-   "uoooooooooooooooooooosssssssooooooXooooosssssoooooqqooosccccQccccsssscccccccssooooooooooooooooooooooooooooooooooooooooow",
-   "uoooooooooooooooooooossssssooooooooooooossssssooooqqoqcsscccDccc!ssscccccccccsooooooooooooooooooooooooooooooooooooooooow",
-   "uooooooooooooooooooooooooooooooooooooooosssXssooooqqoqcsssssssssssscccccccccccoooooooooooooooooooooooooooooooooXooooooow",
-   "uooooooooooooooooooooooXoooooooooooooooossssssooooqqoooosssssssssssccccccccccccqoooooooooooooXooooooooooooooooooooooooow",
-   "uoooooooXooooooooooooooooooooooooooooooooossssoooooqqoXosssssssooooccccccccccccqooqqooooooooooooooooooooooXoooooooooooow",
-   "uoooooooooooooooooooooooooooooosssoooooooooooooooooqqooooooooooooqccccccccccccoqqoqqooqqooooooooooooooooooooooooooooooow",
-   "uooooooooooooooosssoooooooooooosssoooooooooooooooooooqqooooooooqqqcsccccPccccooqqoooooqqooooooooooooooooooooooooooooooow",
-   "uoqqooooooooqqosXssoooooooooooossooooooooooooooooooooqqqqqqqqqqqqooo!cccDcccooooqqooqqooooooooooooooooooooooooooooooooow",
-   "uoqqooooooooqqossssoooooooooooooooooooooooooooqqoooooooqqqqqqqqooooosssssssoooooqqqqqqooqqooooooooqqoooooooooooqqoooooow",
-   "uoooooqqqqooooooooooooooooqqooooooooqqooooooooqqooooooooooooooooooooooossXsoooooqqqq~~qqqqooooooooqqooqqqqoooooqqoooooow",
-   "uoooqqqqqqqqooqqqqqqooooqqqqqqooooqqqqqqooqqqq~~qqooooooooooooooooooooooooooooqqqq~~~~qqooooqqqqooooqqqqqqqqqqooooqqqqow",
-   "qqqqqq~~~~qqqqqqqqqqqqqqqq~~qqqqqqqq~~qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq~~~~~~~~qqqqqqqqqqqqqq~~~~qqqqqqqqqqqqqq",
-   "qqqq~~~~~~~~qq~~~~~~qqqq~~~~~~qqqq~~~~~~qq~~~~qq~~qqqqqqqqqqqqqqqqqqqqqqqqqqqq~~~~~~~~~~qqqq~~~~qqqq~~~~~~~~~~qqqq~~~~qq"
+   "uooooooooooooooooooooo~~cccccccccccccccccc~~~~cccccccccccccccccc~~cccc~~~~cccccccccccccccccccccccccccccccccccccccccccccc",
+   "uooooooooooo~~oooo~~~~~~~~cccccc~~cccccc~~~~~~~~~~cccccccccccccc~~~~~~~~~~~~~~cccccccccccccccccc~~cccccccccccccccc~~~~~~",
+   "uooooooooo~~~~~~~~~~~~oo~~~~~~~~~~~~~~~~~~oooo~~~~~~cccccccccccccc~~~~oooo~~~~~~~~cc~~cccccc~~~~~~~~cccc~~~~cccc~~~~~~~~",
+   "uooooooooo~~oo~~~~oooooooo~~~~~~oo~~~~~~oooo~~oooo~~~~ccccccccccccoo=N======oo~~~~~~~~~~~~~~~~~~cc~~~~~~~~~~~~~~~~ooooow",
+   "o~~oooooo~~ooooooo~~oo===ooooooooooooooooooo~~oo~~oo~~cccccccccccc===========ooooo~~oo~~~~~~oooo~~oo~~~~oooo~~~~ooo~~oow",
+   "~~~~~~~~~~~o~~oooo~~o======ooooooo~~oooooooooooo~~o~~~~ccccccccccc============oooooooooooooooooo~~ooooooooooooooooo~~oow",
+   "~oo~~~~~~ooo~~ooooooo=======oooooo~~ooooooooooooooo~~~~ccccccccccc====ccccc===ooooooooooooooooooooooooooooooooooooooooow",
+   "uoooooooooooooooooooo=======ooooooXooooo=====ooooo~~ooo=ccccccccc====ccccccc==ooooooooooooooooooooooooooooooooooooooooow",
+   "uoooooooooooooooooooo======ooooooooooooo======oooo~~o~~==cccnccc!===ccccccccc=ooooooooooooooooooooooooooooooooooooooooow",
+   "uooooooooooooooooooooooooooooooooooooooo===X==oooo~~o~~============cccccccccccoooooooooooooooooooooooooooooooooXooooooow",
+   "uooooooooooooooooooooooXoooooooooooooooo======oooo~~oooo===========ccccccccccc~~oooooooooooooXooooooooooooooooooooooooow",
+   "uoooooooXooooooooooooooooooooooooooooooooo====ooooo~~oXo=======ooooccccccccccc~~oo~~ooooooooooooooooooooooXoooooooooooow",
+   "uoooooooooooooooooooooooooooooo===ooooooooooooooooo~~oooooooooooo~~ccccccccccco~~o~~oo~~ooooooooooooooooooooooooooooooow",
+   "uooooooooooooooo===oooooooooooo===ooooooooooooooooooo~~oooooooo~~~~=cccccccccoo~~ooooo~~ooooooooooooooooooooooooooooooow",
+   "uo~~oooooooo~~o=X==oooooooooooo==oooooooooooooooooooo~~~~~~~~~~~~ooo!cccncccoooo~~oo~~ooooooooooooooooooooooooooooooooow",
+   "uo~~oooooooo~~o====ooooooooooooooooooooooooooo~~ooooooo~~~~~~~~ooooo=======ooooo~~~~~~oo~~oooooooo~~ooooooooooo~~oooooow",
+   "uooooo~~~~oooooooooooooooo~~oooooooo~~oooooooo~~ooooooooooooooooooooooo==X=ooooo~~~~cc~~~~oooooooo~~oo~~~~ooooo~~oooooow",
+   "uooo~~~~~~~~oo~~~~~~oooo~~~~~~oooo~~~~~~oo~~~~cc~~oooooooooooooooooooooooooooo~~~~cccc~~oooo~~~~oooo~~~~~~~~~~oooo~~~~ow",
+   "~~~~~~cccc~~~~~~~~~~~~~~~~cc~~~~~~~~cc~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~cccccccc~~~~~~~~~~~~~~cccc~~~~~~~~~~~~~~",
+   "~~~~cccccccc~~cccccc~~~~cccccc~~~~cccccc~~cccc~~cc~~~~~~~~~~~~~~~~~~~~~~~~~~~~cccccccccc~~~~cccc~~~~cccccccccc~~~~cccc~~"
   ],
   "exits": {
-   "w": "KANTO_ROUTE_19",
    "u": "CINNABAR_ISLAND",
-   "Q": "SEAFOAM_ISLANDS",
-   "P": "SEAFOAM_ISLANDS"
+   "w": "KANTO_ROUTE_19",
+   "n": "SEAFOAM_ISLANDS"
   },
-  "buildings": {
-   "P": "cave",
-   "Q": "cave"
-  },
+  "buildings": {},
   "roofs": {
-   "P": [
-    123,
-    74,
-    74
-   ],
-   "Q": [
-    123,
-    74,
-    74
-   ],
-   "_rocks": "big"
+   "_picture": {
+    "f": "fr_ground/3_38.png",
+    "at": [
+     0,
+     0
+    ]
+   },
+   "_signs_in_picture": true,
+   "_buildings_in_picture": true
   },
+  "people": [
+   {
+    "text": "Swimmer",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Tough Trainers and Water Pokémon are everywhere out here. They say Misty of Cerulean's Gym trains in these waters!"
+     ]
+    }
+   }
+  ],
   "signs": [
    [
-    "SEAFOAM ISLANDS",
-    "The cave runs through the island."
+    "SEAFOAM ISLANDS"
    ],
    [
-    "SEAFOAM ISLANDS",
-    "The cave runs through the island."
+    "SEAFOAM ISLANDS"
    ]
   ],
   "trainer_spots": [
@@ -24234,132 +24347,276 @@
    "Missy",
    "Irene"
   ],
-  "parts": true
- },
- "KANTO_ROUTE_21": {
-  "art": [
-   "TTTTTTkowwokkkkkkkTTTTTT",
-   "TTTTTTkoooo......kTTTTTT",
-   "TTTTTTkoooo......kTTTTTT",
-   "TTTTTTkoooo......kTTTTTT",
-   "TTTTTTkoooo......kTTTTTT",
-   "TTTTTTkoooo\"\"\"\"\"\"kTTTTTT",
-   "TTTTTTkoooo\"\"\"\"\"\"kTTTTTT",
-   "TTTTTTkoooo\"\"\"\"\"\"kTTTTTT",
-   "TTTTTTkoooo\"\"\"\"\"\"kTTTTTT",
-   "TTTTTTkoooo\"\"\"\"\"\"kTTTTTT",
-   "TTTTTTkoooo\"\"\"\"\"\"kkkkkkk",
-   "TTTTTTkoooooooooocc~~~~~",
-   "TTTTTTkooooooooooqq~~~~~",
-   "TTTTTTkoooooooooqq~~~~~~",
-   "kkkkkkkoooooooooqq~~~~~~",
-   "~~~~~ccooooooooooqq~~~~~",
-   "~~~~~qqqqooooooooqq~~~~~",
-   "~~~qq~~qqooooooooooqq~~~",
-   "~~~qq~qqoooooooooooqq~~~",
-   "~~~~~~qqooooooooooooqq~~",
-   "~~~qqqqooooooooooqqoqq~~",
-   "~~~qqqqooooooooooqqooqq~",
-   "~~qqoooooooooooooooooqq~",
-   "~~qqoqqoooooooossssoooqq",
-   "~qqooqqooooooosssssoooqq",
-   "~qqooooooooooosssssoooqq",
-   "qqoooooooooooossXsooooqq",
-   "qqooossXsooooooooooooqq~",
-   "qqoosssssssooooooooooqq~",
-   "qqoosssssssoooooooooooqq",
-   "~qqosssssssoooooooooooqq",
-   "~qqosssssssooooooooooqq~",
-   "~qqoooosssoooooooooooqq~",
-   "~qqoooooooooooooooooqq~~",
-   "qqooqqooooooooooooooqq~~",
-   "qqooqqooooooooXoooooooqq",
-   "~qqoooooqqooooooooooqqqq",
-   "~qqoooooqqooooooooooqq~~",
-   "~~qqoooooooooooooooooqq~",
-   "~~qqooqqoooooooooooooqq~",
-   "~~qqooqqoooooooosssooqq~",
-   "~~qqooooooooooosssssoqq~",
-   "~qqoooooooooooosssssoqq~",
-   "~qqoooooooooooosssssoqq~",
-   "~~~qqoooooooXoossssoooqq",
-   "~~~qqoooooooooooooooooqq",
-   "~qqooooooooooooooooooqq~",
-   "~qqooooooooooooooooooqq~",
-   "qqooooooooooooooooooooqq",
-   "qqooooooooooooooooooooqq",
-   "qqooqqooooooooooooqqooqq",
-   "qqooqqooooooooooooqqooqq",
-   "~qqooooooooooooooooooqq~",
-   "~qqqqooooooooooooooooqq~",
-   "~~~qqooqqoooooooooooqq~~",
-   "~~qqoooqqoooooooooooqq~~",
-   "~~qqooooooooooooooooqq~~",
-   "~~qqooosssooooooooooqq~~",
-   "~~qqooossssXoooooooooqq~",
-   "~~~~qqosssssoooooooooqq~",
-   "~~qqqqoossssoooooooqqqq~",
-   "~~qqoooooooooooooooqqqq~",
-   "~qqooooooooooooooooooqq~",
-   "~qqoqqooooooooosssssoqq~",
-   "~qqoqqoooooooossssssoqq~",
-   "~qqoooooooooooXsssssoqq~",
-   "~~qqoooooooooosssssooqq~",
-   "~~qqooooooooooossssooqq~",
-   "~~qqooooooooooooooooqq~~",
-   "~~qqooooooooooooooooqq~~",
-   "~qqoooooooooooooooooqq~~",
-   "~qqoossssssoooooooooqq~~",
-   "~qqoosssssssoooooooooqq~",
-   "~qqoosssssssoooooooooqq~",
-   "~~qqoossssssoooXoooqq~qq",
-   "qqqqooosssssoooooooqq~qq",
-   "qqqqoooooooooooooooooqq~",
-   "~~qqoooooooooooooooooqq~",
-   "~qqooooooooooooooooooqq~",
-   "~qqoooooooXooooooooooqq~",
-   "qqooooooooooooooooooooqq",
-   "qqoooooooooooooooooqqoqq",
-   "~qqoqqoooooooooooooqqqq~",
-   "~qqoqqqqoooooooooooooqq~",
-   "~qqoooqqoooooooooooooqq~",
-   "~qqoooooooooooooooqqoqq~",
-   "~qqooooossssooooooqqoqq~",
-   "~qqooossssssooooqqoooqq~",
-   "~qqooossssssoooXqqooqq~~",
-   "~qqooosssssoooooooqqqq~~",
-   "~~qqooooooooooooooqq~~~~",
-   "~~qqoooooooooooooqq~~~~~",
-   "~~qqoqqooooooooooqq~~~~~",
-   "~~qqoqqoooooooooqq~~~~~~",
-   "~qqoooqqooooooooqq~~~~~~",
-   "~qqqqoqqoooo==ooqq~~~~~~",
-   "~qqqqooooooo==ooqq~~~~~~",
-   "~qqooooooooo==oooqq~~~~~",
-   "qqooo=========oooqq~~~~~",
-   "qquuu=======vvuuuqq~~~~~"
-  ],
-  "exits": {
-   "w": "PALLET_TOWN",
-   "v": "CINNABAR_ISLAND",
-   "u": "CINNABAR_ISLAND"
+  "edge_to": {
+   "0,0": [
+    23,
+    0
+   ],
+   "0,1": [
+    23,
+    1
+   ],
+   "0,2": [
+    23,
+    2
+   ],
+   "0,3": [
+    23,
+    3
+   ],
+   "0,7": [
+    23,
+    7
+   ],
+   "0,8": [
+    23,
+    8
+   ],
+   "0,9": [
+    23,
+    9
+   ],
+   "0,10": [
+    23,
+    10
+   ],
+   "0,11": [
+    23,
+    11
+   ],
+   "0,12": [
+    23,
+    12
+   ],
+   "0,13": [
+    23,
+    13
+   ],
+   "0,14": [
+    23,
+    14
+   ],
+   "0,15": [
+    23,
+    15
+   ],
+   "0,16": [
+    23,
+    16
+   ],
+   "0,17": [
+    23,
+    17
+   ],
+   "119,3": [
+    0,
+    43
+   ],
+   "119,4": [
+    0,
+    44
+   ],
+   "119,5": [
+    0,
+    45
+   ],
+   "119,6": [
+    0,
+    46
+   ],
+   "119,7": [
+    0,
+    47
+   ],
+   "119,8": [
+    0,
+    48
+   ],
+   "119,9": [
+    0,
+    49
+   ],
+   "119,10": [
+    0,
+    50
+   ],
+   "119,11": [
+    0,
+    51
+   ],
+   "119,12": [
+    0,
+    52
+   ],
+   "119,13": [
+    0,
+    53
+   ],
+   "119,14": [
+    0,
+    54
+   ],
+   "119,15": [
+    0,
+    55
+   ],
+   "119,16": [
+    0,
+    56
+   ],
+   "119,17": [
+    0,
+    57
+   ]
   },
-  "buildings": {},
-  "roofs": {
-   "_rocks": "big"
+  "moves": {
+   "69,3": {
+    "m": "wander",
+    "d": "lr",
+    "r": [
+     2,
+     0
+    ]
+   }
+  },
+  "parts": true,
+  "hidden": {
+   "23,6": "STARDUST"
   },
   "overheads": [
    {
-    "kind": "tops",
-    "rect": [
-     5,
-     99,
-     7,
-     1
+    "kind": "picture",
+    "f": "fr_top/3_38.png",
+    "at": [
+     0,
+     0
     ],
-    "of": "tree"
+    "size": [
+     120,
+     20
+    ]
    }
+  ]
+ },
+ "KANTO_ROUTE_21": {
+  "art": [
+   "cccccccwwwwccccccccccccc",
+   "cccccccoooo......ccccccc",
+   "cccccccoooo......ccccccc",
+   "cccccccoooo......ccccccc",
+   "cccccccoooo......ccccccc",
+   "cccccccoooo\"\"\"\"\"\"ccccccc",
+   "cccccccoooo\"\"\"\"\"\"ccccccc",
+   "cccccccoooo\"\"\"\"\"\"ccccccc",
+   "cccccccoooo\"\"\"\"\"\"ccccccc",
+   "cccccccoooo\"\"\"\"\"\"ccccccc",
+   "cccccccoooo\"\"\"\"\"\"ccccccc",
+   "cccccccoooooooooo~~ccccc",
+   "cccccccoooooooooo~~ccccc",
+   "cccccccooooooooo~~cccccc",
+   "cccccccooooooooo~~cccccc",
+   "ccccc~~oooooooooo~~ccccc",
+   "ccccc~~~~oooooooo~~ccccc",
+   "ccc~~cc~~oooooooooo~~ccc",
+   "ccc~~c~~ooooooooooo~~ccc",
+   "cccccc~~oooooooooooo~~cc",
+   "ccc~~~~oooooooooo~~o~~cc",
+   "ccc~~~~oooooooooo~~oo~~c",
+   "cc~~ooooooooooooooooo~~c",
+   "cc~~o~~oooooooo====ooo~~",
+   "c~~oo~~ooooooo=====ooo~~",
+   "c~~ooooooooooo=====ooo~~",
+   "~~oooooooooooo==X=oooo~~",
+   "~~ooo==X=oooooooooooo~~c",
+   "~~oo=======oooooooooo~~c",
+   "~~oo=======ooooooooooo~~",
+   "c~~o=======ooooooooooo~~",
+   "c~~o=======oooooooooo~~c",
+   "c~~oooo===ooooooooooo~~c",
+   "c~~ooooooooooooooooo~~cc",
+   "~~oo~~oooooooooooooo~~cc",
+   "~~oo~~ooooooooXooooooo~~",
+   "c~~ooooo~~oooooooooo~~~~",
+   "c~~ooooo~~oooooooooo~~cc",
+   "cc~~ooooooooooooooooo~~c",
+   "cc~~oo~~ooooooooooooo~~c",
+   "cc~~oo~~oooooooo===oo~~c",
+   "cc~~ooooooooooo=====o~~c",
+   "c~~oooooooooooo=====o~~c",
+   "c~~oooooooooooo=====o~~c",
+   "ccc~~oooooooXoo====ooo~~",
+   "ccc~~ooooooooooooooooo~~",
+   "c~~oooooooooooooooooo~~c",
+   "c~~oooooooooooooooooo~~c",
+   "~~oooooooooooooooooooo~~",
+   "~~oooooooooooooooooooo~~",
+   "~~oo~~oooooooooooo~~oo~~",
+   "~~oo~~oooooooooooo~~oo~~",
+   "c~~oooooooooooooooooo~~c",
+   "c~~~~oooooooooooooooo~~c",
+   "ccc~~oo~~ooooooooooo~~cc",
+   "cc~~ooo~~ooooooooooo~~cc",
+   "cc~~oooooooooooooooo~~cc",
+   "cc~~ooo===oooooooooo~~cc",
+   "cc~~ooo====Xooooooooo~~c",
+   "cccc~~o=====ooooooooo~~c",
+   "cc~~~~oo====ooooooo~~~~c",
+   "cc~~ooooooooooooooo~~~~c",
+   "c~~oooooooooooooooooo~~c",
+   "c~~o~~ooooooooo=====o~~c",
+   "c~~o~~oooooooo======o~~c",
+   "c~~oooooooooooX=====o~~c",
+   "cc~~oooooooooo=====oo~~c",
+   "cc~~ooooooooooo====oo~~c",
+   "cc~~oooooooooooooooo~~cc",
+   "cc~~oooooooooooooooo~~cc",
+   "c~~ooooooooooooooooo~~cc",
+   "c~~oo======ooooooooo~~cc",
+   "c~~oo=======ooooooooo~~c",
+   "c~~oo=======ooooooooo~~c",
+   "cc~~oo======oooXooo~~c~~",
+   "~~~~ooo=====ooooooo~~c~~",
+   "~~~~ooooooooooooooooo~~c",
+   "cc~~ooooooooooooooooo~~c",
+   "c~~oooooooooooooooooo~~c",
+   "c~~oooooooXoooooooooo~~c",
+   "~~oooooooooooooooooooo~~",
+   "~~ooooooooooooooooo~~o~~",
+   "c~~o~~ooooooooooooo~~~~c",
+   "c~~o~~~~ooooooooooooo~~c",
+   "c~~ooo~~ooooooooooooo~~c",
+   "c~~ooooooooooooooo~~o~~c",
+   "c~~ooooo====oooooo~~o~~c",
+   "c~~ooo======oooo~~ooo~~c",
+   "c~~ooo======oooX~~oo~~cc",
+   "c~~ooo=====ooooooo~~~~cc",
+   "cc~~oooooooooooooo~~cccc",
+   "cc~~ooooooooooooo~~ccccc",
+   "cc~~o~~oooooooooo~~ccccc",
+   "cc~~o~~ooooooooo~~cccccc",
+   "c~~ooo~~oooooooo~~cccccc",
+   "c~~~~o~~oooo..oo~~cccccc",
+   "c~~~~ooooooo..oo~~cccccc",
+   "c~~ooooooooo..ooo~~ccccc",
+   "~~ooo.........ooo~~ccccc",
+   "~~vvv.......vvvvv~~ccccc"
   ],
+  "exits": {
+   "w": "PALLET_TOWN",
+   "v": "CINNABAR_ISLAND"
+  },
+  "buildings": {},
+  "roofs": {
+   "_picture": {
+    "f": "fr_ground/k_r21.png",
+    "at": [
+     0,
+     0
+    ]
+   },
+   "_signs_in_picture": true,
+   "_buildings_in_picture": true
+  },
   "trainer_spots": [
    "Wade",
    "Ronald",
@@ -24370,6 +24627,73 @@
    "Jack",
    "Roland",
    "Jerome"
+  ],
+  "edge_to": {
+   "7,0": [
+    7,
+    19
+   ],
+   "8,0": [
+    8,
+    19
+   ],
+   "9,0": [
+    9,
+    19
+   ],
+   "10,0": [
+    10,
+    19
+   ],
+   "2,99": [
+    2,
+    0
+   ],
+   "3,99": [
+    3,
+    0
+   ],
+   "4,99": [
+    4,
+    0
+   ],
+   "12,99": [
+    12,
+    0
+   ],
+   "13,99": [
+    13,
+    0
+   ],
+   "14,99": [
+    14,
+    0
+   ],
+   "15,99": [
+    15,
+    0
+   ],
+   "16,99": [
+    16,
+    0
+   ]
+  },
+  "hidden": {
+   "17,42": "PEARL"
+  },
+  "overheads": [
+   {
+    "kind": "picture",
+    "f": "fr_top/k_r21.png",
+    "at": [
+     0,
+     0
+    ],
+    "size": [
+     24,
+     100
+    ]
+   }
   ]
  },
  "SEAFOAM_ISLANDS": {

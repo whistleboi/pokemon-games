@@ -4530,6 +4530,9 @@
     },
     "SILPH_CITY:ZINC": {
       "item": "POKE_BALL"
+    },
+    "KANTO_ROUTE_20:Swimmer": {
+      "sheet": "fr_39.png"
     }
   },
   "townsperson": "NPC 17.png",

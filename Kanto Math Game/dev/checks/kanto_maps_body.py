@@ -1203,6 +1203,25 @@ for _k, _v in _sfs.items():
     if _v is not None:
         story.story_flags[_k] = _v
 
+# ---- batch 22: Routes 19, 20 and 21, the sea routes
+r19 = open_map("KANTO_ROUTE_19", "FUCHSIA_CITY")
+_t = _trainers(r19)
+check((r19.run.floor.w, r19.run.floor.h) == (24, 60) and len(_t) == 11 and _t.get("Axle") == (11, 47) and _t.get("Lia & Luc") == (8, 41),
+      f"Route 19: FireRed's beach and sea, its eleven swimmers on FireRed's spots ({len(_t)})")
+check({"FUCHSIA_CITY", "KANTO_ROUTE_20"} <= set(r19.run.floor.exits.values()), "...up to Fuchsia, west on to Route 20")
+r20 = open_map("KANTO_ROUTE_20", "KANTO_ROUTE_19")
+_t = _trainers(r20)
+_ex = r20.run.floor.exits
+check((r20.run.floor.w, r20.run.floor.h) == (120, 20) and len(_t) == 10 and _ex.get((60, 8)) == "SEAFOAM_ISLANDS" and _ex.get((72, 14)) == "SEAFOAM_ISLANDS",
+      f"Route 20: FireRed's sea, ten trainers, the Seafoam Islands' two mouths ({len(_t)}, {[k for k, v in _ex.items() if v == 'SEAFOAM_ISLANDS']})")
+check("CINNABAR_ISLAND" in _ex.values(), "...west to Cinnabar Island")
+check(any(h for h in (r20._here_art().get("hidden") or {}).values()) or bool(r20._here_art().get("hidden")), "...FireRed's hidden Stardust")
+r21 = open_map("KANTO_ROUTE_21", "PALLET_TOWN")
+_t = _trainers(r21)
+check((r21.run.floor.w, r21.run.floor.h) == (24, 100) and len(_t) == 9 and _t.get("Wade") == (16, 26) and _t.get("Jerome") == (15, 88),
+      f"Route 21: FireRed's two maps as one, Pallet to Cinnabar, nine trainers ({len(_t)})")
+check({"PALLET_TOWN", "CINNABAR_ISLAND"} <= set(r21.run.floor.exits.values()), "...Pallet Town at the top, Cinnabar at the bottom")
+
 # ---- Silph Co. in the Journal (Jordan, 11-14: "very clearly guided"): three steps, the marker floor by floor
 _sf = ("silph_co_cleared", "got_card_key", "received_silph_reward", "tower_ghost_defeated")
 _sfs = {k: story.story_flags.pop(k, None) for k in _sf}
